@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
-pkgver=1.0.10
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Pytest plugin that allows multiple failures per test'
 arch=('any')
@@ -13,16 +13,23 @@ depends=(
   'python-pytest'
 )
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-flit-core'
 )
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('dc3a80b20637eab8adda085ca8172bc3bde75bd47566972a07cf226bb38771933a531d99e139d7c220cc149715fd7d98ab964f72e0b520e8dd3df7633a6e5a90')
-b2sums=('e51dbb2806bdac73e202b14668c76675979113f661eb339a1a3cff07069d3d4709869d67ea2cb6384483ebde8b68288026df9b7492b17ea67c79ee95e6865809')
+_commit='f916f5e62a9457517c2add18eb7760c1d94d8ed5'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # remove flit-core version constraint
   sed \
@@ -31,21 +38,15 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
-  python \
-    -m build \
-    --wheel \
-    --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
-  python \
-    -m installer \
-    --destdir="$pkgdir" \
-    dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
