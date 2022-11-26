@@ -4,7 +4,7 @@ _pkgname=radiant.data
 _pkgver=1.4.5
 pkgname=r-${_pkgname,,}
 pkgver=1.4.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Data Menu for Radiant: Business Analytics using R and Shiny'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-base64enc
   r-broom
+  r-bslib
   r-car
   r-curl
   r-dplyr
@@ -27,6 +28,7 @@ depends=(
   r-markdown
   r-patchwork
   r-plotly
+  r-png
   r-psych
   r-randomizr
   r-readr
@@ -42,15 +44,13 @@ depends=(
   r-tibble
   r-tidyr
   r-writexl
-  r-png
 )
 optdepends=(
   r-dbi
-  r-odbc
+  r-dbplyr
   r-pkgdown
-  r-rpostgresql
+  r-rpostgres
   r-rsqlite
-  r-svglite
   r-testthat
   r-webshot
 )
