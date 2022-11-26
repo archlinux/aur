@@ -1,0 +1,9 @@
+pkgbase = flixel
+	pkgdesc = A powerful 2D game engine for the Haxe programming language + tools. Make sure you have run 'haxelib setup' before installing this package.
+	pkgver = 5.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = haxe
+
+pkgname = flixel
