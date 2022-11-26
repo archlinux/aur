@@ -1,7 +1,7 @@
 pkgbase = r-protolite
 	pkgdesc = Highly Optimized Protocol Buffer Serializers
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=protolite
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = r-protolite
 	depends = r-rcpp
 	depends = protobuf
 	optdepends = r-curl
-	optdepends = r-rprotobuf
 	optdepends = r-sf
 	optdepends = r-spelling
 	optdepends = r-testthat

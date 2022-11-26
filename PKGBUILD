@@ -5,7 +5,7 @@ _pkgname=protolite
 _pkgver=2.1.3
 pkgname=r-${_pkgname,,}
 pkgver=2.1.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Highly Optimized Protocol Buffer Serializers'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
 )
 optdepends=(
   r-curl
-  r-rprotobuf
   r-sf
   r-spelling
   r-testthat
