@@ -4,7 +4,7 @@ _pkgname=matter
 _pkgver=2.0.1
 pkgname=r-${_pkgname,,}
 pkgver=2.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A framework for rapid prototyping with file-based data structures'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-knitr
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")

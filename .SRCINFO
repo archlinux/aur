@@ -1,7 +1,7 @@
 pkgbase = r-matter
 	pkgdesc = A framework for rapid prototyping with file-based data structures
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/matter
 	arch = x86_64
 	license = Artistic2.0
@@ -13,6 +13,7 @@ pkgbase = r-matter
 	depends = r-irlba
 	depends = r-protgenerics
 	optdepends = r-biocstyle
+	optdepends = r-knitr
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/matter_2.0.1.tar.gz
 	sha256sums = 52d0b36cb396b9a9c7bb95b482ddf8d3646a78dba23557b8d871e838a4336c6d
