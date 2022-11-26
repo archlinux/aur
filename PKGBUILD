@@ -2,8 +2,8 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=25.857d4b8
-pkgrel=2
+pkgver=36.6bda56e
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/shssoichiro/soifunc'
