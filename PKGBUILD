@@ -4,7 +4,7 @@ _pkgname=fBasics
 _pkgver=4021.93
 pkgname=r-${_pkgname,,}
 pkgver=4021.93
-pkgrel=1
+pkgrel=3
 pkgdesc='Rmetrics - Markets and Basic Statistics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
   r-timeseries
 )
 optdepends=(
-  r-akima
+  r-interp
   r-runit
   r-tcltk
 )
