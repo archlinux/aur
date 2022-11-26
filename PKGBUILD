@@ -5,7 +5,7 @@ _pkgname=tiledb
 _pkgver=0.16.0
 pkgname=r-${_pkgname,,}
 pkgver=0.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Universal Storage Engine for Sparse and Dense Multidimensional Arrays'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,12 +19,10 @@ optdepends=(
   r-bit64
   r-curl
   r-data.table
-  r-knitr
   r-matrix
-  r-minidown
   r-nycflights13
   r-palmerpenguins
-  r-rmarkdown
+  r-simplermarkdown
   r-tibble
   r-tinytest
 )
