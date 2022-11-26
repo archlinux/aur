@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/pikaur/archive/"$pkgver".tar.gz
 )
-b2sums=('0f6e8bc0178442523004f43088c0108ca23fa4fa9be34637e680ec95035797dc66e008482c9dc74fa4f57d4e9e7b2499ff6bc2b4fe9ae9d337ad6429b33cb7ae')
+b2sums=('a78d893ae94466e159044867be029a8fddea72104887291c44a9293a1456609a0579ce2c6c0d267fce98e9abe15823727f63eb6050db6008448940f98d732755')
 depends=(
 	'pyalpm'
 	'git'
@@ -20,6 +20,7 @@ makedepends=(
 	'python-wheel'
 	'python-build'
 	'python-installer'
+	'python-setuptools'  # i think it normally should be required by python-pep517 which required by python-build/installer
 	'python-markdown-it-py'
 )
 optdepends=(
