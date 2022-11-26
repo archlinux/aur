@@ -4,26 +4,27 @@ _pkgname=atena
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of Transposable Elements'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
+  r-annotationhub
   r-biocgenerics
   r-biocparallel
   r-genomeinfodb
   r-genomicalignments
   r-genomicranges
   r-iranges
+  r-matrixstats
   r-rsamtools
   r-s4vectors
+  r-scales
   r-sparsematrixstats
   r-squarem
   r-summarizedexperiment
-  r-annotationhub
-  r-scales
 )
 optdepends=(
   r-biocstyle
