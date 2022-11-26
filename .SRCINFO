@@ -1,7 +1,7 @@
 pkgbase = r-r.rsp
 	pkgdesc = Dynamic Generation of Scientific Reports
 	pkgver = 0.45.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=R.rsp
 	arch = any
 	license = LGPL
@@ -11,6 +11,7 @@ pkgbase = r-r.rsp
 	depends = r-r.methodss3
 	depends = r-r.oo
 	depends = r-r.utils
+	optdepends = r-ascii
 	optdepends = r-base64enc
 	optdepends = r-knitr
 	optdepends = r-markdown

@@ -4,7 +4,7 @@ _pkgname=R.rsp
 _pkgver=0.45.0
 pkgname=r-${_pkgname,,}
 pkgver=0.45.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Dynamic Generation of Scientific Reports'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
   r-r.utils
 )
 optdepends=(
+  r-ascii
   r-base64enc
   r-knitr
   r-markdown
