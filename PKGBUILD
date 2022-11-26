@@ -4,7 +4,7 @@ _pkgname=akima
 _pkgver=0.6-3.4
 pkgname=r-${_pkgname,,}
 pkgver=0.6.3.4
-pkgrel=1
+pkgrel=4
 pkgdesc='Interpolation of Irregularly and Regularly Spaced Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,9 @@ license=('ACM')
 depends=(
   r
   r-sp
+)
+optdepends=(
+  r-tripack
 )
 makedepends=(
   gcc-fortran
