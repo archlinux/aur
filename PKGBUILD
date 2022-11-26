@@ -2,16 +2,13 @@
 
 pkgname=mitsuba3-git
 pkgver=3.1.1.r3.g16a6abaf
-pkgrel=1
+pkgrel=2
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
 license=('custom')
-groups=()
-depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'cuda')
-makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'python-sphinx' 'python-sphinx-tabs' 'python-sphinx-hoverxref' 'python-sphinxcontrib-youtube' 'python-sphinx_design' 'python-nbsphinx' 'python-sphinx-gallery' 'python-sphinx-copybutton' 'python-sphinx-furo')
-#checkdepends=('python-pytest' 'python-pytest-xdist' 'python-numpy')
-install=
+depends=('libpng' 'libjpeg-turbo' 'libc++' 'pybind11' 'pugixml' 'cuda' 'python-pytorch' 'python-pytest')
+makedepends=('clang' 'git' 'cmake' 'ninja' 'patchelf' 'python' 'graphviz' 'python-sphinx' 'python-sphinx-tabs' 'python-sphinx-hoverxref' 'python-sphinxcontrib-youtube' 'python-sphinx_design' 'python-nbsphinx' 'python-sphinx-gallery' 'python-sphinx-copybutton' 'python-sphinx-furo')
 source=(
 	'git+https://github.com/fastfloat/fast_float'
 	'git+https://github.com/intel/IntelSEAPI'
@@ -174,4 +171,9 @@ package() {
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	mkdir -p "$pkgdir$site_packages"
 	cp -R python/* "$pkgdir$site_packages"
+
+	# remove rpath from libraries - hard-coded to build path by default
+	for so in "$pkglib/*.so" "$pkglib/plugins/*.so" "$pkgdir$site_packages/drjit/*.so" "$pkgdir$site_packages/mitsuba/*.so"; do
+		patchelf --remove-rpath $so
+	done
 }
