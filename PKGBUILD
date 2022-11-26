@@ -7,7 +7,7 @@ _pkgname=rgl
 _pkgver=0.110.2
 pkgname=r-${_pkgname,,}
 pkgver=0.110.2
-pkgrel=3
+pkgrel=5
 pkgdesc='3D Visualization Using OpenGL'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,8 +27,10 @@ depends=(
   pandoc
 )
 optdepends=(
-  r-akima
+  freetype2
+  libpng
   r-alphashape3d
+  r-chromote
   r-crosstalk
   r-deldir
   r-downlit
@@ -49,10 +51,9 @@ optdepends=(
   r-tcltk
   r-testthat
   r-tripack
+  r-v8
   r-waldo
   r-webshot2
-  libpng
-  freetype2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('da1118c1990ae161a5787960fb22009601d2ee7d39ca9c97c31c70589bce346d')
