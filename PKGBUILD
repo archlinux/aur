@@ -4,7 +4,7 @@ _pkgname=pkgmaker
 _pkgver=0.32.2
 pkgname=r-${_pkgname,,}
 pkgver=0.32.2
-pkgrel=4
+pkgrel=7
 pkgdesc='Development Utilities for R Packages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
   r-yaml
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('ce45b22def771a9c90a414093823e6befe7e23489c500eeccee5154b44d3ef91')
 
 build() {
