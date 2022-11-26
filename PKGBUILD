@@ -4,7 +4,7 @@ _pkgname=graph
 _pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=1.76.0
-pkgrel=1
+pkgrel=3
 pkgdesc='graph: A package to handle graph data structures'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,9 @@ depends=(
   r-biocgenerics
 )
 optdepends=(
+  r-biocstyle
   r-cluster
+  r-knitr
   r-rbgl
   r-rgraphviz
   r-runit

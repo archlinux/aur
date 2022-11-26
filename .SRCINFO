@@ -1,13 +1,15 @@
 pkgbase = r-graph
 	pkgdesc = graph: A package to handle graph data structures
 	pkgver = 1.76.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/graph
 	arch = x86_64
 	license = Artistic2.0
 	depends = r
 	depends = r-biocgenerics
+	optdepends = r-biocstyle
 	optdepends = r-cluster
+	optdepends = r-knitr
 	optdepends = r-rbgl
 	optdepends = r-rgraphviz
 	optdepends = r-runit
