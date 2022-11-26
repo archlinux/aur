@@ -1,7 +1,7 @@
 pkgbase = r-jfa
 	pkgdesc = Bayesian and Classical Audit Sampling
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=jfa
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = r-jfa
 	optdepends = r-knitr
 	optdepends = r-mus
 	optdepends = r-rmarkdown
+	optdepends = r-samplingbook
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/jfa_0.6.4.tar.gz
 	sha256sums = 8237a0d4dfb04a71696bd9123c6c173209a945aa91e9b602943027c8b22457cf
