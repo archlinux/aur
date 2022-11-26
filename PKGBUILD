@@ -4,7 +4,7 @@ _pkgname=BioNERO
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Biological Network Reconstruction Omnibus'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,29 +13,29 @@ depends=(
   r
   r-biocparallel
   r-complexheatmap
-  r-deseq2
   r-dynamictreecut
   r-genie3
   r-ggnetwork
   r-ggnewscale
   r-ggplot2
-  r-ggpubr
+  r-ggrepel
   r-igraph
   r-intergraph
   r-matrixstats
   r-minet
   r-netrep
   r-networkd3
+  r-patchwork
   r-rcolorbrewer
   r-reshape2
   r-summarizedexperiment
   r-sva
   r-wgcna
-  r-patchwork
 )
 optdepends=(
   r-biocstyle
   r-covr
+  r-deseq2
   r-knitr
   r-rmarkdown
   r-testthat
