@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GENLIB
-_pkgver=1.1.6
+_pkgver=1.1.7
 pkgname=r-${_pkgname,,}
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Genealogical Data Analysis'
 arch=('x86_64')
@@ -19,8 +19,8 @@ depends=(
   r-quadprog
   r-rcpp
 )
-source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f686074dec99e5d775e44d7e4926d945f8725fd7f00a16d7d558d275c14e928c')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('e24da83f0364102cbf54fc7ef8d3081a688ad6f023e9d3b4e14bb7029e5d9eb8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
