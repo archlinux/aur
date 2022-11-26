@@ -1,6 +1,6 @@
 pkgbase = pacman-hook-kernel-install
 	pkgdesc = Pacman hooks for kernel-install.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://man.archlinux.org/man/kernel-install.8
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = pacman-hook-kernel-install
 	depends = sh
 	depends = systemd
 	source = 90-kernel-install-add.hook
-	source = 90-kernel-install-remove.hook
+	source = 60-kernel-install-remove.hook
 	source = kernel-install.sh
-	sha256sums = aafd002b19ec63dbb693d1ee9eaa266bb201b87423e9bdf3471c2ffc19948f8c
-	sha256sums = 6933fde9898d30b7dea53110526215db042dee130e341c3bda6b7610a78fa6da
-	sha256sums = 948ddf2ebf5ff3db9513a5972c2de7a36b868b2e73ca1d752e8d96dd369eb3ff
+	sha256sums = 53d088a00565e1a24f3628219849964ab84c6d421420f373618e9f53af45d525
+	sha256sums = 9a0c20db7ea168cfaa0ca4e129fe5388954a84e8815278819de7f36278b770ae
+	sha256sums = 82bfd6c6220dcfefafb6538cebdc2aef69f7a9832d06fd94ca3368eaace71812
 
 pkgname = pacman-hook-kernel-install

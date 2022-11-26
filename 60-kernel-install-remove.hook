@@ -1,7 +1,9 @@
 [Trigger]
+Type = Path
 Operation = Upgrade
 Operation = Remove
-Type = File
+Target = usr/lib/kernel/install.*
+Target = etc/kernel/install.*
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]

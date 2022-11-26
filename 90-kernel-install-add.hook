@@ -1,11 +1,13 @@
 [Trigger]
+Type = Path
 Operation = Install
 Operation = Upgrade
-Type = File
+Target = usr/lib/kernel/install.*
+Target = etc/kernel/install.*
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Installing kernel and initrd to $BOOT (kernel-install)
+Description = Installing kernel and initrd to $BOOT... (kernel-install)
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/kernel-install.sh add
 NeedsTargets
