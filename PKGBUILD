@@ -4,7 +4,7 @@ _pkgname=mlr3
 _pkgver=0.14.1
 pkgname=r-${_pkgname,,}
 pkgver=0.14.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Machine Learning in R - Next Generation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,7 +31,6 @@ optdepends=(
   r-callr
   r-codetools
   r-datasets
-  r-distr6
   r-future.callr
   r-matrix
   r-mlr3data
