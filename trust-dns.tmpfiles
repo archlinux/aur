@@ -1,0 +1,2 @@
+d /etc/trust-dns - trust-dns trust-dns
+d /var/lib/trust-dns - trust-dns trust-dns

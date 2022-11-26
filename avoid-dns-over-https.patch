@@ -1,0 +1,16 @@
+diff --git a/bin/Cargo.toml b/bin/Cargo.toml
+index 5713dc87..c52ffa9d 100644
+--- a/bin/Cargo.toml
++++ b/bin/Cargo.toml
+@@ -52,11 +52,6 @@ recursor = ["trust-dns-server/recursor"]
+ resolver = ["trust-dns-server/resolver"]
+ sqlite = ["trust-dns-server/sqlite"]
+ 
+-# TODO: Need to figure out how to be consistent with ring/openssl usage...
+-# dns-over-https-openssl = ["dns-over-openssl", "trust-dns-client/dns-over-https-openssl", "dns-over-https"]
+-dns-over-https-rustls = ["dns-over-https", "dns-over-rustls", "trust-dns-proto/dns-over-https-rustls", "trust-dns-client/dns-over-https-rustls", "trust-dns-server/dns-over-https-rustls"]
+-dns-over-https = ["trust-dns-server/dns-over-https"]
+-
+ dns-over-quic = ["dns-over-rustls", "trust-dns-server/dns-over-quic"]
+ 
+ # TODO: migrate all tls and tls-openssl features to dns-over-tls, et al
