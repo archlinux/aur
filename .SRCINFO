@@ -1,7 +1,7 @@
 pkgbase = r-speaq
 	pkgdesc = Tools for Nuclear Magnetic Resonance (NMR) Spectra Alignment, Peak Based Processing, Quantitative Analysis and Visualizations
 	pkgver = 2.7.0
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=speaq
 	arch = any
 	license = Apache
@@ -14,7 +14,6 @@ pkgbase = r-speaq
 	depends = r-impute
 	depends = r-massspecwavelet
 	depends = r-missforest
-	depends = r-mqtl
 	depends = r-reshape2
 	depends = r-rfast
 	depends = r-rvest
