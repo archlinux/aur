@@ -3,7 +3,7 @@
 
 pkgname=guile-hall
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Project manager and build tool for GNU guile'
 arch=('x86_64')
 url='https://gitlab.com/a-sassmannshausen/guile-hall'
@@ -16,16 +16,16 @@ sha256sums=('547085953485164a981ca982dd5b8bef0d17cc5b8d6a50ef841a1c80ef39c31a')
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -vif
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
+  GUILD=/usr/bin/guild ./configure --prefix=/usr
   make
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  GUILE_EFFECTIVE_VERSION=2.2 make -k check
+  make -k check
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  GUILE_EFFECTIVE_VERSION=2.2 make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
 }

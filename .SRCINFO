@@ -1,7 +1,7 @@
 pkgbase = guile-hall
 	pkgdesc = Project manager and build tool for GNU guile
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/a-sassmannshausen/guile-hall
 	arch = x86_64
 	license = GPL3
