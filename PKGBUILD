@@ -4,7 +4,7 @@ _pkgname=spBayes
 _pkgver=0.4-6
 pkgname=r-${_pkgname,,}
 pkgver=0.4.6
-pkgrel=3
+pkgrel=6
 pkgdesc='Univariate and Multivariate Spatial-Temporal Modeling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-sp
 )
 optdepends=(
-  r-geor
   r-mba
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
