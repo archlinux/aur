@@ -10,7 +10,7 @@ depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("youtube-git" "youtube-bin")
 source=("https://gitlab.com/youtube-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('SKIP')
+sha256sums=('aeda9a7bf2753a852c193813a0f524ba71c003180697bd10c5c7dbbef87d96b7')
 
 
 package() {

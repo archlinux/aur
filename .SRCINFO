@@ -14,6 +14,6 @@ pkgbase = youtube
 	conflicts = youtube-git
 	conflicts = youtube-bin
 	source = https://gitlab.com/youtube-desktop/application/-/archive/1.0.8-2/application-1.0.8-2.tar.bz2
-	sha256sums = SKIP
+	sha256sums = aeda9a7bf2753a852c193813a0f524ba71c003180697bd10c5c7dbbef87d96b7
 
 pkgname = youtube
