@@ -4,7 +4,7 @@ _pkgname=latex2exp
 _pkgver=0.9.5
 pkgname=r-${_pkgname,,}
 pkgver=0.9.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Use LaTeX Expressions in Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,13 +15,18 @@ depends=(
   r-stringr
 )
 optdepends=(
+  r-dplyr
   r-ggplot2
+  r-htmltools
   r-knitr
-  r-plyr
   r-purrr
+  r-rcurl
+  r-reactable
+  r-rlang
   r-rmarkdown
   r-testthat
   r-tibble
+  r-waldo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('8a42a7281b6736f9587b5443aa10e08b1823167f3c543821eed66eeafac86b94')
