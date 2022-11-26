@@ -4,20 +4,22 @@ _pkgname=flexdashboard
 _pkgver=0.6.0
 pkgname=r-${_pkgname,,}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=4
 pkgdesc='R Markdown Format for Flexible Dashboards'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-bslib
   r-htmltools
   r-htmlwidgets
   r-jsonlite
   r-knitr
   r-rmarkdown
-  r-shiny
+  r-sass
   r-scales
+  r-shiny
 )
 optdepends=(
   r-testthat
