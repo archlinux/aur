@@ -1,6 +1,6 @@
 pkgbase = python-qiskit
 	pkgdesc = An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules
-	pkgver = 0.39.2
+	pkgver = 0.39.3
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = python-qiskit
 	makedepends = python-wheel
 	depends = python-qiskit-aer>=0.11.1
 	depends = python-qiskit-ibmq-provider>=0.19.2
-	depends = python-qiskit-terra>=0.22.2
+	depends = python-qiskit-terra>=0.22.3
 	optdepends = python-qiskit-experiments: tools for building, running, and analysis of experiments on noisy quantum computers
 	optdepends = python-qiskit-finance: stock/securities problems, portfolio optimizations and finance experiments
 	optdepends = python-qiskit-machine-learning: sample datasets and quantum classification algorithms
 	optdepends = python-qiskit-nature: ground state energy computations, excited states and dipole moments of molecules
 	optdepends = python-qiskit-optimization: quantum optimization algorithms
-	source = qiskit-0.39.2.tar.gz::https://github.com/Qiskit/qiskit/archive/0.39.2.tar.gz
-	b2sums = b61e33e0838e4cc5ac874dfd6003b17867abc6b655c4418423057b489fe0186cb4b5ebdc53efc5a5cf65a796cf8ac5c05e46e20fcb46d675194c79639ffde4ba
+	source = qiskit-0.39.3.tar.gz::https://github.com/Qiskit/qiskit/archive/0.39.3.tar.gz
+	b2sums = 1769cd6781f9fd8600d029f2f6743dccb142b3698bc5b4358b0fa895730a0e7a54c96fcb9e04015d0d17b22d0ad2bd557f1e80c515c1e211549e31821d6b0ceb
 
 pkgname = python-qiskit
