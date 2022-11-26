@@ -1,7 +1,7 @@
 pkgbase = r-tidysummarizedexperiment
 	pkgdesc = Brings SummarizedExperiment to the Tidyverse
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/tidySummarizedExperiment
 	arch = any
 	license = GPL
@@ -23,6 +23,7 @@ pkgbase = r-tidysummarizedexperiment
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-tidyselect
+	depends = r-vctrs
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-markdown
