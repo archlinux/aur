@@ -6,10 +6,10 @@
 pkgname=oxen-electron-wallet
 pkgdesc="Oxen electron GUI wallet"
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/oxen-io/oxen-electron-gui-wallet'
-license=('BSD-3')
+license=('BSD')
 depends=('oxen-core-bin')
 makedepends=('node-gyp' 'fnm')
 conflicts=('oxen-gui-wallet-appimage')
