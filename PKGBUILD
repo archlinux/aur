@@ -4,7 +4,7 @@ _pkgname=ggmsa
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Plot Multiple Sequence Alignment using 'ggplot2'"
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -34,7 +34,6 @@ optdepends=(
   r-ggtreeextra
   r-kableextra
   r-knitr
-  r-phangorn
   r-readxl
   r-rmarkdown
   r-testthat

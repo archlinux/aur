@@ -1,7 +1,7 @@
 pkgbase = r-ggmsa
 	pkgdesc = Plot Multiple Sequence Alignment using 'ggplot2'
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ggmsa
 	arch = any
 	license = Artistic2.0
@@ -27,7 +27,6 @@ pkgbase = r-ggmsa
 	optdepends = r-ggtreeextra
 	optdepends = r-kableextra
 	optdepends = r-knitr
-	optdepends = r-phangorn
 	optdepends = r-readxl
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
