@@ -7,6 +7,6 @@ Exec=signal-desktop-beta -- %u
 Terminal=false
 Categories=Network;InstantMessaging;Chat;
 StartupWMClass=SignalBeta
-MimeType=x-scheme-handler/sgnl;
+MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
 Keywords=sgnl;chat;im;messaging;messenger;sms;security;privat;
 X-GNOME-UsesNotifications=true
