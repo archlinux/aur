@@ -4,7 +4,7 @@ _pkgname=ExpressionAtlas
 _pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=1.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Download datasets from EMBL-EBI Expression Atlas'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,13 +12,15 @@ license=('GPL')
 depends=(
   r
   r-biobase
+  r-biocstyle
   r-httr
+  r-jsonlite
   r-limma
+  r-rcurl
   r-s4vectors
   r-summarizedexperiment
   r-xml
   r-xml2
-  r-biocstyle
 )
 optdepends=(
   r-knitr
