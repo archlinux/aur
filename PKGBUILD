@@ -4,7 +4,7 @@ _pkgname=plotly
 _pkgver=4.10.1
 pkgname=r-${_pkgname,,}
 pkgver=4.10.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Create Interactive Web Graphics via 'plotly.js'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -40,6 +40,7 @@ optdepends=(
   r-dendextend
   r-devtools
   r-forcats
+  r-ggalluvial
   r-ggally
   r-ggthemes
   r-hexbin
@@ -56,6 +57,7 @@ optdepends=(
   r-reticulate
   r-rgeos
   r-rmarkdown
+  r-rsvg
   r-rversions
   r-sf
   r-shiny

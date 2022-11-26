@@ -1,7 +1,7 @@
 pkgbase = r-plotly
 	pkgdesc = Create Interactive Web Graphics via 'plotly.js'
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=plotly
 	arch = any
 	license = MIT
@@ -33,6 +33,7 @@ pkgbase = r-plotly
 	optdepends = r-dendextend
 	optdepends = r-devtools
 	optdepends = r-forcats
+	optdepends = r-ggalluvial
 	optdepends = r-ggally
 	optdepends = r-ggthemes
 	optdepends = r-hexbin
@@ -49,6 +50,7 @@ pkgbase = r-plotly
 	optdepends = r-reticulate
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
+	optdepends = r-rsvg
 	optdepends = r-rversions
 	optdepends = r-sf
 	optdepends = r-shiny
