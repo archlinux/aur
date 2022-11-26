@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.1.beta18.r0.g05ed88a
+pkgver=1.1_beta18.r3.gee3cd49
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -26,7 +26,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"
-    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-\([^-]*\)-\([^-]*\)$/.\1.\2/;s/-/_/'
 }
 
 _tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
