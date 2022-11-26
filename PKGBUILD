@@ -4,7 +4,7 @@ _pkgname=sesameData
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Supporting Data for SeSAMe Package'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,16 +12,18 @@ license=('Artistic2.0')
 depends=(
   r
   r-annotationhub
-  r-curl
   r-experimenthub
-  r-rmarkdown
+  r-genomeinfodb
   r-genomicranges
+  r-iranges
   r-readr
+  r-s4vectors
+  r-stringr
 )
 optdepends=(
   r-biocgenerics
-  r-genomicranges
   r-knitr
+  r-rmarkdown
   r-sesame
   r-testthat
 )
