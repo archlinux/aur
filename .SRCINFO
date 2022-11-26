@@ -1,7 +1,7 @@
 pkgbase = r-miqc
 	pkgdesc = Flexible, probabilistic metrics for quality control of scRNA-seq data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/miQC
 	arch = any
 	license = BSD
@@ -10,7 +10,6 @@ pkgbase = r-miqc
 	depends = r-ggplot2
 	depends = r-singlecellexperiment
 	optdepends = r-biocstyle
-	optdepends = r-biomart
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-scater
