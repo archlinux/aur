@@ -4,7 +4,7 @@ _pkgname=leiden
 _pkgver=0.4.3
 pkgname=r-${_pkgname,,}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=3
 pkgdesc='R Implementation of Leiden Clustering Algorithm'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,6 +26,7 @@ optdepends=(
   r-multiplex
   r-network
   r-rcolorbrewer
+  r-remotes
   r-rmarkdown
   r-spelling
   r-testthat

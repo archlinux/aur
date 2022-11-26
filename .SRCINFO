@@ -1,7 +1,7 @@
 pkgbase = r-leiden
 	pkgdesc = R Implementation of Leiden Clustering Algorithm
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leiden
 	arch = any
 	license = GPL
@@ -19,6 +19,7 @@ pkgbase = r-leiden
 	optdepends = r-multiplex
 	optdepends = r-network
 	optdepends = r-rcolorbrewer
+	optdepends = r-remotes
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
