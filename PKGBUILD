@@ -5,7 +5,7 @@ _pkgname=glmGamPoi
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Fit a Gamma-Poisson Generalized Linear Model'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,12 +17,13 @@ depends=(
   r-delayedarray
   r-delayedmatrixstats
   r-hdf5array
+  r-matrixgenerics
   r-matrixstats
   r-rcpp
   r-rcpparmadillo
-  r-summarizedexperiment
-  r-singlecellexperiment
   r-rlang
+  r-singlecellexperiment
+  r-summarizedexperiment
 )
 optdepends=(
   r-beachmat
@@ -35,6 +36,7 @@ optdepends=(
   r-knitr
   r-limma
   r-mass
+  r-matrix
   r-muscdata
   r-rmarkdown
   r-scran
