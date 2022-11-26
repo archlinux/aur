@@ -4,7 +4,7 @@ _pkgname=bigmemory
 _pkgver=4.6.1
 pkgname=r-${_pkgname,,}
 pkgver=4.6.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Manage Massive Matrices with Shared Memory and Memory-Mapped Files'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,6 +19,7 @@ depends=(
 optdepends=(
   r-biganalytics
   r-bigtabulate
+  r-remotes
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
