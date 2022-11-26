@@ -5,7 +5,7 @@ _pkgname=destiny
 _pkgver=3.12.0
 pkgname=r-${_pkgname,,}
 pkgver=3.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Creates diffusion maps'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -37,13 +37,23 @@ depends=(
   jupyter-nbconvert
 )
 optdepends=(
+  r-conflicted
+  r-cowplot
   r-fnn
+  r-gridextra
   r-igraph
-  r-nbconvertr
+  r-knitr
+  r-org.mm.eg.db
+  r-repr
   r-rgl
+  r-rgl
+  r-rmarkdown
+  r-scran
+  r-scrnaseq
   r-singlecellexperiment
   r-testthat
-  r-tidyr
+  r-tidyverse
+  r-viridis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d1e482164e97eddc969e505280c3e0282ccc72dc26cd40c8ee2dcbaf8638ed65')
