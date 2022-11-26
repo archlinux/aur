@@ -5,15 +5,14 @@ _pkgname=slider
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Sliding Window Functions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-ellipsis
-  r-glue
+  r-cli
   r-rlang
   r-vctrs
   r-warp
