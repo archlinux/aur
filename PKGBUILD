@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew dot stubbs at gmail dot com>
 
 pkgname=etcher-bin
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=("https://github.com/balena-io/${pkgname%-bin}/releases/download/v${pkgve
 	    "etcher")
 
 options=("!strip")
-sha256sums=("aad0dc7c417e107f3da8d24909564f6e5548b913c13565f15a6f17b1892a5f37"
+sha256sums=("8bda4336a254a9abfd2ba9721d56547bfb00f2acd8cb0213d0630941d7b96ed1"
             "612350b1453ec309318ec622fc9d34d83593b01436e62384795664be205bba81")
 
 build() {
