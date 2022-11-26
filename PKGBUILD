@@ -1,42 +1,41 @@
 pkgname=twitch
 _pkgname=Twitch
-pkgver=1.0.2
-pkgrel=5
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Unofficial Twitch desktop application."
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/twitch-application/application"
 license=('GPL')
-depends=('nss' 'gtk3' 'libxss')
-makedepends=('npm' 'git' 'unzip')
-provides=("${pkgname%}")
-conflicts=("${pkgname%}")
-source=('git+https://gitlab.com/twitch-application/application.git')
-sha256sums=('SKIP')
+depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+makedepends=('unzip')
+conflicts=("twitch-bin")
+source=("https://gitlab.com/twitch-application/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+sha256sums=('e5b553b9615d4fad9280edcdeeae856acc41448a9cb4f380a5f8b41da7762382')
 
-pkgver() {
-    cd "$srcdir/application"
-    node -pe "require('./package.json').version"
-}
-
-build() {
-    cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@11.0.4 electron-packager
-    ./node_modules/.bin/electron-packager .
-    for dir in $_pkgname-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
-    rm -rf "$srcdir/$pkgname/$_pkgname/resources/app/node_modules"
-}
 
 package() {
-    cd "$srcdir/application/$_pkgname"
+    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    cd "$srcdir/$_pkgname"
+    cat <<EOT >> $_pkgname
+    #!/bin/bash
+    cd /opt/$_pkgname &&
+    npm start
+EOT
+
+    chmod +x $_pkgname
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
+    install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
+    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
+
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/${pkgname%}"
+    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/$_pkgname.desktop" \
+    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
         "$pkgdir/usr/share/applications/$_pkgname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
