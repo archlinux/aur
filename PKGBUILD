@@ -4,7 +4,7 @@ _pkgname=ParamHelpers
 _pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=1.14.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Helpers for Parameters in Black-Box Optimization, Tuning and Machine Learning'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,6 @@ depends=(
   r-fastmatch
 )
 optdepends=(
-  r-akima
   r-covr
   r-eaf
   r-emoa
@@ -25,6 +24,7 @@ optdepends=(
   r-ggplot2
   r-grid
   r-gridextra
+  r-interp
   r-irace
   r-lhs
   r-plyr
