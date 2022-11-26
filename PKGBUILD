@@ -4,7 +4,7 @@ _pkgname=ndexr
 _pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=1.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='NDEx R client library'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,11 +12,10 @@ license=('BSD')
 depends=(
   r
   r-httr
-  r-igraph
   r-jsonlite
   r-plyr
-  r-tidyr
   r-rcx
+  r-tidyr
 )
 optdepends=(
   r-biocstyle
