@@ -2,7 +2,7 @@
 # Contributor: Maz <m47h4r at gmail dot com>
 
 pkgname=nekoray
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 epoch=
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)"
@@ -16,12 +16,12 @@ provides=('nekoray')
 conflicts=('nekoray')
 noextract=("${pkgname}-${pkgver}.zip")
 source=(
-	"${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/nekoray-${pkgver}-2022-11-15-linux64.zip"
+	"${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/nekoray-${pkgver}-2022-11-26-linux64.zip"
 	"nekoray.desktop"
 	"launcher-script"
 )
 sha256sums=(
-	'f462ce4a8c2f00c4b6f9edffe72a30430dc6c9880877afb7b15611857ae81184'
+	'eb5d1161b6f65c309f2f6bd960b105a954affc0c870b2c342ad32e967e57fd70'
 	'dd7083c3992d35ad51beb73bfb3ef42f82ebee6c3ab9a25e9dfe8c6bd95096ce'
 	'13986ecce89ddaac4b25fc5e78e1208e2f69bfd3fb86acf2308f218c06e6f5ad'
 )
