@@ -6,7 +6,7 @@ _pkgname=gitcreds
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
 pkgver=0.1.2
-pkgrel=3
+pkgrel=5
 pkgdesc="Query 'git' Credentials from 'R'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
   r-codetools
+  r-covr
   r-knitr
   r-mockery
   r-oskeyring
