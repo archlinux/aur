@@ -4,7 +4,7 @@ _pkgname=ADaCGH2
 _pkgver=2.38.0
 pkgname=r-${_pkgname,,}
 pkgver=2.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Analysis of big data from aCGH experiments using parallel computing and ff objects'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,7 +15,6 @@ depends=(
   r-bit
   r-dnacopy
   r-ff
-  r-ffbase
   r-glad
   r-snapcgh
   r-tilingarray

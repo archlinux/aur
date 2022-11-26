@@ -1,7 +1,7 @@
 pkgbase = r-adacgh2
 	pkgdesc = Analysis of big data from aCGH experiments using parallel computing and ff objects
 	pkgver = 2.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ADaCGH2
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = r-adacgh2
 	depends = r-bit
 	depends = r-dnacopy
 	depends = r-ff
-	depends = r-ffbase
 	depends = r-glad
 	depends = r-snapcgh
 	depends = r-tilingarray
