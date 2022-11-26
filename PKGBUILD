@@ -15,13 +15,14 @@
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
 pkgver=0.0.143
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord-canary')
 conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
+options=(!strip)
 depends=('electron19' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
