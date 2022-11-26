@@ -1,0 +1,14 @@
+pkgbase = autolibheif
+	pkgdesc = CLI utility for encoding and decoding the HEIF/HEIC file format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/allddd/autolibheif
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = libheif
+	depends = python
+	source = https://github.com/allddd/autolibheif/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 297e9f5292ef609e63c470e2effb0c7aa45b4ebf6dbf0c78d98fd1f671be4392
+
+pkgname = autolibheif
