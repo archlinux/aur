@@ -7,7 +7,7 @@ pkgdesc="Discreet Cryptocurrency Wallet. discreet.net"
 pkgver=0.2.23
 _guiver="${pkgver}-3"
 _daemonver=0.0.28-2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 #depends=('dotnet-sdk')
 url="https://discreet.net"
@@ -21,8 +21,8 @@ noextract=("${_pkgname}-gui_${_guiver}_amd64.deb"
 
 package_discreet-gui-bin() {
 	depends=("discreet-daemon-bin")
-	provides=("discreet")
-	conflicts=("discreet")
+	provides=("discreet-gui")
+	conflicts=("discreet-gui")
 	#create directory trees
 	cd ${pkgdir}
 	ar -xf ${srcdir}/${_pkgname0}_${_guiver}_amd64.deb
@@ -46,4 +46,5 @@ package_discreet-daemon-bin() {
 	rm debian-binary
 	rm ${pkgdir}/usr/bin/*
 	ln -rTsf ${pkgdir}/usr/lib/discreet/Discreet ${pkgdir}/usr/bin/discreetd
+	ln -rTsf ${pkgdir}/usr/lib/libdl.so.2 ${pkgdir}/usr/lib/discreet/libdl.so
 }
