@@ -4,7 +4,7 @@ _pkgname=MQmetrics
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Quality Control of Protemics Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-ggplot2
   r-ggpubr
   r-ggrepel
-  r-ggridges
   r-gridextra
   r-gtable
   r-knitr

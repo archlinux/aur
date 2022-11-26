@@ -1,7 +1,7 @@
 pkgbase = r-mqmetrics
 	pkgdesc = Quality Control of Protemics Data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MQmetrics
 	arch = any
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = r-mqmetrics
 	depends = r-ggplot2
 	depends = r-ggpubr
 	depends = r-ggrepel
-	depends = r-ggridges
 	depends = r-gridextra
 	depends = r-gtable
 	depends = r-knitr
