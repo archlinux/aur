@@ -5,7 +5,7 @@ _pkgname=proxyC
 _pkgver=0.3.3
 pkgname=r-${_pkgname,,}
 pkgver=0.3.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Computes Proximity in Large Sparse Matrices'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,9 @@ depends=(
 )
 optdepends=(
   r-entropy
+  r-knitr
   r-proxy
+  r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
