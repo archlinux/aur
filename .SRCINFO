@@ -1,7 +1,7 @@
 pkgbase = r-genenetworkbuilder
 	pkgdesc = GeneNetworkBuilder: a bioconductor package for building regulatory network using ChIP-chip/ChIP-seq data and Gene Expression Data
 	pkgver = 1.40.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/GeneNetworkBuilder
 	arch = x86_64
 	license = GPL
@@ -17,6 +17,7 @@ pkgbase = r-genenetworkbuilder
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-magick
+	optdepends = r-org.hs.eg.db
 	optdepends = r-rbgl
 	optdepends = r-rmarkdown
 	optdepends = r-runit

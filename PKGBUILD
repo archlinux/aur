@@ -4,7 +4,7 @@ _pkgname=GeneNetworkBuilder
 _pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=1.40.0
-pkgrel=1
+pkgrel=3
 pkgdesc='GeneNetworkBuilder: a bioconductor package for building regulatory network using ChIP-chip/ChIP-seq data and Gene Expression Data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -24,6 +24,7 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-magick
+  r-org.hs.eg.db
   r-rbgl
   r-rmarkdown
   r-runit
