@@ -4,39 +4,35 @@ _pkgname=openCyto
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Hierarchical Gating Pipeline for flow cytometry data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
   r
+  r-bh
   r-biobase
   r-biocgenerics
-  r-clue
+  r-cpp11
   r-data.table
   r-flowclust
   r-flowcore
-  r-flowstats
   r-flowviz
   r-flowworkspace
   r-graph
-  r-gtools
-  r-ks
   r-ncdfflow
-  r-plyr
-  r-r.utils
   r-rbgl
   r-rcolorbrewer
-  r-rcpp
-  r-rrcov
 )
 optdepends=(
   r-cytoml
+  r-flowstats
   r-flowworkspacedata
   r-ggcyto
   r-knitr
   r-markdown
+  r-mass
   r-parallel
   r-rmarkdown
   r-testthat
