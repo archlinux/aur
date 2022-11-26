@@ -4,7 +4,7 @@ _pkgname=randomizr
 _pkgver=0.22.0
 pkgname=r-${_pkgname,,}
 pkgver=0.22.0
-pkgrel=3
+pkgrel=6
 pkgdesc='Easy-to-Use Tools for Common Forms of Random Assignment and Sampling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,6 @@ depends=(
   r
 )
 optdepends=(
-  r-blocktools
   r-dplyr
   r-knitr
   r-ri
