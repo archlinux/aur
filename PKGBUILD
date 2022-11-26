@@ -4,7 +4,7 @@ _pkgname=seqsetvis
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Set Based Visualizations for Next-Gen Sequencing Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -36,7 +36,6 @@ optdepends=(
   r-biocstyle
   r-chippeakanno
   r-covr
-  r-cowplot
   r-knitr
   r-rmarkdown
   r-testthat

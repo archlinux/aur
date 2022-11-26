@@ -1,7 +1,7 @@
 pkgbase = r-seqsetvis
 	pkgdesc = Set Based Visualizations for Next-Gen Sequencing Data
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/seqsetvis
 	arch = any
 	license = MIT
@@ -29,7 +29,6 @@ pkgbase = r-seqsetvis
 	optdepends = r-biocstyle
 	optdepends = r-chippeakanno
 	optdepends = r-covr
-	optdepends = r-cowplot
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
