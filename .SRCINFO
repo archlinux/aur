@@ -1,14 +1,13 @@
 pkgbase = editix-free
 	pkgdesc = EditiX is a powerful and easy to use XML editor, Visual Schema Editor, XQuery Editor and XSLT debugger
-	pkgver = 2021
+	pkgver = 2022
 	pkgrel = 1
 	epoch = 1
 	url = http://free.editix.com/
 	arch = any
 	license = custom
 	depends = java-runtime
-	source = http://www.editix.com/download/editix2021.zip
-	sha256sums = 3e371aea1227fed5ee16bbb75d771ff74ebc9d7700bd78c056e0296a944f9ae5
+	source = http://www.editix.com/download/editix2022.zip
+	sha256sums = a823510beeb098430bd96a5cd83f0a154e59767dae10095da629508ff1d0ab9f
 
 pkgname = editix-free
-
