@@ -4,7 +4,7 @@ _pkgname=MetNet
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Inferring metabolic networks from untargeted high-resolution mass spectrometry data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,12 +13,12 @@ depends=(
   r
   r-biocparallel
   r-bnlearn
+  r-corpcor
   r-dplyr
+  r-genenet
   r-genie3
   r-ggplot2
-  r-mpmi
   r-parmigene
-  r-ppcor
   r-psych
   r-rlang
   r-s4vectors
@@ -26,7 +26,6 @@ depends=(
   r-summarizedexperiment
   r-tibble
   r-tidyr
-  r-genenet
 )
 optdepends=(
   r-biocgenerics
@@ -34,7 +33,9 @@ optdepends=(
   r-glmnet
   r-igraph
   r-knitr
+  r-mscoreutils
   r-rmarkdown
+  r-spectra
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
