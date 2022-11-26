@@ -4,7 +4,7 @@ _pkgname=CIMICE
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='CIMICE-R: (Markov) Chain Method to Inferr Cancer Evolution'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-assertthat
   r-dplyr
+  r-expm
   r-ggcorrplot
   r-ggplot2
   r-ggraph
@@ -21,10 +22,9 @@ depends=(
   r-maftools
   r-networkd3
   r-purrr
-  r-relations
+  r-tidygraph
   r-tidyr
   r-visnetwork
-  r-expm
 )
 optdepends=(
   r-biocstyle
