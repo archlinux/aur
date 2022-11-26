@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=regal
-pkgver=11.823d99e
+pkgver=13.85a6d42
 pkgrel=1
 pkgdesc='Simple CLI regular alarm'
 arch=('any')
