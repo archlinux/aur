@@ -4,22 +4,21 @@ _pkgname=SRGnet
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=4
 pkgdesc='An R package for studying synergistic response to gene mutations from transcriptomics data'
 arch=('any')
 url="https://bioconductor.org/packages/3.12/bioc/html/SRGnet.html"
 license=('GPL')
 depends=(
   r
+  r-dmwr
   r-ebcoexpress
+  r-gbm
+  r-hmisc
   r-igraph
-  r-pvclust
-  r-gdm
   r-limma
   r-matrixstats
-  r-hmisc
-  r-dmwr
-  r-gbm
+  r-pvclust
 )
 makedepends=(
   git
