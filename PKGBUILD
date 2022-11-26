@@ -1,3 +1,4 @@
+# Maintainer: Wu Junyu (aka Tenshi65535) <wu.junyu.aur@outlook.com>
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _gemname=debug
@@ -17,7 +18,7 @@ makedepends=('gcc' 'make')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7966057f9952bbc45810416cab8fc01dacdda8fa502c341d06c8424418fc580c')
+sha256sums=('335f109abe39c1e3465df2d2f17f5108e2934070442e73c0a14d09de54012341')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
