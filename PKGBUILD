@@ -4,7 +4,7 @@ _pkgname=RNASeqPower
 _pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=1.38.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Sample size for RNAseq studies'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,9 +15,6 @@ depends=(
 makedepends=(
   git
   tar
-)
-optdepends=(
-    r-dgeobj.utils
 )
 source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
 sha256sums=('SKIP')

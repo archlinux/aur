@@ -1,14 +1,13 @@
 pkgbase = r-rnaseqpower
 	pkgdesc = Sample size for RNAseq studies
 	pkgver = 1.38.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/RNASeqPower
 	arch = any
 	license = LGPL
 	makedepends = git
 	makedepends = tar
 	depends = r
-	optdepends = r-dgeobj.utils
 	source = git+https://git.bioconductor.org/packages/RNASeqPower.git
 	sha256sums = SKIP
 
