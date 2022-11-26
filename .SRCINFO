@@ -1,7 +1,7 @@
 pkgbase = r-circlize
 	pkgdesc = Circular Visualization
 	pkgver = 0.4.15
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=circlize
 	arch = any
 	license = MIT
@@ -11,11 +11,13 @@ pkgbase = r-circlize
 	depends = r-shape
 	optdepends = r-bezier
 	optdepends = r-complexheatmap
+	optdepends = r-covr
 	optdepends = r-dendextend
 	optdepends = r-gridbase
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-png
+	optdepends = r-rmarkdown
 	source = https://cran.r-project.org/src/contrib/circlize_0.4.15.tar.gz
 	sha256sums = d602d55313fe7c675109153d6ed3b99bdba5292e1deefed71d5a21e0db595cc7
 

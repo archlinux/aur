@@ -4,7 +4,7 @@ _pkgname=circlize
 _pkgver=0.4.15
 pkgname=r-${_pkgname,,}
 pkgver=0.4.15
-pkgrel=1
+pkgrel=4
 pkgdesc='Circular Visualization'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,11 +18,13 @@ depends=(
 optdepends=(
   r-bezier
   r-complexheatmap
+  r-covr
   r-dendextend
   r-gridbase
   r-knitr
   r-markdown
   r-png
+  r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d602d55313fe7c675109153d6ed3b99bdba5292e1deefed71d5a21e0db595cc7')
