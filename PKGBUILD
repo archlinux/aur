@@ -4,7 +4,7 @@ _pkgname=bayestestR
 _pkgver=0.13.0
 pkgname=r-${_pkgname,,}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Understand and Describe Bayesian Models and Posterior Distributions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,16 +16,18 @@ depends=(
 )
 optdepends=(
   r-bayesfactor
+  r-bayesplot
   r-bayesqr
+  r-bh
   r-blavaan
   r-bridgesampling
   r-brms
-  r-dplyr
   r-effectsize
   r-emmeans
-  r-ggally
+  r-gamm4
+  r-ggdist
   r-ggplot2
-  r-ggridges
+  r-glmmtmb
   r-httr
   r-kernsmooth
   r-knitr
@@ -37,15 +39,16 @@ optdepends=(
   r-mediation
   r-modelbased
   r-parameters
+  r-patchwork
   r-performance
+  r-posterior
+  r-quadprog
+  r-rcppeigen
   r-rmarkdown
   r-rstan
   r-rstanarm
   r-see
-  r-spelling
-  r-stringr
   r-testthat
-  r-tidyr
   r-tweedie
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
