@@ -1,7 +1,7 @@
 pkgbase = r-spacetime
 	pkgdesc = Classes and Methods for Spatio-Temporal Data
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=spacetime
 	arch = any
 	license = GPL
@@ -26,8 +26,10 @@ pkgbase = r-spacetime
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgdal
 	optdepends = r-rgeos
+	optdepends = r-rmarkdown
 	optdepends = r-rpostgresql
 	optdepends = r-sf
+	optdepends = r-sftime
 	source = https://cran.r-project.org/src/contrib/spacetime_1.2-8.tar.gz
 	sha256sums = 4297a027ab4cff32e41cec65aa7d92af66c7a885fd2322b010b0af9a14f24c59
 
