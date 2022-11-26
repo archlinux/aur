@@ -1,13 +1,12 @@
 pkgbase = r-metabocoreutils
 	pkgdesc = Core Utils for Metabolomics Data
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MetaboCoreUtils
 	arch = any
 	license = Artistic2.0
 	depends = r
 	depends = r-mscoreutils
-	depends = r-stringr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
