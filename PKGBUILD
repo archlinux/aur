@@ -5,7 +5,7 @@ _pkgname=ChemmineR
 _pkgver=3.50.0
 pkgname=r-${_pkgname,,}
 pkgver=3.50.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Cheminformatics Toolkit for R'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ depends=(
   make
 )
 optdepends=(
+  r-bibtex
   r-biocmanager
   r-biocstyle
   r-chemminedrugs
