@@ -4,7 +4,7 @@ _pkgname=evd
 _pkgver=2.3-6.1
 pkgname=r-${_pkgname,,}
 pkgver=2.3.6.1
-pkgrel=1
+pkgrel=6
 pkgdesc='Functions for Extreme Value Distributions'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 optdepends=(
-  r-akima
+  r-interp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('662c592d3f5c5693dbf1c673d1137c4a60a347e330b71be1f3933f201d2c8971')
