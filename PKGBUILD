@@ -4,7 +4,7 @@ _pkgname=bamlss
 _pkgver=1.1-9
 pkgname=r-${_pkgname,,}
 pkgver=1.1.9
-pkgrel=1
+pkgrel=3
 pkgdesc='Bayesian Additive Models for Location, Scale, and Shape (and Beyond)'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,17 +19,15 @@ depends=(
   r-sp
 )
 optdepends=(
-  r-akima
   r-bayesx
   r-bit
   r-ff
-  r-ffbase
   r-fields
   r-gamlss
   r-gamlss.dist
-  r-geor
   r-glmnet
   r-glogis
+  r-interp
   r-keras
   r-knitr
   r-mapdata

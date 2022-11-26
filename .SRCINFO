@@ -1,7 +1,7 @@
 pkgbase = r-bamlss
 	pkgdesc = Bayesian Additive Models for Location, Scale, and Shape (and Beyond)
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bamlss
 	arch = x86_64
 	license = GPL
@@ -12,17 +12,15 @@ pkgbase = r-bamlss
 	depends = r-mba
 	depends = r-mvtnorm
 	depends = r-sp
-	optdepends = r-akima
 	optdepends = r-bayesx
 	optdepends = r-bit
 	optdepends = r-ff
-	optdepends = r-ffbase
 	optdepends = r-fields
 	optdepends = r-gamlss
 	optdepends = r-gamlss.dist
-	optdepends = r-geor
 	optdepends = r-glmnet
 	optdepends = r-glogis
+	optdepends = r-interp
 	optdepends = r-keras
 	optdepends = r-knitr
 	optdepends = r-mapdata
