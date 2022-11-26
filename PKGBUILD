@@ -4,7 +4,7 @@ _pkgname=paradox
 _pkgver=0.11.0
 pkgname=r-${_pkgname,,}
 pkgver=0.11.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Define and Work with Parameter Spaces for Complex Algorithms'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
 optdepends=(
   r-knitr
   r-lhs
+  r-spacefillr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
