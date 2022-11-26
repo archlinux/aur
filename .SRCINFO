@@ -1,0 +1,18 @@
+pkgbase = libretro-scummvm-diablodiab-git
+	pkgdesc = ScummVM core (diablodiab's backend)
+	pkgver = 36.ae6998e
+	pkgrel = 1
+	url = https://github.com/diablodiab/libretro-scummvm-backend
+	arch = x86_64
+	arch = aarch64
+	groups = libretro
+	license = GPL
+	makedepends = git
+	depends = libretro-core-info
+	conflicts = libretro-scummvm
+	source = git+https://github.com/scummvm/scummvm.git
+	source = git+https://github.com/diablodiab/libretro-scummvm-backend.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libretro-scummvm-diablodiab-git
