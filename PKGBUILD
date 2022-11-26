@@ -4,7 +4,7 @@ _pkgname=bigmemory.sri
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
 pkgver=0.1.6
-pkgrel=1
+pkgrel=3
 pkgdesc='A shared resource interface for Bigmemory Project packages'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
 )
 optdepends=(
   r-bigmemory
-  r-synchronicity
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('3bfa6ac966ce0ea93283f5856a853d0ee5ff85aedd7a7d1ca8a93d0aa642860c')
