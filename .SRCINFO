@@ -1,7 +1,7 @@
 pkgbase = r-networktools
 	pkgdesc = Tools for Identifying Important Nodes in Networks
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=networktools
 	arch = any
 	license = GPL
@@ -11,8 +11,6 @@ pkgbase = r-networktools
 	depends = r-ggplot2
 	depends = r-gridextra
 	depends = r-igraph
-	depends = r-isingfit
-	depends = r-networkcomparisontest
 	depends = r-psych
 	depends = r-qgraph
 	depends = r-r.utils
