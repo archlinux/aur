@@ -2,7 +2,7 @@
 
 pkgname=mitsuba3-git
 pkgver=3.1.1.r3.g16a6abaf
-pkgrel=2
+pkgrel=3
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -156,9 +156,6 @@ package() {
 		install -Dm755 "$so" "$pkglib/$so"
 	done
 
-	# make sure Mitsuba finds its copies of libraries
-	patchelf --set-rpath "\$ORIGIN/../lib/$pkgname" "$pkgusr/bin/$binary_name"
-
 	# install data (mitsuba searches for it here by default)
 	cp -R "$srcdir/build/data" "$pkgusr/lib/$pkgname/data"
 
@@ -175,5 +172,11 @@ package() {
 	# remove rpath from libraries - hard-coded to build path by default
 	for so in "$pkglib/*.so" "$pkglib/plugins/*.so" "$pkgdir$site_packages/drjit/*.so" "$pkgdir$site_packages/mitsuba/*.so"; do
 		patchelf --remove-rpath $so
+	done
+
+	# make sure Mitsuba finds its copies of libraries
+	patchelf --set-rpath "/usr/lib/$pkgname" "$pkgusr/bin/$binary_name"
+	for so in "$pkglib/*.so"; do
+		patchelf --set-rpath "\$ORIGIN" $so
 	done
 }
