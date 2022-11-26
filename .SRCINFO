@@ -1,7 +1,7 @@
 pkgbase = r-trena
 	pkgdesc = Fit transcriptional regulatory networks using gene expression, priors, machine learning
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/trena
 	arch = any
 	license = GPL
@@ -24,7 +24,6 @@ pkgbase = r-trena
 	depends = r-rpostgresql
 	depends = r-rsqlite
 	depends = r-snplocs.hsapiens.dbsnp150.grch38
-	depends = r-vbsr
 	depends = r-wgcna
 	depends = r-xgboost
 	optdepends = r-biocgenerics
