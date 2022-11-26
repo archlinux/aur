@@ -5,7 +5,7 @@ _pkgname=mzR
 _pkgver=2.32.0
 pkgname=r-${_pkgname,,}
 pkgver=2.32.0
-pkgrel=1
+pkgrel=3
 pkgdesc='parser for netCDF, mzXML, mzData and mzML and mzIdentML files (mass spectrometry data)'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-protgenerics
   r-rcpp
   r-rhdf5lib
-  r-zlibbioc
 )
 makedepends=(
   gcc
