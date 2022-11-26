@@ -5,24 +5,29 @@ _pkgname=arrow
 _pkgver=10.0.0
 pkgname=r-${_pkgname,,}
 pkgver=10.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Apache')
 depends=(
+  gcc
   r
   r-assertthat
   r-bit64
+  r-cpp11
+  r-glue
   r-purrr
   r-r6
   r-rlang
   r-tidyselect
   r-vctrs
-  gcc
-  r-cpp11
 )
 optdepends=(
+  libcurl-compat
+  openssl
+  r-blob
+  r-cli
   r-dbi
   r-dbplyr
   r-decor
@@ -32,16 +37,17 @@ optdepends=(
   r-hms
   r-knitr
   r-lubridate
+  r-pillar
   r-pkgload
   r-reticulate
   r-rmarkdown
   r-stringi
   r-stringr
+  r-sys
   r-testthat
   r-tibble
+  r-tzdb
   r-withr
-  libcurl-compat
-  openssl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e855b5ea913e93935d20be11b342f45193437404945c9fc39e9c61fd91911a13')
