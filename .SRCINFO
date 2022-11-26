@@ -1,7 +1,7 @@
 pkgbase = r-tidytree
 	pkgdesc = A Tidy Tool for Phylogenetic Tree Data Manipulation
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidytree
 	arch = any
 	license = Artistic2.0
@@ -10,13 +10,13 @@ pkgbase = r-tidytree
 	depends = r-dplyr
 	depends = r-lazyeval
 	depends = r-magrittr
+	depends = r-pillar
 	depends = r-rlang
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-tidyselect
 	depends = r-yulab.utils
 	optdepends = r-knitr
-	optdepends = r-pillar
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat

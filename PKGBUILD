@@ -4,7 +4,7 @@ _pkgname=tidytree
 _pkgver=0.4.1
 pkgname=r-${_pkgname,,}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A Tidy Tool for Phylogenetic Tree Data Manipulation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,6 +15,7 @@ depends=(
   r-dplyr
   r-lazyeval
   r-magrittr
+  r-pillar
   r-rlang
   r-tibble
   r-tidyr
@@ -23,7 +24,6 @@ depends=(
 )
 optdepends=(
   r-knitr
-  r-pillar
   r-prettydoc
   r-rmarkdown
   r-testthat
