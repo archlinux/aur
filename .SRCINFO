@@ -1,7 +1,7 @@
 pkgbase = r-shiny
 	pkgdesc = Web Application Framework for R
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=shiny
 	arch = any
 	license = GPL
@@ -38,7 +38,6 @@ pkgbase = r-shiny
 	optdepends = r-reactlog
 	optdepends = r-rmarkdown
 	optdepends = r-sass
-	optdepends = r-shinytest
 	optdepends = r-showtext
 	optdepends = r-testthat
 	optdepends = r-yaml
