@@ -4,9 +4,9 @@ _pkgname=SynExtend
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Working With Synteny Objects'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
@@ -22,7 +22,6 @@ optdepends=(
   r-knitr
   r-markdown
   r-rmarkdown
-  r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('214a0d80c0d7bb3c450fb55ea15f35cb23adaaa8396205af66bf71e8b1876bb1')
