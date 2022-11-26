@@ -1,7 +1,7 @@
 pkgbase = r-mlp
 	pkgdesc = Mean Log P Analysis
 	pkgver = 1.46.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/MLP
 	arch = any
 	license = GPL
@@ -18,6 +18,7 @@ pkgbase = r-mlp
 	optdepends = r-org.cf.eg.db
 	optdepends = r-org.hs.eg.db
 	optdepends = r-org.mm.eg.db
+	optdepends = r-org.mmu.eg.db
 	optdepends = r-org.rn.eg.db
 	optdepends = r-reactome.db
 	optdepends = r-rgraphviz

@@ -4,7 +4,7 @@ _pkgname=MLP
 _pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=1.46.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Mean Log P Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,6 +25,7 @@ optdepends=(
   r-org.cf.eg.db
   r-org.hs.eg.db
   r-org.mm.eg.db
+  r-org.mmu.eg.db
   r-org.rn.eg.db
   r-reactome.db
   r-rgraphviz
