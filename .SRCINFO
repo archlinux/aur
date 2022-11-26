@@ -1,7 +1,7 @@
 pkgbase = r-flowspecs
 	pkgdesc = Tools for processing of high-dimensional cytometry data
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/flowSpecs
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = r-flowspecs
 	depends = r-ggplot2
 	depends = r-reshape2
 	depends = r-zoo
-	depends = r-hexbin
 	optdepends = r-biocstyle
 	optdepends = r-depecher
 	optdepends = r-knitr

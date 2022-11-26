@@ -4,7 +4,7 @@ _pkgname=flowSpecs
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for processing of high-dimensional cytometry data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-ggplot2
   r-reshape2
   r-zoo
-  r-hexbin
 )
 optdepends=(
   r-biocstyle
