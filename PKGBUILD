@@ -5,7 +5,7 @@ _pkgname=Ckmeans.1d.dp
 _pkgver=4.3.4
 pkgname=r-${_pkgname,,}
 pkgver=4.3.4
-pkgrel=7
+pkgrel=9
 pkgdesc='Optimal, Fast, and Reproducible Univariate Clustering'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-rcolorbrewer
   r-rmarkdown
   r-testthat
 )
