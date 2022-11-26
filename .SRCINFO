@@ -1,7 +1,7 @@
 pkgbase = r-discordant
 	pkgdesc = The Discordant Method: A Novel Approach for Differential Correlation
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/discordant
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = r-discordant
 	depends = r-rcpp
 	optdepends = r-biocstyle
 	optdepends = r-knitr
+	optdepends = r-testthat
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/discordant_1.22.0.tar.gz
 	sha256sums = ebdd63125e8363ce51d0cc85e95ed1ac6e6108c09d24ace76923b56aa07216fe
 
