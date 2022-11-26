@@ -4,9 +4,9 @@ _pkgname=transformGamPoi
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Variance Stabilizing Transformation for Gamma-Poisson Models'
-arch=('any')
+arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
@@ -15,6 +15,7 @@ depends=(
   r-glmgampoi
   r-hdf5array
   r-matrixgenerics
+  r-rcpp
   r-summarizedexperiment
 )
 optdepends=(
