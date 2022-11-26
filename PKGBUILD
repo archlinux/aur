@@ -4,7 +4,7 @@ _pkgname=dce
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Pathway Enrichment Based on Differential Causal Effects'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-assertthat
-  r-combinepvalue
   r-dplyr
   r-edger
   r-epinem
@@ -26,6 +25,7 @@ depends=(
   r-harmonicmeanp
   r-igraph
   r-logger
+  r-magrittr
   r-metap
   r-mnem
   r-naturalsort
@@ -36,19 +36,23 @@ depends=(
   r-reshape2
   r-rgraphviz
   r-rlang
+  r-shadowtext
   r-tidygraph
   r-tidyverse
-  r-shadowtext
 )
 optdepends=(
   r-biocstyle
+  r-carnival
   r-cowplot
   r-curatedtcgadata
   r-dagitty
   r-devtools
+  r-docopt
   r-formatr
+  r-ggplotify
   r-knitr
   r-lmtest
+  r-rcppparallel
   r-rmarkdown
   r-sandwich
   r-summarizedexperiment
