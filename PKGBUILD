@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=mupen64plus-rsp-parallel-git
-pkgver=r89.9869fb1
+pkgver=r90.4cf680b
 pkgrel=1
 epoch=1
 pkgdesc="Parallel RSP is a fast RSP LLE plugin for mupen64plus"

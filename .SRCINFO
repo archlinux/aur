@@ -1,6 +1,6 @@
 pkgbase = mupen64plus-rsp-parallel-git
 	pkgdesc = Parallel RSP is a fast RSP LLE plugin for mupen64plus
-	pkgver = r89.9869fb1
+	pkgver = r90.4cf680b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Mastergatto/parallel-rsp
