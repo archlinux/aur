@@ -4,39 +4,34 @@ _pkgname=exomePeak2
 _pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Bias-aware Peak Calling and Quantification for MeRIP-Seq'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-apeglm
-  r-biobase
   r-biocgenerics
   r-biocparallel
   r-biostrings
   r-bsgenome
-  r-cqn
   r-deseq2
-  r-genefilter
   r-genomeinfodb
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
   r-ggplot2
   r-iranges
+  r-magrittr
   r-mclust
-  r-reshape2
   r-rsamtools
   r-rtracklayer
   r-s4vectors
-  r-summarizedexperiment
   r-speedglm
+  r-summarizedexperiment
 )
 optdepends=(
   r-knitr
-  r-rmariadb
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
