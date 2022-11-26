@@ -4,7 +4,7 @@ _pkgname=sechm
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='sechm: Complex Heatmaps from a SummarizedExperiment'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-circlize
   r-complexheatmap
+  r-matrixstats
   r-randomcolor
   r-s4vectors
   r-seriation
