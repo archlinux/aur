@@ -5,21 +5,18 @@ _pkgname=cytolib
 _pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=2.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='C++ infrastructure for representing and interacting with the gated cytometry data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
+  gcc
+  make
   r
   r-bh
-  r-rcpp
-  r-rcpparmadillo
-  r-rcppparallel
   r-rhdf5lib
   r-rprotobuflib
-  make
-  gcc
 )
 optdepends=(
   r-knitr
