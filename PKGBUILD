@@ -4,7 +4,7 @@ _pkgname=ncdfFlow
 _pkgver=2.44.0
 pkgname=r-${_pkgname,,}
 pkgver=2.44.0
-pkgrel=1
+pkgrel=3
 pkgdesc='ncdfFlow: A package that provides HDF5 based storage for flow cytometry data.'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,9 +14,8 @@ depends=(
   r-bh
   r-biobase
   r-biocgenerics
+  r-cpp11
   r-flowcore
-  r-rcpp
-  r-rcpparmadillo
   r-rhdf5lib
   r-zlibbioc
 )
