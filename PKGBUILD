@@ -5,14 +5,16 @@ _pkgname=valr
 _pkgver=0.6.6
 pkgname=r-${_pkgname,,}
 pkgver=0.6.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Genome Interval Arithmetic'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
+  gcc
   r
   r-broom
+  r-cli
   r-dplyr
   r-ggplot2
   r-rcpp
@@ -21,7 +23,6 @@ depends=(
   r-rtracklayer
   r-stringr
   r-tibble
-  gcc
 )
 optdepends=(
   r-bench
@@ -41,6 +42,7 @@ optdepends=(
   r-s4vectors
   r-testthat
   r-tidyr
+  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f0e2315f7d5764f5479496e4377b48a916a8ebc21b22ae96273a5dada7437270')

@@ -1,12 +1,14 @@
 pkgbase = r-valr
 	pkgdesc = Genome Interval Arithmetic
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=valr
 	arch = x86_64
 	license = MIT
+	depends = gcc
 	depends = r
 	depends = r-broom
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-ggplot2
 	depends = r-rcpp
@@ -15,7 +17,6 @@ pkgbase = r-valr
 	depends = r-rtracklayer
 	depends = r-stringr
 	depends = r-tibble
-	depends = gcc
 	optdepends = r-bench
 	optdepends = r-covr
 	optdepends = r-cowplot
@@ -33,6 +34,7 @@ pkgbase = r-valr
 	optdepends = r-s4vectors
 	optdepends = r-testthat
 	optdepends = r-tidyr
+	optdepends = r-vdiffr
 	source = https://cran.r-project.org/src/contrib/valr_0.6.6.tar.gz
 	sha256sums = f0e2315f7d5764f5479496e4377b48a916a8ebc21b22ae96273a5dada7437270
 
