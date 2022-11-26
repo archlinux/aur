@@ -4,7 +4,7 @@ _pkgname=TRONCO
 _pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=2.30.0
-pkgrel=1
+pkgrel=3
 pkgdesc='TRONCO, an R package for TRanslational ONCOlogy'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-bnlearn
-  r-cgdsr
   r-circlize
   r-doparallel
   r-foreach
