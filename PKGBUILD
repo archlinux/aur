@@ -4,13 +4,14 @@ _pkgname=ggraph
 _pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='An Implementation of Grammar of Graphics for Graphs and Networks'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-cli
   r-digest
   r-dplyr
   r-ggforce
@@ -19,10 +20,12 @@ depends=(
   r-graphlayouts
   r-gtable
   r-igraph
+  r-lifecycle
   r-rcpp
   r-rlang
   r-scales
   r-tidygraph
+  r-vctrs
   r-viridis
   r-withr
 )
