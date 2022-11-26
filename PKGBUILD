@@ -4,28 +4,27 @@ _pkgname=kissDE
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Retrieves Condition-Specific Variants in RNA-Seq Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-aod
+  r-ade4
+  r-aods3
   r-biobase
   r-deseq2
   r-doparallel
   r-dss
+  r-dt
+  r-factoextra
   r-foreach
   r-ggplot2
   r-gplots
   r-matrixstats
-  r-aods3
   r-shiny
   r-shinycssloaders
-  r-ade4
-  r-factoextra
-  r-dt
 )
 optdepends=(
   r-biocstyle
