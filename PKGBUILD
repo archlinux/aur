@@ -4,7 +4,7 @@ _pkgname=snifter
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R wrapper for the python openTSNE library'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,10 +21,6 @@ optdepends=(
   r-ggplot2
   r-knitr
   r-rmarkdown
-  r-scater
-  r-scran
-  r-scrnaseq
-  r-scuttle
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
