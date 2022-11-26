@@ -4,7 +4,7 @@ _pkgname=svaNUMT
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='NUMT detection from structural variant calls'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -26,17 +26,18 @@ depends=(
   r-variantannotation
 )
 optdepends=(
+  r-bsgenome.hsapiens.ucsc.hg19
   r-circlize
   r-devtools
   r-ggplot2
   r-iranges
   r-knitr
   r-plyranges
+  r-readr
   r-rmarkdown
   r-roxygen2
   r-summarizedexperiment
   r-testthat
-  r-tictoc
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
