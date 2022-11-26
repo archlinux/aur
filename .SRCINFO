@@ -1,12 +1,13 @@
 pkgbase = r-poorman
 	pkgdesc = A Poor Man's Dependency Free Recreation of 'dplyr'
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=poorman
 	arch = any
 	license = MIT
 	depends = r
 	optdepends = r-knitr
+	optdepends = r-markdown
 	optdepends = r-pkgdown
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2

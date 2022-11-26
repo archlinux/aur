@@ -4,7 +4,7 @@ _pkgname=poorman
 _pkgver=0.2.6
 pkgname=r-${_pkgname,,}
 pkgver=0.2.6
-pkgrel=1
+pkgrel=5
 pkgdesc="A Poor Man's Dependency Free Recreation of 'dplyr'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-markdown
   r-pkgdown
   r-rmarkdown
   r-roxygen2
