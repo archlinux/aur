@@ -1,7 +1,7 @@
 pkgbase = r-banocc
 	pkgdesc = Bayesian ANalysis Of Compositional Covariance
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/banocc
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = r-banocc
 	depends = r-mvtnorm
 	depends = r-rstan
 	depends = r-stringr
+	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-methods
 	optdepends = r-rmarkdown
