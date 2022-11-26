@@ -8,7 +8,7 @@ _pkgname=roxygen2
 _pkgver=7.2.2
 pkgname=r-${_pkgname,,}
 pkgver=7.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc='In-Line Documentation for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,7 @@ license=('MIT')
 depends=(
   r
   r-brew
+  r-cli
   r-commonmark
   r-cpp11
   r-desc
@@ -27,15 +28,16 @@ depends=(
   r-rlang
   r-stringi
   r-stringr
+  r-withr
   r-xml2
 )
 optdepends=(
   r-covr
-  r-devtools
   r-r.methodss3
   r-r.oo
   r-rmarkdown
   r-testthat
+  r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('715608bdaa07ca55d8e258902399d6a4fa887b085fd8dfc3686f963f5994f11e')
