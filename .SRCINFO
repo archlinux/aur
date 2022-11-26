@@ -10,6 +10,7 @@ pkgbase = river-luatile-git
 	makedepends = git
 	makedepends = cargo
 	depends = luajit
+	depends = libxkbcommon
 	provides = river-luatile
 	source = git+https://github.com/MaxVerevkin/river-luatile
 	sha512sums = SKIP
