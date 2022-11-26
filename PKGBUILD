@@ -4,7 +4,7 @@ _pkgname=rearrr
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Rearranging Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,6 @@ optdepends=(
   r-covr
   r-ggplot2
   r-knitr
-  r-plotly
   r-testthat
   r-tidyr
   r-xpectr

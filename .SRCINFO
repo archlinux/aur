@@ -1,7 +1,7 @@
 pkgbase = r-rearrr
 	pkgdesc = Rearranging Data
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rearrr
 	arch = any
 	license = MIT
@@ -17,7 +17,6 @@ pkgbase = r-rearrr
 	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-knitr
-	optdepends = r-plotly
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-xpectr
