@@ -1,7 +1,7 @@
 pkgbase = r-gunifrac
 	pkgdesc = Generalized UniFrac Distances, Distance-Based Multivariate Methods and Feature-Based Univariate Methods for Microbiome Data Analysis
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=GUniFrac
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,6 @@ pkgbase = r-gunifrac
 	depends = r-foreach
 	depends = r-ggplot2
 	depends = r-ggrepel
-	depends = r-lmertest
 	depends = r-matrixstats
 	depends = r-modeest
 	depends = r-rcpp
@@ -19,6 +18,9 @@ pkgbase = r-gunifrac
 	depends = r-statmod
 	depends = r-vegan
 	optdepends = r-ade4
+	optdepends = r-ggpubr
+	optdepends = r-knitr
+	optdepends = r-markdown
 	source = https://cran.r-project.org/src/contrib/GUniFrac_1.7.tar.gz
 	sha256sums = 770b34dda757d7412592d78eb385e36320b870a4a3a748512fd7d499b82b0b8f
 

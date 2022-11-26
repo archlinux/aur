@@ -4,7 +4,7 @@ _pkgname=GUniFrac
 _pkgver=1.7
 pkgname=r-${_pkgname,,}
 pkgver=1.7
-pkgrel=1
+pkgrel=3
 pkgdesc='Generalized UniFrac Distances, Distance-Based Multivariate Methods and Feature-Based Univariate Methods for Microbiome Data Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
   r-foreach
   r-ggplot2
   r-ggrepel
-  r-lmertest
   r-matrixstats
   r-modeest
   r-rcpp
@@ -26,6 +25,9 @@ depends=(
 )
 optdepends=(
   r-ade4
+  r-ggpubr
+  r-knitr
+  r-markdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('770b34dda757d7412592d78eb385e36320b870a4a3a748512fd7d499b82b0b8f')
