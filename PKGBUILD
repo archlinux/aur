@@ -4,7 +4,7 @@ _pkgname=gam
 _pkgver=1.22
 pkgname=r-${_pkgname,,}
 pkgver=1.22
-pkgrel=1
+pkgrel=3
 pkgdesc='Generalized Additive Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-foreach
 )
 optdepends=(
-  r-akima
+  r-interp
   r-testthat
 )
 makedepends=(

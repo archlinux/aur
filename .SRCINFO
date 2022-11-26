@@ -1,14 +1,14 @@
 pkgbase = r-gam
 	pkgdesc = Generalized Additive Models
 	pkgver = 1.22
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gam
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
 	depends = r-foreach
-	optdepends = r-akima
+	optdepends = r-interp
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/gam_1.22.tar.gz
 	sha256sums = 3131302920824a2f566f8f9e7b6e8f085a66f603360d1374568c0de3c679d93f
