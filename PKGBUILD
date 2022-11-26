@@ -5,7 +5,7 @@ _pkgname=ggpubr
 _pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc="'ggplot2' Based Publication Ready Plots"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -34,6 +34,7 @@ optdepends=(
   r-gtable
   r-knitr
   r-rcolorbrewer
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('fb21a091c7b866b2d35529ca218ce876051c31d3c9e4a68f3c6b297d591e7539')
