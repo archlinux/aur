@@ -5,41 +5,35 @@ _pkgname=flowWorkspace
 _pkgver=4.10.0
 pkgname=r-${_pkgname,,}
 pkgver=4.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Infrastructure for representing and interacting with gated and ungated cytometry data sets.'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
+  gcc
+  make
   r
-  r-aws.s3
-  r-aws.signature
   r-bh
   r-biobase
   r-biocgenerics
+  r-cpp11
   r-cytolib
   r-data.table
   r-delayedarray
-  r-digest
   r-dplyr
   r-flowcore
   r-ggplot2
   r-graph
-  r-latticeextra
   r-matrixstats
   r-ncdfflow
   r-rbgl
-  r-rcpp
-  r-rcpparmadillo
-  r-rcppparallel
   r-rgraphviz
   r-rhdf5lib
   r-rprotobuflib
   r-s4vectors
   r-scales
   r-xml
-  make
-  gcc
 )
 optdepends=(
   r-cytoml
