@@ -4,7 +4,7 @@ _pkgname=bugsigdbr
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='R-side access to published microbial signatures from BugSigDB'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
+  r-ontologyindex
   r-rmarkdown
   r-testthat
 )
