@@ -26,7 +26,7 @@ md5sums=(
 	4996178ebf01d3271520de05727e2b99
 	97860454d7fcd9b2be03479ea26ce166
 	fe6c72f5a7d1b3a30a1503acf4c20008
-	6ce92b6fa8e44937adfe195fbf30a908
+	2a4ec4b07263e3aee0ef2b245aeb1313
 	2cb7c2dc79b69fd119e5ea235385e895
 	35ed26eabb8a14fcfe1e17265a14fa17
 	0ff0edad9e96efa6220cfa9ff3d1cbb0
@@ -45,7 +45,7 @@ build(){
 	sed -i /^videomode/s/0/1/ titus{,_moktar}.conf	# fullscreen by default
 }
 package(){
-	install Disk7/FOX/{FONTS,LEVELD,MENU{,EGA},SPREXP,TIT{RE{,EGA},US}}.SQZ -Dt "$pkgdir"/usr/share/$pkgname/titus
+	install Disk7/FOX/{FONTS,LEVELD,MENU,SPREXP,TIT{RE,US}}.SQZ -Dt "$pkgdir"/usr/share/$pkgname/titus
 	install {titus,moktar,lagbonus}.png -Dt "$pkgdir"/usr/share/icons/hicolor/32x32/apps
 	install titusbig.webp -D "$pkgdir"/usr/share/icons/hicolor/512x512/apps/titus.png
 	install $pkgname{,-moktar,-usrlevel}.desktop -Dt "$pkgdir"/usr/share/applications
