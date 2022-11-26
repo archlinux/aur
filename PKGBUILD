@@ -4,14 +4,13 @@ _pkgname=adehabitatMA
 _pkgver=0.3.15
 pkgname=r-${_pkgname,,}
 pkgver=0.3.15
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools to Deal with Raster Maps'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-filehash
   r-sp
 )
 optdepends=(
