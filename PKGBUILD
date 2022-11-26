@@ -4,7 +4,7 @@ _pkgname=OmnipathR
 _pkgver=3.5.25
 pkgname=r-${_pkgname,,}
 pkgver=3.5.25
-pkgrel=1
+pkgrel=3
 pkgdesc='OmniPath web service client and more'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,18 +27,21 @@ depends=(
   r-rappdirs
   r-readr
   r-readxl
-  r-rmarkdown
   r-rlang
+  r-rmarkdown
+  r-rvest
   r-stringr
   r-tibble
   r-tidyr
   r-tidyselect
-  r-rvest
+  r-withr
   r-xml2
   r-yaml
 )
 optdepends=(
   r-biocstyle
+  r-biomart
+  r-bookdown
   r-dnet
   r-ggplot2
   r-ggraph
