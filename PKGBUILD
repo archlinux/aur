@@ -4,17 +4,19 @@ _pkgname=spatstat
 _pkgver=3.0-2
 pkgname=r-${_pkgname,,}
 pkgver=3.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-spatstat.core
   r-spatstat.data
+  r-spatstat.explore
   r-spatstat.geom
   r-spatstat.linnet
+  r-spatstat.model
+  r-spatstat.random
   r-spatstat.utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
