@@ -4,7 +4,7 @@ _pkgname=DEGreport
 _pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=1.34.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Report of DEG analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -25,10 +25,8 @@ depends=(
   r-ggplot2
   r-ggrepel
   r-knitr
-  r-lasso2
   r-logging
   r-magrittr
-  r-nozzle.r1
   r-psych
   r-rcolorbrewer
   r-reshape
