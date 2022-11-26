@@ -4,7 +4,7 @@ _pkgname=RNeXML
 _pkgver=2.4.8
 pkgname=r-${_pkgname,,}
 pkgver=2.4.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Semantically Rich I/O for the 'NeXML' Format"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,9 +14,9 @@ depends=(
   r-ape
   r-dplyr
   r-httr
-  r-lazyeval
   r-plyr
   r-reshape2
+  r-rlang
   r-stringi
   r-stringr
   r-tidyr
@@ -32,10 +32,9 @@ optdepends=(
   r-phytools
   r-rdflib
   r-rfigshare
-  r-rlang
   r-rmarkdown
   r-spelling
-  r-taxadb
+  r-taxalight
   r-testthat
   r-xslt
 )
