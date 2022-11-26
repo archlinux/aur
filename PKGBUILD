@@ -4,7 +4,7 @@ _pkgname=MicrobiotaProcess
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='an R package for analysis, visualization and biomarker discovery of microbiome'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-ape
   r-biostrings
   r-coin
+  r-data.table
   r-dplyr
   r-dtplyr
   r-foreach
@@ -26,6 +27,7 @@ depends=(
   r-magrittr
   r-patchwork
   r-pillar
+  r-plyr
   r-rlang
   r-summarizedexperiment
   r-tibble
@@ -35,7 +37,6 @@ depends=(
   r-treeio
   r-vegan
   r-zoo
-  r-plyr
 )
 optdepends=(
   r-aplot
@@ -43,6 +44,7 @@ optdepends=(
   r-cli
   r-corrr
   r-decipher
+  r-dirichletmultinomial
   r-forcats
   r-ggalluvial
   r-ggh4x
@@ -52,12 +54,13 @@ optdepends=(
   r-ggupset
   r-ggvenndiagram
   r-glue
+  r-hopach
+  r-jsonlite
   r-knitr
   r-nlme
+  r-parallel
   r-phangorn
   r-phyloseq
-  r-picante
-  r-plyr
   r-prettydoc
   r-purrr
   r-randomforest
@@ -65,6 +68,7 @@ optdepends=(
   r-s4vectors
   r-scales
   r-seqmagick
+  r-shadowtext
   r-testthat
   r-withr
   r-yaml
