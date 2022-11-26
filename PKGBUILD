@@ -4,7 +4,7 @@ _pkgname=biocViews
 _pkgver=1.66.0
 pkgname=r-${_pkgname,,}
 pkgver=1.66.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Categorized views of R package repositories'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-biocstyle
   r-commonmark
   r-knitr
 )

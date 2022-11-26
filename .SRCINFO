@@ -1,7 +1,7 @@
 pkgbase = r-biocviews
 	pkgdesc = Categorized views of R package repositories
 	pkgver = 1.66.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/biocViews
 	arch = any
 	license = Artistic2.0
@@ -14,6 +14,7 @@ pkgbase = r-biocviews
 	depends = r-runit
 	depends = r-xml
 	optdepends = r-biocgenerics
+	optdepends = r-biocstyle
 	optdepends = r-commonmark
 	optdepends = r-knitr
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/biocViews_1.66.0.tar.gz
