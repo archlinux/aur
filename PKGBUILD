@@ -3,13 +3,14 @@
 
 pkgname=mkvtoolnix-qt5
 pkgver=72.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Matroska tools (Qt5 version)'
 arch=('x86_64')
 url='https://mkvtoolnix.download/'
 license=('GPL2')
 depends=(
   'boost-libs'
+  'cmark'
   'curl'
   'file'
   'flac'
@@ -21,7 +22,6 @@ depends=(
 )
 makedepends=(
   'boost'
-  'cmark'
   'docbook-xsl'
   'git'
   'libdvdread'
