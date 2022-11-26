@@ -4,7 +4,7 @@ _pkgname=mlr3learners
 _pkgver=0.5.5
 pkgname=r-${_pkgname,,}
 pkgver=0.5.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Recommended Learners for 'mlr3'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,14 +20,12 @@ depends=(
 )
 optdepends=(
   r-dicekriging
-  r-distr6
   r-e1071
   r-glmnet
   r-kknn
   r-knitr
   r-lgr
   r-mass
-  r-mlr3proba
   r-nnet
   r-pracma
   r-ranger

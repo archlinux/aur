@@ -1,7 +1,7 @@
 pkgbase = r-mlr3learners
 	pkgdesc = Recommended Learners for 'mlr3'
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=mlr3learners
 	arch = any
 	license = LGPL
@@ -13,14 +13,12 @@ pkgbase = r-mlr3learners
 	depends = r-paradox
 	depends = r-r6
 	optdepends = r-dicekriging
-	optdepends = r-distr6
 	optdepends = r-e1071
 	optdepends = r-glmnet
 	optdepends = r-kknn
 	optdepends = r-knitr
 	optdepends = r-lgr
 	optdepends = r-mass
-	optdepends = r-mlr3proba
 	optdepends = r-nnet
 	optdepends = r-pracma
 	optdepends = r-ranger
