@@ -3,7 +3,7 @@
 
 pkgname=guile-config
 pkgver=0.5.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Configuration management library for GNU Guile'
 arch=('x86_64')
 url='https://gitlab.com/a-sassmannshausen/guile-config'
@@ -15,16 +15,16 @@ sha256sums=('c30bb76bf27dcdbda7cc13733cf907e3b28d14dec2a55a89097514be61f3278e')
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -vif
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
+  GUILD=/usr/bin/guild ./configure --prefix=/usr
   make
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  GUILE_EFFECTIVE_VERSION=2.2 make -k check
+  make -k check
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  GUILE_EFFECTIVE_VERSION=2.2 make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" install
 }

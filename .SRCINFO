@@ -1,7 +1,7 @@
 pkgbase = guile-config
 	pkgdesc = Configuration management library for GNU Guile
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.com/a-sassmannshausen/guile-config
 	arch = x86_64
 	license = GPL3
