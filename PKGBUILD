@@ -4,7 +4,7 @@ _pkgname=fda
 _pkgver=6.0.5
 pkgname=r-${_pkgname,,}
 pkgver=6.0.5
-pkgrel=1
+pkgrel=4
 pkgdesc='Functional Data Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,9 @@ depends=(
   r-fds
 )
 optdepends=(
+  r-knitr
   r-lattice
+  r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('14445776fc65284cd6cae98e5b4dd14c2626d96db5f78c0fcc6aabce5419b8f1')
