@@ -1,7 +1,7 @@
 pkgbase = r-mcmcglmm
 	pkgdesc = MCMC Generalised Linear Mixed Models
 	pkgver = 2.34
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=MCMCglmm
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,10 @@ pkgbase = r-mcmcglmm
 	depends = r-cubature
 	depends = r-tensora
 	depends = gcc
+	optdepends = r-bayesm
 	optdepends = r-combinat
+	optdepends = r-mcmcpack
+	optdepends = r-msm
 	optdepends = r-mvtnorm
 	optdepends = r-orthopolynom
 	optdepends = r-rgl

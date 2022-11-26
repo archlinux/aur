@@ -5,7 +5,7 @@ _pkgname=MCMCglmm
 _pkgver=2.34
 pkgname=r-${_pkgname,,}
 pkgver=2.34
-pkgrel=1
+pkgrel=4
 pkgdesc='MCMC Generalised Linear Mixed Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,10 @@ depends=(
   gcc
 )
 optdepends=(
+  r-bayesm
   r-combinat
+  r-mcmcpack
+  r-msm
   r-mvtnorm
   r-orthopolynom
   r-rgl
