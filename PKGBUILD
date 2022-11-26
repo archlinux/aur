@@ -4,7 +4,7 @@ _pkgname=monocle
 _pkgver=2.26.0
 pkgname=r-${_pkgname,,}
 pkgver=2.26.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Clustering, differential expression, and trajectory analysis for single- cell RNA-Seq'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,13 +16,13 @@ depends=(
   r-biocviews
   r-combinat
   r-ddrtree
-  r-densityclust
   r-dplyr
   r-fastica
   r-ggplot2
   r-hsmmsinglecell
   r-igraph
   r-irlba
+  r-leidenbase
   r-limma
   r-matrixstats
   r-pheatmap
@@ -38,7 +38,6 @@ depends=(
   r-tibble
   r-vgam
   r-viridis
-  r-leidenbase
 )
 optdepends=(
   r-destiny
