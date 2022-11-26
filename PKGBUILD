@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=odot
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Task manager written in c"
 arch=('any')
 url="https://download.huck.website"
@@ -16,5 +16,5 @@ build() {
 }
 package() {
 	cd "$srcdir"
-    install -CDm755 odot -T "$pkgdir/usr/bin" 
+    install -CDm755 odot -T "$pkgdir/usr/bin/odot" 
 }
