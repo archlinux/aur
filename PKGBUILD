@@ -5,7 +5,7 @@ _pkgname=glmmTMB
 _pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=1.1.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Generalized Linear Mixed Models using Template Model Builder'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,6 +39,7 @@ optdepends=(
   r-multcomp
   r-mumin
   r-mvabund
+  r-parallel
   r-plyr
   r-png
   r-pscl
