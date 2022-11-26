@@ -5,22 +5,21 @@ _pkgname=RcppAlgos
 _pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=2.6.0
-pkgrel=1
+pkgrel=4
 pkgdesc='High Performance Tools for Combinatorics and Computational Mathematics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-gmp
-  r-rcpp
-  r-rcppthread
   r-cpp11
+  r-gmp
 )
 optdepends=(
   r-knitr
   r-microbenchmark
   r-numbers
+  r-partitions
   r-rcppbigintalgos
   r-rmarkdown
   r-testthat
