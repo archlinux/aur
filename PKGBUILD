@@ -22,6 +22,7 @@ _merge_requests_to_use=('1441' '1880' '2671' '2694')
 ## Enable the `check()` operation (Disabled if not set)
 : "${_enable_check:=""}"
 
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing!
 
 pkgbase=mutter-performance
@@ -42,7 +43,9 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
+if [ -n "$_enable_check" ]; then
+  checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
+fi
 _commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # tags/43.1^2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
