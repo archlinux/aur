@@ -4,7 +4,7 @@ _pkgname=ggcorrplot
 _pkgver=0.1.4
 pkgname=r-${_pkgname,,}
 pkgver=0.1.4
-pkgrel=1
+pkgrel=3
 pkgdesc="Visualization of a Correlation Matrix using 'ggplot2'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,8 @@ depends=(
 optdepends=(
   r-knitr
   r-spelling
+  r-testthat
+  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('59829e17f6cf5ad49201c8b981e83615dfd75ea0a2b4251d11f7c6db6e05caa0')
