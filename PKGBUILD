@@ -4,7 +4,7 @@ _pkgname=nls2
 _pkgver=0.3-3
 pkgname=r-${_pkgname,,}
 pkgver=0.3.3
-pkgrel=1
+pkgrel=4
 pkgdesc='Non-linear regression with brute force'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,6 +14,7 @@ depends=(
   r-proto
 )
 optdepends=(
+  r-lhs
   r-nlstools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
