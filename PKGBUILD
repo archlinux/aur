@@ -4,7 +4,7 @@ _pkgname=GenomicDistributions
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='GenomicDistributions: fast analysis of genomic intervals with Bioconductor'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,6 +12,7 @@ license=('BSD')
 depends=(
   r
   r-biostrings
+  r-broom
   r-data.table
   r-dplyr
   r-genomeinfodb
@@ -20,7 +21,7 @@ depends=(
   r-iranges
   r-plyr
   r-reshape2
-  r-broom
+  r-scales
 )
 optdepends=(
   r-annotationfilter
@@ -28,6 +29,7 @@ optdepends=(
   r-bsgenome
   r-ensembldb
   r-extrafont
+  r-genomicdistributionsdata
   r-genomicfeatures
   r-knitr
   r-rmarkdown
