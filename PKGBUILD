@@ -9,33 +9,33 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("youtube-git" "youtube-bin")
-source=("git+https://gitlab.com/youtube-desktop/application")
+source=("https://gitlab.com/youtube-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
 
 package() {
-    cd "$srcdir/application"
-    rm -rf .git
-    cat <<EOT >> Youtube
+    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    cd "$srcdir/$_pkgname"
+    cat <<EOT >> $_pkgname
     #!/bin/bash
-    cd /opt/Youtube &&
+    cd /opt/$_pkgname &&
     npm start
 EOT
 
-    chmod +x Youtube
-    ln -s "/opt/libelectron/node_modules" "$srcdir/application"
-    install -dm755 "$pkgdir/opt/Youtube"
+    chmod +x $_pkgname
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
-    cp -r ./ "$pkgdir/opt/Youtube"
-    cp -r "$pkgdir/opt/Youtube/youtubeapp.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r ./ "$pkgdir/opt/$_pkgname"
+    cp -r "$pkgdir/opt/$_pkgname/youtubeapp.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/Youtube/Youtube" "$pkgdir/usr/bin/Youtube"
+    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/Youtube.desktop" \
-        "$pkgdir/usr/share/applications/Youtube.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Youtube.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }

@@ -13,7 +13,7 @@ pkgbase = youtube
 	depends = git
 	conflicts = youtube-git
 	conflicts = youtube-bin
-	source = git+https://gitlab.com/youtube-desktop/application
+	source = https://gitlab.com/youtube-desktop/application/-/archive/1.0.8-2/application-1.0.8-2.tar.bz2
 	sha256sums = SKIP
 
 pkgname = youtube
