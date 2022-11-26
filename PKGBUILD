@@ -4,7 +4,7 @@ _pkgname=bs4Dash
 _pkgver=2.1.0
 pkgname=r-${_pkgname,,}
 pkgver=2.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc="A 'Bootstrap 4' Version of 'shinydashboard'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,6 @@ depends=(
 optdepends=(
   r-covr
   r-dt
-  r-echarts4r
   r-golem
   r-knitr
   r-rmarkdown
