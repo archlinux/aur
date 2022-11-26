@@ -1,13 +1,12 @@
 pkgbase = r-netresponse
 	pkgdesc = Functional Network Analysis
 	pkgver = 1.58.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/netresponse
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-biocstyle
-	depends = r-dmt
 	depends = r-ggplot2
 	depends = r-graph
 	depends = r-igraph
