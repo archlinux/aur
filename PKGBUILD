@@ -4,7 +4,7 @@ _pkgname=ReorderCluster
 _pkgver=2.0
 pkgname=r-${_pkgname,,}
 pkgver=2.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Reordering the dendrogram according to the class labels'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,7 @@ license=('GPL')
 depends=(
   r
   r-gplots
+  r-gtools
   r-rcpp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
