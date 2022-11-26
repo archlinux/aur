@@ -4,7 +4,7 @@ _pkgname=treeio
 _pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=1.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Base Classes and Functions for Phylogenetic Tree Input and Output'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,6 +27,7 @@ optdepends=(
   r-knitr
   r-phangorn
   r-prettydoc
+  r-purrr
   r-rmarkdown
   r-testthat
   r-tidyr

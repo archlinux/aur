@@ -1,7 +1,7 @@
 pkgbase = r-treeio
 	pkgdesc = Base Classes and Functions for Phylogenetic Tree Input and Output
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/treeio
 	arch = any
 	license = Artistic2.0
@@ -20,6 +20,7 @@ pkgbase = r-treeio
 	optdepends = r-knitr
 	optdepends = r-phangorn
 	optdepends = r-prettydoc
+	optdepends = r-purrr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
