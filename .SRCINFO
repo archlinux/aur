@@ -1,0 +1,16 @@
+pkgbase = conn-opener-go-git
+	pkgdesc = Open and maintain the specified number of connections to a network endpoint
+	pkgver = 1.0.0.r0.g42ca2f6
+	pkgrel = 1
+	url = https://github.com/database64128/conn-opener-go
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	provides = conn-opener-go
+	conflicts = conn-opener-go
+	source = conn-opener-go-git::git+https://github.com/database64128/conn-opener-go.git
+	b2sums = SKIP
+
+pkgname = conn-opener-go-git

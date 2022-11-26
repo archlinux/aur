@@ -1,0 +1,4 @@
+pkg/
+src/
+conn-opener-go-git/
+*.tar.zst
