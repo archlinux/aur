@@ -4,7 +4,7 @@ _pkgname=parameters
 _pkgver=0.20.0
 pkgname=r-${_pkgname,,}
 pkgver=0.20.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Processing of Model Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,7 @@ license=('GPL')
 depends=(
   r
   r-bayestestr
+  r-datawizard
   r-insight
 )
 optdepends=(
@@ -22,6 +23,7 @@ optdepends=(
   r-bayesfm
   r-bbmle
   r-betareg
+  r-biglm
   r-blme
   r-boot
   r-brglm2
@@ -30,16 +32,22 @@ optdepends=(
   r-caic4
   r-car
   r-cgam
+  r-classdiscovery
   r-clubsandwich
   r-cluster
   r-cplm
-  r-dplyr
+  r-dbscan
+  r-domir
+  r-drc
   r-drr
   r-effectsize
   r-eganet
   r-emmeans
+  r-factoextra
   r-factominer
   r-fastica
+  r-fixest
+  r-fpc
   r-gam
   r-gamlss
   r-gee
@@ -49,53 +57,69 @@ optdepends=(
   r-glmmtmb
   r-gparotation
   r-gt
+  r-haven
+  r-hmisc
+  r-httr
+  r-ivprobit
+  r-ivreg
   r-knitr
   r-lavaan
   r-lavasearch2
+  r-lfe
   r-lm.beta
   r-lme4
   r-lmertest
+  r-lmtest
   r-logspline
   r-lqmm
   r-m3c
   r-magrittr
+  r-marginaleffects
   r-mass
   r-matrix
   r-mclust
   r-mcmcglmm
   r-mediation
+  r-merderiv
   r-metabma
   r-metafor
   r-mfx
   r-mgcv
   r-mice
   r-multcomp
-  r-multimode
   r-mumin
   r-nbclust
   r-nfactors
   r-nlme
+  r-nnet
+  r-openxlsx
+  r-ordinal
   r-panelr
   r-pbkrtest
+  r-pcdimension
   r-performance
   r-plm
   r-pmcmrplus
-  r-projpred
+  r-poorman
+  r-posterior
+  r-proreg
   r-pscl
   r-psych
+  r-pvclust
   r-quantreg
   r-randomforest
   r-rmarkdown
+  r-rms
   r-rstanarm
+  r-rsvd
   r-sandwich
   r-see
-  r-sjstats
-  r-spelling
+  r-sparsepca
   r-survey
   r-survival
   r-testthat
+  r-tidyselect
   r-tmb
-  r-tripack
   r-truncreg
   r-vgam
   r-wrs2
