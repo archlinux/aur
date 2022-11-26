@@ -8,16 +8,16 @@ url="https://github.com/dzaima/CBQN"
 license=('GPL3' 'custom:ISC')
 depends=('glibc')
 optdepends=('ttf-bqn386: BQN and APL compatible font'
-            'rlwrap: Use readline in the REPL')
+  'rlwrap: Use readline in the REPL')
 makedepends=('git' 'clang')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
-        'BQN-ref::git+https://github.com/mlochbaum/BQN.git'
-        'rlwrap-shim')
+  'BQN-ref::git+https://github.com/mlochbaum/BQN.git'
+  'rlwrap-shim')
 md5sums=('SKIP'
-         'SKIP'
-         '7f5146ad32f69dc96844ee495e4f6e83')
+  'SKIP'
+  '7f5146ad32f69dc96844ee495e4f6e83')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
