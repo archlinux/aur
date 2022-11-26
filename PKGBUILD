@@ -4,7 +4,7 @@ _pkgname=DepecheR
 _pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=1.14.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Determination of essential phenotypic elements of clusters in high-dimensional entities'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -31,7 +31,6 @@ depends=(
 optdepends=(
   r-biocstyle
   r-knitr
-  r-reshape2
   r-rmarkdown
   r-testthat
   r-uwot
