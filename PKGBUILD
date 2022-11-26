@@ -4,34 +4,34 @@ _pkgname=synapter
 _pkgver=2.22.0
 pkgname=r-${_pkgname,,}
 pkgver=2.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Label-free data analysis pipeline for optimal identification and quantitation'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
-  r-rcolorbrewer
-  r-qvalue
-  r-multtest
   r-biobase
-  r-knitr
   r-biostrings
   r-cleaver
+  r-msnbase
+  r-multtest
+  r-qvalue
+  r-rcolorbrewer
   r-readr
   r-rmarkdown
-  r-msnbase
 )
 makedepends=(
   git
   tar
 )
 optdepends=(
-  r-synapterdata
-  r-xtable
-  r-testthat
-  r-brain
   r-biocstyle
+  r-brain
+  r-knitr
+  r-synapterdata
+  r-testthat
+  r-xtable
 )
 source=("git+https://git.bioconductor.org/packages/${_pkgname}.git")
 sha256sums=('SKIP')
