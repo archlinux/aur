@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland-git
-pkgver=r2269.3718902b
+pkgver=0.9.16.r12.gd2b4076a
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)'
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     'libjsoncpp.so'
     'libsigc++'
     'fmt'
+    'jack' 'libjack.so'
     'wayland'
     'libdate-tz.so'
     'libspdlog.so'
@@ -21,6 +22,7 @@ depends=(
     'libupower-glib.so'
     'upower'
     'libevdev'
+    'libinput'
     'libpulse'
     'libnl'
     'libappindicator-gtk3'
@@ -28,6 +30,7 @@ depends=(
     'libmpdclient'
     'libsndio.so'
     'libxkbcommon'
+    'wireplumber'
 )
 makedepends=(
     'cmake'
@@ -48,7 +51,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
