@@ -1,14 +1,14 @@
 pkgbase = r-sm
 	pkgdesc = Smoothing Methods for Nonparametric Regression and Density Estimation
 	pkgver = 2.2.5.7.1
-	pkgrel = 1
+	pkgrel = 6
 	url = https://cran.r-project.org/package=sm
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	optdepends = r-akima
 	optdepends = r-gam
+	optdepends = r-interp
 	optdepends = r-misc3d
 	optdepends = r-rgl
 	optdepends = r-rpanel

@@ -4,7 +4,7 @@ _pkgname=sm
 _pkgver=2.2-5.7.1
 pkgname=r-${_pkgname,,}
 pkgver=2.2.5.7.1
-pkgrel=1
+pkgrel=6
 pkgdesc='Smoothing Methods for Nonparametric Regression and Density Estimation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 optdepends=(
-  r-akima
   r-gam
+  r-interp
   r-misc3d
   r-rgl
   r-rpanel
