@@ -4,7 +4,7 @@ _pkgname=Dino
 _pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Normalization of Single-Cell mRNA Sequencing Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -27,7 +27,9 @@ optdepends=(
   r-ggpubr
   r-grid
   r-gridextra
+  r-hexbin
   r-knitr
+  r-magick
   r-rmarkdown
   r-testthat
 )
