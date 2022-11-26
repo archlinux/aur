@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Oxen Electron Wallet
+Exec=oxen-electron-wallet --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=oxen-electron-wallet
+StartupWMClass=Oxen Electron Wallet
+Comment=Modern GUI interface for Oxen Currency
+Categories=Finance;
