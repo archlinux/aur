@@ -4,7 +4,7 @@ _pkgname=doBy
 _pkgver=4.6.14
 pkgname=r-${_pkgname,,}
 pkgver=4.6.14
-pkgrel=1
+pkgrel=3
 pkgdesc='Groupwise Statistics, LSmeans, Linear Contrasts, Utilities'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,7 +12,6 @@ license=('GPL')
 depends=(
   r
   r-broom
-  r-curry
   r-deriv
   r-dplyr
   r-ggplot2
