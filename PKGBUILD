@@ -4,13 +4,14 @@ _pkgname=peakPantheR
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Peak Picking and Annotation of High Resolution Experiments'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-bslib
   r-doparallel
   r-dt
   r-foreach
@@ -23,12 +24,12 @@ depends=(
   r-scales
   r-shiny
   r-shinycssloaders
-  r-shinythemes
   r-stringr
   r-xml
 )
 optdepends=(
   r-biocstyle
+  r-devtools
   r-faahko
   r-knitr
   r-msdata
