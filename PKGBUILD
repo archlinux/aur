@@ -4,7 +4,7 @@ _pkgname=keras
 _pkgver=2.9.0
 pkgname=r-${_pkgname,,}
 pkgver=2.9.0
-pkgrel=3
+pkgrel=6
 pkgdesc="R Interface to 'Keras'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,9 +27,11 @@ optdepends=(
   r-ggplot2
   r-jpeg
   r-knitr
+  r-png
   r-rmarkdown
   r-testthat
   r-tfdatasets
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('cc2392a49b8dcbbff8b774f08d714bb776231fa4a9f60136999d9deb421ba118')

@@ -1,7 +1,7 @@
 pkgbase = r-keras
 	pkgdesc = R Interface to 'Keras'
 	pkgver = 2.9.0
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=keras
 	arch = any
 	license = MIT
@@ -20,9 +20,11 @@ pkgbase = r-keras
 	optdepends = r-ggplot2
 	optdepends = r-jpeg
 	optdepends = r-knitr
+	optdepends = r-png
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tfdatasets
+	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/keras_2.9.0.tar.gz
 	sha256sums = cc2392a49b8dcbbff8b774f08d714bb776231fa4a9f60136999d9deb421ba118
 
