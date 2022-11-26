@@ -4,7 +4,7 @@ _pkgname=Ularcirc
 _pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=1.16.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Shiny app for canonical and back splicing analysis (i.e. circular and mRNA analysis)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -29,15 +29,14 @@ depends=(
   r-mirbase.db
   r-moments
   r-organism.dplyr
+  r-plotgardener
+  r-r.utils
   r-s4vectors
   r-shiny
   r-shinydashboard
   r-shinyfiles
   r-shinyjs
-  r-sushi
   r-yaml
-  r-plotgardener
-  r-r.utils
 )
 optdepends=(
   r-biocstyle
