@@ -2,7 +2,7 @@
 
 pkgname=python-pycoral
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Coral Python API'
 arch=('any')
 url='https://github.com/google-coral/pycoral'
