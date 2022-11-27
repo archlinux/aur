@@ -12,8 +12,8 @@ makedepends=('git')
 depends=('tcl' 'fftw' 'portaudio')
 source=("${_pkgname}::git+https://github.com/tachi-hi/euterpe.git"
         "euterpe.sh")
-md5sums=('SKIP'
-         'a476435472c2cddc447242d8c9fa1e9d')
+sha256sums=('SKIP'
+         'c748a2e70ea860d82f31e70950776ef79dd0d870dc13fcd55eb14d33bf610ce9')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"

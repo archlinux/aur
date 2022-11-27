@@ -12,7 +12,7 @@ pkgbase = euterpe-git
 	depends = portaudio
 	source = euterpe::git+https://github.com/tachi-hi/euterpe.git
 	source = euterpe.sh
-	md5sums = SKIP
-	md5sums = a476435472c2cddc447242d8c9fa1e9d
+	sha256sums = SKIP
+	sha256sums = c748a2e70ea860d82f31e70950776ef79dd0d870dc13fcd55eb14d33bf610ce9
 
 pkgname = euterpe-git
