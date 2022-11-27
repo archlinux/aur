@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=paccache-hook
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A configurable hook to cleanup the pacman package cache using paccache"
 arch=('any')
@@ -8,11 +8,11 @@ license=('BSD')
 depends=('pacman-contrib')
 conflicts=('pacman-cleanup-hook')
 source=("$pkgname.conf"
-		"$pkgname.sh"
-		"$pkgname.hook")
-sha256sums=('0aba81744ed33eae4fbb135da75d905baab46362f0230e7c7a833c4e8734ccfc'
-            '2a4b997c371956d2a03d1ba8ae5b54fc403e354231b6c6798ae7b0d18d06cdee'
-            'fdd80cc2ec88445ac9c5fadf2b4053eb0d4864485952a8d9858d6cc3d34c97ce')
+        "$pkgname.sh"
+        "$pkgname.hook")
+b2sums=('c1d92590b4426c52a22152ca4901126ba2622e78ec14eba9be2a9e41f909ddceee01beb8fc4e95a12cd8ed78cb31a12118b0c16ea1498718397f04862c613408'
+        'b58919eff78e6b63ce0cd724a49c4d39fb2ab37920e14173560485f0d434a6a96b065f9342fa162e8f7a346bd22522fc7b80f7991d2f4ab9df3815f813160aa7'
+        'ebc6394bd960fd6f2bb26593be20461adf8e251124787e98664343426c9cdec04bfff7677aba0e78d6f43b885f40e415243b683473eaecd082e5f3ef83cc53ab')
 backup=("etc/$pkgname.conf")
 
 package() {
