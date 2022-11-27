@@ -1,7 +1,7 @@
 # Maintainer: Emad Elsaid <emad.elsaid.hamed@gmail.com>
 pkgname=xlog-git
 _pkgname="xlog"
-pkgver=0.41.0.r5.gf79e299
+pkgver=0.41.0.r8.g6f0e0a1
 pkgrel=1
 pkgdesc="Xlog is a static site generator for digital gardening written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ pkgver() {
 build() {
     export GOPATH="$srcdir"/gopath
     cd "$srcdir/$_pkgname"
-    go build -o xlog ./cmd/xlog
+    go build -modcacherw -o xlog ./cmd/xlog
 }
 
 package() {

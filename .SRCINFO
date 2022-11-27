@@ -1,6 +1,6 @@
 pkgbase = xlog-git
 	pkgdesc = Xlog is a static site generator for digital gardening written in Go
-	pkgver = 0.41.0.r5.gf79e299
+	pkgver = 0.41.0.r8.g6f0e0a1
 	pkgrel = 1
 	url = https://github.com/emad-elsaid/xlog
 	arch = i686
