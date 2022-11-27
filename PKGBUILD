@@ -1,4 +1,3 @@
-
 # Maintainer: Eugene Lopatkin <eugenelopatkin@gmail.com>
 pkgname="linked-helper"
 pkgver="2"
@@ -13,7 +12,7 @@ noextract=("linked-helper.deb")
 sha512sums=('SKIP')
 
 package() {
-    bsdtar -O -xf "$pkgname-$pkgver.deb" data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+    bsdtar -O -xf linked-helper.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
     find "${pkgdir}" -type d -exec chmod 755 {} +
 
     rm -rf "${pkgdir}/usr/share/lintian"
