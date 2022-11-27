@@ -22,4 +22,5 @@ package() {
   for _executable in casa casaviewer mpicasa; do
     ln -s "${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done 
+  ln -s "${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/python3" "${pkgdir}/usr/bin/casa-python3"
 }
