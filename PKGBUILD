@@ -1,7 +1,7 @@
 # Maintainer: Francesco Carmelo Capria <francesco at capria dot eu>
 
 pkgname=waybar-no-systemd
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors without systemd dependencies'
 arch=('x86_64')
@@ -47,7 +47,7 @@ source=("https://github.com/Alexays/Waybar/archive/refs/tags/${pkgver}.tar.gz"
 	meson-build.patch
 	meson_options.patch)
 
-sha1sums=('ad8ff749e1ac6185f780ee091eddc16c82c7bc50'
+sha1sums=('8816fd35e75c06ff2094b66047e4ec7bbc77a047'
           '3676ab3dff04f3c3e6bf5d2a2a1a7bd15d6a6cba'
           'e077c91a787e7d147e14c5b3284686cde1e32d7c')
 
