@@ -5,7 +5,7 @@
 
 
 pkgname=pianoteq-stage
-pkgver=7.5.4
+pkgver=8.0.2
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -18,25 +18,25 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.pianoteq.com/download?file=pianoteq_stage_linux_v754.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v802.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('2574ed8fd06bdf9881f41c912f7148b23e75945cb2ac12195dba5f6c79aea461408e3b20915c7fa6de1078b9b8ba3009ca160cf6659c17ebf0d9a78142f58776'
+b2sums=('dfacf3b71ebf37356a8f3964026e742cafdab3d3ae35ec0086af065f24f426137bab99ceb53fabd80080a197d16fe72989e30be58dc3dd45e8fe7d7e299d59ba'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare(){
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 7' --exec='"pianoteq 7"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec='"pianoteq 8"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
-	_pianoteq_type="Pianoteq 7 STAGE"
+	_pianoteq_type="Pianoteq 8 STAGE"
 	archdir=x86-64bit
 	# Install program files:
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 7"
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 7.so"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 8"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 8.so"
 	cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
 	for i in *; do
-		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 7.lv2/$i"
+		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 8.lv2/$i"
 	done
 	cd $srcdir
 	# Install desktop launcher:

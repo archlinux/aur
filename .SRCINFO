@@ -1,6 +1,6 @@
 pkgbase = pianoteq-stage
 	pkgdesc = Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions.
-	pkgver = 7.5.4
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = https://www.pianoteq.com/pianoteq
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = pianoteq-stage
 	conflicts = pianoteq
 	conflicts = pianoteq-stage-bin
 	conflicts = pianoteq-standard-trial-bin
-	source = local://pianoteq_stage_linux_v754.7z
+	source = local://pianoteq_stage_linux_v802.7z
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	b2sums = 2574ed8fd06bdf9881f41c912f7148b23e75945cb2ac12195dba5f6c79aea461408e3b20915c7fa6de1078b9b8ba3009ca160cf6659c17ebf0d9a78142f58776
+	b2sums = dfacf3b71ebf37356a8f3964026e742cafdab3d3ae35ec0086af065f24f426137bab99ceb53fabd80080a197d16fe72989e30be58dc3dd45e8fe7d7e299d59ba
 	b2sums = bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d
 
 pkgname = pianoteq-stage
