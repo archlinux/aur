@@ -1,18 +1,18 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 
 pkgname=cavecube-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686)
 url="https://github.com/PQCraft/CaveCube"
 license=(Boost)
-depends=('glibc' 'glfw')
+depends=(glibc)
 provides=(cavecube)
-conflicts=(cavecube)
+conflicts=(cavecube cavecube-sdl2 cavecube-sdl2-bin)
 source=("${pkgname}_data_${pkgver}-${pkgrel}.zip::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_data.zip")
-source_x86_64=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_game_linux_x86_64.tar.gz")
-source_i686=("${pkgname}_game_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_game_linux_i686.tar.gz")
+source_x86_64=("${pkgname}_game_glfw_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_game_glfw_linux_x86_64.tar.gz")
+source_i686=("${pkgname}_game_glfw_${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_game_glfw_linux_i686.tar.gz")
 sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_i686=('SKIP')
