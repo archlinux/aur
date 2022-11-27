@@ -1,14 +1,14 @@
 pkgbase = whatip
 	pkgdesc = Info on your IP
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gabmus.gitlab.io/whatip
 	arch = any
 	license = GPL3
 	checkdepends = appstream
-	makedepends = blueprint-compiler-git
-	makedepends = meson
+	makedepends = blueprint-compiler
 	makedepends = gobject-introspection
+	makedepends = meson
 	depends = iproute2
 	depends = libadwaita
 	depends = python-requests

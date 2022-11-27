@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whatip
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Info on your IP"
 arch=('any')
 url="https://gabmus.gitlab.io/whatip"
 license=('GPL3')
 depends=('iproute2' 'libadwaita' 'python-requests' 'python-netaddr' 'python-gobject')
-makedepends=('blueprint-compiler-git' 'meson' 'gobject-introspection')
+makedepends=('blueprint-compiler' 'gobject-introspection' 'meson')
 optdepends=('avahi: hostname resolution')
 checkdepends=('appstream')
 source=("https://gitlab.gnome.org/GabMus/whatip/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
@@ -19,7 +19,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
