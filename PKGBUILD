@@ -4,7 +4,7 @@
 
 pkgname=obs-studio-amf
 pkgver=28.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -23,11 +23,11 @@ optdepends=('libfdk-aac: FDK AAC codec support'
 		'v4l2loopback-dkms: virtual camera support')
 source=(obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver
 	cef_binary_4638_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_4638_linux64.tar.bz2
-	7206.patch::https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/7206.patch
+	7206.patch
 	com.obsproject.Studio.desktop)
 md5sums=('SKIP'
          '34fb1c611b3e278ca4d0d1d50e7bfb9b'
-         'SKIP'
+         'f95965ad8df85e62f691ae73665e11db'
          '2f0f4b1f1814716d345a8f028b987361')
 
 prepare() {
