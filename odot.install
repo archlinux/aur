@@ -2,6 +2,9 @@
 
 post_install() {
     [[ ! -d $HOME/.local/state/odot ]] && mkdir -p "$HOME/.local/state/odot"
+    touch "$HOME/.local/state/odot/todo.txt"
+    touch "$HOME/.local/state/odot/done.txt"
+
 }
 
 post_remove() {

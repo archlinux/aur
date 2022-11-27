@@ -1,7 +1,7 @@
 # Maintainer: Huck Boles <huboles@protonmail.com>
 pkgname=odot
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Task manager written in c"
 arch=('any')
 url="https://download.huck.website"
