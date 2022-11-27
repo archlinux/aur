@@ -5,14 +5,14 @@
 
 pkgname=plymouth-git
 _pkgname=plymouth
-pkgver=22.02.122.r113.g1812e55a
+pkgver=22.02.122.r117.gca15d30c
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
 arch=('i686' 'x86_64')
 license=('GPL')
 
-depends=('libdrm' 'systemd' 'pango' 'cantarell-fonts' 'ttf-dejavu')
+depends=('libdrm' 'systemd' 'pango' 'cantarell-fonts' 'ttf-dejavu' 'libevdev' 'libxkbcommon')
 makedepends=('git' 'docbook-xsl' 'meson')
 optdepends=('xf86-video-fbdev: Support special graphic cards on early startup')
 provides=('plymouth')
@@ -44,8 +44,8 @@ sha256sums=('SKIP'
             'c39f526f7e99173bc8f012900f53257537a25e2d8c19e23df630f1fe9a7627ba'
             '3b17ed58b59a4b60d904c60bba52bae7ad685aa8273f6ceaae08a15870c0a9eb'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
-            '1bb860f711ee1de52c5820d124569c3a7cfc0aa5a0a730ea8cf24967a1c3bf76'
-            'b85423a536dd701aab73b8aab13ba1b195ee21f8eae56584d48b5fdde0e2bf7b'
+            '7f220326baaf8c8cfc676b16448a60093b4598c8ff064c6e65891c9a52406764'
+            'e2b20357e3fe27698c3de8f873216b1e24b8a1af5e8226b638c001c3048cccd3'
             'dec28b86ddea93704f8479d33e08f81cd7ff4ccaad57e9053c23bd046db2278a'
             '74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a'
             '71d34351b4313da01e1ceeb082d9776599974ce143c87e93f0a465f342a74fd2')
