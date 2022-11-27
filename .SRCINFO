@@ -7,6 +7,7 @@ pkgbase = cwitch
 	license = GPL3
 	makedepends = python-setuptools
 	depends = mpv
+	depends = python-mpv
 	depends = youtube-dl
 	depends = python-prompt_toolkit
 	source = cwitch-0.2.1.tar.gz::https://github.com/zer0-x/cwitch/archive/refs/tags/v0.2.1.tar.gz
