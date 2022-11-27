@@ -1,7 +1,7 @@
 # Maintainer: orange <?>
 _pkgname='msigd'
 pkgname=msigd-git
-pkgver=r163.4b5c4f0
+pkgver=r173.0a71609
 pkgrel=1
 pkgdesc='MSI Gaming Device control application'
 arch=('x86_64')
