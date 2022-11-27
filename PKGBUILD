@@ -1,5 +1,5 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
-# Contributors: Thynix
+# Contributor: Thynix
 
 # detect java version
 # javac -version 2>&1 |awk '{split($2,v,"."); print v[1]}'
@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
 license=('GPL2')
-arch=('i686' 'x86_64')
+arch=('any')
 install='freenet.install'
 depends=('java-runtime>=11' 'nss' 'java-service-wrapper')
 makedepends=('java-environment>=11' 'ant' 'git' 'zip')
@@ -33,7 +33,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '043589015aced4a9828518db5a7207382c782ff7f0f5bc2c5ad19ff559fc7f695bcd503e717bfb19bee8338abdf0b30f418a155e9c86f5016162ccad4870d82a'
-        '134a273c654c87b7c34d40416944e3e5f80254d68cf30d9a096ca8821cbb42dac0b66bf9ce316515ba6e47876f1221eb3eae4ebf90e2bd2ed8cf77c317d2d4bc'
+        'd8c628a79c912855a34b30cd3f1dfee40a6a629591c2a7e08221850bfd314f34fe60c9dadf23ff486949e587a7396bf1cc728b32a89571ce5825f86d782c884e'
         '83a374354b4ade822e6ecdc0b08013ac6c1c7dd3071478d4017e998ec031a1f3d0731f76eb8470e36bf8e77f7bbe1310d8d0cf5726929fcc6db81a90cc802d04'
         '540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b'
         '54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d')
@@ -48,7 +48,7 @@ prepare() {
     cd fred
 
     # java 17 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-7.4-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-7.6-aur -q
 
     # create seednodes file for bootstrapping
     rm -f seednodes.fref
@@ -61,7 +61,7 @@ build() {
     cd fred
 
     export ANT_HOME=/usr/share/ant
-    export GRADLE_USER_HOME="$startdir/.gradle"
+    export GRADLE_USER_HOME="$SRCDEST/.gradle"
     export GRADLE_OPTS="-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"
 
     msg "Building Freenet..."
@@ -84,7 +84,6 @@ package() {
 
     # create folder structure
     install -dm755 "$pkgdir"/usr/bin
-    install -dm750 "$pkgdir"/run/freenet
     install -dm750 "$pkgdir"/opt/freenet
     install -dm700 "$pkgdir"/opt/freenet/tmp
     install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,plugins,user}
