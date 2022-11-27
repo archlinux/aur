@@ -2,7 +2,7 @@
 
 pkgname=highs
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linear optimization software"
 arch=('i686' 'x86_64')
 _pkgname=HiGHS
@@ -18,7 +18,11 @@ prepare() {
     mkdir -p "build"
     cd "build"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake \
+      -DCMAKE_EXE_LINKER_FLAGS=$LDFLAGS \
+      -DCMAKE_SHARED_LINKER_FLAGS=$LDFLAGS \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      ..
 }
 
 build() {
