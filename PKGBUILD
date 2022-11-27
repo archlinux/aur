@@ -18,9 +18,9 @@ depends=('gtk3'
     'libsecret')
     provides=("$_pkgname")
     source=(
-        "PortX_latest_amd64.deb"::https://cdn.netsarang.com/0ac7ea20/PortX_latest_amd64.deb
+        "PortX_latest_amd64.deb"::https://cdn.netsarang.net/0ac7ea20/PortX-latest-amd64.deb
     )
-sha256sums=('f5328c5457484477280ec822debb2f002df449d38e9820050b324fa07ac7c576')
+sha256sums=('5ddc419968baec5b238d44cffbfb5fb548b9e295f9e5af976001d3909626349b')
 
 package(){
     cd "${srcdir}"
