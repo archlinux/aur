@@ -3,6 +3,7 @@ pkgbase = tcpconsole
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/folkertvanheusden/tcpconsole
+	install = tcpconsole.install
 	arch = i686
 	arch = x86_64
 	license = GPL
