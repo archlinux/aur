@@ -5,11 +5,11 @@ pkgver=r6.3ebcdfb
 pkgrel=1
 pkgdesc="A terminal-based lightnovel reader written in Bash."
 arch=('any')
-url="https://github.com/lr-tech/lightnovel.sh"
+url="https://github.com/newmanls/lightnovel.sh"
 license=('MIT')
-depends=('coreutils' 'curl' 'grep' 'less' 'ncurses' 'sed' 'w3m')
+depends=('coreutils' 'curl' 'grep' 'iputils' 'less' 'ncurses' 'sed' 'w3m')
 makedepends=('git')
-source=("git+https://github.com/lr-tech/lightnovel.sh.git")
+source=("git+https://github.com/newmanls/lightnovel.sh.git")
 md5sums=('SKIP')
 
 pkgver() {
