@@ -5,7 +5,7 @@
 
 pkgname=planner
 pkgver=0.14.90
-pkgrel=9
+pkgrel=10
 pkgdesc='Project management application for GNOME'
 arch=('x86_64')
 license=('GPL')
@@ -17,9 +17,10 @@ depends=('glib2>=2.56', # glib, gmodule, gobject
 	'libgda>=5.0') # database export feature is enabled by arch-meson
 makedepends=('git' 'meson')
 options=('!emptydirs')
-_commit="1775346f24322e3d0718183d88d4709c278fb8d3" # 13 Nov, 2022
+_commit="2c59ee8ea621c95d84d71fdd2e48a43f5d7b1547" # 24 Nov, 2022
 source=("git+https://gitlab.gnome.org/World/planner.git#commit=$_commit")
 sha256sums=('SKIP')
+install=planner.install
 
 # https://wiki.archlinux.org/title/Meson_package_guidelines#Template
 
