@@ -7,7 +7,7 @@
 
 pkgname=osc
 pkgver=1.0.0b2
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
 url="https://github.com/openSUSE/osc"
@@ -33,6 +33,7 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
         0006-Add-architecture-and-scheduler-maps.patch
         0007-Trap-any-kind-of-exception-during-plugin-parsing-eg-.patch
+        0008-Fix-hdrmd5-check-of-downloaded-packages-from-DoD-rep.patch
 )
 sha256sums=('02bb2166fbda06babbcd60e67437ba83f9032c12c41529325e49d0663cb11aa5'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
@@ -42,7 +43,8 @@ sha256sums=('02bb2166fbda06babbcd60e67437ba83f9032c12c41529325e49d0663cb11aa5'
             '5e55efe6a7b9f350bde5cf2b5794658c2eedd0383e06e4fd3b69d49c723724aa'
             'cf9b73a11fc82397b0b24dc5b7a1143de413552fd62d16559c5f7b2f861e7b1d'
             '5564c4cdaed550ddfe05ce74e96448c9232181b4f6fc637c933642eb221461f2'
-            '78068b5755323f526acea891a44309639b2cee97eb2cbb2bcedfac4b51055447')
+            '78068b5755323f526acea891a44309639b2cee97eb2cbb2bcedfac4b51055447'
+            'a4b0aa983eba58e7239f057368cab39b4468da6dd475f3f8e6243f656492289c')
 
 prepare() {
   # Add 'Arch_Core' and 'Arch_Extra' as osc build targets
