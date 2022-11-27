@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-git
-pkgver=1.0.6770+0+g0e19bc9cd
+pkgver=1.0.6836+0+g48a6472b3
 pkgrel=1
 pkgdesc="Jitsi Meet Web git build"
 arch=('any')
