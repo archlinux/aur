@@ -1,0 +1,20 @@
+pkgbase = isr-git
+	pkgdesc = Super-scale your images and run experiments with Residual Dense and Adversarial Networks.
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/idealo/image-super-resolution
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-imageio
+	depends = python-pyaml
+	depends = python-tensorflow
+	provides = isr
+	conflicts = isr
+	source = isr-git-r..zip::https://github.com/idealo/image-super-resolution/archive/refs/heads/master.zip
+	sha256sums = SKIP
+
+pkgname = isr-git
