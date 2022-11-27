@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "%s.%s" $(git blame --abbrev -L/DIGIKAM_MAJOR_VERSION/,+3 CMakeLists.txt -s | awk 'BEGIN { ORS = "."; }
+	printf "%s.%s" $(git blame -s -L/DIGIKAM_MAJOR_VERSION/,+3 CMakeLists.txt | awk 'BEGIN { ORS = "."; }
 	{
 		gsub("[\")]", "");
 		"git rev-list --count "$1"..HEAD" | getline x;
