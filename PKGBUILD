@@ -19,7 +19,12 @@ build() {
     mkdir -p build
     cd build
     cp -r "${srcdir}/dist" .
-    cmake -DCMAKE_INSTALL_PREFIX='/usr/' -DCMAKE_BUILD_TYPE='Release' -DQTROOT=./qt -DCMAKE_SKIP_RPATH=1 ..
+    cmake \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr/' \
+        -DCMAKE_SKIP_RPATH=1 \
+        -DQTROOT=./qt \
+        ..
     make
 }
 
