@@ -2,7 +2,7 @@
 
 _pkgname=mumailer
 pkgname=("python-mumailer" "mumailer")
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Simple mailer agent using SMTP"
 url="http://www.muflone.com/mumailer"
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 depends=('python-yaml')
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f50580467378014c744e33d01a04ac602331ce96675b59d8a72281d1d1d9aedc')
+sha256sums=('a8dc147d48c71901d067e956e6e90768a845e1e0769a2709aefbc71d82ad24bb')
 
 build() {
   cd "${_pkgname}-${pkgver}"

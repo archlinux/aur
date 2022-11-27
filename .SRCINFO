@@ -1,6 +1,6 @@
 pkgbase = python-mumailer
 	pkgdesc = Simple mailer agent using SMTP
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://www.muflone.com/mumailer
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-mumailer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-yaml
-	source = mumailer-0.4.0.tar.gz::https://github.com/muflone/mumailer/archive/0.4.0.tar.gz
-	sha256sums = f50580467378014c744e33d01a04ac602331ce96675b59d8a72281d1d1d9aedc
+	source = mumailer-0.4.1.tar.gz::https://github.com/muflone/mumailer/archive/0.4.1.tar.gz
+	sha256sums = a8dc147d48c71901d067e956e6e90768a845e1e0769a2709aefbc71d82ad24bb
 
 pkgname = python-mumailer
 
