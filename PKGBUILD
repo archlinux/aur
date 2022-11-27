@@ -23,6 +23,7 @@ build() {
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr/' \
         -DCMAKE_SKIP_RPATH=1 \
+        -DLINUX_X11POWER=ON \
         -DQTROOT=./qt \
         ..
     make
