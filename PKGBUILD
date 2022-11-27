@@ -6,14 +6,14 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.1.2
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
 arch=(x86_64 aarch64)
 _plugin_name=Fundamental
-_plugin_ver=2.3.0
+_plugin_ver=2.3.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
 depends=(glfw-x11 jansson openssl speexdsp)
 makedepends=(curl gendesk glew jq libarchive rtaudio rtmidi simde zstd)
@@ -21,8 +21,8 @@ provides=("$_plugin_pkg=$_plugin_ver")
 conflicts=($_plugin_pkg)
 groups=(pro-audio)
 # use submodule_commits.sh to update this
-_submodules=(filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft)
-_commits=(7e37433 fe62479 25241c5 0bebdb3 21b9dcc 2fc6405 74d7261)
+_submodules=(filesystem fuzzysearchdatabase nanosvg nanovg osdialog oui-blendish pffft tinyexpr)
+_commits=(7e37433 a3a1bf5 25241c5 0bebdb3 21b9dcc 2fc6405 74d7261 4e8cc00)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/VCVRack/$_name/archive/v$pkgver.tar.gz"
   'https://github.com/VCVRack/Rack/commit/ac73ef4.patch'
@@ -33,6 +33,7 @@ source=(
   "osdialog-${_commits[4]}.tar.gz::https://github.com/AndrewBelt/osdialog/archive/${_commits[4]}.tar.gz"
   "oui-blendish-${_commits[5]}.tar.gz::https://github.com/VCVRack/oui-blendish/archive/${_commits[5]}.tar.gz"
   "pffft-${_commits[6]}.tar.gz::https://bitbucket.org/jpommier/pffft/get/${_commits[6]}.tar.gz"
+  "tinyexpr-${_commits[7]}.tar.gz::https://github.com/codeplea/tinyexpr/archive/${_commits[7]}.tar.gz"
   "$_plugin_pkg-$_plugin_ver.tar.gz::https://github.com/VCVRack/$_plugin_name/archive/v$_plugin_ver.tar.gz"
   'plugins.patch'
   'vcvrack.sh'
@@ -40,21 +41,22 @@ source=(
   'trademark.eml'
   'aarch64.patch'
 )
-sha256sums=('253b655a12bb4f27be8f134fee4696b328962ffb44413650dbad8656a123c9fd'
+sha256sums=('d6d4ffdb0afa6a1487410ca4cb891b55cd72be4d184c50e6ccf35929e3c0555c'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
-            '31cb6aa73ab52347ea56f7eb47947bad154cee588a0780df18e9523975bfb971'
+            'b706605c539dcc0953d2e5c59bec015275a576110125f9e8bc7c7dee75ec6b12'
             'd957259360bf108858388bb01686a8cb0fc31d90db2d996ddf65575b37bb20d4'
             '043d67b2fd81d52b80c5db366292a8d1910a70abdf0b3cc7750bd8705cf5fb96'
             'da6c2b5cd661dd1875af867e02bac4dee4e2db7ea6ed3e8a7fd840223d7ce642'
             'f5c5a814b3302ac865ab648ec69f586b67cc0e9d2e51f77bcd4f495e75af6930'
             'ca077ad436bcb5ffe579ee886b8e61c87e2ebd81fc762be02a9ca07235e219ff'
-            '5e34622b6a1e01d263d39f61b2bff5e9e85706bb69ae6ce8022ed463549892fe'
+            '2d63d882e6b36f808e0ec739ad796fc44aa1595146e1914a4a80ce5670a2d2c0'
+            '50fdd488ac51b0a32601eaf0ea0fca73180862408c9c9bd8c0ab439ac2abf655'
             'd0d847a5dff1b8c1bfde209c8cf265096d0feb7e07e50b100b452be8cee1c9d6'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641'
-            'bc6d144302e429d4a5051207733142e99c1c60953766d7d87b96f2b10a5ca723')
+            'd2ac3b5b89043ac40f28ccf13ca02156f5f34e9facc9b3d70ccf1b412b60bd55')
 # extract the submodules ourselves so we have control over the unpacked top-level directory name
 noextract=($(for _i in ${!_submodules[@]}; do
   echo "${_submodules[$_i]}-${_commits[$_i]}.tar.gz"
@@ -69,7 +71,7 @@ prepare() {
   done
 
   # add target to only build included dependencies
-  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft)' >> dep/Makefile
+  echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft) $(tinyexpr)' >> dep/Makefile
 
   # revert recent changes to rtaudio.cpp that require an unreleased version of rtaudio
   patch -Rp1 -r - -i ../ac73ef4.patch || true
@@ -121,7 +123,7 @@ package() {
     install -vDm644 include/$_path/* \
       -t "$pkgdir"/usr/include/$pkgname/$_path
   done
-  install -vDm644 include/*.{h,hpp} -t "$pkgdir"/usr/include/$pkgname
+  install -vDm644 include/*.hpp -t "$pkgdir"/usr/include/$pkgname
   install -vDm644 dep/include/*.h -t "$pkgdir"/usr/include/$pkgname/dep
   # Makefile snippets required for plugins
   install -vDm644 {arch,compile,dep,plugin}.mk -t "$pkgdir"/usr/share/$pkgname
