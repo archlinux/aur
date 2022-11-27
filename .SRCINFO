@@ -1,7 +1,7 @@
 pkgbase = sdlada
 	pkgdesc = An Ada binding to SDL
-	pkgver = 2.5.3
-	pkgrel = 2
+	pkgver = 2.5.6
+	pkgrel = 1
 	url = https://github.com/Lucretia/sdlada/
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,7 @@ pkgbase = sdlada
 	depends = gcc-ada
 	depends = sdl2_ttf
 	depends = sdl2_image
-	source = https://github.com/Lucretia/sdlada/archive/v2.5.3.tar.gz
-	source = patch-sdl-video-pixel_formats.ads
-	source = patch-sdl-video-palettes.ads
-	md5sums = 8d0245cb6c03db3ed136c012d4cc9055
-	md5sums = db308de4a3297e497415b89e0aadbed4
-	md5sums = 0ec6787e90fe1022270a78f3b5320e42
+	source = https://github.com/Lucretia/sdlada/archive/v2.5.6.tar.gz
+	sha256sums = 15431f8475d1957f8a60e790c46051e95189b1fd99798724d2f659d6827ba8eb
 
 pkgname = sdlada
