@@ -5,7 +5,7 @@
 pkgname=pyside6-tools
 _qtver=6.4.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
