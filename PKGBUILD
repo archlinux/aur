@@ -1,6 +1,5 @@
 # Maintainer: Zen Wen <zen.8841@gmail.com>
 
-pkgbase=pyqt5
 pkgname=('python-pyqt5-webkit')
 pkgdesc="A set of Python bindings for the Qt5 toolkit with Qt5WebKit support"
 pkgver=5.15.7
@@ -49,7 +48,7 @@ build() {
   make
 }
 
-package_python-pyqt5-webkit(){
+package(){
   cd PyQt5-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install -j1
 
