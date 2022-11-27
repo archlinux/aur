@@ -4,10 +4,10 @@ _pkgname=RefFreeEWAS
 _pkgver=2.2
 pkgname=r-${_pkgname,,}
 pkgver=2.2
-pkgrel=7
+pkgrel=11
 pkgdesc=' EWAS using Reference-Free DNA Methylation Mixture Deconvolution'
 arch=('any')
-url="https://bioconductor.org/packages/${_pkgname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=('Artistic2.0')
 depends=(
   r
