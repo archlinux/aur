@@ -1,8 +1,8 @@
 pkgbase = ice
 	pkgdesc = Tool to create Chromium/Chrome/Firefox/Vivaldi SSBs in Peppermint OS.
 	pkgver = 6.0.8.r30.g5ddfc8e
-	pkgrel = 1
-	url = https://github.com/PizzaLovingNerd/ice
+	pkgrel = 2
+	url = https://github.com/peppermintos/ice
 	arch = any
 	license = GPL
 	depends = python-gobject
@@ -10,7 +10,7 @@ pkgbase = ice
 	depends = python-beautifulsoup4
 	conflicts = ice-ssb
 	conflicts = ice-dev
-	source = ice-6.0.8.r30.g5ddfc8e.tar.gz::https://github.com/PizzaLovingNerd/ice/archive/5ddfc8e9c5eca3c575d6c1a300420f76106d22a1.tar.gz
+	source = ice-6.0.8.r30.g5ddfc8e.tar.gz::https://github.com/peppermintos/ice/archive/5ddfc8e9c5eca3c575d6c1a300420f76106d22a1.tar.gz
 	sha256sums = a19706a04d1dedc6cbae444dd47085a9419aa5aa1cc28a4680c38a9bfa0422c6
 
 pkgname = ice

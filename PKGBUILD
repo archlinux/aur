@@ -4,10 +4,10 @@
 pkgname=ice
 pkgver=6.0.8.r30.g5ddfc8e
 _commit=5ddfc8e9c5eca3c575d6c1a300420f76106d22a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to create Chromium/Chrome/Firefox/Vivaldi SSBs in Peppermint OS."
 arch=('any')
-url="https://github.com/PizzaLovingNerd/ice"
+url="https://github.com/peppermintos/ice"
 license=('GPL')
 depends=('python-gobject' 'python-requests' 'python-beautifulsoup4')
 conflicts=("$pkgname-ssb" "$pkgname-dev")
