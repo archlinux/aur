@@ -1,0 +1,12 @@
+pkgbase = xkb-lt-git
+	pkgdesc = An X keyboard configuration for US Qwerty and Lithuanian diacritics
+	pkgver = r3.ea96d6f
+	pkgrel = 1
+	url = https://github.com/tmneth/xkb-lt
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/tmneth/xkb-lt
+	md5sums = SKIP
+
+pkgname = xkb-lt-git
