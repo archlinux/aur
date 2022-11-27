@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 prepare() {
   # Currently, the build process fails if the OpenTimelineIO library is used
   sed -i '/find_package(OpenTimelineIO)/d' \
-         "$srcdir"/$_package/CMakeLists.txt
+         "$srcdir"/$_pkgname/CMakeLists.txt
 }
 
 pkgver() {
