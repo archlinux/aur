@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=codevis
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A tool for turning your code into one large image"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('24bccb19d518d4377d96228a5103481027d8ca43f3e961e2ac7f6b917014dad3fa57eaba0e94e0f7d62ad5be650d8758200fa7e65d5a3fbf670c1b7f3483a235')
+sha512sums=('47e7ab31a61dabd7de923bfe95027599209fbf1cfca4673fb8d86b888139fc845881a439c653d9d3d1f94faf24d536e3f6abcd9105bbce6d8c11e0db53fd6ea8')
 options=('!lto')
 
 prepare() {
