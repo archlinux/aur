@@ -1,0 +1,16 @@
+pkgbase = beets-yapl-git
+	pkgdesc = Beets plugin to handle yaml playlists
+	pkgver = r7.d1179f9
+	pkgrel = 1
+	url = https://github.com/nichobi/beets-yapl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = beets>=1.4.7
+	provides = beets-yapl
+	conflicts = beets-yapl
+	source = git+https://github.com/nichobi/beets-yapl.git
+	md5sums = SKIP
+
+pkgname = beets-yapl-git
