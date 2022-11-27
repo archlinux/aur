@@ -1,7 +1,7 @@
-diff --git a/webpack.prod.js b/webpack.prod.js
+diff --git a/packages/desktop/desktop.webpack.prod.js b/packages/desktop/desktop.webpack.prod.js
 index 578d8652..b14c38b9 100644
---- a/webpack.prod.js
-+++ b/webpack.prod.js
+--- a/desktop.webpack.prod.js
++++ b/desktop.webpack.prod.js
 @@ -2,7 +2,11 @@ const { merge } = require('webpack-merge');
  const common = require('./webpack.common.js');
  

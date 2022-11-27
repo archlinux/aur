@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Standard Notes
-Comment=A standard notes app with an un-standard focus on longevity, portability, and privacy.
+Comment=An end-to-end encrypted notes app for digitalists and professionals.
 Exec=standardnotes-desktop
 Terminal=false
 Type=Application
 Icon=standard-notes
 StartupWMClass=Standard Notes
+MimeType=x-scheme-handler/standardnotes
 Categories=Office;
