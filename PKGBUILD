@@ -3,7 +3,7 @@
 
 pkgname=python-sigstore
 _name=${pkgname#python-}
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="sigstore is a tool for signing and verifying Python package distributions."
 arch=('any')
@@ -13,7 +13,7 @@ depends=(python python-requests python-pydantic python-pyopenssl python-securesy
 makedepends=(python-flit-core python-build python-installer python-wheel)
 checkdepends=(python)
 source=(https://github.com/sigstore/sigstore-python/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('61d3ffa19817e9e9c9e444ab1017dd6e91bf7ff387caf204a902f940e62a2abe')
+sha256sums=(9c0b6b697c2ae02d99de9a362b2ea9248efc4c3035dc05f78f28b4c9b1685fd1)
 
 build() {
   cd "sigstore-python-$pkgver"
