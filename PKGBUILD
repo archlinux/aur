@@ -1,7 +1,7 @@
 # Maintainer: Matej Lach <me@matej-lach.me>
 
 pkgname=tailwindcss-bin
-pkgver=3.1.8
+pkgver=3.2.4
 pkgrel=2
 pkgdesc='Standalone Tailwind CLI without dependency on Node.js'
 arch=(x86_64)
@@ -11,7 +11,7 @@ options=(!strip)
 conflicts=('tailwindcss')
 provides=('tailwindcss')
 source=("tailwindcss-linux-x64::https://github.com/tailwindlabs/tailwindcss/releases/download/v${pkgver}/tailwindcss-linux-x64")
-sha256sums=('fb77a0ac5736a5559cf63dfbc094d6ad7857318815ae52d9a6e8e8602a4df337')
+sha256sums=('cd52e757cb0bd15238f0207a215198d924811234028d056b7be39fde70491296')
 
 package() {
     install -d "${pkgdir}/usr/bin"
