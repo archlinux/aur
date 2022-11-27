@@ -24,11 +24,15 @@ optdepends=('python-opengl: enable OpenGL 3D graphics in PyQt applications'
             'qt5-x11extras: QtX11Extras'
             'qt5-remoteobjects: QtRemoteObjects'
             'qt5-speech: QtTextToSpeech'
-            'qt5-quick3d: QtQuick3D')
+            'qt5-quick3d: QtQuick3D'
+            'qt5-location: QtLocation, QtPositioning'
+            'qt5-sensors: QtSensors'
+            'qt5-webchannel: QtWebChannel')
 provides=('qt5-python-bindings' 'python-pyqt5=5.15.7')
 makedepends=('sip' 'pyqt-builder' 'python-opengl' 'python-dbus'
              'qt5-connectivity' 'qt5-multimedia' 'qt5-tools' 'qt5-serialport' 'qt5-speech' 'qt5-svg'
-             'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-remoteobjects' 'qt5-quick3d')
+             'qt5-webkit' 'qt5-websockets' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-remoteobjects'
+             'qt5-quick3d' 'qt5-sensors' 'qt5-webchannel' 'qt5-location')
 conflicts=('pyqt5-common' 'python-pyqt5')
 source=("https://pypi.python.org/packages/source/P/PyQt5/PyQt5-$pkgver.tar.gz")
 sha256sums=('755121a52b3a08cb07275c10ebb96576d36e320e572591db16cfdbc558101594')
