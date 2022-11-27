@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='cfn-guard-git'
-pkgver=2.1.0.r2.gd348ac9
+pkgver=2.1.3.r1.g7ec8f6d
 pkgrel=1
 pkgdesc='A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
