@@ -2,8 +2,8 @@
 _pkgname=vim-blueprint-syntax
 pkgname=vim-blueprint-syntax-git
 pkgver=r9.b14164b
-pkgrel=1
-pkgdesc="Vim syntax highlighting support for Gtk Blueprint files"
+pkgrel=2
+pkgdesc="Gtk blueprint files syntax highlighting support for vim"
 arch=(any)
 url="https://github.com/thetek42/vim-blueprint-syntax"
 license=(MIT)
