@@ -2,10 +2,10 @@
 pkgname=zshmux
 pkgver=0.1.2
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides quick access to tmux when a new shell is opened"
 arch=('any')
-url="https://git.huck.website"
+url="https://download.huck.website"
 license=('GPL')
 depends=('zsh' 'tmux')
 source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")

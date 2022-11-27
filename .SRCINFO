@@ -1,14 +1,14 @@
 pkgbase = zshmux
 	pkgdesc = Provides quick access to tmux when a new shell is opened
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://git.huck.website
+	url = https://download.huck.website
 	arch = any
 	license = GPL
 	depends = zsh
 	depends = tmux
-	source = zshmux-0.1.2.tar.gz::https://git.huck.website/zshmux-0.1.2.tar.gz
+	source = zshmux-0.1.2.tar.gz::https://download.huck.website/zshmux-0.1.2.tar.gz
 	sha256sums = 3890f340ab20212eee8cd47656abe9396c9f0cd75a62c323c974a89ec26119a3
 
 pkgname = zshmux
