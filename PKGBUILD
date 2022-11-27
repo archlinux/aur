@@ -8,8 +8,8 @@ url="https://gabmus.gitlab.io/whatip"
 license=('GPL3')
 depends=('iproute2' 'libadwaita' 'python-requests' 'python-netaddr' 'python-gobject')
 makedepends=('blueprint-compiler' 'gobject-introspection' 'meson')
-optdepends=('avahi: hostname resolution')
 checkdepends=('appstream')
+optdepends=('avahi: hostname resolution')
 source=("https://gitlab.gnome.org/GabMus/whatip/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('a13f02d8a805913e5603f7659c7932879da13afcbf2b8f728d6b6bba93aeb085')
 
