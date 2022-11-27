@@ -1,6 +1,6 @@
 # Maintainer: Maciej Łoziński <maciej@robotix-lozinski.pl>
 pkgname="red-nightly-bin"
-pkgver=0.6.4.nightly
+pkgver=r4282.26nov22.94beb4d6c
 pkgrel=1
 pkgdesc="Red is a next-generation programming language strongly inspired by Rebol"
 arch=(x86_64)
@@ -16,41 +16,19 @@ provides=(red)
 conflicts=(red ed)
 options=(!strip)
 source=(
+	"https://static.red-lang.org/dl/auto/linux/red-26nov22-94beb4d6c"
 	"https://raw.githubusercontent.com/red/red/master/BSL-License.txt"
 	"https://raw.githubusercontent.com/red/red/master/BSD-3-License.txt")
-md5sums=(
-	'e4224ccaecb14d942c71d31bef20d78c'
-	'8a643e34f08f7b9c9b480ad58fb4db3d')
+sha256sums=(
+	'0c15fc10fd0f3d0abe89c89a24ef466647e878a3919b4e9cd4e7e313472bfb0e'
+	'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566'
+	'e64d257131093ad15b757d19181e02e3a48a2cccabe14aebf153e91a5a3735a8')
 
-
-prepare() {
-	cd "$srcdir"
-	wget https://static.red-lang.org/download.html
-	_date=$( grep -P '/dl/auto/linux/red-\K([0-9]{2}[a-z]{3}[0-9]{2})' -o download.html )
-	_commit=$( grep -P '/dl/auto/linux/red-[0-9]{2}[a-z]{3}[0-9]{2}-\K([0-9a-f]*)' -o download.html )
-	_sha256=$( grep -Pz '(?s)/dl/auto/linux/red-[0-9]{2}[a-z]{3}[0-9]{2}-.*?\K([0-9a-f]{64})' -o download.html )
-	wget "https://static.red-lang.org/dl/auto/linux/red-$_date-$_commit" -O "red-latest"
-}
-
-pkgver() {
-	cd "$srcdir"
-
-	# days from Red's first commit
-	_days=$( expr \( `date --date="$_date" "+%s"` - `date --date="07mar11" "+%s"` \) \/ 86400 )
-
-	printf "r%s.%s" "$_days" "$_date.$_commit"
-}
-
-check() {
-	cd "$srcdir"
-	echo "$_sha256 red-latest" | sha256sum -c --quiet -
-	[ $? -eq 0 ] || exit 1
-}
 
 package() {
 	cd "$srcdir"
 
-	install -Dm755 red-latest "$pkgdir/usr/bin/red"
+	install -Dm755 red-26nov22-94beb4d6c "$pkgdir/usr/bin/red"
 
 	install -dm755 "${pkgdir}/usr/share/licenses/$pkgname"
 	install -Dm644 BSL-License.txt "$pkgdir/usr/share/licenses/$pkgname/BSL-License.txt"
