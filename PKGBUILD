@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -26,6 +26,11 @@ sha256sums=(
   'aa26ec986878d3fee1b99d0b31d0085379a78fcace20defbaf9627f007e2f2cc'
 )
 
+prepare(){
+  # Adjust PREFIX value in script files
+  sed -i "s?X-PREFIX-X?\/usr?" $pkgname-$pkgver/gui/wineasio-settings
+}
+
 build() {
   cd "$pkgname-$pkgver"
   make 32
@@ -38,6 +43,9 @@ package() {
   install -D -m644 build32/"$pkgname".dll "$pkgdir"/usr/lib32/wine/i386-windows/"$pkgname".dll
   install -D -m755 build64/"$pkgname".dll.so "$pkgdir"/usr/lib/wine/x86_64-unix/"$pkgname".dll.so
   install -D -m644 build64/"$pkgname".dll "$pkgdir"/usr/lib/wine/x86_64-windows/"$pkgname".dll
+  install -D -m755 gui/wineasio-settings "$pkgdir"/usr/bin/wineasio-settings
+  install -D -m644 gui/settings.py "$pkgdir"/usr/share/"$pkgname"/settings.py
+  install -D -m644 gui/ui_settings_py "$pkgdir"/usr/share/"$pkgname"/ui_settings.py
   install -D -m644 README.md "$pkgdir"/usr/share/"$pkgname"/README.md
 }
 # vim:set ts=2 sw=2 et:
