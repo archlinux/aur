@@ -17,10 +17,16 @@ package() {
   # Copy out files
   mkdir -p "${pkgdir}/${instdir}"
   cp -r  "${srcdir}/casa-${pkgver}-${pkgrel}-py3.8" "${pkgdir}/${instdir}"
+
   # Symlink executables
   mkdir -p "${pkgdir}/usr/bin/"
   for _executable in casa casaviewer mpicasa; do
     ln -s "${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
-  done 
-  ln -s "${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/python3" "${pkgdir}/usr/bin/casa-python3"
+  done
+
+  #Ading /etc/profile
+  mkdir -p ${pkgdir}/etc/profile.d
+  echo alias casa-python3=${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/python3 >> ${pkgdir}/etc/profile.d/casa.sh
+  echo alias casa-python3=${instdir}/casa-${pkgver}-${pkgrel}-py3.8/bin/python3
+  chmod +x ${pkgdir}/etc/profile.d/casa.sh
 }
