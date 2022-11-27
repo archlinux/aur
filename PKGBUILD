@@ -1,36 +1,20 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+#Maintainer: Jamie Steven (gritty.water0696@fastmail.com)
+_name=pixlet
+pkgname=${_name}-bin
+pkgver=0.22.6
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
-arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
-license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+arch=("x86_64" "aarch64")
+pkgdesc='Build apps for pixel-based displays'
+url="https://github.com/tidbyt/pixlet"
+license=(APACHE)
+provides=("${_name}")
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+source_x86_64=("https://github.com/tidbyt/pixlet/releases/download/v${pkgver}/pixlet_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/tidbyt/pixlet/releases/download/v${pkgver}/pixlet_${pkgver}_linux_arm64.tar.gz")
 
-build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
-}
+sha1sums_x86_64=('3412349d0dd0a7461d46b55eb8ff84d3f3233c5d')
+sha1sums_aarch64=('b032535928cc3f6dbe3d285530cb402748796140')
 
 package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+  install -Dm755 ${_name} ${pkgdir}/usr/bin/${_name}
 }
