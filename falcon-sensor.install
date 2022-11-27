@@ -1,13 +1,18 @@
+pre_upgrade() {
+  printf "$(tput setaf 5)You may need to uninstall the package first and remove the folder $(tput setaf 2)/opt/CrowdStrike$(tput sgr0)\n"
+  printf "$(tput setaf 6)sudo $(tput setaf 2)systemctl stop falcon-sensor$(tput sgr0)\n"
+  printf "$(tput setaf 6)sudo $(tput setaf 2)pacman --remove --nosave --recursive falcon-sensor$(tput sgr0)\n"
+  printf "$(tput setaf 6)sudo $(tput setaf 2)rm -rf /opt/CrowdStrike$(tput sgr0)\n"
+  printf "$(tput setaf 5)This is necessary because falcon-sensor creates some files after installation which are already contained in newer installation packages.$(tput sgr0)\n"
+}
+
 post_install() {
-  echo ':: Add your customer id to falcon: '
-  echo "     sudo /opt/CrowdStrike/falconctl -s --cid=<CID>"
-  echo ':: Start and enable falcon-sensor through systemd:'
-  echo '     sudo systemctl enable --now falcon-sensor'
+  printf "$(tput setaf 4)Add your customer id and provisioning token to falcon by issuing:$(tput sgr0)\n"
+  printf "$(tput setaf 6)sudo $(tput setaf 2)/opt/CrowdStrike/falconctl -s -f --cid=<CID> --provisioning-token=<PROVISIONING_TOKEN>$(tput sgr0)\n"
+  printf "$(tput setaf 4)Start and enable falcon-sensor through systemd:$(tput sgr0)\n"
+  printf "$(tput setaf 6)sudo $(tput setaf 2)systemctl enable --now falcon-sensor$(tput sgr0)\n"
 }
 
 post_upgrade() {
-  echo ':: Add your customer id to falcon: '
-  echo "     sudo /opt/CrowdStrike/falconctl -s --cid=<CID>"
-  echo ':: Start and enable falcon-sensor through systemd:'
-  echo '     sudo systemctl enable --now falcon-sensor'
+  post_install
 }
