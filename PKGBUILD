@@ -1,18 +1,19 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=networkd-broker
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An event broker daemon for systemd-networkd"
 arch=('x86_64')
 url="https://github.com/bpetlert/networkd-broker"
-license=('GPL3')
-depends=('systemd')
+license=('GPL-3.0-or-later')
+depends=('dbus')
 makedepends=(cargo)
+options=(!lto)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('33987dfa16b6863f1ebd34891aadc03d3284152b6276b1763cac09138779a93c')
+sha256sums=('8308250817741c84922dc7d2ed1d3142037c21067ee0c4351ff399df9c233409')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -35,5 +36,5 @@ package() {
   install -dm755 "$pkgdir/etc/networkd/broker.d/"{carrier.d,degraded.d,dormant.d,no-carrier.d,off.d,routable.d}
 
   install -Dm644 "README.adoc" "$pkgdir/usr/share/doc/${pkgname}/README.adoc"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 }
