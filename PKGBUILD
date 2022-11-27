@@ -2,7 +2,7 @@
 _pkgname=gnome-developer-www
 pkgname=gnome-developer-www-git
 pkgver=350.ea0ea9d
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME development website"
 arch=(any)
 url="https://developer.gnome.org"
@@ -30,5 +30,5 @@ package() {
   mkdir -p "$pkgdir"/srv/http "$pkgdir"/usr/share/licenses
   rm -rf $(find build -name .doctrees)
   cp -rT build "$pkgdir"/srv/http/gnome-developer-www
-  cp -rT LICENSES "$pkgdir"/usr/share/licenses/gnome-developer-www
+  cp -rT LICENSES "$pkgdir"/usr/share/licenses/"$_pkgname"
 }
