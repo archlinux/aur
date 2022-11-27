@@ -2,7 +2,7 @@
 
 pkgname=ouch
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Painless compression and decompression in the terminal"
 arch=('x86_64')
 url="https://github.com/ouch-org/ouch"
@@ -14,6 +14,8 @@ sha256sums=('3e126f00e1ad82ef4abfd28f86dac53b366a29de6a70359e734ecc8748f580fc')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
+  # TODO: Remove on next release <27-11-22, yigit> #
+  rm -f rust-toolchain
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -21,7 +23,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  GEN_COMPLETIONS=1 OUCH_ARTIFACTS_FOLDER=artifacts cargo build --frozen --release --all-features
+  OUCH_ARTIFACTS_FOLDER=artifacts cargo build --frozen --release --all-features
 }
 
 check() {
