@@ -6,10 +6,10 @@
 pkgname=mucommander
 pkgver=1.1.0
 _pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, cross-platform file manager with a dual-pane interface written in Java"
 url="http://www.mucommander.com"
-depends=('java-runtime=8' 'bash')
+depends=('java-runtime>=11' 'bash')
 arch=('any')
 license=('GPL')
 install=${pkgname}.install
