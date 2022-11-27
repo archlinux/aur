@@ -1,15 +1,15 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 
 pkgname=cavecube
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/PQCraft/CaveCube"
 license=(Boost)
-depends=('glibc' 'glfw')
-makedepends=('make' 'glibc' 'glfw')
-conflicts=(cavecube-bin)
+depends=(glibc)
+makedepends=(make glibc glfw)
+conflicts=(cavecube-bin cavecube-sdl2 cavecube-sdl2-bin)
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/PQCraft/CaveCube/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
