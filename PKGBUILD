@@ -41,7 +41,7 @@ prepare() {
     cd spark2014
     git submodule init
     git config submodule.why3.url "${srcdir}/why3-adacore"
-    git submodule update why3
+    git -c protocol.file.allow=always submodule update why3
     cd why3 && git reset --hard && cd ..
 
     ln -sf "${srcdir}/gcc/gcc/ada" gnat2why/gnat_src
