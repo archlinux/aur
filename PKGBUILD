@@ -42,9 +42,9 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
          libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof gi-docgen)
+             wayland-protocols sysprof gi-docgen xorg-server-xvfb)
 if [ -n "$_enable_check" ]; then
-  checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
+  checkdepends=(pipewire-session-manager python-dbusmock zenity)
 fi
 _commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # tags/43.1^2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"

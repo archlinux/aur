@@ -13,6 +13,7 @@ pkgbase = mutter-performance
 	makedepends = wayland-protocols
 	makedepends = sysprof
 	makedepends = gi-docgen
+	makedepends = xorg-server-xvfb
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
