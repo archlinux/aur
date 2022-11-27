@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=940
-_version=1.0.940
+_tag=954
+_version=1.0.954
 
 pkgname=${_basename}
 pkgver=${_version}
@@ -22,13 +22,11 @@ options=('!strip')
 backup=(
   "etc/${pkgname}/config"
   "etc/${pkgname}/logging.properties"
-  "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jicofo.conf"
 )
 source=(
         "$pkgname::git+https://github.com/jitsi/jicofo#tag=${_tag}"
         "config"
-        "sip-communicator.properties"
         "service"
         "sysusers.conf"
         "tmpfiles.conf"
@@ -59,15 +57,14 @@ package() {
         sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
-        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        install -Dm600 -t "${CONFDIR}" "config"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
-            'f3928f382fbfd5bc40bd0c2a9553d2480b4fa7cf2fd04109257cdac535ed3d9f'
-            'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
-            '21d9596eba7342cc02cb37f6c1bb651792e2c79df0374b4fd850e4fbad4cfaec'
+            'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
+            '0b28a97f02b21991c46e05a3546d466a73492c88218121e68aa3ea28f848091b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '9f6fb4759099feefaee6fd44cac5854401e58f7ce929949cbc3994faaa3487d3')
