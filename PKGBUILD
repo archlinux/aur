@@ -2,7 +2,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=7.3.1
+pkgver=7.4.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -17,11 +17,18 @@ conflicts=('nodejs-web-ext')
 # to speed up the build
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
-source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('d916163a4c4a9a2b7c7b42924eaf2b221d902825171d0b0af441d64de9796f24')
+source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz"
+        "nodejs19.diff")
+sha256sums=('915e9b2175094634c666a3ee85e454e60a57e438e647f898ef47c87db8d8fccc'
+            '9475a50851a8442dd8edad55f5b678923808396eedfae45dd29a960cc0646529')
 
 prepare() {
   cd "$srcdir"
+
+  # Make tests pass with Node.js 19 https://github.com/mozilla/web-ext/issues/2564
+  pushd $pkgname-$pkgver
+  patch -Np1 -i ../nodejs19.diff
+  popd
 
   # -build for running webpack and tests, and the original for actual packaging
   cp -r $pkgname-$pkgver{,-build}
@@ -42,7 +49,8 @@ check() {
   cd "$srcdir/$pkgname-$pkgver-build"
 
   # web-ext uses flow-bin, which does not support some architectures (e.g., RISC-V)
-  CI_SKIP_FLOWCHECK=y npm test
+  # Some tests match error messages and fail if messages are translated
+  LANG=C.UTF-8 CI_SKIP_FLOWCHECK=y npm test
 }
 
 package() {
