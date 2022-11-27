@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.45.131
+	pkgver = 1.45.133
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -60,9 +60,9 @@ pkgbase = brave
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.45.131
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.45.131
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=107.0.5304.110
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.45.133
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.45.133
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=107.0.5304.141
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-107-patchset-1/chromium-107-patchset-1.tar.xz
