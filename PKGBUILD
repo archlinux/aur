@@ -2,8 +2,8 @@
 
 _pkgname="isr"
 pkgname="${_pkgname}-git"
-pkgver=r.
-pkgrel=1
+pkgver=r150.3f6498c
+pkgrel=2
 pkgdesc="Super-scale your images and run experiments with Residual Dense and Adversarial Networks."
 arch=("any")
 url="https://github.com/idealo/image-super-resolution"
@@ -16,11 +16,6 @@ conflicts=("isr")
 source=("${pkgname}-${pkgver}.zip::https://github.com/idealo/image-super-resolution/archive/refs/heads/master.zip")
 sha256sums=('SKIP')
 _srcname="image-super-resolution-master"
-
-pkgver() {
-    cd "${srcdir}/${_srcname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
     cd "${srcdir}/${_srcname}"
