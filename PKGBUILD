@@ -3,17 +3,42 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=107.0b4
+pkgver=108.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.thunderbird.net/channel/#beta"
-depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'ttf-font' 'libpulse' 'nss')
-makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils'
-             'xorg-server-xvfb' 'autoconf2.13' 'rust' 'clang' 'llvm' 'jack'
-             'nodejs' 'cbindgen' 'nasm' 'lld' 'python' 'dump_syms'
-             'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi')
+depends=('dbus-glib'
+         'ffmpeg'
+         'gtk3'
+         'libpulse'
+         'libxt'
+         'mime-types'
+         'nss'
+         'ttf-font')
+makedepends=('cbindgen'
+             'clang'
+             'diffutils'
+             'dump_syms'
+             'imake'
+             'inetutils'
+             'jack'
+             'lld'
+             'llvm'
+             'mesa'
+             'nasm'
+             'nodejs'
+             'python'
+             'rust'
+             'unzip'
+             'wasi-compiler-rt'
+             'wasi-libc'
+             'wasi-libc++'
+             'wasi-libc++abi'
+             'xorg-server-xvfb'
+             'yasm'
+             'zip')
 makedepends+=('libotr')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -29,7 +54,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('1eac116682b5008cc6dfd5c7935b774690f20d9808ccf713060be64b687550d23f494da238970c07987fad0e4080e9f6b08f549066b6f4884bf4a93c80381cb6'
+b2sums=('baf8c2fcf04dd781df63449283116dabe565b8d1dd87d97fff02268a18911456f1fdf1f9c4c2b842b17edd7bf163592d9302a7778e5db3b19c2c8e59b5614f89'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
