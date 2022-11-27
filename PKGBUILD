@@ -16,8 +16,8 @@ depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
 	 'libnice' 'libsrtp')
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
 optdepends=('libcanberra: audio notification support')
-provides=("${pkgname%-git-notification-sounds}")
-conflicts=("${pkgname%-git-notification-sounds}")
+provides=("${pkgname%-notification-sounds-git}")
+conflicts=("${pkgname%-notification-sounds-git}")
 source=('dino::git+https://github.com/dino/dino')
 sha512sums=('SKIP')
 
@@ -34,23 +34,23 @@ _ENABLE_PLUGINS="--enable-plugin='notification-sound'"
 # To restore the old behaviour add '--with-libsignal-in-tree' flag to configure
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git-notification-sounds}"
+    cd "${srcdir}/${pkgname%-notification-sounds-git}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git-notification-sounds}"
+    cd "${srcdir}/${pkgname%-notification-sounds-git}"
     ./configure $_DISABLE_PLUGINS $_ENABLE_PLUGINS --with-tests --prefix="/usr" CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
     make
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git-notification-sounds}"
+    cd "${srcdir}/${pkgname%-notification-sounds-git}"
     make DESTDIR="${pkgdir}/" install
 }
 
 check() {
-    cd "${srcdir}/${pkgname%-git-notification-sounds}"
+    cd "${srcdir}/${pkgname%-notification-sounds-git}"
     echo "Executing xmpp-vala-test:"
     build/xmpp-vala-test
 }
