@@ -4,8 +4,8 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _name=f3d
 pkgname=$_name-git
-pkgver=v1.3.1.r32.gac0274d
-pkgrel=5
+pkgver=v1.3.1.r106.gc751adb
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_name-app/$_name"
@@ -32,12 +32,13 @@ build() {
         -DF3D_GENERATE_MAN=ON \
         -DF3D_INSTALL_MIME_TYPES_FILES=ON \
         -DF3D_INSTALL_THUMBNAILER_FILES=ON \
-        -DF3D_PYTHON_BINDINGS=ON \
-        -DF3D_JAVA_BINDINGS=ON \
+        -DF3D_BINDINGS_PYTHON=ON \
+        -DF3D_BINDINGS_JAVA=ON \
         -DF3D_INSTALL_SDK=ON \
-        -DF3D_MODULE_OCCT=ON \
-        -DF3D_MODULE_ASSIMP=ON \
-        -DF3D_MODULE_ALEMBIC=ON \
+        -DF3D_PLUGINS_STATIC_BUILD=ON \
+        -DF3D_PLUGIN_BUILD_OCCT=ON \
+        -DF3D_PLUGIN_BUILD_ASSIMP=ON \
+        -DF3D_PLUGIN_BUILD_ALEMBIC=ON \
         -DF3D_MODULE_RAYTRACING=ON \
         -DF3D_MODULE_EXTERNAL_RENDERING=ON \
         ..
