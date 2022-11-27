@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_version=1.0+947
-_url=https://download.jitsi.org/unstable/jicofo_1.0-947-1_all.deb
+_version=1.0+959
+_url=https://download.jitsi.org/unstable/jicofo_1.0-959-1_all.deb
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -19,14 +19,12 @@ options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
   "etc/${_pkgbase}/logging.properties"
-  "etc/${_pkgbase}/sip-communicator.properties"
   "etc/${_pkgbase}/jicofo.conf"
 )
 source=(
         "$_url"
         "jicofo.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
         "config"
-        "sip-communicator.properties"
         "service"
         "sysusers.conf"
         "tmpfiles.conf"
@@ -58,16 +56,15 @@ package() {
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
-        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties" "jicofo.conf"
+        install -Dm600 -t "${CONFDIR}" "config" "jicofo.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('8b801396395d607671ac165fcab24328cf106522f5f953e40903ab7067ee8d47'
-            '7f11758428c2a9d4d03302d7286984a5ecbc060ee1e89a2e5535c8e78d876a12'
-            'e0e42bb77b6c60e2a2d5ad57b12365166e90b91e53c91062909d578808d5e00c'
-            'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
-            '59c6a682953a9981af90d111901b3637a79ff42d39d1fbd5fa22730ec4148762'
+sha256sums=('a34a2bd2d78a29a32d35e501d2485358ef8e298f8c0c6f2309b8a5f580b75b83'
+            '720565487c27727fc18cd37e844a62a0877d55d1d0e14ff838690e9a9a475ace'
+            'c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e'
+            '61babe0697e85e37606686cdc205cedb4a4f53eff82d29d3351ae16c5771f286'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             'a8e5ff30f3737da564f61e7d00cc6e0a8b243da54aa02f94095deaa2f4cceb66')
