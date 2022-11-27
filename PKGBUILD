@@ -8,7 +8,7 @@ pkgname=(
     'docspell-restserver'
 )
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 changelog=.CHANGELOG
 arch=('any')
 url="https://docspell.org/"
@@ -49,9 +49,11 @@ prepare() {
 
 package_docspell-joex() {
     pkgdesc+=" (Job executer)"
-    depends=('ghostscript' 'java-runtime-headless' 'tesseract' 'unoconv' 'wkhtmltopdf')
+    depends=('ghostscript' 'java-runtime-headless' 'tesseract' 'unoconv')
     optdepends=('ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable'
-                'unpaper: pre-processes images to yield better results when doing ocr')
+                'python-weasyprint: alternative to wkhtmltopdf for converting html files to pdf'
+                'unpaper: pre-processes images to yield better results when doing ocr'
+                'wkhtmltopdf: convert html to pdf')
     backup=("etc/docspell/joex.conf")
 
     install -Dm 755 "${pkgname[0]}.sh" "$pkgdir/usr/bin/${pkgname[0]}"
@@ -80,7 +82,7 @@ package_docspell-joex() {
 package_docspell-restserver() {
     pkgdesc+=" (Server)"
     depends=('java-runtime-headless')
-    optdepends=('solr: provide fulltext search')
+    optdepends=('solr: alternative fulltext search')
     backup=("etc/docspell/restserver.conf")
 
     install -Dm 755 "${pkgname[1]}.sh" "$pkgdir/usr/bin/${pkgname[1]}"

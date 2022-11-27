@@ -1,7 +1,7 @@
 pkgbase = docspell
 	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort.
 	pkgver = 0.39.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docspell.org/
 	changelog = .CHANGELOG
 	arch = any
@@ -30,13 +30,14 @@ pkgname = docspell-joex
 	depends = java-runtime-headless
 	depends = tesseract
 	depends = unoconv
-	depends = wkhtmltopdf
 	optdepends = ocrmypdf: adds an OCR layer to scanned PDF files to make them searchable
+	optdepends = python-weasyprint: alternative to wkhtmltopdf for converting html files to pdf
 	optdepends = unpaper: pre-processes images to yield better results when doing ocr
+	optdepends = wkhtmltopdf: convert html to pdf
 	backup = etc/docspell/joex.conf
 
 pkgname = docspell-restserver
 	pkgdesc = Assists in organizing your piles of documents, resulting from scanners, e-mails and other sources with miminal effort. (Server)
 	depends = java-runtime-headless
-	optdepends = solr: provide fulltext search
+	optdepends = solr: alternative fulltext search
 	backup = etc/docspell/restserver.conf
