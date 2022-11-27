@@ -59,7 +59,7 @@ makedepends=(cargo-audit
              java-runtime-headless
              jq
              lld
-             llvm
+             'llvm>=15'
              ninja
              npm
              pipewire
