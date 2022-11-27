@@ -1,5 +1,5 @@
 pkgbase = python-pyqt5-webkit
-	pkgdesc = Python bindings for the Qt5WebKit
+	pkgdesc = A set of Python bindings for the Qt5 toolkit with Qt5WebKit support
 	pkgver = 5.15.7
 	pkgrel = 3
 	url = https://riverbankcomputing.com/software/pyqt/intro
