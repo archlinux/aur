@@ -6,21 +6,19 @@ pkgdesc="Red is a next-generation programming language strongly inspired by Rebo
 arch=(x86_64)
 url="https://www.red-lang.org"
 license=('custom:BSD-3-Clause' 'custom:BSL-1.0')
-depends=(lib32-curl lib32-gtk3 lib32-gdk-pixbuf2)
+depends=(lib32-curl)
 makedepends=(wget)
 optdepends=(
 	'openssh: for X11 forwarding on headless machines'
 	'xorg-xhost: for X11 forwarding on headless machines'
 	'xorg-xauth: for X11 forwarding on headless machines')
-provides=(red red-nightly)
-conflicts=(red red-nightly red-bin ed)
+provides=(red)
+conflicts=(red ed)
 options=(!strip)
 source=(
-	"https://static.red-lang.org/dl/auto/linux/red-latest"
 	"https://raw.githubusercontent.com/red/red/master/BSL-License.txt"
 	"https://raw.githubusercontent.com/red/red/master/BSD-3-License.txt")
 md5sums=(
-	SKIP
 	'e4224ccaecb14d942c71d31bef20d78c'
 	'8a643e34f08f7b9c9b480ad58fb4db3d')
 
@@ -28,10 +26,10 @@ md5sums=(
 prepare() {
 	cd "$srcdir"
 	wget https://static.red-lang.org/download.html
-	_date=$( grep -P 'linux/red-latest">red-\K(.{7})(?=-.*</a)' -o download.html )
-	_commit=$( grep -P 'linux/red-latest">red-(.{7})-\K(.*)(?=</a)' -o download.html )
-	_sha256=$( grep -Pz '(?s)linux/red-latest.*?\K([0-9a-f]{64})' -o download.html )
-	rm download.html
+	_date=$( grep -P '/dl/auto/linux/red-\K([0-9]{2}[a-z]{3}[0-9]{2})' -o download.html )
+	_commit=$( grep -P '/dl/auto/linux/red-[0-9]{2}[a-z]{3}[0-9]{2}-\K([0-9a-f]*)' -o download.html )
+	_sha256=$( grep -Pz '(?s)/dl/auto/linux/red-[0-9]{2}[a-z]{3}[0-9]{2}-.*?\K([0-9a-f]{64})' -o download.html )
+	wget "https://static.red-lang.org/dl/auto/linux/red-$_date-$_commit" -O "red-latest"
 }
 
 pkgver() {
