@@ -1,0 +1,14 @@
+pkgbase = vim-blueprint-syntax-git
+	pkgdesc = Vim syntax highlighting support for Gtk Blueprint files
+	pkgver = r9.b14164b
+	pkgrel = 1
+	url = https://github.com/thetek42/vim-blueprint-syntax
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = vim-blueprint-syntax
+	conflicts = vim-blueprint-syntax
+	source = vim-blueprint-syntax::git+https://github.com/thetek42/vim-blueprint-syntax
+	md5sums = SKIP
+
+pkgname = vim-blueprint-syntax-git
