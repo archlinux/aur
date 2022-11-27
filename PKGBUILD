@@ -1,7 +1,7 @@
 # Contributor: Rod Kay     <charlie5 on #ada at irc.libera.chat>
 
 pkgname=adacurses
-pkgver=20220205
+pkgver=20221126
 pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
@@ -11,11 +11,11 @@ license=('MIT')
 
 makedepends=('gcc-ada')
 
-source=('https://invisible-mirror.net/archives/AdaCurses/current/AdaCurses-20220205.tgz'
+source=("https://invisible-mirror.net/archives/AdaCurses/current/AdaCurses-$pkgver.tgz"
         'adacurses.gpr.in')
 
-md5sums=('20bb4bcdf2cfd0ca91c1e12acca6b5ad'
-         'bcf4fda38d94da5fb04325c51217d790')
+sha256sums=('ead55b879aa5073ecfaf53be397de17ef22a705dc60224de1d3ba45a5a58deb3'
+            '3d722aac3df43e5baad8ee1054de86a4d3c41b234efdff97ae2bac0ee22e3b4a')
 
 PREFIX=/usr
 
