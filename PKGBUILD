@@ -1,11 +1,11 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-flake8-annotations
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
-pkgdesc="A flake8 extension that checks type annotations"
+pkgdesc='A flake8 extension that checks type annotations'
 arch=('any')
-url="https://github.com/sco1/flake8-annotations"
+url='https://github.com/sco1/flake8-annotations'
 license=('MIT')
 depends=('python' 'flake8')
 makedepends=(
@@ -18,8 +18,9 @@ checkdepends=(
   'python-pytest'
   'python-pytest-check'
   'python-pytest-cov'
+  'python-colorama'
 )
-_commit='2044dc84fbb6390205cf8c663a121ad02d3e16c3'
+_commit='69071458477be57f0c2992fe2acf8683a2d8d9e7'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -40,7 +41,7 @@ build() {
 check() {
   cd "$pkgname"
 
-  pytest \
+  pytest -v \
     --deselect testing/test_flake8_actually_runs_checker.py::test_checker_runs \
     --deselect testing/test_opinionated_any.py::test_ANN401_fire_when_selected
 }
