@@ -32,7 +32,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.1+r2+g6a962803e
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -42,9 +42,9 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
          libxkbfile libsysprof-capture lcms2 colord)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof gi-docgen xorg-server-xvfb)
+             wayland-protocols sysprof gi-docgen)
 if [ -n "$_enable_check" ]; then
-  checkdepends=(pipewire-session-manager python-dbusmock zenity)
+  checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
 _commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # tags/43.1^2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
@@ -191,19 +191,12 @@ build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  if [ -n "$_disable_docs" ]; then
-    arch-meson $pkgname build \
-      -D egl_device=true \
-      -D wayland_eglstream=true \
-      -D docs=false \
-      -D installed_tests=false
-  else
-    arch-meson $pkgname build \
-      -D egl_device=true \
-      -D wayland_eglstream=true \
-      -D docs=true \
-      -D installed_tests=false
-  fi
+  arch-meson $pkgname build \
+    -D egl_device=true \
+    -D wayland_eglstream=true \
+    -D installed_tests=false \
+    -D docs=$(if ! [ -n "$_disable_docs" ]; then echo "true"; else echo "false"; fi) \
+    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
 
   meson compile -C build
 }

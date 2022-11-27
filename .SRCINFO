@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 43.1+r2+g6a962803e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,6 @@ pkgbase = mutter-performance
 	makedepends = wayland-protocols
 	makedepends = sysprof
 	makedepends = gi-docgen
-	makedepends = xorg-server-xvfb
 	depends = dconf
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
