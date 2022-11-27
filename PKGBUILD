@@ -3,7 +3,7 @@
 
 _pkgname='ory-oathkeeper'
 pkgname="${_pkgname}-bin"
-pkgver=0.39.4
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="A cloud native Identity & Access Proxy (IAP) which authenticates and authorizes incoming HTTP requests."
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 provides=("${_pkgname}")
 source=("https://github.com/ory/oathkeeper/releases/download/v${pkgver//_/-}/oathkeeper_${pkgver//_/-}-linux_64bit.tar.gz")
-sha256sums=('6f40566bc7a0d5da88bc4fdb8063dcad3fe47e07deff0f82a9959e0a2bbce057')
+sha256sums=('379c27114dfe7c4a30f96d10c5bfdf01e6fd977f207dd7ab585780a1d6fc1ee3')
 
 package() {
     install -m755 -D "${srcdir}/oathkeeper" "${pkgdir}/usr/bin/oathkeeper"
