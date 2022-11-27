@@ -4,7 +4,7 @@
 
 _pkgname=digikam
 pkgname="$_pkgname-git"
-pkgver=7.5.0.r4063.gdcef37cf0d
+pkgver=8.0.0.r3297.98bb80e37a
 pkgrel=1
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
@@ -28,7 +28,20 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+	printf "%s.%s" $(git blame --abbrev -L/DIGIKAM_MAJOR_VERSION/,+3 CMakeLists.txt -s | awk 'BEGIN { ORS = "."; }
+	{
+		gsub("[\")]", "");
+		"git rev-list --count "$1"..HEAD" | getline x;
+		if (NR==1 || min>x) {
+			min = x;
+			min_hash = $1;
+		}
+		print $4;
+	}
+	END {
+		ORS="\n";
+		print "r"min;
+	}') $(git rev-parse --short HEAD)
 }
 
 build() {
