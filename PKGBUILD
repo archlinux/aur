@@ -5,7 +5,7 @@
 
 pkgname=lf-bin
 pkgver=27
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal file manager inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/gokcehan/lf'
@@ -18,7 +18,7 @@ sha256sums_i686=('7735a1a203c58891bafdc6869f72606142694179eb5798b6674ef9e7b02dbd
 sha256sums_x86_64=('b8f9431dc63f7b2cff8e4306cff4c075adbe9f0900b563f91a6b742a41290d7f')
 sha256sums_armv7h=('e3dfc49ff95aacae1f44be882f8b36960182e200bad10f1afad3a63df37b0927')
 provides=('lf')
-conflicts=('lf')
+conflicts=('lf' 'lf-git' 'lf-sixel-git')
 
 package() {
   install -Dm755 "lf" "$pkgdir/usr/bin/lf"

@@ -1,7 +1,7 @@
 pkgbase = lf-bin
 	pkgdesc = A terminal file manager inspired by ranger (Precompiled binary from official repository)
 	pkgver = 27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gokcehan/lf
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = lf-bin
 	license = MIT
 	provides = lf
 	conflicts = lf
+	conflicts = lf-git
+	conflicts = lf-sixel-git
 	options = !strip
 	options = !emptydirs
 	source_i686 = lf-27-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r27/lf-linux-386.tar.gz
