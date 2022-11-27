@@ -2,7 +2,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
 pkgver=0.6.4
-pkgrel=2
+pkgrel=1
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
