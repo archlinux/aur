@@ -12,8 +12,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671' '2694' '2720')
-_merge_requests_to_use=('1441' '1880' '2694' '2720')
+# Merge Requests List: ('579' '1441' '1880' '2671' '2694' '2702' '2720')
+_merge_requests_to_use=('1441' '1880' '2694' '2702' '2720')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -97,6 +97,9 @@ prepare() {
 
   git reset --hard
   git cherry-pick --abort || true
+
+  # build: Replace deprecated/custom meson functions
+  pick_mr '2702' 'merge'
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
