@@ -1,6 +1,37 @@
 Version history
 ===============
 
+0.10.1
+------
+
+2022-11-27
+
+The replay browser shows the filename of the currently selected replay in the
+nameplate below the preview, in addition to the existing fields (level name,
+player, pointed-to level). If the replay filename is too long, e.g., because
+you run Lix in a tall (= non-widescreen) resolution, the nameplate shows only
+the hinder part. This way, you'll see both the frontal part of the filename
+in the file picker on the left-hand side and the hinder part of the filename
+in the nameplate on the right-hand side.
+
+Added button to flip tiles vertically in the editor, in addition to the
+existing button that mirrors horizontally. No hotkey is bound by default
+to the vertical flip. You may assign a hotkey yourself.
+
+Hotkey reminders in button corners appear in lighter text than before,
+but still slightly darker than regular text.
+
+In the options menu, moved some menu hotkey options further right on the
+screen, to not overlap with the menu color pickers' description texts
+on tall (= non-widescreen) resolutions.
+
+In geoo's multiplayer map Ghetto Party, replaced imploders with exploders.
+This is funnier and stays true to the original two-player Ghetto Wars.
+
+Pruned empty space around Segmentation Fault in lemforum/Daunting.
+
+
+
 0.10.0
 ------
 
