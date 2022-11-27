@@ -1,4 +1,4 @@
-# Maintainer: ston <2424284164@qq.com>
+# Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland
 pkgver=0.9.16
