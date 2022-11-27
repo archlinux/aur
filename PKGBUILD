@@ -6,7 +6,7 @@ pkgver=4.8.2
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
-arch=(x86_64)
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=(LGPL)
 depends=(glib2 cairo pango harfbuzz fribidi gdk-pixbuf2 libpng libtiff libjpeg
          libepoxy libgl libegl libxkbcommon graphene iso-codes tracker3
