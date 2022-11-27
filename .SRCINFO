@@ -1,7 +1,7 @@
 pkgbase = jitsi-videobridge-bin
 	pkgdesc = Jitsi Meet Videobridge binary
 	pkgver = 2.2+61+g98c9f868
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = jitsi-videobridge-bin
 	options = !strip
 	backup = etc/jitsi-videobridge/config
 	backup = etc/jitsi-videobridge/logging.properties
-	backup = etc/jitsi-videobridge/callstats-java-sdk.properties
 	backup = etc/jitsi-videobridge/sip-communicator.properties
 	backup = etc/jitsi-videobridge/jvb.conf
 	source = https://download.jitsi.org/stable/jitsi-videobridge2_2.2-61-g98c9f868-1_all.deb

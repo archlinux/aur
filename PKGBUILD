@@ -10,7 +10,7 @@ _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -22,7 +22,6 @@ options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
   "etc/${_pkgbase}/logging.properties"
-  "etc/${_pkgbase}/callstats-java-sdk.properties"
   "etc/${_pkgbase}/sip-communicator.properties"
   "etc/${_pkgbase}/jvb.conf"
 )
