@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.947+0+g154167d7
+pkgver=1.0.959+0+g47e9dbbe
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
@@ -18,13 +18,11 @@ options=('!strip')
 backup=(
   "etc/${pkgname}/config"
   "etc/${pkgname}/logging.properties"
-  "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jicofo.conf"
 )
 source=(
         "$pkgname::git+https://github.com/jitsi/jicofo"
         "config"
-        "sip-communicator.properties"
         "service"
         "sysusers.conf"
         "tmpfiles.conf"
@@ -60,15 +58,14 @@ package() {
         sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
-        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        install -Dm600 -t "${CONFDIR}" "config"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
-            'a77c51abdb9467d76e5f17cb9417f901c657838169de8462876c8b4fb9245910'
-            'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
+            '657bb19d1e84ead55197afde304c3a84c304a01844279299a6c6267c9e0bdbee'
             'e6c18c9cbf4e38fa5faaf3459b0524631cb3863dbf04de858b84f0dad8a00e8e'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             'b678d6312313b73dabc590f846cbd38de251ba4fd33ae0d523e4e8722f54c0ac')

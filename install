@@ -1,11 +1,27 @@
 post_install() {
 	cat << __EOF__
-
-In order to align all jitsi package, we change the config and install path to match Arch paths.
-
-Update the config with your previous one carefully. Do not blindly copy !
-
 The configs are located here:
-  - /etc/jicofo-git
+  - /etc/jicofo-nightly
+__EOF__
+}
+post_upgrade() {
+    cat <<__EOF__
+Jicofo config is now set in jicofo.conf.
+You need to set:
+jicofo {
+  xmpp: {
+    client: {
+      client-proxy: "focus.YOUR_DOMAIN"
+      xmpp-domain: "YOUR_DOMAIN"
+      domain: "auth.YOUR_DOMAIN"
+      username: "focus"
+      password: "FOCUS_PASSWORD"
+    }
+    trusted-domains: [ "recorder.YOUR_DOMAIN" ]
+  }
+  bridge: {
+    brewery-jid: "JvbBrewery@internal.auth.YOUR_DOMAIN"
+  }
+}
 __EOF__
 }
