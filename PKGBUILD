@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=20220320
+pkgver=20221126
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -28,7 +28,6 @@ optdepends=('aften: support for AC-3 audio encoding'
 'neroaacenc: support for NERO AAC audio encoding'
 'opus-tools: support for Opus audio encoding'
 'sox: support for processing of audio files'
-'telxcc-git: support for closed caption extraction from TS files'
 'tsmuxer: support for TS container'
 'vapoursynth: A video processing framework with the future in mind'
 'x264: support for H.264 video encoding'
@@ -47,7 +46,7 @@ package() {
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-sha256sums_x86_64=('c130788aa0b97fbc06bbe8a0ad841354553ebf362741ef1b27ff4ac57aa0d940'
+sha256sums_x86_64=('68dec9468c6f6521a4bcfb309d34edb11d694eb6a92bf6a412967eccda0bc816'
                    '5052a2a78a1d3dc5a2b20b352e9aa01bbc2d9afd0da28de604e970acc216384c'
                    '4b62792db9e95bb0e4c0969e72001b146b55e5e6af91df81c404d6ef61dd633f'
                    '9b56b57bb0cec33e3964c953f6340004476aad346d9a50dc93b8389ab083c015')
