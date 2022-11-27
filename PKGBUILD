@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9412.bc6ede7c1
+pkgver=r9764.797270802
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -40,23 +40,21 @@ depends=(
     'python-flask'
     'python-flask-cors'
     'python-waitress'
-    'python-pyqt5'
+    'python-pyqt6'
+    'python-pyqt6-webengine'
 )
 makedepends=(
     'git'
     'rsync'
 
-    'bazel'
+    'ninja'
     'clang'
 
-    'maturin'
     'rust'
+    'libxcrypt-compat'
 
     'python-pip'
-    'python-mypy-protobuf'
     'npm'
-    'typescript'
-    'jre11-openjdk'
 )
 optdepends=(
     'lame: record sound'
@@ -80,18 +78,10 @@ pkgver() {
 prepare() {
     cd "$pkgname"
 
-    # Disable foring a specific bazel version to build with
-    rm .bazelversion
-
-    # Work around option that got removed in bazel
-    sed -i 's/--experimental_no_product_name_out_symlink//g' .bazelrc
-
     # Put translations in place.
     #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-i18n-*/ qt/po/repo
-
-    echo "build --action_env=PYO3_PYTHON=/usr/bin/python3" > "$srcdir/$pkgname/user.bazelrc"
 }
 
 build() {
@@ -99,13 +89,12 @@ build() {
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
     ./tools/build
 }
 
 package() {
     cd "$pkgname"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .bazel/out/dist/anki-*.whl .bazel/out/dist/aqt-*.whl
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps out/wheels/*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
     install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
