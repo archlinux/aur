@@ -8,7 +8,7 @@ _url=https://download.jitsi.org/stable/jicofo_1.0-954-1_all.deb
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -24,7 +24,7 @@ backup=(
 )
 source=(
         "$_url"
-        "jicofo.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
+        "jicofo_${_version#1.0+}.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
         "config"
         "service"
         "sysusers.conf"
@@ -57,7 +57,8 @@ package() {
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
-        install -Dm600 -t "${CONFDIR}" "config" "jicofo.conf"
+        install -Dm600 "config" "${CONFDIR}/config" 
+        install -Dm600 "jicofo_${_version#1.0+}.conf" "${CONFDIR}/jicofo.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
