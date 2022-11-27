@@ -69,7 +69,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=6.0.10
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -95,7 +95,6 @@ source=(
   0003-soundwire-intel-Initialize-clock-stop-timeout.patch
   0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
   0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
-  0006-drm-i915-Fix-unhandled-deadlock-in-grab_vma.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -106,12 +105,11 @@ sha256sums=('39e57fcd84cd70bfa3e1a4185d3aa0ed7f1432f24c6548d16326b0c3c9541dd0'
             '848ccd048f91b17f0e0192d2900c462986eeacf78bb578b2de9498c4a0526983'
             '3a8f397b89bad95c46f42c0f80ede7536a4a45a28621e00ed486918a55f905ed'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            '05a9b754ff501c45833238db1f304533a3b0aec3f9281cb8381c580066a2eff5'
-            '800804877e411394cd7aa77884054e0447da51b5fb010e3f3f992bfe41e41fba'
-            '3f5a6fc58ae54bcfd95e147a2156c501eecfd9fcf2a9ceed056df87d59954af8'
-            '9aeaddde2dd4bca54ee00ee11a53677a3afe82c61543c416708edaa0f27097c9'
-            '5d22887375ab7a8615b7ad84445d5c62350be23873396222c48f6e39dd64161c'
-            '966f24db411f100a2c7028c7e26814fa34a742f55a236df5df5357174404750a')
+            '09d6205b2550143a3a7b2614f10610a00a7b3bbe26aadaa7c128d87f662e5f76'
+            'cade95b098bd1ccd14f1cf111e95572b61dc72099ebe767e75beca4ead12cc40'
+            '83553cf53bd06efc20a3f432562358c160f1517dad88694c2ff2389df5cc38f9'
+            '1a123dcf3c4b797eec0bac0ffe13ff015b95f21ca4ae40800e1a03f1d74c420a'
+            '9d855466dfb15f3e9a57db77c58ed57c59d0db0e677787653491ae44fc5d0f86')
 
 prepare() {
   cd linux-${pkgver}
