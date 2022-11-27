@@ -1,16 +1,16 @@
 pkgbase = python-yalafi
 	pkgdesc = Yet another LaTeX filter
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/matze-dd/YaLafi
+	url = https://github.com/torik42/YaLafi
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
-	depends = python3
+	makedepends = python-pyproject2setuppy
+	depends = python
 	depends = languagetool
-	source = https://github.com/matze-dd/YaLafi/archive/1.3.1.zip
+	source = https://github.com/torik42/YaLafi/archive/1.4.0.zip
 	source = ltdirectory.patch
-	sha256sums = 7e2985c11f6001d586e09a5cf2838479fe12600cfff315933941952110c67259
+	sha256sums = 0062175c40659eb16beff26cb934f073c87f6e6e5f56657b713eb401ec6973cc
 	sha256sums = ff59913ed6c4cc63dcf47f9604d5a096bd30e152f14e36ec53fa1e37793e5c10
 
 pkgname = python-yalafi

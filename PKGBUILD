@@ -1,33 +1,33 @@
-# Maintainer: dianlujitao <dianlujitao at gmail dot com>
+# Maintainer: MoetaYuko <loli at yuko dot moe>
 # Contributor: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=python-yalafi
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Yet another LaTeX filter"
-url="https://github.com/matze-dd/YaLafi"
-depends=('python3' 'languagetool')
-makedepends=('python-setuptools')
+url="https://github.com/torik42/YaLafi"
+depends=('python' 'languagetool')
+makedepends=('python-pyproject2setuppy')
 license=('GPL3')
 arch=('any')
 source=(
-    "https://github.com/matze-dd/YaLafi/archive/$pkgver.zip"
+    "https://github.com/torik42/YaLafi/archive/$pkgver.zip"
     "ltdirectory.patch"
 )
-sha256sums=('7e2985c11f6001d586e09a5cf2838479fe12600cfff315933941952110c67259'
+sha256sums=('0062175c40659eb16beff26cb934f073c87f6e6e5f56657b713eb401ec6973cc'
             'ff59913ed6c4cc63dcf47f9604d5a096bd30e152f14e36ec53fa1e37793e5c10')
 
 prepare() {
-    cd "$srcdir/YaLafi-$pkgver"
+    cd YaLafi-$pkgver
     patch -p1 < "$srcdir/ltdirectory.patch"
 }
 
 build() {
-    cd "$srcdir/YaLafi-$pkgver"
-    python setup.py build
+    cd YaLafi-$pkgver
+    python -m pyproject2setuppy.main build
 }
 
 package() {
-    cd "$srcdir/YaLafi-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd YaLafi-$pkgver
+    python -m pyproject2setuppy.main install --root="$pkgdir" --optimize=1
 }
