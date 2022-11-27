@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 6.1rc4.r47.g118039eecaca
+	pkgver = 6.1rc6.r47.g64b769ab5d30
 	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/linux/wiki/README
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.1
 	source = config
 	sha256sums = SKIP
-	sha256sums = cea23795ea542286eb4501a2f2171d7a7335aa1ff548f15fc4f0fc3715cc00a6
+	sha256sums = e965fed70826713d2576567494453d800ced77dfdd156f7fe4511ddb154671b6
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules

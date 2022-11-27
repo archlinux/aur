@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=6.1rc4.r47.g118039eecaca
+pkgver=6.1rc6.r47.g64b769ab5d30
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.1
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'cea23795ea542286eb4501a2f2171d7a7335aa1ff548f15fc4f0fc3715cc00a6')
+            'e965fed70826713d2576567494453d800ced77dfdd156f7fe4511ddb154671b6')
 
 pkgver() {
   cd $_srcname
@@ -158,7 +158,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
