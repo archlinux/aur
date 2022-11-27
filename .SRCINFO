@@ -1,6 +1,6 @@
 pkgbase = spark2014-git
 	pkgdesc = Formally defined programming language based on Ada (GNAT FSF version)
-	pkgver = 0.3.draft.r22640.gef5fb19e20
+	pkgver = 0.3.draft.r22985.g5631f0e48f
 	pkgrel = 1
 	url = https://www.spark-2014.org
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = spark2014-git
 	makedepends = ocaml-ocamlgraph
 	makedepends = ocaml-zarith
 	makedepends = ocaml-camlzip
-	makedepends = ocaml-ocplib-simplex
+	makedepends = ocaml-ocplib-simplex-git
 	makedepends = ocaml-yojson
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
