@@ -3,9 +3,9 @@
 # Contributor: Advaith Madhukar <advaith.madhukar at gmail dot com>
 
 pkgname=pyside6-tools
-_qtver=6.4.0
+_qtver=6.4.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
