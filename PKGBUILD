@@ -10,7 +10,7 @@ pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://www.digikam.org/'
-depends=('akonadi-contacts' 'exiv' 'glu' 'imagemagick' 'jasper' 'kcalendarcore'
+depends=('akonadi-contacts' 'exiv2' 'glu' 'imagemagick' 'jasper' 'kcalendarcore'
          'kfilemetadata' 'kio' 'knotifyconfig' 'lensfun' 'libass' 'libgphoto2'
          'libksane' 'marble-common' 'opencv' 'perl-image-exiftool'
          'qt5-networkauth' 'qt5-webengine' 'qt5-xmlpatterns' 'qtav'
