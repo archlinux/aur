@@ -1,9 +1,8 @@
 pkgbase = arlequin
-	pkgdesc = An Integrated Software for Population Genetics Data Analysis
 	pkgver = 3.5.2.2
-	pkgrel = 0
+	pkgrel = 5
 	url = http://cmpg.unibe.ch/software/arlequin3522
-	arch = x86_64
+	arch = any
 	license = custom
 	depends = glibc
 	source = http://cmpg.unibe.ch/software/arlequin3522/linux/arlecore_linux.zip
@@ -14,7 +13,13 @@ pkgbase = arlequin
 	sha256sums = 58e76d888ff2f4631df2ac482dd1e3c44cda389f9c31f7512993a852610cd985
 
 pkgname = arlecore
+	pkgdesc = console version of of Arlequin: An Integrated Software for Population Genetics Data Analysis
+	arch = x86_64
 
 pkgname = arlsumstat
+	pkgdesc = a modified version of Arlequin for computing summary statistics
+	arch = x86_64
 
 pkgname = arlequin-extra
+	pkgdesc = extra files for arlequin
+	arch = any
