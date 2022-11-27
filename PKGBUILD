@@ -1,7 +1,7 @@
 # Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
 
 pkgname=ini_file_manager
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="Ini configuration file reader and manipulator package for Ada."
 
@@ -11,53 +11,27 @@ license=('MIT')
 
 depends=('gcc-ada')
 
-source=('https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-09.zip'
+source=("https://sourceforge.net/projects/ini-files/files/ini-files/ini-files-$pkgver.zip"
         'construct.gpr'
         'example.gpr'
         'ini_file_manager.gpr')
 
-md5sums=('886bb490c5044e2c8821b36a8efbd08d'
-         '46b6eed7c165ec32161fee42c3d61abc'
-         'c5cef25a5de24ec035905174b76e0fd1'
-         '1940fe0de2234a7b451fa98200f082c7')
-
-
-prepare()
-{
-   cd "$srcdir"
-
-   mkdir -p obj
-   mkdir -p src
-   mv ini/config.ad[bs] src
-}
-
+sha256sums=('8ad0e74862557d8121dd0bc6b34c037ebe60bfca4eb8d879dc25e55f27ef1175'
+            'a40217c7220e421dcee198f8fd7f13633e25d7f73b6abc9e9d31259b2ecb3111'
+            'a7f6906e0b84d28abae0edc4e671f31798528945caa84f1e00060bedb5abf8c5'
+            '84b79de44dbf7b038da6bc76205eed8458592187b0a0cd8088a7f0bbb09e0b8f')
 
 build() 
 {
-   cd "$srcdir"
+   cd "$srcdir/ini-files-code"
 
-   gnatmake -p -Pconstruct
+   gprbuild -p -P ini_files.gpr
 }
 
 
 package() 
 {
-   cd "$srcdir"
-	
-   STAGEDIR=$pkgdir
-   FILESDIR=$srcdir
-   PREFIX=/usr
+   cd "$srcdir/ini-files-code"
 
-   mkdir -p ${STAGEDIR}${PREFIX}/lib/gnat             \
-            ${STAGEDIR}${PREFIX}/lib/ini_file_manager \
-            ${STAGEDIR}${PREFIX}/include/ini_file_manager
-
-	install ${FILESDIR}/ini_file_manager.gpr \
-		${STAGEDIR}${PREFIX}/lib/gnat
-
-	install src/* \
-		${STAGEDIR}${PREFIX}/include/ini_file_manager
-
-	install lib/*  \
-		${STAGEDIR}${PREFIX}/lib/ini_file_manager  
+   gprinstall -p -P ini_files.gpr --prefix="$pkgdir/usr"
 }
