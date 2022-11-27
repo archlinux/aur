@@ -39,7 +39,7 @@ pkgver() {
 		print $4;
 	}
 	END {
-		ORS="\n";
+		ORS="";
 		print "r"min;
 	}') $(git rev-parse --short HEAD)
 }
