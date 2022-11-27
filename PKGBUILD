@@ -30,6 +30,7 @@ prepare() {
     patch --forward --strip=1 --input="../huggle-yaml.patch"
     # Fix icon in huggle.desktop
     patch --forward --strip=1 --input="../huggle-desktop.patch"
+    echo "+archlinux.${pkgrel}" >> src/huggle_core/version.txt
 }
 
 build() {
