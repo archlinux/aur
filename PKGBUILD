@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.2-45-ge8b20f06
-_version=2.2+45+ge8b20f06
+_tag=2.2-61-g98c9f868
+_version=2.2+61+g98c9f868
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -23,7 +23,6 @@ options=('!strip')
 backup=(
   "etc/${pkgname}/config"
   "etc/${pkgname}/logging.properties"
-  "etc/${pkgname}/callstats-java-sdk.properties"
   "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jvb.conf"
 )
@@ -60,7 +59,7 @@ package() {
         install -Dm755 -t "${DESTDIR}" "jvb/resources/jvb.sh"
 
         install -dm700 "${CONFDIR}"
-        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/callstats-java-sdk.properties"
+        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties"
         install -Dm600 "jvb/src/main/resources/reference.conf" "${CONFDIR}/jvb.conf"
         install -Dm644 "config/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${pkgname}.conf"
 
@@ -71,7 +70,7 @@ package() {
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
-            'ecf266d0fe026ced8121a0491ee560fed4e9e586ff510c8e9b2f21ce505f0a2d'
+            '5dbd9e1fec28d8b6eda3ed38b514322dc1386507e0a653c7a73061cdc41d9982'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '7e066bfff0d169187ad26982ba9f6d489d789bcd53eaf5dfa666bee1356964a1'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
