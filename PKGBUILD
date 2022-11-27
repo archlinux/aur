@@ -1,28 +1,31 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vdu_controls
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
 url="https://github.com/digitaltrails/vdu_controls"
 license=('GPL3')
 depends=('ddcutil' 'noto-fonts' 'python' 'python-pyqt5' 'qt5-svg')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+#makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('b8c2ac9ec61817b575b1e1f81657f5fd48be4d126bf9f40168d03846af770572'
+sha256sums=('61716327ef20b949c1c2a36fbb012273c4b56a33b088f098bb4888666918ed68'
             '726a55c150f3cc77d483e5a484ab252b2ddf3b3919d05042975e82e659f979fc')
 
 build() {
   cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+#  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+#  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  mv "$pkgdir/usr/bin/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+#  mv "$pkgdir/usr/bin/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+
+  install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 translations/*.ts -t "$pkgdir/usr/share/$pkgname/translations/"
 
   install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
