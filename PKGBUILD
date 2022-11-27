@@ -4,7 +4,7 @@
 
 pkgname=dino-notification-sounds-git
 pkgver=v0.3.0.r55.gcdd22e40
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://dino.im/"
