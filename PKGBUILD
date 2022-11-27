@@ -3,7 +3,7 @@
 
 _pkgname='ory-hydra'
 pkgname="${_pkgname}-bin"
-pkgver=1.11.10
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="OAuth 2.0 and OpenID Connect Provider"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 provides=("${_pkgname}")
 source=("https://github.com/ory/hydra/releases/download/v${pkgver//_/-}/hydra_${pkgver//_/-}-linux_64bit.tar.gz")
-sha256sums=('8dd4b4619862557162eb95eaac8bc9f5d8ee14c74e4996dfec3d5040a10b9977')
+sha256sums=('6e45184f2b19c6b69a400ca8ec331a1753c9659c432c8e342171dde064e1e750')
 
 package() {
     install -m755 -D "${srcdir}/hydra" "${pkgdir}/usr/bin/hydra"
