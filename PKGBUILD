@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=xkb-lt-git
-pkgver=r3.ea96d6f
+pkgver=r1.a79d2a5
 pkgrel=1
 pkgdesc="An X keyboard configuration for US Qwerty and Lithuanian diacritics"
 arch=('any')
@@ -16,7 +16,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "xkb-lt"
+    cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

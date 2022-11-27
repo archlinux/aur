@@ -1,6 +1,6 @@
 pkgbase = xkb-lt-git
 	pkgdesc = An X keyboard configuration for US Qwerty and Lithuanian diacritics
-	pkgver = r3.ea96d6f
+	pkgver = r1.a79d2a5
 	pkgrel = 1
 	url = https://github.com/tmneth/xkb-lt
 	arch = any
