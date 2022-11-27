@@ -1,8 +1,8 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 _pkgname=gnome-developer-www
 pkgname=gnome-developer-www-git
-pkgver=350.ea0ea9d
-pkgrel=2
+pkgver=r350.ea0ea9d
+pkgrel=1
 pkgdesc="GNOME development website"
 arch=(any)
 url="https://developer.gnome.org"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {

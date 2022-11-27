@@ -1,7 +1,7 @@
 pkgbase = gnome-developer-www-git
 	pkgdesc = GNOME development website
-	pkgver = 350.ea0ea9d
-	pkgrel = 2
+	pkgver = r350.ea0ea9d
+	pkgrel = 3
 	url = https://developer.gnome.org
 	install = gnome-developer-www-git.install
 	arch = any
