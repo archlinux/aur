@@ -1,6 +1,6 @@
 pkgbase=tal-reverb4
 pkgname=("${pkgbase}-bin")
-pkgver=3.0.1
+pkgver=4.0.2
 pkgrel=1
 arch=('x86_64')
 groups=('pro-audio''vst-plugins' 'vst3-plugins')
@@ -9,7 +9,7 @@ url="https://tal-software.com/tal-reverb-4"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
-md5sums=('41b2e5eb4c0ccc76cc25460f74847095')
+md5sums=('bd843ccba98aa0d24b0393bb6de9e255')
 
 package_tal-reverb4-bin() {
   ## VST2 Plugin
