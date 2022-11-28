@@ -6,7 +6,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.49.3.gaa86a2d
+pkgver=3.11.49
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=(
   libliftoff.so
   libpipewire-0.3.so
   libvulkan.so
-  libwlroots.so
+  #libwlroots.so
   libx11
   libxcomposite
   libxdamage
@@ -36,8 +36,8 @@ depends=(
   sdl2
   vulkan-icd-loader
   wayland
-  wayland-protocols
-  wlroots
+  #wayland-protocols
+  #wlroots
   xorg-server-xwayland
 )
 makedepends=(
@@ -47,7 +47,7 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=aa86a2df2394239a93314b62b50756432f75325a
+_tag=dba8480d182752c830d60fbb4f99d2536fefdd38
 source=("git+https://github.com/Samsagax/gamescope.git#tag=${_tag}")
 
 b2sums=('SKIP')
