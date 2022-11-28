@@ -1,0 +1,15 @@
+pkgbase = rustcities-git
+	pkgdesc = Neocities API client written in rust
+	pkgver = v1.0.0.r1.f5605aa
+	pkgrel = 1
+	url = https://gitlab.com/sapient_cogbag/rustcities
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	provides = rustcities
+	conflicts = rustcities
+	source = rustcities-git::git+https://gitlab.com/sapient_cogbag/rustcities.git#branch=main
+	md5sums = SKIP
+
+pkgname = rustcities-git
