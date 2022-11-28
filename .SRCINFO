@@ -1,0 +1,16 @@
+pkgbase = amethyst-player
+        pkgdesc = Audio Player
+        pkgver = 1.8.15
+        pkgrel = 0
+        url = https://github.com/Geoxor/amethyst
+        arch = x86_64
+        license = MIT
+        makedepends = gcc-multilib
+        makedepends = git
+        makedepends = gendesk
+        makedepends = yarn
+        makedepends = libxcrypt-compat
+        source = git+https://github.com/Geoxor/amethyst/#tag=v1.8.15
+        md5sums = SKIP
+
+pkgname = amethyst-player
