@@ -2,7 +2,7 @@
 
 pkgname=trust-dns-git
 pkgver=v0.22.0.r60.g5d816c5b
-pkgrel=1
+pkgrel=2
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
 url=https://trust-dns.org/
