@@ -1,6 +1,6 @@
 # Maintainer: ransome <mail@robbfolio.de>
 pkgname="sleek"
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Todo manager based on the todo.txt syntax for Linux, free and open-source (FOSS)"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("yarn" "nodejs" "unzip")
 depends=("electron" "nodejs")
 
 source=("${url}archive/refs/tags/v${pkgver}.zip" "sleek.desktop" "sleek")
-sha512sums=('58d6856c81dae9c2da6f60fcdbe27a145356d79f32c74f0e4daa6c1504ec4d66cbfab225cca5ee8b36bd7fdb8f7f1abfbb705d776d39158451b6619b9af56482'
+sha512sums=('72d5d37575c7b15dd96d01fff05ca05802bf940a1457f9a96c903286eb1e7acaa937d5c59ca9430d28f61ba7003a397b950ca9c5d126931b6d023d020e38ecd6'
             'c3ebfc99947ba484d8ba8a3cd9b4c4d5a984a95e7cb24faac1ac59506f7f144d4e9c92ea9fcfa585f4d9fee779366d4eb9db0795c910fb221bb266e3c9d5be24'
             'ea1d322bd56c7944a9eae97f4968a6a2e937b510eb3c1c21266428450c5b2ddcd8576718d0b66b69fbce5694ba94e80a692d04bda1e8c2b24a8d814a5ed50963')
 
