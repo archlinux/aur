@@ -5,11 +5,14 @@ pkgbase = nzbhydra2
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
+	makedepends = maven
+	makedepends = java-environment<=11
+	makedepends = java-environment>=8
 	depends = python
 	depends = java-runtime-headless<=17
 	depends = java-runtime-headless>=8
 	optdepends = jackett: torrent indexer proxy
-	source = https://github.com/theotherp/nzbhydra2/releases/download/v4.6.1/nzbhydra2-4.6.1-linux.zip
+	source = nzbhydra2-4.6.1.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v4.6.1.tar.gz
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
@@ -17,7 +20,7 @@ pkgbase = nzbhydra2
 	source = wrapper-Fix-dropping-every-second-line-of-stdout-807.patch
 	source = wrapper-remove-base-path-checks.patch
 	source = wrapper-remove-update-support.patch
-	sha256sums = 52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c
+	sha256sums = 41a68b58630a9e535bc164700603ef088213bdb0a97fe68441c149e7e1d03074
 	sha256sums = 2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68
 	sha256sums = a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a

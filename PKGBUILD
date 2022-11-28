@@ -10,8 +10,9 @@ arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
 depends=('python' 'java-runtime-headless<=17' 'java-runtime-headless>=8')
+makedepends=('maven' 'java-environment<=11' 'java-environment>=8')
 optdepends=('jackett: torrent indexer proxy')
-source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v${pkgver}.tar.gz"
         'nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers'
@@ -20,7 +21,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'wrapper-remove-base-path-checks.patch'
         'wrapper-remove-update-support.patch')
 
-sha256sums=('52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c'
+sha256sums=('41a68b58630a9e535bc164700603ef088213bdb0a97fe68441c149e7e1d03074'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
@@ -30,17 +31,28 @@ sha256sums=('52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c'
             'f302b8dc8ed95ce18d67305a0460b1e62a4e4586fba0f77d3dd980a77cfba3d4')
 
 prepare() {
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-update-support.patch"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch -p1 < "${srcdir}/wrapper-remove-base-path-checks.patch"
+    patch -p1 < "${srcdir}/wrapper-remove-update-support.patch"
     # TODO: remove on next release
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-Fix-dropping-every-second-line-of-stdout-807.patch"
+    patch -p1 < "${srcdir}/wrapper-Fix-dropping-every-second-line-of-stdout-807.patch"
+}
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    mvn -Dmaven.test.skip -pl core -am clean package
+}
+
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    mvn -pl core -am test
 }
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
-    install -D -m 755 "${srcdir}/nzbhydra2wrapperPy3.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3.py"
-    install -D -m 644 "${srcdir}/lib/core-${pkgver}-exec.jar" "${pkgdir}/usr/share/java/nzbhydra2/core-${pkgver}-exec.jar"
-    install -D -m 644 "${srcdir}/readme.md" "${pkgdir}/usr/share/doc/nzbhydra2/readme.md"
+    install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/other/wrapper/nzbhydra2wrapperPy3.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3.py"
+    install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/core/target/core-${pkgver}-exec.jar" "${pkgdir}/usr/share/java/nzbhydra2/core-${pkgver}-exec.jar"
+    install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/readme.md" "${pkgdir}/usr/share/doc/nzbhydra2/readme.md"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"
     install -D -m 644 "${srcdir}/nzbhydra2.sysusers" "${pkgdir}/usr/lib/sysusers.d/nzbhydra2.conf"
