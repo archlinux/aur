@@ -1,0 +1,24 @@
+pkgbase = r-rmgarch
+	pkgdesc = Multivariate GARCH Models
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rmgarch
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-bessel
+	depends = r-corpcor
+	depends = r-ff
+	depends = r-pcapp
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rsolnp
+	depends = r-rugarch
+	depends = r-shape
+	depends = r-spd
+	depends = r-xts
+	depends = r-zoo
+	source = https://cran.r-project.org/src/contrib/rmgarch_1.3-9.tar.gz
+	sha256sums = 3bb8d6cff7c292b0823b37699dc371f371d63016aa09fd69319a9c2b8904e169
+
+pkgname = r-rmgarch
