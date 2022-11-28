@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-git-hooks'
-pkgver='3.3.0'
+pkgver='3.3.1'
 pkgrel='1'
 pkgdesc="Framework for implementing Git (and Gerrit) hooks"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-requires-git>=0')
 url='https://metacpan.org/release/Git-Hooks'
 source=("http://search.cpan.org/CPAN/authors/id/G/GN/GNUSTAVO/Git-Hooks-$pkgver.tar.gz")
-md5sums=('219be8e435d46e25d0cd42cb4943666d')
-sha512sums=('33aa87289aa81171ae4ee572d694ed0c88b05bc05d34a430edf6240814f42a5a5063d326e5b0b9ab3e5a67f6fe71aacf5fb05887e469817957248a1ded4f3bc2')
+md5sums=('98c583865b6101648738343450eb92a9')
+sha512sums=('898b09362f575a3ab64bc5a4fcf43dcdedafc6b9b218f44f711a66c335abaebac9e54436a5857670aa85ca92e9b13d0fb87bdb5b5ab0acab4482b4c20fa9b69f')
 _distdir="Git-Hooks-$pkgver"
 
 build() {
