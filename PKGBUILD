@@ -1,6 +1,6 @@
 # Maintainer: Eugene Lopatkin <eugenelopatkin@gmail.com>
 pkgname="linked-helper"
-pkgver="2"
+pkgver="2.14.38"
 pkgrel=1
 pkgdesc="LinkedIn lead generation tool businesses use to find clients"
 arch=("any")
