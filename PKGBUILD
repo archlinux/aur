@@ -1,6 +1,6 @@
 _name=Telethon
 pkgname=python-telethon-tulir-git
-pkgver=v1.20.r77.g2ad5e633
+pkgver=v1.27.0a1
 pkgrel=1
 pkgdesc="Full-featured Telegram client library for Python 3"
 arch=(any)
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Telethon
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
