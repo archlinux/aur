@@ -7,7 +7,7 @@ pkgdesc="A WGSL playground inspired by Shadertoy"
 arch=('any')
 url="https://github.com/fralonra/wgshadertoy"
 license=('MIT')
-#makedepends=('rust')
+makedepends=('rust')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
 md5sums=('404a6a17239f1a4fd3747605b6078aba')
 
