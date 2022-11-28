@@ -1,25 +1,21 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 pkgname=ryujinx-git
-pkgver=r2327.eebc39228
+pkgver=r2378.472119c8d
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
-depends=('dotnet-runtime-bin')
-makedepends=('git' 'dotnet-sdk-bin')
+depends=('dotnet-runtime')
+makedepends=('git' 'dotnet-sdk')
 provides=(Ryujinx)
 install=ryujinx.install
 source=(
 	"git+${url}"
-	"ryujinx.install"
-	"ryujinx.desktop"
-	"ryujinx.png")
+	"ryujinx.install")
 md5sums=(
 	'SKIP'
-	'2a3637d0d4e7678473a9bd87f6acc8aa'
-	'b13915480a74358d5f89aed1ebfc5223'
-	'30138087aab7dcec30bdc4739617f000')
+	'2a3637d0d4e7678473a9bd87f6acc8aa')
 options=(!strip)
 
 pkgver() {
@@ -30,7 +26,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/Ryujinx"
 
-	dotnet publish -c Release -r linux-x64 /p:DebugType=embedded
+	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx --self-contained true
+	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx.Ava --self-contained true
 }
 
 package() {
@@ -38,9 +35,13 @@ package() {
 	mkdir -p -m 777 "${pkgdir}/opt/ryujinx/Logs"
 	mkdir -p "${pkgdir}/usr/bin/"
 
-	install -D ryujinx.desktop "${pkgdir}/usr/share/applications/ryujinx.desktop"
-	install -D ryujinx.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ryujinx.png"
+	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx.desktop" "${pkgdir}/usr/share/applications/ryujinx.desktop"
+	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
+	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx-mime.xml" "${pkgdir}/usr/share/mime/packages/ryujinx-mime.xml"
 
 	cp -R ${srcdir}/Ryujinx/Ryujinx/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
-	ln -s "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/ryujinx"
+	cp -R ${srcdir}/Ryujinx/Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
+
+	ln -s "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/Ryujinx"
+	ln -s "/opt/ryujinx/Ryujinx.Ava" "${pkgdir}/usr/bin/Ryujinx.Ava"
 }
