@@ -8,11 +8,14 @@ pkgbase = flashmq-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = sed
+	makedepends = docbook2x
+	makedepends = libxslt
 	provides = flashmq-git
 	conflicts = flashmq-git
 	conflicts = flashmq
 	options = !strip
-	source = flashmq::git+https://ghproxy.com/https://github.com/halfgaar/FlashMQ.git
+	source = flashmq::git+https://github.com/halfgaar/FlashMQ.git
 	sha256sums = SKIP
 
 pkgname = flashmq-git
