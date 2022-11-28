@@ -16,22 +16,18 @@ _gitname=libosmo-dsp
 
 build()
 {
-
-  cd $_gitname
-  libtoolize
-  aclocal
-  autoconf
-  autoheader
-  automake --add-missing
-  ./configure --prefix=/usr
-  make
-
+	cd $_gitname
+	libtoolize
+	aclocal
+	autoconf
+	autoheader
+	automake --add-missing
+	./configure --prefix=/usr
+	make
 }
 
 package()
 {
-
-  cd $_gitname
-  make DESTDIR="$pkgdir" install
-
+	cd $_gitname
+	make DESTDIR="$pkgdir" install
 }
