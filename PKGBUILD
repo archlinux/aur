@@ -1,16 +1,16 @@
 # Maintainer: Christian Brassat <christian.brassat@gmail.com>
 
 pkgname=gnome-shell-frippery
-pkgver=41.1
+pkgver=43.0
 pkgrel=1
 pkgdesc='Gnome Shell extensions to make Gnome 3 more like Gnome 2'
 arch=('any')
 url='http://frippery.org/extensions/index.html'
 license=('GPL2')
-depends=('gnome-shell>=40.0')
+depends=('gnome-shell>=43.0')
 makedepends=()
 source=("http://frippery.org/extensions/${pkgname}-${pkgver}.tgz")
-sha256sums=('c03d6862c6fc73243bb8902b6c047a9952131d3678c3227124f7d5f635e1f37b')
+sha256sums=('3a0d20be05bcac87b4d2221bf93e64f5c918ffd14b93d7be3bda920c8bf111eb')
 
 package() {
   cd .local
