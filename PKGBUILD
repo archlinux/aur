@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn-xdg
-pkgver=1.8.16
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -12,7 +12,7 @@ license=(GPL)
 depends=(libnm libsecret openvpn)
 makedepends=(libnma intltool python git)
 optdepends=('libnma: GUI support')
-_commit=ac02405a34427c4f9e2392914af1a076e1c8744e  # tags/1.8.16^0
+_commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit"
         "xdg-basedir.patch")
 sha256sums=('SKIP'
