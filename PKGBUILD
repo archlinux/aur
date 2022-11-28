@@ -1,14 +1,14 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=v1.23
+pkgver=v1.24
 pkgrel=1
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
 url="https://github.com/Tom94/tev"
-license=('BSD-3-Clause')
-depends=("zenity" "mesa" "zlib")
+license=('BSD')
+depends=("libpng" "hicolor-icon-theme" "libglvnd")
 makedepends=("cmake" "git")
 provides=("tev")
 conflicts=("tev")
