@@ -1,15 +1,14 @@
 pkgbase = r-pbdzmq
 	pkgdesc = Programming with Big Data – Interface to 'ZeroMQ'
-	pkgver = 0.3.3
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = http://group.r-pbd.org/
 	arch = any
 	license = GPL3
 	depends = r
 	depends = zeromq
-	noextract = pbdZMQ_0.3-3.tar.gz
-	source = https://cran.r-project.org/src/contrib/pbdZMQ_0.3-3.tar.gz
-	sha256sums = ae26c13400e2acfb6463ff9b67156847a22ec79f3b53baf65119efaba1636eca
+	noextract = pbdZMQ_0.3-8.tar.gz
+	source = https://cran.r-project.org/src/contrib/pbdZMQ_0.3-8.tar.gz
+	sha256sums = eded4ccf6ee54a59e06061f1c6e67a8ec36e03c6ab2318af64446d8f95505465
 
 pkgname = r-pbdzmq
-
