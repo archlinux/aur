@@ -3,7 +3,7 @@ _basename=dbd-icon-toolbox
 _nodeversion=14
 pkgname="$_basename-git"
 pkgver=v2.8.4.r0.g7d83022
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for browsing/installing custom Dead by Daylight Perks/Icons/Char Portraits"
 arch=(x86_64)
 url=https://github.com/nrcrast/DbdPerkTool
@@ -53,6 +53,7 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname"
 
+    _ensure_local_nvm
     nvm use $_nodeversion
     yarn
     yarn package-linux --dir

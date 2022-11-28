@@ -1,7 +1,7 @@
 pkgbase = dbd-icon-toolbox-git
 	pkgdesc = Application for browsing/installing custom Dead by Daylight Perks/Icons/Char Portraits
 	pkgver = v2.8.4.r0.g7d83022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nrcrast/DbdPerkTool
 	arch = x86_64
 	license = MIT
