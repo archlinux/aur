@@ -13,9 +13,11 @@ pkgbase = nzbhydra2
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
+	source = wrapper-Fix-dropping-every-second-line-of-stdout-807.patch
 	sha256sums = 52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c
 	sha256sums = 0ae34e5c7e65779dcca28a16d61f5ddd0dbf1e706143353fcb8c643b8421da70
 	sha256sums = 4003b4561db3867d194a731dbe495d2d1b5e0a1de3595b5d2e5502049ed6762e
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
+	sha256sums = d59bb189f178170c523550a032af7bc5f4c90518b3bca8a631403d6725bd6528
 
 pkgname = nzbhydra2

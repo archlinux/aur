@@ -1,0 +1,27 @@
+From 5f1e047a406a2b2ce32af89b0a44a401c30160ac Mon Sep 17 00:00:00 2001
+From: jkhsjdhjs <jkhsjdhjs@users.noreply.github.com>
+Date: Tue, 1 Nov 2022 21:45:13 +0100
+Subject: [PATCH] wrapper: Fix dropping every second line of stdout (#807)
+
+Since readline() was called twice on stdout, every second
+line of nzbhydra's output was previously dropped.
+---
+ other/wrapper/nzbhydra2wrapperPy3.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/other/wrapper/nzbhydra2wrapperPy3.py b/other/wrapper/nzbhydra2wrapperPy3.py
+index c44f3f77..1c691007 100644
+--- a/other/wrapper/nzbhydra2wrapperPy3.py
++++ b/other/wrapper/nzbhydra2wrapperPy3.py
+@@ -424,7 +424,7 @@ def startup():
+         while True:
+             # Handle error first in case startup of main process returned only an error (on stderror)
+             nextline = process.stdout.readline()
+-            nextlineString = process.stdout.readline().decode("utf-8")
++            nextlineString = nextline.decode("utf-8")
+             if nextlineString == '' and process.poll() is not None:
+                 break
+             if nextlineString != "":
+-- 
+2.38.1
+
