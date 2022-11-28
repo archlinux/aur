@@ -8,18 +8,26 @@ arch=("x86_64")
 url="https://www.quantum-espresso.org/"
 license=('GPL2')
 depends=('openmpi' 'gcc-fortran' 'fftw' 'elpa' 'libxc')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'cmake')
 checkdepends=('python')
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-${pkgver}/q-e-qe-${pkgver}.tar.gz")
-sha256sums=('de943c6be632ce16d05ddcd1c56bff422f7eb53d136d5063765df45954d93b86')
+sha256sums=('d56dea096635808843bd5a9be2dee3d1f60407c01dbeeda03f8256a3bcfc4eb6')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure 
-  make all 
+  cd "$srcdir/q-e-qe-${pkgver}"
+  mkdir build && cd build
+  cmake -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpifort -DQE_ENABLE_TEST=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"  ..
+  make -j
+}
+
+check() {
+  cd "$srcdir/q-e-qe-${pkgver}"
+  cd build
+  ctest -j --output-on-failure -L unit
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/q-e-qe-${pkgver}"
+  cd build
   make PREFIX="$pkgdir/usr" install
 }
