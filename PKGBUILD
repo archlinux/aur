@@ -23,4 +23,3 @@ package() {
 	cd "$srcdir/A-Photo-Tool-Libre-$pkgver-$pkgrel"
 	make INSTALL_ROOT="$pkgdir/" install
 }
-
