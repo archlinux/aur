@@ -3,7 +3,7 @@
 _pkgname=dragonfly-reverb
 pkgname=$_pkgname-git
 pkgver=3.2.7.r397.3523f70
-pkgrel=1
+pkgrel=2
 pkgdesc='An algorithmic hall, plate, room and ER reverb (git version)'
 arch=(x86_64)
 url='https://michaelwillis.github.io/dragonfly-reverb/'
