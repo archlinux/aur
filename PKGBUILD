@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=themix-gui-git
-pkgver=1.15.r20.g2ce1b7cf
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="Plugin-based theme designer GUI for
  environments (like GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
  icons and terminal palettes."
