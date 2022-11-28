@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+import http.client
+import json
+import re
+import sys
+
+from typing import Dict, Tuple
+
+
+def parse_location(fname: str) -> Dict[str, str]:
+    pattern = r"CrashPlanSmb_(?P<ver>[0-9.]+)_(?P<timestamp>[0-9]{14})_(?P<build>[0-9]+)_Linux.tgz"
+    regex = re.compile(pattern)
+    match = regex.match(fname)
+    if match:
+        return match.groupdict()
+    else:
+        raise ValueError("regex match failed")
+
+
+def get_upstream_ver():
+    # get upstream version from parsing the redirect URL from:
+    # download.crashplan.com/installs/agent/latest-smb-linux.tgz
+    conn = http.client.HTTPSConnection("download.crashplan.com")
+    conn.request("HEAD", "/installs/agent/latest-smb-linux.tgz")
+    resp = conn.getresponse()
+    loc = resp.headers.get("location")
+    fname = loc.rsplit("/", 1)[-1]
+    info = parse_location(fname)
+    return info["ver"]
+
+
+def get_aur_ver() -> str:
+    # get aur version from aur rpc:
+    # aur.archlinux.org/rpc/?v=5&type=info&arg[]=crashplan-pro
+    conn = http.client.HTTPSConnection("aur.archlinux.org")
+    conn.request("GET", "/rpc/?v=5&type=info&arg[]=crashplan-pro")
+    resp = conn.getresponse().read()
+    respj = json.loads(resp)
+    data = respj["results"][0]
+    ver, _ = data["Version"].rsplit("-", 2)
+    return ver
+
+
+def parse_ver(v: str) -> Tuple[int, ...]:
+    return tuple(int(cmp) for cmp in v.split("."))
+
+
+def newer(other: str, base: str) -> bool:
+    return parse_ver(other) > parse_ver(base)
+
+
+def main():
+    aur_ver = get_aur_ver()
+    upstream_ver = get_upstream_ver()
+
+    if newer(upstream_ver, aur_ver):
+        print(f"{upstream_ver} > {aur_ver}")
+        sys.exit(0)
+
+    print(f"{upstream_ver} <= {aur_ver}")
+    sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
