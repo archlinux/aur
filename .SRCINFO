@@ -1,7 +1,7 @@
 pkgbase = r-log4r
 	pkgdesc = A Fast and Lightweight Logging System for R, Based on 'log4j'
-	pkgver = 0.4.2
-	pkgrel = 4
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=log4r
 	arch = x86_64
 	license = Artistic2.0
@@ -19,7 +19,7 @@ pkgbase = r-log4r
 	optdepends = r-rmarkdown
 	optdepends = r-rsyslog
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/log4r_0.4.2.tar.gz
-	sha256sums = 924a020565dcd05a2bc8283285fcae60f6b58b35e1be7c55acc0c703c7edfe34
+	source = https://cran.r-project.org/src/contrib/log4r_0.4.3.tar.gz
+	sha256sums = dfe3d49d35a8d8f3ad63f156d18e860540a01bd0af0e343cbab3e31a2cf5904c
 
 pkgname = r-log4r
