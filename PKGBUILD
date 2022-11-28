@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=xq
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 arch=('x86_64')
@@ -9,14 +9,15 @@ url='https://github.com/sibprogrammer/xq'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
+conflicts=('yq')
 options=('!lto')
-_commit='21fca280a144fbf34ab1a58efa39acb495a46764'
+_commit='0a9c1d7b705b5926328576b4a3a3ec2e3430e59c'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'manpage-template.patch'
 )
 b2sums=('SKIP'
-        '4673d2c90996be27f5889f97541f1c4bd0c89c48d5b0573846d7e7a791bba3eaa66ca9774a054911d0014ee33e48bb19084fa3340a12756b2369928c4b951eb3')
+        'f2448e22798e018d6962016dc800ff96ae9c23b776742348a7036d613efa8c37e5c8c7a539804f2daebc4c152495cc1cbbcb2635fcf223e958596333cab1b843')
 
 pkgver() {
   cd "$pkgname"
