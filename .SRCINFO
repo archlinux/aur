@@ -1,6 +1,6 @@
 pkgbase = gx-go
 	pkgdesc = A tool to use with the gx package manager for packages written in go
-	pkgver = 1.9.0
+	pkgver = 1.9.1.git
 	pkgrel = 2
 	url = https://github.com/whyrusleeping/gx-go
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = gx-go
 	makedepends = git
 	makedepends = go-pie
 	depends = glibc
-	source = git+https://github.com/whyrusleeping/gx-go.git#tag=v1.9.0
+	source = git+https://github.com/whyrusleeping/gx-go.git
 	md5sums = SKIP
 
 pkgname = gx-go
-

@@ -2,7 +2,7 @@
 # Contributor: Jakub "Kubuxu" Sztandera  <kubuxu@protonmail.ch>
 
 pkgname=gx-go
-pkgver=1.9.0
+pkgver=1.9.1.git
 pkgrel=2
 
 pkgdesc="A tool to use with the gx package manager for packages written in go"
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('git' 'go-pie')
 depends=('glibc')
 
-source=("git+https://github.com/whyrusleeping/gx-go.git#tag=v$pkgver")
+source=("git+https://github.com/whyrusleeping/gx-go.git")
 md5sums=('SKIP')
 
 prepare() {
