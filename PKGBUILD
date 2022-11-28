@@ -1,5 +1,6 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2"
 pkgver=4.6.1
@@ -8,7 +9,7 @@ pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
-depends=('python' 'java-runtime-headless>=8')
+depends=('python' 'java-runtime-headless<=17' 'java-runtime-headless>=8')
 optdepends=('jackett: torrent indexer proxy')
 source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux.zip"
         'nzbhydra2.service'
