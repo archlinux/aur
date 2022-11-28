@@ -1,4 +1,4 @@
-pkgbase = nzbhydra2
+pkgbase = nzbhydra2-bin
 	pkgdesc = Search aggregator for newznab and torznab indexers.
 	pkgver = 4.6.1
 	pkgrel = 1
@@ -9,6 +9,8 @@ pkgbase = nzbhydra2
 	depends = java-runtime-headless<=17
 	depends = java-runtime-headless>=8
 	optdepends = jackett: torrent indexer proxy
+	provides = nzbhydra2
+	conflicts = nzbhydra2
 	source = https://github.com/theotherp/nzbhydra2/releases/download/v4.6.1/nzbhydra2-4.6.1-linux.zip
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
@@ -26,4 +28,4 @@ pkgbase = nzbhydra2
 	sha256sums = fd6ba3e8b22f3f90c19d9903445b2539837dca1c12df49863b2e8d1085d88b0e
 	sha256sums = f302b8dc8ed95ce18d67305a0460b1e62a4e4586fba0f77d3dd980a77cfba3d4
 
-pkgname = nzbhydra2
+pkgname = nzbhydra2-bin
