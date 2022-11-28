@@ -1,0 +1,25 @@
+pkgbase = r-rugarch
+	pkgdesc = Univariate GARCH Models
+	pkgver = 1.4.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rugarch
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-chron
+	depends = r-ks
+	depends = r-numderiv
+	depends = r-rcpp
+	depends = r-rcpparmadillo
+	depends = r-rsolnp
+	depends = r-skewhyperbolic
+	depends = r-spd
+	depends = r-xts
+	depends = r-zoo
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/rugarch_1.4-9.tar.gz
+	sha256sums = 0fc11fe2435b5202bf299aee7be1078bfb994776020926326c0360aaddf7ea05
+
+pkgname = r-rugarch
