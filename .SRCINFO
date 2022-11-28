@@ -1,6 +1,6 @@
 pkgbase = gopass-fuse
 	pkgdesc = Virtual mount for gopass password manager
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 0
 	url = https://gitlab.teuto.net/technik/gopass-fuse
 	arch = x86_64
@@ -10,11 +10,9 @@ pkgbase = gopass-fuse
 	depends = python-dateutil
 	source = gopass-fuse
 	source = gopass-fuse.service
-	source = 99-gopass-fuse.rules
 	source = gopass-fuse.conf
 	sha512sums = 62841857fa6825cdd8ef19693f25cd9cd2e502b00f13ff03d77464710d65086859c4e0474f2b83e00b0e65a2edb745c66ec99ed5eef1543f9b31cfcaa642020d
-	sha512sums = 9d3c2c584ae00ecfe15f010a4cf74b40785aae1d42486dbbae4052f12d1929ab3a7e1601b236a47d6815c7e07ff30ead758058690e454560fc2f714e0172a822
-	sha512sums = 021d9900ab9fdc614f80dda62e5326b539820013200f16b909d802582cfe6e1c1d072da576b1d96a5eca0c9cd174f6c130e15c0d9fc73aa1fc26b165f7bc71b1
+	sha512sums = 7813e0272a2bda08b0ec477a3b7d1bf742c75ef0a83f0fe1a712ecc444c23121e6b3b42024d9076141af1c6ed9e57aa9a3bf11b66d3e5019e4116d7ff4ab0e98
 	sha512sums = 3dc50f27806bb67aa8c99a8d305c5ec7b83de2c6a5d506852492919518d86d06ffc996dfa9813019fe60da3e520a33f386486cd93215c7ae12d525d2bb9963d2
 
 pkgname = gopass-fuse

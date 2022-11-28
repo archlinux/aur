@@ -1,2 +1,0 @@
-ACTION=="add", SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="1050", ENV{SYSTEMD_ALIAS}="/dev/yubikey"
-ACTION=="remove", SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="1050", TAG+="systemd"
