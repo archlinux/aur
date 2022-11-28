@@ -5,7 +5,7 @@ _pkgname=xtinyterror.lv2
 _lv2uri="http://guitarix.sourceforge.net/plugins/${_reponame//.lv2}_#_tinyterror_"
 pkgname="${_pkgname}-git"
 pkgver=r15.015b055
-pkgrel=1
+pkgrel=2
 pkgdesc="An amplifier simulation LV2 plugin modelled after a small british valve amp (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_reponame}"
@@ -35,7 +35,7 @@ prepare() {
 
   git submodule init
   git config submodule.Xputty.url "${srcdir}/xputty"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
