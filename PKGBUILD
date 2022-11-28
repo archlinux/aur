@@ -4,7 +4,7 @@
 
 _pkgname='micropython'
 pkgname=$_pkgname-git
-pkgver=1.19.1.r560.g68f166dae9
+pkgver=1.19.1.r721.gd5181034f2
 pkgrel=1
 epoch=1
 pkgdesc='A Python 3 implementation for microcontrollers and constrained environments (Unix version)'
@@ -44,7 +44,7 @@ prepare() {
   for submodule in axtls berkeley-db-1.xx libffi mbedtls micropython-lib; do
     git submodule init lib/$submodule
     git config submodule.$submodule.url "$srcdir"/$submodule
-    git submodule update lib/$submodule
+    git -c protocol.file.allow=always submodule update lib/$submodule
   done
 }
 
