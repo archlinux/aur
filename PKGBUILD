@@ -43,4 +43,5 @@ package() {
 
     mkdir -p "${pkgdir}/usr/share/oh-my-posh/themes"
     unzip "${srcdir}/themes-${sha256sums}.zip" -d "${pkgdir}/usr/share/oh-my-posh/themes"
+    find "${pkgdir}/usr/share/oh-my-posh/themes/" -type f -exec chmod 644 {} +
 }
