@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-custom-accent-colors-git
-pkgver=r23.3bcb70b
+pkgver=3.r0.g4fab9a6
 pkgrel=1
 pkgdesc="Set a custom accent color for GTK4/GTK3 apps and GNOME Shell"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/custom-accent-colors"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
