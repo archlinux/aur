@@ -9,12 +9,8 @@ arch=('any')
 url="https://github.com/caronc/apprise"
 license=('MIT')
 depends=(
-  'python-decorator'
   'python-requests'
   'python-requests-oauthlib'
-  'python-oauthlib'
-  'python-urllib3'
-  'python-six'
   'python-click'
   'python-markdown'
   'python-yaml'
