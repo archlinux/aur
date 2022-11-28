@@ -1,0 +1,24 @@
+pkgbase = r-tsdyn
+	pkgdesc = Nonlinear Time Series Models with Regime Switching
+	pkgver = 11.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tsDyn
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-foreach
+	depends = r-forecast
+	depends = r-mnormt
+	depends = r-tseries
+	depends = r-tserieschaos
+	depends = r-urca
+	depends = r-vars
+	optdepends = r-rgl
+	optdepends = r-rugarch
+	optdepends = r-scatterplot3d
+	optdepends = r-sm
+	optdepends = r-tidyverse
+	source = https://cran.r-project.org/src/contrib/tsDyn_11.0.2.tar.gz
+	sha256sums = 44290cfcdff442f8da13def83a0404b509bba3066f0f0894120adab909cdf436
+
+pkgname = r-tsdyn
