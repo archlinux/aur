@@ -1,6 +1,6 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=qtalarm
-pkgver=4700238.2.3.1
+pkgver=4700238.2.3.2
 pkgrel=1
 pkgdesc="Cross-platform Alarm Clock written with QT5"
 arch=('i686' 'x86_64')
@@ -9,13 +9,13 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=(make gcc)
 source=(
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.1.tar.gz
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.1.tar.gz.asc
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.2.tar.gz
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.2.tar.gz.asc
 )
 validpgpkeys=('914897EC41BD3AED1CD9EC3DE41FF9C889B141CC')
 md5sums=(
-cfbf7111ab366ec80b2b0a8ecd088a70
-5857956113f612dddfc8df42ca3220b7
+953b683e41ab3a90c8dca38353ca03b5
+432f9dee333f756e715ce00589ff40f6
 )
 
 build() {
