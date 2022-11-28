@@ -1,5 +1,5 @@
 pkgbase = xcalibrate-git
-	pkgdesc = Touch calibrator for libinput.
+	pkgdesc = X.org touchscreen calibrator. An alternative to xinput_calibrator.
 	pkgver = r29.c27c47e
 	pkgrel = 1
 	url = https://github.com/reinderien/xcalibrate
