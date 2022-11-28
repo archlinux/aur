@@ -3,7 +3,7 @@
 _pkgname=tsDyn
 _pkgver=11.0.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=11.0.2
 pkgrel=1
 pkgdesc='Nonlinear Time Series Models with Regime Switching'
 arch=('x86_64')
