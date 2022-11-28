@@ -1,4 +1,4 @@
-pkgbase = ipget
+pkgbase = ipget-bin
 	pkgdesc = wget for IPFS: retrieve files over IPFS and save them locally. Binary Version (Requires working go-ipfs)
 	pkgver = 0.9.1
 	pkgrel = 1
@@ -13,7 +13,8 @@ pkgbase = ipget
 	depends = gx
 	depends = gx-go
 	depends = go-ipfs
+	conflicts = ipget
 	source = http://dist.ipfs.tech.ipns.localhost:8080/ipget/v0.9.1/ipget_v0.9.1_linux-amd64.tar.gz
 	sha256sums = f708fa74af94846460bbdb472dab2393211475bd6a3106ef25772a3275636ffe
 
-pkgname = ipget
+pkgname = ipget-bin
