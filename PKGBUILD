@@ -3,7 +3,7 @@
 _pkgname=fUnitRoots
 _pkgver=4021.80
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=4021.80
 pkgrel=1
 pkgdesc='Rmetrics - Modelling Trends and Unit Roots'
 arch=('x86_64')
