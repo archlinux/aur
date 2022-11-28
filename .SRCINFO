@@ -4,6 +4,7 @@ pkgbase = aphototoollibre
 	pkgrel = 4
 	url = https://www.ahola.me/aphototoollibre.html
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = qt5-base>=5.15.2
 	depends = hicolor-icon-theme

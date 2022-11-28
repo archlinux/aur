@@ -3,7 +3,7 @@ pkgname=aphototoollibre
 pkgver=1.0.4
 pkgrel=4
 pkgdesc="Photo editor for Linux"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.ahola.me/aphototoollibre.html"
 license=('GPL3')
 depends=('qt5-base>=5.15.2' 'hicolor-icon-theme')
