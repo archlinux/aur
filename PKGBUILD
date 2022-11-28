@@ -2,7 +2,7 @@
 
 pkgname=flashmq
 _pkgname=FlashMQ
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="FlashMQ is a light-weight MQTT broker/server, designed to take good advantage of multi-CPU environments"
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc08e06f0e56fb956fd1dfd9064d885f824df25d9cb8282774696018338bec6c')
+sha256sums=('76c80440eb2718e0ee15609c701afbab13fe556956927ff082fb866da39ac896')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/"
