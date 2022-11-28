@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=girens
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
@@ -16,7 +16,7 @@ depends=('libadwaita' 'org.freedesktop.secrets' 'plex-remote'
   'python-gobject' 'python-cairo')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-_commit=448e92dd0d30a025e41d6c5977dc0c71fc69c897  # tags/v2.0.0^0
+_commit=98d3e5e3dc6be909ff1ddfcf32796c5458795cd6  # tags/v2.0.1^0
 source=($pkgname::git+$url.git#commit=$_commit)
 b2sums=('SKIP')
 
