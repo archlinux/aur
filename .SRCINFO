@@ -1,6 +1,6 @@
 pkgbase = faustpp-git
 	pkgdesc = A post-processor for FAUST DSP code (git version)
-	pkgver = 0.0.0.r70.cf91ff4
+	pkgver = v1.0.0.r0.g110ba5d
 	pkgrel = 1
 	url = https://github.com/jpcima/faustpp
 	arch = any

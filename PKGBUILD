@@ -2,7 +2,7 @@
 
 _pkgname=faustpp
 pkgname="$_pkgname-git"
-pkgver=0.0.0.r70.cf91ff4
+pkgver=v1.0.0.r0.g110ba5d
 pkgrel=1
 pkgdesc='A post-processor for FAUST DSP code (git version)'
 arch=(any)
@@ -28,16 +28,14 @@ pkgver() {
 }
 
 build() {
-    cd $_pkgname
-    python -m build --wheel --no-isolation
+  cd $_pkgname
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_pkgname
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # architecture files
-  install -Dm644 architectures/* -t "$pkgdir"/usr/share/$pkgname
   # license
   install -Dm644 LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 docs/manual/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-manual
