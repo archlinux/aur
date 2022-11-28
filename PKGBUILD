@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rasterVis
-_pkgver=0.51.2
+_pkgver=0.51.4
 pkgname=r-${_pkgname,,}
-pkgver=0.51.2
-pkgrel=4
+pkgver=0.51.4
+pkgrel=1
 pkgdesc='Visualization Methods for Raster Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c116f979ed891ec55f3e1e7b9a92436b5ec9430c1170439a501ecb7e2a33ef4d')
+sha256sums=('d1f887c106c445f6914413aaf195bc8365707abd41e3eb05930158d4abe49bfc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
