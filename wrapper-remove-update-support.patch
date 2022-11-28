@@ -1,0 +1,13 @@
+diff --git a/other/wrapper/nzbhydra2wrapperPy3.py b/other/wrapper/nzbhydra2wrapperPy3.py
+index 1c691007..de862159 100644
+--- a/other/wrapper/nzbhydra2wrapperPy3.py
++++ b/other/wrapper/nzbhydra2wrapperPy3.py
+@@ -617,7 +617,7 @@ if __name__ == '__main__':
+ 
+             if controlCode == 11:
+                 logger.info("NZBHydra main process has terminated for updating")
+-                update()
++                logger.warning("Updating is not supported. Restarting...")
+                 doStart = True
+             elif controlCode == 22:
+                 logger.info("NZBHydra main process has terminated for restart")

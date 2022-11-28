@@ -15,23 +15,32 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers'
-        'wrapper-Fix-dropping-every-second-line-of-stdout-807.patch')
+        'nzbhydra2.sh'
+        'wrapper-Fix-dropping-every-second-line-of-stdout-807.patch'
+        'wrapper-remove-base-path-checks.patch'
+        'wrapper-remove-update-support.patch')
 
 sha256sums=('52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c'
-            '0ae34e5c7e65779dcca28a16d61f5ddd0dbf1e706143353fcb8c643b8421da70'
-            '4003b4561db3867d194a731dbe495d2d1b5e0a1de3595b5d2e5502049ed6762e'
+            '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
+            'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            'd59bb189f178170c523550a032af7bc5f4c90518b3bca8a631403d6725bd6528')
+            'f7946e4928fe26e6bbfe1388eb0071b846dd28b54b801b2ade992c204a69f5e3'
+            'd59bb189f178170c523550a032af7bc5f4c90518b3bca8a631403d6725bd6528'
+            'fd6ba3e8b22f3f90c19d9903445b2539837dca1c12df49863b2e8d1085d88b0e'
+            'f302b8dc8ed95ce18d67305a0460b1e62a4e4586fba0f77d3dd980a77cfba3d4')
 
 prepare() {
+    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
+    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-update-support.patch"
     # TODO: remove on next release
     patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-Fix-dropping-every-second-line-of-stdout-807.patch"
 }
 
 package() {
-    install -d -m 755 "${pkgdir}/usr/lib/nzbhydra2"
-    cp -dpr --no-preserve=ownership "${srcdir}/lib" "${srcdir}/readme.md" "${pkgdir}/usr/lib/nzbhydra2"
+    install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
     install -D -m 755 "${srcdir}/nzbhydra2wrapperPy3.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3.py"
+    install -D -m 644 "${srcdir}/lib/core-${pkgver}-exec.jar" "${pkgdir}/usr/share/java/nzbhydra2/core-${pkgver}-exec.jar"
+    install -D -m 644 "${srcdir}/readme.md" "${pkgdir}/usr/share/doc/nzbhydra2/readme.md"
 
     install -D -m 644 "${srcdir}/nzbhydra2.service" "${pkgdir}/usr/lib/systemd/system/nzbhydra2.service"
     install -D -m 644 "${srcdir}/nzbhydra2.sysusers" "${pkgdir}/usr/lib/sysusers.d/nzbhydra2.conf"
