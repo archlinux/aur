@@ -1,0 +1,7 @@
+pkg/
+src/
+xuidesigner/
+libxputty/
+xuidesigner-git-*.pkg.tar.xz
+xuidesigner-git-*.pkg.tar.zst
+xuidesigner-git-*.src.tar.gz
