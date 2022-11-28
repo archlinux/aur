@@ -3,7 +3,7 @@
 _pkgname=marima
 _pkgver=2.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.2
 pkgrel=1
 pkgdesc='Multivariate ARIMA and ARIMA-X Analysis'
 arch=('any')
