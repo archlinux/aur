@@ -3,7 +3,7 @@
 _pkgname=tseriesChaos
 _pkgver=0.1-13.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.1.13.1
 pkgrel=1
 pkgdesc='Analysis of Nonlinear Time Series'
 arch=('x86_64')
