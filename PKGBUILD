@@ -3,7 +3,7 @@
 _pkgname=GeneralizedHyperbolic
 _pkgver=0.8-4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='The Generalized Hyperbolic Distribution'
 arch=('any')
