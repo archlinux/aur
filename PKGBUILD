@@ -32,7 +32,7 @@ prepare() {
   cd $_pkgname
   git submodule init
   git submodule set-url source/mod-logic-operators/dpf "$srcdir/dpf"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
