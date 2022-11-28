@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-neat
+	pkgdesc = HiDPI-Friendly Plymouth Theme for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/neetly/plymouth-theme-neat
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	source = plymouth-theme-neat::git+https://github.com/neetly/plymouth-theme-neat.git#tag=v0.1.0
+	cksums = SKIP
+
+pkgname = plymouth-theme-neat
