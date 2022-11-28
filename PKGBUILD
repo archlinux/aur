@@ -18,7 +18,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
 
 sha256sums=('52e488c71fbadf007cbdfc041c150ab44ac9054513c5b90c9b8dc42e804fb53c'
             '0ae34e5c7e65779dcca28a16d61f5ddd0dbf1e706143353fcb8c643b8421da70'
-            '464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09'
+            '4003b4561db3867d194a731dbe495d2d1b5e0a1de3595b5d2e5502049ed6762e'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
 
 package() {
