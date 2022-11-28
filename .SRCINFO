@@ -1,0 +1,16 @@
+pkgbase = kyua
+	pkgdesc = Collection of libraries and tools to implement and run automated tests
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/jmmv/kyua
+	arch = x86_64
+	license = BSD
+	makedepends = doxygen
+	makedepends = gawk
+	depends = lua
+	depends = sqlite
+	depends = lutok=0.4
+	source = https://github.com/jmmv/kyua/releases/download/kyua-0.13/kyua-0.13.tar.gz
+	sha1sums = 2e437ffdb96dfc6325e283e531a1a3e11bebe4d7
+
+pkgname = kyua
