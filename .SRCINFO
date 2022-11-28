@@ -1,7 +1,7 @@
 pkgbase = drops-git
 	pkgdesc = A sample player instrument LV2/VST2 plugin and stand-alone JACK program (git version)
 	pkgver = 1.0.beta.2.r0.g185cf4b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearly-broken-software/drops
 	arch = x86_64
 	groups = lv2-plugins

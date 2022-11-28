@@ -3,7 +3,7 @@
 _pkgname=drops
 pkgname="$_pkgname-git"
 pkgver=1.0.beta.2.r0.g185cf4b
-pkgrel=1
+pkgrel=2
 pkgdesc='A sample player instrument LV2/VST2 plugin and stand-alone JACK program (git version)'
 arch=('x86_64')
 url='https://github.com/clearly-broken-software/drops'
@@ -61,7 +61,7 @@ prepare() {
   git config submodule.sfizz.url "$srcdir"/sfizz
   git config submodule.dpf.url "$srcdir"/dpf
   git config submodule.external.url "$srcdir"/nanosvg
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd sfizz
   git submodule init
@@ -76,7 +76,7 @@ prepare() {
   git config submodule.vst/external/VST_SDK/VST3_SDK/pluginterfaces.url "$srcdir"/vst3_pluginterfaces
   git config submodule.vst/external/VST_SDK/VST3_SDK/public.sdk.url "$srcdir"/vst3_public_sdk
   git config submodule.vst/external/VST_SDK/VST3_SDK/vstgui4.url "$srcdir"/vstgui4
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
