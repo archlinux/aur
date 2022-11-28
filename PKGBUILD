@@ -8,7 +8,7 @@ url="https://chromium.googlesource.com/chromiumos/platform/${_gitname}"
 license=('GPL')
 makedepends=('git' 'libyaml' 'flashrom')
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-pkgver=r20220709115837.78a0e6c
+pkgver=r20221126105520.e952b90
 pkgrel=1
 
 pkgver() {
@@ -37,6 +37,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}"
   sed -i 's/TEST_NAMES += ${TLCL_TEST_NAMES}/TEST_NAMES =/' ./Makefile
+  export CFLAGS+=" -Wno-error=deprecated-declarations"  # Skip deprecated: Since OpenSSL 3.0
   # install_for_test also builds crossystem
   make TEST_INSTALL_DIR=../build install_for_test
 }

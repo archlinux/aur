@@ -1,5 +1,5 @@
 pkgbase = chromeos-vboot-reference-git
-	pkgver = r20220709115837.78a0e6c
+	pkgver = r20221126105520.e952b90
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 	arch = aarch64
