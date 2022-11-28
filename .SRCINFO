@@ -1,0 +1,17 @@
+pkgbase = r-funitroots
+	pkgdesc = Rmetrics - Modelling Trends and Unit Roots
+	pkgver = 4021.80
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fUnitRoots
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = r
+	depends = r-fbasics
+	depends = r-timeseries
+	depends = r-urca
+	optdepends = r-runit
+	source = https://cran.r-project.org/src/contrib/fUnitRoots_4021.80.tar.gz
+	sha256sums = 5042876617bafa27d95ccc1ee66dad78a4c18045328dd5c9cdad0ec26b519af9
+
+pkgname = r-funitroots
