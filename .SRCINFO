@@ -1,0 +1,14 @@
+pkgbase = e2studio
+	pkgdesc = Eclipse-based integrated development environment (IDE) for Renesas MCU
+	pkgver = 22.10.0
+	pkgrel = 1
+	url = https://www.renesas.com/us/en/software-tool/e-studio#download
+	arch = x86_64
+	license = Commercial
+	depends = swt
+	depends = java-runtime
+	depends = glibc
+	depends = libusb
+	options = !strip
+
+pkgname = e2studio

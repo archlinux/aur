@@ -1,0 +1,7 @@
+pkg/
+src/
+*.zip
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.run
+
