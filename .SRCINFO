@@ -6,7 +6,7 @@ pkgbase = color-code
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = ansi-color-codec-0.3.11::https://github.com/conqp/ansi-color-codec/archive/refs/tags/0.3.11.tar.gz
+	source = ansi-color-codec-0.3.11::https://github.com/coNQP/ansi-color-codec/archive/refs/tags/0.3.11.tar.gz
 	sha256sums = 6c4b58d5c271b4c1c4c6ab80fb4c537f8583fc778a075f642f59aaa074f532b1
 
 pkgname = color-code

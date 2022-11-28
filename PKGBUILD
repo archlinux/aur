@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/coNQP/${_repo_name}"
 license=('MIT')
 makedepends=("cargo")
-source=("${_repo_name}-${pkgver}::https://github.com/conqp/${_repo_name}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${_repo_name}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('6c4b58d5c271b4c1c4c6ab80fb4c537f8583fc778a075f642f59aaa074f532b1')
 
 build() {
