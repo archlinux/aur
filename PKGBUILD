@@ -3,7 +3,7 @@
 _pkgname=Bessel
 _pkgver=0.6-0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Computations and Approximations for Bessel Functions'
 arch=('x86_64')
