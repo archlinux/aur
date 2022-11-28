@@ -5,7 +5,7 @@
 pkgname=pyside6-tools
 _qtver=6.4.1
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -15,7 +15,7 @@ conflicts=(pyside2-tools)
 makedepends=(cmake shiboken6 qt6-tools)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=("https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('dcee166a112a7eb04bb58c1164997e1f720c1e3e2ee199ee8c9a70e82f51e321')
+sha256sums=('807954ce284e1137475f78faf3bcf0ae9d17ec3690d1a43d09c98e973a3d556b')
 
 build() {
   cmake -B build -S ${_pkgfqn}/sources/pyside-tools/ \
