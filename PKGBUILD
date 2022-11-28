@@ -3,7 +3,7 @@
 
 _pkgname=adwaita-icon-theme
 pkgname="$_pkgname-git"
-pkgver=43+r60+g4f8e8dc69
+pkgver=43.r60.g4f8e8dc69
 pkgrel=1
 pkgdesc='GNOME standard icons'
 arch=('any')
@@ -18,14 +18,14 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+	git describe --long --tags | sed 's/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
 	cd $_pkgname
 	autoreconf -fvi
 }
-  
+
 build() {
 	cd $_pkgname
 	./configure --prefix=/usr
