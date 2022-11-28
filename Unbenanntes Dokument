@@ -1,0 +1,33 @@
+makepkg --printsrcinfo > .SRCINFO
+git push --all
+git pull origin master
+git add .
+git commit -m "Version"
+git git remote add ssh://aur@aur.archlinux.org/streamrecorder.git
+git remote add ssh://aur@aur.archlinux.org/streamrecorder.git
+git remote add orgin ssh://aur@aur.archlinux.org/streamrecorder.git
+git push -u origin master
+git status
+makepkg -f
+git push --al
+git push
+git push ssh://aur@aur.archlinux.org/streamrecorder.git
+git add ssh://aur@aur.archlinux.org/streamrecorder.git
+git commit ssh://aur@aur.archlinux.org/streamrecorder.git
+git push --force ssh://aur@aur.archlinux.org/streamrecorder.git
+git pull ssh://aur@aur.archlinux.org/streamrecorder.git
+git push ssh://aur@aur.archlinux.org/streamrecorder.git
+git merge ssh://aur@aur.archlinux.org/streamrecorder.git
+git status ssh://aur@aur.archlinux.org/streamrecorder.git
+git push -u origin ssh://aur@aur.archlinux.org/streamrecorder.git
+git push -u origin streamrecorder.git
+git push -u origin streamrecorder
+git push
+git log
+
+
+$ git add .
+
+$ git commit -m "Added new commits from the submodule repository"
+
+$ git push
