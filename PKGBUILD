@@ -3,7 +3,7 @@
 _pkgname=vars
 _pkgver=1.5-6
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='VAR Modelling'
 arch=('any')
