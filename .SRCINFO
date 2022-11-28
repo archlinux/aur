@@ -1,0 +1,21 @@
+pkgbase = python-desktop-entry-lib
+	pkgdesc = A library for working with .desktop files
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/JakobDev/desktop-entry-lib
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx-furo
+	makedepends = python-sphinx-copybutton
+	makedepends = make
+	depends = python
+	depends = xdg-user-dirs
+	depends = desktop-file-utils
+	source = python-desktop-entry-lib-2.0.tar.gz::https://gitlab.com/JakobDev/desktop-entry-lib/-/archive/2.0/desktop-entry-lib-2.0.tar.gz
+	sha256sums = b97b3dbd6d5d4d7ca0c9e2e69fe9a8dd1c35ec6c465361e372a64e4ca4e7e71d
+
+pkgname = python-desktop-entry-lib
