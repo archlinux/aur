@@ -1,6 +1,6 @@
 pkgbase = python-hvplot
 	pkgdesc = A high-level plotting API for pandas, dask, xarray, and networkx built on HoloViews
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://hvplot.holoviz.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-hvplot
 	checkdepends = python-matplotlib
 	depends = python-holoviews
 	optdepends = python-xarray: for datetime handled as xarray data
-	source = hvplot-0.8.1.tar.gz::https://github.com/holoviz/hvplot/archive/v0.8.1.tar.gz
-	sha512sums = a3c6e8d51212bcc8b798f0ce754241a270270fcdfe0ea89e1be84b48ace5d0d87410aa28fbc4abf4a8765ac8e2227ae9fecd1879778f3d44600ae8bd7bbdaf7a
+	source = hvplot-0.8.2.tar.gz::https://github.com/holoviz/hvplot/archive/v0.8.2.tar.gz
+	sha512sums = 661360dcd3e43c89c885baaaf771f2e8c80aea6138bbeecb78400c93c46e74845e4f4e2ff368fcd05e8a3ad37dccafc4c06c3f5b5df47e8208e2e9fe12ba1eb5
 
 pkgname = python-hvplot
