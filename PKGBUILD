@@ -3,7 +3,7 @@
 _pkgname=rmgarch
 _pkgver=1.3-9
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='Multivariate GARCH Models'
 arch=('x86_64')
