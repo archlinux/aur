@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/joshdk/aws-saml"
 license=('MIT')
 makedepends=('go')
-source=("$pkgname-v$pkgver::https://github.com/joshdk/aws-saml/archive/refs/tags/v$_releasever.tar.gz")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/joshdk/aws-saml/archive/refs/tags/v$_releasever.tar.gz")
 sha256sums=('f565ae76cd4b6d92128cb57d8ebc4085903ee72b90240c0867d4f1456f205367')
 
 prepare() {

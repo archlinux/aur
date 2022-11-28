@@ -6,7 +6,7 @@ pkgbase = aws-saml
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = aws-saml-v0.1.0rc2::https://github.com/joshdk/aws-saml/archive/refs/tags/v0.1.0-rc.2.tar.gz
+	source = aws-saml-v0.1.0rc2.tar.gz::https://github.com/joshdk/aws-saml/archive/refs/tags/v0.1.0-rc.2.tar.gz
 	sha256sums = f565ae76cd4b6d92128cb57d8ebc4085903ee72b90240c0867d4f1456f205367
 
 pkgname = aws-saml
