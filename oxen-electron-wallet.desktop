@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Oxen Electron Wallet
-Exec=oxen-electron-wallet --no-sandbox %U
+Exec=oxen-electron-wallet %U
 Terminal=false
 Type=Application
 Icon=oxen-electron-wallet
