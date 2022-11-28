@@ -2,8 +2,8 @@
 # Contributor: Naglis Jonaitis <naglis@mailbox.org>
 
 pkgname=thorium-bin
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A cross platform desktop reading app, based on the Readium Desktop toolkit"
 arch=('x86_64')
 license=('BSD3')
@@ -15,7 +15,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_filename}"
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha512sums=('8a264b9484f128a2395f39bf8b09478dc1c333dcdb3111838b3a4554accc461217ceb77dd5b0790b1399fd5b0da6f3bac6b6e4716fb38645143967ee232e49fe'
+sha512sums=('5e3b998a98261ca6e653f9800e0f05bc9e29bd74b0dab7c07a2afb0f3fc234b6f710d324c98a373b850a4f41ba555ead5a0c28c35a35c7302538ad0ee607916a'
             'acb9c8cdd1225dd5e7874b5380cc597adf9cf32dfcebccfd18d13f36f525b56d9319734da28de5ec44a983197f91f2e80231211197b7201e4efe115972aae96a')
 
 package() {
@@ -28,7 +28,5 @@ package() {
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Fix "no icon" issue (see also https://github.com/edrlab/thorium-reader/issues/1241)
-  mv ${pkgdir}/usr/share/icons/hicolor/0x0 ${pkgdir}/usr/share/icons/hicolor/1024x1024
   install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/thorium.png" "${pkgdir}/usr/share/pixmaps/thorium.png"
 }
