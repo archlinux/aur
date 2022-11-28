@@ -49,6 +49,10 @@ check() {
 package() {
   mkdir -p "$pkgdir/etc/trust-dns"
   mkdir -p "$pkgdir/var/lib/trust-dns"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/dns"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/dnskey-to-pem"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/get-root-ksks"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/pem-to-public-dnskey"
   install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname/target/release/trust-dns"
   install -Dm644 "${srcdir}/trust-dns.sysusers" "${pkgdir}/usr/lib/sysusers.d/trust-dns.conf"
   install -Dm644 "${srcdir}/trust-dns.toml" "${pkgdir}/etc/trust-dns/trust-dns.toml"
