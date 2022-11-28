@@ -14,7 +14,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.59.126.gfacf73b01
+pkgver=0.3.61.5.gc933c5ed7
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ makedepends=('git'
              'opus'
              'libfreeaptx'
              'libfdk-aac'
-             'libcamera-git'
+             'libcamera'
              'vulkan-headers'
              'vulkan-icd-loader'
              'avahi'
@@ -76,9 +76,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/build"
-
-  arch-meson ../pipewire \
+  arch-meson pipewire build\
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D docs=enabled \
     -D gstreamer=disabled \
@@ -91,7 +89,7 @@ build() {
     -D session-managers=[] \
     -D bluez5-codec-lc3plus=disabled
 
-  ninja
+  meson compile -C build
 }
 
 check() {
@@ -325,7 +323,9 @@ package_pipewire-alsa-git() {
   provides=("pipewire-alsa=${pkgver}"
             'pulseaudio-alsa'
             )
-  conflicts=('pipewire-alsa')
+  conflicts=('pipewire-alsa'
+             'pulseaudio-alsa'
+             )
 
   mv alsa/* "${pkgdir}"
 
@@ -400,7 +400,8 @@ package_pipewire-libcamera-git() {
   pkgdesc+=" - libcamera support (GIT version)"
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
-           'libcamera-git'
+           'libcamera.so'
+           'libcamera-base.so'
            'gcc-libs'
            )
   provides=("pipewire-libcamera=${pkgver}")
