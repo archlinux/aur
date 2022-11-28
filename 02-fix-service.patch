@@ -1,0 +1,18 @@
+--- a/amd-disable-c6.service	2022-11-28 10:15:36.267656056 -0800
++++ b/amd-disable-c6.service	2022-11-27 20:58:51.000000000 -0800
+@@ -1,12 +1,10 @@
+ [Unit]
+ Description=Service to disable the C6 State on AMD Zen-based (Ryzen, Epyc) processors on boot
+-DefaultDependencies=no
+-After=sysinit.target local-fs.target systemd-modules-load.service
+-Before=multi-user.target
++After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
+ 
+ [Service]
+-Type=oneshot
+ ExecStart=/usr/bin/amd-disable-c6 --disable_c6_retry
++Type=oneshot
+ 
+ [Install]
+-WantedBy=multi-user.target
++WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
