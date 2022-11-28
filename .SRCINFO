@@ -1,21 +1,13 @@
 pkgbase = flutter-light
-	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)
 	pkgver = 3.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.dev
-	install = flutter-light.install
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	license = BSD
 	license = CCPL
 	makedepends = python
-	depends = git
-	depends = glu
-	depends = java-environment
-	depends = libglvnd
-	depends = unzip
-	depends = dart
 	optdepends = android-sdk
 	optdepends = android-studio
 	optdepends = intellij-idea-community-edition
@@ -23,11 +15,7 @@ pkgbase = flutter-light
 	optdepends = ninja
 	optdepends = perl
 	optdepends = python
-	provides = flutter
-	conflicts = flutter
 	options = !emptydirs
-	backup = opt/flutter/packages/flutter_test/pubspec.yaml
-	backup = opt/flutter/packages/flutter/pubspec.yaml
 	source = flutter-3.3.8.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.3.8-stable.tar.xz
 	source = flutter.sh
 	source = flutter.csh
@@ -35,4 +23,38 @@ pkgbase = flutter-light
 	sha256sums = 1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a
 	sha256sums = 7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f
 
-pkgname = flutter-light
+pkgname = flutter-light-common
+	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)
+	install = flutter-light.install
+	arch = x86_64
+	arch = aarch64
+	depends = git
+	depends = glu
+	depends = java-environment>=8
+	depends = libglvnd
+	depends = unzip
+	depends = dart
+	depends = flutter-light-android-arm64
+	depends = dart
+	provides = flutter
+	conflicts = flutter
+	backup = opt/flutter/packages/flutter_test/pubspec.yaml
+	backup = opt/flutter/packages/flutter/pubspec.yaml
+
+pkgname = flutter-light-android-arm
+	depends = flutter
+
+pkgname = flutter-light-android-arm64
+	depends = flutter
+
+pkgname = flutter-light-android-x86
+	depends = flutter
+
+pkgname = flutter-light-android-x64
+	depends = flutter
+
+pkgname = flutter-light-web
+	depends = flutter
+
+pkgname = flutter-light-linux
+	depends = flutter
