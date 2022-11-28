@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Custom-Install GUI
+GenericName=SD Card Title Installer for the Nintendo 3DS
+Comment=Installs a title directly to an SD card for the Nintendo 3DS
+Categories=Utility;
+Exec=ci-gui
+Icon=appliction-x-executable
+Type=Application
