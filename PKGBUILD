@@ -2,7 +2,7 @@
 
 _pkgname=patchance
 pkgname="$_pkgname-git"
-pkgver=0.1.0.r2.ge9f4c66
+pkgver=0.2.3.r2.ga2e8c61
 pkgrel=1
 pkgdesc='A modern graphical patchbay for JACK (git version)'
 arch=(any)
@@ -15,8 +15,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/Houston4444/Patchance.git"
         'HoustonPatchbay::git+https://github.com/Houston4444/HoustonPatchbay.git')
-md5sums=('SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -31,7 +31,7 @@ prepare() {
   cd $_pkgname
   git submodule init
   git config submodule.HoustonPatchbay.url "$srcdir"/HoustonPatchbay
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
