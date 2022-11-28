@@ -54,13 +54,13 @@ prepare() {
 
   git submodule init
   git config submodule.dpf.url "$srcdir/dpf"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd dpf
 
   git submodule init
   git config submodule.dgl.src.pugl-upstream.url "$srcdir/pugl"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -72,7 +72,7 @@ build() {
     ["DragonflyPlateReverb"]="Plate Reverb"
     ["DragonflyRoomReverb"]="Room Reverb"
   )
-  
+
   for _reverb in "${_reverbs[@]}"; do
     local _name="${_reverb%% - *}"
     local _desc="${_reverb#* - }"
@@ -86,10 +86,10 @@ build() {
   done
 
 
-  # explicitly remove vendored freeverb as it causes issues: 
+  # explicitly remove vendored freeverb as it causes issues:
   # https://github.com/michaelwillis/dragonfly-reverb/issues/129
   rm -frv common/freeverb/
-  
+
   export SYSTEM_LIBSAMPLERATE="true"
   export SYSTEM_FREEVERB3="true"
   make
