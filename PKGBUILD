@@ -3,7 +3,7 @@
 # placed in the same directory
 
 pkgname=wolframscript
-pkgver=12.1.1
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="Execute Wolfram Language Code Anywhere"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("local://WolframScript_${pkgver}_LINUX64_x86_64.rpm")
 conflicts=('mathematica')
 # The conflict arises due to some files that both packages use.
 # If you would like both installed, install the generated .tar.xz --overwrite '*' 
-md5sums=('fb25ec1226e9c8046562ddedf6f1e9db')
+md5sums=('6462987f1b96a2be353c087fd50c6a3f')
 
 package() {
   cd "${srcdir}"
