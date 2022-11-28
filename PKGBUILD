@@ -4,7 +4,7 @@
 
 pkgname=punktf
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform multi-target dotfiles manager'
 arch=(x86_64)
 url='https://github.com/Shemnei/punktf'
@@ -40,7 +40,7 @@ package() {
   cd "${pkgname}-${pkgver//_/-}" || exit 2
 
   # Binary
-  install -Dm 644 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # Documentation
   install -Dm 644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"

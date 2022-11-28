@@ -1,7 +1,7 @@
 pkgbase = punktf
 	pkgdesc = A cross-platform multi-target dotfiles manager
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Shemnei/punktf
 	arch = x86_64
 	license = MIT
