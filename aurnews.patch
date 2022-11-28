@@ -1,6 +1,6 @@
-From 9055fba45b4b5bef1a9bcfcc512bc7ea2fed21c5 Mon Sep 17 00:00:00 2001
+From 42442dcb0767d1b361c909acb1155c1b150f1945 Mon Sep 17 00:00:00 2001
 From: egnappahz <egnappah@gmail.com>
-Date: Wed, 26 Oct 2022 13:45:27 +0200
+Date: Mon, 28 Nov 2022 11:15:24 +0100
 Subject: [PATCH] AURNEWS patch
 
 Signed-off-by: egnappahz <egnappah@gmail.com>
@@ -10,10 +10,10 @@ Signed-off-by: egnappahz <egnappah@gmail.com>
  2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/pikaur/install_cli.py b/pikaur/install_cli.py
-index 9ae3626..c233826 100644
+index b378bbe..832cc00 100644
 --- a/pikaur/install_cli.py
 +++ b/pikaur/install_cli.py
-@@ -744,6 +744,11 @@ class InstallPackagesCLI():
+@@ -771,6 +771,11 @@ class InstallPackagesCLI():
              _pkg_label = bold_line(', '.join(pkg_build.package_names))
              _skip_diff_label = translate("Not showing diff for {pkg} package ({reason})")
  
@@ -26,15 +26,15 @@ index 9ae3626..c233826 100644
                      pkg_build.package_base in self.reviewed_package_bases
              ):
 diff --git a/pikaur/print_department.py b/pikaur/print_department.py
-index 2fb4db5..c942688 100644
+index 7ad0267..fb24afb 100644
 --- a/pikaur/print_department.py
 +++ b/pikaur/print_department.py
-@@ -51,7 +51,7 @@ def print_version(pacman_version: str, pyalpm_version: str, quiet=False) -> None
+@@ -55,7 +55,7 @@ def print_version(pacman_version: str, pyalpm_version: str, quiet: bool = False)
    l  /       \        l
    j  ●   .   ●        l      """ + pacman_version + r"""
   { )  ._,.__,   , -.  {      pyalpm v""" + pyalpm_version + r"""
--  У    \  _/     ._/   \
-+  У    \  _/     ._/   \     With Magical AURNEWS patch by Eggz
+-  Y    \  _/     ._/   \
++  Y    \  _/     ._/   \     With Magical AURNEWS patch by Eggz
  
  """)
  
