@@ -1,7 +1,7 @@
 # Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=rssnix
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('vim: default viewer'
 provides=("${pkgname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8bfa1f25d5aaead405a625dc2895686cefdbc3b87efc3bbf39c636b5f40ac571')
+sha256sums=('61095f9dbfb2e3936142f5410a1a39938cbfe89f3808d7e7595353809289638e')
 
 build() {
 	cd "${srcdir}"/"${pkgname}-${pkgver}"
