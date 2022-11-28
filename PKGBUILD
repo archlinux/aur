@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=albert-git
-pkgver=0.17.6.r1.ge7edd9eb
+pkgver=0.17.6.r0.g77ab76d2
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
@@ -17,8 +17,12 @@ optdepends=('muparser: Calculator plugin'
 source=("albertlauncher/albert::git+https://github.com/albertlauncher/albert.git"
         "albertlauncher/plugins::git+https://github.com/albertlauncher/plugins.git"
         "albertlauncher/python::git+https://github.com/albertlauncher/python.git"
-        "albertlauncher/pybind11::git+https://github.com/pybind/pybind11.git")
+        "albertlauncher/pybind11::git+https://github.com/pybind/pybind11.git"
+        "albertlauncher/xkcd-plugin::git+https://github.com/bergercookie/xkcd-albert-plugin.git"
+        "albertlauncher/jetbrains-plugin::git+https://github.com/mqus/jetbrains-albert-plugin.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -30,24 +34,28 @@ pkgver() {
 }
 
 prepare() {
-	cd "${srcdir}/albert"
-
 	mkdir -p build
 
-	cd "${srcdir}"/albert
+	cd "${srcdir}/albert"
 	git submodule init
 	git config submodule.plugins.url "${srcdir}/plugins"
-	git submodule update plugins
+	git -c protocol.file.allow=always submodule update plugins
 
 	cd "${srcdir}/albert/plugins"
 	git submodule init
 	git config submodule.python/pybind11.url "${srcdir}/pybind11"
 	git config submodule.python/share/modules.url "${srcdir}/python"
-	git submodule update python/pybind11 python/share/modules
+	git -c protocol.file.allow=always submodule update python/pybind11 python/share/modules
+
+	cd "${srcdir}/albert/plugins/python/share/modules"
+	git submodule init
+	git config submodule.jetbrains_projects.url "${srcdir}/jetbrains-plugin"
+	git config submodule.xkcd.url "${srcdir}/xkcd-plugin"
+	git -c protocol.file.allow=always submodule update --remote --merge jetbrains_projects xkcd
 }
 
 build() {
-	cd "${srcdir}/albert/build"
+	cd "${srcdir}/build"
 
 	cmake "${srcdir}/albert" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -76,7 +84,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/albert/build"
+	cd "${srcdir}/build"
 
 	make DESTDIR="${pkgdir}" install
 }
