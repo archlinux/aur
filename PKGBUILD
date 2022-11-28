@@ -14,9 +14,10 @@ sha512sums=('d4a618098d7f3cccfcb64024c7ba9d05fea0fd275c4d4a53759de0a35ed7b1c7d28
 
 package() {
 	tar xf data.tar.gz -C "${pkgdir}"
-    install -Dv "${pkgdir}"/usr/bin/* -t "${pkgdir}"/usr/bin/kamyroll-tauri/
+    install -Dv "${pkgdir}"/usr/bin/{main,kamyroll} -t "${pkgdir}"/usr/bin/kamyroll-tauri/
     rm "${pkgdir}"/usr/bin/{main,kamyroll}
-    ln -s "${pkgdir}"/usr/bin/kamyroll-tauri/kamyroll "${pkgdir}"/usr/bin/kamyroll
+    ln -rTsf "${pkgdir}"/usr/bin/kamyroll-tauri/kamyroll "${pkgdir}"/usr/bin/kamyroll
+    chmod +x "${pkgdir}"/usr/bin/kamyroll
     install -Dm644 "${pkgdir}"/usr/share/icons/hicolor/256x256@2/apps/kamyroll.png "${pkgdir}"/usr/share/pixmaps/kamyroll.png
     rm -rf "${pkgdir}"/usr/share/icons
 }
