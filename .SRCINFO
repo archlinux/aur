@@ -1,7 +1,7 @@
 pkgbase = shyysh-git
 	pkgdesc = TUI SSH Connection Manager
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m0nochr0me/shyysh
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = shyysh-git
 	depends = python-pyaml
 	depends = python-libtmux
 	provides = shyysh
-	source = shyysh-0.0.6-1.tar.gz::https://github.com/m0nochr0me/shyysh/archive/0acb5e7d07bb0127bbbb9df5e4752de82722440d.tar.gz
+	source = shyysh-0.0.6-2.tar.gz::https://github.com/m0nochr0me/shyysh/archive/957d69bc46fd22ca7fe1bdf51a9d525527456dbe.tar.gz
 	sha256sums = SKIP
 
 pkgname = shyysh-git
