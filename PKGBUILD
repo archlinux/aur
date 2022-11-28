@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=latex2exp
-_pkgver=0.9.5
+_pkgver=0.9.6
 pkgname=r-${_pkgname,,}
-pkgver=0.9.5
-pkgrel=3
+pkgver=0.9.6
+pkgrel=1
 pkgdesc='Use LaTeX Expressions in Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-waldo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8a42a7281b6736f9587b5443aa10e08b1823167f3c543821eed66eeafac86b94')
+sha256sums=('669826a433a1d815c9164ffcb69d7d634857be905e3c8c04f464cf1221a0e0ca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
