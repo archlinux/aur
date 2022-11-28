@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=qtalarm
 pkgver=4700238.2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Alarm Clock written with QT5"
 arch=('i686' 'x86_64')
 url="https://random-hackery.net/page/qtalarm/"
@@ -14,8 +14,8 @@ https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.2.tar.gz.asc
 )
 validpgpkeys=('914897EC41BD3AED1CD9EC3DE41FF9C889B141CC')
 md5sums=(
-953b683e41ab3a90c8dca38353ca03b5
-432f9dee333f756e715ce00589ff40f6
+208e303a9224fc5371f6d0b1f24f9ecc
+b660e3cda6d3ca3fd557abf170313edb
 )
 
 build() {
