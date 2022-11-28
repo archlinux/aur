@@ -1,7 +1,7 @@
 # Maintainer: eatsu <mkrmdk@gmail.com>
 
 pkgname='pac-wrapper'
-pkgver='2.0.0'
+pkgver='3.0.0'
 pkgrel='1'
 pkgdesc='A simple pacman wrapper that provides intuitive syntax similar to dnf, apt, zypper, etc.'
 arch=('any')
@@ -12,8 +12,9 @@ depends=(
   'pacman'
   'sudo'
 )
+provides=('pac')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('489d5a5f6e999125ad8ed52c5cc7caec381bb9ce0f29849410204cdd8eacb710')
+sha256sums=('f85d09754c9463e2963fe83265ffdd1e4eba42e32e6924719e60f38ead90b68f')
 
 package() {
   cd "$pkgname-$pkgver"
