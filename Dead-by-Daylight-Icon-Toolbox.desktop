@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dead By Daylight Icon Toolbox
+Exec="/usr/lib/dbd-icon-toolbox/dbdicontoolbox" %U
+Terminal=false
+Type=Application
+Icon=dbdicontoolbox
+StartupWMClass=Dead By Daylight Icon Toolbox
+Comment=Dead By Daylight Icon Toolbox
+Categories=Utility;
