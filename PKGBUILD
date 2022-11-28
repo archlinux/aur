@@ -16,7 +16,7 @@ sha256sums=('d56dea096635808843bd5a9be2dee3d1f60407c01dbeeda03f8256a3bcfc4eb6')
 build() {
   cd "$srcdir/q-e-qe-${pkgver}"
   mkdir build && cd build
-  cmake -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpifort -DQE_ENABLE_TEST=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"  ..
+  cmake -DCMAKE_C_COMPILER=mpicc -DCMAKE_Fortran_COMPILER=mpifort -DQE_ENABLE_TEST=ON -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
   make -j
 }
 
