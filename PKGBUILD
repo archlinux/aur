@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-power-git
-pkgver=1.1.23.r0.gb9b6342
+pkgver=1.1.24.r1.g437d6ba
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/pop-os/system76-power.git"
         "mkinitcpio.patch")
 sha256sums=('SKIP'
             '35af9e2c62deee200ac550f9390a3a43811d3336e1833e577deeda06482ad488'
-            'fefd4bd1c173cca2aafd3d5f03af20b9cfc5553f9a53f510a12d565cc90fe7ba')
+            'bae03d96faea0f7ea80cb1cc5d4f2f97804509db378aaacb3e1d08cd38e05765')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
