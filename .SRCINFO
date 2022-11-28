@@ -1,0 +1,11 @@
+pkgbase = crycord
+	pkgdesc = A Discord Client modification with plugins. Uses BeautifulDiscord's CSS injector. Oh it's also written in Crystal!.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/GeopJr/Crycord
+	arch = x86_64
+	license = BSD 2-Clause
+	source = https://github.com/GeopJr/Crycord/releases/download/v1.4.0/crycord-1.4.0-linux-x86_64-static.zip
+	sha512sums = 3efbb2b70cacfba90200b83a220a06baebcbfb8441adb90362c0bdecec593bc68d23cb3d56517ad5790300b0375bb982328f38a17ca67dbea89de5672a3ae43b
+
+pkgname = crycord
