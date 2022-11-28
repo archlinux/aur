@@ -2,7 +2,7 @@
 
 pkgname=castxml
 pkgdesc="C-family abstract syntax tree XML output tool."
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 arch=(i686 x86_64)
 url="https://github.com/CastXML/CastXML"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(llvm clang)
 makedepends=(cmake python-sphinx)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CastXML/CastXML/archive/v$pkgver.tar.gz")
-sha256sums=('d7287574378a75708cdb640214931cdb90a5f67ccadb995741481929f816b67b')
+sha256sums=('c8cb5edba35f76b0391a5be96a0a1efacc73ffdbe7ca4e62b4484ddfdbab15f5')
 
 prepare() {
   cd "CastXML-$pkgver"
