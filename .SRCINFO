@@ -1,0 +1,15 @@
+pkgbase = r-bessel
+	pkgdesc = Computations and Approximations for Bessel Functions
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Bessel
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-rmpfr
+	optdepends = r-gsl
+	optdepends = r-sfsmisc
+	source = https://cran.r-project.org/src/contrib/Bessel_0.6-0.tar.gz
+	sha256sums = 8ea97867985eb39da0f60a766795a3c4121a94492236ccf82771470a2d029547
+
+pkgname = r-bessel
