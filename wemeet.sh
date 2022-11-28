@@ -14,8 +14,8 @@ fi
 
 if [ -f /usr/bin/bwrap ]; then
     mkdir -p "$FONTCONFIG_DIR"
-    if [ -d "${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache" ]; then
-        BIND_KDE_ICON_CACHE="--bind '${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache' '${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache'"
+    if [ -f "${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache" ]; then
+        BIND_KDE_ICON_CACHE="--bind ${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache ${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache"
     fi
     bwrap --new-session --unshare-all --share-net --ro-bind / / --dev-bind /dev /dev --tmpfs "${XDG_CONFIG_HOME:-$HOME/.config}" ${BIND_KDE_ICON_CACHE:-} --bind "${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp" "${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp" /opt/wemeet/bin/wemeetapp "$@"
 else
