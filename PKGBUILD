@@ -1,8 +1,8 @@
 # Maintainer: Ronan Pigott <rpigott@berkeley.edu>
 
 pkgname=swop
-pkgver=0.1
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc='i3 open but for Wayland'
 url='https://git.sr.ht/~brocellous/swop'
 arch=('x86_64')
@@ -12,9 +12,10 @@ source=(
 	"40-swop.conf"
 )
 depends=('wayland')
+makedepdends=('wayland-protocols')
 sha256sums=(
-	'd14cce30cf98928b1b92b0f0bab8acc262e7e46a85785bff97ebe2102daee87a'
-    'SKIP'
+	'c9d394a9bb2d614f2b3cf0e0f5d3882e98ae0539f3c5738dcf3b45450c439da9'
+	'SKIP'
 )
 
 build() {

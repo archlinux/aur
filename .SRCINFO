@@ -1,14 +1,14 @@
 pkgbase = swop
 	pkgdesc = i3 open but for Wayland
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = https://git.sr.ht/~brocellous/swop
 	arch = x86_64
 	license = MIT
 	depends = wayland
-	source = swop-0.1.tar.gz::https://git.sr.ht/~brocellous/swop/archive/v0.1.tar.gz
+	source = swop-1.0.tar.gz::https://git.sr.ht/~brocellous/swop/archive/v1.0.tar.gz
 	source = 40-swop.conf
-	sha256sums = d14cce30cf98928b1b92b0f0bab8acc262e7e46a85785bff97ebe2102daee87a
+	sha256sums = c9d394a9bb2d614f2b3cf0e0f5d3882e98ae0539f3c5738dcf3b45450c439da9
 	sha256sums = SKIP
 
 pkgname = swop
