@@ -10,6 +10,12 @@ makedepends=('go')
 source=("$pkgname-v$pkgver::https://github.com/joshdk/aws-saml/archive/refs/tags/v$_releasever.tar.gz")
 sha256sums=('f565ae76cd4b6d92128cb57d8ebc4085903ee72b90240c0867d4f1456f205367')
 
+prepare() {
+  cd "$pkgname-$_releasever"
+
+  go mod download
+}
+
 build() {
   cd "$pkgname-$_releasever"
 
@@ -17,6 +23,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPROXY=off
   go build \
     -trimpath \
     -buildmode=pie \
