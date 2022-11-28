@@ -3,7 +3,7 @@
 _reponame=Mamba
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=2.3.r5.g8b4552f
+pkgver=2.3.r7.g1ea2494
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK (git version)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ prepare() {
 
   git submodule init
   git config submodule.libxputty.url "${srcdir}/libxputty"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   sed -i '/update-desktop-database/d' src/Makefile
 }

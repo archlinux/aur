@@ -1,6 +1,6 @@
 pkgbase = mamba-git
 	pkgdesc = A virtual MIDI keyboard and file player/recorder for ALSA/JACK (git version)
-	pkgver = 2.3.r5.g8b4552f
+	pkgver = 2.3.r7.g1ea2494
 	pkgrel = 1
 	url = https://github.com/brummer10/Mamba
 	arch = i686
