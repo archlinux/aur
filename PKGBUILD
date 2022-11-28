@@ -4,7 +4,7 @@
 
 pkgname=punktf
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform multi-target dotfiles manager'
 arch=(x86_64)
 url='https://github.com/Shemnei/punktf'
@@ -40,7 +40,7 @@ package() {
   cd "${pkgname}-${pkgver//_/-}" || exit 2
 
   # Binary
-  install -Dm 644 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 644 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # Documentation
   install -Dm 644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -50,10 +50,10 @@ package() {
   install -Dm 644 "LICENSE-APACHE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Man Page
-  install -Dm 644 "${pkgname}.1"    -t "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  install -Dm 644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
   # Completions
-  install -Dm 644 "_${pkgname}"     -t "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm 644 "${pkgname}.bash" -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm 644 "${pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}"
+  install -Dm 644 "_${pkgname}"     "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm 644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}"
 }
