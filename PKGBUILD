@@ -4,7 +4,7 @@
 pkgname=vtun
 pkgver=3.0.3.2013.d
 _pkgver=3.0.3
-pkgrel=13
+pkgrel=14
 pkgdesc="The easiest way to create Virtual Tunnels over TCP/IP networks with traffic shaping, compression, encryption and IPv6 support."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://vtun.sourceforge.net/"

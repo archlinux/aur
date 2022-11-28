@@ -25,10 +25,11 @@ MTU=1500
 TIMEOUT=10
 CMD=tun-cat
 ABORT=
+CALLBACK=0
 
 usage() {
  [[ -n "$1" ]] && return 0
- echo "Tunnel-configurer version 1.7.1
+ echo "Tunnel-configurer version 1.8
  Client-server IP tunnel configuration via the same IP tunnel.
 
 -- vtund.conf --
@@ -94,6 +95,8 @@ LOCAL=server.vpn
 ROUTES='10.10.10.0/24 10.10.0.0/24'
  # kill connection on server side if client still not configured
 ABORT=yes
+ # No client's callback to server, confirmation by ping
+CALLBACK=0
 
 -- Command-line description --
 ifconfig wrapper:
@@ -129,6 +132,7 @@ noroutes|-r         : server - Don't send any routes from config
                     : client - Don't get IPv4 routes from server
 no6routes|-R        : Don't get IPv6 routes from server (client only)
  timeout|-t <sec>   : default=10, 0=endless
+callback|-c <port>  : Confirmation by sending 'Ok' to the server, instead of ping
    abort|-k         : Abort connection after timeout
     keep|-K         : ... or don't do it
   nofork|-B  | nobg | nobackground
@@ -279,13 +283,25 @@ main() {
   fi
   sec_up START
   log "sending ->"
+  if ((CALLBACK)) ; then
+   log "waiting Ok back from client <--"
+   exec < <(exec "$CMD" listen "$ifc" "$CALLBACK" "$TIMEOUT")
+  fi
   while :; do
    "$CMD" send "$ifc" "$PORT" "${SEND[@]}" || exit 4
-   "$ping" -q -c1 -W1 -I "$ifc" "$P" &> /dev/null && break
+   if ((CALLBACK)) ; then
+    read -t 1 c && exec <&-
+    log "<-- $c"
+    [[ "$c" = 'Ok' ]] && break
+   else
+    "$ping" -q -c1 -W1 -I "$ifc" "$P" &> /dev/null && {
+     log "Confirmed, $P is UP."
+     break
+    }
+   fi
    sec_up SEC
    ((TIMEOUT!=0)) && ((SEC > START+TIMEOUT)) && ifabort "Time is out."
   done
-  log "Confirmed, $P is UP."
   ;;
  
  get)
@@ -325,6 +341,10 @@ main() {
    FIRST=0
   done
   ((FIRST==0)) || ifabort "Failed."
+  if ((CALLBACK)) ; then
+   log "sending Ok back to server -->"
+   "$CMD" send "$ifc" "$CALLBACK" Ok
+  fi
   log "Completed."
   ;;
  esac
@@ -392,6 +412,12 @@ while (($#>0)) ; do
  -k|abort)
   ABORT=1
   shift
+  ;;
+
+ -c|callback)
+  usage "$2"
+  CALLBACK="$2"
+  shift 2
   ;;
 
  -K|keep)
