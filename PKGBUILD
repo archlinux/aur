@@ -1,32 +1,32 @@
-# Maintainer: Kilian Guillaume "cafehaine" <kilian dot guillaume at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Kilian Guillaume "cafehaine" <kilian dot guillaume at gmail dot com>
+
 pkgname=nymphrpc-git
-_pkgname=nymphrpc
-_reponame=NymphRPC
-pkgver=58
+pkgver=0.1.r7.g6e25d3a
 pkgrel=1
 pkgdesc="Versatile and fast remote procedure call library."
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/MayaPosch/NymphRPC"
-license=('BSD-3-Clause')
-#TODO check the dependencies
-depends=('poco')
-makedepends=('git')
+license=(BSD)
+depends=(poco)
+makedepends=(git)
+provides=(nymphrpc)
+conflicts=(nymphrpc)
 source=("git+https://github.com/MayaPosch/NymphRPC.git")
-md5sums=('SKIP')
-provides=('nymphrpc')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_reponame}
-  git rev-list --count HEAD
+  cd NymphRPC
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd ${srcdir}/${_reponame}
-	make lib
+  cd NymphRPC
+  make lib
 }
 
 package() {
-	cd ${srcdir}/${_reponame}
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	make DESTDIR="$pkgdir/" install
+  cd NymphRPC
+  make DESTDIR="${pkgdir}" install
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
