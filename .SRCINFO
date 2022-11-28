@@ -1,11 +1,11 @@
 pkgbase = seclists
 	pkgdesc = A collection of multiple types of lists used during security assessments, collected in one place.
-	pkgver = 2022.3
+	pkgver = 2022.4
 	pkgrel = 1
 	url = https://github.com/danielmiessler/SecLists
 	arch = any
 	license = MIT
-	source = https://github.com/danielmiessler/SecLists/archive/2022.3.tar.gz
-	sha512sums = 090dac9dc85e9abdaab48e08cabd5ba084e6bc976fb92c329c39482fd4db8a41f984a27812877738cdf4cedf7edcbd48628013336da640636e435c0ebaab273d
+	source = SecLists-2022.4.tar.gz::https://github.com/danielmiessler/SecLists/archive/2022.4.tar.gz
+	sha512sums = b3db914631d62a07b37dfc2a82b9b61a4b9ea95f37586720e341fe27949e213c2b3576f858b62faefa584cab98d617f460ccfc94d5fc4e2646f997bd896c1bef
 
 pkgname = seclists
