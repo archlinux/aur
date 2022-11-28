@@ -1,5 +1,5 @@
 pkgbase = flutter-light
-	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
+	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)
 	pkgver = 3.3.8
 	pkgrel = 1
 	url = https://flutter.dev
