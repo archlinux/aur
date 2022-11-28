@@ -1,0 +1,20 @@
+pkgbase = libnymphcast-git
+	pkgdesc = Libnymphcast is a library containing the core functionality for a NymphCast client
+	pkgver = 116
+	pkgrel = 1
+	url = https://github.com/MayaPosch/libnymphcast.git
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = nymphrpc
+	depends = poco
+	provides = libnymphcast
+	source = git+https://github.com/MayaPosch/libnymphcast.git
+	sha256sums = SKIP
+
+pkgname = libnymphcast-git
