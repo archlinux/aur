@@ -3,7 +3,7 @@
 
 _pkgname=themix-import-images
 pkgname="${_pkgname}-git"
-pkgver=1.15
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Import plugin for Themix GUI designer to get color palettes from the images"
 arch=('x86_64' 'i686')
@@ -39,7 +39,7 @@ pkgver() {
 
 package() {
 	_oomox_dir=/opt/oomox
-	_plugin_name=import_pil
+	_plugin_name=import_from_image
 
 	cd "${srcdir}/oomox"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_import_images

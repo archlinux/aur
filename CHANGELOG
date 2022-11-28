@@ -1718,3 +1718,18 @@ Wed Oct 26 04:11:29 2022 +0200
      2022-10-26 80e543fb actionless chore(plugins: icons_numix; packaging: arch): update submodule (sync with upstream and add --destdir option)
      2022-10-26 100ebd43 actionless chore(plugins: icons_gnomecolors; packaging: arch): update submodule (release 5.5.6: add --destdir option)
      2022-10-26 3b16b1ba actionless chore(plugins: icons_archdroid; packaging: arch): update submodule (release 1.0.3: add --destdir option)
+
+
+Mon Nov 28 22:10:29 2022 +0100
+-------------------------------------------------
+1.15.1          Release 1.15.1
+    
+    !!! Last release with python 3.8 support !!!
+    
+    Notable changes:
+     2022-10-31 d64e3925 actionless feat(plugins: import: from image): make it work also in CLI
+    
+    Submodule changes:
+     2022-11-12 a78cc920 actionless chore(plugins: base16): update submodule (gtk4 and qt5/6 templates' fixes)
+     2022-10-31 fff59d56 actionless chore(plugins: base16; packaging: arch): update submodule (release 1.5.1: expose CLI and sync mirror)
+     2022-10-31 4fd157b7 actionless chore(plugins: base16; packaging: arch): update submodule (release 1.5: add oomox qt5/qt6 styleplugin)
