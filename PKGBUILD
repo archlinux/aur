@@ -1,18 +1,16 @@
-# Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Maintainer: EndlessEden <eden@deep-rose.org>
+# Previous Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Jakub "Kubuxu" Sztandera  <kubuxu@protonmail.ch>
 
 pkgname=gx
-pkgver=0.14.1
-pkgrel=4
-
+pkgver=0.14.3
+pkgrel=1
 pkgdesc="Packaging tool built around the distributed, content addressed filesystem IPFS"
 url="https://github.com/whyrusleeping/gx"
 arch=('x86_64')
 license=('MIT')
-
 makedepends=('git' 'go-pie')
 optdepends=('gx-go: gx packaing module for go')
-
 source=("git+https://github.com/whyrusleeping/gx.git#tag=v$pkgver")
 md5sums=('SKIP')
 
