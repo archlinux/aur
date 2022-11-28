@@ -1,12 +1,13 @@
 # Maintainer: sapient_cogbag <sapient_cogbag at protonmail dot com>
 pkgname=rustcities-git
 pkgver=v1.0.0.r1.f5605aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Neocities API client written in rust"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://gitlab.com/sapient_cogbag/rustcities"
 license=('GPL3')
 makedepends=('git' 'cargo')
+depends=('openssl' 'gcc-libs')
 provides=("rustcities")
 conflicts=("rustcities")
 source=('rustcities-git::git+https://gitlab.com/sapient_cogbag/rustcities.git#branch=main')
