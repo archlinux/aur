@@ -3,7 +3,7 @@
 _pkgname=rugarch
 _pkgver=1.4-9
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Univariate GARCH Models'
 arch=('x86_64')
