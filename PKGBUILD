@@ -8,7 +8,7 @@ arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/waywardgeek/sonic"
 license=('Apache')
 depends=('gcc')
-makedepends=('git')
+makedepends=('git' 'fftw')
 provides=("libsonic=${pkgver}")
 conflicts=('libsonic')
 source=("git+https://github.com/waywardgeek/${_pkgname}.git")
