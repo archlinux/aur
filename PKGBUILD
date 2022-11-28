@@ -3,7 +3,7 @@
 _pkgname=SkewHyperbolic
 _pkgver=0.4-0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='The Skew Hyperbolic Student t-Distribution'
 arch=('any')
