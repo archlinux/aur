@@ -1,0 +1,14 @@
+pkgbase = r-tserieschaos
+	pkgdesc = Analysis of Nonlinear Time Series
+	pkgver = 0.1.13.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tseriesChaos
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-desolve
+	optdepends = r-scatterplot3d
+	source = https://cran.r-project.org/src/contrib/tseriesChaos_0.1-13.1.tar.gz
+	sha256sums = 23cb5fea56409a305e02a523ff8b7642ec383942d415c9cffdc92208dacfd961
+
+pkgname = r-tserieschaos
