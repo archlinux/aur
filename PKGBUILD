@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=themix-full-git
-pkgver=1.15
-pkgrel=2
+pkgver=1.15.1
+pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
 of Oomox theme (GTK2 + HiDPI hack, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
 icons (ArchDroid, Gnome-Colors, Numix, Papirus, Suru++),
@@ -38,6 +38,8 @@ depends=(
 makedepends=(
 )
 optdepends=(
+    'oomox-qt5-styleplugin-git: Qt5 style plugin'
+    'oomox-qt6-styleplugin-git: Qt6 style plugin'
 )
 provides=(
     'themix-full'
