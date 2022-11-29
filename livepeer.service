@@ -1,5 +1,6 @@
 [Unit]
 Description=Go-Livepeer Orchestrator and Transcoder service
+Documentation=https://docs.livepeer.org
 After=network.target
 Wants=network-online.target
 
