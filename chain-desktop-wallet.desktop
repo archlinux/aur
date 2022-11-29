@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Crypto.com DeFi Desktop Wallet
-Exec=chain-desktop-wallet --no-sandbox %U
+Exec=chain-desktop-wallet %U
 Terminal=false
 Type=Application
 Icon=chain-desktop-wallet

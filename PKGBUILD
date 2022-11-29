@@ -7,19 +7,18 @@ pkgname=cro-chain-desktop
 pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 arch=('x86_64')
 makedepends=('yarn' 'fnm')
-provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop-bin')
-source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "chain-desktop-wallet.desktop")
-sha512sums=('2aa23d712eb3e71be7969d0070bbbe809869c3a4377eef89308163e7727a6ed3215cb7479fb3149e3daaf88c91d1aebbaf74cec0ff0709815d79a3b790341db2'
-            '396b7e061b2e701d10951f006a5ff0814bf71d1d513698d491c4e41748a165d6ceef020e455c889891cd445e6d3ecbaebe3d080420efd3607035a91ac857e065')
+sha512sums=('2d7e801dfa12b0dfe01aba9817b151ec70423eb89cb1a8a343986e251db352ade7b589b773af11bd8fad4acafebf641aabd994e23bbc148a7f21d280f64505d1'
+            'f7e4d91d7078a1d627995ffec39b4b67239827dbab0651909238a718ac4538bd6316c8f87430b244b13f617214171d6283ae3b1c268827b3d49f8dead5d2d71a')
 
 build() {
-  cd ${_pkgbin}-${pkgver}
+  cd "${_pkgbin}-${pkgver}"
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
@@ -30,14 +29,12 @@ build() {
 package() {
   install -Dm644 "${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  cd ${_pkgbin}-${pkgver}
+  cd "${_pkgbin}-${pkgver}"
 
-  install -dm755 "${pkgdir}/opt"
-  cp -r "dist/linux-unpacked" "${pkgdir}/opt/${_pkgbin}"
+  install -dm755 "${pkgdir}/opt/${_pkgbin}"
+  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgbin}"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
   install -Dm644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
