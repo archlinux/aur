@@ -1,4 +1,5 @@
 {
+  ".i": 1,
   "crate": "cargo-doc2readme",
   "version": "0.2.2"
 }

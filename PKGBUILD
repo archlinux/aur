@@ -35,4 +35,5 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/cargo-doc2readme" -t "$pkgdir/usr/bin"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
