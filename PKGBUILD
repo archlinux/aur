@@ -1,7 +1,7 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=2.2.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=43b4440ef015d846161657490b18cf6ac7600fc4"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=d513ef78361cbdb505b4e0e6dbf74b1a10ee987e"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
