@@ -1,6 +1,6 @@
 pkgbase = eruption-git
 	pkgdesc = Realtime RGB LED Driver for Linux
-	pkgver = 0.2.0.r137.gcbb50be0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://eruption-project.org/
 	install = eruption.install
@@ -30,6 +30,7 @@ pkgbase = eruption-git
 	replaces = eruption-roccat-vulcan-git
 	backup = etc/eruption/eruption.conf
 	backup = etc/eruption/process-monitor.conf
+	backup = etc/eruption/fx-proxy.conf
 	backup = etc/eruption/audio-proxy.conf
 	backup = usr/share/eruption/scripts/lib/keymaps/default.keymap
 	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git
