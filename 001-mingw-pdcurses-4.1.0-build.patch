@@ -1,67 +1,69 @@
-diff -Naur PDCursesMod-4.2.0.orig/wincon/Makefile PDCursesMod-4.2.0/wincon/Makefile
---- PDCursesMod-4.2.0.orig/wincon/Makefile	2020-10-03 15:41:02.142746719 -0400
-+++ PDCursesMod-4.2.0/wincon/Makefile	2020-10-03 15:44:06.328914025 -0400
-@@ -102,8 +102,9 @@
+diff -Naur PDCursesMod-4.3.5.orig/wincon/Makefile PDCursesMod-4.3.5/wincon/Makefile
+--- PDCursesMod-4.3.5.orig/wincon/Makefile	2022-11-29 07:10:34.152931789 -0500
++++ PDCursesMod-4.3.5/wincon/Makefile	2022-11-29 07:15:02.644861393 -0500
+@@ -101,10 +101,11 @@
+ DLLNAME = pdcurses
+ 
  ifeq ($(DLL),Y)
++	LIBARCHIVE = libpdcurses.dll.a
  	CFLAGS += -DPDC_DLL_BUILD
  	LIBEXE = $(CC)
--	LIBFLAGS = -Wl,--out-implib,pdcurses.a -shared -o
--	LIBCURSES = pdcurses.dll
-+  LIBARCHIVE = libpdcurses.dll.a
+-	LIBFLAGS = -Wl,--out-implib,$(LIBNAME).a -shared -o
+-	LIBCURSES = $(DLLNAME).dll
 +	LIBFLAGS = -Wl,--out-implib,$(LIBARCHIVE) -shared -o
 +	LIBCURSES = libpdcurses.dll
  	LIBDEPS = $(LIBOBJS) $(PDCOBJS)
  	LIBSADDED = -lwinmm
  	EXELIBS =
-@@ -115,7 +116,8 @@
+@@ -116,7 +117,8 @@
  else
- 	LIBFLAGS	= rv
+ 	LIBFLAGS = rv
  endif
--	LIBCURSES = pdcurses.a
+-	LIBCURSES = $(LIBNAME).a
 +	LIBARCHIVE = libpdcurses.a
-+  LIBCURSES = $(LIBARCHIVE)
++	LIBCURSES = $(LIBARCHIVE)
  	LIBDEPS = $(LIBOBJS) $(PDCOBJS)
- 	LIBSADDED = -lwinmm
- 	EXELIBS =
-@@ -141,7 +143,7 @@
+ 	LIBSADDED =
+ 	EXELIBS = -lwinmm
+@@ -142,7 +144,7 @@
  
  $(LIBCURSES) : $(LIBDEPS)
  	$(LIBEXE) $(LIBFLAGS) $@ $? $(LIBSADDED)
--	$(CP) pdcurses.a panel.a
+-	$(CP) $(LIBNAME).a panel.a
 +	$(CP) $(LIBARCHIVE) libpanel.a
  
  $(LIBOBJS) $(PDCOBJS) : $(PDCURSES_HEADERS)
  $(PDCOBJS) : $(PDCURSES_WIN_H)
-diff -Naur PDCursesMod-4.2.0.orig/wingui/Makefile PDCursesMod-4.2.0/wingui/Makefile
---- PDCursesMod-4.2.0.orig/wingui/Makefile	2020-10-03 15:41:02.146080103 -0400
-+++ PDCursesMod-4.2.0/wingui/Makefile	2020-10-03 15:45:55.877307548 -0400
-@@ -97,8 +97,9 @@
+diff -Naur PDCursesMod-4.3.5.orig/wingui/Makefile PDCursesMod-4.3.5/wingui/Makefile
+--- PDCursesMod-4.3.5.orig/wingui/Makefile	2022-11-29 07:10:34.156265146 -0500
++++ PDCursesMod-4.3.5/wingui/Makefile	2022-11-29 07:16:20.368757254 -0500
+@@ -99,8 +99,9 @@
  ifeq ($(DLL),Y)
  	CFLAGS += -DPDC_DLL_BUILD
  	LIBEXE = $(CC)
--	LIBFLAGS = -Wl,--out-implib,pdcurses.a -static-libgcc -shared -o
--	LIBCURSES = pdcurses.dll
+-	LIBFLAGS = -Wl,--out-implib,$(LIBNAME).a -static-libgcc -shared -o
+-	LIBCURSES = $(DLLNAME).dll
 +	LIBARCHIVE = libpdcurses.dll.a
 +	LIBFLAGS = -Wl,--out-implib,$(LIBARCHIVE) -shared -o
 +	LIBCURSES = libpdcurses.dll
  	LIBDEPS = $(LIBOBJS) $(PDCOBJS)
  	LIBSADDED = -lgdi32 -lcomdlg32 -lwinmm
  	EXELIBS =
-@@ -110,7 +111,8 @@
+@@ -112,7 +113,8 @@
  else
  	LIBFLAGS = rv
  endif
--	LIBCURSES = pdcurses.a
+-	LIBCURSES = $(LIBNAME).a
 +	LIBARCHIVE = libpdcurses.a
 +	LIBCURSES = $(LIBARCHIVE)
  	LIBDEPS = $(LIBOBJS) $(PDCOBJS)
  	LIBSADDED =
  	EXELIBS = -lgdi32 -lcomdlg32 -lwinmm
-@@ -136,7 +138,7 @@
+@@ -138,7 +140,7 @@
  
  $(LIBCURSES) : $(LIBDEPS)
  	$(LIBEXE) $(LIBFLAGS) $@ $? $(LIBSADDED)
--	$(CP) pdcurses.a panel.a
+-	$(CP) $(LIBNAME).a panel.a
 +	$(CP) $(LIBARCHIVE) libpanel.a
  
  $(LIBOBJS) $(PDCOBJS) : $(PDCURSES_HEADERS)
