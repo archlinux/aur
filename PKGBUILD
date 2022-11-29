@@ -2,8 +2,8 @@
 _basename=dbd-icon-toolbox
 _nodeversion=14
 pkgname="$_basename-git"
-pkgver=v2.8.4.r0.g7d83022
-pkgrel=2
+pkgver=2.8.4.r0.g7d83022
+pkgrel=1
 pkgdesc="Application for browsing/installing custom Dead by Daylight Perks/Icons/Char Portraits"
 arch=(x86_64)
 url=https://github.com/nrcrast/DbdPerkTool
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
