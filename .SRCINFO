@@ -1,21 +1,22 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sf
 	arch = i686
 	arch = x86_64
 	license = GPL-2 | MIT
-	depends = gdal
-	depends = geos
-	depends = proj
-	depends = r
+	depends = gdal>=2.0.1
+	depends = geos>=3.4.0
+	depends = proj>=4.8.0
+	depends = r>=3.3.0
 	depends = r-classint>=0.4.1
 	depends = r-dbi>=0.8
 	depends = r-magrittr
 	depends = r-rcpp>=0.12.18
-	depends = r-s2>=1.0.7
+	depends = r-s2>=1.1.0
 	depends = r-units>=0.7.0
+	depends = sqlite3
 	optdepends = r-blob
 	optdepends = r-covr
 	optdepends = r-dplyr>=0.8.3
@@ -51,7 +52,7 @@ pkgbase = r-sf
 	optdepends = r-tmap>=2.0
 	optdepends = r-vctrs
 	optdepends = r-wk
-	source = https://cran.r-project.org/src/contrib/sf_1.0-8.tar.gz
-	sha256sums = 3ddc7090e79d6b5e3fad69e01254677ab5ec86a0b25e7e73493c8eac0ea98732
+	source = https://cran.r-project.org/src/contrib/sf_1.0-9.tar.gz
+	b2sums = cf151032200a02b6a79162c5ad5a85aab1c30ce7c13a876af32a13305eb4bc99850d5f3b040e911e92e85f2414ba7ba1c31b2e8e3d9b82d282723b6de0c14fc6
 
 pkgname = r-sf

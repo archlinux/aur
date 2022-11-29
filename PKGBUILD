@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-8
+_cranver=1.0-9
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
@@ -11,57 +11,58 @@ pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
-    gdal
-    geos
-    proj
-    r
+    "gdal>=2.0.1"
+    "geos>=3.4.0"
+    "proj>=4.8.0"
+    "r>=3.3.0"
     "r-classint>=0.4.1"
     "r-dbi>=0.8"
-    r-magrittr
+    "r-magrittr"
     "r-rcpp>=0.12.18"
-    "r-s2>=1.0.7"
+    "r-s2>=1.1.0"
     "r-units>=0.7.0"
+    "sqlite3"
 )
 optdepends=(
-    r-blob
-    r-covr
+    "r-blob"
+    "r-covr"
     "r-dplyr>=0.8.3"
-    r-ggplot2
-    r-knitr
+    "r-ggplot2"
+    "r-knitr"
     "r-lwgeom>=0.2.1"
-    r-maps
-    r-mapview
-    r-matrix
-    r-microbenchmark
-    r-odbc
-    r-pbapply
-    r-pillar
-    r-pool
-    r-raster
-    r-rlang
-    r-rmarkdown
+    "r-maps"
+    "r-mapview"
+    "r-matrix"
+    "r-microbenchmark"
+    "r-odbc"
+    "r-pbapply"
+    "r-pillar"
+    "r-pool"
+    "r-raster"
+    "r-rlang"
+    "r-rmarkdown"
     "r-rpostgres>=1.1.0"
-    r-rpostgresql
-    r-rsqlite
+    "r-rpostgresql"
+    "r-rsqlite"
     "r-sp>=1.2.4"
     "r-spatstat>2.0.1"
-    r-spatstat.geom
-    r-spatstat.linnet
-    r-spatstat.random
-    r-spatstat.utils
+    "r-spatstat.geom"
+    "r-spatstat.linnet"
+    "r-spatstat.random"
+    "r-spatstat.utils"
     "r-stars>=0.2.0"
-    r-terra
-    r-testthat
+    "r-terra"
+    "r-testthat"
     "r-tibble>=1.4.1"
     "r-tidyr>=1.2.0"
     "r-tidyselect>=1.0.0"
     "r-tmap>=2.0"
-    r-vctrs
-    r-wk
+    "r-vctrs"
+    "r-wk"
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("3ddc7090e79d6b5e3fad69e01254677ab5ec86a0b25e7e73493c8eac0ea98732")
+b2sums=('cf151032200a02b6a79162c5ad5a85aab1c30ce7c13a876af32a13305eb4bc99850d5f3b040e911e92e85f2414ba7ba1c31b2e8e3d9b82d282723b6de0c14fc6')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
