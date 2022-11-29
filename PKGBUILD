@@ -1,8 +1,8 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=xbacklight-notify
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Xorg backlight notification daemon"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/xbacklight-notify"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify libxcb)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('f19b2422bfda0332ebc837fbe5ecd5f1')
+md5sums=('3ee6e602a5a9b9d48f0ba1b4e4e70812')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
