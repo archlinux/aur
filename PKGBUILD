@@ -39,4 +39,5 @@ package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/lottie2gif" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/lottie2webp" -t "$pkgdir/usr/bin"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
