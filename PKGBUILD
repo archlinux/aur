@@ -57,7 +57,7 @@ prepare()
 
 build()
 {
-	CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
+	CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
 
 	# 64-bit
 	arch-meson gtk+-$_gtkver build \
