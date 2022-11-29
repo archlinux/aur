@@ -1,8 +1,10 @@
 [Desktop Entry]
-Version=%VERSION%
-Type=Application
 Name=ArmCord
 Comment=ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight
-Exec=armcord
+GenericName=Internet Messenger
+Type=Application
+Exec=/usr/bin/armcord
 Icon=armcord
-Categories=Internet;
+Categories=Network;InstantMessaging;
+StartupWMClass=armcord
+Keywords=discord;armcord;vencord;shelter;electron;

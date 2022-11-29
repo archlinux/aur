@@ -19,7 +19,7 @@ pkgbase = armcord-git
 	source = armcord.desktop
 	source = armcord-launcher.sh
 	sha256sums = SKIP
-	sha256sums = e6b66912e1a73d0646e58f41a6c6f414f45843cdb3900a6b4cf6ae0bf12ea90f
+	sha256sums = a964b66a4829eb2fe86a0fa4841a67a9fd3264dfea960aa4cacf2a64c0200d93
 	sha256sums = 5a37668b474263bc362bc322df4c90981710b9294e85a5ab0fd93b253e9ca2e2
 
 pkgname = armcord-git

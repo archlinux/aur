@@ -3,7 +3,7 @@
 pkgname=armcord-git
 pkgdesc="ArmCord dev build using the system electron. ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
 pkgver=r595.cdb73c3
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64" "aarch64")
 url="https://github.com/ArmCord/ArmCord"
@@ -25,12 +25,8 @@ source=(
   "armcord-launcher.sh"
 )
 sha256sums=('SKIP'
-            'e6b66912e1a73d0646e58f41a6c6f414f45843cdb3900a6b4cf6ae0bf12ea90f'
+            'a964b66a4829eb2fe86a0fa4841a67a9fd3264dfea960aa4cacf2a64c0200d93'
             '5a37668b474263bc362bc322df4c90981710b9294e85a5ab0fd93b253e9ca2e2')
-
-prepare() {
-    sed -i "s/%VERSION%/$pkgver/" "$srcdir/armcord.desktop"
-}
 
 pkgver() {
 	cd "$pkgname"
