@@ -169,6 +169,8 @@ prepare() {
 
   cd ../brave-browser
 
+  export RUSTUP_TOOLCHAIN=stable
+
   export DEPOT_TOOLS_UPDATE=0
   export PATH="${PATH}:${srcdir:?}/depot_tools"
 
@@ -315,6 +317,7 @@ prepare() {
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
   make CHROMIUM_APP=Brave CHROMIUM_NAME=brave -C chromium-launcher-$_launcher_ver
 
   cd "brave-browser"
@@ -463,6 +466,7 @@ build() {
 
 package() {
   cd chromium-launcher-$_launcher_ver
+  export RUSTUP_TOOLCHAIN=stable
   make PREFIX=/usr DESTDIR="$pkgdir" CHROMIUM_NAME=brave install
 
   install -Dm644 LICENSE \
