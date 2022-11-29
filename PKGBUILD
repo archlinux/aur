@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-git
 pkgver=1.3.34.r3.g8c4b66a2a
-pkgrel=2
+pkgrel=3
 _pkgbasename=quarto-cli
 _denodomver="0.1.23-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -33,7 +33,7 @@ build() {
   cd "${srcdir}/${_pkgbasename}"
   source configuration
   source "${srcdir}/${_pkgbasename}/package/src/set_package_paths.sh"
-  export QUARTO_VERSION=${pkgver}
+  export QUARTO_VERSION=${pkgver%.*.*.*}
   if [ -z "$QUARTO_DENO" ]; then
     export QUARTO_DENO=$SCRIPT_PATH/../dist/bin/tools/deno
   fi
