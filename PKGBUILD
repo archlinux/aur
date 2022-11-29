@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-git
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
@@ -59,5 +59,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 pikaur.1 "$pkgdir/usr/share/man/man1/pikaur.1"
 	cp -r ./packaging/* "${pkgdir}"
-	cp -r ./dist/* "${pkgdir}"
 }
