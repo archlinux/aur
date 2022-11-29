@@ -23,7 +23,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("1ce0c996df95e4ae39bb7b28d238ab552f8b24f1c32f5038930d4b071f72891d")
+b2sums=("4d8fa5c897330b878fbd9e824c2aa299029dfa077527c83b7b3dcc880f92caab90ebf0a221c896db73d729b47979de396cdb7fecd0dcc4bfe7ccca41a5f966ce")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
