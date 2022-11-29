@@ -69,7 +69,7 @@ build() {
 
   cd docs
 
-  BUILD_MODE=release make proxmox-backup-client.1 pxar.1
+  DEB_VERSION_UPSTREAM="$pkgver" DEB_VERSION="${pkgver%.*}" BUILD_MODE=release make proxmox-backup-client.1 pxar.1
 }
 
 check() {
