@@ -2,14 +2,14 @@
 # Contributor: Hubert Jarosz <marqin.pl+aur at gmail dot com> PGP: 0xFFECF63C1AAB83FF
 
 pkgname=renderdoc-git
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
 license=("MIT")
 makedepends=("git" "cmake" "ninja" "python")
-depends=("wayland" "libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms")
+depends=("wayland" "libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "xcb-util-keysyms" "pcre")
 source=("git+https://github.com/baldurk/renderdoc")
 sha256sums=('SKIP')
 conflicts=('renderdoc')
