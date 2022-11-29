@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=%VERSION%
+Type=Application
+Name=ArmCord
+Comment=ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight
+Exec=armcord
+Icon=armcord
+Categories=Internet;

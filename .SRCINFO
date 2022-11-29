@@ -1,0 +1,24 @@
+pkgbase = armcord-git
+	pkgdesc = ArmCord dev build using the system electron. ArmCordis a custom client designed to enhance your Discord experience while keeping everything lightweight
+	pkgver = r595.cdb73c3
+	pkgrel = 1
+	url = https://github.com/ArmCord/ArmCord
+	arch = x86_64
+	arch = aarch64
+	license = custom:OSL-3.0
+	makedepends = git
+	makedepends = nodejs
+	makedepends = sed
+	depends = electron21
+	optdepends = libnotify: Notifications
+	optdepends = xdg-utils: Open links, files, etc
+	provides = armcord
+	conflicts = armcord
+	source = armcord-git::git+https://github.com/ArmCord/ArmCord.git
+	source = armcord.desktop
+	source = armcord-launcher.sh
+	sha256sums = SKIP
+	sha256sums = e6b66912e1a73d0646e58f41a6c6f414f45843cdb3900a6b4cf6ae0bf12ea90f
+	sha256sums = 75a212aba147ca325957263dfd67f34cc168e36d8794609326f6b616499de428
+
+pkgname = armcord-git
