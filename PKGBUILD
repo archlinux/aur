@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=impd-git
-pkgver=0.6.r17.g6b6ccf6
+pkgver=0.7.r0.g6d7f884
 pkgrel=1
 pkgdesc="Manage passive immersion and create condensed audio."
 arch=(any)
