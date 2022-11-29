@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
-pkgver='1.151.1'
+pkgver='1.154.2'
 pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
@@ -13,22 +13,25 @@ license=('custom')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
-#_bootstrap_version='1.25.0'
-#_bootstrap_checksum='2208ef7d47e23c868d3ba32ca118bee9f9bccc2cad1814d0ecfd38128a7ea903'
-#_launcher_version='1.151.1'
-#_launcher_checksum='93e225980159e615c70a510b0365957dcc9ea33e46a14af359908c111eb0bdfd'
+#_bootstrap_version='1.30.1'
+#_bootstrap_checksum='dcbf264201ade8930a2e17f4aee6ab7916b8eae1ddb52c44a5c289b13c59185d'
+#_launcher_version='1.154.2'
+#_launcher_checksum='c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6'
 
 _repo='https://tlaun.ch/repo'
 # Try one of these if the above one fails:
 #_repo='https://cdn.turikhay.ru/tln4/repo'
+#_repo='https://tlaun.ch/repo'
 #_repo='https://eu01-www.tlaun.ch/repo'
 #_repo='https://eu02-www.tlaun.ch/repo'
 #_repo='https://ru01-www.tlaun.ch/repo'
 #_repo='https://ru02-www.tlaun.ch/repo'
+#_repo='https://tln4.ru/repo'
 #_repo='https://eu01-www.tln4.ru/repo'
 #_repo='https://eu02-www.tln4.ru/repo'
 #_repo='https://ru01-www.tln4.ru/repo'
 #_repo='https://ru02-www.tln4.ru/repo'
+#_repo='https://4nlt.com/repo'
 #_repo='https://eu01-www.4nlt.com/repo'
 #_repo='https://eu02-www.4nlt.com/repo'
 #_repo='https://ru01-www.4nlt.com/repo'
@@ -36,16 +39,17 @@ _repo='https://tlaun.ch/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.25.0-2208ef7d.jar::${_repo}/update/aur/bootstrap/2208ef7d47e23c868d3ba32ca118bee9f9bccc2cad1814d0ecfd38128a7ea903.jar"
+  "tl-bootstrap-1.30.1-dcbf2642.jar::${_repo}/update/aur/bootstrap/dcbf264201ade8930a2e17f4aee6ab7916b8eae1ddb52c44a5c289b13c59185d.jar"
 
   # Launcher
-  "tl-launcher-1.151.1-93e22598.jar::${_repo}/update/aur/launcher/93e225980159e615c70a510b0365957dcc9ea33e46a14af359908c111eb0bdfd.jar"
+  "tl-launcher-1.154.2-c18025fb.jar::${_repo}/update/aur/launcher/c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
   "${_repo}/libraries/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar"
   "${_repo}/libraries/io/sentry/sentry/1.7.30/sentry-1.7.30.jar"
-  "${_repo}/libraries/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar"
+  "${_repo}/libraries/org/apache/logging/log4j/log4j-slf4j2-impl/2.19.0/log4j-slf4j2-impl-2.19.0.jar"
+  "${_repo}/libraries/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar"
   "${_repo}/libraries/com/fasterxml/jackson/core/jackson-core/2.13.0/jackson-core-2.13.0.jar"
   "${_repo}/libraries/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
   "${_repo}/libraries/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar"
@@ -57,9 +61,9 @@ source=(
   "${_repo}/libraries/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
   "${_repo}/libraries/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar"
   "${_repo}/libraries/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
-  "${_repo}/libraries/org/apache/logging/log4j/log4j-core/2.17.0/log4j-core-2.17.0.jar"
-  "${_repo}/libraries/org/apache/logging/log4j/log4j-1.2-api/2.17.0/log4j-1.2-api-2.17.0.jar"
-  "${_repo}/libraries/org/apache/logging/log4j/log4j-api/2.17.0/log4j-api-2.17.0.jar"
+  "${_repo}/libraries/org/apache/logging/log4j/log4j-core/2.19.0/log4j-core-2.19.0.jar"
+  "${_repo}/libraries/org/apache/logging/log4j/log4j-1.2-api/2.19.0/log4j-1.2-api-2.19.0.jar"
+  "${_repo}/libraries/org/apache/logging/log4j/log4j-api/2.19.0/log4j-api-2.19.0.jar"
   "${_repo}/libraries/org/apache/httpcomponents/fluent-hc/4.5.13/fluent-hc-4.5.13.jar"
   "${_repo}/libraries/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar"
   "${_repo}/libraries/org/nanohttpd/nanohttpd/2.3.1/nanohttpd-2.3.1.jar"
@@ -88,19 +92,20 @@ source=(
 
 noextract=(
   "${source[@]##*/}"
-  "tl-bootstrap-1.25.0-2208ef7d.jar"
-  "tl-launcher-1.151.1-93e22598.jar"
+  "tl-bootstrap-1.30.1-dcbf2642.jar"
+  "tl-launcher-1.154.2-c18025fb.jar"
 )
 
 sha256sums=(
-  '2208ef7d47e23c868d3ba32ca118bee9f9bccc2cad1814d0ecfd38128a7ea903' # tl-bootstrap-1.25.0-2208ef7d.jar
+  'dcbf264201ade8930a2e17f4aee6ab7916b8eae1ddb52c44a5c289b13c59185d' # tl-bootstrap-1.30.1-dcbf2642.jar
 
-  '93e225980159e615c70a510b0365957dcc9ea33e46a14af359908c111eb0bdfd' # tl-launcher-1.151.1-93e22598.jar
+  'c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6' # tl-launcher-1.154.2-c18025fb.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'd5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9' # com.google.guava:guava:31.0.1-jre
   'ede7def7507a24e74b501f80ba0cfb82eb5e5745cb493d3ee5720a385bfde1f1' # io.sentry:sentry:1.7.30
-  '3624f8474c1af46d75f98bc097d7864a323c81b3808aa43689a6e1c601c027be' # org.slf4j:slf4j-api:1.7.32
+  '825605eacb2d5605b105c53d4108c18125e0f82f62960d0be583278b9c524f3c' # org.apache.logging.log4j:log4j-slf4j2-impl:2.19.0
+  'b36b99b8d99ea7857554d9b25dfdbd1fb25378c926f7b9e0249983c99335b2c4' # org.slf4j:slf4j-api:2.0.1
   '348bc59b348df2e807b356f1d62d2afb41a974073328abc773eb0932b855d2c8' # com.fasterxml.jackson.core:jackson-core:2.13.0
   '2218c73b40f9af98b570d084420c1b4a81332297bd7fc27ddd552e903be8e93c' # com.github.zafarkhaja:java-semver:0.9.0
   'f5475e63e7e89e5db62223489aec7a56bd303543772077a17c2cb54c19ca3a20' # com.moandjiezana.toml:toml4j:0.7.2
@@ -112,9 +117,9 @@ sha256sums=(
   '2bdf7a48fddc9259f5aa420eee328e939d71302a6a1b79a176e4fd47ee988b97' # org.jdom:jdom:2.0.2
   'd919d904486c037f8d193412da0c92e22a9fa24230b9d67a57855c5c31c7e94e' # org.apache.commons:commons-lang3:3.12.0
   'bbb82aadb5e4209527c15fcc40e514b6f4c921a37bc66b68b3611bec70c538e8' # com.timgroup:java-statsd-client:3.1.0
-  '65c33dc9b24a5e5f6cacae62680641582894749c7bf16c951032ef92f3e12a60' # org.apache.logging.log4j:log4j-core:2.17.0
-  '6f66c3b6c695f5058b6b8b9ceafeff0f32ad7e662c74b9cc4f6d5f7c952c4c85' # org.apache.logging.log4j:log4j-1.2-api:2.17.0
-  'ab9cadc80e234580e3f3c8c18644314fccd4b3cd3f7085d4e934866cb561b95d' # org.apache.logging.log4j:log4j-api:2.17.0
+  'b4a1796fab7bfc36df015c1b4052459147997e8d215a7199d71d05f9e747e4f4' # org.apache.logging.log4j:log4j-core:2.19.0
+  '60480a6c81978a9871099e002997df84a05fc11789fb248e3e803a0dcb19e0cd' # org.apache.logging.log4j:log4j-1.2-api:2.19.0
+  '5ccb24ad9f92e768d0bc456d3061a737951262df803e004d2cad096b75a88d60' # org.apache.logging.log4j:log4j-api:2.19.0
   'f883b6b027d5e05c53e48e4fe3548715c52dbd590ffa3f52d039574f1a4d0728' # org.apache.httpcomponents:fluent-hc:4.5.13
   '6fe9026a566c6a5001608cf3fc32196641f6c1e5e1986d1037ccdbd5f31ef743' # org.apache.httpcomponents:httpclient:4.5.13
   'de864c47818157141a24c9acb36df0c47d7bf15b7ff48c90610f3eb4e5df0e58' # org.nanohttpd:nanohttpd:2.3.1
@@ -150,14 +155,15 @@ package() {
   done
 
   # install launcher
-  install -Dm0644 "${srcdir}/tl-bootstrap-1.25.0-2208ef7d.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl-launcher-1.151.1-93e22598.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-1.30.1-dcbf2642.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-1.154.2-c18025fb.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
   install -Dm0644 "${srcdir}/guava-31.0.1-jre.jar" "${pkgdir}/opt/tlauncher/lib/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar"
   install -Dm0644 "${srcdir}/sentry-1.7.30.jar" "${pkgdir}/opt/tlauncher/lib/io/sentry/sentry/1.7.30/sentry-1.7.30.jar"
-  install -Dm0644 "${srcdir}/slf4j-api-1.7.32.jar" "${pkgdir}/opt/tlauncher/lib/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar"
+  install -Dm0644 "${srcdir}/log4j-slf4j2-impl-2.19.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-slf4j2-impl/2.19.0/log4j-slf4j2-impl-2.19.0.jar"
+  install -Dm0644 "${srcdir}/slf4j-api-2.0.1.jar" "${pkgdir}/opt/tlauncher/lib/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar"
   install -Dm0644 "${srcdir}/jackson-core-2.13.0.jar" "${pkgdir}/opt/tlauncher/lib/com/fasterxml/jackson/core/jackson-core/2.13.0/jackson-core-2.13.0.jar"
   install -Dm0644 "${srcdir}/java-semver-0.9.0.jar" "${pkgdir}/opt/tlauncher/lib/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar"
   install -Dm0644 "${srcdir}/toml4j-0.7.2.jar" "${pkgdir}/opt/tlauncher/lib/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar"
@@ -169,9 +175,9 @@ package() {
   install -Dm0644 "${srcdir}/jdom-2.0.2.jar" "${pkgdir}/opt/tlauncher/lib/org/jdom/jdom/2.0.2/jdom-2.0.2.jar"
   install -Dm0644 "${srcdir}/commons-lang3-3.12.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar"
   install -Dm0644 "${srcdir}/java-statsd-client-3.1.0.jar" "${pkgdir}/opt/tlauncher/lib/com/timgroup/java-statsd-client/3.1.0/java-statsd-client-3.1.0.jar"
-  install -Dm0644 "${srcdir}/log4j-core-2.17.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.17.0/log4j-core-2.17.0.jar"
-  install -Dm0644 "${srcdir}/log4j-1.2-api-2.17.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-1.2-api/2.17.0/log4j-1.2-api-2.17.0.jar"
-  install -Dm0644 "${srcdir}/log4j-api-2.17.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-api/2.17.0/log4j-api-2.17.0.jar"
+  install -Dm0644 "${srcdir}/log4j-core-2.19.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-core/2.19.0/log4j-core-2.19.0.jar"
+  install -Dm0644 "${srcdir}/log4j-1.2-api-2.19.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-1.2-api/2.19.0/log4j-1.2-api-2.19.0.jar"
+  install -Dm0644 "${srcdir}/log4j-api-2.19.0.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/logging/log4j/log4j-api/2.19.0/log4j-api-2.19.0.jar"
   install -Dm0644 "${srcdir}/fluent-hc-4.5.13.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/httpcomponents/fluent-hc/4.5.13/fluent-hc-4.5.13.jar"
   install -Dm0644 "${srcdir}/httpclient-4.5.13.jar" "${pkgdir}/opt/tlauncher/lib/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar"
   install -Dm0644 "${srcdir}/nanohttpd-2.3.1.jar" "${pkgdir}/opt/tlauncher/lib/org/nanohttpd/nanohttpd/2.3.1/nanohttpd-2.3.1.jar"
