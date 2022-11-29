@@ -34,7 +34,7 @@ prepare() {
   git submodule init external/{sdl_gamecontrollerdb,tinycmmc}
   git config submodule.external/sdl_gamecontrollerdb.url ../SDL_GameControllerDB
   git config submodule.external/tinycmmc.url ../tinycmmc
-  git submodule update external/{sdl_gamecontrollerdb,tinycmmc}
+  git -c protocol.file.allow=always submodule update external/{sdl_gamecontrollerdb,tinycmmc}
 
   patch -p1 -i "${srcdir}"/sdl-jstest-cmake.patch
 }
