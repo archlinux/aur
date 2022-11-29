@@ -1,0 +1,18 @@
+pkgbase = jiggle
+	pkgdesc = jiggle - A Tiny Program to Jiggle Your Mouse
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RobertPlant/wfh-jiggle
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	depends = xdotool
+	provides = jiggle
+	source = jiggle-0.1.0.tar.gz::https://crates.io/api/v1/crates/jiggle/0.1.0/download
+	sha512sums = 611fa1003af18a1c2dd94d4c6eb0c234b089948e2300ce4205ec0f60149c92a1f824cb99465504f3cc104e79bd31b5c2ff27c83aafe3a66905990c27cf5ce840
+
+pkgname = jiggle
