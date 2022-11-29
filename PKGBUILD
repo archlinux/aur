@@ -1,5 +1,6 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 _pkgbin=chain-desktop-wallet
@@ -8,10 +9,10 @@ pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('yarn' 'fnm')
-conflicts=('cro-chain-desktop-bin')
+conflicts=("${pkgname}-bin")
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "chain-desktop-wallet.desktop")
 sha512sums=('2d7e801dfa12b0dfe01aba9817b151ec70423eb89cb1a8a343986e251db352ade7b589b773af11bd8fad4acafebf641aabd994e23bbc148a7f21d280f64505d1'
@@ -31,10 +32,10 @@ package() {
 
   cd "${_pkgbin}-${pkgver}"
 
-  install -dm755 "${pkgdir}/opt/${_pkgbin}"
-  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgbin}"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
+  ln -s "/opt/${pkgname}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
   install -Dm644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
 }
