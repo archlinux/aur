@@ -1,0 +1,15 @@
+pkgbase = swaysome-git
+	pkgdesc = Awesome WM like workspaces
+	pkgver = 1.1.5.r49.gd700e56
+	pkgrel = 1
+	url = https://gitlab.com/hyask/swaysome
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = swaysome
+	conflicts = swaysome
+	source = swaysome::git+https://gitlab.com/hyask/swaysome
+	md5sums = SKIP
+
+pkgname = swaysome-git
