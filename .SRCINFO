@@ -1,0 +1,17 @@
+pkgbase = python-xkcdrandom
+	pkgdesc = A random number generator made in accordance with https://xkcd.com/221/
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/patrickarmengol/xkcdrandom
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = xkcdrandom-0.0.2.tar.gz::https://github.com/patrickarmengol/xkcdrandom/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = 6b1b2bbbdfec9af893eb08ffbe39b7abb152de0be053982e7e215257134a978e
+
+pkgname = python-xkcdrandom
