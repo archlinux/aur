@@ -47,6 +47,8 @@ pkgbase = matrix-mirage-python3.10
 	conflicts = mirage-matrix
 	conflicts = matrix-mirage-git
 	source = https://raw.githubusercontent.com/vSLG/mirage/4cffbaa68da1feb9254dcd064de66ae93045a785/src/backend/utils.py
+	source = git+https://github.com/mirukana/mirage
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = matrix-mirage-python3.10
