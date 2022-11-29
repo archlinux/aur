@@ -2,8 +2,8 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='dave-gnukem'
-pkgver=1.0.2
-_pkgver=1.0.1
+pkgver=1.0.3
+_pkgver=1.0.3
 pkgrel=1
 pkgdesc='2D scrolling platform shooter inspired by Duke Nukem 1'
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('d50a839d77c684a2f99b91adb274b81ac9cd4f6e040ecbcc456f601e3d71a008'
-            '46c06c5fb7e1ca8d0848c1866d6e1df96e021ddf8cebc7e64d97cfee64232027'
+sha256sums=('2dbf00fcdb9aeeb7caaf0eb7403d34af33e3c08556d9376ae5f9c9c5647afd98'
+            'af0601ae1898b4718e8a2d62900a3ab1aa11113d60b64d03dd59ef945217333f'
             '7462158ad4dd0c853f01bedb90a8e6b8490f48b33dd39252260d4cfa425b8289'
             '209cb430b87c2b89455833b7c79ca309a8b87331c63882092b8c1ebeadbf2745'
             '89cb35bd13682bb35f2e7e5a9fc36d0a0f9959b77261d538f8ab1d59edb0321e')
