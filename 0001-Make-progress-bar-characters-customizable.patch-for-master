@@ -1,0 +1,162 @@
+From be6ed8dad099dc9262d2605a212d9683b88d746c Mon Sep 17 00:00:00 2001
+From: Jan Bidler <janbidler00@protonmail.com>
+Date: Thu, 24 Nov 2022 20:50:28 +0100
+Subject: [PATCH] Make progress bar characters customizable
+
+This is the original patch that was made for the master branch (23aa82812e6831313e3490f35cc107beba0fe7e0, MR #25)
+Keeping this here for comparison until likely 6.0.3
+
+---
+ src/pacman/callback.c | 31 ++++++++++++++++----
+ src/pacman/conf.c     | 68 +++++++++++++++++++++++++++++++++++++++++++
+ src/pacman/conf.h     |  5 ++++
+ 3 files changed, 98 insertions(+), 6 deletions(-)
+
+diff --git a/src/pacman/callback.c b/src/pacman/callback.c
+index aa6303bf..978c2728 100644
+--- a/src/pacman/callback.c
++++ b/src/pacman/callback.c
+@@ -152,8 +152,15 @@ static int64_t get_update_timediff(int first_call)
+ /* refactored from cb_trans_progress */
+ static void fill_progress(const int percent, const int proglen)
+ {
++	const size_t char_done_len = config->progress_char_done ? strlen(config->progress_char_done) : 1;
++	// Current falls back to missing if it does not exist
++	const size_t char_curr_len = config->progress_char_current ? strlen(config->progress_char_current) : (config->progress_char_missing ? strlen(config->progress_char_missing) : 1);
++	const size_t char_miss_len = config->progress_char_missing ? strlen(config->progress_char_missing) : 1;
++	/* gets the smallest bytes from the 3 lengths above */
++	const size_t smallest_char_bytes = char_done_len < char_curr_len ? (char_done_len < char_miss_len ? char_done_len : char_miss_len) : char_curr_len;
++	const size_t char_width = config->progress_char_width ? config->progress_char_width : smallest_char_bytes;
+ 	/* 8 = 1 space + 1 [ + 1 ] + 5 for percent */
+-	const int hashlen = proglen > 8 ? proglen - 8 : 0;
++	const int hashlen = proglen > 8 ? (proglen - 8) / char_width : 0;
+ 	const int hash = percent * hashlen / 100;
+ 	int i;
+ 
+@@ -175,11 +182,23 @@ static void fill_progress(const int percent, const int proglen)
+ 				} else {
+ 					fputs("\033[0;37m \033[m", stdout);
+ 				}
+-			} /* else regular progress bar */
+-			else if(i > hashlen - hash) {
+-				putchar('#');
+-			} else {
+-				putchar('-');
++			} /* else regular progress bar (with optional custom characters) */
++			else {
++				if(i > hashlen - hash) {
++					if (config->progress_char_done) {
++						fputs(config->progress_char_done, stdout);
++					} else {
++						putchar('#');
++					}
++				} else if(i == hashlen - hash && config->progress_char_current) {
++					fputs(config->progress_char_current, stdout);
++				} else {
++					if (config->progress_char_missing) {
++						fputs(config->progress_char_missing, stdout);
++					} else {
++						putchar('-');
++					}
++				}
+ 			}
+ 		}
+ 		putchar(']');
+diff --git a/src/pacman/conf.c b/src/pacman/conf.c
+index f9edf75b..c20d0943 100644
+--- a/src/pacman/conf.c
++++ b/src/pacman/conf.c
+@@ -744,6 +744,74 @@ static int _parse_options(const char *key, char *value,
+ 			}
+ 
+ 			config->parallel_downloads = number;
++		} else if(strcmp(key, "ProgressCharDone") == 0) {
++			size_t length = strlen(value);
++
++			if(length == 0) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: value for '%s' has to be non-empty : '%s'\n"),
++						file, linenum, "ProgressCharDone", value);
++				return 1;
++			}
++
++			config->progress_char_done = strdup(value);
++			/* disable chomp as they're incompatible */
++			config->chomp = 0;
++			pm_printf(ALPM_LOG_DEBUG, "config: progress_char_done: %s\n", value);
++		} else if(strcmp(key, "ProgressCharCurrent") == 0) {
++			size_t length = strlen(value);
++
++			if(length == 0) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: value for '%s' has to be non-empty : '%s'\n"),
++						file, linenum, "ProgressCharDone", value);
++				return 1;
++			}
++			config->progress_char_current = strdup(value);
++			/* disable chomp as they're incompatible */
++			config->chomp = 0;
++			pm_printf(ALPM_LOG_DEBUG, "config: progress_char_current: %s\n", value);
++		} else if(strcmp(key, "ProgressCharMissing") == 0) {
++			size_t length = strlen(value);
++
++			if(length == 0) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: value for '%s' has to be non-empty : '%s'\n"),
++						file, linenum, "ProgressCharMissing", value);
++				return 1;
++			}
++			config->progress_char_missing = strdup(value);
++			/* disable chomp as they're incompatible */
++			config->chomp = 0;
++			pm_printf(ALPM_LOG_DEBUG, "config: progress_char_current: %s\n", value);
++		} else if(strcmp(key, "ProgressCharWidth") == 0) {
++			long number;
++			int err;
++
++			err = parse_number(value, &number);
++			if(err) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: invalid value for '%s' : '%s'\n"),
++						file, linenum, "ProgressCharWidth", value);
++				return 1;
++			}
++
++			/* A value of zero means automatic detection */
++			if(number < 0) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: value for '%s' has to be non-negative : '%s'\n"),
++						file, linenum, "ProgressCharWidth", value);
++				return 1;
++			}
++
++			if(number > INT_MAX) {
++				pm_printf(ALPM_LOG_ERROR,
++						_("config file %s, line %d: value for '%s' is too large : '%s'\n"),
++						file, linenum, "ProgressCharWidth", value);
++				return 1;
++			}
++
++			config->progress_char_width = number;
+ 		} else {
+ 			pm_printf(ALPM_LOG_WARNING,
+ 					_("config file %s, line %d: directive '%s' in section '%s' not recognized.\n"),
+diff --git a/src/pacman/conf.h b/src/pacman/conf.h
+index f7916ca9..6527c34f 100644
+--- a/src/pacman/conf.h
++++ b/src/pacman/conf.h
+@@ -115,6 +115,11 @@ typedef struct __config_t {
+ 	unsigned short verbosepkglists;
+ 	/* number of parallel download streams */
+ 	unsigned int parallel_downloads;
++	/* custom characters to display on progress bar */
++	char *progress_char_done;
++	char *progress_char_current;
++	char *progress_char_missing;
++	unsigned int progress_char_width;
+ 	/* select -Sc behavior */
+ 	unsigned short cleanmethod;
+ 	alpm_list_t *holdpkg;
+-- 
+2.38.1
+
