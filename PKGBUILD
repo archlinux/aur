@@ -3,7 +3,7 @@
 # Contributor: renyuneyun <renyuneyun (at) gmail (dot) com>
 _name=octave_kernel
 pkgname=jupyter-${_name}
-pkgver=0.34.2
+pkgver=0.35.1
 pkgrel=1
 pkgdesc="A Jupyter kernel for Octave"
 arch=('any')
@@ -14,12 +14,18 @@ depends=(
     'octave'
     'python-ipykernel'
     'python-jupyter_client'
-    'python-jupyter_packaging'
 )
-makedepends=('python-build' 'python-installer')
-optdepends=('gnuplot: for making plots' 'jupyterlab: JupyterLab computational environment')
-source=("https://github.com/Calysto/octave_kernel/archive/v${pkgver}.tar.gz")
-sha256sums=('912f8581a582777614e23417332bab2975afbe26d9b6a5b80a6a8b15dfb7b3b1')
+makedepends=(
+    'python-build'
+    'python-hatchling'
+    'python-installer'
+)
+optdepends=(
+    'gnuplot: for making plots'
+    'jupyterlab: JupyterLab computational environment'
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Calysto/octave_kernel/archive/v${pkgver}.tar.gz")
+b2sums=('62700070fbad51cd3b27823ef1e6d2b5b0c563b4234a1318fb886e1473b3b0874a319ece85c7f31516ac95f5216858badbe7449ab6a24b337fa503e16f1c64ac')
 
 build() {
     cd "$srcdir"/$_name-${pkgver}
