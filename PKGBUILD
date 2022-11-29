@@ -2,15 +2,15 @@
 
 pkgbase=obs-vkcapture
 pkgname=("$pkgbase" "lib32-$pkgbase")
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 url="https://github.com/nowrep/$pkgbase"
 license=('GPL2')
 arch=('x86_64')
 depends=('vulkan-icd-loader' 'libgl' 'obs-studio>=27')
 makedepends=('gcc' 'cmake' 'vulkan-headers' 'lib32-gcc-libs' 'lib32-vulkan-icd-loader' 'lib32-libgl')
-source=("https://github.com/nowrep/$pkgbase/archive/v$pkgver.tar.gz")
-sha512sums=('55ba0c449cef9c80db82e98a2f6e282dfbf00a7ef0c180e307bd602ae13aadbb0383a38a56dcf4d67ed7ac1e5dd392be7ef71bb1e6f39278da69ed110c159bb0')
+source=("https://github.com/nowrep/$pkgbase/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
+sha512sums=('382578afbd9bfacc4e3b2bf16e244ab8318e07c1cfdbe2d887acae6eefea4eba5ccc03e0e96ddd06e1bb65a229c622eb8205a380dace0abb91dce07812419a31')
 
 build() {
 	cmake -B build -S "$pkgbase-$pkgver" \
