@@ -2,7 +2,7 @@
 
 _pkgname=litedram
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable DRAM core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex' 'python-yaml')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner' 'python-numpy' 'python-liteiclink') # missing pythondata-cpu-vexriscv release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('b73f01793558f90fd8e8043c43ce9e307190b63b7a47866fc39415b0c53fd54ed51a3ca33c2ad0d1b61b82c89651adf1bb3987ae4bea53cf9070a70425c3d3fd')
+sha512sums=('e84cefc357a31e8e421f9a39d0eeb26d3b3da300ccbcebe6cf907fa4c2465e07a819fff3e4368e1fd2b726a17b91dfd4e36d1ce954ddf2e5b338a4ac373bc003')
 
 build() {
   cd $_pkgname-$pkgver
