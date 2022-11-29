@@ -1,6 +1,6 @@
 pkgbase = edgetx-companion
 	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = edgetx-companion
 	makedepends = git
 	makedepends = icu
 	makedepends = python
+	makedepends = python-lz4
 	makedepends = python-pillow
 	makedepends = python-pyqt5
 	makedepends = qt5-svg
@@ -25,15 +26,14 @@ pkgbase = edgetx-companion
 	makedepends = sed
 	makedepends = xsd
 	depends = hicolor-icon-theme
-	depends = qt5-base
 	depends = qt5-multimedia
 	depends = sdl
 	optdepends = dfu-util: tool for flashing stm32 based radios
 	provides = companion
 	conflicts = companion
-	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.7.1
+	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.8.0
 	source = install.patch
 	sha256sums = SKIP
-	sha256sums = f9b62f82f402ea96153a7e45ec22aeaa4780039d57b28cc8ca8456e05c34ffe7
+	sha256sums = efa51cbbff6cb466a6a9bd681b04b158fce6e48d2db4c5cc235c1a871037f6c8
 
 pkgname = edgetx-companion

@@ -1,3 +1,5 @@
+--- build-companion-org.sh	2022-11-29 15:37:49.493916416 +0100
++++ build-companion.sh	2022-11-29 20:11:06.425385270 +0100
 @@ -30,7 +30,7 @@
  SRCDIR=$1
  OUTDIR=$2
@@ -6,9 +8,9 @@
 +COMMON_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr -DGVARS=YES -DHELI=YES -DLUA=YES -Wno-dev -DCMAKE_BUILD_TYPE=Release"
  if [ "$(uname)" = "Darwin" ]; then
      COMMON_OPTIONS="${COMMON_OPTIONS} -DCMAKE_OSX_DEPLOYMENT_TARGET='10.9'"
- elif [ "$(uname)" != "Linux" ]; then
-@@ -41,9 +41,9 @@
-   COMMON_OPTIONS="${COMMON_OPTIONS} -DVERSION_SUFFIX=$3"
+ elif [ "$(uname)" != "Linux" ]; then # Assume Windows and MSYS2
+@@ -59,9 +59,9 @@
+   fi
  fi
  
 -rm -rf build
@@ -18,19 +20,28 @@
 +mkdir ${OUTDIR}
 +cd ${OUTDIR}
  
- cmake ${COMMON_OPTIONS} -DPCB=X9LITE ${SRCDIR}
- make -j${JOBS} libsimulator
-@@ -128,13 +128,3 @@
- cmake ${COMMON_OPTIONS} -DPCB=X12S ${SRCDIR}
- make -j${JOBS} libsimulator
+ declare -a simulator_plugins=(x9lite x9lites
+                               x7 x7-access
+@@ -161,19 +161,10 @@
+     esac
  
+     rm -f CMakeCache.txt native/CMakeCache.txt
++
+     cmake ${BUILD_OPTIONS} "${SRCDIR}"
+     cmake --build . --target native-configure
+     cmake --build native -j"${JOBS}" --target libsimulator
+-done                              
++done
+ 
+-cmake --build . --target native-configure
 -if [ "$(uname)" = "Darwin" ]; then
--    make -j${JOBS} package
--    cp *.dmg ${OUTDIR}
+-    cmake --build native -j"${JOBS}" --target package
+-    cp native/*.dmg "${OUTDIR}"
 -elif [ "$(uname)" = "Linux" ]; then
--    make -j${JOBS} package
--    cp *.AppImage ${OUTDIR}
+-    cmake --build native -j"${JOBS}" --target package
+-    cp native/*.AppImage "${OUTDIR}"
 -else
--    make installer
--    cp companion/*.exe ${OUTDIR}
+-    cmake --build native --target installer
+-    cp native/companion/*.exe "${OUTDIR}"
 -fi
++cmake ${BUILD_OPTIONS} "${OUTDIR}/native"
