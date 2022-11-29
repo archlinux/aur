@@ -17,7 +17,7 @@ pkgbase = brave
 	makedepends = java-runtime-headless
 	makedepends = jq
 	makedepends = lld
-	makedepends = llvm>=15
+	makedepends = llvm-git
 	makedepends = ninja
 	makedepends = npm
 	makedepends = pipewire
