@@ -5,7 +5,6 @@ pkgbase = python-hatchling-git
 	url = https://hatch.pypa.io/latest/
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
