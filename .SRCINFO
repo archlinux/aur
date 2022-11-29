@@ -1,8 +1,8 @@
 pkgbase = mkinitcpio-archiso-git
 	pkgdesc = Initcpio scripts used by archiso
-	pkgver = 64.r0.ge0bc2c9
+	pkgver = 66.r0.g2a37e93
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/mkinitcpio/mkinitcpio-archiso
+	url = https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio-archiso
 	arch = any
 	license = GPL3
 	checkdepends = shellcheck
@@ -17,9 +17,9 @@ pkgbase = mkinitcpio-archiso-git
 	optdepends = nbd: for PXE over NBD
 	optdepends = openssl: for CMS signature verification of rootfs over PXE
 	optdepends = pv: for status display during copy to RAM
-	provides = mkinitcpio-archiso=64.r0.ge0bc2c9
+	provides = mkinitcpio-archiso=66.r0.g2a37e93
 	conflicts = mkinitcpio-archiso
-	source = git+https://gitlab.archlinux.org/mkinitcpio/mkinitcpio-archiso.git?signed
+	source = git+https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio-archiso.git?signed
 	validpgpkeys = 991F6E3F0765CF6295888586139B09DA5BF0D338
 	validpgpkeys = BB8E6F1B81CF0BB301D74D1CBF425A01E68B38EF
 	sha512sums = SKIP

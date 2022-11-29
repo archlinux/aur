@@ -2,11 +2,11 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mkinitcpio-archiso-git
-pkgver=64.r0.ge0bc2c9
+pkgver=66.r0.g2a37e93
 pkgrel=1
 pkgdesc='Initcpio scripts used by archiso'
 arch=('any')
-url='https://gitlab.archlinux.org/mkinitcpio/mkinitcpio-archiso'
+url='https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio-archiso'
 license=('GPL3')
 depends=('bash' 'device-mapper' 'mkinitcpio')
 makedepends=('git')
@@ -21,7 +21,7 @@ optdepends=(
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-source=("git+https://gitlab.archlinux.org/mkinitcpio/${pkgname%-git}.git?signed")
+source=("git+https://gitlab.archlinux.org/archlinux/mkinitcpio/${pkgname%-git}.git?signed")
 sha512sums=('SKIP')
 validpgpkeys=(
   '991F6E3F0765CF6295888586139B09DA5BF0D338' # David Runge <dvzrv@archlinux.org>
