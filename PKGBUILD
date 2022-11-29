@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.12.beta1.r42.g027a55e2
+pkgver=0.5.12.beta1.r44.gca442a76
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -48,13 +48,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # Fix 'end-of-line within string' msgfmt error
-  sed -i 's/im Installations-/im Installations-"/g' po/de.po
 }
 
 build() {
