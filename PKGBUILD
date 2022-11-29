@@ -4,10 +4,10 @@
 pkgname=pgagent
 _pkg=pgAgent
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Job scheduler for PostgreSQL which may be managed using pgAdmin"
 url="https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 license=('custom')
 depends=('postgresql-libs' 'boost')
 makedepends=('cmake')

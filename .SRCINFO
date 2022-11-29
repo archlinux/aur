@@ -1,11 +1,12 @@
 pkgbase = pgagent
 	pkgdesc = Job scheduler for PostgreSQL which may be managed using pgAdmin
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html
 	install = pgagent.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = custom
 	makedepends = cmake
 	depends = postgresql-libs
