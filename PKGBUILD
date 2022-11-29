@@ -4,8 +4,8 @@
 pkgname=tachidesk
 _pkgname=tachidesk-server
 _PkgName=Tachidesk-Server
-pkgver=0.6.5_r1122
-pkgrel=2
+pkgver=0.6.6_r1159
+pkgrel=1
 _pkgver="${pkgver%_*}"
 _revnum="${pkgver#*_r}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
@@ -20,8 +20,8 @@ _assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
 source=("$url/releases/download/v$_pkgver/$_jar"
   "$url/releases/download/v$_pkgver/$_assets.tar.gz")
 noextract=("$_jar")
-sha256sums=('5c395801c6a16117f4fa33cef30b809c30781bfee2933874cbf9ee7a20e28651'
-            'eb6109de83e4c44c9f3a1f177f6ce77a1ee0fe05e6c778239b4ebc68e29a57e4')
+sha256sums=('e91e8e6925cc9c1e654d948321b7176759710aa7ab39378389595d9e8d6f6d5b'
+            'd548c792ab155640997d9f5d17f79b5c97c4adc07ab7a166d746d6a894c41d27')
 
 package() {
   cd "$srcdir/"
