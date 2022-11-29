@@ -7,7 +7,7 @@
 
 pkgname=pacman-pb
 pkgver=6.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A library-based package manager with dependency support - includes a patch to customize the progress bar"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -24,7 +24,7 @@ backup=(etc/pacman.conf
 options=('strip' 'debug')
 #validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
 #              'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
-source=(https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz
+source=(https://sources.archlinux.org/other/pacman/pacman-$pkgver.tar.xz
         pacman-always-create-directories-from-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/efd0c24c07b86be014a4edb5a8ece021b87e3900.patch
         pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
         pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch

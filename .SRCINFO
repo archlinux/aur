@@ -1,7 +1,7 @@
 pkgbase = pacman-pb
 	pkgdesc = A library-based package manager with dependency support - includes a patch to customize the progress bar
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.archlinux.org/pacman/
 	arch = x86_64
 	groups = base-devel
@@ -29,7 +29,7 @@ pkgbase = pacman-pb
 	options = debug
 	backup = etc/pacman.conf
 	backup = etc/makepkg.conf
-	source = https://sources.archlinux.org/other/pacman/pacman-pb-6.0.2.tar.xz
+	source = https://sources.archlinux.org/other/pacman/pacman-6.0.2.tar.xz
 	source = pacman-always-create-directories-from-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/efd0c24c07b86be014a4edb5a8ece021b87e3900.patch
 	source = pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
 	source = pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch
