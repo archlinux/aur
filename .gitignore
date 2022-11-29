@@ -1,0 +1,5 @@
+src
+pkg
+speedtest-go-git
+*pkg.tar.*
+tags
