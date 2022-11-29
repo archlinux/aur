@@ -1,0 +1,13 @@
+pkgbase = haskell-ghc-heap-view
+	pkgdesc = Extract the heap representation of Haskell values and thunks
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = git://git.nomeata.de/ghc-heap-view.git
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/ghc-heap-view/0.6.3/ghc-heap-view-0.6.3.tar.gz
+	sha256sums = 327e61f67e90cfcb766a3e6ea5f021dc588659e681fe9b5182f3f882925194df
+
+pkgname = haskell-ghc-heap-view
