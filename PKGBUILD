@@ -1,7 +1,7 @@
 # Maintainer: Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rathole
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
@@ -10,7 +10,8 @@ license=('Apache')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'libgit2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b2b63777488de27bf5e4cd5f73749db73644f334fd137d38a273b2cb51adf3a6')
+sha256sums=('c9a006ff04d5c101445181c44a4bc6a2d10b95b48db32444cbc152a39143fafc')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
