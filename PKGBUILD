@@ -1,8 +1,8 @@
 # Maintainer: Popolon <popolon@popolon.org>
 name=directfb2
 pkgname=directfb2-git
-pkgver=r88.eb7ab25c1
-pkgrel=4
+pkgver=r140.2519295bc
+pkgrel=5
 pkgdesc="a fork of DirectFB whose purpose is to preserve and maintain the DirectFB graphics backend, particularly for use on embedded systems."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url='https://directfb2.github.io/'
@@ -15,7 +15,7 @@ replaces=(directfb)
 backup=()
 options=()
 install=
-source=("directfb2::git+${url}")
+source=("directfb2::git+https://github.com/directfb2/DirectFB2")
 noextract=()
 md5sums=('SKIP')
 
