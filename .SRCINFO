@@ -1,14 +1,14 @@
 pkgbase = bar-protonmail
 	pkgdesc = Waybar/Polybar module for notifications and unread messages count from ProtonMail
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/crabvk/bar-protonmail
 	arch = any
 	license = MIT
-	makedepends = python-build
+	makedepends = poetry
 	makedepends = python-pip
 	depends = python-proton-client
-	source = https://github.com/crabvk/bar-protonmail/archive/refs/tags/1.0.0.tar.gz
-	sha512sums = c02311e37e7bbe943733829a5bdd9fe1fc825dcbe57548ce18e4dcf14d53876f20179a8a6df1c506a3dc2b86b679d5b8ef027f2337144cabdfb0174f9e0df380
+	source = https://github.com/crabvk/bar-protonmail/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = 15ce7a195e121e84093253db9b293cbdfd2993ec5392a1613a37645cc606acaf7dbf90253ebd8d8318750c2035ef7e5f9e0178ef5f111fc0a44eef260c619081
 
 pkgname = bar-protonmail
