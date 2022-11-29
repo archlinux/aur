@@ -10,14 +10,11 @@ unset WAYLAND_DISPLAY
 # if pipewire-pulse installed
 if [ -f /usr/bin/pipewire-pulse ]; then
     export PULSE_LATENCY_MSEC=20
-fi
+fi;
 
-if [ -f /usr/bin/bwrap ]; then
-    mkdir -p "$FONTCONFIG_DIR"
-    if [ -f "${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache" ]; then
-        BIND_KDE_ICON_CACHE="--bind ${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache ${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache"
-    fi
-    bwrap --new-session --unshare-all --share-net --ro-bind / / --dev-bind /dev /dev --tmpfs "${XDG_CONFIG_HOME:-$HOME/.config}" ${BIND_KDE_ICON_CACHE:-} --bind "${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp" "${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp" /opt/wemeet/bin/wemeetapp "$@"
+if [ -f "/usr/bin/bwrap" ];then
+    mkdir -p $FONTCONFIG_DIR
+    bwrap --dev-bind / / --tmpfs "${XDG_CONFIG_HOME:-$HOME/.config}" --ro-bind $FONTCONFIG_DIR $FONTCONFIG_DIR /opt/wemeet/bin/wemeetapp $*;
 else
-    exec /opt/wemeet/bin/wemeetapp "$@"
-fi
+    exec /opt/wemeet/bin/wemeetapp $*;
+fi;
