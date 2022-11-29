@@ -1,0 +1,22 @@
+BOLD='\033[1m'
+RESET='\033[0m'
+
+post_install() {
+  echo
+  printf "${BOLD}ArmCord successfully installed!${RESET}\n"
+  echo
+  printf "By default, ArmCord will run with ${BOLD}/usr/bin/electron${RESET}:\n"
+  # --no-sandbox flag is needed as otherwise electron segfaults due to being ran as root
+  # why does this script run as root anyway????????
+  # doesn't that mean packages can just nuke your system here, making the entire "makepkg must not be run as root"
+  # stuff senseless?
+  electron --version --no-sandbox
+  echo
+  echo "You may use a custom electron, for example a more recent version."
+  printf "To do so, simply change the ${BOLD}electron${RESET} variable in ${BOLD}/usr/bin/armcord${RESET}\n"
+  echo "using your favorite text editor!"
+  echo
+  printf "You can also pass custom flags to ArmCord by adding them to ${BOLD}${XDG_CONFIG_HOME:-~/.config}/armcord-flags.conf${RESET}\n"
+  echo "See https://www.electronjs.org/docs/latest/api/command-line-switches#electron-cli-flags"
+  echo
+}

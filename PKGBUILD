@@ -16,6 +16,8 @@ optdepends=(
   'xdg-utils: Open links, files, etc'
 )
 
+install="notes.install"
+
 provides=("armcord")
 conflicts=("armcord")
 
@@ -23,10 +25,12 @@ source=(
   "${pkgname}::git+${url}.git"
   "armcord.desktop"
   "armcord-launcher.sh"
+  "notes.install"
 )
 sha256sums=('SKIP'
             'a964b66a4829eb2fe86a0fa4841a67a9fd3264dfea960aa4cacf2a64c0200d93'
-            '5a37668b474263bc362bc322df4c90981710b9294e85a5ab0fd93b253e9ca2e2')
+            '87eab1a06ee59701abe9eb97c8ec062f5a335e69510b915e6b5dce87558fe84a'
+            '1eb8ba4094bd80b4e62e02198aa07bccf3d77937e01f627d2a580b8b0a4de076')
 
 pkgver() {
 	cd "$pkgname"
