@@ -26,20 +26,19 @@ sha512sums=(
 
 prepare() {
 	# avoid crash due to stack smashing detection (https://github.com/Ryujinx/Ryujinx/issues/3183#issuecomment-1292808614)
-	sed -i 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' 'ryujinx.desktop'
+	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' 'ryujinx.desktop'
 }
 
 package() {
-	mkdir -p "${pkgdir}/opt/ryujinx"
-	cp -R "${srcdir}/publish/"* "${pkgdir}/opt/ryujinx"
+	mkdir --parents "${pkgdir}/opt"
+	cp --recursive "${srcdir}/publish" "${pkgdir}/opt/ryujinx"
 	chmod +x "${pkgdir}/opt/ryujinx/Ryujinx"
 
 	# create writable logs directory
-	mkdir -p "${pkgdir}/opt/ryujinx"
 	install --directory --mode=777 "${pkgdir}/opt/ryujinx/Logs"
 	
-	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/Ryujinx"
+	mkdir --parents "${pkgdir}/usr/bin"
+	ln --symbolic "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/Ryujinx"
 	
 	install -D "${srcdir}/ryujinx.desktop" "${pkgdir}/usr/share/applications/ryujinx.desktop"
 	install -D "${srcdir}/ryujinx-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
