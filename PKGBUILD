@@ -4,7 +4,7 @@
 
 
 pkgname=processing
-pkgver=4.0.2
+pkgver=4.1.1
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -14,11 +14,11 @@ depends=('java-environment-openjdk=17' ffmpeg)
 optdepends=('processing-examples: Examples for Processing')
 makedepends=(ant gendesk rsync unzip)
 options=(!strip)
-source=("https://github.com/processing/processing4/archive/processing-$((1285+${pkgver##4.0.}))-$pkgver.tar.gz"
+source=("https://github.com/processing/processing4/archive/processing-$((1288+${pkgver##4.1.}))-$pkgver.tar.gz"
         disable_update_check.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch)
-sha256sums=('cb83b519d284d5d40cbd8d210965eef0ce90c4b03fc46af60281b471d6936dd8'
+sha256sums=('b18bfeb882d02a729ad9d5cd6cb23b6547a23a5680beb6e76a6ac938759c882f'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
             'f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64')
@@ -36,7 +36,7 @@ prepare() {
   fi
 
   # Symbolic link for not having to repeat the revision number
-  ln -sf "${pkgname}4-processing-$((1285+${pkgver##4.0.}))-$pkgver" $pkgname
+  ln -sf "${pkgname}4-processing-$((1288+${pkgver##4.1.}))-$pkgver" $pkgname
 
   # Create .desktop file
   gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
