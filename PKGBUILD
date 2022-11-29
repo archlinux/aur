@@ -2,7 +2,7 @@
 
 pkgname=nagios
 pkgver=4.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios is an open source host, service and network monitoring program."
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -61,7 +61,7 @@ package() {
 	install -D -m 644 startup/default-service $pkgdir/usr/lib/systemd/system/nagios.service
 
 	mkdir $pkgdir/var/nagios/rw
-	chown $_nagios_user.$_nagios_group $pkgdir/var/nagios/rw
+	chown $_nagios_user:$_nagios_group $pkgdir/var/nagios/rw
 	chmod 755 $pkgdir/var/nagios/rw
 
 	chmod 755 $pkgdir/usr/bin
