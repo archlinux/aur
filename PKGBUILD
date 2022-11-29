@@ -1,9 +1,9 @@
 # Maintainer: Paul Davis <paul@dangersalad.com>
 pkgname=mekhq-development-snapshot-bin
 _pkgname=mekhq
-pkgver=0.49.8
+pkgver=0.49.10
 _pkgver=
-pkgrel=3
+pkgrel=1
 epoch=
 install=mekhq.install
 pkgdesc="Development snapshot release of the MekHQ/MegaMek suite."
@@ -23,12 +23,12 @@ source=("https://github.com/MegaMek/mekhq/releases/download/v${pkgver}/${_pkgnam
         "megameklab.desktop"
         "mekhq.sh")
 
-sha256sums=('31ebe969e807bccf54a42af1776de0b7bbad52cacc8f356ae6571bba5cc0cc00'
+sha256sums=('07df22d2705059c44f229dfca245ae80f640989f4393885ab4829d3ab7364b12'
             'f2ea2a3a903087091d29c0ef21080c7ef72fb58fe37a58ffc32f4845d52618ca'
             'a6c0cc72c6f3ad773bdcec24c8036ae7d09dcaea4908f5b6d4e5ac6091cff772'
             'caf5bf3e7294029c7b6dec974eed0253d6caf3804a6a9fcc953edc3c9be98b16'
             '6e6bb03f14a0ce6e06fd9009fd9f159d22a34a7020ba85b13ad6dbf649ca9e38'
-            '7479a602ec847e26f247e4a5512b96ff9ef979fde46c5d170c33326af8c59377')
+            '91cfe6f0ac089feab8b65214f4d1183f4ad107eacc4a731b667f29c769e89bcd')
 
 package() {
 
