@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "hatch"
-  git describe --long --tags --match "hatchling*" --candidates 100 | sed 's/^hatchling-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "hatchling*" --candidates 100 | sed 's/^hatchling-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
