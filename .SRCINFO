@@ -1,0 +1,25 @@
+pkgbase = chat-downloader-git
+	pkgdesc = Retrieve chat messages from livestreams, videos, clips and past broadcasts. (YouTube, Twitch, etc.) No authentication needed!
+	pkgver = 0.2.0a.r2.g657e56e
+	pkgrel = 1
+	url = https://github.com/xenova/chat-downloader
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinxcontrib-programoutput
+	depends = python
+	depends = python-requests
+	depends = python-isodate
+	depends = python-docstring-parser
+	depends = python-colorlog
+	depends = python-websocket-client
+	provides = chat-downloader
+	conflicts = chat-downloader
+	source = git+https://github.com/xenova/chat-downloader.git
+	b2sums = SKIP
+
+pkgname = chat-downloader-git
