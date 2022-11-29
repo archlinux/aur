@@ -1,7 +1,7 @@
 pkgbase = rstudio-server-preview-bin
 	pkgdesc = A integrated development environment (IDE) for R (binary preview version from RStudio official website)
 	pkgver = 2022.07.2+576
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.rstudio.org/
 	install = rstudio-server-preview-bin.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-preview-bin
 pkgver=2022.07.2+576
-pkgrel=2
+pkgrel=4
 pkgdesc="A integrated development environment (IDE) for R (binary preview version from RStudio official website)"
 arch=('x86_64')
 license=('GPL')
