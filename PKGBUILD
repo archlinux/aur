@@ -13,18 +13,20 @@ depends=(
     'gcc-libs'
     'openssl'
 )
-makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils')
+makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-sphinx')
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
     "proxmox::git://git.proxmox.com/git/proxmox.git#commit=43b4440ef015d846161657490b18cf6ac7600fc4"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
+    "0002-docs-drop-all-but-client-man-pages.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -43,6 +45,7 @@ prepare() {
   rm .cargo/config # drop Debian-style redirect of crates.io to local registry
 
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
+  _apply 0002-docs-drop-all-but-client-man-pages.patch
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -87,8 +90,8 @@ package() {
   install -Dm755 "target/release/proxmox-backup-client" "$pkgdir/usr/bin/proxmox-backup-client"
   install -Dm755 "target/release/pxar" "$pkgdir/usr/bin/pxar"
 
-  install -Dm644 "docs/proxmox-backup-client.1" "$pkgdir/usr/share/man/man1/proxmox-backup-client.1"
-  install -Dm644 "docs/pxar.1" "$pkgdir/usr/share/man/man1/pxar.1"
+  install -Dm644 "docs/output/man/proxmox-backup-client.1" "$pkgdir/usr/share/man/man1/proxmox-backup-client.1"
+  install -Dm644 "docs/output/man/pxar.1" "$pkgdir/usr/share/man/man1/pxar.1"
 
   install -Dm644 "debian/proxmox-backup-client.bc" "$pkgdir/usr/share/bash-completion/completions/proxmox-backup-client"
   install -Dm644 "debian/pxar.bc" "$pkgdir/usr/share/bash-completion/completions/pxar"
