@@ -1,0 +1,17 @@
+pkgbase = haskell-svgcairo
+	pkgdesc = Binding to the libsvg-cairo library.
+	pkgver = 0.13.2.1
+	pkgrel = 1
+	url = http://projects.haskell.org/gtk2hs/
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-gtk2hs-buildtools
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-glib
+	depends = librsvg
+	source = https://hackage.haskell.org/packages/archive/svgcairo/0.13.2.1/svgcairo-0.13.2.1.tar.gz
+	sha256sums = 48aacf725ca5da00b1977dff91941b1dc72cd56ce5af1a4123e7983d9c2d58a6
+
+pkgname = haskell-svgcairo
