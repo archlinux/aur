@@ -6,7 +6,7 @@ pkgver=v1.11.1.r43.g15a583af
 pkgrel=1
 pkgdesc="Modern, extensible Python build backend"
 arch=('any')
-url="https://github.com/pypa/hatch"
+url="https://hatch.pypa.io/latest/"
 license=('MIT')
 groups=()
 depends=('python-editables' 'python-packaging' 'python-pathspec' 'python-pluggy' 'python-tomli')
@@ -14,13 +14,13 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 optdepends=()
 provides=('python-hatchling')
-conflicts=()
+conflicts=('python-hatchling')  # the python-hatchling community package is missing a provides
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("hatch::git+$url.git")  # just download the whole thing lmao
+source=("hatch::git+https://github.com/pypa/hatch.git")  # just download the whole thing lmao
 # source=("svn+$url/trunk/backend")  # depends on svn instead of git
 noextract=()
 sha256sums=('SKIP')
@@ -35,6 +35,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
+# tests are not found, issue #329 tracking
 # check() {
 #   cd "hatch/backend"
 #   PYTHONPATH="$PWD/src" pytest
