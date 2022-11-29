@@ -1,4 +1,4 @@
-# Maintainer: Monika Crichton <monika+aur@monikacrichton.com>
+# Maintainer: Monika Crichton <monika+aur@mcrichton.net>
 pkgname=celeste-bin
 pkgver=1.4.0.0
 pkgrel=2
