@@ -1,4 +1,5 @@
 {
+  ".i": 1,
   "crate": "cargo-duplicates",
   "version": "0.5.1"
 }
