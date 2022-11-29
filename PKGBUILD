@@ -2,7 +2,7 @@
 
 _pkgname='Stylish-icon-theme'
 pkgname=${_pkgname@L}
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc=" Modern icon theme for Linux Desktops"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/kuroehanako/Stylish-icon-theme"
 license=('GPLv3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kuroehanako/Stylish-icon-theme/archive/$pkgver.tar.gz")
 optdepends=('stylish-icon-theme-adwaita: Adwaita Folder Colors')
-sha256sums=('bd435584221292cb618babfe603aaaf3d7cf95689d6f3ddf1f5ed54e1f616692')
+sha256sums=('4c09dad6a567bf0ea0e8d31bbf1734a8933399f1eb30f3b144c84020bb3a69a5')
 
 package() (
         cd "$_pkgname-$pkgver"
