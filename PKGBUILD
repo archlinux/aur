@@ -1,8 +1,8 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub."
-_pkgver_main=6.0.9
-_pkgver_suffix=flippy-78+
+_pkgver_main=6.0.10
+_pkgver_suffix=flippy-79+
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _url_repo="https://github.com/ophub/kernel"
 _url_raw="${_url_repo}/raw/main/pub/stable/${_pkgver_main}"
@@ -32,12 +32,12 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-  '7a27bd7a101125cc9a2db814a1f3f3ec34a403b571089059857f020e32a15c78'
+  '0d662986ba89a178d4914b257d3928b48a58b57d45c6adaa2017cbda890f0942'
   '585e9c6055aeed4573c4cf59d9e769df206b7a79846866ab42ce2bb40d029095'
-  '9f57c9fa29f32fc449f20e1f2548ee2049a0c7ef6bcb34fcf9ad61c4955dfba9'
-  '6f7c6d0d5b3b5943537eae0c6c7eca3ef52d09bb2256f6a9f7e5918629e1b1b5'
-  '7b3dc61d392e554a42ce78200b13a47a6206f4dcfa985d29138789f076b0ab21'
-  '3c5fc88b0f105639b84190ac33f4800e5ce7c15e5ba63dfe0cf4d07507a084f0'
+  '2c8465c22c5003b11b9d47332595f5e1ce6d93b84d1ef69380ad55f63db3b5dd'
+  'b1d03e6c22a616407fe80d7fffbf13d353c7358aae31994018cc0f68c2bc2b68'
+  '929ea00721a3c9a50164cfe32f81dd36138c9a17d818a332d7a84052b955d185'
+  '481fc30788384f8163631cca6bc4e14907d912f78ed7064247c452c747f41afb'
 )
 
 _dtb_common_pkg="${_pkgbase}-dtb"
