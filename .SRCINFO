@@ -1,0 +1,16 @@
+pkgbase = snort3-extra
+	pkgdesc = Snort extra plugins
+	pkgver = 3.1.42.0
+	pkgrel = 1
+	url = https://github.com/snort3/snort3_extra
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = snort
+	source = snort3-extra-3.1.42.0.tar.gz::https://github.com/snort3/snort3_extra/archive/refs/tags/3.1.42.0.tar.gz
+	sha256sums = 2ae4a10aef40fbd6c38675055f2f446f63464fc660bfa3beea229a4119b3c837
+
+pkgname = snort3-extra
