@@ -3,7 +3,7 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
 arch=('any')
@@ -25,7 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('39c8bcb11f881332313c88eac5fca445'
+md5sums=('394595d281f0d8cfed86669325335f94'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -59,7 +59,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" #${PWD}/test \
+    pytest || warning "Tests failed" #${PWD}/test \ -vv --color=yes
 #   PYTHONPATH="build/lib" pytest #|| warning "Tests failed" #${PWD}/test \
 #       --ignore=build/lib/h5pyd/_hl/h5type_test.py #|| warning "Tests failed"
 }
