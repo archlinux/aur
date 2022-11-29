@@ -2,34 +2,43 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.24.12
+pkgver=0.25.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
-depends=(python-sympy python-scipy python-numba python-matplotlib python-tqdm)
-makedepends=(python-setuptools python-versioneer)
+depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
+makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 # checkdepends=(python-pytest python-h5py python-pandas napari)
 optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-pandas: for handling tabular data'
   'napari: for displaying images interactively'
   'python-ipywidgets: for interactive widgets'
-  'python-numba-mpi: for njittable MPI wrapper')
+  'python-numba-mpi: for njittable MPI wrapper'
+  'python-mpi4py: for parallel processing using MPI')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('bde2f763f50f91692d9fe7afb499a2404d04099aa858d2ca0105f2e7ccb85510f79210e25fc67450c12ae1995a0ce53d99c6211900a4d05d6e61edc0c6a14f27')
+sha512sums=('0a25c72e1868059ad96938472de610af3c4c070980e7ecb08bc669ccd4d673fab26ebb6e51eef79edb3c5a6af0484038ba092348b2c254598d130a9374ddc379')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 # check() {
-#   cd ${_base}-${pkgver}/tests
-#   MPLBACKEND=Agg NUMBA_WARNINGS=1 python run_tests.py --unit # --use_mpi
+# cd ${_base}-${pkgver}/tests
+# python -m venv --system-site-packages test-env
+# test-env/bin/python -m installer dist/*.whl
+# MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit # --use_mpi
 # }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  ln -s "${site_packages}/${_base/-/_}-${pkgver}.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
