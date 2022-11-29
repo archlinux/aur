@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-git
 pkgver=1.3.34.r3.g8c4b66a2a
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.23-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
@@ -13,7 +13,7 @@ makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
 provides=("quarto")
-conflicts=('quarto-cli-bin' 'quarto-cli')
+conflicts=('quarto-cli-bin' 'quarto-cli' 'quarto-cli-pre-release')
 options=(!strip)
 
 source=("git+https://github.com/quarto-dev/quarto-cli.git"
