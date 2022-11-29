@@ -5,5 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!org.nicotine_plus.Nicotine-gtk4.desktop
 !org.nicotine_plus.Nicotine-libadwaita.desktop
