@@ -2,7 +2,7 @@
 
 pkgname=trust-dns-git
 pkgver=v0.22.0.r60.g5d816c5b
-pkgrel=2
+pkgrel=3
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
 url=https://trust-dns.org/
@@ -10,7 +10,7 @@ license=('MIT' 'Apache')
 depends=('openssl')
 makedepends=('git' 'cargo')
 backup=('etc/trust-dns/trust-dns.toml')
-source=("$pkgname::git+https://github.com/HLFH/trust-dns.git#branch=main"
+source=("$pkgname::git+https://github.com/bluejekyll/trust-dns.git#branch=main"
         'avoid-dns-over-https.patch'
         'trust-dns.sysusers'
         'trust-dns.toml'
