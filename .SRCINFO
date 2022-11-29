@@ -1,0 +1,25 @@
+pkgbase = openssh-dotconfig-bin
+	pkgdesc = Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh (binary version)
+	pkgver = 9.1p1
+	pkgrel = 2
+	url = https://www.openssh.com/portable.html
+	arch = x86_64
+	license = custom:BSD
+	depends = glibc
+	depends = krb5
+	depends = openssl
+	depends = libedit
+	depends = ldns
+	depends = libxcrypt
+	depends = libcrypt.so
+	depends = zlib
+	depends = pam
+	optdepends = xorg-xauth: X11 forwarding
+	optdepends = x11-ssh-askpass: input passphrase in X
+	optdepends = libfido2: FIDO/U2F support
+	provides = openssh
+	conflicts = openssh
+	source = https://github.com/noahvogt/openssh-dotconfig-aur/releases/download/9.1p1-2/openssh-dotconfig-9.1p1-2-x86_64.pkg.tar.zst
+	sha256sums = 992fa4b4f285024a07a671b49b0f63c90070a033ffc48f96f088c4cef217360d
+
+pkgname = openssh-dotconfig-bin
