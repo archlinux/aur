@@ -4,7 +4,7 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-caja
-pkgver=3.4.2.40983
+pkgver=3.7.9.50368
 pkgrel=1
 pkgdesc="Caja integration for insync"
 url="https://www.insynchq.com/downloads"
@@ -17,10 +17,10 @@ depends=(
 	'insync-emblem-icons'
 	'python-caja'
 )
-source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}_all.deb")
-sha256sums=('5d1d5cb31391dbf0c032061b354a960cf787f352ae10d165193b920df75dd570')
+source=("https://apt.insync.io/ubuntu/pool/contrib/i/${pkgname}/${pkgname}_${pkgver}_all.deb")
+sha256sums=('b2fce7ec636b683d65056eeaa48cd5484492627a4541492376dedd945ef23ce8')
 
 package() {
    tar xf data.tar.gz
-   cp -rp usr "${pkgdir}"
+   cp -a usr "${pkgdir}"
 }

@@ -1,6 +1,6 @@
 pkgbase = insync-caja
 	pkgdesc = Caja integration for insync
-	pkgver = 3.4.2.40983
+	pkgver = 3.7.9.50368
 	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = insync-caja
 	depends = insync-emblem-icons
 	depends = python-caja
 	options = !strip
-	source = insync-caja-3.4.2.40983.deb::http://s.insynchq.com/builds/insync-caja_3.4.2.40983_all.deb
-	sha256sums = 5d1d5cb31391dbf0c032061b354a960cf787f352ae10d165193b920df75dd570
+	source = https://apt.insync.io/ubuntu/pool/contrib/i/insync-caja/insync-caja_3.7.9.50368_all.deb
+	sha256sums = b2fce7ec636b683d65056eeaa48cd5484492627a4541492376dedd945ef23ce8
 
 pkgname = insync-caja
