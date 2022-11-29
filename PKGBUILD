@@ -2,28 +2,29 @@
 # Contributor: Miguel Revilla <yo at miguelrevilla dot com>
 # Contributor: Alex Talker <alextalker at openmailbox dot org>
 # Contributor: Simonas Racinas <racinas at icloud.com>
+# Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm-community
-pkgver=16.3
-pkgrel=20220323
+pkgver=17.0
+pkgrel=20221001
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
-depends=('java-environment-common' 'java-runtime-common')
+depends=('java-environment-common' 'java-runtime-common' 'jdk11-openjdk')
 install=visual-paradigm-community.install
 license=('custom')
 
 # Possible values: ca1 usa10 usa11 usa13 usa14 uk3 uk5 germany4 germany5 germany6 france3
-_server=eu6
+_server=germany4
 _version="${pkgver//./_}"
 # https://eu6.visual-paradigm.com/visual-paradigm/vpce14.2/20180101/Visual_Paradigm_CE_14_2_20180101_Linux64.sh
-source=("https://$_server.dl.visual-paradigm.com/visual-paradigm/vpce$pkgver/$pkgrel/Visual_Paradigm_CE_${_version}_${pkgrel}_Linux64_InstallFree.tar.gz"
+source=("https://www.visual-paradigm.com/downloads/${_server}/vpce/Visual_Paradigm_CE_Linux64_InstallFree.tar.gz"
   'visual-paradigm-community.install'
   'visual-paradigm.desktop'
   'visual-paradigm.png'
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('2621ea75886955d9fc7a947e86eaf71f91c547ed379a9741f3d34f476fcd1ab8'
+sha256sums=('574037c928bab8f260989c1f3bfc2759dc44e986d7c6e1ac786b81765ece93bd'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
@@ -32,7 +33,7 @@ sha256sums=('2621ea75886955d9fc7a947e86eaf71f91c547ed379a9741f3d34f476fcd1ab8'
 
 prepare() {
   cd ${srcdir}/Visual_Paradigm_CE_${pkgver}/Application/bin
-  sed -i 's|# INSTALL4J_JAVA_HOME_OVERRIDE=|INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default-runtime/|' Visual_Paradigm
+  sed -i 's|# INSTALL4J_JAVA_HOME_OVERRIDE=|INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-11-openjdk|' Visual_Paradigm
   sed -i 's|app_home=../../|app_home=/usr/share/visual-paradigm-community|' Visual_Paradigm
 }
 
