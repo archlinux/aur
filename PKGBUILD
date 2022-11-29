@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-git
 pkgname=('dxvk-mingw-git')
-pkgver=1.10.1.r967.gcd21cd7f
+pkgver=2.0.r26.g9f706667
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -18,11 +18,14 @@ source=(
     "git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    "setup_dxvk.sh"
 )
 sha256sums=("SKIP"
 "SKIP"
 "SKIP"
-"SKIP")
+"SKIP"
+"0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7"
+)
 
 
 pkgver() {
@@ -63,7 +66,7 @@ package_dxvk-mingw-git() {
         conflicts=("dxvk-bin")
         DESTDIR="$pkgdir" ninja -C "build/x32" install
         DESTDIR="$pkgdir" ninja -C "build/x64" install
-        install -Dm 644 dxvk/setup_dxvk.sh "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
+        install -Dm 644 setup_dxvk.sh "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
         mkdir -p "$pkgdir/usr/bin"
         ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
         chmod +x "$pkgdir/usr/share/dxvk/setup_dxvk.sh"
