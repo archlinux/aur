@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/theotherp/nzbhydra2"
 license=('Apache')
 depends=('python' 'java-runtime-headless<=17' 'java-runtime-headless>=8')
-makedepends=('maven' 'java-environment<=11' 'java-environment>=8')
+makedepends=('maven' 'java-environment<=16' 'java-environment>=8' 'java-runtime-common')
 optdepends=('jackett: torrent indexer proxy')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v${pkgver}.tar.gz"
         'nzbhydra2.service'
@@ -45,6 +45,15 @@ prepare() {
 }
 
 build() {
+    _java_version="$(archlinux-java get)"
+    if [[ "${_java_version//[!0-9]}" > 16 ]]; then
+        >&2 echo -e "This package can't be built with \e[1m$_java_version\e[21m!"
+        >&2 echo -e "Use \e[1marchlinux-java\e[21m to change the default Java SDK."
+        >&2 echo -e "\e[1mjava-11-openjdk\e[21m and \e[1mjava-8-openjdk\e[21m are known to work."
+        >&2 archlinux-java status
+        return 1
+    fi
+
     cd "${srcdir}/${pkgname}-${pkgver}"
     mvn -Dmaven.test.skip -pl core -am clean package
 }

@@ -6,8 +6,9 @@ pkgbase = nzbhydra2
 	arch = any
 	license = Apache
 	makedepends = maven
-	makedepends = java-environment<=11
+	makedepends = java-environment<=16
 	makedepends = java-environment>=8
+	makedepends = java-runtime-common
 	depends = python
 	depends = java-runtime-headless<=17
 	depends = java-runtime-headless>=8
