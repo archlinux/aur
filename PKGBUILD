@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-themes-legacy
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
@@ -27,7 +27,7 @@ conflicts=(
     mint-cinnamon-themes
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('2f597c04ef41a54105fbbd13b7fe5486809c5d4f7731a6dc42648b77ab81cf7b')
+sha256sums=('165699ef2569d3b1c315be0b2056f4edcbc05e33ec6d5c072e147a80adf7ea63')
 
 build() {
 	cd "${pkgname}"
