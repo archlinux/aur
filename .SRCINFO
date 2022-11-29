@@ -1,13 +1,13 @@
 pkgbase = fatx
 	pkgdesc = XBox filesystem support for linux
 	pkgver = 1.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/fatx/
 	arch = any
 	license = GPL
+	makedepends = boost
 	depends = fuse
-	depends = boost
-	depends = boost-libs
+	depends = libboost_program_options.so
 	provides = fatx
 	source = http://downloads.sourceforge.net/project/fatx/fatx-1.15.tar.gz
 	source = fatx.patch

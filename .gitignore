@@ -1,0 +1,7 @@
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+*.tar.gz
+pkg/
+src/
+.idea
