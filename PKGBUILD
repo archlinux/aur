@@ -23,7 +23,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 
 _url="https://github.com/h3poteto/$_name-desktop/releases/download/$pkgver/${_name^}-$pkgver-linux-x64.rpm"
 source=("$_url")
-sha256sums=('e6e66cd2dbffb94e5f89a3d7301bb9ec8709de6a471c2d30e047468be24cb8f6')
+sha256sums=('6e1d96fb9566c48c3d11bfacda0d4aa822cc42cfda2ebe3d0af522642265941a')
 #_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
 #source=("$_url")
 #sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
