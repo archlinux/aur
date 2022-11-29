@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-nvidia-util-git
-pkgver=r258.91cc5cf
+pkgver=r260.01be419
 pkgrel=1
 pkgdesc="A Gnome extension to show Nvidia GPU information"
 arch=('any')
