@@ -19,7 +19,7 @@ conflicts=(
 )
 options=(!strip)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('37951b06726f6acf77f5ba3b860966d22754d57f0089e172bae6c25d5a05cd48')
+sha256sums=('cb2c7c8cb710cf086214cef0b2a5c99bcdcd0af9029173a0d2bb93824438ba07')
 
 package() {
   cd "${srcdir}"/"${pkgname}"
