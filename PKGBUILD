@@ -5,15 +5,18 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="ef36b28a894a3de835464d89a3ac0bc2898c2317"
-_gtkver=3.24.34
+__arch_pkg_commit="ec12847fb811add133b399aaf0916c96eb03862e"
 
-_gtk3_classic_commit="8e6176c5eb8a3c45e78be0a9190db44d798bb0f6"
+# NOTE: 3.24.35 is missing a source file required for building (#87),a commit
+#       tarball will be downloaded instead for this release.
+_gtkver=3.24.35
+
+_gtk3_classic_commit="9d1df122a4efce431d6d853ad2a87ae292b19f61"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
 pkgver=${_gtkver}
-pkgrel=2
+pkgrel=1
 pkgdesc="GTK3 patched to provide a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git)
@@ -37,17 +40,24 @@ makedepends=(
 install=gtk3.install
 source=(
 	git+$url.git#commit=$_gtk3_classic_commit
-	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
+# 	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
+
+	# WORKAROUND: 3.24.35 is missing a source file (#87)
+	https://gitlab.gnome.org/GNOME/gtk/-/archive/b2ad8d2abafbd94c7e58e5e1b98c92e6b6fa6d9a/gtk-b2ad8d2abafbd94c7e58e5e1b98c92e6b6fa6d9a.tar.bz2
+
 	"gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/gtk-query-immodules-3.0.hook"
 	settings.ini
 )
 sha256sums=('SKIP'
-            'dbc69f90ddc821b8d1441f00374dc1da4323a2eafa9078e61edbe5eeefa852ec'
+            'a11a387bbe8401cf461d6621eb60680155bd168365d4f5d5a9002ab5084f7043'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare()
 {
+	# WORKAROUND: 3.24.35 needs to use commit tarball because of missing file (#87)
+	mv gtk-b2ad8d2abafbd94c7e58e5e1b98c92e6b6fa6d9a gtk+-$_gtkver
+
 	cd gtk+-$_gtkver
 	QUILT_PATCHES=../$pkgbase quilt push -av
 
@@ -65,6 +75,7 @@ build()
 		-D colord=auto \
 		-D demos=true \
 		-D examples=false \
+		-D introspection=true \
 		-D tests=false \
 		-D installed_tests=false
 	ninja -C build
