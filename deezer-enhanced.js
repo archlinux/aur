@@ -17,13 +17,24 @@ process.argv.splice(0, 1);
 // Set application paths
 const appPath = path.join(path.dirname(__dirname), 'lib', name);
 const packageJson = require(path.join(appPath, 'package.json'));
-const productName = packageJson.build.productName;
+const productName = packageJson.name;
 app.setAppPath(appPath);
 app.setDesktopName(name + '.desktop');
 app.setName(productName);
 app.setPath('userCache', path.join(app.getPath('cache'), productName));
 app.setPath('userData', path.join(app.getPath('appData'), productName));
 app.setVersion(packageJson.version);
+
+// Copy icon to userpath
+try {
+    if (!fs.existsSync(path.join(app.getPath('userData'), 'assets', 'icon.png'))) {
+        fs.mkdirSync(path.join(app.getPath('userData'), 'assets'));
+        fs.copyFileSync(path.join(appPath, 'assets', 'icon.png'), path.join(app.getPath('userData'), 'assets', 'icon.png'));
+    }
+} catch(err) {
+    console.log("Tray won't work: ");
+    console.log(err);
+}
 
 // Run the application
 require('module')._load(appPath, module, true);

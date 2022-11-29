@@ -1,4 +1,5 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: duzda <duzda@disroot.org>
 
 _electron=electron
 pkgname=deezer-enhanced
@@ -14,13 +15,13 @@ source=("$url/archive/v$pkgver.tar.gz"
         "$pkgname.js"
 				"$pkgname.desktop")
 sha512sums=('a008cd01a76a17dfa27b7245f32747f4fd1d2d228532dbb620813ea9ec03faee79648b687792ab75209885b4b8250768e21c378560e6e30f9bb250b851862fb6'
-            '11275cdfdd6d6224fb4eeadb231edd762317b0c47e99f8858a9eeaa61726a01fb3ae5ae852e15e1b9e7a4dfe08b0bc4466c1d9b659941f87f1508b9dc4fca16a'
+            'e359569fbd9767a7276cb754010d8bf4dcd35fd958bbc3c50baa042bceebc132a10e302810821e77d730873efa5511bccbcf89d18f146a29e1e94a5a96a1ba0f'
             '02deef321066e1b2decce7d35d483a8e88df52d032ddfef9a6b28f8a5fd006d1316dff54f70d8f6b53499e51fc4b4f3d231482b70cdbf6bfc3c57dbfedfe4f22')
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	yarn --ignore-scripts --production
+	yarn --ignore-scripts --production && yarn minify-webcss
 	sed -i "s~@ELECTRON@~$_electron~" "$srcdir/$pkgname.js"
 }
 
