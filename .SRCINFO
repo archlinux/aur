@@ -1,6 +1,6 @@
 pkgbase = gscreenshot
 	pkgdesc = A simple screenshot tool supporting multiple backends
-	pkgver = 2.20.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gscreenshot
 	depends = slop
 	optdepends = xclip: command line clipboard support
 	optdepends = xdg-utils: for opening screenshot files from gscreenshot
-	source = https://github.com/thenaterhood/gscreenshot/archive/v2.20.0.tar.gz
-	sha256sums = 18fb296a8115b1b352fe1760cadc12c3ab2a935600cf6ad26e6cdbde3ec2b7f9
+	source = https://github.com/thenaterhood/gscreenshot/archive/v3.0.0.tar.gz
+	sha256sums = f0f56ec56278dbc52a658494f303abf9a6e02f38ed0eeb27e277d4c05ec07928
 
 pkgname = gscreenshot
