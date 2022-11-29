@@ -2,7 +2,7 @@
 # Previous maintainer: Yochai Gal <yochai gal at gmail dot com>
 
 pkgname=insync-thunar
-pkgver=3.0.23.40579
+pkgver=3.7.9.50368
 pkgrel=1
 pkgdesc="Thunar integration for insync"
 url="https://www.insynchq.com/downloads"
@@ -14,10 +14,10 @@ depends=(
 	'thunar'
 	'thunarx-python'
 )
-source=("$pkgname-$pkgver.deb::http://s.insynchq.com/builds/insync-thunar_3.0.23.40579_all.deb")
-sha256sums=('18f7fd32ae78ee2681d184175d73d8c6a4f67a9500e7832df46bb777d5962b48')
+source=("https://apt.insync.io/ubuntu/pool/contrib/i/${pkgname}/${pkgname}_${pkgver}_all.deb")
+sha256sums=('5fbd42bbd6ac714bcb9a9495c1fa0873e8cbfe7f58fc15ee5aa45dc625174159')
 
 package() {
    tar xf data.tar.gz
-   cp -rp usr "$pkgdir"
+   cp -a usr "${pkgdir}"
 }
