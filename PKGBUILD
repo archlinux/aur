@@ -39,4 +39,5 @@ package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/mstickereditor" -t "$pkgdir/usr/bin"
 	install -Dm644 bashcompletion "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
