@@ -1,0 +1,21 @@
+pkgbase = jdappdataedit
+	pkgdesc = A graphical Program to create and edit AppStream files
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://gitlab.com/JakobDev/jdAppdataEdit
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	depends = python
+	depends = python-setuptools
+	depends = python-pyqt6
+	depends = python-lxml
+	depends = python-requests
+	depends = python-packaging
+	depends = appstream
+	optdepends = python-desktop-entry-lib: Create AppStream files from .desktop files
+	optdepends = appstream-glib: Validate with appstream-util
+	source = jdappdataedit-5.1.tar.gz::https://gitlab.com/JakobDev/jdAppdataEdit/-/archive/5.1/jdAppdataEdit-5.1.tar.gz
+	sha256sums = 042704a0b5397434137a24c95aa2d39f729380ed1b652235f2edf5e90c12db20
+
+pkgname = jdappdataedit
