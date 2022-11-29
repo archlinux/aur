@@ -9,7 +9,7 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index f85afe3687e04eb7e5d4c05cd7c37ab060193061..051bf1647eb033f69ecbcef0566cb4828fde90cc 100644
+index c18b3cb3ad9369356a9d8c014ce3f7f4c9b92d1c..76c9131fe498c8b03e2d8f739091c1930bfb09f4 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
 @@ -3136,6 +3136,8 @@ Please submit there instead, or use --nodevelproject to force direct submission.
@@ -30,7 +30,7 @@ index f85afe3687e04eb7e5d4c05cd7c37ab060193061..051bf1647eb033f69ecbcef0566cb482
          usage:
              osc copyprj SOURCEPRJ DESTPRJ
          ${cmd_option_list}
-@@ -3183,6 +3187,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3182,6 +3186,7 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,

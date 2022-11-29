@@ -8,15 +8,15 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
     It can not yet be done across buildservice instances
     The user must be able to create DESTPRJ
 ---
- osc/commandline.py | 53 ++++++++++++++++++++++++++++++++++++++++++++++
- osc/core.py        | 28 ++++++++++++++++++++++++
- 2 files changed, 81 insertions(+)
+ osc/commandline.py | 52 ++++++++++++++++++++++++++++++++++++++++++++++
+ osc/core.py        | 28 +++++++++++++++++++++++++
+ 2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..f85afe3687e04eb7e5d4c05cd7c37ab060193061 100644
+index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..c18b3cb3ad9369356a9d8c014ce3f7f4c9b92d1c 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3134,6 +3134,59 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -3134,6 +3134,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                  break
              sys.stdout.write(decode_it(buf))
  
@@ -47,8 +47,7 @@ index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..f85afe3687e04eb7e5d4c05cd7c37ab0
 +        args = slash_split(args)
 +
 +        if not args or len(args) != 2:
-+            raise oscerr.WrongArgs('Incorrect number of arguments.\n\n' \
-+                  + self.get_cmd_help('copypac'))
++            raise oscerr.WrongArgs('Incorrect number of arguments.')
 +
 +        src_project = args[0]
 +        dst_project = args[1]

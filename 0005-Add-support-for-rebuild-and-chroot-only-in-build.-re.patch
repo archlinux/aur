@@ -31,10 +31,10 @@ index 3409714a19653df323886de26fe46c88f7194931..c2a50696bf3d1fc43ee74e6911918f41
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 707c5a3ab6e094e6b47b1440de58e0cd9d9b0681..b5ce861447e229ba8d4e1dbf68e27aebbc6fdc75 100644
+index c1a64f43c06bfdee5fbef369fab6b1b3860c2af0..2225d5a4237d1f3763a61cd3a1d71afff50cbdb1 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6366,6 +6366,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6365,6 +6365,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='Copy overlay filesystem to buildroot after installing all RPMs .')
      @cmdln.option('--noinit', '--no-init', action='store_true',
                    help='Skip initialization of build root and start with build immediately.')
