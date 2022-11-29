@@ -30,7 +30,7 @@ package_webstorm() {
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a WebStorm-${_buildver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a WebStorm-${_buildver:?_buildver unset}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s /opt/${pkgbase}/bin/${pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
@@ -45,5 +45,5 @@ package_webstorm-jre() {
   _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' | sed 's#WebStorm-##')"
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a WebStorm-${_buildver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a WebStorm-${_buildver:?_buildver unset}/jbr "${pkgdir}"/opt/${pkgbase}
 }
