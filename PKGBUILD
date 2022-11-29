@@ -20,7 +20,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'wrapper-Fix-dropping-every-second-line-of-stdout-807.patch'
         'wrapper-remove-base-path-checks.patch'
         'wrapper-remove-update-support.patch'
-        'disable-update-checks.patch')
+        'disable-update-checks.patch'
+        'skip-unneeded-builds.patch')
 
 sha256sums=('41a68b58630a9e535bc164700603ef088213bdb0a97fe68441c149e7e1d03074'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
@@ -30,13 +31,15 @@ sha256sums=('41a68b58630a9e535bc164700603ef088213bdb0a97fe68441c149e7e1d03074'
             'd59bb189f178170c523550a032af7bc5f4c90518b3bca8a631403d6725bd6528'
             'fd6ba3e8b22f3f90c19d9903445b2539837dca1c12df49863b2e8d1085d88b0e'
             'f302b8dc8ed95ce18d67305a0460b1e62a4e4586fba0f77d3dd980a77cfba3d4'
-            '83b4071b2fe02e9a302fda5b9b0de97e7531b6032cdbcb8148e2f0b1fc566a22')
+            '83b4071b2fe02e9a302fda5b9b0de97e7531b6032cdbcb8148e2f0b1fc566a22'
+            '693c834e641b54fd940490e522dba49d3f7a9846554181e2d284acdd81d87c38')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -p1 < "${srcdir}/wrapper-remove-base-path-checks.patch"
     patch -p1 < "${srcdir}/wrapper-remove-update-support.patch"
     patch -p1 < "${srcdir}/disable-update-checks.patch"
+    patch -p1 < "${srcdir}/skip-unneeded-builds.patch"
     # TODO: remove on next release
     patch -p1 < "${srcdir}/wrapper-Fix-dropping-every-second-line-of-stdout-807.patch"
 }
