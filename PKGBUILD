@@ -5,9 +5,9 @@
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=34.39.0.r0.gdc0c02716d
+pkgver=34.41.1.r2.gce85e4a3f5
 pkgrel=1
-pkgdesc="Renovate - Dependency update tool (Git version)"
+pkgdesc="Renovate - Dependency update tool (git-latest)"
 arch=(any)
 depends=('nodejs>=14')
 makedepends=('git' 'yarn' 'npm' 'node-gyp')
@@ -19,17 +19,19 @@ source=("${pkgname}::git+https://github.com/renovatebot/renovate")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   yarn version --no-git-tag-version --new-version "$(git describe --abbrev=0 --tags)"
   yarn install
   yarn build
 }
 
 package() {
+  cd "${pkgname}"
+
   install -dm755 "${pkgdir}/usr/lib/node_modules/${_pkgname}"
-  cp -r "${srcdir}/${pkgname}/dist" "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist"
-  cp -r "${srcdir}/${pkgname}/package.json" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
-  cp -r "${srcdir}/${pkgname}/renovate-schema.json" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
+  cp -r "dist" "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist"
+  cp -r "package.json" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
+  cp -r "renovate-schema.json" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
 
   chmod 775 "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist/renovate.js"
   chmod 775 "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist/config-validator.js"
@@ -43,6 +45,6 @@ package() {
 }
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
