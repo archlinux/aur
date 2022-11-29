@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.0.9
+_pkgver_main=6.0.10
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.0.y'
-_flippy_commit='337cc294ea20d4248b241b3c5eff4891298b07d4'
+_flippy_commit='a206da79f651e0a679ec15dbc1b1ae699c13e3f9'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -22,7 +22,7 @@ arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
 makedepends=( # Since we don't build the doc, most of the makedeps for other linux packages are not needed here
-  'kmod' 'git' 'dtc' 'uboot-tools'
+  'kmod' 'bc' 'dtc' 'uboot-tools'
 )
 options=(!strip)
 source=(
@@ -31,8 +31,8 @@ source=(
   'linux.preset'
 )
 sha256sums=(
-  '2a256082375b3cb0278dd3d3ae37ed72ec429abd62a49c11c4fd50a5f10019f5'
-  '50836909a3ce8cc06bc57228b5d51de91bb65532d44071803b6f06a079503efe'
+  '6751c6483b35662039ec216fdc93e286d93802384e1895fac4f03466a354cfd8'
+  'be0e79718cdd45e1810b583e09e4ba43baa61bdc44d984a0ffcea0011e8d6cd0'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )
 
