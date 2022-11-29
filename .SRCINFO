@@ -1,12 +1,12 @@
 pkgbase = gr-framework-js-git
 	pkgdesc = A universal framework for cross-platform visualization applications.
-	pkgver = 0.71.1.r3.g73d18ea2
+	pkgver = 0.71.1.r7.gb0d7dd6a
 	pkgrel = 1
 	url = https://gr-framework.org
 	arch = any
 	license = MIT
 	makedepends = git
-	provides = gr-framework-js=0.71.1.r3.g73d18ea2
+	provides = gr-framework-js=0.71.1.r7.gb0d7dd6a
 	conflicts = gr-framework-js
 	source = gr-framework::git+https://github.com/sciapp/gr.git#branch=develop
 	source = https://github.com/emscripten-core/emsdk/archive/refs/tags/1.40.1.tar.gz
