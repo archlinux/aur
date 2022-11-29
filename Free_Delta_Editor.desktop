@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Free Delta Editor
+Version=1.0
+Exec=fde
+Comment=A software package for building taxonomic databases
+Icon=fde.png
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Application;

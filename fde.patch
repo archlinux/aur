@@ -1,0 +1,136 @@
+From: Sergej Pupykin <sergej@p5n.pp.ru>
+Date: Tues, 29 Nov 2022
+Subject: [PATCH] fix fde.lpi and main.pas
+
+---
+
+diff --git a/fde.lpi b/fde.lpi
+index 447c2e6..ec46b9a 100644
+--- a/fde.lpi
++++ b/fde.lpi
+@@ -1,11 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <CONFIG>
+   <ProjectOptions>
+-    <Version Value="11"/>
++    <Version Value="12"/>
+     <PathDelim Value="\"/>
+     <General>
++      <Flags>
++        <CompatibilityMode Value="True"/>
++      </Flags>
+       <SessionStorage Value="InProjectDir"/>
+-      <MainUnit Value="0"/>
+       <Title Value="FreeDelta Editor"/>
+       <Scaled Value="True"/>
+       <ResourceType Value="res"/>
+@@ -43,28 +45,31 @@
+         <Mode0 Name="default"/>
+       </Modes>
+     </RunParams>
+-    <RequiredPackages Count="7">
++    <RequiredPackages Count="8">
+       <Item1>
+-        <PackageName Value="richmemopackage"/>
++        <PackageName Value="synfacilsyn"/>
+       </Item1>
+       <Item2>
+-        <PackageName Value="SynEdit"/>
++        <PackageName Value="richmemopackage"/>
+       </Item2>
+       <Item3>
+-        <PackageName Value="FrameViewer09"/>
++        <PackageName Value="SynEdit"/>
+       </Item3>
+       <Item4>
+-        <PackageName Value="TurboPowerIPro"/>
++        <PackageName Value="FrameViewer09"/>
+       </Item4>
+       <Item5>
+-        <PackageName Value="LazControls"/>
++        <PackageName Value="TurboPowerIPro"/>
+       </Item5>
+       <Item6>
+-        <PackageName Value="HistoryLazarus"/>
++        <PackageName Value="LazControls"/>
+       </Item6>
+       <Item7>
+-        <PackageName Value="LCL"/>
++        <PackageName Value="HistoryLazarus"/>
+       </Item7>
++      <Item8>
++        <PackageName Value="LCL"/>
++      </Item8>
+     </RequiredPackages>
+     <Units Count="17">
+       <Unit0>
+@@ -196,7 +201,7 @@
+     </Target>
+     <SearchPaths>
+       <IncludeFiles Value="$(ProjOutDir)"/>
+-      <OtherUnitFiles Value="C:\lazarus\user\SynFacilSyn\"/>
++      <OtherUnitFiles Value="C:\lazarus\user\SynFacilSyn"/>
+       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+     </SearchPaths>
+     <Linking>
+@@ -210,20 +215,4 @@
+       </Options>
+     </Linking>
+   </CompilerOptions>
+-  <Debugging>
+-    <Exceptions Count="4">
+-      <Item1>
+-        <Name Value="EAbort"/>
+-      </Item1>
+-      <Item2>
+-        <Name Value="ECodetoolError"/>
+-      </Item2>
+-      <Item3>
+-        <Name Value="EFOpenError"/>
+-      </Item3>
+-      <Item4>
+-        <Name Value="EStringListError"/>
+-      </Item4>
+-    </Exceptions>
+-  </Debugging>
+ </CONFIG>
+diff --git a/main.pas b/main.pas
+index e6ee9d3..f885687 100644
+--- a/main.pas
++++ b/main.pas
+@@ -1558,7 +1558,7 @@ begin
+   sPath := GetAppConfigDir(False);
+   IniFile := TIniFile.Create(sPath + 'fde.ini');
+   sLang := IniFile.ReadString('Options', 'Language', 'en'); // First default is English
+-  SetDefaultLang(sLang, 'languages', True);
++  SetDefaultLang(sLang, 'languages', '', True);
+   case sLang of
+     'en':
+     begin
+@@ -2525,7 +2525,7 @@ begin
+   LanguageFrenchItem.Checked := False;
+   sPath := GetAppConfigDir(False);
+   IniFile := TIniFile.Create(sPath + 'fde.ini');
+-  SetDefaultLang('en', 'language', True);
++  SetDefaultLang('en', 'language', '', True);
+   IniFile.WriteString('Options', 'Language', 'en');
+   IniFile.Free;
+ end;
+@@ -2541,7 +2541,7 @@ begin
+   LanguageEnglishItem.Checked := False;
+   sPath := GetAppConfigDir(False);
+   IniFile := TIniFile.Create(sPath + 'fde.ini');
+-  SetDefaultLang('fr', 'language', True);
++  SetDefaultLang('fr', 'language', '', True);
+   IniFile.WriteString('Options', 'Language', 'fr');
+   IniFile.Free;
+ end;
+@@ -2557,7 +2557,7 @@ begin
+   LanguageFrenchItem.Checked := False;
+   sPath := GetAppConfigDir(False);
+   IniFile := TIniFile.Create(sPath + 'fde.ini');
+-  SetDefaultLang('pt_br', 'language', True);
++  SetDefaultLang('pt_br', 'language', '', True);
+   IniFile.WriteString('Options', 'Language', 'pt_br');
+   IniFile.Free;
+ end;
