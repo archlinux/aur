@@ -7,7 +7,7 @@
 
 pkgname=pacman-pb
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library-based package manager with dependency support - includes a patch to customize the progress bar"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"

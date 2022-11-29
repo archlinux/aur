@@ -1,7 +1,7 @@
 pkgbase = pacman-pb
 	pkgdesc = A library-based package manager with dependency support - includes a patch to customize the progress bar
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.archlinux.org/pacman/
 	arch = x86_64
 	groups = base-devel
