@@ -2,7 +2,7 @@
 
 _name=hatchling
 pkgname=python-hatchling-git
-pkgver=v1.11.1.r43.g15a583af
+pkgver=1.11.1.r43.g15a583af
 pkgrel=1
 pkgdesc="Modern, extensible Python build backend"
 arch=('any')
