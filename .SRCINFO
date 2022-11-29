@@ -1,7 +1,7 @@
 pkgbase = trust-dns
 	pkgdesc = Trust-DNS is a safe and secure DNS server with DNSEC support. Eventually this...
 	pkgver = 0.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.trust-dns.org/index.html
 	arch = aarch64
 	arch = i686

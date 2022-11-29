@@ -4,7 +4,7 @@
 _crate="trust-dns"
 pkgname="trust-dns"
 pkgver=0.22.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Trust-DNS is a safe and secure DNS server with DNSEC support. Eventually this...'
 url='http://www.trust-dns.org/index.html'
 license=('Apache' 'MIT')
@@ -40,4 +40,6 @@ package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/named" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/trust-dns" -t "$pkgdir/usr/bin"
+	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
