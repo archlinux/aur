@@ -3,7 +3,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.6-3
+_cranver=3.6-11
 pkgname=r-${_cranname,,}
 pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -15,7 +15,7 @@ arch=(i686 x86_64)
 depends=(
     "r-rcpp"
     "r-sp>=1.4.5"
-    "r-terra>=1.6.16"
+    "r-terra>=1.6.41"
     "r>=3.5.0"
 )
 optdepends=(
@@ -31,7 +31,7 @@ optdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("61328c56cb03123b07086e03347e9e5d2e576a7bbdb73930f44f055d07a22644082c19f88a6430e9642acd3f068af7c6c8e4d6a37e0116fd18ea924dfb43d39f")
+b2sums=('5e10dae49d8c7741f80a4ea1494b0c6eeaae47cdb34575b5e13dd0a3d26ac829eaf0d935904b07931c703e07874211d9a53c3f940bb7b4e07347242d9d164b53')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
