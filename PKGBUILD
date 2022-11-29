@@ -3,7 +3,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
 pkgver=0.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -51,6 +51,9 @@ package() {
   install -Dm644 "$OUT_DIR/completions/_mdcat" "$pkgdir/usr/share/zsh/site-functions/_mdcat"
   install -Dm644 "$OUT_DIR/completions/mdcat.bash" "$pkgdir/usr/share/bash-completion/completions/mdcat"
   install -Dm644 "$OUT_DIR/completions/mdcat.fish" "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
+  install -Dm644 "$OUT_DIR/completions/_mdless" "$pkgdir/usr/share/zsh/site-functions/_mdless"
+  install -Dm644 "$OUT_DIR/completions/mdless.bash" "$pkgdir/usr/share/bash-completion/completions/mdless"
+  install -Dm644 "$OUT_DIR/completions/mdless.fish" "$pkgdir/usr/share/fish/vendor_completions.d/mdless.fish"
 
   MANPAGE="$OUT_DIR/mdcat.1"
   gzip -n "$MANPAGE"
