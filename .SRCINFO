@@ -1,0 +1,21 @@
+pkgbase = haskell-ghc-vis
+	pkgdesc = Live visualization of data structures in GHCi
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://felsin9.de/nnis/ghc-vis
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-fgl
+	depends = haskell-ghc-heap-view
+	depends = haskell-graphviz
+	depends = haskell-gtk3
+	depends = haskell-svgcairo
+	depends = haskell-xdot
+	depends = graphviz
+	source = https://hackage.haskell.org/packages/archive/ghc-vis/0.9.3/ghc-vis-0.9.3.tar.gz
+	sha256sums = ef6adb7fa081ad0b00fdd3a74d3019388d8d1f8877396c6289afaa711d252420
+
+pkgname = haskell-ghc-vis
