@@ -1,8 +1,8 @@
 # Former maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
 # Maintainer: Prem Buczkowski <prem@prem.moe>
-
+# Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm
-pkgver=16.3
+pkgver=17.0
 pkgrel=20230323
 pkgdesc="UML design application (Free 30-day trial)"
 arch=('x86_64')
@@ -12,15 +12,18 @@ license=('custom')
 install=visual-paradigm-community.install
 conflicts=('visual-paradigm-community')
 
+# Possible values: ca1 usa10 usa11 usa13 usa14 uk3 uk5 germany4 germany5 germany6 france3
+_server=germany4
 _ver=${pkgver/./_}
 
-source=("https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_${_ver}_${pkgrel}_Linux64_InstallFree.tar.gz"
+#https://www.visual-paradigm.com/downloads/germany6/vp/Visual_Paradigm_Linux64.sh
+source=("https://www.visual-paradigm.com/downloads/${_server}/vp/Visual_Paradigm_Linux64_InstallFree.tar.gz"
   'visual-paradigm-community.install'
   'visual-paradigm.desktop'
   'visual-paradigm.png'
   'x-visual-paradigm.xml')
 
-sha256sums=('e76994e2ef99b7c1be076f4190bf50fd8188d528b134ef16c098cf39032acb04'
+sha256sums=('901de3cffbbe76e03b1d74029b9b0e21773c0f68c3ea4f2ef440940504f0028d'
             'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
