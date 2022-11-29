@@ -1,31 +1,35 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 _pkgbin=chain-desktop-wallet
 _pkgname=cro-chain-desktop
-pkgname=cro-chain-desktop-bin
-pkgdesc='Crypto.com DeFi Desktop Wallet (AppImage version)'
+pkgname=${_pkgname}-bin
+pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 arch=('x86_64')
-provides=('cro-chain-desktop')
-conflicts=('cro-chain-desktop')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
-source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}"
-        "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE")
-sha512sums=('479570b2dfb80d18b64722f6f443eee8437ede2c9baf0825ff0478231f46aae00458b14a53b6ede959a6babf54c40f263e1ef0bd1bbfe81fe7d4a76996fda982'
-            'e21a90ebc22283c19f4535f263a0297a2428633572ddf19ec515496bd33fe70eacf3c3de63395307cd268330e8325b80e985190b2e92bbbf0079440aa84e89ea')
+source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
+sha512sums=('460f9b1a3dedfae225ba42a9fb8314d521a12b99f47cc54ed1a3abf2f5ded49c35f6ba53f3e9e1c009dd8c8ed30bb470b678cff21d65c6ead6c20d3ca55a4434')
 
 build() {
   # Extract files
-  chmod +x "${srcdir}/${_appimg}"
-  "${srcdir}/${_appimg}" --appimage-extract
+  chmod +x "${_appimg}"
+  "./${_appimg}" --appimage-extract
 
+  cd squashfs-root
   # Correct .desktop
-  sed -e "s/AppRun/${_pkgbin}/g" -i "${srcdir}/squashfs-root/${_pkgbin}.desktop"
+  sed -e "s/AppRun --no-sandbox/${_pkgbin}/g" -i "${_pkgbin}.desktop"
+  sed -e "/X-AppImage-Version/d" -i "${_pkgbin}.desktop"
+
+  # Remove unnecessary files
+  rm AppRun resources/app-update.yml
 }
 
 package() {
@@ -42,6 +46,4 @@ package() {
   ln -s "/opt/${_pkgname}/usr/share/icons/hicolor/0x0/apps/${_pkgbin}.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
-
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
