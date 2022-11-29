@@ -1,11 +1,11 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=terra
-_cranver=1.6-17
+_cranver=1.6-41
 pkgname=r-${_cranname,,}
 pkgdesc="Spatial Data Analysis"
 url="https://cran.r-project.org/package=terra"
-license=("GPL (>= 3)")
+license=("GPL3")
 pkgver=${_cranver//[:-]/.}
 pkgrel=2
 
@@ -29,7 +29,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('64006ae3afca48caf0adb7253b597d1dbf52915f7f9cb5b497d2c3334236fce25f2b1a4a6740762292c3f821f537ec7116ffe52fb7a5d776197e53355b2f6a2d')
+b2sums=("621ecf8bc3917fbfcbb53da9cd197c6b8b77a77b38278bb1e8fe58f7ebb7834b07aabe2c4efdc0992d4228f6ffabc9bfd26cf3699c0894f024af32a5d964c86f")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
