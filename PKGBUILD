@@ -9,8 +9,8 @@ arch=("x86_64" "aarch64")
 url="https://github.com/ArmCord/ArmCord"
 license=("custom:OSL-3.0")
 
-makedepends=("git" "nodejs" "sed")
-depends=("electron21")
+makedepends=("git" "nodejs" "sed" "npm")
+depends=("electron")
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=('SKIP'
             'e6b66912e1a73d0646e58f41a6c6f414f45843cdb3900a6b4cf6ae0bf12ea90f'
-            '75a212aba147ca325957263dfd67f34cc168e36d8794609326f6b616499de428')
+            '5a37668b474263bc362bc322df4c90981710b9294e85a5ab0fd93b253e9ca2e2')
 
 prepare() {
     sed -i "s/%VERSION%/$pkgver/" "$srcdir/armcord.desktop"

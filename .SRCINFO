@@ -9,7 +9,8 @@ pkgbase = armcord-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = sed
-	depends = electron21
+	makedepends = npm
+	depends = electron
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = armcord
@@ -19,6 +20,6 @@ pkgbase = armcord-git
 	source = armcord-launcher.sh
 	sha256sums = SKIP
 	sha256sums = e6b66912e1a73d0646e58f41a6c6f414f45843cdb3900a6b4cf6ae0bf12ea90f
-	sha256sums = 75a212aba147ca325957263dfd67f34cc168e36d8794609326f6b616499de428
+	sha256sums = 5a37668b474263bc362bc322df4c90981710b9294e85a5ab0fd93b253e9ca2e2
 
 pkgname = armcord-git
