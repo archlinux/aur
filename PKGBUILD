@@ -2,8 +2,8 @@
 
 pkgname=spotify-adblock-git
 _pkgname=${pkgname%-*}
-pkgver=1.0.0.r2.g990c0f2
-pkgrel=1
+pkgver=1.0.2.r0.g9ba383b
+pkgrel=2
 epoch=1
 license=("GPL3")
 pkgdesc="Adblocker for Spotify"
@@ -23,7 +23,7 @@ source=(
 
 sha512sums=(
 	'SKIP'
-	'69f497a0b869e855b7c6c733c73ee3f285000d56543bf5083382fe1957a9be9a27f8e7eff6e3ef5ccaf5c12ee7750c7e8561bef54e688e5b8b738b320f5cf90a'
+	'cc6569af907a462859f51fd75545535fc6e990c250d0d336aeffbafc7b46cb7e28310393ba856d6170cedfd0e070042033556f49fe5f34f847f2eb64bc4fd6b5'
 )
 
 pkgver() {
