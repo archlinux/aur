@@ -1,0 +1,16 @@
+pkgbase = offmap-git
+	pkgdesc = A maildir downloader using IMAP extensions to be ahead of the competition
+	pkgver = r1.28b36df
+	pkgrel = 1
+	url = https://git.sr.ht/~rockorager/offmap
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	provides = offmap
+	source = git+https://git.sr.ht/~rockorager/offmap
+	sha256sums = SKIP
+
+pkgname = offmap-git
