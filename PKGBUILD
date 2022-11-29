@@ -7,7 +7,7 @@
 
 pkgname=pacman-pb
 pkgver=6.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A library-based package manager with dependency support - includes a patch to customize the progress bar"
 arch=('x86_64')
 url="https://www.archlinux.org/pacman/"
@@ -19,6 +19,7 @@ makedepends=('meson' 'asciidoc' 'doxygen')
 checkdepends=('python' 'fakechroot')
 optdepends=('perl-locale-gettext: translation support in makepkg-template')
 provides=('libalpm.so' 'pacman')
+conflicts=('pacman')
 backup=(etc/pacman.conf
         etc/makepkg.conf)
 options=('strip' 'debug')
@@ -37,12 +38,12 @@ sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
             'dab7c70fb9d77d702069bb57f5a12496b463d68ae20460fb0a3ffcb4791321a9'
             '0b56c61eac3d9425d68faa2eccbaefdc5ed422b643974ae829eaca0460043da1'
             'acd0b149b6324dc1eca3cd2d3b30df6ef64c5653e83523d77200ec593e01d2a7'
-            '606e55f06c297d2b508bc4438890b229a1abaa68b0374a2d7f94c8e7be6792d7'
+            '38319372438e9c4bb840cc5d0a584fc105421705a4f956d9aab832c2be18c6e8'
             '072020e34f2c55b94a9a486829a7eadab0a830ddb4d8e759b0c4e6cf1bde73a6'
             '0ec6abce23dd1812a577b729bf5a0d593bc8af60d263d068321538beee656ca8')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "pacman-${pkgver}"
   # we backport way too often in pacman
   # lets at least make it more convenient
   local src
@@ -56,7 +57,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "pacman-$pkgver"
 
   meson --prefix=/usr \
         --buildtype=plain \
@@ -70,13 +71,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "pacman-$pkgver"
 
   meson test -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "pacman-$pkgver"
 
   DESTDIR="$pkgdir" meson install -C build
 
