@@ -2,21 +2,20 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
 license=('MPL2')
 options=(!lto)
-depends=('gcc-libs'
-         'shared-mime-info')
+depends=('gcc-libs')
 makedepends=('asciidoctor'
              'cargo')
 optdepends=('less: for mdless'
             'librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('a918d68bb07fbb00d7b733176175fb2bb0925e1393db072cd04d6927cb8e9fd6')
+sha256sums=('321e5a500d48e7e64544f717226b112e8db6faf9c8ff0506215df8829139b182')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
@@ -49,9 +48,9 @@ package() {
     return 1
   fi
 
-  install -Dm644 "$OUT_DIR/_mdcat" "$pkgdir/usr/share/zsh/site-functions/_mdcat"
-  install -Dm644 "$OUT_DIR/mdcat.bash" "$pkgdir/usr/share/bash-completion/completions/mdcat"
-  install -Dm644 "$OUT_DIR/mdcat.fish" "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
+  install -Dm644 "$OUT_DIR/completions/_mdcat" "$pkgdir/usr/share/zsh/site-functions/_mdcat"
+  install -Dm644 "$OUT_DIR/completions/mdcat.bash" "$pkgdir/usr/share/bash-completion/completions/mdcat"
+  install -Dm644 "$OUT_DIR/completions/mdcat.fish" "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
 
   MANPAGE="$OUT_DIR/mdcat.1"
   gzip -n "$MANPAGE"
