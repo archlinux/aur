@@ -1,0 +1,45 @@
+From: Guoyi Zhang <guoyi zhang at malacology dot net>
+Date: Tues, 29 Nov 2022
+Subject: [PATCH] make makefile compilable
+
+---
+
+diff --git a/Confor/makefile b/Confor/makefile
+index 0764d78..b17b20d 100644
+--- a/Confor/makefile
++++ b/Confor/makefile
+@@ -8,7 +8,7 @@ OBJS = clib.o char.o chkd.o dir1.o dir4.o dir5.o dira.o dirg.o diru.o init.o\
+ .SUFFIXES: .for
+ 
+ FC = gfortran
+-FFLAGS = -fno-backslash -O2 -finit-local-zero -static -static-libgfortran -w
++FFLAGS = -fno-backslash -O2 -finit-local-zero -fallow-argument-mismatch -lgfortran -w
+ 
+ all: confor
+ .PHONY: all
+diff --git a/Dist/makefile b/Dist/makefile
+index fbd7e38..3265093 100644
+--- a/Dist/makefile
++++ b/Dist/makefile
+@@ -4,7 +4,7 @@ OBJS = inou.o main.o xggg.o
+ .SUFFIXES: .for
+ 
+ FC = gfortran
+-FFLAGS = -fno-backslash -O2 -finit-local-zero -static -static-libgfortran -w
++FFLAGS = -fno-backslash -O2 -finit-local-zero -fallow-argument-mismatch -lgfortran -w
+ 
+ all: dist
+ .PHONY: all
+diff --git a/Key/makefile b/Key/makefile
+index 6867ae8..f78af0b 100644
+--- a/Key/makefile
++++ b/Key/makefile
+@@ -4,7 +4,7 @@ OBJS = clib.o main.o inou.o util.o genr.o outp.o wtps.o xggg.o
+ .SUFFIXES: .for
+ 
+ FC = gfortran
+-FFLAGS = -fno-backslash -O2 -finit-local-zero -static -static-libgfortran -w
++FFLAGS = -fno-backslash -O2 -finit-local-zero -fallow-argument-mismatch -lgfortran -w
+ 
+ all: key
+ .PHONY: all

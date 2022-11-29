@@ -1,0 +1,16 @@
+pkgbase = classic-delta
+	pkgdesc = An Open Source System for Processing Taxonomic Descriptions https://doi.org/10.2307/1219595
+	pkgver = 2.25g
+	pkgrel = 0
+	url = http://freedelta.sourceforge.net/
+	arch = x86_64
+	license = MPL2
+	makedepends = gcc-fortran
+	makedepends = make
+	depends = glibc
+	source = classic-delta-2.25g::https://sourceforge.net/projects/freedelta/files/classic_delta/Deltagfortran2.25g.zip/download
+	source = classic-delta.patch
+	sha256sums = 7ac822efe1c6b0b3bdea3c0f21c648efa63171d9f4ee49d77e594f996917d5d8
+	sha256sums = 5433d651ec6ff9e62d878a681c985056eb33aedcd559122cbb5427c50dfa75e5
+
+pkgname = classic-delta
