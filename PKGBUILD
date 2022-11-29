@@ -2,7 +2,7 @@
 # Contributor: Ista Zahn <istazahn@gmail.com>
 ## Based on miniconda3 aur package by Ashwin Vishn Immae, Martin Wimpress and Jingbei Li
 pkgname=mambaforge
-_pkgrel=0
+_pkgrel=2
 pkgver=22.9.0.${_pkgrel}
 pkgrel=1
 pkgdesc="Conda and Mamba package managers configured to use conda-forge"
@@ -12,7 +12,7 @@ license=('custom:BSD-3-clause')
 provides=('conda' 'mamba')
 source=("${pkgname}-${pkgver::-2}-${_pkgrel}.sh::${url}/releases/download/${pkgver::-2}-${_pkgrel}/Mambaforge-${pkgver::-2}-${_pkgrel}-Linux-x86_64.sh")
 options=(!strip libtool staticlibs)
-sha256sums=('7049f5ebdd6e2aee7611874599ab14445cd63070cdb63db2e00ae0b90d7c6132')
+sha256sums=('26cf4a5cd3a3b9085f75911b459b969d6ff8ab426ef9a8e7ce3b47cc683ead86')
 install="${pkgname}.install"
 
 package() {
