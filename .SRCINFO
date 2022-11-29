@@ -1,14 +1,14 @@
 pkgbase = r-fmsb
 	pkgdesc = Functions for Medical Statistics Book with some Demographic Data
-	pkgver = 0.7.3
-	pkgrel = 3
+	pkgver = 0.7.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=fmsb
 	arch = any
 	license = GPL
 	depends = r
 	optdepends = r-epi
 	optdepends = r-vcd
-	source = https://cran.r-project.org/src/contrib/fmsb_0.7.3.tar.gz
-	sha256sums = 73d5a8da77381a3bce35a6edc86860d11711bb532e5fc77f4fd38705722729be
+	source = https://cran.r-project.org/src/contrib/fmsb_0.7.4.tar.gz
+	sha256sums = c216091deafd2f8171f703245c3daacf19d99f9e1462a9008f55d58c46dfb5e6
 
 pkgname = r-fmsb
