@@ -1,6 +1,6 @@
 pkgbase = codevis-git
 	pkgdesc = A tool for turning your code into one large image (git)
-	pkgver = 0.5.0.r0.ge97889c
+	pkgver = 0.5.1.r1.g8abd5f2
 	pkgrel = 1
 	url = https://github.com/sloganking/codevis
 	arch = x86_64
