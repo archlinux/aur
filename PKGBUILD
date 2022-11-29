@@ -1,6 +1,6 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=bordeaux
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 epoch=
 pkgdesc="SIP telephony applidation server"
@@ -10,7 +10,7 @@ license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::https://codeberg.org/gnutelephony/$pkgname/archive/v$pkgver.tar.gz bordeaux.service bordeaux.logrotated)
 makedepends=(cmake pkgconf gcc)
 depends=("libexosip2>=5.3.0" libosip2 openssl fmt)
-sha256sums=('178fb857846b6c6c1471a96fc2138fcd56fb187492b5d78bf96e9ea5e8e6d155' 'f25ff6788a7ae8e988498662c6b2744b82ebe1fe20f5a413cceaa6fff68f6ad4' '462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f') 
+sha256sums=('a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df' 'f25ff6788a7ae8e988498662c6b2744b82ebe1fe20f5a413cceaa6fff68f6ad4' '462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f') 
 
 build() {
 	cd "$srcdir/$pkgname"
