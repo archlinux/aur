@@ -3,3 +3,4 @@
 *.log
 pkg/
 src/
+.idea
