@@ -1,0 +1,17 @@
+pkgbase = haskell-xdot
+	pkgdesc = Parse Graphviz xdot files and interactively view them using GTK and Cairo
+	pkgver = 0.3.0.4
+	pkgrel = 1
+	url = https://github.com/def-/xdot.git
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-cairo
+	depends = haskell-graphviz
+	depends = haskell-gtk3
+	depends = haskell-polyparse
+	source = https://hackage.haskell.org/packages/archive/xdot/0.3.0.4/xdot-0.3.0.4.tar.gz
+	sha256sums = efaa1cde4db57e4e30454c4f95580e2c050834ea4cd0901d3b079bee9b10afe2
+
+pkgname = haskell-xdot
