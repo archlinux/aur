@@ -43,6 +43,7 @@ pkgbase = matrix-mirage-python3.10
 	depends = python-hsluv
 	depends = python-pycryptodome
 	depends = python-simpleaudio
+	conflicts = matrix-mirage
 	conflicts = mirage-matrix
 	conflicts = matrix-mirage-git
 	source = https://raw.githubusercontent.com/vSLG/mirage/4cffbaa68da1feb9254dcd064de66ae93045a785/src/backend/utils.py
