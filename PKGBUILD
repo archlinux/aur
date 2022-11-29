@@ -1,24 +1,28 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 _pkgbin=ledger-live-desktop
-pkgname=ledger-live-git
-pkgdesc="Ledger Live - Desktop (Git version)"
-pkgver=2.49.2.r0.g77e1ae4acf
-pkgrel=3
+_pkgname=ledger-live
+pkgname=${_pkgname}-git
+pkgdesc="Ledger Live - Desktop (git-main)"
+pkgver=2.49.2.r647.g2eae11ad69
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
 makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
-provides=('ledger-live')
-conflicts=('ledger-live-bin' 'ledger-live')
-source=("${pkgname}::git+${url}#branch=main")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-bin")
+_branch=main
+_gitdir=${_pkgname}-${_branch}-git
+source=("${_gitdir}::git+${url}#branch=${_branch}")
 sha512sums=('SKIP')
 
 build() {
-  cd ${pkgname}
+  cd "${_gitdir}"
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
@@ -27,38 +31,29 @@ build() {
   pnpm desktop build
 
   # Correct .desktop
-  sed -e "s/AppRun/${_pkgbin}/g" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
-  sed -e '/X-AppImage-Version/d' -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
+  sed -e "s/AppRun --no-sandbox/${_pkgbin}/g" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
+  sed -e "/X-AppImage-Version/d" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
 }
 
 package() {
-  cd ${pkgname}/apps/${_pkgbin}
+  cd "${_gitdir}/apps/${_pkgbin}"
 
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  install -dm755 "${pkgdir}/opt/${_pkgbin}"
-  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgbin}"
+  install -dm755 "${pkgdir}/opt/${_pkgname}"
+  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgbin}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
+  ln -s "/opt/${_pkgname}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
   install -Dm644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgbin}.png"
-  install -Dm644 "build/icons/icon@128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgbin}.png"
-  install -Dm644 "build/icons/icon@256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgbin}.png"
-  install -Dm644 "build/icons/icon@512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgbin}.png"
-  install -Dm644 "build/icons/icon@1024x1024.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${_pkgbin}.png"
+  for i in 128 256 512 1024; do
+    install -Dm644 "build/icons/icon@${i}x${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgbin}.png"
+  done
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 pkgver() {
-  cd ${pkgname}/apps/${_pkgbin}/
-  ver=$(cat package.json |
-    grep version |
-    head -1 |
-    awk -F: '{ print $2 }' |
-    sed 's/[",]//g' |
-    tr -d '[[:space:]]')
-  add_commits=$(git rev-list --count $(git describe --abbrev=0 --tags)..HEAD)
-  git_hash=$(git rev-parse --short HEAD)
-  printf ${ver}.r${add_commits}.g${git_hash}
+  cd "${_gitdir}"
+  git describe --abbrev=10 --long --tags --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
 }

@@ -1,7 +1,7 @@
 pkgbase = ledger-live-git
-	pkgdesc = Ledger Live - Desktop (Git version)
-	pkgver = 2.49.2.r0.g77e1ae4acf
-	pkgrel = 3
+	pkgdesc = Ledger Live - Desktop (git-main)
+	pkgver = 2.49.2.r647.g2eae11ad69
+	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = ledger-live-git
 	makedepends = pnpm
 	depends = ledger-udev
 	provides = ledger-live
-	conflicts = ledger-live-bin
 	conflicts = ledger-live
-	source = ledger-live-git::git+https://github.com/LedgerHQ/ledger-live#branch=main
+	conflicts = ledger-live-bin
+	source = ledger-live-main-git::git+https://github.com/LedgerHQ/ledger-live#branch=main
 	sha512sums = SKIP
 
 pkgname = ledger-live-git
