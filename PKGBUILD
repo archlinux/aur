@@ -35,4 +35,6 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$pkgver"
 	install -Dm755 "target/release/faketty" -t "$pkgdir/usr/bin"
+	install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
