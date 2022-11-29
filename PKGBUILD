@@ -2,14 +2,14 @@
 
 pkgname=trust-dns-git
 pkgver=v0.22.0.r60.g5d816c5b
-pkgrel=5
+pkgrel=6
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
 url=https://trust-dns.org/
 license=('MIT' 'Apache')
 depends=('openssl')
 makedepends=('git' 'cargo')
-provides=('dns' 'dnskey-to-pem' 'get-root-ksks' 'pem-to-public-dnskey')
+provides=('dns' 'dnskey-to-pem' 'get-root-ksks' 'pem-to-public-dnskey' 'trust-dns')
 conflicts=('trust-dns' 'trust-dns-server')
 backup=('etc/trust-dns/trust-dns.toml')
 source=("$pkgname::git+https://github.com/bluejekyll/trust-dns.git#branch=main"
