@@ -1,0 +1,17 @@
+pkgbase = identinum
+	pkgdesc = Identify exact expression for decimal
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/nschloe/identinum
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sympy
+	source = identinum-0.7.1.tar.gz::https://github.com/nschloe/identinum/archive/v0.7.1.tar.gz
+	sha512sums = 0f99154955755c1a9cb1c815bdaa31ebd9eaec098f399566ebdbc6e75e85819e454b211cc35dbcab5c366129df75384e7fe7e5525e7391b4e171cb183dc21cad
+
+pkgname = identinum
