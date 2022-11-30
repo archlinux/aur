@@ -7,7 +7,7 @@ pkgname=(
     "ibus-openbangla-git"
     "fcitx5-openbangla-git"
 )
-pkgver=2.0.0.r53.g5266b77
+pkgver=2.0.0.r56.gffa3c9a
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
