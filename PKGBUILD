@@ -8,7 +8,7 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r13942.g91f8b4340
-pkgrel=1
+pkgrel=4
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - repo wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -21,8 +21,10 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg4.4: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://codeberg.org/tenacityteam/tenacity.git#branch=main")
-sha256sums=('SKIP')
+source=("git+https://codeberg.org/tenacityteam/tenacity.git#branch=main"
+        cmake-wxgtk3.2.patch)
+sha256sums=('SKIP'
+            'd45856d8cc21a3ba5477db7890882877dc4d957aa33cd8d61517e36c61befd6d')
 
 pkgver() {
   cd tenacity
@@ -38,6 +40,7 @@ prepare() {
     cd ..
   done
   cd ../..
+  patch CMakeLists.txt cmake-wxgtk3.2.patch
   mkdir -p build
 }
 
@@ -48,6 +51,7 @@ build() {
   CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -Duse_wxwidgets=system \
     -DwxWidgets_CONFIG_EXECUTABLE=wx-config \
     -DwxWidgets_LIBRARIES=/usr/lib \
     -DwxWidgets_INCLUDE_DIRS=/usr/include/wx-3.2 \
