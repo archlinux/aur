@@ -1,6 +1,6 @@
 pkgbase = maxima-git
 	pkgdesc = Sophisticated computer algebra system - git-version
-	pkgver = 5.42.1.569.g88fa7ff50
+	pkgver = 5.46.1.565.gce1467e9b
 	pkgrel = 1
 	url = http://maxima.sourceforge.net
 	arch = i686
@@ -27,4 +27,3 @@ pkgbase = maxima-git
 	sha256sums = d7ba38d5f35a6322b569e33a132eecf2fba36d4bc124ba75caa8e57f81753c20
 
 pkgname = maxima-git
-
