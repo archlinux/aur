@@ -1,0 +1,13 @@
+pkgbase = cachyos-themes-sddm
+	pkgdesc = CachyOS-branded SDDM adaptation of archlinux-themes-kdm
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/StarterX4/cachyos-themes-sddm
+	install = cachyos-themes-sddm.install
+	arch = any
+	license = CCPL:cc-by-sa
+	depends = sddm
+	source = https://github.com/StarterX4/cachyos-themes-sddm/releases/download/1.0/cachyos-themes-sddm-1.0.tar.bz2
+	md5sums = f2924f3fa96f993abd9d4b06864c62ef
+
+pkgname = cachyos-themes-sddm
