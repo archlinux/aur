@@ -16,7 +16,7 @@ replaces=('eruption-roccat-vulcan')
 backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/fx-proxy.conf etc/eruption/audio-proxy.conf usr/share/eruption/scripts/lib/keymaps/default.keymap)
 install='eruption.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/heads/releases/v0.3.tar.gz")
-sha256sums=('ab20260507afeaa8ca83fd388631a0f217a75ff38a2b6fa5c5ce383d544be0ff')
+sha256sums=('aa6b4ae916c7550a3d71fb6f32faa622b3224aa1481f43e1a341fbe1263b64e0')
 
 build() {
     cd "eruption-releases-v0.3"
