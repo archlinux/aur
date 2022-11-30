@@ -1,0 +1,22 @@
+pkgbase = metainfo-builder-git
+	pkgdesc = A small application to edit and create AppStream metadata files
+	pkgver = r14.50f80bb
+	pkgrel = 1
+	url = https://gitlab.gnome.org/ebassi/metainfo-builder
+	arch = any
+	license = Apache
+	checkdepends = appstream-glib
+	checkdepends = reuse
+	checkdepends = flake8
+	checkdepends = mypy
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = appstream
+	depends = python-gobject
+	provides = metainfo-builder
+	conflicts = metainfo-builder
+	source = git+https://gitlab.gnome.org/ebassi/metainfo-builder.git
+	b2sums = SKIP
+
+pkgname = metainfo-builder-git
