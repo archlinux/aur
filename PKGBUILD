@@ -4,7 +4,7 @@
 
 
 pkgname=trakt-scrobbler
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
