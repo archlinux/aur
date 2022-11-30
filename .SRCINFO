@@ -1,14 +1,14 @@
 pkgbase = ledger-live-bin
 	pkgdesc = Ledger Live - Desktop (AppImage version)
 	pkgver = 2.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ledger.com/ledger-live
 	arch = x86_64
 	license = MIT
 	depends = ledger-udev
 	provides = ledger-live
 	conflicts = ledger-live
-	conflicts = ledger-live-bin-git
+	conflicts = ledger-live-git
 	options = !strip
 	source = ledger-live-desktop-2.50.0-linux-x86_64.AppImage::https://download.live.ledger.com/ledger-live-desktop-2.50.0-linux-x86_64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/LedgerHQ/ledger-live/%40ledgerhq/live-desktop%402.50.0/apps/ledger-live-desktop/LICENSE
