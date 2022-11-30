@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.4.7]
+### Fixed
+- check method UnknownError exception message was malformed #10
+
+### Changed
+- Updated documentation to point to new library location.
+
 ## [1.4.6]
 ### Fixed
 - default base_path was set to None instead of ''
@@ -145,6 +152,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial Version
 
 
+[1.4.7]: https://github.com/SteveMcGrath/restfly/compare/1.4.6...1.4.7
 [1.4.6]: https://github.com/SteveMcGrath/restfly/compare/1.4.5...1.4.6
 [1.4.5]: https://github.com/SteveMcGrath/restfly/compare/1.4.4...1.4.5
 [1.4.4]: https://github.com/SteveMcGrath/restfly/compare/1.4.3...1.4.4

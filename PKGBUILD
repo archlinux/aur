@@ -3,7 +3,7 @@
 
 pkgname=python-restfly
 _pkg="${pkgname#python-}"
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc='Simple framework for building RESTful API libraries'
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphin
 checkdepends=('python-pytest' 'python-responses')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ff5936a964c78b1a7f74e58b765d321319790ed9410dde3a1f42bf9a7a4f9ba0')
+sha256sums=('b3a5a225a7d829180386276b649ec9fef44a98c1b32db24287273e0a69e65022')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -29,9 +29,9 @@ check() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 "docs/_build/man/$_pkg.1" -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dvm644 "docs/_build/man/$_pkg.1" -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
