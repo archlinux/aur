@@ -3,8 +3,8 @@
 _pkgbase=libcamera
 pkgbase=libcamera-minimal-git
 pkgname=(libcamera-minimal-git)
-pkgver=0.0.1.r29.gc8e6b114
-pkgrel=1
+pkgver=0.0.2.r44.gac42f927
+pkgrel=2
 pkgdesc="An open source camera stack and framework for Linux, Android, and ChromeOS"
 url="https://libcamera.org"
 license=(LGPL2.1)
@@ -58,7 +58,7 @@ package_libcamera-minimal-git() {
     libyaml
     libudev.so
   )
-  provides=(libcamera)
+  provides=(libcamera libcamera.so libcamera-base.so)
   conflicts=(libcamera)
 
   meson install -C builddir --destdir "$pkgdir"
