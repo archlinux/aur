@@ -1,0 +1,11 @@
+--- BambuStudio/src/BambuStudio.cpp.orig	2022-10-13 22:23:34.023333302 -0400
++++ BambuStudio/src/BambuStudio.cpp	2022-10-13 22:24:15.283333294 -0400
+@@ -170,7 +170,7 @@
+ 
+     if (start_gui) {
+         BOOST_LOG_TRIVIAL(info) << "no action, start gui directly" << std::endl;
+-        ::Label::initSysFont();
++//        ::Label::initSysFont();
+ #ifdef SLIC3R_GUI
+     /*#if !defined(_WIN32) && !defined(__APPLE__)
+         // likely some linux / unix system
