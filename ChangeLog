@@ -533,3 +533,15 @@ Improvements:
 - The tray icon on macOS and Linux has been restyled to better fit the system design and now displays the current date.
 -We added guidance when connecting a calendar account to help you choose between "Office 365" and "Outlook / Exchange."
 - General UI improvements.
+
+=== Morgen 2.6.2
+New Features:
+- Availability Snippet + Time zones: Sharing your availability across time zones via Mail, Slack or Teams is now easier: Simply select your friends' or colleagues' time zone and Morgen will do the conversion for you. Then copy/paste the timeslot into your message.
+
+Fixes:
+- We fixed a bug causing the app to crash while reconnecting some Exchange or Outlook calendar accounts.
+- We fixed the visual glitch occurring while dragging all-day events across days.
+
+Improvements:
+- The Morgen top toolbar is more responsive to the available space and the window size.
+- When you restart Morgen, the task sidebar will be now restored to the tab you used last.
