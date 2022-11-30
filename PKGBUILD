@@ -2,11 +2,11 @@
 
 _pkgname=xfconf
 pkgname=${_pkgname}-devel
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://www.xfce.org/"
+url="https://docs.xfce.org/xfce/xfconf/start"
 license=('GPL2')
 groups=('xfce4-devel')
 depends=('libxfce4util' 'dbus')
@@ -14,11 +14,11 @@ makedepends=('intltool' 'gtk-doc' 'chrpath' 'vala' 'gobject-introspection' 'pyth
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
-source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('8f30b249b46d96a9fad3abc7d0b0318ec28c1e8362ce3b280cefcf37ee5135f2')
+source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=('e4eefa03cdd3672f928e80bf86f68ba9e9ea3e1ee8208f8d964610c416ee8db0')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -32,8 +32,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
+  cd "${_pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 
   # fix insecure rpath, https://bugs.archlinux.org/task/19980
