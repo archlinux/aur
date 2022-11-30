@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTN
-_pkgver=2.22.0
+_pkgver=2.22.1
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.22.1
 pkgrel=1
 pkgdesc='RTN: Reconstruction of Transcriptional regulatory Networks and analysis of regulons'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a5d914904d6024d8411cb577b5fc9b60528d71e8308dfb4726811b19fe1eb547')
+sha256sums=('82c8495786bbbcd0d95fb28354beb59e3b412b308ba4d52d5205af8a8333493d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
