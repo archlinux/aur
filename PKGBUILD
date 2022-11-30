@@ -4,30 +4,32 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-common-git
-pkgname=(pipewire-common-git
-         pipewire-common-docs-git
-         pipewire-common-alsa-git
-         pipewire-common-jack-git
-         pipewire-common-pulse-git
-         pipewire-common-v4l2-git
-         pipewire-common-x11-bell-git
-         pipewire-common-zeroconf-git
-         gst-plugin-pipewire-common-git
-         )
-pkgver=0.3.60.r44.g0f79014e
+pkgname=(
+  pipewire-common-git
+  pipewire-common-docs-git
+  pipewire-common-alsa-git
+  pipewire-common-jack-git
+  pipewire-common-pulse-git
+  pipewire-common-v4l2-git
+  pipewire-common-x11-bell-git
+  pipewire-common-zeroconf-git
+  gst-plugin-pipewire-common-git
+)
+pkgver=0.3.61.r5.gc933c5ed
 pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen python-docutils graphviz ncurses
-             readline systemd libsndfile alsa-lib dbus rtkit libpulse
-             glib2 webrtc-audio-processing libusb bluez-libs
-             sbc libldac libfreeaptx libfdk-aac opus
-             lilv libx11 libxfixes libcanberra
-             avahi openssl
-             gst-plugins-base-libs
-             )
+makedepends=(
+  git meson doxygen python-docutils graphviz ncurses
+  readline systemd libsndfile alsa-lib dbus rtkit libpulse
+  glib2 webrtc-audio-processing libusb bluez-libs
+  sbc libldac libfreeaptx libfdk-aac opus
+  lilv libx11 libxfixes libcanberra libcamera
+  avahi openssl
+  gst-plugins-base-libs
+)
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
 
@@ -52,13 +54,12 @@ build() {
     -D jack-devel=true
     -D libjack-path=/usr/lib
     -D sdl2=disabled
-    -D session-managers=[]
+    -D session-managers='[]'
     -D test=enabled
     -D jack=disabled
     -D vulkan=disabled
     -D ffmpeg=disabled
     -D roc=disabled
-    -D libcamera=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
@@ -85,25 +86,34 @@ _short_pkgver=${pkgver%%.r*}
 
 package_pipewire-common-git() {
   license+=(LGPL)
-  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
-           libsndfile.so libudev.so libasound.so libsystemd.so
-           libwebrtc_audio_processing.so libusb-1.0.so
-           libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
-           libfreeaptx.so libfdk-aac.so libopus.so
-           liblilv-0.so)
-  optdepends=('pipewire-session-manager: Session manager'
-              'pipewire-common-docs-git: Documentation'
-              'pipewire-common-alsa-git: ALSA configuration'
-              'pipewire-common-jack-git: JACK support'
-              'pipewire-common-pulse-git: PulseAudio replacement'
-              'pipewire-common-v4l2-git: V4L2 interceptor'
-              'pipewire-common-x11-bell-git: X11 bell'
-              'pipewire-common-zeroconf-git: Zeroconf support'
-              'gst-plugin-pipewire-common-git: GStreamer support'
-              'ofono: ofono Bluetooth HFP support'
-              'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
-  provides=("pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles)
+  depends=(
+    rtkit libdbus-1.so libncursesw.so libreadline.so
+    libsndfile.so libudev.so libasound.so libsystemd.so
+    libwebrtc_audio_processing.so libusb-1.0.so
+    libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
+    libfreeaptx.so libfdk-aac.so libopus.so
+    liblilv-0.so
+    libcamera-base.so libcamera.so
+  )
+  optdepends=(
+    'pipewire-session-manager: Session manager'
+    'pipewire-common-docs-git: Documentation'
+    'pipewire-common-alsa-git: ALSA configuration'
+    'pipewire-common-jack-git: JACK support'
+    'pipewire-common-pulse-git: PulseAudio replacement'
+    'pipewire-common-v4l2-git: V4L2 interceptor'
+    'pipewire-common-x11-bell-git: X11 bell'
+    'pipewire-common-zeroconf-git: Zeroconf support'
+    'gst-plugin-pipewire-common-git: GStreamer support'
+    'ofono: ofono Bluetooth HFP support'
+    'hsphfpd: hsphfpd Bluetooth HSP/HFP support'
+  )
+  provides=(
+    "pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so
+  )
+  conflicts=(
+    pipewire alsa-card-profiles
+  )
   install=pipewire.install
 
   meson install -C build --destdir "$pkgdir"
