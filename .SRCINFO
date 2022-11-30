@@ -5,6 +5,7 @@ pkgbase = meikade
 	url = https://github.com/Aseman-Land/Meikade
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = qt5-base
 	depends = qt5-location
 	depends = qt5-multimedia
@@ -18,4 +19,3 @@ pkgbase = meikade
 	sha256sums = ffcf1cb0edd57d1efa9ecb6029744a4c0182eccdefa2a37b17e7b81df5f3e93c
 
 pkgname = meikade
-

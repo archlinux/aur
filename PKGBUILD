@@ -32,7 +32,7 @@ build() {
 package() {
 	install -D -m644 "${srcdir}/meikade.desktop" "$pkgdir/usr/share/applications/meikade.desktop"
 	install -D -m644 "${srcdir}/AppIcon40x40%402x.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/Meikade.png"
-	install -D -m755 "${srcdir}/Meikade-Linux-${pkgver}" "$pkgdir/usr/lib/meikade/Meikade"
+	install -D -m755 "${srcdir}/Meikade-${pkgver}-Linux-x86_64" "$pkgdir/usr/lib/meikade/Meikade"
 	cd "${srcdir}/QtAseman/build"
 	make INSTALL_ROOT="$pkgdir" install
 }
