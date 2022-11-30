@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-dynamic-calendar-and-clocks-icons-git
 pkgver=r8.388f2d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME shell extension that let Calendar and Clocks icons show current date and time."
 arch=('any')
 url="https://github.com/fcusr/dynamic-calendar-and-clocks-icons"
@@ -35,8 +35,8 @@ package() {
 
   # It's nice to have a well-formed metadata.json but we need to work around some hickups that may occur
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
-    local schema=org.gnome.shell.extensions.dynamic-calendar-and-clocks-icons.gschema.xml
+  #local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
+  local schema=org.gnome.shell.extensions.dynamic-calendar-and-clocks-icons.gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -dm755 "${destdir}"
