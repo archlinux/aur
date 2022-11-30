@@ -5,7 +5,7 @@
 pkgname=pyside6-tools
 _qtver=6.4.1
 pkgver=${_qtver/-/}
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -26,7 +26,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  rm "$pkgdir"/usr/bin/{designer,assistant,linguist,qmllint,qmltyperegistrar,qmlformat, qmlimportscanner}
+  rm "$pkgdir"/usr/bin/{designer,assistant,linguist,qmllint,qmltyperegistrar,qmlformat,qmlimportscanner}
   mv "$pkgdir"/usr/bin/rcc "$pkgdir"/usr/bin/pyside6-rcc
   mv "$pkgdir"/usr/bin/uic "$pkgdir"/usr/bin/pyside6-uic
   mv "$pkgdir"/usr/bin/lupdate "$pkgdir"/usr/bin/pyside6-lupdate
