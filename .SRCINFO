@@ -1,34 +1,38 @@
 pkgbase = python-einsteinpy-git
 	pkgdesc = Python package for General Relativity
-	pkgver = 0.3.1.r29.g6285c79
+	pkgver = 0.3.1.r68.ge7f648b
 	pkgrel = 1
 	url = https://einsteinpy.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = python-pytest-doctestplus
-	checkdepends = python-matplotlib
-	checkdepends = python-sympy
-	checkdepends = python-plotly
-	checkdepends = python-astropy
-	checkdepends = python-numba
-	checkdepends = python-einsteinpy_geodesics
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python-scipy
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-numpy
 	makedepends = python-nbsphinx
+	makedepends = python-astropy
+	makedepends = python-matplotlib
+	makedepends = python-numba
+	makedepends = python-plotly
+	makedepends = python-scipy
+	makedepends = python-sympy
 	makedepends = pandoc
+	makedepends = python-ipywidgets
 	makedepends = graphviz
 	source = git+https://github.com/einsteinpy/einsteinpy
 	md5sums = SKIP
 
 pkgname = python-einsteinpy-git
-	depends = python>=3.6
-	depends = python-astropy
-	depends = python-matplotlib
-	depends = python-plotly
-	depends = python-sympy
-	depends = python-numba
+	depends = python>=3.8
+	depends = python-astropy>=5.1.1
+	depends = python-matplotlib>=3.6.2
+	depends = python-plotly>=5.11.0
+	depends = python-scipy>=1.9.3
+	depends = python-sympy>=1.11.1
+	depends = python-numba>=0.56.3
 	optdepends = python-einsteinpy-doc: Documentation for EinsteinPy
 	provides = python-einsteinpy
 	conflicts = python-einsteinpy
@@ -37,4 +41,3 @@ pkgname = python-einsteinpy-doc-git
 	pkgdesc = Documentation for EinsteinPy
 	provides = python-einsteinpy-doc
 	conflicts = python-einsteinpy-doc
-
