@@ -1,5 +1,6 @@
 [Unit]
 Description=Hysteria Server Service
+Documentation=https://hysteria.network/
 After=network.target
 
 [Service]
