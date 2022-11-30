@@ -1,5 +1,5 @@
 pkgbase = ttf-firge-tmp
-	pkgdesc = A Japanese monospace font for programming
+	pkgdesc = Firge, a programming font that is a combination of Fira Mono and Genshin Gothic.
 	pkgver = 0.2.0
 	pkgrel = 4
 	url = https://github.com/yuru7/Firge
