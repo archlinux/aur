@@ -4,7 +4,7 @@ pkgname='eruption'
 _pkgname='eruption'
 pkgdesc='Realtime RGB LED Driver for Linux'
 pkgver='0.3.0'
-pkgrel='4'
+pkgrel='5'
 arch=('i686' 'x86_64')
 url='https://eruption-project.org/'
 license=('GPL3+')
@@ -15,17 +15,18 @@ conflicts=('eruption-git' 'eruption-roccat-vulcan-git')
 replaces=('eruption-roccat-vulcan')
 backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/fx-proxy.conf etc/eruption/audio-proxy.conf usr/share/eruption/scripts/lib/keymaps/default.keymap)
 install='eruption.install'
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/heads/releases/v0.3.tar.gz")
-sha256sums=('aa6b4ae916c7550a3d71fb6f32faa622b3224aa1481f43e1a341fbe1263b64e0')
+commit=e5e2f4ca83f535f8264c739735472a584b6f6263
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/${commit}.tar.gz")
+sha256sums=('983e9d48848d04dc764954b78b79680205c62cc45020924cd5243056d41317eb')
 
 build() {
-    cd "eruption-releases-v0.3"
+    cd "$_pkgname-${commit}"
 
     CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
-    cd "eruption-releases-v0.3"
+    cd "$_pkgname-${commit}"
 
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc/eruption"
