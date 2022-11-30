@@ -1,6 +1,6 @@
 pkgbase = rssnix-bin
 	pkgdesc = Unix-style filesystem-based RSS/Atom/JSON Feed fetcher/reader
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jafarlihi/rssnix
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = rssnix-bin
 	provides = rssnix
 	conflicts = rssnix-git
 	conflicts = rssnix
-	source_x86_64 = rssnix-x64_0.2.2.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.2/rssnix_0.2.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 28088d02d94a9f0ec626fc04364ecfc90c29adad941e9575b1bd74d72480e1f6
-	source_i686 = rssnix_386_0.2.2.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.2/rssnix_0.2.2_linux_386.tar.gz
-	sha256sums_i686 = 91af2b5572f9e525d288912538957b6ce0a7b7a09207c8ac2e1460126dfacd52
-	source_aarch64 = rssnix_arm64_0.2.2.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.2.2/rssnix_0.2.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = f2232028bc7e8eac2af9a92449a43747b23e8960f61947557ef6960e9b967ade
+	source_x86_64 = rssnix-x64_0.3.0.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.3.0/rssnix_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 560b76182fd5569f4638020d4e7394c829f2aeb3e0e199d56eca9ea611edb7a7
+	source_i686 = rssnix_386_0.3.0.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.3.0/rssnix_0.3.0_linux_386.tar.gz
+	sha256sums_i686 = 1b4fec716b21dca254bbd7537c85c73be8c380b861c2a52bc9979ee1bfe707b7
+	source_aarch64 = rssnix_arm64_0.3.0.tar.gz::https://github.com/jafarlihi/rssnix/releases/download/0.3.0/rssnix_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 52bf09e09fb0c09607ed22eb521274e2380b8113cb614cb607ecabe22365d713
 
 pkgname = rssnix-bin
