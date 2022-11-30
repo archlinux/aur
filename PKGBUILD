@@ -2,12 +2,12 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 _base=allure
 pkgname=python-${_base}-commons
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=(any)
 url="https://github.com/${_base}-framework/${_base}-python"
-depends=(python-pluggy python-six python-attrs)
+depends=(python-pluggy python-attrs)
 makedepends=(python-setuptools-scm git)
 source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
