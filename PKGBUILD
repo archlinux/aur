@@ -2,7 +2,7 @@
 
 _pkgname=lbry-viewer
 pkgname=lbry-viewer-git
-pkgver=0.0.7.r0.gfd6e454
+pkgver=0.0.8.r0.g52bcf31
 pkgrel=1
 pkgdesc="A lightweight LBRY/Odysee client for Linux (CLI/GTK) (fork of pipe-viewer)"
 arch=('any')
@@ -16,13 +16,15 @@ conflicts=()
 depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-gtk3' 'perl-libwww' 'perl-file-sharedir' 'perl-unicode-linebreak' 'perl-html-tree' 'webp-pixbuf-loader' 'yt-dlp')
 
 optdepends=(
-    #'ffmpeg: conversions and MKV merging'
+    'ffmpeg: for video post-processing'
     'gnome-icon-theme: icons in menus'
     'perl-json-xs: faster JSON parsing'
     'perl-lwp-useragent-cached: local cache support'
     'perl-term-readline-gnu: better STDIN support'
+    'perl-parallel-forkmanager: for the *_parallel config-options'
     'mpv: play videos with MPV (recommended)'
     'vlc: play videos with VLC'
+    #'yt-dlp: fallback method for extracting video info'
 )
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
