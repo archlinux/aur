@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.0.r177.g77e2b8798
+pkgver=0.9.0.r249.gc99916bef
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C Language."
 arch=('x86_64')
