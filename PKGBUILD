@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Sync contacts, tasks and calendars to thunderbird using Exchange ActiveSync (EAS) and CalDAV/CardDAV"
 arch=('any')
 url="https://github.com/jobisoft/TbSync"
-license=('MPL-2.0')
+license=('MPL2')
 groups=('office')
 depends=('thunderbird>=102' 'thunderbird<103')
 source=("${_name}-${pkgver}.xpi::https://github.com/jobisoft/${_name}/releases/download/v${pkgver}/${_name}-beta.xpi")

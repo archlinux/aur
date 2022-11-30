@@ -5,7 +5,7 @@ pkgbase = thunderbird-tbsync
 	url = https://github.com/jobisoft/TbSync
 	arch = any
 	groups = office
-	license = MPL-2.0
+	license = MPL2
 	depends = thunderbird>=102
 	depends = thunderbird<103
 	noextract = TbSync-4.3.xpi
