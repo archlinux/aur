@@ -1,7 +1,7 @@
 pkgbase = komikku
 	pkgdesc = Online/Offline Manga reader based on GNOME | PinePhone/Librem 5 Support
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/valos/Komikku
 	arch = any
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = komikku
 	depends = python-cffi
 	depends = python-cloudscraper
 	depends = python-dateparser
+	depends = python-emoji
 	depends = python-gobject
 	depends = python-keyring
 	depends = python-lxml
