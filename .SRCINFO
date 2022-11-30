@@ -1,15 +1,19 @@
-pkgbase = nordtray
+pkgbase = nordtray-bin
 	pkgdesc = Nordvpn tray icon
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zoli/nordtray/
 	arch = x86_64
-	depends = go
-	depends = nordvpn-bin
+	license = custom: public domain
+	depends = at-spi2-core
+	depends = libappindicator-gtk3
+	depends = nordvpn
+	optdepends = nordtray-executable-symlink-latest: To make 'nordtray' executable available in '/usr/bin'.
+	provides = nordtray=0.1.1
+	conflicts = nordtray
 	source = https://github.com/zoli/nordtray/releases/download/0.1.1/nordtray
 	source = https://github.com/zoli/nordtray/archive/0.1.1.tar.gz
 	sha256sums = 68f4c532215df43657fb0226bc064fe5e6e6d04f9c701d44df2fa71afbe0cf96
 	sha256sums = SKIP
 
-pkgname = nordtray
-
+pkgname = nordtray-bin
