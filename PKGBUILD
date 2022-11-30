@@ -3,10 +3,10 @@
 # slightly modified version of https://aur.archlinux.org/packages/brother-mfc-j5320dw/
 
 pkgname="brother-mfc-j5335dw"
-pkgver="1.0.1"
+pkgver="1.0.1_0"
 # required because of unconventional package numbering for brother
 _brother_pkgver="1.0.1-0"
-pkgrel=4
+pkgrel=5
 pkgdesc="LPR and CUPS driver for the Brother MFC-J5335DW"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadtop.aspx?c=fr&lang=fr&prod=mfcj5335dw_eu"
