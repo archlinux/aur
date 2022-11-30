@@ -5,7 +5,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -49,7 +49,7 @@ sha256sums=('a9947e0cf84039f2718aef133bb625a9945f42c2ddbb879432125c0ee6c4a433'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/${pkgname//-/_}-$pkgver"
 
 	sed -i 's/cleo\s/cleo_v0 /' \
 		trakt_scrobbler/console.py \
@@ -57,14 +57,14 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/${pkgname//-/_}-$pkgver"
     python -m build --no-isolation --wheel
     go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
 }
 
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/${pkgname//-/_}-$pkgver"
     _py=$(python --version)
     _py=${_py%%.*}
 
