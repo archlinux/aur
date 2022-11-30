@@ -21,6 +21,7 @@ pkgbase = tenacity-wxgtk3-git
 	makedepends = chrpath
 	makedepends = python
 	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
 	depends = libid3tag
 	depends = lilv
 	depends = lv2

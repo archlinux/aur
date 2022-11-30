@@ -14,7 +14,7 @@ arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(wxwidgets-gtk3 libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+depends=(wxwidgets-gtk3 wxwidgets-common libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
          soundtouch portaudio portmidi lame jack libsbsms)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg4.4 nasm chrpath python)
@@ -49,6 +49,8 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxWidgets_CONFIG_EXECUTABLE=wx-config \
+    -DwxWidgets_LIBRARIES=/usr/lib \
+    -DwxWidgets_INCLUDE_DIRS=/usr/include/wx-3.2 \
     -Wno-dev \
     ..
   cmake --build .
