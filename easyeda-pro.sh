@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron19 /usr/lib/easyeda-pro/resources/app/ "$@"
+exec electron /usr/lib/easyeda-pro/resources/app/ "$@"
