@@ -1,26 +1,25 @@
-# Maintainer: syne <madlikene at aim dot com>
+# Maintainer: Guoyi Zhang <guoyi zhang at malacology dot net>
+# Contributor: syne <madlikene at aim dot com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Mick Elliot <micke at sfu dot ca>
+
 pkgname=mesquite
-pkgver=3.6
-#_pkgver=3.6-Linux
-#buildver=build-917
+pkgver=3.70_build_940
 pkgrel=2
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
 url="http://mesquiteproject.org"
-license=('(L)GPL')
-depends=('java-runtime')
-source=(https://github.com/MesquiteProject/MesquiteCore/releases/download/v$pkgver/Mesquite_Folder$pkgver-Linux.tgz
+license=('LGPL')
+depends=('java-runtime=8')
+source=($pkgname-${pkgver: 0: 4}::https://github.com/MesquiteProject/MesquiteCore/releases/download/v${pkgver//_/-}/Mesquite.${pkgver: 0: 4}-Linux.tgz
         $pkgname.png
         $pkgname.desktop
 	$pkgname.sh
         )
-md5sums=('671cf1b579a9fef2a8cf4771e1accd85'
+md5sums=('7243fc05bb877cf6997296d436903936'
          '8b62ba93f95aab14a8643bf5b939f465'
          '279160bcf1544a78e0b0372279bfa68d'
-	 'f6ff62edbf95e40d21c7bceadb35ecfe'
-         )
+         'f6ff62edbf95e40d21c7bceadb35ecfe')
 
 package() {
   cd $srcdir/Mesquite_Folder
