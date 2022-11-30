@@ -75,10 +75,6 @@ source=(
   # See: https://github.com/python/mypy/issues/13627
   'ceph-17.2.4-tox-mypy-false-postive.patch'
 
-  # Cephadm tests rely on some mock fs abstraction which dies in the build chroot,
-  # so disable them
-  'ceph-17.2.4-tox-cephadm-rm.patch'
-
   # Split up a very IO heavy test suite, as otherwise test is liable to timeout
   # NOTE: this is a very large patchset and will guarrented break if/when the upstream
   # touches anything in src/test/objectstore
@@ -121,7 +117,6 @@ sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0
             '66770a80ba4e05ea72d4809cb5819cce7499ea7523b85b1a57370df68de1d7f6f94b1c10d0f9f9a3c8e6a86d0419434c70778c568cd06a0dd2e6126631a3355c'
             '31e578b240ceaaf1216b56cdce654661eed6529ef642ecad164a02669e850100a49a85dc70f3d744671e2c5dad10aee64be7d091fa33007cb8fc6788a4336799'
             '85c0a00419c292204be03e8962b0d4bc67c5dc21eb19e74897ec88168f19ac93fc2e38c405b212421c419a74923ec8c5c10844e23269225c52937fd2ad40d817'
-            '6b53e3a2b1941f8dfdb4b83cafc4c500e818dd3a0736d7061f0ebcdfb514094b217e4688384c5b428288181ef6fff0ca73895c65a046e2d6ae2b834375164216'
             '81f540c8312972887a7cb43b8a4e29bfc6f24d5774787a4a8edfe65cca7d3b08faa08ecd09066d7ea67111769a5aec7385fe9a969546626f58874dd8aff5b664'
             '781a01e622a70d56bf1948bdc0b427ffa95a86cec7dd9d26c6007a9ec024a942a8ca55f2acc3d37344862f1d6bf11cae998d8071754cd841a66bfba4ec9c58bf'
             '2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36'
