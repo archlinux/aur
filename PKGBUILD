@@ -2,7 +2,7 @@
 
 _pkgname=garcon
 pkgname=${_pkgname}-devel
-pkgver=4.17.2
+pkgver=4.17.3
 pkgrel=1
 pkgdesc="Implementation of the freedesktop.org menu specification"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('libxfce4menu')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/garcon/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('83338cf9e6feed663c6ec5e723f75e45909748f81225812caaa66d4c1f8ad139')
+sha256sums=('8748d3b8a35a3211f6745468d4e5c4a78e807551ced35df4671c302d5e42721e')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
