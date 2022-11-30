@@ -2,7 +2,7 @@
 
 _plugin=gitlab
 pkgname=mattermost-plugin-$_plugin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='a GitLab plugin for Mattermost'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(mattermost)
 options=(!strip)
 _archive="com.github.manland.$pkgname"
 source=("$_url/releases/download/v$pkgver/$_archive-$pkgver.tar.gz")
-sha256sums=('cf0ebf29303d4813f400f297709e930c26406c7c340fe3bbafb4f659f1c32c00')
+sha256sums=('ef174c01836637f8c5322c75e298698bf1b4f4b1f710ce5fb9aa9775446d8a65')
 
 # Note the intention of this package is to bulid from source, but I haven't
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
