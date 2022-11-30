@@ -24,6 +24,7 @@ pkgbase = pipe-viewer-git
 	optdepends = vlc: play videos with VLC
 	optdepends = wget: download videos with wget
 	optdepends = youtube-dl: play videos with encrypted signatures
+	optdepends = perl-parallel-forkmanager: for option get_subscriptions_in_parallel
 	source = git+https://github.com/trizen/pipe-viewer.git
 	sha512sums = SKIP
 

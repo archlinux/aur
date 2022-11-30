@@ -25,6 +25,7 @@ optdepends=(
     'vlc: play videos with VLC'
     'wget: download videos with wget'
     'youtube-dl: play videos with encrypted signatures'
+    'perl-parallel-forkmanager: for option get_subscriptions_in_parallel'
 )
 
 source=("git+https://github.com/trizen/${_pkgname}.git")
