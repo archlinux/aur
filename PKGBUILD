@@ -1,10 +1,11 @@
 # Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 pkgname=wgsl-analyzer-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for the WGSL shading language'
 url='https://github.com/wgsl-analyzer/wgsl-analyzer'
 source_x86_64=("https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/v$pkgver/wgsl_analyzer-linux-x64")
+noextract=('wgsl_analyzer-linux-x64')
 arch=('x86_64')
 license=('MIT' 'APACHE')
 depends=('gcc-libs')
