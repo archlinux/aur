@@ -5,7 +5,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -42,10 +42,10 @@ makedepends=(
     gzip
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz"
     "trakts-man.md"
 )
-sha256sums=('012427205e400bc24c38a9dc24ca600c779574b8837492ccdb229aaca1ce7bc3'
+sha256sums=('a9947e0cf84039f2718aef133bb625a9945f42c2ddbb879432125c0ee6c4a433'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 
 prepare() {
