@@ -1,0 +1,9 @@
+#!/usr/bin/ash
+
+run_latehook() {
+    [ "$init" == "/sbin/init" ] && \
+    [ -e /new_root/usr/bin/init_fakeuptime.sh ] && \
+    export init=/usr/bin/init_fakeuptime.sh
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
