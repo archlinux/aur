@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.28740
-pkgrel=5
+pkgrel=6
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 #INCLUDE_HD_MOD=true

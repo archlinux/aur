@@ -1,7 +1,7 @@
 pkgbase = gog-heroes-of-might-and-magic-3-complete-edition
 	pkgdesc = Heroes of Might & Magic III and its expansions: Armageddon's Blade and The Shadow of Death (with optional HD patch)
 	pkgver = 4.0.28740
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.gog.com/game/heroes_of_might_and_magic_3_complete_edition
 	arch = i686
 	arch = x86_64
@@ -32,4 +32,3 @@ pkgbase = gog-heroes-of-might-and-magic-3-complete-edition
 	sha256sums = 493ef7009c2f4d103ed5b283fcc5dd900ff13cfb1d494052227bf7760fe0f7c7
 
 pkgname = gog-heroes-of-might-and-magic-3-complete-edition
-
