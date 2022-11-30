@@ -1,0 +1,21 @@
+From 21881bc7a7a669029fc1e4ea2353cc19d6ad0503 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Wed, 30 Nov 2022 19:02:49 +0100
+Subject: [PATCH] update metadata.json: GNOME 43 support
+
+---
+ metadata.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/metadata.json b/metadata.json
+index b39657a..ad4f2be 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -3,6 +3,6 @@
+     "name": "Jiggle",
+     "description": "Jiggle is a Gnome Shell extension that highlights the cursor position when the mouse is moved rapidly.",
+     "url": "https://github.com/jeffchannell/jiggle",
+-    "shell-version": [ "40", "41", "42" ],
++    "shell-version": [ "40", "41", "42", "43" ],
+     "version": "9"
+ }
