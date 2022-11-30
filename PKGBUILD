@@ -4,42 +4,41 @@
 
 _pkgbase=pipewire
 pkgbase=pipewire-full-git
-pkgname=(pipewire-full-git
-         pipewire-full-docs-git
-         pipewire-full-alsa-git
-         pipewire-full-jack-git
-         pipewire-full-pulse-git
-         pipewire-full-v4l2-git
-         pipewire-full-x11-bell-git
-         pipewire-full-zeroconf-git
-         gst-plugin-pipewire-full-git
-         pipewire-full-jack-client-git
-         pipewire-full-vulkan-git
-         pipewire-full-ffmpeg-git
-         pipewire-full-roc-git
-         pipewire-full-libcamera-git
-         )
-pkgver=0.3.58.r39.g8de03f5c
+pkgname=(
+  pipewire-full-git
+  pipewire-full-docs-git
+  pipewire-full-alsa-git
+  pipewire-full-jack-git
+  pipewire-full-pulse-git
+  pipewire-full-v4l2-git
+  pipewire-full-x11-bell-git
+  pipewire-full-zeroconf-git
+  gst-plugin-pipewire-full-git
+  pipewire-full-jack-client-git
+  pipewire-full-vulkan-git
+  pipewire-full-ffmpeg-git
+  pipewire-full-roc-git
+)
+pkgver=0.3.61.r5.gc933c5ed
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen python-docutils graphviz ncurses
-             readline systemd libsndfile alsa-lib dbus rtkit libpulse
-             glib2 webrtc-audio-processing libusb bluez-libs
-             sbc libldac libfreeaptx libfdk-aac opus
-             lilv libx11 libxfixes libcanberra
-             liblc3
-             avahi openssl
-             gst-plugins-base-libs
-             jack2
-             vulkan-headers vulkan-icd-loader
-             ffmpeg
-             roc-toolkit
-             libcamera-minimal-git
-             libdrm
-             )
+makedepends=(
+  git meson doxygen python-docutils graphviz ncurses
+  readline systemd libsndfile alsa-lib dbus rtkit libpulse
+  glib2 webrtc-audio-processing libusb bluez-libs
+  sbc libldac libfreeaptx libfdk-aac opus
+  lilv libx11 libxfixes libcanberra libcamera
+  liblc3
+  avahi openssl
+  gst-plugins-base-libs
+  jack2
+  vulkan-headers vulkan-icd-loader
+  ffmpeg
+  roc-toolkit
+)
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
 
@@ -64,7 +63,7 @@ build() {
     -D jack-devel=true
     -D libjack-path=/usr/lib
     -D sdl2=disabled
-    -D session-managers=[]
+    -D session-managers='[]'
     -D test=enabled
     -D bluez5-codec-lc3=enabled
     -D vulkan=enabled
@@ -95,28 +94,39 @@ _short_pkgver=${pkgver%%.r*}
 
 package_pipewire-full-git() {
   license+=(LGPL)
-  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
-           libsndfile.so libudev.so libasound.so libsystemd.so
-           libwebrtc_audio_processing.so libusb-1.0.so
-           libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
-           libfreeaptx.so libfdk-aac.so libopus.so
-           liblc3.so
-           liblilv-0.so)
-  optdepends=('pipewire-session-manager: Session manager'
-              'pipewire-full-docs-git: Documentation'
-              'pipewire-full-alsa-git: ALSA configuration'
-              'pipewire-full-jack-git: JACK support'
-              'pipewire-full-jack-client-git: JACK device/client'
-              'pipewire-full-pulse-git: PulseAudio replacement'
-              'pipewire-full-v4l2-git: V4L2 interceptor'
-              'pipewire-full-x11-bell-git: X11 bell'
-              'pipewire-full-zeroconf-git: Zeroconf support'
-              'pipewire-full-roc-git: ROC support'
-              'gst-plugin-pipewire-full-git: GStreamer support'
-              'ofono: ofono Bluetooth HFP support'
-              'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
-  provides=("pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so)
-  conflicts=(pipewire alsa-card-profiles)
+  depends=(
+    rtkit libdbus-1.so libncursesw.so libreadline.so
+    libsndfile.so libudev.so libasound.so libsystemd.so
+    libwebrtc_audio_processing.so libusb-1.0.so
+    libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
+    libfreeaptx.so libfdk-aac.so libopus.so
+    liblilv-0.so
+    libcamera-base.so libcamera.so
+    liblc3.so
+  )
+  optdepends=(
+    'pipewire-session-manager: Session manager'
+    'pipewire-full-docs-git: Documentation'
+    'pipewire-full-alsa-git: ALSA configuration'
+    'pipewire-full-jack-git: JACK support'
+    'pipewire-full-jack-client-git: JACK device/client'
+    'pipewire-full-pulse-git: PulseAudio replacement'
+    'pipewire-full-v4l2-git: V4L2 interceptor'
+    'pipewire-full-x11-bell-git: X11 bell'
+    'pipewire-full-zeroconf-git: Zeroconf support'
+    'pipewire-full-roc-git: ROC support'
+    'gst-plugin-pipewire-full-git: GStreamer support'
+    'ofono: ofono Bluetooth HFP support'
+    'hsphfpd: hsphfpd Bluetooth HSP/HFP support'
+  )
+  provides=(
+    "pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so
+    pipewire-full-libcamera-git
+  )
+  conflicts=(
+    pipewire alsa-card-profiles
+    pipewire-full-libcamera-git
+  )
   install=pipewire.install
 
   meson install -C build --destdir "$pkgdir"
@@ -160,8 +170,6 @@ package_pipewire-full-git() {
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 
   _pick roc usr/lib/pipewire-$_ver/libpipewire-module-roc-{sink,source}.so
-
-  _pick libcamera usr/lib/spa-0.2/libcamera
 }
 
 package_pipewire-full-docs-git() {
@@ -313,17 +321,6 @@ package_pipewire-full-roc-git() {
   conflicts=(pipewire-roc)
 
   mv roc/* "${pkgdir}"
-
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
-}
-
-package_pipewire-full-libcamera-git() {
-  pkgdesc+="libcamera SPA plugin"
-  depends=(pipewire-full-git libcamera)
-  provides=(pipewire-libcamera)
-  conflicts=(pipewire-libcamera)
-
-  mv libcamera/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }

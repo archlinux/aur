@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.58.r39.g8de03f5c
+	pkgver = 0.3.61.r5.gc933c5ed
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -31,6 +31,7 @@ pkgbase = pipewire-full-git
 	makedepends = libx11
 	makedepends = libxfixes
 	makedepends = libcanberra
+	makedepends = libcamera
 	makedepends = liblc3
 	makedepends = avahi
 	makedepends = openssl
@@ -40,8 +41,6 @@ pkgbase = pipewire-full-git
 	makedepends = vulkan-icd-loader
 	makedepends = ffmpeg
 	makedepends = roc-toolkit
-	makedepends = libcamera-minimal-git
-	makedepends = libdrm
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
@@ -66,8 +65,10 @@ pkgname = pipewire-full-git
 	depends = libfreeaptx.so
 	depends = libfdk-aac.so
 	depends = libopus.so
-	depends = liblc3.so
 	depends = liblilv-0.so
+	depends = libcamera-base.so
+	depends = libcamera.so
+	depends = liblc3.so
 	optdepends = pipewire-session-manager: Session manager
 	optdepends = pipewire-full-docs-git: Documentation
 	optdepends = pipewire-full-alsa-git: ALSA configuration
@@ -81,11 +82,13 @@ pkgname = pipewire-full-git
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire=0.3.58
+	provides = pipewire=0.3.61
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
+	provides = pipewire-full-libcamera-git
 	conflicts = pipewire
 	conflicts = alsa-card-profiles
+	conflicts = pipewire-full-libcamera-git
 
 pkgname = pipewire-full-docs-git
 	pkgdesc = Low-latency audio/video router and processor - documentation
@@ -203,10 +206,3 @@ pkgname = pipewire-full-roc-git
 	depends = roc-toolkit
 	provides = pipewire-roc
 	conflicts = pipewire-roc
-
-pkgname = pipewire-full-libcamera-git
-	pkgdesc = Low-latency audio/video router and processorlibcamera SPA plugin
-	depends = pipewire-full-git
-	depends = libcamera
-	provides = pipewire-libcamera
-	conflicts = pipewire-libcamera
