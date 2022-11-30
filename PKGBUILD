@@ -27,12 +27,12 @@ sha256sums=('SKIP'
             'd45856d8cc21a3ba5477db7890882877dc4d957aa33cd8d61517e36c61befd6d')
 
 pkgver() {
-  cd tenacity
+  cd $srcdir/tenacity
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd tenacity/images/icons
+  cd $srcdir/tenacity/images/icons
   for i in *; do # fix for png icons not following hicolor category folders
     cd $i
     mkdir -p apps
@@ -40,12 +40,12 @@ prepare() {
     cd ..
   done
   cd ../..
-  patch CMakeLists.txt cmake-wxgtk3.2.patch
+  patch CMakeLists.txt $srcdir/cmake-wxgtk3.2.patch
   mkdir -p build
 }
 
 build() {
-  cd tenacity/build
+  cd $srcdir/tenacity/build
   export WX_CONFIG=/usr/bin/wx-config
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   CC=clang CXX=clang++ cmake \
@@ -62,7 +62,7 @@ build() {
 }
 
 package() {
-  cd tenacity/build
+  cd $srcdir/tenacity/build
   make DESTDIR="${pkgdir}" install
   test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
 
