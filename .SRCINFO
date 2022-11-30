@@ -1,0 +1,15 @@
+pkgbase = ttf-firge-tmp
+	pkgdesc = A Japanese monospace font for programming
+	pkgver = 0.2.0
+	pkgrel = 4
+	url = https://github.com/yuru7/Firge
+	arch = any
+	license = custom:SIL
+	source = https://github.com/yuru7/Firge/releases/download/v0.2.0/Firge_v0.2.0.zip
+	source = https://github.com/yuru7/Firge/releases/download/v0.2.0/FirgeNerd_v0.2.0.zip
+	source = https://github.com/yuru7/Firge/raw/master/LICENSE
+	sha256sums = 18ccd0d5c7689a02af4a7217912c0112db9f24071e8b36a716baef3b446c32e7
+	sha256sums = da3dd6437aeb3b68cf57c868602f1e7135b0eed7a91e4682f28a5efd7716afc9
+	sha256sums = b72891ba4f9947243d786d5d88b655fc48434d35f669bab1fa4d34b575c07601
+
+pkgname = ttf-firge-tmp
