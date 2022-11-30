@@ -2,9 +2,8 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts
-pkgver=22.09.2
+pkgver=22.11
 pkgrel=2
-_plamover=22.09
 pkgdesc="Kirigami-based podcast player"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://invent.kde.org/plasma-mobile/kasts"
@@ -16,8 +15,8 @@ optdepends=('gst-plugins-good: common audio codecs for the gstreamer backend'
             'breeze-icons: provide missing icons'
             'qqc2-desktop-style: improve default style')
 makedepends=('extra-cmake-modules' 'qt5-svg' 'qt5-tools')
-source=("https://download.kde.org/stable/plasma-mobile/${_plamover}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a9b43dce4b91fd5f92f4b3af44b08ae55c7b7c3a496a88f045718219265a2082')
+source=("https://download.kde.org/stable/plasma-mobile/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('2912b4a8864e35a7dadc16b9368988b6163870a0358e020c3b80b31222002711')
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -B build -S "${pkgname}-${pkgver}"
