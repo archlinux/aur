@@ -1,7 +1,7 @@
 # Maintainer: Patrick Desaulniers <patrick dot desaulniers36 at gmail dot com>
 
 pkgname=librearp-git
-pkgver=r198.466a72a
+pkgver=r265.b0f7798
 pkgrel=1
 pkgdesc="A pattern-based arpeggio generator plugin"
 arch=('x86_64')
@@ -27,7 +27,7 @@ prepare() {
 
     git submodule init
     git config submodule.Vendor/juce.url $srcdir/JUCE
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
