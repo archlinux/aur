@@ -4,7 +4,7 @@
 pkgbase=lceda-pro
 pkgname=lceda-pro
 pkgver=1.9.20
-pkgrel=4
+pkgrel=5
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64')
 url="https://pro.lceda.cn/"
@@ -58,7 +58,7 @@ package() {
     install -Dm0755 /dev/stdin ${pkgdir}/usr/bin/${pkgname} << EOF
 #!/bin/sh
 
-exec electron /usr/share/lceda-pro/resources/app/ "$@"
+exec electron /usr/share/lceda-pro/resources/app/ "\$@"
 EOF
     # LICENSE
     install -Dm0644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
