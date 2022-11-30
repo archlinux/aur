@@ -1,6 +1,6 @@
 pkgbase = r-text2vec
 	pkgdesc = Modern Text Mining Framework for R
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=text2vec
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-text2vec
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-udpipe
-	source = https://cran.r-project.org/src/contrib/text2vec_0.6.2.tar.gz
-	sha256sums = 90a948cca10aa2c990129d52b78c77452ea452b72233ceec85009a05034745ab
+	source = https://cran.r-project.org/src/contrib/text2vec_0.6.3.tar.gz
+	sha256sums = c713a947a99be9fd732e7d58680207a922eae30adf5a4e8973ebcd7e56f327c2
 
 pkgname = r-text2vec
