@@ -1,0 +1,15 @@
+pkgbase = nitronx
+	pkgdesc = Extensive, Enhanced linux kernel tweaker written in BASH
+	pkgver = 1.2.0
+	pkgrel = 10
+	url = https://github.com/UsiFX/OpenNitroN
+	arch = any
+	license = GPL3
+	source = nitrond
+	source = nitronapi.sh
+	source = nitrond.1.gz
+	sha256sums = 153ad913a5856d009ec61845a540d096fa170117c57e266f972ae660e529c894
+	sha256sums = 96dd59cc2b913f82c850e9a792add13d65ece08f1b250fa0f52c88687a5ec8bb
+	sha256sums = f417826fed3c1c192468374f476b39b6d8c0ae815314569e4aa8004f4bcaaaa4
+
+pkgname = nitronx

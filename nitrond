@@ -1,0 +1,645 @@
+#!/bin/bash
+# shellcheck disable=SC2034
+# shellcheck disable=SC2059
+# shellcheck disable=SC1091
+# shellcheck disable=SC2015
+# shellcheck disable=SC1087
+# shellcheck disable=SC2181
+# shellcheck disable=SC2261
+#
+# Copyright (C) 2022~2023 UsiFX <xprjkts@gmail.com>
+# Kartik728 <titanupdates728@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License
+#
+# This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+
+### Local Variables
+
+# \e colors
+BLUE='\e[1;34m'
+GREEN='\e[1;32m'
+PURPLE='\e[1;35m'
+CYAN='\e[1;36m'
+RED='\e[1;31m'
+WHITE='\e[1;37m'
+YELLOW='\e[01;33m'
+STOCK='\e[1;0m'
+
+# Disable Shell's Monitor Mode
+set +o monitor
+
+export NITRON_FORCECHECK_UPDATE
+export NITRON_VERSION='1.2.0'
+if grep -q "androidboot" /proc/cmdline; then
+	HEADER_SOURCE="/system/etc"
+	NITRON_RELAX_DIR='/sdcard'
+	NITRON_LOG_DIR='/cache'
+else
+	if command -v "resetprop" >/dev/null; then
+		HEADER_SOURCE="/system/etc"
+		NITRON_RELAX_DIR='/sdcard'
+		NITRON_LOG_DIR='/cache'
+	else
+		HEADER_SOURCE="${PREFIX/\/usr}/usr/include"
+		NITRON_RELAX_DIR='/etc'
+		NITRON_LOG_DIR='/tmp'
+	fi
+fi
+
+PR_PREFIX="nitron_broadcast"
+DAEMON_SOURCE=$(dirname "$0")
+PROMPT_COMMAND='sync'
+LOCKFILE="${NITRON_LOG_DIR}/nitrond-frontend.lock"
+
+printn() {
+	[[ "$1" == "-n" ]] && printf "[${BLUE}*${STOCK}] $2\n"
+
+	[[ "$1" == "-e" ]] && {
+		printf "[${RED}×${STOCK}] $2\n"
+		exit 1
+	}
+
+	[[ "$1" == "-w" ]] && printf "[${YELLOW}!${STOCK}] $2\n"
+
+	[[ "$1" == "-i" ]] && printf "[${CYAN}i${STOCK}] $2\n"
+
+	[[ "$1" == "-l" ]] && echo "[$(date +%I:%M:%S)] nitrond: $PR_PREFIX[0]: $2" >>"$NITRON_LOG_DIR"/nitron.log
+
+	[[ "$1" == "-lf" ]] && echo "[$(date +%I:%M:%S)] nitrond: $PR_PREFIX[1]: $2" >>"$NITRON_LOG_DIR"/nitron.log
+
+	[[ "$1" == "-ll" ]] && echo "[$(date +%I:%M:%S)] nitrond: $2" >>"$NITRON_RELAX_DIR"/nitron.log
+
+}
+
+# Include headers
+if [[ ! -f $HEADER_SOURCE/nitronapi.sh ]]; then
+	echo "missing header, $HEADER_SOURCE/nitronapi.sh"
+	exit 1
+else
+	source "$HEADER_SOURCE"/nitronapi.sh
+fi
+
+# Check locker
+[[ -f $LOCKFILE ]] && printn -e "nitrond_broadcast(): tool is held by a process and it is still running, cannot continue this instance." || echo $$ > $LOCKFILE
+
+trap 'rm -f $LOCKFILE' EXIT TERM INT
+trap 'rm -f $LOCKFILE; trapper; wait' SIGINT SIGTERM SIGHUP INT TERM KILL
+
+writen() {
+        [[ ! -f "$1" ]] && echo "[$(date +%I:%M:%S)] $1: not found, skipping..." >> "$NITRON_LOG_DIR"/nitron.log
+
+        # Make file writable
+        chmod +w "$1" 2>/dev/null
+
+        # Write new value, bail out if it fail
+        (echo $2 >> $1) 2>/dev/null  && echo "[$(date +%I:%M:%S)] $1: changed node[$2]" >> "$NITRON_LOG_DIR"/nitron.log || echo "[$(date +%I:%M:%S)] $1: failed to change node" >> "$NITRON_LOG_DIR"/nitron.log
+
+}
+
+__magicn_help() {
+	echo "
+Usage: magicn [-g|-r|-y|-h]
+
+Options:
+ -g, --green   ~ switch to Battery mode
+ -y, --yellow  ~ switch to Balanced mode
+ -r, --red     ~ switch to Gaming mode
+ -h, --help    ~ prints this menu
+"
+}
+
+# Initialise OS Compatibility check
+oschk
+
+# Initialise Mode set
+modelockn
+
+# Initialise Android Magisk Module status set-er
+apin -as
+
+magicn() {
+	PR_PREFIX="magicn"
+	set_battery_mode() {
+		[[ "$SOURCE" == "api-auto" ]] && setmoden "Automatic green" || setmoden "Battery"
+		(
+			writen "/proc/sys/kernel/perf_cpu_time_max_percent" "0"
+			writen "/proc/sys/kernel/sched_autogroup_enabled" "1"
+			writen "/proc/sys/kernel/sched_child_runs_first" "0"
+			writen "/proc/sys/kernel/sched_tunable_scaling" "0"
+			writen "/proc/sys/kernel/sched_migration_cost_ns" "5000000"
+			writen "/proc/sys/kernel/sched_nr_migrate" "256"
+			writen "/proc/sys/kernel/sched_schedstats" "0"
+			sleep 1.5
+		) & spin "applying scheduler tunables..."
+		writen "/proc/sys/kernel/printk_devkmsg" "off" & spin "disabling printk logging..."
+		(
+			writen "/proc/sys/vm/dirty_background_ratio" "2"
+			writen "/proc/sys/vm/dirty_ratio" "5"
+			writen "/proc/sys/vm/dirty_expire_centisecs" "500"
+			writen "/proc/sys/vm/dirty_writeback_centisecs" "500"
+			writen "/proc/sys/vm/page-cluster" "0"
+			writen "/proc/sys/vm/stat_interval" "10"
+			writen "/proc/sys/vm/swappiness" "100"
+			writen "/proc/sys/vm/vfs_cache_pressure" "100"
+			sleep 1.5
+		) & spin "enhancning kernel's VM management..."
+
+		(
+			writen "/proc/sys/net/ipv4/tcp_ecn" "1"
+			writen "/proc/sys/net/ipv4/tcp_fastopen" "3"
+			writen "/proc/sys/net/ipv4/tcp_syncookies" "0"
+			sleep 1.5
+		) & spin "applying TCP tunables..."
+
+		(
+			writen "/dev/stune/background/schedtune.util.max.effective" "0"
+			writen "/dev/stune/background/schedtune.util.min.effective" "0"
+			writen "/dev/stune/background/schedtune.util.max" "0"
+			writen "/dev/stune/background/schedtune.util.min" "0"
+			writen "/dev/stune/background/schedtune.boost" "0"
+			writen "/dev/stune/background/schedtune.prefer_idle" "1"
+			writen "/dev/stune/foreground/schedtune.util.max.effective" "1"
+			writen "/dev/stune/foreground/schedtune.util.min.effective" "0"
+			writen "/dev/stune/foreground/schedtune.util.max" "1"
+			writen "/dev/stune/foreground/schedtune.util.min" "0"
+			writen "/dev/stune/foreground/schedtune.boost" "0"
+			writen "/dev/stune/foreground/schedtune.prefer_idle" "1"
+			writen "/dev/stune/top-app/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min.effective" "0"
+			writen "/dev/stune/top-app/schedtune.util.max" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min" "0"
+			writen "/dev/stune/top-app/schedtune.boost" "0"
+			writen "/dev/stune/top-app/schedtune.prefer_idle" "1"
+			writen "/dev/stune/schedtune.util.min" "0"
+			writen "/dev/stune/schedtune.util.max" "512"
+			writen "/dev/stune/schedtune.util.max.effective" "512"
+			writen "/dev/stune/schedtune.util.min.effective" "0"
+			writen "/dev/stune/schedtune.boost" "0"
+			writen "/dev/stune/schedtune.prefer_idle" "1"
+			sleep 1.5
+		) & spin "enhancing SchedTune..."
+
+		(
+			writen "/sys/block/mmcblk0/queue/scheduler" "noop"
+			writen "/sys/block/mmcblk1/queue/scheduler" "noop"
+			writen "/sys/block/sda/queue/scheduler" "noop"
+			writen "/sys/block/sdb/queue/scheduler" "noop"
+			writen "/proc/cpufreq/cpufreq_power_mode" "1"
+			writen "/proc/cpufreq/cpufreq_cci_mode" "0"
+			writen "/sys/devices/system/cpu/eas/enable" "1"
+			writen "/sys/devices/system/cpu/perf/enable" "0"
+			writen "/proc/gpufreq/gpufreq_opp_freq" "99000"
+			writen "/proc/ppm/enabled" "0"
+			writen "/proc/ppm/policy_status" "1"
+			writen "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor" "powersave"
+			writen "/sys/devices/system/cpu/cpufreq/policy4/scaling_governor" "powersave"
+			writen "/sys/devices/system/cpu/cpufreq/policy6/scaling_governor" "powersave"
+			writen "/proc/ppm/policy/hard_userlimit_max_cpu_freq" "0 $cpu_max_freq"
+			writen "/proc/ppm/policy/hard_userlimit_max_cpu_freq" "1 $cpu_max_freq"
+			writen "/dev/cpuset/foreground/cpus" "0-5"
+			writen "/dev/cpuset/background/cpus" "0-7"
+			writen "/dev/cpuset/system-background/cpus" "0-7"
+			writen "/dev/cpuset/top-app/cpus" "0-7"
+			writen "/dev/cpuset/restricted/cpus" "0"
+			sleep 1.5
+		) & spin "applying misc changes..."
+	}
+	set_balanced_mode() {
+		[[ "$SOURCE" == "api-auto" ]] && setmoden "Automatic yellow" || setmoden "Balanced"
+		(
+			writen "/proc/sys/kernel/perf_cpu_time_max_percent" "0"
+			writen "/proc/sys/kernel/sched_autogroup_enabled" "1"
+			writen "/proc/sys/kernel/sched_child_runs_first" "1"
+			writen "/proc/sys/kernel/sched_tunable_scaling" "0"
+			writen "/proc/sys/kernel/sched_migration_cost_ns" "5000000"
+			writen "/proc/sys/kernel/sched_nr_migrate" "32"
+			writen "/proc/sys/kernel/sched_schedstats" "0"
+			sleep 1.5
+		) & spin "applying scheduler tunables..."
+
+		writen "/proc/sys/kernel/printk_devkmsg" "off" & spin "disabling printk logging..."
+
+		(
+			writen "/proc/sys/vm/dirty_background_ratio" "10"
+			writen "/proc/sys/vm/dirty_ratio" "30"
+			writen "/proc/sys/vm/dirty_expire_centisecs" "3000"
+			writen "/proc/sys/vm/dirty_writeback_centisecs" "3000"
+			writen "/proc/sys/vm/page-cluster" "0"
+			writen "/proc/sys/vm/stat_interval" "10"
+			writen "/proc/sys/vm/swappiness" "100"
+			writen "/proc/sys/vm/vfs_cache_pressure" "100"
+			sleep 1.5
+		) & spin "enhancning kernel's VM management..."
+
+		(
+			writen "/proc/sys/net/ipv4/tcp_ecn" "1"
+			writen "/proc/sys/net/ipv4/tcp_fastopen" "3"
+			writen "/proc/sys/net/ipv4/tcp_syncookies" "0"
+			sleep 1.5
+		) & spin "applying TCP tunables..."
+
+		(
+			writen "/dev/stune/background/schedtune.util.max.effective" "0"
+			writen "/dev/stune/background/schedtune.util.min.effective" "0"
+			writen "/dev/stune/background/schedtune.util.max" "0"
+			writen "/dev/stune/background/schedtune.util.min" "0"
+			writen "/dev/stune/background/schedtune.boost" "0"
+			writen "/dev/stune/foreground/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/foreground/schedtune.util.min.effective" "1024"
+			writen "/dev/stune/foreground/schedtune.util.max" "1024"
+			writen "/dev/stune/foreground/schedtune.util.min" "0"
+			writen "/dev/stune/foreground/schedtune.boost" "0"
+			writen "/dev/stune/top-app/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min.effective" "0"
+			writen "/dev/stune/top-app/schedtune.util.max" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min" "0"
+			writen "/dev/stune/top-app/schedtune.boost" "0"
+			writen "/dev/stune/schedtune.util.min" "0"
+			writen "/dev/stune/schedtune.util.max" "0"
+			writen "/dev/stune/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/schedtune.util.min.effective" "0"
+			writen "/dev/stune/schedtune.boost" "0"
+			sleep 1.5
+		) & spin "enhancing SchedTune..."
+
+		(
+			writen "/proc/cpufreq/cpufreq_power_mode" "0"
+			writen "/proc/cpufreq/cpufreq_cci_mode" "0"
+			writen "/sys/devices/system/cpu/eas/enable" "2"
+			writen "/sys/devices/system/cpu/perf/enable" "0"
+			writen "/proc/gpufreq/gpufreq_opp_freq" "0"
+			writen "/sys/block/mmcblk0/queue/scheduler" "cfq"
+			writen "/sys/block/mmcblk1/queue/scheduler" "cfq"
+			writen "/sys/block/sda/queue/scheduler" "cfq"
+			writen "/sys/block/sdb/queue/scheduler" "cfq"
+			writen "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor" "schedutil"
+			writen "/sys/devices/system/cpu/cpufreq/policy4/scaling_governor" "schedutil"
+			writen "/sys/devices/system/cpu/cpufreq/policy6/scaling_governor" "schedutil"
+			writen "/proc/ppm/policy/hard_userlimit_max_cpu_freq" "0 $cpu_max_freq"
+			writen "/proc/ppm/policy/hard_userlimit_min_cpu_freq" "1 $cpu_max_freq"
+			writen "/dev/cpuset/foreground/cpus" "0-7"
+			writen "/dev/cpuset/background/cpus" "0-6"
+			writen "/dev/cpuset/system-background/cpus" "0-4"
+			writen "/dev/cpuset/top-app/cpus" "0-7"
+			writen "/dev/cpuset/restricted/cpus" "0"
+			sleep 1.5
+		) & spin "applying misc changes..."
+	}
+	set_gaming_mode() {
+		[[ "$SOURCE" == "api-auto" ]] && setmoden "Automatic red" || setmoden "Gaming"
+		(
+			writen "/proc/sys/kernel/perf_cpu_time_max_percent" "0"
+			writen "/proc/sys/kernel/sched_autogroup_enabled" "0"
+			writen "/proc/sys/kernel/sched_child_runs_first" "0"
+			writen "/proc/sys/kernel/sched_tunable_scaling" "0"
+			writen "/proc/sys/kernel/sched_migration_cost_ns" "5000000"
+			writen "/proc/sys/kernel/sched_nr_migrate" "128"
+			writen "/proc/sys/kernel/sched_schedstats" "0"
+			sleep 1.5
+		) & spin "applying scheduler tunables..."
+
+		writen "/proc/sys/kernel/printk_devkmsg" "off" & spin "disabling printk logging..."
+
+		(
+			writen "/proc/sys/vm/dirty_background_ratio" "15"
+			writen "/proc/sys/vm/dirty_ratio" "30"
+			writen "/proc/sys/vm/dirty_expire_centisecs" "3000"
+			writen "/proc/sys/vm/dirty_writeback_centisecs" "3000"
+			writen "/proc/sys/vm/page-cluster" "0"
+			writen "/proc/sys/vm/stat_interval" "10"
+			writen "/proc/sys/vm/swappiness" "100"
+			writen "/proc/sys/vm/vfs_cache_pressure" "80"
+			sleep 1.5
+		) & spin "enhancning kernel's VM management..."
+
+		(
+			writen "/proc/sys/net/ipv4/tcp_ecn" "1"
+			writen "/proc/sys/net/ipv4/tcp_fastopen" "3"
+			writen "/proc/sys/net/ipv4/tcp_syncookies" "0"
+			sleep 1.5
+		) & spin "applying TCP tunables..."
+
+		(
+			writen "/dev/stune/background/schedtune.util.max" "1"
+			writen "/dev/stune/background/schedtune.util.min" "1"
+			writen "/dev/stune/background/schedtune.boost" "1"
+			writen "/dev/stune/background/schedtune.prefer_idle" "0"
+			writen "/dev/stune/foreground/schedtune.util.max.effective" "1"
+			writen "/dev/stune/foreground/schedtune.util.min.effective" "0"
+			writen "/dev/stune/foreground/schedtune.util.max" "1024"
+			writen "/dev/stune/foreground/schedtune.util.min" "0"
+			writen "/dev/stune/foreground/schedtune.boost" "13"
+			writen "/dev/stune/foreground/schedtune.prefer_idle" "0"
+			writen "/dev/stune/top-app/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min.effective" "0"
+			writen "/dev/stune/top-app/schedtune.util.max" "1024"
+			writen "/dev/stune/top-app/schedtune.util.min" "0"
+			writen "/dev/stune/top-app/schedtune.boost" "20"
+			writen "/dev/stune/top-app/schedtune.prefer_idle" "0"
+			writen "/dev/stune/schedtune.util.min" "1024"
+			writen "/dev/stune/schedtune.util.max" "1024"
+			writen "/dev/stune/schedtune.util.max.effective" "1024"
+			writen "/dev/stune/schedtune.util.min.effective" "0"
+			writen "/dev/stune/schedtune.boost" "2"
+			writen "/dev/stune/schedtune.prefer_idle" "0"
+			sleep 1.5
+		) & spin "enhancing SchedTune..."
+
+		(
+			writen "/sys/module/pm_hotplug/parameters/loadl" "40"
+			writen "/sys/module/pm_hotplug/parameters/loadh" "90"
+			writen "/sys/module/pm_hotplug/parameters/loadl_scroff" "50"
+			writen "/sys/module/pm_hotplug/parameters/loadh_scroff" "100"
+			writen "/sys/module/pm_hotplug/parameters/rate" "100"
+			writen "/sys/module/pm_hotplug/parameters/rate_cpuon" "400"
+			writen "/sys/module/pm_hotplug/parameters/rate_scroff" "400"
+			writen "/sys/module/pm_hotplug/parameters/freq_cpu1on" "500000"
+			sleep 1.5
+		) & spin "adapting pm_hotplug limitations..."
+
+		(
+			writen "/sys/devices/system/cpu/cpu0/cpufreq/smooth_target" "1"
+			writen "/sys/devices/system/cpu/cpu0/cpufreq/smooth_offset" "1"
+			writen "/sys/devices/system/cpu/cpu0/cpufreq/smooth_step" "1"
+			sleep 1.5
+		) & spin "enhancing cpufreq smoothness sets..."
+
+		(
+			writen "/proc/cpufreq/cpufreq_power_mode" "3"
+			writen "/proc/cpufreq/cpufreq_cci_mode" "1"
+			writen "/sys/devices/system/cpu/eas/enable" "0"
+			writen "/sys/devices/system/cpu/perf/enable" "1"
+			writen "/proc/ppm/enabled" "1"
+			writen "/proc/ppm/policy_status" "1"
+			writen "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor" "performance"
+			writen "/sys/devices/system/cpu/cpufreq/policy4/scaling_governor" "performance"
+			writen "/sys/devices/system/cpu/cpufreq/policy6/scaling_governor" "performance"
+			writen "/sys/block/mmcblk0/queue/scheduler" "deadline"
+			writen "/sys/block/mmcblk1/queue/scheduler" "deadline"
+			writen "/sys/block/sda/queue/scheduler" "deadline"
+			writen "/sys/block/sdb/queue/scheduler" "deadline"
+			writen "/sys/block/sdc/queue/scheduler" "deadline"
+			writen "/proc/ppm/policy/hard_userlimit_max_cpu_freq" "0 $cpu_max_freq"
+			writen "/proc/ppm/policy/hard_userlimit_min_cpu_freq" "1 $cpu_max_freq"
+			writen "/dev/cpuset/foreground/cpus" "0-7"
+			writen "/dev/cpuset/background/cpus" "0-7"
+			writen "/dev/cpuset/system-background/cpus" "0-7"
+			writen "/dev/cpuset/top-app/cpus" "0-7"
+			writen "/dev/cpuset/restricted/cpus" "0"
+			sleep 1.5
+		) & spin "applying misc changes..."
+	}
+
+	case $* in
+		"-g" | "--green")
+			printn -l "--- started"
+			set_battery_mode
+			printn -l "--- finished"
+			return 0
+		;;
+		"-y" | "--yellow")
+			printn -l "--- started"
+			set_balanced_mode
+			printn -l "--- finished"
+			return 0
+		;;
+		"-r" | "--red")
+			printn -l "--- started"
+			set_gaming_mode
+			printn -l "--- finished"
+			return 0
+		;;
+		"-h" | "--help") __magicn_help ;;
+		*)
+			printn -e "unknown option $*"
+			__magicn_help
+		;;
+	esac
+}
+
+pingn() {
+	PR_PREFIX="pingn"
+	[[ "$(ping -c1 "8.8.8.8" >/dev/null 2>&1 && echo $?)" != "0" ]] && {
+		printn -lf "failed"
+		printcrnr "$(prompt_left -f)" "nitrond: network: unreachable"; exit 1
+	} || {
+		printcrnr "$(prompt_left -t)" "nitrond: network:"
+		printn -l "connectivity is stable"
+		return 0
+	}
+}
+
+updaten() {
+	cmdavail setprop && {
+		if [[ "$(getprop ro.nitron.forcecheckupdate)" == "no" ]]; then
+			printn -lf "ro.nitron.forcecheckupdate == $(getprop ro.nitron.forcecheckupdate)"
+			printn -e "aborted from system variable"
+		fi
+	} || {
+		if [[ "$NITRON_FORCECHECK_UPDATE" == "false" ]]; then
+			printn -lf "NITRON_FORCECHECK_UPDATE == ${NITRON_FORCECHECK_UPDATE}"
+			printn -e "aborted from system variable"
+		fi
+	}
+
+	PR_PREFIX="updaten"
+
+	updatealg()
+	{
+		(
+			cmdavail curl && {
+				curl -o "$NITRON_LOG_DIR/nitrond_src_cache" "https://raw.githubusercontent.com/UsiFX/OpenNitroN/main/nitrond" 2>/dev/null
+				curl -o "$NITRON_LOG_DIR/nitronh_src_cache" "https://raw.githubusercontent.com/UsiFX/OpenNitroN/main/nitronapi.sh" 2>/dev/null
+				chmod +x "$NITRON_LOG_DIR/nitrond_src_cache"
+			} || {
+				printcrnr "$(prompt_left -f)" "curl is not available in the system, cannot update." 
+				exit 1
+			}
+			PR_PREFIX="updaten"
+			(
+				cp "$0" "$NITRON_LOG_DIR/nitrond_current" >/dev/null
+				cp "$HEADER_SOURCE/nitronapi.sh" "$NITRON_LOG_DIR/nitronh_current" >/dev/null
+			) & spin "backing up..."
+			[[ "$PLATFORM" == "Android" ]] && {
+				sed -i '1c\#!/system/bin/sh' "$NITRON_LOG_DIR/nitrond_src_cache" & spin "modifying update file interepter..."
+			}
+			if [[ "$(diff "$NITRON_LOG_DIR/nitrond_src_cache" "$NITRON_LOG_DIR/nitrond_current")" ]]; then
+				cat "$NITRON_LOG_DIR/nitrond_src_cache" > "$0" & spin "updating daemon..."
+			else
+				printcrnr  "$(prompt_left -f)" "daemon is up to date, $(apin -dv)"
+			fi
+			if [[ "$(diff "$NITRON_LOG_DIR/nitronh_src_cache" "$NITRON_LOG_DIR/nitronh_current")" ]]; then
+				cat "$NITRON_LOG_DIR/nitronh_src_cache" > "$HEADER_SOURCE/nitronapi.sh" & spin "attempting to update API..."
+			else
+				printcrnr "$(prompt_left -f)" "API is up to date, $(apin -hv)"
+			fi
+			printn -l "update process(es) finished"
+			return 0
+		) & spin "update processing..."
+	}
+
+	rollbackalg()
+	{
+		if [[ ! -f "$NITRON_LOG_DIR"/nitrond_current ]]; then
+			printn -e "previous daemon update cache is unavailable"
+		fi
+		if [[ ! -f "$NITRON_LOG_DIR"/nitronh_current ]]; then
+			printn -e "previous header update cache is unavailable"
+		fi
+		if [[ "$(diff "$0" "$NITRON_LOG_DIR/nitrond_current")" ]]; then
+			printn -n "downgrading..."
+			cat "$NITRON_LOG_DIR/nitrond_current" > "$0"
+		else
+			printn -i "there is no difference between current daemon update(s) and previous one(s)."
+		fi
+		if [[ "$(diff "$HEADER_SOURCE/nitron_headers.sh" "$NITRON_LOG_DIR/nitronh_current")" ]]; then
+			printn -n "attempting to downgrade headers..."
+			cat "$NITRON_LOG_DIR/nitronh_current" > "$HEADER_SOURCE/nitron_headers.sh"
+		else
+			printn -i "there is no difference between current header update(s) and previous one(s)."
+		fi
+		printn -l "downgrade process(es) finished"
+		return 0
+	}
+
+	init()
+	{
+		printn -l "pinging 8.8.8.8 ..."
+		printn -i "checking connectivity..."; pingn && PR_PREFIX="updaten"; updatealg
+	}
+
+	case $* in
+		"-a" | "--apply")
+			printn -l "--- triggered"
+			init
+			printn -l "--- finished"
+
+		;;
+		"-d" | "--downgrade")
+			printn -l "--- triggered"
+			printn -l "attempting to downgrade!"
+			rollbackalg
+			printn -l "--- finished"
+		;;
+	esac
+}
+
+# Bail out if we aren't running as SU
+[[ "$(id -u)" -ne "0" ]] && {
+	printn -e "please run this tool as SU"
+	exit 1
+}
+
+__nitron_help() {
+	echo "
+Usage: nitrond [OPTION] (e.g. nitrond --update)
+
+Commands:
+  deviceinfo			~ shows device resource information
+  clean				~ wipe stored nitron data
+  auto				~ automatically decide mode switchment up on Environment status
+
+Options:
+  -sdm, --show-default-mode     ~ prints current tweaking mode
+  -sg, --set-green              ~ apply Battery mode
+  -sr, --set-red                ~ apply Gaming mode
+  -sy, --set-yellow             ~ apply Balanced mode
+  -c, --console-mode            ~ enter User-Friendly user selections
+
+Others:
+  -h, --help                    ~ shows this Help menu
+  -v, --version                 ~ shows tool version
+  -u, --update                  ~ update to latest
+
+Advanced:
+  -dd, --downgrade		~ downgrade to previous upgrade
+  -d, --debug                   ~ run commands under debuggable verbose flags
+"
+}
+
+if [[ $# -eq "0" ]]; then
+	tty -s
+	__nitron_help
+else
+	for arg in "$@"
+	do
+		case "${arg}" in
+			"deviceinfo")
+				apin -rc
+			;;
+			"clean")
+				apin -c
+			;;
+			"auto")
+				setmoden "Automatic"
+				apin -as
+				rm -rf "$NITRON_RELAX_DIR"/nitron.log
+				apin -rc >> "$NITRON_RELAX_DIR"/nitron.log
+				printn -ll "starting modifying modes up on Packages availability & Resource usage"
+				printn -w "nitrond will stay on background, it may be not safe to terminate the session."
+				printn -i "^C to force stop the daemon, use 'kill $(pgrep nitrond)' incase if console shell terminated."
+				( apin -ad &) &
+				while true; do true; done # keep it alive.
+			;;
+			"-sg" | "--set-green")
+				[[ "$SOURCE" != "api-auto" ]] && {
+					magicn -g
+					printn -n "nitrond: current mode: \e[2;42m$(apin -mc)${STOCK}"
+					apin -as
+				} || printn -e "cannot change mode, auto is in background please kill and try again later."
+			;;
+			"-sr" | "--set-red")
+				[[ "$SOURCE" != "api-auto" ]] && {
+					magicn -r
+					printn -n "nitrond: current mode: \e[1;41m$(apin -mc)${STOCK}"
+					apin -as
+				} || printn -e "cannot change mode, auto is in background please kill and try again later."
+			;;
+			"-sy" | "--set-yellow")
+				[[ "$SOURCE" != "api-auto" ]] && {
+					magicn -y
+					printn -n "nitrond: current mode: \e[2;43m$(apin -mc)${STOCK}"
+					apin -as
+				} || printn -e "cannot change mode, auto is in background please kill and try again later."
+			;;
+			"-sdm" | "--show-default-mode")
+				printn -i "mode: $(apin -mc)"
+				return 0
+			;;
+			"-v" | "--version")
+				echo -e "NitronD $(apin -dv), API: $(apin -hv)
+Copyright (C) 2022-2023 UsiFX <xprjkts@gmail.com>
+Copyright (C) 2022-2023 Kartik728 <titanupdates728@gmail.com>
+
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.."
+			;;
+			"-c" | "--console-mode")
+				if cmdavail dialog; then
+					console_dialog
+					printn -l "--- started"
+				else
+					printn -lf "dialog not found, switch: console_legacy()"
+					console_legacy
+				fi
+			;;
+			*"?"* | "h"* | "-h" | "--help") __nitron_help ;;
+			"-u" | "--update") updaten -a ;;
+			"-d" | "--debug")
+				printn -w "execution under debug, please provide arguments to debug"
+				printn -w "verbose is saved at: $NITRON_LOG_DIR/nitron.verbose.log"
+				set -x 2>"$NITRON_LOG_DIR"/nitron.verbose.log >/dev/null
+			;;
+			"-dd" | "--downgrade") updaten -d ;;
+			*) printn -e "unknown option $*, check 'nitrond --help'." ;;
+		esac
+	done
+fi
