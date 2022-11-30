@@ -1,10 +1,11 @@
-# Maintainer: Vinicius Correa <vinicius.correa at zoho dot com>
+# Maintainer: libele <libele@disroot.org>
+# Contributor: Vinicius Correa <vinicius.correa at zoho dot com>
 
 _pkgname=krita
-pkgname=${_pkgname}-appimage
-pkgver=5.0.6
+pkgname=krita-appimage
+pkgver=5.1.3
 pkgrel=1
-pkgdesc="Edit and paint images"
+pkgdesc="Edit and paint images (AppImage version)"
 arch=('x86_64')
 url="https://krita.org"
 license=('GPL3')
@@ -14,18 +15,16 @@ source=(
 	"https://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}-${arch}.appimage"
 	"${_pkgname}.sh"
 )
-sha256sums=(
-	'3233160fa3b0a467f8bcde4bf9019544d4c9d305ba9b4ba4bcaf58c975bc1070'
-	'SKIP'
-)
+sha256sums=('b421a12fcd21c5ad18d91c917a9bb82e81b8d8c64c7402e4de3e5c3b5c0f7a67'
+            'e9db000021c54ec34f245d4b936e93a7dc7f6331b2679305798484fd1e0bbf6a')
 options=(!strip)
-_filename=./${_pkgname}-${pkgver}-${arch}.appimage
+_filename=./"${_pkgname}-${pkgver}-${arch}".appimage
 
 prepare() {
   cd "${srcdir}"
-  chmod +x ${_filename}
-  ${_filename} --appimage-extract
-  rm ${srcdir}/squashfs-root/usr/share/icons/hicolor/icon-theme.cache
+  chmod +x "${_filename}"
+  "${_filename}" --appimage-extract
+  rm "${srcdir}"/squashfs-root/usr/share/icons/hicolor/icon-theme.cache
 }
 
 package() {
