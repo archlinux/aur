@@ -9,7 +9,7 @@ url="https://www.apifox.cn/"
 license=('custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'snappy' 'fuse2')
 source=(
-	"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
+	"${pkgname}-v${pkgver}-${pkgrel}.zip"::"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
 	"apifox.desktop"
 	"apifox.svg")
 sha256sums=(
