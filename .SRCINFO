@@ -10,8 +10,6 @@ pkgbase = trakt-scrobbler-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = go-md2man
-	makedepends = gzip
 	depends = systemd
 	depends = python-appdirs<2.0.0
 	depends = python-appdirs>=1.4.4
@@ -19,8 +17,6 @@ pkgbase = trakt-scrobbler-git
 	depends = python-cleo-v0>=0.8.1
 	depends = python-confuse<3.0.0
 	depends = python-confuse>=2.0.0
-	depends = python-desktop-notifier<4.0.0
-	depends = python-desktop-notifier>=3.4.2
 	depends = python-guessit<4.0.0
 	depends = python-guessit>=3.3.1
 	depends = python-pydantic<2.0.0
@@ -29,8 +25,6 @@ pkgbase = trakt-scrobbler-git
 	depends = python-pysocks>=1.7.1
 	depends = python-requests<3.0.0
 	depends = python-requests>=2.25.1
-	depends = python-setuptools<66.0.0
-	depends = python-setuptools>=65.5.1
 	depends = python-urllib3<2.0.0
 	depends = python-urllib3>=1.26.0
 	depends = python-urlmatch<2.0.0
@@ -38,8 +32,6 @@ pkgbase = trakt-scrobbler-git
 	provides = trakt-scrobbler
 	conflicts = trakt-scrobbler
 	source = trakt-scrobbler::git+https://github.com/iamkroot/trakt-scrobbler.git
-	source = trakts-man.md
 	sha256sums = SKIP
-	sha256sums = 81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c
 
 pkgname = trakt-scrobbler-git

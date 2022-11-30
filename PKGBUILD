@@ -18,8 +18,8 @@ depends=(
 	'python-cleo-v0>=0.8.1' #auto-deps
 	'python-confuse<3.0.0' #auto-deps
 	'python-confuse>=2.0.0' #auto-deps
-	'python-desktop-notifier<4.0.0' #auto-deps
-	'python-desktop-notifier>=3.4.2' #auto-deps
+#	'python-desktop-notifier<4.0.0' #auto-deps
+#	'python-desktop-notifier>=3.4.2' #auto-deps
 	'python-guessit<4.0.0' #auto-deps
 	'python-guessit>=3.3.1' #auto-deps
 	'python-pydantic<2.0.0' #auto-deps
@@ -28,8 +28,8 @@ depends=(
 	'python-pysocks>=1.7.1' #auto-deps
 	'python-requests<3.0.0' #auto-deps
 	'python-requests>=2.25.1' #auto-deps
-	'python-setuptools<66.0.0' #auto-deps
-	'python-setuptools>=65.5.1' #auto-deps
+#	'python-setuptools<66.0.0' #auto-deps
+#	'python-setuptools>=65.5.1' #auto-deps
 	'python-urllib3<2.0.0' #auto-deps
 	'python-urllib3>=1.26.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
@@ -41,8 +41,6 @@ makedepends=(
     python-build
     python-installer
     python-wheel
-    go-md2man
-    gzip
 )
 
 provides=("${pkgname%*-git}")
@@ -50,10 +48,8 @@ conflicts=("${pkgname%*-git}")
 
 source=(
     "${pkgname%*-git}::git+https://github.com/iamkroot/trakt-scrobbler.git"
-    "trakts-man.md"
 )
-sha256sums=('SKIP'
-            '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${pkgname%*-git}
@@ -73,9 +69,7 @@ prepare() {
 		pyproject.toml
 }
 build() {
-    cd "$srcdir/${pkgname%*-git}"
-    python -m build --no-isolation --wheel
-    go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
+    python -m build --no-isolation --wheel "$srcdir/${pkgname%*-git}"
 }
 
 package()
@@ -84,12 +78,8 @@ package()
     _py=$(python --version)
     _py=${_py%%.*}
 
-    cd "$srcdir/${pkgname%*-git}"
     python -m installer --destdir="$pkgdir" \
-        "dist/${_pkgname//-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
-
-	# Completions
+        "$srcdir/${pkgname%*-git}/dist/${_pkgname//-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
     install -Dm755 "$srcdir/${pkgname%*-git}/completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
-
-    install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
+    install -Dm644 "$srcdir/${pkgname%*-git}/trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
 }
