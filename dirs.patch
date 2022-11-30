@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text ocplib-simplex.orig/Makefile ocplib-simplex/Makefile
+--- ocplib-simplex.orig/Makefile	2022-11-26 22:39:34.236316494 -0700
++++ ocplib-simplex/Makefile	2022-11-26 22:42:26.368513269 -0700
+@@ -18,7 +18,7 @@
+ 	@dune build $(WATCH) -w
+ 
+ install: build
+-	@dune install
++	@dune install --mandir="$(DESTDIR)/usr/share/man/" --docdir="$(DESTDIR)/usr/share/doc/" --etcdir="$(DESTDIR)/etc/" --datadir="$(DESTDIR)/opt/" --sbindir="$(DESTDIR)/sbin/" --bindir="$(DESTDIR)/usr/bin/"
+ 
+ uninstall:
+ 	@dune uninstall
