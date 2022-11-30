@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.37.11
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
@@ -29,12 +29,6 @@ source=(
     "nextdns.tmpfiles"
     "01-socket.patch"
 )
-
-sha256sums=('f70cb424b0ae47456c8579d3910b486f75afde34572f28f8cf6eb1222e59b88b'
-            'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
-            '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
-            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
-            'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
 
 prepare() {
     cd "${origname}-$pkgver"
@@ -54,3 +48,8 @@ package() {
     install -vDm 644 "$srcdir/${origname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${origname}.conf"
 }
 
+sha256sums=('74cd9d37ea9051b5b5f8f10be1462fb4ebe77b4dbcccd8c94ba049828bd21bff'
+            'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
+            '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
+            'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
+            'df831b86096e2f06fd4b9f603a4141daef986d709fcdebb97f39493535aab7f6')
