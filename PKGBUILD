@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=console-tdm-git
 pkgver=r2.1a7788c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Console display manager based on CDM'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('console-tdm')
 conflicts=('console-tdm')
 depends=('xorg-xinit')
 optdepends=('dialog: for curses UI')
-source=('git://github.com/dopsi/console-tdm')
+source=('git+https://github.com/dopsi/console-tdm')
 sha1sums=('SKIP')
 
 _gitname=console-tdm

@@ -1,7 +1,7 @@
 pkgbase = console-tdm-git
 	pkgdesc = Console display manager based on CDM
 	pkgver = r2.1a7788c
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://github.com/dopsi/console-tdm
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = console-tdm-git
 	optdepends = dialog: for curses UI
 	provides = console-tdm
 	conflicts = console-tdm
-	source = git://github.com/dopsi/console-tdm
+	source = git+https://github.com/dopsi/console-tdm
 	sha1sums = SKIP
 
 pkgname = console-tdm-git
