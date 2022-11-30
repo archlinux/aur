@@ -2,7 +2,7 @@
 
 _pkgname=liteeth
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable Ethernet core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # broken env
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('4be74418ac84159d2c91047db4e469c3b4d1912dc66d603663dd1d9d592845ed802ab7b5c9e92a82575531993b5aacfb0924e11fd4468f3b3730913082c8e61c')
+sha512sums=('800364f2ba4a264b660e4e563d2bd1b1c3054f6f3dd9916ca7b97b38ecde0b80bd840188415a00a8aa8e34270d8d41c6edf9ed42b5efbb50e25507e609b6b750')
 
 build() {
   cd $_pkgname-$pkgver
