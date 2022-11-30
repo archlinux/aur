@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname=${_pkgname}-git
 pkgdesc="Ledger Live - Desktop (git-main)"
-pkgver=2.49.2.r647.g2eae11ad69
+pkgver=2.50.0.r0.g9a329e7562
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -26,9 +26,9 @@ build() {
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
+
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
-  pnpm build:lld:deps
-  pnpm desktop build
+  pnpm build:lld
 
   # Correct .desktop
   sed -e "s/AppRun --no-sandbox/${_pkgbin}/g" -i "apps/${_pkgbin}/dist/__appImage-x64/${_pkgbin}.desktop"
@@ -55,5 +55,5 @@ package() {
 
 pkgver() {
   cd "${_gitdir}"
-  git describe --abbrev=10 --long --tags --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
+  git describe --long --tags --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
 }
