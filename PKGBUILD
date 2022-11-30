@@ -2,7 +2,7 @@
 
 _pkgname=liteiclink
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable Inter-Chip communication cores'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # no litescope release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('74136b9f25fcd596a172dd5c06a68dbea1b4cad247e6c55943592a7a98ad929c1dfaec7cb6ac98940e5220556f310665ffc365324a939a410c549b42f71bbdf0')
+sha512sums=('f83ac3bdb3fe8a2e5926caba67d18d73287bffd87cb008b245b80b1be2942f5b9c2a66c0a44fc0556342ea4e4c2058bd437a50a27e9704b9f4a6b528465e3869')
 
 build() {
   cd $_pkgname-$pkgver
