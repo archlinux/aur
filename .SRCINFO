@@ -1,0 +1,12 @@
+pkgbase = libeconf
+	pkgdesc = Enhanced config file parser, which merges config files placed in several locations into one.
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://opensuse.github.io/libeconf/
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	source = libeconf-0.4.9.tar.gz::https://github.com/openSUSE/libeconf/archive/refs/tags/v0.4.9.tar.gz
+	md5sums = c2523f6987c436a44b92917a028cbf7c
+
+pkgname = libeconf
