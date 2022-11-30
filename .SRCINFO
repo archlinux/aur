@@ -1,0 +1,15 @@
+pkgbase = cdbfasta-git
+	pkgdesc = CDB (Constant DataBase) indexing and retrieval tools for FASTA files
+	pkgver = r4.014498c
+	pkgrel = 1
+	url = https://github.com/gpertea/cdbfasta
+	arch = x86_64
+	license = Artistic2.0
+	makedepends = git
+	depends = gcc-libs
+	depends = zlib
+	provides = cdbfasta-git
+	source = cdbfasta-git::git+https://github.com/gpertea/cdbfasta.git
+	md5sums = SKIP
+
+pkgname = cdbfasta-git
