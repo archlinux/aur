@@ -1,8 +1,9 @@
 # Maintainer: Vincent Lee < vincent at vincent dash lee dot net >
 _realname=sapling  # Already taken on AUR
 pkgname="$_realname-scm"
-_realver=20221115-080554-34470671
+_realver=0.1.20221118-210929-cfbb68aa
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
+epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
 pkgrel=1
 pkgdesc="A Scalable, User-Friendly Source Control System"
 arch=("x86_64")
@@ -14,7 +15,7 @@ depends=("nodejs" "python")
 #  program runs fine without those libraries installed systemwide.
 makedepends=("cargo" "cmake" "rust" "yarn")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
-sha256sums=("93f60a05e049f8eb0e1c73f32a4ad75f8eb2d2a12972ed057c080459a564fc75")
+sha256sums=("51ce336f1eb382e591a7384d0292cb41fafbbd92cc701ee74b50099beece65e4")
 
 prepare() {
 	cd "$_realname-$_realver"
