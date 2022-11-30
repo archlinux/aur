@@ -1,44 +1,25 @@
-# Maintainer: zoe <chp321@gmail.com>
+# Maintainer: Albert Graef <aggraef@gmail.com>
+# Contributor: zoe <chp321@gmail.com>
 # Contributor: Johannes Schriewer <jschriewer@arcor.de>
 
 pkgname=kmidimon
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Drumstick MIDI Monitor (kmidimon) is a MIDI monitor for Linux using ALSA sequencer and Qt5 user interface."
 arch=('i686' 'x86_64')
 url="https://kmidimon.sourceforge.io/"
 license=('GPL')
 depends=('alsa-lib' 'drumstick')
-makedepends=('cmake' 'pandoc')
+makedepends=('cmake' 'qt6-tools'  'qt6-5compat')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('2d81b27410beabfda1a4e2502c3428ca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  #####tar -xf ../drumstick.tar.gz
-    
-  #sed -i '/KDE4Defaults/ a INCLUDE(${QT_USE_FILE})\n MESSAGE("QT_USE_FILE: ${QT_USE_FILE}")' CMakeLists.txt
-
-  # doc build errors prevent success
-  #####sed -i '/doc/d' CMakeLists.txt
-  
-  # Compile code with -fPIC (build code with Position Independent Code)
-  #sed -i '/-DQT_STRICT_ITERATORS/ a ADD_DEFINITIONS(-fPIC)' CMakeLists.txt
-  #####sed -i '/CMAKE_MINIMUM_REQUIRED/ a SET(CMAKE_CXX_FLAGS "-fPIC")' CMakeLists.txt
-  
-  #sed -i 's/OPTION(ENABLE_PCH       "Enable precompiled headers" OFF)/OPTION(ENABLE_PCH       "Enable precompiled headers" ON)/' CMakeLists.txt
-  #####sed -i 's/OPTION(STATIC_DRUMSTICK "Build drumstick static library" OFF)/OPTION(STATIC_DRUMSTICK "Build drumstick static library" ON)/' CMakeLists.txt
-  
-  # delete target that makes error in build (bug in Cmake) :
-  #sed -i 's/ADD_CUSTOM_TARGET(uninstall/#ADD_CUSTOM_TARGET(uninstall/' CMakeLists.txt
-  #sed -i 's|"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|#"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")|' CMakeLists.txt
-
-  # avoid bug in Cmake :
-  #####sed -i '22i\cmake_policy(SET CMP0002 OLD)' CMakeLists.txt
   
   mkdir build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_DOCS=OFF -DCMAKE_BUILD_TYPE=Release
           
   make
 }
