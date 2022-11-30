@@ -1,0 +1,23 @@
+pkgbase = taxondna
+	pkgdesc = Taxonomy-aware DNA sequence processing toolkit
+	pkgver = 1.9
+	pkgrel = 6
+	url = https://github.com/gaurav/taxondna
+	arch = x86_64
+	license = GPL2
+	makedepends = maven
+	depends = java-runtime=11
+	source = https://github.com/gaurav/taxondna/archive/refs/tags/v1.9.tar.gz
+	source = sequencematrix.desktop
+	source = speciesidentifier.desktop
+	source = genbankexplorer.desktop
+	sha256sums = 54d6a2fdf4067e7f89fdeea971c44d5b938e44a495119807f0a9892af919e162
+	sha256sums = f9b4e4eae5d8ef90b9dffe16209555773be8b0e111b9a69620b9be76604a73e4
+	sha256sums = 9ceb29dfe8bab70723a5876745f345e29ca7b37884da4f67b2dbe042cdc46fe3
+	sha256sums = 0b786535540f3adf3f979fb6af824238b2bd0f8bcb9c5721b0065bb35563e65d
+
+pkgname = sequencematrix
+
+pkgname = speciesidentifier
+
+pkgname = genbankexplorer
