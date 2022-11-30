@@ -4,9 +4,9 @@
 pkgbase=lceda-pro
 pkgname=lceda-pro
 pkgver=1.9.20
-pkgrel=1
+pkgrel=2
 pkgdesc="免费、专业、强大的国产PCB设计工具"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://pro.lceda.cn/"
 license=('custom' 'Commercial')
 provides=(${pkgname})
@@ -17,12 +17,15 @@ makedepends=(libarchive)
 backup=()
 options=()
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip"
-        "LICENSE"
+source=("LICENSE"
         "${pkgname}.install")
-sha256sums=('a9f0191d2aafe6a995f96c9d0f7e295f155ee107fccee677d8f804303434c54f'
-            '9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5'
+source_x86_64=("${pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip")
+source_aarch64=("${pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-${pkgver}.zip")
+sha256sums=('9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
+sha256sums_x86_64=('a9f0191d2aafe6a995f96c9d0f7e295f155ee107fccee677d8f804303434c54f')
+sha256sums_aarch64=('a9f0191d2aafe6a995f96c9d0f7e295f155ee107fccee677d8f804303434c54f')
+
 # noextract=(${pkgname}-${pkgver}.zip)
 
 package() {
