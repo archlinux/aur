@@ -1,29 +1,29 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/bytecodealliance/wasm-micro-runtime"
-license=(Apache)
-depends=(gcc-libs lld)
-makedepends=(cmake ninja)
-source=("git+$url#tag=WAMR-$pkgver")
-source=("$url/archive/refs/tags/WAMR-$pkgver.tar.gz")
-sha256sums=('b5c147f91fe02b3457188bf7067ecfd7e00d91c65a08bdd629e65999422a78c4')
+license=('Apache')
+depends=('glibc')
+makedepends=('cmake')
+provides=('libiwasm.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/WAMR-$pkgver.tar.gz")
+sha256sums=('3bf621401e6f97f81c357ad019d17bdab8f3478b9b3adf1cfe8a4f243aef1769')
 
 build() {
-  cmake \
-    -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -S $pkgname-WAMR-$pkgver/product-mini/platforms/linux/ \
-    -B build
-
-  ninja -C build
+	cmake \
+		-B build \
+		-S "$pkgname-WAMR-$pkgver/product-mini/platforms/linux" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+	DESTDIR="${pkgdir}" cmake --install build
 }
