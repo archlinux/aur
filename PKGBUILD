@@ -1,6 +1,6 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
-pkgname=gnome-shell-extension-dynamic-calendar-and-clocks-icons
+pkgname=gnome-shell-extension-dynamic-calendar-and-clocks-icons-git
 pkgver=r8.388f2d7
 pkgrel=1
 pkgdesc="A GNOME shell extension that let Calendar and Clocks icons show current date and time."
