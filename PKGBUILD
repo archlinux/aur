@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=perimeter81
-pkgver=8.0.3.654
+pkgver=8.0.4.719
 pkgrel=1
 pkgdesc='Perimeter81 agent application'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   'LICENSE'
 )
 md5sums=(
-  '9f5a1240d48f8f1cefaaa31ce109ddc6'
+  'c574d73429770a325334b246a4b260ed'
   '089b611fb1ecbd3e39e2d2d391743205'
   '64c25ccc5446c93c6073a418f664d3d5'
 )
