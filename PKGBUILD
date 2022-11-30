@@ -2,7 +2,7 @@
 
 _pkgname=litesdcard
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable SD Card core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest-runner') # broken env
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('ef239d0e7d0b0f86db42c61307d4c611afe1bb3593453101adc367e8a64bbe233b966cb6b865c116036005c54bb81e8890e2a412a4930abe96dd878240755457')
+sha512sums=('4cb4e2d46c0f024c83f715adab79a933567061708c9b92e8fc7b0200529a18a35d461f1493f9b04666ac59f2a99e25b987566ada16cf22b203029cb25245251a')
 
 build() {
   cd $_pkgname-$pkgver
