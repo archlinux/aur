@@ -15,7 +15,7 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-common-git"
         )
 
-pkgver=0.14.0.r6.gced8ef76
+pkgver=0.14.0.r7.gb2deed91
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
