@@ -2,23 +2,21 @@
 pkgname=custom-install-git
 _pkgname=${pkgname%-git}
 pkgver=2.1.r9.g9ab8236
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs a title directly to an SD card for the Nintendo 3DS"
 arch=('any')
 url="https://github.com/ihaveamac/custom-install"
 license=('MIT')
 depends=('python' 'python-events' 'python-pyctr' 'save3ds_fuse')
-makedepends=('git')
+makedepends=('git' 'devkitARM' 'devkitarm-rules' 'devkit-env' 'libctru' '3dstools' 'general-tools')
 optdepends=('tk: GUI support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/ihaveamac/custom-install.git#branch=safe-install'
-        'https://github.com/ihaveamac/custom-install/releases/download/v2.1/custom-install-finalize.3dsx' # To be built at some point
         'custominstall.sh'
         'ci-gui.sh'
         'com.github.ihaveamac.CustomInstall.desktop')
 md5sums=('SKIP'
-         'd7c4f5b41bb30dc7db978a2ffe61ad4e'
          '8428490bcd8068b4c12812d9daf26435'
          '52ec8eb031d26f49fecbb8f04871a0cd'
          '1283d9e3f3b9b7f976a73b73f1656bb9')
@@ -26,6 +24,12 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "$_pkgname/finalize"
+    source /etc/profile.d/devkit-env.sh # just in case
+    make
 }
 
 package() {
@@ -42,7 +46,7 @@ package() {
     # Title DB
     install -Dm644 -t "$pkgdir/usr/lib/$_pkgname/" title.db.gz
     # custom-install-finalize 3DSX
-    install -Dm644 -t "$pkgdir/usr/lib/$_pkgname/" "$srcdir/custom-install-finalize.3dsx"
+    install -Dm644 -t "$pkgdir/usr/lib/$_pkgname/" finalize/custom-install-finalize.3dsx
 
     # Symlink save3ds_fuse
     mkdir -p "$pkgdir/usr/lib/$_pkgname/bin/linux/"
