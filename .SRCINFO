@@ -1,6 +1,6 @@
 pkgbase = bambustudio-git
 	pkgdesc = PC Software for BambuLab's 3D printers
-	pkgver = 1.2.0.9.108.gcb2e89d
+	pkgver = 1.2.0.9.300.gb77682c
 	pkgrel = 1
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64

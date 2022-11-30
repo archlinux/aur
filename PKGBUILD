@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname="bambustudio-git"
-pkgver=1.2.0.9.108.gcb2e89d
+pkgver=1.2.0.9.300.gb77682c
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
