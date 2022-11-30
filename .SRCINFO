@@ -1,0 +1,10 @@
+pkgbase = xkb-mine-custom-layout
+	pkgdesc = Installs the German mine keyboard layout as custom xkb layout
+	pkgver = 1
+	pkgrel = 1
+	url = https://neo-layout.org/Layouts/mine/
+	arch = any
+	source = https://dl.neo-layout.org/mine
+	md5sums = cb7812582e9e2658cab89df40fff7f8a
+
+pkgname = xkb-mine-custom-layout
