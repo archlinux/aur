@@ -1,4 +1,4 @@
-# Maintainer: monosans
+# Maintainer: Nixuge
 
 pkgname=lunar-client
 _pkgname=lunarclient
