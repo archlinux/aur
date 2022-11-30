@@ -9,7 +9,6 @@ pkgbase = armcord-git
 	license = custom:OSL-3.0
 	makedepends = git
 	makedepends = nodejs
-	makedepends = sed
 	makedepends = npm
 	depends = electron
 	optdepends = libnotify: Notifications

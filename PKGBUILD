@@ -9,7 +9,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/ArmCord/ArmCord"
 license=("custom:OSL-3.0")
 
-makedepends=("git" "nodejs" "sed" "npm")
+makedepends=("git" "nodejs" "npm")
 depends=("electron")
 optdepends=(
   'libnotify: Notifications'
