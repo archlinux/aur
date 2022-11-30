@@ -3,7 +3,7 @@
 # slightly modified version of https://aur.archlinux.org/packages/brother-mfc-j5320dw/
 
 pkgname="brother-mfc-j5335dw"
-pkgver="1.0.1.0-4"
+pkgver="1.0.1"
 # required because of unconventional package numbering for brother
 _brother_pkgver="1.0.1-0"
 pkgrel=4
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/downloadtop.aspx?c=fr&lang=fr&prod=mfcj5335dw_eu"
 license=('custom:Brother commercial license')
 depends=('cups' 'ghostscript' 'poppler' 'a2ps' 'psutils')
-depends_x86_64=('lib32-glibc','lib32-gcc-libs')
+depends_x86_64=('lib32-glibc' 'lib32-gcc-libs')
 install="$pkgname.install"
 source=("http://download.brother.com/welcome/dlf103004/mfcj5335dwlpr-$_brother_pkgver.i386.rpm"
         "http://download.brother.com/welcome/dlf103028/mfcj5335dwcupswrapper-$_brother_pkgver.i386.rpm"
