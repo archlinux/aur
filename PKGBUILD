@@ -7,7 +7,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-wxgtk3-git
-pkgver=r13942.g91f8b4340
+pkgver=r14126.gef91e7c8d
 pkgrel=4
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - repo wxgtk3"
 arch=(i686 x86_64)
@@ -51,8 +51,7 @@ build() {
   CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Duse_wxwidgets=system \
-    -DwxWidgets_CONFIG_EXECUTABLE=wx-config \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -DwxWidgets_LIBRARIES=/usr/lib \
     -DwxWidgets_INCLUDE_DIRS=/usr/include/wx-3.2 \
     -Wno-dev \
