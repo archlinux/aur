@@ -1,0 +1,24 @@
+pkgbase = easyeda-pro-electron
+	pkgdesc = EasyEDA Professional Edition. Run with system electron.
+	pkgver = 1.8.39
+	pkgrel = 1
+	url = https://pro.easyeda.com/
+	install = easyeda-pro-electron.install
+	arch = any
+	license = custom
+	depends = electron19
+	provides = easyeda-pro
+	conflicts = easyeda-pro
+	conflicts = easyeda-pro-git
+	conflicts = easyeda-pro
+	conflicts = easyeda-pro-bin
+	source = easyeda-pro-1.8.39.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-1.8.39.zip
+	source = LICENSE
+	source = easyeda-pro.sh
+	source = easyeda-pro-electron.install
+	sha256sums = 989319b4f876ac6c275d6bbef50acb606fcc5a54b1f3e4a94e5d1c33f8ca0707
+	sha256sums = c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74
+	sha256sums = 0dda63f830844a61609442afad8b4838bd523c5a7a4f5df7a0d14331d2277777
+	sha256sums = cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76
+
+pkgname = easyeda-pro-electron
