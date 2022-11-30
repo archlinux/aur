@@ -46,7 +46,7 @@ prepare() {
 
 build() {
     _java_version="$(archlinux-java get)"
-    if [[ "${_java_version//[!0-9]}" > 16 ]]; then
+    if [[ "${_java_version//[!0-9]}" -gt 16 ]]; then
         >&2 echo -e "This package can't be built with \e[1m$_java_version\e[21m!"
         >&2 echo -e "Use \e[1marchlinux-java\e[21m to change the default Java SDK."
         >&2 echo -e "\e[1mjava-11-openjdk\e[21m and \e[1mjava-8-openjdk\e[21m are known to work."
