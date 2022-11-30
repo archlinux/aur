@@ -2,7 +2,7 @@
 
 _pkgname=litevideo
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable video cores'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('3f970148b27405aaa9b8a0b02ac7ed10baf63164d50bd411b2a259996c75ca1d71bb016d33213c13b9ca1048053828cebd0db88b4d8116724cadacb209faede7')
+sha512sums=('49cf97ab731badfeb51f7f892e53afa3b85515cc6f0086abf443cda3c4d4f2759f2d24bf7f2112010044412e8b07da99271d7b0d39308cac67afc826bd6e3c52')
 
 build() {
   cd $_pkgname-$pkgver
