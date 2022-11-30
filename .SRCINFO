@@ -1,0 +1,15 @@
+pkgbase = prometheus-ping-exporter
+	pkgdesc = A simple server that scrapes go-ping stats and exports them via HTTP for Prometheus consumption
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/czerwonk/ping_exporter
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	backup = etc/ping_exporter/config.yml
+	backup = etc/conf.d/prometheus-ping-exporter
+	source = ping_exporter::git+https://github.com/czerwonk/ping_exporter.git#tag=1.0.1
+	sha256sums = SKIP
+
+pkgname = prometheus-ping-exporter
