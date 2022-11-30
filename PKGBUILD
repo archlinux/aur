@@ -2,23 +2,23 @@
 
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
-pkgver=4.17.0
+pkgver=4.17.2
 pkgrel=1
-pkgdesc="An application finder for Xfce"
+pkgdesc="Application finder for Xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://www.xfce.org/"
+url="https://docs.xfce.org/xfce/xfce4-appfinder/start"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('libxfce4ui' 'libxfce4util>=4.15.2' 'garcon' 'xfconf' 'hicolor-icon-theme')
+depends=('libxfce4ui' 'garcon' 'xfconf' 'hicolor-icon-theme')
 makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('e111ef4fe6dc6391a3ab482ad92029e9dfd95936c640ec3424ac61079585fa05')
+sha256sums=('cb65fe83b2fa936697d4215474bd77d81677aa3e373ec9c62f30a2675df8390b')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
 }
 
