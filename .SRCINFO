@@ -1,6 +1,6 @@
 pkgbase = virtualbox-svn
-	pkgver = 97514
-	pkgrel = 1
+	pkgver = 97711
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
@@ -82,7 +82,7 @@ pkgbase = virtualbox-svn
 	sha256sums = f11d8bd17e4e2a13d00a621373a2c26e5703870f110ea7de78c540d7d169e734
 	sha256sums = 7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46
 	sha256sums = 053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491
-	sha256sums = c74a5daca598c12d375026fddc557b487d213fe46bb1c8ef1f7b6d1c44500eb4
+	sha256sums = 92df121e1c8a1a967b4928a4d5c6f7ba8c91e43902ecd6d8f5fecc9df4184413
 	sha256sums = 81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024
 	sha256sums = 00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff
 	sha256sums = 87dddfd9047480e4c2b73367facf5dd3702148418c2efcd606af17c07da90fe0
