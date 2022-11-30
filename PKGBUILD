@@ -4,7 +4,7 @@
 
 pkgname=trakt-scrobbler-git
 pkgver=1.6.1b1.r0.g8cd46d9
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -14,18 +14,22 @@ depends=(
     "systemd"
 	'python-appdirs<2.0.0' #auto-deps
 	'python-appdirs>=1.4.4' #auto-deps
-	'python-cleo<=0.9' #auto-deps
-	'python-cleo>=0.8.1' #auto-deps
+	'python-cleo-v0<1.0.0' #auto-deps
+	'python-cleo-v0>=0.8.1' #auto-deps
 	'python-confuse<3.0.0' #auto-deps
 	'python-confuse>=2.0.0' #auto-deps
+	'python-desktop-notifier<4.0.0' #auto-deps
+	'python-desktop-notifier>=3.4.2' #auto-deps
 	'python-guessit<4.0.0' #auto-deps
 	'python-guessit>=3.3.1' #auto-deps
-	'python-jeepney<1.0.0' #auto-deps
-	'python-jeepney>=0.8.0' #auto-deps
+	'python-pydantic<2.0.0' #auto-deps
+	'python-pydantic>=1.10.2' #auto-deps
 	'python-pysocks<2.0.0' #auto-deps
 	'python-pysocks>=1.7.1' #auto-deps
 	'python-requests<3.0.0' #auto-deps
 	'python-requests>=2.25.1' #auto-deps
+	'python-setuptools<66.0.0' #auto-deps
+	'python-setuptools>=65.5.1' #auto-deps
 	'python-urllib3<2.0.0' #auto-deps
 	'python-urllib3>=1.26.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
