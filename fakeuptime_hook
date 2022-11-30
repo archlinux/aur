@@ -3,6 +3,7 @@
 run_latehook() {
     [ "$init" == "/sbin/init" ] && \
     [ -e /new_root/usr/bin/init_fakeuptime.sh ] && \
+    [ -e /new_root/usr/bin/bash ] && \
     export init=/usr/bin/init_fakeuptime.sh
 }
 
