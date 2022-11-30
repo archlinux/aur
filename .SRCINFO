@@ -1,18 +1,16 @@
 pkgbase = gnvim
 	pkgdesc = GUI for neovim, without any web bloat
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/vhakulinen/gnvim
 	arch = x86_64
+	arch = aarch64
 	license = MIT
+	checkdepends = xorg-server-xvfb
 	makedepends = cargo
-	makedepends = rust
-	makedepends = git
 	depends = neovim
-	depends = gtk3
-	depends = webkit2gtk
-	source = gnvim-0.1.6::git+https://github.com/vhakulinen/gnvim.git#tag=v0.1.6
-	sha512sums = SKIP
+	depends = gtk4
+	source = https://github.com/vhakulinen/gnvim/archive/v0.2.0/gnvim-0.2.0.tar.gz
+	sha256sums = abacc674ed142b2c807d21b00a2324b32d9babcec1f25a95446d01e3eb0fa386
 
 pkgname = gnvim
-

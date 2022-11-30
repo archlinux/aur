@@ -1,34 +1,42 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: DaZ <daz.root+arch@gmail.com>
 
 pkgname=gnvim
-url="https://github.com/vhakulinen/gnvim"
-pkgdesc="GUI for neovim, without any web bloat"
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
-arch=('x86_64')
-license=('MIT')
-depends=('neovim' 'gtk3' 'webkit2gtk')
-makedepends=('cargo' 'rust' 'git')
-source=("gnvim-${pkgver}::git+https://github.com/vhakulinen/gnvim.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+pkgdesc="GUI for neovim, without any web bloat"
+url="https://github.com/vhakulinen/$pkgname"
+arch=(x86_64 aarch64)
+license=(MIT)
+depends=(neovim
+         gtk4)
+makedepends=(cargo)
+checkdepends=(xorg-server-xvfb)
+_archive=("$pkgname-$pkgver")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('abacc674ed142b2c807d21b00a2324b32d9babcec1f25a95446d01e3eb0fa386')
 
 prepare() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    sed -i s';/usr/local/share/gnvim/runtime;/usr/share/gnvim/runtime;' src/main.rs
+	cd "$_archive"
+	sed -e 's#/usr/local#/usr#' -i ui/src/arguments.rs
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    cargo build --release --locked
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    cargo test --release --locked
+	cd "$_archive"
+	export RUSTUP_TOOLCHAIN=stable
+	xvfb-run cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    make PREFIX="/usr" DESTDIR="$pkgdir/" install
+	cd "$_archive"
+	make PREFIX="/usr" DESTDIR="$pkgdir/" install
 }
