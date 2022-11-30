@@ -1,7 +1,7 @@
 pkgbase = meikade
 	pkgdesc = Meikade is a poetry application
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aseman-Land/Meikade
 	arch = x86_64
 	license = GPL3
