@@ -1,6 +1,6 @@
 pkgbase = nodejs-whistle-plugins-inspect
 	pkgdesc = 集成 vConsole、eruda、mdebug 等调试H5页面工具的插件
-	pkgver = 2.2.5
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://github.com/whistle-plugins/whistle.inspect
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-whistle-plugins-inspect
 	depends = nodejs
 	depends = npm
 	depends = nodejs-whistle
-	noextract = whistle.inspect-2.2.5.tgz
-	source = https://registry.npmjs.org/whistle.inspect/-/whistle.inspect-2.2.5.tgz
-	sha1sums = 81274bdc138bea57e57f9d6a1f1e2cef25613878
+	noextract = whistle.inspect-2.2.6.tgz
+	source = https://registry.npmjs.org/whistle.inspect/-/whistle.inspect-2.2.6.tgz
+	sha1sums = 3a1eaee89567f0db1ff35356d2b5c434bc097017
 
 pkgname = nodejs-whistle-plugins-inspect
