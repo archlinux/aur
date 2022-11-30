@@ -2,7 +2,7 @@
 
 pkgname=ruby-cucumber-compatibility-kit
 pkgver=11.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
@@ -12,6 +12,11 @@ makedepends=(npm)
 options=(!emptydirs)
 source=(https://github.com/cucumber/compatibility-kit/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('d9ae3e2362253f77207b47938f2457265a3fb5cb3ecf02666a64953028f07622')
+
+prepare() {
+  cd compatibility-kit-$pkgver/ruby
+  sed -i 's|~>|>=|' cucumber-compatibility-kit.gemspec
+}
 
 build() {
   local _gemdir="$(gem env gemdir)"
