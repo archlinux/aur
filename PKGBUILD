@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=polyorb
-pkgver=20220727
+pkgver=20221130
 pkgrel=1
 pkgdesc="Provides the Distributed Systems Annex (DSA) to build distributed applications with Ada."
 
@@ -14,7 +14,7 @@ makedepends=('gprbuild' 'autoconf' 'python-sphinx' 'texlive-core' 'texlive-latex
 source=(https://github.com/AdaCore/PolyORB/archive/refs/heads/master.zip
         patch-Makefile.in)
 
-sha256sums=('ababafe32624c0ece5dfa2ff710e6d90ceb97e4fc918af5113c47e8c6f07dd17'
+sha256sums=('38432355373646713714371148d0984408be50c242a9dd30415ffbe873962206'
             'c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a')
 
 
