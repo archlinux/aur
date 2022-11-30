@@ -1,11 +1,11 @@
 pkgbase = argo
 	pkgdesc = Workflow engine for Kubernetes
-	pkgver = 3.4.3
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://github.com/argoproj/argo-workflows
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/argo-linux-amd64.gz
-	sha256sums = 834a1cc0972a8810dfc39469b176d4dead17b0bc29968974da52d89b59357ac2
+	source = https://github.com/argoproj/argo-workflows/releases/download/v3.4.4/argo-linux-amd64.gz
+	sha256sums = b5d9b07d4749d95213ecdb0c866fb6e8748b9b58e099a1e43a5e78c89673029e
 
 pkgname = argo
