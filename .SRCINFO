@@ -1,7 +1,7 @@
 pkgbase = eruption
 	pkgdesc = Realtime RGB LED Driver for Linux
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://eruption-project.org/
 	install = eruption.install
 	arch = i686
