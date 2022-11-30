@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname="bambustudio"
-pkgver=1.3.0.12
+pkgver=1.3.0.25
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   'CMakeLists.txt.patch'
   'bambu-studio.sh'
   )
-sha512sums=('09b7f84a2bb670e2645711850d7ea33a7e09855cfb180aae88208247142217ce222df1773a42fffc876f66b3a7468a33ad99786727f32692827e8025ffeb8af0'
+sha512sums=('87add86e403a21f55e9ce58d5847ea4e4cd144166161482edfae2724c7169ffdda369b45345ae48de7784c43a342809b67cede66ebc00e67501a13abc85595b4'
             '419e7ffb8044531a1c78cd191a96c11f719b439afce674f7e31d1d2e0dc57ecc03cea27ab4ad5ee6522606630fd59ac1745b9a1b787db14893561a4495806117'
             '8682e3b11271ae09587298f4737b987a589db05e049c3f4699951d710c6263e6016ee2287b050143336b9b24d70d206a1d7c5396bf74a5ccf092af6e1491ff54'
             'e3cb1b072754ae6443fa136fffa263761b5e4e3da5dca1e91b7c4d577daaf01afa0affde04f1355fc404fcd336852db4ce8dc57938833f864346a0b17c12d6d6')
