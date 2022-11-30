@@ -2,7 +2,7 @@
 
 pkgname=typesettersdesk-git
 _pkgname=typesettersdesk
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Manage your typesetting projects"
 arch=('x86_64')
