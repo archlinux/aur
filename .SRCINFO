@@ -1,6 +1,6 @@
 pkgbase = gnome-voice
 	pkgdesc = Voice is Public Voice Communication Software for GNOME 43 more information on on https://wiki.gnome.org/Apps/Voice and http://www.gnomevoice.org/
-	pkgver = 0.5.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Voice
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gnome-voice
 	depends = geoclue
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
-	source = https://download.gnome.org/sources/gnome-voice/0.5/gnome-voice-0.5.0.tar.xz
-	sha256sums = 0c74cbc1c19206738eaae1375f220b1a34f5ba5de8d39b47e65422eb8b5cae23
+	source = https://download.gnome.org/sources/gnome-voice/1.2/gnome-voice-1.2.0.tar.xz
+	sha256sums = a803cbc1f2433bb696b56f4ffa565a7216f3f416e4150f625eb6a30e4a165324
 
 pkgname = gnome-voice
