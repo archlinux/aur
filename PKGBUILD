@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 pkgname=scanservjs
 pkgver=2.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SANE scanner nodejs web ui"
 arch=('any')
 url="https://github.com/sbs20/scanservjs"
@@ -20,6 +20,7 @@ sha512sums=('148ad273afe9a66a1d1fcb53dcb4226a824e9aefedb49ef90e72d0dffcbeea586e8
 build() {
     cd scanservjs-${pkgver}
 
+    export NODE_OPTIONS=--openssl-legacy-provider
     npm run install
     npm run build
 
