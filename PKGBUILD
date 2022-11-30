@@ -6,7 +6,7 @@
 pkgname=plots
 _name=Plots
 
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
 
@@ -31,7 +31,7 @@ checkdepends=('python-pytest')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_name/archive/v$pkgver.tar.gz"
 )
-sha256sums=('23f9cb614bbdf4f0eb1fafc7fe3aeb68579a9d10275f71ab1ca5ec8817a3b15f')
+sha256sums=('7dad515899ea2a224215d524b848b8e0c166452e9dddb79e80c4b3f85d569255')
 
 build() {
     cd "$_name-$pkgver"
