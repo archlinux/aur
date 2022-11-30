@@ -4,7 +4,7 @@
 
 
 pkgname=trakt-scrobbler
-pkgver=1.6.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -34,7 +34,10 @@ depends=(
 )
 
 makedepends=(
-    python-setuptools
+    python-poetry-core
+    python-build
+    python-installer
+    python-wheel
     go-md2man
     gzip
 )
@@ -55,14 +58,18 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    python setup.py build
+    python -m build --no-isolation --wheel
     go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
 }
 
 package()
 {
     cd "$srcdir/$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    _py=$(python --version)
+    _py=${_py%%.*}
+
+    python -m installer --destdir="$pkgdir" \
+		"dist/${pkgname//-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
     install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
     install -Dm755 "completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
 }
