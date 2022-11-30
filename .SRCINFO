@@ -1,0 +1,17 @@
+pkgbase = arm-none-eabi-picolibc
+	pkgdesc = Fork of newlib with stdio bits from avrlibc
+	pkgver = 1.7.9
+	pkgrel = 1
+	url = https://github.com/picolibc/picolibc
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = arm-none-eabi-gcc
+	makedepends = meson
+	conflicts = arm-none-eabi-newlib
+	options = !strip
+	options = !buildflags
+	source = picolibc-1.7.9.tar.gz::https://github.com/picolibc/picolibc/archive/1.7.9.tar.gz
+	sha256sums = ad08e5b849a7c64338896f99177a0215cd47a805efcdf625eb4c9bc1b39bd1d3
+
+pkgname = arm-none-eabi-picolibc
