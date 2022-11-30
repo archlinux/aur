@@ -1,14 +1,11 @@
 # Maintainer: Malacology <guoyizhang at malacology dot net>
-# Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=morphoj
 pkgver=1.08.0
-pkgrel=1
+pkgrel=3
 pkgdesc="MorphoJ is an integrated program package for doing geometric morphometrics. https://doi.org/10.1111/j.1755-0998.2010.02924.x"
 arch=('x86_64')
-depends=(
-	'java-runtime'
-)
+depends=('java-runtime=11')
 url="https://morphometrics.uk/MorphoJ_page.html"
 license=('Apache License version 2')
 source=("https://morphometrics.uk/MorphoJ_stuff/download.php?get=MorphoJ-installer_Unix_Linux.jar" "MorphoJ.desktop" "MorphoJ")
