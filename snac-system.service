@@ -1,0 +1,16 @@
+[Unit]
+Description=A simple, minimalistic ActivityPub instance
+Documentation=https://codeberg.org/grunfink/snac2/src/branch/master/doc
+After=network.target
+Wants=network-online.target
+
+[Service]
+DynamicUser=yes
+User=snac
+Group=snac
+StateDirectory=snac
+ExecStart=/usr/bin/snac httpd /var/lib/snac
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

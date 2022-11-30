@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!snac.install
+!snac-system.service
+!snac-user.service
+!.SRCINFO

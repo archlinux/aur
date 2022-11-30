@@ -1,0 +1,17 @@
+post_install() {
+  echo "Remember that you must create snac configuration before first run."
+  echo
+  echo "To run with system unit:"
+  echo "# snac init /var/lib/snac"
+  echo
+  echo "To run with user unit (note that SNAC_DATA can point to wherever you want):"
+  echo "$ mkdir -p ~/.config/snac/"
+  echo "$ echo \"SNAC_DATA=/home/user/.local/share/snac\" > ~/.config/snac/snac.conf"
+  echo "$ snac init /home/user/.local/share/snac"
+}
+
+post_remove() {
+  echo "Remember that the following files and directories aren't removed."
+  echo " -> /var/lib/snac"
+  echo " -> /var/lib/private/snac"
+}

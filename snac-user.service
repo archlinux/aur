@@ -1,0 +1,13 @@
+[Unit]
+Description=A simple, minimalistic ActivityPub instance
+Documentation=https://codeberg.org/grunfink/snac2/src/branch/master/doc
+After=network.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=%E/snac/snac.conf
+ExecStart=/usr/bin/snac httpd $SNAC_DATA
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
