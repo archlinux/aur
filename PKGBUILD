@@ -2,7 +2,7 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgbase=taxondna
-pkgname=('sequencematrix' 'speciesidentifier' 'genbankexplorer')
+pkgname=('speciesidentifier' 'genbankexplorer')
 pkg0=TaxonDNA
 pkg1=SequenceMatrix
 pkg2=SpeciesIdentifier
@@ -27,10 +27,10 @@ build () {
   cd $pkgbase-$pkgver
   mvn package
 }
-package_sequencematrix () {
-  install -Dm755 ${srcdir}/$pkgname.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"
-  install -Dm755 ${srcdir}/$pkgbase-$pkgver/target/$pkg0-$pkgver-$pkg1.jar ${pkgdir}/usr/share/$pkgname/$pkgname.jar
-}
+#package_sequencematrix () {
+#  install -Dm755 ${srcdir}/$pkgname.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"
+#  install -Dm755 ${srcdir}/$pkgbase-$pkgver/target/$pkg0-$pkgver-$pkg1.jar ${pkgdir}/usr/share/$pkgname/$pkgname.jar
+#}
 
 package_speciesidentifier () {
  install -Dm755 ${srcdir}/$pkgname.desktop "${pkgdir}/usr/share/applications/$pkgname.desktop"

@@ -16,8 +16,6 @@ pkgbase = taxondna
 	sha256sums = 9ceb29dfe8bab70723a5876745f345e29ca7b37884da4f67b2dbe042cdc46fe3
 	sha256sums = 0b786535540f3adf3f979fb6af824238b2bd0f8bcb9c5721b0065bb35563e65d
 
-pkgname = sequencematrix
-
 pkgname = speciesidentifier
 
 pkgname = genbankexplorer
