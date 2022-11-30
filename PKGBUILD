@@ -4,7 +4,7 @@ pkgname=cura-5-bin
 _pkgname=cura-5-bin
 _shortname=cura5
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Cura is an open source slicing application for 3D printers'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -25,7 +25,7 @@ source=(
 
 sha256sums=('0da9e05892492763f6aa056cb470c7d07658920020ad1322655c44e4fccbe7fa'
             'f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d'
-            'a6e48b9d24ff90fee3feaf9782ca9f264d67b225854473b3d12b3340f409a44d'
+            '33b2b9bdadb30f3124137a03e4a64eccf381b7600aa79bf82fd094c0ac9b1432'
             '076fee81d82b5ae55e44d230adef79cf944f51befb76f30074195ac18dd7e16a')
    
 prepare() {
