@@ -1,0 +1,65 @@
+post_install() {
+    echo
+    echo '!! Now you have to add librewolf to your PSD config !!'
+    echo
+    echo 'Edit:'
+    echo
+    echo '  ~/.config/psd/psd.conf'
+    echo
+    echo 'For example:'
+    echo
+    echo '  BROWSERS(firefox librewolf)'
+    echo
+    echo 'or just:'
+    echo
+    echo '  BROWSERS(librewolf)'
+    echo
+    echo 'Then Close all Browser windows and (re)start PSD:'
+    echo
+    echo '  systemctl --user restart psd.service'
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo '!! Make sure you have librewolf in your PSD config !!'
+    echo
+    echo 'Edit:'
+    echo
+    echo '  ~/.config/psd/psd.conf'
+    echo
+    echo 'For example:'
+    echo
+    echo '  BROWSERS(firefox librewolf)'
+    echo
+    echo 'or just:'
+    echo
+    echo '  BROWSERS(librewolf)'
+    echo
+    echo 'Then Close all Browser windows and (re)start PSD:'
+    echo
+    echo '  systemctl --user restart psd.service'
+    echo
+}
+
+post_remove() {
+    echo
+    echo '!! Dont forget to remove librewolf from your PSD config !!'
+    echo
+    echo 'Edit:'
+    echo
+    echo '  ~/.config/psd/psd.conf'
+    echo
+    echo 'Change:'
+    echo
+    echo '  BROWSERS(firefox librewolf)'
+    echo
+    echo 'to:'
+    echo
+    echo '  BROWSERS(firefox)'
+    echo
+    echo 'Then Close all Browser windows and (re)start PSD:'
+    echo
+    echo '  systemctl --user restart psd.service'
+    echo
+}
