@@ -5,7 +5,7 @@
 
 pkgname=featherpad-qt5
 _pkgname=featherpad
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Lightweight Qt5 plain text editor'
 arch=('any')
@@ -17,7 +17,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://github.com/tsujan/FeatherPad/releases/download/V$pkgver/FeatherPad-$pkgver.tar.xz"{,.asc}
         'featherpad.appdata.xml')
-sha256sums=('1be94e5112fec3b8305f5c3cb2f62a2262c1df6a773a03d599507e5a31521ab8'
+sha256sums=('7c0c508a9900193582d8f60af4ec87c23173c73afdf371299bc1e88d8336718b'
             'SKIP'
             'd67bc310f4c31257b795beabbce2d0887640088b0fe3040307906da0d9f760d9')
 validpgpkeys=('19DFDF3A579BD509DBB572D8BE793007AD22DF7E')
