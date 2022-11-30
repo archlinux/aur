@@ -1,7 +1,7 @@
 # Maintainer: Julian Mac Kenzie <jukiangm@gmail.com>
 
 pkgname=netflix-nativefier
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=0
 pkgdesc="Netflix desktop built with nativefier"
 arch=('x86_64')
