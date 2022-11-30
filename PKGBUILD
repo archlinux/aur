@@ -2,7 +2,7 @@
 
 _pkgname=litepcie
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable PCIe core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex' 'python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-litex-boards')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f7186b426023305ea4a40dfa93608474c737554098a4c60cd80050b72dd4a255bd621b53f04d7f88983a1e125e4f41ab541344ce625ce867b82bd0fc5add0f96')
+sha512sums=('dbfecb9a3c47cb0ad3711bb7881557b8b1d598bfff87835ca6d7fda15b2a991797a675690da11b1fe46f3cf2a98ca3f2be35193e63b9e596bb1d697dde70a941')
 
 build() {
   cd $_pkgname-$pkgver
