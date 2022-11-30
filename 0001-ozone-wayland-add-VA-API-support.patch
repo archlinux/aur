@@ -113,10 +113,10 @@ index 84ebcba..dfb2675 100644
  
  }  // namespace ui
 diff --git a/ui/ozone/platform/wayland/ozone_platform_wayland.cc b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-index afbd464..189678f 100644
+index 6a6ab20..60aaef2 100644
 --- a/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 +++ b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-@@ -295,6 +295,9 @@ class OzonePlatformWayland : public OzonePlatform,
+@@ -296,6 +296,9 @@ class OzonePlatformWayland : public OzonePlatform,
        properties->supports_global_screen_coordinates =
            features::IsWaylandScreenCoordinatesEnabled();
  
