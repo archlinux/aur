@@ -14,7 +14,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.61.5.gc933c5ed7
+pkgver=0.3.61.8.g75007ae94
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -87,7 +87,8 @@ build() {
     -D jack-devel=true \
     -D libjack-path=/usr/lib \
     -D session-managers=[] \
-    -D bluez5-codec-lc3plus=disabled
+    -D bluez5-codec-lc3plus=disabled \
+    -D volume=enabled
 
   meson compile -C build
 }
