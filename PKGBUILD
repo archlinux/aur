@@ -169,12 +169,6 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  # 2022-09-27 fmt>9 has deprecated an API that is used extensively throughout
-  # the code base. See:
-  # Upstream: https://tracker.ceph.com/issues/56610
-  # Debian: https://salsa.debian.org/ceph-team/ceph/-/merge_requests/9
-  CPPFLAGS+=' -DFMT_DEPRECATED_OSTREAM'
-
   export CFLAGS+=" ${CPPFLAGS}"
   export CXXFLAGS+=" ${CPPFLAGS}"
   export CMAKE_BUILD_TYPE='RelWithDebInfo'
