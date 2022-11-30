@@ -1,0 +1,21 @@
+pkgbase = kooha-git
+	pkgdesc = Elegantly record your screen
+	pkgver = 2.2.2.r13.g705e8dc
+	pkgrel = 1
+	url = https://github.com/SeaDve/kooha
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = meson
+	depends = gst-plugin-pipewire
+	depends = gstreamer-vaapi
+	depends = gst-plugins-ugly
+	depends = gtk4
+	depends = libadwaita
+	depends = x264
+	depends = xdg-desktop-portal
+	depends = libpulse
+	source = git+https://github.com/SeaDve/kooha
+	b2sums = SKIP
+
+pkgname = kooha-git
