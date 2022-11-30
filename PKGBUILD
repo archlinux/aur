@@ -3,7 +3,7 @@
 pkgname='eruption'
 _pkgname='eruption'
 pkgdesc='Realtime RGB LED Driver for Linux'
-pkgver='0.2.0'
+pkgver='0.3.0'
 pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://eruption-project.org/'
@@ -13,22 +13,23 @@ makedepends=('git' 'rust' 'pkgconf' 'cmake' 'protobuf' 'xorg-server-devel' 'libx
 provides=('eruption')
 conflicts=('eruption-git' 'eruption-roccat-vulcan-git')
 replaces=('eruption-roccat-vulcan')
-backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/audio-proxy.conf)
+backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/fx-proxy.conf etc/eruption/audio-proxy.conf usr/share/eruption/scripts/lib/keymaps/default.keymap)
 install='eruption.install'
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/${pkgname}/archive/refs/heads/releases/v${pkgver}.tar.gz")
-sha512sums=('4ecb7673af590ce376ddee8d5fc4de394c3b08d8be46c564b5f0265ecd078e69234f408e7fab2c9f16ae5f6af485aa088901e7b143bf164b04abb4dc51ebd6ed')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/X3n0m0rph59/eruption/archive/refs/heads/releases/v0.3.tar.gz")
+sha256sums=('ab20260507afeaa8ca83fd388631a0f217a75ff38a2b6fa5c5ce383d544be0ff')
 
 build() {
-    cd "$_pkgname-releases-v${pkgver}"
+    cd "eruption-releases-v0.3"
 
-    CARGO_INCREMENTAL=0 cargo build --all --release --features=sourceview
+    CARGO_INCREMENTAL=0 cargo build --release
 }
 
 package() {
-    cd "$_pkgname-releases-v${pkgver}"
+    cd "eruption-releases-v0.3"
 
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc/eruption"
+    mkdir -p "$pkgdir/etc/profile.d"
     mkdir -p "$pkgdir/usr/share/doc/eruption"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/macros"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/themes"
@@ -40,7 +41,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/applications"
     mkdir -p "$pkgdir/usr/share/icons/hicolor/64x64/apps"
-    mkdir -p "$pkgdir/usr/share/eruption-gui/schemas"
+    mkdir -p "$pkgdir/usr/share/eruption-gui-gtk3/schemas"
 
     mkdir -p "$pkgdir/var/lib/eruption/profiles"
 
@@ -72,28 +73,36 @@ package() {
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-hwutil" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-macro" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-keymap" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-netfx" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-cmd" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-util" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-debug-tool" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-hotplug-helper" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-fx-proxy" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-audio-proxy" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruption-process-monitor" "$pkgdir/usr/bin/"
-    install -m 755 "target/release/eruption-gui" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-gui-gtk3" "$pkgdir/usr/bin/"
 
-    install -m 644 "support/assets/eruption-gui/eruption-gui.desktop" "$pkgdir/usr/share/applications/"
-    install -m 644 "support/assets/eruption-gui/eruption-gui.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/"
-    install -m 644 "eruption-gui/schemas/gschemas.compiled" "$pkgdir/usr/share/eruption-gui/schemas/"
+    install -m 644 "support/assets/eruption-gui-gtk3/eruption-gui-gtk3.desktop" "$pkgdir/usr/share/applications/"
+    install -m 644 "support/assets/eruption-gui-gtk3/eruption-gui.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/"
+    install -m 644 "eruption-gui-gtk3/schemas/gschemas.compiled" "$pkgdir/usr/share/eruption-gui-gtk3/schemas/"
 
     install -m 755 "support/systemd/eruption-suspend.sh" "$pkgdir/usr/lib/systemd/system-sleep/eruption"
 
     install -m 644 "support/config/eruption.conf" "$pkgdir/etc/eruption/"
+    install -m 644 "support/config/fx-proxy.conf" "$pkgdir/etc/eruption/"
     install -m 644 "support/config/audio-proxy.conf" "$pkgdir/etc/eruption/"
     install -m 644 "support/config/process-monitor.conf" "$pkgdir/etc/eruption/"
 
+    install -m 644 "support/profile.d/eruption.sh" "$pkgdir/etc/profile.d/"
+
     install -m 644 "support/systemd/eruption.service" "$pkgdir/usr/lib/systemd/system/"
     install -m 644 "support/systemd/eruption.preset" "$pkgdir/usr/lib/systemd/system-preset/50-eruption.preset"
+
+    install -m 644 "support/systemd/eruption-fx-proxy.service" "$pkgdir/usr/lib/systemd/user/"
+    install -m 644 "support/systemd/eruption-fx-proxy.preset" "$pkgdir/usr/lib/systemd/user-preset/50-eruption-fx-proxy.preset"
 
     install -m 644 "support/systemd/eruption-audio-proxy.service" "$pkgdir/usr/lib/systemd/user/"
     install -m 644 "support/systemd/eruption-audio-proxy.preset" "$pkgdir/usr/lib/systemd/user-preset/50-eruption-audio-proxy.preset"
@@ -108,6 +117,7 @@ package() {
 
     install -m 644 "support/dbus/org.eruption.control.conf" "$pkgdir/usr/share/dbus-1/system.d/"
     install -m 644 "support/dbus/org.eruption.process_monitor.conf" "$pkgdir/usr/share/dbus-1/session.d/"
+    install -m 644 "support/dbus/org.eruption.fx_proxy.conf" "$pkgdir/usr/share/dbus-1/session.d/"
 
     install -m 644 "support/policykit/org.eruption.policy" "$pkgdir/usr/share/polkit-1/actions/"
 
@@ -117,16 +127,20 @@ package() {
     install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"
     install -m 644 "support/man/process-monitor.conf.5" "$pkgdir/usr/share/man/man5/"
     install -m 644 "support/man/eruptionctl.1" "$pkgdir/usr/share/man/man1/"
+    install -m 644 "support/man/eruption-macro.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-keymap.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-netfx.1" "$pkgdir/usr/share/man/man1/"
+    install -m 644 "support/man/eruption-fx-proxy.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-audio-proxy.1" "$pkgdir/usr/share/man/man1/"
     install -m 644 "support/man/eruption-process-monitor.1" "$pkgdir/usr/share/man/man1/"
 
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-cmd"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-hwutil"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-debug-tool"
-    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-macro.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-macro"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-keymap"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-fx-proxy.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-fx-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-audio-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruption-process-monitor"
     install -m 644 -T "support/shell/completions/en_US/eruptionctl.bash-completion" "$pkgdir/usr/share/bash-completion/completions/eruptionctl"
@@ -134,8 +148,10 @@ package() {
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-cmd.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-hwutil.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-debug-tool.fish"
-    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-netfx.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-macro.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-macro.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-keymap.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-netfx.fish"
+    install -m 644 -T "support/shell/completions/en_US/eruption-fx-proxy.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-fx-proxy.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-audio-proxy.fish"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.fish-completion" "$pkgdir/usr/share/fish/completions/eruption-process-monitor.fish"
     install -m 644 -T "support/shell/completions/en_US/eruptionctl.fish-completion" "$pkgdir/usr/share/fish/completions/eruptionctl.fish"
@@ -143,8 +159,10 @@ package() {
     install -m 644 -T "support/shell/completions/en_US/eruption-cmd.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-cmd"
     install -m 644 -T "support/shell/completions/en_US/eruption-hwutil.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-hwutil"
     install -m 644 -T "support/shell/completions/en_US/eruption-debug-tool.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-debug-tool"
-    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-macro.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-macro"
+    install -m 644 -T "support/shell/completions/en_US/eruption-keymap.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-keymap"
     install -m 644 -T "support/shell/completions/en_US/eruption-netfx.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-netfx"
+    install -m 644 -T "support/shell/completions/en_US/eruption-fx-proxy.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-fx-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-audio-proxy.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-audio-proxy"
     install -m 644 -T "support/shell/completions/en_US/eruption-process-monitor.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruption-process-monitor"
     install -m 644 -T "support/shell/completions/en_US/eruptionctl.zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_eruptionctl"
@@ -231,6 +249,8 @@ package() {
     install -m 644 "eruption/src/scripts/shockwave.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/solid.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/solid.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/stock-gradient.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/stock-gradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/stripes.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/stripes.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/sysmon.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -264,6 +284,7 @@ package() {
     install -m 644 "eruption/src/scripts/lib/queue.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "eruption/src/scripts/lib/utilities.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
     install -m 644 "eruption/src/scripts/lib/declarations.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
+    install -m 644 "eruption/src/scripts/lib/keymaps/default.keymap" "$pkgdir/usr/share/eruption/scripts/lib/keymaps/"
     install -m 644 "eruption/src/scripts/lib/keymaps/default.lua" "$pkgdir/usr/share/eruption/scripts/lib/keymaps/"
     install -m 644 "eruption/src/scripts/lib/themes/default.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
     install -m 644 "eruption/src/scripts/lib/themes/gaming.lua" "$pkgdir/usr/share/eruption/scripts/lib/themes/"
@@ -342,6 +363,7 @@ package() {
     install -m 644 "support/profiles/psychedelic.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/twinkle.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/rainbow-vertical.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/red-fx.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/red-wave.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
