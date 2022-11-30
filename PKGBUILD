@@ -7,8 +7,8 @@
 
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
-pkgver=8.050.03
-pkgrel=4
+pkgver=8.051.02
+pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/r8168"
 license=("GPL")
@@ -18,20 +18,14 @@ makedepends=('git')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git"
-        "dkms.conf"
-        "linux-5.18.patch"
-        'linux-5.19.patch')
+        "dkms.conf")
 sha256sums=('SKIP'
-            'd37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3'
-            'd8d542770e504775600f686d03412a37cc32489872be7aeb388b5b08d9806096'
-            'f5e08919764bc56d4f11b23fcb7cece663cae3f591992a0ca2be760e6890a9f8')
+            'd37b8acbd4fe06f81538581712a04751a96fc37bad3a4bd3ae8329f8744c49b3')
 install=r8168-dkms.install
 
-prepare() {
-	cd "$pkgname"
-	patch -Np1 -i '../linux-5.18.patch'
-	patch -Np1 -i '../linux-5.19.patch'
-}
+#prepare() {
+#	cd "$pkgname"
+#}
 
 package() {
 	install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
