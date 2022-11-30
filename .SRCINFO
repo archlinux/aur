@@ -1,0 +1,24 @@
+pkgbase = base16-console
+	pkgdesc = Base16 themes for the console and shell dialog
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/masala-man/base16-console
+	install = base16-console.install
+	arch = any
+	license = GPL
+	depends = systemd
+	backup = etc/systemd/system/getty@.service.d/base16-console.conf
+	source = base16-console
+	source = base16-console.conf
+	source = base16-console@.service
+	source = dialogrc
+	source = base16_themes.tar.gz
+	source = base16consolerc
+	sha256sums = 0ab6e6aeee2afa48de3cce227514e8b5dcdf3cb80abab8ed1d3b2ee656abf73d
+	sha256sums = 66aee44f5a4e5de336f06d2971ae06aa3aa7c6bbf21dab4bf264c2e9a52e95db
+	sha256sums = 7170139965a37e0b67928dd25445d2e3474c2f2fc32a6786025889c887427351
+	sha256sums = 18e6a369c2523da4f05607fd76e47ccf1fb3f2f32f5ba846fdf238aa0a7e7fea
+	sha256sums = 3cee8553d3d20ddb3663fe8840926dcdd6e50800ad8149e4244b5786c7de6f47
+	sha256sums = 0659477ee6d0dda1beb00dd30ef5a283d800ec4816e2b5b3b172d3d7368d8559
+
+pkgname = base16-console

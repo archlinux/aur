@@ -1,0 +1,3 @@
+#!/bin/sh
+# Put your theme of choice here
+B16C_CURRENT_THEME=material-darker

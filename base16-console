@@ -1,0 +1,27 @@
+#!/usr/bin/sh
+#
+# base16 color schemes for the console, modified from maia-console by @oberon
+# Provided under the GNU General Public License
+# as published by the Free Software Foundation.
+
+TERM=linux
+
+. /etc/base16consolerc
+. /usr/share/base16-console/themes/base16-$B16C_CURRENT_THEME.sh
+
+echo -en "\e]P0$color00"
+echo -en "\e]P1$color01"
+echo -en "\e]P2$color02"
+echo -en "\e]P3$color03"
+echo -en "\e]P4$color04"
+echo -en "\e]P5$color05"
+echo -en "\e]P6$color06"
+echo -en "\e]P7$color07"
+echo -en "\e]P8$color08"
+echo -en "\e]P9$color09"
+echo -en "\e]Pa$color10"
+echo -en "\e]Pb$color11"
+echo -en "\e]Pc$color12"
+echo -en "\e]Pd$color13"
+echo -en "\e]Pe$color14"
+echo -en "\e]Pf$color15"

@@ -1,0 +1,55 @@
+# Provided under the GNU General Public License
+# as published by the Free Software Foundation.
+#
+# Shell dialog style by @oberon, modified by @masala-man to be used in base16-console.
+# To achieve the same in the terminal you need to configure your terminal emulator.
+
+screen_color = (green,black,off)
+dialog_color = (white,yellow,off)
+title_color = (green,yellow,on)
+border_color = dialog_color
+shadow_color = (black,black,on)
+
+button_inactive_color = dialog_color
+button_key_inactive_color = dialog_color
+button_label_inactive_color = dialog_color
+
+button_active_color = (white,blue,on)
+button_key_active_color = button_active_color
+button_label_active_color = (black,blue,on)
+tag_key_selected_color = (white,black,on)
+item_selected_color = tag_key_selected_color
+
+form_text_color = (yellow,green,on)
+form_item_readonly_color = (green,yellow,on)
+
+itemhelp_color = (white,blue,off)
+
+inputbox_color = dialog_color
+inputbox_border_color = dialog_color
+searchbox_color = dialog_color
+searchbox_title_color = title_color
+searchbox_border_color = border_color
+position_indicator_color = title_color
+menubox_color = dialog_color
+menubox_border_color = border_color
+item_color = dialog_color
+tag_color = title_color
+tag_selected_color = button_label_active_color
+tag_key_color = button_key_inactive_color
+check_color = dialog_color
+check_selected_color = button_active_color
+uarrow_color = screen_color
+darrow_color = screen_color
+form_active_text_color = button_active_color
+gauge_color = title_color
+border2_color = dialog_color
+searchbox_border2_color = dialog_color
+menubox_border2_color = dialog_color
+
+aspect = 0
+separate_widget = ""
+tab_len = 0
+visit_items = off
+use_shadow = off
+use_colors = on

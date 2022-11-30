@@ -1,0 +1,13 @@
+[Unit]
+Description=base16 color schemes for the console
+After=getty@%i.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/base16-console
+StandardOutput=tty
+TTYPath=/dev/%i
+TTYVTDisallocate=yes
+
+[Install]
+WantedBy=getty@%i.service
