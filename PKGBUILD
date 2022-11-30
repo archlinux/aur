@@ -5,7 +5,7 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.22
-pkgrel=2
+pkgrel=3
 epoch=1
 
 _modname="${pkgname#nginx-mainline-mod-}"

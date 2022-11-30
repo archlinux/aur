@@ -19,3 +19,4 @@
 !PKGBUILD
 !cookie.patch
 !.gitignore
+!nginx-mainline-mod-lua-1:0.10.22-1-x86_64.pkg.tar.zst
