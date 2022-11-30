@@ -1,7 +1,7 @@
 pkgbase = viber
 	pkgdesc = Proprietary cross-platform IM and VoIP software
 	pkgver = 18.2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.viber.com
 	arch = x86_64
 	license = custom
@@ -24,7 +24,7 @@ pkgbase = viber
 	depends = gst-plugins-bad
 	depends = gst-libav
 	depends = libxslt
-	depends = openssl-1.0
+	depends = openssl-1.1
 	options = !strip
 	source = viber-18.2.0.2.deb::https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 	sha256sums = b63caf7f5aa3cf39cf3bb60fade79ba3f0a8a809f77d1fdd7cabb04ff066eff7
