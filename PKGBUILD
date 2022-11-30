@@ -4,7 +4,7 @@
 pkgname=lceda-pro-bin
 _pkgname=${pkgname%-bin}
 pkgver=1.9.20
-pkgrel=2
+pkgrel=3
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64')
 url="https://pro.lceda.cn/"
@@ -33,7 +33,11 @@ package() {
 
     #bsdtar xf "${srcdir}/${_pkgname}-linux-x64.zip" --strip-components=1 -C  "${pkgdir}/opt/${_pkgname}"
     #bsdtar xf "${srcdir}/${_pkgname}-linux-x64.zip" -C  "${pkgdir}/opt/${_pkgname}"
-    mv ${srcdir}/${_pkgname}-linux-x64/* ${pkgdir}/opt/${_pkgname}
+    if [ "${CARCH}" = "x86_64" ]; then
+        mv ${srcdir}/${_pkgname}-linux-x64/* ${pkgdir}/opt/${_pkgname}
+    elif [ "${CARCH}" = "aarch64" ]; then
+        mv ${srcdir}/${_pkgname}-linux-arm64/* ${pkgdir}/opt/${_pkgname}
+    fi
 
     # icon
     local _icon
