@@ -11,7 +11,7 @@ optdepends=("nordtray-executable-symlink-latest: To make 'nordtray' executable a
 source=("https://github.com/zoli/nordtray/releases/download/${pkgver}/nordtray" "https://github.com/zoli/nordtray/archive/${pkgver}.tar.gz")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-sha256sums=('68f4c532215df43657fb0226bc064fe5e6e6d04f9c701d44df2fa71afbe0cf96' 'SKIP')
+sha256sums=('68f4c532215df43657fb0226bc064fe5e6e6d04f9c701d44df2fa71afbe0cf96' '515a461694e67e56ddfd6c2bf224b913e5027ab9bbe2065feaed47e730eb39fc')
 url='https://github.com/zoli/nordtray/'
 
 package() {

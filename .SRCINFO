@@ -14,6 +14,6 @@ pkgbase = nordtray-bin
 	source = https://github.com/zoli/nordtray/releases/download/0.1.1/nordtray
 	source = https://github.com/zoli/nordtray/archive/0.1.1.tar.gz
 	sha256sums = 68f4c532215df43657fb0226bc064fe5e6e6d04f9c701d44df2fa71afbe0cf96
-	sha256sums = SKIP
+	sha256sums = 515a461694e67e56ddfd6c2bf224b913e5027ab9bbe2065feaed47e730eb39fc
 
 pkgname = nordtray-bin
