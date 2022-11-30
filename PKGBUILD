@@ -2,7 +2,7 @@
 
 _pkgname=litesata
 pkgname=python-$_pkgname
-pkgver=2021.04
+pkgver=2021.08
 pkgrel=1
 pkgdesc='Small footprint and configurable SATA core'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-migen' 'python-litex')
 makedepends=('python-setuptools')
 # checkdepends=('python-pytest-runner') # missing litescope release
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('b0afc2f0b067538ad84fbafffa7629d9d835a88b8f9c44af56dd6bae4a254bd372c1c26b1b46716902f67ffafb4bc9b36ad2d98ec9cde8de8fb4fe2ea82b6fcf')
+sha512sums=('d7590b504633ed11bdd193a76184d0bf81b8a03b04c079134e25b3ee21169fae3bae7f4f099709000b4bcf6f78d8eee42a2147bcb80a2cf0e5bc94f9fed5c33c')
 
 build() {
   cd $_pkgname-$pkgver
