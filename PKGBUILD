@@ -4,13 +4,13 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.6.0.r3918.g360d80c873
+pkgver=10.8.0.alpha5.r1140.g11707f8f08
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-makedepends=('dotnet-sdk>=3' 'npm' 'git')
+makedepends=('dotnet-sdk-6.0' 'npm' 'git')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
@@ -19,7 +19,6 @@ source=('git+https://github.com/jellyfin/jellyfin.git'
         'jellyfin.service'
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
-backup=('etc/conf.d/jellyfin')
 sha512sums=('SKIP'
             'SKIP'
             '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
@@ -45,6 +44,9 @@ build(){
   # Disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+  # Force dotnet to use 6.x when multiple SDKs are installed
+  dotnet new globaljson --sdk-version 6.0.0 --roll-forward latestMinor --force
+
   dotnet build --configuration Release Jellyfin.Server
   # Ideally, this would be run in package() with the --output variable pointing
   # to "$pkgdir"/usr/lib/jellyfin, but this step fails in fakeroot.
@@ -63,7 +65,8 @@ package_jellyfin-git() {
 
 package_jellyfin-server-git() {
   pkgdesc="Jellyfin server component"
-  depends=('dotnet-runtime>=3' 'aspnet-runtime>=3' 'ffmpeg' 'sqlite')
+  depends=('dotnet-runtime-6.0' 'aspnet-runtime-6.0' 'ffmpeg' 'sqlite')
+  backup=('etc/conf.d/jellyfin')
   provides=('jellyfin-server')
   conflicts=('jellyfin-server')
 
