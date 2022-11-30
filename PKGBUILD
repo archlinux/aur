@@ -1,9 +1,9 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 _extname=jiggle
-_uuid=jiggle-dev@jeffchannell.com
+_uuid=jiggle@jeffchannell
 pkgname=gnome-shell-extension-jiggle
 pkgver=8+r38+g436d1cf
-pkgrel=3
+pkgrel=4
 pkgdesc='Gnome extension that highlights the cursor position when the mouse is moved rapidly.'
 arch=('any')
 url='https://github.com/jeffchannell/jiggle'
