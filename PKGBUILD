@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
 
 pkgname=arch-update
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="An update notifier/applier that assists you with important pre/post update tasks."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('yay: AUR support'
 	    'sudo: Privilege elevation'
 	    'doas: Privilege elavation')
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d37d8f50d6168916076d94093c3f90b67309034da226c65eeea69e9110e01f27')
+sha256sums=('e382adaa778e372dab4aa2bceb17b22a0e878b7cc11d0a7a7c71bf83f976560d')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
