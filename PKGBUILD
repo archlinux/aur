@@ -14,7 +14,6 @@ source=("https://github.com/StarterX4/cachyos-themes-sddm/releases/download/${pk
 md5sums=('f2924f3fa96f993abd9d4b06864c62ef')
 
 package() {
-  cd $pkgname-$pkgver
   for t in simplyblack softgrey; do
     install -d "${pkgdir}"/usr/share/sddm/themes/cachyos-$t
     install -Dm644 cachyos-$t/{AUTHORS,COPYING,metadata.desktop,cachyos.png,cachyOSGreentext.png,background.png,Main.qml,screenshot.png,angle-down.png,theme.conf} \
