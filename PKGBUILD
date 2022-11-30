@@ -4,8 +4,8 @@
 
 pkgbase='ceph'
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
-pkgver=17.2.6
-pkgrel=4
+pkgver=18.2.0
+pkgrel=1
 url='https://ceph.com/'
 arch=('x86_64')
 license=('GPL')
@@ -111,7 +111,7 @@ source=(
   # pattern
   'ceph-18.2.0-backport-log-runway-expansion.patch'
 )
-sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0882e1c67007a780e1c25754e9bc6e760cc10f60ea1183263f8504ef2dbd9b'
+sha512sums=('fe6a3ca4227cc05b5effc33a02670c466583ec9e4c7c025241248223992254e6e6551d7db486d5ead36bf0ba922d54e0aabc2aaf456d4593679376ec88bd971a'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             '41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
