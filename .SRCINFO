@@ -1,0 +1,13 @@
+pkgbase = libsdrplay-armv7h
+	pkgdesc = Modules for the SDRplay receiver
+	pkgver = 3.07.2
+	pkgrel = 1
+	url = http://www.sdrplay.com
+	arch = armv7h
+	license = custom:EULA
+	depends = libusb>=1.0
+	provides = libsdrplay
+	source = http://www.sdrplay.com/software/SDRplay_RSP_API-ARM32-3.07.2.run
+	sha256sums = ed66491ad1f4a1f2bdddaa10ee1c63ba12f2eae33cba0d5a6547a9f5a835deaf
+
+pkgname = libsdrplay-armv7h
