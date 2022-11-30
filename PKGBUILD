@@ -1,26 +1,31 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=vaults
-_pkgname=Vaults
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An application for creating encrypted vaults for the GNOME desktop"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mpobaschnig/Vaults"
 license=('GPL3')
-depends=('glib2' 'gtk4' 'libadwaita' 'fuse3' 'gocryptfs' 'cryfs')
-makedepends=('meson' 'rust')
+depends=('libadwaita' 'fuse3' 'gocryptfs' 'cryfs')
+makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib')
-source=("${url}/archive/${pkgver}.tar.gz")
-b2sums=('044de61a1251ac2ef3f9e6234320b1c79d83fb635cad1b9aed56bf30e102283a223b13dc73ff3b42ac9dbf41c8c4aa65a8f52d5816eabf0474e16cc72ae7f241')
+_commit=a99812291780614e1f59f16c4ff3a3ebd6588b12  # tags/0.4.0^0
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  arch-meson ${_pkgname}-${pkgver} build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
