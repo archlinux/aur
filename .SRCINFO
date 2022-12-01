@@ -1,0 +1,15 @@
+pkgbase = jfcord-appimage
+	pkgdesc = An Jellyfin rich presence client for Discord
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://github.com/Chicken/JFCord
+	arch = x86_64
+	license = MIT
+	optdepends = discord: Official stable client
+	optdepends = discord-ptb: Official ptb client
+	optdepends = discord-canary: Official canary client
+	options = !strip
+	source = https://github.com/Chicken/JFCord/releases/download/v4.1.2/jfcord-4.1.2.AppImage
+	sha512sums = 5166c6d3788e5fe2bdecf139008d3fd97d9c149757fe0653b8ca4749e248294d3427840c1aef3c1ea2b9a2341db1dd0fdbd2c952d6522e6cef27528649df10b8
+
+pkgname = jfcord-appimage
