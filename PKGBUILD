@@ -2,7 +2,7 @@
 
 pkgname=jlc-assistant-bin
 pkgver=5.0.69
-pkgrel=4
+pkgrel=5
 pkgdesc="嘉立创下单助手:该应用为您下单提供便利，快速获取优惠及下单信息，无需在网站等待审核审单！在下单助手下单立享打折优惠！ "
 arch=('x86_64')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
@@ -21,13 +21,13 @@ noextract=()
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
-    install -dm0755 "${pkgdir}/usr/share/${pkgname%-bin}/"
+    install -dm0755 "${pkgdir}/usr/lib/${pkgname%-bin}/"
 
     # electron file
-    install -dm0755 "${pkgdir}/usr/share/${pkgname%-bin}/"
+    install -dm0755 "${pkgdir}/usr/lib/${pkgname%-bin}/"
     cd ${srcdir}/${pkgname%-bin}-linux-x64-${pkgver}/${pkgname%-bin}/
-    cp -r res ${pkgdir}/usr/share/${pkgname%-bin}
-    cp -r resources ${pkgdir}/usr/share/${pkgname%-bin}
+    cp -r res ${pkgdir}/usr/lib/${pkgname%-bin}
+    cp -r resources ${pkgdir}/usr/lib/${pkgname%-bin}
 
     # icon
     local _icon
