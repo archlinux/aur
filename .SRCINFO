@@ -1,0 +1,17 @@
+pkgbase = python-norbert
+	pkgdesc = Painless Wiener filters for audio separation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/sigsep/norbert
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-scipy
+	source = python-norbert-0.2.1.tar.gz::https://github.com/sigsep/norbert/archive/v0.2.1.tar.gz
+	sha512sums = d10abce6d06377def4b4fcec22ffe1a0bde74600b6d90f6a87d9f726284ba895c26af088ba78b537b82bc4797af5d5d924e8deeea3f88e3af119c1f9396058ea
+
+pkgname = python-norbert
