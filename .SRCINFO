@@ -1,15 +1,11 @@
 pkgbase = jane
-	pkgdesc = software tool for the cophylogeny reconstruction problem
-	pkgver = 4
-	pkgrel = 1
+	pkgdesc = software tool for the cophylogeny reconstruction problem. https://doi.org/10.1186/1748-7188-5-16
+	pkgver = 4.01
+	pkgrel = 5
 	url = https://www.cs.hmc.edu/~hadas/jane/
 	arch = x86_64
 	license = Harvey Mudd College source code & Apache License
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
+	depends = java-runtime
 	source = https://www.cs.hmc.edu/~hadas/jane/downloads/linux.tar.gz
 	source = jane.desktop
 	source = jane.png
@@ -18,4 +14,3 @@ pkgbase = jane
 	sha256sums = cf2275b7de1beb05e3be078409f596d0f88735888ee6e8298977ee6a1427a6c1
 
 pkgname = jane
-
