@@ -1,4 +1,4 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
 
 pkgname=snpeff
 pkgver=5.1
