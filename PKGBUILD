@@ -6,13 +6,13 @@ pkgrel=1
 pkgdesc="Genetic variant annotation and effect prediction toolbox. https://doi.org/10.4161/fly.19695"
 arch=('any')
 url="https://pcingola.github.io/SnpEff/"
+provides=(""${pkgname%-pkgver}"")
 license=('MIT')
-depends=('java-runtime>=12')
+depends=('java-runtime>=12''python''perl''bash')
 source=(
   snpEff.sh
   SnpSift.sh
   https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
-  #http://sourceforge.net/projects/"${pkgname}"/files/snpEff_v"${pkgver}"_core.zip
 )
 sha256sums=('e0ba5679a90efdb39cd9398b1db708444fd8e5321182cedf72696b3ae1e2e2b9'
             '4bd0163c6b8864ed6ea3f20d215b0bf371e10eaa4156ffcf8429d6f71ded93e3'

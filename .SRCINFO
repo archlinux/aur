@@ -5,7 +5,8 @@ pkgbase = snpeff
 	url = https://pcingola.github.io/SnpEff/
 	arch = any
 	license = MIT
-	depends = java-runtime>=12
+	depends = java-runtime>=12pythonperlbash
+	provides = snpeff
 	source = snpEff.sh
 	source = SnpSift.sh
 	source = https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
