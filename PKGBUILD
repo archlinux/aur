@@ -2,7 +2,7 @@
 
 pkgname=zsh-antidote
 _pkgname=antidote
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="the cure to slow zsh plugin management"
 arch=(any)
@@ -11,20 +11,20 @@ license=('MIT')
 depends=('zsh' 'git')
 install=zsh-antidote.install
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/mattmc3/antidote/archive/refs/tags/v${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/mattmc3/antidote/archive/refs/tags/v.${pkgver}.tar.gz"
   "0001-no-self-updating.patch"
 )
-sha256sums=('336ea89aab33d07d5d2eaa14af2f015d7da657837f64d3e76fa5c54645210950'
+sha256sums=('dfe6553db83abcbe74c3026449f9b00bda51465d270cce6d7a6baa0dc8f208a2'
             'dd4bad447383091b29e47add48394a00a459eb87cd2d76c5ea110fc261ed2785')
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-v.${pkgver}"
 
   patch -p1 -i "${srcdir}/0001-no-self-updating.patch"
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-v.${pkgver}"
 
   install -Dm0644 -t "${pkgdir}/usr/share/${pkgname}/" "${_pkgname}.zsh"
   cp -r functions/ "${pkgdir}/usr/share/${pkgname}/"
