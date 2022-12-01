@@ -2,7 +2,7 @@
 pkgname="topgrade-bin"
 _pkgname="topgrade"
 pkgver=10.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Invoke the upgrade procedure of multiple package managers"
 arch=('x86_64' 'aarch64' 'armv7')
 url='https://github.com/topgrade-rs/topgrade'
@@ -21,4 +21,17 @@ package() {
 	# manpage
 	mkdir -p "$pkgdir/usr/local/man/man8"
 	./topgrade --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' > "$pkgdir/usr/local/man/man8/topgrade.8"
+	# completions
+	if $(command -v fish &> /dev/null); then
+		mkdir -p "${pkgdir}/usr/share/fish/completions/"
+		./topgrade --gen-completion fish > "${pkgdir}/usr/share/fish/completions/topgrade.fish"
+	fi
+	if $(command -v bash &> /dev/null); then
+		mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+		./topgrade --gen-completion bash > "${pkgdir}/usr/share/bash-completion/completions/topgrade"
+	fi
+	if $(command -v zsh &> /dev/null); then
+		mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+		./topgrade --gen-completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_topgrade"
+	fi
 }
