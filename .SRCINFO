@@ -13,7 +13,7 @@ pkgbase = python-bdfr
 	depends = python-setuptools
 	depends = python-yaml
 	depends = yt-dlp
-	source = python-bdfr-2.5.2.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.5.2.tar.gz
-	md5sums = 8e5db30aef2087b240b55fe4d86b32e2
+	source = python-bdfr-2.5.2.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.6.0.tar.gz
+	md5sums = de1dc6f0597fb120bea267aee41c39a0
 
 pkgname = python-bdfr
