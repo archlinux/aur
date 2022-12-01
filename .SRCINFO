@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-dynamic-calendar-and-clocks-icons-git
 	pkgdesc = A GNOME shell extension that let Calendar and Clocks icons show current date and time.
-	pkgver = r8.388f2d7
-	pkgrel = 2
+	pkgver = r9.e9d7cde
+	pkgrel = 1
 	url = https://github.com/fcusr/dynamic-calendar-and-clocks-icons
 	install = gnome-shell-extension-dynamic-calendar-and-clocks-icons.install
 	arch = any

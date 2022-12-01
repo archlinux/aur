@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-dynamic-calendar-and-clocks-icons-git
-pkgver=r8.388f2d7
-pkgrel=2
+pkgver=r9.e9d7cde
+pkgrel=1
 pkgdesc="A GNOME shell extension that let Calendar and Clocks icons show current date and time."
 arch=('any')
 url="https://github.com/fcusr/dynamic-calendar-and-clocks-icons"
@@ -41,7 +41,7 @@ package() {
 
   install -dm755 "${destdir}"
   # Don't install unnecessary files
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|png|css|compiled)$" -exec\
+  find . -regextype posix-egrep -regex ".*\.(js|json|xml|png|svg|css|compiled)$" -exec\
      install -Dm 644 {} ${destdir}/{} \;
 
   install -Dm644 "schemas/${schema}" \
