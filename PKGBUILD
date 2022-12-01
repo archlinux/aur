@@ -3,7 +3,7 @@
 
 pkgname=terraform-ls-bin
 pkgver=0.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terraform Language Server"
 arch=('x86_64')
 url="https://github.com/hashicorp/terraform-ls"
