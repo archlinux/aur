@@ -1,0 +1,10 @@
+pkgbase = desktop-builder
+	pkgdesc = create desktop file
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	source = https://github.com/houxinlin/linux-desktop-builder.git
+	sha512sums = SKIP
+
+pkgname = desktop-builder
