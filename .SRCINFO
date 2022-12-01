@@ -1,14 +1,13 @@
 pkgbase = git-user
 	pkgdesc = Git plugin that allows you to save multiple user profiles and set them as project defaults
-	pkgver = v2.0.5
+	pkgver = v2.0.6
 	pkgrel = 1
 	url = https://github.com/gesquive/git-user.git
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = git
-	depends = go
-	options = !strip
-	options = !emptydirs
+	makedepends = go
+	depends = glibc
+	source = git-user-v2.0.6::https://github.com/gesquive/git-user/archive/refs/tags/v2.0.6.tar.gz
+	sha256sums = abf1d8e78c9e9a89555519ec755dfe2516fe9b1e3622ca89692cd6782e0fdc6e
 
 pkgname = git-user
-

@@ -1,50 +1,39 @@
-# Maintainer: Raghavendra Bhuvan <rage28@googlemail.com>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
+# Contributor: Raghavendra Bhuvan <rage28@googlemail.com>
 pkgname=git-user
-pkgver=v2.0.5
+pkgver=v2.0.6
 pkgrel=1
 pkgdesc=" Git plugin that allows you to save multiple user profiles and set them as project defaults"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/gesquive/${pkgname}.git"
+source=("${pkgname}-${pkgver}::${url%.git}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('abf1d8e78c9e9a89555519ec755dfe2516fe9b1e3622ca89692cd6782e0fdc6e')
 license=('MIT')
-depends=('go')
-makedepends=('git')
-options=('!strip' '!emptydirs')
-_gourl="github.com/gesquive/${pkgname}"
+depends=('glibc')
+makedepends=('go')
 
 prepare() {
-    # if a global GOPATH is already set push save it
-    if [ ! -z "$GOPATH" ];then
-        PREV_GOPATH=$GOPATH
-    fi
-    unset GOPATH
+  cd "$pkgname-${pkgver#v}"
+  mkdir -p build/
 }
 
 build() {
-    GOPATH="$srcdir" go get -fix -v -x ${_gourl}
+  cd "$pkgname-${pkgver#v}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build .
 }
 
 check() {
-    GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+  cd "$pkgname-${pkgver#v}"
+  go test ./...
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-    mkdir -p "$pkgdir/$GOPATH"
-    cp -Rv --preserve=timestamps "$srcdir/"{src,pkg} "$pkgdir/$GOPATH" &>/dev/null || :
-
-    # Package license (if available)
-    for f in LICENSE COPYING LICENSE.* COPYING.*; do
-        if [ -e "$srcdir/src/$_gourl/$f" ]; then
-        install -Dm644 "$srcdir/src/$_gourl/$f" "$pkgdir/usr/share/licenses/$pkgname/$f"
-        fi
-    done
-
-    unset GOPATH
-    # if previous GOPATH detected export it back
-    if [ ! -z "$PREV_GOPATH" ];then
-        export GOPATH=${PREV_GOPATH}
-        unset PREV_GOPATH
-    fi
+  cd "$pkgname-${pkgver#v}"
+  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
