@@ -1,6 +1,6 @@
-pkgbase = emacs-git
+pkgbase = emacs29-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 30.0.50.162621
+	pkgver = 29.0.0.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -25,14 +25,14 @@ pkgbase = emacs-git
 	depends = libwebp
 	depends = libtiff
 	depends = libxpm
-	depends = cairo
 	depends = tree-sitter
 	provides = emacs
+	conflicts = emacs
 	replaces = emacs
 	options = !strip
-	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
+	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29
 	source = nemacs
 	b2sums = SKIP
 	b2sums = 58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0
 
-pkgname = emacs-git
+pkgname = emacs29-git

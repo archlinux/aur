@@ -1,4 +1,5 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: xiliuya <xiliuya@163.com
+# Contributor: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -49,11 +50,11 @@ GPM=              # Mouse support in Linux console using gpmd.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
                   # Bitmap fonts only, 1337!
                
-PGTK=             # Use native GTK3 build. Supports Wayland, yay! Still
+PGTK="YES"            # Use native GTK3 build. Supports Wayland, yay! Still
                   # has some problems if running under Xorg. Remember,
                   # this is my personal build file!
 
-GTK3="YES"        # GTK3 old windowing interface.
+GTK3=        # GTK3 old windowing interface.
 
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
@@ -87,9 +88,9 @@ NOGZ="YES"        # Don't compress .el files. (Gain is neglible, IMHO)
 if [[ $CLI == "YES" ]] ; then
   pkgname="emacs-nox-git"
 else
-  pkgname="emacs-git"
+  pkgname="emacs29-git"
 fi
-pkgver=30.0.50.162621
+pkgver=29.0.0.1
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -100,7 +101,8 @@ depends=("${depends_nox[@]}" 'harfbuzz')
 makedepends=('git')
 provides=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git"
+conflicts=('emacs')
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29"
         "nemacs")
 options=(!strip)
 install=emacs-git.install
