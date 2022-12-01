@@ -1,8 +1,8 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=google-cloud-cpp
-pkgver=2.4.0
-pkgrel=3
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
 url="https://github.com/googleapis/google-cloud-cpp/"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('gcc' 'cmake' 'm4')
 depends=('protobuf' 'grpc' 'nlohmann-json' 'c-ares' 'zlib' 'openssl' 'curl' 'abseil-cpp' 'google-crc32c')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v$pkgver.tar.gz")
-sha256sums=('245e198e29c4ec19734cc99ef631daaefbdb874307fc3743e22514ee8bcb36c4')
+sha256sums=('ac93ef722d08bfb220343bde2f633c7c11f15e34ec3ecd0a57dbd3ff729cc3a6')
 
 prepare() {
     sed -i '1s/^/include("\/usr\/lib\/cmake\/Crc32c\/Crc32cTargets.cmake")\n/' "$pkgname-$pkgver/google/cloud/storage/CMakeLists.txt"
