@@ -2,7 +2,7 @@
 
 pkgname=python-cowpy
 _pkgname=cowpy
-pkgver=1.1.0
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='A cowsay clone for python in one file.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/jeffbuttars/cowpy'
 makedepends=('python-setuptools')
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeffbuttars/cowpy/archive/${pkgver}.tar.gz")
-sha512sums=('0461519345f0a6f9340da70fe847df024c517c2b237c1e24af493847a4fe41e86c641f5fde888a87fa502975ead51d6d9ec658c1fcccae5887b7545e5b1e055f')
+sha512sums=('e8f6348d67ff46f84dee1a4586e6813e89d8d469a98b39314cb748229843d692f9d345196bc8397903f5580aff60e958c461133337dfe03d6a037113dc97c951')
 
 build() {
 	cd "$_pkgname-$pkgver"
