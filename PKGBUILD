@@ -1,12 +1,12 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter-imageio
-pkgver=20221105
+pkgver=20221122
 pkgrel=1
 pkgdesc="add on for ART raw converter to support more image formats"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art-imageio/src/main/"
 license=('GPL3')
-depends=('art-rawconverter' 'python-pillow' 'libwebp' 'libjxl' 'python-numpy' 'python-tifffile' 'python-exiv2' 'python-openexr')
+depends=('art-rawconverter' 'python-pillow' 'libwebp' 'libjxl' 'python-numpy' 'python-tifffile' 'python-exiv2' 'python-openexr' 'exiftool')
 optdepends=('perl-image-exiftool: metadata support for CR3 images' )
 makedepends=('pkgconf' 'git' 'fakeroot')
 source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art-imageio.git")
