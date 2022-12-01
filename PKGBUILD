@@ -1,7 +1,7 @@
 # Maintainer: Georgios Tsotsos <geoxor123@outlook.com>
 appname=amethyst
 pkgname=$appname-player
-pkgver=1.8.15
+pkgver=1.8.22
 pkgrel=0
 pkgdesc="Audio Player"
 arch=('x86_64')
