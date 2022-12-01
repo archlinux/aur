@@ -2,8 +2,8 @@
 # Contributor: Sosthène Guédon <sosthene.gued@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=freefem
-pkgver=4.11.0
-_pkgver=4.11
+pkgver=4.12.0
+_pkgver=4.12
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=( 'cblas' 'fftw' 'nlopt' 'coin-or-ipopt' 'scotch' 'mumps' 'scalapack'
 conflicts=('freefem-ext-dl' 'freefem-git')
 provides=('freefem')
 source=($pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz)
-sha256sums=('d0c6921791e5f94646d8dde4d9ed3c11b979e47e7bbb3c0a66467b04dd56983a')
+sha256sums=('291c5f46761711d6303914f9c4f165fd85a7b7b69141f7473e0b6484ce6ab0f5')
 
 prepare() {
   cd FreeFem-sources-${_pkgver}
