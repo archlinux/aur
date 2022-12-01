@@ -9,7 +9,7 @@ license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 install='INSTALL'
 options=('!strip')
-source=("http://input.foruto.com/ccc/1.font/font/I.BMing3.5.zip")
+source=("https://github.com/chillenb/ttf-i.bming/releases/download/v3.5/I.BMing3.5.zip")
 
 package() {
 	cd "${srcdir}"
