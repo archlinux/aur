@@ -8,12 +8,12 @@ pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
 url="https://github.com/novnc/noVNC"
 license=('custom')
-depends=('bash' 'websockify' 'inetutils')
+depends=('bash' 'websockify' 'inetutils' 'which')
 optdepends=('python-numpy: better HyBi protocol performance')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz"
-        "novnc.service")
+        "novnc@.service")
 sha512sums=('2c9eb019bd9c86a0ffb716eba06e8f05bc522c37561e0acc7f88a66188c617ebc54f4cc9220897c241280ba2ed5919a2050a94eeb3da2c030bde43af0bd92c51'
-            '5dce6fb71dcdeab9ebe3986ebad431d01bb01860cb9960b1e70af84b2beba2330738cd9aa37ab9e025ee8263cba7475d484d5c6d55d4b3750d27aff37c7aef41')
+            '53847ce79b1f90ad1368ad2f631742ae1400cfbbf9540d49b2a113ce928956668503e5e064c90fd62c0789806ed142d2a8b977931dbc524797aa7707791c9e77')
 
 
 prepare(){
@@ -25,7 +25,7 @@ prepare(){
 }
 
 package() {
-  install -Dm644 novnc.service "${pkgdir}/usr/lib/systemd/system/novnc.service"
+  install -Dm644 novnc@.service "${pkgdir}/usr/lib/systemd/system/novnc@.service"
 
   cd "noVNC-$pkgver"
 

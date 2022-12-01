@@ -1,5 +1,5 @@
 [Unit]
-Description=noVNC Service
+Description=Start noVNC service with ip:port
 After=network.target
 
 [Service]
