@@ -1,0 +1,27 @@
+diff --git a/chrole.py b/chrole.py
+index 743e84e..38271a8 100644
+--- a/chrole.py
++++ b/chrole.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # vim:fenc=utf-8
+ #
+diff --git a/qiandao.py b/qiandao.py
+index 788f3be..69d3d8d 100644
+--- a/qiandao.py
++++ b/qiandao.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python
+ #!/usr/bin/env python
+ # -*- encoding: utf-8 -*-
+ # vim: set et sw=4 ts=4 sts=4 ff=unix fenc=utf8:
+diff --git a/run.py b/run.py
+index 417921f..173fc39 100755
+--- a/run.py
++++ b/run.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ # vim:fenc=utf-8
+ #
