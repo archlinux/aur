@@ -1,0 +1,1 @@
+makepkg --printsrcinfo > .SRCINFO
