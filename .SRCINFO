@@ -1,7 +1,7 @@
 pkgbase = pxv
 	pkgdesc = Instant feature rich terminal image viewer
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/al1-ce/pxv
 	arch = i686
 	arch = x86_64

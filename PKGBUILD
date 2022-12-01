@@ -2,7 +2,7 @@
 
 pkgname='pxv'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Instant feature rich terminal image viewer'
 arch=('i686' 'x86_64')
 url='https://github.com/al1-ce/pxv'
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
