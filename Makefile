@@ -23,7 +23,7 @@ ifdef ($(string $(pkgrel)),)
 	use_pkgrel=$(pkgrel)
 else
   ifeq ($(pkgver),$(current_pkgver))
-	  use_pkgrel=$(current_pkgrel)+1
+	  use_pkgrel=$(shell echo "$(current_pkgrel)+1" | bc)
 	else
 	  use_pkgrel=1
 	endif

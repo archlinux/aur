@@ -8,7 +8,7 @@ pkgdesc="Terraform Language Server"
 arch=('x86_64')
 url="https://github.com/hashicorp/terraform-ls"
 license=('MPL2')
-makedepends=('unzip')
+makedepends=('unzip' 'bc')
 optdepends=('terraform: Required to support fmt command')
 
 source=("terraform-ls-linux-amd64-${pkgver}.zip::${url}/releases/download/v${pkgver}/terraform-ls_${pkgver}_linux_amd64.zip")
