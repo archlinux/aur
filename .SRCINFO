@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.12.beta1.r44.gca442a76
+	pkgver = 0.5.12.r0.g10933ba9
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -46,6 +46,7 @@ pkgbase = lutris-git
 	optdepends = vulkan-icd-loader: Vulkan support
 	optdepends = wine: easiest way to get all the libraries missing from the Lutris runtime
 	optdepends = winetricks: use system winetricks
+	optdepends = xemu: support for Xbox games
 	optdepends = xorg-xgamma: Restore gamma on game exit
 	provides = lutris
 	conflicts = lutris
