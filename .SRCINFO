@@ -1,7 +1,7 @@
 pkgbase = qcheckgmail
 	pkgdesc = Qt/C++ multiple gmail account checker
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://mhogomchungu.github.io/qCheckGMail/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = qcheckgmail
                 optdepends = kwallet: support for storing credentials in kwallet
                 optdepends = libsecret: support for storing credentials in libsecret
 	makedepends = extra-cmake-modules
-	source = https://github.com/mhogomchungu/qCheckGMail/releases/download/2.1.0/qCheckGMail-2.1.0.tar.xz
-	sha256sums = 8ed3d66696a53de338685731f93525f21f5f4a0ed7787310948381d63e5f0b1f
+	source = https://github.com/mhogomchungu/qCheckGMail/releases/download/2.2.0/qCheckGMail-2.2.0.tar.xz
+	sha256sums = 60b85a828448f8679810a12dfc9c1f058c9f9eaab21293b2d5110e5fab1e125d
 
 pkgname = qcheckgmail
 
