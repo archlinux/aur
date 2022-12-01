@@ -1,3 +1,5 @@
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+
 pkgname=spleeter
 pkgver=1.4.0
 pkgrel=1
