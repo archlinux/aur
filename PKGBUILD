@@ -2,7 +2,7 @@
 
 _pkgname=loggedfs
 pkgname=$_pkgname-git
-pkgver=0.9.r1.gd1fcf7a
+pkgver=0.9.r7.g24b0afb
 pkgrel=1
 pkgdesc="Filesystem monitoring with Fuse"
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ license=('Apache')
 depends=('fuse3')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://github.com/rflament/loggedfs.git"
-        "0001-Remove-absolute-paths-make-non-interactive.patch")
-sha256sums=('SKIP'
-            'ddf9dab7f60b08eb9606563158b9d538b8d8b79f78cd5e4c9e0498139d37c44c')
+source=("$_pkgname::git+https://github.com/rflament/loggedfs.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -23,7 +21,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  patch -p1 < ../0001-Remove-absolute-paths-make-non-interactive.patch
 }
 
 build() {
