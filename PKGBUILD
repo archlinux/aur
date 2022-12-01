@@ -1,16 +1,19 @@
-# Maintainer: Yigit Sever <yigit at yigitsever dot com>
-# Contributor: gryffyn <aur at evan dot me>
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=zsteg
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="detect stegano-hidden data in PNG & BMP"
 arch=(any)
-url='https://github.com/zed-0xff/zsteg'
+url="https://github.com/zed-0xff/zsteg"
 license=(MIT)
-depends=('ruby' 'ruby-zpng' 'ruby-iostruct')
+depends=(
+        "ruby"
+        "ruby-zpng"
+        "ruby-iostruct"
+)
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fed43cbdeeaae7e25b87e7858dee2321b7a527c7686d062a60e5bb92928ebd3f')
+sha256sums=("0cf2ccf9ec563bda2d26772723a9dffa7c0ae093d0c4a428eb3f72356a844167")
 
 build() {
   cd "$pkgname-$pkgver"
