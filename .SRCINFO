@@ -1,7 +1,7 @@
 pkgbase = openrc
 	pkgdesc = Dependency based init system that works with sysvinit and systemd or on its own.
 	pkgver = 0.45.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenRC/openrc
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = openrc
 	optdepends = net-tools: for network service support
 	optdepends = opentmpfiles: adds support for systemd-style tmpfiles.d
 	optdepends = bash-completion: tab completion for openrc commands in bash shells
+	optdepends = zsh-completions: tab completion for openrc commands in zsh shells
 	provides = openrc
 	provides = librc.so
 	provides = init-rc

@@ -6,7 +6,7 @@
 
 pkgname=openrc
 pkgver=0.45.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc'
@@ -15,7 +15,8 @@ depends=('pam')
 optdepends=('openrc-arch-services-git: collection of services for Arch'
             'net-tools: for network service support'
             'opentmpfiles: adds support for systemd-style tmpfiles.d'
-            'bash-completion: tab completion for openrc commands in bash shells')
+            'bash-completion: tab completion for openrc commands in bash shells'
+            'zsh-completions: tab completion for openrc commands in zsh shells')
 makedepends=('meson' 'pam' 'psmisc')
 provides=('openrc' 'librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
 conflicts=('openrc')
@@ -36,10 +37,12 @@ prepare() {
 
 build() {
     cd $pkgname-$pkgver
+    # libexecdir and sbindir: overwrite arch-meson defaults
     # sysconfdir: avoid conflicts with other init systems
     arch-meson                       \
         --libexecdir=/usr/libexec/rc \
         --sbindir=/usr/bin           \
+        -Dbash-completions=true      \
         -Dbranding='"Arch Linux"'    \
         -Dos=Linux                   \
         -Dpam=true                   \
@@ -48,6 +51,7 @@ build() {
         -Dselinux=disabled           \
         -Dsysconfdir=/etc/openrc     \
         -Dtermcap=ncurses            \
+        -Dzsh-completions=true       \
         build
     meson compile -C build
 }
@@ -57,7 +61,7 @@ package() {
     meson install -C build --destdir "$pkgdir"
 
     # default path to inittab conflicts with initscripts
-    # install -Dm644 support/sysvinit/inittab "$pkgdir"/etc/inittab
+    # install -Dm644 support/sysvinit/inittab "$pkgdir/etc/inittab"
 
     # avoid initscripts conflict, requires openrc-sysvinit
     install -Dm644 support/sysvinit/inittab "$pkgdir/etc/openrc/inittab"
