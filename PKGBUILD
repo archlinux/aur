@@ -2,7 +2,7 @@
 
 pkgname=ttf-ms-win11-fod-zh_cn
 pkgver=10.0.22621.819
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list'
 license=(custom)
