@@ -22,20 +22,22 @@ build(){
 }
 
 package(){
+   desktopfile="aimp.desktop"
+   dest="$pkgdir/opt/aimp"
    cd "${srcdir}"
    
-   dest="$pkgdir/opt/aimp/"
-   
    #extract sources
-   bsdtar -xf "data.tar.gz" -C "$pkgdir"
-   
-   chmod +x "$pkgdir/opt/aimp/aimp.desktop"
+   bsdtar -xf "data.tar.gz" -C "${pkgdir}"
 
+   #set a prompt mode +x
+   chmod +x "$pkgdir/opt/aimp/${desktopfile}"
+
+   rm -f "$dest/${desktopfile}"
+   rm -f "$dest/aimp.bash"
+   
+   #fix owner bug's 
    #append Desktop.file
-   install -Dm644 $dest/aimp.desktop "$pkgdir/usr/share/applications/aimp.desktop"
+   install -Dm644 ../${desktopfile} "$pkgdir/usr/share/applications/${desktopfile}"
    
    install -Dm755 aimp "$pkgdir/usr/bin/aimp"
-   
-   #patch
-   install -Dm7 aimp "$dest/aimp.bash"
 }

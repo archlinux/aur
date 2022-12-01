@@ -1,0 +1,72 @@
+[Desktop Action Next]
+Exec=aimp /NEXT
+Name[ru_RU]=Следующая музыка
+Name=Next
+Name[fr]=Suivant
+Name[sr@Ijekavian]=Сљедећа
+Name[sr@ijekavianlatin]=Sljedeća
+Name[sr@latin]=Sledeća
+Name[sr]=Следећа
+
+[Desktop Action Pause]
+Exec=aimp /PAUSE
+Name[ru_RU]=Пауза
+Name=Pause
+Name[fr]=Pause
+Name[sr@Ijekavian]=Паузирај
+Name[sr@ijekavianlatin]=Pauziraj
+Name[sr@latin]=Pauziraj
+Name[sr]=Паузирај
+
+[Desktop Action Play]
+Exec=aimp /PLAY
+Name[ru_RU]=Воспроизвести
+Name=Play
+Name[fr]=Lecture
+Name[sr@Ijekavian]=Пусти
+Name[sr@ijekavianlatin]=Pusti
+Name[sr@latin]=Pusti
+Name[sr]=Пусти
+
+[Desktop Action Previous]
+Exec=aimp /PREV
+Name[ru_RU]=Предыдущая музыка
+Name=Previous
+Name[fr]=Précédent
+Name[sr@Ijekavian]=Претходна
+Name[sr@ijekavianlatin]=Prethodna
+Name[sr@latin]=Prethodna
+Name[sr]=Претходна
+
+[Desktop Action Stop]
+Exec=aimp /STOP
+Name[ru_RU]=Остановить воспроизведение
+Name=Stop
+Name[fr]=Arrêt
+Name[sr@Ijekavian]=Заустави
+Name[sr@ijekavianlatin]=Zaustavi
+Name[sr@latin]=Zaustavi
+Name[sr]=Заустави
+
+[Desktop Entry]
+Actions=Play;Pause;Stop;Previous;Next;
+Categories=AudioVideo;Player;Audio;
+Comment[ru_RU]=Свободный полнофункциональный аудио проигрыватель (Wine)
+Comment=Свободный полнофункциональный аудио проигрыватель (Wine)
+Exec=aimp %F
+GenericName[ru_RU]=
+GenericName=
+Icon=/opt/aimp/AIMP/Assets/logo.png
+Keywords=player;audio;video;multimedia;wine;
+MimeType=x-content/audio-cdda;audio/x-xm;audio/x-wavpack;audio/x-vorbis+ogg;audio/x-tta;audio/x-stm;audio/x-scpls;audio/x-s3m;audio/x-musepack;audio/x-ms-wma;audio/x-mpegurl;audio/x-mod;audio/x-it;audio/x-ape;audio/mpeg;audio/mpeg;audio/mpeg;audio/mpeg;audio/mp4;audio/mp4;audio/flac;audio/aac;audio/aac;application/x-cue;application/ogg;application/ogg;
+Name[ru_RU]=AIMP (Wine)
+Name=AIMP (Wine)
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
