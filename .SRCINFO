@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-richdocumentscode
 	pkgdesc = Built-in CODE Server app
-	pkgver = 22.5.702
+	pkgver = 22.5.802
 	pkgrel = 1
 	url = https://github.com/CollaboraOnline/richdocumentscode
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nextcloud-app-richdocumentscode
 	depends = fuse2
 	depends = glibc
 	options = !strip
-	source = richdocumentscode-22.5.702.tar.gz::https://github.com/CollaboraOnline/richdocumentscode/releases/download/22.5.702/richdocumentscode.tar.gz
-	sha512sums = a1e6a3c1826aa741bd851d31e949812d4bf80ec29c37b8a7b43b680e3571e7bc8bffecfbc800bcdea371950318af743f6b99042a92f16dc67e986fd36681aa21
+	source = richdocumentscode-22.5.802.tar.gz::https://github.com/CollaboraOnline/richdocumentscode/releases/download/22.5.802/richdocumentscode.tar.gz
+	sha512sums = dc961bb1e3bdd8faa7b2a4f392a070c692aa454590130f98f6e78c7d53dda87dbca28de9dfee00193e2bebd6c4506c27ff44111718978230c77a2f81319fcb97
 
 pkgname = nextcloud-app-richdocumentscode
