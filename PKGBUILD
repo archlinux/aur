@@ -1,4 +1,5 @@
-# Maintainer: Daniel Bertalan <dani@danielbertalan.dev>
+# Maintainer: warpigglets
+# Contributor: Daniel Bertalan <dani@danielbertalan.dev>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: FadeMind <fademind at gmail dot com>
@@ -10,9 +11,9 @@
 _pkgbase=libappindicator
 pkgname=${_pkgbase}-sharp
 _bzrtag=12.10.0
-_bzrrev=296
+_bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=3
+pkgrel=1
 pkgdesc='Allow applications to extend a menu in Unity, KDE or Systray (Mono GTK+ 2 bindings)'
 url='https://launchpad.net/libappindicator'
 arch=('any')
@@ -20,18 +21,12 @@ depends=('mono' "libappindicator-gtk2=${pkgver}" 'gtk-sharp-2' 'glib2')
 license=('LGPL2.1' 'LGPL3')
 makedepends=('bzr' 'libdbusmenu-gtk2' 'libindicator-gtk2' 'gnome-common' 'dbus-glib' 'perl-xml-libxml' 'gtk-doc' 'python-dulwich')
 options=('!strip')
-source=(bzr+lp:libappindicator#revision=$_bzrrev
-        no-host.patch)
-sha512sums=('SKIP'
-            'cfc9481ad26712063f9d1bfdd1f94327f579c0c58385cec8adb4e5f12398ef2eb4427a62e6580cda75434d967623235940562f826a909501ee52eef8135703fa')
+source=(bzr+lp:libappindicator#revision=$_bzrrev)
+sha512sums=('SKIP')
 validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charles.kerr@canonical.com>
 
 prepare() {
   (cd ${_pkgbase}
-
-    # Fall back to tray icon when StatusNotifierHost is not available.
-    # https://code.launchpad.net/~muktupavels/libappindicator/no-host/+merge/386817
-    patch -p0 < "${srcdir}/no-host.patch"
 
     sed -i 's/-Werror//' src/Makefile.am
     ./autogen.sh
