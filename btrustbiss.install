@@ -19,6 +19,7 @@ case "$1" in
     configure)
 xdg-desktop-menu install /opt/btrustbiss/lib/btrustbiss-BISS.desktop
 sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
+systemctl enable --now pcscd
     ;;
     abort-upgrade|abort-remove|abort-deconfigure)
     ;;
@@ -28,7 +29,6 @@ sudo cp /opt/btrustbiss/lib/btrustbiss-BISS.desktop /etc/xdg/autostart
     ;;
 esac
 exit 0
-systemctl enable --now pcscd
 }
 
 pre_remove(){
@@ -37,6 +37,7 @@ case "$1" in
     remove|upgrade|deconfigure)
 xdg-desktop-menu uninstall /opt/btrustbiss/lib/btrustbiss-BISS.desktop
 sudo rm /etc/xdg/autostart/btrustbiss-BISS.desktop
+systemctl disable --now pcscd
     ;;
     failed-upgrade)
     ;;
@@ -59,5 +60,4 @@ case "$1" in
     ;;
 esac
 exit 0
-systemctl disable --now pcscd
 }
