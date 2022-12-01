@@ -1,17 +1,13 @@
-pkgbase = python-jsmin
+pkgbase = python2-jsmin
 	pkgdesc = JavaScript minifier
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://pypi.org/pypi/jsmin
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.org/packages/source/j/jsmin/jsmin-3.0.0.tar.gz
-	sha256sums = 88fc1bd6033a47c5911dbcada7d279c7a8b7ad0841909590f6a742c20c4d2e08
-
-pkgname = python-jsmin
-	depends = python
+	depends = python2
+	source = https://pypi.org/packages/source/j/jsmin/jsmin-3.0.1.tar.gz
+	sha256sums = c0959a121ef94542e807a674142606f7e90214a2b3d1eb17300244bbb5cc2bfc
 
 pkgname = python2-jsmin
-	depends = python2
