@@ -1,11 +1,12 @@
 pkgbase = gnome-backgrounds-macos
 	pkgdesc = Background images for the GNOME desktop from MacOS
-	pkgver = 42.0.2
+	pkgver = 43.0.0
 	pkgrel = 1
 	url = https://github.com/saltedcoffii/gnome-backgrounds-macos
 	arch = any
 	license = CCPL:by-sa
 	license = GPL3 or any later version
+	license = custom
 	makedepends = glib2
 	makedepends = meson
 	makedepends = curl
@@ -13,7 +14,7 @@ pkgbase = gnome-backgrounds-macos
 	provides = gnome-backgrounds-git
 	provides = gnome-backgrounds-macos-git
 	conflicts = gnome-backgrounds-macos-git
-	source = gnome-backgrounds-macos-42.0.2.tar.gz::https://github.com/saltedcoffii/gnome-backgrounds-macos/archive/42.0.2.tar.gz
-	sha256sums = 9bfc1321b753bd97257e4edb447d6a9608200527fe0ccdec0e557a6271e7f3ce
+	source = git+https://github.com/saltedcoffii/gnome-backgrounds-macos#tag=43.0.0
+	sha256sums = SKIP
 
 pkgname = gnome-backgrounds-macos

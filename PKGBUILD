@@ -2,24 +2,26 @@
 
 _pkgname=gnome-backgrounds-macos
 pkgname=$_pkgname
-pkgver=42.0.2
+pkgver=43.0.0
 pkgrel=1
 pkgdesc="Background images for the GNOME desktop from MacOS"
 url="https://github.com/saltedcoffii/gnome-backgrounds-macos"
 arch=(any)
 makedepends=('glib2' 'meson' 'curl')
-license=('CCPL:by-sa' 'GPL3 or any later version')
+license=('CCPL:by-sa' 'GPL3 or any later version' 'custom')
 provides=('gnome-backgrounds' 'gnome-backgrounds-git' 'gnome-backgrounds-macos-git')
 conflicts=('gnome-backgrounds-macos-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9bfc1321b753bd97257e4edb447d6a9608200527fe0ccdec0e557a6271e7f3ce')
+source=("git+${url}#tag=${pkgver}")
+sha256sums=('SKIP')
 
 prepare() {
-  $srcdir/$_pkgname-$pkgver/download-backgrounds.sh
+  cd $srcdir/$_pkgname
+  git submodule update --init
+  ./download-backgrounds.sh
 }
 
 build() {
-  arch-meson $_pkgname-$pkgver build
+  arch-meson $_pkgname build
   meson compile -C build
 }
 
@@ -29,4 +31,6 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  install -Dm644 $srcdir/$_pkgname/COPYING.md "${pkgdir}"/usr/share/licenses/$_pkgname/COPYING.md
 }
