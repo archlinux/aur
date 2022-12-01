@@ -1,0 +1,37 @@
+pkgbase = goldendict-webengine-pr-git
+	pkgdesc = Feature-rich dictionary lookup program supporting multiple dictionary formats
+	pkgver = 22.12.02.r0.ga64d1bb4
+	pkgrel = 1
+	url = https://github.com/goldendict/goldendict/pull/1542
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bzip2
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	depends = hunspell
+	depends = libao
+	depends = libeb
+	depends = libtiff
+	depends = libvorbis
+	depends = libx11
+	depends = libxtst
+	depends = lzo
+	depends = opencc
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-webengine
+	depends = qt5-x11extras
+	depends = xz
+	depends = zlib
+	depends = zstd
+	provides = goldendict=22.12.02.r0.ga64d1bb4
+	conflicts = goldendict
+	source = goldendict-webengine-pr-git::git+https://github.com/vedgy/goldendict.git#branch=we/webkit-or-webengine
+	b2sums = SKIP
+
+pkgname = goldendict-webengine-pr-git
