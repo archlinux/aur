@@ -1,0 +1,17 @@
+pkgbase = odysseyra1n
+	pkgdesc = Bootstraps Procursus and install Sileo/libhooker on devices jailbroken with checkra1n.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/coolstar/odyssey-bootstrap
+	arch = x86_64
+	license = unknown
+	makedepends = coreutils
+	depends = openssh
+	depends = libimobiledevice
+	depends = libirecovery
+	depends = curl
+	depends = checkra1n-cli
+	source = https://raw.githubusercontent.com/coolstar/Odyssey-bootstrap/master/procursus-deploy-linux-macos.sh
+	md5sums = SKIP
+
+pkgname = odysseyra1n
