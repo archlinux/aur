@@ -24,6 +24,7 @@ prepare(){
 	logo
 	cd "$appname"
 	gendesk -n -f --pkgname "$appname" --pkgdesc "$pkgdesc" --exec="/opt/$appname/$appname"
+	git submodule update --init --recursive
 	yarn
 }
 
