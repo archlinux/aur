@@ -1,0 +1,12 @@
+pkgbase = hp-omen-linux-module-dkms-git
+	pkgdesc = Control the HP Omen keyboard lighting and performance settings in Linux (DKMS) (hp-omen-wmi)
+	pkgver = r13.9d1edb1
+	pkgrel = 1
+	url = https://github.com/pelrun/hp-omen-linux-module
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = git+https://github.com/pelrun/hp-omen-linux-module
+	sha256sums = SKIP
+
+pkgname = hp-omen-linux-module-dkms-git
