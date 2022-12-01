@@ -3,12 +3,12 @@ appname=qflipper
 pkgname=qflipper-git
 basever=1.2.1
 pkgver=${basever/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 url="https://flipperzero.one/update"
 license=('GPL3')
 arch=('x86_64')
-depends=('libusb' 'qt6-5compat' 'qt6-declarative' 'qt6-serialport' 'qt6-svg')
+depends=('libusb' 'qt6-5compat' 'qt6-quickcontrols2' 'qt6-serialport' 'qt6-svg')
 makedepends=('git' 'qt6-tools')
 source=($appname::git+https://github.com/flipperdevices/qFlipper#tag=${basever})
 sha256sums=('SKIP')
