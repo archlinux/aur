@@ -1,7 +1,7 @@
 pkgbase = linkchecker
 	pkgdesc = check links in web documents or full websites
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linkcheck/linkchecker
 	arch = any
 	license = GPL2

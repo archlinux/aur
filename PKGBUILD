@@ -5,7 +5,7 @@
 _name=LinkChecker
 pkgname=linkchecker
 pkgver=10.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="check links in web documents or full websites"
 arch=('any')
 url="https://github.com/linkcheck/linkchecker"
@@ -24,4 +24,5 @@ build() {
 package() {
     cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
