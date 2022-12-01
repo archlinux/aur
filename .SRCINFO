@@ -1,6 +1,6 @@
 pkgbase = protonplus
 	pkgdesc = A simple proton version manager
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = protonplus
 	depends = libadwaita
 	depends = libarchive
 	depends = libsoup3
-	source = protonplus-0.2.0.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = ec1e818ad768e1cda6906de8225d56f980e59a18265b511d73f22e87e2448175
+	source = protonplus-0.2.1.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = e0f00f676454e8fb3b3e24a2bf3814309acba65d6a6dd280dd767f56c6e71583
 
 pkgname = protonplus
