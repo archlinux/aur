@@ -1,4 +1,4 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname=simpl-sim
 pkgver=2.1.1
