@@ -1,0 +1,3 @@
+post_install() {
+	echo "Run 'systemctl edit rust-punchr' and declare the 'API_KEY' env variable."
+}

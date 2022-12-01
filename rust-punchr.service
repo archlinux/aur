@@ -1,0 +1,17 @@
+# Do not make manual changes to this file.
+# It will be overridden by package upgrades.
+# Use `systemctl edit rust-punchr` instead!
+
+[Unit]
+After=network.target
+Description=Rust client for measuring DCUtR performance
+
+[Install]
+WantedBy=default.target
+
+[Service]
+ExecStart=/usr/bin/rust-punchr
+Restart=always
+RestartSec=10
+User=rust-punchr
+Environment="RUST_LOG=info"
