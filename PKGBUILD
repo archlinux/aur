@@ -1,8 +1,9 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=feedbackd
-pkgver=0.0.0+git20220520
+pkgver=0.0.1
 pkgrel=1
 pkgdesc='A daemon to provide haptic feedback on events'
 arch=(x86_64 aarch64)
@@ -20,7 +21,7 @@ makedepends=(
 	vala
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('a92a782d642fdadda709e1b9b379a3253164c9397df7ce158c8c0873cced7886f41e6e3cabc19e85fc7043aedd37cead3cb61a4fb227347c0a454e88ffff822b')
+b2sums=('cbbcf82f2141be03a5c1e8259257fa158f8bfa366cbd56d93e728ac4c504fb9591ebee723ff5128e5d1db6c50d7226754f233edd8f08239d550f3287f517f8a5')
 
 build() {
 	arch-meson "${pkgname}-v${pkgver}" build -Dgtk_doc=true -Dman=true
