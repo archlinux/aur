@@ -5,6 +5,7 @@ post_install() {
     mkinitcpio -P for this hook to work.
     The kernel parameter fakeuptimesec sets the initial uptime in seconds.
     Example: fakeuptimesec=114514
+    If not specified, a random fakeuptimesec is used by default.
 
 EOF
 }
