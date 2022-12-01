@@ -3,7 +3,7 @@
 # Contributor: Rye Mutt
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
-pkgname=alchemy-viewer-git
+pkgname=alchemy-next-viewer-git
 pkgver=6.5.5_r48681.g12c2a9b7e9
 pkgrel=7
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
@@ -25,6 +25,7 @@ optdepends=(
     'nvidia-libgl: NVIDIA support'
     'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
+replaces=('alchemy-viewer-git')
 options+=(!emptydirs !buildflags !strip !lto)
 install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"

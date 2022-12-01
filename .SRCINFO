@@ -1,4 +1,4 @@
-pkgbase = alchemy-viewer-git
+pkgbase = alchemy-next-viewer-git
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
 	pkgver = 6.5.5_r48681.g12c2a9b7e9
 	pkgrel = 7
@@ -41,13 +41,14 @@ pkgbase = alchemy-viewer-git
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-viewer
+	replaces = alchemy-viewer-git
 	options = !emptydirs
 	options = !buildflags
 	options = !strip
 	options = !lto
-	source = alchemy-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
+	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = compile.bash
 	b2sums = SKIP
 	b2sums = a72b60c0e1a939e104993e799790b7267d2eee0676c06035312992fcd2e7525ad810162238e2f9d143b835fa598b982b3971f7e8ba35b424a2e7a188699db6b1
 
-pkgname = alchemy-viewer-git
+pkgname = alchemy-next-viewer-git
