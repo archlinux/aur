@@ -1,0 +1,12 @@
+pkgbase = catppuccin-konsole-theme-git
+	pkgdesc = Catppuccin for Konsole
+	pkgver = r29.7d86b8a
+	pkgrel = 1
+	url = https://github.com/catppuccin/konsole
+	arch = any
+	license = MIT
+	makedepends = git
+	source = catppuccin-konsole-theme-git::git+https://github.com/catppuccin/konsole.git
+	sha256sums = SKIP
+
+pkgname = catppuccin-konsole-theme-git
