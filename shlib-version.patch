@@ -1,11 +1,8 @@
---- include/openssl/opensslv.h
-+++ include/openssl/opensslv.h
-@@ -93,7 +93,7 @@ extern "C" {
-  * should only keep the versions that are binary compatible with the current.
-  */
- # define SHLIB_VERSION_HISTORY ""
--# define SHLIB_VERSION_NUMBER "81.1.1"
-+# define SHLIB_VERSION_NUMBER "1.1"
- 
- 
- #ifdef  __cplusplus
+--- VERSION.dat	2022-12-01 19:09:03.196156173 +0100
++++ VERSION.dat.new	2022-12-01 19:09:13.745608230 +0100
+@@ -4,4 +4,4 @@
+ PRE_RELEASE_TAG=
+ BUILD_METADATA=quic
+ RELEASE_DATE="1 Nov 2022"
+-SHLIB_VERSION=81.3
++SHLIB_VERSION=3

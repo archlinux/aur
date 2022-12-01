@@ -1,7 +1,7 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=quictls-openssl
-pkgver=1.1.1s+quic
+pkgver=3.0.7+quic1
 pkgrel=1
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('openssl' 'openssl-perl' 'openssl-doc')
 provides=('openssl')
 # Do not add replaces=('openssl') per guidelines
 backup=('etc/ssl/openssl.cnf')
-source=("git+https://github.com/quictls/openssl#branch=OpenSSL_1_1_1s+quic")
+source=("git+https://github.com/quictls/openssl#tag=openssl-3.0.7+quic1")
 md5sums=('SKIP')
 
 # PKGBUILD based on
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 # Update this PKGBUILD as needed to match it as closely as possible
 
 pkgver() {
-	printf "1.1.1s+quic"
+	printf "3.0.7+quic1"
 }
 
 prepare() {
@@ -32,8 +32,7 @@ prepare() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/../ca-dir.patch"
 
-	# ensure version is default version system from OpenSSL (without the
-	# 81-prefix found in the fork)
+	# use default openssl shlib version (without 81. prefix found in the fork)
 	patch -p0 -i "$srcdir/../shlib-version.patch"
 }
 
@@ -69,5 +68,5 @@ package() {
 
 	make DESTDIR="$pkgdir" MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 
-	install -D -m644 LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licences/$pkgname/LICENSE.txt"
 }
