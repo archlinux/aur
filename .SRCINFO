@@ -41,7 +41,6 @@ pkgbase = alchemy-viewer-git
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-viewer
-	replaces = alchemy-next-viewer-git
 	options = !emptydirs
 	options = !buildflags
 	options = !strip
