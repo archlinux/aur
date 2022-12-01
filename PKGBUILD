@@ -2,7 +2,7 @@
 
 pkgname=quictls-openssl
 pkgver=3.0.7+quic1
-pkgrel=2
+pkgrel=3
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
