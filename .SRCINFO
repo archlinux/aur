@@ -1,15 +1,15 @@
 pkgbase = plainotepad
 	pkgdesc = Plain text editor with minimalistic design
-	pkgver = 0.2.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Helltar/plainotepad
 	arch = x86_64
 	license = GPL3
 	depends = qt5pas
-	source = plainotepad-0.2.0.tar.gz::https://github.com/Helltar/plainotepad/releases/download/0.2.0/plainotepad-0.2.0.tar.gz
+	source = plainotepad-0.9.1.tar.xz::https://github.com/Helltar/plainotepad/releases/download/0.9.1/plainotepad-0.9.1-linux.tar.xz
 	source = plainotepad.desktop
 	source = plainotepad.svg
-	sha256sums = 2a8fffa9b2d93d63c19fa44b4f9e4d0f873da5a46044b1808f1a5e52c4886b09
+	sha256sums = b6438052172e11af50cbe668986c06c6d3235ea5361b8157a57201943fa28383
 	sha256sums = 214efdd29cc25800944e33720e593dbfa86b699ef44456e231af327fdf5e0583
 	sha256sums = 088d8e42a7246920b0e8d0fc5dc76f7907f2086c56abd93330386d1e2ca933cc
 
