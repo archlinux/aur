@@ -6,7 +6,6 @@ pkgrel=1
 arch=(any)
 url='https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list'
 license=(custom)
-provides=(ttf-font)
 conflicts=(ttf-vista-fonts)
 
 _ttf_ms_win11_fod_zh_cn=(
