@@ -1,4 +1,4 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname=oppai
 pkgver=0.9.11
