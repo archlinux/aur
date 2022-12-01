@@ -1,0 +1,20 @@
+pkgbase = ntt-git
+	pkgdesc = ntt is a free and open toolset for language agnostic testing with TTCN-3. It provides IDE support, code generators and much more.
+	pkgver = v0.17.1.r78.72162910
+	pkgrel = 1
+	url = https://github.com/nokia/ntt
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = BSD 3-Clause
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = ntt-git
+	conflicts = ntt-git
+	source = git+https://github.com/nokia/ntt
+	md5sums = SKIP
+
+pkgname = ntt-git
