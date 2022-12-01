@@ -2,7 +2,7 @@
 
 _name=pyocd
 pkgname=python-pyocd
-pkgver=0.34.2
+pkgver=0.34.3
 pkgrel=1
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
@@ -33,9 +33,9 @@ source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
   $pkgname-0.33.1-optional_libusb_package.patch
 )
-sha512sums=('5e03818a3e4c70838b5be5f5bc6759ff05b327130f45b6dbe7c2e78be17bf77a1fbf73b151d6cfe8f3f0c027a95b13d4d10407831c101bba20be416741196b37'
+sha512sums=('f1ba67bc4ebdd3c3fefab462d647b65cc4f026f76752de6cd6c1042fe1857d29f4fd8cb348b9b98faf670b8e4d9d3a0a3750b0dcbbec532fd246c342f2af9308'
             'cbcf65ead4f72025c28e9d42e7947db9671c8de62a797dc27d1198dbdb164afe51b5cafb83224e5c0797b5ae6ea8a9f91080aae81f00934309645a47d0154eaf')
-b2sums=('f94e9de590094ae34b6940e7252532f9b2eca5a35f61578c7143a43f74ffb38729ca8343d88ff78d0f0a833c54925af134017510a1cc354f8a1aeb402b34e999'
+b2sums=('4a9563b10fa00c91f3cea4829154dc7f5f495a58fc50d8e4179c0ec4351454a23a4430cff95a18c476ea4dbf71ee8ab13ef5b0be616015d5ec300ee19d2348d8'
         'dfed46c4e852cf28029573acd49aef06e51a3280851111ebc40bd7110c1900f480e77ade970c9b4d5574e9966cab996014b503991fdb8879aa9113f9d8091edb')
 
 prepare() {
