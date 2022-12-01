@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK. '
 arch=('x86_64')
 url="https://github.com/jp7677/dxvk-nvapi"
@@ -20,8 +20,6 @@ source=(
 
 prepare() {
     cd dxvk-nvapi
-
-    git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
 
     git submodule init "external/Vulkan-Headers"
     git submodule set-url "external/Vulkan-Headers" "$srcdir"/Vulkan-Headers
