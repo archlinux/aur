@@ -1,6 +1,6 @@
 pkgbase = tractor
 	pkgdesc = Setup an onion routing proxy (Stable release. Based on ubuntu package)
-	pkgver = 3.12_~202108170533
+	pkgver = 3.14_~202208182351
 	pkgrel = 1
 	url = https://framagit.org/tractor/tractor/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tractor
 	depends = python
 	depends = python-gobject
 	depends = tor
-	source = https://launchpad.net/~tractor-team/+archive/ubuntu/tractor/+files/tractor_3.12~202108170533~ubuntu21.10.1_all.deb
-	sha256sums = a642a6f475d39cb81a212368b01a55dc1104a77feea2542ea6f7d7de441dcbef
+	source = https://launchpad.net/~tractor-team/+archive/ubuntu/tractor/+files/tractor_3.14~202208182351~ubuntu22.04.1_all.deb
+	sha256sums = 2efc8e43f42314ddfa9c99b5e3304f329f2ac9a01286ed8e17a3137d645b9819
 
 pkgname = tractor

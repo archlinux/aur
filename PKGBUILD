@@ -1,9 +1,9 @@
 # Originaly author: Danial Behzadi <dani.behzi@ubuntu.com>
 # Maintainer: Mobin Aydinfar <mobin at mobintestserver dot ir>
 
-major=3.12
-minor=~202108170533
-ubuntu_ver=~ubuntu21.10.1
+major=3.14
+minor=~202208182351
+ubuntu_ver=~ubuntu22.04.1
 
 pkgname=tractor
 pkgver=${major}_${minor}
@@ -16,7 +16,7 @@ makedepends=('wget')
 depends=('python' 'python-gobject' 'tor')
 
 source=(https://launchpad.net/~tractor-team/+archive/ubuntu/tractor/+files/tractor_${major}${minor}${ubuntu_ver}_all.deb)
-sha256sums=('a642a6f475d39cb81a212368b01a55dc1104a77feea2542ea6f7d7de441dcbef')
+sha256sums=('2efc8e43f42314ddfa9c99b5e3304f329f2ac9a01286ed8e17a3137d645b9819')
 
 move_copyright() {
     find ${pkgdir}/usr/share/doc -name "changelog.Debian.gz" -delete
