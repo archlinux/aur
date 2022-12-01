@@ -1,0 +1,20 @@
+pkgbase = amide-git
+	pkgdesc = Medical imaging data examiner
+	pkgver = 1.0.6.r13.g874d6ea
+	pkgrel = 1
+	url = https://github.com/ferdymercury/amide
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = libxml2
+	depends = dcmtk
+	depends = gsl
+	depends = libgnomecanvas
+	depends = volpack
+	depends = xmedcon-gtk2
+	provides = amide
+	conflicts = amide
+	source = git+https://github.com/ferdymercury/amide.git
+	sha512sums = SKIP
+
+pkgname = amide-git
