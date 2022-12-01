@@ -1,18 +1,18 @@
-# Maintainer: Juliette Cordor
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 pkgname=podman-desktop-bin
-pkgver=0.0.4
+pkgver=0.10.0
 pkgrel=1
 epoch=
 pkgdesc="Manage Podman and other container engines from a single UI and tray"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/containers/podman-desktop"
-license=('Apache-2.0')
+license=("Apache-2.0")
 groups=()
 depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=(podman-desktop)
+provides=("podman-desktop")
 conflicts=()
 replaces=()
 backup=()
@@ -24,12 +24,12 @@ source=(
     "icon.svg"
     "podman-desktop.desktop"
     "run.sh"
-  )
-sha256sums=('da23251e3c5cacc5fd77aee46cfde8fba45a317e531310165ad5870e1168174d'
-            '81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a'
-            '453b9cdc041f5e85d13ee7f23c7e9cc8865b646097443e5b0c46f00abf8160c5'
-            '64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a')
-
+)
+sha256sums=("477fb7a16c69591230f86bb654570d49d6f7652fe0545edeb222095d229ef384"
+            "81b78c485c38dd79b50a8008e148509a95fcc56477592315ab7354b64566315a"
+            "f07b6315111ad354ed76fdd6dde37deb704fbe559fc226edb60db23efa02d151"
+            "64d7035a78ab85b61129f311dacae5d23b43e79588f06db053b922c9d04e200a"
+)
 noextract=()
 validpgpkeys=()
 
