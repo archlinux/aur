@@ -18,6 +18,7 @@ pkgbase = alchemy-next-viewer-git
 	depends = glu
 	depends = gtk3
 	depends = libgl
+	depends = libiconv
 	depends = libidn
 	depends = libjpeg-turbo
 	depends = libpng
