@@ -1,11 +1,11 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname=qotd
 pkgver=0.12.0
 pkgrel=1
 pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
 arch=('any')
-url="https://github.com/ammongit/$pkgname"
+url="https://github.com/emmiegit/$pkgname"
 license=('GPL')
 depends=()
 makedepends=('git' 'gcc' 'ghostscript' 'gzip')
@@ -14,7 +14,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 options=('!zipman')
 install="$pkgname.install"
-source=("https://github.com/ammongit/qotd/archive/v$pkgver.tar.gz")
+source=("https://github.com/emmiegit/qotd/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 backup=('etc/qotd.conf')
 
