@@ -1,7 +1,7 @@
 # Maintainer: neeshie0 <anemovva@gmail.com>
 
 pkgname=sol-client
-_pkgname=solclient
+_pkgname=sol-client
 pkgver=1.8.8
 pkgrel=1
 pkgdesc='Simple yet feature-rich open-source Minecraft client'
@@ -19,16 +19,17 @@ prepare() {
 	chmod +x "${_appimage}"
 	./"${_appimage}" --appimage-extract
 	cd squashfs-root
-	mv "Sol Client" solclient
-	mv "Sol Client.desktop" solclient.desktop
-	mv "Sol Client.png" solclient.png
+	mv "Sol Client" sol-client
+	rm "Sol Client.desktop"
+	curl -Os https://raw.githubusercontent.com/Sol-Client/Client/main/assets/sol-client.desktop
+	mv "Sol Client.png" sol-client.png
 	cd ..
-	mv "squashfs-root/usr/share/icons/hicolor/16x16/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/16x16/apps/solclient.png"
-	mv "squashfs-root/usr/share/icons/hicolor/32x32/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/32x32/apps/solclient.png"
-	mv "squashfs-root/usr/share/icons/hicolor/48x48/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/48x48/apps/solclient.png"
-	mv "squashfs-root/usr/share/icons/hicolor/64x64/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/64x64/apps/solclient.png"
-	mv "squashfs-root/usr/share/icons/hicolor/128x128/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/128x128/apps/solclient.png"
-	mv "squashfs-root/usr/share/icons/hicolor/256x256/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/256x256/apps/solclient.png"
+	mv "squashfs-root/usr/share/icons/hicolor/16x16/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/16x16/apps/sol-client.png"
+	mv "squashfs-root/usr/share/icons/hicolor/32x32/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/32x32/apps/sol-client.png"
+	mv "squashfs-root/usr/share/icons/hicolor/48x48/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/48x48/apps/sol-client.png"
+	mv "squashfs-root/usr/share/icons/hicolor/64x64/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/64x64/apps/sol-client.png"
+	mv "squashfs-root/usr/share/icons/hicolor/128x128/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/128x128/apps/sol-client.png"
+	mv "squashfs-root/usr/share/icons/hicolor/256x256/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/256x256/apps/sol-client.png"
 	}
 
 build() {
