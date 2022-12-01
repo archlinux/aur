@@ -1,11 +1,11 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname="days-until-git"
 pkgver=0.1.rf01b6ec
 pkgrel=1
 pkgdesc='A command-line program to give you the number of days until or since certain events.'
 arch=('any')
-url="https://gitlab.com/ammongit/${pkgname%-git}"
+url="https://gitlab.com/emmiegit/${pkgname%-git}"
 license=('GPL2')
 depends=('python')
 makedepends=('git')
@@ -13,7 +13,7 @@ optdepends=()
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=()
-source=("git+https://gitlab.com/ammongit/${pkgname%-git}.git")
+source=("git+https://gitlab.com/emmiegit/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
