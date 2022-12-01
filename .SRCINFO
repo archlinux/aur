@@ -1,6 +1,6 @@
 pkgbase = core-lightning
 	pkgdesc = Lightning Network implementation focusing on specification compliance and performance.
-	pkgver = 0.12.1
+	pkgver = 22.11
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = x86_64
@@ -24,15 +24,14 @@ pkgbase = core-lightning
 	optdepends = shellcheck: Shell script analysis
 	optdepends = valgrind: Tool for memory management problems
 	conflicts = core-lightning-git
-	source = core-lightning::git+https://github.com/ElementsProject/lightning.git?signed#tag=8efed095ba12e74ee846b07426e1d416b2c812a9
+	source = core-lightning::git+https://github.com/ElementsProject/lightning.git#tag=280b49a6771ed70ee421b2647c060409866086f4
 	source = git+https://github.com/ElementsProject/libwally-core.git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = git+https://github.com/jedisct1/libsodium.git
 	source = git+https://github.com/kristapsdz/lowdown.git
-	source = git+https://github.com/niftynei/lnprototest.git
+	source = git+https://github.com/rustyrussell/lnprototest.git
 	source = git+https://github.com/valyala/gheap.git
 	source = git+https://github.com/zserge/jsmn.git
-	validpgpkeys = 30DE693AE0DE9E37B3E7EB6BBFF0F67810C1EED1
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

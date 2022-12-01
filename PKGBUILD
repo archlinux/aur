@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 declare -r _pkgname="lightning"
-declare -r _tag="8efed095ba12e74ee846b07426e1d416b2c812a9"
+declare -r _tag="280b49a6771ed70ee421b2647c060409866086f4"
 
 pkgname="core-lightning"
-pkgver="0.12.1"
+pkgver="22.11"
 pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
@@ -24,15 +24,14 @@ optdepends=("cppcheck: Static C/C++ code analysis"
     "shellcheck: Shell script analysis"
     "valgrind: Tool for memory management problems")
 conflicts=("core-lightning-git")
-source=("${pkgname}::git+${url}.git?signed#tag=${_tag}"
+source=("${pkgname}::git+${url}.git#tag=${_tag}"
     "git+https://github.com/ElementsProject/libwally-core.git"
     "git+https://github.com/ianlancetaylor/libbacktrace.git"
     "git+https://github.com/jedisct1/libsodium.git"
     "git+https://github.com/kristapsdz/lowdown.git"
-    "git+https://github.com/niftynei/lnprototest.git"
+    "git+https://github.com/rustyrussell/lnprototest.git"
     "git+https://github.com/valyala/gheap.git"
     "git+https://github.com/zserge/jsmn.git")
-validpgpkeys=("30DE693AE0DE9E37B3E7EB6BBFF0F67810C1EED1")
 sha512sums=("SKIP"
     "SKIP"
     "SKIP"
