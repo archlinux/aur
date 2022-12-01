@@ -2,7 +2,7 @@
 # Contributor: flu
 
 pkgname=mpc-git
-pkgver=0.29.2.g2d6e3fe
+pkgver=0.34.17.g3ec5205
 pkgrel=1
 pkgdesc="A minimalist command line interface to MPD"
 arch=('i686' 'x86_64')
