@@ -1,0 +1,27 @@
+pkgbase = python-aocd
+	pkgdesc = Get your puzzle data with a single import
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/wimglenn/advent-of-code-data
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-termcolor
+	depends = python-beautifulsoup4
+	depends = python-pebble
+	depends = python-tzlocal
+	optdepends = python-browser-cookie3: aocd-token utility script
+	source = https://files.pythonhosted.org/packages/source/a/advent-of-code-data/advent-of-code-data-1.2.3.tar.gz
+	sha256sums = b699cad920bb06694e0c255cfafe75883fbe2743670261527603b0b705cbf97f
+
+pkgname = python-aocd
+	depends = python
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-termcolor
+	depends = python-beautifulsoup4
+	depends = python-pebble
+	depends = python-tzlocal
