@@ -1,13 +1,13 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_tagname=v0.5.0
+_tagname=v0.7.0
 pkgname=poezio-omemo
 _pkgname=${pkgname}
 pkgrel=1
 pkgver=${_tagname}
 pkgdesc="OMEMO plugin for the Poezio XMPP console client"
 arch=('i686' 'x86_64')
-url="https://lab.louiz.org/poezio/poezio-omemo"
+url="https://code.bouah.net/pep/poezio-omemo"
 conflicts=('poezio-omemo')
 provides=('poezio-omemo')
 license=('GPL')
@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=('git')
 
-source=("${_pkgname}::git+https://lab.louiz.org/poezio/poezio-omemo#tag=${_tagname}")
+source=("${_pkgname}::git+https://code.bouah.net/pep/poezio-omemo#tag=${_tagname}")
 
 build() {
   cd "$srcdir/$_pkgname"
