@@ -43,11 +43,13 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}" || exit 1
+    export USE_VENV=1
     ../../compile.bash prepare
 }
 
 build() {
     cd "${pkgname}" || exit 1
+    export USE_VENV=1
     ../../compile.bash build
 }
 

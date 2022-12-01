@@ -6,9 +6,15 @@ if command -v schedtool >/dev/null 2>&1; then
 fi
 prefix_cmd="${prefix_cmd} ionice -n 1"
 
-prepare() {
+venv() {
 	virtualenv ".venv" -p python3
 	. ".venv/bin/activate"
+}
+
+prepare() {
+	if [[ -n "$USE_VENV" ]]; then
+		venv
+	fi
 	echo "Installing autobuild..."
 	pip install --upgrade certifi --quiet
 	pip3 install --upgrade llbase --quiet
@@ -19,8 +25,10 @@ prepare() {
 }
 
 build() {
-	. ".venv/bin/activate"
 	# we have a lot of files, relax ulimit to help performance
+	if [[ -n "$USE_VENV" ]]; then
+		. ".venv/bin/activate"
+	fi
 	ulimit -n 20000
 	build_jobs=$(nproc)
 	if [[ ${build_jobs} -gt 1 ]]; then
@@ -50,7 +58,7 @@ build() {
 	fi
 	export AUTOBUILD_CPU_COUNT=$build_jobs
 
-	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=x86-64-v2 -mtune=native'}
+	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=x86-64-v2 -mtune=native -w'}
 	AL_CMAKE_CONFIG=(
 		-DLL_TESTS:BOOL=OFF
 		-DDISABLE_FATAL_WARNINGS=ON
