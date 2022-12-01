@@ -1,7 +1,8 @@
 # Maintainer: Leo <i@setuid0.dev>
 _pkgname=google-re2
+_pkgver=1.0
 pkgname=python-re2
-pkgver=0.2.20220601
+pkgver="$_pkgver+20221201"
 pkgrel=1
 epoch=
 pkgdesc="RE2 Python bindings"
@@ -20,23 +21,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$_pkgver.tar.gz")
 noextract=()
-sha256sums=('cc10983dcaa0b3260a4cd1c07c7adc1fa6967dbcfacc9c1a8f11e4c118c77905')
+sha256sums=('21c8adc296360de1ff426baa38c712eada622c2858d195eb487e415d94194e91')
 validpgpkeys=()
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgver"
 	python setup.py build
 }
 
 check() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py test
+	:
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_pkgname-$_pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	find $pkgdir -type f -exec chmod 644 {} \;
 	find $pkgdir -type d -exec chmod 755 {} \;
