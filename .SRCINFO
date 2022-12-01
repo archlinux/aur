@@ -19,7 +19,6 @@ pkgbase = art-rawconverter-imageio
 	depends = python-exiv2
 	depends = python-openexr
 	depends = perl-image-exiftool
-	optdepends = perl-image-exiftool: metadata support for CR3 images
 	source = art-rawconverter-imageio_20221122::git+https://bitbucket.org/agriggio/art-imageio.git
 	sha256sums = SKIP
 

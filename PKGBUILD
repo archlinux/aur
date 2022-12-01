@@ -7,7 +7,6 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art-imageio/src/main/"
 license=('GPL3')
 depends=('art-rawconverter' 'python-pillow' 'libwebp' 'libjxl' 'python-numpy' 'python-tifffile' 'python-exiv2' 'python-openexr' 'perl-image-exiftool')
-optdepends=('perl-image-exiftool: metadata support for CR3 images' )
 makedepends=('pkgconf' 'git' 'fakeroot')
 source=("${pkgname}_${pkgver}::git+https://bitbucket.org/agriggio/art-imageio.git")
 sha256sums=('SKIP')
