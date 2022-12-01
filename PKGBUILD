@@ -1,41 +1,27 @@
+# Maintainer: Score_Under <seejay.11@gmail.com>
 # Submitter: Rafael Fontenelle <rafaeff@gnome.org>
-# Maintainer: Martin Minka <martin.minka@gmail.com>
+# Contributor: Martin Minka <martin.minka@gmail.com>
 
 _name=jsmin
-pkgname=('python-jsmin' 'python2-jsmin')
-pkgbase=python-$_name
-pkgver=3.0.0
+pkgname='python-jsmin'
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="JavaScript minifier"
 arch=(any)
 url="https://pypi.org/pypi/$_name"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('88fc1bd6033a47c5911dbcada7d279c7a8b7ad0841909590f6a742c20c4d2e08')
-
-prepare() {
-  cp -a $_name-$pkgver{,-py2}
-}
+sha256sums=('c0959a121ef94542e807a674142606f7e90214a2b3d1eb17300244bbb5cc2bfc')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py build
-
-  cd "$srcdir/$_name-$pkgver-py2"
-  python2 setup.py build
 }
 
-package_python-jsmin() {
-  depends=('python')
+package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-}
-
-package_python2-jsmin() {
-  depends=('python2')
-  cd "$srcdir/$_name-$pkgver-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
