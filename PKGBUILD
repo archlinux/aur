@@ -8,12 +8,12 @@ pkgdesc="HTML VNC Client Library and Application"
 arch=(any)
 url="https://github.com/novnc/noVNC"
 license=('custom')
-depends=('bash' 'websockify' 'inetutils')
+depends=('bash' 'websockify' 'inetutils' 'which')
 optdepends=('python-numpy: better HyBi protocol performance')
 provides=('novnc')
 conflicts=('novnc')
 source=("novnc::git+https://github.com/novnc/noVNC.git"
-        "novnc.service")
+        "novnc@.service")
 sha512sums=('SKIP'
             '5dce6fb71dcdeab9ebe3986ebad431d01bb01860cb9960b1e70af84b2beba2330738cd9aa37ab9e025ee8263cba7475d484d5c6d55d4b3750d27aff37c7aef41')
 makedepends=("git")
@@ -32,7 +32,7 @@ prepare(){
 }
 
 package() {
-  install -Dm644 novnc.service "${pkgdir}/usr/lib/systemd/system/novnc.service"
+  install -Dm644 novnc@.service "${pkgdir}/usr/lib/systemd/system/novnc@.service"
 
   cd "novnc"
 
