@@ -1,9 +1,10 @@
 post_install() {
   cat << EOF
 
->>> You must add fakeuptime to HOOKS in /etc/mkinitcpio.conf for
-    this hook to work, the kernel parameter fakeuptimesec sets
-    the initial uptime in seconds.
+>>> You must add fakeuptime to HOOKS in /etc/mkinitcpio.conf and rerun
+    mkinitcpio -P for this hook to work.
+    The kernel parameter fakeuptimesec sets the initial uptime in seconds.
+    Example: fakeuptimesec=114514
 
 EOF
 }
