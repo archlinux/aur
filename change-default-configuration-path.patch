@@ -1,14 +1,14 @@
 diff --git a/src/Ray.BiliBiliTool.Console/Program.cs b/src/Ray.BiliBiliTool.Console/Program.cs
-index 328bc33..4d698a8 100644
+index 4dbb96b..879822a 100644
 --- a/src/Ray.BiliBiliTool.Console/Program.cs
 +++ b/src/Ray.BiliBiliTool.Console/Program.cs
-@@ -52,8 +52,7 @@ namespace Ray.BiliBiliTool.Console
-             hostBuilder.ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) =>
-             {
+@@ -62,8 +62,7 @@ namespace Ray.BiliBiliTool.Console
                  Global.HostingEnvironment = hostBuilderContext.HostingEnvironment;
+ 
+                 //json文件：
 -                configurationBuilder.AddJsonFile("appsettings.json", false, true)
 -                    .AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", true, true)
-+                configurationBuilder.AddJsonFile("/etc/bilibilitool-dotnet/appsettings.json", false, true)
++                configurationBuilder.AddJsonFile("/etc/bilibilitoolpro/appsettings.json", false, true)
                      .AddJsonFile("exp.json", false, true)
-                     .AddJsonFile("donateCoinCanContinueStatus.json", false, true)
-                     .AddExcludeEmptyEnvironmentVariables("Ray_");
+                     .AddJsonFile("donateCoinCanContinueStatus.json", false, true);
+ 

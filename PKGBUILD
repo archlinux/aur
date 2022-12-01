@@ -1,27 +1,26 @@
 # Maintainer: seiuneko <chfsefefgesfen foxmail>
 
-_pkgname=bilibilitool-dotnet
+_pkgname=bilibilitoolpro
 pkgname=${_pkgname}-git
-pkgver=1.1.5.r0.g77b3f3e
-pkgrel=2
+pkgver=0.2.3.r7.gcc45c4f
+pkgrel=1
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
-url='https://github.com/RayWangQvQ/BiliBiliTool'
+url='https://github.com/RayWangQvQ/BiliBiliToolPro'
 license=("MIT")
-depends=("dotnet-runtime>=5.0.0" "aspnet-runtime>=5.0.0" "gcc-libs")
-makedepends=("dotnet-sdk>=5.0.0" "git")
-source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliTool.git"
+depends=("dotnet-runtime-6.0" "aspnet-runtime-6.0")
+makedepends=("dotnet-sdk-6.0" "git")
+source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliToolPro.git"
         "change-default-configuration-path.patch"
+        "disable-log-to-file.patch"
         "${_pkgname}.service"
-        "${_pkgname}.timer"
-        "bilitool-get-cookie-for-ff")
-install="${pkgname}.install"
+        "${_pkgname}.timer")
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
-            '495345f3e25352cb446765c90f98b0f2cf6da3215532c886792582583c3125c5'
-            '818ed53d54e57c4021fd5078212fe7199414b49b4c097fcb2f3631560d77fd35'
-            '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
-            '55c10b3ff54139395bde101db58d1e31879b72cc50cbbf785280e20e8df17bc0')
+            '7ff40a76980240d22d0eef3dd339b7739fbff80c6027f9459b5d88a096b6aa03'
+            '60df0b33087bf22517abb3f076259cf1e1e76c68b941288ef6f4b07b25ed091b'
+            'c841c935fd13bb001224177926cd2c9d88e6d7066f58ea12eb962e05adc7790d'
+            '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30')
 
 pkgver() {
   cd "$_pkgname"
@@ -33,40 +32,37 @@ prepare(){
   mkdir -p ${srcdir}/nuget
 
   patch -p1 -i ../change-default-configuration-path.patch
+  patch -p1 -i ../disable-log-to-file.patch
 
   NUGET_PACKAGES=${srcdir}/nuget/packages \
   NUGET_HTTP_CACHE_PATH=${srcdir}/nuget/v3-cache \
   NUGET_PLUGINS_CACHE_PATH=${srcdir}/nuget/plugins-cache \
   dotnet restore \
-  --runtime linux-x64 \
-  --verbosity normal
+      --runtime linux-x64
 }
 
 build() {
-  cd "${_pkgname}"
-  export MSBUILDDISABLENODEREUSE=1
+  cd "${_pkgname}/src/Ray.BiliBiliTool.Console"
 
-  dotnet build \
-    --configuration Release \
-    --no-restore
+  dotnet publish \
+      --configuration Release \
+      --runtime linux-x64 \
+      --no-self-contained \
+      --no-restore \
+      -p:DebugType=None \
+      -p:DebugSymbols=false \
+      --output "../../bin"
 }
 
 package() {
-  install -Dm644 bilibilitool-dotnet.service "${pkgdir}/usr/lib/systemd/system/bilibilitool-dotnet.service"
-  install -Dm644 bilibilitool-dotnet.timer "${pkgdir}/usr/lib/systemd/system/bilibilitool-dotnet.timer"
+  install -Dm644 ${_pkgname}.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 ${_pkgname}.timer "${pkgdir}/usr/lib/systemd/system/${_pkgname}.timer"
 
-  cd ${_pkgname}/src/Ray.BiliBiliTool.Console
-  install -dm755 ${pkgdir}/usr/{bin,lib} "${pkgdir}/etc/${_pkgname}"
-  dotnet publish \
-  --runtime linux-x64 \
-  --self-contained false \
-  --no-restore \
-  -o "${pkgdir}/usr/lib/${_pkgname}"
-  chmod +x "${pkgdir}/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console"
-  ln -s "/usr/lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
-
-  cd ../..
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${_pkgname}"
+  install -dm755 ${pkgdir}/usr/{bin,lib/${_pkgname}} "${pkgdir}/etc/${_pkgname}"
+  cp -a bin/* "${pkgdir}/usr/lib/${_pkgname}"
+  ln -s "../lib/${_pkgname}/Ray.BiliBiliTool.Console" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${pkgdir}/usr/lib/${_pkgname}/appsettings.json" "${pkgdir}/etc/${_pkgname}/appsettings.json"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

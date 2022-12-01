@@ -4,7 +4,9 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bilibilitool-dotnet -closeConsoleWhenEnd 1
+ExecStart=/usr/bin/bilibilitoolpro
+User=bilibilitoolpro
+DynamicUser=yes
 StandardOutput=null
 StandardError=journal
 

@@ -1,0 +1,13 @@
+diff --git a/src/Ray.BiliBiliTool.Console/appsettings.json b/src/Ray.BiliBiliTool.Console/appsettings.json
+index a9103aa..105bc6c 100644
+--- a/src/Ray.BiliBiliTool.Console/appsettings.json
++++ b/src/Ray.BiliBiliTool.Console/appsettings.json
+@@ -62,7 +62,7 @@
+     "Using": [
+       "Serilog.Sinks.Console",
+       "Serilog.Sinks.Debug",
+-      "Serilog.Sinks.File",
++      // "Serilog.Sinks.File",
+       "Ray.Serilog.Sinks.TelegramBatched",
+       "Ray.Serilog.Sinks.WorkWeiXinBatched",
+       "Ray.Serilog.Sinks.DingTalkBatched",
