@@ -2,19 +2,19 @@
 
 _pkgname=svt-av1
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='AV1-compliant software encoder/decoder library (mingw-w64)'
 url='https://gitlab.com/AOMediaCodec/SVT-AV1'
 license=('BSD' 'custom: Alliance for Open Media Patent License 1.0')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'yasm')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('f85fd13ef16880550e425797bdfdf1b0ba310c21d6b343f74ea79dd2fbb2336e')
+sha256sums=('d236457eb0b839716b3609db2ce6db62c103a1ca0e9e2eed0239e194b72bdcd0')
 source=(
-	"$_pkgname-$pkgver.tar.gz::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v1.3.0/SVT-AV1-v${pkgver}.tar.bz2"
+	"$_pkgname-$pkgver.tar.gz::https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v${pkgver}/SVT-AV1-v${pkgver}.tar.bz2"
 )
 
 _srcdir="SVT-AV1-v${pkgver}"
@@ -24,19 +24,29 @@ _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DCOMPILE_C_ONLY=ON )
+	-DCOMPILE_C_ONLY=OFF
+	-DENABLE_NASM=OFF )
 
 build() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
 			-DBUILD_APPS=OFF \
+			-DBUILD_TESTING=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF
 		cmake --build "build-${_arch}"
 	done
 }
+
+#check() {
+#	for _arch in ${_architectures}; do
+#		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON -Dgtest_force_shared_crt=ON
+#		cmake --build "build-${_arch}"
+#		cmake --build "build-${_arch}" --target test
+#	done
+#}
 
 package() {
 	for _arch in ${_architectures}; do
