@@ -1,11 +1,13 @@
-# Maintainer: Amin Mesbah <dev@aminmesbah.com>
+# Contributor: Amin Mesbah <dev@aminmesbah.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=milton-git
 pkgver=1.9.1.r27.768c035
-pkgrel=1
+pkgrel=2
 pkgdesc='An infinite-canvas paint program'
 arch=('x86_64')
 url='https://github.com/serge-rgb/milton'
-license=('GPL')
+license=('GPL3')
 depends=('opengl-driver' 'gtk2')
 makedepends=('cmake' 'git' 'icoutils' 'patch')
 provides=("${pkgname%-git}")

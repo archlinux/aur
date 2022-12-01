@@ -1,10 +1,10 @@
 pkgbase = milton-git
 	pkgdesc = An infinite-canvas paint program
 	pkgver = 1.9.1.r27.768c035
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/serge-rgb/milton
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	makedepends = icoutils
