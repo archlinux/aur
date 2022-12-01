@@ -28,6 +28,7 @@ pkgbase = art-rawconverter
 	depends = mimalloc
 	depends = openmp
 	optdepends = perl-image-exiftool: metadata support for CR3 images
+	optdepends = art-rawconverter-imageio: add support for additional image formats
 	conflicts = art-rawconverter-git
 	source = art-rawconverter_1.17.2::git+https://bitbucket.org/agriggio/art.git#tag=1.17.2
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
