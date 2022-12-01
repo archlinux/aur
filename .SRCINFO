@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-chkeymap
 	pkgdesc = Set keymap and timezone for main system inside initrd
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/mkinitcpio-chkeymap
 	install = mkinitcpio-chkeymap.install
 	arch = any
@@ -10,9 +10,8 @@ pkgbase = mkinitcpio-chkeymap
 	depends = terminus-font
 	backup = etc/vconsole.conf
 	backup = etc/X11/xorg.conf.d/00-keyboard.conf
-	source = git://github.com/eworm-de/mkinitcpio-chkeymap.git#tag=0.2.0?signed
+	source = git+https://github.com/eworm-de/mkinitcpio-chkeymap.git#tag=0.2.0?signed
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-chkeymap
-
