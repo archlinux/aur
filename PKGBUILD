@@ -3,22 +3,18 @@
 
 pkgname=apbs
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for biomolecular electrostatics and solvation calculations"
 arch=(x86_64)
 url="http://www.poissonboltzmann.org/"
 license=(custom)
-depends=(python openblas suitesparse lapack arpack eigen boost boost-libs metis superlu gtest)
+depends=(python blas suitesparse lapack arpack eigen boost boost-libs metis superlu gtest)
 makedepends=('cmake>=3.12' make git wget)
 provides=(apbs)
 conflicts=(apbs-bin)
 source=("https://github.com/Electrostatics/apbs/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('644e6246fd37c9dd4172fc7be1763337082ab8584dbcd53e738c831b62c89bb2')
 options=(!makeflags !buildflags)
-
-prepare() {
-    echo "Nothing to do here"
-}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
