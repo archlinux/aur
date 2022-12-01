@@ -2,4 +2,5 @@ src/
 pkg/
 *.swp
 *.tar.xz
+*.tar.zst
 hexdino/
