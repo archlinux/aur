@@ -7,8 +7,8 @@
 # $ curl -s https://bluejeans.com/downloads | grep 'desktop/linux'
 
 pkgname=bluejeans
-pkgver=2.30.1
-_patchlevel=18
+pkgver=2.31.0
+_patchlevel=83
 pkgrel=1
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
@@ -71,7 +71,7 @@ depends=('alsa-lib'
          'zlib')
 install=bluejeans.install
 source=(BlueJeans-${pkgver}.rpm::https://swdl.bluejeans.com/desktop-app/linux/${pkgver}/BlueJeans_${pkgver}.${_patchlevel}.rpm)
-sha256sums=('57fde79a29dd92e4e652cb80b9cd14c6574041eee37de5d649958f4d74f22eaf')
+sha256sums=('7734fa4bad76e25ef4b98aa407a7c6802a6a6415d2da2ae0c0e7e49aea4df075')
 
 package() {
   # add bluejeans wrapper to /usr/bin
