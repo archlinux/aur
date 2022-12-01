@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-verdict
 	pkgdesc = Compute quality functions of 2 and 3-dimensional regions (mingw-w64)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/sandialabs/verdict
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-verdict
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/sandialabs/verdict/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 40efa47bced00df650cead5f1525695bb751eaf9145f136177d6c8a718847481
+	source = https://github.com/sandialabs/verdict/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = 26fa583265cb2ced2e9b30ed26260f6c9f89c3296221d96ccd5e7bfeec219de7
 
 pkgname = mingw-w64-verdict
