@@ -3,7 +3,7 @@
 pkgname=sol-client
 _pkgname=sol-client
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple yet feature-rich open-source Minecraft client'
 url=https://github.com/Sol-Client/Client
 arch=(x86_64)
