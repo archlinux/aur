@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=5060.r1.558516c323
+pkgver=5359.r0.9d2c662f55
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -19,10 +19,9 @@ source=("git+https://pdfium.googlesource.com/pdfium"
     )
 
 md5sums=('SKIP'
-    'SKIP'
-    'SKIP'
-    'feb270967925a0844b1b9a9e15288eb3'
-    )
+         'SKIP'
+         'SKIP'
+         'feb270967925a0844b1b9a9e15288eb3')
 
 pkgver() {
 
@@ -41,6 +40,7 @@ prepare() {
 
   ln -sf $srcdir/build build
   ln -sf $srcdir/abseil-cpp third_party/abseil-cpp
+  ln -sf $srcdir/partition_allocator base/allocator/partition_allocator
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -55,10 +55,7 @@ prepare() {
   # Extract build repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/build"
   git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
-  
-  # Fix visibilty for system Freetype
-  git cherry-pick -n bfd6ff0
-  
+    
   # Extract abseil-cpp repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/third_party/abseil-cpp"
   git checkout $(awk '/abseil_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
@@ -66,6 +63,9 @@ prepare() {
   # Patch abseil build to be static
   sed -i 's/component(/static_library(/' BUILD.gn
   sed -i 's/is_component_build(/false/' BUILD.gn
+
+  cd "$srcdir/pdfium/base/allocator/partition_allocator"
+  git checkout $(awk '/partition_allocator_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
@@ -110,6 +110,7 @@ build() {
       'use_system_libopenjpeg2 = true'
       'is_component_build = true'
       'use_gold = false' 
+      'pdf_use_partition_alloc = false'
   )
   
   gn gen out/Release --args="${_flags[*]}"
