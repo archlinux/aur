@@ -1,0 +1,14 @@
+pkgbase = asciidoc-language-documentation-git
+	pkgdesc = AsciiDoc Language Documentation, offline HTML build
+	pkgver = r475.bd16776
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = antora-cli
+	makedepends = antora-site-generator
+	source = git+https://github.com/asciidoctor/asciidoc-docs.git#branch=main
+	source = playbook.yml
+	sha256sums = SKIP
+	sha256sums = 2eccc2106507d4b4e082532324a0317a39c64ad3079210c3852131b643e6dbac
+
+pkgname = asciidoc-language-documentation-git

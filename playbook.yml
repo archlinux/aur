@@ -1,0 +1,14 @@
+site:
+  title: AsciiDoc Language Documentation
+  start_page: asciidoc::ROOT/index.adoc
+content:
+  edit_url: false
+  sources:
+  - url: ./asciidoc-docs
+    branches: HEAD
+    start_path: docs
+ui:
+  bundle:
+    url: https://github.com/asciidoctor/docs.asciidoctor.org-ui/releases/download/prod-293/ui-bundle.zip
+output:
+  dir: ./build
