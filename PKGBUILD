@@ -92,7 +92,7 @@ else
 fi
 pkgver=29.0.0.1
 pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgdesc="GNU Emacs. Development emacs29 branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
