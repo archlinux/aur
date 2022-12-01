@@ -44,6 +44,7 @@ prepare () {
 
 build () {
 	export GOPATH="${srcdir}"
+  export GO111MODULE="auto"
 	cd ${srcdir}/${_srcpath}
   msg2 "Generating..."
 	go generate ./...
