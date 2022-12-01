@@ -1,5 +1,5 @@
 pkgname=verdict
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Compute quality functions of 2 and 3-dimensional regions"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('BSD')
 makedepends=('cmake')
 depends=('glibc')
 source=("https://github.com/sandialabs/verdict/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('40efa47bced00df650cead5f1525695bb751eaf9145f136177d6c8a718847481')
+sha256sums=('26fa583265cb2ced2e9b30ed26260f6c9f89c3296221d96ccd5e7bfeec219de7')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
