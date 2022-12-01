@@ -1,4 +1,4 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 pkgname="oppai-git"
 pkgver=0.9.11_4_g66c3bf9
