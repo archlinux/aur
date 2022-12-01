@@ -1,7 +1,7 @@
 # Maintainer: Atle Solbakken <atle@goliathdns.no>
 
 pkgname=quictls-openssl
-pkgver=1.1.1p+quic
+pkgver=1.1.1s+quic
 pkgrel=1
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('openssl' 'openssl-perl' 'openssl-doc')
 provides=('openssl')
 # Do not add replaces=('openssl') per guidelines
 backup=('etc/ssl/openssl.cnf')
-source=("git+https://github.com/quictls/openssl#branch=OpenSSL_1_1_1p+quic")
+source=("git+https://github.com/quictls/openssl#branch=OpenSSL_1_1_1s+quic")
 md5sums=('SKIP')
 
 # PKGBUILD based on
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 # Update this PKGBUILD as needed to match it as closely as possible
 
 pkgver() {
-	printf "1.1.1p+quic"
+	printf "1.1.1s+quic"
 }
 
 prepare() {
