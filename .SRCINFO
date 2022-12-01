@@ -1,17 +1,14 @@
 pkgbase = phylonet
-	pkgdesc = TA suite of software tools for reconstructing/analyzing phylogenetic networks in the presence of reticulate evolutionary events
-	pkgver = 3.8.2
-	pkgrel = 1
+	pkgdesc = suite of software tools for reconstructing/analyzing phylogenetic networks in the presence of reticulate evolutionary events. https://doi.org/10.1093/sysbio/syy015
+	pkgver = 3.8.4
+	pkgrel = 3
 	url = https://bioinfocs.rice.edu/PhyloNet
 	arch = x86_64
 	license = GPL2
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
-	source = https://bioinfocs.rice.edu/sites/g/files/bxs266/f/kcfinder/files/PhyloNet_3.8.2.jar
-	sha256sums = 0aa9c0e90c751ba14202e193f415d415fd9586a9a2b74c9fb22bbcaf306168d0
+	makedepends = ant
+	makedepends = java-environment=8
+	depends = java-runtime
+	source = phylonet-3.8.4::https://github.com/NakhlehLab/PhyloNet/archive/refs/tags/3.8.4.tar.gz
+	sha256sums = 08f71a6d9385d2cb4b6125da6138008d413050e2d6f427f9875f1cff79852ab1
 
 pkgname = phylonet
-
