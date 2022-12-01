@@ -1,4 +1,4 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
 
 # I *DO NOT* maintain the source repo.
 # This package does not run the python build script to avoid trusting
