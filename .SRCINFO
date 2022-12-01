@@ -1,6 +1,6 @@
 pkgbase = r-phyloprofile
 	pkgdesc = PhyloProfile
-	pkgver = 1.12.0
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PhyloProfile
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-phyloprofile
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhyloProfile_1.12.0.tar.gz
-	sha256sums = 3c8a9659cd7caca192332bea6f7cbd0469b24aacde07681356a6a93bc9ba942c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PhyloProfile_1.12.2.tar.gz
+	sha256sums = fbf9aa8ba0db53cde68e103e453e77bf1b9306dcecfa1fde7832b7fc9cc9ff00
 
 pkgname = r-phyloprofile
