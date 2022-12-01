@@ -1,5 +1,5 @@
 # Maintainer: bbbb <mxk1 (at) protonmail (dot) com>
-# Maintainer:  Iliya Ivanov <aur@proforge.org>
+# Maintainer: Iliya Ivanov <aur@proforge.org>
 
 pkgname=btrustbiss
 pkgver=3.15
