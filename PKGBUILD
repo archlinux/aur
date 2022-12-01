@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps3000
-pkgver=4.0.102_3r3317
+pkgver=4.0.103_3r3320
 pkgrel=1
 pkgdesc="Library for PicoScope 3000 series in PicoScope 7 Beta"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps3000/libps3000_${pkgver//_/-}_amd64.deb")
-md5sums=('b303a35857067754478cfba5a37ff9ea')
+md5sums=('37f93181a4b5b8ac6dfa831f3730b320')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
