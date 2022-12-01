@@ -12,10 +12,10 @@
 pkgname=chromium-no-extras
 _pkgname=chromium
 pkgver=108.0.5359.71
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=2
-pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
+pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
@@ -24,9 +24,9 @@ conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'wayland' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs'
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'java-runtime-headless' 'git')
-optdepends=(
+optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
@@ -63,7 +63,7 @@ declare -gA _system_libs=(
   [icu]=icu
   [jsoncpp]=jsoncpp
   [libaom]=aom
-  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
+  [libavif]=libavif
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -173,14 +173,13 @@ build() {
     'blink_enable_generated_code_formatting=false'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
-    'rtc_use_pipewire=false'
-    'rtc_link_pipewire=false'
+    'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_custom_libcxx=false'
     'use_gnome_keyring=false'
-    'use_qt=false' # look into enabling this for M108
+    'use_qt=false' # look into enabling this
     'use_sysroot=false'
-    'use_system_libwayland_server=true'
+    'use_system_libwayland=true'
     'use_system_wayland_scanner=true'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
