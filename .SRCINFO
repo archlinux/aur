@@ -1,13 +1,14 @@
 pkgbase = metagedit-git
 	pkgdesc = Gedit plugin which adds multiple improvements and functionalities to it
 	pkgver = r65.d3d57a8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pedrovernetti/metagedit
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = gedit
 	depends = python-chardet
+	depends = python-gobject
 	depends = python-iso639
 	provides = metagedit
 	conflicts = metagedit

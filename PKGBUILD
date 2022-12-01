@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=metagedit-git
 pkgver=r65.d3d57a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Gedit plugin which adds multiple improvements and functionalities to it"
 arch=('any')
 url="https://github.com/pedrovernetti/metagedit"
 license=('GPL3')
-depends=('gedit' 'python-chardet' 'python-iso639')
+depends=('gedit' 'python-chardet' 'python-gobject' 'python-iso639')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
