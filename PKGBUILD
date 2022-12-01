@@ -1,16 +1,16 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
-url="https://github.com/lunaryorn/git-gone"
+url="https://github.com/swsnr/git-gone"
 license=('Apache')
 depends=('git' 'libgit2')
 conflicts=('git-gone-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fd7f5a594774325dcaa30dfe46e78184dd60378a939643f28b8b1e90b46d078d86e302a7a605e6de8607cb531629fbaaa431eefc9ce87a441f3b0ab58551095f')
+sha512sums=('47eb0080a22a29ab12783b0cc1f4b7b6f5cee19646ea64d0785172ee9fccf416609422e87736fd6857bbf5572f125c019bf8226d696ad2fefd78dcf638622772')
 
 build() {
     cd "$pkgname-$pkgver"
