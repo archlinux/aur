@@ -2,7 +2,7 @@
 
 _gemname=dry-cli
 pkgname=ruby-${_gemname}
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Common framework to build command line interfaces with Ruby'
 arch=(any)
@@ -20,4 +20,4 @@ package() {
   install -D -m644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('7aa4d4808cdfb39de2f5fc770e34e216ac4ee5e5e77b42757701068b42bbcdb9')
+sha256sums=('28ead169f872954dd08910eb8ead59cf86cd18b4aab321e8eeefe945749569f0')

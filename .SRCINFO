@@ -1,15 +1,15 @@
 pkgbase = ruby-dry-cli
 	pkgdesc = Common framework to build command line interfaces with Ruby
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://dry-rb.org/gems/dry-cli
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-concurrent
-	noextract = dry-cli-0.7.0.gem
+	noextract = dry-cli-1.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dry-cli-0.7.0.gem
-	sha256sums = 7aa4d4808cdfb39de2f5fc770e34e216ac4ee5e5e77b42757701068b42bbcdb9
+	source = https://rubygems.org/downloads/dry-cli-1.0.0.gem
+	sha256sums = 28ead169f872954dd08910eb8ead59cf86cd18b4aab321e8eeefe945749569f0
 
 pkgname = ruby-dry-cli
