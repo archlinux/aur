@@ -2,13 +2,15 @@
 
 _plug=vstools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.2.0.g0566d47
+pkgver=1.6.2.4.g869482c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-tools.git'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'python-rich'
+         )
 makedepends=('git'
              'python-pip'
              'python-wheel'
