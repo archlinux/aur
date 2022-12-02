@@ -1,12 +1,12 @@
 pkgbase = python-webrtcvad-wheels
 	pkgdesc = Interface to the WebRTC Voice Activity Detector (VAD).
-	pkgver = 2.0.10
-	pkgrel = 2
+	pkgver = 2.0.11
+	pkgrel = 1
 	url = https://github.com/daanzu/py-webrtcvad-wheels
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/w/webrtcvad-wheels/webrtcvad-wheels-2.0.10.post2.tar.gz
-	sha256sums = 151bf3998fb731afff90dba77808326235370a6bb467a2d1b81345b10d1de10d
+	source = https://files.pythonhosted.org/packages/source/w/webrtcvad-wheels/webrtcvad-wheels-2.0.11.post1.tar.gz
+	sha256sums = aa1f749b5ea5ce209df9bdef7be9f4844007e630ac87ab9dbc25dda73fd5d2b7
 
 pkgname = python-webrtcvad-wheels
