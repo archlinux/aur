@@ -5,7 +5,7 @@
 # Contributor: Firmicus <francois . archlinux . org>
 
 pkgname=tllocalmgr-git
-pkgver=v0.8.r1.322dabe
+pkgver=v0.8.r2.67e838e
 pkgrel=1
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
