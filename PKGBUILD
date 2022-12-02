@@ -5,14 +5,14 @@ pkgbase=${pkgname}
 _gitname=vfs.sftp
 pkgver=19.0.1
 _gitver=branch=Matrix
-pkgrel=1
+pkgrel=2
 pkgdesc='SFTP Addon for Kodi'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xbmc/$_gitname"
 license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev>=18.0')
-depends=('kodi' 'p8-platform')
+depends=('kodi' 'p8-platform' 'libssh')
 source=("git+https://github.com/xbmc/${_gitname}.git#${_gitver}")
 md5sums=('SKIP')
 
