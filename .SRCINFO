@@ -1,0 +1,17 @@
+pkgbase = mcscanx
+	pkgdesc = Multiple Collinearity Scan toolkit X version https://doi.org/10.1093/nar/gkr1293
+	pkgver = r53.b1ca533
+	pkgrel = 4
+	url = https://github.com/wyp1125/MCScanX
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = git
+	makedepends = java-environment=11
+	depends = java-runtime=11
+	depends = glibc
+	optdepends = perl
+	source = git+https://github.com/wyp1125/MCScanX.git
+	sha256sums = SKIP
+
+pkgname = mcscanx
