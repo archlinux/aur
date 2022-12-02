@@ -1,7 +1,7 @@
 pkgbase = derclou-git
 	pkgdesc = Der Clou! - SDL2 Port
 	pkgver = 2.7_r14.7b219e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vcosta/derclou
 	install = derclou.install
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = derclou-git
 	depends = sdl2
 	optdepends = zlodej: provides game data for the Czech version
 	source = git+https://github.com/vcosta/derclou.git
+	source = derclou.webp
 	source = derclou.desktop
 	md5sums = SKIP
-	md5sums = ca94b53df82b232a4b79fef705f2f414
+	md5sums = 7a8651d5231faf64f1b722e333a39ed3
+	md5sums = ca12227a09654baaf699f232cdc9b57a
 
 pkgname = derclou-git

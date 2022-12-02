@@ -5,4 +5,5 @@ Name=The Clue!
 Name[cs]=Zloděj
 Name[sk]=Zlodej
 Exec=DERCLOU_ROOTDIR="`[ -d /usr/share/zlodej/DATA ] && echo /usr/share/zlodej || echo ~/.clou`" derclou -f
+Icon=derclou
 Categories=Game
