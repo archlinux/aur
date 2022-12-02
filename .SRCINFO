@@ -1,7 +1,7 @@
 pkgbase = quictls-openssl
 	pkgdesc = TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL.
 	pkgver = 3.0.7+quic1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/quictls/openssl
 	arch = x86_64
 	license = custom:BSD
