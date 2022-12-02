@@ -27,9 +27,11 @@ validpgpkeys=(
     '15E7ECF257098A4EF91655EB4CA7FE54A6213C91' # carlaKC
     '7E81EF6B9989A9CC93884803118759E83439A9B1' # Crypt-iQ
     '26984CB69EB8C4A26196F7A4D7D916376026F177' # ellemouton
+    'FE5E159A70C436D6AF4D2887B1F8848557AA29D2' # ffranr
     'F4FC70F07310028424EFC20A8E4256593F177720' # guggero
     'EB13A98091E8D67CDD7FC5A7E9FE7FE00AD163A4' # positiveblue
     'E4D85299674B2D31FAA1892E372CBD7633C61696' # roasbeef
+    '4DC235556B18694E08518DBB671103D881A5F0E4' # sputn1ck
     '729E9D9D92C75A5FBFEEE057B5DD717BEF7CA5B1' # wpaulino
 )
 
@@ -49,9 +51,11 @@ prepare() {
         'carlaKC'
         'Crypt-iQ'
         'ellemouton'
+        'ffranr'
         'guggero'
         'positiveblue'
         'roasbeef'
+        'sputn1ck'
         'wpaulino'
     )
 
