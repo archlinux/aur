@@ -1,13 +1,13 @@
 pkgbase = python-stdnum
-	pkgdesc = Aims to provide functions to handle, parse and validate standard numbers, e.g. IBAN, EAN, ISBN
-	pkgver = 1.17
+	pkgdesc = Handle, parse and validate standard numbers, e.g. IBAN, EAN, ISBN
+	pkgver = 1.18
 	pkgrel = 1
 	url = http://arthurdejong.org/python-stdnum
 	arch = any
 	license = LGPL2.1
 	makedepends = python-distribute
 	depends = python
-	source = python-stdnum-1.17.tar.gz::http://arthurdejong.org/python-stdnum/python-stdnum-1.17.tar.gz
-	sha256sums = 374e2b5e13912ccdbf50b0b23fca2c3e0531174805c32d74e145f37756328340
+	source = python-stdnum-1.18.tar.gz::http://arthurdejong.org/python-stdnum/python-stdnum-1.18.tar.gz
+	sha256sums = bcc763d9c49ae23da5d2b7a686d5fd1deec9d9051341160a10d1ac723a26bec0
 
 pkgname = python-stdnum
