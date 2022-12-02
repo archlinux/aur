@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-*
+Target = zfs-linux*
+
+[Action]
+Description = Adjust symlink to cache for kernel module directory
+When = PostTransaction
+Exec = /usr/lib/kmodcache/post-upgrade

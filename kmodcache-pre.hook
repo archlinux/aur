@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = linux
+Target = linux-*
+Target = zfs-linux*
+
+[Action]
+Description = Copy old kernel module directory to cache
+When = PreTransaction
+Exec = /usr/lib/kmodcache/pre-upgrade

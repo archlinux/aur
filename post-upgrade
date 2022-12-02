@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -eu
+
+read cur_osrelease </proc/sys/kernel/osrelease
+
+moddir=/usr/lib/modules/$cur_osrelease
+
+if [ -e "$moddir" ] || [ -L "$moddir" ]; then
+    exit 0
+fi
+
+[ -e /var/cache/kmods/osrelease ] || exit 0
+
+read prev_osrelease </var/cache/kmods/osrelease
+
+[ "$cur_osrelease" == "$prev_osrelease" ] || exit 0
+
+ln -sT ../../../var/cache/kmods "$moddir"

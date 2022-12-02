@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -eu
+
+read cur_osrelease </proc/sys/kernel/osrelease
+
+moddir=/usr/lib/modules/$cur_osrelease
+oldlink=$(readlink -m "$moddir")
+
+if [ "${oldlink}" == /var/cache/kmods ]; then
+    rm "$moddir"
+    exit 0
+fi
+
+if [ -e /var/cache/kmods/osrelease ]; then
+    read prev_osrelease </var/cache/kmods/osrelease
+    [ "$cur_osrelease" != "$prev_osrelease" ] || exit 0
+fi
+
+[ -d "$moddir" ] || exit 0
+
+rm -rf /var/cache/kmods
+
+cp -a "$moddir" /var/cache/kmods
+cat /proc/sys/kernel/osrelease >/var/cache/kmods/osrelease
