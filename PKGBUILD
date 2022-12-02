@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui-git
-pkgver=0.9.0.r1.g52a2ea1
+pkgver=0.9.2.r0.g85a1a59
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG (git)"
 arch=('x86_64')
