@@ -1,0 +1,41 @@
+From d64c6ca52de7c29c4df55b00d8ef23dd32d7b2b7 Mon Sep 17 00:00:00 2001
+From: Ewout van Mansom <ewout@vanmansom.name>
+Date: Fri, 2 Dec 2022 22:16:09 +0100
+Subject: [PATCH] support system-wide gschema
+
+---
+ settings.js | 22 ++++++++++++++--------
+ 1 file changed, 14 insertions(+), 8 deletions(-)
+
+diff --git a/settings.js b/settings.js
+index d07ca64..1465b31 100644
+--- a/settings.js
++++ b/settings.js
+@@ -12,13 +12,19 @@ const Me = ExtensionUtils.getCurrentExtension();
+  */
+ function settings()
+ {
+-    let gschema = Gio.SettingsSchemaSource.new_from_directory(
+-        Me.dir.get_child('schemas').get_path(),
+-        Gio.SettingsSchemaSource.get_default(),
+-        false
+-    );
++    // first try developer friendly embedded schema
++    try {
++        let gschema = Gio.SettingsSchemaSource.new_from_directory(
++            Me.dir.get_child('schemas').get_path(),
++            Gio.SettingsSchemaSource.get_default(),
++            false
++        );
++        return new Gio.Settings({
++            settings_schema: gschema.lookup('org.gnome.shell.extensions.jiggle', true)
++        });
++    } catch (e) {
++        // now try system one below
++    }
+ 
+-    return new Gio.Settings({
+-        settings_schema: gschema.lookup('org.gnome.shell.extensions.jiggle', true)
+-    });
++    return new Gio.Settings({schema_id: 'org.gnome.shell.extensions.jiggle'});
+ }
