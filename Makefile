@@ -3,6 +3,7 @@
 all: clean rebuild srcinfo
 
 rebuild:
+	updpkgsums
 	makepkg -s
 
 srcinfo:
