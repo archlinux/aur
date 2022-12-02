@@ -2,16 +2,16 @@
 
 pkgname=quictls-openssl
 pkgver=3.0.7+quic1
-pkgrel=4
+pkgrel=5
 pkgdesc="TLS/SSL and crypto library with QUIC APIs, replacement for OpenSSL."
 arch=('x86_64')
 url="https://github.com/quictls/openssl"
-license=('custom:BSD')
+license=('Apache')
 depends=('glibc')
 makedepends=('perl' 'git')
 optdepends=('ca-certificates' 'perl')
 conflicts=('openssl' 'openssl-perl' 'openssl-doc')
-provides=('openssl')
+provides=('openssl' 'libcrypto.so' 'libssl.so')
 # Do not add replaces=('openssl') per guidelines
 backup=('etc/ssl/openssl.cnf')
 source=("git+https://github.com/quictls/openssl#tag=openssl-3.0.7+quic1")
@@ -55,7 +55,7 @@ check() {
 	# revert this patch for make test
 	patch -p0 -R -i "$srcdir/../ca-dir.patch"
 
-	make test
+	make HARNESS_JOBS=$(nproc) test
 
 	patch -p0 -i "$srcdir/../ca-dir.patch"
 
