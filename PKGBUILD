@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-dmidecode
-pkgver=3.12.2
+pkgver=3.12.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://git.fedorahosted.org/cgit/python-dmidecode.git"
@@ -20,4 +20,4 @@ package() {
 
 }
 
-md5sums=('458d83ac45316ec40df327b183b2030e')
+sha256sums=('44d45d7d8344290c259c989d3af3f614c7837cbd85052d486adfa46a1c777164')
