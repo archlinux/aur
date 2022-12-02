@@ -2,13 +2,13 @@
 
 _plug=vsexprtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.2.2.g33d4a32
+pkgver=1.2.5.0.g45301e4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-exprtools.git'
 license=('GPL')
-depends=('vapoursynth-plugin-vsutil-git')
+depends=('vapoursynth-plugin-vstools-git')
 makedepends=('git'
              'python-pip'
              'python-wheel'
