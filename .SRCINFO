@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-jiggle
 	pkgdesc = Gnome extension that highlights the cursor position when the mouse is moved rapidly.
 	pkgver = 8+r38+g436d1cf
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/jeffchannell/jiggle
 	arch = any
 	groups = gnome-shell-extensions

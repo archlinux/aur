@@ -3,7 +3,7 @@ _extname=jiggle
 _uuid=jiggle@jeffchannell.com
 pkgname=gnome-shell-extension-jiggle
 pkgver=8+r38+g436d1cf
-pkgrel=6
+pkgrel=7
 pkgdesc='Gnome extension that highlights the cursor position when the mouse is moved rapidly.'
 arch=('any')
 url='https://github.com/jeffchannell/jiggle'
@@ -50,8 +50,9 @@ package() {
 
   unzip jiggle_latest.zip -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 
-  # remove redundant schema, as it available to glib-2.0 system wide
+  # remove redundant gschema, as it available to glib-2.0 system wide
   rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/org.gnome.shell.extensions.jiggle.gschema.xml"
+  rm "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/gschemas.compiled"
 
   chown root:root -R "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 }
