@@ -1,6 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=ChiTuBox Free
+GenericName=3D Printer Slicer
 Comment=All-in-one SLA/DLP/LCD Slicer
-Exec=chitubox-free
+Exec=chitubox-free %f
+Icon=chitubox-free
 Categories=Graphics;Utility;
+MimeType=model/chitubox;

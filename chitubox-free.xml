@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="model/chitubox">
+    <comment>Chitubox Sliced 3D model</comment>
+    <glob pattern="*.chitubox"/>
+    <acronym>CHITUBOX</acronym>
+    <icon name="chitubox-free"/>
+  </mime-type>
+</mime-info>
