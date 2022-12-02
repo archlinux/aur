@@ -22,7 +22,7 @@ depends=(
   libliftoff.so
   libpipewire-0.3.so
   libvulkan.so
-  #libwlroots.so
+  libwlroots.so
   libx11
   libxcomposite
   libxdamage
@@ -36,8 +36,8 @@ depends=(
   sdl2
   vulkan-icd-loader
   wayland
-  #wayland-protocols
-  #wlroots
+  wayland-protocols
+  wlroots
   xorg-server-xwayland
 )
 makedepends=(
