@@ -1,13 +1,13 @@
 pkgbase = acorn-cli
 	pkgdesc = A simple application deployment framework for Kubernetes
-	pkgver = v0.4.0
-	pkgrel = 2
+	pkgver = v0.4.1
+	pkgrel = 1
 	url = https://acorn.io/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
-	source = acorn-v0.4.0::git+https://github.com/acorn-io/acorn#tag=v0.4.0
+	source = acorn-v0.4.1::git+https://github.com/acorn-io/acorn#tag=v0.4.1
 	sha256sums = SKIP
 
 pkgname = acorn-cli

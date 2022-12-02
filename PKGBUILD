@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bodky <dbodky at gmail dot com>
 pkgname=acorn-cli
-pkgver="v0.4.0"
-pkgrel=2
+pkgver="v0.4.1"
+pkgrel=1
 epoch=
 pkgdesc="A simple application deployment framework for Kubernetes"
 arch=('x86_64')
