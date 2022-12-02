@@ -1,0 +1,15 @@
+pkgbase = ithc-dkms-git
+	pkgdesc = Linux driver for Intel Touch Host Controller
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/quo/ithc-linux
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = dkms
+	provides = ithc
+	conflicts = ithc
+	source = git+https://github.com/quo/ithc-linux.git
+	md5sums = SKIP
+
+pkgname = ithc-dkms-git
