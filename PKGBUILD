@@ -8,7 +8,7 @@ _gitroot="https://github.com/mtk-openwrt/${_gitname}"
 _gitbranch="mtksoc-20210508"
 pkgname=bpir64-atf-git
 pkgver=r20210508214220.d2c75b2
-pkgrel=1
+pkgrel=2
 pkgdesc='ATF bpir64 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
@@ -70,7 +70,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
-  make
+  make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
   cd "${srcdir}/${_gitname}"
   for _atfdev in sdmmc emmc; do
     _ATFBUILDARGS="PLAT=mt7622 BOOT_DEVICE=$_atfdev DDR3_FLYBY=1 LOG_LEVEL=40"
