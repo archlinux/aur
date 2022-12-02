@@ -1,0 +1,2 @@
+#!/bin/bash
+java -Xms64m -Xmx512m -jar /usr/share/figtree/figtree.jar "$@"

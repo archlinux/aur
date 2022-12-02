@@ -1,17 +1,19 @@
 pkgbase = figtree
 	pkgdesc = Graphical viewer of phylogenetic trees
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 5
 	url = http://tree.bio.ed.ac.uk/software/figtree
 	arch = any
 	license = GPL2
-	depends = java-environment
-	source = figtree-1.4.4.tar.gz::https://github.com/rambaut/figtree/releases/download/v1.4.4/FigTree_v1.4.4.tgz
-	source = fix_jar_path.patch
+	makedepends = java-environment
+	makedepends = ant
+	makedepends = git
+	depends = java-runtime=8
+	source = git+https://github.com/rambaut/figtree.git#commit=f9085b6
+	source = Figtree
 	source = figtree.desktop
-	sha256sums = 529b867657b29e369cf81cd361e6a76bd713d488a63b91932df2385800423aa8
-	sha256sums = f2aa0ebe18924d098f0380d7a5dba3d154c4049c53749be19ab12d77f2c7fccb
-	sha256sums = 93aaadf4db141c57c5a84fe6e9e875af5091c9fe468f41adb8ce6c02ed214ab3
+	sha256sums = SKIP
+	sha256sums = d799ce29b41f4dcea53ab0337353b244c616a391b197862a9b2d7e0bb703e06d
+	sha256sums = 803d76b21ab1a8c300b5e5855022fb6309f1ce6b647308e254965790664d36b0
 
 pkgname = figtree
-

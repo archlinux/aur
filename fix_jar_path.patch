@@ -1,8 +1,0 @@
---- figtree.orig	2018-11-26 19:59:48.790432156 +1100
-+++ figtree	2018-11-26 20:01:28.520151651 +1100
-@@ -1,4 +1,4 @@
- #!/bin/sh
- 
--java -Xms64m -Xmx512m -jar lib/figtree.jar "$@"
-+java -Xms64m -Xmx512m -jar /usr/share/figtree/lib/figtree.jar "$@"
- 

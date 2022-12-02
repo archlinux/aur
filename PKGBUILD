@@ -1,35 +1,33 @@
-# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Alexandre G <alex foo lecairn bar org>
 
 pkgname=figtree
+_pkgname=Figtree
 pkgver=1.4.4
-pkgrel=1
+pkgrel=5
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
-depends=('java-environment')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rambaut/$pkgname/releases/download/v$pkgver/FigTree_v$pkgver.tgz"
-        "fix_jar_path.patch"
+depends=('java-runtime=8')
+makedepends=('java-environment' 'ant' 'git')
+source=("git+https://github.com/rambaut/figtree.git#commit=f9085b6"
+	"$_pkgname"
         "${pkgname}.desktop")
-sha256sums=('529b867657b29e369cf81cd361e6a76bd713d488a63b91932df2385800423aa8'
-            'f2aa0ebe18924d098f0380d7a5dba3d154c4049c53749be19ab12d77f2c7fccb'
-            '93aaadf4db141c57c5a84fe6e9e875af5091c9fe468f41adb8ce6c02ed214ab3')
+sha256sums=('SKIP'
+            'd799ce29b41f4dcea53ab0337353b244c616a391b197862a9b2d7e0bb703e06d'
+            '803d76b21ab1a8c300b5e5855022fb6309f1ce6b647308e254965790664d36b0')
 
-prepare() {
-  patch -p1 -i "${srcdir}/fix_jar_path.patch" "${srcdir}/FigTree_v${pkgver}/bin/figtree"
+build() {
+  cd $pkgname
+  ant dist
 }
-
 package() {
-  _figdir="${srcdir}/FigTree_v${pkgver}"
-  
-  install -Dm755 "${_figdir}/bin/figtree" "${pkgdir}/usr/bin/figtree"
-  install -Dm755 "${_figdir}/lib/figtree.jar" "${pkgdir}/usr/share/figtree/lib/figtree.jar"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${_figdir}/images/figtree.png" "${pkgdir}/usr/share/pixmaps/figtree.png"
-  
-  # Install doc and examples
-  install -Dm644 "${_figdir}/README.txt"     "${pkgdir}/usr/share/doc/figtree/README.txt"
-  install -Dm644 "${_figdir}/carnivore.tree" "${pkgdir}/usr/share/doc/figtree/examples/carnivore.tree"
-  install -Dm644 "${_figdir}/influenza.tree" "${pkgdir}/usr/share/doc/figtree/examples/influenza.tree"
+  install -Dm 755 $srcdir/$_pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm 755 $srcdir/$pkgname.desktop $pkgdir/usr/bin/$pkgname.desktop
+
+  cd $srcdir/$pkgname
+  install -Dm 755 dist/$pkgname.jar $pkgdir/usr/share/$pkgname/$pkgname.jar
+  install -Dm 644 release/Linux/icons/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
