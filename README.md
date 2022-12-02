@@ -148,6 +148,8 @@ This package provides both pieces in one package.
 
 ## Revisions
 
+- r4: Second iteration, completed version, ready for MR.  (Combines both
+  `fix-dynamic-deps-2-arts` and `fix-project-local-flags`.)
 - r3: Intermediate revision for testing before the second iteration PRs.
 - r2: The first iteration, before splitting this validation pass to another
   phase.

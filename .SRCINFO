@@ -1,8 +1,8 @@
 pkgbase = ghc-cabal-arts
 	pkgdesc = Haskell setup to fix ‘There are files missing in the `dynamic-1.0' package’ (9.4.2 / 3.9).
 	pkgver = 9.4.2
-	pkgrel = 3
-	url = https://github.com/bairyn/cabal/commits/wip-fix-dynamic-deps-2-bak9-aur-r3
+	pkgrel = 4
+	url = https://github.com/bairyn/cabal/commits/fix-dynamic-deps-2-r4
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
@@ -19,13 +19,13 @@ pkgbase = ghc-cabal-arts
 	conflicts = cabal-install
 	conflicts = ghc-libs
 	conflicts = ghc-static
-	noextract = 5778390093f23a043f39c433e6303072ffcedf6d.tar.gz
+	noextract = 80514e61f8d64671e0267675e0842e211ecbdce0.tar.gz
 	noextract = ghc-9.4.2-src.tar.xz
 	options = !strip
 	options = !staticlibs
-	source = https://github.com/bairyn/cabal/archive/5778390093f23a043f39c433e6303072ffcedf6d.tar.gz
+	source = https://github.com/bairyn/cabal/archive/80514e61f8d64671e0267675e0842e211ecbdce0.tar.gz
 	source = https://downloads.haskell.org/~ghc/9.4.2/ghc-9.4.2-src.tar.xz
-	sha512sums = 8f0c1f27255ec4950340d3a74474710e49158da3512534821e65e3f87078958d95c6a86913a292bcb3177623028f8815b490a27c2673439b93764180969a3125
+	sha512sums = e64b033412395f77cc46cb50f3ad2b26a1abe4ef5175082286675be632853945bb8a45614f81ee68afc6520dea1ca60939feab07601f5cfe5bfff78f5a8f75a2
 	sha512sums = c55ad01b71ac3285dc057fcd3d83415767859cf20667374323bbaeefe9268b47ee0fc19add6860a8e1481e943855886cc7ace4bcb2f79349f94a44752c6aeccb
 
 pkgname = ghc-cabal-arts
