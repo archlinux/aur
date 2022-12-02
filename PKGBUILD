@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=grub-reboot-picker
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
 arch=('any')
 url="https://github.com/mendhak/grub-reboot-picker"
 license=('MIT')
 depends=('python-gobject' 'python-cairo' 'libappindicator-gtk3' 'grub' 'polkit')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'setup.patch')
 sha256sums=('661c97686cd45556ef6b925a1aed3c405db399714329d78fdd94dd3a826d7ac9'
@@ -34,16 +34,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mv "${pkgdir}${site_packages}"{/etc,/usr/{bin,share}} "$pkgdir/usr/"
-  rm -rf "${pkgdir}${site_packages}"{/etc,/usr}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
