@@ -1,6 +1,6 @@
 pkgbase = pycharm-professional
 	pkgdesc = Python IDE for Professional Developers. Professional Edition
-	pkgver = 2022.2.4
+	pkgver = 2022.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
@@ -35,13 +35,13 @@ pkgbase = pycharm-professional
 	conflicts = pycharm-eap
 	backup = opt/pycharm-professional/bin/pycharm64.vmoptions
 	backup = opt/pycharm-professional/bin/idea.properties
-	source = https://download.jetbrains.com/python/pycharm-professional-2022.2.4.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-professional-2022.3.tar.gz
 	source = pycharm-professional.desktop
 	source = charm.desktop
 	source = charm
-	sha256sums = cd6253f558ef0b2f3890713401cfe11eadb717c14373dfbb520bedce621e728b
+	sha256sums = 5a12c7c699b7cab2e81bc2f83425c141ef396381100395da94faa064cfd9c5cd
 	sha256sums = a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291
 	sha256sums = 6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8
-	sha256sums = c01a62a9a17a018f645e7301fd98b98dec77e682f1d0cd908b850e8be03830e0
+	sha256sums = 2c520f63afffa5ef153077fc61e0c3b15a0a9bf8fd4973164af62ec64626a741
 
 pkgname = pycharm-professional

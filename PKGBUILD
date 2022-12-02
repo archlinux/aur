@@ -3,7 +3,7 @@
 # Contributors: edacval
 
 pkgname=pycharm-professional
-pkgver=2022.2.4
+pkgver=2022.3
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('cd6253f558ef0b2f3890713401cfe11eadb717c14373dfbb520bedce621e728b'
+sha256sums=('5a12c7c699b7cab2e81bc2f83425c141ef396381100395da94faa064cfd9c5cd'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
-            'c01a62a9a17a018f645e7301fd98b98dec77e682f1d0cd908b850e8be03830e0')
+            '2c520f63afffa5ef153077fc61e0c3b15a0a9bf8fd4973164af62ec64626a741')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -48,7 +48,6 @@ build() {
 
     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
     find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
-    rm -r pycharm-${pkgver}/lib/pty4j-native/linux/{mips64el,ppc64le,aarch64,arm,x86}
 }
 
 package() {
