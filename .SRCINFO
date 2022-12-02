@@ -1,0 +1,14 @@
+pkgbase = pipeswitchd
+	pkgdesc = Daemon for PipeWire that automatically links audio inputs and outputs based on regular expressions, similar to patchbay.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Teascade/pipeswitch
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = pipewire
+	source = pipeswitchd::git+https://github.com/Teascade/pipeswitch.git#tag=v1.0.0
+	sha512sums = SKIP
+
+pkgname = pipeswitchd
