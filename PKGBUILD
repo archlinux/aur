@@ -1,36 +1,46 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: Thomas Girod <tgirod@altu.fr>
+pkgname=overwitch
+pkgver=1.0
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
-arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
-license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+epoch=
+pkgdesc="JACK client for Overbridge devices"
+arch=('x86_64')
+url="https://github.com/dagargo/overwitch"
+license=('GPL')
+groups=()
+depends=('libusb' 'jack' 'libsamplerate' 'libsndfile' 'gettext' 'json-glib' 'gtk3')
+makedepends=('make' 'autoconf')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/dagargo/overwitch/releases/download/$pkgver/overwitch-$pkgver.tar.gz")
+noextract=()
+validpgpkeys=()
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+prepare() {
+	cd "$pkgname-$pkgver"
+}
 
 build() {
-	cd "$pkgname-master"
-	cmake -S .
+	cd "$pkgname-$pkgver"
+	autoreconf --install
+	./configure --prefix=/usr
 	make
 }
 
-package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+check() {
+	cd "$pkgname-$pkgver"
 }
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+}
+
+sha256sums=('7b2c7a873640bfa2fbbd5fe76d72d00438615cd474f08a8b5ba990c37d1a2ba0')
