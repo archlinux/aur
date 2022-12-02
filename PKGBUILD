@@ -4,7 +4,7 @@ _gitname=atom
 _pkgname=${_gitname}-community
 
 pkgname=${_pkgname}-git
-pkgver=1.63.0_dev_a2bae55a7
+pkgver=1.63.0_dev_336706c81
 pkgrel=1
 pkgdesc="A hackable text editor for the 21st century, built on Electron, and based on everything we love about our favorite editors."
 url="https://github.com/atom-community/atom"
@@ -61,9 +61,4 @@ package() {
   install -dm0755 "${pkgdir}/usr/bin"
   ln -s /opt/${_pkgname}/atom "${pkgdir}/usr/bin/atom"
   ln -s /opt/${_pkgname}/resources/app/apm/bin/apm "${pkgdir}/usr/bin/apm"
-}
-
-check() {
-  cd ${_gitname}
-  node script/test.js
 }
