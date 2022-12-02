@@ -1,7 +1,7 @@
 # Maintainer: Donn <me@donn.website>
 pkgname=cemu-bin
 pkgver=2.0
-pkgrel=18
+pkgrel=19
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
@@ -19,6 +19,9 @@ depends=(
   'systemd'
   'libffi'
 )
+makedepends=(
+  'patchelf'
+)
 provides=('cemu')
 conflicts=('cemu' 'cemu-git')
 options=(!strip !docs libtool emptydirs)
@@ -32,7 +35,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  'f439e10b7be66b0e64ee5af6c86177246f8363def932131df99a2c213d4d6c79'
+  '39c2568f52ab3dd065672e0007d8a62f182c683a7479858ece988547f2683838'
   'SKIP'
   'SKIP'
   'SKIP'
