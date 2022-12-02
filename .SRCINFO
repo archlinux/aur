@@ -1,12 +1,12 @@
 pkgbase = python-randfacts
 	pkgdesc = Python module used to generate random facts
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/TabulateJarl8/randfacts
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/r/randfacts/randfacts-0.18.0.tar.gz
-	sha512sums = eb1494bd895946cdad8818802daf83904468a6e3ccb1e3650e48c38647faf316550faf4d1a62805b4f0f7b321dc4f8c12baad71e862cb15b3537b2d2abbe5b5c
+	source = https://files.pythonhosted.org/packages/source/r/randfacts/randfacts-0.19.0.tar.gz
+	sha512sums = 52932bd9dc3805bfd923c075ad974c19f83cf3b58bc6691356d03c48a72ea390f8a66be86b8677e2315ead578b69c4647f442a985ad9a8831ed5d5d46ed5f014
 
 pkgname = python-randfacts
