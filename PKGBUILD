@@ -3,7 +3,7 @@
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia
-pkgver=520.56.06
+pkgver=525.60.11
 pkgrel=1
 pkgdesc="mhwd-nvidia pci id"
 arch=("any")
