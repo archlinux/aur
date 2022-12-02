@@ -2,15 +2,15 @@
 pkgbase=schily-tools
 pkgname=(schily-tools-{sdd,star})
 pkgdesc='Set of tools maintained by Jorg Schilling'
-pkgver=2021.09.18
-pkgrel=1
-url=http://schilytools.sourceforge.net/
+pkgver=2022.10.16
+pkgrel=3
+url=https://codeberg.org/schilytools/schilytools
 arch=(x86_64)
 license=(custom:CDDL)
 depends=(libcap)
 _version=${pkgver//./-}
-source=("https://sourceforge.net/projects/schilytools/files/schily-${_version}.tar.bz2")
-b2sums=('b9dba48d64aa4924517b75dfba4231ac367e60121d03b47e093d82dfb69a70a5b80788c535206305ec094686e2210d254a1aa19abc8774f6d6afbc11d8ab1407')
+source=("https://mirrors.dotsrc.org/schilytools/schily-${_version}.tar.bz2")
+b2sums=('28a3da630ece59cd7868bf7b3ec55477c9668d9784f67029e1bbabe5367f17c90dc8288df388d6837c1484012c6f7099eced8f5454a08d37fe54e37e9082470e')
 
 _tools=(
 	sdd
@@ -24,21 +24,12 @@ _deps=(
 	librmt
 )
 
-SMAKE="${startdir}/src/schily-${_version}/psmake/smake"
-
 build () {
 	cd "schily-${_version}"
 	
-	if [[ ! -x $SMAKE ]]; then
-		msg2 'Bootstrapping smake...'
-		cd psmake
-		sh ./MAKE-sh
-		cd ..
-	fi
-
 	for i in "${_deps[@]}" "${_tools[@]}"; do
 		msg2 "Building $i..."
-		"$SMAKE" -r -C "$i" INS_BASE=/usr \
+		make -C "$i" GMAKE_NOWARN=true INS_BASE=/usr \
 			CFLAGS="${CFLAGS}" LDOPTX="${LDFLAGS}" CC="${CC}"
 	done
 }
@@ -50,7 +41,7 @@ _installone () {
 	depends+=("$@")
 
 	cd "schily-${_version}"
-	"$SMAKE" -r -C "${subdir}" INS_BASE=/usr DESTDIR="${pkgdir}" install
+	make -C "${subdir}" GMAKE_NOWARN=true INS_BASE=/usr DESTDIR="${pkgdir}" install
 
 	install -Dm644 CDDL.Schily.txt \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
