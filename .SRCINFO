@@ -1,12 +1,12 @@
 pkgbase = swayws
 	pkgdesc = A sway workspace tool which allows easy moving of workspaces to and from outputs
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 1.0.0.r0.g5285988
+	pkgrel = 1
 	url = https://gitlab.com/w0lff/swayws
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = git+https://gitlab.com/w0lff/swayws#commit=feb4c7fab41b83bf251ff7a31440f5e4028f30bd
+	source = git+https://gitlab.com/w0lff/swayws#tag=v1.0.0
 	sha512sums = SKIP
 
 pkgname = swayws
