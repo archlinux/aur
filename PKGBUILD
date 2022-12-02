@@ -2,17 +2,15 @@
 
 _plug=vsdfft
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.3.g5584f85
+pkgver=1.0.0.5.g8f1237a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git'
 license=('GPL')
-depends=('vapoursynth-plugin-vstools-git'
-         'vapoursynth-plugin-vskernels-git'
-         'vapoursynth-plugin-vsexprtools-git'
-         'vapoursynth-plugin-vsrgtools-git'
-         'vapoursynth-plugin-vsmask-git'
+depends=('vapoursynth'
+         'python-numpy'
+         'python-pyfftw'
          )
 makedepends=('git'
              'python-pip'
