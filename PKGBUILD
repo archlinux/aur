@@ -5,13 +5,13 @@
 pkgname=figtree
 _pkgname=Figtree
 pkgver=1.4.4
-pkgrel=5
+pkgrel=8
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
 license=('GPL2')  # as stated in http://code.google.com/p/figtree/
 depends=('java-runtime=8')
-makedepends=('java-environment' 'ant' 'git')
+makedepends=('java-environment=8' 'ant' 'git')
 source=("git+https://github.com/rambaut/figtree.git#commit=f9085b6"
 	"$_pkgname"
         "${pkgname}.desktop")

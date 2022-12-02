@@ -1,11 +1,11 @@
 pkgbase = figtree
 	pkgdesc = Graphical viewer of phylogenetic trees
 	pkgver = 1.4.4
-	pkgrel = 5
+	pkgrel = 8
 	url = http://tree.bio.ed.ac.uk/software/figtree
 	arch = any
 	license = GPL2
-	makedepends = java-environment
+	makedepends = java-environment=8
 	makedepends = ant
 	makedepends = git
 	depends = java-runtime=8
