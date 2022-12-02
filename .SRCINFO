@@ -1,12 +1,13 @@
 pkgbase = nitch
 	pkgdesc = Incredibly fast system fetch written in nim
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unxsh/nitch
 	arch = x86_64
 	license = MIT
 	makedepends = nim
 	makedepends = git
+	makedepends = openssl-1.1
 	source = git+https://github.com/unxsh/nitch#commit=1c6955c4632614797154487fdc0f983e60f20f06
 	md5sums = SKIP
 

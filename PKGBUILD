@@ -3,12 +3,12 @@
 pkgname=nitch
 pkgver=0.1.6
 _commit=1c6955c4632614797154487fdc0f983e60f20f06
-pkgrel=1
+pkgrel=2
 pkgdesc="Incredibly fast system fetch written in nim"
 arch=(x86_64)
 url=https://github.com/unxsh/nitch
 license=(MIT)
-makedepends=(nim git)
+makedepends=(nim git openssl-1.1)
 source=("git+$url#commit=$_commit")
 md5sums=(SKIP)
 
