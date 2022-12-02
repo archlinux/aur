@@ -18,7 +18,7 @@ conflicts=('chatterino')
 options=(!strip)
 install=$pkgname.install
 source=("https://github.com/Chatterino/chatterino2/releases/download/v$pkgver/$_appimage")
-sha256sums=('f2835516b0c2f98d11afe8d75d4fa017e7eab1ebb1bc9b32fdc9058e70673989')
+sha256sums=('67b8b090ac00b90a9391b2264fd45d103ed6e87b252de11dc58ffc9eb2ec1519')
 
 prepare () {
     cd "$srcdir"
