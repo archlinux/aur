@@ -4,7 +4,7 @@
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
 pkgver='1.154.2'
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
 url='https://tlaun.ch'
@@ -13,8 +13,8 @@ license=('custom')
 depends=('java-runtime>=8')
 optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
-#_bootstrap_version='1.30.3'
-#_bootstrap_checksum='68572f278a8ad420d64e3f8dcb9ea1b265a67d0273aaf91a9d50f66d69e88d0d'
+#_bootstrap_version='1.30.4'
+#_bootstrap_checksum='9dd40bf65a7ffb1b268725b6b4b233311adb9519638b201abf5d41a7133c7d6a'
 #_launcher_version='1.154.2'
 #_launcher_checksum='c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6'
 
@@ -39,7 +39,7 @@ _repo='https://tlaun.ch/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.30.3-68572f27.jar::${_repo}/update/aur/bootstrap/68572f278a8ad420d64e3f8dcb9ea1b265a67d0273aaf91a9d50f66d69e88d0d.jar"
+  "tl-bootstrap-1.30.4-9dd40bf6.jar::${_repo}/update/aur/bootstrap/9dd40bf65a7ffb1b268725b6b4b233311adb9519638b201abf5d41a7133c7d6a.jar"
 
   # Launcher
   "tl-launcher-1.154.2-c18025fb.jar::${_repo}/update/aur/launcher/c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6.jar"
@@ -92,12 +92,12 @@ source=(
 
 noextract=(
   "${source[@]##*/}"
-  "tl-bootstrap-1.30.3-68572f27.jar"
+  "tl-bootstrap-1.30.4-9dd40bf6.jar"
   "tl-launcher-1.154.2-c18025fb.jar"
 )
 
 sha256sums=(
-  '68572f278a8ad420d64e3f8dcb9ea1b265a67d0273aaf91a9d50f66d69e88d0d' # tl-bootstrap-1.30.3-68572f27.jar
+  '9dd40bf65a7ffb1b268725b6b4b233311adb9519638b201abf5d41a7133c7d6a' # tl-bootstrap-1.30.4-9dd40bf6.jar
 
   'c18025fbbed24c2466855afd82775d988aa42a16c9696e2623662573e2440ac6' # tl-launcher-1.154.2-c18025fb.jar
 
@@ -155,7 +155,7 @@ package() {
   done
 
   # install launcher
-  install -Dm0644 "${srcdir}/tl-bootstrap-1.30.3-68572f27.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-1.30.4-9dd40bf6.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
   install -Dm0644 "${srcdir}/tl-launcher-1.154.2-c18025fb.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
