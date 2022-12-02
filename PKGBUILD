@@ -3,7 +3,7 @@
 pkgname=sol-client
 _pkgname=sol-client
 pkgver=1.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple yet feature-rich open-source Minecraft client'
 url=https://github.com/Sol-Client/Client
 arch=(x86_64)
@@ -22,14 +22,24 @@ prepare() {
 	mv "Sol Client" sol-client
 	rm "Sol Client.desktop"
 	curl -Os https://raw.githubusercontent.com/Sol-Client/Client/main/assets/sol-client.desktop
-	mv "Sol Client.png" sol-client.png
+	rm "Sol Client.png"
+	curl -Os https://raw.githubusercontent.com/Sol-Client/Client/main/assets/icon.png
+    mv icon.png $pkgname.png
+
+	convert $pkgname.png -resize 16x16 "usr/share/icons/hicolor/16x16/apps/sol-client.png"
+	convert $pkgname.png -resize 32x32 "usr/share/icons/hicolor/32x32/apps/sol-client.png"
+	convert $pkgname.png -resize 48x48 "usr/share/icons/hicolor/48x48/apps/sol-client.png"
+	convert $pkgname.png -resize 64x64 "usr/share/icons/hicolor/64x64/apps/sol-client.png"
+	convert $pkgname.png -resize 128x128 "usr/share/icons/hicolor/128x128/apps/sol-client.png"
+	convert $pkgname.png -resize 256x256 "usr/share/icons/hicolor/256x256/apps/sol-client.png"
 	cd ..
-	mv "squashfs-root/usr/share/icons/hicolor/16x16/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/16x16/apps/sol-client.png"
-	mv "squashfs-root/usr/share/icons/hicolor/32x32/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/32x32/apps/sol-client.png"
-	mv "squashfs-root/usr/share/icons/hicolor/48x48/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/48x48/apps/sol-client.png"
-	mv "squashfs-root/usr/share/icons/hicolor/64x64/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/64x64/apps/sol-client.png"
-	mv "squashfs-root/usr/share/icons/hicolor/128x128/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/128x128/apps/sol-client.png"
-	mv "squashfs-root/usr/share/icons/hicolor/256x256/apps/Sol Client.png" "squashfs-root/usr/share/icons/hicolor/256x256/apps/sol-client.png"
+
+	rm "squashfs-root/usr/share/icons/hicolor/16x16/apps/Sol Client.png"
+	rm "squashfs-root/usr/share/icons/hicolor/32x32/apps/Sol Client.png"
+	rm "squashfs-root/usr/share/icons/hicolor/48x48/apps/Sol Client.png"
+	rm "squashfs-root/usr/share/icons/hicolor/64x64/apps/Sol Client.png"
+	rm "squashfs-root/usr/share/icons/hicolor/128x128/apps/Sol Client.png"
+	rm "squashfs-root/usr/share/icons/hicolor/256x256/apps/Sol Client.png"
 	}
 
 build() {
@@ -46,6 +56,8 @@ package() {
 	install -Dm755 \
 		"${srcdir}/${_appimage}" \
 		"${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+
+	echo ${pkgdir}
 
 	# Desktop file
 	install -Dm644 \
