@@ -5,7 +5,7 @@
 
 # Maintainer: Christian Wolf <aur@christianwolf.email>
 pkgname=circuit_macros
-pkgver=9.3.3
+pkgver=10.1
 pkgrel=1
 epoch=
 pkgdesc="Tools for drawing electric circuits and other line diagrams"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros$pkgver.tar.gz" 'circuit_macros.sh')
 noextract=()
-md5sums=('d6b0d7e141381f447a632ab74cab5a5f' '298fb2cffdc119b5c9b6a01175204f90')
+md5sums=('c476bdc9d11d3b04a23349ed9c39c7e8' '298fb2cffdc119b5c9b6a01175204f90')
 validpgpkeys=()
 
 prepare() {
