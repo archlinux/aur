@@ -1,6 +1,6 @@
 pkgname=opentitus
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Rewrite of the game engine used in the old DOS-based games Titus the Fox and Moktar (the French version)"
 arch=(x86_64 aarch64)
 url=https://opentitus.sourceforge.net/
@@ -17,7 +17,7 @@ source=(
 	titus_usrlevel.conf
 	$pkgname{.sh,{,-moktar,-usrlevel}.desktop}
 	{titus,moktar,lagbonus}.png
-	titusbig.webp)	# https://www.artstation.com/artwork/ba3Olo
+	{titus,lagaf}big.webp)	# Titus: https://www.artstation.com/artwork/ba3Olo; Lagaf: https://cpcrulez.fr/GamesTest/les_aventures_de_moktar.htm#DL, cutout with https://zyro.com/tools/image-background-remover
 noextract=(*.iso)
 md5sums=(
 	96d8226064c7f6072dadd25f1460b135
@@ -33,7 +33,8 @@ md5sums=(
 	87d7ad1786bdcba5756c42c1fa58f5e4
 	1a73e7c2f500467b903bbfb93a2daf2b
 	70cc9911d17535fde21c7fb4a7802fbf
-	9a3e6c59b780d603539e54a75fbcdfd7)
+	9a3e6c59b780d603539e54a75fbcdfd7
+	20775c79e46d97a1b2445a15523e3303)
 build(){
 	mkdir -p Disk7
 	bsdtar xf Disk7.iso -C Disk7
@@ -48,6 +49,7 @@ package(){
 	install Disk7/FOX/{FONTS,LEVELD,MENU,SPREXP,TIT{RE,US}}.SQZ -Dt "$pkgdir"/usr/share/$pkgname/titus
 	install {titus,moktar,lagbonus}.png -Dt "$pkgdir"/usr/share/icons/hicolor/32x32/apps
 	install titusbig.webp -D "$pkgdir"/usr/share/icons/hicolor/512x512/apps/titus.png
+	cp lagafbig.webp "$pkgdir"/usr/share/icons/hicolor/512x512/apps/moktar.png
 	install $pkgname{,-moktar,-usrlevel}.desktop -Dt "$pkgdir"/usr/share/applications
 	cd OpenTitus_${pkgver}_src
 	install $pkgname ../$pkgname.sh -Dt "$pkgdir"/usr/bin
