@@ -16,10 +16,9 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 
-pkgver=2.10.0
+pkgver=2.11.0
 _srcname="tensorflow"
-_pkgver=2.10.0
-pkgver=2.10.0
+_pkgver=2.11.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream)"
 url="https://www.tensorflow.org/"
@@ -30,7 +29,7 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'rccl' 'git' 'miopen' 'python
              'python-setuptools' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
              'cython' 'patchelf' 'python-requests')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.10-rocm-enhanced"
+source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.11-rocm-enhanced"
         fix-c++17-compat.patch
         fix-cusolver-version.patch
         remove-log-spam.patch)
@@ -84,6 +83,9 @@ prepare() {
   sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
   sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/core/util/gpu_solvers.h
   sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocm_blas.cc
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocm_blas.h
+  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocblas_wrapper.h
 
   patch -Np1 -i "${srcdir}/fix-cusolver-version.patch"
   patch -Np1 -i "${srcdir}/remove-log-spam.patch"
