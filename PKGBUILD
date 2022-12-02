@@ -3,7 +3,7 @@
 
 pkgname=python-mopidy-tidal
 _pkg=Mopidy-Tidal
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Tidal music service integration'
 arch=('any')
@@ -12,14 +12,8 @@ license=('Apache')
 depends=('mopidy' 'python-pykka' 'python-tidalapi' 'python-requests')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-mock')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/$_pkg/$_pkg-$pkgver.tar.gz"
-        "fix-playlists.patch::$url/commit/38bbd10.diff")
-sha256sums=('0d378a51281c755e5d32705f11f91d4b52e473151519962ba4ef3ce8257d811b'
-            '06156878a318e6df59ca2471247f2fbac59e8b5919a22f04602647c51fe54cd9')
-
-prepare() {
-	patch -p1 -d "$_pkg-$pkgver" < fix-playlists.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('7a4aa1ccac94d96a9339e451d5949903dc96dd45ec2c1b02d8193a159ad08267')
 
 build() {
 	cd "$_pkg-$pkgver"
