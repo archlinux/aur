@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNAnorm
-_pkgver=1.44.0
+_pkgver=1.44.1
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.44.1
 pkgrel=1
 pkgdesc='A normalization method for Copy Number Aberration in cancer samples'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b0204fe524a32c5f76862e876b445741b05694cad7e49f475542e239522233ee')
+sha256sums=('c88361c104a20b72cd1e566d5063f3caa9e7bc1158e8cca5ccf500801330feb8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
