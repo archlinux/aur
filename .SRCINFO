@@ -1,0 +1,13 @@
+pkgbase = keyoxidizer-git
+	pkgdesc = Interactive Keyoxide helper
+	pkgver = .0.2.4.r0.gdee8bed
+	pkgrel = 1
+	url = https://github.com/shombando/keyoxidizer
+	arch = x86_64
+	license = APACHE
+	provides = keyoxidizer
+	conflicts = keyoxidizer
+	source = git+https://github.com/shombando/keyoxidizer
+	b2sums = SKIP
+
+pkgname = keyoxidizer-git
