@@ -2,7 +2,7 @@
 # Contributor: Max Beikirch <max.beikirch (at) unitybox (dot) de>
 
 pkgname=tor-shadow
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="An open-source network simulator/emulator hybrid (e.g. for Tor and Bitcoin)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('glib2>=2.32.0' 'python>=3.6')
 makedepends=('gcc' 'cmake>=3.2' 'make' 'cargo' 'pkgconf' 'xz' 'util-linux' )
 optdepends=('python-numpy' 'python-lxml' 'python-matplotlib' 'python-networkx' 'python-scipy' 'python-yaml')
 source=("https://github.com/shadow/shadow/archive/v$pkgver.tar.gz")
-sha256sums=("707e27c4b1181849ebaa0ab052de0932713d0af26a1f3c682e47d5abfeffaf25")
+sha256sums=("89b99b907a42d24dd6783e9dc17e5a268b22f3c71e38a57c34b2aff152e615f1")
 
 # TODO
 # Maybe there should be a prepare() that checks various system variables to make sure they are in accordance with:
