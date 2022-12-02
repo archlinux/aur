@@ -10,3 +10,4 @@ Exec=plainotepad
 Terminal=false
 Categories=Qt;Utility;TextEditor;
 StartupWMClass=plainotepad
+StartupNotify=true
