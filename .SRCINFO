@@ -1,7 +1,7 @@
 pkgbase = syphon-bin
 	pkgdesc = Privacy-centric Matrix client
 	pkgver = 0.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/syphon-org/syphon
 	arch = x86_64
 	arch = aarch64
