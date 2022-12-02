@@ -36,7 +36,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -f *.pkg.tar.{xz,zst} *.{zip,gz}{,.part}
+	rm -rf *.pkg.tar.{xz,zst} *.{zip,gz,xz,zst}{,.part}
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
