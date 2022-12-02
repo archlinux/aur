@@ -2,13 +2,11 @@
 
 pkgname=exoscale-cli
 pkgver=1.61.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
 url="https://github.com/exoscale/cli"
-license=('EPL')
-provides=('exoscale-cli')
-conflicts=('exoscale-cli')
+license=('Apache')
 
 source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz")
 
