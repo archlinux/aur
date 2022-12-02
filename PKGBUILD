@@ -4,8 +4,8 @@
 _electron='electron20'
 
 pkgname="ferdium-electron"
-pkgver=6.2.0
-pkgrel=2
+pkgver=6.2.1
+pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
