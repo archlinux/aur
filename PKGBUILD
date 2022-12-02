@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.0.10
+pkgver=6.0.11
 pkgrel=1
 pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -26,7 +26,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0102-mm_vmscan_fix_extreme_overreclaim_and_swap_floods.patch'
         '0103-soundwire_intel_Initialize_clock_stop_timeout.patch'
         '0104-drm_sched_add_DRM_SCHED_FENCE_DONT_PIPELINE_flag.patch'
         '0105-drm_amdgpu_use_DRM_SCHED_FENCE_DONT_PIPELINE_for_VM_updates.patch'
@@ -51,10 +50,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('39e57fcd84cd70bfa3e1a4185d3aa0ed7f1432f24c6548d16326b0c3c9541dd0'
-            '9cba609ac53b1f042a6e5b33cb3fd12e88e6f671ea683376ae48a80aae8af7c9'
+sha256sums=('2bae6131e64971e1e34ff395fa542971134c857bdb0b29069ab847c7c9a9c762'
+            '0927a403aaee7c444defdf49876e6f81d0debb3668427108050608de5190fe12'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            'a75d2a2322c8cd99a6dc9945424fd9006e7a8f9d2793c0ae97ef931f2d54b9a5'
             '5a72a4163937bc588d6a8ed6320e610f6512376b7aa20c4ada5c0ae09cdcd525'
             '8ecbe2fdd40c1accc4e7ccd687c319938c18f5adf056ff314c7702775347adf9'
             '11b7c141c218d6c026a29aed5ba3c3322343ae677155a6dccf622c151eb1b1aa'
