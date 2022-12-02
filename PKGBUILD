@@ -1,12 +1,16 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.7.r29.g1a958f2
+pkgver=0.7.1.r31.g73401a3
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
-url='http://www.brain-dump.org/projects/vis/'
-depends=('acl' 'bash' 'ncurses' 'libtermkey' 'lua' 'lua-lpeg' 'tre' 'file')
+url='https://github.com/martanne/vis#vis-a-vim-like-text-editor'
+depends=('acl' 'libacl.so' 'bash' 'ncurses' 'libncursesw.so' 'libtermkey'
+         'libtermkey.so' 'lua' 'lua-lpeg' 'tre' 'file')
+optdepends=('wl-clipboard: wayland clipboard support'
+            'xclip: X11 clipboard support'
+            'xsel: X11 clipboard support')
 makedepends=('git')
 checkdepends=('vim')
 conflicts=('vis')
@@ -19,12 +23,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-	cd vis/
+  cd vis/
 
-	git config --file=.gitmodules submodule.test.url ../vis-test/
-	git update-index --assume-unchanged .gitmodules
-	git submodule init
-	git submodule update
+  git config --file=.gitmodules submodule.test.url ../vis-test/
+  git update-index --assume-unchanged .gitmodules
+  git submodule init
+  git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
@@ -43,27 +47,27 @@ pkgver() {
 }
 
 build() {
-	cd vis/
+  cd vis/
 
-	./configure \
-		--prefix=/usr
+  ./configure \
+    --prefix=/usr
 
-	make
+  make
 }
 
 check() {
-	cd vis/
+  cd vis/
 
-	make -C test/
+  make -C test/
 }
 
 package() {
-	cd vis/
+  cd vis/
 
-	make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 
-	install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
+  install -D -m0644 lua/visrc.lua "${pkgdir}"/etc/vis/visrc.lua
 
-	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
+  install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 }
 
