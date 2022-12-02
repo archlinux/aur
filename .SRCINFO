@@ -8,6 +8,7 @@ pkgbase = vapoursynth-plugin-vsexprtools-git
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python-wheel
+	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools-git
 	provides = vapoursynth-plugin-vsexprtools
 	conflicts = vapoursynth-plugin-vsexprtools
