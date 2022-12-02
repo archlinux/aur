@@ -29,13 +29,15 @@ diff --git a/data/meson.build b/data/meson.build
 index e66726ce7..0504bf78a 100644
 --- a/data/meson.build
 +++ b/data/meson.build
-@@ -1,5 +1,9 @@
+@@ -1,5 +1,11 @@
  po_dir = join_paths(meson.source_root(), 'po')
  
-+install_data('file-roller-compress.contract', 'file-roller-extract-here.contract',
-+ install_dir : join_paths(datadir, 'contractor')
++install_data(
++  'file-roller-compress.contract',
++  'file-roller-extract-here.contract',
++   install_dir : join_paths(datadir, 'contractor'),
 +)
 +
- install_data('org.gnome.FileRoller.gschema.xml',
-   install_dir : join_paths(datadir, 'glib-2.0', 'schemas')
- )
+ install_data(
+   'org.gnome.FileRoller.gschema.xml',
+   install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
