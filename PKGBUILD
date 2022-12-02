@@ -15,7 +15,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=43.1+r2+g6a962803e
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -46,9 +46,10 @@ pkgver() {
 prepare() {
   cd mutter
 
-  # Windows don't render correctly when using tiling extensions
+  # https://bugs.archlinux.org/task/76570
   # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6054
-  git revert -n 7e7a639c
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2694
+  git cherry-pick -n 61cc31c3ce37d6a1d977f6cdccc3703ca824a51e
 
   # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
