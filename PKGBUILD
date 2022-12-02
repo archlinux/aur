@@ -31,11 +31,14 @@ build() {
 package() {
 	cd "$pkgname"	
 	install -dm755 ${pkgdir}/usr/share/gpu-passthrough-manager
+	install -dm755 ${pkgdir}/usr/share/polkit-1/actions
 
 	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/icons" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/py" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	cp -r --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/tools" "${pkgdir}/usr/share/gpu-passthrough-manager"
 	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/style.css" "${pkgdir}/usr/share/gpu-passthrough-manager"
+	cp --no-preserve=mode,ownership "${srcdir}/gpu-passthrough-manager/tools/org.freedesktop.gpu-passthrough-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.gpu-passthrough-manager.policy"
+
 	install -Dm755 "${srcdir}/gpu-passthrough-manager/GPUPM" "${pkgdir}/usr/share/gpu-passthrough-manager/GPUPM"
 	install -Dm755 "${srcdir}/gpu-passthrough-manager/tools/Reboot" "${pkgdir}/usr/share/gpu-passthrough-manager/tools/Reboot"
 	rm -r "${pkgdir}/usr/share/gpu-passthrough-manager/tools/reboot.c"
