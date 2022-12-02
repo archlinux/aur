@@ -1,0 +1,12 @@
+pkgbase = m1ndflay3r-updates
+	pkgdesc = An AUR metapackage with the sole purpose of allowing me to easily distribute updates to F1ay3d OS without requiring a full reinstall every time. If you don't know what F1ay3d OS is, this isn't for you.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://www.github.com/m1ndflay3r/
+	arch = any
+	license = GPL-3.0
+	depends = m1ndflay3r-release
+	provides = m1ndflay3r-updates
+	conflicts = m1ndflay3r-updates
+
+pkgname = m1ndflay3r-updates
