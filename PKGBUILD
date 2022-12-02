@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=5359.r0.9d2c662f55
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -40,7 +40,6 @@ prepare() {
 
   ln -sf $srcdir/build build
   ln -sf $srcdir/abseil-cpp third_party/abseil-cpp
-  ln -sf $srcdir/partition_allocator base/allocator/partition_allocator
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -63,9 +62,6 @@ prepare() {
   # Patch abseil build to be static
   sed -i 's/component(/static_library(/' BUILD.gn
   sed -i 's/is_component_build(/false/' BUILD.gn
-
-  cd "$srcdir/pdfium/base/allocator/partition_allocator"
-  git checkout $(awk '/partition_allocator_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
 
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
