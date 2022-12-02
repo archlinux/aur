@@ -2,17 +2,17 @@
 
 _plug=vsdenoise
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.0.5.gd485270
+pkgver=1.1.2.4.g2f34413
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-denoise'
 license=('MIT')
-depends=('vapoursynth-plugin-vsrgtools-git'
+depends=('vapoursynth'
          'vapoursynth-plugin-vstools-git'
-         'vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-vskernels-git'
          'vapoursynth-plugin-vsexprtools-git'
+         'vapoursynth-plugin-vsrgtools-git'
          'vapoursynth-plugin-vsaa-git'
          'vapoursynth-plugin-vsscale-git'
          )
