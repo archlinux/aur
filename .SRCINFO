@@ -7,10 +7,10 @@ pkgbase = ab-av1
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = lld
 	depends = svt-av1
 	depends = ffmpeg
 	depends = vmaf
-	depends = opus
 	source = https://github.com/alexheretic/ab-av1/archive/v0.5.1.tar.gz
 	sha256sums = f9184130075020863c8c872bc6ecbe2430317efc6169ebf021b774f3ad04b10f
 
