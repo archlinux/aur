@@ -1,4 +1,5 @@
 pkgbase = zvm
+	pkgdesc = Version manager for Zig compilers
 	pkgver = 0.0.1_alpha
 	pkgrel = 1
 	arch = x86_64
