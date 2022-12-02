@@ -3,9 +3,9 @@
 pkgbase=purc-git
 pkgname=purc-git
 pkgver=0.9.2.r0.gc6cdea5b9
-pkgrel=1
+pkgrel=2
 pkgdesc="The prime HVML interpreter for C Language."
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
 url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml-git')
