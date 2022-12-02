@@ -4,6 +4,7 @@ pkgbase = syphon-bin
 	pkgrel = 1
 	url = https://github.com/syphon-org/syphon
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	depends = gtk3
 	depends = libsecret
@@ -13,5 +14,7 @@ pkgbase = syphon-bin
 	provides = syphon
 	source_x86_64 = https://github.com/syphon-org/syphon/releases/download/0.2.14/syphon.linux.0.2.14.x64.tar.gz
 	sha256sums_x86_64 = dd31f0516bfccd8460c7bb4db33f24ffb6258a7817b0624dc35d8c0abb1023c6
+	source_aarch64 = https://github.com/syphon-org/syphon/releases/download/0.2.14/syphon.linux.0.2.14.arm64.tar.gz
+	sha256sums_aarch64 = 7fb88a7ebf99f2df80f5ed2ba32bdc228e2d76bf532fee40e23eb1982b9d4d0c
 
 pkgname = syphon-bin

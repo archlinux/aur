@@ -2,9 +2,9 @@
 pkgname=syphon-bin
 _pkgname=syphon
 pkgver=0.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-centric Matrix client"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/syphon-org/syphon"
 license=('AGPL3')
 depends=('gtk3' 'libsecret' 'libolm' 'jsoncpp' 'sqlcipher')
