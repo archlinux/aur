@@ -2,18 +2,22 @@
 
 _plug=vsdehalo
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.1.g30dc8ea
+pkgver=1.1.1.2.g29a497e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-dehalo'
 license=('MIT')
-depends=('vapoursynth-plugin-vstools-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-vstools-git'
          'vapoursynth-plugin-vskernels-git'
          'vapoursynth-plugin-vsexprtools-git'
          'vapoursynth-plugin-vsrgtools-git'
-         'vapoursynth-plugin-vsdenoise-git'
          'vapoursynth-plugin-vsmask-git'
+         'vapoursynth-plugin-vsaa-git'
+         'vapoursynth-plugin-vsscale-git'
+         'vapoursynth-plugin-vsdenoise-git'
+
          )
 makedepends=('git'
              'python-pip'
