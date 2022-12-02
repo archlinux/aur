@@ -1,4 +1,4 @@
-# Maintainer: Ratan Rai Sur <ratan.r.sur@gmail.com>
+# Maintainer: Ramana Kumar <ramana@member.fsf.org>
 pkgname=besu
 pkgver=22.10.0
 pkgrel=1
