@@ -1,5 +1,5 @@
 8c8
-< n exec 16.15.0 npm run webpack
+< n exec 16.18.0 npm run webpack
 ---
 > npm run webpack
 13c13
@@ -11,7 +11,7 @@
 < rm -rf $DIR/dump-db/node_modules
 < 
 33c30
-< (cd $DIR && n exec 16.15.0 npm install --only=prod)
+< (cd $DIR && n exec 16.18.0 npm install --only=prod)
 ---
 > (cd $DIR && npm install --only=prod)
 37c34
