@@ -1,14 +1,17 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 # Contributor: Alec Ari <neotheuser@ymail.com>
+#
+# Note: if configure script complains about missing 'bwidget' execute:
+# sudo chmod -R o+rX /usr/lib/tcl8.6/bwidget-1.9.16
 
 pkgname=linuxcnc-sim
 pkgver=2.7.15
-pkgrel=4
+pkgrel=5
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://linuxcnc.org/"
-depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc' 'python2-yapps2' 'python2-gobject2' 'boost-python2' 'boost-python2-libs')
+depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc' 'python2-yapps2' 'python2-gobject2' 'boost-python2' 'boost-python2-libs' 'bwidget')
 install=$pkgname.install
 _gitname='linuxcnc'
 source=($_gitname::"git+https://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'linuxcnc-sim.sh' 'libtirpc.patch')
