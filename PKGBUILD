@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.0.r249.gc99916bef
+pkgver=0.9.2.r0.gc6cdea5b9
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C Language."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL-3.0')
 groups=('hvml-git')
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
-replaces=()
+replaces=(domruler purc-fetcher)
 depends=('glib2' 'bison' 'flex')
 makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu')
 optdepends=('purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
