@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=ab-av1
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="AV1 encoding tool with fast VMAF sampling."
 arch=('x86_64')
@@ -8,22 +8,24 @@ url="https://github.com/alexheretic/ab-av1"
 license=('MIT')
 depends=('svt-av1'
          'ffmpeg'
-         'vmaf'
-         'opus')
+         'vmaf')
 optdepends=()
 makedepends=('cargo'
-             'git')
+             'git'
+             'lld')
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e195188e34e568c2880b82c8565e50226497096843fdbc709478192338a8ffa0')
+sha256sums=('f9184130075020863c8c872bc6ecbe2430317efc6169ebf021b774f3ad04b10f')
 
 build() {
   cd "$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --target-dir=target
+  RUSTFLAGS='-C link-arg=-fuse-ld=lld' \
+    RUSTUP_TOOLCHAIN=stable \
+    cargo build --release --locked
 }
 
 package() {
   local bin
-  bin="$pkgname-$pkgver"/target/release/ab-av1
+  bin=${CARGO_TARGET_DIR:-"$pkgname-$pkgver/target"}/release/ab-av1
 
   # generate completions
   "$bin" print-completions "bash" > out.txt
