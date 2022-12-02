@@ -1,9 +1,9 @@
 [Trigger]
+Type = Path
+Operation = Install
 Operation = Upgrade
-Type = Package
-Target = linux
-Target = linux-*
-Target = zfs-linux*
+Operation = Remove
+Target = usr/lib/modules/*/
 
 [Action]
 Description = Copy old kernel module directory to cache

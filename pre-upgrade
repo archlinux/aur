@@ -2,15 +2,18 @@
 
 set -eu
 
+shopt -s nullglob
+
 read cur_osrelease </proc/sys/kernel/osrelease
 
 moddir=/usr/lib/modules/$cur_osrelease
 oldlink=$(readlink -m "$moddir")
 
-if [ "${oldlink}" == /var/cache/kmods ]; then
-    rm "$moddir"
-    exit 0
-fi
+for l in /usr/lib/modules/*; do
+    oldlink=$(readlink -m "$l")
+    [ "${oldlink}" == /var/cache/kmods ] || continue
+    rm "$l"
+done
 
 if [ -e /var/cache/kmods/osrelease ]; then
     read prev_osrelease </var/cache/kmods/osrelease
