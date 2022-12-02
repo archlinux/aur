@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=keyoxidizer-git
-pkgver=.0.2.4.r0.gdee8bed
+pkgver=0.2.4.r0.gdee8bed
 pkgrel=1
 pkgdesc="Interactive Keyoxide helper"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(git+$url)
 
 pkgver() {
 	cd ${pkgname%-git}
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^.//'
 }
 
 package() {
