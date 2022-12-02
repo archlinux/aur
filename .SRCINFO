@@ -1,6 +1,6 @@
 pkgbase = topgrade-git
 	pkgdesc = Invoke the upgrade procedure of multiple package managers
-	pkgver = 10.0.1.r1163.5a6f0d2
+	pkgver = 10.2.1.r1263.73888e7
 	pkgrel = 1
 	url = https://github.com/topgrade-rs/topgrade
 	arch = x86_64
