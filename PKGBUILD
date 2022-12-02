@@ -5,8 +5,8 @@
 # https://unix.stackexchange.com/questions/560065/how-can-i-manually-download-a-snap-package-for-example-with-wget
 
 pkgname=spotify-edge
-pkgver=1.1.84.716
-_commit=gc5f8b819
+pkgver=1.1.99.878
+_commit=g1e4ccc6e
 pkgrel=1
 pkgdesc='A proprietary music streaming service. Edge version.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
             'libnotify: Desktop notifications')
 makedepends=('squashfs-tools')
 _snapid='pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7'
-_snaprev='60'
+_snaprev='62'
 source=(
     'spotify.protocol'
     'LICENSE'
@@ -29,7 +29,7 @@ source=(
 sha512sums=(
     '999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
     '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-    '1209b956822d8bb661daa2c88616bed403ec26dc22c6b866cecff59235c56112284c2f99aa06352fc0df6fcd15225a6ad60afd3b4ff4d7b948ab83e70ab31a71'
+    '9b8f63c067632f15f5abf6449d09d28fd56839decfc9801d4526cf5b97b9cb5933ede179bcd0b0f2d8b6d4c7e72f55c7fc13dfb0ae4293ef447ead1d018b9cc6'
 )
 
 prepare() {
