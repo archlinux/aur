@@ -3,6 +3,7 @@
 pkgname='zvm'
 pkgver='0.0.1_alpha'
 pkgrel='1'
+pkgdesc='Version manager for Zig compilers'
 arch=('x86_64')
 license=('MIT')
 makedepnds=()
