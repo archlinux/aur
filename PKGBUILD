@@ -1,12 +1,12 @@
 # Maintainer: phire <me@phire.cc>
 pkgname=mlvd
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal Mullvad WireGuard client"
 arch=('any')
 url="https://github.com/phirecc/mlvd"
 depends=('wireguard-tools' 'openresolv')
-makedepends=("cargo")
+makedepends=("cargo-nightly")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=("58b688032cd58234494f598859cc5802")
 backup=(var/lib/mlvd/template.conf)
