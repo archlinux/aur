@@ -11,7 +11,7 @@ install=hode.install
 source=(
 	git+https://github.com/cyxx/hode.git
 	hode.{ini,sh,desktop}
-	amazing.webp	# https://heartofdarkness.ca/Download/Demos/ECTS1995HoDpresskit.zip	# ECTS1995HoDpresskit/LOGO/AMAZINGB.TIF
+	amazing.webp	# https://heartofdarkness.ca/Download/Demos/ECTS1995HoDpresskit.zip (ECTS1995HoDpresskit/LOGO/AMAZINGB.TIF)
 	amazing32.png)
 md5sums=(
 	SKIP
