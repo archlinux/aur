@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=entt
 pkgbase=entt
-pkgver=3.11.0
+pkgver=3.11.1
 pkgrel=1
 epoch=
 pkgdesc="A header-only, tiny and easy to use entity-component system (and much more) written in modern C++"
@@ -19,7 +19,7 @@ install=
 changelog=
 
 source=("https://github.com/skypjack/entt/archive/v$pkgver.tar.gz")
-sha256sums=('7cca2bd4d4aeef6c5bdbe06b9e047e7f2519ebaff901207cc81ac71a2bbe185e')
+sha256sums=('0ac010f232d3089200c5e545bcbd6480cf68b705de6930d8ff7cdb0a29f5b47b')
 noextract=()
 validpgpkeys=()
 
