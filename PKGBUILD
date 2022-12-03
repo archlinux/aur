@@ -2,15 +2,15 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="5.3.2.4"
+pkgver="5.4.0.3"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
-depends=('aspnet-runtime>=6.0')
+depends=('aspnet-runtime>=7.0')
 optdepends=('asf-ui: standalone web interface for ASF')
-makedepends=('git' 'dotnet-sdk>=6.0')
+makedepends=('git' 'dotnet-sdk>=7.0')
 changelog=changelog
 backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 install=install
