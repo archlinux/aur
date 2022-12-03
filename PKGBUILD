@@ -1,7 +1,5 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
-# from: pypi
-# what: cleo
 
 _pkgname=cleo
 pkgname=python-cleo-v0
