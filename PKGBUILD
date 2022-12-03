@@ -12,7 +12,7 @@ license=('GPL')
 
 options=('!makeflags')
 
-depends=('python2')
+depends=('python')
 makedepends=('git' 'gprbuild' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num'
              'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-camlzip'
              'ocaml-ocplib-simplex-git' 'ocaml-yojson' 'python-sphinx'
