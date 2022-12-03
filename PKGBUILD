@@ -1,8 +1,8 @@
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc at cryptolab dot net>
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=ledger2beancount
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc='Ledger to Beancount text-based converter'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl' 'perl-date-calc'
          )
 conflicts=('ledger2beancount-git')
 source=("https://github.com/beancount/ledger2beancount/archive/${pkgver}.tar.gz")
-sha256sums=('cd17477108f9883623aca530bb67b1a64448b6be890a00b9d1dddf2b68ce8c12')
+sha256sums=('6c241c01f4fcc1be039583412b4dd45fc9d86cd14563c38d75bdfab72a1f4a28')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
