@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 _pkgname=vim-blueprint-syntax
 pkgname=vim-blueprint-syntax-git
 pkgver=r9.b14164b
