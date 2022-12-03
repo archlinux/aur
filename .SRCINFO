@@ -1,0 +1,15 @@
+pkgbase = rss-email
+	pkgdesc = Send new RSS posts as E-Mail
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://sr.ht/~witcher/rss-email
+	arch = x86_64
+	license = WTFPL
+	makedepends = rust
+	makedepends = scdoc
+	depends = sqlite
+	conflicts = rss-email-git
+	source = rss-email-0.3.0.tar.gz::https://git.sr.ht/~witcher/rss-email/archive/0.3.0.tar.gz
+	sha256sums = 64b35be219e7db34e8543928ac119a7de5d5a8121935cd24c9774b22b461de57
+
+pkgname = rss-email
