@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Exec=2h4u
+Type=Application
+Categories=Game;
+Name=2H4U
+GenericName=A mix between a Tetris-like game and a wall breaker
+Comment=Too hard for you
+Terminal=false
+StartupNotify=false
+Icon=/usr/share/2h4u/data/images/icone.png
+X-Desktop-File-Install-Version=0.21
