@@ -1,27 +1,20 @@
 pkgbase = sanguosha
 	pkgdesc = SanGuoSha Online (三国杀)
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sanguosha.com
 	arch = x86_64
-	license = GPL
-	makedepends = electron13
+	license = custom
 	makedepends = imagemagick
-	depends = c-ares
-	depends = ffmpeg
-	depends = gtk3
-	depends = libevent
-	depends = libxslt
-	depends = minizip
-	depends = nss
-	depends = re2
-	depends = snappy
+	depends = electron13
 	noextract = SGSOL_SetUp.exe
 	source = SGSOL_SetUp.exe::https://olh5download.sanguosha.com/olh5/wd/win/official/SGSOL_SetUp.exe?v=1.0.8
 	source = icon.jpeg::https://soft.jiegeng.com/uploadfile/2021/0922/20210922015254825.jpeg
 	source = sanguosha.desktop
+	source = sanguosha.sh
 	sha256sums = e5ea9b748dc6bdf474b853eff812398e5725c51ff906b8ef66cfccad7acbc7ff
 	sha256sums = 82149708816bd2314c207b5dd4af24e268febdf197a1ee709231ce95134f3c72
 	sha256sums = 56ff518ef3ec397f2208b3e4dbcb4f67f533e7b0d6d121b24a5e974013925e58
+	sha256sums = f68e3726f9adda9e84747f6983598efb85526ee086fabd9fd28fd24cbf08fa17
 
 pkgname = sanguosha
