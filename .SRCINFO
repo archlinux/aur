@@ -1,21 +1,15 @@
 pkgbase = obs-dynamic-delay
 	pkgdesc = Filter for dynamic delaying a video source
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/dynamic-delay.1035/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	makedepends = libxcomposite
-	makedepends = ffmpeg
-	makedepends = pciutils
-	depends = obs-studio>=28.0.0
-	source = obs-dynamic-delay::git+https://github.com/exeldro/obs-dynamic-delay#commit=33456a177f830fe63f3bc618ed606465920d072c
-	source = obs-studio-28.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/28.0.0.tar.gz
+	depends = obs-studio>=28
+	source = obs-dynamic-delay::git+https://github.com/exeldro/obs-dynamic-delay#commit=c6d4fbb7b7f30fb37c1e19738b37d4615df3f77a
 	sha256sums = SKIP
-	sha256sums = 412a1a26699a6861dbbe93346310d002369c62e00626e8c3a77c127e5e1c06e8
 
 pkgname = obs-dynamic-delay
