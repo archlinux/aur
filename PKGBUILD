@@ -21,6 +21,9 @@ checkdepends=(
 python-pytest
 python-typing_extensions
 )
+makedepends=(
+git
+)
 source=(git+https://github.com/CadQuery/cadquery#commit=03c3266b8d61d487349a15f73d3b3cb13bce625f)
 sha256sums=('SKIP')
 
