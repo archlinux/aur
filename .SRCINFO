@@ -1,7 +1,7 @@
 pkgbase = libbass_fx
 	pkgdesc = BASS audio library - Effects Add-On
 	pkgver = 2.4.12.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.un4seen.com/
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libbass_fx
 	depends = libbass
 	source = https://www.un4seen.com/files/z/0/bass_fx24-linux.zip
 	source = LICENSE
-	sha256sums = a98eb81bade52bdcc2d59e8d6803dea97ed4060f3b98e7097f05db1f91481cb5
+	sha256sums = 1ee97610bc2768357c4c344c0d7a058ac95edf51804c391fdcf7644762bd413b
 	sha256sums = f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83
 	source_armv6h = bass_fx24-linux-armv6h.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip
 	sha256sums_armv6h = 84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5
