@@ -1,7 +1,7 @@
 pkgbase = 2h4u
 	pkgdesc = A mix between a Tetris-like game and a wall breaker
 	pkgver = 1.3
-	pkgrel = 6
+	pkgrel = 7
 	url = http://sourceforge.net/projects/toohardforyou/
 	arch = i686
 	arch = x86_64

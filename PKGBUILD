@@ -3,7 +3,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 pkgname=2h4u
 pkgver=1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A mix between a Tetris-like game and a wall breaker"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/toohardforyou/"
@@ -14,8 +14,6 @@ source=("http://downloads.sourceforge.net/project/toohardforyou/2H4U/2H4U%20v1.3
         "2h4u.desktop")
 sha256sums=('2da1e593b43887617c78d2709397be2e57e9f67b1840350430d802d31b18e9f2'
             'c87774ef50aaa6c561ab6e6d2a587d4fd7da20afa5a0a21b3d818dbeac43a778')
-
-OPTIONS=(!strip)
 
 prepare() {
 	# patch the sound handling to refer to an OGG file instead of an MP3
