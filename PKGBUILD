@@ -4,7 +4,7 @@
 
 pkgname=clonehero
 pkgver=1.0.0.4080
-pkgrel=0
+pkgrel=1
 pkgdesc="Clone of Guitar Hero and Rockband-style games"
 arch=('x86_64')
 url="https://clonehero.net/"
