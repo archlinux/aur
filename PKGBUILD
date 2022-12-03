@@ -8,7 +8,7 @@
 pkgname=sqlitebrowser-git
 pkgver=continuous.r0.g8cbf5795
 pkgrel=1
-pkgdesc="SQLite Database browser is a light GUI editor for SQLite databases, built on top of Qt"
+pkgdesc="DB Browser for SQLite"
 arch=('i686' 'x86_64')
 url="http://sqlitebrowser.org/"
 license=('GPL3')
