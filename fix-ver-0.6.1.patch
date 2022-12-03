@@ -1,0 +1,122 @@
+From a4646045f0f32bed4e394adfb17ae1408d8c4aa7 Mon Sep 17 00:00:00 2001
+From: Vincent Wei <vincent@minigui.org>
+Date: Thu, 1 Dec 2022 20:28:07 +0800
+Subject: [PATCH 1/3] add instructions to build Tailored WebKit on Ubuntu
+
+---
+ README.md | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index ff6d596..1c0a287 100644
+--- a/README.md
++++ b/README.md
+@@ -53,7 +53,34 @@ Currently, xGUI Pro only runs on Linux system. It is possible to run it on macOS
+ 
+ Please download or fetch the source code of the above software, build and install them by following the instructions included in the software.
+ 
+-To build the tailored WebKit engine, you can visit the following URL for detailed instructions:
++If you are using Ubuntu Linux, you can use the following commands to build and install the Tailored WebKit to your system:
++
++1) When using Gtk3 and Soup2 (Ubuntu 20.04):
++
++```bash
++$ mkdir -p WebKitBuild/Release && cd WebKitBuild/Release
++$ cmake ../.. -DPORT=GTK -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_GAMEPAD=OFF -DENABLE_INTROSPECTION=OFF -DUSE_SOUP2=ON -DUSE_WPE_RENDERER=OFF -DUSE_LCMS=OFF -GNinja
++$ ninja -j2
++$ sudo ninja install
++```
++
++2) When using Gtk4 and Soup3 (Ubuntu 22.04):
++
++```bash
++$ mkdir -p WebKitBuild/Release && cd WebKitBuild/Release
++$ cmake ../.. -DPORT=GTK -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_GAMEPAD=OFF -DENABLE_INTROSPECTION=OFF -DUSE_SOUP3=ON -DUSE_WPE_RENDERER=OFF -DUSE_LCMS=OFF -GNinja
++$ ninja -j2
++$ sudo ninja install
++```
++
++Note that you may need to install the following packages on your Ubuntu Linux:
++
++- libenchant
++- libsoup2/libsoup3
++- gperf
++- git-svn
++
++For other distributions, you can visit the following URL for detailed instructions:
+ 
+ <https://trac.webkit.org/wiki/BuildingGtk>
+ 
+-- 
+2.38.1
+
+
+From 61764905ada21fa36afa89fd87142a856761d877 Mon Sep 17 00:00:00 2001
+From: Vincent Wei <vincent@minigui.org>
+Date: Fri, 2 Dec 2022 08:34:26 +0800
+Subject: [PATCH 2/3] change version of PurC and DOMRuler; fix a bug to find
+ DOMRULER_INCLUDE_DIR
+
+---
+ source/cmake/FindDOMRuler.cmake | 2 +-
+ source/cmake/OptionsGTK.cmake   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/source/cmake/FindDOMRuler.cmake b/source/cmake/FindDOMRuler.cmake
+index 44e6507..22834ea 100644
+--- a/source/cmake/FindDOMRuler.cmake
++++ b/source/cmake/FindDOMRuler.cmake
+@@ -60,7 +60,7 @@ set(DOMRULER_COMPILE_OPTIONS ${PC_DOMRULER_CFLAGS_OTHER})
+ set(DOMRULER_VERSION ${PC_DOMRULER_VERSION})
+ 
+ find_path(DOMRULER_INCLUDE_DIR
+-    NAMES domruler.h
++    NAMES domruler/domruler.h
+     HINTS ${PC_DOMRULER_INCLUDEDIR} ${PC_DOMRULER_INCLUDE_DIR}
+ )
+ 
+diff --git a/source/cmake/OptionsGTK.cmake b/source/cmake/OptionsGTK.cmake
+index b2cda6f..374f637 100644
+--- a/source/cmake/OptionsGTK.cmake
++++ b/source/cmake/OptionsGTK.cmake
+@@ -16,8 +16,8 @@ add_definitions(-DBUILDING_LINUX__=1)
+ add_definitions(-DXGUIPRO_API_VERSION_STRING="${XGUIPRO_API_VERSION}")
+ 
+ find_package(GLIB 2.44.0 REQUIRED COMPONENTS gio gio-unix gmodule gobject)
+-find_package(PurC 0.8.1 REQUIRED)
+-find_package(DOMRuler 1.2.1 REQUIRED)
++find_package(PurC 0.9.2 REQUIRED)
++find_package(DOMRuler 0.9.2 REQUIRED)
+ 
+ find_package(OpenSSL)
+ if (OpenSSL_FOUND)
+-- 
+2.38.1
+
+
+From 6f4eca849e73865d0d5c5f0e616ca1e7eee0e06c Mon Sep 17 00:00:00 2001
+From: Vincent Wei <vincent@minigui.org>
+Date: Fri, 2 Dec 2022 08:39:15 +0800
+Subject: [PATCH 3/3] change #include <domruler.h> to #include
+ <domruler/domruler.h>
+
+---
+ source/bin/layouter/layouter.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/bin/layouter/layouter.c b/source/bin/layouter/layouter.c
+index a37e3d0..a70a57e 100644
+--- a/source/bin/layouter/layouter.c
++++ b/source/bin/layouter/layouter.c
+@@ -28,7 +28,7 @@
+ #include "utils/load-asset.h"
+ #include "utils/sorted-array.h"
+ 
+-#include <domruler.h>
++#include <domruler/domruler.h>
+ #include <glib.h>
+ #include <assert.h>
+ 
+-- 
+2.38.1
+
