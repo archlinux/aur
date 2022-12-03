@@ -1,0 +1,21 @@
+pkgbase = python-translate-shell
+	pkgdesc = Translate text by many different translators.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/translate-shell
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	makedepends = python-shtab
+	makedepends = help2man
+	optdepends = python-colorama: color
+	optdepends = python-rich: better logger
+	optdepends = python-pyyaml: output yaml format
+	optdepends = python-keyring: store APP secrets securely
+	optdepends = python-langdetect: detect language automatically for offline dictionary
+	optdepends = python-pystardict: offline dictionary
+	conflicts = translate-shell
+	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.2-py3-none-any.whl
+	sha256sums = 65b6082b512a96d6bbd4ffdf706ebd513f39bfd0a250139179f80c3e6481c65a
+
+pkgname = python-translate-shell
