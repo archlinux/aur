@@ -2,7 +2,7 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 
 pkgname=openmw-validator
-pkgver=1.5
+pkgver=1.7
 pkgrel=1
 pkgdesc='Validate your OpenMW configuration file by checking it for various errors, also give various useful stats about data file usage.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha512sums=('3e0c4fd18b5946f2b9ef023b5fde13b3cbf8e18baa13be86e2b549dd32225c1ed75674c8dece2c92eda90ece940bb854c8bee6003a2485c9f97b629eb8d64302')
+sha512sums=('333e83a3de9047d7fc6c4220c9c2361691d153dae8ba89736a6e9b5d59e5f864312d33d84554325e4d5c463e12f0e5ca31141cbf459e1d284cdd4394b34e23a1')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -20,7 +20,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
 
     cd "$pkgname-$pkgver"
-    go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.sr.ht/~hristoast/openmw-validator/config.Version=$$(git describe --tags)'" -mod=readonly -modcacherw -o openmw-validator ./cmd/openmw-validator
+    go build -buildvcs=false -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.sr.ht/~hristoast/openmw-validator/config.Version=$$(git describe --tags)'" -mod=readonly -modcacherw -o openmw-validator ./cmd/openmw-validator
 }
 
 package() {
