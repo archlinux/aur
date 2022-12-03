@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.45.133
+pkgver=1.46.134
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
@@ -67,11 +67,8 @@ makedepends=(cargo-audit
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend')
-_chromium_ver=107.0.5304.141
-_gcc_patchset=1
-optdepends=('pipewire: WebRTC desktop sharing under Wayland'
-            'kdialog: support for native dialogs in Plasma'
-            'org.freedesktop.secrets: password storage backend')
+_chromium_ver=108.0.5359.94
+_gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
 _brave_base_ver="1.28"
@@ -109,7 +106,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4'
+            '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '8fc41a0d98b328a12b17d6b6702a65c13292332ed8a843e7f35392424e545913'

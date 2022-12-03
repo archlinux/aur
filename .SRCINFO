@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.45.133
+	pkgver = 1.46.134
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -60,12 +60,12 @@ pkgbase = brave
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.45.133
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.45.133
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=107.0.5304.141
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.46.134
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.46.134
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=108.0.5359.94
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-107-patchset-1/chromium-107-patchset-1.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-108-patchset-2/chromium-108-patchset-2.tar.xz
 	source = https://gitlab.com/hadogenes/brave-patches/-/archive/brave-1.28-patches-1/brave-patches-brave-1.28-patches-1.zip
 	source = chromium-launcher-electron-app.patch
 	source = rust-autocxx-use_sysroot.patch
@@ -88,7 +88,7 @@ pkgbase = brave
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 2b26c16f8326803ef287fb443a17bc139a440673955c5a6a38e9368bcaeed7c4
+	sha256sums = 40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652
 	sha256sums = c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe
 	sha256sums = 9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5
 	sha256sums = 8fc41a0d98b328a12b17d6b6702a65c13292332ed8a843e7f35392424e545913
