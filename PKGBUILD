@@ -11,12 +11,12 @@ install=hode.install
 source=(
 	git+https://github.com/cyxx/hode.git
 	hode.{ini,sh,desktop}
-	amazing.webp
+	amazing.webp	# https://heartofdarkness.ca/Download/Demos/ECTS1995HoDpresskit.zip	# ECTS1995HoDpresskit/LOGO/AMAZINGB.TIF
 	amazing32.png)
 md5sums=(
 	SKIP
 	874bc298ab565d2d5141101781ef1082
-	b226c4d247fd0c86e7cf78ad7653e399
+	8afb36729d190e64ab93c923981b1312
 	bfdd04e5fdc88f9dfcc2664bbb7578d6
 	2d93e887790f571880621e37e1bb24fa
 	f9b6c6fbc11be79cd22e409086e7f5c2)
@@ -30,10 +30,10 @@ build(){
 	make
 }
 package(){
-	install hode/hode hode.sh -Dt $pkgdir/usr/bin
-	install hode.ini -Dt $pkgdir/usr/share/hode
-	install amazing.webp -D $pkgdir/usr/share/icons/hicolor/512x512/apps/amazing.png
-	install -D {amazing32,$pkgdir/usr/share/icons/hicolor/32x32/apps/amazing}.png
-	install hode.desktop -Dt $pkgdir/usr/share/applications
-	install hode/*.{txt,yaml} -Dt $pkgdir/usr/share/doc/hode
+	install hode/hode hode.sh -Dt "$pkgdir"/usr/bin
+	install hode.ini -Dt "$pkgdir"/usr/share/hode
+	install amazing.webp -D "$pkgdir"/usr/share/icons/hicolor/512x512/apps/amazing.png
+	install -D {amazing32,"$pkgdir"/usr/share/icons/hicolor/32x32/apps/amazing}.png
+	install hode.desktop -Dt "$pkgdir"/usr/share/applications
+	install hode/*.{txt,yaml} -Dt "$pkgdir"/usr/share/doc/hode
 }
