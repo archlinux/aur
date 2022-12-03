@@ -3,7 +3,7 @@
 _base=SciencePlots
 pkgname=python-${_base,,}
 pkgdesc="Matplotlib styles for scientific plotting"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 arch=(any)
 url="https://github.com/garrettj403/${_base}"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-matplotlib python-setuptools)
 makedepends=(python-build python-installer python-wheel)
 source=(${_base}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('db9141ab496c030fcc7b9d95bbe6093a647490a3b472338450f865943b85a7cb18cedde2cd749693acae2a821d6b775dfeeca81449af1d92933f4ee6dd5c7e8f')
+sha512sums=('7fccf5aee720ee1920c3fa53f034acbbb9b7d391c67287490f50c42fbae2e5bb5f356108ab50e31fa3c67415ac469f537ec6362178498af4578475975056216e')
 conflicts=(python-${_base,,}-git)
 
 build() {
