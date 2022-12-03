@@ -10,3 +10,4 @@ Terminal=false
 Categories=Utility;Security;Qt;
 StartupWMClass=gcencryptor
 SingleMainWindow=true
+StartupNotify=true
