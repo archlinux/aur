@@ -3,7 +3,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.19.0b1
+pkgver=0.19.0b2.dev1+g84613e7
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -48,31 +48,15 @@ pkgver() {
 }
 
 build() {
-  # Build vdirsyncer
   cd "${srcdir}/${_pkgname}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --skip-dependency-check --no-isolation
 
-  # "Install" development stuff needed to build the man page
-  rm -rf "${srcdir}/develop"
-  mkdir "${srcdir}/develop"
-  export PYTHONPATH="${srcdir}/develop":${PYTHONPATH}
-  # TODO: Remove deprecated call to setup.py
-  python setup.py develop --install-dir="${srcdir}/develop/"
-
-  # Build man page
-  cd "${srcdir}/${_pkgname}/docs"
-  make man SPHINXBUILD=sphinx-build
+  export PYTHONPATH="build:${PYTHONPATH}"
+  sphinx-build -b man docs/ build/
 }
 
 check(){
   cd "${srcdir}/${_pkgname}"
-
-  # When using a clean chroot,
-  # one has to choose a proper locale to run the tests
-  if [ "${LANG}" == "C" ]
-  then
-    export LANG=$(locale -a | grep utf8 | head -n1)
-  fi
 
   export DETERMINISTIC_TESTS=true
   python -m pytest --tb=short -c /dev/null
