@@ -1,0 +1,18 @@
+pkgbase = soundscope-player-git
+	pkgdesc = Make an audio CD-R image from media files.
+	pkgver = 1.0+2+gd7c14a7
+	pkgrel = 1
+	url = https://github.com/tallero/
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = shntool
+	depends = python-appdirs
+	provides = soundscope-player
+	conflicts = soundscope-player
+	source = soundscope-player::git+ssh://git@127.0.0.1:/home/git/
+	sha256sums = SKIP
+
+pkgname = soundscope-player-git
