@@ -2,7 +2,7 @@
 
 _pkgbase=luau
 pkgname=luau-bin
-pkgver=0.554
+pkgver=0.555
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
@@ -14,7 +14,7 @@ makedepends=('unzip')
 conflicts=("$_pkgbase" "$_pkgbase"-git)
 provides=("$_pkgbase")
 source=("luau-$pkgver.zip::https://github.com/Roblox/luau/releases/download/$pkgver/luau-ubuntu.zip")
-sha512sums=('62287a983113c7bcec3ac192136610edb577e4e07a8471add2d6c5b7d3e7f4e38e0e9263b18eaadd57b923869365ae2cf7f19d87642af864226c3bd3da113259')
+sha512sums=('e991c4f00fbd7c406ec2af8f7f0ed26f7f972f9ea9d69a10d14c32ba6e761f64924dcbf5d69b746e06ff5d87e36a388e407c70af6da6ca0c6c1eca720458feb3')
 
 prepare() {
     unzip -o "luau-$pkgver.zip"
