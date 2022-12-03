@@ -2,8 +2,8 @@
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
 pkgname=libreddit
-pkgver=0.24.0
-_commit=3f3d9e9
+pkgver=0.25.0
+_commit=7391a5b
 pkgrel=1
 pkgdesc='Alternative private front-end to Reddit'
 arch=('x86_64')
@@ -17,7 +17,8 @@ source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
 validpgpkeys=(
 	'AD4B24F40D358202591EE1F4004CECFF9B463BCB'
-	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') ## spikecodes
+	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' ## spikecodes
+	'589E8EF6FA64265B6636C313C82492E4FF813823') ## Daniel Valentine
 
 prepare() {
 	cd "$pkgname"
