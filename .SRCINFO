@@ -1,0 +1,13 @@
+pkgbase = gtree-bin
+	pkgdesc = tree command with icons.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kitagry/gtree
+	arch = x86_64
+	license = GPL
+	provides = gtree
+	conflicts = gtree
+	source = https://github.com/kitagry/gtree/releases/download/v0.2.1/gtree-v0.2.1-linux-amd64.tar.gz
+	sha256sums = ed5c081e16803dfc8c07f4d8d688bea215d22f317976424e7f94fb3adc0bf143
+
+pkgname = gtree-bin
