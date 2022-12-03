@@ -2,27 +2,42 @@
 # from: pypi
 # what: PyGLM
 
-pkgbase='python-pyglm'
-pkgname=('python-pyglm')
-_module='PyGLM'
+pkgname='python-pyglm'
 pkgver='2.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenGL Mathematics library for Python"
 url="https://github.com/Zuzu-Typ/PyGLM"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 license=('ZLIB')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('f853abad66ec78602a9e9693d81a6ba6579a0cbe71715bf89f6bc62cbc837170')
+source=(
+    "$pkgname::git+https://github.com/Zuzu-Typ/PyGLM.git#tag=$pkgver"
+    "pyglm-typing::git+https://github.com/esoma/pyglm-typing.git"
+    "glm::git+https://github.com/Zuzu-Typ/glm.git"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+    local mod
+
+    cd "$srcdir/$pkgname"
+    git submodule init
+    for mod in glm pyglm-typing; do
+        git config "submodule.$mod.url" "$srcdir/$mod"
+    done
+
+    git -c protocol.file.allow=always submodule update
+}
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    cd "$srcdir/$pkgname"
+    CFLAGS="$CFLAGS -Wno-all" python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "$srcdir/$pkgname"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
