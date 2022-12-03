@@ -1,21 +1,19 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=9.4
+pkgver=9.5
 pkgrel=1
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
 url="https://github.com/google/or-tools"
 license=('Apache')
-depends=('coin-or-cbc' 'protobuf' 're2')
-# abseil fixed version since it breaks stuff
-makedepends=('cmake' 'pkgconf' 'git' 'eigen' 'abseil-cpp')
-source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha256sums=('180fbc45f6e5ce5ff153bea2df0df59b15346f2a7f8ffbd7cb4aed0fb484b8f6')
+depends=('coin-or-cbc' 'protobuf' 're2' 'abseil-cpp')
+makedepends=('cmake' 'pkgconf' 'git' 'eigen')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
+sha256sums=('57f81b94949d35dc042690db3fa3f53245cffbf6824656e1a03f103a3623c939')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-    cmake -S. -Bbuild \
+build() {
+    cmake -S "$pkgname-$pkgver" -B build \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
         -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
@@ -25,22 +23,17 @@ prepare() {
         -DBUILD_DEPS=OFF \
         -DUSE_SCIP=OFF \
         -DBUILD_SAMPLES=OFF \
-        -DBUILD_EXAMPLES=OFF
+        -DBUILD_EXAMPLES=ON
+    cmake --build build
 }
 
-build() {
-    cd "$pkgname-$pkgver/build"
-    make
+# for testing, build examples
+check() {
+    ctest --test-dir build --output-on-failure --parallel `nproc`
 }
-
-# for testing also build examples
-# check() {
-#     cd "$pkgname-$pkgver/build"
-#     ctest --parallel `nproc`
-# }
 
 package() {
-    cmake --build "$pkgname-$pkgver/build" -- DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -d -m 755 "$pkgdir/usr/share/examples"
     cp -a "$pkgname-$pkgver/examples/cpp" "$pkgdir/usr/share/examples/cpp"
 }
