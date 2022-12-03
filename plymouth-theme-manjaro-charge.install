@@ -1,0 +1,19 @@
+post_install() {
+	cat <<EOF 
+
+  > You can configure the desired watermak using
+  > one of those provided (with desktop logo) by
+  > modifying the default symbolic link and
+  > rebuilding your initramfs, run as root:
+  > cd /usr/share/plymouth/theme/manjaro-charge
+  > ln -sf watermark-<EDITION>.png watermark.png
+
+==> To activate the theme, run as root:
+==> plymouth-set-default-theme -R manjaro-charge
+
+EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
