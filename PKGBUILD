@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=20.3.0
-pkgrel=2
+pkgver=20.6.0
+pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
@@ -13,8 +13,8 @@ options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('d4b9d19e1986f8330ea84d8d92278dd1eb1a9c05ac7b799c1729b8a061fffb6a859792eb36500b2861429ad815f7443fdf2541e4ec3fffe3f6dd2abed5220f21'
-            '92f037f019c650bfabde542cb0b791e20cde22f75f7fe6ec41f56f172f9f3d51b5aaa26cf36f8c4eaeddd357346d26d380773c9ab2ba16b2f533b7187d93644a'
+sha512sums=('ba9d289ba9d503c3c4a18220a38c2406f917e62635e9d92dffd63a478e43b9047ecd550a24897d9f08dda2f07475223eea36d1b086653cc98a87a35c2fb9a269'
+            '249e2b44c40a9a125269fbbd6be41edd4422f14567eb3971310c3099143b20f2e163da749d961066d349fa7c4a4533815eba6f9ea1e3c0d23456e73edbc9cc2d'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
@@ -22,7 +22,7 @@ build() {
   mv "$srcdir/drawio-$pkgver" "$srcdir/drawio-desktop-$pkgver/drawio"
   cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
   ant app
-  cd "$srcdir/drawio-desktop-$pkgver"/drawio/src/main/webapp
+  cd "$srcdir/drawio-desktop-$pkgver"
 
   rm -rf "META-INF" "WEB-INF"
 
@@ -32,7 +32,7 @@ build() {
   sed -e '/"electron-builder":/d' -i 'package.json'
   sed -e '/"electron-notarize":/d' -i 'package.json'
   local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
-  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
+  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'drawio/src/main/webapp/electron.js'
 
   # fix version in package.json
   sed -i 's/"version": ".*"/"version": "'"$pkgver"'"/g' package.json
