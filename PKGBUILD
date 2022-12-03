@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 _pkgname=gnome-developer-www
 pkgname=gnome-developer-www-git
 pkgver=r350.ea0ea9d
