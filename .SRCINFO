@@ -1,6 +1,6 @@
 pkgbase = beast
 	pkgdesc = Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214
-	pkgver = sars#cov#2#origins
+	pkgver = sars__cov__2__origins
 	pkgrel = 1
 	url = http://beast.community/
 	arch = x86_64

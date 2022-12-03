@@ -2,13 +2,13 @@
 # Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=beast
-pkgver=sars#cov#2#origins
+pkgver=sars__cov__2__origins
 pkgrel=1
 pkgdesc="Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214"
 arch=('x86_64')
 url="http://beast.community/"
 license=('LGPL')
-source=("https://github.com/beast-dev/beast-mcmc/archive/refs/tags/${pkgver//#/-}.tar.gz"
+source=("https://github.com/beast-dev/beast-mcmc/archive/refs/tags/${pkgver//__/-}.tar.gz"
 	"beast.desktop"
 	"beast-beauti.desktop"
 	"beast-loganalyser.desktop"
@@ -28,7 +28,7 @@ depends=('java-runtime=8')
 makedepends=('java-environment=8' 'ant' 'cmake' 'beagle-lib')
 optdepends=('beagle-lib')
 build() {
-  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd $srcdir/$pkgname-mcmc-${pkgver//__/-}
   ant dist
   java -jar -Djava.library.path=/usr/lib build/dist/beast.jar -beagle_info
 }
@@ -42,7 +42,7 @@ do
 done
 
   # install jar
-  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd $srcdir/$pkgname-mcmc-${pkgver//__/-}
   cd build/dist
 for jar in $(ls *.jar)
 do
@@ -50,7 +50,7 @@ do
 done
 
   # install bin
-  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd $srcdir/$pkgname-mcmc-${pkgver//__/-}
   cd release/Linux/scripts
   patch -N -i $srcdir/fix_bin.patch
 for bin in $(ls)
@@ -59,7 +59,7 @@ do
 done
 
   # install icons
-  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd $srcdir/$pkgname-mcmc-${pkgver//__/-}
   cd release/common/icons
 for icon in $(ls *.png)
 do
