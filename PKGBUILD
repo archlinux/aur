@@ -2,8 +2,9 @@
 # Contributor: Philip Goto <philip dot goto at gmail.com>
 
 _pkgname=adwaita-icon-theme
-pkgname="$_pkgname-git"
-pkgver=43.r60.g4f8e8dc69
+pkgbase="$_pkgname-git"
+pkgname=("$pkgbase" 'adwaita-cursors-git')
+pkgver=43.r68.g855de98ff
 pkgrel=1
 pkgdesc='GNOME standard icons'
 arch=('any')
@@ -11,8 +12,6 @@ url="https://gitlab.gnome.org/GNOME/$_pkgname"
 license=('LGPL3' 'CCPL:by-sa')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'librsvg')
 makedepends=('git' 'gtk3')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
 source=("git+$url.git")
 b2sums=('SKIP')
 
@@ -36,6 +35,21 @@ check() {
 	make -C $_pkgname check
 }
 
-package() {
+package_adwaita-icon-theme-git() {
+	depends+=('adwaita-cursors')
+	provides=("$_pkgname")
+	conflicts=("$_pkgname")
+
 	make -C $_pkgname DESTDIR="$pkgdir" install
+	rm -rf "$pkgdir/usr/share/icons/Adwaita/cursors/"
+}
+
+package_adwaita-cursors-git() {
+	pkgdesc='GNOME standard cursors'
+	unset depends
+	provides=('adwaita-cursors')
+	conflicts=('adwaita-cursors')
+
+	install -dm755 "$pkgdir/usr/share/icons/Adwaita/"
+	cp -r --no-preserve=ownership $_pkgname/Adwaita/cursors "$pkgdir/usr/share/icons/Adwaita/"
 }

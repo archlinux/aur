@@ -1,6 +1,6 @@
 pkgbase = adwaita-icon-theme-git
 	pkgdesc = GNOME standard icons
-	pkgver = 43.r60.g4f8e8dc69
+	pkgver = 43.r68.g855de98ff
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 	arch = any
@@ -11,9 +11,18 @@ pkgbase = adwaita-icon-theme-git
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = librsvg
-	provides = adwaita-icon-theme
-	conflicts = adwaita-icon-theme
 	source = git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git
 	b2sums = SKIP
 
 pkgname = adwaita-icon-theme-git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	depends = adwaita-cursors
+	provides = adwaita-icon-theme
+	conflicts = adwaita-icon-theme
+
+pkgname = adwaita-cursors-git
+	pkgdesc = GNOME standard cursors
+	provides = adwaita-cursors
+	conflicts = adwaita-cursors
