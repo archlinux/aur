@@ -8,6 +8,7 @@ ExecStart=/usr/bin/matrix-wechat -c /etc/matrix-wechat/config.yaml
 
 # Optional hardening to improve security
 ReadWritePaths=/etc/matrix-wechat
+LogsDirectory=matrix-wechat
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes
