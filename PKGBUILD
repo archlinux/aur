@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 _pkgname=gdm-settings
 pkgname=gdm-settings-beta
 pkgdesc="A settings app for Gnome's Login Manager, GDM"
