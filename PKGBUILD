@@ -2,7 +2,7 @@
 
 pkgname="python-ruff"
 _pkgname="ruff"
-pkgver=0.0.152
+pkgver=0.0.153
 pkgrel=1
 pkgdesc="An extremely fast Python linter, written in Rust."
 url="https://github.com/charliermarsh/ruff"

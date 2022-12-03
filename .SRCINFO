@@ -1,6 +1,6 @@
 pkgbase = python-ruff
 	pkgdesc = An extremely fast Python linter, written in Rust.
-	pkgver = 0.0.152
+	pkgver = 0.0.153
 	pkgrel = 1
 	url = https://github.com/charliermarsh/ruff
 	arch = any
