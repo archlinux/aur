@@ -1,0 +1,10 @@
+[Unit]
+Description=Standalone Git LFS server
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/lfs-test-server/config
+ExecStart=/usr/bin/lfs-test-server
+
+[Install]
+WantedBy=multi-user.target

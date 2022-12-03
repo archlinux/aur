@@ -1,0 +1,22 @@
+# The address:port the server listens on
+LFS_LISTEN=tcp://:8080
+# The host used when the server generates URLs
+LFS_HOST=localhost:8080
+# The database file the server uses to store meta information
+LFS_METADB=/tmp/lfs.db
+# The path where LFS files are store
+LFS_CONTENTPATH=/tmp/lfs-content
+# An administrator username
+#LFS_ADMINUSER
+# An administrator password, default: not set
+#LFS_ADMINPASS
+# Certificate file for tls
+#LFS_CERT
+# tls key
+#LFS_KEY
+# set to 'https' to override default http
+#LFS_SCHEME
+# set to 'true' to enable tusd (tus.io) resumable upload server; tusd must be on PATH, installed separately
+#LFS_USETUS
+# The host used to start the tusd upload server, default "localhost:1080"
+#LFS_TUSHOST

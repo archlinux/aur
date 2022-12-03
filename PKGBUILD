@@ -8,8 +8,14 @@ url="https://github.com/github/lfs-test-server"
 license=('custom')
 arch=('x86_64')
 makedepends=('git' 'go')
-md5sums=('SKIP')
-source=('git+https://github.com/github/lfs-test-server')
+md5sums=('SKIP'
+         '805dc8dd4cf983a8433d385c37c29627'
+         '8f3045a45599a9311eee85baaaa412fc')
+source=(
+  'git+https://github.com/github/lfs-test-server'
+  'config'
+  'lfs-test-server.service'
+)
 
 pkgver() {
   cd $_pkgname
@@ -31,4 +37,6 @@ package() {
   cd $_pkgname
   install -Dm755 build/$_pkgname $pkgdir/usr/bin/$_pkgname
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
+  install -Dm644 $srcdir/$_pkgname.service $pkgdir/usr/lib/systemd/system/$_pkgname.service
+  install -Dm644 $srcdir/config $pkgdir/etc/$_pkgname/config
 }

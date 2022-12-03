@@ -8,6 +8,10 @@ pkgbase = lfs-test-server-git
 	makedepends = git
 	makedepends = go
 	source = git+https://github.com/github/lfs-test-server
+	source = config
+	source = lfs-test-server.service
 	md5sums = SKIP
+	md5sums = 805dc8dd4cf983a8433d385c37c29627
+	md5sums = 8f3045a45599a9311eee85baaaa412fc
 
 pkgname = lfs-test-server-git
