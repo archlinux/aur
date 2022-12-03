@@ -2,13 +2,15 @@
 
 _plug=vsmask
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.3.0.35.gaa14f13
+pkgver=0.5.0.2.gc23286a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vsmask.git'
 license=('GPL')
-depends=('vapoursynth-plugin-vsutil-git')
+depends=('vapoursynth'
+         'vapoursynth-plugin-vsutil-git'
+         )
 makedepends=('git'
              'python-pip'
              'python-wheel'
