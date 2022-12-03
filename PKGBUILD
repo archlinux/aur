@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gdm-settings-git
 pkgver=1.0+37+gd172a8b
 pkgrel=1
