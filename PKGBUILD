@@ -5,12 +5,11 @@ _namespace="tallero"
 _pkgbase="soundscope-player"
 _pkgname="${_pkgbase}"
 pkgname="${_pkgbase}-git"
-pkgver=1.0+20+g135e22d
+pkgver=1.0+21+g96eea12
 pkgrel=1
 pkgdesc="SoundScope PlayStation media player."
 arch=('any')
 url="https://github.com/${_namespace}/${_pkgbase}"
-_url="ssh://git@127.0.0.1:/home/git/${_pkgbase}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('duckstation'
@@ -22,7 +21,7 @@ depends=('duckstation'
 makedepends=('git'
              'python-setuptools')
 license=("AGPL3")
-source=("${_pkgname}::git+${_url}")
+source=("${_pkgname}::git+${url}")
 sha256sums=("SKIP")
 
 pkgver() {
