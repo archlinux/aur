@@ -1,0 +1,34 @@
+--- ./ascii-invaders-1.0.1/invaders.c	2016-12-09 03:53:39.000000000 +0100
++++ ./ascii-invaders-1.0.1/invaders.c	2022-12-03 22:25:35.015412162 +0100
+@@ -801,23 +801,23 @@
+ #ifdef USE_COLORS
+     if (has_colors()) attron(COLOR_PAIR(2));
+ #endif
+-    mvprintw( 9, (COLS / 2) - 8, alienMa[0]);
+-    mvprintw(10, (COLS / 2) - 8, alienMa[1]);
++    mvprintw( 9, (COLS / 2) - 8, "%s ", alienMa[0]);
++    mvprintw(10, (COLS / 2) - 8, "%s ", alienMa[1]);
+ #ifdef USE_COLORS
+     if (has_colors()) attron(COLOR_PAIR(4));
+ #endif
+     mvprintw( 9, (COLS / 2), "= ?  points");
+ 
+-    mvprintw(12, (COLS / 2) - 8, alien30[0]);
+-    mvprintw(13, (COLS / 2) - 8, alien30[1]);
++    mvprintw(12, (COLS / 2) - 8, "%s ", alien30[0]);
++    mvprintw(13, (COLS / 2) - 8, "%s ", alien30[1]);
+     mvprintw(12, (COLS / 2), "= 30 points");
+ 
+-    mvprintw(15, (COLS / 2) - 8, alien20[0]);
+-    mvprintw(16, (COLS / 2) - 8, alien20[1]);
++    mvprintw(15, (COLS / 2) - 8, "%s ", alien20[0]);
++    mvprintw(16, (COLS / 2) - 8, "%s ", alien20[1]);
+     mvprintw(15, (COLS / 2), "= 20 points");
+ 
+-    mvprintw(18, (COLS / 2) - 8, alien10[0]);
+-    mvprintw(19, (COLS / 2) - 8, alien10[1]);
++    mvprintw(18, (COLS / 2) - 8, "%s ", alien10[0]);
++    mvprintw(19, (COLS / 2) - 8, "%s ", alien10[1]);
+     mvprintw(18, (COLS / 2), "= 10 points");
+ 
+ #ifdef USE_COLORS
