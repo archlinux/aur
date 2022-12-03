@@ -4,28 +4,28 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.38.0
+pkgver=2.39.2
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
 url="https://webkitgtk.org/"
 license=(custom)
 depends=(libxt libxslt enchant gst-plugins-base-libs libmanette libsecret libwebp
-         openjpeg2 harfbuzz-icu gtk3 libnotify hyphen woff2 libwpe wpebackend-fdo
+         openjpeg2 harfbuzz-icu gtk4 libnotify hyphen woff2 libwpe wpebackend-fdo
          bubblewrap xdg-dbus-proxy libavif libsoup3 libjxl)
-makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja gi-docgen)
+makedepends=(gperf gobject-introspection ruby gtk-doc cmake python geoclue ninja gi-docgen unifdef wayland-protocols)
 optdepends=('geoclue: Geolocation support'
             'gst-plugins-base: free media decoding'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('f9ce6375a3b6e1329b0b609f46921e2627dc7ad6224b37b967ab2ea643bc0fbd'
+sha256sums=('a0c9036f8eccdfcaf455ace14ceefb327088a212bab2a221cdc952a8060626a6'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 
-conflicts=(webkit2gtk-4.1)
-provides=(webkit2gtk-4.1)
+conflicts=(webkit2gtk-5.0)
+provides=(webkit2gtk-5.0)
 options=('!emptydirs')
 
 build() {
@@ -36,6 +36,7 @@ build() {
     -DLIB_INSTALL_DIR=/usr/lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_SKIP_RPATH=ON \
+    -DUSE_GTK4=ON \
     -DUSE_SOUP2=OFF \
     -DUSE_AVIF=ON \
     -DUSE_JPEGXL=ON
