@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -224,6 +224,10 @@ prepare() {
         git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
         git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
         git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
+
+        git submodule init subprojects/libdisplay-info
+        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info"
+        git -c protocol.file.allow=always submodule update subprojects/libdisplay-info
     popd
 
     pushd vkd3d-proton
@@ -243,8 +247,6 @@ prepare() {
         git submodule init external/Vulkan-Headers
         git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
         git -c protocol.file.allow=always submodule update external/Vulkan-Headers
-        # GCC 12 build failure
-        git cherry-pick -n 33bf3c7a6a3dc9e330cd338bf1877b5481c655e3
     popd
 
     for submodule in gst-plugins-rs media-converter; do
@@ -356,6 +358,7 @@ package() {
 }
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
