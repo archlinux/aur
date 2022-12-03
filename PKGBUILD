@@ -2,7 +2,7 @@
 pkgname=matrix-wechat-git
 _pkgname=matrix-wechat
 pkgver=0.1.0.r2.g9abc502
-pkgrel=3
+pkgrel=4
 pkgdesc=' A Matrix-WeChat puppeting bridge'
 arch=('x86_64')
 url="https://github.com/duo/matrix-wechat"

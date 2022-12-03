@@ -3,9 +3,11 @@ Description=Matrix-wechat bridge
 
 [Service]
 Type=exec
+WorkingDirectory=/etc/matrix-wechat
 ExecStart=/usr/bin/matrix-wechat -c /etc/matrix-wechat/config.yaml
 
 # Optional hardening to improve security
+ReadWritePaths=/etc/matrix-wechat
 NoNewPrivileges=yes
 MemoryDenyWriteExecute=true
 PrivateDevices=yes
