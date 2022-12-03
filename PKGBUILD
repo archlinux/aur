@@ -4,8 +4,8 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=mesquite
-pkgver=3.70_build_940
-pkgrel=2
+pkgver=3\.70_build_940
+pkgrel=1
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
 url="http://mesquiteproject.org"

@@ -1,7 +1,7 @@
 pkgbase = mesquite
 	pkgdesc = A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms
 	pkgver = 3.70_build_940
-	pkgrel = 2
+	pkgrel = 1
 	url = http://mesquiteproject.org
 	arch = any
 	license = LGPL
