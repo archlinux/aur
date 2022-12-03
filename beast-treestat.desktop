@@ -1,10 +1,11 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/beauti
-Icon=/usr/share/beast/images/beauti.png
+Exec=treestat
+Icon=TreeStat
 MimeType=
-Name=beauti
+Name=treestat
+Name[zh]=treestat
 ServiceTypes=
 SwallowExec=
 SwallowTitle=
@@ -13,4 +14,3 @@ TerminalOptions=
 Type=Application
 X-KDE-SubstituteUID=false
 X-KDE-Username=root
-X-GNOME-UsesNotifications=true

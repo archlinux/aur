@@ -1,8 +1,8 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/logcombiner
-Icon=/usr/share/beast/images/utility.png
+Exec=loganalyser
+Icon=utility
 MimeType=
 Name=logcombiner
 Name[zh]=logcombiner

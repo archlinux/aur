@@ -1,11 +1,13 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/treestat
-Icon=/usr/share/beast/images/treestat.png
+Exec=beast
+GenericName=
+GenericName[zh]=
+Icon=beast
 MimeType=
-Name=treestat
-Name[zh]=treestat
+Name=beast
+Name[zh]=beast
 ServiceTypes=
 SwallowExec=
 SwallowTitle=

@@ -1,33 +1,68 @@
-# Maintainer: Malacology <guoyizhang at malacology dot com>
-# Contributor: Malacology <guoyizhang at malacology dot com>
+# Maintainer: Malacology <guoyizhang at malacology dot net>
+# Contributor: Malacology <guoyizhang at malacology dot net>
 
 pkgname=beast
-pkgver=1.10.4
-pkgrel=12
-provides=("beast")
+pkgver=sars#cov#2#origins
+pkgrel=1
 pkgdesc="Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214"
 arch=('x86_64')
 url="http://beast.community/"
-license=('LGPL-2.1 License')
-source=("https://github.com/beast-dev/beast-mcmc/releases/download/v${pkgver}/BEASTv${pkgver}.tgz" "beast_beast.desktop" "beauti_beast.desktop" "logcombiner_beast.desktop" "treeannotator_beast.desktop" "treestat_beast.desktop" "treestat.png")
-sha256sums=('be652c4d55953f7c6c7a9d3eb3de203c77dc380e81ad81cfe0492408990c36a8'
-            '4f3118c4ffc2added01200a42417cbdf0ca8549ab0b6fb5516b2eec2a2d77d14'
-            '8baa97527cf3af1c6f2b4cbe2825da83117b315222fb0b685e82a4b61bcaac3e'
-            'b420f1c78a2daf9b4a4d572a90228d83dcc9aba02690be8387c4e37d0f1ebe05'
-            '2317783703a95a98fc91a0a6d392bec1569e71ac62750d48a867e17c58b79586'
-            '32947f594b74e8aaf11813768dbf3be1eeec8153eb5d126da3800e8b34bc1396'
-            'aca5c3f88ea8624d94b9e6e0e8f4b41a1f981562ad33bee2f35cc15de84f9906')
-depends=('java-runtime')
-makedepends=('java-environment')
+license=('LGPL')
+source=("https://github.com/beast-dev/beast-mcmc/archive/refs/tags/${pkgver//#/-}.tar.gz"
+	"beast.desktop"
+	"beast-beauti.desktop"
+	"beast-loganalyser.desktop"
+	"beast-logcombiner.desktop"
+	"beast-treeannotator.desktop"
+	"beast-treestat.desktop"
+	"fix_bin.patch")
+sha256sums=('fab8750313b66844f4dd8dcacfa55913f30bb877bded87057ba347d38cc9dc75'
+            'bd6f29c93a6ff8145de5af3137f976bfd84c4441bb3ee32778af4b0bcbcdb18b'
+            '1b84708063fd2ac39b8ff234c75d0fba2fc1737b82c926d9844db2694a21a91c'
+            '98b7b7cc4c2b744031b27d12bf737a6cb37a58e2e127539b53d49d4b7ada1524'
+            '3f25d0877ee9a4582e4bf7d8e7b964cbb2a5e5b642fc59097f5af18268b554ea'
+            'e9ff41cab265727bf781ad97cc014071a1d9b77890a44bc6005489a709ce542e'
+            '385c9078b0cac257b94a115ed000f71b9eb8b1d6c7edc1ba3e75a9724e11df05'
+            '086b899c6f4bfa43d4af61d497c0265d087e919de5723faa6b3e58ae48fb6813')
+depends=('java-runtime=8')
+makedepends=('java-environment=8' 'ant' 'cmake' 'beagle-lib')
 optdepends=('beagle-lib')
+build() {
+  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  ant dist
+  java -jar -Djava.library.path=/usr/lib build/dist/beast.jar -beagle_info
+}
+
 package() {
-    install -dm755 "$pkgdir"/usr/{bin,share/{applications,${pkgname}}}
-    sed -i 's/\/usr\/local\/lib/\/usr\/lib/g'  ${srcdir}/BEASTv${pkgver}/bin/beast
-    mv ${srcdir}/BEASTv${pkgver}/* ${pkgdir}/usr/share/beast/
-    for bin in $(ls $pkgdir/usr/share/beast/bin)
+  #install desktop
+  cd $srcdir/
+for des in $(ls *.desktop)
 do
-    ln -s /usr/share/beast2/bin/$bin ${pkgdir}/usr/bin/$bin
-done   
-    install -m 755 treestat.png ${pkgdir}/usr/share/beast/images/
-    install -m 755 *.desktop ${pkgdir}/usr/share/applications
-    }
+  install -Dm 755 $des $pkgdir/usr/share/applications/$des
+done
+
+  # install jar
+  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd build/dist
+for jar in $(ls *.jar)
+do
+  install -Dm 755 $jar $pkgdir/usr/share/$pkgname/$jar
+done
+
+  # install bin
+  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd release/Linux/scripts
+  patch -N -i $srcdir/fix_bin.patch
+for bin in $(ls)
+do
+  install -Dm 755 $bin $pkgdir/usr/bin/$bin
+done
+
+  # install icons
+  cd $srcdir/$pkgname-mcmc-${pkgver//#/-}
+  cd release/common/icons
+for icon in $(ls *.png)
+do
+  install -Dm 644 $icon $pkgdir/usr/share/pixmaps/$icon
+done
+}

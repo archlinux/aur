@@ -1,13 +1,10 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/beast
-GenericName=
-GenericName[zh]=
-Icon=/usr/share/beast/images/beast.png
+Exec=beauti
+Icon=beauti
 MimeType=
-Name=beast
-Name[zh]=beast
+Name=beauti
 ServiceTypes=
 SwallowExec=
 SwallowTitle=
@@ -16,3 +13,4 @@ TerminalOptions=
 Type=Application
 X-KDE-SubstituteUID=false
 X-KDE-Username=root
+X-GNOME-UsesNotifications=true

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/beast/bin/treeannotator
+Exec=treeannotator
 GenericName=
 GenericName[zh]=
-Icon=/usr/share/beast/images/utility.png
+Icon=utility
 MimeType=
 Name=treeannotator
 ServiceTypes=
