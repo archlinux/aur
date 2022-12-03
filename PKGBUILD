@@ -1,17 +1,16 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gdm-settings-git
-pkgver=1.0+37+gd172a8b
-pkgrel=1
 pkgdesc="A settings app for Gnome's Login Manager, GDM"
-arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
+pkgver=2.0+1+g977f950
+pkgrel=1
+arch=(any)
 license=('AGPL3')
 depends=('gdm' 'libadwaita' 'glib2' 'python-gobject' 'gettext' 'polkit')
 makedepends=('git' 'meson' 'blueprint-compiler' 'gobject-introspection')
 checkdepends=('appstream')
 provides=('gdm-settings')
 conflicts=('gdm-settings')
-backup=()
 source=("$pkgname"::"git+$url")
 md5sums=('SKIP')
 
