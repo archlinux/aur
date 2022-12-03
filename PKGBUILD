@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -15,6 +15,7 @@ optdepends=(
       'adol-c: automatic differentiation library'
       'arpack: Fortran77 subroutines designed to solve large scale eigenvalue problems'
       'assimp: Library to import various well-known 3D model formats in an uniform manner'
+      'cgal: Computational Geometry Algorithms Library'
       # ginkgo is not yet in the AUR
       # 'ginkgo: a high-performance linear algebra library for manycore systems'
       'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
