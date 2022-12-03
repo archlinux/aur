@@ -2,13 +2,14 @@
 
 _plug=vsdeband
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.5.2.1.gf4f4276
+pkgver=0.5.4.7.g99adc35
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-deband'
 license=('MIT')
-depends=('vapoursynth-plugin-vstools-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-vstools-git'
          'vapoursynth-plugin-vsrgtools-git'
          'vapoursynth-plugin-vskernels-git'
          'vapoursynth-plugin-vsexprtools-git'
