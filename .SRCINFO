@@ -1,6 +1,6 @@
 pkgbase = harrison-ava-plugins-bin
 	pkgdesc = Harrison AVA VST Plugin Suite
-	pkgver = 22.03.18
+	pkgver = 20221027
 	pkgrel = 1
 	url = https://www.harrisonconsoles.com/site/ava-plugins.html
 	arch = x86_64

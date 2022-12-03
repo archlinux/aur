@@ -1,5 +1,5 @@
 pkgname=harrison-ava-plugins-bin
-pkgver=22.03.18
+pkgver=20221027
 pkgrel=1
 pkgdesc="Harrison AVA VST Plugin Suite"
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
@@ -21,6 +21,7 @@ package() {
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-BF.so" "$pkgdir/usr/lib/vst/AVA-BF.so"
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-DS.so" "$pkgdir/usr/lib/vst/AVA-DS.so"
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-LegacyQ.so" "$pkgdir/usr/lib/vst/AVA-LegacyQ.so"
+	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-LV.so" "$pkgdir/usr/lib/vst/AVA-LV.so"
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-MC.so" "$pkgdir/usr/lib/vst/AVA-MC.so"
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-ME.so" "$pkgdir/usr/lib/vst/AVA-ME.so"
 	install -Dm755 "$srcdir/Harrison_AVA/vst/AVA-SC.so" "$pkgdir/usr/lib/vst/AVA-SC.so"
