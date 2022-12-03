@@ -1,5 +1,5 @@
 #
-# PKGBUILD for mkpkg 
+# PKGBUILD for wg_tool 
 # This builds the latest release tag.
 # git HEAD is also well tested.
 #
@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and users'
 _gitname='wg_tool'
 
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 

@@ -1,6 +1,6 @@
 pkgbase = wg_tool
 	pkgdesc = Tool to manage wireguard server and users
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/gene-git/wg_tool
 	arch = any
