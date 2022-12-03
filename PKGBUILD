@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcisTarget
-_pkgver=1.17.0
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.17.0
-pkgrel=3
+pkgver=1.18.2
+pkgrel=1
 pkgdesc='RcisTarget Identify transcription factor binding motifs enriched on a list of genes or genomic regions'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -44,7 +44,7 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('73e760910a90d8ddfc6734f06be201fe6923edb83573ff3eb0029b438a8ddcaa')
+sha256sums=('22be06fe8461b2d3f9a0ead86d2126a7c0061e365ad32deb6ec173f845159f0a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
