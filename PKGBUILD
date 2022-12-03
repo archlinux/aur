@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=nautilus-code-git
 pkgver=0.5+11+gba288ea
 pkgrel=1
