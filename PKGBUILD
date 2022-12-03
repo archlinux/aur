@@ -4,7 +4,7 @@
 # Helpful URL: http://services.sonarr.tv/v1/releases
 
 pkgname='sonarr-develop'
-pkgver=4.0.0.205
+pkgver=4.0.0.217
 pkgrel=1
 pkgdesc='TV download automation for usenet and torrents.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -51,9 +51,9 @@ sha256sums=('2373381d508403469cf58396b1f8f7cc7778ba619604469006bdfdc3f2f25960'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             '7bf87304383b7d58ecab59b3686d00a8f1b6fbe4af3a86da35a887e4cebee411'
             'a6b37e75143a309b1d8c163c3f90f7f0275fd730015c3f74e3ad27c278b1ae90')
-sha256sums_x86_64=('85de9ca907f8a2ab56055cd66d9ca0e12e199b272cb30372ec09ddc0aa39b05b')
-sha256sums_aarch64=('f2c0deaf3754963a4affff22794919a2d588d38a90a537c7e2c31dbf6ba30dd2')
-sha256sums_armv7h=('62750c6ce4f0a3a06e71e3af710ff74169b39d62b572fef1d440ac4f1bc6fe42')
+sha256sums_x86_64=('2d114a61d28a5a280cf630d4e26b31dfec1026c8743f2e501cb30a061636bc35')
+sha256sums_aarch64=('d9d9e4c4b522d85d9db716fe61e4d8649d4f6793b678b402a4d98318cca50bd2')
+sha256sums_armv7h=('66ac4968c35dc43c515fb5fc7a1a95d31a371db71287e4523d20c9fc194ffd05')
 package() {
   rm -rf "${srcdir}/Sonarr/Sonarr.Update"
   install -d -m 755 "${pkgdir}/usr/lib/sonarr/bin"
