@@ -2,7 +2,7 @@
 
 _reponame=obs-ptz
 pkgname=$_reponame-controls
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a PTZ Camera control dock"
 arch=("i686" "x86_64" "aarch64")
