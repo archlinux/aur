@@ -1,0 +1,4 @@
+ejdb/
+*.tar.zst
+pkg
+src
