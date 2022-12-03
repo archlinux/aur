@@ -12,8 +12,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671' '2694' '2702' '2720')
-_merge_requests_to_use=('1441' '1880' '2694' '2702' '2720')
+# Merge Requests List: ('579' '1441' '1880' '2671' '2702')
+_merge_requests_to_use=('1441' '1880' '2671' '2702')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -31,8 +31,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.1+r2+g6a962803e
-pkgrel=3
+pkgver=43.1+r24+g030e9b8b2
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -46,19 +46,15 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # tags/43.1^2
+_commit=030e9b8b24cb4335455f4e51a39a2c854c5717b8  # tags/43.1^24
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
-        'mr2671.patch'
-        'mr2694.patch'
-        'mr2720.patch')
+        'mr2671.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
-            '6e6ff34859c7654eb6bf56b8658fcedfac460d05d4dd41ed7c305a78f03513cf'
-            '45ba598e88a4b18ab2d0522abe058efaf0ceb05895bae6f31887bcd4492c45ce'
-            '620aabe6b59a6b4ccde95c0aecf98c290ad218c0b8a340bb0bc075c6cc0846e1'
-            '34426cc2ae75f3fc462fcdcfa3bd8ebe8f233d167a96a9f3cbe55b9a5aeba076')
+            '65981409a5fc5ebfa95c7178f588cb2564f405cf55cbc7a315ecd4ac6c892b1c'
+            'dc0520fd8e9e9d4e76ebfe9e95f72f25bad18a149d04db9d0d35806f1903326c')
 
 pkgver() {
   cd $pkgname
@@ -169,24 +165,6 @@ prepare() {
   # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
   # NOTE: This changes mutter's behaviors, which can bring regressions when using some extensions.
   pick_mr '2671' 'mr2671.patch' 'patch'
-
-  # Title: clutter/actor: Show on all stage-views when actors have no allocation
-  # Author: Jonas Dreßler <verdre@v0yd.nl>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2694
-  # Type: 3
-  # Status: 3
-  # Comment: For paint volumes, queue full-stage redraws. For actors without valid allocations,
-  #          set priv->stage_views to all available stage views.
-  pick_mr '2694' 'mr2694.patch' 'patch'
-
-  # Title: window/wayland: Calculate bottom and right frame extents
-  # Author: Sebastian Keller <skeller@gnome.org>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2720
-  # Type: 3
-  # Status: 2
-  # Comment: Fixes: 6cbc5180
-  #          Closes: gnome-shell#6050
-  pick_mr '2720' 'mr2720.patch' 'patch'
 
 }
 
