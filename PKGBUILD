@@ -11,7 +11,7 @@ conflicts=('go-musicfox-bin' 'musicfox')
 depends=('flac' 'alsa-lib')
 makedepends=('gcc-objc' 'go')
 source=(go-musicfox-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('090f1b64ffa2407cf0c2b14ce2f93851cd27660f9175e01547df0397be3b2379')
+sha256sums=('8c02ed80c178ec709c1891cd1eacb31cf61e6dcc38732c1d8bdb7a229085e66b')
 
 build(){
 	cd go-musicfox-${pkgver}
