@@ -7,7 +7,7 @@ pkgdesc="YouKu Video client"
 url="http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md"
 arch=('x86_64')
 license=('custom')
-depends=('electron9-bin')
+depends=('electron9')
 source=('youku.deb::https://mirrors.163.com/ubuntukylin/pool/partner/youku-app_1.0.0_amd64.deb'
         'youku.desktop'
 	'electron.sh'
