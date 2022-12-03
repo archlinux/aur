@@ -10,6 +10,7 @@ pkgbase = sapling-scm
 	makedepends = cmake
 	makedepends = rust
 	makedepends = yarn
+	depends = curl
 	depends = nodejs
 	depends = python
 	source = https://github.com/facebook/sapling/archive/refs/tags/0.1.20221201-095354-r360873f1.tar.gz

@@ -9,7 +9,7 @@ pkgdesc="A Scalable, User-Friendly Source Control System"
 arch=("x86_64")
 url="https://sapling-scm.com"
 license=('GPL2')
-depends=("nodejs" "python")
+depends=('curl' 'nodejs' 'python')
 # NOTE: namcap(1) reports various missing python libs from scanning the package, but
 #  this binary actually vendors them in. The resulting sl(1)
 #  program runs fine without those libraries installed systemwide.
