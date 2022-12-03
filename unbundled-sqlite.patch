@@ -1,0 +1,11 @@
+--- Cargo.toml	2022-12-01 19:52:08.799187277 -0800
++++ Cargo.toml	2022-12-03 09:41:41.114590941 -0800
+@@ -151,7 +151,7 @@
+ regex = "1.3.4"
+ relative-path = { version = "1.7.0", features = ["serde"] }
+ reqwest = { version = "0.11.4", features = ["stream"] }
+-rusqlite = { version = "0.28.0", features = ["bundled"] }
++rusqlite = { version = "0.28.0" }
+ sequence_trie = "0.3.6"
+ serde = { version = "1.0", features = ["derive"] }
+ serde_json = "1.0.48"
