@@ -2,7 +2,7 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-devel
-pkgver=4.17.1
+pkgver=4.17.2
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (development release)"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -16,7 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 replaces=('xfce4-menueditor')
 options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('fe8692268a5d49438cb1771640073edbc01e614f4f3c568d2285ed4c8424f2ea')
+sha256sums=('e68128dc72924680ed384d32b95e3a18d94a1ec490c05dab43155cac737bcdd1')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
