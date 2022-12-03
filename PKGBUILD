@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Cook <nvcook42 |at| gmail |dot| com>
 
 pkgname=minecraft-multi-server
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Minecraft server template unit files and control script"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('minecraft-server')
 backup=('etc/minecraft')
 install="${pkgname}.install"
 source=("https://github.com/nathanielc/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('e96e5f57b74692ceb07da480ccfcd3cdec0aa042e8d5fa5cb7bf13731f88d054')
+sha256sums=('6b87b1da2ff1b3f02e69e11f84aacd79846262e8d174cf1e1487b74e397c7568')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
