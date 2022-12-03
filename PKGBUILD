@@ -3,7 +3,7 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.4.0
+pkgver=9.4.1
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
@@ -31,7 +31,6 @@ optdepends=(
       'petsc: Portable, extensible toolkit for scientific computation'
       'scalapack: subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers'
       'slepc: Scalable library for Eigenvalue problem computations'
-      # deal.II is not compatible with sundials 6.0 or newer yet
       'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
       'tbb: High level abstract threading library'
@@ -42,7 +41,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('fd8ff7b934026b144cde2a904f21a8ad7d8244df')
+sha1sums=('c49bb0d3f0341674b5e3865df730fbef7a2a9d5c')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
@@ -112,6 +111,9 @@ build() {
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
 
+  sed -i '146i#include <boost/algorithm/string/case_conv.hpp>\n' \
+      ${srcdir}/${_realname}-$pkgver/examples/step-70/step-70.cc
+
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
 
@@ -129,7 +131,6 @@ build() {
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
         -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
-        -DDEAL_II_WITH_SUNDIALS=OFF                                             \
         -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ${srcdir}/${_realname}-$pkgver
 
   # deal.II needs about 3 GB/compilation process so use fewer jobs if your
