@@ -1,0 +1,15 @@
+pkgbase = pacman-repo-stats
+	pkgdesc = Show usage statistics of repositories in pacman.conf
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bpetlert/pacman-repo-stats
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = pacman
+	provides = pacman-repo-stats
+	conflicts = pacman-repo-stats
+	source = pacman-repo-stats-0.3.0.tar.gz::https://github.com/bpetlert/pacman-repo-stats/archive/0.3.0.tar.gz
+	sha256sums = 7f30bc4cab3082a1ccfb858f50ce5f4ff243da5c3fccec99ec4a301b609a2879
+
+pkgname = pacman-repo-stats
