@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vskernels-git
 	pkgdesc = Plugin for Vapoursynth: vskernels (GIT version)
-	pkgver = 1.2.0.2.g91f4a31
+	pkgver = 2.2.1.0.gdffe27b
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-kernels.git
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = vapoursynth-plugin-vskernels-git
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python-wheel
+	depends = vapoursynth
 	depends = vapoursynth-plugin-vstools-git
 	provides = vapoursynth-plugin-vskernels
 	conflicts = vapoursynth-plugin-vskernels
