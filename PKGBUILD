@@ -4,13 +4,13 @@
 
 pkgname=torrentinfo
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Bittorrent .torrent file parser and summariser"
 arch=('any')
 url="https://github.com/Fuuzetsu/torrentinfo"
-license=('GPL2')
-depends=('python')
-makedepends=('python-setuptools')
+license=(GPL2)
+depends=(python)
+makedepends=(git python-setuptools)
 source=("git+$url#commit=3c9b3ba80c867ba28e8ce0982fec8ea5369df8ef")
 b2sums=('SKIP')
 
