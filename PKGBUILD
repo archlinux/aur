@@ -2,7 +2,7 @@
 
 pkgname=agg-2.6-git
 _pkgname=agg
-pkgver=2.6
+pkgver=r151.e7db22b
 _pkgver=2.6
 pkgrel=1
 pkgdesc='High Quality Rendering Engine for C++'
