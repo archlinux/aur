@@ -1,0 +1,16 @@
+diff --git a/script/test.js b/script/test.js
+index c4e7b6660..ea74432f4 100755
+--- a/script/test.js
++++ b/script/test.js
+@@ -244,9 +244,8 @@ function runCoreMainProcessTests(callback) {
+     testPath
+   ];
+ 
+-  if (process.env.CI && process.platform === 'linux') {
+-    testArguments.push('--no-sandbox');
+-  }
++  testArguments.push('--no-sandbox');
++  testArguments.push('--in-process-gpu');
+ 
+   const testEnv = Object.assign({}, prepareEnv('core-main-process'), {
+     ATOM_GITHUB_INLINE_GIT_EXEC: 'true'
