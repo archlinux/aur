@@ -1,0 +1,17 @@
+pkgbase = duma-git
+	pkgdesc = Detect Unintended Memory Access (D.U.M.A.) - A Red-Zone memory allocator
+	pkgver = 2.5.24b1.r25.g2aab759
+	pkgrel = 1
+	url = https://github.com/johnsonjh/duma
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	depends = bash
+	provides = duma
+	conflicts = duma
+	source = duma-git::git+https://github.com/johnsonjh/duma#branch=master
+	b2sums = SKIP
+
+pkgname = duma-git
