@@ -15,7 +15,7 @@ depends=(alsa-lib gtk3 libcups libxss libxtst nss xdg-utils)
 optdepends=(google-chrome)
 conflicts=(chromium)
 source=("${pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
-sha512sums=('82debce470a48d8fe7c0b39faffb28cd102f192b2ed977afcb286de3bfbd4d519a894be910317b2e8847660db016ebc544e081f050adb22c67f3c57b0a9a7089')
+sha512sums=('61f30808835298fcc0b7f42d91fd5954c8fdb9207935f28f49b11db274acc5301266bae6f769bd4a83ace016253fd5f8ae58e09717e64e9dd34d5c3383d7a051')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/$pkgname"
