@@ -6,7 +6,7 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -20,7 +20,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.bz2")
-sha256sums=('2deca68f816705de5c4f11aad48b1157ce715da467bd3eaba723299df861615b')
+sha256sums=('852b34b922b83a26f9e887e8e98b1b7174decb8ed7143ebe5682d93cf8b6c83d')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
