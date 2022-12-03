@@ -1,6 +1,6 @@
 # Maintainer: Tom Gurion <nagasaki45@gmail.com>
 pkgname='behavioral-observation-research-interactive-software'
-pkgver=7.9.7
+pkgver=7.13.9
 pkgrel=1
 pkgdesc='BORIS: a free, versatile open-source event-logging software for video/audio coding and live observations'
 arch=('any')
@@ -13,7 +13,7 @@ source=("boris-$pkgver.tar.gz::https://github.com/olivierfriard/boris/archive/v$
         "boris.desktop"
         "icon.icns")
 install="boris.install"
-md5sums=('791003afba26fa3670aa86f88fa23768'
+md5sums=('808459715161c80f4b2725675c912b97'
          '84eac4973fcb93f51670f8cb7c263273'
          'edec9dc79614a03901ea4108eb4819e2'
          '97d978a3a708fd368e231462528950db')
