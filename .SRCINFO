@@ -1,8 +1,8 @@
 pkgbase = soundscope-player-git
-	pkgdesc = Make an audio CD-R image from media files.
-	pkgver = 1.0+2+gd7c14a7
+	pkgdesc = SoundScope PlayStation media player.
+	pkgver = 1.0+20+g135e22d
 	pkgrel = 1
-	url = https://github.com/tallero/
+	url = https://github.com/tallero/soundscope-player
 	arch = any
 	license = AGPL3
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = soundscope-player-git
 	depends = python-appdirs
 	provides = soundscope-player
 	conflicts = soundscope-player
-	source = soundscope-player::git+ssh://git@127.0.0.1:/home/git/
+	source = soundscope-player::git+ssh://git@127.0.0.1:/home/git/soundscope-player
 	sha256sums = SKIP
 
 pkgname = soundscope-player-git
