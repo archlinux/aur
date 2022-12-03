@@ -1,14 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gtg
 pkgver=0.6
-pkgrel=3
+pkgrel=5
 pkgdesc='Personal GTD like organizer for the GNOME desktop environment'
 url=https://wiki.gnome.org/Apps/GTG
 arch=(any)
 license=(GPL)
-depends=(gtksourceview4 hicolor-icon-theme python-cairo python-caldav
-         python-dbus python-gobject 'python-liblarch>=3.2' python-lxml)
-checkdepends=(python-mock python-nose python-pytest)
+depends=(gtksourceview4 hicolor-icon-theme python-cairo python-dbus
+         python-gobject 'python-liblarch>=3.2' python-lxml)
+optdepends=('python-caldav: allows syncing with CalDAV servers')
+checkdepends=(python-mock python-nose python-pytest python-caldav)
 makedepends=(meson ninja itstool)
 optdepends=('pdftk: for the export and print plugin'
             'python-cheetah3: for the export and print plugin'
