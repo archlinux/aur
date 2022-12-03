@@ -1,7 +1,7 @@
 pkgbase = r-aucell
 	pkgdesc = AUCell: Analysis of 'gene set' activity in single-cell RNA-seq data (e.g. identify cells with specific gene signatures)
-	pkgver = 1.20.1
-	pkgrel = 3
+	pkgver = 1.20.2
+	pkgrel = 1
 	url = https://bioconductor.org/packages/AUCell
 	arch = any
 	license = GPL
@@ -36,7 +36,7 @@ pkgbase = r-aucell
 	optdepends = r-rtsne
 	optdepends = r-testthat
 	optdepends = r-zoo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AUCell_1.20.1.tar.gz
-	sha256sums = 50dffa08d9fd81b3c6bc456e0a6430da6bfb5f8fdfd546b4a86ae2ad6612072f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AUCell_1.20.2.tar.gz
+	sha256sums = 7a70f12a55a99cfaf1de614469801fffeae21ca0743c2a4dbff9fd5e1a1e61e1
 
 pkgname = r-aucell
