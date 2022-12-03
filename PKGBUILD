@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 reponame=gst-plugins-rs
 pkgname=gst-plugin-gtk4-git
 pkgver=r2318.aa2abc50
