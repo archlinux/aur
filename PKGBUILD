@@ -3,7 +3,7 @@
 _pkgname=thunar-volman
 pkgname=${_pkgname}-devel
 epoch=1
-pkgver=4.17.0
+pkgver=4.17.1
 pkgrel=1
 pkgdesc="automatic management for removeable devices in thunar"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 options=('!libtool')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('156d9cc8dad07c6c1e91353a2789858b53feaaeafe9993d3b7eed7b6b330ad17')
+sha256sums=('9ac33664dbef4c425ccb96cdb5dd376ebe023281c987a464b7900cc7139dc605')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
