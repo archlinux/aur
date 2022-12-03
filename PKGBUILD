@@ -17,7 +17,8 @@ source=(
 	titus_usrlevel.conf
 	$pkgname{.sh,{,-moktar,-usrlevel}.desktop}
 	{titus,moktar,lagbonus}.png
-	{titus,lagaf}big.webp)	# Titus: https://www.artstation.com/artwork/ba3Olo; Lagaf: https://cpcrulez.fr/GamesTest/les_aventures_de_moktar.htm#DL, cutout with https://zyro.com/tools/image-background-remover
+	titusbig.webp	# https://www.artstation.com/artwork/ba3Olo
+	lagafbig.webp)	# https://cpcrulez.fr/GamesTest/les_aventures_de_moktar.htm#DL, cutout with https://zyro.com/tools/image-background-remover
 noextract=(*.iso)
 md5sums=(
 	96d8226064c7f6072dadd25f1460b135
