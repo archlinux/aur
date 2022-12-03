@@ -2,17 +2,16 @@
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
-# Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch
-pkgver=8.5.0
-pkgrel=3
+pkgver=8.5.2
+pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
-depends=('jdk18-openjdk' 'systemd' 'libxml2')
-makedepends=('jdk18-openjdk')
+depends=('jdk19-openjdk' 'systemd' 'libxml2')
+makedepends=('jdk19-openjdk')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
@@ -26,17 +25,17 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-sha256sums=('08349c936777b77adbd1868edb59840a3ab628697ea17db06fe7074e0565f180'
-            '040fe3d528255cc82e3b018eb05802131de8e1d4deb1e299d4d86a0ab5e08311'
-            '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
-            'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
-            '22a78a165a810608188faea6f2b0b381f27b1e9d60126c3b3e729124540589a8'
-            'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
-            'fc9683349457f56bcd044cd8e711bc8efd43d32f9547d5b21a66650c6dfbed73'
-            '74a772e9f73e2cecda45dcd30ade2f6114db657ed36231292bdf9a7ca04eab78'
-            'bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8'
-            '96934e6518245a4110714c3e1c1eb7bfaf4dd0026cc917efc322f3bfa4c3b5ec'
-            'e00c45812db63a0fa6ea4de27e8f489e38e01fafdb155e5421f5faf659c2905d')
+b2sums=('5048b14d6f1ccd21d6e51ff7bd81277efa8fef3976e6aa7957e756cf788df4021061212dd49de54a327cdb44f246341e5d5277bc296243b66cc80cd3363b4cde'
+        'a3196d747b35510261d921996f3eb8ddcabf4d0093d36829d020722926a2b89588fd2e033bf0eecb21d8727fecac67465ee697bd009cab578f7e7e0d8429c0b2'
+        'de3e45081e9f4d75c47b2d2ea4c9faabb0499153914c940faf055f34a823df1e4d244041520686fe6e6dabdb01520c3c48c9382613aeeadc3f5376bf0d1c367d'
+        '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
+        '91ca815aa29f619e74b8d735af234705aed7254e4ecdde5248ab2a971a6b13e4c3897ed54933b2d68d3f16c266cd20d6ce14377f988199c367c39b892ddf5bca'
+        '5690e288a5d288931094db9e1532737b641d9852c2dc5cf45c2853e20c6ab013b1cf056f2cd325ad0703c2075dac7bd16c99c7f1ba202f5d94aac336508f7417'
+        '21cc254940924675bd24e07f6af1f58c89530abfb075637279798bdbba80772c6a4659361e9e8e58a5b2a5ffb21e55e40c91a270ff10da5ab467f63ce34e9f76'
+        'b54cc37b1e5b4f054fc14d3112bee2cbad1ba48f7f15364366473753767fa74f38874da35083f9f7d840286052d3da970cdcf509569aa8b5fff39e4941959678'
+        'f346ba285e045e3982da1841adc8625ebf1a662882d20a7c69bd76911782e1bdf30883b16dffe32cd2355349738b9b6c275b9ff6b11dfdd7fd56b509bcd19c31'
+        '67790af829e62fdb224b8725e64757c592d34690fd726a1ccd654621ccf973b732e1032bcd046c724ecd20ab5d0ba76067af081fdf483f87283df907fc8745f8'
+        '1b03079b6937c9c2d5bf23f43a82870e38d62515e08a20f1300999c06fbe66deb8f3b8c6274807aa805cd464801cb56bf0aab356093319b89b2ceac08ed43ab9')
 
 backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/elasticsearch/log4j2.properties'
