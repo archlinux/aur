@@ -2,14 +2,16 @@
 
 # shellcheck disable=SC2034
 _namespace="tallero"
-pkgbase="mkaudiocdrimg"
-_pkgname="${pkgbase}"
-pkgname="${pkgbase}-git"
+_pkgbase="mkaudiocdrimg"
+_pkgname="${_pkgbase}"
+pkgname="${_pkgbase}-git"
 pkgver=1.0+1+g92f8081
 pkgrel=1
 pkgdesc="Make an audio CD-R image from media files."
 arch=('any')
-url="https://gitlab.com/${_namespace}/${pkgbase}"
+url="https://gitlab.com/${_namespace}/${_pkgbase}"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('ffmpeg'
          'shntool'
          'python-appdirs')
