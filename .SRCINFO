@@ -1,6 +1,6 @@
 pkgbase = giwifi-gear.sh
 	pkgdesc = A UNIX shell command line interpreter tool for giwifi
-	pkgver = 1.3.2
+	pkgver = 1.3.4
 	pkgrel = 1
 	arch = any
 	license = GPL

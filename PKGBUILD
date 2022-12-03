@@ -1,6 +1,6 @@
 # Maintainer: Tea <icepie.dev@gmail.com>
 pkgname=giwifi-gear.sh
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A UNIX shell command line interpreter tool for giwifi"
 arch=('any')

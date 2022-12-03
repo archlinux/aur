@@ -101,7 +101,7 @@ MOBILE_APP_VERSION='2.4.1.4'
 #############################################
 
 AWK_TOOL='awk' # it will be upgrade to gawk, when you have gawk...
-VERSION='1.3.2'
+VERSION='1.3.4'
 
 #############################################
 ## Network Util
@@ -380,6 +380,26 @@ gw_web_loginaction() {
 			-X POST \
 			-d "$1" \
 			"http://login.gwifi.com.cn/cmps/admin.php/api/loginaction?round=$rannum"
+	)"
+}
+
+gw_get_rebind_counts() {
+	# account=&password=
+	printf '%s' "$(
+		curl $CURL_OPT -s \
+			-A "$AUTH_UA" \
+			-X POST \
+			-d "$1" \
+			'http://radius.gwifi.com.cn/cmps/admin.php/Help/getRebindCounts'
+	)"
+}
+
+gw_get_online_records() {
+	printf '%s' "$(
+		curl $CURL_OPT -s \
+			-A "$AUTH_UA" \
+			-X GET \
+			"http://login.gwifi.com.cn/shop/statistics/get_user_access_records?name=$1"
 	)"
 }
 
@@ -976,6 +996,59 @@ mobile_get_token() {
 
 }
 
+get_online_records() {
+	GET_ONLINE_RTE="$(gw_get_online_records "$GW_USER")"
+
+	[ $ISLOG ] && echo "" &&
+		echo "GET_ONLINE_RTE:" &&
+		echo "--> $GET_ONLINE_RTE" &&
+		echo ''
+
+
+	GET_ONLINE_RTE_ERR="$(echo "$GET_ONLINE_RTE" | grep 'var errormsg = ')"
+
+	[ "$GET_ONLINE_RTE_ERR" ] && {
+		logcat "$(str_str "$GET_ONLINE_RTE_ERR" 'var errormsg = "' '";')" 'E'
+		exit 1
+	}
+
+	logcat "$(str_str "$GET_ONLINE_RTE" 'var json = ' ';')"
+}
+
+get_rebind_counts() {
+	GET_REBIND_COUNTS_DATA="account=$GW_USER&password=$GW_PWD"
+
+	[ $ISLOG ] && echo "" &&
+	echo "GET_REBIND_COUNTS_DATA:" &&
+	echo "--> $GET_REBIND_COUNTS_DATA" &&
+	echo ''
+
+	GET_REBIND_COUNTS_RAW_RTE="$(gw_get_rebind_counts $GET_REBIND_COUNTS_DATA)"
+
+	[ $ISLOG ] && echo "" &&
+		echo "GET_REBIND_COUNTS_RTE:" &&
+		echo "--> $GET_REBIND_COUNTS_RAW_RTE" &&
+		echo ''	
+
+	GET_REBIND_COUNTS_ERR_RTE="$(echo "$GET_REBIND_COUNTS_RAW_RTE" | grep 'class="error"')"
+
+	[ "$GET_REBIND_COUNTS_ERR_RTE" ] && {
+		logcat "$(str_str "$GET_REBIND_COUNTS_ERR_RTE" '<span class="error">' '</span>')" 'E'
+		exit 1
+	}
+
+	GET_REBIND_COUNTS_RTE="$(printf "$(printf "$GET_REBIND_COUNTS_RAW_RTE")" | sed "s@\\\\@@g")"
+	GET_REBIND_COUNTS_STATUS="$(get_json_value "$GET_REBIND_COUNTS_RTE" 'status')"
+	GET_REBIND_COUNTS_INFO="$(get_json_value "$GET_REBIND_COUNTS_RTE" 'info')"
+
+	if [ ! "$GET_REBIND_COUNTS_STATUS" = '1' ]; then
+		logcat "$GET_REBIND_COUNTS_INFO" 'E'
+		exit 1
+	fi
+
+	logcat "$GET_REBIND_COUNTS_INFO"
+}
+
 get_user_info() {
 	MOBILE_GET_USER_DATA="$(
 		printf '{"data":"{\\"staticPassword\\":\\"%s\\",\\"phone\\":\\"%s\\"}","version":"%s","mac":"%s","gatewayId":"%s","token":"%s"}' \
@@ -1102,7 +1175,7 @@ usage() {
 giwifi-gear.sh
   A cli tool for login giwifi by cloud auth mode (multi-platform, fast, small)
 usage:
-  giwifi-gear.sh [-h] [-g <GATEWAY>] [-u <USERNAME>] [-p <PASSWORD>] [-t <TYPE>] [-T <TOKEN>] [-i <IFACE>] [-e <EXTRA_IFACE>] [-q] [-b] [-d] [-l] [-v]
+  giwifi-gear.sh [-h] [-g <GATEWAY>] [-u <USERNAME>] [-p <PASSWORD>] [-t <TYPE>] [-T <TOKEN>] [-i <IFACE>] [-e <EXTRA_IFACE>] [-I] [-B] [-R] [-q] [-b] [-d] [-l] [-v]
 optional arguments:
   -h                    show this help message and exit
   -g <GATEWAY>          set the gateway
@@ -1115,6 +1188,8 @@ optional arguments:
   -b                    bind or rebind your device
   -q                    sign out of account authentication
   -I                    show more user info and host group info
+  -B                    get the rebind mac counts
+  -R					get the online records (raw data, within 6 months?)
   -d                    running in the daemon mode (remove sharing restrictions)
   -l                    print the log info
   -v                    show the tool version and exit
@@ -1265,6 +1340,34 @@ main() {
 		}
 
 		get_user_info
+		exit 0
+	fi
+
+	# get online records
+	if [ "$ISGOR" ]; then
+		[ ! "$GW_USER" ] && {
+			printf '%s' "Plz enter username: "
+			read GW_USER
+		}
+
+		get_online_records
+		exit 0
+	fi
+
+	# get rebind counts
+	if [ "$ISGRC" ]; then
+		[ ! "$GW_USER" ] && {
+			printf '%s' "Plz enter username: "
+			read GW_USER
+		}
+
+		[ ! "$GW_PWD" ] && {
+			printf '%s' "Plz enter password: "
+			read -s -t 20 GW_PWD
+			echo ''
+		}
+
+		get_rebind_counts
 		exit 0
 	fi
 
@@ -1475,7 +1578,7 @@ Logged:           $([ "$AUTH_STATE" = '2' ] && echo 'yes' || echo 'no')
 	init
 
 	# paser the opts
-	while getopts "g:u:p:t:T:i:e:qIbdlvh" option; do
+	while getopts "g:u:p:t:T:i:e:IBRqbdlvh" option; do
 		case "$option" in
 		g)
 			GW_GTW="$OPTARG"
@@ -1501,6 +1604,12 @@ Logged:           $([ "$AUTH_STATE" = '2' ] && echo 'yes' || echo 'no')
 			;;
 		I)
 			ISUSERINFO=1
+			;;
+		B)
+			ISGRC=1
+			;;
+		R)
+			ISGOR=1
 			;;
 		q)
 			ISQUIT=1
