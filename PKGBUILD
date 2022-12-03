@@ -13,9 +13,12 @@ url="https://github.com/${_namespace}/${_pkgbase}"
 _url="ssh://git@127.0.0.1:/home/git/${_pkgbase}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('ffmpeg'
+depends=('duckstation'
+         'ffmpeg'
          'shntool'
-         'python-appdirs')
+         'psx-bios'
+         'python-appdirs'
+         'python-gobject')
 makedepends=('git'
              'python-setuptools')
 license=("AGPL3")
