@@ -1,6 +1,6 @@
 # Maintainer: Thenujan Sandramohan <sthenujan2002@gmail.com>
 pkgname=grub-editor
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="GUI application to edit grub configurations"
@@ -25,8 +25,6 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-    echo $pwd
     cd "$pkgname-$pkgver"
-    echo "$pkgdir"
     make PKG_DIR="$pkgdir" install
 }
