@@ -6,21 +6,22 @@ pkgbase = cemu
 	install = cemu.install
 	arch = x86_64
 	license = MPL2
-	makedepends = git
 	makedepends = cmake>=3.21.1
-	makedepends = rapidjson
+	makedepends = git
 	makedepends = boost>=1.79
 	makedepends = glslang>=11.8
 	makedepends = glm>=0.9.9.8
+	makedepends = rapidjson
 	makedepends = nasm
 	makedepends = vulkan-headers>=1.3.225
 	makedepends = glu
 	makedepends = libpulse
+	depends = boost-libs>=1.79
 	depends = fmt>=9.1
-	depends = sdl2>=2.0.22
-	depends = pugixml>=1.12.1
 	depends = libzip>=1.9.2
 	depends = libpng>=1.6.37
+	depends = pugixml>=1.12.1
+	depends = sdl2>=2.0.22
 	depends = wxwidgets-gtk3>=3.2
 	optdepends = alsa-lib: Audio output
 	optdepends = vulkan-driver: Vulkan graphics

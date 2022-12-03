@@ -10,14 +10,14 @@ license=(MPL2)
 options+=(!strip)
 depends=(
 	# unbundled vcpkg
-	'fmt>=9.1' 'sdl2>=2.0.22' 'pugixml>=1.12.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'wxwidgets-gtk3>=3.2'
+	'boost-libs>=1.79' 'fmt>=9.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'pugixml>=1.12.1' 'sdl2>=2.0.22' 'wxwidgets-gtk3>=3.2'
 )
 makedepends=(
-	git 'cmake>=3.21.1'
+	'cmake>=3.21.1' git
 	# clang
 	$([[ $CC+$CXX == *clang* ]] && echo 'clang>=12 llvm>=12')
 	# unbundled vcpkg
-	rapidjson 'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8'
+	'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8' rapidjson
 	# cemu
 	nasm 'vulkan-headers>=1.3.225'
 	# wxwidgets
