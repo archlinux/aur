@@ -1,7 +1,7 @@
 # Maintainer: Vincent Lee < vincent at vincent dash lee dot net >
 _realname=sapling  # Already taken on AUR
 pkgname="$_realname-scm"
-_realver=0.1.20221118-210929-cfbb68aa
+_realver=0.1.20221201-095354-r360873f1
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
 epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
 pkgrel=1
@@ -15,7 +15,7 @@ depends=("nodejs" "python")
 #  program runs fine without those libraries installed systemwide.
 makedepends=("cargo" "cmake" "rust" "yarn")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
-sha256sums=("51ce336f1eb382e591a7384d0292cb41fafbbd92cc701ee74b50099beece65e4")
+sha256sums=('667149b8f705d87a24a80e7704a60cd0aa7cbfd0c63ae5363bb3717159be40ac')
 
 prepare() {
 	cd "$_realname-$_realver"
@@ -23,7 +23,9 @@ prepare() {
 
 build() {
 	cd "$_realname-$_realver/eden/scm"
-	make PREFIX=/usr oss
+	# TODO `make install-oss` rebuilds the entire project, rendering `make oss`
+	# pointless currently. See https://github.com/facebook/sapling/issues/161 for more info.
+	# make PREFIX=/usr oss
 }
 
 check() {
