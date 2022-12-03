@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-pkgver=7.5.3.0.r7.g6b7b7325
-pkgrel=2
+pkgver=7.6.3.0.r0.g6b7b7325
+pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -34,12 +34,15 @@ python-toml
 python-lief
 )
 conflicts=(python-ocp-git)
+_hash_OCP=6b7b7325ab4599a8ba9049f176f099574fe64dfc
+_hash_pywrap=66e7376d3a27444393fc99acbdbef40bbc7031ae
 source=(
-git+https://github.com/CadQuery/OCP.git#commit=6b7b7325ab4599a8ba9049f176f099574fe64dfc
-git+https://github.com/CadQuery/pywrap.git
+git+https://github.com/CadQuery/OCP.git#commit=${_hash_OCP}
+git+https://github.com/CadQuery/pywrap.git#commit=${_hash_pywrap}
 )
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+)
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
