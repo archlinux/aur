@@ -2,8 +2,8 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.26.1
-_pkgver=4.140.0
+pkgver=5.27.2
+_pkgver=4.141.0
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -19,10 +19,10 @@ makedepends=('python-build'
 optdepends=('python-boto: Object Storage plugin')
 replaces=("${pkgname}-dev")
 install="${pkgname}".install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
-sha512sums=('bc52279f44a8c4b02388afa40f703fe6a9893e394958c7be6867c8cee443b8e65dc4777e8fc19d90d63e6807b593460399909e5896928e7a266e5ba976803bf6'
-            '2527e33657ca0c4c375efa5c6ac14c51bfc95853959cca5b1fceb0d7fc30f8af98f958affaafef2ee49b7457a3b356514751e5d6aab431129a31d2351c83170b')
+sha512sums=('0df6f34a9bc0fac2a71013192156db035e98709caab53fb107bbc75473930f66ce428fc8755231153f19cc801f7bb93da27338c43205adb412e615e6297e8f41'
+            'b8d10eb1934074367649524d29b1f54b2e817199bfdeac3dc02cefb8941f4c0299c1c1fb30e350666d3c541a32eafd75d7e9108e9d9a28b6baa7cb4efc5ca16b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
