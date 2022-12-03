@@ -2,7 +2,7 @@
 pkgname=matrix-wechat-git
 _pkgname=matrix-wechat
 pkgver=0.1.0.r2.g9abc502
-pkgrel=1
+pkgrel=2
 pkgdesc=' A Matrix-WeChat puppeting bridge'
 arch=('x86_64')
 url="https://github.com/duo/matrix-wechat"
@@ -41,5 +41,7 @@ check() {
 package() {
   cd "$_pkgname"
   install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 example-config.yaml "$pkgdir"/etc/$_pkgname/config.yaml
+  install -Dm644 "../${_pkgname}.service" "$pkgdir"/usr/lib/systemd/system/${_pkgname}.service
 }
 
