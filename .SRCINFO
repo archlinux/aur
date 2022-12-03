@@ -1,7 +1,7 @@
 pkgbase = tbb2020
 	pkgdesc = High level abstract threading library
 	pkgver = 2020.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.threadingbuildingblocks.org/
 	arch = x86_64
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = tbb2020
 	makedepends = git
 	makedepends = inetutils
 	depends = gcc-libs
+	provides = tbb=2020.3
 	provides = intel-tbb=2020.3
 	conflicts = tbb
 	conflicts = intel-oneapi-tbb
