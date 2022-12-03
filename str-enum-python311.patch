@@ -1,0 +1,30 @@
+diff --git a/spleeter/audio/__init__.py b/spleeter/audio/__init__.py
+index 32012e1..1a178e8 100644
+--- a/spleeter/audio/__init__.py
++++ b/spleeter/audio/__init__.py
+@@ -10,14 +10,14 @@
+     - Waveform convertion and transforming functions.
+ """
+ 
+-from enum import Enum
++from enum import StrEnum
+ 
+ __email__ = "spleeter@deezer.com"
+ __author__ = "Deezer Research"
+ __license__ = "MIT License"
+ 
+ 
+-class Codec(str, Enum):
++class Codec(StrEnum):
+     """ Enumeration of supported audio codec. """
+ 
+     WAV: str = "wav"
+@@ -28,7 +28,7 @@ class Codec(str, Enum):
+     FLAC: str = "flac"
+ 
+ 
+-class STFTBackend(str, Enum):
++class STFTBackend(StrEnum):
+     """ Enumeration of supported STFT backend. """
+ 
+     AUTO: str = "auto"
