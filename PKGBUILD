@@ -3,11 +3,11 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=vlc-luajit
-_vlcver=3.0.17.4
+_vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=12
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -29,7 +29,7 @@ depends=(
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
   'libarchive' 'qt5-base' "ffmpeg>=5"
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
-  'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'wayland-protocols'
+  'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 # For Manjaro user this feature is disabled
@@ -56,6 +56,7 @@ makedepends=(
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
   'lirc' 'libgoom2' 'projectm' 'chromaprint'
   'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
+  'wayland-protocols'
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 # For Manjaro user this feature is disabled
@@ -176,13 +177,11 @@ options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
         'vlc-live-media-2021.patch'
-        'dav1d_v1.patch' # https://code.videolan.org/videolan/vlc/-/commit/2202c892c8dc1381b596c53c2ebd3ca680061f95
-        'dav1d_v1_limit.patch') # https://code.videolan.org/videolan/vlc/-/commit/d38ddd7270ffaea705981b6a48086778850d3c96
-sha512sums=('dac14c6586603c064294672eb878253e52b3a7bef431fb10303345e5400591b5c1f2d452a2af03f503db0ca186582a84be06fdf05ab011c33f7b0bd5389c51fb'
+        'libplacebo-5.patch')
+sha512sums=('6fc8fdaa7e8862ad7133d69b3dab99ab9cd3945846a6ce5e2379b7f68ee9accd385c53b8573fc7c82f732c24678b4932b1154d2ad8accf06305f2f578d6fcd8e'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc'
-            '5f7aa43a7b248812758a8ef82d15d59fb566327fc3e837002a8f4741cabde09ed7caca905f6fe168554b9a4b7561816b3eff877f4dd6664ceaf0964281facb4f'
-            '4aca4979fe7516ee9d39ae8e2c91c0f981a033ed5c6a74eaf86569df8bbcf72ab0be037f27c8af78f26c23dc181e52bbf4a3e0209e07160fdb03e8fa33e6bc38')
+            '322461cb5e89e4828483dd0a5c6595f99e767885ae9a1aa2e4d0514ac7354f2ee93b3e5c80993dcff7cd218d7af210374724337b3fc8bc196d35ef5e2b41695d'
+            'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b')
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 source+=(
@@ -209,9 +208,9 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  # Fix to build against libcaca 0.99.beta20
-  sed -i 's/cucul_/caca_/g' modules/video_output/caca.c
-  sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
+  # Fix to build against libcaca 0.99.beta20 (kept as comment)
+  #sed -i 's/cucul_/caca_/g' modules/video_output/caca.c
+  #sed -i 's/CUCUL_COLOR/CACA/g' modules/video_output/caca.c
 
   autoreconf -vf
 }
