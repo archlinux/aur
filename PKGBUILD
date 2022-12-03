@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-app-rainloop
 _name=rainloop
-pkgver=7.2.5
+pkgver=7.2.6
 pkgrel=1
 pkgdesc="RainLoop Webmail for nextcloud"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://apps.nextcloud.com/apps/rainloop"
 license=('AGPL')
 makedepends=('nextcloud' 'php' 'ripgrep' 'yq')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pierre-alain-b/rainloop-nextcloud/releases/download/$pkgver/rainloop.tar.gz")
-sha256sums=('0849c61fd69b117ed9a98c754caaedbf48cd4eb7dbcd753aabe00544063f5e71')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pierre-alain-b/rainloop-nextcloud/releases/download/$pkgver-deprecated/rainloop.tar.gz")
+sha256sums=('4d907d0d219840b13060c874f09245c8de1e062247fd887271c1cc204ccfb87e')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
@@ -85,5 +85,4 @@ package() {
 
   install -d ${pkgdir}/usr/share/webapps/nextcloud/apps
   cp -a ${srcdir}/rainloop ${pkgdir}/usr/share/webapps/nextcloud/apps/rainloop
-  chown -R http:http ${pkgdir}/usr/share/webapps/nextcloud/apps/rainloop
 }

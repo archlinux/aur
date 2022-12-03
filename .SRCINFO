@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-rainloop
 	pkgdesc = RainLoop Webmail for nextcloud
-	pkgver = 7.2.5
+	pkgver = 7.2.6
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/rainloop
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nextcloud-app-rainloop
 	makedepends = ripgrep
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-rainloop-7.2.5.tar.gz::https://github.com/pierre-alain-b/rainloop-nextcloud/releases/download/7.2.5/rainloop.tar.gz
-	sha256sums = 0849c61fd69b117ed9a98c754caaedbf48cd4eb7dbcd753aabe00544063f5e71
+	source = nextcloud-app-rainloop-7.2.6.tar.gz::https://github.com/pierre-alain-b/rainloop-nextcloud/releases/download/7.2.6-deprecated/rainloop.tar.gz
+	sha256sums = 4d907d0d219840b13060c874f09245c8de1e062247fd887271c1cc204ccfb87e
 
 pkgname = nextcloud-app-rainloop
 	depends = nextcloud>=
