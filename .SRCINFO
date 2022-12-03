@@ -1,6 +1,6 @@
 pkgbase = freecad-linkstage3-bin
 	pkgdesc = A general purpose 3D CAD modeler - Daily build of LinkDaily branch
-	pkgver = 2022.11.27.edge.r0.gd45d221edc
+	pkgver = 2022.11.27.edge.r2.g2a70519457
 	pkgrel = 1
 	url = http://www.freecadweb.org/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = freecad-linkstage3-bin
 	depends = pyside2-tools
 	depends = shiboken2
 	conflicts = freecad
-	source = freecad-linkstage3-bin-2022.11.27.edge.r0.gd45d221edc.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/2022.11.27.edge.r0.gd45d221edc/freecad-linkstage3-git-2022.11.27.edge.r0.gd45d221edc-1-x86_64.pkg.tar.zst
-	sha1sums = 5d833e1d113e34ebcebde5bab8e63c7ca457eb04
+	source = freecad-linkstage3-bin-2022.11.27.edge.r2.g2a70519457.tar.zst::https://github.com/Bonnee/freecad-build-arch/releases/download/2022.11.27.edge.r2.g2a70519457/freecad-linkstage3-git-2022.11.27.edge.r2.g2a70519457-1-x86_64.pkg.tar.zst
+	sha1sums = c8eae628f21fcfeb1c4779f6d0dbad7f5d37e4d1
 
 pkgname = freecad-linkstage3-bin
