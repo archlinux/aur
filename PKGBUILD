@@ -152,7 +152,7 @@ prepare() {
   # Author: Michel Dänzer <mdaenzer@redhat.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1880
   # Type: 1
-  # Status: 2 & 3
+  # Status: 4
   # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
   #          Fixes: #1162
   pick_mr '1880' 'mr1880.patch' 'patch'
