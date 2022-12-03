@@ -5,8 +5,8 @@
 
 _pkgname=cleo
 pkgname=python-cleo-v0
-pkgver=2.0.1
-pkgrel=1
+pkgver=0.8.1
+pkgrel=4
 pkgdesc="create beautiful and testable command-line interfaces"
 arch=('any')
 url="https://github.com/sdispater/${_pkgname}"
@@ -16,8 +16,8 @@ makedepends=('python-pyproject2setuppy')
 checkdepends=('python-pytest' 'python-pytest-mock')
 provides=("python-cleo=$pkgver")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cb9b60c9559d26a289b0536b134f9efe1b59632f51dc38b20c8a9076b99e0f07')
-b2sums=('dcaeff38c2dcb13b3c11200aa97cb2a1c16004558aabf9b44f1ba7ddd5d9c8c7784ea0ba1c50c19b015a6ff0659cb116b8ee926670091e39fd2b1cfd426cb72a')
+sha256sums=('3ff6fe33d9e440dba4d9b0947e65ebebf95671d18d89b67bed1e1a09d2266bc1')
+b2sums=('57971f6254a31ecf5101d89e96607b5915ab5138d727279d445172b89a10acd6b76619d344973fa2bdbc320866fa1dbdf05c889f4eca879839fa6bcbbad0af7c')
 
 prepare() {
 	cd ${_pkgname}-${pkgver}
