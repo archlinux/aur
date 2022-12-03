@@ -14,13 +14,6 @@ source=(
 )
 sha256sums=('1ee97610bc2768357c4c344c0d7a058ac95edf51804c391fdcf7644762bd413b'
             'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83')
-sha256sums_armv6h=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
-sha256sums_armv7h=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
-sha256sums_aarch64=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
-
-source_armv6h=(bass_fx24-linux-armv6h.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
-source_armv7h=(bass_fx24-linux-armv7h.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
-source_aarch64=(bass_fx24-linux-aarch64.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
 
 build () {
     unzip -q bass_fx24-linux.zip -d "$srcdir/$pkgname-$pkgver"
@@ -44,10 +37,10 @@ package () {
         install -D -m755 libs/x86_64/libbass_fx.so "$pkgdir/usr/lib/libbass_fx.so"
     ;;
     armv6h|armv7h)
-        install -D -m755 $CARCH/hardfp/libbass_fx.so "$pkgdir/usr/lib/libbass_fx.so"
+        install -D -m755 libs/armhf/libbass_fx.so "$pkgdir/usr/lib/libbass_fx.so"
     ;;
     aarch64)
-        install -D -m755 $CARCH/aarch64/libbass_fx.so "$pkgdir/usr/lib/libbass_fx.so"
+        install -D -m755 libs/aarch64/libbass_fx.so "$pkgdir/usr/lib/libbass_fx.so"
     ;;
     esac
     
