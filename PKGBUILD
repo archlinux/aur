@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.4.3
+pkgver=2.5.0
 pkgrel=1
 _electronversion=20
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
@@ -19,9 +19,9 @@ source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         electron-is-dev-env.patch
         chromium-launcher-electron-app.patch)
-sha256sums=('b6590fd99776c2f6d890266ee177d1d90f8a127eaa47b9aec41fc00c4194bc9a'
+sha256sums=('7c03b9b4504d432ad342746593c106ae064c69ee6f56254aa2ffb00e68f71ef8'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'f1ae11ddec00a31ee4e377bd83ee13c0cbf8ed1a96835aa0ffd51a61a2671822'
+            'ad612b0908bb4d69115dbdc64a1cbf16d8cc7a0c16757a031e3b64ec50435208'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5')
 
 prepare() {
@@ -63,10 +63,13 @@ package() {
   _reversed_domain=com.heroicgameslauncher.hgl
 
   install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-*}/resources/"
-  cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-*}/resources/"
-  rm "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/linux/"{gogdl,legendary}
+  cp -rup dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-*}/resources/"
+  cp -rup build "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/"
+  rm -rf "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/"{linux/{gogdl,legendary},darwin,win32}
   ln -s /usr/bin/{gogdl,legendary} \
     "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/build/bin/linux/"
+  ln -s build \
+    "$pkgdir/usr/lib/${pkgname%-*}/resources/app.asar.unpacked/public"
 
   install -Dm644 "flatpak/$_reversed_domain.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "flatpak/$_reversed_domain.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"

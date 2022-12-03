@@ -1,12 +1,29 @@
---- a/electron/main.ts
-+++ b/electron/main.ts
-@@ -177,7 +177,8 @@ async function createWindow(): Promise<B
-     handleExit(mainWindow)
-   })
+--- a/src/backend/main.ts
++++ b/src/backend/main.ts
+@@ -245,18 +245,17 @@ async function createWindow(): Promise<B
+     detectVCRedist(mainWindow)
+   }
  
 -  if (!app.isPackaged) {
-+  const isDevEnvSet = (process.env?.ELECTRON_IS_DEV ?? '0') === '1'
-+  if (isDevEnvSet && !app.isPackaged) {
-     /* eslint-disable @typescript-eslint/ban-ts-comment */
-     //@ts-ignore
-     import('electron-devtools-installer').then((devtools) => {
+-    if (!process.env.HEROIC_NO_REACT_DEVTOOLS) {
+-      import('electron-devtools-installer').then((devtools) => {
+-        const { default: installExtension, REACT_DEVELOPER_TOOLS } = devtools
++  const noDevTools = (process.env?.HEROIC_NO_REACT_DEVTOOLS ?? '1') === '1'
++  if (!app.isPackaged && !noDevTools) {
++    import('electron-devtools-installer').then((devtools) => {
++      const { default: installExtension, REACT_DEVELOPER_TOOLS } = devtools
+ 
+-        installExtension(REACT_DEVELOPER_TOOLS).catch((err: string) => {
+-          logWarning(['An error occurred: ', err], {
+-            prefix: LogPrefix.Backend
+-          })
++      installExtension(REACT_DEVELOPER_TOOLS).catch((err: string) => {
++        logWarning(['An error occurred: ', err], {
++          prefix: LogPrefix.Backend
+         })
+       })
+-    }
++    })
+     mainWindow.loadURL('http://localhost:5173')
+     // Open the DevTools.
+     mainWindow.webContents.openDevTools()
