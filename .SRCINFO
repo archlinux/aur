@@ -1,6 +1,6 @@
 pkgbase = openflap
 	pkgdesc = A game about bouncing balls through holes
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/jazztickets/openflap
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = openflap
 	depends = sdl2_image
 	depends = sdl2_ttf
 	depends = sdl2_mixer
-	source = https://gitlab.com/jazztickets/uploads/-/raw/main/openflap-1.0.5r72-src.tar.gz
-	sha256sums = 9f01afda6b1da4d1c90f0e41711cadbf4181459e217c985e6c108162fe13b199
+	source = https://gitlab.com/jazztickets/uploads/-/raw/main/openflap-1.0.6r76-src.tar.gz
+	sha256sums = de41910d764659bac967316a93af7ac0d411fd645f181c21e3b405b8b5a554a8
 
 pkgname = openflap
