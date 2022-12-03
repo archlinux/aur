@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=idevicegui
+Comment=A simple GUI for libimobiledevice
+Icon=idevicegui
+Exec=idevicegui
+Terminal=false
+Categories=Qt;Utility;
+SingleMainWindow=true
+StartupWMClass=idevicegui
+StartupNotify=true

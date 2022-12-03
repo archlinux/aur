@@ -1,0 +1,19 @@
+pkgbase = idevicegui
+	pkgdesc = A simple GUI for libimobiledevice
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Helltar/idevicegui
+	arch = x86_64
+	license = GPL3
+	depends = ifuse
+	depends = qt5pas
+	source = idevicegui-1.1.0.tar.gz::https://github.com/Helltar/idevicegui/releases/download/v1.1.0/idevicegui-1.1.0.tar.gz
+	source = idevicegui.desktop
+	source = idevicegui.128.png
+	source = idevicegui.512.png
+	sha256sums = 7167b90a4434dd2fefbb531feaef5a4f49ec9f8b9a51c1079f6011a7eff44fd5
+	sha256sums = fe9323c3927bbaf6eeb543c3063fabf054ead5011f97d9a3a10d0f247ab49762
+	sha256sums = 15cf328787e4a6a0bf86c87cfa017023bac67fc0bfd6d02942d0ac674c2d00ec
+	sha256sums = 4cb880cb022f45ffc5b93a6cf30077783aa2e7e55902770bcb586285eef8e44d
+
+pkgname = idevicegui
