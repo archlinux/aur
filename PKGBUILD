@@ -3,7 +3,7 @@
 # https://git.sr.ht/~nytpu/PKGBUILDs/
 
 pkgname=spark2014-git
-pkgver=0.3.draft.r22985.g5631f0e48f
+pkgver=0.3.draft.r23009.gcf9fcdf75f
 pkgrel=1
 pkgdesc='Formally defined programming language based on Ada (GNAT FSF version)'
 url='https://www.spark-2014.org'
