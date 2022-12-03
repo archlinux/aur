@@ -11,22 +11,19 @@ depends=('dotnet-runtime')
 provides=(Ryujinx)
 conflicts=(Ryujinx)
 options=('!strip')
-source=(
-	"${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
-	'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx.desktop'
-	'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-logo.svg'
-	'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-mime.xml'
-)
-sha512sums=(	
-	'b22d09ad358c9a11b0ced8a681c90f85b97562aa3072204526dc3e151747d3663b1998a51f5748157c92b337ec23f3646564fda99d3b6c76c7861f16189a9aa5'
-	'2d7b57eb966d686abb20dcb4fcd8e1e26ad4a8f83f42b650ff8b8c86c179efa53b62422aa4bc5825f0358cc6e247707bab61537742ef17e8868213a126dbf1d3'
-	'8e2d6d29df63ced7439dcd7b05f4314c4e07e1d2b2298aedbaf2f0accb3c7acd543a6810c44d1301a049d43865447a82a61d459976bb483ed52ea51e34ee27c3'
-	'438278d51df2c0219bcf58fce35176d8f904f53c2aa0bd01298c0d3c901c829964113cc4af192f13b26eff8b57728b5f16d6a300a92e072345a7c17684872559'
-)
+source=("${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx.desktop'
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-logo.svg'
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-mime.xml')
+
+b2sums=('32ca1c764fcc48b8599c714814ca38b2043b4bb947cf92291f3a4a2449f381f4d5b916b67c86b3ba6ed4b0931e0739af076cb81bc2db481e30d729c2c0be8a1f'
+        '56f1f5ce656d9b9c14ec79effe4c6498ddf26c325770d8463a1b0819fce00e6bbb005b8625c616c48d03551265fb6ce3ee94be79c187fcddcf9aeed99cffcbd5'
+        'f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996'
+        '8ad90ddda6b76e6661cd0c9c38f19906aa09b6f4ff1f9b21f739b490590001068bee4f3f985f41e67fd2092f6b361bb8a422702b4820915d2eec6233341d99b3')
 
 prepare() {
 	# avoid crash due to stack smashing detection (https://github.com/Ryujinx/Ryujinx/issues/3183#issuecomment-1292808614)
-	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' 'ryujinx.desktop'
+	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' "${srcdir}/ryujinx.desktop"
 }
 
 package() {
