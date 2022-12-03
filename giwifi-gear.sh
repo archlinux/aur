@@ -101,7 +101,7 @@ MOBILE_APP_VERSION='2.4.1.4'
 #############################################
 
 AWK_TOOL='awk' # it will be upgrade to gawk, when you have gawk...
-VERSION='1.2.6'
+VERSION='1.3.2'
 
 #############################################
 ## Network Util
@@ -431,19 +431,6 @@ gw_desktop_rebindmac() {
 # 	printf '%s' "$(curl_by_nic -s "http://"$GW_GTW"/getApp.htm?action=logout")"
 #
 
-# gw_mobile_get_user() {
-# 	# gw_phone_get_user <gw_mobile_app_login_data>
-
-# 	printf '%s' "$(
-# 		curl $CURL_OPT -s \
-# 		-A "$AUTH_UA" \
-# 		-X POST \
-# 		-d "$1" \
-# 		'http://login.gwifi.com.cn:8080/wocloud_v2/appUser/getUser.bin'
-# 	)"
-
-# }
-
 # gw_mobile_login() {
 #     # gw_phone_app_login <gw_mobile_app_login_data>
 
@@ -485,6 +472,19 @@ gw_mobile_rebindmac() {
 			-X POST \
 			-d "$1" \
 			'http://login.gwifi.com.cn:8080/wocloud_v2/appUser/reBindMac.bin'
+	)"
+
+}
+
+gw_mobile_get_user() {
+	# gw_phone_get_user <gw_mobile_app_login_data>
+
+	printf '%s' "$(
+		curl $CURL_OPT -s \
+		-A "$AUTH_UA" \
+		-X POST \
+		-d "$1" \
+		'http://login.gwifi.com.cn:8080/wocloud_v2/appUser/getUser.bin'
 	)"
 
 }
@@ -926,7 +926,7 @@ mobile_get_token() {
 		echo "--> $MOBILE_LOGIN_RTE" &&
 		echo ''
 
-	if [ $MOBILE_LOGIN_RTE_CODE ]; then
+	if [ ! "$MOBILE_LOGIN_RTE_CODE" = '0' ]; then
 		logcat "$MOBILE_LOGIN_RTE_MSG" 'E'
 		if [ "$MOBILE_LOGIN_RTE_CODE" = '43' ]; then
 			printf '%s' 'Are you sure to rebind your device? [Y/n] '
@@ -973,6 +973,67 @@ mobile_get_token() {
 		AUTH_TOKEN=''
 		AUTH_INFO=''
 	}
+
+}
+
+get_user_info() {
+	MOBILE_GET_USER_DATA="$(
+		printf '{"data":"{\\"staticPassword\\":\\"%s\\",\\"phone\\":\\"%s\\"}","version":"%s","mac":"%s","gatewayId":"%s","token":"%s"}' \
+		"$(get_encrypt "$GW_PWD")" \
+		"$(get_encrypt "$GW_USER")" \
+		"$MOBILE_APP_VERSION" \
+		"$(get_encrypt "$CLIENT_MAC")" \
+		"$(get_encrypt "$GW_ID")" \
+		"$(get_encrypt '')"
+	)"
+
+	[ $ISLOG ] && echo "" &&
+	echo "MOBILE_GET_USER_DATA:" &&
+	echo "--> $MOBILE_GET_USER_DATA" &&
+	echo ''
+
+	MOBILE_GET_USER_RTE="$(printf "$(printf "$(gw_mobile_get_user $MOBILE_GET_USER_DATA)")" | sed "s@\\\\@@g")"
+	MOBILE_GET_USER_RTE_CODE="$(str_str "$MOBILE_GET_USER_RTE" '"resultCode":' ',')"
+	MOBILE_GET_USER_RTE_MSG="$(str_str "$(printf $MOBILE_GET_USER_RTE)" '"resultMsg":"' '",')"
+	MOBILE_GET_USER_RTE_DATA="$(get_json_value "$MOBILE_GET_USER_RTE" 'data')"
+
+	[ $ISLOG ] && echo "" &&
+		echo "MOBILE_GET_USER_RTE:" &&
+		echo "--> $MOBILE_GET_USER_RTE" &&
+		echo ''	
+
+	HOTSPOT_GROUP_RTE=$(gw_get_hotspot_group)
+	HOTSPOT_GROUP_RTE_DATA=$(get_json_value "$HOTSPOT_GROUP_RTE" 'data')
+
+	[ $ISLOG ] && echo "" &&
+		echo "HOTSPOT_GROUP_RTE:" &&
+		echo "--> $HOTSPOT_GROUP_RTE" &&
+		echo ''
+
+	if [ ! "$MOBILE_GET_USER_RTE_CODE" = '0' ]; then
+		logcat "$MOBILE_GET_USER_RTE_MSG" 'E'
+		exit 1
+	fi
+
+	echo "\
+--------------------------------------------
+User:             $GW_USER
+UID:              $(str_str "$(printf "$MOBILE_GET_USER_RTE_DATA")" '"uid":' ',')
+User Type:        $(str_str "$(printf "$MOBILE_GET_USER_RTE_DATA")" '"userType":' ',')
+User Level:       $(str_str "$(printf "$MOBILE_GET_USER_RTE_DATA")" '"user_level":' ',') ($(str_str "$(printf "$MOBILE_GET_USER_RTE_DATA")" '"user_level_name":"' '",'))
+Remain Time:      $(str_str "$(printf "$MOBILE_GET_USER_RTE_DATA")" '"remain_time":"' '",')
+Group ID:         $(get_json_value "$(printf "$HOTSPOT_GROUP_RTE_DATA")" 'hotspot_group_id')
+Group Name:       $(get_json_value "$(printf "$HOTSPOT_GROUP_RTE_DATA")" 'hotspot_group_name')
+Group Type:       $(get_json_value "$(printf "$HOTSPOT_GROUP_RTE_DATA")" 'hotspot_group_type')
+SSID:             $GW_ID
+GateWay:          $GW_GTW
+Interface:        $([ "$ACCESS_TYPE" = '1' ] && echo 'wireless' || echo 'ethernet')
+IP:               $CLIENT_IP
+MAC:              $CLIENT_MAC
+Station SN:       $STATION_SN
+Logged:           $([ "$AUTH_STATE" = '2' ] && echo 'yes' || echo 'no')
+--------------------------------------------\
+"
 
 }
 
@@ -1053,10 +1114,11 @@ optional arguments:
   -T <TOKEN>            set the token (need to use -t token)
   -b                    bind or rebind your device
   -q                    sign out of account authentication
+  -I                    show more user info and host group info
   -d                    running in the daemon mode (remove sharing restrictions)
   -l                    print the log info
   -v                    show the tool version and exit
-(c) 2021 icepie.dev@gmail.com\
+(c) 2020-2022 icepie.dev@gmail.com\
 "
 }
 
@@ -1194,6 +1256,17 @@ main() {
 	while get_auth_state; do
 		break
 	done
+
+	# get user info
+	if [ "$ISUSERINFO" ]; then
+		[ ! "$GW_USER" ] && {
+			printf '%s' "Plz enter username: "
+			read GW_USER
+		}
+
+		get_user_info
+		exit 0
+	fi
 
 	if [ "$AUTH_STATE" = '2' ]; then
 		logcat "Good! You are already authed!"
@@ -1402,7 +1475,7 @@ Logged:           $([ "$AUTH_STATE" = '2' ] && echo 'yes' || echo 'no')
 	init
 
 	# paser the opts
-	while getopts "g:u:p:t:T:i:e:qbdlvh" option; do
+	while getopts "g:u:p:t:T:i:e:qIbdlvh" option; do
 		case "$option" in
 		g)
 			GW_GTW="$OPTARG"
@@ -1425,6 +1498,9 @@ Logged:           $([ "$AUTH_STATE" = '2' ] && echo 'yes' || echo 'no')
 			;;
 		e)
 			[ "$EXTRA_IFACE_LIST" ] && EXTRA_IFACE_LIST="${EXTRA_IFACE_LIST} $OPTARG" || EXTRA_IFACE_LIST="$OPTARG"
+			;;
+		I)
+			ISUSERINFO=1
 			;;
 		q)
 			ISQUIT=1
