@@ -1,0 +1,13 @@
+pkgbase = lfs-test-server-git
+	pkgdesc = Standalone Git LFS server
+	pkgver = v0.4.0.r35.g24ca93f
+	pkgrel = 1
+	url = https://github.com/github/lfs-test-server
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/github/lfs-test-server
+	md5sums = SKIP
+
+pkgname = lfs-test-server-git
