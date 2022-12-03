@@ -4,7 +4,7 @@
 
 pkgname=clonehero
 pkgver=1.0.0.4080
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone of Guitar Hero and Rockband-style games"
 arch=('x86_64')
 url="https://clonehero.net/"
@@ -29,7 +29,7 @@ package() {
     find "$pkgdir/opt/$pkgname" -type d -exec chmod 755 {} +
     find "$pkgdir/opt/$pkgname" -type f -exec chmod 644 {} +
     chmod +x "$pkgdir/opt/$pkgname/$pkgname"
-    ln -s -f "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -s -f "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Install script, .desktop launcher with icon
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"

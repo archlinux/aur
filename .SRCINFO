@@ -1,7 +1,7 @@
 pkgbase = clonehero
 	pkgdesc = Clone of Guitar Hero and Rockband-style games
 	pkgver = 1.0.0.4080
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clonehero.net/
 	install = clonehero.install
 	arch = x86_64
