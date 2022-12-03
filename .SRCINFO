@@ -1,0 +1,16 @@
+pkgbase = whatsapp-nativefier-autostart-tray-hook
+	pkgdesc = Pacman hook to enable autostart and start in tray whatsapp-nativefier
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = whatsapp-nativefier
+	conflicts = whatsapp-nativefier-notray-hook
+	source = whatsapp-nativefier-autostart-tray.hook
+	source = whatsapp-nativefier-autostart-tray
+	source = whatsapp-nativefier.desktop
+	sha256sums = 6c92da644a32fba9d7a5a2a82d8ac8a33e130ad4497b784e056026e733e2d762
+	sha256sums = 9a9ae3cc6ec17e81d761a7397b17860a558f72e8802c62fe113f60bf05975732
+	sha256sums = bad0489ae519bc78afab3d226966691feede8bcedf58025af1b171215ae51423
+
+pkgname = whatsapp-nativefier-autostart-tray-hook

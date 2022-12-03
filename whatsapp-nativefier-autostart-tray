@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -i -E 's/"tray":"true"|"tray" : "true"/"tray":"start-in-tray"/g' /opt/whatsapp-nativefier/resources/app/nativefier.json

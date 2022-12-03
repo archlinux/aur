@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier-autostart-tray-hook
+
+
+[Action]
+Description = Enabling start in tray for whatsapp-nativefier...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/whatsapp-nativefier-autostart-tray
