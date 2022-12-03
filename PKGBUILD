@@ -2,7 +2,7 @@
 
 pkgname=plainotepad
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plain text editor with minimalistic design"
 arch=('x86_64')
 url="https://github.com/Helltar/plainotepad"
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver-arch.tar.gz::$url/releases/download/$pkgver/$pkgname-$
         "$pkgname.512.png"
         "$pkgname.svg")
 
-sha256sums=('8663d48427699b48929b2e3d9533e61b4e70d5ee5d1fcfe8ca1e4291c716ff88'
+sha256sums=('3d1499bcefe56d07bf4cf44fa325d14adf4ea9209c4c72fdb4f1fb1f3b2da2f7'
             'c928a899615f36c4f42c225418b748a172598bcfeab02261075250cbae64c64a'
             '7fc0d607ff1308c463390b9b1a98d679bb72ea565b706b8523709c0c42bf1034'
             '085281144a79ec2526d96f1bd9a5841bb0d472f9e7f8f3ccd240bac73aee203e'
