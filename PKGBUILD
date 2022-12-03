@@ -3,8 +3,8 @@
 
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=4.4.5.10
-pkgrel=2
+pkgver=4.5.0.10
+pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _repo="qBittorrent-Enhanced-Edition"
@@ -23,8 +23,8 @@ source=(
 )
 
 sha256sums=(
-    'f81c5a7d90c1f9357d95e4189f81cfa515955a38855b1ea0e949334f02b5e9bb'
-    'e8f69fca45a230e6c704eb5ef1ae6bae3500879f86e2ed06931053966e11fccf'
+    '8126a54815bd9b323c9fdfb775cceed5911ed660078d83227d2f31de0983b6a0'
+    'f39dcbcd65216310e99d6006aa43e479b8cbf7028e173ac602d643651d19c7f1'
 )
 
 USE_QT6="${USE_QT6:-ON}"
@@ -40,13 +40,11 @@ else
 fi
 
 prepare() {
-    cd "${srcdir}/${_snapshot}"
+    cd "${_snapshot}"
     patch -p0 -Z -i "${srcdir}/${source[1]}"
 }
 
 build() {
-    cd "${srcdir}"
-
     cmake -B "build" "${_snapshot}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -69,7 +67,6 @@ package_qbittorrent-enhanced-ua() {
     provides=('qbittorrent')
     conflicts=('qbittorrent')
 
-    cd "${srcdir}"
     DESTDIR="${pkgdir}" cmake --install "build"
 
     cd "${_snapshot}"
@@ -80,7 +77,6 @@ package_qbittorrent-enhanced-ua-nox() {
     provides=('qbittorrent-nox')
     conflicts=('qbittorrent-nox')
 
-    cd "${srcdir}"
     DESTDIR="${pkgdir}" cmake --install "build-nox"
 
     cd "${_snapshot}"

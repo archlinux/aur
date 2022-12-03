@@ -1,8 +1,8 @@
---- src/base/bittorrent/session.cpp
-+++ src/base/bittorrent/session.cpp 0
-@@ -119 +119 @@
--    const char USER_AGENT[] = "qBittorrent Enhanced/" QBT_VERSION_2;
-+    const char USER_AGENT[] = "qBittorrent/" QBT_VERSION_2;
+--- src/base/bittorrent/sessionimpl.cpp
++++ src/base/bittorrent/sessionimpl.cpp 0
+@@ -125 +125 @@
+-    const auto USER_AGENT = QStringLiteral("qBittorrent Enhanced/" QBT_VERSION_2);
++    const auto USER_AGENT = QStringLiteral("qBittorrent/" QBT_VERSION_2);
 
 --- src/base/version.h.in
 +++ src/base/version.h.in 0

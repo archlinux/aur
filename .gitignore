@@ -1,5 +1,5 @@
-pkg/
-src/
-*.pkg.tar.*
-*.tar.gz
-*.tar.gz.*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!revert-ua.patch
