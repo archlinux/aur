@@ -1,0 +1,23 @@
+pkgbase = agg-2.6-git
+	pkgdesc = High Quality Rendering Engine for C++
+	pkgver = 2.6
+	pkgrel = 1
+	url = https://github.com/ghaerr/agg-2.6
+	arch = x86_64
+	license = BSD
+	license = custom:Anti-Grain Geometry Public License
+	makedepends = git
+	depends = gcc-libs
+	depends = sdl
+	depends = freetype2
+	provides = agg
+	conflicts = agg
+	replaces = antigrain
+	source = git+https://github.com/ghaerr/agg-2.6.git
+	source = AGG-2.6-Anti-Grain-Geometry-Public-License.txt
+	source = AGG-2.6-Modified-BSD-License.txt
+	sha256sums = SKIP
+	sha256sums = 74449c3b7082b77d63a23aba1c17ecc85c9dd292b3c6254f636746915d2c27b8
+	sha256sums = 308c93912836bb56fdd52c308bec06a5d3fe2b05947e35a89bab0bb52ce03d91
+
+pkgname = agg-2.6-git
