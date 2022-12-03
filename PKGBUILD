@@ -2,7 +2,7 @@
 pkgname=matrix-wechat-git
 _pkgname=matrix-wechat
 pkgver=0.1.0.r2.g9abc502
-pkgrel=4
+pkgrel=5
 pkgdesc=' A Matrix-WeChat puppeting bridge'
 arch=('x86_64')
 url="https://github.com/duo/matrix-wechat"
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    '08582c42906f1c9a5d48b958f685af4837b1f7b455320f9a6c8ca319730296d2'
+    '70da71169fc284e4c0875dc5d0af9c15fd1aa0ba00f89a74f0c7b35d8696a381'
 )
 
 pkgver() {
