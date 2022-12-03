@@ -2,14 +2,20 @@
 pkgname=matrix-wechat-git
 _pkgname=matrix-wechat
 pkgver=0.1.0.r2.g9abc502
-pkgrel=2
+pkgrel=3
 pkgdesc=' A Matrix-WeChat puppeting bridge'
 arch=('x86_64')
 url="https://github.com/duo/matrix-wechat"
 license=('AGPL3')
 makedepends=('go' 'git' 'libolm')
-source=("git+https://github.com/duo/matrix-wechat.git")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/duo/matrix-wechat.git"
+    "${_pkgname}.service"
+)
+sha256sums=(
+    'SKIP'
+    '08582c42906f1c9a5d48b958f685af4837b1f7b455320f9a6c8ca319730296d2'
+)
 
 pkgver() {
   cd "$_pkgname"

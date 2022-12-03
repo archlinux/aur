@@ -1,7 +1,7 @@
 pkgbase = matrix-wechat-git
 	pkgdesc = A Matrix-WeChat puppeting bridge
 	pkgver = 0.1.0.r2.g9abc502
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/duo/matrix-wechat
 	arch = x86_64
 	license = AGPL3
@@ -9,6 +9,8 @@ pkgbase = matrix-wechat-git
 	makedepends = git
 	makedepends = libolm
 	source = git+https://github.com/duo/matrix-wechat.git
+	source = matrix-wechat.service
 	sha256sums = SKIP
+	sha256sums = 08582c42906f1c9a5d48b958f685af4837b1f7b455320f9a6c8ca319730296d2
 
 pkgname = matrix-wechat-git
