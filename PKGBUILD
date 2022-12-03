@@ -5,7 +5,7 @@ _namespace="tallero"
 _pkgbase="soundscope-player"
 _pkgname="${_pkgbase}"
 pkgname="${_pkgbase}-git"
-pkgver=1.0+21+g96eea12
+pkgver=1.0+4+gcea7bbf
 pkgrel=1
 pkgdesc="SoundScope PlayStation media player."
 arch=('any')
@@ -14,6 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('duckstation'
          'ffmpeg'
+         'mkaudiocdrimg'
          'shntool'
          'psx-bios'
          'python-appdirs'

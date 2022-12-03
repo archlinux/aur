@@ -1,6 +1,6 @@
 pkgbase = soundscope-player-git
 	pkgdesc = SoundScope PlayStation media player.
-	pkgver = 1.0+21+g96eea12
+	pkgver = 1.0+4+gcea7bbf
 	pkgrel = 1
 	url = https://github.com/tallero/soundscope-player
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = soundscope-player-git
 	makedepends = python-setuptools
 	depends = duckstation
 	depends = ffmpeg
+	depends = mkaudiocdrimg
 	depends = shntool
 	depends = psx-bios
 	depends = python-appdirs
