@@ -1,19 +1,19 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Evangelos Paterakis <evan@geopjr.dev>
 
-pkgbase=collision
-pkgname=(collision collision-nautilus-extension)
+pkgname=collision
+#pkgbase=collision
+#pkgname=(collision collision-nautilus-extension)
 _app_id=dev.geopjr.Collision
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/GeopJr/Collision"
 license=('BSD2')
 depends=('libadwaita' 'libyaml')
 makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
-optdepends=('libnautilus-extension: Extension interface for Nautilus'
-	'collision-nautilus-extension: GNOME Files extension that adds a (Check Hashes) context menu item')
+optdepends=('libnautilus-extension: Extension interface for Nautilus')
 conflicts=("$pkgname-hashes" "hashbrown")
 replaces=("$pkgname-hashes" "hashbrown")
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz"
@@ -39,7 +39,7 @@ check() {
   make test || :
 }
 
-package_collision() {
+package() {
 	cd "$_source-$pkgver"
 	make PREFIX="$pkgdir/usr" install
 	
@@ -48,11 +48,10 @@ package_collision() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_collision-nautilus-extension() {
-	pkgdesc="GNOME Files extension that adds a (Check Hashes) context menu item"
-
-	cd "$_source-$pkgver"
-	
-	mkdir -p "$pkgdir/usr/share/nautilus-python/extensions/"
-	install -Dm644 nautilus-extension/collision-extension.py "$pkgdir/share/nautilus-python/extensions/"
-}
+#package_collision-nautilus-extension() {
+#	pkgdesc="GNOME Files extension that adds a (Check Hashes) context menu item"
+#
+#	cd "$_source-$pkgver"
+#	
+#	install -Dm644 nautilus-extension/collision-extension.py "$pkgdir/usr/share/nautilus-python/extensions/collision-extension.py"
+#}
