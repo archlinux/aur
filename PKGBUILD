@@ -1,17 +1,18 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xrdesktop
-pkgver=0.15.2
-pkgrel=3
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="Library for XR interaction with classical desktop compositors"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/xrdesktop"
 license=('MIT')
-depends=('glibc' 'glib2' 'gulkan' 'gxr')
-makedepends=('meson' 'glslang' 'gtk-doc' 'python-gobject' 'vulkan-headers')
+depends=('glibc' 'g3k')
+checkdepends=('glew')
+makedepends=('meson' 'gtk-doc' 'python-gobject')
 optdepends=('python')
 source=("https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/$pkgver/xrdesktop-$pkgver.tar.bz2")
-sha256sums=('4745f55298188a16e6411394bb55a691a251915c2857a6f594f9336721cc9e67')
+sha256sums=('0c661fbb454ff4c5559818b6ea9441c7288253ce29003e5f0f819ca2e916671c')
 
 
 build() {
