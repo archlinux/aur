@@ -1,4 +1,4 @@
-From bb3ecd98966e3ae28e0aab67b1cbb0b1c6e2a647 Mon Sep 17 00:00:00 2001
+From 77be0d9f3e1077031c51d65ac1eb576312a4b1a0 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -155,7 +155,7 @@ index 61f1305e..c33723bf 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 9e3ad0e7..2a3e3922 100644
+index 54e10223..bae9c0cf 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -1059,7 +1059,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
@@ -237,7 +237,7 @@ index 36eb7ce7..a41d2de2 100644
 2.38.1
 
 
-From dccf3a6535ad046fa687345e9a8eb7c2ca7d704a Mon Sep 17 00:00:00 2001
+From 4d5c621761a10d51a2c1e8d53010b8295fe97ef2 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -299,7 +299,7 @@ index a41d2de2..11d93419 100644
 2.38.1
 
 
-From 139cf264425255efa533d03f6a68724bd072e784 Mon Sep 17 00:00:00 2001
+From 99fda9a926a907f58a679797cc83708af77af48d Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -312,7 +312,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 2a3e3922..6510da33 100644
+index bae9c0cf..85f0fbcf 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -156,6 +156,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -434,7 +434,7 @@ index 11d93419..61857bfe 100644
 2.38.1
 
 
-From ff63a0ae2969788ae615e4f56f1b653bf106da6c Mon Sep 17 00:00:00 2001
+From 712e6f6229bd75415d48f5e383d6322a87f146b1 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -994,10 +994,10 @@ index 8ca75914..a27a354f 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index 8e6fa95a..98e7a8bc 100644
+index 4b88ee94..62067cd2 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2573,3 +2573,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
+@@ -2578,3 +2578,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
  
  #~ msgid "_Quit"
  #~ msgstr "_Beenden"
@@ -2525,10 +2525,10 @@ index 158f6cb1..a3494fb7 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index a5998996..ff19c5b9 100644
+index af7e13ed..b6ff94d7 100644
 --- a/po/sr.po
 +++ b/po/sr.po
-@@ -2776,10 +2776,9 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2780,10 +2780,9 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "GNOME Terminal Client"
  #~ msgstr "Клијент Гномовог терминала"
  
@@ -2542,7 +2542,7 @@ index a5998996..ff19c5b9 100644
  
  #~ msgid "Title for terminal"
  #~ msgstr "Наслов за терминал"
-@@ -2825,11 +2824,11 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2829,11 +2828,11 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Основна величина:"
  
@@ -2558,7 +2558,7 @@ index a5998996..ff19c5b9 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Наслов и наредба"
-@@ -2837,8 +2836,8 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2841,8 +2840,8 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Неограничено"
  
@@ -2569,7 +2569,7 @@ index a5998996..ff19c5b9 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Текући локалитет"
-@@ -2848,3 +2847,6 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
+@@ -2852,3 +2851,6 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  
  #~ msgid "Hidden"
  #~ msgstr "Скривен"
