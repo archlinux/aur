@@ -1,6 +1,6 @@
 # Maintainer: levinit <levinit@outlook.com>
 pkgname=gimp-plugin-export-layers
-pkgver=3.3.1
+pkgver=3.3.4
 pkgrel=1
 gimpver=2.0
 pkgdesc="GIMP plug-in that exports layers as separate images."
@@ -13,7 +13,7 @@ makedepends=('unzip')
 
 source=("https://github.com/khalim19/gimp-plugin-export-layers/releases/download/${pkgver}/export_layers-${pkgver}.zip")
 
-md5sums=('SKIP')
+md5sums=('c8b1c1b602850014cf47ee1202a3bba8')
 
 package() {
     install -Ddm755 $pkgdir/usr/lib/gimp/$gimpver/plug-ins
