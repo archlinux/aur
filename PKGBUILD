@@ -1,4 +1,4 @@
-# Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gdm-tools
 pkgver=1.1
 pkgrel=2
