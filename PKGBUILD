@@ -1,7 +1,7 @@
 # Maintainer: Kuba Ellwart <kuba@hop.io>
 
 pkgname=hop-cli
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ pkgdesc="Interact with Hop in your terminal"
 url="https://hop.io"
 license=('MPL-2.0')
 source=("hop_cli-$pkgver.tar.gz::https://github.com/hopinc/cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("7328211b03118bcca44b9f6e19a74da8d3a837e2ada3cabc4854b1c74089c96a")
+sha256sums=("1aca52128da041fb45f9758071aaf146bd6d036e944f54021839f94eabbfdc6c")
 
 prepare() {
   cd "$srcdir/cli-$pkgver"
