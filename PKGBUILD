@@ -2,7 +2,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=core-lightning-git
-pkgver=0.11.0.1.r11234.0ec947f69
+pkgver=22.11.r12229.d7cd3e1cb
 pkgrel=1
 pkgdesc='A lightweight, highly customizable and standard compliant implementation of the Lightning Network protocol.'
 arch=('i686' 'x86_64')
@@ -30,21 +30,6 @@ pkgver() {
 
 prepare() {
     cd lightning
-
-    git submodule init external/jsmn
-    git config submodule.daemon/jsmn.url "${srcdir}/jsmn"
-
-    git submodule init external/libbacktrace
-    git config submodule.external/libbacktrace.url "${srcdir}/libbacktrace"
-
-    git submodule init external/libsodium
-    git config submodule.libsodium.url "${srcdir}/libsodium"
-
-    git submodule init external/libwally-core
-    git config submodule.external/libwally-core.url "${srcdir}/libwally-core"
-
-    git submodule update
-
     sed -e 's/ -Werror//' -i configure
 }
 
