@@ -9,18 +9,21 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 
-### MERGE REQUESTS SELECTION
-
-# available MR: ()
+### PACKAGE OPTIONS
+## MERGE REQUESTS SELECTION
+# Merge Requests List: ()
 _merge_requests_to_use=()
 
-### IMPORTANT: Do no edit below this line unless you know what you're doing
+## Enable the `check()` operation (Disabled if not set)
+: "${_enable_check:=""}"
 
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=43.1+28+g9956f5ea5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -32,7 +35,9 @@ depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
          gnome-disk-utility libsoup3 libgweather-4)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
-checkdepends=(xorg-server-xvfb)
+if [ -n "$_enable_check" ]; then
+  checkdepends=(xorg-server-xvfb)
+fi
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration'
             'gst-plugins-good: Screen recording'
@@ -128,7 +133,10 @@ build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
 
-  arch-meson $_pkgname build -D gtk_doc=true
+  arch-meson $_pkgname build \
+    -D gtk_doc=true \
+    -D tests=$(if [ -n "$_enable_check" ]; then echo "true"; else echo "false"; fi)
+
   meson compile -C build
 }
 
@@ -139,10 +147,12 @@ _check() (
   meson test -C build --print-errorlogs
 )
 
-check() {
-  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
-    bash -c "$(declare -f _check); _check"
-}
+if [ -n "$_enable_check" ]; then
+  check() {
+    dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
+      bash -c "$(declare -f _check); _check"
+  }
+fi
 
 package() {
   depends+=(libmutter-11.so)
