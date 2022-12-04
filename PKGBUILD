@@ -1,6 +1,6 @@
 # Maintainer: Mistle <tehmistle [at] gmx.com>
 pkgname=vr2normal
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="C++ QT Program that converts virtual reality videos into normal videos for viewing on any screen"
 arch=('x86_64')
@@ -9,19 +9,12 @@ license=('GPL3')
 depends=('ffmpeg>=5.0' 'qt5-base>=5.15.0')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-"0001-Fix-Linux-packaging-with-correctly-set-target.path.patch"
 )
-sha256sums=('2eab584e87d0d533347f4c498d237b3b08b5c59b6ef16343801c54497db1fcd7'
-            'e0ae9e79fdf2140df22045b10ee7417eb18e7250151b02a3e819e96eff1edb5d')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -Np1 -i "$srcdir/0001-Fix-Linux-packaging-with-correctly-set-target.path.patch"
-}
+sha256sums=('2b28bf8d3d4b39b829a15b4fcc02af76cbe58bc34eb7307dafd7c5b47f78c7c3')
 
 build() {
 	cd "$pkgname-$pkgver"
-	PREFIX=/usr qmake-qt5
+	qmake-qt5 USR_DIR=/usr
 	make
 }
 
