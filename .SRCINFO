@@ -1,8 +1,8 @@
 pkgbase = bookxnotepro-bin
-	pkgdesc = Proprietary dictionary software for linux
+	pkgdesc = Electronic notebook
 	pkgver = 2.0.0.1086
-	pkgrel = 1
-	url = Electronic notebook
+	pkgrel = 2
+	url = http://www.bookxnote.com
 	arch = x86_64
 	license = unknown
 	makedepends = patchelf
