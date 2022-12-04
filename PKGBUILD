@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=slam
 _pkgver=0.1-50
 pkgname=r-${_pkgname,,}
 pkgver=0.1.50
-pkgrel=4
+pkgrel=10
 pkgdesc='Sparse Lightweight Arrays and Matrices'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

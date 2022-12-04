@@ -1,7 +1,7 @@
 pkgbase = r-slam
 	pkgdesc = Sparse Lightweight Arrays and Matrices
 	pkgver = 0.1.50
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=slam
 	arch = x86_64
 	license = GPL
