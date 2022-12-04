@@ -68,8 +68,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.10
-pkgrel=3
+pkgver=6.0.11
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -91,25 +91,25 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
-  0003-soundwire-intel-Initialize-clock-stop-timeout.patch
-  0004-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
-  0005-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
+  0002-soundwire-intel-Initialize-clock-stop-timeout.patch
+  0003-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
+  0004-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
+  0005-drm-i915-improve-the-catch-all-evict-to-handle-lock-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('39e57fcd84cd70bfa3e1a4185d3aa0ed7f1432f24c6548d16326b0c3c9541dd0'
+sha256sums=('2bae6131e64971e1e34ff395fa542971134c857bdb0b29069ab847c7c9a9c762'
             'SKIP'
-            '848ccd048f91b17f0e0192d2900c462986eeacf78bb578b2de9498c4a0526983'
+            'f66b82f4a99c99dedb128a027c7e23a70c2853984c44ecbd79d16bd76f1f5bac'
             '3a8f397b89bad95c46f42c0f80ede7536a4a45a28621e00ed486918a55f905ed'
             '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            '09d6205b2550143a3a7b2614f10610a00a7b3bbe26aadaa7c128d87f662e5f76'
-            'cade95b098bd1ccd14f1cf111e95572b61dc72099ebe767e75beca4ead12cc40'
-            '83553cf53bd06efc20a3f432562358c160f1517dad88694c2ff2389df5cc38f9'
-            '1a123dcf3c4b797eec0bac0ffe13ff015b95f21ca4ae40800e1a03f1d74c420a'
-            '9d855466dfb15f3e9a57db77c58ed57c59d0db0e677787653491ae44fc5d0f86')
+            '2f4d03a8bb21357f88d694b62fc3299944fa1738652dfe888ac0320d5d21f351'
+            '2fe671aab9f164a3841e75d837058f208ee781854e6c41e829ddde789bfdc4c2'
+            '671c3852d1adf7095cf82fdecf197c65df4d3003c917b56cee2fc9845cd06883'
+            '3d00e39c53c107c87925eaeade32fc7d78e916e588ab5d8e4dd84c33ae748a96'
+            '753576c6bc05bab969c5824fdb8dd8e6e1131d4c7f805dbaf5c529aafd2a1b6b')
 
 prepare() {
   cd linux-${pkgver}

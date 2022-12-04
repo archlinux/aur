@@ -1,7 +1,7 @@
-From 5ee238d09efc2243473b0eaa14496c18e1d1c924 Mon Sep 17 00:00:00 2001
+From fe7004128c90077116d07de74ee43ad1270ce3e7 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Sat, 8 Oct 2022 21:57:51 +0200
-Subject: [PATCH 3/6] soundwire: intel: Initialize clock stop timeout
+Subject: [PATCH 2/6] soundwire: intel: Initialize clock stop timeout
 
 The bus->clk_stop_timeout member is only initialized to a non-zero value
 during the codec driver probe. This can lead to corner cases where this

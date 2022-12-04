@@ -1,4 +1,4 @@
-From f763c5f50435a3eb7e9ebf2bdc98c6f42d76eb34 Mon Sep 17 00:00:00 2001
+From 400ac2ce023cd844f421a9781024fd89173388ac Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 1/6] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -36,7 +36,7 @@ index 33a4240e6a6f..82213f9c4c17 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 532362fcfe31..f13bb9f371a2 100644
+index d1d779d6ba43..bd90c221090d 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1241,6 +1241,22 @@ config USER_NS
