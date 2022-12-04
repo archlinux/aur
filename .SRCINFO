@@ -1,30 +1,50 @@
 pkgbase = ocaml-ocamlformat
 	pkgdesc = Auto-formatter for OCaml code
 	pkgver = 0.24.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-ppx/ocamlformat
 	arch = x86_64
 	license = MIT
 	license = custom:LGPL-2.1-OCaml
 	makedepends = dune>=2.8
 	depends = ocaml>=4.08
-	depends = ocaml-menhir>=20201216
-	depends = ocaml-csexp>=1.4.0
 	depends = ocaml-cmdliner>=1.1.0
-	depends = ocaml-uutf>=1.0.1
-	depends = ocaml-stdio
-	depends = ocaml-uuseg>=10.0.0
-	depends = ocaml-re>=1.7.2
+	depends = ocaml-csexp>=1.4.0
+	depends = ocaml-either
+	depends = ocaml-fix
 	depends = ocaml-fpath
+	depends = ocaml-menhir>=20201216
+	depends = ocaml-ocaml-version>=3.3.0
+	depends = ocaml-ocp-indent
 	depends = ocaml-odoc-parser>=2.0.0
 	depends = ocaml-odoc-parser<3.0.0
-	depends = ocaml-ocp-indent
-	depends = ocaml-fix
-	depends = ocaml-either
-	depends = ocaml-ocaml-version>=3.3.0
+	depends = ocaml-re>=1.7.2
+	depends = ocaml-stdio
+	depends = ocaml-uuseg>=10.0.0
+	depends = ocaml-uutf>=1.0.1
 	options = !strip
 	source = https://github.com/ocaml-ppx/ocamlformat/releases/download/0.24.1/ocamlformat-0.24.1.tbz
 	sha256sums = 023425e9818f80ea50537b2371a4a766c149a9957d05807e88a004d2d5f441ce
 	sha512sums = 753b6128be68042895202f99959b360ce954db6f82b19b83b4bb346761a8e9cfdfc2b4b25e2070e60601b555562e78f9ebb02760ff127464e0b66cedbddca304
 
 pkgname = ocaml-ocamlformat
+	depends = ocaml>=4.08
+	depends = ocaml-cmdliner>=1.1.0
+	depends = ocaml-csexp>=1.4.0
+	depends = ocaml-either
+	depends = ocaml-fix
+	depends = ocaml-fpath
+	depends = ocaml-menhir>=20201216
+	depends = ocaml-ocaml-version>=3.3.0
+	depends = ocaml-ocp-indent
+	depends = ocaml-odoc-parser>=2.0.0
+	depends = ocaml-odoc-parser<3.0.0
+	depends = ocaml-re>=1.7.2
+	depends = ocaml-stdio
+	depends = ocaml-uuseg>=10.0.0
+	depends = ocaml-uutf>=1.0.1
+	depends = ocaml-ocamlformat-rpc-lib=0.24.1
+
+pkgname = ocaml-ocamlformat-rpc-lib
+	depends = ocaml>=4.08
+	depends = ocaml-csexp>=1.4.0
