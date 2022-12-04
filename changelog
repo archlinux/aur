@@ -1,6 +1,5 @@
 ## 22.10.1
 
-### What’s Changed
-#### Dependency Updates
+Dependency Updates
 
-- #148 Change backoff requirement @ludeeus
+    #148 Change backoff requirement @ludeeus
