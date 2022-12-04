@@ -1,13 +1,14 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
-# Contributor: Frederic Bezies < fredbezies at gmail dot com>
-# Contributor: jddolvin <jddolvin@atheist.com>
-# Contributor: arriagga <ramon.arriaga@gmail.com>
-# Contributor: dieghen89 <dieghen89@gmail.com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: jddolvin <jddolvin at atheist dot com>
+# Contributor: arriagga <ramon.arriaga at gmail dot com>
+# Contributor: dieghen89 <dieghen89 at gmail dot com>
 
 pkgname=musique
 pkgver=1.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
@@ -40,7 +41,7 @@ prepare() {
   git config submodule.lib/updater.url "$srcdir/updater"
   git config submodule.lib/js.url "$srcdir/js"
   git config submodule.lib/sharedcache.url "$srcdir/sharedcache"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
