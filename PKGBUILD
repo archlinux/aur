@@ -1,11 +1,12 @@
 # system requirements: A C++11 compiler; g++ (>= 4.9.*) or newer works.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=RcppTOML
 _pkgver=0.1.7
 pkgname=r-${_pkgname,,}
 pkgver=0.1.7
-pkgrel=3
+pkgrel=6
 pkgdesc="'Rcpp' Bindings to Parser for Tom's Obvious Markup Language"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

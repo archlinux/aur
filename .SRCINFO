@@ -1,7 +1,7 @@
 pkgbase = r-rcpptoml
 	pkgdesc = 'Rcpp' Bindings to Parser for Tom's Obvious Markup Language
 	pkgver = 0.1.7
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=RcppTOML
 	arch = x86_64
 	license = GPL
