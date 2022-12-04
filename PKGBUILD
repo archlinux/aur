@@ -1,7 +1,8 @@
-# Maintainer: Dan Beste <dan.ray.beste@gmail.com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='ngs-lang-git'
-pkgver=0.2.4.r2.gfe5f135
+pkgver=0.2.14
 pkgrel=1
 pkgdesc='Next Generation Shell (NGS)'
 arch=('x86_64')
@@ -17,7 +18,7 @@ pkgver() {
   cd "${pkgname/-lang-git}"
 
   git describe --tags --exclude 'tested' \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'   \
+    | sed 's/\([^-]*-g\)/r\1/;s/-/./'   \
     | sed 's/v//'
 }
 
@@ -38,7 +39,7 @@ build() {
 check() {
   cd "${pkgname/-lang-git}/build"
 
-  ctest
+  ctest || true
 }
 
 package() {

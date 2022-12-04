@@ -1,6 +1,6 @@
 pkgbase = ngs-lang-git
 	pkgdesc = Next Generation Shell (NGS)
-	pkgver = 0.2.4.r2.gfe5f135
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = ngs-lang-git
 	sha256sums = SKIP
 
 pkgname = ngs-lang-git
-
