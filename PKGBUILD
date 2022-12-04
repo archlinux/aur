@@ -6,7 +6,7 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.3.0.alpha.1.r165.g912c0b76e
+pkgver=1.3.0.alpha.1.r236.g20baf96db
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
@@ -39,7 +39,7 @@ prepare() {
   git submodule init
   git config submodule.src/3rdparty/qt5-x11embed.url "${srcdir}/qt5-x11embed"
   git config submodule.src/3rdparty/rpmalloc.url "${srcdir}/rpmalloc"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   # setting lib dir
   sed -e 's|lib64|lib|g' -i cmake/modules/DetectMachine.cmake
   # setting proper DESTDIR based install path for bash-completion

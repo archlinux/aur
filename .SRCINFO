@@ -1,6 +1,6 @@
 pkgbase = lmms-git
 	pkgdesc = The Linux MultiMedia Studio.
-	pkgver = 1.3.0.alpha.1.r165.g912c0b76e
+	pkgver = 1.3.0.alpha.1.r236.g20baf96db
 	pkgrel = 1
 	url = https://lmms.io
 	arch = x86_64
