@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# We need to increase the open file limit otherwise the game eventually crashes
+# or softlocks with the log pointing to IOExceptions refering to "too many open
+# files".
+ulimit -Sn 8192
+exec '/opt/clonehero/clonehero' "$@"
