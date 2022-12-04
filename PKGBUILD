@@ -17,7 +17,7 @@ makedepends=(
 	'xbyak>=6.61'
 	'zydis>=4'
 )
-checkdepends=('catch2>=2.13.8')
+checkdepends=('catch2>=2.13.8' 'catch2<3')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")

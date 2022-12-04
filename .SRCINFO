@@ -7,6 +7,7 @@ pkgbase = dynarmic-git
 	arch = x86_64
 	license = BSD
 	checkdepends = catch2>=2.13.8
+	checkdepends = catch2<3
 	makedepends = boost>=1.57
 	makedepends = cmake>=3.12
 	makedepends = fmt>=9
