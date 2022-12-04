@@ -4,15 +4,15 @@
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
 pkgver=r224.3d3c5a4
-pkgrel=1
+pkgrel=2
 pkgdesc="xdg-desktop-portal backend for hyprland"
 url="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
 arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(xdg-desktop-portal pipewire libinih)
-makedepends=(git meson wayland-protocols wayland scdoc)
+depends=(xdg-desktop-portal pipewire libinih qt6-base)
+makedepends=(git meson wayland-protocols wayland scdoc cmake)
 optdepends=(
   "grim: required for the screenshot portal to function"
   "slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal"
@@ -35,6 +35,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+	git submodule update --init
 	meson build
 	ninja -C build
 	cd hyprland-share-picker && make all && cd ..
