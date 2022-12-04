@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="xsnow"
-pkgver=3.5.3
-pkgrel=2
+pkgver=3.6.0
+pkgrel=1
 pkgdesc="Let it snow on your desktop"
 url="https://sourceforge.net/projects/xsnow/"
 license=("GPL3")
@@ -10,7 +10,7 @@ arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
 depends=("atk" "cairo" "gtk3" "gsl" "libx11" "libxpm" "libxml2")
 source=("https://nav.dl.sourceforge.net/project/xsnow/xsnow-$pkgver.tar.gz")
-sha256sums=('c3f482ae98b4685d25cafad935fddb42b01ade725c7a416b737861bae71deec1')
+sha256sums=('715741f11dd5fd672ddc3c702e802585a31c211aac3d06612e462a6369398215')
 
 build(){
  cd $pkgname-$pkgver
