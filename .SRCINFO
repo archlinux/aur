@@ -1,0 +1,15 @@
+pkgbase = mctranslate-cli
+	pkgdesc = A CLI Tool for translate a sentence into minecraft enchanting alphabet
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = undefined
+	arch = any
+	license = GNU General Public License v3.0
+	depends = nodejs
+	depends = npm
+	depends = java-runtime
+	noextract = mctranslate-cli-1.0.1.tgz
+	source = https://registry.npmjs.org/mctranslate-cli/-/mctranslate-cli-1.0.1.tgz
+	sha1sums = 7ec77f25399e0d9f0d0431ec3df2646a92df1e04
+
+pkgname = mctranslate-cli
