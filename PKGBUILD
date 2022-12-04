@@ -3,8 +3,8 @@
 pkgname=python-multibase
 _pkgname=py-multibase
 pkgver=1.0.3
-pkgrel=1
-pkgdesc="Multibase implementation for Python"
+pkgrel=2
+pkgdesc="Multibase implementation for Python (no active development)"
 url="https://github.com/multiformats/py-multibase"
 depends=('python'
 	 'python-six'
