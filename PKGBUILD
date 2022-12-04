@@ -5,7 +5,7 @@
 
 _pkgname=entrance
 pkgname=$_pkgname-git
-pkgver=3.0.0_alpha5.r10.gb8894ea
+pkgver=3.0.0_alpha6.r27.g4ace4c8
 pkgrel=1
 pkgdesc="Enlightenment Display Manager"
 url="http://www.enlightenment.org/"
@@ -16,7 +16,7 @@ makedepends=('git' 'meson')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/entrance/entrance.conf')
-source=("git://github.com/Obsidian-StudiosInc/entrance")
+source=("git+https://github.com/Obsidian-StudiosInc/entrance")
 sha256sums=('SKIP')
 
 pkgver() {
