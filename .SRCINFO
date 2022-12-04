@@ -1,0 +1,19 @@
+pkgbase = ocaml-odoc-parser
+	pkgdesc = Parser for ocaml documentation comments
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ocaml-doc/odoc-parser
+	arch = x86_64
+	license = ISC
+	makedepends = dune>=2.8
+	depends = ocaml>=4.02.0
+	depends = ocaml-ppx_expect
+	depends = ocaml-astring
+	depends = camlp-streams
+	depends = ocaml-result
+	options = !strip
+	source = https://github.com/ocaml-doc/odoc-parser/releases/download/1.0.1/odoc-parser-1.0.1.tbz
+	sha256sums = a2bbe8e4201b60e980bab01e96e41f2ba0b05ba3f50b44f75837e8a2fb907d2c
+	sha512sums = c3339aae880ce72df866746d9ed9e7d38a752bf994ba24e948c086349604007e39602a1c31cf2ddb61ac8f8dc9dceccca43fe185850b83e3a02d75121f9ddfe2
+
+pkgname = ocaml-odoc-parser
