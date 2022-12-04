@@ -1,11 +1,11 @@
 pkgbase = otf-recursive
 	pkgdesc = A variable type family built for better code & UI
-	pkgver = 1.084
+	pkgver = 1.085
 	pkgrel = 1
 	url = https://github.com/arrowtype/recursive
 	arch = any
 	license = OFL
-	source = https://github.com/arrowtype/recursive/releases/download/v1.084/ArrowType-Recursive-1.084.zip
-	sha256sums = db1f760fefe164644dc2e5156c01cb6d47fe05e28fd1f949eb4d6f65abb9f19a
+	source = https://github.com/arrowtype/recursive/releases/download/v1.085/ArrowType-Recursive-1.085.zip
+	sha256sums = cbcbdf7a0e181d284a9235e09ed5f3873e527bc5dd1d977df71cdc1ff937da02
 
 pkgname = otf-recursive
