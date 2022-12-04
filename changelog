@@ -1,0 +1,7 @@
+## 2.439.1
+
+Bug Fixes
+
+    augment timeout on e2e tests (3c2bb1a)
+    move multi account features from settings into devtools (c2133b9)
+    support of multi-account (375bfc7)
