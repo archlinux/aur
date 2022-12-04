@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /usr/lib/kuro/kuro.asar "$@"
+exec electron18 /usr/lib/kuro/kuro.asar "$@"
