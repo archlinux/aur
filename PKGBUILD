@@ -3,7 +3,7 @@
 # Contributor: Morgan LEFIEUX <comete_AT_archlinuxfr.org>
 
 pkgname=ubi_reader
-pkgver=0.8.0
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Collection of Python scripts for reading information about and extracting data from UBI and UBIFS images."
 arch=("any")
@@ -12,7 +12,7 @@ license=("GPL3")
 depends=("python" "python-lzo")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jrspruitt/ubi_reader/archive/refs/tags/v$pkgver-master.tar.gz")
-b2sums=('e802833fcc633739da6cb3cfffb8f398ad27261df55301b6322ea7303aeccbc57f6a685cefa4005ecf80e2a968139d091a8b5c6a9783dd613a5016ba56d55425')
+b2sums=('c55bc689af0a32a0e65aa6f860617131654d11ad5e6f7f1e37b4e048718c061f352965f9793595dc16162df0c08ce32d4db2d6bfaee9366110028f7fe61a5c98')
 
 build() {
   cd "${pkgname}-${pkgver}-master"
