@@ -1,7 +1,7 @@
 pkgbase = xguipro
 	pkgdesc = xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HVML/xGUI-Pro
 	arch = x86_64
 	arch = aarch64
@@ -46,7 +46,7 @@ pkgname = xguipro-gtk3
 	depends = gperf
 	depends = enchant
 	depends = gtk3
-	depends = libsoup2
+	depends = libsoup
 	conflicts = xguipro
 
 pkgname = xguipro-gtk4
