@@ -46,16 +46,16 @@ package() {
 
   # Fix systemd unit file
   sed -i \
-	-e 's|\/usr\/local\/bin|\/usr\/bin|' \
-	-e 's|\/usr\/local\/etc|\/etc|' \
-	"${pkgdir}/usr/lib/systemd/system/pyspf-milter.service"
+    -e 's|\/usr\/local\/bin|\/usr\/bin|' \
+    -e 's|\/usr\/local\/etc|\/etc|' \
+    "${pkgdir}/usr/lib/systemd/system/pyspf-milter.service"
 
   # Fix conf file
   sed -i \
-	-e 's|\#Socket|Socket|' \
+    -e 's|\#Socket|Socket|' \
     -e '/inet/d' \
-	"${pkgdir}/etc/pyspf-milter/pyspf-milter.conf"
+    "${pkgdir}/etc/pyspf-milter/pyspf-milter.conf"
 
   install -vDm0644 "${srcdir}/pyspf-milter.sysusers" \
-	"${pkgdir}/usr/lib/sysusers.d/pyspf-milter.conf"
+    "${pkgdir}/usr/lib/sysusers.d/pyspf-milter.conf"
 }
