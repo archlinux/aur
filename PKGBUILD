@@ -3,7 +3,7 @@
 pkgbase=xguipro-git
 pkgname=(xguipro-gtk3-git xguipro-gtk4-git)
 pkgver=0.6.1.r5.gcb2ca06
-pkgrel=1
+pkgrel=2
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
 url="https://github.com/HVML/xGUI-Pro"
@@ -31,7 +31,7 @@ pkgver() {
 
 package_xguipro-gtk3-git() {
     pkgdesc+=" (gtk3)"
-    depends+=('gtk3' 'libsoup2')
+    depends+=('gtk3' 'libsoup')
     conflicts=(${pkgbase%-git})
 
     cd "${srcdir}/${pkgbase%-git}"
