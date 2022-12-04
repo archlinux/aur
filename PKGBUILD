@@ -17,7 +17,7 @@ makedepends=(python-installer python-shtab help2man)
 optdepends=(
 	'python-colorama: color'
 	'python-rich: better logger'
-	'python-pyyaml: output yaml format'
+	'python-yaml: output yaml format'
 	'python-keyring: store APP secrets securely'
 	'python-langdetect: detect language automatically for offline dictionary'
 	'python-pystardict: offline dictionary'
