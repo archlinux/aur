@@ -3,10 +3,10 @@
 _pkgname=ocamlc-loc
 pkgname="ocaml-$_pkgname"
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 license=('MIT')
 arch=('x86_64')
-pkgdesc="An OCaml Package"
+pkgdesc="Parse ocaml compiler output into structured form"
 url="https://github.com/ocaml/dune"
 depends=('ocaml>=4.08.0')
 makedepends=('dune>=3.5')

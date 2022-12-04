@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocamlc-loc
-	pkgdesc = An OCaml Package
+	pkgdesc = Parse ocaml compiler output into structured form
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml/dune
 	arch = x86_64
 	license = MIT
