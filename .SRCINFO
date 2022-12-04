@@ -1,0 +1,15 @@
+pkgbase = rusted-sokoban
+	pkgdesc = Sokoban written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/denix666/sokoban
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/sokoban/releases/download/v0.1.2/sokoban.tar.gz
+	source = rusted-sokoban_icon.png
+	source = rusted-sokoban.desktop
+	sha256sums = 4604325c05f7da8e4e2c77d06791fb491147807164de0078abaafe265aa2721d
+	sha256sums = 41a4230954171a5ea2005161ec742b095e3acb30b1be33225d687cee6728dae3
+	sha256sums = e4619bf82ed2a581662e8d603d650b3aa8972a31a09bd4a859f5b048d8b48f4c
+
+pkgname = rusted-sokoban

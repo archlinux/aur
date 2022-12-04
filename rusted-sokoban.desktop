@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-sokoban && ./sokoban'
+Icon=/usr/share/pixmaps/rusted-sokoban_icon.png
+Name=Rusted sokoban
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Sokoban - written in Rust
