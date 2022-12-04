@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=survey
 _pkgver=4.1-1
 pkgname=r-${_pkgname,,}
 pkgver=4.1.1
-pkgrel=4
+pkgrel=7
 pkgdesc='Analysis of Complex Survey Samples'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
