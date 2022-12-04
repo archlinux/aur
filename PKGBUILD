@@ -2,7 +2,7 @@
 # Maintainer: Luke Horwell <code (at) horwell (dot) me>
 
 pkgname=polychromatic
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-colorama' 'python-colour' 'python-setproctitle' 'pytho
 optdepends=('python-openrazer')
 makedepends=('meson' 'ninja' 'sassc')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
-sha512sums=('bdd816fcbae8ce2e12367afd455941afb754f7ddb9f6337c6b675a3059c1dc6d64b1a7809efce9b909b8aee2025b496dc0b870d2e56a09da7fde7f8b5d733c5f')
+sha512sums=('a58e85e52a92ccb7fee837692bbf294fe376198582be0c0e982af37c3853667a80f8e67d074f0128a134ede05c4a064614036c847f8be22503e448b1385a1c5a')
 
 build() {
   arch-meson $pkgname-$pkgver build
