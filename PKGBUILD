@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=mitools
 _pkgver=2.4
 pkgname=r-${_pkgname,,}
 pkgver=2.4
-pkgrel=4
+pkgrel=7
 pkgdesc='Tools for Multiple Imputation of Missing Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

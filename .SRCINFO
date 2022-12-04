@@ -1,7 +1,7 @@
 pkgbase = r-mitools
 	pkgdesc = Tools for Multiple Imputation of Missing Data
 	pkgver = 2.4
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=mitools
 	arch = any
 	license = GPL
