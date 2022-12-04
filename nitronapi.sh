@@ -79,27 +79,13 @@ nr_cores=$((nr_cores + 1))
 cputotalusage=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage ""}' | cut -f1 -d\.$cputotalusage)
 
 # Max CPU clock
-cpu_max_freq=$(cat /sys/devices/system/cpu/cpu7/cpufreq/cpuinfo_max_freq)
-cpu_max_freq2=$(cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_max_freq)
-cpu_max_freq3=$(cat /sys/devices/system/cpu/cpu5/cpufreq/cpuinfo_max_freq)
-cpu_max_freq1=$(cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq)
-cpu_max_freq1_2=$(cat /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq)
-cpu_max_freq1_3=$(cat /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq)
-
-[[ "$cpu_max_freq2" -gt "$cpu_max_freq" ]] && [[ "$cpu_max_freq2" -gt "$cpu_max_freq3" ]] && cpu_max_freq="$cpu_max_freq2"
-[[ "$cpu_max_freq3" -gt "$cpu_max_freq" ]] && [[ "$cpu_max_freq3" -gt "$cpu_max_freq2" ]] && cpu_max_freq="$cpu_max_freq3"
-[[ "$cpu_max_freq1_2" -gt "$cpu_max_freq1" ]] && [[ "$cpu_max_freq1_2" -gt "$cpu_max_freq1_3" ]] && cpu_max_freq1="$cpu_max_freq1_2"
-[[ "$cpu_max_freq1_3" -gt "$cpu_max_freq1" ]] && [[ "$cpu_max_freq1_3" -gt "$cpu_max_freq1_2" ]] && cpu_max_freq1="$cpu_max_freq1_3"
+cpu_max_freq=$(cat /sys/devices/system/cpu/cpu$(($(nproc --all) - 1 ))/cpufreq/cpuinfo_max_freq)
+cpu_max_freq1=$(cat /sys/devices/system/cpu/cpu$(($(nproc --all) - 1 ))/cpufreq/scaling_max_freq)
 [[ "$cpu_max_freq1" -gt "$cpu_max_freq" ]] && cpu_max_freq="$cpu_max_freq1"
 
 # Min CPU clock
 cpu_min_freq=$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq)
-cpu_min_freq2=$(cat /sys/devices/system/cpu/cpu5/cpufreq/cpuinfo_min_freq)
 cpu_min_freq1=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq)
-cpu_min_freq1_2=$(cat /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq)
-
-[[ "$cpu_min_freq2" -lt "$cpu_min_freq" ]] && cpu_min_freq="$cpu_min_freq2"
-[[ "$cpu_min_freq1_2" -lt "$cpu_min_freq1" ]] && cpu_min_freq1="$cpu_min_freq1_2"
 [[ "$cpu_min_freq1" -lt "$cpu_min_freq" ]] && cpu_min_freq="$cpu_min_freq1"
 
 # HZ → MHz
@@ -300,7 +286,7 @@ apin() {
 		echo "CPU Freq: MIN=$cpu_min_clk_mhz, MAX=$cpu_max_clk_mhz MHz"
 		echo "CPU Usage: $cputotalusage%"
 		echo "LMK Status: $lmksts"
-		[[ "$batt_pctg" != "" ]] && {
+		[[ "$batt_pctg" != "" ]] && [[ "$batt_pctg" != "unknown" ]] && {
 			echo "Battery Percentage: $batt_pctg%"
 			echo "Battery Health: $batt_hth"
 			echo "Battery Status: $batt_sts"
