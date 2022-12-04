@@ -1,8 +1,8 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=107.0.5304.122
-pkgrel=2
+pkgver=108.0.5359.94
+pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -18,7 +18,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst
         index.html)
-sha256sums=('885f3303f9e299255ef7b91028565938e3b4e9fa8ce75899fe3e63cd9a27e055'
+sha256sums=('64e8829db2b83e60597098256803ea2dd597820112511b37a3e8fc4c4b2a7442'
             'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
