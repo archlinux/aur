@@ -1,0 +1,14 @@
+pkgbase = fastdeploy-git
+	pkgdesc = An Easy-to-use and Fast Deep Learning Model Deployment Toolkit for Cloud Mobile and Edge.
+	pkgver = r1349.d74e1209
+	pkgrel = 1
+	url = https://github.com/PaddlePaddle/FastDeploy
+	arch = x86_64
+	license = Apache2
+	makedepends = gcc
+	makedepends = cmake
+	provides = fastdeploy
+	source = FastDeploy::git+https://github.com/PaddlePaddle/FastDeploy.git
+	sha512sums = SKIP
+
+pkgname = fastdeploy-git
