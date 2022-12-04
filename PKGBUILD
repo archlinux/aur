@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=dynarmic
-pkgver=6.3.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
@@ -15,10 +15,10 @@ makedepends=(
 	'xbyak>=6.61'
 	'zydis>=4'
 )
-checkdepends=('catch2>=2.13.8')
+checkdepends=('catch2>=2.13.8' 'catch2<3')
 provides=('libdynarmic.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('c663f1e5aa86a28d3abcfd6f5f62a05fb30928114c549ffc086b593aac35ba334cd2fd523ada9e567c0dcbc4a72f6c81cd5a44e26b0b8ff43b47f5ac0363cc1d')
+b2sums=('6634e3ef2e7989d510381695bfc8d0041ce19dd1aa7791709b19f31dea90771065722764a716efa8ef8c19dd8b665cb0298c75cd50fd75e10432b0b4e5a07043')
 
 build() {
 	cmake -S $pkgname-$pkgver -B build \
@@ -27,12 +27,8 @@ build() {
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDYNARMIC_IGNORE_ASSERTS=ON \
-		-DDYNARMIC_NO_BUNDLED_CATCH=ON \
-		-DDYNARMIC_NO_BUNDLED_FMT=ON \
-		-DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON \
-		-DDYNARMIC_NO_BUNDLED_XBYAK=ON \
-		-DDYNARMIC_NO_BUNDLED_ZYDIS=ON \
 		-DDYNARMIC_TESTS="$CHECKFUNC" \
+		-DDYNARMIC_USE_PRECOMPILED_HEADERS=OFF \
 		-Wno-dev
 	cmake --build build
 }
