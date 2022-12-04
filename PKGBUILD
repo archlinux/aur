@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=('breezy: -bzr packages support'
             'python-aiohttp-session: web server with authorization'
             'python-boto3: sync to s3'
             'python-cryptography: web server with authorization'
+            'python-requests-unixsocket: client report to web server by unix socket'
             'python-jinja: html report generation'
             'rsync: sync by using rsync'
             'subversion: -svn packages support')
@@ -49,6 +50,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('95f29cf7a5058f7c66fc7e5c711c7a5cc88347125723a47c8474af0f683e7c7a3e96a8bd078630bc98108c768bda869cedac2d2f83e43b350db225f6bd96facd'
+sha512sums=('788f59057259418deedd8446d08bf83922392d78a28c1f38ac66bd68adfb337bc3c117dee1d36ddb0141fdd81ed2a795ba0df15b52ef3831c983f926babb73a9'
             '53d37efec812afebf86281716259f9ea78a307b83897166c72777251c3eebcb587ecee375d907514781fb2a5c808cbb24ef9f3f244f12740155d0603bf213131'
             '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
