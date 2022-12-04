@@ -5,7 +5,7 @@ pkgname=mssql-server
 pkgver=15.0.4261.1
 _remRevision=2
 _prodver=${pkgver}-${_remRevision}
-pkgrel=7
+pkgrel=8
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
@@ -29,7 +29,7 @@ depends=(
 optdepends=(
 	'python-pyodbc'
 );
-source=("https://packages.microsoft.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
+source=("http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
 
 sha256sums=('db9a757b85b218c2c091d716c2ece28e5c0c9aee713eadc61827393b2c1d51b8')
 
