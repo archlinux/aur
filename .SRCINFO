@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 30.0.50.162621
+	pkgver = 30.0.50.162754
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -27,6 +27,7 @@ pkgbase = emacs-git
 	depends = libxpm
 	depends = cairo
 	depends = tree-sitter
+	depends = sqlite3
 	provides = emacs
 	replaces = emacs
 	options = !strip
