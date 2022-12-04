@@ -1,7 +1,7 @@
 pkgbase = r-fastmatch
 	pkgdesc = Fast 'match()' Function
 	pkgver = 1.1.3
-	pkgrel = 4
+	pkgrel = 9
 	url = https://cran.r-project.org/package=fastmatch
 	arch = x86_64
 	license = GPL
