@@ -1,7 +1,7 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor: jpkotta
 pkgname=mfgtools
-pkgver=1.4.193
+pkgver=1.5.11
 pkgrel=1
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
 makedepends=('cmake')
 changelog=History.md
 source=(https://github.com/NXPmicro/mfgtools/releases/download/uuu_$pkgver/uuu_source-$pkgver.tar.gz uuu-complete.bash)
-sha256sums=('a9b8b74e32e6718d591c66951b8b52276df7862db80ee943e046947f7313e57f'
+sha256sums=('932c0a4acde0f52b907f5693c6d133c83142c4ca6e9df05a38b3ac1e50628883'
             'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 
 

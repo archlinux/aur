@@ -1,4 +1,127 @@
 
+uuu_1.5.11 / 2022-11-01
+=======================
+
+  * fix windows build failure
+  * add nvme_all build-in command
+  * Add Write command to allow use mmc write to write image
+  * error.cpp - fixed race conditions of g_last_error_str and g_last_err_id variables
+  * add support for stm vendor fastboot
+
+uuu_1.5.4 / 2022-09-26
+======================
+
+  * Fix Mac build error
+  * bump version to 1.5
+  * Fixed windows release version crash
+  * fix memory leak cause by getaddrinfo
+  * fix crash when last block actual size < m_output_size
+  * add -dm to disable small memory for debug purpose
+  * fixed a dead lock when reset stream
+  * stop http download when error happen
+  * add error check for all request_data
+  * fix linux build warning
+  * fix linux build issue
+  * zstd have option field in head to show decompress file size
+  * Add gzip stream support
+  * Rework buffer management to support small memory version
+  * Fix support of empty environment variables in Windows OS
+  * fix crash when environment variable is last word in script
+  * update libusb path
+  * update libusb submodule
+  * drop vs2017 support.
+  * use $(DefaultPlatformToolset)
+  * try remove PlatformToolset and set WindowsTargetPlatformVersion to 10.0
+
+uuu_1.4.243 / 2022-08-23
+========================
+
+  * zstd ZSTD_getFrameContentSize can return decompress size
+  * Create SCR-mfgtools.txt
+  * Update README.md for zstd
+
+uuu_1.4.240 / 2022-08-12
+========================
+
+  * Fix ZSTD stopping
+
+uuu_1.4.237 / 2022-07-26
+========================
+
+  * fix fail open file begin with > in script
+
+uuu_1.4.236 / 2022-07-26
+========================
+
+  * fix build failure at windows
+  * fix warning at trans.cpp and usbhotplug.cpp
+  * fix warning at sdp.cpp
+  * fix warning at cmd.cpp
+  * fix build warning at buffer.cpp
+  * Fixed build warning at fastboot.cpp
+  * Improve error message after code consolidate
+  * Fixed bz2 decompress fail at 26% for a specific file
+
+uuu_1.4.232 / 2022-07-22
+========================
+
+  * Fix #328 Current Directory not appending
+
+uuu_1.4.231 / 2022-07-18
+========================
+
+  * Fix Http Loading
+  * Fixes logical issue with patch 219cf39
+  * Merge branch 'master' of github.com:NXPmicro/mfgtools
+  * Fix #326 Skipping First Character
+  * Fix #326 Skipping First Character
+  * Generalized FSCompressStream checks
+  * Shows loading progress for single thread BZ2
+  * Consolidate Reload Function for File Types
+  * Fix #325 appending header twice issue
+
+uuu_1.4.224 / 2022-06-22
+========================
+
+  * Automatically decompress ZSTD file from -b
+  * fix crc command -format
+  * Add async for zstd
+  * add async support for gz
+  * try to fix MacOS build failure at appveyor
+  * try to fix macos build
+  * Revert "Try fix macOS build after zstd patch"
+  * try fix macOS build after zstd patch
+  * Merge branch 'master' of github.com:NXPmicro/mfgtools
+  * Try fix macOS build after zstd patch
+  * Try fix macos build after zstd patch
+  * Update Ubuntu to 18.04
+  * try to fix linux build appveyor
+  * Try to fix mac build appveyor
+  * Try to fix Linux Build fail at appveyor
+  * Added libzstd-dev to snap
+  * better fix appveryor vs build problem
+  * test build environment
+  * try to fix appveyor build problem
+  * try to fix zstd build error at appveyor
+  * Update README.md
+  * fix build error after add zstd lib
+  * zstd  decompression
+  * Add zstd library into uuu
+  * Fix error message
+  * Show CRC check progress
+  * implements crc check for images
+
+uuu_1.4.201 / 2022-04-26
+========================
+
+  * Fix crash when download bz2 from http
+  * Fix uuu_version in generated uuu.inputlog in shell mode
+  * Fix argument names in print_cfg()
+  * Fix crash when download speed slower than decompress speed and need resize buffer
+  * Merge branch 'master' of github.com:codeauroraforum/mfgtools
+  * Specify 'ios::binary' in ofstream initialization
+  * Add i.MX93 support
+
 uuu_1.4.193 / 2022-01-18
 ========================
 
