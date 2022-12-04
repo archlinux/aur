@@ -2,7 +2,7 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgbase=taxondna
-pkgname=('speciesidentifier' 'genbankexplorer')
+pkgname=('speciesidentifier' 'sequencematrix' 'genbankexplorer')
 pkg0=TaxonDNA
 pkg1=SequenceMatrix
 pkg2=SpeciesIdentifier

@@ -18,4 +18,6 @@ pkgbase = taxondna
 
 pkgname = speciesidentifier
 
+pkgname = sequencematrix
+
 pkgname = genbankexplorer
