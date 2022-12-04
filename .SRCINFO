@@ -1,7 +1,7 @@
 pkgbase = xsnow-bin
 	pkgdesc = Let it snow on your desktop
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ratrabbit.nl/ratrabbit/xsnow/
 	arch = x86_64
 	arch = i386
@@ -10,6 +10,7 @@ pkgbase = xsnow-bin
 	license = GPL3
 	depends = atk
 	depends = cairo
+	depends = gsl<2.6
 	depends = gtk3
 	depends = libx11
 	depends = libxpm

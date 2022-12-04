@@ -2,14 +2,14 @@
 
 pkgname="xsnow-bin"
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
 url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 provides=("xsnow")
 conflicts=("xsnow" "xsnow-legacy" "xsnow-comp-patch-git")
-depends=("atk" "cairo" "gtk3" "libx11" "libxpm" "libxml2")
+depends=("atk" "cairo" "gsl<2.6" "gtk3" "libx11" "libxpm" "libxml2")
 source_x86_64=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_amd64.deb")
 source_i386=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_i386.deb")
 source_armv7h=("https://master.dl.sourceforge.net/project/xsnow/xsnow_$pkgver-1_armhf.deb")
