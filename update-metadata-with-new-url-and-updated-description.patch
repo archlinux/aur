@@ -1,0 +1,22 @@
+diff --git a/src/package/metadata.desktop b/src/package/metadata.desktop
+index 793ea19..44d3278 100644
+--- a/src/package/metadata.desktop
++++ b/src/package/metadata.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+-Comment=Intel P-state and CPUFreq Manager
+-Name=P-state and CPUFreq
++Comment=Plasmoid for monitoring and controlling CPU (and partially GPU) P-state and CPUFreq.\nMaintained fork from https://github.com/jsalatas/plasma-pstate.
++Name=P-state and CPUFreq Manager
+ Icon=cpu
+ Type=Service
+ X-KDE-ParentApp=
+@@ -10,7 +10,7 @@ X-KDE-PluginInfo-Email=jsalatas@ictpro.gr
+ X-KDE-PluginInfo-License=GPL2+
+ X-KDE-PluginInfo-Name=gr.ictpro.jsalatas.plasma.pstate
+ X-KDE-PluginInfo-Version=2.0.0
+-X-KDE-PluginInfo-Website=https://jsalatas.ictpro.gr
++X-KDE-PluginInfo-Website=https://github.com/frankenfruity/plasma-pstate
+ X-KDE-ServiceTypes=Plasma/Applet
+ X-Plasma-API=declarativeappletscript
+ X-KDE-Library=plasma_applet_pstate

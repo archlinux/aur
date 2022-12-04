@@ -7,7 +7,7 @@ _applet_name=plasma-pstate
 pkgname=plasma5-applets-${_applet_name}-git
 _pkgname=${pkgname%-git}
 pkgver=r307.6abb0a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel P-state and CPUFreq Manager Widget - git 'dev' branch"
 url="https://github.com/frankenfruity/$_applet_name/tree/dev"
 arch=('x86_64')
@@ -22,8 +22,10 @@ optdepends=("libsmbios: Dell's Thermal Management Feature"
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
-source=($_applet_name::"git+${url%/tree/dev}.git#branch=dev")
-sha256sums=('SKIP')
+source=($_applet_name::"git+${url%/tree/dev}.git#branch=dev"
+        "update-metadata-with-new-url-and-updated-description.patch")
+sha256sums=('SKIP'
+            'c8e3a26d40cf6f305dcd41f9c8d0614b9beb2cce841648892aa166054980bf8c')
 
 
 pkgver() {
@@ -35,6 +37,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_applet_name}"
+
+  git apply "${srcdir}/update-metadata-with-new-url-and-updated-description.patch"
 
   mkdir "${srcdir}/${_applet_name}/build"
 }

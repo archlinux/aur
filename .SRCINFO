@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-plasma-pstate-git
 	pkgdesc = Intel P-state and CPUFreq Manager Widget - git 'dev' branch
 	pkgver = r307.6abb0a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frankenfruity/plasma-pstate/tree/dev
 	arch = x86_64
 	license = GPL2
@@ -22,6 +22,8 @@ pkgbase = plasma5-applets-plasma-pstate-git
 	provides = plasma5-applets-plasma-pstate
 	conflicts = plasma5-applets-plasma-pstate
 	source = plasma-pstate::git+https://github.com/frankenfruity/plasma-pstate.git#branch=dev
+	source = update-metadata-with-new-url-and-updated-description.patch
 	sha256sums = SKIP
+	sha256sums = c8e3a26d40cf6f305dcd41f9c8d0614b9beb2cce841648892aa166054980bf8c
 
 pkgname = plasma5-applets-plasma-pstate-git
