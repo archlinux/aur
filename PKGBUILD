@@ -1,10 +1,11 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=collections
 _pkgver=0.3.6
 pkgname=r-${_pkgname,,}
 pkgver=0.3.6
-pkgrel=3
+pkgrel=5
 pkgdesc='High Performance Container Data Types'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
