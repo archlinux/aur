@@ -65,7 +65,7 @@ _localmodcfg=yes
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-lts
-pkgver=5.10.90
+pkgver=5.10.157
 pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
@@ -84,7 +84,6 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-  0003-gcc12.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
