@@ -1,0 +1,30 @@
+pkgbase = file-roller-gtk4
+	pkgdesc = WIP GTK4 port of the File Roller archive utility
+	pkgver = 44.alpha
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/FileRoller
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = gnome
+	license = GPL2
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = libadwaita
+	depends = libarchive
+	depends = libportal-gtk4
+	depends = libnautilus-extension
+	optdepends = p7zip: 7z, arj, exe and encrypted zip files support
+	optdepends = unrar: better RAR archive support
+	optdepends = unace: ACE archive support
+	optdepends = lrzip: lrzip archive support
+	optdepends = squashfs-tools: squashfs image support
+	provides = file-roller
+	conflicts = file-roller
+	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#branch=wip/gtk4
+	b2sums = SKIP
+
+pkgname = file-roller-gtk4
