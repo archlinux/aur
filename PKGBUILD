@@ -12,7 +12,7 @@ pkgver=2.2.3
 pkgrel=1
 pkgdesc="Additional linear algebra code, including general SVD and matrix functions."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://gnu-octave.github.io/packages/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
