@@ -1,6 +1,6 @@
 pkgbase = musique-git
 	pkgdesc = A finely crafted music player
-	pkgver = 1.10.1.r5.g686016b
+	pkgver = 1.10.1.r11.g4396af9
 	pkgrel = 2
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = musique-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = qt5-base
+	depends = qt5-declarative
 	depends = taglib
 	depends = mpv
 	source = git+https://github.com/flaviotordini/musique.git

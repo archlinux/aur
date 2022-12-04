@@ -6,13 +6,13 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=musique-git
-pkgver=1.10.1.r5.g686016b
+pkgver=1.10.1.r11.g4396af9
 pkgrel=2
 pkgdesc="A finely crafted music player"
 arch=(x86_64)
 url="https://flavio.tordini.org/musique"
 license=(GPL3)
-depends=(qt5-base taglib mpv)
+depends=(qt5-base qt5-declarative taglib mpv)
 makedepends=(git qt5-tools)
 source=("git+https://github.com/flaviotordini/musique.git"
         "git+https://github.com/flaviotordini/http.git"
@@ -45,7 +45,7 @@ prepare() {
   git config 'submodule.lib/updater.url' "${srcdir}/updater"
   git config 'submodule.lib/js.url' "${srcdir}/js"
   git config 'submodule.lib/sharedcache.url' "${srcdir}/sharedcache"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
