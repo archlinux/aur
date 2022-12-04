@@ -12,7 +12,7 @@ license=("MIT")
 depends=("docker")
 makedepends=("go")
 conflicts=("dive-git")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wagoodman/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('293e3ae853c8e7f77e4891addb4504a057ed3b6d97934cc97201031bcaa30b53')
 
 build() {
