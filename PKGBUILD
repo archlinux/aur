@@ -2,11 +2,13 @@
 
 pkgname=lsp-plugins-noicons
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of free plugins compatible with LADSPA, LV2 and LinuxVST (without XDG icons)"
 arch=(x86_64)
 url="https://lsp-plug.in"
 license=(LGPL3)
+provides=(lsp-plugins)
+conflicts=(lsp-plugins)
 makedepends=(cairo gcc-libs glibc hicolor-icon-theme libglvnd libx11 libxrandr jack ladspa libsndfile lv2 php)
 checkdepends=(jq lv2lint)
 source=(https://github.com/sadko4u/${pkgname%-noicons}/releases/download/$pkgver/${pkgname%-noicons}-src-$pkgver.tar.gz)
