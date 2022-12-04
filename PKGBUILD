@@ -4,14 +4,14 @@
 pkgname=ratarmount-git
 _pkgname="${pkgname%-git}"
 pkgver=0.12.0.r1.gc25a2bd
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Mount tar file using fuse with fast read-only random access (git version)"
 arch=('any')
 url="https://github.com/mxmlnkn/$_pkgname"
 license=('MIT')
 depends=(
-	'python-fuse'
+	'python-fusepy'
 	'python-msgpack'
 	'python-rapidjson'
 	'python-ujson'
