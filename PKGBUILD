@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier-git
-pkgver=0.1.1.r1.gce836d6
+pkgver=r33.c157976
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
@@ -16,7 +16,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
