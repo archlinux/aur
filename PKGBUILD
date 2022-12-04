@@ -1,11 +1,12 @@
 # system requirements: Python (>= 2.7.0)
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=reticulate
 _pkgver=1.26
 pkgname=r-${_pkgname,,}
 pkgver=1.26
-pkgrel=1
+pkgrel=3
 pkgdesc="Interface to 'Python'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"

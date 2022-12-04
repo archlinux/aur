@@ -1,7 +1,7 @@
 pkgbase = r-reticulate
 	pkgdesc = Interface to 'Python'
 	pkgver = 1.26
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=reticulate
 	arch = x86_64
 	license = Apache
