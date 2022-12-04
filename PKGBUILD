@@ -1,37 +1,33 @@
-# Maintainer: Onur Kader <onurorkunkader1999@gmail.com>
-pkgname=scnlib-git
-pkgver=r396.9e7d038
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Onur Kader <onurorkunkader1999@gmail.com>
+
+pkgname=scnlib
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++"
 arch=("x86_64")
 url="https://github.com/eliaskosunen/scnlib"
 license=("Apache")
-makedepends=("git" "cmake")
-provides=("${pkgname%-git}")
-source=("${pkgname}::git+https://github.com/eliaskosunen/scnlib.git")
-md5sums=("SKIP")
-options=(!strip)
-
-pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+makedepends=("git" "cmake" "doxygen" "python-sphinx" "python-breathe" "doctest" "benchmark")
+source=("${pkgname}::git+https://github.com/eliaskosunen/scnlib.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname"
-	mkdir build
-	cd build
-	cmake -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON -DCMAKE_INSTALL_PREFIX="/usr" ..
-	cmake --build .
+	cmake -B build -S "$pkgname" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+		-DBUILD_SHARED_LIBS=ON
+	cmake --build build --target all doc doc-sphinx
 }
 
 check() {
-	cd "$srcdir/$pkgname/build"
-	cmake --build . --target test
+	cmake --build build --target test
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
-	DESTDIR="$pkgdir/" cmake --install .
+	DESTDIR="$pkgdir" cmake --install build
+	# fix up the documentation install path
+	mv "$pkgdir/doc" -t "$pkgdir/usr/share"
 }
 
