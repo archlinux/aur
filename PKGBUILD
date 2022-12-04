@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonplus
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A simple proton version manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('json-glib' 'libadwaita' 'libarchive' 'libsoup3')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0f00f676454e8fb3b3e24a2bf3814309acba65d6a6dd280dd767f56c6e71583')
+sha256sums=('19b48999696236b92e326df3311fd2db2d57899f4f3a96711b90e18d7653fe49')
 
 prepare() {
   cd "ProtonPlus-$pkgver"
