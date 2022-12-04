@@ -1,6 +1,6 @@
 _npmname=mctranslate-cli
 _npmver=1.0.2
-pkgname=nodejs-mctranslate-cli # All lowercase
+pkgname=mctranslate-cli # All lowercase
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="A CLI Tool for translate a sentence into minecraft enchanting alphabet"
