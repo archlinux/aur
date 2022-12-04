@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=biglm
 _pkgver=0.9-2.1
 pkgname=r-${_pkgname,,}
 pkgver=0.9.2.1
-pkgrel=4
+pkgrel=7
 pkgdesc='Bounded Memory Linear and Generalized Linear Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
