@@ -3,35 +3,40 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2022.01.27
+pkgver=2022.11.04
+platform=RB_20221129
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
-makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'gcc10')
+makedepends=('unzip' 'zip' 'python2' 'python2-dbus' 'yasm' 'mesa' 'autoconf2.13' 'gcc10')
 options=('!emptydirs')
-source=("https://archive.palemoon.org/source/basilisk-${pkgver}-source.tar.xz"
+source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
+        "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('31721a0e8ee54fe90b71168bd2028e9c83165ba038886e1f493065f22987496f'
+sha256sums=('3fcffb4b2563eed2000df2df97d1806af25546407bb0d48fd34404aef101d05f'
+            '6088fbbad6b0dac547c95b916cb8c3ef37b621206caa90b40676dd269f2f90f8'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
+
+  mv -T "$srcdir"/uxp platform/
 
   cat > .mozconfig << EOF
 # Comment/uncomment build flags as needed
 
-ac_add_options --enable-application=basilisk
-ac_add_options --enable-release
-ac_add_options --enable-official-branding
-ac_add_options --enable-private-build
-export MOZILLA_OFFICIAL=1
-export MOZ_DATA_REPORTING=0
-export MOZ_TELEMETRY_REPORTING=0
-export MOZ_SERVICES_HEALTHREPORT=0
+#ac_add_options --enable-release
+#ac_add_options --enable-official-branding
+#export MOZILLA_OFFICIAL=1
+#export MOZ_DATA_REPORTING=0
+#export MOZ_TELEMETRY_REPORTING=0
+#export MOZ_SERVICES_HEALTHREPORT=0
 
+ac_add_options --enable-application=basilisk
+ac_add_options --enable-private-build
 ac_add_options --prefix=/usr
 ac_add_options --enable-strip
 ac_add_options --enable-install-strip
@@ -84,37 +89,32 @@ ac_add_options --disable-maintenance-service
 #ac_add_options --disable-jack
 
 #mk_add_options MOZ_MAKE_FLAGS="-j4"
-mk_add_options PYTHON=/usr/bin/python2
+#mk_add_options PYTHON=/usr/bin/python2
 EOF
 }
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
 
   export CC=gcc-10
   ./mach build
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
 
   export CC=gcc-10
-
   DESTDIR="$pkgdir" ./mach install
 
   # Install icons and .desktop for menu entry
   local _i
-  for _i in 16 22 24 32 64 48 256; do
-    install -Dm644 "basilisk/branding/official/default${_i}.png" \
+  for _i in 16 32 48; do
+    install -Dm644 "basilisk/branding/unofficial/default${_i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/basilisk.png"
   done
-  # The 128x128, 192x192, and 384x384 icons have different names
-  install -Dm644 basilisk/branding/official/mozicon128.png \
+  # The 128x128 icon have different name
+  install -Dm644 basilisk/branding/unofficial/mozicon128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/basilisk.png"
-  install -Dm644 basilisk/branding/official/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/basilisk.png"
-  install -Dm644 basilisk/branding/official/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/basilisk.png"
 
   install -Dm644 "$srcdir/browser.desktop" \
     "$pkgdir/usr/share/applications/basilisk.desktop"
