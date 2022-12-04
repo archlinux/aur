@@ -2,22 +2,15 @@
 
 post_install() {
 	echo "Use 'clonehero' or the desktop file to run the game and place your "\
-"songs + customs in '~/Clone Hero/{Songs,Custom}' (the folders will be "\
-"created upon launching the game for the first time)."
+"songs/customs in '~/.clonehero/{Songs,Custom}'."
 }
 
 post_upgrade() {
-	# Check if the user has upgraded from a version older than v1.0.0.3805, as
-	# that one has changed where CH looks for files (using an user folder
-	# instead of trying to read from the folder with the executable).
-
 	previous=$2
-	older=$(printf "$previous\nv1.0.0.3805" | sort -V | head -n1)
+	older=$(printf "$previous\nv1.0.0.4080" | sort -V | head -n1)
 
 	if [[ "$older" = "$previous" ]]; then
 		echo "The folder where Clone Hero looks for songs/customs has "\
-"been changed to '~/Clone Hero/' (previously thie script used "\
-"'<\$XDG_DATA_HOME|~/.local/share>/clonehero') so you will need to move your "\
-"files."
+"been changed to '~/.clonehero/' so you will need to move your files."
 	fi
 }
