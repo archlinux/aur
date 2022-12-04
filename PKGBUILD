@@ -1,34 +1,33 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname=osslsigncode
-pkgver="2.1"
+pkgname="osslsigncode"
+pkgver="2.5"
 pkgrel="1"
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL')
 depends=('curl' 'openssl')
-makedepends=('autoconf' 'automake' 'libtool')
-options=('!makeflags')
+makedepends=('cmake')
 source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c9bf6693abac9bc5172a7373e539410208ff1ee2a656ea214e04cff499519f783cfbf1a1fcda3bc6b949787950f7eaba4e97974b56d2c38992a8e043f4f134f5')
+sha512sums=('b50a7c8a8fb6668e999d9e63a931e5888c31f202ca539b62a385be6bacb03c2d25ac5fabd660c779817f0ebea14e9dfe05cdcb180c1cd25f818c07c28ebd88ce')
 
 prepare() {
-  cd "$srcdir/osslsigncode-${pkgver}"
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --mandir=/usr/share/man \
-    --sbindir=/usr/bin \
-    --bindir=/usr/bin
+  cmake \
+    -B build -S "$srcdir/osslsigncode-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-  cd "$srcdir/osslsigncode-${pkgver}"
-  make
+  cmake --build build
+}
+
+check() {
+  cd build
+  ctest Release
 }
 
 package() {
-  cd "$srcdir/osslsigncode-${pkgver}"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
