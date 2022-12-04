@@ -9,7 +9,7 @@ license=(GPL)
 arch=(any)
 depends=(python python-sortedcontainers)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-source=($pkgname-$pkgver.tar.gz::"https://github.com/AlexandreDecan/$_name/archive/$pkgver.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
 sha256sums=('e85e720f114cc2b9719622c47c6270e58548584027b13a2e82c685069ed21ff4')
 
 build() {
