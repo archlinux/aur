@@ -5,7 +5,7 @@
 pkgname=clonehero
 pkgver=1.0.0.4080
 pkgrel=3
-pkgdesc="Clone Hero is a classic instrument based rhythm game for Windows, Mac, Linux, and Android. It's playable with any 5 or 6 fret guitar controller, any midi drum kit, any game controller and even your keyboard! Jam out with Drums, 5-fret Guitar, or 6-fret Guitar online or local!"
+pkgdesc="Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard."
 arch=('x86_64')
 url="https://clonehero.net/"
 license=('freeware-proprietary')
