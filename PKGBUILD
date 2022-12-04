@@ -16,12 +16,13 @@ depends=("libsecret" "libx11" "libxkbfile")
 
 makedepends=("git" "node-gyp" "nodejs-lts-gallium" "npm" "python")
 
-source=("git+https://github.com/${_pkgname}/${_gitname}.git" "test.js.patch")
+source=("git+https://github.com/${_pkgname}/${_gitname}.git" "atom.desktop.in.patch" "test.js.patch")
 
-sha256sums=("SKIP" "dbb1855822cf5f279fa51df092fd2b5947ce150dfecd3015657e55f2edc11f21")
+sha256sums=("SKIP" "36cd22b6610978686409114361ee32edbb16a021408feb71d44e4e1119e397b4" "cf45abaa2754fdc8c7e7796cf9f3da3c9363126c62f57aed4e4c9075bc496e37")
 
 prepare() {
   pushd ${_gitname}
+  patch --forward --strip=1 --input="${srcdir}/atom.desktop.in.patch"
   patch --forward --strip=1 --input="${srcdir}/test.js.patch"
   if [ -d node_modules ]; then
     node script/clean.js

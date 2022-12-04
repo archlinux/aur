@@ -1,0 +1,13 @@
+diff --git a/resources/linux/atom.desktop.in b/resources/linux/atom.desktop.in
+index 0677341dc..fa8cc243d 100644
+--- a/resources/linux/atom.desktop.in
++++ b/resources/linux/atom.desktop.in
+@@ -2,7 +2,7 @@
+ Name=<%= appName %>
+ Comment=<%= description %>
+ GenericName=Text Editor
+-Exec=env ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false <%= installDir %>/bin/<%= appFileName %> %F
++Exec=env ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false <%= installDir %>/bin/<%= appFileName %> --in-process-gpu --no-sandbox %F
+ Icon=<%= iconPath %>
+ Type=Application
+ StartupNotify=true
