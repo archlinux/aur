@@ -117,11 +117,13 @@ source=(
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+    glslang::git+https://github.com/KhronosGroup/glslang.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     dav1d::git+https://code.videolan.org/videolan/dav1d.git
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    graphene::git+https://github.com/ebassi/graphene.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
@@ -194,10 +196,12 @@ prepare() {
         Vulkan-Headers
         SPIRV-Headers
         Vulkan-Loader
+        glslang
         gst-libav
         ffmpeg
         dav1d
         gst-plugins-rs
+        graphene
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -336,6 +340,8 @@ package() {
 }
 
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
