@@ -8,7 +8,7 @@ url="https://github.com/linuxmint/bulky"
 licence=("GPL3")
 depends=('python-magic' 'xapp' 'python-xapp' 'python-gobject' 'python-setproctitle')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dbe3595a6cdf9e4c191873b4eccc3aa4e2b39586daa6e31b7157a64f9000abef')
+sha256sums=('c4021295340dddff88c098933a4bcd09e74192caa52577cfb1a699cafb39ef9d')
 
 prepare()
 {
