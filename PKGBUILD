@@ -4,7 +4,7 @@
 _pkgname=texreg
 _pkgver=1.38.6
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.38.6
 pkgrel=1
 pkgdesc='Conversion of R Regression Output to LaTeX or HTML Tables'
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
   r-httr
 )
 optdepends=(
+  'pandoc: suggested for using wordregfunction'
   r-aer
   r-alpaca
   r-bergm

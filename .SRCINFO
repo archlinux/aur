@@ -7,6 +7,7 @@ pkgbase = r-texreg
 	license = GPL
 	depends = r
 	depends = r-httr
+	optdepends = pandoc: suggested for using wordregfunction
 	optdepends = r-aer
 	optdepends = r-alpaca
 	optdepends = r-bergm
