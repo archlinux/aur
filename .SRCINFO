@@ -1,7 +1,7 @@
 pkgbase = r-rgeos
 	pkgdesc = Interface to Geometry Engine - Open Source ('GEOS')
 	pkgver = 0.5.9
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=rgeos
 	arch = x86_64
 	license = GPL

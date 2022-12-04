@@ -1,11 +1,13 @@
 # system requirements: GEOS (>= 3.2.0); for building from source: GEOSfrom https://libgeos.org; GEOS OSX frameworks built by WilliamKyngesburye at http://www.kyngchaos.com/ may be used for sourceinstalls on OSX.
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
+# Contributor: getzze <getzze@gmail.com>
 
 _pkgname=rgeos
 _pkgver=0.5-9
 pkgname=r-${_pkgname,,}
 pkgver=0.5.9
-pkgrel=3
+pkgrel=6
 pkgdesc="Interface to Geometry Engine - Open Source ('GEOS')"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
