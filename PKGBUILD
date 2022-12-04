@@ -3,10 +3,10 @@
 _pkgname=ocamlformat
 pkgname="ocaml-$_pkgname"
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 license=('MIT' 'custom:LGPL-2.1-OCaml')
 arch=('x86_64')
-pkgdesc="An OCaml Package"
+pkgdesc="Auto-formatter for OCaml code"
 url="https://github.com/ocaml-ppx/$_pkgname"
 depends=('ocaml>=4.08' 'ocaml-menhir>=20201216' 'ocaml-csexp>=1.4.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uutf>=1.0.1' 'ocaml-stdio' 'ocaml-uuseg>=10.0.0' 'ocaml-re>=1.7.2' 'ocaml-fpath' 'ocaml-odoc-parser>=2.0.0' 'ocaml-odoc-parser<3.0.0' 'ocaml-ocp-indent' 'ocaml-fix' 'ocaml-either' 'ocaml-ocaml-version>=3.3.0')
 makedepends=('dune>=2.8')
