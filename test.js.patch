@@ -9,8 +9,8 @@ index c4e7b6660..ea74432f4 100755
 -  if (process.env.CI && process.platform === 'linux') {
 -    testArguments.push('--no-sandbox');
 -  }
-+  testArguments.push('--no-sandbox');
 +  testArguments.push('--in-process-gpu');
++  testArguments.push('--no-sandbox');
  
    const testEnv = Object.assign({}, prepareEnv('core-main-process'), {
      ATOM_GITHUB_INLINE_GIT_EXEC: 'true'
