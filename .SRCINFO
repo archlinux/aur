@@ -42,7 +42,6 @@ pkgbase = sabnzbd
 	depends = sqlite
 	depends = unrar
 	depends = unzip
-	optdepends = par2cmdline-tbb: par2 multi-threading
 	optdepends = p7zip: for .7z support
 	optdepends = dbus-python: for system power management
 	backup = var/lib/sabnzbd/sabnzbd.ini
