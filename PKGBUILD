@@ -2,7 +2,7 @@
 
 _pkgname=odoc-parser
 pkgname="ocaml-$_pkgname"
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 license=('ISC')
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('ocaml>=4.02.0' 'ocaml-ppx_expect' 'ocaml-astring' 'camlp-streams' 'oca
 makedepends=('dune>=2.8')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tbz")
 options=('!strip')
-sha256sums=('a2bbe8e4201b60e980bab01e96e41f2ba0b05ba3f50b44f75837e8a2fb907d2c')
-sha512sums=('c3339aae880ce72df866746d9ed9e7d38a752bf994ba24e948c086349604007e39602a1c31cf2ddb61ac8f8dc9dceccca43fe185850b83e3a02d75121f9ddfe2')
+sha256sums=('407919fbb0eb95761d6fc6ec6777628d94aa1907343bdca678b1880bafb33922')
+sha512sums=('d2bffa3e9f30471045682e390dcee7a2c1caf3831bca4bd57c16939e782c2e23434e6f1c9887580a1804800b3629ef4c4311a9d418fca5a939f324650d54006e')
 
 build() {
 	cd $_pkgname-$pkgver
