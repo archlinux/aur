@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=github-tags
-_upstreamver='0.0.2'
+_upstreamver='0.0.3'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 
 pkgname=python-$_pkgname
@@ -26,7 +26,7 @@ conflicts=(translate-shell)
 license=(GPLv3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('65b6082b512a96d6bbd4ffdf706ebd513f39bfd0a250139179f80c3e6481c65a')
+sha256sums=('9627b56aa5723c5904440e9f55bad546683d1e25c64cf9ff1fb5f9aa0a9bd0b6')
 
 package() {
 	cd "$srcdir" || return 1
