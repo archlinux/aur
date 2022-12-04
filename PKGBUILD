@@ -3,13 +3,13 @@
 pkgname=emacs-tabbar-git
 epoch=1
 pkgver=2.2.390
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs minor mode that displays a tab bar at the top"
 arch=('any')
 url="https://github.com/dholm/tabbar.git"
 license=('GPL')
 makedepends=('git')
-source=("git://github.com/dholm/tabbar.git")
+source=("git+https://github.com/dholm/tabbar.git")
 md5sums=('SKIP')
 _gitname="tabbar"
 

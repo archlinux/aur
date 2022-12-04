@@ -1,14 +1,13 @@
 pkgbase = emacs-tabbar-git
 	pkgdesc = Emacs minor mode that displays a tab bar at the top
 	pkgver = 2.2.390
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/dholm/tabbar.git
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git://github.com/dholm/tabbar.git
+	source = git+https://github.com/dholm/tabbar.git
 	md5sums = SKIP
 
 pkgname = emacs-tabbar-git
-
