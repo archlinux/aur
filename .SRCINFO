@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 7.0.5
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
@@ -115,6 +115,10 @@ pkgbase = proton
 	makedepends = lib32-libvpx
 	makedepends = sdl2>=2.0.16
 	makedepends = lib32-sdl2>=2.0.16
+	makedepends = libsoup
+	makedepends = lib32-libsoup
+	makedepends = libgudev
+	makedepends = lib32-libgudev
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
@@ -154,6 +158,10 @@ pkgbase = proton
 	depends = lib32-libvpx
 	depends = sdl2>=2.0.16
 	depends = lib32-sdl2>=2.0.16
+	depends = libsoup
+	depends = lib32-libsoup
+	depends = libgudev
+	depends = lib32-libgudev
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
@@ -203,7 +211,7 @@ pkgbase = proton
 	conflicts = proton-native
 	noextract = wine-gecko-2.47.3-x86.tar.xz
 	noextract = wine-gecko-2.47.3-x86_64.tar.xz
-	noextract = wine-mono-7.3.0-x86.tar.xz
+	noextract = wine-mono-7.3.1-x86.tar.xz
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
@@ -232,7 +240,7 @@ pkgbase = proton
 	source = graphene::git+https://github.com/ebassi/graphene.git
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86_64.tar.xz
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.3.0/wine-mono-7.3.0-x86.tar.xz
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.3.1/wine-mono-7.3.1-x86.tar.xz
 	source = 0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
 	source = 0001-AUR-pkgbuild-changes.patch
 	sha256sums = SKIP
@@ -260,7 +268,7 @@ pkgbase = proton
 	sha256sums = SKIP
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
-	sha256sums = 60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd
+	sha256sums = 55ca808868599b1d8ad53b222b8cb26fd96fa818c511163e361238025c76e9fe
 	sha256sums = 11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b
 	sha256sums = b116ce08086513c0a69f7e0071f8b617fa50022c3e7349b69fca6ea4adc08b18
 
