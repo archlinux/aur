@@ -2,8 +2,8 @@
 
 pkgname=ttf-amiri
 pkgver=1.000
-pkgrel=1
-pkgdesc="A Classical Arabic Naskh typeface poineered by Amiria/Bulaq Press in Cairo"
+pkgrel=2
+pkgdesc="A Classical Arabic Naskh typeface pioneered by Amiria/Bulaq Press in Cairo"
 arch=('any')
 url="http://www.amirifont.org/"
 license=('OFL')
