@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Slagmolen <tutul at naheulcraft dot be>
 pkgname=plymouth-theme-manjaro-charge
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A Plymouth theme based on Fedora's Charge theme, but featuring the Manjaro logo and colours."
 arch=('any')
 url='https://gitlab.com/Tutul/plymouth-theme-manjaro-charge'
@@ -14,8 +14,8 @@ source=(
     "https://gitlab.com/api/v4/projects/41563279/packages/generic/manjaro-charge/${pkgver}/manjaro-charge.tar.gz.sig"
 )
 sha256sums=(
-    'bfd15f3d870543552c60a080846d31e45dbf518a50bfe86f656a5603f2998dfb'
-    'b0a82080597122a8e9bccbcb6de6b63a4c122eb23c8ec9230d97c3b1f32b5ce8'
+    '76f2a03807aba290e989d6a07a1ec45b32f86976d374d79bfad68c038273f912'
+    '47d10b1baadfe093a12f65d4e35e669df6507db6fa5b3dfd000ffd89442d2dd7'
 )
 validpgpkeys=('298358B59409045C6951F61ADC773C5B6D417714')
 
