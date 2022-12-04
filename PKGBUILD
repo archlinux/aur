@@ -2,19 +2,26 @@
 
 pkgname="python-ruff"
 _pkgname="ruff"
-pkgver=0.0.155
+pkgver=0.0.157
 pkgrel=1
 pkgdesc="An extremely fast Python linter, written in Rust."
 url="https://github.com/charliermarsh/ruff"
 arch=("any")
-sha256sums=('52925aa07a9aa1cfdf61df4de84ab8db9b0b886482d2fbb4a52361b9b1f591c3')
-filename="ruff-0.0.152-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-source=("https://files.pythonhosted.org/packages/ae/e0/3fbf274133f4291bc50f607c30f7f616623285c5e8f6495e3cc54d1deb59/${filename}")
+sha256sums=('c20b076b43f2f0c8c74ee0cdbeebfbd9b7095963ab8a108ef7f5ed01569c4c56')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 license=("MIT")
 depends=("python")
-makedepends=("python-pip")
+makedepends=("rust" "python-pip" "python-build")
+
+build() {
+  cd "ruff-${pkgver}"
+  python -m venv --system-site-packages build-venv
+  build-venv/bin/pip install maturin
+  build-venv/bin/python -m build --wheel --skip-dependency-check --no-isolation
+}
 
 package() {
-  pip install "${filename}" --root="${pkgdir}/"
+  cd "ruff-${pkgver}"
+  pip install "dist/ruff-${pkgver}-py3-none-linux_x86_64.whl" --root="${pkgdir}/"
 }
 
