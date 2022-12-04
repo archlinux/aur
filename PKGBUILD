@@ -1,6 +1,6 @@
 # Maintainer: Rellieberman <name AT gmail DOT com>
 pkgname=bulky
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Bulk File Renamer"
 arch=("i686" "x86_64")
