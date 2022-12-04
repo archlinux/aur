@@ -1,45 +1,31 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 
-pkgname=python-sqlmodel
-_pkgname="${pkgname#python-}"
-pkgver=0.0.6
+pkgbase='python-sqlmodel'
+pkgname=('python-sqlmodel')
+_module='sqlmodel'
+pkgver='0.0.8'
 pkgrel=1
-pkgdesc="SQL databases in Python, designed for simplicity, compatibility, and robustness"
-arch=('any')
-url="https://sqlmodel.tiangolo.com"
-license=('MIT')
+pkgdesc="SQLModel, SQL databases in Python, designed for simplicity, compatibility, and robustness."
+url="https://github.com/tiangolo/sqlmodel"
 depends=(
-  'python'
-  'python-sqlalchemy'
-  'python-pydantic'
-  'python-sqlalchemy2-stubs'
+	'python'
+	'python-pydantic'
+	'python-sqlalchemy'
+	'python-sqlalchemy2-stubs'
 )
-makedepends=(
-  'python-build'
-  'python-poetry-core'
-  'python-install'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tiangolo/sqlmodel/archive/$pkgver.tar.gz")
-sha512sums=('729cd74a806f3e035e6eae8c2083dc8fbbd89675d1827767bb319d9898ec03e915eb53807e0675ce3b78c83ba95a052e082807a1905ca7a35b7bdf969b231732')
-b2sums=('5cce28a29e4372685158e64e581fedef091f2ea5fbd307871965beefa79a50f912765cd98a2d13e8c454ea1df292d31367fc99e3846783ecbcd0e4c423aec19f')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+b2sums=('d4a849d0bf237c9feb52eed70520b08154d13993c8b996d85fcd33303a965bda40ffc13c0a5ff16710328e44a62e01a4c2728c5c2aceae7a5ef4557a46bd3998')
 
 build() {
-  cd "$_pkgname-$pkgver"
-
-  python -m build \
-    --wheel \
-    --skip-dependency-check \
-    --no-isolation
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-
-  python -m install \
-    --optimize=1 \
-    --destdir="$pkgdir" \
-    dist/*.whl
-
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
