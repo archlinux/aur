@@ -1,11 +1,12 @@
 # system requirements: little-endian platform
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=feather
 _pkgver=0.3.5
 pkgname=r-${_pkgname,,}
 pkgver=0.3.5
-pkgrel=4
+pkgrel=7
 pkgdesc="R Bindings to the Feather 'API'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
