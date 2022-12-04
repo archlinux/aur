@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-quake-mode-git
-pkgver=5+0+g5445e7c
+pkgver=8+1+gd300dfd
 pkgrel=1
 pkgdesc='Adds support quake-mode for any application'
 arch=('any')
@@ -22,14 +22,18 @@ pkgver() {
 
 build() {
 	cd gnome-shell-extension-quake-mode
-	glib-compile-schemas quake-mode@repsac-by.github.com/schemas/
+	gnome-extensions pack --force --extra-source={quakemodeapp,indicator,util}.js quake-mode@repsac-by.github.com
 }
 
 package() {
 	cd gnome-shell-extension-quake-mode
 
-	install -d "$pkgdir/usr/share/gnome-shell/extensions"
-	cp     -rt "$pkgdir/usr/share/gnome-shell/extensions" quake-mode@repsac-by.github.com
+	local destdir="$pkgdir/usr/share/gnome-shell/extensions/quake-mode@repsac-by.github.com"
+
+	install -d "$destdir"
+	bsdtar -C "$destdir" --exclude schemas/ -xf quake-mode@repsac-by.github.com.shell-extension.zip
+
+	install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" quake-mode@repsac-by.github.com/schemas/com.github.repsac-by.quake-mode.gschema.xml
 
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
