@@ -4,14 +4,14 @@
 pkgname=ratarmount-git
 _pkgname="${pkgname%-git}"
 pkgver=0.12.0.r1.gc25a2bd
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Mount tar file using fuse with fast read-only random access (git version)"
 arch=('any')
 url="https://github.com/mxmlnkn/$_pkgname"
 license=('MIT')
 depends=(
-	'python-fusepy'
+	'python-fuse'
 	'python-msgpack'
 	'python-rapidjson'
 	'python-ujson'
@@ -25,6 +25,7 @@ optdepends=(
 	'python-indexed-gzip: Support for gzip-compressed tar files'
 	'python-indexed-zstd: Support for zstd-compressed tar files'
 	'python-indexed-bzip2: Support for bzip2-compressed tar files'
+	'python-rarfile: Support for rar-compressed tar files'
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
