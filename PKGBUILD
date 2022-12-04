@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
 _LLL_VER=5.15
-_LLL_SUBVER=66
+_LLL_SUBVER=80
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -95,7 +95,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'aa9c881589d3f97b07f3b9b29c2ea4f15ffd03dcc6ab5b6dec237397d1de968a'
+            '62aa80542ab65fe49bbf7fba32696f46923b6ca55cb29d9423f51ebb2ed7698e'
             '34c9791cc0cacab354bdb0b283e1d429367bb78a060f89b1ef5a9add5880e339'
             '05371d7a0b55daa630c7a9124798a06451d8ab2af4520d33e554995cc47bd5eb'
             '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
