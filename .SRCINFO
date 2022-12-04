@@ -1,7 +1,7 @@
 pkgbase = r-styler
 	pkgdesc = Non-Invasive Pretty Printing of R Code
 	pkgver = 1.8.1
-	pkgrel = 3
+	pkgrel = 5
 	url = https://cran.r-project.org/package=styler
 	arch = any
 	license = MIT
