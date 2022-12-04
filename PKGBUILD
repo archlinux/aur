@@ -3,14 +3,15 @@
 pkgname=('panamax-git')
 _gitname=('panamax')
 pkgver=r163.fc5d081
-pkgrel=1
+pkgrel=2
 pkgdesc="Mirror rustup and crates.io repositories, for offline Rust and cargo usage"
 url="https://github.com/panamax-rs/panamax"
 license=('Apache' 'MIT')
 source=('git+https://github.com/panamax-rs/panamax.git')
 b2sums=('SKIP')
 arch=('x86_64')
-makedepends=('cargo' 'git')
+depends=('git')
+makedepends=('cargo')
 provides=('panamax')
 conflicts=('panamax')
 
