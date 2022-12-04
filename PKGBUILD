@@ -1,5 +1,5 @@
 # Maintainer: hafeoz <hafeoz@kolabnow.com>
-pkgname=synapse_auto_compressor
+pkgname=synapse-auto-compressor
 _pkgname=rust-synapse-compress-state
 pkgver=0.1.3
 pkgrel=1
