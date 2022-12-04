@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=CompQuadForm
 _pkgver=1.4.3
 pkgname=r-${_pkgname,,}
 pkgver=1.4.3
-pkgrel=4
+pkgrel=9
 pkgdesc='Distribution Function of Quadratic Forms in Normal Variables'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
