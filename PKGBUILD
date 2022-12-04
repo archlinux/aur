@@ -3,7 +3,7 @@
 _pkgname=omd
 pkgname="ocaml-$_pkgname"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 license=('ISC')
 arch=('x86_64')
 pkgdesc="Markdown library and tool in OCaml"
@@ -24,6 +24,5 @@ build() {
 package() {
 	cd $_pkgname
 	DESTDIR="$pkgdir" dune install $_pkgname --prefix "/usr" --libdir "/usr/lib/ocaml" --docdir "/usr/share/doc"
-	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s /usr/share/doc/$_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
