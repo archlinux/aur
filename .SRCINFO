@@ -1,11 +1,12 @@
 pkgbase = python-certbuilder
 	pkgdesc = Python library for generating and signing X.509 certificates
 	pkgver = 0.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wbond/certbuilder
 	arch = any
 	license = custom:MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-asn1crypto
 	depends = python-oscrypto
@@ -15,4 +16,3 @@ pkgbase = python-certbuilder
 	sha256sums = 3ef40aca4f8f13ab0431c203148085a228c85ec64f30d6a06438f304552e958f
 
 pkgname = python-certbuilder
-
