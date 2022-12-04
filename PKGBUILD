@@ -2,13 +2,13 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 
 pkgname=hotspot-git
-pkgver=v1.3.0.r152.g1906fb4
+pkgver=v1.4.0.r37.g976b6a7
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
 url="https://github.com/KDAB/hotspot"
 license=('GPL2')
-depends=('elfutils' 'kcoreaddons' 'kddockwidgets' 'ki18n' 'kconfig' 'kio' 'kitemviews'  'kitemmodels' 'kconfigwidgets' 'libelf' 'qt5-base>=5.6.0' 'solid' 'threadweaver')
+depends=('elfutils' 'kcoreaddons' 'kddockwidgets' 'ki18n' 'kconfig' 'kio' 'kitemviews'  'kitemmodels' 'kconfigwidgets' 'kparts' 'libelf' 'qt5-base>=5.6.0' 'solid' 'threadweaver')
 makedepends=('git' 'cmake>=3.1.0' 'extra-cmake-modules' 'desktop-file-utils')
 optdepends=('rustc-demangle>=0.1.18-2: rustc symbols demangling') 
 provides=("${pkgname%-git}")
@@ -36,5 +36,5 @@ build() {
 package() {
     cd "${pkgname%-git}"
     DESTDIR="${pkgdir}/" cmake --install .
-    desktop-file-install hotspot.desktop --dir="${pkgdir}/usr/share/applications/"
+    desktop-file-install com.kdab.hotspot.desktop --dir="${pkgdir}/usr/share/applications/"
 }
