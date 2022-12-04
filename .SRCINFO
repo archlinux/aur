@@ -1,13 +1,13 @@
 pkgbase = semaphoreci-cli
 	pkgdesc = Command line tool for the Semaphore CI service
-	pkgver = 0.26.3
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://github.com/semaphoreci/cli
 	install = semaphoreci-cli.install
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = semaphoreci-cli-0.26.3.tar.gz::https://github.com/semaphoreci/cli/archive/v0.26.3.tar.gz
-	sha256sums = 8107a17f8bb9ec5adf0a1a37b45d4609fd467a5ac607d94839cdec766b3e50e4
+	source = semaphoreci-cli-0.26.4.tar.gz::https://github.com/semaphoreci/cli/archive/v0.26.4.tar.gz
+	sha256sums = 8bf3e7fdf0bb86991e4cecfae8549895a706b586e3e12d973c393b6f07ce7d9e
 
 pkgname = semaphoreci-cli
