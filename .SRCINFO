@@ -1,0 +1,15 @@
+pkgbase = ocaml-either
+	pkgdesc = Compatibility Either module
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mirage/either
+	arch = x86_64
+	license = MIT
+	makedepends = dune>=2.0
+	depends = ocaml
+	options = !strip
+	source = https://github.com/mirage/either/releases/download/1.0.0/either-1.0.0.tbz
+	sha256sums = bf674de3312dee7b7215f07df1e8a96eb3d679164b8a918cdd95b8d97e505884
+	sha512sums = 147854c09f897dd028b18a9f19acea8666107aaa7b1aab3c92f568af531364f57298edcaf3897d74246d3857d52e9bfb7ad0fc39220d988d9f14694ca1d5e9ed
+
+pkgname = ocaml-either
