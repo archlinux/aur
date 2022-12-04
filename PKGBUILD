@@ -1,10 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=R.cache
 _pkgver=0.16.0
 pkgname=r-${_pkgname,,}
 pkgver=0.16.0
-pkgrel=1
+pkgrel=4
 pkgdesc='Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"

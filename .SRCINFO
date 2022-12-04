@@ -1,7 +1,7 @@
 pkgbase = r-r.cache
 	pkgdesc = Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=R.cache
 	arch = any
 	license = LGPL
