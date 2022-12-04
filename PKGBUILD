@@ -32,7 +32,7 @@ source_aarch64=(
     )
 
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
-            'a2997f604a486e264f6fc5344164ae9e1a9a01282006a41784dd181f7d1a2913'
+            'SKIP'
             '4c0a9de624905e3717b0dd4effa24fbf5c79ad28221b3b3b15a4a0aca4d47e03')
 sha256sums_x86_64=('adaf7a0e3e3ba7e92d2c7fba92bf8b7208bd3acb4f1f82fe10a275e794622d65')
 sha256sums_aarch64=('2d8139d943facdaee6c1a841d8765c379242ae4bcb4d5dc86a0c8547c12ba1d0')
