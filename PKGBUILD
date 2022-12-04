@@ -18,7 +18,12 @@ build(){
    echo "Append aimp (shell):/usr/bin/aimp"
    #save patch
    echo "#!/usr/bin/sh
-/usr/bin/wine '/opt/aimp/AIMP/AIMP.exe' \"\$@\"" > aimp 
+#Convert Linux paths to Windows paths. 
+#Example:
+#GNU LINUX | WINDOWS OS
+#    \$HOME = %USERPROFILE%\\ (etc).
+_paths=\$(winepath --windows \"\$@\")
+/usr/bin/wine start /unix '/opt/aimp/AIMP/AIMP.exe' \${_paths}" > aimp 
 }
 
 package(){
