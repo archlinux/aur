@@ -1,19 +1,17 @@
-# Maintainer: Santiago Avila Gómez <santiavilag2015@gmail.com>
-
 _npmname=mctranslate-cli
-_npmver=1.0.1
-pkgname=mctranslate-cli # All lowercase
-pkgver=1.0.1
+_npmver=1.0.2
+pkgname=nodejs-mctranslate-cli # All lowercase
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A CLI Tool for translate a sentence into minecraft enchanting alphabet"
 arch=(any)
 url="https://github.com/SantiagoAvila21/MinecraftTranslator"
-license=('GNU General Public License v3.0')
-depends=('nodejs' 'npm' 'java-runtime')
+license=(GNU General Public License v3.0)
+depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(7ec77f25399e0d9f0d0431ec3df2646a92df1e04)
+sha1sums=(20be140b7135108d6afe5357104d7fd8d29caecf)
 
 package() {
   cd $srcdir
