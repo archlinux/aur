@@ -1,35 +1,84 @@
+# Maintainer:  ghesy <ehsan at disroot dot org>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: dcelasun
-# Maintainer : David Phillips <dbphillipsnz gmail dot com>
+# Contributor: David Phillips <dbphillipsnz gmail dot com>
 
-pkgname=wkhtmltopdf-static
-pkgver=0.12.6
-pkgrel=2
-pkgdesc="Shell utility to convert HTML to PDF using Webkit and Qt (upstream static build)"
-arch=('i686' 'x86_64')
-url="https://wkhtmltopdf.org/"
+_name=wkhtmltopdf
+pkgname=${_name}-static
+pkgver=0.12.6.1_r2
+pkgrel=1
+pkgdesc='Shell utility to convert HTML to PDF using Webkit and Qt (upstream static build)'
+url='https://github.com/wkhtmltopdf/packaging'
 license=('GPL3')
-conflicts=('wkhtmltopdf')
-provides=("wkhtmltopdf=${pkgver}")
-depends=('bzip2' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'graphite' 'harfbuzz' 'libjpeg6-turbo' 'libpng' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'libxrender' 'openssl' 'pcre' 'zlib')
-optdepends=('icu48: Rendering from HTML uses unicode character encoding')
+provides=("$_name")
+conflicts=("$_name")
+depends=(
+	'bzip2'
+	'expat'
+	'fontconfig'
+	'freetype2'
+	'gcc-libs'
+	'glibc'
+	'glib2'
+	'graphite'
+	'harfbuzz'
+	'libjpeg6-turbo'
+	'libpng'
+	'libx11'
+	'libxau'
+	'libxcb'
+	'libxcrypt'
+	'libxdmcp'
+	'libxext'
+	'libxrender'
+	'openssl-1.1'
+	'pcre'
+	'zlib'
+)
+optdepends=(
+	'icu48: Rendering from HTML uses unicode character encoding'
+)
 
 # Debian packages are already stripped, so don't bother re-attempting
 options=('!strip')
-source_x86_64=("https://github.com/wkhtmltopdf/packaging/releases/download/${pkgver}-1/wkhtmltox_${pkgver}-1.buster_amd64.deb")
-source_i686=("https://github.com/wkhtmltopdf/packaging/releases/download/${pkgver}-1/wkhtmltox_${pkgver}-1.buster_i386.deb")
-sha256sums_i686=('70f9d119a74e26e350cfe75f0d9d13bda1476ab6642a01f63aa7074ec417956c')
-sha256sums_x86_64=('3e7a93a2ae4a2dd5cccb1b7bcce0eb462c75f05efa314a29499dadfdc5ebc59e')
+
+# debian release codenames:
+#
+#   Forky       TBD
+#   Trixie      TBD
+#   Bookworm    TBD
+#   Bullseye    2021
+#   Buster      2019
+#   Stretch     2017
+#
+_codename='bullseye'
+_version=${pkgver%_*}-${pkgver##*r}
+_ext='deb'
+_source="${url}/releases/download/${_version}/wkhtmltox_${_version}.${_codename}_@ARCH@.${_ext}"
+
+declare -Ag _archmap=(
+	[x86_64]=amd64
+	[i386]=i386
+	[aarch64]=arm64
+	[ppc64le]=ppc64el
+)
+arch=("${!_archmap[@]}")
+
+for _a1 in "${!_archmap[@]}"; do
+	_a2=${_archmap[$_a1]}
+	_s=${_source/@ARCH@/$_a2}
+	_n="${_name}-${_version}-${_a1}.${_ext}"
+	declare -ag "source_${_a1}=(${_n}::${_s})"
+done
 
 package() {
-	tar -xJf data.tar.xz -C "${pkgdir}"
-
-	cd "${pkgdir}"
-
-	mkdir -p usr
-
-	mv "usr/local/share/"* usr/share/
-	rmdir usr/local/share
-	mv "usr/local/"* usr/
-	rmdir usr/local
+	tar -xf data.tar.xz
+	mkdir -p "${pkgdir}/usr/"
+	cp -a usr/local/* -t "${pkgdir}/usr/"
+	cp -aT usr/share "${pkgdir}/usr/share"
 }
+
+sha256sums_i386=('35ff064a6bfdd39aa5a193b021de09d5add48ff1cb99e2e881bb81b880358779')
+sha256sums_aarch64=('3344e3a72f4cb4c1218cf48ac5fa9e88bef62aa7fa6f2295be7d5bc1fef100b1')
+sha256sums_ppc64le=('82a9845aad7a76fdf386156407ab41242c9c6ee686d4f5fa02b3383f7c553c37')
+sha256sums_x86_64=('50a3c5334d1fb21349f8ec965fc233840026c376185e3aa75373e6e7aa3ff74d')
