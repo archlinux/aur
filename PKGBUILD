@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-just-perfection-desktop
 pkgver=22
 _commit=9d3249c5cee0b3f809a733698d485fbe3a8e1ae3
-pkgrel=1
+pkgrel=2
 pkgdesc='Just Perfection GNOME Shell Desktop'
 arch=(any)
 url=https://gitlab.gnome.org/jrahmatzadeh/just-perfection
@@ -23,4 +23,5 @@ package() {
 	_extensiondir="/usr/share/gnome-shell/extensions/just-perfection-desktop@just-perfection"
 	install -d "$pkgdir$_extensiondir"
 	unzip just-perfection-desktop@just-perfection.shell-extension.zip -d "$pkgdir$_extensiondir"
+	install -Dm644 src/schemas/org.gnome.shell.extensions.just-perfection.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas"
 }
