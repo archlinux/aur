@@ -3,15 +3,15 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=bzflag
-pkgver=2.4.24
+pkgver=2.4.26
 pkgrel=1
 pkgdesc='Multiplayer 3D tank battle game'
 url='https://bzflag.org/'
 license=('LGPL')
 arch=('x86_64')
 depends=('curl' 'glew' 'glu' 'sdl2' 'c-ares')
-source=("https://download.bzflag.org/bzflag/source/${pkgver}/bzflag-${pkgver}.tar.bz2")
-sha256sums=('5f8131beb7fc8ba51e323a06ecd7d8eab91537c342ce87a113e5eb6ea98ce3c4')
+source=("https://download.bzflag.org/bzflag/source/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('01830405ff26ad1dc595a7e0695c824c2786e678868d9ff822aeb14ac7481014')
 
 build() {
   cd ${pkgname}-${pkgver}
