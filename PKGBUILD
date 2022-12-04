@@ -6,8 +6,8 @@
 pkgname='python-fusepy'
 _module=${pkgname#python-}
 pkgver=3.0.1
-pkgrel=4
-pkgdesc='Simple ctypes bindings for FUSE'
+pkgrel=5
+pkgdesc='Simple ctypes bindings for FUSE (no active development)'
 url='https://github.com/fusepy/fusepy'
 arch=('any')
 license=('custom:ISCL')
