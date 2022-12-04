@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=ryusak
-pkgver=1.5.0
+pkgver=1.6.0
 _electron=electron
 pkgrel=1
 pkgdesc="Allows you to download saves and shaders for Switch emulators."
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ecks1337/RyuSAK/archive
 "${pkgname}.sh"
 "${pkgname}.desktop"
 )
-sha256sums=('6e40b2db08b9208c4929db2a3ac198922ab3a01a42c72f4872eb33452c8e4327'
+sha256sums=('6f3aed53936af8236ba2a5afd2507776d5cb78c9651b95d52cc1fe75a7ec19fd'
             'a77f6380eb5a6a24b332c4547fc3b6417259ce31481ed5ae3981731efc3fe86e'
             'c3606d69fe492931c2ee96cd98e289d3dc7300bcd5ed41f4488d3264ef317e20')
 
@@ -25,6 +25,7 @@ prepare(){
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+	jq 'del(.devDependencies."macos-alias")' package.json | sponge package.json
 
 	convert src/assets/icon.ico -thumbnail 128x128 -alpha on -background none -flatten ${pkgname}.png
 	sed -i "s|_ELECTRON_|${_electron}|" $srcdir/${pkgname}.sh
