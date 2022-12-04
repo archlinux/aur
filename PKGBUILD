@@ -25,5 +25,5 @@ package() {
 	cd $_pkgname
 	DESTDIR="$pkgdir" dune install $_pkgname --prefix "/usr" --libdir "/usr/lib/ocaml" --docdir "/usr/share/doc"
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s /usr/share/doc/$_pkgname/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s /usr/share/doc/$_pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
