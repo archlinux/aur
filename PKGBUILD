@@ -2,7 +2,7 @@
 # Contributor: Jitang Zheng <jitang dot zheng at gmail dot com>
 
 pkgname=google-fruit
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Fruit, a dependency injection framework for C++."
 arch=('i686' 'x86_64' 'pentium4' 'i486')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('boost' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/google/fruit/archive/v${pkgver}.tar.gz")
-sha256sums=('b35b9380f3affe0b3326f387505fa80f3584b0d0a270362df1f4ca9c39094eb5')
+sha256sums=('134d65c8e6dff204aeb771058c219dcd9a353853e30a3961a5d17a6cff434a09')
 
 build() {
   mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
