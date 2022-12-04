@@ -4,7 +4,7 @@
 # Contributor: osiixy <osiixy at gmail dot com>
 
 pkgname=penguins-eggs
-pkgver=9.3.7 # autoupdate
+pkgver=9.3.10 # autoupdate
 pkgrel=1
 pkgdesc="A terminal utility which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot"
 arch=('any')
@@ -18,14 +18,14 @@ license=('GPL2')
 #sha256sums=('SKIP')
 #pkgver() {
 #	 cd ${srcdir}/${pkgname}
-#   grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'#
+#   grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
 #	  cd ..
 #	 mv ${srcdir}/${pkgname} ${srcdir}/${pkgname}-${pkgver}
 #}
 
 # from release
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e6cca6b3b266287a5d49a0f2dbe097790fa5c812daafb909431b1eb4ec08fd5e')
+sha256sums=('ea1468f54ad134f4dd91b84811a00668647627b00f9a26b43099418494ca70fb')
 
 options=('!strip')
 makedepends=('npm')

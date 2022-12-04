@@ -25,7 +25,7 @@ makepkg -srcCi
 ## add calamares installer (optional)
 ```sudo eggs calamares --install```
 
-(*) Note: this option don't work at the moment on Arch.
+(*) Note: this option don't work at the moment on Arch, you can build it following [penguins-calamares-arch](https://github.com/pieroproietti/penguins-calamares-arch)
 
 ## Create your first iso (default)
 All the users will be removed from your live system.
@@ -52,6 +52,8 @@ You can add the flag --backup: all users will be saved crypted in a LUKS volume 
 ## Copy your iso image and boot the son of your system
 You can use ventoy, simple USB with balena etcher or similar, iso file with proxmox ve, virtualbox, vmware etc.
 
+# Binaries
+It would be very useful to have the binaries for penguins-eggs and calamares freely created and shared by the community from the PKGBUILDs in AUR, if anyone wants to help can contact [me](https://t.me/penguins_eggs).
 
 # Develop and collaborations link
 * facebook group: [facebook group](https://www.facebook.com/groups/128861437762355)
