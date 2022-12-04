@@ -1,0 +1,18 @@
+pkgbase = ocaml-fpath
+	pkgdesc = File system paths for OCaml
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://erratique.ch/software/fpath
+	arch = x86_64
+	license = ISC
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg>=0.9.0
+	makedepends = opam
+	depends = ocaml>=4.03.0
+	depends = ocaml-astring
+	options = !strip
+	source = https://erratique.ch/software/fpath/releases/fpath-0.7.3.tbz
+	md5sums = 0740b530e8fed5b0adc5eee8463cfc2f
+
+pkgname = ocaml-fpath
