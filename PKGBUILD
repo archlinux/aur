@@ -3,7 +3,7 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=107.0
+pkgver=107.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -30,9 +30,9 @@ _uploadpath_sig_aarch64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aar
 _uploadpath_sig_x86_64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('e8ccfe6c9690eb63602796999a04c4c14e639a1a9dead118df5d0f2b4f65b14c'
+sha256sums_x86_64=('4182ce38714bca0d78a54b243304e8e380058dce7be35e2139cb4653ec20c343'
                    'SKIP')
-sha256sums_aarch64=('7258c9edc1222afc1a83f327c4bcf01dc7e72ad2ae3205b0240b3c3a8bd924b9'
+sha256sums_aarch64=('36a37aca89e94fc8a0a22508a6a1169f1e1c034792bccf55c69accf732c4d5ee'
                     'SKIP')
 
 package() {
