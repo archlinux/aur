@@ -4,7 +4,7 @@
 pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
 pkgver=4.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
@@ -14,10 +14,8 @@ makedepends=('cmake' 'git' 'rust'
              'libusb' 'power-profiles-daemon' 'supergfxctl' 'systemd')
 conflicts=('asusctl-git')
 _commit=14bf07ba79ae86103d1caf06cd09c36e78b5a8e2 # tags/4.5.2^0
-source=("git+${url}.git#commit=$_commit"
-        "asusd-nohwdep.service")
-sha256sums=('SKIP'
-            'f6cf6fe6e379f29282c503351cf7e09c5141572c9acc183b934764099958e4d2')
+source=("git+${url}.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgbase}"
@@ -54,9 +52,6 @@ package_asusctl() {
 
   cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
-
-  install -Dm 644 "${srcdir}/asusd-nohwdep.service" \
-    -t "${pkgdir}/usr/lib/systemd/system"
 
   _pick rogcc "${pkgdir}/usr/bin/rog-control-center" \
      "${pkgdir}/usr/share/applications/rog-control-center.desktop" \

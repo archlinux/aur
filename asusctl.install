@@ -5,11 +5,5 @@ post_upgrade() {
       systemctl daemon-reload
       systemctl restart asusd.service
   fi
-    if [ $(systemctl is-active asusd-nohwdep.service) == "active" ]
-    then
-      printf ":: asusd is running, and requires a restart of the service…\n"
-      systemctl daemon-reload
-      systemctl restart asusd-nohwdep.service
-  fi
 }
 
