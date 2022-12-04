@@ -43,6 +43,8 @@ JIT="YES"         # Enable native just-in-time compilation with libgccjit availa
 
 AOT=              # Compile all elisp files provided by upstream.
 
+TRAMPOLINES=      # Compile jitted elisp files with trampolines.
+
 CLI=              # CLI only binary.
 
 GPM=              # Mouse support in Linux console using gpmd.
@@ -75,6 +77,8 @@ XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 
 SITTER="YES"      # Use tree-sitter incremental language parsing.
                
+NOSQLITE3=        # Disable sqlite3 support.
+
 DOCS_HTML=        # Generate and install html documentation.
                
 DOCS_PDF=         # Generate and install pdf documentation. You need
@@ -202,6 +206,16 @@ if [[ $SITTER == "YES" ]]; then
   fi
 fi
 
+if [[ $NOSQLITE3 == "YES" ]]; then
+  true
+else
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'sqlite3' );
+  else
+    depends+=( 'sqlite3' );
+  fi
+fi
+
 if [[ $GPM == "YES" ]]; then
   if [[ $CLI == "YES" ]]; then
     depends_nox+=( 'gpm' );
@@ -322,6 +336,10 @@ if [[ $SITTER == "YES" ]]; then
   _conf+=( '--with-tree-sitter' );
 fi
 
+if [[ $NOSQLITE3 == "YES" ]]; then
+  _conf+=( '---without-sqlite3' );
+fi
+
 if [[ $GPM == "YES" ]]; then
     true
 else
@@ -354,6 +372,12 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   #cd "$srcdir/emacs-git/lisp"
   #make autoloads
   #cd ../build
+
+  if [[ $TRAMPOLINES == "YES" ]] && [[ $JIT == "YES" ]] ; then
+    make trampolines;
+  else
+    make
+  fi
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
