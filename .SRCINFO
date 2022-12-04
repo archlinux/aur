@@ -1,7 +1,7 @@
 pkgbase = r-here
 	pkgdesc = A Simpler Way to Find Your Files
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=here
 	arch = any
 	license = MIT
