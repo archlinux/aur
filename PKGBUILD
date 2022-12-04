@@ -1,10 +1,10 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 31-Aug-2022
+# 04-Dec-2022
 #
 
 pkgname=c-evo-dh
 pkgbase=c-evo
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-eh')
 source=("https://sourceforge.net/projects/c-evo-eh/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('b4eadc87b8729ebc5e57e41a0a257044ed7e07eafc1d7ea413bd9bfc493001c1')
+sha256sums=('b84e48e245551d673c65c9c07d1a96b577401fd4fc0fa8fc00c531b3fc99098d')
 #options=(debug !strip)
 
 

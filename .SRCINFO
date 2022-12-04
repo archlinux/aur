@@ -1,6 +1,6 @@
 pkgbase = c-evo
 	pkgdesc = C-evo: Distant Horizon, Empire Building Game
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://sourceforge.net/projects/c-evo-eh/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = c-evo
 	conflicts = c-evo
 	conflicts = c-evo-bin
 	conflicts = c-evo-eh
-	source = https://sourceforge.net/projects/c-evo-eh/files/Source/c-evo-dh_1.2.orig.tar.xz
-	sha256sums = b4eadc87b8729ebc5e57e41a0a257044ed7e07eafc1d7ea413bd9bfc493001c1
+	source = https://sourceforge.net/projects/c-evo-eh/files/Source/c-evo-dh_1.3.orig.tar.xz
+	sha256sums = b84e48e245551d673c65c9c07d1a96b577401fd4fc0fa8fc00c531b3fc99098d
 
 pkgname = c-evo-dh
