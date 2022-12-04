@@ -1,0 +1,15 @@
+pkgbase = grub-theme-minegrub-git
+	pkgdesc = A Grub Theme in the style of Minecraft!
+	pkgver = r19.e267a9f
+	pkgrel = 1
+	url = https://github.com/Lxtharia/minegrub-theme
+	arch = any
+	license = none
+	makedepends = git
+	depends = grub
+	provides = grub-theme-minegrub
+	conflicts = grub-theme-minegrub
+	source = grub-theme-minegrub-git::git+https://github.com/Lxtharia/minegrub-theme.git
+	md5sums = SKIP
+
+pkgname = grub-theme-minegrub-git
