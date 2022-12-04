@@ -4,7 +4,7 @@
 pkgname=kalu-kde
 _pkgname=${pkgname%-kde}
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE Plasma's panel"
 arch=('i686' 'x86_64')
 url='https://github.com/Thulinma/kalu'
