@@ -2,8 +2,8 @@
 
 pkgname=python-baseconv
 pkgver=1.2.2
-pkgrel=1
-pkgdesc="Convert numbers from base 10 integers to base X strings and back again"
+pkgrel=2
+pkgdesc="Convert numbers from base 10 integers to base X strings and back again (no active development)"
 url="https://github.com/semente/python-baseconv"
 depends=('python')
 license=('python')
