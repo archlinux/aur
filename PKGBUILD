@@ -3,10 +3,10 @@
 _pkgname=ocaml-version
 pkgname="ocaml-$_pkgname"
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 license=('ISC')
 arch=('x86_64')
-pkgdesc="An OCaml Package"
+pkgdesc="Manipulate, parse and generate OCaml compiler version strings"
 url="https://github.com/ocurrent/ocaml-version"
 depends=('ocaml>=4.07.0')
 makedepends=('dune>=1.0')
