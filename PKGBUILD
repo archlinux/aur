@@ -2,8 +2,8 @@
 
 pkgname=python-morphys
 pkgver=1.0
-pkgrel=1
-pkgdesc="Smart conversions between unicode and bytes types for common cases"
+pkgrel=2
+pkgdesc="Smart conversions between unicode and bytes types for common cases (no active development)"
 url="https://github.com/mkalinski/morphys"
 depends=('python')
 license=('MIT')
