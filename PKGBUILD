@@ -2,7 +2,7 @@
 
 pkgname=alire
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -29,7 +29,7 @@ git+https://github.com/mosteo/stopwatch#commit=86e7302d29f360f98f568b60157552299
 git+https://github.com/mosteo/toml_slicer#commit=8b9dff0f450394b07ea71f0eb9b39d9c20e21f9c
 )
 b2sums=('7c8bf3eb1f18c022a5d47fbbb38db2e44807d161bf27c3c0efe5275533de977bc50cc348d057fcf57c43071fabef8df5e23cb208e8b1993da06e1170ff126732'
-        '9f18f784b95d782befef1601ea1bacdc2b0869517bbb71c940e68e43dcff702ec36c034e5a6da1a6e0a60221c6d21815c1758498eff1885fad8c65c96a48c1ac'
+        '15799818a362547fa67bc9e614a3ff5b4645e268f48a8a2fe451592410be3d1fae0ff0cc96853e22813e6aa5a2a9a434f8585e26cb4bb1d5b75263177b7b81a6'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -56,7 +56,7 @@ prepare()
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  gprbuild -j0 -P alr_env -cargs -gnatws
+  gprbuild -j0 -P alr_env
 }
 
 #check() {

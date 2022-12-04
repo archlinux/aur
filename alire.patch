@@ -27,7 +27,7 @@ Index: alire-1.2.0/alr_env.gpr
 +                         "../ajunitgen",
 +                         "../ansi-ada",
 +                         "../clic",
-+                         "../gnatcoll-slim",
++                         "../gnatcoll-core",
 +                         "../minirest",
 +                         "../optional",
 +                         "../semantic_versioning",
