@@ -1,6 +1,6 @@
 pkgbase = sticky
 	pkgdesc = A sticky notes app for the Linux desktop
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/linuxmint/sticky
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = sticky
 	depends = xapp
 	provides = sticky
 	conflicts = sticky-git
-	source = sticky-1.12.tar.gz::https://github.com/linuxmint/sticky/archive/refs/tags/1.12.tar.gz
-	sha256sums = db0b4564d910f434bb9c7696f2b7801df236fc9fe932b824c3f97c6ba42e6680
+	source = sticky-1.13.tar.gz::https://github.com/linuxmint/sticky/archive/refs/tags/1.13.tar.gz
+	sha256sums = 0c0fda65396054eddf50c7ef272809db533837c0a5e354e146da87477c084042
 
 pkgname = sticky
