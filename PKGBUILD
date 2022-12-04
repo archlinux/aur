@@ -1,7 +1,7 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 pkgname=libbdplus
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for handling the BD+ protection scheme on bluray discs"
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -11,7 +11,8 @@ source=("ftp://ftp.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${p
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	./configure --prefix=/usr
+        # https://www.mail-archive.com/bug-autoconf@gnu.org/msg04648.html
+	./configure --prefix=/usr --with-gpg-error-prefix=/usr
 	make
 }
 
