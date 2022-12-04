@@ -1,11 +1,11 @@
 pkgbase = ledger-udev
 	pkgdesc = Udev rules to connect a ledger wallet to your linux box
 	pkgver = 1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.ledgerwallet.com
 	install = ledger-udev.install
 	arch = any
-	license = GPL
+	license = Apache
 	depends = udev
 	source = https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/20-hw1.rules
 	sha256sums = e6d262beeb5ce40804ad90ce99716617e3fe046afa85a7b8c24e83362b653221
