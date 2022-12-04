@@ -1,6 +1,6 @@
 # Maintainer: Oshgnacknak <osh@oshgnacknak.de>
 pkgname=jagr-bin
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=0
 epoch=
 pkgdesc='Java AutoGrader, implemented in Kotlin'
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/SourceGrade/Jagr/releases/download/v$pkgver/Jagr-$pkgver.jar"
         'jagr')
-sha256sums=('2947d34baf5a137d014cbdbc41183be69ca4112eabff6f53c7e5357b71c87658'
+sha256sums=('523e862b52415405bc584fc819cc55097b605a4c813d1dff2771d3bceb1c6ba2'
             '8a634d29aa2df6c70b336a4bbfff455a1115708415eb146c96cc4636e90279b2')
 noextract=("Jagr-$pkgver.jar")
 
