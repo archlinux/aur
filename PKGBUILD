@@ -3,31 +3,38 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='A Scala implementation of the Lightning Network (GUI)'
 arch=('any')
 url='https://github.com/ACINQ/eclair'
 license=('Apache')
-depends=('java-environment=11')
-makedepends=('maven' 'unzip')
+depends=('java-environment=11' 'jq')
+makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7ca54626b4e9651b8dd86ef65500378848a1bd9c7d6183545f9dce921ed8c679')
+sha256sums=('cf50fcd9395fdfd271d950c6d0022c02eb25ba802b80382cecf7b50f86468a43')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  mvn package -DskipTests
+  mvn package install -DskipTests
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+#  mvn verify
+# Will enable when upstream fixes
+#  https://github.com/ACINQ/eclair/pull/2493
+#  *** 1 TEST FAILED ***
+#  MempoolTxMonitorSpec:
+#  - transaction confirmed *** FAILED ***
+
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/java"
-  mkdir -p "${pkgdir}/usr/bin"
-  unzip ${pkgname}-${pkgver}/eclair-node-gui/target/eclair-node-gui-${pkgver}-*-bin.zip -d "${pkgdir}/usr/share/java"
-  mv "${pkgdir}/usr/share/java"/eclair* "${pkgdir}/usr/share/java"/eclair
-  cd "${pkgdir}/usr/share/java"/eclair
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/contrib/eclair-cli.bash-completion" -t "${pkgdir}/etc/profile.d/"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/eclair"
-  ln -s /usr/share/java/eclair/bin/eclair-cli "${pkgdir}/usr/bin/eclair-cli"
-  ln -s /usr/share/java/eclair/bin/eclair-node-gui.sh "${pkgdir}/usr/bin/eclair-node-gui"
-  rm bin/eclair-node-gui.bat
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -d "${pkgdir}/opt/${pkgname}"
+  bsdtar xf ${pkgname}-front/target/${pkgname}-front-${pkgver}-*-bin.zip --strip-components=1 -C "${pkgdir}/opt/${pkgname}"
+  bsdtar xf ${pkgname}-node/target/${pkgname}-node-${pkgver}-*-bin.zip --strip-components=1 -C "${pkgdir}/opt/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/contrib/${pkgname}-cli.bash-completion" -t "${pkgdir}/etc/profile.d/"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
