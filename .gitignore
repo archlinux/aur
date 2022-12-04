@@ -1,0 +1,12 @@
+# .gitignore for plasma5-applets-plasma-pstate-git
+
+# ignore built packages (regardless of compression method used)
+*.pkg.t*
+
+# ignore intermediate packaging and build directories
+pkg/
+src/
+
+# ignore makepkg mirror of source git repository
+plasma-pstate/
+

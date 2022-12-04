@@ -1,0 +1,27 @@
+pkgbase = plasma5-applets-plasma-pstate-git
+	pkgdesc = Intel P-state and CPUFreq Manager Widget - git 'dev' branch
+	pkgver = r307.6abb0a9
+	pkgrel = 1
+	url = https://github.com/frankenfruity/plasma-pstate/tree/dev
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ki18n
+	makedepends = kcoreaddons
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-quickcontrols
+	makedepends = qt5-quickcontrols2
+	depends = plasma-framework
+	depends = qt5-graphicaleffects
+	optdepends = libsmbios: Dell's Thermal Management Feature
+	optdepends = x86_energy_perf_policy: For processors without the EPP support EPP i.e. older generations without HWP
+	provides = plasma5-applets-plasma-pstate
+	conflicts = plasma5-applets-plasma-pstate
+	source = plasma-pstate::git+https://github.com/frankenfruity/plasma-pstate.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = plasma5-applets-plasma-pstate-git
