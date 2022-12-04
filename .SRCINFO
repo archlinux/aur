@@ -1,0 +1,14 @@
+pkgbase = synapse_auto_compressor
+	pkgdesc = A tool to compress some state in a Synapse instance's database
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/matrix-org/rust-synapse-compress-state
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = python3
+	makedepends = libjemalloc.so
+	source = synapse_auto_compressor-0.1.3.tar.gz::https://github.com/matrix-org/rust-synapse-compress-state/archive/v0.1.3.tar.gz
+	sha512sums = c80f6a56cfcd85a95d2712d62a806d7beee4e03b40467e4522261ee5a42664df43a77b605b5187e5ebc0b3aa4f50d67bb494031b5243493ce471a0534dd140e7
+
+pkgname = synapse_auto_compressor
