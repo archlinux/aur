@@ -34,7 +34,7 @@ package() {
 
 	local bin
 	bin=trans
-	help2man "$bin" | gzip >"$bin.1.gz"
+	help2man "$pkgdir/usr/bin/$bin" | gzip >"$bin.1.gz"
 	install -D "$bin.1.gz" -t "$pkgdir/usr/share/man/man1"
 	PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"
 	export PYTHONPATH
