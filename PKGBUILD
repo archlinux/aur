@@ -2,14 +2,14 @@
 
 pkgname=utt-bin
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="utt is the universal text transformer"
 license=('MIT')
 arch=('x86_64')
 depends=('java-environment')
 makedepends=('git' 'maven' 'java-environment=11')
 url='https://github.com/queer/utt'
-sha256sums=('1c4dd97545b54883508765c54950d775732d7aa4474335f5fc4a28f607fb2459'
+sha256sums=('746ba41a80ff0017c104eba91160b05e25bd3cdb887b238a7e63289154123b7c'
             '1abf3a062636906baaf58b10925622cf36d8a190134bdca41b99454690194063')
 source=("utt.sh"
         "utt.tar.gz::https://github.com/queer/utt/archive/refs/tags/${pkgver}.tar.gz")

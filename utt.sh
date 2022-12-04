@@ -4,4 +4,4 @@
 #
 # and this worked so?
 
-/usr/bin/env -S java -jar /usr/share/utt/utt.jar
+/usr/bin/env -S java -jar /usr/share/utt/utt.jar "$@"
