@@ -13,7 +13,7 @@ url="https://github.com/py-pdf/$_name"
 license=(BSD)
 depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel python-flit-core)
-source=($pkgname-$pkgver.tar.gz::"https://github.com/py-pdf/$_name/archive/$pkgver.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
 sha256sums=('06c56b265e1e893b89ddbfbdab27c4125efd3901eb094242a137ec40f2efb69c')
 
 build() {
