@@ -7,8 +7,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.17.4
-pkgrel=2
+pkgver=3.0.18
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -96,26 +96,20 @@ conflicts=('vlc' 'vlc-plugin' 'vlc-git')
 replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
+        libplacebo-5.patch
         update-vlc-plugin-cache.hook
-        caca-fix-to-newer-version.patch
-        vlc-live-media-2021.patch
-        dav1d_v1.patch
-        dav1d_v1_limit.patch)
-sha512sums=('dac14c6586603c064294672eb878253e52b3a7bef431fb10303345e5400591b5c1f2d452a2af03f503db0ca186582a84be06fdf05ab011c33f7b0bd5389c51fb'
+        vlc-live-media-2021.patch)
+sha512sums=('6fc8fdaa7e8862ad7133d69b3dab99ab9cd3945846a6ce5e2379b7f68ee9accd385c53b8573fc7c82f732c24678b4932b1154d2ad8accf06305f2f578d6fcd8e'
+            'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'ef479a246dc98f882a05ca56a1c2872cc67ced154c625790070b887858ddc250d55b1295db82c9122e5ecd3c2c9c712ec9718e28d0a9d21ff6a230eb6c5010ce'
-            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc'
-            '5f7aa43a7b248812758a8ef82d15d59fb566327fc3e837002a8f4741cabde09ed7caca905f6fe168554b9a4b7561816b3eff877f4dd6664ceaf0964281facb4f'
-            '4aca4979fe7516ee9d39ae8e2c91c0f981a033ed5c6a74eaf86569df8bbcf72ab0be037f27c8af78f26c23dc181e52bbf4a3e0209e07160fdb03e8fa33e6bc38')
+            '322461cb5e89e4828483dd0a5c6595f99e767885ae9a1aa2e4d0514ac7354f2ee93b3e5c80993dcff7cd218d7af210374724337b3fc8bc196d35ef5e2b41695d')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
-  patch -Np1 < "${srcdir}/caca-fix-to-newer-version.patch"
+  patch -Np1 < "${srcdir}/libplacebo-5.patch"
   patch -Np1 < "${srcdir}/vlc-live-media-2021.patch"
-  patch -Np1 < "${srcdir}/dav1d_v1.patch"
-  patch -Np1 < "${srcdir}/dav1d_v1_limit.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
