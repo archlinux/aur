@@ -1,8 +1,8 @@
 pkgbase = xsnow
 	pkgdesc = Let it snow on your desktop
 	pkgver = 3.6.0
-	pkgrel = 1
-	url = https://sourceforge.net/projects/xsnow/
+	pkgrel = 2
+	url = https://www.ratrabbit.nl/ratrabbit/xsnow/
 	arch = x86_64
 	arch = i386
 	arch = armv7h

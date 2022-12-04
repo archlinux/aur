@@ -2,9 +2,9 @@
 
 pkgname="xsnow"
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Let it snow on your desktop"
-url="https://sourceforge.net/projects/xsnow/"
+url="https://www.ratrabbit.nl/ratrabbit/xsnow/"
 license=("GPL3")
 arch=("x86_64" "i386" "armv7h" "aarch64")
 conflicts=("xsnow-bin" "xsnow-legacy" "xsnow-comp-patch-git")
