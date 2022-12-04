@@ -1,18 +1,15 @@
 pkgbase = ocaml-fix
-	pkgdesc = a least fixed point computation library, using an efficient imperative algorithm
-	pkgver = 20130611
-	pkgrel = 7
-	arch = i686
+	pkgdesc = Algorithmic building blocks for memoization, recursion, and more
+	pkgver = 20220121
+	pkgrel = 1
+	url = https://gitlab.inria.fr/fpottier/fix
 	arch = x86_64
-	license = unknown
-	makedepends = ocaml-findlib
-	makedepends = ocamlbuild
-	depends = ocaml
+	license = custom:LGPL-2.0-only
+	makedepends = dune>=1.3
+	depends = ocaml>=4.03
 	options = !strip
-	options = !makeflags
-	options = staticlibs
-	source = http://gallium.inria.fr/~fpottier/fix/fix-20130611.tar.gz
-	md5sums = 056dec3341ef008458fa722ebf2e3c57
+	source = ocaml-fix-20220121.tar.gz::https://gitlab.inria.fr/fpottier/fix/-/archive/20220121/archive.tar.gz
+	sha256sums = 953bdbe0711f22d92c284adc7be86a9669c5b69ed0fc31ab76f6383ca6eda8ad
+	sha512sums = a851d8783c0c519c6e55359a5c471af433058872409c29a1a7bdfd0076813341ad2c0ebd1ce9e28bff4d4c729dfbc808c41c084fe12a42b45a2b5e391e77ccd2
 
 pkgname = ocaml-fix
-
