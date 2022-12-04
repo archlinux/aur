@@ -1,4 +1,4 @@
-pkgbase = stan
+pkgbase = stan-desktop
 	pkgdesc = Unnofficial Stan desktop application
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = stan
 	source = https://gitlab.com/Stan-desktop/application/-/archive/1.0.2-1/application-1.0.2-1.tar.bz2
 	sha256sums = 1652ba34a5ffc1bb7aa2e1587cbb9422056ba1d7813bac2d3af2e379fd2d4839
 
-pkgname = stan
+pkgname = stan-desktop
