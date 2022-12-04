@@ -1,24 +1,24 @@
 # Maintainer: boonpatrol
 
 pkgname=fvwm3
-pkgver=1.0.4
-pkgrel=5
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="A highly customizable virtual desktop window manager with small memory footprint."
 arch=('x86_64')
 url="https://www.fvwm.org"
 license=('GPL' 'custom')
-depends=('libevent' 'libx11' 'libxrender' 'libxt' )
+depends=('libevent' 'libx11' 'libxrender' 'libxt' 'python' 'libxrandr' )
 provides=('fvwm=3')
 conflicts=('fvwm')
 makedepends=('libxslt' 'asciidoctor')
-optdepends=('fontconfig' 
-            'freetype2' 
-            'fribidi' 
-            'ncurses' 
-            'libpng' 
-            'readline' 
-            'librsvg' 
-            'libsm' 
+optdepends=('fontconfig'
+            'freetype2'
+            'fribidi'
+            'ncurses'
+            'libpng'
+            'readline'
+            'librsvg'
+            'libsm'
             'libxcursor'
             'libxext'
             'libxft'
@@ -27,7 +27,7 @@ optdepends=('fontconfig'
             'sharutils' )
 options=('!emptydirs' '!makeflags')
 source=("https://github.com/fvwmorg/fvwm3/releases/download/${pkgver}/fvwm3-${pkgver}.tar.gz" 'fvwm3.desktop')
-sha256sums=('20877e20ae5ce39266e7d0ea48b013e822d600dd94f5b269955db05a3d50a63b' 
+sha256sums=('c41a7eaf1cbdebcbcc7ffc773bb25cc07879fbce3429633dd0584e8ebc8b1014'
             'e18c21b37219328309ac97b0026778299fc5db8d4aec3a4610287d92cec260db')
 
 build() {
