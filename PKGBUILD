@@ -2,7 +2,7 @@
 
 pkgname=jlc-assistant-bin
 pkgver=5.0.69
-pkgrel=5
+pkgrel=6
 pkgdesc="嘉立创下单助手:该应用为您下单提供便利，快速获取优惠及下单信息，无需在网站等待审核审单！在下单助手下单立享打折优惠！ "
 arch=('x86_64')
 url="https://www.jlc.com/portal/appDownloadsWithConfig.html"
@@ -49,7 +49,7 @@ package() {
     install -Dm0755 /dev/stdin ${pkgdir}/usr/bin/${pkgname%-bin} << EOF
 #!/bin/sh
 
-exec electron /usr/share/jlc-assistant/resources/app.asar " \$@"
+exec electron /usr/lib/jlc-assistant/resources/app.asar " \$@"
 EOF
 
     # LICENSE
