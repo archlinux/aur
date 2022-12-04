@@ -1,17 +1,21 @@
 pkgbase = ratarmount
 	pkgdesc = Mount tar file using fuse with fast read-only random access
-	pkgver = 0.11.3
-	pkgrel = 3
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = https://github.com/mxmlnkn/ratarmount
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python-msgpack
 	depends = python-rapidjson
 	depends = python-ujson
 	depends = python-simplejson
-	depends = python-fuse
+	depends = python-fusepy
 	optdepends = python-indexed-gzip: Support for gzip-compressed tar files
-	source = ratarmount-0.11.3.tar.gz::https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v0.11.3.tar.gz
-	b2sums = 24ce1e522c95d7c77641a505809db66dbbf04b8554b8c1fd9680b8ec600d10316389cd0a87dfa5e6a5c0de24b7747bda4baf1cf82d4f7e6a2fb29ff2110fcde7
+	optdepends = python-indexed-zstd: Support for zstd-compressed tar files
+	optdepends = python-indexed-bzip2: Support for bzip2-compressed tar files
+	optdepends = python-rarfile: Support for rar-compressed tar files
+	source = ratarmount-0.12.0.tar.gz::https://github.com/mxmlnkn/ratarmount/archive/refs/tags/v0.12.0.tar.gz
+	b2sums = ee9130add5243f4fff398d05995cda22cb3546ac78faeadac3589b404bb52d74a17628f99626c4c2636fa9ae23d694d4f2d939a9ac51e6325390edd88789a338
 
 pkgname = ratarmount
