@@ -1,8 +1,9 @@
 pkgbase = liblsdj-git
 	pkgdesc = Library for working with the LSDj save file format
 	pkgver = 2.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/stijnfrishert/libLSDJ
+	changelog = CHANGELOG
 	arch = any
 	license = MIT
 	makedepends = cmake
@@ -12,7 +13,7 @@ pkgbase = liblsdj-git
 	provides = lsdj-mono
 	provides = lsdj-wavetable-import
 	source = liblsdj::git+https://github.com/stijnfrishert/libLSDJ.git
-	source = Catch2::git+https://github.com/catchorg/Catch2.git#tag=v2.13.5
+	source = Catch2::git+https://github.com/catchorg/Catch2.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -1,0 +1,7 @@
+2.1.0-0
+	initial commit to the AUR. For older changes, consult the github repository
+
+2.1.0-1
+	fixed compilation errors in upstream repository
+	removed the workaround in the PKGBUILD
+	added this changelog

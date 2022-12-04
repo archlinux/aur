@@ -3,7 +3,8 @@
 _pkgname=liblsdj
 pkgname=${_pkgname}-git
 pkgver=2.1.0
-pkgrel=0
+pkgrel=1
+changelog=CHANGELOG
 pkgdesc='Library for working with the LSDj save file format'
 arch=('any')
 url='https://github.com/stijnfrishert/libLSDJ'
@@ -11,18 +12,23 @@ license=('MIT')
 provides=('lsdsng-export' 'lsdsng-import' 'lsdj-mono' 'lsdj-wavetable-import')
 depends=()
 makedepends=('cmake' 'git')
-#TODO: set back to original author's repo once they fix the submodule version
 source=("$_pkgname::git+https://github.com/stijnfrishert/libLSDJ.git"
-		"Catch2::git+https://github.com/catchorg/Catch2.git#tag=v2.13.5")
+		"Catch2::git+https://github.com/catchorg/Catch2.git")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-	rm $_pkgname/dependency/Catch2 -drf
-	mv Catch2 $_pkgname/dependency
 	cd $_pkgname
+	echo "init"
+	git submodule init dependency/Catch2
+	echo "url"
+	git config submodule.Catch2.url "$srcdir/Catch2"
+	echo "update"
+	git submodule update --init
+	echo "rest"
 	mkdir build -p
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
+	echo "victory!"
 }
 
 build() {
