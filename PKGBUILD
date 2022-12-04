@@ -1,13 +1,13 @@
 # Maintainer: Angelo Haller <aur.archlinux@szanni.org>
 pkgname=libui-ng-git
-pkgver=alpha4.1.r484.gbaae3e47
-pkgrel=2
+pkgver=alpha4.1.r694.g1adc16c5
+pkgrel=1
 pkgdesc="A portable GUI library for C."
 arch=('x86_64' 'aarch64')
 url="https://github.com/libui-ng/libui-ng"
 license=('MIT')
 depends=('gtk3>=3.10')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson')
 source=("$pkgname"::'git+https://github.com/libui-ng/libui-ng.git')
 sha256sums=('SKIP')
 
@@ -20,11 +20,17 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  mkdir -p build
-  meson build
-  ninja -C build
+  arch-meson build
+  meson compile -C build
   cd build/meson-out
   ln -sf libui.so.0 libui.so
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+
+  # WARNING: These will fail in headless mode!
+  meson test -C build --print-errorlogs
 }
 
 package() {
