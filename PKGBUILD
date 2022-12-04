@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=107.0.5304.10
+pkgver=110.0.5449.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -73,8 +73,8 @@ source=(
         'chromium-dev.svg'
         # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-EnumTable-crash.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-105-swiftshader-no-wayland.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-108-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-108-revert-GlobalMediaControlsCastStartStop.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-cross-compile.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
@@ -91,8 +91,8 @@ sha256sums=(
             '18a2dfc0a56b2fbbeb8ef16a19227b77bf9a6621c6021d04396e52a9a2313034'
             # Patch form Gentoo
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
-            '31620c30a1e6b77fdafbc4be3b499420f7862c30957d43f5962fb346614164db'
-            'adc8fa657a79a7ae19ca9dca3c629ea10eb1d40f239fffcf54c099b8e857c6ac'
+            '779861e51506a29d4a46c9380c0793bb3297624e47536cb8e71240818e7dd093'
+            'cef0477a10e4c6ccac325ce8d0692e1232f5dd461bdfb946d7a7cad868d1cdb9'
             '9f8e90672e7914e1974ea73de48336800204a188b94d8b03e3ddd64a97f5e630'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
             # Misc Patches
@@ -201,6 +201,7 @@ _keeplibs=(
            'third_party/devtools-frontend/src/front_end/third_party/lodash-isequal'
            'third_party/devtools-frontend/src/front_end/third_party/marked'
            'third_party/devtools-frontend/src/front_end/third_party/puppeteer'
+           'third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt'
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
            'third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n'
            'third_party/devtools-frontend/src/third_party'
@@ -237,13 +238,13 @@ _keeplibs=(
            'third_party/libaddressinput'
            'third_party/libaom'
            'third_party/libaom/source/libaom/third_party/fastfeat'
+           'third_party/libaom/source/libaom/third_party/SVT-AV1'
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
            'third_party/libavif'
            'third_party/libevent'
            'third_party/libdrm'
            'third_party/libgav1'
-           'third_party/libgifcodec'
            'third_party/libjingle'
            'third_party/libjxl'
            'third_party/libphonenumber'
@@ -292,7 +293,6 @@ _keeplibs=(
            'third_party/pdfium/third_party/freetype'
            'third_party/pdfium/third_party/lcms'
            'third_party/pdfium/third_party/libopenjpeg'
-           'third_party/pdfium/third_party/libpng16'
            'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/skia_shared'
            'third_party/perfetto'
@@ -306,11 +306,13 @@ _keeplibs=(
            'third_party/protobuf/third_party/six'
            'third_party/pthreadpool'
            'third_party/pyjson5'
+           'third_party/pyyaml'
            'third_party/qcms'
            'third_party/re2'
            'third_party/rnnoise'
            'third_party/s2cellid'
            'third_party/securemessage'
+           'third_party/selenium-atoms'
            'third_party/shell-encryption'
            'third_party/simplejson'
            'third_party/skia'
@@ -325,6 +327,7 @@ _keeplibs=(
            'third_party/swiftshader/third_party/subzero'
            'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv'
            'third_party/swiftshader/third_party/SPIRV-Tools'
+           'third_party/tensorflow_models'
            'third_party/tensorflow-text'
            'third_party/tflite'
            'third_party/tflite/src/third_party/eigen3'
@@ -559,8 +562,8 @@ prepare() {
 
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
-  patch -p1 -i "${srcdir}/chromium-98-EnumTable-crash.patch"
-  patch -p1 -i "${srcdir}/chromium-105-swiftshader-no-wayland.patch"
+  patch -p1 -i "${srcdir}/chromium-108-EnumTable-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-108-revert-GlobalMediaControlsCastStartStop.patch"
   patch -p1 -i "${srcdir}/chromium-cross-compile.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
