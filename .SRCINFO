@@ -1,0 +1,17 @@
+pkgbase = ocaml-astring
+	pkgdesc = Alternative String module for OCaml
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://erratique.ch/software/astring
+	arch = x86_64
+	license = ISC
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg
+	makedepends = opam
+	depends = ocaml>=4.05.0
+	options = !strip
+	source = https://erratique.ch/software/astring/releases/astring-0.8.5.tbz
+	md5sums = e148907c24157d1df43bec89b58b3ec8
+
+pkgname = ocaml-astring
