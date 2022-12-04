@@ -127,6 +127,9 @@ source=(
     0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
     0001-AUR-pkgbuild-changes.patch
 )
+# Optional patches
+source+=(
+)
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
     wine-mono-${_monover}-x86.tar.xz
@@ -273,9 +276,9 @@ build() {
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
-    export RUSTFLAGS="-C opt-level=2 -C target-cpu=nocona"
+    export CFLAGS="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
+    export CXXFLAGS="-O2 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
+    export RUSTFLAGS="-C opt-level=2 -C target-cpu=haswell"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -313,17 +316,20 @@ package() {
         "$pkgdir/usr/share/licenses/${pkgname}"
 
     cd "$_compatdir/${pkgname}/dist"
+    # NOTE: Reduces size by 40 MiB, worth it
     i686-w64-mingw32-strip --strip-unneeded \
         $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
         $(find lib64/wine \( -iname fakedlls -or -iname x86_64-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
 
+    # NOTE: Reduces size by 38 MiB, worth it
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-unneeded \
         $(find "$_geckodir"-x86 -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
         $(find "$_geckodir"-x86_64 -iname "*.dll" -or -iname "*.exe")
 
+    # NOTE: Reduces size by 0.16 MiB, not worth it
     local _monodir="share/wine/mono/wine-mono-${_monover}"
     i686-w64-mingw32-strip --strip-unneeded \
         $(find "$_monodir"/lib/mono -iname "*.dll" -or -iname "*.exe")
@@ -360,4 +366,6 @@ sha256sums=('SKIP'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '60314f255031b2f4dc49f22eacfcd2b3b8b2b491120d703b4b62cc1fef0f9bdd'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
-            '6a7f985afff6085dd81bae09b8b2fe8e028facdcf9837793b21d003fef023d9b')
+            'SKIP')
+sha256sums+=(
+)
