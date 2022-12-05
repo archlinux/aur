@@ -1,6 +1,6 @@
 pkgbase = dune-typetree
 	pkgdesc = Template library for constructing and operating on statically typed trees of objects
-	pkgver = 2.8.0
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-typetree
 	arch = x86_64
@@ -8,13 +8,10 @@ pkgbase = dune-typetree
 	license = custom:GPL2 with runtime exception
 	makedepends = doxygen
 	makedepends = graphviz
-	depends = dune-common>=2.8.0
+	depends = dune-common>=2.9
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://dune-project.org/download/2.8.0/dune-typetree-2.8.0.tar.gz
-	source = https://dune-project.org/download/2.8.0/dune-typetree-2.8.0.tar.gz.asc
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = c759d703c7602524fb883e651286be3c06331ba8f641bc9df18e5cebfa6bb6ac811e41267271e8ea1ea6037bde169b0fdc00d55429e0692584df3a1aa4dcf13d
-	sha512sums = SKIP
+	source = https://gitlab.dune-project.org/staging/dune-typetree/-/archive/releases/2.9/dune-typetree-releases-2.9.tar.gz
+	sha512sums = ad6465dd95a05aee189a859413070755e21d212ad7eff335dbe4792c3cb72d6d8a66987540ff4bc7b6c61f99c465ceb005ef75d05b91cac60a892ab3446e047b
 
 pkgname = dune-typetree
