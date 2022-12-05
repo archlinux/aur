@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 url="https://github.com/knxd/knxd"
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   printf "%s.r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
