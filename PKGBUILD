@@ -2,7 +2,7 @@
 pkgname=lemurs-git
 _pkgname=lemurs
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/coastalwhite/lemurs"
@@ -37,7 +37,5 @@ package() {
 	install -D -m644 extra/config.toml "${pkgdir}/etc/lemurs/config.toml"
 	install -D -m755 extra/xsetup.sh "${pkgdir}/etc/lemurs/xsetup.sh"
 
-	sudo systemctl disable display-manager.service || echo "No current display manager. That's alright!"
 	install -D -m644 extra/lemurs.service "${pkgdir}/usr/lib/systemd/system/lemurs.service"
-	sudo systemctl enable lemurs.service
 }
