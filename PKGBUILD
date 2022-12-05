@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.1_beta18.r3.gee3cd49
+pkgver=1.1.r1.g8953ddc
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -18,20 +18,19 @@ makedepends=('go')
 optdepends=('sing-geosite:  sing-geosite database'
             'sing-geoip:    sing-geoip database')
 
-backup=('etc/sing-box/config.json')
+backup=("etc/${_pkgname}/config.json")
 
 source=("$_pkgname::git+https://github.com/SagerNet/sing-box.git#branch=dev-next")
-sha256sums=('e6b1024d80f7fd9e06c9d02d624e994a4537b0d6078617be499c89dc1c974869')
 sha256sums=(SKIP)
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-\([^-]*\)-\([^-]*\)$/.\1.\2/;s/-/_/'
+    cd "${_pkgname}"
+    git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-\([^-]*\)-\([^-]*\)$/.\1.\2/;s/-//'
 }
 
 _tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
 build(){
-    cd "$_pkgname"
+    cd "${_pkgname}"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -48,9 +47,10 @@ build(){
         -ldflags '-linkmode=external -w -s' \
         ./cmd/sing-box
 
-    sed -i '/^\[Service\]$/a User=sing-box' release/config/${_pkgname}*.service
+    sed -i "/^\[Service\]$/a User=${_pkgname}
+            s/WorkingDirectory=\(.*\)$/WorkingDirectory=-\1\nExecStartPre=+install -o ${_pkgname} -g ${_pkgname} -d -m 0700 \1/" release/config/${_pkgname}*.service
 
-    echo 'u sing-box - "Sing-box Service" - -' > release/config/${_pkgname}.sysusers
+    echo 'u sing-box - "Sing-box Service" - -' > "release/config/${_pkgname}.sysusers"
 }
 
 package() {
@@ -60,5 +60,5 @@ package() {
     install -Dm644 "release/config/config.json"          -t "${pkgdir}/etc/${_pkgname}"
     install -Dm644 "release/config/${_pkgname}.service"  -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "release/config/${_pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "release/config/${_pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d//${_pkgname}.conf"
+    install -Dm644 "release/config/${_pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }
