@@ -1,0 +1,15 @@
+pkgbase = tr7
+	pkgdesc = A Tiny R7RS-small Scheme interpreter intended as an extension language for other applications.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/jobol/tr7
+	arch = x86_64
+	arch = i686
+	license = custom:0BSD
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = https://gitlab.com/jobol/tr7/-/archive/v1.0.0/tr7-v1.0.0.tar.gz
+	md5sums = 197e64f306b586cf651fa351ad816778
+
+pkgname = tr7
