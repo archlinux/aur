@@ -1,6 +1,6 @@
 # Maintainer: Marco Asa <marcoasa90 (at) gmail.com>
 
-pkgname=xfdashboard-minimal-theme
+pkgname=xfdashboard-theme-minimal
 pkgver=20221124
 pkgrel=1
 pkgdesc="Themes for xfdashboard by MaysunFalls"
