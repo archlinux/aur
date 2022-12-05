@@ -25,8 +25,6 @@ done
 
 build() {
   cd coreboot
-  #export CFLAGS="$CFLAGS -Wno-error -Wno-format-security -Wno-error=format-security"
-  #export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-format-security -Wno-error=format-security"
   export CFLAGS=${CFLAGS/-Werror=format-security/}
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
