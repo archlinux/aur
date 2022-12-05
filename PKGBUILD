@@ -1,6 +1,6 @@
 # Maintainer: zehkira <KHNhbWUgYXMgbXkgbmFtZSkgYXQgcG0gbWU=>
 pkgname="myuzi"
-pkgver="v1.13.0"
+pkgver="v1.13.1"
 pkgrel=1
 pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
