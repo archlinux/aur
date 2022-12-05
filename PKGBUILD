@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-todotxt-git
 _pkgname="${pkgname%-*}"
 _pkgdir=todo-txt
-pkgver=30.r10.gd3980f5
+pkgver=39.r5.gf61feb3
 pkgrel=1
 pkgdesc="Todo.txt GUI for gnome-shell. Git version"
 arch=('any')
@@ -28,9 +28,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgdir}"
-  python json2schema.py
+  python tools/json2schema.py
+  python preferences/createPrefsTemplate.py 
   jq '.version="'${pkgver}'"' metadata.json | sponge metadata.json
-  glib-compile-schemas schemas
 }
 
 package() {
