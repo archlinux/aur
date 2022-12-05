@@ -1,0 +1,15 @@
+pkgbase = bootsplash-theme-manjaro-glitch-git
+	pkgdesc = Simple Manjaro Bootsplash with cool glitch effect
+	pkgver = 1.0.r0.g320c1af
+	pkgrel = 2
+	url = https://github.com/parov0z/bootsplash-theme-manjaro-glitch
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	makedepends = git
+	optdepends = bootsplash-systemd: for bootsplash functionality
+	source = git+https://github.com/parov0z/bootsplash-theme-manjaro-glitch.git
+	sha256sums = SKIP
+
+pkgname = bootsplash-theme-manjaro-glitch-git
+	pkgdesc = Simple Manjaro Bootsplash with cool glitch effect
