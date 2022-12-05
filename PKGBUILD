@@ -42,7 +42,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	sudo ninja -C build install
+	DESTDIR="${pkgdir}" ninja -C build install
 	install -Dm755 hyprland-share-picker/build/hyprland-share-picker -t "${pkgdir}/usr/bin"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
