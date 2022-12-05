@@ -1,10 +1,10 @@
 # Maintainer: Your Name <finitodoer@bureau.eu.org>
 pkgname=finitodo
 pkgver=2.0
-pkgrel=2
-pkgdesc="Finitodo is a simple yet versatile graphical task / todo list manager for Linux."
+pkgrel=3
+pkgdesc="Finitodo is a graphical task/todo list manager for Linux that aims to be highly versatile yet not overly complicated. It has robust functionality in areas like reccurence/sorting/filtering but doesn't require digging through lots of menu screens to use."
 arch=(x86_64)
-url="git://gitlab.com/finitodo/finitodo.git"
+url="https://gitlab.com/finitodo/finitodo"
 license=('GPL')
 depends=(gtk3)
 makedepends=(git make)
@@ -19,6 +19,8 @@ build() {
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/bin
-	install -m 755 finitodo/finitodo ${pkgdir}/usr/bin
+	mkdir -p "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/share/applications"
+	install -m 755 finitodo/finitodo "${pkgdir}/usr/bin"
+	install finitodo/Bin/finitodo.desktop "${pkgdir}/usr/share/applications"
 }
