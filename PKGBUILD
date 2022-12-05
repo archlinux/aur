@@ -20,7 +20,7 @@ sha512sums=("7b70abf19bd0ca745baed20998f6bd47c42ac1ce5788f383c47d848bd85dd0e530c
 prepare()
 {
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/ || exit 1
-    # Temporary
+    # Temporary TODO
     cargo update
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
