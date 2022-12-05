@@ -3,7 +3,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.19.0b2.dev1+g84613e7
+pkgver=0.19.1.dev3+g2c44f7d
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -64,12 +64,13 @@ check(){
 
 package() {
   cd "${srcdir}/${_pkgname}"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
+  # systemd
+  install -vDm 644 "contrib/${pkgname}."{service,timer} -t "${pkgdir}/usr/lib/systemd/user/"
+  # man page
+  install -vDm 644 "build/${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
+  # docs
+  install -vDm 644 {AUTHORS,CHANGELOG,README}.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "contrib/vdirsyncer.service" "$pkgdir/usr/lib/systemd/user/vdirsyncer.service"
-  install -Dm 644 "contrib/vdirsyncer.timer" "$pkgdir/usr/lib/systemd/user/vdirsyncer.timer"
-  install -Dm644 docs/_build/man/${_pkgname}.1 \
-    "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
 }
