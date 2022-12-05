@@ -7,12 +7,12 @@ pkgrel=1
 pkgdesc='A server-daemon which provides an interface to a KNX/EIB installation'
 license=('GPL')
 
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('knxd' 'eibd')
 provides=('knxd')
 replaces=('eibd')
-depends=('fmt' 'gcc-libs' 'libev')
-optdepends=('libsystemd' 'libusb')
+depends=('fmt' 'gcc-libs' 'libev' 'libusb')
+optdepends=('libsystemd')
 makedepends=('git' 'libtool' 'autoconf' 'automake' 'pkgconfig')
 
 source=("git+https://github.com/knxd/${_pkgname}.git#branch=main")
