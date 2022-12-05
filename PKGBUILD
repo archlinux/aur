@@ -54,7 +54,9 @@ pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
-makedepends=('pkgconfig' 'cmake' 'clang')
+
+makedepends=('pkgconfig' 'cmake' 'ninja' 'clang')
+
 depends=('wxwidgets-gtk3'
           'webkit2gtk'
           'clang' 'lldb'
@@ -70,12 +72,14 @@ depends=('wxwidgets-gtk3'
           #'python2'
           #'python'
         )
+
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
              'gcc: compiler'
              'gdb: debugger'
              'valgrind: debugger'
             )
+
 conflicts=('codelite')
 
 source=(
@@ -155,9 +159,11 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
-cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
+cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
 #-DCMAKE_INSTALL_RPATH=/opt/wxgtk-dev/lib
-make -C "${BUILD_DIR}"
+
+#make -C "${BUILD_DIR}"
+cmake --build "${BUILD_DIR}"
 
 }
 
