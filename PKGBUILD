@@ -1,16 +1,16 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _gemname=ast-tdl
 pkgname=ruby-${_gemname}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="An experimental and minimalistic Training Description Language for Artificial Sport Trainer"
 arch=(x86_64)
 url="https://github.com/firefly-cpp/${_gemname}"
 license=(MIT)
-depends=(ruby)
+depends=(ruby-enum)
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('18c7e684a71a666736d799300fc729db955184ebbe7b79a773168ae3b0efb3da')
+sha256sums=('d8874b7d7e049797d16dc2c2af3c1dddc4b579877f6b8d10ea6f301614c43d50')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
