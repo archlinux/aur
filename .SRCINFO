@@ -8,6 +8,7 @@ pkgbase = codelite
 	license = GPL
 	makedepends = pkgconfig
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = clang
 	depends = wxwidgets-gtk3
 	depends = webkit2gtk
