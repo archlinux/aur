@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-libbluray
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc='Library to access Blu-Ray disks for video playback (mingw-w64)'
 arch=('any')
@@ -12,7 +12,7 @@ options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git')
 #makedepends=('apache-ant' 'java-environment' 'git' 'mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 #optdepends=('java-runtime: BD-J library')
-_tag=db411ec0f8da97650ac8e6def1c387d0622f3401
+_tag=bb5bc108ec695889855f06df338958004ff289ef
 source=(
   git+https://code.videolan.org/videolan/libbluray.git#tag=${_tag}
   git+https://code.videolan.org/videolan/libudfread.git
@@ -26,14 +26,21 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd libbluray
 
-# Fix build with recent java
-  git cherry-pick -n 8f26777b1ce124ff761f80ef52d6be10bcea323e
+  local git_file_allow=$(git config --global protocol.file.allow)
 
+  git config --global protocol.file.allow always
   for submodule in contrib/libudfread; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git submodule update ${submodule}
   done
+
+  if [ -z "${git_file_allow}" ]
+  then
+    git config --global --unset protocol.file.allow
+  else
+    git config --global protocol.file.allow "${git_file_allow}"
+  fi
 
   autoreconf -fiv
 }
