@@ -1,4 +1,3 @@
-
 pkgname = gau2grid
 pkgver = 2.0.7
 pkgrel = 1
