@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 7.0.5
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
@@ -270,6 +270,6 @@ pkgbase = proton
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 55ca808868599b1d8ad53b222b8cb26fd96fa818c511163e361238025c76e9fe
 	sha256sums = 11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b
-	sha256sums = b116ce08086513c0a69f7e0071f8b617fa50022c3e7349b69fca6ea4adc08b18
+	sha256sums = fd2cde09f42da9509fd0a345c49450acf83f94de97b0166d984223ce33cc1e0e
 
 pkgname = proton
