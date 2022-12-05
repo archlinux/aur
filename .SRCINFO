@@ -1,7 +1,7 @@
 pkgbase = stockfish
 	pkgdesc = A strong UCI chess engine
-	pkgver = 15
-	pkgrel = 3
+	pkgver = 15.1
+	pkgrel = 1
 	epoch = 1
 	url = https://stockfishchess.org/
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = stockfish
 	arch = aarch64
 	license = GPL3
 	depends = glibc
-	source = stockfish-15.zip::https://github.com/official-stockfish/Stockfish/archive/sf_15.zip
-	source = 0001-Provide-network-download-fallback.patch
-	sha512sums = 96e0e5bc11d678c39b4b16286a6e1ec511fd75bcae704422fd65907930dda33bad28aa9b7d24d1d4092cc765dcc2a1fbe3d047916a26a0016e465788512c0913
-	sha512sums = 5698452b96bda981ae4e10ef6495fdc90df0fdf410aa6739e5b2f84eedbeb0fa11613fc0b748d19a9a012f889c62cddc177c718e6c89300c8c11268ccbef1cb6
+	source = stockfish-15.1.zip::https://github.com/official-stockfish/Stockfish/archive/sf_15.1.zip
+	sha512sums = ecc7c5ea7afb4f70b272a342285e99341707ebae994a90e372c1fadd18c228d8f5d64e59b06a8d55d6df6219a307593437658bdde612cf856a7d738e44d316ec
 
 pkgname = stockfish

@@ -9,29 +9,19 @@
 # Contributor: SandaruKasa <echo c2FuZGFydWthc2ErYXVyQHlhLnJ1Cg== | base64 -d>
 
 pkgname=stockfish
-pkgver=15
-pkgrel=3
+pkgver=15.1
+pkgrel=1
 epoch=1
 pkgdesc="A strong UCI chess engine"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
-source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip"
-        "0001-Provide-network-download-fallback.patch")
-sha512sums=('96e0e5bc11d678c39b4b16286a6e1ec511fd75bcae704422fd65907930dda33bad28aa9b7d24d1d4092cc765dcc2a1fbe3d047916a26a0016e465788512c0913'
-            '5698452b96bda981ae4e10ef6495fdc90df0fdf410aa6739e5b2f84eedbeb0fa11613fc0b748d19a9a012f889c62cddc177c718e6c89300c8c11268ccbef1cb6')
-
-prepare() {
-  cd "Stockfish-sf_${pkgver}/src"
-  patch --strip=2 --input="${srcdir}/0001-Provide-network-download-fallback.patch"
-}
+source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip")
+sha512sums=('ecc7c5ea7afb4f70b272a342285e99341707ebae994a90e372c1fadd18c228d8f5d64e59b06a8d55d6df6219a307593437658bdde612cf856a7d738e44d316ec')
 
 build() {
   cd "Stockfish-sf_${pkgver}/src"
-
-  # https://github.com/official-stockfish/Stockfish/issues/4140
-  sed -i 's|tests.stockfishchess.org/api|data.stockfishchess.org|g' Makefile
 
   if [[ "$CARCH" == "armv7h" ]]; then
     _arch=armv7
