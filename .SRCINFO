@@ -1,7 +1,7 @@
 pkgbase = deepin-wayland-protocols-reborn
 	pkgdesc = deepin Specific Protocols for Wayland
 	pkgver = 1.6.0.deepin.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/justforlxz/deepin-wayland-protocols
 	arch = any
 	license = LGPL
