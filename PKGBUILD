@@ -4,7 +4,7 @@
 
 pkgname=jove
 pkgver=4.17.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp."
 url="https://github.com/jonmacs/jove"
 license=('custom')
@@ -26,7 +26,8 @@ package() {
   cd $pkgname-$pkgver
   install -d "$pkgdir"/usr/{bin,lib/jove,share/jove}
   ./jmake.sh JOVEHOME=/usr DESTDIR="$pkgdir" install
-  
+  cp -r "$pkgdir"/usr/man "$pkgdir"/usr/share
+  rm -rf "$pkgdir"/usr/man
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/jove/LICENSE
 }
 

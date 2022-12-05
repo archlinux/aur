@@ -1,7 +1,7 @@
 pkgbase = jove
 	pkgdesc = Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp.
 	pkgver = 4.17.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jonmacs/jove
 	arch = i686
 	arch = x86_64
