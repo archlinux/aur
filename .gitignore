@@ -2,3 +2,4 @@
 *.tar.zst
 pkg
 src
+genpkg
