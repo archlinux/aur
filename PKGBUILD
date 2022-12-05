@@ -4,7 +4,7 @@
 # Contributor: Chocobo1 <chocobo1@archlinux.net>
 
 pkgname=mingw-w64-rav1e
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='An AV1 encoder focused on speed and safety (mingw-w64)'
 arch=(any)
@@ -22,13 +22,13 @@ makedepends=(
   mingw-w64-rust
   mingw-w64-wine
 )
-_tag=1aff20cd23f718866ae7460e866f8d60b41f4422
+_tag=0fb96baa0a8c2a539ad0c148b6b2f9cfed37707a
 source=(
   git+https://github.com/xiph/rav1e.git#tag=${_tag}
-  https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock
+  Cargo-rav1e-${pkgver}.lock::https://github.com/xiph/rav1e/releases/download/v${pkgver}/Cargo.lock
 )
-sha256sums=('SKIP'
-            '6baeb4e72ee86dd4c3d6c9acfcfac6a2e58a580101eb181daced09199a136868')
+b2sums=('SKIP'
+        '6996c71a299ebcb5d3e4b2b4a3b46d0b14ce9ca1668cbf3d867669ddb798a7a038739b81db5b2816942f8207260658478f93d68b206735d129222a109e2f64f8')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -38,7 +38,7 @@ pkgver() {
 }
 
 prepare() {
-  cp -f Cargo.lock rav1e/
+  cp -f Cargo-rav1e-${pkgver}.lock rav1e/Cargo.lock
 
   if [[ -d "${RUST_PATH}" ]] ; then
     export PATH="${RUST_PATH}:${PATH}"
