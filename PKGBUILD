@@ -32,6 +32,7 @@ rapidjson
 python-jinja
 python-toml
 python-lief
+openmpi
 )
 conflicts=(python-ocp-git)
 _hash_OCP=6b7b7325ab4599a8ba9049f176f099574fe64dfc

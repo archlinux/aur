@@ -23,6 +23,7 @@ pkgbase = python-ocp
 	makedepends = python-jinja
 	makedepends = python-toml
 	makedepends = python-lief
+	makedepends = openmpi
 	depends = python
 	depends = opencascade
 	depends = vtk
