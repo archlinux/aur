@@ -1,7 +1,7 @@
 pkgbase = vdirsyncer-git
 	pkgdesc = Synchronize CalDAV and CardDAV.
 	pkgver = 0.19.1.dev3+g2c44f7d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vdirsyncer.readthedocs.org/
 	arch = any
 	license = BSD
