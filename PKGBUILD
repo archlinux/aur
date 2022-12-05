@@ -1,13 +1,13 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 
 pkgname=cavecube-sdl2-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686)
 url="https://github.com/PQCraft/CaveCube"
 license=(Boost)
-depends=(glibc)
+depends=(glibc sdl2)
 provides=(cavecube)
 conflicts=(cavecube cavecube-bin cavecube-sdl2)
 source=("${pkgname}_data_${pkgver}-${pkgrel}.zip::https://github.com/PQCraft/CaveCube/releases/download/${pkgver}/cavecube_data.zip")
