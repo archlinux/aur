@@ -11,14 +11,13 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(xdg-desktop-portal pipewire libinih qt6-base)
+depends=(xdg-desktop-portal pipewire libinih qt6-base qt6-wayland)
 makedepends=(git meson wayland-protocols wayland scdoc cmake)
 optdepends=(
   "grim: required for the screenshot portal to function"
   "slurp: support for interactive mode for the screenshot portal; one of the built-in chooser options for the screencast portal"
   "bemenu: one of the built-in chooser options for the screencast portal"
   "wofi: one of the built-in chooser options for the screencast portal"
-  "obs-xdg-portal: support for the screencast portal in obs"
   "hyprland: the Hyprland compositor"
 )
 source=("${_pkgname}::git+https://github.com/hyprwm/xdg-desktop-portal-hyprland.git")
