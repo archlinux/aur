@@ -6,30 +6,28 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r13942.g91f8b4340
-pkgrel=3
+pkgver=r14122.gf2175e1a3
+pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(gtk3 wxgtk3-3.1.5 libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
-         soundtouch portaudio portmidi lame jack libsbsms)
+depends=(gtk3 wxwidgets-gtk3 libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+         soundtouch portaudio jack)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg4.4 nasm chrpath python)
-optdepends=('ffmpeg4.4: additional import/export capabilities')
+             ffmpeg nasm chrpath python portmidi)
+optdepends=('ffmpeg: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://github.com/tenacityteam/tenacity.git")
+source=("git+https://codeberg.org/tenacityteam/tenacity.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd tenacity
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 prepare() {
   cd tenacity/images/icons
@@ -48,9 +46,7 @@ build() {
   CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-3.1.5/bin/wx-config-gtk3 \
-    -DwxWidgets_INCLUDE_DIRS=/opt/wxgtk-3.1.5/include/wx-3.1 \
-    -DwxWidgets_LIBRARIES=/opt/wxgtk-3.1.5/lib \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config \
     -Wno-dev \
     ..
   cmake --build .
@@ -60,13 +56,21 @@ build() {
 package() {
   cd tenacity/build
   make DESTDIR="${pkgdir}" install
-  test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
+  test -f ${pkgdir}/usr/audacity && rm ${pkgdir}/usr/audacity # remove unused launch script
+
+  mv "${pkgdir}/usr/share/mime/packages/audacity.xml" \
+     "${pkgdir}/usr/share/mime/packages/tenacity.xml"
 
   mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
      "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
 
-  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-strings.so"
-  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-string-utils.so"
-  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-utility.so"
-  chrpath --delete "${pkgdir}/usr/lib/tenacity/modules/mod-script-pipe.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-basic-ui.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-components.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-exceptions.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-ffmpeg-support.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-files.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-math.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-preferences.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-registries.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-xml.so"
 }
