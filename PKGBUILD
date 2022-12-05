@@ -1,16 +1,17 @@
 # Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
 
 pkgname=lesspass
-pkgver=10.1.0
+pkgver=10.1.1
 pkgrel=1
 pkgdesc='Stateless open source password manager'
 arch=('any')
 url='https://lesspass.com'
 license=('GPL')
 depends=('python')
+optdepends=('python-requests: for load an save configurations from remote server')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('c368b1478c42172427029188638f6f68319a6f62f1661f4cd7c17cf885875ed0b60b36072ad7d1b95719da7a65b3f5987c084988787f684d0d2afafc0f96065a')
+b2sums=('2b1983a867b66c042fdab29800a91bdeaa1da05e40c9a1414b76b341cc203217eb23e7497aabff05a54f1dd81a7b9bf547f1aa2c41b0788a5bbdd58e0f33751f')
 
 package() {
   cd ${pkgname}-${pkgver}
