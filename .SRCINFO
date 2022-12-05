@@ -1,13 +1,13 @@
 pkgbase = tilt-bin
 	pkgdesc = Local Kubernetes development with no stress
-	pkgver = 0.30.12
+	pkgver = 0.30.13
 	pkgrel = 1
 	url = https://tilt.dev
 	arch = x86_64
 	license = Apache
 	provides = tilt
 	conflicts = tilt
-	source = https://github.com/tilt-dev/tilt/releases/download/v0.30.12/tilt.0.30.12.linux.x86_64.tar.gz
-	sha256sums = 90178633c010ebd499277b645b6b1303406af801133f77966c77f75da9d12484
+	source = https://github.com/tilt-dev/tilt/releases/download/v0.30.13/tilt.0.30.13.linux.x86_64.tar.gz
+	sha256sums = 81e8ab77a2c820e4e9372337b199c2e1b455a7c21c16b1c85cd43cf7f88e7153
 
 pkgname = tilt-bin
