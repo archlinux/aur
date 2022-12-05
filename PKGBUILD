@@ -10,16 +10,12 @@ arch=(i686 x86_64)
 license=(GPL)
 depends=(
          cmark
-         dconf
-         desktop-file-utils
          evolution-data-server
          gnome-autoar
          gnome-common
          gnome-desktop
          gspell
-         gtk-doc
          gtkspell3
-         hicolor-icon-theme
          libcanberra
          libchamplain
          libcryptui
