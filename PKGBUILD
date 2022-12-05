@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=3.0.3.123.gafae03a
+pkgver=3.0.3.127.g48eec5c
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
 
   cd zimg
   git config submodule.graphengine.url "${srcdir}/graphengine"
-  git submodule update --init \
+  git -c protocol.file.allow=always submodule update --init \
     graphengine
 }
 

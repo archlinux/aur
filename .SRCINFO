@@ -1,6 +1,6 @@
 pkgbase = zimg-git
 	pkgdesc = Scaling, colorspace conversion, and dithering library. (GIT version)
-	pkgver = 3.0.3.123.gafae03a
+	pkgver = 3.0.3.127.g48eec5c
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171334
 	arch = x86_64
