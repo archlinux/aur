@@ -1,15 +1,16 @@
 pkgbase = run-desktop
-	pkgdesc = .desktop file launcher. Can run .desktop files using xdg-open.
-	pkgver = 0.0.2
+	pkgdesc = .desktop file launcher. Can to run .desktop files using xdg-open.
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/run-desktop/
 	install = run-desktop.install
 	arch = any
 	license = GPL
-	depends = kde-cli-tools
-	source = run-desktop.sh
+	depends = python
+	depends = python-gobject
+	source = run-desktop.py
 	source = run-desktop.desktop
-	sha256sums = d8789dffc8bae9ebe73de63c7bceee93ac3b8ca17900a2150db8db85e151f9b6
+	sha256sums = 96485f5a3be54ba244e402aacaf5c8942403a858e17a3c21f0356b8790220576
 	sha256sums = a8201dd5b780e7c7e4911286a8a69c74440e00c0e9bb3f5c1c8b03c7e5f287ce
 
 pkgname = run-desktop
