@@ -10,7 +10,7 @@
 _pack=sparsersb
 pkgname=octave-$_pack
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to the librsb package implementing the RSB sparse matrix format."
 arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
@@ -36,6 +36,17 @@ _install_dir() {
 	dst=$2
 	mkdir -p "$(dirname "$dst")"
 	cp -rT "$src" "$dst"
+}
+
+prepare() {
+    # fix build error with new version of octave
+    tar xf $_archive
+	cd "$srcdir/$_pack-$pkgver"
+    sed -i "s|mex_get_ir|ridx|g" "src/sparsersb.cc"
+    sed -i "s|mex_get_jc|cidx|g" "src/sparsersb.cc"
+    cd "$srcdir"
+    rm $_archive
+    tar cf $_archive "$_pack-$pkgver"
 }
 
 build() {
