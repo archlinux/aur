@@ -1,0 +1,12 @@
+pkgbase = gau2grid
+    pkgdesc = Fast computation of a gaussian and its derivative on a grid.
+    pkgver = 2.0.7
+    pkgrel = 1
+    url = https://github.com/dgasmith/gau2grid
+    arch = x86_64
+    license = BSD
+    makedepends = cmake
+    provides = gau2grid
+    sha256sums = 66e7205646e1e3685e5dd4eea8281fc92b0b8b45ce97ae24b72a09e15a3fd62f
+
+pkgname = gau2grid
