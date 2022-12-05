@@ -7,7 +7,7 @@
 pkgname=k8sfw-daemon-git
 pkgrel=1
 pkgdesc="Daemon to manage kubernetes port-forwards. Exposes a simple HTTP API to control the daemon."
-pkgver=v0.0.1.r11.ged79a5d
+pkgver=v0.0.1.r12.g58ef63d
 arch=('x86_64')
 url=""
 license=('MIT')
