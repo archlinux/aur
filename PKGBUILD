@@ -61,7 +61,7 @@ package() {
     echo -e '#pulledpork will put rules here in snort.rules\n#alert icmp any any -> any any ( msg:"ICMP Traffic Detected"; sid:10000001; metadata:policy security-ips alert; )' > "${pkgdir}"/etc/snort/rules/local.rules
     chmod 0644 "${pkgdir}"/etc/snort/{homenet.lua,rules/{local,snort}.rules}
 
-    # config for NFQUEUE support, rule files and output logging
+    # rule files and other settings
     sed -i -e "/^EXTERNAL_NET\\s\\+=/ a include 'homenet.lua'" \
       -e "/^HOME_NET\\s\\+=/ i -- we set HOME_NET and EXTERNAL_NET here or via an included file" \
       -e 's/^\(HOME_NET\s\+=\)/--\1/g' \
