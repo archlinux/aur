@@ -1,8 +1,8 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.1.1.r3.g16a6abaf
-pkgrel=4
+pkgver=3.1.1.r8.g3123b80d
+pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
 url="https://www.mitsuba-renderer.org/"
@@ -70,7 +70,7 @@ prepare() {
 	# when calling "submodule update"
 	for clone_path in \
 		"asmjit            ext/asmjit" \
-		"drjit             ext/drjit " \
+		"drjit             ext/drjit" \
 		"drjit-core        ext/drjit/ext/drjit-core" \
 		"robin-map         ext/drjit/ext/drjit-core/ext/robin_map" \
 		"nanothread        ext/drjit/ext/drjit-core/ext/nanothread" \
@@ -169,16 +169,9 @@ package() {
 	mkdir -p "$pkgdir$site_packages"
 	cp -R python/* "$pkgdir$site_packages"
 
-	# remove rpath from libraries - hard-coded to build path by default
-	for so in "$pkglib/*.so" "$pkglib/plugins/*.so" "$pkgdir$site_packages/drjit/*.so" "$pkgdir$site_packages/mitsuba/*.so"; do
-		patchelf --remove-rpath $so
-	done
-
-	# make sure Mitsuba finds its copies of libraries
+	# fix rpaths
 	patchelf --set-rpath "/usr/lib/$pkgname" "$pkgusr/bin/$binary_name"
-	patchelf --set-rpath "/usr/lib/$pkgname" "$pkgdir$site_packages/drjit/*.so"
-	patchelf --set-rpath "/usr/lib/$pkgname" "$pkgdir$site_packages/mitsuba/*.so"
-	for so in "$pkglib/*.so"; do
-		patchelf --set-rpath "\$ORIGIN" $so
-	done
+	for so in "$pkglib/*.so";                 do patchelf --set-rpath "\$ORIGIN" $so; done
+	for so in "$pkglib/plugins/*.so";         do patchelf --remove-rpath $so; done
+	for so in "$pkgdir$site_packages"/*/*.so; do patchelf --set-rpath "/usr/lib/$pkgname" "$so"; done
 }
