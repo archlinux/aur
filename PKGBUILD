@@ -1,6 +1,6 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
-_targets="i386 x64 clang"
+_targets="i386 x64 arm aarch64 riscv ppc64 nds32le clang"
 _commit='e29dcdcdd8bc04e9c54aca4e341d0b8168763000'
 
 pkgbase='coreboot-toolchain'
