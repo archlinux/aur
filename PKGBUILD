@@ -3,8 +3,8 @@
 
 _pkgname=metakernel
 pkgname=jupyter-$_pkgname
-pkgver=0.29.2
-pkgrel=2
+pkgver=0.29.3
+pkgrel=1
 pkgdesc="A Jupyter/IPython kernel template."
 arch=('any')
 url="https://github.com/Calysto/metakernel"
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('python-build' 'python-hatchling' 'python-installer')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Calysto/metakernel/archive/v${pkgver}.tar.gz")
-b2sums=('2c26e9add986e0438dadf26d30d6ec9de928102e7a16bc8e7c809836310f9176410d145d9f93ef30ff3171c039c118771f20b236db73abb22ff6f847957cd048')
+b2sums=('92b97827bc471d6af3cc81d83215b6fe6dfdbe8b15d9c388a87b5c232c3db7facb78f07379a78f5d7a7b99fee9adeb4b9d5ab5399fa7a5edd465879db644de9e')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
