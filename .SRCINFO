@@ -1,0 +1,16 @@
+pkgbase = python-molmass
+	pkgdesc = Fast and efficient theoretical isotopic profile generation
+	pkgver = 2022.10.18
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/molmass
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	source = https://files.pythonhosted.org/packages/source/m/molmass/molmass-2022.10.18.tar.gz
+	sha256sums = 1fda78f7e69af7fce9482ec85ef524a95b674f51ebfd366f6fe8c1850b5d848e
+
+pkgname = python-molmass
