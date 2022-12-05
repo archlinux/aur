@@ -1,8 +1,8 @@
 # Maintainer: CharlieHogger <charliehogger31@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=emsdk
-pkgver=3.1.9
-pkgrel=3
+pkgver=3.1.27
+pkgrel=1
 pkgdesc='The Emscripten SDK'
 arch=('x86_64')
 url='https://kripken.github.io/emscripten-site/'
@@ -11,7 +11,7 @@ depends=('python' 'cmake')
 source=("https://github.com/emscripten-core/emsdk/archive/${pkgver}.tar.gz"
         'emsdk'
         'emsdk_env.sh')
-sha256sums=('99de90a1827044c5430b926db947bcb266c8bdab1a0f20fe34a62431d9174376'
+sha256sums=('cf4f433f8f6b3cca9e3add9052fbc8cb98748887760fcdb8fdfd8e91c88b50d5'
             'd58940585324e582621a8ac5e28e913beee14a0b8e307f5413a6b0dcd6d2a139'
             'cd14a9107ca2cd92ec7ab2e44b8ca86ae71e81e744d700b49e75fbcb9717b5ce')
 
