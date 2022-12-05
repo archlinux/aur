@@ -126,11 +126,11 @@ source=(
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     graphene::git+https://github.com/ebassi/graphene.git
+    libdisplay-info::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
-    libdisplay-info::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-pkgbuild-changes.patch
