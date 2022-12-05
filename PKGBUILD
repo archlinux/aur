@@ -146,7 +146,9 @@ package()
 {
 cd "${srcdir}/${_pkg_name_ver}"
 
-make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
+#make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
+DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
+
 install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
 #install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
