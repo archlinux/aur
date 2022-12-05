@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=run-desktop
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc=".desktop file launcher. Can to run .desktop files using xdg-open."
 arch=(any)
