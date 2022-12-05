@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=survivalROC
-_pkgver=1.0.3
+_pkgver=1.0.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.3
-pkgrel=4
+pkgver=1.0.3.1
+pkgrel=1
 pkgdesc='Time-dependent ROC curve estimation from censored survival data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1449e7038e048e6ad4d3f7767983c0873c9c7a7637ffa03a4cc7f0e25c31cd72')
+sha256sums=('8174afebaf239dfda979c8c7e1e219624576d577c983ae787fbd2785b4ccd15c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
