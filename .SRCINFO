@@ -1,0 +1,15 @@
+pkgbase = prometheus-clamav-exporter-git
+	pkgdesc = Prometheus-Exporter for ClamAV
+	pkgver = r46.5023a03
+	pkgrel = 1
+	url = https://github.com/r3kzi/clamav-prometheus-exporter
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/r3kzi/clamav-prometheus-exporter.git
+	source = prometheus-clamav-exporter.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = prometheus-clamav-exporter-git
