@@ -7,11 +7,13 @@ pkgver=3.46.0.r003.ge68b3ec84
 pkgrel=1
 pkgdesc="Centralized access to appointments and contacts"
 arch=(i686 x86_64)
-depends=(libgdata
+depends=(gtk4
+         libcanberra
+         libgdata
          libical
          libphonenumber
          libsignon-glib
-         libsoup3
+         nss
          webkit2gtk
          )
 makedepends=(git
