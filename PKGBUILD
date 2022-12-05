@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biodbLipidmaps
-_pkgver=1.3.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='biodbLipidmaps, a library for connecting to the Lipidmaps Structure database'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c219049511cf641a0bf263af1bf15b0c208d764da6ea65b0a5581fb5ec715c2b')
+sha256sums=('9dc32e46a1d4621262454e295eda53d2988f0df9f0060e93ab13222c012cac58')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
