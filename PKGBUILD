@@ -3,7 +3,7 @@
 
 pkgname=fcitx-chewing
 pkgver=0.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Fcitx Wrapper for chewing'
 arch=('x86_64')
 url="https://github.com/fcitx/fcitx-chewing"
