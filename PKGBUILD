@@ -2,7 +2,7 @@
 
 pkgname=python-tubes
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc='A data-processing and flow-control engine for event-driven programs'
 url='https://github.com/twisted/Tubes'
