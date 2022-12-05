@@ -1,13 +1,13 @@
 # Maintainer: Simon Ser
 pkgname=libhangul-git
 pkgver=0.1.0.r51.2ddc547f014a
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to support hangul input method logic"
 arch=('x86_64')
 url="https://github.com/libhangul/libhangul"
-license=('LGPL-2.1')
+license=('LGPL')
 depends=()
-makedepends=('binutils' 'intltool' 'automake' 'autoconf')
+makedepends=('intltool' 'git')
 provides=('libhangul')
 conflicts=('libhangul')
 source=("git+https://github.com/libhangul/libhangul.git")
