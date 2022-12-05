@@ -2,16 +2,16 @@
 # Contributor: Janghyub Seo <jhyub06 at gmail dot com>
 
 pkgname=zoom-libkime
-pkgver=2.5.6
+pkgver=3.0.1
 _qtver=5.12.9
-pkgrel=3
+pkgrel=1
 pkgdesc="Kime library for zoom multilingual input."
 url="https://github.com/Riey/kime"
 arch=('x86_64')
 license=('GPL3') 
 depends=('zoom' 'kime')
 source=("https://github.com/Riey/kime/releases/download/v${pkgver}/libkime-qt-${_qtver}.so")
-sha512sums=('afeeb4fcfde8c70ac445fb420ba97db8258e8027001c6c18fe638b517f83d81744baf9b9727dab92e88f0db9108707c976b82a6f83aae79a00d1b139f081729d')
+sha512sums=('4e2d246b1dbe11c66dc215a959cbed33c36305440f284fc8545a2910aac32a5d494b5a2d62e9885335abe99dad4c6c032099f8e81284e61a810902fefdec33e3')
 
 package() {
 	install -dm755 ${pkgdir}/opt/zoom/platforminputcontexts
