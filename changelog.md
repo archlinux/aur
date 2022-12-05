@@ -1,10 +1,26 @@
+## GE-Proton7-42
+
+- Pull in upstream build changes from proton experimental
+- update dxvk-nvapi
+- update dxvk
+- update vkd3d
+- update media converter
+- update wine to latest proton experimental bleeding edge
+- rebase wine staging
+- dxvk: add launcher fix for secret world:legends
+- protonfixes: add d3d9_43 and 11_43 winetricks for secret world: legends (thanks zerodogg)
+- protonfixes: remove no longer needed fps cap for king of fighters (applied in dxvk directly instead, thanks Bitwolfies)
+- protonfixes: remove no longer needed EAC workaround for SQUAD (thanks mikk150)
+- protonfixes: add protonfix for Skeleton Boomerang (thanks xperia64)
+- protonfixes: add protonfix for Re-Volt (thanks mthsk)
+
 ## GE-Proton7-41
 
 HOTFIX:
 
 - fixed issue with EasyAntiCheat folder not being renamed correctly for the Gears 5 EAC workaround -- should now work on the Steam Deck for single player campaign. I've been told coop also works but not confirmed.
 
-## GE-Proton7-40 Released
+## GE-Proton7-40
 
 HOTFIX:
 
