@@ -1,12 +1,12 @@
 pkgbase = stylish-haskell-bin
 	pkgdesc = Haskell code prettifier. Packaged from upstream binary release.
-	pkgver = 0.14.2.0
+	pkgver = 0.14.3.0
 	pkgrel = 1
 	url = https://github.com/jaspervdj/stylish-haskell
 	arch = x86_64
 	license = BSD
 	provides = stylish-haskell
-	source = https://github.com/jaspervdj/stylish-haskell/releases/download/v0.14.2.0/stylish-haskell-v0.14.2.0-linux-x86_64.tar.gz
-	sha256sums = e7d725978330ba3a50e24ab98bdb432c5e94529d0394d9c9d0e7b2d6a10f3819
+	source = https://github.com/jaspervdj/stylish-haskell/releases/download/v0.14.3.0/stylish-haskell-v0.14.3.0-linux-x86_64.tar.gz
+	sha256sums = ce728a02b6e14be48f535929a154c1fbd7f565f9fb2734c4698689b5fc0cf3e5
 
 pkgname = stylish-haskell-bin
