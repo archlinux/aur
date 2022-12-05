@@ -1,6 +1,6 @@
 pkgname=ocaml-ocplib-simplex-git
 pkgver=0.5.r0.g9b0944c
-pkgrel=1
+pkgrel=2
 
 pkgdesc='simplex algorithm implementation for solving systems of linear inequalities and optimizing linear objective functions'
 url='https://github.com/OCamlPro-Iguernlala/ocplib-simplex'
@@ -43,4 +43,9 @@ check() {
 package() {
     cd ocplib-simplex
     make LIBDIR="$(ocamlc -where)" DESTDIR="$pkgdir" install
+
+    # Workaround install of docs to 'tmp' folder.
+    mv "$pkgdir/tmp/makepkg/ocaml-ocplib-simplex-git/pkg/ocaml-ocplib-simplex-git/usr/share" \
+       "$pkgdir/usr"
+    rm -fr "$pkgdir/tmp"
 }
