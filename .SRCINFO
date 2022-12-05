@@ -1,0 +1,16 @@
+pkgbase = zerotier-desktop-ui
+	pkgdesc = Official ZeroTier Desktop Tray Application and UI
+	pkgver = 1.8.4.r65.ga2e2c18
+	pkgrel = 1
+	url = https://github.com/zerotier/DesktopUI
+	arch = any
+	license = MPL2
+	makedepends = rust
+	depends = zerotier-one
+	depends = libappindicator-gtk3
+	depends = gtk3
+	depends = glib2
+	source = zerotier-desktop-ui::git+https://github.com/zerotier/DesktopUI.git
+	sha256sums = SKIP
+
+pkgname = zerotier-desktop-ui
