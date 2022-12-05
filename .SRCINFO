@@ -1,6 +1,6 @@
 pkgbase = libasdcp-cth
 	pkgdesc = open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format.
-	pkgver = 0.1.6.r18.ga276ed1
+	pkgver = 0.1.6.r20.g825e475
 	pkgrel = 1
 	url = https://carlh.net/asdcplib
 	arch = i686
@@ -12,9 +12,10 @@ pkgbase = libasdcp-cth
 	makedepends = boost
 	depends = libxml++2.6
 	depends = boost-libs>=1.72.0
+	depends = openssl
 	provides = libasdcp-cth
 	conflicts = asdcplib
-	source = libasdcp-cth::git+git://git.carlh.net/git/asdcplib.git#commit=a276ed1c5a43a92dd2b9ca93072ce8d024329e82
+	source = libasdcp-cth::git+git://git.carlh.net/git/asdcplib.git#commit=825e47522e3ae179a7820b2665c9de299b34494b
 	sha256sums = SKIP
 
 pkgname = libasdcp-cth

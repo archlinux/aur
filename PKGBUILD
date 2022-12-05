@@ -2,14 +2,14 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
-_commit=a276ed1c5a43a92dd2b9ca93072ce8d024329e82
-pkgver=0.1.6.r18.ga276ed1
+_commit=825e47522e3ae179a7820b2665c9de299b34494b
+pkgver=0.1.6.r20.g825e475
 pkgrel=1
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
 url="https://carlh.net/asdcplib"
 license=('GPL')
-depends=('libxml++2.6' 'boost-libs>=1.72.0' )
+depends=('libxml++2.6' 'boost-libs>=1.72.0' 'openssl')
 makedepends=('git' 'python' 'pkg-config' 'boost')
 source=("${pkgname}::git+git://git.carlh.net/git/asdcplib.git#commit=${_commit}")
 sha256sums=('SKIP')
