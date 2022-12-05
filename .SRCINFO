@@ -1,31 +1,25 @@
 pkgbase = dune-geometry
 	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules
-	pkgver = 2.8.0
-	pkgrel = 3
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://dune-project.org/modules/dune-geometry
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
-	makedepends = dune-common>=2.8.0
 	makedepends = texlive-latexextra
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = gnu-free-fonts
 	makedepends = inkscape
-	makedepends = python-setuptools
+	makedepends = python-scikit-build
+	makedepends = python-ninja
+	depends = dune-common>=2.9.0
 	optdepends = texlive-latexextra: Type setting system
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	optdepends = inkscape: converts SVG images
-	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz
-	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz.asc
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = 9a531afeefb10dd9e7f2cf9fcb6b61bba01fae323c9e67c47cf387f45a25bae7f2f061d6ffe268bff14fbcbfe8e42c20a57b99794f77cfba5c52b1dea0e5c9e1
+	source = https://dune-project.org/download/2.9.0/dune-geometry-2.9.0.tar.gz
+	source = https://dune-project.org/download/2.9.0/dune-geometry-2.9.0.tar.gz.asc
+	validpgpkeys = E5B47782DE09813BCC3518E159DA94F1FC8FD313
+	sha512sums = 5b227b3346b7eb3db3887483525a3ce550eddfa13528c30b213a7cc811dead5844bf0032133d2167bd6f341be8b13c014cc208724e67cac074432af28cd39fb1
 	sha512sums = SKIP
 
 pkgname = dune-geometry
-	depends = dune-common>=2.8.0
-
-pkgname = python-dune-geometry
-	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules (python bindings)
-	depends = dune-geometry>=2.8.0
-	depends = python-dune-common>=2.8.0
