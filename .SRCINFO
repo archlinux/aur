@@ -1,0 +1,13 @@
+pkgbase = ruby-enum
+	pkgdesc = Enum-like behavior for Ruby
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/dblock/ruby-enum
+	arch = x86_64
+	license = MIT
+	depends = ruby-i18n
+	noextract = ruby-enum-0.9.0.gem
+	source = https://rubygems.org/downloads/ruby-enum-0.9.0.gem
+	sha256sums = 77a09954184714a9ca0baf2dde91a38b96a8f0f834f1984c7a1e52df2148dadf
+
+pkgname = ruby-enum
