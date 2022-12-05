@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=nanobench
-pkgver=4.3.7
+pkgver=4.3.8
 pkgrel=1
 pkgdesc="Simple, fast, accurate single-header microbenchmarking functionality for C++11/14/17/20"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://nanobench.ankerl.com"
 license=("MIT")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinus/nanobench/archive/v${pkgver}.tar.gz")
-b2sums=("f0094be49843bdea1a43e02733ff33aaa2c7bfef583c57e22704f5f9602d60599f7a65275585f879732b18ea067dc78c0e3dbb7c647f58739d0202424fbc8a3e")
+b2sums=('2144418222631bc8c405b28fd2991404f244b3369cebf37367b4d1477617224709692eb2d25ccab53e7f54bf8d6a16d740a8feea0e8da586468c03bf96050e96')
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
