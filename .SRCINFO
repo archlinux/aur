@@ -1,0 +1,13 @@
+pkgbase = pg_tle-git
+	pkgdesc = Framework for building trusted language extensions for PostgreSQL
+	pkgver = v1.0.1.r20.gb2b84d1
+	pkgrel = 1
+	url = https://github.com/aws/pg_tle
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = make
+	source = pg_tle-git::git+https://github.com/aws/pg_tle
+	sha512sums = SKIP
+
+pkgname = pg_tle-git
