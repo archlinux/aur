@@ -7,12 +7,12 @@ epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
 url="https://vulkan.gpuinfo.org"
-license=('GPL2')
+license=('LGPL3')
 depends=('vulkan-icd-loader' 'qt5-x11extras')
 makedepends=('git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_commit=0f9fd085cf82c46f8391a5ec5b4986e35c8ded3b # tags/3.27^0
+_commit=0f9fd085cf82c46f8391a5ec5b4986e35c8ded3b  # tags/3.27^0
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=$_commit"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
 sha256sums=('SKIP'
