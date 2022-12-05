@@ -1,7 +1,7 @@
 pkgbase = deepin-kwin-reborn
 	pkgdesc = An easy to use, but flexible, composited Window Manager
 	pkgver = 5.24.3
-	pkgrel = 2
+	pkgrel = 3
 	install = deepin-kwin.install
 	arch = x86_64
 	license = LGPL
