@@ -1,0 +1,15 @@
+pkgbase = rofimpd
+	pkgdesc = barebones mpd client (rofi + mpc)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://rj1.localghost.org/repos/rofimpd/
+	arch = any
+	license = MIT
+	depends = mpc
+	depends = mpd
+	depends = rofi
+	provides = rofimpd
+	source = https://github.com/rj1/rofimpd/releases/download/v0.1/rofimpd.tar.gz
+	sha256sums = 8ab3a827034b7c53deffdcf9caa05d56c83546961636258cd8ef14ed6c0b6554
+
+pkgname = rofimpd
