@@ -1,0 +1,12 @@
+diff --unified --recursive --text dfhack/plugins/Plugins.cmake dfhack.new/plugins/Plugins.cmake
+--- dfhack/plugins/Plugins.cmake	2022-12-04 19:58:58.989881762 -0700
++++ dfhack.new/plugins/Plugins.cmake	2022-12-04 20:01:02.600600673 -0700
+@@ -140,7 +140,7 @@
+     else()
+         set(PLUGIN_COMPILE_FLAGS "${PLUGIN_COMPILE_FLAGS} ${PLUGIN_COMPILE_FLAGS_MSVC}")
+     endif()
+-    set_target_properties(${PLUGIN_NAME} PROPERTIES COMPILE_FLAGS "${PLUGIN_COMPILE_FLAGS}")
++	set_target_properties(${PLUGIN_NAME} PROPERTIES COMPILE_FLAGS "${PLUGIN_COMPILE_FLAGS} -Wno-restrict")
+ 
+     if(APPLE)
+         set_target_properties(${PLUGIN_NAME} PROPERTIES SUFFIX .plug.dylib PREFIX "")

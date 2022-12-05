@@ -1,7 +1,7 @@
 pkgbase = dfhack
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
 	pkgver = 0.47.05
-	pkgrel = 10
+	pkgrel = 11
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = i686
@@ -24,13 +24,17 @@ pkgbase = dfhack
 	depends = libxcrypt-compat
 	conflicts = dfhack-bin
 	conflicts = dfhack-git
-	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.05-r7
+	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.05-r8
 	source = dfhack.sh
 	source = dfhack-run.sh
-	source = Wno-restrict.patch
+	source = Wno-array-bounds-gtest.patch
+	source = Wno-restrict-modules.patch
+	source = Wno-restrict-plugins.patch
 	md5sums = SKIP
 	md5sums = 45ab3b65cb5b01beff9fecccff777f85
 	md5sums = 37421a6cf2ca420bed4420ea8e402d40
-	md5sums = 086fc32900f4c6589a06ac1c7acc6e98
+	md5sums = 833927da48cf98ae0a4f0e7133a64e8b
+	md5sums = 5d4089692561a2b7f62e35be4e78fca3
+	md5sums = f011e03da6118390ebebcd90763cde95
 
 pkgname = dfhack

@@ -5,8 +5,8 @@
 
 pkgname=dfhack
 pkgver=0.47.05
-_pkgver=$pkgver-r7
-pkgrel=10
+_pkgver=$pkgver-r8
+pkgrel=11
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -19,12 +19,16 @@ conflicts=('dfhack-bin' 'dfhack-git')
 source=("$pkgname::git+https://github.com/DFHack/dfhack#tag=$_pkgver"
         dfhack.sh
         dfhack-run.sh
-        Wno-restrict.patch)
+        Wno-array-bounds-gtest.patch
+        Wno-restrict-modules.patch
+        Wno-restrict-plugins.patch)
 
 md5sums=('SKIP'
          '45ab3b65cb5b01beff9fecccff777f85'
          '37421a6cf2ca420bed4420ea8e402d40'
-         '086fc32900f4c6589a06ac1c7acc6e98')
+         '833927da48cf98ae0a4f0e7133a64e8b'
+         '5d4089692561a2b7f62e35be4e78fca3'
+         'ca1f96739f5013608852e340b41eda31')
 
 prepare() {
   # shellcheck disable=2154
@@ -34,9 +38,12 @@ prepare() {
   git submodule sync
   git submodule update --init
 
-  cd "$srcdir/$pkgname"
+ cd "$srcdir/$pkgname"
   # gcc issue - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105329
-  patch --strip=1 --input="${srcdir}/Wno-restrict.patch"
+  patch --strip=1 --input="${srcdir}/Wno-restrict-modules.patch"
+  patch --strip=1 --input="${srcdir}/Wno-restrict-plugins.patch"
+  # looks like another gcc issue but I don't actually know
+  patch --strip=1 --input="${srcdir}/Wno-array-bounds-gtest.patch"
 }
 
 build() {

@@ -1,0 +1,12 @@
+diff --unified --recursive --text dfhack/depends/CMakeLists.txt dfhack.new/depends/CMakeLists.txt
+--- dfhack/depends/CMakeLists.txt	2022-12-02 22:34:28.530386074 -0700
++++ dfhack.new/depends/CMakeLists.txt	2022-12-03 21:32:03.853149929 -0700
+@@ -8,7 +8,7 @@
+ option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" OFF)
+ add_subdirectory(googletest)
+ if(UNIX)
+-    set_target_properties(gtest PROPERTIES COMPILE_FLAGS "-Wno-maybe-uninitialized -Wno-sign-compare")
++    set_target_properties(gtest PROPERTIES COMPILE_FLAGS "-Wno-maybe-uninitialized -Wno-sign-compare -Wno-array-bounds")
+ endif()
+ endif()
+ 

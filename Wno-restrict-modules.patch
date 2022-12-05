@@ -1,0 +1,11 @@
+diff --unified --recursive --text dfhack/library/CMakeLists.txt dfhack.new/library/CMakeLists.txt
+--- dfhack/library/CMakeLists.txt	2022-12-04 00:58:10.697225422 -0700
++++ dfhack.new/library/CMakeLists.txt	2022-12-04 01:16:14.329282824 -0700
+@@ -208,6 +208,7 @@
+         list(APPEND PROJECT_SOURCES ${MAIN_SOURCES_DARWIN})
+     else()
+         list(APPEND PROJECT_SOURCES ${MAIN_SOURCES_LINUX})
++        set_source_files_properties(${MODULE_SOURCES} PROPERTIES COMPILE_FLAGS "-Wno-restrict")
+     endif()
+ elseif(WIN32)
+     list(APPEND PROJECT_SOURCES ${MAIN_SOURCES_WINDOWS})
