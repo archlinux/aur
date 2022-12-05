@@ -2,7 +2,7 @@
 # Contributor:  Philip Goto <philip.goto@gmail.com>
 
 pkgname=popsicle-git
-pkgver=1.3.0.r66.g2b88960
+pkgver=1.3.1.r10.g2b88960
 pkgrel=1
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
 url="https://github.com/pop-os/popsicle"
