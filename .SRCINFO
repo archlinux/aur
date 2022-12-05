@@ -1,12 +1,12 @@
 pkgbase = peertube
 	pkgdesc = ActivityPub-federated video streaming platform using P2P directly in your web browser
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joinpeertube.org/
 	arch = x86_64
 	license = AGPL
 	makedepends = yarn
-	makedepends = python2
+	makedepends = python
 	makedepends = git
 	depends = nodejs>=14
 	depends = ffmpeg>=4.4.1

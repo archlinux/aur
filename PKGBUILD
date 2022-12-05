@@ -2,13 +2,13 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret at protonmail dot com>
 pkgname=peertube
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
 url="https://joinpeertube.org/"
 license=("AGPL")
 depends=("nodejs>=14" "ffmpeg>=4.4.1" "postgresql" "openssl" "redis" "npm" "yarn")
-makedepends=("yarn" "python2" "git")
+makedepends=("yarn" "python" "git")
 backup=("etc/peertube/production.yaml")
 options=("!strip")
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
