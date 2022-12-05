@@ -1,7 +1,7 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=diffsitter-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A tree-sitter based AST difftool to get meaningful semantic diffs"
 url="https://github.com/afnanenayet/diffsitter"
@@ -13,11 +13,11 @@ source_x86_64=("$url/releases/download/v$pkgver/diffsitter-x86_64-unknown-linux-
 source_i686=("$url/releases/download/v$pkgver/diffsitter-i686-unknown-linux-gnu.tar.gz")
 source_arm=("$url/releases/download/v$pkgver/diffsitter-arm-unknown-linux-gnueabihf.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/diffsitter-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('256237d05eed800f338ec937807b2d8fb966af62c3aaccd6c3023efbf8a0e388')
-sha256sums_x86_64=('d5cc6514bcd4c01cfae490e46c0c189d385bae76c5d26e5791708b56789227ad')
-sha256sums_i686=('7e466e33563593c168319ff9c80d25a79a5205192054f1157a0c0ea1de4232c5')
-sha256sums_arm=('a32070d9358fa96f1f4e617419e41d36635f979f42f1659a11e2e3e3f4b49808')
-sha256sums_aarch64=('4802894e4db174cab5250b00e97d7aabed45514a5f86dda22287fb4662090903')
+sha256sums=('05294166a7ab4e65bf4f2aed1f90c94c8311911ccba4406b74b3ec87dc52bc78')
+sha256sums_x86_64=('3d0d76f686bd46d4197bc8f74e8c10789906a171df14c834f5d31cc1815db553')
+sha256sums_i686=('728d840d9082a175af97b7d4e3fd2db3945dfbe5f2bd4370479b85aad7751329')
+sha256sums_arm=('233eea92ee2993c5f614323a5950c0f2238e5a0d6f019a6126a9e61b9fddce24')
+sha256sums_aarch64=('d1957601a5e7b0758184f0b5a3f086cc22f638dc596bd54b03abc2925bbb6c4d')
 
 package() {
     install -Dm755 "$srcdir/diffsitter-$CARCH-unknown-linux-gnu/diffsitter" "$pkgdir/usr/bin/diffsitter"
