@@ -1,16 +1,14 @@
 pkgbase = osmtogeojson
 	pkgdesc = Convert OSM data to GeoJSON
-	pkgver = 3.0.0b4
+	pkgver = 3.0.0b5
 	pkgrel = 1
-	url = https://github.com/tyrasd/osmtogeojson#readme
+	url = https://github.com/tyrasd/osmtogeojson
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	replaces = nodejs-osmtogeojson
-	noextract = osmtogeojson-3.0.0-beta.4.tgz
-	source = http://registry.npmjs.org/osmtogeojson/-/osmtogeojson-3.0.0-beta.4.tgz
-	sha1sums = 00e270af7c080bd3bc503bd612fa5b90a1c95d50
+	noextract = osmtogeojson-3.0.0-beta.5.tgz
+	source = https://registry.npmjs.org/osmtogeojson/-/osmtogeojson-3.0.0-beta.5.tgz
+	b2sums = ec18ebe4b052e95d7807a0bc48a4466ac6bc2dc3a5387a94ac1caf0cb49a6efd4cbc46231bba602a5228bf6b1d5e383aa834a2e520f57f791f83b8d8093655a5
 
 pkgname = osmtogeojson
-
