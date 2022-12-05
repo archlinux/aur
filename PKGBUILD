@@ -2,27 +2,21 @@
 # Maintainer: Arsen Musayelyan <arsen@arsenm.dev>
 
 pkgname='lure-bin'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
-arch=('aarch64' 'armv6h' 'i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 license=('GPLv3')
 provides=('lure')
 conflicts=('lure')
 depends=('sudo' 'pacman')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.4/lure_0.0.4_linux_aarch64.tar.gz")
-sha256sums_aarch64=('a87bf7a78c6a87576bcf48c85b38d59fee0d102e372e3ed0a3626394a20dbc87')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.5/lure_0.0.5_linux_aarch64.tar.gz")
+sha256sums_aarch64=('da00720af03b48b38fbc44dd05b9c0787907f7abe0a1fd41a5e6fa0d1e705563')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.4/lure_0.0.4_linux_armv6.tar.gz")
-sha256sums_armv6h=('1a7e0385b4663f4466f115ad961b609bde546f54f8874abef4efe2f804c2cfe3')
-
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.4/lure_0.0.4_linux_i386.tar.gz")
-sha256sums_i686=('5c16a65bd5680599c6dd9427fb4bdf98497e43a55cfe5f811861cd89421ec65a')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.4/lure_0.0.4_linux_x86_64.tar.gz")
-sha256sums_x86_64=('26d7c1bb56361cf4e7193884676b674c9233173228969edf3dcca276bf924c89')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.5/lure_0.0.5_linux_x86_64.tar.gz")
+sha256sums_x86_64=('fc64d7aacff2318b1617e2268a9c08975813e2ea1d1717cf24e55dcb6c1b2e27')
 
 package() {
   # binaries
