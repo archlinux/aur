@@ -5,7 +5,7 @@ pkgname=python-sphinx-jinja
 pkgver=2.0.2
 # curl https://api.github.com/repos/tardyp/sphinx-jinja/git/ref/tags/$pkgver | jq -r .object.sha
 _tag=7faac8c23bf523f39c5386524a733c12d8c25dfd
-pkgrel=1
+pkgrel=2
 pkgdesc='A sphinx extension to include jinja based templates based documentation into a sphinx doc'
 arch=(any)
 url='https://github.com/tardyp/sphinx-jinja'
