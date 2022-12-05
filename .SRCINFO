@@ -1,15 +1,17 @@
 pkgbase = python-ruff
 	pkgdesc = An extremely fast Python linter, written in Rust.
-	pkgver = 0.0.157
+	pkgver = 0.0.158
 	pkgrel = 1
 	url = https://github.com/charliermarsh/ruff
 	arch = any
 	license = MIT
 	makedepends = rust
+	makedepends = maturin
 	makedepends = python-pip
 	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	source = https://github.com/charliermarsh/ruff/archive/refs/tags/v0.0.157.tar.gz
-	sha256sums = c20b076b43f2f0c8c74ee0cdbeebfbd9b7095963ab8a108ef7f5ed01569c4c56
+	source = https://github.com/charliermarsh/ruff/archive/refs/tags/v0.0.158.tar.gz
+	sha256sums = dc8a38d429437d896365ac3f9f2f1c234b19b963eaff9662d32f844b684dbc37
 
 pkgname = python-ruff

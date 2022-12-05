@@ -1,17 +1,18 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Got some parts from python-black package.
 
 pkgname="python-ruff"
 _pkgname="ruff"
-pkgver=0.0.157
+pkgver=0.0.158
 pkgrel=1
 pkgdesc="An extremely fast Python linter, written in Rust."
 url="https://github.com/charliermarsh/ruff"
 arch=("any")
-sha256sums=('c20b076b43f2f0c8c74ee0cdbeebfbd9b7095963ab8a108ef7f5ed01569c4c56')
+sha256sums=('dc8a38d429437d896365ac3f9f2f1c234b19b963eaff9662d32f844b684dbc37')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 license=("MIT")
 depends=("python")
-makedepends=("rust" "python-pip" "python-build")
+makedepends=("rust" "maturin" "python-pip" "python-build" "python-installer")
 
 build() {
   cd "ruff-${pkgver}"
@@ -22,6 +23,6 @@ build() {
 
 package() {
   cd "ruff-${pkgver}"
-  pip install "dist/ruff-${pkgver}-py3-none-linux_x86_64.whl" --root="${pkgdir}/"
+  python -m installer --destdir="$pkgdir" "dist/ruff-${pkgver}-py3-none-linux_x86_64.whl"
 }
 
