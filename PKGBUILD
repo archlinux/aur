@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit-bin
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 provides=("ignoreit")
 conflicts=("ignoreit")
 url="https://github.com/jewlexx/ignoreit"

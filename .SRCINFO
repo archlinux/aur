@@ -1,7 +1,7 @@
 pkgbase = ignoreit-bin
 	pkgdesc = Quickly load .gitignore templates
 	pkgver = 2.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jewlexx/ignoreit
 	arch = x86_64
 	license = MIT
