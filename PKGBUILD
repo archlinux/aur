@@ -1,4 +1,5 @@
-# Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
+# Maintainer: Polarian <polarian@polarian.dev>
+# Former-Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 # Contributor: Guillaume Friloux <guillaume@friloux.me>
 
 _pkgbase='movim'
