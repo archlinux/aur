@@ -1,15 +1,16 @@
-# Maintainer: Alexandros Theodotou <alex at zrythm dot org>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=lsp-dsp-lib
-pkgver=0.5.14
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='DSP library for signal processing'
 arch=('any')
 url='https://github.com/sadko4u/lsp-dsp-lib'
 license=('LGPL3')
 makedepends=('pkg-config')
-source=("https://github.com/sadko4u/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-src.tar.gz")
-sha512sums=('73f65196fdf723781ea2dbfdf11c7229c7f90679fc377e4916d8259b715734724a8b62f9c45d035d6b119c9ae77c1648a00fe00183315330e0e2a9e711695d79')
+source=("https://github.com/sadko4u/$pkgname/releases/download/$pkgver/$pkgname-src-$pkgver.tar.gz")
+sha512sums=('be6337ba450683bcfdb708785f26eb7476940da1c5b48c86746d694a07cbe1a30fdbe09ed6aa4b28b0c866ad336a1232d83e2ba6a20e068b2442292c661507a4')
 
 build() {
   cd "$pkgname"
