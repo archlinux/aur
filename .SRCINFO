@@ -1,0 +1,13 @@
+pkgbase = python-py-notifier
+	pkgdesc = Cross-platform desktop push-notifications.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/YuriyLisovskiy/pynotifier
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = libnotify
+	source = https://files.pythonhosted.org/packages/py3/p/py-notifier/py_notifier-0.3.2-py3-none-any.whl
+	sha256sums = c22a577e0b8ecb73e93d545489d3c65cc50e96fa9348885602fcd20a44f05909
+
+pkgname = python-py-notifier
