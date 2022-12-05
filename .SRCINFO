@@ -1,7 +1,7 @@
 pkgbase = lceda-pro
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
 	pkgver = 1.9.20
-	pkgrel = 6
+	pkgrel = 7
 	url = https://pro.lceda.cn/
 	install = lceda-pro.install
 	arch = x86_64
