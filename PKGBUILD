@@ -5,13 +5,13 @@
 
 _pkgbase="visdom"
 pkgname=python-visdom-git
-pkgver=r314.bc71e86
+pkgver=0.2.3.r24.g56f72f7
 pkgrel=1
 arch=(any)
 url='https://github.com/facebookresearch/visdom'
 pkgdesc='Visualization tool for Pytorch by Facebook'
 license=(Apache)
-depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-jsonpatch' 'python-pillow')
+depends=('python-websocket-client' 'python-numpy' 'python-scipy' 'python-requests' 'python-tornado' 'python-pyzmq' 'python-six' 'python-jsonpatch' 'python-pillow' 'python-networkx')
 makedepends=(
   'git'
   'python-setuptools'
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//g'
 }
 
 package() {

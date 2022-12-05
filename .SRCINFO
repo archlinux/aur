@@ -1,8 +1,9 @@
 pkgbase = python-visdom-git
 	pkgdesc = Visualization tool for Pytorch by Facebook
-	pkgver = r314.bc71e86
+	pkgver = 0.2.3.r24.g56f72f7
 	pkgrel = 1
 	url = https://github.com/facebookresearch/visdom
+	install = visdom.install
 	arch = any
 	license = Apache
 	makedepends = git
@@ -16,6 +17,9 @@ pkgbase = python-visdom-git
 	depends = python-six
 	depends = python-jsonpatch
 	depends = python-pillow
+	depends = python-networkx
+	provides = python-visdom
+	conflicts = python-visdom
 	options = !emptydirs
 	source = git+https://github.com/facebookresearch/visdom.git
 	source = visdom.conf
@@ -25,7 +29,3 @@ pkgbase = python-visdom-git
 	sha256sums = d71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c
 
 pkgname = python-visdom-git
-	install = visdom.install
-	provides = python-visdom
-	conflicts = python-visdom
-
