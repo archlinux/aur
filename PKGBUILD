@@ -32,6 +32,7 @@ prepare() {
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/9227.patch | patch -p1 -d VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/9228.patch | patch -p1 -d VTK
   sed -i '28i#include "vtkDataSetAttributes.h"' VTK/Charts/Core/vtkScatterPlotMatrix.cxx
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/9711.patch | patch -p1 -d VTK
 }
 
 build() {
