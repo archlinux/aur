@@ -1,14 +1,13 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
-# Contributor:
 
 pkgname=znapzupport
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Collection of CLI helpers for ZnapZend'
 arch=('any')
 url='https://github.com/claui/znapzupport'
 license=('custom:ISC')
-depends=('bash' 'coreutils' 'procmail' 'sudo' 'zfs')
+depends=('coreutils' 'procmail' 'sudo' 'zfs')
 optdepends=('znapzend')
 options=('!strip')
 
@@ -17,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  'fb4a8d6c70fcca66b53099866afb7d14c7052bd331bcc1dcfb932f2d12201d9be1556ddb0c278eaf70bc76ed5780c01130f9422fcb805de7c837b0f0accdd97b'
+  'e53dbdec246bd35017fe498709b9361c648ad90150bc1c2743df8f8cf3ab221a822073e547b8289dbd39bf06a4a0ba7e43c44e4fb53c285898374f327c492b9c'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
