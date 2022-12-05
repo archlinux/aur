@@ -9,7 +9,7 @@ arch=('x86_64')
 pkgdesc="Quickly load .gitignore templates"
 license=('MIT')
 
-source=("$pkgname-$pkgver-bin::https://github.com/jewlexx/ignoreit/releases/download/v$pkgver/ignoreit-linux-x86")
+source=("$pkgname-$pkgver-bin::https://github.com/jewlexx/ignoreit/releases/download/v$pkgver/ignoreit-x86_64-linux")
 sha256sums=('5ed41db701eb7260bc8bf7c0ff3fa15754b3b106b8b32330ab6ed1c732d7f8c6')
 
 build() {
