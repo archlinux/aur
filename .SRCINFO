@@ -1,6 +1,6 @@
 pkgbase = polaris
 	pkgdesc = Music streaming application, designed to let you enjoy your music collection from any computer or mobile device
-	pkgver = 0.13.5
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/agersant/polaris
 	install = polaris.install
@@ -11,18 +11,17 @@ pkgbase = polaris
 	depends = openssl
 	depends = sqlite
 	backup = etc/polaris/config.toml
-	source = https://github.com/agersant/polaris/archive/0.13.5.tar.gz
-	source = https://github.com/agersant/polaris-web/archive/build-51.tar.gz
+	source = polaris-0.14.0.tar.gz::https://github.com/agersant/polaris/archive/0.14.0.tar.gz
+	source = polaris-web-build-66.tar.gz::https://github.com/agersant/polaris-web/archive/build-66.tar.gz
 	source = config.toml
 	source = polaris.tmpfiles
 	source = polaris.sysusers
 	source = polaris.service
-	sha512sums = 968d012337102b1fd178940b2bcf1976e479efa37cbc68775e97800afbcf37a85048d5f988142057c067c69a25058b4e9aaacdc8bf362c2c8a31077ca909670e
-	sha512sums = a4f0dccc2b7eff896253b7bc9ac9edc26e081963a7dd4d189e026e12cc2aab3bb44387e15fba314ccf05149dbec594e56688e8a4809558b1ff2b0e6fede0b5d9
+	sha512sums = 9ed7ff1d0c11ba67c599392a7798f6d480a2f239502347854d6cdf0e30ed67b0ceb529e68d61493fb1f2fb5cd30dc7a325218e619d3591dff1fa7eca04dca42b
+	sha512sums = 1965d8d1510bb3ceaec919631f2fce79a198ae19ecd2e26c93276ba175b1df480f99e1ef9815b3140a27071825805fe62738562f7ddba8161084f7b3ddf1e75a
 	sha512sums = 2e4fe41b394508cb6a767a5b5732745d48d08c32967f66696934346e78f42de529ae47b3102d269198781c04f76cdf8c15555f5090f6b08bce09b2a0c13779ff
 	sha512sums = ca327748ca9c297a8facede92b6e8e8aa0c040228b1d84c5754b5f10a8e8a60a8a13b4e4db501b1bdd3c24ff13bec6ec0eec7dc3f2881ba6de72bf095e936644
 	sha512sums = 970c9e0e7fbd48a51a644da1ccb9563ba463c1b30bc60581f226c155a7c6b443bdeb1a4b272550a6d19bfc922f2ec6715364e55f6c589e4c87abc3c12b67a9fa
 	sha512sums = 4e3521cb664f5cc47551e38fab8d979f0de0be62c02f301b48bd0ddfc48479ea00f0309db1bd293192fc75d31968c7ea88dddaa5d91b8304558d7d6baef016a9
 
 pkgname = polaris
-
