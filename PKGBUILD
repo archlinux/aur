@@ -25,7 +25,7 @@ validpgpkeys=(C44AAD638367912CA93EDD57583A612D890159BE)
 
 build() {
   cd "$pkgname-v$pkgver"
-  yarn install --pure-lockfile
+  yarn install --production --pure-lockfile
 }
 
 package() {
