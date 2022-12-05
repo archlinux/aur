@@ -1,0 +1,17 @@
+# Any command-line options specified will override the values from the
+# config file
+
+---
+## Required
+# upstream:  # At least one upstream is required
+# - 1.1.1.1:53
+
+## Recommended
+tls-min-version: 1.2
+http3: true  # dnsproxy automatically picks the fastest HTTP(S) protocol
+
+## Optional
+# listen-addrs:  # Defaults to 0.0.0.0 which is prone to conflict
+# - 127.0.0.56
+# cache: true  # Caching is disabled by default
+# verbose: true  # Increase verbosity for debugging
