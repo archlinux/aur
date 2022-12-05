@@ -1,11 +1,14 @@
 pkgbase = certbot-ocsp-fetcher-git
 	pkgdesc = A tool that primes the OCSP cache of nginx for certificates managed by Certbot, in order to make OCSP stapling work reliably.
 	pkgver = r251.82ffc58
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomwassenberg/certbot-ocsp-fetcher
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = certbot
+	depends = nginx
+	depends = openssl
 	provides = certbot-ocsp-fetcher
 	source = git+https://github.com/tomwassenberg/certbot-ocsp-fetcher.git
 	b2sums = SKIP
