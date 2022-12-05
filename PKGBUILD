@@ -2,7 +2,7 @@
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
 pkgver=3.9.9.77
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
 arch=('any')
@@ -75,6 +75,10 @@ package() {
 	cp -r -i "usr" "$pkgdir/"
 	cp -r -i "opt" "$pkgdir/"
 	cp "usr/share/doc/youtube-to-mp3/copyright" "$pkgdir/LICENSE"
+	# Add symbolic link in /usr/bin
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s "/opt/youtube-to-mp3/YouTubeToMP3" "${pkgdir}/usr/bin/youtube-to-mp3"
+
 
 	# Remove .deb packages
 	cd ../..
