@@ -1,7 +1,7 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
-_targets="i386 x64 arm aarch64 riscv ppc64 nds32le"
-_commit='f4c97ea131944c7be940b35361407e4b63a14faf'
+_targets="i386 x64 clang"
+_commit='e29dcdcdd8bc04e9c54aca4e341d0b8168763000'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
@@ -28,9 +28,18 @@ build() {
   export CFLAGS=${CFLAGS/-Werror=format-security/}
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
+  is_clang_enabled=0
+
   for target in ${_targets}; do
+    [ "${target}" = "clang" ] && is_clang_enabled=1 && continue
     make crossgcc-${target} CPUS=$(nproc) DEST="${srcdir}/${target}"
   done
+
+  if [ ${is_clang_enabled} -eq 1 ]; then
+    for component in "clang iasl nasm"; do
+      make ${component} CPUS=$(nproc) DEST="${srcdir}/${target}"
+    done
+  fi
 }
 
 do_package_gcc() {
@@ -40,6 +49,13 @@ do_package_gcc() {
   dest_path="${pkgdir}/${toolchain_dir}"
   mkdir -p ${dest_path}
   mv ${srcdir}/${target}/* "${dest_path}"
+}
+
+do_package_clang() {
+  toolchain_dir="usr/multiarch-coreboot-clang"
+  dest_path="${pkgdir}/${toolchain_dir}"
+  mkdir -p ${dest_path}
+  mv ${srcdir}/clang/* "${dest_path}"/
 }
 
 package_coreboot-toolchain-i386() {
@@ -68,4 +84,8 @@ package_coreboot-toolchain-ppc64() {
 
 package_coreboot-toolchain-nds32le() {
   do_package_gcc
+}
+
+package_coreboot-toolchain-clang() {
+  do_package_clang
 }
