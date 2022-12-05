@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cameractrls
-pkgver=0.4.11
+pkgver=0.4.12
 pkgrel=1
 pkgdesc="Camera controls for Linux"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'libjpeg-turbo' 'python' 'python-gobject' 'sdl2' 'systemd')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('a374777a56477f0d257e1b0c9aadde4531e646c3b6956df4c8e643ebb525719b'
+sha256sums=('1ac98bff9f554cba3ce4b6d5ad58d81d23fb842f786158c6fdce82ed0265e1f7'
             '2e1f68566af0d9e01db8efeea15f318ab991ac0614aac8b059b227f7d37b35b7')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = cameractrls
 	pkgdesc = Camera controls for Linux
-	pkgver = 0.4.11
+	pkgver = 0.4.12
 	pkgrel = 1
 	url = https://github.com/soyersoyer/cameractrls
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = cameractrls
 	depends = python-gobject
 	depends = sdl2
 	depends = systemd
-	source = cameractrls-0.4.11.tar.gz::https://github.com/soyersoyer/cameractrls/archive/refs/tags/v0.4.11.tar.gz
+	source = cameractrls-0.4.12.tar.gz::https://github.com/soyersoyer/cameractrls/archive/refs/tags/v0.4.12.tar.gz
 	source = cameractrls.desktop
-	sha256sums = a374777a56477f0d257e1b0c9aadde4531e646c3b6956df4c8e643ebb525719b
+	sha256sums = 1ac98bff9f554cba3ce4b6d5ad58d81d23fb842f786158c6fdce82ed0265e1f7
 	sha256sums = 2e1f68566af0d9e01db8efeea15f318ab991ac0614aac8b059b227f7d37b35b7
 
 pkgname = cameractrls
