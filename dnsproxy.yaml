@@ -9,6 +9,7 @@
 ## Recommended
 tls-min-version: 1.2
 http3: true  # dnsproxy automatically picks the fastest HTTP(S) protocol
+refuse-any: true
 
 ## Optional
 # listen-addrs:  # Defaults to 0.0.0.0 which is prone to conflict
