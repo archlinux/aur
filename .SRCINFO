@@ -21,4 +21,14 @@ pkgbase = nymphcast-git
 	source = git+https://github.com/MayaPosch/NymphCast.git
 	sha256sums = SKIP
 
-pkgname = nymphcast-git
+pkgname = nymphcast-client-git
+
+pkgname = nymphcast-server-git
+	depends = nymphrpc
+	depends = libnymphcast
+	depends = sdl2
+	depends = sdl2_image
+	depends = poco
+	depends = ffmpeg
+	depends = freetype2
+	depends = freeimage

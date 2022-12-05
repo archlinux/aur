@@ -1,8 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgbase=nymphcast-git
-#pkgname=(nymphcast-client-git nymphcast-server-git)
-pkgname=(nymphcast-git)
+pkgname=(nymphcast-client-git nymphcast-server-git)
 pkgver=0.1.r39.gd77d5bb
 pkgrel=1
 pkgdesc="Audio and video casting system with support for custom applications."
@@ -20,10 +19,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/NymphCast/src/client"
-  #make
+  make
 
   cd "${srcdir}/NymphCast/src/server"
-  #make
+  make
 }
 
 package_nymphcast-client-git() {
@@ -43,8 +42,4 @@ depends=(nymphrpc libnymphcast sdl2 sdl2_image poco ffmpeg freetype2 freeimage)
   #install -Dm644 src/server/*.jpg "${pkgdir}/usr/share/nymphcast"
   install -Dm644 src/server/*.ini "${pkgdir}/usr/share/nymphcast"
   cp -r src/server/apps "${pkgdir}/usr/share/nymphcast"
-}
-
-package() {
-  true
 }
