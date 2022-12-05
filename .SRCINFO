@@ -1,0 +1,26 @@
+pkgbase = wget-xdg-bin
+	pkgdesc = Network utility to retrieve files from the Web - but moving ~/.wget-hsts to $XDG_CACHE_HOME/wget/hsts
+	pkgver = 1.21.3
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = zlib
+	depends = gnutls
+	depends = libidn2
+	depends = libidn2.so
+	depends = util-linux-libs
+	depends = libuuid.so
+	depends = libpsl
+	depends = libpsl.so
+	depends = pcre2
+	depends = nettle
+	depends = libnettle.so
+	optdepends = ca-certificates: HTTPS downloads
+	provides = wget
+	conflicts = wget
+	backup = etc/wgetrc
+	source = https://github.com/noahvogt/wget-xdg-aur/releases/download/1.21.3-1/wget-xdg-1.21.3-1-x86_64.pkg.tar.zst
+	sha256sums = 1149eedf7c15f2c8cca117600ca7cef971d45fee3f065dfa2adef9a9f95c27b0
+
+pkgname = wget-xdg-bin
