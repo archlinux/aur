@@ -1,15 +1,17 @@
+# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Previous Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=perl-file-share
-pkgver=0.25
-pkgrel=3
+pkgver=0.27
+pkgrel=1
 pkgdesc="Extend File::ShareDir to Local Libraries"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-file-sharedir>=1.03')
+depends=('perl-file-sharedir' 'perl-readonly')
 url='https://metacpan.org/release/File-Share'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/File-Share-0.25.tar.gz')
-sha512sums=('7c9f9a341a5d2d397479a09da05136df1d0c6b9869da511e45ee75b49565218f2231fd1b45c61e68ab802402a95af02513c4c78ce72cf8205537d0e68f9b1e46')
-_distdir="File-Share-0.25"
+source=(https://cpan.metacpan.org/authors/id/I/IN/INGY/File-Share-$pkgver.tar.gz)
+sha512sums=('7c321de08e49f252e8e2126da00ea05ced13db362de758a693ee7f40452827fbf2591fb9e6c80caa27bb8767b3596893fc8762993a167583a0b40091e5db5ec7')
+_distdir="File-Share-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
