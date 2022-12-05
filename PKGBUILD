@@ -8,13 +8,14 @@ pkgname=('faiss-git' 'python-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.7.0.r13.g43ce2c93
+pkgver=v1.7.3.r10.ga996a4a0
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'openmp')
 makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
 optdepends=('intel-mkl: To use MKL blas implemenetation' 'python-numpy-mkl: To use MKL blas implementation.')
+checkdepends=('python-pytest' 'python-scipy')
 
 pkgver() {
   cd "${_pkgname}"
