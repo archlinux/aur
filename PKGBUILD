@@ -1,7 +1,7 @@
 # Maintainer: Sam Therapy <sam at samtherapy dot net>
 pkgname=awl-dns-git
 pkgver=0.5.10.r3.g7e7c88d
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A DNS client"
 url="https://git.froth.zone/sam/awl"
