@@ -6,7 +6,7 @@ diff --color --unified --recursive --text ocplib-simplex.orig/Makefile ocplib-si
  
  install: build
 -	@dune install
-+	@dune install --mandir="$(DESTDIR)/usr/share/man/" --docdir="$(DESTDIR)/usr/share/doc/" --etcdir="$(DESTDIR)/etc/" --datadir="$(DESTDIR)/opt/" --sbindir="$(DESTDIR)/sbin/" --bindir="$(DESTDIR)/usr/bin/"
++	@dune install --mandir="$(DESTDIR)/usr/share/man/" --docdir="/usr/share/doc/" --etcdir="$(DESTDIR)/etc/" --datadir="$(DESTDIR)/opt/" --sbindir="$(DESTDIR)/sbin/" --bindir="$(DESTDIR)/usr/bin/"
  
  uninstall:
  	@dune uninstall
