@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'i686')
@@ -18,11 +18,11 @@ conflicts=("${pkgname}-git" "${pkgname}-beta")
 optdepends=('sing-geosite: sing-geosite database'
             'sing-geoip: sing-geoip database')
 
-backup=('etc/sing-box/config.json')
+backup=("etc/${pkgname}/config.json")
 
 _tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
 build(){
-    cd $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -39,18 +39,19 @@ build(){
         -ldflags '-linkmode=external -w -s' \
         ./cmd/sing-box
 
-    sed -i '/^\[Service\]$/a User=sing-box' release/config/${pkgname}*.service
+    sed -i "/^\[Service\]$/a User=${pkgname}
+            s/WorkingDirectory=\(.*\)$/WorkingDirectory=-\1\nExecStartPre=+install -o ${pkgname} -g ${pkgname} -d -m 0700 \1/" release/config/${pkgname}*.service
 
-    echo 'u sing-box - "Sing-box Service" - -' > release/config/${pkgname}.sysusers
+    echo "u ${pkgname} - \"Sing-box Service\" - -" > "release/config/${pkgname}.sysusers"
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
 
     install -Dm755 "${pkgname}"                         -t "${pkgdir}/usr/bin"
     install -Dm644 "LICENSE"                            -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "release/config/config.json"         -t "${pkgdir}/etc/${pkgname}"
     install -Dm644 "release/config/${pkgname}.service"  -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "release/config/${pkgname}@.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm644 "release/config/${pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d//${pkgname}.conf"
+    install -Dm644 "release/config/${pkgname}.sysusers"    "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
