@@ -2,7 +2,7 @@
 # Prev Maintainer: Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
 
 pkgname=grml-iso
-pkgver=2021.07
+pkgver=2022.11
 _isover="64-full_$pkgver"
 pkgrel=1
 pkgdesc="add the grml ISO image to the grub2 boot menu"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('grub' 'grml-rescueboot>=0.5.0')
 install="${pkgname}.install"
 source=("http://download.grml.org/grml${_isover}.iso")
-sha256sums=('7cec5cb3816edd55164d8d1cdfc315ecdda1ea26e5daa52fc8462f8d5bdd888d')
+sha256sums=('8b8e4a548a7dcdcd8f3e93098e740c012b5427cf5f4bc5730ef428a6feddd877')
 noextract=(grml${_isover}.iso)
 
 package() {
