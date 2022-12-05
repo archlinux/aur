@@ -36,7 +36,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
-	meson build
+	arch-meson build --prefix=/usr
 	ninja -C build
 	cd hyprland-share-picker && make all && cd ..
 }
