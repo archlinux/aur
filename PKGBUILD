@@ -1,10 +1,11 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=languageserver
 _pkgver=0.3.14
 pkgname=r-${_pkgname,,}
 pkgver=0.3.14
-pkgrel=1
+pkgrel=4
 pkgdesc='Language Server Protocol'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
