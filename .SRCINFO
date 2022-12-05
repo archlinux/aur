@@ -1,0 +1,12 @@
+pkgbase = qmalloc
+	pkgdesc = A simple extended malloc allowing for callbacks to be run if NULL was returned.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/charliehogger31/qmalloc
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	source = https://github.com/charliehogger31/qmalloc/archive/refs/tags/1.1.tar.gz
+	sha256sums = 9e9d835ab1d8103a8e1462f1fe79b073d9ea9b7595b2fdc866a936c1ae67b245
+
+pkgname = qmalloc
