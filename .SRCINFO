@@ -1,0 +1,22 @@
+pkgbase = hyprland-screenshot-git
+	pkgdesc = Take screenshot easly on Hyprland
+	pkgver = 15.3572e01
+	pkgrel = 1
+	url = https://github.com/vilari-mickopf/hyprland-screenshot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = rofi
+	depends = grim
+	depends = slurp
+	depends = libnotify
+	depends = wl-clipboard
+	optdepends = swappy: edit screenshots
+	provides = hyprland-screenshot
+	conflicts = hyprland-screenshot
+	source = hyprland-screenshot::git+https://github.com/vilari-mickopf/hyprland-screenshot.git
+	md5sums = SKIP
+
+pkgname = hyprland-screenshot-git
