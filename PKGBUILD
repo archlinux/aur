@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
 
 pkgname=ncspot
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'git' 'alsa-lib' 'python' 'pkgconf')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/hrkfdn/ncspot/archive/v${pkgver}.zip")
-sha512sums=('ab6c86973a2062c6c20cd137eb358788f3c322905b1c9d4609e10c10c1701d1f89956c5ece740daadc526843e68c60a774f721bccee75cc632fa5fceadee70a0')
+sha512sums=('da34b15454299c18dc668756ef679e5b9733d6bf5a99b25c6861a5c99962db5ddc1bfc9673a81a926aa247671b5b938eb18724b81a76954a280a64ddbab8bae2')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
