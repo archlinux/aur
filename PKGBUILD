@@ -1,7 +1,7 @@
 # Maintainer: ZjeuhPiung <sophgn@outlook.com>
 pkgname=rime-middle-chinese
-pkgver=0.0.0.20200728
-_commit=8b1c4e42ec7e7c10d1b7b5d026c042acd42805b2
+pkgver=0.0.0.20210927
+_commit=582e144e525525ac2b6c2498097d7c7919e84174
 pkgrel=1
 pkgdesc="中古漢語拼音輸入方案(廣韻音系)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('rime-middle-chinese-git')
 depends=('rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("https://github.com/rime/rime-middle-chinese/archive/$_commit/rime-middle-chinese-$_commit.tar.gz")
-sha512sums=('17c037fe515242d359bd7742ac903e62b343bf964f783b2b96709e523871e294794da73aa06481f5556dbe8a94ce9e705be14e416237f993c9e13567266e0db2')
+sha512sums=('dabcf2683e54dcf44e6ce7a89da6b1d808a210ca20fbe131f793bb0c9d51213c3514f231b944adf4495aa8fe2a43d7ae984d83dc90fa49a0e4bd6279df9cd009')
 
 prepare() {
   cd $pkgname-$_commit
