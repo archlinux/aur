@@ -1,13 +1,11 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=dnsproxy-bin
 pkgver=0.46.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
 license=('Apache')
-depends=()
-makedepends=()
 provides=(dnsproxy)
 conflicts=(dnsproxy dnsproxy-adguard)
 source=(
