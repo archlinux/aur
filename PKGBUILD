@@ -2,13 +2,14 @@
 
 pkgname=certbot-ocsp-fetcher-git
 pkgver=r251.82ffc58
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool that primes the OCSP cache of nginx for certificates managed by Certbot, in order to make OCSP stapling work reliably."
 arch=('any')
 url="https://github.com/tomwassenberg/certbot-ocsp-fetcher"
 license=('MIT')
-depends=('certbot' 'nginx' 'openssl')
+depends=('bash' 'certbot' 'openssl' 'util-linux')
 makedepends=('git')
+optdepends=('nginx')
 provides=('certbot-ocsp-fetcher')
 source=("git+https://github.com/tomwassenberg/certbot-ocsp-fetcher.git")
 b2sums=('SKIP')
