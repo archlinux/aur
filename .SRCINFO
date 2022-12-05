@@ -1,0 +1,12 @@
+pkgbase = blender-plugin-geometry-script
+	pkgdesc = A scripting API for Blender's Geometry Nodes
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/carson-katri/geometry-script
+	arch = any
+	license = GPL
+	depends = blender
+	source = blender-plugin-geometry-script-0.1.2.tar.gz::https://github.com/carson-katri/geometry-script/archive/0.1.2.tar.gz
+	sha256sums = 7a4b1470113244d63595ecb1022f84d59c2116f2197fd2d3947aaa31779e18d5
+
+pkgname = blender-plugin-geometry-script
