@@ -38,6 +38,9 @@ post_install() {
     ${NESSUS_PREFIX}/sbin/nessusd -R
   }
 
+  # Fix path for /usr/lib/systemd/system/nessusagent.service
+  ln -s /opt/nessus-agent/ /opt/nessus_agent
+
   if [ "$NESSUS_PRODUCT" = "agent" ]; then
     echo " - First, link this agent to the Nessus Manager with the '$NESSUS_PREFIX/sbin/nessuscli agent' command."
     echo "   Type '$NESSUS_PREFIX/sbin/nessuscli agent help' for more info."

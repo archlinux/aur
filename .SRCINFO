@@ -1,13 +1,14 @@
 pkgbase = nessus-agent
 	pkgdesc = Nessus vulnerability scanner agent
 	pkgver = 10.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tenable.com/downloads/nessus-agents
 	install = nessus-agent.install
 	arch = x86_64
 	license = custom
 	makedepends = inetutils
 	depends = gnupg
+	conflicts = nessus
 	options = !strip
 	options = debug
 	source = NessusAgent-10.3.0-fc34.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/17927/download?i_agree_to_tenable_license_agreement=true
