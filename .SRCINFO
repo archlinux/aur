@@ -1,6 +1,6 @@
 pkgbase = python-translate-shell
-	pkgdesc = Translate text by many different translators.
-	pkgver = 0.0.3
+	pkgdesc = Translate text by google, bing, haici, etc at same time from CLI, GUI, REPL, python, shell and vim.
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/translate-shell
 	arch = any
@@ -14,8 +14,11 @@ pkgbase = python-translate-shell
 	optdepends = python-keyring: store APP secrets securely
 	optdepends = python-langdetect: detect language automatically for offline dictionary
 	optdepends = python-pystardict: offline dictionary
+	optdepends = python-py-notifier: GUI notification
 	conflicts = translate-shell
-	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.3-py3-none-any.whl
-	sha256sums = 9627b56aa5723c5904440e9f55bad546683d1e25c64cf9ff1fb5f9aa0a9bd0b6
+	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.4-py3-none-any.whl
+	source = https://raw.githubusercontent.com/Freed-Wu/translate-shell/main/assets/desktop/translate-shell.desktop
+	sha256sums = 0190cbadceaa6786c504efe0f1d0af329d5df71113e4a43a8ee9b7e74d2dc2f1
+	sha256sums = 45fdff8b6ddc514190abdb61354f0583b1a490466bfb65cceec4d6ea12a776f6
 
 pkgname = python-translate-shell
