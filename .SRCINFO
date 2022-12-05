@@ -1,5 +1,5 @@
 pkgbase = coreboot-toolchain
-	pkgdesc = coreboot toolchain for target architecture
+	pkgdesc = Used to build coreboot
 	pkgver = 4.18
 	pkgrel = 1
 	url = https://www.coreboot.org
