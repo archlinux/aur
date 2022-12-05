@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=reposilite
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('java-runtime')
 makedepends=('java-environment' 'nodejs' 'npm')
 source=("$url/archive/$pkgver.tar.gz" "$pkgname.service" "$pkgname.sysusers" "$pkgname.tmpfiles")
-sha256sums=('2830a28f611aa477aa079f5f812f0e11035663770eaeab3f60efcf8589c81228'
+sha256sums=('930a9a9c5a8b2b54602ee017facb056262898421339b2f230d0345bd6ae78474'
             'a90d98915a867ae8b2569d124d0f625908e490284d26005cd47c041c75ef3db4'
             '92ccfeff429aa4757ef353677dd99ad7aebe7483d4824706a27250e81efd6323'
             '9587fa49dd66d5f31dee33aa1a9da269a34666b63f62e2550a66c3bc1d397aa7')
