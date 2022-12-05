@@ -5,10 +5,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=whisker
-_pkgver=0.4
+_pkgver=0.4.1
 pkgname=r-${_pkgname,,}
-pkgver=0.4
-pkgrel=10
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='{{mustache}} for R, Logicless Templating'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-markdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7a86595be4f1029ec5d7152472d11b16175737e2777134e296ae97341bf8fba8')
+sha256sums=('bf5151494508032f68ac41e211bda80da9087c65c7068ffdd12f16669bf1f2bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
