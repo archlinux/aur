@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Version=1.03
 Type=Application
@@ -5,7 +6,7 @@ Name=Asteroids
 Name[ru]=Астероиды
 Comment=Anti-stress shooter game
 Comment[ru]=Анти-стресс шутер
-Icon=/usr/share/icons/hiclor/64x64/apps/asteroids.png
+Icon=/usr/share/icons/hicolor/64x64/apps/asteroids.png
 Exec=sh -c "asteroids --main-pack /usr/lib/asteroids/Asteroids.pck"
 Categories=Game;ShooterGame
 Keywords=Games

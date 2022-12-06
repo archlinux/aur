@@ -1,7 +1,7 @@
 pkgbase = asteroids-bin
 	pkgdesc = Anti-stress shooter game
 	pkgver = 1.03
-	pkgrel = 5
+	pkgrel = 6
 	url = https://codeberg.org/Denotatum/Asteroids
 	install = asteroids-bin.install
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = asteroids-bin
 	source = asteroids-bin-1.03.zip::https://codeberg.org/attachments/b370bf94-2b81-4ee6-886a-59d5225992fc
 	source = Asteroids.desktop
 	sha256sums = 0dbfe3bbd25ec9381179ddb5c61b919df14590c75fdf395d678201e807063210
-	sha256sums = ba6caf51b98ede11fc4622eacc351481d2bad4b7cd8ac59ed41934120114ea16
+	sha256sums = 1c94a27e1ca64442c52c5369de72f9d18b33942551bc27d8806e7796c5fb7b6c
 
 pkgname = asteroids-bin
