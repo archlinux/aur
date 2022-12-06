@@ -1,11 +1,11 @@
 pkgbase = ctlptl-bin
 	pkgdesc = Making local Kubernetes clusters fun and easy to set up
-	pkgver = 0.8.9
+	pkgver = 0.8.14
 	pkgrel = 1
 	url = https://github.com/tilt-dev/ctlptl
 	arch = x86_64
 	license = Apache
-	source = https://github.com/tilt-dev/ctlptl/releases/download/v0.8.9/ctlptl.0.8.9.linux.x86_64.tar.gz
-	sha256sums = c8820214dbf40eb18824d750b88f1ea073b52cfbe7316376c46084186d1f0a29
+	source = https://github.com/tilt-dev/ctlptl/releases/download/v0.8.14/ctlptl.0.8.14.linux.x86_64.tar.gz
+	sha256sums = e3759b032910af6f66ae6a49ea588faab9937e027fe064e50b37b99dfbc04e25
 
 pkgname = ctlptl-bin
