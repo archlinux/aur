@@ -1,0 +1,12 @@
+pkgbase = mcdp
+	pkgdesc = Small console cd player
+	pkgver = 0.4
+	pkgrel = 2
+	url = https://www.mcmilk.de/projects/mcdp/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://deb.debian.org/debian/pool/main/m/mcdp/mcdp_0.4.orig.tar.gz
+	sha512sums = 580743c67e628871b69ddffc49fa796a7dc6ee7943e1e697a0e2a7f60baa22bab02475a7b693c8f827f337f4fb2b7d948c048e47f9333926c2ef0a37d5489fe0
+
+pkgname = mcdp
