@@ -1,7 +1,7 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname="openutau"
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
