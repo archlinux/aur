@@ -1,18 +1,16 @@
 pkgbase = opm-material
 	pkgdesc = Material properties framework for porous media
-	pkgver = 2022.04
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-material
 	arch = x86_64
 	license = GPL3
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = git
-	depends = opm-common>=2022.04
+	depends = opm-common>=2022.10
 	optdepends = man-db: manual pages for co2brinepvt
 	provides = co2brinepvt
-	source = git+https://github.com/OPM/opm-material.git?signed#tag=release/2022.04/final1
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = SKIP
+	source = opm-material-release-2022.10-final.tar.gz::https://github.com/OPM/opm-material/archive/release/2022.10/final.tar.gz
+	sha512sums = 0f5b0e0bdc73387115c60abb1bc42f94084c25223e46230cdc80fecab5f9c9714af66c6804921dfa571bc25136bbcb568c154fa9fddac96452f212a3c23e958e
 
 pkgname = opm-material
