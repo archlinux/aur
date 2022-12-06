@@ -1,0 +1,15 @@
+pkgbase = pgf-umlcd
+	pkgdesc = Some LaTeX macros for UML Class Diagrams
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/pgf-umlcd
+	install = pgf-umlcd.install
+	arch = any
+	license = GPL3
+	depends = texlive-core
+	source = https://github.com/pgf-tikz/pgf-umlcd/raw/master/tex/latex/pgf-umlcd/pgf-umlcd.sty
+	source = https://github.com/pgf-tikz/pgf-umlcd/raw/master/tex/latex/pgf-umlcd/tikzlibraryumlcd.code.tex
+	sha1sums = 63989b6a628cd7e01fdf2c24d3907bd4d919d0aa
+	sha1sums = ab1651510a6b391843a8cc32796cb63bbcb47aa0
+
+pkgname = pgf-umlcd
