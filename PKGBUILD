@@ -30,7 +30,7 @@ conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles.conf')
 sha256sums=('d77d5bc451937ea5f2ba074ffd7ac2d202212545f32a32c277f72fb106ba97d9'
-            '4d4386ca622fdf5f7c9ac23fd8dd5b18592b27b246478f3755262aceb758e52f1a9ff5d63ef76701b31fd6b7d91ef3978d9a35bc14e6478baee08add6a404891')
+            '5cd82a6d9aa8232242b6ed7e803c4b4fb497da8b8d506b1f6fc3454b88b73d32')
 
 prepare() {
   cd $pkgname-$pkgver
