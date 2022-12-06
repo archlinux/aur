@@ -16,9 +16,10 @@ depends=(
     'python-tomli'
 )
 makedepends=(
-  'python-build'
-  'python-installer'
-  'python-pytest'
+    'python-build'
+    'python-hatchling'
+    'python-installer'
+    'python-pytest'
 )
 source=("https://github.com/myint/$_name/archive/v${pkgver}.tar.gz")
 sha256sums=('b8b945a9adf5c8231f49fde2c1422e3618af4826825f6f8033e29434c71bf1bc')
