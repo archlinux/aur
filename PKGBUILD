@@ -3,12 +3,12 @@
 _name=maturin
 pkgname="python-${_name}"
 pkgver=0.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings as well as rust binaries as python packages."
 arch=("x86_64")
 url="https://www.maturin.rs/"
 license=('MIT')
-depends=('python' 'python-tomli')
+depends=('python' 'python-tomli' 'maturin')
 optdepends=('python-pypatchelf')
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
