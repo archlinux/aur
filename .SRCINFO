@@ -5,10 +5,9 @@ pkgbase = hmcl-dev
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
-	makedepends = git
+	makedepends = java-environment=17
 	makedepends = gradle
-	makedepends = jdk17-openjdk
-	depends = java17-openjfx
+	depends = java-openjfx=17
 	provides = hmcl
 	conflicts = hmcl
 	source = hmcl-launch-script

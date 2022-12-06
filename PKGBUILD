@@ -14,8 +14,8 @@ url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
 provides=('hmcl')
 conflicts=('hmcl')
-depends=('java17-openjfx')
-makedepends=('git' 'gradle' 'jdk17-openjdk')
+depends=('java-openjfx=17')
+makedepends=('java-environment=17' 'gradle')
 source=("hmcl-launch-script"
         "${_pkgname}.desktop"
         "git+https://github.com/huanghongxun/HMCL.git#commit=${_commit}")
