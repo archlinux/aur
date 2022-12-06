@@ -1,6 +1,6 @@
 pkgbase = python-wfdb
 	pkgdesc = A library of tools for reading, writing, and processing WFDB signals and annotations
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/MIT-LCP/wfdb-python
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-wfdb
 	depends = python-pandas
 	depends = python-requests
 	depends = python-soundfile
-	source = https://github.com/MIT-LCP/wfdb-python/archive/v4.0.0.tar.gz
-	sha256sums = 06e5acfbde5aaa629a4c194ec29eee979b627d0ed711f0ed312b02f338a67a1a
+	source = https://github.com/MIT-LCP/wfdb-python/archive/v4.1.0.tar.gz
+	sha256sums = 69add8634c8851d25be686d61b62316480fc7826a8715b7f226d1cc6007c73c8
 
 pkgname = python-wfdb
