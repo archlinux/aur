@@ -1,4 +1,4 @@
-From 3fb2672da09c6f422bdf8bdda3437a892c0310ef Mon Sep 17 00:00:00 2001
+From b74deff7f61c19b89a2a86e4fcca216ae8dd5d0e Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/3] Cairo backend added to Qt5 wrapper
