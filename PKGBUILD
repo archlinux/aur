@@ -4,7 +4,7 @@
 
 pkgname=apache-h5bp-server-configs
 _pkgname=server-configs-apache
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Apache HTTP server boilerplate configs"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('apache')
 provides=("$pkgname")
 install='.install'
 source=("${pkgname}.${pkgver}.tar.gz::https://github.com/h5bp/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('cb0dba07237fd098ff797300dde52ba1072b071ae7c2cc7e7edc317fcc4f5cfcc5442b12d6d982c6c2d72c8df33e910a574d005104690f21dcc94acc93a34d06')
+b2sums=('6442a4bc9d4ec311fc0a0761524bc153febde2583e9cc763a7a8d06b553932633aac194ed7384fc10aa80da1245acfd2398b7e0f0a14b518d1cd38281c5c9676')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
