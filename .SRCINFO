@@ -1,6 +1,6 @@
 pkgbase = dolphin-root
 	pkgdesc = KDE File Manager, patched to be able to run as root
-	pkgver = 22.04.2
+	pkgver = 22.08.3
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -23,13 +23,13 @@ pkgbase = dolphin-root
 	optdepends = purpose: share context menu
 	provides = dolphin
 	conflicts = dolphin
-	source = https://download.kde.org/stable/release-service/22.04.2/src/dolphin-22.04.2.tar.xz
-	source = https://download.kde.org/stable/release-service/22.04.2/src/dolphin-22.04.2.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz
+	source = https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz.sig
 	source = 0001-Defuse-root-block.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = c2e3c4c16ff42a224f3dc72c79b2f641d1648d439bfa8c06635784843e58d147
+	sha256sums = 971489a59cdd6b297e2142eb3315847addafbc4e3504e1609fe5e1d119cf15a3
 	sha256sums = SKIP
 	sha256sums = 00654a86c84389b35a12f5e20c215b06229c4cc378ca6cbf8aeae154259d47c8
 
