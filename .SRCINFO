@@ -1,0 +1,15 @@
+pkgbase = rusted-pacman
+	pkgdesc = Pacman written in Rust
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/denix666/pacman
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/pacman/releases/download/v0.2.4/rusted-pacman.tar.gz
+	source = rusted-pacman_icon.png
+	source = rusted-pacman.desktop
+	sha256sums = d46769165f74eb6ff76bc1564e3576861397eb058560139d37b8b98a0c24a738
+	sha256sums = d7e60e16fd55f6a3350933cc91ffa2fcb972c8df3ba869ab22576a059e3df9a9
+	sha256sums = d648c355ceffaa5ea2931df3fb0b2e30c3b443debb8fcbe11d71e723911d6ac6
+
+pkgname = rusted-pacman

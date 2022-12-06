@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-pacman && ./rusted-pacman'
+Icon=/usr/share/pixmaps/rusted-pacman_icon.png
+Name=Rusted pacman
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Pacman - written in Rust
