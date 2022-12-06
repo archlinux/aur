@@ -19,7 +19,7 @@ install="${pkgname}.install"
 source=("$_pkgzip::https://codeberg.org/attachments/b370bf94-2b81-4ee6-886a-59d5225992fc"
         Asteroids.desktop)
 sha256sums=('0dbfe3bbd25ec9381179ddb5c61b919df14590c75fdf395d678201e807063210'
-            'f3be9cdabcd8a64cedff55f83123e054d3300dd60bdc88d29894e06d63f69aa5')
+            'ba6caf51b98ede11fc4622eacc351481d2bad4b7cd8ac59ed41934120114ea16')
 
 prepare() {
   mkdir -p "$_pkgtag"
