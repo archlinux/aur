@@ -1,0 +1,16 @@
+pkgbase = mason-lspconfig.nvim
+	pkgdesc = Bridge mason.nvim with neovim-lspconfig
+	pkgver = r63.4674ed1
+	pkgrel = 1
+	url = https://github.com/williamboman/mason-lspconfig.nvim
+	install = mason-lspconfig.nvim.install
+	arch = any
+	groups = neovim-plugins
+	license = Apache
+	makedepends = git
+	depends = mason.nvim
+	depends = neovim-lspconfig
+	source = mason-lspconfig.nvim::git+https://github.com/williamboman/mason-lspconfig.nvim
+	md5sums = SKIP
+
+pkgname = mason-lspconfig.nvim
