@@ -3,17 +3,17 @@
 
 pkgbase=asusctl
 pkgname=(asusctl rog-control-center)
-pkgver=4.5.2
-pkgrel=2
+pkgver=4.5.3
+pkgrel=1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
 license=('MPL2')
 makedepends=('cmake' 'git' 'rust'
-             'at-spi2-core' 'fontconfig' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3'
+             'fontconfig' 'hicolor-icon-theme' 'libappindicator-gtk3'
              'libusb' 'power-profiles-daemon' 'supergfxctl' 'systemd')
 conflicts=('asusctl-git')
-_commit=14bf07ba79ae86103d1caf06cd09c36e78b5a8e2 # tags/4.5.2^0
+_commit=28347e87eb3dd434c9824f355c92ca056805417f # tags/4.5.3^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -60,7 +60,7 @@ package_asusctl() {
 }
 
 package_rog-control-center() {
-  depends=('asusctl' 'at-spi2-core' 'fontconfig' 'gtk3' 'libappindicator-gtk3' 'supergfxctl')
+  depends=('asusctl' 'fontconfig' 'libappindicator-gtk3' 'supergfxctl')
   pkgdesc="App to control asusctl"
   mv rogcc/* "${pkgdir}"
 }

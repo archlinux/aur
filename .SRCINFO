@@ -1,16 +1,14 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 4.5.2
-	pkgrel = 2
+	pkgver = 4.5.3
+	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
 	license = MPL2
 	makedepends = cmake
 	makedepends = git
 	makedepends = rust
-	makedepends = at-spi2-core
 	makedepends = fontconfig
-	makedepends = gtk3
 	makedepends = hicolor-icon-theme
 	makedepends = libappindicator-gtk3
 	makedepends = libusb
@@ -18,7 +16,7 @@ pkgbase = asusctl
 	makedepends = supergfxctl
 	makedepends = systemd
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=14bf07ba79ae86103d1caf06cd09c36e78b5a8e2
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=28347e87eb3dd434c9824f355c92ca056805417f
 	sha256sums = SKIP
 
 pkgname = asusctl
@@ -36,8 +34,6 @@ pkgname = asusctl
 pkgname = rog-control-center
 	pkgdesc = App to control asusctl
 	depends = asusctl
-	depends = at-spi2-core
 	depends = fontconfig
-	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = supergfxctl
