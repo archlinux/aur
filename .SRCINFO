@@ -1,0 +1,19 @@
+pkgbase = g4see-git
+	pkgdesc = Single Event Effect simulation toolkit based on Geant4
+	pkgver = v0.5.1
+	pkgrel = 1
+	url = https://gitlab.cern.ch/g4see/g4see
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = geant4
+	depends = python
+	provides = g4see
+	conflicts = g4see
+	source = git+https://gitlab.cern.ch/g4see/g4see.git
+	source = git+https://gitlab.cern.ch/g4see/g4see-scripts.git
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = g4see-git
