@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Asteroids
+Comment=Modular Synthesis
+Icon=/usr/share/applications/index.icon.png
+Exec=/usr/bin/asteroids
+Terminal=false
+Categories=Game;ShooterGame
+Keywords=Games

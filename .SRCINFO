@@ -1,0 +1,27 @@
+pkgbase = asteroids-bin
+	pkgdesc = Anti-stress shooter game
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://codeberg.org/Denotatum/Asteroids
+	install = asteroids-bin.install
+	arch = x86_64
+	license = GPLv3
+	depends = alsa-lib
+	depends = glu
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxi
+	depends = libxrandr
+	depends = mesa
+	depends = pulseaudio
+	provides = asteroids
+	conflicts = asteroids-bin
+	replaces = asteroids-bin
+	noextract = asteroids-bin-1.03.tar.gz
+	source = asteroids-bin-1.03.tar.gz::https://codeberg.org/Denotatum/Asteroids/archive/1.03.tar.gz
+	source = Asteroids.desktop
+	sha256sums = 113e1514a6ab4e56324aa8aa11a6d3337d931c5fcafad08d3c2b6d15f9fa34a3
+	sha256sums = f3be9cdabcd8a64cedff55f83123e054d3300dd60bdc88d29894e06d63f69aa5
+
+pkgname = asteroids-bin
