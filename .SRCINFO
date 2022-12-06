@@ -1,6 +1,6 @@
 pkgbase = google-lyra
 	pkgdesc = A very low-bitrate codec for speech compression
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/google/lyra
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = google-lyra
 	makedepends = bazel
 	makedepends = python-numpy
 	depends = gcc-libs
-	source = google-lyra-1.3.0.tar.gz::https://github.com/google/lyra/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 593ec3a92fdcd3cdcbc6760955fd2441110f001001fb5c60ad0a0e9796e487c1
+	source = google-lyra-1.3.1.tar.gz::https://github.com/google/lyra/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 0677c3d78f00212b946d5cd57fd1079cd8e7b86913c96c357b4b91cf3b28f012
 
 pkgname = google-lyra
