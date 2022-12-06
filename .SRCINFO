@@ -1,5 +1,5 @@
 pkgbase = ase-assistant
-    pkgdesc = Pokemon Gen 4 Arbitrary Script Execution Payload converter
+    pkgdesc = Pokemon Gen 4 Arbitrary Script Execution Payload converter. Made by RETIRE
     pkgver = 0.1
     pkgrel = 1
     url = https://voidmatrixteam.github.io/Voidmatrix/src/script_assistant.html
