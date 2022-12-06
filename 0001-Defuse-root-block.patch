@@ -1,6 +1,6 @@
-From 435ed5853b9451ab8fdfff722545c57a8f154625 Mon Sep 17 00:00:00 2001
-From: Fabian Vogt <fabian@ritter-vogt.de>
-Date: Sat, 18 Feb 2017 13:49:14 +0100
+From 52f948fe211fedc54c13c0baf067cd6d8e4cb0c3 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 3 Apr 2022 09:26:48 +0200
 Subject: [PATCH] Defuse root block
 
 While the main point is correct as any application running in the same
@@ -8,14 +8,14 @@ X session (not sandboxed) can use kate's capability to open a console,
 we allow (even encourage) running YaST on X11 as root.
 That way it's only an impact on usability.
 ---
- kate/main.cpp   | 3 +--
- kwrite/main.cpp | 3 +--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ apps/kate/main.cpp   | 15 ++-------------
+ apps/kwrite/main.cpp | 17 +++--------------
+ 2 files changed, 5 insertions(+), 27 deletions(-)
 
 Index: kate/main.cpp
 ===================================================================
---- a/kate/main.cpp	2018-12-25 09:49:15.867478873 +0100
-+++ b/kate/main.cpp	2018-12-25 09:49:19.231424088 +0100
+--- a/apps/kate/main.cpp	2022-04-04 03:49:44.000000000 +0200
++++ b/apps/kate/main.cpp	2022-04-04 05:55:46.476883480 +0200
 @@ -47,21 +47,10 @@
  int main(int argc, char **argv)
  {
@@ -43,8 +43,8 @@ Index: kate/main.cpp
      /**
 Index: kwrite/main.cpp
 ===================================================================
---- a/kwrite/main.cpp	2018-12-25 09:49:19.231424088 +0100
-+++ b/kwrite/main.cpp	2018-12-25 09:50:32.302253532 +0100
+--- a/apps/kwrite/main.cpp	2022-04-04 03:49:44.000000000 +0200
++++ b/apps/kwrite/main.cpp	2022-04-04 05:57:17.276197192 +0200
 @@ -39,21 +39,10 @@
  extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
  {
