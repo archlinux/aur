@@ -13,13 +13,13 @@ pkgbase = mini-benchmarker
 	depends = nasm
 	depends = inxi
 	depends = argon2
-	depends = gmp
 	depends = wget
-	depends = blender
+	depends = x265
 	depends = zlib
 	depends = libdrm
 	depends = git
 	depends = python
+	depends = primesieve
 	source = git+https://gitlab.com/torvic9/bash-scripts.git
 	sha512sums = SKIP
 

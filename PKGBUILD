@@ -8,8 +8,8 @@ url="https://gitlab.com/torvic9/bash-scripts/-/tree/master/mini-benchmarker"
 arch=('x86_64')
 licence=('GPL3')
 depends=('gcc' 'make' 'cmake' 'time' 'perf' 'unzip'
-	 'nasm' 'inxi' 'argon2' 'gmp' 'wget' 'blender'
-	 'zlib' 'libdrm' 'git' 'python')
+	 'nasm' 'inxi' 'argon2' 'wget' 'x265'
+	 'zlib' 'libdrm' 'git' 'python' 'primesieve')
 source=(git+https://gitlab.com/torvic9/bash-scripts.git)
 sha512sums=('SKIP')
 
