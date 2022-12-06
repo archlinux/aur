@@ -18,7 +18,7 @@ build() {
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DCMAKE_INSTALL_DATADIR=/share \
 		-DCMAKE_BUILD_TYPE=Release
-	make -C build
+	cmake --build build
 
 	export CFLAGS="-m32 ${CFLAGS}"
 	export CXXFLAGS="-m32 ${CXXFLAGS}"
@@ -31,19 +31,19 @@ build() {
 		-DCMAKE_LIBRARY_PATH=/usr/lib32 \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_PLUGIN=OFF
-	make -C build32
+	cmake --build build32
 }
 
 package_obs-vkcapture() {
 	pkgdesc='OBS Linux Vulkan/OpenGL game capture'
 
-	make -C build DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }
 
 package_lib32-obs-vkcapture() {
 	pkgdesc='OBS Linux Vulkan/OpenGL game capture (32-bit)'
 	depends=('lib32-vulkan-icd-loader' 'lib32-libgl')
 
-	make -C build32 DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build32
 	rm -r "$pkgdir/usr/bin"
 }
