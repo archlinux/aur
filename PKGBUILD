@@ -5,7 +5,7 @@
 #
 # For that reason the default is still to use IBM TSS, but if you prefer, you
 # can run `makepkg use_ibm_tss=0` to build against the Intel one.
-use_ibm_tss=1
+: ${use_ibm_tss:=1}
 
 pkgname=openssl-tpm2-engine
 pkgver=3.1.2
