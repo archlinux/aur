@@ -1,0 +1,21 @@
+pkgbase = repostat-git
+	pkgdesc = Git repository analyser and HTML-report generator with nvd3-driven interactive metrics visualisations.
+	pkgver = r694.fc6e974
+	pkgrel = 1
+	url = https://github.com/vifactor/repostat
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	depends = python-pygit2
+	depends = python-pytz
+	depends = python-pandas
+	depends = python-tqdm
+	provides = repostat
+	conflicts = repostat
+	source = git+https://github.com/vifactor/repostat.git
+	sha256sums = SKIP
+
+pkgname = repostat-git
