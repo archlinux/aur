@@ -1,0 +1,17 @@
+pkgbase = pong-ramanathan-git
+	pkgdesc = Basic pong game made with SDL in c++
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wonder-coconut/pong.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	provides = pong-ramanathan
+	source = git+https://github.com/wonder-coconut/pong.git
+	md5sums = SKIP
+
+pkgname = pong-ramanathan-git
