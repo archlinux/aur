@@ -2,10 +2,10 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=heroic-games-launcher-bin
-_pkgver=v2.5.0
+_pkgver=v2.5.1
 pkgver=${_pkgver#v}
-pkgrel=3
-pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
+pkgrel=1
+pkgdesc="HGL, a Native alternative Linux Launcher for Epic and GOG Games"
 arch=('x86_64')
 url="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
 license=('GPL3')
