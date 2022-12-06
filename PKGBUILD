@@ -4,7 +4,7 @@
 pkgbase=tnt-bio
 pkgname=('tnt-bio' 
 	'tnt-mpi'
-#	'tnt-gui'
+	'tnt-gui'
 	'tnt-extra')
 pkgver=1.6
 pkgrel=1
@@ -33,13 +33,13 @@ package_tnt-mpi () {
 	chmod +x mpitnt
 	install -Dm 755 mpitnt ${pkgdir}/usr/bin/mpitnt
 }
-#package_tnt-gui () {
-#  depends=('tnt-ncurses5-compat-libs' 'gtk3' 'glibc')
-#  optdepends=('pvm')
-#	cd ${srcdir}/TNT-bin
-#	chmod +x gTNT
-#	install -Dm 755 gTNT ${pkgdir}/usr/bin/gTNT
-#}
+package_tnt-gui () {
+  depends=('tnt-ncurses5-compat-libs' 'gtk3' 'glibc')
+  optdepends=('pvm')
+	cd ${srcdir}/TNT-bin
+	chmod +x gTNT
+	install -Dm 755 gTNT ${pkgdir}/usr/bin/gTNT
+}
 package_tnt-extra () {
 	install -dm755 $pkgdir/usr/share/tnt/
 

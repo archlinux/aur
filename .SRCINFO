@@ -20,4 +20,10 @@ pkgname = tnt-mpi
 	depends = openmpi
 	depends = glibc
 
+pkgname = tnt-gui
+	depends = tnt-ncurses5-compat-libs
+	depends = gtk3
+	depends = glibc
+	optdepends = pvm
+
 pkgname = tnt-extra
