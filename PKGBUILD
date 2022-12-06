@@ -2,11 +2,11 @@
 pkgname=font-config-info-git
 pkgver=r31.a274b37
 pkgrel=1
-pkgdesc="A tiny program that queries and prints a Linux system's fontconfiguration"
+pkgdesc="A tiny program that queries and prints a Linux system's font configuration"
 arch=(x86_64)
 url="https://github.com/derat/font-config-info"
 license=('GPL')
-depends=(gtk3)
+depends=(gtk3 xsettingsd)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

@@ -1,5 +1,5 @@
 pkgbase = font-config-info-git
-	pkgdesc = A tiny program that queries and prints a Linux system's fontconfiguration
+	pkgdesc = A tiny program that queries and prints a Linux system's font configuration
 	pkgver = r31.a274b37
 	pkgrel = 1
 	url = https://github.com/derat/font-config-info
@@ -7,10 +7,10 @@ pkgbase = font-config-info-git
 	license = GPL
 	makedepends = git
 	depends = gtk3
+	depends = xsettingsd
 	provides = font-config-info
 	conflicts = font-config-info
 	source = git+https://github.com/derat/font-config-info.git
 	sha256sums = SKIP
 
 pkgname = font-config-info-git
-
