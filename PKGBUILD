@@ -7,7 +7,7 @@ pkgname=hmcl-dev
 _pkgname=hmcl
 pkgver=3.5.3.228
 _commit=a7108f318aa441a93b18fea2638989628527064b
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -15,7 +15,7 @@ license=('GPL3')
 provides=('hmcl')
 conflicts=('hmcl')
 depends=('java-openjfx=17')
-makedepends=('java-environment=17' 'gradle')
+makedepends=('java-environment=17' 'gradle' 'git')
 source=("hmcl-launch-script"
         "${_pkgname}.desktop"
         "git+https://github.com/huanghongxun/HMCL.git#commit=${_commit}")
