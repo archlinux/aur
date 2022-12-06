@@ -22,7 +22,7 @@ sha256sums=('113e1514a6ab4e56324aa8aa11a6d3337d931c5fcafad08d3c2b6d15f9fa34a3'
 
 prepare() {
   mkdir -p "$_pkgtag"
-  unzip $_pkgzip -o "$_pkgtag"
+  unzip "$_pkgzip" -o "$_pkgtag"
 }
 
 package() {
