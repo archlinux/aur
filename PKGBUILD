@@ -10,6 +10,7 @@ pkgdesc="Intel® Graphics Performance Analyzers (Intel® GPA) provides tools for
 
 source=("https://registrationcenter-download.intel.com/akdlm/irc_nas/18791/gpa_${pkgver}_release_m64_deb_install.sh")
 sha256sums=('345d38d0877e081beab2710e6b58272c4a2831e36f0ebbc1cd2bba2be46541c9')
+makedepends=(binutils tar)
 
 build() {
     # swy: wrap the called commands with our customized/dummied out versions
@@ -45,4 +46,7 @@ package() {
 
     cp -r "${srcdir}/opt" ${pkgdir}
     cp -r "${srcdir}/usr" ${pkgdir}
+
+    # swy: these are all legal documents
+    mv ${pkgdir}/usr/share/doc ${pkgdir}/usr/share/licenses
 }
