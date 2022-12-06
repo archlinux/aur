@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-infomaniak
-pkgver=0.1.16
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Infomaniak DNS Authenticator plugin for Certbot"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/$pkgname"
 depends=('certbot' 'python-setuptools' 'python-mock' 'python-requests-mock')
 checkdepends=('python-pytest')
 source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('4a1efdb39e7b0a3bbe98b19e5235bbddd2ae19d2713392b6a8fa7df59fd8971d')
+sha256sums=('19b148858adf1e816f12bb738b0ae8c64853d6dfede4e1e2aa2fca6ecdff2ddf')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
