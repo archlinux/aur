@@ -1,21 +1,20 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgbase=opm-common
-pkgname=(${pkgbase} python-${pkgbase})
-pkgver=2022.04
+pkgname=("${pkgbase}" python-"${pkgbase}")
+_dunever=2.9.0
+pkgver=2022.10
 pkgrel=1
 pkgdesc="Tools for Eclipse reservoir simulation files"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgbase}"
 license=(GPL3)
-_dunever=2.8.0
-makedepends=("dune-common>=${_dunever}" boost fmt cjson cppcheck texlive-core doxygen graphviz pybind11 python-pytest-runner python-setuptools-scm git)
-source=("git+${url}.git?signed#tag=release/${pkgver}/final1")
-sha512sums=('SKIP')
-validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>
+makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-core doxygen graphviz pybind11 python-pytest-runner python-setuptools-scm)
+source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
+sha512sums=('75efa8cc725e8be205ebfbab3ba0153fe06b3876a4d380070f78a206f801df1804862bd4eba0be72e13d3378223f14081f5a1d4e9eabb9b4a4a57c6c950df194')
 
 build() {
   cmake \
-    -S ${pkgbase} \
+    -S ${pkgbase}-release-${pkgver}-final \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -23,7 +22,9 @@ build() {
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
     -DCMAKE_CXX_FLAGS="-Wall -fdiagnostics-color=always -mavx" \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DUSE_MPI=1 \
     -DOPM_ENABLE_PYTHON=ON \
@@ -37,13 +38,13 @@ build() {
 
 package_opm-common() {
   depends=("dune-common>=${_dunever}" boost fmt cjson)
-  provides=('arraylist' 'compareECL' 'convertECL' 'rewriteEclFile' 'summary')
+  provides=('arraylist' 'compareECL' 'convertECL' 'opmhash' 'opmi' 'opmpack' 'rewriteEclFile' 'rst_deck' 'summary')
   optdepends=('bash-completion: for completion when using bash'
     'man-db: manual pages for compareECL, convertECL, opmhash, opmpack, rst_deck and summary')
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install install-html
-  install -Dm644 ${pkgbase}/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+  install -Dm644 ${pkgbase}-release-${pkgver}-final/LICENSE "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
   cd "${pkgdir}"
-  rm -r tmp
+  rm -r usr/build-cmake tmp
   find "${pkgdir}" -type d -empty -delete
 }
 

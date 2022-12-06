@@ -1,28 +1,26 @@
 pkgbase = opm-common
 	pkgdesc = Tools for Eclipse reservoir simulation files
-	pkgver = 2022.04
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
 	license = GPL3
-	makedepends = dune-common>=2.8.0
+	makedepends = dune-common>=2.9.0
 	makedepends = boost
 	makedepends = fmt
 	makedepends = cjson
-	makedepends = cppcheck
+	makedepends = suitesparse
 	makedepends = texlive-core
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = pybind11
 	makedepends = python-pytest-runner
 	makedepends = python-setuptools-scm
-	makedepends = git
-	source = git+https://github.com/OPM/opm-common.git?signed#tag=release/2022.04/final1
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = SKIP
+	source = opm-common-release-2022.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2022.10/final.tar.gz
+	sha512sums = 75efa8cc725e8be205ebfbab3ba0153fe06b3876a4d380070f78a206f801df1804862bd4eba0be72e13d3378223f14081f5a1d4e9eabb9b4a4a57c6c950df194
 
 pkgname = opm-common
-	depends = dune-common>=2.8.0
+	depends = dune-common>=2.9.0
 	depends = boost
 	depends = fmt
 	depends = cjson
@@ -31,10 +29,14 @@ pkgname = opm-common
 	provides = arraylist
 	provides = compareECL
 	provides = convertECL
+	provides = opmhash
+	provides = opmi
+	provides = opmpack
 	provides = rewriteEclFile
+	provides = rst_deck
 	provides = summary
 
 pkgname = python-opm-common
 	pkgdesc = Tools for Eclipse reservoir simulation files (python bindings)
-	depends = opm-common>=2022.04
+	depends = opm-common>=2022.10
 	depends = python-numpy
