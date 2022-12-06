@@ -15,7 +15,7 @@ _pkgtag="$pkgname-$pkgver"
 _pkgtar="$_pkgtag.tar.gz"
 noextract=("$_pkgtar")
 install="${pkgname}.install"
-source=("$_pkgtar::$url/archive/$pkgver.tar.gz"
+source=("$_pkgtar::https://codeberg.org/attachments/34feeb15-f8f9-460f-a7aa-e5cdcdf72cef"
         Asteroids.desktop)
 sha256sums=('113e1514a6ab4e56324aa8aa11a6d3337d931c5fcafad08d3c2b6d15f9fa34a3'
             'f3be9cdabcd8a64cedff55f83123e054d3300dd60bdc88d29894e06d63f69aa5')
