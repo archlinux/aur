@@ -1,0 +1,17 @@
+pkgbase = spicetify-extensions-charlies-git
+	pkgdesc = CharlieS1103's extensions for spicetify.
+	pkgver = r127.ccee5da
+	pkgrel = 1
+	url = https://github.com/CharlieS1103/spicetify-extensions
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = spicetify-cli
+	provides = spicetify-extensions-charlies
+	conflicts = spicetify-extensions-charlies
+	source = git+https://github.com/CharlieS1103/spicetify-extensions.git
+	source = spicetify-extensions-charlies.hook
+	sha256sums = SKIP
+	sha256sums = c7491352e601168821a0b3fbd0f80b3be20c61f7d38a8bbc6e1972a6eb9597e7
+
+pkgname = spicetify-extensions-charlies-git

@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Install
+Target = spicetify-extensions-charlies-git
+
+[Action]
+Description = Notifying user about manual operations...
+When = PostTransaction
+Exec = /usr/bin/echo 'Please see https://github.com/CharlieS1103/spicetify-extensions to find what you want to use.'
