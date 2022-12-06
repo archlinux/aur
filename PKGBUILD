@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrow
-_pkgver=10.0.0
+_pkgver=10.0.1
 pkgname=r-${_pkgname,,}
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.0.1
+pkgrel=1
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -50,7 +50,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e855b5ea913e93935d20be11b342f45193437404945c9fc39e9c61fd91911a13')
+sha256sums=('1edc641ec9ed8b1b8aa762e56f282c47fde2f03584bc69542463f383758a8d37')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
