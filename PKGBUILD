@@ -1,7 +1,7 @@
 _pkgname=asteroids
 pkgname=${_pkgname}-bin
 pkgver=1.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Anti-stress shooter game'
 url='https://codeberg.org/Denotatum/Asteroids'
 license=('GPLv3')
@@ -22,7 +22,7 @@ sha256sums=('113e1514a6ab4e56324aa8aa11a6d3337d931c5fcafad08d3c2b6d15f9fa34a3'
 
 prepare() {
   mkdir -p "$_pkgtag"
-  unzip -o "$_pkgtag"
+  unzip Asteroids.x86_64.zip -o "$_pkgtag"
 }
 
 package() {
