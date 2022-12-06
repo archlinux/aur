@@ -9,7 +9,7 @@ pkgbase = g4see-git
 	makedepends = cmake
 	depends = geant4
 	depends = python
-	provides = g4see
+	provides = g4see=v0.5.1
 	conflicts = g4see
 	source = git+https://gitlab.cern.ch/g4see/g4see.git
 	source = git+https://gitlab.cern.ch/g4see/g4see-scripts.git

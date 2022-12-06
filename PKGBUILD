@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('geant4' 'python')
 makedepends=('cmake')
 conflicts=('g4see')
-provides=('g4see')
+provides=("g4see=$pkgver")
 source=("git+https://gitlab.cern.ch/g4see/g4see.git"
         "git+https://gitlab.cern.ch/g4see/g4see-scripts.git")
 sha1sums=('SKIP' 'SKIP')
@@ -41,7 +41,11 @@ package() {
   cd "$srcdir/$_gitname/build"
 
   make install
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$pkgname" ../LICENSES/*
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_gitname" ../LICENSES/*
+  install -Dm644 -t "$pkgdir"/usr/share/"$_gitname"/scripts scripts/*
+  install -Dm644 -t "$pkgdir"/usr/share/"$_gitname"/examples examples/*
+  install -Dm644 -t "$pkgdir"/usr/share/"$_gitname"/examples_parametric examples_parametric/*
+  install -Dm644 -t "$pkgdir"/usr/share/"$_gitname"/configs configs/*
 }
 
 # vim:set ts=2 sw=2 et:
