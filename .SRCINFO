@@ -1,6 +1,6 @@
 pkgbase = sake
 	pkgdesc = CLI tool that enables you to run commands on servers via ssh
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://sakecli.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sake
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = sake::git+https://github.com/alajmo/sake#commit=ada7097d7b4044410221e0dcaef3a77a9780b924
+	source = sake::git+https://github.com/alajmo/sake#commit=f989a690e6d82db4eb360e8bea5d17457db10606
 	b2sums = SKIP
 
 pkgname = sake
