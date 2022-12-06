@@ -1,16 +1,34 @@
 pkgbase = singularity-ce
 	pkgdesc = An open source container platform designed to be simple, fast, and secure.
 	pkgver = 3.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sylabs/singularity
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = cryptsetup
 	depends = go>=1.17
-	depends = libnvidia-container-tools
-	depends = squashfs-tools
+	depends = libseccomp
+	depends = squashfs-tools>=4.3
+	provides = singularity-container
+	conflicts = singularity-container
+	backup = etc/singularity/capability.json
+	backup = etc/singularity/ecl.toml
+	backup = etc/singularity/global-pgp-public
+	backup = etc/singularity/nvliblist.conf
+	backup = etc/singularity/remote.yaml
+	backup = etc/singularity/rocmliblist.conf
+	backup = etc/singularity/singularity.conf
+	backup = etc/singularity/cgroups/cgroups.toml
+	backup = etc/singularity/network/00_bridge.conflist
+	backup = etc/singularity/network/10_ptp.conflist
+	backup = etc/singularity/network/20_ipvlan.conflist
+	backup = etc/singularity/network/30_macvlan.conflist
+	backup = etc/singularity/network/40_fakeroot.conflist
+	backup = etc/singularity/seccomp-profiles/default.json
 	source = https://github.com/sylabs/singularity/releases/download/v3.10.4/singularity-ce-3.10.4.tar.gz
-	b2sums = ee65236b19c5c2b356bdb06875a5438be311373ba83daad17f9f89484acda8662444625481061765aa06269e862f7ddc6aa4e03461b06c2028e271325a602d32
+	source = tmpfiles.conf
+	sha256sums = d77d5bc451937ea5f2ba074ffd7ac2d202212545f32a32c277f72fb106ba97d9
+	sha256sums = 4d4386ca622fdf5f7c9ac23fd8dd5b18592b27b246478f3755262aceb758e52f1a9ff5d63ef76701b31fd6b7d91ef3978d9a35bc14e6478baee08add6a404891
 
 pkgname = singularity-ce

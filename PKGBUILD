@@ -2,28 +2,71 @@
 
 pkgname=singularity-ce
 pkgver=3.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
 url='https://github.com/sylabs/singularity'
 license=('GPL2')
-depends=('cryptsetup' 'go>=1.17' 'libnvidia-container-tools' 'squashfs-tools')
+backup=(
+    'etc/singularity/capability.json'
+    'etc/singularity/ecl.toml'
+    'etc/singularity/global-pgp-public'
+    'etc/singularity/nvliblist.conf'
+    'etc/singularity/remote.yaml'
+    'etc/singularity/rocmliblist.conf'
+    'etc/singularity/singularity.conf'
+    'etc/singularity/cgroups/cgroups.toml'
+    'etc/singularity/network/00_bridge.conflist'
+    'etc/singularity/network/10_ptp.conflist'
+    'etc/singularity/network/20_ipvlan.conflist'
+    'etc/singularity/network/30_macvlan.conflist'
+    'etc/singularity/network/40_fakeroot.conflist'
+    'etc/singularity/seccomp-profiles/default.json'
+)
+depends=('cryptsetup' 'go>=1.17' 'libseccomp' 'squashfs-tools>=4.3')
 makedepends=('git')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('ee65236b19c5c2b356bdb06875a5438be311373ba83daad17f9f89484acda8662444625481061765aa06269e862f7ddc6aa4e03461b06c2028e271325a602d32')
+provides=('singularity-container')
+conflicts=('singularity-container')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        'tmpfiles.conf')
+sha256sums=('d77d5bc451937ea5f2ba074ffd7ac2d202212545f32a32c277f72fb106ba97d9'
+            '4d4386ca622fdf5f7c9ac23fd8dd5b18592b27b246478f3755262aceb758e52f1a9ff5d63ef76701b31fd6b7d91ef3978d9a35bc14e6478baee08add6a404891')
+
+prepare() {
+  cd $pkgname-$pkgver
+
+  # fix bash completion path
+  sed -e "s|/etc/bash_completion.d|/usr/share/bash-completion/completions|" \
+      -e "s|\$(SYSCONFDIR)/bash_completion.d|/usr/share/bash-completion/completions|" \
+      -i  mlocal/frags/build_cli.mk
+}
 
 build() {
     cd $pkgname-$pkgver
+
+    export CGO_CPPFLAGS="$CPPFLAGS"
+    export CGO_CFLAGS="$CFLAGS"
+    export CGO_CXXFLAGS="$CXXFLAGS"
+    export CGO_LDFLAGS="$LDFLAGS"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
     # libexecdir is recommended here https://wiki.archlinux.org/title/Arch_package_guidelines#Package_etiquette
     ./mconfig \
+        -V $pkgver \
+        -P release-stripped \
         --prefix="/usr" \
-        --libexecdir="/usr/lib/$pkgname"
+        --libexecdir="/usr/lib" \
+        --sysconfdir="/etc" \
+        --localstatedir="/var/lib"
 
-    cd builddir
-    make
+    make -C builddir
 }
 
 package() {
-    cd $pkgname-$pkgver/builddir
-    make DESTDIR="$pkgdir/" install
+    cd $pkgname-$pkgver
+    make -C builddir DESTDIR="$pkgdir/" install
+
+    # let systemd-tmpfiles generate state directory
+    rm -rf "$pkgdir/var"
+    install -vDm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
