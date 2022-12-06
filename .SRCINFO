@@ -1,13 +1,14 @@
 pkgbase = zvm
 	pkgdesc = Version manager for Zig compilers
-	pkgver = 0.0.1_beta
-	pkgrel = 2
+	pkgver = 0.0.1_beta.3
+	pkgrel = 3
 	url = https://github.com/tristanisham/zvm
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	makedepends = go
 	provides = zig=0.10.0
-	source = zvm-0.0.1_beta.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v0.0.1-beta.tar.gz
-	md5sums = 9827ebf272f7cec66cd9ecde1b268385
+	source = zvm-0.0.1_beta.3.tar.gz::https://github.com/tristanisham/zvm/archive/refs/tags/v0.0.1-beta.3.tar.gz
+	md5sums = 7a5f0afdc5b8d9e77cb5f33cdc0672c8
 
 pkgname = zvm
