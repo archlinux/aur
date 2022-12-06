@@ -2,7 +2,7 @@
 
 pkgname=shm-modbus
 pkgrel=1
-pkgver=1.0.2
+pkgver=1.0.3
 pkgdesc="A collection of applications to simulate a shared memory based Modbus client"
 url="https://github.com/NikolasK-source/SHM_Modbus"
 license=('MIT')
