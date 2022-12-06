@@ -6,7 +6,7 @@
 
 pkgname=jdk18-openj9-bin
 pkgver=18.0.2.1
-pkgrel=1
+pkgrel=2
 _jdk_version=18.0.2
 _jdk_patch=9
 _j9_version=0.33.1
@@ -15,6 +15,7 @@ arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/"
 license=('GPL')
 depends=('java-runtime-common' 'java-environment-common' 'ca-certificates-utils' 'nss')
+install="install_jdk18-openj9.sh"
 
 provides=(
 'java-environment=18'

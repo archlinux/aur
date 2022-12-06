@@ -1,8 +1,9 @@
 pkgbase = jdk18-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk18
 	pkgver = 18.0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/
+	install = install_jdk18-openj9.sh
 	arch = x86_64
 	license = GPL
 	makedepends = coreutils
