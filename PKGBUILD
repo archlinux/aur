@@ -6,7 +6,7 @@ _commit=45a450257999175dce6d5d8fb83f43397220e9f8
 _chromiumver=98.0.4758.141
 _gcc_patchset=5
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -220,6 +220,9 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  # https://github.com/webpack/webpack/issues/14532
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
