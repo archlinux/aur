@@ -2,7 +2,7 @@
 # Contributor: xantares
 # Contributor: dalraf
 pkgname=python-orange
-pkgver=3.33.0
+pkgver=3.34.0
 pkgrel=1
 pkgdesc="Open source machine learning and data visualization"
 arch=('x86_64')
@@ -17,10 +17,10 @@ depends=('python-chardet' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib'
          # AUR deps
          'python-anyqt' 'python-serverfiles' 'python-louvain' 'python-opentsne'
          'python-orange-widget-base' 'python-orange-canvas-core' 'python-baycomp')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/biolab/orange3/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/biolab/orange3/archive/refs/tags/${pkgver}.tar.gz")
 optdepends=('python-psycopg2: PostgreSQL database support'
             'python-pymssql: Microsoft SQL Server support')
-sha256sums=('0d5b0cc044aa1523a961080a5de26380acb623a0b996e479cc3d020d01a2cf8c')
+sha256sums=('a0def37db39c4f9d4b7ba16fc613e013e9008963c586d89754514c3df9887c5d')
 
 build() {
   cd "${srcdir}/orange3-$pkgver"
