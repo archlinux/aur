@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index aeac6c06..56fb8985 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,10 +5,6 @@ ROOT=.
+ 
+ MK_ALL_TARGETS=bindirs deps build package
+ 
+-ifeq ($(wildcard $(ROOT)/deps/readies/*),)
+-___:=$(shell git submodule update --init --recursive &> /dev/null)
+-endif
+-
+ include $(ROOT)/deps/readies/mk/main
+ 
+ MK_CUSTOM_CLEAN=1

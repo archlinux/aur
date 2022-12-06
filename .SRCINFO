@@ -1,0 +1,31 @@
+pkgbase = redis-timeseries
+	pkgdesc = Time Series data structure for Redis
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://redis.io/docs/stack/timeseries/
+	arch = x86_64
+	license = custom:RSALv2
+	license = custom:SSPLv1
+	makedepends = git
+	makedepends = lcov
+	depends = redis
+	source = git+https://github.com/RedisTimeSeries/RedisTimeSeries.git#commit=26a2e426ba7b1fa80e9709d73e28d4a067f39900
+	source = git+https://github.com/RedisLabsModules/readies.git
+	source = git+https://github.com/lemire/fast_double_parser.git
+	source = git+https://github.com/google/cpu_features.git
+	source = git+https://github.com/RedisLabsModules/RedisModulesSDK.git
+	source = git+https://github.com/RedisGears/LibMR.git
+	source = git+https://github.com/redis/hiredis.git
+	source = git+https://github.com/libevent/libevent.git
+	source = no_submodule_init.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = db2839d9b4c67a40d35af1afb9e9e9058a932469f38e8a048667879e0c107dbf
+
+pkgname = redis-timeseries
