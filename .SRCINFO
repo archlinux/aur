@@ -8,7 +8,7 @@ pkgbase = gwatcher
 	makedepends = git
 	makedepends = cargo
 	depends = glib2
-	source = https://codeberg.org/NotSludgeBomb/gwatcher/archive/1.0.0.tar.gz
+	source = https://codeberg.org/NotSludgeBomb/gwatcher/archive/v1.0.0.tar.gz
 	sha256sums = df338804414b983339615756708ab46169bfe3eab7271c4c626182a93cd5ad19
 
 pkgname = gwatcher
