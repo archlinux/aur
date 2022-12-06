@@ -3,8 +3,8 @@
 _name=maturin
 pkgname="python-${_name}"
 pkgver=0.14.4
-pkgrel=2
-pkgdesc="Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings as well as rust binaries as python packages."
+pkgrel=3
+pkgdesc="Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings"
 arch=("x86_64")
 url="https://www.maturin.rs/"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = python-maturin
-	pkgdesc = Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings as well as rust binaries as python packages.
+	pkgdesc = Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings
 	pkgver = 0.14.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.maturin.rs/
 	arch = x86_64
 	license = MIT
