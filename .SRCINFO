@@ -8,6 +8,7 @@ pkgbase = rare
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pyqt5
+	depends = qt5-svg
 	depends = python-qtawesome
 	depends = python-requests
 	depends = python-typing_extensions
