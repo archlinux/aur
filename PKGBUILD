@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=garage
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Garage, an S3-compatible distributed object store for self-hosted deployments"
 url="https://garagehq.deuxfleurs.fr"
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz")
-sha256sums=('85200daed3ee6b501be2a36306c90aa02d0d7f600547da4fef627b57c21429df')
-b2sums=('af5b8ed712ed15780c9658b32cba4604a66738ec6ebc018aab4b0bd66dc2081f9b5f578dc610abf1a55ad1534c6fa4ed60e56bc25638bfe6cf61fde1b8153bc8')
+sha256sums=('264da6d272bae1fdd291f604f3c7f1ac0848aaf85b3b4a413118f97d11fd2a60')
+b2sums=('34d95e2d1a7132b41e2363d5fc459106cdc91c4b3b3b94d370c67f6e30e6ebe2b296f83eafd3ac4d9a9ea2fa3038138de4b2790b2b6b51fdd75b1d0370eda9b1')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
