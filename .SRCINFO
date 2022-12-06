@@ -1,0 +1,13 @@
+pkgbase = etesync-dav-bin
+	pkgdesc = A CalDAV and CardDAV adapter for EteSync
+	pkgver = 0.31.2
+	pkgrel = 1
+	url = https://github.com/etesync/etesync-dav
+	arch = x86_64
+	license = GPL3
+	provides = etesync-dav
+	conflicts = etesync-dav
+	source = https://github.com/etesync/etesync-dav/releases/download/v0.31.2/linux-amd64-etesync-dav
+	b2sums = 505a04e7a15d95d04a38de2dbe4954909134607be01f47ee3db94658a1210b7a9bb3040c995ce11f6f44cc9dc888b86418f824cfb32af9c30f55f188888ee9a0
+
+pkgname = etesync-dav-bin
