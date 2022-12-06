@@ -1,13 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-# Ex-Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
-# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Please note you must have a Vulkan-capable GPU
 
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -15,7 +14,7 @@ url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=('flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
 	 'libvorbis' 'libx11' 'opusfile' 'sdl2')
-makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli')
+makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli' 'glslang' 'spirv-tools' 'git')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
