@@ -10,6 +10,7 @@ pkgbase = r-openssl
 	checkdepends = r-sodium
 	checkdepends = r-testthat>=2.1.0,
 	checkdepends = r-usethis
+	checkdepends = texlive-bin
 	depends = r
 	depends = r-askpass
 	depends = openssl
