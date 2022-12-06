@@ -1,0 +1,16 @@
+pkgbase = singularity-ce
+	pkgdesc = An open source container platform designed to be simple, fast, and secure.
+	pkgver = 3.10.4
+	pkgrel = 1
+	url = https://github.com/sylabs/singularity
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = cryptsetup
+	depends = go>=1.17
+	depends = libnvidia-container-tools
+	depends = squashfs-tools
+	source = https://github.com/sylabs/singularity/releases/download/v3.10.4/singularity-ce-3.10.4.tar.gz
+	b2sums = ee65236b19c5c2b356bdb06875a5438be311373ba83daad17f9f89484acda8662444625481061765aa06269e862f7ddc6aa4e03461b06c2028e271325a602d32
+
+pkgname = singularity-ce
