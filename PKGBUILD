@@ -3,7 +3,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=swaybg
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=(x86_64)
@@ -23,8 +23,8 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz.sig"
 )
-sha512sums=('e5ac7af1690974206f916e1d99a8dde0e837acbc686e2de2c46d505201f239a059f998adc22192205d1ad75b5905222f16aed243b31920e19c0ff2229b8eda2c'
-            'SKIP')
+b2sums=('8b2154e90ec52db77d83bcf3aff49eb79ee44e533350b875b6b93e30261b97a1c737bf5d43e19247434aa76a740d5b0ae4f3f81f0b4b0c9b2122cfc08b0d274d'
+        'SKIP')
 validpgpkeys=(
     "9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A"  # Drew DeVault
     "34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48"  # Simon Ser
