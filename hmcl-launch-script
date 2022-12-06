@@ -1,10 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if [[ "$1" != "-p" ]]; then
-    WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
-    mkdir -p $WORKDIR
-    cd $WORKDIR
-    ls hmcl.json > /dev/null 2>&1 || touch hmcl.json
+set -o errexit
+
+if [[ $1 != -p ]]; then
+  WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
+  mkdir -p "$WORKDIR"
+  cd "$WORKDIR"
 fi
 
-exec /usr/lib/jvm/java-17-openjdk/bin/java -jar "/usr/share/java/hmcl/hmcl.jar" "$@"
+JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+JAVAFX_PATH="$JAVA_HOME"/lib
+
+exec "$JAVA_HOME"/bin/java --module-path "$JAVAFX_PATH/javafx.base.jar:$JAVAFX_PATH/javafx.controls.jar:$JAVAFX_PATH/javafx.fxml.jar:$JAVAFX_PATH/javafx.graphics.jar:$JAVAFX_PATH/javafx.media.jar:$JAVAFX_PATH/javafx.swing.jar:$JAVAFX_PATH/javafx.web.jar" --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -jar "/usr/share/java/hmcl/hmcl.jar" "$@"
