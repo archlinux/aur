@@ -1,6 +1,6 @@
 pkgbase = perl-log-dispatchouli
 	pkgdesc = A simple wrapper around Log::Dispatch.
-	pkgver = 3.001
+	pkgver = 3.002
 	pkgrel = 1
 	url = https://metacpan.org/release/Log-Dispatchouli
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = perl-log-dispatchouli
 	depends = perl-sub-exporter-globexporter>=0.002
 	depends = perl-try-tiny>=0.04
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Log-Dispatchouli-3.001.tar.gz
-	sha256sums = da3fa6bb6ea3e5d00edf421ab6cb3450499ffdbf08c79c6a2ac84079d923c429
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Log-Dispatchouli-3.002.tar.gz
+	sha256sums = 86a739f970c8d8e7fcfe52cd75f0844a7cb96e1d9c151f1ba8cba26b541f34ee
 
 pkgname = perl-log-dispatchouli
