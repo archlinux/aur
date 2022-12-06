@@ -1,0 +1,16 @@
+pkgbase = hyprprop-git
+	pkgdesc = xprop for Hyprland
+	pkgver = 4.6be79a7
+	pkgrel = 1
+	url = https://github.com/vilari-mickopf/hyprprop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = hyprevents-git
+	depends = slurp
+	provides = hyprprop
+	conflicts = hyprprop
+	source = hyprprop::git+https://github.com/vilari-mickopf/hyprprop.git
+	md5sums = SKIP
+
+pkgname = hyprprop-git
