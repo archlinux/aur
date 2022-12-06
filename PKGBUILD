@@ -5,7 +5,7 @@
 #              Christoph Haag <haagch@studi,informatik.uni-stuttgart.de>
 #              WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=steamos-compositor-plus
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="Compositor used by SteamOS 2.x with some added tweaks and fixes"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=('steamos-compositor')
 _msver=1.10
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chimeraos/${pkgname}/archive/${pkgver}.tar.gz"
         "https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
-md5sums=('0f33197ba17e36201529aa0a299fcdbd'
+md5sums=('83b1c140c36f111a927dfeef66924748'
          'ab8b731fb917aff183aa338bf3298495')
 
 prepare() {
