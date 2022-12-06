@@ -18,6 +18,7 @@ pkgbase = f3d-git
 	depends = assimp
 	depends = opencascade
 	depends = alembic
+	depends = draco
 	depends = jdk-openjdk
 	depends = pybind11
 	depends = fmt

@@ -10,7 +10,7 @@ pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_name-app/$_name"
 license=('BSD')
-depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade' 'alembic' 'jdk-openjdk' 'pybind11' 'fmt')
+depends=('vtk' 'glew' 'pugixml' 'netcdf' 'ospray' 'assimp' 'opencascade' 'alembic' 'draco' 'jdk-openjdk' 'pybind11' 'fmt')
 makedepends=('git' 'git-lfs' 'cmake' 'help2man' 'openmp')
 provides=('f3d')
 conflicts=('f3d')
@@ -36,9 +36,10 @@ build() {
         -DF3D_BINDINGS_JAVA=ON \
         -DF3D_INSTALL_SDK=ON \
         -DF3D_PLUGINS_STATIC_BUILD=ON \
-        -DF3D_PLUGIN_BUILD_OCCT=ON \
-        -DF3D_PLUGIN_BUILD_ASSIMP=ON \
         -DF3D_PLUGIN_BUILD_ALEMBIC=ON \
+        -DF3D_PLUGIN_BUILD_ASSIMP=ON \
+        -DF3D_PLUGIN_BUILD_DRACO=ON \
+        -DF3D_PLUGIN_BUILD_OCCT=ON \
         -DF3D_MODULE_RAYTRACING=ON \
         -DF3D_MODULE_EXTERNAL_RENDERING=ON \
         ..
