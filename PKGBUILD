@@ -1,12 +1,12 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
-pkgver=19.1.4
-_commit=726839761fd57fc23f57a03500f48c2035a6170e
+pkgver=19.1.9
+_commit=f887fa45dfaeeddfe20c9835ae7ca3a0823b661b
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=4
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
