@@ -12,8 +12,9 @@ makedepends=('git')
 optdepends=(
 	'neovim-lspconfig: setup configurations for LSP servers'
 	'mason-lspconfig.nvim: bridge mason with lspconfig'
-	'npm: for packages installed from there'
-	'cargo: for packages installed from there'
+	'npm: for plugins installed from there'
+	'luarocks: for plugins installed from there'
+	'cargo: for plugins installed from there'
 	'nvim-dap: to use installed DAP packages'
 	'null-ls: to use installed formatters and linters')
 install=mason.nvim.install
