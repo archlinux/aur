@@ -2,7 +2,7 @@
 
 _pkgname=notesnook
 pkgname=${_pkgname}-bin
-pkgver="2.2.4"
+pkgver="2.3.0"
 pkgrel=1
 pkgdesc="Open source zero knowledge private note taking"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _Pkgname=notesnook
 source=(
 	"${_appimage}::https://github.com/streetwriters/notesnook/releases/download/v$pkgver/${_appimage}"
 )
-sha512sums=('ca4cdd433d1d5844548ede084a8ab4da57eea87cdad7d5e93423a03312ceb237dfb14b0de54e469c9ae8b68d6d95ba6f730c7ab37d989d53babd2a2b9863aeff')
+sha512sums=('3bdbfdfd6063f62466985c5a2e51d7bb9f1092accaaeb50084a81989680a1f4033363a21fc15c3076ba213a264a4f42498a490a4033410a2a7f0ab6b9214a8cb')
 noextract=("${_appimage}")
 
 prepare() {
