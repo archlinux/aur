@@ -1,0 +1,13 @@
+pkgbase = ase-assistant
+    pkgdesc = Pokemon Gen 4 Arbitrary Script Execution Payload converter
+    pkgver = 0.1
+    pkgrel = 1
+    url = https://voidmatrixteam.github.io/Voidmatrix/src/script_assistant.html
+    arch = any
+    license = unknown
+    makedepends = nodejs-nativefier
+    source = ase-assistant.png
+    source = ase-assistant.desktop
+    sha256sums = a482c5af4a1d49383ef91c3635f6eb21edd8a0b688de7d1a31d195550c29234b
+    sha256sums = a1401428003f936a8d1a069a04f20a1aa3dca49be09bcc61909ff2615fc907ec
+pkgname = ase-assistant

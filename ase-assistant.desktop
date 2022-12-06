@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Gen IV ASE Assistant
+Comment=Pokemon Gen 4 Arbitrary Script Execution Payload converter. Built with nativefier
+Exec=ase-assistant
+Icon=ase-assistant
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development
+
