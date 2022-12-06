@@ -1,18 +1,14 @@
 pkgbase = kmediaplayer
 	pkgdesc = Plugin interface for media player features
-	pkgver = 5.101.0
+	pkgver = 5.100.0
 	pkgrel = 1
-	url = https://community.kde.org/Frameworks
+	url = https://invent.kde.org/frameworks/kmediaplayer
 	arch = x86_64
 	groups = kf5-aids
 	license = LGPL
 	makedepends = extra-cmake-modules
 	depends = kparts
-	options = debug
-	source = https://download.kde.org/stable/frameworks/5.101/portingAids/kmediaplayer-5.101.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.101/portingAids/kmediaplayer-5.101.0.tar.xz.sig
-	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = 084e0215dbe9c3a93b90de680f7a7302c3b0756557d130f977b221e1a5a04123
-	sha256sums = SKIP
+	source = https://invent.kde.org/frameworks/kmediaplayer/-/archive/v5.100.0/kmediaplayer-v5.100.0.tar.bz2
+	sha256sums = 4c39794f604a46cab93f12c1b3b489387eb4e79a25c2721b74b4db2b03613f36
 
 pkgname = kmediaplayer

@@ -1,29 +1,30 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmediaplayer
-pkgver=5.101.0
+pkgver=5.100.0
 pkgrel=1
 pkgdesc='Plugin interface for media player features'
-arch=(x86_64)
-url='https://community.kde.org/Frameworks'
-license=(LGPL)
-depends=(kparts)
-makedepends=(extra-cmake-modules)
-groups=(kf5-aids)
-source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/portingAids/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('084e0215dbe9c3a93b90de680f7a7302c3b0756557d130f977b221e1a5a04123'
-            'SKIP')
-validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
-options=(debug)
+arch=('x86_64')
+url='https://invent.kde.org/frameworks/kmediaplayer'
+license=('LGPL')
+depends=('kparts')
+makedepends=('extra-cmake-modules')
+groups=('kf5-aids')
+source=("https://invent.kde.org/frameworks/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('4c39794f604a46cab93f12c1b3b489387eb4e79a25c2721b74b4db2b03613f36')
+
+_srcdir="$pkgname-v$pkgver"
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S "${_srcdir}" \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dpm644 "${_srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
