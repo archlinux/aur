@@ -1,0 +1,19 @@
+pkgbase = python-deltalake
+	pkgdesc = Native Delta Lake Python binding based on delta-rs with Pandas integration
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://delta.io/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyarrow
+	depends = python-typing_extensions
+	optdepends = python-pandas: for interoperability with pandas frames
+	optdepends = python-pyspark: for spark integration
+	source = https://files.pythonhosted.org/packages/source/d/deltalake/deltalake-0.6.4.tar.gz
+	b2sums = SKIP
+
+pkgname = python-deltalake
