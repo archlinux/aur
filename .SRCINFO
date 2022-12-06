@@ -1,13 +1,15 @@
 pkgbase = redis-timeseries
 	pkgdesc = Time Series data structure for Redis
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redis.io/docs/stack/timeseries/
 	arch = x86_64
 	license = custom:RSALv2
 	license = custom:SSPLv1
 	makedepends = git
 	makedepends = lcov
+	makedepends = python
+	makedepends = cmake
 	depends = redis
 	source = git+https://github.com/RedisTimeSeries/RedisTimeSeries.git#commit=26a2e426ba7b1fa80e9709d73e28d4a067f39900
 	source = git+https://github.com/RedisLabsModules/readies.git
@@ -18,6 +20,7 @@ pkgbase = redis-timeseries
 	source = git+https://github.com/redis/hiredis.git
 	source = git+https://github.com/libevent/libevent.git
 	source = no_submodule_init.patch
+	source = readies.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -26,6 +29,7 @@ pkgbase = redis-timeseries
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = db2839d9b4c67a40d35af1afb9e9e9058a932469f38e8a048667879e0c107dbf
+	sha256sums = 2fd78c5f453aa30aa9df71bf8c34ad5add7368086b50cfbfafa1adec1e2659a4
+	sha256sums = fb3fed48d6db9510f8830bd87bb30678c9061054e1aa7c5e8bbc480e13858d3a
 
 pkgname = redis-timeseries

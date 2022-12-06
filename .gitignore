@@ -8,3 +8,4 @@ readies/
 RedisModulesSDK/
 RedisTimeSeries/
 src/
+*.log
