@@ -23,9 +23,9 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_TESTING=OFF
 
-	make -C build
+	cmake --build build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }
