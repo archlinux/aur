@@ -1,0 +1,23 @@
+pkgbase = domo-git
+	pkgdesc = Simple tool to manage IoT devices
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ZappaBoy/domo
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = python-certifi
+	depends = python-charset-normalizer
+	depends = python-colorama
+	depends = python-idna
+	depends = python-pycryptodome
+	depends = python-requests
+	depends = python-urllib3
+	provides = domo
+	source = git+https://github.com/ZappaBoy/domo
+	md5sums = SKIP
+
+pkgname = domo-git
