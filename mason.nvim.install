@@ -1,0 +1,25 @@
+_post_install_string="
+	This plugin requires manual setup. Add the following to your init.lua or equivalent.
+
+		require(\"mason\").setup()
+
+	Further setup instructions found at: https://github.com/williamboman/mason.nvim
+		
+"
+_post_remove_string="
+	Remember to remove all references to this plugin from your init scripts.
+"
+_documentation_reminder="
+	Make sure to also update the help tags to reflect changes in documentation:
+
+		sudo nvim -u NONE --headless -c 'helptags ALL' -c 'q'
+"
+post_install() {
+	echo  "$_post_install_string"
+	echo  "$_documentation_reminder"
+}
+
+post_remove() {
+	echo  "$_post_remove_string"
+	echo  "$_documentation_reminder"
+}

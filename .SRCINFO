@@ -1,0 +1,22 @@
+pkgbase = mason.nvim
+	pkgdesc = Package manager focused on IDE language extensions
+	pkgver = r1192.2381f50
+	pkgrel = 1
+	url = https://github.com/williamboman/mason.nvim
+	install = mason.nvim.install
+	arch = any
+	groups = neovim-plugins
+	license = Apache
+	makedepends = git
+	depends = neovim
+	depends = git
+	optdepends = neovim-lspconfig: setup configurations for LSP servers
+	optdepends = mason-lspconfig.nvim: bridge mason with lspconfig
+	optdepends = npm: for packages installed from there
+	optdepends = cargo: for packages installed from there
+	optdepends = nvim-dap: to use installed DAP packages
+	optdepends = null-ls: to use installed formatters and linters
+	source = mason.nvim::git+https://github.com/williamboman/mason.nvim
+	md5sums = SKIP
+
+pkgname = mason.nvim
