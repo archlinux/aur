@@ -3,24 +3,28 @@
 
 _pkgname=gpm
 pkgname=lib32-$_pkgname
-pkgver=1.20.7
-pkgrel=2
+pkgver=1.20.7.r38.ge82d1a6
+pkgrel=1
+_commit='e82d1a653ca94aa4ed12441424da6ce780b1e530'
 pkgdesc="A mouse server for the console and xterm (32 bit)"
 arch=('x86_64')
 url="https://www.nico.schottelius.org/software/gpm/"
 license=('GPL')
 depends=('lib32-ncurses' "$_pkgname")
+makedepends=('git')
 options=('!makeflags')
-source=(https://www.nico.schottelius.org/software/gpm/archives/${_pkgname}-${pkgver}.tar.lzma
-        gpm-glibc-2.26.patch)
-sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
-          '57d98a5ed864ead76290d32a6899caaed0b55959')
-sha256sums=('a955053b36556ffa7c628ce18fd6de7d625966573fa412fb08869533d8f7385c'
-            '5430d5b43613af325eb50bd7338cca3098bb2d7d62ff01de657a77b5f211bfb7')
+source=("git+https://github.com/telmich/gpm.git#commit=${_commit}")
+sha1sums=('SKIP')
+sha256sums=('SKIP')
 
-prepare() {
-  cd $_pkgname-$pkgver
-  patch -p1 -i ../gpm-glibc-2.26.patch # Fix build with glibc 2.26 (Debian)
+pkgver() {
+  cd $_pkgname
+
+  GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"
+  printf '%s.r%s.g%s' \
+    "${GITTAG}" \
+    "$(git rev-list --count ${GITTAG}..)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -28,14 +32,14 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd ${_pkgname}
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib32
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd ${_pkgname}
   make DESTDIR="${pkgdir}" install
 
 # library fixes
