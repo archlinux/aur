@@ -6,8 +6,7 @@ pkgbase = jabref
 	arch = any
 	license = MIT
 	makedepends = gradle
-	makedepends = java-environment>=18
-	makedepends = java-environment<19
+	makedepends = java-environment=18
 	depends = archlinux-java-run>=7
 	depends = java-runtime>=18
 	optdepends = python: browser extension

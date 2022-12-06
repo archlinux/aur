@@ -14,7 +14,7 @@ arch=(any)
 url="https://www.jabref.org/"
 license=(MIT)
 depends=('archlinux-java-run>=7' 'java-runtime>=18')
-makedepends=('gradle' 'java-environment>=18' 'java-environment<19')
+makedepends=('gradle' 'java-environment=18')
 optdepends=('python: browser extension')
 options=(!strip !emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v${pkgver}.tar.gz
