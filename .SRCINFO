@@ -1,0 +1,13 @@
+pkgbase = hiredis0.14
+	pkgdesc = Minimalistic C client library for Redis
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/redis/hiredis/
+	arch = x86_64
+	license = BSD
+	checkdepends = redis
+	depends = glibc
+	source = https://github.com/redis/hiredis/archive/v0.14.1/hiredis-0.14.1.tar.gz
+	sha256sums = 2663b2aed9fd430507e30fc5e63274ee40cdd1a296026e22eafd7d99b01c8913
+
+pkgname = hiredis0.14
