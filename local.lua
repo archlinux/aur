@@ -1,3 +1,7 @@
+-- use this file for local configuration
+snort = {}
+snort['-Q'] = true -- inline mode
+
 daq =
 {
     modules =
