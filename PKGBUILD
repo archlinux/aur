@@ -6,7 +6,7 @@ _commit=726839761fd57fc23f57a03500f48c2035a6170e
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -215,6 +215,9 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  # https://github.com/webpack/webpack/issues/14532
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
