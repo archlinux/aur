@@ -5,12 +5,13 @@ shopt -s extglob
 
 pkgname=wake
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The SiFive wake build tool"
 arch=('x86_64')
 url="https://github.com/sifive/wake"
 license=('custom')
 depends=('dash' 'sqlite' 'gmp' 'fuse2' 'libutf8proc' 're2')
+makedepends=('clang')
 optdepends=('re2c: for flag support')
 source=("https://github.com/sifive/wake/releases/download/v$pkgver/wake_$pkgver.tar.xz")
 sha512sums=('5d49d680796a2682037ad311b0495f2f04a69dc90faba4458a1bb84a3d5c42e9014563e4b6a3e9600d50a2d4c3cbf5e60318266535c73453c08085015bd57f68')
@@ -22,6 +23,9 @@ prepare() {
   sed -i 's|"utf8proc"|"libutf8proc"|' utf8proc/utf8proc.wake
   sed -i "s^releaseCFlags = (\"-Wall\", \"-O2^releaseCFlags = (\"$(echo $CFLAGS | sed 's/ /", "/g')^" share/wake/lib/gcc_wake/gcc.wake
   sed -i "s^releaseLFlags = (^releaseLFlags = (\"$(echo $LDFLAGS | sed 's/ /", "/g')\", ^" share/wake/lib/gcc_wake/gcc.wake
+
+  # Build with clang to work around https://github.com/sifive/wake/issues/890
+  sed -i -e '/^CC\t/s/cc/clang/' -e '/^CXX\t/s/c++/clang++/' Makefile
 }
 
 build() {
