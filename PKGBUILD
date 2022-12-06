@@ -26,10 +26,28 @@ build() {
 
 package() {
 	cd hashzam-git-aur
-	sudo mkdir "/usr/share/licenses/${pkgname}"
-	sudo mkdir "/usr/share/doc/${pkgname}"
+	if [ ! -d "/usr/share/licenses/${pkgname}" ]; then
+		sudo mkdir "/usr/share/licenses/${pkgname}"
+	fi
+	if [ ! -d "/usr/share/doc/${pkgname}" ]; then
+		sudo mkdir "/usr/share/doc/${pkgname}"
+	fi
 	chmod +x hashzam.py 
-	sudo cp hashzam.py "/usr/local/bin/hashzam"
-	sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
-	sudo cp README.md "/usr/share/doc/${pkgname}/README.md"
+	if [ ! -f "/usr/local/bin/hashzam" ]; then
+		sudo cp hashzam.py "/usr/local/bin/hashzam"
+	else
+		sudo mv /usr/local/bin/hashzam /usr/local/bin/hashzam.save
+	fi
+	if [ ! -f "/usr/share/licenses/${pkgname}/LICENSE" ]; then
+		sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
+	else
+		sudo rm -f "/usr/share/licenses/${pkgname}/LICENSE"
+		sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
+	fi
+	if [ ! -f "/usr/share/doc/${pkgname}/README.md" ]; then
+		sudo cp README.md "/usr/share/doc/${pkgname}/README.md"
+	else
+		sudo rm -f "/usr/share/doc/${pkgname}/README.md"
+		sudo cp README.md "/usr/share/doc/${pkgname}/README.md"
+	fi
 }
