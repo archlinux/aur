@@ -1,4 +1,4 @@
-From f9c1f1b68c22d8fb62f6222c1b45a093db7b46a8 Mon Sep 17 00:00:00 2001
+From 08b7e6cd2ccb3576a067542923c44f4f42494825 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/3] Cleanup
@@ -9,36 +9,28 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../java/org/jackhuang/hmcl/Launcher.java     |   8 -
  .../java/org/jackhuang/hmcl/Metadata.java     |   1 -
  .../jackhuang/hmcl/setting/ConfigHolder.java  |   1 -
- .../org/jackhuang/hmcl/ui/Controllers.java    |  11 -
+ .../org/jackhuang/hmcl/ui/Controllers.java    |   4 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   6 +-
  .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 ---
- .../jackhuang/hmcl/ui/main/FeedbackPage.java  | 471 ---------------
+ .../jackhuang/hmcl/ui/main/FeedbackPage.java  | 470 ------------------
  .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 117 +---
- .../org/jackhuang/hmcl/ui/main/RootPage.java  |  22 -
- .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 --
- .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 --
- .../jackhuang/hmcl/ui/main/SponsorPage.java   | 166 ------
- .../multiplayer/LocalServerBroadcaster.java   | 153 -----
- .../ui/multiplayer/MultiplayerManager.java    | 553 ------------------
- .../hmcl/ui/multiplayer/MultiplayerPage.java  | 367 ------------
- .../ui/multiplayer/MultiplayerPageSkin.java   | 461 ---------------
- .../hmcl/upgrade/ExecutableHeaderHelper.java  | 123 ----
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 117 +----
+ .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 -
+ .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ---
+ .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ---
+ .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 -------
+ .../hmcl/upgrade/ExecutableHeaderHelper.java  | 123 -----
  .../hmcl/upgrade/HMCLDownloadTask.java        |  68 ---
  .../hmcl/upgrade/IntegrityChecker.java        | 134 -----
- .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 ---
+ .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 ----
  .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 --
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 ----
- .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 --------
+ .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 -----
+ .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ----------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
- 25 files changed, 3 insertions(+), 3401 deletions(-)
+ 21 files changed, 3 insertions(+), 1862 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/LocalServerBroadcaster.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerManager.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPage.java
- delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPageSkin.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
@@ -48,28 +40,28 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index bcd49e1d..0d851357 100644
+index e5aecd61..7d260abc 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-@@ -30,8 +30,6 @@ import org.jackhuang.hmcl.task.AsyncTaskExecutor;
+@@ -29,8 +29,6 @@ import org.jackhuang.hmcl.setting.SambaException;
+ import org.jackhuang.hmcl.task.AsyncTaskExecutor;
  import org.jackhuang.hmcl.task.Schedulers;
- import org.jackhuang.hmcl.ui.AwtUtils;
  import org.jackhuang.hmcl.ui.Controllers;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -133,8 +131,6 @@ public final class Launcher extends Application {
- 
-                 initIcon();
+@@ -129,8 +127,6 @@ public final class Launcher extends Application {
+                 Platform.setImplicitExit(false);
+                 Controllers.initialize(primaryStage);
  
 -                UpdateChecker.init();
 -
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -155,10 +151,6 @@ public final class Launcher extends Application {
+@@ -145,10 +141,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -105,38 +97,10 @@ index 17342bcd..f7572c81 100644
                  }
              } catch (JsonParseException e) {
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index ba598ac5..47330c98 100644
+index 6b13766f..af18ea1b 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -45,7 +45,6 @@ import org.jackhuang.hmcl.ui.download.DownloadPage;
- import org.jackhuang.hmcl.ui.download.ModpackInstallWizardProvider;
- import org.jackhuang.hmcl.ui.main.LauncherSettingsPage;
- import org.jackhuang.hmcl.ui.main.RootPage;
--import org.jackhuang.hmcl.ui.multiplayer.MultiplayerPage;
- import org.jackhuang.hmcl.ui.versions.GameListPage;
- import org.jackhuang.hmcl.ui.versions.VersionPage;
- import org.jackhuang.hmcl.util.FutureCallback;
-@@ -93,7 +92,6 @@ public final class Controllers {
-         accountListPage.authServersProperty().bindContentBidirectional(config().getAuthlibInjectorServers());
-         return accountListPage;
-     });
--    private static Lazy<MultiplayerPage> multiplayerPage = new Lazy<>(MultiplayerPage::new);
-     private static Lazy<LauncherSettingsPage> settingsPage = new Lazy<>(LauncherSettingsPage::new);
- 
-     private Controllers() {
-@@ -122,11 +120,6 @@ public final class Controllers {
-         return rootPage.get();
-     }
- 
--    // FXThread
--    public static MultiplayerPage getMultiplayerPage() {
--        return multiplayerPage.get();
--    }
--
-     // FXThread
-     public static LauncherSettingsPage getSettingsPage() {
-         return settingsPage.get();
-@@ -305,10 +298,6 @@ public final class Controllers {
+@@ -304,10 +304,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -173,7 +137,7 @@ index 46ce19ab..daafd6f6 100644
          TextArea textArea = new TextArea();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index 0063690c..00000000
+index b43133a1..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
 @@ -1,77 +0,0 @@
@@ -220,7 +184,7 @@ index 0063690c..00000000
 -        }
 -
 -        {
--            String url = CHANGELOG_URL + remoteVersion.getChannel().channelName + ".html";
+-            String url = CHANGELOG_URL + remoteVersion.getChannel().channelName + ".html#nowchange";
 -            try {
 -                WebView webView = new WebView();
 -                webView.getEngine().setUserDataDirectory(Metadata.HMCL_DIRECTORY.toFile());
@@ -256,10 +220,10 @@ index 0063690c..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index f67736d5..00000000
+index bca7f749..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
-@@ -1,471 +0,0 @@
+@@ -1,470 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -292,6 +256,7 @@ index f67736d5..00000000
 -import javafx.geometry.Pos;
 -import javafx.scene.control.Label;
 -import javafx.scene.layout.*;
+-import org.apache.commons.lang3.mutable.MutableObject;
 -import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.game.OAuthServer;
 -import org.jackhuang.hmcl.setting.Accounts;
@@ -379,7 +344,8 @@ index f67736d5..00000000
 -            JFXListView<FeedbackResponse> listView = new JFXListView<>();
 -            spinnerPane.setContent(listView);
 -            Bindings.bindContent(listView.getItems(), feedbacks);
--            listView.setCellFactory(x -> new MDListCell<FeedbackResponse>(listView) {
+-            MutableObject<Object> lastCell = new MutableObject<>();
+-            listView.setCellFactory(x -> new MDListCell<FeedbackResponse>(listView, lastCell) {
 -                private final TwoLineListItem content = new TwoLineListItem();
 -                private final JFXButton likeButton = new JFXButton();
 -                private final JFXButton unlikeButton = new JFXButton();
@@ -492,7 +458,7 @@ index f67736d5..00000000
 -        Controllers.dialog(new AddFeedbackDialog());
 -    }
 -
--    private class LoginDialog extends JFXDialogLayout {
+-    private static final class LoginDialog extends JFXDialogLayout {
 -        private final SpinnerPane spinnerPane = new SpinnerPane();
 -        private final Label errorLabel = new Label();
 -        private final BooleanProperty logging = new SimpleBooleanProperty();
@@ -503,10 +469,7 @@ index f67736d5..00000000
 -            VBox vbox = new VBox(8);
 -            setBody(vbox);
 -            HintPane hintPane = new HintPane(MessageDialogPane.MessageType.INFO);
--            hintPane.textProperty().bind(BindingMapping.of(logging).map(logging ->
--                    logging
--                            ? i18n("account.hmcl.hint")
--                            : i18n("account.hmcl.hint")));
+-            hintPane.textProperty().bind(BindingMapping.of(logging).map(logging -> i18n("account.hmcl.hint")));
 -            hintPane.setOnMouseClicked(e -> {
 -                if (logging.get() && OAuthServer.lastlyOpenedURL != null) {
 -                    FXUtils.copyText(OAuthServer.lastlyOpenedURL);
@@ -787,7 +750,7 @@ index d6c11595..d7586282 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 3cf4ef93..1b0f9571 100644
+index 111fb82d..add45e23 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 @@ -52,9 +52,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
@@ -799,8 +762,8 @@ index 3cf4ef93..1b0f9571 100644
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
- 
-@@ -73,14 +70,11 @@ public final class MainPage extends StackPane implements DecoratorPage {
+ import org.jackhuang.hmcl.util.platform.JavaVersion;
+@@ -76,14 +73,11 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -815,7 +778,7 @@ index 3cf4ef93..1b0f9571 100644
      private final JFXButton menuButton;
  
      {
-@@ -101,44 +95,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -113,44 +107,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          announcementPane = new VBox(16);
  
@@ -860,7 +823,7 @@ index 3cf4ef93..1b0f9571 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -208,7 +164,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -220,7 +176,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -869,7 +832,7 @@ index 3cf4ef93..1b0f9571 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -222,40 +178,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -234,40 +190,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
  
@@ -910,7 +873,7 @@ index 3cf4ef93..1b0f9571 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -264,19 +186,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -276,19 +198,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -930,7 +893,7 @@ index 3cf4ef93..1b0f9571 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -294,30 +203,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -306,30 +215,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -962,7 +925,7 @@ index 3cf4ef93..1b0f9571 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index a2156067..94de43a7 100644
+index 94c282c0..1a4885d0 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
@@ -972,8 +935,8 @@ index a2156067..94de43a7 100644
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
  import org.jackhuang.hmcl.util.TaskCancellationAction;
  import org.jackhuang.hmcl.util.io.CompressingUtils;
- import org.jackhuang.hmcl.util.io.JarUtils;
-@@ -93,8 +92,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+ import org.jackhuang.hmcl.util.versioning.VersionNumber;
+@@ -92,8 +91,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
@@ -982,7 +945,7 @@ index a2156067..94de43a7 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
-@@ -151,24 +148,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -150,19 +147,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              downloadItem.setTitle(i18n("download"));
              downloadItem.setOnAction(e -> Controllers.navigate(Controllers.getDownloadPage()));
  
@@ -991,23 +954,18 @@ index a2156067..94de43a7 100644
 -            multiplayerItem.setLeftGraphic(wrap(SVG::lan));
 -            multiplayerItem.setActionButtonVisible(false);
 -            multiplayerItem.setTitle(i18n("multiplayer"));
--            if ("true".equalsIgnoreCase(JarUtils.getManifestAttribute("Enable-HiPer", "")))
--                multiplayerItem.setOnAction(e -> Controllers.navigate(Controllers.getMultiplayerPage()));
--            else {
--                JFXHyperlink link = new JFXHyperlink(i18n("multiplayer.hint.details"));
--                link.setOnAction(e -> FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/multiplayer-migrate"));
--                multiplayerItem.setOnAction(e ->
--                        Controllers.dialog(
--                                new MessageDialogPane.Builder(i18n("multiplayer.hint"), null, MessageDialogPane.MessageType.INFO)
--                                        .addAction(link)
--                                        .ok(null)
--                                        .build()));
--            }
+-            JFXHyperlink link = new JFXHyperlink(i18n("multiplayer.hint.details"));
+-            link.setOnAction(e -> FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/multiplayer-migrate"));
+-            multiplayerItem.setOnAction(e -> Controllers.dialog(
+-                    new MessageDialogPane.Builder(i18n("multiplayer.hint"), null, MessageDialogPane.MessageType.INFO)
+-                            .addAction(link)
+-                            .ok(null)
+-                            .build()));
 -
              // sixth item in left sidebar
              AdvancedListItem launcherSettingsItem = new AdvancedListItem();
              launcherSettingsItem.setLeftGraphic(wrap(SVG::gearOutline));
-@@ -185,7 +164,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -179,7 +163,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      .add(gameItem)
                      .add(downloadItem)
                      .startCategory(i18n("settings.launcher.general").toUpperCase())
@@ -1016,7 +974,7 @@ index a2156067..94de43a7 100644
  
              // the root page, with the sidebar in left, navigator in center.
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index 8e8f5390..9b58e9d5 100644
+index b5347094..622b21e6 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 @@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
@@ -1030,7 +988,7 @@ index 8e8f5390..9b58e9d5 100644
  import org.jackhuang.hmcl.util.Logging;
  import org.jackhuang.hmcl.util.i18n.Locales;
  import org.jackhuang.hmcl.util.io.FileUtils;
-@@ -69,57 +65,6 @@ public final class SettingsPage extends SettingsView {
+@@ -68,57 +64,6 @@ public final class SettingsPage extends SettingsView {
                  Bindings.createObjectBinding(() -> Optional.ofNullable(Settings.instance().getCommonDirectory())
                                  .orElse(i18n("launcher.cache_directory.disabled")),
                          config().commonDirectoryProperty(), config().commonDirTypeProperty()));
@@ -1088,7 +1046,7 @@ index 8e8f5390..9b58e9d5 100644
      }
  
      @Override
-@@ -148,11 +93,6 @@ public final class SettingsPage extends SettingsView {
+@@ -142,11 +87,6 @@ public final class SettingsPage extends SettingsView {
          });
      }
  
@@ -1194,10 +1152,10 @@ index af9a3477..44b6dfed 100644
  }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 deleted file mode 100644
-index bd60c8ef..00000000
+index ff685971..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 +++ /dev/null
-@@ -1,166 +0,0 @@
+@@ -1,174 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1227,6 +1185,7 @@ index bd60c8ef..00000000
 -import javafx.scene.control.Label;
 -import javafx.scene.layout.*;
 -import javafx.scene.text.TextAlignment;
+-import org.apache.commons.lang3.mutable.MutableObject;
 -import org.jackhuang.hmcl.task.Schedulers;
 -import org.jackhuang.hmcl.task.Task;
 -import org.jackhuang.hmcl.ui.FXUtils;
@@ -1284,10 +1243,17 @@ index bd60c8ef..00000000
 -            StackPane pane = new StackPane();
 -            pane.getStyleClass().add("card");
 -            listView = new JFXListView<>();
+-            MutableObject<Object> lastCell = new MutableObject<>();
 -            listView.setCellFactory((listView) -> new JFXListCell<Sponsor>() {
 -                @Override
 -                public void updateItem(Sponsor item, boolean empty) {
 -                    super.updateItem(item, empty);
+-
+-                    // https://mail.openjdk.org/pipermail/openjfx-dev/2022-July/034764.html
+-                    if (this == lastCell.getValue() && !isVisible())
+-                        return;
+-                    lastCell.setValue(this);
+-
 -                    if (!empty) {
 -                        setText(item.getName());
 -                        setGraphic(null);
@@ -1363,1564 +1329,6 @@ index bd60c8ef..00000000
 -            return afdianId;
 -        }
 -    }
--}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/LocalServerBroadcaster.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/LocalServerBroadcaster.java
-deleted file mode 100644
-index bdb105a3..00000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/LocalServerBroadcaster.java
-+++ /dev/null
-@@ -1,153 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2022  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.ui.multiplayer;
--
--import org.jackhuang.hmcl.event.Event;
--import org.jackhuang.hmcl.event.EventManager;
--import org.jackhuang.hmcl.util.Lang;
--
--import java.io.IOException;
--import java.io.InputStream;
--import java.io.OutputStream;
--import java.net.*;
--import java.nio.channels.UnresolvedAddressException;
--import java.nio.charset.StandardCharsets;
--import java.util.logging.Level;
--import java.util.regex.Matcher;
--import java.util.regex.Pattern;
--
--import static org.jackhuang.hmcl.util.Logging.LOG;
--import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
--
--public class LocalServerBroadcaster implements AutoCloseable {
--    private final String address;
--    private final ThreadGroup threadGroup = new ThreadGroup("JoinSession");
--
--    private final EventManager<Event> onExit = new EventManager<>();
--
--    private boolean running = true;
--
--    public LocalServerBroadcaster(String address) {
--        this.address = address;
--    }
--
--    private Thread newThread(Runnable task, String name) {
--        Thread thread = new Thread(threadGroup, task, name);
--        thread.setDaemon(true);
--        return thread;
--    }
--
--    @Override
--    public void close() {
--        running = false;
--        threadGroup.interrupt();
--    }
--
--    public String getAddress() {
--        return address;
--    }
--
--    public EventManager<Event> onExit() {
--        return onExit;
--    }
--
--    public static final Pattern ADDRESS_PATTERN = Pattern.compile("^\\s*(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}):(\\d{1,5})\\s*$");
--
--    public void start() {
--        Thread forwardPortThread = newThread(this::forwardPort, "ForwardPort");
--        forwardPortThread.start();
--    }
--
--    private void forwardPort() {
--        try {
--            Matcher matcher = ADDRESS_PATTERN.matcher(address);
--            if (!matcher.find()) {
--                throw new MalformedURLException();
--            }
--            try (Socket forwardingSocket = new Socket();
--                 ServerSocket serverSocket = new ServerSocket()) {
--                forwardingSocket.setSoTimeout(30000);
--                forwardingSocket.connect(new InetSocketAddress(matcher.group(1), Lang.parseInt(matcher.group(2), 0)));
--
--                serverSocket.bind(null);
--
--                Thread broadcastMOTDThread = newThread(() -> broadcastMOTD(serverSocket.getLocalPort()), "BroadcastMOTD");
--                broadcastMOTDThread.start();
--
--                LOG.log(Level.INFO, "Listening " + serverSocket.getLocalSocketAddress());
--
--                while (running) {
--                    Socket forwardedSocket = serverSocket.accept();
--                    LOG.log(Level.INFO, "Accepting client");
--                    newThread(() -> forwardTraffic(forwardingSocket, forwardedSocket), "Forward S->D").start();
--                    newThread(() -> forwardTraffic(forwardedSocket, forwardingSocket), "Forward D->S").start();
--                }
--            }
--        } catch (IOException | UnresolvedAddressException e) {
--            LOG.log(Level.WARNING, "Error in forwarding port", e);
--        } finally {
--            close();
--            onExit.fireEvent(new Event(this));
--        }
--    }
--
--    private void forwardTraffic(Socket src, Socket dest) {
--        try (InputStream is = src.getInputStream(); OutputStream os = dest.getOutputStream()) {
--            byte[] buf = new byte[1024];
--            while (true) {
--                int len = is.read(buf, 0, buf.length);
--                if (len < 0) break;
--                LOG.log(Level.INFO, "Forwarding buffer " + len);
--                os.write(buf, 0, len);
--            }
--        } catch (IOException e) {
--            LOG.log(Level.WARNING, "Disconnected", e);
--        }
--    }
--
--    private void broadcastMOTD(int port) {
--        DatagramSocket socket;
--        InetAddress broadcastAddress;
--        try {
--            socket = new DatagramSocket();
--            broadcastAddress = InetAddress.getByName("224.0.2.60");
--        } catch (IOException e) {
--            LOG.log(Level.WARNING, "Failed to create datagram socket", e);
--            return;
--        }
--
--        while (running) {
--            try {
--                byte[] data = String.format("[MOTD]%s[/MOTD][AD]%d[/AD]", i18n("multiplayer.session.name.motd"), port).getBytes(StandardCharsets.UTF_8);
--                DatagramPacket packet = new DatagramPacket(data, 0, data.length, broadcastAddress, 4445);
--                socket.send(packet);
--                LOG.finest("Broadcast server 0.0.0.0:" + port);
--            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to send motd packet", e);
--            }
--
--            try {
--                Thread.sleep(1500);
--            } catch (InterruptedException ignored) {
--                return;
--            }
--        }
--
--        socket.close();
--    }
--}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerManager.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerManager.java
-deleted file mode 100644
-index 86d9539b..00000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerManager.java
-+++ /dev/null
-@@ -1,553 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.ui.multiplayer;
--
--import com.google.gson.JsonParseException;
--import javafx.application.Platform;
--import javafx.beans.binding.Bindings;
--import javafx.beans.binding.BooleanBinding;
--import org.jackhuang.hmcl.Metadata;
--import org.jackhuang.hmcl.event.Event;
--import org.jackhuang.hmcl.event.EventManager;
--import org.jackhuang.hmcl.setting.ConfigHolder;
--import org.jackhuang.hmcl.task.FileDownloadTask;
--import org.jackhuang.hmcl.task.Task;
--import org.jackhuang.hmcl.ui.Controllers;
--import org.jackhuang.hmcl.ui.FXUtils;
--import org.jackhuang.hmcl.util.*;
--import org.jackhuang.hmcl.util.gson.JsonUtils;
--import org.jackhuang.hmcl.util.io.FileUtils;
--import org.jackhuang.hmcl.util.io.HttpRequest;
--import org.jackhuang.hmcl.util.io.NetworkUtils;
--import org.jackhuang.hmcl.util.platform.Architecture;
--import org.jackhuang.hmcl.util.platform.CommandBuilder;
--import org.jackhuang.hmcl.util.platform.ManagedProcess;
--import org.jackhuang.hmcl.util.platform.OperatingSystem;
--
--import java.io.BufferedWriter;
--import java.io.IOException;
--import java.io.OutputStreamWriter;
--import java.nio.charset.StandardCharsets;
--import java.nio.file.*;
--import java.nio.file.attribute.PosixFilePermission;
--import java.text.DateFormat;
--import java.text.ParseException;
--import java.text.SimpleDateFormat;
--import java.util.*;
--import java.util.concurrent.CompletableFuture;
--import java.util.concurrent.TimeUnit;
--import java.util.function.BiFunction;
--import java.util.logging.Level;
--
--import static org.jackhuang.hmcl.setting.ConfigHolder.globalConfig;
--import static org.jackhuang.hmcl.util.Lang.*;
--import static org.jackhuang.hmcl.util.Logging.LOG;
--import static org.jackhuang.hmcl.util.Pair.pair;
--import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
--import static org.jackhuang.hmcl.util.io.ChecksumMismatchException.verifyChecksum;
--
--/**
-- * Cato Management.
-- */
--public final class MultiplayerManager {
--    // static final String HIPER_VERSION = "1.2.2";
--    private static final String HIPER_DOWNLOAD_URL = "https://gitcode.net/to/hiper/-/raw/master/";
--    private static final String HIPER_PACKAGES_URL = HIPER_DOWNLOAD_URL + "packages.sha1";
--    private static final String HIPER_POINTS_URL = "https://cert.mcer.cn/point.yml";
--    private static final Path HIPER_TEMP_CONFIG_PATH = Metadata.HMCL_DIRECTORY.resolve("hiper.yml");
--    private static final Path HIPER_CONFIG_DIR = Metadata.HMCL_DIRECTORY.resolve("hiper-config");
--    public static final Path HIPER_PATH = getHiperLocalDirectory().resolve(getHiperFileName());
--    public static final int HIPER_AGREEMENT_VERSION = 3;
--    private static final String REMOTE_ADDRESS = "127.0.0.1";
--    private static final String LOCAL_ADDRESS = "0.0.0.0";
--
--    private static final Map<Architecture, String> archMap = mapOf(
--            pair(Architecture.ARM32, "arm-7"),
--            pair(Architecture.ARM64, "arm64"),
--            pair(Architecture.X86, "386"),
--            pair(Architecture.X86_64, "amd64"),
--            pair(Architecture.LOONGARCH64, "loong64"),
--            pair(Architecture.MIPS, "mips"),
--            pair(Architecture.MIPS64, "mips64"),
--            pair(Architecture.MIPS64EL, "mips64le"),
--            pair(Architecture.PPC64LE, "ppc64le"),
--            pair(Architecture.RISCV64, "riscv64"),
--            pair(Architecture.MIPSEL, "mipsle")
--    );
--
--    private static final Map<OperatingSystem, String> osMap = mapOf(
--            pair(OperatingSystem.LINUX, "linux"),
--            pair(OperatingSystem.WINDOWS, "windows"),
--            pair(OperatingSystem.OSX, "darwin")
--    );
--
--    private static final String HIPER_TARGET_NAME = String.format("%s-%s",
--            osMap.getOrDefault(OperatingSystem.CURRENT_OS, "windows"),
--            archMap.getOrDefault(Architecture.SYSTEM_ARCH, "amd64"));
--
--    private static final String GSUDO_VERSION = "1.7.1";
--    private static final String GSUDO_TARGET_ARCH = Architecture.SYSTEM_ARCH == Architecture.X86_64 ? "amd64" : "x86";
--    private static final String GSUDO_FILE_NAME = "gsudo.exe";
--    private static final String GSUDO_DOWNLOAD_URL = "https://gitcode.net/glavo/gsudo-release/-/raw/75c952ea3afe8792b0db4fe9bab87d41b21e5895/" + GSUDO_TARGET_ARCH + "/" + GSUDO_FILE_NAME;
--    private static final Path GSUDO_LOCAL_FILE = Metadata.HMCL_DIRECTORY.resolve("libraries").resolve("gsudo").resolve("gsudo").resolve(GSUDO_VERSION).resolve(GSUDO_TARGET_ARCH).resolve(GSUDO_FILE_NAME);
--    private static final boolean USE_GSUDO;
--
--    static final boolean IS_ADMINISTRATOR;
--
--    static final BooleanBinding tokenInvalid = Bindings.createBooleanBinding(
--            () -> {
--                String token = globalConfig().multiplayerTokenProperty().getValue();
--                return token == null || token.isEmpty() || !StringUtils.isAlphabeticOrNumber(token);
--            },
--            globalConfig().multiplayerTokenProperty());
--
--    private static final DateFormat HIPER_VALID_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
--
--    static {
--        boolean isAdministrator = false;
--        if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
--            try {
--                Process process = Runtime.getRuntime().exec(new String[]{"net.exe", "session"});
--                if (!process.waitFor(1, TimeUnit.SECONDS)) {
--                    process.destroy();
--                } else {
--                    isAdministrator = process.exitValue() == 0;
--                }
--            } catch (Throwable ignored) {
--            }
--            USE_GSUDO = !isAdministrator && OperatingSystem.SYSTEM_BUILD_NUMBER >= 10000;
--        } else {
--            isAdministrator = "root".equals(System.getProperty("user.name"));
--            USE_GSUDO = false;
--        }
--        IS_ADMINISTRATOR = isAdministrator;
--    }
--
--    private static CompletableFuture<Map<String, String>> HASH;
--
--    private MultiplayerManager() {
--    }
--
--    public static Path getConfigPath(String token) {
--        return HIPER_CONFIG_DIR.resolve(Hex.encodeHex(DigestUtils.digest("SHA-1", token)) + ".yml");
--    }
--
--    public static void clearConfiguration() {
--        try {
--            Files.deleteIfExists(HIPER_TEMP_CONFIG_PATH);
--            Files.deleteIfExists(getConfigPath(ConfigHolder.globalConfig().getMultiplayerToken()));
--        } catch (IOException e) {
--            LOG.log(Level.WARNING, "Failed to delete config", e);
--        }
--    }
--
--    private static CompletableFuture<Map<String, String>> getPackagesHash() {
--        FXUtils.checkFxUserThread();
--        if (HASH == null) {
--            HASH = CompletableFuture.supplyAsync(wrap(() -> {
--                String hashList = HttpRequest.GET(HIPER_PACKAGES_URL).getString();
--                Map<String, String> hashes = new HashMap<>();
--                for (String line : hashList.split("\n")) {
--                    String[] items = line.trim().split(" {2}");
--                    if (items.length == 2 && items[0].length() == 40) {
--                        hashes.put(items[1], items[0]);
--                    } else {
--                        LOG.warning("Failed to parse Hiper packages.sha1 file, line: " + line);
--                    }
--                }
--                if (USE_GSUDO) {
--                    hashes.put(GSUDO_FILE_NAME, HttpRequest.GET(GSUDO_DOWNLOAD_URL + ".sha1").getString().trim());
--                }
--                return hashes;
--            }));
--        }
--        return HASH;
--    }
--
--    public static Task<Void> downloadHiper() {
--        return Task.fromCompletableFuture(getPackagesHash()).thenComposeAsync(packagesHash -> {
--
--            BiFunction<String, String, FileDownloadTask> getFileDownloadTask = (String remotePath, String localFileName) -> {
--                String hash = packagesHash.get(remotePath);
--                return new FileDownloadTask(
--                        NetworkUtils.toURL(String.format("%s%s", HIPER_DOWNLOAD_URL, remotePath)),
--                        getHiperLocalDirectory().resolve(localFileName).toFile(),
--                        hash == null ? null : new FileDownloadTask.IntegrityCheck("SHA-1", hash));
--            };
--
--            List<Task<?>> tasks;
--            if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
--                if (!packagesHash.containsKey(String.format("%s/hiper.exe", HIPER_TARGET_NAME))) {
--                    throw new HiperUnsupportedPlatformException();
--                }
--                tasks = new ArrayList<>(4);
--
--                tasks.add(getFileDownloadTask.apply(String.format("%s/hiper.exe", HIPER_TARGET_NAME), "hiper.exe"));
--                tasks.add(getFileDownloadTask.apply(String.format("%s/wintun.dll", HIPER_TARGET_NAME), "wintun.dll"));
--                // tasks.add(getFileDownloadTask.apply("tap-windows-9.21.2.exe", "tap-windows-9.21.2.exe"));
--                if (USE_GSUDO)
--                    tasks.add(new FileDownloadTask(
--                            NetworkUtils.toURL(GSUDO_DOWNLOAD_URL),
--                            GSUDO_LOCAL_FILE.toFile(),
--                            new FileDownloadTask.IntegrityCheck("SHA-1", packagesHash.get(GSUDO_FILE_NAME))
--                    ));
--            } else {
--                if (!packagesHash.containsKey(String.format("%s/hiper", HIPER_TARGET_NAME))) {
--                    throw new HiperUnsupportedPlatformException();
--                }
--                tasks = Collections.singletonList(getFileDownloadTask.apply(String.format("%s/hiper", HIPER_TARGET_NAME), "hiper"));
--            }
--            return Task.allOf(tasks).thenRunAsync(() -> {
--                if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX || OperatingSystem.CURRENT_OS == OperatingSystem.OSX) {
--                    Set<PosixFilePermission> perm = Files.getPosixFilePermissions(HIPER_PATH);
--                    perm.add(PosixFilePermission.OWNER_EXECUTE);
--                    Files.setPosixFilePermissions(HIPER_PATH, perm);
--                }
--            });
--        });
--    }
--
--    public static void downloadHiperConfig(String token, Path configPath) throws IOException {
--        String certFileContent = HttpRequest.GET(String.format("https://cert.mcer.cn/%s.yml", token)).getString();
--        if (!certFileContent.equals("")) {
--            FileUtils.writeText(configPath, certFileContent);
--        }
--    }
--
--    public static CompletableFuture<HiperSession> startHiper(String token) {
--        return getPackagesHash().thenComposeAsync(packagesHash -> {
--            CompletableFuture<Void> future = new CompletableFuture<>();
--            try {
--                if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
--                    verifyChecksum(getHiperLocalDirectory().resolve("hiper.exe"), "SHA-1", packagesHash.get(String.format("%s/hiper.exe", HIPER_TARGET_NAME)));
--                    verifyChecksum(getHiperLocalDirectory().resolve("wintun.dll"), "SHA-1", packagesHash.get(String.format("%s/wintun.dll", HIPER_TARGET_NAME)));
--                    // verifyChecksumAndDeleteIfNotMatched(getHiperLocalDirectory().resolve("tap-windows-9.21.2.exe"), packagesHash.get("tap-windows-9.21.2.exe"));
--                    if (USE_GSUDO)
--                        verifyChecksum(GSUDO_LOCAL_FILE, "SHA-1", packagesHash.get(GSUDO_FILE_NAME));
--                } else {
--                    verifyChecksum(getHiperLocalDirectory().resolve("hiper"), "SHA-1", packagesHash.get(String.format("%s/hiper", HIPER_TARGET_NAME)));
--                }
--
--                future.complete(null);
--            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to verify HiPer files", e);
--                Platform.runLater(() -> Controllers.taskDialog(MultiplayerManager.downloadHiper()
--                        .whenComplete(exception -> {
--                            if (exception == null)
--                                future.complete(null);
--                            else
--                                future.completeExceptionally(exception);
--                        }), i18n("multiplayer.download"), TaskCancellationAction.NORMAL));
--            }
--            return future;
--        }).thenApplyAsync(wrap(ignored -> {
--            Path configPath = getConfigPath(token);
--            Files.createDirectories(configPath.getParent());
--
--            // 下载 HiPer 配置文件
--            Logging.registerForbiddenToken(token, "<hiper token>");
--            try {
--                downloadHiperConfig(token, configPath);
--            } catch (IOException e) {
--                LOG.log(Level.WARNING, "configuration file cloud cache token has been not available, try to use the local configuration file", e);
--            }
--
--            if (Files.exists(configPath)) {
--                Files.copy(configPath, HIPER_TEMP_CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
--                try (BufferedWriter output = Files.newBufferedWriter(HIPER_TEMP_CONFIG_PATH, StandardOpenOption.WRITE, StandardOpenOption.APPEND)) {
--                    output.write("\n");
--                    output.write("logging:\n");
--                    output.write("  format: json\n");
--                    output.write("  file_path: '" + Metadata.HMCL_DIRECTORY.resolve("logs").resolve("hiper.log").toString().replace("'", "''") + "'\n");
--                }
--            }
--
--            String[] commands = new String[]{HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--
--            if (!IS_ADMINISTRATOR) {
--                switch (OperatingSystem.CURRENT_OS) {
--                    case WINDOWS:
--                        if (USE_GSUDO)
--                            commands = new String[]{GSUDO_LOCAL_FILE.toString(), HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                        break;
--                    case LINUX:
--                        String askpass = System.getProperty("hmcl.askpass", System.getenv("HMCL_ASKPASS"));
--                        if ("user".equalsIgnoreCase(askpass))
--                            commands = new String[]{"sudo", "-A", HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                        else if ("false".equalsIgnoreCase(askpass))
--                            commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                        else {
--                            if (Files.exists(Paths.get("/usr/bin/pkexec")))
--                                commands = new String[]{"/usr/bin/pkexec", HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                            else
--                                commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                        }
--                        break;
--                    case OSX:
--                        commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-config", HIPER_TEMP_CONFIG_PATH.toString()};
--                        break;
--                }
--            }
--
--            Process process = new ProcessBuilder()
--                    .command(commands)
--                    .start();
--
--            return new HiperSession(process, Arrays.asList(commands));
--        }));
--    }
--
--    public static String getHiperFileName() {
--        if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
--            return "hiper.exe";
--        } else {
--            return "hiper";
--        }
--    }
--
--    public static Path getHiperLocalDirectory() {
--        return Metadata.HMCL_DIRECTORY.resolve("libraries").resolve("hiper").resolve("hiper").resolve("binary");
--    }
--
--    public static class HiperSession extends ManagedProcess {
--        private final EventManager<HiperExitEvent> onExit = new EventManager<>();
--        private final EventManager<HiperIPEvent> onIPAllocated = new EventManager<>();
--        private final EventManager<HiperShowValidUntilEvent> onValidUntil = new EventManager<>();
--        private final BufferedWriter writer;
--        private int error = 0;
--
--        HiperSession(Process process, List<String> commands) {
--            super(process, commands);
--
--            Runtime.getRuntime().addShutdownHook(new Thread(this::stop));
--
--            LOG.info("Started hiper with command: " + new CommandBuilder().addAll(commands));
--
--            addRelatedThread(Lang.thread(this::waitFor, "HiperExitWaiter", true));
--            pumpInputStream(this::onLog);
--            pumpErrorStream(this::onLog);
--
--            writer = new BufferedWriter(new OutputStreamWriter(process.getOutputStream(), StandardCharsets.UTF_8));
--        }
--
--        private void onLog(String log) {
--            if (!log.startsWith("{")) {
--                LOG.warning("[HiPer] " + log);
--
--                if (log.startsWith("failed to load config"))
--                    error = HiperExitEvent.INVALID_CONFIGURATION;
--                else if (log.startsWith("sudo: ") || log.startsWith("Error getting authority") || log.startsWith("Error: An error occurred trying to start process"))
--                    error = HiperExitEvent.NO_SUDO_PRIVILEGES;
--                else if (log.startsWith("Failed to write to log, can't rename log file")) {
--                    error = HiperExitEvent.NO_SUDO_PRIVILEGES;
--                    stop();
--                }
--
--                return;
--            }
--
--            try {
--                Map<?, ?> logJson = JsonUtils.fromNonNullJson(log, Map.class);
--                String msg = "";
--                if (logJson.containsKey("msg")) {
--                    msg = tryCast(logJson.get("msg"), String.class).orElse("");
--                    if (msg.contains("Failed to get a tun/tap device")) {
--                        error = HiperExitEvent.FAILED_GET_DEVICE;
--                    }
--                    if (msg.contains("Failed to load certificate from config")) {
--                        error = HiperExitEvent.FAILED_LOAD_CONFIG;
--                    }
--                    if (msg.contains("Validity of client certificate")) {
--                        Optional<String> validUntil = tryCast(logJson.get("valid"), String.class);
--                        if (validUntil.isPresent()) {
--                            try {
--                                synchronized (HIPER_VALID_TIME_FORMAT) {
--                                    Date date = HIPER_VALID_TIME_FORMAT.parse(validUntil.get());
--                                    onValidUntil.fireEvent(new HiperShowValidUntilEvent(this, date));
--                                }
--                            } catch (JsonParseException | ParseException e) {
--                                LOG.log(Level.WARNING, "Failed to parse certification expire time string: " + validUntil.get());
--                            }
--                        }
--                    }
--                }
--
--                if (logJson.containsKey("network")) {
--                    Map<?, ?> network = tryCast(logJson.get("network"), Map.class).orElse(Collections.emptyMap());
--                    if (network.containsKey("IP") && msg.contains("Main HostMap created")) {
--                        Optional<String> ip = tryCast(network.get("IP"), String.class);
--                        ip.ifPresent(s -> onIPAllocated.fireEvent(new HiperIPEvent(this, s)));
--                    }
--                }
--            } catch (JsonParseException e) {
--                LOG.log(Level.WARNING, "Failed to parse hiper log: " + log, e);
--            }
--        }
--
--        private void waitFor() {
--            try {
--                int exitCode = getProcess().waitFor();
--                LOG.info("Hiper exited with exitcode " + exitCode);
--                if (error != 0) {
--                    onExit.fireEvent(new HiperExitEvent(this, error));
--                } else {
--                    onExit.fireEvent(new HiperExitEvent(this, exitCode));
--                }
--            } catch (InterruptedException e) {
--                onExit.fireEvent(new HiperExitEvent(this, HiperExitEvent.INTERRUPTED));
--            } finally {
--                try {
--                    if (writer != null)
--                        writer.close();
--                } catch (IOException e) {
--                    LOG.log(Level.WARNING, "Failed to close Hiper stdin writer", e);
--                }
--            }
--            destroyRelatedThreads();
--        }
--
--        @Override
--        public void stop() {
--            try {
--                writer.write("quit\n");
--                writer.flush();
--            } catch (IOException e) {
--                LOG.log(Level.WARNING, "Failed to quit HiPer", e);
--            }
--            try {
--                getProcess().waitFor(1, TimeUnit.SECONDS);
--            } catch (InterruptedException ignored) {
--            }
--            super.stop();
--        }
--
--        public EventManager<HiperExitEvent> onExit() {
--            return onExit;
--        }
--
--        public EventManager<HiperIPEvent> onIPAllocated() {
--            return onIPAllocated;
--        }
--
--        public EventManager<HiperShowValidUntilEvent> onValidUntil() {
--            return onValidUntil;
--        }
--
--    }
--
--    public static class HiperExitEvent extends Event {
--        private final int exitCode;
--
--        public HiperExitEvent(Object source, int exitCode) {
--            super(source);
--            this.exitCode = exitCode;
--        }
--
--        public int getExitCode() {
--            return exitCode;
--        }
--
--        public static final int INTERRUPTED = -1;
--        public static final int INVALID_CONFIGURATION = -2;
--        public static final int CERTIFICATE_EXPIRED = -3;
--        public static final int FAILED_GET_DEVICE = -4;
--        public static final int FAILED_LOAD_CONFIG = -5;
--        public static final int NO_SUDO_PRIVILEGES = -6;
--    }
--
--    public static class HiperIPEvent extends Event {
--        private final String ip;
--
--        public HiperIPEvent(Object source, String ip) {
--            super(source);
--            this.ip = ip;
--        }
--
--        public String getIP() {
--            return ip;
--        }
--    }
--
--    public static class HiperShowValidUntilEvent extends Event {
--        private final Date validAt;
--
--        public HiperShowValidUntilEvent(Object source, Date validAt) {
--            super(source);
--            this.validAt = validAt;
--        }
--
--        public Date getValidUntil() {
--            return validAt;
--        }
--    }
--
--    public static class HiperExitException extends RuntimeException {
--        private final int exitCode;
--        private final boolean ready;
--
--        public HiperExitException(int exitCode, boolean ready) {
--            this.exitCode = exitCode;
--            this.ready = ready;
--        }
--
--        public int getExitCode() {
--            return exitCode;
--        }
--
--        public boolean isReady() {
--            return ready;
--        }
--    }
--
--    public static class HiperExitTimeoutException extends RuntimeException {
--    }
--
--    public static class HiperSessionExpiredException extends HiperInvalidConfigurationException {
--    }
--
--    public static class HiperInvalidConfigurationException extends RuntimeException {
--    }
--
--    public static class JoinRequestTimeoutException extends RuntimeException {
--    }
--
--    public static class PeerConnectionTimeoutException extends RuntimeException {
--    }
--
--    public static class ConnectionErrorException extends RuntimeException {
--    }
--
--    public static class KickedException extends RuntimeException {
--        private final String reason;
--
--        public KickedException(String reason) {
--            this.reason = reason;
--        }
--
--        public String getReason() {
--            return reason;
--        }
--    }
--
--    public static class HiperInvalidTokenException extends RuntimeException {
--    }
--
--    public static class HiperUnsupportedPlatformException extends RuntimeException {
--    }
--
--}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPage.java
-deleted file mode 100644
-index 3cc29f8c..00000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPage.java
-+++ /dev/null
-@@ -1,367 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.ui.multiplayer;
--
--import com.jfoenix.controls.JFXButton;
--import com.jfoenix.controls.JFXDialogLayout;
--import javafx.beans.property.*;
--import javafx.scene.control.Label;
--import javafx.scene.control.Skin;
--import org.jackhuang.hmcl.auth.Account;
--import org.jackhuang.hmcl.auth.offline.OfflineAccount;
--import org.jackhuang.hmcl.event.Event;
--import org.jackhuang.hmcl.setting.DownloadProviders;
--import org.jackhuang.hmcl.setting.Profile;
--import org.jackhuang.hmcl.setting.Profiles;
--import org.jackhuang.hmcl.task.Schedulers;
--import org.jackhuang.hmcl.ui.Controllers;
--import org.jackhuang.hmcl.ui.FXUtils;
--import org.jackhuang.hmcl.ui.construct.*;
--import org.jackhuang.hmcl.ui.decorator.DecoratorAnimatedPage;
--import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
--import org.jackhuang.hmcl.ui.versions.Versions;
--import org.jackhuang.hmcl.util.HMCLService;
--import org.jackhuang.hmcl.util.StringUtils;
--import org.jackhuang.hmcl.util.TaskCancellationAction;
--import org.jackhuang.hmcl.util.io.ChecksumMismatchException;
--import org.jackhuang.hmcl.util.io.FileUtils;
--import org.jackhuang.hmcl.util.platform.CommandBuilder;
--import org.jackhuang.hmcl.util.platform.OperatingSystem;
--import org.jackhuang.hmcl.util.platform.SystemUtils;
--
--import java.io.File;
--import java.util.Date;
--import java.util.concurrent.CancellationException;
--import java.util.function.Consumer;
--import java.util.logging.Level;
--
--import static org.jackhuang.hmcl.setting.ConfigHolder.globalConfig;
--import static org.jackhuang.hmcl.ui.FXUtils.runInFX;
--import static org.jackhuang.hmcl.util.Lang.resolveException;
--import static org.jackhuang.hmcl.util.Logging.LOG;
--import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
--
--public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorPage, PageAware {
--    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.fromTitle(i18n("multiplayer")));
--
--    private final ReadOnlyObjectWrapper<MultiplayerManager.HiperSession> session = new ReadOnlyObjectWrapper<>();
--    private final IntegerProperty port = new SimpleIntegerProperty();
--    private final StringProperty address = new SimpleStringProperty();
--    private final ReadOnlyObjectWrapper<Date> expireTime = new ReadOnlyObjectWrapper<>();
--
--    private Consumer<MultiplayerManager.HiperExitEvent> onExit;
--    private Consumer<MultiplayerManager.HiperIPEvent> onIPAllocated;
--    private Consumer<MultiplayerManager.HiperShowValidUntilEvent> onValidUntil;
--
--    private final ReadOnlyObjectWrapper<LocalServerBroadcaster> broadcaster = new ReadOnlyObjectWrapper<>();
--    private Consumer<Event> onBroadcasterExit = null;
--
--    public MultiplayerPage() {
--    }
--
--    @Override
--    public void onPageShown() {
--        checkAgreement(this::downloadHiPerIfNecessary);
--    }
--
--    @Override
--    protected Skin<?> createDefaultSkin() {
--        return new MultiplayerPageSkin(this);
--    }
--
--    public int getPort() {
--        return port.get();
--    }
--
--    public IntegerProperty portProperty() {
--        return port;
--    }
--
--    public void setPort(int port) {
--        this.port.set(port);
--    }
--
--    public String getAddress() {
--        return address.get();
--    }
--
--    public StringProperty addressProperty() {
--        return address;
--    }
--
--    public void setAddress(String address) {
--        this.address.set(address);
--    }
--
--    public LocalServerBroadcaster getBroadcaster() {
--        return broadcaster.get();
--    }
--
--    public ReadOnlyObjectWrapper<LocalServerBroadcaster> broadcasterProperty() {
--        return broadcaster;
--    }
--
--    public void setBroadcaster(LocalServerBroadcaster broadcaster) {
--        this.broadcaster.set(broadcaster);
--    }
--
--    public Date getExpireTime() {
--        return expireTime.get();
--    }
--
--    public ReadOnlyObjectWrapper<Date> expireTimeProperty() {
--        return expireTime;
--    }
--
--    public void setExpireTime(Date expireTime) {
--        this.expireTime.set(expireTime);
--    }
--
--    public MultiplayerManager.HiperSession getSession() {
--        return session.get();
--    }
--
--    public ReadOnlyObjectProperty<MultiplayerManager.HiperSession> sessionProperty() {
--        return session.getReadOnlyProperty();
--    }
--
--    void launchGame() {
--        Profile profile = Profiles.getSelectedProfile();
--        Versions.launch(profile, profile.getSelectedVersion(), (launcherHelper) -> {
--            launcherHelper.setKeep();
--            Account account = launcherHelper.getAccount();
--            if (account instanceof OfflineAccount && !(account instanceof MultiplayerOfflineAccount)) {
--                OfflineAccount offlineAccount = (OfflineAccount) account;
--                launcherHelper.setAccount(new MultiplayerOfflineAccount(
--                        offlineAccount.getDownloader(),
--                        offlineAccount.getUsername(),
--                        offlineAccount.getUUID(),
--                        offlineAccount.getSkin()
--                ));
--            }
--        });
--    }
--
--    private void checkAgreement(Runnable runnable) {
--        if (globalConfig().getMultiplayerAgreementVersion() < MultiplayerManager.HIPER_AGREEMENT_VERSION) {
--            JFXDialogLayout agreementPane = new JFXDialogLayout();
--            agreementPane.setHeading(new Label(i18n("launcher.agreement")));
--            agreementPane.setBody(new Label(i18n("multiplayer.agreement.prompt")));
--            JFXHyperlink agreementLink = new JFXHyperlink(i18n("launcher.agreement"));
--            agreementLink.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-agreement"));
--            JFXButton yesButton = new JFXButton(i18n("launcher.agreement.accept"));
--            yesButton.getStyleClass().add("dialog-accept");
--            yesButton.setOnAction(e -> {
--                globalConfig().setMultiplayerAgreementVersion(MultiplayerManager.HIPER_AGREEMENT_VERSION);
--                runnable.run();
--                agreementPane.fireEvent(new DialogCloseEvent());
--            });
--            JFXButton noButton = new JFXButton(i18n("launcher.agreement.decline"));
--            noButton.getStyleClass().add("dialog-cancel");
--            noButton.setOnAction(e -> {
--                agreementPane.fireEvent(new DialogCloseEvent());
--                fireEvent(new PageCloseEvent());
--            });
--            agreementPane.setActions(agreementLink, yesButton, noButton);
--            Controllers.dialog(agreementPane);
--        } else {
--            runnable.run();
--        }
--    }
--
--    private void downloadHiPerIfNecessary() {
--        if (!MultiplayerManager.HIPER_PATH.toFile().exists()) {
--            setDisabled(true);
--            Controllers.taskDialog(MultiplayerManager.downloadHiper()
--                    .whenComplete(Schedulers.javafx(), exception -> {
--                        setDisabled(false);
--                        if (exception != null) {
--                            if (exception instanceof CancellationException) {
--                                Controllers.showToast(i18n("message.cancelled"));
--                            } else if (exception instanceof MultiplayerManager.HiperUnsupportedPlatformException) {
--                                Controllers.dialog(i18n("multiplayer.download.unsupported"), i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
--                                fireEvent(new PageCloseEvent());
--                            } else {
--                                Controllers.dialog(DownloadProviders.localizeErrorMessage(exception), i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
--                                fireEvent(new PageCloseEvent());
--                            }
--                        } else {
--                            Controllers.showToast(i18n("multiplayer.download.success"));
--                        }
--                    }), i18n("multiplayer.download"), TaskCancellationAction.NORMAL);
--        } else {
--            setDisabled(false);
--        }
--    }
--
--    private String localizeErrorMessage(Throwable t) {
--        Throwable e = resolveException(t);
--        if (e instanceof CancellationException) {
--            LOG.info("Connection rejected by the server");
--            return i18n("message.cancelled");
--        } else if (e instanceof MultiplayerManager.HiperInvalidConfigurationException) {
--            LOG.warning("HiPer invalid configuration");
--            return i18n("multiplayer.token.malformed");
--        } else if (e instanceof ChecksumMismatchException) {
--            LOG.log(Level.WARNING, "Failed to verify HiPer files", e);
--            return i18n("multiplayer.error.file_not_found");
--        } else if (e instanceof MultiplayerManager.HiperExitException) {
--            int exitCode = ((MultiplayerManager.HiperExitException) e).getExitCode();
--            LOG.warning("HiPer exited unexpectedly with exit code " + exitCode);
--            return i18n("multiplayer.exit", exitCode);
--        } else if (e instanceof MultiplayerManager.HiperInvalidTokenException) {
--            LOG.warning("invalid token");
--            return i18n("multiplayer.token.invalid");
--        } else {
--            LOG.log(Level.WARNING, "Unknown HiPer exception", e);
--            return e.getLocalizedMessage() + "\n" + StringUtils.getStackTrace(e);
--        }
--    }
--
--    public void start() {
--        MultiplayerManager.startHiper(globalConfig().getMultiplayerToken())
--                .thenAcceptAsync(session -> {
--                    this.session.set(session);
--                    onExit = session.onExit().registerWeak(this::onExit);
--                    onIPAllocated = session.onIPAllocated().registerWeak(this::onIPAllocated);
--                    onValidUntil = session.onValidUntil().registerWeak(this::onValidUntil);
--                }, Schedulers.javafx())
--                .exceptionally(throwable -> {
--                    runInFX(() -> Controllers.dialog(localizeErrorMessage(throwable), null, MessageDialogPane.MessageType.ERROR));
--                    return null;
--                });
--    }
--
--    public void stop() {
--        if (getSession() != null) {
--            getSession().stop();
--        }
--        if (getBroadcaster() != null) {
--            getBroadcaster().close();
--        }
--        clearSession();
--    }
--
--    public void broadcast(String url) {
--        LocalServerBroadcaster broadcaster = new LocalServerBroadcaster(url);
--        this.onBroadcasterExit = broadcaster.onExit().registerWeak(this::onBroadcasterExit);
--        broadcaster.start();
--        this.broadcaster.set(broadcaster);
--    }
--
--    public void stopBroadcasting() {
--        if (getBroadcaster() != null) {
--            getBroadcaster().close();
--            setBroadcaster(null);
--        }
--    }
--
--    private void onBroadcasterExit(Event event) {
--        runInFX(() -> {
--            if (this.broadcaster.get() == event.getSource()) {
--                this.broadcaster.set(null);
--            }
--        });
--    }
--
--    private void clearSession() {
--        this.session.set(null);
--        this.expireTime.set(null);
--        this.onExit = null;
--        this.onIPAllocated = null;
--        this.onValidUntil = null;
--        this.broadcaster.set(null);
--        this.onBroadcasterExit = null;
--    }
--
--    private void onIPAllocated(MultiplayerManager.HiperIPEvent event) {
--        runInFX(() -> this.address.set(event.getIP()));
--    }
--
--    private void onValidUntil(MultiplayerManager.HiperShowValidUntilEvent event) {
--        runInFX(() -> this.expireTime.set(event.getValidUntil()));
--    }
--
--    private void onExit(MultiplayerManager.HiperExitEvent event) {
--        runInFX(() -> {
--            switch (event.getExitCode()) {
--                case 0:
--                    break;
--                case MultiplayerManager.HiperExitEvent.CERTIFICATE_EXPIRED:
--                    MultiplayerManager.clearConfiguration();
--                    Controllers.dialog(i18n("multiplayer.token.expired"));
--                    break;
--                case MultiplayerManager.HiperExitEvent.INVALID_CONFIGURATION:
--                    MultiplayerManager.clearConfiguration();
--                    Controllers.dialog(i18n("multiplayer.token.malformed"));
--                    break;
--                case MultiplayerManager.HiperExitEvent.NO_SUDO_PRIVILEGES:
--                    if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
--                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.windows"), null, MessageDialogPane.MessageType.WARNING, () -> {
--                            FXUtils.openLink("https://docs.hmcl.net/multiplayer/admin.html");
--                        }, null);
--                    } else if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX) {
--                        Controllers.dialog(i18n("multiplayer.error.failed_sudo.linux", MultiplayerManager.HIPER_PATH.toString()), null, MessageDialogPane.MessageType.WARNING);
--                    } else if (OperatingSystem.CURRENT_OS == OperatingSystem.OSX) {
--                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.mac"), null, MessageDialogPane.MessageType.INFO, () -> {
--                            try {
--                                String text = "%hmcl-hiper ALL=(ALL:ALL) NOPASSWD: " + MultiplayerManager.HIPER_PATH.toString().replaceAll("[ @!(),:=\\\\]", "\\\\$0") + "\n";
--
--                                File sudoersTmp = File.createTempFile("sudoer", ".tmp");
--                                sudoersTmp.deleteOnExit();
--                                FileUtils.writeText(sudoersTmp, text);
--
--                                SystemUtils.callExternalProcess(
--                                        "osascript", "-e", String.format("do shell script \"%s\" with administrator privileges", String.join(";",
--                                                "dscl . create /Groups/hmcl-hiper PrimaryGroupID 758",
--                                                "dscl . merge /Groups/hmcl-hiper GroupMembership " + CommandBuilder.toShellStringLiteral(System.getProperty("user.name")) + "",
--                                                "mkdir -p /private/etc/sudoers.d",
--                                                "mv -f " + CommandBuilder.toShellStringLiteral(sudoersTmp.toString()) + " /private/etc/sudoers.d/hmcl-hiper",
--                                                "chown root /private/etc/sudoers.d/hmcl-hiper",
--                                                "chmod 0440 /private/etc/sudoers.d/hmcl-hiper"
--                                        ).replaceAll("[\\\\\"]", "\\\\$0"))
--                                );
--                            } catch (Throwable e) {
--                                LOG.log(Level.WARNING, "Failed to modify sudoers", e);
--                            }
--                        }, null);
--                    }
--                    break;
--                case MultiplayerManager.HiperExitEvent.INTERRUPTED:
--                    // do nothing
--                    break;
--                case MultiplayerManager.HiperExitEvent.FAILED_GET_DEVICE:
--                    Controllers.dialog(i18n("multiplayer.error.failed_get_device"));
--                    break;
--                case MultiplayerManager.HiperExitEvent.FAILED_LOAD_CONFIG:
--                    Controllers.dialog(i18n("multiplayer.error.failed_load_config"));
--                    break;
--                default:
--                    Controllers.dialog(i18n("multiplayer.exit", event.getExitCode()));
--                    break;
--            }
--
--            clearSession();
--        });
--    }
--
--    @Override
--    public ReadOnlyObjectProperty<State> stateProperty() {
--        return state;
--    }
--}
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPageSkin.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPageSkin.java
-deleted file mode 100644
-index 3110bceb..00000000
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/multiplayer/MultiplayerPageSkin.java
-+++ /dev/null
-@@ -1,461 +0,0 @@
--/*
-- * Hello Minecraft! Launcher
-- * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
-- *
-- * This program is free software: you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License as published by
-- * the Free Software Foundation, either version 3 of the License, or
-- * (at your option) any later version.
-- *
-- * This program is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- * GNU General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public License
-- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-- */
--package org.jackhuang.hmcl.ui.multiplayer;
--
--import com.jfoenix.controls.JFXButton;
--import com.jfoenix.controls.JFXPasswordField;
--import com.jfoenix.controls.JFXTextField;
--import javafx.application.Platform;
--import javafx.beans.InvalidationListener;
--import javafx.beans.WeakInvalidationListener;
--import javafx.beans.binding.Bindings;
--import javafx.collections.ObservableList;
--import javafx.geometry.Insets;
--import javafx.geometry.Pos;
--import javafx.scene.Node;
--import javafx.scene.control.Label;
--import javafx.scene.control.ScrollPane;
--import javafx.scene.layout.*;
--import javafx.stage.FileChooser;
--import javafx.util.StringConverter;
--import org.jackhuang.hmcl.task.Schedulers;
--import org.jackhuang.hmcl.ui.Controllers;
--import org.jackhuang.hmcl.ui.FXUtils;
--import org.jackhuang.hmcl.ui.SVG;
--import org.jackhuang.hmcl.ui.construct.*;
--import org.jackhuang.hmcl.ui.construct.MessageDialogPane.MessageType;
--import org.jackhuang.hmcl.ui.decorator.DecoratorAnimatedPage;
--import org.jackhuang.hmcl.util.HMCLService;
--import org.jackhuang.hmcl.util.Lang;
--import org.jackhuang.hmcl.util.StringUtils;
--import org.jackhuang.hmcl.util.i18n.Locales;
--
--import java.io.File;
--import java.io.IOException;
--import java.nio.file.Files;
--import java.nio.file.Path;
--import java.nio.file.StandardCopyOption;
--import java.util.concurrent.CompletableFuture;
--import java.util.logging.Level;
--
--import static org.jackhuang.hmcl.setting.ConfigHolder.globalConfig;
--import static org.jackhuang.hmcl.ui.versions.VersionPage.wrap;
--import static org.jackhuang.hmcl.util.Logging.LOG;
--import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
--
--public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimatedPageSkin<MultiplayerPage> {
--
--    private ObservableList<Node> clients;
--
--    /**
--     * Constructor for all SkinBase instances.
--     *
--     * @param control The control for which this Skin should attach to.
--     */
--    protected MultiplayerPageSkin(MultiplayerPage control) {
--        super(control);
--
--        {
--            AdvancedListBox sideBar = new AdvancedListBox()
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("version.launch"));
--                        item.setLeftGraphic(wrap(SVG::rocketLaunchOutline));
--                        item.setOnAction(e -> {
--                            control.launchGame();
--                        });
--                    })
--                    .startCategory(i18n("help"))
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("help"));
--                        item.setLeftGraphic(wrap(SVG::helpCircleOutline));
--                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer"));
--                    })
--//                    .addNavigationDrawerItem(item -> {
--//                        item.setTitle(i18n("multiplayer.help.1"));
--//                        item.setLeftGraphic(wrap(SVG::helpCircleOutline));
--//                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/admin.html"));
--//                    })
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("multiplayer.help.2"));
--                        item.setLeftGraphic(wrap(SVG::helpCircleOutline));
--                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html"));
--                    })
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("multiplayer.help.3"));
--                        item.setLeftGraphic(wrap(SVG::helpCircleOutline));
--                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
--                    })
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("multiplayer.help.4"));
--                        item.setLeftGraphic(wrap(SVG::helpCircleOutline));
--                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
--                    })
--                    .addNavigationDrawerItem(item -> {
--                        item.setTitle(i18n("multiplayer.help.text"));
--                        item.setLeftGraphic(wrap(SVG::rocketLaunchOutline));
--                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/text.html"));
--                    })
--                    .addNavigationDrawerItem(report -> {
--                        report.setTitle(i18n("feedback"));
--                        report.setLeftGraphic(wrap(SVG::messageAlertOutline));
--                        report.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-feedback"));
--                    });
--            FXUtils.setLimitWidth(sideBar, 200);
--            setLeft(sideBar);
--        }
--
--        {
--            VBox content = new VBox(16);
--            content.setPadding(new Insets(10));
--            content.setFillWidth(true);
--            ScrollPane scrollPane = new ScrollPane(content);
--            scrollPane.setFitToWidth(true);
--            setCenter(scrollPane);
--
--            VBox mainPane = new VBox(16);
--            {
--                ComponentList offPane = new ComponentList();
--                {
--                    HintPane hintPane = new HintPane(MessageType.WARNING);
--                    hintPane.setText(i18n("multiplayer.off.hint"));
--
--                    BorderPane tokenPane = new BorderPane();
--                    {
--                        Label tokenTitle = new Label(i18n("multiplayer.token"));
--                        BorderPane.setAlignment(tokenTitle, Pos.CENTER_LEFT);
--                        tokenPane.setLeft(tokenTitle);
--                        // Token acts like password, we hide it here preventing users from accidentally leaking their token when taking screenshots.
--                        JFXPasswordField tokenField = new JFXPasswordField();
--                        BorderPane.setAlignment(tokenField, Pos.CENTER_LEFT);
--                        BorderPane.setMargin(tokenField, new Insets(0, 8, 0, 8));
--                        tokenPane.setCenter(tokenField);
--                        tokenField.textProperty().bindBidirectional(globalConfig().multiplayerTokenProperty());
--                        tokenField.setPromptText(i18n("multiplayer.token.prompt"));
--
--                        Validator validator = new Validator("multiplayer.token.format_invalid", StringUtils::isAlphabeticOrNumber);
--                        InvalidationListener listener = any -> tokenField.validate();
--                        validator.getProperties().put(validator, listener);
--                        tokenField.textProperty().addListener(new WeakInvalidationListener(listener));
--                        tokenField.getValidators().add(validator);
--
--                        JFXHyperlink applyLink = new JFXHyperlink(i18n("multiplayer.token.apply"));
--                        BorderPane.setAlignment(applyLink, Pos.CENTER_RIGHT);
--                        applyLink.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-static-token"));
--                        tokenPane.setRight(applyLink);
--                    }
--
--                    HBox startPane = new HBox();
--                    {
--                        JFXButton startButton = new JFXButton(i18n("multiplayer.off.start"));
--                        startButton.getStyleClass().add("jfx-button-raised");
--                        startButton.setButtonType(JFXButton.ButtonType.RAISED);
--                        startButton.setOnMouseClicked(e -> control.start());
--                        startButton.disableProperty().bind(MultiplayerManager.tokenInvalid);
--
--                        startPane.getChildren().setAll(startButton);
--                        startPane.setAlignment(Pos.CENTER_RIGHT);
--                    }
--
--                    if (!MultiplayerManager.IS_ADMINISTRATOR)
--                        offPane.getContent().add(hintPane);
--                    offPane.getContent().addAll(tokenPane, startPane);
--                }
--
--                ComponentList onPane = new ComponentList();
--                {
--                    BorderPane expirationPane = new BorderPane();
--                    expirationPane.setLeft(new Label(i18n("multiplayer.session.expiration")));
--                    Label expirationLabel = new Label();
--                    expirationLabel.textProperty().bind(Bindings.createStringBinding(() ->
--                                    control.getExpireTime() == null ? "" : Locales.SIMPLE_DATE_FORMAT.get().format(control.getExpireTime()),
--                            control.expireTimeProperty()));
--                    expirationPane.setRight(expirationLabel);
--
--                    GridPane masterPane = new GridPane();
--                    masterPane.setVgap(8);
--                    masterPane.setHgap(16);
--                    ColumnConstraints titleColumn = new ColumnConstraints();
--                    ColumnConstraints valueColumn = new ColumnConstraints();
--                    ColumnConstraints rightColumn = new ColumnConstraints();
--                    masterPane.getColumnConstraints().setAll(titleColumn, valueColumn, rightColumn);
--                    valueColumn.setFillWidth(true);
--                    valueColumn.setHgrow(Priority.ALWAYS);
--                    {
--                        BorderPane titlePane = new BorderPane();
--                        GridPane.setColumnSpan(titlePane, 3);
--                        Label title = new Label(i18n("multiplayer.master"));
--                        titlePane.setLeft(title);
--
--                        JFXHyperlink tutorial = new JFXHyperlink(i18n("multiplayer.master.video_tutorial"));
--                        titlePane.setRight(tutorial);
--                        tutorial.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-tutorial-master"));
--                        masterPane.addRow(0, titlePane);
--
--                        HintPane hintPane = new HintPane(MessageType.INFO);
--                        GridPane.setColumnSpan(hintPane, 3);
--                        hintPane.setText(i18n("multiplayer.master.hint"));
--                        masterPane.addRow(1, hintPane);
--
--                        Label portTitle = new Label(i18n("multiplayer.master.port"));
--                        BorderPane.setAlignment(portTitle, Pos.CENTER_LEFT);
--
--                        JFXTextField portTextField = new JFXTextField();
--                        GridPane.setColumnSpan(portTextField, 2);
--                        FXUtils.setValidateWhileTextChanged(portTextField, true);
--                        portTextField.getValidators().add(new Validator(i18n("multiplayer.master.port.validate"), (text) -> {
--                            Integer value = Lang.toIntOrNull(text);
--                            return value != null && 0 <= value && value <= 65535;
--                        }));
--                        portTextField.textProperty().bindBidirectional(control.portProperty(), new StringConverter<Number>() {
--                            @Override
--                            public String toString(Number object) {
--                                return Integer.toString(object.intValue());
--                            }
--
--                            @Override
--                            public Number fromString(String string) {
--                                return Lang.parseInt(string, 0);
--                            }
--                        });
--                        masterPane.addRow(2, portTitle, portTextField);
--
--                        Label serverAddressTitle = new Label(i18n("multiplayer.master.server_address"));
--                        BorderPane.setAlignment(serverAddressTitle, Pos.CENTER_LEFT);
--                        Label serverAddressLabel = new Label();
--                        BorderPane.setAlignment(serverAddressLabel, Pos.CENTER_LEFT);
--                        serverAddressLabel.textProperty().bind(Bindings.createStringBinding(() -> {
--                            return (control.getAddress() == null ? "" : control.getAddress()) + ":" + control.getPort();
--                        }, control.addressProperty(), control.portProperty()));
--                        JFXButton copyButton = new JFXButton(i18n("multiplayer.master.server_address.copy"));
--                        copyButton.setOnAction(e -> FXUtils.copyText(serverAddressLabel.getText()));
--                        masterPane.addRow(3, serverAddressTitle, serverAddressLabel, copyButton);
--                    }
--
--                    VBox slavePane = new VBox(8);
--                    {
--                        BorderPane titlePane = new BorderPane();
--                        Label title = new Label(i18n("multiplayer.slave"));
--                        titlePane.setLeft(title);
--
--                        JFXHyperlink tutorial = new JFXHyperlink(i18n("multiplayer.slave.video_tutorial"));
--                        tutorial.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-tutorial-slave"));
--                        titlePane.setRight(tutorial);
--
--                        HintPane hintPane = new HintPane(MessageType.INFO);
--                        GridPane.setColumnSpan(hintPane, 3);
--                        hintPane.setText(i18n("multiplayer.slave.hint"));
--                        slavePane.getChildren().add(hintPane);
--
--                        HintPane hintPane2 = new HintPane(MessageType.WARNING);
--                        GridPane.setColumnSpan(hintPane2, 3);
--                        hintPane2.setText(i18n("multiplayer.slave.hint2"));
--                        slavePane.getChildren().add(hintPane2);
--
--                        GridPane notBroadcastingPane = new GridPane();
--                        {
--                            notBroadcastingPane.setVgap(8);
--                            notBroadcastingPane.setHgap(16);
--                            notBroadcastingPane.getColumnConstraints().setAll(titleColumn, valueColumn, rightColumn);
--
--                            Label addressTitle = new Label(i18n("multiplayer.slave.server_address"));
--
--                            JFXTextField addressField = new JFXTextField();
--                            FXUtils.setValidateWhileTextChanged(addressField, true);
--                            addressField.getValidators().add(new ServerAddressValidator());
--
--                            JFXButton startButton = new JFXButton(i18n("multiplayer.slave.server_address.start"));
--                            startButton.setOnAction(e -> control.broadcast(addressField.getText()));
--                            notBroadcastingPane.addRow(0, addressTitle, addressField, startButton);
--                        }
--
--                        GridPane broadcastingPane = new GridPane();
--                        {
--                            broadcastingPane.setVgap(8);
--                            broadcastingPane.setHgap(16);
--                            broadcastingPane.getColumnConstraints().setAll(titleColumn, valueColumn, rightColumn);
--
--                            Label addressTitle = new Label(i18n("multiplayer.slave.server_address"));
--                            Label addressLabel = new Label();
--                            addressLabel.textProperty().bind(Bindings.createStringBinding(() ->
--                                            control.getBroadcaster() != null ? control.getBroadcaster().getAddress() : "",
--                                    control.broadcasterProperty()));
--
--                            JFXButton stopButton = new JFXButton(i18n("multiplayer.slave.server_address.stop"));
--                            stopButton.setOnAction(e -> control.stopBroadcasting());
--                            broadcastingPane.addRow(0, addressTitle, addressLabel, stopButton);
--                        }
--
--                        FXUtils.onChangeAndOperate(control.broadcasterProperty(), broadcaster -> {
--                            if (broadcaster == null) {
--                                slavePane.getChildren().setAll(titlePane, hintPane, hintPane2, notBroadcastingPane);
--                            } else {
--                                slavePane.getChildren().setAll(titlePane, hintPane, hintPane2, broadcastingPane);
--                            }
--                        });
--                    }
--
--                    FXUtils.onChangeAndOperate(control.expireTimeProperty(), t -> {
--                        if (t == null) {
--                            onPane.getContent().setAll(masterPane, slavePane);
--                        } else {
--                            onPane.getContent().setAll(expirationPane, masterPane, slavePane);
--                        }
--                    });
--                }
--
--                FXUtils.onChangeAndOperate(getSkinnable().sessionProperty(), session -> {
--                    if (session == null) {
--                        mainPane.getChildren().setAll(offPane);
--                    } else {
--                        mainPane.getChildren().setAll(onPane);
--                    }
--                });
--            }
--
--            ComponentList persistencePane = new ComponentList();
--            {
--                HintPane hintPane = new HintPane(MessageType.WARNING);
--                hintPane.setText(i18n("multiplayer.persistence.hint"));
--
--                BorderPane importPane = new BorderPane();
--                {
--                    Label left = new Label(i18n("multiplayer.persistence.import"));
--                    BorderPane.setAlignment(left, Pos.CENTER_LEFT);
--                    importPane.setLeft(left);
--
--                    JFXButton importButton = new JFXButton(i18n("multiplayer.persistence.import.button"));
--                    importButton.setOnMouseClicked(e -> {
--                        Path targetPath = MultiplayerManager.getConfigPath(globalConfig().getMultiplayerToken());
--                        if (Files.exists(targetPath)) {
--                            LOG.warning("License file " + targetPath + " already exists");
--                            Controllers.dialog(i18n("multiplayer.persistence.import.file_already_exists"), null, MessageType.ERROR);
--                            return;
--                        }
--
--                        FileChooser fileChooser = new FileChooser();
--                        fileChooser.setTitle(i18n("multiplayer.persistence.import.title"));
--                        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(i18n("multiplayer.persistence.license_file"), "*.yml"));
--
--                        File file = fileChooser.showOpenDialog(Controllers.getStage());
--                        if (file == null)
--                            return;
--
--                        CompletableFuture<Boolean> future = new CompletableFuture<>();
--                        if (file.getName().matches("[a-z0-9]{40}.yml") && !targetPath.getFileName().toString().equals(file.getName())) {
--                            Controllers.confirm(i18n("multiplayer.persistence.import.token_not_match"), null, MessageType.QUESTION,
--                                    () -> future.complete(true),
--                                    () -> future.complete(false)) ;
--                        } else {
--                            future.complete(true);
--                        }
--                        future.thenAcceptAsync(Lang.wrapConsumer(c -> {
--                            if (c) Files.copy(file.toPath(), targetPath);
--                        })).exceptionally(exception -> {
--                            LOG.log(Level.WARNING, "Failed to import license file", exception);
--                            Platform.runLater(() -> Controllers.dialog(i18n("multiplayer.persistence.import.failed"), null, MessageType.ERROR));
--                            return null;
--                        });
--                    });
--                    importButton.disableProperty().bind(MultiplayerManager.tokenInvalid);
--                    importButton.getStyleClass().add("jfx-button-border");
--                    importPane.setRight(importButton);
--                }
--
--                BorderPane exportPane = new BorderPane();
--                {
--                    Label left = new Label(i18n("multiplayer.persistence.export"));
--                    BorderPane.setAlignment(left, Pos.CENTER_LEFT);
--                    exportPane.setLeft(left);
--
--                    JFXButton exportButton = new JFXButton(i18n("multiplayer.persistence.export.button"));
--                    exportButton.setOnMouseClicked(e -> {
--                        String token = globalConfig().getMultiplayerToken();
--                        Path configPath = MultiplayerManager.getConfigPath(token);
--
--                        FileChooser fileChooser = new FileChooser();
--                        fileChooser.setTitle(i18n("multiplayer.persistence.export.title"));
--                        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(i18n("multiplayer.persistence.license_file"), "*.yml"));
--                        fileChooser.setInitialFileName(configPath.getFileName().toString());
--
--                        File file = fileChooser.showSaveDialog(Controllers.getStage());
--                        if (file == null)
--                            return;
--
--                        CompletableFuture.runAsync(Lang.wrap(() -> MultiplayerManager.downloadHiperConfig(token, configPath)), Schedulers.io())
--                                .handleAsync((ignored, exception) -> {
--                                    if (exception != null) {
--                                        LOG.log(Level.INFO, "Unable to download hiper config file", e);
--                                    }
--
--                                    if (!Files.isRegularFile(configPath)) {
--                                        LOG.warning("License file " + configPath + " not exists");
--                                        Platform.runLater(() -> Controllers.dialog(i18n("multiplayer.persistence.export.file_not_exists"), null, MessageType.ERROR));
--                                        return null;
--                                    }
--
--                                    try {
--                                        Files.copy(configPath, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
--                                    } catch (IOException ioException) {
--                                        LOG.log(Level.WARNING, "Failed to export license file", ioException);
--                                        Platform.runLater(() -> Controllers.dialog(i18n("multiplayer.persistence.export.failed"), null, MessageType.ERROR));
--                                    }
--
--                                    return null;
--                                });
--
--                    });
--                    exportButton.disableProperty().bind(MultiplayerManager.tokenInvalid);
--                    exportButton.getStyleClass().add("jfx-button-border");
--                    exportPane.setRight(exportButton);
--                }
--
--                persistencePane.getContent().setAll(hintPane, importPane, exportPane);
--            }
--
--
--            ComponentList thanksPane = new ComponentList();
--            {
--                HBox pane = new HBox();
--                pane.setAlignment(Pos.CENTER_LEFT);
--
--                JFXHyperlink aboutLink = new JFXHyperlink(i18n("about"));
--                aboutLink.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-about"));
--
--                HBox placeholder = new HBox();
--                HBox.setHgrow(placeholder, Priority.ALWAYS);
--
--                pane.getChildren().setAll(
--                        new Label("Based on HiPer"),
--                        aboutLink,
--                        placeholder,
--                        FXUtils.segmentToTextFlow(i18n("multiplayer.powered_by"), Controllers::onHyperlinkAction));
--
--                thanksPane.getContent().addAll(pane);
--            }
--
--            content.getChildren().setAll(
--                    mainPane,
--                    ComponentList.createComponentListTitle(i18n("multiplayer.persistence")),
--                    persistencePane,
--                    ComponentList.createComponentListTitle(i18n("about")),
--                    thanksPane
--            );
--        }
--    }
--
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 deleted file mode 100644
@@ -3127,7 +1535,7 @@ index 8b6fdc06..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 deleted file mode 100644
-index 0bb03df9..00000000
+index 8c387047..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 +++ /dev/null
 @@ -1,134 +0,0 @@
@@ -3157,10 +1565,7 @@ index 0bb03df9..00000000
 -import java.io.IOException;
 -import java.io.InputStream;
 -import java.nio.file.Path;
--import java.security.GeneralSecurityException;
--import java.security.KeyFactory;
--import java.security.PublicKey;
--import java.security.Signature;
+-import java.security.*;
 -import java.security.spec.X509EncodedKeySpec;
 -import java.util.Map;
 -import java.util.Map.Entry;
@@ -3196,6 +1601,7 @@ index 0bb03df9..00000000
 -
 -    private static boolean verifyJar(Path jarPath) throws IOException {
 -        PublicKey publickey = getPublicKey();
+-        MessageDigest md = DigestUtils.getDigest("SHA-512");
 -
 -        byte[] signature = null;
 -        Map<String, byte[]> fileFingerprints = new TreeMap<>();
@@ -3210,7 +1616,8 @@ index 0bb03df9..00000000
 -                    if (SIGNATURE_FILE.equals(filename)) {
 -                        signature = IOUtils.readFullyAsByteArray(in);
 -                    } else {
--                        fileFingerprints.put(filename, DigestUtils.digest("SHA-512", in));
+-                        md.reset();
+-                        fileFingerprints.put(filename, DigestUtils.digest(md, in));
 -                    }
 -                }
 -            }
@@ -3224,7 +1631,8 @@ index 0bb03df9..00000000
 -            Signature verifier = Signature.getInstance("SHA512withRSA");
 -            verifier.initVerify(publickey);
 -            for (Entry<String, byte[]> entry : fileFingerprints.entrySet()) {
--                verifier.update(DigestUtils.digest("SHA-512", entry.getKey().getBytes(UTF_8)));
+-                md.reset();
+-                verifier.update(md.digest(entry.getKey().getBytes(UTF_8)));
 -                verifier.update(entry.getValue());
 -            }
 -            return verifier.verify(signature);
@@ -3417,7 +1825,7 @@ index 998a3da7..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 deleted file mode 100644
-index 21ed94d2..00000000
+index cc7ce8f2..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 +++ /dev/null
 @@ -1,125 +0,0 @@
@@ -3517,7 +1925,7 @@ index 21ed94d2..00000000
 -
 -    private static boolean isDevelopmentVersion(String version) {
 -        return version.contains("@") || // eg. @develop@
--                version.contains("SNAPSHOT"); // eg. 3.1.SNAPSHOT
+-                version.contains("SNAPSHOT"); // eg. 3.5.SNAPSHOT
 -    }
 -
 -    public static void requestCheckUpdate(UpdateChannel channel) {
@@ -3548,7 +1956,7 @@ index 21ed94d2..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 deleted file mode 100644
-index 4fa0e2ca..00000000
+index 4cd06ef8..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 +++ /dev/null
 @@ -1,257 +0,0 @@
@@ -3583,12 +1991,12 @@ index 4fa0e2ca..00000000
 -import org.jackhuang.hmcl.ui.UpgradeDialog;
 -import org.jackhuang.hmcl.ui.construct.MessageDialogPane.MessageType;
 -import org.jackhuang.hmcl.util.StringUtils;
+-import org.jackhuang.hmcl.ui.SwingUtils;
 -import org.jackhuang.hmcl.util.TaskCancellationAction;
 -import org.jackhuang.hmcl.util.io.FileUtils;
 -import org.jackhuang.hmcl.util.io.JarUtils;
 -import org.jackhuang.hmcl.util.platform.JavaVersion;
 -
--import javax.swing.*;
 -import java.io.IOException;
 -import java.nio.file.Files;
 -import java.nio.file.Path;
@@ -3619,7 +2027,7 @@ index 4fa0e2ca..00000000
 -                performMigration();
 -            } catch (IOException e) {
 -                LOG.log(Level.WARNING, "Failed to perform migration", e);
--                JOptionPane.showMessageDialog(null, i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e), "Error", JOptionPane.ERROR_MESSAGE);
+-                SwingUtils.showErrorDialog(i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e));
 -            }
 -            return true;
 -        }
@@ -3629,13 +2037,13 @@ index 4fa0e2ca..00000000
 -                applyUpdate(Paths.get(args[1]));
 -            } catch (IOException e) {
 -                LOG.log(Level.WARNING, "Failed to apply update", e);
--                JOptionPane.showMessageDialog(null, i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e), "Error", JOptionPane.ERROR_MESSAGE);
+-                SwingUtils.showErrorDialog(i18n("fatal.apply_update_failure", Metadata.PUBLISH_URL) + "\n" + StringUtils.getStackTrace(e));
 -            }
 -            return true;
 -        }
 -
 -        if (isFirstLaunchAfterUpgrade()) {
--            JOptionPane.showMessageDialog(null, i18n("fatal.migration_requires_manual_reboot"), "Info", JOptionPane.INFORMATION_MESSAGE);
+-            SwingUtils.showInfoDialog(i18n("fatal.migration_requires_manual_reboot"));
 -            return true;
 -        }
 -

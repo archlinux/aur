@@ -1,4 +1,4 @@
-From f5ad1228a262f21a5bd813727cbf0810eeecf890 Mon Sep 17 00:00:00 2001
+From e12830055ce45b4271b7c65686c98622dd36e3c7 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Wed, 23 Nov 2022 09:27:28 +0800
 Subject: [PATCH 3/3] Disable Pack200
@@ -9,10 +9,10 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
-index 6f5c6e14..4a229e53 100644
+index ecc6d792..f62e1437 100644
 --- a/HMCL/build.gradle.kts
 +++ b/HMCL/build.gradle.kts
-@@ -178,7 +178,6 @@ tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("sha
+@@ -176,7 +176,6 @@ tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("sha
      }
  
      doLast {
@@ -20,7 +20,7 @@ index 6f5c6e14..4a229e53 100644
          attachSignature(jarPath)
          createChecksum(jarPath)
      }
-@@ -225,15 +224,12 @@ tasks.processResources {
+@@ -223,15 +222,12 @@ tasks.processResources {
      dependsOn(rootProject.tasks["generateOpenJFXDependencies"])
  }
  

@@ -6,7 +6,7 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5.3
-_build=227
+_build=228
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java.'
@@ -26,12 +26,12 @@ source=('hmcl.desktop'
   "0003-Disable-Pack200.patch"
 )
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
-  '9adb4243a5123ff82cb3678ebb3e889250d745973859d57ab5a14b2867b7cb04'
+  '858b5082bc58ddc44fe74625937876e78442fdf5ff948d1e91cddbf170af9eeb'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
-  '6d0b1fa5d4a7cab1024e62c12ea6baf19197175e2d2d3af9b23099878057b92f'
-  'cbaf1534ea1f68fdecf6fdbe3fc8dd77db0f73277deb6847719f2c4cc694a498'
-  '79084c5d3bd61639b0055b8dc07becc2f96b79178d0f7ce7eb7ba8a059cafbcc'
-  '5df17a227e1cf79cd14145320bfd0fcc3646a65e9b24cf9c48d4c13e4f0e2fa5')
+  '4e7511e23bdf6c6742444924c650e38ef458f3e59e68406d379225bb5c551e4d'
+  '8f3bc4a0ebb04734cf254233736326429ddcb5b2dd7a04e6ab57f592f71c0331'
+  '0e100dbe2c18156749b55d57b11593cef8fe30cf4442796d762f89d0ff646c2a'
+  '2d307e19328faffb49fa83836c0cb5233623c75e1a4f52e4c6ffe7215b744ada')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -56,7 +56,8 @@ build() {
 
 check() {
   cd "$_pkgname-$pkgver"
-  gradle test
+  gradle test --no-daemon \
+    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m'
 }
 
 package() {

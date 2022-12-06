@@ -2,9 +2,9 @@
 set -eu
 
 if [ "${1:-}" != -p ]; then
-    WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
-    mkdir -p "$WORKDIR"
-    cd "$WORKDIR"
+  WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/hmcl
+  mkdir -p "$WORKDIR"
+  cd "$WORKDIR"
 fi
 
 JAVA_HOME=/usr/lib/jvm/$(pacman -Ql java-openjfx | grep javafx | head -n 1 | cut -d / -f 5)
