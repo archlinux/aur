@@ -1,7 +1,7 @@
 pkgbase = proot
 	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
-	pkgver = 5.1.0
-	pkgrel = 3
+	pkgver = 5.3.1
+	pkgrel = 1
 	url = https://proot-me.github.io/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,7 @@ pkgbase = proot
 	makedepends = libxslt
 	depends = talloc
 	provides = proot
-	source = proot-v5.1.0.tar.gz::https://github.com/cedric-vincent/proot/archive/v5.1.0.tar.gz
-	source = 0001-Fix-use-of-size.patch
-	sha1sums = e80b088e0bade515d8ccb8ce04155c892dc9f992
-	sha1sums = 32de528010837ba7bc4d828f6e4b8f29570ec96e
+	source = proot-v5.3.1.tar.gz::https://github.com/cedric-vincent/proot/archive/v5.3.1.tar.gz
+	sha256sums = 966afe32bf9a9d0e80836a8874d4dd829c51750060d9e0f30d330b1ed7eec8c2
 
 pkgname = proot
-
