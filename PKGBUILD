@@ -3,9 +3,9 @@
 
 pkgname=abcpp
 pkgver=1.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A preprocessor designed for, but not limited to, ABC music files'
-url='http://abcplus.sourceforge.net'
+url='https://abcplus.sourceforge.net/#abcpp'
 license=(GPL2)
 arch=(aarch64 x86_64)
 depends=(glibc)

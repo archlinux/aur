@@ -1,8 +1,8 @@
 pkgbase = abcpp
 	pkgdesc = A preprocessor designed for, but not limited to, ABC music files
 	pkgver = 1.4.6
-	pkgrel = 3
-	url = http://abcplus.sourceforge.net
+	pkgrel = 4
+	url = https://abcplus.sourceforge.net/#abcpp
 	arch = aarch64
 	arch = x86_64
 	groups = abc
