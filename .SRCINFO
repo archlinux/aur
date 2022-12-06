@@ -1,9 +1,9 @@
 pkgbase = scrt-sfx-opt-bin
 	pkgdesc = SecureCRT + SecureFX 9.0 Bundle
-	pkgver = 9.3.0
-	pkgrel = 2905
+	pkgver = 9.3.1
+	pkgrel = 2929
 	url = https://www.vandyke.com/
-	install = scrt-sfx-opt-bin-9.3.0-2905.install
+	install = scrt-sfx-opt-bin-9.3.1-2929.install
 	arch = x86_64
 	license = custom:VanDyke
 	depends = glibc
@@ -12,9 +12,9 @@ pkgbase = scrt-sfx-opt-bin
 	depends = icu66
 	provides = SecureCRT
 	provides = SecureFX
-	source = file://scrt-sfx-9.3.0.2905.ubuntu20-64.tar.gz
-	source = scrt-sfx-opt-bin-9.3.0-2905.install
-	sha512sums = 7e33f44167371312b24c7a191be41080a4eb1a066353a90c7de18e8d96773c55d75a94a4a5d9137da881360fe248cde079a155779cfc18339ac47ea860c27e49
-	sha512sums = 9bcf2775a2009c824d20dd0b6924b00bbc3b2c987f056f1459a36d521ec212f5c1477e75af80f7388751d94d4f35598f8cf1c3b004c9a53ca904689428abae8b
+	source = file://scrt-sfx-9.3.1.2929.ubuntu20-64.tar.gz
+	source = scrt-sfx-opt-bin-9.3.1-2929.install
+	sha512sums = c26150cc73d7447b42126942ec8f81f7d157a02256fd2fa9d7179516e20bc4a721750bb1b593e67b5dbb02c7f61467c92e0a5b25f5c6960bde2b51d29624fdb1
+	sha512sums = f1dc3fde46ea5ce3650cfdf735df85337a26e6229c70726197c618b96d3fa0b8ad06a3182c47ecc091f3162241549ede4b4e239c813ed2acb7f4e2418a6e9087
 
 pkgname = scrt-sfx-opt-bin
