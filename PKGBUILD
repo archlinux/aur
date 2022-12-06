@@ -1,7 +1,7 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 
 pkgname=nginx-mod-traffic-accounting
-pkgver=2.0+16+g98af5fc
+pkgver=2.0+18+g46aae3e
 pkgrel=1
 
 _modname="traffic-accounting-nginx-module"
@@ -14,15 +14,15 @@ url="https://github.com/Lax/${_modname}"
 license=('BSD')
 
 source=(
-	"https://github.com/Lax/${_modname}/archive/v${pkgver%%+*}/${_modname}-v${pkgver%%+*}.tar.gz"
+	"https://github.com/Lax/${_modname}/archive/v${pkgver%%+*}/${_modname}-${pkgver%%+*}.tar.gz"
 	"d53a4a6.patch"
 	"server_addr.patch"
+	"succ_collect.patch"
 )
-sha256sums=(
-	'8c99c5313e5c822aa5683691c8a0641499b2fa8c67f9e55652817042e21f5986'
-	'9bad093fba01d67098d98122202693ffba20feb20668f73e7712d9d9b9915bf1'
-	'e25f170801179e067c7186f1e27fcb3f4273ac5683f6a4962dee821d5eddc8d0'
-)
+sha256sums=('8c99c5313e5c822aa5683691c8a0641499b2fa8c67f9e55652817042e21f5986'
+            '9bad093fba01d67098d98122202693ffba20feb20668f73e7712d9d9b9915bf1'
+            'e25f170801179e067c7186f1e27fcb3f4273ac5683f6a4962dee821d5eddc8d0'
+            'e9075be4a309948eaddaed2ceb038dcbf1d3aed92fcfe6c068e415ef6461696d')
 
 prepare() {
 	mkdir -p build
@@ -33,6 +33,7 @@ prepare() {
 	cd "../${_modname}-${pkgver%%+*}"
 	patch -Np1 -i '../d53a4a6.patch'
 	patch -Np1 -i '../server_addr.patch'
+	patch -Np1 -i '../succ_collect.patch'
 }
 
 build() {

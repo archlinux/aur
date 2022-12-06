@@ -1,0 +1,96 @@
+From 46aae3eccffea884430d72f3d6cfc664a5789853 Mon Sep 17 00:00:00 2001
+From: David-Hang-12138 <david.hang@senseguard.ai>
+Date: Thu, 15 Sep 2022 21:57:00 +0800
+Subject: [PATCH] DEVHUB-73 added option for collecting only successful
+ requests.
+
+---
+ src/http/ngx_http_accounting_module.c    | 27 +++++++++++++++++-------
+ src/ngx_traffic_accounting_module.h      |  1 +
+ src/ngx_traffic_accounting_module_conf.c |  2 ++
+ 3 files changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/src/http/ngx_http_accounting_module.c b/src/http/ngx_http_accounting_module.c
+index ecc62d2..a35759c 100644
+--- a/src/http/ngx_http_accounting_module.c
++++ b/src/http/ngx_http_accounting_module.c
+@@ -62,6 +62,13 @@ static ngx_command_t  ngx_http_accounting_commands[] = {
+       0,
+       NULL},
+ 
++    { ngx_string("accounting_20x"),
++      NGX_HTTP_MAIN_CONF|NGX_CONF_TAKE1,
++      ngx_conf_set_flag_slot,
++      NGX_HTTP_MAIN_CONF_OFFSET,
++      offsetof(ngx_http_accounting_main_conf_t, log_20x),
++      NULL},
++
+     ngx_null_command
+ };
+ 
+@@ -242,6 +249,18 @@ ngx_http_accounting_request_handler(ngx_http_request_t *r)
+ 
+     amcf = ngx_http_get_module_main_conf(r, ngx_http_accounting_module);
+ 
++    if (r->err_status) {
++        status = r->err_status;
++    } else if (r->headers_out.status) {
++        status = r->headers_out.status;
++    } else {
++        status = NGX_HTTP_STATUS_UNSET;
++    }
++
++    if (amcf->log_20x && NGX_HTTP_SPECIAL_RESPONSE <= status) {
++        // Only log successful requests whose response code is 10x or 20x
++        return NGX_DECLINED;
++    }
+     metrics = ngx_traffic_accounting_period_fetch_metrics(amcf->current, accounting_id, amcf->log);
+     if (metrics == NULL) { return NGX_ERROR; }
+ 
+@@ -275,14 +294,6 @@ ngx_http_accounting_request_handler(ngx_http_request_t *r)
+     metrics->bytes_in += r->request_length;
+     metrics->bytes_out += r->connection->sent;
+ 
+-    if (r->err_status) {
+-        status = r->err_status;
+-    } else if (r->headers_out.status) {
+-        status = r->headers_out.status;
+-    } else {
+-        status = NGX_HTTP_STATUS_UNSET;
+-    }
+-
+     metrics->nr_status[ngx_status_bsearch(status, ngx_http_statuses, ngx_http_statuses_len)] += 1;
+ 
+     ms = (ngx_msec_int_t)((tp->sec - r->start_sec) * 1000 + (tp->msec - r->start_msec));
+diff --git a/src/ngx_traffic_accounting_module.h b/src/ngx_traffic_accounting_module.h
+index adfccec..acc7d0b 100644
+--- a/src/ngx_traffic_accounting_module.h
++++ b/src/ngx_traffic_accounting_module.h
+@@ -18,6 +18,7 @@ typedef struct {
+     ngx_log_t      *log;
+     time_t          interval;
+     ngx_flag_t      perturb;
++    ngx_flag_t      log_20x;    // account only 20x success responses
+ 
+     ngx_traffic_accounting_period_t   *current;
+     ngx_traffic_accounting_period_t   *previous;
+diff --git a/src/ngx_traffic_accounting_module_conf.c b/src/ngx_traffic_accounting_module_conf.c
+index ce1da71..d937666 100644
+--- a/src/ngx_traffic_accounting_module_conf.c
++++ b/src/ngx_traffic_accounting_module_conf.c
+@@ -20,6 +20,7 @@ ngx_traffic_accounting_create_main_conf(ngx_conf_t *cf)
+     amcf->enable   = NGX_CONF_UNSET;
+     amcf->interval = NGX_CONF_UNSET;
+     amcf->perturb  = NGX_CONF_UNSET;
++    amcf->log_20x  = NGX_CONF_UNSET;
+ 
+     return amcf;
+ }
+@@ -32,6 +33,7 @@ ngx_traffic_accounting_init_main_conf(ngx_conf_t *cf, void *conf)
+     if (amcf->enable   == NGX_CONF_UNSET) { amcf->enable   = 0;  }
+     if (amcf->interval == NGX_CONF_UNSET) { amcf->interval = 60; }
+     if (amcf->perturb  == NGX_CONF_UNSET) { amcf->perturb  = 0;  }
++    if (amcf->log_20x  == NGX_CONF_UNSET) { amcf->log_20x  = 0;  }
+ 
+     return NGX_CONF_OK;
+ }
