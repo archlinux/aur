@@ -1,7 +1,7 @@
 pkgbase = godot-build
 	pkgdesc = Build Tool for Godot
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Denotatum/gdbuild
 	arch = any
 	license = GPLv3
@@ -10,7 +10,7 @@ pkgbase = godot-build
 	conflicts = godot-build
 	replaces = godot-build
 	noextract = godot-build-0.1.2.tar.gz
-	source = godot-build-0.1.2.tar.gz::https://codeberg.org/Denotatum/gdbuild/archive/v0.1.2.tar.gz
+	source = godot-build-0.1.2.tar.gz::https://codeberg.org/Denotatum/gdbuild/archive/0.1.2.tar.gz
 	md5sums = 0aec2273a64c7ebae29d181b6220521a
 
 pkgname = godot-build
