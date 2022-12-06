@@ -1,0 +1,11 @@
+pkgbase = intel-gpa-bin
+	pkgdesc = Intel® Graphics Performance Analyzers (Intel® GPA) provides tools for graphics analysis and optimizations for making games and other graphics-intensive applications run even faster.
+	pkgver = 22.2.1654744802
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://registrationcenter-download.intel.com/akdlm/irc_nas/18791/gpa_22.2.1654744802_release_m64_deb_install.sh
+	sha256sums = 345d38d0877e081beab2710e6b58272c4a2831e36f0ebbc1cd2bba2be46541c9
+
+pkgname = intel-gpa-bin
