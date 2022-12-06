@@ -1,0 +1,22 @@
+pkgbase = kjsembed
+	pkgdesc = Embedded JS
+	pkgver = 5.100.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5-aids
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	depends = qt5-svg
+	depends = ki18n
+	depends = kjs
+	options = debug
+	source = https://download.kde.org/stable/frameworks/5.100/portingAids/kjsembed-5.100.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.100/portingAids/kjsembed-5.100.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = a7864c09cc7407b045b829fc3ba4a084fea18d183c3a867795c864d326734cf0
+	sha256sums = SKIP
+
+pkgname = kjsembed
