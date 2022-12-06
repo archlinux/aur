@@ -9,7 +9,7 @@ url="https://nanobench.ankerl.com"
 license=("MIT")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/martinus/nanobench/archive/v${pkgver}.tar.gz")
-b2sums=('2519b7b4a2c8b2da9acb83d5d09883d350f774cb93ba1c2cbb9c6274968308c27d163de00cd531982ab4434a01d714daa706104765cce70b6b605cdf2edb0c9e')
+b2sums=("2519b7b4a2c8b2da9acb83d5d09883d350f774cb93ba1c2cbb9c6274968308c27d163de00cd531982ab4434a01d714daa706104765cce70b6b605cdf2edb0c9e")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
