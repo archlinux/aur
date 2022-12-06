@@ -1,54 +1,58 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
-pkgbase=dune-alugrid
-pkgname=(${pkgbase} python-${pkgbase})
-_tarver=2.8
-_tar="${_tarver}/${pkgbase}-releases-${_tarver}.tar.gz"
-pkgver=${_tarver}.0
-pkgrel=3
+pkgname=dune-alugrid
+_tarver=2.9.0
+_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
+pkgver="${_tarver}"
+pkgrel=1
 pkgdesc="An adaptive, loadbalancing, unstructured implementation of the DUNE grid interface supporting either simplices or cubes"
-arch=('x86_64')
-url="https://www.dune-project.org/modules/${pkgbase}"
+arch=(x86_64)
+url="https://dune-project.org/modules/${pkgname}"
 license=('GPL')
-makedepends=('dune-grid>=2.8.0' 'doxygen' 'graphviz' 'python-setuptools') # 'dlmalloc' 'sionlib' 'parmetis'
+depends=("dune-grid>=${pkgver}" zoltan)
+makedepends=(doxygen graphviz python-scikit-build python-ninja)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://gitlab.dune-project.org/extensions/${pkgbase}/-/archive/releases/${_tar})
-sha512sums=('36402403d0a969a0969404c093c37856f590629b6c0e2f8620fde7c0e22c4bde8806136c3f6503a03479c2bbdcf57273a590c633fa54b77f0d9d9ce5361995ca')
+source=(https://dune-project.org/download/${_tar}{,.asc})
+sha512sums=('92b6bcc65d69191e28b21b130fc84b34230265d8cae0ac6406ce8749bd0b83cd19b5a02b526583d0d9cd5051d8c26c59e599aa189c403c74650b0a3f21eaf95f' 'SKIP')
+validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver%%.0}"'.0/' dune.module
+  cat dune.module
+  python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
+}
 
 build() {
-  cmake \
-    -S ${pkgbase}-releases-${_tarver} \
-    -B build-cmake \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+  cd ${pkgname}-${pkgver}
+
+  XDG_CACHE_HOME="${PWD}" \
+    python setup.py build \
+    --build-type=None \
+    -G 'Unix Makefiles' \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
+    -DCMAKE_CXX_FLAGS="-O2 -Wall -fdiagnostics-color=always -mavx" \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+    -DALLOW_CXXFLAGS_OVERWRITE=ON \
+    -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
+    -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
     -DENABLE_HEADERCHECK=ON \
     -DDUNE_ENABLE_PYTHONBINDINGS=ON \
     -DDUNE_PYTHON_INSTALL_LOCATION='none' \
-    -Wno-dev
-  cmake --build build-cmake --target all
-  cd "build-cmake/python"
-  python setup.py build
+    -DDUNE_PYTHON_WHEELHOUSE="dist"
 }
 
-package_dune-alugrid() {
-  depends=('dune-grid>=2.8.0' 'zoltan')
-  DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgbase}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+package() {
+  cd ${pkgname}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
-}
-
-package_python-dune-alugrid() {
-  depends=('dune-alugrid>=2.8.0' 'python-dune-grid>=2.8.0')
-  pkgdesc+=" (python bindings)"
-  cd "build-cmake/python"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
