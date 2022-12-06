@@ -4,7 +4,7 @@
 pkgname=heroic-games-launcher-bin
 _pkgver=v2.5.1
 pkgver=${_pkgver#v}
-pkgrel=1
+pkgrel=2
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic and GOG Games"
 arch=('x86_64')
 url="https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
@@ -14,7 +14,7 @@ depends=('fuse2' 'gawk')
 _filename=heroic-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('4bd1c426e78d1f36ebcd738849b40420')
+md5sums=('3ee08eb869d2cf7da4680f351281a988')
 options=(!strip)
 
 package() {
