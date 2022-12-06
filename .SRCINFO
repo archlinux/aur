@@ -1,0 +1,14 @@
+pkgbase = hyprevents-git
+	pkgdesc = Invoke shell functions in response to Hyprland socket2 events.
+	pkgver = 4.9b5e895
+	pkgrel = 1
+	url = https://github.com/vilari-mickopf/hyprevents
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hyprevents
+	conflicts = hyprevents
+	source = hyprevents::git+https://github.com/vilari-mickopf/hyprevents.git
+	md5sums = SKIP
+
+pkgname = hyprevents-git
