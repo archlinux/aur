@@ -1,0 +1,16 @@
+pkgbase = protobuf3.12
+	pkgdesc = Protocol Buffers - Google's data interchange format
+	pkgver = 3.12.4
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = x86_64
+	license = BSD
+	makedepends = unzip
+	makedepends = python-setuptools
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	source = https://github.com/protocolbuffers/protobuf/releases/download/v3.12.4/protobuf-all-3.12.4.tar.gz
+	sha512sums = 166ebf405446a811ddfd354f4268d142326b2ff87ea13dc9643c2c035f54accb0c438e6248d2a043b6485211d8b9ff1d6c8c0dfff6fd2a3eecc34217980d3fa9
+
+pkgname = protobuf3.12
