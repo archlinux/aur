@@ -8,7 +8,7 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
@@ -132,7 +132,6 @@ pkgver() {
 
 build() {
   cd ffmpeg
-
   ./configure \
     --prefix=/usr \
     --disable-debug \
