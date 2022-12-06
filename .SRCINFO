@@ -1,6 +1,6 @@
 pkgbase = rasterview-git
 	pkgdesc = A CUPS, PWG, and Apple raster file viewer
-	pkgver = 1.7.1.r2.g5e741e6
+	pkgver = 1.8.r14.g6e4e24c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/michaelrsweet/rasterview
@@ -14,4 +14,3 @@ pkgbase = rasterview-git
 	md5sums = SKIP
 
 pkgname = rasterview-git
-
