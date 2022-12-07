@@ -7,12 +7,12 @@
 pkgname=k8sfw-webui-git
 pkgrel=1
 pkgdesc="UI for k8sfw-daemon"
-pkgver=0.0.2.r1.g57ccd45
+pkgver=0.0.2.r4.g5f63f35
 arch=('x86_64')
 url=""
 license=('MIT')
 groups=()
-depends=('jq' 'k8sfw-daemon' 'bash')
+depends=('k8sfw-daemon' 'chromium')
 makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
@@ -40,12 +40,14 @@ package() {
     mkdir -p ${pkgdir}/usr/bin
     mkdir -p ${pkgdir}/usr/local/k8sfw-gui
     mkdir -p ${pkgdir}/usr/share/applications
+    mkdir -p ${pkgdir}/usr/share/icons/hicolor/192x192/apps
 #     ls
     cp "${srcdir}/k8sfw-webui-git/neutralino.config.json" "${pkgdir}/usr/local/k8sfw-gui/neutralino.config.json"
     cp -r "${srcdir}/k8sfw-webui-git/build" "${pkgdir}/usr/local/k8sfw-gui/build"
     cp "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/k8sfw-gui-linux_x64" "${pkgdir}/usr/bin/k8sfw-gui"
     chmod +x "${pkgdir}/usr/bin/k8sfw-gui"
     cp "${srcdir}/k8sfw-webui-git/k8sfw.desktop" "${pkgdir}/usr/share/applications/k8sfw.desktop"
+    cp "${srcdir}/k8sfw-webui-git/public/logo192.png" "${pkgdir}/usr/share/icons/hicolor/192x192/apps/k8sfw.png"
     cp "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/resources.neu" "${pkgdir}/usr/local/k8sfw-gui/resources.neu"
 }
 

@@ -1,14 +1,13 @@
 pkgbase = k8sfw-webui-git
 	pkgdesc = UI for k8sfw-daemon
-	pkgver = 0.0.2.r1.g57ccd45
+	pkgver = 0.0.2.r4.g5f63f35
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = jq
 	depends = k8sfw-daemon
-	depends = bash
+	depends = chromium
 	provides = k8sfw-webui
 	source = k8sfw-webui-git::git+ssh://git@gitlab.xn--kll-sna.net:10022/k8sfw/k8sfw-webui.git#branch=main
 	md5sums = SKIP
