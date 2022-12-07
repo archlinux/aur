@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
@@ -25,9 +25,9 @@ install='nym.install'
 
 prepare() {
     # NOTE: Build process requires cloned git repo
-    git clone https://github.com/nymtech/nym.git -b v$pkgver
+    git clone https://github.com/nymtech/nym.git -b nym-binaries-v$pkgver
     cd nym
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
