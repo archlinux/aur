@@ -1,6 +1,6 @@
 pkgbase = hilbish-git
 	pkgdesc = The flower shell for Lua users
-	pkgver = 1.0.4.r3.g0113a4e
+	pkgver = 2.0.0.rc1.r23.g1024f93
 	pkgrel = 1
 	url = https://github.com/rosettea/hilbish
 	install = hilbish.install

@@ -4,7 +4,7 @@
 ## Keys are located at https://github.com/torchedsammy.gpg
 
 pkgname=hilbish-git
-pkgver=1.0.4.r3.g0113a4e
+pkgver=2.0.0.rc1.r23.g1024f93
 pkgrel=1
 pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'i686' 'aarch64')
@@ -21,12 +21,11 @@ sha256sums=('SKIP')
 validpgpkeys=('784DF7A14968C5094E16839C904FC49417B44DCD') ## TorchedSammy
 
 pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-rc/.rc/;s/-/.r/;s/-/./'
 }
 
 prepare() {
 	cd "$pkgname"
-	sed -i '\|/etc/shells|d' Makefile
 	go mod download
 }
 
@@ -38,13 +37,16 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	# make dev
 	go build -ldflags "-linkmode=external -X main.version=$pkgver"
 }
 
 package() {
 	cd "$pkgname"
-	DESTDIR="$pkgdir/" make install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv hilbish -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 .hilbishrc.lua -t "$pkgdir/usr/share/hilbish/"
+	cp -av --no-preserve=ownership nature "$pkgdir/usr/share/hilbish/"
+	install -dv "$pkgdir/usr/share/hilbish/libs/"
+	cp -avp --no-preserve=ownership libs/ansikit "$pkgdir/usr/share/hilbish/libs/"
 }
