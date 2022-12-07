@@ -3,7 +3,7 @@
 
 pkgname=jenkins-lts
 pkgver=2.375.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Extendable continuous integration server (lts)'
 arch=('any')
 url='https://jenkins.io'
@@ -23,7 +23,7 @@ source=("jenkins-${pkgver}.war::https://get.jenkins.io/war-stable/2.375.1/jenkin
         'jenkins.sysusers'
         'LICENSE')
 sha512sums=('dc7bb525b222f0fd0216304c97b8a1e84fb6c1bafbea46e83261e9db0c8cf4378fd9b621822667eaaa627d970c5e7fd88cd1b6706f1dc478d2b0fc7b9629369f'
-            '305f080f159a0e95f810bb4658dd2d2a3852b78bd41eb07bf28122bde65cd5c3ab99fab93c6a1153ad509ac043aeb355012320c339cccfef935b8d1ccffbd4f3'
+    '0404d141357d327d4a62fdce0d1f6c024a2ba6da4b9d6251a5e084671a20630e167f300b9caac415059520f2956aa1ee413031bdb8da3413dadc3007c40e216c'
             'a336b006d3711abb75b49a2e12c09ee61cf3275a2cdbbd3676480e2f6ca8ba0fb4b9c08f3f9da193252c4fca827e9a1d5eaad847d0a889445693427ae1571fe7'
             'a845a7147be54affc586dfce9a188ec24c92e673e88dec0b62da386d2e597de6ecda103429008562abd897f179a52c37cf2188ebc65b8c636efd07d707e18f90'
             '896cbc64eadb2f3bb9fa7fc26dbfc527b1823d8bff3158be7f1936cc250f55eeafe89079e1ceb8f3d269041662573ccbbb36248140b4ba24144a564366f8847a'
@@ -38,4 +38,3 @@ package() {
   install -Dm644 jenkins.conf "$pkgdir/etc/conf.d/jenkins"
 }
 
-# vim:set ts=2 sw=2 et:
