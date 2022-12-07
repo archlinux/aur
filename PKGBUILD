@@ -20,9 +20,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=299
+_minor=300
 _srcname=linux-${_major}
-_clr=${_major}.296-211
+_clr=${_major}.300-215
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -249,7 +249,7 @@ _package-headers() {
     echo "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
@@ -279,7 +279,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '72ec44ef9a6b3690e0513aedc95359441af680dad532e0944417fd69980400fc'
+            'cd8c0f4e542c68e8f562bac89db74970e80fc74d99e324db2d0b2315053b28a1'
             'SKIP')
 
 validpgpkeys=(
