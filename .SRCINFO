@@ -1,8 +1,8 @@
 pkgbase = anope
 	pkgdesc = A set of IRC Services designed for flexibility and ease of use
 	pkgver = 2.0.11
-	pkgrel = 1
-	url = http://www.anope.org/
+	pkgrel = 2
+	url = https://www.anope.org/
 	install = anope.install
 	arch = i686
 	arch = x86_64

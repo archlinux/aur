@@ -2,10 +2,10 @@
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
-url="http://www.anope.org/"
+url="https://www.anope.org/"
 license=('GPL')
 makedepends=('cmake')
 optdepends=(
