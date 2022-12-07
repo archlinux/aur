@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.4'
+_upstreamver='0.0.5'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -23,6 +23,10 @@ optdepends=(
 	'python-langdetect: detect language automatically for offline dictionary'
 	'python-pystardict: offline dictionary'
 	'python-py-notifier: GUI notification'
+	'xsel: clipboard support'
+	'xclip: clipboard support'
+	'festival: speaker support'
+	'espeak-ng: speaker support'
 )
 conflicts=(translate-shell)
 license=(GPLv3)
@@ -31,8 +35,8 @@ source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 	"https://raw.githubusercontent.com/$_repo/main/assets/desktop/translate-shell.desktop"
 )
-sha256sums=('0190cbadceaa6786c504efe0f1d0af329d5df71113e4a43a8ee9b7e74d2dc2f1'
-            '45fdff8b6ddc514190abdb61354f0583b1a490466bfb65cceec4d6ea12a776f6')
+sha256sums=('c3294415a59082246bce29e63721a70eb240a8891f3ba69b007ea6e6f7cf33dc'
+            '3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67')
 
 package() {
 	cd "$srcdir" || return 1
