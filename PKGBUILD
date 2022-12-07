@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=108.0.5359.94
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=2
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -53,13 +53,11 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
-        remove-main-main10-profile-limit.patch
-        chromium-drirc-disable-10bpc-color-configs.conf)
+        remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
             '26379c097c7ba655e4d943523575f00647308e2a75ab79c8ff99e4b62b40ae1a'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
-            'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
+            'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
