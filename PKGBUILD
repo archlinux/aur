@@ -3,7 +3,7 @@
 
 pkgname=hmcl-bin
 _ver=3.5.3
-_build=227
+_build=228
 pkgver=${_ver}.${_build}
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
@@ -22,7 +22,7 @@ sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             '9100404ad7405e9ce38a1d566a6039c9ee6bcec87eff1825adb9f7c32ca13a6a'
             '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '6eadd8a8dc03b4048952deae09374c00804f2df995ac6bb5c550859e8d09c0ad')
+            'd4808b56a309d0857ad90781efe7f23f12847c09ab7906449a454323455fcb38')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
