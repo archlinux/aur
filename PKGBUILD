@@ -235,7 +235,7 @@ END
 }
 
 # vim:set sw=2 et:
-md5sums=('d74f2d068e97491aa498e7c8ed2f8877'
+md5sums=('SKIP'
          'SKIP'
          'bb20e95b9d65d59ba39f2f7f1c853c27'
          '6fcf81de61fa98bccedf1f7b8656d83a'
