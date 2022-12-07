@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-uname
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Add uname output to early boot process'
 arch=('any')
