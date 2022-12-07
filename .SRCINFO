@@ -1,0 +1,9 @@
+pkgbase = ltstudio
+	pkgdesc = New generation IDE, very fast programming with useful code-completion features for C++, TSML, HTML, Css. -- Beta version
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = Developer/IDE
+	makedepends = rpkdev
+
+pkgname = ltstudio
