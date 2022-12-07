@@ -1,14 +1,14 @@
 pkgbase = weechat-wee-most-git
 	pkgdesc = A WeeChat plugin for Mattermost
-	pkgver = r376.1559821
+	pkgver = r432.668e695
 	pkgrel = 1
 	url = https://sr.ht/~tardypad/wee-most/
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python-websocket-client
-	depends = weechat
 	source = git+https://git.sr.ht/~tardypad/wee-most
 	sha512sums = SKIP
 
 pkgname = weechat-wee-most-git
+	depends = python-websocket-client
+	depends = weechat

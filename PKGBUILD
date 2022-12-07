@@ -1,5 +1,5 @@
 pkgname=weechat-wee-most-git
-pkgver=r376.1559821
+pkgver=r432.668e695
 pkgrel=1
 pkgdesc='A WeeChat plugin for Mattermost'
 url='https://sr.ht/~tardypad/wee-most/'
@@ -8,11 +8,6 @@ license=('GPL3')
 
 makedepends=(
   'git'
-)
-
-depends=(
-  'python-websocket-client'
-  'weechat'
 )
 
 source=(
@@ -29,6 +24,11 @@ pkgver() {
 }
 
 package() {
+  depends+=(
+    'python-websocket-client'
+    'weechat'
+  )
+
   cd wee-most
   make DESTDIR="${pkgdir}" WEECHAT_DATA_DIR=/usr/share/weechat
 }
