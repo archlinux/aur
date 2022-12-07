@@ -1,15 +1,15 @@
 pkgbase = fet-timetabling-bin
 	pkgdesc = A software for automatically scheduling the timetable of a school, high-school or university.
-	pkgver = 6.7.4
+	pkgver = 6.7.5
 	pkgrel = 1
 	url = http://lalescu.ro/liviu/fet/
 	arch = x86_64
 	license = AGPL3
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	provides = fet-timetabling=6.7.4
+	provides = fet-timetabling=6.7.5
 	conflicts = fet-timetabling
-	source = https://gitlab.com/phrippy/fet-bin/-/raw/main/fet-bin-6.7.4.tar.xz
-	sha256sums = fc0f5e5997e1013721b6f5f150d6f9901f4eca660966918df9279fd90dd0ac17
+	source = https://gitlab.com/phrippy/fet-bin/-/raw/main/fet-bin-6.7.5.tar.xz
+	sha256sums = a710334495077c7678fe6ebfe5e1d6d5ef846bf2657ad72fd8815dc0fd0dd73e
 
 pkgname = fet-timetabling-bin
