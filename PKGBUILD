@@ -15,7 +15,7 @@ replaces=('jenkins-ci')
 backup=('etc/conf.d/jenkins')
 install='jenkins.install'
 noextract=("jenkins-${pkgver}.war")
-source=("jenkins-${pkgver}.war::http://mirrors.jenkins.io/war-stable/${pkgver}/jenkins.war"
+source=("jenkins-${pkgver}.war::https://get.jenkins.io/war-stable/2.375.1/jenkins.war"
         # Rename to force re-download on new version
         'jenkins.conf'
         'jenkins.service'
