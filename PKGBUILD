@@ -1,5 +1,5 @@
 pkgname=vim-oscyank-git
-pkgver=r66.849c67a
+pkgver=r69.e629873
 pkgrel=1
 pkgdesc="A Vim plugin copy text to system clipboard"
 arch=("any")
@@ -13,11 +13,6 @@ groups=(
 makedepends=(
   'git'
 )
-
-depends=(
-  'vim-runtime'
-)
-
 source=(
   "git+https://github.com/ojroques/vim-oscyank.git"
 )
@@ -32,6 +27,10 @@ pkgver() {
 }
 
 package() {
+  depends+=(
+    'vim-runtime'
+  )
+
   cd vim-oscyank
   install -D -m644 plugin/oscyank.vim "${pkgdir}/usr/share/vim/vimfiles/plugin/oscyank.vim"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
