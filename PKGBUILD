@@ -1,14 +1,14 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 _pkgname=copilot.vim
 pkgname=vim-copilot-git
-pkgver=r28.5a411d1
+pkgver=r29.2f4f925
 pkgrel=1
 pkgdesc="(Neo)Vim plugin for GitHub Copilot automated code completion. Requires a subscription."
 arch=(any)
 url="https://github.com/github/$_pkgname"
 license=(custom)
 groups=(vim-plugins)
-depends=(vim-plugin-runtime nodejs-lts-gallium)
+depends=(vim-plugin-runtime nodejs)
 makedepends=(git)
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
