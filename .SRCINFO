@@ -1,7 +1,7 @@
 pkgbase = libquicktime
 	pkgdesc = A library for reading and writing quicktime files
 	pkgver = 1.2.4
-	pkgrel = 29
+	pkgrel = 30
 	url = http://libquicktime.sourceforge.net/
 	arch = x86_64
 	license = LGPL2.1

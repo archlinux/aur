@@ -7,13 +7,13 @@
 pkgname=libquicktime
 _commit='27295919b3a1036ba8bc06cec414dcc501f72d89'
 pkgver=1.2.4
-pkgrel=29
+pkgrel=30
 pkgdesc="A library for reading and writing quicktime files"
 arch=(x86_64)
 license=(LGPL2.1)
 url="http://libquicktime.sourceforge.net/"
 depends=(glib2 glibc zlib)
-# NOTE: not applied experimental ffmpeg5 patch. Please provide feedback if this works for you
+# NOTE: applied experimental ffmpeg5 patch. Please provide feedback if this works for you
 makedepends=(alsa-lib doxygen faac faad2 ffmpeg git gtk2 lame libdv libglvnd
              libjpeg-turbo libvorbis libx11 libxaw libxext libxt libxv
              schroedinger sndio x264)
