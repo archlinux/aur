@@ -1,6 +1,6 @@
 pkgbase = electricsheep-git
 	pkgdesc = Electric Sheep is a collaborative abstract artwork founded by Scott Draves. (gold sheep supported!)
-	pkgver = 3.0.2.git.92b063720552e862e3912539b8243a707e0fac9c
+	pkgver = 3.0.2.git.20221208.37ba0fd
 	pkgrel = 1
 	url = http://gold.electricsheep.org/about
 	arch = x86_64
@@ -18,13 +18,12 @@ pkgbase = electricsheep-git
 	depends = boost-libs
 	depends = freeglut
 	depends = glee
-	depends = wxgtk2
+	depends = wxgtk3
 	optdepends = xscreensaver: to use electricsheep with xscreensaver
 	provides = electricsheep
 	conflicts = electricsheep
 	conflicts = electricsheep-svn
-	source = https://github.com/scottdraves/electricsheep/archive/92b063720552e862e3912539b8243a707e0fac9c.zip
-	sha512sums = 28200b152689b9fbdfd1b3b12891a5fabad89b2b282387fe961212a0e8f2623cd61fc664366b914584063b2eec1e208ea7ea1994f398647fdd2e28a5cf3c7611
+	source = electricsheep::git+https://github.com/Rogach/electricsheep.git#branch=fix-ffmpeg5
+	sha512sums = SKIP
 
 pkgname = electricsheep-git
-
