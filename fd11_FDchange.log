@@ -1,0 +1,29 @@
+2001/06/10 initial dosemu-freedos binary release
+	From Hans
+	- binaries taken from FreeDos beta6 and GNU to build
+	  the initial dosemu-freedos binary release
+	- cut down docs part to just the absolue minimum
+	- help\index rewritten to fit dosemu-freedos
+	From Bart
+	- fixed mem.exe
+	- kernel ker2024c
+	- ioctl-patch
+	- fix to  kernel/console.asm not honoring Ctrl-C
+2002/12/20 second release (from DOSEMU people)
+        From Bart 
+	- update to Beta8 + kernel 2028
+2003/09/28 third release (from DOSEMU people)
+        From Bart 
+	- update to Beta9rc3
+2004/03/05 fourth release (from DOSEMU people)
+        From Bart 
+	- update to Beta9rc4
+2004/07/11 fifth release (from DOSEMU people)
+        From Bart 
+	- update to Beta9rc5
+2005/09/10 sixth release (from DOSEMU people)
+        From Bart 
+	- avoid problem with newer versions of GNU tar
+2007/04/28 seventh release (from DOSEMU people)
+        From Bart 
+	- update to 1.0
