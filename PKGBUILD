@@ -3,10 +3,10 @@
 _pkgname=ocp-indent
 pkgname=ocaml-${_pkgname}
 pkgver=1.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Indentation tool for OCaml, to be used from editors like Emacs and Vim."
 arch=('x86_64')
-depends=('ocaml' 'ocaml-cmdliner>=1.0.0')
+depends=('ocaml' 'ocaml-cmdliner>=1.0.0' 'ocaml-findlib')
 makedepends=('git' 'dune>=1.0')
 url="https://github.com/OCamlPro/ocp-indent"
 license=('LGPL')
