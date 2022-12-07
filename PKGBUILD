@@ -4,7 +4,7 @@
 
 _pkgname=digikam
 pkgname="$_pkgname-git"
-pkgver=8.0.0.r3297.98bb80e37a
+pkgver=8.0.0.r3363.9223eb7bec
 pkgrel=1
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
@@ -13,8 +13,7 @@ url='https://www.digikam.org/'
 depends=('akonadi-contacts' 'exiv2' 'glu' 'imagemagick' 'jasper' 'kcalendarcore'
          'kfilemetadata' 'kio' 'knotifyconfig' 'lensfun' 'libass' 'libgphoto2'
          'libksane' 'marble-common' 'opencv' 'perl-image-exiftool'
-         'qt5-networkauth' 'qt5-webengine' 'qt5-xmlpatterns' 'qtav'
-         'threadweaver')
+         'qt5-networkauth' 'qt5-webengine' 'qt5-xmlpatterns' 'threadweaver')
 makedepends=('boost' 'doxygen' 'eigen' 'extra-cmake-modules' 'git' 'kdoctools')
 optdepends=('darktable: RAW import'
             'hugin: panorama tool'
