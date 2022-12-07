@@ -4,7 +4,7 @@ _reponame=Shipwright
 _libultraship_commit=e1fa7a2c0e6baeed083cd2b8f22c260e2db48d29
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -19,7 +19,7 @@ source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.g
         "lus-install-paths.patch"
         "otrgui-wrapper.sh"
         "assets-headers-gc_nmq_pal_f.tar.xz")
-sha256sums=('db7e001e991ea362bf165b56e7c8c7c15c105e5cc9bd1ffa5aa54f72c2f0fa97'
+sha256sums=('e1222b6bce7865706f5ffc6c9d45f19ccd2ed738ed7e39360ad7d8f59eeff334'
             'bbe5fdedcec21a63d346fdaa57f0ba51166ed48c97c2cc55a45320009b278b05'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
