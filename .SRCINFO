@@ -1,0 +1,10 @@
+pkgbase = rpkdev
+	pkgdesc = Retriever OS package creation tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = Developer/Packaging
+	groups = CLI/Tool/PackageManager
+	makedepends = rpkdev
+
+pkgname = rpkdev
