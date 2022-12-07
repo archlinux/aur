@@ -3,7 +3,7 @@
 # Contributor: Dustin Blackman
 
 pkgname='cf-alias-bin'
-pkgver=0.1.5
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Create Cloudflare email alias' directly from your terminal or Alfred.'
 url='https://github.com/dustinblackman/cf-alias'
@@ -12,8 +12,8 @@ license=('MIT')
 provides=('cf-alias')
 conflicts=('cf-alias')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/cf-alias/releases/download/v0.1.5/cf-alias_0.1.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('7637e0ebf78c5196a2d724267fd12a8d8ac1f3513b952036ce3819017dc52b3b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/dustinblackman/cf-alias/releases/download/v0.1.9/cf-alias_0.1.9_linux_amd64.tar.gz")
+sha256sums_x86_64=('446f221ccf2265b0e79f13502404e7150e8364a63bbb8e86993ffd373f715970')
 
 package() {
   # bin
@@ -21,6 +21,7 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/cf-alias/LICENSE"
+  install -Dm644 "./THIRDPARTY.md" "${pkgdir}/usr/share/licenses/languagetool-code-comments/THIRDPARTY.md"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
