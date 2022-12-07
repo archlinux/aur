@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=108.0.5359.94
-pkgrel=2
+pkgver=108.0.5359.98
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         disable-GlobalMediaControlsCastStartStop.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('0607518481a8a5b993fb371eec544f7d20e43c2eb706ca7bf40ef584496cb6fe'
+sha256sums=('60b6137971e3cb2947477f654491ed4f517ab88ea2807fa3b89fcce34b83561e'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
