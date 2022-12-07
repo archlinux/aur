@@ -1,11 +1,11 @@
 # Maintainer: hu3rror <hu3rror@protonmail.com>
-# Former Maintainer: ventusliberum <dafeinayius@gmail.com>
+# Contributor: ventusliberum <dafeinayius@gmail.com>
 
 pkgname=wonderpen-appimage
 _pkgname=wonderpen
 pkgver=2.2.2
 _pkgver=6682
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional writing app with a focused mode and markdown support"
 arch=("x86_64")
 url="https://www.tominlab.com/en/wonderpen"
