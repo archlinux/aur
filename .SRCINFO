@@ -1,0 +1,18 @@
+pkgbase = vcvrack-bastl
+	pkgdesc = Bastl VCV Rack modules
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/hemmer/bastl-vcv
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = GPL3
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-bastl-2.0.0.tar.gz::https://github.com/hemmer/bastl-vcv/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = e8772c2f088a78bb3cf42611d039c46b8bdf29b129537b68ae186a5d871ec559
+
+pkgname = vcvrack-bastl
