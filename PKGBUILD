@@ -2,7 +2,7 @@
 
 _gemname=dry-inflector
 pkgname=ruby-$_gemname
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='String inflections for Ruby'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('3915f51de7fe5a9cb8c5bee5e3937ef57657db9681992f100271b1c368bf4bff3762f3739ff3feee6090e2d2d9e38494db36285a17cdff4b8c5c3992d87ada3d')
+b2sums=('f5d44108cf0d44c646a4a395b7adcda5fa4e5f355d45bd399b230ab35cb21c9e0f7f26ea737e320de60ae0da0d1d0c9afb5218fd4d25b6b6af969b434b63a4b9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
