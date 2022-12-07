@@ -9,8 +9,7 @@ url="https://github.com/sunqm/libcint"
 license=('BSD')
 depends=('blas')
 makedepends=('cmake')
-checkdepends=('python: To run test suite.'
-              'python-numpy: To run test suite.')
+checkdepends=('python' 'python-numpy')
 optdepends=('clisp: for common lisp scripts.')
 provides=($pkgname=$pkgver)
 source=($pkgname-$pkgver.tar.gz::https://github.com/sunqm/libcint/archive/v$pkgver.tar.gz)
