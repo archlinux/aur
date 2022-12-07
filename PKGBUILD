@@ -21,7 +21,7 @@ package() {
 	echo "  -> Installing..."
 	# Launcher
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "${pkgdir}/opt/QQ/qq" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${pkgname}"
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
