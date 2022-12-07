@@ -1,9 +1,10 @@
-# Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
+# Maintainer: xiliuya <xiliuya@163.com>
+# Contributor: Robert Cegliński <rob.ceglinski@gmail.com>
 # Contributor: Christopher Snowhill <chris@kode54.net>
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 
 pkgname=wlr-randr-git
-pkgver=0.2.0+1+gfb31752
+pkgver=v0.2.0-6-g02c69a6
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor (latest git version)"
 arch=('x86_64')
