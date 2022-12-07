@@ -2,7 +2,7 @@
 
 pkgname=zlib-ng-compat
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
@@ -39,5 +39,5 @@ package() {
   cd "zlib-ng-$pkgver"
 
   make -C "_build" DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/zlib-ng"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/zlib-ng-compat"
 }
