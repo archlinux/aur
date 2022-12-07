@@ -6,8 +6,8 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
@@ -39,9 +39,8 @@ source=(
   'vcvrack.sh'
   'profile.sh'
   'trademark.eml'
-  'aarch64.patch'
 )
-sha256sums=('d6d4ffdb0afa6a1487410ca4cb891b55cd72be4d184c50e6ccf35929e3c0555c'
+sha256sums=('e11643668e3770b61ef348bb1aeaa81345382fedc0c1c70765a4178b097de1a7'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
             'b706605c539dcc0953d2e5c59bec015275a576110125f9e8bc7c7dee75ec6b12'
@@ -55,8 +54,7 @@ sha256sums=('d6d4ffdb0afa6a1487410ca4cb891b55cd72be4d184c50e6ccf35929e3c0555c'
             'd0d847a5dff1b8c1bfde209c8cf265096d0feb7e07e50b100b452be8cee1c9d6'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
-            '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641'
-            'd2ac3b5b89043ac40f28ccf13ca02156f5f34e9facc9b3d70ccf1b412b60bd55')
+            '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')
 # extract the submodules ourselves so we have control over the unpacked top-level directory name
 noextract=($(for _i in ${!_submodules[@]}; do
   echo "${_submodules[$_i]}-${_commits[$_i]}.tar.gz"
@@ -78,9 +76,6 @@ prepare() {
 
   # support building plugins and loading system-wide plugins
   patch -p1 -i ../plugins.patch
-
-  # support aarch64
-  patch -p1 -i ../aarch64.patch
 
   gendesk -f -n \
     --pkgname $pkgname \
