@@ -14,7 +14,7 @@ pkgdesc="A minimalist UTXO tracker for HD wallets."
 arch=("x86_64")
 url="https://github.com/dgarage/${_pkgname}"
 license=("MIT")
-depends=("aspnet-runtime" "bash" "bitcoin-daemon" "dotnet-sdk" "postgresql")
+depends=("aspnet-runtime-6.0" "bash" "bitcoin-daemon" "dotnet-sdk-6.0" "postgresql")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
 sha512sums=("abe1d920d38ff6948e4782f75cfb644d2540fbb771f2893b9a86784d840868c95a2a07668cd28147ce13274133f220e0158e695c65e3af701355dd9536378fe0"
