@@ -1,5 +1,5 @@
 pkgbase = linuxqq-new
-	pkgdesc = New Linux QQ based Electron
+	pkgdesc = New Linux QQ based on Electron
 	pkgver = 2.0.1_429
 	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
