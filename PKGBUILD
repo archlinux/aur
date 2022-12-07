@@ -13,14 +13,14 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=16.5.0.r18.gdfde6e967
+pkgver=16.5.0.r60.g63aaea805
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.codelite.org/"
 license=('GPL')
 
-makedepends=('pkgconfig' 'cmake' 'clang' 'git')
+makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 
 depends=(
   'wxgtk3'
@@ -101,20 +101,24 @@ build() {
   cmake -G "Unix Makefiles" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DWITH_PCH=0  \
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
+    -DWITH_NATIVEBOOK=0 \
     -DENABLE_LLDB=1 \
     -DWITH_MYSQL=0 \
     -B "${BUILD_DIR}" \
     -S .
 
   # build
-  make -s -C "${BUILD_DIR}"
+  #make -s -C "${BUILD_DIR}"
+  cmake --build "${BUILD_DIR}"
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
 
-  make -s -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
+  #make -s -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
 
   install -m 644 -D "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/codelite/LICENSE"
   install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
