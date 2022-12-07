@@ -1,7 +1,7 @@
 pkgbase = redis-json
 	pkgdesc = A JSON data type for Redis
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redis.io/docs/stack/json/
 	arch = x86_64
 	license = custom:RSALv2

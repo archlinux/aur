@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <grey@christoforo.net>
 pkgname=redis-json
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A JSON data type for Redis"
 arch=(x86_64)
 url="https://redis.io/docs/stack/json/"
@@ -30,7 +30,7 @@ build() {
   cd RedisJSON-${pkgver}
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
