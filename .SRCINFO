@@ -1,0 +1,17 @@
+pkgbase = logdoctor
+	pkgdesc = Apache2/Nginx/IIS access logs analyzer to view dynamically generated statistics
+	pkgver = 2.01
+	pkgrel = 1
+	url = https://github.com/elB4RTO/LogDoctor
+	arch = x86_64
+	license = AGPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-charts
+	depends = zlib
+	source = logdoctor-2.01.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v2.01.tar.gz
+	validpgpkeys = EF88B042FB649B22A9F19DBE1719E976DB2D4E71
+	sha256sums = 60704fe5bf970e2afc22e4353a5e45b6f679898ec558fe94aa366c1fb00970e4
+
+pkgname = logdoctor
