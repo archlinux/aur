@@ -1,12 +1,12 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=linuxqq-electron
 pkgver=2.0.1_429
-pkgrel=2
+pkgrel=3
 pkgdesc="New Tencent QQ for Linux, based on Electron"
 arch=('x86_64')
 url="https://im.qq.com/linuxqq"
 license=('custom')
-depends=('nss' 'alsa-lib' 'gtk3' 'java-runtime' 'gjs' 'at-spi2-core')
+depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 source=(
 	"https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v2.0.1-429_x64.deb"
