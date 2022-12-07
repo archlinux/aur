@@ -1,7 +1,7 @@
 pkgbase = libquicktime
 	pkgdesc = A library for reading and writing quicktime files
 	pkgver = 1.2.4
-	pkgrel = 28
+	pkgrel = 29
 	url = http://libquicktime.sourceforge.net/
 	arch = x86_64
 	license = LGPL2.1
@@ -48,7 +48,6 @@ pkgbase = libquicktime
 	optdepends = schroedinger: for lqt_schroedinger plugin
 	optdepends = sndio: for lqtplay
 	optdepends = x264: for lqt_x264 plugin
-	optdepends = 
 	provides = libquicktime.so
 	options = !lto
 	source = https://downloads.sourceforge.net/sourceforge/libquicktime/libquicktime-1.2.4.tar.gz

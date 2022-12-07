@@ -7,7 +7,7 @@
 pkgname=libquicktime
 _commit='27295919b3a1036ba8bc06cec414dcc501f72d89'
 pkgver=1.2.4
-pkgrel=28
+pkgrel=29
 pkgdesc="A library for reading and writing quicktime files"
 arch=(x86_64)
 license=(LGPL2.1)
