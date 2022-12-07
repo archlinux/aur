@@ -1,7 +1,7 @@
 pkgbase = sampctl-bin
 	pkgdesc = Collection of tools for SA-MP developers
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Southclaws/sampctl
 	arch = i686
 	arch = x86_64
