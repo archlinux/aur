@@ -16,12 +16,26 @@ source=("https://github.com/NFFT/nfft/releases/download/$pkgver/$pkgname-$pkgver
 sha256sums=('cf3b2f3b2eabd79e49a5fbabf7f8d73fc3c57c4f68ae71e29f6dead853ab2901')
 
 build() {
-	cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr --enable-all --enable-openmp
-    make
+	cd "$pkgname-$pkgver" || exit 1
+
+	./bootstrap.sh
+
+	./configure \
+		--prefix=/usr \
+		--enable-all \
+		--enable-openmp
+
+	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit 1
+
 	make DESTDIR="$pkgdir/" install
+}
+
+check() {
+
+	cd "$pkgname-$pkgver" || exit 1
+	make check
 }
