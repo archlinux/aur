@@ -1,0 +1,17 @@
+pkgbase = linuxqq-electron
+	pkgdesc = New Tencent QQ for Linux, based on Electron
+	pkgver = 2.0.1
+	pkgrel = 429
+	url = https://im.qq.com/linuxqq
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = alsa-lib
+	depends = gtk3
+	depends = java-runtime
+	depends = gjs
+	depends = at-spi2-core
+	source = https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v2.0.1-429_x64.deb
+	sha512sums = 6e855e4a198d8d4cbc0a4ca1625a8d99b7673c9ce624148a8cfaa6db73c17306b71de59013cf44e5c57b241a7523ef17a87f196cace54301c65f30cf6962736c
+
+pkgname = linuxqq-electron
