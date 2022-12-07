@@ -1,6 +1,6 @@
 pkgbase = discordsqueezer-git
 	pkgdesc = Video compression tool for Discord file size limits
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
