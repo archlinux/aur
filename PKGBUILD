@@ -3,7 +3,7 @@
 pkgname=nimf-stable
 pkgver=1.3.1
 pkgrel=1
-pkgdesc="Nimf is an input method framework."
+pkgdesc="Nimf is an multilingual input method framework."
 arch=('any')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
