@@ -6,7 +6,6 @@ eval $(cat PKGBUILD| grep -P '^_pkgname=')
 eval $(cat PKGBUILD| grep -P '^pkgrel=')
 
 ver="$(curl https://releases.mozilla.org/pub/${_pkgname}/releases/ | sed -rn 's/([^0-9]*)([0-9]*\.[0-9]*?(\.[0-9]*)).*/\2/p' | sort -V | tail -n1)"
-ver=102.0.3
 sed -r "s/(pkgver=)(.*)/\1$ver/" -i PKGBUILD
 
 #rm -rf debian
@@ -21,9 +20,8 @@ ver_msg="autohook $ver"
 
 [ -z "$(git diff)" ] && [[ ! "$1" == "force" ]] && exit
 git commit -am "$ver_msg"
-git push
 
-(
+build() (
   rm -rf 'home:nicman23'
   osc co home:nicman23 ${_pkgname}-appmenu-bin
   cp `git ls-tree -r master --name-only | grep -Pv '^\.'` home:nicman23/${_pkgname}-appmenu-bin/
@@ -35,6 +33,8 @@ git push
   [ -z "$difff" ] || osc rebuild
   osc results -w
 )
+
+build && git push || exit 1
 
 sleep 30m
 [ -e ${_pkgname}-appmenu-bin ] || git clone ssh://aur@aur.archlinux.org/${_pkgname}-appmenu-bin.git
