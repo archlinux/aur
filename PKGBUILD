@@ -8,7 +8,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.50.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -38,10 +38,10 @@ package() {
 
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
-  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${_pkgname}"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  cp -r "dist/linux-unpacked/." "${pkgdir}/opt/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgname}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
+  ln -s "/opt/${pkgname}/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
 
   install -Dm644 "build/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgbin}.png"
   for i in 128 256 512 1024; do
