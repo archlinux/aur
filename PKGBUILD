@@ -7,7 +7,7 @@
 pkgname=k8sfw-daemon-git
 pkgrel=1
 pkgdesc="Daemon to manage kubernetes port-forwards. Exposes a simple HTTP API to control the daemon."
-pkgver=v0.0.1.r13.gb2597cc
+pkgver=v0.0.1.r14.gd0f2d8b
 arch=('x86_64')
 url=""
 license=('MIT')
@@ -43,4 +43,8 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+}
+
+install(){
+    systemctl --user start k8sfw-daemon
 }
