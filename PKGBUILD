@@ -1,22 +1,27 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=shortwave
-_pkgname=Shortwave
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
 depends=('libadwaita' 'libshumate' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-libav')
-makedepends=('meson' 'cargo' 'wayland-protocols')
+makedepends=('git' 'meson' 'cargo' 'wayland-protocols')
 checkdepends=('appstream-glib')
-source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-b2sums=('28b0988348aba1b17c9d1022f5ab99deaf4cefcc3253a5df4ac247c1d6ea2fc8c59203bb2538eeb48dbca9cfc82419813fc702a57cfbce84fb94385bab7c6bc7')
+_commit=de062d5f2a2f395bb2c3f8149793d4203593e912 # tags/3.1.0^0
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 build() {
-  arch-meson "$_pkgname-$pkgver" build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
