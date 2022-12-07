@@ -1,4 +1,6 @@
-#Maintainer: Jia Li <lijia1608@gmail.com>
+# Contributor: Jia Li <lijia1608@gmail.com>
+# Maintainer: Francesco Zardi <frazar0 (at) hotmail (dot) it>
+
 pkgname=nfft
 pkgver=3.5.2
 pkgrel=1
