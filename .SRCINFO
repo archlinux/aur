@@ -1,7 +1,7 @@
 pkgbase = an-anime-game-launcher-bin
 	pkgdesc = An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-anime-team/an-anime-game-launcher
 	arch = x86_64
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = an-anime-game-launcher-bin
 	source = icon.png
 	source = an-anime-game-launcher-bin.desktop
 	source = an-anime-game-launcher-bin.sh
-	md5sums = a788ec0ae50de2572f745003239d5e6b
+	md5sums = 2f309ec90b00b6acf3f578df370d1d75
 	md5sums = 82d75ad72aed6c6962f203f9c6f329d3
 	md5sums = acb9fecb5d938c4fb8e5facb0511bc23
 	md5sums = aa1d36e938b47b1f9fcff6aa5cec588b
