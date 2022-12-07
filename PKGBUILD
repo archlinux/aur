@@ -2,7 +2,7 @@
 # glee: Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # glee: Contributor: speps <speps at aur dot archlinux dot org>
 _pkgname=glee
-pkgname=$_pkgname-git
+pkgname=$_pkgname-svn
 pkgver=5.5.0
 pkgrel=1
 pkgdesc='Free cross-platform extension loading library for OpenGL'

@@ -1,4 +1,4 @@
-pkgbase = glee-git
+pkgbase = glee-svn
 	pkgdesc = Free cross-platform extension loading library for OpenGL
 	pkgver = 5.5.0
 	pkgrel = 1
@@ -11,11 +11,11 @@ pkgbase = glee-git
 	depends = glu
 	provides = glee
 	conflicts = glee
-	source = glee-git::svn://svn.code.sf.net/p/glee/svn
+	source = glee-svn::svn://svn.code.sf.net/p/glee/svn
 	source = glee.pc
 	source = Makefile
 	sha512sums = SKIP
 	sha512sums = 84fd2e5923d808672c8220378e13e40d93a1f91a51a85a4fa44a8e571a7b0028eaa11ff69ba1c2e23323ed61247a33f9e3a2a3b0108d90ebf78274c39ef429c8
 	sha512sums = 98271cd1a4b034c664ba60a70828fc2fded66218e0839509fbd9d7d69c0e4bd8f01014f2fec87c8428006204a0e693b11d0b752181045dadd90e5de1cb13cf74
 
-pkgname = glee-git
+pkgname = glee-svn
