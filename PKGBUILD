@@ -2,9 +2,9 @@
 
 pkgname=eclipse-jee
 epoch=2
-pkgver=4.25
+pkgver=4.26
 pkgrel=1
-_release=2022-09/R
+_release=2022-12/R
 pkgdesc="Highly extensible IDE (Enterprise Java and Web version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('f44d19c2feb8a91c1574fa2e8662184fa4a46d391ddf32e77e41ddb87cb6557be6a96ef168e7e6a65bf1a6bf95d510e99df0dfc38468b94f9641d845a81a9c5a'
+sha512sums=('e798bd61539afaf287b7bdaf1c8ab2f4198a32483529a2ea312b634ed7da2d31f9c8fd1e8be3533f65cbf080473a0bb4842109a985d3abedc8dd1432e3be9eb5'
             '9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3')
 
 backup=('usr/lib/eclipse/eclipse.ini')
