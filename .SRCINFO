@@ -42,7 +42,6 @@ pkgbase = nimf-stable
 	depends = libxklavier
 	depends = m17n-lib
 	depends = m17n-db
-	optdepends = brise: Rime schema repository
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	provides = nimf
 	conflicts = nimf

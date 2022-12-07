@@ -16,7 +16,7 @@ depends=('glib2' 'gtk3' 'gtk2' 'qt5-base' 'libappindicator-gtk3' 'libhangul-git'
          'm17n-db')
 provides=('nimf')
 conflicts=('nimf')         
-optdepends=('brise: Rime schema repository'
+optdepends=(#'brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 _archive="nimf-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
