@@ -6,8 +6,8 @@
 #Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
 url="http://www.genymotion.com/"
@@ -22,7 +22,7 @@ source=("virtualbox.conf"
         "https://dl.genymotion.com/releases/genymotion-$pkgver/$pkgname-${pkgver}-linux_$_ARCH.bin")
 sha512sums=('63eba0963b3344ea7e7a0035560406899d878a0761cddef9853bec95deb9812b221e98f446f240070d6448d61d6ecbcf7a990bcd52863660e8f21cf9a98c0e1d'
             '42f629d6413e4e481ef68d019ec3071515b45d01fdb004a545c8b977a9bf2439581ca8a67ad7dead9a12a0d24e8e46ba02c5dc47abd76597451b09847cf5d78b'
-            '0ec58b25ec3197f9e761b9321a3a54c532c1694a281c0f9006752d9cedb8da28190da1fb9be58ce0d18a54785633091eb6428cdc62cf195914b8f13721ada47b')
+            'ae3bfd2c4eefceb04cd67256b291e3c7bee3c3d0e212add92086709e5fd60bee4789d2ea80732bacbcad880be472e507470afd635cb766903664ea0815ed0205')
 
 package(){
   cd $srcdir
