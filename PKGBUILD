@@ -7,7 +7,7 @@
 pkgname=k8sfw-webui-git
 pkgrel=1
 pkgdesc="UI for k8sfw-daemon"
-pkgver=0.0.2.r0.g1abdd8b
+pkgver=0.0.2.r1.g57ccd45
 arch=('x86_64')
 url=""
 license=('MIT')
@@ -38,12 +38,17 @@ build() {
 }
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    install -m755 "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/k8sfw-gui-linux_x64" "${pkgdir}/usr/bin/k8sfw-gui"
     mkdir -p ${pkgdir}/usr/local/k8sfw-gui
     mkdir -p ${pkgdir}/usr/share/applications
+#     ls
+    cp "${srcdir}/k8sfw-webui-git/neutralino.config.json" "${pkgdir}/usr/local/k8sfw-gui/neutralino.config.json"
     cp -r "${srcdir}/k8sfw-webui-git/build" "${pkgdir}/usr/local/k8sfw-gui/build"
-    install "${srcdir}/k8sfw-webui-git/neutralino.config.json" "${pkgdir}/usr/local/k8sfw-gui/neutralino.config.json"
-    install "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/resources.neu" "${pkgdir}/usr/local/k8sfw-gui/resources.neu"
-    install "${srcdir}/k8sfw-webui-git/k8sfw.desktop" "${pkgdir}/usr/share/applications/k8sfw.desktop"
+    cp "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/k8sfw-gui-linux_x64" "${pkgdir}/usr/bin/k8sfw-gui"
+    chmod +x "${pkgdir}/usr/bin/k8sfw-gui"
+    cp "${srcdir}/k8sfw-webui-git/k8sfw.desktop" "${pkgdir}/usr/share/applications/k8sfw.desktop"
+    cp "${srcdir}/k8sfw-webui-git/dist/k8sfw-gui/resources.neu" "${pkgdir}/usr/local/k8sfw-gui/resources.neu"
+}
 
+install(){
+     desktop-file-install --dir=~/.local/share/applications "${pkgdir}/usr/share/applications/k8sfw.desktop"
 }
