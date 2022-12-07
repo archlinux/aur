@@ -19,7 +19,7 @@ conflicts=('nimf')
 optdepends=(#'brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
 _archive="nimf-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
