@@ -1,0 +1,18 @@
+pkgbase = vcvrack-axioma
+	pkgdesc = Axioma VCV Rack modules
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kauewerner/Axioma
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = GPL3
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-axioma-2.0.0.tar.gz::https://github.com/kauewerner/Axioma/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 59af94b6f58788e1c15e28e028d569d35452b55687acc6c419d928a9fe07a634
+
+pkgname = vcvrack-axioma
