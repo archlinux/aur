@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A high performance C JSON library"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://ibireme.github.io/yyjson/"
-license=('LGPL')
+license=('MIT')
 depends=()
 makedepends=('cmake')
 source=("https://github.com/ibireme/yyjson/archive/refs/tags/${pkgver}.tar.gz")
@@ -30,6 +30,7 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}/build"
 
     make DESTDIR="${pkgdir}" install
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" ../LICENSE
 }
 
 # vim:set ts=4 sw=4 et:
