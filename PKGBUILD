@@ -9,7 +9,7 @@ _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell"
 pkgver=20220405
-pkgrel=1
+pkgrel=2
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
 # Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
