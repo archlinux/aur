@@ -1,0 +1,18 @@
+pkgbase = audiowmark
+	pkgdesc = Audio and video watermarking
+	pkgver = 0.6.1
+	pkgrel = 2
+	url = https://uplex.de/audiowmark/
+	arch = x86_64
+	arch = aarch64
+	groups = pro-audio
+	license = GPL3
+	checkdepends = bash
+	depends = zita-resampler
+	depends = fftw
+	depends = ffmpeg
+	depends = mpg123
+	source = https://uplex.de/audiowmark//releases/audiowmark-0.6.1.tar.gz
+	sha256sums = 0b22c4364e111f6a70dac0118a1f67319bce25e57c501d5e55918cdb0c2577fb
+
+pkgname = audiowmark
