@@ -1,5 +1,6 @@
 # Maintainer: Purofle <purofle@gmail.com>
 # Contributor: Yidaozhan Ya <yidaozhan_ya@outlook.com>
+# Contributor: Integral<luckys68@126.com>
 pkgname=linuxqq-new
 pkgver=2.0.1_429
 pkgrel=2
