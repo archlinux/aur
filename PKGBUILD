@@ -18,7 +18,7 @@ provides=('nimf')
 conflicts=('nimf')         
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
-_archive="$pkgname-$pkgver"
+_archive="nimf-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('SKIP')
 
