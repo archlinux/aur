@@ -7,20 +7,19 @@
 pkgname=libquicktime
 _commit='27295919b3a1036ba8bc06cec414dcc501f72d89'
 pkgver=1.2.4
-pkgrel=30
+pkgrel=31
 pkgdesc="A library for reading and writing quicktime files"
 arch=(x86_64)
 license=(LGPL2.1)
 url="http://libquicktime.sourceforge.net/"
 depends=(glib2 glibc zlib)
 # NOTE: applied experimental ffmpeg5 patch. Please provide feedback if this works for you
-makedepends=(alsa-lib doxygen faac faad2 ffmpeg git gtk2 lame libdv libglvnd
+makedepends=(alsa-lib doxygen faac faad2 ffmpeg gtk2 lame libdv libglvnd
              libjpeg-turbo libvorbis libx11 libxaw libxext libxt libxv
              schroedinger sndio x264)
 optdepends=('alsa-lib: for lqtplay'
             'faac: for lqt_faac plugin'
-            'ffmpeg4.4: for lqt_ffmpeg plugin'
-            'ffmpeg5: for lqt_ffmpeg plugin (ffmpeg5 version)' 
+            'ffmpeg: for lqt_ffmpeg plugin'
             'gtk2: for libquicktime_config'
             'lame: for lqt_lame plugin'
             'libdv: for lqt_dv plugin'
@@ -70,8 +69,6 @@ b2sums=('6c50965be5d19fb4c57ea6b36f2581ebd575d78a34f2df7029ce2c6ee560e8135a953a2
         'e770000ea0c39f77bc36e7e5252e281b9f9d06a136c655cd702332cc8581f128263e172e41eab3b7ce2543da7065d8efc28c048588e577db5ee6ec4bfeb1019b'
         '0a29c9a3d1eae31731b76536a22aa23a4888b8ac55c3176c60a152330fce37e8031a4269fa28026133c7061cd769b1428bf24fe59fed574e39d52ea00b6e00a0'
         'e67d8b0ac52a37594c1499270b04a74963b01567567d7469579238ba177ea7259215378d03484474bdc7caef309585c53263b4e87a68a5f8ed0b332e0118b675')
-
-export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 prepare() {
   cd "$pkgname-$pkgver"
