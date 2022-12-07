@@ -1,6 +1,6 @@
 pkgbase = python-pyscf
 	pkgdesc = Python module for quantum chemistry
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/pyscf/pyscf
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-pyscf
 	depends = libxc
 	provides = python-pyscf
 	conflicts = python-pyscf-git
-	source = python-pyscf-2.0.1.tar.gz::https://github.com/pyscf/pyscf/archive/v2.0.1.tar.gz
-	sha256sums = 6a152860787351aae52dc1ef2399bd9564fa314dca070312cfc0f2c3fc7412cf
+	source = python-pyscf-2.1.1.tar.gz::https://github.com/pyscf/pyscf/archive/v2.1.1.tar.gz
+	sha256sums = 814240aa73f57ba96aee8264e3914c09f96ebdce1e42784da4b5e9a474ecb280
 
 pkgname = python-pyscf
