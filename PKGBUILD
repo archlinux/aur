@@ -8,7 +8,7 @@ pkgver=3.12.0.400
 _pkgver_arm=3.11.0.402 # 两个版本有时候不一样
 _x86_md5=e078bf97365540d9f0ff063f93372a9c
 _arm_md5=ce5d25cc8e8aae8ddd19295bc3b00d5e
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -58,13 +58,13 @@ package() {
     install -Dm755 "${srcdir}/${_pkgname}".sh     ${pkgdir}/usr/bin/${_pkgname}
     install -Dm644 ${_pkgname}.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
 
-    _preserved_libs="ImSDK,desktop_common,nxui*,qt_*,ui*,wemeet*,xcast,xcast_codec,xnn*"
+    install -Dm755 lib/lib{ImSDK,desktop_common,nxui*,qt_*,ui*,wemeet*,xcast,xcast_codec,xnn*}.so \
+        -t ${pkgdir}/usr/lib/${_pkgname}
+
     if [ $(uname -m) = 'x86_64' ]; then
         # arm 落后一个版本，没有这个
-        _preserved_libs="${_preserved_libs},service*"
+        install -Dm755 lib/libservice*.so  -t ${pkgdir}/usr/lib/${_pkgname}
     fi
-    install -Dm755 lib/lib{${_preserved_libs}}.so \
-        -t ${pkgdir}/usr/lib/${_pkgname}
 
     for lib in ${pkgdir}/usr/lib/${_pkgname}/*
     do
