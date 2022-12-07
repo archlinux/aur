@@ -9,8 +9,8 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.15
-pkgrel=2
+pkgver=3.7.16
+pkgrel=1
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -30,7 +30,7 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         0003-enable-building-with-libmpdec.patch
         0004-mpdecimal-2.5.1.patch
         )
-sha512sums=('f2ad9b900b31f7af970615d15102bea95759291a024ec3f6d5637893240f0b11094a319883fd39918d2103b283e65db1b6aa375935e22822f7ac8e745fdf4973'
+sha512sums=('8e650226a3e9304e144ac19bd67bf04d96ea24b770b25a462dd5b2c4de6673bc2980cd8bd89fd2880d2192fa2b80eb070f9f7cd4cd83a0169ec2e8a868a243ff'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
