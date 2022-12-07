@@ -1,7 +1,7 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=linuxqq-electron
 pkgver=2.0.1_429
-pkgrel=3
+pkgrel=4
 pkgdesc="New Tencent QQ for Linux, based on Electron"
 arch=('x86_64')
 url="https://im.qq.com/linuxqq"
@@ -20,8 +20,10 @@ package() {
 
 	echo "  -> Installing..."
 	# Launcher
-	mkdir -p "${pkgdir}/usr/bin/"
+	install -d "${pkgdir}/usr/bin/"
 	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${pkgname}"
+	# Launcher Fix
+	sed -i '3s!/opt/QQ/qq!/usr/bin/linuxqq-electron!' "${pkgdir}/usr/share/applications/qq.desktop"
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"

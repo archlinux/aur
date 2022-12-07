@@ -1,7 +1,7 @@
 pkgbase = linuxqq-electron
 	pkgdesc = New Tencent QQ for Linux, based on Electron
 	pkgver = 2.0.1_429
-	pkgrel = 3
+	pkgrel = 4
 	url = https://im.qq.com/linuxqq
 	arch = x86_64
 	license = custom
