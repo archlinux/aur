@@ -1,5 +1,5 @@
 pkgbase = rpkdev
-	pkgdesc = Retriever OS package creation tool
+	pkgdesc = .rpk package build tool
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any

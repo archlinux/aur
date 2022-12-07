@@ -13,7 +13,7 @@ pkgname='rpkdev'
 uniq='tssoftware:rpkg'
 appname='RPkgDev'
 alias='RPkgDev'
-pkgdesc='Retriever OS package creation tool'
+pkgdesc='.rpk package build tool'
 author='TS'
 type='library'
 pkgver='1.0.0'
@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( )
 groups=( 'Developer/Packaging' 'CLI/Tool/PackageManager' )
 contents=( '/bin<build/bin' )
-pkgdir='/tmp/tmp.kBcZUKavbI/sh/pkg'
+pkgdir='/tmp/tmp.TF2QqOKrpT/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
