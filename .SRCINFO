@@ -12,7 +12,6 @@ pkgbase = vkquake
 	makedepends = zopfli
 	makedepends = glslang
 	makedepends = spirv-tools
-	makedepends = git
 	depends = flac
 	depends = glibc
 	depends = libgl

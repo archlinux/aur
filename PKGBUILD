@@ -14,7 +14,7 @@ url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=('flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
 	 'libvorbis' 'libx11' 'opusfile' 'sdl2')
-makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli' 'glslang' 'spirv-tools' 'git')
+makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli' 'glslang' 'spirv-tools')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
