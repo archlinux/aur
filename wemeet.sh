@@ -18,7 +18,13 @@ fi
 
 if [ -f /usr/bin/bwrap ]; then
     mkdir -p "$WEMEET_APP_DIR"
-    bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try --ro-bind / / --dev-bind /dev /dev --bind "$USER_RUN_DIR" "$USER_RUN_DIR" --tmpfs "$CONFIG_DIR" --ro-bind-try "$FONTCONFIG_DIR" "$FONTCONFIG_DIR" --bind-try "$KDE_ICON_CACHE_FILE" "$KDE_ICON_CACHE_FILE" --bind "$WEMEET_APP_DIR" "$WEMEET_APP_DIR" /opt/wemeet/bin/wemeetapp "$@"
+    bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try \
+     --unshare-pid --unshare-cgroup-try --ro-bind / / --dev-bind /dev /dev \
+     --bind "$USER_RUN_DIR" "$USER_RUN_DIR" --tmpfs "$CONFIG_DIR" \
+     --ro-bind-try "$FONTCONFIG_DIR" "$FONTCONFIG_DIR" \
+     --bind-try "$KDE_ICON_CACHE_FILE" "$KDE_ICON_CACHE_FILE" \
+     --bind "$WEMEET_APP_DIR" "$WEMEET_APP_DIR" \
+     /opt/wemeet/bin/wemeetapp "$@"
 else
     exec /opt/wemeet/bin/wemeetapp "$@"
 fi

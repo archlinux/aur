@@ -4,22 +4,23 @@
 pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
-pkgver=3.11.0.402
-_x86_md5=9b74d4127a16a011db8cb6300fa5fbc9
+pkgver=3.12.0.400
+_pkgver_arm=3.11.0.402 # 两个版本有时候不一样
+_x86_md5=e078bf97365540d9f0ff063f93372a9c
 _arm_md5=ce5d25cc8e8aae8ddd19295bc3b00d5e
-pkgrel=8
+pkgrel=1
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
 url="https://source.meeting.qq.com/download-center.html"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://updatecdn.meeting.qq.com/cos/${_x86_md5}/TencentMeeting_0300000000_${pkgver}_x86_64_default.publish.deb"
 )
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${pkgver}_arm64_default.publish.deb")
+source_aarch64=("${_pkgname}-${_pkgver_arm}-aarch64.deb::https://updatecdn.meeting.qq.com/cos/${_arm_md5}/TencentMeeting_0300000000_${_pkgver_arm}_arm64_default.publish.deb")
 source=("${_pkgname}".sh)
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
-sha512sums=('22c1d02054c915ad31a49be524be80b67d98fc36cca8f05f800cb3bd2794044383e6b3e01a74282a58153a79f0556398e201505bcac180567f7adab55ec3b9f8')
-sha512sums_x86_64=('6b4a5a5499fd8a92dbf86ae04990434b3a7ff2ade7d768dbe70dd3f60e347c599281e1aed211673a3a7986f5cb7a014abefec0c859e087c291286467bf8fbe73')
+sha512sums=('a227a48bc86be9f8425507ae93cdb698effd1d008d58dacc38a96ff14c2301aec4296e46614850784e0de44a342ec471d3a11bd0e103d39395fff332918cb550')
+sha512sums_x86_64=('af52afe5a95cfe9abcae91d927d5f165126edb9efa14315957803eaffb30a60a9121cc63b398f7162c8956bfbcf5a1793a2561cd19f245e3eaf07a5b55662831')
 sha512sums_aarch64=('534657987d8030c0798731d72fade34c40a5863f4dcd289423eb0509115e290ad5507616c19d86e76c25ae5ea82272fe167ef45599f0ad1433531ff72f74ce78')
 
 prepare(){
@@ -57,7 +58,12 @@ package() {
     install -Dm755 "${srcdir}/${_pkgname}".sh     ${pkgdir}/usr/bin/${_pkgname}
     install -Dm644 ${_pkgname}.svg -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps/
 
-    install -Dm755 lib/lib{ImSDK,desktop_common,nxui*,qt_*,ui*,wemeet*,xcast,xcast_codec,xnn*}.so \
+    _preserved_libs="ImSDK,desktop_common,nxui*,qt_*,ui*,wemeet*,xcast,xcast_codec,xnn*"
+    if [ $(uname -m) = 'x86_64' ]; then
+        # arm 落后一个版本，没有这个
+        _preserved_libs="${_preserved_libs},service*"
+    fi
+    install -Dm755 lib/lib{${_preserved_libs}}.so \
         -t ${pkgdir}/usr/lib/${_pkgname}
 
     for lib in ${pkgdir}/usr/lib/${_pkgname}/*
