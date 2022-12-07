@@ -1,6 +1,8 @@
+# Maintainer: Matthew Charlston <firstname _at_ mcharlsto dot uk>
+
 pkgname="discordsqueezer-git"
-pkgver="1.0.0"
-pkgrel="1"
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Video compression tool for Discord file size limits"
 arch=("x86_64")
 license=("GPL3")
@@ -14,6 +16,11 @@ else
 fi
 sha256sums=("SKIP" "SKIP")
 makedepends=("git")
+
+pkgver() {
+    cd "discordsqueezer"
+    printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     cd ffmpeg-python
