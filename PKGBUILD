@@ -2,7 +2,7 @@
 # Contributor: ThomasQBS
 
 pkgname=cinnamon-sounds
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Cinnamon desktop sounds extracted from Linuxmint (mint-artwork)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('cinnamon')
 conflicts=('mint-artwork' 'mint-sounds' 'cinnamon-sound-effects' 'mint-artwork-cinnamon')
 source=("http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_${pkgver}.tar.xz")
-sha256sums=('23c80b5b0c2e5d9920739cd9f5056449aaee81c3562c5233da653577842a2515')
+sha256sums=('96eb189664cbef5553192245b2cb88655bbbc4932e650ef08f6accb4ed65859f')
 
 package() {
 	install="${pkgname}.install"
