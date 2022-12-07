@@ -1,16 +1,13 @@
 pkgbase = oxen-gui-wallet-appimage
 	pkgdesc = Oxen electron GUI wallet
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/oxen-io/oxen-electron-gui-wallet
 	arch = x86_64
 	license = BSD
-	depends = zlib
-	depends = gtk2
-	depends = xdg-utils
+	provides = oxen-electron-wallet
 	options = !strip
-	source = https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v1.6.0/oxen-electron-wallet-1.6.0-linux.AppImage
-	sha256sums = 246db6b8b1fc09b49741246ecc5a7a8342797d5f29ba9bacba2e099b185b896d
+	source = oxen-electron-wallet-1.8.0-linux.AppImage::https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v1.8.0/oxen-electron-wallet-1.8.0-linux.AppImage
+	sha256sums = 88b9e41d87b550069429c415888ea0513319c150505ff1dd7c01731fbf1d0118
 
 pkgname = oxen-gui-wallet-appimage
-

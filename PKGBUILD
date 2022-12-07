@@ -1,27 +1,22 @@
 # Maintainer: Alexander Nortung <alex underscore nortung at live dot dk>
+# Co-Maintainer: Serge K <arch@phnx47.net>
 
+_pkgname=oxen-electron-wallet
 pkgname=oxen-gui-wallet-appimage
-pkgver=1.6.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Oxen electron GUI wallet"
 arch=('x86_64')
-depends=('zlib' 'gtk2' 'xdg-utils')
-
 url="https://github.com/oxen-io/oxen-electron-gui-wallet"
-
 license=('BSD')
-
-#provides=('oxen-gui-wallet')
-
-_bin="oxen-electron-wallet-${pkgver}-linux.AppImage"
-
-source=("https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v${pkgver}/${_bin}")
-sha256sums=('246db6b8b1fc09b49741246ecc5a7a8342797d5f29ba9bacba2e099b185b896d')
-
+provides=("${_pkgname}")
 options=('!strip')
+_bin="${_pkgname}-${pkgver}-linux.AppImage"
+source=("${_bin}::https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v${pkgver}/${_bin}")
+sha256sums=('88b9e41d87b550069429c415888ea0513319c150505ff1dd7c01731fbf1d0118')
 
 package() {
-    install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/opt/oxen-gui-wallet/${_bin}"
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/oxen-gui-wallet/${_bin}" "${pkgdir}/usr/bin/oxen-gui-wallet"
+  install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/opt/${_pkgname}/${_bin}"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "/opt/${_pkgname}/${_bin}" "${pkgdir}/usr/bin/${_pkgname}"
 }
