@@ -1,0 +1,20 @@
+pkgbase = vcvrack-amalgamated-harmonics
+	pkgdesc = Amalgamated Harmonics VCV Rack modules
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jhoar/AmalgamatedHarmonics
+	arch = x86_64
+	arch = aarch64
+	groups = proaudio
+	groups = vcvrack-plugins
+	license = BSD
+	license = OFL
+	license = Apache
+	makedepends = simde
+	makedepends = zstd
+	depends = gcc-libs
+	depends = vcvrack
+	source = vcvrack-amalgamated-harmonics-2.0.1.tar.gz::https://github.com/jhoar/AmalgamatedHarmonics/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = d322d5f35c1557a3ffd76f1c603db69298df4560b7a2d5ac33ccbc89a0fa6f4a
+
+pkgname = vcvrack-amalgamated-harmonics
