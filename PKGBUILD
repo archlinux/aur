@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.57.0
-pkgrel=3
+pkgver=2.58.0
+pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go vte3)
-source=("git+$url#commit=983e53231e91f3c24e0010c8ec9e17c9cff62442") # tag: v2.57.0
+source=("git+$url#commit=4893f632726d66eb0e4bd03850ff60f041a4279a") # tag: v2.58.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -57,8 +57,7 @@ build() {
   cd $pkgname/v2
   go build -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\"" \
     -mod=vendor -trimpath -o ../o -v
-  cd ..
-  make gui
+  make -C .. gui
 }
 
 package() {
@@ -66,11 +65,14 @@ package() {
   install -Dm755 o "$pkgdir/usr/bin/o"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  DESTDIR="$pkgdir" make gui-install
   ln -sf /usr/bin/o "$pkgdir/usr/bin/edith"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/sw"
-  ln -sf /usr/bin/ko "$pkgdir/usr/bin/lo"
+
+  # VTK UI
+  DESTDIR="$pkgdir" make gui-install
+  ln -sf /usr/bin/og "$pkgdir/usr/bin/lo"
+  ln -sf /usr/bin/og "$pkgdir/usr/bin/ko"
 }
