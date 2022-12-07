@@ -1,0 +1,18 @@
+pkgbase = discordsqueezer-git
+	pkgdesc = Video compression tool for Discord file size limits
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = ffmpeg
+	depends = wl-clipboard
+	source = git+https://github.com/mcharlsto/discordsqueezer.git
+	source = git+https://github.com/kkroening/ffmpeg-python
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = discordsqueezer-git
