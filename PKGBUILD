@@ -31,14 +31,14 @@ build() {
 	CC=/usr/bin/clang
 	CXX=/usr/bin/clang++
 	cmake -B build -S "$pkgname" -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" -Wno-dev
-	make -C build prepare_cross_compiling
+	cmake --build build --target prepare_cross_compiling
 	cd "$pkgname"
 	php SplitSource.php
 	cd ..
-	make -C build
+	cmake --build build --target all
 }
 
 package() {
 	cd "$srcdir"
-	make -C build install
+	cmake --build build --target install
 }
