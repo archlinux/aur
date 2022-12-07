@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.1"
 pkgver="${_version//[v-]/}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -40,7 +40,7 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags '-linkmode=external -w -s' \
+        -ldflags '-s -w -buildid= -linkmode=external' \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
