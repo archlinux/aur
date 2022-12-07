@@ -1,5 +1,5 @@
 pkgname=httm
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
@@ -9,7 +9,7 @@ conflicts=('httm-bin')
 options=('!strip' '!emptydirs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('9a81d2edcbf938f6a8c2e385fd8d62f1fc987c60fe905c7bad98ba809fbfa5f766450b2a5bd2bdf96d9ab8853264c23e8bc373e0bd8f5282816fd3d1d4a3d046')
+sha512sums=('df71079b344bd7a7267a7af625b6535f4edd6ec69309273e469c19c22208acc10316171028d613120d9bbc6d51e645233b5a464c7b1c2a0103cba19907484cbf')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
