@@ -1,0 +1,11 @@
+pkgbase = lua-lunacolors
+	pkgdesc = ANSI colors library for Hilbish
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/rosettea/lunacolors
+	arch = any
+	license = BSD
+	source = lua-lunacolors-0.2.1.tar.gz::https://github.com/rosettea/lunacolors/archive/v0.2.1.tar.gz
+	sha256sums = 6cc64419c5783d8f91589f69353deec5160d5a6f606f4bbc6258492cc2717642
+
+pkgname = lua-lunacolors
