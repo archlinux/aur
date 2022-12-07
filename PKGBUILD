@@ -1,6 +1,5 @@
 # Maintainer: Grey Christoforo <grey@christoforo.net>
 pkgname=redis-json
-#_commit_hash=91505b31fbbd5c4ff33cd7ef5a43f67ec2f162a7  # v2.4.2 tag
 pkgver=2.4.2
 pkgrel=1
 pkgdesc="A JSON data type for Redis"
@@ -15,7 +14,7 @@ git
 cargo
 clang
 )
-#  git+https://github.com/RedisJSON/RedisJSON.git#commit=${_commit_hash}
+
 source=(
 ${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/RedisJSON/RedisJSON/tar.gz/refs/tags/v${pkgver}
 )
