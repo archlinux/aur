@@ -5,7 +5,7 @@ pkgname=(
   'duckdb'
   'python-duckdb'
 )
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A high-performance analytical database system'
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
   'python-wheel'
   'python-setuptools-scm'
 )
-_commit='2213f9c946073a6df1242aa1bc339ee46bd45716'
+_commit='919cad22e8090087ae33625661f26a5fc78d188b'
 source=("$pkgbase::git+https://github.com/duckdb/duckdb.git#commit=$_commit")
 b2sums=('SKIP')
 
