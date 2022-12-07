@@ -2,7 +2,7 @@
 _pkgname=copilot.vim
 pkgname=vim-copilot-git
 pkgver=r29.2f4f925
-pkgrel=1
+pkgrel=2
 pkgdesc="(Neo)Vim plugin for GitHub Copilot automated code completion. Requires a subscription."
 arch=(any)
 url="https://github.com/github/$_pkgname"
