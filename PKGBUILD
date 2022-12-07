@@ -3,7 +3,7 @@
 # Contributor: Integral<luckys68@126.com>
 pkgname=linuxqq-new
 pkgver=2.0.1_429
-pkgrel=2
+pkgrel=3
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64')
 url="https://im.qq.com/linuxqq/"
@@ -15,6 +15,10 @@ source=("https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v${pkgver//_/-}_x64.de
 package() {
 	cd "${srcdir}"
 	tar -xvf data.tar.xz -C "${pkgdir}"
+	
+	mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps
+	mv $pkgdir/usr/share/icons/hicolor/0x0/apps/qq.png $pkgdir/usr/share/icons/hicolor/512x512/apps/qq.png
+	rm -rf $pkgdir/usr/share/icons/hicolor/0x0
 
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
