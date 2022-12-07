@@ -10,8 +10,10 @@
 # https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/PKGBUILD
 # Thanks to the Arch maintainers :)
 
+# You can pass parameters to `ninja` via MAKEFLAGS
+
 pkgname=telegram-desktop-dev
-pkgver=4.3.1
+pkgver=4.3.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -22,26 +24,27 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
-         'openssl-1.1')
-makedepends=('cmake' 'git' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
+         'openssl-1.1' 'protobuf')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
+# Specify the commit to fetch. Normally the version tag.
 _commit="tag=v$pkgver"
-
 # All the sources are Git repositories and might be adjusted when a build issue arise.
 # These files might require modifications to be up-to-date.
 # In such situation, extra patches will be added.
 # An easy way to clone the repo since the last update is:
-# git clone --recurse-submodules --remote-submodules --shallow-submodules --shallow-since=vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
+# git clone --recurse-submodules --shallow-submodules --shallow-since vOLDVER --branch=vNEWVER https://github.com/telegramdesktop/tdesktop WORKDIR
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
-    "tgcalls_type_fix.diff"
+    "ensure_qt6_build.patch"
     # Here are all the submodule repos.
     # All the submodules "source" definitions are generated them via:
     # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
+    "cld3::git+https://github.com/google/cld3.git"
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
     "dispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
@@ -77,7 +80,8 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            'e1328de1bf2dfc26a834aae855c9ee4734ff00e92f8c31fcfe633b0b5365456daa5ae1736a590a57889597f8703214829e0809d7e6d13e8fb02165c731b1ea88'
+            '44b4a265cece9a197441cab7483ffdb300c9b93e46983251eed1254b1ab7aa6488e48c3e2aa02dad7f305623314c8def56ca106bc893c777af37bbe8c43f2bc7'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -131,6 +135,7 @@ prepare() {
     git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
     git config submodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
     git config submodule.Telegram/lib_webview.url "$srcdir/lib_webview"
+    git config submodule.Telegram/ThirdParty/cld3.url "$srcdir/cld3"
     git config submodule.Telegram/ThirdParty/dispatch.url "$srcdir/dispatch"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
@@ -166,9 +171,11 @@ prepare() {
     #done
     # Patch here, if needed!
     # patch -Np1 -i "$srcdir/my_beautiful.patch"
-    cd "$srcdir/tdesktop/Telegram/ThirdParty/tgcalls"
-    patch -Np1 -i "$srcdir/tgcalls_type_fix.diff"
+    cd cmake
+    patch -Np1 -i "$srcdir/ensure_qt6_build.patch"
+    cd ..
     # Official package patches
+    rm -rf Telegram/ThirdParty/libtgvoip/webrtc_dsp/absl
 }
 
 build() {
@@ -181,17 +188,17 @@ build() {
     # Thanks @primeos!
     cmake \
         -B build \
-        -G "Unix Makefiles" \
+        -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    make -C build -j `nproc`
+    ninja -C build $MAKEFLAGS
 }
 
 package() {
     cd "$srcdir/tdesktop"
-    DESTDIR="$pkgdir" make -C build install
+    DESTDIR="$pkgdir" ninja -C build install
     # They botched the release and put a lot of stuff here.
     rm -rf "$pkgdir/build"
 }

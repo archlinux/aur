@@ -1,0 +1,23 @@
+# Patch made following the issue here:
+# https://github.com/telegramdesktop/tdesktop/issues/25510
+# It seems that CMake has internal issues selecting between Qt5 and Qt6.
+# Rewrite the find_package logic in order to make sure we use Qt5 only if Qt6 is not around.
+# Thanks to @ilya-fedin for the code!
+# Will soon be official:
+# https://github.com/desktop-app/cmake_helpers/pull/245
+diff --git a/external/qt/package.cmake b/external/qt/package.cmake
+index 2faa580..939475a 100644
+--- a/external/qt/package.cmake
++++ b/external/qt/package.cmake
+@@ -25,7 +25,10 @@ if (NOT DESKTOP_APP_USE_PACKAGED)
+ endif()
+ 
+ if (NOT DEFINED QT_VERSION_MAJOR)
+-    find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
++    find_package(QT NAMES Qt6 COMPONENTS Core)
++    if (NOT QT_FOUND)
++        find_package(QT NAMES Qt5 COMPONENTS Core REQUIRED)
++    endif()
+ endif()
+ 
+ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Widgets Network Svg REQUIRED)
