@@ -1,6 +1,6 @@
 pkgbase = k8sfw-daemon-git
 	pkgdesc = Daemon to manage kubernetes port-forwards. Exposes a simple HTTP API to control the daemon.
-	pkgver = v0.0.1.r12.g58ef63d
+	pkgver = v0.0.1.r13.gb2597cc
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
