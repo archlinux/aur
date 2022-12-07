@@ -1,13 +1,12 @@
 pkgbase = oxen-electron-wallet-bin
 	pkgdesc = Oxen electron GUI wallet
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oxen-io/oxen-electron-gui-wallet
 	arch = x86_64
 	license = BSD
 	provides = oxen-electron-wallet
 	conflicts = oxen-electron-wallet
-	conflicts = oxen-gui-wallet-appimage
 	replaces = oxen-gui-wallet-appimage
 	source = oxen-electron-wallet-1.8.0-linux.deb::https://github.com/oxen-io/oxen-electron-gui-wallet/releases/download/v1.8.0/oxen-electron-wallet-1.8.0-linux.deb
 	source = LICENSE::https://raw.githubusercontent.com/oxen-io/oxen-electron-gui-wallet/v1.8.0/LICENSE
