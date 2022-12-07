@@ -1,6 +1,6 @@
 # Maintainer: Ludvík Pelán <lpelan@email.cz>
 pkgname=jami-all-bin
-pkgver=20221128.0930.846456
+pkgver=202212061543
 pkgrel=1
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms"
 arch=('x86_64')
@@ -12,7 +12,6 @@ conflicts=('jami-qt' 'jami-daemon' 'jami-qt-git' 'jami-daemon-git' 'jami-gnome-g
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://dl.jami.net/ring-manual/debian_unstable/jami-all_amd64.deb")
-sha512sums_x86_64=('fb6c15f8adf4fe5b8073b9d86af54ea1c6e080bba495d3b21eafb9adb95d6dd61ee9819bd2c2b5d1afca2b7021bdb85c5e0fd80e7707ce188bf0421abdd0085e')
 
 package(){
 
