@@ -74,9 +74,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=265
+_minor=267
 _srcname=linux-${_major}
-_clr=${_major}.262-267
+_clr=${_major}.267-272
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -325,7 +325,7 @@ _package-headers() {
     echo "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
@@ -355,7 +355,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '3ee1a84167b348485c3eee9acab05f596e5b048e564b58f1010517dbe76e61be'
+            '56d7aeaa526dc836b7dcf7a636e8770fcb53853e7a6421eb45b2e5e4584e5fc7'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
