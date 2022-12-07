@@ -12,7 +12,7 @@ pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin paym
 arch=("x86_64")
 url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
-depends=("aspnet-runtime" "bash" "dotnet-sdk" "lib32-glibc" "nbxplorer")
+depends=("aspnet-runtime-6.0" "bash" "dotnet-sdk-6.0" "lib32-glibc" "nbxplorer")
 optdepends=("apache: HTTP server"
     "core-lightning: Lightning Network support"
     "certbot: Creates SSL certificates."
