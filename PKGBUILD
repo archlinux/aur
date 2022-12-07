@@ -2,9 +2,9 @@
 # Contributors: Marcin Skory, Arkham, Christoph Zeiler, Jacek Poplawski, carstene1ns
 
 pkgname=alephone
-_pkgdate=20220115
-pkgver=1.5.0_$_pkgdate
-pkgrel=2
+_pkgdate=20221126
+pkgver=1.6.0_$_pkgdate
+pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -18,7 +18,7 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('boost' 'mesa' 'icoutils')
 source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
-sha256sums=('ca0f5e94c4493a49522fccbbbe512831ed21f88d08bc93b4e365509ca057c2ce')
+sha256sums=('f42caa31f650d72aba960c67791388bacf2d695ba1025eb1b612fecb0686e76d')
 
 prepare() {
   cd AlephOne-$_pkgdate
@@ -48,6 +48,6 @@ package() {
   install -m644 "$srcdir"/*.png "$pkgdir"/usr/share/icons
 
   # docs
-  install -Dm644 README "$pkgdir"/usr/share/doc/alephone/README
-  install -m644 docs/*.html "$pkgdir"/usr/share/doc/alephone
+  #install -Dm644 README.txt "$pkgdir"/usr/share/doc/alephone/README
+  #install -m644 docs/*.html "$pkgdir"/usr/share/doc/alephone
 }
