@@ -2,7 +2,7 @@
 pkgname=sampctl-bin
 _pkgname=sampctl
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools for SA-MP developers"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Southclaws/sampctl"
@@ -20,5 +20,5 @@ source_aarch64=("https://github.com/Southclaws/${_pkgname}/releases/download/${p
 package() {
   tar -xzf data.tar.gz -C "${pkgdir}"
 
-  install -Dm755 "${pkgdir}/usr/local/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
