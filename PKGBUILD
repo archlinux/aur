@@ -1,6 +1,6 @@
 _name=digestif
 pkgname=digestif-git
-pkgver=0.3.149.bbd522e
+pkgver=0.5.204.2e93b18
 pkgrel=1
 arch=(any)
 license=(MIT)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$_name"
 	printf "%s.%s.%s" \
-		"$(git describe --tags --abbrev=0)" \
+		"$(git describe --tags --abbrev=0 | sed 's/^v//')" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 }
