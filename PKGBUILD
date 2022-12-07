@@ -10,7 +10,7 @@
 #
 
 pkgname=cone-simple
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
@@ -20,7 +20,7 @@ url="http://courier-mta.org/cone/"
 license=('GPL2')
 #groups=()
 makedepends=('procps-ng')
-depends=('libxml2' 'libidn' 'libldap' 'aspell' 'courier-unicode')
+depends=('libxml2' 'libidn2' 'libldap' 'aspell' 'courier-unicode')
 checkdepends=()
 #optdepends=()
 #provides=()
@@ -35,7 +35,7 @@ source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgv
 
 #noextract=()
 
-sha256sums=('df745cbbc79e60a39c16dcef5b43c8af4086d3659390e18a9f918ecf4a2788f1')
+sha256sums=('5c8dcf8dc4b457261b3b08c686f4bddc4cee5609ed75b2036e4dcf64eba83610')
 
 #
 #
