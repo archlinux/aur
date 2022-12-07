@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/VHDL-LS/rust_hdl"
 license=('MPL2')
 makedepends=('git' 'rust')
-provides=("rust_hdl=$pkgver")
+provides=("rust_hdl=${pkgver}")
 source=("git+https://github.com/VHDL-LS/${_pkgname}.git"
   "installed.patch")
 sha256sums=('SKIP'
