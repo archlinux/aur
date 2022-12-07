@@ -3,9 +3,9 @@
 
 pkgname=eclipse-dsl
 epoch=2
-pkgver=4.25
+pkgver=4.26
 pkgrel=1
-_release=2022-09/R
+_release=2022-12/R
 pkgdesc="Highly extensible IDE (Java and DSL version)"
 arch=('x86_64')
 url="https://www.eclipse.org/"
@@ -17,7 +17,7 @@ conflicts=(eclipse)
 _srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
         "eclipse.desktop")
-sha512sums=('32e16a20c7bada9f10e9b57cfd361e6a6fb2d2a6e4db1783f7d80d613272b10275010ca0efde67a938f696ed5c0e47b1d8db4350ffce77afaf773e5d015c08b4'
+sha512sums=('b58200ff1d7902846079e2a6ba324e8bd127577f211f49f2623112472d964b99b490597440c7409b6c458f41f51d56cbc1dfca5da8df0658ca40e6c59b237a52'
             '542a20e13e7f486c55bfc8e22a9da6f4100125809de6b0a2ecdd95e2ca6a242d4dd02d0eeec328c3a7a96bb4a31d2c0e2c7a8cbdfae7f606c46b8029523f8da2')
 
 backup=('usr/lib/eclipse/eclipse.ini')
