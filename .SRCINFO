@@ -1,6 +1,6 @@
 pkgbase = libcint
 	pkgdesc = General GTO integrals for quantum chemistry
-	pkgver = 4.4.3
+	pkgver = 5.1.7
 	pkgrel = 1
 	url = http://wiki.sunqm.net/libcint
 	arch = i686
@@ -8,8 +8,11 @@ pkgbase = libcint
 	license = BSD
 	makedepends = cmake
 	depends = blas
-	provides = libcint=4.4.3
-	source = https://github.com/sunqm/libcint/archive/v4.4.3.tar.gz
-	sha256sums = b30247d386f71d3182900050f590a9ff27f3a774155f04440fb8ace65a17ddad
+	checkdepends = python
+	checkdepends = python-numpy
+	optdepends = clisp
+	provides = libcint = 5.1.7
+	source = https://github.com/sunqm/libcint/archive/v5.1.7.tar.gz
+	sha256sums = bdeb1eefe30ce33384924cf507d73664c513c6969f2dad59f5bc7fdad385fea4
 
 pkgname = libcint
