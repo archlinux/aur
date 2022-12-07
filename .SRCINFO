@@ -1,0 +1,13 @@
+pkgbase = rccextended
+	pkgdesc = Qt Resource Compiler and Decompiler (RccExtended)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/zedxxx/rccextended
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-declarative
+	source = https://github.com/zedxxx/rccextended/archive/refs/tags/v1.0.5.tar.gz
+	md5sums = 693387e9e100a14a0346337b7f9d3be4
+
+pkgname = rccextended
