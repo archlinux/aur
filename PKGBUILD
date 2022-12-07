@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=gleam-git
-pkgver=0.21.0.r0.g9aad6ec2
+pkgver=0.25.0.r27.g98d7a9da
 pkgrel=1
 pkgdesc="A statically typed language for the Erlang VM"
 arch=('x86_64')
@@ -36,8 +36,8 @@ check() {
 package() {
   cd "gleam"
 
-  install -Dm0755 -t "${pkgdir}/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     target/release/gleam
 
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE
 }

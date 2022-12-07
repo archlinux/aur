@@ -1,6 +1,6 @@
 pkgbase = gleam-git
 	pkgdesc = A statically typed language for the Erlang VM
-	pkgver = 0.21.0.r0.g9aad6ec2
+	pkgver = 0.25.0.r27.g98d7a9da
 	pkgrel = 1
 	url = https://github.com/gleam-lang/gleam
 	arch = x86_64
