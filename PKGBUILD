@@ -8,9 +8,9 @@
 ## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=9.3.0
-incrver=2905
-pkgrel=3
+pkgver=9.3.1
+incrver=2929
+pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
 url="http://www.vandyke.com/products/securecrt/"
@@ -20,7 +20,7 @@ depends=('fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'krb5' 'libcups'
 		'qt5-base' 'qt5-multimedia' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'zlib' 'icu70')
 options=('!strip' '!emptydirs')
 source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu22-64.tar.gz")
-md5sums=('848c3ec7c0d81e4e49153ebdb40aa44b')
+md5sums=('b45603d2b9f2f04a6abf77c532871264')
 
 package() {
        cd "${srcdir}"/${pkgname}-${pkgver}
