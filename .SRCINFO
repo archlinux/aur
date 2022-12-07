@@ -1,0 +1,18 @@
+pkgbase = linuxqq-new
+	pkgdesc = New Linux QQ based Electron
+	pkgver = 2.0.1_429
+	pkgrel = 1
+	url = https://im.qq.com/linuxqq/
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	source = https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v2.0.1-429_x64.deb
+	sha256sums = e3aa15ff6ae089b655df3913c6020ca56726bd676995aaf29b313fbd0643ea42
+
+pkgname = linuxqq-new
