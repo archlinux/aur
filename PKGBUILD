@@ -5,13 +5,13 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.80.2.178.gd8612be72
+pkgver=2.80.2.809.gaad497c13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3')
 depends=('lib32-libpng' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-glew' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite' 'lib32-libpulse')
-makedepends=('git' 'cmake' 'zip' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-curl')
+makedepends=('git' 'cmake' 'zip' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-curl' 'lib32-cjson' )
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 md5sums=('SKIP')
@@ -47,12 +47,14 @@ build() {
         cmakeopts+=(
             "-D CMAKE_LIBRARY_PATH=/usr/lib"
             "-D CMAKE_INCLUDE_PATH=/usr/include"
+            "-D CMAKE_PREFIX_PATH=/usr/lib/cmake"
             "-D CROSS_COMPILE32=0"
         )
     else
         cmakeopts+=(
             "-D CMAKE_LIBRARY_PATH=/usr/lib32"
             "-D CMAKE_INCLUDE_PATH=/usr/include"
+            "-D CMAKE_PREFIX_PATH=/usr/lib32/cmake"
             "-D CROSS_COMPILE32=1"
         )
     fi
@@ -65,6 +67,7 @@ build() {
         "-D INSTALL_OMNIBOT=0"
     )
 
+    echo "OPTS" ${cmakeopts[@]}
     cmake ${cmakeopts[@]} .
     make
 }

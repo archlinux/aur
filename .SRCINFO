@@ -1,5 +1,5 @@
 pkgbase = etlegacy32-git
-	pkgver = 2.80.2.178.gd8612be72
+	pkgver = 2.80.2.809.gaad497c13
 	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = etlegacy32-git
 	makedepends = lib32-lua
 	makedepends = lib32-minizip
 	makedepends = lib32-curl
+	makedepends = lib32-cjson
 	depends = lib32-libpng
 	depends = lib32-alsa-lib
 	depends = lib32-freetype2
