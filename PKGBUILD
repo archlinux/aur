@@ -1,7 +1,7 @@
 # Maintainer: Romain Bazile <gromain.baz@gmail.com>
 pkgname=shutter-encoder
-pkgver=16.4
-pkgrel=2
+pkgver=16.5
+pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
 arch=("x86_64")
 url="https://www.shutterencoder.com/"
