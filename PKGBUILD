@@ -9,7 +9,7 @@ url="https://github.com/Youda008/DoomRunner"
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('git')
-backup=('opt/DoomRunner')
+backup=('usr/bin/doomrunner')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Youda008/DoomRunner/archive/v${pkgver}.tar.gz")
 md5sums=('023b888f6ca19caa45363c0cbbb9980f')
 
@@ -31,6 +31,5 @@ package() {
 	cd "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
 	make install INSTALL_ROOT="${pkgdir}/" 
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -sT "/opt/DoomRunner/bin/DoomRunner" "${pkgdir}/usr/bin/doomrunner"
 }
 
