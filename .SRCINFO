@@ -1,11 +1,12 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.6.15
+	pkgver = 1.6.16
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = any
 	license = GPL3
-	makedepends = java-environment>=17
+	makedepends = java-environment=19
+	makedepends = java-openjfx=19
 	makedepends = maven
 	depends = fuse2
 	depends = libjffi
@@ -18,10 +19,10 @@ pkgbase = cryptomator
 	optdepends = keepassxc-cryptomator: Use KeePassXC to store vault passwords
 	optdepends = ttf-hanazono: Install this font when using Japanese system language
 	options = !strip
-	source = cryptomator-1.6.15.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.6.15.tar.gz
-	source = cryptomator-1.6.15.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.6.15/cryptomator-1.6.15.tar.gz.asc
+	source = cryptomator-1.6.16.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.6.16.tar.gz
+	source = cryptomator-1.6.16.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.6.16/cryptomator-1.6.16.tar.gz.asc
 	validpgpkeys = 58117AFA1F85B3EEC154677D615D449FE6E6A235
-	sha256sums = e4c75f3fc3c60178e5f44a3f5a6199bdcc8edcb45cb09d6d4fb0efbed27170a7
+	sha256sums = 6f3f4b2df9ddc63626be29803c1a9ec591f54c00bb69ac4dbf48fb5b6a5e8621
 	sha256sums = SKIP
 
 pkgname = cryptomator

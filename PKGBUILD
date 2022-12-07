@@ -4,29 +4,35 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
-makedepends=('java-environment>=17' 'maven')
+makedepends=('java-environment=19' 'java-openjfx=19' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('e4c75f3fc3c60178e5f44a3f5a6199bdcc8edcb45cb09d6d4fb0efbed27170a7'
+sha256sums=('6f3f4b2df9ddc63626be29803c1a9ec591f54c00bb69ac4dbf48fb5b6a5e8621'
             'SKIP')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
 prepare() {
-  if ! archlinux-java status | grep default | grep -E "17|18" ; then
-      echo "You don't have a Java 17 or 18 JDK selected as your Java environment but the following installed on your system:"
+  if ! archlinux-java status | grep default | grep -E "19" ; then
+      echo "You don't have a Java 19 JDK selected as your Java environment but the following installed on your system:"
       echo "`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`"
-      echo "Select a Java 17 or 18 JDK using \"sudo archlinux-java set [name from the list above]\""
-      echo "If you switched to a JDK 17 or 18, please re-run the installation."
+      echo "Select a Java 19 JDK using \"sudo archlinux-java set [name from the list above]\""
+      echo "If you switched to a JDK 19, please re-run the installation."
+      return 1
+  fi
+
+  jfxPomVersion="$(mvn help:evaluate "-Dexpression=javafx.version" -q -DforceStdout -f ${srcdir}/cryptomator-${pkgver}/pom.xml)"
+  if ! grep -E "javafx.version=${jfxPomVersion}" /usr/lib/jvm/default/lib/javafx.properties ; then
+      echo "Major part of JavaFX version in pom does not match the version in JDK"
       return 1
   fi
 }
@@ -45,7 +51,7 @@ build() {
   jlink \
     --output runtime \
     --module-path jmod \
-    --add-modules java.base,java.desktop,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,jdk.unsupported,jdk.crypto.ec,jdk.accessibility \
+    --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.accessibility,jdk.management.jfr \
     --strip-native-commands \
     --no-header-files \
     --no-man-pages \
