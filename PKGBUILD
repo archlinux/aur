@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.1.r1.g8953ddc
+pkgver=1.1.0.r0.g8953ddc
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -44,7 +44,7 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags '-linkmode=external -w -s' \
+        -ldflags '-s -w -buildid= -linkmode=external' \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
