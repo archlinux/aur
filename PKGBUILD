@@ -37,6 +37,7 @@ package() {
 		sudo cp hashzam.py "/usr/local/bin/hashzam"
 	else
 		sudo mv /usr/local/bin/hashzam /usr/local/bin/hashzam.save
+		sudo cp hashzam.py "/usr/local/bin/hashzam"
 	fi
 	if [ ! -f "/usr/share/licenses/${pkgname}/LICENSE" ]; then
 		sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
