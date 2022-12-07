@@ -1,5 +1,5 @@
 pkgbase = hmcl-new
-	pkgdesc = An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java.
+	pkgdesc = An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)
 	pkgver = 3.5.3.228
 	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
