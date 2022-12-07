@@ -1,7 +1,7 @@
 pkgbase = pwncat
 	pkgdesc = Netcat on steroids with Firewall, IDS/IPS evasion, bind and reverse shell, self-injecting shell and port forwarding magic - and its fully scriptable with Python (PSE)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cytopia.github.io/pwncat
 	arch = any
 	license = MIT
