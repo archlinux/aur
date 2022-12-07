@@ -2,21 +2,24 @@
 # Contributor: Elijah Gregg <lovetocode999@ctrl-c.club>
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
-pkgver=1.0.0.beta.3.9.1.r0.g9d19b2f4c
+pkgver=1.0.0.beta.4.5.1.r0.g98b783630
 pkgrel=1
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
+depends=('lilv' 'libx11' 'libsndfile' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'graphviz' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse')
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd')
 makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
-             'ladspa' 'lv2' 'gtksourceview3' 'cmake')
+             'ladspa' 'lv2' 'cmake')
 optdepends=('portaudio: portaudio backend'
-            'qt5-base: for embedding qt5 plugin UIs')
+            'qt5-base: for embedding qt5 plugin UIs'
+            'jack: for jack backend'
+            'graphviz: process graph export'
+            'sdl2: audio backend')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 options=('!strip')
@@ -35,10 +38,10 @@ build() {
     ninja -C build
 }
 
-#check() {
-#    cd "$srcdir/${pkgname%-git}"
-#    ninja -C build test
-#}
+check() {
+    cd "$srcdir/${pkgname%-git}"
+    ninja -C build test
+}
 
 package() {
     cd "$srcdir/${pkgname%-git}"
