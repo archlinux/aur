@@ -1,0 +1,16 @@
+pkgbase = redis-json
+	pkgdesc = A JSON data type for Redis
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://redis.io/docs/stack/json/
+	arch = x86_64
+	license = custom:RSALv2
+	license = custom:SSPLv1
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	depends = redis
+	source = redis-json-2.4.2.tar.gz::https://codeload.github.com/RedisJSON/RedisJSON/tar.gz/refs/tags/v2.4.2
+	sha256sums = 3db95e4a270c2de221d266c6476d1e096354150e77f1ee6ff8be57cc4f2e3c77
+
+pkgname = redis-json
