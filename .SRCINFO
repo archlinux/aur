@@ -1,6 +1,6 @@
 pkgbase = gwatcher
 	pkgdesc = watch for changes in dconf settings
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://codeberg.org/NotSludgeBomb/gwatcher
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gwatcher
 	makedepends = git
 	makedepends = cargo
 	depends = glib2
-	source = https://codeberg.org/NotSludgeBomb/gwatcher/archive/v1.0.0.tar.gz
-	sha256sums = df338804414b983339615756708ab46169bfe3eab7271c4c626182a93cd5ad19
+	source = https://codeberg.org/NotSludgeBomb/gwatcher/archive/v1.0.1.tar.gz
+	sha256sums = 3121538f86ddded83b00bd7dad77e0fd45d13722527e8345ac10fb4889ab5c78
 
 pkgname = gwatcher

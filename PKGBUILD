@@ -1,6 +1,6 @@
 # Maintainer: NotSludgeBomb <notsludgebomb@protonmail.com>
 pkgname=gwatcher
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="watch for changes in dconf settings"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('glib2')
 makedepends=('git' 'cargo')
 source=("https://codeberg.org/NotSludgeBomb/gwatcher/archive/v${pkgver}.tar.gz")
-sha256sums=('df338804414b983339615756708ab46169bfe3eab7271c4c626182a93cd5ad19')
+sha256sums=('3121538f86ddded83b00bd7dad77e0fd45d13722527e8345ac10fb4889ab5c78')
 build() {
     cd $srcdir/gwatcher
     make build
