@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=4.0.5.r120.gd5b3cfe64
+pkgver=5.0.2.r59.gf9fe3f8fb
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -106,7 +106,7 @@ build() {
 }
 
 package_soh-git() {
-  pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch"
+  pkgdesc="A port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)"
   provides=("soh")
   conflicts=("soh")
   depends=("${_depends_soh[@]}")
@@ -124,7 +124,7 @@ package_soh-git() {
 }
 
 package_soh-otr-exporter-git() {
-  pkgdesc="OTR generation tools for SoH"
+  pkgdesc="OTR generation tools for SoH (git)"
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
