@@ -82,9 +82,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.0
-_minor=10
+_minor=11
 _srcname=linux-${_major}
-_clr=${_major}.9-1214
+_clr=${_major}.11-1216
 _gcc_more_v='20220315'
 _xanmod='aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc'
 pkgbase=linux-clear
@@ -420,7 +420,7 @@ done
 
 sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
             'SKIP'
-            '0b99d6baf13eef2852938008288bed942dd1d19a54d3de021b0d760bd7086c31'
+            '1398bc1d9c56110929d0e28a1026f418385ab8c9895eaad437f3e79d610a4d42'
             'SKIP'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '9709c5396a182cad3606a19bc7cee54819b3668f16987d3b1c6e221623ad91f8'
