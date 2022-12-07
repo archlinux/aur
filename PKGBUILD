@@ -1,13 +1,15 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
-pkgname=("zopfli-git" "libzopfli-git" "zopflipng-git" "libzopflipng-git")
-pkgver=1.0.1.r19.g16e0741
-pkgrel=1
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+pkgname=zopfli-git
+pkgver=1.0.3.r7.g831773b
+pkgrel=2
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/google/zopfli"
 license=('Apache')
-makedepends=('git')
-depends=('glibc')
+makedepends=('git' 'cmake')
+depends=('glibc' 'gcc-libs')
 source=('git+https://github.com/google/zopfli.git')
+provides=('libzopfli.so' 'libzopflipng.so')
+replaces=('zopflipng-git' 'libzopfli-git' 'libzopflipng-git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -16,50 +18,18 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/zopfli"
-    # These need to be separate due to the Makefile not liking parallel
-    # builds with all targets in one go.
-    # For more information, see <https://github.com/google/zopfli/issues/68>.
-    make zopfli 
-    make libzopfli 
-    make zopflipng 
-    make libzopflipng
+  cd "$srcdir/zopfli"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
+        -DZOPFLI_BUILD_SHARED=ON \
+        -Wno-dev \
+        -B build \
+        -S .
+  make VERBOSE=1 -C build
 }
 
-package_zopflipng-git() {
-    pkgdesc="PNG optimisation tool using Google's zopfli library, git version."
-    depends=('gcc-libs')
-    provides=('zopflipng')
-    cd "$srcdir/zopfli"
-    install -Dm755 zopflipng "${pkgdir}/usr/bin/zopflipng"
-}
-
-package_libzopflipng-git() {
-    pkgdesc="PNG optimisation library using Google's zopfli library, git version."
-    depends=('gcc-libs')
-    provides=('libzopflipng')
-    cd "$srcdir/zopfli"
-    _libname=$(find * -type f -name "libzopflipng.so.*" -print)
-    install -D $_libname "${pkgdir}/usr/lib/$_libname"
-    ln -s "/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopflipng.so"
-    install -Dm644 src/zopflipng/zopflipng_lib.h \
-            "${pkgdir}/usr/include/zopflipng_lib.h" # FYI, this is a dumb name.
-}
-
-package_libzopfli-git() {
-    pkgdesc="Compression library by Google, git version."
-    provides=('libzopfli')
-    cd "$srcdir/zopfli"
-    _libname=$(find * -type f -name "libzopfli.so.*" -print)
-    install -D $_libname "${pkgdir}/usr/lib/$_libname"
-    ln -s "/usr/lib/$_libname" "${pkgdir}/usr/lib/libzopfli.so"
-    install -Dm644 src/zopfli/zopfli.h \
-            "${pkgdir}/usr/include/zopfli.h"
-}
-
-package_zopfli-git() {
-    pkgdesc="Compression utility by Google, git version."
-    provides=('zopfli')
-    cd "$srcdir/zopfli"
-    install -Dm755 zopfli "${pkgdir}/usr/bin/zopfli"
+package() {
+  cd "$srcdir/zopfli"
+  make -C build DESTDIR="${pkgdir}" install
+  install -vDm 644 README* -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
