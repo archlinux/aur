@@ -1,4 +1,5 @@
 pkgbase = zopfli-git
+	pkgdesc = Compression algorithm library, git version
 	pkgver = 1.0.3.r7.g831773b
 	pkgrel = 2
 	url = https://github.com/google/zopfli
