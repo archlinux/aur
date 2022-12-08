@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple@posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=bemenu-dmenu-wayland
 pkgver=1
