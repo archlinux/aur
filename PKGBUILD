@@ -12,6 +12,7 @@ conflicts=('jami-qt' 'jami-daemon' 'jami-qt-git' 'jami-daemon-git' 'jami-gnome-g
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://dl.jami.net/ring-manual/debian_unstable/jami-all_amd64.deb")
+sha512sums_x86_64=("67e52f668f6c67295842f1ca1ee36caa6b5dd0143f6409e49b57970adc833a1d06b3efa5be48362f4d6e0880efe6364575e3fc3f104d8d434c42a6ff67fb5e14")
 
 package(){
 
