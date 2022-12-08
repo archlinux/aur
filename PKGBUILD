@@ -1,7 +1,7 @@
 # Maintainer: Rihards Skuja <rhssk at posteo dot eu>
 
 pkgname=simplicity-commander
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc='GUI and command line access to the debug features of Silicon Labs devices'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 options=('!strip')
 depends=('jlink-software-and-documentation')
 source=("$pkgname-$pkgver.zip::https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip")
-sha256sums=('e0dd902cce29e3e571665602ef34ff55fb2fd70e083f54b948665aba685e2a0d')
+sha256sums=('78913c3cb61615ccc8a1d1753d74a859d959f66f88eda78604207dd303b7e551')
 
 package() {
 	cd "SimplicityCommander-Linux"
