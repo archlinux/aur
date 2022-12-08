@@ -2,26 +2,23 @@
 
 _gemname=fpm
 pkgname=$_gemname
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/${_gemname}"
 license=('MIT')
 depends=(ruby
-         ruby-json-1
          ruby-cabin
          ruby-backports
          ruby-arr-pm
          ruby-clamp
-         ruby-git
          ruby-rexml
-         ruby-xz
          ruby-pleaserun
          ruby-stud)
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('84b6c3519cbadca010af1d23d04e634375f93337c0452eb7d1842b9103e38d14')
+sha256sums=('648abcd8d0004429b81cd6ff2fe79ae5a9e84bfed880c3a7e4ba41c0f88061ce')
 
 build() {
   cd $srcdir/$_gemname-$pkgver
