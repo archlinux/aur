@@ -1,6 +1,6 @@
 pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	pkgdesc = GO DBus factory for DDE
-	pkgver = 2.0.0.r4.gfab97cf
+	pkgver = 1.11.1.r4.g28fe369
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-dbus-factory
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	makedepends = golang-gopkg-yaml.v3
 	depends = golang-deepin-lib-git
 	provides = golang-github-linuxdeepin-go-dbus-factory
 	conflicts = golang-github-linuxdeepin-go-dbus-factory

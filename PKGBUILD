@@ -1,14 +1,14 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=2.0.0.r4.gfab97cf
+pkgver=1.11.1.r4.g28fe369
 pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
 url="https://github.com/linuxdeepin/go-dbus-factory"
 license=('GPL3')
 depends=('golang-deepin-lib-git')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'golang-gopkg-yaml.v3')
 provides=('golang-github-linuxdeepin-go-dbus-factory')
 conflicts=('golang-github-linuxdeepin-go-dbus-factory')
 groups=('deepin-git')
@@ -34,7 +34,6 @@ prepare() {
   go get -v github.com/godbus/dbus
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
-  go get -v gopkg.in/yaml.v3
 }
 
 build() {
