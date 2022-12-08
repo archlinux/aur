@@ -1,0 +1,13 @@
+[Unit]
+Description=GreptimeDB time series database
+Documentation=https://docs.greptime.com/
+After=network.target
+
+[Service]
+Type=simple
+User=greptime
+ExecStart=/usr/bin/greptime standalone start
+ExecStop=/usr/bin/greptime standalone stop
+
+[Install]
+WantedBy=multi-user.target
