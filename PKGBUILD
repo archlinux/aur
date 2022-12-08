@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' '/bin<build/bin' )
-pkgdir='/tmp/tmp.eSm99rEpwY/sh/pkg'
+pkgdir='/tmp/tmp.xz3lg7L8lT/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
@@ -52,7 +52,6 @@ package() {
         projdir="$srcdir"
     fi
     cd "$projdir/$pkgname"
-    umask 0755
 #     echo "PWD: $PWD"
 #     for((i = 0; i < ${#contents[@]}; i++)); do
     dir -1 "./" | while read f; do
@@ -68,4 +67,5 @@ package() {
         run cp -R "$(abstorel <<< "${f}")" "$pkgdir/$(abstorel <<< "$nativepth")"
 #         cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
     done
+    chmod -R 755 "$pkgdir/"
 }        
