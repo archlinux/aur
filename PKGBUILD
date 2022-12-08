@@ -14,12 +14,12 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/psi-rking/optking/archiv
 sha256sums=("1076af33946f071edd86baf0d359b153c37bce54b6c143d286ba5559632c50b5")
 
 build() {
-  cd ${pkgname}"-"${pkgver}
+  cd ${_pkgname}"-"${pkgver}
   python setup.py build
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
