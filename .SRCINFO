@@ -1,6 +1,6 @@
 pkgbase = brave-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (binary release)
-	pkgver = 1.46.134
+	pkgver = 1.46.138
 	pkgrel = 1
 	epoch = 1
 	url = https://brave.com
@@ -16,15 +16,15 @@ pkgbase = brave-bin
 	optdepends = cups: Printer support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
 	optdepends = libnotify: Native notification support
-	provides = brave=1.46.134
+	provides = brave=1.46.138
 	provides = brave-browser
 	conflicts = brave
-	noextract = brave-bin-1.46.134.zip
+	noextract = brave-bin-1.46.138.zip
 	options = !strip
-	source = brave-bin-1.46.134.zip::https://github.com/brave/brave-browser/releases/download/v1.46.134/brave-browser-1.46.134-linux-amd64.zip
+	source = brave-bin-1.46.138.zip::https://github.com/brave/brave-browser/releases/download/v1.46.138/brave-browser-1.46.138-linux-amd64.zip
 	source = brave-bin.sh
 	source = brave-browser.desktop
-	sha256sums = 1a7774c75d5b51f6d4546029947f0ea1ec9e49b92c8d16382ab34a0a7253bd4f
+	sha256sums = 1e7bd1dc5ad7ed96821853a75eb2e4635542f3aa1ff81ab7551c95f9a1ea70c2
 	sha256sums = ba7d57a3328c68e6a78e49506af0e238936e823b2f463e8087c20fcf4300232a
 	sha256sums = c07276b69c7304981525ecb022f92daf7ae125a4fb05ac3442157b50826e257a
 
