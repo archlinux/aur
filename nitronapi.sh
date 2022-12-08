@@ -79,8 +79,8 @@ nr_cores=$((nr_cores + 1))
 cputotalusage=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage ""}' | cut -f1 -d\.$cputotalusage)
 
 # Max CPU clock
-cpu_max_freq=$(cat /sys/devices/system/cpu/cpu$(($(nproc --all) - 1 ))/cpufreq/cpuinfo_max_freq)
-cpu_max_freq1=$(cat /sys/devices/system/cpu/cpu$(($(nproc --all) - 1 ))/cpufreq/scaling_max_freq)
+cpu_max_freq=$(cat /sys/devices/system/cpu/cpu$(($(nproc) - 1 ))/cpufreq/cpuinfo_max_freq)
+cpu_max_freq1=$(cat /sys/devices/system/cpu/cpu$(($(nproc) - 1 ))/cpufreq/scaling_max_freq)
 [[ "$cpu_max_freq1" -gt "$cpu_max_freq" ]] && cpu_max_freq="$cpu_max_freq1"
 
 # Min CPU clock
@@ -418,7 +418,7 @@ com.activision.callofduty.shooter
 				if [[ "$TRAPAUTO" == "true" ]]; then
 					exit
 				else
-					PIDS=$(cat /sdcard/nitron.auto.conf | tail -n +4)
+					PIDS=$(cat "$NITRON_LOG_DIR="/nitron.auto.conf | tail -n +4)
 					auto
 				fi
 			done
