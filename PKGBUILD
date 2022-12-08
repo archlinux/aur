@@ -3,7 +3,7 @@
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
 pkgver=r644.75110dc
-pkgrel=1
+pkgrel=2
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
