@@ -1,0 +1,11 @@
+pkgbase = conquery
+	pkgdesc = Fast, and space effective data storage format (.tscq) encoder/decoder library
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = System/Library/Database
+	groups = System/Library/Archiver
+	makedepends = rpkdev
+	options = !strip
+
+pkgname = conquery
