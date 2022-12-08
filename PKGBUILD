@@ -2,7 +2,7 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.4.47.r673.g52c86a908
+pkgver=5.6.1.r8.gfbbd85292
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
@@ -37,30 +37,19 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
-  rm $pkgname/src/frame/modules/authentication/widgets/faceinfowidget.h
-  rm $pkgname/src/frame/modules/authentication/widgets/faceinfowidget.cpp
-  rm -rf $pkgname/src/frame/window/modules/authentication
-
   rm $pkgname/src/frame/window/icons/icons/dcc_nav_systeminfo_{42,84}px.svg
   patch -d $pkgname -Np1 < $_pkgname-systeminfo-deepin-icon.patch
-  cd $pkgname
-  patch -p1 -i ../remove-auth.patch
-
-  # remove after they obey -DDISABLE_SYS_UPDATE properly
-  sed -i '/new UpdateModule/d' src/frame/window/mainwindow.cpp
 }
 
 build() {
-  mkdir -p $pkgname/build
-  cd $pkgname/build
-  cmake -GNinja -DDISABLE_SYS_UPDATE=YES -DDISABLE_RECOVERY=YES -DDISABLE_ACTIVATOR=YES -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    ../
-  ninja
+  cd $pkgname
+  cmake -B build -GNinja -DDISABLE_SYS_UPDATE=YES \
+                -DDISABLE_RECOVERY=YES \
+                -DDISABLE_ACTIVATOR=YES \
+                -DCMAKE_INSTALL_PREFIX=/usr \
+                -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+                -DDISABLE_AUTHENTICATION=ON
+  cmake --build build
 }
 
 package() {
