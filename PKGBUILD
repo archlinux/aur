@@ -1,25 +1,42 @@
-# Maintainer: Sean Snell <ssnell at cmhsol dot com>
+# Maintainer: éclairevoyant
 
-pkgname=cysboard-git
+_pkgname=cysboard
+pkgname="$_pkgname-git"
 _gitname=Cysboard
-pkgver=1.0
+pkgver=1.2.r44.a5bc770
 pkgrel=1
-pkgdesc='A lightweight system monitor with html and css for themes. Latest commit from the master branch on Github.'
-arch=(any)
-url=https://github.com/mike168m/Cysboard
+pkgdesc='Lightweight system monitor with html and css for themes'
+arch=('x86_64')
+url="https://github.com/mike168m/$_gitname"
 license=('GPL3')
-makedepends=('git' 'automake')
-depends=('when-changed-git')
-source=("git://github.com/mike168m/${_gitname}.git")
-md5sums=('SKIP')
+depends=('gtk3' 'libsciter-gtk' 'spdlog')
+makedepends=('cmake>=3.1' 'git')
+source=("git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+	cd $_gitname
+	printf "%s.%s" $(git blame -s -L/Cysboard_VERSION_MAJOR/,+2 CMakeLists.txt | awk 'BEGIN { ORS = "."; }
+	{
+		gsub("[\")]", "");
+		"git rev-list --count "$1"..HEAD" | getline x;
+		if (NR==1 || min>x) {
+			min = x;
+			min_hash = $1;
+		}
+		print $4;
+	}
+	END {
+		ORS="";
+		print "r"min;
+	}') $(git rev-parse --short HEAD)
+}
 
 build() {
-	cd "$srcdir/${_gitname}"
-	./sources/resources/compile.sh --prefix=/usr
-	make
+	cmake -B build -S $_gitname
+	make -C build
 }
 
 package() {
-  	cd "${srcdir}/${_gitname}"
-	make DESTDIR="$pkgdir" install
+	install -Dm755 build/build/$_gitname "$pkgdir/usr/bin/$_pkgname"
 }
