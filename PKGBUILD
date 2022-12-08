@@ -2,7 +2,7 @@
 
 pkgbase=deepin-anything-git
 pkgname=(deepin-anything-git deepin-anything-dkms-git)
-pkgver=5.0.13.r14.g0218923
+pkgver=6.0.3.r2.g68428b4
 _extramodules=extramodules-ARCH
 pkgrel=1
 pkgdesc="Deepin Anything file search tool"
@@ -20,14 +20,6 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd $pkgbase
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-  sed -i 's|^systemd_service.path.*|systemd_service.path = /usr/lib/systemd/system|' server/monitor/src/src.pro server/tool/tool.pro
-}
-
 build() {
 	cd $pkgbase
   make VERSION=$pkgver
@@ -40,7 +32,7 @@ package_deepin-anything-dkms-git() {
 
   cd $pkgbase
   install -dm 755 "$pkgdir"/usr/src
-  cp -r kernelmod "$pkgdir"/usr/src/deepin-anything-$pkgver
+  cp -r src/kernelmod "$pkgdir"/usr/src/deepin-anything-$pkgver
   install -m644 debian/deepin-anything-dkms.dkms "$pkgdir"/usr/src/deepin-anything-$pkgver/dkms.conf
 }
 
