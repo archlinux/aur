@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' 'rcore/ts:subway_server' )
 groups=( 'Library/WidgetToolkit' )
 contents=( '/data/Themes<./Themes' '/Docs<./Docs' '/lib<./build//platforms/archlinux_x86_64/Release/lib' )
-pkgdir='/tmp/tmp.E7VePkcsSv/sh/pkg'
+pkgdir='/tmp/tmp.0WnpD4dxPy/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
@@ -34,7 +34,7 @@ build() {
     if [ "$remote" == 1 ]; then
         echo "srcdir: $srcdir"
         echo "pkgname: $pkgname"
-        getpkg "$uniq" "$pkgname" "$srcdir"
+        getpkg "$uniq" "$pkgname" "$pkgver"
     fi
 #     [ -f Makefile ] && make -j 4 || ninja
 }
