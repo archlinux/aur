@@ -1,8 +1,8 @@
 # Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=chromium-extension-adnauseam
-pkgver=3.15.2b3_rc3
-_pkgver=3.15.2.3
+pkgver=3.16.0
+_pkgver=$pkgver
 pkgrel=1
 epoch=1
 pkgdesc='An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers'
@@ -18,5 +18,5 @@ package() {
    mkdir -p "$pkgdir/usr/share/$pkgname"
    cp -dr --no-preserve=ownership $srcdir/adnauseam.chromium/* "$pkgdir/usr/share/$pkgname/"
 }
-sha256sums=('477f9250458f9ad9a880825214e34f15798137292d0a0482bea60f8fbbfcc18e')
-b2sums=('3203709b6be5dedd5a84fa227c760e6d20e8b1b5ca3524f5e2e6f8620eff7d8d68892348d5d0b2993f17d9697563923d1e8fb8ca27ec74f24e1960e4b7830478')
+sha256sums=('cb534f8d4551ea71951d7bccf2e5d5e1420b4d9a23d208b92f65aa743c0651c3')
+b2sums=('2645eaec6023667c75cbb9876968c11fb11d1e3959d88aeaf4a2415876ec465228d8d8f439993a987dda5a17a40c8ca952ccd666bf977eaa6b958c4ce48fb75f')
