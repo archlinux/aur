@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-pw-check-git
-pkgver=5.1.6.r12.gd8c5518
+pkgver=5.1.17.r5.g2b1147e
 pkgrel=1
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
 arch=('x86_64' 'aarch64')
@@ -22,15 +22,11 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
 
     export GOPATH="$srcdir/build:/usr/share/gocode"
     export GO111MODULE=off
     go get -v github.com/godbus/dbus
     go get -v github.com/fsnotify/fsnotify
-    go get -v gopkg.in/yaml.v3
     sed -i 's/<iniparser\//</g' lib/deepin_pw_check.c
     sed -i 's/<iniparser\//</g' tool/pwd_conf_update.c
     sed -i 's/local\///g' Makefile
