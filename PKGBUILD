@@ -2,7 +2,7 @@
 
 _gemname=other_video_transcoding
 pkgname=ruby-$_gemname
-pkgver=0.9.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Other Video Transcoding is a package of tools to transcode videos.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'mkvtoolnix-cli' 'ffmpeg')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('080869d691bdea39bef2f70f9e60c4641b4a81c3')
+sha1sums=('adcba10451067c19c17f51b1262667de1e9e7eba')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
