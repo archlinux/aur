@@ -2,7 +2,7 @@
 pkgname=python-cleantext
 _name=${pkgname#python-}
 pkgver=1.1.4
-pkgrel=0
+pkgrel=1
 pkgdesc='An open-source python package to clean raw text data'
 arch=(any)
 url=https://pypi.org/project/cleantext
