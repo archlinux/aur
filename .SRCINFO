@@ -13,6 +13,6 @@ pkgbase = pygplates
 	source = pygplates_0.36.0_src.zip::https://www.earthbyte.org/download/9112
 	source = pygplates.sh
 	sha256sums = f18b34ea5f3f70c7df7b09190dc14cd0ff17eab084a116f45e629511fae95003
-	sha256sums = 38223b8e8aebdbb18e6705a864898a20f386951b852a748e5206179f369256c5
+	sha256sums = 4386d818b6d806336bd1c447653cd041d0e662c704f8d00b809005e36049b46e
 
 pkgname = pygplates
