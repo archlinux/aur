@@ -1,7 +1,7 @@
 # Maintainer: Tekato <takutekato2@gmail.com>
 
-pkgname=git-when-merged
-pkgver=v1.2.0.r2.ab6af78
+pkgname=git-when-merged-git
+pkgver=v1.2.1.r0.67278dc
 pkgrel=1
 arch=('any')
 

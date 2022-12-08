@@ -1,13 +1,13 @@
-pkgbase = git-when-merged
+pkgbase = git-when-merged-git
 	pkgdesc = Determine when a particular commit was merged into a git branch
-	pkgver = v1.2.0.r2.ab6af78
+	pkgver = v1.2.1.r0.67278dc
 	pkgrel = 1
 	url = https://github.com/mhagger/git-when-merged
 	arch = any
 	license = GPL2
 	depends = git
 	depends = python
-	source = git-when-merged::git+https://github.com/mhagger/git-when-merged.git
+	source = git-when-merged-git::git+https://github.com/mhagger/git-when-merged.git
 	cksums = SKIP
 
-pkgname = git-when-merged
+pkgname = git-when-merged-git
