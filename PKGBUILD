@@ -4,14 +4,14 @@
 _electron='electron20'
 
 pkgname="ferdium-electron"
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
-makedepends=('git' 'python' 'pnpm' 'npm' 'jq' 'asar' 'nodejs-lts-gallium')
+makedepends=('git' 'python' 'pnpm' 'jq' 'asar' 'nodejs-lts-gallium')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"
