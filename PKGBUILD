@@ -20,8 +20,10 @@ arch=(  'any' )
 
 depends=( )
 makedepends=( )
-source=( "https://content.tssoftware.eu/binary/rpkdev" )
-noextract=( "rpkdev" )
+
+_b="https://content.tssoftware.eu/binary/"
+source=( "${_b}/rpkdev" "${_b}/libconquery.so" "${_b}/libnfd.so" "${_b}/libLT.so" "${_b}/libTSMLParser.so")
+noextract=( "rpkdev" "libconquery.so" "libnfd.so" "libLT.so" "libTSMLParser.so" )
 
 sha256sums=( "SKIP" )
 
@@ -40,9 +42,11 @@ build() {
 #     [ -f Makefile ] && make -j 4 || ninja
 }
 package() { 
-    targ="$pkgdir/usr/share/rpkdev"
+    targ="$pkgdir/usr/share/"
     mkdir -p "$targ"
-    mv "$(realpath rpkdev)" "$targ"
+    dir -1 "$srcdir/" | while read f; do
+        mv "$(realpath "$srcdir/$f")" "$targ/"
+    done
     chmod -R 755 "$targ"
     
     targ="$pkgdir/usr/bin"
