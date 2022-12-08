@@ -3,7 +3,7 @@
 pkgname=python-pyspellchecker
 _pkgname=pyspellchecker
 pkgver=0.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Pure python spell checker based on work by Peter Norvig"
 arch=('any')
 url="https://github.com/barrust/pyspellchecker"
