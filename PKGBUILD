@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3519.r272.geedea5cbf
+pkgver=1.7.3519.r285.ga346cff47
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -92,6 +92,7 @@ build()
     -DQT_BUILD=ON \
     -DXDG_STD=TRUE \
     -DUSE_VULKAN=ON \
+    -DDISABLE_ADVANCE_SIMD=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
     -DDISABLE_SETCAP=ON
