@@ -1,6 +1,6 @@
 pkgbase = dwm
 	pkgdesc = A dynamic window manager for X
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://dwm.suckless.org
 	install = dwm.install
@@ -15,10 +15,10 @@ pkgbase = dwm
 	depends = dmenu
 	options = zipman
 	source = dwm.desktop
-	source = https://dl.suckless.org/dwm/dwm-6.3.tar.gz
+	source = https://dl.suckless.org/dwm/dwm-6.4.tar.gz
 	source = config.h
 	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
-	sha256sums = badaa028529b1fba1fd7f9a84f3b64f31190466c858011b53e2f7b70c6a3078d
+	sha256sums = fa9c0d69a584485076cfc18809fd705e5c2080dafb13d5e729a3646ca7703a6e
 	sha256sums = SKIP
 
 pkgname = dwm
