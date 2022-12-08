@@ -1,6 +1,6 @@
 pkgbase = kokkos
 	pkgdesc = C++ performance portability programming ecosystem
-	pkgver = 3.7.00
+	pkgver = 3.7.01
 	pkgrel = 1
 	url = https://github.com/kokkos/kokkos
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kokkos
 	makedepends = cmake
 	depends = bash
 	depends = hwloc
-	source = kokkos-3.7.00.tar.gz::https://github.com/kokkos/kokkos/archive/3.7.00.tar.gz
-	sha512sums = f72b43096126cba11129ab44c2ebaeb1ee92b14db45bd451e86f40746e8edbfbe3415dee089080a6664ae4985e5796717c64bb5c508ca5e287b31bac248802f6
+	source = kokkos-3.7.01.tar.gz::https://github.com/kokkos/kokkos/archive/3.7.01.tar.gz
+	sha512sums = 97cb7e05aec145ba9adae30b20ae3138a532db3a56cdd5e092d8f9c1e1788efe7a6f721282e2a5c5bf9c0da4c53d28f30b27fcb546b68aa8eaa589a362eb40c1
 
 pkgname = kokkos
