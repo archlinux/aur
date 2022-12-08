@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( )
 groups=( 'Developer/Packaging' 'CLI/Tool/PackageManager' )
 contents=( '/bin<build/bin' )
-pkgdir='/tmp/tmp.TF2QqOKrpT/sh/pkg'
+pkgdir='/tmp/tmp.HVYWDJPZSf/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
