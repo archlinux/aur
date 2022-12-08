@@ -26,7 +26,7 @@ package_phpstorm() {
               'java-runtime: JRE - Required if phpstorm-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely'
               'java-openjfx: rendering Markdown files')
-  _buildver="$(ls | grep -Eo 'PhpStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sed 's#PhpStorm-##')"
+  _buildver="$(ls | grep -Eo 'PhpStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#PhpStorm-##')"
 
   install -dm755 "${pkgdir}"/opt/
   install -dm755 "${pkgdir}"/usr/bin/
@@ -45,7 +45,7 @@ package_phpstorm() {
 package_phpstorm-jre() {
   pkgdesc='JBR (JetBrains Runtime) for PhpStorm - a patched JRE'
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
-  _buildver="$(ls | grep -Eo 'PhpStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sed 's#PhpStorm-##')"
+  _buildver="$(ls | grep -Eo 'PhpStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#PhpStorm-##')"
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
   cp -a "${srcdir}"/PhpStorm-${_buildver:?_buildver unset}/jbr "${pkgdir}"/opt/${pkgbase}
