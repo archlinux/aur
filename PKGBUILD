@@ -18,8 +18,8 @@ pkgrel=1
 
 arch=(  'any' )
 
-depends=( )
-makedepends=(  )
+depends=( conquery )
+makedepends=( )
 source=( "https://content.tssoftware.eu/binary/rpkdev" )
 noextract=( "rpkdev" )
 
