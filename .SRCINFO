@@ -1,6 +1,6 @@
 pkgbase = gnome-encfs-manager-bin
 	pkgdesc = An easy to use manager and mounter for encfs stashes
-	pkgver = 1.9.1157
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://launchpad.net/gencfsm
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gnome-encfs-manager-bin
 	depends = libappindicator-gtk3
 	conflicts = gnome-encfs-manager-bzr
 	replaces = gnome-encfs-manager
-	source = https://ppa.launchpadcontent.net/gencfsm/trunk/ubuntu/pool/main/g/gnome-encfs-manager/gnome-encfs-manager_1.9~1157~ubuntu20.04.1_amd64.deb
-	sha256sums = a8494ba3fec9b1109e948188ab1a4e86ab3e2bbfe97becbb0384724b4ea7eefb
+	source = https://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_10/amd64/gnome-encfs-manager_1.9_amd64.deb
+	sha256sums = 2d7d1bcbed13175a869e64de0873ee8218663b470d21c21a1fc4f83d0f84af5d
 
 pkgname = gnome-encfs-manager-bin
