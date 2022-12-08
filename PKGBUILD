@@ -115,7 +115,7 @@ build () {
        -D shader-cache=enabled \
        -D rust_std=2021
 
-    meson configure _build
+    meson configure --no-pager _build
     
     ninja $NINJAFLAGS -C _build
 }
