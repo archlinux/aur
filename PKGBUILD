@@ -1,4 +1,5 @@
 # Maintainer: John Gerritse <tyrannis dot hawk at gmail dot com>
+# Maintainer: Eric Clausing <eric dot s dot clausing at gmail dot com>
 
 _gemname=other_video_transcoding
 pkgname=ruby-$_gemname
