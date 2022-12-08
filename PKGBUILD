@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' '/bin<build/Debug/bin' )
-pkgdir='/tmp/tmp.hSRqTSBa3J/sh/pkg'
+pkgdir='/tmp/tmp.moMZqJtGyR/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
