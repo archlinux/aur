@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.0.7
+pkgver=6.0.12
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,17 +80,16 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=3a2fa3c01fc7c2183eb3278bd912e5bcec20eb2a
+_kernel_base_commit=650093916eb3140339a3132ef7d5a02d8712d058
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=c971483bcf4dfb8a2a18f0c4867c1123addbbf72
+_arch_config_commit=3be6ffd4946606c1929bf81b7fe3a91a57944955
 _prjc_version=6.0-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
-  # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
-  "${_prjc_patch}::https://gitlab.com/torvic9/linux60-vd/-/raw/master/prjc-6.0-r0-vd.patch"
+  "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
 )
@@ -99,12 +98,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('3d40325979982cf55c507646a34405287a87de8272a7cbd43906f7f06ec75621642cba3a42cb3192d395422db9e2a4079adaa191589646d9d72157a3a410cdfe'
+b2sums=('40828f7a3acdfca5ba8a0cccde67a19e9c2a73a83dce97cde99d709bd1af035539ff08b2b55df7b47250844be6705fa2d5554f20d909aa7480b31990cc0ec5da'
         'SKIP'
-        '1a3a8c081adfd44b3c35c13fe110df3798f65ffddb1f5a88d38c4f59ae67a16258d5b204e9f9d1ba02e241f06dd161cc58adb93110d1160285fb1de72a38b2ff'
-        '28cba772c87a3be7ecfba7b7bce1b0def168626a53fadc16989cce7644d2f1fd4ab5aa11c69645341eb02f65c8832fcf8482315f8199cbeac63abf5d4ac37855'
+        'b431d84eb646cdf051e5552f9f60be73d242a00f09fca20fdec2a4a19403fcc88d091bd9eec87a47e70f07be85a4edc453c9a7e1b954d518de727c52a361e343'
+        '38ab7ba3a472f49b1365165c821fd2a723bd86e7f1d0955fe02afe8ba8a155878a43e91052be89f454ba0ef8501d4a4b13622a7c04044a1e94bb18046416c7ee'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '32d2382b07083531ea6b85c14ffdac5107804a16f8e59f0dbc51f396e0094d59c1e964f238685d686e93d6b7d566ed5c3e96752c8cd9bda02fbd62371dab8e5e')
+        '5c4822ba217191f03139e990aa135898f113bdf7b7661c2f3948fa5d4aa74e21ee0088fc747d016ffa5d73291263016c597000bc975797ead2778d549bec2e7c')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
