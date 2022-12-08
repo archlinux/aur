@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.8.22.r118.gb7faac1
+pkgver=5.10.1.r1.g544af97
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('libgnome-keyring')
 makedepends=('cmake' 'coffeescript' 'golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git'
              'golang-deepin-lib-git' 'deepin-api-git' 'go' 'git' 'jq'
+             'golang-gopkg-yaml.v3'
              'golang-golang-x-net' 'golang-github-linuxdeepin-go-x11-client-git')
 optdepends=('deepin-wm: Legacy 3D window manager'
             'deepin-metacity: Legacy 2D window manager'
@@ -27,9 +28,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
   go get -v github.com/cryptix/wav
@@ -39,7 +37,6 @@ prepare() {
   go get -v github.com/godbus/dbus
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
-  go get -v gopkg.in/yaml.v3
   sed -i 's/sbin/bin/' Makefile
 }
 
