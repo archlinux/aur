@@ -1,23 +1,20 @@
 # Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
 
 pkgname=musikcube
-pkgver=0.98.1
+pkgver=0.99.0
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
 url="https://github.com/clangen/${pkgname}"
 license=('BSD')
-depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'boost-libs' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib')
-makedepends=('cmake' 'boost')
+depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib')
+makedepends=('asio' 'cmake')
 optdepends=('libopenmpt: OpenMPT support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('f311283846e496ce36fb3e85a35e30d895a3c103c93a91b3640e963701b89e80')
+sha256sums=('2d4295a272e816c6fd10c95aefb4210ec407dcfdfaeef77089842f67c968969c')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
-  CFLAGS=${CFLAGS/-Werror=format-security/}
-  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
