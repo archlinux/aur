@@ -36,10 +36,11 @@ build() {
 package() {
 	cd "$_pkgname"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	#NOTE: install can't copy whole directories, so I'm finding all files within the folder and installing them one-by-one
-	find ./build/linux/x64/release/bundle/ -type f -exec install -Dm644 "{}" "$pkgdir/opt/$_pkgname/{}" \;
 	install -Dm644 LICENSE.md "$pkgdir/opt/$_pkgname/LICENSE"
 	install -Dm644 ../lb-planner.desktop -t "$pkgdir/usr/share/applications"
 	install -Dm644 app_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/lb-planner.png"
 	install -Dm644 app_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lb-planner.svg"
+	#NOTE: install can't copy whole directories, so I'm finding all files within the folder and installing them one-by-one
+	cd ./build/linux/x64/release/bundle/
+	find ./ -type f -exec install -Dm644 "{}" "$pkgdir/opt/$_pkgname/{}" \;
 }
