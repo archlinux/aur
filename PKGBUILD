@@ -1,4 +1,5 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Maintainer: Felipe Woods <wof8317@gmail.com>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Chris Brannon <chris@the-brannons.com>
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.org>
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
