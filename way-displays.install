@@ -63,6 +63,9 @@ post_install() {
     yello "1.6.0"
     plain "${blue}#49${all_off} IPC API"
     plain ""
+    yello "1.6.1"
+    plain "${blue}#53${all_off} wlroots 0.16.0 compatibility"
+    plain ""
 }
 
 post_upgrade() {
