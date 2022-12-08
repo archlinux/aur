@@ -1,14 +1,14 @@
 pkgbase = pxv
 	pkgdesc = Instant feature rich terminal image viewer
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/al1-ce/pxv
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = dub
 	makedepends = dmd
-	source = pxv-1.0.0.tar.gz::https://github.com/al1-ce/pxv/archive/v1.0.0.tar.gz
+	source = pxv-2.0.0.tar.gz::https://github.com/al1-ce/pxv/archive/v2.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = pxv
