@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-git
-pkgver=5.5.3.r15.g65afa2e
+pkgver=5.5.21.r7.g2f9964c
 pkgrel=1
 pkgdesc='Deepin Polkit Agent'
 arch=('x86_64' 'aarch64')
@@ -12,23 +12,12 @@ makedepends=('git' 'polkit-qt5' 'dtkcommon-git' 'dtkwidget-git' 'cmake' 'ninja')
 conflicts=('deepin-polkit-agent')
 provides=('deepin-polkit-agent')
 groups=('deepin-git')
-source=("$pkgname::git+https://github.com/linuxdeepin/dde-polkit-agent"
-        "fix.patch")
-sha512sums=('SKIP'
-            'b02235cece90a01942cd0898cfb85c7eb8fa6f980c4e1d83cfa115baba1599ca878788b5d89338444afe8267c30b11f9279ebda98d3bbc3dd4f3fe03cd1f0572')
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-polkit-agent")
+sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
-  patch -p1 -i ../fix.patch
 }
 
 build() {
