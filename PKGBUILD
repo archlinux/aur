@@ -4,17 +4,17 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.5'
+_upstreamver='0.0.6'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
 pkgrel=1
-pkgdesc="Translate text by google, bing, haici, etc at same time from CLI, GUI, REPL, python, shell and vim."
+pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/$_repo
-makedepends=(python-installer python-shtab help2man)
+makedepends=(python-installer)
 optdepends=(
 	'python-colorama: color'
 	'python-rich: better logger'
@@ -25,8 +25,8 @@ optdepends=(
 	'python-py-notifier: GUI notification'
 	'xsel: clipboard support'
 	'xclip: clipboard support'
-	'festival: speaker support'
 	'espeak-ng: speaker support'
+	'festival: speaker support'
 )
 conflicts=(translate-shell)
 license=(GPLv3)
@@ -34,27 +34,31 @@ _py=py3
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 	"https://raw.githubusercontent.com/$_repo/main/assets/desktop/translate-shell.desktop"
+	"https://raw.githubusercontent.com/$_repo/main/LICENSE"
+	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans.1.gz"
+	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans"
+	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/_trans"
+	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans.csh"
 )
-sha256sums=('c3294415a59082246bce29e63721a70eb240a8891f3ba69b007ea6e6f7cf33dc'
-            '3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67')
+sha256sums=(
+  '72095a6dfcb9df4d0afe193c4c0cfe6f975161e27ffe333fac7af7b4cdcb43b3'
+	'3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67'
+	'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+	'3fccddac127fad875902d9281c679851960fd9c1cfc955c2295eadd5e1d39d17'
+	'14e4b9b18b9a7ac52d3ef10f218511f7ca7b04ba25b5626924f6b4caae8c36c9'
+	'34666c8b013cab6220842572cf0bda3ded199224512a1882927a7c62fd831f86'
+	'33a678b300b879eec64813a43d5d72daddf9e725b2b9b21491dfd9f238fe04fd'
+)
 
 package() {
 	cd "$srcdir" || return 1
 	python -m installer --destdir="$pkgdir" ./*.whl
 
-	local bin
-	bin=trans
-	help2man "$pkgdir/usr/bin/$bin" | gzip >"$bin.1.gz"
-	install -Dm644 "$bin.1.gz" -t "$pkgdir/usr/share/man/man1"
-	PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"
-	export PYTHONPATH
-	"$pkgdir/usr/bin/$bin" --print-completion bash >"$bin.bash"
-	"$pkgdir/usr/bin/$bin" --print-completion zsh >"_$bin"
-	"$pkgdir/usr/bin/$bin" --print-completion tcsh >"$bin.csh"
-	install -Dm644 "$bin.bash" "$pkgdir/usr/share/bash-completion/completions/$bin"
-	install -Dm644 "_$bin" -t "$pkgdir/usr/share/zsh/site-functions"
-	install -Dm644 "$bin.csh" -t "$pkgdir/etc/profile.d"
-
-	install -Dm644 "$PYTHONPATH/translate_shell/assets/images/icon.png" -t "$pkgdir/usr/share/translate-shell/images"
+	install -Dm644 "$pkgdir$(python -c'import sys; print(sys.path[-1])')/${_pkgname//-/_}/assets/images/icon.png" -t "$pkgdir/usr/share/$_pkgname/images"
 	install -Dm644 translate-shell.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 trans.1.gz -t "$pkgdir/usr/share/man/man1"
+	install -Dm644 trans -t "$pkgdir/usr/share/bash-completion/completions"
+	install -Dm644 _trans -t "$pkgdir/usr/share/zsh/site-functions"
+	install -Dm644 trans.csh -t "$pkgdir/etc/profile.d"
 }
