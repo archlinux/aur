@@ -29,18 +29,18 @@ sha256sums=(
  )
 
 prepare() {
-  cd "{srcdir}/${pkgname}_${pkgver}_src"
+  cd "${srcdir}/${pkgname}_${pkgver}_src"
   patch --forward --strip=0 --input="${srcdir}/boost-placeholders.patch"
 }
 
 build() {
-  cd "{srcdir}/${pkgname}_${pkgver}_src"
+  cd "${srcdir}/${pkgname}_${pkgver}_src"
   cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "{srcdir}/${pkgname}_${pkgver}_src"
+  cd "${srcdir}/${pkgname}_${pkgver}_src"
   make DESTDIR="${pkgdir}/" install
 
   install "${srcdir}/icon.png" -t "${pkgdir}/usr/share/${pkgname}"
