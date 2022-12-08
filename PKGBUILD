@@ -29,12 +29,12 @@ prepare() {
     --strip-components=1
 }
 
-
 build() {
   # Prepare binstub
   mkdir -p "${srcdir}"
-  printf '#!/bin/bash\n%s\n' > "${srcdir}/binstub" \
-    'exec "/usr/lib/'"${pkgname}"'/bin/$(basename "${0}")" "$@"'
+  # shellcheck disable=SC2016
+  printf '#!/bin/bash\nexec "/usr/lib/%s/bin/$(basename "${0}")" "$@"\n' \
+    "${pkgname}" > "${srcdir}/binstub"
 }
 
 package() {
@@ -48,10 +48,11 @@ package() {
     "${srcdir}/${pkgname}-${pkgver}/"{bin,libexec}
 
   echo >&2 'Installing binstubs'
+  export srcdir pkgdir
   find "${srcdir}/${pkgname}-${pkgver}/bin" \
     -mindepth 1 \
-    -exec bash -c "install -D -m 755 -T \"${srcdir}\"/binstub`
-      ` \"${pkgdir}\"/usr/bin/\$(basename '{}')" ';'
+    -exec bash -c 'install -D -m 755 -T "${srcdir}"/binstub \
+      "${pkgdir}"/usr/bin/$(basename "$1")' _ '{}' ';'
 
   echo >&2 'Installing documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
