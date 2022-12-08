@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=5.0.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
@@ -26,7 +26,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('c9541d321f08021d28503d89956e80dd'
+md5sums=('fa847c43407315c27231b9f883e62c0e'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -95,6 +95,7 @@ build() {
         --disable-v4l2-m2m
         --disable-indev=v4l2
         --disable-outdev=v4l2
+        --disable-vulkan
         --enable-libfribidi
         --enable-libmp3lame
         --enable-libopus
