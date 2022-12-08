@@ -14,7 +14,7 @@ depends=('alsa-lib' 'cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'libadwaita' 'libp
 optdepends=('org.freedesktop.secrets')
 makedepends=('cargo' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
-options=('!lto') # Disable clippy tests, as they don't realy make sense for user builds (https://gitlab.com/dpeukert/pkgbuilds/-/issues/37)
+options=('!lto') # build breaks with LTO enabled (https://gitlab.com/dpeukert/pkgbuilds/-/issues/38)
 source=(
 	"https://github.com/xou816/$_projectname/archive/$pkgver/$_projectname-$pkgver.tar.gz"
 	'disable-clippy.patch'
