@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=2.0.1_429
-pkgrel=3
+pkgrel=4
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64')
 url="https://im.qq.com"
@@ -16,7 +16,7 @@ install=${_pkgname}.install
 source=("https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v${pkgver//_/-}_x64.deb"
 		'start.sh')
 sha256sums=('e3aa15ff6ae089b655df3913c6020ca56726bd676995aaf29b313fbd0643ea42'
-			'5a6b2378ff764e347e17e1587ba588ae06cf4fc3081c2a2f4ee129872d8f4211')
+			'f757df155db9147a9921af13cb18db3fa4e2f32a7c4d3422c6016d113cabc6d8')
 
 package(){
 	tar -xJ -f "data.tar.xz" -C "${pkgdir}"
