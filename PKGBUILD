@@ -23,7 +23,7 @@ package_webstorm() {
   optdepends=('webstorm-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime: JRE - Required if webstorm-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely')
-  _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sed 's#WebStorm-##')"
+  _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#WebStorm-##')"
 
   install -dm755 "${pkgdir}"/opt/
   install -dm755 "${pkgdir}"/usr/bin/
@@ -42,7 +42,7 @@ package_webstorm() {
 package_webstorm-jre() {
   pkgdesc='JBR (JetBrains Runtime) for WebStorm - a patched JRE'
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
-  _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sed 's#WebStorm-##')"
+  _buildver="$(ls | grep -Eo 'WebStorm-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#WebStorm-##')"
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
   cp -a WebStorm-${_buildver:?_buildver unset}/jbr "${pkgdir}"/opt/${pkgbase}
