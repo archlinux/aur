@@ -42,7 +42,7 @@ build() {
 #     [ -f Makefile ] && make -j 4 || ninja
 }
 package() { 
-    targ="$pkgdir/usr/share/"
+    targ="$pkgdir/usr/share/rpkdev/"
     mkdir -p "$targ"
     dir -1 "$srcdir/" | while read f; do
         mv "$(realpath "$srcdir/$f")" "$targ/"
