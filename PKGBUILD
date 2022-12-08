@@ -4,12 +4,12 @@ pkgver=1.0.2.r0.6e18742
 pkgrel=1
 pkgdesc="C library to interact with backlight brightness"
 arch=('x86_64' 'i686')
-url="https://git.thomasvoss.com/liblux-git"
+url="https://git.thomasvoss.com/liblux"
 license=('BSD')
 makedepends=('git' 'tup-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git://git.thomasvoss.com/liblux-git.git")
+source=("${pkgname%-git}::git://git.thomasvoss.com/liblux.git")
 b2sums=('SKIP')
 
 pkgver() {
