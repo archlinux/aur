@@ -1,11 +1,11 @@
-# Maintainer: gardenapple <gardenapple at posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 # Contributor: Andrew Clunis <andrew@orospakr.ca>
 # Contributor: Ben R <thebenj88@gmail.com>
 # Contributor: Loïc Bidoux <loic.bidoux@owndata.org>
 
 pkgname=vrms-arch-git
 _pkgname=vrms-arch
-pkgver=2.0.r2.g128b201
+pkgver=2.0.1.r0.g637e123
 pkgrel=1
 pkgdesc="Virtual Richard M. Stallman for Arch Linux (updated fork)"
 arch=('any')
