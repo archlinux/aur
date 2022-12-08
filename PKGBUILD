@@ -109,6 +109,7 @@ build () {
        -D osmesa=true \
        -D shared-glapi=enabled \
        -D microsoft-clc=disabled \
+       -D valgrind=disabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
        -D gallium-rusticl=true \
        -D opencl-spirv=true \
