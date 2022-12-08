@@ -1,6 +1,6 @@
 pkgbase = ferdium-nightly-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (nightly binary release).
-	pkgver = 6.2.2.nightly.2
+	pkgver = 6.2.3.nightly.2
 	pkgrel = 1
 	url = https://ferdium.org
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = ferdium-nightly-bin
 	conflicts = ferdium-nightly-bin
 	conflicts = ferdium-nightly
 	conflicts = ferdium-git
-	source_x86_64 = ferdium-nightly-bin-6.2.2-nightly.2-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.2-nightly.2/Ferdium-linux-6.2.2-nightly.2-amd64.deb
-	sha512sums_x86_64 = c2fdae2b55b756e4940d281ba6af02014271220f358712267c8a47bda2eab7445588c914cca463f9fd5e3e9ce5bacdfdaf759d3264bf2ac69d63d1ef6e280dca
-	source_armv7l = ferdium-nightly-bin-6.2.2-nightly.2-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.2-nightly.2/Ferdium-linux-6.2.2-nightly.2-armv7l.deb
-	sha512sums_armv7l = 02b94660d12b6746af225fec6271222a4b556e3192f9188feacd5e1328d2205c5fdfa96d2afa4e8cdad015ce9fa85e6aa1d7942c788589c7dd6c5f3a9f936ee6
-	source_aarch64 = ferdium-nightly-bin-6.2.2-nightly.2-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.2-nightly.2/Ferdium-linux-6.2.2-nightly.2-arm64.deb
-	sha512sums_aarch64 = 9c936f637dc9dc222100f8843abbfec604e75c9609ea5dd25461c43a6a53a6b5cb27342b672a9630901b313ad88c84cfabe9a61379756e64f97a48e5736ee401
+	source_x86_64 = ferdium-nightly-bin-6.2.3-nightly.2-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.3-nightly.2/Ferdium-linux-6.2.3-nightly.2-amd64.deb
+	sha512sums_x86_64 = e5d09aee834ad460e7d93a78550063d7e10b53be776b4e6a2e331d3efaf61502957bf475bd012f7169e6d9094794ef009aa752050752d95484c240745e1e538b
+	source_armv7l = ferdium-nightly-bin-6.2.3-nightly.2-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.3-nightly.2/Ferdium-linux-6.2.3-nightly.2-armv7l.deb
+	sha512sums_armv7l = 8d8642607da75745d5451376cc1cca14f6a47b1b09295007131e0c70268b263bad4c3c5bc2bb4151b73e69b2ec8d6fe50193e25b3db5a6b2af7bd529c22d9a23
+	source_aarch64 = ferdium-nightly-bin-6.2.3-nightly.2-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v6.2.3-nightly.2/Ferdium-linux-6.2.3-nightly.2-arm64.deb
+	sha512sums_aarch64 = 40a7da2aed0536c66c9288274272b61af900e1c49af269b609834a6982e045b742e2dcdb2637f59b3619c3d4b36a8a0cfde86a35671433140a0d3c91b82907e5
 
 pkgname = ferdium-nightly-bin
