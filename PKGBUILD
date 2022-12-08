@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple@posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 _gemname=neocities
 pkgname=neocities-cli
