@@ -17,8 +17,8 @@ optdepends=(
 	'xdg-desktop-portal-gnome: Gnome 下的原生对话框'
 	'libnotify: 桌面通知, 需要搭配通知服务器使用'
 )
-provides=(electronic-wechat)
-conflicts=()
+provides=(electronic-wechat-uos-bin)
+conflicts=(electronic-wechat-uos-bin)
 replaces=()
 install=${pkgname}.install
 source=(
