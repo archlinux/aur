@@ -1,4 +1,4 @@
- function note() {
+function note() {
     printf "${blue}==>${yellow} 提示:${bold} $1${all_off}\n"
 }
 
