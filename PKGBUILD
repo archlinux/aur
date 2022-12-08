@@ -4,7 +4,7 @@
 pkgname=linuxqq-new
 _pkgname=tencent-qq
 pkgver=2.0.1_429
-pkgrel=4
+pkgrel=5
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64')
 url="https://im.qq.com/linuxqq/"
@@ -30,6 +30,7 @@ package() {
 	# Icon
 	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/qq.png" -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
 	rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0"
+	sed -i '6s!/opt/QQ/resources/app/512x512.png!qq!' "${pkgdir}/usr/share/applications/qq.desktop"
 
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
