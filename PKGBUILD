@@ -10,18 +10,18 @@ set -e
                 export remote=1
             
 pkgname='ltstudio'
-uniq='tssoftware:lt'
+uniq='tssoftware:ltstudio'
 appname='LTStudio'
 alias='LT Studio IDE'
 pkgdesc='New generation IDE, very fast programming with useful code-completion features for C++, TSML, HTML, Css.  -- Beta version'
 author='TS'
-type='library'
+type='app'
 pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' )
-pkgdir='/tmp/tmp.YDhmIa4cF6/sh/pkg'
+pkgdir='/tmp/tmp.SuMmDnmUs0/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
@@ -34,7 +34,7 @@ build() {
     if [ "$remote" == 1 ]; then
         echo "srcdir: $srcdir"
         echo "pkgname: $pkgname"
-        getpkg "$uniq" "$pkgname" "$srcdir"
+        getpkg "$uniq" "$pkgname" "$pkgver"
     fi
 #     [ -f Makefile ] && make -j 4 || ninja
 }
