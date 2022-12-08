@@ -2,24 +2,25 @@
 
 pkgname=python-symspellpy
 _pkgname=symspellpy
-pkgver=6.7.0
+pkgver=6.7.7
 pkgrel=1
 pkgdesc="Python SymSpell"
 arch=('any')
 url="https://github.com/mammothb/symspellpy"
 license=('MIT')
-depends=('python' 'python-setuptools')
+depends=('python')
+makedepends=(python-build python-installer python-wheel)
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/mammothb/symspellpy/archive/v${pkgver}.tar.gz
 )
-sha256sums=('809361d6910e0d41dc3bf700417ac35ac66947fcf0843de20f9e4b2876d4e1bb')
+sha256sums=('d8e0b2f9739fd25058b84d2c72a4255ab2e29633598aeb08b9292b618506effa')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    LANG=en_US.UTF-8 python setup.py build
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    LANG=en_US.UTF-8 python setup.py install --root=$pkgdir --optimize=1 --skip-build
+    cd "$_pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
