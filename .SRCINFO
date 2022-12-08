@@ -1,7 +1,7 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = A window manager for GNOME (with dynamic triple/double buffering)
-	pkgver = 43.1+r2+g6a962803e
-	pkgrel = 2
+	pkgver = 43.2
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -31,7 +31,7 @@ pkgbase = mutter-dynamic-buffering
 	depends = libsysprof-capture
 	depends = lcms2
 	depends = colord
-	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=6a962803e85ff160ab33c6ee42fc009731c5029f
+	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=46f4143619734ec2b95503ba96e444f61f27e18e
 	source = mr1441.patch
 	sha256sums = SKIP
 	sha256sums = 897e93d3768f6d1fcdaa4b6ef9ec1fba5cd0bf8056477a32197826b1dd43b48f
