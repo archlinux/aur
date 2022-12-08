@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.17.5.r22.g1399cdb9c
+pkgver=0.19.0.r2.gc37934345
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('brotli' 'gettext' 'gnutls' 'iptables' 'jansson' 'libcurl-gnutls'
          'zlib')
 makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
              'pkgconfig' 'postgresql' 'python' 'python-sphinx'
-             'python-sphinx_rtd_theme' 'recutils')
+             'python-sphinx_rtd_theme' 'recutils' 'texinfo')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'jose: for re:claimID OpenID Connect plugin'
@@ -32,7 +32,6 @@ optdepends=('bluez: for bluetooth transport'
             'postgresql: for an alternative to sqlite in the database plugin'
             'python: for test suite'
             'texi2mdoc: for automatic mdoc generation'
-            'texinfo: for building the documentation'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
             'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${_appname}.conf")
