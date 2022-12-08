@@ -1,6 +1,6 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A pure Python interface for the Telegram Bot API
-	pkgver = 13.14
+	pkgver = 13.15
 	pkgrel = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
@@ -14,10 +14,7 @@ pkgbase = python-telegram-bot
 	depends = python-tornado
 	optdepends = python-cryptography: for support cryptography library
 	optdepends = python-httpx: for support SOCKS server
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v13.14/python-telegram-bot-13.14.tar.gz
-	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v13.14/python-telegram-bot-13.14.tar.gz.asc
-	validpgpkeys = 655BB4F56CDB0E0E4500CF572E9E0E127EF3F283
-	sha512sums = 4e069493e409036517986686563bc9f3f8e987f7aa9b531ae46e2dbf505e97b6d0f6c529cdc701f3144151cb4daadc35c52767471bcfc7087073a573e250301d
-	sha512sums = SKIP
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v13.15/python-telegram-bot-13.15.tar.gz
+	sha512sums = 15103f7fa9638941a6f18e934a05d553ab1ad7eb43dcb346617f2aba1876410f44e1e0880370aac00167c73841ad72f1bb38d1a90536689eebc1dd5947cae0e5
 
 pkgname = python-telegram-bot
