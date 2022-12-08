@@ -1,0 +1,5 @@
+pkg/
+src/
+miditk_smf-*.tar.gz
+python-miditk-smf-*.pkg.tar.*
+python-miditk-smf-*.src.tar.gz
