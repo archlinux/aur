@@ -1,5 +1,5 @@
 pkgbase = python-molmass
-	pkgdesc = Fast and efficient theoretical isotopic profile generation
+	pkgdesc = Molecular mass calculations
 	pkgver = 2022.10.18
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/molmass
