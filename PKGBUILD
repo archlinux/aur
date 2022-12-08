@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' '/bin<build/Debug/bin' )
-pkgdir='/tmp/tmp.MJzREDWbaB/sh/pkg'
+pkgdir='/tmp/tmp.hSRqTSBa3J/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
@@ -52,17 +52,18 @@ package() {
     fi
     cd "$projdir/$pkgname"
 #     echo "PWD: $PWD"
-    for((i = 0; i < ${#contents[@]}; i++)); do
+#     for((i = 0; i < ${#contents[@]}; i++)); do
+    dir -1 "./" | while read f; do
 #         echo "#contents: ${#contents[@]}"
-        IFS="<" read -a sp <<< "${contents[$i]}"
+#         IFS="<" read -a sp <<< "${contents[$i]}"
 #         echo "#contents: ${#contents[@]}"
         
 #         echo ln -sf "$(trimstr "${sp[1]}")}" "$pkgdir/$(tspkg_convpath "$(trimstr "${sp[0]}")")"
-        nativepth="$(tspkg_convpath <<< "$(trimstr "${sp[0]}")")"
+        nativepth="$(tspkg_convpath <<< "$(trimstr "${f}")")"
 #         echo "nativepth: $nativepth"
 #         echo "pkgdir: $pkgdir"
         mkdir -p "$pkgdir/$(dirname "$nativepth")"
-        run cp -R "$(abstorel <<< "${sp[0]}")" "$pkgdir/$(abstorel <<< "$nativepth")"
+        run cp -R "$(abstorel <<< "${f}")" "$pkgdir/$(abstorel <<< "$nativepth")"
 #         cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
     done
 }        
