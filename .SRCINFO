@@ -5,5 +5,10 @@ pkgbase = lib-lt-devel
 	arch = any
 	groups = Library/WidgetToolkit
 	makedepends = rpkdev
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = freetype2
+	options = !strip
 
 pkgname = lib-lt-devel
