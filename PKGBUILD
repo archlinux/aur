@@ -21,13 +21,13 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' '/bin<build/bin' )
-pkgdir='/tmp/tmp.B20OAhKhdb/sh/pkg'
+pkgdir='/tmp/tmp.B1J7WEEljU/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
 arch=(  'any' )
 
-depends=( )
+depends=( 'lib-lt-devel' 'lib-lt-headers' )
 makedepends=( rpkdev )
 abstorel(){
     sed -E 's/^\/+//g'
