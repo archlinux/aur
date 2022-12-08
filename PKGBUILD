@@ -40,7 +40,7 @@ build() {
 #     [ -f Makefile ] && make -j 4 || ninja
 }
 package() { 
-    mv "rpkdev" "$pkgdir/"
+    mv "$(realpath rpkdev)" "$pkgdir/"
 #     echo "Packaging of tspkg started."
 #     if [ "$remote" == 1 ]; then
 #         projdir="$srcdir"
