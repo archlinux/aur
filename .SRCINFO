@@ -1,13 +1,13 @@
 pkgbase = cmake-language-server
 	pkgdesc = Python based cmake language server
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/regen100/cmake-language-server
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pygls
-	depends = python-cmakelang
+	depends = cmake-format
 	depends = cmake
 	conflicts = cmake-format
 	source = https://files.pythonhosted.org/packages/source/c/cmake-language-server/cmake-language-server-0.1.5.tar.gz
