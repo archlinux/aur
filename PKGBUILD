@@ -38,11 +38,5 @@ package() {
 	# Extra ROMs
 	install -D -m 644 "$srcdir"/fuseroms-0.2/fuse-extra/* -t "$pkgdir"/usr/share/fuse/
 
-	# Extra ROMs
-#	for extrarom in $srcdir/fuseroms-0.2/fuse-extra/
-#	do
-#		install -D -m 644 "$extrarom" -t "$pkgdir/usr/share/fuse/"
-#	done
-
 }
 
