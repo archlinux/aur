@@ -1,0 +1,9 @@
+pkgbase = lib-lt-headers
+	pkgdesc = LT Widget toolkit headers
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = Library/WidgetToolkit
+	makedepends = rpkdev
+
+pkgname = lib-lt-headers
