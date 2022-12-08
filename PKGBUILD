@@ -1,5 +1,5 @@
 # Maintainer: FantasqueX < fantasquex at gmail dot com >
-pkgname=perl-whois-ip
+pkgname=perl-net-whois-ip
 pkgver=1.19
 pkgrel=1
 pkgdesc="Perl extension for looking up the whois information for ip addresses"
