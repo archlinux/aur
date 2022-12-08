@@ -6,7 +6,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=107.0
+pkgver=107.0.1
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 # source_aarch64=()
-sha256sums=('8a562e5a397b57e9bf383c2988308ab494c5d28844e792c658fedea27756584a'
+sha256sums=('e29950b9ba9143b0d683dc18779bbe70bbd082533aff8f6a7af69b19533e0647'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -129,7 +129,7 @@ ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 
-# wasi
+# WASI
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 END
 
@@ -168,7 +168,6 @@ END
   # PGO improvements
   patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
-  # LibreWolf
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
