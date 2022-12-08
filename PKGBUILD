@@ -31,7 +31,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.1+r24+g030e9b8b2
+pkgver=43.2
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -46,14 +46,16 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=030e9b8b24cb4335455f4e51a39a2c854c5717b8  # tags/43.1^24
+_commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
+        'mr2702.patch'
         'mr2671.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
             '65981409a5fc5ebfa95c7178f588cb2564f405cf55cbc7a315ecd4ac6c892b1c'
+            '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
             'dc0520fd8e9e9d4e76ebfe9e95f72f25bad18a149d04db9d0d35806f1903326c')
 
 pkgver() {
@@ -95,7 +97,7 @@ prepare() {
   git cherry-pick --abort || true
 
   # build: Replace deprecated/custom meson functions
-  pick_mr '2702' 'merge'
+  pick_mr '2702' 'mr2702.patch' 'patch'
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true

@@ -1,0 +1,137 @@
+Author: Florian Müllner <fmuellner@gnome.org>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2702
+Editor: Mingi Sung <FiestaLake@protonmail.com>
+Commit: 770a72f4469adae6060922175fe92dc9d7eec5f1
+Last Updated: 12/8/22 (Mutter 43.2-1)
+---
+
+Since meson 0.57, the gnome module includes a function we can
+use instead.
+
+Fixes: #2518 (closed)
+
+---
+diff --git a/meson.build b/meson.build
+index 07460c0f1..29cc1a6d1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('mutter', 'c',
+   version: '43.2',
+-  meson_version: '>= 0.55.0',
++  meson_version: '>= 0.58.0',
+   license: 'GPLv2+'
+ )
+ 
+@@ -224,7 +224,7 @@ if have_libgudev
+ 
+   udev_dir = get_option('udev_dir')
+   if udev_dir == ''
+-    udev_dir = udev_dep.get_pkgconfig_variable('udevdir')
++    udev_dir = udev_dep.get_variable('udevdir')
+   endif
+ endif
+ 
+@@ -515,7 +515,7 @@ cdata.set('HAVE_INTROSPECTION', have_introspection)
+ cdata.set('HAVE_PROFILER', have_profiler)
+ 
+ if have_x11_client
+-  xkb_base = xkeyboard_config_dep.get_pkgconfig_variable('xkb_base')
++  xkb_base = xkeyboard_config_dep.get_variable('xkb_base')
+   cdata.set_quoted('XKB_BASE', xkb_base)
+ endif
+ 
+@@ -532,7 +532,7 @@ if have_xwayland
+   xwayland_path = get_option('xwayland_path')
+   if xwayland_path == ''
+     if xwayland_dep.found()
+-      xwayland_path = xwayland_dep.get_pkgconfig_variable('xwayland')
++      xwayland_path = xwayland_dep.get_variable('xwayland')
+     else
+       xwayland_path = find_program('Xwayland').path()
+     endif
+@@ -551,7 +551,7 @@ if have_xwayland
+   # For Xwayland -initfd usage
+   use_initfd = get_option('xwayland_initfd')
+   if xwayland_dep.found()
+-    xwayland_supports_initfd = xwayland_dep.get_pkgconfig_variable('have_initfd') == 'true'
++    xwayland_supports_initfd = xwayland_dep.get_variable('have_initfd') == 'true'
+   else
+     xwayland_options = run_command(xwayland_path, '-help')
+     xwayland_supports_initfd = xwayland_options.stderr().contains('-initfd')
+@@ -572,7 +572,7 @@ if have_xwayland
+ 
+   # For Xwayland -listenfd usage
+   if xwayland_dep.found()
+-    have_xwayland_listenfd = xwayland_dep.get_pkgconfig_variable('have_listenfd') == 'true'
++    have_xwayland_listenfd = xwayland_dep.get_variable('have_listenfd') == 'true'
+   endif
+ 
+   if (have_xwayland_listenfd)
+@@ -581,7 +581,7 @@ if have_xwayland
+ 
+   # For Xwayland -listenfd usage
+   if xwayland_dep.found()
+-    have_xwayland_terminate_delay = xwayland_dep.get_pkgconfig_variable('have_terminate_delay') == 'true'
++    have_xwayland_terminate_delay = xwayland_dep.get_variable('have_terminate_delay') == 'true'
+   endif
+ 
+   if (have_xwayland_terminate_delay)
+@@ -640,7 +640,10 @@ if have_documentation
+   subdir('doc/reference')
+ endif
+ 
+-meson.add_install_script('meson/meson-postinstall.sh')
++gnome.post_install(
++  glib_compile_schemas: true,
++)
++
+ meson.add_dist_script('meson/check-version.py', meson.project_version(), 'NEWS')
+ 
+ summary('prefix', prefix, section: 'Directories')
+diff --git a/meson/meson-postinstall.sh b/meson/meson-postinstall.sh
+deleted file mode 100755
+index 4500dcb01..000000000
+--- a/meson/meson-postinstall.sh
++++ /dev/null
+@@ -1,10 +0,0 @@
+-#!/bin/sh
+-
+-# Package managers set this so we don't need to run
+-if [ -z "$DESTDIR" ]; then
+-  echo Compiling GSettings schemas...
+-  glib-compile-schemas ${MESON_INSTALL_PREFIX}/share/glib-2.0/schemas
+-
+-  echo Updating desktop database...
+-  update-desktop-database -q ${MESON_INSTALL_PREFIX}/share/applications
+-fi
+diff --git a/src/meson.build b/src/meson.build
+index 6790efa16..063c06b02 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -882,7 +882,7 @@ if have_profiler
+   ]
+ 
+   if sysprof_dep.type_name() == 'pkgconfig'
+-    sysprof_dbus_interfaces_dir = join_paths(sysprof_dep.get_pkgconfig_variable('datadir'), 'dbus-1', 'interfaces')
++    sysprof_dbus_interfaces_dir = join_paths(sysprof_dep.get_variable('datadir'), 'dbus-1', 'interfaces')
+   else
+     sysprof_dbus_interfaces_dir = join_paths(mutter_srcdir, 'subprojects', 'sysprof', 'src')
+   endif
+@@ -980,14 +980,14 @@ if have_wayland
+     ['xwayland-keyboard-grab', 'unstable', 'v1', ],
+   ]
+   if have_wayland_eglstream
+-    wayland_eglstream_protocols_dir = wayland_eglstream_protocols_dep.get_pkgconfig_variable('pkgdatadir')
++    wayland_eglstream_protocols_dir = wayland_eglstream_protocols_dep.get_variable('pkgdatadir')
+     wayland_protocols += [
+       ['wayland-eglstream-controller', 'third-party', wayland_eglstream_protocols_dir],
+     ]
+   endif
+ 
+   wayland_scanner = find_program('wayland-scanner')
+-  protocols_dir = wayland_protocols_dep.get_pkgconfig_variable('pkgdatadir')
++  protocols_dir = wayland_protocols_dep.get_variable('pkgdatadir')
+   assert(protocols_dir != '', 'Could not get pkgdatadir from wayland-protocols.pc')
+ 
+   foreach p: wayland_protocolsRobert Made
