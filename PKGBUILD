@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=6.0.0.r102.gbbec686c
+pkgver=5.15.1.r6.gac048fb3
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-cod
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
          'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
 makedepends=('golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
-             'deepin-api-git' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v2' 'sqlite' 'deepin-gettext-tools-git'
+             'deepin-api-git' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v3' 'sqlite' 'deepin-gettext-tools-git'
              'git' 'mercurial' 'python-gobject' 'networkmanager' 'bluez' 'go')
 optdepends=('networkmanager: for network management support'
             'bluez: for bluetooth support'
@@ -25,10 +25,8 @@ groups=('deepin-git')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/linuxdeepin/dde-daemon"
         dde-daemon.patch
-        remove-tc.patch
         'deepin-daemon.sysusers')
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             '808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a')
 
@@ -39,11 +37,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
-  patch -p1 -i ../remove-tc.patch
+  sed -i '/uadp/d' bin/dde-system-daemon/main.go
+  sed -i '/uadp/d' bin/dde-session-daemon/module.go
+  sed -i '/uadp/d' bin/dde-session-daemon/daemon.go
   patch -p1 -i ../dde-daemon.patch
   rm -rf system/uadp
   rm -rf session/uadpagent
@@ -60,8 +56,9 @@ prepare() {
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
   go get -v github.com/Lofanmi/pinyin-golang/pinyin
-  go get -v gopkg.in/yaml.v3
   go get -v github.com/youpy/go-wav
+  go get -v google.golang.org/protobuf/proto
+  go get -v github.com/mdlayher/netlink
   sed -i 's#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#' accounts/user.go
 }
 
