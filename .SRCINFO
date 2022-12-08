@@ -1,6 +1,6 @@
 pkgbase = libcoap
 	pkgdesc = C-Implementation of CoAP
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://libcoap.net/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libcoap
 	provides = coap-client
 	provides = coap-rd
 	provides = coap-server
-	source = https://github.com/obgm/libcoap/archive/refs/tags/v4.3.0.tar.gz
-	md5sums = 15156391f67b9e0ade47966eeb839216
+	source = https://github.com/obgm/libcoap/archive/refs/tags/v4.3.1.tar.gz
+	md5sums = e3d6e29e1afd11bb965a3efce8d332b8
 
 pkgname = libcoap
