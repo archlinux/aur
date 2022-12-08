@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
-makedepends=('git' 'python' 'pnpm' 'jq' 'asar' 'nodejs-lts-gallium')
+makedepends=('git' 'python' 'pnpm' 'npm' 'jq' 'asar' 'nodejs-lts-gallium')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"

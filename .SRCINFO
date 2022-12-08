@@ -11,6 +11,7 @@ pkgbase = ferdium-electron
 	makedepends = git
 	makedepends = python
 	makedepends = pnpm
+	makedepends = npm
 	makedepends = jq
 	makedepends = asar
 	makedepends = nodejs-lts-gallium
