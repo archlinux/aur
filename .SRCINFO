@@ -8,6 +8,8 @@ pkgbase = deepin-wallpapers-git
 	license = GPL
 	makedepends = git
 	makedepends = deepin-api-git
+	provides = deepin-wallpapers
+	conflicts = deepin-wallpapers
 	source = deepin-wallpapers-git::git+https://github.com/linuxdeepin/deepin-wallpapers/
 	sha512sums = SKIP
 

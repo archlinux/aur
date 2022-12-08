@@ -14,6 +14,8 @@ url="https://github.com/linuxdeepin/deepin-wallpapers"
 makedepends=('git' 'deepin-api-git')
 groups=('deepin-git')
 source=("$pkgname::git+https://github.com/linuxdeepin/deepin-wallpapers/")
+provides=('deepin-wallpapers')
+conflicts=('deepin-wallpapers')
 sha512sums=('SKIP')
 
 pkgver() {
