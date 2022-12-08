@@ -3,13 +3,13 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.4.1
+pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
     	 'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
 		 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch' 'glibmm-2.68'
 		 'openssl-1.1')
@@ -21,7 +21,7 @@ provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
         "block-sponsored_messages.patch")
-sha512sums=('5086081579a1998ac87d3903b22f964961b1e8421d9d314ab3f36f6750a5065f11ef8c8970bcf658abaf14b810f09e986d25592320d2b3502104240962534d71'
+sha512sums=('2b485c3fb4fb9f8a334973de27c52fd4f093363564e05493b70dd6f132fbe5051b426edca4799735900846a7da9e9695f0b7f6eda706c174cd8a70174aeb5610'
             'a52be36a626a79442c1f34496a1444e8012515f67a8899a34c5a97109a847a6a5d8c87f866c5c6315b87bfe411e902315a64cf93d413d7bf070b819a5f93d828')
 
 prepare() {
@@ -32,7 +32,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/$_pkgname-v$pkgver-full"
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     cmake \
         -B build \
         -G Ninja \
