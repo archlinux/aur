@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
-pkgver=0.6.8.r2.g9476531
+pkgver=0.6.9.r16.g811d87e
 pkgrel=1
 pkgdesc='X11 protocol go language binding'
 arch=('any')
@@ -11,8 +11,8 @@ conflicts=('golang-github-linuxdeepin-go-x11-client')
 provides=('golang-github-linuxdeepin-go-x11-client')
 groups=('deepin-git')
 depends=('golang-golang-x-text')
-makedepends=('git' 'go' 'xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2')
-checkdepends=('xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2' 'git')
+makedepends=('git' 'go' 'xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v3')
+checkdepends=('xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v3' 'git')
 source=("$pkgname::git+https://github.com/linuxdeepin/go-x11-client")
 sha512sums=('SKIP')
 
@@ -23,9 +23,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
   rm -rf tools
 }
 
@@ -35,7 +32,6 @@ check() {
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
   cp -a "$srcdir/$pkgname" "$srcdir"/build/src/github.com/linuxdeepin/go-x11-client
   cd "$srcdir"/build/src/github.com/linuxdeepin/go-x11-client
-  go get gopkg.in/yaml.v3
   xvfb-run go test -v $(go list ./...)
 }
 
