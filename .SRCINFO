@@ -1,7 +1,7 @@
 pkgbase = android-x86-zlib
 	pkgdesc = A compression/decompression Library (android)
-	pkgver = 1.2.12
-	pkgrel = 2
+	pkgver = 1.2.13
+	pkgrel = 1
 	url = http://www.zlib.net/
 	arch = any
 	license = custom:zlib
@@ -12,11 +12,11 @@ pkgbase = android-x86-zlib
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://zlib.net/zlib-1.2.12.tar.gz
+	source = http://zlib.net/zlib-1.2.13.tar.gz
 	source = 0001-Disable-versioning.patch
 	source = 0002-Fix-CC-definition.patch
-	md5sums = 5fc414a9726be31427b440b434d05f78
-	md5sums = 3e04fe1f84d547ea0ca318463e319ab7
+	md5sums = 9b8aa094c4e5765dabf4da391f00d15c
+	md5sums = c2d3fe1aba79ec3e75758b2f6478c980
 	md5sums = 2420be2579d725c1cf1e0aac7ae0a4fe
 
 pkgname = android-x86-zlib
