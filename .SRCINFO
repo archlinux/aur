@@ -1,6 +1,6 @@
 pkgbase = r-bbotk
 	pkgdesc = Black-Box Optimization Toolkit
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bbotk
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-bbotk
 	optdepends = r-progressr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/bbotk_0.7.1.tar.gz
-	sha256sums = 9fdcbcaedbe7e1de5ed9b3bc43d76030f3fde2a022c923ccb20589fa22750d3b
+	source = https://cran.r-project.org/src/contrib/bbotk_0.7.2.tar.gz
+	sha256sums = a9de87ebdf45012c6bb5bf86c0f0799bbc7441d6298310127571a41dd7cc80bf
 
 pkgname = r-bbotk
