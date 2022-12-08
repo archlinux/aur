@@ -41,7 +41,7 @@ build() {
 }
 package() { 
     targ="$pkgdir/usr/bin"
-    mkdir "$targ"
+    mkdir -p "$targ"
     mv "$(realpath rpkdev)" "$targ"
 #     echo "Packaging of tspkg started."
 #     if [ "$remote" == 1 ]; then
