@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=immugw
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A REST proxy for immudb'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 backup=('etc/immugw/immugw.toml')
 options=('!lto')
-_commit='323096dcaf7bf12fadf9219099f46371b5be556c'
+_commit='df2e5124957fc5b4992dd4592605608dd64c0742'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'config.toml'
