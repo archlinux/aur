@@ -3,30 +3,29 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=colord-kde
-pkgver=0.5.0
-pkgrel=3
+pkgver=22.12.0
+pkgrel=1
 pkgdesc="Interfaces and session daemon to colord for KDE"
 arch=(x86_64)
 url='https://userbase.kde.org/Color_Management'
 license=(GPL)
-depends=(colord libxrandr kservice kconfigwidgets)
-makedepends=(extra-cmake-modules plasma-framework kcmutils kitemviews)
-source=("https://download.kde.org/stable/colord-kde/$pkgver/src/$pkgname-$pkgver.tar.xz")
-md5sums=('4833ffdf73cc795195e1c82eaf0de51e')
-
-prepare() {
-  mkdir -p build
-}
+groups=(kde-applications kde-graphics)
+depends=(colord libxrandr kio)
+makedepends=(extra-cmake-modules kcmutils)
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('8b67c8d9f8732724a60d7fb5c10465feb39f4904cd4be82bc68a5d1faac187fd'
+            'SKIP')
+validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
+              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
+              D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
+options=(debug)
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -S $pkgname-$pkgver \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
