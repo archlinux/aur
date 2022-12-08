@@ -16,6 +16,8 @@ pkgbase = pegasus-frontend-git
 	depends = qt5-svg
 	depends = qt5-tools
 	depends = sdl2
+	depends = gst-libav
+	depends = gst-plugin-good
 	optdepends = polkit
 	provides = pegasus-frontend
 	conflicts = pegasus-frontend
@@ -29,4 +31,3 @@ pkgbase = pegasus-frontend-git
 	md5sums = SKIP
 
 pkgname = pegasus-frontend-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Severin Kaderli <severin.kaderli@gmail.com>
 _pkgname=pegasus-frontend
 pkgname=${_pkgname}-git
-pkgver=alpha14.r36.g49dd98b3
+pkgver=alpha16.r44.g8119fcec
 pkgrel=1
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
@@ -20,6 +20,8 @@ depends=(
     'qt5-svg'
     'qt5-tools'
     'sdl2'
+    'gst-libav'
+    'gst-plugins-good'
 )
 optdepends=(
     'polkit'
@@ -50,7 +52,7 @@ prepare() {
     git config submodule.lang.url "${srcdir}/pegasus-frontend-translations"
     git config submodule.src/themes/pegasus-theme-grid.url "${srcdir}/pegasus-theme-grid"
     git config submodule.thirdparty/SortFilterProxyModel.url "${srcdir}/SortFilterProxyModel"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
