@@ -1,0 +1,17 @@
+pkgbase = cri-dockerd-git
+	pkgdesc = A CRI implementation on top of Docker
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/mirantis/cri-dockerd
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = docker
+	provides = cri-dockerd
+	source = git+https://github.com/mirantis/cri-dockerd.git
+	sha256sums = SKIP
+
+pkgname = cri-dockerd-git
