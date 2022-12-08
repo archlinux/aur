@@ -1,7 +1,7 @@
 pkgbase = python-captionstransformer
 	pkgdesc = A set of tools (API + script) to read, write and transform captions from/to many formats
 	pkgver = 1.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/captionstransformer
 	arch = any
 	license = GPL

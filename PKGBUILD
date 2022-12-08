@@ -2,7 +2,7 @@
 pkgname=python-captionstransformer
 _name=${pkgname#python-}
 pkgver=1.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc='A set of tools (API + script) to read, write and transform captions from/to many formats'
 arch=(any)
 url=https://pypi.org/project/captionstransformer
