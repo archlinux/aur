@@ -1,4 +1,5 @@
 pkgbase = lib-lt
+	pkgdesc = Beautiful & Lightweight Widget Toolkit library (also privedes C++ apis, such as LString, LProcess, LArray ...).
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
