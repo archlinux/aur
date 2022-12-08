@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple@posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=run-mailcap-rs-git
 pkgver=r56.3e5ed74
