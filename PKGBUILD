@@ -43,6 +43,7 @@ package() {
     targ="$pkgdir/usr/bin"
     mkdir -p "$targ"
     mv "$(realpath rpkdev)" "$targ"
+    chmod -R 755 "$targ"
 #     echo "Packaging of tspkg started."
 #     if [ "$remote" == 1 ]; then
 #         projdir="$srcdir"
