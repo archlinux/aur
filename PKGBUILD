@@ -14,8 +14,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=43.1+r2+g6a962803e
-pkgrel=2
+pkgver=43.2
+pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -30,7 +30,7 @@ checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
 provides=(mutter libmutter-11.so)
 conflicts=(mutter)
 _scaling_commit=fd7ba96ccf650634fec883e37f7b07557434a785 # Commit fd7ba96c
-_commit=6a962803e85ff160ab33c6ee42fc009731c5029f  # gnome-43
+_commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/abc3b7c285779a719c5b9a99b477657a8021727e/Support-Dynamic-triple-double-buffering.patch")
@@ -45,11 +45,6 @@ pkgver() {
 
 prepare() {
   cd mutter
-
-  # https://bugs.archlinux.org/task/76570
-  # https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6054
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2694
-  git cherry-pick -n 61cc31c3ce37d6a1d977f6cdccc3703ca824a51e
 
   # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
