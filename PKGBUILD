@@ -25,7 +25,7 @@ _b="https://content.tssoftware.eu/binary/"
 source=( "${_b}/rpkdev" "${_b}/libconquery.so" "${_b}/libnfd.so" "${_b}/libLT.so" "${_b}/libTSMLParser.so")
 noextract=( "rpkdev" "libconquery.so" "libnfd.so" "libLT.so" "libTSMLParser.so" )
 
-sha256sums=( "SKIP" )
+sha256sums=( "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" )
 
 prepare() {
     cd "${srcdir}"

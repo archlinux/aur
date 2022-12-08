@@ -16,5 +16,9 @@ pkgbase = rpkdev
 	source = https://content.tssoftware.eu/binary//libLT.so
 	source = https://content.tssoftware.eu/binary//libTSMLParser.so
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = rpkdev
