@@ -3,7 +3,7 @@
 
 pkgname=arduino-avr-core
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any')
 url="https://github.com/arduino/ArduinoCore-avr"
