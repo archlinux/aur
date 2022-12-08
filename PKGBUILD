@@ -2,26 +2,29 @@
 
 _npmname=soccer-go
 pkgname=nodejs-soccer-go
-pkgver=0.5.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="soccer-go is a node command line application to gather soccer stats and results"
 arch=('any')
 url="https://github.com/acifani/soccer-go"
 license=(MIT)
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('da0b90ee3906b1cf80b98c1d3c1238e6602ad7ee97a78c9a12d983ac7e2f346e')
+sha256sums=('1dc027ea14d11de079ad070b727149d19696febb7ca184cbbd17eb3d2acbd342')
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${_npmname}-${pkgver}.tgz"
 
   # fix perms
-  chmod 755 ${pkgdir}/usr/bin
-  find ${pkgdir}/usr/lib/node_modules/ -type d -exec chmod 755 {} +
+  chown -R root:root "${pkgdir}"
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  find "${pkgdir}" -type f -name "package.json" -print0 | xargs -0 sed -i "/_where/d"
+
+  local tmppackage="$(mktemp)"
+  local pkgjson="${pkgdir}/usr/lib/node_modules/${pkgname#nodejs-}/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
+  mv "${tmppackage}" "${pkgjson}"
+  chmod 644 "${pkgjson}"
 }
