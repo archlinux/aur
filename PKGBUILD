@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.0.2.r59.gf9fe3f8fb
+pkgver=5.0.2.r64.g025e18e7e
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             'SKIP'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            '8b4a4bb6bdbb68cf1adfbb2c28a42a9597d7927c0c68cf31d8d69a8e32459477'
+            'cddea52031c2e9638a066a59746ecb4d9a0c3fb2a7e5858ccaf2441e8f3901ab'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f'
             '3e9090d6e64929383290264822ee29313d028606fad1a14900623241159d3fd7')
 noextract=("assets-headers-gc_nmq_pal_f.tar.xz")
