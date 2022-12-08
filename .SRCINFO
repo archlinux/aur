@@ -1,0 +1,25 @@
+pkgbase = electronic-wechat-uos-bin
+	pkgdesc = Linux下更好用的微信客户端. 由 Onedrive 提供国内下载加速
+	pkgver = 2.3.2
+	pkgrel = 2
+	url = https://github.com/Riceneeder/electronic-wechat
+	install = electronic-wechat-uos-bin.install
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = xdg-utils
+	depends = libxss
+	depends = electron
+	optdepends = xdg-desktop-portal-kde: KDE 下的原生对话框
+	optdepends = xdg-desktop-portal-lxqt: lxqt 下的原生对话框
+	optdepends = xdg-desktop-portal-gnome: Gnome 下的原生对话框
+	optdepends = libnotify: 桌面通知, 需要搭配通知服务器使用
+	provides = electronic-wechat
+	source = electronic-wechat-uos-bin.desktop
+	source = wechat.svg
+	source = wechat-2.3.2.deb::https://kimiblock.top:25212/api/v3/file/source/2421/wechat-2.3.2.deb?sign=4DDoKiaeYDwNHfWBKF6RuLfZvUSr_smAza49Nfi7mhc%3D%3A0
+	md5sums = 56e85109b5bcf72ef8439aec054b204d
+	md5sums = 600e74549ce2258c045d5c2f7689ea63
+	md5sums = 53d796e5a7c8c488998afdf5fb9020fe
+
+pkgname = electronic-wechat-uos-bin
