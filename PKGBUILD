@@ -4,7 +4,7 @@
 _pkgname=ArmCord
 pkgname=armcord-bin
 pkgver=3.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
 provides=('armcord')
@@ -13,12 +13,12 @@ license=('OSL-3.0')
 options=(!strip)
 
 source_x86_64=(
-    "armcord.tar.gz::https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
+    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
     "armcord.desktop"
     "armcord.png"
 )
 source_aarch64=(
-    "armcord.tar.gz::https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.tar.gz"
+    "https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.tar.gz"
     "armcord.desktop"
     "armcord.png"
 )
