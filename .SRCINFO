@@ -1,7 +1,7 @@
 pkgbase = python-autosub1
-	pkgdesc = An open-source python package to clean raw text data
+	pkgdesc = Auto-generates subtitles for any video or audio file
 	pkgver = 0.4.7
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/autosub1
 	arch = any
 	license = MIT

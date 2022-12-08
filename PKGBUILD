@@ -2,7 +2,7 @@
 pkgname=python-autosub1
 _name=${pkgname#python-}
 pkgver=0.4.7
-pkgrel=0
+pkgrel=1
 pkgdesc='Auto-generates subtitles for any video or audio file'
 arch=(any)
 url=https://pypi.org/project/autosub1
