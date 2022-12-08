@@ -1,8 +1,7 @@
 pkgbase = deepin-wallpapers-git
 	pkgdesc = Deepin Wallpapers
-	pkgver = 1.7.7.r9.ga579405
+	pkgver = 1.8.3.r10.g548f259
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/linuxdeepin/deepin-wallpapers
 	arch = any
 	groups = deepin-git
@@ -13,9 +12,3 @@ pkgbase = deepin-wallpapers-git
 	sha512sums = SKIP
 
 pkgname = deepin-wallpapers-git
-	pkgdesc = Default wallpapers for DDE
-	groups = deepin-git
-
-pkgname = deepin-community-wallpapers-git
-	pkgdesc = Community wallpapers for DDE
-	groups = deepin-git
