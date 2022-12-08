@@ -3,7 +3,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=python-acme
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='ACME protocol implementation in Python'
 arch=('any')
@@ -27,8 +27,8 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/a/acme/acme-$pkgver.tar.gz")
-sha512sums=('4db2515823bb921e41b21859f4b20018e2d1b73fabe67d551a2434320b7685fe8473f6046d31fddd31e29bd5ee696de3a44e6181a10fd2e8103573e6965dd58b')
-b2sums=('47832420683106ad80cbb1c1bd20caa67ead79795cda98a75c29f8c4e816646ff1fcb3cd4c4399c4547f6c4af80a32c5ae16b435832f58ec1495b563537f2d5f')
+sha512sums=('ef36addc83ab85bdd030e6eaed6492b994c326f3c04e866e54faab4f701ad84b8978513c98d8ae1be9ee7457ed02f9f75b5e59dc9ae842bdcf17615f35102b96')
+b2sums=('2f91b9e5ec69622e74e94e01520dcc328e4016f6f74856063b32f8239dfee59e3eaa0690b362ca504899028cf57fa51b486ed85d75aaa45f598d47a31e42e3fb')
 
 prepare() {
   cd "acme-$pkgver"
