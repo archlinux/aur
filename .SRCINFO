@@ -1,7 +1,7 @@
 pkgbase = rime-flypy
 	pkgdesc = 小鹤音形 rime 挂接文件
 	pkgver = 10.9.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://flypy.com/
 	install = rime-flypy.install
 	arch = x86_64
