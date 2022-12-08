@@ -21,12 +21,13 @@ platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
 contents=( '/headers<lt_headers/' )
-pkgdir='/tmp/tmp.nMHXcIWOQC/sh/pkg'
+pkgdir='/tmp/tmp.vedjGav0kk/sh/pkg'
+options=( '!strip' )
 pkgrel=1
 
 arch=(  'any' )
 
-depends=( )
+depends=( 'sdl2' 'sdl2_image' 'sdl2_mixer' 'freetype2' )
 makedepends=( rpkdev )
 abstorel(){
     sed -E 's/^\/+//g'
@@ -52,17 +53,18 @@ package() {
     fi
     cd "$projdir/$pkgname"
 #     echo "PWD: $PWD"
-    for((i = 0; i < ${#contents[@]}; i++)); do
+#     for((i = 0; i < ${#contents[@]}; i++)); do
+    dir -1 "./" | while read f; do
 #         echo "#contents: ${#contents[@]}"
-        IFS="<" read -a sp <<< "${contents[$i]}"
+#         IFS="<" read -a sp <<< "${contents[$i]}"
 #         echo "#contents: ${#contents[@]}"
         
 #         echo ln -sf "$(trimstr "${sp[1]}")}" "$pkgdir/$(tspkg_convpath "$(trimstr "${sp[0]}")")"
-        nativepth="$(tspkg_convpath <<< "$(trimstr "${sp[0]}")")"
+        nativepth="$(tspkg_convpath <<< "$(trimstr "${f}")")"
 #         echo "nativepth: $nativepth"
 #         echo "pkgdir: $pkgdir"
         mkdir -p "$pkgdir/$(dirname "$nativepth")"
-        run cp -R "$(abstorel <<< "${sp[0]}")" "$pkgdir/$(abstorel <<< "$nativepth")"
+        run cp -R "$(abstorel <<< "${f}")" "$pkgdir/$(abstorel <<< "$nativepth")"
 #         cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
     done
 }        
