@@ -20,8 +20,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
-contents=( '/data/<./Data' '/config<./Config' )
-pkgdir='/tmp/tmp.2vjuBKyX02/sh/pkg'
+contents=( '/data/<./Data' '/config<./Config' '/bin<build/Debug/bin' )
+pkgdir='/tmp/tmp.MJzREDWbaB/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
