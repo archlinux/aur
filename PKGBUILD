@@ -1,8 +1,9 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='bandwhich'
 pkgname="${_pkgname}-git"
-pkgver=0.20.0.r4.gacd1b0a
+pkgver=0.20.0.r5.g45503a0
 pkgrel=1
 pkgdesc='Terminal bandwidth utilization tool'
 arch=('x86_64')
@@ -12,11 +13,17 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        "https://raw.githubusercontent.com/imsnif/bandwhich/8cc56ced73cc5055f69f8723122fb8b5a526b422/Cargo.lock")
+sha256sums=('SKIP'
+            'd64b3583b47826e0d72dfa6c4a2d473b5eb55ccb4f15573c73b9cd54e4ce0cc3')
 
 pkgver() {
   git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  mv Cargo.lock "${_pkgname}"
 }
 
 build() {
