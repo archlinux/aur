@@ -4,7 +4,7 @@
 
 _pyname=fontMath
 pkgname=python-${_pyname,,}
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='A collection of objects that implement fast font, glyph, etc. math'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer}
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('4c8b1c711e1cbf4ba93c3d0843935b0661973131261af08608bde17de1018404')
+sha256sums=('6a5387cb7feb105958db2f5ceedc878513cc35bf3715e262090f0557be0c1b1c')
 
 build() {
 	cd "$_archive"
