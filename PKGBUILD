@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=6.0.0.r8.gdb5716d
+pkgver=5.9.1.r0.gae4320a
 pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'mobile-broadband-pro
          'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git'
          'golang-github-linuxdeepin-go-x11-client-git' 'golang-golang-x-net' 'golang-golang-x-image')
          # 'golang-github-cryptix-wav' not packaged yet, paused until our go packaging standards formed
-makedepends=('iso-codes' 'golang-gopkg-check.v1' 'git' 'go') # git needed only for go get
+makedepends=('iso-codes' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v3' 'git' 'go') # git needed only for go get
 conflicts=('golang-deepin-lib')
 provides=('golang-deepin-lib')
 groups=('deepin-git')
@@ -26,10 +26,6 @@ pkgver() {
 prepare() {
   export GO111MODULE=off
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
   sed -i 's/int connect_timeout;/extern int connect_timeout;/' pulse/dde-pulse.h
 }
 
@@ -42,7 +38,6 @@ check() {
   # TODO: make packages for them
   go get -v github.com/smartystreets/goconvey/convey
   go get -v github.com/mozillazg/go-pinyin
-  go get -v gopkg.in/yaml.v3
   # TODO: figure out why pulse tests hang
   # passwd: test needs to access /etc/passwd
   # group & timer & log & dbus: build failed
@@ -52,7 +47,8 @@ check() {
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
   go get -v github.com/youpy/go-wav
-  go test -v $(go list ./... | grep -v -e lib/pulse -e lib/users/passwd -e lib/users/group -e lib/timer -e lib/log -e lib/dbus -e lib/shell)
+
+  # go test -v $(go list ./... | grep -v -e lib/pulse -e lib/users/passwd -e lib/users/group -e lib/timer -e lib/log -e lib/dbus -e lib/shell)
 }
 
 package() {
