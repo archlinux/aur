@@ -2,7 +2,7 @@
 
 pkgname=lb-planner
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc='a Planning tool for students at the TGM Vienna'
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
@@ -35,13 +35,13 @@ build() {
 }
 
 package() {
-	cd "$_pkgname"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm644 LICENSE.md "$pkgdir/opt/$_pkgname/LICENSE"
+	cd "$pkgname"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE.md "$pkgdir/opt/$pkgname/LICENSE"
 	install -Dm644 ../lb-planner.desktop -t "$pkgdir/usr/share/applications"
 	install -Dm644 app_icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/lb-planner.png"
 	install -Dm644 app_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lb-planner.svg"
 	#NOTE: install can't copy whole directories, so I'm finding all files within the folder and installing them one-by-one
 	cd ./build/linux/x64/release/bundle/
-	find ./ -type f -exec install -D "{}" "$pkgdir/opt/$_pkgname/{}" \;
+	find ./ -type f -exec install -D "{}" "$pkgdir/opt/$pkgname/{}" \;
 }
