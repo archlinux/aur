@@ -9,7 +9,6 @@ pkgbase = cmake-language-server
 	depends = python-pygls
 	depends = cmake-format
 	depends = cmake
-	conflicts = cmake-format
 	source = https://files.pythonhosted.org/packages/source/c/cmake-language-server/cmake-language-server-0.1.5.tar.gz
 	sha256sums = 2d676542ff812c393ecac4de501852a435b35c9db28970e229da868cdef17a9e
 
