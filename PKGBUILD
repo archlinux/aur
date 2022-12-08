@@ -37,8 +37,8 @@ GOLD=             # Use the gold linker.
 
 LTO=              # Enable link-time optimization. Still experimental.
 
-JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
-                  # This compiles only performance critical elisp files.
+JIT="YES"         # Enable native just-in-time compilation with libgccjit available
+                  # in core. This compiles only performance critical elisp files.
                   #
                   # To compile all site-lisp on demand (repos/AUR packages,
                   # ELPA, MELPA, whatever), add
@@ -49,7 +49,9 @@ JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
                   #    (setq native-compile-prune-cache t)
                   # to delete old versions.
 
-AOT="YES"         # Compile all elisp files.
+AOT="YES"         # Compile all elisp files provided by upstream.
+
+TRAMPOLINES=      # Compile jitted elisp files with trampolines.
 
 CLI=              # CLI only binary.
 
@@ -75,15 +77,21 @@ XI2="YES"         # Use Xinput2 support.
 
 ALSA=             # Linux sound support.
 
-NOCAIRO=          # Disable here.
-
+NOCAIRO=          # Disable here. 
+               
 XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
 
+SITTER="YES"      # Use tree-sitter incremental language parsing.
+               
+NOSQLITE3=        # Disable sqlite3 support.
+
 DOCS_HTML=        # Generate and install html documentation.
+               
+DOCS_PDF=         # Generate and install pdf documentation. You need
+                  # a TeX installation. I'm partial to upstream TeXLive.
+               
+NOGZ="YES"        # Don't compress .el files. (Gain is neglible, IMHO)
 
-DOCS_PDF=         # Generate and install pdf documentation.
-
-NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
 ################################################################################
@@ -92,7 +100,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-pgtk-native-comp-git"
 fi
-pkgver=29.0.50.160160
+pkgver=30.0.50.162808
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -195,6 +203,24 @@ if [[ $XWIDGETS == "YES" ]]; then
   fi
 fi
 
+if [[ $SITTER == "YES" ]]; then
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'tree-sitter' );
+  else
+    depends+=( 'tree-sitter' );
+  fi
+fi
+
+if [[ $NOSQLITE3 == "YES" ]]; then
+  true
+else
+  if [[ $CLI == "YES" ]]; then
+    depends_nox+=( 'sqlite3' );
+  else
+    depends+=( 'sqlite3' );
+  fi
+fi
+
 if [[ $GPM == "YES" ]]; then
   if [[ $CLI == "YES" ]]; then
     depends_nox+=( 'gpm' );
@@ -266,7 +292,15 @@ if [[ $LTO == "YES" ]]; then
 fi
 
 if [[ $JIT == "YES" ]]; then
-  _conf+=( '--with-native-compilation' );
+  _conf+=( '--with-native-compilation=yes' );
+fi
+
+if [[ $JIT == "YES" ]] && [[ $AOT == "YES" ]]; then
+  _conf+=( '--with-native-compilation=aot' );
+fi
+
+if [[ ! $JIT == "YES" ]] && [[ ! $AOT == "YES" ]]; then
+  _conf+=( '--with-native-compilation=no' );
 fi
 
 if [[ $XI2 == "YES" ]]; then
@@ -303,6 +337,14 @@ if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
 fi
 
+if [[ $SITTER == "YES" ]]; then
+  _conf+=( '--with-tree-sitter' );
+fi
+
+if [[ $NOSQLITE3 == "YES" ]]; then
+  _conf+=( '---without-sqlite3' );
+fi
+
 if [[ $GPM == "YES" ]]; then
     true
 else
@@ -331,16 +373,16 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # are reusing your src directory!
   #
 
-  if [[ $JIT=="YES" ]] && [[ $AOT == "YES" ]]; then
-    make NATIVE_FULL_AOT=1
-  else
-    make
-  fi
-
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
   #make autoloads
   #cd ../build
+
+  if [[ $TRAMPOLINES == "YES" ]] && [[ $JIT == "YES" ]] ; then
+    make trampolines;
+  else
+    make
+  fi
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
@@ -358,7 +400,7 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   install -D -m 755 "$srcdir"/nemacs "$pkgdir"/usr/bin/nemacs
-
+  
   #if [[ ! $CLI == "YES" ]]; then
 
   # Install optional documentation formats
