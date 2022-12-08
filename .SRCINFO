@@ -1,5 +1,5 @@
 pkgbase = python-translate-shell
-	pkgdesc = Translate text by google, bing, haici, etc at same time from CLI, GUI, REPL, python, shell and vim.
+	pkgdesc = Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim.
 	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/translate-shell
@@ -15,8 +15,8 @@ pkgbase = python-translate-shell
 	optdepends = python-py-notifier: GUI notification
 	optdepends = xsel: clipboard support
 	optdepends = xclip: clipboard support
-	optdepends = festival: speaker support
 	optdepends = espeak-ng: speaker support
+	optdepends = festival: speaker support
 	conflicts = translate-shell
 	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.6-py3-none-any.whl
 	source = https://raw.githubusercontent.com/Freed-Wu/translate-shell/main/assets/desktop/translate-shell.desktop

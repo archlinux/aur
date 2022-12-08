@@ -28,17 +28,18 @@ optdepends=(
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 )
-conflicts=(translate-shell)
+conflicts=("$_pkgname")
 license=(GPLv3)
 _py=py3
+_bin=trans
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
-	"https://raw.githubusercontent.com/$_repo/main/assets/desktop/translate-shell.desktop"
+	"https://raw.githubusercontent.com/$_repo/main/assets/desktop/$_pkgname.desktop"
 	"https://raw.githubusercontent.com/$_repo/main/LICENSE"
-	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans.1.gz"
-	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans"
-	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/_trans"
-	"https://github.com/Freed-Wu/translate-shell/releases/download/0.0.6/trans.csh"
+	"$url/releases/download/$pkgver/$_bin.1.gz"
+	"$url/releases/download/$pkgver/$_bin"
+	"$url/releases/download/$pkgver/_$_bin"
+	"$url/releases/download/$pkgver/$_bin.csh"
 )
 sha256sums=(
   '72095a6dfcb9df4d0afe193c4c0cfe6f975161e27ffe333fac7af7b4cdcb43b3'
@@ -55,10 +56,10 @@ package() {
 	python -m installer --destdir="$pkgdir" ./*.whl
 
 	install -Dm644 "$pkgdir$(python -c'import sys; print(sys.path[-1])')/${_pkgname//-/_}/assets/images/icon.png" -t "$pkgdir/usr/share/$_pkgname/images"
-	install -Dm644 translate-shell.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 trans.1.gz -t "$pkgdir/usr/share/man/man1"
-	install -Dm644 trans -t "$pkgdir/usr/share/bash-completion/completions"
-	install -Dm644 _trans -t "$pkgdir/usr/share/zsh/site-functions"
-	install -Dm644 trans.csh -t "$pkgdir/etc/profile.d"
+	install -Dm644 "$_bin.1.gz" -t "$pkgdir/usr/share/man/man1"
+	install -Dm644 "$_bin" -t "$pkgdir/usr/share/bash-completion/completions"
+	install -Dm644 "_$_bin" -t "$pkgdir/usr/share/zsh/site-functions"
+	install -Dm644 "$_bin.csh" -t "$pkgdir/etc/profile.d"
 }
