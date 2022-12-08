@@ -5,4 +5,4 @@ Terminal=false
 Exec=env QT_QPA_PLATFORM=xcb /usr/bin/gplates
 Name=GPlates
 Comment=Interactive visualisation of plate-tectonics
-Icon=/usr/share/gplates/icon.png
+Icon=/usr/local/share/gplates/icon.png
