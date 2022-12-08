@@ -1,0 +1,9 @@
+pkgbase = lib-lt-devel
+	pkgdesc = -- Developer version
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	groups = Library/WidgetToolkit
+	makedepends = rpkdev
+
+pkgname = lib-lt-devel
