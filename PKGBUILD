@@ -2,27 +2,35 @@
 
 pkgname=lcov-diff
 _pkgname=lcov-diff-util
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="Diff utility for LCOV coverage files"
+pkgdesc='Diff utility for LCOV coverage files'
 arch=('x86_64')
-url="https://github.com/capgelka/lcov-diff"
+url='https://github.com/capgelka/lcov-diff'
 license=('MIT')
 depends=('gcc-libs' 'lcov')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_pkgname/$_pkgname-$pkgver.crate")
-sha512sums=('66af4ff7f6e22401ff7b8a618911e528e3ba5e242c2b5be5f18a007aedc0ed1c4b1c16834aa8d6fa38b4b7b42f64164308a491f7851249d4b53ae79a72529424')
-b2sums=('84e86a001f8d6a1c79176c5d827b8507ea9721867f3bd0ac14d1489c2fdfacc4c3eb2902cb12102efefb9e56eeb5d2a6d4e9da09df597669abf386409e9776bd')
+sha512sums=('17bc886295023d9bc95fac146e7498ff296d73cfadcd323654d72213276666edfc1dc2d853ce2dc4b7eb114051ae607fca6f077397788e8faccbdae788100818')
+b2sums=('481a17145c72f1b23c398df4b65dd06d807941f16e06e4dbc6ea1590c41d156b1f1e15745ffa236640d3b57a8258af0e7b2b96e53370e4a3ddbedd943651b63c')
 
 prepare() {
-  # download dependencies
   cd "$_pkgname-$pkgver"
+
+  # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$_pkgname-$pkgver"
-  cargo build --release --frozen
+
+  cargo build --release --frozen --all-features
+}
+
+check() {
+  cd "$_pkgname-$pkgver"
+
+  cargo test --frozen --all-features
 }
 
 package() {
