@@ -3,8 +3,9 @@
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
 pkgver=r644.75110dc
-pkgrel=2
+pkgrel=3
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
+provides=('lb-planner')
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
 license=('CC-NC-SA 4.0')
