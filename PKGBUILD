@@ -1,7 +1,7 @@
 # Maintainer: Thomas Pointhuber <thomas.pointhuber@gmx.at>
 pkgname=sparselizard
 pkgver=2022.05
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ FEM library | user-friendly | multi-physics | hp-adaptive | HPC"
 arch=("i686" "x86_64")
 url="https://www.sparselizard.org/"
@@ -37,7 +37,7 @@ build() {
         -DMUMPS_INCLUDE_PATH=/usr/include \
         -DMUMPS_LIBRARIES=/usr/lib/libmumps_common.so \
         -DMPI_INCLUDE_PATH=/usr/include \
-        -DMPI_LIBRARIES=/usr/lib/openmpi/libmpi_cxx.so \
+        -DMPI_LIBRARIES=/usr/lib/libmpi_cxx.so \
         -DMPI_PATH=/usr/lib/openmpi \
         -DPETSCCONF_INCLUDE_PATH="${PETSC_DIR}/include/" \
         -DPETSC_INCLUDE_PATH="${PETSC_DIR}/include/" \
