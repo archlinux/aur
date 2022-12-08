@@ -36,11 +36,12 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
   cmake .
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
-  make install
+  make DESTDIR="${pkgdir}/" install
   install "${srcdir}/icon.png" -t "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
