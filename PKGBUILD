@@ -25,7 +25,7 @@ sha256sums=(
   "7d4be9d524d1fcbb6a81de29bd1d4b13133082db23f0808965c5efe30e9538ab"
   "3f65493ff661f36cdc1cff9f672a529a922783b481bbd4dd9d997701d7e7b6ec"
   "9335fb98b21bc03c1cbec21ca945bded6ac60f66bb14997654b1829c1bd7265b"
-  "5f044dcb53edc372730fa32916f9c6596d61b06bfaf59963fc65af357b3ada3e"
+  "c9cf5e841e3bc1e730c5c1fa00a1137f532de4c2859637e67d1682f021eebb11"
  )
 
 prepare() {
@@ -35,14 +35,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
-  cmake .
+  cmake -DCMAKE_INSTALL_PREFIX="/usr/" -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
   make DESTDIR="${pkgdir}/" install
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
-  install "${srcdir}/icon.png" -t "${pkgdir}/usr/local/share/${pkgname}"
+  install "${srcdir}/icon.png" -t "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
