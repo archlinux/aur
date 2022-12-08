@@ -418,7 +418,7 @@ com.activision.callofduty.shooter
 				if [[ "$TRAPAUTO" == "true" ]]; then
 					exit
 				else
-					PIDS=$(cat "$NITRON_LOG_DIR="/nitron.auto.conf | tail -n +4)
+					PIDS=$(cat "$NITRON_LOG_DIR"/nitron.auto.conf | tail -n +4)
 					auto
 				fi
 			done
