@@ -1,7 +1,7 @@
 pkgbase = highflux-preview-bin
 	pkgdesc = Highflux preview version
-	pkgver = 0.2.4
-	pkgrel = 1
+	pkgver = 0.6.0
+	pkgrel = 2
 	url = https://www.highflux.io/
 	arch = any
 	license = copyright
