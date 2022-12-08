@@ -19,6 +19,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${_pkgbase}"
+	install -m644 -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 	install -m644 -D -t "${pkgdir}/etc/modprobe.d/" etc/modprobe.d/*
 	install -m644 -D -t "${pkgdir}/etc/modules-load.d/" etc/modules-load.d/*
 	install -m644 -D -t "${pkgdir}/usr/lib/udev/rules.d/" usr/lib/udev/rules.d/*
