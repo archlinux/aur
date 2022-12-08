@@ -1,7 +1,7 @@
 # Maintainer: Alisa Lain <al1-ce@null.net>
 
 pkgname='pkm'
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='A simple wrapper for yay'
 arch=('i686' 'x86_64')

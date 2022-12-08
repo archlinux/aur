@@ -1,6 +1,6 @@
 pkgbase = pkm
 	pkgdesc = A simple wrapper for yay
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/al1-ce/pkm
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = pkm
 	makedepends = dub
 	makedepends = dmd
 	depends = yay
-	source = pkm-1.1.4.tar.gz::https://github.com/al1-ce/pkm/archive/v1.1.4.tar.gz
+	source = pkm-1.1.5.tar.gz::https://github.com/al1-ce/pkm/archive/v1.1.5.tar.gz
 	md5sums = SKIP
 
 pkgname = pkm
