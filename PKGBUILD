@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-xz
-pkgver=5.2.5
+pkgver=5.2.9
 pkgrel=1
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (android)"
 arch=('any')
@@ -12,8 +12,8 @@ license=('custom' 'GPL' 'LGPL')
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
-source=("${url}/xz-${pkgver}.tar.gz")
-sha256sums=('f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10')
+source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz")
+md5sums=('ea3cbfe0623fc78a9dce8f230b30c7f0')
 
 prepare() {
     source android-env ${_android_arch}
