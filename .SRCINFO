@@ -1,13 +1,13 @@
 pkgbase = python-google-trans-new
 	pkgdesc = A free and unlimited python tools for google translate api.
 	pkgver = 1.1.9
-	pkgrel = 0
+	pkgrel = 1
 	url = https://pypi.org/project/google-trans-new
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/google-trans-new/google-trans-new-1.1.9.tar.gz
-	sha256sums = a8e937384ed9b7b1f3f08e1ec77885cb75089afeeec47687ff627fd6a49cc254
+	source = https://files.pythonhosted.org/packages/source/g/google_trans_new/google_trans_new-1.1.9.tar.gz
+	sha256sums = 9f6643420334cc1b94ebd84e03774736e76c0564208efb1bc9c5019b9820e19b
 
 pkgname = python-google-trans-new

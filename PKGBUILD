@@ -2,7 +2,7 @@
 pkgname=python-google-trans-new
 _name=google_trans_new
 pkgver=1.1.9
-pkgrel=0
+pkgrel=1
 pkgdesc='A free and unlimited python tools for google translate api.'
 arch=(any)
 url=https://pypi.org/project/google-trans-new
