@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' '/bin<build/bin' )
-pkgdir='/tmp/tmp.B1J7WEEljU/sh/pkg'
+pkgdir='/tmp/tmp.eSm99rEpwY/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
@@ -52,6 +52,7 @@ package() {
         projdir="$srcdir"
     fi
     cd "$projdir/$pkgname"
+    umask 0755
 #     echo "PWD: $PWD"
 #     for((i = 0; i < ${#contents[@]}; i++)); do
     dir -1 "./" | while read f; do
