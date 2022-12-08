@@ -1,6 +1,6 @@
 # Maintainer: Lulu Cathrinus Grimalkin <erkin@sdf.org>
 pkgname=loko
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="An optimizing R6RS Scheme compiler"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=("AGPL3")
 depends=("chez-scheme" "akku")
 options=(!strip)
 source=("https://scheme.fail/releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('43f3b617cb193f71e6cf21e75ab1bf1e893e34e1b189637bbe9f7e7c7a205abc')
+sha256sums=('3bd0c65282496457eff296ccda86fb90903f93ad76dee285e2eee6fd70f5b300')
 
 build()
 {
