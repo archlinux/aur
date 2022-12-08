@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libwebp
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="WebP library and conversion tools (android)"
 arch=('any')
@@ -18,7 +18,7 @@ groups=(android-libwebp)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://github.com/webmproject/libwebp/archive/v${pkgver}.tar.gz")
-md5sums=('a9d3c93923ab0e5eab649a965b7b2bcd')
+md5sums=('4f08244f88a39816c3e0719ca16c7a92')
 
 prepare() {
     cd "$srcdir/libwebp-${pkgver}"
