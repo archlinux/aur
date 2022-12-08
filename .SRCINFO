@@ -1,6 +1,6 @@
 pkgbase = deepin-session-ui-git
 	pkgdesc = Deepin desktop-environment - Session UI module
-	pkgver = 5.5.6.r22.g8bef9959
+	pkgver = 5.6.1.r2.g07800310
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-session-ui
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-ui-git
-pkgver=5.5.6.r22.g8bef9959
+pkgver=5.6.1.r2.g07800310
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Session UI module'
 arch=('x86_64' 'aarch64')
@@ -25,21 +25,17 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
   sed -i 's|/usr/share/backgrounds/default_background.jpg|/usr/share/backgrounds/deepin/desktop.jpg|' widgets/*.cpp
   patch -p1 -i ../fix-cmakelist.patch
 }
 
 build() {
   cd $pkgname
-  cmake . -GNinja -DCMAKE_INSTALL_PREFIX=/usr
-  ninja
+  cmake -B build -GNinja -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname/build
   DESTDIR="$pkgdir" ninja install
 }
