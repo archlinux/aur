@@ -6,12 +6,12 @@
 
 pkgname=epydoc
 pkgver=3.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Tool for generating API documentation for Python modules, based on their docstrings'
 arch=('any')
 license=('MIT')
 url='https://epydoc.sourceforge.net/'
-depends=('python2' 'docutils')
+depends=('python2' 'python2-docutils')
 optdepends=('tk: needed for epydocgui'
             'texlive-bin: needed for PDF conversion'
             'graphviz: needed for graph generation')

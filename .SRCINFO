@@ -1,12 +1,12 @@
 pkgbase = epydoc
 	pkgdesc = Tool for generating API documentation for Python modules, based on their docstrings
 	pkgver = 3.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://epydoc.sourceforge.net/
 	arch = any
 	license = MIT
 	depends = python2
-	depends = docutils
+	depends = python2-docutils
 	optdepends = tk: needed for epydocgui
 	optdepends = texlive-bin: needed for PDF conversion
 	optdepends = graphviz: needed for graph generation
