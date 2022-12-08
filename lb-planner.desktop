@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LB Planner
+Comment=A planning tool for students at the TGM Vienna
+Comment_de=Ein Planungswerkzeug für Schüler am TGM Wien
+Exec=/opt/lb-planner/lb_planner
+Icon=lb-planner
+Terminal=false
+StartupNotify=true
+Categories=Flutter;Utility
+MimeType=
