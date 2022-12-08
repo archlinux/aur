@@ -5,7 +5,7 @@ _libultraship_commit=e1fa7a2c0e6baeed083cd2b8f22c260e2db48d29
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
@@ -23,7 +23,7 @@ sha256sums=('e1222b6bce7865706f5ffc6c9d45f19ccd2ed738ed7e39360ad7d8f59eeff334'
             'bbe5fdedcec21a63d346fdaa57f0ba51166ed48c97c2cc55a45320009b278b05'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            '8b4a4bb6bdbb68cf1adfbb2c28a42a9597d7927c0c68cf31d8d69a8e32459477'
+            'cddea52031c2e9638a066a59746ecb4d9a0c3fb2a7e5858ccaf2441e8f3901ab'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f'
             '460334b20e00fbb4649091b479c5b0b2a7fdbb1028cf631b796391b8aed5820b')
 noextract=("assets-headers-gc_nmq_pal_f.tar.xz")

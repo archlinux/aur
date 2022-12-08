@@ -1,20 +1,9 @@
+Submodule libultraship contains modified content
 diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
-index e1af64e..18a45f4 100644
+index e1af64e..5c923f9 100644
 --- a/libultraship/src/CMakeLists.txt
 +++ b/libultraship/src/CMakeLists.txt
-@@ -6,6 +6,11 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
- use_props(${PROJECT_NAME} "${CMAKE_CONFIGURATION_TYPES}" "${DEFAULT_CXX_PROPS}")
- endif()
- 
-+if (NOT CMAKE_INSTALL_PREFIX STREQUAL "" AND NOT SHIP_INSTALL_PATH)
-+set(SHIP_INSTALL_PATH "${CMAKE_INSTALL_PREFIX}")
-+endif()
-+
-+
- #=================== Audio ===================
- 
- set(Source_Files__Audio
-@@ -83,7 +88,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
+@@ -83,7 +83,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
  
  #=================== Core ===================
  
@@ -25,7 +14,7 @@ index e1af64e..18a45f4 100644
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.h
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.cpp
  )
-@@ -341,6 +349,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
+@@ -341,6 +344,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
  target_include_directories(libultraship
      PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
              ${CMAKE_CURRENT_SOURCE_DIR}/graphic/Fast3D/U64/PR
@@ -34,7 +23,7 @@ index e1af64e..18a45f4 100644
  )
  
 diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
-index 083654b..2ec2584 100644
+index 083654b..e6b7114 100644
 --- a/libultraship/src/core/Window.cpp
 +++ b/libultraship/src/core/Window.cpp
 @@ -39,6 +39,7 @@
@@ -56,7 +45,7 @@ index 083654b..2ec2584 100644
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
      } else {
-@@ -330,15 +331,34 @@ std::string Window::GetAppDirectoryPath() {
+@@ -330,15 +331,39 @@ std::string Window::GetAppDirectoryPath() {
      char* fpath = std::getenv("SHIP_HOME");
      if (fpath != NULL)
          return std::string(fpath);
@@ -73,8 +62,13 @@ index 083654b..2ec2584 100644
  }
  
 +std::string Window::GetAppBaseDirectoryPath() {
-+#ifdef SHIP_INSTALL_PATH
-+    return SHIP_INSTALL_PATH;
++#ifdef CMAKE_INSTALL_PREFIX
++    static const std::string fpath = CMAKE_INSTALL_PREFIX;
++    static int exists = -1;
++    if (exists == -1) {
++        exists = fpath.size() > 0 && std::filesystem::is_directory(fpath);
++    }
++    return exists ? fpath : GetAppDirectoryPath();
 +#else
 +    return GetAppDirectoryPath();
 +#endif
@@ -107,8 +101,8 @@ index dc8359c..ac7c77a 100644
      ~Window();
 diff --git a/libultraship/src/install_config.h.in b/libultraship/src/install_config.h.in
 new file mode 100644
-index 0000000..e734934
+index 0000000..029753c
 --- /dev/null
 +++ b/libultraship/src/install_config.h.in
 @@ -0,0 +1 @@
-+#cmakedefine SHIP_INSTALL_PATH "@SHIP_INSTALL_PATH@"
++#cmakedefine CMAKE_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
