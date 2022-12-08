@@ -19,7 +19,7 @@ source=(
 )
 sha256sums=(
   "f18b34ea5f3f70c7df7b09190dc14cd0ff17eab084a116f45e629511fae95003"
-  "02a5618bd3e7dadc3e9c79cd447a1ae3c266e5f5e70218af9479030cae0a9afe"
+  "38223b8e8aebdbb18e6705a864898a20f386951b852a748e5206179f369256c5"
 )
 
 build() {
@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}_src"
-  make install
-  install "${srcdir}/${pkgname}.sh" -t "${pkgdir}/etc/profile.d/"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm755 "${srcdir}/${pkgname}.sh" -t "${pkgdir}/etc/profile.d/"
 }

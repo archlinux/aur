@@ -1,1 +1,1 @@
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib
+export PYTHONPATH=$PYTHONPATH:/usr/lib
