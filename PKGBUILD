@@ -1,26 +1,26 @@
-# Maintainer: Pig2014 <18111431031@163.com>
+# Maintainer: Pig2014 <cattysteve89265@163.com>
 
 pkgname=paracloud
-pkgver=3.5.3
-pkgrel=2
+pkgver=3.6.5
+pkgrel=1
 pkgdesc="A command line tool to connect to super computers in PARATERA(TM)."
 url="https://www.paratera.com"
 arch=(x86_64)
 license=("custom")
 depends=("glibc")
 install="${pkgname}.install"
-source=("https://www.paratera.com/upload/article/attachment/2021/12/30/0de05bcbde6b4ad8b589a665f2293bc5.zip")
-sha256sums=('d49bc140effb41812aa05b10aa3a9a4855873c212c4d723f07ebdf5f4fb5ac35')
+source=("paracloud.zip::https://www.paratera.com/upload/article/attachment/2022/07/18/d30d33bde9dc443f96b297ad8d84153a.zip")
+sha256sums=('fa83d6e59d27262f62eed3190b92b8da223476eafdb301aee324c25f30a4960f')
 
 check() {
   cd "${srcdir}"
-  unzip -t -qq 0de05bcbde6b4ad8b589a665f2293bc5.zip
+  unzip -t -qq paracloud.zip
 }
 
 package() {
   cd "${srcdir}"
   #extract required files
-  unzip -qq -o 0de05bcbde6b4ad8b589a665f2293bc5.zip
+  unzip -qq -o paracloud.zip
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/bin"
