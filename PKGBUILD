@@ -1,4 +1,5 @@
-# Maintainer: Ludovico de Nittis <aasonykk+aur at google mail dot com>
+# Maintainer: Max Harmathy <harmathy@mailbox.org>
+# Contributor: Ludovico de Nittis <aasonykk+aur at google mail dot com>
 # Contributor: Profpatsch <mail AT [nickname] DOT de>
 
 pkgname=gnome-keysign
