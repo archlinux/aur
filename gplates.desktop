@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/usr/bin/gplates
+Exec=env QT_QPA_PLATFORM=xcb /usr/bin/gplates
 Name=GPlates
 Comment=Interactive visualisation of plate-tectonics
 Icon=/usr/share/gplates/icon.png
