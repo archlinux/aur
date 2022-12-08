@@ -1,7 +1,7 @@
 # Maintainer: Erwann Lagouche <popgthyrd@gmail.com>
 pkgname=highflux-preview-bin
-pkgver=0.2.4
-pkgrel=1
+pkgver=0.6.0
+pkgrel=2
 epoch=
 pkgdesc='Highflux preview version'
 arch=('any')
