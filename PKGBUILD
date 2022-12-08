@@ -1,4 +1,4 @@
-# Maintainer: gardenapple <gardenapple@posteo.net>
+# Maintainer: gardenapple <mailbox@appl.garden>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 _gemname=rake
