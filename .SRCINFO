@@ -1,7 +1,7 @@
 pkgbase = opensubtitlesdownload
 	pkgdesc = An application to help you quickly find and download subtitles for your favorite videos
 	pkgver = 5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://emeric.io/OpenSubtitlesDownload
 	arch = any
 	license = GPL3

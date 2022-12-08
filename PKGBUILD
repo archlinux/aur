@@ -3,7 +3,7 @@
 pkgname=opensubtitlesdownload
 _pkgname=OpenSubtitlesDownload
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 arch=('any')
 pkgdesc="An application to help you quickly find and download subtitles for your favorite videos"
 url="https://emeric.io/OpenSubtitlesDownload"
