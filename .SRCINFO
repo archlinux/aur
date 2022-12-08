@@ -1,6 +1,6 @@
 pkgbase = vrms-arch-git
 	pkgdesc = Virtual Richard M. Stallman for Arch Linux (updated fork)
-	pkgver = 2.0.r2.g128b201
+	pkgver = 2.0.1.r0.g637e123
 	pkgrel = 1
 	url = https://github.com/gardenappl/vrms-arch
 	arch = any
