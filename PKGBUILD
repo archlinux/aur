@@ -9,9 +9,9 @@ arch=(any)
 url="https://github.com/UsiFX/OpenNitroN"
 license=('GPL3')
 source=("nitrond" "nitronapi.sh" "nitrond.1.gz")
-sha256sums=('153ad913a5856d009ec61845a540d096fa170117c57e266f972ae660e529c894'
-            '96dd59cc2b913f82c850e9a792add13d65ece08f1b250fa0f52c88687a5ec8bb'
-            'f417826fed3c1c192468374f476b39b6d8c0ae815314569e4aa8004f4bcaaaa4')
+sha256sums=('b9799f6883734ddcbbdcc988e8c4f2ab830319612952681122391a43faefcb1a'
+            '02592efe986e7915c5f6b16b49162b5421b8f990bf83666e8d0932464653b905'
+            'ec96e986745a68177e79b574820b6eb583300cde2ba477c8530d3cf18347bd80')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
