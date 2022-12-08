@@ -1,0 +1,23 @@
+pkgbase = lb-planner
+	pkgdesc = a Planning tool for students at the TGM Vienna
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/necodeIT/lb_planner
+	arch = any
+	license = CC-NC-SA 4.0
+	makedepends = cmake
+	makedepends = clang
+	makedepends = ninja
+	makedepends = fvm-bin
+	makedepends = pkgconf
+	makedepends = gtk3
+	makedepends = xz
+	depends = gtk3
+	depends = xz
+	conflicts = lb-planner-git
+	source = lb-planner::git+https://github.com/necodeIT/lb_planner.git#tag=f0.0.1
+	source = lb-planner.desktop
+	sha256sums = SKIP
+	sha256sums = 3cdcb4b0c0a92711f2e3c2db94e6a18915df375de0a7265487fa4372136397f1
+
+pkgname = lb-planner
