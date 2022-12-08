@@ -6,7 +6,7 @@ _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-flag-git
 pkgver=2.034.r65.g3ee516e14+1.2.1.r1.g0f2ae1a
 pkgrel=1
-pkgdesc="Google Noto emoji fonts + extra flags from the fonttools region-flag repo"
+pkgdesc="Google Noto emoji fonts + missing subregion flags"
 arch=('any')
 url="https://github.com/googlefonts/noto-emoji"
 license=('Apache')
@@ -14,7 +14,7 @@ makedepends=('cairo' 'git' 'imagemagick' 'pngquant' 'python-nototools' 'zopfli')
 provides=("$_pkgname" 'emoji-font')
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-flag" "$_pkgname-apple" "$_pkgname-blob" "$_pkgname-lollipop")
 source=("$_pkgname::git+$url.git"
-		"region-flags::git+https://github.com/fonttools/region-flags.git"
+		"region-flags::git+https://github.com/jopejoe1-aur/region-flags.git"
 		"0001-remove-flag-filter.patch")
 sha512sums=('SKIP'
 		'SKIP'

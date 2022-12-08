@@ -1,5 +1,5 @@
 pkgbase = noto-fonts-emoji-flag-git
-	pkgdesc = Google Noto emoji fonts + extra flags from the fonttools region-flag repo
+	pkgdesc = Google Noto emoji fonts + missing subregion flags
 	pkgver = 2.034.r65.g3ee516e14+1.2.1.r1.g0f2ae1a
 	pkgrel = 1
 	url = https://github.com/googlefonts/noto-emoji
@@ -20,7 +20,7 @@ pkgbase = noto-fonts-emoji-flag-git
 	conflicts = noto-fonts-emoji-blob
 	conflicts = noto-fonts-emoji-lollipop
 	source = noto-fonts-emoji::git+https://github.com/googlefonts/noto-emoji.git
-	source = region-flags::git+https://github.com/fonttools/region-flags.git
+	source = region-flags::git+https://github.com/jopejoe1-aur/region-flags.git
 	source = 0001-remove-flag-filter.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
