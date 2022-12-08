@@ -3,8 +3,8 @@
 
 _appname=pulsar
 _reponame=pulsar-edit
-_tasktag=5250635369545728
-_datetag=2022112808
+_tasktag=6076301491568640
+_datetag=2022120804
 
 pkgname="${_appname}-bin"
 pkgver="1.63.${_datetag}"
@@ -22,7 +22,7 @@ optdepends=(
 provides=("${_appname}")
 conflicts=("${_appname}")
 source=("${_appname}-${pkgver}.deb::https://api.cirrus-ci.com/v1/artifact/task/${_tasktag}/binary/binaries/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('bb3de38ddd7315360292813d033869e00060e637381f0bcc054e08eda137dc39')
+sha256sums=('d31cfe8a5fa6cbb37075f4102197d04077e751406387f6b11756c03d07f841e1')
 
 prepare() {
   bsdtar xf data.tar.xz
