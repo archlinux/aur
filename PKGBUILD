@@ -5,7 +5,8 @@ pkgname=seatools
 _pkgname=SeaTools
 pkgdesc='Seagate graphical user interface (GUI) tool for managing hard drives and SSDs on a system.'
 pkgver=5.0.171
-pkgrel=1
+pkgrel=2
+_pkgrealver=5.0.163
 arch=('x86_64')
 url='http://www.seagate.com/support/downloads/seatools/'
 license=('custom:Seagate EULA')
@@ -13,11 +14,13 @@ depends=('gcc-libs')
 makedepends=('fakechroot')
 _installer_bin="SeaToolsLinuxX64Installer.run"
 source=(
-    "SeaTools-${pkgver}-${pkgrel}.zip::https://www.seagate.com/files/www-content/support-content/downloads/${pkgname}/_shared/downloads/SeaToolsLinuxX64Installer.zip"
+    "SeaTools-${pkgver}-${pkgrel}.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/support-content/downloads/${pkgname}/_shared/downloads/${_pkgname}LinuxX64Installer.zip"
 )
-sha256sums=('bab72272de2439a7b4a7dab64ceabd80f985086a7e15f41bc8a76cfd701c6886')
+sha256sums=('d5b9db042e5193bd5b74b938a34e20f9f0153811661956af81beab6942894595')
 
 package() {
+    echo "Seatools version: ${_pkgrealver}"
+
     echo -ne 'Preparing fake installation environment... '
     # Move installer to fake root
     mv ./$_installer_bin $pkgdir
