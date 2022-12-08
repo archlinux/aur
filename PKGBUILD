@@ -1,9 +1,10 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
+
 _projectname='spot'
 pkgname="$_projectname-client"
-pkgver='0.3.2'
+pkgver='0.3.3'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -13,12 +14,12 @@ depends=('alsa-lib' 'cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'libadwaita' 'libp
 optdepends=('org.freedesktop.secrets')
 makedepends=('cargo' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
-options=('!lto') # build breaks with LTO enabled (https://gitlab.com/dpeukert/pkgbuilds/-/issues/38)
+options=('!lto')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
+	"https://github.com/xou816/$_projectname/archive/$pkgver/$_projectname-$pkgver.tar.gz"
 	'disable-clippy.patch'
 )
-sha512sums=('fd8b1f372b5c06d65c0d40465aff018573e913200460b48339a9e106d17a372289b67855877d8642427367fc18e5eac31f2e765e54f4889149a8b5a69cd4638d'
+sha512sums=('8b116e5e9a79efbbb6aef21b89ca93d3ea6083fb02b245662a4e222f85feef76dbc5abcdacfb0a29bf8ee0d8062137b3f0a1648a47537b26a9c16dd7bf525a8a'
             '1cb0faced2e6801cb994e9af7b81411355837b2efcd9c82b82751508e0bfcc967c50b3d6296bfdb8c017bbf2e7a503a3920d36cb896e44c896c23f5b9e1d13f1')
 validpgpkeys=() # waiting for https://github.com/xou816/spot/issues/283
 
