@@ -1,16 +1,17 @@
 pkgbase = rocsparse
 	pkgdesc = BLAS for sparse computation on top of ROCm
-	pkgver = 5.3.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://rocsparse.readthedocs.io/en/master/
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
-	makedepends = git
+	makedepends = rocm-cmake
 	makedepends = gcc-fortran
 	depends = hip
 	depends = rocprim
-	source = rocsparse-5.3.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.3.0.tar.gz
-	sha256sums = 521ca0e7b52f26edbff8507eb1479dc26019f456756d884d7b8b192c3ea518e8
+	source = rocsparse-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.4.0.tar.gz
+	source = rocsparse-no-git.patch
+	sha256sums = c8f0e920a8ec15b9ae40564c68191363356cc4d793c16247bb6e11ef5293ed11
+	sha256sums = bc3cda8fb3e3aad14a2130d9cde7a8c521c2c35448ed69f0873111571d654ad2
 
 pkgname = rocsparse
