@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
 contents=( '/headers<lt_headers/' )
-pkgdir='/tmp/tmp.vedjGav0kk/sh/pkg'
+pkgdir='/tmp/tmp.So4REBu2cN/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
@@ -67,4 +67,5 @@ package() {
         run cp -R "$(abstorel <<< "${f}")" "$pkgdir/$(abstorel <<< "$nativepth")"
 #         cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
     done
+    chmod -R 755 "$pkgdir/"
 }        
