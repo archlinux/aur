@@ -4,7 +4,7 @@
 # Contributor: Claire Charron <claire@undeterminant.net>
 _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-flag-git
-pkgver=2.034.r65.g3ee516e14+1.2.1.r1.g0f2ae1a
+pkgver=2.038.r9.g412b9edf8+1.2.1.custom.r0.g920b755
 pkgrel=1
 pkgdesc="Google Noto emoji fonts + missing subregion flags"
 arch=('any')
