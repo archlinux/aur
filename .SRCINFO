@@ -5,7 +5,6 @@ pkgbase = rpkdev
 	arch = any
 	groups = Developer/Packaging
 	groups = CLI/Tool/PackageManager
-	depends = conquery
 	noextract = rpkdev
 	source = https://content.tssoftware.eu/binary/rpkdev
 	sha256sums = SKIP
