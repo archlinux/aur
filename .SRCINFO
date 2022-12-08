@@ -1,0 +1,15 @@
+pkgbase = python-optking
+	pkgdesc = A Python version of the PSI4 geometry optimization program by R.A. King
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/psi-rking/optking
+	arch = any
+	license = BSD
+    depends = python-numpy
+	depends = python-qcelemental
+    depends = python-qcengine
+	depends = python-msgpack
+	source = https://github.com/psi-rking/optking/archive/0.2.1.tar.gz
+	sha256sums = 1076af33946f071edd86baf0d359b153c37bce54b6c143d286ba5559632c50b5
+
+pkgname = python-optking
