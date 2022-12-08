@@ -21,29 +21,36 @@ platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
 contents=( '/data/<./Data' '/config<./Config' )
-pkgdir='/tmp/tmp.SuMmDnmUs0/sh/pkg'
+pkgdir='/tmp/tmp.2vjuBKyX02/sh/pkg'
 pkgrel=1
 
 arch=(  'any' )
 
 depends=( )
 makedepends=( rpkdev )
-
+abstorel(){
+    sed -E 's/^\/+//g'
+}
 
 build() {
     if [ "$remote" == 1 ]; then
         echo "srcdir: $srcdir"
         echo "pkgname: $pkgname"
+        cd "$srcdir"
         getpkg "$uniq" "$pkgname" "$pkgver"
     fi
 #     [ -f Makefile ] && make -j 4 || ninja
 }
+run(){
+    echo ">>> $@"
+    $@
+}
 package() { 
-    echo "Packaging of tspkg started."
+    echo "Conversion of tspkg started."
     if [ "$remote" == 1 ]; then
         projdir="$srcdir"
     fi
-    cd "$projdir/"
+    cd "$projdir/$pkgname"
 #     echo "PWD: $PWD"
     for((i = 0; i < ${#contents[@]}; i++)); do
 #         echo "#contents: ${#contents[@]}"
@@ -51,11 +58,11 @@ package() {
 #         echo "#contents: ${#contents[@]}"
         
 #         echo ln -sf "$(trimstr "${sp[1]}")}" "$pkgdir/$(tspkg_convpath "$(trimstr "${sp[0]}")")"
-        inpkg_path="$(tspkg_convpath <<< "$(trimstr "${sp[0]}")")"
-        mkdir -p "$pkgdir/$(dirname "$inpkg_path")"
-        cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
+        nativepth="$(tspkg_convpath <<< "$(trimstr "${sp[0]}")")"
+#         echo "nativepth: $nativepth"
+#         echo "pkgdir: $pkgdir"
+        mkdir -p "$pkgdir/$(dirname "$nativepth")"
+        run cp -R "$(abstorel <<< "${sp[0]}")" "$pkgdir/$(abstorel <<< "$nativepth")"
+#         cp -R "$(realpath "$(trimstr "${sp[1]}")")" "$pkgdir/$inpkg_path"
     done
 }        
-
-
-
