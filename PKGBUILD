@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
-pkgver=5.5.9.r8.g916f644
+pkgver=5.5.32.r1.g6013c6d
 pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=('alsa-utils' 'bc' 'fontconfig' 'glib2' 'gdk-pixbuf2' 'gtk3' 'libcanberr
          'libxi' 'libxfixes' 'poppler-glib' 'util-linux' 'xcur2png' 'blur-effect')
 makedepends=('git' 'deepin-gettext-tools-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
              'golang-github-linuxdeepin-go-dbus-factory-git' 'golang-github-linuxdeepin-go-x11-client-git'
+             'golang-gopkg-yaml.v3'
              'golang-github-nfnt-resize' 'bzr' 'go-pie')
 provides=('deepin-api')
 conflicts=('deepin-api')
@@ -56,7 +57,6 @@ prepare() {
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
   go get -v github.com/disintegration/imaging
-  go get -v gopkg.in/yaml.v3
 }
 
 build(){

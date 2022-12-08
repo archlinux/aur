@@ -1,6 +1,6 @@
 pkgbase = deepin-api-git
 	pkgdesc = Golang bindings for dde-daemon
-	pkgver = 5.5.9.r8.g916f644
+	pkgver = 5.5.32.r1.g6013c6d
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-api
 	install = deepin-api.install
@@ -14,6 +14,7 @@ pkgbase = deepin-api-git
 	makedepends = golang-deepin-lib-git
 	makedepends = golang-github-linuxdeepin-go-dbus-factory-git
 	makedepends = golang-github-linuxdeepin-go-x11-client-git
+	makedepends = golang-gopkg-yaml.v3
 	makedepends = golang-github-nfnt-resize
 	makedepends = bzr
 	makedepends = go-pie
