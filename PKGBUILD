@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-c
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="C grammar for tree-sitter"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('tree-sitter-grammars')
 makedepends=('tree-sitter' 'npm')
 provides=('libtree-sitter-c.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffcc2ef0eded59ad1acec9aec4f9b0c7dd209fc1a85d85f8b0e81298e3dddcc2')
+sha256sums=('af66fde03feb0df4faf03750102a0d265b007e5d957057b6b293c13116a70af2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,9 +25,9 @@ build() {
 }
 
 package() {
-	install -Dm 644 c-parser.so "$pkgdir/usr/lib/libtree-sitter-c.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-c.so" "$pkgdir/usr/share/nvim/runtime/parser/c.so"
+	install -Dvm644 c-parser.so "$pkgdir/usr/lib/libtree-sitter-c.so"
+	install -dv "$pkgdir/usr/share/nvim/runtime/parser/"
+	ln -sv "/usr/lib/libtree-sitter-c.so" "$pkgdir/usr/share/nvim/runtime/parser/c.so"
 	cd "$pkgname-$pkgver"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
