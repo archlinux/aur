@@ -4,12 +4,12 @@
 pkgname=esbuild
 pkgver=0.16.2
 pkgrel=1
-pkgdesc="An extremely fast JavaScript/TypeScript bundler and minifier"
+pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://github.com/evanw/esbuild"
+url="https://esbuild.github.io/"
 license=('MIT')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/evanw/esbuild/archive/v$pkgver.tar.gz")
 b2sums=('8c7c9016a23aff8ff64d5fb8f8b6c39281a8000d7db493c6fcb547ba2d545db538cc90f6f189483b1d5eadcf08739a051163763e65bf4ce1328a4d895ce59a91')
 
 prepare() {
