@@ -3,7 +3,7 @@
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
 pkgver=r644.75110dc
-pkgrel=3
+pkgrel=4
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
 provides=('lb-planner')
 arch=('any')
@@ -43,5 +43,5 @@ package() {
 	install -Dm644 app_icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/lb-planner.svg"
 	#NOTE: install can't copy whole directories, so I'm finding all files within the folder and installing them one-by-one
 	cd ./build/linux/x64/release/bundle/
-	find ./ -type f -exec install -Dm644 "{}" "$pkgdir/opt/$_pkgname/{}" \;
+	find ./ -type f -exec install -D "{}" "$pkgdir/opt/$_pkgname/{}" \;
 }
