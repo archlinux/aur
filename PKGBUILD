@@ -1,6 +1,5 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
-# Contributor: qing <qing at he dot email>
-pkgname=electronic-wechat-uos-bin
+pkgname=electronic-wechat-uos-bin-cn
 pkgver=2.3.2
 pkgrel=2
 epoch=
