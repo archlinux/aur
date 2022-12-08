@@ -40,9 +40,16 @@ build() {
 #     [ -f Makefile ] && make -j 4 || ninja
 }
 package() { 
-    targ="$pkgdir/usr/bin"
+    targ="$pkgdir/usr/share/rpkdev"
     mkdir -p "$targ"
     mv "$(realpath rpkdev)" "$targ"
+    chmod -R 755 "$targ"
+    
+    targ="$pkgdir/usr/bin"
+    mkdir -p "$targ"
+    echo '#!/bin/sh
+    LD_LIBRARY_PATH=/usr/share/rpkdev /usr/share/rpkdev/rpkdev $@
+    ' > "$targ/rpkdev"
     chmod -R 755 "$targ"
 #     echo "Packaging of tspkg started."
 #     if [ "$remote" == 1 ]; then
