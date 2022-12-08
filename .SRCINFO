@@ -5,6 +5,8 @@ pkgbase = rpkdev
 	arch = any
 	groups = Developer/Packaging
 	groups = CLI/Tool/PackageManager
-	makedepends = rpkdev
+	noextract = rpkdev
+	source = https://content.tssoftware.eu/binary/rpkdev
+	sha256sums = SKIP
 
 pkgname = rpkdev
