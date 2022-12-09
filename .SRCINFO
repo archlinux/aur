@@ -1,11 +1,15 @@
 pkgbase = vvc-vtm
-	pkgdesc = VTM reference software for VVC
-	pkgver = 14.0
+	pkgdesc = VTM reference software for VVC (H.266)
+	pkgver = 19.0
 	pkgrel = 1
+	url = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	source = vvc-vtm.tar.gz::https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/archive/VTM-14.0/VVCSoftware_VTM-VTM-14.0.tar.gz
-	b2sums = 81eadb31ae212183b57c5496b675c3673a414e9a4e1bca10f3404bc205830e2ea716354b62804921909c960846feca83865e19a3c25ffd0e8e8403b195fc9f7a
+	makedepends = lsb-release
+	makedepends = python
+	depends = gcc-libs
+	source = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/archive/VTM-19.0/VVCSoftware_VTM-VTM-19.0.tar.gz
+	b2sums = 4cc855a01cb0cf1456e818612bbfad0aa83e7b5268ae1774b4f370b6708cb677095ae504bdc663089445a95493f6c63ec3f2a38b4445bbcf705964c4a66dd8a1
 
 pkgname = vvc-vtm

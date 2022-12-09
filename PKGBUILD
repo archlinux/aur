@@ -1,24 +1,21 @@
-#!/bin/bash
-
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 pkgname=vvc-vtm
-_name=VVCSoftware_VTM
+_gitname=VVCSoftware_VTM
 _short=VTM
-pkgver=14.0
+pkgver=19.0
 pkgrel=1
-pkgdesc='VTM reference software for VVC'
+pkgdesc='VTM reference software for VVC (H.266)'
+url="https://vcgit.hhi.fraunhofer.de/jvet/${_gitname}"
 arch=('x86_64')
 license=('BSD')
-makedepends=(
-    'cmake'
-)
-source=("vvc-vtm.tar.gz::https://vcgit.hhi.fraunhofer.de/jvet/$_name/-/archive/$_short-$pkgver/$_name-$_short-$pkgver.tar.gz")
-# https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/archive/VTM-14.0/VVCSoftware_VTM-VTM-14.0.tar.gz
-b2sums=('81eadb31ae212183b57c5496b675c3673a414e9a4e1bca10f3404bc205830e2ea716354b62804921909c960846feca83865e19a3c25ffd0e8e8403b195fc9f7a')
+depends=('gcc-libs')
+makedepends=('cmake' 'lsb-release' 'python')
+source=("${url}/-/archive/${_short}-${pkgver}/${_gitname}-${_short}-${pkgver}.tar.gz")
+b2sums=('4cc855a01cb0cf1456e818612bbfad0aa83e7b5268ae1774b4f370b6708cb677095ae504bdc663089445a95493f6c63ec3f2a38b4445bbcf705964c4a66dd8a1')
 
 build() {
-    cd "$_name-$_short-$pkgver" || exit
+    cd "${_gitname}-${_short}-${pkgver}"
 
     cmake -B build -S . \
         -DCMAKE_BUILD_TYPE=Release \
@@ -29,18 +26,17 @@ build() {
 }
 
 package() {
-    cd "$_name-$_short-$pkgver" || exit
+    cd "${_gitname}-${_short}-${pkgver}"
 
-    cp "bin/parcatStaticd" "bin/vvc_concat"
-    cp "bin/EncoderAppStaticd" "bin/vvc_encoder"
-    cp "bin/DecoderAppStaticd" "bin/vvc_decoder"
-    cp "bin/BitstreamExtractorAppStaticd" "bin/vvc_bitstream_extractor"
-    cp "bin/DecoderAnalyserAppStaticd" "bin/vvc_decoder_analyser"
-    cp "bin/SEIRemovalAppStaticd" "bin/vvc_sei-removal"
-    cp "bin/StreamMergeAppStaticd" "bin/vvc_stream-merge"
-    cp "bin/SubpicMergeAppStaticd" "bin/vvc_subpic-merge"
+    install -Dm755 bin/BitstreamExtractorAppStaticd "${pkgdir}/usr/bin/vvc_bitstream_extractor"
+    install -Dm755 bin/DecoderAppStaticd "${pkgdir}/usr/bin/vvc_decoder"
+    install -Dm755 bin/DecoderAnalyserAppStaticd "${pkgdir}/usr/bin/vvc_decoder_analyser"
+    install -Dm755 bin/EncoderAppStaticd "${pkgdir}/usr/bin/vvc_encoder"
+    install -Dm755 bin/parcatStaticd "${pkgdir}/usr/bin/vvc_parcat"
+    install -Dm755 bin/SEIFilmGrainAppStaticd "${pkgdir}/usr/bin/vvc_sei_film_grain"
+    install -Dm755 bin/SEIRemovalAppStaticd "${pkgdir}/usr/bin/vvc_sei_removal"
+    install -Dm755 bin/StreamMergeAppStaticd "${pkgdir}/usr/bin/vvc_stream_merge"
+    install -Dm755 bin/SubpicMergeAppStaticd "${pkgdir}/usr/bin/vvc_subpic_merge"
 
-    install -Dm755 -t "${pkgdir}/usr/bin" bin/vvc_*
-
-    install -Dm644 "$srcdir/$_name-$_short-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
