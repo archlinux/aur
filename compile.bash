@@ -32,8 +32,8 @@ build() {
 	ulimit -n 20000
 	build_jobs=$(nproc)
 	if [[ ${build_jobs} -gt 1 ]]; then
-		# The viewer requires an average of 4GB of memory per core to link
 		mempercorekb=$((4 * 1048576))
+		# The viewer requires an average of 4GB of memory per core to link
 		requiredmemorykb=$(($(nproc) * mempercorekb))
 		# Source: Total Used Free
 		free_output="$(free --kilo --total | tr -s ' ')"
@@ -48,11 +48,13 @@ build() {
 			if [[ ${requiredmemorykb} -gt ${freememorykb} ]]; then
 				jobs=1
 				echo "Allocating build jobs according to available memory (${freememorykb}/${requiredmemorykb})..."
+				# FIXME: Goes one iteration beyond what it should
 				while [[ $((jobs * mempercorekb)) -lt ${freememorykb} ]]; do
 					jobs=$((jobs+1))
 					echo -e "${jobs}...$(((jobs * mempercorekb)/1024/1024))GB"
 				done
 				build_jobs=${jobs}
+				echo "Computed job count: ${build_jobs}"
 			fi
 		fi
 	fi
