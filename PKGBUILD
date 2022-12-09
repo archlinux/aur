@@ -2,12 +2,12 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=libdatachannel
-pkgver=0.17.12
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
-license=('LGPL')
+license=('MPL2')
 makedepends=('git' 'cmake')
 depends=('openssl' 'libjuice' 'libsrtp')
 provides=("$pkgname")
