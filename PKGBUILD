@@ -23,8 +23,8 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.6.4
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"

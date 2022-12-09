@@ -1,7 +1,7 @@
 pkgbase = obs-face-tracker
 	pkgdesc = This plugin provide video filters for face detection and face tracking for mainly a speaking person
-	pkgver = 0.6.4
-	pkgrel = 3
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/face-tracker.1294/
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = obs-face-tracker
 	depends = cblas
 	depends = lapack
 	options = debug
-	source = obs-face-tracker::git+https://github.com/norihiro/obs-face-tracker.git#tag=0.6.4
+	source = obs-face-tracker::git+https://github.com/norihiro/obs-face-tracker.git#tag=0.7.0
 	source = libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git
 	source = dlib::git+https://github.com/norihiro/dlib.git
 	sha256sums = SKIP
