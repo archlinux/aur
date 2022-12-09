@@ -3,7 +3,7 @@
 
 pkgname=python-colored
 _name=${pkgname#python-}
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Very simple Python library for color and formatting in terminal"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b7b48b9f40e8a65bbb54813d5d79dd008dc8b8c5638d5bbfd30fc5a82e6def7a')
+sha256sums=('04ff4d4dd514274fe3b99a21bb52fb96f2688c01e93fba7bef37221e7cb56ce0')
 
 build() {
     cd $_name-$pkgver
