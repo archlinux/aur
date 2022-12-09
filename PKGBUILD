@@ -1,9 +1,9 @@
 # Maintainer: ahmetlii
 pkgname='organicmaps-git'
-pkgver='2022.11.24_3'
-pkgrel='2'
+pkgver='2022.11.24_3' #needs to be changed every time the upstream has a new release
+pkgrel='3'
 pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data'
-arch=("x86_64")
+arch=("x86_64" "ARM") #ARM untested, but the binary includes compatibility
 depends=("cmake>=3.22.1" "qt5-base" "clang" "ninja" "python3")
 optdepends=("ccache")
 makedepends=("git" "gendesk")
@@ -18,34 +18,15 @@ prepare() {
 }
 
 build() {
- echo "Select option:"
- echo "1. Compile with one core (recommended)"
- echo "2. Compile with disabled Unity Builds"
- echo "1/2 (default=1)"
- read -r $ans
- if [ ${ans} -e 1 ]
-  then
-  $srcdir/$pkgname/tools/unix/build_omim.sh -n 1 -r desktop
-  else if [ ${ans} -e 2 ]
-  then
-  $srcdir/$pkgname/tools/unix/build_omim.sh -r desktop -DUNITY_DISABLE=ON
-  else
-  $srcdir/$pkgname/tools/unix/build_omim.sh -n 1 -r desktop
- fi
-fi
+  $srcdir/$pkgname/tools/unix/build_omim.sh -n 1 -r desktop #pass option -DUNITY_DISABLE=1 if running into free memory issues, remove option -n 1 if not having problems with multi-core compiling
 }
 
 package() {
- mkdir -p "$pkgdir/usr/share" "$pkgdir/usr/lib" "$pkgdir/usr/bin" "$pkgdir/usr/bin/${pkgname%-git}" "$pkgdir/usr/share/${pkgname%-git}"
+ install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
  cp -r "$srcdir/$pkgname/data" "$pkgdir/usr/share/${pkgname%-git}"
- cp "$srcdir/omim-build-release/OMaps" "$srcdir/OMaps"
+ install -dm777 "$pkgdir/usr/share/organicmaps/data/221119" #needs to be changed every time the upstream has a new release
  install -Dm644 "$srcdir/omim-build-release/OMaps.app/Contents/Resources/mac.icns" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
- cp -r "${srcdir}/omim-build-release" "${pkgdir}/usr/lib/${pkgname%-git}"
- gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "/usr/bin/${pkgname%-git}/OMaps --data_path=/usr/share/${pkgname%-git}/" --name "OrganicMaps" --icon="/usr/share/pixmaps/${pkgname%-git}.png" --categories="Utility;Maps;Navigation" --startupnotify=true
- install -Dm755 "$srcdir/OMaps" "$pkgdir/usr/bin/${pkgname%-git}"
+ gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "/usr/bin/OMaps --data_path=/usr/share/${pkgname%-git}/data" --name "OrganicMaps" --icon="/usr/share/pixmaps/${pkgname%-git}.png" --categories="Utility;Maps;Navigation" --startupnotify=true
+ install -Dm755 "$srcdir/omim-build-release/OMaps" "$pkgdir/usr/bin/OMaps"
  install -Dm644 "organicmaps.desktop" -t "$pkgdir/usr/share/applications"
- rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/OMaps"
- rm "${pkgdir}/usr/lib/${pkgname%-git}/data"
- find  "$pkgdir/usr/lib/${pkgname%-git}" -type d -maxdepth 1 -mindepth 1 -print0 | xargs -0 ln -s -t "$pkgdir/usr/bin/${pkgname%-git}"
- ln -sf "$pkgdir/usr/share/${pkgname%-git}/data" "$pkgdir/usr/bin/${pkgname%-git}/data"
 }
