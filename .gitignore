@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+
+!LICENSE
+
+!PKGBUILD
+!.SRCINFO
+!*.patch
