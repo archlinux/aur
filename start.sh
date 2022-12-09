@@ -7,6 +7,8 @@ QQ_APP_DIR="${CONFIG_DIR}/QQ"
 DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
 if [ "$DOWNLOAD_DIR" == "$HOME" ]; then DOWNLOAD_DIR="$HOME/Downloads"; fi
 
+mkdir -p "$QQ_APP_DIR"
+
 cd /opt/QQ
 
 bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try \
