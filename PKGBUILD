@@ -5,7 +5,7 @@ _libultraship_commit=e1fa7a2c0e6baeed083cd2b8f22c260e2db48d29
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
 pkgver=5.0.2
-pkgrel=2
+pkgrel=3
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
@@ -87,6 +87,8 @@ package_soh() {
   depends=("${_depends_soh[@]}")
   license=("unknown")
   install=soh.install
+  optdepends=("soh-otr: OTR asset file in order to run"
+              "soh-otr-mq: OTR asset file in order to run (Master Quest)")
 
   cd "${srcdir}/${_reponame}-${pkgver}"
 
@@ -100,7 +102,7 @@ package_soh() {
 }
 
 package_soh-otr-exporter() {
-  pkgdesc="OTR generation tools for SoH"
+  pkgdesc="OTR generation tools for SoH, including asset XML files and a simple GUI tool"
   license=("MIT")
   depends=("${_depends_soh_otr_exporter[@]}")
   optdepends=("zenity: OTRGui file chooser"
