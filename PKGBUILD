@@ -2,21 +2,22 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 
 pkgname=storcli
-pkgver=007.2203.0000.0000
+pkgver=007.2309.0000.0000
+_pkgver=7.2309.0000.0000
 pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards"
 url="https://www.broadcom.com/"
 license=('custom')
 arch=('x86_64')
-source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/${pkgver}_Unified_StorCLI.zip")
-sha512sums=('d0fb91b1ee28d4c32df434b9059d7b2201206c2ccfee93aa03da7871ef84c18a1dfda1a3857099f6284caea782fbcb38c35506106ac682736127ae7cea91a85b')
+source=("$pkgname-$pkgver.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/Unified_storcli_all_os_${_pkgver}.zip")
+sha512sums=('c922fe3889a4035e4b25c4228bc5bcaf6a94db6ea247170c8dd3735c953b735c4129cb9d0b7818b2ec63d98f1b21ccab6d4937a2c4e160c0077eb604fb24cf57')
 
 package() {
-  bsdtar -poxf "$srcdir/Linux/$pkgname-$pkgver-1.noarch.rpm" -C "$pkgdir"
+  bsdtar -poxf "$srcdir/Unified_storcli_all_os/Linux/$pkgname-$pkgver-1.noarch.rpm" -C "$pkgdir"
   rm "$pkgdir/opt/MegaRAID/storcli/storcli"
 
   install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/ThirdPartyLicenseNotice.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
+  install -Dm644 "$srcdir/Unified_storcli_all_os/ThirdPartyLicenseNotice.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
 
   ln -s /opt/MegaRAID/storcli/storcli64 "$pkgdir/usr/bin"
   ln -s /opt/MegaRAID/storcli/storcli64 "$pkgdir/usr/bin/storcli"
