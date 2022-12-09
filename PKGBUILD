@@ -2,7 +2,7 @@
 
 pkgname=git-br
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows current git branches and their descriptions"
 arch=('any')
 url='https://github.com/bahmutov/git-branches'
@@ -15,5 +15,5 @@ sha256sums=('51da7e79b98edac56a706f55c8d98d0589e1a065f851bebf2b429fb0d60795f2')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
-  install -Dm644 "${srcdir}/git-branches-${pkgver}/LICENSE-MIT" "${pkgdir}/usr/share/licences/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/git-branches-${pkgver}/LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
