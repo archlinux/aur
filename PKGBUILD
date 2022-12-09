@@ -47,7 +47,7 @@ package() {
     install -Dt "$pkgdir$site_packages/" plugins/weighting.py
     install -Dt "$pkgdir$site_packages/" plugins/filldrops.py
 
-    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname" 
+    install -Dm0755 -t "$pkgdir/usr/bin" "target/release/teres" 
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
