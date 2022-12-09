@@ -1,7 +1,7 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini."
 arch=('x86_64')
 url="https://github.com/GoXLR-on-Linux/goxlr-utility"
@@ -15,7 +15,8 @@ sha512sums=('8456bc259920d9e3b69abc568736dca6fe3b28096610e42efd918cf10acba13a280
 prepare() {
     cd "$pkgname-$pkgver"
 
-    cargo fetch --locked
+    # Don't lock the fetch, Cargo.lock isn't present in the repository
+    cargo fetch
 }
 
 build() {
