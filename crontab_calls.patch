@@ -1,5 +1,5 @@
---- a/plugins/cron/functions.go	2022-03-08 17:40:53.000000000 +0100
-+++ b/plugins/cron/functions.go	2022-03-08 22:37:11.883706200 +0100
+--- a/plugins/cron/functions.go 2022-12-09 00:42:16.085851600 +0100
++++ b/plugins/cron/functions.go 2022-12-09 00:44:28.535851600 +0100
 @@ -81,13 +81,13 @@
  }
 

@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.28.4
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'cpio'
   'curl'
   'docker'
+  'docker-compose'
   'docker-image-labeler'
   'dos2unix'
   'git'
@@ -39,9 +40,9 @@ source=("${url}/archive/v${pkgver}.zip"
         "crontab_calls.patch"
         "systemd_calls.patch"
         "LICENSE")
-sha256sums=('a2a46f32e565ff6aff863288a457ab125a0eb22feb8b857d00c892162175b476'
+sha256sums=('3bb545a12f4648ee291637744d6f50fa14bcc3e731da9edd1e1f63fd87abfbea'
             '5b3e99b6be28f8c68e024d9127992bcd49c758566a6ecaa15f9788a411eab0f0'
-            'dda85c90106e68b5478679fb2a5b8b37a786d188703abd255e079bdada36a9c0'
+            '55993df7e243de7a009da05f802cb0b306dc67aa181a510f6825a8b2874b2397'
             'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="${pkgname}.install"
