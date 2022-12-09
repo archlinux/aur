@@ -2,7 +2,7 @@
 
 pkgname=usbfluxd-git
 pkgver=1.0.r9.g0723a9a
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Redirects the standard usbmuxd socket to allow connections to local and remote usbmuxd instances so remote devices appear connected locally."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -12,7 +12,7 @@ groups=()
 depends=(libplist avahi)
 makedepends=(git autoconf automake gcc)
 checkdepends=()
-optdepends=()
+optdepends=('usbmuxd: USB Multiplex Daemon')
 provides=()
 conflicts=()
 replaces=()
