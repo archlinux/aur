@@ -3,15 +3,15 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=2.3.5.r126.gd30526f9
+pkgver=2.4.2.r31.g74afcc56
 pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('libglvnd' 'r' 'perl' 'gdcm' 'cli11')
-makedepends=('git' 'cmake')
+depends=('libglvnd' 'r' 'perl' 'gdcm' 'cli11' 'utf8cpp')
+makedepends=('git' 'cmake' 'boost')
 optdepends=()
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -22,13 +22,12 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -Np1 -i "${srcdir}"/0001-fix-for-GDCM-build.patch
+  # patch -Np1 -i "${srcdir}"/0001-fix-for-GDCM-build.patch
   mkdir -p antsBuild
 }
 
@@ -52,6 +51,7 @@ build() {
       -DUSE_SYSTEM_ITK=OFF \
       -DUSE_SYSTEM_SlicerExecutionMode=OFF \
       -DUSE_VTK=ON \
+      -DUSE_SYSTEM_VTK=ON \
       ..
   make
 }
