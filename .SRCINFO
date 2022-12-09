@@ -8,7 +8,7 @@ pkgbase = paket-bin
 	license = APACHE
 	depends = git
 	depends = fish
-	source = paket-bin-bin-0.1.3.tar.gz::https://github.com/joseluisq/paket/releases/download/v0.1.3/ paket-bin-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
+	source = paket-bin-0.1.3.tar.gz::https://github.com/joseluisq/paket/releases/download/v0.1.3/ paket-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 3a7ee63724a6e84ecf2c9acadb24de842722b135fddaa9704ecf8cc987557093
 
 pkgname = paket-bin
