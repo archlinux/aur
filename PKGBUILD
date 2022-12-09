@@ -2,17 +2,17 @@
 
 _name=Amulet-NBT
 pkgname=python-${_name,,}
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A Python and Cython library for reading and writing binary NBT and stringified NBT'
 arch=('x86_64')
 url="https://github.com/Amulet-Team/$_name"
-license=('unknown')
+license=('custom')
 depends=('python' 'python-mutf8' 'python-numpy')
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer-518' 'python-wheel')
 # tests directory isn't in pypi sdist
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3f48f17715b40c5d5f1dc694bbf18721d866d92ca63f6d66c0c7ae6ae7204770')
+sha256sums=('8b1ae756cd7a7396a9cd381ba63c85d1f654d267c1f02fa4ee638ee82e2b9b9f')
 
 prepare() {
   cd "$_name-$pkgver"
@@ -41,4 +41,5 @@ package() {
   cd "$_name-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
