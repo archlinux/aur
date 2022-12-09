@@ -23,10 +23,10 @@ build() {
     -S.. \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DSHARE_INSTALL_PREFIX:PATH=/usr/share
-  make
+  cmake --build . --target all
 }
 
 package() {
   cd "$_pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir/" install
+  cmake --install . --prefix="$pkgdir/usr"
 }
