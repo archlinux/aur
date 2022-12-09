@@ -1,0 +1,33 @@
+--- a/cmd/melt/main.go
++++ b/cmd/melt/main.go
+@@ -49,13 +49,13 @@ var (
+ 	language string
+ 
+ 	rootCmd = &cobra.Command{
+-		Use: "melt",
+-		Example: `  melt ~/.ssh/id_ed25519
+-  melt ~/.ssh/id_ed25519 > seed
+-  melt restore --seed "seed phrase" ./restored_id25519
+-  melt restore ./restored_id25519 < seed`,
++		Use: "melt-key",
++		Example: `  melt-key ~/.ssh/id_ed25519
++  melt-key ~/.ssh/id_ed25519 > seed
++  melt-key restore --seed "seed phrase" ./restored_id25519
++  melt-key restore ./restored_id25519 < seed`,
+ 		Short: "Generate a seed phrase from an SSH key",
+-		Long: `melt generates a seed phrase from an SSH key. That phrase can
++		Long: `melt-key generates a seed phrase from an SSH key. That phrase can
+ be used to rebuild your public and private keys.`,
+ 		Args:         cobra.MaximumNArgs(1),
+ 		SilenceUsage: true,
+@@ -116,8 +116,8 @@ be used to rebuild your public and private keys.`,
+ 	restoreCmd = &cobra.Command{
+ 		Use:   "restore",
+ 		Short: "Recreate a key using the given seed phrase",
+-		Example: `  melt restore --seed "seed phrase" ./restored_id25519
+-  melt restore ./restored_id25519 < seed`,
++		Example: `  melt-key restore --seed "seed phrase" ./restored_id25519
++  melt-key restore ./restored_id25519 < seed`,
+ 		Aliases: []string{"res", "r"},
+ 		Args:    cobra.ExactArgs(1),
+ 		RunE: func(cmd *cobra.Command, args []string) error {
