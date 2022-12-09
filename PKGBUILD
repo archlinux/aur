@@ -1,36 +1,36 @@
 pkgname=psi4-git
-pkgver=master
+pkgver=1.7
 pkgrel=1
-epoch=
-pkgdesc="Open-source quantum chemistry"
+pkgdesc="Open-Source Quantum Chemistry - an electronic structure package in C++ driven by Python"
 arch=("x86_64")
 url="http://psicode.org"
 license=("GPL")
-groups=()
-depends=(blas lapack python2 boost python2-numpy)
-makedepends=(gcc cmake)
+depends=(blas lapack python python-numpy gau2grid eigen
+		 pybind11 python-qcelemental python-qcengine libxc
+		 python-optking python-msgbox python-networkx)
+makedepends=(gcc cmake make)
 checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/psi4/psi4/archive/master.zip")
-noextract=()
+optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
+provides=(psi4)
+source=($pkgname-$pkgver.zip::https://github.com/psi4/psi4/archive/master.zip)
 md5sums=("SKIP")
-validpgpkeys=()
+
+pkgver() {
+	cd $pkgname-$pkgver
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "$srcdir"
-	cmake psi4-master -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+	cmake -S. -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
 	cd build
-	make -j 2
+	make -j`getconf _NPROCESSORS_ONLN`
+}
+
+check() {
+	#test 243 skipped. See https://github.com/psi4/psi4/issues/2828
+	ctest -j`getconf _NPROCESSORS_ONLN` -L quick -E 243
 }
 
 package() {
-	cd "$srcdir/build"
 	make install
 }
