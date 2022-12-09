@@ -7,7 +7,7 @@ url="http://psicode.org"
 license=("GPL")
 depends=(blas lapack python python-numpy gau2grid eigen
 		 pybind11 python-qcelemental python-qcengine libxc
-		 python-optking python-msgbox python-networkx)
+		 python-optking python-msgpack python-networkx)
 makedepends=(gcc cmake make)
 checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
