@@ -1,6 +1,6 @@
 pkgbase = frappe-bench
 	pkgdesc = CLI to manage Multi-tenant deployments for Frappe apps
-	pkgver = 5.14.3
+	pkgver = 5.15.2
 	pkgrel = 3
 	url = https://github.com/frappe/bench
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = frappe-bench
 	optdepends = python-pip: py dependency manager
 	optdepends = wkhtmltopdf: for pdf generation
 	provides = bench
-	source = frappe-bench::git+https://github.com/frappe/bench#tag=v5.14.3
+	source = frappe-bench::git+https://github.com/frappe/bench#tag=v5.15.2
 	sha256sums = SKIP
 
 pkgname = frappe-bench

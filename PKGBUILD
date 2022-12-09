@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=frappe-bench
-pkgver=5.14.3
+pkgver=5.15.2
 pkgrel=3
 pkgdesc="CLI to manage Multi-tenant deployments for Frappe apps"
 arch=('x86_64')
