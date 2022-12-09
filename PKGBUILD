@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GPL3')
 url="https://github.com/animafps/teres"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/animafps/teres/archive/v$pkgver.tar.gz")
-sha256sums=(SKIP)
+sha256sums=('379e0d2279b9fe90eed3e82e7e54853d3454fcd66fca6183959c87404edd2a01')
 
 prepare() {
     cd $pkgname-$pkgver
