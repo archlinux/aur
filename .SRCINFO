@@ -1,5 +1,5 @@
 pkgbase = soh-git
-	pkgver = 5.0.2.r64.g025e18e7e
+	pkgver = 5.0.2.r69.g408143ec8
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = x86_64
@@ -42,11 +42,13 @@ pkgname = soh-git
 	depends = sdl2_net
 	depends = libpulse
 	depends = glew
+	optdepends = soh-otr: OTR asset file in order to run
+	optdepends = soh-otr-mq: OTR asset file in order to run (Master Quest)
 	provides = soh
 	conflicts = soh
 
 pkgname = soh-otr-exporter-git
-	pkgdesc = OTR generation tools for SoH (git)
+	pkgdesc = OTR generation tools for SoH, including asset XML files and a simple GUI tool (git)
 	license = MIT
 	depends = libpng
 	optdepends = zenity: OTRGui file chooser

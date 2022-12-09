@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.0.2.r64.g025e18e7e
+pkgver=5.0.2.r69.g408143ec8
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/HarbourMasters/${_reponame}"
@@ -112,6 +112,8 @@ package_soh-git() {
   depends=("${_depends_soh[@]}")
   license=("unknown")
   install=soh.install
+  optdepends=("soh-otr: OTR asset file in order to run"
+              "soh-otr-mq: OTR asset file in order to run (Master Quest)")
 
   cd "${srcdir}/${_reponame}"
 
@@ -124,7 +126,7 @@ package_soh-git() {
 }
 
 package_soh-otr-exporter-git() {
-  pkgdesc="OTR generation tools for SoH (git)"
+  pkgdesc="OTR generation tools for SoH, including asset XML files and a simple GUI tool (git)"
   provides=("soh-otr-exporter")
   conflicts=("soh-otr-exporter")
   license=("MIT")
