@@ -119,6 +119,8 @@ prepare() {
 build() {
 	cmake -S "$srcdir/LuisaRender" \
 		-B "$srcdir/build" \
+		-DLUISA_RENDER_BUILD_TESTS=ON \
+		-DLUISA_COMPUTE_ENABLE_PYTHON=ON \
 		-DCMAKE_BUILD_TYPE=Release
 
 	make -C "$srcdir/build" ${MAKEFLAGS:--j1}
