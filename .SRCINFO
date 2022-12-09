@@ -1,16 +1,16 @@
 pkgbase = kristall
 	pkgdesc = A high-quality visual cross-platform gemini browser.
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 0
 	url = https://github.com/MasterQ32/kristall
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
+	depends = qt5-tools
 	depends = qt5-multimedia
 	depends = openssl
 	depends = qt5-svg
-	source = https://github.com/MasterQ32/kristall/archive/V0.3.tar.gz
-	b2sums = 3e00243cf455ad810e8d51333b63186e637de1c292a116dbb4273825c51b1c1bf1921bfd243acb97e13dc201b3dcce7240f3c66368b66b607e5c207a2d901934
+	source = https://github.com/MasterQ32/kristall/archive/V0.4.tar.gz
+	b2sums = 262742ae96829773883337e258f52e89d102fc2cb543438b964a0e59fef91f5316a8a586e447657fd472a2346bf7b1490c1d913d47528272d3c04bd6da113b88
 
 pkgname = kristall
-
