@@ -1,5 +1,5 @@
 pkgbase = movie_rename
-	pkgdesc = A simple tool to reame movies, written in Rust.
+	pkgdesc = A simple tool to rename movies, written in Rust.
 	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/SinTan1729/movie_rename

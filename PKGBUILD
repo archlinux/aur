@@ -1,8 +1,8 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="movie_rename"
 pkgver=1.1.2
-pkgrel=1
-pkgdesc="A simple tool to reame movies, written in Rust."
+pkgrel=2
+pkgdesc="A simple tool to rename movies, written in Rust."
 arch=('x86_64')
 url='https://github.com/SinTan1729/movie_rename'
 license=('GPL3')
