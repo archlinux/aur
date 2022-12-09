@@ -3,7 +3,7 @@
 pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
-pkgver=v0.11.10.r18.gfa81f61
+pkgver=v0.11.16.r22.gfd40be6
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.'
 url='https://sublimemusic.app'
@@ -40,8 +40,10 @@ license=('GPL3')
 arch=('any')
 source=(
     'sublime-music-git::git+https://gitlab.com/sublime-music/sublime-music.git'
+    'sublime-music.desktop'
 )
-md5sums=('SKIP')
+sha256sums=('SKIP'
+            'fd84f6b408aa78a21a2990a0b78c4851db80b7ef0f7e7573cc82b57d8abb4d0c')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
@@ -55,13 +57,12 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    pip install dist/sublime_music-*.tar.gz --root="${pkgdir}"
+    python -m installer --destdir="$pkgdir" "sublime-music-git/dist"/*.whl
 
     # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
     data_dir=${pkgdir}/usr/share/sublime-music
     mkdir -p $data_dir/adapters/subsonic $data_dir/dbus $data_dir/ui
-    pushd ${pkgdir}/usr/lib/python3.9/site-packages/sublime_music
+    pushd ${pkgdir}/usr/lib/python3.*/site-packages/sublime_music
     mv adapters/icons $data_dir/adapters
     mv adapters/images $data_dir/adapters
     mv adapters/subsonic/icons $data_dir/adapters/subsonic
@@ -71,16 +72,16 @@ package() {
     popd
 
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
-    install -Dm644 sublime-music.metainfo.xml "${pkgdir}/usr/share/metainfo/sublime-music.metainfo.xml"
+#    install -Dm644 sublime-music.metainfo.xml "${pkgdir}/usr/share/metainfo/sublime-music.metainfo.xml"
 
-    pushd docs
-    make man
-    install -Dm644 ./_build/man/sublime-music.1 "${pkgdir}/usr/share/man/man1/sublime-music.1"
-    popd
+#    pushd docs
+#    make man
+#    install -Dm644 ./_build/man/sublime-music.1 "${pkgdir}/usr/share/man/man1/sublime-music.1"
+#    popd
 
-    pushd logo/rendered
-    for size in 16 22 32 48 64 72 96 128 192 512 1024; do
-        install -Dm644 ${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/sublime-music.png
-    done
-    popd
+#    pushd logo/rendered
+#    for size in 16 22 32 48 64 72 96 128 192 512 1024; do
+#        install -Dm644 ${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/sublime-music.png
+#    done
+#    popd
 }
