@@ -1,8 +1,8 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 # Contributor: João Pinto <jpinto@ccsint.eu>
 pkgname=linuxkit
-pkgver=0.8
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A toolkit for building secure, portable and lean operating systems for containers"
 arch=('x86_64')
 url="https://github.com/linuxkit/linuxkit"
@@ -10,11 +10,11 @@ license=('APACHE')
 groups=()
 depends=()
 checkdepends=()
-makedepends=('git' 'docker' 'make')
+makedepends=('git' 'go' 'docker' 'make')
 conflicts=('linuxkit-git')
 source=("https://github.com/linuxkit/linuxkit/archive/v${pkgver}.tar.gz")
 
-sha256sums=('70aeb7f8cb0d84a57f615ed1f262427ce314296f92436b5b584f2f0502f765f5')
+sha256sums=('8a05ea89f0683852114ef312aae33ead8c65fccf6a0c13dd6d5096db972c68d1')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make VERSION=v${pkgver}
+	make VERSION=v${pkgver} bin/rtf local-build
 }
 
 #check() {
