@@ -2,7 +2,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=msodbcsql17
-pkgver=17.10.1.1
+pkgver=17.10.2.1
 pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 17 for SQL Server®"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('unixodbc' 'krb5' 'curl')
 provides=("msodbcsql=${pkgver}")
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/8/prod/msodbcsql17-$pkgver-1.x86_64.rpm)
-sha256sums=('295dfa96e8047b8a86b29f6415249aeaa7d2c96765e7539cff07f2e322e739ce')
+sha256sums=('c3adf8bae5bc2f771c7d40b9805b38539294ad0b3a654bf9f3d40d93365a5f7d')
 install=msodbcsql17.install
 
 package() {
