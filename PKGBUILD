@@ -4,9 +4,9 @@
 # then please put 'unknown'.
 
 # Maintainer: Alfred Roos <alfred@stensatter.se>
-pkgname=Calcer-git
-pkgver=2
-pkgrel=2
+pkgname=calcer-git
+pkgver=2.1
+pkgrel=2.1
 epoch=
 pkgdesc="Java based terminal calculator"
 arch=(x86_64)
@@ -36,10 +36,8 @@ prepare() {
     git clone https://github.com/spynetS/JCalc
 }
 
-
 package() {
     
     sudo mv ./JCalc/out/artifacts/JCalc_jar/JCalc.jar /usr/bin/JCalc.jar
     sudo mv ./calcergit/calcer /usr/bin/calcer
-
 }
