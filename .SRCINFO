@@ -1,7 +1,7 @@
 pkgbase = redpanda-cpp-git
 	pkgdesc = A lightweighted QT-based C/C++ IDE
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/royqh1979/RedPanda-CPP
 	arch = x86_64
 	license = GPL3
