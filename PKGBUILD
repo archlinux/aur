@@ -1,4 +1,5 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Daniil Kovalev <daniil@kovalev.website>
 # Contributor: Felix Serrano Blanco <felixseblanc@gmail.com>
 
 pkgname=libtd
