@@ -1,6 +1,6 @@
 pkgbase = httpie-desktop-appimage
 	pkgdesc = HTTPie for Desktop (AppImage)
-	pkgver = 2022.13.0
+	pkgver = 2022.16.0
 	pkgrel = 1
 	url = https://httpie.io/product
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = httpie-desktop-appimage
 	license = unknown
 	depends = fuse2
 	options = !strip
-	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2022.13.0/HTTPie-2022.13.0.AppImage
-	b2sums_x86_64 = da80afa517e821ad228f30b47c427d177c1c82f391f029da4cf6efe4d13f10df366eb87ff7c53cdf79643bddc2c6781453d955cb46892f99c8070d61daeec6c0
-	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2022.13.0/HTTPie-2022.13.0-arm64.AppImage
-	b2sums_aarch64 = 3e4243662398859899d18745b05277080c7a4a66d1c55e78a612aab1c4cb2ac3cd5aeb4bed7e63c1c8412d784553a87b3270b533f199fa2da4512d21d0b5b6f2
+	source_x86_64 = https://github.com/httpie/desktop/releases/download/v2022.16.0/HTTPie-2022.16.0.AppImage
+	b2sums_x86_64 = 9a978587afe27bf3bc862b12d990114baf37d2edde8b76c717a3fff1d86904a0700527b5b9e05681788e7843df5ff8b92308933fedbcdbafccf326df1fc99268
+	source_aarch64 = https://github.com/httpie/desktop/releases/download/v2022.16.0/HTTPie-2022.16.0-arm64.AppImage
+	b2sums_aarch64 = 3ce926cc8f7c041b7b250bb1902ece1bea769e3dbb4633e7c5acb09037821665c7050fdcaafc475000c6d6a7e555e3574ebf3293865539100540fda8b3c83bb7
 
 pkgname = httpie-desktop-appimage
