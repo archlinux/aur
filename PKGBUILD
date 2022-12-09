@@ -2,7 +2,7 @@
 
 pkgname=kasmvncserver-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KasmVNC provides remote web-based access to a Desktop or application."
 arch=('x86_64')
 url="https://github.com/kasmtech/KasmVNC"

@@ -1,7 +1,7 @@
 pkgbase = kasmvncserver-bin
 	pkgdesc = KasmVNC provides remote web-based access to a Desktop or application.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kasmtech/KasmVNC
 	arch = x86_64
 	license = GPL2
@@ -29,6 +29,7 @@ pkgbase = kasmvncserver-bin
 	depends = perl-list-moreutils
 	depends = perl-switch
 	depends = perl-try-tiny
+	depends = perl-yaml-tiny
 	depends = pixman>=0.30.0
 	depends = systemd-libs
 	depends = xkeyboard-config
