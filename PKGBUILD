@@ -1,7 +1,7 @@
 # Maintainer: Jordan Rudess <jrudess@gmail.com>
 pkgname=levd-git
 pkgver=r24.cd12fdf
-pkgrel=1
+pkgrel=3
 pkgdesc="Daemon to control NZXT Kraken x61"
 arch=('i686' 'x86_64')
 url="https://github.com/graphcareful/levd"
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/leviathan/levd.cfg")
 install=
-source=('git://github.com/graphcareful/levd.git')
+source=('levd::git+https://github.com/graphcareful/levd.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,7 +27,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/build"
-	cmake ..
+	cmake .. KRAKEN_LIB_LIBRARIES=":libsensors.so :libyaml-cpp.so :libglog.so.1 :libusb-1.0.so.0"
+
 	make
 }
 

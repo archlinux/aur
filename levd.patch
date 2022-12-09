@@ -1,10 +1,18 @@
 --- a/levd/CMakeLists.txt
 +++ b/levd/CMakeLists.txt
-@@ -37,5 +37,5 @@ install(
+@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "-fmax-errors=2")
+ set(KRAKEN_LIB_LIBRARIES
+   :libsensors.so
+   :libyaml-cpp.so
+-  :libglog.so.0
++  :libglog.so.1
+   :libusb-1.0.so.0)
+
+ # configure a header file to pass some of the CMake settings
+@@ -47,5 +47,5 @@ install(
    FILES_MATCHING PATTERN "levd.cfg")
  install(
    DIRECTORY config/
 -  DESTINATION /etc/systemd/system
 +  DESTINATION /usr/lib/systemd/system
    FILES_MATCHING PATTERN "levd.service")
-
