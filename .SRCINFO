@@ -26,7 +26,7 @@ pkgbase = psi4-git
 	optdepends = python-pytest-xdist
 	optdepends = python-sphinx
 	optdepends = python-nbsphinx
-	source = https://github.com/psi4/psi4/archive/master.zip
+	source = git+https://github.com/psi4/psi4
 	md5sums = SKIP
 
 pkgname = psi4-git

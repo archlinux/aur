@@ -12,7 +12,7 @@ makedepends=(gcc cmake make)
 checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
 provides=(psi4)
-source=($pkgname::git+https://github.com/psi4/psi4)
+source=(psi4::git+https://github.com/psi4/psi4)
 md5sums=("SKIP")
 
 pkgver() {
