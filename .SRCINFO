@@ -1,22 +1,20 @@
 pkgbase = opm-models
 	pkgdesc = C++ simulation framework for porous media flow
-	pkgver = 2022.04
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-models
 	arch = x86_64
 	license = GPL3
 	makedepends = cppcheck
 	makedepends = superlu
-	makedepends = git
-	depends = opm-material>=2022.04
-	depends = dune-alugrid>=2.8.0
-	depends = dune-istl>=2.8.0
-	depends = dune-localfunctions>=2.8.0
-	depends = suitesparse
+	makedepends = suitesparse
+	depends = opm-material>=2022.10
+	depends = dune-alugrid>=2.9.0
+	depends = dune-istl>=2.9.0
+	depends = dune-localfunctions>=2.9.0
 	optdepends = dune-fem: for dofmanager support
 	optdepends = opm-grid: for corner grid support
-	source = git+https://github.com/OPM/opm-models.git?signed#tag=release/2022.04/final1
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = SKIP
+	source = opm-models-release-2022.10-final.tar.gz::https://github.com/OPM/opm-models/archive/release/2022.10/final.tar.gz
+	sha512sums = 6e6c5f7891a34b2284514b69ee252a517200548a4bce8bc41efed4cf3bf44a01b05bc59ff92d31b075bbf42111329d994374e18173a3baa68df4c3e4b4d1be1d
 
 pkgname = opm-models
