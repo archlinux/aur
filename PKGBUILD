@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1493.a415f5c
+pkgver=r1501.bc8b507
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64')
