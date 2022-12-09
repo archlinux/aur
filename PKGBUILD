@@ -1,7 +1,7 @@
 # Maintainer: Tristan Hill
 
 pkgname=changedetection.io
-pkgver=0.39.22.1
+pkgver=0.40.0.2
 pkgrel=1
 pkgdesc='change monitoring of web pages'
 arch=('any')
@@ -11,6 +11,7 @@ makedepends=('python-setuptools')
 depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
          'python-flask'
          'python-flask-wtf'
+         'python-flask-compress'
          'python-flask-restful'
          'python-eventlet'
          'python-validators'
@@ -38,14 +39,13 @@ source=("https://github.com/dgtlmoon/changedetection.io/archive/refs/tags/$pkgve
         'sysusers'
         'tmpfiles'
         'service')
-sha512sums=('0b59f5c9fe765eaf027178eb51e5bff4e1cef1094be40cd3299313827bc996a1f7b4ef02663d6fa1084d9100cf000b00a7446c4a1815c5dedf57b241c1a638ac'
+sha512sums=('7fc01f23f10f6a9805fefc52e174c08b9372bfffcaecec22c5d3d0fe0399981bd8f124f52c0d2110e1b4a36217bc9db5fc20d815713e5a12d7b07e967baeeec6'
             '5ef8b215bddc02b04d55d3699f27ad043461d8771591be2ebf0ed6390c58ab881426214173c8e1cc8bb36ecd7acebc5d69d760fc65b8a3b191b2116150748f53'
             '62a684e35c3b479b8ab139b2d79f83f408bede0d4e0f1e500ee75f13126456fa5b574d8cb826c8c56ff0da488dec4ed3562854d0f05d44814beaa3b726bcd318'
             '5dba78fafd77fe41b69d73849529ed4f086879cd3a6e4ada126a320d249bb730bcf6a0b49e5b987699a2420e7083c7c6d1a0b921c49c932ec33f30bda083b506')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/~=.*//' requirements.txt
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
   install -Dm644 "${srcdir}/tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/changedetection.io.conf"
