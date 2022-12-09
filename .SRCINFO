@@ -1,7 +1,7 @@
 pkgbase = shronk-cli-utils-git
 	pkgdesc = A compilation of my own CLI Utils
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicroxio/cli_utils
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = shronk-cli-utils-git
 	depends = restic
 	depends = python
 	depends = python-click
+	depends = python-rich
 	source = git+https://github.com/Nicroxio/cli_utils.git
 	sha256sums = SKIP
 
