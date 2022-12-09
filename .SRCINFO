@@ -1,6 +1,6 @@
 pkgbase = soh-otr-gc_mq_d
 	pkgdesc = OTR game data for SoH (Ocarina of Time Master Quest Debug)
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = any

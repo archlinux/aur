@@ -3,7 +3,7 @@
 _romname=gc_mq_d
 _romdesc="Ocarina of Time Master Quest Debug"
 pkgname=soh-otr-${_romname}
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
