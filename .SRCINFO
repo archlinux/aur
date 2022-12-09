@@ -1,0 +1,15 @@
+pkgbase = pam_exec-ssh-git
+    pkgdesc = Unlock SSH keys on login using PAM.
+    pkgver = r19.311b153
+    pkgrel = 1
+    url = https://github.com/x70b1/pam_exec-ssh
+    arch = any
+    license = The Unlicense
+    makedepends = git
+    depends = pam
+    depends = expect
+    replaces = pam_exec-ssh
+    source = pam_exec-ssh::git+https://github.com/x70b1/pam_exec-ssh.git
+    sha256sums = SKIP
+
+pkgname = pam_exec-ssh-git
