@@ -2,7 +2,7 @@
 
 pkgname=nordlayer
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary VPN client for linux"
 arch=('i686' 'x86_64')
 url="https://nordlayer.com"
