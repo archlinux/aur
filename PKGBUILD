@@ -4,7 +4,7 @@
 
 pkgname='frr'
 pkgver='8.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org/"
@@ -40,7 +40,6 @@ prepare() {
     --sbindir="/usr/bin" \
     --sysconfdir="/etc/${pkgname}" \
     --localstatedir="/run/${pkgname}" \
-    --enable-exampledir="/usr/share/doc/${pkgname}/examples" \
     --with-libpam \
     --enable-snmp="agentx" \
     --enable-multipath=256 \
@@ -50,7 +49,6 @@ prepare() {
     --enable-configfile-mask="0640" \
     --enable-logfile-mask="0640" \
     --enable-shell-access \
-    --enable-systemd \
     --enable-rpki \
     --enable-fpm
 }
