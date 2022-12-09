@@ -6,7 +6,7 @@
 # Past Contributor: Emerson Almeida <duke.m16@gmail.com>
 
 pkgname=zoho-mail-desktop
-pkgver=1.4.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://www.zoho.com/mail/desktop"
 
 source=("https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v${pkgver}.AppImage"
         "zoho-mail-desktop.desktop")
-sha256sums=("d33a0cbe363248f25b03fe6197541279eec4db6b1c7d5820237c83cff0601309"
+sha256sums=("8618e8ba59dc1dfd287b09d923c260f57a85cc8000ae5999ebc14dc21485c15b"
             "SKIP")
 
 prepare() {
