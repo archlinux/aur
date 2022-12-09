@@ -1,12 +1,13 @@
 pkgbase = myman
-	pkgdesc = Pacman clone with an ncurses and a graphic interface
+	pkgdesc = Pacman clone with an ncurses and a "graphic" interface
 	pkgver = 0.7.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://myman.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = make>=3.80
+	makedepends = man
 	depends = ncurses
 	optdepends = xterm: Launch game with xmyman wrapper
 	optdepends = rxvt-unicode: Launch game with xmyman2 wrapper
@@ -15,4 +16,3 @@ pkgbase = myman
 	sha512sums = 7a5268fa9a9275c8d46b57cf714e889c221581a5cbe19b388e6a6023667f9941f764af6be47fbf1f11a430f149fbf6a7a0bb5be2dd92b16c07020f9de8fc98b6
 
 pkgname = myman
-
