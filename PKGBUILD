@@ -1,7 +1,9 @@
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+
 pkgname=cubeb
 pkgver=20221208
 _commit=51728e55cd9e11088da414d6ae1e21ef10cd83de
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"

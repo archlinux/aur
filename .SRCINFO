@@ -1,7 +1,7 @@
 pkgbase = cubeb
 	pkgdesc = Cross platform audio library
 	pkgver = 20221208
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
 	arch = armv7h
