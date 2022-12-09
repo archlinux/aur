@@ -16,10 +16,12 @@ depends=('dkms')
 makedepends=('git')
 source=("git+https://github.com/choff/${_pkgname}.git#commit=8148a162755bf5500a07cf41a65a02c8f3eb0af9"
   "https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch"
-  "https://github.com/choff/anbox-modules/pull/4.patch")
+  "https://github.com/choff/anbox-modules/pull/4.patch"
+  "linux-6.patch")
 sha256sums=('SKIP'
             '7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556'
-            'fced11f849692dd1f0f36b50bb859d85aa244a536c2cef529a14bb73f568bb5e')
+            'fced11f849692dd1f0f36b50bb859d85aa244a536c2cef529a14bb73f568bb5e'
+            'SKIP')
 conflicts=(anbox-modules-dkms-git)
 
 prepare() {
@@ -31,6 +33,8 @@ prepare() {
   # # Patch for 5.19
   patch -p1 -i "${srcdir}"/4.patch
 
+  # # Patch for kernel 6.xx
+  patch --forward --strip=1 --input="${srcdir}/linux-6.patch"
 }
 
 package() {
