@@ -2,7 +2,7 @@
 
 pkgname=usbfluxd-git
 pkgver=1.0.r9.g0723a9a
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Redirects the standard usbmuxd socket to allow connections to local and remote usbmuxd instances so remote devices appear connected locally."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -36,6 +36,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname%-git}"
 
+    sed -i 's|sbin|bin|g'  usbfluxd/Makefile.am
     patch -p1 < ../fix.patch
     autoreconf -i
 }
