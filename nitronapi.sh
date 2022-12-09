@@ -135,7 +135,7 @@ else
 fi
 
 # Lowmemorykiller info
-[[ -e "/sys/module/lowmemorykiller/parameters" ]] && {
+if [[ -d "/sys/module/lowmemorykiller" ]]; then
 	lmkmodminfree=$(cat /sys/module/lowmemorykiller/parameters/minfree)
 	case "$lmkmodminfree" in
 		"6400,7680,11520,25600,35840,38400") lmksts="Aggressive" ;;
@@ -145,8 +145,9 @@ fi
 		"2560,5120,11520,25600,35840,38400") lmksts="Extreme" ;;
 		*)				     lmksts="Default" ;;
 	esac
-} || lmkmodminfree="Kernel Module not found."
-
+else
+    lmksts="Kernel Module not found."
+fi
 }
 
 vars
@@ -286,7 +287,7 @@ apin() {
 		echo "CPU Freq: MIN=$cpu_min_clk_mhz, MAX=$cpu_max_clk_mhz MHz"
 		echo "CPU Usage: $cputotalusage%"
 		echo "LMK Status: $lmksts"
-		[[ "$batt_pctg" != "" ]] && [[ "$batt_pctg" != "unknown" ]] && {
+		[[ "$batt_pctg" != "" ]] && [[ "$batt_hth" != "unknown" ]] && {
 			echo "Battery Percentage: $batt_pctg%"
 			echo "Battery Health: $batt_hth"
 			echo "Battery Status: $batt_sts"
@@ -418,7 +419,7 @@ com.activision.callofduty.shooter
 				if [[ "$TRAPAUTO" == "true" ]]; then
 					exit
 				else
-					PIDS=$(cat "$NITRON_LOG_DIR"/nitron.auto.conf | tail -n +4)
+					PIDS=$(cat "$NITRON_RELAX_DIR"/nitron.auto.conf | tail -n +4)
 					auto
 				fi
 			done
