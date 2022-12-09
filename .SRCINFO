@@ -1,7 +1,7 @@
 pkgbase = rabbitvcs-thunar
 	pkgdesc = Thunar front-end for RabbitVCS SVN GIT HG Extension.
 	pkgver = 0.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rabbitvcs/rabbitvcs
 	install = rabbitvcs-thunar.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rabbitvcs-thunar
 	depends = python-thunarx
 	depends = python-dbus
 	depends = rabbitvcs>=0.18.0
-	source = rabbitvcs-0.18.0-3.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/1b833c934469e331ae15b48392cff09944b7f14a.tar.gz
-	sha256sums = 090e8a67316881774a7908f23524043afb82bef6b76a7f9aca9b92bfdd3ef266
+	source = rabbitvcs-0.18.0-4.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/c424618cc15686a902a0255cdf6751647dd39b19.tar.gz
+	sha256sums = 8490b98370b0d93590ea4d5180eefb5c350763427c6251ea52a87e16aed62865
 
 pkgname = rabbitvcs-thunar
