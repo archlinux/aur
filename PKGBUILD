@@ -19,9 +19,13 @@ sha512sums=('27836fe2c6373fcbb5deed4a2a564a751809211b5061f75a36a78e2b13d029ddf52
   'SKIP')
 validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <gruenich@dune-project.org>
 
+prepare() {
+  sed -i 's/^Version: '"${pkgver%%.0}"'/Version: '"${pkgver%%.0}"'.0/' ${pkgname}-${pkgver}/dune.module
+}
+
 build() {
   cmake \
-    -S ${pkgname}-${_tarver} \
+    -S ${pkgname}-${pkgver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -40,6 +44,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
 }
