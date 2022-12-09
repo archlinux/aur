@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 43.1+30+gaaf7b9e4b
+	pkgver = 43.2
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -41,10 +41,10 @@ pkgbase = gnome-shell-performance
 	optdepends = gst-plugin-pipewire: Screen recording
 	optdepends = gnome-bluetooth-3.0: Bluetooth support
 	provides = gnome-shell
-	provides = gnome-shell=43.1+30+gaaf7b9e4b
-	provides = gnome-shell=1:43.1+30+gaaf7b9e4b
+	provides = gnome-shell=43.2
+	provides = gnome-shell=1:43.2
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=aaf7b9e4b306208d3a835bfb2617b3b9cf1e0190
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=e9b26eac0c0d66b87201874ce2b704268ee99be6
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
