@@ -4,14 +4,14 @@
 _gitname=Yamux
 pkgname=yamux
 pkgver=v60
-pkgrel=1
+pkgrel=2
 pkgdesc="Yandex Music client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
 license=('GPL3')
-depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3' 'gst-plugins-good')
+depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3' 'gst-plugins-good', 'gst-plugins-bad', 'gst-plugin-pipewire')
 makedepends=("dotnet-sdk>=6.0.0")
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$_gitname-$pkgver/$_gitname-$_gitname-$pkgver.tar.gz")
+source=("https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v60/Yamux-Yamux-v60.tar.gz")
 md5sums=('2df955ef696ad3d269372597a57a6515')
 
 build() {
@@ -38,7 +38,7 @@ package() {
     cp -r ./Yamux/bin/Release/net6.0/linux-x64/. "$pkgdir/opt/Yamux"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf "$pkgdir/opt/Yamux/Yamux" "$pkgdir"/usr/bin/yamux
+    ln -sf "/opt/Yamux/Yamux" "$pkgdir"/usr/bin/yamux
 
     # License
     cp -r ./LICENSE "$pkgdir/opt/Yamux"
