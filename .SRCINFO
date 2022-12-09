@@ -18,6 +18,7 @@ pkgbase = teres-git
 	depends = ffms2
 	depends = vapoursynth-plugin-svpflow2-bin
 	depends = vapoursynth-plugin-mvsfunc-git
+	depends = vapoursynth-plugin-frameblender
 	optdepends = vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support
 	optdepends = vapoursynth-plugin-vsrife-git: RIFE CUDA support
 	provides = teres=0.3.1.r0.g63d6c0c
