@@ -16,7 +16,7 @@ source=($pkgname-$pkgver.zip::https://github.com/psi4/psi4/archive/master.zip)
 md5sums=("SKIP")
 
 pkgver() {
-	cd $pkgname-$pkgver
+	cd $srcdir
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
