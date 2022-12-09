@@ -1,7 +1,7 @@
 pkgbase = fuse-emulator
 	pkgdesc = ZX Spectrum emulator.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fuse-emulator.sourceforge.net/fuse.php
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = fuse-emulator
 	depends = gtk3
 	depends = libspectrum>1.4.3
 	depends = sdl
+	conflicts = fuse-emulator-sdl
 	source = http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-1.6.0.tar.gz
 	source = https://gitlab.com/menelkir/fuseroms/-/archive/0.2/fuseroms-0.2.tar.gz
 	source = fuse-emulator.desktop
