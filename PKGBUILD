@@ -3,7 +3,7 @@
 
 pkgname=oauth2_proxy
 pkgver=7.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A reverse proxy that provides authentication with Google, Github or other providers."
 arch=('i686' 'x86_64')
 url="https://github.com/oauth2-proxy/oauth2-proxy"
@@ -24,6 +24,9 @@ build() {
 
 	export GOPATH="$(pwd)/deps:$(realpath $(pwd)/..)"
 	cd github.com/oauth2-proxy/oauth2-proxy
+
+	# Default version variable to $pkgver instead of "undefined" as the buildtime version detection in the Makefile fails
+	sed -i "s,VERSION = \"undefined\",VERSION = \"${pkgver}\"," version.go
 
 	go build -o ../../../dist/oauth2-proxy -trimpath
 }
