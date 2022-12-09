@@ -1,7 +1,7 @@
 # Maintainer: Score_Under <seejay.11@gmail.com>
 pkgname=pngwolf-zopfli-git
 pkgver=0.r80.31b3399
-pkgrel=1
+pkgrel=2
 pkgdesc="A PNG optimizer using a genetic algorithm to find effective compression parameters"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/jibsen/pngwolf-zopfli"
