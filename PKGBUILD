@@ -4,7 +4,7 @@
 
 pkgname=python-graph-tool
 pkgver=2.45
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
@@ -21,7 +21,9 @@ source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
 sha256sums=('f92da7accfda02b29791efe4f0b3ed93329f27232af4d3afc07c92421ec68668')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  export CXXFLAGS="-march=native -flto=auto -fno-fat-lto-objects"
+  # disable assertions which lead to runtime failures
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}
+  export CXXFLAGS="$CXXFLAGS -O3 -march=native -flto=auto -fno-fat-lto-objects"
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
