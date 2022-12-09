@@ -1,33 +1,33 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: éclairevoyant
+
 _pkgname=qt6ct
-pkgname=$_pkgname-git
-pkgver=0.2+8+g0edb925
+pkgname="$_pkgname-git"
+pkgver=0.7.r2.14a8f91
 pkgrel=1
 pkgdesc='Qt6 Configuration Tool'
-arch=('any')
-groups=('therepoclub')
-url='https://github.com/trialuser02/qt6ct'
-license=(GPL2)
-conflicts=($_pkgname)
-depends=(qt6-svg qt6-base gtk2)
-makedepends=(qt6-tools git)
-source=("${_pkgname}-$pkgver::git+${url}.git")
+arch=('x86_64')
+url="https://github.com/trialuser02/$_pkgname"
+license=('BSD')
+depends=('gtk2' 'qt6-base' 'qt6-svg')
+makedepends=('git' 'qt6-tools')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname-$pkgver
-	git describe --tags | sed 's/-/+/g'
+	cd $_pkgname
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  /usr/lib/qt6/bin/qmake PREFIX=/usr
-  make
+	cd $_pkgname
+	/usr/lib/qt6/bin/qmake PREFIX=/usr
+	make
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+	cd $_pkgname
+	make INSTALL_ROOT="$pkgdir" install
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
