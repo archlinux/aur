@@ -3,7 +3,7 @@
 pkgname=cubeb
 pkgver=20221208
 _commit=51728e55cd9e11088da414d6ae1e21ef10cd83de
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
@@ -11,10 +11,10 @@ license=('ISC')
 makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
 checkdepends=('gtest')
 optdepends=(
-	'alsa-lib: for ALSA backend'
-	'jack: for JACK backend'
-	'libpulse: for PulseAudio backend'
-	'sndio: for sndio backend'
+    'alsa-lib: for ALSA backend'
+    'jack: for JACK backend'
+    'libpulse: for PulseAudio backend'
+    'sndio: for sndio backend'
 )
 provides=("$pkgname=$pkgver" 'libcubeb.so')
 conflicts=("$pkgname-git")
@@ -28,7 +28,7 @@ pkgver() {
 
 
 build() {
-	cd $pkgname
+    cd $pkgname
     cmake -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DBUILD_TESTS="$CHECKFUNC" \
@@ -39,18 +39,18 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_SANITIZERS=OFF \
 		-Wno-dev
-	cmake --build build
+    cmake --build build
 }
 
 check() {
     cd $pkgname
-	ctest --test-dir build -E 'audio|callback_ret|device_changed_callback|devices|duplex|latency|record|sanity|tone'
+    ctest --test-dir build -E 'audio|callback_ret|device_changed_callback|devices|duplex|latency|record|sanity|tone'
 }
 
 package() {
-	depends+=('libspeexdsp.so')
+    depends+=('libspeexdsp.so')
 
     cd $pkgname
-	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
