@@ -7,7 +7,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.11.51.2.gd7c8792
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Samsagax/gamescope
@@ -36,7 +36,7 @@ depends=(
   sdl2
   vulkan-icd-loader
   wayland
-  #wayland-protocols
+  wayland-protocols
   #wlroots
   xorg-server-xwayland
 )
