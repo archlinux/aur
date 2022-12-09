@@ -1,6 +1,6 @@
 pkgbase = dots-git
 	pkgdesc = Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs
-	pkgver = 1.1.12.r29.g1184c70
+	pkgver = 1.1.12.r31.g37f2c61
 	pkgrel = 1
 	url = https://github.com/ulises-jeremias/dotfiles
 	arch = any
