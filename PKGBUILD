@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
 contents=( '/data/Themes<./Themes' '/Docs<./Docs' '/lib<./build//platforms/archlinux_x86_64/Release/lib' )
-pkgdir='/tmp/tmp.So4REBu2cN/sh/pkg'
+pkgdir='/tmp/tmp.rHP4mq9erE/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
