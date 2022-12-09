@@ -1,8 +1,8 @@
 # Maintainer: Steven Cook <scook@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.11
-pkgrel=2
+pkgver=2.0.12
+pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
 url="https://www.anope.org/"
@@ -23,11 +23,11 @@ source=(
     "anope.service"
     "anope.tmpfiles"
 )
-sha512sums=(
-    '120588a815600abb93b77d3e9cb18527a61e955e9dbc947e4e62c97bac871325863f519d20535882f3eff136743454c08af62fd3cd4825e5a956fd1a4ac4d728'
-    '81bc1bbb504fa021417312a72799b04682e54dd0dd1e070a035d62fa66ac7fa8ee3cb1c8ffe3746c4569e7716d591cfa14e9631571a74a4b8224fae18fd50bef'
-    '6535e075c27a124e3aeb45f1496194a70130da88e2eae29a80ac3d33754ce4020b405438681690b3df032b386bccbb3f65983ad84f85fe76f3562e744ea55b52'
-    '5c58a55c7e5974dec516f43eb960c9cdcadb68c92ceeaed7d96c82c180f8073d76d7491575331bca46f4714b19cdb188fe1bd056efb3391e3b3113c076407d21'
+sha256sums=(
+    'eeba1331eaa02a0b05347209604e22df8052d9b10fd19a7633ad1e837f003ff0'
+    '310487f9962d9c6f5b968453b7954be40b1c4bf8f591d8ac550e36e6eb80d846'
+    '93d656d74d1ab405e1484eb625c7e45843cc2915c492d0c76da890ff55c06ce0'
+    'c0e4605b6e92b93f40d3f33a9fe39777c5bc8a0863a3b07c282f7331f5bacc53'
 )
 
 prepare() {
