@@ -2,7 +2,7 @@
 
 pkgname=kasmvncserver-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="KasmVNC provides remote web-based access to a Desktop or application."
 arch=('x86_64')
 url="https://github.com/kasmtech/KasmVNC"
@@ -20,9 +20,9 @@ package(){
         mkdir ${pkgdir}/usr/share/perl5/vendor_perl/
         mv ${pkgdir}/usr/share/perl5/KasmVNC ${pkgdir}/usr/share/perl5/vendor_perl/KasmVNC
 
-        ln -s ${pkgdir}/usr/bin/kasmvncserver ${pkgdir}/usr/bin/vncserver
-        ln -s ${pkgdir}/usr/bin/kasmvncpasswd ${pkgdir}/usr/bin/vncpasswd
-        ln -s ${pkgdir}/usr/bin/kasmvncconfig ${pkgdir}/usr/bin/vncconfig
-        ln -s ${pkgdir}/usr/bin/Xkasmvnc ${pkgdir}/usr/bin/Xvnc
-        ln -s ${pkgdir}/usr/bin/kasmxproxy ${pkgdir}/usr/bin/xproxy
+        ln -s /usr/bin/kasmvncserver ${pkgdir}/usr/bin/vncserver
+        ln -s /usr/bin/kasmvncpasswd ${pkgdir}/usr/bin/vncpasswd
+        ln -s /usr/bin/kasmvncconfig ${pkgdir}/usr/bin/vncconfig
+        ln -s /usr/bin/Xkasmvnc ${pkgdir}/usr/bin/Xvnc
+        ln -s /usr/bin/kasmxproxy ${pkgdir}/usr/bin/xproxy
 }
