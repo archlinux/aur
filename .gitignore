@@ -1,0 +1,6 @@
+/*.tar.xyz
+/*.tar.gz
+/*.tar.zst
+/pkg
+/src
+/vapoursynth-plugin-frameblender*

@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-frameblender
+	pkgdesc = Modified version of VapourSynth's AverageFrames which allows for more weights
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/couleurm/vs-frameblender
+	arch = any
+	license = unknown
+	makedepends = clang
+	depends = vapoursynth
+	source = vapoursynth-plugin-frameblender-1.2.tar.gz::https://github.com/couleurm/vs-frameblender/archive/1.2.tar.gz
+	sha256sums = 647edc03818bc87b1f23116f474292bf9dcadeafe456af15404a93666590f1cd
+
+pkgname = vapoursynth-plugin-frameblender
