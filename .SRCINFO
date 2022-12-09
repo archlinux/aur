@@ -1,7 +1,7 @@
 pkgbase = tango-cpp
 	pkgdesc = TANGO distributed control system - shared library
 	pkgver = 9.3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tango-controls.org/
 	arch = x86_64
 	arch = armv7h

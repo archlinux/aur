@@ -5,7 +5,7 @@
 pkgname=tango-cpp
 _pkgname=cppTango
 pkgver=9.3.5
-pkgrel=2
+pkgrel=3
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
@@ -26,13 +26,13 @@ build() {
 
   if [[ $CARCH == "x86_64" ]]
   then
-    cmake -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig cmake -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
   fi
 
   # Disable mmmx (for jpeg) instruction for arm architecture
   if [[ $CARCH == "armv7h" ]]
   then
-    cmake -DTANGO_JPEG_MMX=0 -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig cmake -DTANGO_JPEG_MMX=0 -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
   fi
 }
 
