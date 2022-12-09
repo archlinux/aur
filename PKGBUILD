@@ -103,7 +103,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DWITH_PCH=0  \
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
-    -DWITH_NATIVEBOOK=0 \
+    -DWITH_NATIVEBOOK=1 \
     -DENABLE_LLDB=1 \
     -DWITH_MYSQL=0 \
     -B "${BUILD_DIR}" \
