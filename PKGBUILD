@@ -217,27 +217,28 @@ package() {
     rm -r "${srcdir}"/"${pkgname:?}"/*
   fi
   
-  if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-    mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
-  elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-    mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
-    mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
-  fi
-  
-  if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
-    install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
-  fi
+  # if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
+  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
+  # elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
+  #   mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
+  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
+  # fi
+  # 
+  # if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
+  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
+  # fi
   
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
   if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x '{}' \;
+    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
   
   if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'mcs')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x '{}' \;
+    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
   fi
   
+  ## Do this, in case the path doesn't exist for some reason
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
