@@ -3,14 +3,15 @@
 # Contributor: Daniel Menelkir (dmenelkir at gmail dot com)
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=fuse-emulator
+pkgname=fuse-emulator-sdl
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ZX Spectrum emulator (SDL GUI)."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
 license=("GPL")
 depends=("libspectrum>1.4.3" 'sdl')
+conflicts=('fuse-emulator')
 source=("http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-$pkgver.tar.gz"
 				"https://gitlab.com/menelkir/fuseroms/-/archive/0.2/fuseroms-0.2.tar.gz"
         "fuse-emulator.desktop")
