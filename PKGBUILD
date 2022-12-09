@@ -1,6 +1,8 @@
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com><S
+
 pkgname=cpp-jwt
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON Web Token library for C++"
 arch=('any')
 url="https://github.com/arun11299/cpp-jwt"
@@ -15,23 +17,23 @@ b2sums=('5ded054cca527b803507d49edac82946cea2e9458ca783c5e693bba18313db1aba5c021
 
 build() {
     cd $pkgname-$pkgver
-	cmake -B build \
+    cmake -B build \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCPP_JWT_BUILD_EXAMPLES=OFF \
 		-DCPP_JWT_BUILD_TESTS="$CHECKFUNC" \
 		-DCPP_JWT_USE_VENDORED_NLOHMANN_JSON=OFF \
 		-Wno-dev
-	cmake --build build
+    cmake --build build
 }
 
 check() {
     cd $pkgname-$pkgver
-	ctest --test-dir build
+    ctest --test-dir build
 }
 
 package() {
     cd $pkgname-$pkgver
-	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
