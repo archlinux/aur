@@ -5,7 +5,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.6.0
-pkgrel=7
+pkgrel=9
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -21,8 +21,8 @@ depends=(
 	'python-guessit>=3.3.1' #auto-deps
 	'python-appdirs<2.0.0' #auto-deps
 	'python-appdirs>=1.4.4' #auto-deps
-	'python-cleo<0.9.0' #auto-deps
-	'python-cleo>=0.8.1' #auto-deps
+	'python-cleo-v0<0.9.0' #auto-deps
+	'python-cleo-v0>=0.8.1' #auto-deps
 	'python-confuse<3.0' #auto-deps
 	'python-confuse>=2.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
@@ -31,6 +31,13 @@ depends=(
 	'python-pydantic>=1.10.2' #auto-deps
 	'python-toml<0.11.0' #auto-deps
 	'python-toml>=0.10.2' #auto-deps
+	'python-desktop-notifier<4.0.0' #auto-deps
+	'python-desktop-notifier>=3.4.0' #auto-deps
+)
+
+_overrides=(
+	'append:cleo:-v0'
+	'replace:desktop-notifier:/(3\.4)\..+/\1.0/'
 )
 
 makedepends=(
@@ -48,8 +55,7 @@ prepare() {
 
 	sed -i 's/cleo\s/cleo_v0 /' \
 		trakt_scrobbler/console.py \
-		trakt_scrobbler/commands/command.py \
-		pyproject.toml
+		trakt_scrobbler/commands/command.py
 }
 
 build() {
@@ -64,5 +70,4 @@ package()
     python -m installer --destdir="$pkgdir" \
         "$srcdir/$pkgname/dist/${pkgname//-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
     install -Dm755 "$srcdir/$pkgname/completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
-    install -Dm644 "$srcdir/$pkgname/trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
 }
