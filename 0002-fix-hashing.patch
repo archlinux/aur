@@ -1,13 +1,13 @@
 diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-index 8c5d49591..bc145ffb2 100644
+index b5823c969..a33b38e94 100644
 --- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-@@ -476,7 +476,7 @@ void start() {
+@@ -731,7 +731,7 @@ void start() {
  					md5Hash.data());
  			}
  
--			return qsl("org.telegram.desktop.%1.desktop").arg(md5Hash);
-+			return qsl("org.telegram.desktop.%1.desktop").arg(QString(md5Hash));
+-			return u"org.telegram.desktop._%1.desktop"_q.arg(md5Hash);
++			return u"org.telegram.desktop._%1.desktop"_q.arg(QString(md5Hash));
  		}
  
- 		return qsl("org.telegram.desktop.desktop");
+ 		return u"org.telegram.desktop.desktop"_q;
