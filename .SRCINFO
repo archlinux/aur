@@ -1,6 +1,6 @@
 pkgbase = d2
 	pkgdesc = A modern diagram scripting language that turns text to diagrams
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://d2lang.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = d2
 	makedepends = go
 	depends = gcc-libs
 	options = !lto
-	source = d2::git+https://github.com/terrastruct/d2#commit=3f62eed2420b1765e45bc9d29045431e2163b515
+	source = d2::git+https://github.com/terrastruct/d2#commit=44a60b382fdb3f00fb269a3045b9196f1aa854b1
 	b2sums = SKIP
 
 pkgname = d2
