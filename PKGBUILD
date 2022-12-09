@@ -1,5 +1,5 @@
 pkgname=psi4-git
-pkgver=1.7
+pkgver=1.7.r2.gf0a2cc9f78
 pkgrel=1
 pkgdesc="Open-Source Quantum Chemistry - an electronic structure package in C++ driven by Python"
 arch=("x86_64")
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S. -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+	cmake -S"$pkgname" -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
 	cd build
 	make -j`getconf _NPROCESSORS_ONLN`
 }
