@@ -2,12 +2,13 @@
 # Old Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 # Maintainer: Shatur95 <genaloner@gmail.com>
 # Co-Maintainer: Neko-san <aur@mycat.anonaddy.me>
+# Contributor: shawarden
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=23
+pkgrel=24
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -203,19 +204,18 @@ package() {
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
   
-  # Move all folders into the package directory; mv has to be used this way to prevent "cannot mv, directory not empty" errors
-  for dir in ${srcdir}/${pkgname}; do
-    if [ -d "${dir}" ]; then
-      if [ "${dir}" == "LocalBuilds" ]; then
-        if [ -d LocalBuilds/Engine/Linux/ ]; then
-          mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}/"
-        fi
-      else
-        mkdir -p "${pkgdir}/${_install_dir}/${dir}"
-        mv "${dir}"/* "${pkgdir}/${_install_dir}/${dir}"
-      fi
-    fi
-  done
+  # Copy LocalBuilds to pkg...
+  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_install_dir}"/
+  if [ -f "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor ]; then
+    # Can never be too careful with recursive rm...
+    rm -r "${srcdir}"/"${pkgname}"/LocalBuilds
+  fi
+
+  # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
+  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_install_dir}"/
+  if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
+    rm -r "${srcdir}"/"${pkgname}"/*$
+  fi
   
   if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
     mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
@@ -251,6 +251,6 @@ package() {
   # Configuring the launch script to detect when it has been run for the first time
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
-  sed -i "s/ChecksumPlaceholder/${DesktopFileChecksum}/" "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
-  sed -i "s|InstalledLocationPlaceholder|${_install_dir}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
+  sed -i "s/ChecksumPlaceholder/${DesktopFileChecksum}/" "${pkgdir}/usr/bin/unreal-engine-5.sh"
+  sed -i "s|InstalledLocationPlaceholder|/${_install_dir}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
 }
