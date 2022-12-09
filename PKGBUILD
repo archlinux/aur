@@ -15,7 +15,7 @@ makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://dune-project.org/download/${_tar}{,.asc})
-sha512sums=('acb711f9b2a086813bfc6ca376ddcca81be3810ecfd451739db67a404c9972b3fb1e8bb88b47e901f847421bd2ddd6f8ab78e513447ff6e75b48ae6fd72467c1'
+sha512sums=('27836fe2c6373fcbb5deed4a2a564a751809211b5061f75a36a78e2b13d029ddf52e1a5d9dd6a837480ec6d95d9061d1ea5d116f3f7fdd7be3fb4567b4b76c9b'
   'SKIP')
 validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger <gruenich@dune-project.org>
 
