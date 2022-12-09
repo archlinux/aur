@@ -1,12 +1,13 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: FederAndInk
 
 pkgname=circup
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to manage/update libraries on CircuitPython devices."
 url="https://github.com/adafruit/circup"
-depends=('findimports' 'python-update-checker')
-makedepends=('python-setuptools')
+depends=('findimports' 'python-update-checker' 'python-click' 'python-semver')
+makedepends=('python-setuptools' 'python-pip')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
