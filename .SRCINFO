@@ -1,23 +1,22 @@
 pkgbase = opm-grid
 	pkgdesc = DUNE grid implementations for reservoir simulation
-	pkgver = 2022.04
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-grid
 	arch = x86_64
 	license = GPL3
+	makedepends = cppcheck
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = git
-	depends = opm-common>=2022.04
-	depends = dune-grid>=2.8.0
-	depends = dune-istl>=2.8.0
+	depends = opm-common>=2022.10
+	depends = dune-grid>=2.9.0
+	depends = dune-istl>=2.9.0
 	depends = suitesparse
 	depends = zoltan
 	optdepends = man-db: manual pages for grdecl2vtu and mirror_grid
 	provides = grdecl2vtu
 	provides = mirror_grid
-	source = git+https://github.com/OPM/opm-grid.git?signed#tag=release/2022.04/final1
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = SKIP
+	source = opm-grid-release-2022.10-final.tar.gz::https://github.com/OPM/opm-grid/archive/release/2022.10/final.tar.gz
+	sha512sums = 72ac06ab951f5a9f28307692ae2dffc10f6ab546ce830822c4ecead7e9b7d8e5678d4c2138659a1e7570353aeb95923c2ccfbb673905d56d7892c875439a247e
 
 pkgname = opm-grid
