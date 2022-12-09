@@ -2,7 +2,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=pyupgrade
-pkgver=3.2.2
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A tool to automatically upgrade syntax for newer versions of the language"
 arch=('any')
@@ -11,15 +11,16 @@ license=('MIT')
 depends=("python" "python-tokenize-rt")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-b2sums=('2a528c4aa276a8908006e4e01f103c28da9014008bd817fbd686d24da45cdedc64c168da7c191a2e8963c6a88f2dc0c1d98a8856f990bd1eb585b52fbe99e66c')
+b2sums=('b8c9d1e2081b0ee504863bfc41e7bc70e464d5ceb45eacbb983f1fa3596e5a7d275b307b1aa5dcc615569c020ddf6d137abaf2c8f1722c330e377f38a8f6e239')
 
 build() {
-  cd $pkgname-$pkgver
-  python3 setup.py build
+    cd $pkgname-$pkgver
+    python3 setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd $pkgname-$pkgver
+    python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
