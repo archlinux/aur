@@ -8,7 +8,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.1.0
-pkgrel=24
+pkgrel=25
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -214,7 +214,7 @@ package() {
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
   cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_install_dir}"/
   if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
-    rm -r "${srcdir}"/"${pkgname}"/*$
+    rm -r "${srcdir}"/"${pkgname:?}"/*
   fi
   
   if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
