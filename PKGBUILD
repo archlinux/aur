@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=waypoint
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='A tool to build, deploy, and release any application on any platform'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('git' 'go' 'go-bindata')
 optdepends=('docker: for local development server')
 options=('!lto')
-_commit='136a885b94f8d620fadbc626b2d89ef93995eb06'
+_commit='46720cf33fd6a09261c6236c5b8cc7b9b1621e11'
 source=("$pkgname::git+https://github.com/hashicorp/waypoint.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -27,11 +27,19 @@ prepare() {
 }
 
 build() {
+  # set Go flags
+  local GIT_IMPORT="github.com/hashicorp/waypoint/internal/version"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie \
+    -trimpath \
+    -ldflags=-linkmode=external \
+    -ldflags=-X=${GIT_IMPORT}.GitCommit=$_commit \
+    -ldflags=-X=${GIT_IMPORT}.GitDescribe=$pkgver \
+    -mod=readonly \
+    -modcacherw"
 
   # build process extracted from Makefile
   cd "$pkgname"
@@ -46,8 +54,8 @@ build() {
     -o prod.go \
     -tags assetsembedded \
     ./ceb
-
   popd
+
   go build -v \
     -tags assetsembedded \
     -o ./waypoint \
