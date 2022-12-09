@@ -4,7 +4,7 @@
 
 pkgname=trakt-scrobbler-git
 pkgver=1.6.1b1.r0.g8cd46d9
-pkgrel=3
+pkgrel=6
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -18,8 +18,8 @@ depends=(
 	'python-cleo-v0>=0.8.1' #auto-deps
 	'python-confuse<3.0.0' #auto-deps
 	'python-confuse>=2.0.0' #auto-deps
-#	'python-desktop-notifier<4.0.0' #auto-deps
-#	'python-desktop-notifier>=3.4.2' #auto-deps
+	'python-desktop-notifier<4.0.0' #auto-deps
+	'python-desktop-notifier>=3.4.0' #auto-deps
 	'python-guessit<4.0.0' #auto-deps
 	'python-guessit>=3.3.1' #auto-deps
 	'python-pydantic<2.0.0' #auto-deps
@@ -28,8 +28,8 @@ depends=(
 	'python-pysocks>=1.7.1' #auto-deps
 	'python-requests<3.0.0' #auto-deps
 	'python-requests>=2.25.1' #auto-deps
-#	'python-setuptools<66.0.0' #auto-deps
-#	'python-setuptools>=65.5.1' #auto-deps
+	'python-setuptools<1:66.0.0' #auto-deps
+	'python-setuptools>=1:65.5.1' #auto-deps
 	'python-urllib3<2.0.0' #auto-deps
 	'python-urllib3>=1.26.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
@@ -41,6 +41,12 @@ makedepends=(
     python-build
     python-installer
     python-wheel
+)
+
+_overrides=(
+    'append:cleo:-v0'
+    'replace:desktop-notifier:/(3\.4)\..+/\1.0/'
+    'epoch:setuptools:1'
 )
 
 provides=("${pkgname%*-git}")
@@ -65,8 +71,7 @@ prepare() {
 
 	sed -i 's/cleo\s/cleo_v0 /' \
 		trakt_scrobbler/console.py \
-		trakt_scrobbler/commands/command.py \
-		pyproject.toml
+		trakt_scrobbler/commands/command.py
 }
 build() {
     python -m build --no-isolation --wheel "$srcdir/${pkgname%*-git}"
