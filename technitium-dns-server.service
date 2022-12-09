@@ -1,0 +1,18 @@
+[Unit]
+Description=Technitium DNS Server
+
+[Service]
+User=technitium
+Group=technitium
+WorkingDirectory=/opt/technitium-dns-server
+ExecStartPre=/usr/bin/chown -R technitium:technitium /opt/technitium-dns-server/config
+ExecStart=/usr/bin/dotnet /opt/technitium-dns-server/DnsServerApp.dll
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=technitium-dns-server
+PermissionsStartOnly=true
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target
