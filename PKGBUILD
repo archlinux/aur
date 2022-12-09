@@ -1,32 +1,26 @@
-#!/bin/bash
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
-
-pkgname=python-proto-plus
 _name=proto-plus
-pkgver=1.20.3
+pkgname=python-$_name
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='A wrapper around protocol buffers.'
 arch=('any')
 url="https://github.com/googleapis/proto-plus-python"
 license=('Apache')
-optdepends=('python-google-api-core: Testing')
-makedepends=(
-	'python'
-	'python-setuptools'
-)
-depends=("python-protobuf")
+depends=('python' 'python-google-api-core' 'python-protobuf')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('79027b4e81d9bd172264c6c118a9c69633d11474917f3230fe1ac5943bde6aebd1d9cd34fe1c7c48a9e29768540745cbf4948837f0a6186cbfacc1550b446183')
+b2sums=('50f32b085d979019adba0f1d7cf6d3ad5ad60e13d8c0b1e146e6ca7a87506af2f0ce8aaf212a97cf44d7b392e2d1204bb425224acc39654658d0d7505be0c9bb')
 
 build() {
-	cd "$srcdir/$_name-$pkgver" || exit
-	export PYTHONHASHSEED=0
+	cd $_name-$pkgver
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver" || exit
+	cd $_name-$pkgver
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
