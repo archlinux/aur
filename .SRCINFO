@@ -1,6 +1,6 @@
 pkgbase = kwin-effect-xrdesktop-git
 	pkgdesc = xrdesktop effect for KWin.
-	pkgver = 0.14.0.r0.g3e85e5b
+	pkgver = 0.16.0.r0.gf0ad888
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = kwin-effect-xrdesktop-git
 	depends = kwin
 	depends = libinputsynth-git
 	depends = xrdesktop-git
-	source = git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git
+	source = git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git#branch=main
 	md5sums = SKIP
 
 pkgname = kwin-effect-xrdesktop-git
-

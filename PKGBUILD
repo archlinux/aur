@@ -2,7 +2,7 @@
 
 basename=kwin-effect-xrdesktop
 pkgname=$basename-git
-pkgver=0.14.0.r0.g3e85e5b
+pkgver=0.16.0.r0.gf0ad888
 pkgrel=1
 pkgdesc='xrdesktop effect for KWin.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop'
 license=('GPL')
 depends=(kwin libinputsynth-git xrdesktop-git)
 makedepends=('extra-cmake-modules' 'git' 'vulkan-headers')
-source=('git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git')
+source=('git+https://gitlab.freedesktop.org/xrdesktop/kwin-effect-xrdesktop.git#branch=main')
 md5sums=('SKIP')
 
 pkgver() {
