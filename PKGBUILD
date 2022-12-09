@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname='tlauncher'
-pkgver='1.154.3'
+pkgver='1.155.0'
 pkgrel=1
 epoch=1
 pkgdesc='Freeware Minecraft launcher'
@@ -11,12 +11,16 @@ url='https://tlaun.ch'
 arch=('any')
 license=('custom')
 depends=('java-runtime>=8')
-optdepends=('xorg-xrandr: Required for some old Minecraft versions')
+optdepends=(
+  'xorg-xrandr: Required for some old Minecraft versions'
+  'switcheroo-control: GPU selector'
+  'gamemode: Optimizing game performance'
+)
 
-#_bootstrap_version='1.30.5'
-#_bootstrap_checksum='2d7e5f0760c44eae6e1a60a104a0be427dfd65b8356f30f3a18d89ba72bdeb6b'
-#_launcher_version='1.154.3'
-#_launcher_checksum='62092b0e492210063ae4855a15ed76ab84b1505c9023dc5e2da5f856b16ef5d1'
+#_bootstrap_version='1.31.0'
+#_bootstrap_checksum='42eb94d74166391371c653f73bed327e167f170762d5feb58c95a8a5fdfb65c9'
+#_launcher_version='1.155.0'
+#_launcher_checksum='2a6e27d8b16e09acdc5fe8483eeb063136361fbffbc2707063cd16ff471716c5'
 
 _repo='https://tlaun.ch/repo'
 # Try one of these if the above one fails:
@@ -24,25 +28,31 @@ _repo='https://tlaun.ch/repo'
 #_repo='https://tlaun.ch/repo'
 #_repo='https://eu01-www.tlaun.ch/repo'
 #_repo='https://eu02-www.tlaun.ch/repo'
+#_repo='https://eu03-www.tlaun.ch/repo'
 #_repo='https://ru01-www.tlaun.ch/repo'
 #_repo='https://ru02-www.tlaun.ch/repo'
+#_repo='https://ru03-www.tlaun.ch/repo'
 #_repo='https://tln4.ru/repo'
 #_repo='https://eu01-www.tln4.ru/repo'
 #_repo='https://eu02-www.tln4.ru/repo'
+#_repo='https://eu03-www.tln4.ru/repo'
 #_repo='https://ru01-www.tln4.ru/repo'
 #_repo='https://ru02-www.tln4.ru/repo'
+#_repo='https://ru03-www.tln4.ru/repo'
 #_repo='https://4nlt.com/repo'
 #_repo='https://eu01-www.4nlt.com/repo'
 #_repo='https://eu02-www.4nlt.com/repo'
+#_repo='https://eu03-www.4nlt.com/repo'
 #_repo='https://ru01-www.4nlt.com/repo'
 #_repo='https://ru02-www.4nlt.com/repo'
+#_repo='https://ru03-www.4nlt.com/repo'
 
 source=(
   # Bootstrap
-  "tl-bootstrap-1.30.5-2d7e5f07.jar::${_repo}/update/aur/bootstrap/2d7e5f0760c44eae6e1a60a104a0be427dfd65b8356f30f3a18d89ba72bdeb6b.jar"
+  "tl-bootstrap-1.31.0-42eb94d7.jar::${_repo}/update/aur/bootstrap/42eb94d74166391371c653f73bed327e167f170762d5feb58c95a8a5fdfb65c9.jar"
 
   # Launcher
-  "tl-launcher-1.154.3-62092b0e.jar::${_repo}/update/aur/launcher/62092b0e492210063ae4855a15ed76ab84b1505c9023dc5e2da5f856b16ef5d1.jar"
+  "tl-launcher-1.155.0-2a6e27d8.jar::${_repo}/update/aur/launcher/2a6e27d8b16e09acdc5fe8483eeb063136361fbffbc2707063cd16ff471716c5.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -92,14 +102,14 @@ source=(
 
 noextract=(
   "${source[@]##*/}"
-  "tl-bootstrap-1.30.5-2d7e5f07.jar"
-  "tl-launcher-1.154.3-62092b0e.jar"
+  "tl-bootstrap-1.31.0-42eb94d7.jar"
+  "tl-launcher-1.155.0-2a6e27d8.jar"
 )
 
 sha256sums=(
-  '2d7e5f0760c44eae6e1a60a104a0be427dfd65b8356f30f3a18d89ba72bdeb6b' # tl-bootstrap-1.30.5-2d7e5f07.jar
+  '42eb94d74166391371c653f73bed327e167f170762d5feb58c95a8a5fdfb65c9' # tl-bootstrap-1.31.0-42eb94d7.jar
 
-  '62092b0e492210063ae4855a15ed76ab84b1505c9023dc5e2da5f856b16ef5d1' # tl-launcher-1.154.3-62092b0e.jar
+  '2a6e27d8b16e09acdc5fe8483eeb063136361fbffbc2707063cd16ff471716c5' # tl-launcher-1.155.0-2a6e27d8.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'd5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9' # com.google.guava:guava:31.0.1-jre
@@ -155,8 +165,8 @@ package() {
   done
 
   # install launcher
-  install -Dm0644 "${srcdir}/tl-bootstrap-1.30.5-2d7e5f07.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/tl-launcher-1.154.3-62092b0e.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/tl-bootstrap-1.31.0-42eb94d7.jar" "${pkgdir}/opt/tlauncher/bootstrap.jar"
+  install -Dm0644 "${srcdir}/tl-launcher-1.155.0-2a6e27d8.jar" "${pkgdir}/opt/tlauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/tlauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
