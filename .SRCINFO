@@ -1,14 +1,13 @@
 pkgbase = vttest
 	pkgdesc = Tool for testing VT100 compatibility of terminals
-	pkgver = 20200420
+	pkgver = 20221111
 	pkgrel = 1
-	url = http://invisible-island.net/vttest
-	arch = i686
+	url = https://invisible-island.net/vttest
 	arch = x86_64
+	arch = i686
 	license = MIT
 	depends = glibc
-	source = https://invisible-island.net/datafiles/release/vttest.tar.gz
-	sha256sums = SKIP
+	source = https://invisible-island.net/archives/vttest/vttest-20221111.tgz
+	sha256sums = 6ac0bf66a58073780fdeb7463114f51d80b1cc9e8ef1d8c7363053fcdc3181a7
 
 pkgname = vttest
-
