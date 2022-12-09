@@ -4,11 +4,12 @@
 # Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 
 pkgname=makedepend
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Create dependencies in Makefiles"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.linuxfromscratch.org/blfs/view/7.4/x/makedepend.html"
+#old: url="http://www.linuxfromscratch.org/blfs/view/7.4/x/makedepend.html"
+url="https://xorg.freedesktop.org/archive/individual/util/"
 license=('custom')
 depends=('splint')
 makedepends=('autoconf'
@@ -19,7 +20,7 @@ makedepends=('autoconf'
              'xorg-util-macros'
              'xorgproto')
 source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.gz)
-sha256sums=('845f6708fc850bf53f5b1d0fb4352c4feab3949f140b26f71b22faba354c3365')
+sha256sums=('17c1adf0284aaee473abfff0e8d3e754770615e1275f2a0043b9d97a00ed5cc9')
 conflicts=('imake')
 
 build() {
