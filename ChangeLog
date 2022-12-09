@@ -545,3 +545,13 @@ Fixes:
 Improvements:
 - The Morgen top toolbar is more responsive to the available space and the window size.
 - When you restart Morgen, the task sidebar will be now restored to the tab you used last.
+
+=== Morgen 2.6.3
+New Features:
+- Just in time for the holiday clutter, you can now keep a clean view of your calendar by hiding declined invitations in just one click.
+- Morgen Pro subscribers can now disable the Scheduled with Morgen note on scheduled events in Preferences > General.
+
+Fixes:
+- We fixed a problem that was causing the wrong time to be displayed when selecting your available slots
+- We fixed an issue that could cause calendar events to become unresponsive
+- We fixed an issue that occurred when setting the time of an event in other time zones
