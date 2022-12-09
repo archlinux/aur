@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'jack' 'libpulse' 'qt5-base')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha256sums=('29355402b9a42e7df5f1248cb9b394d2d9a492ff1000946bd2c7dc27b3f28648')
-source=("${_pkgname}-${pkgver}.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v${pkgver}")
+source=("${_pkgname}-${pkgver}_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v${pkgver}")
 
 build() {
   echo "ocenaudio "$pkgver
@@ -21,7 +21,7 @@ build() {
 
 package() {
   cp -rLnf ${srcdir}/* ${pkgdir}/
-  rm -f ${pkgdir}/${_pkgname}-${pkgver}.tar.xz
+  rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.tar.xz
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/licenses"
   install -Dm644 "${pkgdir}/opt/$_pkgname/bin/ocenaudio_license.txt" \

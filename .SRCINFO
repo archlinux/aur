@@ -11,7 +11,7 @@ pkgbase = ocenaudio-bin
 	depends = qt5-base
 	provides = ocenaudio
 	conflicts = ocenaudio
-	source = ocenaudio-3.11.18.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.18
+	source = ocenaudio-3.11.18_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.18
 	sha256sums = 29355402b9a42e7df5f1248cb9b394d2d9a492ff1000946bd2c7dc27b3f28648
 
 pkgname = ocenaudio-bin
