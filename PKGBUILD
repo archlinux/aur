@@ -2,20 +2,19 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.5.9.1698.1
+pkgver=2.0.0
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
 license=('AGPL3')
-depends=('glibc')
-optdepends=('v2ray>=4.37.0-1' 'xray>=1.4.2-1')
 provides=('v2raya')
 conflicts=('v2raya')
+backup=("etc/default/v2raya")
 
-sha_service=7b201c058782a7382c3ec183e80af528c5310a6d
-sha_service_lite=2f3305f5ebd91dbe0ff3d70370f22a0131077794
+sha_service=87e4994a79ab26158376bbfded9c3d52ed17abed
+sha_service_lite=9df9ed4266775403fcb4b655c2bc518bfe68841d
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
 
@@ -50,26 +49,42 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '4c647fb36753a3281d2187cb6d2bf0b05579a4ed'
+    '78be5860666df4008b8e4e00e6df6e939ca167ca'
 )
 sha1sums_x86_64=(
-    'c9f4a49965feb1f936325f516d47a055b2bfb8bc'
+    'f2a0bab66991f325824502b6c6743ac100907484'
 )
 sha1sums_aarch64=(
-    '8214014ccc992ecf5ccdd962190ecece03797267'
+    'a7ab110036fcb01ef1208ab38162dbcd51a58b37'
 )
 sha1sums_armv6h=(
-    '1f6d7e011a612147eab7f505c022e37a59e1763d'
+    '165dace9c74add7faf4190a15ecd1a6d27c3c7b0'
 )
 sha1sums_armv7h=(
-    '1f6d7e011a612147eab7f505c022e37a59e1763d'
+    '165dace9c74add7faf4190a15ecd1a6d27c3c7b0'
 )
 
+build() {
+    cd "$srcdir"
+
+    # generate default config
+    cat > "$srcdir/v2raya.conf" << EOF
+# v2raya config example
+# Everything has defaults so you only need to uncomment things you want to
+# change
+
+EOF
+    ./v2raya_"${pkgver}" --report config | sed '1,6d' | fold -s -w 78 | sed -E 's/^([^#].+)/# \1/'  >> "$srcdir/v2raya.conf"
+}
+
 package() {
+    depends+=('v2ray>=5.0.0')
+
     cd "$srcdir"
     install -Dm 755 v2raya_"${pkgver}" "${pkgdir}"/usr/bin/v2raya
     install -Dm 644 v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm 644 v2raya-lite.service -t "${pkgdir}"/usr/lib/systemd/user/
     install -Dm 644 v2raya.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
+    install -Dm 644 v2raya.conf "${pkgdir}"/etc/default/v2raya
 }
