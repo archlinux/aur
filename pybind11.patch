@@ -1,0 +1,13 @@
+diff --git a/src/ext/CMakeLists.txt b/src/ext/CMakeLists.txt
+index d90636a9..8197f0d3 100644
+--- a/src/ext/CMakeLists.txt
++++ b/src/ext/CMakeLists.txt
+@@ -80,7 +80,7 @@ add_subdirectory(EASTL)
+ target_link_libraries(luisa-compute-ext PUBLIC EASTL)
+ 
+ if (LUISA_COMPUTE_ENABLE_PYTHON)
+-    add_subdirectory(pybind11)
++    find_package(pybind11 REQUIRED)
+ endif ()
+ 
+ if (LUISA_COMPUTE_ENABLE_ISPC OR LUISA_COMPUTE_ENABLE_LLVM)

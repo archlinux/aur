@@ -1,0 +1,11 @@
+diff --git a/src/ext/CMakeLists.txt b/src/ext/CMakeLists.txt
+index 13df36e2..61f84c14 100644
+--- a/src/ext/CMakeLists.txt
++++ b/src/ext/CMakeLists.txt
+@@ -160,5 +160,5 @@ if (WIN32 AND NOT MINGW AND NOT MSYS)
+ endif ()
+ 
+ set(ABSL_PROPAGATE_CXX_STD ON CACHE BOOL "" FORCE)
+-add_subdirectory(abseil-cpp)
++find_package(absl CONFIG REQUIRED)
+ target_link_libraries(luisa-compute-ext PUBLIC absl::base absl::flat_hash_map)

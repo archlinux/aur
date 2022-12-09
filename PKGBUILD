@@ -1,19 +1,18 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=luisarender-git
-pkgver=de7818a7
+pkgver=1381f5ab
 pkgrel=1
 pkgdesc="High-Performance Rendering Framework on Stream Architectures"
 arch=('x86_64')
 url="https://luisa-render.com/"
 license=('BSD')
-depends=('gcc-libs' 'cuda' 'glfw-wayland')
+depends=('abseil-cpp' 'assimp' 'cuda' 'embree' 'glfw-wayland' 'tbb')
 makedepends=('clang' 'git' 'cmake')
 source=(
 	'git+https://github.com/LuisaGroup/LuisaRender.git'
 	'git+https://github.com/LuisaGroup/LuisaCompute.git'
 	'git+https://github.com/jarro2783/cxxopts.git'
-	'git+https://github.com/assimp/assimp.git'
 	'git+https://github.com/fastfloat/fast_float.git'
 	'git+https://github.com/syoyo/tinyexr.git'
 
@@ -27,8 +26,6 @@ source=(
 	'git+https://github.com/ocornut/imgui.git'
 	'git+https://github.com/LuisaGroup/EASTL.git'
 	'git+https://github.com/jothepro/doxygen-awesome-css.git'
-	'git+https://github.com/pybind/pybind11'
-	'git+https://github.com/abseil/abseil-cpp.git'
 	'git+https://github.com/KhronosGroup/SPIRV-Headers'
 	'git+https://github.com/KhronosGroup/SPIRV-Tools.git'
 	'git+https://github.com/KhronosGroup/glslang.git'
@@ -37,12 +34,20 @@ source=(
 	# submodules within compute
 	'git+https://github.com/LuisaGroup/EABase.git'
 	'git+https://github.com/microsoft/mimalloc.git'
+
+	'assimp.patch'
+	'abseil-cpp.patch'
+	'pybind11.patch'
 )
 
-md5sums=(
+sha256sums=(
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-	'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'SKIP' 'SKIP' 'SKIP' 'SKIP'
+
+	'822638ea7608bf42fdfd7f04d4453c5413c7cb673296415fc82dc110fc1f97a3'
+	'0fb87b700d7e657836d69aca7f114d8bfaaf7843b0c04c05cb4d3f2cb2a99ba6'
+	'a1bd3301ed9aaa7cb35acf14afe430db3edd1523324fa6498776e60e80c4cf14'
 )
 
 pkgver() {
@@ -69,14 +74,12 @@ prepare() {
 		"EABase              src/compute/src/ext/EASTL/packages/EABase" \
 		"mimalloc            src/compute/src/ext/EASTL/packages/mimalloc" \
 		"doxygen-awesome-css src/compute/src/ext/doxygen-awesome-css" \
-		"pybi                src/compute/src/ext/pybind11" \
 		"abseil-cpp          src/compute/src/ext/abseil-cpp" \
 		"SPIRV-Hea           src/compute/src/ext/SPIRV-Headers" \
 		"SPIRV-Tools         src/compute/src/ext/SPIRV-Tools" \
 		"glslang             src/compute/src/ext/glslang" \
 		"shaderc             src/compute/src/ext/shaderc" \
 		"cxxopts             src/ext/cxxopts" \
-		"assimp              src/ext/assimp" \
 		"fast_float          src/ext/fast_float" \
 		"tinyexr             src/ext/tinyexr" \
 	; do
@@ -96,6 +99,21 @@ prepare() {
 			git -c protocol.file.allow=always submodule update --init $submodule_path_within_repo
 		popd > /dev/null
 	done
+
+	# use system assimp
+	pushd "$srcdir/LuisaRender" > /dev/null
+		git restore . # in case it was already applied
+		git apply -v "$srcdir/assimp.patch"
+		rm -rf ext/assimp
+	popd > /dev/null
+
+	# use system abseil-cpp and pybind11
+	pushd "$srcdir/LuisaRender/src/compute" > /dev/null
+		git restore . # in case it was already applied
+		git apply -v "$srcdir/abseil-cpp.patch"
+		git apply -v "$srcdir/pybind11.patch"
+		rm -rf ext/abseil-cpp ext/pybi
+	popd > /dev/null
 }
 
 build() {
