@@ -1,0 +1,15 @@
+pkgbase = gnatcoverage-bin
+	pkgdesc = Source and object coverage analysis tool
+	pkgver = 22.0
+	pkgrel = 1
+	url = https://github.com/AdaCore/gnatcoverage
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = llvm
+	depends = valgrind
+	provides = gnatcoverage
+	source = https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatcov-22.0-1/gnatcov-x86_64-linux-22.0-1.tar.gz
+	sha256sums = eae687f0fb100524933ae37123a1de5ec26e5fca7fe2355cf2b267c9ccc0989a
+
+pkgname = gnatcoverage-bin
