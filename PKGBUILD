@@ -3,20 +3,24 @@
 _romname=gc_nmq_pal_f
 _romdesc="Ocarina of Time Gamecube Europe PAL"
 pkgname=soh-otr-${_romname}
-pkgver=5
+pkgver=5.0.2.r69.g408143ec8
 pkgrel=1
+epoch=1   # For old versions of SoH, if available
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
 license=("unknown")
 provides=("soh-otr")
 conflicts=("soh-otr")
-depends=("soh")
 makedepends=("soh-otr-exporter")
 source=("file://baserom.z64")
 sha256sums=('f788793d27aac3f8d91be5f242c4134217c615bfddd5c70384521ea2153435d2')
 
 SHIP_PREFIX=/opt/soh
+
+pkgver() {
+  pacman -Qi soh-otr-exporter | grep Version | sed 's/.*: //;s/-.*$//'
+}
 
 build() {
   cd "${srcdir}"

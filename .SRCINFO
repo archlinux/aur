@@ -1,12 +1,12 @@
 pkgbase = soh-otr-gc_nmq_pal_f
 	pkgdesc = OTR game data for SoH (Ocarina of Time Gamecube Europe PAL)
-	pkgver = 5
+	pkgver = 5.0.2.r69.g408143ec8
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = any
 	license = unknown
 	makedepends = soh-otr-exporter
-	depends = soh
 	provides = soh-otr
 	conflicts = soh-otr
 	source = file://baserom.z64
