@@ -3,20 +3,24 @@
 _romname=gc_mq_d
 _romdesc="Ocarina of Time Master Quest Debug"
 pkgname=soh-otr-${_romname}
-pkgver=5
+pkgver=5.0.2.r69.g408143ec8
 pkgrel=1
+epoch=1   # For old versions of SoH, if available
 pkgdesc="OTR game data for SoH (${_romdesc})"
 arch=("any")
 url="https://github.com/HarbourMasters/Shipwright"
 license=("unknown")
 provides=("soh-otr-mq")
 conflicts=("soh-otr-mq")
-depends=("soh")
 makedepends=("soh-otr-exporter" "python")
 source=("verify_baserom.py")
 sha256sums=('bd82ccb54e94505549af7dc07b56dc83b3e63e1c65d525b6fb98ed1b56b8aecf')
 
 SHIP_PREFIX=/opt/soh
+
+pkgver() {
+  pacman -Qi soh-otr-exporter | grep Version | sed 's/.*: //;s/-.*$//'
+}
 
 prepare() {
   cd "${srcdir}"

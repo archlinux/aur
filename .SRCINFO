@@ -1,13 +1,13 @@
 pkgbase = soh-otr-gc_mq_d
 	pkgdesc = OTR game data for SoH (Ocarina of Time Master Quest Debug)
-	pkgver = 5
+	pkgver = 5.0.2.r69.g408143ec8
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = any
 	license = unknown
 	makedepends = soh-otr-exporter
 	makedepends = python
-	depends = soh
 	provides = soh-otr-mq
 	conflicts = soh-otr-mq
 	source = verify_baserom.py
