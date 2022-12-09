@@ -1,6 +1,6 @@
 pkgbase = soh-otr-gc_nmq_pal_f
 	pkgdesc = OTR game data for SoH (Ocarina of Time Gamecube Europe PAL)
-	pkgver = 3
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/Shipwright
 	arch = any
