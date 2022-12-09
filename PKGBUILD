@@ -2,10 +2,10 @@
 # Contributor: Ainola
 
 pkgname=imv-git
-pkgver=4.3.0.r17.gc7306a6
+pkgver=4.3.0.r18.g4448fb6
 pkgrel=1
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
-url="https://github.com/eXeC64/imv"
+url="https://git.sr.ht/~exec64/imv"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('libxkbcommon' 'libxkbcommon-x11' 'cairo' 'icu' 'libx11' 'glu' 'libxcb' 'freeimage' 'librsvg' 'desktop-file-utils')
