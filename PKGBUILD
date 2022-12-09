@@ -10,8 +10,8 @@ url="https://github.com/UsiFX/OpenNitroN"
 license=('GPL3')
 source=("nitrond" "nitronapi.sh" "nitrond.1.gz")
 sha256sums=('b9799f6883734ddcbbdcc988e8c4f2ab830319612952681122391a43faefcb1a'
-            '02592efe986e7915c5f6b16b49162b5421b8f990bf83666e8d0932464653b905'
-            'ec96e986745a68177e79b574820b6eb583300cde2ba477c8530d3cf18347bd80')
+            '115aceeada2859ab349275a98c3f36937404948abfd188bfff6df9cadfd831c8'
+            '95b1327e89a50e16fef849f0136b3e834e0be85ac3dd673217389fd0f51ebf52')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
