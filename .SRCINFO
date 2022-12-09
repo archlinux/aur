@@ -1,6 +1,6 @@
 pkgbase = clustershell
 	pkgdesc = Python framework for efficient cluster administration
-	pkgver = 1.8.4
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://cea-hpc.github.io/clustershell/
 	changelog = ChangeLog
@@ -11,7 +11,7 @@ pkgbase = clustershell
 	depends = python
 	optdepends = openssh: Secure SHell client to connect to distant machines,
 	optdepends = vim: Vi Improved
-	source = https://github.com/cea-hpc/clustershell/archive/v1.8.4.tar.gz
-	sha256sums = 763793f729bd1c275361717c540e01ad5fe536119eca92f14077c0995739b9d7
+	source = https://github.com/cea-hpc/clustershell/archive/v1.9.tar.gz
+	sha256sums = f983c2908f26301cb354fe56df00ef008d521eeeab08780e9458a1f629d393bc
 
 pkgname = clustershell
