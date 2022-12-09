@@ -2,6 +2,7 @@
 
 _pkgname=qt6ct
 pkgname="$_pkgname-git"
+epoch=1
 pkgver=0.7.r2.14a8f91
 pkgrel=1
 pkgdesc='Qt6 Configuration Tool'

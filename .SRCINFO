@@ -2,6 +2,7 @@ pkgbase = qt6ct-git
 	pkgdesc = Qt6 Configuration Tool
 	pkgver = 0.7.r2.14a8f91
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/trialuser02/qt6ct
 	arch = x86_64
 	license = BSD
