@@ -1,66 +1,72 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgbase=dune-fem
-pkgname=(${pkgbase} python-${pkgbase})
-_tarver=v2.8.0.5
-_tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
-pkgver=${_tarver/v/}
+pkgname=dune-fem
+_tarver=2.9.0
+_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
+pkgver="${_tarver}"
 pkgrel=1
 pkgdesc="A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes"
-arch=('x86_64')
-url="https://dune-project.org/modules/${pkgbase}"
+arch=(x86_64)
+url="https://dune-project.org/modules/${pkgname}"
 license=('GPL2')
-makedepends=('dune-alugrid>=2.8.0' 'suitesparse' 'dune-istl>=2.8.0' 'dune-localfunctions>=2.8.0' 'doxygen' 'graphviz' 'python-ufl' 'python-setuptools')
+depends=("dune-alugrid>=${pkgver}" "dune-istl>=${pkgver}" "dune-localfunctions>=${pkgver}" python-matplotlib python-scipy python-ufl)
+makedepends=(doxygen graphviz python-scikit-build python-ninja)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'eigen: Lightweight C++ template library for vector and matrix math'
   'papi: for events supported'
   'dune-spgrid: for implement structured, parallel grid'
   'dune-polygongrid: for implement DUNE grid consisting of polygons')
-source=(https://gitlab.dune-project.org/${pkgbase}/${pkgbase}/-/archive/${_tar})
-sha512sums=('13f3fb74c2a9e98c6d28a6e57c5f767d636a9f1d59ad5953bc80da70f0e0e83231c581b182d96f785b058387ecc47d5238201ae8106d2629a479b7f04856c6fe')
+source=(https://dune-project.org/download/${_tar}{,.asc}
+  include.patch::https://gitlab.dune-project.org/${pkgname}/${pkgname}/-/commit/43a596eba13fa528e8c62be9ad31c9b7f63e6260.patch)
+sha512sums=('c36623035934ed7ea95d1c8c4ae2e14a11c84cdc89a8c3625ec8dd2b029824cf8aa7fc8b345ccad59c0a6a47f4688abff4c11c4d5a853cbe27becc7f793109fc'
+  'SKIP'
+  '351e013d6c7a183a2d929f4b3e85ec1c8dcca04ed9c6b965c4e6c35d4c4c47259c7ec6266b0e281004732641b71aa5c3e32e3401351d9b655ea75401dc9a3366')
+validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
 
 prepare() {
-  sed -i '/  FindPThreads.cmake/d' ${pkgbase}-${_tarver}/cmake/modules/CMakeLists.txt
-  sed -i '/  FindSIONlib.cmake/d' ${pkgbase}-${_tarver}/cmake/modules/CMakeLists.txt
+  cd ${pkgname}-${pkgver}
+  export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  patch -p1 -i ../include.patch
+  sed -i 's/^Python-Requires: fenics-ufl==2019.1.0/Python-Requires: fenics-ufl>=2019.1.0/' dune.module
+  # https://gitlab.dune-project.org/dune-fem/dune-fem/-/issues/111
+  sed -i '/  FindPThreads.cmake/d' cmake/modules/CMakeLists.txt
+  sed -i '/  FindSIONlib.cmake/d' cmake/modules/CMakeLists.txt
+  sed -i 's/^Version: '"${pkgver%%.0}"'/Version: '"${pkgver}"'/' dune.module
+  python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
 build() {
-  cmake \
-    -S ${pkgbase}-${_tarver} \
-    -B build-cmake \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cd ${pkgname}-${pkgver}
+
+  XDG_CACHE_HOME="${PWD}" \
+    python setup.py build \
+    --build-type=None \
+    -G 'Unix Makefiles' \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
+    -DCMAKE_CXX_FLAGS="-O2 -Wall -fdiagnostics-color=always -mavx" \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+    -DALLOW_CXXFLAGS_OVERWRITE=ON \
+    -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
+    -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
+    -DDUNE_GRID_GRIDTYPE_SELECTOR=ON \
+    -DCMAKE_DISABLE_FIND_PACKAGE_Alberta=FALSE \
+    -DCMAKE_DISABLE_FIND_PACKAGE_PETSc=TRUE \
+    -DCMAKE_DISABLE_FIND_PACKAGE_Vc=TRUE \
+    -DDUNE_GRID_GRIDTYPE_SELECTOR=ON \
     -DENABLE_HEADERCHECK=ON \
     -DDUNE_ENABLE_PYTHONBINDINGS=ON \
     -DDUNE_PYTHON_INSTALL_LOCATION='none' \
-    -DCMAKE_DISABLE_FIND_PACKAGE_Vc=TRUE \
-    -DDUNE_GRID_GRIDTYPE_SELECTOR=ON \
-    -DCMAKE_DISABLE_FIND_PACKAGE_Alberta=TRUE \
-    -DCMAKE_DISABLE_FIND_PACKAGE_PETSc=TRUE \
-    -Wno-dev
-  cmake --build build-cmake --target all
-  cd "build-cmake/python"
-  python setup.py build
+    -DDUNE_PYTHON_WHEELHOUSE="dist"
 }
 
-package_dune-fem() {
-  depends=('dune-alugrid>=2.8.0' 'dune-istl>=2.8.0' 'dune-localfunctions>=2.8.0' 'superlu' 'suitesparse')
-  DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgbase}-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  cd "${pkgdir}/usr/"
-  rm -r "python"
+package() {
+  cd ${pkgname}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
-}
-
-package_python-dune-fem() {
-  depends=('dune-fem>=2.8.0' 'python-dune-alugrid>=2.8.0' 'python-dune-istl>=2.8.0' 'python-dune-localfunctions>=2.8.0' 'python-ufl')
-  pkgdesc+=" (python bindings)"
-  cd "build-cmake/python"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
