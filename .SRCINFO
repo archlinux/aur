@@ -1,6 +1,6 @@
 pkgbase = wavedrom-editor
 	pkgdesc = Timing diagram rendering engine
-	pkgver = 2.7.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = http://wavedrom.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = wavedrom-editor
 	depends = nodejs
 	depends = npm
 	options = !strip
-	source_x86_64 = https://github.com/wavedrom/wavedrom.github.io/archive/v2.7.0.tar.gz
+	source_x86_64 = https://github.com/wavedrom/wavedrom.github.io/archive/v2.9.1.tar.gz
 	source_x86_64 = wavedrom-editor.desktop
-	sha256sums_x86_64 = bb1f06e097c803275b930a002928ba5385abb39baf923e62aa3d61c741a9c4a2
+	sha256sums_x86_64 = b11fdbb6737f352787a6bdb161e7de6d1970123c3d00b857ea56bb66a5283d02
 	sha256sums_x86_64 = c8cf2a7f6626452bb10eef4f8b4b02bf1992e360e93857a90b2ed7212044f1e2
 
 pkgname = wavedrom-editor
