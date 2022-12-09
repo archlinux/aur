@@ -1,7 +1,7 @@
 # Maintainer: Agustin Cisneros <agustincc@tutanota.com>
 
 pkgname=ticktick
-pkgver=1.0.40
+pkgver=1.0.50
 pkgrel=1
 pkgdesc='Official desktop application for Linux'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('ticktick-nativefier')
 depends=('alsa-lib' 'gtk3' 'nss')
 source=("${pkgname}-${pkgver}.deb::https://appest-public.s3.amazonaws.com/download/linux/linux_deb_x64/${pkgname}-${pkgver}-amd64.deb"
         'LICENSE')
-sha256sums=('f5696d44bec38a6498a8cee068435cecea95ba88abebea62d8ac6c92025d0748'
+sha256sums=('0e9b47bd3406dd9af859904b573536c36d826c8e7b134813235907efec982af9'
             '2d866fcb749c30d931fa96cc1578869b3fa9fc61a5c5f30e0316ddb00abb5814')
 
 package() {
