@@ -10,7 +10,6 @@ url="https://github.com/x70b1/pam_exec-ssh"
 license=("The Unlicense")
 makedepends=("git")
 depends=("pam" "expect")
-replaces=("pam_exec-ssh")
 source=("${pkgname}::git+${url}.git#commit=${pkgcommit}")
 noextract=()
 sha256sums=('SKIP')
