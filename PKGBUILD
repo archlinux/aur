@@ -5,7 +5,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.6.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -21,8 +21,8 @@ depends=(
 	'python-guessit>=3.3.1' #auto-deps
 	'python-appdirs<2.0.0' #auto-deps
 	'python-appdirs>=1.4.4' #auto-deps
-	'python-cleo-v0<0.9.0' #auto-deps
-	'python-cleo-v0>=0.8.1' #auto-deps
+	'python-cleo<0.9.0' #auto-deps
+	'python-cleo>=0.8.1' #auto-deps
 	'python-confuse<3.0' #auto-deps
 	'python-confuse>=2.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
