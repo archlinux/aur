@@ -5,7 +5,7 @@
 
 pkgname=trakt-scrobbler
 pkgver=1.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -35,7 +35,6 @@ depends=(
 
 makedepends=(
     git
-    go-md2man
     python-poetry-core
     python-build
     python-installer
@@ -51,8 +50,6 @@ prepare() {
 		trakt_scrobbler/console.py \
 		trakt_scrobbler/commands/command.py \
 		pyproject.toml
-
-	go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
 }
 
 build() {
