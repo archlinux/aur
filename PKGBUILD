@@ -3,14 +3,13 @@
 pkgname=pam_exec-ssh-git
 pkgver=r19.311b153
 pkgrel=1
-pkgcommit=311b153
 pkgdesc="Unlock SSH keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-ssh"
 license=("The Unlicense")
 makedepends=("git")
 depends=("pam" "expect")
-source=("${pkgname}::git+${url}.git#commit=${pkgcommit}")
+source=("${pkgname}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
 
