@@ -12,12 +12,12 @@ makedepends=(gcc cmake make)
 checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
 provides=(psi4)
-source=($pkgname-$pkgver.zip::https://github.com/psi4/psi4/archive/master.zip)
+source=($pkgname::git+https://github.com/psi4/psi4)
 md5sums=("SKIP")
 
 pkgver() {
 	cd $srcdir
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
