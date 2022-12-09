@@ -8,7 +8,7 @@ url="https://github.com/jibsen/pngwolf-zopfli"
 license=('GPL3')
 # At the time of writing, you can get libdeflate as "libdeflate-git" from the
 # AUR.
-depends=(libzopfli zlib libdeflate)
+depends=(libzopfli.so zlib libdeflate)
 makedepends=('git')
 source=(git+https://github.com/jibsen/pngwolf-zopfli.git
         git+https://github.com/jibsen/galib.git#branch=pngwolf-support)
