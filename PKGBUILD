@@ -15,7 +15,7 @@ depends=(blas boost bzip2 fftw gcc11-fortran lapack netcdf
          python-scipy readline tk zlib)
 makedepends=(cmake cuda openmpi)
 optdepends=('cuda: GPU acceleration support'
-            'openmpi-gcc11: MPI support')
+            'openmpi: MPI support')
 options=(!buildflags)
 
 source=("https://ambermd.org/downloads/AmberTools${_majorver}${_patchver}.tar.bz2"
