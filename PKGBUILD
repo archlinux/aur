@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vioplot
-_pkgver=0.3.7
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.7
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Violin Plot'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('06475d9a47644245ec91598e9aaef7db1c393802d9fc314420ac5139ae56adb6')
+sha256sums=('5729b483e3a4f7c81d2cc22c8bc5211b64e289734e9da5b5696c4974067867b5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
