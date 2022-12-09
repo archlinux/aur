@@ -1,16 +1,15 @@
 pkgbase = opm-upscaling
 	pkgdesc = Porous media upscaling tools
-	pkgver = 2022.04
+	pkgver = 2022.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-upscaling
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc-fortran
+	makedepends = suitesparse
 	makedepends = superlu
-	makedepends = git
-	depends = opm-grid>=2022.04
-	source = git+https://github.com/OPM/opm-upscaling.git?signed#tag=release/2022.04/final1
-	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
-	sha512sums = SKIP
+	depends = opm-grid>=2022.10
+	source = opm-upscaling-release-2022.10-final.tar.gz::https://github.com/OPM/opm-upscaling/archive/release/2022.10/final.tar.gz
+	sha512sums = b65e164f7ee4d5d881b6bc322fc0d12bad1705c23f0fbe42fc9a0efea96ce1582f98f709ebc7d8a1f7ac8131f97e456c2b9e4a9c591b40c7d10f14ce65ee7368
 
 pkgname = opm-upscaling
