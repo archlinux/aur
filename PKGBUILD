@@ -2,12 +2,13 @@
 
 pkgname=pumba
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Chaos testing, network emulation and stress testing tool for containers"
 arch=('x86_64')
 url="https://github.com/alexei-led/pumba"
 license=('Apache')
 makedepends=('go' 'git')
+checkdepends=('golangci-lint')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "https://github.com/alexei-led/pumba/commit/cd6983.patch")
 sha256sums=('7faa50566898a53b0fff81973e7161874eabec45ad11f9defcd0e04310bddaff'
