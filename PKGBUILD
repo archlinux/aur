@@ -2,7 +2,7 @@
 pkgname=otpclient
 _pkgname=OTPClient
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
@@ -20,7 +20,8 @@ build() {
   cd "$_pkgname-$pkgver"
   mkdir build && cd build
   cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr
+    -S.. \
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DSHARE_INSTALL_PREFIX:PATH=/usr/share
   make
 }
