@@ -7,7 +7,7 @@ pkgdesc="High-Performance Rendering Framework on Stream Architectures"
 arch=('x86_64')
 url="https://luisa-render.com/"
 license=('BSD')
-depends=('abseil-cpp-git' 'assimp' 'cuda' 'embree' 'glfw-wayland' 'tbb')
+depends=('abseil-cpp' 'assimp' 'cuda' 'embree' 'glfw-wayland' 'tbb')
 makedepends=('clang' 'git' 'cmake')
 source=(
 	'git+https://github.com/LuisaGroup/LuisaRender.git'
