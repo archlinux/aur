@@ -1,5 +1,5 @@
 # Maintainer: Genevieve <genevieve on sunlashed point garden>
-pkgname=paket
+pkgname=paket-bin
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="A simple and fast package manager for the Fish shell written in Rust"
