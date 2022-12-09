@@ -8,22 +8,36 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.51.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
 makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
-conflicts=("${pkgname}-bin" "${pkgname}-git")
+_gitrev=e0e5bb6ac602e121d3b02494323ddbe680e13bf7
 _gitdir=${pkgname}-${pkgver}-git
 source=("${_gitdir}::git+${url}.git#tag=@ledgerhq/live-desktop@${pkgver}")
 sha512sums=('SKIP')
 
-build() {
+_check_git_rev() {
+  curr_gitrev=$(git rev-parse "@ledgerhq/live-desktop@${pkgver}")
+  if [[ "${curr_gitrev}" != "${_gitrev}" ]]; then
+    echo "Using the wrong git revision! Expected [${_gitrev}] but using [${curr_gitrev}]"
+    exit 1
+  fi
+}
+
+prepare() {
   cd "${_gitdir}"
+  _check_git_rev
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
+}
+
+build() {
+  cd "${_gitdir}"
+
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
