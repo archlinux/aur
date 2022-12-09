@@ -1,0 +1,19 @@
+--- build.gradle	2022-12-09 21:19:48.417641470 +0100
++++ build.gradle	2022-12-09 22:27:10.570029535 +0100
+@@ -4,7 +4,6 @@
+     id 'antlr'
+     id "com.github.johnrengelman.shadow" version "7.1.2"
+     id 'com.github.hierynomus.license' version '0.16.1'
+-    id "org.ajoberstar.grgit" version "1.7.2"
+ }
+ 
+ group 'edu.kit.kastel.formal'
+@@ -15,7 +14,7 @@
+     outputs.dir resourcesDir
+     doFirst {
+         resourcesDir.mkdirs()
+-        new File(resourcesDir, "VERSION").text = "$version (${grgit.head().abbreviatedId})"
++        new File(resourcesDir, "VERSION").text = "$version"
+         print( "$resourcesDir/VERSION created.")
+     }
+ }
