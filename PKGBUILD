@@ -11,7 +11,7 @@ arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
-makedepends=('java-environment=19' 'java-openjfx=19' 'maven')
+makedepends=('java-environment>=19' 'java-environment<20' 'java-openjfx>=19' 'java-openjfx<20' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")

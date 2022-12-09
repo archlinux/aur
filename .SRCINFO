@@ -5,8 +5,10 @@ pkgbase = cryptomator
 	url = https://cryptomator.org/
 	arch = any
 	license = GPL3
-	makedepends = java-environment=19
-	makedepends = java-openjfx=19
+	makedepends = java-environment>=19
+	makedepends = java-environment<20
+	makedepends = java-openjfx>=19
+	makedepends = java-openjfx<20
 	makedepends = maven
 	depends = fuse2
 	depends = libjffi
