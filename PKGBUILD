@@ -3,7 +3,7 @@
 
 pkgname=frappe-bench
 pkgver=5.15.2
-pkgrel=3
+pkgrel=1
 pkgdesc="CLI to manage Multi-tenant deployments for Frappe apps"
 arch=('x86_64')
 url="https://github.com/frappe/bench"

@@ -1,7 +1,7 @@
 pkgbase = frappe-bench
 	pkgdesc = CLI to manage Multi-tenant deployments for Frappe apps
 	pkgver = 5.15.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/frappe/bench
 	arch = x86_64
 	makedepends = git
