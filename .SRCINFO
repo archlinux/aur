@@ -1,0 +1,44 @@
+pkgbase = kasmvncserver-bin
+	pkgdesc = KasmVNC provides remote web-based access to a Desktop or application.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kasmtech/KasmVNC
+	arch = x86_64
+	license = GPL2
+	depends = aarch64-linux-gnu-gcc>=11
+	depends = ca-certificates-utils
+	depends = libbsd>=0.7.0
+	depends = libgl
+	depends = libglvnd
+	depends = libjpeg-turbo
+	depends = libunwind
+	depends = libx11>=1.4.99.1
+	depends = libxau>=1.0.9
+	depends = libxcrypt-compat>=4.1.0
+	depends = libxcursor>1.1.2
+	depends = libxdmcp
+	depends = libxext
+	depends = libxfixes
+	depends = libxfont2>=2.0.1
+	depends = libxrandr>=1.2.0
+	depends = libxtst
+	depends = libyaml
+	depends = openssl>=3.0.0.alpha1
+	depends = perl
+	depends = perl-hash-merge-simple
+	depends = perl-list-moreutils
+	depends = perl-switch
+	depends = perl-try-tiny
+	depends = pixman>=0.30.0
+	depends = systemd-libs
+	depends = xkeyboard-config
+	depends = xorg-xauth
+	depends = xorg-xkbutils
+	depends = zlib>=1.1.4
+	options = !strip
+	options = !emptydirs
+	backup = etc/kasmvnc/kasmvnc.yaml
+	source = https://github.com/kasmtech/KasmVNC/releases/download/v1.0.1/kasmvncserver_jammy_1.0.1_amd64.deb
+	sha512sums = d995ae1f4fec2e344c261e8dae7101bdc7a3cd4f8e6f99d100ebbbc314c1ded76311fb2262fac48ef3d2009eae05fbe85a3b3ad10ac4cb1a936b6cb8328b2532
+
+pkgname = kasmvncserver-bin
