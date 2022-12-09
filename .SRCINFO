@@ -1,0 +1,14 @@
+pkgbase = home-assistant-hacs
+	pkgdesc = HACS gives you a powerful UI to handle downloads of all your custom needs
+	pkgver = 1.28.4
+	pkgrel = 1
+	url = https://hacs.xyz/
+	arch = any
+	license = AGPL
+	makedepends = unzip
+	depends = python-aiofiles
+	noextract = hacs.zip
+	source = hacs.zip::https://github.com/hacs/integration/releases/download/1.28.4/hacs.zip
+	sha256sums = 0cfc5e07ab5c24373ff098504592802ba5979005f7f428f7bc99bef863adf9ff
+
+pkgname = home-assistant-hacs
