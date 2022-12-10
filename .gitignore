@@ -1,0 +1,4 @@
+pkg/
+src/
+opdt-go-git/
+*.tar.zst
