@@ -1,7 +1,7 @@
 # Maintainer: Anima <contact@animafps.xyz>
 
 pkgname=teres-git
-pkgver=0.3.1.r0.g63d6c0c
+pkgver=0.3.1.r4.gaf85c8f
 pkgrel=1
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
 depends=('vapoursynth-plugin-mvtools' 
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
