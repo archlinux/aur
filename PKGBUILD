@@ -6,8 +6,8 @@
 _pkgname=discord
 _electron=electron19
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.21
-pkgrel=2
+pkgver=0.0.22
+pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
@@ -23,13 +23,13 @@ source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'discord-launcher.sh'
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
-sha512sums=('149ae5b8b7d92549e12eca52e45d3f5761ef022ae321cf33fadc3b56c4cee0616a5166380faea038256213713a7aa90e1befc4caa3e6a4de8e15c1cb1d8f925d'
-            '93418d8e40cab7ed25f6debc341294f76f90a4f879e158cfea418360c8705347653f60dbd6f18fb754448d299404bfa247b07625ae113e9386188d9f9485a14b'
+sha512sums=('96c8486577bee7ae165bf96aab50c0733d83a2d9435357d9a4d9a3e9f3225ae6a7bf46e1a7d8b419ecc7ab4e270755332621a4f786ddb89a842379f5da40b271'
+            '6ca6dfbfb65bf4fec34aac4676f66bb602b5c4c3318fcc96236056d632c0c9af3c4eb775b491c2e722ed5de6a4c253677d6ee1a7be69e13045702fa3df8cf52f'
             SKIP
             SKIP)
 
 prepare() {
-  sed -i "s|@ELECTRON@|${_electron}|" discord-launcher.sh
+  sed -i "s|@PKGNAME@|${_pkgname}|;s|@ELECTRON@|${_electron}|" discord-launcher.sh
   sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" Discord/discord.desktop
 }
 

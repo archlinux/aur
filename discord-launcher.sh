@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-name=discord
+name=@PKGNAME@
 electron=@ELECTRON@
 flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${name}-flags.conf"
 
