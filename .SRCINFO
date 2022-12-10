@@ -1,0 +1,14 @@
+pkgbase = opdt-go
+	pkgdesc = Discover the actual outgoing address and port when behind a NAT
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/database64128/opdt-go
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = go
+	backup = etc/opdt-go/config.json
+	source = opdt-go-1.0.0.tar.gz::https://github.com/database64128/opdt-go/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = 495ccbd73f2ffa29c9051d6a2a352f67e97a5da57876f519f77b92537c9c79d91837e05417d41da9facbd11ea94bc107fef1b4d3978bd6a5f91d13cd4c20d730
+
+pkgname = opdt-go
