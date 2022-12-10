@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.2.1'
-pkgrel=2
+pkgrel=3
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -17,13 +17,14 @@ conflicts=( 'skywire' )
 license=('license-free')
 install=skywire.install
 backup=("opt/${_pkgname}/{users.db,skywire.json,local}")
-_source=("skywire-autoconfig"
-"skywire.desktop"
-"skywirevpn.desktop"
-"skywirevpn.png"
-"skywire.png"
-"skywire.service"
-"skywire-autoconfig.service"
+_script=("skywire-autoconfig")
+_desktop=("skywire.desktop" "skywirevpn.desktop")
+_icon=("skywirevpn.png" "skywire.png")
+_service=("skywire.service" "skywire-autoconfig.service")
+_source=("${_script[@]}"
+"${_desktop[@]}"
+"${_icon[@]}"
+"${_service[@]}"
 )
 source=("${_source[@]}")
 sha256sums=('08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
@@ -31,8 +32,8 @@ sha256sums=('08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            '19b74f7a9b245a96617f31d1fef7ce1e0231b2359d6525dd3f35d2b2a9d10d18'
-            '55293e05c5d6c877397eb4c52123bb02e8bc92aeaf663ba70e1cfab318ce727c')
+            '6d40c32452151145fef51d87cd09423cceb4d7205869e8f80fc074cd5e68f98d'
+            '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3')
 sha256sums_x86_64=('d2dd1f6a15eba62cad2838602e8366bb8fe63cf2df00e9f1619a8233e8d20235')
 sha256sums_aarch64=('60da7b30dc42b43e469caa5e82d9f2e9413a65a54a15007cf44725cdc334d209')
 sha256sums_armv8=('60da7b30dc42b43e469caa5e82d9f2e9413a65a54a15007cf44725cdc334d209')
@@ -53,7 +54,8 @@ source_arm=("${_release_url}-arm.tar.gz")
 source_armv7=("${_release_url}-armhf.tar.gz")
 source_armv7l=( "${source_armv7[@]}" )
 source_armv7h=( "${source_armv7[@]}" )
-_binaries=("skywire-cli" "skywire-visor")
+_binary=("skywire-cli" "skywire-visor")
+_appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
 
 package() {
 GOBIN="${srcdir}/"
@@ -65,10 +67,10 @@ _package
 }
 #_package function - used in build variants
 _package() {
-_skydir="opt/skywire"
-_skyapps="${_skydir}/apps"
-_skybin="${_skydir}/bin"
-_skyscripts="${_skydir}/scripts"
+_dir="opt/skywire"
+_apps="${_skydir}/apps"
+_bin="${_skydir}/bin"
+_scriptsdir="${_skydir}/scripts"
 _msg2 'creating dirs'
 mkdir -p "${_pkgdir}/usr/bin"
 mkdir -p "${_pkgdir}/${_skydir}/bin"
@@ -77,30 +79,44 @@ mkdir -p "${_pkgdir}/${_skydir}/local"
 mkdir -p "${_pkgdir}/${_skydir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing binaries'
-for _i in "${_binaries[@]}" ; do
+for _i in "${_binary[@]}" ; do
+  _msg3 ${_i}
 	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_skybin}/"
 	ln -rTsf "${_pkgdir}/${_skybin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
- done
+done
 _msg2 'installing app binaries'
-install -Dm755 "${_GOAPPS}/"* "${_pkgdir}/${_skyapps}/"
-for _i in "${_pkgdir}/${_skyapps}/"* ; do
-	ln -rTsf "${_i}" "${_pkgdir}/usr/bin/${_i##*/}"
+for _i in "${_appbinary[@]}" ; do
+  _msg3 ${_i}
+  install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_skyapps}/${_i}"
+	ln -rTsf "${_pkgdir}/${_skyapps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
 _msg2 'Installing scripts'
-install -Dm755 "${srcdir}/skywire-autoconfig" "${_pkgdir}/${_skyscripts}/"
-ln -rTsf "${_pkgdir}/${_skyscripts}/skywire-autoconfig" "${_pkgdir}/usr/bin/skywire-autoconfig"
-_msg2 'Correcting symlink names'
-ln -rTsf "${_pkgdir}/${_skybin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
+for _i in "${_script[@]}" ; do
+  _msg3 ${_i}
+  install -Dm755 "${srcdir}/${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
+  ln -rTsf "${_pkgdir}/${_scriptsdir}/${_i}" "${_pkgdir}/usr/bin/${_i}"
+done
+_msg2 'Symlink skywire-visor to skywire'
+ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_skydir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
-install -Dm644 "${srcdir}/"*.service "${_pkgdir}/${_systemddir}/"
+for _i in "${_service[@]}" ; do
+  _msg3 ${_i}
+  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/${_systemddir}/${_i}"
+  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
+done
 _msg2 'installing desktop files and icons'
 mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
-install -Dm644 "${srcdir}/"*.desktop "${_pkgdir}/usr/share/applications/"
-install -Dm644 "${srcdir}/"*.png "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
+for _i in "${_desktop[@]}" ; do
+  _msg3 ${_i}
+  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/usr/share/applications/${_i}"
+done
+for _i in "${_icon[@]}" ; do
+  _msg3 ${_i}
+  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"
+done
 }
-
 
 _msg2() {
 (( QUIET )) && return
@@ -111,5 +127,5 @@ printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
 _msg3() {
 (( QUIET )) && return
 local mesg=$1; shift
-printf "${BLUE}  -->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
+printf "${BLUE}  -->${ALL_OFF} ${mesg}${ALL_OFF}\n" "$@"
 }
