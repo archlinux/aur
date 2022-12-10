@@ -1,6 +1,6 @@
 # Maintainer: Richard Davis < davisrichard437 at gmail dot com >
 pkgname='xsudo-git'
-pkgver=1.0.1
+pkgver=1.0.1_r0_g672bf02
 pkgrel=2
 pkgdesc='A script to run GUI applications with pkexec'
 arch=('any')
