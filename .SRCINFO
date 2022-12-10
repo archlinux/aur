@@ -4,6 +4,7 @@ pkgbase = chatgpt-desktop-bin
 	pkgrel = 1
 	url = https://github.com/sonnylazuardi/chatgpt-desktop
 	arch = x86_64
+	license = unknown
 	makedepends = binutils
 	makedepends = tar
 	depends = webkit2gtk
