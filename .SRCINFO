@@ -1,7 +1,7 @@
 pkgbase = usbfluxd-git
 	pkgdesc = Redirects the standard usbmuxd socket to allow connections to local and remote usbmuxd instances so remote devices appear connected locally.
 	pkgver = 1.0.r9.g0723a9a
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/corellium/usbfluxd
 	arch = x86_64
 	arch = aarch64

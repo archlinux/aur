@@ -2,7 +2,7 @@
 
 pkgname=usbfluxd-git
 pkgver=1.0.r9.g0723a9a
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Redirects the standard usbmuxd socket to allow connections to local and remote usbmuxd instances so remote devices appear connected locally."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -48,7 +48,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr \
                 --enable-shared=yes \
-                --enable-static=no \
+                --enable-static=no
 
     make
 }
