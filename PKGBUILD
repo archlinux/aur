@@ -1,5 +1,6 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 # Maintainer: Sebastian J. Bronner <waschtl@sbronner.com>
+# Maintainer: Kevin Stolp <kevinstolp@gmail.com>
 # Contributor: Patrick Jackson <PatrickSJackson gmail com>
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
