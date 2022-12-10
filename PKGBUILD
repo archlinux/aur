@@ -2,23 +2,12 @@
 pkgname=distro-grub-themes-arch
 pkgver=3.1
 pkgrel=1
-epoch=
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')
 url="https://github.com/AdisonCavani/distro-grub-themes"
 license=('GPL3')
 groups=()
 depends=('grub')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 
 _theme_distro="arch"
 
