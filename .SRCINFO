@@ -1,12 +1,11 @@
 pkgbase = sfetch
 	pkgdesc = A simple system fetch CLI tool written in Shell
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Frolleks/sfetch
 	arch = any
 	license = ISC
 	source = https://github.com/Frolleks/sfetch/archive/v1.2.1.tar.gz
-	validpgpkeys = AAF8BD286F970B69
 	sha256sums = 64ff502ab4b5a84c59be28eb73801f631e3004f5b2c00a9dff858319c4d08a09
 
 pkgname = sfetch
