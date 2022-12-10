@@ -7,8 +7,8 @@ pkgdesc="C++ simulation framework for porous media flow"
 arch=(x86_64)
 url="https://github.com/OPM/${pkgname}"
 license=(GPL3)
-depends=("opm-material>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}")
-makedepends=(cppcheck superlu suitesparse)
+depends=("opm-material>=${pkgver}" "dune-alugrid>=${_dunever}" "dune-istl>=${_dunever}" "dune-localfunctions>=${_dunever}" suitesparse)
+makedepends=(cppcheck superlu)
 optdepends=('dune-fem: for dofmanager support'
   'opm-grid: for corner grid support')
 source=(${pkgname}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
