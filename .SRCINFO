@@ -1,6 +1,6 @@
 pkgbase = bettercrewlink-bin
 	pkgdesc = Free, open, Among Us Proximity Chat
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/OhMyGuus/BetterCrewLink
 	install = bettercrewlink.install
@@ -12,10 +12,10 @@ pkgbase = bettercrewlink-bin
 	options = libtool
 	options = emptydirs
 	options = staticlibs
-	source = https://github.com/OhMyGuus/BetterCrewLink/releases/download/v3.1.0/Better-CrewLink-3.1.0.AppImage
+	source = https://github.com/OhMyGuus/BetterCrewLink/releases/download/v3.1.1/Better-CrewLink-3.1.1.AppImage
 	source = bettercrewlink.desktop
 	source = https://raw.githubusercontent.com/OhMyGuus/BetterCrewLink/nightly/static/images/logos/BCL-AppIcon.png
-	md5sums = 917ae65c53182c3fb4a200d658613709
+	md5sums = f6ba5a6bd7a2b187f328c7bbe302181f
 	md5sums = 617a6fc40e38cb2be31a1541e39fcf96
 	md5sums = 0c383871ddf0e11c81cf4cd3a77bd589
 
