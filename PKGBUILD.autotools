@@ -2,15 +2,15 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=2.99.12
-pkgrel=1
+pkgver=2.99.14
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
          'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
-         'babl>=0.1.78' 'gegl>=0.4.38' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
+         'babl>=0.1.98' 'gegl>=0.4.40' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
@@ -34,9 +34,17 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}-autotools.tar.bz2 linux.gpl)
+source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}-autotools.tar.bz2"
+        'babl-0.1-name-change-autotools.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/09ece8f6f99756ed84ded47d9da6e2f5cbda5375.patch'
+        'linux.gpl')
 sha256sums=('028bb8f825c492037d09720694c3a3096f1af5d6347eaa84970b43c476713ee7'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -Np1 -i ../babl-0.1-name-change-autotools.patch
+}
+
 build() {
   cd "${_pkgname}-${pkgver}"
     ./configure \
