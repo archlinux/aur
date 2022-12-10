@@ -1,7 +1,7 @@
 pkgbase = arrow-sans-avx
-	pkgdesc = Columnar in-memory analytics layer for big data (for CPS without AVX/2 support)
+	pkgdesc = Columnar in-memory analytics layer for big data (for CPUs without AVX/2 support)
 	pkgver = 10.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arrow.apache.org
 	arch = x86_64
 	license = Apache

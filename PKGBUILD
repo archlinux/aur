@@ -5,8 +5,8 @@
 pkgname=arrow-sans-avx
 _pkgname=arrow
 pkgver=10.0.1
-pkgrel=1
-pkgdesc="Columnar in-memory analytics layer for big data (for CPS without AVX/2 support)"
+pkgrel=2
+pkgdesc="Columnar in-memory analytics layer for big data (for CPUs without AVX/2 support)"
 arch=(x86_64)
 url="https://arrow.apache.org"
 license=(Apache)
