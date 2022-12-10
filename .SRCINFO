@@ -1,7 +1,7 @@
 pkgbase = sublime-text-3
-	pkgdesc = Sophisticated text editor for code, html and prose - stable build
+	pkgdesc = Sophisticated text editor for code, html and prose (legacy version)
 	pkgver = 3.3211
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sublimetext.com/3
 	install = sublime-text-3.install
 	arch = x86_64
