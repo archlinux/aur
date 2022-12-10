@@ -1,7 +1,7 @@
 pkgbase = kdnotify-git
 	pkgdesc = A keepalived FIFO notification handler
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.st8l.com/luxolus/kdnotify
 	arch = any
 	license = MPL2
@@ -9,7 +9,8 @@ pkgbase = kdnotify-git
 	makedepends = go
 	depends = glibc
 	provides = kdnotify=1.0.6
-	source = kdnotify-git-1.0.6-1.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v1.0.6.tar.gz
+	backup = etc/kdnotify/config.yaml
+	source = kdnotify-git-1.0.6-2.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v1.0.6.tar.gz
 	sha512sums = f15d78b06c19a505230d7be1677aebd7a96f766fa9f3bc68f93e4d3d5296395254e84b82ee31bdc5c0c79e0f9ece81ad2e715f06d42a3f53c7239ff9ec50bf2b
 
 pkgname = kdnotify-git

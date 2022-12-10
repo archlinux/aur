@@ -7,7 +7,7 @@
 pkgname='kdnotify-git'
 pkgdesc='A keepalived FIFO notification handler'
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('MPL2')
 url='https://git.st8l.com/luxolus/kdnotify'
@@ -18,6 +18,7 @@ sha512sums=('f15d78b06c19a505230d7be1677aebd7a96f766fa9f3bc68f93e4d3d5296395254e
 makedepends=('glibc' 'go')
 depends=('glibc')
 provides=("kdnotify=${pkgver}")
+backup=('etc/kdnotify/config.yaml')
 
 prepare() {
   cd "${srcdir}/kdnotify"
