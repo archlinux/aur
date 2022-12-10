@@ -1,30 +1,21 @@
-# Maintainer: Anton Larionov <diffident dot cat at gmail dot com>
-
 pkgname=ponscripter
-pkgver=20111009
-pkgrel=3
-pkgdesc="NScripter-style novel-game interpreter with an emphasis on supporting games in Western languages"
-arch=('i686' 'x86_64')
-url="http://unclemion.com/onscripter/"
-license=('GPL')
-depends=('sdl_mixer' 'sdl_image' 'freetype2' 'gcc-libs')
-# Dependency 'smpeg' 'bzip2' already satisfied
-source=(http://unclemion.com/onscripter/pub/ponscr/cigales8/$pkgname-$pkgver-src.tar.bz2)
-md5sums=('52927f2a57abe430d86ff4ac05ab7960')
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-src"
-  sed -i "36i\#include <unistd.h>" ./src/AnimationInfo.h
-  ./configure --prefix=/usr --no-werror
-  make
+pkgver=`curl -s https://api.github.com/repos/07th-mod/ponscripter-fork/releases/latest|grep tag_name|cut -d\" -f4`
+pkgrel=1
+epoch=1
+pkgdesc="Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
+arch=(x86_64 aarch64)
+url=https://github.com/07th-mod/ponscripter-fork
+license=(GPL2)
+depends=(sdl2_{image,mixer} smpeg2 freetype2)
+source=(git+https://github.com/07th-mod/ponscripter-fork.git#tag=$pkgver)
+md5sums=(SKIP)
+build(){
+	cd $pkgname-fork
+	./configure --with-external-sdl-mixer
+	make
 }
-
-package() {
-  install -D -m755 "${srcdir}/${pkgname}-${pkgver}-src/src/ponscr" "${pkgdir}/usr/bin/${pkgname}"
-
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  cd "${srcdir}/${pkgname}-${pkgver}-src"
-  install -m644 BUGS CHANGES INSTALL MANUAL README TODO "${pkgdir}/usr/share/doc/${pkgname}"
+package(){
+	cd $pkgname-fork
+	install src/ponscr -D "$pkgdir"/usr/bin/$pkgname
+	install BUGS CHANGES MANUAL README.md TODO -Dt "$pkgdir"/usr/share/doc/$pkgname
 }
-
-# vim:set ts=2 sw=2 et:

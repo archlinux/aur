@@ -1,17 +1,17 @@
 pkgbase = ponscripter
-	pkgdesc = NScripter-style novel-game interpreter with an emphasis on supporting games in Western languages
-	pkgver = 20111009
-	pkgrel = 3
-	url = http://unclemion.com/onscripter/
-	arch = i686
+	pkgdesc = Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration
+	pkgver = v3.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/07th-mod/ponscripter-fork
 	arch = x86_64
-	license = GPL
-	depends = sdl_mixer
-	depends = sdl_image
+	arch = aarch64
+	license = GPL2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = smpeg2
 	depends = freetype2
-	depends = gcc-libs
-	source = http://unclemion.com/onscripter/pub/ponscr/cigales8/ponscripter-20111009-src.tar.bz2
-	md5sums = 52927f2a57abe430d86ff4ac05ab7960
+	source = git+https://github.com/07th-mod/ponscripter-fork.git#tag=v3.0.0
+	md5sums = SKIP
 
 pkgname = ponscripter
-
