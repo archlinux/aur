@@ -7,73 +7,75 @@
 
 pkgname=conky-lua-nv
 _pkgname=conky
-pkgver=1.12.2
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
-license=('GPL3' 'BSD')
+license=('GPL' 'BSD')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('libxml2' 'curl' 'cairo' 'wireless_tools' 'libxinerama'
-         'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua' 'librsvg'
-         'libxnvctrl' 'libpulse')
-makedepends=('cmake' 'docbook2x' 'perl-xml-libxml' 'docbook-xml'
-             'docbook-xsl' 'cmake' 'git' 'man-db' 'catch2')
+depends=(
+  'glibc' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft' 'imlib2'
+  'libxml2' 'libpulse' 'libxnvctrl' 'systemd-libs' 'ncurses' 'curl'
+  libncursesw.so libXNVCtrl.so libsystemd.so libpulse.so libcurl.so
+)
+makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git' 'catch2'
+             'pandoc' 'python-yaml' 'python-jinja')
 optdepends=('nvidia: for GT4xx and newer GPUs',
   'nvidia-340xx: for G8x, G9x, GT2xx GPUS',
   'nvidia-304xx: for GeForce 6/7 GPUs')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('3beb6048a7146f4a19cfdb1b994ead3ec051773b')
+sha1sums=('75ae3d65dbe155219cbfdd78b52e3c3e8615285b')
 options=('!strip' 'debug')
 install='conky-lua-nv.install'
 
 prepare() {
   # disable HSV gradients for now
   cd ${srcdir}/${_pkgname}-${pkgver}
-  rm tests/test-hsv.cc
   rm -r tests/catch2
   ln -s /usr/include/catch2 tests
-  sed -i 's/set(test_srcs ${test_srcs} test-hsv.cc)//g' tests/CMakeLists.txt
 }
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
   cmake \
+    -B build \
     -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
     -D MAINTAINER_MODE=ON \
-    -D BUILD_CURL=ON \
+    -D BUILD_DOCS=ON \
+    -D BUILD_IMLIB2=ON \
+    -D BUILD_EXTRAS=ON \
     -D BUILD_LUA_RSVG=ON \
     -D BUILD_LUA_CAIRO=ON \
     -D BUILD_LUA_IMLIB2=ON \
+    -D BUILD_WLAN=ON \
+    -D BUILD_XDBE=ON \
+    -D BUILD_XSHAPE=ON \
+    -D BUILD_HSV_GRADIENT=ON \
     -D BUILD_IMLIB2=ON \
+    -D BUILD_CURL=ON \
     -D BUILD_RSS=ON \
+    -D BUILD_NVIDIA=ON \
     -D BUILD_WEATHER_METAR=ON \
     -D BUILD_PULSEAUDIO=ON \
     -D BUILD_JOURNAL=ON \
-    -D BUILD_WLAN=ON \
-    -D BUILD_NVIDIA=ON \
-    -D BUILD_XDBE=ON \
-    -D BUILD_XSHAPE=ON \
-    -D BUILD_HSV_GRADIENT=OFF \
-    -D BUILD_TESTS=OFF \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
     -S .
 
-
-  make
+  make -C build
 }
 
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
-  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -D -m644 LICENSE.BSD ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD
-  install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
-  install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
+  make -C build DESTDIR=${pkgdir} install
+  install -D -m644 COPYING -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -D -m644 build/extras/vim/syntax/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
+  install -D -m644 extras/vim/ftdetect/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
 }
 
 # vim:ts=2:et:sw=2
