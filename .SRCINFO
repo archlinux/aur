@@ -28,6 +28,7 @@ pkgbase = python-orange
 	depends = python-pygments
 	depends = python-qtconsole
 	depends = python-pyqt5-webengine
+	depends = python-httpx
 	depends = python-anyqt
 	depends = python-serverfiles
 	depends = python-louvain

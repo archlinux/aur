@@ -1,4 +1,5 @@
-# Maintainer: a821
+# Maintainer:
+# Contributor: a821
 # Contributor: xantares
 # Contributor: dalraf
 pkgname=python-orange
@@ -14,6 +15,8 @@ depends=('python-chardet' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib'
          'python-pip' 'python-xlsxwriter' 'python-networkx' 'python-requests' 'python-pandas'
          'python-openpyxl' 'python-httpx' 'python-numpy' 'python-scipy' 'python-yaml'
          'python-pygments' 'python-qtconsole' 'python-pyqt5-webengine'
+         'python-httpx'
+
          # AUR deps
          'python-anyqt' 'python-serverfiles' 'python-louvain' 'python-opentsne'
          'python-orange-widget-base' 'python-orange-canvas-core' 'python-baycomp')
