@@ -1,6 +1,6 @@
 pkgbase = msigd-git
 	pkgdesc = MSI Gaming Device control application
-	pkgver = r179.ba9d53b
+	pkgver = r182.c436009
 	pkgrel = 1
 	url = https://github.com/couriersud/msigd
 	arch = x86_64
