@@ -1,7 +1,7 @@
 pkgbase = upscaler
 	pkgdesc = Upscale and enhance images
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://gitlab.com/TheEvilSkeleton/Upscaler
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = upscaler
 	depends = libadwaita
 	depends = python-gobject
 	depends = realesrgan-ncnn-vulkan-bin
-	source = git+https://gitlab.com/TheEvilSkeleton/Upscaler.git#commit=712c262a3453ea37344424c213362d0234582d60
+	source = git+https://gitlab.com/TheEvilSkeleton/Upscaler.git#commit=f236353b65edd3581482a2e69e77be254dddbb34
 	b2sums = SKIP
 
 pkgname = upscaler

@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=upscaler
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Upscale and enhance images"
 arch=('x86_64')
 url="https://gitlab.com/TheEvilSkeleton/Upscaler"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'realesrgan-ncnn-vulkan-bin')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-_commit=712c262a3453ea37344424c213362d0234582d60 # tags/1.0.0^0
+_commit=f236353b65edd3581482a2e69e77be254dddbb34 # tags/1.1.1^0
 _source=Upscaler
 source=("git+$url.git#commit=$_commit")
 b2sums=('SKIP')
