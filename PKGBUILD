@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=converter
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Converter is a GTK4+libadwaita application that allows you to convert and manipulate a given image. It is a front-end for ImageMagick."
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_commit=778530a1bb8521d630f7caaf05b5c22299126634 # tags/1.2.0^0
+_commit=a16923f922441820a4b8a0f639bd935d6d3cffd4 # tags/1.4.0^0
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
