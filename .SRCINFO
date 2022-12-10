@@ -1,7 +1,7 @@
 pkgbase = easy-zsh-config
 	pkgdesc = A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins.
 	pkgver = 0.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wszqkzqk/easy-zsh-config
 	install = easy-zsh-config.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = easy-zsh-config
 	depends = zsh-syntax-highlighting
 	depends = zsh-autosuggestions
 	depends = zsh-history-substring-search
-	optdepends = nerd-fonts-noto: to showed the special characters needed by oh-my-posh (highly recommended but still optional)
+	depends = ttf-hack-nerd
 	optdepends = pkgfile: to provide a function that will automatically search the pkgfile database when entering an unrecognized command
 	conflicts = grml-zsh-config
 	conflicts = manjaro-zsh-config
