@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.2.1'
-pkgrel=4
+pkgrel=5
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -63,6 +63,7 @@ _GOAPPS="${GOBIN}/apps"
 #declare the _pkgdir and systemd directory
 _pkgdir="${pkgdir}"
 _systemddir="usr/lib/systemd/system"
+_skywirebin=""
 _package
 }
 #_package function - used in build variants
@@ -93,29 +94,33 @@ done
 _msg2 'Installing scripts'
 for _i in "${_script[@]}" ; do
   _msg3 ${_i}
-  install -Dm755 "${srcdir}/${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
+  install -Dm755 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_scriptsdir}/${_i}"
   ln -rTsf "${_pkgdir}/${_scriptsdir}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
 _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
-install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
+install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
-  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/${_systemddir}/${_i}"
-  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_systemddir}/${_i}"
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
 done
 _msg2 'installing desktop files and icons'
 mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
 for _i in "${_desktop[@]}" ; do
   _msg3 ${_i}
-  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/usr/share/applications/${_i}"
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/applications/${_i}"
 done
 for _i in "${_icon[@]}" ; do
   _msg3 ${_i}
-  install -Dm644 "${srcdir}/${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"
 done
+if command -v tree &> /dev/null ; then
+_msg2 'package tree'
+  tree -a ${_pkgdir}
+fi
 }
 
 _msg2() {
