@@ -5,7 +5,7 @@
 pkgname=ame
 _pkgname=amethyst
 pkgver=4.0.3
-pkgrel=2
+pkgrel=3
 _codename='Funky Fish'
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ depends=(
     'less'
 )
 makedepends=('cargo')
-source=("${_pkgname}-${pkgver}::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 sha256sums=('850b6eda89316e4da1148506377471c1cda878077143b6f1983b61b0dba8d8c0')
 
 prepare() {
