@@ -1,6 +1,6 @@
 pkgbase = shronk-cli-utils-git
 	pkgdesc = A compilation of my own CLI Utils
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/nicroxio/cli_utils
 	arch = x86_64
