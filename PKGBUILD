@@ -4,20 +4,20 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
-pkgver=6.2.3
+pkgver=6.2.5
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
 url='https://www.lutzroeder.com/ai'
 license=('MIT')
 provides=('netron')
-depends=('gtk3' 'nss' 'dbus-glib' 'libdbusmenu-glib')
+depends=('gtk3' 'nss' 'dbus-glib' 'libdbusmenu-glib' 'libindicator-gtk2' 'libdbusmenu-gtk2' 'alsa-lib')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('a54418813f0c078a13799b6e34b62ce5f4bc9cd6162b03ecc803b3b79cea902f'
+sha256sums=('89d5f3fb30df2c8ce14c5c34fd68f360ee1d611d970b315cfed1da6bab3994fa'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
 
 package() {
