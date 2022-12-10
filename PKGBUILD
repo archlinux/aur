@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=9.0.9
+pkgver=9.0.10
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
 )
 # Outdated Python modules, but required by Seahub
 _thirdpart=(
-    'django-3.2.15'
+    'django-3.2.16'
     'django-webpack-loader-0.7.0'
 )
 source=(
@@ -56,8 +56,8 @@ source=(
     'nginx.example.conf'
 )
 sha256sums=(
-    '682949ad0866b3e7d97992bc728ac9fbea0db8a6eacc1babeecf107e46dd5123'
-    '371f4f008b7c572bf7d78c564836f0bcd698fd9bc967807c7fbe4f65696d7df5'
+    '3a885a8a1894d003264a1d9bbdbae6593a513f7654b7d750171bab1086b8f79d'
+    '21f3f72c7a6e938315f437d7225e91c4fe1d8b29d2d2428aaeb86341b9e88863'
     'fef6b13bbd61d682e12f3bd73bb7ac1c398dd0dea22ef2cf34309c6d1078b0d1'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
