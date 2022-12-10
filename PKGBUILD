@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-cpu-git
-pkgver=2022.2.1.r0.ga091605
+pkgver=2023.1.0.r0.g2c8c32a
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for CPU (git version)'
 arch=('x86_64')
@@ -12,12 +12,15 @@ makedepends=('git' 'cmake' 'meson' 'nasm' 'onevpl' 'python' 'xxhash' 'yasm')
 provides=('onevpl-cpu' 'onevpl-runtime')
 conflicts=('onevpl-cpu')
 source=('git+https://github.com/oneapi-src/oneVPL-cpu.git'
-        '010-onevpl-cpu-fix-build.patch')
+        '010-onevpl-cpu-fix-build.patch'
+        '020-onevpl-cpu-disable-gtest-werror.patch')
 sha256sums=('SKIP'
-            'b3d77713f62240140fe743e2bf6cd747469c8c070b18f31f0efc572c68af20ca')
+            'ee6b8f15e24a6c03337657c3b38eab0b929cc3ec539a94dd8d1d5f9a9b85b3cb'
+            'a0caaa1dd7701b6a13ebe58bc6917c4f10f787f33d4d7e53d52766ddf985b980')
 
 prepare() {
     patch -d oneVPL-cpu -Np1 -i "${srcdir}/010-onevpl-cpu-fix-build.patch"
+    patch -d oneVPL-cpu -Np1 -i "${srcdir}/020-onevpl-cpu-disable-gtest-werror.patch"
 }
 
 pkgver() {
