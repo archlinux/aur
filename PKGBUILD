@@ -1,9 +1,9 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname='pass-import'
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
-pkgdesc='A pass extension for importing data from most of the existing password manager.'
+pkgdesc='A pass extension for importing data from most existing password managers.'
 arch=('any')
 url='https://github.com/roddhjav/pass-import'
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=(
   'python-zxcvbn'
   'python-requests'
 )
-makedepends=('python-setuptools' 'python-pypandoc')
+makedepends=('python-setuptools')
 optdepends=(
   'python-defusedxml: xml based importers'
   'python-pykeepass: direct keepass database import'
@@ -24,7 +24,7 @@ optdepends=(
 )
 source=("https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         "https://github.com/roddhjav/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha512sums=('0502de0710c8cca9a75d6e3e3cab27cc660089702074974dee367f9ce56daea8337cca714977c6481224b85ed1d80f966f441437987438e9e04d2c8583c0efb7'
+sha512sums=('cea580eaa18783f992f2a3bc28b3e47494640256f7ee44a98632b9498fe48516d6c36bf9af525b22f300165c3da002b80ff46163b5960ab7c5a1c20e3a1a0442'
             'SKIP')
 
 # The public key is found at https://pujol.io/keys
