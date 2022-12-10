@@ -1,8 +1,8 @@
 pkgbase = gnome-encfs-manager-bin
 	pkgdesc = An easy to use manager and mounter for encfs stashes
 	pkgver = 1.9
-	pkgrel = 1
-	url = https://launchpad.net/gencfsm
+	pkgrel = 2
+	url = https://moritzmolch.com/apps/gencfsm.html
 	arch = x86_64
 	makedepends = binutils
 	makedepends = tar
