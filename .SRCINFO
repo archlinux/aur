@@ -1,6 +1,6 @@
 pkgbase = mutagen.io-bin
 	pkgdesc = Code synchronization tool for remote development.
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://mutagen.io/
 	arch = i386
@@ -8,11 +8,11 @@ pkgbase = mutagen.io-bin
 	arch = aarch64
 	arch = armv7h
 	license = MIT
-	source_i386 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.2/mutagen_linux_386_v0.16.2.tar.gz
-	sha256sums_i386 = 07d6fe23cd63330b071e2eace30514bda7250a8bf52cfba3ef3d02f4e9c18e21
-	source_x86_64 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.2/mutagen_linux_amd64_v0.16.2.tar.gz
-	sha256sums_x86_64 = 802b7447f2dc533d8bf22d4cfe85eea81c7619b7ccb8e073a51f9f76c53272a7
-	source_aarch64 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.2/mutagen_linux_arm64_v0.16.2.tar.gz
-	sha256sums_aarch64 = 42bb682fe2fec5f6c6d4173a953b6776e8712a644e0832540e6bfbb1c46b284f
+	source_i386 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.3/mutagen_linux_386_v0.16.3.tar.gz
+	sha256sums_i386 = 8472d96ae77a48703579d916d53a71879b35fcd8906c9c1ca493395f3a75a5b8
+	source_x86_64 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.3/mutagen_linux_amd64_v0.16.3.tar.gz
+	sha256sums_x86_64 = fce3c9027f7ddca38068d146c37ef86610849a77ae0f32c746586c5fc60e6545
+	source_aarch64 = https://github.com/mutagen-io/mutagen/releases/download/v0.16.3/mutagen_linux_arm64_v0.16.3.tar.gz
+	sha256sums_aarch64 = 7dc8ea368f9bccf1d656ab7fb9ccca56c8e695670d85521526410fac5dcfc3b1
 
 pkgname = mutagen.io-bin
