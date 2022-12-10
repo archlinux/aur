@@ -1,26 +1,21 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=spedread
+_pkgname=Spedread
 pkgver=2.3.0
-pkgrel=2
+pkgrel=1
 pkgdesc="GTK speed reading software: Read like a speedrunner!"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/Darazaki/Spedread"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('git' 'meson' 'vala')
+makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
-_commit=7153ebf7c71b2cff5f68e2cfc4895d3931c4c2e0 # tags/2.3.0^0
-source=("$pkgname::git+$url.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("${url}/archive/v${pkgver}.tar.gz")
+b2sums=('6d9bc053f16c5adc6d390ebf08bf778d9aaaa1d6e721e3e27f0e0299afc34c4fd70274d59594edb824f6c3a1829383a58764f51ddfed7ed7816934eccf448df7')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson "$_pkgname-$pkgver" build
   meson compile -C build
 }
 
