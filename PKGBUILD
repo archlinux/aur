@@ -9,15 +9,6 @@ license=('ISC')
 source=("https://github.com/Frolleks/sfetch/archive/v$pkgver.tar.gz")
 sha256sums=('64ff502ab4b5a84c59be28eb73801f631e3004f5b2c00a9dff858319c4d08a09')
 
-prepare() {
-	cd "$pkgname-$pkgver"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	sudo make install
-}
-
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
