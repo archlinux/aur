@@ -12,7 +12,7 @@ pkgbase = varnish-modules
 	makedepends = make
 	makedepends = python
 	makedepends = python-docutils
-	depends = varnish=7.2.0
+	depends = varnish=7.2.1
 	source = varnish-modules-0.21.0.tar.gz::https://github.com/varnish/varnish-modules/releases/download/0.21.0/varnish-modules-0.21.0.tar.gz
 	sha512sums = a442f58968b471d713c99a94e5b80302c07ea163d3d5022d768eb0b39ab081f18744fd529b04283b0c6ec942f362197935d8ef1aa04f26eff10a81425a63bd35
 
