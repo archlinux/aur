@@ -4,7 +4,15 @@ pkgname=teres-git
 pkgver=0.3.1.r0.g63d6c0c
 pkgrel=1
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
-depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc-git' 'vapoursynth-plugin-frameblender')
+depends=('vapoursynth-plugin-mvtools' 
+	'vapoursynth-plugin-havsfunc' 
+	'vapoursynth' 
+	'ffmpeg' 
+	'vapoursynth-plugin-svpflow1' 
+	'ffms2' 
+	'vapoursynth-plugin-svpflow2-bin' 
+	'vapoursynth-plugin-mvsfunc-git' 
+	'vapoursynth-plugin-frameblender')
 optdepends=('vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support'
 'vapoursynth-plugin-vsrife-git: RIFE CUDA support')
 makedepends=('rust' 'cargo' 'python' 'gtk3' 'git')
@@ -12,7 +20,7 @@ arch=('x86_64')
 license=('GPL3')
 url="https://github.com/animafps/teres"
 source=("${pkgname}::git+https://github.com/animafps/teres.git")
-provides=("teres=${pkgver}")
+provides=("teres")
 conflicts=('teres')
 sha256sums=('SKIP')
 

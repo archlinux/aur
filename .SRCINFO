@@ -21,7 +21,7 @@ pkgbase = teres-git
 	depends = vapoursynth-plugin-frameblender
 	optdepends = vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support
 	optdepends = vapoursynth-plugin-vsrife-git: RIFE CUDA support
-	provides = teres=0.3.1.r0.g63d6c0c
+	provides = teres
 	conflicts = teres
 	source = teres-git::git+https://github.com/animafps/teres.git
 	sha256sums = SKIP
