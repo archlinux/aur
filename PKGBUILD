@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57743.4173468cc9d
+pkgver=r57747.813a194c4e8
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -175,7 +175,6 @@ build() {
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
-    -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
 
   # https://github.com/google/flatbuffers/issues/7404
@@ -197,6 +196,7 @@ package_kodi-stable-git() {
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+    'pcre'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
