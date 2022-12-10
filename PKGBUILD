@@ -17,7 +17,7 @@ pkgname=('rabbitvcs-git'
          'rabbitvcs-nemo-git'
          'rabbitvcs-thunar-git')
 
-pkgver=r1893.b88b384
+pkgver=r1900.c424618
 pkgrel=1
 pkgdesc="A set of graphical tools written to provide simple and straightforward access to the version control systems you use"
 arch=('any')
@@ -29,7 +29,7 @@ makedepends=('git'
 
 license=('GPL')
 sha256sums=('SKIP'
-            '45de7dee4f7741668020891280062d14e616939462ea8c51666877aff97bac52')
+            '4dfffb8c84882dad9c3c62723eae39fcbef1e20e759dbafccbc438d00cf713a8')
 
 pkgver() {
   cd "${srcdir}/${pkgbase%-git}"
@@ -76,7 +76,8 @@ package_rabbitvcs-cli-git() {
   conflicts=('rabbitvcs-cli')
 
   cd "$srcdir/${pkgbase%-git}"
-  install -Dm755 "clients/cli/${pkgbase%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "clients/cli/${pkgbase%-git}" -t \
+    "$pkgdir/usr/bin"
 }
 
 package_rabbitvcs-caja-git() {
@@ -87,7 +88,8 @@ package_rabbitvcs-caja-git() {
   install="${pkgname%-git}.install"
 
   cd "$srcdir/${pkgbase%-git}"
-  install -Dm644 clients/caja/RabbitVCS.py "$pkgdir/usr/share/caja-python/extensions"
+  install -Dm644 clients/caja/RabbitVCS.py -t \
+    "$pkgdir/usr/share/caja-python/extensions"
 }
 
 package_rabbitvcs-nautilus-git() {

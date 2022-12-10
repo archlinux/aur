@@ -1,9 +1,9 @@
-diff -up rabbitvcs/setup.py.orig rabbitvcs-0.18/setup.py
---- rabbitvcs/setup.py.orig	2020-02-13 02:03:03.000000000 +0000
-+++ rabbitvcs/setup.py	2020-08-31 13:42:04.352615315 +0100
-@@ -153,18 +153,3 @@ dist = setup(
+diff --unified --recursive --text a/setup.py b/setup.py
+--- a/setup.py	2022-06-26 09:17:17.956199000 -0600
++++ b/setup.py	2022-06-26 09:19:13.995762009 -0600
+@@ -158,18 +158,3 @@
      },
-     data_files=translations + icons + documentation + config_spec
+     data_files=translations + icons + documentation + config_spec,
  )
 -
 -#

@@ -1,6 +1,6 @@
 pkgbase = rabbitvcs-git
 	pkgdesc = A set of graphical tools written to provide simple and straightforward access to the version control systems you use
-	pkgver = r1893.b88b384
+	pkgver = r1900.c424618
 	pkgrel = 1
 	url = https://github.com/rabbitvcs/rabbitvcs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = rabbitvcs-git
 	source = rabbitvcs::git+https://github.com/rabbitvcs/rabbitvcs.git
 	source = rabbitvcs-ignore-post-install.patch
 	sha256sums = SKIP
-	sha256sums = 45de7dee4f7741668020891280062d14e616939462ea8c51666877aff97bac52
+	sha256sums = 4dfffb8c84882dad9c3c62723eae39fcbef1e20e759dbafccbc438d00cf713a8
 
 pkgname = rabbitvcs-git
 	depends = git
