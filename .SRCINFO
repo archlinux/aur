@@ -1,6 +1,6 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
-	pkgver = 107.0
+	pkgver = 108.0
 	pkgrel = 1
 	url = https://iridiumbrowser.de/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = iridium-rpm
 	conflicts = chromium
 	options = !emptydirs
 	options = !strip
-	source = https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.11.107-1.el8.x86_64.rpm
-	sha256sums = 0fea54c0698fe00ac44814667c93b772e7fbc95638f71317c9acff229bdcc20c
+	source = https://downloads.iridiumbrowser.de/epel8/iridium-browser-2022.12.108.1-1.el8.x86_64.rpm
+	sha256sums = eab4ca1dc61ec35e70bd37c9a1cd395eb122c2754598c74ece608de3557d5261
 
 pkgname = iridium-rpm
