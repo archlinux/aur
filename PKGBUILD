@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=108.0.5359.94
+pkgver=108.0.5359.98
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
@@ -32,6 +32,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
+        chromium-icu72.patch
+        v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         disable-GlobalMediaControlsCastStartStop.patch
@@ -40,10 +42,12 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('0607518481a8a5b993fb371eec544f7d20e43c2eb706ca7bf40ef584496cb6fe'
+sha256sums=('60b6137971e3cb2947477f654491ed4f517ab88ea2807fa3b89fcce34b83561e'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
+            'dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572'
+            'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
@@ -62,7 +66,7 @@ source=(${source[@]}
         remove-main-main10-profile-limit.patch
         chromium-drirc-disable-10bpc-color-configs.conf)
 sha256sums=(${sha256sums[@]}
-            '26379c097c7ba655e4d943523575f00647308e2a75ab79c8ff99e4b62b40ae1a'
+            '91afcb2ab483b226979b4114ba5ce2aa462658688c10cafd29f78c4be607357e'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb')
@@ -119,6 +123,8 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
    # Upstream fixes
+  patch -Np1 -i ../chromium-icu72.patch
+  patch -Np1 -d v8 <../v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
   patch -Np1 -i ../re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
