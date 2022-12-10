@@ -19,11 +19,14 @@ depends=(
   glibc
   libcap.so
   libdrm
+  libinput
   libliftoff.so
   libpipewire-0.3.so
+  libseat.so
   libvulkan.so
   #libwlroots.so
   libx11
+  libxcb
   libxcomposite
   libxdamage
   libxext
@@ -39,6 +42,9 @@ depends=(
   wayland-protocols
   #wlroots
   xorg-server-xwayland
+  xcb-util-errors
+  xcb-util-renderutil
+  xcb-util-wm
 )
 makedepends=(
   git
