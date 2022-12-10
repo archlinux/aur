@@ -1,6 +1,6 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway window manager
-	pkgver = 0.7.14
+	pkgver = 0.7.15
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = nwg-panel
 	provides = nwg-panel
 	conflicts = nwg-panel
 	conflicts = nwg-panel-git
-	source = nwg-panel-0.7.14.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.7.14.tar.gz
-	md5sums = e5b9821401189803b3c5197223a6001d
+	source = nwg-panel-0.7.15.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.7.15.tar.gz
+	md5sums = 5544e633c747eefc78c67406a56bdb6f
 
 pkgname = nwg-panel
