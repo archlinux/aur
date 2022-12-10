@@ -8,19 +8,20 @@ pkgdesc="Simple cross-platform text editor based on Qt and Scintilla"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/martinrotter/textosaurus"
 license=(GPL3)
-depends=(qt5-base qt5-svg)
+depends=(hicolor-icon-theme qt5-base qt5-svg)
 makedepends=(git qt5-tools)
-replaces=(textilosaurus)
 source=("git+https://github.com/martinrotter/textosaurus.git#commit=6e2e86d45eebc37ca6992ab17b3acbc3840f5967"
         "git+https://github.com/martinrotter/transka.git"
         "git+https://github.com/martinrotter/7za.git"
         "git+https://github.com/martinrotter/nsis.git"
-        "git+https://github.com/martinrotter/sed.git")
+        "git+https://github.com/martinrotter/sed.git"
+        "fix-build.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'b41a0538e3da266c8e7bd67eca2dd6e8c2495521596fced4d3d3d496cfd135bc')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -35,7 +36,8 @@ prepare() {
   git config 'submodule.resources/scripts/7za.url' "${srcdir}/7za"
   git config 'submodule.resources/scripts/nsis.url' "${srcdir}/nsis"
   git config 'submodule.resources/scripts/sed.url' "${srcdir}/sed"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
+  git apply ../fix-build.patch
 }
 
 build() {

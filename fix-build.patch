@@ -1,0 +1,12 @@
+diff --git a/src/libtextosaurus/definitions/definitions.h b/src/libtextosaurus/definitions/definitions.h
+index abe18765..d007838c 100755
+--- a/src/libtextosaurus/definitions/definitions.h
++++ b/src/libtextosaurus/definitions/definitions.h
+@@ -3,6 +3,7 @@
+ #ifndef DEFINITIONS_H
+ #define DEFINITIONS_H
+ 
++#include <limits>
+ #include <QtGlobal>
+ 
+ // *INDENT-OFF*
