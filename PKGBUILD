@@ -2,7 +2,7 @@
 
 pkgname=jellyfin-ffmpeg5
 pkgver=5.1.2
-pkgrel=1
+pkgrel=5
 pkgdesc='FFmpeg5 for Jellyfin'
 arch=('x86_64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'
@@ -82,7 +82,6 @@ build() {
         --disable-libxcb \
         --disable-sdl2 \
         --disable-xlib \
-        --enable-lto \
         --enable-gpl \
         --enable-version3 \
         --enable-static \
