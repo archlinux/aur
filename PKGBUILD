@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggcyto
-_pkgver=1.26.0
+_pkgver=1.26.3
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.26.3
 pkgrel=1
 pkgdesc='Visualize Cytometry data with ggplot'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fc14f4c98cfef8afede6068c21f9799c1b572137644aa084913062c649a9105e')
+sha256sums=('fcd39c73132c808eeeb09ec8809bede881979522016d08da3bb9c61be43d8056')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
