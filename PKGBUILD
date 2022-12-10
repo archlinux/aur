@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.0.0_devel.163400.78e6d07832b.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.0.0_devel.163990.bc60eca1d95.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -24,7 +24,7 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-intel' 'vulkan-swrast' '
 
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/zink'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/si'
         'LICENSE'
 #        'zink_hack.patch'
         )
