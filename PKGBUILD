@@ -1,57 +1,59 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgbase=dune-mmesh
-pkgname=(${pkgbase} python-${pkgbase})
-pkgver=1.3.2
-pkgrel=2
+pkgname=dune-mmesh
+_dunever=2.9.0
+_tarver=1.4
+_tar="${_tarver}/${pkgname}-release-${_tarver}.tar.gz"
+pkgver="${_tarver}"
+pkgrel=1
 pkgdesc="MMesh is a grid implementation based on CGAL triangulations"
-arch=('x86_64')
-url="https://dune-project.org/modules/${pkgbase}"
+arch=(x86_64)
+url="https://dune-project.org/modules/${pkgname}"
 license=('GPL3')
-_dunever=2.8.0
-makedepends=("dune-fem>=${_dunever}" "cgal" "doxygen" "graphviz" "python-setuptools")
+depends=("dune-grid>=${_dunever}" cgal)
+makedepends=(texlive-core doxygen graphviz python-scikit-build python-ninja)
 optdepends=('vc: C++ Vectorization library'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
   'dune-fem: for store static information about grid implementation or support type of boundary id provider specialized for each grid type')
-source=(https://github.com/samuelburbulla/${pkgbase}/archive/v${pkgver}.tar.gz)
-sha512sums=('bbe822d9d6c8e7f5fa6685b329a2e062434e576e566e6484c4ef423c7c0ce5dd59449762e677be9feb9da25a095341a013b2ceadfa4ab5f027566704844c034f')
+source=(https://gitlab.dune-project.org/samuel.burbulla/${pkgname}/-/archive/release/${_tar})
+sha512sums=('1c5d085fcba29051e9981b31c5d7bc2f52aff4f15f9bb1700cc9d017de8d084a4e88c82a9adab9437d4c607535a2f061b7d1d32352a7f4760925e900aaca3492')
 
 prepare() {
-  sed -i '/^install/,+2 s/^/#/' ${pkgbase}-${pkgver}/CMakeLists.txt
-  rm -r ${pkgbase}-${pkgver}/CGAL
+  cd ${pkgname}-release-${_tarver}
+  export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  # Use system-wide CGAL installation
+  sed -i '/install/,+2 s/^/#/' CMakeLists.txt
+  rm -r CGAL
+  python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
 build() {
-  cmake \
-    -S ${pkgbase}-${pkgver} \
-    -B build-cmake \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cd ${pkgname}-release-${_tarver}
+
+  XDG_CACHE_HOME="${PWD}" \
+    python setup.py build \
+    --build-type=None \
+    -G 'Unix Makefiles' \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
-    -DCMAKE_CXX_FLAGS="-Wno-narrowing" \
+    -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
+    -DCMAKE_CXX_FLAGS="-O2 -Wno-narrowing -Wall -fdiagnostics-color=always -mavx" \
+    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
+    -DALLOW_CXXFLAGS_OVERWRITE=ON \
+    -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=FALSE \
+    -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=FALSE \
     -DENABLE_HEADERCHECK=ON \
     -DDUNE_ENABLE_PYTHONBINDINGS=ON \
     -DDUNE_PYTHON_INSTALL_LOCATION='none' \
-    -Wno-dev
-  cmake --build build-cmake --target all
-  cd build-cmake/python
-  python setup.py build
+    -DDUNE_PYTHON_WHEELHOUSE="dist"
 }
 
-package_dune-mmesh() {
-  depends=("dune-grid>=${_dunever}" "cgal")
-  DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -m644 -D ${pkgbase}-${pkgver}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+package() {
+  cd ${pkgname}-release-${_tarver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
-}
-
-package_python-dune-mmesh() {
-  depends=("dune-mmesh>=${pkgver}" "python-dune-fem>=${_dunever}")
-  pkgdesc+=" (python bindings)"
-  cd build-cmake/python
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }

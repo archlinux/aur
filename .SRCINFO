@@ -1,27 +1,22 @@
 pkgbase = dune-mmesh
 	pkgdesc = MMesh is a grid implementation based on CGAL triangulations
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://dune-project.org/modules/dune-mmesh
 	arch = x86_64
 	license = GPL3
-	makedepends = dune-fem>=2.8.0
-	makedepends = cgal
+	makedepends = texlive-core
 	makedepends = doxygen
 	makedepends = graphviz
-	makedepends = python-setuptools
+	makedepends = python-scikit-build
+	makedepends = python-ninja
+	depends = dune-grid>=2.9.0
+	depends = cgal
 	optdepends = vc: C++ Vectorization library
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	optdepends = dune-fem: for store static information about grid implementation or support type of boundary id provider specialized for each grid type
-	source = https://github.com/samuelburbulla/dune-mmesh/archive/v1.3.2.tar.gz
-	sha512sums = bbe822d9d6c8e7f5fa6685b329a2e062434e576e566e6484c4ef423c7c0ce5dd59449762e677be9feb9da25a095341a013b2ceadfa4ab5f027566704844c034f
+	source = https://gitlab.dune-project.org/samuel.burbulla/dune-mmesh/-/archive/release/1.4/dune-mmesh-release-1.4.tar.gz
+	sha512sums = 1c5d085fcba29051e9981b31c5d7bc2f52aff4f15f9bb1700cc9d017de8d084a4e88c82a9adab9437d4c607535a2f061b7d1d32352a7f4760925e900aaca3492
 
 pkgname = dune-mmesh
-	depends = dune-grid>=2.8.0
-	depends = cgal
-
-pkgname = python-dune-mmesh
-	pkgdesc = MMesh is a grid implementation based on CGAL triangulations (python bindings)
-	depends = dune-mmesh>=1.3.2
-	depends = python-dune-fem>=2.8.0
