@@ -20,11 +20,12 @@ if (git diff --exit-code PKGBUILD); then
 	exit 0
 fi
 
-updpkgsums
+# updpkgsums
+makepkg -g
 
-# Update .SRCINFO
-makepkg --printsrcinfo >.SRCINFO
+# # Update .SRCINFO
+# makepkg --printsrcinfo >.SRCINFO
 
-# Commit changes
-git add PKGBUILD .SRCINFO
-git commit -m "${PKG} v${VER}"
+# # Commit changes
+# git add PKGBUILD .SRCINFO
+# git commit -m "${PKG} v${VER}"

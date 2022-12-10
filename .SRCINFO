@@ -1,15 +1,17 @@
 pkgbase = deepin-wine-helper
 	pkgdesc = Deepin Wine Helper
-	pkgver = 5.1.43_1
+	pkgver = 5.1.44_1
 	pkgrel = 1
 	url = http://www.deepin.org
-	arch = i686
 	arch = x86_64
-	license = Proprietary
+	license = GPL
+	license = custom
 	makedepends = tar
+	depends = lib32-glibc
 	depends = p7zip
 	optdepends = python2: some script dependencies
-	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-helper_5.1.43-1_i386.deb
-	sha256sums = 2c2224d6070967fa7c8af0486a03830c3c3fbbfc9df074869b75d531b3e296cf
+	optdepends = noto-fonts-cjk: recommended fonts
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine-helper/deepin-wine-helper_5.1.44-1_i386.deb
+	sha256sums = 33068fc17e72f769bf653b8171c135ce341dacaa84797f160f2061090b509bc3
 
 pkgname = deepin-wine-helper
