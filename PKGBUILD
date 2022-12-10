@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=huniq-git
-pkgver=r60.e34b11a
+pkgver=r62.1d3c47e
 pkgrel=1
 pkgdesc="Filter out duplicates on the command line (git)"
 arch=('x86_64')
