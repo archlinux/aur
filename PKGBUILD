@@ -1,7 +1,7 @@
 pkgname=gnucobol
 pkgver=3.1.2
 pkgdesc="A free, open source and modern COBOL compiler"
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://www.gnu.org/software/gnucobol/"
 license=("GPL")
