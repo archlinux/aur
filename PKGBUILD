@@ -6,15 +6,15 @@
 
 pkgname='kdnotify-git'
 pkgdesc='A keepalived FIFO notification handler'
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 arch=('any')
 license=('MPL2')
 url='https://git.st8l.com/luxolus/kdnotify'
 _artifact="${pkgname}-${pkgver}-${pkgrel}"
-_commit='4267651ba9cef57f20fb593d60ca47743efbc06c'
+_commit='d428ff7086a98fcb0592babe8aa36857be824b5a'
 source=("${_artifact}.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v${pkgver}.tar.gz")
-sha512sums=('2b99e3b2b4dbb250718e5c6649b8182dcf3b82df87efc7cb32fae116b6965387d7f021751c0781313802fe4ee4263f7bb71d4095d913a86998a499dc53f17824')
+sha512sums=('f15d78b06c19a505230d7be1677aebd7a96f766fa9f3bc68f93e4d3d5296395254e84b82ee31bdc5c0c79e0f9ece81ad2e715f06d42a3f53c7239ff9ec50bf2b')
 makedepends=('glibc' 'go')
 depends=('glibc')
 provides=("kdnotify=${pkgver}")
@@ -22,20 +22,30 @@ provides=("kdnotify=${pkgver}")
 prepare() {
   cd "${srcdir}/kdnotify"
 
-  make configure Version=${pkgver} Commit=${_commit}
+  make configure \
+    Version=${pkgver} \
+    Commit=${_commit} \
+    Prefix=${pkgdir}/usr/bin \
+    Systemd=${pkgdir}/usr/lib/systemd
+}
+
+build() {
+  cd "${srcdir}/kdnotify"
+
+  make build
 }
 
 check() {
   cd "${srcdir}/kdnotify"
 
-  make check Version=${pkgver} Commit=${_commit}
+  make check
 }
 
 package() {
   cd "${srcdir}/kdnotify"
 
+  make install
+
   install -D -m 644 -o 0 -g 0 'doc/example.watch.yaml' \
     "${pkgdir}/etc/kdnotify/config.yaml"
-
-  make install Prefix=${pkgdir}/usr/bin
 }
