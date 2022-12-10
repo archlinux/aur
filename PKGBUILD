@@ -17,7 +17,7 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.06.r297.g0c6c1aff2
+pkgver=2.06.r403.g7259d55ff
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
@@ -59,6 +59,8 @@ sha256sums=('SKIP'
  
 prepare() {
     cd grub
+    export GRUB_CONTRIB="$srcdir"/grub-extras
+    export GNULIB_SRCDIR="$srcdir"/gnulib
 
     # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
     # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
@@ -79,9 +81,14 @@ prepare() {
     # Pull in latest language files
     ./linguas.sh
 
+	# Make translations reproducible.
+	sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
+
     # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
     rm -rf "$srcdir"/grub-extras/lua
+
+    ./bootstrap
 }
 
 pkgver() {
@@ -94,14 +101,14 @@ build() {
     export GRUB_CONTRIB="$srcdir"/grub-extras
     export GNULIB_SRCDIR="$srcdir"/gnulib
 
-    # Undefined references to _GLOBAL_OFFSET_TABLE_
-    CFLAGS=${CFLAGS/-fno-plt}
-
-    ./bootstrap
-
     for _arch in $_build_platforms; do
         mkdir "$srcdir"/grub/build_"$_arch"
         cd "$srcdir"/grub/build_"$_arch"
+        unset CFLAGS
+        unset CPPFLAGS
+        unset CXXFLAGS
+        unset LDFLAGS
+        unset MAKEFLAGS
 
        ../configure PACKAGE_VERSION="${pkgver}-${pkgrel}" \
                 --with-platform="${_arch##*-}" \
