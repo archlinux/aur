@@ -10,11 +10,11 @@ license=('GPL3')
 provides=('estash-bin')
 conflicts=('estash' 'estash-git')
 source=("https://github.com/Obscurely/EStash/releases/download/v${pkgver}-stable/estash-linux.tar.gz")
-sha256sums=("c96129830a0f1cebae66ec49375b926f86d39f00cefcc9fc11e3bb7b21f2886f")
+sha256sums=("2e6ce3fb2a9d21b6733158c346bfa720fbe07843847d1214c4da4bdab5c69574")
 
 package() {
     cd "$srcdir/"
 
-    install -Dm755 dym -t "${pkgdir}/usr/bin/"
+    install -Dm755 estash -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-bin}/"
 }

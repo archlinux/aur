@@ -9,6 +9,6 @@ pkgbase = estash-bin
 	conflicts = estash
 	conflicts = estash-git
 	source = https://github.com/Obscurely/EStash/releases/download/v0.5.1-stable/estash-linux.tar.gz
-	sha256sums = c96129830a0f1cebae66ec49375b926f86d39f00cefcc9fc11e3bb7b21f2886f
+	sha256sums = 2e6ce3fb2a9d21b6733158c346bfa720fbe07843847d1214c4da4bdab5c69574
 
 pkgname = estash-bin
