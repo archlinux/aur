@@ -2,10 +2,10 @@
 
 pkgname=papermc
 # curl -X GET "https://papermc.io/api/v2/projects/paper" -H  "accept: application/json"
-_pkgver=1.19.2
+_pkgver=1.19.3
 # curl -X GET "https://papermc.io/api/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
-_build=112
-_license_commit=31f0137
+_build=314
+_license_commit=812efd3
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.2
@@ -23,8 +23,8 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v2/projects/paper/versi
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('ff0f5fb8481b9eb885bf72ce0c5f9ead6db9e28eb84f38647c4b073891b609ef471337dce1b19a5e077f8f192c12d845bf8b894a8533bb1fee73b4ebbc3a4305'
-            'e801ac8f8902483adf67f3b5029c8710bf378b27f5b5860d4fff169cedacc856b987333afed9e2640fdd8f6d5d98ca5eef076b82b720be7335ab46ecd5dfa184'
+sha512sums=('60a2e202f8b29c9face1415b6c5f76a2ba01a97467a11856a6a2106b11ac6919d4c2ef6a72b2ee08d46dd5b831f3698c5de601c7c93fbd5d26b2310d5d46b9e7'
+            '6062c3b5598ce33dc053636ac07c646f2648568db6970151ac92362a7e123125d4d3148655bcb7c762907b8553f225567acef2662dc246040cbc3451d57c1622'
             '11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
 
 _game="papermc"
