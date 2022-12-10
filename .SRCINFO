@@ -1,6 +1,6 @@
 pkgbase = kdnotify-git
 	pkgdesc = A keepalived FIFO notification handler
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://git.st8l.com/luxolus/kdnotify
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = kdnotify-git
 	makedepends = glibc
 	makedepends = go
 	depends = glibc
-	provides = kdnotify=1.0.2
-	source = kdnotify-git-1.0.2-1.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v1.0.2.tar.gz
-	sha512sums = 06ef30116c865899578679b10234cb1f20bb54729b2bda52ab3a127dce2563b3da1d993f9be816499b3ac08737fc92b7fefe377998eab6367385d5d95ec681fb
+	provides = kdnotify=1.0.3
+	source = kdnotify-git-1.0.3-1.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v1.0.3.tar.gz
+	sha512sums = 2b99e3b2b4dbb250718e5c6649b8182dcf3b82df87efc7cb32fae116b6965387d7f021751c0781313802fe4ee4263f7bb71d4095d913a86998a499dc53f17824
 
 pkgname = kdnotify-git

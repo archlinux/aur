@@ -6,15 +6,15 @@
 
 pkgname='kdnotify-git'
 pkgdesc='A keepalived FIFO notification handler'
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 arch=('any')
 license=('MPL2')
 url='https://git.st8l.com/luxolus/kdnotify'
 _artifact="${pkgname}-${pkgver}-${pkgrel}"
-_commit='fdc681e8e75c4d52305bf848e9387f7af154e5b6'
+_commit='4267651ba9cef57f20fb593d60ca47743efbc06c'
 source=("${_artifact}.tar.gz::https://git.st8l.com/luxolus/kdnotify/archive/v${pkgver}.tar.gz")
-sha512sums=('06ef30116c865899578679b10234cb1f20bb54729b2bda52ab3a127dce2563b3da1d993f9be816499b3ac08737fc92b7fefe377998eab6367385d5d95ec681fb')
+sha512sums=('2b99e3b2b4dbb250718e5c6649b8182dcf3b82df87efc7cb32fae116b6965387d7f021751c0781313802fe4ee4263f7bb71d4095d913a86998a499dc53f17824')
 makedepends=('glibc' 'go')
 depends=('glibc')
 provides=("kdnotify=${pkgver}")
@@ -33,6 +33,9 @@ check() {
 
 package() {
   cd "${srcdir}/kdnotify"
+
+  install -D -m 644 -o 0 -g 0 'doc/example.watch.yaml' \
+    "${pkgdir}/etc/kdnotify/config.yaml"
 
   make install Prefix=${pkgdir}/usr/bin
 }
