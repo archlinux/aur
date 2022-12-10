@@ -1,6 +1,6 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap
-pkgver="0.2.0"
+pkgver="0.2.1"
 pkgrel=1
 pkgdesc='a simplistic papermc helper'
 url='https://github.com/talwat/pap'
