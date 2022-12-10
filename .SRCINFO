@@ -1,0 +1,14 @@
+pkgbase = rr-debugger
+	pkgdesc = rr is a lightweight tool for recording, replaying and debugging execution of applications
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://github.com/rr-debugger/rr
+	arch = x86_64
+	depends = cmake
+	depends = capnproto
+	depends = python-pexpect
+	provides = rr
+	source = https://github.com/rr-debugger/rr/archive/refs/tags/5.6.0.tar.gz
+	sha256sums = a75262ae622c2c91d3391401d3da4e1dc9379b5afea5c40c9ea93f6905706c87
+
+pkgname = rr-debugger
