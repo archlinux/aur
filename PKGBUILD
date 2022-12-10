@@ -5,7 +5,7 @@ _softname=mindmaster
 _pkgname_nover=EdrawMind
 _pkgname=${_pkgname_nover}-10
 pkgver=10.0.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=(!strip)
 conflicts=("edrawmind" "mindmaster" "mindmaster_cn" "mindmaster_en")
@@ -67,5 +67,4 @@ EOF
     ln -sf "/opt/${_pkgname}/EdrawMind" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -sf "/opt/${_pkgname}/${_softname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     ln -sf "/opt/${_pkgname}/emmx.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/emmx.svg"
-    ln -sf "/opt/${_pkgname}/${_softname}.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
 }
