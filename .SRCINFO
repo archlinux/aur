@@ -1,0 +1,14 @@
+pkgbase = hyprcwd-git
+	pkgdesc = xcwd for Hyprland
+	pkgver = 1.d076b59
+	pkgrel = 1
+	url = https://github.com/vilari-mickopf/hyprcwd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hyprcwd
+	conflicts = hyprcwd
+	source = hyprcwd::git+https://github.com/vilari-mickopf/hyprcwd.git
+	md5sums = SKIP
+
+pkgname = hyprcwd-git
