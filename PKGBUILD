@@ -13,8 +13,8 @@ pkgname=discord-electron-bin
 _pkgname=discord
 _electron=13
 #_electron=19
-pkgver=0.0.21
-pkgrel=2
+pkgver=0.0.22
+pkgrel=1
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
@@ -29,7 +29,7 @@ optdepends=(
 	'xdg-utils: Open files'
 )
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz")
-sha512sums=('149ae5b8b7d92549e12eca52e45d3f5761ef022ae321cf33fadc3b56c4cee0616a5166380faea038256213713a7aa90e1befc4caa3e6a4de8e15c1cb1d8f925d')
+sha512sums=('96c8486577bee7ae165bf96aab50c0733d83a2d9435357d9a4d9a3e9f3225ae6a7bf46e1a7d8b419ecc7ab4e270755332621a4f786ddb89a842379f5da40b271')
 
 _tarname='Discord'
 
