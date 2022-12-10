@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.0.11
+pkgver=6.0.12
 pkgrel=1
 pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -50,8 +50,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('2bae6131e64971e1e34ff395fa542971134c857bdb0b29069ab847c7c9a9c762'
-            '0927a403aaee7c444defdf49876e6f81d0debb3668427108050608de5190fe12'
+sha256sums=('89b730edf8942b49e02f9894244205886c9a214d629b35b88c4ff06ee9304f01'
+            'c9acc5200f34ff8ec8faffc9513a42f508ed561a73ffc7de067bd24a2efaf81d'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             '5a72a4163937bc588d6a8ed6320e610f6512376b7aa20c4ada5c0ae09cdcd525'
             '8ecbe2fdd40c1accc4e7ccd687c319938c18f5adf056ff314c7702775347adf9'
