@@ -1,7 +1,7 @@
 _pkgname=asteroids
 pkgname=${_pkgname}-bin
-pkgver=1.03
-pkgrel=6
+pkgver=1.05
+pkgrel=1
 pkgdesc='Anti-stress shooter game'
 url='https://codeberg.org/Denotatum/Asteroids'
 license=('GPLv3')
@@ -16,9 +16,9 @@ _pkgtag="$pkgname-$pkgver"
 _pkgzip="$_pkgtag.zip"
 noextract=("$_pkgzip")
 install="${pkgname}.install"
-source=("$_pkgzip::https://codeberg.org/attachments/b370bf94-2b81-4ee6-886a-59d5225992fc"
+source=("$_pkgzip::https://codeberg.org/attachments/a919c767-ea19-4b49-bc16-41c8b19ee0fd"
         Asteroids.desktop)
-sha256sums=('0dbfe3bbd25ec9381179ddb5c61b919df14590c75fdf395d678201e807063210'
+sha256sums=('109267d4efb0c92f86ebd7dafed1eee2e25a3db8318c23d667fa82ea7edcacc6'
             '1c94a27e1ca64442c52c5369de72f9d18b33942551bc27d8806e7796c5fb7b6c')
 
 prepare() {
