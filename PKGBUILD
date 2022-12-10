@@ -7,8 +7,9 @@ pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in
 arch=('x86_64')
 url="https://linphone.org"
 license=('GPL3')
+# During compilation problems, use gcc from the previous release, for instance 'gcc11'
 depends=('glew' 'gsm' 'hicolor-icon-theme' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech')
-makedepends=('cmake' 'doxygen' 'git' 'glew' 'gcc11' 'make' 'nasm' 'pandoc' 'patch' 'python-pystache' 'python-six' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech' 'qt5-tools' 'qt5-wayland' 'qt5-webview' 'qt5-xcb-private-headers' 'yasm')
+makedepends=('cmake' 'doxygen' 'git' 'glew' 'gcc' 'make' 'nasm' 'pandoc' 'patch' 'python-pystache' 'python-six' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech' 'qt5-tools' 'qt5-wayland' 'qt5-webview' 'qt5-xcb-private-headers' 'yasm')
 install=${pkgname}.install
 # A 'release' is usually selected by adding the tag
 # '#tag=x.y.z'
@@ -168,25 +169,29 @@ build() {
     # rm -rf "$BUILD_IT_HERE"
     mkdir -p "$BUILD_IT_HERE"
     # gcc version 12.0, 12.1 has a bug that prevents a successful compilation
-    # using gcc-11.3.0 to circumvent bug in gcc-12
+    # use gcc-11.3.0 to circumvent bug in gcc-12
     # specifying CC and CXX to point to gcc-11 executables
     echo "Configuring the build..."
     # Default parallel jobs for this build is 10
     # Setting it to the value of $(nproc) which correstponds to the number of
     # cores on the system
-    PARALLEL_JOBS=10
+    # PARALLEL_JOBS=10
     # Uncomment the following to use default
     PARALLEL_JOBS=$(nproc)
     echo "Setting number of parallel jobs to: $PARALLEL_JOBS"
     
-    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    echo cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     #echo "Showing the result:"
     #find "$BUILD_IT_HERE"
     echo "--- cmake configuration should have completed here ---"
     echo "--- Now I start building Linphone Desktop vlinphone_desktop_release_version $linphone_desktop_alphabeta 4 ---"
-    echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
-    CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    echo cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
     echo "--- Build should have completed here ---"
     echo "--- Exiting section build() ---"
 }
