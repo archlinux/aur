@@ -1,4 +1,5 @@
-# Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
+# Maintainer: Raphael Nestler <raphael.nestler@gmail.com>
+# Contributor: Sampson Crowley <sampsonsprojects@gmail.com>
 # Contributor: Rhys Kenwell <redrield+aur@gmail.com>
 # Github Contributors: https://github.com/SampsonCrowley/arch_packages/contributors.md
 
