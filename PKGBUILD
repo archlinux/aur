@@ -1,0 +1,49 @@
+_name=Ryujinx
+pkgname=ryujinx
+pkgver=1.1.458
+_commit=459c4caebac0bc16c04467d9dcd2ef7a9fc0bd92
+pkgrel=1
+pkgdesc="Experimental Nintendo Switch Emulator written in C#"
+arch=(x86_64)
+url="https://github.com/Ryujinx/Ryujinx"
+license=('MIT')
+depends=('dotnet-runtime')
+makedepends=('dotnet-sdk' 'git' 'html2text')
+provides=($_name)
+source=("git+$url#commit=$_commit"
+		"$url/wiki/Changelog")
+b2sums=('SKIP'
+        'SKIP')
+# options=(!strip)
+
+pkgver() {
+	cd $_name
+
+	_commit_msg=$(git log -1 --pretty=%B | awk '{$NF=""}1') # remove PR number in parentheses
+	html2text ../Changelog | grep -B 4 "${_commit_msg::length - 1}" | head -n 1 | awk '{print $2}'
+}
+
+build() {
+	cd $_name
+
+	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx --self-contained true
+	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx.Ava --self-contained true
+}
+
+package() {
+	cd $_name
+
+	mkdir -p "$pkgdir/opt/ryujinx/"
+	mkdir -p -m 777 "$pkgdir/opt/ryujinx/Logs"
+	mkdir -p "$pkgdir/usr/bin/"
+
+	install -Dm644 distribution/linux/ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
+	install -Dm644 distribution/linux/ryujinx-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
+	install -Dm644 distribution/linux/ryujinx-mime.xml "$pkgdir/usr/share/mime/packages/ryujinx-mime.xml"
+
+	cp -R Ryujinx/bin/Release/net7.0/linux-x64/publish/* "$pkgdir/opt/ryujinx/"
+	cp -R Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/* "$pkgdir/opt/ryujinx/"
+
+	ln -s "$pkgdir/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/Ryujinx"
+	ln -s "$pkgdir/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/Ryujinx.Ava"
+}
