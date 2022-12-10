@@ -1,8 +1,8 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=bashate
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Code style enforcement for bash programs"
 arch=('any')
 makedepends=('python-setuptools')
@@ -11,7 +11,7 @@ depends=('python'
 url="https://github.com/openstack/${pkgname}"
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a3ece9c844f2f9772ee9311ef692a8b0851135a5d9ca2a99b3fe9815d236ca6b')
+sha256sums=('a28fda309b4d7577a5d83a9f0ea8b305cb8fc626d5b320ed1bcb875ed7c576a9')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
