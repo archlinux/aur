@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=AsioHeaders
-_cranver=1.22.1-1
+_cranver=1.22.1-2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(Boost)
 depends=(asio r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('62c02c6174d90e596e42dd2adc98513f932d1eb05c5a7b8318ff7e397f418d95')
+sha256sums=('1629c0ea78b8c63231ca62fcc39fce5d29919864050a8c331720ee9bbdea58a4')
 
 build() {
   mkdir -p build
