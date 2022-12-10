@@ -1,14 +1,16 @@
 pkgbase = r-mixtools
 	pkgdesc = Tools for Analyzing Finite Mixture Models
-	pkgver = 1.2.0
-	pkgrel = 4
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mixtools
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-kernlab
+	depends = r-plotly
+	depends = r-scales
 	depends = r-segmented
-	source = https://cran.r-project.org/src/contrib/mixtools_1.2.0.tar.gz
-	sha256sums = ef033ef13625209065d26767bf70d129972e6808927f755629f1d70a118b9023
+	source = https://cran.r-project.org/src/contrib/mixtools_2.0.0.tar.gz
+	sha256sums = 854e7482230b9a5dde61bab191b78e06aa8f9b0cdfe3c03e046afa133b317e0d
 
 pkgname = r-mixtools
