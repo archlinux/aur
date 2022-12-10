@@ -1,0 +1,51 @@
+From 400f7c177dd9e71255aff66cebf756289cc6561e Mon Sep 17 00:00:00 2001
+From: Gavin Beatty <public@gavinbeatty.com>
+Date: Fri, 5 Nov 2021 20:13:05 -0500
+Subject: [PATCH] Fix compile error re: extern "C" linkage on templates
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+End extern "C" block before including platform_unix.h which includes gtk headers. Otherwise, there are many compilation errors, such as:
+
+    /usr/include/c++/11.1.0/type_traits:2895:3: error: template with C linkage
+     2895 |   template<typename _Fn, typename... _Args>
+
+It may be that these errors were not errors before, rather warnings that were silenced, because the error output also contains:
+
+    cc1plus: note: unrecognized command-line option ‘-Wno-extern-c-compat’ may have been intended to silence earlier diagnostics
+    cc1plus: note: unrecognized command-line option ‘-Wno-c++11-compat-deprecated-writable-strings’ may have been intended to silence earlier diagnostics
+
+Occurs on manjaro when building the milton-git AUR package:
+
+    gcc 11.1.0-1
+    gcc-libs 11.1.0-1
+    gtk2 2.24.33-2
+    milton 1.9.0.r9.c2a9dc3
+---
+ src/platform.h | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/platform.h b/src/platform.h
+index aae6a224..20a752dd 100644
+--- a/src/platform.h
++++ b/src/platform.h
+@@ -224,14 +224,13 @@ i32 platform_monitor_refresh_hz();
+ u64 perf_counter();
+ float perf_count_to_sec(u64 counter);
+ 
++    
++#if defined(__cplusplus)
++}
++#endif
+ 
+ #if defined(_WIN32)
+ #include "platform_windows.h"
+ #elif defined(__linux__) || defined(__MACH__)
+ #include "platform_unix.h"
+ #endif
+-
+-
+-#if defined(__cplusplus)
+-}
+-#endif
