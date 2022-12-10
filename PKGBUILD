@@ -8,6 +8,7 @@ optdepends=('vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support'
 'vapoursynth-plugin-vsrife-git: RIFE CUDA support')
 makedepends=('rust' 'cargo' 'python' 'gtk3')
 arch=('x86_64')
+provides=('teres')
 license=('GPL3')
 url="https://github.com/animafps/teres"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/animafps/teres/archive/v$pkgver.tar.gz")
