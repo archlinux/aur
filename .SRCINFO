@@ -1,14 +1,13 @@
 pkgbase = newflasher-git
 	pkgdesc = This experimental software allows you to flash firmwares acquired through XperiFirm to Sony phones including and newer than the XZ Premium.
-	pkgver = master
+	pkgver = 194
 	pkgrel = 1
 	url = https://forum.xda-developers.com/crossdevice-dev/sony/progress-newflasher-xperia-command-line-t3619426
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = expat
-	source = git://github.com/newflasher/newflasher
+	source = git+https://github.com/newflasher/newflasher
 	md5sums = SKIP
 
 pkgname = newflasher-git
-

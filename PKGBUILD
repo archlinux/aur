@@ -1,13 +1,15 @@
-# Maintainer: Pavel Horniak <gouster4@gmail.com>
+# Prev. Maintainer: Pavel Horniak <gouster4@gmail.com>
+# Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=newflasher-git
-pkgver=master
+_pkgname=newflasher
+pkgver=194
 pkgrel=1
 pkgdesc='This experimental software allows you to flash firmwares acquired through XperiFirm to Sony phones including and newer than the XZ Premium.'
 arch=('x86_64')
 license=('MIT')
 url="https://forum.xda-developers.com/crossdevice-dev/sony/progress-newflasher-xperia-command-line-t3619426"
 depends=('zlib' 'expat')
-source=(git://github.com/newflasher/newflasher)
+source=(git+https://github.com/newflasher/newflasher)
 md5sums=('SKIP')
 
 pkgver() {
@@ -16,12 +18,12 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir"/newflasher
+    cd "$srcdir"/${_pkgname}
     make
 }
 
 package(){
   # Moving everything to pkg/.
-  mkdir "$pkgdir"/usr "$pkgdir"/usr/bin
-  install -Dm755 "newflasher/newflasher" "${pkgdir}/usr/bin/newflasher"
+  cd "$srcdir"/${_pkgname}
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
