@@ -19,7 +19,7 @@ pkgbase = heroku-cli
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
 	options = !strip
-	source = git+https://github.com/heroku/cli.git#commit=13db7c5e684c5c44682a5115b9a29632a46fb69c
+	source = git+https://github.com/heroku/cli.git#commit=v7.62.0
 	sha256sums = SKIP
 	sha512sums = SKIP
 
