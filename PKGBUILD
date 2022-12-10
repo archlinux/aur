@@ -31,13 +31,13 @@ build() {
 
     cd "$srcdir/${pkgname%-git}"
     cargo build --release --frozen
-    strip target/release/dym
+    strip target/release/estash
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-    install -Dm755 target/release/dym -t "${pkgdir}/usr/bin/"
+    install -Dm755 target/release/estash -t "${pkgdir}/usr/bin/"
 
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
     install -Dm644 docs/README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
