@@ -1,7 +1,7 @@
 # Maintainer: Filip Graliński <filipg@amu.edu.pl>
 
 pkgname=python-tokenizers
-pkgver=0.12.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Fast and Customizable Tokenizers"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('Apache License 2.0')
 depends=('python-semantic-version'
          'python-setuptools-rust')
 
-source=("https://files.pythonhosted.org/packages/12/57/da0cb8e40437f88630769164a66afec8af294ff686661497b6c88bc08556/tokenizers-${pkgver}.tar.gz")
-sha256sums=('070746f86efa6c873db341e55cf17bb5e7bdd5450330ca8eca542f5c3dab2c66')
+source=("https://files.pythonhosted.org/packages/4a/d9/af2821b5934ed871f716eb65fb3bd43e7bc70b99191ec08f20cfd642d0a1/tokenizers-${pkgver}.tar.gz")
+sha256sums=('f9525375582fd1912ac3caa2f727d36c86ff8c0c6de45ae1aaff90f87f33b907')
 
 build() {
     cd tokenizers-$pkgver
