@@ -13,7 +13,7 @@ _theme_distro="arch"
 
 source=("https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar")
 noextract=("${_theme_distro}.tar")
-sha256sums=('b6fab2d52d263e672d6bdc29635afd0a30889d428e2b5962c2cdb9d400be978a')
+sha256sums=('b6c69e55ecf601e8da89d38c242ca7dc6c299ed244a5781f799892f0288da8aa')
 
 
 prepare() {
