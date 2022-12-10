@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sdl2_mixer
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (mingw-w64)"
 arch=(any)
@@ -8,8 +8,8 @@ license=("zlib")
 depends=(mingw-w64-crt mingw-w64-sdl2 mingw-w64-libmodplug mingw-w64-libvorbis mingw-w64-flac mingw-w64-mpg123)
 makedepends=(mingw-w64-gcc mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
-source=("https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.1/SDL2_mixer-$pkgver.tar.gz")
-sha256sums=('bc5c7b85f297e5f3cb34c99c366a4746922fc41365b15fd78a164dda71a861a3')
+source=("https://github.com/libsdl-org/SDL_mixer/releases/download/release-$pkgver/SDL2_mixer-$pkgver.tar.gz")
+sha256sums=('8cdea810366decba3c33d32b8071bccd1c309b2499a54946d92b48e6922aa371')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
