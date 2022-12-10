@@ -1,15 +1,16 @@
 pkgbase = fortune-mod-g-git
-	pkgdesc = Fortune quotes from /g/.
-	pkgver = 1.87ddd54
+	pkgdesc = Fortune quotes from /g/
+	pkgver = r10.87ddd54
 	pkgrel = 1
-	url = https://github.com/ketogenesis/gfortune.git
+	url = https://github.com/ketogenesis/gfortune
 	install = fortune-mod-g-git.install
 	arch = any
 	groups = fortune-mods
 	license = unknown
 	makedepends = bsd-games
+	makedepends = git
 	depends = fortune-mod
-	source = git+https://github.com/ketogenesis/gfortune.git
+	source = gfortune::git+https://github.com/ketogenesis/gfortune
 	sha256sums = SKIP
 
 pkgname = fortune-mod-g-git

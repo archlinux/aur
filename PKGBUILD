@@ -1,4 +1,5 @@
-# Maintainer: Emmie Maeda <emmie.maeda@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Emmie Maeda <emmie.maeda@gmail.com>
 
 # I *DO NOT* maintain the source repo.
 # This package does not run the python build script to avoid trusting
@@ -6,34 +7,31 @@
 
 pkgname=fortune-mod-g-git
 _pkgname=gfortune
-_filename=g
-_sourcefile=gsource
-pkgver=1.87ddd54
+pkgver=r10.87ddd54
 pkgrel=1
-pkgdesc='Fortune quotes from /g/.'
+pkgdesc='Fortune quotes from /g/'
 arch=('any')
-url="https://github.com/ketogenesis/$_pkgname.git"
+groups=('fortune-mods')
+url='https://github.com/ketogenesis/gfortune'
 license=('unknown')
 install="$pkgname.install"
-makedepends=('bsd-games') # for rot13
 depends=('fortune-mod')
-groups=('fortune-mods')
-source=("git+https://github.com/ketogenesis/$_pkgname.git")
+makedepends=('bsd-games' 'git')
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf '1.%s' "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-	rot13 < "$_sourcefile" > "$_filename"
-	strfile -x "$_filename" "$_filename.dat"
+	cd "$_pkgname"
+	caesar 13 < gsource > g
+	strfile -x g g.dat
 }
 
 package() {
-	install -D -m644 "$srcdir/$_pkgname/$_filename" "$pkgdir/usr/share/fortune/off/$_filename"
-	install -D -m644 "$srcdir/$_pkgname/$_filename.dat" "$pkgdir/usr/share/fortune/off/$_filename.dat"
+	cd "$_pkgname"
+	install -Dvm644 g g.dat -t "$pkgdir/usr/share/fortune/off/"
 }
-
