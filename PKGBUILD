@@ -29,7 +29,7 @@ makedepends=('git'
 
 license=('GPL')
 sha256sums=('SKIP'
-            '4dfffb8c84882dad9c3c62723eae39fcbef1e20e759dbafccbc438d00cf713a8')
+            '7b33b096752a104ad27ee22b3f939f4a9ee80e19e63815914033baeb4cd8d4ee')
 
 pkgver() {
   cd "${srcdir}/${pkgbase%-git}"
