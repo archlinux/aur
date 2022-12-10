@@ -1,5 +1,5 @@
 pkgbase = jellyfin-ffmpeg5-bin
-	pkgdesc = FFmpeg5 for Jellyfin
+	pkgdesc = FFmpeg5 binary version for Jellyfin
 	pkgver = 5.1.2
 	pkgrel = 5
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
