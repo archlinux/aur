@@ -6,4 +6,4 @@ Terminal=false
 Type=Application
 Categories=GNOME;GTK;Game;
 Encoding=UTF-8
-Comment=Arkanoid - clone written in Rust
+Comment=Arkanoid like game written in Rust
