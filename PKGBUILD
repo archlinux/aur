@@ -2,11 +2,12 @@
 # Contributor: Tyler Nelson <neo@cybercat.cc>
 # Contributor: Tuhana GAYRETLİ <tuhana at tuta dot io>
 # Contributor: Quenten Schoonderwoerd <ellie at nicecock dot eu>
+# Contributor: Antti <antti@antti.codes>
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2022.1208.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
@@ -25,13 +26,15 @@ source=(
   "https://raw.githubusercontent.com/ppy/osu/master/assets/lazer.png"
   "https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
   "osu-lazer.desktop"
+  "osu-lazer-uri-handler.desktop"
   "osu-lazer"
 )
 noextract=("osu.AppImage")
 sha256sums=('e3b17d419948b866337bef4dd4d4d02c5040880408a608a22d6ce18000b416ce'
             '36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
-            '43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801'
+            'e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e'
+            '44e9e6a85c43086644f427b62d6d8b265c0e2ac1b5091d8ff0c626c58a91836d'
             'baeea5b234e65707a4e6a563eacac89063bf20047d64125cd1f26c3c52aae957')
 package() {
   cd "$srcdir"
@@ -43,5 +46,6 @@ package() {
   # Install pixmap, desktop and license file
   install -Dm644 lazer.png "$pkgdir/usr/share/pixmaps/osu-lazer.png"
   install -Dm644 -t "$pkgdir/usr/share/applications" osu-lazer.desktop
+  install -Dm644 -t "$pkgdir/usr/share/applications" osu-lazer-uri-handler.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE.md
 }
