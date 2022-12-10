@@ -1,3 +1,5 @@
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+
 _name=Ryujinx
 pkgname=ryujinx
 pkgver=1.1.458
@@ -10,11 +12,12 @@ license=('MIT')
 depends=('dotnet-runtime')
 makedepends=('dotnet-sdk' 'git' 'html2text')
 provides=($_name)
+conflicts=($pkgname-git)
+options=(!strip)
 source=("git+$url#commit=$_commit"
 		"$url/wiki/Changelog")
 b2sums=('SKIP'
         'SKIP')
-# options=(!strip)
 
 pkgver() {
 	cd $_name
@@ -26,24 +29,25 @@ pkgver() {
 build() {
 	cd $_name
 
-	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx --self-contained true
-	dotnet publish -c Release -r linux-x64 -p:DebugType=embedded Ryujinx.Ava --self-contained true
+	dotnet publish --nologo -c Release -r linux-x64 -p:DebugType=embedded --self-contained true Ryujinx
+	dotnet publish --nologo -c Release -r linux-x64 -p:DebugType=embedded --self-contained true Ryujinx.Ava
 }
 
 package() {
 	cd $_name
 
-	mkdir -p "$pkgdir/opt/ryujinx/"
-	mkdir -p -m 777 "$pkgdir/opt/ryujinx/Logs"
-	mkdir -p "$pkgdir/usr/bin/"
+	install -Dm644 -t "$pkgdir/opt/ryujinx/" Ryujinx/bin/Release/net7.0/linux-x64/publish/*
+	install -Dm644 -t "$pkgdir/opt/ryujinx/" Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/*
+	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
+	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Ava"
 
-	install -Dm644 distribution/linux/ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
+	install -dm755 "$pkgdir/usr/bin"
+	ln -s "/opt/ryujinx/Ryujinx"     "$pkgdir/usr/bin/Ryujinx"
+	ln -s "/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/Ryujinx.Ava"
+
+	install -Dm644 distribution/linux/ryujinx.desktop  "$pkgdir/usr/share/applications/ryujinx.desktop"
 	install -Dm644 distribution/linux/ryujinx-logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
 	install -Dm644 distribution/linux/ryujinx-mime.xml "$pkgdir/usr/share/mime/packages/ryujinx-mime.xml"
 
-	cp -R Ryujinx/bin/Release/net7.0/linux-x64/publish/* "$pkgdir/opt/ryujinx/"
-	cp -R Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/* "$pkgdir/opt/ryujinx/"
-
-	ln -s "$pkgdir/opt/ryujinx/Ryujinx" "$pkgdir/usr/bin/Ryujinx"
-	ln -s "$pkgdir/opt/ryujinx/Ryujinx.Ava" "$pkgdir/usr/bin/Ryujinx.Ava"
+	install -dm777 "$pkgdir/opt/ryujinx/Logs"
 }

@@ -10,6 +10,8 @@ pkgbase = ryujinx
 	makedepends = html2text
 	depends = dotnet-runtime
 	provides = Ryujinx
+	conflicts = ryujinx-git
+	options = !strip
 	source = git+https://github.com/Ryujinx/Ryujinx#commit=459c4caebac0bc16c04467d9dcd2ef7a9fc0bd92
 	source = https://github.com/Ryujinx/Ryujinx/wiki/Changelog
 	b2sums = SKIP
