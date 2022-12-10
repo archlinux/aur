@@ -5,7 +5,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.8.5
+pkgver=0.9
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ url=https://st.suckless.org
 source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
         terminfo.patch
         README.terminfo.rst)
-sha256sums=('ea6832203ed02ff74182bcb8adaa9ec454c8f989e79232cb859665e2f544ab37'
+sha256sums=('f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7'
             'f9deea445a5c6203a0e8e699f3c3b55e27275f17fb408562c4dd5d649edeea23'
             '0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2')
 _sourcedir=$pkgname-$pkgver
