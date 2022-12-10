@@ -16,13 +16,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=16.0.0_r441988.dabb7514f562
+pkgver=16.0.0_r444994.34a3259fab86
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'libxcrypt' 'python' 'python-setuptools' 'spirv-headers' 'spirv-tools')
+             'libxcrypt' 'python' 'python-setuptools' 'spirv-headers-git' 'spirv-tools-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
                 "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git")
