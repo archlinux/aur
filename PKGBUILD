@@ -6,7 +6,6 @@
 pkgname=heroku-cli
 pkgver=7.62.0
 pkgrel=1
-_commit_id="13db7c5e684c5c44682a5115b9a29632a46fb69c"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -15,7 +14,7 @@ depends=('nodejs')
 makedepends=('yarn' 'perl' 'git' 'npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
-source=("git+https://github.com/heroku/cli.git#commit=${_commit_id}")
+source=("git+https://github.com/heroku/cli.git#commit=v${pkgver}")
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 options=('!strip')
