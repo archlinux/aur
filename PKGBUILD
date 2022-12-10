@@ -33,7 +33,6 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ \
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
     -DCMAKE_CXX_FLAGS="-O2 -Wall -fdiagnostics-color=always -mavx" \
-    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DALLOW_CXXFLAGS_OVERWRITE=ON \
     -DENABLE_HEADERCHECK=ON \
