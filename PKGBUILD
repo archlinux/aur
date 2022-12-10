@@ -6,7 +6,7 @@ _shellextension='gnome-shell-extension'
 _uuid='gtk4-ding@smedius.gitlab.com'
 
 pkgname="${_shellextension}-${_extname}"
-pkgver='24'
+pkgver='26'
 pkgrel=1
 _pkgver="Gtk4-${pkgver}"
 pkgdesc="A Gtk4 fork from the official desktop icons project, with several enhancements, better multimonitor support, GSConnect integration for gnome shell 40, 41, 43"
@@ -18,8 +18,8 @@ makedepends=('git' 'meson' 'glib2')
 conflicts=("${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}")
 
 source=("${_extname}-Gtk4-${pkgver}.tar.gz::https://gitlab.com/smedius/${_basename}/-/archive/Gtk4-${pkgver}/${_basename}-Gtk4-${pkgver}.tar.gz")
-sha256sums=('9b49bb7f68be2e5ba6406b23443234637885bbed4aaca50772dd893bd361c86b')
-sha512sums=('488f27cb9b6998a0ec8d917c0313695e4c61c0255d8ec1eb0436c0f239c0017e008861d47aa2955a7b3640212824da76533e8b58eb9afcc0a3f7060dbc3abae2')
+sha256sums=('fbac97df054df425cf2e52989f9da8b21aed8c0c90ff691149e92f3c8dbb86e3')
+sha512sums=('5b5e73bef3e28e720684e5fe880475c758335934829af3c255794dee803945115108fc7350849fdf28921f48406a045a206d1f15e6d5cc7bf061e5115feba5cd')
 
 package() {
 
