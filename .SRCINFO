@@ -1,0 +1,13 @@
+pkgbase = fxprog-git
+	pkgdesc = A simple command line programmer interfacing for fxusb chips.
+	pkgver = r50.45faaf8
+	pkgrel = 1
+	url = https://github.com/John-sanpe/fxprog.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = fxprog::git+https://github.com/John-sanpe/fxprog.git
+	md5sums = SKIP
+
+pkgname = fxprog-git
