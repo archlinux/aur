@@ -1,9 +1,10 @@
-# Maintainer: Maarten de Boer <maarten@cloudstek.nl>
+# Maintainer: Alex Hirze <alex at hirzel period us>
+# Contributor: Maarten de Boer <maarten@cloudstek.nl>
 # Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
