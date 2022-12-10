@@ -1,11 +1,9 @@
 pkgbase = julia-workarounds
 	pkgdesc = Workarounds to make Julia built against system libraries work better
-	pkgver = 2022.11.22
+	pkgver = 2022.12.10
 	pkgrel = 1
 	arch = x86_64
 	depends = julia
 	depends = openblas
-	source = cert.pem
-	sha256sums = bb28d145ed1a4ee67253d8ddb11268069c9dafe3db25a9eee654974c4e43eee5
 
 pkgname = julia-workarounds
