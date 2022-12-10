@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r42547
+pkgver=r42705
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ C128_1024.svg
 CBM2_1024.svg
 CBM_Logo.svg
 DTV_1024.svg
-PET_256.svg
+PET_1024.svg
 Plus4_1024.svg
 SCPU_1024.svg
 SID_1024.svg
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             '2bee5fd315e9d95ff19a5c84df544e4e200f1f41e526b67bb19079a456cacde2'
             '7b64750a8a22a462b38ed8e6d75dd05d85e2b55c744e3de6bfca0cea4ff98677'
             'a4e82046aaca9f539f16a4f6c21198e4b64f9beac0e3b04bac877907494792ff'
-            '75966be7fe5c3cda7b672f525eafe17bb39f56ce740388b853493af46a94754a'
+            '04ae1173821d948dff92bcd9e73db69f077cc738c33bf2e32eb0911ecd8a3156'
             '63052bc74fced179de077435100e614a72c24b0fcbbceba16fdabc7f2a8174cc'
             'a31f99bd268f40e06c6a7bb1028a1b0f5dac4296b8b5a243bf64961228c7ce97'
             'b6548109bd5b557f8b0598541dac21a408f28631cd8ac814099d97160821ef3b'
@@ -51,7 +51,7 @@ sha256sums=('SKIP'
             '09da7fee74f13667a4a1d869f1c1c4fe5fd0ace8b092c5ae846c3e4c3a09d584'
             '71f0acf2d762869a33b121141e1c3f63b53a474fcb2f3a6a64417ad4d7e7d90d'
             '5e0af7deadbdad829f8efc762236695530805d93d85e8f379b5c5f99de8a5412'
-            '195c1eb1989b16d7f78a0866980ca0919655808f483d3f79c0dfed1ccacefdc5'
+            'b6fecc7c862c5c7370f9eda716f029255d9bb29c6c507080b53589d3ab896db2'
             'db2a72d6185b7eddc476639a24b81ec9bd193b83ace44d26bfad8111239451a8'
             'ce2710836a0622295d033c6b21d8d1b896cc3138d774234336f07bfc292ee317'
             'c443e2f8617b6404cd5a26678a5c018c8b12a0c1024275aebfe2e2addab17368'
@@ -63,7 +63,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname}/vice"
-   	./autogen.sh 
+	./autogen.sh 
     	# Forcing use of ffmpeg 4.4.
     	PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-ffmpeg --enable-gtk3ui
 	make

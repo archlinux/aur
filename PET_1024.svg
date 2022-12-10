@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_1_);}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_2_);}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_3_);}
+	.st5{display:inline;fill-rule:evenodd;clip-rule:evenodd;fill:#8A88A3;}
+	.st6{display:inline;fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_4_);}
+	.st7{fill:#FFFFFF;}
+	.st8{fill-rule:evenodd;clip-rule:evenodd;}
+	.st9{fill-rule:evenodd;clip-rule:evenodd;fill:#3A3A3A;}
+	.st10{display:inline;fill:#FFFFFF;}
+	.st11{display:inline;opacity:0.3;fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_5_);}
+	.st12{fill-rule:evenodd;clip-rule:evenodd;fill:#3D3D3D;}
+	.st13{fill-rule:evenodd;clip-rule:evenodd;fill:#595959;}
+	.st14{opacity:0.5;}
+	.st15{fill:none;stroke:#000000;stroke-width:20;stroke-miterlimit:10;}
+	.st16{fill:none;stroke:#FFFFFF;stroke-width:20;stroke-miterlimit:10;}
+	.st17{font-family:'EurostileLTStd-BoldEx2';}
+	.st18{font-size:175px;}
+	.st19{fill:none;stroke:#000000;stroke-miterlimit:10;}
+</style>
+<g id="Layer_1" class="st0">
+	<g class="st1">
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="334.257" y1="150.177" x2="400.9237" y2="1072.8436">
+			<stop  offset="0" style="stop-color:#68372B"/>
+			<stop  offset="1" style="stop-color:#352879"/>
+		</linearGradient>
+		<path class="st2" d="M584.8,342.9v-187C547,146,521.1,142,483.3,142c-198.9,0-372,165.1-372,370c0,212.8,175,370,374,370
+			c35.8,0,55.7-4,99.4-15.9V675.1C541,697,519.1,703,483.3,703c-109.4,0-194.9-91.5-194.9-194.9c0-105.4,83.5-194.9,192.9-194.9
+			C519.1,313.1,550.9,323,584.8,342.9L584.8,342.9z"/>
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="731.5695" y1="121.4694" x2="798.2362" y2="1044.1361">
+			<stop  offset="0" style="stop-color:#68372B"/>
+			<stop  offset="1" style="stop-color:#352879"/>
+		</linearGradient>
+		<polygon class="st3" points="912.7,353.1 594.4,353.1 594.4,498.3 769.5,498.3 		"/>
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="713.7704" y1="122.7555" x2="780.4371" y2="1045.4221">
+			<stop  offset="0" style="stop-color:#68372B"/>
+			<stop  offset="1" style="stop-color:#352879"/>
+		</linearGradient>
+		<polygon class="st4" points="771.5,528.1 594.4,528.1 594.4,673.3 912.7,673.3 771.5,528.1 		"/>
+	</g>
+</g>
+<g id="Layer_12" class="st0">
+	<rect class="st5" width="1024" height="1024"/>
+</g>
+<g id="Layer_11_copy" class="st0">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="512" y1="6.8406" x2="512" y2="334.6445">
+		<stop  offset="0" style="stop-color:#68372B"/>
+		<stop  offset="0.7388" style="stop-color:#352879"/>
+	</linearGradient>
+	<path class="st6" d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5
+		c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7"/>
+	<g class="st1">
+		<polygon class="st7" points="641.3,914 641.3,657 524,657 524,798.4 		"/>
+		<polygon class="st7" points="500,800 500,657 382.7,657 382.7,914 500,800 		"/>
+	</g>
+</g>
+<g id="Layer_11_copy_2" class="st0">
+	<g class="st1">
+		<path class="st8" d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5
+			c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7H267.1z"/>
+		<path class="st9" d="M14,497V139.3C14,70.1,70.1,14,139.3,14H512L14,497z"/>
+	</g>
+	<polygon class="st10" points="639.3,896 639.3,643 523.8,643 523.8,782.1 	"/>
+	<polygon class="st10" points="500.2,783.7 500.2,643 384.7,643 384.7,896 500.2,783.7 	"/>
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-509" y1="70.593" x2="-509" y2="920.8939">
+		<stop  offset="4.442563e-02" style="stop-color:#68372B"/>
+		<stop  offset="0.7388" style="stop-color:#352879"/>
+	</linearGradient>
+	<path class="st11" d="M-741.6,970H-863c-65.7,0-119-53.3-119-119V143c0-65.7,53.3-119,119-119H-155c65.7,0,119,53.3,119,119V851
+		c0,65.7-53.3,119-119,119h-121.6"/>
+</g>
+<g id="Layer_11_copy_3">
+	<path class="st12" d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V139.3C14,70.1,70.1,14,139.3,14h745.5
+		c69.2,0,125.3,56.1,125.3,125.3v745.5c0,69.2-56.1,125.3-125.3,125.3H756.7H267.1z"/>
+	<path class="st13" d="M267.1,1010H139.3C70.1,1010,14,953.9,14,884.7V809h996v75.7c0,69.2-56.1,125.3-125.3,125.3H756.7H267.1z"/>
+	<g class="st14">
+		<line class="st15" x1="14" y1="620" x2="1010" y2="620"/>
+		<line class="st16" x1="14" y1="640" x2="1010" y2="640"/>
+		<line class="st15" x1="14" y1="660" x2="1010" y2="660"/>
+		<line class="st16" x1="14" y1="680" x2="1010" y2="680"/>
+		<line class="st15" x1="14" y1="700" x2="1010" y2="700"/>
+		<line class="st16" x1="14" y1="720" x2="1010" y2="720"/>
+		<line class="st15" x1="14" y1="740" x2="1010" y2="740"/>
+		<line class="st16" x1="14" y1="760" x2="1010" y2="760"/>
+		<line class="st15" x1="14" y1="780" x2="1010" y2="780"/>
+		<line class="st16" x1="14" y1="800" x2="1010" y2="800"/>
+	</g>
+</g>
+<g id="Layer_11" class="st0">
+</g>
+<g id="VIC20" class="st0">
+	<text transform="matrix(1 0 0 1 118.6028 556.6257)" class="st10 st17 st18">VIC20</text>
+</g>
+<g id="Plus4" class="st0">
+	<text transform="matrix(1 0 0 1 168.3914 556.6257)" class="st10 st17 st18">Plus4</text>
+</g>
+<g id="DTV" class="st0">
+	<text transform="matrix(1 0 0 1 243.9006 556.6257)" class="st10 st17 st18">DTV</text>
+</g>
+<g id="C64" class="st0">
+	<text transform="matrix(1 0 0 1 246.177 556.6257)" class="st10 st17 st18">C64</text>
+</g>
+<g id="SID" class="st0">
+	<text transform="matrix(1 0 0 1 289.3142 556.6257)" class="st10 st17 st18">SID</text>
+</g>
+<g id="PET">
+	<text transform="matrix(1 0 0 1 265.6008 556.6257)" class="st7 st17 st18">PET</text>
+</g>
+<g id="CBM2" class="st0">
+	<text transform="matrix(1 0 0 1 122.9768 556.6257)" class="st10 st17 st18">CBM2</text>
+</g>
+<g id="SCPU" class="st0">
+	<text transform="matrix(1 0 0 1 149.052 556.6257)" class="st10 st17 st18">SCPU</text>
+</g>
+<g id="C128" class="st0">
+	<text transform="matrix(1 0 0 1 159.7278 556.6257)" class="st10 st17 st18">C128</text>
+</g>
+<g id="Layer_4" class="st0">
+	<g class="st1">
+		<line class="st19" x1="134.8" y1="0" x2="134.8" y2="1024"/>
+		<line class="st19" x1="889.2" y1="0" x2="889.2" y2="1024"/>
+	</g>
+</g>
+</svg>

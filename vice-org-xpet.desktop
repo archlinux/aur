@@ -4,6 +4,6 @@ Name=VICE (xpet)
 Comment=PET emulator (Gtk3 UI)
 Exec=/usr/bin/xpet
 Terminal=false
-Icon=/usr/share/vice/common/PET_256.svg
+Icon=/usr/share/vice/common/PET_1024.svg
 Categories=Game;Emulator
 
