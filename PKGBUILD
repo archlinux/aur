@@ -1,7 +1,7 @@
 _pkgname=asteroids
 pkgname=${_pkgname}-bin
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc='Anti-stress shooter game'
 url='https://codeberg.org/Denotatum/Asteroids'
 license=('GPLv3')
