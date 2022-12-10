@@ -4,13 +4,15 @@ pkgbase = chatgpt-desktop-bin
 	pkgrel = 1
 	url = https://github.com/sonnylazuardi/chatgpt-desktop
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = binutils
 	makedepends = tar
 	depends = webkit2gtk
 	conflicts = chatgpt-desktop
 	noextract = chatgpt_0.2.0_amd64.deb
 	source = https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_0.2.0_amd64.deb
+	source = https://github.com/sonnylazuardi/chatgpt-desktop/blob/95d851695787dfed6088da1b4bdce4f621ace397/LICENSE
 	sha256sums = 93e569017bf4171c1fee93e5129c2ad1ed7ff8be17666a9efed1c573926e782f
+	sha256sums = SKIP
 
 pkgname = chatgpt-desktop-bin

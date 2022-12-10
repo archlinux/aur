@@ -9,9 +9,11 @@ makedepends=("binutils"
 			 "tar")
 depends=("webkit2gtk")
 conflicts=('chatgpt-desktop')
-license=('unknown')
-source=("https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_${pkgver}_amd64.deb")
-sha256sums=('93e569017bf4171c1fee93e5129c2ad1ed7ff8be17666a9efed1c573926e782f')
+license=(MIT)
+source=("https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_${pkgver}_amd64.deb"
+		"https://github.com/sonnylazuardi/chatgpt-desktop/blob/95d851695787dfed6088da1b4bdce4f621ace397/LICENSE")
+sha256sums=('93e569017bf4171c1fee93e5129c2ad1ed7ff8be17666a9efed1c573926e782f'
+            'SKIP')
 noextract=("chatgpt_${pkgver}_amd64.deb")
 
 prepare() {
@@ -21,5 +23,7 @@ prepare() {
 package() {
 	cd $srcdir
 	cp -R usr ${pkgdir}
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+	cp LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT
 }
 
