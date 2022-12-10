@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname=${_pkgname}-git
 pkgdesc="Ledger Live - Desktop (git-main)"
-pkgver=2.50.0.r0.g9a329e7562
+pkgver=2.50.1.r0.gc5aba7d153
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -15,17 +15,19 @@ license=('MIT')
 depends=('ledger-udev')
 makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-bin")
-_branch=main
-_gitdir=${_pkgname}-${_branch}-git
-source=("${_gitdir}::git+${url}#branch=${_branch}")
+conflicts=("${_pkgname}")
+source=("${pkgname}::git+${url}#branch=main")
 sha512sums=('SKIP')
 
-build() {
-  cd "${_gitdir}"
+prepare() {
+  cd "${pkgname}"
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
+}
+
+build() {
+  cd "${pkgname}"
 
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
@@ -36,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${_gitdir}/apps/${_pkgbin}"
+  cd "${pkgname}/apps/${_pkgbin}"
 
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
@@ -54,6 +56,6 @@ package() {
 }
 
 pkgver() {
-  cd "${_gitdir}"
+  cd "${pkgname}"
   git describe --long --tags --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
 }
