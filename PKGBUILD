@@ -31,7 +31,6 @@ build() {
     -DCMAKE_C_FLAGS='-Wall -fdiagnostics-color=always' \
     -DALLOW_CXXFLAGS_OVERWRITE=ON \
     -DCMAKE_CXX_FLAGS="-Wall -fdiagnostics-color=always -mavx" \
-    -DCMAKE_VERBOSE_MAKEFILE=ON \
     -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DENABLE_HEADERCHECK=ON \
     -DCMAKE_DISABLE_FIND_PACKAGE_Vc=TRUE \
