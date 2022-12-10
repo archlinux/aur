@@ -1,15 +1,15 @@
 # Contributor: Oleg `Kanedias` Chernovskiy <kanedias@xaker.ru>
 
 pkgname=marcfs-git
-pkgver=0.7.0.r1.g91c8aea
+pkgver=0.8.1.r0.ga09b634
 pkgrel=1
 pkgdesc="FUSE-based file system backed by Mail.ru Cloud storage"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'aarch64' 'x86_64')
 url="https://gitlab.com/Kanedias/MARC-FS"
 license=('GPL3')
 depends=('fuse3' 'curl' 'jsoncpp')
 optdepends=('jemalloc: to reduce memory pressure')
-makedepends=('make' 'cmake' 'gcc')
+makedepends=('meson' 'pkgconf' 'gcc')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -25,7 +25,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags --always | sed 's/\([^-]*\)-g.*/r\1/;s/-/./g')"
 }
 
 build() {
@@ -34,17 +34,15 @@ build() {
   git submodule init
   git config submodule.contrib/curlcpp.url $srcdir/curlcpp
   git config submodule.contrib/googletest.url $srcdir/googletest
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   mkdir build
-  cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  meson setup --buildtype=plain --prefix=/usr build .
+  meson compile --jobs=$(nproc) -C build
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
 
-  cd build
-  make DESTDIR="$pkgdir/" install
+  meson install -C build --destdir "$pkgdir"
 }
