@@ -1,6 +1,6 @@
 pkgbase = aur-comment-fetcher-git
 	pkgdesc = A simple script fetching the comments of packages in AUR
-	pkgver = r20.c3f0e12
+	pkgver = r30.afef23d
 	pkgrel = 1
 	url = https://github.com/mortbauer/aur-comment-fetcher
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = aur-comment-fetcher-git
 	depends = python-lxml
 	depends = python3-aur
 	provides = aur-comment-fetcher
-	conflicts = aur-comment-fetcher
-	source = git://github.com/mortbauer/aur-comment-fetcher.git
+	source = git+https://github.com/mortbauer/aur-comment-fetcher.git
 	sha256sums = SKIP
 
 pkgname = aur-comment-fetcher-git
-

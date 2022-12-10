@@ -1,31 +1,29 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 # Contributor: Martin Ortbauer <mortbauer@gmail.com>
 
-pkgname=aur-comment-fetcher-git
-_gitname=aur-comment-fetcher
-pkgver=r20.c3f0e12
+_pkgname=aur-comment-fetcher
+pkgname="$_pkgname-git"
+pkgver=r30.afef23d
 pkgrel=1
 pkgdesc="A simple script fetching the comments of packages in AUR"
 arch=('any')
-url="https://github.com/mortbauer/aur-comment-fetcher"
+url="https://github.com/mortbauer/$_pkgname"
 license=('GPL')
 depends=('python-click' 'python-requests' 'python-beautifulsoup4' 'python-lxml' 'python3-aur')
 makedepends=('git')
-provides=('aur-comment-fetcher')
-conflicts=('aur-comment-fetcher')
-source=('git://github.com/mortbauer/aur-comment-fetcher.git')
+provides=("$_pkgname")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-
-  install -D aur-comment-fetch -t "${pkgdir}/usr/bin"
-  install -Dm644 bash_completion "${pkgdir}/usr/share/bash-completion/completions/aur-comment-fetch"
+	cd $_pkgname
+	_binname=aur-comment-fetch
+	install -Dm755 $_binname -t "$pkgdir/usr/bin/"
+	install -Dm644 bash_completion "$pkgdir/usr/share/bash-completion/completions/$_binname"
 }
-
-# vim:set ts=2 sw=2 et:
