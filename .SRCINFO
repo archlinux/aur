@@ -1,0 +1,17 @@
+pkgbase = moonlander-git
+	pkgdesc = Just another fancy Gemini client.
+	pkgver = r229.abfb9cd
+	pkgrel = 1
+	url = https://git.sr.ht/~admicos/moonlander
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	provides = moonlander
+	conflicts = moonlander
+	options = !lto
+	source = git+https://git.sr.ht/~admicos/moonlander
+	sha256sums = SKIP
+
+pkgname = moonlander-git
