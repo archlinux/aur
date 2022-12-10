@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.4.0_devel.162357.dd6c3c2d9f9.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.0.0_devel.163400.78e6d07832b.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -87,8 +87,8 @@ build () {
        -D b_lto=true \
        -D b_ndebug=true \
        -D platforms=auto \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink \
-       -D vulkan-drivers=auto \
+       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
+       -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio-experimental \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
@@ -99,21 +99,19 @@ build () {
        -D gallium-vdpau=enabled \
        -D gallium-xa=enabled \
        -D gbm=enabled \
-       -D gles1=enabled \
        -D gles2=enabled \
        -D glvnd=true \
        -D glx=dri \
        -D libunwind=enabled \
-       -D llvm=enabled \
        -D lmsensors=enabled \
        -D osmesa=true \
        -D shared-glapi=enabled \
-       -D microsoft-clc=disabled \
        -D valgrind=disabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
        -D gallium-rusticl=true \
        -D opencl-spirv=true \
        -D shader-cache=enabled \
+       -D llvm=enabled \
        -D rust_std=2021
 
     meson configure --no-pager _build
