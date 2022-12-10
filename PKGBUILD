@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.2.1'
-pkgrel=3
+pkgrel=4
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -68,27 +68,27 @@ _package
 #_package function - used in build variants
 _package() {
 _dir="opt/skywire"
-_apps="${_skydir}/apps"
-_bin="${_skydir}/bin"
-_scriptsdir="${_skydir}/scripts"
+_apps="${_dir}/apps"
+_bin="${_dir}/bin"
+_scriptsdir="${_dir}/scripts"
 _msg2 'creating dirs'
 mkdir -p "${_pkgdir}/usr/bin"
-mkdir -p "${_pkgdir}/${_skydir}/bin"
-mkdir -p "${_pkgdir}/${_skydir}/apps"
-mkdir -p "${_pkgdir}/${_skydir}/local"
-mkdir -p "${_pkgdir}/${_skydir}/scripts"
+mkdir -p "${_pkgdir}/${_dir}/bin"
+mkdir -p "${_pkgdir}/${_dir}/apps"
+mkdir -p "${_pkgdir}/${_dir}/local"
+mkdir -p "${_pkgdir}/${_dir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing binaries'
 for _i in "${_binary[@]}" ; do
   _msg3 ${_i}
-	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_skybin}/"
-	ln -rTsf "${_pkgdir}/${_skybin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
+	install -Dm755 "${GOBIN}/${_i}" "${_pkgdir}/${_bin}/"
+	ln -rTsf "${_pkgdir}/${_bin}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
 _msg2 'installing app binaries'
 for _i in "${_appbinary[@]}" ; do
   _msg3 ${_i}
-  install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_skyapps}/${_i}"
-	ln -rTsf "${_pkgdir}/${_skyapps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
+  install -Dm755 "${_GOAPPS}/${_i}" "${_pkgdir}/${_apps}/${_i}"
+	ln -rTsf "${_pkgdir}/${_apps}/${_i}" "${_pkgdir}/usr/bin/${_i}"
 done
 _msg2 'Installing scripts'
 for _i in "${_script[@]}" ; do
@@ -99,7 +99,7 @@ done
 _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
-install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_skydir}/dmsghttp-config.json"
+install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
