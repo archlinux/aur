@@ -4,7 +4,7 @@
 
 pkgname=python-gspread-git
 _pkgname=gspread
-pkgver=v5.5.0.r14.g962c96a
+pkgver=v5.7.2.r0.g642bf46
 pkgrel=1
 epoch=
 pkgdesc="Google Sheets Python API"
