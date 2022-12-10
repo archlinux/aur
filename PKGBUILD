@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=vkbasalt-cli
-pkgver=3.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Command-line utility for vkBasalt"
 arch=(any)
 url="https://gitlab.com/TheEvilSkeleton/vkbasalt-cli"
