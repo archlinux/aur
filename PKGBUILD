@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -107,11 +107,11 @@ provides=(
   libswscale.so
   "ffmpeg=$pkgver"
 )
-_tag=8536e629f0c35c0e8a2b67e65d3bc60a088fe413
 options=(
   debug
 )
 conflicts=("$_name")
+_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 source=(
 git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
