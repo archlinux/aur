@@ -16,6 +16,14 @@ post_upgrade() {
      \$ grub-install ...
      \$ grub-mkconfig -o /boot/grub/grub.cfg
 EOM
+
+  if [[ -e /sys/firmware/efi/efivars ]]; then
+    cat <<EOM
+:: Grub does no longer support side-loading modules when secure boot is
+   enabled. Thus booting will fail, unless you have an efi executable
+   'grubx64.efi' with bundled modules.
+EOM
+  fi
 }
 
 post_install() {
