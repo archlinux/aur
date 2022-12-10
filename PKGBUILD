@@ -3,8 +3,8 @@
 
 pkgname=nerolinux3
 pkgver=3.5.3.1
-pkgrel=2
-pkgdesc="Nero Burning ROM for linux (legacy version)"
+pkgrel=3
+pkgdesc="Nero Burning ROM for linux (legacy version, requires serial number)"
 url="http://www.nero.com"
 license=('custom')
 depends_i686=('gtk2' 'pangox-compat')

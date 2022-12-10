@@ -1,7 +1,7 @@
 pkgbase = nerolinux3
-	pkgdesc = Nero Burning ROM for linux (legacy version)
+	pkgdesc = Nero Burning ROM for linux (legacy version, requires serial number)
 	pkgver = 3.5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nero.com
 	install = nerolinux.install
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = nerolinux3
 	depends_x86_64 = lib32-pangox-compat
 
 pkgname = nerolinux3
-
