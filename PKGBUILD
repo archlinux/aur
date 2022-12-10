@@ -2,7 +2,7 @@
 
 pkgname=iridium-rpm
 pkgver=108.0
-pkgrel=1
+pkgrel=2
 _folder='iridium-browser'
 _name='iridium-browser'
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
@@ -28,7 +28,7 @@ package() (
     cp -r "${srcdir}/usr/lib64/." "${pkgdir}/usr/lib/"
     cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
     cp -r "${srcdir}/etc/iridium-browser" "${pkgdir}/etc/"
-    #ln -s "${pkgdir}/usr/lib/libffi.so" "${pkgdir}/usr/lib/libffi.so.6"
+    ln -s "/usr/lib/libffi.so" "${pkgdir}/usr/lib/libffi.so.6"
     #ln -s "/usr/lib/libavformat.so.58.76.100" "${pkgdir}/usr/lib/libavformat.so.58.76"
     #ln -s "/usr/lib/libavutil.so.56.70.100" "${pkgdir}/usr/lib/libavutil.so.56.70"
     #ln -s "/usr/lib/libevent-2.1.so" "${pkgdir}/usr/lib/libevent-2.1.so.6"
