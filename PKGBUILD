@@ -6,7 +6,7 @@
 
 pkgname=marktext
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
 url=https://marktext.app
@@ -55,7 +55,7 @@ build() {
 	node .electron-vue/build.js
 	yarn --cache-folder "$srcdir/node_modules" run \
 		electron-builder --linux --x64 --dir
-	sed -e "s/\b@ELECTRON@\b/$_electron/" "../$pkgname.sh" > "$pkgname"
+	sed -e "s/@ELECTRON@/$_electron/" "../$pkgname.sh" > "$pkgname"
 }
 
 package() {
