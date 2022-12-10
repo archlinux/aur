@@ -1,15 +1,15 @@
 pkgbase = marcfs-git
 	pkgdesc = FUSE-based file system backed by Mail.ru Cloud storage
-	pkgver = 0.7.0.r1.g91c8aea
+	pkgver = 0.8.1.r0.ga09b634
 	pkgrel = 1
 	url = https://gitlab.com/Kanedias/MARC-FS
 	arch = i686
-	arch = x86_64
-	arch = armv7h
 	arch = aarch64
+	arch = x86_64
 	license = GPL3
-	makedepends = make
+	makedepends = meson
 	makedepends = cmake
+	makedepends = pkgconf
 	makedepends = gcc
 	depends = fuse3
 	depends = curl
@@ -25,4 +25,3 @@ pkgbase = marcfs-git
 	md5sums = SKIP
 
 pkgname = marcfs-git
-
