@@ -2,9 +2,10 @@
 
 pkgname=edrawmind-bin
 _softname=mindmaster
-_pkgname=EdrawMind-10
+_pkgname_nover=EdrawMind
+_pkgname=${_pkgname_nover}-10
 pkgver=10.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 options=(!strip)
 conflicts=("edrawmind" "mindmaster" "mindmaster_cn" "mindmaster_en")
@@ -33,7 +34,7 @@ package() {
    
        install -Dm0644 /dev/stdin "${pkgdir}/opt/${_pkgname}/${pkgname%-bin}.desktop" << EOF
 [Desktop Entry]
-Name=${_pkgname%-10}
+Name=${_pkgname_nover}
 Name[en_US]=${pkgname%-bin}
 Categories=Office;MindMap;Brainstorming;Mind;Map;
 MimeType=application/x-emmx
@@ -45,13 +46,13 @@ Encoding=UTF-8
 Hidden=false
 StartupNotify=false
 X-Deepin-Vendor=EdrawSoft
-Keywords=${_pkgname%-10};Mind;Brainstorming;Map;
-Keywords[de]=${_pkgname%-10};MindMap;
-Keywords[fr]=${_pkgname%-10};MindMap;
-Keywords[ja]=${_pkgname%-10};MindMap;
-Keywords[es]=${_pkgname%-10};Diagrama;
-Keywords[zh_CN]=${_pkgname%-10};MindMap;
-Keywords[zh_TW]=${_pkgname%-10};MindMap;
+Keywords=${_pkgname_nover};Mind;Brainstorming;Map;
+Keywords[de]=${_pkgname_nover};MindMap;
+Keywords[fr]=${_pkgname_nover};MindMap;
+Keywords[ja]=${_pkgname_nover};MindMap;
+Keywords[es]=${_pkgname_nover};Diagrama;
+Keywords[zh_CN]=${_pkgname_nover};MindMap;
+Keywords[zh_TW]=${_pkgname_nover};MindMap;
 Comment=Mind Map Software
 Comment[de]=mind map - software
 Comment[fr]=Logiciel de carte
