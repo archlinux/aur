@@ -6,13 +6,12 @@
 pkgname=github-desktop
 pkgver=3.1.1
 _gitname="release-$pkgver-linux1"
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
 license=(MIT)
 depends=(curl
-         gconf
          git
          libsecret
          libxss
@@ -44,7 +43,7 @@ prepare() {
 	git config submodule."gemoji".url "$srcdir/gemoji"
 	git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
 	git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {

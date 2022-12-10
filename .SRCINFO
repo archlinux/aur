@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = github-desktop
 	makedepends = xorg-server-xvfb
 	makedepends = yarn
 	depends = curl
-	depends = gconf
 	depends = git
 	depends = libsecret
 	depends = libxss
