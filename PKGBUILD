@@ -1,7 +1,7 @@
-# Maintainer: Your Name <finitodoer@bureau.eu.org>
+# Maintainer: Finitodoer <finitodoer@nospam.com>
 pkgname=finitodo
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Finitodo is a graphical task/todo list manager for Linux that aims to be highly versatile yet not overly complicated. It has robust functionality in areas like reccurence/sorting/filtering but doesn't require digging through lots of menu screens to use."
 arch=(x86_64)
 url="https://gitlab.com/finitodo/finitodo"
