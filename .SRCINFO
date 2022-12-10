@@ -1,7 +1,7 @@
 pkgbase = sfetch
 	pkgdesc = A simple system fetch CLI tool written in Shell
 	pkgver = 1.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Frolleks/sfetch
 	arch = any
 	license = ISC
