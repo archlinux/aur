@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exhale
-pkgver=1.1.9.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("https://gitlab.com/ecodis/exhale/-/archive/v$pkgver/exhale-v$pkgver.tar.bz2")
-sha256sums=('7a6aedd25c860161166edf33b13ce46d5f361423130271674678c9fe7077df75')
+sha256sums=('8af9558432d0a8208b8adce198ed9880b638ec0654ce5ecf20a7e40f3eb3ba67')
 
 
 build() {
