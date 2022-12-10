@@ -2,7 +2,7 @@
 
 _pkgbase=hhfc
 pkgname=${_pkgbase}-git
-pkgver=0.0.1.r1.g7a7b153
+pkgver=0.0.2.r0.g106cef7
 pkgrel=1
 pkgdesc="Hwmon Handheld Fan Controller (hhfc) is a user space driver for fans based on hwmon sysfs"
 arch=('any')
@@ -37,6 +37,8 @@ build() {
 package() {
 	cd "$srcdir/${_pkgbase}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+
+	mkdir -p ${pkgdir}/etc/hhfc/
 
 	mkdir -p ${pkgdir}/usr/share/hhfc/
 	cp -v config/* ${pkgdir}/usr/share/hhfc/
