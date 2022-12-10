@@ -13,11 +13,11 @@
 pkgbase=mesa-minimal-git
 pkgname=('mesa-minimal-git' 'rusticl-mesa-minimal-git')
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.0.0_devel.163179.be570cd3225
-pkgrel=1
+pkgver=23.0.0_devel.164103.d217883c5c3
+pkgrel=2
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
-              'wayland-protocols' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc-minimal-git' 'llvm-libs<16' 'rust' 'rust-bindgen' 'spirv-tools' 'spirv-llvm-translator-minimal-git' 'libvdpau')
+              'wayland-protocols' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc-minimal-git' 'llvm-libs<16' 'rust' 'rust-bindgen' 'spirv-tools-git' 'spirv-llvm-translator-minimal-git' 'libvdpau')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'mesa-vdpau' 'vulkan-driver' 'opengl-driver')
@@ -26,14 +26,11 @@ conflicts=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-                'correct-clang_resource_dir_for_llvm16.patch'
                 'LICENSE'
 )
 md5sums=('SKIP'
-         '77968eaa9f2bb55de070b8bc8b3afd54'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
-            '45544f503e8bae4d1ae32bbd7445b16aad943fd43305b1b3c69dbc134ac3ab74a25d877e38b4276cf65f29cc2b377fc896c056a24bff2a1dae981923d56ba7d8'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 options=(!emptydirs)
 
@@ -54,7 +51,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    patch --directory=mesa --strip=1 --input="${srcdir}"/correct-clang_resource_dir_for_llvm16.patch
 }
 
 build () {
@@ -105,7 +101,7 @@ build () {
 
 package_mesa-minimal-git() {
     depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-                        'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git' 'libclc-minimal-git' 'systemd-libs')
+                        'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git' 'systemd-libs')
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
@@ -125,11 +121,13 @@ package_mesa-minimal-git() {
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
 }
 
+# I dislike splitting packages, but rusticl has several dependencies that are not needed by other mesa components
 package_rusticl-mesa-minimal-git() {
     pkgdesc="OpenCL support in rust for mesa drivers (git version)"
-    conflicts=(opencl-mesa rusticl-mesa)
-    provides=(opencl-mesa rusticl-mesa opencl-driver)
-    depends=(libdrm spirv-tools mesa-minimal-git=$pkgver-$pkgrel)
+    # In repos rusticl is combined with clover under opencl-mesa
+    conflicts=(opencl-mesa)
+    provides=(opencl-mesa opencl-driver)
+    depends=(libdrm spirv-tools-git libclc-minimal-git mesa-minimal-git=$pkgver-$pkgrel)
     
     cp --preserve --recursive "$srcdir"/rusticl/* "$pkgdir"/
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
