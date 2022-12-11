@@ -11,24 +11,24 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-stable.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/EStash-$pkgver-stable"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/EStash-$pkgver-stable"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --frozen
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-  cargo test --frozen --lib
+  cd "$srcdir/EStash-$pkgver-stable"
+  cargo test --frozen
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/EStash-$pkgver-stable"
   install -Dm 755 "target/release/estash" -t "$pkgdir/usr/bin"
   install -Dm 644 docs/README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
