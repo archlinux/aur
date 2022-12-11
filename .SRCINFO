@@ -1,5 +1,5 @@
 pkgbase = electronic-wechat-uos-electron
-	pkgdesc = An Electron application for WeChat
+	pkgdesc = Better WeChat client under Linux. Which used system Electron and UOS request header adn removed the useless content in -bin package
 	pkgver = 2.3.2
 	pkgrel = 6
 	url = https://github.com/Riceneeder/electronic-wechat
