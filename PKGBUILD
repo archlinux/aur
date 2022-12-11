@@ -22,7 +22,6 @@ prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
   sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver%%.0}"'.0/' dune.module
-  cat dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
