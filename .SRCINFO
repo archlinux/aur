@@ -1,7 +1,7 @@
 pkgbase = amberol-git
 	pkgdesc = Plays music, and nothing else
-	pkgver = 0.7.0.r10.gcd7b5aa
-	pkgrel = 2
+	pkgver = 0.9.2.r3.gd58183f
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/amberol
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = amberol-git
 	makedepends = meson
 	makedepends = cargo
 	depends = libadwaita
+	depends = libportal-gtk4
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
