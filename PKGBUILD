@@ -3,7 +3,7 @@
 
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
-pkgver=2.1.0.r0.g2e931c4
+pkgver=2.1.2.r0.gd38b4df
 pkgrel=1
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
