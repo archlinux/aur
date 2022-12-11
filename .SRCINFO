@@ -1,5 +1,5 @@
 pkgbase = deepin-log-viewer-git
-	pkgdesc = A tool to optimize and tweak your Deepin system
+	pkgdesc = A tool to view system logs
 	pkgver = 5.9.13.g270b40c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-log-viewer
