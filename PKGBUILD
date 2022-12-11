@@ -5,7 +5,7 @@
 
 gitname=uBlock
 pkgname=chromium-ublock-origin-git
-pkgver=1.25.2.55.g98d7de050
+pkgver=1.45.3b13.1.g1b63d65ac
 pkgrel=1
 pkgdesc="An efficient blocker for Chromium"
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 }
 build() {
     cd "${srcdir}/${gitname}"
-    ./tools/make-chromium.sh
+    make chromium
 }
 package() {
    mkdir -p "${pkgdir}/usr/share/chromium/${gitname}"
