@@ -1,12 +1,12 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=add-pacman-repository
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive shell script to help adding Pacman repositories."
 arch=('any')
 url="https://github.com/Jin-Asanami/add-pacman-repository"
 _url="https://osdn.net/projects/univalentgnulinux"
-license=('MIT')
+license=('GPL3')
 depends=('bash' 'wget')
 checkdepends=('shellcheck')
 conflicts=("${pkgname}")

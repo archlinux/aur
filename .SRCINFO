@@ -1,10 +1,10 @@
 pkgbase = add-pacman-repository
 	pkgdesc = Interactive shell script to help adding Pacman repositories.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jin-Asanami/add-pacman-repository
 	arch = any
-	license = MIT
+	license = GPL3
 	checkdepends = shellcheck
 	depends = bash
 	depends = wget
