@@ -1,6 +1,6 @@
 pkgbase = pap
 	pkgdesc = a simplistic papermc helper
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/talwat/pap
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = pap
 	makedepends = go
 	depends = git
 	depends = pacman
-	source = pap-0.3.1.tar.gz::https://github.com/talwat/pap/archive/v0.3.1.tar.gz
-	sha256sums = 605177cf9acf3ad37556c52bed3956309d9a93abf209370a8a1978262cc5b699
+	source = pap-0.3.2.tar.gz::https://github.com/talwat/pap/archive/v0.3.2.tar.gz
+	sha256sums = 86af450b1ba840ce820507086bc3a16d6006fb7c56d49c2d791341bf266656fe
 
 pkgname = pap
