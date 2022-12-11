@@ -1,7 +1,7 @@
 pkgbase = dfzitarev1
 	pkgdesc = A feedback-delay-network reverb LV2 and VST3 plugin
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/SpotlightKid/dfzitarev1
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = dfzitarev1
 	depends = gcc-libs
 	optdepends = lv2-host: for loading the LV2 plugin
 	optdepends = vst3-host: for loading VST3 plugin
-	source = https://github.com/SpotlightKid/dfzitarev1/releases/download/v0.1.0/dfzitarev1-0.1.0-source.tar.gz
-	sha256sums = 225259594707a1d36b50ee8f917603aec0b8f491fbd4d7f26aed8fe974948d54
+	source = https://github.com/SpotlightKid/dfzitarev1/releases/download/v0.1.1/dfzitarev1-0.1.1-source.tar.gz
+	sha256sums = e74a386834cb7779b5ada8227253c472be95564773642298a583cd2ddd3e8404
 
 pkgname = dfzitarev1
