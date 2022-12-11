@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=estash
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An open source, cross-platform, programmed in rust, encrypted digital vault (store files and text) with the capability to set a path and with the click of a button to copy the contents to that file."
 arch=('x86_64')
@@ -30,5 +30,5 @@ check() {
 package() {
   cd "$srcdir/EStash-$pkgver-stable"
   install -Dm 755 "target/release/estash" -t "$pkgdir/usr/bin"
-  install -Dm 644 docs/README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
