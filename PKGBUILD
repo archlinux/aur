@@ -1,4 +1,6 @@
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Maintainer: Paolo Stivanin <info@paolostivanin.com>
+# Contributor: Daniil Kovalev <daniil@kovalev.website>
+
 pkgname=otpclient
 _pkgname=OTPClient
 pkgver=3.0.0
