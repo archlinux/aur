@@ -1,0 +1,12 @@
+pkgbase = ca0132-tools-git
+	pkgdesc = Tools for the ca0132 HDA codec. Includes an assembler/disassembler for the integrated custom DSP.
+	pkgver = r114.6c1563c
+	pkgrel = 1
+	url = https://github.com/Conmanx360/ca0132-tools
+	arch = any
+	license = GPL2
+	provides = ca0132-tools-git
+	source = git+https://github.com/Conmanx360/ca0132-tools.git
+	sha256sums = SKIP
+
+pkgname = ca0132-tools-git
