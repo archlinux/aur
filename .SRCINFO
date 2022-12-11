@@ -1,4 +1,4 @@
-pkgbase = pap
+pkgbase = pap-bin
 	pkgdesc = a simplistic papermc helper (pre-compiled)
 	pkgver = 0.3.2
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = pap
 	source_aarch64 = https://github.com/talwat/pap/releases/download/v0.3.2/pap_0.3.2_linux_arm64
 	sha256sums_aarch64 = cf60e2db4ce3e764b4161957aea2fc6f8cbfbf36128df021a31d2e472992a22f
 
-pkgname = pap
+pkgname = pap-bin
