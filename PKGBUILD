@@ -1,16 +1,16 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=amberol
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/app/io.bassi.Amberol"
 license=('GPL3')
-depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
+depends=('libadwaita' 'libportal-gtk4' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
 makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib' 'reuse')
-_commit=2b2fc127f63acf69f795b657d4721188bd5d145e  # tags/0.9.1^0
+_commit=c23ec2f11fa441c402b80f7a1733ac9aea65c81d  # tags/0.9.2^0
 source=("git+https://gitlab.gnome.org/World/amberol.git#commit=$_commit")
 b2sums=('SKIP')
 
