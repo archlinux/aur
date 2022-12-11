@@ -4,7 +4,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=subsurface
-pkgver=5.0.9
+pkgver=5.0.10
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://github.com/subsurface/subsurface'
@@ -14,7 +14,7 @@ depends=(
 	'googlemaps' ## AUR
 	'grantlee'
 	'hicolor-icon-theme'
-	'libgit2.so'
+	'libgit2'
 	'libzip'
 	'libxml2'
 	'libxslt'
@@ -31,7 +31,7 @@ makedepends=(
 	'libusb'
 	'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6db31f281c7c0884089e199a360e9492202e4a7aaacf6330ed9e9eeb63e1851b')
+sha256sums=('f9059c58d4063961c62fa4bdc1060637f39bed9360d6ffbfc36b0394016f02c6')
 
 PURGE_TARGETS=(*.debug)
 
