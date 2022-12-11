@@ -4,7 +4,7 @@
 
 _pkgname=spotipy
 pkgname=python-spotipy
-pkgver=2.21.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='A light weight Python library for the Spotify Web API'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-requests' 'python-six' 'python-redis')
 makedepends=('python-setuptools')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/plamere/spotipy/archive/$pkgver.tar.gz")
-sha512sums=('8783261e43962b3e98cb9b680f908d38feecf784ff404352ba16d6bb3d2e4bf1d2308b60f1437c56402e1c2a993a5bba876103f968bb8bdd81be1aef1fe6d058')
+sha512sums=('272f05b1cb92dbd9842dcac58a5ca322fae703eea58488b968812c12b6c26fb748aabbf5fde7100e9662191231fe12f5353b9ba12f02bd2e4982e0aff1c732f6')
 
 build() {
     cd spotipy-$pkgver
@@ -26,4 +26,3 @@ package() {
     python setup.py install --root="$pkgdir" --skip-build --optimize=1
     install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-

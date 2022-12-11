@@ -1,6 +1,6 @@
 pkgbase = python-spotipy
 	pkgdesc = A light weight Python library for the Spotify Web API
-	pkgver = 2.21.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://github.com/plamere/spotipy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-spotipy
 	depends = python-six
 	depends = python-redis
 	conflicts = python-spotipy-git
-	source = python-spotipy-2.21.0.tar.gz::https://github.com/plamere/spotipy/archive/2.21.0.tar.gz
-	sha512sums = 8783261e43962b3e98cb9b680f908d38feecf784ff404352ba16d6bb3d2e4bf1d2308b60f1437c56402e1c2a993a5bba876103f968bb8bdd81be1aef1fe6d058
+	source = python-spotipy-2.22.0.tar.gz::https://github.com/plamere/spotipy/archive/2.22.0.tar.gz
+	sha512sums = 272f05b1cb92dbd9842dcac58a5ca322fae703eea58488b968812c12b6c26fb748aabbf5fde7100e9662191231fe12f5353b9ba12f02bd2e4982e0aff1c732f6
 
 pkgname = python-spotipy
