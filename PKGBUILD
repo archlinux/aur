@@ -3,9 +3,9 @@
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
 pkgver=0.1.2R1.r79.f8df52e
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
 license=('GPL3')
 provides=("${_pkgname}")
