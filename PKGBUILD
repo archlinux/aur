@@ -15,7 +15,7 @@ depends=(
 	"python-lxml"
 	"python-ebooklib"
 )
-makedepends=("git" "python-build" "python-installer")
+makedepends=("git" "python-build" "python-installer" "python-poetry-core")
 provides=()
 conflicts=()
 source=("git+$url.git")

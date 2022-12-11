@@ -8,6 +8,7 @@ pkgbase = noveldown-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python-requests
 	depends = python-typer
 	depends = python-beautifulsoup4
