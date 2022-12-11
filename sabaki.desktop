@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Sabaki
+GenericName=SGF Editor (Go)
+Comment=An elegant Go/Baduk/Weiqi board and SGF editor for a more civilized age.
+Exec=sabaki %F
+Terminal=false
+Type=Application
+Icon=sabaki
+Categories=Game;
+MimeType=application/x-go-sgf;
+
