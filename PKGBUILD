@@ -1,7 +1,7 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap-bin
 pkgver="0.3.2"
-pkgrel=1
+pkgrel=2
 pkgdesc='a simplistic papermc helper (pre-compiled)'
 url='https://github.com/talwat/pap'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
