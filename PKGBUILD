@@ -33,7 +33,7 @@ build() {
   echo -e "[Desktop Entry]
 Name=Electronic Wechat
 Comment=Unofficial WeChat client built with React, MobX and Electron.
-Exec=electronic-wechat %U 
+Exec=wechat %U 
 Terminal=false
 Type=Application
 Icon=electronic-wechat.png                                        
