@@ -9,8 +9,8 @@
 
 pkgname=rstudio-desktop-daily-bin
 pkgver=2022.12.0.353
-pkgver_url=2022.12.0.353
-pkgrel=1
+pkgver_url=2022.12.0-353
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
