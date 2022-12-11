@@ -3,8 +3,8 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.7.7.r2.g3e9c74f1
-pkgrel=2
+pkgver=2.7.7.r2.29.gd5bb6fc8
+pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
@@ -16,9 +16,9 @@ url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
 provides=('electron-qq' 'icalingua')
 conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
-source=("Icalingua::git+${url}#branch=development")
+source=("Icalingua::git+${url}#branch=develop")
 sha256sums=('SKIP')
-_electron=electron17
+_electron=electron21
 
 pkgver(){
     cd "${srcdir}/Icalingua"
