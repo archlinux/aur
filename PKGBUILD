@@ -1,8 +1,8 @@
 # Maintainer: Mattias Giese <mattias.giese@posteo.net>
 pkgname=beammp-server
 _pkgname=BeamMP-Server
-pkgver=v3.0.1.r38.05251ef
-_pkgver=3.0.2
+pkgver=v3.0.1.r267.47e64a7
+_pkgver=3.1.1
 pkgrel=1
 pkgdesc="Server for BeamMP, providing multiplayer support for the driving simulator beamng.drive"
 arch=(x86_64)
