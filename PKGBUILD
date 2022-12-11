@@ -1,7 +1,7 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-bin
 _pkgname=AirVPN-Suite
-pkgver=1.2.0
+pkgver=1.2.1
 _pkgver=1.2
 pkgrel=1
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt stable"
@@ -10,16 +10,15 @@ url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-beta-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-beta-bin')
-depends=('dbus' 'libxml2')
-makedepends=('curl')
-source=("https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz")
-sha512sums=(`curl -sLo - "https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512"|cut -f1 -d " "`)
+depends=('dbus' 'libxml2' 'curl')
+source=("https://eddie.website/repository/$_pkgname/$pkgver/$_pkgname-$arch-$pkgver.tar.gz")
+sha512sums=(`curl -sLo - "https://eddie.website/repository/$_pkgname/$pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512"|cut -f1 -d " "`)
 install="$pkgname.install"
 changelog="Changelog-Suite.txt"
 
 package() {
     cd $srcdir/$_pkgname
-    
+
     # place binaries
     install -Dm755 bin/bluetit "$pkgdir/usr/bin/bluetit"
     install -Dm755 bin/goldcrest "$pkgdir/usr/bin/goldcrest"
