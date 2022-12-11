@@ -1,7 +1,7 @@
 pkgbase = r-ndexr
 	pkgdesc = NDEx R client library
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.20.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ndexr
 	arch = any
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = r-ndexr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ndexr_1.20.0.tar.gz
-	sha256sums = cc3929ee3926d1312a9d5e984f6a0cd3fd5e0a99dbcd41c14551b89935d5fd49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ndexr_1.20.1.tar.gz
+	sha256sums = dbcb5b2ab5c719dac0f83a32fa63bb99b3536b9b58f7804d06abf530084cd754
 
 pkgname = r-ndexr
