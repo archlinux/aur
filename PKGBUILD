@@ -4,10 +4,10 @@
 
 pkgname=amule-git
 pkgver=2.3.3.r42.e26d06a6e
-pkgrel=2
+pkgrel=3
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
-url="http://amule.org/"
+url="https://amule.org/"
 license=(GPL2)
 depends=(crypto++ geoip libupnp wxwidgets-gtk3 gd)
 makedepends=(git boost cmake)

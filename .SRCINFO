@@ -1,8 +1,8 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
 	pkgver = 2.3.3.r42.e26d06a6e
-	pkgrel = 2
-	url = http://amule.org/
+	pkgrel = 3
+	url = https://amule.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = git
