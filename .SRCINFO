@@ -1,20 +1,19 @@
 pkgbase = amule-git
 	pkgdesc = Client for the eD2k and Kad networks
-	pkgver = 2.3.2.r64.20afd75fa
-	pkgrel = 1
+	pkgver = 2.3.3.r42.e26d06a6e
+	pkgrel = 2
 	url = http://amule.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = ccache
 	makedepends = boost
-	depends = boost-libs
+	makedepends = cmake
 	depends = crypto++
 	depends = geoip
 	depends = libupnp
-	depends = wxgtk2
+	depends = wxwidgets-gtk3
 	depends = gd
-	depends = boost-libs
+	provides = amule
 	conflicts = amule
 	source = git+https://github.com/amule-project/amule.git
 	source = amuled.systemd
@@ -28,4 +27,3 @@ pkgbase = amule-git
 	sha256sums = e9d1b7019c7075b0f8616c6507a767b87de8f899936680e9ff5829d8cbba224d
 
 pkgname = amule-git
-
