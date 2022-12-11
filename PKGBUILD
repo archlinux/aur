@@ -9,8 +9,8 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.10.0_dev.3880+e2bb92b2e
-pkgrel=2
+pkgver=0.11.0_dev.681+f02073434
+pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
@@ -20,12 +20,18 @@ options=('!strip')
 provides=('zig')
 conflicts=('zig')
 # NOTE: We don't include the "real" source until build()
-source=()
+#
+# The exception is our test file `hello.zig`
+source=(
+    "hello.zig"
+)
 # GPG verification is not currently possible because Zig binaries aren't signed
 # Hardcoded sha256 not possible because this is a an auto-updating (nightly) package
 #
 # Zig Issue for signed binaries: https://github.com/ziglang/zig/issues/4945
-sha256sums=()
+sha256sums=(
+    "SKIP"
+)
 
 # Prints a warning message to stderr
 warning() {
@@ -78,7 +84,7 @@ RELATIVE_LANGREF_FILE="docs/langref.html";
 # All of these must be present for 
 RELATIVE_STDLIB_DOC_FILES=("docs/std/index.html" "docs/std/main.js" "docs/std/data.js");
 check() {
-    hello_file="$(realpath ../hello.zig)"
+    hello_file="${srcdir}/hello.zig"
     # Zig caches (both local and global) can use up a lot of space.
     # For these hello world examples (in a frequently updated package), this is very wasteful.
     #
