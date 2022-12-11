@@ -1,6 +1,6 @@
 pkgbase = python-pypdf2
 	pkgdesc = Python library for splitting, merging, cropping, and transforming pages of PDF files
-	pkgver = 2.11.2
+	pkgver = 2.12.1
 	pkgrel = 2
 	url = https://github.com/py-pdf/PyPDF2
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pypdf2
 	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
-	source = python-pypdf2-2.11.2.tar.gz::https://github.com/py-pdf/PyPDF2/archive/2.11.2.tar.gz
-	sha256sums = 06c56b265e1e893b89ddbfbdab27c4125efd3901eb094242a137ec40f2efb69c
+	source = python-pypdf2-2.12.1.tar.gz::https://github.com/py-pdf/PyPDF2/archive/2.12.1.tar.gz
+	sha256sums = 36c8ea47204ffafc8a3ed19fb2e89d8d82fef2ada5c9de018bde78e6bc508dd8
 
 pkgname = python-pypdf2
