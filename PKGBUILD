@@ -4,13 +4,13 @@
 pkgname=pixelscale-git
 _pkgname=libxbr-standalone
 pkgver=4.3835e97
-pkgrel=5
+pkgrel=6
 pkgdesc="Standalone xBR/HQx pixel art scaling library and standalone executable (includes hqx compatibility script, pixelscale binary and xbr script)"
 url="https://github.com/Treeki/libxbr-standalone"
 arch=('x86_64' 'i686')
 license=('LGPL2.1')
 depends=('libpng' 'imagemagick' )
-makedepends=()
+makedepends=('git')
 conflicts=('hqx')
 provides=('hqx' 'xbr')
 source=('hqx.sh' 'xbr.sh' "git+$url.git")
