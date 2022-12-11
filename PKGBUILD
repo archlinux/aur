@@ -3,7 +3,7 @@
 pkgbase=gplugin
 _pkgname=gplugin
 pkgname=(gplugin gplugin-docs)
-pkgver=0.38.1
+pkgver=0.39.1
 pkgrel=3
 arch=('i868' 'x86_64')
 license=("LGPL2")
