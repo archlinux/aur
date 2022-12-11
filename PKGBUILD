@@ -2,8 +2,8 @@
 
 pkgname=python-etebase
 _pkgname=${pkgname}
-pkgver=0.31.4
-pkgrel=6
+pkgver=0.31.6
+pkgrel=1
 pkgdesc="Etebase Python library"
 arch=(x86_64)
 url="https://github.com/etesync/etebase-py"
