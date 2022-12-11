@@ -1,7 +1,7 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=estash
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, cross-platform, programmed in rust, encrypted digital vault (store files and text) with the capability to set a path and with the click of a button to copy the contents to that file."
 arch=('x86_64')
 url="https://github.com/Obscurely/EStash"
@@ -31,4 +31,9 @@ package() {
   cd "$srcdir/EStash-$pkgver-stable"
   install -Dm 755 "target/release/estash" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" "linux/desktop/EStash.desktop"
+  for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+		install -Dm0644 "linux/desktop/icons/hicolor/$size/apps/estash.png" \
+			"$pkgdir/usr/share/icons/hicolor/$size/apps/estash.png"
+	done
 }
