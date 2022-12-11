@@ -15,21 +15,23 @@ pkgbase = sunshine
 	depends = avahi
 	depends = boost-libs
 	depends = curl
-	depends = ffmpeg4.4
 	depends = libevdev
 	depends = libpulse
+	depends = libva
+	depends = libvdpau
 	depends = libx11
 	depends = libxcb
 	depends = libxfixes
 	depends = libxrandr
 	depends = libxtst
+	depends = numactl
 	depends = openssl
 	depends = opus
 	depends = udev
 	optdepends = cuda
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=a7b19f48fe967608c5a74e8db743c962811568c1
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=e8aa7499afcaf14d175d092778bc9548d0fd92fa
 	sha256sums = SKIP
 
 pkgname = sunshine

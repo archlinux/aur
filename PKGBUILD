@@ -9,14 +9,14 @@ arch=('x86_64' 'i686')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 
-depends=('avahi' 'boost-libs' 'curl' 'ffmpeg4.4' 'libevdev' 'libpulse' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'openssl' 'opus' 'udev')
+depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
 makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
 optdepends=('cuda' 'libcap' 'libdrm')
 
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=a7b19f48fe967608c5a74e8db743c962811568c1")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=e8aa7499afcaf14d175d092778bc9548d0fd92fa")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,17 +38,7 @@ build() {
         -Wno-dev \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
-        -D SUNSHINE_ASSETS_DIR="share/sunshine" \
-        -D LIBAVCODEC_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVCODEC_LIBRARIES=/usr/lib/ffmpeg4.4/libavcodec.so \
-        -D LIBAVDEVICE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVDEVICE_LIBRARIES=/usr/lib/ffmpeg4.4/libavdevice.so \
-        -D LIBAVFORMAT_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVFORMAT_LIBRARIES=/usr/lib/ffmpeg4.4/libavformat.so \
-        -D LIBAVUTIL_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so \
-        -D LIBSWSCALE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBSWSCALE_LIBRARIES=/usr/lib/ffmpeg4.4/libswscale.so
+        -D SUNSHINE_ASSETS_DIR="share/sunshine"
 
     make -C build
 }
