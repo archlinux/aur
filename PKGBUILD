@@ -4,8 +4,8 @@
 # https://github.com/phnx47/pkgbuilds
 
 _pkgname=renovate
-pkgname=renovate-git
-pkgver=34.54.1.r0.g6bcdaa3ba3
+pkgname=${_pkgname}-git
+pkgver=34.54.2.r0.gaab5fc38db
 pkgrel=1
 pkgdesc="Renovate - Dependency update tool (git-latest)"
 arch=(any)
@@ -14,13 +14,13 @@ makedepends=('git' 'yarn' 'npm' 'node-gyp')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL3')
-source=("${pkgname}::git+https://github.com/renovatebot/renovate")
+source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 build() {
   cd "${pkgname}"
   yarn version --no-git-tag-version --new-version "$(git describe --abbrev=0 --tags)"
-  yarn install
+  yarn install --frozen-lockfile
   yarn build
 }
 
