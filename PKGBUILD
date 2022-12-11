@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
-pkgver=6.0.2
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
@@ -30,4 +30,6 @@ EOF
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "/opt/gslbiotech/snapgene-viewer/resources/licenseAgreement.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
+  cd "${pkgdir}"
+  rm -rf usr/lib
 }
