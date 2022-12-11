@@ -1,0 +1,13 @@
+pkgbase = zxtext2p
+	pkgdesc = Command line utility that takes a BASIC source file and turns it into .P for ZX81
+	pkgver = V1.0
+	pkgrel = 1
+	url = http://freestuff.grok.co.uk/zxtext2p/index.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = glibc
+	source = zxtext2p-V1.0.zip::http://freestuff.grok.co.uk/zxtext2p/zxtext2p.zip
+	sha256sums = ce9ce3c3d4d7992de7db7a12dd5fc7d322637cbaabd2b1c360aca4c743886dd4
+
+pkgname = zxtext2p
