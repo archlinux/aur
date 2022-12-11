@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://www.hoptodesk.com/"
 license=('AGPL-3.0')
 source=(https://www.hoptodesk.com/hoptodesk.deb)
-sha256sums=('3a56b980882fa88d59acc4ab54045ef8f7e9aec53c1070f21facdb275a7811ab')
+sha256sums=('SKIP')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
