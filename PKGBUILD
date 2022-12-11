@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.21.1+r44+g430ec0d860
+pkgver=1.21.3+r21+gcbab7ffefb
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -108,6 +108,7 @@ build() {
     -D gst-plugins-good:gobject-cast-checks=disabled
     -D gst-plugins-good:package-name="Arch Linux gst-plugins-good $pkgver-$pkgrel"
     -D gst-plugins-good:package-origin="https://www.archlinux.org/"
+    -D gst-plugins-good:qt6=disabled
     -D gst-plugins-good:rpicamsrc=disabled
     -D gst-plugins-bad:directfb=disabled
     -D gst-plugins-bad:flite=disabled
