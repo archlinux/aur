@@ -1,38 +1,47 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Java 7 is the only version of Java supported by starsector.
-JAVA7=/usr/lib/jvm/$(archlinux-java status | grep -m 1 java-7 | sed 's/^ *//')/bin
-[ -d ${JAVA7} ] && export PATH=${JAVA7}:${PATH}
+set -euo pipefail
 
 # fix for users of special IM modules
 unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
-unset CLASSPATH
 
-BASEPATH=~/.starsector
-SAVEPATH=${BASEPATH}/saves
-MODPATH=${BASEPATH}/mods
-SCRPATH=${BASEPATH}/screenshots
-LOGPATH=${BASEPATH}/
+state_dir="${XDG_STATE_HOME:-"$HOME/.local/share"}/starsector"
+saves_path="${state_dir}/saves"
+mods_path="${state_dir}/mods"
+screenshots_path="${state_dir}/screenshots"
+log_path="$state_dir"
 
-[ -d ${BASEPATH} ] || mkdir ${BASEPATH}
-[ -d ${SAVEPATH} ] || mkdir ${SAVEPATH}
-[ -d ${MODPATH}  ] || mkdir ${MODPATH}
-[ -d ${SCRPATH}  ] || mkdir ${SCRPATH}
+mkdir -p "$saves_path"
+mkdir -p "$mods_path"
+mkdir -p "$screenshots_path"
+mkdir -p "$log_path"
 
-for jarfile in /usr/share/java/starsector/*.jar ; do
-  CLASSPATH=${CLASSPATH}:${jarfile}
-done
+classpath="$(find '/usr/share/java/starsector' -type f -name '*.jar' | paste -sd ':')"
 
+config_path="${XDG_CONFIG_HOME:-"$HOME/.config"}/starsector"
+startup_config="${config_path}/startup.sh"
+
+jvm_args=(-Xms1536m -Xmx1536m -Xss2048k)
+program_args=()
+
+if [ -r "$startup_config" ]
+then
+    . "$startup_config"
+fi
+
+export JAVA_HOME='/usr/lib/starsector/jre'
 cd /usr/share/starsector
-exec java -server \
+exec "$JAVA_HOME/bin/java" -server \
   -XX:CompilerThreadPriority=1 \
   -XX:+CompilerThreadHintNoPreempt \
   -Djava.library.path=/usr/lib/starsector \
-  -Xms1536m -Xmx1536m -Xss2048k -classpath ${CLASSPATH} \
-  -Dcom.fs.starfarer.settings.paths.saves=${SAVEPATH} \
-  -Dcom.fs.starfarer.settings.paths.screenshots=${SCRPATH} \
-  -Dcom.fs.starfarer.settings.paths.mods=${MODPATH} \
-  -Dcom.fs.starfarer.settings.paths.logs=${LOGPATH} \
+  -classpath "${classpath}" \
+  -Dcom.fs.starfarer.settings.paths.saves="${saves_path}" \
+  -Dcom.fs.starfarer.settings.paths.screenshots="${screenshots_path}" \
+  -Dcom.fs.starfarer.settings.paths.mods="${mods_path}" \
+  -Dcom.fs.starfarer.settings.paths.logs="${log_path}" \
   -Dcom.fs.starfarer.settings.linux=true \
-  com.fs.starfarer.StarfarerLauncher
-# vim:set ts=2 sw=2 et:
+  "${jvm_args[@]}" \
+  com.fs.starfarer.StarfarerLauncher \
+  "${program_args[@]}"
+

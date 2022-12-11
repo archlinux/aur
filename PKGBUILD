@@ -1,23 +1,21 @@
-# Maintainer: Erdbeerkaese <erbeerkaese dot arch at gmail dot com>
+# Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=starsector
 pkgver=0.95.1a_RC6
-pkgrel=1
+pkgrel=2
 pkgdesc="Starsector (formerly “Starfarer”) is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game."
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
 license=('custom')
-depends=('java-runtime=7' 'openal' 'bash' 'desktop-file-utils')
-install='starsector.install'
+depends=('openal' 'bash' 'desktop-file-utils')
 replaces=('starfarer')
-source=(
-http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_/-}.zip
-${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
-starsector.sh
-starsector.desktop)
+source=(http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${pkgver//_/-}.zip
+        ${pkgname}.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
+        starsector.sh
+        starsector.desktop)
 sha256sums=('3da88bd5198a1c35ab557ff11973c4e6fa243c13936a1faf1a3867d78ffefd93'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
-            '1d59f7e2855783c880ad1d885834f85defd5fd813e81c5f78b0c3e911905c5c8'
+            'ba7eb4fc35d116c6b699ae4abf1e31f9709b06ea38950a731b1227d1f16e964f'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
   install -d "$pkgdir/usr/share/$pkgname" \
@@ -33,6 +31,10 @@ package() {
 
   cd "$srcdir/$pkgname"
 
+  cd jre_linux
+  find -type f -exec install -D "{}" "$pkgdir/usr/lib/$pkgname/jre/{}" \;
+  cd ..
+
   install -Dm644 *.jar "$pkgdir/usr/share/java/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
@@ -45,4 +47,3 @@ package() {
   find data graphics sounds -type f -print0 | xargs -0 chmod 644
   cp -R data graphics sounds "$pkgdir/usr/share/$pkgname/"
 }
-# vim:set ts=2 sw=2 et:

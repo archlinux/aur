@@ -1,0 +1,7 @@
+starsector_*
+LICENSE
+*.asc
+*.tar.*
+src/
+pkg/
+*.pdf
