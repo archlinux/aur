@@ -5,11 +5,12 @@
 
 pkgbase=buildbot
 pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
-         python-buildbot-www python-buildbot-waterfall-view
+         python-buildbot-www python-buildbot-www-react
+         python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.6.1
+pkgver=3.7.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -32,13 +33,13 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "python310.diff"
-        "influxdb.diff")
-sha256sums=('34313ece30f820f4e87c8104a10f3a4f54a8bc6c21b3578f6537b25aad83d3b6'
+        "05f8bfb2af5f77de2c512254d306bff983fec242.patch")
+sha256sums=('8d8b519dd60374bc327f2f829cdffdaaca415d65c7a89abd9a89435e7b7f81b9'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
             '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
-            '2cbddb485730ab243967166970a22b61e76d5eda5a8ba3783e0ebf4342be44ee')
+            '23255ee665043109d3b267d1846e2ae73ff54bf2e7155e99996280a9e918ce69')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -70,9 +71,9 @@ prepare() {
   # https://github.com/python/cpython/pull/20236
   patch -Np1 -i ../python310.diff
 
-  # Fixes tests when python-influxdb is installed. The latter requires ports to be integers since
-  # https://github.com/influxdata/influxdb-python/commit/4428208be690ab5399c4e1150c8f2b4d11d65f7d
-  patch -Np1 -i ../influxdb.diff
+  # www/react: Fix websocket connections on https
+  # Part of https://github.com/buildbot/buildbot/pull/6753 (not merged yet)
+  patch -Np1 -i ../05f8bfb2af5f77de2c512254d306bff983fec242.patch
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -99,7 +100,7 @@ build() {
   make PIP=/usr/bin/true frontend_deps
 
   export PYTHONPATH="$srcdir"/buildbot-$pkgver/pkg
-  for module in base waterfall_view console_view grid_view wsgi_dashboards badges
+  for module in base react-base waterfall_view console_view grid_view wsgi_dashboards badges
   do
     cd "$srcdir"/buildbot-$pkgver/www/$module
     python setup.py build
@@ -223,6 +224,16 @@ package_python-buildbot-www() {
   )
 
   cd buildbot-$pkgver/www/base
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-www-react() {
+  pkgdesc='React-based Buildbot UI (experimental)'
+  depends=(python buildbot)
+  # buildbot-www-react does not support plugins yet
+  optdepends=()
+
+  cd buildbot-$pkgver/www/react-base
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 

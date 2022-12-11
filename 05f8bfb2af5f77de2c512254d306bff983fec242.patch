@@ -1,0 +1,24 @@
+From 05f8bfb2af5f77de2c512254d306bff983fec242 Mon Sep 17 00:00:00 2001
+From: Povilas Kanapickas <povilas@radix.lt>
+Date: Wed, 7 Dec 2022 22:13:22 +0200
+Subject: [PATCH] www/react: Fix websocket connections on https
+
+---
+ www/react-base/src/data/WebSocketClient.ts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/www/react-base/src/data/WebSocketClient.ts b/www/react-base/src/data/WebSocketClient.ts
+index 1388d5ab3b5..2c94e32db6a 100644
+--- a/www/react-base/src/data/WebSocketClient.ts
++++ b/www/react-base/src/data/WebSocketClient.ts
+@@ -147,8 +147,8 @@ export class WebSocketClient {
+ 
+ export function getWebSocketUrl(location: Location) {
+   const hostname = location.hostname;
+-  const protocol = location.protocol === 'https' ? 'wss' : 'ws';
+-  const defaultport = location.protocol === 'https' ? '443' : '80';
++  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
++  const defaultport = location.protocol === 'https:' ? '443' : '80';
+   const path = location.pathname;
+   const port = location.port === defaultport ? '' : `:${location.port}`;
+   return `${protocol}://${hostname}${port}${path}ws`;
