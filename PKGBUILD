@@ -1,14 +1,18 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
+
+_electron='electron19'
+_discord='discord-canary'
+
 pkgname=replugged-electron-git
 _pkgname="${pkgname%-electron-*}"
-pkgver=r1784.e984d8fd
+pkgver=r1997.4fa35914
 pkgrel=1
 pkgdesc="A fork of Powercord, the lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/${_pkgname}-org/${_pkgname}"
 license=('MIT')
-depends=('electron19' 'discord-canary-electron-bin' 'curl' 'jq')
-makedepends=('git' 'npm')
+depends=("$_electron" 'discord-canary-electron-bin')
+makedepends=('git' 'pnpm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
@@ -17,14 +21,12 @@ source=("git+https://github.com/${_pkgname}-org/${_pkgname}.git#branch=${_branch
 		"$_pkgname.sh"
 		"$_pkgname.desktop"
 		"$_pkgname.png"
-		"$_pkgname.patch"
-		"webpack.patch")
+		"$_pkgname.patch")
 md5sums=('SKIP'
-         'fa10b7595d4a5cb4a7735a6e36fc9e61'
+         'a94b9b81f16f2743504d390c6c0f45a0'
          '9698a7fbd4af735bee89e74fa0b03dfe'
          '4ddcb11a1ec0a8a9585a6f0b685286b4'
-         '80b126e9868616ba6c4caaebb716a62f'
-         '410cd8ba30fb07064295c898c2e99be0')
+         '7705ffd25cebcc73277a1a957c1cbe63')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -37,17 +39,17 @@ prepare() {
 
 	patch -p1 -i "$srcdir/$_pkgname.patch"
 
-	sed -i "s:@PKG_UPSTREAM@:$_pkgname-org/$_pkgname:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/coremods/updater/index.js
+	sed -i "s/@ELECTRON@/$_electron/" "$srcdir/$_pkgname.sh"
+	sed -i "s/@DISCORD@/$_discord/" "$srcdir/$_pkgname/src/main/index.ts"
 
-	# Bring back the "new" webpack backend, needed because of contextIsolation
-	# git revert -X ours -n 8dbf24d9ec3cf0ea6589707230e1d2cd5285e187
-	patch -p1 -i "$srcdir/webpack.patch"
+	# sed -i "s:@PKG_UPSTREAM@:$_pkgname-org/$_pkgname:;s:@PKG_BRANCH@:${_branch}:;s:@PKG_REVISION@:$(git rev-parse ${_branch}):" src/Powercord/coremods/updater/index.js
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
 
-	npm install --cache "${srcdir}/npm-cache" --omit=dev
+	pnpm i --store-dir "${srcdir}/pnpm-store"
+	pnpm build
 }
 
 package() {
@@ -58,13 +60,8 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/$_pkgname"
 
-	cp -ar * "$pkgdir/usr/share/$_pkgname"
-	rm -rf "$pkgdir/usr/share/$_pkgname/"{test,LICENSE,README.md,release.sh,jsconfig.json,injectors}
-
-	ln -s "/usr/share/$_pkgname/src/fake_node_modules/powercord" "$pkgdir/usr/share/$_pkgname/node_modules/"
-	ln -s "/usr/share/$_pkgname/src/fake_node_modules/keybindutils" "$pkgdir/usr/share/$_pkgname/node_modules/"
-
-	echo "require('./src/patcher.js');" > "$pkgdir/usr/share/$_pkgname/index.js"
+	cp -ar dist/* "$pkgdir/usr/share/$_pkgname/"
+	echo "require('./main.js');" > "$pkgdir/usr/share/$_pkgname/index.js"
 
 	# chmod -R u+rwX,go+rX,go-w "$pkgdir/usr/share/$_pkgname"
 
