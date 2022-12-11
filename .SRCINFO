@@ -1,11 +1,12 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
 	pkgver = 0.1.2R1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Slackadays/Clipboard
 	install = clipboard.install
 	arch = x86_64
 	arch = aarch64
+	arch = riscv64
 	license = GPL3
 	makedepends = cmake
 	source = clipboard-0.1.2R1.tar.gz::https://github.com/Slackadays/Clipboard/archive/0.1.2R1.tar.gz

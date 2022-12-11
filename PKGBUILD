@@ -3,9 +3,9 @@
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.1.2R1
-pkgrel=4
+pkgrel=5
 pkgdesc="Cut, copy, and paste anything in your terminal."
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
 license=('GPL3')
 makedepends=('cmake')
