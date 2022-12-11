@@ -12,6 +12,7 @@ pkgbase = deepin-tweak-git
 	makedepends = qt5-base
 	makedepends = qt5-quickcontrols2
 	depends = dtkdeclarative
+	provides = deepin-tweak
 	source = git+https://github.com/linuxdeepin/deepin-tweak
 	sha256sums = SKIP
 

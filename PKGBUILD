@@ -8,7 +8,7 @@ pkgdesc="A tool to optimize and tweak your Deepin system"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-tweak"
 license=('LGPL3')
-
+provides=('deepin-tweak')
 depends=('dtkdeclarative')
 makedepends=('dtkgui' 'dtkcore' 'cmake' 'qt5-declarative' 'qt5-base' 'qt5-quickcontrols2')
 source=(git+https://github.com/linuxdeepin/deepin-tweak)
