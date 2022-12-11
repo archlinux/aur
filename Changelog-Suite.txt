@@ -1,5 +1,22 @@
 Changelog for AirVPN Suite
 
+Version 1.2.1 - 9 December 2022
+
+- [ProMIND] production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.1 RC 1 - 30 November 2022
+
+- [ProMIND] updated all dependencies and libraries
+- [ProMIND] package is now realeased both for OpenSSL 3.0 and OpenSSL 1.1.x (legacy)
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 - 22 March 2022
 
 - [ProMIND] production release
