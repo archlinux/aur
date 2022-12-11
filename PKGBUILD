@@ -1,34 +1,37 @@
+# Maintainer: Jef Roosens
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
+
+_pkgname=massif-visualizer
 pkgname=massif-visualizer-git
-pkgver=526.6d169e1
+pkgver=673.2a495fa
 pkgrel=1
-pkgdesc="Massif data visualization tool"
-arch=('i686' 'x86_64')
-url="https://projects.kde.org/projects/extragear/sdk/massif-visualizer"
+pkgdesc="Visualizer for Valgrind Massif data files (development version)"
+arch=('x86_64')
+url="https://invent.kde.org/sdk/massif-visualizer"
 license=('GPL2')
-depends=('qt5-base' 'qt5-svg' 'qt5-xmlpatterns' 'karchive' 'kconfig' \
-         'kcoreaddons' 'kparts' 'kio' 'ki18n' 'kdiagram')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
+depends=('karchive' 'kconfig' 'kcoreaddons' 'kparts' 'kio' 'ki18n' 'kdiagram')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 provides=('massif-visualizer')
 conflicts=('massif-visualizer')
-source=('git+git://anongit.kde.org/massif-visualizer')
+source=("${_pkgname}::git+https://invent.kde.org/sdk/massif-visualizer")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/massif-visualizer"
+  cd "${srcdir}/${_pkgname}"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 build() {
-  cd "$srcdir/massif-visualizer"
-  cmake . \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    cmake -B build -S "${_pkgname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-  cd "$srcdir/massif-visualizer"
-  make DESTDIR="$pkgdir/" install
-} 
+    DESTDIR="${pkgdir}" cmake --install build
+}
+
+# vim: ft=bash
