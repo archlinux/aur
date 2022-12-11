@@ -1,6 +1,6 @@
 pkgbase = wives-bin
-	pkgdesc = A Terminal that is as beautiful as your wife or probably better
-	pkgver = 0.1.0
+	pkgdesc = A beautiful, modern & feature-rich Terminal Emulator 
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/KRTirtho/wives/
 	arch = x86_64
