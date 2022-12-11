@@ -1,0 +1,16 @@
+pkgbase = electronic-wechat-uos-electron
+	pkgdesc = An Electron application for WeChat
+	pkgver = 2.3.2
+	pkgrel = 6
+	url = https://github.com/Riceneeder/electronic-wechat
+	arch = x86_64
+	license = MIT
+	depends = electron
+	provides = electronic-wechat
+	provides = electronic-wechat-uos-bin
+	conflicts = electronic-wechat
+	conflicts = electronic-wechat-uos-bin
+	source = https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.2-6/electronic-wechat_2.3.2_amd64.deb
+	sha256sums = 24d2b3a8ff1609b2f3c0fa894fcea15831fa5a2bf5c89f1d022352c7d1089e4f
+
+pkgname = electronic-wechat-uos-electron
