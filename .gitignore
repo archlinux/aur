@@ -1,0 +1,6 @@
+src/
+pkg/
+deepin-tweak/
+*.pkg.*
+.tar.gz
+*.sig

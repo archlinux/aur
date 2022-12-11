@@ -1,0 +1,18 @@
+pkgbase = deepin-tweak-git
+	pkgdesc = A tool to optimize and tweak your Deepin system
+	pkgver = 1.1.0.g4cb9c06
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/deepin-tweak
+	arch = x86_64
+	license = LGPL3
+	makedepends = dtkgui
+	makedepends = dtkcore
+	makedepends = cmake
+	makedepends = qt5-declarative
+	makedepends = qt5-base
+	makedepends = qt5-quickcontrols2
+	depends = dtkdeclarative
+	source = git+https://github.com/linuxdeepin/deepin-tweak
+	sha256sums = SKIP
+
+pkgname = deepin-tweak-git
