@@ -1,13 +1,13 @@
 pkgname=vxl
-pkgver=2.0.2
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="VXL (the Vision-something-Libraries): a multi-platform collection of C++ software libraries for Computer Vision and Image Understanding. "
 arch=('i686' 'x86_64')
 url='https://github.com/vxl/vxl'
 depends=('libgeotiff')
 makedepends=('cmake')
 source=(https://github.com/vxl/vxl/archive/v${pkgver}.tar.gz)
-md5sums=('24fb616a55c885e821c9a049ae1b23ed')
+md5sums=('589cdbb5b4c9e6c1203dcbb707527c59')
 
 build() {
 	cd "$srcdir/vxl-${pkgver}"
