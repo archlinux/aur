@@ -1,5 +1,6 @@
 # Maintainer: Paolo Stivanin <info at paolostivanin dot com>
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Contributor: Daniil Kovalev <daniil@kovalev.website>
+
 pkgname=libbaseencode
 pkgver=1.0.12
 pkgrel=1
