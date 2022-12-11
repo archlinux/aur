@@ -3,7 +3,7 @@
 
 _pkgname=nuclei
 pkgname="${_pkgname}-bin"
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -16,10 +16,10 @@ source=("LICENSE.md::https://github.com/projectdiscovery/nuclei/raw/v${pkgver}/L
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 source_armv6h=("${_pkgname}-${pkgver}-armv6.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
-b2sums=('c699be7ccfc40564b59bfa217e254c9553678f343466becebad5017d81310d7b7519837a9a25df2e09e16b6e1bd5a209d7aeb039662a206dd8966b9697c02ede')
-b2sums_x86_64=('7379bbfeb89893e78a9c98cd63d7c396fd8d8ccf7ab91a079fad0dcc6902a7c20761bcd2fe8c82875ed3483f571499a3e35af0a1b48779abaf89b96c4ff9c4c9')
-b2sums_armv6h=('a5bf083cef55ae7b82270321ecc7b5e2a9b53125e191ed4723dbe7431e93a8f377461553b5044edcb8fce464eeaaa4e1434075e360ecd3e766fcbaa69bab4164')
-b2sums_aarch64=('d1ce388e4a458c0669e42b9a74791a18c66742e8f0faadd8f88cdb7f72fecd810f9f1f204a539c1c23a9d47f89e0287d3a25d1de3f3b1a30701b3d014ea4c69d')
+b2sums=('f35a167c00b9a6e6eb5cdd04afe410e045c7148115a9eddd5bd4f425a2dab087014ca97b8975ca4af3eb23705410b465d83c4f791e998470a444b87bc6cab9f1')
+b2sums_x86_64=('cc3caa26f309f3b3b141e859258e8f8f4ede40b04d2ff25bd3e76fb15b7662fc82c897b84a9213fb06142dd6f5729cc34a558cde562a1ef253999d65694b573a')
+b2sums_armv6h=('773d6665e450656a825e63a565a0d79a7923a1398f3fe03b476b4d4cb29a6dc5c8570bba08db51fad793709930590c9f56289bdc28e11ab758cbe5646f4d70ff')
+b2sums_aarch64=('e8bf645e33c76383e81bd4dcfdc57daeb400cd30ec8c0687f1710cfdfbd51cb25c19272d5ecbcbad39fdea40da7ee9b2de62f77681dd4e25d00d81dd8d4c93b7')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
