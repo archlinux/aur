@@ -1,4 +1,4 @@
-pkgbase = todo-mekb
+pkgbase = todo-mekb-git
 	pkgdesc = Terminal to-do list written in C
 	pkgver = r11.c60eb37
 	pkgrel = 1
@@ -7,4 +7,4 @@ pkgbase = todo-mekb
 	source = todo::git+https://github.com/mekb-turtle/todo.git
 	sha256sums = SKIP
 
-pkgname = todo-mekb
+pkgname = todo-mekb-git
