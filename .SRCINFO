@@ -1,0 +1,14 @@
+pkgbase = clipboard-bin
+	pkgdesc = Cut, copy, and paste anything in your terminal (binary version).
+	pkgver = 0.1.2R1
+	pkgrel = 1
+	url = https://github.com/Slackadays/Clipboard
+	install = clipboard.install
+	arch = x86_64
+	license = GPL3
+	provides = clipboard
+	conflicts = clipboard
+	source = clipboard-0.1.2R1-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/0.1.2R1/clipboard-linux-amd64.zip
+	sha256sums = 04e92fc973855c512c0bca661b2cd070b20ff627d3db4991836955c05f842d9a
+
+pkgname = clipboard-bin
