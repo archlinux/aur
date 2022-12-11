@@ -1,5 +1,6 @@
 # Maintainer: Paolo Stivanin <info at paolostivanin dot com>
-# Maintainer: KingofToasters <dev@sgregoratto.me>
+# Contributor: Daniil Kovalev <daniil@kovalev.website>
+
 pkgname=libcotp
 pkgver=1.2.4
 pkgrel=1
