@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = glibc
+[Action]
+Description = Update en_RU.UTF-8 locale
+Depends = locale-en_ru
+When = PostTransaction
+Exec = /usr/bin/localedef -c -i en_RU -f UTF-8 en_RU.utf8
+

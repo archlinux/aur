@@ -1,0 +1,7 @@
+post_install() {
+    localedef -c -i en_RU -f UTF-8 en_RU.utf8
+}
+
+post_upgrade() {
+  post_install
+}
