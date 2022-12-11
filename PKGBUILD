@@ -1,6 +1,6 @@
 # Maintainer: Daniel R. Güell <daniel@drguell.es>
 pkgname=masskulator
-pkgver=v0.1.9
+pkgver=v0.1.10
 pkgrel=1
 epoch=
 pkgdesc="A simple application to plot a chart with weight evolution."
@@ -9,7 +9,7 @@ url="https://www.drguell.es"
 license=('GPL')
 groups=()
 depends=(qt5-charts qt5-tools)
-makedepends=(cmake extra-cmake-modules)
+makedepends=(qmake)
 checkdepends=()
 optdepends=()
 provides=()
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
         cd "$pkgname"
-        cmake .
+        qmake .
         make
 }
 
