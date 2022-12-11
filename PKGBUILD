@@ -1,9 +1,9 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-_commit="657b7f05d687aa04b2629518d600faf5180e6ffa"
+_commit="2252964899b6da4221c7ecfe14af8eacc714b40f"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
