@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonplus
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A simple proton version manager"
 arch=('x86_64')
@@ -10,13 +10,13 @@ depends=('json-glib' 'libadwaita' 'libarchive' 'libsoup3')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22f3aa207dffe97b5d9c0ec2db5a3e245842d60a67373539496cbb4e34a5ecb9')
+sha256sums=('b09ff0015111bcd895f7bae74cb04e7dc931bda22fe7ae62b852fec1a72ddd2c')
 
 prepare() {
   cd "ProtonPlus-$pkgver"
 
   # Correct desktop file category
-  sed -i 's/Games;/Game;/g' data/com.vysp3r.ProtonPlus.desktop.in
+  sed -i 's/Games;/Game;/g' data/com.vysp3r.ProtonPlus.desktop
 }
 
 build() {
@@ -25,7 +25,11 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build
+
+  cd "ProtonPlus-$pkgver"
+  appstream-util validate-relax --nonet data/*.appdata.xml
+  desktop-file-validate data/*.desktop
 }
 
 package() {
