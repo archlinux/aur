@@ -1,6 +1,6 @@
 pkgbase = akwaita-theme-git
 	pkgdesc = A simple gnome-shell theme base on Adwaita
-	pkgver = 43.0.r0.g075b222
+	pkgver = 43.2.r0.g2efe67a
 	pkgrel = 1
 	url = https://github.com/akiirui/akwaita-theme/
 	arch = any
