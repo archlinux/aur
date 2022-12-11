@@ -1,5 +1,22 @@
 Changelog for Hummingbird
 
+Version 1.2.1 - 9 December 2022
+
+- [ProMIND] production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.1 RC 1 - 30 November 2022
+
+- [ProMIND] updated all dependencies and libraries
+- [ProMIND] package is now realeased both for OpenSSL 3.0 and OpenSSL 1.1.x (legacy)
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 - 22 March 2022
 
 - [ProMIND] production release
@@ -200,7 +217,7 @@ Version 1.0 beta 1 - 28 November 2019
 
 
 Version 1.0 alpha 2 - 7 November 2019
- 
+
 - [ProMIND] DNS resolver has now a better management of IPv6 domains
 - [ProMIND] DNS resolver has now a better management of multi IP domains
 - [ProMIND] Minor bug fixes
@@ -212,5 +229,6 @@ Version 1.0 alpha 2 - 7 November 2019
 Version 1.0 alpha 1 - 1 November 2019
 
 - [ProMIND] Initial public release
+
 
 
