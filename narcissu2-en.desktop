@@ -1,9 +1,7 @@
 [Desktop Entry]
 Type=Application
-Version=1.1
-Name=Narcissu2-en
-Comment=Free japanese visual novel game, translated into English
-Icon=narcissu2-en.png
-Exec=/usr/bin/narcissu2-en
-Terminal=false
-Categories=Application;Game;
+Name=Narcissu Side 2nd
+Exec=ponscr
+Icon=/usr/share/pixmaps/narci2
+Path=/usr/share/narcissu2-en
+Categories=Game
