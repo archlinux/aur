@@ -2,7 +2,7 @@
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 
 pkgname=libbaseencode
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 pkgdesc='C library for encoding/decoding base32 and base64 data (RFC-4648)'
 url="https://github.com/paolostivanin/libbaseencode"
@@ -13,7 +13,7 @@ makedepends=('cmake')
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('ee9d4cc198d48365633274f41bd1b0eae12f9bef49182ea20050aa68f60e09b6'
+sha256sums=('bc95a64507b4ac359eec1f858a6bdcf84c9562424d40fbea8ab00021e9b3197c'
             'SKIP')
 
 build()  {
