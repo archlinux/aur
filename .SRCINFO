@@ -1,8 +1,8 @@
 pkgbase = ly
 	pkgdesc = TUI display manager
 	pkgver = 0.5.3
-	pkgrel = 0
-	url = https://github.com/nullgemm/ly
+	pkgrel = 2
+	url = https://github.com/fairyglade/ly
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -10,19 +10,18 @@ pkgbase = ly
 	makedepends = git
 	depends = pam
 	depends = xorg-xauth
-	conflicts = ly-git
-	conflicts = python-ly-git
 	backup = etc/ly/config.ini
-	source = git+https://github.com/nullgemm/ly.git#tag=v0.5.3
+	backup = etc/ly/wsetup.sh
+	backup = etc/ly/xsetup.sh
+	source = git+https://github.com/fairyglade/ly.git#tag=v0.5.3
 	source = git+https://github.com/nullgemm/argoat.git
 	source = git+https://github.com/nullgemm/configator.git
 	source = git+https://github.com/nullgemm/dragonfail.git
 	source = git+https://github.com/nullgemm/termbox_next.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = ly
-
