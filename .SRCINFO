@@ -1,6 +1,6 @@
 pkgbase = renovate-git
 	pkgdesc = Renovate - Dependency update tool (git-latest)
-	pkgver = 34.41.1.r2.gce85e4a3f5
+	pkgver = 34.54.1.r0.g6bcdaa3ba3
 	pkgrel = 1
 	url = https://github.com/renovatebot/renovate
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = renovate-git
 	makedepends = node-gyp
 	depends = nodejs>=14
 	provides = renovate
-	conflicts = nodejs-renovate
 	source = renovate-git::git+https://github.com/renovatebot/renovate
 	sha256sums = SKIP
 

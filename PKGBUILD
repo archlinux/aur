@@ -5,14 +5,13 @@
 
 _pkgname=renovate
 pkgname=renovate-git
-pkgver=34.41.1.r2.gce85e4a3f5
+pkgver=34.54.1.r0.g6bcdaa3ba3
 pkgrel=1
 pkgdesc="Renovate - Dependency update tool (git-latest)"
 arch=(any)
 depends=('nodejs>=14')
 makedepends=('git' 'yarn' 'npm' 'node-gyp')
 provides=("${_pkgname}")
-conflicts=("nodejs-renovate")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL3')
 source=("${pkgname}::git+https://github.com/renovatebot/renovate")
