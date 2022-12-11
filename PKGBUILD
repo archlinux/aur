@@ -2,7 +2,7 @@
 
 pkgname=gcencryptor
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for gocryptfs"
 arch=('x86_64')
 url="https://github.com/Helltar/gcencryptor"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgve
         "$pkgname.svg")
 
 sha256sums=('917c0a3f42a127d5b592e3589269c3010945fd3012e910f1f7a736ef0e48eab6'
-            'd1dab86ed5bac4c284ad4cd4e0055f205db908da47a1ac2501c9b6868cfb4090'
+            'c4bfd536f2ddfd146eacaec07589bac2a2d1e6762d547ee6cfad411f0fe42c46'
             'a80d78d4a27430de2ed983eb283b16bdd519cb25a74a19447c921c326d22e8a1'
             'e51a826d7251c0014a4ee208060aea92968367d40167c2d0d8f0cef4475af728'
             '64b0bce6f048d72e91621edb5403c7d132956b85b97790b55dd9ded646fc7467')
