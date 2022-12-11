@@ -2,7 +2,7 @@
 
 pkgname=python-click-extra
 _name=${pkgname#python-}
-pkgver=3.2.5
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Extra colorization and configuration loading for Click.'
 url='https://kdeldycke.github.io/click-extra/'
@@ -12,7 +12,7 @@ checkdepends=(python-pytest python-pytest-cov python-pytest-httpserver python-py
 license=('GPL2')
 arch=('any')
 source=("https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f518dd38d9117013a2f79fe9df8cb9b418b90d50c3ff40cfbd54fbbe5a1c0b1b10c3952bbe91316430891fb7f9baaef673183c7d23ab27272c341dab836e9b10')
+sha512sums=('86bd5a6d1a4ec3440e7fc37ad02791a97e84f6750a29e319ba1a1846ddbca150811c50542b92c723eebc0049e283d7c3a266a30b8e7a8308a9b9cac6fc880f45')
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
