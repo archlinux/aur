@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=509
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -17,10 +17,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
          python-service-identity fmt pyside6)
-# NOTE: the normal python-jsmin package is unmaintained & orphan requests are
-# taking a very long time so working around it with a cheeky fork
-makedepends=(git python-jsmin-without-python2 'mkdocs>=1.3.0' mkdocs-material
-             'pymdown-extensions>=9.4')
+makedepends=(git 'mkdocs>=1.3.0' mkdocs-material 'pymdown-extensions>=9.4')
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'

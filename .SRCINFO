@@ -1,13 +1,12 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 509
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
 	license = WTFPL
 	makedepends = git
-	makedepends = python-jsmin-without-python2
 	makedepends = mkdocs>=1.3.0
 	makedepends = mkdocs-material
 	makedepends = pymdown-extensions>=9.4
