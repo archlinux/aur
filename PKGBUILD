@@ -1,7 +1,7 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="movie-rename-bin"
 _pkgname="movie-rename"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple tool to rename movies, written in Rust."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname"
 license=('GPL3')
 provides=('movie-rename')
 source=("pkg.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-b2sums=('baa7c84161b42aea331437260d38dd081e1ccd0dfb1742f74fc321f447115f09fa8d2f60a01d5664ee7a9b4afb219302105097c4e1544405e6d5959531c52687')
+b2sums=('311712935d37ea3805a276dfa63bdbad314185332f6910da089761702482dc0074bf5c82b7c7fbb2d830dfda1d919be7a61cc56b61ace7ccb437784f91c0effa')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/local/bin/$_pkgname"
