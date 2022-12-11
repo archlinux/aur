@@ -1,14 +1,14 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=violet
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Lightweight STUN/TURN server"
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('GPL') # GPLv2 or any later version
 makedepends=('git' 'cmake')
-depends=()
+depends=('libjuice')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=v$pkgver")
@@ -22,7 +22,7 @@ prepare() {
 build() {
     cd "$pkgname"
     rm -rf build
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -DUSE_SYSTEM_JUICE=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     cd build
     make
 }
