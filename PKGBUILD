@@ -2,8 +2,8 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=cshatag
-pkgver=2.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Detect silent data corruption using checksums in Ext4 extended attributes'
 arch=('x86_64')
 url="https://github.com/rfjakob/cshatag"
@@ -12,9 +12,6 @@ optdepends=('attr: Inspect extended file attributes')
 license=('MIT')
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-)
-sha256sums=(
-    'ec06106f5bff76f4d7847151b19a1fbfd6934b3a2a292ae8f7f24b0f25907195'
 )
 
 build() {
@@ -30,3 +27,5 @@ package() {
     install -vDm 644 README.md    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -vDm 644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 }
+
+sha256sums=('2187ed771e37b671abab9b4e1bae4485c41c129f68eedf2d51af8e486ffb9ae5')
