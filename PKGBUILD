@@ -3,7 +3,7 @@
 _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc')
 conflicts=(proton-caller-git)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('5e68eb565e173ace6949ff289b692ddc6fc31559120ffdbdc2c6f77b8782ac39')
+sha256sums=('e5a1624a5d62d6bb1a87217c914d9a883f51a58865db5c13deba28e7b9392466')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
