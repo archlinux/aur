@@ -28,6 +28,7 @@ validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.
 prepare() {
   cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver}"'/' dune.module
   # install header for run test/linear/test_linearsolver.cc in dumux
   sed -i '115 a install(FILES anisotropic.hh DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dune/istl/paamg/test)' dune/istl/paamg/test/CMakeLists.txt
   sed -i '8 a BUILD_ON_INSTALL' doc/CMakeLists.txt
