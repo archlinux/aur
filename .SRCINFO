@@ -1,6 +1,6 @@
 pkgbase = python-py-pde
 	pkgdesc = Python package for solving partial differential equations
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/zwicker-group/py-pde
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-py-pde
 	optdepends = python-ipywidgets: for interactive widgets
 	optdepends = python-numba-mpi: for njittable MPI wrapper
 	optdepends = python-mpi4py: for parallel processing using MPI
-	source = py-pde-0.27.0.tar.gz::https://github.com/zwicker-group/py-pde/archive/0.27.0.tar.gz
-	sha512sums = 2fd41b44367dfe215cc12d37262f1c6ca42848a4115b31d3087303163167d50c41185632e9125f7b39ee7dbf509d7dc7a2be399206ee9eb22653a1c0a9f57edc
+	source = py-pde-0.27.1.tar.gz::https://github.com/zwicker-group/py-pde/archive/0.27.1.tar.gz
+	sha512sums = 07a4932b62bd032bce5ace1d9d5c2cfc319667bb7946823cd09ba5e13a807dd3d96c348ae2286b38c4eef0f32898f278698ad9caaf500f3f87dfcbe73d351ca5
 
 pkgname = python-py-pde

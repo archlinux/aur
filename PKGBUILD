@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -17,7 +17,7 @@ optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-numba-mpi: for njittable MPI wrapper'
   'python-mpi4py: for parallel processing using MPI')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('2fd41b44367dfe215cc12d37262f1c6ca42848a4115b31d3087303163167d50c41185632e9125f7b39ee7dbf509d7dc7a2be399206ee9eb22653a1c0a9f57edc')
+sha512sums=('07a4932b62bd032bce5ace1d9d5c2cfc319667bb7946823cd09ba5e13a807dd3d96c348ae2286b38c4eef0f32898f278698ad9caaf500f3f87dfcbe73d351ca5')
 
 build() {
   cd ${_base}-${pkgver}
@@ -26,7 +26,7 @@ build() {
 }
 
 # check() {
-# cd ${_base}-${pkgver}/tests
+# cd ${_base}-${pkgver}/scripts
 # python -m venv --system-site-packages test-env
 # test-env/bin/python -m installer dist/*.whl
 # MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit # --use_mpi
