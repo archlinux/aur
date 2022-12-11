@@ -2,7 +2,7 @@
 
 _name=moderngl
 pkgname=python-$_name
-pkgver=5.7.3
+pkgver=5.7.4
 pkgrel=1
 pkgdesc='ModernGL: High performance rendering for Python 3'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python python-glcontext)
 # For python-setuptools, see here: https://aur.archlinux.org/packages/python-moderngl#comment-864201.
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('a8a43a5bd71d09f3261bb32d13ebdb4649a0e39adda01ed88346d9a443fc2ae6ab84c9da9a9c3550802e762ed2e028ea9a975b9b04a02e680120a470ee4a9a88')
+b2sums=('a71180f2e450eec248bc6388a30738902c0f035014e56b2af21ed0b8c797c579d9ccd0d971ca639dc6347cc986cd1f7e1e86a5a7f9ecdc639808963c17d1ea6c')
 
 build() {
     cd "$_name-$pkgver"
