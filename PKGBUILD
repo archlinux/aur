@@ -3,7 +3,7 @@
 
 _pkgname=aiokafka
 pkgname=python-$_pkgname
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Asyncio client for Kafka'
 arch=('x86_64')
@@ -11,9 +11,8 @@ url='https://aiokafka.readthedocs.io'
 license=('Apache')
 depends=('python-kafka')
 makedepends=('python-setuptools' 'cython')
-checkdepends=('python-pytest' 'python-gssapi')
 source=("https://github.com/aio-libs/aiokafka/archive/v$pkgver.tar.gz")
-sha256sums=('a6b9d8cb8d9e837ea38473545a2ac798e6648b5d81b22627963cbc6bd8c1dd81')
+sha256sums=('494be1172bd69032b8b49d6445c2a47f575c677df1ac8578f41f44cad1144f1a')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
