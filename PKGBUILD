@@ -3,7 +3,7 @@
 
 pkgname=raze
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
@@ -23,16 +23,9 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'kdialog: crash dialog (KDE)'
             'xorg-xmessage: crash dialog (other)')
 source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
-        '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
-            '6a0584daafa365af02dfc7b823a371e37c28a3740a47a554869888e900edb314'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
-
-prepare() {
-    cd Raze
-    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
-}
 
 build() {
     cd Raze
@@ -41,14 +34,16 @@ build() {
           -D CMAKE_BUILD_TYPE=Release \
           -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=." \
           -D DYN_GTK=OFF \
-          -D DYN_OPENAL=OFF
+          -D DYN_OPENAL=OFF \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D SYSTEMINSTALL=ON
     make -C build
 }
 
 package() {
     cd Raze
     install build/raze -t "$pkgdir"/usr/bin -D
-    install build/raze.pk3 -t "$pkgdir"/usr/lib/raze -D -m 644
+    install build/raze.pk3 -t "$pkgdir"/usr/share/raze -D -m 644
     desktop-file-install "$srcdir"/raze.desktop --dir="$pkgdir"/usr/share/applications
     install source/platform/posix/game.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/raze.xpm -D -m 644
     install package/common/buildlic.txt -t "$pkgdir"/usr/share/licenses/$pkgname -D -m 644
