@@ -7,7 +7,8 @@ arch=("x86_64")
 url="https://github.com/sonnylazuardi/${pkgname/-bin/}"
 makedepends=("binutils"
 			 "tar")
-depends=("webkit2gtk")
+depends=("openssl-1.1"
+		 "webkit2gtk")
 conflicts=('chatgpt-desktop')
 license=(MIT)
 source=("https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_${pkgver}_amd64.deb"
