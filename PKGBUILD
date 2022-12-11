@@ -3,12 +3,12 @@
 pkgname=kmsxx-git
 _pkgname=kmsxx
 pkgver=r637.adc05b6
-pkgrel=1
+pkgrel=2
 pkgdesc='C++17 library for kernel mode setting'
 arch=('armv7h' 'aarch64')
 url="https://github.com/tomba/kmsxx"
 license=('Mozilla 2.0')
-depends=(libdrm python)
+depends=(libdrm python fmt)
 makedepends=(meson ninja git cmake fmt pybind11)
 provides=('kmsxx')
 source=('git+https://github.com/tomba/kmsxx.git')

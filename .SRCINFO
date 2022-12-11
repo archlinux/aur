@@ -1,7 +1,7 @@
 pkgbase = kmsxx-git
 	pkgdesc = C++17 library for kernel mode setting
 	pkgver = r637.adc05b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomba/kmsxx
 	arch = armv7h
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = kmsxx-git
 	makedepends = pybind11
 	depends = libdrm
 	depends = python
+	depends = fmt
 	provides = kmsxx
 	source = git+https://github.com/tomba/kmsxx.git
 	b2sums = SKIP
