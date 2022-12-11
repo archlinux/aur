@@ -1,7 +1,7 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 
 pkgname=('bluez-plugins-ps3')
-pkgver=5.65
+pkgver=5.66
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -11,8 +11,7 @@ source=( https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz
          fake-ps3.patch 
 )
 
-# see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=( '2565a4d48354b576e6ad92e25b54ed66808296581c8abb80587051f9993d96d4'
+sha256sums=( '39fea64b590c9492984a0c27a89fc203e1cdc74866086efb8f4698677ab2b574'
              '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
 )
 
@@ -39,8 +38,6 @@ build() {
 
 check() {
   cd bluez-$pkgver
-  # tests segfault and hang
-#  make check || /bin/true # https://bugzilla.kernel.org/show_bug.cgi?id=196621
 }
 
 package_bluez-plugins-ps3() {
