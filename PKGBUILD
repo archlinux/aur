@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=upscaler
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Upscale and enhance images"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'realesrgan-ncnn-vulkan-bin')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-_commit=f236353b65edd3581482a2e69e77be254dddbb34 # tags/1.1.1^0
+_commit=5aaab9ccaf56b3c7a0eb7d1dbba372d8ff970d69 # tags/1.1.2^0
 _source=Upscaler
 source=("git+$url.git#commit=$_commit")
 b2sums=('SKIP')
