@@ -2,9 +2,9 @@
 # Maintainer: Plaunarome <plaunarome@protonmail.com>
 
 _name="multi-account-containers"
-_l10n_version=f3da295d004b7d6314c5baa321d9a5418ec937d9
+_l10n_version=837c56a671eadd18a43482e998410d107cb4144c
 pkgname=firefox-extension-multi-account-containers
-pkgver=8.0.7
+pkgver=8.0.9
 pkgrel=1
 pkgdesc="Keep parts of your online life separated into color-coded tabs"
 arch=("any")
@@ -17,8 +17,8 @@ source=(
 	"https://github.com/mozilla-l10n/${_name}-l10n/archive/${_l10n_version}.tar.gz"
 )
 sha512sums=(
-	'7ac385708ab36c88fe6fdc0d362b7d1b703ebe7d6fa561a12f36cd0b410754cdb2f4ce414959b366449bb36ba365d5216a98deb820c15d29917e35b578879d41'
-	'ae8d21be84b29337ba3b1377368a33e290323e7a445a305adc10beae2317775b539837e0272014c5f3f28348ddd9a6bbfff04aa60e5d64b826878ae44e8cd8ce'
+	'4ec3cc36ba7d2158c50855b2a065f415ccdbf43bb6185fbe9648b59a19ea3a6d83662e7ff857c91d3874732e2915aeddaeb1248753d7d5bed06dd679523351f1'
+	'c1850e584486758f164e4dbe459a9b39b06dbe5f1ce45804dad39b1bfa7abb8eae649ff75683742bfdbcce6abaf2ea5ef38b4e17690f28b1bb0960477b427622'
 )
 
 build() {
