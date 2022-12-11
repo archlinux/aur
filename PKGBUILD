@@ -1,28 +1,36 @@
-# Maintainer: syntheit <daniel@matv.io>
-pkgname=icu71-bin
-pkgver=71.1
-pkgrel=1
-pkgdesc="International Components for Unicode library (binary release)"
+# Maintainer: éclairevoyant
+# Contributor: syntheit <daniel at matv dot io>
+
+_major=71
+_gitname=icu
+_pkgname=$_gitname$_major
+pkgname="$_pkgname-bin"
+pkgver="$_major.1"
+pkgrel=2
+pkgdesc="International Components for Unicode library"
 arch=('x86_64')
 url="https://github.com/unicode-org/icu"
 license=('custom:icu')
-provides=('icu71')
-depends=('bash')
-source=("https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-Fedora32-x64.tgz")
-sha512sums=('ed3cf1aa7fcbf6e7f10d1a873876d8b493f338bf839086da0bf1ef1df9dae2f635b8e80ba70159a1d243a423aef99108bc2a03046fd63f28599429d9dcdae38e')
+depends=('gcc-libs' 'sh')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$url/releases/download/release-${pkgver/./-}/icu4c-${pkgver/./_}-Fedora32-x64.tgz")
+b2sums=('06521e0193d1cdae93fc8aa1097be8cb4f61dac33bae0839490ba6a4ff8d455a3c12f6210b967d8f1bf8930090cc05d4eeafda6427179e3367fff532b8dd17a0')
+
+_src_libdir=icu/usr/local/lib
+
+prepare() {
+	# prevent conflicts with other versions of icu
+	rm -rf $_src_libdir/{icu,pkgconfig}
+	_solist=('data' 'i18n' 'io' 'test' 'tu' 'uc')
+	for _i in ${_solist[@]}; do
+		rm $_src_libdir/libicu$_i.so
+	done
+}
 
 package() {
-    tar xf icu4c-71_1-Fedora32-x64.tgz
-    # Remove certain files if icu is installed to not cause conflicts
-    rm -rf "${srcdir}"/icu/usr/local/lib/icu  "${srcdir}"/icu/usr/local/lib/pkgconfig
-    for filename in "${srcdir}"/icu/usr/local/lib/*.so; do
-		if [[ ! -e "$filename" ]]; then continue; fi
-        if [[ -e "/usr/lib/${filename##*/}" ]]; then
-            rm -rf "${filename}"
-        fi
-    done
-    mkdir -p "${pkgdir}"/usr/{share,lib}
-    mkdir -p "${pkgdir}"/usr/share/licenses/icu69
-    cp -rn "${srcdir}"/icu/usr/local/lib/* -t "${pkgdir}"/usr/lib/
-    install -Dm644 "${srcdir}"/icu/usr/local/share/icu/69.1/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+	cd $_src_libdir
+	install -Dm644 * -t "$pkgdir/usr/lib/"
+	install -Dm644 ../share/$_gitname/$pkgver/LICENSE \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
