@@ -1,6 +1,6 @@
 pkgname=ponscripter
 pkgver=`curl -s https://api.github.com/repos/07th-mod/ponscripter-fork/releases/latest|grep tag_name|cut -d\" -f4`
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
 arch=(x86_64 aarch64)
@@ -16,6 +16,6 @@ build(){
 }
 package(){
 	cd $pkgname-fork
-	install src/ponscr -D "$pkgdir"/usr/bin/$pkgname
+	install src/ponscr -Dt "$pkgdir"/usr/bin
 	install BUGS CHANGES MANUAL README.md TODO -Dt "$pkgdir"/usr/share/doc/$pkgname
 }
