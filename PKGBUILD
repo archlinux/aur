@@ -21,7 +21,7 @@ validpgpkeys=('2AA99AA4E2D6214E6EA01C9A4AF42916F6E5B1CF') # Christoph Grüninger
 
 prepare() {
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  sed -i 's/^Version: '"${pkgver}"'-git/Version: '"${pkgver}"'/' ${pkgname}-${pkgver}/dune.module
+  sed -i 's/^Version: '"${pkgver%%.0}"'-git/Version: '"${pkgver}"'/' ${pkgname}-${pkgver}/dune.module
   # install header for run test/assembletransferoperatortest.cc in fufem
   sed -i '/        rannacherturekbasis.hh/a         raviartthomasbasis.hh' ${pkgname}-${pkgver}/dune/functions/functionspacebases/CMakeLists.txt
   # install header for run test/assembletransferoperatortest.cc in fufem
