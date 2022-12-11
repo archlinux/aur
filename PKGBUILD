@@ -2,7 +2,7 @@
 
 pkgname=arenatracker-bin
 _pkgname=ArenaTracker
-pkgver=22.10
+pkgver=22.12.01
 pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -26,6 +26,6 @@ package() {
 	ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-md5sums=('7e3f13018ea866c4d0e190f027266fdd'
+md5sums=('2fbcbf36ba1c3408bcd7e071dd0eb62a'
          '926afbd5024076726f89aa5eb8937a31'
          '57c93a7a9550450ee5d1d757a3b228fd')
