@@ -1,6 +1,6 @@
 pkgname=chatgpt-git
 pkgver=r421.a57bad7
-pkgrel=3
+pkgrel=4
 pkgdesc=" Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API. "
 arch=('x86_64')
 url="https://github.com/acheong08/ChatGPT"
@@ -14,6 +14,9 @@ pkgver() {
 }
 package(){
   cd "$srcdir/$pkgname"
-  mkdir "$pkgdir/usr"
-  pip install --prefix "$pkgdir/usr" .
+  mkdir "$pkgdir"/usr
+  pip install --user --root "$pkgdir" .
+  mv "$pkgdir"/home/.local/lib "$pkgdir"/usr
+  mv "$pkgdir"/home/.local/bin "$pkgdir"/usr
+  rm -rf "$pkgdir"/home
 }
