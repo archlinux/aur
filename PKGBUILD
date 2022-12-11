@@ -1,11 +1,11 @@
 pkgname=chatgpt-git
 pkgver=r421.a57bad7
-pkgrel=2
+pkgrel=3
 pkgdesc=" Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API. "
 arch=('x86_64')
 url="https://github.com/acheong08/ChatGPT"
 license=('GPL2')
-makedepends=('git' 'python-setuptools' 'pip')
+makedepends=('git' 'python-setuptools' 'python-pip')
 source=("$pkgname::git+https://github.com/acheong08/ChatGPT")
 md5sums=('SKIP')
 pkgver() {
