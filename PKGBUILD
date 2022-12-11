@@ -13,7 +13,8 @@ groups=(kde-applications-git kde-graphics-git)
 depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt6-git purpose-git perl kimageannotator qt6-svg qt6-wayland)
 optdepends=('qt6-imageformats: support for tiff, webp, and more image formats'
             'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
-            'kamera-git: import pictures from gphoto2 cameras')
+            'kamera-git: import pictures from gphoto2 cameras'
+            'libjxl')
 makedepends=(git extra-cmake-modules-git kdoctools-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
