@@ -1,13 +1,13 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap
-pkgver="0.2.1"
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc='a simplistic papermc helper'
 url='https://github.com/talwat/pap'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/talwat/pap/archive/v$pkgver.tar.gz")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-sha256sums=('f9b3402800c374c5b34042a4985c4a38239a8e7228bb96a127a39001ca70dcec')
+sha256sums=('605177cf9acf3ad37556c52bed3956309d9a93abf209370a8a1978262cc5b699')
 makedepends=('go')
 depends=('git' 'pacman')
 
