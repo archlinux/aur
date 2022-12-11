@@ -1,0 +1,24 @@
+pkgbase = deepin-introduction-git
+	pkgdesc = Deepin Introduction
+	pkgver = 5.6.0.2.ge78967c
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-introduction
+	arch = x86_64
+	license = LGPL3
+	makedepends = dtkgui
+	makedepends = dtkcore
+	makedepends = qt5-tools
+	makedepends = gtest
+	depends = dtkdeclarative
+	depends = libdrm
+	depends = dbus
+	depends = ffmpegthumbnailer
+	depends = qt5-multimedia
+	depends = gsettings-qt
+	depends = deepin-movie
+	provides = deepin-introduction
+	provides = dde-introduction
+	source = git+https://github.com/linuxdeepin/dde-introduction
+	sha256sums = SKIP
+
+pkgname = deepin-introduction-git
