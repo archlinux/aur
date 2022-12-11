@@ -1,7 +1,7 @@
 pkgbase = r-plotgardener
 	pkgdesc = Coordinate-Based Genomic Visualization Package for R
-	pkgver = 1.4.1
-	pkgrel = 3
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://bioconductor.org/packages/plotgardener
 	arch = x86_64
 	license = MIT
@@ -37,7 +37,7 @@ pkgbase = r-plotgardener
 	optdepends = r-showtext
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/plotgardener_1.4.1.tar.gz
-	sha256sums = 474da544bb73aeeaef742cc4d3d119cc5934f458ffad7c5b15f8d9135233b77d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/plotgardener_1.4.2.tar.gz
+	sha256sums = 5e722ee48c4a14ce9ecf30791bafbc858943d7866249c4f0f876ac38242c3631
 
 pkgname = r-plotgardener
