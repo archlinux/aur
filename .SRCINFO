@@ -1,18 +1,24 @@
 pkgbase = rime-flypy
-	pkgdesc = 小鹤音形 rime 挂接文件
-	pkgver = 10.9.3.1
+	pkgver = 10.9.3.2
 	pkgrel = 2
 	url = http://flypy.com/
-	install = rime-flypy.install
 	arch = x86_64
 	license = unknown
+	makedepends = libime
 	makedepends = librime
+	makedepends = python
 	makedepends = rime-prelude
+	source = rime-flypy-10.9.3.2.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.9.3.2.tar.gz
+	sha256sums = 318cb75dee4075e44b09b1e064cc3d4a0dd985cc60102605d8e20a53e4dcc01d
+
+pkgname = rime-flypy
+	pkgdesc = 小鹤音形 rime 挂接文件
+	install = rime-flypy.install
+	depends = rime-lua-hook
 	optdepends = ibus-rime: input support
 	optdepends = fcitx-rime: input support
 	optdepends = fcitx5-rime: input support
-	source = rime-flypy-10.9.3.1.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.9.3.1.tar.gz
-	sha256sums = 8dcee2fb9ae5e512b1ac0109ae468d3a65ab018b1c51c2d7db6f6758c6b9bf12
 
-pkgname = rime-flypy
-	depends = rime-lua-hook
+pkgname = fcitx5-flypy
+	pkgdesc = 小鹤音形 fcitx5 码表
+	depends = fcitx5-chinese-addons

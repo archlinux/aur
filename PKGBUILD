@@ -1,19 +1,15 @@
 # Maintainer: cubercsl <2014cais01 at gmail dot com>
 
-pkgname=rime-flypy
-pkgver=10.9.3.1
+pkgbase=rime-flypy
+pkgname=('rime-flypy' 'fcitx5-flypy')
+pkgver=10.9.3.2
 pkgrel=2
-pkgdesc="小鹤音形 rime 挂接文件"
 arch=('x86_64')
 url="http://flypy.com/"
 license=('unknown')
-makedepends=('librime' 'rime-prelude')
-optdepends=('ibus-rime: input support'
-            'fcitx-rime: input support'
-            'fcitx5-rime: input support')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
-sha256sums=('8dcee2fb9ae5e512b1ac0109ae468d3a65ab018b1c51c2d7db6f6758c6b9bf12')
-install="$pkgname.install"
+makedepends=('libime' 'librime' 'python' 'rime-prelude')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v$pkgver.tar.gz")
+sha256sums=('318cb75dee4075e44b09b1e064cc3d4a0dd985cc60102605d8e20a53e4dcc01d')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -22,11 +18,27 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    # build rime table
     make PREFIX=/usr "DESTDIR=$pkgdir"
+
+    # build fcitx5 table
+    make -C fcitx5 PREFIX=/usr "DESTDIR=$pkgdir"
 }
 
-package() {
+package_rime-flypy() {
+    pkgdesc="小鹤音形 rime 挂接文件"
     depends=('rime-lua-hook')
-    cd "$srcdir/$pkgname-$pkgver"
+    optdepends=('ibus-rime: input support'
+                'fcitx-rime: input support'
+                'fcitx5-rime: input support')
+    install="$pkgname.install"
+    cd "$srcdir/$pkgbase-$pkgver"
     make PREFIX=/usr "DESTDIR=$pkgdir" install
+}
+
+package_fcitx5-flypy() {
+    pkgdesc="小鹤音形 fcitx5 码表"
+    depends=('fcitx5-chinese-addons')
+    cd "$srcdir/$pkgbase-$pkgver"
+    make -C fcitx5 PREFIX=/usr "DESTDIR=$pkgdir" install
 }
