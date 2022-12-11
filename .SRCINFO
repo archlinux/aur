@@ -5,7 +5,7 @@ pkgbase = masskulator
 	url = https://www.drguell.es
 	arch = x86_64
 	license = GPL
-	makedepends = qmake
+	makedepends = qt5-base
 	depends = qt5-charts
 	depends = qt5-tools
 	source = masskulator::git+https://gitlab.com/drguell/masskulator.git#tag=v0.1.10
