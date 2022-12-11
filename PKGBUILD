@@ -8,8 +8,8 @@ pkgdesc="A tool to view system logs"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-log-viewer"
 license=('LGPL3')
-provides=('deepin-log-viewer' 'dtkwidget')
-depends=('dtkdeclarative' 'polkit-qt5')
+provides=('deepin-log-viewer')
+depends=('dtkdeclarative' 'polkit-qt5' 'dtkwidget')
 makedepends=('dtkgui' 'dtkcore' 'qt5-quickcontrols2' 
              'qt5-declarative' 'qt5-base' 'cmake' 
              'rapidjson' 'xerces-c' 'gtest' 'boost'

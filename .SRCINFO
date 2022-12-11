@@ -21,8 +21,8 @@ pkgbase = deepin-log-viewer-git
 	makedepends = qt5-tools
 	depends = dtkdeclarative
 	depends = polkit-qt5
+	depends = dtkwidget
 	provides = deepin-log-viewer
-	provides = dtkwidget
 	source = git+https://github.com/linuxdeepin/deepin-log-viewer
 	sha256sums = SKIP
 
