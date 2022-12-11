@@ -1,18 +1,18 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
-# Warning: If you are downgrading from the development branch (Wine ≥ 7.1,
+# Warning: If you are downgrading from the development branch (Wine ≥ 8.1,
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable
-_pkgver=7.0.1
+pkgname=wine-stable-next
+_pkgver=8.0-rc1
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/7.0/wine-$_pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/8.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-b2sums=('9bf74e7077fe4b77611f8195feeb53fc6475bdaeac97dab5221942115d6108d8786f93d4a96745bad72afb074b15129fec9b0b2f10261d91c9a9b57bd2240ded'
+b2sums=('48bcf72fead8e8bb1dc324631045f5577aeb5a59809022085090f729b96db87986218dcf12b52fac167317058684855d8622da77dda5709a38d9ef8607c3f2df'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
         'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
@@ -94,11 +94,11 @@ optdepends=(
   v4l-utils              lib32-v4l-utils
   vkd3d                  lib32-vkd3d
   vulkan-icd-loader      lib32-vulkan-icd-loader
-  wine-stable-mono
+  wine-mono
 )
 
-provides=("wine=$pkgver")
-conflicts=("wine")
+provides=(wine=$pkgver wine-stable=$pkgver)
+conflicts=(wine wine-stable)
 
 prepare() {
   # Allow ccache to work
