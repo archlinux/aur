@@ -2,13 +2,13 @@
 _projectname='uucd'
 pkgname="ocaml-$_projectname"
 pkgver='15.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unicode character database decoder for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
-depends=('ocaml>=4.01.0')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam' 'ocaml-xmlm')
+depends=('ocaml>=4.01.0' 'ocaml-xmlm')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=1.0.3' 'opam')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
 sha512sums=('771d877e2d1a61b0db637c4ff7b1e820786739226254facec2bdac97fd7b9f6ac9ed5041d310e425b941bfcc47912c806d0d2db4168a69fb0bd418c0025817bb')
