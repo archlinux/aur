@@ -1,7 +1,7 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
 	pkgver = 0.1.2R1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
 	arch = aarch64

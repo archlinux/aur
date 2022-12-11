@@ -3,7 +3,7 @@
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.1.2R1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Slackadays/Clipboard"
@@ -22,5 +22,5 @@ build () {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	ln -s "${pkgdir}/usr/bin/clipboard" "${pkgdir}/usr/bin/cb"
+	ln "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/cb"
 }
