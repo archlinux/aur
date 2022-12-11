@@ -2,7 +2,7 @@
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Linux下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron并利用UOS请求头修复了登陆问题."
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
 )
 noextract=()
 md5sums=(
-	'56e85109b5bcf72ef8439aec054b204d'
+	'd3e16fb968b3127a7e1d0c337f8849a7'
 	'600e74549ce2258c045d5c2f7689ea63'
 	'53d796e5a7c8c488998afdf5fb9020fe'
 )

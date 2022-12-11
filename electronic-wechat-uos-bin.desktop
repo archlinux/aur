@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment=A better WeChat on Linux
 Exec=electronic-wechat-uos-bin %u
-Icon=electronic-wechat-uos-bin
+Icon=wechat
 Name=微信
 Categories=Utility;
 StartupNotify=true
