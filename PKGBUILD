@@ -3,7 +3,7 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.7.1.r4.gc1f6119
+pkgver=1.8.r0.g45a689a
 pkgrel=1
 epoch=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
@@ -26,12 +26,13 @@ optdepends=(
   'python-beautifulsoup4: conversion of HTML'
   'python-cryptography: better support of TOFU client certificates'
   'python-feedparser: required to parse RSS and Atom feeds'
+  'python-pillow: image manipulation'
   'python-readability-lxml: conversion of HTML'
   'python-requests: for HTTP support'
   'python-setproctitle: allows offpunk to change its process title'
   'timg: view images and videos in the terminal'
-  'xsel: copies text to and from the clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
+  'xsel: copies text to and from the clipboard'
 )
 provides=('offpunk')
 conflicts=(
