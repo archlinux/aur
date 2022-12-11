@@ -23,5 +23,5 @@ provides=('pap')
 depends=('git' 'pacman')
 
 package() {
-  install -Dm755 ${pkgname}_${pkgver}_linux_* "${pkgdir}"/usr/bin/$pkgname
+  install -Dm755 pap_${pkgver}_linux_* "${pkgdir}"/usr/bin/pap
 }
