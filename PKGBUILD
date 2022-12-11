@@ -15,5 +15,6 @@ pkgver() {
 package(){
   cd "$srcdir/$pkgname"
   python setup.py build
-  python setup.py install --prefix "$pkgdir"
+  mkdir "$pkgdir/usr"
+  python setup.py install --prefix "$pkgdir/usr"
 }
