@@ -1,14 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=stable-diffusion-intel
-pkgver=20220906
-pkgrel=4
+pkgver=20220908
+pkgrel=1
 pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
 license=(Apache2)
-depends=(openvino python-diffusers python-ftfy python-huggingface-hub python-numpy python-opencv python-scipy python-streamlit python-tqdm python-transformers python-watchdog)
-source=("git+$url#commit=294dd34234f0629f69d5af5b1190841560242969")
+makedepends=(git)
+depends=(openvino python-diffusers python-ftfy python-huggingface-hub python-numpy python-opencv python-pytorch python-scipy python-streamlit python-tqdm python-transformers python-watchdog)
+source=("git+$url#commit=72d3ad67f078b25bc5ae191f6e49078cebd1f791")
 b2sums=(SKIP)
 
 prepare() {
