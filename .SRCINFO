@@ -1,6 +1,6 @@
 pkgbase = biobambam
 	pkgdesc = BAM file pre-processing utilities for bioinformatics.
-	pkgver = 2.0.184_release_20220919134840
+	pkgver = 2.0.185_release_20221211202123
 	pkgrel = 1
 	url = https://github.com/gt1/biobambam2
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = biobambam
 	makedepends = autoconf
 	makedepends = make
 	makedepends = boost
-	source = https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.184-release-20220919134840/biobambam2-2.0.184-release-20220919134840.tar.gz
-	sha256sums = e64a2eb261ff8af270ba541e67793a93c440c3691eee6aa40beae97ba68578c0
+	source = https://gitlab.com/german.tischler/biobambam2/-/archive/2.0.185-release-20221211202123/biobambam2-2.0.185-release-20221211202123.tar.gz
+	sha256sums = e405421e869ac7220c3a7e5da0d24a3c7b4c7b1807e044a439fe68efc88a1f2a
 
 pkgname = biobambam
