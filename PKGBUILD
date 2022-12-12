@@ -3,7 +3,7 @@
 pkgbase='python-aocd'
 pkgname=('python-aocd')
 _module='advent-of-code-data'
-pkgver='1.3.1'
+pkgver='1.3.2'
 pkgrel=1
 pkgdesc="Get your puzzle data with a single import"
 url="https://github.com/wimglenn/advent-of-code-data"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('552e7886c193c52cac71f14ef55c5d7cc1c7ebd0e9e2271be37b01df739f92cc')
+sha256sums=('890077ab858082bad28b4225e0c6059ac1e6fd088cb26ccfe07f5c6c3b0a530b')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
