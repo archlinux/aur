@@ -5,12 +5,13 @@
 
 pkgname=etl-dev
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VoriaETL: C++ STL complementory multiplatform template library"
 arch=(x86_64 armv7h armv8 riscv32 riscv64)
 url="http://synfig.org"
 license=('GPL2')
 depends=()
+makedepends=('glibmm')
 conflicts=('synfig-etl' 'etl')
 replaces=('synfig-etl')
 provides=('etl')
