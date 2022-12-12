@@ -3,7 +3,7 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 pkgname=zrythm-git
 pkgver=1.0.0.beta.4.5.1.r0.g98b783630
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('lilv' 'libx11' 'libsndfile' 'libsamplerate' 'alsa-lib' 'fftw'
          'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
-         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd')
-makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
+         'xxhash' 'vamp-plugin-sdk' 'carla-git' 'gtk4' 'guile' 'libadwaita' 'gtksourceview5' 'pcre' 'libpulse' 'curl' 'libaudec' 'json-glib' 'libcyaml' 'reproc' 'libpanel' 'boost' 'lsp-dsp-lib' 'zstd' 'sassc')
+makedepends=('python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
              'ladspa' 'lv2' 'cmake')
 optdepends=('portaudio: portaudio backend'
