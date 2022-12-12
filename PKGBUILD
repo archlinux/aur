@@ -8,7 +8,7 @@
 # Contributor : Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync-nopdfium
-pkgver=4.7.3.0
+pkgver=4.8.1.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "ffmpeg.patch")
 sha256sums=('SKIP'
             'SKIP'
-			'bc8a8460c967d084e2643431dbb06c03897f1944a0e899318fc78b611f9255e6')
+            'bc8a8460c967d084e2643431dbb06c03897f1944a0e899318fc78b611f9255e6')
 
 prepare() {
     cd "MEGAsync"
