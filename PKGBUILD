@@ -1,8 +1,8 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=givemebadge-git
 _pkgname=givemebadge
-pkgver=1.0.5+r6+g96a115c
-pkgrel=2
+pkgver=53514fc
+pkgrel=1
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
@@ -16,13 +16,14 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+	git describe --tags --always | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
 prepare() {
 	cd "$_pkgname"
 	export PATH=${HOME}/.local/bin:${PATH}
 	pip install -r requirements.txt
+	pip install pyinstaller
 }
 
 build() {
