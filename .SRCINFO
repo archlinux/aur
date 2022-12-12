@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
 	pkgver = 1.46.140
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = BSD
@@ -53,6 +53,7 @@ pkgbase = brave
 	depends = opus
 	depends = harfbuzz
 	depends = re2
+	depends = libavif
 	depends = jsoncpp
 	depends = libxslt
 	depends = libpng

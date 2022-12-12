@@ -29,7 +29,7 @@
 
 pkgname=brave
 pkgver=1.46.140
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
@@ -138,7 +138,7 @@ declare -gA _system_libs=(
     [icu]=icu
     [jsoncpp]=jsoncpp
     [libaom]=aom
-    #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/d22d4de94120
+    [libavif]=libavif
     [libdrm]=
     [libjpeg]=libjpeg
     [libpng]=libpng
@@ -160,7 +160,6 @@ for _dep in "${_system_libs[@]}"; do
 done
 
 prepare() {
-
   cd chromium-launcher-$_launcher_ver
   patch -Np1 -i ../chromium-launcher-electron-app.patch
 
@@ -248,14 +247,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch"
   patch -Np1 -i "${srcdir}/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
   patch -Np1 -i "${srcdir}/chromium-icu72.patch"
   patch -Np1 -d v8 <"${srcdir}/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch"
-
-  # Revert kGlobalMediaControlsCastStartStop enabled by default
-  # https://crbug.com/1314342
-  patch -Rp1 -F3 -i "${srcdir}/REVERT-enable-GlobalMediaControlsCastStartStop.patch"
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
@@ -263,15 +257,15 @@ prepare() {
   # Revert switch from AVFrame::pkt_duration to AVFrame::duration
   patch -Rp1 -i "${srcdir}/REVERT-roll-src-third_party-ffmpeg-m106.patch"
 
+  # Disable kGlobalMediaControlsCastStartStop by default
+  # https://crbug.com/1314342
+  patch -Np1 -i "${srcdir}/disable-GlobalMediaControlsCastStartStop.patch"
+
   # https://crbug.com/angleproject/7582
   patch -Np0 -i "${srcdir}/angle-wayland-include-protocol.patch"
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i "${srcdir}/patches/chromium-103-VirtualCursor-std-layout.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-107-compiler.patch"
-
-  # Sysroot usage in autocxx for Rust
-  patch -Np1 -i "${srcdir}/rust-autocxx-use_sysroot.patch"
 
   # Hacky patching
   sed -e 's/\(enable_distro_version_check =\) true/\1 false/g' -i chrome/installer/linux/BUILD.gn
