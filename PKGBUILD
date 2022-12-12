@@ -4,7 +4,7 @@
 
 pkgname='koi-git'
 _pkgname='koi'
-pkgver=0.2.3.r1.gf24d599
+pkgver=0.2.3.r6.g386c0fe
 pkgrel=1
 pkgdesc="Switch between light and dark themes on KDE Plasma"
 arch=('x86_64' 'aarch64')
@@ -35,9 +35,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -D "src/build/bin/koi" "$pkgdir/usr/bin/koi"
-    install -Dm644 "src/koi.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "src/resources/icons/koi.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
-    install -Dm644 "src/resources/icons/koi_tray.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}_tray.svg"
+    cd "$srcdir/$pkgname/src/build"
+    make DESTDIR="$pkgdir" install
 }
