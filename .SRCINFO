@@ -1,0 +1,20 @@
+pkgbase = directfb2-eglgbm-git
+	pkgdesc = EGL system module for DirectFB2 and supported on GBM (Generic Buffer Manager) platforms.
+	pkgver = r7.c8d58a3
+	pkgrel = 1
+	url = https://directfb2.github.io/
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = flux-git
+	depends = directfb2-git
+	source = directfb2-eglgbm::git+https://github.com/directfb2/DirectFB2-eglgbm.git
+	sha256sums = SKIP
+
+pkgname = directfb2-eglgbm-git
