@@ -4,12 +4,12 @@
 
 pkgname=libical
 pkgver=3.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format"
 arch=('x86_64')
 url='https://github.com/libical/libical'
 license=('LGPL' 'MPL')
-depends=('glibc' 'glib2' 'icu' 'db' 'libxml2')
+depends=('glibc' 'glib2' 'icu' 'libxml2')
 makedepends=('cmake' 'ninja' 'gtk-doc' 'doxygen' 'vala' 'gobject-introspection')
 checkdepends=('python-gobject')
 options=('debug')
@@ -23,7 +23,8 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DGOBJECT_INTROSPECTION=true \
     -DICAL_GLIB_VAPI=true \
-    -DSHARED_ONLY=true
+    -DSHARED_ONLY=true \
+    -DCMAKE_DISABLE_FIND_PACKAGE_BerkeleyDB=true
   cmake --build build
 }
 
