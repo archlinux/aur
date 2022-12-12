@@ -2,13 +2,13 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_version=1.0+954
-_url=https://download.jitsi.org/stable/jicofo_1.0-954-1_all.deb
+_version=1.0+968
+_url=https://download.jitsi.org/stable/jicofo_1.0-968-1_all.deb
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -64,8 +64,8 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('53140a28301543e0611a8e9c390eb777d9ed2f58bec10d477ece7d2f969f52c4'
-            '7f11758428c2a9d4d03302d7286984a5ecbc060ee1e89a2e5535c8e78d876a12'
+sha256sums=('4da212f85a738dd00ed9ba9837d6de30dc094ce706990332e3da6094acf3e9f4'
+            '720565487c27727fc18cd37e844a62a0877d55d1d0e14ff838690e9a9a475ace'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '0b28a97f02b21991c46e05a3546d466a73492c88218121e68aa3ea28f848091b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
