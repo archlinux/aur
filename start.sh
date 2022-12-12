@@ -5,6 +5,7 @@ CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 FONTCONFIG_DIR="$CONFIG_DIR/fontconfig"
 QQ_APP_DIR="${CONFIG_DIR}/QQ"
 DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
+NEW_DISPLAY="$DISPLAY"
 if [ "$DOWNLOAD_DIR" == "$HOME" ]; then DOWNLOAD_DIR="$HOME/Downloads"; fi
 
 mkdir -p "$QQ_APP_DIR"
@@ -26,12 +27,13 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --bind "$USER_RUN_DIR" "$USER_RUN_DIR" \
     --ro-bind-try /etc/fonts /etc/fonts \
     --ro-bind-try "$FONTCONFIG_DIR" "$FONTCONFIG_DIR" \
-    --bind /tmp /tmp \
-    --bind "$HOME/.pki" "$HOME/.pki" \
-    --ro-bind "$HOME/.Xauthority" "$HOME/.Xauthority" \
-    --bind "${DOWNLOAD_DIR}" "${DOWNLOAD_DIR}" \
+    --dev-bind /tmp /tmp \
+    --bind-try "$HOME/.pki" "$HOME/.pki" \
+    --ro-bind-try "$XAUTHORITY" "$XAUTHORITY" \
+    --bind "$DOWNLOAD_DIR" "$DOWNLOAD_DIR" \
     --bind "$QQ_APP_DIR" "$QQ_APP_DIR" \
     --setenv IBUS_USE_PORTAL 1 \
+    --setenv DISPLAY "$NEW_DISPLAY" \
     /opt/QQ/qq "$@"
 
 # 移除无用崩溃报告和日志
