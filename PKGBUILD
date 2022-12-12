@@ -12,8 +12,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671' '2702')
-_merge_requests_to_use=('1441' '1880' '2671' '2702')
+# Merge Requests List: ('579' '1441' '1880' '2671' '2702' '2751')
+_merge_requests_to_use=('1441' '1880' '2671' '2702' '2751')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -32,7 +32,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -51,12 +51,14 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr1441.patch'
         'mr1880.patch'
         'mr2702.patch'
-        'mr2671.patch')
+        'mr2671.patch'
+        'mr2751.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
             '65981409a5fc5ebfa95c7178f588cb2564f405cf55cbc7a315ecd4ac6c892b1c'
             '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
-            'dc0520fd8e9e9d4e76ebfe9e95f72f25bad18a149d04db9d0d35806f1903326c')
+            '3737094e4d9c71b31a7e38922ad67d64e77a78524e492ecc9fc4172e129c9acc'
+            'dfa55caa40e970fca74e68a74d104db92438950b4fc954717963b857e4cd28f1')
 
 pkgver() {
   cd $pkgname
@@ -167,6 +169,16 @@ prepare() {
   # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
   # NOTE: This changes mutter's behaviors, which can bring regressions when using some extensions.
   pick_mr '2671' 'mr2671.patch' 'patch'
+
+  # Title: [43] tiling: Skip the resize effect for tiled windows during user grabs
+  # Author: Michael Webster <miketwebster@gmail.com>
+  # Author: Robert Mader <robert.mader@posteo.de>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2751
+  # Type: 1
+  # Status: 2
+  # Comment: The incremental changes don't need to be animated.
+  #          Closes: #2246 (closed)
+  pick_mr '2751' 'mr2751.patch' 'patch'
 
 }
 
