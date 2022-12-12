@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.5.0"
+_pkg_ver="16.7.0"
 _commit="6cd58652c0c3b9e3fef1e3f5e9411aa213b623bf"
 
 # ctags submodule
@@ -89,7 +89,7 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('2e36498eff3051780fb93c0fd8c4b723a2461ed72cbd3394317f2481ed48f24a'
+sha256sums=('c67f2c2db539cec702a7a7e8b2fc095d182e69b78c10c68dfd64dfd97b48b1ff'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
             'b8feff844f0d355b7a5d2b04906be6e688021a66b9d7ed55a18d9f97cae47208'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
