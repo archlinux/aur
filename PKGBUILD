@@ -2,12 +2,12 @@
 
 pkgname=lb-planner
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a Planning tool for students at the TGM Vienna'
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
 license=('CC-NC-SA 4.0')
-depends=('gtk3' 'xz') #TODO: check if xz is actually needed or just a precaution by the flutter devs
+depends=('gtk3' 'xz' 'xdg-user-dirs') #TODO: check if xz is actually needed or just a precaution by the flutter devs
 makedepends=('cmake' 'clang' 'ninja' 'fvm-bin' 'pkgconf' 'gtk3' 'xz') #TODO: contact maintainer of fvm-bin to add provides=('fvm')
 source=(
 	"$pkgname::git+https://github.com/necodeIT/lb_planner.git#tag=f${pkgver}"
