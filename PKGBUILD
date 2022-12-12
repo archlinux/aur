@@ -12,11 +12,11 @@ license=('Apache2')
 depends=()
 provides=('manifest-tool' 'manifest-tool-bin')
 conflicts=('manifest-tool' 'manifest-tool-git' 'manifest-tool-bin')
-source=("https://github.com/estesp/manifest-tool/releases/download/v2.0.6/binaries-manifest-tool-2.0.6.tar.gz")
+source=("https://github.com/estesp/manifest-tool/releases/download/v${pkgver}/binaries-manifest-tool-${pkgver}.tar.gz")
 sha256sums=('4d8a502f2d3b82a50cfde65274ff6df7ef6fe441dc65b96b595a70cc64ece5bc')
 
 build () {
-    tar -xzf "${srcdir}/binaries-manifest-tool-2.0.5.tar.gz" -C "${srcdir}/"
+    tar -xzf "${srcdir}/binaries-manifest-tool-${pkgver}.tar.gz" -C "${srcdir}/"
 }
 
 package() {
