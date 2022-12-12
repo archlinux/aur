@@ -3,7 +3,7 @@
 
 pkgname=sublime-text-3
 pkgver=3.3211
-pkgrel=3
+pkgrel=4
 pkgdesc='Sophisticated text editor for code, html and prose (legacy version)'
 arch=('x86_64')
 url='https://www.sublimetext.com/3'
@@ -34,7 +34,7 @@ package() {
 
 	# Install desktop entry and executable
 	sed -i 's#/opt/sublime_text_3/sublime_text#/usr/bin/subl3#g' 'sublime_text_3/sublime_text.desktop'
-	sed -i '\#^Icon=sublime-text-3#a StartupWMClass=sublime-text-3' 'sublime_text_3/sublime_text.desktop'
+	sed -i '\#^StartupNotify=#a StartupWMClass=subl3' 'sublime_text_3/sublime_text.desktop'
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 	install -Dm644 'sublime_text_3/sublime_text.desktop' "${pkgdir}/usr/share/applications/sublime_text_3.desktop"
