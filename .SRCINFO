@@ -1,15 +1,17 @@
 pkgbase = python-pytest-filter-subpackage
 	pkgdesc = Pytest plugin for filtering based on sub-packages
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-filter-subpackage
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	checkdepends = python-pytest-doctestplus
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-pytest>=3.0
-	source = https://files.pythonhosted.org/packages/source/p/pytest-filter-subpackage/pytest-filter-subpackage-0.1.1.tar.gz
-	md5sums = 319b19ffc7e9de77f54febf1b1718074
+	source = https://files.pythonhosted.org/packages/source/p/pytest-filter-subpackage/pytest-filter-subpackage-0.1.2.tar.gz
+	md5sums = 9f99964c03d1db97936db4a683539146
 
 pkgname = python-pytest-filter-subpackage
-
