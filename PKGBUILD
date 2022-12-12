@@ -152,34 +152,18 @@ _use_gcc_lto=${_use_gcc_lto-}
 
 # KCFI is a proposed forward-edge control-flow integrity scheme for
 # Clang, which is more suitable for kernel use than the existing CFI
-# scheme used by CONFIG_CFI_CLANG. KCFI doesn't require LTO, doesn't
+# scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
 # alter function references to point to a jump table, and won't break
 # function address equality.
-# ATTENTION!: you do need a patched llvm for the usage of kcfi,
-# you can find a patched llvm-git in the cachyos-repo's.
-# The packagename is called "llvm-kcfi"
-# ATTENTION!: This is very experimental and could fail and the compilation or have other bugs in the kernel
+# ATTENTION!: You need llvm-git or a patched llvm 15
+# ATTENTION!: This is experimental, could fail to boot with nvidia
 _use_kcfi=${_use_kcfi-}
 
-# Build the zfs module builtin in to the kernel
+# Build the zfs module in to the kernel
 _build_zfs=${_build_zfs-}
 
 # Enable bcachefs
 _bcachefs=${_bcachefs-}
-
-# Enable RT kernel
-# Only works for CFS Scheduler and BORE Scheduler
-_rtkernel=${_rtkernel-}
-
-# Enable NEST
-# NEST is a experimental cfs scheduler you can find more about here:
-# https://www.phoronix.com/news/Nest-Linux-Scheduling-Warm-Core
-# https://gitlab.inria.fr/nest-public/nest-artifact/-/tree/main
-# ATTENTION!:NEST is only active if you start applications with
-# taskset -c $THREADS application
-# example: taskset -c 0-23 application
-# ATTENTION!:Just works together with the BORE Scheduler and CFS Scheduler
-_nest=${_nest-}
 
 # Enable LATENCY NICE
 # Latency nice is a approach to sets latency-nice as a per-task attribute
@@ -236,7 +220,7 @@ fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
-    "config" "config-rt"
+    "config"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
@@ -292,19 +276,9 @@ if [ -n "$_use_kcfi" ]; then
         LLVM=1
     )
 fi
-## NEST Support
-if [ -n "$_nest" ]; then
-    if [[ "$_cpusched" = "bore"  || "$_cpusched" = "cfs" || "$_cpusched" = "hardened" ]]; then
-         source+=("${_patchsource}/sched/0001-NEST.patch")
-    fi
-fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
-fi
-## rt kernel
-if [ -n "$_rtkernel" ]; then
-    source+=("${_patchsource}/misc/0001-rt.patch")
 fi
 if [ -n "$_use_gcc_lto" ]; then
 ## GCC-LTO Patch
@@ -336,11 +310,7 @@ prepare() {
     done
 
     echo "Setting config..."
-    if [ -n "$_rtkernel" ]; then
-        cp ../config-rt .config
-    else
-        cp ../config .config
-    fi
+    cp ../config .config
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
@@ -371,17 +341,6 @@ prepare() {
        error "Selecting CachyOS config failed!"
        exit
     fi
-
-    ### Selecting proper RT config
-    if [ -n "$_rtkernel" ]; then
-        echo "Setting proper RT config"
-        scripts/config --enable RCU_NOCB_CPU_CB_BOOST \
-            --disable RCU_NOCB_CPU_DEFAULT_ALL \
-            --enable HZ_1000 \
-            --set-val HZ 1000 \
-            --enable PREEMPT_RT \
-            --enable PREEMPT_LAZY
-     fi
 
     ### Selecting the CPU scheduler
     if [ "$_cpusched" = "bmq" ]; then
@@ -1032,9 +991,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('61063135667b1e6177cf933cf12f08f2d8ce6a094d61616d0869466c3b6dc7ae'
-            '7b2916c5fcfd08b1db8c6012901d962ae6e14ead806e36bd243c504e6297bef0'
-            '8e3332029a7e6574b8c5d1f98e5391a20871b889e0a65fc351584c26b9e2b0ef'
-            'e1d45b5842079a5f0f53d7ea2d66ffa3f1497766f3ccffcf13ed00f1ac67f95e'
-            'e3363257555b5cf0f33198b309451cb01afef802dfdc0a009e90c52391f67858'
-            'a5761a5073d73c98a273134f487359af5e9cd8b2ab7614bd4d0c3aca0bf1533a'
-            '57b1d588a7a55a1676089609b25130283fbd7bb5e4c6416367d9f2c957514f0d')
+            '10205fdb7f16016658808d09e927b106f8286df17d511cf6374e2a6fcb265f26'
+            '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
+            'dcb4652be945fd8de658b271e17a74e5d5c275b934bd852b766cb28c3f97d17d'
+            '7b3c12a19efe84f023bd64f0c984c73b0ec7a73c78cba96b5f92c5263ed2a46f'
+            'e5c062656b1e3d65b5b10bf933aa6b0bd3f187b90336a067b1dd7d5ff635f002')
