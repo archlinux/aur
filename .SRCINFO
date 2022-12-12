@@ -9,6 +9,7 @@ pkgbase = satisfactory-mod-manager
 	makedepends = nodejs>=16
 	makedepends = nodejs<19
 	makedepends = node-gyp
+	makedepends = python
 	source = satisfactory-mod-manager-2.9.3.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v2.9.3.tar.gz
 	source = satisfactory-mod-manager.desktop
 	sha512sums = aed7f231564361259d1fd93d11be19d6b1a388a8251a49a3253108b7bc60b7d54ccd30fb3abd25d4b035ffb5c1a11d5c0e25716c6c7462adc8450408e593a1a7

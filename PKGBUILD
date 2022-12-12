@@ -6,7 +6,7 @@ pkgdesc="A mod manager for easy installation of mods and modloader for Satisfact
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
-makedepends=('yarn' 'nodejs>=16' 'nodejs<19' 'node-gyp')
+makedepends=('yarn' 'nodejs>=16' 'nodejs<19' 'node-gyp' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha512sums=('aed7f231564361259d1fd93d11be19d6b1a388a8251a49a3253108b7bc60b7d54ccd30fb3abd25d4b035ffb5c1a11d5c0e25716c6c7462adc8450408e593a1a7'
