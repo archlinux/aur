@@ -11,7 +11,7 @@ set -e
             
 pkgname='lib-lt-devel'
 uniq='tssoftware:lt'
-appname='LTDev'
+appname='LT'
 alias='LT Widget Toolkit -- Developer version'
 pkgdesc='Beautiful & Lightweight Widget Toolkit library (also privedes C++ apis, such as LString, LProcess, LArray ...).
  -- Developer version'
@@ -21,8 +21,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
-contents=( '/data/Themes<./Themes' '/Docs<./Docs' '/lib<./build//platforms/archlinux_x86_64/Debug/lib' )
-pkgdir='/tmp/tmp.So4REBu2cN/sh/pkg'
+contents=( '/icon.svg<lt_3d.svg' '/data/Themes<./Themes' '/docs<./Docs' '/conf/ltconf.tsml<ltconf.tsml' '/lib/LT/Debug/Plugins<./build//Debug/lib/Plugins' '/lib/LT/Debug/libnfd.so<./build//Debug/lib/libnfd.so' '/lib/LT/Debug/libLT_pluginmanager.so<./build//Debug/lib/libLT_pluginmanager.so' '/lib/LT/Debug/libLT.so<./build//Debug/lib/libLT.so' '/lib/LT/Debug/libLTundoredo.so<./build//Debug/lib/libLTundoredo.so' '/lib/LT/Debug/libTSMLParser.so<./build//Debug/lib/libTSMLParser.so' )
+pkgdir='/tmp/tmp.s78AFhTCZm/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
