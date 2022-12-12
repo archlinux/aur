@@ -5,11 +5,12 @@
 
 pkgname=ngrok
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
 license=('custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
 source_x86_64=("https://bin.equinox.io/a/7UAdGDeyg6i/ngrok-v3-3.1.0-linux-amd64")
 source_i686=("https://bin.equinox.io/a/26QHEgwoE5Z/ngrok-v3-3.1.0-linux-386")
