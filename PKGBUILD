@@ -7,7 +7,7 @@
 # and install them as we would other apps, for convenience sake.
 pkgname=koreader-appimage
 pkgver=2022.11
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats."
 arch=('x86_64')
@@ -20,7 +20,7 @@ noextract=("$_filename")
 options=('!strip')
 install=${pkgname}.install
 source=("https://ota.koreader.rocks/koreader-appimage-x86_64-linux-gnu-v$pkgver.AppImage")
-sha512sums=('0977d79074432973a96b58c6e4eaca1e2da512c650172a92be141c50e5e754d9a786616f492df9c5d2dde637e65fdb584fca483b01007308a6f6137171d4d8a5')
+sha512sums=('033ee57fd9d719e0f10c1a53a2e7dfc9841d642f1401b7c0a83dbfbdfa66f0b6d8f30ac2b6ba24cfcb0c3203566d301c27e3d8f08f13686f8f2bbc8507c99731')
 
 prepare() {
     cd "${srcdir}"
