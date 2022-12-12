@@ -20,8 +20,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
 groups=( 'Developer/IDE' )
-contents=( '/data/<./Data' '/config<./Config' '/bin<build/bin' )
-pkgdir='/tmp/tmp.xz3lg7L8lT/sh/pkg'
+contents=( '/data/<./Data' '/config/<./Config' '/bin<build/bin' '/bin/oshfclient<oshfclient' )
+pkgdir='/tmp/tmp.yLpHlMOX8z/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
