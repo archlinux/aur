@@ -1,13 +1,15 @@
 pkgbase = arc-bin
 	pkgdesc = CLI helper for Electric UI project creation, sandbox development and building releases.
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://electricui.com/
 	arch = x86_64
-	license = MIT
+	license = custom
 	optdepends = nodejs: Electric UI projects run on node
 	provides = arc
-	source = arc-bin-0.5.7.tar.gz::https://registry.eui.io/arc/0.5.7/arc_0.5.7_linux_amd64.tar.gz
-	sha256sums = 17ea90f492fe51c5d98b6b62c1d0f8034296789171f99e9710002ad0224ddc28
+	source = arc-bin-0.5.8.tar.gz::https://registry.eui.io/arc/0.5.8/arc_0.5.8_linux_amd64.tar.gz
+	source = LICENSE
+	sha256sums = 690a3018f4c77e367fd63bcebf3ffac324ca472c80553dde08714a287bf65517
+	sha256sums = 2eb92ca0796a09ccb80ccf5a55c5513bcbd840407da149edcb4a1073db8aa60e
 
 pkgname = arc-bin
