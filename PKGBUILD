@@ -3,7 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 _arch=x64v1
-pkgbase=linux-xanmod
+pkgbase=linux-xanmod-linux-bin-x64v1
+_pkgbase=linux-xanmod
 _major=6.0
 pkgver=${_major}.12
 xanmod=1
@@ -79,7 +80,7 @@ _package-headers() {
   cp -r usr/src "${pkgdir}/usr/"
 }
 
-pkgname=("${pkgbase}-linux-bin-${_arch}" "${pkgbase}-linux-headers-bin-${_arch}")
+pkgname=("${_pkgbase}-linux-bin-${_arch}" "${_pkgbase}-linux-headers-bin-${_arch}")
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
 eval "package_${pkgname[1]}() { _package-headers \"\$@\"; }"
 
