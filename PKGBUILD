@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 _arch=x64v1
-pkgbase=linux-xanmod-linux-bin-x64v1
+pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
 _major=6.0
 pkgver=${_major}.12
