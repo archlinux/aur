@@ -1,0 +1,13 @@
+pkgbase = lisaem
+	pkgdesc = Apple Lisa computer emulator
+	pkgver = 1.2.7_RC4
+	pkgrel = 1
+	url = https://lisa.sunder.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = wxwidgets-gtk3
+	source = git+https://github.com/rayarachelian/lisaem.git#commit=a3ee183cd3a5d65d3780eefbe75df4f98bca08c6
+	md5sums = SKIP
+
+pkgname = lisaem
