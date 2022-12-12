@@ -10,14 +10,14 @@ _SequenceParsing_commit=3c93fcc488632b0bdfeee3181586809932357598
 _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 
 pkgname=natron-compositor
-pkgver=2.4.4
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw-x11' 'python2-pyside')
-makedepends=('boost' 'expat' 'openmp')
+depends=('boost-libs' 'cairo' 'pyside2')
+makedepends=('boost' 'extra-cmake-modules' 'git' 'glfw' 'openmp' 'ninja' 'python-qtpy' 'shiboken2')
 optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
             'openfx-gmic: OpenFX wrapper for the GMIC framework'
             'openfx-io: Readers/Writers plugins'
@@ -28,6 +28,7 @@ _pkgname=${_pkgname^}
 _pkgname="${_pkgname}-${pkgver}"
 _url="https://github.com/NatronGitHub"
 
+
 source=("${_pkgname}.tar.gz::${_url}/${_pkgname%-*}/archive/refs/tags/v${pkgver}.tar.gz"
         "openfx-${_pkgname}.tar.gz::${_url}/openfx/archive/refs/tags/${_pkgname}.tar.gz"
         "OpenColorIO-Configs-${_pkgname%-*}-v${pkgver%.*}.tar.gz::${_url}/OpenColorIO-Configs/archive/refs/tags/${_pkgname%-*}-v${pkgver%.*}.tar.gz"
@@ -36,9 +37,9 @@ source=("${_pkgname}.tar.gz::${_url}/${_pkgname%-*}/archive/refs/tags/v${pkgver}
         "google-test-${_google_test_commit}.tar.gz::${_url}/google-test/archive/${_google_test_commit}.tar.gz"
         "SequenceParsing-${_SequenceParsing_commit}.tar.gz::${_url}/SequenceParsing/archive/${_SequenceParsing_commit}.tar.gz"
 	"tinydir-${_tinydir_commit}.tar.gz::${_url}/tinydir/archive/${_tinydir_commit}.tar.gz")
-sha512sums=('a703f36c01e0a980d53d1e12bf51fc1c819437261319f9a24cfd48e6ec810238c8907ba9a1460455572bbc5a182a343d31d4fb4d5d5658a87e285e1cde541e6f'
-            '39983f693798121342bf6509c819f9243c176c8123e4e2665309270ba3709f686592f9f29b3b938d2c7ce87c756b0ce9ef0ea36c0c96e4d3ba3379bd7f5976be'
-            '1e2c20a2ccc597aec8c69352f2b0533f75afcceda427247346b64752ce0de82631ab89f47ff182c326e12d3fce2efda8ee846d6768cb8cfcb27e3da6e2399e78'
+sha512sums=('f60d5aebd8cc2f653985868a12b5fbddc0252e4253907cd38b2d9d4c631a15f9825fa5648140e401a7f44e8db3a509f677e2fd9b69b83dabecaa1c46933f19c8'
+            '174b75061ac2bb887f2e10df1ec899276e8e27f1873d2dda2ef07ee3fb53f54169fe37d9921642248e28faa974a50a62e5e8ab20ccdd09c96a235084ae16d87d'
+            '14e57f510c30eb90fb556a104978adda72655d80b3bb9f441b578086322fc1d19f01a6c5dabcd22d3d45f8406fec3d148089ea9249f33ac722c9a42056120296'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -47,7 +48,7 @@ sha512sums=('a703f36c01e0a980d53d1e12bf51fc1c819437261319f9a24cfd48e6ec810238c89
 
 prepare() {
   mv "OpenColorIO-Configs-Natron-v${pkgver%.*}/" \
-     "${_pkgname}/OpenColorIO-Configs/"
+     "OpenColorIO-Configs/"
 
   tar -xzf "google-breakpad-${_google_breakpad_commit}.tar.gz" --strip 1 \
       -C   "${_pkgname}/libs/google-breakpad/"
@@ -62,40 +63,41 @@ prepare() {
 
   tar -xzf "openfx-${_pkgname}.tar.gz" --strip 1 \
       -C   "${_pkgname}/libs/OpenFX/"
-
-#  mv "config.pri" \
-#     "${_pkgname}/config.pri"
-  mv "${_pkgname}/build-configs/arch-linux/config.pri" \
-     "${_pkgname}"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd $_pkgname
 
-  [[ -d build ]] && rm -r build; mkdir build; cd build
+  cmake -G Ninja \
+        -B build \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D NATRON_BUILD_TESTS=OFF
 
-  qmake-qt4 -r ../Project.pro \
-               PREFIX=/usr \
-               BUILD_USER_NAME="Arch_Linux" \
-               CONFIG+=custombuild \
-               CONFIG+=openmp \
-               DEFINES+=QT_NO_DEBUG_OUTPUT \
-               QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-               QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
-               QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
-
-  make
+  ninja -C build/
 }
 
 package() {
-  cd "${_pkgname}/build"
-  make INSTALL_ROOT="${pkgdir}" install
-  
-  install -d "${pkgdir}/usr/share/Natron/Plugins/"
-  cp -r "../Gui/Resources/PyPlugs" \
-        "${pkgdir}/usr/share/Natron/Plugins/"
+  cd $_pkgname
 
-  install -d "${pkgdir}/etc/profile.d"
-  echo -e "export FONTCONFIG_PATH=/etc/fonts\n" > "${pkgdir}/etc/profile.d/${pkgname%-*}.sh"
-  echo -e "setenv FONTCONFIG_PATH /etc/fonts\n" > "${pkgdir}/etc/profile.d/${pkgname%-*}.csh"
+  DESTDIR="$pkgdir" ninja -C build/ install
+
+  install -d "$pkgdir/usr/share/Natron/Plugins/"
+  cp -r "Gui/Resources/PyPlugs" \
+        "$pkgdir/usr/share/Natron/Plugins/"
+
+  install -d "$pkgdir/usr/share/mime/application/"
+  mv "$pkgdir/usr/share/mime/x-natron.xml" \
+     "$pkgdir/usr/share/mime/application/"
+
+  install -d "$pkgdir/usr/share/OpenColorIO-Configs/"
+  for directory in blender natron nuke-default
+  do
+    cp -r "$srcdir/OpenColorIO-Configs/$directory/" \
+          "$pkgdir/usr/share/OpenColorIO-Configs/"
+  done
+
+  install -d "$pkgdir/etc/profile.d"
+  echo -e "export FONTCONFIG_PATH=/etc/fonts\n" > "$pkgdir/etc/profile.d/$_pkgname.sh"
+  echo -e "setenv FONTCONFIG_PATH /etc/fonts\n" > "$pkgdir/etc/profile.d/$_pkgname.csh"
 }
