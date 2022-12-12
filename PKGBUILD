@@ -1,20 +1,20 @@
 # Maintainer: Fredrik Strandin <fredrik at strandin dot name>
 pkgname=emoji-keyboard
-pkgver=3.1.1
-pkgrel=3
+pkgver=4.0.0
+pkgrel=4
 pkgdesc="Virtual keyboard-like emoji picker for linux"
 arch=('i686' 'x86_64')
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
 license=('GPL3')
 depends=('python' 'python-gobject' 'libappindicator-gtk3' 'python-evdev' 'fuse')
-source=("https://github.com/OzymandiasTheGreat/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.AppImage")
-sha256sums=('4ee945e2f67aad661246c8d6b91251f05e232e56a82ef0decb71261847c4b0aa')
+source=("https://github.com/OzymandiasTheGreat/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.AppImage")
+sha256sums=('860563b900c3df7f1bfc3fa3cf0d269a66cd5d098f22c7e14f62e2bc04e99c02')
 options=(!strip)
 
 package() {
-  chmod a+x ${pkgname}-${pkgver}.AppImage
+  chmod a+x ${pkgname}_${pkgver}_amd64.AppImage
   mkdir -p ${pkgdir}/usr/bin
-  cp -L ${pkgname}-${pkgver}.AppImage ${pkgdir}/usr/bin/emoji-keyboard
+  cp -L ${pkgname}_${pkgver}_amd64.AppImage ${pkgdir}/usr/bin/emoji-keyboard
 }
 
 
