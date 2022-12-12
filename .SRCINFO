@@ -1,0 +1,13 @@
+pkgbase = msys2-keyring
+	pkgdesc = MSYS2 PGP keyring
+	pkgver = 20221024
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/msys2/MSYS2-keyring
+	install = msys2-keyring.install
+	arch = any
+	license = GPL
+	source = https://github.com/msys2/MSYS2-keyring/archive/20221024.tar.gz
+	sha256sums = b7e39eba12dd23405f0c449de765620d5158c09ce5549e23165e3c4185f138ab
+
+pkgname = msys2-keyring
