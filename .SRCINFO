@@ -7,6 +7,7 @@ pkgbase = digestif-git
 	arch = any
 	license = MIT
 	makedepends = luarocks
+	makedepends = semver
 	depends = lua
 	depends = lua-lpeg
 	depends = lua-dkjson

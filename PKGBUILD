@@ -10,14 +10,14 @@ pkgdesc='A code analyzer and Language Server Protocol implementation for [La|Con
 provides=($_name)
 conflicts=($_name)
 depends=(lua lua-lpeg lua-dkjson)
-makedepends=(luarocks)
+makedepends=(luarocks semver)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_name"
 	printf "%s.%s.%s" \
-		"$(git describe --tags --abbrev=0 | sed 's/^v//')" \
+		"$(semver -c "$(git describe --tags --abbrev=0 | sed 's/^v//')")" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 }
