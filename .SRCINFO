@@ -1,19 +1,17 @@
 pkgbase = satisfactory-mod-manager
 	pkgdesc = A mod manager for easy installation of mods and modloader for Satisfactory
-	pkgver = 2.8.1
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/satisfactorymodding/SatisfactoryModManager
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
-	makedepends = python2
+	makedepends = nodejs>=16
+	makedepends = nodejs<19
 	makedepends = node-gyp
-	depends = electron
-	source = satisfactory-mod-manager-2.8.1.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v2.8.1.tar.gz
-	source = satisfactory-mod-manager.sh
+	source = satisfactory-mod-manager-2.9.3.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v2.9.3.tar.gz
 	source = satisfactory-mod-manager.desktop
-	sha512sums = 1b31f5865b05cab416b9cda450acbc872730ee068f3c10da8135de04aedc6368f3eaab644a70b00f56eca65fa486075af0a2ed744ba8e919421c642a00a5d0c6
-	sha512sums = 42f8a3c7a3b88dc6deb14003830e0381dc90425aaf3be016430654611f0d9b7b35fbe63703d3bac8d4f2274c7175e7088cbbf808c08cf24f754ebc4d21729db4
+	sha512sums = aed7f231564361259d1fd93d11be19d6b1a388a8251a49a3253108b7bc60b7d54ccd30fb3abd25d4b035ffb5c1a11d5c0e25716c6c7462adc8450408e593a1a7
 	sha512sums = 0168c97aca896f2f26b250b5644d88a02ceaff5d5fe1c1669cb4ed34f31f9d912d033d801abd368686ee0e81d583b7b6923359bad470fc4af3ae4179aa903c5b
 
 pkgname = satisfactory-mod-manager
