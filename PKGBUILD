@@ -3,7 +3,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=openfx-misc-git
-pkgver=Natron.2.4.3.r2.gaac35191
+pkgver=Natron.2.5.0.r2.g5524c1ba
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Miscellaneous OpenFX plugins"
@@ -35,7 +35,7 @@ prepare() {
   git submodule init
   git config submodule.openfx.url ${srcdir}/openfx
   git config submodule.SupportExt.url ${srcdir}/openfx-supportext
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
