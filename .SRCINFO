@@ -1,7 +1,7 @@
 pkgbase = rocm-opencl-runtime
 	pkgdesc = OpenCL implementation for AMD
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime
 	arch = x86_64
 	license = MIT
