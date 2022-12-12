@@ -6,5 +6,6 @@ pkgbase = libelectron
 	arch = aarch64
 	license = GPL
 	depends = npm
+	depends = git
 
 pkgname = libelectron
