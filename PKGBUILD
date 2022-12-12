@@ -1,10 +1,10 @@
-# Maintainer: K900 <me@0upti.me>
+# Maintainer: Mikhail Velichko <efklid@gmail.com>
 # Contributor: Michael Duncan Hammond <mhammond9@radford.edu>
-
+# Contributor: K900 <me@0upti.me>
 
 pkgname=cisco-anyconnect
-pkgver=4.10.05111
-pkgrel=1
+pkgver=4.10.06079
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html'
 arch=('x86_64')
