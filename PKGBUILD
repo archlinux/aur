@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 provides=('nrfjprog' 'mergehex' 'python-pynrfjprog')
 conflicts=('python-pynrfjprog' 'python-pynrfjprog-git')
 options=()
-source_x86_64=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-${pkgver%.*.*}-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_Linux-amd64.tar.gz")
+source_x86_64=("https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-${pkgver%.*.*}-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_linux-amd64.tar.gz")
 sha256sums_x86_64=('e2b8bbb1b846b5f01aff8f4195a3ff9103d28e4c15c3566838f9c87d38af0b52')
 
 build() {

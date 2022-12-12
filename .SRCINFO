@@ -12,7 +12,7 @@ pkgbase = nrf5x-command-line-tools
 	provides = python-pynrfjprog
 	conflicts = python-pynrfjprog
 	conflicts = python-pynrfjprog-git
-	source_x86_64 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/10-18-1/nrf-command-line-tools-10.18.1_Linux-amd64.tar.gz
+	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-18-1/nrf-command-line-tools-10.18.1_linux-amd64.tar.gz
 	sha256sums_x86_64 = e2b8bbb1b846b5f01aff8f4195a3ff9103d28e4c15c3566838f9c87d38af0b52
 
 pkgname = nrf5x-command-line-tools
