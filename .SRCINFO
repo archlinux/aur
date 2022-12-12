@@ -1,0 +1,23 @@
+pkgbase = ly-git-openrc
+	pkgdesc = TUI display manager (OpenRC version)
+	pkgver = 0.5.3.24f017e0
+	pkgrel = 1
+	url = https://github.com/fairyglade/ly
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom:WTFPL
+	makedepends = git
+	depends = pam
+	depends = xorg-xauth
+	conflicts = ly
+	conflicts = ly-git
+	conflicts = python-ly
+	conflicts = python-ly-git
+	backup = etc/ly-git-openrc/config.ini
+	backup = etc/ly-git-openrc/wsetup.sh
+	backup = etc/ly-git-openrc/xsetup.sh
+	source = git+https://github.com/fairyglade/ly.git
+	sha256sums = SKIP
+
+pkgname = ly-git-openrc
