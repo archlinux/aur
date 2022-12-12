@@ -1,4 +1,3 @@
-# Maintainer: zehkira <KHNhbWUgYXMgbXkgbmFtZSkgYXQgcG0gbWU=>
 pkgname="myuzi"
 pkgver="v1.13.2"
 pkgrel=1
