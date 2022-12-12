@@ -6,9 +6,9 @@ _pkgbase="linux-$_target"
 pkgbase="$_pkgbase-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.72
-_armbver=22.08.6
+_armbver=22.11.1
 _kernver="$pkgver-$_target"
-pkgrel=3
+pkgrel=4
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
@@ -24,9 +24,9 @@ source=(
     )
 sha512sums=(
     '15a035013f7cc21f8a4250d50f297d9bdef271ee06e83b4b5193432319ba45d1c892e79ec77f4e97ecdf9e7f90ef33f29454b53fa1653fe212054557afe2b91b'
-    '20950d3177889cd593e008a6c9b94beb50b032cc7d247a0809bf21663403a8a94199da1e0e0461624bf6bb6f872b6236f31feb8d21985fb1b106e1cc1b84e841'
-    '9b1779851070a40221d4a6e4cae77eb2c813578ff2b362a5a66b39ff0fb84827f6a69563b1386add010efec05cf6dac81a4c2e64f06e0eb818999024566d3b06'
-    'ca23262d8875a42d6fb25afa46ea7860574801d7c876af2eb79515ffd69ea270cbfee5fae5e43d8afe79cc8f3e439b73f55b179369ff30e05c84a9873724565b'
+    'ef4a796a80d017aea5c7cc52bf5c692e95d840fb201012def323ebbb40e30e8ad27b446d2c34289fc8470aa71795d03291a681b2a9faf8d57de7440d283f30ee'
+    'fbb12e71630604669d701a27d6e4da569763dfb00eeb359fc10ded860d34bc9d688bdb09122ef91645dfbf3e79f4cf10fc82ba25cbc25df69a3026aa68233089'
+    '598ea3bfdd0e9397a8bed7186354884a9c2aa8b84d6770cc977892ded5af0dc1addcdae2f5ff975996c66b18c55a3ae1cb85c5a0e5b06f2c7cc29336fe8e42c7'
     )
 noextract=("${source[@]##*/}")
 
@@ -41,7 +41,8 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/$_pkgbase.preset")
-  provides=('WIREGUARD-MODULE')
+  provides=("linux=${pkgver}" 'WIREGUARD-MODULE')
+  replaces=('linux-armv8')
   conflicts=('linux')
 
   cd "$srcdir"
@@ -76,6 +77,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - $_desc"
+  provides=("linux-headers=${pkgver}")
   conflicts=('linux-headers')
 
   cd "$srcdir"
