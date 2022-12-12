@@ -1,6 +1,6 @@
 pkgbase = todo-mekb
 	pkgdesc = Terminal to-do list written in C
-	pkgver = r11.c60eb37
+	pkgver = r13.f301191
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/todo
 	arch = any
