@@ -3,7 +3,7 @@
 
 pkgbase=cheese
 pkgname=(cheese libcheese)
-pkgver=43alpha+r8+g1de47dbc
+pkgver=43.0
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
@@ -14,7 +14,7 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
 options=(debug)
-_commit=1de47dbc95db445e31fdc674ea4208f53699f81a  # master
+_commit=9e89a0da8d6d0da14b0b461051c064c419fc86d5  # tags/43.0^0
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
 
