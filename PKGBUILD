@@ -4,7 +4,7 @@
 pkgname=libpg_query
 # All versions are tagged by the major Postgres version,
 # plus an individual semver for this library itself.
-pkgver=13.2.2.0
+pkgver=14.3.0.0
 pkgrel=1
 pkgdesc='C library for accessing the PostgreSQL parser outside of the server environment'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/pganalyze/libpg_query'
 license=('BSD')
 depends=('protobuf-c' 'xxhash')
 makedepends=('git')
-_commit='1097b2c33e54a37c0d2c0f2d498c7d1cf967eae9'
+_commit='397cbb9c1b188b8a5c6e1a9633461b2d01903abc'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'dont-override-opt-level.patch'
