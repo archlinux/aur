@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Satisfactory Mod Manager
+Exec=satisfactory-mod-manager
+Terminal=false
+Type=Application
+Icon=satisfactory-mod-manager
+StartupWMClass=satisfactory-mod-manager-gui
+Comment=Handles Satisfactory mods and mod loader
+MimeType=x-scheme-handler/smmanager;
+Categories=Game;
