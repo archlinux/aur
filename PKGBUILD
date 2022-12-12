@@ -5,7 +5,7 @@ _variant=consumer
 _appname="Threema"
 pkgdesc="Threema Desktop (Threema Web in Electron)."
 pkgver=1.2.25
-pkgrel=2
+pkgrel=3
 _threema_web_ver=2.4.4 # Keep in sync with version used by threema-desktop
 arch=('any')
 url="https://github.com/threema-ch/threema-web-electron"
@@ -16,18 +16,15 @@ source=(
   "threema-web-electron-v${pkgver}.tar.gz::https://github.com/threema-ch/threema-web-electron/archive/refs/tags/${pkgver}.tar.gz"
   "threema-web-v${_threema_web_ver}.tar.gz::https://github.com/threema-ch/threema-web/archive/refs/tags/v${_threema_web_ver}.tar.gz"
   "threema.desktop"
-  "0001-Remove-browser-warning.patch"
 )
 sha256sums=(
   '428f01a791f5e8d6161cae3f2ac604df5d78a493e75c25ed88d96f527b2aa32c'
   '82b4bc5ac2cfde8c3f6ee79f3d90ebb6a395c1db7969756493ab18b321f89783'
   'ccfdae3416e2a1f096cfaf67fd8f8dacb0d8348582fc666ecc8b5b0d08ef5bf2'
-  '75be30059dab96e015a9030477c3a7e55584b408761f9c50a9491d1bed152c78'
 )
 
 prepare() {
   cd "${srcdir}/threema-web-${_threema_web_ver}"
-  patch --forward --strip=1 --input="${srcdir}/0001-Remove-browser-warning.patch"
 }
 
 build() {
