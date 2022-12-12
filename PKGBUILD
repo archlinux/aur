@@ -1,5 +1,6 @@
+# Maintainer: Manthan <manthanmji@gmail.com>
 pkgname="myuzi"
-pkgver="v1.13.2"
+pkgver="v1.13.3"
 pkgrel=1
 pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
