@@ -1,4 +1,5 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
+# Maintainer: EndlessEden <eden.rose (at) deep-rose.org>
+# smplayer-skins-svn Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=smplayer-skins-git
 pkgver=20.11.0.rc3d8454
