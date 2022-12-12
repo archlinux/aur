@@ -1,0 +1,12 @@
+[Unit]
+Description=Duplicati
+
+[Service]
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/mono /opt/duplicati/Duplicati.GUI.TrayIcon.exe --webservice-port=8200
+Restart=on-abort
+Environment=AUTOUPDATER_Duplicati_SKIP_UPDATE=1
+
+[Install]
+WantedBy=default.target
+

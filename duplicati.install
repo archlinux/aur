@@ -1,0 +1,63 @@
+post_install() {
+  mkdir -p /var/lib/duplicati
+  chown -R duplicati:duplicati /var/lib/duplicati
+
+  cat  <<EOF
+  * UI can be accessed via following URL: http://localhost:8200
+  * Running duplicati user instance (using current user account)
+    - to start duplicati manually:           systemctl --user start duplicati
+    - to autostart duplicati on user login:  systemctl --user enable duplicati
+  *
+  * To run Duplicati.Server.exe as root, simply use systemd's "drop-in" feature
+  * and specify
+  *    User=root
+  *    Group=root
+
+EOF
+}
+
+post_upgrade() {
+  mkdir -p /var/lib/duplicati
+  chown -R duplicati:duplicati /var/lib/duplicati
+
+  if  [ $(vercmp $2 2.0.2.10-1) -lt 0 ]; then
+    cat     <<EOF
+  * In versions prior to 2.0.2.10-1, the system version of duplicati.service
+  * started Duplicati.Server.exe as root. It now runs as user duplicati.
+  * Please move your old duplicati database from
+  *    /root/.config/Duplicati
+  * to
+  *    /var/lib/duplicati/.config/Duplicati
+  * To run Duplicati.Server.exe as root, simply use systemd's "drop-in" feature
+  * and specify
+  *    User=root
+  *    Group=root
+EOF
+  fi
+
+  if  [ $(vercmp $2 2.0.5.113-1) -lt 0 ]; then
+    cat     <<EOF
+  * In versions 2.0.5.113 and above, the Telegram backend has been removed, and
+  * the SSH backend has increased its encryption algorithm requirements, which may
+  * break backups. See https://github.com/duplicati/duplicati/releases/tag/v2.0.5.113-2.0.5.113_canary_2021-03-07
+  * for details, and downgrade to an earlier version if necessary.
+
+EOF
+  if  [ $(vercmp $2 2.0.6.104-5) -lt 0 ]; then
+    cat     <<EOF
+  * This package was renamed from duplicati-latest to duplicati-canary-bin starting
+  * from 2.0.6.104-5. The install path was also changed from /opt/duplicati-latest to
+  * /opt/duplicati, so please update any scripts that referred to the installation
+  * directory directly.
+
+EOF
+  fi
+
+  cat  <<EOF
+  * UI can be accessed via following URL: http://localhost:8200
+  * Running duplicati user instance (using current user account)
+    - to reload user systemd modules:        systemctl --user daemon-reload
+    - to start duplicati manually:           systemctl --user start duplicati
+    - to autostart duplicati on user login:  systemctl --user enable duplicati
+EOF
+}
