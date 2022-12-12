@@ -2,85 +2,85 @@
 # Contributor: Luis Martinez <luis dot martinez dot at disroot dot org>
 
 pkgname=catppuccin-gtk-theme-frappe
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Soothing pastel theme for GTK3 - Frappe'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Blue.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Flamingo.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Green.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Lavender.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Maroon.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Mauve.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Peach.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Pink.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Red.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Rosewater.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Sapphire.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Sky.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Teal.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Yellow.zip")
+source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Blue-Dark.zip"
+        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Flamingo-Dark.zip"
+        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Green-Dark.zip"
+        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Lavender-Dark.zip"
+        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Maroon-Dark.zip"
+        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Mauve-Dark.zip"
+        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Peach-Dark.zip"
+        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Pink-Dark.zip"
+        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Red-Dark.zip"
+        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Rosewater-Dark.zip"
+        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Sapphire-Dark.zip"
+        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Sky-Dark.zip"
+        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Teal-Dark.zip"
+        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Frappe-Standard-Yellow-Dark.zip")
 
-sha256sums=('2e876c40154373e629299c80f52e311333974ec7fd472154441a16d23bd5f642'
-            'da1fb2313c379b85bcaabd5414225c494c58646cf63ae98a54300add05b1e7e2'
-            '1b0d64523141c1bd4a8457a508154c514a390646568f1f17031c743c48c365bf'
-            '5d1d42835e58f8aada31f5da52711c4673a1751ca0a77b684c9ccbacd653c108'
-            'fcdd88dbbe6a133585203f90deb65473d2f18b023079cfae25707f57d248e00d'
-            'dbaec5637a3889282b49d56274246eeea2ec1a8283b91afe72ca695e59598e38'
-            'aeeca849b2eb747665831826d9a7745863a3a49f0a7b86e9d00c1caa543ef9dc'
-            'b69cb931441ac34f076fbf12443c4090609a028a9d1cd1fb1eb7ef429503eaf3'
-            '31c96aefb9bc0505cdd846e1ee1b7d1b2fd4194fde1c2268ca1638cfd763ba0f'
-            'a263e8b61ca5692fda5daa19ddb394e3f126066c3f11c668e34b057d2dbbb180'
-            '9bc80cbc902be2b203f1b15d3caac6382e0b6974b91d108910fe497254ec7245'
-            'b34383c8e2171d49e6b5eb5c897c3374cb6bda5176c1e4108fa53a4878ab3848'
-            'a0f8a5bee6c0d9fb6637d65d47b5ec65638bc17aeadc214b776e194aee3e3161'
-            '7c418679c08120bfb589b76d4184f8906b48f1b2a70e1afbfde638b367fe8076')
+sha256sums=('da5110beb25f43779391fc4a3cfbb96cf6a94256e65376810b20b9d579f09a27'
+            'b63764575014e3c076e0d8b0ff2b0d72497c2c7bf5f385d2410b4a5525ca5db8'
+            'd055c429c7e5abc26118d5d27e4e4176b5d1ef62ac84820ba723c5dd487332b1'
+            'b56510b149f03db0c189725aadeced4dff14150fa224f0b4d84447058f0fbe83'
+            '875de2fe7058d762c5d345d1508dd2a82dac5adf529d25ed6b1975f160b76687'
+            'f0a89d9c30b12fc02c2b0555b127065591a22bd0d9616736547c2c194f731bff'
+            'd1102891f0cc09d2a600d81d9b12c8cc3ecad1ae6d455d6c3c1ef17a69a1397d'
+            'e8f88f03815aeb2745c05380ed335c6b115b46446043ddc8f4abc43d877a5db3'
+            '04d785882e44ae86b7a88e6c47f4413e33e670afadcf1e730e0cbde4c4a6400c'
+            '7e71fd65b4f7a93cd34bbad245b65072fac4aa93a3cd6a285acb08c8c6e9ef54'
+            '99331587dbb62f01e555823a69630dea0b4a5e87b08e09d8a9988c96bab75382'
+            '28b28aa60b13a89d4503efb91c56f8bb751399ab3eaf550429052f142ab7ea48'
+            '22a7b0b81968a7932d028baeaf49960f814c26f75180bdcecd8108ebed48cf1f'
+            '87cf1c13def0e7820d6f40d615977b35870e1c56eeb5b47ec2d69e9f09697541')
 package() {
     install -d "$pkgdir/usr/share/themes"
     cp -a --no-preserve=ownership \
-        "Catppuccin-Frappe-Standard-Blue-hdpi" \
-        "Catppuccin-Frappe-Standard-Blue-xhdpi" \
-        "Catppuccin-Frappe-Standard-Blue" \
-        "Catppuccin-Frappe-Standard-Flamingo-hdpi" \
-        "Catppuccin-Frappe-Standard-Flamingo-xhdpi" \
-        "Catppuccin-Frappe-Standard-Flamingo" \
-        "Catppuccin-Frappe-Standard-Green-hdpi" \
-        "Catppuccin-Frappe-Standard-Green-xhdpi" \
-        "Catppuccin-Frappe-Standard-Green" \
-        "Catppuccin-Frappe-Standard-Lavender-hdpi" \
-        "Catppuccin-Frappe-Standard-Lavender-xhdpi" \
-        "Catppuccin-Frappe-Standard-Lavender" \
-        "Catppuccin-Frappe-Standard-Maroon-hdpi" \
-        "Catppuccin-Frappe-Standard-Maroon-xhdpi" \
-        "Catppuccin-Frappe-Standard-Maroon" \
-        "Catppuccin-Frappe-Standard-Mauve-hdpi" \
-        "Catppuccin-Frappe-Standard-Mauve-xhdpi" \
-        "Catppuccin-Frappe-Standard-Mauve" \
-        "Catppuccin-Frappe-Standard-Peach-hdpi" \
-        "Catppuccin-Frappe-Standard-Peach-xhdpi" \
-        "Catppuccin-Frappe-Standard-Peach" \
-        "Catppuccin-Frappe-Standard-Pink-hdpi" \
-        "Catppuccin-Frappe-Standard-Pink-xhdpi" \
-        "Catppuccin-Frappe-Standard-Pink" \
-        "Catppuccin-Frappe-Standard-Red-hdpi" \
-        "Catppuccin-Frappe-Standard-Red-xhdpi" \
-        "Catppuccin-Frappe-Standard-Red" \
-        "Catppuccin-Frappe-Standard-Rosewater-hdpi" \
-        "Catppuccin-Frappe-Standard-Rosewater-xhdpi" \
-        "Catppuccin-Frappe-Standard-Rosewater" \
-        "Catppuccin-Frappe-Standard-Sapphire-hdpi" \
-        "Catppuccin-Frappe-Standard-Sapphire-xhdpi" \
-        "Catppuccin-Frappe-Standard-Sapphire" \
-        "Catppuccin-Frappe-Standard-Sky-hdpi" \
-        "Catppuccin-Frappe-Standard-Sky-xhdpi" \
-        "Catppuccin-Frappe-Standard-Sky" \
-        "Catppuccin-Frappe-Standard-Teal-hdpi" \
-        "Catppuccin-Frappe-Standard-Teal-xhdpi" \
-        "Catppuccin-Frappe-Standard-Teal" \
-        "Catppuccin-Frappe-Standard-Yellow-hdpi" \
-        "Catppuccin-Frappe-Standard-Yellow-xhdpi" \
-        "Catppuccin-Frappe-Standard-Yellow" \
+        "Catppuccin-Frappe-Standard-Blue-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Blue-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Blue-Dark" \
+        "Catppuccin-Frappe-Standard-Flamingo-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Flamingo-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Flamingo-Dark" \
+        "Catppuccin-Frappe-Standard-Green-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Green-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Green-Dark" \
+        "Catppuccin-Frappe-Standard-Lavender-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Lavender-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Lavender-Dark" \
+        "Catppuccin-Frappe-Standard-Maroon-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Maroon-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Maroon-Dark" \
+        "Catppuccin-Frappe-Standard-Mauve-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Mauve-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Mauve-Dark" \
+        "Catppuccin-Frappe-Standard-Peach-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Peach-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Peach-Dark" \
+        "Catppuccin-Frappe-Standard-Pink-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Pink-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Pink-Dark" \
+        "Catppuccin-Frappe-Standard-Red-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Red-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Red-Dark" \
+        "Catppuccin-Frappe-Standard-Rosewater-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Rosewater-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Rosewater-Dark" \
+        "Catppuccin-Frappe-Standard-Sapphire-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Sapphire-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Sapphire-Dark" \
+        "Catppuccin-Frappe-Standard-Sky-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Sky-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Sky-Dark" \
+        "Catppuccin-Frappe-Standard-Teal-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Teal-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Teal-Dark" \
+        "Catppuccin-Frappe-Standard-Yellow-Dark-hdpi" \
+        "Catppuccin-Frappe-Standard-Yellow-Dark-xhdpi" \
+        "Catppuccin-Frappe-Standard-Yellow-Dark" \
                 "$pkgdir/usr/share/themes"
 }
