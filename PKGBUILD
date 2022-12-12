@@ -27,11 +27,12 @@
 #
 # And his response completely ignores the raised issue about why JXL is necessary: saving lossles (or high-fidelity) screenshots in mpv
 # at >=4K is extremely slow without it. Ignoring the stutter (and SSD wearing), his workaround for obtaining JXL screenshots is to write
-# screenshots as >60MB PNG files and then manually convert them to JXL using cjxl, because "ImageMagick and vips exist for a reason".
-# Yes, seriously. That is how we must live according to per his decree.
+# screenshots as >60MB PNG files and then manually convert them to JXL, because "ImageMagick and vips exist for a reason".
+# Yes, seriously. That is how we must live per his decree. And one must not be allowed to return his witty response in kind by saying
+# "JXL support was added to mpv for a reason", so the discussion must be locked down.
 #
-# Unfortunately, time and again, Maxime preferred to silence any critique of his incorrect or subjective claims by locking down the issues,
-# so here we are.
+# And indeed, unfortunately, time and again, Maxime preferred to silence any critique of his incorrect or subjective claims
+# by locking down the issues, so here we are.
 #
 # This package flips on the JXL support that is readily available in ffmpeg, and by extension mpv.
 
