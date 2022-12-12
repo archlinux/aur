@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ee
 	pkgdesc = A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support
-	pkgver = 22.2.0
+	pkgver = 22.3.0
 	pkgrel = 1
 	url = http://dbeaver.com/
 	install = dbeaver-ee.install
@@ -9,12 +9,12 @@ pkgbase = dbeaver-ee
 	depends = java-runtime>=1.8
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	noextract = dbeaver-ee-22.2.0-linux.gtk.x86_64.tar.gz
+	noextract = dbeaver-ee-22.3.0-linux.gtk.x86_64.tar.gz
 	source = dbeaver-ee.desktop
 	source = dbeaver-ee.install
 	sha256sums = 453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = http://dbeaver.com/files/22.2.0/dbeaver-ee-22.2.0-linux.gtk.x86_64-nojdk.tar.gz
-	sha256sums_x86_64 = 50d67ba9e2eb9552544c611f21517425e573f0a85aebf38f7291a67a8b3a5929
+	source_x86_64 = http://dbeaver.com/files/22.3.0/dbeaver-ee-22.3.0-linux.gtk.x86_64-nojdk.tar.gz
+	sha256sums_x86_64 = c8a4d0b657f95ddb2c7adc1719a6bd0646339816844fd85993c33397fe412abc
 
 pkgname = dbeaver-ee
