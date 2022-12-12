@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.46.134
+pkgver=1.46.140
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
@@ -67,7 +67,7 @@ makedepends=(cargo-audit
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend')
-_chromium_ver=108.0.5359.94
+_chromium_ver=108.0.5359.99
 _gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
@@ -82,7 +82,6 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
         "https://gitlab.com/hadogenes/brave-patches/-/archive/$_brave_patchset_name/brave-patches-$_brave_patchset_name.zip"
         chromium-launcher-electron-app.patch
-        rust-autocxx-use_sysroot.patch
         system-rust-utils.patch
         brave-1.43-bat-native-ads-hash_vectorizer_fix-cstring.patch
         brave-1.43-bat-native-ads-vector_data_fix-cmath.patch
@@ -90,16 +89,17 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-brave_today-base_utf_string_conversions.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
         brave-1.43-ntp_background_images-std-size_t.patch)
-_arch_revision=a4877c0840780910faa5ec4506e8e1267f8eb942
-_patches=(REVERT-enable-GlobalMediaControlsCastStartStop.patch
+_arch_revision=0cfb1b8e921c83e78f1909a6640b6eaa66388679
+_patches=(re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
+          chromium-icu72.patch
+          v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
           REVERT-roll-src-third_party-ffmpeg-m102.patch
           REVERT-roll-src-third_party-ffmpeg-m106.patch
+          disable-GlobalMediaControlsCastStartStop.patch
           angle-wayland-include-protocol.patch
-          re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-          unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch
           use-oauth2-client-switches-as-default.patch)
 for _patch in "${_patches[@]}"; do
-  source+=("https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/chromium/trunk/$_patch")
+  source+=("https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/trunk/$_patch")
 done
 sha256sums=('SKIP'
             'SKIP'
@@ -109,7 +109,6 @@ sha256sums=('SKIP'
             '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
-            '8fc41a0d98b328a12b17d6b6702a65c13292332ed8a843e7f35392424e545913'
             'f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef'
             'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
@@ -117,12 +116,13 @@ sha256sums=('SKIP'
             'ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
-            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
+            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
+            'dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572'
+            'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
+            '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
-            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
-            'b908f37c5a886e855953f69e4dd6b90baa35e79f5c74673f7425f2cdb642eb00'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -250,6 +250,8 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i "${srcdir}/unbundle-jsoncpp-avoid-CFI-faults-with-is_cfi-true.patch"
   patch -Np1 -i "${srcdir}/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
+  patch -Np1 -i "${srcdir}/chromium-icu72.patch"
+  patch -Np1 -d v8 <"${srcdir}/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch"
 
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
