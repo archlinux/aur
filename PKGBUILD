@@ -1,7 +1,7 @@
 # Maintainer: André Kugland <kugland at gmail dot com>
 
 pkgname=create-next-app
-pkgver=11.0.1
+pkgver=13.0.6
 pkgrel=1
 pkgdesc='Create Next.js-powered React apps with one command.'
 arch=(any)
@@ -11,10 +11,8 @@ source=(
   "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
   'create-next-app'
 )
-sha256sums=(
-  'b8cc850ed3bfaa5d0b6f22cebe755bac50bf6a1e2fa6052844c58eae3db217d4'
-  'SKIP'
-)
+sha256sums=('7ccb1797e3c920b74a532a85bf65f51379377916c984bc8313b75a15c84df960'
+            'a637eea071b07a18109a17a25ca71f133645b11911b3174a52be947013989a3a')
 
 package() {
   cd "$srcdir"
@@ -24,6 +22,5 @@ package() {
   mkdir -p "$pkgdir/usr/share/create-next-app"
   cp -r dist/* "$pkgdir/usr/share/create-next-app/"
   chown -R root:root "$pkgdir/usr/share/create-next-app/"
-  install -o0 -g0 -m644 license.md -D -t "$pkgdir/usr/share/doc/create-next-app"
   install -o0 -g0 -m644 README.md -D -t "$pkgdir/usr/share/doc/create-next-app"
 }
