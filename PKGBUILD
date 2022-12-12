@@ -2,8 +2,8 @@
 
 _pkgname=pystring
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='C++ functions matching the interface and behavior of python string methods with std::string (mingw-w64)'
 arch=(any)
 url='https://github.com/imageworks/pystring'
@@ -14,20 +14,24 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/imageworks/pystring/archive/v${pkgver}.tar.gz"
 	'BuildPystring.cmake')
-sha256sums=(
-	'358a56e756e701836b69a31c75d3d9d41c34d447cf7b3775bbd5620dcd3203d9'
-	'1069e99aa9e546945e0f88bd4f2b06cbca8bb796843d7dc97fa428bafef60a05')
+sha256sums=('49da0fe2a049340d3c45cce530df63a2278af936003642330287b68cefd788fb'
+            '29c25f4faaa2b0e7bb7132d07c93e0cea577af1ae3d657714ec3db8077f8b2e2')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 prepare() {
-	cp 'BuildPystring.cmake' "${_srcdir}/CMakeLists.txt"
+	cp -f 'BuildPystring.cmake' "$_srcdir/CMakeLists.txt"
 }
 
 build() {
 	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
@@ -35,7 +39,11 @@ build() {
 
 package() {
 	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+		
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
-		install -Dm644 "${_srcdir}/LICENSE" "$pkgdir/usr/${_arch}/share/licenses/$pkgname/LICENSE"
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
 	done
 }

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pystring
 	pkgdesc = C++ functions matching the interface and behavior of python string methods with std::string (mingw-w64)
-	pkgver = 1.1.3
-	pkgrel = 2
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/imageworks/pystring
 	arch = any
 	license = custom
@@ -10,9 +10,9 @@ pkgbase = mingw-w64-pystring
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = pystring-1.1.3.tar.gz::https://github.com/imageworks/pystring/archive/v1.1.3.tar.gz
+	source = pystring-1.1.4.tar.gz::https://github.com/imageworks/pystring/archive/v1.1.4.tar.gz
 	source = BuildPystring.cmake
-	sha256sums = 358a56e756e701836b69a31c75d3d9d41c34d447cf7b3775bbd5620dcd3203d9
-	sha256sums = 1069e99aa9e546945e0f88bd4f2b06cbca8bb796843d7dc97fa428bafef60a05
+	sha256sums = 49da0fe2a049340d3c45cce530df63a2278af936003642330287b68cefd788fb
+	sha256sums = 29c25f4faaa2b0e7bb7132d07c93e0cea577af1ae3d657714ec3db8077f8b2e2
 
 pkgname = mingw-w64-pystring

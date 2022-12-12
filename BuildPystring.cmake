@@ -13,14 +13,9 @@ set(SOURCES
 	pystring.cpp
 )
 
-add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
-
-if(UNIX)
-	set(PYSTRING_CXX_FLAGS "${PYSTRING_CXX_FLAGS} -fPIC")
-endif()
+add_library(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES 
-	COMPILE_FLAGS "${PLATFORM_COMPILE_FLAGS} ${PYSTRING_CXX_FLAGS}"
     PUBLIC_HEADER "${HEADERS}"
 )
 
