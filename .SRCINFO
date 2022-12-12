@@ -1,7 +1,7 @@
 pkgbase = sublime-text-dev
 	pkgdesc = Sophisticated text editor for code, html and prose - dev build
 	pkgver = 4.4141
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.sublimetext.com/dev
 	install = sublime-text-dev.install
 	arch = x86_64
