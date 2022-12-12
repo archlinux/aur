@@ -1,7 +1,7 @@
 # Maintainer: Laurin Neff <laurin at laurinneff dot ch>
 pkgname=satisfactory-mod-manager
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
@@ -22,9 +22,6 @@ build() {
 
 package() {
 	cd "${srcdir}/SatisfactoryModManager-${pkgver}"
-
-	install -dm755 "${pkgdir}/usr/share/${pkgname}"
-	cp -r build/linux-unpacked/resources "${pkgdir}/usr/share/${pkgname}/"
 
 	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
 	for i in 16 32 64 128 256 512; do
