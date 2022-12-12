@@ -16,11 +16,6 @@ sha256sums=('0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee')
 package() {
 	cd "${srcdir}"
 
-	# Adjust naming
-	sed -i 's#/opt/sublime_text/sublime_text#/opt/sublime_text_3/sublime_text#g' 'sublime_text_3/sublime_text.desktop'
-	sed -i 's#Sublime Text#Sublime Text 3#g' 'sublime_text_3/sublime_text.desktop'
-	sed -i 's#sublime-text#sublime-text-3#g' 'sublime_text_3/sublime_text.desktop'
-
 	# Install sublime text 3
 	install -dm755 "${pkgdir}/opt"
 	cp --preserve=mode -r 'sublime_text_3' "${pkgdir}/opt/sublime_text_3"
@@ -32,8 +27,10 @@ package() {
 		ln -s "/opt/sublime_text_3/Icon/${res}/sublime-text.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/sublime-text-3.png"
 	done
 
-	# Install desktop entry and executable
-	sed -i 's#/opt/sublime_text_3/sublime_text#/usr/bin/subl3#g' 'sublime_text_3/sublime_text.desktop'
+	# Adjust naming and install desktop entry and executable
+	sed -i 's#Sublime Text#Sublime Text 3#g' 'sublime_text_3/sublime_text.desktop'
+	sed -i 's#sublime-text#sublime-text-3#g' 'sublime_text_3/sublime_text.desktop'
+	sed -i 's#/opt/sublime_text/sublime_text#/usr/bin/subl3#g' 'sublime_text_3/sublime_text.desktop'
 	sed -i '\#^StartupNotify=#a StartupWMClass=subl3' 'sublime_text_3/sublime_text.desktop'
 
 	install -dm755 "${pkgdir}/usr/share/applications"
