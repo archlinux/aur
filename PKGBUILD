@@ -15,7 +15,25 @@
 #
 # https://bugs.archlinux.org/task/76643
 #
-# This package flips on the JXL that is readily available in ffmpeg, and by extension mpv.
+# The given reasoning is
+#
+# - libjxl is in [community], I'm not bringing and maintaining that package and all its dependencies in [extra]
+# - depending on libjxl brings 47.6MB of additional dependencies
+# - there's ffmpeg-full, aka ffmpeg-bloatfest in AUR
+#
+# First two are simply incorrect: the only dependency of libjxl that is not in core or extra is highway, which is 3.5MB.
+# The last one about the existence of ffmpeg-full is a red-herring; you can argue that for any feature of ffmpeg, included or non-included,
+# arbitrarily, yet no such argument was made to turn on AV1/AVIF support, inclusion of libwebp, or less popular encoders such as rav1e.
+#
+# And his response completely ignores the raised issue about why JXL is necessary: saving lossles (or high-fidelity) screenshots in mpv
+# at >=4K is extremely slow without it. Ignoring the stutter (and SSD wearing), his workaround for obtaining JXL screenshots is to write
+# screenshots as >60MB PNG files and then manually convert them to JXL using cjxl, because "ImageMagick and vips exist for a reason".
+# Yes, seriously. That is how we must live according to per his decree.
+#
+# Unfortunately, time and again, Maxime preferred to silence any critique of his incorrect or subjective claims by locking down the issues,
+# so here we are.
+#
+# This package flips on the JXL support that is readily available in ffmpeg, and by extension mpv.
 
 pkgname=ffmpeg-jxl
 pkgver=5.1.2
