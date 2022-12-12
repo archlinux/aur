@@ -11,7 +11,7 @@
 # https://bugs.archlinux.org/task/76106
 # https://bugs.archlinux.org/task/76277
 #
-# in some cases with some cheerleading from other another package maintainer:
+# in some cases with some cheerleading from another package maintainer:
 #
 # https://bugs.archlinux.org/task/76643
 #
@@ -120,13 +120,16 @@ conflicts=('ffmpeg')
 source=(
   "https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
   add-av_stream_get_first_dts-for-chromium.patch
+  ffmpeg-libjxl-primary.patch
 )
 b2sums=('SKIP'
-        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd "ffmpeg-${pkgver}"
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+  patch -Np1 -i ../ffmpeg-libjxl-primary.patch # https://github.com/mpv-player/mpv/issues/10349, https://github.com/FFmpeg/FFmpeg/commit/05d6157aab34bc49f23284645a8f34ece870f44d
 }
 
 build() {

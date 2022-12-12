@@ -1,0 +1,18 @@
+diff --git a/libavcodec/libjxlenc.c b/libavcodec/libjxlenc.c
+index 6a948cc3ae..d6d25fe970 100644
+--- a/libavcodec/libjxlenc.c
++++ b/libavcodec/libjxlenc.c
+@@ -343,8 +343,11 @@  static int libjxl_encode_frame(AVCodecContext *avctx, AVPacket *pkt, const AVFra
+     ret = libjxl_populate_primaries(&jxl_color,
+             frame->color_primaries && frame->color_primaries != AVCOL_PRI_UNSPECIFIED
+             ? frame->color_primaries : avctx->color_primaries);
+-    if (ret < 0)
+-        return ret;
++    if (ret < 0) {
++        av_log(avctx, AV_LOG_WARNING, "Unknown primaries, assuming BT.709/sRGB. Colors may be wrong.\n");
++        jxl_color.primaries = JXL_PRIMARIES_SRGB;
++        jxl_color.white_point = JXL_WHITE_POINT_D65;
++    }
+
+     sd = av_frame_get_side_data(frame, AV_FRAME_DATA_ICC_PROFILE);
+     if (sd && sd->size && JxlEncoderSetICCProfile(ctx->encoder, sd->data, sd->size) != JXL_ENC_SUCCESS)
