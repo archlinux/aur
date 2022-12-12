@@ -4,7 +4,7 @@
 
 pkgname=cisco-anyconnect
 pkgver=4.10.06079
-pkgrel=2
+pkgrel=3
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html'
 arch=('x86_64')
@@ -45,14 +45,14 @@ package() {
         "libvpnapi.so" "libacruntime.so" "libacciscossl.so" "libacciscocrypto.so" \
         "cfom.so" "libboost_date_time.so" "libboost_filesystem.so" "libboost_regex.so" "libboost_system.so" \
         "libboost_thread.so" "libboost_signals.so" "libboost_chrono.so" \
-        "libaccurl.so.4.7.0"; do
+        "libaccurl.so.4.8.0"; do
         install -Dm755 ${lib} "${pkgdir}/opt/cisco/anyconnect/lib/${lib}"
     done
 #     rm -rf ${pkgdir}/opt/cisco/anyconnect/lib/libboost*
 
     # the installer copies all the other symlinks, but creates this one
     # for some reason so let's just create it ourselves
-    ln -s /opt/cisco/anyconnect/lib/libaccurl.so.4.7.0 "${pkgdir}/opt/cisco/anyconnect/lib/libaccurl.so.4"
+    ln -s /opt/cisco/anyconnect/lib/libaccurl.so.4.8.0 "${pkgdir}/opt/cisco/anyconnect/lib/libaccurl.so.4"
 
     # install plugins
     # we intentionally don't install the telemetry plugin here
