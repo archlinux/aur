@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=107.0
-pkgrel=1
+pkgver=107.0.1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
         "libwebrtc-screen-cast-sync.patch")
-sha256sums=('8a562e5a397b57e9bf383c2988308ab494c5d28844e792c658fedea27756584a'
+sha256sums=('e29950b9ba9143b0d683dc18779bbe70bbd082533aff8f6a7af69b19533e0647'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -210,9 +210,11 @@ END
     msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
     patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
-    msg2 "Hide passwordmgr"
-    patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
+#    msg2 "Hide passwordmgr"
+#    patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
 
+    msg2 "Patch Devtools to bypass devtool detection"
+    patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
     msg2 "KDE MENU"
     patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
