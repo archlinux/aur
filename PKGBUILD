@@ -1,7 +1,8 @@
 _name=digestif
 pkgname=digestif-git
-pkgver=0.5.204.2e93b18
-pkgrel=1
+pkgver=0.5.1.206.f1b4202
+pkgrel=0
+epoch=1
 arch=(any)
 license=(MIT)
 url="https://github.com/astoff/$_name"
