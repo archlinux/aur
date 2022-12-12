@@ -2,9 +2,9 @@
 
 pkgname=enve-git
 _pkgname=${pkgname%-git}
-pkgver=continuous.linux.r65.gc0062e63
+pkgver=continuous.linux.r68.gd919d4d3
 pkgrel=1
-arch=('i686' 'pentium4' 'x86_64')
+arch=('x86_64')
 pkgdesc="2D animation software"
 url="https://maurycyliebner.github.io/"
 license=('GPL3')
@@ -35,7 +35,7 @@ prepare() {
   git config submodule.third_party/gperftools.url $srcdir/gperftools
   git config submodule.third_party/libmypaint.url $srcdir/libmypaint
   git config submodule.third_party/skia.url $srcdir/skia
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # Patching enve source code
   patch --forward --strip=1 --input="$srcdir/enve-QPainterPath.patch"

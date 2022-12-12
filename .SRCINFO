@@ -1,10 +1,8 @@
 pkgbase = enve-git
 	pkgdesc = 2D animation software
-	pkgver = continuous.linux.r65.gc0062e63
+	pkgver = continuous.linux.r68.gd919d4d3
 	pkgrel = 1
 	url = https://maurycyliebner.github.io/
-	arch = i686
-	arch = pentium4
 	arch = x86_64
 	license = GPL3
 	makedepends = git
