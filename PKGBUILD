@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 # Contributor: navigaid <navigaid@gmail.com>
 pkgname=openbsd-manpages
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc="The OpenBSD manuals"
 arch=('any')
@@ -16,9 +16,9 @@ source=("${_mirrorurl}/${pkgver}/amd64/man${pkgver//./}.tgz"
         "${_mirrorurl}/${pkgver}/amd64/comp${pkgver//./}.tgz"
         "${_mirrorurl}/${pkgver}/amd64/xshare${pkgver//./}.tgz"
         'manfmt')
-sha256sums=('e146aa58de24fd3662e1120fae5243ac51b8a5c5d0f3b37afde70e9a1af44027'
-            '55642ffa1f6044bf4bcddb4f40d26553ea75ffccf10a50da37ac7ef963b5c99b'
-            '8ae5bb36df9b68e33264b26f530b2c9df83c3c677a43c152c342f7d21c443d3b'
+sha256sums=('54d4252cf0cbb72010687059939f6574d4214470585ca1d8ec23b89fe4f2460f'
+            '4ed835bb22ef394ff05539b99fa58726715c660ddf330b1118cf65e4f491e85d'
+            '800a785895db700d623940a93c42e61625df5b3c4b27b0c0dbbccbe02782c45c'
             '335fa03d90fa0829327b8ba861fd5fda18d8da83a3d3e04ff21fde27037b62bb')
 
 package() {
