@@ -1,12 +1,12 @@
 pkgbase = lua-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua
-	pkgver = 1.15.0
-	pkgrel = 3
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://github.com/leafo/pgmoon
 	arch = any
 	license = MIT
-	source = lua-pgmoon-1.15.0.tar.gz::https://github.com/leafo/pgmoon/archive/v1.15.0.tar.gz
-	sha256sums = dabf50ca9947dc135b7126cee56b3287242f00c7438ceca7403cef45277829e1
+	source = lua-pgmoon-1.16.0.tar.gz::https://github.com/leafo/pgmoon/archive/v1.16.0.tar.gz
+	sha256sums = 9869728131338e518f4fb060814b53a20ed59c97f51f961fa1992291ff9e89a9
 
 pkgname = lua-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.4
