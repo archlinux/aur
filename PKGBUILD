@@ -117,7 +117,7 @@ ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
-export MOZ_REQUIRE_SIGNING=1
+export MOZ_REQUIRE_SIGNING=
 
 # System libraries
 ac_add_options --with-system-nspr
