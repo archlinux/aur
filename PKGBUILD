@@ -1,8 +1,9 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer:
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=stable-diffusion-intel
 pkgver=20220908
-pkgrel=1
+pkgrel=2
 pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
