@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=verity-squash-root
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Build signed efi files which mount a verified squashfs image as rootfs on boot'
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(flake8 mypy shellcheck)
 optdepends=('age: for encrypted secure boot keys')
 backup=(etc/verity_squash_root/config.ini)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('16331436761e09257a5cec8dc3e66ffc57e197ea26ec8b509b2d994dfafbd9a1')
+sha256sums=('66a6a5c8bcc1984e8a2442758177ab532926bad0aec0aa174cc62e164e4b4fe6')
 
 build() {
   cd "${pkgname}-${pkgver}"

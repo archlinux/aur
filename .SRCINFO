@@ -1,6 +1,6 @@
 pkgbase = verity-squash-root
 	pkgdesc = Build signed efi files which mount a verified squashfs image as rootfs on boot
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/brandsimon/verity-squash-root/
 	arch = any
@@ -13,14 +13,14 @@ pkgbase = verity-squash-root
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = efitools
 	depends = binutils
+	depends = efitools
 	depends = sbsigntools
 	depends = squashfs-tools
 	depends = tar
 	optdepends = age: for encrypted secure boot keys
 	backup = etc/verity_squash_root/config.ini
-	source = verity-squash-root-0.1.0.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = de2508ad8267d2de2ab272f4e8d823760e33e07a90ae09eb33bc458226ef8835
+	source = verity-squash-root-0.2.0.tar.gz::https://github.com/brandsimon/verity-squash-root/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 66a6a5c8bcc1984e8a2442758177ab532926bad0aec0aa174cc62e164e4b4fe6
 
 pkgname = verity-squash-root
