@@ -1,0 +1,16 @@
+pkgbase = smplayer-skins-git
+	pkgdesc = Skins for SMPlayer
+	pkgver = 20.11.0.rc3d8454
+	pkgrel = 1
+	url = https://smplayer.info/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = smplayer
+	provides = smplayer-skins
+	conflicts = smplayer-skins
+	conflicts = smplayer-skins-svn
+	source = smplayer-skins-git::git+https://github.com/smplayer-dev/smplayer-skins.git
+	sha256sums = SKIP
+
+pkgname = smplayer-skins-git
