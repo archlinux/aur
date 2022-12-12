@@ -23,12 +23,12 @@ options=('!strip')
 
 # you will have to obtain the installer yourself - it's not available publicly
 source=(
-"anyconnect-linux64-4.10.05111-predeploy-k9.tar.gz::https://github.com/Labaman/cisco-anyconnect-bin/raw/main/anyconnect-linux64-4.10.05111-predeploy-k9.tar.gz"
+"anyconnect-linux64-4.10.06079-predeploy-k9.tar.gz::https://github.com/Labaman/cisco-anyconnect-bin/raw/main/anyconnect-linux64-4.10.06079-predeploy-k9.tar.gz"
 "${pkgname}.sh" 
 "AnyConnectLocalPolicy.xml"
 )
 
-sha256sums=('b34a49e3001c5946dfa9f6feff8fbbef8f6e452e5f5b7e77581d62796c32e981'
+sha256sums=('4a0aafa2a6e31a22ea76780ff872b65fdf57dc229330863e5fed48d51039e8f3'
             '200ab27674568ac32b939c02bba051f90cf59d6ca087746a1e54c5a7ac207dbc'
             'b7c65a236e671d3eb527a3377e22b66018c450d726f71fa6344530a75255dac7')
 
