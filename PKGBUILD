@@ -1,13 +1,13 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=jome-git
-pkgver=r55.b94a35f
+pkgver=r119.409e2fc8
 pkgrel=1
 pkgdesc='Jome is a keyboard centric emoji picker desktop application.'
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('qt5-base')
-makedepends=('git' 'cmake' 'boost' 'python-cairo' 'python-cairosvg' 'python-yaml')
+makedepends=('cmake' 'boost')
 url='https://github.com/eepp/jome'
 source=('jome-git::git+https://github.com/eepp/jome')
 md5sums=('SKIP')
