@@ -43,7 +43,7 @@ build() {
 }
 package() { 
 #     mv "$srcdir"/* "$pkgdir/"
-    targ="$pkgdir/usr/share/TSPkgDev/"
+    targ="$pkgdir/"
     mkdir -p "$targ"
     dir -1 "$srcdir/" | while read f; do
         mv "$(realpath "$srcdir/$f")" "$targ/"
