@@ -20,7 +20,7 @@ prepare () {
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --enable-lto
+  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --enable-lto --with-uring
   make
 }
 
