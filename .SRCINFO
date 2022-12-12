@@ -1,0 +1,20 @@
+pkgbase = pacman-mirrors
+	pkgdesc = MSYS2 mirror list for use by pacman
+	pkgver = 20221016
+	pkgrel = 1
+	url = https://www.msys2.org/dev/mirrors/
+	arch = any
+	license = GPL
+	backup = etc/pacman.d/mirrorlist.msys
+	backup = etc/pacman.d/mirrorlist.mingw
+	backup = etc/pacman.d/mirrorlist.mingw32
+	backup = etc/pacman.d/mirrorlist.mingw64
+	backup = etc/pacman.d/mirrorlist.ucrt64
+	backup = etc/pacman.d/mirrorlist.clang64
+	backup = etc/pacman.d/mirrorlist.clang32
+	source = mirrorlist.msys
+	source = mirrorlist.mingw
+	sha256sums = f105e99b174b409dbcec37d0e5e7473b22092cdbf5cd52ef9c5943f62b955017
+	sha256sums = 9bf93b4feeddcfc788fee17965dc6339f91d4fc3059812a9b3bc349e6bde0065
+
+pkgname = pacman-mirrors
