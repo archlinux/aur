@@ -1,0 +1,15 @@
+pkgbase = remix-desktop
+	pkgdesc = Remix IDE desktop
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/ethereum/remix-desktop
+	arch = i686
+	arch = x86_64
+	license = custom:Unlicense
+	depends = zlib
+	noextract = Remix-IDE-1.3.6.AppImage
+	options = !strip
+	source = Remix-IDE-1.3.6.AppImage::https://github.com/ethereum/remix-desktop/releases/download/v1.3.6/Remix-IDE-1.3.6.AppImage
+	sha512sums = 35cd109c60b8efa6703483d93dea9753f0c45e39c6008eca59b2f13ce8181a9b36fd650f054e43ddd2a1a3f083a4a8b6722680411f86326844f0815686ae622a
+
+pkgname = remix-desktop
