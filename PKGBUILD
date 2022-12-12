@@ -1,5 +1,6 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
 # Contributor: Daniel Hillenbrand < codeworkx at bbqlinux dot org >
+# Contributor: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname=cross-mipsel-linux-gnu-binutils
 _pkgname=binutils
