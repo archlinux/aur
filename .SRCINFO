@@ -16,7 +16,7 @@ pkgbase = myuzi
 	depends = gst-libav
 	depends = gst-plugins-good
 	depends = yt-dlp
-	source = https://gitlab.com/zehkira/myuzi/-/archive/v1.13.2/myuzi-v1.13.3.tar.gz
+	source = https://gitlab.com/zehkira/myuzi/-/archive/v1.13.3/myuzi-v1.13.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = myuzi
