@@ -38,7 +38,7 @@ check_arch() {
         ;;
         *)
             echo
-            echo "${ARCH} unknown!"
+            echo "${ARCH} is not supported!"
             exit 1
         ;;
     esac
@@ -96,6 +96,24 @@ adjust_config() {
 
 ## arg 1:  the new package version
 pre_install() {
+
+    # Check if we are running on a supported OS
+    BYPASS_OS_CHECK=${BYPASS_OS_CHECK:-true}
+    CURRENT_OS=$(lsb_release -d)
+    if [[ $CURRENT_OS != *"Debian GNU/Linux 11 (bullseye)"* ]]; then
+    # Strip first feild of string
+        CURRENT_OS=$(echo $CURRENT_OS | cut -d' ' -f2-)
+        if [[ $BYPASS_OS_CHECK != "true" ]]; then
+            error "${CURRENT_OS} is not supported!"
+        fi
+        warn "Bypassing OS check..."
+        warn "${CURRENT_OS} is not supported!"
+        warn "Please DO NOT report issues regarding this OS!"
+    fi
+
+    check_arch
+    check_machine
+
     # Check if Modem Manager is enabled
     if systemctl is-enabled ModemManager.service &> /dev/null; then
         echo
@@ -109,9 +127,6 @@ pre_install() {
         echo 0 > /proc/sys/kernel/dmesg_restrict
         echo "kernel.dmesg_restrict=0" >> /etc/sysctl.conf
     fi
-
-    check_arch
-    check_machine
 }
 
 ## arg 1:  the new package version
