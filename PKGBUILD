@@ -2,7 +2,7 @@
 # Contributor:  Phil Estes <https://estesp.dev/#contact>
 
 pkgname=manifest-tool-bin
-pkgver=v2.0.6
+pkgver=2.0.6
 pkgrel=1
 
 pkgdesc='Container image manifest tool for manifest list object creation/query'
