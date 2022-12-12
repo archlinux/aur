@@ -91,7 +91,9 @@ pkgbase = ffmpeg-jxl
 	conflicts = ffmpeg
 	source = https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
 	source = add-av_stream_get_first_dts-for-chromium.patch
+	source = ffmpeg-libjxl-primary.patch
 	b2sums = SKIP
-	b2sums = 555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = ffmpeg-jxl
