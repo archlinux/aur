@@ -23,7 +23,7 @@ ifdef ($(string $(pkgrel)),)
 	use_pkgrel=$(pkgrel)
 else
   ifeq ($(pkgver),$(current_pkgver))
-	  use_pkgrel=$(current_pkgrel)+1
+	  use_pkgrel=$(shell expr $(current_pkgrel) + 1)
 	else
 	  use_pkgrel=1
 	endif
@@ -36,7 +36,7 @@ help: ## Show this help message
 .PHONY: clean
 clean: ## Clean the current workspace
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old package files${CC_END}"
-	rm -f *.pkg.tar.{xz,zst} *.zip{,.part}
+	rm -rf *.pkg.tar.{xz,zst} *.{zip,gz,xz,zst}{,.part}
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Cleaning up old working directories${CC_END}"
 	rm -rf ./pkg ./src
 
