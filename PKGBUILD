@@ -1,13 +1,20 @@
 # Contributor: Étienne Deparis <etienne@depar.is> (stable goodvibes AUR pkg)
 
 pkgname=goodvibes-git
-pkgver=0.6.3.r40.gf25ca7e
+pkgver=0.7.5.r3.g7635678
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/goodvibes/goodvibes"
 license=('GPL')
-depends=("amtk" "libkeybinder3" "gst-plugins-base" "gst-plugins-good" "gst-plugins-ugly")
+depends=(
+	"amtk"
+	"gst-plugins-base"
+	"gst-plugins-good"
+	"gst-plugins-ugly"
+	"libkeybinder3"
+	"libsoup"
+)
 makedepends=(git meson)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
