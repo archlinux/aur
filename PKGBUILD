@@ -1,6 +1,6 @@
 # Maintainer: mekb https://github.com/mekb-turtle
 pkgname=todo-mekb-git
-pkgver=r11.c60eb37
+pkgver=r13.f301191
 pkgrel=1
 pkgdesc='Terminal to-do list written in C'
 arch=('any')
