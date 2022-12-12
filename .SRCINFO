@@ -1,7 +1,7 @@
 pkgbase = rocm-smi-lib
 	pkgdesc = ROCm System Management Interface Library
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/rocm_smi_lib
 	arch = x86_64
 	license = custom:NCSAOSL
