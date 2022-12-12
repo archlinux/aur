@@ -3,7 +3,7 @@
 
 _pkgname=gthumb
 pkgname=gthumb-git
-pkgver=3.7.1+24+g8765cb91
+pkgver=3.12.2+45+g23452ab7
 pkgrel=1
 pkgdesc="Image browser and viewer for the GNOME Desktop"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ depends=(desktop-file-utils hicolor-icon-theme dconf librsvg clutter-gtk
          gst-plugins-base-libs gsettings-desktop-schemas libwebp
          webkit2gtk)
 makedepends=(intltool libchamplain libraw exiv2 itstool brasero librsvg
-             libraw liboauth docbook-xsl gnome-common yelp-tools)
+             libraw liboauth docbook-xsl gnome-common yelp-tools meson)
 optdepends=('libraw: read RAW files'
             'exiv2: metadata support'
             'libchamplain: map viewer'
