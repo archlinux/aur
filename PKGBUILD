@@ -1,7 +1,7 @@
 # Maintainer: wuhx <aur@xun.im>
 
 pkgname=nerdctl-full-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="nerdctl full pkg, bundle with containerd/CNI plugin/RootlessKit"
 arch=('x86_64' 'aarch64')
@@ -14,5 +14,5 @@ package() {
   mkdir -p "$pkgdir/usr/local"
   tar Cxzvvf "$pkgdir/usr/local" nerdctl-full-${CARCH}-${pkgver}.tar.gz
 }
-sha256sums_x86_64=('b7f76a3bf1b8161eb94ebe885945feb2887dfc0d274f9da908a17bc0ef853eb9')
-sha256sums_aarch64=('e4c9b9434c88847f4d18f8b84c0d073555e4c949546cfa8a21e719de67afdf70')
+sha256sums_x86_64=('5440c7b3af63df2ad2c98e185e06a27b4a21eea334b05408e84f8502251d9459')
+sha256sums_aarch64=('3b613a1be5a24460c44bb93a3609b790ada94e06efd1a86467d45bec7da8b449')
