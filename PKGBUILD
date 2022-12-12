@@ -5,7 +5,7 @@
 
 pkgname=ngrok
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
 license=('custom')
@@ -25,6 +25,9 @@ sha256sums_aarch64=('668cc681c4d5bd6b4d205b8332091f8236575ebebd900b5ef9d27311647
 options=(!strip)
 
 package() {
+  BASH_COMPLETION_DIR="$pkgdir/usr/share/bash-completion/completions"
+  ZSH_COMPLETION_DIR="$pkgdir/usr/share/zsh/site-functions"
+
   # Copy terms of service to license directory
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" TERMS-OF-SERVICE.txt
 
@@ -32,6 +35,11 @@ package() {
 
   # Install the program.
   install -Dm755 ngrok-v3-${pkgver}-linux-* "${pkgdir}/usr/bin/ngrok"
+
+  # Generate completion for bash and zsh
+  mkdir -p "$BASH_COMPLETION_DIR" "$ZSH_COMPLETION_DIR"
+  SHELL=/usr/bin/bash ${pkgdir}/usr/bin/ngrok completion > "$BASH_COMPLETION_DIR/ngrok"
+  SHELL=/usr/bin/zsh ${pkgdir}/usr/bin/ngrok completion  > "$ZSH_COMPLETION_DIR/_ngrok"
 }
 
 # vim: ft=sh ts=2 sw=2 et
