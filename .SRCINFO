@@ -9,6 +9,7 @@ pkgbase = natron-bin
 	makedepends = imagemagick
 	depends = glu
 	depends = hicolor-icon-theme
+	depends = libxcrypt-compat
 	provides = natron
 	conflicts = natron
 	noextract = natron-2.5.0.tar.xz
