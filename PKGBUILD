@@ -1,6 +1,6 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.7.0
+pkgver=10.8.0
 pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
@@ -19,14 +19,14 @@ replaces=()
 backup=()
 source=("https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop"
-            "https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.linux-${arch}.tar.bz2")
+            "https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.en-US.linux-${arch}.tar.bz2")
 md5sums=('c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
 
 if test "$CARCH" == x86_64; then
-    md5sums+=('5c45a8ff14adf5c7131a3366d5ade495')
+    md5sums+=('245caaef810f888ec3c4081c0f7929f8')
 elif test "$CARCH" == aarch64; then
-    md5sums+=('96aaa39ef5ce7fa2b0da997ce592535d')
+    md5sums+=('771faee7feae57a06ed1180d071744a4')
 fi
 
 package() {
