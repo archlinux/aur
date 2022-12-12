@@ -1,7 +1,11 @@
 post_install() {
-    echo 'Remember to configure your game launch options'
+    echo '==> Please symlink MinEdLauncher to your game path'
+    echo '  -> Example: `ln -sf /usr/bin/MinEdLauncher ~/.steam/steam/steamapps/common/Elite\ Dangerous/MinEdLauncher`'
+    echo '==> and manually configure your game launch options'
+    echo '  -> Refer to https://github.com/rfvgyhn/min-ed-launcher#setup'
 }
 
 post_remove() {
-    echo 'Remember to revert your game launch options'
+    echo '==> Remember to remove the MinEdLauncher symlink from your game path'
+    echo '==> and revert your game launch options'
 }
