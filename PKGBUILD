@@ -4,18 +4,18 @@
 # Contributor: liberodark
 
 pkgname=natron-compositor-git
-pkgver=2.5.0.alpha.2.r83.g395c2227a
+pkgver=2.6.0.alpha1.r4.gdd42d8a93
 pkgrel=1
 pkgdesc="Open source compositing software"
 arch=('x86_64')
 url="https://natrongithub.github.io/"
 license=('GPL')
-depends=('boost-libs' 'cairo' 'glfw' 'pyside2' 'python-qtpy' 'shiboken2')
-makedepends=('boost' 'extra-cmake-modules' 'expat' 'git' 'openmp' 'ninja')
-optdepends=('openfx-arena-git: Extra OpenFX plugins for Natron'
-            'openfx-gmic-git: OpenFX wrapper for the GMIC framework'
-            'openfx-io-git: Readers/Writers plugins'
-            'openfx-misc-git: Miscellaneous OpenFX plugins')
+depends=('boost-libs' 'cairo' 'pyside2')
+makedepends=('boost' 'extra-cmake-modules' 'git' 'glfw' 'openmp' 'ninja' 'python-qtpy' 'shiboken2')
+optdepends=('openfx-arena: Extra OpenFX plugins for Natron'
+            'openfx-gmic: OpenFX wrapper for the GMIC framework'
+            'openfx-io: Readers/Writers plugins'
+            'openfx-misc: Miscellaneous OpenFX plugins')
 
 _pkgname=${pkgname%%-*}
 _url="https://github.com/NatronGitHub"
@@ -52,11 +52,11 @@ prepare() {
   git config submodule.libs/SequenceParsing.url "$srcdir/SequenceParsing"
   git config submodule.Tests/google-mock.url "$srcdir/google-mock"
   git config submodule.Tests/google-test.url "$srcdir/google-test"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd libs/SequenceParsing
   git config submodule.tinydir.url "$srcdir/tinydir"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -64,9 +64,9 @@ build() {
 
   cmake -G Ninja \
         -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DNATRON_BUILD_TESTS=OFF
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D NATRON_BUILD_TESTS=OFF
 
   ninja -C build/
 }
