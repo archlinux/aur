@@ -3,7 +3,7 @@ pkgver=1.0.2
 pkgrel=1
 arch=("x86_64" "aarch64")
 license=('GPL')
-depends=('npm')
+depends=('npm' 'git')
 pkgdesc="A collection of npm dependencies for electron packages."
 _MachineType=`uname -m`
 
