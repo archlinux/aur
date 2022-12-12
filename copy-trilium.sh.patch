@@ -6,15 +6,11 @@
 < mkdir $DIR
 ---
 > mkdir -p $DIR
-17,19d16
-< cp -r dump-db $DIR/
-< rm -rf $DIR/dump-db/node_modules
-< 
-33c30
+30c30
 < (cd $DIR && n exec 16.18.0 npm install --only=prod)
 ---
 > (cd $DIR && npm install --only=prod)
-37c34
+34c34
 < rm -r $DIR/node_modules/better-sqlite3/Release
 ---
 > rm -r $DIR/node_modules/better-sqlite3/build/Release

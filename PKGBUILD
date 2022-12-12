@@ -4,7 +4,7 @@ _electron_version=16
 _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
-pkgver=0.57.3
+pkgver=0.57.4
 pkgrel=1
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/
 	"trilium-server.sysusers"
 	"trilium-server.tmpfiles")
 
-sha512sums=('fbc6bfae4a2f5a9d3a477a0e5844365a3d88001e6c2d7476e5fb8c04018e11c2d310c222d26401b60847b737f7f76c37ba562c1b88aea7343bc8af3ef605f83d'
-	    '3299a10a9726a454c7b1e5c1eb26ab434c2c9cf732d7ab9545fb390b671be9b2f37bd4e37f07189a12b875b817366163d780db68dc1b71bcfc80ec8e53c4d615'
+sha512sums=('85795db5d1fda45f130563682f3c29358748dbc31ae6a4c420f7b1cf20e7cfe4dc3e7640a800c2c9096a74d0ba89d479eb5faddcb8ca299dc08af9a8da51d266'
+	    '3f773bcb169cfc0a79b4ca9a8043d8b9af2259a94d58100e3518975325c5029f91a1cbb535d042934dcd629fdab22895545ff7986bb8d7403e187a0a9a401f96'
 	    'b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd'
 	    '6b03a7cce3836966d00e282d012cce944b8b56e29200fa06e64563a95e4edde591c0018715639a5e2acdbfd11a73ccb8283fbad19efc7dff218e8398c7e12d30'
 	    '14a97f1fab392dd9a55440712bf3f2976de20e9c09789392984313455af77d9900445bd06cf2c3a3879a94cab893e83bd4093060f9214b2c201af89d7f62f663'
@@ -55,6 +55,7 @@ build() {
 	
 	# Building trilium (desktop)
 	./bin/copy-trilium.sh $_trilium_desktop_src_dir
+	rm -rf $_trilium_desktop_src_dir/dump-db
 
 	rm -r $_trilium_desktop_src_dir/src/public/app-dist/*.mobile.*
 
@@ -68,7 +69,8 @@ build() {
 	mv package-server.json package.json
 	
 	./bin/copy-trilium.sh $_trilium_server_src_dir
-
+	rm -rf $_trilium_server_src_dir/dump-db
+	
 	mkdir $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release
 	cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release/better_sqlite3.node
 	
