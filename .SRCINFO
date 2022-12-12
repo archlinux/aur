@@ -1,14 +1,17 @@
 pkgbase = python-pytest-remotedata
 	pkgdesc = Pytest plugin used for controlling access to data files hosted online
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-remotedata
 	arch = any
 	license = BSD
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-pytest>=4.6
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/p/pytest-remotedata/pytest-remotedata-0.3.3.tar.gz
-	md5sums = 8507cafd80961585366c5d3c9116cc47
+	source = https://files.pythonhosted.org/packages/source/p/pytest-remotedata/pytest-remotedata-0.4.0.tar.gz
+	md5sums = 8e7cff311898c945510b42e424906c00
 
 pkgname = python-pytest-remotedata
