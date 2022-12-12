@@ -1,0 +1,10 @@
+post_install() {
+	if [ ! -d /etc/pacman.d/ ]; then
+	  pacman-key --init
+	fi
+	pacman-key --populate
+}
+
+post_upgrade() {
+  post_install
+}

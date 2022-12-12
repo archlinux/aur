@@ -1,0 +1,10 @@
+pkgbase = termux-keyring
+	pkgdesc = GPG public keys for the official Termux repositories
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/termux
+	install = termux-keyring.install
+	arch = any
+	license = Apache-2.0
+
+pkgname = termux-keyring
