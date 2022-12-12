@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.0.12
+pkgver=6.1
 pkgrel=1
 pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -26,9 +26,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
-        '0103-soundwire_intel_Initialize_clock_stop_timeout.patch'
-        '0104-drm_sched_add_DRM_SCHED_FENCE_DONT_PIPELINE_flag.patch'
-        '0105-drm_amdgpu_use_DRM_SCHED_FENCE_DONT_PIPELINE_for_VM_updates.patch'
+        '0c079d3f88df5f8286cd5c91b54bdac7c819be85.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -50,16 +48,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('89b730edf8942b49e02f9894244205886c9a214d629b35b88c4ff06ee9304f01'
-            'c9acc5200f34ff8ec8faffc9513a42f508ed561a73ffc7de067bd24a2efaf81d'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+            '54ee295ff409cceab0f1e9666b542da839e79230ffeecc80d7385c1d6c9f3644'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            '5a72a4163937bc588d6a8ed6320e610f6512376b7aa20c4ada5c0ae09cdcd525'
-            '8ecbe2fdd40c1accc4e7ccd687c319938c18f5adf056ff314c7702775347adf9'
-            '11b7c141c218d6c026a29aed5ba3c3322343ae677155a6dccf622c151eb1b1aa'
+            'a5a482a4d715f4d11a00f898de520effa01cce31faadd98b02cf10006a4ac8be'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
-            '8e5c147591d14300a59ed8354a9d0746cf78650256558b45f964ca76eaed9a9f'
-            '57ce3e0ba6bf400d36358a9d30589905f6e51bc037d7165f5a2658b6bdc86793'
+            '50f4ccc4aeb0ffb8ec648b90a84ff188dbfed5364075cf0c6045c5696caf6ca9'
+            'e95c4f988cb9337f6c1e3d8affbfe170bea18843f839a3334a38e0ec44ed9000'
             'a26b3abaec1cd5731bc8431fecb8b3eb0ba47c1992e614643320df14ff859556'
             '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
             '1144d51e5eb980fceeec16004f3645ed04a60fac9e0c7cf88a15c5c1e7a4b89e'
