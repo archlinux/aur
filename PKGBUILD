@@ -21,11 +21,11 @@ arch=(  'any' )
 depends=( )
 makedepends=( )
 
-_b="https://content.tssoftware.eu/binary/"
-source=( "${_b}/rpkdev" "${_b}/libconquery.so" "${_b}/libnfd.so" "${_b}/libLT.so" "${_b}/libTSMLParser.so")
-noextract=( "rpkdev" "libconquery.so" "libnfd.so" "libLT.so" "libTSMLParser.so" )
+_b="https://content.tssoftware.eu/binary/rpkdev.tar.gz"
+source=( "https://content.tssoftware.eu/binary/rpkdev.tar.gz" )
+noextract=( "rpkdev" )
 
-sha256sums=( "SKIP" "SKIP" "SKIP" "SKIP" "SKIP" )
+sha256sums=( "SKIP" )
 
 prepare() {
     cd "${srcdir}"
@@ -42,19 +42,20 @@ build() {
 #     [ -f Makefile ] && make -j 4 || ninja
 }
 package() { 
-    targ="$pkgdir/usr/share/rpkdev/"
-    mkdir -p "$targ"
-    dir -1 "$srcdir/" | while read f; do
-        mv "$(realpath "$srcdir/$f")" "$targ/"
-    done
-    chmod -R 755 "$targ"
-    
-    targ="$pkgdir/usr/bin"
-    mkdir -p "$targ"
-    echo '#!/bin/sh
-    LD_LIBRARY_PATH=/usr/share/rpkdev /usr/share/rpkdev/rpkdev $@
-    ' > "$targ/rpkdev"
-    chmod -R 755 "$targ"
+    mv "$srcdir"/* "$pkgdir/"
+#     targ="$pkgdir/usr/share/rpkdev/"
+#     mkdir -p "$targ"
+#     dir -1 "$srcdir/" | while read f; do
+#         mv "$(realpath "$srcdir/$f")" "$targ/"
+#     done
+#     chmod -R 755 "$targ"
+#     
+#     targ="$pkgdir/usr/bin"
+#     mkdir -p "$targ"
+#     echo '#!/bin/sh
+#     LD_LIBRARY_PATH=/usr/share/rpkdev /usr/share/rpkdev/rpkdev $@
+#     ' > "$targ/rpkdev"
+#     chmod -R 755 "$targ"
 #     echo "Packaging of tspkg started."
 #     if [ "$remote" == 1 ]; then
 #         projdir="$srcdir"
