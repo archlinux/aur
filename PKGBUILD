@@ -32,13 +32,13 @@ pkgver() {
 
 build() {
       cd hexpmg 
-      touch ~/hexpmg-list && chmod +x hexpmg && sudo mv hexpmg /bin
+      touch ~/hexpmg-list && chmod +x hexpmg && sudo mv hexpmg /bin && mkdir ~/.config/hexpmg/ && mv update ~/.config/hexpmg/ && mv uninstall ~/.config/hexpmg/
 
 }
 
 
 
 package() {
-        mkdir ~/.config/hexpmg/ && mv update ~/.config/hexpmg/ && mv uninstall ~/.config/hexpmg/ && chmod +x ~/.config/hexpmg/uninstall && chmod +x ~/.config/hexpmg/update
+        chmod +x ~/.config/hexpmg/uninstall && chmod +x ~/.config/hexpmg/update
 
 }
