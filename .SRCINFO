@@ -6,6 +6,7 @@ pkgbase = k8sfw-webui-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = nodejs-lts-gallium
 	depends = k8sfw-daemon-git
 	depends = chromium
 	provides = k8sfw-webui
