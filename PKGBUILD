@@ -1,6 +1,6 @@
 # Maintainer: Adam Brenner <adam@aeb.io>
 pkgname=pulsar-client-cpp
-pkgver=3.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Apache Pulsar Client Libaries in C++'
 arch=('x86_64')
@@ -10,7 +10,7 @@ MAKEFLAGS="-j$(nproc)"
 makedepends=('boost' 'cmake')
 depends=('protobuf' 'openssl' 'curl' 'snappy')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apache/pulsar-client-cpp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d594a4f3603c90fa3bc4f635185ccc9629879aa6006b53fccf6784f339e795a1')
+sha256sums=('991d6e81f7e62752da77ddf298b88055ea87d9fdedc0274b22acffdda8278fd8')
 
 build() {
   cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -Wno-dev
