@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r2612+ga7337612
+pkgver=1.0.0+r2737+g966e9c3c
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -27,6 +27,7 @@ depends=(
         'python-httpx-socks'
         'python-async-timeout'
         'python-langdetect'
+        'python-fasttext'
         'python-setproctitle'
         'python-redis'
         'python-markdown-it-py'
