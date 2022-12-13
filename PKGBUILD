@@ -1,6 +1,6 @@
 # Maintainer: czaplicki <dev dot czaplicki at icloud dot com>
 pkgname='cmd-polkit-git'
-pkgver=r6.2ddd946
+pkgver=r8.069d66b
 pkgrel=1
 pkgdesc="Command line tool for custom polkit agent UIs"
 arch=('x86_64')

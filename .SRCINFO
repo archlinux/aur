@@ -1,6 +1,6 @@
 pkgbase = cmd-polkit-git
 	pkgdesc = Command line tool for custom polkit agent UIs
-	pkgver = r6.2ddd946
+	pkgver = r8.069d66b
 	pkgrel = 1
 	url = https://github.com/OmarCastro/cmd-polkit
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cmd-polkit-git
 	depends = json-glib
 	depends = polkit
 	depends = gtk3
-	source = cmd-polkit-git-r6.2ddd946::git+https://github.com/OmarCastro/cmd-polkit.git
+	source = cmd-polkit-git-r8.069d66b::git+https://github.com/OmarCastro/cmd-polkit.git
 	md5sums = SKIP
 
 pkgname = cmd-polkit-git
