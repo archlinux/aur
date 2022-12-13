@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
       cd hexpmg 
-      touch ~/hexpmg-list && chmod +x ~/hexpmg/hexpmg && sudo mv ~/hexpmg/hexpmg /bin
+      touch ~/hexpmg-list && chmod hexpmg && sudo mv hexpmg /bin
 
 }
 
