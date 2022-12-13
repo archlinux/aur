@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp
-pkgver=5.0.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis."
 arch=('x86_64')
@@ -24,14 +24,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/seiscomp/archive/refs/tags/${pkgver
         "${pkgname}.sh"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('124caee6be123c4c982a4bb7c832d95a4d87300b5641a4b6c71f01cf152e1743'
-            '9d9a4a3fa29788df5387a3612202ec50de383f62130c5fbf544141faeb2be421'
-            '2fcf05f7f9676bf8072aa32f04b62448d23bbfd8fd5acd113454546d3bb5a5a1'
-            '610cd456f5073d527666a1e42ac43c9563ad38247cef8af3b655acd1e16db71a'
-            '84cf741d2d97f9f140cd3c07e38303d1de4a056a0f882ef4136709d65bc29cb3'
-            'c23d0ad5b1e31923dc002b359a03a8153edb58425eb42fc175e52dbd6a91714e'
-            '71fdd8a12c21432fc7b2b3715eea1e14d6c3f4acd43c386d38592286b8c0da92'
-            '90f3fe8dcf08366859c23151102dcc2702f29a365d9a5922880e06b307ab07d9'
+sha256sums=('5f8b2728b6daf18eaec5eb5cc8f1a17e9d85f85ba609ef4ae3fad703d8ea1794'
+            'f7586b26860eee527891d94a1f2ba6236043b0fb22c1052927d09b2f7a444a58'
+            'f78479f97c0d9d4e05f4d7d924f8972e4b96e48ef12663dc60c999b83a47d249'
+            '40152e0ad3480cc121961b9e038e18f3549191d425737e914bad871cca792cdb'
+            'a8928f610d16082859087c488a13aba0ce6033b4030914947e0e4b07e9eac32b'
+            'a38d763edb29dafc55dd7bf98f23560284866666717a886c323500be83a4a633'
+            'c52965f90477ea1525ec821e411e8b6946a741ff91997eccdb7d8bdea6256770'
+            'c5d69734b219e8aae77d63d0ec2a6341b06b3846a3991b8f4c2dcb9cb7576a76'
             'e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016'
             'be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1'
             '312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2')
@@ -78,7 +78,7 @@ package() {
         "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -D -m 644 "${pkgname}-tmpfiles.conf" \
         "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/opt/${pkgname}"
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod g+s '{}' \;
+    #chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/opt/${pkgname}"
+    #find "${pkgdir}/opt/${pkgname}" -type d -exec chmod g+s '{}' \;
 }
 # vim:set ts=4 sw=4 et:
