@@ -7,12 +7,12 @@
 pkgname=k8sfw-webui-git
 pkgrel=1
 pkgdesc="UI for k8sfw-daemon"
-pkgver=0.0.2.r4.g5f63f35
+pkgver=0.10.0.r1.gb6fbd24
 arch=('x86_64')
 url=""
 license=('MIT')
 groups=()
-depends=('k8sfw-daemon' 'chromium')
+depends=('k8sfw-daemon-git' 'chromium')
 makedepends=('git' 'cmake')
 checkdepends=()
 optdepends=()
