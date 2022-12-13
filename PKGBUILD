@@ -1,28 +1,29 @@
+# Maintainer: Zeioth <zeioth@hotmail.com>
+# Contributor: FabioLolix <fabio.loli@disroot.org>
+
+
 pkgname=vkbasalt-git
-pkgver=1.0
-pkgrel=5
-epoch=
+pkgver=0.3.2.7.r0.ga705b44
+pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('MIT')
-depends=('gcc-libs' 'glslang' 'libx11')
-makedepends=('meson' 'ninja' 'glslang' 'libx11' 'spirv-headers' 'vulkan-headers')
-checkdepends=()
-provides=(vkbasalt-git)
+depends=('glslang' 'libx11')
+makedepends=('git' 'meson' 'ninja' 'spirv-headers' 'vulkan-headers')
+optdepends=('reshade-shaders-git')
+provides=(vkbasalt)
 conflicts=(vkbasalt)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+$url")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
+
+pkgver() {
+  cd "${srcdir}/vkBasalt"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-  cd ${srcdir}/vkBasalt
+  cd "${srcdir}/vkBasalt"
   sed -i 's|/path/to/reshade-shaders/Textures|/opt/reshade/textures|g' \
     "config/vkBasalt.conf"
   sed -i 's|/path/to/reshade-shaders/Shaders|/opt/reshade/shaders|g' \
@@ -30,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/vkBasalt
+  cd "${srcdir}/vkBasalt"
 
   arch-meson \
     --buildtype=release \
@@ -39,10 +40,9 @@ build() {
 }
 
 package() {
-  optdepends=('reshade-shaders-git')
-  cd ${srcdir}/vkBasalt
+  cd "${srcdir}/vkBasalt"
 
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
