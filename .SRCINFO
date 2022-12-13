@@ -1,6 +1,6 @@
 pkgbase = estash-bin
 	pkgdesc = An open source, cross-platform, programmed in rust, encrypted digital vault (store files and text) with the capability to set a path and with the click of a button to copy the contents to that file.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/Obscurely/EStash
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = estash-bin
 	provides = estash-bin
 	conflicts = estash
 	conflicts = estash-git
-	source = https://github.com/Obscurely/EStash/releases/download/v0.6.1-stable/estash-linux.tar.gz
-	sha256sums = 465e91e1d77c36059bcbb0d82f9b9d3972c733fa3d039cc8b77017d91166ea2f
+	source = https://github.com/Obscurely/EStash/releases/download/v0.6.2-stable/estash-linux.tar.gz
+	sha256sums = df0e21ff03e96bcc5d33f745ed6900abd1b2dfae8782de074b851635453f6d86
 
 pkgname = estash-bin
