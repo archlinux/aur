@@ -33,7 +33,7 @@ pkgver() {
 build() {
       cd hexpmg
       chmod +x install && ./install
-
+}
 
 
 
