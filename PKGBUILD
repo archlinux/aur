@@ -1,13 +1,13 @@
 # Maintainer: heinrich5991 <heinrich5991@gmail.com>
 pkgname=syobon
 pkgver=rc1
-pkgrel=3
+pkgrel=4
 pkgdesc="A free version of the unforgiving Japanese parody of Super Mario Bros"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/opensyobon/"
 license=('unknown')
 depends=(sdl_gfx sdl_image sdl_mixer sdl_ttf)
-makedepends=()
+makedepends=(imagemagick)
 source=(syobon
         syobon.desktop
         "http://sourceforge.net/projects/opensyobon/files/src/SyobonAction_rc2_src.tar.gz"
