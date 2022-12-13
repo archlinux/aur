@@ -1,7 +1,7 @@
 pkgbase = lc0
 	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
-	pkgver = 0.28.2
-	pkgrel = 7
+	pkgver = 0.29.0
+	pkgrel = 1
 	url = https://lczero.org/
 	install = lc0.install
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = lc0
 	optdepends = cudnn: Neural network library for use with nvidia GPUs
 	noextract = $_weights
 	source = lc0
-	source = lc0-0.28.2.tar.gz::https://github.com/LeelaChessZero/lc0/archive/v0.28.2.tar.gz
+	source = lc0-0.29.0.tar.gz::https://github.com/LeelaChessZero/lc0/archive/v0.29.0.tar.gz
 	source = weights_hanse-69722-vf2.gz::https://storage.lczero.org/files/networks-contrib/hanse-69722-vf2.gz
 	sha256sums = cc9c40a508afd0aa2032a6eb309f69e8731a0a7d01f6601a653ae4e509772bd7
-	sha256sums = 5fe8a39c82a9be2b185b57d093417ed290fc36596cb23bc731e05a57fa70f65c
+	sha256sums = 3d3cd99bc5a82c5da2b8985ee6db4e1a2ff179e012da777319257d48c8a7c59d
 	sha256sums = a519393981e68112628f739e261303987477058027f73c584c1e89302ec55b87
 
 pkgname = lc0

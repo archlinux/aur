@@ -1,8 +1,8 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.28.2
-pkgrel=7
+pkgver=0.29.0
+pkgrel=1
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("$pkgname"
 	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
 	"$_weights::https://storage.lczero.org/files/networks-contrib/hanse-69722-vf2.gz")
 sha256sums=('cc9c40a508afd0aa2032a6eb309f69e8731a0a7d01f6601a653ae4e509772bd7'
-            '5fe8a39c82a9be2b185b57d093417ed290fc36596cb23bc731e05a57fa70f65c'
+            '3d3cd99bc5a82c5da2b8985ee6db4e1a2ff179e012da777319257d48c8a7c59d'
             'a519393981e68112628f739e261303987477058027f73c584c1e89302ec55b87')
 noextract=('$_weights')
 
