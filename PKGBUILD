@@ -18,16 +18,16 @@ author='TS'
 type='app'
 pkgver='1.0.0'
 platforms=( 'all' )
-deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' )
+deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' 'rcore/btzy:libnfd' )
 groups=( 'Developer/IDE' )
 contents=( '/icon.svg<ltstudio.svg' '/data/<./Data' '/conf/<./Config' '/bin<build/bin' '/bin/oshfclient<oshfclient' )
-pkgdir='/tmp/tmp.vZlB3gddkI/sh/pkg'
+pkgdir='/tmp/tmp.4bkMm8zjlO/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
 arch=(  'any' )
 
-depends=( 'lib-lt-devel' 'lib-lt-headers' )
+depends=( 'lib-lt-devel' 'lib-lt-headers' 'libnfd' )
 makedepends=( rpkdev )
 abstorel(){
     sed -E 's/^\/+//g'

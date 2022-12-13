@@ -7,6 +7,7 @@ pkgbase = ltstudio
 	makedepends = rpkdev
 	depends = lib-lt-devel
 	depends = lib-lt-headers
+	depends = libnfd
 	options = !strip
 
 pkgname = ltstudio
