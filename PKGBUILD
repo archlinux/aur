@@ -83,8 +83,8 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=6.0
-pkgver=${_major}.9
+_major=6.1
+pkgver=${_major}.0
 _branch=6.x
 xanmod=1
 pkgrel=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="a0096bef448e56fecb6a63c51ecc03d71a2010f9" # 6.0.9
+__commit="a989b6bdf0a897d9b112c40a1b3aafd4e3ac00fa" # 6.1.0
 
 license=(GPL2)
 makedepends=(
@@ -119,11 +119,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'  # kernel tar.xz
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '02f2c1c67b15a6d0590a4bddafc4364d9ad40b3595f6a004534497235799292b'  # xanmod
+            'b044b25b37117f3de7878e6f9e94bd6e215ff8ec949ced8898000d9b52d1d55a'  # xanmod
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
-            '27e518b4ab88609e9336d1d5cc72a7e9f511eef64d25aeda2fb672a601cc0d18') # manjaro
+            '0fc157246b646cb3864c29e3a09b38d4d300701b46b0f8d34767a64f6e8fde89') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -275,7 +275,7 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs' 'mkinitcpio>=27')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
               'bootsplash-systemd: for bootsplash functionality')
