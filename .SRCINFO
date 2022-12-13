@@ -3,7 +3,7 @@ pkgbase = utf8info-git
 	pkgver = r39.0cf38fa
 	pkgrel = 1
 	url = https://github.com/lunasorcery/utf8info
-	arch = x86_64
+	arch = any
 	license = unknown
 	makedepends = curl
 	makedepends = git
@@ -12,4 +12,3 @@ pkgbase = utf8info-git
 	sha256sums = SKIP
 
 pkgname = utf8info-git
-
