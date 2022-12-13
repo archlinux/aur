@@ -47,7 +47,7 @@ package() {
     targ="$pkgdir/usr/lib/"
     mkdir -p "$targ"
     mkdir -p "$pkgdir/usr/include/"
-    mv "$srcdir/nativefiledialog-extended/build/src/libnfd.so" "$targ/"
+    mv "$(realpath $srcdir/nativefiledialog-extended/build/src/libnfd.so)" "$targ/libnfd.so"
     mv "$srcdir/nativefiledialog-extended/src/include"/* "$pkgdir/usr/include/"
 }        
 
