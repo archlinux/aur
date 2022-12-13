@@ -1,6 +1,8 @@
+# Maintainer: UmamiAppearance <mail@umamiappearance.eu>
+
 pkgname=ecoji
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Encode or decode data as Unicode emojis."
 arch=("x86_64")
 url="https://github.com/keith-turner/ecoji"
