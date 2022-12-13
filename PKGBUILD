@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9368.bf469e328
+pkgver=r9374.a1159c081
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -126,4 +126,6 @@ check() {
 package() {
     cd "$srcdir/$_pkgname/build"
     make DESTDIR="$pkgdir/" install
+    rm -rf "$pkgdir/usr/include/tsl"
+    rm -rf "$pkgdir/usr/share/cmake/tsl-robin-map"
 }
