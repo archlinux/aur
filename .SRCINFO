@@ -1,0 +1,19 @@
+pkgbase = python-bumpfontversion
+	pkgdesc = Bumps the version of a font source file
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/bumpfontversion/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-bump2version
+	depends = python-fonttools-git
+	depends = python-glyphslib
+	depends = python-openstep-plist
+	depends = python-ufolib2
+	depends = python-fonttools
+	noextract = bumpfontversion-0.4.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/69/2a/904c0918652ec6fa1b611e23b0ea33029e8e740190b255d8516c593fc1b5/bumpfontversion-0.4.1-py3-none-any.whl
+	md5sums = 858d4a99e49fdba04f242854a84c904e
+
+pkgname = python-bumpfontversion
