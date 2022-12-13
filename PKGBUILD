@@ -1,34 +1,37 @@
-pkgname=rtl8723bu-git-dkms
+# Maintainer: Denis Klester <dinisoft@gmail.com>
 _pkgname=rtl8723bu
-pkgver=263
-pkgrel=2
+pkgname=${_pkgname}-git-dkms
+pkgver=r44.0f64ea4
+pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
-url="https://github.com/lwfinger/rtl8723bu"
-provides=('rtl8723bu')
-conflicts=('rtl8723bu-git')
+url="https://github.com/dini/${_pkgname}"
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 arch=('any')
-groups=('rtl8723bu-dkms-git')
 license=('GPL')
-install=rtl8723bu-git-dkms.install
+install=${pkgname}.install
 depends=('dkms' 'linux-headers')
 makedepends=('git' 'pahole')
-source=("${_pkgname}::git+https://github.com/lwfinger/rtl8723bu"
-	'blacklist-rtl8723bu.conf'
+source=("${_pkgname}::git+${url}.git"
+	"blacklist-${_pkgname}.conf"
 	'dkms.conf')
 sha256sums=('SKIP'
             'dc6a9bfc6a796461da2219accc7a6ae755ea13253737630e1538f3d98aa7aff5'
             '9c5dca33a2e4531ecb892b7a57feb93a2f2d5936dea81d3f879ad5831976f6b2')
 
 pkgver() {
-  cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "%s" "$(git rev-list --count HEAD)"
-  )
+    cd "${srcdir}/${_pkgname}"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
+    rm -r ".git"{,ignore}
+    rm -f "rtl8723BU_WiFi_linux_v4.3.6.11_12942.20141204_BTCOEX20140507-4E40.tar.gz"
+    rm -f "rtl8723BU_WiFi_linux_v4.3.9.3_13200.20150106_BTCOEX20140929-5443.tar.gz"
 }
 
 package() {
@@ -37,7 +40,7 @@ package() {
     # Copy dkms.conf
     install -Dm644 dkms.conf "${install_dir}/dkms.conf"
     #blacklist rtl8723bu
-    install -Dm644 blacklist-rtl8723bu.conf "${pkgdir}"/etc/modprobe.d/blacklist-rtl8723bu.conf
+    install -Dm644 blacklist-${_pkgname}.conf "${pkgdir}"/etc/modprobe.d/blacklist-${_pkgname}.conf
     # Set name and version
     sed -e "s/@_PKGBASE@/${_pkgname}/" \
         -e "s/@PKGVER@/${pkgver}/" \
