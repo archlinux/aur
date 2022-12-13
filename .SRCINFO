@@ -1,0 +1,16 @@
+pkgbase = python-picosvg
+	pkgdesc = Exploratory utility for svg simplification, meant for use playing with COLR fonts
+	pkgver = 0.20.6
+	pkgrel = 1
+	url = https://pypi.org/project/picosvg/
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-absl
+	depends = python-lxml
+	depends = python-skia-pathops
+	noextract = picosvg-0.20.6-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/51/e0/46dfde716674e4442245c1150668b5fce2a5addb09595c06ed7ea1860620/picosvg-0.20.6-py3-none-any.whl
+	md5sums = 1917a547a95ea283784439eab36e86df
+
+pkgname = python-picosvg
