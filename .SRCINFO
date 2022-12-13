@@ -1,0 +1,14 @@
+pkgbase = libnfd
+	pkgdesc = Native file dialog library
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = gtk3
+	options = !strip
+	source = git+https://github.com/btzy/nativefiledialog-extended.git
+	sha256sums = SKIP
+
+pkgname = libnfd
