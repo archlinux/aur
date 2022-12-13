@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=wk
-_cranver=0.7.0
+_cranver=0.7.1
 pkgname=r-${_cranname,,}
 pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -24,7 +24,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('aac272e4ad329a972a6ce6b6a775c3a0d82af3c616e47e76ecfd4956093bc1a202f6da633ee3ebda9affb33a8c31c0a90df47899dde79028ed666adc473c1270')
+b2sums=("435ebe6d17ffe0e54bd2f68aae2c436ed124f7f82c4fc7c23125f8346ca67a848dc0b425e37c8fb24460e9362e7d2d74146b26ddbc91e9967d745b75445e5e50")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
