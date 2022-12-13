@@ -1,7 +1,7 @@
 pkgbase = ecoji
 	pkgdesc = Encode or decode data as Unicode emojis.
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.0.1+5+g805d064
+	pkgrel = 4
 	url = https://github.com/keith-turner/ecoji
 	arch = x86_64
 	license = Apache
