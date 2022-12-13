@@ -2,7 +2,7 @@
 name=directfb2-eglgbm
 pkgname=directfb2-eglgbm-git
 pkgver=r7.c8d58a3
-pkgrel=1
+pkgrel=2
 pkgdesc="EGL system module for DirectFB2 and supported on GBM (Generic Buffer Manager) platforms."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url='https://directfb2.github.io/'
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${name}"
-  meson -Dprefix=/usr build/
+  meson setup -Dprefix=/usr build/
   ninja -C build/
 }
 
