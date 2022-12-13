@@ -1,0 +1,13 @@
+pkgbase = hexpmg
+	pkgdesc = a simple package manager that builds programs from source
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/hexisXz/hexpmg.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/hexisXz/hexpmg.git
+	md5sums = SKIP
+
+pkgname = hexpmg
