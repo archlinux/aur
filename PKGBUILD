@@ -1,11 +1,12 @@
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=hexinject
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Network packet sniffer and injector"
 arch=('x86_64')
-url="http://hexinject.sourceforge.net/"
+url="https://hexinject.sourceforge.net/"
 license=("BSD")
 depends=("libpcap" "tcl")
 source=("${pkgname}-${pkgver}.tar.gz"::"https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"

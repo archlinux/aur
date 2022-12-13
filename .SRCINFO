@@ -1,8 +1,8 @@
 pkgbase = hexinject
 	pkgdesc = Network packet sniffer and injector
 	pkgver = 1.6
-	pkgrel = 1
-	url = http://hexinject.sourceforge.net/
+	pkgrel = 2
+	url = https://hexinject.sourceforge.net/
 	arch = x86_64
 	license = BSD
 	depends = libpcap
@@ -13,4 +13,3 @@ pkgbase = hexinject
 	sha256sums = cb410b131fd447f8b18b2e69bd35a0ae79df1689eb32f8ff97365eb8e250e8c5
 
 pkgname = hexinject
-
