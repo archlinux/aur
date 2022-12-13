@@ -1,7 +1,7 @@
 pkgbase = mintstick
 	pkgdesc = A GUI to write .img or .iso files to a USB Key. It can also format them
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mintstick
 	arch = any
 	license = GPL
@@ -26,7 +26,7 @@ pkgbase = mintstick
 	depends = util-linux
 	depends = xapp
 	conflicts = mintstick-git
-	source = mintstick-1.5.0.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.5.0.tar.xz
-	sha256sums = 88339564477ad919587b14ef7d7084bfecef8dac088903400d5363c47546b959
+	source = mintstick-1.5.3.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.5.3.tar.xz
+	sha256sums = 185061097ed7d08bbf153a1d0201bdea75fe05c52544537362ce164fec2a3ffc
 
 pkgname = mintstick
