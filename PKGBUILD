@@ -17,7 +17,7 @@ depends=('java-runtime-openjdk=8' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
-source=("https://www.archimatetool.com/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
+source=("https://www.archimatetool.com/downloads/index.php?/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh"
         "LICENSE")
