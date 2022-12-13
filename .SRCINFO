@@ -1,0 +1,16 @@
+pkgbase = python-statmake
+	pkgdesc = Applies STAT information from a Stylespace to a variable font.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/daltonmaag/statmake
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-attrs
+	depends = python-cattrs
+	depends = python-fonttools-git
+	noextract = statmake-0.6.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/85/86/beef05605ca6d316906406151cc2b8969fe92d8e24f78bb7850bd42c38bc/statmake-0.6.0-py3-none-any.whl
+	md5sums = 73c7e00002f9da61bac8d07c1c714cea
+
+pkgname = python-statmake
