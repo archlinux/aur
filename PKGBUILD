@@ -7,7 +7,7 @@
 pkgname=k8sfw-webui-git
 pkgrel=1
 pkgdesc="UI for k8sfw-daemon"
-pkgver=0.10.0.r1.gb6fbd24
+pkgver=0.10.0.r2.gffd9f2b
 arch=('x86_64')
 url=""
 license=('MIT')

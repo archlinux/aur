@@ -1,6 +1,6 @@
 pkgbase = k8sfw-webui-git
 	pkgdesc = UI for k8sfw-daemon
-	pkgver = 0.10.0.r1.gb6fbd24
+	pkgver = 0.10.0.r2.gffd9f2b
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
