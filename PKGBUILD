@@ -32,10 +32,11 @@ pkgver() {
 
 build() {
       cd hexpmg
-      chmod +x install && ./install
+      chmod +x install
 }
 
 
 
 package() {
+	./install
 }
