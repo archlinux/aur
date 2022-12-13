@@ -7,7 +7,7 @@
 pkgname=hamlib4
 _pkgname=hamlib
 __pkgname=Hamlib
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc="Ham radio equipment control libraries - VERSION 4.x"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
@@ -58,5 +58,5 @@ package() {
 	/usr/bin/find $pkgdir -name '.packlist' -delete
 	/usr/bin/find $pkgdir -name '*.pod' -delete
 }
-md5sums=('2b82f1a5e36ba78390e1d05266213477')
-sha256sums=('8bf0107b071f52f08587f38e2dee8a7848de1343435b326f8f66d95e1f8a2487')
+md5sums=('7d9cc9d043691c268f2ccb0f6befb54d')
+sha256sums=('14a2ce76a647a75e71d8ccf1f16999a6708e84823d9f74137f2173fcee94ad52')
