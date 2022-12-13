@@ -63,10 +63,6 @@ source=(
   # typically around cephadm auto-generated rotate rules
   'ceph-17.2.5-logrotate-ignore-dups.patch'
 
-  # Test improperly creates librados::async_write templates, in boost 1.80
-  # not sure why yet, need to ask upstream for help
-  'ceph-16.2.7-delete-test-librados-asio.patch'
-
   # Test wants to use `git ls-files`, and is sad when it finds itself not running in a
   # git repo
   'ceph-17.2.4-tox-flake8-git-ls-files.patch'
@@ -114,7 +110,6 @@ sha512sums=('dca9aea2ce210c15fcc34cb06a5dc5b4488ffa36d684166d47ebd87e48b54b6fee0
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
             'b12cabda7184721c494edd22250fd05019694d2bc445722d100cdefab5385bd25c2267a029d2f6053932fa6717e38c4314385afd986969ee2744d745b53c8b58'
-            '66770a80ba4e05ea72d4809cb5819cce7499ea7523b85b1a57370df68de1d7f6f94b1c10d0f9f9a3c8e6a86d0419434c70778c568cd06a0dd2e6126631a3355c'
             '31e578b240ceaaf1216b56cdce654661eed6529ef642ecad164a02669e850100a49a85dc70f3d744671e2c5dad10aee64be7d091fa33007cb8fc6788a4336799'
             '85c0a00419c292204be03e8962b0d4bc67c5dc21eb19e74897ec88168f19ac93fc2e38c405b212421c419a74923ec8c5c10844e23269225c52937fd2ad40d817'
             '81f540c8312972887a7cb43b8a4e29bfc6f24d5774787a4a8edfe65cca7d3b08faa08ecd09066d7ea67111769a5aec7385fe9a969546626f58874dd8aff5b664'
