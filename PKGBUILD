@@ -29,7 +29,7 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=28925.edk2.stable202102.190.gf297b7f200
+pkgver=30713.edk2.stable202211.40.g1fd8d08970
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
@@ -90,7 +90,12 @@ _prepare_tianocore_sources() {
 	for _module in "${!_submod_path[@]}"; do
 		git config submodule."$_module".url "$srcdir/${_submod_path[$_module]}"
 	done
-	git submodule update
+
+	# Apply same fix as adopted by other projects when this change dropped. Example:
+	#   https://github.com/microsoft/go-infra/pull/71/files
+	# Also covered by this in Arch:
+	#   https://bugs.archlinux.org/task/76255
+	git -c protocol.file.allow=always submodule update
 
 	msg "Cleanup UDK config files"
 	rm -rf "${_UDK_DIR}/Build/" || true
