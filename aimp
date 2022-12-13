@@ -1,0 +1,17 @@
+#!/usr/bin/sh
+#Convert Linux paths to Windows paths.
+#Example:
+#GNU LINUX | WINDOWS OS
+#    $HOME = %USERPROFILE%\ (etc).
+
+#FIX: arguments start with "/" Don't exist to AIMP main command's
+#WHILE: Open Dir, Open Files, set cmd (Stop, Pause, Play, Debug, Next, Prev) worked. And next todo, add-to-playlist, set to playlist .etc. adding.
+
+_args="$1"
+if [ -f $_args ] || [ -d $_args ]; then
+   #arguments is file(s)
+   _args=$(winepath --windows "$@")
+fi
+
+echo $_args
+/usr/bin/wine start /unix '/opt/aimp/AIMP/AIMP.exe' ${_args}
