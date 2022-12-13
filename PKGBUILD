@@ -3,7 +3,7 @@
 
 pkgname=akamai-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage and configure Akamai from the Command Line'
 arch=('x86_64' 'pentium4')
 url="https://github.com/akamai/cli"
@@ -11,7 +11,7 @@ license=('Apache')
 provides=('akamai' 'akamai-cli')
 
 source=(
-  "https://raw.githubusercontent.com/akamai/cli/$pkgver/LICENSE"
+  "https://raw.githubusercontent.com/akamai/cli/v$pkgver/LICENSE"
 )
 source_x86_64=(
   "$pkgname-$pkgver-$CARCH::https://github.com/akamai/cli/releases/download/v$pkgver/akamai-v$pkgver-linuxamd64"
