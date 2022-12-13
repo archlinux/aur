@@ -1,0 +1,15 @@
+pkgbase = python-font-v
+	pkgdesc = Font version reporting and modification tool
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/source-foundry/font-v
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-fonttools-git
+	depends = python-gitpython
+	noextract = font_v-2.1.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/12/17/798e9cdc4bc0e30bd98141f97a50a3f7ee6d6e99e95f14a0760f84cedc3b/font_v-2.1.0-py3-none-any.whl
+	md5sums = 1f20c239cdfab1bb93344ce854f7acc7
+
+pkgname = python-font-v
