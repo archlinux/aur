@@ -6,16 +6,16 @@
 pkgname=ax25-apps
 pkgver=0.0.8_rc5
 _pkgver=${pkgver//_/-}
-pkgrel=5
+pkgrel=6
 pkgdesc="Programs for the Amateur (Ham) Radio protocol AX.25."
 arch=('i686' 'x86_64')
-url='http://www.linux-ax25.org'
+url='https://linux-ax25.in-berlin.de'
 license=('GPL2')
 depends=('libax25' 'ncurses')
 install=$pkgname.install
 backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf'\
 	'etc/ax25/ax25rtd.conf')
-source=("http://www.linux-ax25.org/pub/$pkgname/$pkgname-$_pkgver.tar.xz")
+source=("https://linux-ax25.in-berlin.de/pub/$pkgname/$pkgname-$_pkgver.tar.xz")
 
 prepare () {
 	cd $srcdir/$pkgname-$_pkgver

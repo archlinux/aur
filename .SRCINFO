@@ -1,8 +1,8 @@
 pkgbase = ax25-apps
 	pkgdesc = Programs for the Amateur (Ham) Radio protocol AX.25.
 	pkgver = 0.0.8_rc5
-	pkgrel = 5
-	url = http://www.linux-ax25.org
+	pkgrel = 6
+	url = https://linux-ax25.in-berlin.de
 	install = ax25-apps.install
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ax25-apps
 	backup = etc/ax25/ax25ipd.conf
 	backup = etc/ax25/ax25mond.conf
 	backup = etc/ax25/ax25rtd.conf
-	source = http://www.linux-ax25.org/pub/ax25-apps/ax25-apps-0.0.8-rc5.tar.xz
+	source = https://linux-ax25.in-berlin.de/pub/ax25-apps/ax25-apps-0.0.8-rc5.tar.xz
 	md5sums = 3625dcdfaa7aa1f6a0fdfe6b60874713
 	sha256sums = 5071419bb3648594fa4b49190bb4c0c2ac4c9285ce0f80b2dacf8a2f9910dc4b
 
