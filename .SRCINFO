@@ -1,5 +1,5 @@
 pkgbase = satisfactory-mod-manager-appimage
-	pkgdesc = Desc+ription of my project
+	pkgdesc = Satisfactory Mod Manager (appimage)
 	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/user/repo/
