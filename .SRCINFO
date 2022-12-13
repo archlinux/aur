@@ -1,0 +1,16 @@
+pkgbase = reshade-steam-proton-git
+	pkgdesc = Easy setup and updating of ReShade on Linux for games using wine or proton.
+	pkgver = r86.c3e3672
+	pkgrel = 1
+	url = https://github.com/kevinlekiller/reshade-steam-proton
+	arch = any
+	license = GPL2
+	depends = grep
+	depends = p7zip
+	depends = curl
+	depends = git
+	optdepends = wine: Only used if the game uses Vulkan (to insert Windows Registry entries).
+	source = reshade-steam-proton::git+https://github.com/kevinlekiller/reshade-steam-proton.git
+	md5sums = SKIP
+
+pkgname = reshade-steam-proton-git
