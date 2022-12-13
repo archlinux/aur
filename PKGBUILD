@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ClusterR
-_pkgver=1.2.8
+_pkgver=1.2.9
 pkgname=r-${_pkgname,,}
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc='Gaussian Mixture Models, K-Means, Mini-Batch-Kmeans, K-Medoids and Affinity Propagation Clustering'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b023a2c09d82a45700a94326ba24a4ea975d9c2f4dd5d8f7c666a110b15ce012')
+sha256sums=('63ab3fd6f1c105cd4a0f2a898902810e8455d82dc841215d60cedddfabe55a11')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
