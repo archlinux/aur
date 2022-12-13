@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=estash
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="An open source, cross-platform, programmed in rust, encrypted digital vault (store files and text) with the capability to set a path and with the click of a button to copy the contents to that file."
 arch=('x86_64')
