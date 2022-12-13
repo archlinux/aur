@@ -1,6 +1,6 @@
 pkgbase = ghostery-dawn-bin
 	pkgdesc = Privacy aware web browser from Ghostery (binary release).
-	pkgver = 2022.8.1
+	pkgver = 2022.8.2
 	pkgrel = 1
 	url = https://www.ghostery.com/dawn
 	install = install
@@ -13,10 +13,10 @@ pkgbase = ghostery-dawn-bin
 	depends = nss
 	provides = ghostery-dawn
 	conflicts = ghostery-dawn
-	source = https://github.com/ghostery/user-agent-desktop/releases/download/2022-11-29/Ghostery-2022.8.1.en-US.linux.tar.gz
+	source = https://github.com/ghostery/user-agent-desktop/releases/download/2022-12-12/Ghostery-2022.8.2.en-US.linux.tar.gz
 	source = https://raw.githubusercontent.com/ghostery/user-agent-desktop/master/LICENSE
 	source = ghostery.profile
-	sha256sums = 2dc8ac2d4e0824a9ef8f3c82726a3fcfc4e660d1471e2f9fcef047fb5dd2f698
+	sha256sums = dab32f80be4a50b475810bfabaf524c28f79a60703e72db2337180dda5167ca1
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
 	sha256sums = dbdfb7e32bb874d6b0c67b10524508620e2137662b7f928750f41f0df926040f
 

@@ -1,8 +1,8 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=ghostery-dawn-bin
 _vendorname=ghostery
-pkgver=2022.8.1
-_builddate=2022-11-29
+pkgver=2022.8.2
+_builddate=2022-12-12
 pkgrel=1
 pkgdesc="Privacy aware web browser from Ghostery (binary release)."
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=install
 source=("https://github.com/ghostery/user-agent-desktop/releases/download/${_builddate}/Ghostery-${pkgver}.en-US.linux.tar.gz"
 	"https://raw.githubusercontent.com/ghostery/user-agent-desktop/master/LICENSE"
         "ghostery.profile")
-sha256sums=('2dc8ac2d4e0824a9ef8f3c82726a3fcfc4e660d1471e2f9fcef047fb5dd2f698'
+sha256sums=('dab32f80be4a50b475810bfabaf524c28f79a60703e72db2337180dda5167ca1'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'dbdfb7e32bb874d6b0c67b10524508620e2137662b7f928750f41f0df926040f')
 
