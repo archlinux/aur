@@ -1,8 +1,8 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscord-installer
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Installer for BetterDiscord'
 arch=('x86_64')
 url='https://github.com/BetterDiscord/Installer'
@@ -10,15 +10,8 @@ license=('MIT')
 replaces=('betterdiscord')
 makedepends=('nodejs' 'yarn')
 depends=('libxss')
-source=("$pkgname-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz"
-        'electron-13.patch::https://github.com/BetterDiscord/Installer/pull/289.patch')
-sha256sums=('adac48dff0bf80aa08caa251900f61f863748a8d6c5b089f54947937a30e1bca'
-            '26fc164838b8d981a80a9efdb03716ba663e176df46a5be5372d1426f204e1bb')
-
-prepare() {
-  cd Installer-${pkgver}
-  patch -Np1 -i ../electron-13.patch
-}
+source=("$pkgname-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha256sums=('e02f708871b72f0b4fdaf2ab5db06b0eefd9ee2331c4d2ff2a753fcf28031fae')
 
 build() {
     cd Installer-${pkgver}
