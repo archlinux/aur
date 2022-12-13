@@ -1,0 +1,3 @@
+DRIVERS=="star_ultra_pcie" MODE="0666"
+DRIVER=="star_ultra_pcie" MODE="0666"
+KERNEL=="star_ultra_pcie*" MODE="0666"

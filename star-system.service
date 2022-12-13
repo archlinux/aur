@@ -12,6 +12,7 @@ Restart=no
 ExecStartPre=/usr/bin/sleep 30
 ExecStartPost=-/usr/bin/bash -c "rm /dev/shm/star-*"
 ExecStartPre=/usr/bin/bash -c "modprobe star_spw_pci"
+ExecStartPre=/usr/bin/bash -c "modprobe star_ultra_pcie"
 
 # star_conf_service apparently provides confusing exit codes, cannot
 # ignore by prefixing cmd with '-', as star_conf_service sometimes won't load

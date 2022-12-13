@@ -49,3 +49,20 @@
   
   clean:
   	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_spw_usb.ko
+--- driver_src/ultra_pcie_driver/Kbuild.orig	2022-12-13 10:15:22.098412232 +0100
++++ driver_src/ultra_pcie_driver/Kbuild	2022-12-13 10:16:03.751743724 +0100
+@@ -46,10 +46,10 @@
+ 		  .xilinx_dma_engine.o.cmd
+ 
+ 	$(MAKE) -C $(KDIR) M=$(PWD) modules
+-	if [ ! -d "$(INSTALLDIR)" ]; \
+-	then mkdir -v -p "$(INSTALLDIR)"; \
+-	fi
+-	cp star_ultra_pcie.ko "$(INSTALLDIR)"
++	#if [ ! -d "$(INSTALLDIR)" ]; \
++	#then mkdir -v -p "$(INSTALLDIR)"; \
++	#fi
++	#cp star_ultra_pcie.ko "$(INSTALLDIR)"
+ 
+ clean:
+ 	/bin/rm -f *.o *.ko "$(INSTALLDIR)"\star_ultra_pcie.ko
