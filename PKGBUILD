@@ -1,32 +1,29 @@
 pkgname=torrent-file-editor
 pkgver=0.3.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform application intended to create and edit .torrent and uTorrent .dat files.'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('cmake' 'ninja' 'qt5-tools')
+makedepends=('cmake' 'qt5-tools')
 
-_commit='0621e0134014595ae11d31eb901f877857cdd130'
+_commit='1ae5f71c3d52fae924efa71b0d8e5893a9ceb2c5'
 _snapshot="${pkgname}-${_commit}"
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/torrent-file-editor/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('24459e74ba29a9f47e464f0d9fd8dd873a39af27ede64d1ac65da6a3c5d1fae5')
+source=("${pkgname}-${pkgver}-${_commit:0:7}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${_commit}.tar.gz")
+sha256sums=('a0fcfd43f7fb641e64a32919921761df84e06d78531ad45070f367a1f01e7e6e')
 
 build() {
-    cd "${srcdir}"
-
-    cmake -B "build" -GNinja "${_snapshot}" \
+    cmake -B "build" "${_snapshot}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
 
-    ninja -C "build"
+    cmake --build "build"
 }
 
 package() {
-    cd "${srcdir}"
-    DESTDIR="${pkgdir}" ninja -C "build" install
+    DESTDIR="${pkgdir}" cmake --install "build"
 
     cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
