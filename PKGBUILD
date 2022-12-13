@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=acl2
-pkgver=8.3
+pkgver=8.5
 pkgrel=1
 pkgdesc='ACL2 theorem prover.'
 url='http://www.cs.utexas.edu/users/moore/acl2/'
@@ -12,7 +12,7 @@ options=('!strip')
 install=$pkgname.install
 source=("https://github.com/acl2-devel/acl2-devel/releases/download/$pkgver/acl2-$pkgver.tar.gz"
         'acl2')
-md5sums=('46f2541b2bb97a93d9b263bc2e387498'
+md5sums=('ec2c62dbdffdc345252bc5a68ad830fc'
          '6b092e8b98e399dc812f36445f1a9183')
 
 build() {

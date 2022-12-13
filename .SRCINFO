@@ -1,6 +1,6 @@
 pkgbase = acl2
 	pkgdesc = ACL2 theorem prover.
-	pkgver = 8.3
+	pkgver = 8.5
 	pkgrel = 1
 	url = http://www.cs.utexas.edu/users/moore/acl2/
 	install = acl2.install
@@ -9,10 +9,9 @@ pkgbase = acl2
 	license = BSD
 	depends = sbcl
 	options = !strip
-	source = https://github.com/acl2-devel/acl2-devel/releases/download/8.3/acl2-8.3.tar.gz
+	source = https://github.com/acl2-devel/acl2-devel/releases/download/8.5/acl2-8.5.tar.gz
 	source = acl2
-	md5sums = 46f2541b2bb97a93d9b263bc2e387498
+	md5sums = ec2c62dbdffdc345252bc5a68ad830fc
 	md5sums = 6b092e8b98e399dc812f36445f1a9183
 
 pkgname = acl2
-
