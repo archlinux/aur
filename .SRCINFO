@@ -9,6 +9,7 @@ pkgbase = spdk
 	makedepends = meson
 	makedepends = python-pyelftools
 	depends = glibc
+	depends = liburing
 	provides = spdk
 	conflicts = spdk
 	conflicts = dpdk
