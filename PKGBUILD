@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-fast-dds
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="eProsima's Fast-DDS implementation"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/eProsima/Fast-DDS/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('ea8c5df751c978dc900fa2701a1b935e138f27a6b0a57e910d31b44ce781f7de')
+sha256sums=('463a74bf25ae882b8a7395296e047f6d0c900f017e52186db0366b9f9d8913b0')
 validpgpkeys=()
 
 build() {
