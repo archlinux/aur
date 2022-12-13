@@ -6,8 +6,8 @@ pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
 url='https://spdk.io/'
-depends=('glibc' 'liburing')
-makedepends=('cmake' 'meson' 'python-pyelftools')
+depends=('glibc')
+makedepends=('cmake' 'meson' 'python-pyelftools' 'liburing')
 provides=('spdk')
 conflicts=('spdk' 'dpdk')
 source=("$pkgname::git+https://github.com/spdk/spdk.git#tag=v${pkgver}")
