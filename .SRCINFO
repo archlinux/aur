@@ -1,6 +1,6 @@
 pkgbase = python-templated-dictionary
 	pkgdesc = Dictionary where every item is evaluated as a Jinja2 expression
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/xsuchy/templated-dictionary
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-templated-dictionary
 	makedepends = python-setuptools
 	depends = python
 	depends = python-jinja
-	source = https://files.pythonhosted.org/packages/source/t/templated-dictionary/templated-dictionary-1.1.tar.gz
-	md5sums = 65c57a292b836f1437186b96d121401d
+	source = https://files.pythonhosted.org/packages/source/t/templated-dictionary/templated-dictionary-1.2.tar.gz
+	sha256sums = 6972d3bca252b39cb4d87c35657016fa964e94b218c136d4642f08c60a0886fb
 
 pkgname = python-templated-dictionary
-
