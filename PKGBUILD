@@ -8,6 +8,8 @@ source=('git+git://github.com/peltho/tufw')
 depends=('ufw')
 makedepends=('go')
 sha1sums=('SKIP')
+pkgdesc="Terminal UI for ufw"
+license=('MIT')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
