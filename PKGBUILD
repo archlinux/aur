@@ -2,8 +2,8 @@
 
 pkgname=starsector
 pkgver=0.95.1a_RC6
-pkgrel=2
-pkgdesc="Starsector (formerly “Starfarer”) is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game."
+pkgrel=3
+pkgdesc='Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.'
 arch=('i686' 'x86_64')
 url="http://fractalsoftworks.com/"
 license=('custom')
@@ -15,7 +15,7 @@ source=(http://s3.amazonaws.com/fractalsoftworks/starsector/starsector_linux-${p
         starsector.desktop)
 sha256sums=('3da88bd5198a1c35ab557ff11973c4e6fa243c13936a1faf1a3867d78ffefd93'
             '0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16'
-            'ba7eb4fc35d116c6b699ae4abf1e31f9709b06ea38950a731b1227d1f16e964f'
+            'bc8a222251be2d10ad7576b2909b49a9bed8d8adcdc6e915dc80eb0bc4a0db01'
             'becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6')
 package() {
   install -d "$pkgdir/usr/share/$pkgname" \
