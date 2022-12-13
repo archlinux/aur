@@ -29,8 +29,13 @@ pkgver() {
 	printf "1.13.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-	cd hexpmg
-	chmod +x install && ./install
 
+build() {
+      cd hexpmg
+      chmod +x install && ./install
+
+
+
+
+package() {
 }
