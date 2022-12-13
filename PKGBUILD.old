@@ -1,0 +1,21 @@
+# Maintainer: Minecraftchest1 <minecraftchest1 at outlook dot com>
+pkgname=file-sharing-tool
+pkgver=0.2.0
+pkgrel=2
+pkgdesc="A tool to help setup file sharing using ssh."
+arch=('any')
+url="https://gitlab.com/minecraftchest1/steamdeck-file-share-tool"
+license=('GPL3')
+depends=('openssh' 'zenity' 'sed' 'bash' 'iproute2' 'bash')
+makedepends=('coreutils' 'git')
+optdepends=("xdg-utils")
+replaces=()
+changelog=
+source=("git+https://gitlab.com/minecraftchest1/steamdeck-file-share-tool#tag=$pkgver")
+validpgpkeys=('B136A3601568A8CE2493')
+sha256sums=('SKIP')
+
+package() {
+	cd steamdeck-file-share-tool
+	install -D -v bin/file-sharing-tool.sh -t $pkgdir/usr/bin	
+}
