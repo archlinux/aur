@@ -1,6 +1,6 @@
 pkgbase = mmfm
 	pkgdesc = Viewer and manager for multimedia files
-	pkgver = 0.4b
+	pkgver = 0.42b
 	pkgrel = 1
 	url = https://github.com/milgra/mmfm
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = mmfm
 	depends = glew
 	depends = openjpeg2
 	depends = libmupdf
-	source = mmfm-0.4b.tar.xz::https://github.com/milgra/mmfm/releases/download/0.4b/mmfm-0.4b.tar.xz
-	sha256sums = 76bcb78bed1dde2cdd19a37ce6c95b2a2e678e0300bdd85522f9d3642f2e14b4
+	source = mmfm-0.42b.tar.xz::https://github.com/milgra/mmfm/releases/download/0.42b/mmfm-0.42b.tar.xz
+	sha256sums = 7f8816ba0ae2dfd82664d8b38f97267b43f4c3c277c1cf0d39cca3d815f4854a
 
 pkgname = mmfm
