@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.18.1.r8.gad67eb23
+pkgver=2.23.0.r33.gdeaa7dec7
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -52,7 +52,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-	git submodule init
+	git -c protocol.file.allow=always submodule init
 	git config submodule."submodules/collectd".url \
 		"${srcdir}/collectd"
 	git config submodule."submodules/fluent-bit".url \
@@ -61,7 +61,7 @@ prepare() {
 		"${srcdir}/opentelemetry-operations-collector"
 	git config submodule."submodules/opentelemetry-java-contrib".url \
 		"${srcdir}/opentelemetry-java-contrib"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 
 	rm -rf ${srcdir}/google-cloud-ops-agent-git/submodules/opentelemetry-java-contrib/META-INF
 }
