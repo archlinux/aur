@@ -1,6 +1,6 @@
 pkgbase = powershell-lts-bin
 	pkgdesc = PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework
-	pkgver = 7.2.7
+	pkgver = 7.2.8
 	pkgrel = 1
 	url = https://github.com/Powershell/Powershell
 	install = powershell.install
@@ -17,9 +17,9 @@ pkgbase = powershell-lts-bin
 	conflicts = powershell-bin
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PowerShell/PowerShell/releases/download/v7.2.7/powershell-lts_7.2.7-1.deb_amd64.deb
+	source = https://github.com/PowerShell/PowerShell/releases/download/v7.2.8/powershell-lts_7.2.8-1.deb_amd64.deb
 	source = powershell.install
-	sha512sums = 45d635dc7610f527531d415f3ece411dd849cfc8097b9b4e229a209c0b0d071148fae4e145f6cfbcf92fd09242f857ee489ae7c5cc92fcc6725434595d924f5b
+	sha512sums = c85e2ca3bcc1fd8c4fef2381e9f3e8c7df38c2db5796705c6ead290bd1377b48ef1faf1d2a62061eb787d30415bd8fe618c7f547f653422b6098a4b1435b730a
 	sha512sums = 07f5fc69a6d9417049e4f53fbfc96c26c79d0ed33c6e161b3543bc5690476ecdac612aeede9ecff4352bea70ae32bd2fae8b0af0839b986aa1f728f8a9fcfce3
 
 pkgname = powershell-lts-bin
