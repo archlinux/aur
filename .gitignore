@@ -1,5 +1,5 @@
-file-sharing-tool-0.2.0-3-any.pkg.tar.zst
-file-sharing-tool-0.2.0-3-any.pkg.tar.zst-namcap.log
-file-sharing-tool-0.2.0-3-x86_64-package.log
+file-sharing-tool-*.tar.zst
+file-sharing-tool-*.tar.zst-namcap.log
+file-sharing-tool-*-package.log
 PKGBUILD-namcap.log
 steamdeck-file-share-tool
