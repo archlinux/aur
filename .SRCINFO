@@ -1,7 +1,7 @@
 pkgbase = soh-git
-	pkgver = 5.0.2.r69.g408143ec8
+	pkgver = 5.1.0.r0.g639e51bb8
 	pkgrel = 1
-	url = https://github.com/HarbourMasters/Shipwright
+	url = https://shipofharkinian.com/
 	arch = x86_64
 	arch = i686
 	makedepends = cmake

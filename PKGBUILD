@@ -3,15 +3,15 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.0.2.r69.g408143ec8
+pkgver=5.1.0.r0.g639e51bb8
 pkgrel=1
 arch=("x86_64" "i686")
-url="https://github.com/HarbourMasters/${_reponame}"
+url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
-source=("git+${url}.git"
+source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/kenix3/libultraship.git"
         "soh.desktop"
         "soh-use-appbasedir.patch"
