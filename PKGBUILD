@@ -1,7 +1,7 @@
 # Maintainer: Tian Qiao <abcnsxyz@gmail.com>
 
 pkgname=('pocsuite3')
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Open-sourced remote vulnerability testing framework'
 url='https://github.com/knownsec/pocsuite3'
@@ -14,7 +14,7 @@ depends=('python-requests' 'python-pysocks' 'python-requests-toolbelt' 'python-u
 makedepends=('python-setuptools')
 optdepends=()
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('0d01467791eb31a0b22b9e5d5d3302b9c1a00f4ab67883702b02a972ae91cee8d4ffeaa9b11e32037ab3b79b94120b359c33e4f16b067b8e712b72ec4c86b8d9')
+sha512sums=('3209d10554e6d952146d047443d95533d7c4ea8e3a27f61009314d24a1bf7a2fa421c9dffe5631ea1e0866348f6f34fcd4189e2c27c860180e8fdc4c258e1865')
 
 build() {
   cd ${pkgname}-${pkgver}
