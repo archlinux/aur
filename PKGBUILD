@@ -3,7 +3,7 @@
 
 pkgname=solana-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.13.4
+pkgver=1.14.10
 pkgrel=1
 pkgdesc='Solana CLI tools'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   #"$_pkgname-sys-tuner.service"
   #"$_pkgname-test.service"
 )
-sha256sums=('cb1ad29bcdcba117730f30ce4a055f3768d778b5ec6db1862260bef24e344c39'
+sha256sums=('5289971ce34c8c446015deb37a9ac8882ff190637ece772bfc6a848ce2d11396'
             '3e893948c70e514ee369253fe37cf1d7cb3f99d350656f3c9a777ea87f895ca6'
             '4a5a6060c734f0c85d4e13e5124ee30f6612a6a812642d043e0bff18790776f5')
 
