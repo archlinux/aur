@@ -1,6 +1,6 @@
 pkgbase = kealib
 	pkgdesc = An HDF5 Based Raster File Format and its GDAL plugin
-	pkgver = 1.4.14
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = http://kealib.org
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = kealib
 	depends = hdf5
 	depends = gdal
 	options = !emptydirs
-	source = https://github.com/ubarsc/kealib/releases/download/kealib-1.4.14/kealib-1.4.14.tar.gz
-	sha256sums = da5d4a540b34afb61665cb7b6bf284825b51464eaf2a23ccca16955e2712cab2
+	source = https://github.com/ubarsc/kealib/releases/download/kealib-1.5.0/kealib-1.5.0.tar.gz
+	sha256sums = d19a0fb051019f87fe413bda76472bf4fff8fca52ede92e0ffd983caeafd05b8
 
 pkgname = kealib
