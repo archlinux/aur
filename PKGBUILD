@@ -2,7 +2,7 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=monitorix
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=("$pkgname-git")
 backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname.conf")
 install=readme.install
 source=("http://www.$pkgname.org/$pkgname-$pkgver.tar.gz")
-sha256sums=('2e901d4f5a266f23c5b3788a3da10a03c2bdb6512e1af61306c01a2ed2b61d49')
+sha256sums=('7eb0dea6ab272cf8838cf06d0cfd0325cfda9128d43a4743752f6bc4fafeb5de')
 
 prepare() {
 	cd "$pkgname-$pkgver"
