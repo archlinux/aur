@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Loui Chang <louipc [dot.] ist [at@] gmail.com>
 # Contributor: aksr <aksr at t-com dot me>
-​
+
 pkgname=jove
 pkgver=4.17.4.8
 pkgrel=1
@@ -15,13 +15,13 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
 sha256sums=('39995f970604a67cadd0f87ad9ac88562f40b680135116f53597c0d4413f318e')
-​
+
 prepare() {
   cd "$pkgname-$pkgver"
   # This lets the Makefile use the ArchLinux supplied CFLAGS and LDFLAGS
   sed -i -e 's/^CFLAGS/#CFLAGS/g' -e 's/^LDFLAGS/#LDFLAGS/g' Makefile
 }
-​
+
 build() {
   cd $pkgname-$pkgver
   CPPFLAGS="-DLinux $(pkgconf --cflags ncurses)"
@@ -30,7 +30,7 @@ build() {
   LDLIBS="$ldlibs -lutil" JOVEHOME=/usr SHARDIR=/usr/share/jove \
   TMPDIR=/var/tmp RECDIR=/var/tmp/jove.preserve DFLTSHELL=/bin/sh
 }
-​
+
 package() {
   cd $pkgname-$pkgver
   install -d "$pkgdir"/usr/{bin,lib/jove,share/jove}
