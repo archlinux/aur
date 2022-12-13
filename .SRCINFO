@@ -1,6 +1,6 @@
 pkgbase = rust-lolcat-git
 	pkgdesc = A rust implementation of lolcat
-	pkgver = r57.2992e37
+	pkgver = r61.9e957b7
 	pkgrel = 1
 	url = https://github.com/ur0/lolcat
 	arch = i686

@@ -1,6 +1,0 @@
-*.tar.*
-lolcat/
-lolcat-lolhelp/
-pkg/
-src/
-.gitignore
