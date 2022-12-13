@@ -1,7 +1,7 @@
 pkgbase = directfb2-git
 	pkgdesc = a fork of DirectFB whose purpose is to preserve and maintain the DirectFB graphics backend, particularly for use on embedded systems.
 	pkgver = r148.0fdf5df39
-	pkgrel = 2
+	pkgrel = 3
 	url = https://directfb2.github.io/
 	arch = x86_64
 	arch = armv7h

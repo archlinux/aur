@@ -2,7 +2,7 @@
 name=directfb2
 pkgname=directfb2-git
 pkgver=r148.0fdf5df39
-pkgrel=2
+pkgrel=3
 pkgdesc="a fork of DirectFB whose purpose is to preserve and maintain the DirectFB graphics backend, particularly for use on embedded systems."
 arch=('x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
 url='https://directfb2.github.io/'
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${name}"
-  meson -Dmulti=true -Dprefix=/usr build/
+  meson setup -Dmulti=true -Dprefix=/usr build/
   ninja -C build/
 }
 
