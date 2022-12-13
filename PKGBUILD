@@ -3,17 +3,17 @@
 _projectname=skycoin
 pkgname=skywire
 _pkgname=${pkgname}
-_githuborg=${_projectname}
+_githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
-_pkggopath="github.com/${_githuborg}/${_pkgname}"
+_pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.2.1'
-pkgrel=5
+pkgrel=6
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
-url="https://${_pkggopath}"
+url=https://${_pkggopath}
 license=('license-free')
 makedepends=("git" "go" "musl" "kernel-headers-musl")
 [[ ${REBUILDUI} == "1" ]] && makedepends=(${makedepends[@]} "npm")
