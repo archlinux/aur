@@ -1,21 +1,38 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=units
-_cranver=0.8-0
+_cranver=0.8-1
 pkgname=r-${_cranname,,}
 pkgdesc="Measurement Units for R Vectors"
 url="https://cran.r-project.org/package=units"
-license=("GPL-2")
+license=("GPL2")
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
 arch=("i686" "x86_64")
-depends=("r" "r-rcpp" "udunits")
-optdepends=("r-udunits2" "r-nistunits" "r-measurements" "r-xml2" "r-magrittr" "r-pillar" "r-dplyr" "r-vctrs" "r-knitr" "r-testthat" "r-ggforce" "r-rmarkdown")
+depends=(
+    "r>=3.0.2"
+    "r-rcpp>=0.12.10"
+    "udunits"
+)
+optdepends=(
+    "r-nistunits"
+    "r-measurements"
+    "r-xml2"
+    "r-magrittr"
+    "r-pillar>=1.3.0"
+    "r-dplyr>=1.0.0"
+    "r-vctrs>=0.3.1"
+    "r-ggplot2>=3.2.1"
+    "r-testthat>=3.0.0"
+    "r-vdiffr"
+    "r-knitr"
+    "r-rmarkdown"
+)
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("9c46fe138e8c1c3d3a51268776412f02d09673656516148cccb71b1071beb21a")
+b2sums=('ac44f0ff3d174c76a261686742551de8eda1dc2696cda8ecdccc43f9c7abcf770c1e21291f8cd213609651a92a3d2e1e7f0efacc71bd43f986fc0e92664ad421')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
