@@ -3,7 +3,7 @@
 
 pkgname=sic-image-cli-bin
 _pkgname=sic
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_pkgname-
                "$pkgname-$pkgver-LICENSE-MIT::$url/raw/v$pkgver/LICENSE-MIT"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md"
                "$pkgname-$pkgver-shell_completions.zip::$url/releases/download/v$pkgver/shell_completions.zip")
-sha512sums_x86_64=('3db28611513f5061266250d12b5fe3b553b2a00dd6dd692e62be69794b0556bb47a6b002390c199055b19d469c91194fbd138904ca2d1a84accb7e5b9f7a6f45'
+sha512sums_x86_64=('f7808b095f82e2b40df3d8d12fa4899c92be9610b9a15f30b10a7b6c7e480d0c5495802627cd6a322076ac6d0e93feec2d74aafc3aa96bc329d6fdbe23ae7f70'
                    '76e93decfd32f274563a31310f0eb97588d27f4627cb09d117ec1acaf1e62925309161971ff5e10963c39fbda90bd007b341e304b1f37a58a07362828b23afb9'
                    '0969480edfd8fa09bbebc2496a45fb5e8a7c6e6456065e0912cbda54cca1f1d00ab72e7932e3fee545e7f17c6b8ddbf75c67f60e1ec12089585e8883d1aba94f'
                    '1764eacdb577cd0bb1a7171fcebfb576f07e3536995f29fc3fce1e3872a5436a8d9e340df605af769a4f66eda0f93c6990cf616eadd34243afa8e92c9b4e8097')
