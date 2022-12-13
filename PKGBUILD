@@ -39,6 +39,6 @@ build() {
 
 
 package() {
-        mkdir ~/.config/hexpmg/ && mv ~/hexpmg/update/update ~/.config/hexpmg/ && mv ~/hexpmg/uninstall/uninstall ~/.config/hexpmg/ && chmod +x ~/.config/hexpmg/uninstall && chmod +x ~/.config/hexpmg/update
+        mkdir ~/.config/hexpmg/ && mv update ~/.config/hexpmg/ && mv uninstall ~/.config/hexpmg/ && chmod +x ~/.config/hexpmg/uninstall && chmod +x ~/.config/hexpmg/update
 
 }
