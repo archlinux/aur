@@ -19,7 +19,7 @@ license=(GPL2)
 
 depends=(
   'sdl2' 
-  'wxgtk3'
+  'wxwidgets'
 )
 makedepends=(
   'cmake' 
@@ -64,8 +64,6 @@ build() {
         -S wxLauncher \
         -DUSE_OPENAL=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-gtk3' \
-        -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \
         -Wno-dev
   cmake --build build
 }
