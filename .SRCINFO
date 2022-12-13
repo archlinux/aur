@@ -1,0 +1,18 @@
+pkgbase = python-hyperglot
+	pkgdesc = Detect language support for font binaries
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/rosettatype/hyperglot
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-click
+	depends = python-colorlog
+	depends = python-fonttools-git
+	depends = python-yaml
+	depends = python-unicodedata2
+	noextract = hyperglot-0.4.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/59/4d/344eeb1c75e8a95669aa5d71f1bfb820e9e70f4bde19aa80a13dc2651881/hyperglot-0.4.4-py3-none-any.whl
+	md5sums = 125b6ed512a15bc537d683609c15f8de
+
+pkgname = python-hyperglot
