@@ -18,12 +18,12 @@ prepare() {
 
 build() {
 	cd "${pkgname}-${pkgver}/src"
-	make 
+	make
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	install -Dt ${pkgdir}/usr/bin/ -m755 slinktool 
+	install -Dt ${pkgdir}/usr/bin/ -m755 slinktool
 	install -Dt ${pkgdir}/usr/share/man/man1/ -m644  doc/slinktool.1
 }
 # vim:set ts=4 sw=4 et:
