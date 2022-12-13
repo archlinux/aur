@@ -1,7 +1,7 @@
 pkgbase = protonplus
 	pkgdesc = A simple proton version manager
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,14 @@ pkgbase = protonplus
 	depends = libarchive
 	depends = libsoup3
 	source = protonplus-0.3.0.tar.gz::https://github.com/Vysp3r/ProtonPlus/archive/refs/tags/v0.3.0.tar.gz
+	source = https://github.com/Vysp3r/ProtonPlus/commit/b079df4ff9c793ded8967c8a930a1bb49c652bd4.patch
+	source = https://github.com/Vysp3r/ProtonPlus/commit/a0147ff163a4df77d4461ba17927c54baf107bb7.patch
+	source = https://github.com/Vysp3r/ProtonPlus/commit/c22ff10dc56b69cdff203020fcb7417e128778ca.patch
+	source = https://github.com/Vysp3r/ProtonPlus/commit/2a75650332f842f09a3d3bd39f397ff9e6f28956.patch
 	sha256sums = b09ff0015111bcd895f7bae74cb04e7dc931bda22fe7ae62b852fec1a72ddd2c
+	sha256sums = b9934fa7a054ced1575b598377b6b29835001af3fb11eab44bd380bf3b525fa1
+	sha256sums = 974e898e7ca14ae92f3eea59d332e72b5cac8ded6ab95f46b37078fff38be3c3
+	sha256sums = a2753a167e367fa45bc11cea82617df2322ed1e2a0320fa4ad313d22b23a52dc
+	sha256sums = 2b4882d407d7b78502ae814e8b8e6fa9b4234f682340f7f63bbc5ca04a843897
 
 pkgname = protonplus
