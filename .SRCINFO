@@ -1,0 +1,20 @@
+pkgbase = directfb2-tslib-git
+	pkgdesc = contains tslib input driver for DirectFB2
+	pkgver = r7.f0dc2f3
+	pkgrel = 1
+	url = https://directfb2.github.io/
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = flux-git
+	depends = directfb2-git
+	source = directfb2-tslib::git+https://github.com/directfb2/DirectFB2-tslib.git
+	sha256sums = SKIP
+
+pkgname = directfb2-tslib-git
