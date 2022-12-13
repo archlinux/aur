@@ -2,16 +2,16 @@
 # Contributor: Steffen Weber <-boenki-gmx-de->
 
 pkgname=otter-browser
-pkgver=1.0.02
+pkgver=1.0.03
 pkgrel=2
 pkgdesc='Web browser aiming to recreate the best aspects of the classic Opera (12.x) UI using Qt5'
 arch=('x86_64')
 url='https://otter-browser.org/'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'hunspell' 'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-xmlpatterns')
+depends=('hicolor-icon-theme' 'hunspell' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qt5-xmlpatterns')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/OtterBrowser/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d1e090a80fa736cd128f594184817078a08cac31614e85e7838ff1b64511d62d')
+sha256sums=('2b07d22a5d921ec0b3d29a680eb913c3fe0713ca7d10e37873a3802d1a5154a3')
 
 prepare() {
   cd $pkgname-$pkgver
