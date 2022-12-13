@@ -1,20 +1,18 @@
 pkgbase = narcissu2-en
 	pkgdesc = A free japanese visual novel game, translated into English. This package includes both Narcissu and Narcissu: Side 2nd.
-	pkgver = 1.1
-	pkgrel = 9
+	pkgver = 600392_steam
+	pkgrel = 1
 	url = https://www.neechin.net/narcissu/
 	arch = any
 	license = custom:freeware
 	depends = ponscripter
-	source = https://www.neechin.net/file_download/22/[Denpa]_Narcissu_2_Eng_[unix].tar.bz2
-	source = https://www.neechin.net/file_download/27/Narcissu_2_Eng_v1.1_script_[All_platforms].zip
+	source = https://archive.org/download/narcissu2/narcissu2.7z
 	source = https://github.com/07th-mod/ponscripter-fork/raw/mod/src/resources/narci2.ico
 	source = https://github.com/07th-mod/ponscripter-fork/raw/mod/src/resources/narci2.png
-	source = narcissu2-en.desktop
-	md5sums = e785f7bb8735867b130c78dd17da3a5f
-	md5sums = cbbdf90489e0b937454e4ed94d63824a
+	source = narcissu2.desktop
+	md5sums = b8032dd59633ce10f13321489b73da1a
 	md5sums = 571d83dfa4b39c0ba95f825810104243
 	md5sums = 50dbdaba66b5ad8837fd364610e72822
-	md5sums = 28740061cebcef220e37bd2f384299e4
+	md5sums = e86538eae0bc9618729beb46321b9374
 
 pkgname = narcissu2-en
