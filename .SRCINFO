@@ -1,0 +1,33 @@
+pkgbase = psi4
+	pkgdesc = Open-source quantum chemistry - an electronic structure package in C++ driven by Python
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://psicode.org
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	depends = blas
+	depends = lapack
+	depends = python
+	depends = python-numpy
+	depends = gau2grid
+	depends = eigen
+	depends = pybind11
+	depends = python-qcelemental
+	depends = python-qcengine
+	depends = libxc
+	depends = python-optking
+	depends = python-msgpack
+	depends = python-networkx
+	optdepends = perl
+	optdepends = python-pytest
+	optdepends = python-pytest-xdist
+	optdepends = python-sphinx
+	optdepends = python-nbsphinx
+	source = https://github.com/psi4/psi4
+	md5sums = 85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366
+
+pkgname = psi4
+
