@@ -31,12 +31,14 @@ pkgver() {
 
 
 build() {
+      cd hexpmg
+      chmod +x install
+
 }
 
 
 
 package() {
-        cd hexpmg
-        chmod +x install && ./install
+        source hexpmg/install
 
 }
