@@ -1,7 +1,7 @@
 pkgbase = vkbasalt-git
 	pkgdesc = A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.
-	pkgver = 1.0.r4.7e6ecfa
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 5
 	url = https://github.com/DadSchoorse/vkBasalt
 	arch = x86_64
 	license = MIT

@@ -1,6 +1,6 @@
 pkgname=vkbasalt-git
-pkgver=1.0.r4.7e6ecfa
-pkgrel=1
+pkgver=1.0
+pkgrel=5
 epoch=
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
