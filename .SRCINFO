@@ -28,6 +28,7 @@ pkgbase = python-spotdl
 	depends = python-nest-asyncio
 	depends = python-fastapi
 	depends = uvicorn
+	depends = python-platformdirs
 	depends = python-jarowinkler
 	provides = python-spotdl
 	provides = spotdl
