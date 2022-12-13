@@ -2,7 +2,7 @@
 # Contributor: Adam Harvey <adam@adamharvey.name>
 
 pkgname=apfs-fuse-git
-pkgver=r77.670e45e
+pkgver=r93.04f3246
 pkgrel=1
 pkgdesc="FUSE driver for APFS (Apple File System)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ prepare() {
   cd "${pkgname%-git}"
   git submodule init
   git config submodule.3rdparty/lzfse.url "$srcdir/lzfse"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   mkdir -p build
 }
 
