@@ -1,6 +1,6 @@
 pkgbase = nvidia-390xx-settings
 	pkgdesc = Tool for configuring the NVIDIA graphics driver, 390xx legacy branch
-	pkgver = 390.154
+	pkgver = 390.157
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = nvidia-390xx-settings
 	makedepends = nvidia-390xx-utils
 	makedepends = libxext
 	options = staticlibs
-	source = nvidia-settings-390.154.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/390.154.tar.gz
+	source = nvidia-settings-390.157.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/390.157.tar.gz
 	source = libxnvctrl_so.patch
 	source = 0001-nvidia-settings-Make-VDPAUDeviceFunctions-static-to-.patch
-	sha512sums = cbb6b5f69784f66155a08da786b98de1de8659aa1b42af1a5baca02031e8e21c5d001292188994e01986dd4fca24ec9b7b5fb56491bfab889e7448cdde55f8ba
+	sha512sums = 03b8cfa287612eaa1699845136283fe1ec4a43212fb0b9d3d0682ce6dd51702fbdfc53c29ea9ebe914034d2c20abb35af7667e0314948842152efd746773771a
 	sha512sums = f69f5dc84fe624579a3c9ce877f4ae4e34c2184877576afbea07b8abdd7ff01e470517f2b77cd11a904518cbcb83fb388ca1d08888006f0ef2854723920c9cf8
 	sha512sums = 0fd6355a10dfecb3636764f40eb0d4a4625f69e48fb653060f40e2bde8bf51eb04ae08be8751163d94e022c6f595a9756cde9d8404a556a4a83e3b5b74052c53
 
