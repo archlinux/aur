@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=tinytex
-_cranver=0.42
+_cranver=0.43
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -18,7 +18,7 @@ checkdepends=(r-testit)
 optdepends=(r-testit r-rstudioapi)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('205f7a1978118aa38b6d9f7d3e1667c635da262b43967d1a879520284c2e22b1'
+sha256sums=('589ef25968f768d06359201f2c22d7d0cc6399ae7dc4dc6bc5de4bf34d1c2804'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
