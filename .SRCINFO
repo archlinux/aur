@@ -1,0 +1,24 @@
+pkgbase = python-help2man
+	pkgdesc = Convert --help and --version to man page.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/help2man
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	depends = python-jinja
+	conflicts = help2man
+	source = https://files.pythonhosted.org/packages/py3/h/help2man/help2man-0.0.1-py3-none-any.whl
+	source = https://raw.githubusercontent.com/Freed-Wu/help2man/main/LICENSE
+	source = https://github.com/Freed-Wu/help2man/releases/download/0.0.1/help2man.1.gz
+	source = help2man.bash::https://github.com/Freed-Wu/help2man/releases/download/0.0.1/help2man
+	source = https://github.com/Freed-Wu/help2man/releases/download/0.0.1/_help2man
+	source = https://github.com/Freed-Wu/help2man/releases/download/0.0.1/help2man.csh
+	sha256sums = 05ef5f68d1f55be92d44cd8bbce0533e1fb00af76303a9cbf7230b838a9a8f70
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 492d7bd6e2ec150a614640c74f586fa5cab5479cb4bc4c3de8b9c71dfa1decf1
+	sha256sums = c5f5d75696d4e1a19fbcb9cadbfc9b70aa64e46813d2179dbfcd602e1cc25f55
+	sha256sums = 5bc48f874f3d5b143b11f099937eca84a6018a21cdd35c2287b65c9ea18d481b
+	sha256sums = 2b572334760eceb949a43339bab39bd1c71de2a3957ea4e31a344a55669df418
+
+pkgname = python-help2man
