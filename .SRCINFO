@@ -1,0 +1,20 @@
+pkgbase = directfb2-lirc-git
+	pkgdesc = LIRC input driver for DirectFB2
+	pkgver = r4.72ceb35
+	pkgrel = 1
+	url = https://directfb2.github.io/
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = flux-git
+	depends = directfb2-git
+	source = directfb2-lirc::git+https://github.com/directfb2/DirectFB2-lirc.git
+	sha256sums = SKIP
+
+pkgname = directfb2-lirc-git
