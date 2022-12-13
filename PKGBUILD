@@ -1,4 +1,5 @@
 # Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Contributor: vnctdj
 # Contributor: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
@@ -6,7 +7,7 @@
 _pkgbasename=nvidia-390xx-utils
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-390xx-utils' 'lib32-opencl-nvidia-390xx')
-pkgver=390.154
+pkgver=390.157
 pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -15,7 +16,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('cab7de6db783089c1e385da0296c43d2cbbe266bac2bc177044e279224a6ef9c76495b46c4b7056eb5a82b21932a2002e0c12f7659b446a2586f9df30a69a9a3')
+sha512sums=('4780503a4cff0180b1b1f37d20a6ba3438dd78b51fa7f69b98d35521835e5d61099129746929d51d63afa2d47b672b3e145e1e1897584dc3799e7f822c5b3a0a')
 
 create_links() {
     # create soname links
