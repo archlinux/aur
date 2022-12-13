@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 cd /usr/lib/siyuan-note
-electron21 app "$@"
+electron22 app "$@"

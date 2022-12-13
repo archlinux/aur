@@ -4,7 +4,7 @@
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
 url="https://b3log.org/siyuan/"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/rele
 "$_pkgname.sh"
 "$_pkgname.desktop")
 sha512sums=('d12fbdd20e734a77a9a0dd0270787b7bcd10498603d73956a4e1bd549c309d80632b0de0314a01dbe661058f5be63bf9e802c93c1a909c8c4249a285e3f81271'
-            'fd81efdce512374b2990a18b7b1c00050c2d775eaa1230bc0ffbbc78b5379800a19aa9dbfd18272bd914a8456a9a9c4b3851d56cc85ce506dbf11e61f21967d2'
+            '3fb4e720c962d776a9fd25e87c943f02715c233eba5d02dab94b15a1cabb853367f8c9c6a1f3606cb3ebfdcf21f89db25e5a4abf4d77b57c8b6772b980c487a2'
             '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
 
 package() {
