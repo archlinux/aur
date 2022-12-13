@@ -1,7 +1,7 @@
 pkgbase = libslink
 	pkgdesc = A SeedLink client library written in C.
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ds.iris.edu/ds/nodes/dmc/services/seedlink/
 	arch = x86_64
 	license = Apache-2.0

@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=libslink
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A SeedLink client library written in C."
 arch=("x86_64")
 url="https://ds.iris.edu/ds/nodes/dmc/services/seedlink/"
@@ -16,14 +16,12 @@ build() {
 
 package() {
 	cd "${pkgname}"
-	install -d ${pkgdir}/usr/{include,lib,share/{doc/${pkgname},man/man3}}
-	cp libslink.h slplatform.h ${pkgdir}/usr/include/
-	cp -a libslink.so* ${pkgdir}/usr/lib/
+	install -Dt ${pkgdir}/usr/include/ -m644 libslink.h slplatform.h
+	install -Dt ${pkgdir}/usr/lib/ libslink.so.${pkgver}
+	ln -s libslink.so.${pkgver} ${pkgdir}/usr/lib/libslink.so.${pkgver%%.*}
+	ln -s libslink.so.${pkgver} ${pkgdir}/usr/lib/libslink.so
+	install -Dt ${pkgdir}/usr/share/doc/${pkgname}/ -m644 doc/UsersGuide-libslink
+	install -Dt ${pkgdir}/usr/share/man/man3/ -m644 doc/*.3
 	cp -r example ${pkgdir}/usr/share/doc/${pkgname}/
-	cp doc/UsersGuide-libslink ${pkgdir}/usr/share/doc/${pkgname}/
-	cp -a doc/*.3 ${pkgdir}/usr/share/man/man3/
-	
-	sed -i 's/#include "slplatform.h"/#include <slplatform.h>/' \
-	  ${pkgdir}/usr/include/libslink.h
 }
-# vim:set ts=4 sw=4:
+# vim:set ts=4 sw=4 et:
