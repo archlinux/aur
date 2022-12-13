@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=('rustup' 'clang')
 depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
-conflicts=('python-sphinx' 'suricata-nfqueue') # Issue with doc generation at compile time - https://github.com/OISF/suricata/pull/6123
+conflicts=('suricata-nfqueue')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'
@@ -30,7 +30,7 @@ build() {
   export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	      --with-clang=/usr/bin/clang \
+	      --with-clang=/usr/bin/clang --without-docs \
 	      --disable-gccmarch-native --enable-lua --enable-geoip
   make
 }

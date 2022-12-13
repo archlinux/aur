@@ -21,7 +21,6 @@ pkgbase = suricata
 	depends = pcre
 	depends = python-yaml
 	optdepends = geoipupdate: GeoIP2 databases
-	conflicts = python-sphinx
 	conflicts = suricata-nfqueue
 	backup = etc/suricata/suricata.yaml
 	backup = etc/suricata/local.yaml
