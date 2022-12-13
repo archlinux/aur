@@ -1,6 +1,6 @@
 pkgbase = vmp
 	pkgdesc = Visual music player
-	pkgver = 0.84b
+	pkgver = 0.86b
 	pkgrel = 1
 	url = https://github.com/milgra/vmp
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = vmp
 	depends = ffmpeg
 	depends = glew
 	depends = openjpeg2
-	source = vmp-0.84b.tar.xz::https://github.com/milgra/vmp/releases/download/0.84b/vmp-0.84b.tar.xz
-	sha256sums = cdab8dc3ade16bba52e6341e59220ae6b7c1a1f59cead2c17b17e6f0dda12045
+	source = vmp-0.86b.tar.xz::https://github.com/milgra/vmp/releases/download/0.86b/vmp-0.86b.tar.xz
+	sha256sums = 35c7fa7c11973de9c58a9bb2db4b59df23f1f22e97af0fc47445a428800655e1
 
 pkgname = vmp
