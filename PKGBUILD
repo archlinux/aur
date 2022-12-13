@@ -4,22 +4,22 @@ _reponame=Shipwright
 _libultraship_commit=e1fa7a2c0e6baeed083cd2b8f22c260e2db48d29
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=5.0.2
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 arch=("x86_64" "i686")
-url="https://github.com/HarbourMasters/${_reponame}"
+url="https://shipofharkinian.com/"
 _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
-source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_reponame}/archive/refs/tags/${pkgver}.tar.gz"
         "libultraship-${_libultraship_commit}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_libultraship_commit}.tar.gz"
         "soh.desktop"
         "soh-use-appbasedir.patch"
         "lus-install-paths.patch"
         "otrgui-wrapper.sh"
         "assets-headers-gc_nmq_pal_f.tar.xz")
-sha256sums=('e1222b6bce7865706f5ffc6c9d45f19ccd2ed738ed7e39360ad7d8f59eeff334'
+sha256sums=('58139a1674ebdfe73a4e5e855d5b52019a9698be132abf456b9e2c25e71358cd'
             'bbe5fdedcec21a63d346fdaa57f0ba51166ed48c97c2cc55a45320009b278b05'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
