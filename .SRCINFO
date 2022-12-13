@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 13.0.0_r193646.g3164de6ac1b
+	pkgver = 13.0.0_r197401.g33be3ee36a7
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
 	groups = base-devel-git
-	depends = gcc-libs-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-libs-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
@@ -58,7 +58,7 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (git version)
 	depends = glibc>=2.27
-	provides = gcc-libs-git=13.0.0_r193646.g3164de6ac1b-1
+	provides = gcc-libs-git=13.0.0_r197401.g33be3ee36a7-1
 	provides = gcc-libs
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -90,7 +90,7 @@ pkgname = lib32-gcc-libs-git
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = gcc-fortran
 	provides = gcc-multilib
@@ -98,9 +98,18 @@ pkgname = gcc-fortran-git
 	conflicts = gcc-fortran
 	replaces = gcc-multilib-git
 
+pkgname = gcc-rust-git
+	pkgdesc = Rust frontend for GCC (git version)
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
+	depends = libisl.so
+	provides = gcc-rust
+	provides = gcc-rust-git
+	conflicts = gcc-rust
+	replaces = gcc-rust-git
+
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -109,7 +118,7 @@ pkgname = gcc-objc-git
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT) (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = gcc-ada
 	provides = gcc-multilib
@@ -121,21 +130,29 @@ pkgname = gcc-ada-git
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = gdc
+	provides = gcc-d
+	provides = gcc-d-git
+	conflicts = gcc-d
 	replaces = gdc
+	replaces = gcc-d
 	options = staticlibs
 	options = !debug
 
 pkgname = lto-dump-git
 	pkgdesc = Dump link time optimization object files (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
+	provides = lto-dump
+	provides = lto-dump-git
+	conflicts = lto-dump
+	replaces = lto-dump
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = go=1.18
 	provides = gcc-multilib
@@ -147,5 +164,5 @@ pkgname = gcc-go-git
 
 pkgname = libgccjit-git
 	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
-	depends = gcc-git=13.0.0_r193646.g3164de6ac1b-1
+	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so

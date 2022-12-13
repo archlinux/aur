@@ -9,8 +9,8 @@
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
-pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-d,lto-dump,gcc-go,libgccjit}-git)
-pkgver=13.0.0_r193646.g3164de6ac1b
+pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-fortran,gcc-rust,gcc-objc,gcc-ada,gcc-d,lto-dump,gcc-go,libgccjit}-git)
+pkgver=13.0.0_r197401.g33be3ee36a7
 _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
@@ -112,7 +112,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d,rust \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
@@ -312,6 +312,25 @@ package_gcc-fortran-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
+package_gcc-rust-git() {
+  pkgdesc="Rust frontend for GCC (git version)"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(gcc-rust{,-git})
+  conflicts=(gcc-rust)
+  replaces=(gcc-rust-git)
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" rust.install-{common,man,info}
+
+  install -Dm755 gcc/gccrs "$pkgdir"/usr/bin/gccrs
+  install -Dm755 gcc/rust1 "$pkgdir"/"$_libdir"/rust1
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
@@ -434,8 +453,9 @@ package_lib32-gcc-libs-git() {
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gdc)
-  replaces=(gdc)
+  provides=(gdc gcc-d{,-git})
+  replaces=(gdc gcc-d)
+  conflicts=(gcc-d)
   options=(staticlibs !debug)
 
   cd gcc-build
@@ -457,6 +477,9 @@ package_gcc-d-git() {
 package_lto-dump-git() {
   pkgdesc="Dump link time optimization object files (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(lto-dump lto-dump-git)
+  replaces=(lto-dump)
+  conflicts=(lto-dump)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" lto.install-{common,man,info}
