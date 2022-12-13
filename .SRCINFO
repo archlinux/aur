@@ -1,7 +1,7 @@
 pkgbase = ezxml
 	pkgdesc = A C library for parsing XML documents inspired by simpleXML for PHP.
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ezxml.sourceforge.net/
 	arch = x86_64
 	license = MIT
