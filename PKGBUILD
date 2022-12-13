@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=(python-specklepy-git)
-pkgver=2.1.0.r8.g46437e7
+pkgver=2.9.1.r10.g67499ab
 pkgrel=1
 pkgdesc="This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+."
 arch=('x86_64' 'i686')
@@ -14,10 +14,10 @@ conflicts=()
 replaces=()
 backup=()
 source=("git+https://github.com/specklesystems/speckle-py.git")
-_python_ver=$(python --version | grep -Po 'Python \K[0-9]\..')
+_python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
 
 prepare() {
-  cd "${srcdir}/speckle-py"
+  cd "${srcdir}/speckle-py/src"
 }
 
 pkgver() {
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/speckle-py"
+  cd "${srcdir}/speckle-py/src"
 }
 
 package() {
@@ -42,7 +42,7 @@ package() {
   # Install python modules
   mkdir -p "${pkgdir}/usr/lib/python${_python_ver}/site-packages/"
   cd "${pkgdir}/usr/lib/python${_python_ver}/site-packages/"
-  cp -rf "${srcdir}/speckle-py/specklepy" "./"
+  cp -rf "${srcdir}/speckle-py/src/specklepy" "./"
   python -O -m compileall "./"
 }
 
