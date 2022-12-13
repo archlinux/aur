@@ -1,0 +1,18 @@
+post_install(){
+ cat <<INFO
+
+Spleeter will automatically download in the working directory any model required to perform the split.
+For instance, by running:
+
+    wget https://github.com/deezer/spleeter/raw/master/audio_example.mp3
+    spleeter separate -o audio_output audio_example.mp3
+    
+it will attempt to download the 2-stem model under the "pretrained_models/2stems/" folder.
+    
+If this fails and you get the error "ValueError: Can't load save_path when it is None.",
+you can manually download and extract the model you need from:
+
+    https://github.com/deezer/spleeter/releases/v1.4.0/
+
+INFO
+}
