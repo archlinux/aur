@@ -1,18 +1,22 @@
 pkgname=ecoji
-pkgver=2.0.1+5+g805d064
-pkgrel=1
+pkgver=2.0.1
+pkgrel=2
 pkgdesc="Encode or decode data as Unicode emojis."
 arch=("x86_64")
 url="https://github.com/keith-turner/ecoji"
-license=("APACHE")
+license=("Apache")
 makedepends=(git go)
 source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
   cd $pkgname
-  mkdir -p build/
   git describe --tags | sed "s/^v//;s/-/+/g"
+}
+
+prepare() {
+  cd $pkgname
+  mkdir -p build/
 }
 
 build() {
@@ -24,7 +28,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o ../build ./ecoji.go
 }
-
 
 package() {
   cd "$pkgname"
