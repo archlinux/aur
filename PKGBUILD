@@ -1,7 +1,7 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=sov
-pkgver=0.74
+pkgver=0.81b
 pkgrel=1
 pkgdesc='An overview application for sway'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'63cc324765b5c686867d43d7dae48781c3d4fd4a96af4f8b4e7f0f2efff2f13e'
+	'bcd6c0aa40389bbedb8f4c4c745b48c05a41f0d2a0d3133b1784c06662e3fab1'
 )
 
 prepare() {
