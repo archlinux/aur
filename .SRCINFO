@@ -1,6 +1,6 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.74.1
+	pkgver = 2.74.3
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = glib2-patched-thumbnailer
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
 	optdepends = gvfs: most gio functionality
-	provides = glib2=2.74.1
+	provides = glib2=2.74.3
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
@@ -36,19 +36,17 @@ pkgbase = glib2-patched-thumbnailer
 	conflicts = glib2
 	options = !docs
 	options = staticlibs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=058491cb6f635ff6e0a57fcdd4107a40ca91c62a
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=a8ad6347a404962c3b83aca1bf50610a76618c0f
 	source = 0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 	source = glib-thumbnailer.patch
-	source = glib-compile-schemas.hook
-	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
 	source = gio-querymodules.script
-	sha256sums = SKIP
-	sha256sums = 6d51eb5856268d79eee01b97a299fa9f99db18b2abb4df56f2ed9e641a09138a
-	sha256sums = aac442ff2ab836e31a7adadfcaf9d7dbdd7a40eb78a4bc6df12c87739ffd3186
-	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
-	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
-	sha256sums = 2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7
-	sha256sums = 92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e
+	source = glib-compile-schemas.hook
+	b2sums = SKIP
+	b2sums = 4d5cb5ad1222a5e8d06e79736170cd694a6277e0da71ffd55560d74cf5c3273551d302a35bd2ff43f09070d61c1de147bb312428fce98347d232ac3d44406511
+	b2sums = 6ab20e160590e6ab5a1d4172507cde9db1656432e1853fa963570679ceb0a04d401515e80be2a5a7c36bad514547f7ecca29ee8095e222ac91da804c0c5d13b2
+	b2sums = cd3a7817193ca985be5aff0813e78cc59c39ad8d4a2171c1c719267e4f51beda47c58a44c6d5afead64e9fa1b854430ac935976d02158e927ba3ec8f36fce282
+	b2sums = 4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243
+	b2sums = d30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858
 
 pkgname = glib2-patched-thumbnailer

@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.74.1
+pkgver=2.74.3
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -21,19 +21,20 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'gvfs: most gio functionality')
 options=(!docs staticlibs)
 license=(LGPL)
-_commit=058491cb6f635ff6e0a57fcdd4107a40ca91c62a  # tags/2.74.1^0
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
-        glib-thumbnailer.patch
-        glib-compile-schemas.hook
-        glib-compile-schemas.hook gio-querymodules.{hook,script})
-sha256sums=('SKIP'
-            '6d51eb5856268d79eee01b97a299fa9f99db18b2abb4df56f2ed9e641a09138a'
-            'aac442ff2ab836e31a7adadfcaf9d7dbdd7a40eb78a4bc6df12c87739ffd3186'
-            '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
-            '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
-            '2a9f9b8235f48e3b7d0f6cfcbc76cd2116c45f28692cac4bd61074c495bd5eb7'
-            '92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e')
+_commit=a8ad6347a404962c3b83aca1bf50610a76618c0f  # tags/2.74.3^0
+source=(
+  "git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
+  0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
+  glib-thumbnailer.patch
+  gio-querymodules.{hook,script}
+  glib-compile-schemas.hook
+)
+b2sums=('SKIP'
+        '4d5cb5ad1222a5e8d06e79736170cd694a6277e0da71ffd55560d74cf5c3273551d302a35bd2ff43f09070d61c1de147bb312428fce98347d232ac3d44406511'
+        '6ab20e160590e6ab5a1d4172507cde9db1656432e1853fa963570679ceb0a04d401515e80be2a5a7c36bad514547f7ecca29ee8095e222ac91da804c0c5d13b2'
+        'cd3a7817193ca985be5aff0813e78cc59c39ad8d4a2171c1c719267e4f51beda47c58a44c6d5afead64e9fa1b854430ac935976d02158e927ba3ec8f36fce282'
+        '4b90eb8d582509b09aab401313d4399cc139ad21b5dd7d45d79860d0764c7494c60714e0794e09823e51d1894ac032a994f27d79d1499abf24ee6f59bdb0c243'
+        'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
 
 pkgver() {
   cd glib
