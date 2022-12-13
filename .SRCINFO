@@ -1,0 +1,14 @@
+pkgbase = python-pngquant-cli
+	pkgdesc = Precompiled binaries for pngquant, the lossy PNG compressor based on libimagequant.
+	pkgver = 2.17.0.post5
+	pkgrel = 1
+	url = https://pngquant.org
+	arch = x86_64
+	license = GPL-3.0+
+	depends = python
+	depends = lcms2
+	depends = libpng
+	source = https://files.pythonhosted.org/packages/82/ab/6c8586e6d6117a193f610df943db7db2c60e3f38f3e25b2bee357e064c35/pngquant_cli-2.17.0.post5.tar.gz
+	md5sums = 107d33b61a9c628831613d9c58e425c0
+
+pkgname = python-pngquant-cli
