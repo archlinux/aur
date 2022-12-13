@@ -5,8 +5,8 @@
 _arch=x64v1
 pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
-_major=6.0
-pkgver=${_major}.12
+_major=6.1
+pkgver=${_major}.0
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -30,8 +30,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('f1eb4299d7c5e65c2e944dfbe037325370e6dd1afd0fea52486e11224579323a'
-            '29e4b7d077b0ac0f50c93a8b15db6e7c5a13d9bc75ce52b56936fbca8683976c')
+sha256sums=('a22463ec3183cab61b9a84a3896cf204077deca66f63cd4116187fe8ef9c1112'
+            'c87d8ceb9e2a53979e3e9c04b131fe2399393c5a162e99388248365e5c030675')
 
 prepare() {
   bsdtar -xf ${_file_image} data.tar.xz
