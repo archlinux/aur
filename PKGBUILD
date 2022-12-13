@@ -9,7 +9,7 @@ url="https://github.com/hexisXz/hexpmg.git"
 license=('GPL')
 groups=()
 depends=()
-makedepends=(git)
+makedepends=(git axel)
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,14 +31,14 @@ pkgver() {
 
 
 build() {
-      cd hexpmg
-      chmod +x install
+      cd hexpmg 
+      touch ~/hexpmg-list && chmod +x ~/hexpmg/hexpmg && sudo mv ~/hexpmg/hexpmg /bin
 
 }
 
 
 
 package() {
-        source hexpmg/install
+        mkdir ~/.config/hexpmg/ && mv ~/hexpmg/update/update ~/.config/hexpmg/ && mv ~/hexpmg/uninstall/uninstall ~/.config/hexpmg/ && chmod +x ~/.config/hexpmg/uninstall && chmod +x ~/.config/hexpmg/update
 
 }
