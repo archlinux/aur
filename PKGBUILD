@@ -2,8 +2,8 @@
 # Contributor: (Joe084) <develon69 at gmail dot com>
 
 pkgname='pico-8'
-pkgver='0.2.5c'
-pkgrel=2
+pkgver='0.2.5d'
+pkgrel=1
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.lexaloffle.com/pico-8.php"
@@ -21,10 +21,10 @@ source_aarch64=("file://${pkgname}_${pkgver}_raspi.zip")
 
 sha256sums=('272f33c38a74456a4d2597a6b1d0c6ee9695d0e47f31ce08018c24a78e62759e'
             '2776340602e7ad29898500c4b2162bb5dd7746b933fb443b551e25a751e375e7')
-sha256sums_x86_64=('a433059942d5a4275d879c718a7d7d1611068d65f9cf57782ffefb11d7e2c8db')
-sha256sums_i686=('3ddc7ae2fc67352cabda1935114403cc70f408f73d25faee5385d85faa071f2f')
-sha256sums_armv7h=('56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e')
-sha256sums_aarch64=('56a1239373f1681104a76ca24a1b3534079707ed787cde5d948ed71c651ba59e')
+sha256sums_x86_64=('017877a33d317d755e4d9711eac1363acd2454faf57c6ec3c34b547511789ccb')
+sha256sums_i686=('1f2991edaa4d56a670ad36848e1cebe5f0be504b1593590f905e858e2b5d08df')
+sha256sums_armv7h=('6736d8418c4904207b1c42e58ba5ac688afaf635df6db2eeb55564edb3a8c871')
+sha256sums_aarch64=('6736d8418c4904207b1c42e58ba5ac688afaf635df6db2eeb55564edb3a8c871')
 
 
 prepare () {
