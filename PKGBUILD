@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-	'e8eb1115cb7fbdbdde5b0a29f56d1d3f47489f4466a3b2e1e874da585af9fbfa'
+    'e9720828288d5d363b8f727bf387eea6b0f3a67ee498598d8e218d1ae12da11c'
 )
 
 prepare() {
@@ -29,6 +29,5 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" ninja -C build install
-	install -Dm644 "${pkgname}-${pkgver}/config" "${pkgdir}/usr/share/${pkgname}/config"
 }
 
