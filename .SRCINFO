@@ -1,7 +1,7 @@
 pkgbase = libdali
 	pkgdesc = The C library for the DataLink protocol.
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iris-edu/libdali
 	arch = x86_64
 	license = Apache-2.0
