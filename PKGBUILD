@@ -1,32 +1,37 @@
-# Maintainer: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
+# Contributor: Evan Bush (PencilShavings) <eb.pencilshavings@protonmail.com>
 
 pkgname=quickemu-git
-pkgver=r298.018fb1c
+pkgver=4.5.r1.gc3d21b9
 pkgrel=1
-pkgdesc='Simple shell script to "manage" Qemu virtual machines.'
+pkgdesc='Quickly create and run optimised Windows, macOS and Linux desktop virtual machines'
 arch=('any')
-url="https://github.com/wimpysworld/quickemu"
+url="https://github.com/${pkgname%-git}-project/${pkgname%-git}"
 license=('MIT')
-depends=('qemu' 'coreutils' 'grep' 'jq' 'procps' 'python3' 'cdrtools' 'usbutils' 'util-linux' 'sed' 'spice-gtk' 'swtpm' 'wget' 'xorg-xrandr' 'zsync' 'edk2-ovmf')
+depends=('qemu' 'jq' 'python3' 'cdrtools' 'usbutils' 'spice-gtk' 'swtpm' 'wget' 'xorg-xrandr' 'zsync' 'edk2-ovmf')
 makedepends=('git')
-#optdepends=('samba: file sharing support')
-provides=('quickemu')
-conflicts=('qucikemu')
-source=("$pkgname"::'git://github.com/wimpysworld/quickemu.git')
-md5sums=('SKIP')
+optdepends=('quickgui: graphical user interface' 'aria2: faster downloads')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=("git+$url")
+b2sums=('SKIP')
 
 pkgver()
 {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package()
 {
-    cd "$srcdir/$pkgname"
-    install -Dm644 LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm755 quickemu "$pkgdir/usr/bin/quickemu"
-    install -Dm755 quickget "$pkgdir/usr/bin/quickget"
-    install -Dm755 macrecovery "$pkgdir/usr/bin/macrecovery"
-}
+  cd ${pkgname%-git}
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
+  install -Dm755 ${pkgname%-git} -t "$pkgdir"/usr/bin
+  install -Dm755 quickget -t "$pkgdir"/usr/bin
+  install -Dm755 macrecovery -t "$pkgdir"/usr/bin/macrecovery
 
+  cd docs
+  install -Dm644 quickget.1 -t "$pkgdir"/usr/share/man/man1
+  install -Dm644 ${pkgname%-git}.1 -t "$pkgdir"/usr/share/man/man1
+  install -Dm644 ${pkgname%-git}_conf.1 -t "$pkgdir"/usr/share/man/man1
+}
