@@ -46,29 +46,3 @@ package() {
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-pkgver() {
-  cd "${_pkgname}"
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-package() {
-   # Note: 'install' is a chmod+cp one-liner command by GNU
-   mkdir -p "$pkgdir"/usr/bin
-   install -m 555 "${srcdir}"/wofi-calc/wofi-calc.sh "$pkgdir"/usr/bin/wofi-calc
-}

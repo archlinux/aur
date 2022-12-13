@@ -20,3 +20,4 @@ pkgbase = vkbasalt-git
 	sha256sums = SKIP
 
 pkgname = vkbasalt-git
+	optdepends = reshade-shaders-git
