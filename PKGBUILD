@@ -2,9 +2,9 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname
-pkgver=1.8.3
-pkgrel=2
-pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
+pkgver=1.8.4
+pkgrel=1
+pkgdesc="A cross platform front-end GUI of the popular yt-dlp written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/oleksis/youtube-dl-gui"
 license=('custom:UNLICENSE')
@@ -25,7 +25,7 @@ makedepends=(
 provides=($_pkgname)
 conflicts=($_pkgname youtube-dl-gui)
 source=(https://github.com/oleksis/youtube-dl-gui/archive/refs/tags/v"${pkgver}".tar.gz)
-sha512sums=('f56adb25baea489f21a57a5513d95e656835429b4512e49d848076afaa60fa356d3468cd5460fcc6e6f311bf605d959a78b4277a0ab272903dde25c2cc87ca8e')
+sha512sums=('906474132746da9f80d361992bfa562b845ed305bbb0077359c8b43a8a82ed90d2144c3c33431183c8d3454b7a59bb4cc107cfa69f115c126b3a006210d8a8b7')
 
 
 build() {
