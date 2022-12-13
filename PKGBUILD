@@ -1,20 +1,22 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-_pkgrev=201
-_srcrev=r${_pkgrev}-trunk
-pkgver=2.3.3r${_pkgrev}
-_pkgver=2.3.3
+pkgver=2.3.8.r229
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
 license=('GPL')
 arch=('x86_64')
 depends=('gmp' 'ocl-icd' 'opencl-driver')
+source=("mtsieve-svn::svn+https://svn.code.sf.net/p/mtsieve/svn/")
+sha256sums=('SKIP')
 
-# Static copy of the snapshot file since sourceforge regenerates it on demand.
-source=("https://github.com/Dylan1496/mtsieve-source/raw/main/mtsieve-${_pkgver}-${_srcrev}.zip")
-sha256sums=('6fb6a797d61f9f49f5d64b365d745b22f7b3ba9a98ea31317f17962481ef135a')
+pkgver() {
+         cd "$pkgname-svn"
+	 local major="$(egrep -o "([0-9]{1,1}\.)+[0-9]{1,1}" -m 1 "CHANGES.txt")"
+         local ver="$(svnversion)"
+         printf "${major}.r%s" "${ver//[[:alpha:]]}"
+}
 
 prepare() {  
 	cd "${srcdir}/${pkgname}-svn"
