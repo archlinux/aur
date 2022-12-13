@@ -7,6 +7,7 @@ url="https://github.com/lwfinger/rtl8723bu"
 provides=('rtl8723bu')
 conflicts=('rtl8723bu-git')
 arch=('any')
+groups=('rtl8723bu-dkms-git')
 license=('GPL')
 install=rtl8723bu-git-dkms.install
 depends=('dkms' 'linux-headers')
