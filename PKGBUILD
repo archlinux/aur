@@ -32,7 +32,7 @@ makedepends=(
   'librabbitmq-c'   'librdkafka'       'libutil-linux'   'libuv'           'libxcrypt'
   'lua'             'lz4'              'nss'             'oath-toolkit'    'openssl'
   'pkgconf'         'python'           'snappy'          'sqlite'          'systemd-libs'
-  'util-linux'      'xfsprogs'         'zlib'            'zstd'
+  'thrift'          'util-linux'       'xfsprogs'        'zlib'            'zstd'
 
   'python-bcrypt'   'python-cherrypy'      'python-coverage'   'python-dateutil'            'python-jinja'
   'python-pecan'    'python-prettytable'   'python-pyjwt'      'python-pyopenssl'           'python-requests'

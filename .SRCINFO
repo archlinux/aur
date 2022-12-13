@@ -56,6 +56,7 @@ pkgbase = ceph
 	makedepends = snappy
 	makedepends = sqlite
 	makedepends = systemd-libs
+	makedepends = thrift
 	makedepends = util-linux
 	makedepends = xfsprogs
 	makedepends = zlib
