@@ -21,7 +21,7 @@ pkgver() {
 
 build(){
   cd "$srcdir/$_pkgname"
-  GO111MODULE=on go build -o "$srcdir/bin/tufw"
+  GO111MODULE=on go build -o "$srcdir/bin/tufw" "./cmd/..."
 }
 
 package() {
