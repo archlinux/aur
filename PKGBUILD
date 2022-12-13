@@ -4,7 +4,7 @@
 
 _pkgname=frida
 pkgname=python-$_pkgname
-pkgver=16.0.7
+pkgver=16.0.8
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,19 +13,19 @@ license=('custom:wxWindows Library License, Version 3.1')
 depends=('python')
 optdepends=('python-typing_extensions: for Python <3.8')
 # Sourced from https://pypi.org/project/frida/#files
-source=("https://files.pythonhosted.org/packages/15/c4/92c5474b2bfbe757d9dd22665bd2ebaa6d4a3da5efce4f772050e404b0f2/${_pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/72/b2/b066593f87e7ee8c144939367e8055ca32594dbbc361b443c414739ff9cc/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
 # Sourced from https://github.com/frida/frida/releases
 source_i686=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-x86.tar.xz")
 source_x86_64=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-x86_64.tar.xz")
 source_armv7h=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-armhf.tar.xz")
 source_aarch64=("frida-core-devkit-${pkgver}-linux.tar.xz::https://github.com/frida/frida/releases/download/${pkgver}/frida-core-devkit-${pkgver}-linux-arm64.tar.xz")
-sha256sums=('8e6e285fd9846aa045d6827b90b5ad2fe2e42117c4bb0e453bd825da0ad825a1'
+sha256sums=('2d5dcc2c12d4d9ba023cc3a9e8deb4bbb58f7a6827988a2dc68a223860115177'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
-sha256sums_i686=('7c472eb02ecbab098c559f7ffeb2555aa9e5f6b7ab6bfd17e6a9f3df452fcb86')
-sha256sums_x86_64=('a87b750b7f2abb3b09ba706a9f73da9d1735e515e6ccffa1dc778d58946c188b')
-sha256sums_armv7h=('38f3a5031619b62c6100dd2e43af27584561304c51ca728c578c1609866aa4b5')
-sha256sums_aarch64=('ebfca8ea7bf9b4802cbb7f622594ec6f114fa8d4603b3c39e84251d5aee87f46')
+sha256sums_i686=('e2cc1117769e99c6017ad14b5bd15411989d4b5ac72123d58d0dc2eb4c3e6d8e')
+sha256sums_x86_64=('bfd0a71f673bbf134dcdcf1d8476641af521a62421c21ba0d46a8d3de5d614e2')
+sha256sums_armv7h=('e4530c44fb197e7c64a54579a494cbc4716b17a278b3e96cf5bf680bdad8556a')
+sha256sums_aarch64=('bd95986563a92f1d18c5ea9ccce4c6eb3c1944542aabaab05b5a196f9891bf42')
 noextract=("frida-core-devkit-${pkgver}-linux.tar.xz")
 conflicts=("python2-${_pkgname}")
 
