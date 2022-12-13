@@ -5,8 +5,8 @@
 
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
-pkgver=470.141.03
-pkgrel=2
+pkgver=470.161.03
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -21,7 +21,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
             'fac1ed6d07e0ad5cb4591321653cd570729552ff13e4b15a45a556c29edc2904367c463648743ef45788a718cc7aba95446308a99fa17ba97da44467df031915'
-            '07aca8ea6aac5592060b4177ef43e9a3a5b2e3bc1a2d5959bf2ae349763fc62ed80b987af5607bf2d9a48e25c4e38e64970bca0177d63bd57a703d47debf5e18')
+            '26b1640f9427847b68233ffacf5c4a07e75ed9923429dfc9e5de3d7e5c1f109dfaf0fe0a0639cbd47f056784ed3e00e2e741d5c84532df79590a0c9ffa5ba625')
 
 
 create_links() {
