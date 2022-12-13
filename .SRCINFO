@@ -1,11 +1,11 @@
 pkgbase = slinktool
 	pkgdesc = The all-in-one SeedLink client for data stream inspection, data collection and server testing.
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iris-edu/slinktool
 	arch = x86_64
-	license = GPL3
-	makedepends = ezxml
+	license = LGPL3
+	depends = ezxml
 	depends = libslink
 	source = slinktool-4.3.tar.gz::https://github.com/iris-edu/slinktool/archive/v4.3.tar.gz
 	sha256sums = 733a9c3c3a7bb237c871ea0038d637898aebb26b9c7f1fb7b17f9f4b0aa67ef5
