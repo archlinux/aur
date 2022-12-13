@@ -1,7 +1,7 @@
 # Maintainer: Denis Klester <dinisoft@gmail.com>
 _pkgname=rtl8723bu
 pkgname=${_pkgname}-git-dkms
-pkgver=r44.0f64ea4
+pkgver=r264.c412fd3
 pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/dini/${_pkgname}"
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    rm -r ".git"{,ignore}
+    #rm -r ".git"{,ignore}
     rm -f "rtl8723BU_WiFi_linux_v4.3.6.11_12942.20141204_BTCOEX20140507-4E40.tar.gz"
     rm -f "rtl8723BU_WiFi_linux_v4.3.9.3_13200.20150106_BTCOEX20140929-5443.tar.gz"
 }
