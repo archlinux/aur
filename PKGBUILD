@@ -3,7 +3,7 @@
 
 pkgname=baralga
 _pkgname=${pkgname/b/B}
-pkgver=1.8.3
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="A simple and lightweight time tracking solution for freelancers and consultants"
 arch=('any')
@@ -11,15 +11,15 @@ url="http://baralga.github.com"
 license=('LGPL3')
 depends=('java-runtime')
 options=(emptydirs)
-source=(https://github.com/${_pkgname}/${pkgname}/releases/download/v${pkgver}/${_pkgname}-Portable-${pkgver}.zip)
-sha512sums=('a786ead107f075b56e0f0965e603a9eaacf6bab541094d5d0707dd396e1a1b28708a96eef2bbf5338a1fc2c6c725ee5da5bc774cf1c1db56618ea12c775bac77')
+source=(https://github.com/${_pkgname}/${pkgname}/releases/download/v${pkgver}/${_pkgname}-Portable-v${pkgver}.zip)
+sha512sums=('a3531a80ce539b11046ce7ada031ba9612ff6c8ccb1bb898df4a3ed8efb56d6a1c7e66db09c64a5579c45cc26d890cb7a04a89fb55ab8335885db28d253de228')
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
+	cd "${srcdir}/${_pkgname}-v${pkgver//_/-}"
 
 	mkdir -p "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/share/${pkgname}/"{lib,data}
-	install -m644 "${_pkgname}-${pkgver//_/-}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
+	install -m644 "${_pkgname}-v${pkgver//_/-}.jar" "${pkgdir}/usr/share/${pkgname}/${pkgname}.jar"
 	#ignore contents of data/ for now ...
 
 	#create startup file
