@@ -1,0 +1,52 @@
+diff --git a/code/apis/ProfileManager.cpp b/code/apis/ProfileManager.cpp
+index 152ff22..2b4b2a6 100644
+--- a/code/apis/ProfileManager.cpp
++++ b/code/apis/ProfileManager.cpp
+@@ -136,7 +136,7 @@ bool ProMan::Initialize(Flags flags) {
+ 	wxArrayString foundProfiles;
+ 	wxDir::GetAllFiles(GetProfileStorageFolder(), &foundProfiles, wxT_2("pro?????.ini"));
+ 
+-	wxLogInfo(wxT_2(" Found %d profile(s)."), foundProfiles.Count());
++	wxLogInfo(wxT_2(" Found %u profile(s)."), static_cast<unsigned>(foundProfiles.Count()));
+ 	for( size_t i = 0; i < foundProfiles.Count(); i++) {
+ 		wxLogDebug(wxT_2("  Opening %s"), foundProfiles[i].c_str());
+ 		wxFFileInputStream instream(foundProfiles[i]);
+@@ -1430,8 +1430,8 @@ void ProMan::TestConfigFunctions(wxConfigBase& src) {
+ 	wxLogDebug(_T("contents of dest config after clearing:"));
+ 	LogConfigContents(*dest);
+ 	
+-	wxLogDebug(_T("after clearing, dest has %d entries and %d groups"),
+-		dest->GetNumberOfEntries(true), dest->GetNumberOfGroups(true));
++	wxLogDebug(_T("after clearing, dest has %u entries and %u groups"),
++		static_cast<unsigned>(dest->GetNumberOfEntries(true)), static_cast<unsigned>(dest->GetNumberOfGroups(true)));
+ 	
+ 	wxLogDebug(_T("recopying src to dest"));
+ 	
+diff --git a/code/controls/ModList.cpp b/code/controls/ModList.cpp
+index c290cb5..8067d30 100644
+--- a/code/controls/ModList.cpp
++++ b/code/controls/ModList.cpp
+@@ -50,7 +50,7 @@ const wxString NO_MOD(_("(No mod)"));
+ // to keep the presets box from overlapping with flag list
+ const size_t MAX_PRESET_NAME_LENGTH = 32;
+ 
+-class ModInfoDialog: wxDialog {
++class ModInfoDialog: public wxDialog {
+ public:
+ 	ModInfoDialog(ModItem* item, wxWindow* parent);
+ 	void OnLinkClicked(wxHtmlLinkEvent &event);
+diff --git a/code/datastructures/FSOExecutable.cpp b/code/datastructures/FSOExecutable.cpp
+index da29adc..ab81bf8 100644
+--- a/code/datastructures/FSOExecutable.cpp
++++ b/code/datastructures/FSOExecutable.cpp
+@@ -192,8 +192,8 @@ wxArrayString FSOExecutable::GetBinariesFromRootFolder(
+ 	
+ 	if (!quiet) {
+ 		wxString execType = startPattern.Lower().Find(_T("fred")) == wxNOT_FOUND ? _T("FS2") : _T("FRED2");
+-		wxLogInfo(_T(" Found %d %s Open executables in '%s'"),
+-			files.GetCount(), execType.c_str(), path.GetPath().c_str());
++		wxLogInfo(_T(" Found %u %s Open executables in '%s'"),
++			static_cast<unsigned>(files.GetCount()), execType.c_str(), path.GetPath().c_str());
+ 		
+ 		for (size_t i = 0, n = files.GetCount(); i < n; ++i) {
+ 			wxLogDebug(_T("Found executable: %s"), files.Item(i).c_str());

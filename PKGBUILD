@@ -8,7 +8,7 @@
 pkgname=wxlauncher-git
 
 pkgver=0.12.0.rc3.r13.gd72c97c
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A cross-platform launcher for the FreeSpace 2 Open engine - Git version"
 # NOTE: architectures other than x86_64 have not been tested. However, all the hard dependencies
@@ -40,13 +40,13 @@ source=(
   "git+https://github.com/scp-fs2open/wxLauncher.git"
   "wxwidgets-version.patch"
   "desktop-file-icon.patch"
+  "wxwidgets-3.2-compatibility.patch"
 )
 
-sha256sums=(
-  'SKIP'
-  '32fa8bb01a8d41f8ca55bf31b229fd579ca0a895f97b4fa0257a1ac96887a670'
-  '1e3e8426b4b5866488cb28c05de96746a770a77e3c8132ea31aeac5b966acad4'
-)
+sha256sums=('SKIP'
+            '32fa8bb01a8d41f8ca55bf31b229fd579ca0a895f97b4fa0257a1ac96887a670'
+            '1e3e8426b4b5866488cb28c05de96746a770a77e3c8132ea31aeac5b966acad4'
+            '704efd1e3404fc800e001811b579b82a3045330ea9513b15025fe5db1c71abb9')
 
 pkgver() {
   cd wxLauncher || exit
@@ -57,6 +57,7 @@ prepare() {
   cd wxLauncher || exit
   patch --forward --strip=1 --input="../wxwidgets-version.patch"
   patch --forward --strip=1 --input="../desktop-file-icon.patch"
+  patch --forward --strip=1 --input="../wxwidgets-3.2-compatibility.patch"
 }
 
 build() {
