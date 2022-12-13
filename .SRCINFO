@@ -1,0 +1,13 @@
+pkgbase = ecoji
+	pkgdesc = Encode or decode data as Unicode emojis.
+	pkgver = 2.0.1+5+g805d064
+	pkgrel = 1
+	url = https://github.com/keith-turner/ecoji
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/keith-turner/ecoji
+	sha256sums = SKIP
+
+pkgname = ecoji
