@@ -1,7 +1,7 @@
 pkgbase = d11amp
 	pkgdesc = Oldschool MP3 player (Winamp lookalike)
 	pkgver = 0.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dettus.net/d11amp/
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = d11amp
 	depends = mpg123
 	depends = libzip
 	depends = portaudio
-	source = https://github.com/dettus/d11amp/archive/refs/tags/d11amp-0.59.tar.gz
-	sha256sums = 3d0f0dea274b848c26dab26f476e302f00b398cf4388f25d0e9cdb1b5cd9c17b
+	source = https://dettus.net/d11amp/d11amp_0.59.tar.bz2
+	sha256sums = 596fe28fd2a0898bfff00aa5b79457633e73e7526b866b698419c134049e9841
 
 pkgname = d11amp
