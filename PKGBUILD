@@ -13,10 +13,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation16
-pkgver=16.2.4
-_buildver=20089737
+pkgver=16.2.5
+_buildver=20904516
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '2e46708db46630edc96cdb11514d5e338f5300c46f51a90132e9a4cd11c3f3c0'
+  '3ee36946b15e3093fd032115f5b6e5dabf4081f54756d5e795b4534473ea53e7'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -110,8 +110,8 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.2.4
-_vmware_fusion_buildver=20071091
+_vmware_fusion_ver=12.2.5
+_vmware_fusion_buildver=20904517
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -128,7 +128,7 @@ source+=(
   "efi-patches.txt"
 )
 sha256sums+=(
-  '0b0516f4d5f70e759ae08a40d2e14f487c0b66d84ee467e38972ad013e1f6c7f'
+  '403d14e7609f1863bd46617c90f2e3642f6b68ed387c1b7f8c62722d580c633c'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
