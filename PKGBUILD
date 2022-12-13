@@ -38,5 +38,5 @@ build() {
 
 
 package() {
-	./install
+	source ~/hexpmg/install
 }
