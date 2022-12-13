@@ -1,0 +1,12 @@
+pkgbase = python-resvg-cli
+	pkgdesc = Precompiled binaries for the 'resvg' CLI tool, from the homonymous SVG rendering library.
+	pkgver = 0.22.0.post3
+	pkgrel = 1
+	url = https://pypi.org/project/resvg-cli/
+	arch = x86_64
+	license = custom:MPL-2.0
+	depends = python
+	source = LICENSE
+	md5sums = 815ca599c9df247a0c7f619bab123dad
+
+pkgname = python-resvg-cli
