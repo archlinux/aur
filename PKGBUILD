@@ -1,46 +1,47 @@
-# Maintainer: Sandy Carter <bwrsandman@gmail.com>
+# Maintainer: gigas002 <gigas002@pm.me>
 # Contributor: Raziel23 <venom23 at runbox dot com>
+# Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=vcmi
-pkgver=0.99
-pkgrel=4
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="http://vcmi.eu"
 license=('GPL2')
 depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt5-base' 'libxkbcommon-x11'
-         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme')
-makedepends=('boost' 'cmake')
+         'desktop-file-utils' 'gtk-update-icon-cache' 'hicolor-icon-theme' 'tbb' 'fuzzylite'
+         'luajit')
+makedepends=('boost' 'cmake' 'git')
 optdepends=('innoextract: required by vcmibuilder'
             'unshield: required by vcmibuilder'
             'unzip: required by vcmibuilder')
-conflicts=('fuzzylite')
+provides=('vcmi')
+conflicts=('vcmi')
 install="${pkgname}.install"
-source=(https://github.com/vcmi/${pkgname}/archive/${pkgver}.tar.gz
-        0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch
-        boostasiofix.patch)
-sha256sums=('b7f2459d7e054c8bdcf419cbb80040e751d3dbb06dc1113ac28f7365930f902e'
-            'fefca8818a11bc753a9dfd828fc1e3f6f64d104713e64fa76088c3ce05f60143'
-            'e270050db24c2cd717c490d9d121b43d19574fd92345105374f3bc1c8386ea35')
+source=(https://github.com/vcmi/${pkgname}/archive/${pkgver}.tar.gz)
+sha256sums=('1033f69c55f2f7d071ea5f278f41d5f97abe9087e339718569681a3f46a0e7d0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0001-Launcher-add-sanity-checks-for-QDir-removeRecursivel.patch"
-  patch -p1 -l -i "${srcdir}/boostasiofix.patch"
 }
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake \
+  mkdir -p build && cd build
+  cmake -B. -H.. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='lib' \
+    -DCMAKE_INSTALL_RPATH='/usr/lib/vcmi' \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE \
     -DCMAKE_SKIP_RPATH='FALSE' \
-    -DFORCE_BUNDLED_FL='ON' \
-    -DCMAKE_BUILD_TYPE='Release'
+    -DENABLE_TEST=OFF \
+    -DFORCE_BUNDLED_FL=OFF \
+    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_POLICY_DEFAULT_CMP0074=NEW
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir" install
 }
 
