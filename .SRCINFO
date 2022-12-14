@@ -5,13 +5,14 @@ pkgbase = mimaflux
 	url = https://github.com/mattulbrich/mimaflux
 	arch = any
 	license = GPL3
+	makedepends = java-environment=17
 	makedepends = gradle
-	depends = java-runtime>=16
+	depends = java-runtime>=17
 	source = mimaflux-1.1.0.tar.gz::https://github.com/mattulbrich/mimaflux/archive/refs/tags/v1.1.tar.gz
-	source = versionFile_without_git_commit_hash.patch
+	source = make_it_build.patch
 	source = mimaflux
 	sha256sums = ec3b65ae275853357abc605c96595087d1da0036e7e886f50c639d1952644a9b
-	sha256sums = 1acf49a88fb09064736d84161ffb52200de1729a8c561f34a4a507a7cc344ffa
+	sha256sums = 8986f87b83e33daecb509cd900e46f13385e4baad8d8b78905d2e0d8cc60d7ac
 	sha256sums = 45f965e7748262f4f366e36fedac2fb4296cfdd01607633636a92095b6d51d2e
 
 pkgname = mimaflux

@@ -8,20 +8,20 @@ pkgdesc='debugger for Mima assembly code'
 arch=('any')
 url="https://github.com/mattulbrich/mimaflux"
 license=('GPL3')
-depends=('java-runtime>=16')
-makedepends=('gradle')
+depends=('java-runtime>=17')
+makedepends=('java-environment=17' 'gradle')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_tagname.tar.gz"
-	versionFile_without_git_commit_hash.patch
+	make_it_build.patch
 	mimaflux
 )
 sha256sums=('ec3b65ae275853357abc605c96595087d1da0036e7e886f50c639d1952644a9b'
-            '1acf49a88fb09064736d84161ffb52200de1729a8c561f34a4a507a7cc344ffa'
+            '8986f87b83e33daecb509cd900e46f13385e4baad8d8b78905d2e0d8cc60d7ac'
             '45f965e7748262f4f366e36fedac2fb4296cfdd01607633636a92095b6d51d2e')
 
 prepare() {
 	# needed to make the versionFile task in gradle pass
-	patch --directory="$pkgname-$_tagname" --forward --input="$srcdir/versionFile_without_git_commit_hash.patch"
+	patch --directory="$pkgname-$_tagname" --forward --input="$srcdir/make_it_build.patch"
 }
 
 build() {
