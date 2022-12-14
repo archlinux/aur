@@ -1,13 +1,13 @@
 pkgbase = sigi
 	pkgdesc = Organization CLI for people who hate organization
-	pkgver = 3.4.3
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/hiljusti/sigi
 	arch = x86_64
 	arch = aarch54
 	license = GPL-2.0-only
 	makedepends = cargo
-	source = sigi-3.4.3.tar.gz::https://crates.io/api/v1/crates/sigi/3.4.3/download
-	sha256sums = a1a363a3379d53fbc5146f1f4f231c781aa56116548a00ee4af9acfcf7c93084
+	source = sigi-3.5.0.tar.gz::https://crates.io/api/v1/crates/sigi/3.5.0/download
+	sha256sums = ea9a9dcec6656fd67c30cc482166665e2d80303936384dee450509e3ed3ede72
 
 pkgname = sigi
