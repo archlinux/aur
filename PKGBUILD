@@ -25,25 +25,25 @@ url="http://geant4.cern.ch/"
 arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
-install=geant4.install
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
-  "geant4.install"
+  "geant4-full.install"
 )
 sha256sums=(
-  '051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985'
-  '601de16ffd6cbcd57a8fd7fe97845979c08a805f62178b482c11f2c1370957cb'
+  "051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985"
+  "640ebc759befc85b3d486d83b706c229877130b392c1bfee0e78cd1c9b347c11"
 )
+install=geant4-full.install
 
 build() {
 
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
 
-	env -i \
-      QT_SELECT=6 \
-      PATH=/usr/bin \
-      cmake \
+  env -i \
+    QT_SELECT=6 \
+    PATH=/usr/bin \
+    cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DGEANT4_BUILD_MULTITHREADED=ON \
@@ -62,8 +62,7 @@ build() {
       -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
       ../geant4-v${pkgver}
 
-	make VERBOSE=1
-
+  make VERBOSE=1
 }
 
 package() {
