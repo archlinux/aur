@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pesterchum
+Exec=/opt/pesterchum/Pesterchum
+Comment=Instant messaging client copying the look and feel of clients from Andrew Hussie's webcomic Homestuck.
+Terminal=false
+Icon=/opt/pesterchum/themes/pesterchum/trayicon.png
+Type=Application

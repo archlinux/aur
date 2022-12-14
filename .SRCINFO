@@ -1,0 +1,21 @@
+pkgbase = pesterchum-bin
+	pkgdesc = Instant messaging client copying the look and feel of clients from Andrew Hussie's webcomic Homestuck.
+	pkgver = v2.5.2
+	pkgrel = 1
+	url = https://github.com/Dpeta/pesterchum-alt-servers
+	arch = x86_64
+	license = GPL3
+	makedepends = coreutils
+	depends = glibc>=2.31
+	depends = gstreamer
+	depends = gst-plugins-base
+	optdepends = ca-certificates: up-to-date certificate validation
+	optdepends = ffmpeg: alternative Qt6 audio backend
+	source = https://github.com/Dpeta/pesterchum-alt-servers/releases/download/v2.5.2/PesterchumAlt.-2.5.2-linux64-glibc2.31+.tar.xz
+	source = pesterchum
+	source = pesterchum.desktop
+	sha256sums = 49133c4c8c2bcf8b7dbff58c5024dc13be10568281300312560736713767239a
+	sha256sums = d33079b23dc67174149ae4514e4181c242abc520853452ab5eee367e55619813
+	sha256sums = e77cd8faeee2dca1fed41e559bdddea473dfc488cd99783b9dc811285b1c991d
+
+pkgname = pesterchum-bin
