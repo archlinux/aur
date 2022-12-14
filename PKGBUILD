@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.14.3.r0.g1e84ea3
+pkgver=0.14.6.r0.g9893755
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -64,7 +64,7 @@ prepare () {
 	cd "$_pkgname"
 	git submodule init
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 	./bootstrap.sh
 }
 
