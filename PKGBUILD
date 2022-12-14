@@ -24,9 +24,11 @@ package() {
 	mkdir -p ${pkgdir}/etc/udev/rules.d	
 	mkdir -p ${pkgdir}/etc/systemd/system
 	mkdir -p ${pkgdir}/usr/lib/media-support
+	mkdir -p ${pkgdir}/usr/lib/hwsupport
 	install -m 644 10-media-mount.rules ${pkgdir}/etc/udev/rules.d/10-media-mount.rules
 	install -m 644 99-media-mount.rules ${pkgdir}/etc/udev/rules.d/99-media-mount.rules
 	install -m 644 "media-mount@.service" "${pkgdir}/etc/systemd/system/media-mount@.service"
 	install -m 744 media-support/* ${pkgdir}/usr/lib/media-support
+	install -m 744 hwsupport/* ${pkgdir}/usr/lib/hwsupport
 
 }
