@@ -1,6 +1,6 @@
 pkgbase = tmobile-internet-tools
 	pkgdesc = Set of tools for working with T-Mobile Home Internet gateways
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://gitlab.com/NoahJelen/tmobile-internet-tools
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tmobile-internet-tools
 	depends = networkmanager
 	depends = openssl
 	optdepends = libnotify: Desktop notifications about gateway issues
-	source = https://gitlab.com/NoahJelen/tmobile-internet-tools/-/archive/0.7.1/tmobile-internet-tools-0.7.1.zip
+	source = https://gitlab.com/NoahJelen/tmobile-internet-tools/-/archive/0.8.0/tmobile-internet-tools-0.8.0.zip
 	md5sums = SKIP
 
 pkgname = tmobile-internet-tools
