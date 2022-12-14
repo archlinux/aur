@@ -8,6 +8,7 @@ url='https://github.com/zerodaycode/Zork'
 license=('MIT')
 depends=('glibc' 'zlib')
 makedepends=('pyinstaller')
+checkdepends=('python-pytest')
 provides=('zork++')
 conflicts=('zork++')
 source=(
