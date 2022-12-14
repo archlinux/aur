@@ -1,7 +1,7 @@
 pkgbase = ums
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server.
 	pkgver = 12.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.universalmediaserver.com/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = ums
 	optdepends = ffmpeg: Complete solution to record, convert and stream audio and video
 	optdepends = vlc: For Internet video/audio
 	backup = opt/ums/UMS.conf
-	backup = opt/ums/WEB.conf
 	source = ums.desktop
 	source = ums.service
 	source = ums.timer

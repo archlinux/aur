@@ -4,7 +4,7 @@
 
 pkgname=ums
 pkgver=12.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url="http://www.universalmediaserver.com/"
@@ -17,8 +17,7 @@ optdepends=("java-runtime: Java runtime environment"
 optdepends_x86_64=("dcraw: thumbnails creation support"
                    "lib32-gcc-libs: tsMuxeR support"
                    "lib32-glibc: tsMuxeR support")
-backup=(opt/ums/UMS.conf \
-        opt/ums/WEB.conf)
+backup=(opt/ums/UMS.conf)
 
 source_i686=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86.tgz")
 source_x86_64=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/${pkgver}/UMS-${pkgver}-x86_64.tgz")
@@ -48,12 +47,10 @@ package() {
   touch "${pkgdir}/opt/ums/UMS.conf"
   touch "${pkgdir}/opt/ums/debug.log"
   chgrp users "${pkgdir}/opt/ums/UMS.conf" \
-              "${pkgdir}/opt/ums/WEB.conf" \
               "${pkgdir}/opt/ums/debug.log" \
               "${pkgdir}/opt/ums/database"
 
   chmod g+w "${pkgdir}/opt/ums/UMS.conf" \
-            "${pkgdir}/opt/ums/WEB.conf" \
             "${pkgdir}/opt/ums/debug.log" \
             "${pkgdir}/opt/ums/database"
 
