@@ -96,11 +96,9 @@ build() {
     -D PYTHON_EXECUTABLE=/usr/bin/python \
     -D INSTALL_TO_SITEPACKAGES=ON \
     -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
-    -D CMAKE_INSTALL_BINDIR='/usr/lib/freecad/bin' \
-    -D CMAKE_INSTALL_LIBDIR='/usr/lib/freecad/lib' \
-    -D CMAKE_INSTALL_DATADIR='/usr/share/freecad' \
-    -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
-    -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'
+    -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
+    -D CMAKE_INSTALL_DATAROOTDIR='../../share' \
+    -D CMAKE_INSTALL_DOCDIR='../../doc/freecad'
 
   cmake --build build
 }
