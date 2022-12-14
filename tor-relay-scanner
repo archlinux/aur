@@ -1,2 +1,2 @@
 #!/bin/bash
-python /bin/tor-relay-scanner.pyz "$@"
+python /usr/bin/tor-relay-scanner.pyz "$@"
