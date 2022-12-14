@@ -7,7 +7,7 @@ pkgdesc='An overview application for sway'
 arch=('i686' 'x86_64')
 url='https://github.com/milgra/sov'
 license=('MIT')
-depends=('wayland' 'freetype2')
+depends=('wayland' 'freetype2' 'libpng' 'libgl' 'libegl' 'glew' )
 makedepends=('meson' 'wayland-protocols')
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/sov/releases/download/${pkgver}/sov-${pkgver}.tar.xz"
@@ -30,4 +30,3 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 }
-

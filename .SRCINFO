@@ -10,6 +10,10 @@ pkgbase = sov
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = freetype2
+	depends = libpng
+	depends = libgl
+	depends = libegl
+	depends = glew
 	source = sov-0.84b.tar.xz::https://github.com/milgra/sov/releases/download/0.84b/sov-0.84b.tar.xz
 	sha256sums = 372fdb0fefa2d9276bd4ffa83a6e35795ce9e8d04b752f13edbde9a882b9a191
 
