@@ -4,14 +4,14 @@ pkgver=0.8.7.r25.f40ab3552
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
-url="https://github.com/logseq/logseq.git"
+url="https://logseq.com"
 license=("AGPL3")
 depends=()
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=(
-    "${pkgname}::git+${url}"
+    "${pkgname}::git+https://github.com/logseq/logseq.git#branch=master"
     "build.patch"
     "${pkgname%-git}.desktop"
 )
