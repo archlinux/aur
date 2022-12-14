@@ -10,7 +10,7 @@ pkgname='kea_config'
 pkgdesc='Manage kea dhcp4 configs from single source config'
 _gitname='kea_config'
 
-pkgver=4.3.2
+pkgver=4.4.0
 pkgrel=1
 url="https://github.com/gene-git/kea_config"
 
@@ -34,7 +34,7 @@ pkgver() {
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/poetry build --format wheel
 }
 
 package() {
