@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20221214.8ef167746
+pkgver=20221123.ba307a866
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-pa
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
-        'git://git.ghostscript.com/thirdparty-lcms2.git'
+        'git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt'
         'desktop')
 sha256sums=('SKIP'
             'SKIP'
