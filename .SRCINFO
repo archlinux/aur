@@ -1,0 +1,16 @@
+pkgbase = zork++-git
+	pkgdesc = A modern C++ project manager and build system for modern C++
+	pkgver = 0.4.0.r0.g958a500
+	pkgrel = 1
+	url = https://github.com/zerodaycode/Zork
+	arch = x86_64
+	license = MIT
+	makedepends = pyinstaller
+	depends = glibc
+	depends = zlib
+	provides = zork++
+	conflicts = zork++
+	source = zork++::git+https://github.com/zerodaycode/Zork
+	sha256sums = SKIP
+
+pkgname = zork++-git
