@@ -8,7 +8,7 @@ Type=simple
 User=naiveproxy
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/naiveproxy ${TMPL_CONFIG}
+ExecStart=/usr/bin/naiveproxy ${TMPL_CONFIG_FILE_PATH}
 
 # sandboxing
 ProcSubset=pid
