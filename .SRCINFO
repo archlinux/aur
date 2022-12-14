@@ -1,6 +1,6 @@
 pkgbase = r-httpuv
 	pkgdesc = HTTP and WebSocket Server Library
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=httpuv
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = r-httpuv
 	optdepends = r-callr
 	optdepends = r-curl
 	optdepends = r-websocket
-	source = https://cran.r-project.org/src/contrib/httpuv_1.6.6.tar.gz
-	sha256sums = 41395fd324c5cb884d4f2a8060744758904119db22eeb312f2ea1e7ad7711293
+	source = https://cran.r-project.org/src/contrib/httpuv_1.6.7.tar.gz
+	sha256sums = 75d2e1309ba6d9652320eddb805d662cc033aacc84e524899844a19e0a174b4a
 
 pkgname = r-httpuv
