@@ -2,7 +2,7 @@
 pkgname=webledger
 _pkgname=${pkgname#web}
 provides=(${_pkgname})
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Web based ledger"
 arch=("any")
