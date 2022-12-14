@@ -3,7 +3,7 @@
 pkgname=msys2-keyring
 epoch=1
 pkgver=20221024
-pkgrel=1
+pkgrel=2
 pkgdesc='MSYS2 PGP keyring'
 arch=('any')
 url='https://github.com/msys2/MSYS2-keyring'
