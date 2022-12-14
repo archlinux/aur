@@ -17,7 +17,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
-makedepends=('bison' 'clang' 'llvm' 'lld' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
+makedepends=('bison' 'clang>=13' 'llvm>=13' 'lld>=13' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils' 'rust')
 options=('!strip')
 source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v'"$pkgver-$pkgrel"
         # standard config files for mkinitcpio ramdisk
@@ -33,7 +33,6 @@ clang_major_ver() {
 
 make_env_variant=""
 make_with_lto="make CC=clang HOSTCC=clang NM=llvm-nm AR=llvm-ar HOSTLD=ld.lld LD=ld.lld OBJCOPY=llvm-objcopy STRIP=llvm-strip"
-make_without_lto="make CC=clang HOSTCC=clang"
 
 pkgver() {
   echo ${pkgver}
@@ -46,11 +45,11 @@ prepare() {
 build() {
   cd "${_srcname}"
 
-  # On Clang 11 we *can* use LTO but we *don't* on desktop variants
+  # On Clang 11+ we *can* use LTO but we *don't* on desktop variants
   # since DKMS will have trouble with it (and even if it doesn't,
   # the modules won't work if you mix LTO with non-LTO)
   # We will use the right env anyway.
-  [ $(clang_major_ver) -ge 11 ] && make_env_variant="$make_with_lto" || make_env_variant="$make_without_lto"
+  make_env_variant="$make_with_lto"
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
@@ -79,7 +78,7 @@ _package() {
 
   cd "${_srcname}"
 
-  [ $(clang_major_ver) -ge 11 ] && make_env_variant="$make_with_lto" || make_env_variant="$make_without_lto"
+  make_env_variant="$make_with_lto"
 
   KARCH=x86
 
