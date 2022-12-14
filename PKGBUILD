@@ -3,6 +3,7 @@
 # Contributor: Ouyang Jun <ouyangjun1999@gmail.com>
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
 # Contributor: Ariel AxionL <axionl at aosc dot io>
+# Contributor: v71
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
@@ -15,6 +16,8 @@ url="https://linux.wps.cn"
 options=('!emptydirs')
 source_x86_64=("https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb")
 source_aarch64=("https://wps-linux-personal.wpscdn.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb")
+source=('fix-wps-python-parse.patch')
+sha1sums=('f3713481edf04ffb08be8d24dce66554dd5a4f13')
 sha1sums_x86_64=('4cd45a776ab31fef01281eac45cb3aca080249df')
 sha1sums_aarch64=('522d908d1d87e1bd0b77259f5131635b7648cb49')
 
@@ -32,6 +35,9 @@ prepare() {
             cp -p ${_file}/mimetypes/wps-office2019* ${_file}/apps
         fi
     done
+
+    cd "${srcdir}"
+    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
 package_wps-office-cn() {
