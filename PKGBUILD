@@ -3,12 +3,12 @@
 
 pkgname=mod_auth_openidc
 pkgver=2.4.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenID Connect Relying Party implementation for Apache 2.x'
 arch=(x86_64)
 url=https://www.mod-auth-openidc.org
 license=(Apache)
-depends=(cjose openssl-1.1 pcre2)
+depends=(cjose openssl pcre2)
 _archive="$pkgname-$pkgver"
 makedepends=(apache jansson)
 source=("https://github.com/zmartzone/$pkgname/releases/download/v$pkgver/$_archive.tar.gz")
