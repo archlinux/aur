@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 2022.11.14
+	pkgver = 2022.12.14
 	pkgrel = 1
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = bottles
 	depends = python-markdown
 	depends = python-orjson
 	depends = python-pillow
+	depends = python-pycurl
 	depends = python-requests
 	depends = python-steamgriddb
 	depends = python-yaml
@@ -40,7 +41,7 @@ pkgbase = bottles
 	optdepends = vkd3d
 	optdepends = wine
 	optdepends = vulkan-icd-loader
-	source = bottles-2022.11.14.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/2022.11.14.tar.gz
-	sha256sums = b0e9f5ea1b05ff4641d24b542ad989ae59b4f360c741e59c79e2fff742e3e896
+	source = bottles-2022.12.14.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/2022.12.14.tar.gz
+	sha256sums = 4592624f3b504eb936c828c017d226378cc512a3a1859944b25eefc4af033fd0
 
 pkgname = bottles
