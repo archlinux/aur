@@ -1,7 +1,7 @@
 # Maintainer: J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
 
 pkgname=python-django_bootstrap5
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Add bootstrap 5 support (css/js) to django."
 url="https://github.com/jnphilipp/django_bootstrap5"

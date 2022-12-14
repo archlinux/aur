@@ -1,6 +1,6 @@
 pkgbase = python-django_bootstrap5
 	pkgdesc = Add bootstrap 5 support (css/js) to django.
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/jnphilipp/django_bootstrap5
 	arch = any
