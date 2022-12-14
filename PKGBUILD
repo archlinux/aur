@@ -3,7 +3,7 @@
 
 pkgname=albert
 pkgver=0.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -55,6 +55,7 @@ build() {
   cd build
 
   cmake ../$pkgname \
+    -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -Wno-dev \
