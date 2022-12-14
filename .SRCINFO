@@ -1,0 +1,25 @@
+pkgbase = rtsp-simple-server-bin
+	pkgdesc = Ready-to-use RTSP / RTMP / LL-HLS server and proxy that allows to read, publish and proxy video and audio streams
+	pkgver = 0.20.4
+	pkgrel = 1
+	url = https://github.com/aler9/rtsp-simple-server
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = rtsp-simple-server
+	conflicts = rtsp-simple-server
+	backup = etc/rtsp-simple-server/rtsp-simple-server.yml
+	source = rtsp-simple-server.sysusers
+	source = rtsp-simple-server.tmpfiles
+	source = rtsp-simple-server.service
+	source = package.patch
+	sha256sums = 206de7ab940607b4fabb135959ba9a2dc89e97e4aaa6ff73762504ef409b5c89
+	sha256sums = 8985c12c8ba83e051f4e2edf37ee7e9be0d9f05d25f5c1d517cde0a59bec740d
+	sha256sums = 1498445638b106afdcf73309bcba8859b458abb7b30ce86af4d3e03f68bde251
+	sha256sums = f53f26b58da00e6f0d611e95f61a33fd7efec04f372e49db5dfb0dd16c5cc6e9
+	source_x86_64 = https://github.com/aler9/rtsp-simple-server/releases/download/v0.20.4/rtsp-simple-server_v0.20.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5aae425ae481cbe9e1d1319814d47786826f7cb94f819f801a26fe226cc4e004
+	source_aarch64 = https://github.com/aler9/rtsp-simple-server/releases/download/v0.20.4/rtsp-simple-server_v0.20.4_linux_arm64v8.tar.gz
+	sha256sums_aarch64 = 4f30ee9c66581e09f32f8b7744712716e8c453bc6630ab57ea8ef313c7eb3a47
+
+pkgname = rtsp-simple-server-bin

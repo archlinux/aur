@@ -1,0 +1,3 @@
+d /etc/rtsp-simple-server 0700 rtsp-simple-server rtsp-simple-server - 
+d /var/log/rtsp-simple-server 0700 rtsp-simple-server rtsp-simple-server - 
+f /etc/rtsp-simple-server/rtsp-simple-server.yml 0600 rtsp-simple-server rtsp-simple-server -

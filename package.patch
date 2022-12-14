@@ -1,0 +1,15 @@
+diff --unified --recursive --text package.orig/rtsp-simple-server.yml package.new/rtsp-simple-server.yml
+--- package.orig/rtsp-simple-server.yml	2022-12-12 13:00:23.000000000 +0000
++++ package.new/rtsp-simple-server.yml	2022-12-14 17:29:26.023329988 +0000
+@@ -5,9 +5,9 @@
+ # Sets the verbosity of the program; available values are "error", "warn", "info", "debug".
+ logLevel: info
+ # Destinations of log messages; available values are "stdout", "file" and "syslog".
+-logDestinations: [stdout]
++logDestinations: [file, stdout]
+ # If "file" is in logDestinations, this is the file which will receive the logs.
+-logFile: rtsp-simple-server.log
++logFile: /var/log/rtsp-simple-server/rtsp-simple-server.log
+ 
+ # Timeout of read operations.
+ readTimeout: 10s
