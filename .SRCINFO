@@ -1,6 +1,6 @@
 pkgbase = figma-agent-linux
 	pkgdesc = Figma Agent for Linux (a.k.a. Font Helper)
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/neetly/figma-agent-linux
 	install = figma-agent.install
@@ -12,7 +12,7 @@ pkgbase = figma-agent-linux
 	makedepends = clang
 	depends = freetype2
 	depends = fontconfig
-	source = figma-agent-linux::git+https://github.com/neetly/figma-agent-linux.git#tag=v0.2.2
+	source = figma-agent-linux::git+https://github.com/neetly/figma-agent-linux.git#tag=0.2.3
 	cksums = SKIP
 
 pkgname = figma-agent-linux

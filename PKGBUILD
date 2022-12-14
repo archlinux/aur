@@ -1,7 +1,7 @@
 # Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
 
 pkgname=figma-agent-linux
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Figma Agent for Linux (a.k.a. Font Helper)"
 url="https://github.com/neetly/figma-agent-linux"
@@ -9,7 +9,7 @@ license=(MIT)
 arch=(x86_64 aarch64)
 depends=(freetype2 fontconfig)
 makedepends=(git rust clang)
-source=("$pkgname::git+https://github.com/neetly/figma-agent-linux.git#tag=v$pkgver")
+source=("$pkgname::git+https://github.com/neetly/figma-agent-linux.git#tag=$pkgver")
 cksums=(SKIP)
 install=figma-agent.install
 
