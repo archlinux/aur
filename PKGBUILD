@@ -53,7 +53,7 @@ prepare() {
   cd "${_pkgbase}"
 
   # create directory for build output
-  mkdir build
+  mkdir -p build
 
   # download dependencies
   go mod download
