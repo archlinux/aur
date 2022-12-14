@@ -1,6 +1,6 @@
 pkgbase = tidgi-bin
 	pkgdesc = Customizable personal knowledge-base with Github as unlimited storage and blogging platform.
-	pkgver = 0.7.9
+	pkgver = 0.7.11
 	pkgrel = 1
 	url = https://github.com/tiddly-gittly/TidGi-Desktop
 	install = tidgi-bin.install
@@ -44,11 +44,11 @@ pkgbase = tidgi-bin
 	depends = zlib
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/tidgi_0.7.9_amd64.deb
-	sha512sums_i686 = 1ab397bd010b159890114f2664a76ec7fa2d32764dcf9186a9602ec3b51df6fa2b548c9d86e4b117d4c63631377bdb851fc0b1004ba9d48f07d6fbbd04ab1470
-	source_x86_64 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/tidgi_0.7.9_amd64.deb
-	sha512sums_x86_64 = 1ab397bd010b159890114f2664a76ec7fa2d32764dcf9186a9602ec3b51df6fa2b548c9d86e4b117d4c63631377bdb851fc0b1004ba9d48f07d6fbbd04ab1470
-	source_aarch64 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/tidgi_0.7.9_arm64.deb
-	sha512sums_aarch64 = 63083459b7a635d4e0f716a34da69b91fdd152876b9f0f7917185d527f09bd184ca1556f5c299ad21b04e15e8259108fd23f25d3a1d8ae4b9c67ae0c17f143bf
+	source_i686 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.11/tidgi_0.7.11_amd64.deb
+	sha512sums_i686 = b26ca88ae7c2aaa1f5956ded92baa022d4ad47b528983f091b9eef4ecd058a69116e43f17b8f264ff9095a8f7b02eac1efa217b126d3234a6fea74667700026c
+	source_x86_64 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.11/tidgi_0.7.11_amd64.deb
+	sha512sums_x86_64 = b26ca88ae7c2aaa1f5956ded92baa022d4ad47b528983f091b9eef4ecd058a69116e43f17b8f264ff9095a8f7b02eac1efa217b126d3234a6fea74667700026c
+	source_aarch64 = https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.11/tidgi_0.7.11_arm64.deb
+	sha512sums_aarch64 = 9145764a67ed98e9a12d98d8a831969377ac4b04335bb340062334d04224eb831209ce5e962b38b4f5df1f682b43423fc4600a71c29d26eae08f2c7182526300
 
 pkgname = tidgi-bin
