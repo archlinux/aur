@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=specL
-_pkgver=1.32.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='specL - Prepare Peptide Spectrum Matches for Use in Targeted Proteomics'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ae9841384ae62395f7a62c6b561d81a09423b65d0747779203ea7c7f780d698')
+sha256sums=('fc13095a26380cb845277e82cc0e16c7dcbc8be8c1d8d640cf76994fd17d0e21')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
