@@ -2,7 +2,7 @@
 # Contributor: Jan Heczko <jan dot heczko at gmail dot com>
 _base=ipyopt
 pkgname=python-${_base}
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="Python interface to Ipopt"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(coin-or-ipopt python-numpy)
 makedepends=(cython python-setuptools) # mumps
 checkdepends=(python-scipy python-sympy)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('80c5c02fd4396afd6f7e1734fba76bd0bcc48807bb3c28f86900de43cd633cc8708052f287ce520cdfa55c16d7f681a41e8e2804a4176a6a879ebcaf5d9b60bd')
+sha512sums=('d9ec3243e991cc0150f3c359449681fe634d60a9640faf440ae059c1c06cf14b1c58333f0f85fafb8229a8b73e55b4c568f52d672a250ac39f35c9a9c17bdd05')
 
 prepare() {
   sed -i '11 a #include <functional>' ${_base}-${pkgver}/src/nlp_base.hpp
