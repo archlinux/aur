@@ -1,12 +1,13 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Ian MacKay <immackay0@gmail.com>
 # Contributor: Mikel Pintado <mikelaitornube2010@gmail.com>
+# Contributor: Igor Petrov <igorpetrov@users.noreply.github.com>
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
 pkgver=3.1.1
 _gitname="release-$pkgver-linux1"
-pkgrel=2
+pkgrel=3
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -44,6 +45,8 @@ prepare() {
 	git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
 	git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
 	git -c protocol.file.allow=always submodule update
+	# https://github.com/shiftkey/desktop/issues/809#issuecomment-1348815685
+	sed -e '/compile:prod/s/4096/4096 --openssl-legacy-provider/' -i package.json
 }
 
 build() {
