@@ -10,6 +10,7 @@ depends=('glibc>=2.31' 'gstreamer' 'gst-plugins-base')
 optdepends=('ca-certificates: up-to-date certificate validation'
             'ffmpeg: alternative Qt6 audio backend')
 makedepends=('coreutils')
+conflicts=('pesterchum-git')
 source=("https://github.com/Dpeta/pesterchum-alt-servers/releases/download/v2.5.2/PesterchumAlt.-2.5.2-linux64-glibc2.31+.tar.xz"
         "pesterchum"
         "pesterchum.desktop")
