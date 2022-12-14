@@ -3,18 +3,26 @@
 pkgname=dune-logging
 _tarver=2.8
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
-pkgver=${_tarver}
-pkgrel=1
+pkgver="${_tarver}"
+pkgrel=2
 pkgdesc="A logging framework for Dune"
 arch=('x86_64')
 url="https://gitlab.dune-project.org/staging/${pkgname}"
 license=('custom:BSD-2-clause' 'LGPL3' 'custom:GPL2 with runtime exception')
-depends=('dune-common>=2.8.0' 'fmt')
+depends=("dune-common>=${_tarver}" fmt)
 makedepends=('doxygen' 'graphviz')
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(${url}/-/archive/releases/${_tar})
-sha512sums=('3b57d0e57c55195ee20be617f308d8294c7fe87ac8b6d5fbc3d03e12229b6a9f331e4391651a6a8876ab2ffa3e147e10bfddae45dd5f700ca1ebe93f7f9b1215')
+source=(${url}/-/archive/releases/${_tar}
+  fmt9.patch::${url}/-/commit/39e3ca6fad529e44b1d59463af3288870d61e916.patch)
+sha512sums=('3b57d0e57c55195ee20be617f308d8294c7fe87ac8b6d5fbc3d03e12229b6a9f331e4391651a6a8876ab2ffa3e147e10bfddae45dd5f700ca1ebe93f7f9b1215'
+  'be68c87e075d3bd35b04389928fa637b198fede795e2ea2d90a5e2fc0b39798dbf89ba23eb1895c9754e0cc1ca4f03c97522aeb481f0fd007a9c9f84a6ce93ea')
+
+prepare() {
+  # Apply patch for fmt9 compatibilty
+  cd ${pkgname}-releases-${_tarver}
+  patch -p1 -i ../fmt9.patch
+}
 
 build() {
   cmake \

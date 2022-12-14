@@ -1,7 +1,7 @@
 pkgbase = dune-logging
 	pkgdesc = A logging framework for Dune
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.dune-project.org/staging/dune-logging
 	arch = x86_64
 	license = custom:BSD-2-clause
@@ -9,11 +9,13 @@ pkgbase = dune-logging
 	license = custom:GPL2 with runtime exception
 	makedepends = doxygen
 	makedepends = graphviz
-	depends = dune-common>=2.8.0
+	depends = dune-common>=2.8
 	depends = fmt
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	source = https://gitlab.dune-project.org/staging/dune-logging/-/archive/releases/2.8/dune-logging-releases-2.8.tar.gz
+	source = fmt9.patch::https://gitlab.dune-project.org/staging/dune-logging/-/commit/39e3ca6fad529e44b1d59463af3288870d61e916.patch
 	sha512sums = 3b57d0e57c55195ee20be617f308d8294c7fe87ac8b6d5fbc3d03e12229b6a9f331e4391651a6a8876ab2ffa3e147e10bfddae45dd5f700ca1ebe93f7f9b1215
+	sha512sums = be68c87e075d3bd35b04389928fa637b198fede795e2ea2d90a5e2fc0b39798dbf89ba23eb1895c9754e0cc1ca4f03c97522aeb481f0fd007a9c9f84a6ce93ea
 
 pkgname = dune-logging
