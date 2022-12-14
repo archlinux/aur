@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=termux-keyring
 pkgver=3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="GPG public keys for the official Termux repositories"
 arch=(any)
 url=https://github.com/termux
@@ -10,7 +10,8 @@ install=$pkgname.install
 
 package() {
 	TERMUX_PACKAGE_FORMAT=pacman
-	TERMUX_PREFIX="$pkg/usr"
+	TERMUX_PREFIX="$pkgdir/usr"
+	TERMUX_PKG_BUILDER_DIR=".."
 	if [ "$TERMUX_PACKAGE_FORMAT" = "debian" ]; then
 		local GPG_DIR="$TERMUX_PREFIX/etc/apt/trusted.gpg.d"
 	else
