@@ -1,6 +1,6 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=add-pacman-repository
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Interactive shell script to help adding Pacman repositories."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash' 'wget')
 checkdepends=('shellcheck')
 conflicts=("${pkgname}")
 source=("${_url}/storage/aur/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('18a5a847ae56bef8e7a3432ca7e052c4541926a5bb8ad77bade75f1d74c2dc277d40a7eb48ae7b7c20b384cddee5e963a82404efa7de0280b4424c71c2805d5a')
+sha512sums=('1da15437d04424d830bd047a338e0cead3534e03c14f840046a8b6cdaaef7109afedf887c9b946bfb2f428516312882f328abcd3da009d5b6ec086e1eefede38')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
