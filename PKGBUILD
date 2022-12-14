@@ -93,7 +93,7 @@ package_woodpecker-server-git() {
   # systemd integration
   install -vDm644 server-systemd.service "${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service"
   install -vDm644 server-sysusers.conf "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
-  install -vDm644 server-tmpfiles.conf "${pkdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
+  install -vDm644 server-tmpfiles.conf "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
   install -vDm644 server.env -t "${pkgdir}/etc/woodpecker"
 
   cd "${_pkgbase}"
