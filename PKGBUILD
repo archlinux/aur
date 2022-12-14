@@ -21,9 +21,10 @@ backup=('etc/naiveproxy/config.json')
 options=('!strip') # don't modify prebuilt binaries
 
 _ext='tar.xz'
-_source="${url}/releases/download/${_version}/naiveproxy-${_version}-linux-@ARCH@.${_ext}"
+_source="${url}/releases/download/${_version}/naiveproxy-${_version}-linux-@SRCARCH@.${_ext}"
 
 declare -Ag _archmap=(
+#	[ARCH]=SRCARCH
 	[x86_64]=x64
 	[i686]=x86
 	[aarch64]=arm64
@@ -31,14 +32,6 @@ declare -Ag _archmap=(
 	[mips64el]=mips64el
 	[mipsel]=mipsel
 )
-arch=("${!_archmap[@]}")
-
-for _a1 in "${!_archmap[@]}"; do
-	_a2=${_archmap[$_a1]}
-	_s=${_source/@ARCH@/$_a2}
-	_n="${_name}-${_version}-${_a1}.${_ext}"
-	declare -ag "source_${_a1}=(${_n}::${_s})"
-done
 
 package() {
 	cd "naiveproxy-${_version}-linux-${_archmap[$CARCH]}"
@@ -54,3 +47,12 @@ sha256sums_aarch64=('2bba2135d21f9672389703c6e8d423a424163a7573d61f02c32e8acd913
 sha256sums_armv7h=('9c3977716201e6e0deee6917b43880181862af4a0bac4e60b0ca4acc88dc46cf')
 sha256sums_mips64el=('262eefc173afeae53acffe5a3d5119654853fd34bd83c243a43d67b35b3e1a64')
 sha256sums_mipsel=('c97679323f4382ef4d47af1f66a6a3e0a61884b95ea8cdff67b84e7fd2ffa730')
+
+# boilerplate for generating the 'arch' and 'source_<arch>' arrays
+arch=("${!_archmap[@]}")
+for _a in "${!_archmap[@]}"; do
+	_sa=${_archmap[$_a]}
+	_s=${_source/@SRCARCH@/$_sa}
+	_n="${_name}-${_version}-${_a}.${_ext}"
+	declare -ag "source_${_a}=(${_n}::${_s})"
+done
