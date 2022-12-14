@@ -25,6 +25,10 @@ pkgver() {
 
 build() {
   cd "$_srcname"
+  unset OPTFLAGS
+  unset CXXFLAGS
+  unset CFLAGS
+  unset LINKFLAGS
   make -j
 }
 
