@@ -1,8 +1,8 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
-Name=SNAP Configuration Optimiser
-Exec="/opt/snap/bin/snap-conf-optimiser" %U
+Name=ESA SNAP Configuration Optimiser
+Exec="INSTALLDIR/bin/snap-conf-optimiser" %U
 Icon=snap-conf-optimiser
 Categories=Education;Science;Geography;
 StartupWMClass=install4j-org-esa-snap-smart-configurator-ui-SmartConfigurator
