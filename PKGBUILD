@@ -4,7 +4,7 @@ pkgname=rtsp-simple-server-bin
 pkgver=0.20.4
 pkgrel=1
 pkgdesc="Ready-to-use RTSP / RTMP / LL-HLS server and proxy that allows to read, publish and proxy video and audio streams"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'armv7l' 'aarch64')
 url='https://github.com/aler9/rtsp-simple-server'
 license=('MIT')
 provides=("${pkgname%-bin}")
@@ -29,6 +29,11 @@ source_x86_64=(
 	"https://github.com/aler9/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_amd64.tar.gz"
 )
 sha256sums_x86_64=('5aae425ae481cbe9e1d1319814d47786826f7cb94f819f801a26fe226cc4e004')
+
+source_armv7l=(
+	"https://github.com/aler9/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_armv7.tar.gz"
+)
+sha256sums_armv7l=('57c56d437ea752c955718f07bf51a2896f800ae446bf4b4862417ffe4ae45a8c')
 
 source_aarch64=(
 	"https://github.com/aler9/${pkgname%-bin}/releases/download/v$pkgver/${pkgname%-bin}_v${pkgver}_linux_arm64v8.tar.gz"

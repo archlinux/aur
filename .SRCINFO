@@ -4,6 +4,7 @@ pkgbase = rtsp-simple-server-bin
 	pkgrel = 1
 	url = https://github.com/aler9/rtsp-simple-server
 	arch = x86_64
+	arch = armv7l
 	arch = aarch64
 	license = MIT
 	provides = rtsp-simple-server
@@ -19,6 +20,8 @@ pkgbase = rtsp-simple-server-bin
 	sha256sums = f53f26b58da00e6f0d611e95f61a33fd7efec04f372e49db5dfb0dd16c5cc6e9
 	source_x86_64 = https://github.com/aler9/rtsp-simple-server/releases/download/v0.20.4/rtsp-simple-server_v0.20.4_linux_amd64.tar.gz
 	sha256sums_x86_64 = 5aae425ae481cbe9e1d1319814d47786826f7cb94f819f801a26fe226cc4e004
+	source_armv7l = https://github.com/aler9/rtsp-simple-server/releases/download/v0.20.4/rtsp-simple-server_v0.20.4_linux_armv7.tar.gz
+	sha256sums_armv7l = 57c56d437ea752c955718f07bf51a2896f800ae446bf4b4862417ffe4ae45a8c
 	source_aarch64 = https://github.com/aler9/rtsp-simple-server/releases/download/v0.20.4/rtsp-simple-server_v0.20.4_linux_arm64v8.tar.gz
 	sha256sums_aarch64 = 4f30ee9c66581e09f32f8b7744712716e8c453bc6630ab57ea8ef313c7eb3a47
 
