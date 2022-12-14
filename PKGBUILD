@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -89,6 +89,7 @@ package() {
   cd $srcdir
   install -D -m 755 Geant4.sh $pkgdir/etc/profile.d/Geant4.sh
   install -D -m 755 Geant4.csh $pkgdir/etc/profile.d/Geant4.csh
+  ln -s $pkgdir/usr/include/Geant4/CLHEP $pkgdir/usr/include/CLHEP
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
