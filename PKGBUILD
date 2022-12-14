@@ -1,10 +1,12 @@
-# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+# Maintainer: EndlessEden <eden.rose@deep-rose.org>
+#
+# Original Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
 # Upstream: https://git.metalpunks.info/arch-ports
 
 _pkgname=talkatu
 pkgname=$_pkgname-hg
-pkgver=r397.c479d9b87420
+pkgver=1.0.r491.ad000db4fe9a
 pkgrel=1
 pkgdesc="Gtk+ widgets for chat software"
 arch=('i686' 'x86_64')
@@ -17,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" \
+  printf "1.0.r%s.%s" \
     "$(hg identify -n)" \
     "$(hg identify -i)"
 }
@@ -31,4 +33,5 @@ build() {
 package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" ninja -C build install
+  mv ${pkgdir}/usr/include/talkatu-1.0/ ${pkgdir}/usr/include/talkatu
 }

@@ -1,6 +1,6 @@
 pkgbase = talkatu-hg
 	pkgdesc = Gtk+ widgets for chat software
-	pkgver = r397.c479d9b87420
+	pkgver = 1.0.r491.ad000db4fe9a
 	pkgrel = 1
 	url = https://keep.imfreedom.org/talkatu/talkatu
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = talkatu-hg
 	sha256sums = SKIP
 
 pkgname = talkatu-hg
-
