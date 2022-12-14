@@ -1,6 +1,6 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
-	pkgver = 10.20.1d
+	pkgver = 10.20.1e
 	pkgrel = 1
 	epoch = 1
 	url = http://interactivebrokers.com/
@@ -20,7 +20,7 @@ pkgbase = ib-tws
 	source = ib-gw
 	source = ib-gw.conf
 	source = ib-gw.desktop
-	source = tws-10.20.1d-standalone-linux-x64.sh::https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh
+	source = tws-10.20.1e-standalone-linux-x64.sh::https://download2.interactivebrokers.com/installers/tws/latest-standalone/tws-latest-standalone-linux-x64.sh
 	sha256sums = 4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22
 	sha256sums = e23256d8948a2a1adf7d69d99909738888b7d8a0adbd81578543312f1f509f66
 	sha256sums = b359c8b5ccc7d884316ba9c88395450ff3a5dfd6af376741f091f837a5db7c26
@@ -28,6 +28,6 @@ pkgbase = ib-tws
 	sha256sums = 62fbd49b8c7fb5d4ae7491ca2b9072d42bbe589a2b9f0e14d09d1bf1177a3c46
 	sha256sums = 21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44
 	sha256sums = 9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4
-	sha256sums = 1a5691fd9b86f2b79819324366fbe3dff9b0d0e986bb19b0322195e30a5ae950
+	sha256sums = e624cbda3fa7765bc2aeb7fecbb0fb74a199a077fcb70f0dfb4c4dd2b6d06dcb
 
 pkgname = ib-tws
