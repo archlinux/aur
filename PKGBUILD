@@ -1,28 +1,29 @@
-# Maintainer Torsten Keßler <t dot kessler at posteo dot de>
+# Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=hipsolver
-pkgver=5.3.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='rocSOLVER marshalling library.'
 arch=('x86_64')
 url='https://hipsolver.readthedocs.io/en/latest/index.html'
 license=('MIT')
 depends=('hip' 'rocsolver')
-makedepends=('cmake' 'git' 'gcc-fortran')
+makedepends=('rocm-cmake' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/hipSOLVER'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('6e920a59ddeefd52c9a6d164c33bc097726529e1ede3c417c711697956655b15')
+sha256sums=('d53d81c55b458ba5e6ea0ec6bd24bcc79ab06789730391da82d8c33b936339d9')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.3/page/Appendix_A.html
+  # https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.4/page/Appendix_A.html
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake \
     -Wno-dev \
     -B build \
     -S "$_dirname" \
-    -DCMAKE_CXX_COMPILER=/opt/rocm/bin/hipcc \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_CXX_COMPILER=/opt/rocm/bin/hipcc  \
     -DCMAKE_INSTALL_PREFIX=/opt/rocm
   cmake --build build
 }
