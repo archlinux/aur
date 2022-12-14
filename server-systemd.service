@@ -1,0 +1,19 @@
+[Unit]
+Description=Woodpecker server
+Documentation=https://woodpecker-ci.org/docs/intro
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=woodpecker-server
+Group=woodpecker-server
+EnvironmentFile=/etc/woodpecker/server.env
+ExecStart=/usr/bin/woodpecker-server
+RestartSec=5
+Restart=on-failure
+SyslogIdentifier=woodpecker-server
+WorkingDirectory=/var/lib/woodpecker-server
+ReadWritePaths=/var/lib/woodpecker-server
+
+[Install]
+WantedBy=multi-user.target

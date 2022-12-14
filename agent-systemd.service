@@ -1,0 +1,19 @@
+[Unit]
+Description=Woodpecker agent
+Documentation=https://woodpecker-ci.org/docs/intro
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=woodpecker-agent
+Group=woodpecker-agent
+EnvironmentFile=/etc/woodpecker/agent.env
+ExecStart=/usr/bin/woodpecker-agent
+RestartSec=5
+Restart=on-failure
+SyslogIdentifier=woodpecker-agent
+WorkingDirectory=/var/lib/woodpecker-agent
+ReadWritePaths=/var/lib/woodpecker-agent
+
+[Install]
+WantedBy=multi-user.target
