@@ -1,6 +1,6 @@
 pkgbase = pesterchum-git
 	pkgdesc = Instant messaging client copying the look and feel of clients from Andrew Hussie's webcomic Homestuck.
-	pkgver = git
+	pkgver = 2.5.2.r0.g86ef71b
 	pkgrel = 1
 	url = https://github.com/Dpeta/pesterchum-alt-servers
 	arch = x86_64
