@@ -23,6 +23,7 @@ class ClashUp:
     "mixed_port": 7893,
     "allow_lan": true,
     "external_controller": "127.0.0.1:9090",
+    "external_ui": "/usr/share/yacd",
     "subscribe_url": "",
     "is_subscribe_banned": false,
     "custom_rules": [],
@@ -79,6 +80,7 @@ class ClashUp:
         self._load_conf(config, 'mixed_port', 'mixed-port')
         self._load_conf(config, 'allow_lan', 'allow-lan')
         self._load_conf(config, 'external_controller', 'external-controller')
+        self._load_conf(config, 'external_ui', 'external-ui')
         config['rules'] = self.config.get('custom_rules', []) + config.get('rules', [])
         return config
 

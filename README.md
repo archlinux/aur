@@ -22,6 +22,7 @@ The config file is `~/.config/clash/clashup.json`
     "redir_port": 7892, 
     "allow_lan": true,
     "external_controller": "127.0.0.1:9090",
+    "external_ui": "/usr/share/yacd",
     "subscribe_url": "",
     "is_subscribe_banned": false, 
     "custom_rules": [],
