@@ -1,16 +1,16 @@
 pkgbase = lkrg-dkms
 	pkgdesc = Linux Kernel Runtime Guard (DKMS)
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://lkrg.org/
 	arch = any
 	license = GPL2
 	depends = dkms
-	source = https://lkrg.org//download/lkrg-0.9.5.tar.gz
-	source = https://lkrg.org//download/lkrg-0.9.5.tar.gz.sign
+	source = https://lkrg.org//download/lkrg-0.9.6.tar.gz
+	source = https://lkrg.org//download/lkrg-0.9.6.tar.gz.sign
 	source = dkms.conf
 	validpgpkeys = 297AD21CF86C948081520C1805C027FD4BDC136E
-	sha512sums = ae735f14bcb92e964a2a1d4cf11f44d8589ebf7b09634799ce38f2b27e9df9eb53e6dc00818df743a20de947ea402dcdcd8bee274b0954addf742547333d939a
+	sha512sums = 08c109ffbe7f15ff60ed1958640f43194b96b16c75bd91c1e209e2f93a2b97f60f0b9ed00ccc13effbbf06092fc3c432dfb55f94b9e181a6cd2b30a1ea8ee653
 	sha512sums = SKIP
 	sha512sums = 8101dd415ed08edd455989a9b10a3c925b171d3375a6d6872f55805d9aeb355a4ac216cce11afc1b84eeb49de0771932005d74130ffd6f5cdea9fa53fb4f9506
 
