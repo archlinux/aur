@@ -1,12 +1,12 @@
 pkgbase = r-rsubread
 	pkgdesc = Mapping, quantification and variant analysis of sequencing data
-	pkgver = 2.12.1
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rsubread
 	arch = x86_64
 	license = GPL
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsubread_2.12.1.tar.gz
-	sha256sums = 53f367294eb4e6200b07bf6c13a1be0a5a543b3483fb713cbe65422a9dc5041e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsubread_2.12.2.tar.gz
+	sha256sums = b59dbf4f14fd696ef7decb74428b5682cee8cf243577dce31aec6ffaea466dbf
 
 pkgname = r-rsubread
