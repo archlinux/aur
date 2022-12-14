@@ -1,12 +1,12 @@
 pkgbase = ecs-tool
 	pkgdesc = ecs-tool can run commands on an ECS cluster and deploy services onto it
-	pkgver = 1.9.0
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/springload/ecs-tool
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = go
-	source = ecs-tool-1.9.0.tar.gz::https://github.com/springload/ecs-tool/archive/1.9.0.tar.gz
-	md5sums = 975d81e60d1ab266f4c37a6ecc31b62a
+	source = ecs-tool-1.9.4.tar.gz::https://github.com/springload/ecs-tool/archive/1.9.4.tar.gz
+	md5sums = 15254dc75ec6e40aa74933af8cb1b129
 
 pkgname = ecs-tool
