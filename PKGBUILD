@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.7.7.r2.29.gd5bb6fc8
+pkgver=2.7.8.r21.g0348783e
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
@@ -29,6 +29,7 @@ build(){
     cd "${srcdir}/Icalingua"
     export NODE_OPTIONS=--openssl-legacy-provider
     node /usr/lib/node_modules/corepack/dist/pnpm.js install
+    chmod +x node_modules/ts-node/dist/bin.js
     cd icalingua
     node /usr/lib/node_modules/corepack/dist/pnpm.js run build:dir
 }
