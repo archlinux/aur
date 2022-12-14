@@ -132,5 +132,5 @@ package_woodpecker-cli-git() {
   cd "${_pkgbase}"
 
   # binary
-  install -vDm755 build/cli "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 build/cli "${pkgdir}/usr/bin/${pkgname%-git}"
 }
