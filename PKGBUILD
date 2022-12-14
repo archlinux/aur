@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.3.25
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
@@ -13,30 +13,20 @@ depends=('absl-py'
          'python-numpy'
          'python-scipy')
 makedepends=('python-pip')
-source=('git+https://github.com/google/jax.git')
-md5sums=('SKIP')
-
-pkgver() {
-    cd $srcdir/jax
-    git describe --match 'jaxlib-*' | sed 's/^jaxlib-v//;s/-.*$//'
-}
-
-prepare() {
-    cd $srcdir/jax
-    git checkout "jaxlib-v$pkgver"
-}
+source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz")
+sha256sums=('a001de25e0b7ca5847dcbbcf4c31a8e354c0b6cdaa970b7cc4aeea027fd638d7')
 
 build() {
-    cd $srcdir/jax
+    cd $srcdir/jax-jaxlib-v$pkgver
     python build/build.py \
         --target_cpu_features native
 }
 
 package() {
-    cd $srcdir/jax
+    cd $srcdir/jax-jaxlib-v$pkgver
     pip install \
         --ignore-installed \
         --no-deps \
         --root $pkgdir \
-        dist/*.whl
+        dist/jaxlib-${pkgver}-*.whl
 }
