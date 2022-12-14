@@ -4,7 +4,7 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.20.0.r0.gecb3ba2
+pkgver=0.20.1.r0.g06320b2
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "v*" | sed 's/^.*v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

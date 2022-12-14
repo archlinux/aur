@@ -1,6 +1,6 @@
 pkgbase = sic-image-cli-git
 	pkgdesc = Accessible image processing and conversion from the terminal (git)
-	pkgver = 0.20.0.r0.gecb3ba2
+	pkgver = 0.20.1.r0.g06320b2
 	pkgrel = 1
 	url = https://github.com/foresterre/sic
 	arch = x86_64
