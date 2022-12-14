@@ -1,7 +1,7 @@
 # Maintainer:  <clu@eeviac>
 
 pkgname=cmpfit
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A MINPACK-1 Least Squares Fitting Library in C"
 url="http://www.physics.wisc.edu/~craigm/idl/cmpfit.html"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=(http://www.physics.wisc.edu/~craigm/idl/down/$pkgname-$pkgver.tar.gz)
-md5sums=('984d13ffa27417f87214954e824b876e')
+md5sums=('67b3e6a4b66762908b00abc0919e77be')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

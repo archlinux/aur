@@ -1,13 +1,12 @@
 pkgbase = cmpfit
 	pkgdesc = A MINPACK-1 Least Squares Fitting Library in C
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = http://www.physics.wisc.edu/~craigm/idl/cmpfit.html
 	arch = i686
 	arch = x86_64
 	license = unknown
-	source = http://www.physics.wisc.edu/~craigm/idl/down/cmpfit-1.4.tar.gz
-	md5sums = 984d13ffa27417f87214954e824b876e
+	source = http://www.physics.wisc.edu/~craigm/idl/down/cmpfit-1.5.tar.gz
+	md5sums = 67b3e6a4b66762908b00abc0919e77be
 
 pkgname = cmpfit
-
