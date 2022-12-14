@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=pkgdown
-_pkgver=2.0.6
+_pkgver=2.0.7
 pkgname=r-${_pkgname,,}
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='Make Static HTML Documentation for a Package'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-tools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d29a65c8a5b189fd89842e769f58f8c2369a55406269eabfb66d41d0fe1c7f69')
+sha256sums=('f33872869dfa8319182d87e90eab3245ff69293b3b791471bf9538afb81b356a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

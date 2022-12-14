@@ -1,6 +1,6 @@
 pkgbase = r-pkgdown
 	pkgdesc = Make Static HTML Documentation for a Package
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgdown
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-pkgdown
 	optdepends = r-sass
 	optdepends = r-testthat
 	optdepends = r-tools
-	source = https://cran.r-project.org/src/contrib/pkgdown_2.0.6.tar.gz
-	sha256sums = d29a65c8a5b189fd89842e769f58f8c2369a55406269eabfb66d41d0fe1c7f69
+	source = https://cran.r-project.org/src/contrib/pkgdown_2.0.7.tar.gz
+	sha256sums = f33872869dfa8319182d87e90eab3245ff69293b3b791471bf9538afb81b356a
 
 pkgname = r-pkgdown
