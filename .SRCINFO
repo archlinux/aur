@@ -5,6 +5,7 @@ pkgbase = zork++-git
 	url = https://github.com/zerodaycode/Zork
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = pyinstaller
 	depends = glibc
 	depends = zlib
