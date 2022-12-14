@@ -1,0 +1,14 @@
+pkgbase = python-owlrl
+	pkgdesc = OWL-RL and RDFS based RDF Closure inferencing for Python
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = https://github.com/RDFLib/OWL-RL/
+	arch = x86_64
+	license = W3C
+	makedepends = python-setuptools
+	depends = python-rdflib
+	provides = python-owlrl
+	source = https://files.pythonhosted.org/packages/source/o/owlrl/owlrl-6.0.2.tar.gz
+	md5sums = 034f9262901fb82761ba5337bbfa0445
+
+pkgname = python-owlrl
