@@ -2,20 +2,20 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: K900 <me@0upti.me>
 pkgname=windows2usb-git
-pkgver=0.2.1.r0.g9f855fa
-pkgrel=2
-pkgdesc="Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS) - git version"
+pkgver=0.2.4.r0.g68de917
+pkgrel=1
+pkgdesc="Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS) - git version"
 arch=("any")
 url="https://github.com/ValdikSS/windows2usb"
-license=("Apache")
+license=("Apache-2")
 depends=("bash" "awk" "ntfs-3g" "dosfstools" "util-linux" "p7zip" "ms-sys")
 makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}.git"
+source=("${pkgname%-git}::git+${url}"
 		"https://github.com/pbatard/rufus/raw/master/res/uefi/uefi-ntfs.img")
 sha256sums=('SKIP'
-            '5c7e7aa34261b17ebc82885dab44ce4af0c2397fef9d406a1063f5329b287751')
+            '3d15257c21956efc566db9b11eb1b9f1fe176b379457c5689c90ed74c5fa00de')
 
 pkgver() {
 	cd "${pkgname%-git}"
