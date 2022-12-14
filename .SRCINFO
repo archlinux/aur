@@ -6,6 +6,7 @@ pkgbase = glogg-git
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
+	makedepends = boost
 	depends = qt5-base
 	depends = boost-libs
 	depends = hicolor-icon-theme
