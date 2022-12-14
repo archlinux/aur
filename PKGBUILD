@@ -16,7 +16,8 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/psi4/psi4/archive/v1.7.tar.g
 sha256sums=('85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366')
 
 build() {
-	cmake -S"$pkgname" -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+    cd $pkgname-$pkgver
+	cmake -S. -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
 	cd build
 	make -j`getconf _NPROCESSORS_ONLN`
 }
