@@ -7,6 +7,7 @@ pkgbase = steam-removable-media-git
 	license = GPL
 	makedepends = git
 	depends = parted
+	conflicts = jupiter-hw-support
 	source = steam-removable-media::git+https://github.com/ShadowBlip/steam-removable-media.git#tag=f8f0fb4b3b6002ee1a1359f94d61c4af10e2dfd3
 	sha256sums = SKIP
 

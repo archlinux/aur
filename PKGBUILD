@@ -11,6 +11,7 @@ groups=()
 depends=('parted')
 optdepends=()
 makedepends=('git')
+conflicts=('jupiter-hw-support')
 _tag=f8f0fb4b3b6002ee1a1359f94d61c4af10e2dfd3
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
