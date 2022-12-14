@@ -34,5 +34,5 @@ package() {
 	install -m 744 usr/lib/hwsupport/* ${pkgdir}/usr/lib/hwsupport/
 	install -m 644 "usr/lib/systemd/system/media-mount@.service" "${pkgdir}/usr/lib/systemd/system/media-mount@.service"
 	install -m 644 usr/lib/udev/rules.d/* ${pkgdir}/usr/lib/udev/rules.d/
-	install -m 644 /usr/share/polkit-1/actions/* ${pkgdir}/usr/share/polkit-1/actions/
+	install -m 644 usr/share/polkit-1/actions/* ${pkgdir}/usr/share/polkit-1/actions/
 }
