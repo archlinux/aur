@@ -4,8 +4,8 @@
 # Contributor: maat
 
 pkgname=brickv
-pkgver=2.4.22
-pkgrel=2
+pkgver=2.4.23
+pkgrel=1
 pkgdesc="testing/flashing tool for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
@@ -13,14 +13,8 @@ arch=('any')
 depends=('python-pyserial' 'python-pyqt5' 'python-pytz' 'python-tzlocal')
 optdepends=('brickd: local device support')
 makedepends=('python-setuptools')
-source=(https://github.com/Tinkerforge/${pkgname}/archive/v${pkgver}.zip
-        0001-red-Handle-service-provider-country-codes-missing-in.patch)
-sha256sums=('c09b27e10d2f3bce40d3fb6a3aa8a4bbde51d0b3a6fdc54ce41fca41869f7a72'
-            'ccedb2964a304cb332fb96e705a4b6e4ab5b40623b019495b42d4ecb817c6dd1')
-
-prepare() {
-  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/0001-red-Handle-service-provider-country-codes-missing-in.patch"
-}
+source=(https://github.com/Tinkerforge/${pkgname}/archive/v${pkgver}.zip)
+sha256sums=('9bf9d29db06b8c1274d6566fac5cbd02fa62edda3ad9255ebe33e77c1eaa59b2')
 
 build() {
   cd $srcdir/$pkgname-$pkgver/src
