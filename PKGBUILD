@@ -1,4 +1,5 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
+# Contributor: Bader <Bad3r@pm.me>
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
 pkgname=logseq-desktop
 pkgver=0.8.1
