@@ -1,52 +1,49 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: hexchain <i at hexchain.org>
+# Maintainer: zzy-ac <zzy-ac@qq.com>
 
 pkgname=electronic-wechat
-pkgver=2.3.1
-pkgrel=2
-pkgdesc="A better WeChat client"
-arch=('x86_64')
-url='https://github.com/kooritea/electronic-wechat'
-license=('custom')
-depends=('electron9' 'python' 'nodejs' 'hicolor-icon-theme')
-optdepends=('libappindicator-gtk3: fix broken tray icon in KDE')
-makedepends=('git' 'npm' 'python2' 'imagemagick')
+pkgver=2.3.3
+pkgrel=1
+pkgdesc="  Better WeChat client under Linux. Which used system Electron and removed the useless content in the package"
+arch=("x86_64")
+url="https://github.com/zzy-ac/electronic-wechat"
+license=('MIT')
+depends=('electron')
+provides=('electronic-wechat-uos-electron' 'electronic-wechat-uos-bin')
+conflicts=('electronic-wechat-uos-electron' 'electronic-wechat-uos-bin')
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/kooritea/electronic-wechat/archive/v$pkgver.tar.gz"
-    'electronic-wechat.desktop'
-    'electronic-wechat.sh'
-)
-sha256sums=('9282d07bf65e0e5c5c5fda44d2b05ff9003abedf727ae7bec90aa79f3afa6ce1'
-            '56c0db46c3b9fc31ac16265d0346ef47a6422392607bcce954e0f550894475be'
-            '45f520cd528c711bd0d84e77f25f973c9a2ba3753fb15f7b465eca7349e7e999')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    # remove Electron bundle
-    sed -i '/"electron\(-packager\)*":/d' package.json
-}
+  https://github.com/zzy-ac/${pkgname}/releases/download/v${pkgver}-${pkgrel}/${pkgname}_${pkgver}_amd64.deb)
+sha256sums=('0ff156122a1cb64071d0e2b9466f8ab2801404ac29a760d3c9d3124b6cb36777')
 
 build() {
-    cd "$pkgname-$pkgver"
-    PYTHON=/usr/bin/python2 npm install
-    # npm run build:linux64
+  mkdir -p "${srcdir}/dpkgdir"
+  mkdir -p "${srcdir}/dpkgdir/temp"
+  tar -xvf data.tar.xz -C "${srcdir}/dpkgdir"
+  mv ${srcdir}/dpkgdir/usr/lib/electronic-wechat/resources/app.asar ${srcdir}/dpkgdir/temp
+  mv ${srcdir}/dpkgdir/usr/lib/electronic-wechat/assets/icon.png ${srcdir}/dpkgdir/temp
+  rm -rf ${srcdir}/dpkgdir/usr/
+  mkdir -p "${srcdir}/dpkgdir/usr/lib/electronic-wechat"
+  mkdir -p "${srcdir}/dpkgdir/usr/share/icons/hicolor/512x512/apps"
+  mkdir -p "${srcdir}/dpkgdir/usr/bin"
+  mkdir -p  "${srcdir}/dpkgdir/usr/share/applications"
+  mv ${srcdir}/dpkgdir/temp/app.asar ${srcdir}/dpkgdir/usr/lib/electronic-wechat/
+  mv ${srcdir}/dpkgdir/temp/icon.png ${srcdir}/dpkgdir/usr/share/icons/hicolor/512x512/apps/electronic-wechat.png
+  echo -e '#!/bin/bash \nelectron13 /usr/lib/electronic-wechat/app.asar' > ${srcdir}/dpkgdir/usr/lib/electronic-wechat/wechat
+  echo "#!/bin/bash \nexec electron /usr/lib/electronic-wechat/app.asar" > ${srcdir}/dpkgdir/usr/bin/wechat
+  echo -e "[Desktop Entry]
+Name=Electronic Wechat
+Comment=Unofficial WeChat client built with React, MobX and Electron.
+Exec=wechat %U 
+Terminal=false
+Type=Application
+Icon=electronic-wechat.png                                        
+Categories=Network;Utility;Chat;" > ${srcdir}/dpkgdir/usr/share/applications/electronic-wechat.desktop
+ rm -rf "${srcdir}/dpkgdir/temp"
+ chmod 755 ${srcdir}/dpkgdir/usr/bin/wechat
 }
-
+  
 package() {
-    install -Dm644 electronic-wechat.desktop -t "$pkgdir/usr/share/applications"
-
-    cd "$pkgname-$pkgver"
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/electronic-wechat.png"
-
-    for size in 16 24 32 48 64 72 128 256; do
-        target="$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-        mkdir -p $target
-        convert assets/icon.png -resize ${size}x${size} "$target/$pkgname.png"
-    done
-    rm -rf scripts
-    mkdir -p "$pkgdir/usr/lib/$pkgname"
-    cp -r --no-preserve='ownership' -- * "$pkgdir/usr/lib/$pkgname"
-    install -Dm755 "$srcdir/electronic-wechat.sh" "$pkgdir/usr/bin/electronic-wechat"
-}
+  cp -r "${srcdir}/dpkgdir"/* "${pkgdir}"
+} 
