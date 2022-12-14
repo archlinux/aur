@@ -39,5 +39,5 @@ check() {
 
 package() {
         cd "$pkgname"
-	make DESTDIR=$pkgdir/ install
+	sudo make DESTDIR=$pkgdir/ install
 }
