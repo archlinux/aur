@@ -1,7 +1,7 @@
 pkgbase = r-rgeos
 	pkgdesc = Interface to Geometry Engine - Open Source ('GEOS')
-	pkgver = 0.5.9
-	pkgrel = 6
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rgeos
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = r-rgeos
 	optdepends = r-rgdal
 	optdepends = r-testthat
 	optdepends = r-xml
-	source = https://cran.r-project.org/src/contrib/rgeos_0.5-9.tar.gz
-	sha256sums = ab90cbfe6a3680a9d2eed5e655064a075adc66788e304468969ab7cc2df0e3d4
+	source = https://cran.r-project.org/src/contrib/rgeos_0.6-1.tar.gz
+	sha256sums = 420dbd48c0e8c840686b6ed29384715723d6926a1f9b0c437c60ad1853eef7f2
 
 pkgname = r-rgeos
