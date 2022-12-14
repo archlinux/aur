@@ -7,8 +7,8 @@ pkgbase = chromium-widevine
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_108.0.5359.98-1_amd64.deb
-	sha256sums = 3a6f63dbe9d8ed7ebf49b00102f42a70e625e7f194a8e1cab24ba127464aa4c3
+	source = https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_108.0.5359.124-1_amd64.deb
+	sha256sums = ef5a7b3711b71f1eb4f4bfc4b724fa1250540a3b4f12444e79f3b7f4b70e8101
 
 pkgname = chromium-widevine
 	depends = gcc-libs
