@@ -1,6 +1,6 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
-pkgver=5.5,0
+pkgver=5.5.0
 pkgrel=2
 pkgdesc='A Jewish calendar generator'
 arch=('any')
