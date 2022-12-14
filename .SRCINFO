@@ -1,6 +1,6 @@
 pkgbase = rmlui
 	pkgdesc = The HTML/CSS User Interface library evolved
-	pkgver = 4.4
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://mikke89.github.io/RmlUiDoc/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = rmlui
 	depends = freetype2
 	depends = libgl
 	depends = glu
-	source = rmlui-4.4.tar.gz::https://github.com/mikke89/RmlUi/archive/4.4.tar.gz
-	sha256sums = 9e45176e47154616253c4e5c78368f4af4b4379278b73066c3fb5a338f9c655a
+	source = rmlui-5.0.tar.gz::https://github.com/mikke89/RmlUi/archive/5.0.tar.gz
+	sha256sums = 1f6eac0e140c35275df32088579fc3a0087fa523082c21c28d5066bd6d18882a
 
 pkgname = rmlui

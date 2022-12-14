@@ -2,7 +2,7 @@
 
 _pkgname=RmlUi
 pkgname=rmlui
-pkgver=4.4
+pkgver=5.0
 pkgrel=1
 pkgdesc="The HTML/CSS User Interface library evolved"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('boost-libs' 'freetype2' 'libgl' 'glu')
 makedepends=('cmake' 'mesa' 'boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikke89/RmlUi/archive/${pkgver}.tar.gz")
-sha256sums=('9e45176e47154616253c4e5c78368f4af4b4379278b73066c3fb5a338f9c655a')
+sha256sums=('1f6eac0e140c35275df32088579fc3a0087fa523082c21c28d5066bd6d18882a')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
