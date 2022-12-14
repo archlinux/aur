@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and users'
 _gitname='wg_tool'
 
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -34,7 +34,7 @@ pkgver() {
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/poetry build --format wheel
 }
 
 package() {
