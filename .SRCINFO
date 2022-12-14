@@ -1,0 +1,17 @@
+pkgbase = layman-git
+	pkgdesc = A layout management framework for sway/i3
+	pkgver = r210.df2c951
+	pkgrel = 1
+	url = http://www.dinu-gherman.net/tmp/pdfnup-README.html
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git-lfs
+	depends = python
+	depends = python-i3ipc
+	depends = python-tomli
+	depends = python-setproctitle
+	source = git+https://github.com/frap129/layman.git
+	md5sums = SKIP
+
+pkgname = layman-git
