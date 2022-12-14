@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.0.dev4.r8347.7b9969c63
+pkgver=3.3.0.dev4.r8514.577411e21
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -12,17 +12,16 @@ url="https://nicotine-plus.org"
 license=('GPL3')
 depends=('python-gobject')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('gspell: for spell checking in chat (Gtk 3 only)'
-            'gtk4: default Gtk version'
-            'gtk3: fallback if Gtk 4 is not installed'
-            'libadwaita: test the Libadwaita version')
+optdepends=('gtk4: default Gtk version'
+            'libadwaita: used with gtk4 if available'
+            'gtk3: fallback if gtk4 is not installed'
+            'gspell: for spell checking in chat (Gtk 3 only)'
+            'libayatana-appindicator: tray icon (Gtk 3 only')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
-source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git'
-        "${_appdata_id}-libadwaita.desktop")
-sha256sums=('SKIP'
-            '076ecb7184bc435f9849b2669233819cca9d20e4d98d3541c04f1ee73bc0bcfc')
+source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -55,7 +54,4 @@ check() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -Dm644 "$srcdir/${_appdata_id}-libadwaita.desktop" -t \
-    "$pkgdir/usr/share/applications/"
 }
