@@ -1,7 +1,7 @@
 pkgbase = trust-dns
 	pkgdesc = Trust-DNS is a safe and secure DNS server with DNSEC support. Eventually this...
 	pkgver = 0.22.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.trust-dns.org/index.html
 	arch = aarch64
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = trust-dns
 	conflicts = bind
 	source = trust-dns-0.22.0.tar.gz::https://crates.io/api/v1/crates/trust-dns/0.22.0/download
 	source = 0001-fix-not-linking-openssl.patch
+	source = named.service
 	sha512sums = 07c24eb58d85e683e385a2b163341da1e23db148199f6da4cc01b5a73a145b9b41c507aefbc4f197da53e8cc8fb88b3644eedfaa5fb3a82b5fc7c2f19e67170a
 	sha512sums = d7e3df286761bf8412bf37f9ad4ed4419e1e969d183df5ffbbd3002bde6b94f8c7958aa2e5c07a683932ef64288c4c18a6a45660be4e4ae4299a6cfc7d67d768
+	sha512sums = ff17dec7c7d73254b561d2e27a161b70fdf806203b94a6a1733f7e37347b696469a38de377462202c93b2c76676ec0150098ad115cfc9117b29a493c911b178b
 
 pkgname = trust-dns
