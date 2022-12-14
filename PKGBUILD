@@ -90,6 +90,7 @@ package() {
   install -D -m 755 Geant4.sh $pkgdir/etc/profile.d/Geant4.sh
   install -D -m 755 Geant4.csh $pkgdir/etc/profile.d/Geant4.csh
   ln -s $pkgdir/usr/include/Geant4/CLHEP $pkgdir/usr/include/CLHEP
+  ln -s $pkgdir/usr/include/Geant4/PTL $pkgdir/usr/include/PTL
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
