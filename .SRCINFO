@@ -1,6 +1,6 @@
 pkgbase = tiddlydesktop
 	pkgdesc = TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis.
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 2
 	url = https://github.com/Jermolene/TiddlyDesktop
 	arch = x86_64
@@ -10,14 +10,13 @@ pkgbase = tiddlydesktop
 	optdepends = tiddlywiki: empty tiddlywiki file and utility script
 	provides = tiddlydesktop
 	options = !strip
-	source = https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.14/tiddlydesktop-linux64-v0.0.14.zip
-	source = https://github.com/Jermolene/TiddlyDesktop/archive/v0.0.14.zip
+	source = https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.15/tiddlydesktop-linux64-v0.0.15.zip
+	source = https://github.com/Jermolene/TiddlyDesktop/archive/v0.0.15.zip
 	source = tiddlydesktop.sh
 	source = tiddlydesktop.desktop
-	sha256sums = c82b2a07ac792b98dd6a2de80847f80334ae0e59700dce4cbd1e21a1f8e1db8d
-	sha256sums = ee10b903f6a88190c26855230f6c6c28deab804221bbb73f4b4757efec2eb15b
+	sha256sums = 5ae12c7678a543da175fb483bb970ff5956673c40a7ec5143e3002bfbba50bb2
+	sha256sums = 8c807a552b023cba0f8ee60ccd28622f1251a72921a58127e28bf983e6ba131a
 	sha256sums = 9f47a64b912a2ab3efc67a94559130c6d4e76a74b6a4a37c400972ef768b87e0
 	sha256sums = a81adff1a65143c21a0b486ad6219ad493c75db53672bc229e08f0012c40b153
 
 pkgname = tiddlydesktop
-
