@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=youki
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
 url='https://containers.github.io/youki'
@@ -14,7 +14,7 @@ optdepends=(
   'podman: run via podman'
 )
 options=('!lto')
-_commit='541bf4a26cc0c3ec397398ed5971f08285a24076'
+_commit='174448ae372ad7e9d3a378c387238dc71688ad5a'
 source=("$pkgname::git+https://github.com/containers/youki.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  cd youki/crates
+  cd youki
 
   # create directory for build artifacts
   mkdir build
@@ -35,9 +35,9 @@ prepare() {
 }
 
 build() {
-  cd youki/crates
+  cd youki
 
-  cargo build --frozen --release
+  cargo build --frozen --release --bin youki
 
   # generate shell completions
   for shell in bash fish zsh; do
@@ -45,14 +45,14 @@ build() {
   done
 }
 
-check() {
-  cd youki/crates
-
-  cargo test --frozen
-}
+#check() {
+#  cd youki
+#
+#  cargo test --frozen
+#}
 
 package() {
-  cd youki/crates
+  cd youki
 
   install -vDm755 -t "$pkgdir/usr/bin" target/release/youki
 
