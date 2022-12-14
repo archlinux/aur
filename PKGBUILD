@@ -8,8 +8,8 @@
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.12.2
-pkgrel=2
+pkgver=1.15.0
+pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
@@ -21,7 +21,7 @@ depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('a7eb112fe7a6bcd6c44706a53cbf6222e640cd1e585492fc654aa9e05a7bbc94')
+sha256sums=('bebd54637bf8819ee395b765e3615ad28606d28a7870ac99ed1dffb1d14087b2')
 
 options=('!strip' 'debug')
 
@@ -36,27 +36,29 @@ build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 
 	cmake \
+		-B build \
 		-D CMAKE_BUILD_TYPE=Release \
 		-D MAINTAINER_MODE=ON \
+		-D BUILD_EXTRAS=ON \
 		-D BUILD_HDDTEMP=OFF \
 		-D BUILD_PORT_MONITORS=OFF \
-		-D BUILD_WEATHER_METAR=ON \
-		-D BUILD_WEATHER_XOAP=ON \
 		-D BUILD_X11=OFF \
 		-D BUILD_XDAMAGE=OFF \
 		-D BUILD_XFT=OFF \
 		-D BUILD_WLAN=ON \
 		-D CMAKE_INSTALL_PREFIX=/usr \
-		.
+		-Wno-dev \
+		-S .
 
-	make
+	make -C build
 }
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
-	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
+	make -C build DESTDIR="${pkgdir}" install
+	install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 build/extras/vim/syntax/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/syntax
+	install -Dm644 extras/vim/ftdetect/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/ftdetect
 }
 
+# vim: ts=2 sw=2 et:
