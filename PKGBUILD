@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='folding'
 pkgdesc='Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).'
-pkgver='1.3.2.20180801'
+pkgver='1.4.0.20221214'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -10,7 +10,7 @@ depends=(boost qt5-base libbsctools r clang python)
 makedepends=(gcc-fortran)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         python3-ports.patch)
-sha512sums=(df54700a1eee506f7b7b8d08f74805d576d1455fe3e31de368d0a98bd3bc7114eef4c32d73462ac9cab2f5a9f273c27cc8538e9cfbf9b044c8ef66d3881a7f3d
+sha512sums=(9cc3b9863eb6916924adbf62165e131c42c2ab2920d2f1e2bd4ac701d48ca2c2169d0e4b17bdae8ba0f91be584d97a607c62c86f488ae6a44ba0a62ac20d360a
             f62af324cfe585605dbdfdb87fa7877cb794ba854c1445193710f22ce3cb92effcfcb7c6b8e32286f927bd0804478580b6358b62f15cba789359862bc0589aa1)
 
 prepare() {
