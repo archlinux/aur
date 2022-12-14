@@ -25,6 +25,8 @@ backup=('etc/rbfeeder.ini')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
+
+  _pkgver=$(make showconfig 2>&1 | grep "Version" | awk '{print $3}')
   echo $_pkgver.g$(git rev-parse --short HEAD)
 }
 
