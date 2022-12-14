@@ -1,0 +1,10 @@
+post_install() {
+	echo ""
+	echo "****Adwaita for Steam was installed!****"
+	echo ""
+	echo "You still have to make steam able to read the skin location in your system directory /usr/lib:"
+	echo "ln -s /usr/lib/steam/skins ~/.steam/steam/skins"
+	echo ""
+	echo "Now, select the skin in Steam Settings -> Interface."
+	echo ""
+}

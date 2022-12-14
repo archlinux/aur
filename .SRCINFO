@@ -1,0 +1,16 @@
+pkgbase = adwaita-for-steam-git
+	pkgdesc = A skin to make Steam look more like a native GNOME app
+	pkgver = 0.21.r1.g4ad8301
+	pkgrel = 1
+	url = https://github.com/tkashkin/adwaita-for-steam
+	install = adwaita-for-steam.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = steam
+	provides = adwaita-for-steam
+	conflicts = adwaita-for-steam
+	source = git+https://github.com/tkashkin/adwaita-for-steam
+	b2sums = SKIP
+
+pkgname = adwaita-for-steam-git
