@@ -3,7 +3,7 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=6
+pkgrel=7
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
@@ -47,8 +47,8 @@ build() {
 	cargo install duckscript_cli
 
 	cd "$srcdir/$_pkgname/frontend"
-	cargo make flowy_dev
-	cargo make --profile production-linux-x86_64 appflowy
+	#cargo make --profile "production-linux-$CARCH" flowy-sdk-release
+	cargo make --profile "production-linux-$CARCH" appflowy-linux
 }
 
 package() {
