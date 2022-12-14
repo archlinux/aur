@@ -8,16 +8,16 @@ depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64')
-url="https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
+url="https://gh.dmnb.cf/https://github.com/Icalingua-plus-plus/Icalingua-plus-plus"
 provides=('electron-qq' 'icalingua')
 conflicts=('electron-qq')
 replaces=('electron-qq' "icalingua-plus-plus")
 source=(512x512.png
         ${_pkgname}.desktop
         ${_pkgname})
-source_x86_64=("app-x86_64-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-x86_64.asar")
-source_aarch64=("app-aarch64-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-arm64.asar")
-source_i686=("app-i686-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-ia32.asar")
+source_x86_64=("app-x86_64-${pkgver}.asar::https://gh.dmnb.cf/https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-x86_64.asar")
+source_aarch64=("app-aarch64-${pkgver}.asar::https://gh.dmnb.cf/https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-arm64.asar")
+source_i686=("app-i686-${pkgver}.asar::https://gh.dmnb.cf/https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-ia32.asar")
 
 package() {
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
