@@ -2,7 +2,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-git
-pkgver=21.10.0.rc34af9e16
+pkgver=22.7.0.rb364f4884
 pkgrel=1
 pkgdesc='Media player with built-in codecs that can play virtually all video and audio formats'
 arch=('x86_64')
@@ -34,11 +34,11 @@ prepare() {
 
 build() {
   cd $pkgname
-  export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
+  export CXXFLAGS="${CXXFLAGS} ${CPPFLAGS} -Wno-error"
   make PREFIX=/usr \
     DOC_PATH="\\\"/usr/share/doc/smplayer\\\"" \
     QMAKE_OPTS=DEFINES+=NO_DEBUG_ON_CONSOLE \
-    CFLAGS_EXTRA="${CFLAGS} ${CPPFLAGS} ${LDFLAGS}"
+    CFLAGS_EXTRA="${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wno-error"
 }
 
 package() {
