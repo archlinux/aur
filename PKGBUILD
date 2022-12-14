@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A Git client originally forked from QGit that has continued its own path"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/francescmm/GitQlient"
 license=('LGPL')
 depends=(git qt5-base)
 source=("$url/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.gz")
-sha256sums=(95a46674fd4405d5ba605b707791fbf22c02bf81fd0fe893a31d270e9e0d1154)
+sha256sums=(bd66ee36f6c071337ae6e014136ae472a99a595afb1dccbaf2608afaa13fcf90)
 
 build() {
     cd "${pkgname}_${pkgver}"
