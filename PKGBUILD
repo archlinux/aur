@@ -2,8 +2,8 @@
 # Previous maintainer: Ian D. Scott <ian@perebruin.com>
 
 pkgname=zxtune-git
-pkgver=r4380.r0.ga6b90b30d
-pkgrel=3
+pkgver=r5021.r22.g7a40db5c8
+pkgrel=1
 pkgdesc="Portable toolkit for ZX-Spectrum music playing"
 arch=('i686' 'x86_64')
 url="http://zxtune.bitbucket.io"
@@ -18,6 +18,7 @@ optdepends=(
 )
 makedepends=('git' 'gcc' 'zip' 'boost')
 provides=('zxtune')
+conflicts=('zxtune-bin')
 options=(!strip !docs !libtool !emptydirs !zipman makeflags)
 source=('git+https://bitbucket.org/zxtune/zxtune.git')
 md5sums=('SKIP')
