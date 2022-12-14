@@ -1,7 +1,7 @@
 pkgbase = webledger
 	pkgdesc = Web based ledger
-	pkgver = 2.1.8
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/jnphilipp/ledger
 	arch = any
 	license = GPL3+

@@ -2,8 +2,8 @@
 pkgname=webledger
 _pkgname=${pkgname#web}
 provides=(${_pkgname})
-pkgver=2.1.8
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Web based ledger"
 arch=("any")
 url="https://github.com/jnphilipp/ledger"
