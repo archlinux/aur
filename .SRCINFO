@@ -5,12 +5,15 @@ pkgbase = wcp
 	url = https://github.com/milgra/wcp
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = freetype2
 	depends = libpng
+	depends = libgl
+	depends = libegl
+	depends = glew
 	source = wcp-0.72b.tar.xz::https://github.com/milgra/wcp/releases/download/0.72b/wcp-0.72b.tar.xz
 	sha256sums = d3e923c61a2c33b7fa1fd8b0d96dfc0880d1a44a42c35092fe8f8a88a991a3ef
 
