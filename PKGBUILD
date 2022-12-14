@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc='Visual music player'
 arch=('i686' 'x86_64')
 url='https://github.com/milgra/vmp'
-license=('gplv3')
-depends=('wayland' 'freetype2' 'ffmpeg' 'glew' 'openjpeg2')
+license=('GPL3')
+depends=('wayland' 'freetype2' 'ffmpeg' 'libpng' 'libgl' 'libegl' 'glew' 'openjpeg2')
 makedepends=('meson' 'wayland-protocols' )
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/vmp/releases/download/${pkgver}/vmp-${pkgver}.tar.xz"
