@@ -1,12 +1,12 @@
 pkgbase = kube-burner-bin
 	pkgdesc = Kube-burner is a tool aimed at stressing Kubernetes clusters by creating or deleting a high quantity of objects.
-	pkgver = 0.17.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/cloud-bulldozer/kube-burner
 	arch = x86_64
 	license = Apache 2
 	provides = kube-burner-bin
-	source = https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.17.1/kube-burner-0.17.1-Linux-x86_64.tar.gz
-	sha256sums = 43cc3c3dab33398d78c97a750f3849a50a259c4461140ca84a6fdbe301e34b11
+	source = https://github.com/cloud-bulldozer/kube-burner/releases/download/v1.0/kube-burner-1.0-Linux-x86_64.tar.gz
+	sha256sums = 30675ee6111069ff0590d49a86219e1c130d9a8d968f4cc3830941ab322b16ff
 
 pkgname = kube-burner-bin
