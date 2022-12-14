@@ -33,5 +33,6 @@ build() {
 package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" ninja -C build install
-  mv ${pkgdir}/usr/include/talkatu-1.0/ ${pkgdir}/usr/include/talkatu
+  cd ${pkgdir}/usr/include
+  ln -s talkatu-1.0 talkatu
 }
