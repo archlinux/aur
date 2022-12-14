@@ -1,0 +1,9 @@
+[Unit]
+Description=A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pacproxy -l 127.0.0.1:8080 -c /etc/proxy.pac
+
+[Install]
+WantedBy=multi-user.target
