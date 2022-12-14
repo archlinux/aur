@@ -1,0 +1,17 @@
+pkgbase = glogg-git
+	pkgdesc = Multi-platform GUI application that helps browse and search through long and complex log files
+	pkgver = v1.1.4.71.ge191a637
+	pkgrel = 1
+	url = https://github.com/nickbnf/glogg
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = qt5-base
+	depends = boost-libs
+	depends = hicolor-icon-theme
+	provides = glogg
+	conflicts = glogg
+	source = glogg::git+https://github.com/nickbnf/glogg.git
+	md5sums = SKIP
+
+pkgname = glogg-git
