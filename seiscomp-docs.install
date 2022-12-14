@@ -1,7 +1,9 @@
 post_install() {
-		find opt/seiscomp -type d -exec setfacl -d -m g::rwX '{}' \;
+	setfacl -R -m g:seiscomp:rwx opt/seiscomp
+	setfacl -d -m g:seiscomp:rwX opt/seiscomp
 }
 
 post_upgrade() {
-		find opt/seiscomp -type d -exec setfacl -d -m g::rwX '{}' \;
+	setfacl -R -m g:seiscomp:rwx opt/seiscomp
+	setfacl -d -m g:seiscomp:rwX opt/seiscomp
 }
