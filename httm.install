@@ -1,0 +1,17 @@
+pre_install() {
+	echo "******************************************************************************"
+        echo "* This package is paused at 0.17.10 due to upstream not pushing to crates.io *"
+        echo "* See https://github.com/kimono-koans/httm#install-via-source for details    *"
+        echo "*                                                                            *"
+	echo "* Use aur/httm-bin or aur/httm-git for updated packages                      *"
+	echo "******************************************************************************"
+}
+
+pre_upgrade() {
+	echo "******************************************************************************"
+        echo "* This package is paused at 0.17.10 due to upstream not pushing to crates.io *"
+        echo "* See https://github.com/kimono-koans/httm#install-via-source for details    *"
+        echo "*                                                                            *"
+        echo "* Use aur/httm-bin or aur/httm-git for updated packages                      *"  
+        echo "******************************************************************************"
+}
