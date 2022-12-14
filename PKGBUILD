@@ -4,16 +4,16 @@ pkgver=0.8.7.r25.f40ab3552
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
-url="https://github.com/logseq/logseq"
+url="https://github.com/logseq/logseq.git"
 license=("AGPL3")
 depends=()
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "logseq-desktop-bin")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=(
-    "${pkgname}::git+https://github.com/logseq/logseq"
+    "${pkgname}::git+${url}"
     "build.patch"
-    "logseq-desktop.desktop"
+    "${pkgname%-git}.desktop"
 )
 md5sums=(
     "SKIP"
@@ -87,5 +87,5 @@ package() {
     # copy xdg desktop files
     cd "${srcdir}"
     mkdir -p "${pkgdir}/usr/share/applications"
-    install -Dm644 "logseq-desktop.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
 }
