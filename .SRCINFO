@@ -1,7 +1,7 @@
 pkgbase = msys2-keyring
 	pkgdesc = MSYS2 PGP keyring
 	pkgver = 20221024
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/msys2/MSYS2-keyring
 	install = msys2-keyring.install
