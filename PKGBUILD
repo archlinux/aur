@@ -1,11 +1,14 @@
+# Maintainer: Matt Harrison <matt@harrison.us.com>
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds
+
 pkgname=headscale
-pkgver=0.16.4
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="An open source, self-hosted implementation of the Tailscale coordination server."
-arch=('any')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/juanfont/headscale"
 license=('BSD')
-depends=()
+depends=('glibc')
 makedepends=('go')
 optdepends=(
 	'wireguard-tools: CLI tools for generating keys'
@@ -20,15 +23,20 @@ source=(
 	'headscale.sysusers'
 	'headscale.tmpfiles'
 )
-sha256sums=('0395478f9dde68aa8ca23be8df6ff636d47166981d0995e4e31a8c7db12df8e8'
+sha256sums=('cd1d84bfa775edd4e8be4d35b7ed7acf70ce6c6e2e551ef4297d5398b1140526'
             '3cae7a3bfbb70bfda8dc4323d27cdcde0d841d1b3335c0f10525907eb3f6e650'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make
-	sed -i 's-/var/run/headscale\.sock-/var/run/headscale/headscale\.sock-' config-example.yaml
+   cd "${srcdir}/${pkgname}-${pkgver}"
+   export CGO_CPPFLAGS="${CPPFLAGS}"
+   export CGO_CFLAGS="${CFLAGS}"
+   export CGO_CXXFLAGS="${CXXFLAGS}"
+   export CGO_LDFLAGS="${LDFLAGS}"
+   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+   go build -v -o headscale -tags="ts2019" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -s -w -X github.com/juanfont/headscale/cmd/headscale/cli.Version=${pkgver}" ./cmd/headscale
+   sed -i 's-/var/run/headscale\.sock-/var/run/headscale/headscale\.sock-' config-example.yaml
 }
 
 package() {
