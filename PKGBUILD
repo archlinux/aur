@@ -3,12 +3,13 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Jove Yu <yushijun110 [at] gmail.com>
 # Contributor: Ariel AxionL <axionl at aosc dot io>
+# Contributor: v71
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
 pkgver=11.1.0.11664
 #_pkgver=8372
-pkgrel=2
+pkgrel=3
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
@@ -19,10 +20,12 @@ options=('!emptydirs')
 #source_i686=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_i386.deb"
 #            'add_no_kdialog_variable.patch')
 #source=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_amd64.deb"
-source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb")
+source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb"
+        'fix-wps-python-parse.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('7fd7d9d093811f40e8f9c7e3b122bc3779a2963e')
+sha1sums=('7fd7d9d093811f40e8f9c7e3b122bc3779a2963e'
+          'f3713481edf04ffb08be8d24dce66554dd5a4f13')
 
 prepare() {
     bsdtar -xpf data.tar.xz
@@ -41,8 +44,9 @@ prepare() {
         fi
     done
 
-#   cd "${srcdir}"
+    cd "${srcdir}"
 #   patch -Np1 -i "${srcdir}/fix_desktop_exec.patch"
+    patch -Np1 -i "${srcdir}/fix-wps-python-parse.patch"
 }
 
 package_wps-office() {
