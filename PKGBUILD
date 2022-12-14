@@ -3,13 +3,13 @@
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.7.r111.g312a836
+pkgver=0.7.r167.g776e653
 pkgrel=1
 pkgdesc="Qt application for configuring your Razer devices under GNU/Linux."
-arch=("x86_64" "i686")
+arch=('x86_64')
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
+depends=('libopenrazer' 'qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
 makedepends=('git' 'meson' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,17 +22,10 @@ pkgver() {
 }
 
 build() {
-  arch-meson --wrap-mode=default "$_upstream" build
-
-  ninja -C build
+  arch-meson "$_upstream" build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
-
-  # Manually install libopenrazer here for now
-  install -Dm755 build/subprojects/libopenrazer/libopenrazer.so.0.0.1 \
-    "$pkgdir"/usr/lib/libopenrazer.so.0.0.1
-  ln -s libopenrazer.so.0.0.1 "$pkgdir"/usr/lib/libopenrazer.so.0
-  ln -s libopenrazer.so.0 "$pkgdir"/usr/lib/libopenrazer.so
+  meson install -C build --destdir "$pkgdir"
 }
