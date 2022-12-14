@@ -1,6 +1,6 @@
 pkgbase = pulsar-bin
 	pkgdesc = Community build of the hackable text editor, built on Electron
-	pkgver = 1.63.2022120804
+	pkgver = 1.63.2022121407
 	pkgrel = 1
 	url = https://github.com/pulsar-edit/pulsar
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pulsar-bin
 	optdepends = hunspell: spell check integration
 	provides = pulsar
 	conflicts = pulsar
-	source = pulsar-1.63.2022120804.deb::https://api.cirrus-ci.com/v1/artifact/task/6076301491568640/binary/binaries/pulsar_1.63.2022120804_amd64.deb
-	sha256sums = d31cfe8a5fa6cbb37075f4102197d04077e751406387f6b11756c03d07f841e1
+	source = pulsar-1.63.2022121407.deb::https://api.cirrus-ci.com/v1/artifact/task/5138161114808320/binary/binaries/pulsar_1.63.2022121407_amd64.deb
+	sha256sums = fec8eebb579a47a616555c9affec055a24b1c36f7c4da29e28128d0bcb688010
 
 pkgname = pulsar-bin
