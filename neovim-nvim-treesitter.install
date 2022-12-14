@@ -1,0 +1,5 @@
+
+post_install() {
+  printf "Make sure to adjust parser_install_dir to a read/ writeable directory:\n"
+  printf "https://github.com/nvim-treesitter/nvim-treesitter#changing-the-parser-install-directory\n"
+}
