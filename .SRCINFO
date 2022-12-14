@@ -1,6 +1,6 @@
 pkgbase = gst-plugin-gtk4-git
 	pkgdesc = Multimedia graph framework - GTK4 plugin
-	pkgver = r2318.aa2abc50
+	pkgver = r2347.e5360ff4
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 	arch = any

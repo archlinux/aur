@@ -1,7 +1,7 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 reponame=gst-plugins-rs
 pkgname=gst-plugin-gtk4-git
-pkgver=r2318.aa2abc50
+pkgver=r2347.e5360ff4
 pkgrel=1
 pkgdesc="Multimedia graph framework - GTK4 plugin"
 arch=(any)
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/$reponame"/video/gtk4
-  cargo cinstall -p gst-plugin-gtk4 --prefix=/usr --destdir="$pkgdir"
+  cargo cinstall -p gst-plugin-gtk4 --all-features --prefix=/usr --destdir="$pkgdir"
 }
