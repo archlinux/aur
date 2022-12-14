@@ -2,9 +2,9 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=gpgit
-pkgver=1.5.0
-pkgrel=1
 epoch=1
+pkgver=1.5.0
+pkgrel=2
 pkgdesc="A shell script that automates the process of signing Git sources via GPG"
 arch=('any')
 url="https://github.com/NicoHood/gpgit"
@@ -23,6 +23,8 @@ sha512sums=('3c7577d72ce74e5bab1f1ba752539d5977c5746c07d2f71fc61fdab50f9808dcab5
 validpgpkeys=('97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161')
 
 check() {
+    # https://github.com/NicoHood/GPGit/issues/37
+    sed -i '/shellcheck/s/-o all//' "${pkgname}-${pkgver}"/Makefile
     make -C "${pkgname}-${pkgver}" test
 }
 
