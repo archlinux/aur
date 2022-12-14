@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.14.r1.g5adb1e96
+pkgver=2.0.22.r0.g058d11b4
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -19,9 +19,11 @@ makedepends=(
 	'curl'
 	'fmt>=9.1'
 	'git'
+	'glib2'
 	'glm'
 	'glslang'
 	'glu'
+	'gtk3'
 	'libgl'
 	'libpng'
 	'libzip'
@@ -30,6 +32,7 @@ makedepends=(
 	'rapidjson'
 	'sdl2'
 	'vulkan-headers>=1.3.225'
+	'wayland'
 	'zarchive>=0.1.2'
 	'zlib'
 	'zstd'
@@ -80,7 +83,11 @@ package() {
 		'libcubeb.so'
 		'libcurl.so'
 		'libfmt.so'
+		'libgdk-3.so'
+		'libgobject-2.0.so'
+		'libgtk-3.so'
 		'libssl.so'
+		'libwayland-client.so'
 		'libzarchive.so'
 		'libzip.so'
 		'libzstd.so'
