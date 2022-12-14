@@ -1,14 +1,13 @@
 pkgbase = cjose
 	pkgdesc = C library implementing the Javascript Object Signing and Encryption (JOSE)
-	pkgver = 0.6.1
+	pkgver = 0.6.2.1
 	pkgrel = 1
-	url = https://github.com/cisco/cjose
+	url = https://github.com/zmartzone/cjose
 	arch = x86_64
 	license = MIT
 	depends = openssl
 	depends = jansson
-	source = https://github.com/cisco/cjose/archive/0.6.1.tar.gz
-	sha512sums = 7ae67a6d19591b3d19b888270ec0ca17df399bea117e42686fc1de39b3741ed9a8816f96d33d090687c49c3123cdc95430a781835a525a02d22561ebf5aaa653
+	source = https://github.com/zmartzone/cjose/archive/v0.6.2.1/cjose-0.6.2.1.tar.gz
+	sha256sums = 90924f021878bfdb53536f8e3495876047d5b5ec34de96b431883c85f12c459a
 
 pkgname = cjose
-

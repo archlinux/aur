@@ -1,24 +1,27 @@
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=cjose
-pkgver=0.6.1
+pkgver=0.6.2.1
 pkgrel=1
-pkgdesc="C library implementing the Javascript Object Signing and Encryption (JOSE)"
-arch=('x86_64')
-url="https://github.com/cisco/cjose"
-license=('MIT')
-depends=('openssl' 'jansson')
-makedepends=()
-source=("https://github.com/cisco/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('7ae67a6d19591b3d19b888270ec0ca17df399bea117e42686fc1de39b3741ed9a8816f96d33d090687c49c3123cdc95430a781835a525a02d22561ebf5aaa653')
+pkgdesc='C library implementing the Javascript Object Signing and Encryption (JOSE)'
+arch=(x86_64)
+url="https://github.com/zmartzone/$pkgname"
+license=(MIT)
+depends=(openssl
+         jansson)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('90924f021878bfdb53536f8e3495876047d5b5ec34de96b431883c85f12c459a')
 
 build() {
-        cd "$pkgname-$pkgver"
-        ./configure --prefix=/usr
-        make
+	cd "$_archive"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-        cd "$pkgname-$pkgver"
-        make DESTDIR="$pkgdir/" install
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_archive"
+	make DESTDIR="$pkgdir" install
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
