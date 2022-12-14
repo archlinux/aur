@@ -1,0 +1,30 @@
+post_install() {
+	systemctl daemon-reload
+	systemctl enable --now muse-hub.service
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	# Kill the Muse Hub Client application
+	if pgrep -f Muse.Client.Linux; then killall Muse.Client.Linux; fi
+
+	# Disable the Muse Hub Helper Service
+	systemctl --no-reload disable --now muse-hub.service
+}
+
+post_remove() {
+	# Remove all service files if doing a full uninstall
+	if [ $1 = "remove" ]; then
+	    rm -rf /srv/muse-hub
+	    rm -rf /var/cache/muse-hub
+	    rm -rf /tmp/muse-hub
+
+	    rm -rf /var/lib/MuseSampler   
+	    rm -f /usr/lib/libMuseSamplerCoreLib.so
+
+	    rm -rf "$HOME/.muse-hub"
+	fi
+}

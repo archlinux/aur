@@ -1,0 +1,15 @@
+[Unit]
+Description=Muse Hub Helper Service
+After=network.target
+
+StartLimitBurst=3
+StartLimitIntervalSec=20
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/muse-hub-service
+Restart=always
+RestartSec=5
+WorkingDirectory=/opt/muse-hub
+[Install]
+WantedBy=multi-user.target
