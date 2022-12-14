@@ -1,6 +1,6 @@
 pkgbase = yuzu
 	pkgdesc = Nintendo Switch emulator
-	pkgver = mainline.0.1261
+	pkgver = mainline.0.1269
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = aarch64
@@ -35,7 +35,7 @@ pkgbase = yuzu
 	depends = enet>=1.3.13
 	depends = qt5-multimedia>=5.15
 	depends = qt5-webengine>=5.15
-	source = yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-1261
+	source = yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-1269
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
 	source = yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
 	source = compatibility_list.json.xz

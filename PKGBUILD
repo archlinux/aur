@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1261
+pkgver=mainline.0.1269
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
@@ -80,6 +80,7 @@ build() {
 		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 		-DYUZU_TESTS="$CHECKFUNC" \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
+		-DYUZU_USE_FASTER_LD=OFF \
 		-DYUZU_USE_PRECOMPILED_HEADERS=OFF \
 		-DYUZU_USE_QT_MULTIMEDIA=ON \
 		-DYUZU_USE_QT_WEB_ENGINE=ON \
