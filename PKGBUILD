@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.6'
+_upstreamver='0.0.7'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -41,15 +41,13 @@ source=(
 	"$url/releases/download/$pkgver/_$_bin"
 	"$url/releases/download/$pkgver/$_bin.csh"
 )
-sha256sums=(
-  '72095a6dfcb9df4d0afe193c4c0cfe6f975161e27ffe333fac7af7b4cdcb43b3'
-	'3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67'
-	'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-	'3fccddac127fad875902d9281c679851960fd9c1cfc955c2295eadd5e1d39d17'
-	'14e4b9b18b9a7ac52d3ef10f218511f7ca7b04ba25b5626924f6b4caae8c36c9'
-	'34666c8b013cab6220842572cf0bda3ded199224512a1882927a7c62fd831f86'
-	'33a678b300b879eec64813a43d5d72daddf9e725b2b9b21491dfd9f238fe04fd'
-)
+sha256sums=('9c3caa90b146915ef7aa7d161437b0a28de6c182ab556a110250dfe19e2eb8e2'
+            '3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '3fccddac127fad875902d9281c679851960fd9c1cfc955c2295eadd5e1d39d17'
+            '14e4b9b18b9a7ac52d3ef10f218511f7ca7b04ba25b5626924f6b4caae8c36c9'
+            '34666c8b013cab6220842572cf0bda3ded199224512a1882927a7c62fd831f86'
+            '33a678b300b879eec64813a43d5d72daddf9e725b2b9b21491dfd9f238fe04fd')
 
 package() {
 	cd "$srcdir" || return 1
