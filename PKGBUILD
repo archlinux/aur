@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -19,7 +19,7 @@ conflicts=('geant4_devel' 'geant4' 'geant4-debug')
 optdepends=(
   'java-environment'
   'tcsh'
-  'geant4-LEND'
+  'geant4-lend'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
