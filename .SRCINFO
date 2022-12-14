@@ -1,7 +1,7 @@
 pkgbase = hyprland-hidpi-xprop-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
-	pkgver = r1918.1030325
-	pkgrel = 1
+	pkgver = r2198.5d66122
+	pkgrel = 2
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
 	license = BSD
@@ -48,7 +48,11 @@ pkgbase = hyprland-hidpi-xprop-git
 	options = !buildflags
 	options = !strip
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
+	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
+	source = git+https://github.com/hyprwm/hyprland-protocols.git
 	source = https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6
 

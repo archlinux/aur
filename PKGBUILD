@@ -4,7 +4,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
 pkgver=r2198.5d66122
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -49,11 +49,15 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
-		"https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch")
+        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://github.com/hyprwm/hyprland-protocols.git"
+        "https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
-			'a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6')
+            'SKIP'
+            'SKIP'
+            'a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
@@ -66,8 +70,12 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git submodule update --init
-	
+	rm -rf subprojects/wlroots subprojects/hyprland-protocols
+	git submodule init
+	git config submodule.wlroots.url "${srcdir}"/wlroots
+	git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
+	git -c protocol.file.allow=always submodule update subprojects/wlroots
+	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
 	cd subprojects/wlroots
 	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
 	patch -Np1 < "${srcdir}"/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
@@ -78,7 +86,7 @@ build() {
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
 	make protocols
-    make release
+	make release
 	cd ./hyprctl && make all && cd ..
 }
 
