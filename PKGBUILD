@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mmg-git
-pkgver=5.7.0
+pkgver=5.7.0.2.ge04216d1
 pkgrel=1
 epoch=1
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
@@ -34,6 +34,5 @@ build () {
 
 package() {
   cd ${pkgname%-git}
-  touch libmmgf.h
   cmake --install build
 }

@@ -1,6 +1,6 @@
 pkgbase = mmg-git
 	pkgdesc = Anisotropic tetrahedral remesher and moving mesh generator
-	pkgver = 5.7.0
+	pkgver = 5.7.0.2.ge04216d1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.mmgtools.org/
