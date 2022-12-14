@@ -1,0 +1,15 @@
+pkgbase = espflash
+	pkgdesc = A command-line tool for flashing Espressif devices over serial
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/esp-rs/espflash
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = cargo
+	source = https://github.com/esp-rs/espflash/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 3efdbcc6edeaadd4beca9c685a24486ee14729b3f638e963363328c95c89f1a3
+
+pkgname = cargo-espflash
+
+pkgname = espflash
