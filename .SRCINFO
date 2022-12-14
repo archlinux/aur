@@ -1,6 +1,6 @@
 pkgbase = cbftp-svn
 	pkgdesc = an advanced multi-purpose FTP/FXP client that focuses on efficient large-scale data spreading, while also supporting most regular FTP/FXP use cases in a modern way. It runs in a terminal and provides a semi-graphical user interface through ncurses.
-	pkgver = r1183
+	pkgver = r1236
 	pkgrel = 1
 	url = https://cbftp.eu
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = cbftp-svn
 	provides = cbftp-svn
 	conflicts = cbftp
 	replaces = cbftp
-	source = svn+https://cbftp.eu/svn/cbftp/
-	source = disable-debian.patch
+	source = svn+https://cbftp.gay/svn/cbftp/
 	sha256sums = SKIP
-	sha256sums = 77bbedb52617cc34edc49e6d93075c092b333fdb17c4b554f431e7057a90fcd8
 
 pkgname = cbftp-svn
