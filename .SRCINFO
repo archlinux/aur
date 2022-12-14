@@ -1,12 +1,12 @@
 pkgbase = kubeclarity-cli-bin
 	pkgdesc = KubeClarity is a tool for detection and management of Software Bill Of Materials (SBOM) and vulnerabilities of container images and filesystems.
-	pkgver = 2.7.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/openclarity/kubeclarity
 	arch = x86_64
 	license = Apache 2
 	provides = kubeclarity-cli-bin
-	source = https://github.com/openclarity/kubeclarity/releases/download/v2.7.0/kubeclarity-cli-2.7.0-linux-amd64.tar.gz
-	sha256sums = b116a872b55f7af19855349135b836916b1da99e8cba648804e6b883aa66b360
+	source = https://github.com/openclarity/kubeclarity/releases/download/v2.9.0/kubeclarity-cli-2.9.0-linux-amd64.tar.gz
+	sha256sums = df3f9856c1117551a3c0cb0e269fee18b49d4da0707942eafdf240e1f27593c3
 
 pkgname = kubeclarity-cli-bin
