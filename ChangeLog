@@ -1,18 +1,21 @@
-2022-11-14
+2022-12-14 Sam Mulvey
+	* 4.17.0-1
+
+2022-11-14 Sam Mulvey
 	* 4.16.3-pre 
 	* moved to stable git repo
 	* qemu moved to separate package
 
-2022-05-16
+2022-05-16 Sam Mulvey
 	* 4.16.1-1
 	* Version increment
 	* Numerous GCC12 hacks
 
-2022-02-15
+2022-02-15 Sam Mulvey
 	* 4.16.0-3
 	* forgot to wrap qemu subpackage in an if
 
-2022-02-06
+2022-02-06 Sam Mulvey
 	* 4.16.0-2
 	* security patches
 	* qemu and stubdom now generate split packages

@@ -30,8 +30,8 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.16.3pre
-_branch="stable-4.16"
+pkgver=4.17.0
+_branch="stable-4.17"
 pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
