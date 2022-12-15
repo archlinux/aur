@@ -7,7 +7,7 @@ license=('MIT')
 arch=('x86_64')
 provides=('musicfox')
 conflicts=('musicfox' 'go-musicfox')
-depends=('alsa-lib')
+depends=('alsa-lib' 'flac1.3')
 source=(
 	"${url}/releases/download/v${pkgver}/go-musicfox_${pkgver}_linux_amd64.zip"
 	"LICENSE"
