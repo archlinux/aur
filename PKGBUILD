@@ -1,17 +1,30 @@
-pkgname=radicle
-pkgver=0.0.4
+pkgname=radicle-cli
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="Radicle tools for decentralized git."
+pkgdesc="Command-line tooling for Radicle"
 arch=('x86_64')
-url="https://radicle.xyz"
-license=('MIT')
-groups=('')
-depends=('git' 'gmp' 'ncurses' 'zlib' 'ncurses5-compat-libs')
-options=('!strip' '!emptydirs')
-source_x86_64=("https://storage.googleapis.com/static.radicle.xyz/releases/radicle_latest_amd64.deb")
-sha512sums_x86_64=('bc4fdf29331085dae8c394df40020fcabb20e8a2da21cfcef2fa11e2e638af9df09e69d187b4e0de77d545f6eeb8f6bd5a3b93dafb473df4adafa416dec9b069')
+url="https://github.com/radicle-dev/radicle-cli"
+license=('GPL3')
+provides=('rad')
 
-package(){
-	# Extract package data
-	tar xzf data.tar.gz -C "${pkgdir}"
+source_x86_64=("https://github.com/radicle-dev/radicle-cli/releases/download/v${pkgver}/radicle-cli-x86_64-unknown-linux-musl.tar.gz")
+options=(!strip)
+sha256sums_x86_64=('fddcce3c24dd75026d02656eaa3b8813c40df5b8388333795e216ea4c631b7a5')
+
+package () {
+  set -o errexit
+  set -o nounset
+  set -o pipefail
+  set -o errtrace
+
+  dir="radicle-cli-x86_64-unknown-linux-musl"
+  find "$dir" -name '*.1.gz' -type f | xargs --replace install --mode=644 --target-directory="${pkgdir}/usr/share/man/man1/" -D '{}'
+  find "$dir" -type f -executable | xargs --replace install --mode=755 --target-directory="${pkgdir}/usr/bin/" -D '{}'
+
+  set +o errexit
+  set +o nounset
+  set +o pipefail
+  set +o errtrace
 }
+
+# vim:shiftwidth=2:expandtab:tabstop=2
