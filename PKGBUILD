@@ -13,7 +13,7 @@ _openfoam_version=v2206
 depends=("${_base}-com=${_openfoam_version}" "precice")
 makedepends=(git)
 source=("git+${url}.git?signed#commit=${_gitcommit}")
-validpgpkeys=('0FBAF2A65E37EEB1EEDEB8878852E191BDAF81BF') # Gerasimos Chourdakis <chourdak@in.tum.de>
+validpgpkeys=('2A955D4FE358070072B117D56723BA104179BCE9') # Gerasimos Chourdakis <chourdak@in.tum.de>
 sha512sums=('SKIP')
 
 prepare() {
