@@ -1,0 +1,15 @@
+pkgbase = horizonwm
+	pkgdesc = Official WM of Horizon Linux. Based on DWM.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ManelCG/HorizonWM
+	arch = x86_64
+	depends = make
+	depends = pkgconf
+	depends = grep
+	depends = awk
+	conflicts = horizonwm-git
+	source = git+https://github.com/ManelCG/HorizonWM.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = horizonwm
