@@ -1,0 +1,20 @@
+pkgbase = ayatana-indicator-display
+	pkgdesc = Ayatana Indicator Display
+	pkgver = 22.9.2
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = intltool
+	makedepends = cmake-extras
+	makedepends = glib2
+	makedepends = systemd
+	makedepends = hicolor-icon-theme
+	depends = xsct
+	depends = libayatana-common
+	source = ayatana-indicator-display-22.9.2.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/22.9.2.tar.gz
+	md5sums = e30954504b5e1debb608da692c6479eb
+
+pkgname = ayatana-indicator-display
