@@ -1,6 +1,6 @@
 pkgbase = python-clickhouse-driver
 	pkgdesc = ClickHouse Python Driver with native (TCP) interface support
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/mymarilyn/clickhouse-driver
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-clickhouse-driver
 	depends = python
 	depends = python-tzlocal
 	depends = python-pytz
-	source = https://github.com/mymarilyn/clickhouse-driver/archive/0.2.4.tar.gz
-	sha256sums = bfc70889bbd95d2f80ba94887880eceb5c909d277edfa9a4986ed54b76ec6ff4
+	source = https://github.com/mymarilyn/clickhouse-driver/archive/0.2.5.tar.gz
+	sha256sums = b942fe972c1f9063e7a80666b405d7ed41e9c45e8ba522cb26c7d5504223cc47
 
 pkgname = python-clickhouse-driver
