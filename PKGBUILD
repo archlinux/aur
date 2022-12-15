@@ -2,7 +2,7 @@
 
 pkgname=musicplayerplus
 pkgver=v2.0.1r3
-pkgrel=1
+pkgrel=2
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/MusicPlayerPlus"
@@ -47,7 +47,7 @@ prepare() {
 
     ./waf configure ${prefix} --with-python-bindings --with-asserts
     ./waf
-    sudo ./waf install
+    ./waf install
   }
 }
 

@@ -1,7 +1,7 @@
 pkgbase = musicplayerplus
 	pkgdesc = Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more
 	pkgver = v2.0.1r3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doctorfree/MusicPlayerPlus
 	install = musicplayerplus.install
 	arch = x86_64
