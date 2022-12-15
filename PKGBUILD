@@ -2,7 +2,7 @@
 
 pkgname=spiceopus
 pkgver=2v33r242
-pkgrel=2
+pkgrel=3
 pkgdesc="Spice Opus is a free general purpose circuit simulator specially suited for optimization loops"
 arch=('x86_64')
 url="http://www.spiceopus.si/"
@@ -32,17 +32,12 @@ export SPICE_EXEC_DIR=$OPUSHOME/bin" > "$pkgdir"/etc/profile.d/$pkgname.sh
 
 }
 
-pre_remove(){
-    rm /etc/profile.d/$pkgname.sh
-    rm /usr/local/bin/$pkgname
-}
-
 post_install(){
-    sudo xdg-mime install /usr/share/mime/packages/spiceopus-cir.xml
-    sudo update-mime-database /usr/share/mime
-    sudo xdg-mime default spiceopus.desktop application/spiceopus
+    xdg-mime install /usr/share/mime/packages/spiceopus-cir.xml
+    update-mime-database /usr/share/mime
+    xdg-mime default spiceopus.desktop application/spiceopus
 }
 
 post_remove(){
-    sudo xdg-mime uninstall /usr/share/mime/packages/spiceopus-cir.xml
+    xdg-mime uninstall /usr/share/mime/packages/spiceopus-cir.xml
 }
