@@ -9,9 +9,9 @@ url='https://www.sequencepublishing.com/1/burbridge/beta_linux.html'
 license=('All Rights Reserved')
 depends=('zlib' 'bash')
 options=(!strip)
-source=("$pkgname-$pkgver.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux"
-        "$pkgname.desktop"
-        "$pkgname.png")
+source=("${pkgname}-${pkgver}.zip::https://www.sequencepublishing.com/cgi-bin/download.cgi?burbridgelinux"
+        "${pkgname}.desktop"
+        "${pkgname}.png")
 sha512sums=('aceeab22fadc9e8b1e8255bb7204df1fde329725d86d76256464ac43563e7280407ab1528d6c9f43301998104e4188e04f2a192afb51e0ed23e659e3e858f2fd'
             '9b7449ba7b3066be4fae5696011e4ff204d2f4e77750d110d46f5bfb04c8021957eaecdad61ffbafedec0e9c638a80e8ad7fe1ee3d5dedc6d5f7b6976a8e564b'
             '0ef714c8063eaa3abe730015acbdb976dadb6acdfb583df35bcf9ef15b5a0d27e48f42fec579b416fe8552a85b721b1f7ba1915d507594d870fe411b40d78aaf')
