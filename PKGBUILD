@@ -24,14 +24,12 @@ source=("${_model_file}::${_url}/${_pfx}-${_model_file}")
 sha1sums=("${_model_sha1sum}")
 
 package() {
-  _model="tiny"
   modelpath="/usr/share/$pkgname/${_model_file}"
   install -Dm644 "${srcdir}/${_model_file}" "$pkgdir$modelpath"
 
   wrapper="whisper.cpp-${_model}"
   echo "#!/bin/sh
-/usr/bin/whisper.cpp --model ${modelpath} $@
-" > "$srcdir/$wrapper"
+/usr/bin/whisper.cpp --model ${modelpath} "'$@' > "$srcdir/$wrapper"
   install -Dm755 "${srcdir}/$wrapper" "$pkgdir/usr/bin/$wrapper"
 
 
