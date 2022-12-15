@@ -1,0 +1,15 @@
+pkgbase = serial-cli-git
+	pkgdesc = serial app
+	pkgver = 1.0.0.r0.60c08d8
+	pkgrel = 1
+	url = https://github.com/ToniLipponen/Serial-cli.git
+	arch = x86_64
+	arch = x86
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	provides = serial-cli
+	source = serial-cli::git+https://github.com/ToniLipponen/Serial-cli.git
+	sha512sums = SKIP
+
+pkgname = serial-cli-git
