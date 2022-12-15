@@ -1,8 +1,9 @@
-# Maintainer: Federico Squartini <federico.squartini at gmail dot com>
+# Maintainer: Severen Redwood <me@severen.dev>
+# Contributor: Federico Squartini <federico.squartini at gmail dot com>
 
 pkgname=exercism
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
