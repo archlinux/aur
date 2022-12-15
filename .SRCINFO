@@ -1,12 +1,13 @@
 pkgbase = gdb-git
 	pkgdesc = The GNU Debugger from git
-	pkgver = 111892.2756004fe78
+	pkgver = 112405.2e55fbce03a
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = source-highlight
 	provides = gdb-common
 	provides = gdb
 	conflicts = gdb-common
@@ -18,7 +19,7 @@ pkgbase = gdb-git
 
 pkgname = gdb-git
 	depends = expat
-	depends = guile3
+	depends = guile
 	depends = ncurses
 	depends = xz
 	depends = python
@@ -32,7 +33,7 @@ pkgname = gdb-git
 	backup = etc/gdb/gdbinit
 
 pkgname = gdb-common-git
-	depends = python
-	depends = guile3
+	depends = python-pygments
+	depends = guile
 	provides = gdb-common
 	conflicts = gdb-common

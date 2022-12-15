@@ -3,13 +3,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=111892.2756004fe78
+pkgver=112405.2e55fbce03a
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'source-highlight')
 provides=('gdb-common' 'gdb')
 conflicts=('gdb-common' 'gdb')
 backup=('etc/gdb/gdbinit')
@@ -49,12 +49,12 @@ build() {
 }
 
 package_gdb-git() {
-  depends=('expat' 'guile3' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
+  depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
   provides=('gdb')
   conflicts=('gdb')
   backup=(etc/gdb/gdbinit)
   cd "$srcdir/gdb/build"
-
+  
   # install only gdb, otherwise it would install files already provided by binutils
   make DESTDIR="$pkgdir/" install-gdb
 
@@ -69,7 +69,7 @@ package_gdb-git() {
 package_gdb-common-git() {
   provides=('gdb-common')
   conflicts=('gdb-common')
-  depends=('python' 'guile3')
+  depends=('python-pygments' 'guile')
   cd "$srcdir/gdb/build"
   make -C gdb/data-directory DESTDIR="$pkgdir" install
 }
