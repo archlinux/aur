@@ -1,0 +1,6 @@
+pkg
+src
+blockify-git
+
+*.tar.zst
+
