@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Baralga
+GenericName=Time tracking solution
+Exec=baralga
+Icon=baralga
+Type=Application
+Terminal=false
+Categories=Office;
