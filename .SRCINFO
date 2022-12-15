@@ -1,0 +1,17 @@
+pkgbase = tiny-remarkable-scripts-git
+	pkgdesc = A set of tiny remarkable scripts to pull and push pdfs via ssh
+	pkgver = r3.15b42b4
+	pkgrel = 1
+	url = https://github.com/mosauter/remarkable_scripts
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-rmrl
+	depends = imagemagick
+	depends = util-linux
+	provides = tiny-remarkable-scripts
+	conflicts = tiny-remarkable-scripts
+	source = tiny-remarkable-scripts::git+https://github.com/mosauter/remarkable_scripts
+	b2sums = SKIP
+
+pkgname = tiny-remarkable-scripts-git
