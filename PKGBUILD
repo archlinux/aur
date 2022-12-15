@@ -19,7 +19,7 @@ sha512sums=('de27198ae57fff41029075c323b2f24a9d10e22ae975e11383bbb83512d078e3b18
 
 package() {
   msg2 "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
   msg2 "Moving the files..."
   mv "${pkgdir}/opt/${pkgname_orig}" "${pkgdir}/opt/${_pkgname}"
