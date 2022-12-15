@@ -1,4 +1,4 @@
-# Maintainer: Dawson Dias <thexerothermicsclerodermoid@gmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Jacob Gogichaishvili <jggsecondary@gmail.com>
 
 _pkgname="zaread"
