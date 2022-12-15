@@ -1,5 +1,5 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
-# Maintainer: txtsd <code@ihavea.quest>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=prismlauncher-bin
 pkgver=6.0
