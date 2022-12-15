@@ -6,7 +6,7 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20220531.eaee2da
+pkgver=20221214.f3c283e
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -21,7 +21,7 @@ source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmwar
          allow-inplace-rebuild.patch)
 sha256sums=('SKIP'
             '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7'
-            '0e1840112f4c439da51860437181a5ec3673546744d41716238dc1b357fc2880'
+            'b3b94f7671c632e8d353e7fb9a3eb967b795b3b2f28a7c1994f28ed69f0dde9f'
             '33a486fc036ec2d2e99799550b61eab395e2dd27b0e02e52e0bd8b9f3810d003')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
@@ -70,7 +70,7 @@ package_linux-firmware-whence-git() {
   provides=("${pkgname%-git}=$pkgver")
   pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${pkgbase}/WHENCE"
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 ${pkgbase}/WHENCE
 }
 
 package_linux-firmware-git() {
@@ -147,6 +147,8 @@ package_linux-firmware-marvell-git() {
   depends=('linux-firmware-whence')
 
   mv -v linux-firmware-marvell/* "${pkgdir}"
+  # remove arm64 firmware #76583
+  rm "${pkgdir}"/usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img.xz
 }
 
 package_linux-firmware-qcom-git() {

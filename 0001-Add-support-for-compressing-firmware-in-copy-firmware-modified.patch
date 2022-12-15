@@ -22,7 +22,7 @@ index e1c362f..9a48471 100644
 +++ b/Makefile
 @@ -11,3 +11,7 @@ check:
  install:
- 	mkdir -p $(DESTDIR)$(FIRMWAREDIR)
+ 	install -d $(DESTDIR)$(FIRMWAREDIR)
  	./copy-firmware.sh $(DESTDIR)$(FIRMWAREDIR)
 +
 +installcompress:
