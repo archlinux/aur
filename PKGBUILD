@@ -3,7 +3,7 @@
 # Contributor: Fabio Lolix <fabio.loli@disroot.org>>
 
 pkgname=free-delta
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')

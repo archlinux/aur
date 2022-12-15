@@ -1,6 +1,6 @@
 pkgbase = free-delta
 	pkgdesc = An Open Source System for Processing Taxonomic Descriptions
-	pkgver = 2.9.3
+	pkgver = 2.9.4
 	pkgrel = 1
 	url = http://freedelta.sourceforge.net/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = free-delta
 	makedepends = git
 	depends = gtk2
 	depends = classic-delta
-	source = git+https://github.com/maurobio/freedelta.git#tag=v2.9.3
+	source = git+https://github.com/maurobio/freedelta.git#tag=v2.9.4
 	source = Free_Delta_Editor.desktop
 	source = fde.patch
 	source = https://packages.lazarus-ide.org/SynFacilSyn.zip
