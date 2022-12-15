@@ -10,20 +10,20 @@ arch=('any')
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-scipy' 'python-matplotlib')
-source=("https://pypi.io/packages/source/b/baycomp/baycomp-$pkgver.tar.gz")
+source=("https://pypi.io/packages/source/b/baycomp/baycomp-${pkgver}.tar.gz")
 sha256sums=('c43472c16bd7cdf4884dd4c73dd307e4a3da7097fe49c83cd5e88d75142923b0')
 
 prepare() {
-    cd "${srcdir}"/baycomp-$pkgver
+    cd "${srcdir}"/baycomp-${pkgver}
 }
 
 build() {
-    cd "${srcdir}"/baycomp-$pkgver
+    cd "${srcdir}"/baycomp-${pkgver}
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/baycomp-$pkgver"
+    cd "${srcdir}/baycomp-${pkgver}"
     python setup.py install --root=${pkgdir} --optimize=1
 
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
