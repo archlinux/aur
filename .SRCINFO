@@ -1,6 +1,6 @@
 pkgbase = volctl
 	pkgdesc = Per-application volume control and OSD for Linux desktops.
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://buzz.github.io/volctl/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = volctl
 	optdepends = pavucontrol: mixer support,
 	optdepends = statusnotifier-introspection-dbus-menu: SNI support
 	options = !emptydirs
-	source = git+https://github.com/buzz/volctl.git#tag=v0.9.2
+	source = git+https://github.com/buzz/volctl.git#tag=v0.9.3
 	md5sums = SKIP
 
 pkgname = volctl
