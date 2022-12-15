@@ -64,7 +64,7 @@ pkgbase = linux-jcore
 	sha256sums = 2542b5cea79ab5817ce3d30c54acd045966b9c14587bfb0b2f50d473da48a1d5
 
 pkgname = linux-jcore
-	pkgdesc = Kernel for Manjaro/Arch (ACS override patch include)
+	pkgdesc = Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -77,7 +77,7 @@ pkgname = linux-jcore
 	provides = KSMBD-MODULE
 
 pkgname = linux-jcore-headers
-	pkgdesc = Headers and scripts for building modules for the Kernel for Manjaro/Arch (ACS override patch include)
+	pkgdesc = Headers and scripts for building modules for the Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)
 	depends = gawk
 	depends = python
 	depends = libelf

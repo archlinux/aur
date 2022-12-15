@@ -121,7 +121,7 @@ build() {
 }
 
 package_linux-jcore() {
-  pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
+  pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
   optdepends=('dkms: Dynamic Kernel Module System' 'nvidia-dkms: NVIDIA drivers - module sources' 'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
@@ -152,7 +152,7 @@ package_linux-jcore() {
 }
 
 package_linux-jcore-headers() {
-  pkgdesc="Headers and scripts for building modules for the Kernel for Manjaro/Arch (ACS override patch include)"
+  pkgdesc="Headers and scripts for building modules for the Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
   depends=('gawk' 'python' 'libelf' 'pahole')
 
   cd "linux-${pkgver}"
