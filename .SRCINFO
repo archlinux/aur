@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 8.5.1.7
+	pkgver = 8.5.2.2
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = tensorrt
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = local://TensorRT-8.5.1.7.Linux.x86_64-gnu.cuda-11.8.cudnn8.6.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=8.5.1
+	source = local://TensorRT-8.5.2.2.Linux.x86_64-gnu.cuda-11.8.cudnn8.6.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=8.5.2
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -29,7 +29,7 @@ pkgbase = tensorrt
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
 	source = TensorRT-SLA.txt
-	sha256sums = 39cc7f077057d1363794e8ff51c4cf21a5dbeccf1116b0020ba0dae0f3063076
+	sha256sums = 3afe62acd4bf2444e9133d3514814d32cf585668c61cbee5497983a6009d81aa
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

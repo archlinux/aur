@@ -9,8 +9,8 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=8.5.1.7
-_ossver=8.5.1
+pkgver=8.5.2.2
+_ossver=8.5.2
 _cudaver=11.8
 _cudnnver=8.6
 _protobuf_ver=3.20.1
@@ -37,7 +37,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('39cc7f077057d1363794e8ff51c4cf21a5dbeccf1116b0020ba0dae0f3063076'
+sha256sums=('3afe62acd4bf2444e9133d3514814d32cf585668c61cbee5497983a6009d81aa'
             'SKIP'
             'SKIP'
             'SKIP'
