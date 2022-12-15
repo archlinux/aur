@@ -1,6 +1,6 @@
 pkgbase = kodi-git
-	pkgver = r61737.911ad268d07
-	pkgrel = 2
+	pkgver = r61759.34f88cd3679
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -66,7 +66,6 @@ pkgbase = kodi-git
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-2.0.0.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
-	noextract = rapidjson-1.1.0.tar.gz
 	options = !lto
 	source = git+https://github.com/xbmc/xbmc.git#branch=master
 	source = libdvdcss-1.4.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.3-Next-Nexus-Alpha2-2.tar.gz
@@ -79,7 +78,6 @@ pkgbase = kodi-git
 	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-2.0.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.2.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/rapidjson-1.1.0.tar.gz
 	source = cheat-sse-build.patch
 	b2sums = SKIP
 	b2sums = 2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c
@@ -92,7 +90,6 @@ pkgbase = kodi-git
 	b2sums = a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e
 	b2sums = ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c
 	b2sums = 1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61
-	b2sums = e1564b3cfa020f76437b0a35048a42ff2cd98b5ce285e63f228e158885182e5cecda13407cdf30c03fa39b47cbc579ff0065f6c2682d04b806e8f9ea8d36fc4e
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
 
 pkgname = kodi-git
@@ -135,7 +132,7 @@ pkgname = kodi-git
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r61737.911ad268d07
+	provides = kodi=r61759.34f88cd3679
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -152,7 +149,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r61737.911ad268d07
+	provides = kodi-eventclients=r61759.34f88cd3679
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -161,11 +158,11 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r61737.911ad268d07
+	provides = kodi-tools-texturepacker=r61759.34f88cd3679
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r61737.911ad268d07
+	provides = kodi-dev=r61759.34f88cd3679
 	conflicts = kodi-dev

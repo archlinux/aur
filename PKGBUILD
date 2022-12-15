@@ -22,8 +22,8 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61737.911ad268d07
-pkgrel=2
+pkgver=r61759.34f88cd3679
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -70,7 +70,6 @@ _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
-_rapidjson_version="1.1.0"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -83,7 +82,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/rapidjson-$_rapidjson_version.tar.gz"
   'cheat-sse-build.patch'
 )
 noextract=(
@@ -97,7 +95,6 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "libudfread-$_libudfread_version.tar.gz"
-  "rapidjson-$_rapidjson_version.tar.gz"
 )
 b2sums=('SKIP'
         '2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c'
@@ -110,7 +107,6 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        'e1564b3cfa020f76437b0a35048a42ff2cd98b5ce285e63f228e158885182e5cecda13407cdf30c03fa39b47cbc579ff0065f6c2682d04b806e8f9ea8d36fc4e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 pkgver() {
@@ -154,7 +150,6 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
-    -DENABLE_INTERNAL_RAPIDJSON=ON
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=ON
     -DENABLE_VDPAU=ON
@@ -168,7 +163,6 @@ build() {
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DRAPIDJSON_URL="$srcdir/rapidjson-$_rapidjson_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
   )
 
