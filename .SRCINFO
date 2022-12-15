@@ -1,0 +1,15 @@
+pkgbase = shutthefetchup-git
+	pkgdesc = A minimal fetch tool to tell all users who posts those annoying fetch BS on r/linux to shut the f--- up.
+	pkgver = r1.2cab32f
+	pkgrel = 1
+	url = https://github.com/leap0x7b/shutthefetchup
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = bash
+	provides = shutthefetchup
+	conflicts = shutthefetchup
+	source = shutthefetchup-git::git+https://github.com/leap0x7b/shutthefetchup.git
+	md5sums = SKIP
+
+pkgname = shutthefetchup-git
