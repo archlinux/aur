@@ -13,7 +13,7 @@ depends=('alsa-lib' 'at-spi2-atk' 'atk' 'dbus-glib' 'gtk3' 'libcups' 'libdrm' 'l
 provides=('flaresolverr')
 options=('!strip')
 install='flaresolverr.install'
-source=("https://github.com/$__pkgname/$__pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-x64.zip"
+source=("https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.zip"
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
