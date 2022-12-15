@@ -1,4 +1,6 @@
 # Maintainer: Relwi <theofficialdork@hotmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+
 pkgname=fast-discord-git
 pkgver=r232.f14ee21
 pkgrel=1
