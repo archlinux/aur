@@ -1,8 +1,8 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=arch-wiki-docs-search
 pkgver=1
-pkgrel=2
-pkgdesc='A script to search the offline version of the arch wiki'
+pkgrel=3
+pkgdesc='A bad script to search the arch wiki - use wikiman instead'
 url='https://github.com/magnus-ISU/aur-scripts/blob/master/wiki-docs-search'
 arch=('any')
 license=('Unlicense')

@@ -1,7 +1,7 @@
 pkgbase = arch-wiki-docs-search
-	pkgdesc = A script to search the offline version of the arch wiki
+	pkgdesc = A bad script to search the arch wiki - use wikiman instead
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/magnus-ISU/aur-scripts/blob/master/wiki-docs-search
 	arch = any
 	license = Unlicense
