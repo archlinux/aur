@@ -1,0 +1,18 @@
+pkgbase = javelin-git
+	pkgdesc = A better touchpad experience for laptops with large screens
+	pkgver = v0.1.0
+	pkgrel = 1
+	url = https://github.com/I60R/javelin
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = sway
+	provides = javelin
+	conflicts = javelin
+	source = git+https://github.com/I60R/javelin.git
+	md5sums = SKIP
+
+pkgname = javelin-git
