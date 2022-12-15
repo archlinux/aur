@@ -1,0 +1,2 @@
+z /etc/rbfeeder.ini 0644 rbfeeder rbfeeder
+f /var/log/rbfeeder.log 0644 rbfeeder rbfeeder
