@@ -1,0 +1,11 @@
+pkgbase = whisper.cpp-model-tiny.en
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ggerganov/whisper.cpp
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = tiny.en.bin::https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en.bin
+	sha1sums = c78c86eb1a8faa21b369bcd33207cc90d64ae9df
+
+pkgname = whisper.cpp-model-tiny.en
