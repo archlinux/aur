@@ -1,5 +1,5 @@
 pkgbase = kodi-matrix-git
-	pkgver = r57338.dcec5f49743
+	pkgver = r57747.813a194c4e8
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -66,7 +66,8 @@ pkgbase = kodi-matrix-git
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-1.12.0.tar.gz
 	noextract = libudfread-1.1.0.tar.gz
-	source = git://github.com/xbmc/xbmc.git#branch=Matrix
+	options = !lto
+	source = git+https://github.com/xbmc/xbmc.git#branch=Matrix
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -78,6 +79,8 @@ pkgbase = kodi-matrix-git
 	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-1.12.0.tar.gz
 	source = http://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.0.tar.gz
 	source = cheat-sse-build.patch
+	source = build-fix-for-dav1d-1.0.0.patch
+	source = 0001-add-dav1d-patch-to-build-system.patch
 	b2sums = SKIP
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355
@@ -90,6 +93,8 @@ pkgbase = kodi-matrix-git
 	b2sums = 441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6
 	b2sums = e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
+	b2sums = 6928d0fb1f4cb2609dee87c7078e02cecc37ddef263485b47be0ae5c281be67b403b39c95ea370c6b6667e1eceb1c7e6fb83ec9b04acd0bdbe4abec17fb84385
+	b2sums = f1769867f7bb998e9705cfe7709072436bc4824775ad6ccd151bb240798413a92c4a5c92452f5b781a439660a3d9a0846ebf6fefebdfa50b95f076ffdc6ff55e
 
 pkgname = kodi-matrix-git
 	pkgdesc = A software media player and entertainment hub for digital media (Matrix branch)
@@ -125,12 +130,13 @@ pkgname = kodi-matrix-git
 	depends = libxkbcommon
 	depends = waylandpp
 	depends = libinput
+	depends = pcre
 	optdepends = afpfs-ng: Apple shares support
 	optdepends = bluez: Blutooth support
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r57338.dcec5f49743
+	provides = kodi=r57747.813a194c4e8
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -138,16 +144,18 @@ pkgname = kodi-matrix-git
 	conflicts = kodi-x11
 	conflicts = kodi-wayland
 	conflicts = kodi-gbm
+	conflicts = kodi-matrix-git
 	replaces = kodi
 	replaces = kodi-x11
 	replaces = kodi-wayland
 	replaces = kodi-gbm
+	replaces = kodi-matrix-git
 
 pkgname = kodi-matrix-git-eventclients
 	pkgdesc = Kodi Event Clients (Matrix branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r57338.dcec5f49743
+	provides = kodi-eventclients=r57747.813a194c4e8
 	conflicts = kodi-eventclients
 
 pkgname = kodi-matrix-git-tools-texturepacker
@@ -156,11 +164,11 @@ pkgname = kodi-matrix-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r57338.dcec5f49743
+	provides = kodi-tools-texturepacker=r57747.813a194c4e8
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-matrix-git-dev
 	pkgdesc = Kodi dev files (Matrix branch)
 	depends = kodi-matrix-git
-	provides = kodi-dev=r57338.dcec5f49743
+	provides = kodi-dev=r57747.813a194c4e8
 	conflicts = kodi-dev

@@ -1,0 +1,29 @@
+From a45725ef721e737fae16e4348bc1214139c19f5e Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky AT protonmail DOT com>
+Date: Sat, 30 Apr 2022 14:10:29 -0400
+Subject: [PATCH] add dav1d patch to build system
+
+---
+ cmake/modules/FindFFMPEG.cmake | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindFFMPEG.cmake b/cmake/modules/FindFFMPEG.cmake
+index 81d2697..9aa85e2 100644
+--- a/cmake/modules/FindFFMPEG.cmake
++++ b/cmake/modules/FindFFMPEG.cmake
+@@ -277,7 +277,11 @@ if(NOT FFMPEG_FOUND)
+                                     <SOURCE_DIR> &&
+                                     ${CMAKE_COMMAND} -E copy
+                                     ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
+-                                    <SOURCE_DIR>)
++                                    <SOURCE_DIR> &&
++                                    patch -p1 < ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/build-fix-for-dav1d-1.0.0.patch &&
++                                    echo "########################################## patched ffmpeg ##############################"
++                     )
++
+ 
+   if (ENABLE_INTERNAL_DAV1D)
+     add_dependencies(ffmpeg dav1d)
+-- 
+2.36.0
+
