@@ -1,6 +1,6 @@
 pkgbase = python-extruct
 	pkgdesc = Extract embedded metadata from HTML markup
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/scrapinghub/extruct
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-extruct
 	depends = python-w3lib
 	depends = python-html-text
 	depends = python-jstyleson
-	source = python-extruct-0.13.0.tar.gz::https://github.com/scrapinghub/extruct/archive/v0.13.0.tar.gz
-	sha256sums = 2bf4d8aaf9cfd2ea27bac256e5cabd601a480a47f49b9531ac8bfe3b42a9c74f
+	source = python-extruct-0.14.0.tar.gz::https://github.com/scrapinghub/extruct/archive/v0.14.0.tar.gz
+	sha256sums = 7bb956c55eea39fddfb0b827a676abb19abac2af009c1b420b3a004f3e2b1262
 
 pkgname = python-extruct
