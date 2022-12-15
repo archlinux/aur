@@ -1,4 +1,5 @@
-/src
-/pkg
-/blockbench
-*.pkg.tar.zst
+src
+pkg
+blockbench
+
+*.tar.zst
