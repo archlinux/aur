@@ -1,4 +1,4 @@
-# Maintainer: txtsd <code@ihavea.quest>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Maintainer: Atakku <atakkudev@gmail.com>
 
 pkgname=blockbench-bin
