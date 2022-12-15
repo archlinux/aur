@@ -1,6 +1,6 @@
 pkgbase = r-brendadb
 	pkgdesc = The BRENDA Enzyme Database
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/brendaDb
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-brendadb
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/brendaDb_1.11.0.tar.gz
-	sha256sums = e62b4afcd6b01c9341e8fbda49db0c46cfd74e668be7d4b48c327dedcd6b59f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/brendaDb_1.12.0.tar.gz
+	sha256sums = 027dfa2a897315b29160227d8cf000e96f2301a48874d6fdb8e77d69157911a7
 
 pkgname = r-brendadb
