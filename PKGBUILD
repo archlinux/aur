@@ -2,35 +2,35 @@
 # Contributor: Jason Wood <jwood@startmail.com>
 
 pkgname=headlines
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
 url="https://gitlab.com/caveman250/headlines"
 license=('GPL3')
 depends=(
-	'libgtkmm-4.0.so'
 	'cairo'
-	'libmicrohttpd.so'
-	'libcurl.so'
-	'openssl'
-	'libjsoncpp.so'
-	'libxml2.so'
 	'ffmpeg'
-	'gstreamer'
+	'gst-libav'
+	'gst-plugins-bad'
 	'gst-plugins-base'
 	'gst-plugins-good'
-	'gst-plugins-bad'
-	'gst-libav'
-	'youtube-dl'
-	'websocketpp'
+	'gstreamer'
 	'libadwaita'
+	'libcurl.so'
+	'libgtkmm-4.0.so'
+	'libjsoncpp.so'
+	'libmicrohttpd.so'
+	'libsecret-1.so'
+	'libxml2.so'
+	'openssl'
+	'websocketpp'
 	'xdg-utils'
-	'libsecret-1.so')
+	'youtube-dl')
 makedepends=('cmake' 'boost')
 replaces=('gtkeddit')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/Headlines-$pkgver.tar.bz2")
-sha256sums=('3e9b76a14898ec0fcdf68b61d52977ca2a8ee051939f8329f01d35437de394ce')
+sha256sums=('98863f5d0230600394f66d9467cfaa869c0206bcda36b2f8a5004eee03e973e4')
 
 prepare() {
 	cd "Headlines-$pkgver"
@@ -45,9 +45,9 @@ build() {
 		-DDIST_BUILD=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
-	make -C build
+	cmake --build build
 }
 
 package() {
-	make -C build install DESTDIR="$pkgdir/"
+	DESTDIR="$pkgdir" cmake --install build
 }
