@@ -1,0 +1,10 @@
+pkgbase = arch-chroot-build
+	pkgdesc = Build AUR packages in a chroot easily
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = devtools
+
+pkgname = arch-chroot-build

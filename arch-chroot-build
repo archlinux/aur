@@ -1,0 +1,86 @@
+#!/bin/bash
+export BASEPATH=${XDG_DATA_HOME:-$HOME/.local/share}/arch-chroot-build
+export CHROOT="$BASEPATH/chroot"
+export CLONE="$BASEPATH/clone"
+
+help() {
+	echo Automatically sets up building AUR packages in a chroot for you, and will find and clone them for you
+	echo Files managed at $BASEPATH
+	echo
+	printf "Usage: arch-chroot-build [-in] [package name]\n\t-i\tInstall the package afterwards\n\t-n\tJust clone and install the package, don't do so in a chroot\n\t-U\tForce updating of packages. Otherwise arch-chroot-build will only attempt to update once every 2 days\n\n\tpackage_name\tWithout a package name, assumes the current directory has a PKGBUILD. With one, clones that package from the AUR\n"
+}
+
+executing() {
+	type lolcat >/dev/null && {
+		echo "$@" | lolcat
+	} || {
+		echo -e "\x1b[31m$@\x1b[0m"
+	}
+	"$@"
+}
+
+
+# Get CLI args
+while true; do
+	OPTIND=1
+	while getopts "h?inU" opt; do
+		case "$opt" in
+		n) nochroot=1    ;;
+		i) build=1       ;;
+		U) forceupdate=1 ;;
+		h|\?)
+			help
+			exit 0
+			;;
+		esac
+	done
+	shift $((OPTIND-1))
+
+	break
+done
+
+executing echo hi
+
+# Setup - the directory does not exist
+mkdir -p $CLONE
+mkdir $CHROOT 2>/dev/null && {
+	echo arch-chroot-build has not been set up yet.
+	echo Creating $CHROOT and installing base-devel
+	# If mkdir not -p succeeds, then we have not set this up before
+	executing mkarchroot $CHROOT/root base-devel
+}
+
+# If argument is passed, search the AUR for a package and clone it, continuing in its directory
+[[ -z $1 ]] || {
+	pushd $CLONE
+	[[ -z `curl "https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$1" 2>/dev/null | grep "class='error'"` ]] || {
+		echo $1 is not a valid AUR package!!!
+		exit 1
+	}
+	executing git clone https://aur.archlinux.org/"$1".git || exit 1
+	cd $1 || exit 1
+}
+
+# There should be a PKGBUILD here; if not, give help
+[[ -f ./PKGBUILD ]] || {
+	help
+	exit 1
+}
+
+# Update the system, if it has been longer than a day since it was updated (or a reboot - don't clutter the filesystem)
+datefile=/tmp/arch-chroot-build-last-update-time
+two_days=172800
+[[ -z $forceupdate ]] && [[ -f $datefile ]] && [[ $(( `date +%s --utc` - `cat $datefile` )) -le $two_days ]] || {
+	executing arch-nspawn $CHROOT/root pacman -Syu
+	date +%s --utc > $datefile
+}
+
+[[ -z $nochroot ]] && {
+	executing makechrootpkg -c -r $CHROOT
+} || {
+	executing makepkg
+}
+
+[[ -z $build ]] || {
+	executing makepkg -si
+}
