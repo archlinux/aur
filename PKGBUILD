@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Bader <Bad3r@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.8.7.r25.f40ab3552
+pkgver=0.8.9.r829.022f990f2
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
