@@ -1,7 +1,7 @@
 pkgbase = brillo
 	pkgdesc = Control the brightness of backlight and keyboard LED devices
 	pkgver = 1.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cameronnemo/brillo
 	arch = i686
 	arch = x86_64

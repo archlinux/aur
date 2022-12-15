@@ -1,9 +1,9 @@
 # Maintainer: Agustin Cisneros <agustincc@tutanota.com>
-# Contributor: Cameron Nemo <camerontnorman@gmail.com>
+# Contributor: Cameron Nemo <cam@nohom.org>
 
 pkgname=brillo
 pkgver=1.4.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Control the brightness of backlight and keyboard LED devices'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/cameronnemo/brillo"
