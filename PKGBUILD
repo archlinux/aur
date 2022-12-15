@@ -1,4 +1,6 @@
 # Maintainer: Atakku <atakkudev@gmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+
 pkgname=blockbench-git
 pkgver=4.3.1
 pkgrel=1
