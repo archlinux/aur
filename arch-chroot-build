@@ -65,6 +65,7 @@ mkdir $CHROOT 2>/dev/null && {
 	}
 	[[ -d "$1" ]] && {
 		cd "$1"
+		cecho Warning! Repo already exists, AUR packages can fail to build when not built in a clean state.
 		executing git pull
 	} || {
 		executing git clone https://aur.archlinux.org/"$1".git
