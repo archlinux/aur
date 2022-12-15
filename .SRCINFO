@@ -1,19 +1,13 @@
 pkgbase = radicle
-	pkgdesc = Radicle tools for decentralized git.
-	pkgver = 0.0.4
-	pkgrel = 1
-	url = https://radicle.xyz
-	arch = x86_64
-	license = MIT
-	depends = git
-	depends = gmp
-	depends = ncurses
-	depends = zlib
-	depends = ncurses5-compat-libs
-	options = !strip
-	options = !emptydirs
-	source_x86_64 = https://storage.googleapis.com/static.radicle.xyz/releases/radicle_latest_amd64.deb
-	sha512sums_x86_64 = bc4fdf29331085dae8c394df40020fcabb20e8a2da21cfcef2fa11e2e638af9df09e69d187b4e0de77d545f6eeb8f6bd5a3b93dafb473df4adafa416dec9b069
+        pkgdesc = Command-line tooling for Radicle
+        pkgver = 0.6.1
+        pkgrel = 1
+        url = https://github.com/radicle-dev/radicle-cli
+        arch = x86_64
+        license = GPL3
+        provides = rad
+        options = !strip
+        source_x86_64 = https://github.com/radicle-dev/radicle-cli/releases/download/v0.6.1/radicle-cli-x86_64-unknown-linux-musl.tar.gz
+        sha256sums_x86_64 = fddcce3c24dd75026d02656eaa3b8813c40df5b8388333795e216ea4c631b7a5
 
 pkgname = radicle
-
