@@ -86,6 +86,7 @@ if [[ -z "$wiki_browser" ]]; then
 	exit 1
 fi
 
+to_open=""
 case "$1" in
 	[0-9]*)
 		if [ ! -f "$tmp" ]; then
@@ -93,8 +94,6 @@ case "$1" in
 			exit 1
 		fi
 		to_open=$(($1 + 1))
-		file_to_open=`sed "${to_open}"'q;d' $tmp`
-		$wiki_browser $file_to_open
 		;;
 	*)
 		save_search $@
@@ -103,8 +102,30 @@ case "$1" in
 		printf 'Enter a selection: '
 		read selection
 		to_open=$(($selection + 1))
-		file_to_open=`sed "${to_open}"'q;d' $tmp`
-		echo $file_to_open
-		$wiki_browser $file_to_open
 		;;
 esac
+echo $to_open
+cat $tmp
+file_to_open=`sed "${to_open}"'q;d' $tmp`
+path_prefix="$html_path/$language/"
+path_prefix_length=${#path_prefix}
+url_file_to_open=${file_to_open:$path_prefix_length}
+
+random_port=''
+while true; do
+	port=$(shuf -i 2000-65000 -n 1)
+	echo trying $port
+	netstat -lat | grep '^'"$port"'$' > /dev/null
+	if [[ $? == 1 ]] ; then
+		random_port=$port
+		break
+	fi
+done
+
+url_to_open="http://0.0.0.0:$random_port/$url_file_to_open"
+echo $url_to_open
+
+simple-http-server -p $random_port $path_prefix &
+
+#TODO Still does not work. Opening a link doesn't append .html
+$wiki_browser $url_to_open
