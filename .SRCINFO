@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-printers
 	pkgdesc = Ayatana Indicator showing active print jobs
-	pkgver = 22.2.0
+	pkgver = 22.9.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ayatana-indicator-printers
 	depends = cups
 	depends = libayatana-common
 	optdepends = system-config-printer
-	source = ayatana-indicator-printers-22.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/22.2.0.tar.gz
-	md5sums = e188745e4ed863077ad74c9249262703
+	source = ayatana-indicator-printers-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/22.9.0.tar.gz
+	md5sums = addeb28c59e862e4832b5fb36ede61d4
 
 pkgname = ayatana-indicator-printers
