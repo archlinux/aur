@@ -18,8 +18,8 @@ echo ${_version}
 echo ${_vrc}
 echo "updating checksums and version for PKGBUILDs"
 sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD
-#ls *PKGBUILD | parallel updpkgsums {}
 updpkgsums
+ls *PKGBUILD | parallel updpkgsums {}
 echo "creating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz

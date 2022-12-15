@@ -7,7 +7,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.2.1'
-pkgrel=7
+pkgrel=8
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -96,6 +96,10 @@ _pkgdir="${pkgdir}"
 _systemddir="usr/lib/systemd/system"
 _skywirebin="skywire-bin/"
 _package
+if command -v tree &> /dev/null ; then
+_msg2 'package tree'
+  tree -a ${pkgdir}
+fi
 }
 #_package function - used in build variants
 _package() {
@@ -148,10 +152,7 @@ for _i in "${_icon[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"
 done
-if command -v tree &> /dev/null ; then
-_msg2 'package tree'
-  tree -a ${_pkgdir}
-fi
+
 }
 
 _msg2() {

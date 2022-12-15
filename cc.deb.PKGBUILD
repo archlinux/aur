@@ -1,6 +1,7 @@
 source deb.PKGBUILD
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkgarches=('armhf' 'arm64' 'amd64')
+##STATIC CROSS-COMPILATION DEPENDENCIES NOT SATISFIABLE!!!
 makedepends=("${makedepends[@]}" "aarch64-linux-musl" "arm-linux-gnueabihf-musl") # 'arm-linux-gnueabihf-binutils' 'aarch64-binutils')
 
 prepare() {
@@ -45,9 +46,17 @@ _GOAPPS=${GOPATH}/apps.${_pkgarch}
 _debpkgdir="${_pkgname}-${pkgver}${_rc}-${_pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _systemddir="etc/systemd/system"
+_skywirebin="skywire-bin/"
+
 [[ -d ${_pkgdir} ]] && rm -rf ${_pkgdir}
 _packagedeb
 done
+if command -v tree &> /dev/null ; then
+_msg2 'package tree'
+  tree -a ${pkgdir}
+fi
 #exit so the arch package doesn't get built
 exit
 }
+sha256sums=('56da81239baefeffd0bb607c4d1d3a1efc2e86e029471892970e531a9c269533'
+            'SKIP')
