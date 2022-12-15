@@ -2,7 +2,7 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.43.r1.gf63b015
+pkgver=0.3.45.r0.gcf2560c
 pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
@@ -12,7 +12,7 @@ url='https://alphacephei.com/vosk/'
 license=('Apache')
 makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
              'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-websockets'
-             'python-wheel')
+             'python-wheel' 'java-environment=17')
 checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
@@ -49,7 +49,7 @@ prepare() {
 }
 
 pkgver() {
-    git -C vosk-api describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    git -C vosk-api describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/go\///;s/^v//'
 }
 
 build() {
@@ -115,7 +115,8 @@ build() {
 check() {
     local _test
     cd vosk-api/python/example
-    for _test in alternatives empty ffmpeg nlsml reset simple speaker srt text words
+    # https://github.com/alphacep/vosk-api/issues/1220
+    for _test in alternatives empty ffmpeg nlsml simple speaker srt text words #reset
     do
         printf '%s\n' "Running test_${_test}..."
         PYTHONPATH="${PWD}/../build/lib" VOSK_MODEL_PATH="${srcdir}/models" python "./test_${_test}.py" test.wav
