@@ -1,6 +1,6 @@
 pkgbase = python-alphacodersdownloader
 	pkgdesc = A script for download backgrounds on https://alphacoders.com written in Python.
-	pkgver = 0.1.4.2
+	pkgver = 0.1.4.3
 	pkgrel = 1
 	url = https://github.com/Asthowen/AlphacodersDownloader/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-alphacodersdownloader
 	depends = python-aiofiles
 	depends = python-setproctitle
 	depends = python-beautifulsoup4
-	source = https://pypi.io/packages/source/A/AlphacodersDownloader/AlphacodersDownloader-0.1.4.2.tar.gz
-	sha256sums = 6cf92a12fcc28b7103238c816c5d1bbb3b8eda818fb697a2d75a8aca0db81b84
+	source = https://pypi.io/packages/source/A/AlphacodersDownloader/AlphacodersDownloader-0.1.4.3.tar.gz
+	sha256sums = 5c978221665cb98e8075a5e89997932a2d4a33bc3ea878e500c11134d738fe0a
 
 pkgname = python-alphacodersdownloader
