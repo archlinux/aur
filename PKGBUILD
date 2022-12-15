@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd Inceptum
-    gradle build -Prelease --no-daemon
+    gradle :launcher-dist:build -Prelease --no-daemon
     mv "launcher-dist/build/libs/Inceptum-$(git describe --tags --abbrev=0 | sed 's/^[vba]//')-custom.jar" "../${pkgname%-git}.jar"
 }
 
