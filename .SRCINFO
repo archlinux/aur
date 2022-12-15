@@ -1,10 +1,13 @@
 pkgbase = blockify-git
 	pkgdesc = Mutes Spotify advertisements.
-	pkgver = v3.0.1.r0.g942a37b
+	pkgver = v3.6.3.r24.g370d321
 	pkgrel = 1
-	url = https://github.com/mikar/blockify
+	url = https://github.com/carlocastoldi/blockify
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = spotify
 	depends = pulseaudio
 	depends = alsa-utils
@@ -17,8 +20,7 @@ pkgbase = blockify-git
 	optdepends = python-docopt
 	provides = blockify
 	conflicts = blockify
-	source = blockify-git::git+https://github.com/mikar/blockify
+	source = blockify-git::git+https://github.com/carlocastoldi/blockify#branch=pipewire
 	sha256sums = SKIP
 
 pkgname = blockify-git
-
