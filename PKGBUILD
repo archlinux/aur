@@ -3,7 +3,7 @@
 pkgname=hqplayer-client
 pkgver=4.20.2
 _debpkgver=4.20.2-102avx2
-pkgrel=2
+pkgrel=3
 pkgdesc="The high-end upsampling multichannel software HD-audio player - client application"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
@@ -18,6 +18,8 @@ package() {
 bsdtar xf data.tar.zst
 install -Dm755 $srcdir/usr/bin/hqplayer4client $pkgdir/usr/bin/hqplayer4client
 install -Dm644 $srcdir/usr/share/applications/hqplayer4-client.desktop $pkgdir/usr/share/applications/hqplayer4-client.desktop
+install -Dm644 $srcdir/usr/share/applications/hqplayer4-client.desktop $pkgdir/usr/share/applications/hqplayer4-client-wayland.desktop
+sed -i 's/\/usr\/bin\/hqplayer4client/bash -c "export QT_QPA_PLATFORM=xcb; hqplayer4client"/g' $pkgdir/usr/share/applications/hqplayer4-client-wayland.desktop
 install -Dm644 $srcdir/usr/share/pixmaps/hqplayer4-client.png $pkgdir/usr/share/pixmaps/hqplayer4-client.png
-#install -Dm644 $srcdir/usr/share/doc/hqplayer4desktop/LICENSE $pkgdir/usr/share/licenses/$pkgname/COPYING
+install -Dm644 $srcdir/usr/share/doc/hqplayer4desktop/copyright $pkgdir/usr/share/licenses/$pkgname/COPYING
 }

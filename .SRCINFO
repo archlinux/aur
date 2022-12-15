@@ -1,7 +1,7 @@
 pkgbase = hqplayer-client
 	pkgdesc = The high-end upsampling multichannel software HD-audio player - client application
 	pkgver = 4.20.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.signalyst.com/consumer.html
 	install = hqplayer-client.install
 	arch = x86_64
