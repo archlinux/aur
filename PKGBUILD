@@ -2,21 +2,21 @@
 
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
-pkgver=0.3.43
+pkgver=0.3.45
 pkgrel=1
 _openblas_ver=0.3.20
 _clapack_ver=3.2.1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
-_kaldi_commit=76cd51d44c0a61e3905c35cadb2ec5f54f3e42d1
+_kaldi_commit=93ef0019b847272a239fbb485ef97f29feb1d587
 pkgdesc='Offline speech recognition toolkit'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
 license=('Apache')
 makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi' 'python-installer'
              'python-requests' 'python-setuptools' 'python-srt' 'python-tqdm' 'python-websockets'
-             'python-wheel')
+             'python-wheel' 'java-environment=17')
 checkdepends=('ffmpeg' 'python-numpy')
 source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         "https://github.com/xianyi/OpenBLAS/archive/v${_openblas_ver}/openblas-${_openblas_ver}.tar.gz"
@@ -24,21 +24,17 @@ source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pk
         "kaldi-vosk-g${_kaldi_commit:0:7}.tar.gz"::"https://github.com/alphacep/kaldi/archive/${_kaldi_commit}.tar.gz"
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
-        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}"
-		'010-vosk-api-fix-setup-py.patch'::'https://github.com/alphacep/vosk-api/commit/f63b015284656fe632c095277e0c4a8d91338f35.patch')
+        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
 noextract=("vosk-model-small-en-us-${_model_small_ver}.zip")
-sha256sums=('50fa82bfbfe3fc5be868237c84ac180eb55da0b65b1803bf022899673afda024'
+sha256sums=('930fb9cfa6c1b3035d3730feee7d670fb893caa0c71bd2159ee7623102674c26'
             '8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c'
             '8d8ff8259454cae392bb58bc4971fef1db632c9fb5cdf61255cd495bd6d6ac4d'
-            '4f50b51d0596970b0c1e1356c6a3e791810d1fbc75f2024cd30e818b7b299382'
+            'f47a996af546884a8e1cb961323b796c5c238c1bbeabaf657bb300b760e431b2'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
-            'SKIP'
-            '351941086a83c32f4d9c5e1c2746129a65c3c3a9a8b5a3830fa0d0e0b4e3d573')
+            'SKIP')
 
 prepare() {
-    patch -d "${pkgbase}-${pkgver}" -Np1 -i "${srcdir}/010-vosk-api-fix-setup-py.patch"
-    
     mkdir -p models
     bsdtar -x -f  "vosk-model-small-en-us-${_model_small_ver}.zip" -C models
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" "${pkgbase}-${pkgver}/python/example/model-spk"
@@ -111,7 +107,8 @@ build() {
 check() {
     local _test
     cd "${pkgbase}-${pkgver}/python/example"
-    for _test in alternatives empty ffmpeg nlsml reset simple speaker srt text words
+    # https://github.com/alphacep/vosk-api/issues/1220
+    for _test in alternatives empty ffmpeg nlsml simple speaker srt text words #reset
     do
         printf '%s\n' "Running test_${_test}..."
         PYTHONPATH="${PWD}/../build/lib" VOSK_MODEL_PATH="${srcdir}/models" python "./test_${_test}.py" test.wav
