@@ -1,5 +1,5 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
-# Maintainer: txtsd <code@ihavea.quest>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=progress-quest-bin
 pkgver=6.4.4
