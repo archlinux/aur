@@ -1,6 +1,6 @@
 pkgbase = blockbench-git
-	pkgdesc = A boxy 3D model editor, uses system electron and is built from git
-	pkgver = 4.3.1
+	pkgdesc = A low-poly 3D model editor (git version)
+	pkgver = v4.5.2.r10.gc8bae884
 	pkgrel = 1
 	url = https://github.com/JannisX11/blockbench
 	arch = any
@@ -10,11 +10,9 @@ pkgbase = blockbench-git
 	depends = electron
 	provides = blockbench
 	conflicts = blockbench
-	source = blockbench::git+https://github.com/JannisX11/blockbench#tag=v4.3.1
-	source = blockbench.patch
+	source = blockbench::git+https://github.com/JannisX11/blockbench.git
 	source = blockbench.desktop
-	sha512sums = SKIP
-	sha512sums = 5dfb2664a3f01267c6ad86cb124117a7ae20e1fd25d8b44f9ac009f3ae64d294024d0c51baf6a4c133404c23eb193d8a5bd7eccd12bf9efd20e1e0853b7d82dc
-	sha512sums = 747623aba679a06edc4013232565200b1b7f95d1e2e15db9dba851b43fea139064fcb306e0696c1b8d83d2f9ac065ac7971441261072ce850d8013c1269cb91f
+	sha256sums = SKIP
+	sha256sums = 74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c
 
 pkgname = blockbench-git

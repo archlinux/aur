@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Blockbench
-Version=4.3.1
-GenericName=3D model editor
-Comment=A boxy 3D model editor
 Exec=/usr/bin/blockbench %f
-Icon=blockbench
+Terminal=false
 Type=Application
-Categories=Graphics;3DGraphics
+Icon=blockbench
+StartupWMClass=Blockbench
+Comment=Low-poly modeling and animation software
+Categories=Graphics|3DGraphics;
