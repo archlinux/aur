@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tm
-_pkgver=0.7-9
+_pkgver=0.7-10
 pkgname=r-${_pkgname,,}
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc='Text Mining Package'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-tm.lexicon.generalinquirer
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('db53e851a050b52264931cdd1b9186c2d91be074c3fc68a00b22967192a47e28')
+sha256sums=('6caffa0856baa3261ca28eded7b84404d2bd4aa10570057e842cd1f928569d96')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
