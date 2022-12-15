@@ -1,7 +1,7 @@
 pkgbase = watt-toolkit-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 2.8.4
-	pkgrel = 4
+	pkgver = 2.8.5
+	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,9 @@ pkgbase = watt-toolkit-bin
 	sha256sums = 251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f
 	sha256sums = 495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9
 	sha256sums = 1c7e2b167b6b457c685d0d4890147edf70eb2a3eeefb12aa42ddd0c721b2f49d
-	source_x86_64 = Steam++_2.8.4_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.8.4/Steam++_linux_x64_v2.8.4.tar.zst
-	sha256sums_x86_64 = 54398fa7fddc725df263bce131842151c4aa7bcdd3c19e75c7751e1e9a3e57d3
-	source_aarch64 = Steam++_2.8.4_aarch64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.8.4/Steam++_linux_arm64_v2.8.4.tar.zst
-	sha256sums_aarch64 = 902f0ae9e8685f1c40bbd4ced250178509c917134d3c787f748d6d274e2dcfd3
+	source_x86_64 = Steam++_2.8.5_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.8.5/Steam++_linux_x64_v2.8.5.tar.zst
+	sha256sums_x86_64 = 09024917d7fbe706354cbb07332701dc50459d45e758fa046f691757491f29f6
+	source_aarch64 = Steam++_2.8.5_aarch64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.8.5/Steam++_linux_arm64_v2.8.5.tar.zst
+	sha256sums_aarch64 = 03d16f3d0cebe9fdf700e2282d4651340821be0d2b76fa8c0713ca82944be5f5
 
 pkgname = watt-toolkit-bin
