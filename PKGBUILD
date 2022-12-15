@@ -1,10 +1,10 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 04-Dec-2022
+# 15-Dec-2022
 #
 
 pkgname=c-evo-dh
 pkgbase=c-evo
-pkgver=1.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-eh')
 source=("https://sourceforge.net/projects/c-evo-eh/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('5b3a37029b1ac11ca44a83a4083e71bb5ff6800ea8f12d48cb09b516249669d2')
+sha256sums=('d40ee883af3b2f4a53d21027f6971c2992e3a2e661c68285182decf384c60c85')
 #options=(debug !strip)
 
 
@@ -75,7 +75,7 @@ build() {
 
   lazbuild -v
   lazbuild --ws=gtk2 -B --bm=Release --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" Integrated.lpi
-  mv "$pkgbase" "$pkgbase-gtk2"
+  mv "$pkgbase" "$pkgname-gtk2"
 }
 
 
@@ -88,11 +88,11 @@ package() {
 
   install -Dm 755 "$pkgbase-gtk2"                    -t "$pkgdir/usr/lib/$pkgname"
   install -Dm 755 "Linux/$pkgbase-launch-gtk2"       -t "$pkgdir/usr/bin"
-  install -Dm 644 AI/StdAI/StdAI.png                 -t "$pkgdir/usr/share/$pkgbase/AI/StdAI"
-  install -Dm 644 AI/StdAI/StdAI.ai.txt              -t "$pkgdir/usr/share/$pkgbase/AI/StdAI"
-  install -Dm 755 AI/StdAI/libstdai.so               -t "$pkgdir/usr/lib/$pkgbase"
+  install -Dm 644 AI/StdAI/StdAI.png                 -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
+  install -Dm 644 AI/StdAI/StdAI.ai.txt              -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
+  install -Dm 755 AI/StdAI/libstdai.so               -t "$pkgdir/usr/lib/$pkgname"
 
-  ln -s "/usr/lib/$pkgbase/libstdai.so"    "$pkgdir/usr/share/$pkgbase/AI/StdAI/libstdai.so"
+  ln -s "/usr/lib/$pkgname/libstdai.so"    "$pkgdir/usr/share/$pkgname/AI/StdAI/libstdai.so"
 
   install -Dm 644 readme.txt                        -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 Docs/*                            -t "$pkgdir/usr/share/doc/$pkgname"
@@ -101,19 +101,19 @@ package() {
   install -Dm 644 Man/c-evo-launch-gtk2.6           -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 Man/c-evo-gtk2.6                  -t "$pkgdir/usr/share/man/man6"
 
-  install -Dm 644 Language.txt                      -t "$pkgdir/usr/share/$pkgbase"
-  install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$pkgbase"
-  install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$pkgbase"
+  install -Dm 644 Language.txt                      -t "$pkgdir/usr/share/$pkgname"
+  install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$pkgname"
+  install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$pkgname"
 
-  install -Dm 644 Graphics/*.png                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
-  install -Dm 644 Graphics/*.jpg                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
-  install -Dm 644 Graphics/*.grs                    -t "$pkgdir/usr/share/$pkgbase/Graphics"
-# install -Dm 644 Qt5/*                             -t "$pkgdir/usr/share/$pkgbase/Graphics"
-  install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgbase/Help"
-  install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgbase/Maps"
-  install -Dm 644 Saved/*                           -t "$pkgdir/usr/share/$pkgbase/Saved"
-  install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$pkgbase/Sounds"
-  install -Dm 644 Tribes/*                          -t "$pkgdir/usr/share/$pkgbase/Tribes"
+  install -Dm 644 Graphics/*.png                    -t "$pkgdir/usr/share/$pkgname/Graphics"
+  install -Dm 644 Graphics/*.jpg                    -t "$pkgdir/usr/share/$pkgname/Graphics"
+  install -Dm 644 Graphics/*.grs                    -t "$pkgdir/usr/share/$pkgname/Graphics"
+# install -Dm 644 Qt5/*                             -t "$pkgdir/usr/share/$pkgname/Graphics"
+  install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgname/Help"
+  install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgname/Maps"
+  install -Dm 644 Saved/*                           -t "$pkgdir/usr/share/$pkgname/Saved"
+  install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$pkgname/Sounds"
+  install -Dm 644 Tribes/*                          -t "$pkgdir/usr/share/$pkgname/Tribes"
 
-  find Localization -type f -exec install -Dm 644    "{}" "$pkgdir/usr/share/$pkgbase/{}" \;
+  find Localization -type f -exec install -Dm 644    "{}" "$pkgdir/usr/share/$pkgname/{}" \;
 }
