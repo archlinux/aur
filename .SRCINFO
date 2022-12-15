@@ -1,6 +1,6 @@
 pkgbase = gr-framework-git
 	pkgdesc = A universal framework for cross-platform visualization applications.
-	pkgver = 0.71.1.r25.g4257c880
+	pkgver = 0.71.1.r27.g03008c9d
 	pkgrel = 1
 	url = https://gr-framework.org
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = gr-framework-git
 	depends = qt5-base
 	depends = zlib
 	optdepends = ffmpeg: video support
-	provides = gr-framework=0.71.1.r25.g4257c880
+	provides = gr-framework=0.71.1.r27.g03008c9d
 	conflicts = gr-framework
 	source = gr-framework::git+https://github.com/sciapp/gr.git#branch=develop
 	sha256sums = SKIP
