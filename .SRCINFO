@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-flask: adds support for the Flask Web Framework
 	optdepends = python-httpx: HTTPX integration
 	optdepends = python-multipart: Optional dependency of Starlette to parse form data
+	optdepends = python-opentelemetry-distro: adds support for OpenTelemetry
 	optdepends = python-pymongo: PyMongo integration
 	optdepends = python-pyramid: adds support for the Pyramid Web Framework
 	optdepends = python-pyspark: adds support for the Python API for Apache Spark
@@ -35,7 +36,7 @@ pkgbase = python-sentry_sdk
 	optdepends = python-trytond: adds support for the Tryton Framework Server
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.11.1.tar.gz
-	sha256sums = 675f6279b6bb1fea09fd61751061f9a90dca3b5929ef631dd50dc8b3aeb245e9
+	source = https://files.pythonhosted.org/packages/source/s/sentry-sdk/sentry-sdk-1.12.0.tar.gz
+	sha256sums = dc0fe6ef2f77a3853b399c75c97d87be7666098817c1c314f8fcdf68a6865914
 
 pkgname = python-sentry_sdk
