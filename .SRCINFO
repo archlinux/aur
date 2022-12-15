@@ -1,0 +1,11 @@
+pkgbase = whisper.cpp-model-medium.en
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ggerganov/whisper.cpp
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = medium.en.bin::https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/ggml-medium.en.bin
+	sha1sums = 8c30f0e44ce9560643ebd10bbe50cd20eafd3723
+
+pkgname = whisper.cpp-model-medium.en
