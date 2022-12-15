@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=openfoam
 pkgname=${_base}-com-precice
-_gitcommit=7afeaede9d9aec8d48457c77e8be9c6131897f44
-pkgver=1.2.0
+_gitcommit=cdd8f9cc1adeddb4b3f4eedf4eb8e14a8be742ce
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="preCICE adapter for OpenFOAM"
 arch=(x86_64)
@@ -12,7 +12,8 @@ license=(GPL3)
 _openfoam_version=v2206
 depends=("${_base}-com=${_openfoam_version}" "precice")
 makedepends=(git)
-source=("git+${url}.git#commit=${_gitcommit}")
+source=("git+${url}.git?signed#commit=${_gitcommit}")
+validpgpkeys=('0FBAF2A65E37EEB1EEDEB8878852E191BDAF81BF') # Gerasimos Chourdakis <chourdak@in.tum.de>
 sha512sums=('SKIP')
 
 prepare() {
