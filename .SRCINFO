@@ -1,6 +1,6 @@
 pkgbase = libelectron
 	pkgdesc = A collection of npm dependencies for electron packages.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
