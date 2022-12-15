@@ -14,7 +14,7 @@ _kernelname=-jcore
 _hostname=jcore
 pkgver=6.1
 pkgrel=1
-pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
+pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -122,7 +122,7 @@ build() {
 
 package_linux-jcore() {
   pkgdesc="Kernel for Manjaro/Arch (ACS override patch include)"
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
   optdepends=('dkms: Dynamic Kernel Module System' 'nvidia-dkms: NVIDIA drivers - module sources' 'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
 
