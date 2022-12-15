@@ -1,26 +1,17 @@
 pkgbase = cerebro
 	pkgdesc = Open-source productivity booster with a brain.
-	pkgver = 0.3.2
+	pkgver = 0.10.0
 	pkgrel = 1
-	url = https://cerebroapp.com/
+	url = https://cerebroapp.com
 	arch = x86_64
-	arch = i686
 	license = MIT
-	makedepends = nodejs-lts-carbon
-	makedepends = gendesk
-	makedepends = python2
 	makedepends = yarn
-	makedepends = npm
-	depends = alsa-lib
-	depends = gconf
-	depends = gtk2
-	depends = libxss
-	depends = libxtst
-	depends = nss
-	provides = cerebro
-	conflicts = cerebro-git
-	source = 0.3.2.tar.gz::https://github.com/KELiON/cerebro/archive/v0.3.2.tar.gz
-	sha256sums = c727beb2b80210c5fca990dd6693d4bc81915ae31c6739977ca5f8e8f60405a4
+	depends = electron20
+	source = cerebro-0.10.0.tar.gz::https://github.com/cerebroapp/cerebro/archive/refs/tags/v0.10.0.tar.gz
+	source = cerebro.sh
+	source = cerebro.desktop
+	sha256sums = 14a98ab56f159122b8804ea330df78de55394cf88c5bf52c6b04a5d69d5c5254
+	sha256sums = 508b9ffe9df348a9ad71f217dc3b27f1c2bbce9228ad480011bb0bad903925cb
+	sha256sums = af194176b90747c73bca6aada83090c8d0aa46ab2affa078c0a411ca7181e4b0
 
 pkgname = cerebro
-

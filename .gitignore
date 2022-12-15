@@ -1,5 +1,9 @@
-*.tar.gz
-*.pkg.tar.xz
-src
-pkg
+# Ignore everything
+*
 
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!cerebro.sh
+!cerebro.desktop

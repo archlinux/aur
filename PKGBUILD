@@ -1,63 +1,49 @@
-# Maintainer: Maxim Baz <cerebro@maximbaz.com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Maxim Baz <cerebro@maximbaz.com>
 pkgname=cerebro
-pkgver=0.3.2
+pkgver=0.10.0
 pkgrel=1
-pkgdesc='Open-source productivity booster with a brain.'
-arch=('x86_64' 'i686')
-url='https://cerebroapp.com/'
+_electronversion=20
+pkgdesc="Open-source productivity booster with a brain."
+arch=('x86_64')
+url="https://cerebroapp.com"
 license=('MIT')
-conflicts=('cerebro-git')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss')
-makedepends=('nodejs-lts-carbon' 'gendesk' 'python2' 'yarn' 'npm')
-provides=('cerebro')
-source=("${pkgver}.tar.gz::https://github.com/KELiON/cerebro/archive/v"$pkgver".tar.gz")
-sha256sums=('c727beb2b80210c5fca990dd6693d4bc81915ae31c6739977ca5f8e8f60405a4')
-
-prepare() {
-  gendesk -f -n --name=Cerebro --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --exec="${pkgname}" --categories="System"
-}
+depends=("electron${_electronversion}")
+makedepends=('yarn')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cerebroapp/cerebro/archive/refs/tags/v$pkgver.tar.gz"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('14a98ab56f159122b8804ea330df78de55394cf88c5bf52c6b04a5d69d5c5254'
+            '508b9ffe9df348a9ad71f217dc3b27f1c2bbce9228ad480011bb0bad903925cb'
+            'af194176b90747c73bca6aada83090c8d0aa46ab2affa078c0a411ca7181e4b0')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  yarn && cd ./app && yarn && cd ../
+  cd "$pkgname-$pkgver"
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+  yarn config set cache-folder "$srcdir/yarn-cache"
+  yarn install
   yarn run build
-
-  if [ $CARCH == 'x86_64' ]; then
-    node_modules/.bin/build --linux --x64 --dir
-  elif [ $CARCH == 'i686' ]; then
-    node_modules/.bin/build --linux --ia32 --dir
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
+  yarn electron-builder --linux --x64 --dir \
+    $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
-  # Place files
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  if [ $CARCH == 'x86_64' ]; then
-    cp -a "${srcdir}/${pkgname}-${pkgver}/release/linux-unpacked/"* "${pkgdir}/usr/lib/${pkgname}"
-  elif [ $CARCH == 'i686' ]; then
-    cp -a "${srcdir}/${pkgname}-${pkgver}/release/linux-ia32-unpacked/"* "${pkgdir}/usr/lib/${pkgname}"
-  else
-    echo "Unknown architecture"; exit 1;
-  fi
+  cd "$pkgname-$pkgver"
+  install -Dm644 release/linux-unpacked/resources/app.asar -t \
+    "$pkgdir/usr/lib/$pkgname/resources/"
 
-  # Symlink main binary
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # Place desktop entry and icon
-  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "${srcdir}/${pkgname}.desktop"
   for res in 16x16 32x32 48x48 128x128 256x256 512x512 1024x1024; do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/${res}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png"
+    install -Dm644 build/icons/${res}.png \
+      "$pkgdir/usr/share/icons/hicolor/${res}/apps/$pkgname.png"
   done
 
-  # Place license files
-  for license in "LICENSE.electron.txt" "LICENSES.chromium.html"; do
-    install -Dm644 "${pkgdir}/usr/lib/${pkgname}/${license}" "${pkgdir}/usr/share/licenses/${pkgname}/${license}"
-    rm "${pkgdir}/usr/lib/${pkgname}/${license}"
-  done
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  cp -a build docs/* "$pkgdir/usr/share/doc/$pkgname/"
+
+  install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

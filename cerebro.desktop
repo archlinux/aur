@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cerebro
+Exec=cerebro
+Terminal=false
+Type=Application
+Icon=cerebro
+StartupWMClass=Cerebro
+Comment=Cerebro is an open-source launcher to improve your productivity and efficiency
+MimeType=x-scheme-handler/cerebro;
+Categories=Utility;
