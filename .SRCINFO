@@ -1,7 +1,7 @@
 pkgbase = fedistar-bin
 	pkgdesc = Multi-column Mastodon and Pleroma client for desktop
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/h3poteto/fedistar
 	arch = x86_64
 	license = AGPL-3.0
@@ -15,7 +15,6 @@ pkgbase = fedistar-bin
 	depends = libappindicator-gtk3
 	depends = librsvg
 	depends = libvips
-	depends = openssl-1.1
 	provides = fedistar
 	conflicts = fedistar
 	source = https://github.com/h3poteto/fedistar/releases/download/v0.3.3/fedistar_0.3.3_amd64.deb
