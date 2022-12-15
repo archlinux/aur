@@ -3,9 +3,9 @@
 # Contributor: Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-pro-bin
-pkgver=1.2.0
+pkgver=1.3.0
 
-pkgrel=4
+pkgrel=1
 pkgdesc="All-in-one SLA/DLP/LCD Slicer - Pro version"
 
 makedepends=('xdg-user-dirs')
@@ -38,7 +38,7 @@ source=(
 )
 
 sha256sums=(
-    "64371ec873552a0c4e24d3cbc23b04de3bde24672996db0a41e8658e0df9e7d4"
+    "a03b2c6ba558bdb3c048c39f7b10dfc9ab22c9894f9b45cfeff45cdf43a6177d"
     "1d1e4f69189696bf761cbb946055e66ece35c6c6e30949f85496755fe1680e01"
     "b18e139e6e1ece19b38909baa6e4af70a83bd642dd13e7267a22fc197080294a"
 )

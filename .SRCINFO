@@ -1,17 +1,17 @@
 pkgbase = chitubox-pro-bin
 	pkgdesc = All-in-one SLA/DLP/LCD Slicer - Pro version
-	pkgver = 1.2.0
-	pkgrel = 4
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://www.chitubox.com/download.html
 	arch = x86_64
 	license = Commercial
 	makedepends = xdg-user-dirs
-	noextract = CHITUBOX_Pro_LINUX_Installer_V1.2.0.tar.gz
+	noextract = CHITUBOX_Pro_LINUX_Installer_V1.3.0.tar.gz
 	options = !strip
-	source = local://CHITUBOX_Pro_LINUX_Installer_V1.2.0.tar.gz
+	source = local://CHITUBOX_Pro_LINUX_Installer_V1.3.0.tar.gz
 	source = local://chitubox-pro.desktop
 	source = local://launcher
-	sha256sums = 64371ec873552a0c4e24d3cbc23b04de3bde24672996db0a41e8658e0df9e7d4
+	sha256sums = a03b2c6ba558bdb3c048c39f7b10dfc9ab22c9894f9b45cfeff45cdf43a6177d
 	sha256sums = 1d1e4f69189696bf761cbb946055e66ece35c6c6e30949f85496755fe1680e01
 	sha256sums = b18e139e6e1ece19b38909baa6e4af70a83bd642dd13e7267a22fc197080294a
 
