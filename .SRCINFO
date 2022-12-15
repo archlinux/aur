@@ -1,7 +1,7 @@
 pkgbase = picomc
 	pkgdesc = A tiny CLI Minecraft launcher
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sammko/picomc
 	arch = any
 	license = MIT
