@@ -1,7 +1,46 @@
-## 2.439.1
+## 2.442.0
 
 Bug Fixes
 
-    augment timeout on e2e tests (3c2bb1a)
-    move multi account features from settings into devtools (c2133b9)
-    support of multi-account (375bfc7)
+    release asset (ab99e22)
+
+Features
+
+    verified credential, 8 digits code generator (7d4aa2f)
+
+## 2.441.0 
+
+Bug Fixes
+
+    add task (8ef9cb3)
+    data race in getAccountGroup (f46841c)
+    data races (f789db3)
+    go mod (254fa94)
+    ignore dht leaks (6e98cc8)
+    newHeads event (42baddd)
+    reactivate account group (66ad074)
+    reinit contact requests manager after account group activation (918992f)
+    release asset (b970273)
+    remove sharing option stores in open orbitdb group (0ebe2d3)
+    subscription to account group in first (5f3be6d)
+
+Features
+
+    add task waiter to state manager (a92a820)
+
+## 2.440.0 
+
+Bug Fixes
+
+    check if the sender message exist in the e2e test between 2 simus (f4ddd5a)
+    create testIDs file and replace it in codebase (3bc00e0)
+    refacto driver (7c1d4f8)
+    refacto e2e-tests folders architecture (90a7702)
+    replace accessibilityLabel by testID (191409b)
+    update Makefile/snapshots and cleanup (39aa239)
+
+Features
+
+    add dotenv & refacto (4172c58)
+    appium setup for input (5d743ea)
+
