@@ -26,7 +26,7 @@ source=(http://ftp.daper.net/pub/soft/moc/unstable/${_pkgname}-${_pkgver}.tar.{x
 conflicts=(moc)
 provides=(moc)
 sha1sums=('01400a96b6e40346c15ad02c38d494e10721fd63'
-          '007a0580ac754e1c318a0d0b6f0d403883797eaf'
+          '25143611c9042593c13438c41c8b02aefc814ba5'
           'SKIP'
           'e3362ddd41126e2be874cd372a053fdaccf0f616')
 validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
