@@ -2,9 +2,11 @@ pkgbase = arch-chroot-build
 	pkgdesc = Build AUR packages in a chroot easily
 	pkgver = 1
 	pkgrel = 1
-	arch = i686
-	arch = x86_64
+	url = https://github.com/magnus-ISU/aur-scripts/blob/master/arch-chroot-build
+	arch = any
 	license = MIT
 	depends = devtools
+	source = https://raw.githubusercontent.com/magnus-ISU/aur-scripts/master/arch-chroot-build
+	sha256sums = SKIP
 
 pkgname = arch-chroot-build
