@@ -4,7 +4,7 @@
 _pkgname=OpenLens
 pkgname=openlens-bin
 pkgver=6.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444'
 arch=('x86_64' 'aarch64')
 license=('MIT')
