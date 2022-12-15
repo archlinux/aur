@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Bader <Bad3r@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.8.9.r829.022f990f2
+pkgver=0.8.12.r132.022f990f2
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -24,7 +24,7 @@ md5sums=(
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s" "$(git describe --tags --match "[0-9].[0-9].[0-9]" --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --tags --match "[0-9]*.[0-9]*.[0-9]*" --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
