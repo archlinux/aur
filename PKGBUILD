@@ -1,49 +1,54 @@
 # Maintainer: Renato Molnar <renato dot molnar at posteo dot net>
 
-# If you want to package the 64bit version, you need to uncomment the following line:
-#_arch=x64
+# Use the following variable to change package architecture.
+# To use OS architecture please uncomment it
+_arch="x86"
+# possible values: "x86", "x64"
 
-if [[ "${_arch}" == x64 ]]; then
-    winarch='64'
-else
-    winarch='32'
-fi
+case "${_arch-"${CARCH}"}" in
+    i686|x86)
+        _archstr='';;
+    x86_64|x64)
+        _archstr='.x64';;
+esac
 
-pkgname=notepadpp
+pkgbase=notepadpp
+pkgname=notepad++
 _pkgname=notepad-plus-plus
-pkgver=8.4.4
-pkgrel=2
-pkgdesc="A free source code editor for Windows - (${winarch}-bit)"
-arch=('x86_64')
+pkgver=8.4.7
+pkgrel=1
+pkgdesc="A free source code editor for Windows"
 url="https://${_pkgname}.org/"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('wine' 'sh' 'fuse-overlayfs')
 makedepends=('unzip')
 provides=(notepadpp)
-conflicts=('notepadpp-win32' 'notepadpp-win64')
-source=(notepadpp
-        notepadpp.desktop
-        notepadpp.png
-        "npp.${pkgver}.32.zip::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.zip"
-        "npp.${pkgver}.64.zip::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.x64.zip")
-
-sha256sums=('3e68329f18c46a240b8c852ccfe291b78ae0c37b692f090a1b2e379892415576'
-            'a1c34d444893d56ae165c8457260e11b729ea2afc10bb9e2690bc89e1f523238'
+replaces=('notepadpp-win32' 'notepadpp-win64' 'notepadpp')
+source=(notepad++
+        notepad++.desktop
+        notepad++.png
+        "https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.zip"{,.sig}
+        "https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/npp.${pkgver}.portable.x64.zip"{,.sig})
+sha256sums=('643713113d26d32b2e6d861e9cd6db8153a3359f3784dbd1710f12e89468654a'
+            '98693e0f57a9fab55dd31dfaf9b3a13234f14e1b193b56ac52eff33c987d4354'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-            'b6c5c11518a7de1cb3ab095506ceb5a69520b19046e3e864cbfeee329fe8a250'
-            '2a07301ea6fe16cb7d814653239d80722b8b432313249720f6856aec070fded0')
+            'a294728c4d856bb93c075e86609210eebf2a5c8d0a8709f7553ed03bd7dbe5ac'
+            'SKIP'
+            '4fa63354348015915df3a42b6750f676669a2743056daffd3b9358706c112000'
+            'SKIP')
 
-noextract=("npp.${pkgver}.32.zip"
-           "npp.${pkgver}.64.zip")
+noextract=("npp.${pkgver}.portable.zip"
+           "npp.${pkgver}.portable.x64.zip")
+
+validpgpkeys=('14BCE4362749B2B51F8C71226C429F1D8D84F46E')
 
 options=('!strip')
 
 package() {
-
     install -d -m755 "${pkgdir}/usr/share/${pkgname}"
 
-    unzip "${srcdir}/npp.${pkgver}.${winarch}.zip" -d "${pkgdir}/usr/share/${pkgname}"
+    unzip "${srcdir}/npp.${pkgver}.portable${_archstr}.zip" -d "${pkgdir}/usr/share/${pkgname}"
 
     rm -rf "${pkgdir}/usr/share/${pkgname}/updater" \
            "${pkgdir}/usr/share/${pkgname}/license.txt" \
@@ -51,8 +56,8 @@ package() {
     find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 755 "{}" \;
     find "${pkgdir}/usr/share/${pkgname}" -type f -exec chmod 644 "{}" \;
 
-    install -D -m755 "${srcdir}/notepadpp" "${pkgdir}/usr/bin/notepadpp"
-    install -D -m644 "${srcdir}/notepadpp.png" "${pkgdir}/usr/share/pixmaps/notepadpp.png"
-    install -D -m644 "${srcdir}/notepadpp.desktop" "${pkgdir}/usr/share/applications/notepadpp.desktop"
+    install -D -m755 "${srcdir}/notepad++" "${pkgdir}/usr/bin/notepad++"
+    install -D -m644 "${srcdir}/notepad++.png" "${pkgdir}/usr/share/pixmaps/notepad++.png"
+    install -D -m644 "${srcdir}/notepad++.desktop" "${pkgdir}/usr/share/applications/notepad++.desktop"
 }
 

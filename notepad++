@@ -1,20 +1,39 @@
 #!/usr/bin/env sh
 # vim: syntax=sh
 
-if [ -n "${SH_TRACE}" ]; then
+if [ "${SH_TRACE-0}" -eq 1 ]; then
     # shellcheck disable=2016
     PS4="$(printf '%b%s%b:\n' '\033[31m' 'L${LINENO}' '\033[0m')"
     export PS4
     set -x
 fi
 
-readonly appName='notepadpp'
-readonly exeName='notepad++.exe'
+appName='notepad++'
+exeName="${appName}.exe"
 
-readonly pkgDir="/usr/share/${appName}"
-readonly localDir="${HOME}/.local/share/${appName}"
-readonly configDir="${HOME}/.config/${appName}"
-readonly cacheDir="${HOME}/.cache/${appName}"
+readonly appName exeName
+
+pkgDir="/usr/share/${appName}"
+localDir="${HOME}/.local/share/${appName}"
+configDir="${HOME}/.config/${appName}"
+cacheDir="${HOME}/.cache/${appName}"
+
+readonly pkgDir localDir configDir cacheDir
+
+(
+    oldAppName='notepadpp'
+    oldConfigDir="${HOME}/.config/${oldAppName}"
+    readonly oldAppName oldConfigDir
+    if [ -d "${oldConfigDir}" ]; then
+        printf 'Old configdir found. Renaming...'
+        mv -v "${oldConfigDir}" "${configDir}"
+    fi
+)
+
+if [ ! -d "${pkgDir}" ]; then
+    printf 'Cannot find application directory: %s\n' >&2 "${pkgDir}"
+    exit 1
+fi
 
 # shellcheck disable=2155
 readonly uid="$(id -u)"
@@ -44,7 +63,7 @@ if ! fuse-overlayfs -o squash_to_uid="${uid}" -o squash_to_gid="${gid}" \
         -o lowerdir="${pkgDir}" -o upperdir="${configDir}" -o workdir="${cacheDir}" \
         "${localDir}"; then
     print 'Mount failed: cannot mount fuse-overlayfs\n' >&2
-    exit 1
+    exit 2
 fi
 
 trap 'cleanup' INT TERM EXIT

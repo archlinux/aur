@@ -3,8 +3,8 @@ Encoding=UTF-8
 Categories=Programming,Utilities
 Name=Notepad++
 Comment=The free source code editor
-Icon=notepadpp
-Exec=notepadpp
+Icon=notepad++
+Exec=notepad++
 Terminal=false
 Type=Application
 
