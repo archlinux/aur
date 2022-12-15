@@ -18,7 +18,7 @@ package() {
     install -Dm644 clashup.service ${pkgdir}/usr/lib/systemd/system/clashup.service
     install -Dm644 clashup.timer ${pkgdir}/usr/lib/systemd/system/clashup.timer
 }
-md5sums=('c8e16b6a739ab9e4ab5bf13d66faa975'
+md5sums=('ef6bed643606b09331509cd7344a348c'
          '177338346005e11d33e27edc1f8ab780'
          'f805be578902fb8c6606aef828111af8'
          '58604e2d881d0260623659ce06158e14')

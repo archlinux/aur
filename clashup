@@ -27,6 +27,8 @@ class ClashUp:
     "subscribe_url": "",
     "is_subscribe_banned": false,
     "custom_rules": [],
+    "custom_proxies": [],
+    "custom_groups": [],
     "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
     "mmdb_version_url": "http://www.ideame.top/mmdb/version",
     "periodically_update": false
@@ -82,6 +84,8 @@ class ClashUp:
         self._load_conf(config, 'external_controller', 'external-controller')
         self._load_conf(config, 'external_ui', 'external-ui')
         config['rules'] = self.config.get('custom_rules', []) + config.get('rules', [])
+        config['proxies'] = self.config.get('custom_proxies', []) + config.get('proxies', [])
+        config['proxy-groups'] = self.config.get('custom_groups', []) + config.get('proxy-groups', [])
         return config
 
     def save(self, config):
