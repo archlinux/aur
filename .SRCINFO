@@ -6,6 +6,7 @@ pkgbase = go-musicfox-bin
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib
+	depends = flac1.3
 	provides = musicfox
 	conflicts = musicfox
 	conflicts = go-musicfox
