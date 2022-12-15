@@ -1,19 +1,18 @@
 pkgbase = python-tendo
-	pkgdesc = Adds basic functionality that is not (yet) provided by Python
-	pkgver = 0.2.15
-	pkgrel = 2
+	pkgdesc = Adds basic functionality not (yet) provided by Python
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/pycontribs/tendo
 	arch = any
-	license = Python
+	license = PSF
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-tox
-	depends = python
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm-git-archive
+	makedepends = python-wheel
 	depends = python-six
-	depends = python-pbr
-	options = !emptydirs
-	source = https://github.com/pycontribs/tendo/archive/0.2.15.tar.gz
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = python-tendo-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/t/tendo/tendo-0.3.0.tar.gz
+	sha256sums = 68392d686eb6ece71c14ff0fe24340e83c4362525c8b26f144c84f3122ae9e77
 
 pkgname = python-tendo
-

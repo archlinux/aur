@@ -1,29 +1,31 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tendo
-pkgver=0.2.15
-pkgrel=2
-pkgdesc="Adds basic functionality that is not (yet) provided by Python"
+_pkg="${pkgname#python-}"
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Adds basic functionality not (yet) provided by Python"
 arch=('any')
-depends=('python' 'python-six' 'python-pbr')
-makedepends=('python-setuptools' 'python-tox')
 url="https://github.com/pycontribs/tendo"
-license=('Python')
-options=(!emptydirs)
-source=(https://github.com/pycontribs/${pkgname#python-}/archive/$pkgver.tar.gz)
-md5sums=('SKIP')
-sha256sums=('SKIP')
+license=('PSF')
+depends=('python-six')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-setuptools-scm-git-archive'
+	'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('68392d686eb6ece71c14ff0fe24340e83c4362525c8b26f144c84f3122ae9e77')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg 'Building...'
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
