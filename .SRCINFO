@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-keyboard
 	pkgdesc = Ayatana Indicator Keyboard Applet
-	pkgver = 22.9.0
+	pkgver = 22.9.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = ayatana-indicator-keyboard
 	depends = hicolor-icon-theme
 	depends = accountsservice
 	depends = libxkbcommon
-	source = ayatana-indicator-keyboard-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/22.9.0.tar.gz
-	md5sums = 8c4020a8a6d3af9c0239bca715282f33
+	source = ayatana-indicator-keyboard-22.9.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/22.9.1.tar.gz
+	md5sums = 84b26a684e19ac8f1dfa4f1aa6bc4085
 
 pkgname = ayatana-indicator-keyboard
