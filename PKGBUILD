@@ -10,9 +10,7 @@ url='http://progressquest.com/'
 license=('MIT')
 depends=('wine')
 provides=('progress-quest')
-source=(
-    'http://www.progressquest.com/dl/pq6-4-4.zip'
-)
+source=('http://www.progressquest.com/dl/pq6-4-4.zip')
 sha256sums=('0c6982f6e9a4270968dfdec2874dc642957bddbdd55f4517fa013692ffe8e67e')
 
 package() {
