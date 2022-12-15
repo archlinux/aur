@@ -5,7 +5,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
 pkgver=2.0.6.104
-pkgrel=5
+pkgrel=6
 _date=2022-06-15
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
@@ -33,7 +33,7 @@ sha256sums=('955c6d466a0bb86d9b8f56006ff3b64ed2acae2d5816ebecaa8fe0351145cc3d'
             '9e88381d56b462643a152945b81f98d3a7744bdc760fe201aec02a50bccbb5c4'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
-            '2e4d337ebd524b312d0efed46a944e68b863ee4f46ee96e3323adb2a193ee3ab'
+            '4a4118c73249278d78bec9b46ca9562194c3fe97fa4aa653649c29988cb7e187'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 depends=(openssl-1.1 gtk-sharp-2 mono libappindicator-gtk2)
