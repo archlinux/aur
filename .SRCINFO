@@ -1,0 +1,19 @@
+pkgbase = pseudolight
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/KCGD/pseudolight
+	arch = x86_64
+	arch = arm64
+	arch = aarch64
+	license = GPLv2
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = make
+	depends = brightnessctl
+	depends = ffmpeg
+	depends = nano
+	options = !strip
+	source = https://github.com/KCGD/pseudolight/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 334f47716ef38a20e5c4e2babbbfa47da6d2df4698fbf18474e0299285fcf040
+
+pkgname = pseudolight
