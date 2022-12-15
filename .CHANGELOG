@@ -1,6 +1,46 @@
 Version history
 ===============
 
+0.10.2
+------
+
+2022-12-13
+
+Fix #440: Replays load/save handicap. Old replays contain no handicap
+information. Newly created replays will have handicap information and also
+load and play it back correctly.
+
+Fix #386: Allow to scroll to the very right edge even when the replay tweaker
+is open. The bug was: Open the replay tweaker. You were not able to scroll all
+the way to the right side of the map. You had to zoom out to see the entire
+map, or zoom in deeply enough to make the tweaker obscure less of the level.
+This was because the map only anticipated the normal panel on the screen, not
+the tweaker. The map expected to be able to draw all the way to the right edge
+of the screen. Now, even while the tweaker is open, you can scroll such that
+the right end of the map is visible to the left of the tweaker.
+
+Fix how the tweaker was appearing for a single frame on level start. This bug
+has been in Lix for 4 years, but we never realized it because the old tweaker
+didn't re-focus cameras when showing/hiding. Now, the tweaker starts hidden.
+
+Backroute fixes to lemforum levels: Cornerstone, The Last Laugh,
+Tinker Tailor Soldier Lix, Ferry Tale.
+
+Clarify and beautify some more lemforum levels: Compression Method 2, Tapestry,
+To Destroy Is to Construct, Narbacular Drop, The Road Goes Ever On (and both
+of its repeats). Renamed mobius's Conundrum to Get Behind Me, Satan.
+
+Add Everybody Wins, a multiplayer map by geoo for 4 through 8 players.
+
+End-of-level screen says on its bottom button: Back to Level Browser.
+Before, we had: Back to the Browser. That wasn't clear. Not everybody
+considers the browser a browser.
+
+Removed pre-2018 options/trophy format support. If you're updating from Lix
+versions older than 5 years, you'll have to reconfigure your hotkeys.
+
+
+
 0.10.1
 ------
 
