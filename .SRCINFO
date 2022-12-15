@@ -6,8 +6,13 @@ pkgbase = masskulator
 	arch = x86_64
 	license = GPL
 	makedepends = qt5-base
+	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = qt5-charts
 	depends = qt5-tools
+	depends = kinit
+	depends = kcmutils
+	depends = kdoctools
 	source = masskulator::git+https://gitlab.com/drguell/masskulator.git#tag=v0.2.0
 	sha256sums = SKIP
 
