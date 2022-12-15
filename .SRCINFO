@@ -1,7 +1,9 @@
 pkgbase = kn
 	pkgdesc = cd alternative. Navigate by typing abbreviation of paths.
-	pkgver = 0.2.2
+	pkgver = 0.3.2
 	pkgrel = 1
+	url = https://github.com/micouy/kn
+	install = kn.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -9,6 +11,9 @@ pkgbase = kn
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	source = kn-0.3.2.tar.gz::https://github.com/micouy/kn/archive/refs/tags/v0.3.2.zip
+	source = kn.install
+	sha256sums = a2d060349c8cdfcb05a32fbf5784ec20339c9e3e2b06a36d38fefb967a24fbd6
+	sha256sums = 31764827f922661294ecaa64d4a705cc10235a1a5a47af8310e02594ad5c14d6
 
 pkgname = kn
-

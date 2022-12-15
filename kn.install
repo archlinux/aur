@@ -1,0 +1,9 @@
+if [ ${CC} != gcc ] || [ ${CXX} != g++ ]; then
+	export CC=gcc
+	export CXX=g++
+	export LD=ld
+	export AR="/usr/bin/ar"
+	export NM="/usr/bin/nm"
+	export AS="/usr/bin/as"
+	export RANLIB="/usr/bin/ranlib"
+fi
