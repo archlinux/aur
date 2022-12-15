@@ -1,13 +1,13 @@
 pkgbase = wpc
-	pkgdesc = Automatic Wallpaper Changer which can retrieve wallpapers from wallhaven and Reddit
-	pkgver = 1.5.0
+	pkgdesc = Automatic Wallpaper Changer which can retrieve wallpapers from Wallhaven and Reddit
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/jkotra/wpc
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gnome-shell
-	source = https://github.com/jkotra/wpc/archive/refs/tags/1.5.0.tar.gz
+	source = https://github.com/jkotra/wpc/archive/refs/tags/1.6.1.tar.gz
 	sha256sums = 1dead6d52e0695080e99792f9d3915f93f2aceaeb72d2322a6f25d5d290dd3ab
 
 pkgname = wpc

@@ -1,9 +1,9 @@
 # Maintainer: Jagadeesh Kotra <jagadeesh at stdin dot top>
 
 pkgname=wpc
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc='Automatic Wallpaper Changer which can retrieve wallpapers from wallhaven and Reddit'
+pkgdesc='Automatic Wallpaper Changer which can retrieve wallpapers from Wallhaven and Reddit'
 arch=('x86_64')
 url='https://github.com/jkotra/wpc'
 license=('MIT')
