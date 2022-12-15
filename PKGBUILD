@@ -2,7 +2,7 @@
 
 pkgname=pineappl
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='PineAPPL is not an extension of APPLgrid'
 arch=('any')
 url="https://n3pdf.github.io/pineappl/"
@@ -29,7 +29,7 @@ build() {
 package() {
     # Install the command-line program
 	cd "$pkgname-$pkgver"
-    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track
+    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --features=fktable
     # Install pineappl_capi
 	cd pineappl_capi
     cargo cinstall --release --destdir=${pkgdir} --prefix=/usr

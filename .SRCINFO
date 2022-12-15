@@ -1,7 +1,7 @@
 pkgbase = pineappl
 	pkgdesc = PineAPPL is not an extension of APPLgrid
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://n3pdf.github.io/pineappl/
 	arch = any
 	license = GPL3
