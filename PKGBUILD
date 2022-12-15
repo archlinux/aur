@@ -2,7 +2,7 @@
 
 pkgname=trust-dns-git
 pkgver=0.22.0.r74.ge045743b
-pkgrel=1
+pkgrel=2
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
 url=https://trust-dns.org/
@@ -60,6 +60,6 @@ package() {
   install -Dm644 "${srcdir}/trust-dns.toml" "${pkgdir}/etc/trust-dns/trust-dns.toml"
   install -Dm644 "${srcdir}/trust-dns.service" "$pkgdir/etc/systemd/system/trust-dns.service"
   install -Dm644 "${srcdir}/trust-dns.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/trust-dns.conf"
-  install -Dm644 "${srcdir}/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-  install -Dm644 "${srcdir}/LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+  install -Dm644 "${srcdir}/LICENSE-MIT" "$pkgdir/usr/share/licenses/trust-dns/LICENSE-MIT"
+  install -Dm644 "${srcdir}/LICENSE-APACHE" "$pkgdir/usr/share/licenses/trust-dns/LICENSE-APACHE"
 }
