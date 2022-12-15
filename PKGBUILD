@@ -2,7 +2,7 @@
 
 pkgname=yesplaymusic-electron
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A third party music application for Netease Music. Using the system electron"
 arch=("any")
 url="https://github.com/qier222/YesPlayMusic"
@@ -27,7 +27,6 @@ optdepends=(
 )
 provides=('yesplaymusic')
 conflicts=('yesplaymusic')
-replaces=('yesplaymusic')
 source=(
     "YesPlayMusic-${pkgver}.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v${pkgver}/YesPlayMusic-${pkgver}.pacman"
     yesplaymusic.desktop
