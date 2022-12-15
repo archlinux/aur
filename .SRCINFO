@@ -1,6 +1,6 @@
 pkgbase = heisenbridge
 	pkgdesc = a bouncer-style Matrix IRC bridge
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/hifi/heisenbridge
 	install = heisenbridge.install
@@ -12,14 +12,13 @@ pkgbase = heisenbridge
 	depends = python-irc
 	depends = python-ruamel-yaml
 	depends = python-aiohttp-socks
-	depends = python-mautrix>=0.14.0
-	depends = python-mautrix<0.17
+	depends = python-mautrix
 	backup = etc/heisenbridge/registration.yaml
-	source = heisenbridge-1.13.1.tar.gz::https://github.com/hifi/heisenbridge/archive/v1.13.1.tar.gz
+	source = heisenbridge-1.14.0.tar.gz::https://github.com/hifi/heisenbridge/archive/v1.14.0.tar.gz
 	source = heisenbridge.service
 	source = heisenbridge.sysusers
 	source = heisenbridge.tmpfiles
-	sha256sums = 92e561db62eba63a31899d6f697eb292ca2273beaf195c13132dab5c4101873e
+	sha256sums = ba31d167982f022740abf1f785d32d959d9b35f64205d2f1e64d1d54e06f9b55
 	sha256sums = 67487b221bff329952f5c95186c4ea794c7e7a3e25e6d213075fd306c68cfa95
 	sha256sums = b3bc4328ead7afd186d5a191fabc347543c0fad17dc01047a4cf0532d999f255
 	sha256sums = 24bd23e4427aaf635a91b170c07abe8a6b1c62cbad47e50a161c12807641d351
