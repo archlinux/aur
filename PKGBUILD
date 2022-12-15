@@ -19,17 +19,17 @@ pkgver() {
 }
 
 build () {
-  cd "$pkgname/bin"
+  cd "${pkgname}/bin"
 
   cmake ..
   cmake --build .
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}"
   
   install -Dm755 bin/Fast-Discord "${pkgdir}/usr/bin/fast-discord"
-  install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "$pkgdir/usr/share/applications/com.enyoyoen.fast-discord.desktop"
-  install -Dm644 "doc/images/Fast-Discord-Logo.png" "$pkgdir/usr/share/pixmaps/fast-discord.png"
+  install -Dm644 "resources/com.enyoyoen.fast-discord.desktop" "${pkgdir}/usr/share/applications/com.enyoyoen.fast-discord.desktop"
+  install -Dm644 "doc/images/Fast-Discord-Logo.png" "${pkgdir}/usr/share/pixmaps/fast-discord.png"
   install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
