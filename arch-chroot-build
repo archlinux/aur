@@ -44,6 +44,9 @@ while true; do
 	done
 	shift $((OPTIND-1))
 
+	# If `-f` not provided, use the first non-flag argument as the image file, and continue parsing options
+	[[ -z "$package_to_build" ]] && package_to_build="$1" && shift 1 && continue
+
 	break
 done
 
@@ -57,19 +60,19 @@ mkdir $CHROOT 2>/dev/null && {
 }
 
 # If argument is passed, search the AUR for a package and clone it, continuing in its directory
-[[ -z $1 ]] || {
+[[ -z $package_to_build ]] || {
 	cd $CLONE
-	[[ -z `curl "https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$1" 2>/dev/null | grep "class='error'"` ]] || {
-		echo $1 is not a valid AUR package!!!
+	[[ -z `curl "https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$package_to_build" 2>/dev/null | grep "class='error'"` ]] || {
+		cecho $package_to_build is not a valid AUR package!!!
 		exit 1
 	}
-	[[ -d "$1" ]] && {
-		cd "$1"
+	[[ -d "$package_to_build" ]] && {
+		cd "$package_to_build"
 		cecho Warning! Repo already exists, AUR packages can fail to build when not built in a clean state.
 		executing git pull
 	} || {
-		executing git clone https://aur.archlinux.org/"$1".git
-		cd $1 || exit 1
+		executing git clone https://aur.archlinux.org/"$package_to_build".git
+		cd $package_to_build || exit 1
 	}
 }
 
