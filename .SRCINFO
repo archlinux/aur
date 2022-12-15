@@ -26,6 +26,8 @@ pkgbase = psi4
 	optdepends = python-pytest-xdist
 	optdepends = python-sphinx
 	optdepends = python-nbsphinx
+	provides = psi4
+	conflicts = psi4-git
 	source = https://github.com/psi4/psi4
 	md5sums = 85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366
 

@@ -12,6 +12,7 @@ makedepends=(gcc cmake make)
 checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
 provides=(psi4)
+conflicts=(psi4-git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/psi4/psi4/archive/v1.7.tar.gz)
 sha256sums=('85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366')
 
