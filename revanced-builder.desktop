@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=3.5.0
+Version=3.6.0
 Name=ReVanced Builder
 Comment=A NodeJS ReVanced builder
 Exec=revanced-builder
