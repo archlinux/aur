@@ -2,14 +2,14 @@
 # Contributor: arliweng <arliweng@outlook.com>
 
 pkgname=v2mixer-bin
-pkgver=1.20220913
+pkgver=1.20221209
 pkgrel=1
 pkgdesc='v2mixer, the movie editor, video mixer'
 arch=('x86_64' 'aarch64' 'armv7h' 'ppc64le')
 license=('custom')
 url="http://v2mixer.livev2.com/"
 makedepends=('zip')
-depends=('jre8-openjdk' 'ffmpeg4.4')
+depends=('jre8-openjdk' 'ffmpeg')
 
 source_x86_64=("https://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz"
 	'v2mixer.desktop')
