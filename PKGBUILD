@@ -22,6 +22,6 @@ build()
 
 package()
 {
-    cd ${pkgname}-${pkgver}/build
+    cd ${pkgname}-${pkgver}
     DESTDIR="${pkgdir}" cmake --install build
 }
