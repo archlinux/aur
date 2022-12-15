@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
-	pkgver = 22.9.0
+	pkgver = 22.9.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-sound
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = ayatana-indicator-sound
 	depends = libgee
 	depends = libnotify
 	depends = libayatana-common>=0.9.5
-	source = ayatana-indicator-sound-22.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/22.9.0.tar.gz
-	md5sums = 59eec10e1f20db247adbd64eaaa6fd73
+	source = ayatana-indicator-sound-22.9.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/22.9.1.tar.gz
+	md5sums = 1694901013ca677a2da1c4bf991bc3dd
 
 pkgname = ayatana-indicator-sound
