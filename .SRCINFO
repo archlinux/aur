@@ -1,8 +1,9 @@
 pkgbase = sniffnet
 	pkgdesc = Application to comfortably monitor your network traffic
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GyulyVGC/sniffnet
+	install = sniffnet.install
 	arch = x86_64
 	license = Apache
 	license = MIT
