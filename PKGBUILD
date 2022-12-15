@@ -2,7 +2,7 @@
 
 pkgname=capacity-tester
 _pkgname=CapacityTester
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A simple tool that attempts to determine if a drive is a fake or not."
 arch=("x86_64" "i686" "aarch64")
@@ -16,7 +16,7 @@ source=(
     "${pkgname}.desktop"
 )
 sha512sums=(
-    '43612aba62c46f80a90d5a5e5a0c1e76ae2d97cae39f56ee1d7fc1ad279adc369078e48248eb9b57e6d148a11e686b783af5cd59297cbe8c8d1cbe5f8d3a16e3'
+    'c9ec20709f0a4d635b954549065d7a9f8bbb76069b0aab684a8e8fc6e1218302dcc0c7513d8f1281c3daba7dd415679a269d1d7b668577648a816b16d1a60122'
     '8fff523534831fe7ee0cd963cd60547b21a1f770c824383d8c1aeb00bf87ebf6687dc2a4925900e5d649dd2002d8b4b7bae547f2b2014bac29f5f614c230994a'
 )
 
