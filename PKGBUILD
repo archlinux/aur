@@ -12,7 +12,8 @@ depends=("python>=3.9"
          "python-urllib3"
          "python-certifi"
          "python-tqdm"
-         "python-coloredlogs")
+         "python-coloredlogs"
+         "python-colorama")
 makedepends=("python-setuptools")
 optdepends=("java-runtime: Launching Minecraft")
 source=("https://github.com/sammko/picomc/releases/download/v$pkgver/picomc-$pkgver.tar.gz"{,.asc})
