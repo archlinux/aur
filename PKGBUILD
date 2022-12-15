@@ -2,7 +2,7 @@
 
 _name=maturin
 pkgname="python-${_name}"
-pkgver=0.14.5
+pkgver=0.14.6
 pkgrel=1
 pkgdesc="Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('python' 'python-tomli' 'maturin')
 optdepends=('python-pypatchelf')
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("c145224edb4706f4f895cae4f4fbf194e0e2a1b0e921f7ca90737dcbdfa4d8f4a9fa4eb234cb97d372d37bc15f3ec8b7b1b5aab5176e3fd523b88bcb8a5e932e")
+b2sums=("4b3f521e5690400b92cb625c23c3b84811d2af77d941ad0d680a8535c358deca0be934447f4b2e9e2ae8daa72d282d793adf880e74c3f9e338aceaf36e72a05f")
 
 build() {
     cd "$_name-$pkgver"
