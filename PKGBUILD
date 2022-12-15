@@ -1,4 +1,4 @@
-# Maintainer: Dawson Dias <thexerothermicsclerodermoid@gmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=flaresolverr-bin
 _pkgname=flaresolverr
