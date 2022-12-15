@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=cruiser
-pkgver=2.2.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
@@ -10,10 +10,8 @@ license=('proprietary (free)')
 depends=('java-runtime')
 conflicts=('atlas-maps')
 replaces=('atlas-maps' 'atlas-maps-bin' 'atlas-maps-beta-bin')
-source=("https://www.talent.gr/public/cruiser/cruiser-${pkgver}.zip"
-        "cruiser.sh")
-md5sums=('a07ff4b36fbbd94951be71663e00fab4'
-         '6c23697fc0421c752227dd1e1f29245f')
+source=("https://www.talent.gr/public/cruiser/cruiser-${pkgver}.zip")
+md5sums=('403bff31ca919be83453b4e729155f1f')
 noextract=("cruiser-$pkgver.zip")
 _extractname="${pkgname}_${pkgver}-${pkgrel}"
 
@@ -28,17 +26,15 @@ prepare() {
 }
 
 build() {
-    sed 's/cruiser.jar/cruiser-gl.jar/' cruiser.sh > cruiser-gl.sh
+    cd "$srcdir/${_extractname}"
+    sed -i 's#cd "$(dirname "$0")"#cd /usr/share/java/cruiser#' cruiser.sh cruiser-gl.sh
 }
 
 package() {
-    for _f in cruiser{,-gl}; do
-        install -Dm644 "${_extractname}/$_f.jar" "$pkgdir/usr/share/java/cruiser/$_f.jar"
-        install -Dm755 "$_f.sh" "$pkgdir/usr/bin/$_f"
-    done
+    cd "$srcdir/${_extractname}"
 
-    cd "${_extractname}/lib"
-    for _f in *.jar; do
-        install -Dm644 "$_f" "$pkgdir/usr/share/java/cruiser/lib/$_f"
-    done
+    install -Dm644 "cruiser.jar" "$pkgdir/usr/share/java/cruiser/cruiser.jar"
+    install -Dm644 -t "$pkgdir/usr/share/java/cruiser/lib" lib/*.jar
+    install -Dm755 "cruiser.sh" "$pkgdir/usr/bin/cruiser"
+    install -Dm755 "cruiser-gl.sh" "$pkgdir/usr/bin/cruiser-gl"
 }
