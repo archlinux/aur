@@ -2,7 +2,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 _pkgname=libretro-mesen
 pkgname=$_pkgname-git
-pkgver=0.9.9.r236.g3bc3413f
+pkgver=0.9.9.r275.gc89474c9
 pkgrel=1
 pkgdesc="Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-	make -C $_pkgname/Libretro
+	make -C $_pkgname/Libretro LTO=
 }
 
 package() {
