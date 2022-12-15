@@ -8,6 +8,7 @@ pkgbase = shitpost
 	license = custom:DWTFYW
 	depends = imagemagick
 	optdepends = ttf-ms-fonts
-	noextract = shitpost
+	source = https://raw.githubusercontent.com/magnus-ISU/aur-scripts/master/shitpost
+	md5sums = SKIP
 
 pkgname = shitpost

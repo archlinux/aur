@@ -8,11 +8,12 @@ pkgdesc="A tool to create memes using CLI"
 arch=('i686' 'x86_64')
 license=('custom:DWTFYW')
 url="https://redd.it/5ezk1f"
+source=('https://raw.githubusercontent.com/magnus-ISU/aur-scripts/master/shitpost')
 depends=('imagemagick')
 optdepends=('ttf-ms-fonts')
-noextract=('shitpost')
+md5sums=('SKIP')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
-    install -D -m755 ../shitpost "${pkgdir}/usr/bin/"
+    install -D -m755 "$srcdir/shitpost" "$pkgdir/usr/bin/"
 }
