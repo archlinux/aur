@@ -16,7 +16,7 @@ optdepends=('cuda' 'libcap' 'libdrm')
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=5e40248fdf5941afcf7bd233cbefc6d270b667d7")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=a4a5d30603c743f9b6d17014f207c07a660f98e6")
 sha256sums=('SKIP')
 
 prepare() {
