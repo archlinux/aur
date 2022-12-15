@@ -11,6 +11,7 @@ depends=(blas lapack python python-numpy gau2grid eigen
 makedepends=(gcc cmake make)
 checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
+conflicts=(psi4)
 provides=(psi4)
 source=($pkgname::git+https://github.com/psi4/psi4)
 md5sums=("SKIP")
