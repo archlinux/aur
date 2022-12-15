@@ -2,7 +2,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=gzdoom
-pkgver=4.9.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
@@ -38,17 +38,14 @@ replaces=('gzdoom1' 'gzdoom-legacy')
 options=(!lto)
 source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
-        '0001-Fix-file-paths.patch'
-        '0002-build-unbreak-compilation-on-Linux.patch')
+        '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '195a9d1ec0489bd38f1d6c40763e66773dd74f5f719acb6afa32a077fdb0b8f4'
-            'de85657cccdfca2fbb7f3c21d96491fc8cd3618d19405376dc23a059cf0fabbe')
+            'a37dde8274e1a9fd511af951da2e362d503ab4be72e79d4843e1ca3a0129549f')
 
 prepare() {
     cd gzdoom
     patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
-    patch -i "$srcdir"/0002-build-unbreak-compilation-on-Linux.patch -p 1
 }
 
 build() {
@@ -56,7 +53,11 @@ build() {
     mkdir -p build
     cmake -B build \
           -D CMAKE_BUILD_TYPE=Release \
-          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/gzdoom\\\"" \
+          -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/gzdoom\\\"" \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D SYSTEMINSTALL=ON \
+          -D INSTALL_PK3_PATH=share/gzdoom \
+          -D INSTALL_SOUNDFONT_PATH=share/gzdoom \
           -D INSTALL_RPATH=/usr/lib \
           -D DYN_GTK=OFF \
           -D DYN_OPENAL=OFF
@@ -65,13 +66,9 @@ build() {
 
 package() {
     cd gzdoom
-    install build/gzdoom -t "$pkgdir"/usr/bin -D
-    install build/{game_support,gzdoom}.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
+    make -C build install DESTDIR="$pkgdir"
+    install -d "$pkgdir"/usr/share/licenses
+    mv "$pkgdir"/usr/share/doc/gzdoom/licenses "$pkgdir"/usr/share/licenses/gzdoom
     desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
-    install docs/{console,rh-log,skins}.* -t "$pkgdir"/usr/share/doc/gzdoom -D -m 644
-    install build/{brightmaps,game_widescreen_gfx,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
-    install build/soundfonts/gzdoom.sf2 -t "$pkgdir"/usr/share/gzdoom/soundfonts -D -m 644
-    install build/fm_banks/* -t "$pkgdir"/usr/share/gzdoom/fm_banks -D -m 644
-    install src/posix/zdoom.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm -D -m 644
-    install docs/licenses/{bsd,fxaa,gdtoa,README}.* -t "$pkgdir"/usr/share/licenses/$pkgname -D -m 644
+    install src/posix/zdoom.xpm -D -m 644 "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm
 }
