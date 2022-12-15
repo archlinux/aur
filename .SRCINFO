@@ -1,0 +1,26 @@
+pkgbase = cro-mag-rally-net
+	pkgdesc = The wildest racing game since man invented the wheel! Experimental LAN build.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/jm2/CroMagRally
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = glu
+	depends = hicolor-icon-theme
+	provides = cro-mag-rally
+	conflicts = cro-mag-rally
+	source = cro-mag-rally::git+https://github.com/jm2/CroMagRally.git#commit=a0a60c09652df686f50968cf25f040db2268874e
+	source = git+https://github.com/jorio/Pomme.git
+	source = cro-mag-rally.desktop
+	source = cro-mag-rally.sh
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 2395a1f207c58e1ffdfe9a6036b99ad7ea3a19f6ab7a0418ed7c256f8c32ccfedf69924bfa3af807dfb7db33457d237d55f5b89566fc1ba87e182d701947eca9
+	b2sums = ca267b6b8f9a0d1a8202bd938abbfe641ca1d8dbcf6d645bc311303a5fa407096648e4abb18c39c8324b8174295840daef67dea82e39866d3a7d89f06edb9a3c
+
+pkgname = cro-mag-rally-net
