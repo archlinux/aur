@@ -1,6 +1,6 @@
 # Maintainer: Daniel R. Güell <daniel@drguell.es>
 pkgname=masskulator
-pkgver=v0.1.12
+pkgver=v0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A simple application to plot a chart with weight evolution."
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
         cd "$pkgname"
-        qmake .
+        cmake .
         make
 }
 
@@ -39,5 +39,5 @@ check() {
 
 package() {
         cd "$pkgname"
-	sudo make DESTDIR=$pkgdir/ install
+	make DESTDIR="${pkgdir}/" install
 }
