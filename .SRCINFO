@@ -1,5 +1,5 @@
 pkgbase = blockbench-bin
-	pkgdesc = A free, modern block model editor.
+	pkgdesc = A low-poly 3D model editor
 	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://blockbench.net/
