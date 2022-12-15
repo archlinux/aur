@@ -1,0 +1,22 @@
+pkgbase = agat
+	pkgdesc = Another Gtf/Gff Analysis Toolkit: Suite of tools to handle gene annotations in any GTF/GFF format. https://www.doi.org/10.5281/zenodo.3552717
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NBISweden/AGAT
+	arch = any
+	license = GPL3
+	depends = perl
+	depends = perl-bioperl
+	depends = perl-yaml-libyaml
+	depends = perl-lwp-protocol-https
+	depends = perl-json-parse
+	depends = perl-sort-naturally
+	depends = perl-clone
+	depends = perl-carp-clan
+	depends = perl-file-sharedir-install
+	depends = perl-moose
+	depends = perl-graph
+	source = agat-1.0.0.tar.gz::https://github.com/NBISweden/AGAT/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = 937b03f5f76afe0a190760046ab05f3c91b7a4582d2cde0053479659e7da460221d7051bd307e06239e5b5786f050eb7492ca4cc8744f022254ab9e3eb49c45a
+
+pkgname = agat
