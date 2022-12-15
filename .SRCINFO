@@ -1,0 +1,22 @@
+pkgbase = fava-investor-git
+	pkgdesc = Comprehensive set of reports, analyses, and tools for investments, for Beancount and Fava
+	pkgver = 0.4.0.r0.g0e3f652
+	pkgrel = 1
+	url = https://github.com/redstreet/fava_investor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = fava
+	depends = python-click-aliases
+	depends = python-importlib-metadata
+	depends = python-tabulate
+	depends = python-yfinance
+	options = !strip
+	source = git+https://github.com/redstreet/fava_investor
+	sha256sums = SKIP
+
+pkgname = fava-investor-git
