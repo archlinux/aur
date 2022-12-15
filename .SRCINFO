@@ -1,0 +1,11 @@
+pkgbase = whisper.cpp-model-base
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ggerganov/whisper.cpp
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = base.bin::https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/ggml-base.bin
+	sha1sums = 465707469ff3a37a2b9b8d8f89f2f99de7299dac
+
+pkgname = whisper.cpp-model-base
