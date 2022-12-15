@@ -1,25 +1,29 @@
-# Submitter: Stefan Husmann <stefan-husmann at t-online dot de>
-# Maintainer: John D. Corrado <jdcorrado at gmail dot com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
+# Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
+# Contributor: John D. Corrado <jdcorrado at gmail dot com>
+
 pkgname=sopwith
-pkgver=1.8.4
+_pkgname="sdl-${pkgname}"
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Sidescrolling shoot 'em up game"
-url="http://sdl-sopwith.sourceforge.net/"
+url="https://fragglet.github.io/sdl-sopwith/sshot.html"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('sdl')
-source=(http://sourceforge.net/projects/sdl-$pkgname/files/sdl_$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('4bf22bd03448506602622f466480a71c')
+makedepends=('autoconf')
+source=("https://github.com/fragglet/sdl-sopwith/archive/refs/tags/sdl-sopwith-${pkgver}.tar.gz")
+sha256sums=('93a162f31dc0a97fbab3093042e894ac40874244a89ee2a9f7e52121d1f13565')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  mkdir -p autotools
+	autoreconf -fi
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
 }
