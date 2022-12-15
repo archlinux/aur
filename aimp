@@ -7,11 +7,17 @@
 #FIX: arguments start with "/" Don't exist to AIMP main command's
 #WHILE: Open Dir, Open Files, set cmd (Stop, Pause, Play, Debug, Next, Prev) worked. And next todo, add-to-playlist, set to playlist .etc. adding.
 
+#default args
 _args="$1"
-if [ -f $_args ] || [ -d $_args ]; then
-   #arguments is file(s)
-   _args=$(winepath --windows "$@")
-fi
 
-echo $_args
+for a in '/DEBUG' '/PLAY' '/PAUSE' '/NEXT' '/PREV' '/STOP'
+do
+   if [[ "$_args" != "$a" ]] && [[ -e $_args ]]; then
+      #arguments is file(s)
+      _args=$(winepath --windows "$@")
+      break;
+   fi
+done
+
+echo "$(basename $0): $_args"
 /usr/bin/wine start /unix '/opt/aimp/AIMP/AIMP.exe' ${_args}
