@@ -1,6 +1,6 @@
 pkgbase = r-msstatsconvert
 	pkgdesc = Import Data from Various Mass Spectrometry Signal Processing Tools to MSstats Format
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsConvert
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-msstatsconvert
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsConvert_1.8.0.tar.gz
-	sha256sums = c9d61b035af299407502a9716e5c8f61a74a26f7374ca0999ec9bcd13a95ceda
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsConvert_1.8.2.tar.gz
+	sha256sums = b3193ac8044e235bf5df26c2045bb74d4ac42877f00670465f0fb945aebc755b
 
 pkgname = r-msstatsconvert
