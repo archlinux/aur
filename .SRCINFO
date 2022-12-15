@@ -1,6 +1,6 @@
 pkgbase = swayfx
 	pkgdesc = SwayFX: Sway, but with eye candy!
-	pkgver = 0.1.1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/WillPower3309/swayfx
 	install = sway.install
@@ -41,7 +41,7 @@ pkgbase = swayfx
 	conflicts = swayfx
 	options = debug
 	backup = etc/sway/config
-	source = swayfx-0.1.1.tar.gz::https://github.com/WillPower3309/swayfx/archive/refs/tags/0.1.1.tar.gz
+	source = https://github.com/WillPower3309/swayfx/releases/download/0.1/swayfx-0.1.tar.gz
 	source = 50-systemd-user.conf
 	sha512sums = SKIP
 	sha512sums = c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137
