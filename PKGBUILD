@@ -1,11 +1,11 @@
 # Maintainer: Essem <smswessem@gmail.com>
 
 pkgname=furnace-git
-pkgver=dev129.r101.g4566068a
+pkgver=dev129.r102.gf43363c5
 pkgrel=1
 pkgdesc="A multi-system chiptune tracker compatible with DefleMask modules"
 url="https://github.com/tildearrow/furnace"
-depends=('sdl2' 'libsndfile' 'fmt' 'hicolor-icon-theme' 'alsa-lib')
+depends=('sdl2' 'libsndfile' 'fmt' 'hicolor-icon-theme' 'alsa-lib' 'fftw' 'rtmidi')
 makedepends=('git' 'jack' 'cmake')
 optdepends=('jack: JACK audio support')
 provides=('furnace')
@@ -30,7 +30,7 @@ build() {
   cd "$srcdir/${pkgname%-git}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_GUI=ON -DSYSTEM_FMT=ON -DSYSTEM_ZLIB=ON -DSYSTEM_LIBSNDFILE=ON -DSYSTEM_SDL2=ON -DWITH_JACK=ON ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_GUI=ON -DSYSTEM_FFTW=ON -DSYSTEM_FMT=ON -DSYSTEM_ZLIB=ON -DSYSTEM_LIBSNDFILE=ON -DSYSTEM_SDL2=ON -DSYSTEM_RTMIDI=ON -DWITH_JACK=ON ..
   cmake --build . -j $(nproc)
 }
 
