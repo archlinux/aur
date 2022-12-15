@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ceres-solver
 	pkgdesc = Solver for nonlinear least squares problems (mingw-w64)
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ceres-solver.org/
 	arch = any
 	license = LGPL

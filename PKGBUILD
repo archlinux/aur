@@ -1,6 +1,6 @@
 pkgname=mingw-w64-ceres-solver
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Solver for nonlinear least squares problems (mingw-w64)"
 arch=('any')
 url="http://ceres-solver.org/"
@@ -15,6 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd $srcdir/ceres-solver-$pkgver
+  curl -L https://github.com/ceres-solver/ceres-solver/commit/352b320ab1b5438a0838aea09cbbf07fa4ff5d71.patch | patch -p1
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
