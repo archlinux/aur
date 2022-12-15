@@ -16,8 +16,8 @@ source=("${_pkgname}.desktop")
 source_x86_64=(${_pkgname}-${pkgver}-x86_64.AppImage::"https://github.com/beliys/OpenLens/releases/download/v${pkgver}/${_pkgname}-${pkgver}.x86_64.AppImage")
 source_aarch64=(${_pkgname}-${pkgver}-aarch64.AppImage::"https://github.com/beliys/OpenLens/releases/download/v${pkgver}/${_pkgname}-${pkgver}.arm64.AppImage")
 sha256sums=('30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c')
-sha256sums_x86_64=('e8261b39da2018e4421194ada579345c1e188082a124b5928eb6cb163dcd2a9f')
-sha256sums_aarch64=('57c04cee20800c3757ccf8b25df639f6094c5dafb2627134e2afaa04f0a4f73f')
+sha256sums_x86_64=('f3318933b21d8c676e68e94d1d0df04732c840b539d7e5c61c8127a2410dbcc1')
+sha256sums_aarch64=('bb1af1dad008021265e586b3e04a42b5608bba68178b215605ad50c96a6ac9e7')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
