@@ -1,5 +1,5 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
-# Maintainer: txtsd <code@ihavea.quest>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
