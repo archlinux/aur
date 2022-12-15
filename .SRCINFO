@@ -1,7 +1,7 @@
 pkgbase = esbuild-bin
 	pkgdesc = An extremely fast JavaScript and CSS bundler and minifier.
 	pkgver = 0.16.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://esbuild.github.io
 	arch = x86_64
 	arch = i686
