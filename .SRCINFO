@@ -1,0 +1,24 @@
+pkgbase = windscribe-beta-bin
+	pkgdesc = Windscribe Beta Client
+	pkgver = 2.5.18
+	pkgrel = 1
+	url = https://windscribe.com/download
+	install = windscribe-beta-bin.install
+	arch = x86_64
+	license = GPL2
+	depends = nftables
+	depends = c-ares
+	depends = qt5-svg
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = curl
+	depends = systemd
+	provides = windscribe
+	conflicts = windscribe-cli
+	conflicts = windscribe-bin
+	options = !strip
+	options = !emptydirs
+	source = https://deploy.totallyacdn.com/desktop-apps/2.5.18/windscribe_2.5.18_amd64.deb
+	sha512sums = SKIP
+
+pkgname = windscribe-beta-bin
