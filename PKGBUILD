@@ -19,12 +19,13 @@ prepare() {
 
 build() {
    cd $_pkgname-$pkgver
-   perl Makefile.PL
+   perl Makefile.PL INSTALLDIRS=vendor
    make PREFIX="$pkgdir"/usr INSTALLDIR=${pkgdir}/usr/bin
 }
 
 package() {
   cd $_pkgname-$pkgver
-  install -d  "$pkgdir"/usr/bin/site_perl
+  install -d  "$pkgdir"/usr/bin/vendor_perl
   make install DESTDIR="$pkgdir"
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
