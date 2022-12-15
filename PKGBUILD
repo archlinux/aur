@@ -29,7 +29,7 @@ sha1sums=('01400a96b6e40346c15ad02c38d494e10721fd63'
           '25143611c9042593c13438c41c8b02aefc814ba5'
           'SKIP'
           'e3362ddd41126e2be874cd372a053fdaccf0f616')
-validpgpkeys=('59359B80406D9E73E80599BEF3121E4F2885A7AA')
+validpgpkeys=('0C1B563D7EF1BE08FA89F723698BD348FEDAF5ED')
 
 prepare() {
   cd $_pkgname-$_pkgver
