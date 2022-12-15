@@ -1,0 +1,15 @@
+pkgbase = python-clickhouse-connect
+	pkgdesc = ClickHouse Connect is a suite of Python packages providing interoperability with a wide range of Python applications
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/ClickHouse/clickhouse-connect
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-pytz
+	source = https://github.com/ClickHouse/clickhouse-connect/archive/v0.4.7.tar.gz
+	sha256sums = 98c4285fddd1c9e567c83ba6f4b80b19d50ce2db3953a68e72e51fcda90a957b
+
+pkgname = python-clickhouse-connect
