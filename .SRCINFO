@@ -1,7 +1,7 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
@@ -9,6 +9,7 @@ pkgbase = anki
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-installer
+	makedepends = libxcrypt-compat
 	depends = python-beautifulsoup4
 	depends = python-flask
 	depends = python-waitress

@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -45,6 +45,7 @@ makedepends=(
 
     'ninja'
     'python-installer'
+    'libxcrypt-compat'
 )
 optdepends=(
     'lame: record sound'
