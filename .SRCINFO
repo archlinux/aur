@@ -7,6 +7,6 @@ pkgbase = failing-disk-reporter
 	license = MPLv2
 	makedepends = go
 	source = failing-disk-reporter-0.5.1.tar.gz::https://git.sr.ht/~vejnar/failing-disk-reporter/archive/v0.5.1.tar.gz
-	sha1sums = 5d915dcd37b0d024ad09bceb28a48a2c96d62915
+	sha256sums = 1e2a3384eb5d0bb1a6e7c88c9d15f347cf8f2edf8495eb5e58437d11c8fdbc28
 
 pkgname = failing-disk-reporter
