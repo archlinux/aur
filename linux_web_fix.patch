@@ -1,0 +1,315 @@
+From fc3d6b0bf16133a67c2824cba1a38ffb77531040 Mon Sep 17 00:00:00 2001
+From: DHMike57 <14224881+DHMike57@users.noreply.github.com>
+Date: Thu, 26 Aug 2021 12:31:53 +0100
+Subject: [PATCH] fix for linux web interface
+
+---
+ Cargo.toml           |   4 +-
+ build.rs             |  12 ++-
+ web/index-linux.html |  55 +++++++++++++
+ web/script-linux.js  | 179 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 247 insertions(+), 3 deletions(-)
+ create mode 100644 web/index-linux.html
+ create mode 100644 web/script-linux.js
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 1074e6d..c14b218 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -19,7 +19,7 @@ quick-xml = "0.17"
+ rand = "0.7"
+ lazy_static = "1.4"
+ crossbeam = "0.7.3"
+-web-view = "0.6"
++web-view = "0.7"
+ tinyfiledialogs = "3.3.9"
+ getopts = "0.2"
+ webbrowser = "0.5.2"
+@@ -45,4 +45,4 @@ panic = "abort"
+ opt-level = 0
+ 
+ [package.metadata.winres]
+-LegalCopyright = "© 2019-2020 prixt"
+\ No newline at end of file
++LegalCopyright = "© 2019-2020 prixt"
+diff --git a/build.rs b/build.rs
+index 3a77902..7cf57b3 100644
+--- a/build.rs
++++ b/build.rs
+@@ -15,12 +15,22 @@ fn main() -> Result<(), Box<dyn Error>> {
+ 	#[cfg(all(target_os="windows", feature = "edge"))]
+ 	let range_css = include_str!("web/range-windows-edge.css");
+ 	
++	#[cfg(target_os="linux")]
++	let index_html = include_str!("web/index-linux.html")
++		.replace("{comment_start}"	, "<!--")
++		.replace("{comment_end}"	, "-->")
++		.replace("{range}"			, range_css)
++		.replace("{w3}"				, include_str!("web/w3.css"))
++		.replace("{js}"				, include_str!("web/script-linux.js"));
++
++	#[cfg(not(target_os="linux"))]
+ 	let index_html = include_str!("web/index.html")
+ 		.replace("{comment_start}"	, "<!--")
+ 		.replace("{comment_end}"	, "-->")
+ 		.replace("{range}"			, range_css)
+ 		.replace("{w3}"				, include_str!("web/w3.css"))
+ 		.replace("{js}"				, include_str!("web/script.js"));
++
+ 	let index_html = html_minifier::minify(index_html)?;
+ 
+ 	File::create(dest_dir)?
+@@ -32,4 +42,4 @@ fn main() -> Result<(), Box<dyn Error>> {
+ 		.compile()?;
+ 
+ 	Ok(())
+-}
+\ No newline at end of file
++}
+diff --git a/web/index-linux.html b/web/index-linux.html
+new file mode 100644
+index 0000000..a219257
+--- /dev/null
++++ b/web/index-linux.html
+@@ -0,0 +1,55 @@
++<!doctype html>
++<html>
++<head>
++<!--{comment_end}
++    <style type="text/css">{w3}</style>
++    <style type="text/css">{range}</style>
++    <script type="text/javascript">{js}</script>
++{comment_start}-->
++</head>
++<body onload="main()">
++<header class='w3-bar w3-light-grey w3-small'>
++    <div class='w3-dropdown-hover'>
++        <button class='w3-button'>Load</button>
++        <div class='w3-dropdown-content w3-bar-block w3-border'>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('load_gamelog')">Load gamelog.txt</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('load_soundpack')">Load soundpack</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('load_ignore_list')">Load ignore.txt</button>
++        </div>
++    </div>
++    <div class='w3-dropdown-hover'>
++        <button class='w3-button'>Settings</button>
++        <div class='w3-dropdown-content w3-bar-block w3-border'>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('set_default_paths')">Set current paths as default</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('remove_default_paths')">Delete default paths setting</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('set_default_volumes')">Set current volumes as default</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('remove_default_volumes')">Delete default volumes setting</button>
++        </div>
++    </div>
++    <div class='w3-dropdown-hover w3-right'>
++        <button class='w3-button'>Options</button>
++        <div class='w3-dropdown-content w3-bar-block w3-border' style='right:0'>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('link_original')">&#x1f517; - zwei's original SoundSense & soundpack</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('link_fork')">&#x1f517; - jecowa's soundpack fork</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('link_source')">&#x1f517; - SoundSense-RS Github repository</button>
++            <button class='w3-bar-item w3-button'
++                onclick="window.webkit.messageHandlers.external.postMessage('show_about')">&#x2139; - About</button>
++        </div>
++    </div>
++</header>
++<div class="w3-block" id="channels"></div>
++<div class="w3-block" id="settings" style="display:none"></div>
++<footer class='w3-bottom' id='alerts'></footer>
++<footer class="w3-bottom" id='errors'></footer>
++</body>
++</html>
+diff --git a/web/script-linux.js b/web/script-linux.js
+new file mode 100644
+index 0000000..a60cc1c
+--- /dev/null
++++ b/web/script-linux.js
+@@ -0,0 +1,179 @@
++"use strict";
++
++let is_windows = null;
++let channels = null;
++
++function addSlider(channel_name) {
++    channels.insertAdjacentElement(
++        'beforeend',
++        createSlider(channel_name)
++    );
++    document.getElementById(channel_name+"_slider")
++        .addEventListener(is_windows?'change':'input',function(){
++                window.webkit.messageHandlers.external.postMessage("change_volume:"+channel_name+":"+this.value);
++            },
++            false
++        );
++    document.getElementById(channel_name+"_skip_button")
++        .addEventListener('click',function(){
++                window.webkit.messageHandlers.external.postMessage("skip_current_sound:"+channel_name);
++            },
++            false
++        );
++    document.getElementById(channel_name+"_play_pause_button")
++        .addEventListener('click',function(){
++                window.webkit.messageHandlers.external.postMessage("play_pause:"+channel_name);
++            },
++            false
++        );
++}
++function createSlider(channel_name) {
++    let slider = document.createElement("div");
++    slider.className="w3-cell-row w3-border-bottom";
++    slider.insertAdjacentHTML(
++        'afterbegin',
++        "<div class='w3-cell w3-cell-middle w3-center w3-padding-small overlay-container' style='width:10%;min-width:90px'"+
++            "id='"+channel_name+"_head'>"+
++            "<div class='overlay-content w3-container w3-padding-small w3-animate-opacity w3-grey w3-center'>"+
++                "<span>Threshold</span><br>"+
++                "<select id='"+channel_name+"_selector' onchange='thresholdSelect(\""+channel_name+"\",this.value)'>"+
++                    "<option value='4'>Everything</option>"+
++                    "<option value='3'>Fluff</option>"+
++                    "<option value='2'>Important</option>"+
++                    "<option value='1'>Critical</option>"+
++                    "<option value='0'>Nothing</option>"+
++                "</select>"+
++            "</div>"+
++            "<h4>"+channel_name+"</h4>"+
++        "</div>"+
++        "<div class='w3-cell w3-cell-middle w3-rest w3-container w3-padding-small'>"+
++            "<input type='range' id='"+channel_name+"_slider'"+
++                "min='0' max='100' value='100'>"+
++        "</div>"+
++        "<div class='w3-cell w3-cell-middle w3-center w3-small w3-padding-small' style='width:2%;min-width:10px;'>"+
++            "<div class='w3-button w3-block w3-round w3-small w3-padding-small'"+
++                "title='Skip "+channel_name+"'"+
++                "id='"+channel_name+"_skip_button'>"+
++                "&#x23ED;"+
++            "</div>"+
++            "<div class='w3-button w3-block w3-round w3-small w3-padding-small'"+
++                "title='Play/Pause "+channel_name+"'"+
++                "id='"+channel_name+"_play_pause_button'>"+
++                "&#x23EF;"+
++            "</div>"+
++        "</div>"
++    );
++    return slider;
++}
++function setSliderValue(channel_name, value) {
++    let slider = document.getElementById(channel_name+"_slider");
++    if (slider != null) slider.value = value;
++}
++function clearSliders() {
++    while (channels.firstChild)
++        channels.removeChild(channels.firstChild);
++}
++function setSliderHead(channel_name, is_paused) {
++    let slider_head = document.getElementById(channel_name+"_head");
++    let slider = document.getElementById(channel_name+"_slider");
++    if (is_paused) {
++        slider_head.classList.add("w3-opacity-max");
++        slider.classList.add("w3-opacity-max");
++    }
++    else {
++        slider_head.classList.remove("w3-opacity-max");
++        slider.classList.remove("w3-opacity-max");
++    }
++}
++
++let alerts_footer = null;
++let alerts = null;
++function addAlert(name, color, text) {
++    removeAlert(name);
++    let new_alert = createAlert(name, color, text);
++    alerts[name] = new_alert;
++    alerts_footer.insertAdjacentElement('beforeend', new_alert);
++    if (alerts_footer.childElementCount > 10)
++        removeAlert(alerts_footer.firstChild.name);
++}
++function removeAlert(name) {
++    let alert = document.getElementById("alert_"+name);
++    if (alert != null) {
++        alerts_footer.removeChild(alert);
++        alerts.delete(name);
++    }
++}
++function createAlert(name, color, text) {
++    let alert=document.createElement("div");
++    alert.name = name;
++    alert.id="alert_"+name;
++    alert.className="w3-bar w3-animate-bottom w3-"+color;
++    alert.style.cssText="padding: 2px 15px 2px 15px;";
++    alert.innerHTML=text;
++    alert.timer = 4.0;
++
++    let cross = document.createElement("span");
++    cross.className="w3-closebtn";
++    cross.setAttribute("onclick", "removeAlert('"+name+"')");
++    cross.innerHTML="&times;";
++
++    alert.insertAdjacentElement('afterbegin',cross);
++    
++    return alert;
++}
++
++let error_footer = null;
++function addError(name, text) {
++    let new_error = createError(name, text);
++    error_footer.insertAdjacentElement('afterbegin', new_error);
++}
++function removeError(id) {
++    let error = document.getElementById(id);
++    if (error != null) {
++        error_footer.removeChild(error);
++    }
++}
++function createError(name, text) {
++    let error=document.createElement("div");
++    error.name=name;
++    error.id="error_"+name+toString(Math.floor(Math.random()*100000));
++    error.className="w3-bar w3-animate-bottom w3-red";
++    error.style.cssText="padding: 10px 15px 10px 15px;";
++    error.innerHTML="<h3>"+name+"</h3><p>"+text+"</p>";
++
++    let cross = document.createElement("span");
++    cross.className="w3-closebtn";
++    cross.setAttribute("onclick", "removeError('"+error.id+"')");
++    cross.innerHTML="&times;";
++
++    error.insertAdjacentElement('afterbegin',cross);
++
++    return error;
++}
++
++function thresholdSelect(channel_name, value) {
++    window.webkit.messageHandlers.external.postMessage("change_threshold:"+channel_name+":"+value);
++
++}
++
++function main() {
++    channels = document.getElementById('channels');
++    is_windows = /MSIE|Trident|Edge/.test(window.navigator.userAgent);
++    alerts_footer = document.getElementById('alerts');
++    error_footer = document.getElementById('errors');
++    alerts = new Map();
++    
++    let prev = null;
++    function step(now) {
++        let dt = (prev!=null) ? (now-prev)*0.001 : 0.0;
++        prev = now;
++        for (let key in alerts) {
++            let alert = alerts[key];
++            alert.timer -= dt;
++            if (alert.timer <= 1.0) alert.style.opacity = alert.timer;
++            if (alert.timer <= 0.0) removeAlert(alert.name);
++        }
++        window.requestAnimationFrame(step);
++    }
++    window.requestAnimationFrame(step);
++}
+

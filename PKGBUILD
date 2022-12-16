@@ -3,7 +3,7 @@
 
 pkgname=soundsense-rs-git
 _pkgname=soundsense-rs
-pkgver=1.5.1.travis.r9.g5a591cb
+pkgver=1.5.1.travis.r12.gf701020
 pkgrel=1
 pkgdesc="A Rust version of SoundSense"
 arch=("x86_64")
@@ -13,9 +13,15 @@ makedepends=("git" "rust" "alsa-lib" "gtk3" "webkit2gtk")
 depends=("libasound.so" "libgtk-3.so" "libgdk-3.so" "libwebkit2gtk-4.0.so"
          "libjavascriptcoregtk-4.0.so")
 source=("git+https://github.com/prixt/${_pkgname}.git"
-        soundsense-rs.desktop)
-sha256sums=("SKIP"
-            "ced141bf8441d271ee610beebe79cdd5bfe287b1d157d79a7c470d0e44673e5f")
+        'soundsense-rs.desktop'
+        'linux_web_fix.patch')
+sha256sums=('SKIP'
+            'ced141bf8441d271ee610beebe79cdd5bfe287b1d157d79a7c470d0e44673e5f'
+            'd427efa76714279f114b3b88dd584dc3b3fe55236c361fbaf09a77358e25afc8')
+
+prepare() {
+  patch --directory="${srcdir}/${_pkgname}" --forward --strip=1 --input="${srcdir}/linux_web_fix.patch"
+}
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -24,7 +30,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
