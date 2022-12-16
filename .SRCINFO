@@ -1,17 +1,16 @@
 pkgbase = kbd-tapper
 	pkgdesc = A keyboard layout switcher for X Window System and Wayland
-	pkgver = 0.5.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = http://kbd-tapper.sourceforge.net/en.html
 	arch = x86_64
 	license = GPL3
+	makedepends = perl-path-tiny
 	depends = dconf
 	depends = glibmm
 	depends = libinput
 	depends = libxtst
-	depends = json-glib
-	source = https://sourceforge.net/projects/kbd-tapper/files/0.5.0/tapper-0.5.0-0.vdb.1.tar.gz
-	sha256sums = 81dddbc84348e1bd19135c1e2a49f3937a5bac55147f9cf7ba50730d0a53dc92
+	source = https://sourceforge.net/projects/kbd-tapper/files/0.7.1/tapper-0.7.1-0.vdb.2.tar.gz
+	sha256sums = b3692efb4576109947721cee65e9e5623d62f20dc7b78fcc57e8bb2f899ce4aa
 
 pkgname = kbd-tapper
-
