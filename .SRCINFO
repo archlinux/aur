@@ -1,6 +1,6 @@
 pkgbase = r-linnorm
 	pkgdesc = Linear model and normality based normalization and transformation method (Linnorm)
-	pkgver = 2.22.0
+	pkgver = 2.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Linnorm
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-linnorm
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Linnorm_2.22.0.tar.gz
-	sha256sums = 40d9031be5b4c83c62bbb49014e589ad04f93410a3c887bb571ecf975adbb059
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Linnorm_2.22.1.tar.gz
+	sha256sums = 32522adda89c755c80de902ea28419ce87246ec29789bceaf07ae1167ddca799
 
 pkgname = r-linnorm
