@@ -4,11 +4,11 @@
 _pkgname=raul
 pkgname=$_pkgname-git
 pkgver=2.0.1.r684.3e37783
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Realtime Audio Utility Library for audio and musical applications (git version)'
 arch=(any)
-url='http://drobilla.net/software/raul/'
+url='https://drobilla.net/software/raul.html'
 license=(GPL3)
 depends=(gcc-libs)
 makedepends=(git meson)
