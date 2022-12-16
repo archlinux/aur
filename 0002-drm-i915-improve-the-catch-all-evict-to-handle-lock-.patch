@@ -1,21 +1,35 @@
-From 47e6d679cc4bab574bf32da863afafca4aad11b0 Mon Sep 17 00:00:00 2001
+From 0c079d3f88df5f8286cd5c91b54bdac7c819be85 Mon Sep 17 00:00:00 2001
 From: Matthew Auld <matthew.auld@intel.com>
-Date: Thu, 1 Dec 2022 15:25:22 +0000
-Subject: [PATCH 5/6] drm/i915: improve the catch-all evict to handle lock
+Date: Tue, 6 Dec 2022 16:11:41 +0000
+Subject: [PATCH 2/3] drm/i915: improve the catch-all evict to handle lock
  contention
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 The catch-all evict can fail due to object lock contention, since it
 only goes as far as trylocking the object, due to us already holding the
-vm->mutex.  Doing a full object lock can deadlock the system, since the
+vm->mutex. Doing a full object lock here can deadlock, since the
 vm->mutex is always our inner lock. Add another execbuf pass which drops
 the vm->mutex and then tries to grab the object will the full lock,
-before then retrying the eviction.
+before then retrying the eviction. This should be good enough for now to
+fix the immediate regression with userspace seeing -ENOSPC from execbuf
+due to contended object locks during GTT eviction.
 
-Testcase: igt@igem_ppgtt@shrink-vs-evict-*
+Testcase: igt@gem_ppgtt@shrink-vs-evict-*
+Fixes: 7e00897be8bf ("drm/i915: Add object locking to i915_gem_evict_for_node and i915_gem_evict_something, v2.")
+References: https://gitlab.freedesktop.org/drm/intel/-/issues/7627
 References: https://gitlab.freedesktop.org/drm/intel/-/issues/7570
+References: https://bugzilla.mozilla.org/show_bug.cgi?id=1779558
 Signed-off-by: Matthew Auld <matthew.auld@intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Thomas Hellström <thomas.hellstrom@linux.intel.com>
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>
+Cc: Mani Milani <mani@chromium.org>
+Cc: <stable@vger.kernel.org> # v5.18+
 
-Revision 4 of https://patchwork.freedesktop.org/series/111271/
+Revision 1 of https://patchwork.freedesktop.org/series/111686/
 ---
  .../gpu/drm/i915/gem/i915_gem_execbuffer.c    | 25 +++++++++++--
  drivers/gpu/drm/i915/gem/i915_gem_mman.c      |  2 +-
@@ -26,7 +40,7 @@ Revision 4 of https://patchwork.freedesktop.org/series/111271/
  6 files changed, 56 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c b/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
-index cd75b0ca2555..885fe8855718 100644
+index 845023c14eb3..094e92ed28db 100644
 --- a/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
 +++ b/drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c
 @@ -741,25 +741,44 @@ static int eb_reserve(struct i915_execbuffer *eb)
@@ -78,7 +92,7 @@ index cd75b0ca2555..885fe8855718 100644
  			err = eb_reserve_vma(eb, ev, pin_flags);
  			if (err)
 diff --git a/drivers/gpu/drm/i915/gem/i915_gem_mman.c b/drivers/gpu/drm/i915/gem/i915_gem_mman.c
-index 0c5c43852e24..6f579cb8f2ff 100644
+index 73d9eda1d6b7..c83d98e1dc5d 100644
 --- a/drivers/gpu/drm/i915/gem/i915_gem_mman.c
 +++ b/drivers/gpu/drm/i915/gem/i915_gem_mman.c
 @@ -369,7 +369,7 @@ static vm_fault_t vm_fault_gtt(struct vm_fault *vmf)
@@ -200,7 +214,7 @@ index e593c530f9bd..bf0ee0e4fe60 100644
  
  #endif /* __I915_GEM_EVICT_H__ */
 diff --git a/drivers/gpu/drm/i915/i915_vma.c b/drivers/gpu/drm/i915/i915_vma.c
-index 373582cfd8f3..240b7b8ed281 100644
+index f17c09ead7d7..4d06875de14a 100644
 --- a/drivers/gpu/drm/i915/i915_vma.c
 +++ b/drivers/gpu/drm/i915/i915_vma.c
 @@ -1569,7 +1569,7 @@ static int __i915_ggtt_pin(struct i915_vma *vma, struct i915_gem_ww_ctx *ww,
@@ -235,5 +249,5 @@ index 8c6517d29b8e..37068542aafe 100644
  	}
  
 -- 
-2.38.1
+2.39.0
 

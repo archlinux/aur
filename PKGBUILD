@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.0.12
+pkgver=6.1
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,8 +81,8 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-6.0.y
-_commit=5be918e798e2c2cc94fa7dd0f6f031921a4f7598
+_ckhrtimer=linux-6.1.y
+_commit=fdbdf7e0ec56cd59e11d024c473e766429271a5c
 
 _gcc_more_v=20221104
 source=(
@@ -91,25 +91,19 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-soundwire-intel-Initialize-clock-stop-timeout.patch
-  0003-drm-sched-add-DRM_SCHED_FENCE_DONT_PIPELINE-flag.patch
-  0004-drm-amdgpu-use-DRM_SCHED_FENCE_DONT_PIPELINE-for-VM-.patch
-  0005-drm-i915-improve-the-catch-all-evict-to-handle-lock-.patch
+  0002-drm-i915-improve-the-catch-all-evict-to-handle-lock-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('89b730edf8942b49e02f9894244205886c9a214d629b35b88c4ff06ee9304f01'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'f66b82f4a99c99dedb128a027c7e23a70c2853984c44ecbd79d16bd76f1f5bac'
+            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
             '3a8f397b89bad95c46f42c0f80ede7536a4a45a28621e00ed486918a55f905ed'
-            '85b197dbe033264925b4803b3c8907ed73b967061c098e269eacd5575d6da34b'
-            '2f4d03a8bb21357f88d694b62fc3299944fa1738652dfe888ac0320d5d21f351'
-            '2fe671aab9f164a3841e75d837058f208ee781854e6c41e829ddde789bfdc4c2'
-            '671c3852d1adf7095cf82fdecf197c65df4d3003c917b56cee2fc9845cd06883'
-            '3d00e39c53c107c87925eaeade32fc7d78e916e588ab5d8e4dd84c33ae748a96'
-            '753576c6bc05bab969c5824fdb8dd8e6e1131d4c7f805dbaf5c529aafd2a1b6b')
+            '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
+            '01f0f3d1b79fd789e01ba5debb3b63e9716679199b6fd79e81744d688632e273'
+            'a3dc6156ca04fef849662a8febd2ebc7ca175de54253ef293f4c8ce638149507')
 
 prepare() {
   cd linux-${pkgver}
