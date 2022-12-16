@@ -4,8 +4,9 @@ pkgbase = mpv-sponsorblock
 	pkgrel = 1
 	url = https://github.com/TheCactusVert/mpv-sponsorblock
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = cargo-nightly
+	depends = mpv
 	source = mpv-sponsorblock-1.1.0.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = 0cf015fb4b5ea6c4f5f065fb02f67171fc2a9c45b4a766a7264f02c42bcfe6fe
 
