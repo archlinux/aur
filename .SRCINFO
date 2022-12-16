@@ -1,0 +1,27 @@
+pkgbase = linux-odroid-xu3
+	pkgver = 4.14.302
+	pkgrel = 1
+	url = https://github.com/kyak/linux
+	arch = armv7h
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	options = !strip
+	source = https://github.com/kyak/linux/archive/e1bc2fa40c9e2eed44770f95ccc01a9deee84c08.tar.gz
+	source = 0001-rtl8812au-sprintf-fix-gcc10.patch
+	source = config
+	source = linux.preset
+	source = 99-linux.hook
+	md5sums = d17e7c7108c95291ce2ee4a3c971f3d3
+	md5sums = 20bf3136f2725be5b6a2eb7a5a8682bf
+	md5sums = 170cdff5ddd12492e205c61261e9ff74
+	md5sums = a84976d500db50cee07177eccfe2f455
+	md5sums = 79fa396e3f9a09a85156d6d7c2d34b58
+
+pkgname = linux-odroid-xu3
+
+pkgname = linux-odroid-xu3-headers
