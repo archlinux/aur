@@ -1,0 +1,200 @@
+From 898490c010b5d2e499e03b7e815fc214209ac583 Mon Sep 17 00:00:00 2001
+From: Alexey Gladkov <gladkov.alexey@gmail.com>
+Date: Mon, 29 Apr 2019 18:11:14 +0200
+Subject: moduleparam: Save information about built-in modules in separate file
+
+Problem:
+
+When a kernel module is compiled as a separate module, some important
+information about the kernel module is available via .modinfo section of
+the module.  In contrast, when the kernel module is compiled into the
+kernel, that information is not available.
+
+Information about built-in modules is necessary in the following cases:
+
+1. When it is necessary to find out what additional parameters can be
+passed to the kernel at boot time.
+
+2. When you need to know which module names and their aliases are in
+the kernel. This is very useful for creating an initrd image.
+
+Proposal:
+
+The proposed patch does not remove .modinfo section with module
+information from the vmlinux at the build time and saves it into a
+separate file after kernel linking. So, the kernel does not increase in
+size and no additional information remains in it. Information is stored
+in the same format as in the separate modules (null-terminated string
+array). Because the .modinfo section is already exported with a separate
+modules, we are not creating a new API.
+
+It can be easily read in the userspace:
+
+$ tr '\0' '\n' < modules.builtin.modinfo
+ext4.softdep=pre: crc32c
+ext4.license=GPL
+ext4.description=Fourth Extended Filesystem
+ext4.author=Remy Card, Stephen Tweedie, Andrew Morton, Andreas Dilger, Theodore Ts'o and others
+ext4.alias=fs-ext4
+ext4.alias=ext3
+ext4.alias=fs-ext3
+ext4.alias=ext2
+ext4.alias=fs-ext2
+md_mod.alias=block-major-9-*
+md_mod.alias=md
+md_mod.description=MD RAID framework
+md_mod.license=GPL
+md_mod.parmtype=create_on_open:bool
+md_mod.parmtype=start_dirty_degraded:int
+...
+
+Co-Developed-by: Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>
+Signed-off-by: Gleb Fotengauer-Malinovskiy <glebfm@altlinux.org>
+Signed-off-by: Alexey Gladkov <gladkov.alexey@gmail.com>
+Acked-by: Jessica Yu <jeyu@kernel.org>
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+---
+ .gitignore                        |  1 +
+ Documentation/dontdiff            |  1 +
+ Documentation/kbuild/kbuild.txt   |  5 +++++
+ Makefile                          |  2 ++
+ include/asm-generic/vmlinux.lds.h |  1 +
+ include/linux/module.h            |  1 +
+ include/linux/moduleparam.h       | 12 +++++-------
+ scripts/link-vmlinux.sh           |  3 +++
+ 8 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index e7bb6c6edbae4..2fb1765c33b0a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -58,6 +58,7 @@ modules.builtin
+ /vmlinuz
+ /System.map
+ /Module.markers
++/modules.builtin.modinfo
+ 
+ #
+ # RPM spec file (make rpm-pkg)
+diff --git a/Documentation/dontdiff b/Documentation/dontdiff
+index ef25a066d9525..512fa0239ebf6 100644
+--- a/Documentation/dontdiff
++++ b/Documentation/dontdiff
+@@ -178,6 +178,7 @@ mktables
+ mktree
+ modpost
+ modules.builtin
++modules.builtin.modinfo
+ modules.order
+ modversions.h*
+ nconf
+diff --git a/Documentation/kbuild/kbuild.txt b/Documentation/kbuild/kbuild.txt
+index 8a3830b39c7d4..9c230ea719634 100644
+--- a/Documentation/kbuild/kbuild.txt
++++ b/Documentation/kbuild/kbuild.txt
+@@ -11,6 +11,11 @@ modules.builtin
+ This file lists all modules that are built into the kernel. This is used
+ by modprobe to not fail when trying to load something builtin.
+ 
++modules.builtin.modinfo
++--------------------------------------------------
++This file contains modinfo from all modules that are built into the kernel.
++Unlike modinfo of a separate module, all fields are prefixed with module name.
++
+ 
+ Environment variables
+ 
+diff --git a/Makefile b/Makefile
+index 85dd977f42324..9a8b3f94633d7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1308,6 +1308,7 @@ _modinst_:
+ 	fi
+ 	@cp -f $(objtree)/modules.order $(MODLIB)/
+ 	@cp -f $(objtree)/modules.builtin $(MODLIB)/
++	@cp -f $(objtree)/modules.builtin.modinfo $(MODLIB)/
+ 	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.modinst
+ 
+ # This depmod is only for convenience to give the initial
+@@ -1348,6 +1349,7 @@ endif # CONFIG_MODULES
+ 
+ # Directories & files removed with 'make clean'
+ CLEAN_DIRS  += $(MODVERDIR)
++CLEAN_FILES += modules.builtin.modinfo
+ 
+ # Directories & files removed with 'make mrproper'
+ MRPROPER_DIRS  += include/config usr/include include/generated          \
+diff --git a/include/asm-generic/vmlinux.lds.h b/include/asm-generic/vmlinux.lds.h
+index f8f6f04c44537..bbb9e332f2fe6 100644
+--- a/include/asm-generic/vmlinux.lds.h
++++ b/include/asm-generic/vmlinux.lds.h
+@@ -844,6 +844,7 @@
+ 	EXIT_CALL							\
+ 	*(.discard)							\
+ 	*(.discard.*)							\
++	*(.modinfo)							\
+ 	}
+ 
+ /**
+diff --git a/include/linux/module.h b/include/linux/module.h
+index 5bf5dcd91009e..5f7007430d356 100644
+--- a/include/linux/module.h
++++ b/include/linux/module.h
+@@ -253,6 +253,7 @@ extern typeof(name) __mod_##type##__##name##_device_table		\
+ #define MODULE_VERSION(_version) MODULE_INFO(version, _version)
+ #else
+ #define MODULE_VERSION(_version)					\
++	MODULE_INFO(version, _version);					\
+ 	static struct module_version_attribute ___modver_attr = {	\
+ 		.mattr	= {						\
+ 			.attr	= {					\
+diff --git a/include/linux/moduleparam.h b/include/linux/moduleparam.h
+index ba36506db4fb7..5ba250d9172ac 100644
+--- a/include/linux/moduleparam.h
++++ b/include/linux/moduleparam.h
+@@ -10,23 +10,21 @@
+    module name. */
+ #ifdef MODULE
+ #define MODULE_PARAM_PREFIX /* empty */
++#define __MODULE_INFO_PREFIX /* empty */
+ #else
+ #define MODULE_PARAM_PREFIX KBUILD_MODNAME "."
++/* We cannot use MODULE_PARAM_PREFIX because some modules override it. */
++#define __MODULE_INFO_PREFIX KBUILD_MODNAME "."
+ #endif
+ 
+ /* Chosen so that structs with an unsigned long line up. */
+ #define MAX_PARAM_PREFIX_LEN (64 - sizeof(unsigned long))
+ 
+-#ifdef MODULE
+ #define __MODULE_INFO(tag, name, info)					  \
+ static const char __UNIQUE_ID(name)[]					  \
+   __used __attribute__((section(".modinfo"), unused, aligned(1)))	  \
+-  = __stringify(tag) "=" info
+-#else  /* !MODULE */
+-/* This struct is here for syntactic coherency, it is not used */
+-#define __MODULE_INFO(tag, name, info)					  \
+-  struct __UNIQUE_ID(name) {}
+-#endif
++  = __MODULE_INFO_PREFIX __stringify(tag) "=" info
++
+ #define __MODULE_PARM_TYPE(name, _type)					  \
+   __MODULE_INFO(parmtype, name##type, #name ":" _type)
+ 
+diff --git a/scripts/link-vmlinux.sh b/scripts/link-vmlinux.sh
+index dc0e8c5a14023..e4383e0f476eb 100755
+--- a/scripts/link-vmlinux.sh
++++ b/scripts/link-vmlinux.sh
+@@ -193,6 +193,9 @@ modpost_link vmlinux.o
+ # modpost vmlinux.o to check for section mismatches
+ ${MAKE} -f "${srctree}/scripts/Makefile.modpost" vmlinux.o
+ 
++info MODINFO modules.builtin.modinfo
++${OBJCOPY} -j .modinfo -O binary vmlinux.o modules.builtin.modinfo
++
+ kallsymso=""
+ kallsyms_vmlinux=""
+ if [ -n "${CONFIG_KALLSYMS}" ]; then
+-- 
+cgit 
+
