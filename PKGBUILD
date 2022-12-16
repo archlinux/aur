@@ -3,7 +3,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=feedbackd
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A daemon to provide haptic feedback on events'
 arch=(x86_64 aarch64)
@@ -21,7 +21,7 @@ makedepends=(
 	vala
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('cbbcf82f2141be03a5c1e8259257fa158f8bfa366cbd56d93e728ac4c504fb9591ebee723ff5128e5d1db6c50d7226754f233edd8f08239d550f3287f517f8a5')
+b2sums=('088047712fc1cce219bd1fe6b7f82883eb9806ff6b14f932012f42dc13ff12958a807b0a64e88c56bd1f89b4e4da4c0b78400960fc71f3a7ac4c3e78c14f8341')
 
 build() {
 	arch-meson "${pkgname}-v${pkgver}" build -Dgtk_doc=true -Dman=true
