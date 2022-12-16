@@ -101,7 +101,7 @@ conflicts=('wine' 'wine64')
 
 pkgver() {
   cd wine
-  printf "%s.%s" "$(cat VERSION | grep -Po 'Wine version \K[^$]*')" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.[0-9]*.[0-9]*.[a-zA-Z0-9]*.//')"
+  printf "%s.%s" "$(cat VERSION | grep -Po 'Wine version \K[^$]*' | tr '-' '.')" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.[0-9]*.[0-9]*.[a-zA-Z0-9]*.//')"
 }
 
 prepare() {
