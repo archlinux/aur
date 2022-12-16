@@ -1,6 +1,6 @@
 pkgname="serial-cli-git"
 _pkgname="serial-cli"
-pkgver=1.0.0.r0.60c08d8
+pkgver=r12.7fb4785
 pkgrel=1
 pkgdesc="serial app"
 arch=('x86_64' 'x86')
@@ -16,10 +16,7 @@ provides=(serial-cli)
 
 pkgver() {
   cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = serial-cli-git
 	pkgdesc = serial app
-	pkgver = 1.0.0.r0.60c08d8
+	pkgver = r12.7fb4785
 	pkgrel = 1
 	url = https://github.com/ToniLipponen/Serial-cli.git
 	arch = x86_64
