@@ -25,10 +25,10 @@ pkgbase = turboprint
 	sha256sums = c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d
 	sha256sums = de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f
 	sha256sums = a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad
-	source_i686 = http://www.turboprint.info/tp2/turboprint-2.53-1.i586.tgz
+	source_i686 = https://www.zedonet.com/download/tp2/turboprint-2.53-1.i586.tgz
 	md5sums_i686 = 6d8bf7476d19fb4c9076444ca33ec56b
 	sha256sums_i686 = 9e65f049d152e09a1d34e9810ff69635ade8b81da9921d29d9f133f1b849bbbe
-	source_x86_64 = http://www.turboprint.info/tp2/turboprint-2.53-1.x86_64.tgz
+	source_x86_64 = https://www.zedonet.com/download/tp2/turboprint-2.53-1.x86_64.tgz
 	md5sums_x86_64 = 2dad48eb7b93c5f24f747d6849f1233b
 	sha256sums_x86_64 = 1f6640630f99d39f06deaf3a04e2978ef0f5eacd08dc6aba7c1b947060c1d087
 

@@ -30,7 +30,7 @@ optdepends=(
 backup=('etc/turboprint/system.cfg')
 options=('!strip')
 install="${pkgname}.install"
-_verwatch=('http://www.turboprint.info/history.html' '[0-9][0-9]-[a-z][a-z][a-z]-[0-9][0-9] - \([0-9\.]\+\).*' 'f')
+#_verwatch=('http://www.turboprint.info/history.html' '[0-9][0-9]-[a-z][a-z][a-z]-[0-9][0-9] - \([0-9\.]\+\).*' 'f')
 source=('turboprint.desktop'
         'turboprint-monitor.desktop'
         'tprintdaemon.service')
@@ -39,8 +39,8 @@ _srcdir="${pkgname}-${_pkgver}"
 # ftp://ftp.zedonet.com/tp2/turboprint-2.44-1.i586.tgz
 # http://www.turboprint.info/tp2/arm/turboprint-2.44-1.ARMhf.tgz
 # ftp://ftp.zedonet.com/tp2/arm/turboprint-2.44-1.ARMhf.tgz
-source_i686=("http://www.turboprint.info/tp2/${_srcdir}.i586.tgz")
-source_x86_64=("http://www.turboprint.info/tp2/${_srcdir}.x86_64.tgz")
+source_i686=("https://www.zedonet.com/download/tp2/${_srcdir}.i586.tgz")
+source_x86_64=("https://www.zedonet.com/download/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
