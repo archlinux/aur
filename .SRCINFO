@@ -1,6 +1,6 @@
 pkgbase = r-lpsymphony
 	pkgdesc = Symphony integer linear programming solver in R
-	pkgver = 1.26.1
+	pkgver = 1.26.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lpsymphony
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-lpsymphony
 	optdepends = r-knitr
 	optdepends = r-slam
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lpsymphony_1.26.1.tar.gz
-	sha256sums = fcd6d0e14536167aeef872c7a5c830ed28d10694a376d26c2640b42fa3889e0a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lpsymphony_1.26.2.tar.gz
+	sha256sums = a33e850526b2ab7299caca862cbfb7110b317c421dcfce047fc7be338fbbff98
 
 pkgname = r-lpsymphony
