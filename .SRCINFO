@@ -1,0 +1,21 @@
+pkgbase = turntable-nativefier
+	pkgdesc = Turntable desktop built with nativefier (electron)
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://tt.live
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = turntable-nativefier.desktop
+	source = turntable-nativefier.png
+	sha256sums = 47f624b3ac19f7e6ecc0ea7389b9afd49b58d44e9316df132a356a5db74eeec3
+	sha256sums = 0e0e1328664edb107808311b099a873a071bcde3d322491e3094ba89ab3f78ba
+
+pkgname = turntable-nativefier

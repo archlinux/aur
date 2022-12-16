@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Turntable
+Comment=Turntable desktop built with nativefier (electron)
+Exec=turntable-nativefier
+Icon=turntable-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=AudioVideo;Audio;Music;
