@@ -8,7 +8,7 @@ pkgdesc='Simple automated way for users to request new content for Plex'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/Ombi-app/Ombi'
 license=('GPL2')
-depends=('libunwind' 'openssl-1.0' 'icu')
+depends=('libunwind' 'openssl' 'icu')
 optdepends=('sonarr: TV daemon for usenet & torrents'
             'radarr: Movie daemon for usenet & torrents (sonarr fork)'
             'lidarr: Music daemon for usenet & torrents (sonarr fork)'
