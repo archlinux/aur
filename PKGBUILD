@@ -315,7 +315,7 @@ package_gcc-fortran-git() {
 package_gcc-rust-git() {
   pkgdesc="Rust frontend for GCC (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-rust{,-git} gcc-multilib{,-git})
+  provides=(gcc-rust{,-git})
   conflicts=(gcc-rust)
   replaces=(gcc-multilib-git)
 
@@ -334,7 +334,7 @@ package_gcc-rust-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-objc gcc-multilib{,-git})
+  provides=(gcc-multilib{,-git})
   conflicts=(gcc-objc)
   replaces=(gcc-multilib-git)
 
@@ -416,7 +416,7 @@ package_lib32-gcc-libs-git() {
   depends=('lib32-glibc>=2.27')
   provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
   conflicts=(lib32-gcc-libs)
-  replaces=(gcc-multilib-git)
+  groups=(multilib-devel-git)
   options=(!emptydirs !strip)
 
   cd gcc-build
@@ -453,9 +453,8 @@ package_lib32-gcc-libs-git() {
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gdc gcc-d{,-git} gcc-multilib{,-git})
-  replaces=(gcc-multilib{,-git})
-  conflicts=(gcc-d)
+  provides=(gdc)
+  replaces=(gdc)
   options=(staticlibs !debug)
 
   cd gcc-build
@@ -477,10 +476,10 @@ package_gcc-d-git() {
 package_lto-dump-git() {
   pkgdesc="Dump link time optimization object files (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(lto-dump)
-  conflicts=(lto-dumb)
-  replaces=(gcc-multilib-git)
-  
+  provides=(lto-dump lto-dump-git)
+  replaces=(lto-dump)
+  conflicts=(lto-dump)
+
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" lto.install-{common,man,info}
 
@@ -492,9 +491,6 @@ package_lto-dump-git() {
 package_libgccjit-git() {
   pkgdesc="Just-In-Time Compilation with GCC backend (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(libgccjit)
-  conflicts=(libgccjit)
-  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info
