@@ -9,8 +9,9 @@ pkgbase = ruby-repofetch
 	depends = ruby
 	optdepends = github-cli: Receive auth token from GitHub
 	provides = ruby-repofetch
+	provides = ruby-repofetch-bin
 	conflicts = ruby-repofetch
-	conflicts = repofetch
+	conflicts = ruby-repofetch-bin
 	source = ruby-repofetch::git+https://github.com/spenserblack/repofetch
 	md5sums = SKIP
 
