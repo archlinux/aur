@@ -4,13 +4,13 @@
 
 pkgname=rstudio-desktop
 _vermajor="2022"
-_verminor="07"
-_verpatch="2"
-_versuffix="+576"
-_gitcommit="e7373ef"
+_verminor="12"
+_verpatch="0"
+_versuffix="353"
+_gitcommit="7d165dc"
 _gitname=rstudio-rstudio-${_gitcommit}
-pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
-_srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
+pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
+_srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=16.14.0
@@ -31,12 +31,12 @@ optdepends=('git: for git support'
 
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
-source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
+source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('55705c36a9b826064b4d9aa87b58c40bb9f7cd2f149b16d554e20136306ce301'
+sha256sums=('e4f3503e2ad4229301360f56fd5288e5c8e769c490073dae7fe40366237ecce0'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
@@ -104,7 +104,7 @@ build() {
     export RSTUDIO_VERSION_MAJOR=${_vermajor}
     export RSTUDIO_VERSION_MINOR=${_verminor}
     export RSTUDIO_VERSION_PATCH=${_verpatch}
-    export RSTUDIO_VERSION_SUFFIX=${_versuffix}
+    export RSTUDIO_VERSION_SUFFIX="+${_versuffix}"
     export GIT_COMMIT=${_gitcommit}
     export PACKAGE_OS=$(uname -om)
     
