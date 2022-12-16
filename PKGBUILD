@@ -2,7 +2,7 @@
 
 pkgname=ruby-repofetch
 _gitname=repofetch
-pkgver=v0.4.1.rc.2.r26.gaa4a34f
+pkgver=v0.4.2.rc.1.r1.gb01827b
 pkgrel=1
 pkgdesc="A remote repository stat fetcher with support for 3rd-party plugins"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://spenserblack.github.io/repofetch/"
 gh_url="https://github.com/spenserblack/repofetch"
 license=('MIT')
 makedepends=('git')
+optdepends=('github-cli: Receive auth token from GitHub')
 depends=('ruby')
 provides=('ruby-repofetch')
 conflicts=('ruby-repofetch' 'repofetch')
