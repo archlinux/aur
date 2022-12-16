@@ -1,14 +1,9 @@
-Version 0.24.1
+Version 0.25.0
 
 What's Changed
 
-    Update README.md by @michael-spengler in #2289
-    chore: bump go-ipfs version to 0.16.0 by @galargh in #2280
-    fix: adjust mac and dmg artifactName by @lidel in #2296
-    chore(readme): 0.24.0 by @lidel in #2298
-    feat: Updating ipfs-webui CID to v2.20.0 by @whizzzkid in #2331
-
-New Contributors
-
-    @michael-spengler made their first contribution in #2289
-    @whizzzkid made their first contribution in #2331
+    feat: kubo v0.17.0 by @galargh in #2338
+    fix(webui): support /quic-v1 on Peers page by @lidel in #2356
+    docs(readme): add repology badge by @lidel in #2352
+    chore: release prep by @lidel in #2344
+    chore(readme): 0.24.0 -> 0.24.1 by @whizzzkid in #2333
