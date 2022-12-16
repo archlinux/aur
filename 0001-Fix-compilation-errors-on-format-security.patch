@@ -1,0 +1,87 @@
+From ff198496b716c36f98100286984d3c55be0bed05 Mon Sep 17 00:00:00 2001
+From: kouta-kun <darkfm@vera.com.uy>
+Date: Wed, 14 Dec 2022 01:49:24 -0300
+Subject: [PATCH] * Fix compilation errors on format-security
+
+---
+ src/client/cl_lua.cpp                | 4 ++--
+ src/client/ui/swig/ui_lua_shared.cpp | 2 +-
+ src/tests/test_rma.cpp               | 8 ++++----
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/client/cl_lua.cpp b/src/client/cl_lua.cpp
+index acabf49bb2..8cbf74ff35 100644
+--- a/src/client/cl_lua.cpp
++++ b/src/client/cl_lua.cpp
+@@ -67,13 +67,13 @@ static int CL_UfoModuleLoader (lua_State* L) {
+ 		} else {
+ 			/* push error string onto the stack */
+ 			sprintf(errmsg, "Lua custom-loader error: cannot load module named [%s]:\n\t%s\n", module, lua_tostring(L, -1));
+-			Com_Printf(errmsg);
++			Com_Printf("%s", errmsg);
+ 			lua_pushstring(L, errmsg);
+ 		}
+ 	} else {
+ 		/* push error string onto the stack */
+ 		sprintf(errmsg, "Lua custom-loader error: cannot find module named [%s]\n", module);
+-		Com_Printf(errmsg);
++		Com_Printf("%s", errmsg);
+ 		lua_pushstring(L, errmsg);
+ 	}
+ 	/* an error occured, return 0*/
+diff --git a/src/client/ui/swig/ui_lua_shared.cpp b/src/client/ui/swig/ui_lua_shared.cpp
+index c89b86f53b..14b0c9a299 100644
+--- a/src/client/ui/swig/ui_lua_shared.cpp
++++ b/src/client/ui/swig/ui_lua_shared.cpp
+@@ -8,7 +8,7 @@
+  * interface file instead.
+  * ----------------------------------------------------------------------------- */
+ 
+-
++#pragma GCC diagnostic ignored "-Wformat-security"
+ #ifndef SWIGLUA
+ #define SWIGLUA
+ #endif
+diff --git a/src/tests/test_rma.cpp b/src/tests/test_rma.cpp
+index c2b366b51c..27041c81c1 100644
+--- a/src/tests/test_rma.cpp
++++ b/src/tests/test_rma.cpp
+@@ -120,7 +120,7 @@ TEST_F(RandomMapAssemblyTest, MassAssemblyTimeout)
+ 	const char *self = "RandomMapAssemblyTest.MassAssemblyTimeout";
+ 	unsigned const int numRuns = 10;
+ 	sv_threads->integer = 1;
+-	SCOPED_TRACE(va(self));
++	SCOPED_TRACE(self);
+ 	testAssembly(self, numRuns, TEST_THEME, TEST_ASSEMBLY);
+ }
+ 
+@@ -129,7 +129,7 @@ TEST_F(RandomMapAssemblyTest, MassAssemblyParallel)
+ 	const char *self = "RandomMapAssemblyTest.MassAssemblyParallel";
+ 	unsigned const int numRuns = 10;
+ 	sv_threads->integer = 2;
+-	SCOPED_TRACE(va(self));
++	SCOPED_TRACE(self);
+ 	testAssembly(self, numRuns, TEST_THEME, TEST_ASSEMBLY);
+ }
+ 
+@@ -139,7 +139,7 @@ TEST_F(RandomMapAssemblyTest, MassAssemblySequential)
+ 	const char *self = "RandomMapAssemblyTest.MassAssemblySequential";
+ 	unsigned const int numRuns = 10;
+ 	sv_threads->integer = 0;
+-	SCOPED_TRACE(va(self));
++	SCOPED_TRACE(self);
+ 	testAssembly(self, numRuns, TEST_THEME, TEST_ASSEMBLY);
+ }
+ 
+@@ -162,7 +162,7 @@ TEST_F(RandomMapAssemblyTest, Seedlists)
+ 	sv_threads->integer = 0;
+ 	long timeSum = 0;
+ 
+-	SCOPED_TRACE(va(self));
++	SCOPED_TRACE(self);
+ 	for (int n = 0; n < length; n++) {
+ 		timeSum += testAssembly(self, numRuns, assNames[n][0], assNames[n][1]);
+ 	}
+-- 
+2.39.0
+

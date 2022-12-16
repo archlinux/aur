@@ -1,24 +1,26 @@
-# Maintainer: Levente Polyak <levente[at]leventepolyak[dot]net>
+# Maintainer: Salvador Pardiñas <darkfm at vera dot com dot uy>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 # Contributor: Dr.T.Error <der_dot_t_dot_error_at_online_dot_de>
 
 pkgname=ufoai-git
-_gitname=ufoai
-pkgver=2.6.42188.8e2a1a5
+_gitname=code
+pkgver=2.6.45213.9b2eab2222
 pkgrel=1
 epoch=1
 pkgdesc="In UFO: Alien Invasion you fight aliens trying to capture Earth (dev version)"
 url="http://ufoai.org/wiki/News"
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('aarch64' 'x86_64')
 depends=('libjpeg' 'libgl' 'libpng' 'curl' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libtheora' 'xvidcore' 'glu')
-makedepends=('git' 'python2' 'zip' 'gtksourceview2' 'gtkglext' 'openal')
+makedepends=('git' 'python2' 'zip' 'gtksourceview2' 'gtkglext' 'openal' 'python-urllib3')
 optdepends=('python2: compiling self-created maps'
             'gtksourceview2: compiling the map-editor'
             'gtkglext: compiling the map-editor'
             'openal: compiling the map-editor')
 conflicts=('ufoai' 'ufoai-data')
-source=(git+https://github.com/ufoai/ufoai)
-sha256sums=('SKIP')
+source=(git+git://git.code.sf.net/p/ufoai/code "0001-Fix-compilation-errors-on-format-security.patch")
+#source=('git+file:///home/kouta-kun/ufo')
+sha256sums=('SKIP' "18a4cc6cfed138c58f02fd733d19250749ba31d6eaa9078dffb6537bca92eb25")
 
 pkgver() {
   cd ${_gitname}
@@ -27,11 +29,12 @@ pkgver() {
 }
 
 prepare() {
-  cd ${_gitname}
-  # uncomment the '--enable-uforadiant' line for ufo-radiant (map editor)
-  ./configure --prefix=/usr --datadir=/usr/share/ufoai \
-    --enable-release --localedir=/usr/share/ufoai/base/i18n/ \
-   --enable-uforadiant
+    cd ${_gitname}
+    patch --forward --strip=1 --input="${srcdir}/0001-Fix-compilation-errors-on-format-security.patch"
+    # uncomment the '--enable-uforadiant' line for ufo-radiant (map editor)
+    ./configure --prefix=/usr --datadir=/usr/share/ufoai \
+		--enable-release --localedir=/usr/share/ufoai/base/i18n/ \
+		--disable-uforadiant
 }
 
 build() {
