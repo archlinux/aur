@@ -1,4 +1,6 @@
 # Maintainer: Michael Serajnik <m at mser dot at>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+
 pkgname=soundsense-rs-git
 _pkgname=soundsense-rs
 pkgver=1.5.1.travis.r9.g5a591cb
