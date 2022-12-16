@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3519.r285.ga346cff47
+pkgver=1.7.3519.r339.gce412686b
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -71,6 +71,11 @@ prepare()
   git submodule update --init --recursive
   git apply -3 "${srcdir}/0001-QtHost.cpp-Fixed-Resources-dir.patch"
   git apply -3 "${srcdir}/0002-Added-QT-Desktop-file.patch"
+
+  export CMAKE_C_COMPILER=/usr/bin/clang-12
+  export CMAKE_CXX_COMPILER=/usr/bin/clang++-12
+  export CMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
+  export CMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
 }
 
 pkgver()
