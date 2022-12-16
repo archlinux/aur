@@ -13,11 +13,11 @@ license=('GPL')
 depends=('openssh' 'qt5-x11extras' 'qt5-svg' 'xcb-util-keysyms')
 makedepends=('cmake')
 provides=('x11-ssh-askpass')
-source=("http://hugo.pereira.free.fr/software/tgz/$pkgname-$pkgver.tar.gz")
+source=("http://hugo.pereira.free.fr/software/tgz/${pkgname}-${pkgver}.tar.gz")
 install=$pkgname.install
          
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -p build
   cd build
@@ -27,8 +27,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 }
 
 md5sums=('707e4533cab44b0ec767bd27d326fd71')
