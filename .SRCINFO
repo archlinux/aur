@@ -1,10 +1,14 @@
 pkgbase = openaws-vpn-client-bin
 	pkgdesc = Unofficial Open-Source AWS VPN Client for Linux based off of samm-git study
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JonathanxD/openaws-vpn-client
 	arch = x86_64
 	license = MIT
+	depends = gtk3>=3.0.0
+	depends = cairo>=1.17.0
+	depends = pango>=1.50.0
+	depends = atk>=2.38.0
 	noextract = openaws-vpn-client-script
 	source = openaws-vpn-client-0.1.6.tar.gz::https://gitlab.com/api/v4/projects/32275975/packages/generic/openaws-vpn-client/0.1.6/openaws-vpn-client-0.1.6.tar.gz
 	source = local://openaws-vpn-client-script

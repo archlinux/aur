@@ -2,7 +2,7 @@ pkgname=openaws-vpn-client-bin
 _pkgname=${pkgname%%-bin}
 _source_url="https://gitlab.com/api/v4/projects/32275975/packages/generic"
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Open-Source AWS VPN Client for Linux based off of samm-git study"
 arch=('x86_64')
 url="https://github.com/JonathanxD/openaws-vpn-client"
@@ -10,6 +10,7 @@ license=('MIT')
 source=("${_pkgname}-${pkgver}.tar.gz::${_source_url}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz" "local://openaws-vpn-client-script")
 sha512sums=('5901659c6519716102f546b58e604c5e0003c249c38be0fcb1370e4c302a0f6d7f6a17805f652fd3e266132e1fcdd363a5f904dbbfa7a2142259a44cf6507b0b' '63c1d8100c9852d401072ffeeeeab04513d01bb186150dcd9910022b946ca27b126145e9b2539b09ce82051cab824fd93c5d964d4bbdba99bccc3c5f015782ec')
 noextract=("openaws-vpn-client-script")
+depends=('gtk3>=3.0.0' 'cairo>=1.17.0' 'pango>=1.50.0' 'atk>=2.38.0')
 
 package() {
     cd "$srcdir"
