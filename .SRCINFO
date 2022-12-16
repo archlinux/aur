@@ -1,6 +1,6 @@
 pkgbase = kodi-matrix-git
 	pkgver = r57751.057cdc725ed
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -81,6 +81,7 @@ pkgbase = kodi-matrix-git
 	source = cheat-sse-build.patch
 	source = build-fix-for-dav1d-1.0.0.patch
 	source = 0001-add-dav1d-patch-to-build-system.patch
+	source = 0002-fix-mesa-22.3.0-build.patch::https://raw.githubusercontent.com/LibreELEC/LibreELEC.tv/master/packages/mediacenter/kodi/patches/kodi-100.01.fix-mesa-22.3.0-build.patch
 	b2sums = SKIP
 	b2sums = 283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da
 	b2sums = 7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355
@@ -95,6 +96,7 @@ pkgbase = kodi-matrix-git
 	b2sums = 6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0
 	b2sums = 6928d0fb1f4cb2609dee87c7078e02cecc37ddef263485b47be0ae5c281be67b403b39c95ea370c6b6667e1eceb1c7e6fb83ec9b04acd0bdbe4abec17fb84385
 	b2sums = f1769867f7bb998e9705cfe7709072436bc4824775ad6ccd151bb240798413a92c4a5c92452f5b781a439660a3d9a0846ebf6fefebdfa50b95f076ffdc6ff55e
+	b2sums = 7a351aa891015524f8377763dd1b9fbe1162c1431131995a75d9acdafa6c500f80ae01b0d2ac82e2be5ac286430cc15c8c2de6901da56c1d22d82d0566160a60
 
 pkgname = kodi-matrix-git
 	pkgdesc = A software media player and entertainment hub for digital media (Matrix branch)

@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r57751.057cdc725ed
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -85,6 +85,7 @@ source=(
   cheat-sse-build.patch
   build-fix-for-dav1d-1.0.0.patch
   0001-add-dav1d-patch-to-build-system.patch
+  "0002-fix-mesa-22.3.0-build.patch::https://raw.githubusercontent.com/LibreELEC/LibreELEC.tv/master/packages/mediacenter/kodi/patches/kodi-100.01.fix-mesa-22.3.0-build.patch"
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -111,7 +112,8 @@ b2sums=('SKIP'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
         '6928d0fb1f4cb2609dee87c7078e02cecc37ddef263485b47be0ae5c281be67b403b39c95ea370c6b6667e1eceb1c7e6fb83ec9b04acd0bdbe4abec17fb84385'
-        'f1769867f7bb998e9705cfe7709072436bc4824775ad6ccd151bb240798413a92c4a5c92452f5b781a439660a3d9a0846ebf6fefebdfa50b95f076ffdc6ff55e')
+        'f1769867f7bb998e9705cfe7709072436bc4824775ad6ccd151bb240798413a92c4a5c92452f5b781a439660a3d9a0846ebf6fefebdfa50b95f076ffdc6ff55e'
+        '7a351aa891015524f8377763dd1b9fbe1162c1431131995a75d9acdafa6c500f80ae01b0d2ac82e2be5ac286430cc15c8c2de6901da56c1d22d82d0566160a60')
 
 pkgver() {
   cd "$_gitname"
@@ -131,6 +133,7 @@ prepare() {
   cp ../build-fix-for-dav1d-1.0.0.patch tools/depends/target/ffmpeg
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i ../cheat-sse-build.patch
+  patch -p1 -i ../0002-fix-mesa-22.3.0-build.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
@@ -140,10 +143,6 @@ prepare() {
 
 build() {
   cd "$srcdir/kodi-build"
-
-  # fix build breakage introduced with gcc-12.1.0-1
-  export CFLAGS+=" -Wno-error"
-  export CXXFLAGS="${CFLAGS}"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
