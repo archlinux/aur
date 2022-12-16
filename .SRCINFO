@@ -1,29 +1,35 @@
 pkgbase = canon-pixma-ts5055-complete
-	pkgdesc = Print Scan for Canon MAXIFY PIXMA series E460 E470 E480 G3000 G4000 iB4000 iB4100 iP110 MB2000 MB2100 MB2300 MB2700 MB5000 MB5100 MB5300 MB5400 MG2900 MG3000 MG3600 MG5600 MG5700 MG6600 MG6800 MG6900 MG7500 MG7700 MX490 TS5000 TS6000 TS8000 TS9000
-	pkgver = 5.40
-	pkgrel = 2
-	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_ts_series/pixma-ts5055.html?type=drivers
+	pkgdesc = cnijfilter2 scangearmp2 Print Scan for Canon MAXIFY PIXMA PIXUS series E200 E300 E3100 E3300 E3400 E4200 E4500 E460 E470 E480 G1020 G2020 G2060 G3000 G3010 G3020 G3060 G4000 G4010 G5000 G500 G5080 G6000 G600 G6080 G7000 G7080
+	pkgver = 6.40
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_ts_series/pixma-ts3340.html?type=drivers
 	install = canon-pixma-ts5055-complete.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = cups
+	depends = ghostscript
 	depends = popt
 	depends = libusb-compat
 	depends = gtk2
+	conflicts = cnijfilter2
+	conflicts = scangearmp2
+	conflicts = canon-maxify-mb5100-complete
 	conflicts = canon-pixma-mg3000-complete
 	conflicts = canon-pixma-mg5700-complete
 	conflicts = canon-pixma-mx495-printer
+	conflicts = canon-ts9020
 	options = !strip
-	source = http://gdlp01.c-wss.com/gds/9/0100008399/01/cnijfilter2-5.40-1-deb.tar.gz
-	source = http://gdlp01.c-wss.com/gds/2/0100008402/01/scangearmp2-3.40-1-deb.tar.gz
+	source = https://gdlp01.c-wss.com/gds/9/0100011379/01/cnijfilter2-6.40-1-deb.tar.gz
+	source = https://gdlp01.c-wss.com/gds/0/0100011320/01/scangearmp2-4.30-1-deb.tar.gz
 	source = canon-pixma-ts5055-complete-scangear.desktop
 	source = canon-pixma-ts5055-complete-scangear-icon.png
-	md5sums = 9fde0c1def36fbd38b4d08cd22a2b7a8
-	md5sums = 833f71781ba733fec84f4eb06d468fb4
+	md5sums = c5da5ec6dcd6af425ab8a9d326c13d8e
+	md5sums = de8c822bbb5362a5d35e924e6b8afdec
 	md5sums = 149560a4ef6a661611e12fafe828093b
 	md5sums = 3feefd413092d7152f47b7451ba79efe
-	sha256sums = 3b298716ad8b806fad72ed52714838921dea6f84253446a02d0e669afbc13804
-	sha256sums = bb8d108b2c3557f3dc258d47b560ce96608a006ec7b052a630e0a5f911da2413
+	sha256sums = e1527baa828764f152b13c439181d645e8c509cd6c8af8e0177dbc2ef06eac6f
+	sha256sums = 2d4997f1a2265bc2231f41fddb76823287fd9e7cec6cad3106bfdd335fa9ba92
 	sha256sums = 1e9d0f0a8643d0d0d755aa5092a6fb684b24b445d21e7315b3becd15816a7dd1
 	sha256sums = 29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc
 	depends_i686 = lib32-libpng12
@@ -34,4 +40,3 @@ pkgbase = canon-pixma-ts5055-complete
 	depends_x86_64 = libxml2
 
 pkgname = canon-pixma-ts5055-complete
-
