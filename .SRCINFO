@@ -1,6 +1,6 @@
 pkgbase = r-nupop
 	pkgdesc = An R package for nucleosome positioning prediction
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NuPoP
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-nupop
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NuPoP_2.6.1.tar.gz
-	sha256sums = 5ff531968ec692786aecac70d6d2032301d4c9f4cf85729c06eaca10f3b2c13e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NuPoP_2.6.2.tar.gz
+	sha256sums = bb6b849d95c7a0c87b047f16d63a3a6616a338b97091d225bf4a796f0a7bf2a1
 
 pkgname = r-nupop
