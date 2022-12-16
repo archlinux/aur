@@ -1,0 +1,25 @@
+pkgbase = rp-pppoe-git
+	pkgdesc = PPPoE client, relay and server for Linux
+	pkgver = r35.g3c9ac2b
+	pkgrel = 1
+	url = https://dianne.skoll.ca/projects/rp-pppoe/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = iproute2
+	depends = ppp
+	depends = sh
+	provides = rp-pppoe=r35.g3c9ac2b
+	conflicts = rp-pppoe
+	backup = etc/ppp/firewall-masq
+	backup = etc/ppp/firewall-standalone
+	backup = etc/ppp/pppoe.conf
+	backup = etc/ppp/pppoe-server-options
+	source = git+https://github.com/dfskoll/rp-pppoe.git
+	source = adsl.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/rp-pppoe/trunk/adsl.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rp-pppoe-git
