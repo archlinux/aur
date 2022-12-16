@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GGPA
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='graph-GPA: A graphical model for prioritizing GWAS results and investigating pleiotropic architecture'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7885b9690638ff2c6e66e23ba54e89560c30e6ea4e0cdda61c7299e3e42edf9b')
+sha256sums=('1aecb718e9320e54af4cd75ddd9bd54732c561482717f9a01bacf43e50537781')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
