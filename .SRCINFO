@@ -2,7 +2,7 @@
 
 pkgbase = geant4-debug
 	pkgdesc = A simulation toolkit for particle physics interactions (compiled with debugging info).
-	pkgver = 11.0.0
+	pkgver = 11.0.3
 	pkgrel = 1
 	url = http://geant4.cern.ch/
 	install = geant4.install
@@ -17,11 +17,6 @@ pkgbase = geant4-debug
 	depends = zlib
 	depends = python>=3
 	depends = boost
-	depends = vtk
-	depends = jdk-openjdk
-	depends = python-mpi4py
-	depends = eigen
-	depends = utf8cpp
 	optdepends = java-environment: for histogram visualizations and analysis
 	optdepends = tcsh: for C Shell support
 	optdepends = python: for G4Python support
@@ -39,7 +34,7 @@ pkgbase = geant4-debug
 	conflicts = geant4
 	options = !emptydirs
 	options = !strip
-	source = http://geant4-data.web.cern.ch/releases/geant4-v11.0.0.tar.gz
+	source = http://geant4-data.web.cern.ch/releases/geant4-v11.0.3.tar.gz
 	source = geant4.install
 	md5sums = e77206ebe22b146b71e12a96940baf85
 	md5sums = a6abacd078760aebda58316454d7e0c9

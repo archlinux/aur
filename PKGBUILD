@@ -1,8 +1,8 @@
 # Maintainer: Luigi Pertoldi <gipert@pm.me>
 pkgname='geant4-debug'
 _pkgname='geant4'
-pkgver=11.0.0
-_pkgver=v11.0.0
+pkgver=11.0.3
+_pkgver=v11.0.3
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions (compiled with debugging info)."
 depends=('cmake>=3.16'
@@ -14,11 +14,6 @@ depends=('cmake>=3.16'
          'zlib'
          'python>=3'
          'boost'
-         'vtk'
-         'jdk-openjdk'
-         'python-mpi4py'
-         'eigen'
-         'utf8cpp'
         )
 conflicts=('geant4')
 optdepends=('java-environment: for histogram visualizations and
@@ -71,7 +66,6 @@ build() {
       -DGEANT4_USE_OPENGL_X11=ON \
       -DGEANT4_USE_RAYTRACER_X11=ON \
       -DGEANT4_USE_XM=ON \
-      -DGEANT4_USE_VTK=ON \
       -DGEANT4_USE_TOOLSSG=QT \
       -DGEANT4_USE_SYSTEM_ZLIB=ON \
       -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
