@@ -1,15 +1,15 @@
 pkgbase = neo4j-desktop
 	pkgdesc = GUI for managing local and remote Neo4j Graph databases
-	pkgver = 1.5.2
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = http://neo4j.org/
 	arch = x86_64
 	license = custom
 	depends = fuse
 	optdepends = gnome-keyring: Adds support for storing secrets
-	noextract = neo4j-desktop-offline-1.5.2-x86_64.AppImage
+	noextract = neo4j-desktop-offline-1.5.6-x86_64.AppImage
 	options = !strip
-	source = neo4j-desktop-offline-1.5.2-x86_64.AppImage::https://neo4j.com/artifact.php?name=neo4j-desktop-offline-1.5.2-x86_64.AppImage
-	md5sums = aaa31274482a4f3342de32c6008c1662
+	source = neo4j-desktop-offline-1.5.6-x86_64.AppImage::https://neo4j.com/artifact.php?name=neo4j-desktop-offline-1.5.6-x86_64.AppImage
+	md5sums = 6be9324e7834d08df98ee6e5cb87108c
 
 pkgname = neo4j-desktop
