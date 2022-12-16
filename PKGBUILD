@@ -2,7 +2,7 @@
 
 pkgname=protonup-git
 _realname=protonup
-pkgver=0.1.4.r2.gf60ee76
+pkgver=0.1.4.r9.gd8289b0
 pkgrel=1
 pkgdesc="Install and Update Proton-GE"
 arch=('any')
