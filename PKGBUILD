@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
 arch=(x86_64 aarch64)
 url=https://github.com/07th-mod/ponscripter-fork
-license=(GPL2)
+license=(GPL)
 depends=(sdl2_{image,mixer} smpeg2 freetype2)
 source=(git+https://github.com/07th-mod/ponscripter-fork.git#tag=$_pkgver)
 md5sums=(SKIP)
@@ -14,7 +14,7 @@ pkgver(){
 }
 build(){
 	cd $pkgname-fork
-	./configure --with-external-sdl-mixer
+	./configure -with-external-sdl-mixer
 	make
 }
 package(){
