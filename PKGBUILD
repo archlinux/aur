@@ -36,7 +36,7 @@ build() {
 
 package() {
     cd "cake/src"
-    install -D -m644 cake "$pkgdir/usr/bin/cake"
+    install -D -m755 cake "$pkgdir/usr/bin/cake"
 }
 
 pkgver() {
