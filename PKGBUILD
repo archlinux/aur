@@ -17,11 +17,17 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
 source=("https://github.com/kyak/linux/archive/${_commit}.tar.gz"
         '0001-rtl8812au-sprintf-fix-gcc10.patch'
+        '0002-rtl8812au-unused-spinlock-free.patch'
+        '0003-rtl8812au-ssid-always-not-null.patch'
+        '0004-rtl8812au-comparision-true.patch'
         'config'
         'linux.preset'
         '99-linux.hook')
 md5sums=('d17e7c7108c95291ce2ee4a3c971f3d3'
          '20bf3136f2725be5b6a2eb7a5a8682bf'
+         '87005df895a02680e36f18bc55fb90eb'
+         '9f3d8e15ec0f750e9455bd3741a89330'
+         '28f2a65c5a78ac060a2c0909fae658aa'
          '7539bf6976b0a21a987a1a5254d755cf'
          'a84976d500db50cee07177eccfe2f455'
          '79fa396e3f9a09a85156d6d7c2d34b58')
