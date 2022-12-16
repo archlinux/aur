@@ -1,6 +1,6 @@
 # Maintainer: Ryan Hedgecock <rhedgeco@gmail.com>
 pkgname='tksync'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel='1'
 pkgdesc='Unofficial tool for downloading fonts from Adobe Typekit.'
 url='https://github.com/rhedgeco/tksync'
