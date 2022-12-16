@@ -1,14 +1,16 @@
 pkgbase = python-aqtinstall
 	pkgdesc = Another unofficial Qt installer
-	pkgver = 2.1.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/miurahr/aqtinstall
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-socket
-	makedepends = git
-	makedepends = python-setuptools-scm
+	makedepends = python-twine
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-defusedxml
 	depends = python-requests
@@ -17,7 +19,7 @@ pkgbase = python-aqtinstall
 	depends = python-texttable
 	depends = python-patch
 	depends = python-py7zr
-	source = python-aqtinstall::git+https://github.com/miurahr/aqtinstall.git#tag=v2.1.0
+	source = python-aqtinstall::git+https://github.com/miurahr/aqtinstall.git#tag=v3.1.0
 	sha512sums = SKIP
 
 pkgname = python-aqtinstall
