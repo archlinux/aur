@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Type=simple
 User=greptime
-ExecStart=/usr/bin/greptime standalone start
+ExecStart=/usr/bin/greptime --log-dir /var/lib/greptimedb/logs standalone start -c /etc/greptimedb/greptimedb.toml
 ExecStop=/usr/bin/greptime standalone stop
 
 [Install]
