@@ -1,6 +1,6 @@
 pkgbase = r-geneticsped
 	pkgdesc = Pedigree and genetic relationship functions
-	pkgver = 1.60.1
+	pkgver = 1.60.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneticsPed
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-geneticsped
 	depends = r-genetics
 	optdepends = r-gtools
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneticsPed_1.60.1.tar.gz
-	sha256sums = cacefa81ca0a3641ef9fb2e7f2cb8928b50e0136dc9569d05efc4dc70df158c1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneticsPed_1.60.2.tar.gz
+	sha256sums = c95d1a952ea1f1138812b80d36836abbc70528c5a350fee02d488671c4d56c56
 
 pkgname = r-geneticsped
