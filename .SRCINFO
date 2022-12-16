@@ -1,6 +1,6 @@
 pkgbase = kyocera-cups
 	pkgdesc = PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format
-	pkgver = 9.1.0.20220203
+	pkgver = 9.2.0.20220928
 	pkgrel = 1
 	url = https://www.kyoceradocumentsolutions.us/en/support/downloads.html
 	arch = i686
@@ -12,13 +12,11 @@ pkgbase = kyocera-cups
 	conflicts = kyocera-ecosys-m2035dn
 	conflicts = kyocera-ecosys-p6035cdn
 	options = !strip
-	source = KyoceraLinuxPackages_20220203.tar.gz::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20220203_tar_gz.download.gz
+	source = KyoceraLinuxPackages_20220928.tar.gz::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/KyoceraLinuxPackages_20220928_tar_gz.download.gz
 	source = repack.sh
-	md5sums = 6bc001940c9d4cb8e287bf23f708008c
+	md5sums = e76eabb903e07ef15f62c963a717a539
 	md5sums = d3e7d0fe76377b0b058a9fb497cdfafa
-	sha1sums = 4351c13addcad3bbd01c03a946a5494549a305b4
-	sha1sums = cdb6d5622f9ca977ac178fb19553f5730096597b
-	sha256sums = aaa886745380a461a1b6d12a09484801867750c24b1320ec5b138467fba5c3c9
+	sha256sums = 1334fdaa88728be94ba98f1ff541f89a5cf39fba8911e9b47c49eb36278ac70c
 	sha256sums = c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4
 
 pkgname = kyocera-cups

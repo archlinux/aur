@@ -17,11 +17,15 @@
 # KyoceraLinuxPackages_20191115_tar.gz is a GUI addon that would be a separate package if anyone wanted it.
 
 _opt_UTAX=0
+_opt_kut='kyo'
+
+# Unified: kyocera-cups kyocera-utax-ta
 
 set -u
 pkgname='kyocera-cups'
 #_pkgver='9.0-0'; _rev='20210527'
-_pkgver='9.1-0'; _rev='20220203'
+#_pkgver='9.1-0'; _rev='20220203'
+_pkgver='9.2-0'; _rev='20220928'
 pkgver="${_pkgver//-/.}.${_rev}"
 pkgrel='1'
 pkgdesc='PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL printers copiers wide format'
@@ -41,11 +45,9 @@ options=('!strip')
 _srcdir="KyoceraLinuxPackages_${_rev}.tar.gz"
 source=("${_srcdir}::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/${_srcdir//./_}.download.gz")
 #source=("https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_${pkgver}.tar.gz")
-md5sums=('6bc001940c9d4cb8e287bf23f708008c'
+md5sums=('e76eabb903e07ef15f62c963a717a539'
          'd3e7d0fe76377b0b058a9fb497cdfafa')
-sha1sums=('4351c13addcad3bbd01c03a946a5494549a305b4'
-          'cdb6d5622f9ca977ac178fb19553f5730096597b')
-sha256sums=('aaa886745380a461a1b6d12a09484801867750c24b1320ec5b138467fba5c3c9'
+sha256sums=('1334fdaa88728be94ba98f1ff541f89a5cf39fba8911e9b47c49eb36278ac70c'
             'c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4')
 
 source+=('repack.sh')
@@ -57,9 +59,8 @@ source+=('repack.sh')
 if [ "${_opt_UTAX}" -ne 0 ]; then
   pkgdesc='PPD drivers for Kyocera CS ECOSYS FS KM TASKalfa KPDL and UTAX TA Triumph Adler printers copiers wide format'
   source+=('TALinuxPackages-20141229-Repack.7z')
-  md5sums+=('5426711f3aac491c49dadcf420207b4b')
-  sha1sums+=('8d1251d95f576c2e834e8c71b9840da54202db2b')
-  sha256sums+=('8eedb636fbbb208b45dc355a795237d946141d00c63f3fe1fc96c4614070e01a')
+  :; md5sums+=('5426711f3aac491c49dadcf420207b4b')
+  :; sha256sums+=('8eedb636fbbb208b45dc355a795237d946141d00c63f3fe1fc96c4614070e01a')
   conflicts+=('kyocera-utax-ta')
 fi
 
@@ -70,8 +71,8 @@ prepare() {
   # Set number of bits: '32bit' or '64bit', depending on ${CARCH}
   declare -A _suffix=([i686]='i386' [x86_64]='x86_64')
 
-  local _ver='Redhat/Redhat/Global'
-  local _fl="${_ver}/kyodialog_${_suffix[${CARCH}]}/kyodialog-${_pkgver}.${_suffix[${CARCH}]}.rpm"
+  local _ver='Redhat/Global'
+  local _fl="${_ver}/${_opt_kut}dialog_${_suffix[${CARCH}]}/${_opt_kut}dialog-${_pkgver}.${_suffix[${CARCH}]}.rpm"
   set +u; msg2 "Extracting ${_fl}"; set +u
   mkdir 'dta'
   bsdtar -C 'dta' -xf "${_fl}"
@@ -142,7 +143,7 @@ package() {
 
   if :; then
     # Remove dialog launcher. It doesn't work for me.
-    rm "${pkgdir}/usr/bin/kyodialog${_pvx}"
+    rm "${pkgdir}/usr/bin/${_opt_kut}dialog${_pvx}"
     rm -r "${pkgdir}/usr/share/applications/" "${pkgdir}/usr/share/doc/"
   else
     depends+=('qt5-base')
