@@ -1,6 +1,6 @@
 pkgbase = jre8
 	pkgdesc = Oracle Java 8 Runtime Environment LTS
-	pkgver = 8u341
+	pkgver = 8u351
 	pkgrel = 1
 	url = https://www.java.com/en/download/manual.jsp
 	install = jre8.install
@@ -37,11 +37,11 @@ pkgbase = jre8
 	backup = etc/java-jre8/psfont.properties.ja
 	backup = etc/java-jre8/psfontj2d.properties
 	backup = etc/java-jre8/sound.properties
-	source = jre-8u341-linux-x64.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=246799_424b9da4b48848379167015dcc250d8d
+	source = jre-8u351-linux-x64.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=247127_10e8cce67c7843478f41411b7003171c
 	source = policytool-jre8.desktop
-	md5sums = bd7de42363bab70a07b32b643c3baab3
+	md5sums = 5783dd5067f054b68fb4bd6e6132e2fc
 	md5sums = ef3ff483db5d38ed106e0b819006bdae
-	sha256sums = 61027e8ca9b1921f115dd4983c3f9ebe8785ee2c201d9cd2bf870184460f1704
+	sha256sums = 0b4006e29c1e67ac8893f18b44bcbce271beb70ae2b1933f64bd783544adc461
 	sha256sums = 614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8
 
 pkgname = jre8
