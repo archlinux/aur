@@ -1,7 +1,7 @@
 pkgbase = dbeaver-ee
 	pkgdesc = A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support
 	pkgver = 22.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dbeaver.com/
 	install = dbeaver-ee.install
 	arch = x86_64
