@@ -11,8 +11,8 @@ depends=("rsync")
 install="rsync-readcap.install"
 source=("rsync-readcap.hook"
         "rsync-readcap.sysusers")
-sha1sums=('e51c4b49f0b73e4d8676f94c850b64a2ae515a00'
-          '95e5725e3fdaa0d80a8b7114031f12d14289fffa')
+sha256sums=('1c1047f64db7734dd9a661d7c9a84099e7e9e23412ea8c1518af6ed8ede1d55e'
+            '247ee09e1d8fff992347afc14b193aeaaca17f67a87cddc6507dba777919f07e')
 
 package() {
     cd "$srcdir"
