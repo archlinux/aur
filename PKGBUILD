@@ -4,7 +4,7 @@ pkgname=cider-git
 _pkgname=Cider
 _pkgbranch=main
 pkgver=1.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
@@ -29,7 +29,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
+    git submodule update --init --recursive
+    
 	echo "store-dir=.pnpm-store" >> .npmrc
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
