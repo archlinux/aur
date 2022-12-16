@@ -1,13 +1,13 @@
 pkgbase = r-impute
 	pkgdesc = impute: Imputation for microarray data
-	pkgver = 1.72.1
+	pkgver = 1.72.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/impute
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/impute_1.72.1.tar.gz
-	sha256sums = 220511350769e7a6f52b44bd29cdb971019c682be8dab70a663fda5fd7adc220
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/impute_1.72.2.tar.gz
+	sha256sums = bb8693db90b90a69cb04300f79d2df61425effca31d11bbf7695e749f13dc9cc
 
 pkgname = r-impute
