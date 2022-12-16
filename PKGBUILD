@@ -4,7 +4,7 @@ pkgrel=2
 pkgdesc="SDL MPEG Player Library"
 arch=(x86_64 aarch64)
 url=https://icculus.org/smpeg/
-license=(LGPL2.1)
+license=(LGPL)
 depends=(sdl2)
 provides=(smpeg2)
 conflicts=(smpeg)
@@ -17,10 +17,10 @@ pkgver(){
 build(){
 	cd smpeg
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --p /usr
 	make
 }
 package(){
 	cd smpeg
-	make DESTDIR=$pkgdir install
+	make DESTDIR="$pkgdir" install
 }
