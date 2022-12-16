@@ -1,4 +1,6 @@
-# Maintainer: BadAtNames <badatnames@tutanota.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: BadAtNames <badatnames@tutanota.com>
+
 pkgname=ttf-mutant-emoji
 pkgver=2020.04 # Could use pkgver for this if mutant stopped changing how they package the fonts every month :(
 pkgrel=1
