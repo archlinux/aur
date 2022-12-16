@@ -5,7 +5,6 @@ pkgbase = lib32-udis86-git
 	url = http://udis86.sourceforge.net
 	arch = x86_64
 	license = custom:BSD-2-clause
-	makedepends = cmake
 	makedepends = git
 	makedepends = lib32-gcc-libs
 	makedepends = python
