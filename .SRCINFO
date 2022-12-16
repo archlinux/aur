@@ -1,12 +1,12 @@
 pkgbase = cproto
 	pkgdesc = A program that generates function prototypes and variable declarations from C source code.
-	pkgver = 4.7t
+	pkgver = 4.7u
 	pkgrel = 1
 	url = http://invisible-island.net/cproto/cproto.html
 	arch = i686
 	arch = x86_64
 	license = custom:public domain
-	source = https://invisible-island.net/archives/cproto/cproto-4.7t.tgz
-	sha256sums = 3cce82a71687b69e0a3e23489fe825ba72e693e559ccf193395208ac0eb96fe5
+	source = https://invisible-island.net/archives/cproto/cproto-4.7u.tgz
+	sha256sums = 64ebbbcc5e0501aff296f431d06f9fb70863afe5b0ce66c3b3479072914fc51e
 
 pkgname = cproto
