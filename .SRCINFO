@@ -1,0 +1,20 @@
+pkgbase = disc-kuraudo-home
+	pkgdesc = Disc Kuraudo - The Disc Cloud
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://disc-kuraudo.eu
+	arch = x86_64
+	license = custom
+	depends = barcode
+	depends = bash
+	depends = cdrtools
+	depends = diffutils
+	depends = ddrescue
+	depends = imagemagick
+	depends = jq
+	depends = libudfread-dk
+	provides = disc-kuraudo
+	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-0.1.0.tar.xz
+	sha256sums = c889c81acaf8be674dd15c5446593bd734984bdd3ff0eb2050de607c3793efdb
+
+pkgname = disc-kuraudo-home
