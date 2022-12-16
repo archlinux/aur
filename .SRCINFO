@@ -1,6 +1,6 @@
 pkgbase = sioyek-appimage
 	pkgdesc = A PDF viewer designed for reading research papers and technical books
-	pkgver = 1.5.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sioyek-appimage
 	provides = sioyek
 	conflicts = sioyek
 	options = !strip
-	source = sioyek-appimage-1.5.0.zip::https://github.com/ahrm/sioyek/releases/download/v1.5.0/sioyek-release-linux.zip
-	md5sums = 60c2fafa91e6ccd86876277f190f5278
+	source = sioyek-appimage-2.0.0.zip::https://github.com/ahrm/sioyek/releases/download/v2.0.0/sioyek-release-linux.zip
+	md5sums = ef86c7847ed7e04f3a8a3a50a9420caf
 
 pkgname = sioyek-appimage
