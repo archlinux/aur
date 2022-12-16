@@ -26,7 +26,7 @@ noextract=("$_npmname-$_npmver.tgz")
 sha256sums=('98430317581a583799f4b7939a936c9d67ead7e2ed3361ceff435e9d88decc59'
             'd88ad4d11395bd13a4aa64829bf03977ac3511134be2dbe875b95c7243e5bf92'
             'd907415d1be94568c92d3a05e70dd855f004ebed2c4170f5c2d2f36c0dfd5199'
-            '9968e59627f098fc5e2cbf0a0f1e11054e01ccd793d9098b5ff101c4e14f278b')
+            'ba5d7e33bc3ce9ce33d20b23e8632af8f1e1507908bba3e91dae1a0cf460ddcc')
 
 package() {
   cd "$srcdir"
@@ -53,10 +53,6 @@ package() {
 
   # Default configuration
   install -D "${pkgdir}/usr/lib/node_modules/$_npmname/sample-config-advanced.json" "${pkgdir}/etc/$_npmname/config.json"
-
-  # Data directories
-  install -m 750 -d "${pkgdir}/var/lib/${_npmname}"
-  install -m 750 -d "${pkgdir}/var/lib/${_npmname}/{data,files}"
 }
 
 # vim:set ts=2 sw=2 et:
