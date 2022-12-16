@@ -1,5 +1,6 @@
-# Maintainer: schuay <jakob.gruber@gmail.com>
-# Previous Maintainer:  TDY <tdy@gmx.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: schuay <jakob.gruber@gmail.com>
+# Contributor:  TDY <tdy@gmx.com>
 # Contributor: Massimiliano Torromeo <Massimiliano.Torromeo AT gmail DOT com>
 
 pkgname=openssh-askpass
