@@ -13,6 +13,6 @@ pkgbase = onedev
 	sha256sums = b5c84783296f23287341ca36a62d64204b71285c42e040a788c8864b65d231e6
 
 pkgname = onedev
-	depends = jre-openjdk>11.0.0
+	depends = jre-openjdk-headless>11.0.0
 	depends = git>2.11.1
 	depends = curl
