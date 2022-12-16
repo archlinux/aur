@@ -13,6 +13,6 @@ pkgbase = openssh-askpass
 	depends = xcb-util-keysyms
 	provides = x11-ssh-askpass
 	source = http://hugo.pereira.free.fr/software/tgz/openssh-askpass-2.1.0.tar.gz
-	md5sums = 707e4533cab44b0ec767bd27d326fd71
+	sha256sums = d7728ae61b49b2e390d9e2c1faba3441c0e9899a86be887e0686042ab302be4b
 
 pkgname = openssh-askpass

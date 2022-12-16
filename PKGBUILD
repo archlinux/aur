@@ -15,6 +15,7 @@ makedepends=('cmake')
 provides=('x11-ssh-askpass')
 source=("http://hugo.pereira.free.fr/software/tgz/${pkgname}-${pkgver}.tar.gz")
 install=$pkgname.install
+sha256sums=('d7728ae61b49b2e390d9e2c1faba3441c0e9899a86be887e0686042ab302be4b')
          
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,4 +32,3 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('707e4533cab44b0ec767bd27d326fd71')
