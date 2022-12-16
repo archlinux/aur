@@ -4,19 +4,19 @@
 
 set -u
 pkgname='uhubctl'
-pkgver='2.4.0'
+pkgver='2.5.0'
 pkgrel='1'
 pkgdesc='control USB per-port power switching on PPPS smart USB hubs'
-arch=('x86_64' 'armv7h' 'aarch64')
-_github='mvp'
-url="https://github.com/${_github}/${pkgname}"
+arch=('x86_64')
+arch+=('armv7h' 'aarch64') # benalexau 2020-09-07 04:54 (UTC)
+url="https://github.com/mvp/${pkgname}"
 license=('GPL')
 depends=('libusb>=1.0.12' 'libudev.so')
-_verwatch=("https://github.com/${_github}/${pkgname}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
+_verwatch=("${url}/releases.atom" "\s\+<title>${pkgname}\sv*\([0-9\.]\+\)</title>.*" 'f')
 _srcdir="${pkgname}-${pkgver}"
-source=("${pkgname}-${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('9bdf73940881df02574a94703ad8b582')
-sha256sums=('391f24fd1f89cacce801df38ecc289b34c3627bc08ee69eec515af7e1a283d97')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+md5sums=('e4e66d445ba8fda181ce4aa4abcd4247')
+sha256sums=('d4452252f7862f7a45dd9c62f2ea7cd3a57ab5f5ab0e54a857d4c695699bbba3')
 
 prepare() {
   set -u

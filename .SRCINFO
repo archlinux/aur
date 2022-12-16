@@ -1,6 +1,6 @@
 pkgbase = uhubctl
 	pkgdesc = control USB per-port power switching on PPPS smart USB hubs
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/mvp/uhubctl
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = uhubctl
 	license = GPL
 	depends = libusb>=1.0.12
 	depends = libudev.so
-	source = uhubctl-2.4.0.tgz::https://github.com/mvp/uhubctl/archive/v2.4.0.tar.gz
-	md5sums = 9bdf73940881df02574a94703ad8b582
-	sha256sums = 391f24fd1f89cacce801df38ecc289b34c3627bc08ee69eec515af7e1a283d97
+	source = uhubctl-2.5.0.tgz::https://github.com/mvp/uhubctl/archive/v2.5.0.tar.gz
+	md5sums = e4e66d445ba8fda181ce4aa4abcd4247
+	sha256sums = d4452252f7862f7a45dd9c62f2ea7cd3a57ab5f5ab0e54a857d4c695699bbba3
 
 pkgname = uhubctl
-
