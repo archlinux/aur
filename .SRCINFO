@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-kdefix
 	pkgdesc = Telegram Desktop client with KDE unread counter bug reverted
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = telegram-desktop-kdefix
 	makedepends = plasma-wayland-protocols
 	makedepends = libtg_owt
 	depends = hunspell
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = lz4
 	depends = minizip

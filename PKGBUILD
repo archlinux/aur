@@ -4,14 +4,14 @@
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
-depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'glibmm-2.68'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl-1.1' 'protobuf')
@@ -36,7 +36,6 @@ prepare() {
 build() {
     cd tdesktop-$pkgver-full
 
-    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     #Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
