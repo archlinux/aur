@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r61753.1b560c525e7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -83,6 +83,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
+  "0001-fix-mesa-22.3.0-build.patch::https://raw.githubusercontent.com/LibreELEC/LibreELEC.tv/master/packages/mediacenter/kodi/patches/kodi-100.01.fix-mesa-22.3.0-build.patch"
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -107,7 +108,8 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        '7a351aa891015524f8377763dd1b9fbe1162c1431131995a75d9acdafa6c500f80ae01b0d2ac82e2be5ac286430cc15c8c2de6901da56c1d22d82d0566160a60')
 
 pkgver() {
   cd "$_gitname"
@@ -122,6 +124,8 @@ prepare() {
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
+  patch -p1 -i ../0001-fix-mesa-22.3.0-build.patch
+
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
@@ -130,10 +134,6 @@ prepare() {
 
 build() {
   cd "$srcdir/kodi-build"
-
-  # fix build breakage introduced with gcc-12.1.0-1
-  export CFLAGS+=" -Wno-error"
-  export CXXFLAGS="${CFLAGS}"
 
   _args=(
     -DCMAKE_BUILD_TYPE=Release
@@ -165,6 +165,9 @@ build() {
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
   )
+
+  # https://github.com/google/flatbuffers/issues/7404
+  CXXFLAGS+=' -Wno-error=restrict'
 
   echo "building kodi"
   cmake "${_args[@]}" ../"$_gitname"
