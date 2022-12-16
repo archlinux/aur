@@ -1,6 +1,6 @@
 pkgbase = glassfish
-	pkgdesc = The Open Source Jakarta EE (Java EE) Reference Implementation.
-	pkgver = 6.2.5
+	pkgdesc = A Jakarta EE compatible implementation sponsored by the Eclipse Foundation.
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/eclipse-ee4j/glassfish
 	install = glassfish.install
@@ -8,11 +8,11 @@ pkgbase = glassfish
 	license = EPL
 	depends = java-environment>=11
 	options = !strip
-	source = https://github.com/eclipse-ee4j/glassfish/releases/download/6.2.5/glassfish-6.2.5.zip
+	source = https://github.com/eclipse-ee4j/glassfish/releases/download/7.0.0/glassfish-7.0.0.zip
 	source = glassfish.service
 	source = glassfish-sysusers.conf
 	source = glassfish-tmpfiles.conf
-	sha256sums = de63b0e322d1a03da1135e16abb6bfc36ba047ea09c0994e6f53b8cf24bab95d
+	sha256sums = 3bf2140d9cab4dafe773afaf85dd7489c075e8bfb883a95f12d0aa2be306a4e3
 	sha256sums = 85aaee79cf5624aec9de63662d9b37c2b95ea136472e0b47027ce71c93d069c3
 	sha256sums = 04aae18a2d4d66ae687a9cf144bc8775c8b903e63eea22ad0d8fb61086bcd2de
 	sha256sums = 44f7d2a8c63758053ee01326525cbac1ab3c04d581091d6b7b3bca4412acc10a
