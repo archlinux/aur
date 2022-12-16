@@ -1,6 +1,6 @@
 pkgbase = rocksdb-ldb
 	pkgdesc = The ldb from the RocksDB storage
-	pkgver = 7.7.3
+	pkgver = 7.8.3
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = rocksdb-ldb
 	depends = zlib
 	depends = gflags
 	provides = rocksdb-ldb
-	source = https://github.com/facebook/rocksdb/archive/refs/tags/v7.7.3.tar.gz
-	sha256sums = b8ac9784a342b2e314c821f6d701148912215666ac5e9bdbccd93cf3767cb611
+	source = https://github.com/facebook/rocksdb/archive/refs/tags/v7.8.3.tar.gz
+	sha256sums = b85408a374770897332bf15e51620a5f35720dd416a4749e3899057f9cfaf84d
 
 pkgname = rocksdb-ldb
