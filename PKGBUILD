@@ -1,7 +1,7 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=108.0.5359.98
+pkgver=108.0.5359.124
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -12,12 +12,13 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
+            'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 provides=('chromium')
 conflicts=('chromium')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('1b98778fb09eb13c1817a1ab52b234f1477c9e172512951bb947f20363002a60')
+sha256sums=('d69647243d92bdfd9e9893b07095f68f789daa189c102e38ae69e29cb3dadc84')
 
 declare -gA _system_libs=(
     [brotli]=brotli
