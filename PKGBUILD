@@ -1,7 +1,7 @@
 # Contributor: Stephen Checkley <scheckley at gmail dot com>
 # Contributor: jrohwer
 pkgname=copasi-bin
-pkgver=4.37.264
+pkgver=4.38.268
 _pkgver=${pkgver##*.}
 pkgrel=1
 pkgdesc="COmplex PAthway SImulator for analysis of biochemical networks and their dynamics"
@@ -16,8 +16,8 @@ _source=https://github.com/copasi/COPASI/releases/download/Build-$_pkgver
 source_i686=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-32bit.sh)
 source_x86_64=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-64bit.sh)
 sha512sums=('cf7172b155885db8007298643499a57421e4890b72da86f8124bc35ec30c39f17c4167cd5d4603fc37c0cf72c6e4283c009339363da1cc5f44708c08d16a2b4e')
-sha512sums_i686=('50def164dd8ea84b45480b7ce0732fda04020546bca8411a295488ece96243a8b6f8be4f39a824786e6c78798db9830cdfdddff0174ac82a26a3dd776a69861e')
-sha512sums_x86_64=('6e1bd0817ebfcce556bfdf34739074bdeb684d2413435b8e67bcbc1e9fa7859ae0f1d702e3f8fbeee936279be669b38bef382b76509bcdf98d3a4ab8a0edf9dc')
+sha512sums_i686=('7d74ee96bd8e0174bad1b98e269d3b7fb8b55f49141169e9d7312cb6c4f153f7269b683abf6a0ab95e44f6d4d948177ba1c88104074ebd748206394ba85fcb38')
+sha512sums_x86_64=('7d74ee96bd8e0174bad1b98e269d3b7fb8b55f49141169e9d7312cb6c4f153f7269b683abf6a0ab95e44f6d4d948177ba1c88104074ebd748206394ba85fcb38')
 
 package() {
   MACHINE_TYPE=$(uname -m)
