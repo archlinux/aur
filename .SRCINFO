@@ -8,6 +8,7 @@ pkgbase = anki
 	makedepends = rsync
 	makedepends = git
 	makedepends = ninja
+	makedepends = python-installer
 	depends = python-beautifulsoup4
 	depends = python-flask
 	depends = python-waitress

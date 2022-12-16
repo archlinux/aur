@@ -44,12 +44,15 @@ makedepends=(
     'git'
 
     'ninja'
+    'python-installer'
 )
 optdepends=(
     'lame: record sound'
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
+# using the tag tarballs does not work with the new (>= 2.1.55) build process.
+# the '.git' folder is not included in those but is required for a sucessful build
 source=("anki-${pkgver}::git+https://github.com/ankitects/anki#tag=${pkgver}"
 "no-update.patch"
 )
@@ -59,7 +62,7 @@ sha256sums=('SKIP'
 
 prepare(){
     cd "anki-$pkgver"
-    # pro-actively prevent "module not found" error
+    # pro-actively prevent "module not found" error (TODO: verify whether still required)
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
 }
@@ -75,6 +78,7 @@ package() {
     	python -m installer --destdir="$pkgdir" $file
     done
 
+    # TODO: verify whether still required
     find $pkgdir -iname __pycache__ | xargs -r rm -rf
     find $pkgdir -iname direct_url.json | xargs -r rm -rf
 }
