@@ -3,7 +3,7 @@
 _name=pyocd
 pkgname=python-pyocd
 pkgver=0.34.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Programming and debugging Arm Cortex-M microcontrollers"
 arch=(any)
 url="https://github.com/pyocd/pyOCD"
@@ -44,6 +44,8 @@ prepare() {
   # we remove the dependency for libusb-package, because it would vendor libusb
   # https://github.com/pyocd/pyOCD/issues/1331
   sed '/libusb-package/d' -i setup.cfg
+  # do not use version upper boundaries or dependencies for other OSes: https://bugs.archlinux.org/task/76848
+  sed -e 's/,<.*//g;/hidapi/d' -i setup.cfg
   patch -Np1 -i ../$pkgname-0.33.1-optional_libusb_package.patch
 
   # tag devices with uaccess to automatically make them available to active user sessions
