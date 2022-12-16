@@ -1,0 +1,14 @@
+pkgbase = openaws-vpn-client-bin
+	pkgdesc = Unofficial Open-Source AWS VPN Client for Linux based off of samm-git study
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/JonathanxD/openaws-vpn-client
+	arch = x86_64
+	license = MIT
+	noextract = openaws-vpn-client-script
+	source = openaws-vpn-client-0.1.6.tar.gz::https://gitlab.com/api/v4/projects/32275975/packages/generic/openaws-vpn-client/0.1.6/openaws-vpn-client-0.1.6.tar.gz
+	source = local://openaws-vpn-client-script
+	sha512sums = 5901659c6519716102f546b58e604c5e0003c249c38be0fcb1370e4c302a0f6d7f6a17805f652fd3e266132e1fcdd363a5f904dbbfa7a2142259a44cf6507b0b
+	sha512sums = 63c1d8100c9852d401072ffeeeeab04513d01bb186150dcd9910022b946ca27b126145e9b2539b09ce82051cab824fd93c5d964d4bbdba99bccc3c5f015782ec
+
+pkgname = openaws-vpn-client-bin

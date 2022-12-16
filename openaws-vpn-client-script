@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+PACKAGE_DIR=
+BASE_DIR="${PACKAGE_DIR}/usr/share/openaws-vpn-client"
+export SHARED_DIR="${BASE_DIR}/share"
+
+exec "${BASE_DIR}/bin/openaws-vpn-client" "$@"
