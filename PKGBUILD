@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57747.813a194c4e8
+pkgver=r57751.057cdc725ed
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -45,7 +45,7 @@ options=(!lto)
 
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
-_gitname='xbmc'
+_gitname=xbmc
 _codename=Matrix
 _sse_workaround=1
 
@@ -70,7 +70,6 @@ _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.12.0"
 _libudfread_version="1.1.0"
-
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -154,9 +153,6 @@ build() {
     -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
-    -DENABLE_MYSQLCLIENT=ON
-    -DENABLE_VAAPI=ON
-    -DENABLE_VDPAU=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
     -DENABLE_INTERNAL_SPDLOG=ON
@@ -164,6 +160,9 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
+    -DENABLE_MYSQLCLIENT=ON
+    -DENABLE_VAAPI=ON
+    -DENABLE_VDPAU=ON
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
@@ -208,8 +207,8 @@ package_kodi-matrix-git() {
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm' 'kodi-matrix-git')
-  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm' 'kodi-matrix-git')
+  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
