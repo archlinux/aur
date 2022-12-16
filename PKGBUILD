@@ -22,11 +22,11 @@ build() {
 
 package() {
   depends=('jre-openjdk-headless>11.0.0' 'git>2.11.1' 'curl')
-  install -o 663 -g 663 -d "$pkgdir"/opt/onedev
-  cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir"/opt/onedev
-  chown -R 663:663 "$pkgdir"/opt/onedev
-  install -D -m 0644 sysusers.conf "$pkgdir"/usr/lib/sysusers.d/onedev.conf
-  install -D -m 0644 onedev.service "$pkgdir"/usr/lib/systemd/system/onedev.service
+  install -o 663 -g 663 -d "$pkgdir/opt/onedev"
+  cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/onedev"
+  chown -R 663:663 "$pkgdir/opt/onedev"
+  install -D -m 0644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/onedev.conf"
+  install -D -m 0644 onedev.service "$pkgdir/usr/lib/systemd/system/onedev.service"
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/license.txt" "$pkgdir/usr/share/licenses/onedev/LICENSE"
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/onedev/antlr/LICENSE"
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/onedev/asm/LICENSE"
