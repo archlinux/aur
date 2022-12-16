@@ -1,16 +1,17 @@
 # Maintainer: Tang Yuming <felinae225@qq.com>
-pkgname=clashup
+pkgname=clashup-yacd
 pkgver=0.3.0
 pkgrel=4
-pkgdesc="auto update clash's config file"
+pkgdesc="auto update clash's config file, compatible with yacd"
 license=('GPL')
 arch=('any')
-url="https://github.com/felinae98/clashup"
+url="https://github.com/chiro2001/clashup-yacd"
 depends=(python
          clash
          python-requests
          python-daemon
          yacd)
+conflicts=(clashup)
 source=(clashup clashup.conf clashup.service clashup.timer)
 package() {
     install -Dm755 clashup ${pkgdir}/usr/bin/clashup
