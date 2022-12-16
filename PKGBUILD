@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 package() {
         cd "${srcdir}/steamdeck-file-share-tool"
-        install -Dm 755 "bin/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+        install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	#install -D "doc/*" "${pkgdir}/usr/share/doc/${pkgname}"
 	
 	cd doc
