@@ -1,3 +1,4 @@
 *.tar.gz
 pkg
 src
+*.zst
