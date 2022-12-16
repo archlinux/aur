@@ -1,7 +1,7 @@
 pkgbase = python-tld-git
 	pkgdesc = Extracts the top level domain (TLD) from the URL given
-	pkgver = 0.12.6
-	pkgrel = 2
+	pkgver = 0.12.7
+	pkgrel = 1
 	url = https://github.com/barseghyanartur/tld
 	arch = any
 	license = GPL
