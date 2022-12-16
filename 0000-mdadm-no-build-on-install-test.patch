@@ -1,0 +1,24 @@
+diff -pNaru5 a/Makefile b/Makefile
+--- a/Makefile	2022-12-16 14:36:34.039686769 -0500
++++ b/Makefile	2022-12-16 14:37:49.050230775 -0500
+@@ -303,18 +303,18 @@ install-systemd: systemd/mdmon@.service
+ 	   $(INSTALL) -D -m 755  .install.tmp.3 $(DESTDIR)$(SYSTEMD_DIR)-shutdown/$$file ; \
+ 	   rm -f .install.tmp.3; \
+ 	done
+ 	if [ -f /etc/SuSE-release -o -n "$(SUSE)" ] ;then $(INSTALL) -D -m 755 systemd/SUSE-mdadm_env.sh $(DESTDIR)$(LIB_DIR)/mdadm_env.sh ;fi
+ 
+-install-bin: mdadm mdmon
++install-bin:
+ 	$(INSTALL) -D $(STRIP) -m 755 mdadm $(DESTDIR)$(BINDIR)/mdadm
+ 	$(INSTALL) -D $(STRIP) -m 755 mdmon $(DESTDIR)$(BINDIR)/mdmon
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(MAN8DIR)/mdadm.8 $(DESTDIR)$(MAN8DIR)/mdmon.8 $(DESTDIR)$(MAN4DIR)/md.4 $(DESTDIR)$(MAN5DIR)/mdadm.conf.5 $(DESTDIR)$(BINDIR)/mdadm
+ 
+-test: mdadm mdmon test_stripe swap_super raid6check
++test: test_stripe swap_super raid6check
+ 	@echo "Please run './test' as root"
+ 
+ clean :
+ 	rm -f mdadm mdmon $(OBJS) $(MON_OBJS) $(STATICOBJS) core *.man \
+ 	mdadm.tcc mdadm.uclibc mdadm.static *.orig *.porig *.rej *.alt \

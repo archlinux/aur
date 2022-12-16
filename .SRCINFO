@@ -1,31 +1,34 @@
 pkgbase = mdadm-git
-	pkgdesc = create, manage, and monitor Linux mdraid block device RAID arrays
-	pkgver = 4.1.r106.ga64f126
+	pkgdesc = A tool for managing/monitoring Linux md device arrays, also known as Software RAID
+	pkgver = 4.2.r61.g8b668d4a
 	pkgrel = 1
-	url = http://neil.brown.name/blog/mdadm
+	url = https://git.kernel.org/pub/scm/utils/mdadm
 	install = mdadm.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = glibc
-	provides = mdadm=4.1
-	conflicts = mkinitcpio<0.7
+	depends = systemd
+	optdepends = bash: mdcheck
+	provides = mdadm=4.2
 	conflicts = mdadm
 	replaces = raidtools
 	backup = etc/mdadm.conf
 	source = mdadm_gitkr::git://git.kernel.org/pub/scm/utils/mdadm/mdadm.git
+	source = 0000-mdadm-no-build-on-install-test.patch
 	source = mdadm.conf::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm.conf?h=packages/mdadm
 	source = mdadm_udev_install::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/mdadm_udev_install?h=packages/mdadm
 	source = mdadm_udev_hook
 	md5sums = SKIP
+	md5sums = 074f72ac0367088920379c7e6b7e2a32
 	md5sums = 5a37c112aa07dccdde62f9fa5b888607
 	md5sums = b6b0bfd6487c99264578630616dfe5eb
 	md5sums = 910398cd21e16c1da33f2d7449497245
 	sha256sums = SKIP
+	sha256sums = 18f4ab16e9f4aed84d40456f6125fbb54447d0d0679d9b290355ff3acf8319a8
 	sha256sums = 4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5
 	sha256sums = 170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38
 	sha256sums = d395184617f45849cbbaf5b4ee3665ca6895a1d642e0470e9de703ce944279ca
 
 pkgname = mdadm-git
-
