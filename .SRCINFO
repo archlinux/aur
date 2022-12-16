@@ -77,7 +77,6 @@ pkgname = gcc-libs-git
 
 pkgname = lib32-gcc-libs-git
 	pkgdesc = 32-bit runtime libraries shipped by GCC (git version)
-	groups = multilib-devel-git
 	depends = lib32-glibc>=2.27
 	provides = lib32-gcc-libs
 	provides = libgo.so
@@ -85,6 +84,7 @@ pkgname = lib32-gcc-libs-git
 	provides = libubsan.so
 	provides = libasan.so
 	conflicts = lib32-gcc-libs
+	replaces = gcc-multilib-git
 	options = !emptydirs
 	options = !strip
 
@@ -104,6 +104,8 @@ pkgname = gcc-rust-git
 	depends = libisl.so
 	provides = gcc-rust
 	provides = gcc-rust-git
+	provides = gcc-multilib
+	provides = gcc-multilib-git
 	conflicts = gcc-rust
 	replaces = gcc-multilib-git
 
@@ -111,6 +113,7 @@ pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
 	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
+	provides = gcc-objc
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-objc
@@ -135,9 +138,11 @@ pkgname = gcc-d-git
 	provides = gdc
 	provides = gcc-d
 	provides = gcc-d-git
+	provides = gcc-multilib
+	provides = gcc-multilib-git
 	conflicts = gcc-d
-	replaces = gdc
-	replaces = gcc-d
+	replaces = gcc-multilib
+	replaces = gcc-multilib-git
 	options = staticlibs
 	options = !debug
 
@@ -146,9 +151,8 @@ pkgname = lto-dump-git
 	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
 	provides = lto-dump
-	provides = lto-dump-git
-	conflicts = lto-dump
-	replaces = lto-dump
+	conflicts = lto-dumb
+	replaces = gcc-multilib-git
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)
@@ -166,3 +170,6 @@ pkgname = libgccjit-git
 	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
 	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
+	provides = libgccjit
+	conflicts = libgccjit
+	replaces = gcc-multilib-git
