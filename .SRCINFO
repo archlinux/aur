@@ -1,6 +1,6 @@
 pkgbase = python-languagetool-git
 	pkgdesc = A free grammar checker for Python
-	pkgver = 2.6.1
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/language-tool-python
 	arch = any
