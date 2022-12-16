@@ -2,7 +2,7 @@
 _target='compass-readonly'
 _edition=' Readonly'
 pkgname="mongodb-$_target"
-_pkgver='1.34.1'
+_pkgver='1.34.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff"
 	'hadron-build.diff'
 )
-sha512sums=('22264efbaaafab151a7c3a89b8dcfc81c2917a7c1258297ee1fc536a2b29f1c6e5d3d0a0ec493f17589dd21e95b7abe3755ed0d432996e2f8991b408bbbc5577'
+sha512sums=('aae868b2552dd5a949cc9c3ff7a1bd7abeb3c5cbc5a873b6ede165a6a451bd509165e6b24381149dfc86b2e1e1b023b71d7d12d6a526ecb05bee75d03312c4f8'
             'd7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1'
             '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94')
 
