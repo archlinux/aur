@@ -1,0 +1,14 @@
+pkgbase = stable-diffusion-ui
+	pkgdesc = A simple 1-click way to install and use Stable Diffusion on your own computer.
+	pkgver = 2.4.13
+	pkgrel = 1
+	url = https://stable-diffusion-ui.github.io/
+	install = stable-diffusion-ui.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	provides = stable-diffusion-ui
+	source = https://github.com/cmdr2/stable-diffusion-ui/releases/latest/download/stable-diffusion-ui-linux.zip
+	md5sums = SKIP
+
+pkgname = stable-diffusion-ui

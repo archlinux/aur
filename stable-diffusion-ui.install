@@ -1,0 +1,20 @@
+cecho() {
+	echo -e "\x1b[31m$@\x1b[0m"
+}
+
+post_install() {
+	echo
+	cecho Stable Diffusion UI has been installed as according to https://stable-diffusion-ui.github.io/docs/installation/
+	echo 'The install directory is `/opt/stable-diffusion-ui`'
+	cecho 'To start it, just run `stable-diffusion-ui-server`'
+	echo This will then download around 15GiB the first time you run it. Make sure the same user runs it every time.
+	cecho Enjoy using Stable Diffusion!
+	echo
+}
+post_upgrade() {
+	echo
+	cecho Stable Diffusion UI has been upgraded
+	echo I don\'t know if you need to do this, or what might happen.
+	cecho 'It is probably a good idea to run `stable-diffusion-ui-server` and see what happens'
+	echo
+}
