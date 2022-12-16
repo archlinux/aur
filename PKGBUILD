@@ -18,7 +18,7 @@ noextract=("PrismLauncher-Linux-Qt6-${pkgver}.tar.gz")
 sha256sums=('4b1f32d3c13ae01acd69837571161649c9d693747bb57e587b826c1fe9dd8087')
 
 package() {
-    install -d "$pkgdir/usr"
-    tar -C "$pkgdir/usr" -xvf PrismLauncher-Linux-Qt6-${pkgver}.tar.gz
-    chown -R root:root "$pkgdir/usr"  # fils in tarball are not owned by root
+    install -d "${pkgdir}/usr"
+    tar -C "${pkgdir}/usr" -xvf PrismLauncher-Linux-Qt6-${pkgver}.tar.gz
+    chown -R root:root "${pkgdir}/usr"  # fils in tarball are not owned by root
 }
