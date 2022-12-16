@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61759.34f88cd3679
+pkgver=r61761.3af44b345fd
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -45,7 +45,7 @@ options=(!lto)
 
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
-_gitname='xbmc'
+_gitname=xbmc
 _codename=master
 _sse_workaround=1
 
