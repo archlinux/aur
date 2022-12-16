@@ -1,7 +1,7 @@
 pkgbase = suricata
 	pkgdesc = A high performance Network IDS, IPS and Network Security Monitoring engine
 	pkgver = 6.0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://suricata.io/
 	install = suricata.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = suricata
 	license = GPL2
 	makedepends = rust
 	makedepends = clang
+	makedepends = cbindgen
 	depends = hyperscan
 	depends = jansson
 	depends = libcap-ng
