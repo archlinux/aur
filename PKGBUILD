@@ -1,32 +1,30 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=swiftshader-git
-pkgver=r6374.2e74d5dc03
-pkgrel=2
+pkgver=r7019.67f5203051
+pkgrel=1
 pkgdesc='High-performance CPU-based implementation of the Vulkan graphics API12.'
 arch=(x86_64)
 url=https://swiftshader.googlesource.com/SwiftShader
-provides=(swiftshader libgl opengl-driver vulkan-driver)
-conflicts=(swiftshader)
 license=(Apache)
+depends=(gcc-libs)
+makedepends=(git cmake ninja python)
+provides=(swiftshader vulkan-driver)
+conflicts=(swiftshader)
 source=("git+$url#branch=master"
-	git+https://github.com/google/cppdap
-	git+https://github.com/google/googletest.git
-	git+https://github.com/nlohmann/json.git
-	git+https://github.com/ianlancetaylor/libbacktrace.git
-	git+https://github.com/powervr-graphics/Native_SDK.git
-	git+https://github.com/google/benchmark.git
-	git+https://github.com/KhronosGroup/glslang.git
-)
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-depends=()
-makedepends=(git cmake ninja)
+        "git+https://github.com/google/cppdap"
+        "git+https://github.com/google/googletest.git"
+        "git+https://github.com/nlohmann/json.git"
+        "git+https://github.com/ianlancetaylor/libbacktrace.git"
+        "git+https://github.com/powervr-graphics/Native_SDK.git"
+        "git+https://github.com/google/benchmark.git"
+        "git+https://github.com/KhronosGroup/glslang.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd SwiftShader
-  printf "r%d.%s" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short=10 HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -40,7 +38,8 @@ prepare() {
   git -C SwiftShader config submodule."third_party/glslang".url "$srcdir/glslang"
   # this repo is not publicly accessible so we won't fetch it
   git -C SwiftShader config submodule."third_party/git-hooks".update none
-  git -C SwiftShader submodule update
+  git -C SwiftShader config submodule."third_party/llvm-project".update none
+  git -C SwiftShader -c protocol.file.allow=always submodule update
 
   cmake \
     -G Ninja \
@@ -57,7 +56,7 @@ build() {
 check() {
   build/ReactorUnitTests
   #build/math-unittests  # getting what looks like an infinite loop here; disabled for now
-  build/gles-unittests
+  build/system-unittests
   build/vk-unittests
 }
 
