@@ -1,6 +1,6 @@
 pkgbase = r-affyplm
 	pkgdesc = Methods for fitting probe-level models
-	pkgver = 1.74.0
+	pkgver = 1.74.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/affyPLM
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-affyplm
 	depends = r-zlibbioc
 	optdepends = r-affydata
 	optdepends = r-mass
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/affyPLM_1.74.0.tar.gz
-	sha256sums = ea884d4fc9bb7568338cf71530a2d2a35ec86083951d8eea9e948fea809473b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affyPLM_1.74.1.tar.gz
+	sha256sums = 566b275aebf1018e851201cb5b244f4a7bfb4d02952c8cda50c8ae05c6ce2861
 
 pkgname = r-affyplm
