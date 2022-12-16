@@ -1,8 +1,8 @@
 --- a/qt/aqt/qt/__init__.py
 +++ b/qt/aqt/qt/__init__.py
-@@ -9,16 +9,7 @@ import sys
+@@ -9,16 +9,7 @@
  import traceback
- from typing import Callable, Union
+ from typing import Callable, TypeVar, Union
 
 -try:
 -    import PyQt6
