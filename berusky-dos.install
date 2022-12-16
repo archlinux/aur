@@ -1,4 +1,4 @@
 post_remove(){
-  DIR=/usr/share/berusky-dos
-  [ -d $DIR ] && echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $DIR -type f|sort`\e[m" || true
+	DIR=/usr/share/berusky-dos
+	[ -d $DIR ] && echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $DIR -type f|sort`\e[m" || true
 }
