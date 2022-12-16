@@ -1,5 +1,7 @@
-# Maintainer: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 # Contributor: winlu <derwinlu AT gmail DOT com>
+
 pkgname=soundsense
 _pkgver="2016-1_196"
 pkgver=${_pkgver//-/_}
