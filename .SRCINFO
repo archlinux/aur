@@ -1,0 +1,14 @@
+pkgbase = cake-git
+	pkgdesc = C23 to C99 transpiler
+	pkgver = r225.2bef53e
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/thradams/cake
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc
+	source = git+https://github.com/thradams/cake.git
+	md5sums = SKIP
+
+pkgname = cake-git
