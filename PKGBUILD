@@ -8,7 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rhedgeco/tksync/archive/ref
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 depends=('rust')
-sha256sums=('bc2c99c03cede2e9b0577d75bfe8ecb94d68fc4b4a018b1dc986697319366536')
+sha256sums=('1744f802f0ebc460768cfd9dbb5daf9f6580c6962849dc7d0f2288ff8d8f52d2')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
