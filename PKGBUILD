@@ -1,15 +1,17 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Constributor: Steven Honeyman <stevenhoneyman at gmail com>
-# Constributor: Maxim Fomin <maxim at fomin one>
+# Contributor: Steven Honeyman <stevenhoneyman at gmail com>
+# Contributor: Maxim Fomin <maxim at fomin one>
+
+# Add yourself to the disk group to edit disks
 
 set -u
-pkgname=wxhexeditor
+pkgname='wxhexeditor'
 pkgname+='-git'
-pkgver=0.25.r86.gd738638
+pkgver=0.25.r98.gc22ce20
 pkgrel=1
-pkgdesc="A free hex editor / disk editor for Linux, Windows and MacOSX"
+pkgdesc='A free hex editor / disk editor for Linux, Windows and MacOSX'
 arch=('i686' 'x86_64')
-url="http://www.wxhexeditor.org"
+url='http://www.wxhexeditor.org'
 license=('GPL2')
 depends=('wxgtk3')
 depends+=('webkit2gtk' 'gcc-libs')
@@ -23,6 +25,10 @@ _srcdir="${pkgname%-git}"
 source=("${_srcdir}::git+https://github.com/EUA/wxHexEditor.git")
 md5sums=('SKIP')
 sha256sums=('SKIP')
+
+prepare() {
+  cd "${_srcdir}"
+}
 
 pkgver() {
   set -u
@@ -40,20 +46,15 @@ pkgver() {
 build() {
   set -u
   cd "${_srcdir}"
-  local _mflags=()
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
-    _mflags+=('-j' "${_nproc}")
-  fi
-  make -s WXCONFIG="/usr/bin/wx-config-gtk3" "${_mflags[@]}"
+  test -x '/usr/bin/wx-config' || echo "${}"
+  make -s WXCONFIG='/usr/bin/wx-config'
   set +u
 }
 
 package() {
   set -u
   cd "${_srcdir}"
-  make -j1 -s DESTDIR="${pkgdir}" PREFIX='/usr' install
-  sed -e 's:^Name=.*$:& as root:g' -e 's:^Exec=:&gksudo -k -u root :g' "${pkgdir}/usr/share/applications/wxHexEditor.desktop" > "${pkgdir}/usr/share/applications/wxHexEditor-gksu.desktop"
+  make -j1 -s install DESTDIR="${pkgdir}" PREFIX='/usr'
   set +u
 }
 set +u

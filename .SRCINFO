@@ -1,6 +1,6 @@
 pkgbase = wxhexeditor-git
 	pkgdesc = A free hex editor / disk editor for Linux, Windows and MacOSX
-	pkgver = 0.25.r86.gd738638
+	pkgver = 0.25.r98.gc22ce20
 	pkgrel = 1
 	url = http://www.wxhexeditor.org
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = wxhexeditor-git
 	sha256sums = SKIP
 
 pkgname = wxhexeditor-git
-
