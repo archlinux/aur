@@ -2,7 +2,7 @@
 
 pkgname=forgit-git
 _pkgname=${pkgname%-git}
-pkgver=22.11.0.r1.gfe4ac0f
+pkgver=22.12.0.r7.g5a117b6
 pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
@@ -36,9 +36,13 @@ package() {
 
 	# zsh install
 	install -Dvm644 forgit.plugin.zsh -t "$pkgdir/usr/share/zsh/plugins/$pkgname/"
+	install -dv "$pkgdir/usr/share/zsh/plugins/$pkgname/bin/"
+	ln -sv /usr/bin/git-forgit "$pkgdir/usr/share/zsh/plugins/$pkgname/bin/"
 
 	# fish install
 	install -Dvm644 conf.d/forgit.plugin.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
+	install -dv "$pkgdir/usr/share/fish/vendor_conf.d/bin/"
+	ln -sv /usr/bin/git-forgit "$pkgdir/usr/share/fish/vendor_conf.d/bin/"
 
 	# docs
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
