@@ -1,29 +1,41 @@
-# $Id$
-# Maintainer: Shane Stone <shanewstone at gmail>
+# Maintainer: Ole Martin Ruud <dev@barskern.no>
+# Contributer: Shane Stone <shanewstone at gmail>
 
 pkgname=python-proselint
-pkgver=0.10.2
+_name=${pkgname#python-}
+pkgver=0.13.0
 pkgrel=1
-provides=('proselint')
-pkgdesc="A linter for prose"
+pkgdesc='A linter for prose'
 arch=('any')
 url="https://github.com/amperser/proselint"
 license=('BSD')
-makedepends=('python-setuptools')
 depends=('python-click' 'python-future' 'python-six')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/amperser/proselint/archive/$pkgver.tar.gz")
-sha256sums=('5819e8e4c8ddcf282aabbb10613dc195796e682d36b046befbdfa7f8e8f080d5')
+makedepends=(python-{build,installer,wheel})
+checkdepends=('python-pytest')
+conflicts=('proselint')
+replaces=('proselint')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('6379c63fba0be8c5944c67ef4d3c0fd4ae4deb0076813531cddcdbc632bb254a4e213f88f07d96679465d740c1936a2b1502f852959a8ac9789ab1b983b8a0ef')
+
+_archive="$_name-$pkgver"
 
 build() {
-  cd proselint-$pkgver
+  cd "$_archive"
 
-  python setup.py build
+  # Due to a bug in poetry when there is a nesting of git directories
+  # See https://github.com/pypa/build/issues/384 for more info
+  GIT_CEILING_DIRECTORIES="$PWD/.." python -m build -wns
+}
+
+check() {
+  cd "$_archive"
+
+  pytest
 }
 
 package() {
-  cd proselint-$pkgver
+  cd "$_archive"
 
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
-
-  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
