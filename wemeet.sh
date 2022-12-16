@@ -4,6 +4,7 @@ export QT_QPA_PLATFORM=xcb
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_STYLE_OVERRIDE=fusion # 解决使用自带qt情况下，字体颜色全白看不到的问题
 export IBUS_USE_PORTAL=1        # fix ibus
+export LD_PRELOAD=/usr/lib/wemeet/libwemeetwrap.so #缓解传输文件崩溃问题
 unset WAYLAND_DISPLAY
 USER_RUN_DIR="/run/user/$(id -u)"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
