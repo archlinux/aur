@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=listenv
-_pkgver=0.8.0
+_pkgver=0.9.0
 pkgname=r-${_pkgname,,}
-pkgver=0.8.0
-pkgrel=10
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Environments Behaving (Almost) as Lists'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-r.utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f')
+sha256sums=('352841e04f0725d361b78cfdc75e00511f740d97237dd651ea86aa5484674887')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
