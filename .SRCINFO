@@ -1,13 +1,13 @@
 pkgbase = r-lea
 	pkgdesc = LEA: an R package for Landscape and Ecological Association Studies
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LEA
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LEA_3.10.0.tar.gz
-	sha256sums = 6ea8d6a3528fe5e86ec8a59c9669add488590beb1dff43d0655427c530a9c92a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LEA_3.10.1.tar.gz
+	sha256sums = 3c6e9eaa300389cfb84dc86888fabd823fd78a62c741c482227a6bc62d6c02bb
 
 pkgname = r-lea
