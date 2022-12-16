@@ -4,7 +4,7 @@
 
 pkgname=dbeaver-ee
 pkgver=22.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('x86_64')
 url="http://dbeaver.com/"
