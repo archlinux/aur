@@ -3,15 +3,15 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
 pkgver=6.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
 license=('GPL2')
-makedepends=('rustup' 'clang')
+makedepends=('rust' 'clang')
 depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
-conflicts=('suricata-nfqueue')
+conflicts=('suricata-nfqueue' 'rustup')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'
@@ -27,7 +27,6 @@ sha256sums=('3225edcbd0277545b7128df7b71652e6816f3b4978347d2f4fe297d55ed070e8'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 
 build() {
-  export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	      --with-clang=/usr/bin/clang --without-docs \
