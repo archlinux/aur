@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=waypoint
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc='A tool to build, deploy, and release any application on any platform'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('git' 'go' 'go-bindata')
 optdepends=('docker: for local development server')
 options=('!lto')
-_commit='46720cf33fd6a09261c6236c5b8cc7b9b1621e11'
+_commit='ece0f754160d7f394465b677702688d704c2588c'
 source=("$pkgname::git+https://github.com/hashicorp/waypoint.git#commit=$_commit")
 b2sums=('SKIP')
 
