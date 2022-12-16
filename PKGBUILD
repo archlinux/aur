@@ -34,5 +34,5 @@ package() {
 
 	mkdir -p "$pkgdir/opt/"
 	cp -r "stable-diffusion-ui" "$pkgdir/opt/"
-	chmod 777 "$pkgdir/opt/stable-diffusion-ui"
+	chmod 777 -R "$pkgdir/opt/stable-diffusion-ui"
 }
