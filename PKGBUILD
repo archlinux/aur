@@ -1,5 +1,7 @@
 # Maintainer: Aanok <aanok.aur@gmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Contributor: therealfarfetchd
+
 pkgname='ripcord'
 pkgver=0.4.29
 pkgrel=1
