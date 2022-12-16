@@ -1,13 +1,13 @@
 pkgbase = gdx-texture-packer-gui
 	pkgdesc = A gui for the command line gdx-texturepacker
-	pkgver = 4.10.2
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/crashinvaders/gdx-texture-packer-gui
 	arch = any
 	license = Apache
 	depends = java-runtime
 	depends = unzip
-	source = https://github.com/crashinvaders/gdx-texture-packer-gui/releases/download/4.10.2/gdx-texturepacker-4.10.2.zip
-	sha256sums = 867809d5e88fd144ad70e98a79fe745dc15dee8afd6ef33a6a347afdbfaf4389
+	source = https://github.com/crashinvaders/gdx-texture-packer-gui/releases/download/4.11.0/gdx-texturepacker-4.11.0.zip
+	sha256sums = e07f5d04023f515915c4d26a4284656b20dc7b5b531e05d065a82144ba3e9d3a
 
 pkgname = gdx-texture-packer-gui
