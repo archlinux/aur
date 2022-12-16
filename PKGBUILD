@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1269
+pkgver=mainline.0.1271
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
@@ -51,7 +51,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'267466b843029b133246986f75d5336b41b0faeb9f52c337a18b3ada3345530a2578d0f940d0391c4a1833ff897f19249065d6505f77a7a5e92ccdaa320f1356'
+	'1d9591b3aad22b6a543c1675c5c12eb92ae4af33198c39cc4932a2916cf767c6da28381082e336e80d4d54bc453528c8d915b4c58fd6209338ee304b67fae112'
 )
 
 prepare() {
