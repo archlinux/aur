@@ -21,11 +21,11 @@ optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions')
-source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/$pkgver/PrismLauncher-$pkgver.tar.gz")
+source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
 sha256sums=('4b8845186e509f62564f47f48b04f8abb3e35523ba8b33c5413475724e49e1dc')
 
 build() {
-  cd "PrismLauncher-$pkgver"
+  cd "PrismLauncher-${pkgver}"
 
   cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "PrismLauncher-$pkgver/build"
-  DESTDIR="$pkgdir" cmake --install .
+  cd "PrismLauncher-${pkgver}/build"
+  DESTDIR="${pkgdir}" cmake --install .
 }
