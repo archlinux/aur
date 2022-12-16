@@ -1,8 +1,8 @@
 pkgbase = hunter-git
 	pkgdesc = Ranger-like CLI file browser written in Rust
-	pkgver = 1.3.5.r65.gb298bf3
+	pkgver = 1.3.5.r85.g17946cf
 	pkgrel = 1
-	url = https://github.com/rabite0/hunter
+	url = https://github.com/nanoctr/hunter
 	arch = i686
 	arch = x86_64
 	license = custom:WTFPL
@@ -32,8 +32,7 @@ pkgbase = hunter-git
 	optdepends = fzf: Default file finder
 	provides = hunter
 	conflicts = hunter
-	source = hunter::git+https://github.com/rabite0/hunter
+	source = hunter::git+https://github.com/nanoctr/hunter.git
 	sha256sums = SKIP
 
 pkgname = hunter-git
-

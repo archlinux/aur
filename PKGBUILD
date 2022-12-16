@@ -2,11 +2,11 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-git
-pkgver=1.3.5.r65.gb298bf3
+pkgver=1.3.5.r85.g17946cf
 pkgrel=1
 pkgdesc='Ranger-like CLI file browser written in Rust'
 arch=('i686' 'x86_64')
-url='https://github.com/rabite0/hunter'
+url='https://github.com/nanoctr/hunter'
 license=('custom:WTFPL')
 provides=('hunter')
 conflicts=('hunter')
@@ -33,11 +33,11 @@ optdepends=('gst-plugins-good: Media support'
             'poppler: PDF support'
             'mupdf-tools: PDF support'
             'fzf: Default file finder')
-source=("hunter::git+${url}")
+source=("hunter::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/hunter"
+  cd hunter
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
