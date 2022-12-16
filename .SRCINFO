@@ -1,6 +1,6 @@
 pkgbase = r-bprmeth
 	pkgdesc = Model higher-order methylation profiles
-	pkgver = 1.24.0
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BPRMeth
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-bprmeth
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BPRMeth_1.24.0.tar.gz
-	sha256sums = 9aba068b7f3a32457bd49053a64583b04ebb826ac32884f7221644d3c8582771
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BPRMeth_1.24.1.tar.gz
+	sha256sums = 8b199e16f7f34edbbf04d94da3cb9290f4eb1801eabe0f4cd758f40f38d26fde
 
 pkgname = r-bprmeth
