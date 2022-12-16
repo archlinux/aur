@@ -1,0 +1,53 @@
+From 90ae494711a06944f0027224cf6a4b4a812d1e95 Mon Sep 17 00:00:00 2001
+From: Todd Lewis <utoddl@gmail.com>
+Date: Fri, 16 Dec 2022 16:33:40 -0500
+Subject: [PATCH] pick smarter quotes if possible; support texinfo 7.0+
+
+---
+ src/info2src.pl | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/info2src.pl b/src/info2src.pl
+index 53935c0..56d4964 100755
+--- a/src/info2src.pl
++++ b/src/info2src.pl
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env perl
+ 
+ use strict;
++use utf8;
++use open ':std', ':encoding(UTF-8)';
+ $| = 1;
+ 
+ # Todd M. Lewis <utoddl@gmail.com>
+@@ -65,7 +67,11 @@
+     my @line = <INFO>;
+     close INFO;
+     my $line = join '', @line;
+-    $line =~ s<\*note *(\s*)(.+?)::> <$1`$2'>gis;
++
++    # Pick left- and right-quote depending on whether our docs contain u+2018 and u+2019 already.
++    my ($lq, $rq) = ($line =~ m/‘.+?’/) ? ('‘', '’') : ("'", "'");
++
++    $line =~ s<\*note *(\s*)(.+?)::> <$1$lq$2$rq>gis;
+ 
+     my $state = 'searching';
+     my $command;
+@@ -74,7 +80,7 @@
+         chomp;
+         if ( $state eq 'searching' )
+             {
+-              next unless ( m/^(Syntax: )['`](([^ ]+).*)'\s*$/ );
++              next unless ( m/^(Syntax: )[‘'`](([^ ]+).*)[’']\s*$/ );
+               $command = uc $3;
+               $commands{$command}->{"cmd"}     = "$3";
+               $commands{$command}->{"text"}[0] = "$1$2";
+@@ -93,7 +99,7 @@
+ 
+               # print "---2 read \"$_\"\n";
+ 
+-              if ( m/^(Abbreviation: )['`](.+)'/ )
++              if ( m/^(Abbreviation: )[‘'`](.+)[’']/ )
+                   {
+                     $commands{$command}->{"abbr"} = "$2";
+                     push @{$commands{$command}->{"text"}}, "$1$2";
