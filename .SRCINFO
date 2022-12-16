@@ -1,6 +1,6 @@
 pkgbase = r-sc3
 	pkgdesc = Single-Cell Consensus Clustering
-	pkgver = 1.26.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SC3
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-sc3
 	optdepends = r-mclust
 	optdepends = r-rmarkdown
 	optdepends = r-scater
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SC3_1.26.0.tar.gz
-	sha256sums = 6929a7426d0651d06aeed2b7b4634ad92d265599cb645af3bb8fb1f9d9113338
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SC3_1.26.1.tar.gz
+	sha256sums = ff14bad8480985d229b61650ed0ee2ea2c890d53156122dd420d8e02efd8a1c1
 
 pkgname = r-sc3
