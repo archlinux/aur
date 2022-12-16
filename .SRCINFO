@@ -1,6 +1,6 @@
 pkgbase = mkpkg
 	pkgdesc = Tool to rebuild packages based on dependency triggers
-	pkgver = 3.5.4
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/gene-git/Arch-mkpkg
 	arch = any

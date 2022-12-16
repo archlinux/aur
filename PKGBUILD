@@ -10,7 +10,7 @@ pkgname='mkpkg'
 pkgdesc='Tool to rebuild packages based on dependency triggers'
 _gitname='Arch-mkpkg'
 
-pkgver=3.5.4
+pkgver=4.0.0
 pkgrel=1
 url="https://github.com/gene-git/Arch-mkpkg"
 
@@ -30,7 +30,7 @@ pkgver() {
 build() {
     cd "${_gitname}"
     /usr/bin/rm -f dist/*
-    /usr/bin/python -m build --wheel --no-isolation
+    /usr/bin/poetry build --format wheel
 }
 
 package() {
