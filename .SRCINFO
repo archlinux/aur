@@ -1,8 +1,8 @@
 pkgbase = libudfread-dk
 	pkgdesc = libudfread extended with parsing timestamps for disc-kuraudo
-	pkgver = 1.1.2.3
+	pkgver = 1.1.2.3.g1ee0ef9
 	pkgrel = 1
-	url = disc-kuraudo.eu
+	url = https://disc-kuraudo.eu
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = libudfread-dk
 	provides = libudfread
 	provides = libudfread.so
 	conflicts = libudfread
-	source = git+https://github.com/disc-kuraudo/libudfread.git
+	source = libudfread-dk::git+https://github.com/disc-kuraudo/libudfread.git
 	sha256sums = SKIP
 
 pkgname = libudfread-dk

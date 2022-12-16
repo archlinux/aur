@@ -1,12 +1,12 @@
 # Maintainer: Darjan Krijan [disc-kuraudo.eu]
 
 pkgname=libudfread-dk
-pkgver=1.1.2.3
+pkgver=1.1.2.3.g1ee0ef9
 pkgrel=1
 pkgdesc="libudfread extended with parsing timestamps for disc-kuraudo"
 arch=('x86_64')
 license=('LGPL2.1')
-url='disc-kuraudo.eu'
+url='https://disc-kuraudo.eu'
 depends=('glibc')
 makedepends=('git')
 provides=(
@@ -14,19 +14,24 @@ provides=(
 	'libudfread.so'
 )
 conflicts=('libudfread')
-source=('git+https://github.com/disc-kuraudo/libudfread.git')
+source=('libudfread-dk::git+https://github.com/disc-kuraudo/libudfread.git')
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	echo "$(git describe --long --tags | tr - .)"
+}
 
 prepare() {
 	mkdir -p build
 
-	cd libudfread
+	cd "${srcdir}/${pkgname}"
 	./bootstrap
 }
 
 build() {
 	cd build
-	../libudfread/configure \
+	../${pkgname}/configure \
 		--prefix=/usr \
 		--disable-static
 
