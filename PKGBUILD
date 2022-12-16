@@ -16,7 +16,8 @@ pkgname='jre11'
 #pkgver='11.0.12'; _build='8'; _hash='f411702ca7704a54a79ead0c2e0942a3'
 #pkgver='11.0.13'; _build='10'; _hash='bdde8881e2e3437baa70044f884d2d67'
 #pkgver='11.0.14'; _build='8'; _hash='7e5bbbfffe8b45e59d52a96aacab2f04'
-pkgver='11.0.15.1'; _build='2'; _hash='d76aabb62f1c47aa8588b9ae5a8a5b46'
+#pkgver='11.0.15.1'; _build='2'; _hash='d76aabb62f1c47aa8588b9ae5a8a5b46'
+pkgver='11.0.17'; _build='10'; _hash='8bd089539add49a9b99e2f27eb0c4329'
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -80,9 +81,9 @@ fi
 unset _srcfil
 unset XDG_DOWNLOAD_DIR
 
-md5sums=('85b2a0b8c16863b3ad55e742ac2ba9ff'
+md5sums=('292acca92d6ed9677ccc481254ae052b'
          '51c8839211cc53f09c9b11a8e28ed1ef')
-sha256sums=('a40ad9342646ec14196deaf28c64f697fef4c698296f0e7d39b638f360780d27'
+sha256sums=('ec4e2d98dae4a5342543b8c37cc764f9c0069d358522919c70ccde374fbe199a'
             'f1081b08cfbb467277e95b3794191c9963398579733fa8832425b308b5917711')
 
 #PKGEXT='.pkg.tar.gz' # much faster than .xz
