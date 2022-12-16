@@ -1,0 +1,16 @@
+pkgbase = intel-nvidia-switch-bin
+	pkgdesc = A small utility to switch GPU on Intel-Nvidia Hybrid Graphics Systems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prasadthx/Intel-Nvidia-Switch
+	install = intel-nvidia-switch.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nvidia-utils
+	depends = xf86-video-intel
+	optdepends = nvidia-prime
+	source = https://github.com/prasadthx/Intel-Nvidia-Switch/releases/download/v0.1.0/intel-nvidia-switch-v0.1.0.tar.gz
+	md5sums = 3321a2802a4847f64b83e851225ff164
+
+pkgname = intel-nvidia-switch-bin
