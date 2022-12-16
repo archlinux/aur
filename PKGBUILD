@@ -1,4 +1,6 @@
-# Maintainer: nissen22 <bernhardnorneslotsberg at gmail dot com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: nissen22 <bernhardnorneslotsberg at gmail dot com>
+
 # Package heavily inspired by the ordinary Ripcord AUR package and https://wiki.archlinux.org/index.php/Creating_packages
 pkgname='ripcord-arch-libs'
 pkgver=0.4.29
