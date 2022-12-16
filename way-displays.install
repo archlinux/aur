@@ -66,6 +66,10 @@ post_install() {
     yello "1.6.1"
     plain "${blue}#53${all_off} wlroots 0.16.0 compatibility"
     plain ""
+    yello "1.6.2"
+    plain "${blue}#56${all_off} handle missing head fields on way-displays -g"
+    plain "Print head fields: make, model, serial"
+    plain ""
 }
 
 post_upgrade() {
