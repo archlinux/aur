@@ -22,7 +22,7 @@ source=("https://github.com/kyak/linux/archive/${_commit}.tar.gz"
         '99-linux.hook')
 md5sums=('d17e7c7108c95291ce2ee4a3c971f3d3'
          '20bf3136f2725be5b6a2eb7a5a8682bf'
-         '170cdff5ddd12492e205c61261e9ff74'
+         '7539bf6976b0a21a987a1a5254d755cf'
          'a84976d500db50cee07177eccfe2f455'
          '79fa396e3f9a09a85156d6d7c2d34b58')
 
