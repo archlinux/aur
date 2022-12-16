@@ -5,7 +5,7 @@
 set -u
 _pkgname='dropbox-uploader'
 pkgname="${_pkgname}-git"
-pkgver=0.20c.r0.gb745657
+pkgver=0.20c.r4.gc2d1d9e
 pkgrel=1
 pkgdesc='A bash script to manage Dropbox from the CLI'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git')
 #source=('git://github.com/andreafabrizi/Dropbox-Uploader.git')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-source=('git://github.com/severach/Dropbox-Uploader.git')
+source=('git+https://github.com/severach/Dropbox-Uploader.git')
 sha256sums=('SKIP')
 
 pkgver() {
