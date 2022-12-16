@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=imager
-_pkgver=0.42.13
+_pkgver=0.42.14
 pkgname=r-${_pkgname,,}
-pkgver=0.42.13
-pkgrel=3
+pkgver=0.42.14
+pkgrel=1
 pkgdesc="Image Processing Library Based on 'CImg'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d90a9893d11190ba249c7fae5bd6517a77907efbce2941452cb2aec57bb5cf7f')
+sha256sums=('6b66c413da1ea13909cf8abffc5fcecfb79a431d3bae2bcb7e24b0bcead054ed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
