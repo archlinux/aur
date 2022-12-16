@@ -22,7 +22,7 @@ sha256sums=('4b8771e36b3ec6c36a7f5447b05638418636c0ae6e90049568737f999f3f0850'
 DEST="/opt/soundsense"
 
 prepare() {
-  cd $srcdir/$pkgname
+  cd "${srcdir}/${pkgname}"
 
   # fix line breaks
   sed -i $'s/\r$//' soundSense.sh
@@ -34,15 +34,14 @@ prepare() {
 
 package() {
   # install runner
-  install -Dm755 ${srcdir}/${pkgname}/soundSense.sh $pkgdir/usr/bin/soundsense
+  install -Dm755 "${srcdir}/${pkgname}/soundSense.sh" "${pkgdir}/usr/bin/soundsense"
   # rm unneeded files
-  rm $srcdir/$pkgname/*.{cmd,exe,zip,sh}
+  rm "${srcdir}/${pkgname}/"*.{cmd,exe,zip,sh}
   # copy over and set permissions
-  install -dm755 -o root -g games ${pkgdir}${DEST}
-  cp -r $srcdir/$pkgname/. ${pkgdir}${DEST}
-  chown root:games -R ${pkgdir}${DEST}
-  find ${pkgdir}${DEST}/ -type d -exec chmod 6775 {} +
-  find ${pkgdir}${DEST}/ -type f -exec chmod 664 {} +
+  install -dm755 -o root -g games "${pkgdir}${DEST}"
+  cp -r "${srcdir}/${pkgname}/." "${pkgdir}${DEST}"
+  chown root:games -R "${pkgdir}${DEST}"
+  find "${pkgdir}${DEST}/" -type d -exec chmod 6775 {} +
+  find "${pkgdir}${DEST}/" -type f -exec chmod 664 {} +
 }
 
-# vim:set ts=2 sw=2 et:
