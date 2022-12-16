@@ -65,8 +65,8 @@ _amlog='/var/log/amanda'
 set -u
 pkgname='amanda'
 #pkgver='3.3.9'
-pkgver='3.5.1'
-pkgrel='2'
+pkgver='3.5.2'
+pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
 url='http://www.amanda.org'
@@ -137,6 +137,7 @@ optdepends=(
 )
 # grep 'checking for' config.log | cut -d' ' -f2- | sort -u | grep -v '\.h$'
 makedepends=('swig' 'grep' 'splint' 'gettext' 'sed') # swig is for developers only
+makedepends+=('rpcsvc-proto')
 backup=(
   "${_amsecurity#/}"
   "${_amhome#/}/.amandahosts"
@@ -146,10 +147,11 @@ backup=(
 options=('!strip')
 install="${pkgname}.install"
 _tapetypes=('tapetypes.txt')
-_verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
-_srcdir="${pkgname}-${pkgver}"
+#_verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
+#_srcdir="${pkgname}-${pkgver}"
 source=(
-  "https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz"
+  #"https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz"
+  "https://cdn.zmanda.com/downloads/community/Amanda/${pkgver}/Source/amanda-tag-community-${pkgver}.tar.gz"
   "xinetd.${pkgname}".{udp,tcp}
   '0000-fedora-patch-tirpc.patch' # https://src.fedoraproject.org/rpms/amanda/tree/master
   "${_tapetypes[@]}"
@@ -157,7 +159,14 @@ source=(
   # https://bugs.gentoo.org/656340
   # https://fedoraproject.org/wiki/Changes/SunRPCRemoval
 )
-sha256sums=('88ce1ac62f8c30b8d607786a3ca335444a4249ae976baf083956e943b3b409f1'
+_srcdir="${source[0]##*/}"
+_srcdir="${_srcdir%%.tar*}"
+md5sums=('b3b3ec3f3eecbe1a38c637feecf1b922'
+         '4745f45c43488f46cba00073a60d587e'
+         'c42f8eb4461c1979b22761e288ff5c2e'
+         '51982f3d5c6b4a367de24c7fd7b7eb16'
+         'fbb84f7b778ff76759062878f413f047')
+sha256sums=('812aea37d5e5ae852ab4147e989f090fb60ef66e7b7fe49ef58e2d139fe3e99f'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
             'ae51f305b49bd7c94e854c2784ee4b58dabf74bc43bfe9a738d3d03322938861'
@@ -270,8 +279,11 @@ build() {
   cd "${_srcdir}"
   _install_check
 
+  if [ ! -s 'configure' ]; then
+    ./autogen
+  fi
   if [ ! -s 'Makefile' ]; then
-    autoreconf # 0000-fedora-patch-tirpc.patch
+    #autoreconf # 0000-fedora-patch-tirpc.patch
     local _opts=()
     if [ ! -z "${_opt_bsd}" ]; then
       _opts+=("--with-bsd${_opt_bsd}-security")
@@ -300,8 +312,7 @@ build() {
     ! grep -F $'/usr/var\n/usr/etc' 'config.log' || echo "{}"
   fi
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -j "${_nproc}" # not using -s helps
+  nice make # not using -s helps
   set +u
 }
 

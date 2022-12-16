@@ -1,7 +1,7 @@
 pkgbase = amanda
 	pkgdesc = Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting
-	pkgver = 3.5.1
-	pkgrel = 2
+	pkgver = 3.5.2
+	pkgrel = 1
 	url = http://www.amanda.org
 	install = amanda.install
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = amanda
 	makedepends = splint
 	makedepends = gettext
 	makedepends = sed
+	makedepends = rpcsvc-proto
 	depends = perl>=5.6.0
 	depends = glib2>=2.2.0
 	depends = gawk
@@ -58,16 +59,20 @@ pkgbase = amanda
 	backup = var/lib/amanda/.amandahosts
 	backup = etc/amanda/MyConfig/amanda.conf
 	backup = etc/amanda/MyConfig/disklist
-	source = https://prdownloads.sourceforge.net/amanda/amanda-3.5.1.tar.gz
+	source = https://cdn.zmanda.com/downloads/community/Amanda/3.5.2/Source/amanda-tag-community-3.5.2.tar.gz
 	source = xinetd.amanda.udp
 	source = xinetd.amanda.tcp
 	source = 0000-fedora-patch-tirpc.patch
 	source = tapetypes.txt
-	sha256sums = 88ce1ac62f8c30b8d607786a3ca335444a4249ae976baf083956e943b3b409f1
+	md5sums = b3b3ec3f3eecbe1a38c637feecf1b922
+	md5sums = 4745f45c43488f46cba00073a60d587e
+	md5sums = c42f8eb4461c1979b22761e288ff5c2e
+	md5sums = 51982f3d5c6b4a367de24c7fd7b7eb16
+	md5sums = fbb84f7b778ff76759062878f413f047
+	sha256sums = 812aea37d5e5ae852ab4147e989f090fb60ef66e7b7fe49ef58e2d139fe3e99f
 	sha256sums = 3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803
 	sha256sums = 46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce
 	sha256sums = ae51f305b49bd7c94e854c2784ee4b58dabf74bc43bfe9a738d3d03322938861
 	sha256sums = c368e7f9d6d1df703619476e0fcf06e841a7ec86a5a7b86dc499821fbb0a137e
 
 pkgname = amanda
-
