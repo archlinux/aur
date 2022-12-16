@@ -1,8 +1,8 @@
 # Maintainer: MGislv <mgislv at ceppo dot xyz>
 
 pkgname=dropbear-client
-pkgver=2022.82
-pkgrel=2
+pkgver=2022.83
+pkgrel=1
 pkgdesc='Lightweight SSH client'
 arch=('x86_64')
 url='https://github.com/mkj/dropbear'
@@ -11,7 +11,7 @@ conflicts=('dropbear')
 depends=('libxcrypt' 'zlib')
 makedepends=('git')
 validpgpkeys=('F7347EF2EE2E07A267628CA944931494F29C6773')
-source=("git+$url#commit=b8669b063bd2fc1906a13fb4b50c8b4697bf49ce" # tag: DROPBEAR_2022.82
+source=("git+$url#commit=a4689e25ec85904b9111f4e96d3994ff17b1c3e6" # tag: DROPBEAR_2022.83
         'localoptions.h')
 b2sums=('SKIP'
         '49628bbce0d26eb33598de276ede705bd592a38b7892c9db0ceebfb0598a1ee6e7e84ed03dbf255ee1adcad0c5214d38dc03e6c04176a405f59a19765cb28388')
