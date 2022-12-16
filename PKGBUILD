@@ -21,8 +21,10 @@ pkgname="${pkgbase}"
 #_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
 #_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
 #_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
-_pkgver='5.50';  _dl='8/0100007658/29';_suffix1='m17n';_suffix2='07'
-pkgver="${_pkgver}"
+#_pkgver='5.50';  _dl='8/0100007658/29';_suffix1='m17n';_suffix2='07'
+#_pkgver='5.60';  _dl='8/0100007658/30';_suffix1='m17n';_suffix2='08'
+_pkgver='5.60';  _dl='8/0100007658/31';_suffix1='m17n';_suffix2='10'
+pkgver="${_pkgver}.${_suffix2}"
 pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
@@ -37,16 +39,16 @@ optdepends=(
   'gtk3: for cnsetuputil2'
 )
 makedepends=('jbigkit' 'gzip' 'gtk3')
-provides=("cnrdrvcups-lb=${pkgver}")
+provides=("cnrdrvcups-lb=${_pkgver}")
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 conflicts+=('cndrvcups-lb-bin' 'cnrdrvcups-lb')
 options=('!emptydirs' '!strip' '!libtool')
 source=(
   "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('00f8ca9765e9385a0ba7b79b5bf9b73f')
-sha256sums=('3dfe6667e86809da6fd5a9775f7097c3e3e124934759090bd945b03fa6a13c28')
-sha512sums=('507b73ce809535319138ec0ec61a8467d536a255ea120d0b0c1ff8e406e39b00fa7541523ac1e1af3ca1fc378f7675d505b2f66e5d65f996fd7a9a4ddf2c316a')
+md5sums=('64fac0badfb21fd40d67160dce7bd03a')
+sha256sums=('dffba18aeecc07c71329a388b18a473db30cad225fa34a6c3526501eb4353681')
+sha512sums=('dd26e79ab473d932f4814a2210803ddb0d6f54754191d3d42fefb7d40940f87aed89dc89f71772d406381c59cd6ec79ebc8f0ac0a4b5c8b0641ebd973c1d8623')
 
 build() {
   set -u
@@ -67,7 +69,7 @@ build() {
     local _archrpme='deb'
     local _archrpmf='Debian'
   fi
-  local _pv='1.07'
+  local _pv="1.${_suffix2}"
 
   mkdir 'dta'
   cd 'dta'
@@ -85,7 +87,7 @@ build() {
   if [ "${_opt_ppdlevel}" -ge 1 ]; then
     # Get extra .ppd and .res from source
     mkdir "${_dta}/z"
-    bsdtar -C "${_dta}/z" -xf "Sources/cnrdrvcups-lb-${pkgver}-${_pv}.tar.xz"
+    bsdtar -C "${_dta}/z" -xf "Sources/cnrdrvcups-lb-${_pkgver}-${_pv}.tar.xz"
     mv "${_dta}/z/"cnrdrvcups-*/ppd/*.ppd "${_dta}/usr/share/cups/model/"
     mv "${_dta}/z/"cnrdrvcups-*/cngplp/files/*.res "${_dta}/usr/share/cngplp2/"
     rm -r "${_dta}/z"
@@ -138,7 +140,7 @@ build() {
 package() {
   set -u
   mv dta/* "${pkgdir}"
-  # grep -he '^*ModelName:' "${pkgdir}/usr/share/cups/model"/*.ppd | sort -u > "${startdir}/models.${_pkgver}-ex${_opt_ppdlevel}.txt"
+  # grep -he '^*ModelName:' "${pkgdir}/usr/share/cups/model"/*.ppd | sort -u > "${startdir}/models.${pkgver}-ex${_opt_ppdlevel}.txt"
   set +u
 }
 set +u
