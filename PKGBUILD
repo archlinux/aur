@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enhancerHomologSearch
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Identification of putative mammalian orthologs to given enhancer'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6502ae252918390240d1802dcbd358d2250b7ad34cfc257f3aa718c211dac3d6')
+sha256sums=('8a2844f7ec2d1f998074a9cd0b1c6d22cb50a9802a9f00701f9e35816eb4689a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
