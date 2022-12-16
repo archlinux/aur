@@ -3,8 +3,8 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=2.5.0.r7.gb8a1fed8
-pkgrel=2
+pkgver=2.5.0.r100.ge3db3c1c
+pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
 url="https://${_base}.org"
@@ -12,7 +12,7 @@ license=(LGPL3)
 depends=(libxml2 petsc eigen jsoncpp)
 makedepends=(cmake gcc-fortran doxygen graphviz git texlive-core)
 checkdepends=(openssh)
-optdepends=('man-db: manual pages for precice-tools and testprecice'
+optdepends=('man-db: manual pages for precice-tools'
   'git: for Git Revision Info support')
 source=(git+https://github.com/${_base}/${_base}.git#branch=develop)
 sha512sums=('SKIP')
@@ -56,7 +56,7 @@ check() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install doxygen
   install -Dm 644 ${_base}/LICENSE -t ${pkgdir}/usr/share/licenses/${_base}
-  install -Dm 644 ${_base}/docs/man/man1/test${_base}.1 -t ${pkgdir}/usr/share/man/man1/
+  install -Dm 644 ${_base}/docs/man/man1/${_base}-tools.1 -t ${pkgdir}/usr/share/man/man1/
   mv ${pkgdir}/usr/share/doc/lib${_base}2 ${pkgdir}/usr/share/doc/${_base}
   install -d ${pkgdir}/usr/share/doc/${_base}
   mv ${_base}/docs/source-code-documentation/html/* ${pkgdir}/usr/share/doc/${_base}
