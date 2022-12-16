@@ -10,12 +10,14 @@ pkgbase = wxhexeditor
 	depends = wxgtk3
 	optdepends = gksu: For root access support
 	optdepends = polkit: For root access support
-	source = https://github.com/EUA/wxHexEditor/archive/v0.24.tar.gz
+	source = wxHexEditor-0.24.tgz::https://github.com/EUA/wxHexEditor/archive/v0.24.tar.gz
 	source = 01-add-pkexec-support.patch
 	source = 02-remove-strange-output.patch
 	md5sums = 1b77bddc026e22797fd0e7a82e52cd28
 	md5sums = e62ae9e6b0aac2afdcc41b51cab39272
 	md5sums = 9f8f2ea86c7cc1d4706ac8c4862cfb51
+	sha256sums = 6ad993ba13a0076b31fb95daa7a812eae3b613d86f5e6709021e4d3398afcf00
+	sha256sums = fbb88c153e0bcba91a18bd6c646e262793a0b91c9e0ff6c40c4341247a47f620
+	sha256sums = ac9878adb6a25eca07b6ee8fcad07d4d655af23f6dcc49c418628184ab210f17
 
 pkgname = wxhexeditor
-
