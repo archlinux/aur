@@ -1,6 +1,6 @@
---- BambuStudio/CMakeLists.txt.orig	2022-10-14 00:35:55.606666615 -0400
-+++ BambuStudio/CMakeLists.txt	2022-10-14 10:58:21.179999900 -0400
-@@ -691,8 +691,10 @@
+--- BambuStudio/CMakeLists.txt-orig	2022-11-30 13:25:41.756684249 -0500
++++ BambuStudio/CMakeLists.txt	2022-11-30 13:27:39.770018152 -0500
+@@ -694,8 +694,10 @@
      install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
  elseif (SLIC3R_FHS)
      # CMAKE_INSTALL_FULL_DATAROOTDIR: read-only architecture-independent data root (share)
@@ -13,7 +13,7 @@
          PATTERN "*/udev" EXCLUDE
      )
      install(FILES src/platform/unix/BambuStudio.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-@@ -701,7 +703,7 @@
+@@ -704,7 +706,7 @@
              DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME BambuStudio.png
          )
      endforeach()
