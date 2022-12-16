@@ -1,7 +1,7 @@
 pkgbase = python-torchtext
 	pkgdesc = Data loaders and abstractions for text and NLP
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.14.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pytorch/text
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-torchtext
 	optdepends = python-revtok
 	optdepends = python-sacremoses: Moses tokenizer port in SacreMoses
 	optdepends = python-spacy: English tokenizer from SpaCy
-	source = text::git+https://github.com/pytorch/text.git#tag=v0.14.0
+	source = text::git+https://github.com/pytorch/text.git#tag=v0.14.1
 	sha512sums = SKIP
 
 pkgname = python-torchtext
