@@ -10,6 +10,8 @@ arch=("x86_64")
 url="https://github.com/prixt/${_pkgname}"
 license=("MIT")
 makedepends=("git" "rust" "alsa-lib" "gtk3" "webkit2gtk")
+depends=("libasound.so" "libgtk-3.so" "libgdk-3.so" "libwebkit2gtk-4.0.so"
+         "libjavascriptcoregtk-4.0.so")
 source=("git+https://github.com/prixt/${_pkgname}.git"
         soundsense-rs.desktop)
 sha256sums=("SKIP"
@@ -26,9 +28,6 @@ build() {
 }
 
 package() {
-  depends+=("libasound.so" "libgtk-3.so" "libgdk-3.so" "libwebkit2gtk-4.0.so"
-            "libjavascriptcoregtk-4.0.so")
-
   cd "${srcdir}/${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
