@@ -1,7 +1,7 @@
 pkgbase = mepo
 	pkgdesc = Fast, simple, and hackable OSM map viewer for Linux
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 3
 	url = https://git.sr.ht/~mil/mepo
 	arch = i686
 	arch = x86_64
