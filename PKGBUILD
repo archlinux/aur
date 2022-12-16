@@ -1,7 +1,7 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=tiddlydesktop
 pkgver=0.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
 url="https://github.com/Jermolene/TiddlyDesktop"
 license=('BSD')
@@ -24,8 +24,19 @@ sha256sums=('5ae12c7678a543da175fb483bb970ff5956673c40a7ec5143e3002bfbba50bb2'
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
     cp -r ${srcdir}/TiddlyDesktop-linux64-v${pkgver}/*  ${pkgdir}/usr/share/${pkgname}/
+    # give mode 644 to  in /usr/share/tiddlydesktop and subdirectories
+    chmod 644 -R ${pkgdir}/usr/share/${pkgname}/
     # give mode 775 to subdirectories of /usr/share/tiddlydesktop
     find ${pkgdir}/usr/share/${pkgname}/ -type d -exec chmod 775 {} +
+    # give 755 to executables
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/chromedriver
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/chrome_crashpad_handler
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/minidump_stackwalk
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_helper
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_helper_bootstrap
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_irt_x86_64.nexe
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/nw
+    chmod 755 ${pkgdir}/usr/share/${pkgname}/nwjc
 
     install -Dm755 "${srcdir}/tiddlydesktop.sh"  "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/tiddlydesktop.desktop"  "${pkgdir}/usr/share/applications/tiddlydesktop.desktop"
