@@ -1,7 +1,7 @@
 pkgbase = tksync
 	pkgdesc = Unofficial tool for downloading fonts from Adobe Typekit.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/rhedgeco/tksync
 	arch = i686
 	arch = pentium4
@@ -12,7 +12,7 @@ pkgbase = tksync
 	arch = aarch64
 	license = MIT
 	depends = rust
-	source = tksync-0.1.1.tar.gz::https://github.com/rhedgeco/tksync/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = 1744f802f0ebc460768cfd9dbb5daf9f6580c6962849dc7d0f2288ff8d8f52d2
+	source = tksync-0.1.2.tar.gz::https://github.com/rhedgeco/tksync/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 75bcb19a318be906316d9eba089a84bc96d4a7a5bc93da86e4a00e8a3e0184a6
 
 pkgname = tksync

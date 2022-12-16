@@ -1,14 +1,14 @@
 # Maintainer: Ryan Hedgecock <rhedgeco@gmail.com>
 pkgname='tksync'
-pkgver='0.1.1'
-pkgrel='2'
+pkgver='0.1.2'
+pkgrel='1'
 pkgdesc='Unofficial tool for downloading fonts from Adobe Typekit.'
 url='https://github.com/rhedgeco/tksync'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rhedgeco/tksync/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
 depends=('rust')
-sha256sums=('1744f802f0ebc460768cfd9dbb5daf9f6580c6962849dc7d0f2288ff8d8f52d2')
+sha256sums=('75bcb19a318be906316d9eba089a84bc96d4a7a5bc93da86e4a00e8a3e0184a6')
 
 build () {
     cd "$srcdir/$pkgname-$pkgver"
