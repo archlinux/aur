@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=feedbackd-git
-pkgver=0.0.0+git20210125.r0.gaac3306
+pkgver=0.0.2.r2.gaa5e5e4
 pkgrel=1
 pkgdesc="A daemon to provide haptic, visual, and audio feedback on events"
 url="https://source.puri.sm/Librem5/feedbackd"
@@ -20,6 +20,7 @@ makedepends=(
 	gobject-introspection
 	meson
 	vala
+  gi-docgen
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')

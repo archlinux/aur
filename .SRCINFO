@@ -1,6 +1,6 @@
 pkgbase = feedbackd-git
 	pkgdesc = A daemon to provide haptic, visual, and audio feedback on events
-	pkgver = 0.0.0+git20210125.r0.gaac3306
+	pkgver = 0.0.2.r2.gaa5e5e4
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/feedbackd
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = feedbackd-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
+	makedepends = gi-docgen
 	depends = dconf
 	depends = gsound
 	depends = json-glib
@@ -22,4 +23,3 @@ pkgbase = feedbackd-git
 	sha256sums = SKIP
 
 pkgname = feedbackd-git
-
