@@ -1,6 +1,6 @@
 pkgbase = r-clusterexperiment
 	pkgdesc = Compare Clusterings for Single-Cell Sequencing
-	pkgver = 2.18.0
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clusterExperiment
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = r-clusterexperiment
 	optdepends = r-rtsne
 	optdepends = r-scran
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterExperiment_2.18.0.tar.gz
-	sha256sums = 0ae0bd3194ed26035ca95e45a0d8bc69634e90518705ab4266277f8c3e8f6d12
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clusterExperiment_2.18.1.tar.gz
+	sha256sums = fa0210509dde1e19f8646bc1ee484db92f4ec0c29cc15c88f4387a849a296eb8
 
 pkgname = r-clusterexperiment

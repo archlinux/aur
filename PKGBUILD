@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clusterExperiment
-_pkgver=2.18.0
+_pkgver=2.18.1
 pkgname=r-${_pkgname,,}
-pkgver=2.18.0
+pkgver=2.18.1
 pkgrel=1
 pkgdesc='Compare Clusterings for Single-Cell Sequencing'
 arch=('x86_64')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0ae0bd3194ed26035ca95e45a0d8bc69634e90518705ab4266277f8c3e8f6d12')
+sha256sums=('fa0210509dde1e19f8646bc1ee484db92f4ec0c29cc15c88f4387a849a296eb8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
