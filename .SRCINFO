@@ -1,6 +1,6 @@
 pkgbase = httptoolkit
 	pkgdesc = Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	epoch = 1
 	url = https://httptoolkit.tech/
@@ -10,7 +10,7 @@ pkgbase = httptoolkit
 	makedepends = zip
 	makedepends = git
 	conflicts = httptoolkit-bin
-	source = httptoolkit::git+https://github.com/httptoolkit/httptoolkit-desktop.git#tag=v1.12.1
+	source = httptoolkit::git+https://github.com/httptoolkit/httptoolkit-desktop.git#tag=v1.12.2
 	source = httptoolkit.desktop
 	md5sums = SKIP
 	md5sums = faf640796c9ad59c3fe56dac09b19767
