@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: William Tumeo <github@tumeo.space>
 pkgname=monodevelop-bin
-_pkgver=7.8.4.1
+_pkgver=7.8.4.1-0xamarin6+ubuntu1804b1
 pkgver=${_pkgver//[+-]/_}
 pkgrel=3
 pkgdesc="MonoDevelop is a GNOME IDE primarily designed for C# and other CLI (.NET) languages"
