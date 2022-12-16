@@ -1,7 +1,7 @@
 pkgbase = mepo
 	pkgdesc = Fast, simple, and hackable OSM map viewer for Linux
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://git.sr.ht/~mil/mepo
 	arch = i686
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = mepo
 	depends = ncurses
 	depends = findutils
 	source = mepo-1.1.tar.gz::https://git.sr.ht/~mil/mepo/archive/1.1.tar.gz
-	source = hardcoded-geoclue-lib-path.patch
-	sha512sums = ad76ba18d297bda5a9df73db5c709049e3fcb7388de819632836e58d2cce858c7b1cacad4f6f22accc73663df13347c0f53bd87738c61445cb355d90fd814f75
+	sha512sums = 51e7ba2b3d159b0eb49526530cc6cf7200c734d565c319c923507e734b26c6bf0588b8275c2fac7c963af21c8a575a7a9e3708ffdf83b68a35082a979fb4c523
 
 pkgname = mepo
