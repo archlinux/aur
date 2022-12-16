@@ -1,2 +1,6 @@
-.MTREE
-.PKGINFO
+pkg
+src
+
+*.AppImage
+*.asc
+*.tar.zst
