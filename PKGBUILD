@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=107.0.1
-pkgrel=2
+pkgver=108.0.1
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
         "libwebrtc-screen-cast-sync.patch")
-sha256sums=('e29950b9ba9143b0d683dc18779bbe70bbd082533aff8f6a7af69b19533e0647'
+sha256sums=('9821ac130dad01383e03276bf6cc92d41329d351da1fa7fa238168f8890611ea'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -175,7 +175,7 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
     patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-    #patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch # broken with 105
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
 
     msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
@@ -210,22 +210,24 @@ END
     msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
     patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
-#    msg2 "Hide passwordmgr"
-#    patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
-
     msg2 "Patch Devtools to bypass devtool detection"
     patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
-    msg2 "KDE MENU"
+    msg2 "KDE UNITY"
     patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+    msg2 "mozilla-kde_after_unity"
     patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+    msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
     # https://bugs.archlinux.org/task/76231
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
     # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
+    msg2 "Arch patch"
     patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
+
     msg2 "Match to system libs"
     patch -Np1 -i ../match.patch
 
