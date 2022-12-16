@@ -1,6 +1,6 @@
 pkgbase = r-maanova
 	pkgdesc = Tools for analyzing Micro Array experiments
-	pkgver = 1.68.0
+	pkgver = 1.68.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/maanova
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-maanova
 	optdepends = r-qvalue
 	optdepends = r-rmpi
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/maanova_1.68.0.tar.gz
-	sha256sums = 309ede5726df48ab0cc7e1ef089e121d50801e33230222783085605403ea5644
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/maanova_1.68.1.tar.gz
+	sha256sums = f8535a0f6baead5ecbc7eb2cef8fd6377b6d30ddcc192dcd36e1f9c852e0c055
 
 pkgname = r-maanova
