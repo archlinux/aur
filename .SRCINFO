@@ -1,13 +1,14 @@
 pkgbase = anki-qt5
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build
 	pkgver = 2.1.55
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
 	makedepends = rsync
 	makedepends = git
 	makedepends = ninja
+	makedepends = rustup
 	makedepends = python-installer
 	makedepends = libxcrypt-compat
 	depends = python-beautifulsoup4
