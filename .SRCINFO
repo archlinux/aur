@@ -2,7 +2,6 @@ pkgbase = ponscripter
 	pkgdesc = Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration
 	pkgver = v3.0.1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/07th-mod/ponscripter-fork
 	arch = x86_64
 	arch = aarch64
