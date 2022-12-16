@@ -2,7 +2,6 @@ pkgname=ponscripter
 pkgver=v3.0.1
 _pkgver=`curl -s https://api.github.com/repos/07th-mod/ponscripter-fork/releases/latest|grep tag_name|cut -d\" -f4`
 pkgrel=1
-epoch=1
 pkgdesc="Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
 arch=(x86_64 aarch64)
 url=https://github.com/07th-mod/ponscripter-fork
