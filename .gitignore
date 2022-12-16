@@ -1,6 +1,7 @@
 *
-!PKGBUILD
+!.drone.yml
 !.gitignore
 !.editorconfig
 !.SRCINFO
+!PKGBUILD
 !README.md

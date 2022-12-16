@@ -4,6 +4,7 @@
 [![https://img.shields.io/aur/license/mint-backgrounds](https://img.shields.io/aur/license/mint-backgrounds)](https://aur.archlinux.org/packages/mint-backgrounds)
 [![https://img.shields.io/aur/maintainer/mint-backgrounds](https://img.shields.io/aur/maintainer/mint-backgrounds)](https://aur.archlinux.org/packages/mint-backgrounds)
 [![https://img.shields.io/aur/last-modified/mint-backgrounds](https://img.shields.io/aur/last-modified/mint-backgrounds)](https://aur.archlinux.org/packages/mint-backgrounds)
+[![Build Status](https://drone.cryptic.systems/api/badges/volker.raschek/mint-backgrounds-pkg/status.svg)](https://drone.cryptic.systems/volker.raschek/mint-backgrounds-pkg)
 
 This repository contains the source code to build the Arch Linux package
 `mint-backgrounds`.

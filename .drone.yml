@@ -1,0 +1,55 @@
+---
+kind: pipeline
+type: kubernetes
+name: linter
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: markdown lint
+  commands:
+  - markdownlint *.md
+  image: docker.io/volkerraschek/markdownlint:0.32.1
+  resources:
+    limits:
+      cpu: 150
+      memory: 150M
+
+- name: sync
+  image: appleboy/drone-git-push
+  environment:
+    GIT_PUSH_SSH_KEY:
+      from_secret: aur_ssh_key
+  settings:
+    branch: master
+    remote: ssh://aur@aur.archlinux.org/mint-backgrounds.git
+    force: false
+
+- name: email-notification
+  environment:
+    SMTP_FROM_ADDRESS:
+      from_secret: smtp_from_address
+    SMTP_FROM_NAME:
+      from_secret: smtp_from_name
+    SMTP_HOST:
+      from_secret: smtp_host
+    SMTP_USERNAME:
+      from_secret: smtp_username
+    SMTP_PASSWORD:
+      from_secret: smtp_password
+  image: docker.io/volkerraschek/drone-email:0.1.1
+  resources:
+    limits:
+      cpu: 150
+      memory: 150M
+  when:
+    status:
+    - changed
+    - failure
+
+trigger:
+  event:
+    exclude:
+    - tag
