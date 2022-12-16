@@ -1,19 +1,19 @@
 pkgbase = masskulator
 	pkgdesc = A simple application to plot a chart with weight evolution.
-	pkgver = v0.2.0
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://www.drguell.es
+	url = https://gitlab.com/drguell/masskulator
 	arch = x86_64
-	license = GPL
-	makedepends = qt5-base
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = kinit
+	makedepends = kcmutils
+	makedepends = kdoctools
 	depends = qt5-charts
-	depends = qt5-tools
-	depends = kinit
-	depends = kcmutils
-	depends = kdoctools
-	source = masskulator::git+https://gitlab.com/drguell/masskulator.git#tag=v0.2.0
+	source = git+https://gitlab.com/drguell/masskulator.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = masskulator
