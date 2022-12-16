@@ -1,6 +1,6 @@
 pkgbase = obs-plugin-tuna-bin
     pkgdesc = Song information plugin for obs-studio
-    pkgver = 1.9.1
+    pkgver = 1.9.2
     pkgrel = 1
     provides = obs-plugin-tuna
     conflicts = obs-plugin-tuna obs-tuna obs-plugin-tuna-git 
@@ -8,7 +8,7 @@ pkgbase = obs-plugin-tuna-bin
     arch = x86_64
     license = GPL2
     depends = obs-studio
-    source = https://github.com/univrsal/tuna/releases/download/v1.9.1/tuna-1.9.1-linux-x86_64.deb
-    sha256sums = f1bb75b2d947a26ba5b028d53246a7a36e2f0951fd3776c68e9a445cc55ef7ad
+    source = https://github.com/univrsal/tuna/releases/download/v1.9.2/tuna-1.9.2-linux-x86_64.deb
+    sha256sums = 4586b4294a3f12841b480c0f25cc129ebadafec130ad137752b46fccda8da9f7
 
 pkgname = obs-plugin-tuna-bin

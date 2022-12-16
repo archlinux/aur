@@ -1,6 +1,6 @@
 # Maintainer: Vaargk <s30vm63qa@mozmail.com>
 pkgname=obs-plugin-tuna-bin
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Song information plugin for obs-studio"
@@ -10,7 +10,7 @@ depends=("obs-studio")
 provides=("obs-plugin-tuna=$pkgver")
 conflicts=("obs-plugin-tuna" "obs-plugin-tuna-git" "obs-tuna")
 source=("https://github.com/univrsal/tuna/releases/download/v$pkgver/tuna-$pkgver-linux-x86_64.deb")
-sha256sums=('f1bb75b2d947a26ba5b028d53246a7a36e2f0951fd3776c68e9a445cc55ef7ad')
+sha256sums=('4586b4294a3f12841b480c0f25cc129ebadafec130ad137752b46fccda8da9f7')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
