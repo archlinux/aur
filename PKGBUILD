@@ -1,7 +1,7 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=7.10.r14025.gdb5fb59a1ca
+pkgver=8.0.rc1.g3e7fae9bb0b
 pkgrel=1
 
 source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland
