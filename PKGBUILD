@@ -1,4 +1,4 @@
-# Maintainer: Tang Yuming <felinae225@qq.com>
+# Maintainer: Chiro2001 <Chiro2001@163.com>
 pkgname=clashup-yacd
 pkgver=0.3.0
 pkgrel=4
