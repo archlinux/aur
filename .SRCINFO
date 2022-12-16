@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 107.0.1
+	pkgver = 108.0
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -55,16 +55,16 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/107.0.1/source/firefox-107.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/107.0.1/source/firefox-107.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/108.0/source/firefox-108.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/108.0/source/firefox-108.0.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=107.0.1-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=7.3
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=6c36676c883d4113c7aad0212a6890b11e95f23e
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=424560ba704960d712242d0e2f9e92f2027a2d15
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/0001-libwebrtc-screen-cast-sync.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = e29950b9ba9143b0d683dc18779bbe70bbd082533aff8f6a7af69b19533e0647
+	sha256sums = ce0d31f89111fcce9e2dd490d810b6a704f7214ba0186fa2d2ec960099808e63
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
