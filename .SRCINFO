@@ -1,6 +1,6 @@
 pkgbase = r-nucpos
 	pkgdesc = An R package for prediction of nucleosome positions
-	pkgver = 1.16.1
+	pkgver = 1.16.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nuCpos
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-nucpos
 	optdepends = r-biostrings
 	optdepends = r-nupop
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nuCpos_1.16.1.tar.gz
-	sha256sums = 8ad510fa7287e18fe8702f2731c168e2ceb7459a7387ac5c6c0564c34207071d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nuCpos_1.16.2.tar.gz
+	sha256sums = 09e865b6d3bb00183f329db5742b9a842ba18a9d16ef77634983e031e7be6daa
 
 pkgname = r-nucpos
