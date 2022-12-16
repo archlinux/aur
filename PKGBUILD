@@ -16,8 +16,8 @@ makedepends=("coreutils"
              "unzip")
 source=("http://df.zweistein.cz/soundsense/soundSense_${_pkgver}.zip"
         "soundsense.install")
-md5sums=('63d6ef6b2d75deaa6a77d016c9ba3adc'
-         '15fd5fb1136348807f7f5351887b3ef9')
+sha256sums=('4b8771e36b3ec6c36a7f5447b05638418636c0ae6e90049568737f999f3f0850'
+            'fe554352d1224146736ded6e3bcf3319c286291828b192c9727cd185e0bd74c6')
 
 DEST="/opt/soundsense"
 
