@@ -1,6 +1,6 @@
 pkgbase = r-cnanorm
 	pkgdesc = A normalization method for Copy Number Aberration in cancer samples
-	pkgver = 1.44.1
+	pkgver = 1.44.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CNAnorm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-cnanorm
 	makedepends = gcc-fortran
 	depends = r
 	depends = r-dnacopy
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNAnorm_1.44.1.tar.gz
-	sha256sums = c88361c104a20b72cd1e566d5063f3caa9e7bc1158e8cca5ccf500801330feb8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CNAnorm_1.44.2.tar.gz
+	sha256sums = 4fe29f39fb53bfbae7a6c88e76291ef064b405a689db750612fceb85dd4b2521
 
 pkgname = r-cnanorm
