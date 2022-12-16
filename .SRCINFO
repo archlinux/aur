@@ -1,0 +1,13 @@
+pkgbase = svglinkify-git
+	pkgdesc = Export inkscape SVGs to PDF while preserving hyperlinks.
+	pkgver = r8.2a2f4bc
+	pkgrel = 1
+	url = https://github.com/oxplot/svglinkify
+	arch = any
+	license = MIT
+	depends = qpdf>=11.1.1
+	depends = inkscape>=1.2.1
+	source = git+https://github.com/oxplot/svglinkify.git
+	sha512sums = SKIP
+
+pkgname = svglinkify-git
