@@ -31,7 +31,7 @@ pkgbase = sunshine
 	optdepends = cuda
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=63c105bfb1427bf3afe2245bb48fc80ac4f3bb73
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=a54830cf39013a1e3d6e11adae990d08fe71e726
 	sha256sums = SKIP
 
 pkgname = sunshine
