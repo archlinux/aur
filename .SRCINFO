@@ -1,6 +1,6 @@
 pkgbase = r-sigpathway
 	pkgdesc = Pathway Analysis
-	pkgver = 1.66.0
+	pkgver = 1.66.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sigPathway
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-sigpathway
 	optdepends = r-annotationdbi
 	optdepends = r-hgu133a.db
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sigPathway_1.66.0.tar.gz
-	sha256sums = 4fed3fa06f702281ee057dc40fa41936a1d9330c9916d34e87e3a3a982d9666d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sigPathway_1.66.1.tar.gz
+	sha256sums = 0b00cf3090fec13b3b849e2484c9a33d0538f0483dee42348d81cbca3fb1c1d2
 
 pkgname = r-sigpathway

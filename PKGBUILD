@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sigPathway
-_pkgver=1.66.0
+_pkgver=1.66.1
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.66.1
 pkgrel=1
 pkgdesc='Pathway Analysis'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4fed3fa06f702281ee057dc40fa41936a1d9330c9916d34e87e3a3a982d9666d')
+sha256sums=('0b00cf3090fec13b3b849e2484c9a33d0538f0483dee42348d81cbca3fb1c1d2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
