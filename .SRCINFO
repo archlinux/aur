@@ -1,7 +1,7 @@
 pkgbase = python-torchdata
 	pkgdesc = A PyTorch repo for data loading and utilities to be shared by the PyTorch domain libraries
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/pytorch/data
 	arch = x86_64
 	license = BSD
@@ -10,9 +10,9 @@ pkgbase = python-torchdata
 	depends = python-pytorch
 	depends = python-requests
 	depends = python-urllib3
-	source = https://files.pythonhosted.org/packages/cp310/t/torchdata/torchdata-0.5.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/cp310/t/torchdata/torchdata-0.5.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 	source = https://github.com/pytorch/data/raw/main/LICENSE
-	sha512sums = 14183eab81f26085d88569501966dde4c4b1132e68e5f4681da853c6191be73948be15cf084f4af515b8412b6b4a9a5a716def865359da28213be6a2f3614b87
+	sha512sums = d93b7de0a8f283439d18739da8c3959419add073b1292e1ed9bd67ff0635547c8d1757657c643a1ec2757dab00c1e95cc5575ca1c0a6b783bc15ab13c131ddbb
 	sha512sums = 2d437cc8226bf32ddcf8e12f2583c5777afd3d9932b6b97a65f8fcf3d115a64749ebf37737fa9a69cea01e59649ba49b011ab219d1636ad970e79613a406f837
 
 pkgname = python-torchdata
