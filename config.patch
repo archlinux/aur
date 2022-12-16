@@ -36,7 +36,7 @@ index 93526b4..c11e819 100644
  [Preferences]
 -theme = "Nitter"
 -replaceTwitter = "nitter.net"
--replaceYouTube = "piped.kavin.rocks"
+-replaceYouTube = "piped.video"
 -replaceReddit = "teddit.net"
 +theme = "twitter_dark"  # Change this?
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
