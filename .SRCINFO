@@ -1,8 +1,8 @@
 pkgbase = rocm-llvm
 	pkgdesc = Radeon Open Compute - LLVM toolchain (llvm, clang, lld)
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
-	url = https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.3/page/Overview_of_ROCmCC_Compiler.html
+	url = https://docs.amd.com/bundle/ROCm-Compiler-Reference-Guide-v5.4/page/Introduction_to_Compiler_Reference_Guide.html
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = cmake
@@ -10,7 +10,7 @@ pkgbase = rocm-llvm
 	makedepends = ninja
 	options = staticlibs
 	options = !lto
-	source = rocm-llvm-5.4.0.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-5.4.0.tar.gz
-	sha256sums = ff54f45a17723892cd775c1eaff9e5860527fcfd33d98759223c70e3362335bf
+	source = rocm-llvm-5.4.1.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-5.4.1.tar.gz
+	sha256sums = 909bdceef34814e83d29a71c668c72b04e832377e277a56895733d11e23822b3
 
 pkgname = rocm-llvm
