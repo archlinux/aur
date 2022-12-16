@@ -43,7 +43,7 @@
 
 pkgbase=ttf-ms-win11
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.22621.608
+pkgver=10.0.22621.963
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -248,7 +248,7 @@ sha256sums=('baa251526d6862712a58e613ef451d8a2b60482142ec6aab1d47fb8e23e21a7c'
             '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'
             'd0e722b91ffd5391cc2e7d6e976f274d5aee9fe0b8d0fedfffe093763e695cde'
             'a2efc8b8e51fbd031a7142a1ade8866fa904c0c349511abc579ee53f8a926f31'
-            '7db24a1aafeeb65c1b79689b6883114e35f3db95a75ca1dc0a0186b178d06d8b'
+            '3fb53de6c75d56369af4016d27a3a1551af71a2a287358e7e44e6f6c5e0badc2'
             '91046862e08fbade0bdd648e81c4efbe6a963947f8b6e32b64a28fe39073c468'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'b24aa49a4bcb99a0ffc60cad77f00941e4b121153d8b0a519c03719d9be6004e'
