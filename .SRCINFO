@@ -1,14 +1,10 @@
 pkgbase = python-felupe
 	pkgdesc = Finite Element Analysis
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/adtzlr/felupe
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest
-	checkdepends = python-meshio
-	checkdepends = python-h5py
-	checkdepends = python-matplotlib
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -19,7 +15,8 @@ pkgbase = python-felupe
 	optdepends = python-numba: for JIT compiler support
 	optdepends = python-sparse: for sparse arrays support
 	optdepends = python-einsumt: for multithreaded numpy.einsum support
-	source = felupe-6.1.0.tar.gz::https://github.com/adtzlr/felupe/archive/v6.1.0.tar.gz
-	sha512sums = ae28c904026e92333c266fea1e0ee370ecdd56146be7d767cc5ca0ab286fca4671389c49c117940f5e2c84096434ef986d3893fa24bbfb8845c013bb7deb677e
+	optdepends = python-tensortrax: for automatic differentiation support
+	source = felupe-6.2.0.tar.gz::https://github.com/adtzlr/felupe/archive/v6.2.0.tar.gz
+	sha512sums = f4d54d360a27ad0316f2616ce88decd9781674c4787fbc24b8c2bc28e5eb899de59101ca5f4ca15896a61f312e825f57bb6658f6be96b221bb05cce839c456bd
 
 pkgname = python-felupe
