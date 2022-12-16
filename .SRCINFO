@@ -1,8 +1,8 @@
 pkgbase = monodevelop-bin
 	pkgdesc = MonoDevelop is a GNOME IDE primarily designed for C# and other CLI (.NET) languages
 	pkgver = 7.8.4.1_0xamarin6_ubuntu1804b1
-	pkgrel = 2
-	url = https://github.com/mono/monodevelop
+	pkgrel = 3
+	url = https://www.monodevelop.com/
 	arch = x86_64
 	license = MIT
 	depends = gtk-sharp-2
@@ -14,4 +14,3 @@ pkgbase = monodevelop-bin
 	sha256sums = e98cf23872aa0cb09fa000dd8f0ef9ad7f03a41a2d28ab1e2f215493bbd073bc
 
 pkgname = monodevelop-bin
-
