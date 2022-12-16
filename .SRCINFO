@@ -12,6 +12,7 @@ pkgbase = pinephone-compass-git
 	makedepends = python
 	depends = gtk3
 	depends = libhandy
+	depends = gettext
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-pandas
