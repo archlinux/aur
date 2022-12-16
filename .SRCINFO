@@ -1,6 +1,6 @@
 pkgbase = lib32-udis86-git
 	pkgdesc = Disassembler library for x86 (32-bit shared library)
-	pkgver = 1.7.2.185.g2738fe5
+	pkgver = 1.7.2.186.g5336633
 	pkgrel = 1
 	url = http://udis86.sourceforge.net
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = lib32-udis86-git
 	makedepends = lib32-gcc-libs
 	makedepends = python
 	depends = lib32-glibc
+	provides = libudis86.so
 	provides = lib32-udis86
 	provides = deepin-udis86
 	conflicts = lib32-udis86
-	source = git+https://github.com/canihavesomecoffee/udis86.git
+	source = git+https://github.com/canihavesomecoffee/udis86.git?signed
+	validpgpkeys = A5DD905196EF3973280DA13CB965BC5D279F42ED
 	sha512sums = SKIP
 
 pkgname = lib32-udis86-git
