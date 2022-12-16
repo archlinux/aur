@@ -20,5 +20,5 @@ sha256sums=('6d50199db7715fdc1f0e77d12d8fece4cfd2e386fc9049852ab1411492d32629')
 package() {
     install -d "${pkgdir}/usr"
     tar -C "${pkgdir}/usr" -xvf PrismLauncher-Linux-${pkgver}.tar.gz
-    chown -R root:root "${pkgdir}/usr"  # fils in tarball are not owned by root
+    chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
