@@ -4,10 +4,9 @@ pkgbase = sex
 	pkgrel = 3
 	url = http://spatula.net/software/sex/
 	arch = any
-	license = custom
+	license = public domain
 	makedepends = gcc
 	source = http://spatula.net/software/sex/sex-1.0.tar.gz
 	md5sums = c35a3cfe1536f1b2a16102526a74edd6
 
 pkgname = sex
-
