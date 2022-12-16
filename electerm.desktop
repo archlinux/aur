@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Electerm
+Comment=JS/HTML/CSS Terminal
+Exec=electerm
+Icon=/usr/share/pixmaps/electerm.png
+Terminal=false
+Type=Application
+Categories=Development;
