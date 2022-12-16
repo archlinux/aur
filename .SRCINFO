@@ -1,6 +1,6 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://vpn.mozilla.org/
 	arch = i686
@@ -34,9 +34,7 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
 	depends = openresolv
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.11.0-kinetic1/mozillavpn_2.11.0.orig.tar.gz
-	source = issue_6676.patch
-	sha256sums = 9f26fd7da7e486798fafa01657d346d163534edbb33e5096aef4559d5dd6959f
-	sha256sums = 1d2dc2b0be6e482aaf2eb820024f53634395d1d94e0eb3add81cdc0e64dc5152
+	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.12.0-kinetic1/mozillavpn_2.12.0.orig.tar.gz
+	sha256sums = 0d7143c07495601c90ca1c94c151c9b5b16921e1c8e3a64abad18d91db6bea29
 
 pkgname = mozillavpn
