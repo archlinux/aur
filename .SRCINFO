@@ -1,8 +1,8 @@
-pkgbase = clashup
-	pkgdesc = auto update clash's config file
+pkgbase = clashup-yacd
+	pkgdesc = auto update clash's config file, compatible with yacd
 	pkgver = 0.3.0
-	pkgrel = 2
-	url = https://github.com/felinae98/clashup
+	pkgrel = 4
+	url = https://github.com/chiro2001/clashup-yacd
 	arch = any
 	license = GPL
 	depends = python
@@ -13,10 +13,10 @@ pkgbase = clashup
 	source = clashup.conf
 	source = clashup.service
 	source = clashup.timer
-	md5sums = d2d6b7c638bd59e6ac0cfd1ece1301e1
+	md5sums = ef6bed643606b09331509cd7344a348c
 	md5sums = 177338346005e11d33e27edc1f8ab780
 	md5sums = f805be578902fb8c6606aef828111af8
 	md5sums = 58604e2d881d0260623659ce06158e14
 
-pkgname = clashup
+pkgname = clashup-yacd
 
