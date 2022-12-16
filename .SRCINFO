@@ -1,7 +1,7 @@
 pkgbase = surrealdb
 	pkgdesc = A scalable, distributed, collaborative, document-graph database, for the realtime web
 	pkgver = 1.0.0_beta.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/surrealdb/surrealdb
 	arch = x86_64
 	license = custom:BSL
@@ -10,9 +10,10 @@ pkgbase = surrealdb
 	checkdepends = rust
 	makedepends = rust
 	depends = curl
+	depends = clang
 	conflicts = surrealdb-bin
 	source = https://github.com/surrealdb/surrealdb/releases/download/v1.0.0-beta.8/LICENSE
-	source = https://github.com/surrealdb/surrealdb/archive/refs/tags/v1.0.0-beta.8.tar.gz
+	source = surrealdb-1.0.0_beta.8.tar.gz::https://github.com/surrealdb/surrealdb/archive/refs/tags/v1.0.0-beta.8.tar.gz
 	sha256sums = 3012620080caa47eb9d8fd490044274b9b71eda7fc48c9084914a5470800a868
 	sha256sums = 02ed4b6de4c2ac6a3234c775ee8c82699bc2f3e987a36bf52b364db3fa3c26a5
 
