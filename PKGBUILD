@@ -317,7 +317,7 @@ package_gcc-rust-git() {
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-rust{,-git})
   conflicts=(gcc-rust)
-  replaces=(gcc-rust-git)
+  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" rust.install-{common,man,info}

@@ -105,7 +105,7 @@ pkgname = gcc-rust-git
 	provides = gcc-rust
 	provides = gcc-rust-git
 	conflicts = gcc-rust
-	replaces = gcc-rust-git
+	replaces = gcc-multilib-git
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC (git version)
