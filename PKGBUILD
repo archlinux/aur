@@ -2,7 +2,7 @@
 
 pkgname=lunarvim-git
 pkgver=1.2.0.r57.gb661efb3
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
 url='https://github.com/LunarVim/LunarVim'
@@ -41,7 +41,7 @@ langs=(bash beancount bibtex
   verilog vim vue
   yaml yang
   zig)
-source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=release-1.2/neovim-0.8"
+source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=master"
   "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=0.5-compat"
   "init-lvim.sh"
   "lvim")
@@ -71,7 +71,7 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/lunarvim"{,/ftplugin}
-  cp -r {ftdetect,lua,snapshots,init.lua} "${pkgdir}/usr/share/lunarvim"
+  cp -r {lua,snapshots,init.lua} "${pkgdir}/usr/share/lunarvim"
 
   mkdir -p "${pkgdir}/usr/share/lunarvim/prebuild/nvim-treesitter/parser"{,-info}
 
