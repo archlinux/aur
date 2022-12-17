@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="http://pypi.python.org/pypi/${_name}"
 license=(Apache-2.0)
 depends=(python)
-makedepends=(cython python-build python-installer python-wheel)
+makedepends=(cython python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('df260aed3c5891fbeee99f13d9463cc500fb57cfc992f2d3fafc7626218f1d36')
 

@@ -7,6 +7,7 @@ pkgbase = python-brain-isotopic-distribution
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cython
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
