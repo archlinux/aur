@@ -1,6 +1,6 @@
 pkgbase = hipsolver
 	pkgdesc = rocSOLVER marshalling library.
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://hipsolver.readthedocs.io/en/latest/index.html
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hipsolver
 	makedepends = gcc-fortran
 	depends = hip
 	depends = rocsolver
-	source = hipsolver-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/hipSOLVER/archive/rocm-5.4.0.tar.gz
-	sha256sums = d53d81c55b458ba5e6ea0ec6bd24bcc79ab06789730391da82d8c33b936339d9
+	source = hipsolver-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/hipSOLVER/archive/rocm-5.4.1.tar.gz
+	sha256sums = 087cbb6bd9eb258ae64deed67e2a73a9181d5a725f92fdd74f43ccccee8321e9
 
 pkgname = hipsolver
