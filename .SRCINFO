@@ -1,6 +1,6 @@
 pkgbase = stack-static
 	pkgdesc = The Haskell Tool Stack (linked statically)
-	pkgver = 2.9.1
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/commercialhaskell/stack
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = stack-static
 	depends = zlib
 	optdepends = bash-completion
 	optdepends = ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5
-	provides = stack=2.9.1
+	provides = stack=2.9.3
 	conflicts = stack
 	conflicts = stack-bin
 	conflicts = haskell-stack
 	replaces = stack
 	replaces = stack-bin
 	replaces = haskell-stack
-	source = https://github.com/commercialhaskell/stack/releases/download/v2.9.1/stack-2.9.1-linux-x86_64-static.tar.gz
-	source = https://github.com/commercialhaskell/stack/releases/download/v2.9.1/stack-2.9.1-linux-x86_64-static.tar.gz.asc
+	source = https://github.com/commercialhaskell/stack/releases/download/v2.9.3/stack-2.9.3-linux-x86_64-static.tar.gz
+	source = https://github.com/commercialhaskell/stack/releases/download/v2.9.3/stack-2.9.3-linux-x86_64-static.tar.gz.asc
 	validpgpkeys = C5705533DA4F78D8664B5DC0575159689BEFB442
-	sha256sums = cd8ef4a844f141159189899a128a33f4beb9ec4e66ac96fc2ada47a626a9d462
+	sha256sums = b1cc32d772456b6ee7aefdd606c25c341670400cec577f8966365f962f883ec5
 	sha256sums = SKIP
 
 pkgname = stack-static
