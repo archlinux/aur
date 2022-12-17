@@ -2,9 +2,9 @@
 _pkgname=libinput
 _patch=multiplier.patch
 pkgname=$_pkgname-multiplier
-pkgver=1.20.1
+pkgver=1.22.0
 pkgrel=1
-pkgdesc='scroll patch, discrete deltay multiplier'
+pkgdesc='libinput with a scroll patch'
 arch=(x86_64)
 url=http://freedesktop.org/wiki/Software/libinput
 provides=($_pkgname=$pkgver)
@@ -27,9 +27,14 @@ build() {
   arch-meson $_pkgname-$pkgver build \
     -D udev-dir=/usr/lib/udev \
     -D documentation=false
+  # Print config
+  #meson configure build
   meson compile -C build
 }
+check() {
+  meson test -C build --print-errorlogs
+}
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -Dvm644 $_pkgname-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }

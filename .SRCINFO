@@ -1,6 +1,6 @@
 pkgbase = libinput-multiplier
-	pkgdesc = scroll patch, discrete deltay multiplier
-	pkgver = 1.20.1
+	pkgdesc = libinput with a scroll patch
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = http://freedesktop.org/wiki/Software/libinput
 	arch = x86_64
@@ -16,10 +16,9 @@ pkgbase = libinput-multiplier
 	optdepends = gtk4: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
-	provides = libinput=1.20.1
+	provides = libinput=1.22.0
 	conflicts = libinput
-	options = debug
-	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.20.1/libinput-1.20.1.tar.bz2
+	source = https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.22.0/libinput-1.22.0.tar.bz2
 	source = multiplier.patch
 	sha512sums = SKIP
 	sha512sums = aa22c523072e13c9a76153a89443d51fd16def29ccdc53aea142e278ad02820f2f7fef5b40e94fa2ed4c2062e237f70a9847d975e9100c998b39451f7267c3cc
