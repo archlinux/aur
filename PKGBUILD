@@ -1,5 +1,5 @@
 pkgname=pypy3-numpy
-pkgver=1.22.3
+pkgver=1.23.5
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -9,8 +9,8 @@ depends=('cblas' 'lapack' 'pypy3')
 optdepends=('openblas: faster linear algebra')
 makedepends=('pypy3-setuptools' 'gcc-fortran' 'pypy3-cython')
 options=('staticlibs')
-source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha512sums=('59424fe1d0f8288adc21a19aef2c0d89aeddb737a27bc3ca02576978ff2d00ae71aef34846df28d84b7a546dd197cf52c865350b76b2432333cf46218d502a0d')
+source=("https://github.com/numpy/numpy/archive/v$pkgver/numpy-$pkgver.tar.gz")
+sha512sums=('57f2c02abd3031599faa0d5aa874e78c2a8ea36c5fa4c8811449f7eafa195921da2d369c882ec1832468fd6d087622b57c954a85544d81f04425b349e409dcff')
 
 build() {
   cd numpy-$pkgver
@@ -24,7 +24,7 @@ package() {
 
   install -d "$pkgdir"/usr/bin
   cd "$pkgdir/opt/pypy3/bin"
-  for i in f2py f2py3 f2py3.8; do
+  for i in f2py f2py3 f2py3.$(python -V | cut -d. -f2); do
     mv $i "$pkgdir"/usr/bin/$i-pypy3
   done
 }
