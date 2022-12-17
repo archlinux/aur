@@ -4,7 +4,7 @@ _pkgname=martini
 _pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=1.18.0
-pkgrel=1
+pkgrel=4
 pkgdesc='GWAS Incorporating Networks'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,9 +12,12 @@ license=('GPL')
 depends=(
   r
   r-igraph
+  r-memoise # manually added
   r-rcpp
   r-rcppeigen
   r-snpstats
+)
+optdepends=(
   r-biomart
   r-circlize
   r-httr
