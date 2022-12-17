@@ -1,6 +1,6 @@
 pkgbase = hipfort
 	pkgdesc = Fortran interfaces for ROCm libraries
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://rocmsoftwareplatform.github.io/hipfort/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hipfort
 	depends = hip
 	depends = gcc-fortran
 	options = !strip
-	source = hipfort-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/hipfort/archive/rocm-5.4.0.tar.gz
-	sha256sums = a781bc6d1dbb508a4bd6cc3df931696fac6c6361d4fd35efb12c9a04a72e112c
+	source = hipfort-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/hipfort/archive/rocm-5.4.1.tar.gz
+	sha256sums = 1e2d4ca623729668fab997dce67365bd5c28570fca7822f17b99f2302f9cea28
 
 pkgname = hipfort
