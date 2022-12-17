@@ -1,6 +1,6 @@
 pkgbase = comgr
 	pkgdesc = Compiler support library for ROCm LLVM
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-CompilerSupport
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = comgr
 	makedepends = rocm-cmake
 	makedepends = rocm-llvm
 	depends = rocm-device-libs
-	source = comgr-5.4.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/archive/rocm-5.4.0.tar.gz
-	sha256sums = f4b83b27ff6195679d695c3f41fa25456e9c50bae6d978f46d3541b472aef757
+	source = comgr-5.4.1.tar.gz::https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/archive/rocm-5.4.1.tar.gz
+	sha256sums = a46ad7a53034417615d4cf9375909400dbe7198ea8076b524c22e2653728c06b
 
 pkgname = comgr
