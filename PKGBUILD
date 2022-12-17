@@ -7,8 +7,8 @@
 #
 # NOTES:
 #
-# Using Make as long as Ninja cannot be resource-comtrolled from makepkg.conf (like Make can)
-# System with many cores but little memory will be (OOM) killed by Ninja creating too many jobs
+# Using Make as long as Ninja cannot be job-controlled from makepkg.conf (like Make can)
+# Systems with many cores but little memory will be (OOM) killed by Ninja creating too many jobs
 #
 
 pkgname=codelite-git
