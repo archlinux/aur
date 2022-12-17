@@ -1,6 +1,6 @@
 pkgbase = lunarvim-git
 	pkgdesc = An IDE layer for Neovim with sane defaults. Completely free and community driven.
-	pkgver = 1.1.4.r1.g47e4e5b8
+	pkgver = 1.2.0.r57.gb661efb3
 	pkgrel = 1
 	url = https://github.com/LunarVim/LunarVim
 	install = lunarvim-git.install
@@ -17,7 +17,7 @@ pkgbase = lunarvim-git
 	depends = nodejs
 	depends = yarn
 	optdepends = ripgrep: optional dependencies for telescope.nvim
-	source = lunarvim-git::git+https://github.com/LunarVim/LunarVim.git#branch=rolling
+	source = lunarvim-git::git+https://github.com/LunarVim/LunarVim.git#branch=release-1.2/neovim-0.8
 	source = git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=0.5-compat
 	source = init-lvim.sh
 	source = lvim

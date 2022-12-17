@@ -1,7 +1,7 @@
 # Maintainer:  edward-p <edward AT edward-p DOT xyz>
 
 pkgname=lunarvim-git
-pkgver=1.1.4.r1.g47e4e5b8
+pkgver=1.2.0.r57.gb661efb3
 pkgrel=1
 pkgdesc="An IDE layer for Neovim with sane defaults. Completely free and community driven."
 arch=('any')
@@ -41,7 +41,7 @@ langs=(bash beancount bibtex
   verilog vim vue
   yaml yang
   zig)
-source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=rolling"
+source=("${pkgname}::git+https://github.com/LunarVim/LunarVim.git#branch=release-1.2/neovim-0.8"
   "git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=0.5-compat"
   "init-lvim.sh"
   "lvim")
