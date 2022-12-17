@@ -1,6 +1,6 @@
 pkgbase = rocblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://rocblas.readthedocs.io/en/latest
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = rocblas
 	depends = hip
 	depends = openmp
 	options = !lto
-	source = rocblas-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.4.0.tar.gz
-	source = rocblas-tensile-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/Tensile/archive/refs/tags/rocm-5.4.0.tar.gz
-	sha256sums = 261e05375024a01e68697c5d175210a07f0f5fc63a756234d996ddedffde78a2
-	sha256sums = 2da9c1df3c6d9b44afdad621ef59a03389fb1a38a61a8b8bad9c9991b97157eb
+	source = rocblas-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.4.1.tar.gz
+	source = rocblas-tensile-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/Tensile/archive/refs/tags/rocm-5.4.1.tar.gz
+	sha256sums = 2f6d30b025306ba5f378154eb0494ac9260190120d085b67c3f499e7d2b6a70b
+	sha256sums = 6bcc08426c14c203c799c93815293c2a17d5b656936536dcece1302d53816cef
 
 pkgname = rocblas
