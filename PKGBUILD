@@ -1,11 +1,11 @@
 pkgbase=sac-core
 pkgname=(sac-core sac-gui)
 pkgver=10.8.28
-pkgrel=4
+pkgrel=5
 pkgdesc='Thales/Gemalto SafeNet Authentication Client for eToken 5110/5300 & IDPrime'
 url='https://cpl.thalesgroup.com/access-management/security-applications/authentication-client-token-management'
 arch=(x86_64)
-depends=(pcsclite)
+depends=(ccid pcsclite)
 optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
 source=('https://installer.id.ee/media/etoken/Linux_SAC%2010.8.28%20GA%20Build.zip'
