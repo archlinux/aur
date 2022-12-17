@@ -1,7 +1,7 @@
 pkgbase = duplicati-canary-bin
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
 	pkgver = 2.0.6.104
-	pkgrel = 6
+	pkgrel = 7
 	url = http://duplicati.com
 	install = duplicati.install
 	arch = i686

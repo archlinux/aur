@@ -43,6 +43,7 @@ EOF
   * for details, and downgrade to an earlier version if necessary.
 
 EOF
+  fi
   if  [ $(vercmp $2 2.0.6.104-5) -lt 0 ]; then
     cat     <<EOF
   * This package was renamed from duplicati-latest to duplicati-canary-bin starting
