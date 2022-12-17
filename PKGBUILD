@@ -1,11 +1,7 @@
-# Maintainer: Vytautas Mickus <vmickus@gmx.com>
-# Contributor: Bruno Pagani <archange@archlinux.org>
-# Contributor: Daniel Bermond <dbermond@archlinux.org>
-
 pkgname=lib32-intel-gmmlib
 tarname=${pkgname/lib32-/}
 
-pkgver=22.0.3
+pkgver=22.3.2
 pkgrel=1
 pkgdesc="Intel Graphics Memory Management Library"
 arch=(x86_64)
@@ -18,7 +14,7 @@ conflicts=(lib32-intel-gmmlib)
 replaces=(lib32-intel-gmmlib)
 options=(!emptydirs)
 source=("https://github.com/${tarname/-//}/archive/${tarname}-${pkgver}.tar.gz")
-sha256sums=('d70ffc76e9dd7c533f4f3cd829da3a6df00b86418f78f057051d5e7cf208bc8d')
+sha256sums=('f725fbb4291ab67bbc7b31e1a268f523df384667360c931b40144db861be53d7')
 
 build() {
   export CC="gcc -m32"
