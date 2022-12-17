@@ -1,6 +1,6 @@
 pkgbase = rocminfo
 	pkgdesc = ROCm Application for Reporting System Info
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocminfo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rocminfo
 	depends = pciutils
 	depends = python
 	depends = hsa-rocr
-	source = rocminfo-5.4.0.tar.gz::https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-5.4.0.tar.gz
-	sha256sums = 79123b92992cce75ae679caf9a6bf57b16d24e96e54b36eb002511f3800e29c6
+	source = rocminfo-5.4.1.tar.gz::https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-5.4.1.tar.gz
+	sha256sums = 633a7d5bc6bc7b99c85c1f87fd41b32cd704c4a1b0b2a61f3c7a871ce93bc772
 
 pkgname = rocminfo
