@@ -7,6 +7,7 @@ pkgbase = xelfviewer-bin
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = qt5-base
+	conflicts = xelfviewer-appimage
 	source = xelfviewer-0.05_amd64.deb::https://github.com/horsicq/XELFViewer/releases/download/0.05/xelfviewer_0.05_Debian_11_amd64.deb
 	sha512sums = fd35a7aa8a886fd02d88592a8b633c3b0c88591553c4abfe7f1895232682cacb04c4a011a18ff26cc06b86174752ff79c5d14c3b2d9a2eb9c089385874228fdd
 
