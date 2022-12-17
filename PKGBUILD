@@ -3,7 +3,7 @@
 
 pkgname=python-pg8000
 # https://github.com/tlocke/pg8000#release-notes
-pkgver=1.29.3
+pkgver=1.29.4
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
@@ -14,7 +14,7 @@ checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp python-dateutil)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('c8c954d3c86d7fbf591bc83b00d6ece289fae176c8335a182a7570699da2bfdc'
+sha256sums=('76d2aa1757a30bc71e0307dae18c374e336a69123e6b046e206a96611fa2a330'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
