@@ -1,9 +1,9 @@
 post_install () {
-chown -R root:root /var/roon
-chown -R root:root /opt/RoonServer
+chown -R roon:roon /var/roon
+chown -R roon:roon /opt/RoonServer
 }
 
 post_upgrade() {
-chown -R root:root /var/roon
-chown -R root:root /opt/RoonServer
+chown -R roon:roon /var/roon
+chown -R roon:roon /opt/RoonServer
 }

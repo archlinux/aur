@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=root
+User=roon
 Environment=ROON_DATAROOT=/var/roon
 Environment=ROON_ID_DIR=/var/roon
 ExecStart=/opt/RoonServer/start.sh
