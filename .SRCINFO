@@ -1,6 +1,6 @@
 pkgbase = collabora-online-server-nodocker
 	pkgver = 22.05.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.collaboraoffice.com/code/
 	install = install
 	arch = x86_64

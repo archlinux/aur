@@ -8,7 +8,7 @@ _pkgname=collabora-online-server-nodocker
 
 # taking version of coolwsd:
 pkgver=22.05.8.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
