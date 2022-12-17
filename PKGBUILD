@@ -3,7 +3,7 @@
 # Contributor: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
 
 pkgname=python-pytube
-pkgver=12.1.0
+pkgver=12.1.2
 pkgrel=1
 pkgdesc="A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-setuptools')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6de1f3a4cb125dd6ff912598c7e88a866325a63cc91755cae616f53c40ae5503')
+sha256sums=('2d34a484f81cae106ea84e8c00871f97dcc293e8ed8c074e65abc4119f02c98f')
 
 build() {
 	cd pytube-$pkgver
