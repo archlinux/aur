@@ -2,7 +2,7 @@
 # Contributor: P.J. Grochowski <pawel.grochowski.dev@gmail.com>
 
 pkgname=kast
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Video casting program"
 arch=('any')
@@ -21,22 +21,20 @@ depends=(
 	'python-setproctitle'
 	'python-tendo'
 	'python-zeroconf')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.bz2::$url/get/$pkgver.tar.bz2")
-sha256sums=('c6b068f0ed6313052ee53d760ba8e73a361a17eb28e391852ce73b95d52c14b7')
-
-prepare() {
-	mv massultidev-kast-d678117baa23 "$pkgname-$pkgver"
-}
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/k/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('fd171591a05f8cd76e910e5bf0777a86baddb2f92e5a3becf93328d14f568f89')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$pkgname-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
