@@ -6,7 +6,7 @@ set -u
 _pkgnick='Mail_Mime'
 _pkgnickl="${_pkgnick,,}"
 pkgname="pear-${_pkgnickl//_/-}"
-pkgver='1.10.2'
+pkgver='1.10.11'
 pkgrel='1'
 pkgdesc='a class to create MIME messages'
 arch=('any')
@@ -18,7 +18,8 @@ options=('!strip')
 _verwatch=("http://pear.php.net/package/${_pkgnick}/download" "\([0-9]\+\.[0-9]\+\.[^\.]\+\).*" 't')
 source=("http://download.pear.php.net/package/${_pkgnick}-${pkgver}.tgz")
 noextract=("${_pkgnick}-${pkgver}.tgz")
-sha256sums=('d9ec0a711ddd199d2672aaeee91d88474f5d1adb22da9619b0513d4bdb219c7a')
+md5sums=('a26f4aa0c599f0a5341bab3994d46207')
+sha256sums=('321873e2fba4b41ea183db78515717be1f457717316c1cdd7da5bdb962b25904')
 
 package() {
   set -u
