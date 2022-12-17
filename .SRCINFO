@@ -1,11 +1,11 @@
-pkgbase = lora-font-git
-	pkgdesc = Contemporary serif font that supports Latin and Cyrillic scripts. Includes OTF, TTF and variable.
-	pkgver = 3.001
+pkgbase = lora-cyrillic-font
+	pkgdesc = Contemporary serif font that supports Latin and Cyrillic scripts. Includes OTF, TTF, Variable and Webfonts.
+	pkgver = 3.003
 	pkgrel = 1
 	url = https://github.com/cyrealtype/Lora-Cyrillic
 	arch = any
 	license = OFL
-	source = git+https://github.com/cyrealtype/Lora-Cyrillic.git
-	sha256sums = SKIP
+	source = https://github.com/cyrealtype/Lora-Cyrillic/releases/download/v3.003/Lora-v3.003.zip
+	sha256sums = a57f214f5980c86bd5f2799eaf554a0b5503c30981e013d2f7840704f80b5b76
 
-pkgname = lora-font-git
+pkgname = lora-cyrillic-font
