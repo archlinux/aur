@@ -24,12 +24,12 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/build"
+	cd "$pkgname-$pkgver/build"
 	#test 243 skipped. See https://github.com/psi4/psi4/issues/2828
 	ctest -j`getconf _NPROCESSORS_ONLN` -L quick -E 243
 }
 
 package() {
-	cd "${srcdir}/build"
+	cd "$pkgname-$pkgver/build"
 	make install
 }
