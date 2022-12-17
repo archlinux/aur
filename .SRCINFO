@@ -1,7 +1,7 @@
 pkgbase = cpp-jwt
 	pkgdesc = JSON Web Token library for C++
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arun11299/cpp-jwt
 	arch = any
 	license = MIT
