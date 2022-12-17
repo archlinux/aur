@@ -1,6 +1,6 @@
 pkgbase = collabora-online-server-nodocker
 	pkgver = 22.05.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.collaboraoffice.com/code/
 	install = install
 	arch = x86_64
@@ -156,7 +156,7 @@ pkgbase = collabora-online-server-nodocker
 	sha1sums = 69c3f1ee98aa44aae759c011fcfac6502676535e
 	sha1sums = 3fe2db88f4f7ee203520c59760582103d3e41210
 	sha1sums = b44b1ddaa362c6fdf65a0899beaa40dada3b232e
-	sha1sums = aeb478d352c89acb43d651de75fb9951f47e8556
+	sha1sums = 21b07d04a02cd35e9563db94b7101e98878bdd2b
 	sha1sums = 49ab6cea96ce0007f3a97fa24eae9120cd772cbf
 	sha1sums = 6db3341814ae0d571cf1479b12d2cef0753512a8
 	sha1sums = 590224fe9d573e89fa97c80d676f90f91898bb38

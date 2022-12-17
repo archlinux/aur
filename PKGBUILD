@@ -8,7 +8,7 @@ _pkgname=collabora-online-server-nodocker
 
 # taking version of coolwsd:
 pkgver=22.05.8.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
@@ -33,7 +33,7 @@ sha1sums=('73dedf5abeca55f9de00c0c0caf2997021c26065'
           '69c3f1ee98aa44aae759c011fcfac6502676535e'
           '3fe2db88f4f7ee203520c59760582103d3e41210'
           'b44b1ddaa362c6fdf65a0899beaa40dada3b232e'
-          'aeb478d352c89acb43d651de75fb9951f47e8556'
+          '21b07d04a02cd35e9563db94b7101e98878bdd2b'
           '49ab6cea96ce0007f3a97fa24eae9120cd772cbf'
           '6db3341814ae0d571cf1479b12d2cef0753512a8'
           '590224fe9d573e89fa97c80d676f90f91898bb38'
