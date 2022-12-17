@@ -20,7 +20,7 @@ build() {
 }
 
 package() {
-  cp -rLnf ${srcdir}/* ${pkgdir}/
+  cp -rnf ${srcdir}/* ${pkgdir}/
   rm -f ${pkgdir}/${_pkgname}-${pkgver}_x86_64.tar.xz
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/licenses"
