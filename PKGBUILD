@@ -1,11 +1,7 @@
-# Maintainer: Vytautas Mickus <vmickus@gmx.com>
-# Contributor: Bruno Pagani <archange@archlinux.org>
-# Contributor: Daniel Bermond <dbermond@archlinux.org>
-
 pkgname=lib32-intel-media-driver
 tarname=intel-media-driver
 
-pkgver=22.2.2
+pkgver=22.5.4
 pkgrel=1
 pkgdesc="Intel Media Driver for VAAPI — Broadwell+ iGPUs"
 arch=(x86_64)
@@ -14,7 +10,7 @@ license=(MIT BSD)
 depends=(lib32-gcc-libs lib32-intel-gmmlib lib32-libva lib32-libpciaccess)
 makedepends=(cmake)
 source=("${url}"/archive/${tarname%-*}-${pkgver}.tar.gz)
-sha256sums=('b74227ab165fdb09f184968589129dbf29bf382b44b415dd69db9e612f551345')
+sha256sums=('08d8d041f94b094a2dd5c4739c413b75185521c7f788a02411395ff374ee4ead')
 
 build() {
   export CC="gcc -m32 -D_FILE_OFFSET_BITS=64"
