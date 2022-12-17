@@ -1,0 +1,10 @@
+--- squashfs-root/filen-desktop.desktop
++++ squashfs-root/filen-desktop.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Filen
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/filen-desktop %F
+ Terminal=false
+ Type=Application
+ Icon=filen-desktop
