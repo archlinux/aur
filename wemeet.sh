@@ -9,15 +9,25 @@ unset WAYLAND_DISPLAY
 USER_RUN_DIR="/run/user/$(id -u)"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 FONTCONFIG_DIR="$CONFIG_DIR/fontconfig"
+KDE_GLOBALS_FILE="$CONFIG_DIR/kdeglobals"
 KDE_ICON_CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/icon-cache.kcache"
 WEMEET_APP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/wemeetapp"
 LD_PRELOAD_WRAP="${LD_PRELOAD:-}:/usr/lib/wemeet/libwemeetwrap.so" # 用于缓解传输文件崩溃问题
 
 if [ -f /usr/bin/bwrap ]; then
     mkdir -p "$WEMEET_APP_DIR"
-    bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try \
-        --unshare-pid --unshare-cgroup-try --ro-bind / / --dev-bind /dev /dev \
-        --bind "$USER_RUN_DIR" "$USER_RUN_DIR" --tmpfs "$CONFIG_DIR" \
+    exec bwrap \
+        --new-session \
+        --die-with-parent \
+        --unshare-user-try --unshare-pid --unshare-uts --unshare-cgroup-try \
+        --ro-bind / / \
+        --dev-bind /dev /dev \
+        --ro-bind /dev/null /proc/cpuinfo \
+        --tmpfs /sys/devices/virtual \
+        --bind "$USER_RUN_DIR" "$USER_RUN_DIR" \
+        --ro-bind /dev/null /etc/machine-id \
+        --tmpfs "$CONFIG_DIR" \
+        --ro-bind-try "$KDE_GLOBALS_FILE" "$KDE_GLOBALS_FILE" \
         --ro-bind-try "$FONTCONFIG_DIR" "$FONTCONFIG_DIR" \
         --bind-try "$KDE_ICON_CACHE_FILE" "$KDE_ICON_CACHE_FILE" \
         --bind "$WEMEET_APP_DIR" "$WEMEET_APP_DIR" \
