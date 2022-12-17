@@ -2,9 +2,8 @@
 # Co-Maintainer: Stick <stick at stma dot is>
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 # Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
-
 pkgname=wildfly
-pkgver=27.0.0
+pkgver=27.0.1
 pkgrel=1
 pkgdesc='Wildfly Application Server.'
 url='http://www.wildfly.org/'
@@ -42,7 +41,7 @@ install="${pkgname}.install"
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}.Final/${pkgname}-${pkgver}.Final.tar.gz"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('04d88a451aaf7a85ef57873a89ab959d3b569c7d194547f86f1812cb37551d28'
+sha256sums=('c72892c996b05bfa78c6c632f1a5d4680523d3efb4c0321fa8485f052e15fba9'
             'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
             '796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540')
 

@@ -1,6 +1,6 @@
 pkgbase = wildfly
 	pkgdesc = Wildfly Application Server.
-	pkgver = 27.0.0
+	pkgver = 27.0.1
 	pkgrel = 1
 	url = http://www.wildfly.org/
 	install = wildfly.install
@@ -31,10 +31,10 @@ pkgbase = wildfly
 	backup = opt/wildfly/bin/jboss-cli.xml
 	backup = opt/wildfly/bin/standalone.conf
 	backup = etc/wildfly/wildfly.conf
-	source = https://github.com/wildfly/wildfly/releases/download/27.0.0.Final/wildfly-27.0.0.Final.tar.gz
+	source = https://github.com/wildfly/wildfly/releases/download/27.0.1.Final/wildfly-27.0.1.Final.tar.gz
 	source = wildfly-sysusers.conf
 	source = wildfly-tmpfiles.conf
-	sha256sums = 04d88a451aaf7a85ef57873a89ab959d3b569c7d194547f86f1812cb37551d28
+	sha256sums = c72892c996b05bfa78c6c632f1a5d4680523d3efb4c0321fa8485f052e15fba9
 	sha256sums = d2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac
 	sha256sums = 796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540
 
