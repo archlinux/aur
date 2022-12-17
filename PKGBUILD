@@ -3,7 +3,7 @@
 
 pkgname=perl-latexml-git
 _realname=LaTeXML
-pkgver=0.8.4.r112.gfaac379e
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="LaTeX to XML converter"
 arch=('any')
@@ -22,14 +22,17 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${_realname}
-  printf "%s" $(git describe | cut -c2- | sed 's+-+.r+' | tr - .) 
+  printf "%s" $(git describe --tags | cut -c2- | sed 's+-+.r+' | tr - .) 
 }
 
 build() {
   cd ${_realname}
 
   # install module in vendor directories.
-  perl Makefile.PL INSTALLDIRS=vendor INSTALLVENDORBIN=/usr/bin INSTALLVENDORSCRIPT=/usr/bin TEXMF=/usr/share/texmf
+  perl Makefile.PL INSTALLDIRS=vendor \
+       INSTALLVENDORBIN=/usr/bin \
+       INSTALLVENDORSCRIPT=/usr/bin \
+       TEXMF=/usr/share/texmf
   make
 }
 
