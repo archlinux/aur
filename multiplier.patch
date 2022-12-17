@@ -6,7 +6,7 @@ index f332bc1..0dbb4e0 100644
  	} else {
  		angles.x = angles.y;
  	}
-+	angles.y = 361;
++	// angles.y = 361; // cause page down in sway
  
  	return angles;
  }

@@ -3,8 +3,8 @@ _pkgname=libinput
 _patch=multiplier.patch
 pkgname=$_pkgname-multiplier
 pkgver=1.22.0
-pkgrel=1
-pkgdesc='libinput with a scroll patch'
+pkgrel=2
+pkgdesc='libinput with scroll multiplier patch'
 arch=(x86_64)
 url=http://freedesktop.org/wiki/Software/libinput
 provides=($_pkgname=$pkgver)
@@ -18,7 +18,7 @@ optdepends=('gtk4: libinput debug-gui'
 source=(https://gitlab.freedesktop.org/libinput/libinput/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2
         $_patch)
 sha512sums=(SKIP
-            aa22c523072e13c9a76153a89443d51fd16def29ccdc53aea142e278ad02820f2f7fef5b40e94fa2ed4c2062e237f70a9847d975e9100c998b39451f7267c3cc)
+            c6a2793e592c69829e542c91aafc2de42c0eddec1f2570a465590584164a64d3828507f2f1194ec48f0f5d85aa624054c101287e981b2a82a3a43d85b426aa94)
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
   patch -Np1 -i ../$_patch
