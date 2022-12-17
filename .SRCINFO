@@ -1,0 +1,14 @@
+pkgbase = electron-builder
+	pkgdesc = A complete solution to package and build a ready for distribution Electron app with “auto update” support out of the box
+	pkgver = 23.6.0
+	pkgrel = 1
+	url = https://www.electron.build/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = electron-builder-23.6.0.tgz
+	source = electron-builder-23.6.0.tgz::http://registry.npmjs.org/electron-builder/-/electron-builder-23.6.0.tgz
+	sha256sums = 1740bec188d25af49dc5cda3828105fd6bd84f075e4dd1d3eb74c1ef6e4280a0
+
+pkgname = electron-builder
