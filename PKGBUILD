@@ -2,7 +2,7 @@
 
 pkgname=filen-desktop-appimage
 pkgver=2.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage"
 arch=('x86_64')
 url="https://filen.io/"
@@ -26,7 +26,7 @@ prepare() {
   cd "${srcdir}"
   mv "./filen_${arch[0]}.AppImage" "${_filename}"
   chmod +x ${_filename}
-  ${_filename} --appimage-extract >/dev/null
+  ${_filename} --appimage-extract >/dev/null 2>&1
   patch -Np0 < "./${_name}.desktop.patch"
 }
 
