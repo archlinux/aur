@@ -1,6 +1,6 @@
 pkgbase = rss-email-git
-	pkgdesc = Send new RSS posts as E-Mail
-	pkgver = 0.3.0.r0.ga0b828d
+	pkgdesc = Send new RSS posts as email
+	pkgver = 0.3.0.r10.g82082a7
 	pkgrel = 1
 	url = https://sr.ht/~witcher/rss-email
 	arch = x86_64
