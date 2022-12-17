@@ -22,7 +22,7 @@ if [ ! -f "${QQ_HOTUPDATE_DIR}/config.json" ]; then
     cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
 else
     for VERSION in ${QQ_PREVIOUS_VERSIONS[@]}; do
-        if [ ! -z "$(grep -z "${VERSION}" "${QQ_HOTUPDATE_DIR}/config.json")" ]; then
+        if [ ! -z "$(grep -Rn "${VERSION}" "${QQ_HOTUPDATE_DIR}/config.json")" ]; then
             cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
             break
         fi
