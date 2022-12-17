@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.22.13
+pkgver=3.22.14
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -20,7 +20,7 @@ arch=('x86_64')
 depends=('exiv2' 'gdal' 'gsl' 'hicolor-icon-theme' 'libzip' 'ocl-icd' 'pdal' 'protobuf'
          'python-gdal' 'python-jinja' 'python-owslib' 'python-psycopg2' 'python-pygments'
          'python-qscintilla-qt5' 'python-yaml' 'qca' 'qt5-3d' 'qt5-imageformats'
-         'qt5-serialport' 'qt5-webkit' 'qtkeychain-qt5' 'qwt' 'spatialindex')
+         'qt5-serialport' 'qt5-location' 'qtkeychain-qt5' 'qwt' 'spatialindex')
 makedepends=('cmake' 'fcgi' 'ninja' 'opencl-clhpp' 'python-setuptools' 'python-six' 'qt5-tools'
              'txt2tags' 'sip' 'pyqt-builder')
 optdepends=('fcgi: Map server'
@@ -29,7 +29,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch)
-sha256sums=('57b2bb73107ea5c4b7735f9574a07385c9a35af5c7158bed3fbde0d6e20309df'
+sha256sums=('882aa88dfbf2aef389329f789b5929f0c2c89b8b33ff4c481308f95ff0213972'
             'c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304')
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
 
@@ -45,6 +45,7 @@ build() {
     -DWITH_CUSTOM_WIDGETS=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=TRUE \
     -DQGIS_MANUAL_SUBDIR=share/man \
+    -DWITH_QTWEBKIT=FALSE \
     -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \

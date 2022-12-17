@@ -1,6 +1,6 @@
 pkgbase = qgis-ltr
 	pkgdesc = Geographic Information System (GIS); Long Term Release
-	pkgver = 3.22.13
+	pkgver = 3.22.14
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = x86_64
@@ -34,17 +34,17 @@ pkgbase = qgis-ltr
 	depends = qt5-3d
 	depends = qt5-imageformats
 	depends = qt5-serialport
-	depends = qt5-webkit
+	depends = qt5-location
 	depends = qtkeychain-qt5
 	depends = qwt
 	depends = spatialindex
 	optdepends = fcgi: Map server
 	optdepends = gpsbabel: GPS Tools plugin
-	provides = qgis=3.22.13
+	provides = qgis=3.22.14
 	conflicts = qgis
-	source = https://download.qgis.org/downloads/qgis-3.22.13.tar.bz2
+	source = https://download.qgis.org/downloads/qgis-3.22.14.tar.bz2
 	source = qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch
-	sha256sums = 57b2bb73107ea5c4b7735f9574a07385c9a35af5c7158bed3fbde0d6e20309df
+	sha256sums = 882aa88dfbf2aef389329f789b5929f0c2c89b8b33ff4c481308f95ff0213972
 	sha256sums = c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304
 
 pkgname = qgis-ltr
