@@ -3,7 +3,7 @@
 _pkgname=spdl
 _pkgver=0.0.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Wrapper for 'RcppSpdlog' Functions"
 arch=('any')
