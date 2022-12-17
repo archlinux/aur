@@ -1,6 +1,6 @@
 pkgbase = libreoffice-dev-bin
 	pkgdesc = LibreOfficeDev development branch
-	pkgver = 7.5.0.0alpha1
+	pkgver = 7.5.0.0beta1
 	pkgrel = 1
 	url = https://www.libreoffice.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = libreoffice-dev-bin
 	optdepends = kio: for Qt5 integration
 	provides = libreoffice
 	provides = libreoffice-en-US
-	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_7.5.0.0.alpha1_Linux_x86-64_rpm.tar.gz
+	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/LibreOfficeDev_7.5.0.0.beta1_Linux_x86-64_rpm.tar.gz
 	sha256sums = SKIP
 
 pkgname = libreoffice-dev-bin
