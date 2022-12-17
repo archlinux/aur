@@ -5,7 +5,7 @@
 
 # Maintainer: PragmaTwice <twice.mliu@gmail.com>
 pkgname=kvrocks
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 epoch=
 pkgdesc="A distributed key value NoSQL database that uses RocksDB as storage engine and compatible with Redis protocol"
@@ -15,7 +15,7 @@ license=('Apache')
 groups=()
 depends=(libunwind)
 makedepends=(python git gcc make cmake autoconf automake libtool)
-checkdepends=(tcl)
+checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/incubator-kvrocks/archive/refs/tags/v2.1.0.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/incubator-kvrocks/archive/refs/tags/v2.2.0.tar.gz")
 noextract=()
-sha256sums=('20e47b96a0633098c988778bd7afcb1b82685d05fc013856c50f3bc675b550fd')
+sha256sums=('fe29bbd054b1a887775c872df2a85fe9522b7c586e85e698882174739bf421c7')
 validpgpkeys=()
 
 prepare() {
