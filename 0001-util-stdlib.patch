@@ -1,0 +1,15 @@
+diff -pNaru5 a/util.c b/util.c
+--- a/util.c	1996-12-21 22:56:44.000000000 -0500
++++ b/util.c	2022-12-16 22:25:23.305136967 -0500
+@@ -25,10 +25,11 @@ static const char rcsid[] =
+ #endif
+ 
+ #include <sys/types.h>
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #if __STDC__
+ #include <stdarg.h>
+ #else
+ #include <varargs.h>
+ #endif

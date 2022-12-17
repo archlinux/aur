@@ -1,0 +1,16 @@
+diff -pNaru5 a/config.sub b/config.sub
+--- a/config.sub	1996-11-29 17:38:56.000000000 -0500
++++ b/config.sub	2022-12-16 22:21:16.032485434 -0500
+@@ -175,11 +175,11 @@ case $basic_machine in
+ 	      | mips-* | pyramid-* | tron-* | a29k-* | romp-* | rs6000-* | power-* \
+ 	      | none-* | 580-* | cray2-* | h8300-* | i960-* | xmp-* | ymp-* \
+ 	      | hppa-* | hppa1.0-* | hppa1.1-* | alpha-* | we32k-* | cydra-* | ns16k-* \
+ 	      | pn-* | np1-* | xps100-* | clipper-* | orion-* | sparclite-* \
+ 	      | pdp11-* | sh-* | powerpc-* | powerpcle-* | sparc64-* | mips64-* | mipsel-* \
+-	      | mips64el-* | mips64orion-* | mips64orionel-* | f301-*)
++	      | mips64el-* | mips64orion-* | mips64orionel-* | f301-* | x86_64-*)
+ 		;;
+ 	# Recognize the various machine names and aliases which stand
+ 	# for a CPU type and a company and sometimes even an OS.
+ 	3b1 | 7300 | 7300-att | att-7300 | pc7300 | safari | unixpc)
+ 		basic_machine=m68000-att
