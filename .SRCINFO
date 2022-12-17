@@ -1,16 +1,12 @@
 pkgbase = otf-euler-git
 	pkgdesc = An OpenType/Unicode math port of AMS Euler font.
-	pkgver = r238.6c76de4
+	pkgver = r242.c2de386
 	pkgrel = 1
 	url = https://github.com/khaledhosny/euler-otf
-	install = otf.install
 	arch = any
 	license = OFL
 	makedepends = git
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = otf-euler-git::git+https://github.com/khaledhosny/euler-otf.git
 	md5sums = SKIP
 
 pkgname = otf-euler-git
-
