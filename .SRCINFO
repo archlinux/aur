@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 2.1.7_6.0.12.hardened1.1
+	pkgver = 2.1.7_6.0.13.hardened1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=6.0.12.hardened1-1
+	makedepends = linux-hardened-headers=6.0.13.hardened1-1
 	depends = kmod
 	depends = zfs-utils=2.1.7
-	depends = linux-hardened=6.0.12.hardened1-1
+	depends = linux-hardened=6.0.13.hardened1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.7/zfs-2.1.7.tar.gz
 	sha256sums = 6462e63e185de6ff10c64ffa6ed773201a082f9dd13e603d7e8136fcb4aca71b
 
