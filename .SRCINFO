@@ -1,0 +1,20 @@
+pkgbase = mimaflux-git
+	pkgdesc = Debugger for Mima assembly code.
+	pkgver = 1.1.0.r10.gbb200f4
+	pkgrel = 1
+	url = https://github.com/mattulbrich/mimaflux
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime>=16
+	provides = mimaflux
+	conflicts = mimaflux
+	source = git+https://github.com/mattulbrich/mimaflux.git
+	source = run-mimaflux.sh
+	source = mimaflux.desktop
+	sha256sums = SKIP
+	sha256sums = 5759139eef0a25c97833bd250f4382212cd3ca36ffb9ef556d9f0b31ef233636
+	sha256sums = aeb78a49996f512c450d48b790b3d73036a962ea4d1479d2576001648e2f96ab
+
+pkgname = mimaflux-git

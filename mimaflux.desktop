@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Mima Flux Capacitor
+Comment=Debugger for Mima assembly code
+Categories=Development;Education;Languages;Mima;
+Icon=mimaflux
+
+Exec=mimaflux
+Terminal=false
