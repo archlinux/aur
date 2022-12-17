@@ -1,7 +1,7 @@
 pkgbase = json-schema-for-humans
 	pkgdesc = Quickly generate HTML documentation from a JSON schema
 	pkgver = 0.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coveooss/json-schema-for-humans
 	arch = any
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = json-schema-for-humans
 	checkdepends = python-beautifulsoup4
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-poetry
 	depends = python
 	depends = python-click
@@ -18,8 +19,8 @@ pkgbase = json-schema-for-humans
 	depends = python-markdown2
 	depends = python-pygments
 	depends = python-pytz
-	depends = python-yaml
 	depends = python-requests
+	depends = python-yaml
 	source = json-schema-for-humans-0.44.tar.gz::https://github.com/coveooss/json-schema-for-humans/archive/refs/tags/v0.44.tar.gz
 	sha256sums = a3ed95ef521838e0e4adf250db39df7ac7149054c49f5539fa279cf50e746171
 
