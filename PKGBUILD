@@ -8,7 +8,7 @@ pkgver=3.12.0.400
 _pkgver_arm=${pkgver} # 两个版本有时候不一样
 _x86_md5=e078bf97365540d9f0ff063f93372a9c
 _arm_md5=11814f6931a0a599f394d8845c223feb
-pkgrel=4
+pkgrel=5
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -19,7 +19,7 @@ source_aarch64=("${_pkgname}-${_pkgver_arm}-aarch64.deb::https://updatecdn.meeti
 source=("${_pkgname}".sh 'wrap.c')
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
-sha512sums=('b50cea3231c0bd16dfe65066b87bee451d178b9cb9d467c4b4f863064055b0c835a7e1166fbd50f5b890c8e5af2fd7eb144e4e9ad88655019edfd5145c62ea8b'
+sha512sums=('7463ca8d5f0dfa2832a99bee0a32bce0a94c79af9c0a98043cd6f866f5ad95b0957e7aa6f723a0f4a9c1a96d4fd5b50ab340653fe5097cdb0e65eff2681fe76e'
             '9f430ddc278a1393fc883bba27d991a012a3822bc7c19c8e3c71683cd334885e04818f2110061a5d9db9f2fec9065161afbb35274fe046cc470991002549e25d')
 sha512sums_x86_64=('af52afe5a95cfe9abcae91d927d5f165126edb9efa14315957803eaffb30a60a9121cc63b398f7162c8956bfbcf5a1793a2561cd19f245e3eaf07a5b55662831')
 sha512sums_aarch64=('02ddf2908597b2db490d599ca7c6dcc2fe77e1f7eec2aa914581c07c462c9517a3c73406111e4706c2474c85c037cb1e04642f9769492f9a3383ca11502ba1b8')
