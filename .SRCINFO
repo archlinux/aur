@@ -1,11 +1,12 @@
 pkgbase = wewechat++
-	pkgdesc = 美丽的第三方微信PC客户端. 利用UOS请求头修复了登陆问题.
+	pkgdesc = 第三方微信PC客户端. 利用UOS请求头修复了登陆问题.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/spark-community-works-collections/wewechat-plus-plus
 	install = wewechat++.install
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = nss
 	depends = xdg-utils
 	depends = gconf
@@ -20,7 +21,9 @@ pkgbase = wewechat++
 	conflicts = wewechat
 	source = wewechat.svg
 	source = wechat-1.2.5.deb::https://gitee.com/spark-community-works-collections/wewechat-plus-plus/releases/download/1.2.5/wewechat-1.2.5-linux-amd64.deb
+	source = images.tar.zst
 	md5sums = 600e74549ce2258c045d5c2f7689ea63
 	md5sums = c7b01bdc2ce755e125ebf20780680a43
+	md5sums = a9a717385bacc464cb0847302d0f3f5a
 
 pkgname = wewechat++
