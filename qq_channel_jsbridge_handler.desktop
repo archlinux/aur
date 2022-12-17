@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Name=QQ Channel JSBridge URL Handler
+Exec=/usr/bin/printf "%u"
+StartupNotify=false
+MimeType=x-scheme-handler/jsbridge;

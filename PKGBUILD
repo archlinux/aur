@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=2.0.2_510
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
@@ -18,13 +18,14 @@ source_x86_64=('https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v2.0.1-429_x64.
                'https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/2.0.2-510/2.0.2-510.zip.zip')  # 热更新补丁
 source_aarch64=('https://dldir1.qq.com/qqfile/qq/QQNT/0186a650/QQ-v2.0.1-453_arm64.deb'  # 本体
                 'https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/2.0.2-510/2.0.2-510.zip.zip' )  # 热更新补丁
-source=('start.sh' 'config.json')
+source=('start.sh' 'config.json' 'qq_channel_jsbridge_handler.desktop')
 sha256sums_x86_64=('e3aa15ff6ae089b655df3913c6020ca56726bd676995aaf29b313fbd0643ea42'
                    '26059ccd89a4491083add9291398de658f98fb08a779f7ce46ac7bef8245b53f')
 sha256sums_aarch64=('70c286006dae10da06c191b5f0718d17d686a8ef792f6f72215734773f01498b'
                     '556d3c9f3142dea199a6605694d5d47bb93d0b33e5c6ce8f70a69eb47b2235fc')
 sha256sums=('e8fa21701b209486ae6d26507d0ce49fdee0a550058ad81d67d801eab867a140'
-            '8f6fae6fef7869dad2c309d77c9530e29dd737e63deced984f10ac379eeceb03')
+            '8f6fae6fef7869dad2c309d77c9530e29dd737e63deced984f10ac379eeceb03'
+            'e9b4af9b4119876572f6fe7f48563e6b0830493a8d76e8415e15d89afe6453df')
 
 package() {
 	# 解压程序包
@@ -32,9 +33,11 @@ package() {
 	rm -rf "${pkgdir}/opt/QQ/resources/app"
 	7z x "2.0.2-510.zip" -aoa -o"${pkgdir}/opt/QQ/resources/app"
 
-	# config.json
+	# 打包相关处理
+	install -Dm644 "qq_channel_jsbridge_handler.desktop" "${pkgdir}/usr/share/applications/qq_channel_jsbridge_handler.desktop"
 	mkdir -p "${pkgdir}/opt/QQ/workarounds"
 	cp "${srcdir}/config.json" "${pkgdir}/opt/QQ/workarounds/config.json"
+
 
 	# 处理图标尺寸不正确的问题
 	ICON_WORKDIR="${pkgdir}/usr/share/icons/hicolor/0x0"
