@@ -1,7 +1,7 @@
 pkgbase = hsakmt-roct
 	pkgdesc = Radeon Open Compute Thunk Interface
-	pkgver = 5.4.0
-	pkgrel = 2
+	pkgver = 5.4.1
+	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCt.html
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = hsakmt-roct
 	depends = pciutils
 	depends = libdrm
 	options = !lto
-	source = hsakmt-roct-5.4.0.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/rocm-5.4.0.tar.gz
-	sha256sums = 690a78a6e67ae2b3f518dbc4a1e267237d6a342e1063b31eef297f4a04d780f8
+	source = hsakmt-roct-5.4.1.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/rocm-5.4.1.tar.gz
+	sha256sums = c1f728cc285d1feb80120b485f8c06b64e7580df8ecd47a448bc4ff923bac2b3
 
 pkgname = hsakmt-roct
