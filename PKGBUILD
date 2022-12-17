@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.3.1
+pkgver=1.4.0
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -26,10 +26,10 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('892784F914C2C1DF8C47772EFFEBF8C4978E3C732E4936D7A4AEA04A0BF133E1'
+sha256sums=('6EF3D6EE272CC9293084952A90BF936131128671C5F74791A84185AD733EDBAE'
             '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
-            '7B5EF056AD43F090FF074AE749AC84CD090511E5C2B6A8386AA1882BD8D32F38'
+            'D16B4F1ABA4664B169211FD0FE2FF27892AA02F60A5C7C50F55D43FAB0E255DC'
             '3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D')
 
 # There is a lot of useless files in the archive, only install those from that
@@ -98,7 +98,7 @@ package() {
   # attempting to view a RAW file), use the one provided.
   install -D -m644 "lib/liblibraw.so.1" -t "${pkg_opt_dir}/lib"
   # There is no package for libmdk, which is anyway distributed as binary, so
-  # just the one provided.
+  # just use the one provided.
   install -D -m644 "lib/libmdk.so.0" -t "${pkg_opt_dir}/lib"
 
   install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
