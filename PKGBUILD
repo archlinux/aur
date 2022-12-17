@@ -1,7 +1,7 @@
 # Maintainer: Minecraftchest1 <minecraftchest1 at outlook dot com>
 
 pkgname=file-sharing-tool
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A tool to help setup file sharing using ssh."
 arch=('any')
@@ -13,10 +13,11 @@ source=("git+${url}#tag=${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-        cd "${srcdir}/steamdeck-file-share-tool"
-        install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    cd "${srcdir}/steamdeck-file-share-tool"
+       install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	#install -D "doc/*" "${pkgdir}/usr/share/doc/${pkgname}"
-	
+	install -Dm -Dm 555 "file-sharing-tool.desktop" "${pkgdir}/usr/share/applications/"
+
 	cd doc
 	for file in $(find ./ -type f)
 	do
