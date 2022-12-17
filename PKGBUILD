@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=2.0.2_510
-pkgrel=4
+pkgrel=5
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
@@ -32,6 +32,7 @@ package() {
 	tar -xJ -f "data.tar.xz" -C "${pkgdir}"
 	rm -rf "${pkgdir}/opt/QQ/resources/app"
 	7z x "2.0.2-510.zip" -aoa -o"${pkgdir}/opt/QQ/resources/app"
+	chmod 755 "${pkgdir}/opt/QQ/resources/app"
 
 	# 打包相关处理
 	install -Dm644 "qq_channel_jsbridge_handler.desktop" "${pkgdir}/usr/share/applications/qq_channel_jsbridge_handler.desktop"
