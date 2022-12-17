@@ -1,7 +1,7 @@
 # Maintainer: TobFromme
 
 pkgname=sdrtrunk
-pkgver=0.5.0beta6
+pkgver=0.5.0
 _pkgdldir=${pkgver}-beta.6
 _pkgsubver=${pkgver}-beta6
 pkgrel=1
