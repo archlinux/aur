@@ -1,6 +1,6 @@
 pkgbase = python-pysodium
 	pkgdesc = python libsodium wrapper
-	pkgver = 0.7.11
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://github.com/stef/pysodium
 	arch = any
