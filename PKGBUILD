@@ -1,4 +1,4 @@
-# Maintainer: badcast <lmecomposer@gmail.com> 
+# Maintainer: badcast <lmecomposer@gmail.com>
 
 _pkgbase="sample-cmake"
 pkgname=${_pkgbase}-git
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 build(){
    cd "${srcdir}/${_pkgbase}"
    echo ${srcdir}
-   cmake -DCMAKE_BUILD_TYPE=Release -B ./build
+   cmake -DSYSLIB=1 -DCMAKE_BUILD_TYPE=Release -B ./build
    cd ./build
    cmake --build . -j $(nproc)
 
@@ -25,6 +25,7 @@ build(){
 package(){
    cd "${pkgdir}"
    mkdir -p "${pkgdir}/usr/bin/"
+   mkdir -p "${pkgdir}/usr/lib/"
    install -Dm755 "${srcdir}/${_pkgbase}/build/sample_bin" "${pkgdir}/usr/bin/"
-   install -Dm640 "${srcdir}/${_pkgbase}/build/libsample_lib.so" "${pkgdir}/usr/bin/"
+   install -Dm655 "${srcdir}/${_pkgbase}/build/libsample_lib.so" "${pkgdir}/usr/lib/"
 }
