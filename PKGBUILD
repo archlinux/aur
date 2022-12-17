@@ -1,14 +1,15 @@
 # Maintainer: xeruf <27jf at pm dot me>
 
+_electron_version=19
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=1161.cf29eb0
+pkgver=1239.537339b
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/xeruf/${_pkgname}"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron17')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' "electron$_electron_version")
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 source=("git+${url}.git")
@@ -38,47 +39,52 @@ prepare() {
     # https://github.com/nvm-sh/nvm/pull/2698
     nvm ls "$_node_version" &>/dev/null ||
         nvm install "$_node_version" || false
-    nvm use "$_node_version"
-    npm install --no-save --no-audit --no-progress --no-fund
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
     nvm use "$_node_version"
+    npm install --no-save --no-audit --no-progress --no-fund
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
     # pacman package and unpack it
-    local _outfile _appname _electron _unpackdir=${srcdir}/${_pkgname}.unpacked
-    _outfile=dist/$(jq -r '"\(.name)-\(.version)"' package.json).pacman
-    _appname=$(jq -r .name package.json)
-    _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
-    rm -Rf "${_unpackdir}"
+    local _appname _appver _outfile _unpackdir=${srcdir}/${_pkgname}.unpacked
+    _appname=$(jq -r '.name' package.json)
+    _appver=$(jq -r '.version' package.json)
+    _outfile=dist/${_appname}-${_appver}.pacman
+    rm -rf "${_unpackdir}"
     mkdir -p "${_unpackdir}"
+
     local i686=ia32 x86_64=x64
+    # Add -c.asar=false to suppress creation of an app archive
     ./node_modules/.bin/electron-builder build \
         --linux pacman \
         --"${!CARCH}" \
-        -c.electronDist=/usr/lib/electron17 \
-        -c.electronVersion="$(</usr/lib/electron17/version)"
-    tar -C "${_unpackdir}" -Jxf "${_outfile}"
-
-    echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
-    rm -v "$_electron"
+        -c.electronDist="/usr/lib/electron$_electron_version" \
+        -c.electronVersion="$(<"/usr/lib/electron$_electron_version/version")"
+    tar -C "${_unpackdir}" -xf "${_outfile}"
 
     # Replace absolute path in desktop entry
-    sed -Ei "s/^(Exec=).*/\1stretchly/" \
+    sed -Ei "s/^(Exec=).*/\1\\/usr\\/bin\\/${_pkgname} %U/" \
         "${_unpackdir}/usr/share/applications/${_pkgname}.desktop"
-
-    # Create /usr/bin/stretchly
-    install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
-    cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
-#!/bin/sh
-exec electron17 '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
-EOF
 }
 
 package() {
-    mv "${srcdir}/${_pkgname}.unpacked/"{usr,opt} "${pkgdir}"
-    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    local _appname _appdir _appfile=
+    _appname=$(jq -r '.name' "${srcdir}/${_pkgname}/package.json")
+    _appdir=opt/${_appname}/resources/app
+    cd "${srcdir}/${_pkgname}.unpacked"
+    mv "usr" "${pkgdir}/"
+    install -d "${pkgdir}/usr/lib"
+    [[ -d $_appdir ]] || {
+        _appdir=${_appdir%/*}
+        _appfile=/app.asar
+    }
+    mv "$_appdir" "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<END
+#!/bin/sh
+exec /usr/lib/electron${_electron_version}/electron /usr/lib/$_pkgname$_appfile "\$@"
+END
 }
