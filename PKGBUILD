@@ -1,5 +1,4 @@
 # Maintainer:Integral<luckys68@126.com>
-
 pkgname=xopcodecalc-git
 pkgver=0.05
 pkgrel=1
