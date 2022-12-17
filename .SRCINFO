@@ -1,0 +1,26 @@
+pkgbase = xopcodecalc-git
+	pkgdesc = x86/x64 Assembly Opcode calculator.
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://horsicq.github.io/
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = qt5-tools
+	depends = freetype2
+	depends = glib2
+	depends = glibc
+	depends = graphite
+	depends = icu
+	depends = krb5
+	depends = qt5-base
+	depends = qt5-svg
+	depends = systemd-libs
+	provides = xopcodecalc
+	conflicts = xopcodecalc
+	source = git+https://github.com/horsicq/XOpcodeCalc
+	sha512sums = SKIP
+
+pkgname = xopcodecalc-git
