@@ -2,12 +2,12 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=2.0.2_510
-pkgrel=5
+pkgrel=6
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
 license=('custom')
-depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'bubblewrap' 'xdg-utils' 'xdg-user-dirs')
+depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gjs' 'gtk3' 'libnotify' 'nss' 'bubblewrap' 'xdg-utils' 'xdg-user-dirs')
 makedepends=('imagemagick' 'p7zip')
 optdepends=('libappindicator-gtk3: 以最小化到托盘')
 provides=('qq-nt' 'linuxqq-nt')
