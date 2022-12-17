@@ -1,10 +1,12 @@
 pkgbase = pineflash-git
 	pkgdesc = A rust program for flashing pinecils and in the future other pine64 products.
 	pkgver = 0.2.2.r61.20221214.ec8eccb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Laar3/PineFlash
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	makedepends = rust

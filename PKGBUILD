@@ -3,10 +3,12 @@
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
 pkgver=0.2.2.r61.20221214.ec8eccb
-pkgrel=1
+pkgrel=2
 arch=(
   i686
   x86_64
+  armv7h
+  aarch64
 )
 pkgdesc='A rust program for flashing pinecils and in the future other pine64 products.'
 url='https://github.com/Laar3/PineFlash'
