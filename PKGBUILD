@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/horsicq/XELFViewer"
 license=('MIT')
 depends=('hicolor-icon-theme' 'qt5-base')
-conflcts=('xelfviewer-appimage')
+conflicts=('xelfviewer-appimage')
 source=(
 	"${_pkgname}-${pkgver}_amd64.deb::https://github.com/horsicq/XELFViewer/releases/download/${pkgver}/${_pkgname}_${pkgver}_Debian_11_amd64.deb"
 )
