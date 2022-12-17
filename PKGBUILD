@@ -3,42 +3,48 @@
 # Contributor: Shane Stone <shanewstone at gmail>
 
 pkgname=proselint
+_name=${pkgname#python-}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A linter for prose'
 arch=('any')
 url="https://github.com/amperser/proselint"
 license=('BSD')
-depends=('python-click' 'python-future' 'python-six')
-makedepends=("python-setuptools" "python-dephell")
-checkdepends=('python-mock' 'python-nose' 'python-pytest')
-conflicts=('python-proselint')
-replaces=('python-proselint')
+makedepends=(
+  python-{build,installer,wheel}
+  python-poetry
+)
+checkdepends=(python-pytest)
+depends=(
+  python-click
+  python-future
+  python-six
+)
+conflicts=(python-proselint)
+replaces=(python-proselint)
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('31804ad7ee90a3e250337c2c6171b6ef7bbdb0a720ac0edff98c6b774001fa503db48597fda84eb108fe97ce943ef45caa53b160084087cbf2b1b564e84fb7cb')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  dephell deps convert --from pyproject.toml --to setup.py
-}
+_archive="$_name-$pkgver"
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$_archive"
 
-  python setup.py build
+  # Due to a bug in poetry when there is a nesting of git directories
+  # See https://github.com/pypa/build/issues/384 for more info
+  GIT_CEILING_DIRECTORIES="$PWD/.." python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd "$_archive"
 
   pytest
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
+  python -m installer -d "$pkgdir" dist/*.whl
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
