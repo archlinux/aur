@@ -3,7 +3,7 @@
 
 set -u
 pkgname='sflowtool'
-pkgver='5.06'
+pkgver='5.08'
 pkgrel='1'
 pkgdesc='CLI utility and scripts for analyzing sFlow data'
 arch=('i686' 'x86_64')
@@ -19,10 +19,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
         #"http://www.inmon.com/bin/${pkgname}-${pkgver}.tar.gz"
         'http://www.inmon.com/bin/sflowutils.tar.gz'
         'LICENSE')
-md5sums=('faf738f87f5cd9a50c42e74aa601f798'
+md5sums=('582acf5322694b74b0a13d6cbc0f6a1c'
          '644ef83ca05c9446ebce60302a03a33b'
          'd3dc05048a11e4ca3b5a7940d0552d07')
-sha256sums=('1692cbcc2d7e813afdbd73f47756536cf32fa43f18faa04c18a42d998ebc0837'
+sha256sums=('70a1930e1a99077c0cf92d4205c744aaeaadb794927bae8b98463075432b4a8a'
             '45f6a0f96bdb6a1780694b9a4ef9bbd2fd719b9f7f3355c6af1427631b311d56'
             '863b86b7a4fc7632cfc3f9ead7e76f6e7751aca8b64030ff97b3b46f991c6482')
 
