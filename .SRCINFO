@@ -1,6 +1,6 @@
 pkgbase = rocm-gdb
 	pkgdesc = ROCm source-level debugger for Linux, based on GDB
-	pkgver = 5.3.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/ROCgdb
 	arch = x86_64
@@ -8,14 +8,16 @@ pkgbase = rocm-gdb
 	makedepends = texinfo
 	depends = rocm-dbgapi
 	depends = python
-	depends = guile2.0
+	depends = guile
 	depends = ncurses
 	depends = expat
 	depends = xz
 	depends = zlib
 	depends = mpfr
 	depends = babeltrace
-	source = rocm-gdb-5.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCgdb/archive/rocm-5.3.0.tar.gz
-	sha256sums = 402537baf0779cae586d608505e81173ba85f976fe993f1633e3afe81669350f
+	source = rocm-gdb-5.4.1.tar.gz::https://github.com/ROCm-Developer-Tools/ROCgdb/archive/rocm-5.4.1.tar.gz
+	source = readline8-support.patch::https://github.com/ROCm-Developer-Tools/ROCgdb/commit/1add37b567a7dee39d99f37b37802034c3fce9c4.patch
+	sha256sums = c3851a7602699388600abadb4773abe688d521a74958eeefec74425cfb48e413
+	sha256sums = 4d69b9160f11dec789ebae840be2ad87a858c4e170a6b6bd11026f6c372c6879
 
 pkgname = rocm-gdb
