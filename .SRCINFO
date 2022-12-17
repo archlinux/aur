@@ -1,13 +1,13 @@
 pkgbase = rocm-device-libs
 	pkgdesc = ROCm Device Libraries
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-Device-Libs
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = rocm-cmake
 	makedepends = rocm-llvm
-	source = rocm-device-libs-5.4.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-5.4.0.tar.gz
-	sha256sums = d68813ded47179c39914c8d1b76af3dad8c714b10229d1e2246af67609473951
+	source = rocm-device-libs-5.4.1.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-5.4.1.tar.gz
+	sha256sums = cdb995d401707885402f2411f41eaa37593ada3f6d615cdbadce97e72d813b68
 
 pkgname = rocm-device-libs
