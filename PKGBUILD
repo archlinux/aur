@@ -9,7 +9,7 @@ _opt_debug=0
 set -u
 pkgname='usbrelay'
 #pkgname+='-git'
-pkgver=0.9
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Control usb relay - based on hidapi'
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ if [ "${pkgver}" = '0.6' ]; then
   _srcdir="${pkgname}-0-6"
 fi
 source=("${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz")
-md5sums=('3840adf8fd079359aafe9d27bc138ba2')
-sha256sums=('63fbc21112b8bc8b92317bf04d7682c835200472c67fdad9202836a645496259')
+md5sums=('4d0032eb2eb9f665284baec023e5d93d')
+sha256sums=('a4922e14d906f7c66ec42362f4137fc52f1bd69732c38a143ddcc012dab4bad2')
 
 if [ "${_opt_python}" -ne 0 ]; then
   depends+=('python3')
