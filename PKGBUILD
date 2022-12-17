@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.55
-pkgrel=3
+pkgrel=4
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -80,6 +80,8 @@ package() {
     	python -m installer --destdir="$pkgdir" $file
     done
 
+    install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
     # TODO: verify whether still required
     find $pkgdir -iname __pycache__ | xargs -r rm -rf
     find $pkgdir -iname direct_url.json | xargs -r rm -rf
