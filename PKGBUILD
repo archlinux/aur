@@ -9,7 +9,7 @@ _pkgnameu="${_modnamespace}_${_perlmod}"
 _pkgname="${_pkgnameu,,}"
 _pkgname="${_pkgname//_/-}"
 pkgname="pear-${_pkgname}"
-pkgver='1.0.2'
+pkgver='1.0.4'
 pkgrel='1'
 pkgdesc='takes an existing v2 package.xml file and updates it with a new filelist and changelog'
 arch=('any')
@@ -18,7 +18,8 @@ license=('PHP')
 makedepends=('php-pear')
 source=("http://download.pear.php.net/package/${_pkgnameu}-${pkgver}.tgz")
 noextract=("${_pkgnameu}-${pkgver}.tgz")
-sha256sums=('188a2adfef7d93e20002c9909ebe2372af6380466a926b57e83c1221f9da4ee6')
+md5sums=('44c6efe61fc3465641d98591d57c60a3')
+sha256sums=('44731f87677e476821c04313e8c1ffd41d330ce33ebce99112ded919af029601')
 
 package() {
   set -u
@@ -28,7 +29,9 @@ package() {
     false
   fi
 
-  rm -r "${pkgdir}/usr/share/pear"/{.channels,.depdb*,.filemap,.lock} "${pkgdir}/tmp"
+  shopt -s nullglob
+  rm -r "${pkgdir}"/.[a-z]* "${pkgdir}/tmp"
+  shopt -u nullglob
   set +u
 }
 set +u
