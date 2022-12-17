@@ -1,0 +1,16 @@
+--- BambuStudio/src/libslic3r/TreeSupport.cpp.orig	2022-12-15 10:33:19.000000000 -0500
++++ BambuStudio/src/libslic3r/TreeSupport.cpp	2022-12-16 16:16:11.261961293 -0500
+@@ -2057,10 +2057,10 @@
+ 
+                     const Node& node = *p_node;
+                     ExPolygon area;
+-                    // 直接从overhang多边形生成，如果�?
++                    // 直接从overhang多边形生成，如果?
+                     // 1) 是混合支撑里的普通部分，
+-                    // 2) 启用了顶部接触层�?
+-                    // 3) 是顶部空�?
++                    // 2) 启用了顶部接触层?
++                    // 3) 是顶部空?
+                     if (node.type == ePolygon || (top_interface_layers>0 &&node.support_roof_layers_below > 0) || node.distance_to_top<0) {
+                         if (node.overhang->contour.size() > 100 || node.overhang->holes.size()>1)
+                             area = *node.overhang;
