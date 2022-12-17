@@ -5,11 +5,11 @@
 buildarch=8
 
 pkgbase=linux-aarch64-rockpro64
-_srcname=linux-6.0
+_srcname=linux-6.1
 _kernelname=${pkgbase#linux}
-_libreelec_patch_commit=a0a0ec37c61097832ed294ac3a3b78e41353c23b
+_libreelec_patch_commit=5fc1868d8610dadb91c380a88997583d554d97d8
 pkgdesc="AArch64 with patches for PINE64's ROCKPro64"
-pkgver=6.0.6
+pkgver=6.1.0
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -17,14 +17,13 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+#        "http://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
 #        '0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-        "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-0001-rockchip-from-6.1.patch"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-0002-rockchip-from-list.patch"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-0011-v4l2-from-list.patch"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-0020-drm-from-list.patch"
@@ -34,21 +33,19 @@ source=("http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-2000-v4l2-wip-rkvdec-hevc.patch"
         "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/linux/default/linux-2001-v4l2-wip-iep-driver.patch"
 )
-sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
-            'c4920a37259b5a479fd2d6e76aaa040d54cb4cbab2ea4e323e3e0f0adb09324c'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             '5ac741733d6b117d9f837c1d88043aa14dedfbfe40d6a17c9a5ba8e67dce6d57'
             '2996843f5c08b7e05182c77bb73fb8465682f049d1e6b42ad590931aec945cde'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d'
-            '2920b0d0a236ea6f12ea2a4e0d8c0b24ac72203229e3f6e2d5d386636938516e'
             '9a49febdd90414c9bdb91f0d09d1f4087ba42d2f3f6131d7a160741211e9e35c'
-            '06586bc6bfcff6dbdd962e1bf709b5a9a4f6472628bd9c4842d684e95a5f6ed1'
+            'b3bcf5ab0a0f99b9e491c70813d1f4b21b07588e3b49cf90491bbb5a4daa6131'
             'd72e7d45d3815d76f61830838665cd31dbb4e99932e440241676aa035192eb08'
-            'e35884ed1c2edb40d15d11cf6a608590f49ceb96af14b6ab67674358e79dc9cd'
-            'f9bc85d319ad8fc2e675f1755dadf9f4d9ae84ab56b4e14f3e856f7b130c5f91'
-            '9b1010af3539ca37d139ba494e140a4ce27dd315e4c17f41f4a712704fd49913'
-            'ccc19fb9ff49fca015fabb57d8ebd0845212c1b7573449b685e669bad3a4ea96'
+            'eec9e29fe1e7687bde11df9828af7dc4abfd02b9e548bc8247642bc68878fb0d'
+            '5b6703a7b4861b3182591845cd9706bf2e101767b3856bb10293bde92c4502e3'
+            '685767f8a376c9793c42c4783504f937d64b1554cd77e5e2f80884f47171af27'
+            '5efd337c4416e1169b0b7956086a66a320d5bd1cd89be21025ff70d6f430b11f'
             '58925a7e8a9d59d48b72af8bb7017c115ed2fc9b763cdd472fba03001728181c')
 
 prepare() {
@@ -60,14 +57,13 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # add upstream patch
-  git apply -v --whitespace=nowarn ../patch-${pkgver}
+# git apply -v --whitespace=nowarn ../patch-${pkgver}
 
   # ALARM patches
   git apply -v ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
 #  git apply -v ../0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
 
   #Libreelec Patches
-  git apply -v ../linux-0001-rockchip-from-6.1.patch
   git apply -v ../linux-0002-rockchip-from-list.patch
   git apply -v ../linux-0011-v4l2-from-list.patch
   git apply -v ../linux-0020-drm-from-list.patch
