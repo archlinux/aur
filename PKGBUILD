@@ -47,7 +47,7 @@ prepare(){
 
 build(){
     cd ${srcdir}
-    gcc -O2 -fPIC -shared -o libwemeetwrap.so wrap.c
+    "${CC:-cc}" $CFLAGS -fPIC -shared -o libwemeetwrap.so wrap.c
 }
 package() {
     depends=('qt5-base' 'qt5-x11extras' 'libxinerama'
