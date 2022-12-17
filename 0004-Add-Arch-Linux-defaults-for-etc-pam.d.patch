@@ -1,0 +1,201 @@
+From 6f1cf7cbe378532b808ca6dc5ec7e5c56d877bbc Mon Sep 17 00:00:00 2001
+From: David Runge <dvzrv@archlinux.org>
+Date: Sat, 5 Nov 2022 22:52:58 +0100
+Subject: [PATCH 4/4] Add Arch Linux defaults for /etc/pam.d/
+
+etc/pam.d/Makefile.am:
+Disable chfn, chsh and login.
+Enable shadow.
+Always install the PAM integration for the account tools (even if they
+are not setuid).
+
+etc/pam.d/{chage,chpasswd,group{add,del,mod},newusers,passwd,shadow,user{add,del,mod}}:
+Add distribution defaults for Arch Linux.
+
+s
+---
+ etc/pam.d/Makefile.am | 7 ++-----
+ etc/pam.d/chage       | 6 ++++--
+ etc/pam.d/chpasswd    | 6 ++++--
+ etc/pam.d/groupadd    | 6 ++++--
+ etc/pam.d/groupdel    | 6 ++++--
+ etc/pam.d/groupmod    | 6 ++++--
+ etc/pam.d/newusers    | 6 ++++--
+ etc/pam.d/passwd      | 4 +---
+ etc/pam.d/shadow      | 6 ++++++
+ etc/pam.d/useradd     | 6 ++++--
+ etc/pam.d/userdel     | 6 ++++--
+ etc/pam.d/usermod     | 6 ++++--
+ 12 files changed, 45 insertions(+), 26 deletions(-)
+ create mode 100644 etc/pam.d/shadow
+
+diff --git a/etc/pam.d/Makefile.am b/etc/pam.d/Makefile.am
+index 38ff26ae..41e43e01 100644
+--- a/etc/pam.d/Makefile.am
++++ b/etc/pam.d/Makefile.am
+@@ -2,10 +2,8 @@
+ # and also cooperate to make a distribution for `make dist'
+ 
+ pamd_files = \
+-	chfn \
+-	chsh \
+ 	groupmems \
+-	login \
++	shadow \
+ 	passwd
+ 
+ pamd_acct_tools_files = \
+@@ -23,10 +21,9 @@ pamd_acct_tools_files = \
+ if USE_PAM
+ pamddir = $(sysconfdir)/pam.d
+ pamd_DATA = $(pamd_files)
+-if ACCT_TOOLS_SETUID
++# NOTE: we are always installing the PAM integration for the account tools
+ pamd_DATA += $(pamd_acct_tools_files)
+ endif
+-endif
+ 
+ if WITH_SU
+ pamd_files += su
+diff --git a/etc/pam.d/chage b/etc/pam.d/chage
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/chage
++++ b/etc/pam.d/chage
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/chpasswd b/etc/pam.d/chpasswd
+index 8f49f5cc..5d447985 100644
+--- a/etc/pam.d/chpasswd
++++ b/etc/pam.d/chpasswd
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password 	required 	pam_unix.so sha512 shadow
+diff --git a/etc/pam.d/groupadd b/etc/pam.d/groupadd
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/groupadd
++++ b/etc/pam.d/groupadd
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/groupdel b/etc/pam.d/groupdel
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/groupdel
++++ b/etc/pam.d/groupdel
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/groupmod b/etc/pam.d/groupmod
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/groupmod
++++ b/etc/pam.d/groupmod
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/newusers b/etc/pam.d/newusers
+index 8f49f5cc..5d447985 100644
+--- a/etc/pam.d/newusers
++++ b/etc/pam.d/newusers
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password 	required 	pam_unix.so sha512 shadow
+diff --git a/etc/pam.d/passwd b/etc/pam.d/passwd
+index 731c0d36..08d819b2 100644
+--- a/etc/pam.d/passwd
++++ b/etc/pam.d/passwd
+@@ -1,4 +1,2 @@
+ #%PAM-1.0
+-auth		include		system-auth
+-account		include		system-auth
+-password	include		system-auth
++password	required	pam_unix.so sha512 shadow nullok
+diff --git a/etc/pam.d/shadow b/etc/pam.d/shadow
+new file mode 100644
+index 00000000..a7bf8a4a
+--- /dev/null
++++ b/etc/pam.d/shadow
+@@ -0,0 +1,6 @@
++#%PAM-1.0
++auth		sufficient	pam_rootok.so
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/useradd b/etc/pam.d/useradd
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/useradd
++++ b/etc/pam.d/useradd
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/userdel b/etc/pam.d/userdel
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/userdel
++++ b/etc/pam.d/userdel
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+diff --git a/etc/pam.d/usermod b/etc/pam.d/usermod
+index 8f49f5cc..a7bf8a4a 100644
+--- a/etc/pam.d/usermod
++++ b/etc/pam.d/usermod
+@@ -1,4 +1,6 @@
+ #%PAM-1.0
+ auth		sufficient	pam_rootok.so
+-account		required	pam_permit.so
+-password	include		system-auth
++auth		required	pam_unix.so
++account		required	pam_unix.so
++session		required	pam_unix.so
++password	required	pam_permit.so
+-- 
+2.38.1
+

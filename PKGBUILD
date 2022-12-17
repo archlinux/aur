@@ -10,24 +10,23 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=shadow-selinux
-pkgver=4.11.1
-pkgrel=3
+pkgver=4.12.3
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
-arch=('x86_64' 'aarch64')
-url='https://github.com/shadow-maint/shadow'
-license=('BSD')
-groups=('selinux')
-# libcap-ng needed by install scriptlet for 'filecap'
+arch=(x86_64 aarch64)
+url="https://github.com/shadow-maint/shadow"
+license=(BSD)
+groups=(selinux)
 depends=(
-  'acl' 'libacl.so'
-  'attr' 'libattr.so'
-  'audit' 'libaudit.so'
-  'glibc'
-  'libcap-ng'
-  'libxcrypt' 'libcrypt.so'
-  'pam-selinux' 'libpam.so' 'libpam_misc.so'
+  acl libacl.so
+  attr libattr.so
+  audit libaudit.so
+  glibc
+  libxcrypt libcrypt.so
+  pam-selinux libpam.so libpam_misc.so
   'libsemanage>=3.2'
 )
+makedepends=(docbook-xsl itstool libcap libxslt)
 backup=(
   etc/default/useradd
   etc/login.defs
@@ -36,67 +35,73 @@ backup=(
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-options=('!emptydirs')
-install=shadow.install
+options=(!emptydirs)
+# NOTE: distribution patches are taken from https://gitlab.archlinux.org/archlinux/packaging/upstream/shadow/-/commits/v4.12.3.arch2
 source=(
-  "https://github.com/shadow-maint/shadow/releases/download/v$pkgver/shadow-$pkgver.tar.xz"{,.asc}
-  chgpasswd
-  chpasswd
-  defaults.pam
-  newusers
-  passwd
+  https://github.com/shadow-maint/shadow/releases/download/$pkgver/shadow-$pkgver.tar.xz{,.asc}
+  0001-Disable-replaced-tools-and-man-pages.patch
+  0002-Adapt-login.defs-for-PAM-and-util-linux.patch
+  0003-Add-Arch-Linux-defaults-for-login.defs.patch
+  0004-Add-Arch-Linux-defaults-for-etc-pam.d.patch
   shadow.{timer,service}
   useradd.defaults
-  ${pkgname/-selinux}-4.11.1-login.defs.patch
 )
-sha512sums=('12fbe4d6ac929ad3c21525ed0f1026b5b678ccec9762f2ec7e611d9c180934def506325f2835fb750dd30af035b592f827ff151cd6e4c805aaaf8e01425c279f'
+sha512sums=('0529889258f54e7634762dc154aa680d55f8c5f1654afadd1b7431cfbb890a3b1ba27c7ff4b7c45986e4ee2289946db2e420b23ed13e4e5b15800a1fb3a013bc'
             'SKIP'
-            'aef316f283a0ba0387afd5bd049b20d748dcfe8aebc5f5ea1ce1308167d6a578ae7d0007a5ed4d9862de7d377851edd2c8771e1fb1076262468078c2c76e42fc'
-            'dc75dfeafa901f9988176b82ef9db5d927dfe687a72ca36ca13ba3e7ac1b0c8055db1104373f2a7ac463e156f079cbc1f0a9f5e6e16b9f74153eb63dcb8f96df'
-            '41c856d893c4157b158d79341fe2b1892be463e17f7a007f1c17397b5625c1d2d5671bc0b37879064ae715a918fb9b05c32d18d1aaa64284cddd8ecbda9b2434'
-            'dc75dfeafa901f9988176b82ef9db5d927dfe687a72ca36ca13ba3e7ac1b0c8055db1104373f2a7ac463e156f079cbc1f0a9f5e6e16b9f74153eb63dcb8f96df'
-            '4fb7474ea9dedf86e4c65bf18f503a6d8c00d477a7c32be3cfdfd026bd62ef866d009c50e5a2dc2101bea332c5697bc1e0d55225f39c83252860f5b9b7461aeb'
+            'a0c69c252a8e41b1e3aa4c76cc6c37893a667dd079db9b7bdb54143d4b81f56551b787a93dad6e4adcd532cd12b51c9a5a5a4ae509f7ab5fe732fb9f23f57b5c'
+            'a44f3d71376a39bc7bb9d43290f619964f83184dba938857f5765c439150df2c9ba00f115579a7eeca5b316ea71808e9606c6ba977a41aa7fc4b1675606f1351'
+            'e8418e6d518101be63e7890254f9a0490f94302882689a0b69601186c9f1915831a34bb6998dbc92b753bff3f762793a7ccade66c2bac2d7b7a77d1a861d5cb7'
+            '4e6b1f88ab1e3416ab0633b897ebb1359d422b5c2222f3ed3631732f790c42352d1cbe66fa08f45eb2e1679af8f602a95fcc7f463f1bba94c2414e902a4fa215'
             'e4edf705dd04e088c6b561713eaa1afeb92f42ac13722bff037aede6ac5ad7d4d00828cfb677f7b1ff048db8b6788238c1ab6a71dfcfd3e02ef6cb78ae09a621'
-            '67a49415f676a443f81021bfa29d198462008da1224086f8c549b19c2fd21514ca3302d5ac23edec28b9c724fef921596586423ebe41e852ebfbe7216af727e6'
-            'e9ffea021ee4031b9ad3a534bfb94dbf9d0dfd45a55ecac5dedb2453ea0c17fb80bbb9ad039686bc1f3349dc371977eb548e3a665c56531469c22f29fc4eced8'
-            'f5f1fad77363db46ca513c76f22654924dd732cdf2e596fcfccb0a47a70d6099b6705e90adb661cd45af076959ef1f9f6bba66942500e603df9421caa9ed2f80')
-b2sums=('d459a1e0ffb342b6b455caf65e6af60b32eee72d4a9b1ab126485fb4632503a42061d3f0b960554c8155af6dc0564c585335b27aecca6538b394a0d58d927588'
+            '86c9412e379c0fc97c0eec417340adae990342f35d6663a6a59e8aae2221a5fbfd0437b5892aefd9cf09ef76a970f3a42b20cea051db651475d526eda17a973a'
+            'e9ffea021ee4031b9ad3a534bfb94dbf9d0dfd45a55ecac5dedb2453ea0c17fb80bbb9ad039686bc1f3349dc371977eb548e3a665c56531469c22f29fc4eced8')
+b2sums=('63b10d75a11d419156a996b8acf1bebbfab28999c2ab796e6625c028882073d4021806d8b56224190886c076a1205955e7797cb6f797ef73af3a8a33ac34bf2f'
         'SKIP'
-        '31e74eebedf8cb6e5ade36096b4399892d7091b9dce4645fde591f64802dc8befd73ae8019e78f8d326a605b224c7828694d21788bd6073db43c41cf5a9c2805'
-        '1518839dbfe12f2f55190976de808515f93eb8c06f1570f02780a5ce8c237e0be43aa7cd0fbbe4c88af1f641586e4d3cf122896d97c7594ef72991e1801ee666'
-        '5fde901d7d29995523cf261de973cc053265f37cf8fecc5511ccfff35a6ef4308f8cf36dc94e37c8b7604694ffa6ab87331c9b533b3538c6f7d7d911c9f94d19'
-        '1518839dbfe12f2f55190976de808515f93eb8c06f1570f02780a5ce8c237e0be43aa7cd0fbbe4c88af1f641586e4d3cf122896d97c7594ef72991e1801ee666'
-        '5b4e20609d38dcec82eae66acdfb7d45288574e7bf9684fa0f66bc0fb1c45cd78ee503d04a5084e28755fb7a1c6cea95854c93b33d76ab20964f45420c68403c'
+        'f1bf37abe10f554abea4635c62e74c43e09e64181e83d68dd8e2031d44d3a46835c5b4997b04614115a2dbd51a1caa67f7ca70fed623ee7f2916538a8ac85593'
+        'a1cd3ffd50335eee265587a6a8733bc4c6b0d354c6ea90b2dd5d42642d782acc00d690a40e71ba31b56fd374b1619cc05f9dc876b2f6279ff32f95a17bbbbd87'
+        '9715184569ca6769b31c01a58a1c8a0b5bb8099f6c07a888a2e0fab6748ac18eed7dd4297cc98449fd2a123cff6b027ab757d34a4cad113a4d9e5e02b28bb668'
+        'f11abd5dbe0cc4029eb8e7eb101d95f0fbf48550bdab73ebea1f25a5bc9a401713061832bf494d614711d834ab1e79ef14831bc8a2d18b8980fcb2fe7e0fe5c3'
         '5cfc936555aa2b2e15f8830ff83764dad6e11a80e2a102c5f2bd3b7c83db22a5457a3afdd182e3648c9d7d5bca90fa550f59576d0ac47a11a31dfb636cb18f2b'
-        '4a9cb6fe6658f2182655d42761d9d669654c6f0e891610e1b7fd256ce32a561f05e71daf8e473d98f16f5ee9d16d46a097a2d0de42eac58b4ce3be1525a74856'
-        'd5bea0cfc2e6d3d1749c65440ca911533d41b6f8117fe09e9efec23524637cfa823d230303a7fbb45d3cd251bf8036d48b9b21049ced208f7ed191fcbd75e879'
-        'ecc517a22ba12bd7afa3a0eefb68febf27b164cfac6502e66930bd12c62947ae362b4113472544fddc2f39e9c64d78cc662605a359c9988baaba8613d4c0f468')
-validpgpkeys=('66D0387DB85D320F8408166DB175CFA98F192AF2')  # Serge Hallyn <sergeh@kernel.org>
+        'be9d8a7424143791e61d61b01c775e3a10dd6b6a1a7af13081bc00e400e880a209240dcceb09c671de41fbdf18373f1195aa8a559cf935122ba5d1312ed8dab2'
+        'd5bea0cfc2e6d3d1749c65440ca911533d41b6f8117fe09e9efec23524637cfa823d230303a7fbb45d3cd251bf8036d48b9b21049ced208f7ed191fcbd75e879')
+validpgpkeys=(66D0387DB85D320F8408166DB175CFA98F192AF2)  # Serge Hallyn <sergeh@kernel.org>
 
 prepare() {
-  # comment options that are taken over by util-linux and apply defaults
-  patch -Np1 -d "${pkgname/-selinux}-$pkgver" -i ../${pkgname/-selinux}-4.11.1-login.defs.patch
+  local filename
+
+  cd "${pkgname/-selinux}-$pkgver"
+  for filename in "${source[@]}"; do
+    if [[ "$filename" =~ \.patch$ ]]; then
+      printf "Applying patch %s\n" "${filename##*/}"
+      patch -Np1 -i "$srcdir/${filename##*/}"
+    fi
+  done
+
+  autoreconf -fiv
 }
 
 build() {
-  cd "${pkgname/-selinux}-$pkgver"
-
-  ./configure \
-    --prefix=/usr \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libdir=/usr/lib \
-    --mandir=/usr/share/man \
-    --sysconfdir=/etc \
-    --disable-account-tools-setuid \
-    --with-fcaps \
-    --with-libpam \
-    --with-group-name-max-length=32 \
-    --with-audit \
-    --with-bcrypt \
-    --with-yescrypt \
-    --with-selinux \
+  local configure_options=(
+    --prefix=/usr
+    --bindir=/usr/bin
+    --sbindir=/usr/bin
+    --libdir=/usr/lib
+    --mandir=/usr/share/man
+    --sysconfdir=/etc
+    --disable-account-tools-setuid
+    --enable-man
+    --with-fcaps
+    --with-libpam
+    --with-group-name-max-length=32
+    --with-audit
+    --with-bcrypt
+    --with-yescrypt
+    --with-selinux
     --without-su
+  )
+
+  cd "${pkgname/-selinux}-$pkgver"
+  ./configure "${configure_options[@]}"
 
   # prevent excessive overlinking due to libtool
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -116,46 +121,8 @@ package() {
   install -vDm 600 ../useradd.defaults "$pkgdir/etc/default/useradd"
 
   # systemd units
-  install -vDm 644 "../shadow.timer" -t "$pkgdir/usr/lib/systemd/system/"
-  install -vDm 644 "../shadow.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 ../shadow.timer -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 ../shadow.service -t "$pkgdir/usr/lib/systemd/system/"
   install -vdm 755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
   ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/shadow.timer"
-
-  # PAM config - custom
-  rm "$pkgdir/etc/pam.d"/*
-  install -vDm 644 ../{passwd,chgpasswd,chpasswd,newusers} -t "$pkgdir/etc/pam.d/"
-
-  # PAM config - from tarball
-  install -vDm 644 etc/pam.d/groupmems -t "$pkgdir/etc/pam.d/"
-
-  # we use the 'useradd' PAM file for other similar utilities
-  for file in chage group{add,del,mod} shadow user{add,del,mod}; do
-    install -vDm 644 "../defaults.pam" "$pkgdir/etc/pam.d/$file"
-  done
-
-  # Remove evil/broken tools
-  rm -v "$pkgdir"/usr/sbin/logoutd
-
-  # Remove utilities provided by util-linux
-  rm -v "$pkgdir"/usr/{bin/{login,chsh,chfn,sg,nologin},sbin/{vipw,vigr}}
-
-  # but we keep newgrp, as sg is really an alias to it
-  mv -v "$pkgdir"/usr/bin/{newgrp,sg}
-
-  # ...and their many man pages
-  find "$pkgdir"/usr/share/man \
-      '(' -name 'chsh.1'    -o \
-          -name 'chfn.1'    -o \
-          -name 'su.1'      -o \
-          -name 'logoutd.8' -o \
-          -name 'login.1'   -o \
-          -name 'nologin.8' -o \
-          -name 'vipw.8'    -o \
-          -name 'vigr.8'    -o \
-          -name 'newgrp.1' ')' \
-      -delete
-
-  # move everything else to /usr/bin, because this isn't handled by ./configure
-  mv -v "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin
-  rmdir -v "$pkgdir/usr/sbin"
 }

@@ -1,0 +1,73 @@
+From 09850623c6c5c4e4738088c80de82952f9f48c27 Mon Sep 17 00:00:00 2001
+From: David Runge <dvzrv@archlinux.org>
+Date: Mon, 31 Oct 2022 10:10:22 +0100
+Subject: [PATCH 3/4] Add Arch Linux defaults for login.defs
+
+etc/login.defs:
+Change ENV_SUPATH and ENV_SUPATH to only use
+/usr/local/sbin:/usr/local/bin:/usr/bin as Arch Linux is a /usr merge
+and bin merge distribution.
+Change UMASK to 077 as it is considered a more privacy conserving
+default than 022.
+Change SYS_UID_MIN and SYS_GID_MIN to 500 which gives more space for
+distribution added UIDs and GIDs.
+Change ENCRYPT_METHOD to SHA512 as it is a safer hashing algorithm than
+DES.
+---
+ etc/login.defs | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/etc/login.defs b/etc/login.defs
+index 7c633a57..ea841257 100644
+--- a/etc/login.defs
++++ b/etc/login.defs
+@@ -55,8 +55,8 @@ HUSHLOGIN_FILE	.hushlogin
+ # *REQUIRED*  The default PATH settings, for superuser and normal users.
+ #
+ # (they are minimal, add the rest in the shell startup files)
+-ENV_SUPATH	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+-ENV_PATH	PATH=/bin:/usr/bin
++ENV_SUPATH	PATH=/usr/local/sbin:/usr/local/bin:/usr/bin
++ENV_PATH	PATH=/usr/local/sbin:/usr/local/bin:/usr/bin
+ 
+ #
+ # Terminal permissions
+@@ -79,7 +79,7 @@ TTYPERM		0600
+ # 022 is the default value, but 027, or even 077, could be considered
+ # for increased privacy. There is no One True Answer here: each sysadmin
+ # must make up their mind.
+-UMASK		022
++UMASK		077
+ 
+ # HOME_MODE is used by useradd(8) and newusers(8) to set the mode for new
+ # home directories.
+@@ -103,7 +103,7 @@ PASS_WARN_AGE	7
+ UID_MIN			 1000
+ UID_MAX			60000
+ # System accounts
+-SYS_UID_MIN		  101
++SYS_UID_MIN		  500
+ SYS_UID_MAX		  999
+ # Extra per user uids
+ SUB_UID_MIN		   100000
+@@ -116,7 +116,7 @@ SUB_UID_COUNT		    65536
+ GID_MIN			 1000
+ GID_MAX			60000
+ # System accounts
+-SYS_GID_MIN		  101
++SYS_GID_MIN		  500
+ SYS_GID_MAX		  999
+ # Extra per user group ids
+ SUB_GID_MIN		   100000
+@@ -153,7 +153,7 @@ CHFN_RESTRICT		rwh
+ # Note: If you use PAM, it is recommended to use a value consistent with
+ # the PAM modules configuration.
+ #
+-#ENCRYPT_METHOD DES
++ENCRYPT_METHOD SHA512
+ 
+ #
+ # Only works if ENCRYPT_METHOD is set to SHA256 or SHA512.
+-- 
+2.38.1
+
