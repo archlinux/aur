@@ -1,7 +1,7 @@
 pkgbase = tesla_auth
 	pkgdesc = Tesla token generator
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.5.4
+	pkgrel = 1
 	url = https://github.com/adriankumpf/tesla_auth
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tesla_auth
 	makedepends = cargo
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
-	source = tesla_auth-0.5.3.tar.gz::https://github.com/adriankumpf/tesla_auth/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 8ea339d4b1c5ccfcda57464b16326e539bb6bf2c528890c8a7a013c7a8916d3c
+	source = tesla_auth-0.5.4.tar.gz::https://github.com/adriankumpf/tesla_auth/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 3efd2168f81a19e309658443c0a67541ccc4b6433627a6c8aa986acc83587df0
 
 pkgname = tesla_auth
