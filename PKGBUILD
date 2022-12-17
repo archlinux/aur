@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="http://pypi.python.org/pypi/${_name}"
 license=(BSD3)
 depends=('python>=3.8')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('1fda78f7e69af7fce9482ec85ef524a95b674f51ebfd366f6fe8c1850b5d848e')
 
