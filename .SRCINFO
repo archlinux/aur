@@ -1,20 +1,20 @@
 pkgbase = python-scikit-fem
 	pkgdesc = Simple finite element assemblers
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kinnala/scikit-fem
 	arch = x86_64
 	license = custom:BSD-3-clause
 	checkdepends = python-pytest
 	checkdepends = python-matplotlib
 	checkdepends = python-meshio
-	checkdepends = python-h5py
+	checkdepends = python-h5py-openmpi
 	checkdepends = python-autograd
 	checkdepends = python-pyamg
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-scipy
-	source = https://github.com/kinnala/scikit-fem/archive/8.0.0.tar.gz
+	source = scikit-fem-8.0.0.tar.gz::https://github.com/kinnala/scikit-fem/archive/8.0.0.tar.gz
 	sha512sums = 4264d0ade27c86ed1e872d6168d1e6b38081a66ef9e000a8b331ff26291b717ac7aa6da44018203e96cefd293cf63e716088ae862b42efa8df078eeb8c883aae
 
 pkgname = python-scikit-fem
