@@ -16,7 +16,7 @@
 
 set -u
 pkgname='ghostpdl'
-pkgver='9.56.1'
+pkgver='10.0.0'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ depends=('ghostscript' 'glu' 'freeglut' 'libjpeg' 'libxt')
 _giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
 _verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
 source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('03535e1052d853165a550c4d4da182d7')
-sha256sums=('05e64c19853e475290fd608a415289dc21892c4d08ee9086138284b6addcb299')
+md5sums=('745160b588456443c0dfc16478c5ec69')
+sha256sums=('8f2b7941f60df694b4f5c029b739007f7c4e0d43858471ae481e319a967d5d8b')
 
 prepare() {
   set -u
@@ -45,8 +45,7 @@ build() {
   if [ ! -s 'Makefile' ]; then
     ./configure --prefix='/usr'
   fi
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  nice make -s
   set +u
 }
 
