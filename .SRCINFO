@@ -1,0 +1,13 @@
+pkgbase = r-spdl
+	pkgdesc = Wrapper for 'RcppSpdlog' Functions
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=spdl
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-rcppspdlog
+	source = https://cran.r-project.org/src/contrib/spdl_0.0.3.tar.gz
+	sha256sums = 08b8d763aa4c68fe475c97a9f01f3fc3d3992dfc7c09f7786f41800430f01509
+
+pkgname = r-spdl
