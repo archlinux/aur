@@ -8,15 +8,15 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.8.8
+pkgver=2.9.17
 groups=('joplin')
-pkgrel=2
+pkgrel=1
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'npm' 'yarn' 'python2' 'rsync' 'jq' 'yq' 'electron' 'libgsf' 'node-gyp>=8.4.1' 'libvips')
+makedepends=('git' 'npm' 'yarn' 'python' 'rsync' 'jq' 'yq' 'electron' 'libgsf' 'node-gyp>=8.4.1' 'libvips')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
@@ -24,7 +24,7 @@ source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             '16aed6c4881efcef3fd86f7c07afb4c743e24d9da342438a8167346a015629e0'
-            'b6e0a3a5d59882de37494c0b3b1d28df407e86d06e81bc8201cb912e2711949b')
+            '5a1d205bd52b86182b281f7c83b8a7b463941f5043729b4408490b249dfa0af8')
 
 # local npm cache directory
 _yarn_cache="yarn-cache"
@@ -72,6 +72,19 @@ prepare() {
   msg2 "Deleting app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
   rm -r "${srcdir}/joplin-${pkgver}/packages/app-clipper"
+
+  if [[ ${pkgver} == 2.9.17 ]]; then
+
+    msg2 "******************* BEGIN: TEMPORARY FIX FOR VERSION 2.9.17 ONLY **********************"
+
+        # Let yarn resolve version ^2.12.1 of nan package to 2.17.0 instead of 2.15.0 (https://github.com/nodejs/nan/pull/943)
+        local package_json=${srcdir}/joplin-${pkgver}/package.json
+        cp $package_json $package_json.bak
+        jq '. + {"resolutions": {"nan@^2.12.1": "2.17.0"}}' $package_json.bak > $package_json
+
+    msg2 "******************* END: TEMPORARY FIX FOR VERSION 2.9.17 ONLY ************************"
+
+  fi
 }
 
 
