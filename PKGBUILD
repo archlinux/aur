@@ -2,12 +2,12 @@
 
 pkgname=scalafmt
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
 url="https://scalameta.org/scalafmt/"
 license=('Apache')
-depends=('java-environment=11' 'bash')
+depends=('java-environment' 'bash')
 makedepends=('coursier')
 
 build() {

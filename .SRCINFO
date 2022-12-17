@@ -1,12 +1,12 @@
 pkgbase = scalafmt
 	pkgdesc = code formatter for the Scala programming language
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scalameta.org/scalafmt/
 	arch = any
 	license = Apache
 	makedepends = coursier
-	depends = java-environment=11
+	depends = java-environment
 	depends = bash
 
 pkgname = scalafmt
