@@ -9,7 +9,7 @@
 
 pkgname=anki-qt5
 pkgver=2.1.55
-pkgrel=3
+pkgrel=4
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -55,6 +55,8 @@ optdepends=(
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
+# using the tag tarballs does not work with the new (>= 2.1.55) build process.
+# the '.git' folder is not included in those but is required for a sucessful build
 source=("anki-${pkgver}::git+https://github.com/ankitects/anki#tag=${pkgver}"
 "no-update.patch"
 "force_qt5.patch"
@@ -85,6 +87,8 @@ package() {
     	python -m installer --destdir="$pkgdir" $file
     done
 
+    install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
     find $pkgdir -iname __pycache__ | xargs -r rm -rf
     find $pkgdir -iname direct_url.json | xargs -r rm -rf
 }
