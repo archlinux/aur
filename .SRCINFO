@@ -1,16 +1,16 @@
 pkgbase = php-phing
 	pkgdesc = PHP project build system based on Apache Ant
-	pkgver = 2.17.2
+	pkgver = 2.17.4
 	pkgrel = 1
 	url = https://www.phing.info/
 	arch = any
 	license = LGPL
 	depends = php
-	provides = phing=2.17.2
+	provides = phing=2.17.4
 	conflicts = phing
 	options = !strip
-	source = phing-2.17.2.tgz::https://github.com/phingofficial/phing/archive/2.17.2.tar.gz
-	md5sums = 19323a67e14c72ebccdebd5f03b0f01d
-	sha256sums = 16825cc7925cb554bf007331a291466abb9ab14e9f997f939cbe4c7162ce0423
+	source = phing-2.17.4.tgz::https://github.com/phingofficial/phing/archive/2.17.4.tar.gz
+	md5sums = 9eb60c57580418c13fe09f38da1b78e0
+	sha256sums = 2bac33efd4bb2f2beb24eb95f19903064658a4ad0207e4851c49b0b01fc91aec
 
 pkgname = php-phing
