@@ -1,0 +1,17 @@
+pkgbase = clash-meta-cap-git
+	pkgdesc = Clash.Meta with Capabilities for Transparent Proxies
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/Clash.Meta
+	install = clash-meta-cap.sh
+	arch = x86_64
+	license = MIT
+	depends = clash-meta
+	depends = libcap
+	provides = clash-meta-cap
+	source = clash-meta-cap.hook
+	source = clash-meta-cap.sh
+	sha512sums = 49b08f813069ee0467acb4eeeb895e7a80411337b7bf52c9bd35dc3a2934be5529c549eb014a066ffd061708df1d83a28be93637ded659cc70c0cc07d196b436
+	sha512sums = 2a2249acfe52d334997e6fe5afe5a3df0e74e6bb3ae1d2c1c04a54ff19b4ae5f691cd3c9db696ba56ffd407fe562f156693a3dd7a4b942cdeaae88e2ced8212b
+
+pkgname = clash-meta-cap-git

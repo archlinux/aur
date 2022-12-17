@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/clash-meta
+
+[Action]
+Description = setcap to clash-meta
+Depends = libcap
+When = PostTransaction
+Exec = /usr/bin/setcap "cap_net_bind_service=+ep cap_net_admin=+ep" /usr/bin/clash-meta
+NeedsTargets
+
+ 
