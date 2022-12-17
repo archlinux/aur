@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 pkgdesc='Open-source Dropbox client'
 arch=('any')
@@ -19,11 +19,11 @@ depends=(
 	'python-pathspec'
 	'python-pyro5'
 	'python-requests'
-	'python-sdnotify'
+	'python-rich'
 	'python-setuptools'
 	'python-survey'
-	'python-watchdog-git'
-	'python-systemd')
+	'python-systemd'
+	'python-watchdog')
 optdepends=(
 	'maestral-qt: Qt interface for the maestral daemon'
 	'python-importlib-metadata: REQUIRED for python<3.8')
@@ -32,7 +32,7 @@ checkdepends=('python-pytest' 'python-pytest-benchmark')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'maestral@.service')
-sha256sums=('0d78532fb0e35937292806f2bb49e5b67043171082cf05ab2ba899618269e31d'
+sha256sums=('f33a06d458732482794d955b6ca80476f45945b549a70c2fbd29057d0aa1ecb9'
             '79f48787cec441c252b1fcbecbce1342bbac1de275e90fe9dfbd1b9cad2ba2c8')
 
 build() {
@@ -47,12 +47,11 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
-
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv \
 		"$_site/maestral-$pkgver.dist-info/LICENSE.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
