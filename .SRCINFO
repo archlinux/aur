@@ -1,6 +1,6 @@
 pkgbase = ocenaudio-bin
 	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
-	pkgver = 3.11.18
+	pkgver = 3.11.19
 	pkgrel = 1
 	url = https://www.ocenaudio.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ocenaudio-bin
 	depends = qt5-base
 	provides = ocenaudio
 	conflicts = ocenaudio
-	source = ocenaudio-3.11.18_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.18
-	sha256sums = 29355402b9a42e7df5f1248cb9b394d2d9a492ff1000946bd2c7dc27b3f28648
+	source = ocenaudio-3.11.19_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.19
+	sha256sums = 27b88f676e8df6a07f52c1ae7e31329616e303dfc1336d18edbd249ff27f3e1b
 
 pkgname = ocenaudio-bin
