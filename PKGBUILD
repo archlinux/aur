@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
-pkgver=7.9.1
-pkgrel=3
+pkgver=7.10.0
+pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -14,7 +14,6 @@ source=('git+https://github.com/Bionus/imgbrd-grabber.git#tag=v'${pkgver}''
         'git+https://github.com/LaurentGomila/qt-android-cmake.git'
         'git+https://github.com/sakra/cotire.git'
         'git+https://github.com/lexbor/lexbor.git'
-
         'git+https://github.com/catchorg/Catch2.git')
 sha256sums=('SKIP'
             'SKIP'
@@ -24,19 +23,19 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "$srcdir/${pkgname}"
-    git submodule init
-    git config submodule.cmake/qt-android-cmake.url "$srcdir/qt-android-cmake"
-    git config submodule.cmake/cotire.url "$srcdir/cotire"
-    git config submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
-    git config submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
-    git -c protocol.file.allow=always submodule update
+    git config --file=.gitmodules submodule.cmake/qt-android-cmake.url "$srcdir/qt-android-cmake"
+    git config --file=.gitmodules submodule.cmake/cotire.url "$srcdir/cotire"
+    git config --file=.gitmodules submodule.tests/src/vendor/catch.url "$srcdir/Catch2"
+    git config --file=.gitmodules submodule.lib/vendor/lexbor.url "$srcdir/lexbor"
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-    cd "$srcdir/${pkgname}/src/sites" && npm install --no-optional
+    cd "$srcdir/${pkgname}/src/sites"
 
-    mkdir -p "$srcdir/build"
-    cd "$srcdir/build"
+    npm install --no-optional
+
+    mkdir -p "$srcdir/build" && cd "$srcdir/build"
 
     cmake "$srcdir/${pkgname%}/src" \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -49,6 +48,8 @@ build() {
 
 package() {
     cd "$srcdir/build"
+
     make DESTDIR="$pkgdir/" install
+
     touch "$pkgdir/usr/share/Grabber/settings.ini"
 }
