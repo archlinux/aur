@@ -4,7 +4,7 @@
 set -u
 pkgname='nopoll'
 #pkgname+='-git'
-pkgver='0.4.7.b429'
+pkgver='0.4.8.b429'
 pkgrel=1
 pkgdesc='Websocket library written in C'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ _giturl='https://github.com/ASPLes/nopoll'
 _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html" href=".*/'"${_giturl##*/}"'/releases/tag/v\?\([^"]\+\)"/>.*' 'f') # RSS
 _srcdir="${pkgname}-${pkgver}"
 source=("http://www.aspl.es/nopoll/downloads/nopoll-${pkgver}.tar.gz")
-md5sums=('9044cb23ad5fa125316f9c54299405c3')
-sha256sums=('d5c020fec25e3fa486c308249833d06bed0d76bde9a72fd5d73cfb057c320366')
+md5sums=('4f020dee926ff2a662a76deb5a201e8e')
+sha256sums=('4031f2afd57dbcdb614dd3933845be7fcf92a85465b6228daab3978dc5633678')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   makedepends+=('git')
