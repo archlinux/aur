@@ -8,7 +8,7 @@ set -u
 _perlmod='Text-Table'
 _modnamespace="${_perlmod%%-*}"
 pkgname="perl-${_perlmod,,}"
-pkgver='1.134'
+pkgver='1.135'
 pkgrel='1'
 pkgdesc="Perl CPAN ${_perlmod//-/::} - Organize Data in Tables"
 arch=('any')
@@ -22,9 +22,9 @@ options=('!emptydirs')
 _verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
 _srcdir="${_perlmod}-${pkgver}"
 source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
-md5sums=('8809bb220ce68fcf6f513531c15128d0')
-sha256sums=('bacf429b18b7c0b22c088219055063e3902749531d488ebd7b17eab7757cd10b')
-sha512sums=('ee10c9811a42a07b270ed28c310b0f836a47f1706d541849f7c12d39b7603dd4c05ab4fd4e9f8fc3065b3f30d2f4ee7eb8954221af5a825346eae4493fed94c9')
+md5sums=('6bea3ce614b6c28460f1af96114709a6')
+sha256sums=('fca3c16e83127f7c44dde3d3f7e3c73ea50d109a1054445de8082fea794ca5d2')
+sha512sums=('1cbacfe2325c8d28aa27590da1d86db75e478321382518319ae16b93daf1e92c3767ad250a739d59d8fb76f6101dcdff23e0e5f1f817100576f69b2f82c8ae7d')
 
 build() {
   set -u
