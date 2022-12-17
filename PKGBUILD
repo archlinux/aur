@@ -1,13 +1,13 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
-depends=('python' 'python-pyqt5' 'python-pyqt5-sip' 'python-requests' 'python-colorama' 'python-pyaml' 'qt5-svg' 'python-dateutil' 'python-packaging')
+depends=('python' 'python-pyqt5' 'python-pyqt5-sip' 'python-requests' 'python-colorama' 'python-pyaml' 'qt5-svg' 'python-dateutil')
 optdepends=('flatpak: required for Flatpak support' 
             'snapd: required for Snap support'
             'python-beautifulsoup4: for Native Web applications support'
@@ -39,7 +39,7 @@ optdepends=('flatpak: required for Flatpak support'
             'util-linux: to install AUR packages as the root user')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('33b1f5af79b106ca8d0e6e00ccce9a8a79764e7fb2cb8fb35abe83de7bc8e0bcf6e7f81d2a8dd30f5a0a931c32e2bf5bf233efafc02a58ba21308269811eaea7')
+sha512sums=('742903254efc8da0ce3253d04a19319b1b9e6e761ccd64deb9b7bf72cbb9f34afe90639b5bf8c4203ed3da9f61eb613bc26f5b5e2a4332ad7a915658a12725db')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
