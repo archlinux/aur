@@ -1,20 +1,20 @@
 pkgbase = python-desktop-notifier
 	pkgdesc = Python library for cross-platform desktop notifications
-	pkgver = 3.4.0
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://github.com/SamSchott/desktop-notifier
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-m2r2
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-autoapi
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
 	depends = python-dbus-next
 	depends = python-packaging
-	source = python-desktop-notifier-3.4.0.tar.gz::https://github.com/SamSchott/desktop-notifier/archive/v3.4.0.tar.gz
-	sha256sums = 8534e7d0c6353fee487f8042e8a16e79223fa7676e91aa9b5f8aee876b1328da
+	source = python-desktop-notifier-3.4.2.tar.gz::https://github.com/SamSchott/desktop-notifier/archive/v3.4.2.tar.gz
+	sha256sums = 952420e0280555b31775e8b7fa00ea97cb9fd065353dca6f672ea1c2fca97851
 
 pkgname = python-desktop-notifier
