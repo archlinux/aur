@@ -1,16 +1,16 @@
 pkgbase = python-system_hotkey
 	pkgdesc = Python library for system wide hotkeys
-	pkgver = 1.0.2+12+37073bb
-	pkgrel = 2
-	url = https://github.com/timeyyy/system_hotkey
+	pkgver = 1.0.5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/hhannine/system_hotkey310
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = git
 	depends = python-xcffib
-	source = python-system_hotkey::git+https://github.com/timeyyy/system_hotkey
-	source = python3.10_fix.patch
+	source = python-system_hotkey::git+https://github.com/hhannine/system_hotkey310#commit=c0ee3549d5a1c66dee90ec669c95c4c0a81ab050
+	source = rename_without_310.patch
 	sha256sums = SKIP
-	sha256sums = 2f15f1ebeb95e1b3e9cccfeac6f05da1af98b634834d912d02e807c3cc0a0df2
+	sha256sums = 4bc354ad56f76ebbaf49111eea73080e1133eff42f2484b521be5c73a01bbad2
 
 pkgname = python-system_hotkey

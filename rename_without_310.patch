@@ -1,0 +1,12 @@
+diff -Naur ./python-system_hotkey.orig/setup.py ./python-system_hotkey/setup.py
+--- ./python-system_hotkey.orig/setup.py	2022-12-16 22:52:33.318586219 -0500
++++ ./python-system_hotkey/setup.py	2022-12-16 22:53:26.232640510 -0500
+@@ -9,7 +9,7 @@
+         return f.read()
+ 
+ setup(
+-	name = 'system_hotkey310',
++	name = 'system_hotkey',
+ 	version='1.0.5',
+ 	description = 'System wide hotkeys',
+ 	long_description = (read('README.rst') + '\n\n' +
