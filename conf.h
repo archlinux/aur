@@ -8,7 +8,7 @@
 #define MAIL		{"mutt"}
 
 /* TERM variable for launched programs */
-#define TERM        "linux"
+#define TERM		"linux"
 
 /* tinyfont files for regular, italic, and bold fonts */
 #define FR		"/usr/share/fbpad/font-r.tf"
