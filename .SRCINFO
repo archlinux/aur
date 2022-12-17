@@ -1,7 +1,7 @@
 pkgbase = dogecoin-qt
 	pkgdesc = Cryptocurrency
 	pkgver = 1.14.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dogecoin.com/
 	install = dogecoin.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = dogecoin-qt
 	depends = miniupnpc
 	depends = boost-libs
 	depends = protobuf
-	depends = openssl-1.0
+	depends = openssl
 	depends = db
 	depends = libevent
 	depends = qt5-base
