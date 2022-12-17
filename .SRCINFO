@@ -1,7 +1,7 @@
 pkgbase = fbpad-git
 	pkgdesc = A small linux framebuffer virtual terminal.
 	pkgver = r315.e9e9cb0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://repo.or.cz/w/fbpad.git
 	install = fbpad-git.install
 	arch = i686

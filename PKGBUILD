@@ -2,7 +2,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpad-git
 pkgver=r315.e9e9cb0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small linux framebuffer virtual terminal."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/fbpad.git"
@@ -51,8 +51,8 @@ package() {
 
 	## Setup fonts
 	if [ -x /usr/bin/fbpad-mkfn-ft ]; then
-		FT2TF="fbpad-mkfn-ft -h20 -w10"
-		SZ="17h120v100b0a1"
+		FT2TF="fbpad-mkfn-ft -h17 -w11"
+		SZ="12h120v100b0a1"
 		$FT2TF /usr/share/fonts/TTF/DejaVuSansMono.ttf:$SZ > $srcdir/font-r.tf
 		$FT2TF /usr/share/fonts/TTF/DejaVuSansMono-Oblique.ttf:$SZ > $srcdir/font-i.tf
 		$FT2TF /usr/share/fonts/TTF/DejaVuSansMono-Bold.ttf:$SZ > $srcdir/font-b.tf
