@@ -1,8 +1,8 @@
 # Maintainer: Lukas Deutz <aur at deutz dot io>
 
 pkgname=filen-desktop-appimage
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.0.11
+pkgrel=1
 pkgdesc="Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage"
 arch=('x86_64')
 url="https://filen.io/"
@@ -10,12 +10,8 @@ license=('MIT')
 conflicts=()
 depends=()
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-source=(
-  "https://cdn.filen.io/desktop/release/${pkgver}/filen_${arch[0]}.AppImage"
-)
-sha512sums=(
-  eb82061b79be0bdf8dca52ca562cf465dddea941981cad7e479d149a9be0caa7e40c4c5fa5c8744ba42e4344428ec8b4c96505a267415ed768ae621edce5bfe7
-)
+source=("https://cdn.filen.io/desktop/release/${pkgver}/filen_${arch[0]}.AppImage")
+sha512sums=('7712d6e25d40bbebb0d1eb1bed911fae8db7fa31bceef942daabce43679f1b196fc01e5edbd67791cf084db5d56fc732d83c2c2e243e0a02fa6e948b92447203')
 _appimage_name="filen_x86_64.AppImage"
 _filename="filen-desktop"
 _install_path="/opt/appimages/${_filename}"
