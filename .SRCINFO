@@ -1,0 +1,12 @@
+pkgbase = bee-host
+	pkgdesc = A native messaging host application for Browser's Exernal Editor extension.
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/rosmanov/bee-host
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = bee-host-1.3.5::https://github.com/rosmanov/bee-host/archive/refs/tags/1.3.5.tar.gz
+	sha256sums = 9e505aa37d3ff8b5c0ff2f5191fc5a1d73b8dab6c52f08472899a97ef1ba039e
+
+pkgname = bee-host
