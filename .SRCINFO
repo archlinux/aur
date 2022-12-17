@@ -1,0 +1,18 @@
+pkgbase = sample-cmake-git
+	pkgdesc = Sample from cmake project, Export and Import data. How to compile & run?
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/badcast/sample-cmake
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = coreutils
+	makedepends = git
+	depends = gcc
+	source = git+https://github.com/badcast/sample-cmake.git
+	md5sums = SKIP
+
+pkgname = sample-cmake-git
