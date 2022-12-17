@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r4397.24a44cde
+pkgver=r4557.3c6800cf
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -46,9 +46,13 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/mity/md4c.git'
         'git+https://github.com/mekhontsev/imgui_md.git'
         'git+https://github.com/iafonov/multipart-parser-c.git'
+        'git+https://github.com/grumpycoders/nanovg.git'
+        'git+https://github.com/grumpycoders/nanosvg.git'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -104,6 +108,8 @@ prepare() {
   git config submodule.third_party/md4c.url "$srcdir/md4c"
   git config submodule.third_party/imgui_md.url "$srcdir/imgui_md"
   git config submodule.third_party/multipart-parser-c.url "$srcdir/multipart-parser-c"
+  git config submodule.third_party/nanovg.url "$srcdir/nanovg"
+  git config submodule.third_party/nanosvg.url "$srcdir/nanosvg"
 
   git -c protocol.file.allow=always submodule update third_party/imgui \
                        third_party/uC-sdk \
@@ -126,7 +132,9 @@ prepare() {
                        third_party/vixl \
                        third_party/md4c \
                        third_party/imgui_md \
-                       third_party/multipart-parser-c
+                       third_party/multipart-parser-c \
+                       third_party/nanovg \
+                       third_party/nanosvg
 
   cd third_party/luv
   git submodule init
