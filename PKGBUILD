@@ -2,7 +2,7 @@
 
 _appname=imgbrd-grabber
 pkgname="${_appname}-bin"
-pkgver=7.9.1
+pkgver=7.10.0
 pkgrel=1
 pkgdesc="Unofficial binary installer for ImgBrd Grabber"
 arch=("x86_64")
