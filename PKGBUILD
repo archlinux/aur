@@ -1,6 +1,6 @@
 # Maintainer: TobFromme
 
-pkgname=sdrtrunk
+pkgname=sdrtrunk-git
 pkgver=0.5.0
 _pkgdldir=${pkgver}-beta.6
 _pkgsubver=${pkgver}-beta6
@@ -13,8 +13,8 @@ groups=()
 depends=('java-runtime' 'at-spi2-core' 'libnet' 'alsa-lib' 'gtk3')
 checkdepends=()
 optdepends=()
-provides=('sdrtrunk')
-conflicts=('sdrtrunk' 'sdrtrunk-bin')
+provides=('sdrtrunk-git')
+conflicts=('sdrtrunk-git' 'sdrtrunk-bin' 'sdrtrunk')
 replaces=()
 backup=()
 options=()
