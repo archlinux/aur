@@ -1,9 +1,12 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
+# To bypass check: run makepkg with --nocheck option
+# For make options, see https://www.postgresql.org/docs/current/install-procedure.html
+
 pkgbase=postgresql-devel
-pkgver=15devel
+pkgver=16devel
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=2
+pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -21,11 +24,11 @@ source=(https://ftp.postgresql.org/pub/snapshot/dev/postgresql-snapshot.tar.bz2
 sha256sums=('SKIP'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
-            '5f45d2ad3a93f5ea87ea40bc82a5377e5b8faca9586bfa84d4efe05bdd90ebb6'
+            'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
             'e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
-            '665c692161edee50ca0d8c3aae4a39a39c96ce2878cab30dbac4c6f4443c0cbc'
-            'c0e84a98a6241fad578ea6e862e24637fec1ed9e820ce1f3826af1c2869ba55d')
+            '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
+            '804e76418eb16edd2a3ac458d01d94a4a496e529064eeb115c28c6532ff8e5a5')
 
 
 prepare() {
