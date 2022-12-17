@@ -21,21 +21,21 @@ options=()
 install=
 changelog=
 
-source_aarch64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgdldir}/sdr-trunk-linux-${CARCH}-v${_pkgsubver}.zip"
+source_aarch64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgdldir}/sdr-trunk-linux-aarch64-v${_pkgsubver}.zip"
                 "cat-radio-icon.png"
                 "sdrtrunk.desktop")
 
-source_x86_64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgdldir}/sdr-trunk-linux-${CARCH}-v${_pkgsubver}.zip"
+source_x86_64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgdldir}/sdr-trunk-linux-x86_64-v${_pkgsubver}.zip"
                "cat-radio-icon.png"
                "sdrtrunk.desktop")
 
-sha256sums_aarch64=('8662e3231598a088b1e43a1802b836343bd68b8d3b860295e0cb3d71ace19899'
+sha256sums_aarch64=('698f1f753d987111ad2a2f904df346c786dd50fac1d8455ccf56431278d12c14'
                     '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
                     'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
-
 sha256sums_x86_64=('8662e3231598a088b1e43a1802b836343bd68b8d3b860295e0cb3d71ace19899'
                    '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
                    'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
+
 
 package() {
   install -Dm644 ../cat-radio-icon.png "${pkgdir}/usr/share/pixmaps/cat-radio-icon.png"
