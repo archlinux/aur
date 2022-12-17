@@ -8,6 +8,7 @@ pkgbase = serial-cli-git
 	license = MIT
 	makedepends = git
 	makedepends = gcc
+	makedepends = make
 	provides = serial-cli
 	source = serial-cli::git+https://github.com/ToniLipponen/Serial-cli.git
 	sha512sums = SKIP

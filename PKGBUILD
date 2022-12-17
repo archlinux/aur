@@ -9,10 +9,11 @@ license=('MIT')
 makedepends=(
 	'git'
 	'gcc'
+	'make'
 )
 source=("${_pkgname}::git+https://github.com/ToniLipponen/Serial-cli.git")
 sha512sums=("SKIP")
-provides=(serial-cli)
+provides=("serial-cli")
 
 pkgver() {
   cd "$_pkgname"
