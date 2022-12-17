@@ -2,7 +2,7 @@
 
 _pkgname=ara
 pkgname=python-${_pkgname}
-pkgver=1.5.7
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="ARA Records Ansible and makes it easier to understand and troubleshoot."
 arch=("any")
@@ -26,8 +26,8 @@ optdepends=(
     "python-psycopg2"
     )
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/f2/7f/ea50ae0975f4adbc7f02a520ea30b831e3c3cc1b48cab82a5f9386cec0b3/ara-${pkgver}.tar.gz")
-sha256sums=('4a6883dad5e0d119a754271338948cb1119c2c5b36d48b162d610e348eccb502')
+source=("https://files.pythonhosted.org/packages/d8/21/64905ea535a94e72508b0a3a7d0fae28ac420f1db63729d660dd29c22a4d/ara-${pkgver}.tar.gz")
+sha256sums=('90812ee38308b87db357d34f9fd9dd422c87edb3cdc0248a83f65b1bf0691b6d')
 
 build() {
     cd ${_pkgname}-${pkgver}
