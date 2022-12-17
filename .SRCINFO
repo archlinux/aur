@@ -8,8 +8,8 @@ pkgbase = lib32-intel-media-driver
 	license = BSD
 	makedepends = cmake
 	depends = lib32-gcc-libs
-	depends = lib32-intel-gmmlib
-	depends = lib32-libva
+	depends = lib32-intel-gmmlib>=22.2.0
+	depends = lib32-libva>=2.16.0
 	depends = lib32-libpciaccess
 	source = https://github.com/intel/media-driver//archive/intel-media-22.5.4.tar.gz
 	sha256sums = 08d8d041f94b094a2dd5c4739c413b75185521c7f788a02411395ff374ee4ead

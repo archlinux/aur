@@ -7,7 +7,12 @@ pkgdesc="Intel Media Driver for VAAPI — Broadwell+ iGPUs"
 arch=(x86_64)
 url="https://github.com/intel/media-driver/"
 license=(MIT BSD)
-depends=(lib32-gcc-libs lib32-intel-gmmlib lib32-libva lib32-libpciaccess)
+depends=(
+lib32-gcc-libs
+'lib32-intel-gmmlib>=22.2.0'
+'lib32-libva>=2.16.0'
+lib32-libpciaccess
+)
 makedepends=(cmake)
 source=("${url}"/archive/${tarname%-*}-${pkgver}.tar.gz)
 sha256sums=('08d8d041f94b094a2dd5c4739c413b75185521c7f788a02411395ff374ee4ead')
