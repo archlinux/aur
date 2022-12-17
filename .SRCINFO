@@ -1,6 +1,6 @@
 pkgbase = corrosion
 	pkgdesc = Tool for integrating Rust into an existing CMake project
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/corrosion-rs/corrosion
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = corrosion
 	makedepends = git
 	depends = rust
 	depends = cmake
-	source = git+https://github.com/corrosion-rs/corrosion.git#commit=6e34e10f2b6b3f0197bae6a06c82260a9775da49
+	source = git+https://github.com/corrosion-rs/corrosion.git#commit=90ed7e0b73cd5cdffbd0f048751cf423368db439
 	sha256sums = SKIP
 
 pkgname = corrosion
