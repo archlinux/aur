@@ -1,0 +1,22 @@
+--- aaa/configure	2022-12-13 01:08:01.607329918 +0100
++++ bbb/configure	2022-12-13 01:08:58.083857594 +0100
+@@ -433,7 +433,7 @@
+ 	return 0;
+ }
+ EOF
+-    if $CC -I$INCLUDE -o $TMPDIR/dbtest $TMPDIR/dbtest.c -ldb >/dev/null 2>&1; then
++    if $CC -I$INCLUDE -I/usr/include/db5.3 -o $TMPDIR/dbtest $TMPDIR/dbtest.c -ldb-5.3 >/dev/null 2>&1; then
+ 	echo "HAVE_BERKELEY_DB:=y" >>$CONFIG
+ 	echo "yes"
+     else
+--- aaa/misc/Makefile	2022-12-13 12:21:04.709608051 +0100
++++ bbb/misc/Makefile	2022-12-13 12:21:19.966264418 +0100
+@@ -25,7 +25,7 @@
+ 	$(QUIET_CC)$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o rtacct rtacct.c $(LDLIBS) -lm
+
+ arpd: arpd.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) -I$(DBM_INCLUDE) $(CPPFLAGS) $(LDFLAGS) -o arpd arpd.c $(LDLIBS) -ldb
++	$(QUIET_CC)$(CC) $(CFLAGS) -I$(DBM_INCLUDE) $(CPPFLAGS) $(LDFLAGS) -o arpd arpd.c $(LDLIBS) -ldb-5.3
+
+ ssfilter.tab.c: ssfilter.y
+ 	$(QUIET_YACC)$(YACC) -b ssfilter ssfilter.y
