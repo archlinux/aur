@@ -6,7 +6,7 @@ set -u
 _pkgnick='Net_SMTP'
 _pkgnickl="${_pkgnick,,}"
 pkgname="pear-${_pkgnickl//_/-}"
-pkgver='1.8.1'
+pkgver='1.10.1'
 pkgrel='1'
 pkgdesc="an implementation of the SMTP protocol using PEAR's Net_Socket class"
 arch=('any')
@@ -20,7 +20,7 @@ options=('!strip')
 _verwatch=("http://pear.php.net/package/${_pkgnick}/download" "\([0-9]\+\.[0-9]\+\.[^\.]\+\).*" 't')
 source=("http://download.pear.php.net/package/${_pkgnick}-${pkgver}.tgz")
 noextract=("${_pkgnick}-${pkgver}.tgz")
-sha256sums=('8dce06f8ca4cd3c14e68817e4802fea1518428ddc97bf8b404a40feaa3e8a577')
+sha256sums=('f7024a4788c88dd2db24c67569e75dabf9dfc0a9e81f9f0e47ee5680ec35b4d1')
 
 package() {
   set -u
