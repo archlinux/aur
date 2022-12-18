@@ -1,6 +1,6 @@
 pkgbase = python-tryton
 	pkgdesc = Tryton desktop client
-	pkgver = 6.6.0
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://tryton.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-tryton
 	optdepends = python-goocalendar: calendar support
 	provides = tryton
 	conflicts = tryton
-	source = https://pypi.org/packages/source/t/tryton/tryton-6.6.0.tar.gz
-	sha512sums = f226bd4c3a908f76c55bf3007859a26ba010a3aceb1f2519378aeed06a7f539090e2f0a9b62b6663badbd680ec08ce3db8d62f18e91661081ffdf7e1d3eb1dd8
+	source = https://pypi.org/packages/source/t/tryton/tryton-6.6.1.tar.gz
+	sha512sums = a05a06488eb830e6d710ef00c93f384a9773b676333f865d2cee1a5a172ae08f62f4fa84ed078003cd2535ea892532a2348de78d7e23c142497d2e4a3e2d55eb
 
 pkgname = python-tryton
