@@ -11,8 +11,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.5.1
-pkgrel=5
+pkgver=3.6.0
+pkgrel=4
 pkgdesc="A translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -27,7 +27,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-sha256sums=('d12c30a9eacdeaab493c0d1c9f88eb337c9cbb5bb40744c751bdd5a5af166ab6')
+b2sums=('f57b57bb460bf4cb3d601f981e3315b164bcf2f6da1f1b7e72f9ce771e58e4c88619833ca366b6a7c70ed1032bcf3c959f81d60254e136b40fb715937a7e5a59')
 
 build() {
   cmake -B build -S $_pkgbase-$pkgver \
