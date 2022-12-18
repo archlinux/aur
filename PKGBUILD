@@ -4,15 +4,15 @@
 
 pkgname='karbowanecwallet-bin'
 _pkgname='KarbowanecWallet'
-pkgver=1.7.10
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency'
 arch=('x86_64')
 url='https://karbo.io'
 license=('custom')
 depends=('qt5-networkauth')
-source=("$pkgname-$pkgver.deb::https://github.com/seredat/karbowanecwallet/releases/download/v.1.7.10/Karbo-wallet-ubuntu-20.04-v.1.7.10.tar.gz")
-sha256sums=('863BC7E6FF743629E33A23C6B7AFA70910B85F0C101788E1C2660AE786002B02')
+source=("$pkgname-$pkgver.deb::https://github.com/seredat/karbowanecwallet/releases/download/v.1.8.4/Karbo-wallet-ubuntu-22.04-v.1.8.4.tar.gz")
+sha256sums=('0F2333E7EB96FCA49195263320D0725BE4DF8AB4349BB4D3C7CA29B8C29B6001')
 
 prepare() {
   cd "$srcdir"
