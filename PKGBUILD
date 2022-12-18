@@ -1,7 +1,7 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 pkgname=kitsas
 _reponame=kitupiikki
-pkgver=3.2.1
+pkgver=3.3
 _repover="${pkgver//_/-}"
 pkgrel=1
 epoch=
@@ -23,16 +23,13 @@ install=
 changelog=
 source=(
 	"https://github.com/artoh/$_reponame/archive/v$_repover.tar.gz"
-	"0001_dont_process_pdf_as_image.patch"
 )
 noextract=()
-sha256sums=('79574ceefe457eae5e9174577979871618c7cb32bbdd35cce234ff6219017432'
-            'f0cea2431af21d7640c869856ce16609d340fe45c2c997e72123cea78febc454')
+sha256sums=('f4e84f33241a2f00c0230452f4723290bd07fc66c80479c3aa1ac966d28d034b')
 validpgpkeys=()
 
 prepare() {
 	cd "$_reponame-$_repover"
-	patch -N -p1 -i "${srcdir}/0001_dont_process_pdf_as_image.patch"
 }
 
 build() {
@@ -46,5 +43,6 @@ package() {
 	cd "$_reponame-$_repover/$pkgname"
 	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 ../$pkgname.png "$pkgdir/usr/share/icons/$pkgname.png"
 }
 
