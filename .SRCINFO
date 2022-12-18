@@ -1,0 +1,18 @@
+pkgbase = firefox-gnome-theme-git-nofirefox
+	pkgdesc = A GNOME theme for Firefox (does not contain firefox dep)
+	pkgver = 108.r9.gecfc167
+	pkgrel = 1
+	url = https://github.com/rafaelmardojai/firefox-gnome-theme
+	install = firefox-gnome-theme-git-nofirefox.install
+	arch = any
+	license = custom
+	makedepends = git
+	provides = firefox-gnome-theme
+	provides = firefox-gnome-theme-git
+	conflicts = firefox-gnome-theme-git
+	source = firefox-gnome-theme-git-nofirefox::git+https://github.com/rafaelmardojai/firefox-gnome-theme.git
+	source = INSTALL.md
+	sha256sums = SKIP
+	sha256sums = f0fc2ccb43b813174e329fef74ab37a8cbfecd60168dbe05ccba999cfd8d222a
+
+pkgname = firefox-gnome-theme-git-nofirefox
