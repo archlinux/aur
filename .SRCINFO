@@ -1,0 +1,15 @@
+pkgbase = gxkb-ru-by-flags
+	pkgdesc = X11 keyboard indicator and switcher with Russian and Belarusian flags included
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://zen-tools.github.io/gxkb
+	arch = x86_64
+	license = GPL2
+	depends = libxklavier
+	depends = libwnck3
+	depends = gtk3
+	conflicts = gxkb
+	source = https://github.com/kyak/gxkb-ru-by-flags/archive/87b9dfe917be7ba6f7aae8ae73f781f94833d517.tar.gz
+	sha256sums = 2c8a516f78a2c5c4fcb66c327c1be0ec020fecc79e1305129717f05a66272ede
+
+pkgname = gxkb-ru-by-flags
