@@ -4,14 +4,14 @@
 _base=dicttoxml
 pkgname=python-${_base}
 pkgdesc="Converts a Python dictionary or other native data type into a valid XML string"
-pkgver=1.7.4
-pkgrel=2
+pkgver=1.7.15
+pkgrel=1
 arch=(any)
 url="https://github.com/quandyfactory/${_base}"
 license=(GPL)
 depends=(python)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('91abcf2b9b248717618e9fc1c8694e881b9deaa16438dd4674f94a22b4aabfdab3b13f95c3d44a60577d49eca82fb268f59b33d1312cf5388bdaf949a2865cbf')
+sha512sums=('0c9ca5381563a145888fd7a2525a1bac6c59453b123194956e354237f9da78668590d10cc87a21e50f1020e8d1bc2dac018be264fb441652b1f74abefc38890c')
 
 build() {
   cd ${_base}-${pkgver}
