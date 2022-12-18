@@ -5,7 +5,7 @@
 # Contributor: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=bilibili-bin
 _pkgname=bilibili
-pkgver=1.7.2
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('custom')
@@ -17,7 +17,7 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}"
         "${_pkgname}.png"
         "${_pkgname}.desktop")
-sha256sums=('47addbfa12d9ad385d0ffc8a039d0fad9a817bf2f41726fd0b214db104e9a054'
+sha256sums=('944052ecc5eb4799ed6138ce24abad41117141ce1c78b35a101a1f1723daa255'
             'cd7961420bae8fb54b8523bb8b3190ce1cfb584b73f391bad52ca7a354b1b76f'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             'e8b7502721d837ee056eeb47fe38cbe23d6a9d6fff8228b976543e33d74ea2e5')
