@@ -1,15 +1,16 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap
-pkgver="0.5.0"
+pkgver="0.5.2"
 pkgrel=1
 pkgdesc='a simplistic papermc helper'
 url='https://github.com/talwat/pap'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/talwat/pap/archive/v$pkgver.tar.gz")
 arch=('any')
 license=('MIT')
-sha256sums=('5662a10c3f78d1a1552f6893fd42d6fe4106150a791a5e18de610d472a02c381')
+sha256sums=('7f4fd6dae8a7b1208b020f9ee461bd3caec7c364125cc07ea54ef6eaaabdea9d')
 makedepends=('go')
 depends=('git' 'pacman')
+optdepends=('java-runtime: running the downloaded jarfiles')
 
 build () {
   cd "$pkgname-$pkgver"
