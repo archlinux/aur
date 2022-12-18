@@ -1,7 +1,7 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-installer
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="An open source UTAU successor - installer script for local updating"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
