@@ -1,0 +1,16 @@
+pkgbase = btcli
+	pkgdesc = A simple, easy to use, CLI bluetooth connections manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/a4to/btcli
+	arch = any
+	license = MIT
+	source = https://concise.cc/pkg/btcli-0.1.0-1-any.pkg.tar.zst
+	source = https://concise.cc/pkg/btcli-0.1.0-1-any.pkg.tar.zst.sig
+	validpgpkeys = 9A1F3F41DDA55A60331CB8DD3714CB0967D15980
+	md5sums = da0f1e2749c1a4e9b143fcf3ba0e6ed1
+	md5sums = 3f538d3a7747690c5906347a9b56acf7
+	sha512sums = 61142e74ccd70ef40f25a4064235504ee32ed461b5f702c1d9d6159623f0b2f0b58d5146ad56c45a35c8e2a3b521b1054041a844c093103011ddb4e55f3fcfc4
+	sha512sums = eeb5edbbabccd266ebbfb06656bc4d2bd983eb6b9c821b66f55d3cb6e94bcc022e0069b8f9c8fa38fa925c94b618ff71d1945349e2cac332d35f09fac3bcbe69
+
+pkgname = btcli
