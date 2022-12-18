@@ -2,7 +2,7 @@
 
 pkgname=texttest
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for text-based functional testing"
 arch=('any')
 url="https://github.com/texttest/texttest"
@@ -18,7 +18,7 @@ depends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('f46a26375073cab05e0c0b56bbb31108cc3087f096e9862465a6d74556b8e2ab')
 
-_archive="$_pkgname-$pkgver"
+_archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"

@@ -1,7 +1,7 @@
 pkgbase = texttest
 	pkgdesc = A tool for text-based functional testing
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/texttest/texttest
 	arch = any
 	license = LGPL
