@@ -1,0 +1,8 @@
+pkgbase = draco_static_lib_compat
+	pkgdesc = A dummy libdraco.a to fix draco package
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+
+pkgname = draco_static_lib_compat
