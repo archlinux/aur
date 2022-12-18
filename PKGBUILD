@@ -16,9 +16,9 @@ pkgname=(
   'kodi-rockpro64-git-eventclients' 'kodi-rockpro64-git-tools-texturepacker' 'kodi-rockpro64-git-dev'
 )
 
-_commitnumber=61461
-_commit=5abc2a6fd846cce9a8a248cdad288b445ce21202
-_libreelec_patch_commit=fcd644f0173a04df19356813c25d48a97ddb2c04
+_commitnumber=61791
+_commit=c19adeae47e70143265395f7ddb56cfbffd14647
+_libreelec_patch_commit=9f64444be3dc4e9d50e0a40928787aa079ef0432
 
 # set this to anything to build with clang
 # recommend manually setting -DUSE_LTO=OFF to -DUSE_LTO=$(nproc) in build()
@@ -38,7 +38,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
-  'libinput' 'libxkbcommon' 'flatbuffers' 'patchutils'
+  'libinput' 'libxkbcommon' 'flatbuffers' 'pipewire' 'pcre' 'patchutils'
 )
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
@@ -52,6 +52,7 @@ _fmt_version="9.1.0"
 _spdlog_version="1.10.0"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
+_flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
 _rapidjson_version="1.1.0"
 _name="gbm_nexus-$pkgver-$_codename"
@@ -66,14 +67,14 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/rapidjson-$_rapidjson_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
+#  "http://mirrors.kodi.tv/build-deps/sources/rapidjson-$_rapidjson_version.tar.gz"
   "ArchARM-kodi-init-v$_init_version.tar.gz::https://github.com/graysky2/kodi-standalone-service/archive/v$_init_version.tar.gz"
   kodi.config.txt
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/multimedia/ffmpeg/patches/v4l2-drmprime/ffmpeg-001-v4l2-drmprime.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/ffmpeg/ffmpeg-0002-WIP-deint-filter.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/ffmpeg/ffmpeg-0003-libavfilter-v4l2deinterlace-dequeue-both-destination.patch"
-  "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/ffmpeg/ffmpeg-0004-v4l2request-hevc-increase-max-slices.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/ffmpeg/ffmpeg-0006-deint_v4l2m2m-increase-input-and-output-buffers.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/projects/Rockchip/patches/ffmpeg/ffmpeg-0006-libavfilter-v4l2deinterlace-support-more-formats-aut.patch"
 
@@ -83,6 +84,8 @@ source=(
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/mediacenter/kodi/patches/drmprime-filter/0004-DVDVideoCodecDRMPRIME-Leave-deinterlace-filter-activ.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/mediacenter/kodi/patches/drmprime-filter/0005-SetVideoInterlaced-Set-and-unset-deinterlace-method-.patch"
   "https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/mediacenter/kodi/patches/drmprime-filter/0006-DVDVideoCodecDRMPRIME-Close-deinterlace-filter-on-er.patch"
+
+  "0001-fix-mesa-22.3.0-build.patch::https://github.com/LibreELEC/LibreELEC.tv/raw/${_libreelec_patch_commit}/packages/mediacenter/kodi/patches/kodi-100.01.fix-mesa-22.3.0-build.patch"
 )
 backup=(boot/kodi.config.txt etc/conf.d/kodi-standalone)
 noextract=(
@@ -94,10 +97,11 @@ noextract=(
   "spdlog-$_spdlog_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
+  "flatbuffers-$_flatbuffers_version.tar.gz"
   "libudfread-$_libudfread_version.tar.gz"
-  "rapidjson-$_rapidjson_version.tar.gz"
+#  "rapidjson-$_rapidjson_version.tar.gz"
 )
-sha256sums=('b5ce922c6113d6dd4377e076777ce2bfa42835b35581f78b16126d329d515f1c'
+sha256sums=('a8092bfde254c6dc6ff61da1c89cc49ed52cca8fa836dcc48edfbd01ae826929'
             'f38c4a4e7a4f4da6d8e83b8852489aa3bb6588a915dc41f5ee89d9aad305a06e'
             '584f62a3896794408d46368e2ecf2c6217ab9c676ce85921b2d68b8961f49dfc'
             '719130091e3adc9725ba72df808f24a14737a009dca5a4c38c601c0c76449b62'
@@ -107,22 +111,22 @@ sha256sums=('b5ce922c6113d6dd4377e076777ce2bfa42835b35581f78b16126d329d515f1c'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '697f91700237dbae2326b90469be32b876b2b44888302afbc7aceb68bcfe8224'
             '2bf16726ac98d093156195bb049a663e07d3323e079c26912546f4e05c77bac5'
-            'bf7ced29704a1e696fbccf2a2b4ea068e7774fa37f6d7dd4039d0787f8bed98e'
+            '9ddb9031798f4f8754d00fca2f1a68ecf9d0f83dfac7239af1311e4fd9a565c4'
             'b94c70baa45e30346224ceecfab031dd183e09303b1f97d6522f9941da9b0067'
             '92d063169017bf9e1770d8a7cce77c0c55d197692d10820a7e4aecad9e58178c'
             '050db02dabea05e4b651df1f2107fe062c197391e9e9eac519a3eac9c3c5fc5b'
-            'f704a658d9c2e8b3ca445a551a58571c62c2e3874829ff2ceb5b8ed1c622bdd7'
+            'b9304095fa7e8fa2585dd353c975f0fdaee00914cb55934d8bf82b91dff1795a'
             '2a218cce1b7514931c458a1ae886d27531b9d4be8253eefb16f8083450cbfc93'
             'a5dbfd115caae0c4d53bd8f3aa65ea36db8b7e2891a33c72cd03ceaaa459d9b1'
-            '1212ce0e4d285cd1f03a693a891b3787d52d6c125a7e5e0310a3d2b54d6b7627'
             'b88708f4eb3ff2fe01c01b5d14ad7c4b58e2c2951ac1362292f3db9437bf9c68'
             '2d320a49b5f11a8543c54e891c82978e199ea5bbe235ea56b3aec8df9ff804b5'
-            '9544286b36820de14e02ceb39e29f5b10523fb565ebf05b4d85fdf013c6c6de5'
-            '7c9da9915bbfb23ad9506e373024b9bc60ddc9fdfeb3e59bb207205e905a4cb5'
-            'be87e8406d094d0cb2c660079dc7ffa0cd327f3d8fd15bebcff6edd1069f687c'
-            'ede83991c9c30008fffa257a355a1669597554fe0352f11382274482b4dc7370'
-            '227885d22432019aeabeb8f5f567939f5d0eb340f57a51727b16c711994084a7'
-            '7b16233c5a1dad2fa7ad20a09a723e35c99759abdb9be8fecdef9750c502ac30')
+            '38cc2f33ab5ee09bd9eea5b661268f20ecf132d3e7f9789286a0e30d83f811fd'
+            'a8523e228fabf7869ce31195c2b88f0de50773fa005086a64e6d1dc2f5b808a4'
+            '2fbda3ecd0065373c608d15f7cf94052879c9d39ddd4df78db46c287871c9f56'
+            '3e441417b30d9f398b9f041d28a6404d5b52903b98eff78539f5927f2179471b'
+            '63066f9a1cc5a5eda418165f0e338553c9d86a23cf4b92a29bb725e3c3f15c72'
+            '0349babb16dd6572dc51fade9eda53dc19e4528839651ac518a6f7ca80e1d902'
+            '4ef526800e59f733ad7185d1487b3ac4dd6da4b0d9753be98a9347f13cf979f1')
 
 prepare() {
   [[ -d kodi-build ]] && rm -rf kodi-build
@@ -138,16 +142,13 @@ prepare() {
   git apply -v ../ffmpeg-001*.patch.mod
   git apply -v ../ffmpeg-0002*.patch.mod
   git apply -v ../ffmpeg-0003*.patch.mod
-  git apply -v ../ffmpeg-0004*.patch.mod
   git apply -v ../ffmpeg-0006*.patch.mod
 
   cd ..
   cd xbmc-${_commit}
 
   git apply -v ../0001*.patch
-  sed '/^+bool CDVDVideoCodecDRMPRIME::FilterOpen(const std::string& filters, bool test)$/i+#include "utils\/StringUtils.h";' ../0002-WIP-DRMPRIME-deinterlace-filter.patch > ../0002-WIP-DRMPRIME-deinterlace-filter.patch.sed
-  rediff ../0002-WIP-DRMPRIME-deinterlace-filter.patch ../0002-WIP-DRMPRIME-deinterlace-filter.patch.sed > ../0002-WIP-DRMPRIME-deinterlace-filter.patch.mod
-  git apply -v ../0002*.patch.mod
+  git apply -v ../0002*.patch
   git apply -v ../0003*.patch
   git apply -v ../0004*.patch
   git apply -v ../0005*.patch
@@ -195,6 +196,7 @@ build() {
     -DENABLE_INTERNAL_SPDLOG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
+#    -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=OFF
@@ -209,7 +211,8 @@ build() {
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
-    -DRAPIDJSON_URL="$srcdir/rapidjson-$_rapidjson_version.tar.gz"
+    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
+#    -DRAPIDJSON_URL="$srcdir/rapidjson-$_rapidjson_version.tar.gz"
     -DVERBOSE=ON
     -DAPP_RENDER_SYSTEM=gles
     -DCORE_PLATFORM_NAME="x11 gbm"
@@ -227,7 +230,7 @@ package_kodi-rockpro64-git() {
     'libplist' 'libpulse' 'libxslt' 'lirc' 'mariadb-libs' 'mesa'
     'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
-    'libinput' 'libxkbcommon' 'polkit' 'linux>=5.4.35' 'lzo' 'flatbuffers' 'pipewire'
+    'libinput' 'libxkbcommon' 'polkit' 'linux>=5.4.35' 'lzo' 'flatbuffers' 'pipewire' 'pcre'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
