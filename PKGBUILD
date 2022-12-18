@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=yandex-cloud-bin
-pkgver=0.96.0
+pkgver=0.99.0
 pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 provides=('yandex-cloud')
 source=("yc-$pkgver::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
-md5sums=('1a212f9e250c0ae990944d3f3d07f15a')
+sha256sums=('78a8749a7c9cc06227c9fb6c023415a95549c9f2d65468ef34fa7d0b10599037')
 
 # TODO: Get the latest stable version.
 #pkgver() {
