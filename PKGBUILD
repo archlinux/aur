@@ -1,13 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=tex2page-git
-pkgver=20201115
-pkgrel=2
+pkgver=20221218
+pkgrel=1
 pkgdesc="Lisp program for making Web pages from TeX documents"
 arch=('any')
 url="https://github.com/ds26gte/tex2page"
 license=('custom')
-depends=('bash' 'sbcl')
+depends=('bash' 'ecl')
 makedepends=('git' 'ghostscript' 'texlive-formatsextra' 'texlive-bibtexextra' 'texlive-core' 'ttf-ubuntu-font-family')
 source=("git+$url")
 sha256sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  ./configure --dialect=sbcl --prefix=/usr
+  ./configure --dialect=ecl --prefix=/usr
   # creating the documentation
   yes "s"|luatex index || true
   mpost lambda.mp
