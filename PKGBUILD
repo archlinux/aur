@@ -1,7 +1,8 @@
-# Maintainer: Denis Kasak <dkasak AT termina DOT org DOT uk>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Denis Kasak <dkasak AT termina DOT org DOT uk>
 
 pkgname=polyfile
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files."
 arch=(any)
@@ -22,7 +23,7 @@ prepare() {
     git submodule init
     git config submodule.kaitai_struct_formats.url "$srcdir/kaitai_struct_formats"
     git config submodule.file.url "$srcdir/file"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
