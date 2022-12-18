@@ -1,14 +1,15 @@
 pkgbase = rocfft
 	pkgdesc = Next generation FFT implementation for ROCm
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://rocfft.readthedocs.io/en/latest/library.html
 	arch = x86_64
 	license = MIT
 	makedepends = rocm-cmake
 	depends = hip
+	depends = python
 	options = !lto
-	source = rocfft-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-5.4.0.tar.gz
-	sha256sums = d35a67332f4425fba1824eed78cf98d5c9a17a422614ff3f4cba2461df952336
+	source = rocfft-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-5.4.1.tar.gz
+	sha256sums = b2383cb6dfac285bae37733356dbd0f56b008f14db4b5a05bea8d28624cccffa
 
 pkgname = rocfft
