@@ -1,0 +1,16 @@
+pkgbase = ffmpeg-gpl-bin
+	pkgdesc = FFmpeg minimal for apps usage
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/BtbN/FFmpeg-Builds
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	provides = ffmpeg
+	conflicts = ffmpeg
+	source_x86_64 = https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz
+	md5sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linuxarm64-gpl.tar.xz
+	md5sums_aarch64 = SKIP
+
+pkgname = ffmpeg-gpl-bin
