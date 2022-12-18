@@ -3,7 +3,7 @@
 pkgname=greptimedb-bin
 pkgver=0.1.0.20221212
 _pkgvergh=v0.1.0-alpha-20221212-weekly
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source time-series database.'
 arch=('x86_64')
 url='https://github.com/GreptimeTeam/greptimedb'
@@ -16,7 +16,7 @@ source=("greptime-linux-amd64-${pkgver}.tgz::https://github.com/GreptimeTeam/gre
     "greptimedb.service"
     "greptimedb-tmpfile.conf"
     "greptimedb.toml")
-sha256sums=("e0e7e3bab1117c1dbdf8227d174ae4cab4ad59b4d0962520e79a42f21dfc85c8")
+sha256sums=("e0e7e3bab1117c1dbdf8227d174ae4cab4ad59b4d0962520e79a42f21dfc85c8"
     "SKIP"
     "SKIP"
     "SKIP"
