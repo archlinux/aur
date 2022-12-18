@@ -1,6 +1,6 @@
-# Maintainer: Oleg "KawaiDesu" Vasilyev <ovasiliev@proton.me>
+# Maintainer: Oleg "KawaiDesu" Vasilev <ovasiliev@proton.me>
 pkgname=victoriametrics-bin
-pkgver=1.83.0
+pkgver=1.85.1
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$
         "victoriametrics.sysusers"
         "victoriametrics.tmpfiles"
         "victoriametrics.default")
-sha256sums=('9dd7ea381558d3f5b75839bf04e31f5fb5f41a97b224e01eeda8164d3473c4a6'
+sha256sums=('ebf14386a9b5caa7eb7e9f18d042bc43d386203d38a05c55ff20aaf8f1513464'
             'c47defa8ff60515a704daeb01eedebf08e15e85bcd37217c40c7133b6302c967'
             'ad4911f772a1a52d1bd5ba4236d27a84aabbb10fc057d2906bf50f30d179d4a4'
             'e26f3359d0afc3bf0f236a9b4b05554ed9256d477ef4b4f1b013898fac7a723c'

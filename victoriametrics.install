@@ -1,15 +1,6 @@
-post_upgrade() {
-	# Upgrading from release <1.28.0 to release >=1.28.0
-	if [[ "$(vercmp "$2" "1.28.0")" -lt "0" ]] && [[ "$(vercmp "$1" "1.28.0")" -gt "-1" ]]; then
-		echo ':: Warning: release 1.28.0 has changed on-disk format for inverted index inside'
-		echo ':: indexdb folder. It will be converted in background on the first run.'
-		echo ':: VictoriaMetrics performance can degrade during this conversion.'
-		echo ':: The conversion is complete after two lines starting with finished round 2 of'
-		echo ':: background conversion appear in logs. It is impossible downgrading to older'
-		echo ':: releases after starting release 1.28.0 or later.'
-	fi
-}
-
 post_install() {
-	echo ':: You can adjust settings at /etc/default/victoriametrics'
+	echo ':: Warning! From time to time there are breaking changes in VictoriaMetrics.
+	echo ':: This package will not warn you about them, so please,
+	echo ':: track it by yourself in changelog and follow the upgrade guides.'
+	echo ':: Settings could be adjusted in /etc/default/victoriametrics'
 }
