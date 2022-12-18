@@ -2,11 +2,36 @@ Changelog
 =========
 
 
+v2.4.166 (2022-11-28)
+---------------------
+
+New
+~~~
+- Basic support for listing, enabling and disabling decaying models.
+  [Raphaël Vinot]
+- [tests] Test for local tags. [Raphaël Vinot]
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump deps, version. [Raphaël Vinot]
+- [types] added azure-application-id. [iglocska]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+
+Fix
+~~~
+- [describetypes] updated with the latest output from MISP. [iglocska]
+- [types] added missing type value. [iglocska]
+
+
 v2.4.165.1 (2022-11-10)
 -----------------------
 
 Changes
 ~~~~~~~
+- Bump changelog. [Raphaël Vinot]
 - Bump deps. [Raphaël Vinot]
 
 Fix

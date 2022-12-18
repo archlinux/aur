@@ -4,7 +4,7 @@
 
 pkgname=python-pymisp
 _pkg="${pkgname#python-}"
-pkgver=2.4.165.1
+pkgver=2.4.166
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
@@ -27,7 +27,13 @@ optdepends=(
 	'python-urllib3: python-pymisp[brotli] support'
 	'python-validators: python-pymisp[virustotal] support'
   'python-reportlab: python-pymisp[reportlab] support')
-makedepends=('git' 'python-poetry-core' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(
+	'git'
+	'python-build'
+	'python-installer'
+	'python-poetry-core'
+	'python-setuptools'
+	'python-wheel')
 changelog=CHANGELOG.txt
 source=("$pkgname::git+$url#tag=v$pkgver?signed"
         'remove-datafiles.patch')
@@ -52,7 +58,7 @@ build() {
 
 package() {
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -sv \
