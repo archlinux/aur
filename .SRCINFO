@@ -1,0 +1,20 @@
+pkgbase = pypy3-bin
+	pkgdesc = A Python implementation written in Python, JIT enabled
+	pkgver = 7.3.10
+	pkgrel = 3
+	url = https://pypy.org
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = bzip2
+	depends = openssl
+	depends = zlib
+	provides = pypy3
+	conflicts = pypy3
+	options = !buildflags
+	source_x86_64 = https://downloads.python.org/pypy/pypy3.8-v7.3.10-linux64.tar.bz2
+	sha512sums_x86_64 = 6824d813d086e50285e7104133e7e5f98c9da66e69730416cd13d00380a43f3865e2514a153db5f6022dd0de9ff61ebcd40f72e5924939d05c8eb83cd6467b9f
+	source_aarch64 = https://downloads.python.org/pypy/pypy3.8-v7.3.10-aarch64.tar.bz2
+	sha512sums_aarch64 = 26a27d75cf47bd8129eea906b03c9bdd457c33d0da5c4c595ff5f6d8b2f01e0f27ef05a754f84805974d62aa8e7f0fce78b49a75953d1af1d3f39833d1b2811c
+
+pkgname = pypy3-bin
