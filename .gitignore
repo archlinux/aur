@@ -1,0 +1,12 @@
+# Ignore Python Wheels
+*.whl
+
+# Ignore Python source distribution
+*.tar.gz
+
+# Ignore Archinux packages
+*.pkg.tar.*
+
+# Ignore common directories.
+/src/
+/pkg/
