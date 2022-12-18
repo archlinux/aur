@@ -1,13 +1,10 @@
-# Maintainer: dreieck
+# Maintainer: Matthias Mailänder <matthias@mailaender.name>
+# Contributor: dreieck
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgbase=python2-wxpython3
-pkgname=(
-  python2-wxpython3-gtk2
-  python2-wxpython3-gtk3
-)
+pkgname=(python2-wxpython3)
 pkgver=3.0.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Classic wxWidgets GTK GUI toolkit (legacy version 3.x) for Python2."
 arch=(
   'i686'
@@ -16,29 +13,18 @@ arch=(
 license=('custom:wxWindows')
 url="https://www.wxpython.org"
 
-# Since this is a split package, we need to list dependencies of the individual sub-packages also as makedependencies globally.
-# In order to not double the information, we use helper variables, where we specify the runtime dependencies.
-_depends_general=(
+makedepends=(
+  'glu'
+  'mesa' # I don't know if this is enough to be just a makedepend. We compile with opengl support. Does it still run with mesa not available?
+  'python2-setuptools'
   'expat'
   'gstreamer0.10-base'
   'libjpeg'
   'libpng'
   'libtiff'
   'python2'
-)
-_depends_gtk2=(
-  'wxgtk2'
-)
-_depends_gtk3=(
-  'wxgtk3'
-)
-makedepends=(
-  'glu'
-  'mesa' # I don't know if this is enough to be just a makedepend. We compile with opengl support. Does it still run with mesa not available?
-  'python2-setuptools'
-  "${_depends_general[@]}"
-  "${_depends_gtk2[@]}"
-  "${_depends_gtk3[@]}"
+  'sdl'
+  'wxwidgets3.0'
 )
 
 source=(
@@ -76,15 +62,9 @@ prepare() {
   # Fix editra removal (FS#63563)
   msg2 "Applying patch  'fix-editra-removal.patch' ..."
   patch -Np2 -i ../../fix-editra-removal.patch
-
-  mkdir "${srcdir}/build-gtk2"
-  mkdir "${srcdir}/build-gtk3"
-
-  cp -r "${srcdir}/wxPython-src-${pkgver}" "${srcdir}/build-gtk2"/
-  cp -r "${srcdir}/wxPython-src-${pkgver}" "${srcdir}/build-gtk3"/
 }
 
-_configure_opts_general=(
+_configure_opts=(
     --prefix='/usr'
     --libdir='/usr/lib'
     --includedir='/usr/include'
@@ -327,16 +307,9 @@ _configure_opts_general=(
     --with-zlib=sys
     --with-expat=sys
     --with-x=sys
-)
 
-_configure_opts_gtk2=(
-  --with-gtk=2
-  --with-wx-config='/usr/bin/wx-config'
-)
-
-_configure_opts_gtk3=(
-  --with-gtk=3
-  --with-wx-config='/usr/bin/wx-config-gtk3'
+    --with-gtk=3
+    --with-wx-config='/usr/lib/wx/config/gtk3-unicode-3.0'
 )
 
 # Old, non-maintained software. Use older C/C++ standard.
@@ -347,90 +320,34 @@ _CXX_std='gnu++14' # gnu++11 # gnu++14 # gnu++17
 _append_to_CFLAGS_after_configure=' -Wno-error=format-security -Wno-error=register -Wno-error=deprecated-declarations -Wno-error=alloc-size-larger-than= -Wno-error=write-strings -Wno-error=return-local-addr -Wno-error=attributes' # Or just use -Wno-error to catch all.
 _append_to_CXXFLAGS_after_configure="${_append_to_CFLAGS_after_configure}"
 
-_build_gtk2() {
-  cd "${srcdir}/build-gtk2/wxPython-src-${pkgver}"
-
-  CFLAGS+=" -std=${_C_std}"
-  CXXFLAGS+=" -std=${_CXX_std}"
-  export CFLAGS
-  export CXXFLAGS
-
-  ./configure "${_configure_opts_general[@]}" "${_configure_opts_gtk2[@]}"
-
-  # msg2 "DEBUG: Spawning a shell."
-  # bash
-
-  CFLAGS+="${_append_to_CFLAGS_after_configure} -std=${_C_std}"
-  CXXFLAGS+="${_append_to_CXXFLAGS_after_configure} -std=${_CXX_std}"
-  export CFLAGS
-  export CXXFLAGS
-
-  cd wxPython
-  python2 setup.py WX_CONFIG='/usr/bin/wx-config' WXPORT=gtk2 UNICODE=1 build
-}
-
-_build_gtk3() {
-  cd "${srcdir}/build-gtk3/wxPython-src-${pkgver}"
-
-  CFLAGS+=" -std=${_C_std}"
-  CXXFLAGS+=" -std=${_CXX_std}"
-  export CFLAGS
-  export CXXFLAGS
-
-  ./configure "${_configure_opts_general[@]}" "${_configure_opts_gtk3[@]}"
-
-  # msg2 "DEBUG: Spawning a shell."
-  # bash
-
-  CFLAGS+="${_append_to_CFLAGS_after_configure} -std=${_C_std}"
-  CXXFLAGS+="${_append_to_CXXFLAGS_after_configure} -std=${_CXX_std}"
-  export CFLAGS
-  export CXXFLAGS
-
-  cd wxPython
-  python2 setup.py WX_CONFIG='/usr/bin/wx-config-gtk3' WXPORT=gtk3 UNICODE=1 build
-}
-
 build() {
-  msg2 "Building for GTK2 ..."
-  _build_gtk2
+  cd "${srcdir}/wxPython-src-${pkgver}"
 
-  msg2 "Building for GTK3 ..."
-  _build_gtk3
+  CFLAGS+=" -std=${_C_std}"
+  CXXFLAGS+=" -std=${_CXX_std}"
+  export CFLAGS
+  export CXXFLAGS
+
+  ./configure "${_configure_opts[@]}"
+
+  # msg2 "DEBUG: Spawning a shell."
+  # bash
+
+  CFLAGS+="${_append_to_CFLAGS_after_configure} -std=${_C_std}"
+  CXXFLAGS+="${_append_to_CXXFLAGS_after_configure} -std=${_CXX_std}"
+  export CFLAGS
+  export CXXFLAGS
+
+  cd wxPython
+  python2 setup.py WX_CONFIG='/usr/lib/wx/config/gtk3-unicode-3.0' WXPORT=gtk3 UNICODE=1 build
 }
 
-package_python2-wxpython3-gtk2() {
-  pkgdesc="Classic wxWidgets GTK2 GUI toolkit (legacy version 3.x) for Python2."
-  depends=(
-    "${_depends_general[@]}"
-    "${_depends_gtk2[@]}"
-  )
-  provides=(
-    "python2-wxpython=${pkgver}"
-    "python2-wxpython-gtk2=${pkgver}"
-    "python2-wxpython3=${pkgver}"
-    "wxpython=${pkgver}"
-    "wxpython-gtk2=${pkgver}"
-    "wxpython3=${pkgver}"
-    "wxpython3-gtk2=${pkgver}"
-  )
-  conflicts=('wxpython')
-
-  cd "${srcdir}/build-gtk2/wxPython-src-${pkgver}/wxPython"
-
-  python2 setup.py WX_CONFIG='/usr/bin/wx-config-gtk2' WXPORT=gtk2 UNICODE=1 install --root="${pkgdir}" --optimize=1
-  # Rename for python 2
-  for file in "${pkgdir}/usr/bin"/*; do
-    mv -v "${file}" "${file}2"
-  done
-  install -Dvm644 '../docs/licence.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-wxpython3-gtk3() {
+package() {
   pkgdesc="Classic wxWidgets GTK3 GUI toolkit (legacy version 3.x) for Python2."
   depends=(
-    "${_depends_general[@]}"
-    "${_depends_gtk3[@]}"
+    'python2'
+    'sdl'
+    'wxwidgets3.0'
   )
   provides=(
     "python2-wxpython=${pkgver}"
@@ -444,9 +361,9 @@ package_python2-wxpython3-gtk3() {
   conflicts=('wxpython')
   replaces=('wxpython')
 
-  cd "${srcdir}/build-gtk3/wxPython-src-${pkgver}/wxPython"
+  cd "${srcdir}/wxPython-src-${pkgver}/wxPython"
 
-  python2 setup.py WX_CONFIG='/usr/bin/wx-config-gtk3' WXPORT=gtk3 UNICODE=1 install --root="${pkgdir}" --optimize=1
+  python2 setup.py WX_CONFIG='/usr/lib/wx/config/gtk3-unicode-3.0-gtk3' WXPORT=gtk3 UNICODE=1 install --root="${pkgdir}" --optimize=1
   # Rename for python 2
   for file in "${pkgdir}/usr/bin"/*; do
     mv -v "${file}" "${file}2"

@@ -1,7 +1,7 @@
 pkgbase = python2-wxpython3
 	pkgdesc = Classic wxWidgets GTK GUI toolkit (legacy version 3.x) for Python2.
 	pkgver = 3.0.2.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.wxpython.org
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = python2-wxpython3
 	makedepends = libpng
 	makedepends = libtiff
 	makedepends = python2
-	makedepends = wxgtk2
-	makedepends = wxgtk3
+	makedepends = sdl
+	makedepends = wxwidgets3.0
 	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
 	source = fix-plot.patch
 	source = fix-editra-removal.patch
@@ -24,33 +24,11 @@ pkgbase = python2-wxpython3
 	sha256sums = 2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65
 	sha256sums = 559b076f206c44e66b33857f49068d66f59a3fc15b97972486e32a8105885554
 
-pkgname = python2-wxpython3-gtk2
-	pkgdesc = Classic wxWidgets GTK2 GUI toolkit (legacy version 3.x) for Python2.
-	depends = expat
-	depends = gstreamer0.10-base
-	depends = libjpeg
-	depends = libpng
-	depends = libtiff
-	depends = python2
-	depends = wxgtk2
-	provides = python2-wxpython=3.0.2.0
-	provides = python2-wxpython-gtk2=3.0.2.0
-	provides = python2-wxpython3=3.0.2.0
-	provides = wxpython=3.0.2.0
-	provides = wxpython-gtk2=3.0.2.0
-	provides = wxpython3=3.0.2.0
-	provides = wxpython3-gtk2=3.0.2.0
-	conflicts = wxpython
-
-pkgname = python2-wxpython3-gtk3
+pkgname = python2-wxpython3
 	pkgdesc = Classic wxWidgets GTK3 GUI toolkit (legacy version 3.x) for Python2.
-	depends = expat
-	depends = gstreamer0.10-base
-	depends = libjpeg
-	depends = libpng
-	depends = libtiff
 	depends = python2
-	depends = wxgtk3
+	depends = sdl
+	depends = wxwidgets3.0
 	provides = python2-wxpython=3.0.2.0
 	provides = python2-wxpython-gtk3=3.0.2.0
 	provides = python2-wxpython3=3.0.2.0
