@@ -1,12 +1,12 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <douglasimcabral at zohomail dot com>
 pkgname=forticlient-vpn
-pkgver=7.0.0.0018
-pkgrel=2
+pkgver=7.0.7.0246
+pkgrel=1
 pkgdesc="Build through the official package of FortiClient VPN only"
 arch=("x86_64")
 url="https://www.fortinet.com/support/product-downloads"
 license=('custom:fortinet')
-depends=('systemd' 'nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2')
+depends=('systemd' 'nss' 'gtk3' 'libxss' 'polkit' 'openssl' 'libnotify' 'org.freedesktop.secrets' 'libappindicator-gtk2' 'gzip')
 optdepends=(
 	'mate-polkit: for polkit authentication for the MATE'
 	'polkit-gnome: for polkit authentication for the GNOME'
@@ -17,15 +17,15 @@ optdepends=(
 )
 provides=('fortivpn' 'FortiClient')
 install='forticlient-vpn.install'
-source=("https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_${pkgver}_amd64.deb")
-sha256sums=('82e5817048a60ff95d2e88b4a95512f9f0035fa37240ce57580c203b5a8a79c9')
+source=("https://filestore.fortinet.com/forticlient/forticlient_vpn_${pkgver}_amd64.deb")
+sha256sums=('482f245df302417ab19b6501525acae6c62a022eec80baf5ad285a0fb1f5323e')
 
 
 package() {
 
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
-	install -Dm644  "${pkgdir}/lib/systemd/system/forticlient-scheduler.service" "${pkgdir}/usr/lib/systemd/system/forticlient-scheduler.service"
+	install -Dm644  "${pkgdir}/lib/systemd/system/forticlient.service" "${pkgdir}/usr/lib/systemd/system/forticlient.service"
 
 	rm -rf "${pkgdir}/lib"
 

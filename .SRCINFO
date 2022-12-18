@@ -1,7 +1,7 @@
 pkgbase = forticlient-vpn
 	pkgdesc = Build through the official package of FortiClient VPN only
-	pkgver = 7.0.0.0018
-	pkgrel = 2
+	pkgver = 7.0.7.0246
+	pkgrel = 1
 	url = https://www.fortinet.com/support/product-downloads
 	install = forticlient-vpn.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = forticlient-vpn
 	depends = libnotify
 	depends = org.freedesktop.secrets
 	depends = libappindicator-gtk2
+	depends = gzip
 	optdepends = mate-polkit: for polkit authentication for the MATE
 	optdepends = polkit-gnome: for polkit authentication for the GNOME
 	optdepends = polkit-kde-agent: for polkit authentication for the KDE
@@ -23,7 +24,7 @@ pkgbase = forticlient-vpn
 	optdepends = lxqt-policykit: for polkit authentication for the LXQt
 	provides = fortivpn
 	provides = FortiClient
-	source = https://filestore.fortinet.com/forticlient/downloads/forticlient_vpn_7.0.0.0018_amd64.deb
-	sha256sums = 82e5817048a60ff95d2e88b4a95512f9f0035fa37240ce57580c203b5a8a79c9
+	source = https://filestore.fortinet.com/forticlient/forticlient_vpn_7.0.7.0246_amd64.deb
+	sha256sums = 482f245df302417ab19b6501525acae6c62a022eec80baf5ad285a0fb1f5323e
 
 pkgname = forticlient-vpn
