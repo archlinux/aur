@@ -34,15 +34,13 @@ sha256sums=('7845ca9dbfbaf195d6fc6b4c09645a077e73daebcb7fb61b4bb6e8d423625245'
 package() {
     pkgbin=inochi-creator
 
+    # Install icons
     install -Dm644 "$srcdir/$pkgname-256x256.png" "$pkgdir/usr/share/pixmaps/$pkgbin.png"
 
     for size in 16 32 64 128 256 512; do
         install -Dm644 "$srcdir/$pkgname-${size}x${size}.png" \
                "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgbin.png"
     done
-
-	# Install image
-	install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgbin.png"
 
     # Install mime types
 	install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgbin.xml"
