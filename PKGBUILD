@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=108.0b1
+pkgver=109.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         install-dir.patch
         "$pkgname".desktop
 )
-b2sums=('baf8c2fcf04dd781df63449283116dabe565b8d1dd87d97fff02268a18911456f1fdf1f9c4c2b842b17edd7bf163592d9302a7778e5db3b19c2c8e59b5614f89'
+b2sums=('04fe8dbe324b5e49fbe5d422f6a04a464fb9c1b3123ebc4749b0f57223d64a2871f35a9be04bf542a9900b0b5fdd6ad20c4465a7cc6d1676c295362122bd5dc8'
         'SKIP'
         'ba188a0c1359f49390a789621b2c0bec67f4152f62c0dced26b31ec291abccfb5636dba0f8ed1f879e1a2a237e183b96b092d760e04e148a64da18660b87dcfb'
         '3518012290b5b358d882d7d12bc2455345b89cef4abfbccaca025dfb935fcefe49806dd534e75b10c0c6a3495b7133a7feb3f11d7773a0ce252f8d68e15b5a24')
@@ -183,7 +183,7 @@ app.partner.archlinux=archlinux
 END
 
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
+    install -Dvm644 comm/mail/branding/thunderbird/default${i}.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
 
