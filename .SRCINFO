@@ -1,7 +1,7 @@
 pkgbase = openutau-installer
 	pkgdesc = An open source UTAU successor - installer script for local updating
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = openutau-installer
 	conflicts = openutau-git
 	conflicts = openutau-bin
 	options = staticlibs
-	source = https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-linux-x64.tar.gz
+	source = https://github.com/stakira/OpenUtau/releases/latest/download/OpenUtau-linux-x64.tar.gz
 	source = openutau
 	source = OpenUtau.desktop
 	source = openutau.svg

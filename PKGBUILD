@@ -1,7 +1,7 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-installer
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source UTAU successor - installer script for local updating"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('dotnet-host' 'dotnet-runtime' 'dotnet-targeting-pack' 'dotnet-sdk' 'fuse2' 'fuse3' 'fuse-common')
 options=(staticlibs)
 conflicts=('openutau' 'openutau-git' 'openutau-bin')
-source=("https://github.com/stakira/OpenUtau/releases/download/OpenUtau-Latest/OpenUtau-linux-x64.tar.gz"
+source=("https://github.com/stakira/OpenUtau/releases/latest/download/OpenUtau-linux-x64.tar.gz"
         "openutau"
         "OpenUtau.desktop"
         "openutau.svg")
