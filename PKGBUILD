@@ -1,14 +1,21 @@
 # Maintainer: TwoLeaves <ohneherren@gmail.com>
+# Maintainer: kumax <kumax2048@yandex.com>
 pkgname=sam
-pkgver=r44.78f363d
+pkgver=r65.52b23e2
 pkgrel=1
 pkgdesc="Sam is an adaption to C of the speech software SAM (Software Automatic Mouth) for the Commodore C64."
 url="http://simulationcorner.net/index.php?page=sam"
 arch=('x86_64' 'i686')
 license=('unknown')
+depends=('sdl')
 makedepends=('git')
-source=('SAM::git+http://github.com/s-macke/SAM/#branch=master')
-md5sums=('SKIP')
+source=('SAM::git+http://github.com/s-macke/SAM/#branch=master' '2cb53f.patch::https://github.com/s-macke/SAM/commit/2cb53fbdbba78f2943e5ab6d4569d5e0a056e3ad.patch')
+md5sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd ${srcdir}/SAM
+  git am ${srcdir}/2cb53f.patch
+}
 
 pkgver() {
   cd SAM
