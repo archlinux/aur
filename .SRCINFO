@@ -1,14 +1,13 @@
 pkgbase = opari2
 	pkgdesc = Instrumentation tool for OpenMP and hybrid codes.
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = http://www.vi-hps.org/projects/score-p/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = gcc-fortran
-	source = http://perftools.pages.jsc.fz-juelich.de/cicd/opari2/tags/opari2-2.0.6/opari2-2.0.6.tar.gz
-	sha256sums = 55972289ce66080bb48622110c3189a36e88a12917635f049b37685b9d3bbcb0
+	source = http://perftools.pages.jsc.fz-juelich.de/cicd/opari2/tags/opari2-2.0.7/opari2-2.0.7.tar.gz
+	sha256sums = e302a4cc265eb2a4aa27c16a90eabd9e1e58cb02a191dd1c4d86f9a0df128715
 
 pkgname = opari2
-
