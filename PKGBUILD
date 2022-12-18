@@ -1,11 +1,11 @@
 # Maintainer: TwoLeaves <ohneherren@gmail.com>
 # Maintainer: kumax <kumax2048@yandex.com>
 pkgname=sam
-pkgver=r65.52b23e2
+pkgver=r65.b7f287f
 pkgrel=1
 pkgdesc="Sam is an adaption to C of the speech software SAM (Software Automatic Mouth) for the Commodore C64."
 url="http://simulationcorner.net/index.php?page=sam"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 license=('unknown')
 depends=('sdl')
 makedepends=('git')
