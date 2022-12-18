@@ -1,0 +1,18 @@
+pkgbase = final-fight-lns-ultimate
+	pkgdesc = A beat'em up game that mixes concepts and movements from beat'em up and fighting games
+	pkgver = 04
+	pkgrel = 1
+	url = https://fflnsultimate.firebaseapp.com/home
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	depends = glibc
+	options = !strip
+	source = https://download2292.mediafire.com/6une40udc4dg/8bc1j7ivn1iqadh/Final+Fight+LNS+Ultimate+V04+Linux+x64.tar.gz
+	source = https://download2283.mediafire.com/l1qy1jzz9uhg/axlg17bs5o5ep96/Final+Fight+LNS+Ultimate+V04+Reshade+5.4.2.7z
+	source = https://download2271.mediafire.com/6t3nskojbewg/b3pqfak5lzrjbz8/Final+Fight+LNS+Ultimate+V.04+-+Pak.7z
+	sha256sums = 89a7be5cb30491a1a596df3b62ac70d98a1f46dae63d5bf1edf6afbc44820bdb
+	sha256sums = f484591f62b9fc1b23632e206e8ab9a48ae4d8d1340d8ace9396e7cc25d712ad
+	sha256sums = e99b7c54b7a7c552940c33f21ba3eef44968a94a84eb0db57b02551fe049d996
+
+pkgname = final-fight-lns-ultimate
