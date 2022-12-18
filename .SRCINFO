@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-bedtime-mode
+	pkgdesc = Converts to grayscale the entire GNOME workspace by using a smooth transition.
+	pkgver = v13.0
+	pkgrel = 1
+	url = https://github.com/ionutbortis/gnome-bedtime-mode
+	arch = any
+	groups = gnome-shell-extensions
+	license = GPL3
+	makedepends = git
+	makedepends = glib2
+	makedepends = unzip
+	depends = gnome-shell>=1:43
+	source = git+https://github.com/ionutbortis/gnome-bedtime-mode.git#commit=a6cd7636488dcca7a22b227bd862932410a1f602
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-bedtime-mode
