@@ -3,7 +3,7 @@
 pkgname=nvim-vim
 pkgver=1
 pkgrel=1
-pkgdesc="A symlink for using Doas as a drop-in replacement to sudo"
+pkgdesc="A symlink for using neovim as a vim dropin replacement"
 arch=('any')
 url="https://github.com/neovim/neovim"
 license=('Apache 2.0')

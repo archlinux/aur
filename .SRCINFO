@@ -1,5 +1,5 @@
 pkgbase = nvim-vim
-	pkgdesc = A symlink for using Doas as a drop-in replacement to sudo
+	pkgdesc = A symlink for using neovim as a vim dropin replacement
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/neovim/neovim
