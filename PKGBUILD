@@ -1,8 +1,8 @@
 # Maintainers: James Spencer <james.s.spencer@gmail.com>
-#              Darjan Krijan <darjan_krijan@gmx.de>
+#              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=cubew
-_version=4.7
+_version=4.8
 _patch=
 pkgver=${_version}${_patch}
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('zlib')
 options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-md5sums=('a4468a84c7906d017f7d013b64f6849d')
+md5sums=('1614f41b0eac0252acafb88f2293a8a7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
