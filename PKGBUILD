@@ -2,21 +2,18 @@
 
 pkgname=catcodec
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for decoding/encoding .cat files for OpenTTD"
 arch=('i686' 'x86_64')
 url="https://www.openttd.org/downloads/catcodec-releases/latest.html"
 license=('GPL')
 source=("https://cdn.openttd.org/catcodec-releases/1.0.5/catcodec-1.0.5-source.tar.xz")
-md5sums=('732af1bbe83ffdde17dc10703896472d')
+sha256sums=('47ff4e6d663e19d529960c76f1e1bda5fe4cad97e2628381ec3a894ba260e0e1')
 build() {
     cd ${srcdir}/$pkgname-$pkgver
-    echo "prefix=/usr" >> Makefile.local
-    echo "DO_NOT_INSTALL_CHANGELOG=1" >> Makefile.local
-    echo "DO_NOT_INSTALL_LICENSE=1" >> Makefile.local
-    make
+    make prefix=/usr
 }
 package() {
     cd ${srcdir}/$pkgname-$pkgver
-    sudo make install
+    make prefix=/usr DESTDIR="$pkgdir" install
 }
