@@ -14,9 +14,16 @@ conflicts=()
 source=("https://gitlab.fem-net.de/mabl/invasion-of-greek/-/archive/${_commit}/invasion-of-greek-${_commit}.tar.gz")
 sha256sums=('961f1a9e4fcd45e54b87d0bca545caa74b30a70924b9ca033cec2f06191c4789')
 
+prepare() {
+	cd "$pkgname-$_commit"
+	cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+}
+
 build() {
 	cd "$pkgname-$_commit"
-	cargo build --release	
+	export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --all-targets
 }
 
 package() {
