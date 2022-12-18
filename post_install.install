@@ -1,19 +1,15 @@
 post_install() {
-    if [[ $(pidof systemd) ]]
-    then
-	echo "Services for Findex was installed automatically."
-	echo "To enable them, run the following commands: "
-	echo "systemctl --user daemon-reload"
-	echo "systemctl --user enable findex.service"
-	echo "systemctl --user enable findex-restarter.path"
-    fi
+  printf "\n\n"
+  echo "If you had Findex v0.6.0 installed or used systemd service from development branch, you may remove it now."
+  echo "Now add findex-daemon to autostart and run findex-daemon in terminal."
+  if [[ $WAYLAND_DISPLAY ]]; then
+    echo "Findex can't bind hotkey in wayland."
+    echo "To bind hotkey, bind the following command to your desired hotkey in the desktop environment you are using"
+    echo "echo 1 > ~/.config/findex/toggle_file"
+  fi
+  printf "\n\n"
 }
 
 post_remove() {
-    if [[ $(pidof systemd) ]]
-    then
-	echo "Don't forget to stop findex service:"
-	echo "systemctl --user stop findex.service"
-	echo "systemctl --user stop findex-restarter.path"
-    fi
+  echo "Remove findex-daemon from autostart if you've added it after installation."
 }

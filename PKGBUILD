@@ -1,7 +1,7 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0.6.0.3
+pkgver=0.6.0.16
 pkgver() {
 	cd findex
 	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
@@ -34,20 +34,19 @@ build() {
     git checkout development
 
     rustup default stable
-    cargo build --release
+
+    if [[ -z $WAYLAND_DISPLAY ]]; then
+      cargo build --release --features xorg
+    else
+      cargo build --release --features wayland
+    fi
 }
 
 package() {
     cd "$_pkgname"
 	
     install -Dm755 target/release/findex "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 target/release/findex-daemon "${pkgdir}/usr/bin/${_pkgname}-daemon"
     install -Dm644 css/style.css "${pkgdir}/opt/findex"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    
-    if [[ $(pidof systemd) ]]
-    then
-	install -Dm644 findex.service "${pkgdir}/etc/systemd/user/findex.service"
-	install -Dm644 findex-restarter.service "${pkgdir}/etc/systemd/user/findex-restarter.service"
-	install -Dm644 findex-restarter.path "${pkgdir}/etc/systemd/user/findex-restarter.path"
-    fi
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" 
 }
