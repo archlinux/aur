@@ -1,0 +1,35 @@
+pkgbase = xerox-workcentre-6027
+	pkgdesc = Xerox Workcentre 6027 color laser printer CUPS driver
+	pkgver = 1.0
+	pkgrel = 22
+	url = https://www.support.xerox.com/en-us/product/workcentre-6027/downloads?platform=linux
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	makedepends = binutils
+	depends = cups
+	source = https://download.support.xerox.com/pub/drivers/WC6027/drivers/linux/pt_BR/xerox-workcentre-6027_1.0-22_all.zip
+	sha256sums = b7dd1ef446b692b211b2673d3aa650aa2e7932d14a18d2aa9c113cf6c28f19a5
+	depends_i686 = glibc
+	depends_i686 = libcups
+	depends_i686 = gnutls
+	depends_i686 = zlib
+	depends_i686 = p11-kit
+	depends_i686 = gcc-libs
+	depends_i686 = libtasn1
+	depends_i686 = nettle
+	depends_i686 = gmp
+	depends_i686 = libffi
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-libcups
+	depends_x86_64 = lib32-gnutls
+	depends_x86_64 = lib32-zlib
+	depends_x86_64 = lib32-p11-kit
+	depends_x86_64 = lib32-gcc-libs
+	depends_x86_64 = lib32-libtasn1
+	depends_x86_64 = lib32-nettle
+	depends_x86_64 = lib32-gmp
+	depends_x86_64 = lib32-libffi
+
+pkgname = xerox-workcentre-6027
