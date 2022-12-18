@@ -2,7 +2,7 @@
 
 _pkgname=flycast
 pkgname=$_pkgname-git
-pkgver=r4535.a6ad0208
+pkgver=r5251.1dd006d8
 pkgrel=1
 pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
 arch=('x86_64' 'i686')
@@ -38,3 +38,4 @@ package() {
 	install -Dm644 $_pkgname.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
 	install -Dm644 $_pkgname.desktop "$pkgdir"/usr/share/applications/$_pkgname.desktop
 }
+md5sums=('SKIP')
