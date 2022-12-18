@@ -1,17 +1,16 @@
 pkgbase = rocwmma
 	pkgdesc = Library for accelerating mixed precision matrix multiplication
-	pkgver = 5.3.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://rocwmma.readthedocs.io/en/latest/index.html
 	arch = x86_64
 	license = MIT
 	makedepends = rocm-cmake
-	makedepends = git
 	makedepends = doxygen
 	depends = hip
 	depends = rocblas
 	depends = openmp
-	source = rocwmma-5.3.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocWMMA/archive/rocm-5.3.0.tar.gz
-	sha256sums = 04bac641ba18059118d3faa5f21fe3bf3e285055d40930489ebf27ffc8e5d16e
+	source = rocwmma-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocWMMA/archive/rocm-5.4.1.tar.gz
+	sha256sums = 641d2730db737edcade8da6b3f77ce85d4ad460e0902c2b688df2d51fb13f9f0
 
 pkgname = rocwmma
