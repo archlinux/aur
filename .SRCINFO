@@ -1,6 +1,6 @@
 pkgbase = pleroma-bin
 	pkgdesc = A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://pleroma.social/
 	install = pleroma.install
@@ -12,7 +12,8 @@ pkgbase = pleroma-bin
 	license = CCPL:cc-by-sa-4.0
 	depends = ncurses
 	depends = file
-	depends = libxcrypt-compat
+	depends = libxcrypt-compati
+	depends = openssl-1.1
 	optdepends = postgresql: local postgresql database support
 	optdepends = imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support
 	optdepends = ffmpeg: media preview proxy support for videos
@@ -28,11 +29,11 @@ pkgbase = pleroma-bin
 	sha256sums = b5e844fab22dc4fafdec09c1f14437a06d3a12fae753fc0be968d22eaddfd6dc
 	sha256sums = 268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed
 	sha256sums = e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104
-	source_x86_64 = pleroma-x86_64-2.4.4.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220705/artifacts/download
+	source_x86_64 = pleroma-x86_64-2.4.5.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220705/artifacts/download
 	sha256sums_x86_64 = 8b4e2ab17362c7b0ed3ca685e19d578ad842ac00cde2db7d8c54dfd5a4e05891
-	source_aarch64 = pleroma-aarch64-2.4.4.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220709/artifacts/download
+	source_aarch64 = pleroma-aarch64-2.4.5.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220709/artifacts/download
 	sha256sums_aarch64 = e432310df95ae4d915a02082252df0346ca7e112ffa4484b6a05075778c71338
-	source_armv7h = pleroma-armv7h-2.4.4.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220707/artifacts/download
+	source_armv7h = pleroma-armv7h-2.4.5.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220707/artifacts/download
 	sha256sums_armv7h = c31dd8bb62728887cfe5488ef5818dc5e57e90f6443fbcfd501ea12044d0a94c
 
 pkgname = pleroma-bin
