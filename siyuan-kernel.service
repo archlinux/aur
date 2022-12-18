@@ -1,0 +1,16 @@
+[Unit]
+Description=Build Your Eternal Digital Garden
+After=network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/usr/bin/siyuan-kernel -wd /usr/share/webapps/siyuan-kernel -workspace ${HOME}/Documents/SiYuan/
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+KillSignal=SIGINT
+LimitNOFILE=8192
+PrivateDevices=yes
+
+[Install]
+WantedBy=multi-user.target
