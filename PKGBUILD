@@ -3,7 +3,7 @@ pkgname=microbin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="A tiny, self-contained, configurable paste bin and URL shortener written in Rust."
-arch=('any')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/szabodanika/microbin"
 license=('BSD')
 makedepends=('cargo')
@@ -18,21 +18,13 @@ sha256sums=('fc3e9b13814c3f43c7ef57029f7118a35ac49f6ad984da9b081c1a8ce945f8f7'
             '8e943fc702637b1b7441491db945c078d190c4208cd202e5e360cad90ca793ab')
 
 
-#prepare() {
-#    cd "$srcdir/$pkgname-$pkgver"
-#    cargo fetch
-#}
+options=(!lto) 
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    
-    ## Disable lto
-    export CFLAGS=`echo $CFLAGS | sed 's/-flto//g'`
-    export CXXFLAGS=`echo $CXXFLAGS | sed 's/-flto//g'`
-    export LDFLAGS=`echo $LDFLAGS | sed 's/-flto//g'`
     
     cargo build --release
 }
