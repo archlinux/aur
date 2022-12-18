@@ -1,6 +1,6 @@
 pkgbase = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version)
-	pkgver = 1.21.1.r213.gda52bedbff
+	pkgver = 1.21.3.r66.g3fa6651d91
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -229,17 +229,18 @@ pkgname = gstreamer-git
 
 pkgname = gst-plugins-bad-libs-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - bad
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = orc
 	depends = libdrm
 	depends = libx11
 	depends = libgudev
 	depends = libusb
 	depends = libxkbcommon-x11
+	depends = libnice
 
 pkgname = gst-plugins-base-libs-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - base
-	depends = gstreamer-git=1.21.1.r213.gda52bedbff
+	depends = gstreamer-git=1.21.3.r66.g3fa6651d91
 	depends = orc
 	depends = libxv
 	depends = iso-codes
@@ -250,7 +251,7 @@ pkgname = gst-plugins-base-libs-git
 
 pkgname = gst-plugins-base-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - base plugins
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = alsa-lib
 	depends = cdparanoia
 	depends = libvisual
@@ -261,11 +262,12 @@ pkgname = gst-plugins-base-git
 	depends = graphene
 	depends = libpng
 	depends = libjpeg
+	depends = libtremor-git
 	conflicts = gst-plugin-base
 
 pkgname = gst-plugins-good-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - good plugins
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = libpulse
 	depends = libsoup3
 	depends = gst-plugins-base-libs
@@ -289,12 +291,13 @@ pkgname = gst-plugins-good-git
 	depends = lame
 	depends = mpg123
 	depends = twolame
+	depends = qt6-wayland
 	depends = libjack.so
 	conflicts = gst-plugin-good
 
 pkgname = gst-plugins-bad-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - bad plugins
-	depends = gst-plugins-bad-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
 	depends = aom
 	depends = libass
 	depends = libbs2b
@@ -365,26 +368,26 @@ pkgname = gst-plugins-bad-git
 
 pkgname = gst-plugin-gtk-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - gtk plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = gtk3
 	conflicts = gst-plugin-gtk
 
 pkgname = gst-plugin-msdk-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - msdk plugin
-	depends = gst-plugins-bad-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
 	depends = libmfx
 	depends = libva
 	conflicts = gst-plugin-msdk
 
 pkgname = gst-plugin-opencv-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - opencv plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = opencv
 	conflicts = gst-plugin-opencv
 
 pkgname = gst-plugin-qmlgl-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - qmlgl plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = qt5-declarative
 	depends = qt5-x11extras
 	depends = qt5-wayland
@@ -392,24 +395,24 @@ pkgname = gst-plugin-qmlgl-git
 
 pkgname = gst-plugin-va-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - va plugin
-	depends = gst-plugins-bad-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
 	depends = libva
 	conflicts = gst-plugin-va
 
 pkgname = gst-plugin-wpe-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - wpe plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = wpewebkit
 
 pkgname = gst-plugin-cuda-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - cuda plugin
-	depends = gst-plugins-bad-libs=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-bad-libs=1.21.3.r66.g3fa6651d91
 	depends = cuda
 	conflicts = gst-plugin-cuda
 
 pkgname = gst-plugins-ugly-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - ugly plugins
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = libdvdread
 	depends = libmpeg2
 	depends = a52dec
@@ -421,33 +424,33 @@ pkgname = gst-plugins-ugly-git
 
 pkgname = gst-libav-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - libav plugin
-	depends = gst-plugins-base-libs=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
 	depends = bzip2
 	depends = ffmpeg
-	provides = gst-ffmpeg=1.21.1.r213.gda52bedbff
+	provides = gst-ffmpeg=1.21.3.r66.g3fa6651d91
 	conflicts = gst-libav
 
 pkgname = gst-rtsp-server-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - rtsp server
-	depends = gst-plugins-base-libs=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
 	conflicts = gst-rtsp-server
 
 pkgname = gstreamer-vaapi-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - vaapi plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = libva
 	depends = libxrandr
 	conflicts = gst-vaapi
 
 pkgname = gst-editing-services-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - editing services
-	depends = gst-plugins-base-libs=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
 	depends = python-gobject
 	conflicts = gst-editing-services
 
 pkgname = gst-python-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - python plugin
-	depends = gst-plugins-base-libs-git=1.21.1.r213.gda52bedbff
+	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
 	depends = python-gobject
 	conflicts = gst-python
 

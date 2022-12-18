@@ -26,7 +26,7 @@ pkgname=(
   gst-devtools-git
   gstreamer-docs-git
 )
-pkgver=1.21.1.r213.gda52bedbff
+pkgver=1.21.3.r66.g3fa6651d91
 pkgrel=1
 _pkgver=1.21.1
 pkgdesc='GStreamer Multimedia Framework (Git version)'
@@ -207,7 +207,7 @@ package_gst-plugins-bad-libs-git() {
   pkgdesc+=" - bad"
   depends=(
     "gst-plugins-base-libs-git=$pkgver"
-    orc libdrm libx11 libgudev libusb libxkbcommon-x11
+    orc libdrm libx11 libgudev libusb libxkbcommon-x11 libnice
   )
   conficts=('gst-plugin-bad-libs')
 
@@ -362,7 +362,7 @@ package_gst-plugins-base-git() {
   depends=(
     "gst-plugins-base-libs-git=$pkgver"
     alsa-lib cdparanoia libvisual libvorbis libtheora pango opus graphene libpng
-    libjpeg
+    libjpeg libtremor-git
   )
   conflicts=('gst-plugin-base')
 
@@ -386,7 +386,7 @@ package_gst-plugins-good-git() {
     "gst-plugins-base-libs-git=$pkgver"
     libpulse libsoup3 gst-plugins-base-libs wavpack aalib taglib libdv libshout
     libvpx gdk-pixbuf2 libcaca libavc1394 libiec61883 libxdamage v4l-utils cairo
-    libgudev speex flac libraw1394 lame mpg123 twolame
+    libgudev speex flac libraw1394 lame mpg123 twolame qt6-wayland
     libjack.so
   )
   conflicts=('gst-plugin-good')
@@ -462,6 +462,8 @@ package_gst-plugins-good-git() {
     usr/lib/gstreamer-1.0/libgstwavparse.so
     usr/lib/gstreamer-1.0/libgstximagesrc.so
     usr/lib/gstreamer-1.0/libgsty4menc.so
+    usr/lib/gstreamer-1.0/libgstqml6.so
+
 
     usr/share/gstreamer-1.0/presets/GstIirEqualizer{3,10}Bands.prs
     usr/share/gstreamer-1.0/presets/Gst{QTMux,VP8Enc}.prs
