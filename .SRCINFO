@@ -1,15 +1,16 @@
 pkgbase = dotbot
 	pkgdesc = A tool that bootstraps your dotfiles
-	pkgver = 1.19.0
-	pkgrel = 2
+	pkgver = 1.19.1
+	pkgrel = 1
 	url = https://github.com/anishathalye/dotbot
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python
 	depends = python-yaml
-	source = dotbot-1.19.0.tar.gz::https://github.com/anishathalye/dotbot/archive/refs/tags/v1.19.0.tar.gz
-	sha512sums = 384546cc1f54046922406fe07e01546d6eba50ba5b8b41a12c05cb313e9d9ee32ad75a874dba958bc1f9f4743367ecb49ce4db35f2db0fc25ba408d55835b0ae
+	source = dotbot-1.19.1.tar.gz::https://github.com/anishathalye/dotbot/archive/refs/tags/v1.19.1.tar.gz
+	sha256sums = 235a7a7c239de895cae150ff25d7dbec893ea23ba91376aa6860b3bd709cccec
 
 pkgname = dotbot
