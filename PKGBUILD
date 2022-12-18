@@ -1,16 +1,16 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap-bin
-pkgver="0.5.0"
+pkgver="0.5.2"
 pkgrel=1
 pkgdesc='a simplistic papermc helper (pre-compiled)'
 url='https://github.com/talwat/pap'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-sha256sums_i686=('297ec74f6fc58331e0bc2db7764c9d892ef60234b01239f16719c5943b51cf90')
-sha256sums_x86_64=('2e23ca0d31d8e1e17d178866ef106a5cd6a600603beead0148829cf96f4bb4ae')
-sha256sums_armv7h=('ad43e448018c906f03e3982faa30a8e70f4566c84a4caeae2c6c61ad943c2f13')
-sha256sums_armv6h=('36566124ea487ad57e5bf60b93c25ef8f987857ca907868a388f2ee28e7f9981')
-sha256sums_aarch64=('be8550b69d9daabf03d4f6f02ce1508d299d70715ee563ae37a8a6f3e0da8315')
+sha256sums_i686=('2e93a15d2370deb5b55fac540bda07bb84b286ff610ce1920fe53d3e1e7e9453')
+sha256sums_x86_64=('224c9f39bf391f5203b20bb7b269f191d2531daa75f0ef289915e1fea470c5e3')
+sha256sums_armv7h=('57c883cab8fb15410491bd0440487ebde183e429df88787f423750a6cede43ac')
+sha256sums_armv6h=('f882313cd3520ec937362b9055122926bbfa3ff9ee6e6583fc3e3868e7716b1b')
+sha256sums_aarch64=('c01a3a860b505f3f59b68511eb9b7163ac836a35532202c7541ceb98b10f99ae')
 
 source_x86_64=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${pkgver}_linux_x86_64")
 source_i686=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${pkgver}_linux_i386")
@@ -20,7 +20,8 @@ source_aarch64=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${
 
 conflicts=('pap')
 provides=('pap')
-depends=('git' 'pacman')
+depends=('pacman')
+optdepends=('java-runtime: running the downloaded jarfiles')
 
 package() {
   install -Dm755 pap_${pkgver}_linux_* "${pkgdir}"/usr/bin/pap
