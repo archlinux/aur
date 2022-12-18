@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Jazz² Resurrection
+Exec=sh jazz2.sh
+Icon=jazz2
+Comment=Open-source Jazz Jackrabbit 2 reimplementation
+Categories=Game

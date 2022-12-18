@@ -1,0 +1,24 @@
+pkgbase = jazz2-git-bin
+	pkgdesc = Jazz² Resurrection - Open-source Jazz Jackrabbit 2 reimplementation
+	pkgver = 1.4.0+r16.f9302ef
+	pkgrel = 1
+	url = http://deat.tk/jazz2/
+	install = jazz2.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	license = MIT/Expat
+	depends = libopenmpt
+	depends = openal
+	conflicts = jazz2-bin
+	conflicts = jazz2-git
+	source = https://archive.org/download/j2r_demo/Games.zip
+	source = jazz2.sh
+	source = jazz2.png
+	source = jazz2.desktop
+	md5sums = b5095a5ba6d2d7d20b2c4ff2a99301c5
+	md5sums = d569f65a05b3fc80bfcf036cc2ef6cc8
+	md5sums = 10883cc01ae3a287a5804153092af9dd
+	md5sums = da8320edf25369c409cb98f662b04db2
+
+pkgname = jazz2-git-bin
