@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KEGGgraph
-_pkgver=1.58.1
+_pkgver=1.58.2
 pkgname=r-${_pkgname,,}
-pkgver=1.58.1
+pkgver=1.58.2
 pkgrel=1
 pkgdesc='KEGGgraph: A graph approach to KEGG PATHWAY in R and Bioconductor'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d2a51ba7aedc30143f67a124d27d351e1df055f55aef8eaac3cf32fa84da7fd9')
+sha256sums=('ceba7ece2a8f66b363f0bfaa5b28397aa37e19b1f3f16df4ffb9b387b28163bc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
