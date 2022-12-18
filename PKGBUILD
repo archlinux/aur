@@ -1,8 +1,8 @@
 # Maintainers: James Spencer <james.s.spencer@gmail.com>
-#              Darjan Krijan <darjan_krijan@gmx.de>
+#              Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=cubelib
-_version=4.7
+_version=4.8
 _patch=
 pkgver=${_version}${_patch}
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('zlib')
 options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-md5sums=('1cfae536f0e0daa8c3afc5efada0437a')
+md5sums=('faf051d2b0b5d8be0ec3b6cfe3d2b3b8')
 replaces=('cube-perf')
 
 build() {
