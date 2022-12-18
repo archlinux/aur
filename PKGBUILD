@@ -1,17 +1,23 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
+
 pkgname=simple_snake
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Snake game, written on C++ & SFML"
 arch=( "any" )
 url="https://github.com/KonstantinProgger/Tag-Puzzle"
 license=( "Apache License 2.0" )
-depends=( 'gcc' 'cmake' 'sfml' )
-makedepends=( 'gcc' 'cmake' 'sfml' )
-source=( "https://raw.githubusercontent.com/KonstantinProgger/my_archive/master/snake/linux/snake.1.0.tar.gz" )
-md5sums=( "d200fa770ff0475bdffd205aadb43d8a" )
+makedepends=( 'cmake' 'sfml' )
+source=(${pkgnmae}-${pkgver}::"https://github.com/KonstantIMP/Snake/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('fc7cddc9f483c83e45f9b6b86bcae1905f3954e96c62d4c9f623fde896a1f4b3')
+
+build() {
+	cd Snake-1.0
+	cmake CMakeLists.txt
+	make all
+}
 
 package() {
-    cmake CMakeLists.txt
-    make all
-    sudo make install
+	cd Snake-1.0
+	make DESTDIR="${pkgdir}/" install
 }

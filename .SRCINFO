@@ -1,18 +1,13 @@
 pkgbase = simple_snake
 	pkgdesc = A simple Snake game, written on C++ & SFML
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KonstantinProgger/Tag-Puzzle
 	arch = any
 	license = Apache License 2.0
-	makedepends = gcc
 	makedepends = cmake
 	makedepends = sfml
-	depends = gcc
-	depends = cmake
-	depends = sfml
-	source = https://raw.githubusercontent.com/KonstantinProgger/my_archive/master/snake/linux/snake.1.0.tar.gz
-	md5sums = d200fa770ff0475bdffd205aadb43d8a
+	source = -1.0::https://github.com/KonstantIMP/Snake/archive/refs/tags/1.0.tar.gz
+	sha256sums = fc7cddc9f483c83e45f9b6b86bcae1905f3954e96c62d4c9f623fde896a1f4b3
 
 pkgname = simple_snake
-
