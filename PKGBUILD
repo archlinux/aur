@@ -1,30 +1,40 @@
-# Maintainer: Francois Menning <f.menning@pm.me>
-# Contributor: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Michael Riegert <michael at eowyn net>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: Daniel M. Capella <polyzen@archlinux.info>
+# Contributor: Morten Linderud <morten@linderud.pw>
 
 pkgname=python-pychromecast-git
-pkgver=360.0a3ba3f
+_pkgname="${pkgname%-git}"
+_pkg="${_pkgname#python-}"
+pkgver=13.0.4.r1.g83659c6
 pkgrel=1
-pkgdesc="Library for Python 3 to communicate with the Google Chromecast."
+pkgdesc='Library for Python 3 to communicate with the Google Chromecast'
 arch=('any')
-url="https://github.com/balloob/pychromecast"
+url="https://github.com/home-assistant-libs/pychromecast"
 license=('MIT')
-depends=('python' 'python-requests' 'python-protobuf' 'python-zeroconf')
-makedepends=('git' 'python-setuptools')
-provides=('python-pychromecast')
-conflicts=('python-pychromecast')
-options=(!emptydirs)
-source=('git+https://github.com/balloob/pychromecast.git')
+depends=('python-protobuf' 'python-zeroconf' 'python-casttube')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/pychromecast"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	git -C "$_pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+build() {
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/pychromecast"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/PyChromecast-${pkgver%.r*}.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# vim:set ts=2 sw=2 et:
