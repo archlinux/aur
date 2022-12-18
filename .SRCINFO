@@ -1,6 +1,6 @@
 pkgbase = cavalier-git
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = r33.c157976
+	pkgver = 2022.12.18.r0.g3030895
 	pkgrel = 1
 	url = https://github.com/fsobolev/cavalier
 	arch = any

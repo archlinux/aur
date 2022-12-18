@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier-git
-pkgver=r33.c157976
+pkgver=2022.12.18.r0.g3030895
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
@@ -16,12 +16,20 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname%-git}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	sed -i "s/'validate'/'validate-relax'/" ${pkgname%-git}/data/meson.build
 }
 
 build() {
 	arch-meson ${pkgname%-git} build
 	meson compile -C build
+}
+
+check() {
+	meson test -C build --print-errorlog
 }
 
 package() {
