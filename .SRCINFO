@@ -10,6 +10,7 @@ pkgbase = python-pysodium
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = libsodium
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/p/pysodium/pysodium-0.7.12.tar.gz
