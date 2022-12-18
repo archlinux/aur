@@ -1,6 +1,6 @@
 pkgbase = standardnotes-bin
 	pkgdesc = Free, open-source encrypted notes app
-	pkgver = 3.100.17
+	pkgver = 3.127.0
 	pkgrel = 1
 	url = https://github.com/standardnotes/app
 	install = standardnotes.install
@@ -15,11 +15,11 @@ pkgbase = standardnotes-bin
 	options = !strip
 	source = standard-notes.sh
 	sha256sums = 71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16
-	source_x86_64 = standardnotes-bin-3.100.17-x86_64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.100.17/standard-notes-3.100.17-linux-x86_64.AppImage
-	sha256sums_x86_64 = 0265383ee42c2aa6ae40178bab4682f5e822a89df9dec59e44d420003aea2202
-	source_i686 = standardnotes-bin-3.100.17-i686.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.100.17/standard-notes-3.100.17-linux-i386.AppImage
-	sha256sums_i686 = f88a3091868071354ff44da096d37a21f8f64734090d4a817f5279483f7cb7d9
-	source_aarch64 = standardnotes-bin-3.100.17-aarch64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.100.17/standard-notes-3.100.17-linux-arm64.AppImage
-	sha256sums_aarch64 = 7c48cdf145b771f4daa5588d805346c94966c1ce648780d16f0c401443c856c8
+	source_x86_64 = standardnotes-bin-3.127.0-x86_64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.127.0/standard-notes-3.127.0-linux-x86_64.AppImage
+	sha256sums_x86_64 = 852d8891e507117165a026ec4c9841e07a2d0000fe4a45eb3eb8377b249c8008
+	source_i686 = standardnotes-bin-3.127.0-i686.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.127.0/standard-notes-3.127.0-linux-i386.AppImage
+	sha256sums_i686 = 5bd8f3b2dac0073e583fe9050776d3de4bbfc67df6b783101c61f74aaff0ae63
+	source_aarch64 = standardnotes-bin-3.127.0-aarch64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.127.0/standard-notes-3.127.0-linux-arm64.AppImage
+	sha256sums_aarch64 = dfcbcf0f17bcff053623dc5703cc398c546e6f2f3f1e0a16991f7001d4f3780f
 
 pkgname = standardnotes-bin
