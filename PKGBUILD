@@ -1,7 +1,7 @@
 # Maintainer: a821
 
 pkgname=shiny-server
-pkgver=1.5.19.995
+pkgver=1.5.20.1002
 pkgrel=1
 pkgdesc="Host Shiny applications over the web"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'r-shiny: build interactive web apps with R' # AUR
     'r-rmarkdown: convert R markdown docs to various formats' # AUR
 )
-_commit="f917dd27abb3016754f9b24b52dd4aa522f7db23" # v1.5.19.995
+_commit="d9e391bdc743e0f791ba8ead234069d4816b8c39" # v1.5.20.1002
 source=("git+https://github.com/rstudio/shiny-server#commit=${_commit}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
