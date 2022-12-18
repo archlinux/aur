@@ -1,14 +1,16 @@
 pkgbase = nfetch-git
 	pkgdesc = A minimal linux fetch utility written in nim
-	pkgver = 2.61
-	pkgrel = 0
+	pkgver = 2.r19.g2655d63
+	pkgrel = 1
 	url = https://github.com/Infinitybeond1/nfetch-src
 	arch = x86_64
 	license = GPL3
 	makedepends = nim
 	makedepends = nimble
-	conflicts = nfetch-bin
-	source = git+https://github.com/Infinitybeond1/nfetch-src
+	makedepends = git
+	provides = nfetch
+	conflicts = nfetch
+	source = git+https://github.com/Infinitybeond1/nfetch-src.git
 	sha256sums = SKIP
 
 pkgname = nfetch-git
