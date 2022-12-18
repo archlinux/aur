@@ -1,0 +1,15 @@
+pkgbase = shutsentry
+	pkgdesc = ShutSentry is a virtual dead-man-switch that protects computers from unauthorized physical access, by presenting an on-screen password-challenge prompt at regular time intervals, and/or reacting to other trigger events like USB/Bluetooth device changes.
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://gitlab.com/shutsentry/shutsentry
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = gtk3
+	provides = shutsentry
+	source = git+https://gitlab.com/shutsentry/shutsentry.git
+	md5sums = SKIP
+
+pkgname = shutsentry
