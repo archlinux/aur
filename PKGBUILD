@@ -3,14 +3,14 @@
 # Contributor: TheAssassin
 
 pkgname=appimagelauncher-git
-pkgver=r1224.cbe7f29
-pkgrel=1
+pkgver=r1244.d9d4c73
+pkgrel=2
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=(x86_64)
 url="https://assassinate-you.net/tags/appimagelauncher/"
 license=(MIT)
-depends=(qt5-base fuse2 squashfuse libappimage)
-makedepends=(git cmake boost qt5-tools lib32-glibc lib32-gcc-libs chrpath)
+depends=(qt5-base fuse2 squashfuse libappimage libxpm)
+makedepends=(git cmake boost qt5-tools lib32-glibc lib32-gcc-libs xxd chrpath)
 provides=(appimagelauncher)
 conflicts=(appimagelauncher)
 source=("${pkgname%-git}::git+https://github.com/TheAssassin/AppImageLauncher.git"
@@ -48,7 +48,7 @@ prepare() {
   git submodule init
   git config submodule.lib/AppImageUpdate.url "${srcdir}/AppImageUpdate"
   git config submodule.lib/libappimage.url "${srcdir}/libappimage"
-  git submodule update 
+  git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate"
   git submodule init
@@ -57,24 +57,24 @@ prepare() {
   git config submodule.lib/libdesktopenvironments.url  "${srcdir}/libdesktopenvironments"
   git config submodule.lib/sanitizers-cmake.url "${srcdir}/sanitizers-cmake"
   git config submodule.lib/libappimage.url "${srcdir}/libappimage"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate/lib/libappimage"
   git submodule init
   git config submodule.lib/gtest.url "${srcdir}/googletest"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate/lib/zsync2"
   git submodule init
   git config submodule.lib/cpr.url "${srcdir}/cpr"
   git config submodule.lib/args.url "${srcdir}/args"
   git config submodule.lib/gtest.url "${srcdir}/googletest"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd "${srcdir}/${pkgname%-git}/lib/libappimage"
   git submodule init
   git config submodule.lib/gtest.url "${srcdir}/googletest"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -97,4 +97,7 @@ package() {
 
   chrpath --delete "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate-qt.so"
   chrpath --delete "${pkgdir}/usr/lib/appimagelauncher/libappimageupdate.so"
+  #chrpath --delete "${pkgdir}/usr/bin/AppImageLauncherSettings"
+  #chrpath --delete "${pkgdir}/usr/bin/ail-cli"
+  #chrpath --delete "${pkgdir}/usr/bin/appimagelauncherd"
 }
