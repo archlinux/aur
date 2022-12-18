@@ -23,6 +23,7 @@ pkgbase = f3d-git
 	depends = jdk-openjdk
 	depends = python
 	depends = fmt
+	depends = utf8cpp
 	provides = f3d
 	conflicts = f3d
 	source = git+https://github.com/f3d-app/f3d.git
