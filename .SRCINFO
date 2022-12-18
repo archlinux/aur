@@ -1,0 +1,17 @@
+pkgbase = nautilus-terminal
+	pkgdesc = Embedded terminal for Nautilus
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/flozz/nautilus-terminal
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = nautilus<43
+	depends = python-nautilus<4
+	depends = python-psutil
+	depends = vte3
+	source = git+https://github.com/flozz/nautilus-terminal#commit=752b87dfb289f48c493fac4d2145e747f1809638
+	sha512sums = SKIP
+
+pkgname = nautilus-terminal
