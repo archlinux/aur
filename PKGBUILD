@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=rust-punchr-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="Client for measuring Direct Connection Upgrade through Relay (DCUtR) performance"
 arch=('x86_64' 'armv7h')
@@ -20,8 +20,8 @@ source_x86_64=("rust-punchr-$pkgver-x86_64::${url}/releases/download/rust-client
 source_armv7h=("rust-punchr-$pkgver-armv7h::${url}/releases/download/rust-client-${pkgver}/arm-unknown-linux-musleabihf")
 sha256sums=('a789b73503094daa4976954895afc3fcfb16cbd9cce5fe55b64d8fb656b90db6'
             '4563585d4b7908b7c3ca4187c8baf68c0940363ed32bd6e6c682410dcafcbffe')
-sha256sums_x86_64=('d43812d0749cb7db6e177b4eaf7c6b6ca5fbe9e83941f3751e7f69f8e0806363')
-sha256sums_armv7h=('99316898a63864af0beb172ea27722b83cfcf4302ba93f723b1138c3011e7676')
+sha256sums_x86_64=('068be97586dfc347d58999e5989b3bfe01a656f3fd367e0ba6b37f4263b8e63d')
+sha256sums_armv7h=('2138b50b16a7f5181752bbfd3dc1d74a1fd4d5ddeb65342e44351ba995b06426')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
