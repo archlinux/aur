@@ -1,6 +1,6 @@
 pkgbase = maya-usd
 	pkgdesc = Autodesk Maya Universal Scene Discription Plugin
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/Autodesk/maya-usd
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = maya-usd
 	depends = maya>=2023.0
 	depends = maya<2024.0
 	options = !strip
-	source = manual://MayaUSD2023-202208051814-6d974fb-0.19.0-1.x86_64.rpm
-	sha256sums = 152e14d9fdc1a573915f494308ee837c14fb6efa74a476c2496d990fac9a4ef2
+	source = manual://MayaUSD2023-202211021008-b68700b-0.20.0-1.x86_64.rpm
+	source = updateSchemaWithSdrNode-onload-SyntaxError.patch
+	sha256sums = dfa10f772743172bb42770cb14bef8858b49121bf33585e635264d7b6b2be83c
+	sha256sums = 3a0be2176751dd51933d7ac6896324f674fa3c3120d520c21f51257d7c1c7c1e
 
 pkgname = maya-usd

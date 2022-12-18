@@ -1,0 +1,12 @@
+diff --unified --recursive --text usr.orig/autodesk/mayausd/maya2023/0.20.0_202211021008-b68700b/mayausd/USD/lib/python/pxr/UsdUtils/updateSchemaWithSdrNode.py usr.new/autodesk/mayausd/maya2023/0.20.0_202211021008-b68700b/mayausd/USD/lib/python/pxr/UsdUtils/updateSchemaWithSdrNode.py
+--- usr.orig/autodesk/mayausd/maya2023/0.20.0_202211021008-b68700b/mayausd/USD/lib/python/pxr/UsdUtils/updateSchemaWithSdrNode.py	2022-11-02 10:13:29.000000000 -0700
++++ usr.new/autodesk/mayausd/maya2023/0.20.0_202211021008-b68700b/mayausd/USD/lib/python/pxr/UsdUtils/updateSchemaWithSdrNode.py	2022-12-18 02:02:18.304276565 -0800
+@@ -369,7 +369,7 @@
+                         sdrNode.GetContext(), PropertyDefiningKeys.SHADER_ID)
+                 sdrIdentifier = primDef.GetAttributeFallbackValue(
+                         shaderIdAttrName)
+-                if sdrIdentifier is not "":
++                if sdrIdentifier != "":
+                     usdSchemaNode = reg.GetNodeByIdentifierAndType(
+                             sdrIdentifier,
+                             SchemaDefiningMiscConstants.USD_SOURCE_TYPE)
