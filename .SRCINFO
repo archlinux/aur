@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-duckduckgo-privacy-essentials
+	pkgdesc = DuckDuckGo Privacy Essentials browser extension for Firefox.
+	pkgver = 2022.12.12
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/duckduckgo-for-firefox/
+	arch = any
+	groups = firefox-addons
+	license = Apache-2
+	depends = firefox
+	noextract = firefox-extension-duckduckgo-privacy-essentials-2022.12.12.zip
+	source = firefox-extension-duckduckgo-privacy-essentials-2022.12.12.zip::https://github.com/duckduckgo/duckduckgo-privacy-extension/releases/download/2022.12.12/duckduckgo_privacy_essentials-2022.12.12.zip
+	sha512sums = eceaaee55f53ac551cc9a7612181d4bc9fa084b2fbc0c273a1e5b4e3417d997caf6a01f50da6577af6ecee06dda2fda2216c7461e454b12389d728bd225a2cc2
+
+pkgname = firefox-extension-duckduckgo-privacy-essentials
