@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-next-git
-pkgver=6.1.r1139240.2847b6681547
+pkgver=6.1.r1139515.fe8f5b2f7bec
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '848ccd048f91b17f0e0192d2900c462986eeacf78bb578b2de9498c4a0526983')
+            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
 
 pkgver() {
   cd $_srcname
