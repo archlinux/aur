@@ -4,11 +4,14 @@ pkgbase = mkinitcpio-kpartx
 	pkgrel = 1
 	url = https://github.com/OnkelUlla/mkinitcpio-kpartx
 	arch = any
+	license = custom:0BSD
 	depends = mkinitcpio
 	depends = multipath-tools
 	source = kpartx_hook
 	source = kpartx_install
+	source = 0BSD
 	sha256sums = 55cbf0e17f16930b39a66218f245cbd94446b675fb4f316588281b48ff4e4908
 	sha256sums = 534b699571e345a508b31570c95ebae164351ad0052aca001f067b0cbde6b9f4
+	sha256sums = 8bfb255ba92f14f6b0c7e3a47fc6276293a56e26838358ca63e892e008eeb8d2
 
 pkgname = mkinitcpio-kpartx
