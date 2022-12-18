@@ -3,8 +3,8 @@
 
 _pkgname=hadolint
 pkgname=hadolint-git
-pkgver=2.12.1.beta.r4.ge12f4fa
-pkgrel=2
+pkgver=2.12.1.beta.r7.g7c54238
+pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash'
 url='https://github.com/hadolint/hadolint'
 license=('GPL')
