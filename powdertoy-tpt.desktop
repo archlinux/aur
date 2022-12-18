@@ -5,5 +5,5 @@ Name=Powder Toy
 Type=Application
 Comment=Physics sandbox game
 Categories=Game;Simulation
-Icon=powdertoy.png
+Icon=powder
 Exec=powder
