@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier-git
-pkgver=2022.12.18.r0.g3030895
+pkgver=2022.12.18.r2.g56aed27
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
@@ -17,10 +17,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd ${pkgname%-git}
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	sed -i "s/'validate'/'validate-relax'/" ${pkgname%-git}/data/meson.build
 }
 
 build() {
