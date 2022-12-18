@@ -2,7 +2,7 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos'
             'python-pysocks: SOCKS support'
             'python-brotli: for brotli decompression')
-_tag=72df5a305c4be1d7dccb34023fa347d273e06010 # git rev-parse v${pkgver}
+_tag=5e22b13aa3dcb51fc58227f7e0fcf59cffdf265e # git rev-parse v${pkgver}
 source=(git+"${url}".git#tag="${_tag}"?signed)
 validpgpkeys=(3E09F5908333DD83DBDCE7375680CA389D365A88) #Mike Fährmann
 sha512sums=('SKIP')
