@@ -5,11 +5,11 @@
 pkgname=nfetch-git
 pkgdesc="A minimal linux fetch utility written in nim"
 pkgver=2.r19.g2655d63
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/Infinitybeond1/nfetch-src"
 license=(GPL3)
-makedepends=(nim nimble git)
+makedepends=(nim git)
 provides=(nfetch)
 conflicts=(nfetch)
 source=("git+https://github.com/Infinitybeond1/nfetch-src.git")
