@@ -1,14 +1,13 @@
 pkgbase = python-gw2buildutil
 	pkgdesc = Python 3 library for working with Guild Wars 2 builds
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://ikn.org.uk/lib/gw2buildutil
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python>=3.7
-	source = http://ikn.org.uk/download/lib/gw2buildutil/gw2buildutil-0.4.tar.gz
-	sha1sums = d37804300c0a2a89fdf34f82592cfc1cb5027a14
+	source = http://ikn.org.uk/download/lib/gw2buildutil/gw2buildutil-0.5.tar.gz
+	sha1sums = 7e8b726688ce4032dd0695d229bf639fb9a50a04
 
 pkgname = python-gw2buildutil
-

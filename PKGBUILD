@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 _pkgname=gw2buildutil
 pkgname=python-$_pkgname
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Python 3 library for working with Guild Wars 2 builds"
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 makedepends=(python-setuptools)
 depends=("python>=3.7")
 source=("http://ikn.org.uk/download/lib/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha1sums=('d37804300c0a2a89fdf34f82592cfc1cb5027a14')
+sha1sums=('7e8b726688ce4032dd0695d229bf639fb9a50a04')
 
 build () {
     cd "$srcdir/${_pkgname}-$pkgver"
