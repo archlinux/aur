@@ -1,7 +1,7 @@
 pkgbase = astah-uml
 	pkgdesc = Lightweight and easy-to-use UML2.x modeler (With trial)
 	pkgver = 9.0.0.1778f1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://astah.net/products/astah-uml
 	arch = i686
 	arch = x86_64

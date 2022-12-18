@@ -4,7 +4,7 @@
 pkgname=astah-uml
 pkgver=9.0.0.1778f1.0
 _pkgver=9.0.0.1778f1-0
-pkgrel=1
+pkgrel=2
 url='https://astah.net/products/astah-uml'
 pkgdesc='Lightweight and easy-to-use UML2.x modeler (With trial)'
 arch=('i686' 'x86_64')
@@ -39,4 +39,6 @@ package() {
   rm "${pkgdir}/opt/astah-uml"/mime-astah_uml.xml
   rm "${pkgdir}/opt/astah-uml"/astah_uml.desktop
   rm "${pkgdir}/opt/astah-uml"/astah_uml-doc.png
+  sed -i '/#!\/bin\/sh/a export PATH="\$JAVA_HOME\/bin:\$PATH"' "${pkgdir}/opt/astah-uml/astah-uml"
+  sed -i '/#!\/bin\/sh/a export JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk\/jre' "${pkgdir}/opt/astah-uml/astah-uml"
 }
