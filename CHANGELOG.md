@@ -4,6 +4,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.11]
+
+### Added
+- Support for Scan UUID (`last_scan_id`) filter for assets exports.
+
+[1.4.11]: https://github.com/tenable/pyTenable/compare/1.4.10...1.4.11 
+
+## [1.4.10]
+
+### Added
+- Support for `scan_uuid` filter for vulnerability exports.
+
+### Fixed
+- Bug in `tenable/io/scanners.py` that invoked the `/settings/{}` endpoint instead of the correct `/scanners/{}` endpoint.
+- Error in the documentation of the `sc.scans.edit()` method. The property - `policy` was renamed to `policy_id`.
+- tests module getting into the pypi package. Now, the module will no longer be part of pypi package.
+
+### Removed
+- `plugin_id` param from the `sc.scans.create()` method as it is no longer supported by Tenable.sc.
+- Python 3.6 references from all documentation.
+- `search_host_audit()` method from `io/v3/explore/findings`.
+
+[1.4.10]: https://github.com/tenable/pyTenable/compare/1.4.9...1.4.10 
+
+## [1.4.9]
+### Added
+
+- Support for initiating exports (and getting the export UUID).
+- Support for Tenable.ot plugins, events, more support for asset details.
+
+### Fixed
+
+- Bug in `tio.scans.results()` fixed to pass `history_id` and `history_uuid`.
+
+### Changed
+
+- Refactored Tenable.ot session client.
+
+### Removed
+
+- Support for Python Version 3.6.
+
+
+ [1.4.9]: https://github.com/tenable/pyTenable/compare/1.4.8...1.4.9 
+
 ## [1.4.8]
 ### Added
 

@@ -1,6 +1,6 @@
 pkgbase = python-pytenable
 	pkgdesc = Python library to interface into Tenable's products and applications
-	pkgver = 1.4.9
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/tenable/pyTenable
 	changelog = CHANGELOG.md
@@ -26,7 +26,7 @@ pkgbase = python-pytenable
 	depends = python-typing-extensions
 	depends = python-urllib3
 	optdepends = python-docker: Docker support
-	source = python-pytenable-1.4.9.tar.gz::https://github.com/tenable/pyTenable/archive/1.4.9.tar.gz
-	sha256sums = 566b34fe9a1f9ef3d44a11bc0915379c138d55d65abc34e1cd59557aa2801cb4
+	source = python-pytenable-1.4.11.tar.gz::https://github.com/tenable/pyTenable/archive/1.4.11.tar.gz
+	sha256sums = f1a689cc12c6b7a40d61ba5a33b0347ea42377d228e530533ca766eefcf70a28
 
 pkgname = python-pytenable
