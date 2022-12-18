@@ -33,11 +33,6 @@ build() {
   export GOPROXY=https://goproxy.io
   export GOOS=linux
   export GOPATH="$srcdir"/go
-  export GOOS=linux
-case "$CARCH" in
-  x86_64) export GOARCH=amd64 ;;
-  aarch64) export GOARCH=arm64 ;;
-esac
   kernel_path="../app/kernel-linux/siyuan-kernel"
   build_args="-s -w -X github.com/siyuan-note/siyuan/kernel/util.Mode=prod"
   pushd "kernel"
@@ -45,10 +40,7 @@ esac
   popd
   
   msg2 "Building Electron"
-case "$CARCH" in
-  x86_64) electron_args="dist-linux" ;;
-  aarch64) electron_args="dist-darwin-arm64" ;;
-esac
+  electron_args="dist-linux"
   pushd app
   pnpm run ${electron_args}
   popd
@@ -57,7 +49,8 @@ esac
 package_siyuan-kernel() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   
-  install -dm0755 app/build/linux-unpacked/resources ${pkgdir}/usr/share/webapps/siyuan-kernel
+  install -Ddm0755 "${pkgdir}"/usr/{bin,share/webapps}
+  cp -arf app/build/linux*unpacked/resources ${pkgdir}/usr/share/webapps/siyuan-kernel
   ln -vsf /usr/share/webapps/siyuan-kernel/kernel/siyuan-kernel "${pkgdir}"/usr/bin/siyuan-kernel
   
   install -Dm644 ${srcdir}/siyuan-kernel.service -t "${pkgdir}"/usr/lib/systemd/system/
