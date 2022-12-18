@@ -6,5 +6,5 @@ Terminal=false
 Type=Application
 Icon=dopamine
 StartupWMClass=Dopamine
-Comment=The audio player that keeps it simple
+Comment=A simple but elegant Music player
 Categories=Utility;
