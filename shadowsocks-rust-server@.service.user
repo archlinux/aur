@@ -1,11 +1,15 @@
 # This file is derived from the default unit file for shadowsocks-rust.
 # This is the user-specific version of this unit.
 #
-# Users should create a new directory under $XDG_CONFIG_HOME/shadowsocks-rust/server
-# as the profile directory and place a "ss.json5" file under it.
+# Users should create a new directory under
+# $XDG_CONFIG_HOME/shadowsocks-rust/server as the profile directory and place a
+# "ss.json5" file under it.
 #
-# For example, if you want to name your profile "bar", you should have
-# the following directory structure:
+# This is the configuration file passed to ssserver. For how to configure
+# ssserver, see https://github.com/shadowsocks/shadowsocks-rust#getting-started
+#
+# For example, if you want to name your profile "bar", you should have the
+# following directory structure:
 #
 # $XDG_CONFIG_HOME/shadowsocks-rust/server/bar
 #   └─ ss.json5
@@ -24,6 +28,8 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 WorkingDirectory=%E/shadowsocks-rust/server/%i
 ExecStart=/usr/bin/ssserver --log-without-time -c ss.json5
 

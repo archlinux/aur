@@ -1,11 +1,15 @@
 # This file is derived from the default unit file for shadowsocks-rust.
 # This is the user-specific version of this unit.
 #
-# Users should create a new directory under $XDG_CONFIG_HOME/shadowsocks-rust/local
-# as the profile directory and place a "ss.json5" file under it.
+# Users should create a new directory under
+# $XDG_CONFIG_HOME/shadowsocks-rust/local as the profile directory and place a
+# "ss.json5" file under it.
 #
-# For example, if you want to name your profile "foo", you should have
-# the following directory structure:
+# This is the configuration file passed to sslocal. For how to configure
+# sslocal, see https://github.com/shadowsocks/shadowsocks-rust#getting-started
+#
+# For example, if you want to name your profile "foo", you should have the
+# following directory structure:
 #
 # $XDG_CONFIG_HOME/shadowsocks-rust/local/foo
 #   └─ ss.json5
@@ -15,7 +19,7 @@
 # systemctl --user enable --now shadowsocks-rust-local@foo.service
 
 [Unit]
-Description=Shadowsocks-rust Local Client Service for %I
+Description=Shadowsocks-rust Client Service for %I
 Documentation=https://github.com/shadowsocks/shadowsocks-rust
 After=network.target
 
@@ -24,6 +28,8 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 WorkingDirectory=%E/shadowsocks-rust/local/%i
 ExecStart=/usr/bin/sslocal --log-without-time -c ss.json5
 

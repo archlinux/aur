@@ -1,11 +1,14 @@
 # This file is derived from the default unit file for shadowsocks-rust.
 # This is the system-wide version of this unit.
 #
-# Users should create a new directory under /etc/shadowsocks-rust/server
-# as the profile directory and place a "ss.json5" file under it.
+# Users should create a new directory under /etc/shadowsocks-rust/server as the
+# profile directory and place a "ss.json5" file under it.
 #
-# For example, if you want to name your profile "bar", you should have
-# the following directory structure:
+# This is the configuration file passed to ssserver. For how to configure
+# ssserver, see https://github.com/shadowsocks/shadowsocks-rust#getting-started
+#
+# For example, if you want to name your profile "bar", you should have the
+# following directory structure:
 #
 # /etc/shadowsocks-rust/server/bar
 #   └─ ss.json5
