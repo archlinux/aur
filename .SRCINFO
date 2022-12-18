@@ -1,7 +1,7 @@
 pkgbase = hashclash-cuda-git
 	pkgdesc = Project HashClash - MD5 & SHA-1 cryptanalysis with CUDA support
 	pkgver = r104.2969e0c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cr-marcstevens/hashclash
 	arch = x86_64
 	license = MIT

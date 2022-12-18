@@ -1,7 +1,6 @@
-# Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=hashclash-cuda-git
 pkgver=r104.2969e0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Project HashClash - MD5 & SHA-1 cryptanalysis with CUDA support"
 arch=(x86_64)
 url="https://github.com/cr-marcstevens/hashclash"
@@ -21,16 +20,18 @@ pkgver() {
 }
 
 build() {
+	# the default env variables were causing problems, let configure detect them
+	unset CXXFLAGS CFLAGS
 	cd "$srcdir/${pkgname%-cuda-git}"
 	autoreconf --install
 	./configure --prefix=/usr --with-cuda=/opt/cuda
-	make
+	make -j4
 }
 
 package() {
 	cd "$srcdir/${pkgname%-cuda-git}"
 	make DESTDIR="$pkgdir/" install
-	install -D "$srcdir/${pkgname%-git}/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -d "$pkgdir/usr/share/${pkgname%-git}/scripts"
 	install -Dt "$pkgdir/usr/share/${pkgname%-git}/scripts" -m755 scripts/*
 }
