@@ -1,0 +1,246 @@
+From 547cf57abf61bc6be037320201999c29d45624b0 Mon Sep 17 00:00:00 2001
+From: Ricardo Vieira <ricardo.vieira1994@gmail.com>
+Date: Wed, 14 Dec 2022 11:16:44 +0100
+Subject: [PATCH 1/7] Update PyTensor dependency
+
+---
+ conda-envs/environment-dev.yml               | 2 +-
+ conda-envs/environment-test.yml              | 2 +-
+ conda-envs/windows-environment-dev.yml       | 2 +-
+ conda-envs/windows-environment-test.yml      | 2 +-
+ pymc/distributions/distribution.py           | 3 ++-
+ pymc/distributions/timeseries.py             | 3 ++-
+ pymc/logprob/transforms.py                   | 3 ++-
+ pymc/pytensorf.py                            | 2 +-
+ pymc/sampling/jax.py                         | 5 +++--
+ pymc/smc/kernels.py                          | 2 +-
+ pymc/tests/distributions/test_shape_utils.py | 8 ++++----
+ pymc/tests/test_initial_point.py             | 2 +-
+ pymc/tests/test_pytensorf.py                 | 2 +-
+ requirements-dev.txt                         | 2 +-
+ requirements.txt                             | 2 +-
+ 15 files changed, 23 insertions(+), 19 deletions(-)
+
+diff --git a/conda-envs/environment-dev.yml b/conda-envs/environment-dev.yml
+index 0600471e..6f40d2ba 100644
+--- a/conda-envs/environment-dev.yml
++++ b/conda-envs/environment-dev.yml
+@@ -14,7 +14,7 @@ dependencies:
+ - numpy>=1.15.0
+ - pandas>=0.24.0
+ - pip
+-- pytensor=2.8.10
++- pytensor=2.8.11
+ - python-graphviz
+ - networkx
+ - scipy>=1.4.1
+diff --git a/conda-envs/environment-test.yml b/conda-envs/environment-test.yml
+index fc1decde..d1603b57 100644
+--- a/conda-envs/environment-test.yml
++++ b/conda-envs/environment-test.yml
+@@ -17,7 +17,7 @@ dependencies:
+ - numpy>=1.15.0
+ - pandas>=0.24.0
+ - pip
+-- pytensor=2.8.10
++- pytensor=2.8.11
+ - python-graphviz
+ - networkx
+ - scipy>=1.4.1
+diff --git a/conda-envs/windows-environment-dev.yml b/conda-envs/windows-environment-dev.yml
+index 0459beb8..319a0701 100644
+--- a/conda-envs/windows-environment-dev.yml
++++ b/conda-envs/windows-environment-dev.yml
+@@ -14,7 +14,7 @@ dependencies:
+ - numpy>=1.15.0
+ - pandas>=0.24.0
+ - pip
+-- pytensor=2.8.10
++- pytensor=2.8.11
+ - python-graphviz
+ - networkx
+ - scipy>=1.4.1
+diff --git a/conda-envs/windows-environment-test.yml b/conda-envs/windows-environment-test.yml
+index b637993a..067e3f10 100644
+--- a/conda-envs/windows-environment-test.yml
++++ b/conda-envs/windows-environment-test.yml
+@@ -17,7 +17,7 @@ dependencies:
+ - numpy>=1.15.0
+ - pandas>=0.24.0
+ - pip
+-- pytensor=2.8.10
++- pytensor=2.8.11
+ - python-graphviz
+ - networkx
+ - scipy>=1.4.1
+diff --git a/pymc/distributions/distribution.py b/pymc/distributions/distribution.py
+index f59f5b63..6e4599c9 100644
+--- a/pymc/distributions/distribution.py
++++ b/pymc/distributions/distribution.py
+@@ -26,7 +26,8 @@ import numpy as np
+ from pytensor import tensor as at
+ from pytensor.compile.builders import OpFromGraph
+ from pytensor.graph import node_rewriter
+-from pytensor.graph.basic import Node, Variable, clone_replace
++from pytensor.graph.basic import Node, Variable
++from pytensor.graph.replace import clone_replace
+ from pytensor.graph.rewriting.basic import in2out
+ from pytensor.graph.utils import MetaType
+ from pytensor.tensor.basic import as_tensor_variable
+diff --git a/pymc/distributions/timeseries.py b/pymc/distributions/timeseries.py
+index 1af67512..14cce247 100644
+--- a/pymc/distributions/timeseries.py
++++ b/pymc/distributions/timeseries.py
+@@ -21,7 +21,8 @@ import numpy as np
+ import pytensor
+ import pytensor.tensor as at
+ 
+-from pytensor.graph.basic import Node, clone_replace
++from pytensor.graph.basic import Node
++from pytensor.graph.replace import clone_replace
+ from pytensor.tensor import TensorVariable
+ from pytensor.tensor.random.op import RandomVariable
+ 
+diff --git a/pymc/logprob/transforms.py b/pymc/logprob/transforms.py
+index 54f5deb7..fa5bcd5c 100644
+--- a/pymc/logprob/transforms.py
++++ b/pymc/logprob/transforms.py
+@@ -42,10 +42,11 @@ from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
+ import pytensor.tensor as at
+ 
+ from pytensor.gradient import DisconnectedType, jacobian
+-from pytensor.graph.basic import Apply, Node, Variable, clone_replace
++from pytensor.graph.basic import Apply, Node, Variable
+ from pytensor.graph.features import AlreadyThere, Feature
+ from pytensor.graph.fg import FunctionGraph
+ from pytensor.graph.op import Op
++from pytensor.graph.replace import clone_replace
+ from pytensor.graph.rewriting.basic import GraphRewriter, in2out, node_rewriter
+ from pytensor.scalar import Add, Exp, Log, Mul, Reciprocal
+ from pytensor.scan.op import Scan
+diff --git a/pymc/pytensorf.py b/pymc/pytensorf.py
+index cbe7288d..5b20ba4e 100644
+--- a/pymc/pytensorf.py
++++ b/pymc/pytensorf.py
+@@ -1036,7 +1036,7 @@ def collect_default_updates(
+         assert random_var.owner.op is not None
+         if isinstance(random_var.owner.op, RandomVariable):
+             rng = random_var.owner.inputs[0]
+-            if hasattr(rng, "default_update"):
++            if getattr(rng, "default_update", None) is not None:
+                 update_map = {rng: rng.default_update}
+             else:
+                 update_map = {rng: random_var.owner.outputs[0]}
+diff --git a/pymc/sampling/jax.py b/pymc/sampling/jax.py
+index c3ac07fa..3f017c5a 100644
+--- a/pymc/sampling/jax.py
++++ b/pymc/sampling/jax.py
+@@ -22,8 +22,9 @@ import pytensor.tensor as at
+ 
+ from arviz.data.base import make_attrs
+ from pytensor.compile import SharedVariable, Supervisor, mode
+-from pytensor.graph.basic import clone_replace, graph_inputs
++from pytensor.graph.basic import graph_inputs
+ from pytensor.graph.fg import FunctionGraph
++from pytensor.graph.replace import clone_replace
+ from pytensor.link.jax.dispatch import jax_funcify
+ from pytensor.raise_op import Assert
+ from pytensor.tensor import TensorVariable
+@@ -70,7 +71,7 @@ def _replace_shared_variables(graph: List[TensorVariable]) -> List[TensorVariabl
+ 
+     shared_variables = [var for var in graph_inputs(graph) if isinstance(var, SharedVariable)]
+ 
+-    if any(hasattr(var, "default_update") for var in shared_variables):
++    if any(var.default_update is not None for var in shared_variables):
+         raise ValueError(
+             "Graph contains shared variables with default_update which cannot "
+             "be safely replaced."
+diff --git a/pymc/smc/kernels.py b/pymc/smc/kernels.py
+index 9b7a02e1..7cdbfd31 100644
+--- a/pymc/smc/kernels.py
++++ b/pymc/smc/kernels.py
+@@ -21,7 +21,7 @@ from typing import Dict, cast
+ import numpy as np
+ import pytensor.tensor as at
+ 
+-from pytensor.graph.basic import clone_replace
++from pytensor.graph.replace import clone_replace
+ from scipy.special import logsumexp
+ from scipy.stats import multivariate_normal
+ 
+diff --git a/pymc/tests/distributions/test_shape_utils.py b/pymc/tests/distributions/test_shape_utils.py
+index b335fefb..dcd78dab 100644
+--- a/pymc/tests/distributions/test_shape_utils.py
++++ b/pymc/tests/distributions/test_shape_utils.py
+@@ -562,13 +562,13 @@ def test_change_rv_size_default_update():
+         new_x = change_dist_size(x, new_size=(2,))
+     new_rng = new_x.owner.inputs[0]
+     assert rng.default_update is next_rng
+-    assert not hasattr(new_rng, "default_update")
++    assert new_rng.default_update is None
+ 
+-    # Test that default_update is not set if there was none before
+-    del rng.default_update
++    # Test that default_update is not set if it was None before
++    rng.default_update = None
+     new_x = change_dist_size(x, new_size=(2,))
+     new_rng = new_x.owner.inputs[0]
+-    assert not hasattr(new_rng, "default_update")
++    assert new_rng.default_update is None
+ 
+ 
+ def test_change_specify_shape_size_univariate():
+diff --git a/pymc/tests/test_initial_point.py b/pymc/tests/test_initial_point.py
+index a9fdb5a6..400b510a 100644
+--- a/pymc/tests/test_initial_point.py
++++ b/pymc/tests/test_initial_point.py
+@@ -238,7 +238,7 @@ class TestMoment:
+ 
+     @pytest.mark.parametrize("rv_cls", [pm.Flat, pm.HalfFlat])
+     def test_symbolic_moment_shape(self, rv_cls):
+-        s = at.scalar()
++        s = at.scalar(dtype="int64")
+         rv = rv_cls.dist(shape=(s,))
+         assert not hasattr(rv.tag, "test_value")
+         assert tuple(moment(rv).shape.eval({s: 4})) == (4,)
+diff --git a/pymc/tests/test_pytensorf.py b/pymc/tests/test_pytensorf.py
+index ce02dbae..983e5275 100644
+--- a/pymc/tests/test_pytensorf.py
++++ b/pymc/tests/test_pytensorf.py
+@@ -336,7 +336,7 @@ class TestCompilePyMC:
+         assert not np.isclose(f(), f())
+ 
+         # Check that update was not done inplace
+-        assert not hasattr(rng, "default_update")
++        assert rng.default_update is None
+         f = pytensor.function([], x)
+         assert f() == f()
+ 
+diff --git a/requirements-dev.txt b/requirements-dev.txt
+index 714bc30d..c1ef9b70 100644
+--- a/requirements-dev.txt
++++ b/requirements-dev.txt
+@@ -17,7 +17,7 @@ numpydoc
+ pandas>=0.24.0
+ polyagamma
+ pre-commit>=2.8.0
+-pytensor==2.8.10
++pytensor==2.8.11
+ pytest-cov>=2.5
+ pytest>=3.0
+ scipy>=1.4.1
+diff --git a/requirements.txt b/requirements.txt
+index 4f64eb94..cc6e6afc 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -4,6 +4,6 @@ cloudpickle
+ fastprogress>=0.2.0
+ numpy>=1.15.0
+ pandas>=0.24.0
+-pytensor==2.8.10
++pytensor==2.8.11
+ scipy>=1.4.1
+ typing-extensions>=3.7.4
+-- 
+2.39.0
+
