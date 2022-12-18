@@ -1,19 +1,19 @@
-# Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
+# Maintainer: Torsten Keßler <tpkessler at archlinux dot org>
 # Contriubtor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rccl
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
-url='https://rccl.readthedocs.io/en/rocm-5.4.0/'
+url='https://rccl.readthedocs.io/en/rocm-5.4.1/'
 license=('custom')
 depends=('hip' 'rocm-smi-lib')
 makedepends=('rocm-cmake' 'python')
 _git='https://github.com/ROCmSoftwarePlatform/rccl'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('213f4f3d75389be588673e43f563e5c0d6908798228b0b6a71f27138fd4ed0c7')
+sha256sums=('d423921c69b3d4c522c109c2f17ec1703f0fa573e2999564803da2fe788f3a00')
 _dirname="$(basename $_git)-$(basename ${source[0]} .tar.gz)"
 
 build() {

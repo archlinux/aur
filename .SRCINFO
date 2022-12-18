@@ -1,15 +1,15 @@
 pkgbase = rccl
 	pkgdesc = ROCm Communication Collectives Library
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
-	url = https://rccl.readthedocs.io/en/rocm-5.4.0/
+	url = https://rccl.readthedocs.io/en/rocm-5.4.1/
 	arch = x86_64
 	license = custom
 	makedepends = rocm-cmake
 	makedepends = python
 	depends = hip
 	depends = rocm-smi-lib
-	source = rccl-5.4.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-5.4.0.tar.gz
-	sha256sums = 213f4f3d75389be588673e43f563e5c0d6908798228b0b6a71f27138fd4ed0c7
+	source = rccl-5.4.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-5.4.1.tar.gz
+	sha256sums = d423921c69b3d4c522c109c2f17ec1703f0fa573e2999564803da2fe788f3a00
 
 pkgname = rccl
