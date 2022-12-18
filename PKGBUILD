@@ -28,6 +28,6 @@ package() {
 }
 
 check(){
-  cd "$srcdir/$_name-$pkgver/test"
-  python test_pysodium.py
+  cd "$srcdir/$_pkgsubdir"
+  python -m test.test_pysodium
 }
