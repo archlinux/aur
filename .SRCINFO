@@ -1,7 +1,7 @@
 pkgbase = cglm
 	pkgdesc = OpenGL Mathematics (glm) for C
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/recp/cglm
 	arch = x86_64
 	license = MIT
