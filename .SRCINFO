@@ -1,9 +1,11 @@
 pkgbase = sway-audio-idle-inhibit-git
 	pkgdesc = Prevents swayidle from sleeping while any application is outputting or receiving audio
-	pkgver = 0.1.r18.c582197
+	pkgver = 0.1.1.r31.e9cb7d6
 	pkgrel = 1
 	url = https://github.com/ErikReider/SwayAudioIdleInhibit
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL
 	makedepends = gcc
 	makedepends = meson
