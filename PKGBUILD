@@ -1,7 +1,7 @@
 # Maintainer: V0IDPlusPlus <v0idplusplus at protonmail dot com>
 
 pkgname=tencent-docs-bin
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="腾讯文档 Tencent Docs - 让协作更高效，创作更轻松"
 arch=("x86_64" "aarch64")
@@ -14,8 +14,8 @@ source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.deb::https://github.com/V0
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.deb::https://github.com/V0IDPlusPlus/Tencent-Docs-Debian-Package-Archive/releases/download/v${pkgver}-${pkgrel}/LinuxTencentDocsArm64.deb")
 
 sha256sums=("7dd7432ece74ddd5d5fd6de07e6b521a4b84206a8fa099b754f2a994641404d7")
-sha256sums_x86_64=("19fa74eab4ca31ebff9a7a6313b21605d9587aa40382857bd442ff250ae5b01d")
-sha256sums_aarch64=("c5b81f1c449ef47b7249cc1f5b1c58861b6b4e41808cd90c2f1c026dbae5bf31")
+sha256sums_x86_64=("b0f3ea630633bcc96817ca1f703c97bb1a38c5c7bb8b11a82ef9db103342ed17")
+sha256sums_aarch64=("97d183ebafaad18c138a7d8b138072c185dc86be0e67d8ac2575b953a2fe1a2e")
 
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
