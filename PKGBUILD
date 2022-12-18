@@ -8,15 +8,20 @@ url="https://github.com/SebastianSpeitel/borrg"
 license=("Apache-2.0" "Apache-2.0-with-LLVM-exceptions" "Boost-1.0" "MIT" "Unlicense")
 arch=("x86_64")
 depends=('borgbackup')
-makedepends=('rust')
+makedepends=('rust>=1.65')
 provides=("borrg")
 conflicts=("borrg-bin")
 source=("https://github.com/SebastianSpeitel/borrg/archive/${_commit}.tar.gz")
 sha256sums=('f8d1e8a0afbbcd2efdb7c0d3fb7c7634ca91f11c68a425e2d80faee5bab252d0')
 
+prepare() {
+	cd "$pkgname-$_commit"
+	cargo fetch --offline --target "x86_64-unknown-linux-gnu"
+}
+
 build() {
 	cd "$pkgname-$_commit"
-	cargo build --release	
+	cargo build --release --frozen --all-targets
 }
 
 package() {

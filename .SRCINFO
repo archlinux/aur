@@ -9,7 +9,7 @@ pkgbase = borrg
 	license = Boost-1.0
 	license = MIT
 	license = Unlicense
-	makedepends = rust
+	makedepends = rust>=1.65
 	depends = borgbackup
 	provides = borrg
 	conflicts = borrg-bin
