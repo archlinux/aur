@@ -4,6 +4,7 @@
 _name="pysodium"
 pkgname="python-${_name}"
 pkgver=0.7.12
+_pkgsubdir="${_name}-${pkgver}"
 pkgrel=2
 pkgdesc="python libsodium wrapper"
 arch=(any)
@@ -11,16 +12,16 @@ url="https://github.com/stef/pysodium"
 license=(BSD)
 makedepends=("python" "python-pip" "python-wheel" python-build python-installer)
 depends=("libsodium" "python")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_pkgsubdir}.tar.gz")
 sha256sums=('3e9005c770dca021889b2fe77db7ffa3c2e98fcac7e3cc1e8e157b9ed78f1fc8')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_pkgsubdir"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_pkgsubdir"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "$pkgdir/usr/lib/python3.10/site-packages/${_name}-0.7.12.dist-info/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
