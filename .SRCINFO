@@ -1,6 +1,6 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2023.2
+	pkgver = 2023.3
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
@@ -29,9 +29,9 @@ pkgbase = maya
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
 	options = !strip
-	source = manual://Maya2023_64-2023.2-1794.x86_64.rpm
+	source = manual://Maya2023_64-2023.3-2072.x86_64.rpm
 	source = application-home-workaround.patch
-	sha256sums = bebe000496d845f4b866cc050e775e6c230b11a3f7bce2360f7b6a1adf0e4e78
+	sha256sums = 5d5ea3268bdfe2003c96591c099b760ef09d7e917f918fd992563726a7f905c1
 	sha256sums = 0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a
 
 pkgname = maya

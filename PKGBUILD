@@ -5,7 +5,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=maya
-pkgver=2023.2
+pkgver=2023.3
 _majorver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
@@ -21,9 +21,9 @@ optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-usd: Maya Universal Scene Description Plugin')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Maya2023_64-$pkgver-1794.x86_64.rpm"
+source=("manual://Maya2023_64-$pkgver-2072.x86_64.rpm"
         'application-home-workaround.patch')
-sha256sums=('bebe000496d845f4b866cc050e775e6c230b11a3f7bce2360f7b6a1adf0e4e78'
+sha256sums=('5d5ea3268bdfe2003c96591c099b760ef09d7e917f918fd992563726a7f905c1'
             '0bac864b64db2cdc7be5de574e404bc36f80959bc867988f6a67cdbaf32abb1a')
 
 options=(!strip)
