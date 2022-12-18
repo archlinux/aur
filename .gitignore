@@ -1,8 +1,5 @@
-autowaf/
 ingen/
-ingen-git-*.tar.xz
-ingen-git-*.tar.zst
+ingen-git-*.tar.*
 ingen-git-*.src.tar.gz
 pkg/
 src/
-.AURINFO

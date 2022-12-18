@@ -2,56 +2,46 @@
 # Contributor: <skrylar@UFO>
 
 _pkgname=ingen
-pkgname="${_pkgname}-git"
-pkgver=0.5.1.r2947.473409cf
+pkgname=$_pkgname-git
+pkgver=0.5.1.r3006.819fba38
 pkgrel=1
-pkgdesc="A modular plugin host for JACK and LV2 (git version)"
-arch=('i686' 'x86_64')
-url="http://drobilla.net/software/${_pkgname}/"
-license=('GPL')
-depends=('alsa-lib' 'ganv>=1.5.4' 'jack' 'libsigc++' 'lilv>=0.21.5' 'lv2>=1.16.0'
-         'portaudio' 'python-rdflib' 'raul>=1.1.0' 'suil>=0.8.7' 'serd>=0.30.3'
-         'sord>=0.12.0' 'sratom>=0.4.6')
-makedepends=('boost' 'git')
-optdepends=(
-    'lv2-plugins: various useful LV2 plug-in packages'
-)
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://gitlab.com/drobilla/ingen.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP'
-         'SKIP')
+pkgdesc='A modular plugin host for JACK and LV2 (git version)'
+arch=(x86_64)
+url='https://drobilla.net/software/ingen.html'
+license=(GPL)
+depends=(gtkmm python-rdflib)
+makedepends=(boost ganv git jack lilv lv2 portaudio raul suil serd sord sratom)
+provides=($_pkgname lv2-host)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+https://gitlab.com/drobilla/ingen.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-
-  git submodule init
-  git config submodule.waflib.url "${srcdir}/autowaf"
-  git submodule update
-}
 
 pkgver() {
-  cd "$srcdir/${_pkgname}"
-
-  local ver=$(grep ^INGEN_VERSION wscript | cut -f 2 -d "'")
-  local rev=$(git rev-list --count HEAD)
-  local githash=$(git rev-parse --short HEAD)
-  echo "${ver}.r${rev}.${githash}"
+  cd $_pkgname
+  local ver=$(grep -E "^\s+version: '[0-9]+\.[0-9]+\.[0-9]+'" meson.build | cut -d "'" -f 2)
+  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  if [[ -d $pkgname-builddir ]]; then
+    arch-meson --reconfigure $pkgname-builddir $_pkgname
+  else
+    arch-meson $pkgname-builddir $_pkgname
+  fi
 
-  python waf configure --prefix=/usr
-  python waf build
+  meson compile -C $pkgname-builddir
 }
 
-package() {
-  cd "$srcdir/${_pkgname}"
+#check() {
+#  meson test -C $pkgname-builddir
+#}
 
-  python waf install --destdir="$pkgdir/"
+package() {
+  depends+=(libganv-1.so libjack.so liblilv-0.so libportaudio.so libserd-0.so libsigc-2.0.so libsord-0.so libsratom-0.so libsuil-0.so )
+  meson install --destdir="$pkgdir" -C $pkgname-builddir
+  cd $_pkgname
+  install -v -D -m 644 AUTHORS README.md THANKS -t "$pkgdir"/usr/share/doc/$pkgname
 }
 
 # vim:set ts=2 sw=2 et:
