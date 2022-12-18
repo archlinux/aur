@@ -1,17 +1,23 @@
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch>
+
 pkgname=tag_puzzle
-pkgver=1.2
-pkgrel=1
+pkgver=1.0
+pkgrel=2
 pkgdesc="A simple Tag game, written on C++ & SFML"
 arch=( "any" )
 url="https://github.com/KonstantinProgger/Tag-Puzzle"
 license=( "Apache License 2.0" )
-depends=( 'gcc' 'cmake' 'sfml' )
-makedepends=( 'gcc' 'cmake' 'sfml' )
-source=( "https://raw.githubusercontent.com/KonstantinProgger/my_archive/master/tag_puzzle/linux/tag_puzzle.1.2.tar.gz" )
-md5sums=( "0522504012e0b35716574d61718c953a" )
+makedepends=( 'cmake' 'sfml' )
+source=( "https://github.com/KonstantIMP/Tag-Puzzle/archive/refs/tags/${pkgver}.tar.gz") 
+sha256sums=('1c837a1e39ff50c43908cfb0cd100e2d1358218eca23f725ef1059be96610d47')
 
-package() {
+build() {
+		cd Tag-Puzzle-1.0
     cmake CMakeLists.txt
     make all
-    sudo make install
+}
+
+package() {
+	cd Tag-Puzzle-1.0
+	make DESTDIR="${pkgdir}/" install
 }
