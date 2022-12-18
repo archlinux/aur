@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=inochi-creator
+Icon=inochi-creator
+GenericName=Inochi2D Puppet Editor
+Comment=Open source editor for rigging Inochi2D puppets
+Exec=inochi-creator %F
+Terminal=false
+MimeType=application/x-inochi-puppet;application/x-inochi-creator-puppet;
+Categories=Graphics;2DGraphics;RasterGraphics;

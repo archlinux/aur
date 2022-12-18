@@ -1,0 +1,45 @@
+#!/bin/bash
+
+C="\x1b[0m"
+GRN="\x1b[32m"
+YEL="\x1b[33m"
+BLU="\x1b[34m"
+col2="$BLU::$C"
+
+if [ "$1" != "--skip-dl" ]; then
+    url=https://github.com/Inochi2D/inochi-creator
+    current=`cat current_version`
+    echo -e "$col2 Getting latest version..." >/dev/stderr
+    latest=`basename $(curl -Ls -o /dev/null -w %{url_effective} "$url/releases/latest")`
+
+    if [ "$current" = "$latest" ] && [ "$1" != "-f" ]; then
+        echo -e "$col2 Current $GRN$current$C is latest, no update required" >/dev/stderr
+        exit
+    else
+        echo -e "$col2 Changing current version from $YEL$current$C to $GRN$latest$C"
+        echo "$latest" > current_version
+    fi
+fi
+
+echo -e "$col2 Updating checksums..."
+updpkgsums
+
+echo -e "$col2 Writing .SRCINFO file..."
+makepkg --printsrcinfo > .SRCINFO
+
+echo -e "$col2 Making and installing new package..."
+makepkg -si
+
+echo -e "$col2 Bump version in git history..."
+
+if [ "$1" != "--skip-dl" ]; then
+    git commit -am "Bump to version $latest"
+else
+    # we write the commit message ourselves
+    git commit -a
+fi
+
+echo -e "$col2 Pushing new commit..."
+git push
+
+echo -e "$col2 Done"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-inochi-puppet">
+		<comment>Inochi2D puppet</comment>
+		<icon name="application-x-inochi-puppet"/>
+		<glob pattern="*.inp"/>
+	</mime-type>
+	<mime-type type="application/x-inochi-creator-puppet">
+		<comment>Inochi Creator puppet</comment>
+		<icon name="application-x-inochi-creator-puppet"/>
+		<glob pattern="*.inx"/>
+	</mime-type>
+</mime-info>
