@@ -8,8 +8,8 @@ _pkgver_forkawesome=1.2.0
 _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=qtforkawesome-git
 _name=${pkgname%-git}
-pkgver=18.da639c8
-pkgrel=1
+pkgver=46.1c92ea5
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
 license=('GPL')
@@ -19,8 +19,7 @@ optdepends=(
   "$_name-doc: API documentation"
 )
 makedepends=('cmake' 'git' 'ninja' 'perl-yaml-libyaml' 'qtutilities-git' 'qt5-declarative')
-#provides=("${_name}")
-#conflicts=("${_name}")
+provides=(libqtforkawesome-git.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
