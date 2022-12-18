@@ -1,0 +1,20 @@
+#!/bin/bash
+
+build() {
+    add_binary 'kpartx'
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+If your decrypted device is not structured via LVM2, but has a GPT instead (to
+save one level of indirection), its contained partitions do not show up as block
+devices without further help. Unfortunately, tools like 'partprobe' or 'partx'
+fail to establish those subdevices. Hence, a different approach has to be
+followed by utilization of 'kpartx' from the 'multipath-tools' package which is
+what this hook does. Just put this hook directly after the 'encrypt' hook.
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

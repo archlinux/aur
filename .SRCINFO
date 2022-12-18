@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-kpartx
+	pkgdesc = mkinitcpio hook allowing for a GPT partitioned LUKS device not needing LVM
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/OnkelUlla/mkinitcpio-kpartx
+	arch = any
+	depends = mkinitcpio
+	depends = multipath-tools
+	source = kpartx_hook
+	source = kpartx_install
+	sha256sums = 55cbf0e17f16930b39a66218f245cbd94446b675fb4f316588281b48ff4e4908
+	sha256sums = 534b699571e345a508b31570c95ebae164351ad0052aca001f067b0cbde6b9f4
+
+pkgname = mkinitcpio-kpartx
