@@ -1,13 +1,14 @@
 pkgbase = xnviewmp
 	pkgdesc = An efficient multimedia viewer, browser and converter.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xnview.com/en/xnviewmp/
 	arch = x86_64
 	license = custom
 	depends = qt5-multimedia
 	depends = qt5-svg
-	depends = qt5-webkit
+	depends = qt5-webengine
+	depends = qt5-sensors
 	depends = qt5-x11extras
 	depends = desktop-file-utils
 	optdepends = glib2: support for moving files to trash
