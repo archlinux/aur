@@ -1,5 +1,5 @@
 pkgname=datasette
-pkgver=0.63.2
+pkgver=0.63.3
 pkgrel=1
 pkgdesc="An open source multi-tool for exploring and publishing data"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python-asgiref" "python-click" "python-click-default-group" "python-ji
 makedepends=("python-setuptools")
 conflicts=("datasette")
 source=("https://pypi.io/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("4b6c593e9d5b9aab3eb86bb0a18b5e4eaaec24bf17e7ddf1c763afcce8d23dac")
+sha256sums=("fc6a37c73d0d08e9240211a24893eb09886b84427be1ad2295a67be231175af3")
 
 build() {
     cd "${pkgname}-${pkgver}"
