@@ -1,6 +1,6 @@
 pkgbase = sioyek
 	pkgdesc = PDF viewer for research papers and technical books.
-	pkgver = 1.5.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = sioyek
 	depends = qt5-3d
 	depends = qt5-base
 	depends = zlib
-	source = sioyek-1.5.0.tar.gz::https://github.com/ahrm/sioyek/archive/v1.5.0.tar.gz
-	source = mupdf-1.20.patch
-	sha256sums = 2d01c757953c3f2d98428376e642d13b8a9edeba8fee506477e8aa178756f16b
-	sha256sums = cd639043d9978a27f8957db59001c846bc6b5190fd08afd9cd8d2d8875b532fa
+	source = sioyek-2.0.0.tar.gz::https://github.com/ahrm/sioyek/archive/v2.0.0.tar.gz
+	sha256sums = 92398b6da5e297c59f22cd3c6b562194846f28bc17bb4ae9432869aafeb5df17
 
 pkgname = sioyek
