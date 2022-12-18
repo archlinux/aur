@@ -9,12 +9,13 @@ _mirthuser='mirthcon'
 #_JVM='/usr/lib/jvm/java-16-openjdk'; _JRE='jre16-openjdk-headless' # too hard, not an LTS release
 #_JVM='/usr/lib/jvm/java-18-openjdk';  _JRE='jre-openjdk-headless' # can't track with version changes
 
+_source=()
 if :; then
   _jsch_libname='jsch'
   _jsch_oldver='0.1.55'
   if :; then
     _JVM='/usr/lib/jvm/java-17-openjdk';  _JRE='jdk17-openjdk' # needed for all functionality of JSCH-0.2.0
-    _jsch_pkgver='0.2.1'
+    _jsch_pkgver='0.2.5'
     _jsch_srcdir="${_jsch_libname}-${_jsch_libname}-${_jsch_pkgver}"
     #_jsch_srcdir="${_jsch_libname}-${_jsch_srcdir}"
     _source=("https://github.com/mwiede/jsch/archive/refs/tags/${_jsch_libname}-${_jsch_pkgver}.tar.gz")
@@ -36,7 +37,9 @@ pkgname='mirthconnect'
 #pkgver='3.12.0.b2650'
 #pkgver='4.0.1.b293'
 #pkgver='4.1.0.b2777'
-pkgver='4.1.1.b303'
+#pkgver='4.1.1.b303'
+pkgver='4.2.0.b2825'
+# JSCH Updates https://github.com/mwiede/jsch/releases
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen'
 arch=('x86_64')
@@ -62,16 +65,16 @@ source=(
   '0000a-mirth-disable-SSLv2Hello.patch'
   "${_source[@]}"
 )
-md5sums=('56aaf39e5c04ca9c612e79801b0e6009'
+md5sums=('4f3c0e5eaeed724d4e740de94d8636ee'
          '426de9435b21e90df7ae044510938270'
          '1acd364394ce76740ccea30f7133720f'
-         '9d3781f917c5f5c4bc7e16860dc18344'
+         'f8052fb1c6236ccc1e43c467f6fc0581'
          'b9e1b8f9395622ba548d7fd07cfd7c26'
          '093e7997245afcf04a598f4a9fa2ee14')
-sha256sums=('5f765609652afce42ac394228b15b005e22d2dcd57fb41a17fd465c1eaaf6f7f'
+sha256sums=('9ab928069ec263edf76b168739e5091cbd864971c2af1be05a845d19660fd7a0'
             '4dc37b7ed9db5c9fcd74f45cd6197f6b631d74d3a30022bda6fda1c5900b7099'
             '2bdf62155ce4a2e51f33fa27aab7f9d6f5e5ff209c9f3691db4782c1f30fee5c'
-            'a3cb1b619269dbef91170f5470a0784aab4862932c17b63af686d5955b3c4bb9'
+            'dc1fa8ead27b464267a5b010afa4ad649f948e9a9e8cc657d65ffe9a33daa9d5'
             'f754da4581b5e390e13fc407ab9fc4cdc7f139585081929626be8569dae99ad9'
             'd1da7f180363924063cdc1f64c4fd049462f1cb02df0bf1ded2292c990e31bf2')
 
@@ -136,7 +139,7 @@ fi
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
-  source[0]="${url//https/git}"
+  source[0]="git+${_giturl}"
   makedepends+=('git')
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -160,12 +163,25 @@ prepare() {
 
   chmod 700 'conf' # contains cleartext passwords
 
-  sed -e 's:\r::g' -i conf/*.properties
-  echo >> 'conf/dbdrivers.xml'
-  echo >> 'conf/log4j-cli.properties'
-  echo >> 'conf/mirth-cli-config.properties'
-  echo >> 'conf/mirth.properties'
-  echo >> 'docs/mcservice-java9+.vmoptions'
+  shopt -s nullglob
+  local _fal=(conf/* 'docs/mcservice-java9+.vmoptions' docs/*.txt)
+  local _fa
+  readarray -t _fa < <(grep -l -e $'\r' /dev/null "${_fal[@]}")
+  if [ "${#_fa[@]}" -gt 0 ]; then
+    printf 'CR fix %s\n' "${_fa[@]}"
+    sed -e 's:\r::g' -i "${_fa[@]}"
+  fi
+  local _f
+  for _f in "${_fal[@]}"; do
+    if [ "$(tail -c1 "${_f}" | od -t x1 | head -1 | cut -d' ' -f2)" != '0a' ]; then
+      printf 'LF fix %s\n' "${_f}"
+      echo >> "${_f}"
+    fi
+  done
+  shopt -u nullglob
+
+  # Why all the fiddly little changes?
+  sed -e 's:= $:=:g' -i 'conf/mirth.properties'
 
   if grep -q -F -e 'TLSv1.1' 'conf/mirth.properties'; then
     #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
