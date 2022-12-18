@@ -1,0 +1,1 @@
+mkinitcpio hook allowing for a GPT partitioned LUKS device not needing LVM
