@@ -49,9 +49,10 @@ package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgbin.desktop"
 
 	# Unzip Inochi Creator archive
-    mkdir "$pkgdir/usr/lib/inochi-creator"
+    mkdir -p "$pkgdir/usr/lib/inochi-creator"
     unzip "$pkgname-$_pkgver.zip" -d "$pkgdir/usr/lib/inochi-creator/"
 
     # Install binary
+    mkdir -p "$pkgdir/usr/bin"
     ln -s /usr/lib/inochi-creator/inochi-creator "$pkgdir/usr/bin/inochi-creator"
 }
