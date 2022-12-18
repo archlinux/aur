@@ -1,7 +1,7 @@
 pkgbase = pleroma-bin
 	pkgdesc = A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pleroma.social/
 	install = pleroma.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pleroma-bin
 	license = CCPL:cc-by-sa-4.0
 	depends = ncurses
 	depends = file
-	depends = libxcrypt-compati
+	depends = libxcrypt-compat
 	depends = openssl-1.1
 	optdepends = postgresql: local postgresql database support
 	optdepends = imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support

@@ -1,14 +1,15 @@
-# Maintainer: gudzpoz <gudzpoz ant live dot com>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: gudzpoz <gudzpoz ant live dot com>
 # Contributor: Faye Jackson <justalittleepsilon ant gmail dot com>
 
 pkgname=pleroma-bin
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.'
 url='https://pleroma.social/'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
 arch=(x86_64 aarch64 armv7h)
-depends=(ncurses file libxcrypt-compati openssl-1.1)
+depends=(ncurses file libxcrypt-compat openssl-1.1)
 optdepends=('postgresql: local postgresql database support'
             'imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support'
             'ffmpeg: media preview proxy support for videos'
