@@ -7,4 +7,4 @@ Type=Application
 Icon=dopamine
 StartupWMClass=Dopamine
 Comment=A simple but elegant Music player
-Categories=Utility;
+Categories=Audio; Utility;
