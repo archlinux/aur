@@ -1,0 +1,33 @@
+pkgbase = python3816
+	pkgdesc = Major release 3.8 of the Python high-level programming language
+	pkgver = 3.8.16
+	pkgrel = 3
+	url = https://www.python.org/
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gnupg
+	makedepends = make
+	makedepends = patch
+	makedepends = sqlite
+	makedepends = bluez-libs
+	makedepends = mpdecimal
+	depends = expat
+	depends = bzip2
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = zlib
+	optdepends = tk: for tkinter
+	optdepends = sqlite
+	provides = python=3.8.16
+	source = https://www.python.org/ftp/python/3.8.16/Python-3.8.16.tar.xz
+	source = https://www.python.org/ftp/python/3.8.16/Python-3.8.16.tar.xz.asc
+	source = mpdecimal_cy3816.patch
+	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
+	sha256sums = d85dbb3774132473d8081dcb158f34a10ccad7a90b96c7e50ea4bb61f5ce4562
+	sha256sums = SKIP
+	sha256sums = a44c461ae2caf4b4483c3bfbef3d5d140d528e163ef72084cf5d5afea75e298e
+
+pkgname = python3816
