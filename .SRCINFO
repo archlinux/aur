@@ -1,4 +1,4 @@
-pkgbase = dopamine
+pkgbase = dopamine-appimage
 	pkgdesc = The audio player that keeps it simple
 	pkgver = 3.0.0
 	pkgrel = 1
