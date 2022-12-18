@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -25,8 +25,15 @@ url="http://geant4.cern.ch/"
 arch=('x86_64')
 license=('custom: http://geant4.cern.ch/license/')
 options=('!emptydirs')
-source=("http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz")
-sha256sums=("051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985")
+source=(
+  "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
+  'geant4-full.install'
+)
+sha256sums=(
+  "051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985"
+  '40db557cb8f9d20d91e03dbae2d9bbec75c922b0175ef383f06e44881184c3e4'
+)
+install="geant4-full.install"
 
 build() {
 
@@ -89,8 +96,6 @@ package() {
   cd $srcdir
   install -D -m 755 Geant4.sh $pkgdir/etc/profile.d/Geant4.sh
   install -D -m 755 Geant4.csh $pkgdir/etc/profile.d/Geant4.csh
-  ln -s $pkgdir/usr/include/Geant4/CLHEP $pkgdir/usr/include/CLHEP
-  ln -s $pkgdir/usr/include/Geant4/PTL $pkgdir/usr/include/PTL
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
