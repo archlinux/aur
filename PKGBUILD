@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 sha256sums=('7f4fd6dae8a7b1208b020f9ee461bd3caec7c364125cc07ea54ef6eaaabdea9d')
 makedepends=('go')
-depends=('git' 'pacman')
+depends=('pacman')
 optdepends=('java-runtime: running the downloaded jarfiles')
 
 build () {
