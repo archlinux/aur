@@ -22,8 +22,8 @@ _clangbuild=
 
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57751.057cdc725ed
-pkgrel=2
+pkgver=r57755.fd5651963cb
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -220,6 +220,9 @@ package_kodi-matrix-git() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
+  
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
 # kodi-eventclients
