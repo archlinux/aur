@@ -26,4 +26,4 @@ package() {
 # sums
 sha256sums=('da21c9fcc8d0bdd519682c704f3746ddaa78b83b2c5993eedf2e940a2ea66f41'
             'fb825e1f4831cfdc7a4cc7dd6c1b7e3ddda81f86cf421d38f8dabc6bd6cd0509'
-            '27969e12af4ada0e5db907bbc6680990042180f52574584150acebde8db55adf')
+            '5f9dd559237011f313fe1b7f66bf5384639a9ff1c8598b9aa9ce8101ed1b91ca')

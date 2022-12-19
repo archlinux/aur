@@ -15,7 +15,7 @@ kernel_images=()
 while read -r path; do
 	case "$path" in
 	usr/lib/modules/*/vmlinuz)
-		kernel_images+=("/$line")
+		kernel_images+=("/$path")
 		;;
 	*)
 		kernel_images+=(/usr/lib/modules/*/vmlinuz)
