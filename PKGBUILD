@@ -1,8 +1,8 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=switchhosts-appimage
-pkgver=4.1.1
-_subpkgver="6077"
-pkgrel=1
+pkgver=4.1.2
+_subpkgver="6086"
+pkgrel=2
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -18,7 +18,7 @@ source=(
     "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${arch}_${pkgver}.${_subpkgver}.AppImage"
     )
 sha256sums=(
-    'a5e85009955a238a57e06e5b1d48d6187e31f7370cda8fd1ca09cae25343edce'
+    '12e69a01d9325f780ee387413124bbc6dee070610c7e22af5815cf74c56468aa'
     )
 
 prepare() {
@@ -41,7 +41,7 @@ package() {
 
     # Install Icon images
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/switchhosts.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/switchhosts.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 }
 
 post_install() {
