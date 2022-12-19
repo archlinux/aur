@@ -1,6 +1,6 @@
 pkgbase = questdb
 	pkgdesc = Fast timeseries database
-	pkgver = 6.5.5
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://questdb.io
 	install = questdb.install
@@ -8,7 +8,7 @@ pkgbase = questdb
 	license = APACHE
 	depends = java-runtime
 	depends = bash
-	source = https://github.com/questdb/questdb/releases/download/6.5.5/questdb-6.5.5-no-jre-bin.tar.gz
+	source = https://github.com/questdb/questdb/releases/download/6.6.1/questdb-6.6.1-no-jre-bin.tar.gz
 	source = questdb.sh
 	source = questdb.sysusers
 	source = questdb-tmpfile.conf
