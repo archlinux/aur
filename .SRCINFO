@@ -8,12 +8,14 @@ pkgbase = arch-wiki-dmenu-git
 	license = GPL
 	makedepends = git
 	depends = arch-wiki-docs
-	depends = dmenu
-	depends = surf
+	optdepends = xdg-utils
+	optdepends = fuzzel
+	optdepends = dmenu
+	optdepends = rofi
+	optdepends = surf-git
 	provides = arch-wiki-dmenu
 	conflicts = arch-wiki-dmenu
 	source = git+https://github.com/Kirottu/arch-wiki-dmenu
 	sha256sums = SKIP
 
 pkgname = arch-wiki-dmenu-git
-
