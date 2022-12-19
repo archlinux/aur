@@ -5,7 +5,7 @@
 pkgname=xorg-fonts-misc-otb
 pkgver=1.0.3
 pkgrel=9
-pkgdesc="X.org cyrillic fonts (OTB version)"
+pkgdesc="X.org misc fonts (OTB version)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
 license=('custom')

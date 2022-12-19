@@ -1,5 +1,5 @@
 pkgbase = xorg-fonts-misc-otb
-	pkgdesc = X.org cyrillic fonts (OTB version)
+	pkgdesc = X.org misc fonts (OTB version)
 	pkgver = 1.0.3
 	pkgrel = 9
 	url = https://gitlab.freedesktop.org/
