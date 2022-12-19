@@ -7,13 +7,13 @@ _gitver=11a035aa4ec2b55faaef1eaa48b7726a28422048
 _vdrapi=2.4.1
 pkgrel=3
 pkgdesc="extends the VDR with the possibility to act as an UPnP/DLNA Media Server (DMS)"
-url="http://projects.vdr-developer.org/projects/plg-softhddevice"
+url='https://github.com/vdr-projects/vdr-plugin-upnp'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('libupnp' 'tntdb' 'tntnet' "vdr-api=${_vdrapi}")
 makedepends=('boost' 'git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-$_plugname.git#commit=$_gitver"
+source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}"
         'upnp-vdr2.1.2compat.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
@@ -31,7 +31,7 @@ pkgver() {
   if [ $_count -gt 0 ]; then
     printf "%s.r%s.g%s" $_last_release \
       $_count \
-      `git rev-parse --short HEAD`
+      `git rev-parse --short=7 HEAD`
   else
     printf "%s" $_last_release
   fi
