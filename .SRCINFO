@@ -1,7 +1,7 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.1.55
-	pkgrel = 6
+	pkgrel = 7
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
@@ -11,8 +11,8 @@ pkgbase = anki
 	makedepends = cargo
 	makedepends = python-installer
 	makedepends = libxcrypt-compat
+	makedepends = nodejs
 	depends = python-beautifulsoup4
-	depends = python-flask
 	depends = python-waitress
 	depends = python-decorator
 	depends = python-markdown
@@ -36,6 +36,7 @@ pkgbase = anki
 	conflicts = anki-official-binary-bundle
 	conflicts = anki-qt5
 	options = !ccache
+	options = !lto
 	source = anki-2.1.55::git+https://github.com/ankitects/anki#tag=2.1.55
 	source = no-update.patch
 	sha256sums = SKIP

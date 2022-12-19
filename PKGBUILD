@@ -9,18 +9,17 @@
 
 pkgname=anki
 pkgver=2.1.55
-pkgrel=6
+pkgrel=7
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
 conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-qt5')
-options=('!ccache')
+options=('!ccache' '!lto')
 depends=(
     # anki & aqt
     'python-beautifulsoup4'
-    'python-flask'
     'python-waitress'
 
     # anki
@@ -32,7 +31,7 @@ depends=(
     'python-distro'
 
     #aqt
-    'python-flask-cors'
+    'python-flask-cors' # python-flask required for anki & aqt but a dependency of -cors
     'python-jsonschema'
     'python-requests'
     'python-send2trash'
@@ -43,11 +42,11 @@ depends=(
 makedepends=(
     'rsync'
     'git'
-
     'ninja'
     'cargo'
     'python-installer'
     'libxcrypt-compat'
+    'nodejs'
 )
 optdepends=(
     'lame: record sound'
