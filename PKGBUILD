@@ -1,5 +1,6 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 # Contributor: Sergey Zolotorev <sergey.zolotorev@gmail.com>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=pacman-hook-kernel-install
 pkgver=0.9.0
