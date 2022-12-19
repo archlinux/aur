@@ -7,7 +7,7 @@ url="https://github.com/RodrigoDornelles/3bc-lang/"
 pkgrel=1
 pkgdesc="Low level language, tiny virtual machine that works on computers and microcontrollers. (Friendly Punched cards)"
 source=("3bc::git+https://github.com/RodrigoDornelles/3bc-lang.git#branch=master")
-makedepends=(gcc)
+makedepends=(git gcc)
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 md5sums=("SKIP")
 

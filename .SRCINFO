@@ -11,6 +11,7 @@ pkgbase = 3bc-lang-git
 	arch = armv6h
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = gcc
 	source = 3bc::git+https://github.com/RodrigoDornelles/3bc-lang.git#branch=master
 	md5sums = SKIP
