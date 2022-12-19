@@ -1,7 +1,7 @@
 # Maintainer: Han Young <hanyoung@protonmail.com>
 # Contributor: Yaron de Leeuw < me@jarondl.net >
 pkgname=libzim-git
-pkgver=1326.ca0c95f
+pkgver=1677.9bc584e
 pkgrel=1
 pkgdesc="The standard implementation of the ZIM specification - openzim"
 arch=('i686' 'x86_64')
@@ -34,6 +34,6 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	sudo ninja -C build install
+	DESTDIR="$pkgdir/" ninja -C build install
 }
  
