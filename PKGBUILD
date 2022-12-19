@@ -1,33 +1,35 @@
 # Maintainer: Omid Mottaghi Rad <omidmr at gmail dot com>
-# Co-Maintainer: M A <morealaz at gmail dot com>
-
+# Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gnome-shell-extension-persian-calendar-git
-pkgver=r155.362532a
+pkgver=r318.6ba3922
 pkgrel=1
-pkgdesc="Persian calendar for Gnome Shell."
+pkgdesc="An extension for Gnome-Shell to show Persian date and calendar."
 arch=(any)
 url="https://github.com/omid/Persian-Calendar-for-Gnome-Shell"
 license=(GPL3)
-depends=('gnome-shell>=3.24')
+depends=('gnome-shell>=40')
+makedepends=('git')
+optdepends=('vazirmatn-fonts: to use as default Persian font.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=("${pkgname%-git}")
-makedepends=(git)
-install='gnome-shell-extension.install'
-source=("${pkgname%-git}"::"git+https://github.com/omid/Persian-Calendar-for-Gnome-Shell")
+install="${pkgname%-git}.install"
+source=("${pkgname%-git}::git+${url}")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    sed -i 's|\binstall_fonts();||g' 'PersianCalendar@oxygenws.com/extension.js'
+    sed -i 's|\buninstall_fonts();||g' 'PersianCalendar@oxygenws.com/extension.js'
+    sed -i 's|Vazir,|Vazirmatn,|g' 'PersianCalendar@oxygenws.com/stylesheet.css'
+}
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
 }
 
 package() {
-    install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
-    cp -a "${pkgname%-git}/PersianCalendar@oxygenws.com" \
-        "${pkgdir}/usr/share/gnome-shell/extensions/"
+    cd "$srcdir/${pkgname%-git}"
+    make DESTDIR="${pkgdir}" install-local
 }
 # vim:set ts=4 sw=4 et:

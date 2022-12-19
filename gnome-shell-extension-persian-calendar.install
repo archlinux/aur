@@ -1,0 +1,12 @@
+post_install() {
+  echo ''
+  echo '==> To enable Persian Calendar extension:'
+  echo '==> Reload Gnome Shell with Alt-F2 r (on Xorg), logout -> login (wayland)'
+  echo '==> Enable it with the extensions tool'
+  echo '==> or run "gnome-extensions enable PersianCalendar@oxygenws.com"'
+  echo ''
+}
+
+post_upgrade() {
+	post_install
+}

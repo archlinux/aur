@@ -1,18 +1,17 @@
 pkgbase = gnome-shell-extension-persian-calendar-git
-	pkgdesc = Persian calendar for Gnome Shell.
-	pkgver = r155.362532a
+	pkgdesc = An extension for Gnome-Shell to show Persian date and calendar.
+	pkgver = r318.6ba3922
 	pkgrel = 1
 	url = https://github.com/omid/Persian-Calendar-for-Gnome-Shell
-	install = gnome-shell-extension.install
+	install = gnome-shell-extension-persian-calendar.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=3.24
+	depends = gnome-shell>=40
+	optdepends = vazirmatn-fonts: to use as default Persian font.
 	provides = gnome-shell-extension-persian-calendar
 	conflicts = gnome-shell-extension-persian-calendar
-	replaces = gnome-shell-extension-persian-calendar
 	source = gnome-shell-extension-persian-calendar::git+https://github.com/omid/Persian-Calendar-for-Gnome-Shell
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-persian-calendar-git
-
