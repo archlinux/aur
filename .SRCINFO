@@ -1,7 +1,7 @@
 pkgbase = r-bs4dash
 	pkgdesc = A 'Bootstrap 4' Version of 'shinydashboard'
-	pkgver = 2.1.0
-	pkgrel = 4
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=bs4Dash
 	arch = any
 	license = GPL
@@ -22,7 +22,7 @@ pkgbase = r-bs4dash
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-thematic
-	source = https://cran.r-project.org/src/contrib/bs4Dash_2.1.0.tar.gz
-	sha256sums = 1dd07a730ed19c64d1ff6fdf0f37336a0bc2358684811ccde95973c81b4c85cf
+	source = https://cran.r-project.org/src/contrib/bs4Dash_2.2.0.tar.gz
+	sha256sums = 66d7aa5ba3a0c77f75e9099e97a6730c9693db7aee51eb2fbe614cbc02c0441f
 
 pkgname = r-bs4dash
