@@ -4,7 +4,7 @@ pkgname=(
     "$pkgbase"
     "${pkgbase}-extras"
 )
-pkgver=2.0.877
+pkgver=2.0.886
 pkgrel=1
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
@@ -53,7 +53,7 @@ package_git-credential-manager-core() {
     
     for bin in git-credential-manager
     do
-        cp "out/linux/Packaging.Linux/payload/Release/$bin" "$pkgdir/usr/lib/share/$pkgname"
+        cp "out/linux/Packaging.Linux/Release/payload/$bin" "$pkgdir/usr/lib/share/$pkgname"
         ln -s "/usr/lib/share/$pkgname/$bin" "$pkgdir/usr/bin/$bin"
     done
     # Deal with the different naming convention
@@ -75,12 +75,12 @@ package_git-credential-manager-core-extras() {
 
     for lib in libHarfBuzzSharp.so libSkiaSharp.so
     do
-        cp "out/linux/Packaging.Linux/payload/Release/$lib" "$pkgdir/usr/lib/share/$pkgbase"
+        cp "out/linux/Packaging.Linux/Release/payload/$lib" "$pkgdir/usr/lib/share/$pkgbase"
     done
 
     for bin in GitHub.UI Atlassian.Bitbucket.UI
     do
-        cp "out/linux/Packaging.Linux/payload/Release/$bin" "$pkgdir/usr/lib/share/$pkgbase"
+        cp "out/linux/Packaging.Linux/Release/payload/$bin" "$pkgdir/usr/lib/share/$pkgbase"
     done
 
     cp LICENSE "$pkgdir/usr/share/licenses/$pkgname"
