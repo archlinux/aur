@@ -4,16 +4,16 @@
 pkgname=vdr-epgfixer
 pkgver=0.3.1_21_g354f28b
 _gitver=354f28b0112ba27f08f6509243b410899f74b6ed
-_vdrapi=2.6.1
-pkgrel=7
+_vdrapi=2.6.3
+pkgrel=8
 pkgdesc="VDR plugin for doing extra fixing of EPG data"
-url="http://projects.vdr-developer.org/projects/plg-epgfixer"
+url='https://github.com/vdr-projects/vdr-plugin-epgfixer'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' 'pcre' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-epgfixer.git#commit=$_gitver")
+source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/epgfixer/blacklist.conf'
         'var/lib/vdr/plugins/epgfixer/charset.conf'
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  git describe --tags | sed 's/-/_/g;s/v//'
+  git describe --tags --abbrev=7 | sed 's/-/_/g;s/v//'
 }
 
 
