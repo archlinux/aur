@@ -1,4 +1,5 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Sylvain POULAIN <sylvain dot poulain at giscan dot com>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Luigi Ranghetti <ggranga@gmail.com>
@@ -12,7 +13,7 @@ _pkgbase=gdal
 provides=('gdal=3.5.3')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.5.3
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -37,13 +38,9 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-sha256sums=('d32223ddf145aafbbaec5ccfa5dbc164147fb3348a3413057f9b1600bb5b3890')
+b2sums=('f57b57bb460bf4cb3d601f981e3315b164bcf2f6da1f1b7e72f9ce771e58e4c88619833ca366b6a7c70ed1032bcf3c959f81d60254e136b40fb715937a7e5a59')
 
 build() {
-#  cd "${srcdir}"/$_pkgbase-$pkgver
-
-    export LDFLAGS="-Wl,-O1,--sort-common,-z,relro,-z,now"
-
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_IPO=ON \
@@ -65,8 +62,7 @@ build() {
     -DGDAL_USE_ICONV=ON \
     -DGDAL_USE_JPEG=ON \
     -DGDAL_USE_JSONC=ON \
-    -DGDAL_USE_LIBKML=OFF \
-    -DOGR_ENABLE_DRIVER_LIBKML_PLUGIN:BOOL=OFF \
+    -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_LIBLZMA=ON \
     -DGDAL_USE_LIBXML2=ON \
     -DGDAL_USE_LZ4=ON \
@@ -96,19 +92,24 @@ build() {
 package_gdal-ecw () {
   depends=(proj blosc crypto++ curl libdeflate expat libfreexl geos libgeotiff
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
-           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd)
-  optdepends=('arrow: Arrow/Parquet support'
-              'cfitsio: FITS support'
-              'hdf5: HDF5 support'
-              'libheif: HEIF support'
-              'mariadb-libs: MySQL support'
-              'netcdf: netCDF support'
-              'openexr: EXR support'
-              'openjpeg2: JP2 support'
-              'podofo: PDF support'
-              'poppler: PDF support'
-              'postgresql-libs: PostgreSQL support'
-              'libwebp: WebP support')
+           pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd
+           # https://github.com/OSGeo/gdal/issues/6281
+           # optdepends should be either hard deps or split package
+           # due to upstream design choice - hard dep for the moment
+           arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
+           podofo poppler postgresql-libs libwebp libecwj2)
+#  optdepends=('arrow: Arrow/Parquet support'
+#              'cfitsio: FITS support'
+#              'hdf5: HDF5 support'
+#              'libheif: HEIF support'
+#              'mariadb-libs: MySQL support'
+#              'netcdf: netCDF support'
+#              'openexr: EXR support'
+#              'openjpeg2: JP2 support'
+#              'podofo: PDF support'
+#              'poppler: PDF support'
+#              'postgresql-libs: PostgreSQL support'
+#              'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
   install -Dm644 ${_pkgbase}-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/$_pkgbase/

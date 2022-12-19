@@ -1,6 +1,6 @@
 pkgbase = gdal-ecw
 	pkgdesc = A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package.
-	pkgver = 3.5.3
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://gdal.org/
 	changelog = gdal-ecw.changelog
@@ -78,8 +78,8 @@ pkgbase = gdal-ecw
 	provides = gdal=3.5.3
 	conflicts = gdal
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/3.5.3/gdal-3.5.3.tar.xz
-	sha256sums = d32223ddf145aafbbaec5ccfa5dbc164147fb3348a3413057f9b1600bb5b3890
+	source = https://download.osgeo.org/gdal/3.6.0/gdal-3.6.0.tar.xz
+	b2sums = f57b57bb460bf4cb3d601f981e3315b164bcf2f6da1f1b7e72f9ce771e58e4c88619833ca366b6a7c70ed1032bcf3c959f81d60254e136b40fb715937a7e5a59
 
 pkgname = gdal-ecw
 	depends = proj
@@ -109,22 +109,23 @@ pkgname = gdal-ecw
 	depends = xerces-c
 	depends = zlib
 	depends = zstd
-	optdepends = arrow: Arrow/Parquet support
-	optdepends = cfitsio: FITS support
-	optdepends = hdf5: HDF5 support
-	optdepends = libheif: HEIF support
-	optdepends = mariadb-libs: MySQL support
-	optdepends = netcdf: netCDF support
-	optdepends = openexr: EXR support
-	optdepends = openjpeg2: JP2 support
-	optdepends = podofo: PDF support
-	optdepends = poppler: PDF support
-	optdepends = postgresql-libs: PostgreSQL support
-	optdepends = libwebp: WebP support
+	depends = arrow
+	depends = cfitsio
+	depends = hdf5
+	depends = libheif
+	depends = mariadb-libs
+	depends = netcdf
+	depends = openexr
+	depends = openjpeg2
+	depends = podofo
+	depends = poppler
+	depends = postgresql-libs
+	depends = libwebp
+	depends = libecwj2
 
 pkgname = python-gdal-ecw
 	pkgdesc = Python bindings for GDAL, with support to ECW format
-	depends = gdal-ecw=3.5.3
+	depends = gdal-ecw=3.6.0
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal
