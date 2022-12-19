@@ -4,17 +4,17 @@
 pkgname=vdr-duplicates
 pkgver=1.0.1
 _gitver=68739fd72beb9745b3e47b9e466311ef23a8ca97
-_vdrapi=2.6.1
-pkgrel=7
+_vdrapi=2.6.3
+pkgrel=8
 pkgdesc="Shows duplicate recordings"
-url="https://projects.vdr-developer.org/git/vdr-plugin-duplicates.git"
+url='https://github.com/vdr-projects/vdr-plugin-duplicates'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.bz2::https://projects.vdr-developer.org/git/vdr-plugin-duplicates.git/snapshot/vdr-plugin-duplicates-$_gitver.tar.bz2")
+source=("vdr-plugin-${_plugname}-${pkgver}.tar.gz::https://github.com/vdr-projects/vdr-plugin-${_plugname}/archive/${_gitver}.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('29d7c05ecb17a21252d006baf45c8b223a1564ccfe54cebc79790adbd387f0d9')
+sha256sums=('8966dc077b5a35e82764e537fde034abc429ff63c7abbce4e2ba42c4e76fc72d')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${_gitver}"
