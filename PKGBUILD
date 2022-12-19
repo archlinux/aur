@@ -11,7 +11,7 @@ pkgdesc='A simple, effective sentence mining tool.'
 arch=(any)
 url=https://github.com/FreeLanguageTools/vocabsieve
 license=(GPL3)
-depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-lxml python-markdown python-markdownify python-mobi python-packaging python-pycountry python-pymorphy2 python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-python-lzo python-readmdict python-requests python-sentence-splitter python-simplemma python-slpp)
+depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-lxml python-markdown python-markdownify python-mobi python-packaging python-pycountry python-pymorphy2 python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-lzo python-readmdict python-requests python-sentence-splitter python-simplemma python-slpp)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
