@@ -1,0 +1,100 @@
+opensd_reload_udev()
+{
+    # Reload and trigger udev rules after being installed or updated
+    printf "%s" "Reloading udev rules..."
+    if udevadm control --reload-rules; then
+        printf "%s\n" "OK"
+    else
+        printf "%s\n" "ERROR"
+    fi
+
+    printf "%s" "Triggering udev rules..."
+    if udevadm trigger; then
+        printf "%s\n" "OK"
+    else
+        printf "%s\n" "ERROR"
+    fi
+}
+
+opensd_add_group()
+{
+    # OpenSD group for udev rules
+    local group="opensd"
+    # Get actual current user, ignoring sudo
+    local curr_user="${SUDO_USER:-$USER}"
+
+    # Make sure we're root/sudo
+    if [ "$(id -u)" -ne 0 ]; then 
+        printf "%s\n" "This script needs to be run with sudo."
+        exit 1
+    fi
+
+    # If opensd group does not exist, create it
+    if ! getent group opensd 2>&1 > /dev/null; then
+        printf "%s" "Adding '${group}' group..."
+        if groupadd "${group}"; then
+            printf "%s\n" "OK"
+        else
+            printf "%s\n" "ERROR"
+        fi
+    else 
+        printf "%s\n" "${group} group already exists."
+    fi
+
+    # Check if user is already a member of opensd group
+    if ! groups "${curr_user}" | grep "${group}" 2>&1 > /dev/null; then
+        printf "%s" "Adding user ${curr_user} to '${group}' group..."
+        if usermod -aG opensd "${curr_user}"; then
+            printf "%s\n" "OK"
+        else
+            printf "%s\n" "ERROR"
+        fi
+        
+        printf "\n%s\n" "You may need to logout for these changes to take effect."
+    else
+        printf "%s\n" "${curr_user} is already a member of the ${group} group."
+    fi
+}
+
+opensd_reload_sysd()
+{
+    # Get actual current user, ignoring sudo
+    local curr_user="${SUDO_USER:-$USER}"
+
+    # If systemctl does not exist, assume we're not using systemd
+    if ! command -v systemctl 2>&1 > /dev/null; then
+        printf "%s\n" "Cannot find systemctl."
+        printf "%s\n" "This system does not appear to use systemd.  Skipping reload."
+    else
+        printf "%s" "Reloading systemd user rules..."
+        # Reloads systemd user rules.  Can be run directly as user OR with sudo.
+        if systemctl --user -M "${curr_user}@" daemon-reload; then
+            printf "%s\n" "OK"
+        else
+            printf "%s\n" "ERROR"
+        fi
+    fi
+}
+
+post_install() 
+{
+    opensd_reload_udev
+    opensd_add_group
+    opensd_reload_sysd
+    
+    printf "\n"
+    printf "%s\n"   "  If you're new to OpenSD, check out the online documentation"
+    printf "%s\n"   "  at  https://open-sd.gitlab.io/opensd-docs  or the offline"
+    printf "%s\n"   "  documentation in /usr/share/doc/opensd/users_manual.html" 
+    printf "%s\n"   "  manpages are also available: Type 'man opensdd' or 'man opensd-files'"
+    printf "\n"
+}
+
+post_upgrade() 
+{
+    opensd_reload_udev
+    opensd_add_group
+    opensd_reload_sysd
+
+    printf "%s\n"   "See /usr/share/doc/opensd/CHANGELOG.md for changes in this version."
+}
