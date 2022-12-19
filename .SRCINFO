@@ -1,0 +1,18 @@
+pkgbase = libgnuisance
+	pkgdesc = GTK New User Interfaces
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/madmurphy/libgnuisance
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-doc
+	depends = glib2
+	depends = libadwaita
+	depends = gtk4
+	conflicts = libgnuisance-git
+	conflicts = libgnuisance-bin
+	source = https://github.com/madmurphy/libgnuisance/releases/download/0.1.0/libgnuisance-0.1.0-with-configure.tar.gz
+	sha256sums = 5da249887a143fbda6c5e57d1d264530cdc2a9a64f8ebdd3ac431dc9db18eafb
+
+pkgname = libgnuisance
