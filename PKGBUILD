@@ -10,7 +10,7 @@
 
 _pkgname=xfce4-sensors-plugin
 pkgname=xfce4-sensors-plugin-nvidia
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia gpu support"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ conflicts=('xfce4-sensors-plugin')
 source=(
 	https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
 )
-sha256sums=('171c0235f70c65f0ffee587e960d9da79b284855df22130239eac26272ec06c9')
+sha256sums=('6c1605a738e5df40e084d08ac93f962cd445093396de1e9bfadc7ab4588c36b6')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

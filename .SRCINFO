@@ -1,6 +1,6 @@
 pkgbase = xfce4-sensors-plugin-nvidia
 	pkgdesc = A lm_sensors plugin for the Xfce panel with nvidia gpu support
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://goodies.xfce.org/projects/panel-plugins/xfce4-sensors-plugin
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = xfce4-sensors-plugin-nvidia
 	depends = libxnvctrl
 	optdepends = hddtemp: for monitoring the temperature of hard drives
 	conflicts = xfce4-sensors-plugin
-	source = https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/1.4/xfce4-sensors-plugin-1.4.3.tar.bz2
-	sha256sums = 171c0235f70c65f0ffee587e960d9da79b284855df22130239eac26272ec06c9
+	source = https://archive.xfce.org/src/panel-plugins/xfce4-sensors-plugin/1.4/xfce4-sensors-plugin-1.4.4.tar.bz2
+	sha256sums = 6c1605a738e5df40e084d08ac93f962cd445093396de1e9bfadc7ab4588c36b6
 
 pkgname = xfce4-sensors-plugin-nvidia
