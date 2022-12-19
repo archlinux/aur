@@ -1,0 +1,20 @@
+pkgbase = python-cf_clearance2
+	pkgdesc = Python purpose To make a cloudflare challenge pass successfully. (Don't confuse it with the similar, but different, package 'python-cf_clearance'.)
+	pkgver = 0.28.3
+	pkgrel = 1
+	url = https://pypi.org/project/cf-clearance2/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-playwright
+	depends = python-setuptools
+	provides = python-cf_clearance2=0.28.3
+	conflicts = python-cf_clearance2
+	source = cf_clearance2-0.28.3.tar.gz::https://pypi.io/packages/source/c/cf_clearance2/cf_clearance2-0.28.3.tar.gz
+	sha256sums = 28528addccab425cc61dd0368060c29fe88eaf80e637b9ac63e72c06e92db62e
+
+pkgname = python-cf_clearance2
