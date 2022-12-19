@@ -3,13 +3,13 @@
 pkgname=python-symspellpy
 _pkgname=symspellpy
 pkgver=6.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SymSpell"
 arch=('any')
 url="https://github.com/mammothb/symspellpy"
 license=('MIT')
 depends=('python')
-makedepends=(python-build python-installer python-wheel)
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=(
     ${pkgname}-${pkgver}.tar.gz::https://github.com/mammothb/symspellpy/archive/v${pkgver}.tar.gz
 )
