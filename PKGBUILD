@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-epgborder
 pkgver=1.0.0
-_vdrapi=2.6.1
-pkgrel=7
+_vdrapi=2.6.3
+pkgrel=8
 pkgdesc="Blocks EPG storage starting from a set border channel number"
 url="https://github.com/M-Reimer/vdr-plugin-epgborder"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
