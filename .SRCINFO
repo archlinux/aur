@@ -1,13 +1,13 @@
 pkgbase = rpiusbboot
 	pkgdesc = Raspberry Pi USB boot
-	pkgver = 2021.07.01
+	pkgver = 20221215_105525
 	pkgrel = 1
 	url = https://github.com/raspberrypi/usbboot
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = libusb
-	source = https://github.com/raspberrypi/usbboot/archive/refs/tags/v2021.07.01.tar.gz
-	sha256sums = 4565314b38e7c7505b7d32a3b51b49f79c7dd5767d45b86d38e5255ae7489a43
+	source = https://github.com/raspberrypi/usbboot/archive/refs/tags/20221215-105525.tar.gz
+	sha256sums = 2f02dbe9a88e9dfad5f05e513e1f30afd47b1575820f7c3b09665dfefc45bbaa
 
 pkgname = rpiusbboot
