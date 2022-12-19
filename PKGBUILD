@@ -8,14 +8,14 @@ _gitver=d014d52dcb3790bd1ba38fe7b6fb0c4136364148
 _vdrapi=2.4.1
 pkgrel=3
 pkgdesc="Brings the archive-hdd functionality to VDR."
-url="http://projects.vdr-developer.org/projects/show/plg-hddarchive"
+url='https://github.com/vdr-projects/vdr-plugin-hddarchive'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('bash' 'gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 install="$pkgname.install"
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-hddarchive.git#commit=$_gitver"
+source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}"
         'hddarchive-default_settings.diff')
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP'
@@ -30,7 +30,7 @@ pkgver() {
   if [ $_count -gt 0 ]; then
     printf "%s.r%s.g%s" $_last_release \
       $_count \
-      `git rev-parse --short HEAD`
+      `git rev-parse --short=7 HEAD`
   else
     printf "%s" $_last_release
   fi
