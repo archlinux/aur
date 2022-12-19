@@ -3,14 +3,14 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy')
-apptag='v6.2.1'
+apptag='v6.2.2'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat')
 provides=(
     'ferdium'
@@ -54,7 +54,7 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/recipes"
 	git reset --hard
 	cd "$srcdir/$_sourcedirectory/"
-	git submodule update --init --recursive --remote --rebase --force
+	git submodule update --init --recursive
 
 	# Specify path for autostart file
 	sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.ts
