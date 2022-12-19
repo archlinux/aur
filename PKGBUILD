@@ -4,8 +4,8 @@
 pkgname=vdr-imonlcd
 pkgver=1.0.3
 epoch=1
-_vdrapi=2.6.1
-pkgrel=3
+_vdrapi=2.6.3
+pkgrel=4
 pkgdesc="shows information about the current state of VDR on iMON LCD"
 url="https://github.com/vdr-projects/vdr-plugin-imonlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
