@@ -1,13 +1,13 @@
 pkgbase = videomass
 	pkgdesc = A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jeanslack.github.io/Videomass/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	depends = wxpython
+	depends = python-wxpython
 	depends = python-pypubsub
 	depends = python-requests
 	depends = ffmpeg
@@ -18,7 +18,7 @@ pkgbase = videomass
 
 pkgname = videomass
 	depends = python
-	depends = wxpython
+	depends = python-wxpython
 	depends = python-pypubsub
 	depends = python-requests
 	depends = ffmpeg

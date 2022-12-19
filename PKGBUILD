@@ -2,10 +2,10 @@ pkgbase='videomass'
 pkgname=('videomass')
 _module='videomass'
 pkgver='4.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp"
 url="http://jeanslack.github.io/Videomass/"
-depends=('python' 'wxpython' 'python-pypubsub' 'python-requests' 'ffmpeg')
+depends=('python' 'python-wxpython' 'python-pypubsub' 'python-requests' 'ffmpeg')
 optdepends=(
 'atomicparsley: For parsing MP4 metadata'
 'yt-dlp: Modernified version of youtube-dl, for extracting videos'
