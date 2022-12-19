@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-sleeptimer
 pkgver=0.8.3
-_vdrapi=2.6.1
-pkgrel=3
+_vdrapi=2.6.3
+pkgrel=4
 pkgdesc="Shutdown, mute or execute a custom command after a configurable timespan"
 url="https://github.com/vdr-projects/vdr-plugin-sleeptimer"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
