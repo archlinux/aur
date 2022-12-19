@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-autostart
 pkgver=0.9.7
-_vdrapi=2.6.1
-pkgrel=7
+_vdrapi=2.6.3
+pkgrel=8
 pkgdesc="Automatic start of other plug-ins on change or insertion of removable devices"
 url="http://www.uli-eckhardt.de/vdr/autostart.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
