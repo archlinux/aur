@@ -1,4 +1,4 @@
-pkgbase = fetchfetch-git
+pkgbase = fetchfetch
 	pkgdesc = A neofetch-like tool to get all the neofetch-like tools installed on your computer, written in python.
 	pkgver = a4c9f16
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = fetchfetch-git
 	source = git+https://github.com/Blobadoodle/fetchfetch
 	md5sums = SKIP
 
-pkgname = fetchfetch-git
+pkgname = fetchfetch

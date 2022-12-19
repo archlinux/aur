@@ -1,5 +1,5 @@
 # Maintainer: Ilya "Nolo001" Burdin <56518932+Nolo001-Aha@users.noreply.github.com>
-pkgname=fetchfetch-git
+pkgname=fetchfetch
 pkgver=a4c9f16
 pkgrel=1
 pkgdesc="A neofetch-like tool to get all the neofetch-like tools installed on your computer, written in python."
