@@ -1,8 +1,0 @@
-125c125
-<   OSL_LIBS="$with_osl_prefix/lib/libosl.la -losl"
----
->   OSL_LIBS="-losl"
-237c237
-<   PIPLIB_LIBS="$with_piplib_prefix/lib/lib$PIPLIB_LA.la -l$PIPLIB_LA"
----
->   PIPLIB_LIBS="-l$PIPLIB_LA"

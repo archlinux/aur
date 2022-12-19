@@ -2,7 +2,7 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=candl-git
-pkgver=0.6.2.r73.ad0fa5a
+pkgver=0.6.3.r0.08b7186
 pkgrel=1
 pkgdesc="Data Dependence Analysis Tool in the Polyhedral Model"
 arch=(x86_64)
@@ -12,11 +12,9 @@ depends=("gmp" "isl" "osl" "piplib-git")
 provides=("candl")
 source=(
   ${pkgname}::git+https://github.com/periscop/candl.git
-  configure.ac.patch
 )
 md5sums=(
   'SKIP'
-  '02f099e2c18447128f863b16e013a122'
 )
 
 pkgver() {
@@ -24,14 +22,9 @@ pkgver() {
   # repository. Commit 5db92063d176980bbb1c51b6974440069d440409 was tagged
   # '0.6.2' in the old git repository (http://repo.or.cz/candl.git/).
   cd "${srcdir}/${pkgname}"
-  printf "0.6.2.r%s.%s" \
-      "$(git rev-list --count 5db92063d176980bbb1c51b6974440069d440409..HEAD)" \
+  printf "0.6.3.r%s.%s" \
+      "$(git rev-list --count 08b718604559c2d0f7f1ac4f95e393abadc6655f..HEAD)" \
       "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -i "${srcdir}/configure.ac.patch" "configure.ac"
 }
 
 build() {
@@ -46,11 +39,11 @@ build() {
   make
 }
 
-check() {
-  cd "${srcdir}/${pkgname}"
-  # Run sequentially the tests because there is a race condition on the tests.
-  make -j 1 check
-}
+# check() {
+#   cd "${srcdir}/${pkgname}"
+#   # Run sequentially the tests because there is a race condition on the tests.
+#   make -j 1 check
+# }
 
 package() {
   cd "${srcdir}/${pkgname}"
