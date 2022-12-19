@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=doRNG
-_pkgver=1.8.2
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
-pkgrel=4
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Generic Reproducible Parallel Backend for 'foreach' Loops"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33e9d45b91b0fde2e35e911b9758d0c376049121a98a1e4c73a1edfcff11cec9')
+sha256sums=('8c84046970568a7b4eade1e5ba629f967cf061c8365a5e997e4f196688f11fab')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
