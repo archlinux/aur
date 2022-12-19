@@ -1,0 +1,21 @@
+pkgbase = python-cf_clearance-git
+	pkgdesc = Python purpose To make a cloudflare challenge pass successfully.
+	pkgver = 0.28.3+1.r65.20221213.80d8dd5
+	pkgrel = 1
+	url = https://github.com/vvanglro/cf-clearance
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-playwright
+	depends = python-setuptools
+	provides = python-cf_clearance=0.28.3+1.r65.20221213.80d8dd5
+	conflicts = python-cf_clearance
+	source = python-cf_clearance::git+https://github.com/vvanglro/cf-clearance.git
+	sha256sums = SKIP
+
+pkgname = python-cf_clearance-git
