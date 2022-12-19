@@ -7,13 +7,8 @@ pre_install() {
 	echo " ## "
 }
 
-pre_upgrade() {
-	pre_install $1
-}
 
 post_install() {
-	pipelight-plugin --create-mozilla-plugins
-	pipelight-plugin --accept --enable silverlight
 	echo " >> "
 	echo " >> Please remember to change config in /usr/share/pipelight/pipelight if any of your paths are different "
 	echo " >>  and you did not change these in the PKGBUILD."
@@ -24,10 +19,3 @@ post_install() {
 	echo " >> "
 }
 
-post_upgrade() {
-	pipelight-plugin --update
-}
-
-pre_remove() {
-	pipelight-plugin --remove-mozilla-plugins
-}
