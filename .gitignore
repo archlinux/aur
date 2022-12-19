@@ -1,7 +1,5 @@
 /pkg/
 /src/
-/*.zst
-/*.swp
 python-pygobject-stubs-*.pkg.*
 PyGObject-stubs-*.tar.gz
 last_installed.txt
