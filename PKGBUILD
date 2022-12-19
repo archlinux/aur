@@ -3,12 +3,12 @@
 
 pkgname=candl-git
 pkgver=0.6.3.r0.08b7186
-pkgrel=1
+pkgrel=2
 pkgdesc="Data Dependence Analysis Tool in the Polyhedral Model"
 arch=(x86_64)
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/candl/"
 license=('LGPL3')
-depends=("gmp" "isl" "osl" "piplib-git")
+depends=("gmp" "osl" "piplib-git")
 provides=("candl")
 source=(
   ${pkgname}::git+https://github.com/periscop/candl.git
