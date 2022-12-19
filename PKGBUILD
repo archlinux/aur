@@ -2,7 +2,7 @@
 
 pkgname=nanobench
 pkgver=4.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, fast, accurate single-header microbenchmarking functionality for C++11/14/17/20"
 arch=("x86_64")
 url="https://nanobench.ankerl.com"
@@ -17,7 +17,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 
-  cmake --build "build/"
+  cmake --build "build/" --target "nanobench"
 }
 
 package() {
