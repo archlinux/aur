@@ -1,0 +1,24 @@
+pkgbase = python-videomass
+	pkgdesc = A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://jeanslack.github.io/Videomass/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = wxpython
+	depends = python-pypubsub
+	depends = python-requests
+	depends = ffmpeg
+	optdepends = atomicparsley: For parsing MP4 metadata
+	optdepends = yt-dlp: Modernified version of youtube-dl, for extracting videos
+	source = https://files.pythonhosted.org/packages/source/v/videomass/videomass-4.0.2.tar.gz
+	sha256sums = 1e8cf9e7513542ac9ed4b333bc7508a4d0e8502a70c0e73212001f8dc73293df
+
+pkgname = python-videomass
+	depends = python
+	depends = wxpython
+	depends = python-pypubsub
+	depends = python-requests
+	depends = ffmpeg
