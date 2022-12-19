@@ -1,6 +1,6 @@
 pkgbase = r-imager
 	pkgdesc = Image Processing Library Based on 'CImg'
-	pkgver = 0.42.15
+	pkgver = 0.42.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=imager
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-imager
 	optdepends = r-scales
 	optdepends = r-spatstat.geom
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/imager_0.42.15.tar.gz
-	sha256sums = de1cd04a974d9b9bc021b8cb45bf3cf904665b184f3c8b6020aa21c8284e2199
+	source = https://cran.r-project.org/src/contrib/imager_0.42.16.tar.gz
+	sha256sums = acb0e42070abcaa453a0243f1ad6490c528b131eb232fdd700d7aa0e00d80203
 
 pkgname = r-imager
