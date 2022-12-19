@@ -1,15 +1,18 @@
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=firefox-extension-gnome-shell-integration
-pkgver=10.1
+pkgver=11.1
 pkgrel=1
-pkgdesc='gnome shell integration addon for firefox.'
+pkgdesc='GNOME shell integration addon for firefox.'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/'
 license=('GPLV3')
-depends=('firefox' 'chrome-gnome-shell')
+depends=('firefox' 'gnome-browser-connector')
 groups=('firefox-addons')
-source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/898030/gnome_shell_integration-${pkgver}-an+fx-linux.xpi")
-sha512sums=('91b7230718f3cfdb107d29b4ded342b2d27c439b3422c546d6f990fadc6b418d293301f22f6403239166998f7b41516c2969a5f9c975e8609dfa867049f09267')
+source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/3974897/gnome_shell_integration-${pkgver}.xpi")
+sha512sums=('26495b3eb72795995fb6f157668d97819d3578da59839f6d3cdf24e3b70bf60730763ef5e38d26cfd8c4a95db8ac31c7325524dc469432b46244017fdd450002')
 
 package() {
-  install -Dm644 extension.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/chrome-gnome-shell@gnome.org.xpi"
+    cd "${srcdir}"
+    install -D  -m644 "${pkgname}-${pkgver}.xpi" "${pkgdir}/usr/lib/firefox/browser/extensions/chrome-gnome-shell@gnome.org.xpi"
 }
+# vim:set ts=4 sw=4 et:
