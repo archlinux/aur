@@ -3,8 +3,8 @@
 # Repository: https://gitlab.com/calvinreu/kbdmod
 
 pkgname=kbdmod
-pkgver=1.0.1
-pkgrel=9
+pkgver=1.0.2
+pkgrel=10
 epoch=
 pkgdesc="modify your keyboard functionality with multi functions per key"
 arch=('any')
@@ -44,4 +44,3 @@ package() {
 	cd "$pkgname-v$pkgver/build"
 	cp kbdmod.bin "$pkgdir/kbdmod"
 }
-sha256sums=('0fcb6965e7669edc12726dabc298af3d6738b5cf23002611825143f356bafacf')
