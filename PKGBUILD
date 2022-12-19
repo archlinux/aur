@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-colorama' 'python-tqdm')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('083801f743eb842fe74a79f59683eefc5e3ae5b33ecff3378bc42fa55f69bb4efdecce49d5e469b814ed6014f576764201694fca3dede576761cdedc49eabf19')
+sha512sums=('427356067319e33546b48bad8297094ff0d0efba5b9c4b324bf7996ebbea8c79944c58d799e7a5f8c03a738dc082172afef8561ef2ba73eb2149a1d4e3c92d33')
 
 build() {
   cd ${_name}-${pkgver}
