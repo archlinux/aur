@@ -1,0 +1,19 @@
+pkgbase = libgnuisance-git
+	pkgdesc = GTK New User Interfaces
+	pkgver = r1.5e5b75b
+	pkgrel = 1
+	url = https://madmurphy.github.io/libgnuisance
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-doc
+	depends = glib2
+	depends = libadwaita
+	depends = gtk4
+	provides = libgnuisance
+	conflicts = libgnuisance
+	conflicts = libgnuisance-bin
+	source = git+https://github.com/madmurphy/libgnuisance.git
+	sha256sums = SKIP
+
+pkgname = libgnuisance-git
