@@ -1,27 +1,25 @@
 pkgbase = pgpool-ii
 	pkgdesc = Middleware that works between PostgreSQL servers and a PostgreSQL database client.
-	pkgver = 4.2.1
-	pkgrel = 0
-	url = http://www.pgpool.net
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://www.pgpool.net
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = clang
+	makedepends = llvm
 	depends = openssl
 	depends = postgresql-libs
-        makedepends = clang
-        makedepends = llvm
-        makedepends = postgresql
 	replaces = pgpool
 	options = !libtool
 	backup = etc/conf.d/pgpool-ii
-	source = http://www.pgpool.net/download.php?f=pgpool-II-4.1.1.tar.gz
+	source = pgpool-ii-4.4.0.tar.gz::https://www.pgpool.net/download.php?f=pgpool-II-4.4.0.tar.gz
 	source = pgpool-ii.service
 	source = pgpool-ii.conf.d
 	source = pgpool-ii.diff
-	md5sums = 108ac1486e8a6548af7ab67e9f6d8a36
-	md5sums = 6f1996c211e6f512289565e162752b04
-	md5sums = 74e1450ec40a5915341d7901736aca45
-	md5sums = b11938850095c777c80238ed878e158d
+	sha256sums = 85d50996b421ef0a3f362dd6c12854d553d4034a068e9281c65b6d4cc5887f23
+	sha256sums = 6c797a94c1648890a613e201c2ce2e3e2b602103daecc009ebf189578e8e15a0
+	sha256sums = 9d0c12d735595424fad799499d50bc4da8b7f1e7ffc2c21317f8824559bb7aea
+	sha256sums = c62fc1e31383b875701ffa40c07a5b9d7c8ff36d4a9c9356e831fab612ca8b20
 
 pkgname = pgpool-ii
-
