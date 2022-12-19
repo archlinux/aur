@@ -2,7 +2,7 @@
 
 _pkgname='instalee'
 pkgname="${_pkgname}-git"
-pkgver=r60.d53c764
+pkgver=r70.8322f5b
 pkgrel=1
 pkgdesc='Unixy universal package installation management'
 arch=('any')
@@ -16,13 +16,14 @@ source=("git+${url}")
 sha512sums=('SKIP')
 
 package() {
+  set -x
   cd "${srcdir}/${_pkgname}/"
   local usrdir="${pkgdir}/usr"
   local bin="${usrdir}/bin"
   install -D --target-directory "${usrdir}/share/doc/${_pkgname}/" *.md
   install -D --target-directory "${usrdir}/share/man/man1/" "${_pkgname}.1"
   install -D --target-directory "$bin" "${_pkgname}"
-  sed -i "s/r%s.%s/version ${pkgver}/" "$bin/${_pkgname}"
+  sed -i "s/r%s[^\"]*\"/version ${pkgver}\"/" "$bin/${_pkgname}"
 }
 
 pkgver() {
