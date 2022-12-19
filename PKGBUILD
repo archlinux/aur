@@ -1,21 +1,21 @@
- # Maintainer: wszqkzqk <wszqkzqk@qq.com>
+# Maintainer: wszqkzqk <wszqkzqk@qq.com>
  
- pkgname=easy-zsh-config
- pkgver=0.5.9
- pkgrel=3
- pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
- arch=(any)
- url=https://github.com/wszqkzqk/easy-zsh-config
- license=("MIT")
- conflicts=("grml-zsh-config"
-            "manjaro-zsh-config")
- depends=(  "zsh"
-            "oh-my-posh"
-            "zsh-syntax-highlighting"
-            "zsh-autosuggestions"
-            "zsh-history-substring-search"
-            "ttf-hack-nerd"
-            )
+pkgname=easy-zsh-config
+pkgver=0.5.9
+pkgrel=4
+pkgdesc="A simple but fast and out of the box configuration of zsh powered by oh-my-posh and zsh pulgins."
+arch=(any)
+url=https://github.com/wszqkzqk/easy-zsh-config
+license=("MIT")
+conflicts=("grml-zsh-config"
+        "manjaro-zsh-config")
+depends=("zsh"
+        "oh-my-posh"
+        "zsh-syntax-highlighting"
+        "zsh-autosuggestions"
+        "zsh-history-substring-search"
+        "ttf-hack-nerd"
+        )
 optdepends=("pkgfile: to provide a function that will automatically search the pkgfile database when entering an unrecognized command")
 backup=("root/.zshrc"
         "etc/skel/.zshrc")
@@ -25,7 +25,7 @@ source=("zshrc"
         "easy-zsh-config")
 sha256sums=('b647be9ef5fd3eb1e6587dbccaedeff2bf298c13e568ddfd4c436fadb8e9061f'
             '191f93567e767c599cfd843bb8343f311396d8e80d423ec38af2ad3dc52551a3'
-            'ba90b9b278a455759407eab6d74a1541f8351f17d591846aaa5a5f8c5eb81ed9')
+            '15453024eebe8a367cd5feb85aab1df9ec82bd026c25041b76930d8ad5b9c8b4')
 
 package(){
     install -Dm644 zshrc "${pkgdir}/etc/skel/.zshrc"

@@ -26,8 +26,8 @@ fi
 
 ## Set history
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt correct                   # Auto correct mistakes
 setopt extendedglob              # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                # Case insensitive globbing
