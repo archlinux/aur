@@ -1,6 +1,6 @@
 pkgbase = gleam
 	pkgdesc = A friendly language for building type-safe, scalable systems!
-	pkgver = 0.25.1
+	pkgver = 0.25.3
 	pkgrel = 1
 	url = http://github.com/gleam-lang/gleam
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = gleam
 	options = !docs
 	options = !libtool
 	options = !staticlibs
-	source = https://github.com/gleam-lang/gleam/archive/v0.25.1.tar.gz
-	sha256sums = 87dd4d06bc2f511217efed92f9d271a450b6fc9ad74f0f286dc24df0f1b57659
-	sha512sums = 48cea2e1beaf751654d1eef6d7e08ce5598999c8402e1c2018fd395dde3be808253ea9b39bd2a628c3901d740ab4f1212030cdcde95c7d9fdb320613e4b2d8bb
+	source = https://github.com/gleam-lang/gleam/archive/v0.25.3.tar.gz
+	sha256sums = f51d43498841b716b501323012d91aaae2a324e17056340afdbc73f37d689224
+	sha512sums = 0fd1e98a18153644cb38eb300ad7b5c7c987d064259b9f1c0a408a20de328e874448ed2888c841a407fd3ce364bf148f2929b1bc68e95b3a428384ea63b6fc3b
 
 pkgname = gleam
