@@ -1,7 +1,7 @@
 pkgbase = clash-meta
 	pkgdesc = Another Clash Kernel by MetaCubeX
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/MetaCubeX/Clash.Meta
 	arch = x86_64
 	arch = aarch64
