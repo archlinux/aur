@@ -4,7 +4,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 
 pkgname=neovim-gtk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=(x86_64 i686)
@@ -14,7 +14,7 @@ depends=(neovim gtk4 vte3)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b454797d5855556c2488a5f15413919ea550e35cc7819c178e90acc8bfe08079')
+sha256sums=('4badee0dedb3f2a22e953a3d940a3ebf90bd347a93d79f852fe7c3ea1bc5c3e3')
 
 prepare() {
 	cd "$_archive"
