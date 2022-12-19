@@ -1,0 +1,12 @@
+pkgbase = kernel-install-dracut-uki
+	pkgdesc = kernel-install plugin to build UKIs with dracut
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/swsnr/kernel-install-dracut-uki
+	arch = any
+	license = APACHE
+	depends = dracut
+	source = https://github.com/swsnr/kernel-install-dracut-uki/archive/refs/tags/v1.tar.gz
+	sha256sums = 98ddbf9c6e6f8e6222bc5af357f9468a64b331d322bde99accf966d67b39db09
+
+pkgname = kernel-install-dracut-uki
