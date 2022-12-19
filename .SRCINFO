@@ -1,21 +1,30 @@
 pkgbase = python-datasets
-	pkgdesc = Library providing one-line dataloaders for many public datasets and efficient data pre-processing
-	pkgver = 1.17.0
+	pkgdesc = The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/huggingface/datasets
-	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
-	depends = python-pyarrow
-	depends = python-dill
-	depends = python-pandas
-	depends = python-xxhash
-	depends = python-multiprocess
 	depends = python-aiohttp
-	depends = python-huggingface-hub
-	depends = python-fsspec
-	source = https://github.com/huggingface/datasets/archive/refs/tags/1.17.0.tar.gz
-	sha256sums = 0d8c98c9a91c164e6e550d1262d317cc240f4c748b026b32cfc8d777d2ac0ab7
+	depends = python-dill
+	depends = python-fsspec>=2021.11.1
+	depends = python-huggingface-hub>=0.2.0
+	depends = python-huggingface-hub<1.0.0
+	depends = python-multiprocess
+	depends = python-numpy>=1.17
+	depends = python-packaging
+	depends = python-pandas
+	depends = python-pyarrow>=6.0.0
+	depends = python-yaml>=5.1
+	depends = python-requests>=2.19.0
+	depends = python-tqdm>=4.62.1
+	depends = python-xxhash
+	optdepends = python-librosa: Audio datasets
+	optdepends = python-pillow: Vision datasets
+	optdepends = python-tensorflow: TensorFlow support
+	optdepends = python-pytorch: PyTorch support
+	source = datasets-2.7.1.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/2.7.1.tar.gz
+	sha256sums = 40daa725c21659ad03758022e42c530654c6bf416a50fceb643ae78439e884e9
 
 pkgname = python-datasets
