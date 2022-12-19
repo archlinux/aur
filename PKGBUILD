@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=6.2.1.nightly.31.r5985.b4f209ac
+pkgver=6.2.3.nightly.11.r6113.de298700
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -57,7 +57,7 @@ prepare() {
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
-	sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.ts
+	sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.ts
 	# Set noUnusedLocals to false to avoid compilation error in AppStore.ts
 	sed -i -e 's#"noUnusedLocals": true#"noUnusedLocals": false#g' tsconfig.json
 }
