@@ -1,16 +1,17 @@
 # Maintainer: basigur
 
 pkgname=qcalcfilehash
-pkgver=1.0.7
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Hash calculator (SHA1, SHA-224, SHA-256, SHA-384, SHA-512, MD5, CRC32, CRC8)"
 arch=('x86_64')
 url="https://bitbucket.org/admsasha/qcalcfilehash"
 license=('GPLv3+')
 depends=('qt5-base' 'openssl' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
+#optdepends=('openssl-gost-engine')
 #makedepends=('qt5-tools')
-source=("https://bitbucket.org/admsasha/qcalcfilehash/downloads/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ebf4ec55028c28e1da1934cc6b2ac292aa7cd63194835a5683f4a81b0a70e8d2429e86d82528235f8b7bb5eae68b648ebf0006f45a7c93ca16b04473dc192db5')
+source=("${url}/downloads/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('c11164799d0b8f0b48dcb449858e3270406b4e870be38dd87e153ccfe31b81f6c852641f20538b57a452d4eee9efde9b48ebaa17814adffd17dcad1248ef42a2')
 
 
 build() {
