@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-svdrposd
 pkgver=1.0.0
-_vdrapi=2.6.1
-pkgrel=22
+_vdrapi=2.6.3
+pkgrel=23
 pkgdesc="Make contents of OSD menu available via SVDRP"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
