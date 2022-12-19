@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinflat
 pkgver=0.1.1
-_vdrapi=2.6.1
-pkgrel=29
+_vdrapi=2.6.3
+pkgrel=30
 pkgdesc="Simple and slim skin for VDR"
 url="https://github.com/vdr-projects/vdr-plugin-skinflat"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
