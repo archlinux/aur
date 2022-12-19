@@ -78,20 +78,11 @@ index 6bbdc24c5..462fcdc13 100644
 \ No newline at end of file
 +}
 diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
-index 9798c7189..a77c5a30b 100644
+index acc395b44..98aba584e 100644
 --- LiteEditor/mainbook.cpp
 +++ LiteEditor/mainbook.cpp
-@@ -433,14 +433,14 @@ void MainBook::GetAllEditors(clEditor::Vec_t& editors, size_t flags)
- 
- int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -435,7 +435,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  {
--    wxString unixStyleFile(fullpath);
-+    //wxString unixStyleFile(fullpath);
- #ifdef __WXMSW__
--    unixStyleFile.Replace(wxT("\\"), wxT("/"));
-+    //unixStyleFile.Replace(wxT("\\"), wxT("/"));
- #endif
- 
  #ifdef __WXGTK__
      // On gtk either fileName or the editor filepath (or both) may be (or their paths contain) symlinks
 -    wxString fileNameDest = CLRealPath(fullpath);
@@ -99,7 +90,7 @@ index 9798c7189..a77c5a30b 100644
  #endif
  
      for(size_t i = 0; i < m_book->GetPageCount(); i++) {
-@@ -474,7 +474,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -469,7 +469,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  
  #if defined(__WXGTK__)
                  // Try again, dereferencing the editor fpath
@@ -108,7 +99,7 @@ index 9798c7189..a77c5a30b 100644
                  if(editorDest.Cmp(fullpath) == 0 || editorDest.Cmp(fileNameDest) == 0) {
                      return i;
                  }
-@@ -568,6 +568,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name, const wxString& projectN
+@@ -563,6 +563,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name, const wxString& projectN
                               int bmp /*= wxNullBitmap*/, const wxString& tooltip /* wxEmptyString */)
  {
      wxFileName fileName(CLRealPath(file_name));
@@ -122,7 +113,7 @@ index 9798c7189..a77c5a30b 100644
      fileName.MakeAbsolute();
  
  #ifdef __WXMSW__
-@@ -1751,7 +1758,7 @@ WelcomePage* MainBook::GetOrCreateWelcomePage()
+@@ -1746,7 +1753,7 @@ WelcomePage* MainBook::GetOrCreateWelcomePage()
  
  clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(IEditor*)>&& callback)
  {
@@ -131,7 +122,7 @@ index 9798c7189..a77c5a30b 100644
      auto editor = FindEditor(real_path);
      if(editor) {
          push_callback(std::move(callback), real_path);
-@@ -1762,7 +1769,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
+@@ -1757,7 +1764,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
              m_book->SetSelection(index);
          }
      } else {
@@ -140,7 +131,7 @@ index 9798c7189..a77c5a30b 100644
          if(editor) {
              push_callback(std::move(callback), real_path);
          }
-@@ -1818,7 +1825,7 @@ void MainBook::OnIdle(wxIdleEvent& event)
+@@ -1813,7 +1820,7 @@ void MainBook::OnIdle(wxIdleEvent& event)
      auto editor = GetActiveEditor(false);
      CHECK_PTR_RET(editor);
  
@@ -171,26 +162,3 @@ index 68e87c0b1..2800d4b44 100644
  }
  
  int wxStringToInt(const wxString& str, int defval, int minval, int maxval)
-diff --git Plugin/open_resource_dialog.cpp Plugin/open_resource_dialog.cpp
-index 9432ae6ed..7e7763244 100644
---- Plugin/open_resource_dialog.cpp
-+++ Plugin/open_resource_dialog.cpp
-@@ -335,8 +335,7 @@ void OpenResourceDialog::OnKeyDown(wxKeyEvent& event)
- 
-     if (event.GetKeyCode() == WXK_DOWN || event.GetKeyCode() == WXK_UP ||
-         event.GetKeyCode() == WXK_NUMPAD_UP || event.GetKeyCode() == WXK_NUMPAD_DOWN ||
--        event.GetKeyCode() == WXK_PAGEUP || event.GetKeyCode() == WXK_PAGEDOWN ||
--        event.GetKeyCode() == WXK_HOME || event.GetKeyCode() == WXK_END)
-+        event.GetKeyCode() == WXK_PAGEUP || event.GetKeyCode() == WXK_PAGEDOWN)
-     {
-         event.Skip(false);
- 
-@@ -475,7 +474,7 @@ void OpenResourceDialog::GetLineAndColumnFromFilter(const wxString& filter, wxSt
-     tmpstr.Replace("\\", "/");
- 
-     const size_t sep_last = tmpstr.Find('/', true);
--    const size_t col_first = tmpstr.find(':', sep_last);
-+    const size_t col_first = tmpstr.find(':', (sep_last == wxNOT_FOUND ? 0 : sep_last));
-     if (col_first == wxNOT_FOUND) {
-         return;
-     }
