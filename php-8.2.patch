@@ -1,0 +1,64 @@
+From 26c0f5130050649762c550e0dac07d4f371e68d5 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Tue, 25 Oct 2022 11:54:24 +0200
+Subject: [PATCH] trivial/minimal fix for PHP 8.2 (#104)
+
+---
+ src/memcache.c | 6 ++++++
+ tests/029.phpt | 2 +-
+ tests/045.phpt | 4 +++-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/memcache.c b/src/memcache.c
+index c05105a..c43e48f 100644
+--- a/src/memcache.c
++++ b/src/memcache.c
+@@ -733,9 +733,15 @@ PHP_MINIT_FUNCTION(memcache)
+ 
+ 	INIT_CLASS_ENTRY(ce, "MemcachePool", php_memcache_pool_class_functions);
+ 	memcache_pool_ce = zend_register_internal_class(&ce);
++#if PHP_VERSION_ID >= 80200
++	memcache_pool_ce->ce_flags |= ZEND_ACC_ALLOW_DYNAMIC_PROPERTIES;
++#endif
+ 
+ 	INIT_CLASS_ENTRY(ce, "Memcache", php_memcache_class_functions);
+ 	memcache_ce = zend_register_internal_class_ex(&ce, memcache_pool_ce);
++#if PHP_VERSION_ID >= 80200
++	memcache_ce->ce_flags |= ZEND_ACC_ALLOW_DYNAMIC_PROPERTIES;
++#endif
+ 
+ 	le_memcache_pool = zend_register_list_destructors_ex(_mmc_pool_list_dtor, NULL, "memcache connection", module_number);
+ 	le_memcache_server = zend_register_list_destructors_ex(NULL, _mmc_server_list_dtor, "persistent memcache connection", module_number);
+diff --git a/tests/029.phpt b/tests/029.phpt
+index bcacf33..4427948 100644
+--- a/tests/029.phpt
++++ b/tests/029.phpt
+@@ -44,7 +44,7 @@ if (is_array($result))
+ 	sort($result);
+ var_dump($result);
+ 
+-$result = ini_set('memcache.allow_failover', "abc");
++$result = @ini_set('memcache.allow_failover', "abc");
+ var_dump($result);
+ 
+ ?>
+diff --git a/tests/045.phpt b/tests/045.phpt
+index e1c10ec..ddc5531 100644
+--- a/tests/045.phpt
++++ b/tests/045.phpt
+@@ -8,6 +8,8 @@ Nested get's in __wakeup()
+ include 'connect.inc';
+ 
+ class testclass {
++	public $result = null;
++
+ 	function __wakeup() {
+ 		global $memcache;
+ 		$this->result = $memcache->get('_test_key3');
+@@ -48,4 +50,4 @@ array(2) {
+     [0]=>
+     int(123)
+   }
+-}
+\ No newline at end of file
++}
