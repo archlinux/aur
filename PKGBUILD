@@ -2,7 +2,7 @@
 
 pkgname="spleeter2"
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Deezer source separation library with pretrained models based on tensorflow."
 url="https://research.deezer.com/projects/spleeter.html"
 license=("MIT")
@@ -22,6 +22,7 @@ depends=("tensorflow>=2.5.0"
          "python-numpy"
          "python-pandas"
          "python-protobuf"
+         "python-tensorflow"
          "python-typer")
 makedepends=("python-poetry" "python-build" "python-installer" "python-wheel")
 optdepends=("python-musdb: source separation evaluation"

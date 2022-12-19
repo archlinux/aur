@@ -1,7 +1,7 @@
 pkgbase = spleeter2
 	pkgdesc = The Deezer source separation library with pretrained models based on tensorflow.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://research.deezer.com/projects/spleeter.html
 	install = spleeter2.install
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = spleeter2
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-protobuf
+	depends = python-tensorflow
 	depends = python-typer
 	optdepends = python-musdb: source separation evaluation
 	optdepends = python-museval: source separation evaluation
