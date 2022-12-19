@@ -1,20 +1,20 @@
 pkgbase = greptimedb-bin
 	pkgdesc = Open-source time-series database.
 	pkgver = 0.1.0.20221219
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GreptimeTeam/greptimedb
 	arch = x86_64
 	license = Apache-2.0
 	provides = greptimedb
-	source = greptime-linux-amd64-0.1.0.20221212.tgz::https://github.com/GreptimeTeam/greptimedb/releases/download/v0.1.0-alpha-20221219-weekly/greptime-linux-amd64.tgz
+	source = greptime-linux-amd64-0.1.0.20221219.tgz::https://github.com/GreptimeTeam/greptimedb/releases/download/v0.1.0-alpha-20221219-weekly/greptime-linux-amd64.tgz
 	source = greptimedb.sysusers
 	source = greptimedb.service
 	source = greptimedb-tmpfile.conf
 	source = greptimedb.toml
 	sha256sums = 5726ee7318846d30f5684fc604b5d01929cd1d2e448ba90aeb0487e7776174c4
-	sha256sums = 5726ee7318846d30f5684fc604b5d01929cd1d2e448ba90aeb0487e7776174c4
-	sha256sums = 5726ee7318846d30f5684fc604b5d01929cd1d2e448ba90aeb0487e7776174c4
-	sha256sums = 5726ee7318846d30f5684fc604b5d01929cd1d2e448ba90aeb0487e7776174c4
-	sha256sums = 5726ee7318846d30f5684fc604b5d01929cd1d2e448ba90aeb0487e7776174c4
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = greptimedb-bin

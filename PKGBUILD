@@ -3,7 +3,7 @@
 pkgname=greptimedb-bin
 pkgver=0.1.0.20221219
 _pkgvergh=v0.1.0-alpha-20221219-weekly
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source time-series database.'
 arch=('x86_64')
 url='https://github.com/GreptimeTeam/greptimedb'
