@@ -2,7 +2,7 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=prismlauncher-bin
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-Qt6-${pkgver}.tar.gz")
 noextract=("PrismLauncher-Linux-Qt6-${pkgver}.tar.gz")
-sha256sums=('4b1f32d3c13ae01acd69837571161649c9d693747bb57e587b826c1fe9dd8087')
+sha256sums=('749e0aefcd7b1d42a4b1d09c8d148e96a29d658a004d4b3e7d494aea4e324e3d')
 
 package() {
     install -d "${pkgdir}/usr"
