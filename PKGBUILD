@@ -4,16 +4,16 @@
 pkgname=vdr-neutrinoepg
 pkgver=0.3.6.r7.gc3615ff
 _gitver=c3615ffcb0f5e5c2d380052fffd4a5d53293cde3
-_vdrapi=2.6.1
-pkgrel=6
+_vdrapi=2.6.3
+pkgrel=7
 pkgdesc="Neat EPG-Viewer for VDR"
-url="http://projects.vdr-developer.org/projects/plg-neutrinoepg"
+url='https://github.com/vdr-projects/vdr-plugin-neutrinoepg'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=$_vdrapi")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-neutrinoepg.git#commit=$_gitver")
+source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('SKIP')
 
@@ -26,7 +26,7 @@ pkgver() {
   if [ $_count -gt 0 ]; then
     printf "%s.r%s.g%s" $_last_release \
       $_count \
-      `git rev-parse --short HEAD`
+      `git rev-parse --short=7 HEAD`
   else
     printf "%s" $_last_release
   fi
