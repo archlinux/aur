@@ -1,7 +1,7 @@
 pkgbase = ambulant-player-gtk-git
 	pkgdesc = open-source media player with support for SMIL 3.0
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ambulantplayer.org/
 	install = AmbulantPlayer_gtk.install
 	arch = x86_64
