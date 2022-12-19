@@ -1,26 +1,30 @@
-#!/bin/sh -eu
+#!/bin/bash
 
-_kernel_install() {
-	kver="$(basename "$(dirname "$path")")"
-	vmlinuz="$(realpath "$path")"
-	echo + kernel-install "$@" "$kver" "$vmlinuz"
-	kernel-install "$@" "$kver" "$vmlinuz"
+set -euo pipefail
+# Inherit set -e down to command substitutions
+shopt -s inherit_errexit
+
+extract_kernel_version() {
+	local heads
+	heads="${1%/vmlinuz}"
+	echo "${heads##*/}"
 }
 
-_kernel_install_all() {
-	for path in usr/lib/modules/*/vmlinuz; do
-		_kernel_install "$@"
-	done
-}
+kernel_images=()
 
 while read -r path; do
 	case "$path" in
 	usr/lib/modules/*/vmlinuz)
-		_kernel_install "$@"
+		kernel_images+=("/$line")
 		;;
 	*)
-		_kernel_install_all "$@"
-		exit
+		kernel_images+=(/usr/lib/modules/*/vmlinuz)
+		break
 		;;
 	esac
+done
+
+for kernel_image in "${kernel_images[@]}"; do
+	echo +kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
+	kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
 done
