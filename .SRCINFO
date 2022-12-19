@@ -1,7 +1,7 @@
 pkgbase = abuild
 	pkgdesc = Script to build Alpine Packages
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.alpinelinux.org/cgit/abuild/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = abuild
 	depends = glibc
 	depends = pax-utils
 	depends = openssl
-	depends = alpine-apk-tools
+	depends = apk-tools
 	depends = attr
 	depends = tar
 	depends = pkgconf

@@ -4,14 +4,13 @@
 pkgname="abuild"
 pkgver=3.10.0
 _ver=${pkgver%_git*}
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to build Alpine Packages"
 url="https://git.alpinelinux.org/cgit/abuild/"
 arch=("i686" "x86_64")
 license=("GPL2")
 makedepends=("zlib" "pkgconfig" "scdoc")
-depends=("busybox" "glibc" "pax-utils" "openssl" "alpine-apk-tools" "attr" "tar" "pkgconf" "lzip" "curl"
-"bubblewrap" "gettext" "git")
+depends=("busybox" "glibc" "pax-utils" "openssl" "apk-tools" "attr" "tar" "pkgconf" "lzip" "curl" "bubblewrap" "gettext" "git")
 optdepends=("perl: for cpan resolver"
             "perl-libwww: for cpan resolver"
             "perl-json: for cpan resolver"
