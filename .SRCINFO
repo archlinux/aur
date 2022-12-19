@@ -1,12 +1,15 @@
 pkgbase = vmp
 	pkgdesc = Visual music player
-	pkgver = 0.86b
+	pkgver = 0.87b
 	pkgrel = 1
 	url = https://github.com/milgra/vmp
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = cmake
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = freetype2
@@ -16,7 +19,7 @@ pkgbase = vmp
 	depends = libegl
 	depends = glew
 	depends = openjpeg2
-	source = vmp-0.86b.tar.xz::https://github.com/milgra/vmp/releases/download/0.86b/vmp-0.86b.tar.xz
-	sha256sums = 35c7fa7c11973de9c58a9bb2db4b59df23f1f22e97af0fc47445a428800655e1
+	source = vmp-0.87b.tar.xz::https://github.com/milgra/vmp/releases/download/0.87b/vmp-0.87b.tar.xz
+	sha256sums = 5504b5b93a085f3a88bdeaa9cadc4667437a65a8bc6a28aac49f5a7cb703768a
 
 pkgname = vmp
