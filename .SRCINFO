@@ -1,14 +1,14 @@
 pkgbase = laze-bin
 	pkgdesc = A declarative build system for C projects aiming to be simple, fast and correct
-	pkgver = 0.1.10
-	pkgrel = 1
+	pkgver = 0.1.11
+	pkgrel = 0
 	url = https://github.com/kaspar030/laze
 	arch = x86_64
 	license = Apache-2.0
 	depends = ninja
 	provides = laze
 	conflicts = laze
-	source = https://github.com/kaspar030/laze/releases/download/0.1.10/laze-0.1.10-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 77beada4c07d327d58999a86af47da9baada2b4ac19f006724faa7995553d436
+	source = https://github.com/kaspar030/laze/releases/download/0.1.11/laze-0.1.11-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = c8e8374c772d204e697297dcbc12736b36fd2ba22c191e175eec30ebafb0e128
 
 pkgname = laze-bin
