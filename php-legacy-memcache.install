@@ -1,8 +1,8 @@
 post_install() {
   echo '
-    ==> PHP 7 extension
+    ==> PHP Legacy extension
 
-    A config file was stored under /etc/php7/conf.d/. In order to use this
+    A config file was stored under /etc/php-legacy/conf.d/. In order to use this
     extension make sure to uncomment it from its config file.
     '
 }
