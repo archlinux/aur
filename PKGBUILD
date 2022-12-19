@@ -3,7 +3,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-bin"
-pkgver=4.7.2
+pkgver=4.7.4
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
@@ -21,7 +21,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'wrapper-remove-base-path-checks.patch'
         'wrapper-remove-update-support.patch')
 
-sha256sums=('3d3f281563e64d104a59b47ba337b7ee2ffcbdb0574cfd6874640f5ad3470ca5'
+sha256sums=('70ca65452f1e80f010a61bd5a760961efcab04e06cd0599403b174af753d8a84'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
