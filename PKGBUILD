@@ -2,7 +2,7 @@
 
 pkgname='pac-wrapper'
 pkgver='4.0.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A pacman wrapper that provides intuitive syntax similar to dnf, apt, zypper, etc.'
 arch=('any')
 url='https://github.com/eatsu/pac-wrapper'
@@ -11,6 +11,7 @@ depends=(
   'bash'
   'pacman'
   'sudo'
+  'util-linux'
 )
 provides=('pac')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
