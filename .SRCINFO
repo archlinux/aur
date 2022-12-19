@@ -1,4 +1,4 @@
-pkgbase = python-videomass
+pkgbase = videomass
 	pkgdesc = A cross-platform GUI for FFmpeg and youtube-dl or yt-dlp
 	pkgver = 4.0.2
 	pkgrel = 1
@@ -16,7 +16,7 @@ pkgbase = python-videomass
 	source = https://files.pythonhosted.org/packages/source/v/videomass/videomass-4.0.2.tar.gz
 	sha256sums = 1e8cf9e7513542ac9ed4b333bc7508a4d0e8502a70c0e73212001f8dc73293df
 
-pkgname = python-videomass
+pkgname = videomass
 	depends = python
 	depends = wxpython
 	depends = python-pypubsub

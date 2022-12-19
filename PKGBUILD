@@ -1,5 +1,5 @@
-pkgbase='python-videomass'
-pkgname=('python-videomass')
+pkgbase='videomass'
+pkgname=('videomass')
 _module='videomass'
 pkgver='4.0.2'
 pkgrel=1
