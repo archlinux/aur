@@ -1,7 +1,7 @@
 pkgbase = kdewebkit
 	pkgdesc = KDE Integration for QtWebKit
 	pkgver = 5.101.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5-aids
@@ -10,6 +10,7 @@ pkgbase = kdewebkit
 	makedepends = qt5-tools
 	depends = qt5-webkit
 	depends = kparts
+	provides = kdewebkit-debug
 	options = debug
 	source = https://download.kde.org/stable/frameworks/5.101/portingAids/kdewebkit-5.101.0.tar.xz
 	source = https://download.kde.org/stable/frameworks/5.101/portingAids/kdewebkit-5.101.0.tar.xz.sig

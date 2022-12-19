@@ -4,13 +4,14 @@
 
 pkgname=kdewebkit
 pkgver=5.101.0
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Integration for QtWebKit'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt5-webkit kparts)
 makedepends=(extra-cmake-modules qt5-tools)
+provides=('kdewebkit-debug')
 groups=(kf5-aids)
 source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/portingAids/$pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('65cefc92ba6ca0638c78c443130ec5e80a6e8bfa8f64c34c4bf39c67e4eaa4fc'
