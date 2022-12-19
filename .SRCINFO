@@ -17,6 +17,7 @@ pkgbase = dtkgui-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = doxygen
+	makedepends = libqtxdg
 	depends = dtkcore-git
 	depends = librsvg
 	depends = qt5-x11extras
