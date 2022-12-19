@@ -2,46 +2,37 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinenigmang
-pkgver=0.1.2_20_g995b108
+pkgver=0.1.4
+pkgrel=2
+_vdrapi=2.6.3
 epoch=1
-_gitver=995b108c894970306efcba1d8e70ded50e76f1d3
-_vdrapi=2.6.1
-pkgrel=7
 pkgdesc="skin based on the Enigma text2skin addon"
-url="http://andreas.vdr-developer.org/enigmang/index.html"
+url="https://github.com/vdr-projects/vdr-plugin-skinenigmang"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('freetype2' 'gcc-libs' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git#commit=$_gitver"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-skinenigmang/archive/refs/tags/$pkgver.tar.gz"
         'skinenigmang-search_for_logos_in_resourcedir.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP'
-         '6bfd86e7a92d969edd208401b65b20fe'
-         '8b2c4d67273e3b52e38496e52b35e345')
-
-pkgver() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-  git describe --tags | sed 's/-/_/g;s/v//'
-}
+sha256sums=('853f4b47b2b2e688ec0062695f7261962c734fa894b3db4e69266986c0e20a4e'
+            'e61d17e978a01988118737f7f0c0af6aba7999c1f465940c8e1529d0bf49c6fc'
+            '134aba4b0c41beeecec0eb7f5014d58bd02a2546106474f8dd76fab26abf86b4')
 
 prepare() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   patch -p1 -i "$srcdir/skinenigmang-search_for_logos_in_resourcedir.diff"
-  sed -i 's/\/include\/freetype/\/include\/freetype2/g' Makefile
+}
+
+build() {
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
+  make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-${_plugname}"
-
-  mkdir -p "$pkgdir/$(pkg-config vdr --variable=libdir)"
-  make CFLAGS="$(pkg-config vdr --variable=cflags)" \
-       CXXFLAGS="$(pkg-config vdr --variable=cxxflags)" \
-       VDRDIR="/usr/include/vdr" \
-       LIBDIR="$pkgdir/$(pkg-config vdr --variable=libdir)" \
-       LOCALEDIR="$pkgdir/$(pkg-config vdr --variable=locdir)" \
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
+  make DESTDIR="${pkgdir}" install
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 
