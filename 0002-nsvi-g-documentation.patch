@@ -1,0 +1,59 @@
+From c5fd804e9d1c59de6fe30a5e84c3396310cb2f22 Mon Sep 17 00:00:00 2001
+From: Tony Finch <dot@dotat.at>
+Date: Thu, 12 Nov 2020 00:18:21 +0000
+Subject: [PATCH 2/2] nsvi -g documentation
+
+---
+ nsvi | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/nsvi b/nsvi
+index e322dd8..ebebd42 100755
+--- a/nsvi
++++ b/nsvi
+@@ -33,9 +33,9 @@ nsvi options:
+   -01cCdD             nsdiff options
+   -S num|mode         SOA serial number or mode
+   -s server[#port]    where to AXFR and UPDATE the zone
++  -g                  use GSS-TSIG for UPDATE
+   -k keyfile          AXFR and UPDATE TSIG key
+   -y [hmac:]name:key  AXFR and UPDATE TSIG key
+-  -g                  whether to use GSS-TSIG for UPDATE
+ EOF
+     exit 1;
+ }
+@@ -154,7 +154,7 @@ nsvi - transfer a zone, edit it, then upload the edits
+ 
+ =head1 SYNOPSIS
+ 
+-nsvi [B<-01cCdDhvV>] [B<-k> I<keyfile>] [B<-y> [I<hmac>:]I<name>:I<key>]
++nsvi [B<-01cCdDghvV>] [B<-k> I<keyfile>] [B<-y> [I<hmac>:]I<name>:I<key>]
+      [B<-S> I<mode>|I<num>] [B<-s> I<server>] <I<zone>>
+ 
+ =head1 DESCRIPTION
+@@ -210,6 +210,10 @@ If you do not use the B<-s> option, the zone will be transferred
+ from I<localhost>, and B<nsvi> will use B<nsupdate> B<-l> to update
+ the zone.
+ 
++=item B<-g>
++
++Passed to B<nsupdate> to use GSS-TSIG for UPDATE.
++
+ =item B<-k> I<keyfile>
+ 
+ TSIG key file, passed to B<dig>, B<nsdiff>, and B<nsupdate>.
+@@ -248,8 +252,9 @@ otherwise C<$EDITOR>, otherwise B<vi>.
+ 
+ =head1 ACKNOWLEDGMENTS
+ 
+-Thanks to Tristan Le Guern for the B<-n> option. Thanks to Petr Menšík
+-(Red Hat) for providing useful feedback.
++Thanks to Tristan Le Guern for the B<-n> option and Mantas Mikulėnas
++for the B<-g> option. Thanks to Petr Menšík (Red Hat) for providing
++useful feedback.
+ 
+ =head1 SEE ALSO
+ 
+-- 
+2.39.0
+

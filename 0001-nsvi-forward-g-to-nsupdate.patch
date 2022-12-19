@@ -1,0 +1,42 @@
+From fdc30015792641dfbe7176d2a1cd318b489ee45e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mantas=20Mikul=C4=97nas?= <grawity@gmail.com>
+Date: Mon, 9 Nov 2020 16:35:17 +0200
+Subject: [PATCH 1/2] nsvi: forward -g to nsupdate
+
+nsupdate has the `-g` option (and the `gsstsig` subcommand) to use
+Kerberos 5 authentication, which is supported by BIND 9 and MS Active
+Directory servers.
+---
+ nsvi | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/nsvi b/nsvi
+index 3a787e2..e322dd8 100755
+--- a/nsvi
++++ b/nsvi
+@@ -35,11 +35,12 @@ nsvi options:
+   -s server[#port]    where to AXFR and UPDATE the zone
+   -k keyfile          AXFR and UPDATE TSIG key
+   -y [hmac:]name:key  AXFR and UPDATE TSIG key
++  -g                  whether to use GSS-TSIG for UPDATE
+ EOF
+     exit 1;
+ }
+ my %opt;
+-usage unless getopts '-hV01cCdDk:ns:S:vy:', \%opt;
++usage unless getopts '-hV01cCdDgk:ns:S:vy:', \%opt;
+ version if $opt{V};
+ exec "perldoc -F $0" if $opt{h};
+ usage if @ARGV != 1;
+@@ -67,6 +68,8 @@ push @nsdiff, "-slocalhost" unless $opt{s};
+ push @nsdiff, "-u" if $opt{s};
+ 
+ my @nsupdate = qw{nsupdate};
++push @nsupdate, map "-$_",
++    grep $opt{$_}, qw{g};
+ push @nsupdate, map "-$_$opt{$_}",
+     grep $opt{$_}, qw{k y};
+ push @nsupdate, "-l" unless $opt{s};
+-- 
+2.39.0
+
