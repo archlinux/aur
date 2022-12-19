@@ -6,7 +6,7 @@
 # Maintainer: KrishenK <Contact with GitHub issue>
 pkgname='ani-cli-vostfr-git'
 _pkgname='ani-cli'
-pkgver=0.1.8
+pkgver=0.1.8.r20.49c8662
 pkgrel=1
 pkgdesc="A cli to browse and watch anime in VOSTFR (inspired by pystardust)"
 arch=('any')
@@ -27,15 +27,10 @@ pkgver() {
     printf "0.1.8.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "$srcdir/${_pkgname}"
-	make
-}
-
 package() {
 	cd "$srcdir/${_pkgname}"
+#	make DESTDIR="$pkgdir/" install
     python setup.py install --root=${pkgdir}
-
     rm -rf "$srcdir/${_pkgname}/build/"
     rm -rf "$srcdir/${_pkgname}/dist/"
     rm -rf "$srcdir/${_pkgname}/.eggs/"
