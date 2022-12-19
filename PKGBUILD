@@ -5,7 +5,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
 pkgver=2.0.6.104
-pkgrel=7
+pkgrel=8
 _date=2022-06-15
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
@@ -40,7 +40,8 @@ depends=(openssl-1.1 gtk-sharp-2 mono libappindicator-gtk2)
 makedepends=(unzip)
 optdepends=('notify-sharp: for tray notifications')
 replaces=(duplicati-latest)
-conflicts=(duplicati-latest)
+conflicts=(duplicati-latest duplicati)
+provides=(duplicati)
 
 package() {
 
