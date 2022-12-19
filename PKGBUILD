@@ -4,17 +4,17 @@
 pkgname=vdr-lcdproc
 pkgver=0.0.10_jw9_9_g0c54897
 _gitver=0c548975b2d66d860180c79d58235a8923641a0c
-_vdrapi=2.6.1
-pkgrel=11
+_vdrapi=2.6.3
+pkgrel=12
 pkgdesc="Output to LCD modules that are supported by LCDproc"
-url="http://projects.vdr-developer.org/projects/plg-lcdproc"
+url='https://github.com/vdr-projects/vdr-plugin-lcdproc'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 optdepends=('lcdproc: to use local displays')
 _plugname=${pkgname//vdr-/}
-source=("git+https://projects.vdr-developer.org/git/vdr-plugin-lcdproc.git#commit=$_gitver"
+source=("git+https://github.com/vdr-projects/vdr-plugin-${_plugname}.git#commit=${_gitver}"
         "$pkgname-vdr-2.3.2.patch"
         "50-$_plugname.conf"
         '92-lcdproc.rules')
@@ -31,7 +31,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-$_plugname"
-  git describe --tags | sed 's/-/_/g;s/v.//'
+  git describe --tags --abbrev=7 | sed 's/-/_/g;s/v.//'
 }
 
 build() {
