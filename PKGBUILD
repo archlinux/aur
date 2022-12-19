@@ -2,8 +2,9 @@
 # Contributor: quininer
 
 pkgname=ruffle-git
-pkgver=0.1.0.7599.gee52ce329
+pkgver=r7815.96950f424
 pkgrel=1
+epoch=1
 pkgdesc="A Flash Player emulator written in Rust"
 arch=(x86_64)
 url="https://ruffle.rs/"
@@ -18,7 +19,7 @@ options=(!lto)
 
 pkgver() {
   cd "ruffle/desktop"
-  printf "%s.%s.g%s" $(awk '/^version/ {gsub(/"/, ""); print $3}' Cargo.toml) "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
