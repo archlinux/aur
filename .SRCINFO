@@ -1,6 +1,6 @@
 pkgbase = vkd3d-proton-mingw
 	pkgdesc = Fork of VKD3D. Development branches for Protons Direct3D 12 implementation
-	pkgver = 2.7
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/HansKristian-Work/vkd3d-proton
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = vkd3d-proton-mingw
 	depends = bash
 	provides = vkd3d-proton
 	provides = d3d12.dll
-	provides = vkd3d-proton=2.7
+	provides = vkd3d-proton=2.8
 	conflicts = vkd3d-proton
 	conflicts = d3d12.dll
 	options = !lto
 	options = !staticlibs
-	source = git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v2.7
+	source = git+https://github.com/HansKristian-Work/vkd3d-proton.git#tag=v2.8
 	source = git+https://github.com/HansKristian-Work/dxil-spirv.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
