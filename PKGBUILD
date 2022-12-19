@@ -1,6 +1,6 @@
 # Maintainer: Krzysztof Małysa <varqox at gmail dot com>
 pkgname=sim-sip-git
-pkgver=r172.dcaefc2
+pkgver=r173.858d221
 pkgrel=1
 pkgdesc="A tool for preparing and managing Sim problem packages"
 arch=('x86_64' 'i686')
@@ -9,6 +9,8 @@ license=('MIT')
 depends=(
   'libseccomp'
   'libzip'
+  'gcc'
+  'lib32-glibc'
 )
 optdepends=(
   'texlive-latexextra: compiling TeX files support'

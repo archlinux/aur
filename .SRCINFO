@@ -1,6 +1,6 @@
 pkgbase = sim-sip-git
 	pkgdesc = A tool for preparing and managing Sim problem packages
-	pkgver = r172.dcaefc2
+	pkgver = r173.858d221
 	pkgrel = 1
 	url = https://github.com/varqox/sip
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = sim-sip-git
 	makedepends = gtest
 	depends = libseccomp
 	depends = libzip
+	depends = gcc
+	depends = lib32-glibc
 	optdepends = texlive-latexextra: compiling TeX files support
 	optdepends = texlive-science: compiling TeX files support
 	optdepends = texlive-fontsextra: compiling TeX files support
