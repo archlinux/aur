@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=223.8214.16
+_buildver=223.8214.27
 _veryear=2022
 _verrelease=3
 _verextra=
