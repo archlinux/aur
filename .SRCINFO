@@ -9,6 +9,7 @@ pkgbase = chatgpt-desktop-bin
 	makedepends = tar
 	depends = openssl-1.1
 	depends = webkit2gtk
+	provides = chatgpt-desktop=0.2.0
 	conflicts = chatgpt-desktop
 	noextract = chatgpt_0.2.0_amd64.deb
 	source = https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_0.2.0_amd64.deb
