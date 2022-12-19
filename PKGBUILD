@@ -1,7 +1,7 @@
 # Maintainer: Rosalie Wanders <rosalie@mailbox.org>
 _pkgname=rmg
 pkgname=${_pkgname}-git
-pkgver=0.2.5
+pkgver=git
 pkgrel=1
 pkgdesc="Rosalie's Mupen GUI"
 arch=('x86_64')
