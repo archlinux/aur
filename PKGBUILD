@@ -4,7 +4,7 @@
 pkgname=python-ffmpeg-progress-yield
 _name=${pkgname#python-}
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run an ffmpeg command with its progress yielded."
 arch=('any')
 url="https://github.com/slhck/ffmpeg-progress-yield"
