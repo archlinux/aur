@@ -2,7 +2,7 @@
 
 _gemname=mini_magick
 pkgname=ruby-$_gemname
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Manipulate images with minimal use of memory via ImageMagick"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby imagemagick)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/minimagick/minimagick/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('7894bf348fffc9fe3ba855c30a14c21cded9913a1dd3b7fce29d055f91d30c98')
+sha256sums=('6f40221caaaf34b8edbeaa0ad6a50fded9820b144d4719d39b4a451205470b08')
 
 build() {
   cd minimagick-${pkgver}
