@@ -1,8 +1,8 @@
 # Maintainer: hrdl <aur@hrdl.eu>
 
 pkgname=zotero-translation-server-git
-pkgver=20220803.a30a15d
-pkgrel=3
+pkgver=20221208.0329031
+pkgrel=1
 pkgdesc='The Zotero translation server lets you use Zotero translators without the Zotero client.'
 arch=('x86_64')
 url='https://github.com/zotero/translation-server'
