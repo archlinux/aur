@@ -1,6 +1,6 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
-	pkgver = r11053.2bf9ce2d3
+	pkgver = r11190.e66f2e79f
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = i686
@@ -62,7 +62,7 @@ pkgbase = deadbeef-git
 	optdepends = ffmpeg: for ffmpeg plugin
 	optdepends = opusfile: for opus plugin
 	optdepends = mpg123: for MP1/MP2/MP3 playback
-	provides = deadbeef=1.9.3
+	provides = deadbeef=1.9.4
 	conflicts = deadbeef
 	options = !libtool
 	source = git+https://github.com/DeaDBeeF-Player/deadbeef.git
