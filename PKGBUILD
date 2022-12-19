@@ -4,7 +4,7 @@ _varname='G4LEDATA'
 _dataname="G4EMLOW"
 _foldername='G4EMLOW'
 pkgver=8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for low energy electromagnetic processes"
 url="http://geant4.cern.ch/"
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('geant4>=11.1')
 install="${pkgname}.install"
 source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
         "${pkgname}.install")
-sha256sums=('7e7d3d2621102dc614f753ad928730a290d19660eed96304a9d24b453d670309'
-            'd3cd3c831d47dad0deeb463e62a3f087258dab7ba38759c1cbae70e6cecf8e6d')
+sha256sums=('3d7768264ff5a53bcb96087604bbe11c60b7fea90aaac8f7d1252183e1a8e427'
+            '35e6e8b298b87976fbc01d933691940b4f95a8e6643bc81f9935f07b0ca8b08c')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
