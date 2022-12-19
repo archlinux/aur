@@ -6,7 +6,7 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
 url='https://sourceforge.net/projects/enlightenment/'
@@ -24,8 +24,8 @@ optdepends=('lib32-libid3tag: ID3 loader'
             'lib32-librsvg: SVG loader'
             'lib32-libwebp: WEBP loader')
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('4a224038bfffbe5d4d250c44e05f4ee5ae24dcfef8395b1677c715c58f764d43')
-sha512sums=('00eb8804a32e1403614e9f899f358dd9797f4bcfa7e9fdecd37992731019933e39834a60bd20be8fb69a35161ba1e784bd638b5ecb626d01a4f69c70c330e5f1')
+sha256sums=('727c1a937c885c080c37217e476dc88b5a3e60d737f1bf040b343520b781cbba')
+sha512sums=('35d78a6bf5b9b5474cbed6c1ead2e6252c8fe42bc5fc9c1a4e16958854e8bc08dfa79ceb403ca1cb34003887be5db4c908e6104e32639d9e09d11b940e591a19')
 
 build() {
   cd "$_pkgname-$pkgver"
