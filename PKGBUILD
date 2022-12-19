@@ -3,7 +3,7 @@
 
 pkgname=com.yunkanpan.numnode
 pkgver=1.2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="欢迎使用云看盘软件"
 arch=("x86_64")
 install=
@@ -14,7 +14,7 @@ optdepends=('ttf-ms-win10: Microsft Fonts recommended'
             'ttf-ms-fonts: Microsft Fonts recommended')
 options=(!strip)
 provides=('yunkanpan')
-source=("https://cdn.yunkanpan.com/static/download/com.yunkanpan.numnode_${pkgver}_amd64_manjaro.tar.gz"
+source=("http://cdn.yunkanpan.com/static/download/com.yunkanpan.numnode_${pkgver}_amd64_manjaro.tar.gz"
         "start.sh"
         "com.yunkanpan.numnode.desktop"
         "com.yunkanpan.numnode.svg")
