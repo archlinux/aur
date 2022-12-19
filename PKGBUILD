@@ -3,10 +3,10 @@
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
-arch=(x86_64)
+arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
 license=(GPL3)
 groups=(pro-audio vst3-plugins)
@@ -14,15 +14,15 @@ depends=(xcb-util-cursor)
 makedepends=(cairo cmake freetype2 gtkmm3 libx11 libxkbcommon-x11 pango vst3sdk xcb-util xcb-util-keysyms)
 optdepends=('vst3-host: for running VST3 plugins')
 _pocketfft_ref=53e9dd4
-_vcl_ref=46a5841
+_vcl_ref=4c90584
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins$pkgver.tar.gz"
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
 )
-sha256sums=('0ab6d959baf932633fcaad064731da4721c9247b95ae2d2f433ba5cd612bc955'
+sha256sums=('f83cdf989ac3b16ad89720f40cf957cddba7649c3f7e8a7367cce0ca88aaee46'
             '0f2b09e14b1497c9a1283c5b64a6682fd43daa6ba7ca17eb3dbcc9b0ec46204f'
-            'a7f5b8c5a311ecc6d969012a6e15115a41f8f135862e03291d8b5a12f9ee9463')
+            'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
 
 prepare() {
   cd $_name$pkgver
@@ -49,7 +49,8 @@ build() {
 
 check() {
   for _plugin in build/VST3/Release/*.vst3; do
-    if [[ $_plugin =~ ClangSynth || $_plugin =~ L4Reverb ]]; then
+    if [[ $_plugin =~ ClangSynth || $_plugin =~ L4Reverb || $_plugin =~ LightPadSynth ||
+      $_plugin =~ PitchShiftDelay ]]; then
       # these plugins seem to use a lot of memory during validation so let's only test basics
       build/bin/Release/validator -suite "General Tests" $_plugin
     else
