@@ -1,6 +1,6 @@
 pkgbase = nspire-merge
-	pkgdesc = Merging Lua source files and resources for TI-Nspire projects
-	pkgver = 1.0.0
+	pkgdesc = Merging Lua source files and images for TI-Nspire projects
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/alexcoder04/nspire-merge
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nspire-merge
 	depends = python-glob2
 	depends = python-pillow
 	depends = python-argparse
-	source = https://github.com/alexcoder04/nspire-merge/archive/refs/tags/v1.0.0.tar.gz
-	md5sums = e013ab3f7075a6bc33152e55a1d843e2
+	source = https://github.com/alexcoder04/nspire-merge/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = 66fcd955ec8ae484fb8c03787cf59ed0
 
 pkgname = nspire-merge
