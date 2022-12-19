@@ -1,12 +1,15 @@
 pkgbase = sov
 	pkgdesc = An overview application for sway
-	pkgver = 0.84b
+	pkgver = 0.85b
 	pkgrel = 1
 	url = https://github.com/milgra/sov
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = cmake
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = freetype2
@@ -14,7 +17,7 @@ pkgbase = sov
 	depends = libgl
 	depends = libegl
 	depends = glew
-	source = sov-0.84b.tar.xz::https://github.com/milgra/sov/releases/download/0.84b/sov-0.84b.tar.xz
-	sha256sums = 372fdb0fefa2d9276bd4ffa83a6e35795ce9e8d04b752f13edbde9a882b9a191
+	source = sov-0.85b.tar.xz::https://github.com/milgra/sov/releases/download/0.85b/sov-0.85b.tar.xz
+	sha256sums = 7de39cc82953c5b99169439e9b1f8151a9a637550d183a6ba91f153c3bf1b02b
 
 pkgname = sov

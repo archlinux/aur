@@ -1,20 +1,20 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=sov
-pkgver=0.84b
+pkgver=0.85b
 pkgrel=1
 pkgdesc='An overview application for sway'
 arch=('i686' 'x86_64')
 url='https://github.com/milgra/sov'
-license=('MIT')
+license=('GPL3')
 depends=('wayland' 'freetype2' 'libpng' 'libgl' 'libegl' 'glew' )
-makedepends=('meson' 'wayland-protocols')
+makedepends=('meson' 'ninja' 'pkg-config' 'cmake' 'wayland-protocols' )
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/sov/releases/download/${pkgver}/sov-${pkgver}.tar.xz"
 )
 
 sha256sums=(
-    '372fdb0fefa2d9276bd4ffa83a6e35795ce9e8d04b752f13edbde9a882b9a191'
+        '7de39cc82953c5b99169439e9b1f8151a9a637550d183a6ba91f153c3bf1b02b'
 )
 
 prepare() {
