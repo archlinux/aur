@@ -3,10 +3,10 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
 pkgver=3.0.24
-pkgrel=1
+pkgrel=2
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
-_vdrapi=2.6.1
+_vdrapi=2.6.3
 pkgdesc="Plugin to mark advertisemets in recordings and optionally auto-cut"
 url="https://github.com/kfb77/vdr-plugin-markad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
