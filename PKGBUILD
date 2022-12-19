@@ -34,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd ${_src_dir_1}
-  sed -i '/"host"/s/0.0.0.0/127.0.0.1/' config/default.json
+  sed -i '/"host"/s/0.0.0.0/127.0.0.1/' config/default.json5
   git submodule init
   git config submodule.modules/translate.url "$srcdir/translate"
   git config submodule.modules/translators.url "$srcdir/translators"
@@ -70,7 +70,7 @@ package() {
   install -d "$pkgdir"/usr/share/licenses/${pkgname%-git}
   ln -s ../../../lib/node_modules/$_src_dir_1/COPYING "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 
-  install -Dm 644 "$pkgdir"/usr/lib/node_modules/translation-server/config/default.json "$pkgdir/etc/${pkgname%-git}/default.json"
+  install -Dm 644 "$pkgdir"/usr/lib/node_modules/translation-server/config/default.json5 "$pkgdir/etc/${pkgname%-git}/default.json5"
   install -Dm 644 "$pkgdir"/usr/lib/node_modules/translation-server/config/custom-environment-variables.json "$pkgdir/etc/${pkgname%-git}/custom-environment-variables.json"
 
   install -Dm 644 "${pkgname%-git}".service \
