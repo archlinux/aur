@@ -1,17 +1,16 @@
 pkgbase = boxcli-git
 	pkgdesc = The CLI for Box.com
-	pkgver = 2.4.0
+	pkgver = v3.6.0.r8.gd94ab35
 	pkgrel = 1
 	epoch = 1
 	url = https://box.com
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = nodejs>=8.0.0
 	makedepends = npm
+	depends = nodejs>=8.0.0
 	provides = box
 	source = git+https://www.github.com/box/boxcli
 	md5sums = SKIP
 
 pkgname = boxcli-git
-
