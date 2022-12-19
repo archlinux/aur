@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinsoppalusikka
 pkgver=2.4.0
-_vdrapi=2.6.1
-pkgrel=8
+_vdrapi=2.6.3
+pkgrel=9
 pkgdesc='Standalone skin providing the good old "ElchiAIO" looks'
 url="https://github.com/rofafor/vdr-plugin-skinsoppalusikka"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
