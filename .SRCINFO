@@ -1,0 +1,18 @@
+pkgbase = mylibrary
+	pkgdesc = Home librarian
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ProfessorNavigator/mylibrary
+	arch = x86_64
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = gcc
+	depends = gtkmm-4.0
+	depends = libzip
+	depends = icu
+	depends = libgcrypt
+	provides = mylibrary
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v1.0.tar.gz
+	sha256sums = b00e25d4c98fedc1f4c9dac3daf5ad25b391d35cbe9d9b11652bc6481fd5123f
+
+pkgname = mylibrary
