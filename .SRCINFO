@@ -1,12 +1,12 @@
 pkgbase = ice-bin
 	pkgdesc = A lightweight CTF utility.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/tamton-aquib/ice
 	arch = x86_64
 	arch = i686
 	license = MIT
-	source = ice.zip::https://github.com/tamton-aquib/ice/releases/download/v0.0.1/ice-x86_64-unknown-linux-gnu.tar.gz
+	source = ice.zip::https://github.com/tamton-aquib/ice/releases/download/v0.0.2/ice-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = SKIP
 
 pkgname = ice-bin
