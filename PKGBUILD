@@ -54,7 +54,7 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/recipes"
 	git reset --hard
 	cd "$srcdir/$_sourcedirectory/"
-	git submodule update --init --recursive --remote --rebase --force
+	git submodule update --init --recursive
 
 	# Specify path for autostart file
 	sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.ts
