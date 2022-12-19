@@ -1,7 +1,7 @@
 # Maintainer: Noah Vogt <noah@noahvogt.com>
 pkgname=tibasicc-git
-pkgver=1.2
-pkgrel=1
+pkgver=1.2.r2.gc1a58bd
+pkgrel=2
 pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor - git version"
 arch=("x86_64")
 url="https://github.com/noahvogt/tibasicc.git"
@@ -25,8 +25,8 @@ build() {
 package() {
 	cd tibasicc
     mkdir -p ${pkgdir}/opt/${pkgname}
-    cp -rf * ${pkgdir}/opt/${pkgname}
-    sudo make install
+    cp -rf doc ${pkgdir}/opt/${pkgname}
+    make PREFIX="$pkgdir/usr" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
