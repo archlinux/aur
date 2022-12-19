@@ -1,0 +1,15 @@
+pkgbase = fernanda
+	pkgdesc = Editor for drafting long-form fiction
+	pkgver = 0.1.0_beta0
+	pkgrel = 1
+	url = https://github.com/fairybow/fernanda
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = p7zip
+	depends = qt6-base
+	source = git+https://github.com/fairybow/fernanda.git#commit=c3672f879f210392033b1a37cce13570867c2e53
+	sha256sums = SKIP
+
+pkgname = fernanda
