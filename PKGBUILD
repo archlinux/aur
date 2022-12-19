@@ -9,18 +9,17 @@
 
 pkgname=anki-qt5
 pkgver=2.1.55
-pkgrel=4
+pkgrel=5
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
 conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle')
-options=('!ccache')
+options=('!ccache' '!lto')
 depends=(
     # anki & aqt
     'python-beautifulsoup4'
-    'python-flask'
     'python-waitress'
 
     # anki
@@ -36,25 +35,27 @@ depends=(
     'python-jsonschema'
     'python-requests'
     'python-send2trash'
-    'python-flask'
-    'python-flask-cors'
+    'python-flask-cors' # python-flask required for anki & aqt but a dependency of -cors
+    'python-certifi'
     'python-waitress'
     'python-pyqt5'
 )
+
 makedepends=(
     'rsync'
     'git'
-
     'ninja'
-    'rustup'
+    'cargo'
     'python-installer'
     'libxcrypt-compat'
+    'nodejs'
 )
 optdepends=(
     'lame: record sound'
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
+
 # using the tag tarballs does not work with the new (>= 2.1.55) build process.
 # the '.git' folder is not included in those but is required for a sucessful build
 source=("anki-${pkgver}::git+https://github.com/ankitects/anki#tag=${pkgver}"
@@ -82,13 +83,13 @@ build() {
 
 package() {
     cd "anki-$pkgver"
-
     for file in out/wheels/*.whl; do
     	python -m installer --destdir="$pkgdir" $file
     done
 
     install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
     install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    # TODO: verify whether still required
     find $pkgdir -iname __pycache__ | xargs -r rm -rf
     find $pkgdir -iname direct_url.json | xargs -r rm -rf
 }
