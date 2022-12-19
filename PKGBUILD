@@ -2,9 +2,9 @@
 
 pkgname=sdrtrunk-git
 pkgver=0.5.0
-_pkgdldir=${pkgver}-beta.6
-_pkgsubver=${pkgver}-beta6
-pkgrel=1
+pkgrel=7
+_pkgdldir=${pkgver}-beta.${pkgrel}
+_pkgsubver=${pkgver}-beta${pkgrel}
 pkgdesc="A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR"
 arch=('aarch64' 'x86_64')
 url="https://github.com/DSheirer/sdrtrunk"
@@ -29,13 +29,13 @@ source_x86_64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgdl
                "cat-radio-icon.png"
                "sdrtrunk.desktop")
 
-sha256sums_aarch64=('698f1f753d987111ad2a2f904df346c786dd50fac1d8455ccf56431278d12c14'
+sha256sums_aarch64=('f957ba1412ee7b77a533715bae7dc7e4224b9dab737f3cc2792f77a7c041ed4a'
                     '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
                     'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
-sha256sums_x86_64=('8662e3231598a088b1e43a1802b836343bd68b8d3b860295e0cb3d71ace19899'
+
+sha256sums_x86_64=('0dd4167f2c6578e6b291dfbe468e797a3eda0cc9395611957a88fa4aa1c93bc5'
                    '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
                    'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
-
 
 package() {
   install -Dm644 ../cat-radio-icon.png "${pkgdir}/usr/share/pixmaps/cat-radio-icon.png"
