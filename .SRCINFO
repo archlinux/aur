@@ -1,22 +1,22 @@
 pkgbase = jabref
 	pkgdesc = Graphical Java application for managing BibTeX and biblatex (.bib) databases
-	pkgver = 5.7
+	pkgver = 5.8
 	pkgrel = 1
 	url = https://www.jabref.org/
 	arch = any
 	license = MIT
 	makedepends = gradle
-	makedepends = java-environment=18
+	makedepends = java-environment=17
 	depends = archlinux-java-run>=7
-	depends = java-runtime>=18
+	depends = java-runtime>=17
 	optdepends = python: browser extension
 	options = !strip
 	options = !emptydirs
-	source = jabref-5.7.tar.gz::https://github.com/JabRef/jabref/archive/v5.7.tar.gz
+	source = jabref-5.8.tar.gz::https://github.com/JabRef/jabref/archive/v5.8.tar.gz
 	source = jabref.sh
 	source = jabref.desktop
-	sha256sums = f94f9ed3a7597f8603d211d2c6a75737c7db8eabca564362fe1653f32e153235
-	sha256sums = 145380eed76e037991292faf2e83f1eda4b217bc0bab2b4404c4a43e016e080f
-	sha256sums = c6c95fc980630bc72bd4adcc93c710702fe4fced3fcb26c3067eea0f3aad5c68
+	sha256sums = c2c4cba0f7b43e8a5505bb35a6487250093256f2e8cd758dcdfadb935e4b4892
+	sha256sums = dd6db2b5a65ac38caec690c9652f8ef517a800fdff0bb5939c9c46317fed96a5
+	sha256sums = b0e3ed5cde4072a2d10de887b50217c03bbe30a1ea9b39bea1255ea80db15b77
 
 pkgname = jabref
