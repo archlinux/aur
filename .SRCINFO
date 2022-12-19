@@ -1,7 +1,7 @@
 pkgbase = gnucash-xbt
 	pkgdesc = A personal and small-business financial-accounting application with Bitcoin support
-	pkgver = 4.12
-	pkgrel = 3
+	pkgver = 4.13
+	pkgrel = 1
 	url = http://www.gnucash.org
 	arch = x86_64
 	license = GPL
@@ -26,9 +26,9 @@ pkgbase = gnucash-xbt
 	conflicts = gnucash
 	conflicts = gnucash-devel
 	options = !emptydirs
-	source = https://github.com/Gnucash/gnucash/releases/download/4.12/gnucash-4.12.tar.bz2
+	source = https://github.com/Gnucash/gnucash/releases/download/4.13/gnucash-4.13.tar.bz2
 	source = xbt.patch
-	sha256sums = cc8c051a56b8bb433566d6e2890df59f3d895a395c8cf5246c1b728102ce10ae
+	sha256sums = 401a158086635ea17fbb145325558537289aa1d24d022f7c3317e12f3dabd8e7
 	sha256sums = 8cf12425a9f66c69473d83582742244889dc0ffb854d3a502aca58bc649878d4
 
 pkgname = gnucash-xbt
