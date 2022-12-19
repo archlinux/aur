@@ -1,7 +1,7 @@
 pkgbase = nsdiff
 	pkgdesc = Create an 'nsupdate' script from DNS zone file differences
 	pkgver = 1.82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotat.at/prog/nsdiff/
 	arch = any
 	license = CC0-1.0
@@ -15,8 +15,10 @@ pkgbase = nsdiff
 	source = https://dotat.at/prog/nsdiff/DNS-nsdiff-1.82.tar.gz
 	source = 0001-nsvi-forward-g-to-nsupdate.patch
 	source = 0002-nsvi-g-documentation.patch
+	source = 0003-nsdiff-only-bump-the-serial-number-when-required.patch
 	sha256sums = 9e37c68be73179a5e52f946c472930c1401b27fbd3a5bde9199070fd6926d418
 	sha256sums = ddf92ddace522ee1410a71b8f88a8d058c0886c6804155aa83c13ce1d4c55ad7
 	sha256sums = a65c042dcace11a03de1018e885754038ace824e1601547390c32dcb31dd40de
+	sha256sums = cac4a4d84020bd9bc1b03bcfb4eba91fe82ac6b3968751d00c848019393fad18
 
 pkgname = nsdiff

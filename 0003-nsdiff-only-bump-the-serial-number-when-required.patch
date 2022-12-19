@@ -1,0 +1,63 @@
+From acead385edbb48879889c3f0cfd30ab012172d00 Mon Sep 17 00:00:00 2001
+From: Tony Finch <dot@dotat.at>
+Date: Tue, 1 Mar 2022 17:22:06 +0000
+Subject: [PATCH] nsdiff: only bump the serial number when required
+
+The original intent of nsdiff was that serial numbers are managed
+automatically, so they are basically ignored. But I changed it to
+alow users to just bump the serial number - except this only
+makes sense in the (default) -Sfile mode. Ignoring serial numbers
+completely makes more sense in -Sunix mode (etc.)
+
+Reported-by: Martin Hartl <mhartl@barracuda.com>
+---
+ nsdiff | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/nsdiff b/nsdiff
+index d2b5e66..a9c5a31 100755
+--- a/nsdiff
++++ b/nsdiff
+@@ -146,7 +146,8 @@ $soa =~ $soare;
+ my $oldserial = $3;
+ my $oldsoa = "$1 $2 $4";
+ $newsoa =~ $soare;
+-my $upsoa = $oldserial < $3 || $oldsoa ne "$1 $2 $4";
++my $upsoa = $oldsoa ne "$1 $2 $4"
++    || ($soamode =~ m{file|master} && $oldserial < $3);
+ # The serial number in the update might depend on the new SOA serial number.
+ my $soamin = $soafun->($3);
+ 
+@@ -257,11 +258,11 @@ F<old> and F<new> files are not specified, B<nsdiff> will transfer the new
+ version of the zone from the server given by the B<-m> option.
+ 
+ The SOA serial number has special handling: any difference between the
+-F<old> and F<new> serial numbers is ignored, because background DNSSEC
+-signing activity can increment the serial number unpredictably. When
+-the zones differ, B<nsdiff> sets the serial number according to the
+-B<-S> option, and it uses the F<old> serial number to protect against
+-conflicting updates.
++F<old> and F<new> serial numbers is ignored (except in B<-S file> mode),
++because background DNSSEC signing activity can increment the serial number
++unpredictably. When the zones differ, B<nsdiff> sets the serial number
++according to the B<-S> option, and it uses the F<old> serial number to
++protect against conflicting updates.
+ 
+ =head1 OPTIONS
+ 
+@@ -535,9 +536,9 @@ because it isn't possible to delete all a zone's name servers.
+ 
+ Thanks to Mike Bristow, Piete Brooks (University of Cambridge Computer
+ Laboratory), Terry Burton (University of Leicester), Owen Dunn
+-(University of Cambridge Faculty of Mathematics), JP Mens, Mohamad
+-Shidiq Purnama (PANDI), and Jordan Rieger (webnames.ca) for providing
+-useful feedback.
++(University of Cambridge Faculty of Mathematics), Martin Hartl
++(Barracuda) JP Mens, Mohamad Shidiq Purnama (PANDI), and Jordan Rieger
++(webnames.ca) for providing useful feedback.
+ 
+ =head1 SEE ALSO
+ 
+-- 
+2.39.0
+
