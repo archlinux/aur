@@ -1,6 +1,6 @@
 pkgbase = teres-git
 	pkgdesc = Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending
-	pkgver = 0.3.1.r4.gaf85c8f
+	pkgver = 0.3.2.r0.gebd3134
 	pkgrel = 1
 	url = https://github.com/animafps/teres
 	arch = x86_64

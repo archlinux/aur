@@ -1,7 +1,7 @@
 # Maintainer: Anima <contact@animafps.xyz>
 
 pkgname=teres-git
-pkgver=0.3.1.r4.gaf85c8f
+pkgver=0.3.2.r0.gebd3134
 pkgrel=1
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
 depends=('vapoursynth-plugin-mvtools' 
