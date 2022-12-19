@@ -6,7 +6,7 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=1.2.3.r18.g5258c29
+pkgver=1.2.3.r53.g907134b
 pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
@@ -57,7 +57,7 @@ prepare() {
 
   git config --file=.gitmodules submodule.git.url ../git/
   git submodule init
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {

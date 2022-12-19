@@ -1,6 +1,6 @@
 pkgbase = cgit-git
 	pkgdesc = A web interface for git written in plain C - git checkout
-	pkgver = 1.2.3.r18.g5258c29
+	pkgver = 1.2.3.r53.g907134b
 	pkgrel = 1
 	url = https://git.zx2c4.com/cgit/
 	install = cgit.install
