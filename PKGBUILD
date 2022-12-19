@@ -1,7 +1,7 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 pkgname=onedev
 pkgver=7.8.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 url="https://code.onedev.io/onedev/server"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  depends=('jre-openjdk-headless>11.0.0' 'git>2.11.1' 'curl')
+  depends=('jre-openjdk-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
   install -o 663 -g 663 -d "$pkgdir/opt/onedev"
   cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/onedev"
   chown -R 663:663 "$pkgdir/opt/onedev"

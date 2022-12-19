@@ -1,7 +1,7 @@
 pkgbase = onedev
 	pkgdesc = A self-hosted Git server with CI/CD and Kanban
 	pkgver = 7.8.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
 	license = MIT
@@ -24,3 +24,5 @@ pkgname = onedev
 	depends = jre-openjdk-headless>11.0.0
 	depends = git>2.11.1
 	depends = curl
+	depends = fontconfig
+	depends = ttf-dejavu
