@@ -1,20 +1,20 @@
 # Maintainer: Milan Toth <milgra@milgra.com>
 
 pkgname=wcp
-pkgver=0.72b
+pkgver=0.73b
 pkgrel=1
 pkgdesc='Script-driven control panel/system menu for Wayland'
 arch=('i686' 'x86_64')
 url='https://github.com/milgra/wcp'
 license=('GPL3')
 depends=('wayland' 'freetype2' 'libpng' 'libgl' 'libegl' 'glew' )
-makedepends=('meson' 'wayland-protocols')
+makedepends=('meson' 'ninja' 'pkg-config' 'wayland-protocols' )
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/wcp/releases/download/${pkgver}/wcp-${pkgver}.tar.xz"
 )
 
 sha256sums=(
-	'd3e923c61a2c33b7fa1fd8b0d96dfc0880d1a44a42c35092fe8f8a88a991a3ef'
+	'761c4eb7320070d4f6f851a73cd67baf85ed4e51a5a22481f54dd62560f95fe1'
 )
 
 prepare() {
