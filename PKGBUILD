@@ -1,6 +1,6 @@
 # Maintainer: creatorx <accelerate9 at gmail dot com>
 pkgname=megit
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Git GUI repository manager based on EGit Eclipse plugin"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://github.com/eclipsesource/megit/releases/download/v$pkgver/com.eclipsesource.megit-linux.gtk.x86_64.zip"
         "megit.desktop"
         "egit.png")
-sha256sums=('92d5e508376eeb74bb4dcb40b0a936ba0a14c0b21662e868203c79e07e72d8f6'
+sha256sums=('d4bca027d7a0a8a3684c6c14768b3167119c6573ccd42ca4175b27c344fa8c38'
             '2bd9fb226f4085f9c1b5c8e4d7b64a23f651539947d4239f8a7e29ea599c58be'
             '9f9ff6c58c752e2115057fdd7a25f7a085128dc3f8b8c2ac95adeb6e8c421b75')
 
