@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/milgra/sov'
 license=('GPL3')
 depends=('wayland' 'freetype2' 'libpng' 'libgl' 'libegl' 'glew' )
-makedepends=('meson' 'ninja' 'pkg-config' 'cmake' 'wayland-protocols' )
+makedepends=('meson' 'ninja' 'pkg-config' 'wayland-protocols' )
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/sov/releases/download/${pkgver}/sov-${pkgver}.tar.xz"
 )
