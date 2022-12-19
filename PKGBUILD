@@ -4,8 +4,8 @@
 pkgname=vdr-restfulapi
 epoch=1
 pkgver=0.2.6.6
-pkgrel=1
-_vdrapi=2.6.1
+pkgrel=2
+_vdrapi=2.6.3
 pkgdesc="Restful-API Control for VDR"
 url="https://github.com/yavdr/vdr-plugin-restfulapi"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
