@@ -5,7 +5,7 @@
 # armv7h tester: kauron
 pkgname=duplicati-beta-bin
 pkgver=2.0.6.3
-pkgrel=1
+pkgrel=2
 _date=2021-06-17
 _branch=beta
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
@@ -39,7 +39,8 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 depends=(openssl-1.1 gtk-sharp-2 mono libappindicator-gtk2)
 makedepends=(unzip)
 optdepends=('notify-sharp: for tray notifications')
-conflicts=(duplicati-canary-bin)
+conflicts=(duplicati-canary-bin duplicati)
+provides=(duplicati)
 
 package() {
 
