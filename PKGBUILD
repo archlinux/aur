@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61763.6e40a652d73
+pkgver=r61788.31832046a52
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -211,6 +211,9 @@ package_kodi-git() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
+  
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
 # kodi-eventclients
