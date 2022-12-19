@@ -22,8 +22,8 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61753.1b560c525e7
-pkgrel=2
+pkgver=r61761.a184a3a7fce
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -211,6 +211,9 @@ package_kodi-nexus-git() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
+  
+  # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
 # kodi-eventclients
