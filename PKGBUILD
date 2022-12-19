@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr-git
 pkgname=(vdr-git vdr-examples-git)
-pkgver=2.5.6.r0.g0d50ec5
-_vdrapi=2.4.7
+pkgver=2.6.3.r0.g8b14723
+_vdrapi=2.6.3
 pkgrel=1
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
