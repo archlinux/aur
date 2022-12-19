@@ -1,14 +1,14 @@
 pkgbase = rusted-paratrooper
 	pkgdesc = Paratrooper clone written in Rust
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/denix666/paratrooper
 	arch = x86_64
 	license = GPLv3
-	source = https://github.com/denix666/paratrooper/releases/download/v1.0.0/paratrooper.tar.gz
+	source = https://github.com/denix666/paratrooper/releases/download/v1.1.0/paratrooper_linux_x86_64.tar.gz
 	source = rusted-paratrooper_icon.png
 	source = rusted-paratrooper.desktop
-	sha256sums = 94dd09bad63a970c50cbbbd5f50a642231979a80a2bf720f752dbdf67099a1d6
+	sha256sums = d26d3536753969cec48dc03668eff8be4f5818fd2f0f3be14e043192f32ed881
 	sha256sums = 998f94879719990106179c0cdd454caad6f49ab44464afa6a332bb88d1abf62b
 	sha256sums = 126000ce28075170203ba7486377361b69f4b2468b473c9c95dd23b38eb8d901
 
