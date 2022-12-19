@@ -6,7 +6,7 @@
 
 pkgname=devscripts
 pkgver=2.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
@@ -33,6 +33,9 @@ optdepends=(
     'debian-keyring: Required for commands interacting with the system / user keyring'
     'perl-file-touch: Required for uscan'
     'perl-file-dirlist: Required for uscan'
+    'perl-moo: Required for uscan'
+    'perl-ipc-run: Required for uscan'
+    'perl-lwp-protocol-https: Required for uscan'
 )
 options=('!makeflags')
 source=(
