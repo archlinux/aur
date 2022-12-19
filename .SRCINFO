@@ -1,6 +1,6 @@
 pkgbase = timeswitch
 	pkgdesc = Power off, reboot, suspend or send a notification on timer.
-	pkgver = 2022.11.15
+	pkgver = 2022.12.18
 	pkgrel = 1
 	url = https://github.com/fsobolev/timeswitch
 	arch = any
