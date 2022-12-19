@@ -1,6 +1,6 @@
 pkgbase = feedbin-git
 	pkgdesc = A nice place to read on the web
-	pkgver = 2021.11.17
+	pkgver = r4495.be622c7c
 	pkgrel = 1
 	url = https://feedbin.com/
 	arch = x86_64
