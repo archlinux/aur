@@ -75,7 +75,7 @@ pkgbase = gdal-ecw
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
 	optdepends = unixodbc: when present while building, will add odbc support
-	provides = gdal=3.5.3
+	provides = gdal=3.6.0
 	conflicts = gdal
 	options = !emptydirs
 	source = https://download.osgeo.org/gdal/3.6.0/gdal-3.6.0.tar.xz

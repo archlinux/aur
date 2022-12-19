@@ -10,7 +10,7 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.5.3')
+provides=('gdal=3.6.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.6.0
