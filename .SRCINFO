@@ -1,6 +1,6 @@
 pkgbase = pac-wrapper
-	pkgdesc = A simple pacman wrapper that provides intuitive syntax similar to dnf, apt, zypper, etc.
-	pkgver = 3.0.0
+	pkgdesc = A pacman wrapper that provides intuitive syntax similar to dnf, apt, zypper, etc.
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/eatsu/pac-wrapper
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pac-wrapper
 	depends = pacman
 	depends = sudo
 	provides = pac
-	source = pac-wrapper-3.0.0.tar.gz::https://github.com/eatsu/pac-wrapper/archive/3.0.0.tar.gz
-	sha256sums = f85d09754c9463e2963fe83265ffdd1e4eba42e32e6924719e60f38ead90b68f
+	source = pac-wrapper-4.0.0.tar.gz::https://github.com/eatsu/pac-wrapper/archive/4.0.0.tar.gz
+	sha256sums = b23e52ce9ed5c90611611d0336183be190395fff4a639ffc089bd72aeb3b95dd
 
 pkgname = pac-wrapper
