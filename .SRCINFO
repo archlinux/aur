@@ -1,0 +1,15 @@
+pkgbase = neon-podcaster-git
+	pkgdesc = A command line podcast client
+	pkgver = 1.r6.5e5f218
+	pkgrel = 1
+	url = https://www.gitlab.com/utilities-n-apps/neon-podcaster.git
+	install = neon-podcaster-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-feedparser
+	provides = neon-podcaster-git
+	source = git+https://www.gitlab.com/utilities-n-apps/neon-podcaster.git
+	md5sums = SKIP
+
+pkgname = neon-podcaster-git
