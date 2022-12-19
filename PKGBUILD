@@ -5,8 +5,8 @@
 pkgbase=dfatmo
 pkgname=('dfatmo' 'vdr-dfatmo' 'kodi-addon-dfatmo')
 pkgver=0.5.0
-_vdrapi=2.6.1
-pkgrel=10
+_vdrapi=2.6.3
+pkgrel=11
 epoch=1
 url="https://github.com/durchflieger/${pkgbase}"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -63,7 +63,7 @@ package_kodi-addon-dfatmo() {
   arch=('any')
   replaces=('xbmc-addon-dfatmo')
   conflicts=('xbmc-addon-dfatmo')
-  depends=('dfatmo' 'kodi')
+  depends=('dfatmo' 'python' 'kodi')
 
   cd "${srcdir}/DFAtmo-${pkgver}"
   make XBMCDESTDIR="$pkgdir/usr/share/kodi/addons/script.dfatmo" xbmcinstall
