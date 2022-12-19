@@ -2,7 +2,7 @@
 pkgname="pipelight"
 pkgver="0.1.2"
 pkgrel=1
-pkgdesc="CICD cli"
+pkgdesc="A Rust/Typescript based absurd automation tool"
 arch=(x86_64)
 url="https://gitea.com/areska/pipelight.git"
 license=('GPL2')
@@ -14,10 +14,14 @@ source=(git+$url)
 md5sums=('SKIP') #autofill using updpkgsums
 
 build() {
-  # cargo build --release
-  echo $0
+  cd $pkgname
+  cargo build --release
 }
 
 package() {
-  echo $0
+  cd $pkgname
+  bin="target/release/$pkgname"
+  install -Dm755 $bin -t $pkgdir/usr/bin
+  install -Dm755 $bin-run -t $pkgdir/usr/bin
+  install -Dm755 $bin-trigger -t $pkgdir/usr/bin
 }
