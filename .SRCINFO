@@ -1,0 +1,14 @@
+pkgbase = texbrix
+	pkgdesc = A granular approach to LaTeX
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = http://github.com/leopoldfajtak/texbrix
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/T/TeXBriX/TeXBriX-0.2.10.tar.gz
+	sha256sums = 45c36114af1fda5fe6d1b73f51dbfd379d402e1fe9a8526207464ea9a2441340
+
+pkgname = texbrix
+	depends = python
