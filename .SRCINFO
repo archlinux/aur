@@ -1,6 +1,6 @@
 pkgbase = ani-cli-vostfr-git
 	pkgdesc = A cli to browse and watch anime in VOSTFR (inspired by pystardust)
-	pkgver = 0.1.7.r8.7b7288a
+	pkgver = 0.1.8.r20.49c8662
 	pkgrel = 1
 	url = https://github.com/KrishenK0/ani-cli.git
 	arch = any
