@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-trayopenng
 pkgver=1.0.2
-_vdrapi=2.6.1
-pkgrel=8
+_vdrapi=2.6.3
+pkgrel=9
 pkgdesc="Open or close the CD/DVD tray via the menu or via a function key of the remote control"
 url="http://www.uli-eckhardt.de/vdr/trayopenng.en.shtml"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
