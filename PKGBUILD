@@ -2,14 +2,13 @@
 
 pkgname='gourmand'
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A recipe manager for desktop that can import recipes"
 arch=('any')
 url="https://github.com/GourmandRecipeManager/gourmand"
 license=('GPL')
-depends=('python-gobject' 'gtk3' 'python-pyenchant' 'gst-python' 'python-pillow' 'python-sqlalchemy' 'python-lxml' 'python-cairo' 'python-requests')
+depends=('python-gobject' 'gtk3' 'python-pyenchant' 'gst-python' 'python-pillow' 'python-sqlalchemy1.3' 'python-lxml' 'python-cairo' 'python-requests')
 makedepends=('python-pip' 'gendesk')
-checkdepends=()
 optdepends=(
   'python-beautifulsoup4: Webpage import plugin'
   'python-scrape-schema-recipe: Webpage import plugin'
@@ -31,7 +30,6 @@ prepare() {
 }
 
 package() {
-  # https://wiki.archlinux.org/title/Python_package_guidelines#pip
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
   install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
