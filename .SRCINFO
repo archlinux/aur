@@ -1,11 +1,19 @@
 pkgbase = libobjectbox
-	pkgdesc = The library for objectbox. A database for objects and structs.
-	pkgver = 0.14.0
+	pkgdesc = C/C++ database for objects and structs
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/objectbox/objectbox-c
 	arch = x86_64
-	license = MIT
-	source = libobjectbox-0.14.0::https://github.com/objectbox/objectbox-c/releases/download/v0.14.0/objectbox-linux-x64.tar.gz
-	sha256sums = 78c7b55ba5258c198e03b355bbdb17b3696e8d85b3a6f564a9641dff2f2f8354
+	arch = aarch64
+	arch = armv7h
+	license = Apache
+	license = custom
+	depends = gcc-libs
+	source_x86_64 = libobjectbox-0.18.0-x86_64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v0.18.0/objectbox-linux-x64.tar.gz
+	sha256sums_x86_64 = 12eac8115f2bd1ed9e5612a083bfe499202b6d132c2df0160c3931267022dc7d
+	source_aarch64 = libobjectbox-0.18.0-aarch64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v0.18.0/objectbox-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 403af23ee4ba03eec8164d5ca5c5758ec18d8b60fb19fc96c7c4bd1961e015c1
+	source_armv7h = libobjectbox-0.18.0-aarch64.tar.gz::https://github.com/objectbox/objectbox-c/releases/download/v0.18.0/objectbox-linux-armv7h.tar.gz
+	sha256sums_armv7h = 403af23ee4ba03eec8164d5ca5c5758ec18d8b60fb19fc96c7c4bd1961e015c1
 
 pkgname = libobjectbox
