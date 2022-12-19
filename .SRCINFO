@@ -9,7 +9,6 @@ pkgbase = vmp
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkg-config
-	makedepends = cmake
 	makedepends = wayland-protocols
 	depends = wayland
 	depends = freetype2
