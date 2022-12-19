@@ -1,11 +1,11 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=stdm-git
-pkgver=1.r7.3c93c90.BETA
+pkgver=1.r10.82a17c5.BETA
 pkgrel=1
 epoch=
 pkgdesc="A linux man page search engine"
 arch=('x86_64')
-url="https://gitlab.com/NEON-MMD/stdm.git"
+url="https://gitlab.com/utilities-n-apps/stdm.git"
 license=('GPL3')
 groups=()
 depends=(fzf tabulate man tldr)
