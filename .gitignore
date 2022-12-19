@@ -1,0 +1,7 @@
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!makepkg-mingw
+!makepkg_mingw.conf

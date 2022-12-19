@@ -1,0 +1,13 @@
+pkgbase = makepkg-mingw
+	pkgdesc = makepkg-mingw
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://github.com/msys2/MSYS2-packages
+	arch = any
+	license = GPL
+	source = makepkg-mingw
+	source = makepkg_mingw.conf
+	sha256sums = 98198e1f0f252eae0560d271bee4b9149e127399dd0d3fd5d8d24579d9e0550f
+	sha256sums = 8cb6b244d39107afc6cff74d919708ffc58b903c42f82d050d1d49bbf31208ab
+
+pkgname = makepkg-mingw
