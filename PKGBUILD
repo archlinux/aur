@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=tntnet
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular, multithreaded, high performance webapplicationserver for C++"
 url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
