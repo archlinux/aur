@@ -40,17 +40,17 @@ prepare() {
   git config submodule.modules/translators.url "$srcdir/translators"
   git config submodule.modules/utilities.url "$srcdir/utilities"
   git config submodule.modules/zotero-schema.url "$srcdir/zotero-schema"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd ../${_src_dir_2}
   git submodule init
   git config submodule.modules/utilities.url "$srcdir/utilities"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd ../${_src_dir_4}
   git submodule init
   git config submodule.resource/schema/global.url "$srcdir/zotero-schema"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 package() {
