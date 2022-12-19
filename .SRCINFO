@@ -1,13 +1,15 @@
 pkgbase = pipelight
-	pkgdesc = A Rust/Typescript based CICD cli
-	pkgver = 0.1.1
+	pkgdesc = CICD cli
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitea.com/areska/pipelight.git
-	arch = arm
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = make
+	provides = pipelight
+	conflicts = pipelight
 	source = git+https://gitea.com/areska/pipelight.git
+	md5sums = SKIP
 
 pkgname = pipelight
