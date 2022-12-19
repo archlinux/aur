@@ -11,14 +11,15 @@ pkgbase = ambulant-player-gtk-git
 	makedepends = git
 	makedepends = autoconf
 	makedepends = ed
-	makedepends = python2
 	makedepends = python
 	depends = ffmpeg
 	depends = sdl_pango
+	depends = sdl_image
+	depends = sdl2_ttf
+	depends = xerces-c
 	provides = AmbulantPlayer_gtk
 	conflicts = AmbulantPlayer_gtk
 	source = git+https://e.coding.net/Baytars/ambulant-2.6.git
 	sha256sums = SKIP
 
 pkgname = ambulant-player-gtk-git
-

@@ -1,7 +1,7 @@
 # Contributor: Baytars <feicuihuangfeng@qq.com>
 pkgname=ambulant-player-gtk-git
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="open-source media player with support for SMIL 3.0"
 arch=('x86_64')
 url="https://www.ambulantplayer.org/"
