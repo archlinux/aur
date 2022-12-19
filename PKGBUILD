@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://www.ambulantplayer.org/"
 _git=https://e.coding.net/Baytars/ambulant-2.6.git
 license=('LGPL')
-depends=('ffmpeg' 'sdl_pango')
-makedepends=('make' 'automake' 'git' 'autoconf' 'ed' 'python2' 'python')
+depends=('ffmpeg' 'sdl_pango' 'sdl_image' 'sdl2_ttf' 'xerces-c')
+makedepends=('make' 'automake' 'git' 'autoconf' 'ed' 'python')
 provides=('AmbulantPlayer_gtk')
 conflicts=('AmbulantPlayer_gtk')
 install=AmbulantPlayer_gtk.install
@@ -22,7 +22,7 @@ build() {
   echo "Make sure you have Modified po/Makefile.in. The GETTEXT_MACRO_VERSION variable has to match your current gettext version."
   gettext --version
   cd ./third_party_packages
-  python2 ../scripts/build-third-party-packages.py linux
+  python ../scripts/build-third-party-packages.py linux
   cd ../
   ./autogen.sh
   ./configure
@@ -36,3 +36,4 @@ package() {
   cd ${srcdir}/ambulant-2.6
   make install DESTDIR=${pkgdir}
 }
+
