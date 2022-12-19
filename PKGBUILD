@@ -4,7 +4,7 @@
 _pypiname=PyGObject-stubs
 _pkgname=pygobject-stubs
 pkgname="python-${_pkgname}"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="PEP 561 Typing Stubs for PyGObject."
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 	'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/P/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-sha512sums=('9cce19dd88187ccb8817f70874b2889f3a0c8092bb1885ac80593a5e8860d4678fdebe929526130a96761459f9aa7f66fedc2ac9afe145e4064d65d49787916d')
+sha512sums=('6622cdab2a9037326c98fc161747a45288b1af983b74c4b090399657df304ea8f4e2c2e3220135c5834122fb7340e0f1fed05eb65c4d8245b818e5124d56a2b7')
 
 build() {
   cd ${_pypiname}-$pkgver
