@@ -1,6 +1,6 @@
 pkgbase = asahi-battery-threshold-git
 	pkgdesc = A small daemon that allows setting a charging threshold for laptops running Asahi Linux.
-	pkgver = 0.0.1
+	pkgver = v0.0.1.r1.gf084863
 	pkgrel = 1
 	url = https://github.com/PaddiM8/asahi-battery-threshold
 	arch = aarch64
