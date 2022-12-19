@@ -1,7 +1,7 @@
 pkgbase = f3d-git
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = v1.3.1.g2596b19
-	pkgrel = 1
+	pkgver = v1.3.1.gcc42277
+	pkgrel = 2
 	url = https://github.com/f3d-app/f3d
 	arch = x86_64
 	license = BSD
@@ -24,7 +24,6 @@ pkgbase = f3d-git
 	depends = python
 	depends = fmt
 	depends = utf8cpp
-	depends = draco_static_lib_compat
 	provides = f3d
 	conflicts = f3d
 	source = git+https://github.com/f3d-app/f3d.git
