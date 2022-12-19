@@ -35,11 +35,11 @@ build() {
 package() {
 	cd "$srcdir/${_pkgname}"
 	make DESTDIR="$pkgdir/" install
-    rm -rf "$srcdir/${_pkgname}/build/"
-    rm -rf "$srcdir/${_pkgname}/dist/"
-    rm -rf "$srcdir/${_pkgname}/.eggs/"
-    find "$srcdir/" -name "*.egg-info" -exec rm -rf {} +
-    find "$srcdir/" -name "*.egg" -exec rm -rf {} +
+    # rm -rf "$srcdir/${_pkgname}/build/"
+    # rm -rf "$srcdir/${_pkgname}/dist/"
+    # rm -rf "$srcdir/${_pkgname}/.eggs/"
+    # find "$srcdir/" -name "*.egg-info" -exec rm -rf {} +
+    # find "$srcdir/" -name "*.egg" -exec rm -rf {} +
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
