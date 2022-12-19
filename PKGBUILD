@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-channellists
 pkgver=0.0.6
-_vdrapi=2.6.1
-pkgrel=4
+_vdrapi=2.6.3
+pkgrel=5
 pkgdesc="Plugin to manage your Channellists"
 url="https://github.com/vdr-projects/vdr-plugin-channellists"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
