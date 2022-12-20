@@ -2,7 +2,7 @@
 
 _name=pytest-skip-markers
 pkgname=python-pytest-skip-markers
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Pytest plugin which implements a few useful skip markers"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python python-attrs python-distro python-pytest)
 makedepends=(python-build python-installer python-setuptools python-setuptools-declarative-requirements python-setuptools-scm python-toml python-wheel)
 checkdepends=(python-pyfakefs python-pytest-subtests)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('3ee7067afb42c1adde981278e588b0bae0634878607379e5012e461962646fd3')
-b2sums=('8dc932adc6fbb5c3611d4221f9ff627b5aa30592de230c55abe58f6ed67b1008053ae1dfd104f45d6ca1687b75499b43d322820591c9f4e73f80aa00e14ce4e5')
+sha256sums=('1095c5d1103d77779cbe805ea8a7beeb3be6e46529778fb1ca72e4250cfa8ec2')
+b2sums=('eb90bc376cf26d5740c099331ae984dfcafb46e340fef406653967b865c9f9d26d6dcb3e68c4e40932b7bc43c09b67f9ae9bef1300a8719002e1f8ab59bb8acc')
 
 build() {
   cd $_name-$pkgver
