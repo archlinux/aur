@@ -1,0 +1,16 @@
+pkgbase = gbgoffice
+	pkgdesc = Bulgarian English two-way dictionary
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://gbgoffice.info
+	arch = x86_64
+	license = GPL2
+	depends = gtkmm
+	source = http://gbgoffice.info/d/gbgoffice-1.4.tar.gz
+	source = https://deb.debian.org/debian/pool/main/g/gbgoffice/gbgoffice_1.4-11.debian.tar.xz
+	source = https://sourceforge.net/projects/bgoffice/files/Full%20Pack%20of%20Dictionaries/1.0/full-pack.tar.bz2/download
+	sha256sums = e4459bdde092eefb8bf84d9a915fcf07760d51c36ded3b74f280c614e0ae3561
+	sha256sums = 65f43ffea1afb4642681605ff8417df87038141b945623ea8429551f19de7baa
+	sha256sums = ebb46679dba292636e8b2a5eea132e7dddb949e37b402315327303fb5f12aed8
+
+pkgname = gbgoffice
