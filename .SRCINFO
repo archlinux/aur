@@ -1,7 +1,7 @@
 pkgbase = disc-kuraudo-home
 	pkgdesc = Disc Kuraudo - The Disc Cloud
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://disc-kuraudo.eu
 	arch = x86_64
 	license = custom
@@ -16,6 +16,9 @@ pkgbase = disc-kuraudo-home
 	depends = libudfread-dk
 	provides = disc-kuraudo
 	source = https://disc-kuraudo.eu/releases/disc-kuraudo-home-0.1.0.tar.xz
+	source = empty.patch
 	sha256sums = c889c81acaf8be674dd15c5446593bd734984bdd3ff0eb2050de607c3793efdb
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = disc-kuraudo-home
