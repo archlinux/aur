@@ -1,0 +1,380 @@
+From f7f80752e7b2c0a343a69abb01a3c5be11fd6162 Mon Sep 17 00:00:00 2001
+From: messense <messense@icloud.com>
+Date: Tue, 22 Jun 2021 13:39:45 +0800
+Subject: [PATCH 1/5] Patch distutils build command instead
+
+This removes the empty C extension trick.
+---
+ .gitignore                  |  1 +
+ milksnake/setuptools_ext.py | 77 ++++++++++++-------------------------
+ setup.py                    |  3 --
+ tests/conftest.py           |  8 +++-
+ tests/test_basic.py         |  4 +-
+ 5 files changed, 34 insertions(+), 59 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 5e6e4be..b846d5f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,4 @@ build
+ __pycache__
+ .eggs
+ .pytest_cache
++tests/res/
+diff --git a/milksnake/setuptools_ext.py b/milksnake/setuptools_ext.py
+index 88cc549..bec6e80 100644
+--- a/milksnake/setuptools_ext.py
++++ b/milksnake/setuptools_ext.py
+@@ -1,19 +1,14 @@
+ import os
+ import sys
+-import uuid
+ import shutil
+-import tempfile
+ import subprocess
+ 
+ from distutils import log
+-from distutils.core import Extension
+-from distutils.ccompiler import new_compiler
+ from distutils.command.build_py import build_py
+ from distutils.command.build_ext import build_ext
+ 
+ from cffi import FFI
+ from cffi import recompiler as cffi_recompiler
+-from cffi import setuptools_ext as cffi_ste
+ 
+ try:
+     from wheel.bdist_wheel import bdist_wheel
+@@ -21,16 +16,6 @@
+     bdist_wheel = None
+ 
+ here = os.path.abspath(os.path.dirname(__file__))
+-EMPTY_C = u'''
+-void init%(mod)s(void) {}
+-void PyInit_%(mod)s(void) {}
+-'''
+-
+-BUILD_PY = u'''
+-import cffi
+-from milksnake.ffi import make_ffi
+-ffi = make_ffi(**%(kwargs)r)
+-'''
+ 
+ MODULE_PY = u'''# auto-generated file
+ __all__ = ['lib', 'ffi']
+@@ -88,24 +73,6 @@ def run(self):
+                     func(base_path=base_path, inplace=False)
+ 
+         class MilksnakeBuildExt(base_build_ext):
+-            def get_ext_fullpath(self, ext_name):
+-                milksnake_dummy_ext = None
+-                for ext in spec.dist.ext_modules:
+-                    if ext.name == ext_name:
+-                        milksnake_dummy_ext = getattr(
+-                            ext, 'milksnake_dummy_ext', None)
+-                        break
+-
+-                if milksnake_dummy_ext is None:
+-                    return base_build_ext.get_ext_fullpath(self, ext_name)
+-
+-                fullname = self.get_ext_fullname(ext_name)
+-                modpath = fullname.split('.')
+-                package = '.'.join(modpath[0:-1])
+-                build_py = self.get_finalized_command('build_py')
+-                package_dir = os.path.abspath(build_py.get_package_dir(package))
+-                return os.path.join(package_dir, milksnake_dummy_ext)
+-
+             def run(self):
+                 base_build_ext.run(self)
+                 if self.inplace:
+@@ -216,7 +183,6 @@ def __init__(self, spec, module_path, dylib=None, header_filename=None,
+ 
+         genbase = '%s._%s' % (parts[0], parts[1].lstrip('_'))
+         self.cffi_module_path = '%s__ffi' % genbase
+-        self.fake_module_path = '%s__lib' % genbase
+ 
+         from distutils.sysconfig import get_config_var
+         self.lib_filename = '%s__lib%s' % (
+@@ -237,27 +203,9 @@ def get_header_source(self):
+ 
+     def prepare_build(self):
+         dist = self.spec.dist
+-
+-        # Because distutils was never intended to support other languages and
+-        # this was never cleaned up, we need to generate a fake C module which
+-        # we later override with our rust module.  This means we just compile
+-        # an empty .c file into a Python module.  This will trick wheel and
+-        # other systems into assuming our library has binary extensions.
+         if dist.ext_modules is None:
+             dist.ext_modules = []
+ 
+-        build = dist.get_command_obj('build')
+-        build.ensure_finalized()
+-        empty_c_path = os.path.join(build.build_temp, 'empty.c')
+-        if not os.path.isdir(build.build_temp):
+-            os.makedirs(build.build_temp)
+-        with open(empty_c_path, 'w') as f:
+-            f.write(EMPTY_C % {'mod': self.fake_module_path.split('.')[-1]})
+-
+-        ext = Extension(self.fake_module_path, sources=[empty_c_path])
+-        ext.milksnake_dummy_ext = self.lib_filename
+-        dist.ext_modules.append(ext)
+-
+         def make_ffi():
+             from milksnake.ffi import make_ffi
+             return make_ffi(self.module_path,
+@@ -319,8 +267,33 @@ def get_tag(self):
+     dist.cmdclass['bdist_wheel'] = MilksnakeBdistWheel
+ 
+ 
++def patch_distutils_build(dist):
++    """Trick wheel and other systems into assuming
++    our library has binary extensions
++
++    See also https://github.com/pypa/distutils/pull/43
++    """
++    from distutils.command import build as _build
++
++    class build(_build.build, object):
++        def finalize_options(self):
++            super(build, self).finalize_options()
++            if self.distribution.has_ext_modules():
++                self.build_lib = self.build_platlib
++            else:
++                self.build_lib = self.build_purelib
++
++    _build.build = build
++
++    orig_has_ext_modules = dist.has_ext_modules
++    dist.has_ext_modules = lambda: (
++        orig_has_ext_modules() or bool(dist.milksnake_tasks)
++    )
++
++
+ def milksnake_tasks(dist, attr, value):
+     """Registers task callbacks."""
++    patch_distutils_build(dist)
+     patch_universal_wheel(dist)
+ 
+     spec = Spec(dist)
+diff --git a/setup.py b/setup.py
+index 39b3d79..8a73b5b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,9 +11,6 @@
+     author_email='armin.ronacher@active-4.com',
+     license='Apache License 2.0',
+     packages=['milksnake'],
+-    package_data={
+-        'milksnake': ['empty.c'],
+-    },
+     description='A python library that extends setuptools for binary extensions.',
+     long_description=readme,
+     long_description_content_type='text/markdown',
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 57e4411..005c53b 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,4 +1,5 @@
+ import os
++import sys
+ import uuid
+ import json
+ import atexit
+@@ -28,7 +29,10 @@ def __init__(self, path):
+         self.path = path
+ 
+     def spawn(self, executable, args=None, **kwargs):
+-        return subprocess.Popen([os.path.join(self.path, 'bin', executable)] +
++        bin_dir = 'bin'
++        if sys.platform == 'win32' and not executable.endswith('.exe'):
++            bin_dir = 'Scripts'
++        return subprocess.Popen([os.path.join(self.path, bin_dir, executable)] +
+                                 list(args or ()), **kwargs)
+ 
+     def run(self, executable, args=None):
+@@ -62,7 +66,7 @@ def _remove():
+     subprocess.Popen(['virtualenv', path]).wait()
+     try:
+         venv = VirtualEnv(path)
+-        venv.run('pip', ['install', '--editable', root])
++        venv.run('python', ['-m', 'pip', 'install', '--editable', root])
+         yield venv
+     finally:
+         _remove()
+diff --git a/tests/test_basic.py b/tests/test_basic.py
+index 5ebf511..406d8e0 100644
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -4,7 +4,7 @@
+ def test_example_dev_run(virtualenv):
+     pkg = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                        'res', 'minimal'))
+-    virtualenv.run('pip', ['install', '-v', '--editable', pkg])
++    virtualenv.run('python', ['-m', 'pip', 'install', '-v', '--editable', pkg])
+     virtualenv.eval('''if 1:
+         from example import test
+         def execute():
+@@ -15,7 +15,7 @@ def execute():
+ def test_example_nested_dev_run(virtualenv):
+     pkg = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                        'res', 'nested'))
+-    virtualenv.run('pip', ['install', '-v', '--editable', pkg])
++    virtualenv.run('python', ['-m', 'pip', 'install', '-v', '--editable', pkg])
+     virtualenv.eval('''if 1:
+         from example.nested import test
+         def execute():
+
+From 63a96270e1cbebc3340367b15f4ecbfd312aa212 Mon Sep 17 00:00:00 2001
+From: messense <messense@icloud.com>
+Date: Tue, 22 Jun 2021 15:25:07 +0800
+Subject: [PATCH 2/5] Use cbindgen 0.19 in example
+
+---
+ README.md               | 2 +-
+ example/rust/Cargo.toml | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index 0bc2936..97aa666 100644
+--- a/README.md
++++ b/README.md
+@@ -107,7 +107,7 @@ name = "example"
+ crate-type = ["cdylib"]
+ 
+ [build-dependencies]
+-cbindgen = "0.4"
++cbindgen = "0.19"
+ ```
+ 
+ And finally the build.rs file:
+diff --git a/example/rust/Cargo.toml b/example/rust/Cargo.toml
+index 0504526..5cda692 100644
+--- a/example/rust/Cargo.toml
++++ b/example/rust/Cargo.toml
+@@ -9,4 +9,4 @@ name = "example"
+ crate-type = ["cdylib"]
+ 
+ [build-dependencies]
+-cbindgen = "0.4"
++cbindgen = "0.19"
+
+From cedd71b2d5541f01ced71880497b143498a2d035 Mon Sep 17 00:00:00 2001
+From: messense <messense@icloud.com>
+Date: Tue, 22 Jun 2021 15:28:20 +0800
+Subject: [PATCH 3/5] Replace \r\n with \n to fix Windows error
+
+---
+ milksnake/ffi.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/milksnake/ffi.py b/milksnake/ffi.py
+index de09ef6..0cb6c02 100644
+--- a/milksnake/ffi.py
++++ b/milksnake/ffi.py
+@@ -14,6 +14,7 @@ def make_ffi(module_path, header, strip_directives=False):
+         header = header.decode('utf-8')
+     if strip_directives:
+         header = _directive_re.sub('', header)
++    header = header.replace('\r\n', '\n')
+ 
+     ffi = cffi.FFI()
+     ffi.cdef(header)
+
+From 980e70c6e2b7feff8add4d0ca334667e1b36f757 Mon Sep 17 00:00:00 2001
+From: messense <messense@icloud.com>
+Date: Tue, 22 Jun 2021 13:45:56 +0800
+Subject: [PATCH 4/5] Add GitHub Actions configuration
+
+---
+ .github/workflows/CI.yml | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+ create mode 100644 .github/workflows/CI.yml
+
+diff --git a/.github/workflows/CI.yml b/.github/workflows/CI.yml
+new file mode 100644
+index 0000000..9b06aaf
+--- /dev/null
++++ b/.github/workflows/CI.yml
+@@ -0,0 +1,27 @@
++name: CI
++on: [push, pull_request]
++
++jobs:
++  test:
++    name: Test
++    runs-on: ${{ matrix.os }}
++    strategy:
++      matrix:
++        os: [ubuntu-latest, windows-latest, macos-latest]
++        python-version: ['2.7', '3.6', 'pypy-2.7', 'pypy-3.7']
++    steps:
++      - uses: actions/checkout@v2
++      - name: Set up Python
++        uses: actions/setup-python@v2
++        with:
++          python-version: ${{ matrix.python-version }}
++      - name: Install Rust toolchain
++        uses: actions-rs/toolchain@v1
++        with:
++          toolchain: stable
++          profile: minimal
++          override: true
++      - name: Install test dependencies
++        run: pip install pytest virtualenv
++      - name: pytest
++        run: pytest tests
+
+From bb1a9e387bef18ef7baef1743944251762725a0f Mon Sep 17 00:00:00 2001
+From: messense <messense@icloud.com>
+Date: Tue, 22 Jun 2021 15:39:47 +0800
+Subject: [PATCH 5/5] Fix module import error on Windows PyPy
+
+```
+Traceback (most recent call last):
+
+  File "<string>", line 7, in <module>
+
+  File "<stdin>", line 2, in <module>
+
+  File "d:\a\milksnake\milksnake\tests\res\nested\example\nested\__init__.py", line 1, in <module>
+
+    from . import _native
+
+  File "d:\a\milksnake\milksnake\tests\res\nested\example\nested\_native.py", line 7, in <module>
+
+    lib = ffi.dlopen(os.path.join(os.path.dirname(__file__), '_native__libNone'), 0)
+
+OSError: Cannot load library 'd:\\a\\milksnake\\milksnake\\tests\\res\\nested\\example\\nested\\_native__libNone': The specified module could not be found
+```
+---
+ milksnake/setuptools_ext.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/milksnake/setuptools_ext.py b/milksnake/setuptools_ext.py
+index bec6e80..ce35c3a 100644
+--- a/milksnake/setuptools_ext.py
++++ b/milksnake/setuptools_ext.py
+@@ -185,10 +185,18 @@ def __init__(self, spec, module_path, dylib=None, header_filename=None,
+         self.cffi_module_path = '%s__ffi' % genbase
+ 
+         from distutils.sysconfig import get_config_var
+-        self.lib_filename = '%s__lib%s' % (
+-            genbase.split('.')[-1],
+-            get_config_var('SHLIB_SUFFIX') or get_config_var('SO')
+-        )
++
++        if sys.platform == 'darwin':
++            plat_ext = ".dylib"
++        elif sys.platform == 'win32':
++            plat_ext = ".dll"
++        else:
++            plat_ext = ".so"
++        ext = get_config_var('EXT_SUFFIX') or \
++            get_config_var('SHLIB_SUFFIX') or \
++            get_config_var('SO') or plat_ext
++
++        self.lib_filename = '%s__lib%s' % (genbase.split('.')[-1], ext)
+ 
+     def get_header_source(self):
+         if self.header_source is not None:

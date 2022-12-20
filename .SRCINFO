@@ -1,14 +1,21 @@
 pkgbase = python-milksnake
-	pkgdesc = Python library that extends setuptools for binary extensions
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgdesc = Distribute dynamic linked libraries in Python wheels
+	pkgver = 0.1.5.r3.gef0723e
+	pkgrel = 1
 	url = https://github.com/getsentry/milksnake
 	arch = any
 	license = Apache
+	checkdepends = cargo
+	checkdepends = python-pytest
+	checkdepends = python-virtualenv
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python-cffi
-	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/milksnake/milksnake-0.1.5.zip
-	sha512sums = b8aea094a9c41d837d16e0d0430cf63b26ba890eb542b612e8f3f28ca579fbe42edb14def985a0018d6d3063e935cebe3b286f3adf4978334d824d0ad34ad063
+	source = git+https://github.com/getsentry/milksnake#commit=ef0723e41df23d8f6357570c69c1e69cb31f9e9e
+	source = python-milksnake-0.1.5-distutils.patch
+	sha512sums = SKIP
+	sha512sums = cee83c569881b0c30a31397b43997db6fd32518f34c871714eea0b722ebf974e550c0c40b6bfe3ab7e1dfaddee2d4fbaae31551f51d776337b38a7a26821814d
+	b2sums = SKIP
+	b2sums = 9c4abaf5623ee3ff2fe15e0f90afe94b9e1a46cfa45d73bb3ee0abd59acd7e030cc1123a3da77f917cbd91ba96bdc278bda8223ac4c7f4c6fb249da3d369937c
 
 pkgname = python-milksnake
-
