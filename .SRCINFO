@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-v4l2-request-git
 	pkgdesc = FFmpeg with v4l2-request and drmprime
-	pkgver = r204003.0b8eff40d9.909ca6380d
+	pkgver = 4.4.1.r204003
 	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
@@ -75,6 +75,7 @@ pkgbase = ffmpeg-v4l2-request-git
 	provides = libswscale.so
 	provides = libswresample.so
 	provides = ffmpeg
+	provides = ffmpeg4.4
 	conflicts = ffmpeg
 	source = git+https://github.com/jernejsk/FFmpeg
 	sha256sums = SKIP

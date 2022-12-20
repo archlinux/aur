@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-v4l2-request-git
 _srcname=FFmpeg
-pkgver=r204003.0b8eff40d9.909ca6380d
+pkgver=4.4.1.r204003
 pkgrel=1
 epoch=2
 pkgdesc='FFmpeg with v4l2-request and drmprime'
@@ -83,7 +83,7 @@ optdepends=(
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
-          'ffmpeg')
+          'ffmpeg' 'ffmpeg4.4')
 conflicts=('ffmpeg')
 source=(
   'git+https://github.com/jernejsk/FFmpeg'
@@ -91,16 +91,30 @@ source=(
 sha256sums=(
   SKIP
 )
-_branch1='v4l2-request-hwaccel-4.4.1-Nexus-Alpha1'
-_branch2='v4l2-drmprime-v6-4.4.1-Nexus-Alpha1'
+
+_version='4.4.1'
+_branch1='v4l2-request-hwaccel-'$_version'-Nexus-Alpha1'
+_branch2='v4l2-drmprime-v6-'$_version'-Nexus-Alpha1'
+_branch3=''
+
+# _version='5.1.2'
+# _branch1='v4l2-request-n'$_version
+# _branch2='v4l2-drmprime-n'$_version
+# _branch3='vf-deinterlace-v4l2m2m-n'$_version
 
 prepare() {
   cd ${_srcname}
 
   git reset --hard
   git checkout $_branch1
-  git -c "user.name=Your Name" -c "user.email=you@example.com" \
-    merge --no-edit origin/$_branch2
+  if [ ! -z $_branch2 ]; then
+    git -c "user.name=Your Name" -c "user.email=you@example.com" \
+      merge --no-edit origin/$_branch2
+  fi
+  if [ ! -z $_branch3 ]; then
+    git -c "user.name=Your Name" -c "user.email=you@example.com" \
+      merge --no-edit origin/$_branch3
+  fi
 }
 
 pkgver() {
@@ -108,10 +122,9 @@ pkgver() {
   (
     set -o pipefail
     _cnt1=$(git rev-list --count origin/$_branch1)
-    _cnt2=$(git rev-list --count origin/$_branch2)
-    printf "r%s.%s.%s" "$(( $_cnt1 + $_cnt2 ))" \
-                       "$(git rev-parse --short origin/$_branch1)" \
-                       "$(git rev-parse --short origin/$_branch2)"
+    [ ! -z $_branch2 ] && _cnt2=$(git rev-list --count origin/$_branch2) || _cnt2="0"
+    [ ! -z $_branch3 ] && _cnt3=$(git rev-list --count origin/$_branch3) || _cnt3="0"
+    printf '%s.r%s' "$_version" "$(( $_cnt1 + $_cnt2 + $_cnt3 ))"
   )
 }
 
