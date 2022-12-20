@@ -1,7 +1,7 @@
 pkgbase = python-monai
 	pkgdesc = AI Toolkit for Healthcare Imaging
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://monai.io
 	arch = x86_64
 	license = BSD
@@ -25,7 +25,7 @@ pkgbase = python-monai
 	optdepends = python-tqdm
 	optdepends = python-transformers
 	optdepends = tensorboard
-	source = python-monai-1.0.1.tar.gz::https://github.com/Project-MONAI/MONAI/archive/refs/tags/1.0.1.tar.gz
-	sha512sums = 82857e54a15059656431bbd9fd9194b4b27ad2a2f27b23fc13e65b0f08c876174663fce500f5e88557b3f0762d7f12501292b0131e48d1587c546d893b3125b4
+	source = python-monai-1.1.0.tar.gz::https://github.com/Project-MONAI/MONAI/archive/refs/tags/1.1.0.tar.gz
+	sha512sums = df6e19b43e9f39052eca3107bbb39f67fa9559c4ad5c2e838423a6d035a580b92a48c7d98bbb926a8cf742fdf5c03e7c105be0cc76f4a2c8debf97fba80ecf4b
 
 pkgname = python-monai
