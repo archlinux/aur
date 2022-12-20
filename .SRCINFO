@@ -1,6 +1,6 @@
 pkgbase = links-g
 	pkgdesc = A text WWW browser, similar to Lynx (with X graphics)
-	pkgver = 2.27
+	pkgver = 2.28
 	pkgrel = 1
 	url = http://links.twibright.com/
 	arch = i686
@@ -22,9 +22,9 @@ pkgbase = links-g
 	provides = links-g
 	conflicts = links
 	conflicts = links-g
-	source = http://links.twibright.com/download/links-2.27.tar.bz2
+	source = http://links.twibright.com/download/links-2.28.tar.bz2
 	source = links.desktop
-	sha256sums = d8ddcbfcede7cdde80abeb0a236358f57fa6beb2bcf92e109624e9b896f9ebb4
+	sha256sums = 2fd5499b13dee59457c132c167b8495c40deda75389489c6cccb683193f454b4
 	sha256sums = e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc
 
 pkgname = links-g
