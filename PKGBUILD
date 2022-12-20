@@ -13,7 +13,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/${_pkgname}.AppImage"
-               "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/${pkgver}/LICENSE"
+               "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
 sha256sums_x86_64=('2881dd7dd99bdb287bd1eeae4af246db89b98e3c0cc359c006188d06f10f7a04'

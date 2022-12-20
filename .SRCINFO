@@ -11,7 +11,7 @@ pkgbase = satisfactory-mod-manager-appimage
 	noextract = satisfactory-mod-manager-appimage.AppImage
 	options = !strip
 	source_x86_64 = satisfactory-mod-manager-appimage.AppImage::https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v2.9.3/satisfactory-mod-manager.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/2.9.3/LICENSE
+	source_x86_64 = https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v2.9.3/LICENSE
 	sha256sums_x86_64 = 2881dd7dd99bdb287bd1eeae4af246db89b98e3c0cc359c006188d06f10f7a04
 	sha256sums_x86_64 = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
