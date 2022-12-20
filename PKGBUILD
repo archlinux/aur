@@ -4,15 +4,16 @@
 pkgname=battery-stats-git
 _pkgname=battery-stats
 pkgver=0.5.6.11.g8a42539
-pkgrel=1
+pkgrel=2
 pkgdesc="Log battery charge, show gnuplot graphs."
 arch=('any')
 url="https://github.com/petterreinholdtsen/battery-stats.git"
 license=('GPLv2')
 makedepends=('git' 'cmake')
-depends=('bc' 'python-matplotlib')
+depends=('bc' 'python-matplotlib' 'gnuplot')
 provides=('battery-stats')
 conflicts=('battery-stats')
+backup=(var/log/${_pkgname})
 source=("${_pkgname}::git+https://github.com/petterreinholdtsen/battery-stats.git"
         "battery-stats-collector.service"
         "battery-stats-collector.timer")
@@ -45,4 +46,6 @@ package() {
   install -Dm644 battery-stats-collector.timer ${pkgdir}/usr/lib/systemd/system/battery-stats-collector.timer
   cd build
   make DESTDIR="${pkgdir}" install
+  touch tempfile
+  install -Dm644 tempfile ${pkgdir}/var/log/${_pkgname}
 }
