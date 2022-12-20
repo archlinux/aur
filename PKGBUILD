@@ -2,14 +2,15 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gfold-git
-pkgver=3.0.0.r0.gb54a271
+pkgver=4.1.2.r0.gd7a3510
 pkgrel=1
-pkgdesc="CLI tool to help keep track of Git repositories (git)"
+pkgdesc="A CLI tool to help keep track of Git repositories (git)"
 arch=('x86_64')
 url="https://github.com/nickgerace/gfold"
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+depends=('libgit2')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,6 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  CFLAGS+=" -ffat-lto-objects"
   cargo fetch --locked
 }
 
