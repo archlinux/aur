@@ -1,22 +1,22 @@
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+# Maintainer: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.29.2997
+pkgver=3.30.3016
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
 depends=('electron19' 'xdg-utils')
-makedepends=('git' 'npm' 'yarn')
+makedepends=('git' 'npm' 'yarn' 'nodejs-lts-gallium')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('0b714b661827a73bf91371766b706a049ae8347c9cf3379d50b7f323efaeb47a'
-            'SKIP'
-            '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
+b2sums=('151e7e5153c3ff16243e78ce1ff77c0a720a85bbd725ac3fffd065c87b6ba89cbf44bbd3045c7ba50fe500bf7e0e088b7c42cd30e93394d6799ad1cb37e724b4'
+        'SKIP'
+        '63ec6be507993c3bfffbae86841a9f34151ef8ba9249f32dd3fa758921e1adbcaa22c59e575e8079edb796a64395e26da311302658b62c3819fd6c7946b357c0')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
 
 prepare() {
