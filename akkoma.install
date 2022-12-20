@@ -1,0 +1,61 @@
+post_install() {
+    username="akkoma"
+    home_dir="/opt/${username}"
+    uploads_dir="/var/lib/${username}/uploads"
+    static_dir="/var/lib/${username}/static"
+    config_dir="/etc/${username}"
+    tmp_psql="/tmp/setup_otp_db.psql"
+
+    instance_gen_params="instance gen\
+ --output \"${config_dir}/config.exs\"\
+ --output-psql \"$tmp_psql\"\
+ --uploads-dir \"$uploads_dir\"\
+ --static-dir \"$static_dir\"\
+ --dbname \"$username\"\
+ --dbuser \"$username\"\
+"
+
+    printf "\n"
+    printf "A local installation of postgresql is strongly recommended unless you know what you are doing. Use:\n    $ sudo pacman -S postgresql\nto install postgresql locally.\n\n"
+	printf "If postgresql is installed locally, the user should run the following commands to initialize akkoma:\n"
+
+	printf ">>> sudo -Hu $username ${home_dir}/bin/pleroma_ctl ${instance_gen_params}\n"
+	printf ">>> sudo -Hu postgres psql -f \"${tmp_psql}\"\n"
+	printf ">>> sudo -Hu $username ${home_dir}/bin/pleroma_ctl migrate\n\n"
+
+    printf "If the user is using a remote postgresql instance, they should ensure \"${tmp_psql}\" be executed remotely after the first command:\n"
+    printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/pleroma_ctl ${instance_gen_params}\n"
+    printf ">>> # Now execute \"$tmp_psql\" remotely.\n"
+	printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/pleroma_ctl migrate\n\n"
+
+    printf "After initializing akkoma, you may start it with:\n"
+    printf ">>> sudo systemctl start akkoma\n\n"
+
+	printf "Check https://docs-develop.akkoma.social/backend/installation/otp_en/#post-installation for post-installation steps.\n"
+}
+
+pre_upgrade() {
+    systemctl stop akkoma.service
+}
+
+post_upgrade() {
+    username="akkoma"
+    home_dir="/opt/${username}"
+    migration_needed="false"
+#
+#    printf "Procedures to upgrade from version $2 to version $1:\n\n"
+#    case "$2" in
+#    "2.4.0-1")
+#        ;&
+#    esac
+
+    if [ "$migration_needed" = "true" ]; then
+        printf "\nYou will need to migrate your database as the above upgrade notes state.\n"
+        printf "Ensure your postgresql database, whether local or remote, is up, and run the following command:\n"
+        printf ">>> cd \"$home_dir\"\n"
+        printf ">>> sudo -Hu \"$username\" ./bin/pleroma_ctl migrate\n"
+    fi
+
+    printf "\nAfter all these, you may start akkoma with:\n"
+    printf ">>> sudo systemctl start akkoma\n"
+}

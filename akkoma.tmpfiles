@@ -1,0 +1,5 @@
+d /etc/akkoma 0750 akkoma akkoma -
+d /var/lib/akkoma/uploads 0750 akkoma akkoma -
+d /var/lib/akkoma/static 0755 akkoma akkoma -
+d /opt/akkoma/tmp 0750 akkoma akkoma -
+
