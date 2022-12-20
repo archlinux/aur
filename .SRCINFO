@@ -1,0 +1,50 @@
+pkgbase = linux-rust
+	pkgdesc = Linux
+	pkgver = 6.1.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.1-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1-arch1
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha256sums = SKIP
+	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
+
+pkgname = linux-rust
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-rust-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	depends = pahole
+
+pkgname = linux-rust-docs
+	pkgdesc = Documentation for the Linux kernel
