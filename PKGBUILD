@@ -21,7 +21,7 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	python -m unittest discover
+	python -m unittest discover --verbose
 }
 
 package() {
