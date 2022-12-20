@@ -1,7 +1,7 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.11.51.2.gd7c8792
-	pkgrel = 2
+	pkgver = 3.11.49
+	pkgrel = 1
 	url = https://github.com/Samsagax/gamescope
 	arch = x86_64
 	license = BSD
@@ -40,7 +40,7 @@ pkgbase = gamescope-plus
 	depends = xcb-util-wm
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/Samsagax/gamescope.git#tag=d7c879212ec90f4ebbbd68fd06a2d4d1423fbad6
+	source = git+https://github.com/Samsagax/gamescope.git#tag=dba8480d182752c830d60fbb4f99d2536fefdd38
 	b2sums = SKIP
 
 pkgname = gamescope-plus
