@@ -1,0 +1,61 @@
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+
+pkgname=guile1.8
+pkgver=1.8.8
+pkgrel=10
+pkgdesc='Portable, embeddable Scheme implementation written in C. Legacy branch.'
+url="https://www.gnu.org/software/guile/"
+arch=(x86_64)
+license=(GPL)
+depends=(gcc-libs glibc gmp libtool openssl libxcrypt)
+makedepends=(texinfo ncurses readline)
+provides=(
+  libguilereadline-v-17.so
+  libguile.so
+  libguile-srfi-srfi-60-v-2.so
+  libguile-srfi-srfi-4-v-3.so
+  libguile-srfi-srfi-13-14-v-3.so
+  libguile-srfi-srfi-1-v-3.so
+)
+source=(
+  https://ftp.gnu.org/pub/gnu/guile/guile-$pkgver.tar.gz
+  guile-1.8.8-cve-2016-8605.patch
+)
+sha512sums=('ede6feb90cd419d8763feb8c5169275490a653919573c4dfced025b74cf591072b3a10ffb9a3f6ee3fe7b0a0956ffcf434e0859b421455c8349cea56bf427db0'
+            '0f18011cc3a7c7b0a824cdecceace440eef77caa4b8da4ab3f589073aa5705afd62975f017ba53688213eb732d5bc1938ef44b431c795a50f9c60d45f772b570')
+b2sums=('4820d635ac2c57526c0c03f3e0e6e4ac4276533ea8db15e6d1b759c33edec094a1a4bdc3e09ccae61f1b271d63565063746feea242a90c18cd575775444a42ef'
+        'bc978ea279f14154ebfccaf8477a67bda0e2750d499206f03ccefe027626a3324bdd2941d34a43eeaea2d9546a62c2ff7d98f42e65f71b1d48aeaf44884d8f7b')
+
+prepare() {
+  # fix CVE-2016-8605: https://bugs.archlinux.org/task/67048
+  # backport of https://git.savannah.gnu.org/cgit/guile.git/commit/?id=844b2cf7586c31c01ab8e255d8a21aa836b7ff0b
+  patch -Np1 -d guile-$pkgver -i ../guile-1.8.8-cve-2016-8605.patch
+}
+
+build() {
+  cd guile-$pkgver
+  export CFLAGS+=" -O1"
+  ./configure \
+    --prefix=/usr \
+    --disable-static  \
+    --disable-error-on-warning \
+    --program-suffix=1.8
+
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+package() {
+  depends+=(
+    ncurses libncursesw.so
+    readline libreadline.so
+  )
+
+  cd guile-$pkgver
+  make DESTDIR="$pkgdir" install
+
+  rm -rf "$pkgdir"/usr/share/info
+  sed -i '1s/guile/guile1.8/' -i "$pkgdir"/usr/bin/guile-config1.8
+  mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile18.m4
+}
