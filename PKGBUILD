@@ -44,6 +44,8 @@ package() {
     cd "$srcdir/$pkgname/full-build"
     make DESTDIR="$pkgdir" install
 
+    cd "$pkgdir"
+    rm -rf var
     # cd "$srcdir/$pkgname/aarch64-kvm"
     # make DESTDIR="$pkgdir" install
 }
