@@ -2,7 +2,7 @@
 # Contributor: Kartoffel <laar@tutanota.com>
 _pkgname=pineflash
 pkgname="${_pkgname}-git"
-pkgver=0.2.2.r61.20221214.ec8eccb
+pkgver=0.2.2.r70.20221216.c13d10a
 pkgrel=2
 arch=(
   i686
@@ -35,6 +35,8 @@ prepare() {
   export CARGO_HOME
 
   cargo fetch
+
+  git log > "${srcdir}/git.log"
 }
 
 pkgver() {
@@ -92,6 +94,7 @@ package() {
   for _docfile in README.md; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  install -D -v -m644 "${srcdir}/git.log" "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   install -D -v -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cd "${pkgdir}/usr/share/doc/${_pkgname}"
   ln -sv "/usr/share/licenses/${pkgname}/LICENSE" "LICENSE"
