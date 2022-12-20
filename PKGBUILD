@@ -1,4 +1,4 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Maintainer: Index Dev Team <indexdevteam@gmail.com>
 
 # shellcheck disable=SC2034
 _pkg=archiso
