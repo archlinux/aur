@@ -1,6 +1,6 @@
 pkgbase = moneymanagerex
 	pkgdesc = MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://www.moneymanagerex.org/
 	arch = x86_64
