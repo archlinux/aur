@@ -2,13 +2,16 @@
 pkgname=asahi-battery-threshold-git
 _pkgname=asahi-battery-threshold
 pkgver=v0.0.1.r1.gf084863
-pkgrel=1
+pkgrel=2
 pkgdesc="A small daemon that allows setting a charging threshold for laptops running Asahi Linux."
 arch=('aarch64')
 url="https://github.com/PaddiM8/asahi-battery-threshold"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=('git+https://github.com/PaddiM8/asahi-battery-threshold')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,4 +31,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('SKIP')
