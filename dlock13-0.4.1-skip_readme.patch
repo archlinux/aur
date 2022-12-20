@@ -1,0 +1,22 @@
+--- setup.py	2017-06-08 01:11:55.000000000 +0200
++++ setup-new.py	2022-12-20 13:50:56.906665512 +0100
+@@ -1,8 +1,8 @@
+ import os
+ from setuptools import find_packages, setup
+ 
+-with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
+-    README = readme.read()
++#with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
++#    README = readme.read()
+ 
+ # allow setup.py to be run from any path
+ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+@@ -14,7 +14,7 @@
+     include_package_data=True,
+     license='MIT License',
+     description='Python API for MQTT-based doorlocks',
+-    long_description=README,
++    long_description="not required",
+     url='https://github.com/bitraf/dlock13',
+     author='Jon Nordby',
+     author_email='jononor@gmail.com',

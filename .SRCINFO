@@ -1,0 +1,14 @@
+pkgbase = python-dlock13
+	pkgdesc = Python API for MQTT-based doorlocks
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/dlock13
+	arch = x86_64
+	license = GPL
+	depends = python-paho-mqtt
+	source = https://files.pythonhosted.org/packages/4c/c7/43427bedcc7b1f4e2f7c6e714c8061a9c0805434e760f34b177c19953697/dlock13-0.4.1.tar.gz
+	source = dlock13-0.4.1-skip_readme.patch
+	md5sums = 70a15c31a19518c02607b2502fbc95f7
+	md5sums = 1e31e638af1a0ed87a6cc84d30cc5f16
+
+pkgname = python-dlock13
