@@ -1,6 +1,6 @@
 pkgbase = page-git
 	pkgdesc = Pager powered by neovim and inspired by neovim-remote
-	pkgver = v4.5.0
+	pkgver = v4.6.0
 	pkgrel = 1
 	url = https://github.com/I60R/page
 	arch = i686
