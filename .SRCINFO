@@ -1,11 +1,11 @@
 pkgbase = hhfc-git
 	pkgdesc = Hwmon Handheld Fan Controller (hhfc) is a user space driver for fans based on hwmon sysfs
-	pkgver = 0.0.2.r0.g106cef7
+	pkgver = 0.0.3.r2.g2e12076
 	pkgrel = 1
 	url = https://github.com/Samsagax/hhfc
 	arch = any
 	license = GPL3
-	makedepends = python-pyyaml
+	makedepends = python-yaml
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
