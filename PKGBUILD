@@ -1,7 +1,7 @@
 # Maintainer: Reverier-Xu <reverier.xu@outlook.com>
 pkgname=kuro-appimage
 pkgver=8.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An elegant Microsoft ToDo desktop client for Linux (a fork of Ao)"
 arch=("x86_64")
 url="https://github.com/davidsmorais/kuro"
