@@ -2,7 +2,7 @@
 # Tip: To use this theme in LXDE, select 'Lubuntu-default' from the list in lxappearance under the 'Widget' tab, 'Icon Theme' tab, and 'Window Border' tab.
 
 # Note: This was forked from lubuntu-artwork to preserve the Lubuntu 18.04 theme, icons, and wallpapers for LXDE before they changed in 18.10.
-# The original maintainers and contributers are listed below (from lubuntu-default).
+# The original maintainers and contributers are listed below (from lubuntu-artwork).
 # Original Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Original Ex-Maintainer: lestb <tkhdlstfl dot l plus aur at gmail dot com>
 # Original Contributor: 謝致邦<Yeking@Red54.com>
