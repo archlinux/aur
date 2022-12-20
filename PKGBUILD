@@ -15,7 +15,7 @@ prepare() {
     cd "$srcdir/$pkgname"
 
     mkdir "$srcdir/$pkgname/full-build"
-    mkdir "$srcdir/$pkgname/aarch64-kvm"
+    # mkdir "$srcdir/$pkgname/aarch64-kvm"
     
 }
 
@@ -28,23 +28,24 @@ build() {
     # edit /etc/makepkg.conf `MAKEFLAG` to speed up build
     make
 
-    # build aarch64 with kvm  support
-    cd "$srcdir/$pkgname/aarch64-kvm"
+    # # build aarch64 with kvm  support
+    # cd "$srcdir/$pkgname/aarch64-kvm"
 
-    ../configure \
-        --prefix=/usr
-        --target-list=aarch64-softmmu \
-        --enable-fdt \
-        --enable-kvm
+    # ../configure \
+    #     --prefix=/usr \
+    #     --target-list=aarch64-softmmu \
+    #     --enable-fdt \
+    #     --enable-kvm
 
-    make
+    # make
 }
 
 package() {
     cd "$srcdir/$pkgname/full-build"
     make DESTDIR="$pkgdir" install
 
-    cd "$srcdir/$pkgname/aarch64-kvm"
-    make DESTDIR="$pkgdir" install
+    # cd "$srcdir/$pkgname/aarch64-kvm"
+    # make DESTDIR="$pkgdir" install
 }
 
+# kvm test use: qemu-system-aarch64 -M virt -cpu host --enable-kvm
