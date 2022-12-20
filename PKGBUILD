@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppDE
-_pkgver=0.1.6
+_pkgver=0.1.7
 pkgname=r-${_pkgname,,}
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc='Global Optimization by Differential Evolution in C++'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-lattice
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9386709f72cdc33505b3ac675c173013fe098434b7c21bc09eb625b529132c5')
+sha256sums=('4a238ee97e574cb44b12e4962b9927dd811f087fc13fc777637ec6fe12bd86a0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
