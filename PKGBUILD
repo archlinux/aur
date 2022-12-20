@@ -25,7 +25,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-xsl")
 
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
