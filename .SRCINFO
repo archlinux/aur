@@ -1,6 +1,6 @@
 pkgbase = heasoft
 	pkgdesc = NASA high energy astrophysics library
-	pkgver = 6.31
+	pkgver = 6.31.1
 	pkgrel = 1
 	url = https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/
 	install = heasoft.install
@@ -21,7 +21,7 @@ pkgbase = heasoft
 	depends = readline
 	optdepends = python-astropy: python binding
 	optdepends = python-numpy: python binding
-	source = https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.31/heasoft-6.31src.tar.gz
-	md5sums = 65662202001e0f92e37718bb887ee06e
+	source = https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft6.31.1/heasoft-6.31.1src.tar.gz
+	md5sums = 06d374d96b0f4ee707b2d32baea3b5a8
 
 pkgname = heasoft
