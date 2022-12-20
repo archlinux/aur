@@ -26,10 +26,10 @@ depends=(
 	"polkit"
 )
 source=(
-        "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/fix-5-refactor-filterlists-activity.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/${_bin_ver}-${_build_type}.tar.gz"
 )
 sha512sums=(
-        "582599700fa983c817a2bab94ea1a4a3ea9b3e41d090243e87e071e41718a7b6e4b5ffe401eca2f1a87f8119ab2342a07a02755801a6637e24b516e1084a844e"
+        "ee7051c81f7fb1c71619f7ee2af13638e5358465f4df62bffceb7d6844e4c054e60f364a2a0ce0adbdce79a92f9ce229293914d6be2929e7a354dff03a2c7c1f"
 )
 
 build()
