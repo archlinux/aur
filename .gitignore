@@ -1,0 +1,4 @@
+src/
+pkg/
+morty/
+*.pkg.tar.zst

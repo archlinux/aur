@@ -1,73 +1,39 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-# Contributor: Arthur Țițeică / arthur dot titeica with gmail
-
-_pkgname=morty
-_gourl=github.com/asciimoo/morty
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=morty-git
-pkgver=0.2.0+r32+g74a0548
-pkgrel=2
-pkgdesc='Web content sanitizer/proxy (git)'
-arch=(i686 x86_64)
-url="https://$_gourl"
+pkgver=0.2.0.r62.gf5bff1e
+pkgrel=1
+pkgdesc='Privacy aware web content sanitizer proxy as a service'
+arch=(x86_64)
+url='https://github.com/asciimoo/morty'
 license=(AGPL3)
 provides=(morty)
 conflicts=(morty)
-depends=(glibc)
 makedepends=(git go)
 source=(git+$url
         morty.service)
-sha512sums=('SKIP'
-            'b967d4aebbf869d5867c39ef50cc286c01b0c2ec7fdda4d4d92771a99847c85a3218cedd4bd55797d46ffa2f8a23e547a8326fb9a530214b544d1366c0232190')
-_goroot='/usr/lib/go'
+b2sums=('SKIP'
+        '0ff38b767a115ae226c7339d66213246b1970a5ddba0412a4d709be391f3ce8e63c9164428dc5c8a44c04e0f3c83a3cf09291df0cd54375026794fed1164cc37')
 
 pkgver() {
-  export GOROOT="$srcdir/build/go"
-  export GOPATH="$srcdir/build"
-  cd "$GOPATH/src/${_gourl}"
-  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  cd morty
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
-prepare() {
-  export GOROOT="$_goroot"
-
-  msg2 'Prepare GO build enviroment'
-  sudo rm -rf build
-  mkdir -p build/go
-  cd build/go
-
-  for f in "$GOROOT/"*; do
-    ln -s "$f"
-  done
-
-  rm pkg && mkdir pkg && cd pkg
-
-  for f in "$GOROOT/pkg/"*; do
-    ln -s "$f"
-  done
-
-  export GOROOT="$srcdir/build/go"
-  export GOPATH="$srcdir/build"
-
-  mkdir -p "$GOPATH/src/${_gourl%/$_pkgname}"
-  mv "$srcdir/$_pkgname" "$GOPATH/src/${_gourl}"
+build(){
+    cd morty
+    go build -o morty .
 }
 
-build() {
-  export GOROOT="$srcdir/build/go"
-  export GOPATH="$srcdir/build"
-  cd "$GOPATH/src/${_gourl}"
-  go fix
-  go build .
+check() {
+  cd morty
+  go test
 }
 
 package() {
-  install -Dm 644 morty.service -t "$pkgdir"/usr/lib/systemd/system
-
-  cd "$GOPATH/src/${_gourl}" 
-
-  install -D morty -t "$pkgdir"/usr/bin
-
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/morty
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/morty
+  install -Dm644 morty.service -t "$pkgdir"/usr/lib/systemd/system
+  cd morty
+  install -Dm755 morty -t "$pkgdir"/usr/bin
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/morty
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/morty
 }

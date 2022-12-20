@@ -1,20 +1,17 @@
 pkgbase = morty-git
-	pkgdesc = Web content sanitizer/proxy (git)
-	pkgver = 0.2.0+r32+g74a0548
-	pkgrel = 2
+	pkgdesc = Privacy aware web content sanitizer proxy as a service
+	pkgver = 0.2.0.r62.gf5bff1e
+	pkgrel = 1
 	url = https://github.com/asciimoo/morty
-	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	provides = morty
 	conflicts = morty
 	source = git+https://github.com/asciimoo/morty
 	source = morty.service
-	sha512sums = SKIP
-	sha512sums = b967d4aebbf869d5867c39ef50cc286c01b0c2ec7fdda4d4d92771a99847c85a3218cedd4bd55797d46ffa2f8a23e547a8326fb9a530214b544d1366c0232190
+	b2sums = SKIP
+	b2sums = 0ff38b767a115ae226c7339d66213246b1970a5ddba0412a4d709be391f3ce8e63c9164428dc5c8a44c04e0f3c83a3cf09291df0cd54375026794fed1164cc37
 
 pkgname = morty-git
-
