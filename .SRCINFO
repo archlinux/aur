@@ -1,4 +1,4 @@
-pkgbase = bin86
+pkgbase = bin86-aarch64
 	pkgdesc = A complete 8086 assembler and loader for host aarch64
 	pkgver = 0.16.21
 	pkgrel = 4
@@ -11,4 +11,4 @@ pkgbase = bin86
 	sha256sums = 021e37cde3a20632c4c9000993cb4aa9f58cb82b1d3c26b9aeb62d6566925738
 	sha256sums = 21fd4fc7cd5823010dbaad31029cf763b5ae94c0d44cf0eea21560e091ac207b
 
-pkgname = bin86
+pkgname = bin86-aarch64
