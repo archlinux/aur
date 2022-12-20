@@ -1,6 +1,6 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 pkgname=v2rayxplus
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 epoch=0
 pkgdesc="v2rayXPlus"
@@ -28,7 +28,7 @@ noextract=()
 md5sums=('9dc2795fd51f2f0e3e1749b100e1ac2d'
          'e357d8f75b9d2577bacb8a7d2c5d184a'
          'dcda30000c17f717c6e1b9e4c82416a1'
-         'ad5540409b2699a1a0c155d93e24133a')
+         'aa138d4b2b2b44096ad1d083d717066c')
 
 package() {
     install -Dm=755 "${srcdir}/build/v2rayxplus" "${pkgdir}/usr/bin/v2rayxplus"
