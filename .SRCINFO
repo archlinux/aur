@@ -1,6 +1,6 @@
 pkgbase = tgt
 	pkgdesc = iSCSI Target STGT for Arch Linux
-	pkgver = 1.0.80
+	pkgver = 1.0.84
 	pkgrel = 1
 	url = http://stgt.sourceforge.net/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tgt
 	depends = docbook-xsl
 	optdepends = sg3_utils
 	backup = etc/tgt/targets.conf
-	source = https://github.com/fujita/tgt/archive/v1.0.80.tar.gz
-	md5sums = SKIP
+	source = https://github.com/fujita/tgt/archive/v1.0.84.tar.gz
+	md5sums = 0fda4666ba0d80e64b81c01232555636
 
 pkgname = tgt

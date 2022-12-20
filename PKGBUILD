@@ -1,6 +1,6 @@
 #Maintainer: Ovi Chis ovi@ovios.org
 pkgname=tgt
-pkgver=1.0.80
+pkgver=1.0.84
 pkgrel=1
 pkgdesc="iSCSI Target STGT for Arch Linux"
 arch=('x86_64' 'i686' 'arm')
@@ -10,7 +10,7 @@ depends=('perl-config-general' 'libxslt' 'docbook-xsl')
 optdepends=('sg3_utils')
 backup=('etc/tgt/targets.conf')
 source=(https://github.com/fujita/tgt/archive/v$pkgver.tar.gz)
-md5sums=(SKIP)
+md5sums=('0fda4666ba0d80e64b81c01232555636')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
