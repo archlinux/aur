@@ -1,6 +1,6 @@
 pkgbase = r-kegggraph
 	pkgdesc = KEGGgraph: A graph approach to KEGG PATHWAY in R and Bioconductor
-	pkgver = 1.58.2
+	pkgver = 1.58.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/KEGGgraph
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-kegggraph
 	optdepends = r-rcolorbrewer
 	optdepends = r-spia
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/KEGGgraph_1.58.2.tar.gz
-	sha256sums = ceba7ece2a8f66b363f0bfaa5b28397aa37e19b1f3f16df4ffb9b387b28163bc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KEGGgraph_1.58.3.tar.gz
+	sha256sums = c60fd72bdf5f0fd9335779a15f9f299143cab0592406a418dc643274db3fb2e8
 
 pkgname = r-kegggraph
