@@ -2,37 +2,30 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vnsiserver
-pkgver=1.8.0.r13.g47a90dd
-_gitver=47a90dd9298753083a9a6482bb9990ea9a88aa7a
+pkgver=1.8.2
 _vdrapi=2.6.3
 epoch=2
-pkgrel=5
-url="https://github.com/mdre77/vdr-plugin-vnsiserver"
+pkgrel=1
+url="https://github.com/vdr-projects/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 pkgdesc="VDR plugin to handle Kodi clients"
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git+https://github.com/mdre77/vdr-plugin-$_plugname.git#commit=$_gitver"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-vnsiserver/archive/refs/tags/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/vnsiserver/allowed_hosts.conf')
-sha256sums=('SKIP'
+sha256sums=('e981ddc7adaa5824707081029a4f4e9990bb633dd612885034973132b4838bec'
             '0e03e0df28b8210e3813536c7945b94e4c13ac775eb2c8d25403f90aa8f3c74c')
 
-pkgver() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
 build() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make
 }
 
 package() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "$pkgdir/var/lib/vdr/plugins"
