@@ -1,8 +1,8 @@
-pkgbase = gitea-git
+pkgbase = forgejo-git
 	pkgdesc = Painless self-hosted Git service. Community managed fork of Gogs.
-	pkgver = v1.17.0_dev_395_g7b4c3c7bb1
+	pkgver = v1.18.0_dev_209_g158e78f98e
 	pkgrel = 1
-	url = https://gitea.io/
+	url = https://forgejo.org
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -20,18 +20,18 @@ pkgbase = gitea-git
 	optdepends = postgresql: PostgreSQL support
 	optdepends = redis: Redis support
 	optdepends = sqlite: SQLite support
-	provides = gitea
-	conflicts = gitea
-	backup = etc/gitea/app.ini
-	source = git+https://github.com/go-gitea/gitea.git#branch=main
-	source = gitea.tmpfiles
-	source = gitea.service
-	source = gitea.sysusers
+	provides = forgejo
+	conflicts = forgejo
+	backup = etc/forgejo/app.ini
+	source = git+https://codeberg.org/forgejo/forgejo#branch=forgejo
+	source = forgejo.tmpfiles
+	source = forgejo.service
+	source = forgejo.sysusers
 	source = app.ini
 	sha512sums = SKIP
-	sha512sums = 89bf119a91fd48ed35c06131c67de1b4300bd2e79522c47aee9a73d7f1ebb08d9bceadc37408bd2425475d92c8bf59d87a799f2ce0a46bee860bf9fc7a904103
-	sha512sums = d65e053a98976423c6c1f3a4b6b0fd40f51e50a32d7afc651fc02414bb9f3bf574a58cc6a8c96760b85ab9f4f2bfcd0884bd7e9edcc2d71f07e7c1a548783c4c
-	sha512sums = 77f672ed82bc8f78ca04b1e2b7c7d026cb897da6e4f057817adbe1242bf8a67875061553806e6b027cdb3266cdf217ee3993efd9242a66c5802ed34344b5ded1
-	sha512sums = 704930578fe4231c45bcfdcc65df5d4f523b96909e670cc6e4f098770043b0f47fe5d90621788bc6ba300b0f19909a203068d2a1c142e7c5d29dc03a0dc5fc1d
+	sha512sums = 9a3aa163892eaa889e74d066db9d620db098535b08fa51df689e7aa5885393a14b820308364196db54d7ce502791ea56b662d8aede17fad99f8f62d1a3ca6776
+	sha512sums = ac8bbe3c13ff5d544499d3b1c6291348712aea20d0a56906691f47e8df4cbe7cde22e2a2f02c927fa106f597db4ca0fc0db69dda51f2ad86eff1ffd2da978d35
+	sha512sums = 0c38e23b1ea835706c3ff2e051a604fa366e09cf916992ee58c83a9fe719cb523ece7efa7a238fc268cba5d7059720dcc959816b238207e504ba6561c7967427
+	sha512sums = 582cbd9deceb039e169d5a701831f4eb9fe07004ae485642f7038e931799596e01efd37c086ff15d80118e44ff72ab539efa847f8fb2556850cadf3877e28f8f
 
-pkgname = gitea-git
+pkgname = forgejo-git

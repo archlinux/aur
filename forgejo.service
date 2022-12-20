@@ -1,5 +1,5 @@
 [Unit]
-Description=Gitea (Git with a cup of tea)
+Description=Forgejo (Beyong coding. We forge.)
 After=syslog.target
 After=network.target
 After=mysqld.service
@@ -8,22 +8,22 @@ After=memcached.service
 After=redis.service
 
 [Service]
-User=gitea
-Group=gitea
+User=forgejo
+Group=forgejo
 Type=simple
 WorkingDirectory=~
-RuntimeDirectory=gitea
-LogsDirectory=gitea
-StateDirectory=gitea
-Environment=USER=gitea HOME=/var/lib/gitea GITEA_WORK_DIR=/var/lib/gitea
-ExecStart=/usr/bin/gitea web -c /etc/gitea/app.ini
+RuntimeDirectory=forgejo
+LogsDirectory=forgejo
+StateDirectory=forgejo
+Environment=USER=forgejo HOME=/var/lib/forgejo GITEA_WORK_DIR=/var/lib/forgejo
+ExecStart=/usr/bin/forgejo web -c /etc/forgejo/app.ini
 Restart=always
 RestartSec=2s
 CapabilityBoundingSet=
 NoNewPrivileges=True
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/etc/gitea/app.ini
+ReadWritePaths=/etc/forgejo/app.ini
 PrivateTmp=true
 PrivateDevices=true
 PrivateUsers=true

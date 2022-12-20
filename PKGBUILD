@@ -1,5 +1,6 @@
-# Maintainer: kageru <kageru@encode.moe>
-# Maintainer: Sam Whited <sam@samwhited.com>
+# Maintainer: Maximilian Friedersdorff <max@friedersdorff.com>
+# Contributor: kageru <kageru@encode.moe>
+# Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: Francois Menning <f.menning@pm.me>
 # Contributor: Anton Kudryavtsev <anton@anibit.ru>
 # Contributor: Frederik Schwan <frederik dot schwan at linux dot com>
@@ -7,13 +8,13 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Thomas Laroche <tho.laroche@gmail.com>
 
-_pkgname='gitea'
-pkgname=gitea-git
-pkgver=v1.17.0_dev_395_g7b4c3c7bb1
+_pkgname='forgejo'
+pkgname=forgejo-git
+pkgver=v1.18.0_dev_209_g158e78f98e
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='https://gitea.io/'
+url='https://forgejo.org'
 license=('MIT')
 depends=('git')
 makedepends=('go' 'npm')
@@ -26,22 +27,22 @@ optdepends=(
     'redis: Redis support'
     'sqlite: SQLite support'
 )
-backup=('etc/gitea/app.ini')
-conflicts=('gitea')
-provides=('gitea')
+backup=('etc/forgejo/app.ini')
+conflicts=('forgejo')
+provides=('forgejo')
 source=(
-    git+https://github.com/go-gitea/gitea.git#branch=main
-    gitea.tmpfiles
-    gitea.service
-    gitea.sysusers
+    git+https://codeberg.org/forgejo/forgejo#branch=forgejo
+    forgejo.tmpfiles
+    forgejo.service
+    forgejo.sysusers
     app.ini
 )
 sha512sums=(
     'SKIP'
-    '89bf119a91fd48ed35c06131c67de1b4300bd2e79522c47aee9a73d7f1ebb08d9bceadc37408bd2425475d92c8bf59d87a799f2ce0a46bee860bf9fc7a904103'
-    'd65e053a98976423c6c1f3a4b6b0fd40f51e50a32d7afc651fc02414bb9f3bf574a58cc6a8c96760b85ab9f4f2bfcd0884bd7e9edcc2d71f07e7c1a548783c4c'
-    '77f672ed82bc8f78ca04b1e2b7c7d026cb897da6e4f057817adbe1242bf8a67875061553806e6b027cdb3266cdf217ee3993efd9242a66c5802ed34344b5ded1'
-    '704930578fe4231c45bcfdcc65df5d4f523b96909e670cc6e4f098770043b0f47fe5d90621788bc6ba300b0f19909a203068d2a1c142e7c5d29dc03a0dc5fc1d'
+    '9a3aa163892eaa889e74d066db9d620db098535b08fa51df689e7aa5885393a14b820308364196db54d7ce502791ea56b662d8aede17fad99f8f62d1a3ca6776'
+    'ac8bbe3c13ff5d544499d3b1c6291348712aea20d0a56906691f47e8df4cbe7cde22e2a2f02c927fa106f597db4ca0fc0db69dda51f2ad86eff1ffd2da978d35'
+    '0c38e23b1ea835706c3ff2e051a604fa366e09cf916992ee58c83a9fe719cb523ece7efa7a238fc268cba5d7059720dcc959816b238207e504ba6561c7967427'
+    '582cbd9deceb039e169d5a701831f4eb9fe07004ae485642f7038e931799596e01efd37c086ff15d80118e44ff72ab539efa847f8fb2556850cadf3877e28f8f'
 )
 
 pkgver() {
@@ -63,19 +64,19 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export LDFLAGS="-X 'code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/'"
+  export LDFLAGS="-X 'code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/forgejo/'"
   export EXTRA_GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export TAGS="bindata sqlite sqlite_unlock_notify pam"
   make -j1 # building in parallel breaks the bindata target which relies on execution order
 }
 
 package() {
-  install -Dm755 ${_pkgname}/${_pkgname} -t "${pkgdir}"/usr/bin/
+  install -Dm755 ${_pkgname}/gitea -t "${pkgdir}"/usr/bin/
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
   install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-  install -Dm644 app.ini "${pkgdir}"/etc/gitea/app.ini
+  install -Dm644 app.ini "${pkgdir}"/etc/forgejo/app.ini
 }
 
 # vim: ts=2 sw=2 et:

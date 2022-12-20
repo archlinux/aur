@@ -1,0 +1,1 @@
+-u forgejo - "Forgejo daemon user" /var/lib/forgejo /usr/bin/bash

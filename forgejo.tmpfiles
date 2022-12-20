@@ -1,0 +1,10 @@
+d /var/lib/forgejo 0750
+d /var/lib/forgejo/attachments 0750
+d /var/lib/forgejo/data 0750
+d /var/lib/forgejo/indexers 0750
+d /var/lib/forgejo/repos 0750
+d /var/lib/forgejo/tmp 0750
+Z /var/lib/forgejo - forgejo forgejo
+d /var/log/forgejo 0750 forgejo forgejo
+z /etc/forgejo 0755 root forgejo
+z /etc/forgejo/app.ini 0660 root forgejo
