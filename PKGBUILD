@@ -8,7 +8,7 @@ pkgver=3.12.0.400
 _pkgver_arm=${pkgver} # 两个版本有时候不一样
 _x86_md5=e078bf97365540d9f0ff063f93372a9c
 _arm_md5=11814f6931a0a599f394d8845c223feb
-pkgrel=5
+pkgrel=6
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -50,7 +50,7 @@ build(){
     "${CC:-cc}" $CFLAGS -fPIC -shared -o libwemeetwrap.so wrap.c
 }
 package() {
-    depends=('qt5-base' 'qt5-x11extras' 'libxinerama'
+    depends=('qt5-base' 'qt5-webengine' 'qt5-x11extras' 'libxinerama'
     'hicolor-icon-theme' 'pulseaudio') # 无 'pulseaudio' 无法连接到系统音频
 
     ## 下面的库官方包有，但是 namcap 认为不需要，也没发现有什么影响
