@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-ldap_contacts_backend
 	pkgdesc = LDAP backend for Contacts
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/ldap_contacts_backend
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-ldap_contacts_backend
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-ldap_contacts_backend-1.4.0.tar.gz::https://github.com/nextcloud-releases/ldap_contacts_backend/releases/download/v1.4.0/ldap_contacts_backend-v1.4.0.tar.gz
-	sha512sums = e40e17bde6c7b3d9084d19852eaedace4865693291b777095fb1a7b4efa05e0e24866e001f1b2468d7f0320a6f85f820b676ab9914ad16530ac961ce49b000f4
+	source = nextcloud-app-ldap_contacts_backend-1.5.0.tar.gz::https://github.com/nextcloud-releases/ldap_contacts_backend/releases/download/v1.5.0/ldap_contacts_backend-v1.5.0.tar.gz
+	sha512sums = 08a6aca278a69d2a65a7b52796a9722035d5071971e97798df428210fdbbec7e60b26835887ada7f34eff0353a56bbd1e7aeb86ed5545f89a3c9d74e3df918b3
 
 pkgname = nextcloud-app-ldap_contacts_backend
