@@ -1,7 +1,7 @@
 # Maintainer: hr567 <hr567@hr567.me>
 # Maintainer: HaroldLoui <Riven970309@gmail.com>
 pkgname=apifox
-pkgver=2.2.13
+pkgver=2.2.14
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"apifox.desktop"
 	"apifox.svg")
 sha256sums=(
-	'd2a9cd3487f64afe2fc90d416eb548f23a363e59c2f5c2022c47ba8a035ce4dd'
+	'ccde01e80f6d5db4b0403add42be9be5baa5f54490d9768e2716217b4beb4dd6'
 	'e89d2d53ce221c59436b7f1f9e4e9c0f2ccf6f55597df2fd16c419c8de5360a9'
 	'48dbd5c9727e568c3f19b45d36851eed15fa875a0ca40e83ec35d4e30ecd350d')
 options=(!strip)
