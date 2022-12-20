@@ -4,7 +4,7 @@
  # dkms.conf for Dynamic Kernel Module Support
  # http://linux.dell.com/dkms/dkms.html for more info
  
--PACKAGE_VERSION=v3.7y
+-PACKAGE_VERSION=%ORIGINAL_VERSION%
 -PACKAGE_NAME="loop-AES"
 +PACKAGE_NAME="@PKGNAME@"
 +PACKAGE_VERSION="@PKGVER@"
