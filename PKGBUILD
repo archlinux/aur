@@ -10,7 +10,7 @@
 
 _pkgname='forgejo'
 pkgname=forgejo-git
-pkgver=v1.18.0_dev_209_g158e78f98e
+pkgver=v1.19.0_dev_209_g158e78f98e
 pkgrel=1
 pkgdesc='Self-hosted, lightweight software forge. A "soft" fork of Gitea.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,7 +41,7 @@ sha512sums=(
     'SKIP'
     '9a3aa163892eaa889e74d066db9d620db098535b08fa51df689e7aa5885393a14b820308364196db54d7ce502791ea56b662d8aede17fad99f8f62d1a3ca6776'
     'ac8bbe3c13ff5d544499d3b1c6291348712aea20d0a56906691f47e8df4cbe7cde22e2a2f02c927fa106f597db4ca0fc0db69dda51f2ad86eff1ffd2da978d35'
-    '0c38e23b1ea835706c3ff2e051a604fa366e09cf916992ee58c83a9fe719cb523ece7efa7a238fc268cba5d7059720dcc959816b238207e504ba6561c7967427'
+    '74d9eb51eec3d614f68744df47cc1a1c6ddfdc8fbfdcb20ecffc7e4105e20055ddcd8dd29eb39a79177bf712708c9e15bcfc1b89c3920ec1579b7bf50f98b7b5'
     '582cbd9deceb039e169d5a701831f4eb9fe07004ae485642f7038e931799596e01efd37c086ff15d80118e44ff72ab539efa847f8fb2556850cadf3877e28f8f'
 )
 
@@ -71,7 +71,7 @@ build() {
 }
 
 package() {
-  install -Dm755 ${_pkgname}/gitea -t "${pkgdir}"/usr/bin/
+  install -Dm755 ${_pkgname}/gitea "${pkgdir}"/usr/bin/forgejo
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
