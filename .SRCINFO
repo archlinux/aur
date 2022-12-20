@@ -1,0 +1,24 @@
+pkgbase = qemu-full-aarch64
+	pkgdesc = qemu full build from source for Arch Linux ARM (aarch64) with KVM enabled
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://www.qemu.org/
+	arch = arm64
+	license = LGPL
+	depends = ninja
+	depends = pixman
+	depends = meson
+	depends = gtk3-debug
+	depends = capstone
+	depends = vte
+	depends = sdl2
+	depends = glib2-debug
+	depends = python
+	depends = bzip2-debug
+	depends = zlib-debug
+	depends = dtc
+	depends = slirp
+	source = https://github.com/qemu/qemu/archive/refs/tags/v7.2.tar.gz
+	sha256sums = 36b38ab8e6596d75ae2e12f4f8fae897781c8f34d385983ad92520493e2f7fd6
+
+pkgname = qemu-full-aarch64
