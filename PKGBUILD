@@ -7,7 +7,7 @@ _upstreamver=$(date +%Y%m%d)
 _pkgname=$(tr A-Z a-z <<< ${_repo##*/})
 
 pkgname=$_pkgname-git
-pkgver=r25.5f03cca
+pkgver=r26.6bb8888
 pkgrel=1
 pkgdesc="$(gh repo view --json description -q .description $_repo)"
 arch=(x86 x86_64 arm aarch64)
@@ -37,6 +37,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   cargo build --release
+  touch main.c
+  gcc -m32 -shared main.c -o librl_custom_isearch.so
 }
 
 check() {
@@ -46,7 +48,8 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -D target/release/*.so -t $pkgdir/usr/lib
-  install -D bin/* -t $pkgdir/usr/bin
-  install -D -m644 README.md -t $pkgdir/usr/share/doc/$_pkgname
+  install -Dm644 target/release/*.so -t $pkgdir/usr/lib
+  install -Dm755 bin/* -t $pkgdir/usr/bin
+  install -Dm644 README.md -t $pkgdir/usr/share/doc/$_pkgname
+  install -Dm644 librl_custom_isearch.so -t $pkgdir/usr/lib32
 }

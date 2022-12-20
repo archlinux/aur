@@ -1,6 +1,6 @@
 pkgbase = rl_custom_isearch-git
 	pkgdesc = Hack to customise libreadline reverse search
-	pkgver = r25.5f03cca
+	pkgver = r26.6bb8888
 	pkgrel = 1
 	url = https://github.com/lincheney/rl_custom_isearch
 	install = rl_custom_isearch.install
