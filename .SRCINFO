@@ -8,6 +8,7 @@ pkgbase = disc-kuraudo-home
 	depends = barcode
 	depends = bash
 	depends = cdrtools
+	depends = cdrdao
 	depends = diffutils
 	depends = ddrescue
 	depends = imagemagick

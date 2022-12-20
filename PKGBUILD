@@ -1,4 +1,4 @@
-# Maintainer: Darjan Krijan [disc-kuraudo.eu]
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=disc-kuraudo-home
 pkgver=0.1.0
@@ -11,6 +11,7 @@ depends=(
 	'barcode'
 	'bash'
 	'cdrtools'
+	'cdrdao'
 	'diffutils'
 	'ddrescue'
 	'imagemagick'
