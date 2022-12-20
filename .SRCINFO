@@ -1,6 +1,6 @@
 pkgbase = linked-helper
 	pkgdesc = LinkedIn lead generation tool businesses use to find clients
-	pkgver = 2.14.50
+	pkgver = 2.14.60
 	pkgrel = 1
 	url = https://www.linkedhelper.com/
 	arch = any
