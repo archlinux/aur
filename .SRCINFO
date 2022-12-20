@@ -1,6 +1,6 @@
 pkgbase = sov
 	pkgdesc = An overview application for sway
-	pkgver = 0.86b
+	pkgver = 0.87b
 	pkgrel = 1
 	url = https://github.com/milgra/sov
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = sov
 	depends = libgl
 	depends = libegl
 	depends = glew
-	source = sov-0.86b.tar.xz::https://github.com/milgra/sov/releases/download/0.86b/sov-0.86b.tar.xz
-	sha256sums = 4f3baba1f63ecff262e6afc2ffd78667e573a6fc740557a972a8d2077d19d89d
+	source = sov-0.87b.tar.xz::https://github.com/milgra/sov/releases/download/0.87b/sov-0.87b.tar.xz
+	sha256sums = 29a960c63b2c55c6863b2f12c54f6b878930eea2ed7e8045335554bc418f3314
 
 pkgname = sov
