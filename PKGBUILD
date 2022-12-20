@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton
-_srctag=7.0-5
+_srctag=7.0-6
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
