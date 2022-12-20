@@ -10,6 +10,6 @@ pkgbase = iroh-git
 	depends = git
 	depends = cargo
 	source = iroh-git::git+https://github.com/n0-computer/iroh.git#tag=v0.1.1
-	md5sums = 908462978506cdf5c4955a3d54e1f605
+	md5sums = SKIP
 
 pkgname = iroh-git

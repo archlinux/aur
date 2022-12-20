@@ -19,7 +19,6 @@ install=
 changelog=
 source=($pkgname::git+https://github.com/n0-computer/iroh.git#tag=v${pkgver})
 # noextract=($pkgname)
-md5sums=('908462978506cdf5c4955a3d54e1f605')
 
 validpgpkeys=()
 
@@ -44,3 +43,4 @@ package() {
 	install -Dm 755 target/debug/iroh-gateway -t "${pkgdir}/usr/bin"
 	install -Dm 755 target/debug/iroh-store -t "${pkgdir}/usr/bin"
 }
+md5sums=('SKIP')
