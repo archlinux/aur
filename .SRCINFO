@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -17,8 +17,9 @@ pkgbase = linux-nitrous
 	makedepends = libelf
 	makedepends = coreutils
 	makedepends = rust
+	makedepends = lzop
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.1.0-2
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.1.0-3
 	source = linux-nitrous.preset
 	sha256sums = SKIP
 	sha256sums = 59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402
@@ -30,7 +31,7 @@ pkgname = linux-nitrous
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-nitrous-headers=6.1.0-2: to build DKMS modules against this kernel
+	optdepends = linux-nitrous-headers=6.1.0-3: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
 	provides = WIREGUARD-MODULE
 	provides = NTFS3-MODULE

@@ -13,7 +13,7 @@
 pkgbase=linux-nitrous
 _srcname=linux-nitrous
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
