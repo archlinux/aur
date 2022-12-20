@@ -1,7 +1,7 @@
 # Maintainer: Minecraftchest1 <minecraftchest1 at outlook dot com>
 
 pkgname=file-sharing-tool
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=2
 pkgdesc="A tool to help setup file sharing using ssh."
 arch=('any')

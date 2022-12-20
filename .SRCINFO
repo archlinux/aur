@@ -1,6 +1,6 @@
 pkgbase = file-sharing-tool
 	pkgdesc = A tool to help setup file sharing using ssh.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 2
 	url = https://gitlab.com/minecraftchest1/steamdeck-file-share-tool
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = file-sharing-tool
 	makedepends = git
 	depends = openssh
 	depends = zenity
-	source = git+https://gitlab.com/minecraftchest1/steamdeck-file-share-tool#tag=0.4.1
+	source = git+https://gitlab.com/minecraftchest1/steamdeck-file-share-tool#tag=0.4.2
 	sha256sums = SKIP
 
 pkgname = file-sharing-tool

@@ -2,4 +2,6 @@ file-sharing-tool-*.tar.zst
 file-sharing-tool-*.tar.zst-namcap.log
 file-sharing-tool-*-package.log
 PKGBUILD-namcap.log
-steamdeck-file-share-tool
+steamdeck-file-share-tool/
+src/
+pkg/
