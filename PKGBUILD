@@ -2,7 +2,7 @@
 
 _pkgname=xdebug
 pkgname=${_pkgname}-zts
-pkgver=3.1.4
+pkgver=3.2.0
 pkgrel=1
 
 pkgdesc="PHP debugging extension (for ZTS enabled PHP)"
@@ -13,7 +13,7 @@ depends=('php-zts')
 backup=('etc/php/conf.d/xdebug.ini')
 source=("https://xdebug.org/files/${_pkgname}-${pkgver/rc/RC}.tgz"
 	'xdebug.ini')
-sha256sums=('4195926f9f6c4e802ff749bb2ca85ac50636719a72e5389e372e35ef523505f9'
+sha256sums=('7769b20eecdadf5fbe9f582512c10b394fb575b6f7a8c3a3a82db6883e0032b7'
             'b7c8de3c7b5621a73175fb63d6cbc7d535f92cefea013a7a872b9239d691f68e')
 
 build() {
