@@ -3,7 +3,7 @@
 
 pkgname='minisatip'
 pkgdesc='SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards'
-pkgver=1.2.44
+pkgver=1.2.49
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://minisatip.org'
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/catalinii/minisatip/arc
         'minisatip.service'
         'minisatip.sysuser'
         'minisatip.conf')
-sha256sums=('e78bd05d0d8c0de19018fc02b1b87eef2860420b534ff46503f34284681fc01a'
+sha256sums=('067ccbdf2ab1ff62b8daa9f8f515478b5709a2b6c7cd9fe3099738048f7892d3'
             '36631c2467b3486cf5f4d2fd3f9374959ac0aa89b0e6443a3883aa62440d682a'
             '7f4e7fde7ded632f88b30b7cd0481c78309f8191b40369ae323cbb7240fdc199'
             'f7a28ad30d30c68ef54ba65cc562ce0d9a131f0ee2be20071cd93159f196946f')
