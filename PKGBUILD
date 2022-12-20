@@ -1,7 +1,7 @@
 # Maintainer: Sidney Kuyateh <autinerd-arch@kuyateh.eu>
 
 pkgname=meta-package-manager
-pkgver=5.10.0
+pkgver=5.10.2
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url='https://kdeldycke.github.io/meta-package-manager/'
@@ -28,7 +28,7 @@ optdepends=('rust: support for managing Rust packages'
 license=('GPL2')
 arch=('any')
 source=("https://github.com/kdeldycke/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('0fdcf775049715fcce37f1da3866fdc15813ae9faace615e47a7ea488131c20a12c6d73d2a1d87124cb79868f246e310f216ba6ac4958be24ea1ce02473e1d13')
+sha512sums=('eca68d9a7587dfb8b16860eb614ecea084154c1822f911c187f68f02d2a3a5a04707ea4a565679b7375a9b02791713c1fa112761edfc02f2e7bd50f0e85f68a8')
 
 build() {
     # Poetry has a bug where .gitignore files in any parent directory is used in excluding files to build, resulting in an empty package.
