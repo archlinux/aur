@@ -11,7 +11,7 @@
 _pkgname='forgejo'
 pkgname=forgejo-git
 pkgver=v1.19.0_dev_209_g158e78f98e
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted, lightweight software forge. A "soft" fork of Gitea.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://forgejo.org'
@@ -71,12 +71,12 @@ build() {
 }
 
 package() {
-  install -Dm755 ${_pkgname}/gitea "${pkgdir}"/usr/bin/forgejo
+  install -Dm755 ${_pkgname}/gitea "${pkgdir}"/usr/bin/${_pkgname}
   install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
   install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
   install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
   install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-  install -Dm644 app.ini "${pkgdir}"/etc/forgejo/app.ini
+  install -Dm644 app.ini "${pkgdir}"/etc/${_pkgname}/app.ini
 }
 
 # vim: ts=2 sw=2 et:
