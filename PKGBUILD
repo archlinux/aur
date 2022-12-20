@@ -6,6 +6,7 @@ pkgrel=2
 pkgdesc='A script which controls your Acer Aspire S3 Ultrabook fan speed by cpu temperature'
 url='https://github.com/enyone/acers3fand'
 arch=(x86_64)
+license=('GPL')
 
 makedepends=('git')
 depends=('perl' 'dmidecode')
