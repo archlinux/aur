@@ -1,0 +1,21 @@
+pkgbase = python-isal
+	pkgdesc = Faster zlib and gzip compatible compression and decompression by providing python bindings for the ISA-L library
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pycompression/python-isal
+	arch = x86_64
+	license = Custom:PSF-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-nose
+	makedepends = yasm
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-argparse
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/i/isal/isal-1.1.0.tar.gz
+	sha256sums = 1364f4e3255a57d51c01422ab3ae785a43c076d516ebf49f6a25adecf8232105
+
+pkgname = python-isal
