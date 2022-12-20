@@ -2,7 +2,7 @@
 
 _pkgname=nvml_fix
 pkgname=nvml-fix-git
-pkgrel=1
+pkgrel=2
 pkgver=r35.038fa0c
 pkgdesc="A workaround for an annoying bug in nVidia's NVML library."
 url=https://github.com/CFSworks/nvml_fix

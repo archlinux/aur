@@ -1,7 +1,7 @@
 pkgbase = nvml-fix-git
 	pkgdesc = A workaround for an annoying bug in nVidia's NVML library.
 	pkgver = r35.038fa0c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CFSworks/nvml_fix
 	arch = x86_64
 	arch = i686
