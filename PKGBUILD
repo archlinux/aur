@@ -2,8 +2,8 @@
 # Contributor: Cameron Nemo <cam@nohom.org>
 
 pkgname=brillo
-pkgver=1.4.11
-pkgrel=2
+pkgver=1.4.12
+pkgrel=1
 pkgdesc='Control the brightness of backlight and keyboard LED devices'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/cameronnemo/brillo"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('go-md2man')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/brillo-v${pkgver}.tar.gz")
-sha256sums=('74c155e0435c148eb9c0b08a4d2dfcac8f7e33fc22dd1fde7275099b8e93f428')
+sha256sums=('5002e5f4a68f7d8df6ce0c1b41f84e4bc4da3e968c488282289aed1364c4a951')
 
 build() {
   cd "${srcdir}/brillo-v${pkgver}"
