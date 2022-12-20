@@ -1,6 +1,6 @@
 pkgbase = logseq-desktop
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
-	pkgver = 0.8.12
+	pkgver = 0.8.13
 	pkgrel = 1
 	url = https://logseq.com
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = logseq-desktop
 	provides = logseq-desktop
 	conflicts = logseq-desktop-git
 	conflicts = logseq-desktop-bin
-	source = logseq-desktop-0.8.12.zip::https://github.com/logseq/logseq/archive/refs/tags/0.8.12.zip
+	source = logseq-desktop-0.8.13.zip::https://github.com/logseq/logseq/archive/refs/tags/0.8.13.zip
 	source = build.patch
 	source = logseq-desktop.desktop
-	sha256sums = b477331dedc3e41aad06a515ac2ab40a42d75179cee8351e456d511e92707d34
+	sha256sums = aa81ce2bba4c894fb37f53780e7362732bcc0f6ba850edb47c5227b5ee071ff6
 	sha256sums = b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2
 	sha256sums = bfa7d2cd6869968d7a77d317e966aec67ed4b4aa17fe7931e920c00f40218e3c
 
