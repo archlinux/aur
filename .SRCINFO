@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-user-saml
 	pkgdesc = App for authenticating Nextcloud users using SAML
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/user_saml
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nextcloud-app-user-saml
 	makedepends = nextcloud
 	makedepends = rsync
 	makedepends = yq
-	source = https://github.com/nextcloud/user_saml/archive/v5.1.1/user_saml-5.1.1.tar.gz
-	sha256sums = e8f784d92b571a3d38967fabb823405369ff2f4cba4283c40e58f8a2ad08509f
+	source = https://github.com/nextcloud/user_saml/archive/v5.1.2/user_saml-5.1.2.tar.gz
+	sha256sums = e6f43d22b6e49bd0359915b14aa8d07b0ab8eb255ab82e9d30a066b4ed1c2978
 
 pkgname = nextcloud-app-user-saml
