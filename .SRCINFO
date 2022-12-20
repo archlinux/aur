@@ -1,5 +1,5 @@
 pkgbase = forgejo-git
-	pkgdesc = Painless self-hosted Git service. Community managed fork of Gogs.
+	pkgdesc = Self-hosted, lightweight software forge. A "soft" fork of Gitea.
 	pkgver = v1.18.0_dev_209_g158e78f98e
 	pkgrel = 1
 	url = https://forgejo.org
