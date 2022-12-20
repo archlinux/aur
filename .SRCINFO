@@ -1,15 +1,15 @@
 pkgbase = ida-free
 	pkgdesc = Freeware version of the world's smartest and most feature-full disassembler
-	pkgver = 8.1.221124
+	pkgver = 8.2.221215
 	pkgrel = 1
 	url = https://www.hex-rays.com/products/ida/
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
 	options = !strip
-	source = idafree81_linux.run-8.1.221124-1::https://out7.hex-rays.com/files/idafree81_linux.run
+	source = idafree82_linux.run-8.2.221215-1::https://out7.hex-rays.com/files/idafree82_linux.run
 	source = ida-free.desktop
-	sha256sums = 28b270de3cb877987accee40d9d9eb24d958f23b3a9821bcabebf5493ac4e336
+	sha256sums = e2db79d828cd20ef23bc2ea87dc84283ac6d6620061490bc45c94bbc74801e9a
 	sha256sums = 55f2ed3f165df6efb5f7975b17d8e53bee1d88cad33efb9d4422402213d17440
 
 pkgname = ida-free
