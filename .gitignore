@@ -1,0 +1,5 @@
+src/
+pkg/
+.vscode/
+gpm/
+*.tar.zst

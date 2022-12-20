@@ -1,0 +1,16 @@
+diff --git a/src/main.rs b/src/main.rs
+index ab71d69..134b8e6 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -12,9 +12,9 @@ use std::panic;
+ use std::path::{Path, PathBuf};
+ 
+ #[derive(Parser)]
+-#[command(name = "gpm")]
++#[command(name = "godot-package-manager")]
+ #[command(about = "A package manager for godot.", long_about = None)]
+-#[command(bin_name = "gpm")]
++#[command(bin_name = "godot-package-manager")]
+ /// A package mnanager for godot
+ struct Args {
+     #[command(subcommand)]
