@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yulab.utils
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
-pkgver=0.0.5
-pkgrel=7
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Supporting Functions for Packages Maintained by 'YuLab-SMU'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6ecd4dc5dae40e86b7a462fdac3ab8c0b276dcae5a284eb43390a05b01e3056b')
+sha256sums=('973a51b8d1284060aec34e94849eea6783439dbcbf85083dd4f1a5df4f927b25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
