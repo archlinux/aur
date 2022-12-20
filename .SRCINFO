@@ -23,7 +23,7 @@ pkgbase = dxvk-mingw
 	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.0
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = dxvk-async-8665e60.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/8665e60/dxvk-async.patch
+	source = dxvk-async-2.0.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/2.0/dxvk-async.patch
 	source = dxvk-async-conf.patch
 	source = dxvk-extraopts.patch
 	source = setup_dxvk

@@ -17,6 +17,7 @@ source=(
     "git+https://github.com/doitsujin/dxvk.git"
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    "git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
     "dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
@@ -31,10 +32,14 @@ pkgver() {
 prepare() {
     cd dxvk
 
-    git submodule init include/{vulkan,spirv}
+    git revert -n 7644776f7a3bc6a097f20c1465708acf88ad215f
+    git revert -n 64cb1ad208f80b11400eef779e99fec223754098
+
+    git submodule init include/{vulkan,spirv} subprojects/libdisplay-info
     git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
     git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
-    git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
+    git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info"
+    git -c protocol.file.allow=always submodule update include/{vulkan,spirv} subprojects/libdisplay-info
 
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
@@ -120,6 +125,7 @@ package() {
 }
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
