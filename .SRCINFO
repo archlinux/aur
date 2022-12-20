@@ -1,0 +1,18 @@
+pkgbase = woof-doom-git
+	pkgdesc = Doom port remaining faithful to Lee Killough’s MBF on DOS
+	pkgver = 10.4.0.r109.f29e7a3b
+	pkgrel = 1
+	url = https://github.com/fabiangreffrath/woof
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = hicolor-icon-theme
+	depends = sdl2_net
+	depends = sdl2_mixer
+	conflicts = woof-doom
+	source = woof::git+https://github.com/fabiangreffrath/woof.git
+	sha512sums = SKIP
+
+pkgname = woof-doom-git
