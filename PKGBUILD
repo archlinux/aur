@@ -3,8 +3,8 @@
 
 _pyname=cu2qu
 pkgname=python-$_pyname
-pkgver=1.6.7.post1
-pkgrel=2
+pkgver=1.6.7.post2
+pkgrel=1
 pkgdesc='Cubic-to-quadratic bezier curve conversion'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -20,7 +20,7 @@ checkdepends=(python-coverage
               python-pytest-runner)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('8c982f11de0151f41da83df4a4f75207380301c0356fb7a3322f0db74e16e6f4')
+sha256sums=('1df562d99bd6059226088f443702bf51cfdd8cc63623f23137459a78d7bf5808')
 
 build() {
 	cd "$_archive"
