@@ -36,6 +36,7 @@ package() {
   install -Dm 755 -t "${pkgdir}/usr/bin" powder
   install -Dm 644 -t "${pkgdir}/usr/share/applications" powdertoy-tpt.desktop
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 
   local icon_size
   for icon_size in 16 32 48; do
