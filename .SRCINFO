@@ -1,6 +1,6 @@
 pkgbase = python-collidoscope
 	pkgdesc = brute force detection of glyph collisions
-	pkgver = 0.4.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/simoncozens/collidoscope
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-collidoscope
 	depends = python-glyphtools
 	depends = python-fonttools
 	depends = python-uharfbuzz
-	source = https://files.pythonhosted.org/packages/source/c/collidoscope/collidoscope-0.4.1.tar.gz
-	sha256sums = b7796d5d8981e04a2a652620d2063ef797d8fb3040c5383e574ae42f75537d1f
+	source = https://files.pythonhosted.org/packages/source/c/collidoscope/collidoscope-0.5.2.tar.gz
+	sha256sums = 9bc0e3d4298291f0238e89413d8bb26e20f6e668a38ab8b1d0afd341bd739eef
 
 pkgname = python-collidoscope
