@@ -1,6 +1,6 @@
 pkgbase = nvim-packer-git
 	pkgdesc = A use-package inspired plugin manager for Neovim.
-	pkgver = r561.64ae65f
+	pkgver = r562.dac4088
 	pkgrel = 1
 	url = https://github.com/wbthomason/packer.nvim
 	arch = any
