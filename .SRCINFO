@@ -1,7 +1,7 @@
 pkgbase = vr-video-player-git
 	pkgdesc = A virtual reality video player for Linux
-	pkgver = r92.7ff6797
-	pkgrel = 2
+	pkgver = r96.d094f73
+	pkgrel = 1
 	url = https://git.dec05eba.com/vr-video-player
 	arch = x86_64
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = vr-video-player-git
 	depends = mpv
 	provides = vr-video-player
 	conflicts = vr-video-player
-	source = vr-video-player-git-r92.7ff6797.tar.gz::https://dec05eba.com/snapshot/vr-video-player.git.r92.7ff6797.tar.gz
-	sha512sums = 875e574674eb2957a9750dcbc1fc79297f1c8bf6e6cf950aa60d3891d7dfae1fb06e12e39624f091f0b9d6ad9cadef939cc1dd5104282d8597b3b66c2c1ada95
+	source = vr-video-player-git-r96.d094f73.tar.gz::https://dec05eba.com/snapshot/vr-video-player.git.r96.d094f73.tar.gz
+	sha512sums = e2465973a4450d6da9a4370f8e9aa4e6db9edee5a69ef2383b49118e2e0ae0bc1943bd4a1d61de181a6bf94781a238a2311892cececf64f04949f5807db67a37
 
 pkgname = vr-video-player-git
