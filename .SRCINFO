@@ -4,6 +4,7 @@ pkgbase = acers3fand
 	pkgrel = 2
 	url = https://github.com/enyone/acers3fand
 	arch = x86_64
+	license = GPL
 	makedepends = git
 	depends = perl
 	depends = dmidecode
