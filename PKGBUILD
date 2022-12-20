@@ -10,8 +10,8 @@ pkgrel=1
 pkgdesc='Dogelon Index Website'
 arch=('any')
 license=('GPL3')
-_url="ssh://git@127.0.0.1/home/git/dogelonindex-website"
-url="https://no.www/tallero/${_pkgbase}"
+_url="https://github.com/indexdevteam/dogelonindex-website"
+url="https://www.dogeloindex.org"
 _marker_tag="2020.04.04"
 makedepends=('git'
 	     'marker'
