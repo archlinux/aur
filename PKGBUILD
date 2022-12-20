@@ -1,7 +1,6 @@
 # Maintainer: Index Dev Team <indexdevteam@gmail.com>
 
 # shellcheck disable=SC2034
-_pkg=archiso
 _distro=dogelonindex
 _pkgbase="${_distro}-website"
 pkgname="${_pkgbase}-git"
