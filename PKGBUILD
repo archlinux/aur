@@ -4,7 +4,7 @@ pkgname=nvhpc
 _REL_YEAR=2022
 _CUDA_VER=11.8
 pkgver=22.11
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://gitlab.com/badwaik/archlinux/aur/nvhpc"
@@ -42,4 +42,10 @@ package() {
 
 # Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
+
+# Temporary Patch to Fix Problems with OpenMPI 3.x
+    pushd $pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/comm_libs
+      unlink mpi
+      ln -s openmpi4/openmpi-4.0.5/ mpi
+    popd
 }

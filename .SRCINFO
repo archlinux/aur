@@ -1,7 +1,7 @@
 pkgbase = nvhpc
 	pkgdesc = NVIDIA HPC SDK
 	pkgver = 22.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/badwaik/archlinux/aur/nvhpc
 	arch = x86_64
 	license = custom
