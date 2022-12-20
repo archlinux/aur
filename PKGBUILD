@@ -24,7 +24,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=8.1.7
+pkgver=8.2.0
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -36,16 +36,14 @@ checkdepends=('procps-ng')
 options=(debug)
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
-sha256sums=('f042322f1b5a9f7c2decb84b7086ef676896c2f7178739b9672afafa964ed0e5'
+sha256sums=('6ea4c2dfb532950fd712aa2a08c1412a6a81cd1334dd0b0bf88a8e44c2b3a943'
             'SKIP'
             'c24122c0a742d3f153d52076137e737da0191584dab178bafed547b3bf2a28e8'
             'aee6ee73d1b3cf161069c355e8472a2ceda0886e98bf6a69d57c1dcf6b09ab17'
-            'aa55fa4fc5c2b2493065bbd00cfe3c97a1b22b3dc7d34f8fd303de18cafe844f'
+            '69beb06f8eed1b9d61f1f2ad71b8d1026e0389b7f4cbedbf540ab84427c86d95'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            'b3b3385f1c36e272671c7db238b2a69896e11a82db90dafd74964f2eabbfa2f2')
-validpgpkeys=('F1F692238FBC1666E5A5CCD4199F9DFEF6FFBAFD',
-              '528995BFEDFBA7191D46839EF9BA0ADA31CBD89E'
-              '39B641343D8C104B2B146DC3F9C39DC0B9698544')
+            '47d36703914f9e26c33e06fab8aa66af918af8f06f4168db7d8c6b8104abc0d3')
+validpgpkeys=('E60913E4DF209907D8E30D96659A97C9CF2A795A')
 _interpreter=${pkgver%.*}
 
 prepare() {
@@ -54,6 +52,7 @@ prepare() {
 	patch -p0 -i "${srcdir}/apache.patch"
 	patch -p0 -i "${srcdir}/php-fpm.patch"
 	patch -p0 -i "${srcdir}/php.ini.patch"
+	patch -p0 -i "${srcdir}/constant_016.phpt.patch"
 	autoconf
 
 	# Disable failing tests
