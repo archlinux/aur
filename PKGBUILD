@@ -1,6 +1,6 @@
 # Maintainer: Max Strübing <mxstrbng@gmail.com>
 pkgname=dotenv-linter-bin
-pkgver=v3.2.0
+pkgver=v3.3.0
 pkgrel=1
 pkgdesc="Linter for .env files. Written in Rust"
 arch=('x86_64')
