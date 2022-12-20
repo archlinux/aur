@@ -1,12 +1,11 @@
 pkgbase = 0xffff
 	pkgdesc = Open Free Fiasco Firmware Flasher for Maemo devices
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pali/0xFFFF
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = libusb0
 	depends = libusb0
 	source = https://github.com/pali/0xFFFF/releases/download/0.10/0xFFFF-0.10.tar.gz
 	sha256sums = 3bef85dcb4fa51644fbea8d60a5184a03f04ea634560d6f998e667ada392775c
