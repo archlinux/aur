@@ -2,7 +2,7 @@
 
 pkgname=python-scmrepo
 _pyname=${pkgname#python-}
-pkgver=0.0.25
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='SCM wrapper and fsspec filesystem for Git for use in DVC'
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(python-cryptography
               python-pytest)
 _archive=("$_pyname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('4b5bcc8a5ed05c0b0fafdbc3b80412c830dc1f40c31175ba8aa5817b0a1568b3')
+sha256sums=('e552f85a31bb4afb065da3e29eaf7464e3bcf281fb2d22ad8ebccfc3ae673174')
 
 build() {
 	cd "$_archive"
