@@ -1,8 +1,8 @@
-# Contributor: Figue <ffigue at gmail dot com>
+# Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=abrowser-bin
-s_pkgname=${pkgname%-*}
-pkgver=107.0
+_pkgname=${pkgname%-*}
+pkgver=107.0.1
 pkgrel=1
 pkgdesc="Binary version of Abrowser, safe and easy web browser from Mozilla"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('gtk2' 'gtk3' 'gcc-libs' 'libidl2' 'nss>=3.12.10' 'libxt'
          'libvpx' 'lcms2' 'nspr>=4.8.8' 'libevent' 'libpng' 'cairo')
 makedepends=(curl)
 _pkgver_x86_64=$(curl -s 'https://archive.trisquel.info/trisquel/pool/main/f/firefox/?C=M;O=D' | grep abrowser_$pkgver | cut -d+ -f2,3 | cut -d'"' -f1 | grep amd64 | sort -rn | head -1)
-source=("https://archive.trisquel.info/trisquel/pool/main/f/firefox/${s_pkgname}_${pkgver}+${_pkgver_x86_64}")
-sha256sums=('53106ab434c46bbfa8bc0016197feb5050ca36fec4f1892617ec5928cb060bf2')
+source=("https://archive.trisquel.info/trisquel/pool/main/f/firefox/${_pkgname}_${pkgver}+${_pkgver_x86_64}")
+sha256sums=('b94abc94adb91f7a35f64c8374ecf1f49942db4a8f972322ed817b12fc2d296f')
 
 package() {
   tar xaf ${srcdir}/data.tar.* -C ${pkgdir}/
