@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-skinenigmang
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 _vdrapi=2.6.3
 epoch=1
 pkgdesc="skin based on the Enigma text2skin addon"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-ski
         'skinenigmang-search_for_logos_in_resourcedir.diff'
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('853f4b47b2b2e688ec0062695f7261962c734fa894b3db4e69266986c0e20a4e'
+sha256sums=('0cf431199331dc320afcf3b06b650af971fb7bc8858ae6329477d269bb6b0282'
             'e61d17e978a01988118737f7f0c0af6aba7999c1f465940c8e1529d0bf49c6fc'
             '134aba4b0c41beeecec0eb7f5014d58bd02a2546106474f8dd76fab26abf86b4')
 
