@@ -1,3 +1,16 @@
+## GE-Proton7-43
+
+- import upstream proton changes
+- immortals: fenyx rising now playable (from my testing I did not have any cutscene audio skips or garbled output)
+- added launcher skip (again) for baldur's gate 3 -- runs vulkan version by default
+- added fix for gears 5 hang after hitting enter on logo screen
+- added fix for game drive option not being applied properly to elder scrolls online (fixes installation -- still need to hit space at black window)
+- added fix for witcher 3 -- no longer crashes on hairworks
+- updated protonfix for fall guys (does not need exe workaround -- thanks rokam)
+- update dxvk git
+- update vkd3d git
+- update wine to bleeding edge
+
 ## GE-Proton7-42
 
 - Pull in upstream build changes from proton experimental
