@@ -49,10 +49,12 @@ package() {
 
     cd "$pkgdir/usr/bin/"
     mv bochs bochs-gdb
-    rm bximage
-    cd "$pkgdir/usr/"
-    rm -rfv share
-    cd "$pkgdir"
-    rm -rfv etc
+    if ($(uname -m) == x86_64);then \
+        rm bximage \
+        cd "$pkgdir/usr/" \
+        rm -rfv share \
+        cd "$pkgdir" \
+        rm -rfv etc; \
+    fi
 }
 
