@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontdiffenator
-pkgver=0.9.12
-pkgrel=2
+pkgver=0.9.13
+pkgrel=1
 pkgdesc='Font regression tester for Google Fonts'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -17,7 +17,7 @@ depends=(python
 makedepends=(python-setuptools)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('23caa29fed25af34dfed5b2a51145f9b7153f5087f16b0b51c191d906cf47962')
+sha256sums=('6735b98ec54dbc17974dc6fb92febbb3b0cc08174d0cc6cbad970a2925f282f9')
 
 build() {
 	cd "$_archive"
