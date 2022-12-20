@@ -1,6 +1,6 @@
 pkgbase = r-ancombc
 	pkgdesc = Microbiome differential abudance and correlation analyses with bias correction
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ANCOMBC
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-ancombc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ANCOMBC_2.0.1.tar.gz
-	sha256sums = a6a26e041dc13f0e207583556369b0ce125984ef64d140296bc6e8214ddc9faf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ANCOMBC_2.0.2.tar.gz
+	sha256sums = e577ffe62a86090de9ea3743c84a4f3b34c3d645dcedff3c8af675b8c9b69136
 
 pkgname = r-ancombc
