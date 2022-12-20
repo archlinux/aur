@@ -1,33 +1,33 @@
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+
 pkgname=gnome-backgrounds-git
-pkgver=3.37.92+3+gae42bef
+pkgver=43.r8.g5966cc2
 pkgrel=1
-pkgdesc="Background images and data for GNOME"
-url="https://gitlab.gnome.org/GNOME/gnome-backgrounds"
+pkgdesc='Background images and data for GNOME'
+url='https://gitlab.gnome.org/GNOME/gnome-backgrounds'
 arch=(any)
+depends=(webp-pixbuf-loader)
+makedepends=(git glib2 meson)
 provides=(gnome-backgrounds)
 conflicts=(gnome-backgrounds)
-makedepends=('git' 'glib2' 'meson')
-license=(GPL)
-groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-backgrounds.git")
-sha256sums=('SKIP')
+license=(CCPL:by-sa)
+source=('git+https://gitlab.gnome.org/GNOME/gnome-backgrounds.git')
+b2sums=('SKIP')
 
 pkgver() {
-  cd gnome-backgrounds
-  git describe --tags | sed 's/-/+/g'
+	cd gnome-backgrounds
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson gnome-backgrounds build
-  ninja -C build
+	arch-meson gnome-backgrounds build
+	meson compile -C build
 }
 
 check() {
-  meson test -C build
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+	meson install -C build --destdir "${pkgdir}"
 }
-
-# vim:set sw=2 et:
