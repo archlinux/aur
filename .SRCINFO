@@ -1,0 +1,15 @@
+pkgbase = lubuntu-artwork-18-04
+	pkgdesc = Lubuntu 18.04 default GTK theme, icons, and wallpapers
+	pkgver = 0.71
+	pkgrel = 1
+	url = http://wiki.ubuntu.com/Lubuntu/Artwork
+	arch = any
+	license = GPL
+	optdepends = elementary-icon-theme: icons support
+	optdepends = gtk-engine-unico: gtk3 theme support
+	conflicts = lubuntu-artwork
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_0.71.tar.xz
+	sha256sums = 5374c5a5cf12a439f17ec336db11ccaa6a620e9ad79c5ed9a39c02088189a285
+
+pkgname = lubuntu-artwork-18-04
+	depends = gtk-engine-murrine
