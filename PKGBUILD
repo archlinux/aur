@@ -2,8 +2,8 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.1.2R1.r79.f8df52e
-pkgrel=2
+pkgver=0.1.3.r166.33585b9
+pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build () {
-	cmake -B build -S "${_pkgname}/src" \
+	cmake -B build -S "${_pkgname}" \
 	-DCMAKE_BUILD_TYPE='None' \
 	-DCMAKE_INSTALL_PREFIX='/usr' \
 	-Wno-dev
