@@ -1,6 +1,6 @@
 # Maintainer: Your Name <hexisXz https://github.com/hexisXz>
 pkgname=hexpmg
-pkgver=1.14
+pkgver=1.14.1
 pkgrel=1
 epoch=
 pkgdesc="a simple package manager that builds programs from source"
