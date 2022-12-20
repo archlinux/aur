@@ -6,7 +6,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.49
+pkgver=3.11.51.plus.1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -53,7 +53,7 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=dba8480d182752c830d60fbb4f99d2536fefdd38
+_tag=719057a0513a77d99b7a70d53cf19e5d33005601
 source=("git+https://github.com/Samsagax/gamescope.git#tag=${_tag}")
 
 b2sums=('SKIP')
@@ -88,11 +88,6 @@ build() {
 package() {
   DESTDIR="${pkgdir}" meson install -C build --skip-subprojects
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
-
-  # Avoid wlroots conflict
-  #rm -rv "${pkgdir}"/usr/lib/pkgconfig
-  #rm -rv "${pkgdir}"/usr/include
-  #rm -v "${pkgdir}"/usr/lib/libwlroots.a
 }
 
 # vim: ts=2 sw=2 et:
