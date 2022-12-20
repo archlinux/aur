@@ -1,16 +1,16 @@
 pkgbase = logseq-desktop-bin
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
-	pkgver = 0.8.12
-	pkgrel = 3
+	pkgver = 0.8.13
+	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	arch = x86_64
 	license = AGPL3
 	provides = logseq-desktop
 	conflicts = logseq-desktop-git
 	conflicts = logseq-desktop
-	source = https://github.com/logseq/logseq/releases/download/0.8.12/logseq-linux-x64-0.8.12.zip
+	source = https://github.com/logseq/logseq/releases/download/0.8.13/logseq-linux-x64-0.8.13.zip
 	source = logseq-desktop.desktop
-	sha256sums = 33564943a2434a21fb422c3620a8428f116642adf65ba7781daaef732a14191d
+	sha256sums = 2d4899d5500d52f78c3e9ef6b3712631f485c695ddd1491b97f6ed4a36fe0ea4
 	sha256sums = 7efeec2aa0ae3dd9037ab7dff56ebde6947d3e1d09c7e438af16a8c68552bff9
 
 pkgname = logseq-desktop-bin
