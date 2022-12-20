@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firecracker-git
-pkgver=1.1.0.r30.g2fc473bb
+pkgver=1.2.0.r27.g4713a634
 pkgrel=1
 epoch=2
 pkgdesc="Secure and fast microVMs for serverless computing"
