@@ -3,7 +3,7 @@
 
 pkgname="godot-package-manager-git"
 pkgrel=1
-pkgver=0.2.1.r0.g9d85500
+pkgver=0.2.1.r2.g1b634a0
 pkgdesc="A package manager for godot addons."
 arch=('any')
 url="https://github.com/godot-package-manager/client"
@@ -13,11 +13,10 @@ makedepends=(rust git)
 depends=(gcc-libs)
 optdepends=('godot: to use addons')
 source=(
-	name.patch
 	LICENSE
 	gpm::git+https://github.com/godot-package-manager/client
 )
-sha256sums=(69e0bdf3ae4e6d5dd9da970762eff060a792cd94727a73aaa910ff0af5aa6538 3fddc139b1d6ed4cb530967f190bfbbd7f4a7f5c8ed968c57b1c7d2ae24ba14c SKIP)
+sha256sums=(3fddc139b1d6ed4cb530967f190bfbbd7f4a7f5c8ed968c57b1c7d2ae24ba14c SKIP)
 provides=(godot-package-manager)
 groups=(godot)
 
@@ -29,11 +28,6 @@ check() {
 pkgver() {
 	cd gpm &&
 		git describe --long --tags | sed 's/-/.r/;s/-/./'
-}
-
-prepare() {
-	cd gpm &&
-		git apply ../name.patch
 }
 
 package() {

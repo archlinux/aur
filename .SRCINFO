@@ -1,6 +1,6 @@
 pkgbase = godot-package-manager-git
 	pkgdesc = A package manager for godot addons.
-	pkgver = 0.2.1.r0.g9d85500
+	pkgver = 0.2.1.r2.g1b634a0
 	pkgrel = 1
 	url = https://github.com/godot-package-manager/client
 	arch = any
@@ -11,10 +11,8 @@ pkgbase = godot-package-manager-git
 	depends = gcc-libs
 	optdepends = godot: to use addons
 	provides = godot-package-manager
-	source = name.patch
 	source = LICENSE
 	source = gpm::git+https://github.com/godot-package-manager/client
-	sha256sums = 69e0bdf3ae4e6d5dd9da970762eff060a792cd94727a73aaa910ff0af5aa6538
 	sha256sums = 3fddc139b1d6ed4cb530967f190bfbbd7f4a7f5c8ed968c57b1c7d2ae24ba14c
 	sha256sums = SKIP
 
