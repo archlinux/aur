@@ -1,6 +1,6 @@
 pkgbase = ttf-xo-fonts
 	pkgdesc = XO by MyOffice provide metric-compatible fonts with Microsoft to display documents without distortion and violation of the structure
-	pkgver = 22.11
+	pkgver = 22.12
 	pkgrel = 1
 	url = https://myoffice.ru
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = ttf-xo-fonts
 	conflicts = ttf-xo-windy
 	source = https://myoffice.ru/files/fonts/all_fonts_myoffice.zip
 	source = license.txt
-	sha256sums = cec96c6b6df7835bd9534908f93e33e10020e5aeda6f377445fb027f86f0552c
+	sha256sums = 9152219ce09626511f824be105f512e687604f0311c130f234c67bd1a7395fe9
 	sha256sums = a803b8232be71863ea0c36fc40b67a32aa9f4cd1a33fca01738a3727632e6f22
 
 pkgname = ttf-xo-fonts

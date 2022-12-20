@@ -1,7 +1,7 @@
 # Maintainer: Drommer <drommer@github.com>
 
 pkgname=ttf-xo-fonts
-pkgver=22.11
+pkgver=22.12
 pkgrel=1
 pkgdesc='XO by MyOffice provide metric-compatible fonts with Microsoft to display documents without distortion and violation of the structure'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('ttf-font' 'ttf-xo-caliburn' 'ttf-xo-courser' 'ttf-xo-oriel' 'ttf-xo-s
 conflicts=('ttf-xo-caliburn' 'ttf-xo-courser' 'ttf-xo-oriel' 'ttf-xo-oriel-condensed' 'ttf-xo-symbol' 'ttf-xo-symbol-mac' 'ttf-xo-tahion' 'ttf-xo-thames' 'ttf-xo-windy')
 source=("https://myoffice.ru/files/fonts/all_fonts_myoffice.zip"
         "license.txt")
-sha256sums=('cec96c6b6df7835bd9534908f93e33e10020e5aeda6f377445fb027f86f0552c'
+sha256sums=('9152219ce09626511f824be105f512e687604f0311c130f234c67bd1a7395fe9'
             'a803b8232be71863ea0c36fc40b67a32aa9f4cd1a33fca01738a3727632e6f22')
 
 pkgver() {
