@@ -1,0 +1,19 @@
+pkgbase = python-xopen
+	pkgdesc = Python library to pen compressed files transparently
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/pycompression/xopen/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = pigz
+	depends = python-isal
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/x/xopen/xopen-1.7.0.tar.gz
+	sha256sums = 901f9c8298e95ed74767a4bd76d9f4cf71d8de27b8cf296ac3e7bc1c11520d9f
+
+pkgname = python-xopen
