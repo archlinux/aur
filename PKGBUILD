@@ -28,8 +28,8 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.46.140
-pkgrel=2
+pkgver=1.46.144
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
@@ -63,11 +63,13 @@ makedepends=(cargo-audit
              ninja
              npm
              pipewire
+             qt5-base
              python-protobuf)
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
-            'org.freedesktop.secrets: password storage backend')
-_chromium_ver=108.0.5359.99
+            'org.freedesktop.secrets: password storage backend'
+            'qt5-base: enable Qt5 with --enable-features=AllowQt')
+_chromium_ver=108.0.5359.128
 _gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
@@ -76,12 +78,13 @@ _brave_patchset="1"
 _brave_patchset_name="brave-$_brave_base_ver-patches-$_brave_patchset"
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
-        "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromium_ver"
+        "chromium::git+https://github.com/chromium/chromium.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
         "https://gitlab.com/hadogenes/brave-patches/-/archive/$_brave_patchset_name/brave-patches-$_brave_patchset_name.zip"
         chromium-launcher-electron-app.patch
+        chromium-launcher-vendor.patch
         system-rust-utils.patch
         brave-1.43-bat-native-ads-hash_vectorizer_fix-cstring.patch
         brave-1.43-bat-native-ads-vector_data_fix-cmath.patch
@@ -109,6 +112,7 @@ sha256sums=('SKIP'
             '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
+            '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
             'f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef'
             'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
@@ -162,6 +166,7 @@ done
 prepare() {
   cd chromium-launcher-$_launcher_ver
   patch -Np1 -i ../chromium-launcher-electron-app.patch
+  patch -Np1 -i ../chromium-launcher-vendor.patch
 
   cd ../brave-browser
 
@@ -369,9 +374,8 @@ build() {
       'rtc_use_pipewire=true'
       'link_pulseaudio=true'
       'use_gnome_keyring=false'
-      'use_qt=false' # look into enabling this for M108
       'use_sysroot=false'
-      'use_system_libwayland_server=true'
+      'use_system_libwayland=true'
       'use_system_wayland_scanner=true'
       'use_custom_libcxx=false'
       'enable_hangout_services_extension=true'
@@ -502,6 +506,7 @@ package() {
     chrome_100_percent.pak
     chrome_200_percent.pak
     chrome_crashpad_handler
+    libqt5_shim.so
     resources.pak
     v8_context_snapshot.bin
 

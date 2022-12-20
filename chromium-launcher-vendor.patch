@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 92f28a1..46cb745 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@ CHROMIUM_SUFFIX  =
+ CHROMIUM_APP     = Chromium
+ CHROMIUM_NAME    = chromium$(CHROMIUM_SUFFIX)
+ CHROMIUM_BINARY  = /usr/lib/$(CHROMIUM_NAME)/$(CHROMIUM_NAME)
+-CHROMIUM_VENDOR  = $(shell . /etc/os-release; echo $$NAME)
++CHROMIUM_VENDOR  = stable
+ 
+ override CFLAGS += $(shell pkg-config --cflags glib-2.0)
+ override LDLIBS += $(shell pkg-config --libs glib-2.0)

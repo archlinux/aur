@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.46.140
-	pkgrel = 2
+	pkgver = 1.46.144
+	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = BSD
@@ -21,6 +21,7 @@ pkgbase = brave
 	makedepends = ninja
 	makedepends = npm
 	makedepends = pipewire
+	makedepends = qt5-base
 	makedepends = python-protobuf
 	depends = alsa-lib
 	depends = dbus
@@ -61,14 +62,16 @@ pkgbase = brave
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.46.140
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.46.140
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=108.0.5359.99
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.46.144
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.46.144
+	source = chromium::git+https://github.com/chromium/chromium.git#tag=108.0.5359.128
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-108-patchset-2/chromium-108-patchset-2.tar.xz
 	source = https://gitlab.com/hadogenes/brave-patches/-/archive/brave-1.28-patches-1/brave-patches-brave-1.28-patches-1.zip
 	source = chromium-launcher-electron-app.patch
+	source = chromium-launcher-vendor.patch
 	source = system-rust-utils.patch
 	source = brave-1.43-bat-native-ads-hash_vectorizer_fix-cstring.patch
 	source = brave-1.43-bat-native-ads-vector_data_fix-cmath.patch
@@ -92,6 +95,7 @@ pkgbase = brave
 	sha256sums = 40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652
 	sha256sums = c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe
 	sha256sums = 9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5
+	sha256sums = 404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88
 	sha256sums = f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef
 	sha256sums = a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b
 	sha256sums = 5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e
