@@ -1,6 +1,6 @@
 pkgbase = nvidia-vulkan-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax
-	pkgver = 515.49.25
+	pkgver = 525.47.04
 	pkgrel = 1
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-vulkan-utils.install
@@ -13,9 +13,9 @@ pkgbase = nvidia-vulkan-utils-nvlax
 	depends = egl-wayland
 	depends = gtk3
 	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = opencl-nvidia-vulkan=515.49.25: OpenCL support
-	provides = nvidia-vulkan-utils=515.49.25
-	provides = nvidia-utils=515.49.25
+	optdepends = opencl-nvidia-vulkan=525.47.04: OpenCL support
+	provides = nvidia-vulkan-utils=525.47.04
+	provides = nvidia-utils=525.47.04
 	provides = nvidia-utils-nvlax
 	provides = vulkan-driver
 	provides = opengl-driver
@@ -30,13 +30,13 @@ pkgbase = nvidia-vulkan-utils-nvlax
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
 	source = nvidia.rules
-	source = NVIDIA-Linux-x86_64-515.49.25.run::https://developer.nvidia.com/vulkan-beta-5154925-linux
+	source = NVIDIA-Linux-x86_64-525.47.04.run::https://developer.nvidia.com/downloads/vulkan-beta-5254704-linux
 	source = nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f
 	source = nvlax_cpm.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
-	sha512sums = 3d727d602919eb5569397c09a9dfe42f33d4f2f12c76c106638fe7c5fbe05b671cdb4d2946174cec730e5bb8d2d2a16a8afd622ab981d99475f72aa4f6239a2b
+	sha512sums = f612a82cb03d0e7564a30eb4ff0a2fff1d5b54ab4a0754f4a9865f786dad289fb3e69726651ebc841f594f8167105d158ccd810b5d609215245a93ff363dd0ad
 	sha512sums = SKIP
 	sha512sums = 3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098
 
