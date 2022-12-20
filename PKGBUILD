@@ -2,8 +2,8 @@
 
 pkgname=ds9-bin  
 _pkgname=ds9
-pkgver=8.3
-pkgrel=2
+pkgver=8.4
+pkgrel=1
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 source=(http://ds9.si.edu/download/ubuntu20/${_pkgname}.ubuntu20.${pkgver}.tar.gz
         ds9.desktop
         ds9.png)
-md5sums=('ed59f3aac7c6b8f2a2236802c9d2b4e9'
+md5sums=('8ecd7f5022397ab10b0bb2d68e9121fc'
          'f1738e4ec665ae9afd1b65b86e6a07f1'
          '9297d5738f5f462831075c483dc785d5')
 
