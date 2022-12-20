@@ -9,11 +9,10 @@ pkgbase = browserpass-chrome
 	noextract = browserpass-chrome-3.7.2.crx
 	source = browserpass-chrome-3.7.2.crx::https://github.com/browserpass/browserpass-extension/releases/download/3.7.2/browserpass-github-3.7.2.crx
 	source = browserpass-chrome-3.7.2.crx.asc::https://github.com/browserpass/browserpass-extension/releases/download/3.7.2/browserpass-github-3.7.2.crx.asc
-	source = https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE
+	source = browserpass-chrome-3.7.2-LICENSE::https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = 554cfcb8f657ae8149378059b6283393eff213184b6c716ca8b085407c26b251
-	sha256sums = SKIP
-	sha256sums = 88c5889f0ef1f64a5e08408b51ce47a991087966b1bf127ec0ec39c9d7111f50
+	b2sums = b32b63746206cef46e0386f8e1788fc3a0ce9baca847e4f3e59dea1dc006ed7e8909df351427ead179c1e2ef73a2c439babbeb632f0323ad71ddcd338a1ec75a
+	b2sums = SKIP
+	b2sums = 9e54d91167393d3f3159c3598aa729434c1e7d8ef39083aa40ba6241c9b4b560c64bac1af43efa7be2dac72d8c35413b057b9f67eb41934e10bd8c733437e407
 
 pkgname = browserpass-chrome
-
