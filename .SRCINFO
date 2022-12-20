@@ -1,0 +1,15 @@
+pkgbase = iroh-git
+	pkgdesc = An Implementation IPFS in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/n0-computer/iroh
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo
+	makedepends = git
+	depends = git
+	depends = cargo
+	source = iroh-git::git+https://github.com/n0-computer/iroh.git#tag=v0.1.1
+	md5sums = 908462978506cdf5c4955a3d54e1f605
+
+pkgname = iroh-git
