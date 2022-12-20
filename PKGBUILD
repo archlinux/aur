@@ -2,7 +2,7 @@
 
 _pyname=plum
 pkgname=python-${_pyname,,}
-pkgver=0.7.9
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='Pack/Unpack Memory'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$_pyname-$pkgver"
 source=("https://gitlab.com/dangass/$_pyname/-/archive/$pkgver/$_archive.tar.bz2")
-sha256sums=('0f660a767ceb7a0374066ab3077fc274c409e751a00a904ddfe6ec88b52549a9')
+sha256sums=('41016eed6cdbe1429afc21654cd05f935fc13ae8eb465981f6c3b1e92c57319e')
 
 build() {
 	cd "$_archive"
