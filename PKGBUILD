@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
-pkgname=bin86
+pkgname=bin86-aarch64
 pkgver=0.16.21
 pkgrel=4
 pkgdesc='A complete 8086 assembler and loader for host aarch64'
