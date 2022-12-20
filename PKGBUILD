@@ -11,7 +11,7 @@ pkgdesc='Dogelon Index Website'
 arch=('any')
 license=('GPL3')
 _url="https://github.com/indexdevteam/dogelonindex-website"
-url="https://www.dogeloindex.org"
+url="https://www.dogelonindex.org"
 _marker_tag="2020.04.04"
 makedepends=('git'
 	     'marker'
