@@ -1,6 +1,6 @@
 pkgbase = r-hibag
 	pkgdesc = HLA Genotype Imputation with Attribute Bagging
-	pkgver = 1.34.0
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HIBAG
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-hibag
 	optdepends = r-rmarkdown
 	optdepends = r-seqarray
 	optdepends = r-snprelate
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HIBAG_1.34.0.tar.gz
-	sha256sums = 7d5d2f67c1e485826547a34eca24bbd8f9300aa0abc84a1d44d5e49072e8cb87
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HIBAG_1.34.1.tar.gz
+	sha256sums = 7d9aa8d74a0a1866641f9cea2b7eae63d536ee5f79da0355a8efb18f4d42f8db
 
 pkgname = r-hibag
