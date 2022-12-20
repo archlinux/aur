@@ -1,6 +1,6 @@
 pkgbase = vue-language-server
 	pkgdesc = Fast Vue Language Support Extension
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-language-server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vue-language-server
 	makedepends = typescript
 	depends = nodejs
 	optdepends = typescript: for use in typescript.tsdk
-	source = https://github.com/johnsoncodehk/volar/archive/v1.0.13/volar-1.0.13.tar.gz
-	b2sums = 590c70d3f4886e417baa985aa9b1855d8119fb01a5ea6a6203736eddf9c99218dea4061af21a1885707db33a2b32995312b2c411e1e6204c43da1c954e3e3de9
+	source = https://github.com/johnsoncodehk/volar/archive/v1.0.14/volar-1.0.14.tar.gz
+	b2sums = 820149f26ee38a68bbec73348b490d94e1126a2dbd9f58f156dd7e41b1ae141d816dba569b9e163d584b4698cd5869daaaa97960a10656e992a9ea7315c600b3
 
 pkgname = vue-language-server
