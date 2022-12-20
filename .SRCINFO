@@ -1,0 +1,20 @@
+pkgbase = dogelonindex-website-git
+	pkgdesc = Dogelon Index Website
+	pkgver = v0.1+150+g238a074
+	pkgrel = 1
+	url = https://no.www/tallero/dogelonindex-website
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = marker
+	makedepends = pandoc
+	makedepends = python-fastjsonschema
+	optdepends = httpd
+	optdepends = lighttpd
+	optdepends = ngix
+	provides = dogelonindex-website
+	conflicts = dogelonindex-website
+	source = dogelonindex-website::git+ssh://git@127.0.0.1/home/git/dogelonindex-website
+	sha256sums = SKIP
+
+pkgname = dogelonindex-website-git
