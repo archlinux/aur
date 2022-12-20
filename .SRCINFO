@@ -1,6 +1,6 @@
 pkgbase = python-sfdutf7
 	pkgdesc = SFDUTF7 encoder/decoder library
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ctrlcctrlv/sfdutf7.py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-sfdutf7
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/sfdutf7/sfdutf7-0.0.1.tar.gz
-	sha256sums = 0d4a1094d79f63dbf4c11421b3d4fca879ae064a2e544528f111bfe0052cfe28
+	source = https://files.pythonhosted.org/packages/source/s/sfdutf7/sfdutf7-0.1.0.tar.gz
+	sha256sums = 2f1e61c431de0e04d211280d3b07374f415c778cc1b0b7752e71d0e03ea12f20
 
 pkgname = python-sfdutf7

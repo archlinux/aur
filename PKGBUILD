@@ -2,7 +2,7 @@
 
 pkgname=python-sfdutf7
 _pkgname=${pkgname#python-}
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='SFDUTF7 encoder/decoder library '
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('0d4a1094d79f63dbf4c11421b3d4fca879ae064a2e544528f111bfe0052cfe28')
+sha256sums=('2f1e61c431de0e04d211280d3b07374f415c778cc1b0b7752e71d0e03ea12f20')
 
 build() {
 	cd "$_archive"
