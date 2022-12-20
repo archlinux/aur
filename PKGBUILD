@@ -12,11 +12,11 @@ provides=('devc')
 conflicts=('devc' 'devc-bin' 'devc-git')
 optdepends=('docker: for docker backend' 'docker-compose: for docker-compose backend')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.9/devc_1.0.0-beta.9_linux_arm64.tar.gz")
-sha256sums_aarch64=('5c23304a1a2f318985d779e77ce81ab9753f1e57c32c0a043b2eed3ae6b782c2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0/devc_1.0.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('154a36ba86b508954fc218e0dbc53d06dfc0db00dff694632ef58124514dba19')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0-beta.9/devc_1.0.0-beta.9_linux_amd64.tar.gz")
-sha256sums_x86_64=('cf4053ecbc76e34dd7e91c65963619bdc29720e40a4d8a495bec24f921d39e83')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0/devc_1.0.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('594e19cda9130b62ee23528acad03fd4b834798254a25e81ab43c2cb3dbdbb59')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin/" "./devc"
