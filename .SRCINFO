@@ -1,6 +1,6 @@
 pkgbase = blender-3.5-bin
 	pkgdesc = A fully integrated 3D graphics creation suite
-	pkgver = 3.5.221114.909f47e0e197
+	pkgver = 3.5.221216.c2a8d8b18ddb
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = blender-3.5-bin
 	depends = libglvnd
 	depends = hicolor-icon-theme
 	optdepends = cuda: cycles renderer cuda support
-	source = daily.221114.html::https://builder.blender.org/download/
+	source = daily.221220.html::https://builder.blender.org/download/
 	md5sums = SKIP
 
 pkgname = blender-3.5-bin

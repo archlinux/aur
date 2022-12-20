@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.5-bin
-pkgver=3.5.221114.909f47e0e197
+pkgver=3.5.221216.c2a8d8b18ddb
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -50,8 +50,8 @@ TryExec=blender-$_upstreamversion-thumbnailer
 Exec=blender-$_upstreamversion-thumbnailer %u %o
 MimeType=application/x-blender;
 " > blender.thumbnailer
-	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion exec /usr/share/blender/blender-$_upstreamversion \$@" > blender-$_upstreamversion
-	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion exec /usr/share/blender/blender-softwaregl-$_upstreamversion \$@" > blender-$_upstreamversion-softwaregl
+	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion/lib exec /usr/share/blender/blender-$_upstreamversion \$@" > blender-$_upstreamversion
+	echo -e "#!/bin/bash\nLD_LIBRARY_PATH=/usr/share/blender/$_upstreamversion/lib exec /usr/share/blender/blender-softwaregl-$_upstreamversion \$@" > blender-$_upstreamversion-softwaregl
 }
 
 package() {
@@ -65,7 +65,7 @@ package() {
 	install -Dm644 blender-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/blender-$_upstreamversion-symbolic.svg"
 	mkdir -p "$pkgdir/usr/share/blender/"
 	cp -r $_upstreamversion "$pkgdir/usr/share/blender/$_upstreamversion"
-	cp lib/libpi_level_zero.so lib/libcycles_kernel_oneapi_aot.so lib/libsycl.so* "$pkgdir/usr/share/blender/$_upstreamversion/"
+	cp -r lib "$pkgdir/usr/share/blender/$_upstreamversion/"
 	# binaries path workaround
 	install -Dm755 blender "$pkgdir/usr/share/blender/blender-$_upstreamversion"
 	install -Dm755 blender-$_upstreamversion "$pkgdir/usr/bin/blender-$_upstreamversion"
