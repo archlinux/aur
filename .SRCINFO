@@ -1,6 +1,6 @@
 pkgbase = jove
 	pkgdesc = Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp.
-	pkgver = 4.17.4.8
+	pkgver = 4.17.4.9
 	pkgrel = 1
 	url = https://github.com/jonmacs/jove
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = jove
 	depends = ncurses
 	provides = jove
 	conflicts = jove-git
-	source = jove-4.17.4.8.tar.gz::https://github.com/jonmacs/jove/archive/4.17.4.8.tar.gz
-	sha256sums = 39995f970604a67cadd0f87ad9ac88562f40b680135116f53597c0d4413f318e
+	source = jove-4.17.4.9.tar.gz::https://github.com/jonmacs/jove/archive/4.17.4.9.tar.gz
+	sha256sums = 6d9aeb85c04fedac7e3df2a1716e014dc53d6938f665fc32a9facd40c117102d
 
 pkgname = jove
