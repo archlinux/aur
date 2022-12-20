@@ -20,9 +20,9 @@ makedepends=('git'
 checkdepends=()
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-optdepends=("httpd"
+optdepends=("apache"
 	    "lighttpd"
-            "ngix")
+            "nginx")
 source=("${_pkgbase}::git+${_url}")
 sha256sums=('SKIP')
 
