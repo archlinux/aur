@@ -1,6 +1,6 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration
-	pkgver = 29.0.0_beta2
+	pkgver = 29.0.0_beta3
 	pkgrel = 1
 	epoch = 4
 	url = https://github.com/obsproject/obs-studio
@@ -49,7 +49,7 @@ pkgbase = obs-studio-rc
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=29.0.0_beta2
+	provides = obs-studio=29.0.0_beta3
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -59,7 +59,7 @@ pkgbase = obs-studio-rc
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.0.0-beta2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.0.0-beta3
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
