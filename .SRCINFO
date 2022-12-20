@@ -4,6 +4,7 @@ pkgbase = bochs-gdb-stub
 	pkgrel = 1
 	url = http://bochs.sourceforge.net/
 	arch = x86_64
+	arch = aarch64
 	license = LGPL
 	depends = gcc-libs
 	depends = libxrandr
