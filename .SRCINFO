@@ -1,0 +1,14 @@
+pkgbase = bunzbar
+	pkgdesc = display useful information in status bar
+	pkgver = 0.45
+	pkgrel = 1
+	url = https://gitlab.com/02742/bunzbar
+	arch = any
+	license = GPLv3
+	makedepends = coreutils
+	makedepends = python3
+	makedepends = python-pip
+	depends = python3
+	provides = bunzbar
+
+pkgname = bunzbar
