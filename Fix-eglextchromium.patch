@@ -1,0 +1,70 @@
+From 027ae633671d91b2c4ceea33f09d3311b77ca162 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Tue, 20 Dec 2022 12:33:42 +0100
+Subject: [PATCH] Fix eglextchromium.h
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ cmake/modules/FindEGL.cmake         | 7 ++++++-
+ cmake/scripts/common/Platform.cmake | 3 ++-
+ xbmc/windowing/X11/GLContextEGL.h   | 4 ++++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/modules/FindEGL.cmake b/cmake/modules/FindEGL.cmake
+index b00fe08a25..3805f41e18 100644
+--- a/cmake/modules/FindEGL.cmake
++++ b/cmake/modules/FindEGL.cmake
+@@ -9,6 +9,7 @@
+ # EGL_INCLUDE_DIRS - the EGL include directory
+ # EGL_LIBRARIES - the EGL libraries
+ # EGL_DEFINITIONS - the EGL definitions
++# HAVE_EGLEXTANGLE - if eglext_angle.h exists else use eglextchromium.h
+ #
+ # and the following imported targets::
+ #
+@@ -35,7 +36,11 @@ if(EGL_FOUND)
+   set(EGL_LIBRARIES ${EGL_LIBRARY})
+   set(EGL_INCLUDE_DIRS ${EGL_INCLUDE_DIR})
+   set(EGL_DEFINITIONS -DHAS_EGL=1)
+-
++  include(CheckIncludeFile)
++  check_include_file("EGL/eglext_angle.h" HAVE_EGLEXTANGLE)
++  if(HAVE_EGLEXTANGLE)
++    list(APPEND EGL_DEFINITIONS "-DHAVE_EGLEXTANGLE=1")
++  endif()
+   if(NOT TARGET EGL::EGL)
+     add_library(EGL::EGL UNKNOWN IMPORTED)
+     set_target_properties(EGL::EGL PROPERTIES
+diff --git a/cmake/scripts/common/Platform.cmake b/cmake/scripts/common/Platform.cmake
+index 397d8d46e8..87852ef9fc 100644
+--- a/cmake/scripts/common/Platform.cmake
++++ b/cmake/scripts/common/Platform.cmake
+@@ -8,7 +8,8 @@ if(CORE_SYSTEM_NAME STREQUAL linux OR CORE_SYSTEM_NAME STREQUAL freebsd)
+   set(_DEFAULT_PLATFORM X11 WAYLAND GBM)
+ 
+   if(NOT APP_RENDER_SYSTEM)
+-    message(SEND_ERROR "You need to decide whether you want to use GL- or GLES-based rendering. Please set APP_RENDER_SYSTEM to either \"gl\" or \"gles\". For normal desktop systems, you will usually want to use \"gl\".")
++    # message(SEND_ERROR "You need to decide whether you want to use GL- or GLES-based rendering. Please set APP_RENDER_SYSTEM to either \"gl\" or \"gles\". For normal desktop systems, you will usually want to use \"gl\".")
++    set(APP_RENDER_SYSTEM "gl")
+   endif()
+ else()
+   string(TOLOWER ${CORE_SYSTEM_NAME} _DEFAULT_PLATFORM)
+diff --git a/xbmc/windowing/X11/GLContextEGL.h b/xbmc/windowing/X11/GLContextEGL.h
+index 99a6a9024e..afea0b7c43 100644
+--- a/xbmc/windowing/X11/GLContextEGL.h
++++ b/xbmc/windowing/X11/GLContextEGL.h
+@@ -13,7 +13,11 @@
+ #include "threads/CriticalSection.h"
+ 
+ #include <EGL/eglext.h>
++#ifdef HAVE_EGLEXTANGLE
++#include <EGL/eglext_angle.h>
++#else
+ #include <EGL/eglextchromium.h>
++#endif
+ #include <X11/Xutil.h>
+ 
+ class CGLContextEGL : public CGLContext
+-- 
+2.39.0
+

@@ -1,5 +1,5 @@
 pkgbase = kodi-eggz
-	pkgver = 20.0rc1
+	pkgver = 20.0rc2
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -57,12 +57,12 @@ pkgbase = kodi-eggz
 	depends = libcec
 	depends = tinyxml
 	depends = shairplay
-	source = git+https://github.com/xbmc/xbmc.git#tag=20.0rc1-Nexus
+	source = git+https://github.com/xbmc/xbmc.git#tag=20.0rc2-Nexus
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=20.1.0-Nexus
-	source = removestupidremarks.patch
+	source = Fix-eglextchromium.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 2b70aecae2fb11fef8f925baa8e272cacb17add58fc6fdbf791b30e7e4b2baed
+	sha256sums = faff047172c3b1cccd62aa6e30fd81e97eac7dd964ac19649755600cfe820b1f
 
 pkgname = kodi-eggz
 	pkgdesc = Latest stable-ish kodi build with VFS automaticly installed

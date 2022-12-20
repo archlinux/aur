@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=20.0rc1
-gittag=20.0rc1-Nexus
+pkgver=20.0rc2
+gittag=20.0rc2-Nexus
 gittagvfs=20.1.0-Nexus
 pkgrel=1
 arch=('x86_64')
@@ -23,13 +23,13 @@ makedepends=(
 source=(
   "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
   "git+https://github.com/xbmc/vfs.rar.git#tag=$gittagvfs"
-  "removestupidremarks.patch"
+  "Fix-eglextchromium.patch"
 )
 
 sha256sums=(
 'SKIP'
 'SKIP'
-'2b70aecae2fb11fef8f925baa8e272cacb17add58fc6fdbf791b30e7e4b2baed'
+'faff047172c3b1cccd62aa6e30fd81e97eac7dd964ac19649755600cfe820b1f'
 )
 
 pkgver() {
@@ -54,7 +54,7 @@ prepare() {
  msg2 "Patching Kodisource"
  while read patch; do
   echo "Applying $patch"
-  git apply $patch || exit 2
+  git apply $patch
  done <<< $(ls ../../*.patch)
 }
 
@@ -66,7 +66,7 @@ build() {
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
  export APP_RENDER_SYSTEM=gl
- cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON
+ cmake ../xbmc -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_MYSQLCLIENT=ON -DHAVE_EGLEXTANGLE=1
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1
 
