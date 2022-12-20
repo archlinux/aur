@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Eureqa Formulize
+Comment=Scientific data mining software using symbolic regression technique
+Exec=/usr/bin/eureqa

@@ -1,0 +1,19 @@
+pkgbase = eureqa-bin
+	pkgdesc = Scientific data mining software using symbolic regression technique
+	pkgver = 1.24.0
+	pkgrel = 1
+	url = http://nutonian.wikidot.com
+	arch = x86_64
+	license = custom
+	depends = libxext
+	depends = libsm
+	depends = fontconfig
+	depends = libxrender
+	source = http://download.nutonian.com/1_24_0/eureqa_1_24_0_X11_x86-64.tar.gz
+	source = eureqa.sh
+	source = eureqa.desktop
+	sha256sums = 14e626fa9aa48900cd95ed3ee5d198a56b6fea117d8ae041451cfccd629e07df
+	sha256sums = adfb577f86b93fd8461d4d5e13f6d8d7923acdf2cc9eacd977a5d99ce7b2f330
+	sha256sums = 95c14337fdeb510803ea4740c4c15ab03d4687cd977fad5f77a5d925c0935e5f
+
+pkgname = eureqa-bin
