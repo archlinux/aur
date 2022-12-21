@@ -1,6 +1,6 @@
 pkgbase = kodi-matrix-git
 	pkgver = r57755.fd5651963cb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -146,10 +146,6 @@ pkgname = kodi-matrix-git
 	conflicts = kodi-x11
 	conflicts = kodi-wayland
 	conflicts = kodi-gbm
-	replaces = kodi
-	replaces = kodi-x11
-	replaces = kodi-wayland
-	replaces = kodi-gbm
 
 pkgname = kodi-matrix-git-eventclients
 	pkgdesc = Kodi Event Clients (Matrix branch)

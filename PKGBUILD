@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r57755.fd5651963cb
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -206,7 +206,6 @@ package_kodi-matrix-git() {
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
   conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
