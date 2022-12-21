@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-bin
 	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 0
 	url = https://github.com/ambition-echo/earth_wallpaper
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = earth-wallpaper-bin
 	depends = python-requests
 	depends = pyside6
 	depends = python-pysocks
-	source = earth-wallpaper-2.1.7.tar.gz::https://github.com/ambition-echo/earth_wallpaper/archive/refs/tags/2.1.7.tar.gz
+	source = earth-wallpaper-2.1.8.tar.gz::https://github.com/ambition-echo/earth_wallpaper/archive/refs/tags/2.1.8.tar.gz
 	source = earth-wallpaper.desktop
 	sha256sums = SKIP
 	sha256sums = 13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5
