@@ -1,0 +1,16 @@
+pkgbase = python-jupyter-server-terminals
+	pkgdesc = A Jupyter Server Extension Providing Terminals
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/jupyter-server/jupyter_server_terminals
+	arch = any
+	license = BSD
+	makedepends = unzip
+	makedepends = python-setuptools
+	depends = python
+	depends = python-terminado
+	depends = jupyter-server
+	source = https://files.pythonhosted.org/packages/py3/j/jupyter-server-terminals/jupyter_server_terminals-0.4.3-py3-none-any.whl
+	sha256sums = ec67d3f1895d25cfb586a87a50b8eee13b709898a4afd721058e551e0a0f480d
+
+pkgname = python-jupyter-server-terminals
