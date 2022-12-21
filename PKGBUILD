@@ -3,7 +3,7 @@
 
 _appname=integration_gitlab
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=1.0.10
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='GitLab integration into Nextcloud'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(nextcloud
              yq)
 _archive="$_appname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('b17428191da8452e72bb54713412f5cad6f00b4ab50073a96e56504a6e61b01d')
+sha256sums=('ff2f53d2339ea97517c5697d7ec8138ec08b7c7df14afed128ed5992e64cd8f0')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
