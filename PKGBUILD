@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=ccase
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A command line utility for converting between string cases"
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -11,7 +11,7 @@ conflicts=("ccase-git" "ccase-bin")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('dbe54f9609ef0677623b86acb3a9d0ea9b21ac6d367aff3f5d5949f95cf7b59db4915afe71af92cc034c3b3261c64f7a3699a14968cc866f76ce3cae586b1f38')
+sha512sums=('7c739949caddeb836194b62a3a0c67470ef087b7b7670466261500ff57a01e5e53ed2a347dbd75fae4e1813f3ea1755a59e46c4038055ca691fec7b4356b31f6')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -26,6 +26,5 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   install -Dm755 target/release/ccase "${pkgdir}/usr/bin/ccase"
-  # Awaiting https://github.com/rutrum/ccase/issues/1
-  #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
