@@ -23,7 +23,7 @@ noextract=("${source[@]%%::*}")
 package_ceph-libs-bin() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
            'oath-toolkit' 'python' 'snappy' 'systemd-libs' 'fmt' 'cryptsetup'
-           'lua' 'librdkafka' 'libaio' 'gperftools'
+           'lua' 'librdkafka' 'libaio' 'gperftools' 'librabbitmq-c'
            'python-prettytable' 'python-yaml' 'python-setuptools')
   provides=("ceph-libs=${pkgver}-${pkgrel}")
   conflicts=('ceph-libs')
@@ -57,7 +57,7 @@ package_ceph-bin() {
 package_ceph-mgr-bin() {
   depends=("ceph=${pkgver}-${pkgrel}" "ceph-libs=${pkgver}-${pkgrel}"
            'bash' 'boost-libs' 'curl' 'gperftools' 'nss' 'fmt'
-           'python' 'python-cherrypy' 'python-pecan' 'python-pyjwt' 'python-more-itertools'
+           'python' 'python-cherrypy' 'python-pecan' 'python-pyjwt' 'python-more-itertools' 'python-routes'
            'python-numpy' 'python-scipy' 'python-six' 'python-coverage' 'python-pytest' 'python-dateutil'
            'python-prettytable' 'python-requests' 'python-pyopenssl' 'python-bcrypt' 'python-yaml'
            'python-werkzeug' 'python-jinja')
