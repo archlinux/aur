@@ -1,6 +1,6 @@
 pkgbase = ruby-repofetch
 	pkgdesc = A remote repository stat fetcher with support for 3rd-party plugins
-	pkgver = v0.4.2.rc.1.r1.gb01827b
+	pkgver = v0.4.2.rc.3.r11.g21ee0fb
 	pkgrel = 1
 	url = https://spenserblack.github.io/repofetch/
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = ruby-repofetch
 	depends = ruby
 	optdepends = github-cli: Receive auth token from GitHub
 	provides = ruby-repofetch
-	provides = ruby-repofetch-bin
 	conflicts = ruby-repofetch
 	conflicts = ruby-repofetch-bin
 	source = ruby-repofetch::git+https://github.com/spenserblack/repofetch

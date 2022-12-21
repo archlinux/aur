@@ -2,7 +2,7 @@
 
 pkgname=ruby-repofetch
 _gitname=repofetch
-pkgver=v0.4.2.rc.1.r1.gb01827b
+pkgver=v0.4.2.rc.3.r11.g21ee0fb
 pkgrel=1
 pkgdesc="A remote repository stat fetcher with support for 3rd-party plugins"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('git')
 optdepends=('github-cli: Receive auth token from GitHub')
 depends=('ruby')
-provides=('ruby-repofetch' 'ruby-repofetch-bin')
+provides=('ruby-repofetch')
 conflicts=('ruby-repofetch' 'ruby-repofetch-bin')
 source=("${pkgname}::git+${gh_url}")
 md5sums=('SKIP')
