@@ -1,0 +1,13 @@
+pkgbase = librga-bin-git
+	pkgdesc = rockchip rga library
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/airockchip/librga
+	arch = aarch64
+	license = Apache License 2.0
+	provides = librga
+	conflicts = librga
+	source = git+https://github.com/airockchip/librga
+	sha256sums = SKIP
+
+pkgname = librga-bin-git
