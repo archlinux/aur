@@ -3,7 +3,7 @@
 resname=earth_wallpaper
 pkgname=earth-wallpaper-nightly
 name=earth-wallpaper
-pkgver=2.1.7.r3.ge7675f0
+pkgver=2.1.8.r2.gdb4b010
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
