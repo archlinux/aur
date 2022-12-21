@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61788.31832046a52
+pkgver=r61794.37542d94992
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -197,7 +197,6 @@ package_kodi-git() {
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
   conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
