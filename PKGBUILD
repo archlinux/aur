@@ -1,8 +1,8 @@
 # Maintainer: k8ieone <rostik.medved@gmail.com>
 pkgname=flamenco-worker
 pkgver=3.1
-pkgrel=1
-pkgdesc="Flamenco Worker."
+pkgrel=2
+pkgdesc="Worker for Blender's Flamenco Render System"
 arch=('x86_64' 'aarch64')
 url="https://developer.blender.org/diffusion/F/"
 options=(!lto)

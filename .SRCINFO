@@ -1,7 +1,7 @@
 pkgbase = flamenco-worker
-	pkgdesc = Flamenco Worker.
+	pkgdesc = Worker for Blender's Flamenco Render System
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.blender.org/diffusion/F/
 	arch = x86_64
 	arch = aarch64
