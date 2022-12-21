@@ -42,13 +42,13 @@ package() {
 	else
 		# "/usr/share/licenses/${pkgname}/LICENSE"
 		#cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
-		install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		install -d LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	fi
 	if [ ! -f "/usr/share/doc/${pkgname}/README.md" ]; then
 		install -d README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	else
 		#rm -f "/usr/share/doc/${pkgname}/README.md"
 		#cp README.md "/usr/share/doc/${pkgname}/README.md"
-		install -D README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+		install -d README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	fi
 }
