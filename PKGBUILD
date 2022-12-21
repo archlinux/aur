@@ -6,8 +6,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=lib32-libnewt
-pkgver=0.52.21
-pkgrel=2
+pkgver=0.52.23
+pkgrel=1
 pkgdesc="Not Erik's Windowing Toolkit - text mode windowing with slang"
 arch=(x86_64)
 url=https://fedorahosted.org/newt/
@@ -25,24 +25,26 @@ makedepends=(
 )
 optdepends=('lib32-tcl: whiptcl support')
 options=(!makeflags)
-source=(git+https://pagure.io/newt.git#tag=r${pkgver//./-})
-sha256sums=(SKIP)
+_tag=6e3a852c6becac7f2f231453682089577ad3de3d
+source=(git+https://pagure.io/newt.git#tag=${_tag})
+b2sums=(SKIP)
 
 prepare() {
   cd newt
-
   sed -i 's/tcl8.4/tcl8.6/' Makefile.in
   echo '#define USE_INTERP_RESULT 1' >> config.h
-
   autoreconf -fiv
+}
+
+pkgver() {
+  cd newt
+  git describe --tags | sed 's/^r//; s/-/./g'
 }
 
 build() {
   cd newt
-
   export CC='gcc -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
@@ -52,9 +54,7 @@ build() {
 }
 
 package() {
-  cd newt
-
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install -C newt
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
