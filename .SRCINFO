@@ -1,6 +1,6 @@
 pkgbase = fmedia-git
 	pkgdesc = fast media player/recorder/converter
-	pkgver = v1.12.1.r0.d7c611d
+	pkgver = android.v0.8.r0.12cd09b
 	pkgrel = 1
 	url = https://github.com/stsaz/fmedia
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = fmedia-git
 	makedepends = svn
 	makedepends = flac
 	makedepends = mpg123
-	makedepends = libjpeg9
 	makedepends = libpulse
 	makedepends = unzip
 	makedepends = jdk8-openjdk
@@ -21,11 +20,11 @@ pkgbase = fmedia-git
 	provides = fmedia
 	conflicts = fmedia-git
 	conflicts = fmedia
-	source = git+https://github.com/stsaz/fmedia
+	source = git+https://github.com/stsaz/ffbase
+	source = git+https://github.com/stsaz/ffaudio
 	source = git+https://github.com/stsaz/ffos
-	source = git+https://github.com/stsaz/ff
-	source = git+https://github.com/stsaz/ff-3pt
-	source = git+https://github.com/gypified/libmp3lame#commit=d5ecd40
+	source = git+https://github.com/stsaz/avpack
+	source = git+https://github.com/stsaz/fmedia
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -33,4 +32,3 @@ pkgbase = fmedia-git
 	md5sums = SKIP
 
 pkgname = fmedia-git
-

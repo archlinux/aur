@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname="fmedia"
 pkgname="${_pkgname}-git"
-pkgver=v1.12.1.r0.d7c611d
+pkgver=android.v0.8.r0.12cd09b
 pkgrel=1
 pkgdesc="fast media player/recorder/converter"
 arch=("x86_64")
@@ -9,18 +9,18 @@ url="https://github.com/stsaz/fmedia"
 license=('unknown')
 groups=()
 depends=('sqlite')
-makedepends=('git' 'svn' 'flac' 'mpg123' 'libjpeg9' 'libpulse' 'unzip' 'jdk8-openjdk' 'dos2unix' 'cmake' 'gtk3')
+makedepends=('git' 'svn' 'flac' 'mpg123' 'libpulse' 'unzip' 'jdk8-openjdk' 'dos2unix' 'cmake' 'gtk3')
 provides=("${pkgname}" "fmedia")
 conflicts=("${pkgname}" "fmedia")
 replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/stsaz/fmedia'
+source=('git+https://github.com/stsaz/ffbase'
+        'git+https://github.com/stsaz/ffaudio'
         'git+https://github.com/stsaz/ffos'
-        'git+https://github.com/stsaz/ff'
-        'git+https://github.com/stsaz/ff-3pt'
-        'git+https://github.com/gypified/libmp3lame#commit=d5ecd40'
+        'git+https://github.com/stsaz/avpack'
+        'git+https://github.com/stsaz/fmedia'
 )
 noextract=()
 md5sums=('SKIP'
@@ -38,35 +38,16 @@ pkgver() {
 
 
 build() {
-  cd "$srcdir/ff-3pt"
+  cd "$srcdir/fmedia/alib3"
+  make
+  make md5check
+  make install
+  cd ../../
 
-  if [ -d "/tmp/ff3pt-build" ]; then
-    rm -rf /tmp/ff3pt-build
-  fi
-  mkdir -p _src
+  cd fmedia
+  make
+  make install
 
-  curl -L "https://sourceforge.net/projects/lame/files/latest/download?source=files" --output "_src/lame-3.100.tar.gz"
-  curl -L "https://sourceforge.net/projects/soxr/files/latest/download?source=files" --output "_src/soxr-0.1.3-Source.tar.xz"
-
-  mkdir -p _bin/linux-amd64
-  
-  cd "$srcdir/ff-3pt"
-  echo && echo && make alac
-  echo && echo && make dynanorm
-  echo && echo && make fdk-aac
-  echo && echo && make flac
-  echo && echo && make lame
-  echo && echo && make mac
-  echo && echo && make mpg123
-  echo && echo && make musepack
-  echo && echo && make ogg
-  echo && echo && make opus
-  echo && echo && make soxr
-  echo && echo && make vorbis
-  echo && echo && make wavpack
-  cd "$srcdir/${_pkgname}"
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../ff-3pt/_bin/linux-amd64
-  make FF3PTLIB=../ff-3pt/_bin/linux-amd64 install
 }
 
 check() {
