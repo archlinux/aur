@@ -1,27 +1,27 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=jchempaint
 pkgver=3.3.1210
-pkgver_original=3.3-1210
-pkgrel=2
-pkgdesc=""
+_pkgver_original=3.3-1210
+pkgrel=3
+pkgdesc="Chemical 2D structure editor application/applet based on the Chemistry Development Kit"
 arch=( x86_64 )
-url="jchempaint.github.io"
+url="https://github.com/JChemPaint/jchempaint"
 license=('GPL')
-depends=(java-runtime)
+depends=(java-environment)
 makedepends=(imagemagick)
-source=("https://github.com/downloads/JChemPaint/jchempaint/${pkgname}-${pkgver_original}.jar")
+source=("https://github.com/downloads/JChemPaint/jchempaint/${pkgname}-${_pkgver_original}.jar")
 md5sums=('2732ecc2e01759ba91619398ff0fe614')
-noextract=("${pkgname}-${pkgver_original}.jar")
+noextract=("${pkgname}-${_pkgver_original}.jar")
 
 prepare() {
-	jar -xf jchempaint-${pkgver_original}.jar org/openscience/jchempaint/resources/large-bin/icon_32x32.gif
+	jar -xf jchempaint-${_pkgver_original}.jar org/openscience/jchempaint/resources/large-bin/icon_32x32.gif
 	mv org/openscience/jchempaint/resources/large-bin/icon_32x32.gif jchempaint.gif
 	convert jchempaint.gif jchempaint.png
 }
 
 package() {
 	mkdir -p $pkgdir/usr/share/java/jchempaint
-	cp jchempaint-${pkgver_original}.jar $pkgdir/usr/share/java/jchempaint/jchempaint.jar
+	cp jchempaint-${_pkgver_original}.jar $pkgdir/usr/share/java/jchempaint/jchempaint.jar
 	mkdir -p $pkgdir/usr/share/icons/hicolor/32x32/apps
 	cp jchempaint.png $pkgdir/usr/share/icons/hicolor/32x32/apps
 	mkdir -p $pkgdir/usr/bin
