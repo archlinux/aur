@@ -1,6 +1,6 @@
 pkgbase = smuview-appimage
 	pkgdesc = A Qt based source measure unit GUI for sigrok
-	pkgver = 0.0.5
+	pkgver = 0.0.6_git_54cf16b
 	pkgrel = 1
 	url = https://github.com/knarfS/smuview
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = smuview-appimage
 	provides = smuview
 	conflicts = smuview
 	options = !strip
-	source = https://github.com/knarfS/smuview/releases/download/v0.0.5/SmuView-0.0.5-x86_64.AppImage
+	source = https://github.com/knarfS/smuview/releases/download/continuous/SmuView-0.0.6-git-54cf16b-x86_64.AppImage
 	source = smuview.sh
-	md5sums = 44514659fd520bf8bdc2a2e2375d642f
+	md5sums = ec8aa2c925ad43d47eef118cd79fa211
 	md5sums = 31f18ee527b6ea19c63fc521a0f91043
 
 pkgname = smuview-appimage
-
