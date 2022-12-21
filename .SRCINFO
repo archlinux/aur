@@ -7,7 +7,7 @@ pkgbase = mpv-sponsorblock
 	license = MIT
 	makedepends = cargo-nightly
 	depends = mpv
-	source = mpv-sponsorblock-1.1.0.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 0cf015fb4b5ea6c4f5f065fb02f67171fc2a9c45b4a766a7264f02c42bcfe6fe
+	source = mpv-sponsorblock-99377ab4e724909a1b0f04b08d3ada8186999a42.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/99377ab4e724909a1b0f04b08d3ada8186999a42.tar.gz
+	sha256sums = 3071bccc00901bdc313439d3fad129c308f114bd11a194301a35c7a8ddb606c1
 
 pkgname = mpv-sponsorblock

@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2164
 pkgname=mpv-sponsorblock
+_pkgver=99377ab4e724909a1b0f04b08d3ada8186999a42
 pkgver=1.1.0
 pkgrel=1
 pkgdesc='MPV plugin that allow you to skip sponsors while watching YouTube videos'
@@ -10,17 +11,19 @@ url='https://github.com/TheCactusVert/mpv-sponsorblock'
 license=('MIT')
 depends=('mpv')
 makedepends=('cargo-nightly')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0cf015fb4b5ea6c4f5f065fb02f67171fc2a9c45b4a766a7264f02c42bcfe6fe')
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$_pkgver.tar.gz::$url/archive/99377ab4e724909a1b0f04b08d3ada8186999a42.tar.gz")
+sha256sums=('3071bccc00901bdc313439d3fad129c308f114bd11a194301a35c7a8ddb606c1')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    export RUSTUP_TOOLCHAIN=nightly
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
 
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
@@ -28,14 +31,14 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
 
     export RUSTUP_TOOLCHAIN=nightly
     cargo test --frozen
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
 
     install -Dm644 -t "$pkgdir/usr/share/$pkgname" sponsorblock.toml
     install -Dm755 target/release/libmpv_sponsorblock.so "$pkgdir/usr/lib/$pkgname/sponsorblock.so"
