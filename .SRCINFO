@@ -1,17 +1,18 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake>=3.1.0
+	makedepends = cmake>=3.16.0
 	makedepends = extra-cmake-modules
 	makedepends = desktop-file-utils
-	depends = qt5-base>=5.6.0
+	depends = qt5-base>=5.15.0
 	depends = libelf
 	depends = elfutils
 	depends = threadweaver
+	depends = kddockwidgets
 	depends = ki18n
 	depends = kconfig
 	depends = kio
@@ -19,11 +20,12 @@ pkgbase = hotspot
 	depends = kcoreaddons
 	depends = kitemmodels
 	depends = kconfigwidgets
+	depends = kparts
 	depends = solid
 	depends = rustc-demangle>=0.1.18-2
 	provides = hotspot
 	conflicts = hotspot-git
-	source = https://github.com/KDAB/hotspot/releases/download/v1.3.0/hotspot-v1.3.0.tar.gz
-	sha1sums = 3fe86a97291a6c9cefc2d0a16e9b5379aa1a831c
+	source = https://github.com/KDAB/hotspot/releases/download/v1.4.1/hotspot-v1.4.1.tar.gz
+	sha1sums = 242d8300225535fe6b61ecb79f2ba7cc4c9912f2
 
 pkgname = hotspot
