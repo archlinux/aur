@@ -45,13 +45,13 @@ pkgname=(
   openssh-hpn-shim
 )
 _openssh_ver=9.1p1
-_hpn_ver=hpn17v8
+_hpn_ver=hpn17v10
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 git_rev="hpn-${_pkgver}"
 #git_rev="1fb7466a7a8c43e8b4ea4587ecb16d7b725a0d8e"  # 9.1p1-hpn17v7
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')

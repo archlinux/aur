@@ -1,7 +1,7 @@
 pkgbase = openssh-hpn
 	pkgdesc = A Secure SHell server/client fork with High Performance patches included
-	pkgver = 9.1p1.hpn17v8
-	pkgrel = 2
+	pkgver = 9.1p1.hpn17v10
+	pkgrel = 1
 	url = https://www.psc.edu/index.php/hpn-ssh/
 	arch = x86_64
 	arch = i486
