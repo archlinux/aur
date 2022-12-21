@@ -25,7 +25,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-xsl")
 
 pkgver=8.2.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
@@ -35,14 +35,15 @@ makedepends=('apache' 'aspell' 'c-client' 'db' 'gdbm' 'enchant' 'gd' 'gmp' 'icu'
 checkdepends=('procps-ng')
 options=(debug)
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
-        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch')
+        'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch' 'constant_016.phpt.patch')
 sha256sums=('6ea4c2dfb532950fd712aa2a08c1412a6a81cd1334dd0b0bf88a8e44c2b3a943'
             'SKIP'
             'c24122c0a742d3f153d52076137e737da0191584dab178bafed547b3bf2a28e8'
             'aee6ee73d1b3cf161069c355e8472a2ceda0886e98bf6a69d57c1dcf6b09ab17'
             '69beb06f8eed1b9d61f1f2ad71b8d1026e0389b7f4cbedbf540ab84427c86d95'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            '47d36703914f9e26c33e06fab8aa66af918af8f06f4168db7d8c6b8104abc0d3')
+            '47d36703914f9e26c33e06fab8aa66af918af8f06f4168db7d8c6b8104abc0d3'
+            '0038394f0bfaf67b8536b99069800a12e82b8e8e0be0ae4411ca0d5af6f308f7')
 validpgpkeys=('E60913E4DF209907D8E30D96659A97C9CF2A795A')
 _interpreter=${pkgver%.*}
 

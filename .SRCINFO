@@ -1,6 +1,6 @@
 pkgbase = php-zts
 	pkgver = 8.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.php.net/
 	arch = x86_64
 	license = PHP
@@ -38,6 +38,7 @@ pkgbase = php-zts
 	source = php-fpm.patch
 	source = php-fpm.tmpfiles
 	source = php.ini.patch
+	source = constant_016.phpt.patch
 	validpgpkeys = E60913E4DF209907D8E30D96659A97C9CF2A795A
 	sha256sums = 6ea4c2dfb532950fd712aa2a08c1412a6a81cd1334dd0b0bf88a8e44c2b3a943
 	sha256sums = SKIP
@@ -46,6 +47,7 @@ pkgbase = php-zts
 	sha256sums = 69beb06f8eed1b9d61f1f2ad71b8d1026e0389b7f4cbedbf540ab84427c86d95
 	sha256sums = 640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5
 	sha256sums = 47d36703914f9e26c33e06fab8aa66af918af8f06f4168db7d8c6b8104abc0d3
+	sha256sums = 0038394f0bfaf67b8536b99069800a12e82b8e8e0be0ae4411ca0d5af6f308f7
 
 pkgname = php-zts
 	pkgdesc = A general-purpose scripting language that is especially suited to web development(ZTS enabled)
