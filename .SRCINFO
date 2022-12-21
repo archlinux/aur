@@ -1,7 +1,7 @@
 pkgbase = fheroes2
 	pkgdesc = Recreation of the Heroes of Might and Magic II game engine
-	pkgver = 0.9.21
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://ihhub.github.io/fheroes2/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fheroes2
 	optdepends = wget: download demo version files
 	optdepends = unzip: unpack demo version files
 	conflicts = fheroes2-git
-	source = fheroes2-0.9.21.tar.gz::https://github.com/ihhub/fheroes2/archive/0.9.21.tar.gz
-	sha256sums = 863e78cd239b577068957843d5926fccf72c8bfd0531522cc242040f3108341c
+	source = fheroes2-1.0.0.tar.gz::https://github.com/ihhub/fheroes2/archive/1.0.0.tar.gz
+	sha256sums = 80468b4eaf128ac5179a3416a02e2a2ef4ab34d90876b179fccd8d505f950440
 
 pkgname = fheroes2
