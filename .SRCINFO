@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-catch2v3
+	pkgdesc = Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3) (mingw-w64)
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/catchorg/Catch2/
+	arch = any
+	license = Boost
+	makedepends = git
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	source = mingw-w64-catch2v3::git+https://github.com/catchorg/Catch2#commit=ab6c7375be9a8e71ee84c6f8537113f9f47daf99?signed
+	validpgpkeys = E29C46F3B8A7502860793B7DECC9C20E314B2360
+	validpgpkeys = 81E70B717FFB27AFDB45F52090BBFF120F9C087B
+	sha512sums = SKIP
+
+pkgname = mingw-w64-catch2v3
