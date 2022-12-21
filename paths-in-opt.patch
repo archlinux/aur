@@ -1,8 +1,8 @@
 diff --git a/hydrus/client/gui/ClientGUI.py b/hydrus/client/gui/ClientGUI.py
-index 4b5b1d84..687142fe 100644
+index 95b81fc6..73b02fbf 100644
 --- a/hydrus/client/gui/ClientGUI.py
 +++ b/hydrus/client/gui/ClientGUI.py
-@@ -6102,7 +6102,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes, CAC.ApplicationCo
+@@ -6184,7 +6184,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes, CAC.ApplicationCo
                                  python_executable = python_executable.replace( 'pythonw', 'python' )
                                  
                              
@@ -12,12 +12,12 @@ index 4b5b1d84..687142fe 100644
                              cmd = [ python_executable, server_script_path, db_param ]
                              
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index 17d995c9..785922d2 100644
+index fab89f7f..21a89dea 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
-@@ -7,34 +7,9 @@ import yaml
- # old method of getting frozen dir, doesn't work for symlinks looks like:
- # BASE_DIR = getattr( sys, '_MEIPASS', None )
+@@ -10,34 +10,9 @@ import yaml
+ RUNNING_CLIENT = False
+ RUNNING_SERVER = False
  
 -RUNNING_FROM_FROZEN_BUILD = getattr( sys, 'frozen', False )
 -
@@ -53,7 +53,7 @@ index 17d995c9..785922d2 100644
  
  muh_platform = sys.platform.lower()
  
-@@ -46,32 +21,16 @@ PLATFORM_HAIKU = muh_platform == 'haiku1'
+@@ -49,32 +24,16 @@ PLATFORM_HAIKU = muh_platform == 'haiku1'
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
