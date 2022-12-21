@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.13.2
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -32,18 +32,18 @@ makedepends=(
   snappy
   zlib
 )
-_tag=816897166fd51c800ce51f9a16d3d89462fdfe0d
+_tag=4e92a53bbcafc75d05682df87f8fedd05e0008e3
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
+  armips-filesystem::git+https://github.com/Kingcom/filesystem.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
-  armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
@@ -67,25 +67,21 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-
   for submodule in assets/lang ext/{glslang,miniupnp} ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
-
   for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
-
   cd ext/armips
-
-  for submodule in ext/tinyformat; do
+  for submodule in ext/filesystem; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../../../armips-${submodule#*/}
-    git submodule update ${submodule}
+    git -c protocol.file.allow=always submodule update ${submodule}
   done
 }
 
@@ -129,7 +125,6 @@ package_ppsspp() {
     zlib
     zstd
   )
-
   install -Dm 755 build-sdl/PPSSPPSDL -t "${pkgdir}"/usr/bin/
   install -Dm 755 build-sdl/PPSSPPHeadless -t "${pkgdir}"/usr/bin/
   install -Dm 755 build-qt/PPSSPPQt -t "${pkgdir}"/usr/bin/
