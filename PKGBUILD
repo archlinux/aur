@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not overpy_node_manipulation'
+  python -m pytest
 }
 
 package() {
