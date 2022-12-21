@@ -5,7 +5,7 @@
 
 pkgname='mozc'
 pkgver=2.28.4950.102
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -25,6 +25,9 @@ prepare() {
     cd ${pkgname}-git/src
 
     git submodule update --init --recursive
+
+    # Temp fix for Bazel 6.0.0
+    sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
 }
 
 build() {
