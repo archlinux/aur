@@ -1,0 +1,203 @@
+diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
+index 79a4b06ebd..93e90ba0b5 100644
+--- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
++++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
+@@ -2023,7 +2023,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+             sage: f.green_function(P([2, 1]), K.ideal(7), N=7)
+             0.48647753726382832627633818586
+             sage: f.green_function(P([w, 1]), K.ideal(17), error_bound=0.001)
+-            -0.70813041039490996737374178059
++            -0.70761163353747779889947530309
+ 
+         ::
+ 
+@@ -2233,7 +2233,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+             sage: f = DynamicalSystem_projective([1000*x^2-29*y^2, 1000*y^2])
+             sage: Q = P(-1/4, 1)
+             sage: f.canonical_height(Q, error_bound=0.01)
+-            3.7996079979254623065837411853
++            3.7979215342343045582800170705
+ 
+         ::
+ 
+@@ -2434,7 +2434,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+             sage: P.<x,y> = ProjectiveSpace(QQ, 1)
+             sage: f = DynamicalSystem([5*x^2 + 3*x*y , y^2 + 3*x^2])
+             sage: f.height_difference_bound(prec=100)
+-            5.3375380797013179737224159274
++            3.5835189384561100016249547168
+         """
+         FF = FractionField(self.domain().base_ring()) #lift will only work over fields, so coercing into FF
+         if FF not in NumberFields():
+diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
+index 8e3ac314b6..747a6b1e2f 100644
+--- a/src/sage/libs/singular/decl.pxd
++++ b/src/sage/libs/singular/decl.pxd
+@@ -574,7 +574,7 @@ cdef extern from "singular/Singular/libsingular.h":
+ 
+     # gets a component out of a polynomial vector
+ 
+-    poly *pTakeOutComp1(poly **, int)
++    poly *pTakeOutComp(poly **, int)
+ 
+     # deep copy p
+ 
+diff --git a/src/sage/libs/singular/singular.pyx b/src/sage/libs/singular/singular.pyx
+index d8ea7b07f3..368ee09d50 100644
+--- a/src/sage/libs/singular/singular.pyx
++++ b/src/sage/libs/singular/singular.pyx
+@@ -1726,20 +1726,17 @@ cdef int overflow_check(unsigned long e, ring *_ring) except -1:
+ 
+     Whether an overflow occurs or not partially depends
+     on the number of variables in the ring. See trac ticket
+-    :trac:`11856`. With Singular 4, it is by default optimized
+-    for at least 4 variables on 64-bit and 2 variables on 32-bit,
+-    which in both cases makes a maximal default exponent of
+-    2^16-1.
++    :trac:`11856`.
+ 
+     EXAMPLES::
+ 
+         sage: P.<x,y> = QQ[]
+-        sage: y^(2^16-1)
+-        y^65535
+-        sage: y^2^16
++        sage: y^(2^30)
++        y^1073741824
++        sage: y^2^32
+         Traceback (most recent call last):
+         ...
+-        OverflowError: exponent overflow (65536)
++        OverflowError: exponent overflow (4294967296)
+     """
+     if unlikely(e > _ring.bitmask):
+         raise OverflowError("exponent overflow (%d)"%(e))
+diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
+index 4d70e01c8a..7c88219c07 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
++++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
+@@ -60,7 +60,7 @@ We compute in a quotient of a polynomial ring over `\ZZ/17\ZZ`::
+ Note that the result of a computation is not necessarily reduced::
+ 
+     sage: (a+b)^17
+-    256*a*b^16 + 256*b^17
++    a*b^16 + b^17
+     sage: S(17) == 0
+     True
+ 
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index 4dad016b33..d9b520311e 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -193,7 +193,7 @@ from sage.libs.singular.decl cimport (
+     p_IsUnit, p_IsOne, p_Series, p_Head, idInit, fast_map_common_subexp, id_Delete,
+     p_IsHomogeneous, p_Homogen, p_Totaldegree,pLDeg1_Totaldegree, singclap_pdivide, singclap_factorize,
+     idLift, IDELEMS, On, Off, SW_USE_CHINREM_GCD, SW_USE_EZGCD,
+-    p_LmIsConstant, pTakeOutComp1, singclap_gcd, pp_Mult_qq, p_GetMaxExp,
++    p_LmIsConstant, pTakeOutComp, singclap_gcd, pp_Mult_qq, p_GetMaxExp,
+     pLength, kNF, p_Neg, p_Minus_mm_Mult_qq, p_Plus_mm_Mult_qq,
+     pDiff, singclap_resultant, p_Normalize,
+     prCopyR, prCopyR_NoSort)
+@@ -1587,7 +1587,7 @@ cdef class MPolynomialRing_libsingular(MPolynomialRing_base):
+             9/4
+ 
+             sage: P.monomial_quotient(x,y) # Note the wrong result
+-            x*y^65535*z^65535
++            x*y^1048575*z^1048575
+ 
+             sage: P.monomial_quotient(x,P(1))
+             x
+@@ -2247,7 +2247,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             9/4*x^2 - 1/4*y^2 - y - 1
+ 
+             sage: P.<x,y> = PolynomialRing(QQ,order='lex')
+-            sage: (x^2^15) * x^2^15
++            sage: (x^2^32) * x^2^32
+             Traceback (most recent call last):
+             ...
+             OverflowError: exponent overflow (...)
+@@ -2371,7 +2371,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+             ValueError: not a 2nd power
+ 
+             sage: P.<x,y> = PolynomialRing(QQ,order='lex')
+-            sage: (x+y^2^15)^10
++            sage: (x+y^2^32)^10
+             Traceback (most recent call last):
+             ....
+             OverflowError: exponent overflow (...)
+@@ -3452,16 +3452,16 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         We are catching overflows::
+ 
+             sage: R.<x,y> = QQ[]
+-            sage: n=100; f = x^n
++            sage: n=10000; f = x^n
+             sage: try:
+             ....:     f.subs(x = x^n)
+             ....:     print("no overflow")
+             ....: except OverflowError:
+             ....:     print("overflow")
+-            x^10000
++            x^100000000
+             no overflow
+ 
+-            sage: n = 1000
++            sage: n = 100000
+             sage: try:
+             ....:     f = x^n
+             ....:     f.subs(x = x^n)
+@@ -4567,7 +4567,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         l = []
+         for i from 0 <= i < IDELEMS(res):
+             for j from 1 <= j <= IDELEMS(_I):
+-                l.append( new_MP(parent, pTakeOutComp1(&res.m[i], j)) )
++                l.append( new_MP(parent, pTakeOutComp(&res.m[i], j)) )
+ 
+         id_Delete(&fI, r)
+         id_Delete(&_I, r)
+diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
+index 3209824ec8..3527874d96 100644
+--- a/src/sage/rings/polynomial/plural.pyx
++++ b/src/sage/rings/polynomial/plural.pyx
+@@ -1619,10 +1619,10 @@ cdef class NCPolynomial_plural(RingElement):
+             sage: P = A.g_algebra(relations={y*x:-x*y + z},  order='lex')
+             sage: P.inject_variables()
+             Defining x, z, y
+-            sage: (x^2^15) * x^2^15
++            sage: (x^2^31) * x^2^31
+             Traceback (most recent call last):
+             ...
+-            OverflowError: exponent overflow (65536)
++            OverflowError: exponent overflow (2147483648)
+         """
+         # all currently implemented rings are commutative
+         cdef poly *_p
+@@ -1689,10 +1689,10 @@ cdef class NCPolynomial_plural(RingElement):
+             sage: P = A.g_algebra(relations={y*x:-x*y + z},  order='lex')
+             sage: P.inject_variables()
+             Defining x, z, y
+-            sage: (x+y^2^15)^10
++            sage: (x+y^2^31)^10
+             Traceback (most recent call last):
+             ....
+-            OverflowError: exponent overflow (327680)
++            OverflowError: exponent overflow (2147483648)
+         """
+         if type(exp) is not Integer:
+             try:
+diff --git a/src/sage/structure/element.pyx b/src/sage/structure/element.pyx
+index b5d83ef71b..f1dc37cad0 100644
+--- a/src/sage/structure/element.pyx
++++ b/src/sage/structure/element.pyx
+@@ -2705,10 +2705,10 @@ cdef class RingElement(ModuleElement):
+         with Singular 4::
+ 
+             sage: K.<x,y> = ZZ[]
+-            sage: (x^12345)^54321
++            sage: (x^123456)^654321
+             Traceback (most recent call last):
+             ...
+-            OverflowError: exponent overflow (670592745)
++            OverflowError: exponent overflow (80779853376)
+         """
+         return arith_generic_power(self, n)
+ 
