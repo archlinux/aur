@@ -3,7 +3,7 @@
 
 pkgname=python-pymc
 _name=${pkgname#python-}
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=('i686' 'x86_64')
@@ -22,22 +22,10 @@ depends=(
   python-typing_extensions
 )
 
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
-  "0001-Update-PyTensor-dependency.patch"
-)
-sha256sums=(
-  '67d445b9c8ab254f1cdab5c3525bc2a9a73d05ca943942bcc44c48228152bb2f'
-  '315ba73fc201aab61d86edbd24211deb92f7d54b2708bb87a0d4d45f614c5d49'
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('1e4faa4ddb0853dccf9509027f040f5ef46f7beb7765405e51fb10aebc93ca11')
 
 _archive="$_name-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  patch --forward --strip=1 --input="${srcdir}/0001-Update-PyTensor-dependency.patch"
-}
 
 build() {
   cd "$_archive"
