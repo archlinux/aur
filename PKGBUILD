@@ -1,5 +1,5 @@
 #
-# PKGBUILD for wg_tool 
+# Arch Linux PKGBUILD for wg_tool 
 # This builds the latest release tag.
 # git HEAD is also well tested.
 #
@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Tool to manage wireguard server and users'
 _gitname='wg_tool'
 
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
