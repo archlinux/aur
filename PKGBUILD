@@ -1,7 +1,7 @@
 # Maintainer: gmes78 <gmes.078 at gmail dot com>
 
 pkgname=python-blake3
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-pip' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
-sha512sums=('d3901339df9dc3409f8c2407c6f4f02fb9e13e8e7a76d77c06d9f58c6cceea4829cedf71a687fdded8ad70897d3a4833f2b124f39837b0ffa5fb8b907b51fd56')
+sha512sums=('155d8165792935176bf9484b42d6caa715b3c6ff36d266be4d8334fc17a2fdd4a85c5c2c3d53285f21166232a8e558fe9340a8db2bd98ef01d0358809ed28dfb')
 
 # NEON support on ARMv7 isn't universal and there's no runtime detection,
 # so it should only be turned on when the hardware supports it.
