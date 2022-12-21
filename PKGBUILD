@@ -75,7 +75,7 @@ _per_gov=${_per_gov-y}
 _tcp_bbr2=${_tcp_bbr2-y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
-_HZ_ticks=${_HZ_ticks-750}
+_HZ_ticks=${_HZ_ticks-1000}
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
@@ -185,17 +185,17 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BMQ scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -263,13 +263,11 @@ if [ "$_cpusched" = "tt" ]; then
 fi
 ## Hardened Patches with BORE Scheduler
 if [ "$_cpusched" = "hardened" ]; then
-    source+=("${_patchsource}/sched/0001-bore.patch"
+    source+=("${_patchsource}/sched/0001-bore-cachy.patch"
          "${_patchsource}/misc/0001-hardened.patch")
 fi
 ## Kernel CFI Patch
 if [ -n "$_use_kcfi" ]; then
-    source+=("${_patchsource}/misc/0001-kcfi.patch")
-    depends+=(llvm-git llvm-libs-git python)
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -990,8 +988,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
-            '28832ea41f4429260f4b1a355f89a2bda1332d3893b42b349897d4661ffc3d96'
+sha256sums=('a3e61377cf4435a9e2966b409a37a1056f6aaa59e561add9125a88e3c0971dfb'
+            'c9c662d6adbf5a4bfeee3cabab6eafe7b9a2d2d51532df2bd53df1c61b6d5260'
             '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
-            '1638f816f56bb0989e71848b906c229aa0db2f08d482a5d52ad05761677d6dc5'
+            '5ecf5d28265339ee4372792ce86c08b8d4622aeac4f40a94647213a427157bcd'
             'e597dd7e1a18505e5b84e4e79096001a902b71c6af9aa9ea3d0f8280368619f1')
