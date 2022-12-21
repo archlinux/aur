@@ -1,7 +1,7 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname=eso-logs-uploader-bin
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Official log uploader application for esologs.com"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-$pkgver.AppImage::$url/releases/download/v$pkgver/ESO-L
         'eso-logs-uploader.sh'
         'no-devtools.patch'
         'no-ads.patch')
-sha256sums=('b9af126a2df4afdc23caa65494f057c6f1cd94002899db2dc2ef79ce4605b7d7'
+sha256sums=('25f9164d5b36b35c3a2a147c85a55b8c9d25809954b832d8d4eb967870e1df3f'
             '6b260619df25c8f73b2ad252462480745130d3a2d51eb8be431e55f81e637239'
             '0d1ee7d16d8e226a78300e5f20d6bb743bd194aa68090adccd436952f0b0d287'
             '9df84f23e7c397d25011c67a68aa6ec4ff1598af71ec38f9a9e7113d1ac58598')
