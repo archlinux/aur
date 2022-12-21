@@ -2,7 +2,7 @@
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
 pkgver=0.8.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
