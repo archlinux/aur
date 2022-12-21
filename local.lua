@@ -1,6 +1,8 @@
 -- use this file for local configuration
-snort = {}
-snort['-Q'] = true -- inline mode
+snort =
+{
+    ['-Q'] = true, -- inline mode
+}
 
 daq =
 {
