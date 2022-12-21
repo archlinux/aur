@@ -1,7 +1,7 @@
 pkgbase = logseq-desktop-bin
 	pkgdesc = A privacy-first, open-source platform for knowledge sharing and management.
 	pkgver = 0.8.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/logseq/logseq
 	arch = x86_64
 	license = AGPL3
