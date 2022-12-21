@@ -1,5 +1,5 @@
 pkgbase = linux-rockchip-rk3588-bin
-	pkgver = 5.10.72
+	pkgver = 5.10.110
 	pkgrel = 4
 	url = https://github.com/armbian/build
 	arch = aarch64
@@ -7,18 +7,18 @@ pkgbase = linux-rockchip-rk3588-bin
 	provides = linux-rockchip-rk3588
 	conflicts = linux-rockchip-rk3588
 	noextract = linux.preset
-	noextract = linux-dtb-legacy-rockchip-rk3588_22.11.1_arm64.deb
-	noextract = linux-image-legacy-rockchip-rk3588_22.11.1_arm64.deb
-	noextract = linux-headers-legacy-rockchip-rk3588_22.11.1_arm64.deb
+	noextract = linux-dtb-legacy-rockchip-rk3588_22.11.2_arm64.deb
+	noextract = linux-image-legacy-rockchip-rk3588_22.11.2_arm64.deb
+	noextract = linux-headers-legacy-rockchip-rk3588_22.11.2_arm64.deb
 	options = !strip
 	source = linux.preset
-	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-dtb-legacy-rockchip-rk3588_22.11.1_arm64.deb
-	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-image-legacy-rockchip-rk3588_22.11.1_arm64.deb
-	source = https://apt.armbian.com/pool/main/l/linux-5.10.72-rockchip-rk3588/linux-headers-legacy-rockchip-rk3588_22.11.1_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.110-rockchip-rk3588/linux-dtb-legacy-rockchip-rk3588_22.11.2_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.110-rockchip-rk3588/linux-image-legacy-rockchip-rk3588_22.11.2_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-5.10.110-rockchip-rk3588/linux-headers-legacy-rockchip-rk3588_22.11.2_arm64.deb
 	sha512sums = 15a035013f7cc21f8a4250d50f297d9bdef271ee06e83b4b5193432319ba45d1c892e79ec77f4e97ecdf9e7f90ef33f29454b53fa1653fe212054557afe2b91b
-	sha512sums = ef4a796a80d017aea5c7cc52bf5c692e95d840fb201012def323ebbb40e30e8ad27b446d2c34289fc8470aa71795d03291a681b2a9faf8d57de7440d283f30ee
-	sha512sums = fbb12e71630604669d701a27d6e4da569763dfb00eeb359fc10ded860d34bc9d688bdb09122ef91645dfbf3e79f4cf10fc82ba25cbc25df69a3026aa68233089
-	sha512sums = 598ea3bfdd0e9397a8bed7186354884a9c2aa8b84d6770cc977892ded5af0dc1addcdae2f5ff975996c66b18c55a3ae1cb85c5a0e5b06f2c7cc29336fe8e42c7
+	sha512sums = 27ff3c018433a5bb05e66778a05bc8711ce579fc280284eabd2882346bc5317ec8c570d9132e20563df43819a163490e3b04a72b2f7f290907ee8702aef6457a
+	sha512sums = 352b99578e0eb2f38c2f2f4ac7f2105a8bebcd91a949382a9bac5fef5c4890cd2ee8ebfa3c2d1bd7a03538b0046ac628fb88f4ca9c5b13eeaa05c259c97cf8cc
+	sha512sums = dd15832abc7e227bf1b40454b754374d2787868c77025f17b7062bc42a810e536118d86e1661ac19c5994aa1198b040f31d67b7a8795199605b35fe69361938b
 
 pkgname = linux-rockchip-rk3588-bin
 	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform rockchip-rk3588
@@ -27,7 +27,7 @@ pkgname = linux-rockchip-rk3588-bin
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.10.72
+	provides = linux=5.10.110
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -35,5 +35,5 @@ pkgname = linux-rockchip-rk3588-bin
 
 pkgname = linux-rockchip-rk3588-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip-rk3588
-	provides = linux-headers=5.10.72
+	provides = linux-headers=5.10.110
 	conflicts = linux-headers
