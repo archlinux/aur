@@ -1,18 +1,24 @@
 pkgbase = vdu_controls
 	pkgdesc = Visual Display Unit virtual control panel - a GUI front end to ddcutil
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digitaltrails/vdu_controls
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ddcutil
 	depends = noto-fonts
 	depends = python
 	depends = python-pyqt5
 	depends = qt5-svg
 	source = vdu_controls-1.8.3.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v1.8.3.tar.gz
+	source = https://github.com/digitaltrails/vdu_controls/commit/912f5864a7fe24664af4205a7313dc17047a3a46.patch
 	source = vdu_controls.desktop
 	sha256sums = 51599c88017368563f227d8fd43e04ab2e2d0cd7162ffd98b8f3d1d31eeee8ce
+	sha256sums = b6386f88bd222c85bd9ada92c9838cbc2d774f88e59dd3c67e3dcc3ef3aa79e0
 	sha256sums = 726a55c150f3cc77d483e5a484ab252b2ddf3b3919d05042975e82e659f979fc
 
 pkgname = vdu_controls
