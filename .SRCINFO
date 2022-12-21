@@ -1,0 +1,15 @@
+pkgbase = flamenco-worker
+	pkgdesc = Flamenco Worker.
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://developer.blender.org/diffusion/F/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	depends = ffmpeg
+	options = !lto
+	source = flamenco-worker::git+https://git.blender.org/flamenco.git#tag=v3.1
+	sha256sums = SKIP
+
+pkgname = flamenco-worker
