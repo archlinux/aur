@@ -3,8 +3,8 @@
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=0
-pkgver=20.0.3
-pkgrel=3
+pkgver=20.3.8
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -35,7 +35,7 @@ else
   conflicts=("electron")
 fi
 source=("https://github.com/noahvogt/${pkgname%-*}/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('f084d5e62fe0b63b13ee7f940a9f98485f215237148b31bfdc197e60c0c91bfd')
+sha256sums=('9e9c723b4dffb5fec2a1cffe7a4b0bb9860089946c400650e5cb466c0d5b7c61')
 
 _system_libs=('ffmpeg'
               'flac'
