@@ -1,13 +1,13 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=pro-bitcoin-git
-pkgver=v24.0rc1.r0.gdef75f0fb
-pkgrel=2
+pkgver=v24.0.1.1.r0.g9353e8ad0
+pkgrel=1
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://pro-bitcoin.io"
 depends=('boost' 'boost-libs' 'zeromq' 'libevent')
 optdepends=('bitcoin-core' 'bitcoin-daemon')
 checkdepends=('python')
-makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config' 'systemd' 'prometheus-cpp-git')
+makedepends=('autoconf' 'automake' 'binutils' 'libtool' 'm4' 'make' 'pkg-config' 'systemd' 'prometheus-cpp-git' 'zlib')
 pkgdesc="Prometheus enabled bitcoin node"
 url="https://github.com/pro-bitcoin/pro-bitcoin.git"
 license=('MIT')
@@ -31,7 +31,7 @@ build() {
   msg2 'Building...'
   cd "$srcdir/${pkgname}"
   ./autogen.sh
-  LIBS=-lz ./configure \
+  ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/lib/bitcoin \
