@@ -291,6 +291,10 @@ tools = ["cargo"]
 # on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 #profiler = false
 
+# Use the optimized LLVM C intrinsics for `compiler_builtins`, rather than Rust intrinsics.
+# Requires the LLVM submodule to be managed by bootstrap (i.e. not external).
+#optimized-compiler-builtins = false
+
 # Indicates whether the native libraries linked into Cargo will be statically
 # linked or not.
 cargo-native-static = true
@@ -521,6 +525,12 @@ channel = "stable"
 # A descriptive string to be appended to `rustc --version` output, which is
 # also used in places like debuginfo `DW_AT_producer`. This may be useful for
 # supplementary build information, like distro-specific package versions.
+#
+# The Rust compiler will differentiate between versions of itself, including
+# based on this string, which means that if you wish to be compatible with
+# upstream Rust you need to set this to "". However, note that if you are not
+# actually compatible -- for example if you've backported patches that change
+# behavior -- this may lead to miscompilations or other bugs.
 #description = <none> (string)
 
 # The root location of the musl installation directory. The library directory
@@ -627,6 +637,11 @@ deny-warnings = false
 # standard library.
 # If an explicit setting is given, it will be used for all parts of the codebase.
 #new-symbol-mangling = true|false (see comment)
+
+# Select LTO mode that will be used for compiling rustc. By default, thin local LTO
+# (LTO within a single crate) is used (like for any Rust crate). You can also select
+# "thin" or "fat" to apply Thin/Fat LTO to the `rustc_driver` dylib.
+#lto = "thin-local"
 
 # =============================================================================
 # Options for specific targets
