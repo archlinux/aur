@@ -1,6 +1,6 @@
 pkgbase = kodi-nexus-git
 	pkgver = r61761.a184a3a7fce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -142,10 +142,6 @@ pkgname = kodi-nexus-git
 	conflicts = kodi-x11
 	conflicts = kodi-wayland
 	conflicts = kodi-gbm
-	replaces = kodi
-	replaces = kodi-x11
-	replaces = kodi-wayland
-	replaces = kodi-gbm
 
 pkgname = kodi-nexus-git-eventclients
 	pkgdesc = Kodi Event Clients (Nexus branch)
