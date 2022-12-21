@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.14.10.1429
-_rls_tag=v3.14.10
+pkgver=3.14.11.1432
+_rls_tag=v3.14.11
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')

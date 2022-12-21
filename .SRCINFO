@@ -1,6 +1,6 @@
 pkgbase = libdigidocpp
 	pkgdesc = Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards
-	pkgver = 3.14.10.1429
+	pkgver = 3.14.11.1432
 	pkgrel = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libdigidocpp
 	depends = openssl
 	depends = xalan-c
 	depends = xml-security-c
-	source = libdigidocpp-3.14.10.1429::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=v3.14.10
+	source = libdigidocpp-3.14.11.1432::git+https://github.com/open-eid/libdigidocpp.git?signed#tag=v3.14.11
 	source = open-eid-cmake::git+https://github.com/open-eid/cmake.git
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
 	sha256sums = SKIP
