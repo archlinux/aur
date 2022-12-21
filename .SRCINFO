@@ -1,0 +1,24 @@
+pkgbase = mutmap
+	pkgdesc = Pipeline for bulk segregant analysis. doi:10.7717/peerj.13170
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/YuSugihara/MutMap
+	arch = x86_64
+	license = unknown
+	makedepends = python-setuptools
+	makedepends = cython
+	makedepends = python-setuptools-scm
+	depends = bwa
+	depends = samtools
+	depends = snpeff
+	depends = bcftools
+	depends = trimmomatic
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-seaborn
+	options = !emptydirs
+	source = https://github.com/YuSugihara/MutMap/archive/refs/tags/v2.3.3.tar.gz
+	sha256sums = b92ed579df1318e041a96af6a9e6d02d932c74ac6f8f167a58820558f39254b5
+
+pkgname = mutmap
