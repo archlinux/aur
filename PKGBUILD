@@ -1,14 +1,14 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.2.12.118
-_rls_tag=v4.2.12
+pkgver=4.2.14.4431
+_rls_tag=v4.2.14
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
 license=('LGPL2.1')
-depends=('qt5-base' 'qt5-svg' 'libdigidocpp>=3.14.10' 'libldap' 'pcsclite' 'hicolor-icon-theme')
-makedepends=('cmake' 'qt5-tools' 'qt5-translations' 'git')
+depends=('qt6-base' 'qt6-svg' 'qt6-5compat' 'libdigidocpp>=3.14.11' 'libldap' 'pcsclite' 'hicolor-icon-theme')
+makedepends=('cmake' 'qt6-tools' 'qt6-translations' 'git')
 optdepends=('opensc: smart card support'
             'ccid: smart card support')
 source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=$_rls_tag"
@@ -42,7 +42,7 @@ build() {
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
            -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-           -DQT_DIR="/usr/lib/cmake/Qt5"
+           -DQT_DIR="/usr/lib/cmake/Qt6"
   make
 }
 
