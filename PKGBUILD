@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
-_pkgver=0_9
+_pkgver=0_9_1
 pkgver=${_pkgver//_/.}
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
@@ -24,8 +24,8 @@ source=("https://github.com/benjamimgois/goverlay/releases/download/$pkgver/${pk
         "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.desktop"
         "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.metainfo.xml"
         "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
-sha256sums=('d4f25036e4afd51a657198221abf8b961469354e268486e5a0c1c2cc48342e21'
-            'd87db8157e4ef57e14b98e4d1b001c571f5ad4bfd4a12f3bfbe686a1a5541fed'
+sha256sums=('6885e8052d747fd19649c2b5b8273ea879b9046fa21cfa81f8570faaeae00bab'
+            'e92cab07935d0f8bd76fb0a36f1b544a6510f3466f42fee989ceef454ec0189c'
             '4d3493dc383ee336f4451ab09604632214e0be6562df69ee30a2721bc08df989'
             'a83b788c6ed87e6a33531eb51b967cfb4db610a1f8546fba38321fa2ba101166'
             '82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f')
