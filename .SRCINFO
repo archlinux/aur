@@ -1,7 +1,7 @@
 pkgbase = electron-xdg
 	pkgdesc = Build cross platform desktop apps with web technologies - without creating a useless ~/.pki directory
-	pkgver = 20.0.3
-	pkgrel = 3
+	pkgver = 20.3.8
+	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT

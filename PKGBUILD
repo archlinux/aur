@@ -3,12 +3,12 @@
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=0
-pkgver=20.0.3
-_commit=a85ad0ea38bdc07968a3e28697d2606831b33e64
+pkgver=20.3.8
+_commit=9fa958cb5fa02fbca258f8b6894d5371bf6e4415
 _chromiumver=104.0.5112.81
 _gcc_patchset=2
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -226,6 +226,9 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  # https://github.com/webpack/webpack/issues/14532
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'

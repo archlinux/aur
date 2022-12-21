@@ -1,3 +1,5 @@
+pkg/
+src/
 electron/
 depot_tools/
 *.tar.*
