@@ -1,59 +1,83 @@
-# Maintainer: saxonbeta <saxonbeta at gmail dot com>
+# Maintainer: Matthias Mailänder <matthias@mailaender.name>
+# Contributor: saxonbeta <saxonbeta at gmail dot com>
 # Contributor: masutu <masutu dot arch at gmail dot com>
+
 pkgname=mmass
 pkgver=5.5.0
-pkgrel=3
-pkgdesc="Open source tool for precise mass spectrometric data analysis and interpretation written in python."
+pkgrel=4
+pkgdesc="Open Source tool for precise mass spectrometric data analysis and interpretation written in Python."
 arch=('i686' 'x86_64')
 url="http://www.mmass.org"
-license=('GPL')
-depends=('python2-numpy' 'wxpython2.8')
-source=(${url}/download/files/v${pkgver}/${pkgname}_v${pkgver}_source.zip
-	mMass.desktop
-	mMass.xml
-  mMass.install)
-install=mMass.install
+license=('GPL-3.0')
+depends=('hicolor-icon-theme' 'python2-wxpython3' 'python2-numpy')
+makedepends=('unzip')
+checkdepends=('desktop-file-utils')
+source=("http://www.mmass.org/download/files/v${pkgver}/mmass_v${pkgver}_source.zip"
+        "mmass.desktop"
+        "mmass.install"
+        "mmass.xml")
 sha256sums=('e75e0792b51ed16f5b772f285b1be2031a0906fd35b02294752ccf816258508c'
-	    '7ff1fc2fdb2f2183819b85a0a1cbbd672cf8222efbc25447139db883b01d0ed4'
-      '653e64ff46c4c0ddc2f7973ce1477670f7c0c5d4c9321aa3b7afa2c42a948793'
-      '2c0ef77eeb0f20e2ab1381e82854cc46cbb7e176a921cd80e4a67bb25bc6c6ac')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
+prep() {
+  dos2unix mspy/plot_canvas.py
 
-prepare() {
-  cd "$srcdir/mMass/"
-  #Patch to use wxpython 2.8
-  sed -i "/import wx/iimport wxversion\nwxversion.select('2.8')" mmass.py
-  
+  sed -i 's/\r$//' license.txt
+
+  sed -i -e '1i#!/usr/bin/python' gui/*.py
+  sed -i -e '1i#!/usr/bin/python' mspy/*.py
+
+  rm mspy/calculations.so setup.py
 }
-  
 
 build() {
-  cd "$srcdir/mMass/mspy"
-  python2 setup.py build
-  cp build/lib.linux-*-*/calculations.so .
+  cd "mMass"
+
+  pushd mspy
+    python2 setup.py build
+    mv -f build/lib.*/calculations.so ./calculations.so
+  popd
+}
+
+check() {
+  desktop-file-validate mmass.desktop
 }
 
 package() {
-  cd "$srcdir/mMass"
-  install -m 0755 -d $pkgdir/usr/bin
-  install -m 0755 -d $pkgdir/usr/share/$pkgname
-  install -m 0755 -d $pkgdir/usr/share/$pkgname/{configs,gui,mspy}
-  install -m 0755 -d $pkgdir/usr/share/$pkgname/gui/images/gtk
-  install -m 0644 mmass.py $pkgdir/usr/share/$pkgname
-  install -m 0644 'User Guide.pdf' $pkgdir/usr/share/$pkgname
-  install -m 0644 configs/*.xml $pkgdir/usr/share/$pkgname/configs
-  install -m 0644 gui/*.py $pkgdir/usr/share/$pkgname/gui
-  install -m 0644 gui/images/gtk/*.png $pkgdir/usr/share/$pkgname/gui/images/gtk
-  install -m 0644 mspy/*.py $pkgdir/usr/share/$pkgname/mspy
-  install -m 0755 mspy/calculations.so $pkgdir/usr/share/$pkgname/mspy
-  install -Dm 644 gui/images/gtk/icon_48.png $pkgdir/usr/share/pixmaps/$pkgname.png
-  install -Dm 644 $srcdir/mMass.desktop $pkgdir/usr/share/applications/mMass.desktop
-  install -Dm644 $srcdir/mMass.xml $pkgdir/usr/share/mime/packages/mMass.xml
-  cat >$pkgdir/usr/bin/mmass <<EOF
-#!/bin/sh
-python2 /usr/share/mmass/mmass.py ""
-EOF
-  chmod 0755 $pkgdir/usr/bin/mmass
-}
+  install -Dm0644 mmass.desktop "$pkgdir"/usr/share/applications/mmass.desktop
+  install -Dm0644 $srcdir/mmass.xml "$pkgdir"/usr/share/mime/packages/mmass.xml
 
-# vim:set ts=2 sw=2 et:
+  cd "mMass"
+
+  pushd mspy
+    python2 setup.py install --skip-build --prefix=/usr --root=$pkgdir/
+  popd
+
+  rm mspy/setup.py
+  rm mspy/*.pyd
+
+  mkdir -p "$pkgdir"/usr/lib/python2.7/mmass/configs/
+  mkdir -p "$pkgdir"/usr/lib/python2.7/mmass/gui
+  mkdir -p "$pkgdir"/usr/lib/python2.7/mmass/mspy/
+  mkdir -p "$pkgdir"/usr/share/mmass/database
+  install -Dm0755 mspy/*.py* "$pkgdir"/usr/lib/python2.7/mmass/mspy
+  install -Dm0755 mspy/*.so "$pkgdir"/usr/lib/python2.7/mmass/mspy
+  install -Dm0644 configs/*.xml "$pkgdir"/usr/lib/python2.7/mmass/configs
+  install -Dm0755 gui/*.py* "$pkgdir"/usr/lib/python2.7/mmass/gui
+  install -Dm0644 gui/images/gtk/icon_about.png "$pkgdir"/usr/lib/python2.7/mmass/gui/images/gtk
+  install -Dm0755 mmass.py* "$pkgdir"/usr/lib/python2.7/mmass
+
+  mkdir -p "$pkgdir"/usr/bin
+  ln -s /usr/lib/python2.7/mmass/mmass.py "$pkgdir"/usr/bin/mmass
+
+  install -Dm0644 configs/*.xml "$pkgdir"/usr/share/mmass/database
+
+  install -Dm0644 gui/images/gtk/icon_128.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/mmass.png
+  install -Dm0644 gui/images/gtk/icon_256.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/mmass.png
+  install -Dm0644 gui/images/gtk/icon_512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/mmass.png
+
+  sed -i -e '1i#!/usr/bin/python' "$pkgdir"/usr/lib/python2.7/mmass/mmass.py
+  find "$pkgdir"/usr/lib/python2.7/ -name "*.py" | xargs sed -i '1s|/usr/bin/python|/usr/bin/python2|'
+}
