@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 7.4.6
+	pkgver = 7.4.7
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = any
@@ -43,10 +43,10 @@ pkgbase = tauon-music-box
 	optdepends = python-pychromecast: Chromecast stream support
 	optdepends = picard: Recommended tag editor
 	optdepends = python-jxlpy: JPEG XL image support
-	source = tauon-music-box-7.4.6.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.4.6.tar.gz
+	source = tauon-music-box-7.4.7.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.4.7.tar.gz
 	source = kissfft.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/131.1.0.tar.gz
 	source = miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/1778a5e839514f35f41d31449f3573e3adffc51a.tar.gz
-	md5sums = f0e86de7802672e31aad5e683949c9f2
+	md5sums = 052ebe4247df48186f65f5489c0a4458
 	md5sums = 981ad3e496fbd8edb99704fc0e2aa939
 	md5sums = 5739102b8a42d944b1d5cb6e2c95b44c
 
