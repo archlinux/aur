@@ -1,6 +1,32 @@
 Version history
 ===============
 
+0.10.3
+------
+
+2022-12-21
+
+Fix #428: Update the next-level cache after solving. Before, there was the
+following bug: Have three unsolved singleplayer levels -- A, B, and C -- in
+this order. Enter A, exit to level browser, solve B, then solve A. Lix would
+then offer B as unsolved, even though you've solved B. Now, the end-of-level
+screen correctly offers B as solved and C as next unsolved level.
+
+The end-of-singleplayer screen, when you choose to play the previous level
+that you've just played, starts that previous level with your replay playing.
+You can view your solution again or fix your attempt. (To avoid the replay,
+interrupt it immediately when it starts playing, or instead start the previous
+level from the singleplayer browser.)
+
+Fix a backroute in mobius's Five for Fighting in lemforum/Vicious.
+
+In lemforum/Lovely: Diamond Dash: Replace imploders and blockers with walkers.
+The Borderland: Raise save requirement from 30/60 to 40/60 to require saving
+lix from both hatches. Reorder Climb to Freedom earlier to avoid two
+successive snow levels. Reorder Beneath the Lab to after Solar Eclipse.
+
+
+
 0.10.2
 ------
 
