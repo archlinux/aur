@@ -5,14 +5,14 @@
 
 pkgname=ocrodjvu-python3-git
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 port of ocrodjvu. ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files."
 arch=('i686' 'x86_64')
 url='https://github.com/rmast/ocrodjvu/tree/python3'
 license=('GPL2')
 provides=('ocrodjvu')
 conflicts=('ocrodjvu')
-depends=('python' 'python-lxml' 'python-djvulibre' 'python-future')
+depends=('python' 'python-lxml' 'python-djvulibre' 'python-future' 'python-regex')
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
             'cuneiform: OCR system' 
