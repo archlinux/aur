@@ -1,6 +1,6 @@
 pkgbase = breeze-plymouth
 	pkgdesc = Breeze theme for plymouth
-	pkgver = 5.26.3
+	pkgver = 5.26.4
 	pkgrel = 1
 	url = https://projects.kde.org/breeze-plymouth
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = breeze-plymouth
 	makedepends = extra-cmake-modules
 	depends = plymouth
 	optdepends = noto-fonts
-	source = http://download.kde.org/stable/plasma/5.26.3/breeze-plymouth-5.26.3.tar.xz
-	source = http://download.kde.org/stable/plasma/5.26.3/breeze-plymouth-5.26.3.tar.xz.sig
+	source = http://download.kde.org/stable/plasma/5.26.4/breeze-plymouth-5.26.4.tar.xz
+	source = http://download.kde.org/stable/plasma/5.26.4/breeze-plymouth-5.26.4.tar.xz.sig
 	source = breeze-plymouth.cpiohook
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = e8fb1046271091b317a7a5d529a88e3846e857d429426143200431e3159eda58
+	sha256sums = ad6b9e1743fa8d23431e705bf98b9ec3904b022d0011f633ebf8b7871b6b2641
 	sha256sums = SKIP
 	sha256sums = e87418d5694514b6227a0fa81fbc71dfa05d50092a90082a4a4467f4d2d08385
 
