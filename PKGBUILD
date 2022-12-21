@@ -5,7 +5,7 @@
 
 pkgname='fcitx-mozc-ut'
 pkgver=2.28.4950.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Fcitx'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
@@ -19,7 +19,7 @@ options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=db37db71b53c9accc9ad66d12ad8196b25c771b3"
         "fcitx.patch")
 sha256sums=('SKIP'
-            'fec73870b63d8260aa0e9da27830b73ea1799f86d76e749ffbc2d35f9f02bdf0')
+            '0d4b270b9a33918c87b86cff1caa9b7481e98e01defd4af8618bfe18ff5b7cff')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -36,6 +36,9 @@ prepare() {
 
     # Load the application icon dynamically
     sed -i -e 's|IconName=/usr/share/fcitx/mozc/icon/mozc.png|IconName=fcitx-mozc|' unix/fcitx/mozc.conf
+
+    # Temp fix for Bazel 6.0.0
+    sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
 }
 
 build() {
