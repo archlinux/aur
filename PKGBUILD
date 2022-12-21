@@ -1,11 +1,10 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Show system info, fork of neofetch."
+pkgdesc="An unofficial inheritor of neofetch."
 arch=('any')
 url="https://github.com/Jin-Asanami/unifetch"
-_url="https://osdn.net/projects/univalentgnulinux"
 license=('MIT')
 depends=('bash')
 optdepends=(
@@ -24,8 +23,8 @@ optdepends=(
 )
 checkdepends=('shellcheck')
 conflicts=("${pkgname}")
-source=("${_url}/storage/aur/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('5a756476686c5a1521e438ffd5ab4e6c272451bb059515ef58b2ff817e60b2cc7afd74ec11a4303941a06cd90bebf6d7ea8e2df307f7e5ffd51f0ad82dde180c')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('2cbdf86ace9d53bf9a67c706c7d40739c5577f64db09ee18bc5728f9c216d4df20610a76bb526d7cca2d0cda5388c4781ba54a6f5c013039253b4847d5795d19')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
