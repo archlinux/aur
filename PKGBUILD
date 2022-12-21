@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=8.9.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (Qt5)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('2d80aee0732140e47edc264a8321169fb394fbfeedfa809bcb8e465535b2caa5')
+sha256sums=('f3f8db6c8bd1a3fa84a73c5ce9eb2c3c191e87306ddb6edab17816282d24471e')
 changelog=changelog.txt
 
 prepare() {
@@ -45,7 +45,6 @@ prepare() {
   rm "${sharedPeaZip}/batch/"*.bat
   rm -r "${sharedPeaZip}/batch/SendTo"
   rm -r "${sharedPeaZip}/batch/Windows 11 mini context menu"
-  rm -r "${sharedPeaZip}/lang-wincontext"
   rm "${sharedPeaZip}/readme/readme_Windows.txt"
   # macOS related stuff
   rm -r "${sharedPeaZip}/batch/macOS service menus"
