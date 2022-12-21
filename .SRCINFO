@@ -1,0 +1,41 @@
+pkgbase = corluma-bin
+	pkgdesc = App to control Philips Hues, Nanoleaf products, and Arduinos running ArduCor.
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://www.corluma.net/linux
+	arch = i686
+	arch = x86_64
+	groups = 
+	license = custom
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = harfbuzz
+	depends = libdrm
+	depends = libglvnd
+	depends = libice
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libsm
+	depends = libtiff
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = pcre2
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source_i686 = https://www.dropbox.com/s/zragmonc1h19952/corluma_0.28-05.deb?dl=1
+	sha512sums_i686 = 4d4e60eb7b370f87a7f30c2f105b524b8093439b72229abc7920ab4ee8e2b07c14d96111be91bc245cf88b3c21432c2310bd8fb52c4c6400185a65bad815dc20
+	source_x86_64 = https://www.dropbox.com/s/zragmonc1h19952/corluma_0.28-05.deb?dl=1
+	sha512sums_x86_64 = 4d4e60eb7b370f87a7f30c2f105b524b8093439b72229abc7920ab4ee8e2b07c14d96111be91bc245cf88b3c21432c2310bd8fb52c4c6400185a65bad815dc20
+
+pkgname = corluma-bin
