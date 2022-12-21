@@ -1,6 +1,6 @@
 pkgbase = cargo-update
 	pkgdesc = A cargo subcommand for checking and applying updates to installed executables
-	pkgver = 11.0.0
+	pkgver = 11.1.1
 	pkgrel = 1
 	url = https://github.com/nabijaczleweli/cargo-update
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-update
 	makedepends = libssh2
 	makedepends = openssl
 	depends = cargo
-	source = https://github.com/nabijaczleweli/cargo-update/archive/v11.0.0.tar.gz
-	sha256sums = 29ff0eeb72c71efcdd3b91cb7e0203d83cec0124b6203d0da83ce2c38f66d1cd
+	source = https://github.com/nabijaczleweli/cargo-update/archive/v11.1.1.tar.gz
+	sha256sums = 8fb09783708c50ee17a2279c3d1a6fd41cde2a294c0d58fd206a569ea338c435
 
 pkgname = cargo-update
