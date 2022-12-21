@@ -1,0 +1,14 @@
+pkgbase = ryzenadj-controller-git
+	pkgdesc = Python module that provides a userspace interface for RyzenAdj using Unix Sockets
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/ryzenadj-controller
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = ryzenadj-git
+	source = ryzenadj-controller::git+https://github.com/ShadowBlip/ryzenadj-controller.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = ryzenadj-controller-git
