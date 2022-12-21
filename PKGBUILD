@@ -1,7 +1,7 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r1287.f62ccd2a
+pkgver=r2207.17205793
 _pkgver=0.1
 pkgrel=1
 epoch=
@@ -11,7 +11,7 @@ url="https://www.github.com/zellij-org/zellij"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('rustup' 'cargo' 'git' 'binaryen' 'cargo-make')
+makedepends=('rustup' 'cargo' 'git' 'binaryen' 'mandown')
 checkdepends=()
 optdepends=()
 provides=('zellij')
@@ -22,7 +22,8 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo make install ./zellij
+    cargo install --locked cargo-xtask
+    cargo xtask install ./zellij
     mkdir -p assets/completions
     ./zellij setup --generate-completion bash > assets/completions/zellij.bash
     ./zellij setup --generate-completion fish > assets/completions/zellij.fish

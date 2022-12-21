@@ -1,6 +1,6 @@
 pkgbase = zellij-git
 	pkgdesc = A terminal workspace with batteries included
-	pkgver = r1287.f62ccd2a
+	pkgver = r2207.17205793
 	pkgrel = 1
 	url = https://www.github.com/zellij-org/zellij
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = zellij-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = binaryen
-	makedepends = cargo-make
+	makedepends = mandown
 	provides = zellij
 	conflicts = zellij
 	source = git+https://github.com/zellij-org/zellij
