@@ -49,7 +49,8 @@ check() {
     PATH="$BOOTSTRAP/bin:$PATH"
     LD_LIBRARY_PATH="$BOOSTRAP/lib:$PATH"
 
-    make test
+    PREFIX="$BOOTSTRAP" IDRIS2_PREFIX="$PREFIX" make install
+    PREFIX="$BOOTSTRAP" IDRIS2_PREFIX="$PREFIX" make test
 }
 
 package() {
