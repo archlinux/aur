@@ -1,7 +1,7 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
 	pkgver = 2.28.4950.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache
