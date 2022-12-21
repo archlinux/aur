@@ -1,6 +1,6 @@
 pkgbase = code-translucent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with translucent window and official marketplace support!
-	pkgver = 1.74.1
+	pkgver = 1.74.2
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
