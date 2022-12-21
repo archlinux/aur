@@ -19,6 +19,7 @@ pkgbase = linux-rust
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
 	makedepends = git
+	makedepends = rust
 	options = !strip
 	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1-arch1
 	source = config
@@ -27,7 +28,7 @@ pkgbase = linux-rust
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
+	sha256sums = 3c5057c3200a7aaa40af2e81f4e043a5fdc27673894c8f4ee55ee5dc069c6112
 
 pkgname = linux-rust
 	pkgdesc = The Linux kernel and modules
