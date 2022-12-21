@@ -3,7 +3,7 @@
 
 pkgname="godot-package-manager-git"
 pkgrel=1
-pkgver=0.2.1.r2.g1b634a0
+pkgver=0.5.0.r0.gef1917c
 pkgdesc="A package manager for godot addons."
 arch=('any')
 url="https://github.com/godot-package-manager/client"
@@ -21,8 +21,10 @@ provides=(godot-package-manager)
 groups=(godot)
 
 check() {
-	echo -e '[packages]\n"@bendn/gdcli" = "1.2.5"' >godot.package
-	godot-package-manager update
+	echo -e '[packages]\n"@bendn/gdcli" = "1.2.5"' | ./gpm/target/release/godot-package-manager -c- update -lcheck.json
+	jq -c . <check.json
+	rm -r addons/@bendn/gdcli
+	rm -r addons/
 }
 
 pkgver() {
@@ -30,9 +32,13 @@ pkgver() {
 		git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
-package() {
+build() {
 	cd gpm &&
 		cargo build -r
+}
+
+package() {
+	cd gpm
 	install -Dm755 target/release/godot-package-manager "$pkgdir/usr/bin/godot-package-manager"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = godot-package-manager-git
 	pkgdesc = A package manager for godot addons.
-	pkgver = 0.2.1.r2.g1b634a0
+	pkgver = 0.5.0.r0.gef1917c
 	pkgrel = 1
 	url = https://github.com/godot-package-manager/client
 	arch = any
