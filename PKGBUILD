@@ -1,14 +1,14 @@
 # Maintainer: Philip Johansson <philipphuket at gmail dotcom>
 pkgname=tuidoku-git
 _pkgname=tuidoku
-pkgver=r155.de71a18
+pkgver=r230.7a7dcfe
 pkgrel=1
 pkgdesc="Play, solve and generate sudoku puzzles in the console"
 arch=('x86_64')
 url="https://github.com/flyingpeakock/tuidoku"
 license=('MIT')
-depends=(ncurses git)
-makedepends=(gcc)
+depends=(ncurses git ninja)
+makedepends=(gcc cmake)
 provides=("tuidoku")
 replaces=("console_sudoku")
 source=("git+https://github.com/flyingpeakock/tuidoku.git")
@@ -36,7 +36,7 @@ prepare() {
         fi
     else
         msg='This package can be configured by editing config.h '
-        msg+='Documentation can be found in the comments.'
+        msg+='Documentation can be found in the comments. '
         msg+='Sometimes changes are made to the config that '
         msg+='are required for building. If a build fails remove the '
         msg+='old config.h file.'
@@ -46,12 +46,14 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir"
-        g++ -Ofast -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
+	    #cd "$srcdir/$_pkgname"
+        #g++ -Ofast -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
+        cmake --no-warn-unused-cli -B build -S "$_pkgname"
+        cmake --build build --config Release --target all
 }
 
 package() {
-        cd "$srcdir"
-        install -Dm755 tuidoku-bin $pkgdir/usr/bin/tuidoku
-        install -Dm644 ./tuidoku/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+        #install -Dm755 tuidoku-bin $pkgdir/usr/bin/tuidoku
+        install -Dm755 build/$_pkgname $pkgdir/usr/bin/$_pkgname
+        install -Dm644 $srcdir/$_pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
