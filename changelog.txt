@@ -1,3 +1,13 @@
+* Wed Dec 21 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 9.0.0-1
+  PeaZip 9.0.0 completes the GUI evolution of 8.x line, both with look&feel updates and
+  with under the hood improvements, making the application easier to customize and adapt
+  to different needs and environments.
+  Plug-ins are now simpler to install, support for PAQ and ZPAQ formats is improved,
+  more options are available for 7z/p7zip backend, and the application can now extract
+  compressed TAR archives in a single step.
+  A total of 230 file extensions can now be opened as archives by PeaZip, with the
+  addition of .pmdx, .pmvx, .tmdx, and .prdx SoftMaker Office files.
+
 * Tue Oct 18 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.9.0-1
   PeaZip 8.9.0 release completes the progress towards the upcoming 9.x line, with many
   updates both for the UI and under the hood.
@@ -30,17 +40,3 @@
   from command line and scripts, and to set immediate execution for custom compression
   presets.
   Updated backends: Pea 1.07, and (Linux) Zstd 1.5.2.
-
-* Sat Feb 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.5.0-1
-  PeaZip 8.5.0 release improves the packages for macOS platform, with macOS-style keyboard
-  shortcuts, integration with macOS context menu, full support to "move to trash" deletion
-  (both from file manager, and after compression/extraction operations), and support for
-  Brotli, Zpaq, and Zstandard backends. macOS system integration is fully scriptable through
-  Automator .workflow scripts, see sample service menus in (peazip)/res/share/batch folder.
-  File manager was improved, and now allows more alternative styles (large list and large
-  details) on Linux.
-  It is now possible to optionally integrate PeaZip in Windows 11 mini-context menu from
-  .reg scripts in (peazip)/res/share/batch folder.
-  This release improves scripting, usage of layouts (files defining advanced inclusion and
-  exclusion filters, and optionally input list), and updates compression settings.
-  Updated backends: 7z 21.07, Pea 1.06, and Zstd 1.5.2.

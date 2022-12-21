@@ -7,7 +7,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2-bin
-pkgver=8.9.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('2cad91f5b8344119e9f732ac4ce33a8e8661f609abef2a55bcae4d6cc6b73d48')
+sha256sums=('0d60524351e9f09e5291afc2ab568110a59a751140da675aacd8315e93a77419')
 changelog=changelog.txt
 
 prepare() {
@@ -43,7 +43,6 @@ prepare() {
   rm "${sharedPeaZip}/batch/"*.bat
   rm -r "${sharedPeaZip}/batch/SendTo"
   rm -r "${sharedPeaZip}/batch/Windows 11 mini context menu"
-  rm -r "${sharedPeaZip}/lang-wincontext"
   rm "${sharedPeaZip}/readme/readme_Windows.txt"
   # macOS related stuff
   rm -r "${sharedPeaZip}/batch/macOS service menus"
