@@ -1,6 +1,6 @@
 pkgbase = superpaper
 	pkgdesc = Cross-platform multi monitor wallpaper manager
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/hhannine/Superpaper
 	arch = any
@@ -16,9 +16,9 @@ pkgbase = superpaper
 	depends = python-system_hotkey>=1.0.5
 	depends = python-xpybutil
 	depends = python-numpy
-	source = superpaper-2.2.0.tar.gz::https://github.com/hhannine/Superpaper/archive/v2.2.0.tar.gz
+	source = superpaper-2.2.1.tar.gz::https://github.com/hhannine/Superpaper/archive/v2.2.1.tar.gz
 	source = rename_system_hotkey_dep.patch
-	sha256sums = 22781b33c8fc72b69df467a0998f28d6fd5bfe6c4f8ad4794e46d80fde0b1537
+	sha256sums = 8296f218fe4bd524e34bc427b5c2d02c80acdd0e05563206e154a31eb944bb20
 	sha256sums = 02bc7fb70c18c7292ee9cdac9be58e0954cdb03b07032ee9b5c567fe5ec4d5a5
 
 pkgname = superpaper
