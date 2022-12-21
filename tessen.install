@@ -3,7 +3,7 @@ post_install() {
 tessen needs at least one
 
 - pass backend (pass or gopass)
-- wayland native dmenu backend (wayland fork of rofi, fuzzel, bemenu, wofi)
+- wayland native dmenu backend (fuzzel, tofi, bemenu, wofi, wayland fork of rofi)
 - action backend (wtype, wl-clipboard)
 
 to work. Please install the backends you prefer to use after installing tessen.
@@ -15,6 +15,6 @@ post_upgrade() {
 tessen v2.0.0 has some breaking changes since v1.3.1 was released. Please consult
 the man page of tessen or the CHANGELOG.md file on GitHub for more details.
 
-https://github.com/ayushnix/tessen/blob/v2.0.0/CHANGELOG.md#200---2022-02-19
+https://git.sr.ht/~ayushnix/tessen/tree/v2.0.0/item/CHANGELOG.md#200---2022-02-19
 "
 }
