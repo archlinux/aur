@@ -2,14 +2,14 @@ pkgbase = hashzam-git
 	pkgdesc = A simple command line tool written in python that calculate and compare hashes!
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/SpamixOfficial/hashzam-git-aur.git
+	url = https://github.com/SpamixOfficial/hashzam-git.git
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python
 	provides = hashzam
-	source = git+https://github.com/SpamixOfficial/hashzam-git-aur.git
+	source = git+https://github.com/SpamixOfficial/hashzam-git.git
 	md5sums = SKIP
 
 pkgname = hashzam-git

@@ -1,11 +1,11 @@
 
 # Maintainer: SpamixOfficial <spamixofficial@gmail.com>
 pkgname=hashzam-git
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A simple command line tool written in python that calculate and compare hashes!"
 arch=(x86_64)
-url="https://github.com/SpamixOfficial/hashzam-git-aur.git"
+url="https://github.com/SpamixOfficial/hashzam-git.git"
 license=('GPL-3.0')
 depends=()
 makedepends=(git python-pip python)
@@ -14,41 +14,41 @@ provides=(hashzam)
 source=("git+$url")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "${_pkgname}"
-	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+
 
 build() {
-	sudo echo "sudo enabled"
 	pip install colorama
 }
 
 package() {
-	cd hashzam-git-aur
-	if [ ! -d "/usr/share/licenses/${pkgname}" ]; then
-		sudo mkdir "/usr/share/licenses/${pkgname}"
-	fi
-	if [ ! -d "/usr/share/doc/${pkgname}" ]; then
-		sudo mkdir "/usr/share/doc/${pkgname}"
-	fi
+	cd "hashzam-git"
+	#if [ ! -d "/usr/share/licenses/${pkgname}" ]; then
+	#	mkdir "$pkgdir/usr/share/licenses/${pkgname}"
+	#fi
+	#if [ ! -d "/usr/share/doc/${pkgname}" ]; then
+	#	mkdir "$pkgdir/usr/share/doc/${pkgname}"
+	#fi
 	chmod +x hashzam.py 
-	if [ ! -f "/usr/local/bin/hashzam" ]; then
-		sudo cp hashzam.py "/usr/local/bin/hashzam"
+	if [ ! -f "/usr/bin/hashzam" ]; then
+		install -d "${pkgdir}/usr/bin/hashzam/"
+		install hashzam.py "${pkgdir}/usr/bin/hashzam/"
 	else
-		sudo mv /usr/local/bin/hashzam /usr/local/bin/hashzam.save
-		sudo cp hashzam.py "/usr/local/bin/hashzam"
+		install -d "${pkgdir}/usr/bin/hashzam/"
+		#install -b "${pkgdir}/usr/local/bin/hashzam" "${pkgdir}/usr/local/bin/hashzam.old"
+		install hashzam.py "${pkgdir}/usr/bin/hashzam/"
 	fi
 	if [ ! -f "/usr/share/licenses/${pkgname}/LICENSE" ]; then
-		sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
+		install -d LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	else
-		sudo rm -f "/usr/share/licenses/${pkgname}/LICENSE"
-		sudo cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
+		# "/usr/share/licenses/${pkgname}/LICENSE"
+		#cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
+		install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	fi
 	if [ ! -f "/usr/share/doc/${pkgname}/README.md" ]; then
-		sudo cp README.md "/usr/share/doc/${pkgname}/README.md"
+		install -d README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	else
-		sudo rm -f "/usr/share/doc/${pkgname}/README.md"
-		sudo cp README.md "/usr/share/doc/${pkgname}/README.md"
+		#rm -f "/usr/share/doc/${pkgname}/README.md"
+		#cp README.md "/usr/share/doc/${pkgname}/README.md"
+		install -D README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	fi
 }
