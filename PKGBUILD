@@ -2,7 +2,7 @@
 
 _pkgname=indy-node
 pkgname=hyperledger-${_pkgname}
-pkgver=1.12.1
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="A self-sovereign identity ecosystem on top of a distributed ledger. It is the core project for Indy"
 arch=(i686 x86_64)
@@ -61,7 +61,7 @@ package() {
 	install -Dm644 ../indy-node.conf $pkgdir/usr/lib/sysusers.d/indy-node.conf
 }
 
-md5sums=('ae349de8df560ec510b4d490c0d5fb79'
+md5sums=('7596d31e33d7bbe0858f537efdadb51c'
          '43505a7341a671fd343dd13bd49e9ab2'
          '02486863bad2eab23a40510a3d6f0747'
          '6d0ef3bcbfe3dead0a875768f8d133eb'
