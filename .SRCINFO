@@ -1,6 +1,6 @@
 pkgbase = r-pcalg
 	pkgdesc = Methods for Graphical Models and Causal Inference
-	pkgver = 2.7.7
+	pkgver = 2.7.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pcalg
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = r-pcalg
 	optdepends = r-matrix
 	optdepends = r-mvtnorm
 	optdepends = r-rgraphviz
-	source = https://cran.r-project.org/src/contrib/pcalg_2.7-7.tar.gz
-	sha256sums = 52753eba6c0cb148db292a57b0dbcf88bddfdd071ab60e841f81faf8170bc82d
+	source = https://cran.r-project.org/src/contrib/pcalg_2.7-8.tar.gz
+	sha256sums = 7922f54db964511b6b07d7ffa86ea9f3f1b599c0609c47d194a5065615f312de
 
 pkgname = r-pcalg

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcalg
-_pkgver=2.7-7
+_pkgver=2.7-8
 pkgname=r-${_pkgname,,}
-pkgver=2.7.7
+pkgver=2.7.8
 pkgrel=1
 pkgdesc='Methods for Graphical Models and Causal Inference'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('52753eba6c0cb148db292a57b0dbcf88bddfdd071ab60e841f81faf8170bc82d')
+sha256sums=('7922f54db964511b6b07d7ffa86ea9f3f1b599c0609c47d194a5065615f312de')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
