@@ -2,15 +2,14 @@
 _pkgname=lcd-image-converter
 pkgname=lcd-image-converter-git
 provides=('lcd-image-converter')
-pkgver=r1720.52ca14a
+pkgver=r1776.4d43872
 pkgrel=1
 pkgdesc="Tool to create bitmaps and fonts for embedded applications. Tracking develop branch."
 arch=('i686' 'x86_64')
 url="http://www.riuson.com/lcd-image-converter"
 license=('GPL')
-#groups=()
 depends=('qt5-declarative' 'hicolor-icon-theme' 'qt5-xmlpatterns' 'qt5-svg')
-makedepends=()
+makedepends=('qt5-tools' 'desktop-file-utils' 'git')
 source=("$_pkgname::git+https://github.com/riuson/lcd-image-converter.git#branch=develop"
         "$_pkgname.desktop")
 sha1sums=('SKIP'
