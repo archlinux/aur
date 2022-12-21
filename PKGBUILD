@@ -5,7 +5,7 @@
 
 pkgname='fcitx5-mozc-ut'
 pkgver=2.28.4950.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
@@ -19,7 +19,7 @@ options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=db37db71b53c9accc9ad66d12ad8196b25c771b3"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            'de2a029536bab9cebd3ba795074b82277f8590a4c68060037468496d0feb64ee')
+            'e752fc16d295835767094ba299b7fdcbdecdf2be3f855237a950078511aa6617')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -33,6 +33,9 @@ prepare() {
 
     # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
     patch -Np2 -i ${srcdir}/fcitx5.patch
+
+    # Temp fix for Bazel 6.0.0
+    sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
 }
 
 build() {

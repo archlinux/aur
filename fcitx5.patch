@@ -1,6 +1,6 @@
 diff -ruN google-mozc-git/src/BUILD.fcitx5.bazel fcitx-mozc-git/src/BUILD.fcitx5.bazel
 --- google-mozc-git/src/BUILD.fcitx5.bazel	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/BUILD.fcitx5.bazel	2022-12-19 13:05:53.990749594 +0200
++++ fcitx-mozc-git/src/BUILD.fcitx5.bazel	2022-12-21 09:49:36.814508597 +0200
 @@ -0,0 +1,28 @@
 +package(
 +    default_visibility = ["//visibility:public"],
@@ -32,7 +32,7 @@ diff -ruN google-mozc-git/src/BUILD.fcitx5.bazel fcitx-mozc-git/src/BUILD.fcitx5
 +)
 diff -ruN google-mozc-git/src/unix/fcitx5/BUILD fcitx-mozc-git/src/unix/fcitx5/BUILD
 --- google-mozc-git/src/unix/fcitx5/BUILD	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/BUILD	2022-12-19 13:05:54.010749436 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/BUILD	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,101 @@
 +load(
 +    "//:build_defs.bzl",
@@ -137,7 +137,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/BUILD fcitx-mozc-git/src/unix/fcitx5/B
 +
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx5.gyp fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp
 --- google-mozc-git/src/unix/fcitx5/fcitx5.gyp	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp	2022-12-19 13:05:54.010749436 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,118 @@
 +#
 +# Copyright (c) 2010-2017 fcitx Project http://github.com/fcitx/
@@ -259,7 +259,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx5.gyp fcitx-mozc-git/src/unix/fci
 +}
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	2022-12-19 13:05:54.010749436 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,244 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -507,7 +507,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc fcitx-mozc-
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,79 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -590,7 +590,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h fcitx-mozc-g
 +#endif  // UNIX_FCITX5_FCITX_KEY_EVENT_HANDLER_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,526 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -1120,7 +1120,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc fcitx-mozc-git
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,103 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -1227,14 +1227,14 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h fcitx-mozc-git/
 +#endif  // MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/Messages.sh fcitx-mozc-git/src/unix/fcitx5/Messages.sh
 --- google-mozc-git/src/unix/fcitx5/Messages.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/Messages.sh	2022-12-19 13:05:54.010749436 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/Messages.sh	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,3 @@
 +#!/bin/bash
 +
 +gen_pot cxx:desktop:appdata fcitx5-mozc po .
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc-addon.conf fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf
 --- google-mozc-git/src/unix/fcitx5/mozc-addon.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,10 @@
 +[Addon]
 +Name=Mozc
@@ -1248,7 +1248,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc-addon.conf fcitx-mozc-git/src/uni
 +0=clipboard
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc.conf fcitx-mozc-git/src/unix/fcitx5/mozc.conf
 --- google-mozc-git/src/unix/fcitx5/mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc.conf	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc.conf	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,7 @@
 +[InputMethod]
 +Name=Mozc
@@ -1259,7 +1259,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc.conf fcitx-mozc-git/src/unix/fcit
 +Configurable=True
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.cc fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_connection.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,69 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1332,7 +1332,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.cc fcitx-mozc-git/src/
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.h fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h
 --- google-mozc-git/src/unix/fcitx5/mozc_connection.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,72 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1408,7 +1408,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.h fcitx-mozc-git/src/u
 +#endif  // MOZC_UNIX_FCITX5_MOZC_CONNECTION_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_engine.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,273 @@
 +/*
 + * Copyright (C) 2017~2017 by CSSlayer
@@ -1685,7 +1685,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,73 @@
 +/*
 + * Copyright (C) 2020~2020 by CSSlayer
@@ -1762,7 +1762,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc fcitx-mozc-git/
 +FCITX_ADDON_FACTORY(fcitx::MozcEngineFactory)
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h
 --- google-mozc-git/src/unix/fcitx5/mozc_engine.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2022-12-21 09:49:36.817842083 +0200
 @@ -0,0 +1,148 @@
 +/*
 + * Copyright (C) 2017~2017 by CSSlayer
@@ -1914,7 +1914,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +#endif  // _FCITX_UNIX_FCITX5_MOZC_ENGINE_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,480 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2398,7 +2398,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc fcitx-mozc-git
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.h fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h
 --- google-mozc-git/src/unix/fcitx5/mozc_response_parser.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,88 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2490,7 +2490,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.h fcitx-mozc-git/
 +#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_state.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,414 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -2908,7 +2908,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.h fcitx-mozc-git/src/unix/fcitx5/mozc_state.h
 --- google-mozc-git/src/unix/fcitx5/mozc_state.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.h	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,169 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -3081,7 +3081,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.h fcitx-mozc-git/src/unix/f
 +#endif  // MOZC_UNIX_FCITX_FCITX_MOZC_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 --- google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,16 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<component type="addon">
@@ -3101,7 +3101,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.x
 +</component>
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx5/po/ca.po
 --- google-mozc-git/src/unix/fcitx5/po/ca.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3224,7 +3224,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx5/po/da.po
 --- google-mozc-git/src/unix/fcitx5/po/da.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3347,7 +3347,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx5/po/de.po
 --- google-mozc-git/src/unix/fcitx5/po/de.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3471,7 +3471,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot
 --- google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,115 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3590,7 +3590,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx5/po/he.po
 --- google-mozc-git/src/unix/fcitx5/po/he.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3714,7 +3714,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx5/po/ja.po
 --- google-mozc-git/src/unix/fcitx5/po/ja.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3838,7 +3838,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "候補を縦に並べる"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx5/po/ko.po
 --- google-mozc-git/src/unix/fcitx5/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3963,7 +3963,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "세로 후보 목록"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS
 --- google-mozc-git/src/unix/fcitx5/po/LINGUAS	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,11 @@
 +
 +ca
@@ -3978,7 +3978,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fci
 +zh_TW
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx5/po/ru.po
 --- google-mozc-git/src/unix/fcitx5/po/ru.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,124 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4106,7 +4106,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgstr "Вертикальный список кандидатов"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx5/po/tr.po
 --- google-mozc-git/src/unix/fcitx5/po/tr.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/tr.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/tr.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4229,7 +4229,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4353,7 +4353,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgstr "垂直候选列表"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2022-12-19 13:05:55.474071387 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,122 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4479,7 +4479,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgstr "垂直候選字列表"
 diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc
 --- google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,222 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4705,7 +4705,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc fcitx-mozc-gi
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.h fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h
 --- google-mozc-git/src/unix/fcitx5/surrounding_text_util.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h	2022-12-19 13:05:54.014082744 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h	2022-12-21 09:49:36.821175570 +0200
 @@ -0,0 +1,86 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
