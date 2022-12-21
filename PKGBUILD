@@ -19,7 +19,7 @@ depends=(
          'python-numpy'
          'python-pandas'
          'python-seaborn'
-         )
+         'mutmap')
 makedepends=(
             'python-setuptools'
             'cython'

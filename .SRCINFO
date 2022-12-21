@@ -17,6 +17,7 @@ pkgbase = qtl-seq
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-seaborn
+	depends = mutmap
 	options = !emptydirs
 	source = https://github.com/YuSugihara/QTL-seq/archive/refs/tags/v2.2.3.tar.gz
 	sha256sums = fb6e641f100316cd178254fc1f196cc5dd7bbebb18f2997c29cd896a997227d1
