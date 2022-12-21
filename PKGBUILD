@@ -1,25 +1,37 @@
-# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
 
-_gemname='cool.io'
-pkgname="ruby-${_gemname}"
-pkgver=1.7.0
-pkgrel=0
-pkgdesc='provides a high performance event framework for Ruby which uses the libev C library.'
-arch=('x86_64')
+pkgname="ruby-cool.io"
+_gemname=${pkgname#ruby-}
+pkgver=1.7.1
+pkgrel=1
+pkgdesc='Simple evented I/O for Ruby'
+arch=(x86_64)
 url='https://github.com/tarcieri/cool.io'
-license=('MIT')
-depends=('ruby')
-makedepends=('ruby-rdoc' 'ruby-bundler' 'ruby-rake-compiler')
-checkdepends=('ruby-rake' 'ruby-rspec')
-source=("${url}/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz")
-options=("!emptydirs")
-sha512sums=('5bae91a4db83999922e8b75e2ba943d0a211636456bb197d914acaae0ead3e7575d6eb52cd9228304941c4f4b8274a82ca302a54d1484e894361a68038b20f24')
-provides=(
-  cool.io_ext.so=${pkgver}
-  iobuffer_ext.so=${pkgver}
+license=(MIT)
+depends=(ruby)
+makedepends=(
+  ruby-rdoc
+  ruby-bundler
+  ruby-rake-compiler
 )
+checkdepends=(
+  ruby-rake
+  ruby-rspec
+)
+options=("!emptydirs")
+
+source=("${url}/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz")
+sha256sums=('64d6921b052f9e5894eef42b5b2d053ce62a933fe57c79b6c51a928bd1d77c89')
+provides=(
+  "cool.io_ext.so=${pkgver}"
+  "iobuffer_ext.so=${pkgver}"
+)
+
+_archive="${_gemname}-${pkgver}"
+
 build() {
-  cd "${srcdir}/${_gemname}-${pkgver}"
+  cd "$_archive"
 
   # update the gemspec to allow newer versions of rake
   sed --in-place 's|~>|>=|g' "${_gemname}.gemspec"
@@ -28,14 +40,16 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_gemname}-${pkgver}"
+  cd "$_archive"
+
   # Two tests fail if /etc/resolv.conf contains an IPv6 address
   # https://github.com/tarcieri/cool.io/issues/68
   rake
 }
 
 package() {
-  cd "${srcdir}/${_gemname}-${pkgver}"
+  cd "$_archive"
+
   local _gemdir="$(gem env gemdir)"
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
@@ -46,5 +60,3 @@ package() {
   rm -rf "${pkgdir}/${_gemdir}/cache"
   rm -r ${pkgdir}/${_gemdir}/extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
 }
-
-# vim: ts=2 sw=2 et:
