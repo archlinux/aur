@@ -1,7 +1,7 @@
 pkgbase = catch2v3
 	pkgdesc = Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3)
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catchorg/Catch2/
 	arch = any
 	license = Boost
