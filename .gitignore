@@ -1,3 +1,4 @@
 archlinux-linux/
 src/
 pkg/
+/*.pkg.*
