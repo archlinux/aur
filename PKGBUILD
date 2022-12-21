@@ -2,7 +2,7 @@
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
 pkgver=0.8.14
-pkgrel=2
+pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
@@ -12,7 +12,7 @@ conflicts=("logseq-desktop-git" "logseq-desktop")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${_pkgname}.desktop")
 sha256sums=('8a27e62e18176a93c10be034c86f51198eafb94c1028f267409436dc644dbf26'
-            '5650b01cbf2528acad9a36b6796b9c8ee9fe684b0c6939a2308d7822effb1c40')
+            '7efeec2aa0ae3dd9037ab7dff56ebde6947d3e1d09c7e438af16a8c68552bff9')
 
 package() {
     cd "$srcdir/Logseq-linux-x64"
