@@ -206,6 +206,10 @@ pkgname = ceph
 	optdepends = nvme-cli: disk monitoring for NVMe drives
 	provides = ceph=17.2.5-4
 	conflicts = ceph-bin
+	backup = etc/logrotate.d/ceph
+	backup = etc/udev/rules.d/50-ceph-rbd.rules
+	backup = etc/sysctl.d/90-ceph-osd.conf
+	backup = etc/sudoers.d/90-ceph
 
 pkgname = ceph-libs
 	depends = boost-libs

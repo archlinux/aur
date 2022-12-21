@@ -251,6 +251,10 @@ package_ceph() {
            'ncurses'
            'nss' 'oath-toolkit' 'python'
            'snappy' 'sudo' 'systemd-libs' 'lua' 'gawk')
+  backup=('etc/logrotate.d/ceph'
+          'etc/udev/rules.d/50-ceph-rbd.rules'
+          'etc/sysctl.d/90-ceph-osd.conf'
+          'etc/sudoers.d/90-ceph')
   optdepends=('smartmontools: disk monitoring via S.M.A.R.T'
               'nvme-cli: disk monitoring for NVMe drives')
   provides=("ceph=${pkgver}-${pkgrel}")
