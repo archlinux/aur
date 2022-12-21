@@ -1,6 +1,6 @@
 pkgbase = python-webdataset
 	pkgdesc = Record sequential storage for deep learning.
-	pkgver = 0.1.2
+	pkgver = 0.2.31
 	pkgrel = 1
 	url = https://github.com/webdataset/webdataset
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-webdataset
 	depends = python-pytorch
 	depends = python-simplejson
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/w/webdataset/webdataset-0.1.2.tar.gz
-	sha256sums = 9cb669794559089fda6bbde701473a60de3180c0623bf56c5559d9702a330fe6
+	source = https://files.pythonhosted.org/packages/source/w/webdataset/webdataset-0.2.31.tar.gz
+	sha256sums = d71658ed65d114d842c0b00d429e9cc3f0a68ed11f37f5e91aee9f8ffbced62f
 
 pkgname = python-webdataset
