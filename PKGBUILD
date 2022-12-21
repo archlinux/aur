@@ -8,8 +8,8 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell"
-pkgver=20220405
-pkgrel=2
+pkgver=20221218
+pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
 # Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
@@ -22,13 +22,13 @@ makedepends=('meson>=0.53.0' 'sassc' 'glib2' 'gdk-pixbuf2')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha512sums=('16655b822548820945c5fd3c0bb809d1e55db887c3b5c5309f4acd82c4dd7dd8255d246d86025231c73a303e647bb61c7f9cdc63a04f813cfb79fadf27dec204'
+sha512sums=('5a84b717de022c673c6af260381542365550f629f43ae99c7ab8b22b4c09024403a1bc06279b40d3560e86d9810683c2e8337799a4cc67ef7aeb93223b5f56a1'
             'SKIP')
 validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
 # Latest stable Arch package versions
-_cinnamonver=5.2
-_gnomeshellver=42
+_cinnamonver=5.6
+_gnomeshellver=43
 
 prepare() {
     cd ${_pkgname}-${pkgver}
