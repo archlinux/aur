@@ -1,15 +1,15 @@
 pkgbase = humnumsort
 	pkgdesc = A more human-friendly alternative to GNU Sort, written in Rust
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ctrlcctrlv/humnumsort
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = Apache-2.0
-	makedepends = rust
 	makedepends = cargo
-	depends = rust
 	provides = humnumsort
+	source = humnumsort-0.1.1.tar.gz::https://github.com/ctrlcctrlv/humnumsort/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = fa4490ac64035fac0c9f60f2af3413a548e20aebe1e53214d5084587ea2e11e2
 
 pkgname = humnumsort
