@@ -11,7 +11,7 @@ license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git
+  git rust
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -26,7 +26,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'ea32a9f6556f219298734eac60c94505d15b2d90c4e0d836c472ef2a72079760')
+            '3c5057c3200a7aaa40af2e81f4e043a5fdc27673894c8f4ee55ee5dc069c6112')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -107,9 +107,6 @@ _package-headers() {
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
