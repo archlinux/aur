@@ -15,7 +15,7 @@ pkgname=(
     python-cirq
     ${_packages[@]}
 )
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=4
 pkgdesc='A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits.'
 arch=(any)
@@ -24,7 +24,7 @@ license=('Apache')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c48a83ccd8d1add6aa87c694cc3585c3ccf18fa6def44ace89f6775c967dcda2152eb1438b131525d0271fdc86177c67544700370783c594166c105b7b3499f1')
+b2sums=('97106c6ab848b5e6139c6c6a3408c5539452cb6d57fb7e2de5862d1153e9849530589c3828a08e46e0a0ae9e0a1913d78bf66c90347f9b1a376f974c075cff4e')
 
 build() {
     cd $_name-$pkgver
