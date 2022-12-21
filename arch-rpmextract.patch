@@ -1,0 +1,15 @@
+diff --git a/build8.sh b/build8.sh
+index 84e00a7..53ecd9e 100755
+--- a/build8.sh
++++ b/build8.sh
+@@ -62,8 +62,8 @@ test -f "${ldsourl##*/}" || wget "${ldsourl}"
+ pushd build
+ 
+ # Extract libraries.
+-rpm2cpio < "../${ldsourl##*/}" | cpio -d -i '*/ld-*'
+-rpm2cpio < "../${libcurl##*/}" | cpio -d -i '*/lib[cm].*'
++rpm2cpio  "../${ldsourl##*/}" | bsdtar -x '*/ld-*'
++rpm2cpio  "../${libcurl##*/}" | bsdtar -x '*/lib[cm].*'
+ 
+ cp ../libcompat.so lib/
+ cp ../libwppatch.so lib/
