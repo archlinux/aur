@@ -1,8 +1,8 @@
 # Maintainer: Rafael Cruz <rafaelcruz at outlook dot com>
 
 pkgname=fightcade2
-pkgver=2.1.33
-pkgrel=2
+pkgver=2.1.35
+pkgrel=1
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
 arch=('any')
@@ -61,6 +61,7 @@ then
     notify-send "Fightcade" "Updating new version $newVersion... please wait"
     mkdir -p "$fightcadeUserFolderPath"
     rsync -r --copy-links $fightcadeInstallFolder/* $fightcadeUserFolderPath
+	notify-send "Fightcade" "Update finished!"
 fi
 
 sh "$fightcadeUserFolderPath/_Fightcade2.sh"
