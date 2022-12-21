@@ -2,7 +2,7 @@
 
 pkgname=python-django-q
 pkgver=1.3.9
-pkgrel=5
+pkgrel=6
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
 url=https://github.com/Koed00/django-q
@@ -58,6 +58,7 @@ build() {
 
 package() {
   python -m installer --destdir="${pkgdir}" django-q/dist/*.whl
+  rm "${pkgdir}"/usr/lib/python*/site-packages/CHANGELOG.md
   install -Dm 644 django-q/LICENSE -t "${pkgdir}"/usr/share/licenses/python-django-q/
 }
 
