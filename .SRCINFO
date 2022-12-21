@@ -1,0 +1,12 @@
+pkgbase = python-vkbeautify
+	pkgdesc = python plugin to pretty-print or minify text in XML, JSON and CSS formats
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/willthames/ansible-lint
+	arch = any
+	license = MIT
+	depends = python3
+	source = python-vkbeautify-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/v/vkbeautify/vkbeautify-0.3.0.tar.gz
+	md5sums = bab6bceaffaadb43e14170b27969945f
+
+pkgname = python-vkbeautify
