@@ -2,10 +2,10 @@
 
 pkgbase=linux-amd-znver2
 _srcname=linux
-gitver=v6.1
-patchver=20221104
+gitver=v6.1.1
+patchver=20221217
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.1.v.0
+pkgver=6.1.v.1
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,13 +25,13 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'e95e590f257193a24f0db6def42d1d99f585857738e2f7ffd069c910a49dad47'
+            '9b627cc806cbeb2c0d0188dbcb22682b1919fda3563e0e8808125a21f31273d1'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #grayskypatch
-            '87f0fd3a07614ca81cfe1013c7e3ff93350e587fbfa98f111548ac039b0dc7d9'
+            'ba133fdda4dcc62de10792ae1d8149ce4a18d13a6ad808926e8b2d94b72071c3'
 )
 
 _kernelname=${pkgbase#linux}
