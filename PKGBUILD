@@ -38,17 +38,19 @@ package() {
 		install hashzam.py "${pkgdir}/usr/bin/hashzam/"
 	fi
 	if [ ! -f "/usr/share/licenses/${pkgname}/LICENSE" ]; then
-		install -d LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		install -d "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	else
 		# "/usr/share/licenses/${pkgname}/LICENSE"
 		#cp LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
-		install -d LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+		install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	fi
 	if [ ! -f "/usr/share/doc/${pkgname}/README.md" ]; then
-		install -d README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+		install -d "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+		install README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	else
 		#rm -f "/usr/share/doc/${pkgname}/README.md"
 		#cp README.md "/usr/share/doc/${pkgname}/README.md"
-		install -d README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+		install README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	fi
 }
