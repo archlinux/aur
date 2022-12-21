@@ -1,0 +1,14 @@
+pkgbase = i686-elf-gcc-aarch64
+	pkgdesc = i686-elf-gcc build for host aarch64
+	pkgver = 12.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = aarch64
+	license = GPL
+	depends = xz
+	depends = libmpc
+	depends = i686-elf-binutils-aarch64
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.gz
+	sha256sums = ac6b317eb4d25444d87cf29c0d141dedc1323a1833ec9995211b13e1a851261c
+
+pkgname = i686-elf-gcc-aarch64
