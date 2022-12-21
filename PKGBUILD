@@ -7,7 +7,7 @@
 
 pkgname=lib32-libtirpc
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=(x86_64)
 url=http://libtirpc.sourceforge.net/
@@ -16,30 +16,19 @@ depends=(
   lib32-krb5
   libtirpc
 )
-makedepends=(git)
-_tag=490ba51956e3935d9e4b0b36c6cc927ac305b673
-source=(git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=${_tag})
-sha256sums=(SKIP)
-
-pkgver() {
-  cd libtirpc
-
-  git describe --tags | sed 's/^libtirpc-//; s/-/./g'
-}
+source=(https://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-${pkgver}.tar.bz2)
+b2sums=('e229869b05103d912b677f78648dce1f7fa7649bdf44b782a5fb97635eecf07f768bbc0ef25c0f065c8253fbe37c12b80934d9102b7345adfc4102897458b487')
 
 prepare() {
-  cd libtirpc
-
+  cd libtirpc-${pkgver}
   chmod +x autogen.sh
   ./autogen.sh
 }
 
 build() {
-  cd libtirpc
-
+  cd libtirpc-${pkgver}
   export CC='gcc -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
@@ -48,11 +37,9 @@ build() {
 }
 
 package() {
-  cd libtirpc
-
+  cd libtirpc-${pkgver}
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{include,share}}
-
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s libtirpc "${pkgdir}"/usr/share/licenses/lib32-libtirpc
 }
