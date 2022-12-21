@@ -3,7 +3,7 @@
 # Contributor: 謝致邦<Yeking@Red54.com>
 
 pkgname=lubuntu-artwork
-pkgver=22.10.1
+pkgver=23.04.1
 pkgrel=1
 pkgdesc='artwork of Lubuntu'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('gtk-engine-murrine: gtk2 theme support'
             'elementary-icon-theme: icons support'
             'gtk-engine-unico: gtk3 theme support')
 source=("http://archive.ubuntu.com/ubuntu/pool/universe/l/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('9b2e7616f151ec8f48bc0a5be3c52a30a3f12e3af3629c87777d0de8b4ef72b1cb2afa4c1bd04381834dcde3cd27a14692c0b0e4ea887c947fc55ec1002ceb9e')
+sha512sums=('ad96a53f03983856c1d01b393187d1d6e963ee12586a7803ab862b596c208e65d4d844f00316fadef2542485bf7159bd217d7597d09cc36dbd99603253292d32')
 
 package(){
     cp -r "${srcdir}/artwork/src/usr" "${pkgdir}"
