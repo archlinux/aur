@@ -17,7 +17,7 @@ groups=('libreoffice-extensions')
 
 # conflicts=('libreoffice-extension-languagetool')
 provides=('libreoffice-extension-dictionaries-fr')
-source=("https://grammalecte.net/grammalecte/oxt/Grammalecte-fr-v${pkgver}.oxt")
+source=("https://grammalecte.net/oxt/Grammalecte-fr-v${pkgver}.oxt")
 sha512sums=('e9acbd0e78c42ad0bebf2961b54d8c811995761407973d3ea900527233cccedf3417880fbfdc5fdfd3716eaaac6f532120729da9e9bededd9ab72042047385c8')
 
 package() {

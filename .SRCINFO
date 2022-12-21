@@ -9,8 +9,7 @@ pkgbase = libreoffice-extension-grammalecte-fr
 	makedepends = unzip
 	depends = libreoffice
 	provides = libreoffice-extension-dictionaries-fr
-	source = https://grammalecte.net/grammalecte/oxt/Grammalecte-fr-v2.1.2.oxt
+	source = https://grammalecte.net/oxt/Grammalecte-fr-v2.1.2.oxt
 	sha512sums = e9acbd0e78c42ad0bebf2961b54d8c811995761407973d3ea900527233cccedf3417880fbfdc5fdfd3716eaaac6f532120729da9e9bededd9ab72042047385c8
 
 pkgname = libreoffice-extension-grammalecte-fr
-
