@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Yves Ritschard <pyr@spootnik.org>
 
 pkgname=exoscale-cli
-pkgver=1.62.0
+pkgver=1.63.0
 pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 
 source=("https://github.com/exoscale/cli/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('4a5bc21a1da173d1eb37180e9e2e56521225420b1a054d30daaf36f7879f34eb')
+sha256sums=('a5ece1b6e8fc9b8e1c0f9491ec0a5f75e433e0a82a69de41dccd71cf468f475a')
 
 package() {
   install -Dm755 "${srcdir}/exo" "${pkgdir}/usr/bin/exo"
