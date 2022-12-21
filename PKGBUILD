@@ -19,10 +19,6 @@ build(){
 }
 
 package(){
-    cd $pkgname-$pkgver
-    cd build
-    install -d $pkgdir/usr/lib/gau2grid
-    install -d $pkgdir/usr/include/gau2grid
-    cp -av *.so* $pkgdir/usr/lib/gau2grid/
-    cp -av gau2grid/*.h $pkgdir/usr/include/gau2grid
+    cd $pkgname-$pkgver/build
+    make install
 }
