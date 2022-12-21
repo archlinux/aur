@@ -1,9 +1,9 @@
 pkgbase = videomerge
 	pkgdesc = Simple and fast mp4/matroska/Av1/webm/mp2/mpts Video merger
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kanehekili/VideoMerge
-	arch = x86_64
+	arch = any
 	license = GPL2
 	depends = python-pyqt5
 	depends = ffmpeg
