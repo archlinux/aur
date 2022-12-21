@@ -1,6 +1,6 @@
 pkgbase = rl_custom_function-git
 	pkgdesc = Enable to inject custom functions into any readline applications
-	pkgver = r22.28f437d
+	pkgver = r23.76bce87
 	pkgrel = 1
 	url = https://github.com/lincheney/rl_custom_function
 	install = rl_custom_function-git.install
@@ -15,4 +15,3 @@ pkgbase = rl_custom_function-git
 	sha256sums = SKIP
 
 pkgname = rl_custom_function-git
-

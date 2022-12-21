@@ -2,7 +2,7 @@ post_install() {
   [ -e /etc/ld.so.preload ] || install -m 644 /dev/null /etc/ld.so.preload
 
   sed -i -e '/librl_custom_function.so/d' /etc/ld.so.preload
-  echo '/usr/lib/librl_custom_function.so' >> /etc/ld.so.preload
+  echo '/usr/$LIB/librl_custom_function.so' >> /etc/ld.so.preload
 }
 
 post_upgrade() {
