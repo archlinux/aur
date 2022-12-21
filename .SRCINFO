@@ -1,0 +1,19 @@
+pkgbase = bazelisk-git
+	pkgdesc = A user-friendly launcher for Bazel
+	pkgver = 1.15.0.r2.gb484ae2
+	pkgrel = 1
+	url = https://github.com/bazelbuild/bazelisk
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = bazelisk=1.15.0.r2.gb484ae2
+	provides = bazel
+	conflicts = bazelisk
+	conflicts = bazel
+	source = git+https://github.com/bazelbuild/bazelisk.git
+	sha256sums = SKIP
+
+pkgname = bazelisk-git
