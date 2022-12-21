@@ -1,6 +1,6 @@
 pkgbase = lubuntu-artwork
 	pkgdesc = artwork of Lubuntu
-	pkgver = 22.10.1
+	pkgver = 23.04.1
 	pkgrel = 1
 	url = http://wiki.ubuntu.com/Lubuntu/Artwork
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = lubuntu-artwork
 	optdepends = elementary-icon-theme: icons support
 	optdepends = gtk-engine-unico: gtk3 theme support
 	options = !strip
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_22.10.1.tar.xz
-	sha512sums = 9b2e7616f151ec8f48bc0a5be3c52a30a3f12e3af3629c87777d0de8b4ef72b1cb2afa4c1bd04381834dcde3cd27a14692c0b0e4ea887c947fc55ec1002ceb9e
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/l/lubuntu-artwork/lubuntu-artwork_23.04.1.tar.xz
+	sha512sums = ad96a53f03983856c1d01b393187d1d6e963ee12586a7803ab862b596c208e65d4d844f00316fadef2542485bf7159bd217d7597d09cc36dbd99603253292d32
 
 pkgname = lubuntu-artwork
