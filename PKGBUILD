@@ -17,8 +17,8 @@ md5sums=(
 	cbbdf90489e0b937454e4ed94d63824a
 	571d83dfa4b39c0ba95f825810104243
 	50dbdaba66b5ad8837fd364610e72822
-	e86538eae0bc9618729beb46321b9374
-	ac5dee47fb26b39e3b5d1737200a7de8)
+	1025f541365a46e46899000fdd70f21f
+	ad2395812e541c546ac93e7bc418d8ba)
 package(){
 	mkdir -p "$pkgdir"/usr/share/narcissu2/v1.1
 	cp -r narcissu2 "$pkgdir"/usr/share
