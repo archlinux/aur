@@ -2,7 +2,7 @@
 
 pkgname=sdl2-gamepad-mapper
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate SDL2 Controller mapping strings"
 arch=('any')
 url='https://gitlab.com/ryochan7/sdl2-gamepad-mapper'
@@ -13,7 +13,7 @@ sha256sums=("SKIP")
 
 build() {
   cd "$srcdir/sdl2-gamepad-mapper"
-  qmake
+  qmake CONFIG+=release
   make
 }
 

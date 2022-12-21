@@ -1,7 +1,7 @@
 pkgbase = sdl2-gamepad-mapper
 	pkgdesc = Generate SDL2 Controller mapping strings
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ryochan7/sdl2-gamepad-mapper
 	arch = any
 	makedepends = git
