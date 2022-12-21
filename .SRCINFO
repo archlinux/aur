@@ -1,0 +1,13 @@
+pkgbase = datadraw-git
+	pkgdesc = DataDraw is a database generator.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/waywardgeek/datadraw
+	arch = any
+	license = LGPL
+	makedepends = git
+	provides = datadraw
+	source = /datadraw::git+https://github.com/waywardgeek/datadraw.git
+	sha256sums = SKIP
+
+pkgname = datadraw-git
