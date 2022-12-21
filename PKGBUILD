@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libowfat
 pkgname=$_pkgname-cvs
-pkgver=0.32+20211103
+pkgver=0.32+20221213
 pkgrel=1
 pkgdesc="Reimplementation of libdjb"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cvs')
 provides=("$_pkgname=$pkgver" 'libowfat.so')
 conflicts=("$_pkgname")
 source=('fix-and-build-shared.diff')
-b2sums=('e43d49cf9bcc4ae5bf94dd59c3e5e4563882955ed6e3f811e7e2596aa06ec59d22026b33533745a956cb90f8b8d4975929aa2a95266aed58f73f52f600fdeeb1')
+b2sums=('594c3d79d21016432055cba52a7f8a5252be898f2344d15ed3b46793b46dff883698501cab0800f9b09cd15bc371992858e42649148e529d50e8cfd771708698')
 
 pkgver() {
 	cd $_pkgname
@@ -28,6 +28,10 @@ build() {
 	cd $_pkgname
 	make headers
 	make
+}
+
+check() {
+	make -C $_pkgname check
 }
 
 package() {

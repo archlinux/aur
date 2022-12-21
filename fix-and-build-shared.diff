@@ -15,7 +15,7 @@
  buffer.a mmap.a taia.a tai.a dns.a case.a mult.a array.a io.a \
  textcode.a cdb.a critbit.a
  
--all: headers ent $(LIBS) libowfat.a libsocket t
+-all: ent $(LIBS) libowfat.a libsocket t
 +SONAME=libowfat.so.0
 +
 +all: $(SONAME)
@@ -31,7 +31,7 @@
  CFLAGS_OPT=-pipe $(WARN) $(DEFINE) $(OPT_PLUS)
  
  #CFLAGS=-pipe -Os -march=pentiumpro -mcpu=pentiumpro -fomit-frame-pointer -fschedule-insns2 -Wall
-@@ -181,7 +183,7 @@ CFLAGS+=-I.
+@@ -1166,7 +1168,7 @@ CFLAGS+=-I.
  CFLAGS_OPT+=-I.
  
  %.o: byte/%.c
@@ -40,11 +40,11 @@
  
  %.o: %.c
  	$(DIET) $(CCC) -c $< $(CFLAGS)
-@@ -224,15 +226,16 @@ install-inc:
+@@ -1207,15 +1209,16 @@ install-inc:
  	install -d $(DESTDIR)$(INCLUDEDIR)/libowfat
  	install -m 644 $(INCLUDES) $(DESTDIR)$(INCLUDEDIR)/libowfat
  
--install-lib: libowfat.a
+-install-lib:
 +install-lib: $(SONAME)
  	install -d $(DESTDIR)$(LIBDIR)
 -	install -m 644 libowfat.a $(DESTDIR)$(LIBDIR)
@@ -60,7 +60,7 @@
  
  uninstall:
  	rm -f $(patsubst %.h,$(INCLUDEDIR)/%.h,$(INCLUDES))
-@@ -423,3 +426,6 @@ check2: haveuint128.h haveinline.h entities.h
+@@ -1407,3 +1410,6 @@ check2: haveuint128.h haveinline.h entities.h
  	for i in $(UNITTESTS); do $(CC) -Wall -fprofile-arcs -ftest-coverage -g -o t -DUNITTEST $$i -I. $(LDFLAGS) && ./t || echo FAIL $$i ; done
  
  check: haveuint128.h haveinline.h $(TESTS)
