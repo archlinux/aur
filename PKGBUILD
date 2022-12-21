@@ -20,5 +20,12 @@ build(){
 
 package(){
     cd $pkgname-$pkgver/build
-    make install
+    install -d $pkgdir/usr/lib/gau2grid
+    install -d $pkgdir/usr/include/gau2grid
+    install -d $pkgdir/usr/share/gau2grid/
+    cp -av *.so* $pkgdir/usr/lib/gau2grid/
+    cp -av gau2grid/*.h $pkgdir/usr/include/gau2grid
+    cp -av gau2gridConfig*.cmake $pkgdir/usr/share/gau2grid/cmake
+    cp -av CMakefiles/Export/*/*.cmake $pkgdir/usr/share/gau2grid/cmake
+    sed -r -i "s:lib\/libgg:lib\/gau2grid\/libgg:g" $pkgdir/usr/share/gau2grid/cmake/gau2gridTargets-release.cmake
 }
