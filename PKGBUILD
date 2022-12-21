@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname="hyperledger-${_pkgname}"
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
@@ -59,7 +59,7 @@ package() {
     "${pkgdir}/usr/lib/environment.d/${_pkgname}-peer.conf"
 }
 
-sha256sums=('7507a95b545da997b2a85a9cb252ad5c7302d4426957437a2dde7002dc6e60c7'
+sha256sums=('e5882e762a7524105545c8398abe6b7c2b9a5d6dc9a6a54dceaabf47d2940b19'
             'bfdfb0f96bea3f6c2cafb17224fd5b21ec664352ef347841803e2448ca05426f'
             'de85c5359019e44d5086d880cbcf6ab0b84e9bb456ed3e7302997f7e715eb908'
             '9b29b63afd556563de227841060a2c7653d289cc70458992ef54d0339a53de94'
