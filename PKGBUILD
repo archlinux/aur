@@ -1,7 +1,7 @@
 # Maintainer: Pato05 <pato05mc@gmail.com>
 
 pkgname=cppbtbl
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
 pkgdesc="A C++ wrapper around the UPower DBus API to get bluetooth devices' battery"
 url="https://github.com/pato05/cppbtbl"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('sdbus-cpp')
 makedepends=('cmake' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pato05/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('6f5fd1a48b9905179578081a2ccaf2f8a6b276bf62cecb248147e77663575ddf2d4f765f42bae034522554278fdde391fabfb994950624d550128c36674ccf95')
+sha512sums=('e974d22b752a699c0ca36e961b2634a34c73e0ea25fbabdf3d449a20fc1517c03adafe72b37869c19da6f677184e1720b81cfcda72b0c093137c7f8e24758277')
 
 prepare() {
   mkdir -p build
