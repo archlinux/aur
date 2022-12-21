@@ -1,6 +1,6 @@
 pkgbase = pollymc
 	pkgdesc = Prism Launcher fork that adds Ely.by support and allows you to use offline mode without an account.
-	pkgver = 6.0
+	pkgver = 6.1
 	pkgrel = 1
 	url = https://github.com/fn2006/PollyMC
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = pollymc
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
-	source = https://github.com/fn2006/PollyMC/releases/download/6.0/PollyMC-6.0.tar.gz
-	sha256sums = f8739a2d88ea9323306f1309caa8263157e69fba59596423ef2490b3303c9e28
+	source = https://github.com/fn2006/PollyMC/releases/download/6.1/PollyMC-6.1.tar.gz
+	sha256sums = 0e9c0eaa5bca66ad23365f8750f9e5b34423248ccb36898288891dd8ab1ef617
 
 pkgname = pollymc
