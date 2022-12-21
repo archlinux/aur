@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-poppler
 pkgver=22.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF rendering library based on xpdf 3.0 (mingw-w64)"
 arch=('any')
 url="https://poppler.freedesktop.org"
@@ -35,6 +35,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p "${_arch%%-*}" && pushd "${_arch%%-*}"
     ${_arch}-cmake \
+      -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_CPP_TESTS=NO \
       -DBUILD_GTK_TESTS=NO \
       -DBUILD_QT5_TESTS=NO \
