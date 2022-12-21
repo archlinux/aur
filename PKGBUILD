@@ -2,8 +2,8 @@
 pkgname=unifetch-git
 _pkgname=unifetch
 pkgver=22.12
-pkgrel=20
-pkgdesc="Show system info, fork of neofetch, fresh version."
+pkgrel=21
+pkgdesc="An unofficial inheritor of neofetch, fresh version."
 arch=('any')
 url="https://github.com/jin-asanami/"
 license=('MIT')
