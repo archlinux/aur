@@ -1,4 +1,6 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
+# Contributor: Wu Zhenyu <wuzhenyu@ustc.edu> 
+
 pkgname=rl_custom_function-git
 _pkgname=${pkgname%-git}
 pkgver=r23.76bce87
