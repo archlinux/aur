@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 6.1.v.0
+	pkgver = 6.1.v.1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,16 +14,16 @@ pkgbase = linux-amd
 	makedepends = lzop
 	makedepends = gcc>=10.3
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.1
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v6.1.1
 	source = config.x86_64
 	source = linux-amd.preset
 	source = linux.install
-	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20221104/more-uarches-for-kernel-5.17+.patch
+	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20221217/more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 5f97814559a8f55b0fc53a93875871bb7d5748868686407984e5d2cc08c302d8
+	sha256sums = ddefa48f531ff2803209ca113c720e1629af1ec5900bac750e8aa45f5c67b985
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
-	sha256sums = 87f0fd3a07614ca81cfe1013c7e3ff93350e587fbfa98f111548ac039b0dc7d9
+	sha256sums = ba133fdda4dcc62de10792ae1d8149ce4a18d13a6ad808926e8b2d94b72071c3
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel aimed at the latest AMD Ryzen CPU based hardware (ZNVER3/MZEN3)
