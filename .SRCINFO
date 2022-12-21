@@ -1,17 +1,17 @@
 pkgbase = 115pc
 	pkgdesc = 115.com PC client
-	pkgver = 2.0.0.19
+	pkgver = 2.0.2.9
 	pkgrel = 1
 	url = https://pc.115.com/
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
 	options = !strip
-	source = https://down.115.com/client/115pc/lin/115pc_2.0.0.19.deb
+	source = https://down.115.com/client/115pc/lin/115pc_2.0.2.9.deb
 	source = 115.desktop
-	source = 115.sh
-	sha256sums = 905aa35f48f08ac039b69c2c23f41b9813ef166e6893557c16534760dcc75c80
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = 115pc
+	sha256sums = e7f0620171f6407a00f9c5a0c66d2186237f8776137d53e791381a10563c60cb
+	sha256sums = d18207d8f111d5dbd894a17782f421d611262b823bc9e303e7de603ee762181d
+	sha256sums = 810658fc9cd43dc238b0572f071c10b784b9abd4e291e9a691d1b8880f651673
 
 pkgname = 115pc
