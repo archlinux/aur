@@ -8,7 +8,7 @@ arch=('aarch64')
 url="https://www.qemu.org/"
 license=('GPL' 'LGPL')
 #depends=('ninja' 'pixman' 'meson' 'gtk3-debug' 'gtk3' 'capstone' 'vte' 'sdl2' 'glib2-debug' 'glib2' 'python' 'bzip2-debug' 'bzip2' 'zlib-debug' 'dtc' 'libslirp')
-depends=('ninja' 'pixman' 'meson' 'gtk3' 'capstone' 'vte' 'sdl2' 'glib2' 'python' 'bzip2' 'zlib-debug' 'dtc' 'libslirp')
+depends=('ninja' 'pixman' 'meson' 'gtk3' 'capstone' 'vte' 'sdl2' 'glib2' 'python' 'bzip2' 'zlib' 'dtc' 'libslirp')
 source=("${pkgname}::git+https://github.com/qemu/qemu.git")
 sha256sums=('SKIP')
 
