@@ -1,6 +1,6 @@
 pkgbase = pdi-ce
-	pkgdesc = Pentaho Data Integration (ETL)
-	pkgver = 9.1.0.0_324
+	pkgdesc = Pentaho Data Integration (ETL) a.k.a Kettle
+	pkgver = 9.3.0.0_428
 	pkgrel = 1
 	url = https://community.pentaho.com/projects/data-integration/
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = pdi-ce
 	depends = java-runtime
 	depends = gtk3
 	depends = libxtst
-	source = https://netactuate.dl.sourceforge.net/project/pentaho/Pentaho%209.1/client-tools/pdi-ce-9.1.0.0-324.zip
+	source = https://gox.dl.sourceforge.net/project/pentaho/Pentaho-9.3/client-tools/pdi-ce-9.3.0.0-428.zip
 	source = spoon
 	source = carte
 	source = kitchen
 	source = pan
 	source = spoon.desktop
-	sha1sums = b9e32afce7a00663d950cc1258b02909729fbf07
+	sha1sums = 0ea3f54ef8f9a54933fe0937dfc4f59ab84b4097
 	sha1sums = b4166cbcb4fe8c77a4fc4ac02b08703aeacb9759
 	sha1sums = cff3ac6b1df50792b41e613d39bcc3a04eea2e18
 	sha1sums = 0e06b24ffdfad8af2f321ad855d819d5cf4b085c
@@ -22,4 +22,3 @@ pkgbase = pdi-ce
 	sha1sums = 99ff161080cfd675a11928dd467426ba72df4e77
 
 pkgname = pdi-ce
-
