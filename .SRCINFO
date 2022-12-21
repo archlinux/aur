@@ -1,7 +1,7 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
 	pkgver = 1.13.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.solana.com
 	install = solana.install
@@ -28,6 +28,7 @@ pkgbase = solana
 	sha256sums = 62db6f48488413cf727c1f2525dc1e56b817c4365f40d75773ca4760f7eb71f9
 	sha256sums = c17d42533fb666392cd577ecbc67eddad950ab8b911fa8e82e9c03dceaf37862
 	source_x86_64 = perf-libs-0.19.3.tar.gz::https://github.com/solana-labs/solana-perf-libs/releases/download/v0.19.3/solana-perf.tgz
+	optdepends_x86_64 = ocl-icd: for operations requiring CUDA
 	sha256sums_x86_64 = 5850dc8ba63017cdb0c97357cc0e26e60f445abc1ef3c95a61b88e59afae71a4
 
 pkgname = solana
