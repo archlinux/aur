@@ -1,9 +1,9 @@
 # Maintainer: Huayu ZHANG <zhanghuayu.dev@gmail.com>
 
-pkgname=i686-linux-gnu-binutils-aarch64
+pkgname=i686-elf-binutils-aarch64
 pkgver=2.39
 pkgrel=1
-pkgdesc="binutils build for aarch64"
+pkgdesc="i686-elf-binutils build for host aarch64"
 arch=('aarch64')
 url="https://www.qemu.org/"
 license=('GPL' 'LGPL')
@@ -24,7 +24,7 @@ build() {
 
     ./configure \
         --prefix=/usr/local \
-        --target=i686-linux-gnu
+        --target=i686-elf
     # edit /etc/makepkg.conf `MAKEFLAG` to speed up build
     make
 
