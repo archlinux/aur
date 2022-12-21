@@ -3,12 +3,11 @@
 
 pkgname=usql
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
 license=('MIT')
-depends=('icu')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('1a8cc27eab43597d41b09c3ad779ac4599531dffb93e0f4d5a8498166caf58ce')
@@ -21,8 +20,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
 
-    TAGS="most sqlite_app_armor sqlite_fts5 sqlite_introspect sqlite_json1
-          sqlite_stat4 sqlite_userauth sqlite_vtable sqlite_icu no_adodb"
+    TAGS="most sqlite_app_armor sqlite_fts5 sqlite_introspect sqlite_json1 sqlite_math_functions sqlite_stat4 sqlite_userauth sqlite_vtable no_adodb"
 
     go build \
         -tags="$TAGS" \
