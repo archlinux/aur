@@ -22,7 +22,7 @@ package(){
     cd $pkgname-$pkgver/build
     install -d $pkgdir/usr/lib/gau2grid
     install -d $pkgdir/usr/include/gau2grid
-    install -d $pkgdir/usr/share/gau2grid/
+    install -d $pkgdir/usr/share/gau2grid/cmake
     cp -av *.so* $pkgdir/usr/lib/gau2grid/
     cp -av gau2grid/*.h $pkgdir/usr/include/gau2grid
     cp -av gau2gridConfig*.cmake $pkgdir/usr/share/gau2grid/cmake
