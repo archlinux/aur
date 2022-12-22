@@ -1,13 +1,13 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=hp-omen-wmi-dkms
-pkgver=r16.16f23b1
+pkgver=r17.586e7aa
 pkgrel=1
 url='https://github.com/ranisalt/hp-omen-linux-module'
 license=('GPLv2')
 arch=('x86_64')
 depends=('dkms')
-source=("$pkgname::git+$url.git#branch=rebase-5.19")
+source=("$pkgname::git+$url.git#branch=rebase-6.1")
 sha256sums=('SKIP')
 
 pkgver() {
