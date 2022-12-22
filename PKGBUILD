@@ -5,7 +5,7 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgver=1.0.r0.g42e1ae6
+pkgver=1.1.r0.g9c85f0a
 pkgrel=1
 
 pkgdesc="A simple POSIX compliant shell script to convert dates between calendars"
