@@ -1,6 +1,6 @@
 # Maintainer: a <a@tuxpa.in>
 pkgname="potatoe"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=1
 pkgdesc="Prints a potatoe with a DQ quote. Configurable!"
@@ -13,7 +13,7 @@ source=(
   "https://raw.githubusercontent.com/elee1766/potatoe/v${pkgver}/quotes.txt"
 )
 sha256sums=(
-  '2114e185c1fe0e6747579cef0da85a42de9497d1fa98ecf2e11493b755a371f3'
+  'd01c1426f488b15364ef584b6fc96b20ef9472738a88ec86fd3f81cb143aa740'
   '204e3ea720c724b0023f0ab39ea21c0a7973ae121731c0d01a21c736a6709bd1'
 )
 
