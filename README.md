@@ -148,6 +148,8 @@ This package provides both pieces in one package.
 
 ## Revisions
 
+- r6: Second iteration, minor updates (skip tests on windows, changelog, update
+  docs, rebase onto upstream).
 - r5: Second iteration, fixed remaining tests.
 - r4: Second iteration, completed version, ready for MR.  (Combines both
   `fix-dynamic-deps-2-arts` and `fix-project-local-flags`.)

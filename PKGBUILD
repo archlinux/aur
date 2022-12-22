@@ -28,9 +28,9 @@ pkgbase=ghc-cabal-arts
 pkgname=ghc-cabal-arts
 #pkgver=9.4.2.0.1
 pkgver=9.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Haskell setup to fix ‘There are files missing in the \`dynamic-1.0' package’ (9.4.2 / 3.9)."
-url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-2-r5"
+url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-2-r6"
 license=("BSD")
 arch=('x86_64')
 # We probably don't really need to use bubblewrap to do this, but it just makes
@@ -40,16 +40,16 @@ depends=('libffi')
 conflicts=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 provides=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 source=(
-	https://github.com/bairyn/cabal/archive/44445479e040a7d6d2e68943dc5aa6ce1b5024b9.tar.gz
+	https://github.com/bairyn/cabal/archive/3bd0588e9e693313e660cc7225c4d864892b5504.tar.gz
 	#https://github.com/ghc/ghc/archive/refs/tags/ghc-9.4.2-release.tar.gz  # Probably easier for us to just get the submodules bundled, so use the next URL instead.
 	https://downloads.haskell.org/~ghc/9.4.2/ghc-9.4.2-src.tar.xz
 )
 sha512sums=(
-	30deb00a96852348c65225113857c83292abadb46e3e270cb258898d4af377168ba875d5460b3c60e5a0d489c6460a5a64d1414eae59a5d2f6cdd6de8cb050ea
+	84318c6080275202ba07f4b8a930dcb0cfde85be3979ee5659331abed68ad52db123004b57780fb3fce1559572ec4aa23c09a185d466016781e39dbc608622ad
 	#381a8103b944008c0004a2492ff3bc10d865440b97e9dd451d3fec2ec1cb7c0fef3402baa43629c6ff18651e4a02933374f26d3a0eda0b57a07bb69265390564
 	c55ad01b71ac3285dc057fcd3d83415767859cf20667374323bbaeefe9268b47ee0fc19add6860a8e1481e943855886cc7ace4bcb2f79349f94a44752c6aeccb
 )
-noextract=('44445479e040a7d6d2e68943dc5aa6ce1b5024b9.tar.gz' 'ghc-9.4.2-src.tar.xz')
+noextract=('3bd0588e9e693313e660cc7225c4d864892b5504.tar.gz' 'ghc-9.4.2-src.tar.xz')
 
 # Be careful not to remove things we may want for this package.
 options=(
@@ -68,8 +68,8 @@ prepare() {
 	# > Need to extract this tarball with a UTF-8 locale instead of a chroot's "C"
 	# > locale; otherwise we get:
 	# >   bsdtar: Pathname can't be converted from UTF-8 to current locale.
-	LANG=en_US.UTF-8 bsdtar xf "44445479e040a7d6d2e68943dc5aa6ce1b5024b9.tar.gz"
-	cabaldir="cabal-44445479e040a7d6d2e68943dc5aa6ce1b5024b9"
+	LANG=en_US.UTF-8 bsdtar xf "3bd0588e9e693313e660cc7225c4d864892b5504.tar.gz"
+	cabaldir="cabal-3bd0588e9e693313e660cc7225c4d864892b5504"
 
 	echo "Extracting ghc…"
 
@@ -187,7 +187,7 @@ check() {
 
 package_ghc-cabal-arts() {
 	ghcdir="ghc-9.4.2"
-	cabaldir="cabal-44445479e040a7d6d2e68943dc5aa6ce1b5024b9"
+	cabaldir="cabal-3bd0588e9e693313e660cc7225c4d864892b5504"
 
 	echo "Installing ghc…"
 	cd -- "$ghcdir"
