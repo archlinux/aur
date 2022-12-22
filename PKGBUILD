@@ -4,6 +4,7 @@ pkgrel=1
 pkgdesc='Google Noto fonts config files'
 arch=(any)
 url='https://github.com/archlinux/svntogit-packages/tree/packages/noto-fonts/trunk'
+conflicts=(noto-fonts)
 source=(66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
 sha256sums=('52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'

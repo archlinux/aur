@@ -4,6 +4,7 @@ pkgbase = noto-fonts-config-files
 	pkgrel = 1
 	url = https://github.com/archlinux/svntogit-packages/tree/packages/noto-fonts/trunk
 	arch = any
+	conflicts = noto-fonts
 	source = 66-noto-sans.conf
 	source = 66-noto-serif.conf
 	source = 66-noto-mono.conf
