@@ -1,32 +1,33 @@
-# Maintainer:
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Luke <Infinitybeond1@protonmail.com>
 
 pkgname=nfetch-git
-pkgdesc="A minimal linux fetch utility written in nim"
+_pkg="${pkgname%-git}"
+pkgdesc="Minimal Linux fetch utility written in nim"
 pkgver=2.r19.g2655d63
-pkgrel=2
-arch=(x86_64)
+pkgrel=3
+arch=('x86_64')
 url="https://github.com/Infinitybeond1/nfetch-src"
-license=(GPL3)
-makedepends=(nim git)
-provides=(nfetch)
-conflicts=(nfetch)
-source=("git+https://github.com/Infinitybeond1/nfetch-src.git")
+license=('GPL3')
+depends=('glibc')
+makedepends=('git' 'nimble')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "nfetch-src"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "nfetch-src"
-  nimble build
+	cd "$_pkg"
+	nimble -y build -d:release
 }
 
 package() {
-  cd "nfetch-src"
-  install -D nfetch -t "${pkgdir}/usr/bin/"
-  install -D config.ini -t "${pkgdir}/usr/share/doc/nfetch"
+	cd "$_pkg"
+	install -Dv "$_pkg" -t "$pkgdir/usr/bin/"
+	install -Dvm644 config.ini -t "$pkgdir/usr/share/doc/$pkgname/"
 }
