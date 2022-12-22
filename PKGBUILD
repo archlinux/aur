@@ -1,17 +1,15 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Giusy Digital <kurmikon@libero.it>
 
-_appname=pulsar
-_reponame=pulsar-edit
-_tasktag=5138161114808320
-_datetag=2022121407
+_pkgver=1.100.0
+_pkgtag=beta
 
-pkgname="${_appname}-bin"
-pkgver="1.63.${_datetag}"
+pkgname="pulsar-bin"
+pkgver="${_pkgver}${_pkgtag}"
 pkgrel=1
-pkgdesc="Community build of the hackable text editor, built on Electron"
+pkgdesc="A community-led hyper-hackable text editor, built on electron"
 arch=("x86_64")
-url="https://github.com/${_reponame}/${_appname}"
+url="https://github.com/pulsar-edit/pulsar"
 license=("MIT")
 depends=("libxkbfile" "ripgrep")
 optdepends=(
@@ -19,10 +17,10 @@ optdepends=(
   "git: Git and GitHub integration"
   "hunspell: spell check integration"
 )
-provides=("${_appname}")
-conflicts=("${_appname}")
-source=("${_appname}-${pkgver}.deb::https://api.cirrus-ci.com/v1/artifact/task/${_tasktag}/binary/binaries/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('fec8eebb579a47a616555c9affec055a24b1c36f7c4da29e28128d0bcb688010')
+provides=("pulsar")
+conflicts=("pulsar")
+source=("pulsar-${pkgver}.deb::$url/releases/download/v${_pkgver}-${_pkgtag}/Linux.pulsar_${_pkgver}-${_pkgtag}_amd64.deb")
+sha256sums=('a5ee6d068c0b3b5d0aa3feffc8107ef62d44035af22d0373cee89fddb34bd605')
 
 prepare() {
   bsdtar xf data.tar.xz
@@ -37,7 +35,7 @@ package() {
   find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
 
   mkdir -p "$pkgdir/usr/bin"
-  chmod +x "$pkgdir/opt/Pulsar/resources/${_appname}.sh"
+  chmod +x "$pkgdir/opt/Pulsar/resources/pulsar.sh"
 
-  ln -sf "/opt/Pulsar/resources/${_appname}.sh" "$pkgdir/usr/bin/${_appname}"
+  ln -sf "/opt/Pulsar/resources/pulsar.sh" "$pkgdir/usr/bin/pulsar"
 }
