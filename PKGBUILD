@@ -37,24 +37,28 @@ build() {
         --enable-disasm \
         --enable-pcidev \
         --enable-usb \
-        --enable-gdb-stub 
+        --enable-gdb-stub
+
     sed -i 's/^LIBS = /LIBS = -lpthread/g' Makefile
-    make -j $(nproc)
+
+    make
 }
 
 package() {
     cd "$srcdir/bochs-$pkgver"
     make DESTDIR="$pkgdir" install
-    install -Dm644 .bochsrc "$pkgdir/etc/bochsrc-sample.txt"
+    chmod 644 .bochsrc
+    #mv .bochsrc "$pkgdir/etc/bochsrc-sample.txt"
 
-    cd "$pkgdir/usr/bin/"
+    #fix name for bochs-gdb
+    cd "$pkgdir/usr/bin"
     mv bochs bochs-gdb
-    if ($(uname -m) == x86_64);then \
-        rm bximage \
-        cd "$pkgdir/usr/" \
-        rm -rfv share \
-        cd "$pkgdir" \
-        rm -rfv etc; \
-    fi
+    #fix directory&file conflic with bochs
+    if [ $(uname -m) = "x86_64" ] \
+    ;then \
+        rm $pkgdir/usr/bin/bximage \
+        rm -rfv $pkgdir/usr/share \
+        rm -rfv $pkgdir/usr/etc \
+    ;fi
 }
 
