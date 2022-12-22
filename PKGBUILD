@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.10.1.r1.g544af97
+pkgver=5.10.1.r4.g4726010
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,12 @@ prepare() {
   go get -v github.com/godbus/dbus
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
+  go get -v github.com/jouyouyun/hardware/graphic
   sed -i 's/sbin/bin/' Makefile
+
+  cd $srcdir/build/src/github.com/godbus/dbus
+  git reset 4b691ce883d536a867587e2fcfec1245ebddecd0
+  git checkout -- .
 }
 
 build() {
