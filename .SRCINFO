@@ -1,7 +1,7 @@
 pkgbase = scilab-bin
 	pkgdesc = A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications.
 	pkgver = 6.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.scilab.org
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = scilab-bin
 	conflicts = scilab
 	conflicts = scilab-git
 	options = !strip
-	source = https://www.scilab.org/download/6.1.1/scilab-6.1.1.bin.linux-x86_64.tar.gz
+	source = https://oos.eu-west-2.outscale.com/scilab-releases/6.1.1/scilab-6.1.1.bin.linux-x86_64.tar.gz
 	sha256sums = 3ee1a7cf661d021ae26afc27b9fe50cb2d1c9c27911e5582e9d4337ebedb2c79
 
 pkgname = scilab-bin
