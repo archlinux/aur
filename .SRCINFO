@@ -1,6 +1,6 @@
 pkgbase = python-mplfinance
 	pkgdesc = Utilities for the visualization, and visual analysis, of financial data
-	pkgver = 0.12.9b5
+	pkgver = 0.12.9b7
 	pkgrel = 1
 	url = https://pypi.org/project/mplfinance
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-mplfinance
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/m/mplfinance/mplfinance-0.12.9b5.tar.gz
-	sha256sums = 4efa30fdfbe8bebbc44dc3f651702c1fa730a3553352e6373f97de8b88df6fa5
+	source = https://files.pythonhosted.org/packages/source/m/mplfinance/mplfinance-0.12.9b7.tar.gz
+	sha256sums = 8c0ef47dfb465ea95b7c3577e261b57b5d6ad2bce6d287a17b8b4dd2fbacc92e
 
 pkgname = python-mplfinance
