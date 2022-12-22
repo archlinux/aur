@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=102.5.1
+pkgver=102.6.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -24,22 +24,22 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+  https://archive.mozilla.org/pub/thunderbird/releases/102.6.0/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
 )
 source_pentium4=(
- https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+ https://archive.mozilla.org/pub/thunderbird/releases/102.6.0/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
 )
 source_i686=(
-  https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
+  https://archive.mozilla.org/pub/thunderbird/releases/102.6.0/linux-i686/en-US/thunderbird-$pkgver.tar.bz2{,.asc}
 )
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('3689b4e8e4d7701b0035beebd188c8b710f1c616af5ad06486ce8c3327136fc8c7b1740d144d47be83fa60ed59bae3352aea848a6c100a3af892140ea7a6a316'
+sha512sums_x86_64=('455e08dc6959883f4e343c0571d01e542bffde2fdcd2ec4644a44d340e7e38acf9e4b4bbfa12465f9e6da750fbd45ad9e22fcf3eca964fe3803c9e0f11d8f79d'
                    'SKIP')
-sha512sums_pentium4=('3689b4e8e4d7701b0035beebd188c8b710f1c616af5ad06486ce8c3327136fc8c7b1740d144d47be83fa60ed59bae3352aea848a6c100a3af892140ea7a6a316'
+sha512sums_pentium4=('455e08dc6959883f4e343c0571d01e542bffde2fdcd2ec4644a44d340e7e38acf9e4b4bbfa12465f9e6da750fbd45ad9e22fcf3eca964fe3803c9e0f11d8f79d'
                      'SKIP')
-sha512sums_i686=('3689b4e8e4d7701b0035beebd188c8b710f1c616af5ad06486ce8c3327136fc8c7b1740d144d47be83fa60ed59bae3352aea848a6c100a3af892140ea7a6a316'
+sha512sums_i686=('455e08dc6959883f4e343c0571d01e542bffde2fdcd2ec4644a44d340e7e38acf9e4b4bbfa12465f9e6da750fbd45ad9e22fcf3eca964fe3803c9e0f11d8f79d'
                  'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
