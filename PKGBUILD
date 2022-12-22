@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ryzenadj-controller-git
 _pkgbase=ryzenadj-controller
-pkgver=1.0.0.r2.g742fd52
+pkgver=1.0.0.r3.g728d6b1
 pkgrel=1
 pkgdesc="Python module that provides a userspace interface for RyzenAdj using Unix Sockets"
 arch=('x86_64')
