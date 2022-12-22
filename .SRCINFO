@@ -1,6 +1,6 @@
 pkgbase = symfony-cli
 	pkgdesc = The Symfony client helps developers create and manage Symfony applications.
-	pkgver = 5.4.19
+	pkgver = 5.4.20
 	pkgrel = 6
 	url = https://symfony.com/
 	install = symfony-cli.install
@@ -11,7 +11,7 @@ pkgbase = symfony-cli
 	depends = glibc
 	provides = symfony-cli
 	conflicts = symfony-cli
-	source = git+https://github.com/symfony-cli/symfony-cli#tag=v5.4.19
+	source = git+https://github.com/symfony-cli/symfony-cli#tag=v5.4.20
 	sha256sums = SKIP
 
 pkgname = symfony-cli
