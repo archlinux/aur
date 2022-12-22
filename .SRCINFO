@@ -1,0 +1,14 @@
+pkgbase = lib32-db
+	pkgdesc = The Berkeley DB embedded database system
+	pkgver = 6.2.32
+	pkgrel = 1
+	url = https://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	depends = db=6.2.32
+	depends = lib32-gcc-libs
+	source = https://download.oracle.com/berkeley-db/db-6.2.32.tar.gz
+	sha256sums = a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb
+
+pkgname = lib32-db
