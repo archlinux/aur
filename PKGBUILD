@@ -20,6 +20,6 @@ package(){
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "usr/share/doc/pidgin-guifications/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# install -D -m644 "usr/share/doc/pidgin-guifications/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }

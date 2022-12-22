@@ -1,1 +1,5 @@
 PKGBUILD~
+pkg/pidgin-guifications-deb
+src
+pidgin-guifications-deb-2.16-1-x86_64.pkg.tar.zst
+pidgin-guifications_2.16-2+b3_amd64.deb
