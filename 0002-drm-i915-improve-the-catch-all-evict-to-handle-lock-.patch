@@ -1,7 +1,7 @@
-From 0c079d3f88df5f8286cd5c91b54bdac7c819be85 Mon Sep 17 00:00:00 2001
+From c2337439f6d74e9f8e003e55c786839886bc4911 Mon Sep 17 00:00:00 2001
 From: Matthew Auld <matthew.auld@intel.com>
 Date: Tue, 6 Dec 2022 16:11:41 +0000
-Subject: [PATCH 2/3] drm/i915: improve the catch-all evict to handle lock
+Subject: [PATCH 2/4] drm/i915: improve the catch-all evict to handle lock
  contention
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
