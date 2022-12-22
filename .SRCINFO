@@ -1,6 +1,6 @@
 pkgbase = python-datetime
 	pkgdesc = This package provides a DateTime data type, as known from Zope
-	pkgver = 4.7
+	pkgver = 4.9
 	pkgrel = 1
 	url = https://pypi.org/project/DateTime
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-datetime
 	depends = python
 	depends = python-zope-interface
 	depends = python-pytz
-	source = https://files.pythonhosted.org/packages/source/D/DateTime/DateTime-4.7.tar.gz
-	sha256sums = 7ff7c4a857f08b73db17a85fc54f102d065ad16e7db0133e699c5f1b37e41478
+	source = https://files.pythonhosted.org/packages/source/D/DateTime/DateTime-4.9.tar.gz
+	sha256sums = 29d346bf3ecad5ee1aad74fa2eb03de55fa298434e2f27db6dcaa12a44385681
 
 pkgname = python-datetime
