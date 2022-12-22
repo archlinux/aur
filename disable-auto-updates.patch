@@ -1,0 +1,26 @@
+diff --git lib/agent/default.options lib/agent/default.options
+index 8fc81774..c252c554 100644
+--- lib/agent/default.options
++++ lib/agent/default.options
+@@ -9,7 +9,7 @@ plugin_list = control-panel
+ auto_connect = false
+
+ # Allows Prey to auto-update itself when new versions are released.
+-auto_update = true
++auto_update = false
+
+ # Fetch edge releases before they reach the stable branch. No effect without auto_update.
+ download_edge = false
+diff --git prey.conf.default prey.conf.default
+index a3e10203..6b94772c 100644
+--- prey.conf.default
++++ prey.conf.default
+@@ -9,7 +9,7 @@ plugin_list = control-panel
+ auto_connect = false
+
+ # Allows Prey to auto-update itself when new versions are released.
+-auto_update = true
++auto_update = false
+
+ # Fetch edge releases before they reach the stable branch. No effect without auto_update.
+ download_edge = false

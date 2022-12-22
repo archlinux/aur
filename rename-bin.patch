@@ -1,4 +1,3 @@
-
 diff --git bin/prey bin/prey
 index 5b5203ca..915abd76 100755
 --- bin/prey
@@ -6,7 +5,7 @@ index 5b5203ca..915abd76 100755
 @@ -4,11 +4,11 @@ PATH="$PATH:/usr/local/bin"
  dir="$(dirname $0)"
  [ -x "$dir/node" ] && node="$dir/node" || node="$(command -v node || command -v nodejs)"
- 
+
 -# if current file is a symlink (e.g. installed via npm) we'll append
 +# if current file is a symlink (e.g. installed via pacman) we'll append
  # the relative path to where the package is actually installed.
@@ -15,49 +14,36 @@ index 5b5203ca..915abd76 100755
 -  dir="$dir/$rel"
 +  dir="$rel"
  fi
- 
+
  script="lib/agent/cli.js"
-diff --git lib/agent/default.options lib/agent/default.options
-index 8fc81774..c252c554 100644
---- lib/agent/default.options
-+++ lib/agent/default.options
-@@ -9,7 +9,7 @@ plugin_list = control-panel
- auto_connect = false
- 
- # Allows Prey to auto-update itself when new versions are released.
--auto_update = true
-+auto_update = false
- 
- # Fetch edge releases before they reach the stable branch. No effect without auto_update.
- download_edge = false
 diff --git lib/conf/gui/linux/prey-config.py lib/conf/gui/linux/prey-config.py
 index 51b4fc18..859b0191 100755
 --- lib/conf/gui/linux/prey-config.py
 +++ lib/conf/gui/linux/prey-config.py
 @@ -44,7 +44,7 @@ OUT = STDOUT # None
- 
+
  SCRIPT_PATH = os.sys.path[0]
  PACKAGE_PATH = SCRIPT_PATH + '/../../../..'
 -PREY_BIN = PACKAGE_PATH + '/bin/prey'
 +PREY_BIN = PACKAGE_PATH + '/bin/prey-tracker'
  PREY_CONFIG = PREY_BIN + ' config'
- 
+
  PACKAGE_JSON = open(PACKAGE_PATH + '/package.json', 'r')
 diff --git lib/conf/gui/linux/prey-config3.py lib/conf/gui/linux/prey-config3.py
 index eec738f6..9815c90a 100755
 --- lib/conf/gui/linux/prey-config3.py
 +++ lib/conf/gui/linux/prey-config3.py
 @@ -44,7 +44,7 @@ OUT = STDOUT  # None
- 
+
  SCRIPT_PATH = os.sys.path[0]
  PACKAGE_PATH = SCRIPT_PATH + "/../../../.."
 -PREY_BIN = PACKAGE_PATH + "/bin/prey"
 +PREY_BIN = PACKAGE_PATH + "/bin/prey-tracker"
  PREY_CONFIG = PREY_BIN + " config"
- 
+
  PACKAGE_JSON = open(PACKAGE_PATH + "/package.json", "r")
 diff --git package.json package.json
-index 3ec19613..b1226b3e 100644
+index 895f44ec..c502916f 100644
 --- package.json
 +++ package.json
 @@ -84,7 +84,7 @@
@@ -87,16 +73,3 @@ index 3ec19613..b1226b3e 100644
    },
    "bugs": {
      "url": "http://github.com/prey/prey-node-client/issues"
-diff --git prey.conf.default prey.conf.default
-index a3e10203..6b94772c 100644
---- prey.conf.default
-+++ prey.conf.default
-@@ -9,7 +9,7 @@ plugin_list = control-panel
- auto_connect = false
- 
- # Allows Prey to auto-update itself when new versions are released.
--auto_update = true
-+auto_update = false
- 
- # Fetch edge releases before they reach the stable branch. No effect without auto_update.
- download_edge = false
