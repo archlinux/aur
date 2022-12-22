@@ -6,3 +6,4 @@ cachyos-source
 librewolf-settings
 librewolf-source
 *.tar.xz*
+*.tar.zst*

@@ -1,5 +1,5 @@
-pkgbase = firedragon
-	pkgdesc = Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE
+pkgbase = firedragon-unsigned
+	pkgdesc = Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE. Modified to allow installation of unsiged extensions.
 	pkgver = 108.0.1
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
@@ -59,6 +59,8 @@ pkgbase = firedragon
 	optdepends = libappindicator-gtk3: Global menu support for GTK apps
 	optdepends = appmenu-gtk-module-git: Appmenu for GTK only
 	optdepends = plasma5-applets-window-appmenu: Appmenu for Plasma only
+	provides = firedragon
+	conflicts = firedragon
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
@@ -84,4 +86,4 @@ pkgbase = firedragon
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = firedragon
+pkgname = firedragon-unsigned

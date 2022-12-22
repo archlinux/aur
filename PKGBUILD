@@ -1,14 +1,16 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Peter Jung <admin@ptr1337.dev>
 # Contributor: vnepogodin
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
 
-pkgname=firedragon
+pkgname=firedragon-unsigned
 _pkgname=FireDragon
+__pkgname=firedragon
 pkgver=108.0.1
 pkgrel=1
-pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
+pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
   'usr/lib/firedragon/distribution/policies.json')
@@ -31,10 +33,12 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
   'libappindicator-gtk3: Global menu support for GTK apps'
   'appmenu-gtk-module-git: Appmenu for GTK only'
   'plasma5-applets-window-appmenu: Appmenu for Plasma only')
+provides=("firedragon")
+conflicts=("firedragon")
 options=(!emptydirs !makeflags !strip !lto !debug)
-install=$pkgname.install
+install=$__pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefox-"$pkgver".source.tar.xz{,.asc}
-  "$pkgname.desktop"
+  "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
@@ -112,8 +116,8 @@ export RANLIB=llvm-ranlib
 # Branding
 ac_add_options --allow-addon-sideload
 ac_add_options --enable-update-channel=release
-ac_add_options --with-app-name=${pkgname}
-ac_add_options --with-branding=browser/branding/${pkgname}
+ac_add_options --with-app-name=${__pkgname}
+ac_add_options --with-branding=browser/branding/${__pkgname}
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 export MOZ_REQUIRE_SIGNING=
@@ -340,12 +344,12 @@ package() {
   cd firefox-"$pkgver"
   DESTDIR="$pkgdir" ./mach install
 
-  rm "$pkgdir"/usr/lib/${pkgname}/pingsender
+  rm "$pkgdir"/usr/lib/${__pkgname}/pingsender
 
-  install -Dvm644 "$srcdir/settings/$pkgname.psd" "$pkgdir/usr/share/psd/browsers/$pkgname"
+  install -Dvm644 "$srcdir/settings/$__pkgname.psd" "$pkgdir/usr/share/psd/browsers/$__pkgname"
 
   local vendorjs
-  vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
 
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
@@ -359,9 +363,9 @@ END
   # cd ${srcdir}/settings
   # git checkout ${_settings_commit}
   cd ${srcdir}/firefox-"$pkgver"
-  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
+  cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${__pkgname}/
 
-  local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
+  local distini="$pkgdir/usr/lib/$__pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 
 [Global]
@@ -371,36 +375,36 @@ about=$_pkgname for Garuda Linux
 
 [Preferences]
 app.distributor=garudalinux
-app.distributor.channel=$pkgname
+app.distributor.channel=$__pkgname
 app.partner.garudalinux=garudalinux
 END
 
   for i in 16 32 48 64 128; do
-    install -Dvm644 browser/branding/${pkgname}/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+    install -Dvm644 browser/branding/${__pkgname}/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
-  install -Dvm644 browser/branding/${pkgname}/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+  install -Dvm644 browser/branding/${__pkgname}/content/about-logo.png \
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # Arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 browser/branding/${pkgname}/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.png"
+  install -Dvm644 browser/branding/${__pkgname}/default16.png \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
-  install -Dvm644 ../$pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dvm644 ../$__pkgname.desktop \
+    "$pkgdir/usr/share/applications/$__pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/$pkgname "\$@"
+exec /usr/lib/$__pkgname/$__pkgname "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
+  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/$__pkgname-bin"
 
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
+  local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
