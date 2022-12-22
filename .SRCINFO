@@ -1,0 +1,19 @@
+pkgbase = deepin-app-services-git
+	pkgdesc = Service collection of DDE applications, including dconfig-center
+	pkgver = 0.0.20.r0.g41ca6e7
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-app-services
+	arch = x86_64
+	arch = aarch64
+	groups = deepin-git
+	license = GPL3
+	makedepends = cmake
+	makedepends = gtest
+	makedepends = ninja
+	depends = dtkwidget-git
+	provides = deepin-app-services
+	conflicts = deepin-app-services
+	source = deepin-app-services-git::git+https://github.com/linuxdeepin/dde-app-services
+	sha512sums = SKIP
+
+pkgname = deepin-app-services-git
