@@ -1,0 +1,22 @@
+pkgbase = pidgin-guifications-deb
+	pkgdesc = Toaster popups for pidgin. Guifications is ana advnced plugin for notifications. This package is stripped from the Debian's one.
+	pkgver = 2.16
+	pkgrel = 1
+	url = http://plugins.guifications.org/trac/wiki/Guifications
+	install = pidgin-guifications-deb.install
+	arch = x86_64
+	groups = 
+	license = GPL-2
+	depends = desktop-file-utils
+	depends = glib2>=2.18.0
+	depends = gtk2>=2.8.0
+	depends = hicolor-icon-theme
+	depends = libpurple>=2.6.0
+	depends = pidgin>=2.14
+	depends = pidgin<3.0
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://http.us.debian.org/debian/pool/main/g/guifications/pidgin-guifications_2.16-2+b3_amd64.deb
+	sha512sums_x86_64 = 87bf230c853de1d6a0f77772b8a6f344df25e92c45f2779a669ba0bb5e5a6cf8bfe12e6c392ceb35d3f20fe3c0ce6550f51e7d6ff92df93c89d473d19a83b1bf
+
+pkgname = pidgin-guifications-deb
