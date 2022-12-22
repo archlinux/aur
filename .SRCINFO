@@ -1,6 +1,6 @@
 pkgbase = basalt-monado-git
 	pkgdesc = Visual-Inertial Mapping with Non-Linear Factor Recovery
-	pkgver = r441.fdf933c
+	pkgver = r442.d8ddb36
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mateosss/basalt
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = basalt-monado-git
 	license = BSD
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = bc
 	depends = eigen
 	depends = glew
 	depends = libpng
