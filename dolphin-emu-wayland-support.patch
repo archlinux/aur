@@ -1,4 +1,4 @@
-commit e249a7690535a32ea33e700c52c324d9d2300b30
+commit 33363780457605f47a306e3b0849dcae15276eb3
 Author: Artemis Tosini <me@artem.ist>
 Date:   Mon Apr 6 19:47:13 2020 +0000
 
@@ -88,7 +88,7 @@ index 0000000000..f93218b873
 +
 +ENDIF ()
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 04bcdde4c2..a67ea09589 100644
+index 799ddcb238..7bf4766dcb 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -43,6 +43,7 @@ set(DOLPHIN_DEFAULT_UPDATE_TRACK "" CACHE STRING "Name of the default update tra
@@ -160,10 +160,10 @@ index 5ccd10189c..0ef8318cc4 100644
  
  std::vector<std::string> Host_GetPreferredLocales()
 diff --git a/Source/Core/DolphinQt/MainWindow.cpp b/Source/Core/DolphinQt/MainWindow.cpp
-index 52a2a0290c..47d46cb719 100644
+index 7e530ba237..2085be907b 100644
 --- a/Source/Core/DolphinQt/MainWindow.cpp
 +++ b/Source/Core/DolphinQt/MainWindow.cpp
-@@ -183,7 +183,12 @@ static WindowSystemInfo GetWindowSystemInfo(QWindow* window)
+@@ -186,7 +186,12 @@ static WindowSystemInfo GetWindowSystemInfo(QWindow* window)
    QPlatformNativeInterface* pni = QGuiApplication::platformNativeInterface();
    wsi.display_connection = pni->nativeResourceForWindow("display", window);
    if (wsi.type == WindowSystemType::Wayland)
@@ -176,7 +176,7 @@ index 52a2a0290c..47d46cb719 100644
    else
      wsi.render_window = window ? reinterpret_cast<void*>(window->winId()) : nullptr;
    wsi.render_surface = wsi.render_window;
-@@ -1254,8 +1259,12 @@ void MainWindow::ShowGraphicsWindow()
+@@ -1248,8 +1253,12 @@ void MainWindow::ShowGraphicsWindow()
            static_cast<Display*>(QGuiApplication::platformNativeInterface()->nativeResourceForWindow(
                "display", windowHandle())),
            winId());
@@ -203,10 +203,10 @@ index 9a9d9caf2d..f4f6f46d35 100644
  
  if(MSVC)
 diff --git a/Source/Core/VideoBackends/Vulkan/VKRenderer.cpp b/Source/Core/VideoBackends/Vulkan/VKRenderer.cpp
-index 23dba4613b..9e48e15cf5 100644
+index 5256d6ada3..4ecfbc042d 100644
 --- a/Source/Core/VideoBackends/Vulkan/VKRenderer.cpp
 +++ b/Source/Core/VideoBackends/Vulkan/VKRenderer.cpp
-@@ -412,6 +412,7 @@ void Renderer::CheckForSurfaceResize()
+@@ -417,6 +417,7 @@ void Renderer::CheckForSurfaceResize()
    g_command_buffer_mgr->CheckLastPresentFail();
  
    // Resize the swap chain.
@@ -291,10 +291,10 @@ index 5e67217f2d..16b4a209d4 100644
    bool ResizeSwapChain();
    bool RecreateSwapChain();
 diff --git a/Source/Core/VideoBackends/Vulkan/VulkanContext.cpp b/Source/Core/VideoBackends/Vulkan/VulkanContext.cpp
-index cad326c83a..681551b086 100644
+index 3275cb9417..639069b0cb 100644
 --- a/Source/Core/VideoBackends/Vulkan/VulkanContext.cpp
 +++ b/Source/Core/VideoBackends/Vulkan/VulkanContext.cpp
-@@ -204,6 +204,13 @@ bool VulkanContext::SelectInstanceExtensions(std::vector<const char*>* extension
+@@ -209,6 +209,13 @@ bool VulkanContext::SelectInstanceExtensions(std::vector<const char*>* extension
      return false;
    }
  #endif
@@ -309,10 +309,10 @@ index cad326c83a..681551b086 100644
    if (wstype == WindowSystemType::Android &&
        !AddExtension(VK_KHR_ANDROID_SURFACE_EXTENSION_NAME, true))
 diff --git a/Source/Core/VideoBackends/Vulkan/VulkanEntryPoints.inl b/Source/Core/VideoBackends/Vulkan/VulkanEntryPoints.inl
-index 8c6db283c9..8035f66ddd 100644
+index 3bb21c41e3..bebbcbf239 100644
 --- a/Source/Core/VideoBackends/Vulkan/VulkanEntryPoints.inl
 +++ b/Source/Core/VideoBackends/Vulkan/VulkanEntryPoints.inl
-@@ -48,6 +48,11 @@ VULKAN_INSTANCE_ENTRY_POINT(vkCreateXlibSurfaceKHR, false)
+@@ -49,6 +49,11 @@ VULKAN_INSTANCE_ENTRY_POINT(vkCreateXlibSurfaceKHR, false)
  VULKAN_INSTANCE_ENTRY_POINT(vkGetPhysicalDeviceXlibPresentationSupportKHR, false)
  #endif
  
@@ -325,7 +325,7 @@ index 8c6db283c9..8035f66ddd 100644
  VULKAN_INSTANCE_ENTRY_POINT(vkCreateAndroidSurfaceKHR, false)
  #endif
 diff --git a/Source/Core/VideoBackends/Vulkan/VulkanLoader.h b/Source/Core/VideoBackends/Vulkan/VulkanLoader.h
-index c20ea698d3..7652fdf1c9 100644
+index c9b92f5ac8..a728d25186 100644
 --- a/Source/Core/VideoBackends/Vulkan/VulkanLoader.h
 +++ b/Source/Core/VideoBackends/Vulkan/VulkanLoader.h
 @@ -13,6 +13,10 @@
@@ -340,10 +340,10 @@ index c20ea698d3..7652fdf1c9 100644
  #define VK_USE_PLATFORM_ANDROID_KHR
  #endif
 diff --git a/Source/Core/VideoCommon/RenderBase.cpp b/Source/Core/VideoCommon/RenderBase.cpp
-index e51307fa15..b6c1066417 100644
+index 0a8cef3290..4fd3bae510 100644
 --- a/Source/Core/VideoCommon/RenderBase.cpp
 +++ b/Source/Core/VideoCommon/RenderBase.cpp
-@@ -732,9 +732,11 @@ void Renderer::ChangeSurface(void* new_surface_handle)
+@@ -755,9 +755,11 @@ void Renderer::ChangeSurface(void* new_surface_handle)
    m_surface_changed.Set();
  }
  
@@ -357,7 +357,7 @@ index e51307fa15..b6c1066417 100644
  }
  
 diff --git a/Source/Core/VideoCommon/RenderBase.h b/Source/Core/VideoCommon/RenderBase.h
-index 8824e6ff77..7daf0ef322 100644
+index c44e2ebabe..609d6112b1 100644
 --- a/Source/Core/VideoCommon/RenderBase.h
 +++ b/Source/Core/VideoCommon/RenderBase.h
 @@ -246,7 +246,8 @@ public:
@@ -370,7 +370,7 @@ index 8824e6ff77..7daf0ef322 100644
    bool UseVertexDepthRange() const;
    void DoState(PointerWrap& p);
  
-@@ -351,6 +352,10 @@ protected:
+@@ -355,6 +356,10 @@ protected:
    std::mutex m_imgui_mutex;
    u64 m_imgui_last_frame_time;
  

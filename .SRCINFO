@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-wayland
 	pkgdesc = A Gamecube / Wii / Triforce emulator, patched with experimental support for Wayland
-	pkgver = 5.0.r17269.48c9c224cf
+	pkgver = 5.0.r17995.8bad821019
 	pkgrel = 1
 	epoch = 1
 	url = https://dolphin-emu.org
@@ -42,9 +42,12 @@ pkgbase = dolphin-emu-wayland
 	provides = dolphin-emu
 	conflicts = dolphin-emu
 	options = !emptydirs
-	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=48c9c224cf9f82f0f9f2690b7cc6283d7448480c
+	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=8bad821019721b9b72701b495da95656ace5fea5
+	source = git+https://github.com/mozilla/cubeb.git
 	source = git+https://github.com/randy408/libspng.git
+	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	source = git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
 	source = git+https://github.com/zlib-ng/zlib-ng.git
 	source = dolphin-emu-wayland-support.patch
 	source = dolphin-emu-wayland.desktop
@@ -52,7 +55,10 @@ pkgbase = dolphin-emu-wayland
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 89f004d45f607383ac31170a03faf0e4ed5a6b7df9278a1e3534782a0adc593ef858434e7afa186854c44e60a65c324de09c4d433dc4c8aeaaccf585aedd7f3c
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = e3dee2a3fb351d6957ba4ba5381a67a1734f9c9135ef9dcd4a3d6eaf85c0357f34c1488add2e6ba4e81a0c70da131ed3db0749bf30c37ea5eb675bf79376ba7f
 	b2sums = 39ff2c0abb4b05583e3e207380fee5c89f096bd31b7fc26de2efe4ad30915b933440515cb34592f7ee48adf3383641138b21f90cfeba3be822424a1a4583d5ae
 
 pkgname = dolphin-emu-wayland
