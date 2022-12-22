@@ -3,7 +3,7 @@ pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_9_1
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -19,11 +19,11 @@ optdepends=('vkbasalt: Configure vkBasalt'
             'breeze: for Breeze style')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/benjamimgois/goverlay/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/${pkgname%-bin}.1"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.desktop"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.metainfo.xml"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
+source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
+        "${pkgname%-bin}-$pkgver.1::$url/raw/$pkgver/data/${pkgname%-bin}.1"
+        "$_id-$pkgver.desktop::$url/raw/$pkgver/data/$_id.desktop"
+        "$_id.metainfo-$pkgver.xml::$url/raw/$pkgver/data/$_id.metainfo.xml"
+        "${pkgname%-bin}-$pkgver.png::$url/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
 sha256sums=('6885e8052d747fd19649c2b5b8273ea879b9046fa21cfa81f8570faaeae00bab'
             'e92cab07935d0f8bd76fb0a36f1b544a6510f3466f42fee989ceef454ec0189c'
             '4d3493dc383ee336f4451ab09604632214e0be6562df69ee30a2721bc08df989'
@@ -37,8 +37,8 @@ prepare() {
 package() {
   install -Dm755 "start_${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
   install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/lib/"
-  install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1/"
-  install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "${pkgname%-bin}-$pkgver.1" "$pkgdir/usr/share/man/man1/${pkgname%-bin}.1"
+  install -Dm644 "$_id-$pkgver.desktop" "$pkgdir/usr/share/applications/$_id.desktop"
+  install -Dm644 "$_id.metainfo-$pkgver.xml" "$pkgdir/usr/share/metainfo/$_id.metainfo.xml"
+  install -Dm644 "${pkgname%-bin}-$pkgver.png" "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
 }
