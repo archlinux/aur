@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 6.0.12
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -12,22 +12,22 @@ pkgbase = linux-clear
 	makedepends = pahole
 	makedepends = xmlto
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.0.12.xz
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.0.11-1216
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.1.1.xz
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.1.1-1228
 	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
-	source = 0001-pci-Enable-overrides-for-missing-ACS-capabilities-aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc.patch::https://raw.githubusercontent.com/xanmod/linux-patches/aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc/linux-6.0.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch
-	source = 0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc.patch::https://raw.githubusercontent.com/xanmod/linux-patches/aa66d88835989a3d6ee8e9c2a72afdcf22f4b2bc/linux-6.0.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch
+	source = 0001-pci-Enable-overrides-for-missing-ACS-capabilities-4ba17e3181e82204446e7e3e1bec927028043558.patch::https://raw.githubusercontent.com/xanmod/linux-patches/4ba17e3181e82204446e7e3e1bec927028043558/linux-6.1.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch
+	source = 0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-4ba17e3181e82204446e7e3e1bec927028043558.patch::https://raw.githubusercontent.com/xanmod/linux-patches/4ba17e3181e82204446e7e3e1bec927028043558/linux-6.1.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e
+	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
 	sha256sums = SKIP
-	sha256sums = 7d6222ec959ed7760385394c4f8bd859cac18109c677c91a89e61998aa4914c6
+	sha256sums = 8946cdb814a7876a37378129942531594ce5d656909a29585b10a35f2979b562
 	sha256sums = SKIP
 	sha256sums = 5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c
-	sha256sums = 9709c5396a182cad3606a19bc7cee54819b3668f16987d3b1c6e221623ad91f8
-	sha256sums = c95837a6088691bc2c6750fb333bec0e81df7df01cc5d3f7fbb9982abefdbbc3
+	sha256sums = 821136df8fffcb4ae612cdf88af57e294490c0552c55163f8b0f7485b0a035a1
+	sha256sums = b26bfbdb0981ffb387c06f4f18fc5a15cf5c590f011dea197e1fe9e27b60a422
 
 pkgname = linux-clear
 	pkgdesc = The Clear Linux kernel and modules
