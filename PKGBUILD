@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tokenizers
-_pkgver=0.2.3
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fast, Consistent Tokenization of Natural Language Text'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('626d6b48b79dc4c3c130aebe201aac620f93665e0c5a890c3b6ca25c465f4207')
+sha256sums=('24571e4642a1a2d9f4f4c7a363b514eece74788d59c09012a5190ee718a91c29')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
