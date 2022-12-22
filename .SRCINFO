@@ -1,6 +1,6 @@
 pkgbase = python-bdfr-git
 	pkgdesc = Bulk downloader for Reddit from development branch
-	pkgver = v2.1.0.r9.g739f97e
+	pkgver = 2.6.1.r38.g00c4307
 	pkgrel = 1
 	url = https://github.com/aliparlakci/bulk-downloader-for-reddit
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = python-bdfr-git
 	md5sums = SKIP
 
 pkgname = python-bdfr-git
-

@@ -2,7 +2,7 @@
 
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr-git
-pkgver=v2.1.0.r9.g739f97e
+pkgver=2.6.1.r38.g00c4307
 pkgrel=1
 pkgdesc="Bulk downloader for Reddit from development branch"
 conflicts=('python-bdfr')
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python -m pip install . --root="$pkgdir"
 }
