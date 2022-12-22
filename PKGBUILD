@@ -8,6 +8,7 @@ arch=(i686 x86_64)
 url="https://github.com/MCterra10/cmmk_ctrl"
 license=('GPL')
 depends=(libcmmk-git qt5-base qt5-svg hidapi)
+makedepends=(git)
 source=("git+https://github.com/MCterra10/cmmk_ctrl.git")
 sha256sums=('SKIP')
 

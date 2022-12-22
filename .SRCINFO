@@ -6,6 +6,7 @@ pkgbase = cmmk_ctrl-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = libcmmk-git
 	depends = qt5-base
 	depends = qt5-svg
