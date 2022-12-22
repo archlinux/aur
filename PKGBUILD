@@ -4,7 +4,7 @@ pkgname=gdb-frontend-bin
 _pkgname=gdb-frontend
 pkgver=0.11.3.beta
 _pkgver=0.11.3-beta
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy, flexible and extensionable GUI debugger"
 arch=('x86_64')
 url='https://github.com/rohanrhu/gdb-frontend'
@@ -13,7 +13,7 @@ provides=('gdb-frontend' 'gdbfrontend')
 depends=('gdb' 'python' 'tmux')
 makedepends=('python-setuptools' 'gendesk')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/rohanrhu/gdb-frontend/archive/v${_pkgver}.tar.gz")
-sha256sums=('2c2486e527db6151c4848c80e176878aab098a731e684570846d6e38f928c4ea')
+sha256sums=('1e2a4ea800a055ddf7e0c1524805d5e027e0783981bde97838f7a91ebdda2898')
 
 prepare() {
     gendesk -n \
