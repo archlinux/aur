@@ -1,6 +1,6 @@
 pkgbase = astrometry.net
 	pkgdesc = Automatic recognition of astronomical images
-	pkgver = 0.92
+	pkgver = 0.93
 	pkgrel = 1
 	url = http://astrometry.net
 	install = astrometry.net.install
@@ -17,7 +17,7 @@ pkgbase = astrometry.net
 	depends = gsl
 	depends = swig
 	backup = etc/astrometry.cfg
-	source = http://astrometry.net/downloads/astrometry.net-0.92.tar.gz
-	md5sums = 733074447b60db5667a84d6e266e2c07
+	source = http://astrometry.net/downloads/astrometry.net-0.93.tar.gz
+	md5sums = a4d58d6602f02c5f84b5c8de810b8eee
 
 pkgname = astrometry.net

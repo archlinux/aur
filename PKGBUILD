@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.92
+pkgver=0.93
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ install=astrometry.net.install
 source=("http://astrometry.net/downloads/${pkgname}-${pkgver}.tar.gz")
 
 get_pyver() {
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
 prepare() {
@@ -38,8 +38,8 @@ package() {
          DOC_INSTALL_DIR="${pkgdir}/usr/share/doc/astrometry" \
          EXAMPLE_INSTALL_DIR="${pkgdir}/usr/share/astrometry/examples" \
          DATA_INSTALL_DIR="${pkgdir}/usr/share/astrometry/data" \
-         PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python$(get_pyver)/site-packages/astrometry" \
-         PY_BASE_LINK_DIR="../lib/python$(get_pyver)/site-packages/astrometry" \
+         PY_BASE_INSTALL_DIR="${pkgdir}/usr/lib/python$(get_pyver .)/site-packages/astrometry" \
+         PY_BASE_LINK_DIR="../lib/python$(get_pyver .)/site-packages/astrometry" \
          install
 
     sed -e "s|${pkgdir}/usr/data|/usr/share/astrometry/data|" -i ${pkgdir}/etc/astrometry.cfg
@@ -47,4 +47,4 @@ package() {
     rm ${pkgdir}/usr/bin/fitscopy
     rm ${pkgdir}/usr/bin/imcopy
 }
-md5sums=('733074447b60db5667a84d6e266e2c07')
+md5sums=('a4d58d6602f02c5f84b5c8de810b8eee')
