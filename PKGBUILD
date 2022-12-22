@@ -1,7 +1,7 @@
 # Maintainer: Oliver Nordbjerg <hi@notbjerg.me>
 _pkgname=foundry
 pkgname=foundry-git
-pkgver=r1910.a854a0e1
+pkgver=r1965.f10df79e8
 pkgrel=1
 pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust."
 arch=('x86_64' 'aarch64')

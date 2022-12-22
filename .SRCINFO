@@ -1,6 +1,6 @@
 pkgbase = foundry-git
 	pkgdesc = A blazing fast, portable and modular toolkit for Ethereum application development written in Rust.
-	pkgver = r1910.a854a0e1
+	pkgver = r1965.f10df79e8
 	pkgrel = 1
 	url = https://getfoundry.sh
 	arch = x86_64
