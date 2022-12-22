@@ -1,7 +1,7 @@
 pkgbase = nfetch-git
 	pkgdesc = Minimal Linux fetch utility written in nim
 	pkgver = 2.r19.g2655d63
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Infinitybeond1/nfetch-src
 	arch = x86_64
 	license = GPL3
