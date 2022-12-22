@@ -1,7 +1,7 @@
 pkgname=python-freqtrade
 _pkgname=${pkgname:7}
-pkgver=2022.9.1
-pkgrel=3
+pkgver=2022.11
+pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
 arch=('any')
@@ -69,7 +69,7 @@ depends=(
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
   "https://github.com/freqtrade/frequi/releases/download/0.4.4/freqUI.zip"
   "freqtrade@.service")
-sha256sums=('a89baee2cddfa4e9ee218928863ade69b8ad634c556216ab8ab6caa5ae3d574f'
+sha256sums=('c70ab1f8cb07c322fb2329d1c85079a2aeb04fa728b55d8e42562705d0b6e77d'
             '1c9a6d78f55fea855a23b4368d391f27dfb9e7f9f9c1d7413809707b005ed270'
             '4b5501985c8872ec2658d6f7a08009efbbe043c32ea38f2b3722b0bb38c81286')
 
