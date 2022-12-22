@@ -10,8 +10,8 @@ pkgbase = matrixmixer32.lv2-git
 	depends = glibc
 	depends = glib2
 	depends = pango
+	conflicts = x42-plugins
 	source = git+https://github.com/x42/matrixmixer.lv2
 	md5sums = SKIP
 
 pkgname = matrixmixer32.lv2-git
-
