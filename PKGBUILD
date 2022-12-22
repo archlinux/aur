@@ -42,11 +42,11 @@ prepare() {
   cd OpenCL-CLHPP
   git config submodule.external/CMock.url "${srcdir}/CMock"
   git config submodule.external/Unity.url "${srcdir}/Unity"
-  git submodule update --init external/CMock external/Unity
+  git -c protocol.file.allow=always submodule update --init external/CMock external/Unity
 
   cd external/CMock
   git config submodule.vendor/unity.url "${srcdir}/Unity"
-  git submodule update --init vendor/unity
+  git -c protocol.file.allow=always submodule update --init vendor/unity
 
 }
 
