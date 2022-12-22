@@ -1,6 +1,6 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pandas-stubs
-_pkgname=${pkgname:7}
+_pkgname=pandas_stubs
 pkgver=1.5.2.221213
 pkgrel=1
 pkgdesc="Type annotations for Pandas"
