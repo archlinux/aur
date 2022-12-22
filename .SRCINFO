@@ -1,8 +1,9 @@
 pkgbase = potatoe
+	pkgdesc = Prints a potatoe with a DQ quote. Configurable!
 	pkgver = 0.0.2
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/ledgerwatch/erigon
+	url = https://github.com/elee1766/potatoe
 	arch = x86_64
 	arch = amd64
 	license = GPL
