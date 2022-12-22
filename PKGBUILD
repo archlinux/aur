@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-hostname
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Set hostname for main system inside initrd'
 arch=('any')
 makedepends=('git')

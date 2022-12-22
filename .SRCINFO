@@ -1,13 +1,13 @@
 pkgbase = mkinitcpio-hostname
 	pkgdesc = Set hostname for main system inside initrd
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://github.com/eworm-de/mkinitcpio-hostname
 	install = mkinitcpio-hostname.install
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/eworm-de/mkinitcpio-hostname.git#tag=0.2.1?signed
+	source = git+https://github.com/eworm-de/mkinitcpio-hostname.git#tag=0.2.2?signed
 	validpgpkeys = BD84DE71F493DF6814B0167254EDC91609BC9183
 	sha256sums = SKIP
 
