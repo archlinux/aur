@@ -1,7 +1,7 @@
 # Maintainer: Pierre Grasser <pierre.grasser@proton.me>
 pkgname=custom-install
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Installs a title directly to an SD card for the Nintendo 3DS"
 arch=('any')
 url="https://github.com/ihaveamac/custom-install"
@@ -41,6 +41,8 @@ package() {
 
     # License
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+    # README
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 
     # Desktop file
     install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/com.github.ihaveamac.CustomInstall.desktop"
