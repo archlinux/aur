@@ -2,7 +2,7 @@
 name=picosynth
 pkgname=$name-bin
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="picoSYNTH is a playful tool where you by connecting various pieces
 of equipment to each other can create anything from short loops to chippy
 beats."
@@ -18,7 +18,7 @@ source=("local://$zipname.zip"
         "$desktopfile")
 sha256sums=('6092a4f3f7feb599e0d5f7cc6308c8d021cf2b320420a36c9850b426aeb920cb'
             'd9eb0daa8a0919720ed7f93313df7a3183021404f0d3a6a06c8e8f38fda0d664')
-options=('staticlibs' '!purge')
+options=('!purge')
 picosrcdir=$name-${pkgver}_linux
 
 package() {

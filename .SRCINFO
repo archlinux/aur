@@ -1,13 +1,12 @@
 pkgbase = picosynth-bin
 	pkgdesc = picoSYNTH is a playful tool where you by connecting various pieces of equipment to each other can create anything from short loops to chippy beats.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://johanpeitz.itch.io/picosynth
 	arch = x86_64
 	license = custom:commercial
 	depends = sdl2
 	conflicts = picosynth
-	options = staticlibs
 	options = !purge
 	source = local://picosynth-1.1_linux.zip
 	source = io.itch.johanpeitz.picoSYNTH.desktop
