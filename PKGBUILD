@@ -7,7 +7,7 @@ pkgver=v0.4.2.1.r5.g1508e66
 pkgrel=2
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
-url="https://github.com/maxasix/AltLinux"
+url="https://github.com/i-love-altlinux/AltLinux"
 license=('GPL')
 provides=("altlinux")
 conflicts=("altlinux")
@@ -23,7 +23,7 @@ depends=('binutils'
          'zlib'
          'unzip')
 makedepends=('pyinstaller')
-source=('git+https://github.com/maxasix/AltLinux'
+source=('git+https://github.com/i-love-altlinux/AltLinux'
         "${_lpkgname}.desktop"
         "${_lpkgname}.png")
 sha256sums=('SKIP'
