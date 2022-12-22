@@ -64,7 +64,7 @@ prepare() {
   sed -i 's#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#' accounts/user.go
 
   cd $srcdir/build/src/github.com/godbus/dbus
-  git reset HEAD^^^
+  git reset 4b691ce883d536a867587e2fcfec1245ebddecd0
   git checkout -- .
 }
 
