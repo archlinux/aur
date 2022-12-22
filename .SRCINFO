@@ -1,16 +1,16 @@
 pkgbase = cmmk_ctrl-git
 	pkgdesc = Qt based RGB control application for MasterKeys devices
-	pkgver = r8.34532c4
-	pkgrel = 1
-	url = https://github.com/chmod222/cmmk_ctrl
+	pkgver = r11.b8f8960
+	pkgrel = 2
+	url = https://github.com/dowe/cmmk_ctrl
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libcmmk-git
 	depends = qt5-base
 	depends = qt5-svg
-	source = git+https://github.com/chmod222/cmmk_ctrl.git
+	depends = hidapi
+	source = git+https://github.com/dowe/cmmk_ctrl.git
 	sha256sums = SKIP
 
 pkgname = cmmk_ctrl-git
-

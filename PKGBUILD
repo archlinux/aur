@@ -1,14 +1,14 @@
-# Maintainer: Jan Holthuis <holthuis.jan@googlemail.com>
+# Maintainer: Terra <terra@mcterra.id.au>
 pkgname=cmmk_ctrl-git
 _pkgname=cmmk_ctrl
-pkgver=r8.34532c4
-pkgrel=1
+pkgver=r11.b8f8960
+pkgrel=2
 pkgdesc="Qt based RGB control application for MasterKeys devices"
 arch=(i686 x86_64)
-url="https://github.com/chmod222/cmmk_ctrl"
+url="https://github.com/dowe/cmmk_ctrl"
 license=('GPL')
-depends=(libcmmk-git qt5-base qt5-svg)
-source=("git+https://github.com/chmod222/cmmk_ctrl.git")
+depends=(libcmmk-git qt5-base qt5-svg hidapi)
+source=("git+https://github.com/dowe/cmmk_ctrl.git")
 sha256sums=('SKIP')
 
 pkgver() {
