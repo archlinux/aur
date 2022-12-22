@@ -1,6 +1,6 @@
 pkgbase = elm-language-server
 	pkgdesc = Language server for Elm Language, utilizing the Language Server Protocol
-	pkgver = 2.5.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/elm-tooling/elm-language-server
@@ -11,9 +11,9 @@ pkgbase = elm-language-server
 	makedepends = git
 	depends = nodejs>10.0.0
 	optdepends = elm-bin: required to work, if not installed with other means (like npm)
-	noextract = elm-language-server-2.5.2.tgz
+	noextract = elm-language-server-2.6.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-2.5.2.tgz
-	sha256sums = 66af6869e06e76056af1003fcc9560a4fe34c64da183957d7cbe85fc21b17f31
+	source = https://registry.npmjs.org/@elm-tooling/elm-language-server/-/elm-language-server-2.6.0.tgz
+	sha256sums = 581e6e88ad12bf97e0c7c663a3851ec4cfb9937a2fe8a747fbfe58670364d296
 
 pkgname = elm-language-server
