@@ -1,0 +1,14 @@
+pkgbase = python-xdgenvpy
+	pkgdesc = Another XDG Base Directory Specification utility.
+	pkgver = 2.3.5
+	pkgrel = 1
+	url = https://gitlab.com/deliberist/xdgenvpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
+	source = https://files.pythonhosted.org/packages/source/x/xdgenvpy/xdgenvpy-2.3.5.tar.gz
+	sha256sums = 31e6c2ba68061000d09f74444db0520da90d2fb694a3b2c23551b06ac8d9642f
+
+pkgname = python-xdgenvpy
