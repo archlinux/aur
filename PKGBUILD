@@ -1,13 +1,14 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.15.1.r6.gac048fb3
+pkgver=5.15.2.r1.ga265d43c
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-daemon"
 license=('GPL3')
 depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-codes' 'lsb-release'
+         'deepin-app-services-git'
          'mobile-broadband-provider-info' 'deepin-polkit-agent-git'
          'deepin-polkit-agent-ext-gnomekeyring-git' 'udisks2' 'upower'
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
@@ -59,7 +60,12 @@ prepare() {
   go get -v github.com/youpy/go-wav
   go get -v google.golang.org/protobuf/proto
   go get -v github.com/mdlayher/netlink
+  go get -v github.com/jouyouyun/hardware/dmi
   sed -i 's#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#' accounts/user.go
+
+  cd $srcdir/build/src/github.com/godbus/dbus
+  git reset HEAD^^^
+  git checkout -- .
 }
 
 build() {

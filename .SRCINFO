@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 5.15.1.r6.gac048fb3
+	pkgver = 5.15.2.r1.ga265d43c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
@@ -28,6 +28,7 @@ pkgbase = deepin-daemon-git
 	depends = gvfs
 	depends = iso-codes
 	depends = lsb-release
+	depends = deepin-app-services-git
 	depends = mobile-broadband-provider-info
 	depends = deepin-polkit-agent-git
 	depends = deepin-polkit-agent-ext-gnomekeyring-git
