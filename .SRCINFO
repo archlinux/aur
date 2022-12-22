@@ -1,0 +1,15 @@
+pkgbase = ssh-ldap-pubkey
+	pkgdesc = Utility to manage SSH public keys stored in LDAP
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/jirutka/ssh-ldap-pubkey
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ldap
+	depends = python-docopt
+	source = ssh-ldap-pubkey-1.4.0.tar.gz::https://github.com/jirutka/ssh-ldap-pubkey/archive/v1.4.0.tar.gz
+	sha256sums = 17790a7e21ea789a87b1a2e692ca87396851b369214863372f8eadf25d4d5e04
+
+pkgname = ssh-ldap-pubkey
