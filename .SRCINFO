@@ -1,0 +1,11 @@
+pkgbase = ast-firmware
+	pkgdesc = Aspeed VGA module from the IPMI
+	pkgver = 501
+	pkgrel = 1
+	url = https://www.supermicro.com/support/faqs/faq.cfm?faq=26876
+	arch = any
+	license = custom
+	source = ast_dp501_fw.tar.gz::https://github.com/Labaman/ast-firmware/raw/main/ast_dp501_fw.tar.gz
+	sha256sums = 58c24d2d5f5fb2b8eb000aef83b510c0ec95c87cdcd769620e489c589d7ae60a
+
+pkgname = ast-firmware
