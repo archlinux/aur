@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Nanosaur 2
+Comment=Nanosaur II: Hatchling
+Icon=nanosaur2
+Exec=/usr/lib/nanosaur2/Nanosaur2
+Path=/usr/lib/nanosaur2
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
