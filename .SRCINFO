@@ -1,0 +1,31 @@
+pkgbase = flycast
+	pkgdesc = A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/flyinghead/flycast
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = systemd
+	depends = libgl
+	depends = libzip
+	depends = zlib
+	depends = alsa-lib
+	provides = flycast
+	provides = reicast
+	conflicts = flycast
+	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.0
+	source = SDL::git+https://github.com/libsdl-org/SDL
+	source = libchdr::git+https://github.com/rtissera/libchdr
+	source = luabridge::git+https://github.com/vinniefalco/LuaBridge
+	source = breakpad::git+https://github.com/flyinghead/mingw-breakpad
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = flycast
