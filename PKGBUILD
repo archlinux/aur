@@ -3,7 +3,7 @@
 _dlhash=88fdd263
 pkgname=synergy1-bin
 pkgver=1.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard and mouse sharing solution. Synergy allows you to share one mouse and keyboard between multiple computers. Work seamlessly across Windows, macOS and Linux."
 arch=('x86_64')
 url="https://symless.com/synergy"
@@ -13,13 +13,14 @@ depends=(
   'gcc-libs>=5.2'
   'glibc>=2.14'
   'hicolor-icon-theme'
+  'libcrypto.so'
   'libnotify>=0.8'
+  'libssl.so'
   'libx11>=1.2.99.901'
   'libxext'
   'libxi>=1.2.99.4'
   'libxkbfile>=1.1.2'
   'libxtst'
-  'openssl>=1.1.0'
   'qt5-base>=5.12.2'
 )
 conflicts=('synergy')
