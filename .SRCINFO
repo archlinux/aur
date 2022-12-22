@@ -1,15 +1,16 @@
 pkgbase = csnobol4
-	pkgdesc = A port of Macro SNOBOL4, supports full SNOBOL4 language plus SPITBOL and other extensions.
-	pkgver = 1.5
-	pkgrel = 2
-	url = http://www.snobol4.org/csnobol4/curr/
+	pkgdesc = A port of Macro SNOBOL4, supports the full SNOBOL4 language plus BLOCKS and SPITBOL and other extensions.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://www.regressive.org/snobol4/csnobol4/curr/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = ftp://ftp.ultimate.com/snobol/snobol4-1.5.tar.gz
-	md5sums = 54ac3ddd51fb34ec63b1eb0ae7b99794
-	sha1sums = 037a8eeba774b1085cfe8d1a741ec446182e4a9f
-	sha256sums = 9f7ec649f2d700a30091af3bbd68db90b916d728200f915b1ba522bcfd0d7abd
+	license = BSD
+	depends = tcl
+	depends = tk
+	source = https://ftp.regressive.org/snobol4/snobol4-2.3.1.tar.gz
+	md5sums = aa4c9f7144e2a753103462067c546bff
+	sha1sums = c9243886c4970d8b298f2e1d0a19eeecf9802dc0
+	sha256sums = 91244d67d4e29d2aadce5655bd4382ffab44c624a7ea4ad6411427f3abf17535
 
 pkgname = csnobol4
-
