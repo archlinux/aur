@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.5.1.r178.g9977208b0
+pkgver=5.8.3.r5.g1ec4c5734
 pkgrel=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/linuxdeepin/dde-file-manager"
 license=('GPL3')
 depends=('deepin-anything-git' 'disomaster-git' 'file' 'gio-qt' 'libmediainfo' 'avfs' 'polkit-qt5' 'poppler'
          'ffmpegthumbnailer' 'startdde-git' 'taglib' 'jemalloc' 'htmlcxx' 'mimetic' 'lucene++')
-makedepends=('git' 'deepin-movie' 'lucene++' 'jemalloc' 'kcodecs' 'htmlcxx' 'libgsf' 'mimetic' 'boost' 'boost-libs' 'qt5-tools' 'deepin-dock-git' 'deepin-gettext-tools-git' 'gtest')
+makedepends=('git' 'deepin-movie-git' 'lucene++' 'jemalloc' 'kcodecs' 'htmlcxx' 'libgsf' 'mimetic' 'boost' 'boost-libs' 'qt5-tools' 'deepin-dock-git' 'deepin-gettext-tools-git' 'gtest' 'docparser')
 optdepends=('deepin-manual: for help menual'
             'deepin-shortcut-viewer: for shortcut display'
             'deepin-screensaver: for screensaver chooser'
