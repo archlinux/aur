@@ -5,7 +5,7 @@
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
 
-pkgname=firedragon-unsigned
+pkgname=firedragon-unsigned-extensions
 _pkgname=FireDragon
 __pkgname=firedragon
 pkgver=108.0.1
