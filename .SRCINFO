@@ -1,14 +1,14 @@
 pkgbase = ruby-rqrcode_core
 	pkgdesc = library for encoding QR Codes
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/whomwah/rqrcode_core
 	arch = any
 	license = MIT
 	makedepends = rubygems
-	noextract = rqrcode_core-1.1.0.gem
+	noextract = rqrcode_core-1.2.0.gem
 	options = !strip
-	source = https://rubygems.org/downloads/rqrcode_core-1.1.0.gem
-	sha512sums = 1dc3f314a8b6eb65daac184900a7579e194aeb2a52776cad3884345b3649ac773173d5f647bac41bc4c7d75c72d010aee731e36b036465a05dbb90ac591ef9c0
+	source = https://rubygems.org/downloads/rqrcode_core-1.2.0.gem
+	sha512sums = e2ada416dbd4e23a4dcd097ab993c3408131a043fffdac60783b356d93a6b93744943a4755ede64279e0f9fd615ee57cf14b237242da8f7fb0e7c999ca44449d
 
 pkgname = ruby-rqrcode_core
