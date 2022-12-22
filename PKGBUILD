@@ -2,14 +2,14 @@
 _pkgname=foundry
 pkgname=foundry-git
 pkgver=r1965.f10df79e8
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust."
 arch=('x86_64' 'aarch64')
 url="https://getfoundry.sh"
 license=('APACHE' 'MIT')
 depends=(gcc-libs libusb openssl)
 makedepends=('git' 'cargo')
-provides=(forge cast anvil)
+provides=(forge cast anvil chisel)
 source=("git+https://github.com/foundry-rs/foundry")
 md5sums=('SKIP')
 
