@@ -10,7 +10,7 @@
 
 pkgname=proggyfonts
 pkgver=0.3
-pkgrel=0
+pkgrel=1
 arch=('any')
 pkgdesc='A set of fixed-width fonts designed for code listings.'
 url='https://github.com/bluescan/proggyfonts/'
@@ -23,7 +23,7 @@ source=("$pkgname.install"
         "Crisp.ttf.zip::https://github.com/bluescan/proggyfonts/raw/master/Contributed/Crisp.ttf.zip"
         "PixelCarnageMono.ttf.zip::https://github.com/bluescan/proggyfonts/raw/master/Contributed/PixelCarnageMono.ttf.zip"
         "ProggyClean.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyClean.ttf"
-        "ProggyCleanCP.pcf.zip::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanCP.pcf.gz"
+        "ProggyCleanCP.pcf.gz::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanCP.pcf.gz"
         "ProggyCleanSZ.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanSZ.ttf"
         "ProggyCleanSZBP.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanSZBP.ttf"
         "ProggySmall.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggySmall.ttf"
@@ -41,7 +41,7 @@ source=("$pkgname.install"
         "ProggyCrossed Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyCrossed/ProggyCrossed%20Regular.ttf"
         "ProggyDotted Regular.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyDotted/ProggyDotted%20Regular.ttf")
 noextract=('Opti.pcf.gz'
-           'ProggyClean.ttf'
+           'ProggyCleanCP.pcf.gz'
            'OptiSmall.pcf.gz'
            'WebbyCaps.pcf.gz'
            'WebbySmall.pcf.gz')

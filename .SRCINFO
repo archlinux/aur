@@ -1,7 +1,7 @@
 pkgbase = proggyfonts
 	pkgdesc = A set of fixed-width fonts designed for code listings.
 	pkgver = 0.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/bluescan/proggyfonts/
 	install = proggyfonts.install
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = proggyfonts
 	source = Crisp.ttf.zip::https://github.com/bluescan/proggyfonts/raw/master/Contributed/Crisp.ttf.zip
 	source = PixelCarnageMono.ttf.zip::https://github.com/bluescan/proggyfonts/raw/master/Contributed/PixelCarnageMono.ttf.zip
 	source = ProggyClean.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyClean.ttf
-	source = ProggyCleanCP.pcf.zip::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanCP.pcf.gz
+	source = ProggyCleanCP.pcf.gz::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanCP.pcf.gz
 	source = ProggyCleanSZ.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanSZ.ttf
 	source = ProggyCleanSZBP.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggyCleanSZBP.ttf
 	source = ProggySmall.ttf::https://github.com/bluescan/proggyfonts/raw/master/ProggyOriginal/ProggySmall.ttf
