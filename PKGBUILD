@@ -2,12 +2,12 @@
 
 pkgname=garage
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Garage, an S3-compatible distributed object store for self-hosted deployments"
 url="https://garagehq.deuxfleurs.fr"
 license=('AGPL')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs')
+depends=('gcc-libs' 'libsodium' 'zstd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz")
 sha256sums=('264da6d272bae1fdd291f604f3c7f1ac0848aaf85b3b4a413118f97d11fd2a60')
@@ -32,7 +32,7 @@ build() {
   cd "$pkgname"
 
   CARGO_TARGET_DIR='target' \
-    cargo build --frozen --release --all-features
+    cargo build --frozen --release --no-default-features --features 'system-libs,metrics,lmdb,k2v'
 }
 
 package() {
