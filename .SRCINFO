@@ -1,6 +1,6 @@
 pkgbase = teamtalk
 	pkgdesc = a software conferencing system server which enables a group of people to collaborate and share information using voice and video
-	pkgver = 5.11
+	pkgver = 5.12
 	pkgrel = 1
 	url = http://www.bearware.dk
 	install = teamtalk.install
@@ -8,9 +8,9 @@ pkgbase = teamtalk
 	license = custom
 	depends = gcc-libs
 	backup = etc/teamtalk/tt5srv.xml
-	source = https://bearware.dk/teamtalk/v5.11/teamtalk-v5.11-ubuntu22-x86_64.tgz
+	source = https://bearware.dk/teamtalk/v5.12/teamtalk-v5.12-ubuntu22-x86_64.tgz
 	source = teamtalk.install
-	sha256sums = 743cc500ea625858ec841c91dea391cc8c3160a64d1f55baf7b7bce2d7340f3e
+	sha256sums = 98f58979c06a8cbce8007ac1ab2d107d7bf3f557912af036af1cb3e542eb60ee
 	sha256sums = 621938e7a6b07988ff05a032ba098e5d7e8a10040c6dac3c1f3255ac89938a6e
 
 pkgname = teamtalk
