@@ -1,7 +1,7 @@
 pkgbase = candle-git
 	pkgdesc = GRBL controller application with G-Code visualizer written in Qt - development version
-	pkgver = v1.1.r97.8fd07bf
-	pkgrel = 3
+	pkgver = v1.1.r98.3f763bc
+	pkgrel = 1
 	url = https://github.com/Denvi/Candle
 	arch = x86_64
 	arch = aarch64
@@ -21,4 +21,3 @@ pkgbase = candle-git
 	md5sums = 54cf1510a9858074b6bf54c0c174dd00
 
 pkgname = candle-git
-

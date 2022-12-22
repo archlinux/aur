@@ -1,7 +1,7 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=candle-git
-pkgver=v1.1.r97.8fd07bf
-pkgrel=3
+pkgver=v1.1.r98.3f763bc
+pkgrel=1
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt - development version"
 arch=(x86_64 aarch64)
 url="https://github.com/Denvi/Candle"
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	git apply < "../frmmain.cpp.patch"
+	git apply < "$srcdir/frmmain.cpp.patch"
 }
 
 build() {
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-    install -m644 ../"${pkgname%-git}.desktop" -Dt "$pkgdir"/usr/share/applications
+    install -m644 "$srcdir"/"${pkgname%-git}.desktop" -Dt "$pkgdir"/usr/share/applications
 	cd "$srcdir/${pkgname%-git}"
     install -m644 src/images/icon.svg -D "$pkgdir"/usr/share/icons/hicolor/scalable/apps/candle.svg
     install -m755 src/Candle -Dt "$pkgdir"/usr/bin
