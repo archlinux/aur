@@ -1,25 +1,25 @@
 # Maintainer: Stefan J. Betz <info@stefan-betz.net>
 pkgname=subnetcalc
-pkgver=2.4.19
+pkgver=2.4.20
 pkgrel=1
 pkgdesc="Subnet Calculator for IPv4/IPv6"
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://www.uni-due.de/~be0001/subnetcalc/"
+url="https://github.com/dreibh/subnetcalc"
 depends=('geoip')
 makedepends=('cmake')
-source=("https://www.uni-due.de/~be0001/subnetcalc/download/subnetcalc-$pkgver.tar.xz")
-md5sums=('31382eabe15d768691b75b33d282062f')
-sha512sums=('00283e8c7f4fbf5bc58d425e98d73e118469d58a88016d6fd17bcdaa73337182f166249ef1778408411b29d0bcde706d618985fa7f7b4df1424d175c689e49cb')
+source=("https://github.com/dreibh/subnetcalc/archive/refs/tags/subnetcalc-$pkgver.tar.gz")
+md5sums=('5541506500ce1642eae60ee48c3a2597')
+sha512sums=('fe8e69ef210e01bc9a9957eb5316709182ee9eaeb511872e1c08df61471aa24a6e9a0389bdc33f1b0030b3abf13336dcc9248e00bed946c81ec9b0a343ff564c')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgname-$pkgver
 	cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr .
 	make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname-$pkgname-$pkgver
 	mkdir -p $pkgdir/usr
 	make install
 }
