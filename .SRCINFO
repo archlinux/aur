@@ -1,7 +1,7 @@
 pkgbase = custom-install-git
 	pkgdesc = Installs a title directly to an SD card for the Nintendo 3DS
 	pkgver = 2.1.r9.g9ab8236
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ihaveamac/custom-install
 	arch = any
 	license = MIT

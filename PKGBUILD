@@ -2,7 +2,7 @@
 pkgname=custom-install-git
 _pkgname=${pkgname%-git}
 pkgver=2.1.r9.g9ab8236
-pkgrel=2
+pkgrel=3
 pkgdesc="Installs a title directly to an SD card for the Nintendo 3DS"
 arch=('any')
 url="https://github.com/ihaveamac/custom-install"
@@ -54,6 +54,8 @@ package() {
 
     # License
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+    # README
+    install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
 
     # Desktop file
     install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/com.github.ihaveamac.CustomInstall.desktop"
