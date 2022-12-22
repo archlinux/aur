@@ -11,8 +11,8 @@ license=("GPL")
 #see https://wiki.archlinux.org/title/mkinitcpio#Possibly_missing_firmware_for_module_XXXX
 depends=(
     "linux-firmware"
-    "ast-firmware"            # ast
     "aic94xx-firmware"        # aic94xx
+    "ast-firmware"            # ast
     "linux-firmware-qlogic"   # bfa qed qla2xxx qla1280
     "linux-firmware-bnx2x"    # bnx2x
     "linux-firmware-liquidio" # liquidio
