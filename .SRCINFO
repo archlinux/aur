@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous-fire
-	pkgver = 6.1.0
-	pkgrel = 3
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-nitrous-fire
 	makedepends = rust
 	makedepends = lzop
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.1.0-3
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v6.1.1-1
 	source = linux-nitrous-fire.preset
 	sha256sums = SKIP
 	sha256sums = 5c5305e210d83ca015b2272d82c4fbc51a690984a34bfca7922d8c0818b1772b
@@ -31,7 +31,7 @@ pkgname = linux-nitrous-fire
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-nitrous-fire-headers=6.1.0-3: to build DKMS modules against this kernel
+	optdepends = linux-nitrous-fire-headers=6.1.1-1: to build DKMS modules against this kernel
 	optdepends = linux-firmware: Additional firmware blobs
 	provides = NTFS3-MODULE
 	backup = etc/mkinitcpio.d/linux-nitrous-fire.preset
