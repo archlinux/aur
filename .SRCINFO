@@ -4,6 +4,7 @@ pkgbase = teehee
 	pkgrel = 1
 	url = https://github.com/Gskartwii/teehee
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = rust
 	source = teehee-0.2.8.tar.gz::https://github.com/Gskartwii/teehee/archive/v0.2.8.tar.gz
