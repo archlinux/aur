@@ -1,8 +1,8 @@
 # Maintainer: Omeed Safi <aur@safi.ms>
 _pkgname=akr
-_gittag=1.0
+_gittag=1.1.1
 pkgname="${_pkgname}"
-pkgver=1.0.r0.g0ebacde
+pkgver=1.1.1.r0.g0cf46f8
 pkgrel=1
 pkgdesc="Akamai Krypton CLI and SSH Agent"
 arch=("x86_64")
