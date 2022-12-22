@@ -1,6 +1,6 @@
 pkgbase = faustlive
 	pkgdesc = Faust prototyping environment
-	pkgver = 2.5.12
+	pkgver = 2.5.13
 	pkgrel = 1
 	url = https://github.com/grame-cncm/faustlive
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = faustlive
 	makedepends = libsndfile
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = faustlive-2.5.12.tar.gz::https://github.com/grame-cncm/faustlive/archive/refs/tags/2.5.12.tar.gz
-	sha256sums = 61470d7133d6271f0c5eaf8e39d74640a36520de2e4102583afe3c6fbe8d20d2
+	source = faustlive-2.5.13.tar.gz::https://github.com/grame-cncm/faustlive/archive/refs/tags/2.5.13.tar.gz
+	sha256sums = 46e65b81ad0811ce4758e4c31edec7706bfcf60595cf260347ea5594ee7c7c6a
 
 pkgname = faustlive
 	depends = hicolor-icon-theme
