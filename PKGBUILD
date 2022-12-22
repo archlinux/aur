@@ -4,7 +4,7 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r172.g726ef21
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful editor designed for use by programmers (latest development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.jedsoft.org/jed/'
@@ -46,6 +46,7 @@ build() {
 
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
+  make clean
   make
   make xjed
   make getmail
