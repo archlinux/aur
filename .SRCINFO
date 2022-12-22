@@ -1,6 +1,6 @@
 pkgbase = flux-scm
 	pkgdesc = Open and extensible continuous delivery solution for Kubernetes
-	pkgver = 0.38.1
+	pkgver = 0.38.2
 	pkgrel = 1
 	url = https://fluxcd.io/
 	arch = x86_64
