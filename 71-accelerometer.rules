@@ -1,0 +1,1 @@
+SUBSYSTEM=="input", ENV{ID_INPUT_ACCELEROMETER}=="?*", TAG+="uaccess"
