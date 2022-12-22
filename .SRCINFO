@@ -1,13 +1,13 @@
 pkgbase = wormhole-rs
 	pkgdesc = Rust implementation of Magic Wormhole, with new features and enhancements
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/magic-wormhole/magic-wormhole.rs
 	arch = x86_64
 	license = custom:EUPL-1.2+
 	makedepends = cargo
 	depends = libxcb
-	source = https://github.com/magic-wormhole/magic-wormhole.rs/archive/0.5.0/magic-wormhole.rs-0.5.0.tar.gz
-	sha256sums = fdd1d0bd00948f9bdce28b7d21e84bebd25d08502efe30408ded91a150afa5ce
+	source = https://github.com/magic-wormhole/magic-wormhole.rs/archive/0.6.0/magic-wormhole.rs-0.6.0.tar.gz
+	sha256sums = cfa72215b1b0f519b9986523d0c41d6b3e562c41668f28ee80c23ce0aa3fe685
 
 pkgname = wormhole-rs
