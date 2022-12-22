@@ -30,11 +30,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-pkgver() {
-    cd "$srcdir"/"$_spkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
     cd "$srcdir"/"$_spkgname"
     
