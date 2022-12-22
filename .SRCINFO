@@ -1,6 +1,6 @@
 pkgbase = jbig2enc-git
 	pkgdesc = A JBIG2 image encoder
-	pkgver = 0.29
+	pkgver = 0.29.1.gea6a40a
 	pkgrel = 1
 	url = https://github.com/agl/jbig2enc
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = jbig2enc-git
 	optdepends = python2: for pdf.py
 	provides = jbig2enc
 	conflicts = jbig2enc
-	source = git://github.com/agl/jbig2enc.git
+	source = git+https://github.com/agl/jbig2enc.git
 	md5sums = SKIP
 
 pkgname = jbig2enc-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément <vleclement AT gmail·com>
 _pkgname=jbig2enc
 pkgname=$_pkgname-git
-pkgver=0.29
+pkgver=0.29.1.gea6a40a
 pkgrel=1
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('python2: for pdf.py')
 provides=('jbig2enc')
 conflicts=('jbig2enc')
 makedepends=('git')
-source=("git://github.com/agl/$_pkgname.git")
+source=("git+https://github.com/agl/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
