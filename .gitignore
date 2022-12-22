@@ -1,0 +1,6 @@
+*/
+*.deb
+*.tar*
+*.log
+autoUpdate.sh
+
