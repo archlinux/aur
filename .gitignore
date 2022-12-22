@@ -1,5 +1,5 @@
 *
 !.gitignore
 !.SRCINFO
-!desktop_entry.patch
 !PKGBUILD
+!tradingview.desktop
