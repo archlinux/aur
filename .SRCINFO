@@ -1,6 +1,6 @@
 pkgbase = r-mlr3tuning
 	pkgdesc = Tuning for 'mlr3'
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3tuning
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-mlr3tuning
 	optdepends = r-rpart
 	optdepends = r-testthat
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/mlr3tuning_0.17.1.tar.gz
-	sha256sums = 4ba659c3559aaaeec4f8320c2f29c38654ef37b4c9ca4f96e3af97da4e5c0a0e
+	source = https://cran.r-project.org/src/contrib/mlr3tuning_0.17.2.tar.gz
+	sha256sums = 6b85b422e98246952ca3a70612129eefb4ca0774968280dad0ce0e82265f08f0
 
 pkgname = r-mlr3tuning
