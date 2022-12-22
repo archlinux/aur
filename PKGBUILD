@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=goverlay
-pkgver=0.9.0
-_pkgver=0.9
+pkgver=0.9.1
+_pkgver=0.9.1
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('vkbasalt: Configure vkBasalt'
 	    'oxygen: Backup choice for theme')
 conflicts=("${pkgname%-git}" "${pkgname%-bin}")
 source=("${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha512sums=('570e79dea9c1b0ee965719741c1dd404ac3b87c4c3e5cecc242f0bb3ffe6158bcbb57601ed1b1318c946631a19455dea1efbf692c2e2c46e829be27dc0032aed')
+sha512sums=('26feeba780f13b54630f1f19ab44da501aeb84409ebe47f7b044083416d7e3d5a8c3f639366e2eb8aee458a034cda2bf7a276eb00eb69db2bafdc17906c8ea75')
 
 build() {
 	cd "$srcdir/$pkgname-$_pkgver"
