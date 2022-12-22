@@ -2,15 +2,16 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Arch Haskell Team <arch-haskell@haskell.org>
 
-pkgname=git-annex-git
+# pkgname git-annex-git already taken somehow and can't be adopted, so added this '-dev' bit...
+pkgname=git-annex-dev-git
 pkgver=10.20221212.r24.gac6ccb513
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git (dev version)"
 url="https://git-annex.branchable.com/"
 license=("AGPL3")
 arch=('x86_64')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'git-annex-standalone')
+provides=("${pkgname%-dev-git}")
+conflicts=("${pkgname%-dev-git}" 'git-annex-standalone')
 depends=('git' 'lsof' 'rsync' 'ghc-libs' 'haskell-aeson' 'haskell-ansi-terminal' 'haskell-async'
          'haskell-aws' 'haskell-blaze-builder' 'haskell-bloomfilter' 'haskell-byteable'
          'haskell-case-insensitive' 'haskell-clientsession' 'haskell-concurrent-output'
@@ -36,7 +37,7 @@ source=("git+https://git.joeyh.name/git/git-annex.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/"${pkgname%-git}"
+  cd "$srcdir"/"${pkgname%-dev-git}"
   git describe --long --tags --always | sed 's/^[^0-9]\+//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -49,7 +50,7 @@ prepare() {
 
 build() {
   cd git-annex
-  sed -e 's|--ghc-options|-O --prefix=/usr --enable-executable-dynamic --disable-library-vanilla --docdir=/usr/share/doc/'${pkgname%-git}' --ghc-options|' \
+  sed -e 's|--ghc-options|-O --prefix=/usr --enable-executable-dynamic --disable-library-vanilla --docdir=/usr/share/doc/'${pkgname%-dev-git}' --ghc-options|' \
       -i Makefile
   make GHC="ghc -dynamic" BUILDER=./Setup BUILDEROPTIONS=$MAKEFLAGS
 }

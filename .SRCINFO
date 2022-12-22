@@ -1,4 +1,4 @@
-pkgbase = git-annex-git
+pkgbase = git-annex-dev-git
 	pkgdesc = Manage files with git, without checking their contents into git (dev version)
 	pkgver = 10.20221212.r24.gac6ccb513
 	pkgrel = 1
@@ -96,4 +96,4 @@ pkgbase = git-annex-git
 	source = git+https://git.joeyh.name/git/git-annex.git
 	sha512sums = SKIP
 
-pkgname = git-annex-git
+pkgname = git-annex-dev-git
