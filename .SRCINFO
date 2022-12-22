@@ -1,0 +1,16 @@
+pkgbase = scalingo-bin
+	pkgdesc = Scalingo cli scalingo.com
+	pkgver = 1.26.1
+	pkgrel = 1
+	url = https://github.com/BtbN/FFmpeg-Builds
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	provides = scalingo
+	conflicts = scalingo
+	source_x86_64 = https://github.com/Scalingo/cli/releases/download/1.26.1/scalingo_1.26.1_linux_amd64.tar.gz
+	md5sums_x86_64 = 629a1deb8723e36d59d8bad453d21fce
+	source_aarch64 = https://github.com/Scalingo/cli/releases/download/1.26.1/scalingo_1.26.1_linux_arm64.tar.gz
+	md5sums_aarch64 = e7a7ccdd3ed154df353a01ff0c799431
+
+pkgname = scalingo-bin
