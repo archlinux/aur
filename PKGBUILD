@@ -4,7 +4,7 @@
 
 _pkgname=server
 pkgname=etebase-server
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
@@ -32,7 +32,7 @@ url="https://github.com/etesync/$_pkgname"
 license=('AGPL3')
 backup=("etc/$pkgname/$pkgname.ini")
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname.service
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.ini.patch
         '0001-fix-settings-ensure-environment-variables-always-ove.patch'
         $pkgname)
-sha256sums=('a9f5289a8ddce4feb79795d542b81a98bf77727c377f8839140b2ec029e2712e'
+sha256sums=('ae8b79977b9ac5ff58aaf5bfabce1957183db00751322633b77028e7f88798b8'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
             '8ecd76be056ea582b01f6230de9a74b9c4ce4a637f2b0a27edc5b6f7848b5fba'
