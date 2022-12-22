@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.3.11_patch1
+	pkgver = 4.3.11_upgrade_redone
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.3.11-patch1.jar
-	source = Unciv-4.3.11-patch1.jar::https://github.com/yairm210/Unciv/releases/download/4.3.11-patch1/Unciv.jar
-	source = Unciv-4.3.11-patch1.png::https://raw.githubusercontent.com/yairm210/Unciv/4.3.11-patch1/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.3.11-patch1.zip::https://github.com/yairm210/Unciv/releases/download/4.3.11-patch1/linuxFilesForJar.zip
-	md5sums = 6275b90783ba4c7ae227daaab4373451
+	noextract = Unciv-4.3.11-upgrade-redone.jar
+	source = Unciv-4.3.11-upgrade-redone.jar::https://github.com/yairm210/Unciv/releases/download/4.3.11-upgrade-redone/Unciv.jar
+	source = Unciv-4.3.11-upgrade-redone.png::https://raw.githubusercontent.com/yairm210/Unciv/4.3.11-upgrade-redone/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.3.11-upgrade-redone.zip::https://github.com/yairm210/Unciv/releases/download/4.3.11-upgrade-redone/linuxFilesForJar.zip
+	md5sums = 8529003eba41d9683fccb5858ff47095
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 2ab486988c1040059a9d16b005f51a4f
+	md5sums = c255e2eb31403b236f03f208e29d0599
 
 pkgname = unciv-bin
