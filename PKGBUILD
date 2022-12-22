@@ -3,7 +3,7 @@
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/jfrog/jfrog-cli"
@@ -50,4 +50,7 @@ package() {
   install -Dm644 jfrog.bash "$pkgdir/usr/share/bash-completion/completions/jfrog"
   install -Dm644 jfrog.fish "$pkgdir/usr/share/fish/vendor_completions.d/jfrog.fish"
   install -Dm644 jfrog.zsh "$pkgdir/usr/share/zsh/site-functions/_jfrog"
+  install -Dm644 jfrog.bash "$pkgdir/usr/share/bash-completion/completions/jf"
+  install -Dm644 jfrog.fish "$pkgdir/usr/share/fish/vendor_completions.d/jf.fish"
+  install -Dm644 jfrog.zsh "$pkgdir/usr/share/zsh/site-functions/_jf"
 }
