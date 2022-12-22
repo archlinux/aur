@@ -1,0 +1,16 @@
+pkgbase = liba53
+	pkgdesc = A5/3 call encryption library
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/RangeNetworks/liba53
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconfig
+	provides = liba53.so=1-64
+	source = https://github.com/RangeNetworks/liba53/archive/refs/tags/v4.0.0.tar.gz
+	sha512sums = ec85939d6d4225151ba7b15585b93af94d4f6cc823ab23666cb73da0f808965b8bc8c4472471af58129548399bcd9b2d13867f77bd20543adf1d8c1757f4095e
+	b2sums = 4189bd00644269714b323fae3ce316a2e2b7df660599f612fa3b8056373e2c99aeda2000de78d52c2ae19531ba3e73ee7404c488ffd9b5f47471110953078146
+
+pkgname = liba53
