@@ -1,7 +1,7 @@
 pkgbase = carbonapi
 	pkgdesc = Replacement graphite API server written in Go
-	pkgver = 0.15.6
-	pkgrel = 1
+	pkgver = 0.16.0
+	pkgrel = 2
 	url = https://github.com/go-graphite/carbonapi
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = carbonapi
 	depends = glibc
 	depends = cairo
 	backup = etc/carbonapi.yaml
-	source = carbonapi-0.15.6.tar.gz::https://github.com/go-graphite/carbonapi/archive/v0.15.6.tar.gz
+	source = carbonapi-0.16.0.tar.gz::https://github.com/go-graphite/carbonapi/archive/v0.16.0-patch2.tar.gz
 	source = carbonapi.yaml
 	source = carbonapi.service
-	sha256sums = 013f290482e70b3c6e217831cef7f7039cb5a9a5a3ad8549b57a0953f57b6bbd
+	sha256sums = 7f49dee16825d1ffa8c4c9e35813fb98d46fc30acde3677a1092c0e7da79ea5e
 	sha256sums = cef6f2fb6702d32ce84765615ec8208f8d03f9d540f177e904f47c61e5ea1215
 	sha256sums = 9d24333dfefc199957a2efa4779f69a9ad01f78bbff97c35dbacbb160b9bec50
 
