@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/jellyfin/jellyfin-ffmpeg'
 license=('GPL3')
 depends_x86_64=('glibc>=2.23')
-depends_aarch64=('aarch64-linux-gnu-glibc>=2.27')
+depends_aarch64=('glibc>=2.27')
 optdepends=('intel-media-driver: for Intel VAAPI support (Broadwell and newer)'
             'intel-media-sdk: for Intel Quick Sync Video'
             'onevpl-intel-gpu: for Intel Quick Sync Video (12th Gen and newer)'

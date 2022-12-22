@@ -22,7 +22,7 @@ pkgbase = jellyfin-ffmpeg5-bin
 	depends_x86_64 = glibc>=2.23
 	sha256sums_x86_64 = 3804d331aa8dc30effcfe1c9f73302aaf5eb54abe3cdc3afd26a850bdf69ea24
 	source_aarch64 = https://repo.jellyfin.org/releases/ffmpeg/5.1.2-5/jellyfin-ffmpeg_5.1.2-5_portable_linuxarm64-gpl.tar.xz
-	depends_aarch64 = aarch64-linux-gnu-glibc>=2.27
+	depends_aarch64 = glibc>=2.27
 	sha256sums_aarch64 = 9bd1e68117a08ab8a5195eed731edbcdd9f81e7daec43bb6c76a4325d72efad6
 
 pkgname = jellyfin-ffmpeg5-bin
