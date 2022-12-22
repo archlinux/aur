@@ -1,6 +1,6 @@
 pkgbase = akr-git
 	pkgdesc = Akamai Krypton CLI and SSH Agent
-	pkgver = 1.0.r6.g9babada
+	pkgver = 1.1.1.r2.g77eb329
 	pkgrel = 1
 	url = https://github.com/akamai/akr
 	arch = x86_64
