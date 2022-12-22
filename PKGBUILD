@@ -2,33 +2,31 @@
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
 
 pkgname=perl-test-file-contents
-pkgver=0.23
-pkgrel=2
+pkgver=0.242
+pkgrel=1
 pkgdesc="Test routines for examining the contents of files"
 arch=('any')
 url="https://metacpan.org/release/Test-File-Contents"
 license=('PerlArtistic')
 depends=('perl' 'perl-text-diff')
-makedepends=('perl-module-build' 'perl-test-pod' 'perl-test-pod-coverage')
-optdepends=('perl-test-pod' 'perl-test-pod-coverage')
 source=("https://www.cpan.org/modules/by-module/Test/Test-File-Contents-${pkgver}.tar.gz")
-sha512sums=('8fe830e755660b32f79a82b84b55702a6dd2bd62136c456325340646fe11e82b5603fb3063fcbad393edaf68cabf84da79103be5ef4a5cb6de84ad8463de46db')
+sha512sums=('fe790800196343a5d14de12a81f95dc151bc2068401e2302a5916095d1b227d95a2e8a3008f6abc257f4120dd0ae933bd2fb2a8ce651559958ef38705c94b8d4')
 
 build() {
   cd "${srcdir}/Test-File-Contents-${pkgver}"
 
-  perl Build.PL create_packlist=0
-  ./Build
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
   cd "${srcdir}/Test-File-Contents-${pkgver}"
 
-  ./Build test
+  make test
 }
 
 package() {
   cd "${srcdir}/Test-File-Contents-${pkgver}"
 
-  ./Build install --installdirs=vendor --destdir="${pkgdir}"
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }

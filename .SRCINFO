@@ -1,18 +1,13 @@
 pkgbase = perl-test-file-contents
 	pkgdesc = Test routines for examining the contents of files
-	pkgver = 0.23
-	pkgrel = 2
+	pkgver = 0.242
+	pkgrel = 1
 	url = https://metacpan.org/release/Test-File-Contents
 	arch = any
 	license = PerlArtistic
-	makedepends = perl-module-build
-	makedepends = perl-test-pod
-	makedepends = perl-test-pod-coverage
 	depends = perl
 	depends = perl-text-diff
-	optdepends = perl-test-pod
-	optdepends = perl-test-pod-coverage
-	source = https://www.cpan.org/modules/by-module/Test/Test-File-Contents-0.23.tar.gz
-	sha512sums = 8fe830e755660b32f79a82b84b55702a6dd2bd62136c456325340646fe11e82b5603fb3063fcbad393edaf68cabf84da79103be5ef4a5cb6de84ad8463de46db
+	source = https://www.cpan.org/modules/by-module/Test/Test-File-Contents-0.242.tar.gz
+	sha512sums = fe790800196343a5d14de12a81f95dc151bc2068401e2302a5916095d1b227d95a2e8a3008f6abc257f4120dd0ae933bd2fb2a8ce651559958ef38705c94b8d4
 
 pkgname = perl-test-file-contents
