@@ -1,28 +1,28 @@
-# Maintainer: Tristan Rice <rice@fn.lc>
-# Maintainer: Dan Buch <dan@meatballhat.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Tristan Rice <rice@fn.lc>
+# Contributor: Dan Buch <dan@meatballhat.com>
+
 pkgname=gimme-git
-pkgver=1.7.1
+_pkg="${pkgname%-git}"
+pkgver=1.7.1.r0.gb4585b0
 pkgrel=1
-pkgdesc="gimme is a shell script that knows how to install go. Fancy!"
+pkgdesc="Shell script for installing Go"
 arch=('any')
 url="https://github.com/urfave/gimme"
 license=('MIT')
-depends=()
+depends=('bash')
 makedepends=('git')
-backup=()
-source=("$pkgname"::'git+https://github.com/urfave/gimme.git')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  local desc
-  desc="$(git describe --always --dirty --tags)"
-  echo "${desc##v}"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-   cd "$srcdir/$pkgname"
-   install -D -m644 "gimme" "${pkgdir}/usr/bin/gimme"
-   chmod +x "${pkgdir}/usr/bin/gimme"
-   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_pkg"
+	install -Dv "$_pkg" -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
