@@ -1,7 +1,7 @@
 pkgbase = cryptopro-csp-k1
 	pkgdesc = CryptoPro CSP 5.0
-	pkgver = 5.0.12500
-	pkgrel = 2
+	pkgver = 5.0.12600
+	pkgrel = 1
 	url = https://cryptopro.ru/products/cryptopro-csp
 	install = cryptopro-csp-k1.install
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = cryptopro-csp-k1
 	depends = acsccid
 	options = !strip
 	source = linux-amd64.tgz
-	sha256sums = 19af8fb817ff62b550225c780253a38f0a9330754e3265c1ab34ff0594129161
+	sha256sums = 42363b8a6915014d238eebbf0e5681b2b1ed6bd7f7a3231994648021758644b3
 
 pkgname = cryptopro-csp-k1

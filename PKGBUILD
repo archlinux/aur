@@ -10,7 +10,7 @@
 # AUR не выполняет оба этих пункта. Поэтому перед выполнением makepkg
 # необходимо скачивать СКЗИ самостоятельно с сайта производителя. Ссылка:
 #
-# https://cryptopro.ru/sites/default/files/private/csp/50/12500/linux-amd64.tgz
+# https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
 #
 # Данный PKGBUILD старается следовать последней не-сертифицированной версии CSP (не RC).
 #
@@ -20,15 +20,15 @@
 # accessing it requires logging in. Please download the archive manually
 # and place alongside the PKGBUILD before building. Link:
 #
-# https://cryptopro.ru/sites/default/files/private/csp/50/12500/linux-amd64.tgz
+# https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
 #
 # This PKGBUILD tracks the latest not-certified version of CSP (not RC).
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.12500
-pkgrel=2
+pkgver=5.0.12600
+pkgrel=1
 _pkgver_patch="6"
-_cades_version="2.0.14589"
+_cades_version="2.0.14660"
 _pkgver="$pkgver-$_pkgver_patch"
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
@@ -52,9 +52,9 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12500/linux-amd64.tgz
+    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
 )
-sha256sums=('19af8fb817ff62b550225c780253a38f0a9330754e3265c1ab34ff0594129161')
+sha256sums=('42363b8a6915014d238eebbf0e5681b2b1ed6bd7f7a3231994648021758644b3')
 install=cryptopro-csp-k1.install
 options=(!strip)
 
