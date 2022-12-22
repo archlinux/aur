@@ -1,7 +1,7 @@
 # Maintainer: sem.z <sem.z@protonmail.com>
 
 pkgname=wine-wl-git
-pkgver=8.0.rc1.g3e7fae9bb0b
+pkgver=8.0.rc1.g622bd916a7f
 pkgrel=1
 
 source=(git+https://gitlab.collabora.com/alf/wine.git/#branch=wayland
@@ -14,7 +14,7 @@ sha512sums=('SKIP'
 pkgdesc="A compatibility layer for running Windows programs (wayland version from gitlab.collabora.com/alf/wine/ wayland branch)"
 url="http://www.winehq.com"
 arch=(x86_64)
-options=(staticlibs)
+options=('staticlibs' '!lto')
 license=(LGPL)
 install=wine.install
 
