@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2021
 	pkgdesc = Clear Linux lts2021
-	pkgver = 5.15.82
+	pkgver = 5.15.85
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2021
 	arch = x86_64
@@ -14,14 +14,14 @@ pkgbase = linux-clear-lts2021
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.82.xz
-	source = linux-clear-lts2021::git+https://github.com/clearlinux-pkgs/linux-lts2021.git#tag=5.15.81-24
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.85.xz
+	source = linux-clear-lts2021::git+https://github.com/clearlinux-pkgs/linux-lts2021.git#tag=5.15.84-27
 	source = more-uarches-20220315.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20220315.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8
 	sha256sums = SKIP
-	sha256sums = ffc2062bea54380d46e9b3f26650220e8b3ec24cc2f8208ec47256be2aa7da12
+	sha256sums = bcf81892e467380e79f54b7856cbcf9d0de5dc33ac32570e788b980d7027620c
 	sha256sums = SKIP
 	sha256sums = 5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c
 
