@@ -1,7 +1,7 @@
 # Maintainer: Omeed Safi <aur@safi.ms>
 _pkgname=akr
 pkgname="${_pkgname}-bin"
-pkgver=1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Akamai Krypton CLI and SSH Agent"
 arch=("x86_64")
@@ -9,8 +9,8 @@ url="https://github.com/akamai/akr"
 license=("custom:Akamai")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("https://akamai.github.io/akr-pkg/debian/akr_0.1.0_amd64.deb")
-sha256sums=("2177f18581781088c16e0d1ad18fbec8703b9662961bdeeb29f705d58d12e211")
+source=("https://github.com/akamai/akr-pkg/raw/05e660f09d3445daa59f6fcafc10ebb55edb471d/ubuntu/akr_1.1.1_amd64.deb")
+sha256sums=("4f787a744feeba3bee1c3d9991a375ce8fe86bf0abe7805f5abf84864e79a5c8")
 
 package() {
     tar xf data.tar.xz -C "${srcdir}"
