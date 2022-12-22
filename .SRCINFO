@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2022.3
+	pkgver = 2022.3.1
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = intellij-idea-community-edition-jre
 	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2022.3.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2022.3.1.tar.gz
 	source = jetbrains-idea-ce.desktop
-	sha256sums = a3f53de8293b55739d916868d732bde521e33e59a5181e758d6f1691d479da9e
+	sha256sums = 4c3514642ce6c86e5343cc29b01c06ddc9c55f134bcb6650de5d7d36205799e8
 	sha256sums = 91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b
 
 pkgname = intellij-idea-community-edition-jre
