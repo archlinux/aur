@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=picoSYNTH
+Comment=picoSYNTH is a playful tool where you by connecting various pieces of equipment to each other can create anything from short loops to chippy beats.
+Path=/opt/picosynth
+Exec=/opt/picosynth/picosynth
+Icon=picosynth
+Terminal=false
+Categories=Game;
