@@ -1,6 +1,6 @@
 pkgbase = perl-xs-parse-keyword
 	pkgdesc = XS functions to assist in parsing keyword syntax
-	pkgver = 0.23
+	pkgver = 0.30
 	pkgrel = 1
 	url = https://metacpan.org/dist/XS-Parse-Keyword
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = perl-xs-parse-keyword
 	makedepends = perl-module-build
 	makedepends = perl-extutils-cchecker
 	depends = perl
-	source = https://www.cpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-0.23.tar.gz
-	sha512sums = 58edd9990a9b187bb94a6b33cd30ee16961a8140b6c2c836ba8f7883d04f9bf5fe350b471a88c8f7facd4eadcd072f6440d075dfd8736e55cd8b37caf2182557
+	source = https://www.cpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-0.30.tar.gz
+	sha512sums = 932e86ac3da9685ebf90a98e2d0909b32fdf994a6b84ff64cf3bbfd83572990b5193385fc22f1f4e1267b18a61ac768894f6aac1aea4f7510d98e1d332bed171
 
 pkgname = perl-xs-parse-keyword

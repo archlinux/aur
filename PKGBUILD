@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=perl-xs-parse-keyword
-pkgver=0.23
+pkgver=0.30
 pkgrel=1
 pkgdesc="XS functions to assist in parsing keyword syntax"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('perl-module-build' 'perl-extutils-cchecker')
 checkdepends=('perl-test-pod')
 source=("https://www.cpan.org/authors/id/P/PE/PEVANS/XS-Parse-Keyword-${pkgver}.tar.gz")
-sha512sums=('58edd9990a9b187bb94a6b33cd30ee16961a8140b6c2c836ba8f7883d04f9bf5fe350b471a88c8f7facd4eadcd072f6440d075dfd8736e55cd8b37caf2182557')
+sha512sums=('932e86ac3da9685ebf90a98e2d0909b32fdf994a6b84ff64cf3bbfd83572990b5193385fc22f1f4e1267b18a61ac768894f6aac1aea4f7510d98e1d332bed171')
 
 build() {
   cd "${srcdir}/XS-Parse-Keyword-${pkgver}"
