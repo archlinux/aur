@@ -1,45 +1,64 @@
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
-# Contributor: SpepS <dreamspepser at yahoo dot it>
-# Contributor: Juergen Hoetzel <juergen@archlinux.org>
+# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# -*- sh -*-
 
-pkgname=jed-git
-_pkgname=${pkgname/-git/}
-pkgver=0.99.20.135
-_pkgver=0.99.20-135
+pkgname=('jed-git')
+_pkgname="${pkgname/-git/}"
+pkgver=0.99.20.r172.g726ef21
 pkgrel=1
-pkgdesc="A freely available text editor for Unix and others OS - Latest development version"
-arch=('i686' 'x86_64')
-url="http://www.jedsoft.org/snapshots/"
-license=('GPL')
-provides=('jed')
-conflicts=('jed')
-depends=('gpm' 'slang' 'libxft')
-makedepends=('libxext' 'libxt')
-options=('!makeflags')
-source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz" 
-'jed-git.install')
-sha256sums=('07a6822bece2ead7c2b234a8bb4f95576eef5e6c41ea9f0710b033a320dd2283'
-            '9728389557f10ef35aedaf827f218a87dbe529c72bda478d0426624fa85aec4f')
+pkgdesc='Powerful editor designed for use by programmers (latest development version)'
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url='https://www.jedsoft.org/jed/'
+source=(
+  'git://git.jedsoft.org/git/jed.git'
+  "$pkgname.install"
+)
 install="$pkgname.install"
+license=('GPL')
+provides=('jed' 'xjed' 'rgrep')
+conflicts=('jed' 'xjed' 'rgrep')
+options=('lto')
+depends=('gpm' 'slang' 'libxft')
+makedepends=('git' 'libxext' 'libxt')
+
+prepare() {
+  cd "$srcdir/$_pkgname" || exit 1
+
+  sed \
+    -e "s|\(^all.*\)|\1 xjed rgrep getmail|" \
+    -e "s|..DEST.*doc|$pkgdir/usr/share/doc/$pkgname|g" \
+    -i src/Makefile.in
+}
+
+pkgver() {
+  cd "$srcdir/$_pkgname" || exit 1
+
+  _version=$(
+    awk '$2 == "JED_VERSION_STR" {print $3}' src/version.h \
+    | sed -e 's/pre//;s/-/.r/;s/"//g'
+  )
+  _commit=$(git log -n 1 --pretty=format:'g%h')
+
+  printf '%s.%s\n' "$_version" "$_commit"
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-pre${_pkgver}"
+  cd "$srcdir/$_pkgname" || exit 1
 
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
-  sed \
-	-e "s|\(^all.*\)|\1 xjed rgrep|" \
-	-e "s|..DEST.*doc|${pkgdir}/usr/share/doc/${pkgname}|g" \
-	-i src/Makefile
-
   make
+  make xjed
+  make getmail
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-pre${_pkgver}"
+  cd "$srcdir/$_pkgname" || exit 1
 
   make DESTDIR="${pkgdir}" install
 
-  # Install rgrep
-  install -Dm755 src/objs/rgrep "$pkgdir/usr/bin"
+  install -Dm0755 'src/objs/rgrep' "$pkgdir/usr/bin/rgrep"
 }
+
+sha256sums=('SKIP' 'SKIP')
+
+# eof
