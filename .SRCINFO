@@ -1,6 +1,6 @@
 pkgbase = altlinux-git
 	pkgdesc = GUI for AltServer-Linux
-	pkgver = v0.4.2.1.r5.g1508e66
+	pkgver = v0.4.2.1
 	pkgrel = 2
 	url = https://github.com/i-love-altlinux/AltLinux
 	arch = x86_64

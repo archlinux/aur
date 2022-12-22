@@ -3,7 +3,7 @@
 pkgname=altlinux-git
 _spkgname=AltLinux
 _lpkgname=altlinux
-pkgver=v0.4.2.1.r5.g1508e66
+pkgver=v0.4.2.1
 pkgrel=2
 pkgdesc="GUI for AltServer-Linux"
 arch=('x86_64')
