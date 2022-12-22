@@ -1,6 +1,6 @@
 pkgbase = dprint-bin
 	pkgdesc = Pluggable and configurable code formatting platform
-	pkgver = 0.34.0
+	pkgver = 0.34.1
 	pkgrel = 1
 	url = https://github.com/dprint/dprint
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dprint-bin
 	conflicts = dprint
 	source = LICENSE
 	sha256sums = 43f8cfbeca17eccd83fc98f27d211073eaee5574fc3162f345acc196d6190ce7
-	source_x86_64 = dprint-bin-0.34.0-x86_64.zip::https://github.com/dprint/dprint/releases/download/0.34.0/dprint-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 9bf233635ed8f0871fa7285ab40ea78c9216650073ad25ffec097b57738da268
-	source_aarch64 = dprint-bin-0.34.0-aarch64.zip::https://github.com/dprint/dprint/releases/download/0.34.0/dprint-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = ef75ba1e02064a1f22184aab1888d0040e795e996c27c5339694e45cbad0500e
+	source_x86_64 = dprint-bin-0.34.1-x86_64.zip::https://github.com/dprint/dprint/releases/download/0.34.1/dprint-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 43dd4bab71f3a70738670ef51f1e54c84b89405d9dfe5bec6ae5199ca20c93fe
+	source_aarch64 = dprint-bin-0.34.1-aarch64.zip::https://github.com/dprint/dprint/releases/download/0.34.1/dprint-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 105c982071ae43c1e207231cd1516f714d29efd79d050f4415e3707d3baecd54
 
 pkgname = dprint-bin
