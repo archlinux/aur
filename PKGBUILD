@@ -2,9 +2,9 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=v0.4.0.r105.g56e633c7f
+pkgver=v0.5.0.rc.1.r36.gdb2801a8c
 pkgrel=1
-pkgdesc="A 2-D space trading and mercenary game. Development branch."
+pkgdesc="A 2-D space trading and mercenary game forked from the Naev project. Development branch."
 arch=('x86_64')
 url="https://naikari.github.io/"
 license=('GPL3')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	meson build --prefix=/usr
+	meson build --buildtype=release --prefix=/usr
 	meson compile -C build
 }
 
