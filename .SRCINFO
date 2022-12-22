@@ -1,0 +1,14 @@
+pkgbase = noseyparker-git
+	pkgdesc = find secrets and sensitive information in textual data and Git history
+	pkgver = r17.9438ab2
+	pkgrel = 1
+	url = https://github.com/praetorian-inc/noseyparker
+	arch = any
+	license = Apache-2
+	makedepends = git
+	makedepends = cargo
+	depends = hyperscan
+	source = noseyparker::git+https://github.com/praetorian-inc/noseyparker.git
+	sha256sums = SKIP
+
+pkgname = noseyparker-git
