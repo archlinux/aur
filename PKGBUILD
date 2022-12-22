@@ -10,7 +10,7 @@ license=('OFL')
 depends=('noto-fonts-config-files')
 makedepends=('git' 'python' 'python-pip' 'python-cairocffi')
 conflicts=(noto-fonts{,-extra,} ttf-croscore)
-provides=(noto-fonts-{,-extra,})
+provides=(noto-fonts{,-extra,})
 source=("git+https://github.com/jopejoe1-aur/noto-fonts" "activate")
 md5sums=('SKIP' '3f4a8c4eeb43639a1d910a6d462ffd0d')
 
