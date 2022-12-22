@@ -18,13 +18,17 @@ while read -r path; do
 		kernel_images+=("/$path")
 		;;
 	*)
-		kernel_images+=(/usr/lib/modules/*/vmlinuz)
+		kernel_images=(/usr/lib/modules/*/vmlinuz)
 		break
 		;;
 	esac
 done
 
 for kernel_image in "${kernel_images[@]}"; do
+	# skip kernels not owned by pacman
+	if ! pacman -Qqo "$kernel_image" 1>/dev/null 2>/dev/null; then
+		continue
+	fi
 	echo +kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
 	kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
 done
