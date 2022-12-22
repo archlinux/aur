@@ -7,7 +7,7 @@
 _pkgname=rune
 pkgname=rune-git
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='faster, safer, and more productive systems programming language (Unfinished)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('Apache')
 sha256sums=('SKIP' 'SKIP')
 groups=()
 depends=()
-makedepends=('git' 'gmp' 'clang' 'datadraw')
+makedepends=('git' 'gmp' 'clang' 'datadraw-git')
 checkdepends=()
 optdepends=()
 provides=()
