@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Scalingo cli scalingo.com"
 arch=("x86_64" "aarch64")
 license=("GPL")
-url="https://github.com/BtbN/FFmpeg-Builds"
+url="https://github.com/Scalingo/cli"
 provides=("scalingo")
 conflicts=("scalingo")
 
