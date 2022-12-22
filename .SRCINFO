@@ -1,16 +1,16 @@
 pkgbase = rune-git
 	pkgdesc = faster, safer, and more productive systems programming language (Unfinished)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/rune
 	arch = x86_64
-	license = MIT
+	license = Apache
 	makedepends = git
 	makedepends = gmp
 	makedepends = clang
 	makedepends = datadraw
-	source = /rune::git+https://github.com/google/rune.git
-	source = /CTTK::git+https://github.com/pornin/CTTK.git
+	source = git+https://github.com/google/rune.git
+	source = git+https://github.com/pornin/CTTK.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 

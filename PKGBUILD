@@ -7,12 +7,12 @@
 _pkgname=rune
 pkgname=rune-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='faster, safer, and more productive systems programming language (Unfinished)'
 arch=('x86_64')
 url='https://github.com/google/rune'
-license=('MIT')
+license=('Apache')
 sha256sums=('SKIP' 'SKIP')
 groups=()
 depends=()
@@ -26,7 +26,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${srcdir}/$_pkgname::git+https://github.com/google/rune.git" "${srcdir}/CTTK::git+https://github.com/pornin/CTTK.git")
+source=("git+https://github.com/google/rune.git" "git+https://github.com/pornin/CTTK.git")
 noextract=()
 validpgpkeys=()
 
