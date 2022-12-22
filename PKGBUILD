@@ -3,7 +3,7 @@
 # Contributor: Jordan Klassen <forivall@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-bin"
-pkgver='0.196.2'
+pkgver='0.196.3'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-bash-completion::https://github.com/facebook/$_pkgname/raw/v$pkgver/resources/shell/bash-completion"
 	"$pkgname-$pkgver-$pkgrel-LICENSE::https://github.com/facebook/$_pkgname/raw/v$pkgver/LICENSE"
 )
-sha512sums=('33637a607f4fb1b0141f737810ffe1f471ad2b690d8ddd89a9f96aa747c8d6671fc90697c3fd8c067f05c5f7c7e387a5b8e986389fa9dfea2321f64a72a826d2'
+sha512sums=('66fec17144bb85d4509d36214535feb85ee2f12c4e2a429c3f293d3ae166095b4e3a7a7e2ae519e1697a6bc7e990a026e332fd639394419727981121c1fbd161'
             '50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a'
             '3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80')
 
