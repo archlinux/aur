@@ -1,6 +1,6 @@
 function post_install () {
     echo "This is a development snapshot, so it uses it's own config/data directory"
-    echo "Use MEKHQ_CONF_NAME to change the directory read in ~/.config at startup. The default is 'mekhq-0.48.9'"
+    echo "Use MEKHQ_CONF_NAME to change the directory read in ~/.config at startup. The default is 'mekhq-0.48.11'"
 }
 
 function post_upgrade () {

@@ -2,7 +2,7 @@
 
 export script_name="${0##*/}"
 
-conf_name=mekhq-0.49.10
+conf_name=mekhq-0.49.11
 if [[ -n "$MEKHQ_CONF_NAME" ]]
 then
     conf_name="$MEKHQ_CONF_NAME"
