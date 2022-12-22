@@ -1,7 +1,7 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
 	pkgver = 2.51.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT

@@ -4,20 +4,17 @@
 # For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
-# I updated to v2.51.0 but LedgerHQ reverted release and deleted tag.
-# You should manually set pkgver=2.50.1 and set _gitrev=c5aba7d153e07729c478b159a895f3bc51d89e1d, can check git hash with command: git rev-parse @ledgerhq/live-desktop@2.50.1
-
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.51.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
 makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
-_gitrev=e0e5bb6ac602e121d3b02494323ddbe680e13bf7
+_gitrev=3f183d8e16bb8259e25a3462c2faf9a2eabd23c2
 _gitdir=${pkgname}-git
 source=("${_gitdir}::git+${url}.git#tag=@ledgerhq/live-desktop@${pkgver}")
 sha512sums=('SKIP')
