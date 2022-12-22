@@ -29,5 +29,6 @@ build() {
 package() {
 	cd "$_pkg"
 	install -Dv "$_pkg" -t "$pkgdir/usr/bin/"
+	## upstream has hard-coded this path; do not change
 	install -Dvm644 config.ini -t "$pkgdir/usr/share/doc/$_pkg/"
 }
