@@ -3,18 +3,18 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq-new
 _pkgname=tencent-qq
-pkgver=2.0.1_429
-pkgrel=7
+pkgver=2.0.3_543
+pkgrel=1
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/4691a571/QQ-v2.0.1-429_x64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/0186a650/QQ-v2.0.1-453_arm64.deb")
-sha512sums_x86_64=('6e855e4a198d8d4cbc0a4ca1625a8d99b7673c9ce624148a8cfaa6db73c17306b71de59013cf44e5c57b241a7523ef17a87f196cace54301c65f30cf6962736c')
-sha512sums_aarch64=('0451ad1cbb05f38b7f3334509afaf856288fae9022659bf18d0c2dfd71b00b7dea8f32aab6a670e3e861b5f518b1062c43f933096a2551dd2fdbed1b176a0bd4')
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/50eed662/QQ-v${pkgver//_/-}_x64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/50eed662/QQ-v${pkgver//_/-}_arm64.deb")
+sha512sums_x86_64=('0733ac3a85f4b14e2d1163439e0fe0bf41993339fb40ae32ba65c0c754f5c24b0709d9bdbbdfb97cfbef9ef210a96a66e27617be07d44c623880b0a4fce8e7eb')
+sha512sums_aarch64=('7d949fc87b6f360a206e3da5277cd91f5c61c0df89158bfcaaeac8fc84af4c7c5da165d48d1537c3bc88ea8b27ccd722fa5e67de71ad76115ad09c6928bf82cf')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
