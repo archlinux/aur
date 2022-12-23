@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gdb
 	pkgdesc = The GNU Debugger (mips64-ultra-elf)
-	pkgver = 12.1_r170.c2bd862
+	pkgver = 12.1_r171.c378110
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb/
 	arch = x86_64
