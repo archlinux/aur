@@ -1,6 +1,6 @@
 pkgbase = group-service
 	pkgdesc = Borrowing DBUS services to manage user groups
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/zhuyaliang/group-service
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = group-service
 	makedepends = gobject-introspection
 	depends = mate-polkit
 	options = !emptydirs
-	source = https://github.com/zhuyaliang/group-service/archive/1.3.0.tar.gz
-	sha256sums = 4ae8be84b90ebf350f24a2bddfa0ac2a167c42304ba0bae4260ad516066157b1
+	source = https://github.com/zhuyaliang/group-service/archive/1.4.0.tar.gz
+	sha256sums = 92bd496e8fcc2e891fa2e871b35575198af72838717bc07221678461ea92b469
 
 pkgname = group-service
-
