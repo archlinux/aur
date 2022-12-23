@@ -1,6 +1,6 @@
 # Maintainer: Ray Donnelly <mingwandroid@gmail.com>
 
-pkgname=pacman-mirrors
+pkgname=msys2-pacman-mirrors
 pkgver=20221016
 pkgrel=1
 pkgdesc="MSYS2 mirror list for use by pacman"
