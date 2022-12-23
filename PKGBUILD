@@ -3,7 +3,7 @@
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=252.r60865.9df82722f6
+pkgver=252.r61711.71eaa9291d
 pkgrel=1
 pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
@@ -37,14 +37,14 @@ build() {
     # We use these public name services, ordered by their
     # privacy policy (hopefully):
     #  * Cloudflare (https://1.1.1.1/)
-    #  * Quad9 without filtering (https://www.quad9.net/)
+    #  * Quad9 (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1#cloudflare-dns.com
-    9.9.9.10#dns.quad9.net
-    8.8.8.8#dns.google
-    2606:4700:4700::1111#cloudflare-dns.com
-    2620:fe::10#dns.quad9.net
-    2001:4860:4860::8888#dns.google
+    '1.1.1.1#cloudflare-dns.com'
+    '9.9.9.9#dns.quad9.net'
+    '8.8.8.8#dns.google'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    '2620:fe::9#dns.quad9.net'
+    '2001:4860:4860::8888#dns.google'
   )
  
   local _meson_options=(
@@ -78,6 +78,7 @@ build() {
     -Dresolve=true
     -Defi=false
     -Dtpm=false
+    -Dtpm2=false
     -Denvironment-d=false
     -Dbinfmt=false
     -Drepart=false
@@ -127,8 +128,6 @@ build() {
     -Drpmmacrosdir=no
     -Dsysvinit-path=
     -Dsysvrcnd-path=
-
-    -Dtests=false
   )
 
   arch-meson "$_pkgbasename" build "${_meson_options[@]}"
@@ -144,5 +143,5 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   rm -rf "${pkgdir}"/{etc,var}
-  rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
+  rm -rf "${pkgdir}"/usr/{bin,include,lib,lib32/systemd,share}
 }
