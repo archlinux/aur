@@ -2,7 +2,7 @@
 
 _libname='libgnuisance'
 pkgname="${_libname}-git"
-pkgver='r1.5e5b75b'
+pkgver='r2.05fb082'
 pkgrel=1
 pkgdesc='GTK New User Interfaces'
 arch=('i686' 'x86_64')

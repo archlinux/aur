@@ -1,6 +1,6 @@
 pkgbase = libgnuisance-git
 	pkgdesc = GTK New User Interfaces
-	pkgver = r1.5e5b75b
+	pkgver = r2.05fb082
 	pkgrel = 1
 	url = https://madmurphy.github.io/libgnuisance
 	arch = i686
