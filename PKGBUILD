@@ -4,12 +4,12 @@
 
 pkgname=hurrican-git
 pkgver=1.0.9.3.r318.g2a92579
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware jump and shoot game based on the Turrican game series (development version)"
 arch=('i686' 'x86_64')
 url="http://hurrican.sourceforge.net"
 license=('custom: MIT')
-depends=('sdl_image' 'sdl_mixer' 'libmodplug' 'libgl' 'libepoxy')
+depends=('sdl2_image' 'sdl2_mixer' 'libepoxy')
 makedepends=('git' 'mesa' 'cmake')
 conflicts=('hurrican')
 source=(hurrican::"git+https://github.com/thrimbor/hurrican.git"
