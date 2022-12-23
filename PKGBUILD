@@ -3,7 +3,7 @@ _target=mips64-ultra-elf
 pkgname=${_target}-gcc
 _gccver=12.2.0
 _islver=0.24
-pkgver=12.2.0_r170.c2bd862
+pkgver=12.2.0_r171.c378110
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -16,11 +16,11 @@ provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 options=(!emptydirs)
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+        "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gcc11-Wno-format-security.patch")
 sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
-            '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
+            'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
             'SKIP'
             'e388ee3f6871034ac021b0711f58f278c97eb1e749b466f896ae3dd35b165219')
 
