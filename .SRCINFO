@@ -1,6 +1,6 @@
 pkgbase = bitrix24
 	pkgdesc = Official Bitrix24 client for Linux.
-	pkgver = 14.0.26
+	pkgver = 14.2.12.71
 	pkgrel = 1
 	url = https://www.bitrix24.com/applications.php
 	arch = x86_64
