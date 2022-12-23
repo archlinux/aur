@@ -17,8 +17,7 @@ NB: If you come from another packaging of jed you may have to
     *.dfa files with e.g.:
 
       \$ sudo pacman \\
-          --overwrite '/usr/share/jed/lib/*.slc' \\
-	  --overwrite '/usr/share/jed/lib/*.dfa' \\
+          --overwrite '*.slc' --overwrite '*.dfa' \\
 	    jed-git-${_pkgver}-*.pkg.tar.zst
 
 Please see pacman(8) for details.
