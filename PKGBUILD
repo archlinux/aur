@@ -21,8 +21,9 @@ optdepends=(
 conflicts=('com.qq.weixin.dcs')
 replaces=('com.qq.weixin.dcs')
 # install=wechat.install
-_mirror="https://d.store.deepinos.org.cn/"						# main server
-#_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"	# recommended mirror, but sometimes outdated
+#_mirror="https://d.store.deepinos.org.cn/"						# main server, not recommended to use
+#_mirror="https://mirrors.sdu.edu.cn/spark-store-repository"	# SDU mirror, sometimes outdated
+_mirror="https://zunyun01.store.deepinos.org.cn/"
 source=("${_mirror}/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 b2sums=('99dee7422a11f0bddb986aaaf0c385af0b84fb8847f1d90965f4c73006f42b44c7937bc37c6871bb93c330d0069754aebebe8c3f9a9d8c42e4a0989cf2cee6ae')
 
