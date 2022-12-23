@@ -1,35 +1,29 @@
-diff -ruN SuiteSparse-5.10.1.orig/Mongoose/CMakeLists.txt SuiteSparse-5.10.1/Mongoose/CMakeLists.txt
---- SuiteSparse-5.10.1.orig/Mongoose/CMakeLists.txt	2021-05-18 17:31:16.000000000 +0430
-+++ SuiteSparse-5.10.1/Mongoose/CMakeLists.txt	2021-10-15 13:18:15.322991534 +0330
-@@ -328,7 +328,7 @@
+diff -ruN SuiteSparse-6.0.2.orig/Mongoose/CMakeLists.txt SuiteSparse-6.0.2/Mongoose/CMakeLists.txt
+--- SuiteSparse-6.0.2.orig/Mongoose/CMakeLists.txt	2022-12-12 06:02:33.000000000 +0330
++++ SuiteSparse-6.0.2/Mongoose/CMakeLists.txt	2022-12-23 21:49:55.460818342 +0330
+@@ -308,14 +308,14 @@
+ message(STATUS "CMAKE_CXX_COMPILER: " ${BoldBlue} ${CMAKE_CXX_COMPILER_ID} ${ColourReset})
+ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+     # using Clang
+-    SET(CMAKE_CXX_FLAGS "-O3 -fwrapv")
++    SET(CMAKE_CXX_FLAGS "-m32 -O3 -fwrapv")
+     # Debug flags for Clang
+     SET(CMAKE_CXX_FLAGS_DEBUG "--coverage -g -fwrapv")
+     SET(CMAKE_C_FLAGS_DEBUG "--coverage -g")
      SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "--coverage -g")
  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
      # using GCC
 -    SET(CMAKE_CXX_FLAGS "-O3 -fwrapv")
 +    SET(CMAKE_CXX_FLAGS "-m32 -O3 -fwrapv")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-but-set-variable -Wno-unused-variable" )
      # Debug flags for GCC
      if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.6")
-         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-diff -ruN SuiteSparse-5.10.1.orig/SuiteSparse_config/SuiteSparse_config.mk SuiteSparse-5.10.1/SuiteSparse_config/SuiteSparse_config.mk
---- SuiteSparse-5.10.1.orig/SuiteSparse_config/SuiteSparse_config.mk	2021-05-18 17:31:16.000000000 +0430
-+++ SuiteSparse-5.10.1/SuiteSparse_config/SuiteSparse_config.mk	2021-10-15 13:20:25.381535826 +0330
-@@ -146,7 +146,7 @@
-         endif
-     endif
- 
--    CMAKE_OPTIONS += -DCMAKE_CXX_COMPILER=$(CXX) -DCMAKE_C_COMPILER=$(CC)
-+    CMAKE_OPTIONS += -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS=-m32 -DCMAKE_C_COMPILER=gcc -DCMAKE_C_FLAGS=-m32
- 
-     #---------------------------------------------------------------------------
-     # CFLAGS for the C/C++ compiler
-@@ -224,8 +224,8 @@
-     #---------------------------------------------------------------------------
- 
-     # CUDA is detected automatically, and used if found.  To disable CUDA,
--    # use CUDA=no
--    CUDA = auto
-+    CUDA=no
-+    # CUDA = auto
- 
-     ifneq ($(CUDA),no)
-         CUDA_PATH = $(shell which nvcc 2>/dev/null | sed "s/\/bin\/nvcc//")
+@@ -327,7 +327,7 @@
+     SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage")
+ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
+     # using Intel C++
+-    SET(CMAKE_CXX_FLAGS "-O3 -no-prec-div -xHOST -ipo -fwrapv")
++    SET(CMAKE_CXX_FLAGS "-m32 -O3 -no-prec-div -xHOST -ipo -fwrapv")
+     # Debug flags for Intel
+     SET(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -fwrapv")
+     SET(CMAKE_C_FLAGS_DEBUG "-g -O0 -Wall")
