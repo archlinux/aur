@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -22,7 +22,8 @@ makedepends=("fakeroot"
         "gettext")
 checkdepends=()
 optdepends=('xclip: command line clipboard support'
-            'xdg-utils: for opening screenshot files from gscreenshot')
+            'xdg-utils: for opening screenshot files from gscreenshot'
+            'pandoc: for generating the manpage at build')
 provides=()
 conflicts=()
 replaces=()
@@ -31,7 +32,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('8e5306a816398837727426234371179e6af324a49fd6fd270285a088adbcd11c')
+sha256sums=('e7e1ff46ff4e9b9e9a98b9927f0982aabecbbce58df240dfbe6090e3dbca057d')
 validpgpkeys=()
 
 prepare() {
