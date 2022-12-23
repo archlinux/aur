@@ -2,41 +2,38 @@
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=edbrowse-git
-pkgver=3.7.1.r56.g9aa760b
+pkgver=3.8.5.r189.g9a6c8a74
 pkgrel=1
 pkgdesc="A line-oriented editor, browser and mail client."
 arch=('i686' 'x86_64')
 url="http://edbrowse.org/"
 license=('GPL' 'openssl')
-groups=()
-depends=('duktape' 'openssl' 'pcre' 'curl>=7.17.0' 'readline' 'tidy')
+depends=('openssl' 'pcre' 'curl>=7.29.0' 'unixodbc' 'quickjs')
 makedepends=('git')
-provides=('edbrowse')
-conflicts=('edbrowse')
-replaces=()
-backup=()
-options=()
-install=
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/CMB/edbrowse")
-noextract=()
 md5sums=('SKIP')
 
+prepare() {
+	cd "$srcdir/$pkgname/src"
+	sed -i 's!quickjs-libc.h!quickjs/&!' jseng-quick.c js_hello_quick.c
+}
+
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
+	cd "$srcdir/$pkgname"
+	git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  make CFLAGS="-I/usr/include/tidy" all
+	cd "$srcdir/$pkgname"
+	QUICKJS_DIR="/usr/lib/quickjs/" make
 }
 
 package() {
-  cd "$srcdir/$pkgname/src"
-  make DESTDIR="$pkgdir" prefix=/usr install
-  install -Dm644 ../doc/man-edbrowse-debian.1 $pkgdir/usr/share/man/man1/edbrowse.1
-  mkdir -p $pkgdir/usr/share/doc/${pkgname%-*}
-  install -Dm644 ../doc/usersguide.html ../doc/sample.ebrc ../README $pkgdir/usr/share/doc/${pkgname%-*}
-  install -Dm644 ../COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
+	cd "$srcdir/$pkgname/src"
+	make DESTDIR="$pkgdir" PREFIX=/usr install
+	install -Dm644 ../doc/man-edbrowse-debian.1 $pkgdir/usr/share/man/man1/edbrowse.1
+	install -Dm644 ../doc/sample.ebrc ../README $pkgdir/usr/share/doc/${pkgname%-*}
+	install -Dm644 ../COPYING $pkgdir/usr/share/licenses/${pkgname%-*}/COPYING
 }
-
