@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.6.9_r50289.gfeda3d3727
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -62,4 +62,4 @@ package() {
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
 sha256sums=('SKIP'
-            '638758b69aeb0e145b2af29db7206453e0b6c0ee77c4c644f66bf4e6252fc285')
+            '1575d64ab07e26189c757ce5556fe5be48eab19ca9a1b6677035cda6fb8da20b')

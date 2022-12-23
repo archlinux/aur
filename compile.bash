@@ -2,9 +2,10 @@
 set -e
 
 if command -v schedtool >/dev/null 2>&1; then
-	prefix_cmd='schedtool -B -n1 -e'
+	# Set current shell and all descendents as SCHED_BATCH, see schedtool(8)
+	schedtool -B $$
+	prefix_cmd='schedtool -B -n20 -e '
 fi
-prefix_cmd="${prefix_cmd} ionice -n 1"
 
 venv() {
 	virtualenv ".venv" -p python3
