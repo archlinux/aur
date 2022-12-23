@@ -1,12 +1,12 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-cmake-shared-git
-pkgver=v1.1.0.r59.g7b73357
+pkgver=v1.1.0.r82.g3eba2e3
 pkgrel=1
 pkgdesc="Additional macros and functions for CMake"
 arch=('any')
 url='https://liri.io'
-license=('BSD')
+license=('GPL3')
 depends=('extra-cmake-modules')
 makedepends=('git')
 conflicts=('liri-cmake-shared')
@@ -43,7 +43,4 @@ build() {
 package() {
 	cd build
 	make DESTDIR="$pkgdir" install
-
-	mkdir -p $pkgdir/usr/share/licenses/${pkgname}
-	cp ../${_gitname}/LICENSE.BSD $pkgdir/usr/share/licenses/${pkgname}
 }
