@@ -12,7 +12,7 @@ provides=(mopac)
 replaces=(mopac7)
 conflicts=(mopac7)
 source=($pkgname-$pkgver.tar.gz::https://github.com/openmopac/mopac/archive/v$pkgver.tar.gz)
-sha256sums=4014ab3a793490247082d178187acaf8abea2b30cb1804363aa2439e709b02b3
+sha256sums=('4014ab3a793490247082d178187acaf8abea2b30cb1804363aa2439e709b02b3')
 
 build(){
     cd $pkgname-$pkgver
