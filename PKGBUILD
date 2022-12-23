@@ -24,7 +24,7 @@ build() {
 
 package() {
 	cd ${pkgname%-git}
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
 }
