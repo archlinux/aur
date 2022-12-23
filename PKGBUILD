@@ -18,7 +18,7 @@ source=("https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_"$_debpkgver"_a
         'hqplayerd.service'
         'hqplayerd_user.service'
         )
-sha256sums=('19ae843c0797e9c0aa3d54ee76bd7320b558efa33d6e5b4c92667a0f7f5c4c94'
+sha256sums=('fca65dd38b03dddcfef9906966b4997584ff549353462e46a77cbb24a46131d9'
             '9aa79c67c22924c02b2c43cacbd3fac21dd9abbd146819ce46fe2b34f0193ef0'
             '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 install=${pkgname}.install
