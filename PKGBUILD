@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino
-pkgver=2022.2.0
-pkgrel=2
+pkgver=2022.3.0
+pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -13,29 +13,27 @@ depends=('protobuf' 'numactl' 'libxml2')
 optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'ocl-icd: for GPU (clDNN) plugin'
             'libusb: for Myriad plugin'
+            'tbb: for Myriad plugin'
             'python: for Python API'
             'python-numpy: for Python API'
-            'cython: for Python API'
-            'python-py-cpuinfo: for benchmark tool'
-            'python-progress: for benchmark tool'
-            'opencv: for benchmark and cross_check tools')
+            'cython: for Python API')
 makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
-             'python' 'cython' 'shellcheck')
+             'python' 'cython' 'shellcheck' 'tbb')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
 options=('!emptydirs')
 # supported firmwares: VPU_SUPPORTED_FIRMWARES in src/plugins/intel_myriad/myriad_dependencies.cmake
-_firmware_ver=20220307_34 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
-_gnaver=03.00.00.1455.2 # GNA_VERSION in cmake/dependencies.cmake
-_tbbver=2020_20200415 # cmake/dependencies.cmake
-_tbbbind_ver=2_5_static_lin_v2 # cmake/dependencies.cmake
+_firmware_ver=20221129_35 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
+_gnaver=03.00.00.1910 # GNA_VERSION in cmake/dependencies.cmake
+#_tbbver=2020_617e9a71 # cmake/dependencies.cmake
+#_tbbbind_ver=2_5_static_lin_v2 # cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
-        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/VPU/pcie-ma2x8x/firmware_pcie-ma2x8x_${_firmware_ver}.zip"
-        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/VPU/usb-ma2x8x/firmware_usb-ma2x8x_${_firmware_ver}.zip"
-        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/unified/GNA/GNA_${_gnaver}.zip"
-        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/linux/tbb${_tbbver}_lin_strip.tgz"
-        "https://download.01.org/opencv/master/openvinotoolkit/thirdparty/linux/tbbbind_${_tbbbind_ver}.tgz"
+        "https://storage.openvinotoolkit.org/dependencies/myriad/firmware_pcie-ma2x8x_${_firmware_ver}.zip"
+        "https://storage.openvinotoolkit.org/dependencies/myriad/firmware_usb-ma2x8x_${_firmware_ver}.zip"
+        "https://storage.openvinotoolkit.org/dependencies/gna/gna_${_gnaver}.zip"
+        #"https://storage.openvinotoolkit.org/dependencies/thirdparty/linux/tbb${_tbbver}_lin_strip.tgz"
+        #"https://download.01.org/opencv/master/openvinotoolkit/thirdparty/linux/tbbbind_${_tbbbind_ver}.tgz"
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/madler/zlib.git'
@@ -54,7 +52,6 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/oneapi-src/oneDNN.git'
         'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
-        'git+https://github.com/pboettch/json-schema-validator.git'
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
@@ -62,11 +59,9 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
 noextract=("firmware_usb-ma2x8x_${_firmware_ver}.zip"
            "firmware_pcie-ma2x8x_${_firmware_ver}.zip")
 sha256sums=('SKIP'
-            'aabff3d817431792ef9e17056448979c2cdbb484ad4b0af9e68cb874ee10eef5'
-            '877c4e1616d14a94dd2764f4f32f1c1aa2180dcd64ad1823b31efdc3f56ad593'
-            'e52785d3f730fefb4e794bb7ab40c8676537ef2f7c69c5b4bb89a5d3cc0bbe60'
-            '95b2f3b0b70c7376a0c7de351a355c2c514b42c4966e77e3e34271a599501008'
-            '865e7894c58402233caf0d1b288056e0e6ab2bf7c9d00c9dc60561c484bc90f4'
+            '5667eb028290fbec92220031590ba5f87774a7b638b13178e0dcf8447a4ee8ca'
+            '1ca3566d294c8d269f3a0ad2f5699e9dbb2679a24a455b2cc343612303d867bd'
+            '894ddbc0ae3459f04513b853b0cabc32890dd4ea37228a022b6a32101bdbb7f8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -85,11 +80,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '48b6a93bb54c36f9bc87a7f326b0a634f752f34f57f90a60dccc13f92fd96a9d'
-            'cfcc5af35d7a50f83c780716f69f8a800b14bcf143f7abafd31a7a0dcb8c9ae8'
+            '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
+            'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            'f80b04310c3ba71acfbc04e4e83784ab45540659d257afc3b0924c0eef9921b7')
+            '5661837265c8e9cb1876982c7fc192ac694b7aa25448d8987c84ac545d31a4c6')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -116,21 +110,20 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
-    git -C openvino config --local submodule.thirdparty/json/nlohmann_json_schema_validator.url "${srcdir}/json-schema-validator"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     mkdir -p openvino/temp/vpu/firmware/{pcie,usb}-ma2x8x
     bsdtar -xf "firmware_pcie-ma2x8x_${_firmware_ver}.zip" -C openvino/temp/vpu/firmware/pcie-ma2x8x
     bsdtar -xf "firmware_usb-ma2x8x_${_firmware_ver}.zip"  -C openvino/temp/vpu/firmware/usb-ma2x8x
     cp -af "gna_${_gnaver}" openvino/temp
-    cp -af tbb openvino/temp
-    cp -af "tbbbind_${_tbbbind_ver/_static*/}" openvino/temp
+    #cp -af tbb openvino/temp
+    #cp -af "tbbbind_${_tbbbind_ver/_static*/}" openvino/temp
     
     printf '%s\n' "${source[1]}" > openvino/temp/vpu/firmware/pcie-ma2x8x/ie_dependency.info
     printf '%s\n' "${source[2]}" > openvino/temp/vpu/firmware/usb-ma2x8x/ie_dependency.info
     printf '%s\n' "${source[3]}" > "openvino/temp/gna_${_gnaver}/ie_dependency.info"
-    printf '%s\n' "${source[4]}" > openvino/temp/tbb/ie_dependency.info
-    printf '%s\n' "${source[5]}" > "openvino/temp/tbbbind_${_tbbbind_ver/_static*/}/ie_dependency.info"
+    #printf '%s\n' "${source[4]}" > openvino/temp/tbb/ie_dependency.info
+    #printf '%s\n' "${source[5]}" > "openvino/temp/tbbbind_${_tbbbind_ver/_static*/}/ie_dependency.info"
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
@@ -163,21 +156,4 @@ build() {
 package() {
     make -C build DESTDIR="$pkgdir" install
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
-    
-    #local _gnaver
-    #local _gnasover
-    #local _gnasover_full
-    #local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
-    #_gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
-    #_gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
-    #_gnasover_full="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
-    
-    #rm "${_gnadir}/libgna.so."{"${_gnasover}","${_gnasover_full}"}
-    #mv "${_gnadir}/libgna.so"{,."${_gnasover_full}"}
-    #ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
-    #ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
-    
-    #cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \
-    #    "${pkgdir}/opt/intel/openvino/runtime/include/gna"
-    #chmod -R a+r "${pkgdir}/opt/intel/openvino/runtime/include/gna"
 }

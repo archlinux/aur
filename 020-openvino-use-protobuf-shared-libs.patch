@@ -1,11 +1,11 @@
 --- a/thirdparty/CMakeLists.txt
 +++ b/thirdparty/CMakeLists.txt
-@@ -114,7 +114,7 @@ endif()
+@@ -248,7 +248,7 @@ endif()
  
  if(ENABLE_OV_PADDLE_FRONTEND OR ENABLE_OV_ONNX_FRONTEND OR ENABLE_OV_TF_FRONTEND)
      if(ENABLE_SYSTEM_PROTOBUF)
 -        set(Protobuf_USE_STATIC_LIBS ON)
 +        set(Protobuf_USE_STATIC_LIBS OFF)
-         if(VERBOSE_BUILD)
+         if(CMAKE_VERBOSE_MAKEFILE)
              set(Protobuf_DEBUG ON)
          endif()
