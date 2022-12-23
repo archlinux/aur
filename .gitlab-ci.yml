@@ -10,5 +10,5 @@ build:
     - passwd -d builduser
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - sudo -u builduser makepkg -s --noconfirm
-    - "bash -c 'source PKGBUILD && curl --header \"JOB-TOKEN: $CI_JOB_TOKEN\" --upload-file \"$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst\" \"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$pkgname/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst\"'"
+    - "bash -c 'source PKGBUILD && curl --header \"JOB-TOKEN: $CI_JOB_TOKEN\" --upload-file \"$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst\" \"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$pkgname/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst\"'"
   timeout: 2h
