@@ -1,0 +1,24 @@
+pkgbase = jena1330-latex-font-git
+	pkgdesc = A medieval textura as used by the main writer of the Jenaer Liederhandschrift, LaTeX font, latest Git checkout.
+	pkgver = r105.20160920.75d5b9e
+	pkgrel = 1
+	url = https://github.com/Anaphory/Jena1330
+	install = jena1330-latex-font.install
+	arch = any
+	license = OFL
+	makedepends = git
+	makedepends = fontforge
+	makedepends = perl
+	makedepends = python
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	provides = jena1330-latex-font=r105.20160920.75d5b9e
+	conflicts = jena1330-latex-font
+	source = jena1330-latex-font::git+https://github.com/Anaphory/Jena1330.git
+	source = LICENSE.OFL1.1.txt
+	source = jena1330-latex-font.install
+	sha256sums = SKIP
+	sha256sums = c9c5ffaa19f9427e2bf9ae8be6da4afb98dde3e0be07c8470410addf7afcd54d
+	sha256sums = 18bdb89666605a9c3c15b1a0a019dfcda848df7d7132ceededabbeb0a6e19b95
+
+pkgname = jena1330-latex-font-git
