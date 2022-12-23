@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-user-agent-string-switcher
+	pkgdesc = Firefox User-Agent spoofer extension that is highly configurable.
+	pkgver = 0.4.8
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/
+	arch = any
+	groups = firefox-addons
+	license = MPL-2
+	depends = firefox
+	source = firefox-extension-user-agent-string-switcher-0.4.8.xpi::https://addons.mozilla.org/firefox/downloads/file/3952467/user_agent_string_switcher-0.4.8.xpi
+	sha256sums = 723a1846f165544b82a97e69000f25ffbe9de312f0a932c1f6c35e54240a03ee
+
+pkgname = firefox-extension-user-agent-string-switcher
