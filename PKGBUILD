@@ -11,7 +11,7 @@ license=(GPL)
 url='https://www.gnu.org/software/psh/psh.html'
 backup=(etc/psh.psh{rc,_logout} etc/skel/.psh{rc,_profile,_logout})
 depends=(readline libreadline.so glibc ncurses)
-optdepends=('psh-completion: for tab completion')
+optdepends=()
 provides=('sh')
 source=("git+https://github.com/Easonqsp/psh.git"
         dot.pshrc
