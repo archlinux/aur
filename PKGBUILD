@@ -2,25 +2,67 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gtk4-telegrand
-pkgver=4.8.2
+pkgver=4.8.3
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=(LGPL)
-depends=(glib2 cairo pango harfbuzz fribidi gdk-pixbuf2 libpng libtiff libjpeg
-         libepoxy libgl libegl libxkbcommon graphene iso-codes tracker3
-         libcolord wayland libxrandr libx11 libxrender libxi libxext libxcursor
-         libxdamage libxfixes fontconfig libxinerama libcloudproviders libcups
-         gst-plugins-bad-libs librsvg dconf shared-mime-info desktop-file-utils
-         adwaita-icon-theme cantarell-fonts gtk-update-icon-cache)
+depends=(
+  adwaita-icon-theme
+  cairo
+  cantarell-fonts
+  dconf
+  desktop-file-utils
+  fontconfig
+  fribidi
+  gdk-pixbuf2
+  glib2
+  graphene
+  gst-plugins-bad-libs
+  gtk-update-icon-cache
+  harfbuzz
+  iso-codes
+  libcloudproviders
+  libcolord
+  libcups
+  libegl
+  libepoxy
+  libgl
+  libjpeg
+  libpng
+  librsvg
+  libtiff
+  libx11
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxinerama
+  libxkbcommon
+  libxrandr
+  libxrender
+  pango
+  shared-mime-info
+  tracker3
+  wayland
+)
+makedepends=(
+  git
+  gobject-introspection
+  meson
+  python-docutils
+  python-gobject
+  sassc
+  shaderc
+  wayland-protocols
+)
 optdepends=('evince: Default print preview command')
 conflicts=(gtk4)
 provides=(gtk4=$pkgver libgtk-4.so)
-makedepends=(git meson shaderc sassc gobject-introspection
-             wayland-protocols python-gobject python-docutils)
 checkdepends=(weston)
-_commit=81b842636071fd757a99deddecd99222f08b4b0c  # tags/4.8.2^0
+_commit=793831af8a224545495f0c56a184f4ee28e5cc55  # tags/4.8.3^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.hook)
@@ -50,6 +92,7 @@ build() {
     -D man-pages=true
     -D build-tests=false
     -D demos=false
+    -D tracker=enabled
   )
 
   arch-meson gtk build "${meson_options[@]}"
