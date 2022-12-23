@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('firebase-tools')
 options=('!strip')
 source=(
-    "firebase-11.19.0::https://github.com/firebase/firebase-tools/releases/download/v11.19.0/firebase-tools-linux"
+    "firebase-tools-linux-11.19.0::https://github.com/firebase/firebase-tools/releases/download/v11.19.0/firebase-tools-linux"
     "LICENSE-11.19.0::https://github.com/firebase/firebase-tools/raw/v11.19.0/LICENSE"
     )
 md5sums=(
@@ -19,7 +19,10 @@ md5sums=(
     )
 
 package() {
-    chmod +x ${srcdir}/firebase-11.19.0
+    binPath=${srcdir}/firebase-tools-linux-11.19.0
+    chmod +x ${binPath}
     install -Dm644 "${srcdir}/LICENSE-11.19.0" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm755 "${srcdir}/firebase-11.19.0" "${pkgdir}/usr/bin/firebase"
+    install -Dm755 "${binPath}" "${pkgdir}/usr/bin/firebase"
+    rm ${srcdir}/firebase-tools-linux-*
+    rm ${srcdir}/LICENSE-*
 }
