@@ -1,0 +1,20 @@
+pkgbase = directfb2-lite-git
+	pkgdesc = Lightweight Toolkit Enabler is a simple user interface library on top of DirectFB
+	pkgver = r16.1446944
+	pkgrel = 1
+	url = https://directfb2.github.io/
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = flux-git
+	depends = directfb2-git
+	source = directfb2-lite::git+https://github.com/directfb2/LiTE.git
+	sha256sums = SKIP
+
+pkgname = directfb2-lite-git
