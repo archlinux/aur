@@ -1,6 +1,6 @@
 pkgbase = r-msnbase
 	pkgdesc = Base Functions and Classes for Mass Spectrometry and Proteomics
-	pkgver = 2.24.0
+	pkgver = 2.24.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSnbase
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = r-msnbase
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-zoo
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSnbase_2.24.0.tar.gz
-	sha256sums = 9f017860ef98de36e31623660401f660cf87cf2f134531af017be96331a95799
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSnbase_2.24.2.tar.gz
+	sha256sums = 8727e255ae4f10e772935a720118f3b97d674e8d2f6f185d871e270b7320b849
 
 pkgname = r-msnbase
