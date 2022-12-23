@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 readonly _pkgname="NostalgiaForInfinity"
-declare -r _tag="f6651ec447856140abaa17ad4b605f6da6ccff83"
+declare -r _tag="f4cc32dd262c5e2a791c052c80127773c9e7fbd5"
 
 pkgname="python-nostalgiaforinfinity"
 pkgver="11.3.99"

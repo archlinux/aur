@@ -18,7 +18,7 @@ pkgbase = python-nostalgiaforinfinity
 	depends = python-rapidjson
 	depends = python-ta-lib
 	depends = python-technical
-	source = python-nostalgiaforinfinity::git+https://github.com/iterativv/NostalgiaForInfinity.git?#tag=f6651ec447856140abaa17ad4b605f6da6ccff83
+	source = python-nostalgiaforinfinity::git+https://github.com/iterativv/NostalgiaForInfinity.git?#tag=f4cc32dd262c5e2a791c052c80127773c9e7fbd5
 	source = git+https://github.com/iterativv/NostalgiaForInfinityData
 	sha512sums = SKIP
 	sha512sums = SKIP
