@@ -1,7 +1,7 @@
 pkgbase = googlekeep
 	pkgdesc = Unnofficial Google Keep desktop application
 	pkgver = 1.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/googlekeep-desktop/application
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = googlekeep
 	depends = libxss
 	depends = git
 	conflicts = googlekeep-bin
-	source = https://gitlab.com/googlekeep-desktop/application/-/archive/1.0.3-3/application-1.0.3-3.tar.bz2
+	source = https://gitlab.com/googlekeep-desktop/application/-/archive/1.0.3-4/application-1.0.3-4.tar.bz2
 	sha256sums = SKIP
 
 pkgname = googlekeep

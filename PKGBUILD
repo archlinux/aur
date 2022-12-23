@@ -1,7 +1,7 @@
 pkgname=googlekeep
 _pkgname=GoogleKeep
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('any')
 url="https://gitlab.com/googlekeep-desktop/application"
@@ -16,13 +16,7 @@ sha256sums=('SKIP')
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    cat <<EOT >> $pkgname
-    #!/bin/bash
-    cd /opt/$_pkgname &&
-    npm start
-EOT
-
-    chmod +x $pkgname
+    chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -32,7 +26,7 @@ EOT
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
