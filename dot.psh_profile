@@ -1,0 +1,5 @@
+#
+# ~/.psh_profile
+#
+
+[[ -f ~/.pshrc ]] && . ~/.pshrc
