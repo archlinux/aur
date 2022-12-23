@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-imgpaste
-pkgver=2.38.2
+pkgver=2.38.3
 pkgrel=1
 pkgdesc="Web content engine for GTK (with patches for pasting images from clipboard)"
 url="https://webkitgtk.org"
@@ -25,6 +25,7 @@ depends=(
   harfbuzz-icu
   hyphen
   icu
+  libavif
   libegl
   libgcrypt
   libgl
@@ -71,7 +72,7 @@ conflicts=(webkit2gtk)
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
         EnlargeObjectSize.patch
         PasteBoardGtk.patch)
-sha256sums=('f3eb82899651f583b4d99cacd16af784a1a7710fce9e7b6807bd6ccde909fe3e'
+sha256sums=('41f001d1ed448c6936b394a9f20e4640eebf83a7f08262df28504f7410604a5a'
             'SKIP'
             'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac'
             '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b')
@@ -92,6 +93,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCMAKE_SKIP_RPATH=ON \
+    -DUSE_AVIF=ON \
     -DUSE_SOUP2=ON \
     -DENABLE_DOCUMENTATION=ON \
     -DENABLE_MINIBROWSER=ON
