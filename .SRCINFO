@@ -1,0 +1,19 @@
+pkgbase = mopac
+    pkgdesc = Molecular Orbital PACkage
+    pkgver = 22.0.6
+    pkgrel = 1
+    arch = x86_64
+	license = LGPL
+    depends = blas
+    depends = lapack
+    makedepends = gcc-fortran
+    makedepends = cmake
+    checkdepends = python
+    checkdepends = python-numpy
+    provides = mopac
+    replaces = mopac7
+    conflicts = mopac7
+    source = https://github.com/openmopac/mopac/archive/v22.0.6.tar.gz
+    sha256sums = 4014ab3a793490247082d178187acaf8abea2b30cb1804363aa2439e709b02b3
+
+pkgname = mopac
