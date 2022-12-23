@@ -5,7 +5,7 @@ pkgbase=minizip-git
 pkgname=(minizip-git minizip-static-git)
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
 pkgver=3.0.7.r22.ga5f12ae
-pkgrel=2
+pkgrel=4
 arch=('x86_64')
 license=('zlib')
 url="https://github.com/zlib-ng/minizip-ng"
@@ -16,12 +16,12 @@ sha256sums=('SKIP')
 options=(staticlibs)
 
 pkgver() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgbase}
     git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd ${srcdir}/${pkgname}
+    cd ${srcdir}/${pkgbase}
     if [[ -d build ]]; then
       rm -rf build
     fi
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-    cd ${srcdir}/${pkgname}/build
+    cd ${srcdir}/${pkgbase}/build
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DMZ_COMPAT=ON \
@@ -60,14 +60,12 @@ build() {
     cd ../build-ng
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DMZ_PROJECT_SUFFIX="-ng" \
-        -DMZ_COMPAT=OFF \
         -DBUILD_SHARED_LIBS=ON \
         ..
     make
     cd ../build-ng-static
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DMZ_PROJECT_SUFFIX="-ng" \
-        -DMZ_COMPAT=OFF \
         -DBUILD_SHARED_LIBS=OFF \
         ..
     make
@@ -76,10 +74,11 @@ build() {
 package_minizip-git() {
     conflicts=('minizip' 'minizip-ng')
     provides=('minizip' 'minizip-ng' 'libminizip.so=3')
-    cd ${srcdir}/${pkgname}/build
+    cd ${srcdir}/${pkgbase}/build
     make DESTDIR="${pkgdir}" install
-    cd ${srcdir}/${pkgname}/build-ng
+    cd ${srcdir}/${pkgbase}/build-ng
     make DESTDIR="${pkgdir}" install
+     rm "${pkgdir}/usr/include/"{,un}"zip.h" # conflict with libzip
     install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
 package_minizip-static-git() {
