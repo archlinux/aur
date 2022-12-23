@@ -1,6 +1,6 @@
 # Maintainer: Lili1228 <aur at gramywpsl dot pl>
 pkgname=86box-roms-git
-pkgver=v3.11.r8.gea9238d
+pkgver=v3.11.r10.g4b9d29b
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator'
 arch=('any')
