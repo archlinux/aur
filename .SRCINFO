@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gcc-stage1
 	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (mips64-ultra-elf)
-	pkgver = 12.2.0_r170.c2bd862
+	pkgver = 12.2.0_r171.c378110
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcc/
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = mips64-ultra-elf-gcc-stage1
 	optdepends = mips64-ultra-elf-newlib: Standard C library optimized for embedded systems
 	options = !emptydirs
 	source = http://gcc.gnu.org/pub/gcc/releases/gcc-12.2.0/gcc-12.2.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.24.tar.xz
+	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
 	source = gcc11-Wno-format-security.patch
 	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
-	sha256sums = 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
+	sha256sums = fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0
 	sha256sums = SKIP
 	sha256sums = e388ee3f6871034ac021b0711f58f278c97eb1e749b466f896ae3dd35b165219
 
