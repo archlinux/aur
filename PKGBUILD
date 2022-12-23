@@ -18,12 +18,6 @@ build() {
     cd $pkgname-$pkgver
     cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DXCFUN_PYTHON_INTERFACE=ON
     cmake --build build -j`getconf _NPROCESSORS_ONLN`
-    # cd build
-    # cmake -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=1 \
-    #       -DXC_MAX_ORDER=3 -DXCFUN_ENABLE_TESTS=0 \
-    #       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    #       ..
-    # make
 }
 
 check(){
@@ -34,5 +28,5 @@ check(){
 package() {
     cd $pkgname-$pkgver
     cmake --install build --prefix $pkgdir/usr/
-    # make DESTDIR="$pkgdir/" install
+    mv $pkgdir/usr/share/cmake/XCFun $pkgdir/usr/share
 }
