@@ -1,7 +1,7 @@
 pkgbase = twitch
 	pkgdesc = Unofficial Twitch desktop application.
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/twitch-application/application
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = twitch
 	depends = libxss
 	depends = git
 	conflicts = twitch-bin
-	source = https://gitlab.com/twitch-application/application/-/archive/1.0.5-1/application-1.0.5-1.tar.bz2
-	sha256sums = e5b553b9615d4fad9280edcdeeae856acc41448a9cb4f380a5f8b41da7762382
+	source = https://gitlab.com/twitch-application/application/-/archive/1.0.5-2/application-1.0.5-2.tar.bz2
+	sha256sums = e33c1e31f2c0cd8e2a457c1cac028698bfeb8d181ba6b6df59ad1d42330a7ecf
 
 pkgname = twitch
