@@ -1,5 +1,5 @@
 pkgbase = pfsfuse-git
-	pkgdesc = Browse and edit PFS filesystems.
+	pkgdesc = Mount PFS filesystems with fuse.
 	pkgver = 101.05da6d0
 	pkgrel = 1
 	url = https://github.com/ps2homebrew/pfsshell
