@@ -21,9 +21,11 @@ build(){
 }
 
 check(){
+    cd $pkgname-$pkgver
     ctest --test-dir build -j`getconf _NPROCESSORS_ONLN`
 }
 
 package(){
+    cd $pkgname-$pkgver
     cmake --install build --install-prefix $pkgdir/usr/
 }
