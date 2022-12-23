@@ -1,11 +1,11 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on core/systemd by Christian Hesse <mail@eworm.de>
+# Based on testing/systemd by Christian Hesse <mail@eworm.de>
 
 _pkgbase=systemd
-pkgbase=$_pkgbase-git
+pkgbase=${_pkgbase}-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=252.r60865.9df82722f6
+pkgver=252.r61711.71eaa9291d
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -14,7 +14,8 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync')
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bpf' 'libbpf' 'clang' 'llvm')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -89,6 +90,7 @@ build() {
     -Dshared-lib-tag="${pkgver}-${pkgrel}"
     -Dmode=release
 
+    -Dbpf-framework=true
     -Dgnu-efi=true
     -Dima=false
     -Dlibidn2=true
@@ -114,10 +116,10 @@ build() {
     -Dsysvrcnd-path=
 
     -Dsbat-distro='arch'
-    -Dsbat-distro-summary='Arch Linux'
+    -Dsbat-distro-summary='Arch Linux AUR'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://archlinux.org/packages/core/x86_64/${pkgname}/"
+    -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
   )
 
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
@@ -131,7 +133,7 @@ check() {
 
 package_systemd-git() {
   pkgdesc='system and service manager'
-  pkgdesc=+' (git version)'
+  pkgdesc+=' (git version)'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
@@ -149,6 +151,7 @@ package_systemd-git() {
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
               'curl: machinectl pull-tar and pull-raw'
+              'libbpf: support BPF programs'
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
   backup=(etc/pam.d/systemd-user

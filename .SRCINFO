@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 252.r60865.9df82722f6
+	pkgver = 252.r61711.71eaa9291d
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -41,6 +41,10 @@ pkgbase = systemd-git
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
+	makedepends = bpf
+	makedepends = libbpf
+	makedepends = clang
+	makedepends = llvm
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -81,7 +85,7 @@ pkgbase = systemd-git
 	sha512sums = 825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97
 
 pkgname = systemd-git
-	pkgdesc = + (git version)
+	pkgdesc = system and service manager (git version)
 	install = systemd.install
 	license = GPL2
 	license = LGPL2.1
@@ -125,12 +129,13 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
+	optdepends = libbpf: support BPF programs
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=252.r60865.9df82722f6
-	provides = udev=252.r60865.9df82722f6
-	provides = systemd=252.r60865.9df82722f6
+	provides = systemd-tools=252.r61711.71eaa9291d
+	provides = udev=252.r61711.71eaa9291d
+	provides = systemd=252.r61711.71eaa9291d
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -168,7 +173,7 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=252.r60865.9df82722f6
+	provides = systemd-libs=252.r61711.71eaa9291d
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -179,7 +184,7 @@ pkgname = systemd-resolvconf-git
 	depends = systemd-git
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=252.r60865.9df82722f6
+	provides = systemd-resolvconf=252.r61711.71eaa9291d
 	conflicts = openresolv
 	conflicts = systemd-resolvconf
 
@@ -187,6 +192,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=252.r60865.9df82722f6
+	provides = systemd-sysvcompat=252.r61711.71eaa9291d
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
