@@ -9,7 +9,6 @@ pkgbase = psh-git
 	depends = libreadline.so
 	depends = glibc
 	depends = ncurses
-	optdepends = psh-completion: for tab completion
 	provides = sh
 	backup = etc/psh.pshrc
 	backup = etc/psh.psh_logout
