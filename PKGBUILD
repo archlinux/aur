@@ -9,13 +9,6 @@ license=(MIT Apache)
 depends=()
 makedepends=(cargo)
 checkdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=($pkgname::git+https://github.com/n0-computer/iroh.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
