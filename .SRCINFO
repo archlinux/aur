@@ -3,16 +3,12 @@ pkgbase = gsfonts-type1
 	pkgver = 20150811
 	pkgrel = 1
 	url = http://git.ghostscript.com/?p=urw-core35-fonts.git
-	install = install
 	arch = any
 	license = AGPL3
 	makedepends = git
-	depends = xorg-font-utils
-	depends = fontconfig
-	provides = gsfonts
-	conflicts = gsfonts
-	source = git://git.ghostscript.com/urw-core35-fonts.git#commit=c983ed400dc278dcf20bdff68252fad6d9db7af9
-	sha1sums = SKIP
+	provides = gsfonts-type1
+	conflicts = gsfonts-type1-git
+	source = gsfonts-type1::git+git://git.ghostscript.com/urw-core35-fonts.git#commit=c983ed400dc278dcf20bdff68252fad6d9db7af9
+	md5sums = SKIP
 
 pkgname = gsfonts-type1
-
