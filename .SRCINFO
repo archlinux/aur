@@ -1,14 +1,14 @@
 pkgbase = marksman-bin
 	pkgdesc = Markdown LSP server providing completion, cross-references, diagnostics, and more
-	pkgver = 2022_12_19
+	pkgver = 2022_12_23
 	pkgrel = 1
 	url = https://github.com/artempyanykh/marksman
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = marksman-bin-2022_12_19::https://github.com/artempyanykh/marksman/releases/download/2022-12-19/marksman-linux
+	source = marksman-bin-2022_12_23::https://github.com/artempyanykh/marksman/releases/download/2022-12-23/marksman-linux
 	source = https://raw.githubusercontent.com/artempyanykh/marksman/main/LICENSE
-	sha256sums = b559118400f174ad48c6a1aae2bebbbe2171d346c38476bbbeb5ee296465ed37
+	sha256sums = e66869f0bbaa4c3ec661ce47e3ab5ea15b9143eb599c4cc1680e7f98bdcac3fb
 	sha256sums = f48413df41ebe5a5f77f997f1f8a0cf5236f24c6878a16e0073da81642aabf04
 
 pkgname = marksman-bin
