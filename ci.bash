@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-git clean -dfX 
+#git clean -dfX 
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
@@ -9,19 +9,10 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 cd "${DIR}" || return
 
-# echo "stashing changes"
-# Stash any existing changes
-# git stash
-# git reset --hard HEAD
-# pull and generate version as per PKGBUILD
-echo "restarting clean configure..."
-makepkg --sync --nobuild --cleanbuild
-# makepkg --sync
-echo "printing new info to files"
-updpkgsums
-# makepkg -g
-makepkg --print > "${DIR}/.SRCINFO"
-#if changes, commit and push
-if git status --porcelain | grep -P '^\s*M'; then
-	git commit PKGBUILD .SRCINFO -m "Automated version bump" --no-gpg-sign && git push
+git pull
+# Weird pgrep fail with the complete binary name
+if pgrep -a do-not-directly|grep alchemy ; then
+	echo "Aborting package build because Alchemy is running"
+	exit 0
 fi
+makepkg --sync --install --noconfirm
