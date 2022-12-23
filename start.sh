@@ -7,8 +7,8 @@ QQ_APP_DIR="${CONFIG_DIR}/QQ"
 DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
 NEW_DISPLAY="${DISPLAY}"
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
-QQ_HOTUPDATE_VERSION="2.0.2-510"
-QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453")
+QQ_HOTUPDATE_VERSION="2.0.3-543"
+QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510")
 
 if [ "${DOWNLOAD_DIR}" == "${HOME}" ]; then
     DOWNLOAD_DIR="${HOME}/Downloads"
@@ -16,12 +16,16 @@ if [ "${DOWNLOAD_DIR}" == "${HOME}" ]; then
 fi
 if [ ! -e "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
 if [ ! -e "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"; fi
+rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
 
 # 处理 config.json
 if [ ! -f "${QQ_HOTUPDATE_DIR}/config.json" ]; then
     cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
 else
     for VERSION in ${QQ_PREVIOUS_VERSIONS[@]}; do
+        if [ -e "${QQ_HOTUPDATE_DIR}/${VERSION}" ]; then
+            rm -rf "${QQ_HOTUPDATE_DIR}/${VERSION}"
+        fi
         if [ ! -z "$(grep -Rn "${VERSION}" "${QQ_HOTUPDATE_DIR}/config.json")" ]; then
             cp "/opt/QQ/workarounds/config.json" "${QQ_HOTUPDATE_DIR}/config.json"
             break
@@ -37,6 +41,7 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --ro-bind /opt/QQ /opt/QQ \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
+    --ro-bind /etc/passwd /etc/passwd \
     --ro-bind /etc/resolv.conf /etc/resolv.conf \
     --ro-bind /etc/localtime /etc/localtime \
     --proc /proc \
