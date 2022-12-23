@@ -1,20 +1,20 @@
 pkgbase = python-frida-tools
 	pkgdesc = CLI tools for Frida. Python 3 version from PyPi.
-	pkgver = 12.0.1
+	pkgver = 12.0.4
 	pkgrel = 1
 	url = http://www.frida.re
 	arch = i686
 	arch = x86_64
 	license = wxWindows Library License, Version 3.1
 	depends = python
-	depends = python-pygments>=2.13.0
-	depends = python-colorama>=0.4.5
-	depends = python-frida>=16.0.0
-	depends = python-prompt_toolkit>=3.0.31
+	depends = python-pygments>=2.02
+	depends = python-colorama>=0.2.7
+	depends = python-frida>=16.0.1
+	depends = python-prompt_toolkit>=3.0.3
 	conflicts = python2-frida-tools
-	source = https://files.pythonhosted.org/packages/source/f/frida-tools/frida-tools-12.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/a2/38/f9b20227936557a8ede09c9bad17182efe031685c77924e9555a14fc96ba/frida-tools-12.0.4.tar.gz
 	source = COPYING
-	sha256sums = 74d3c380f824f66ec10576508c348471be75ab492aff5ac9d6fea19db036d11f
+	sha256sums = ca1d7fff15baa4129846dd8b4361936c245a6335858a77ab93329011c02d5477
 	sha256sums = 5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2
 
 pkgname = python-frida-tools
