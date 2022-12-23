@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = 6.1.r1137681.10d2d1fc05f0
+	pkgver = 6.1.r1139550.e3bf7e96d0f6
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-amd-git
 	source = linux-amd-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 848ccd048f91b17f0e0192d2900c462986eeacf78bb578b2de9498c4a0526983
+	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules

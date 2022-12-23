@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-git
-pkgver=6.1.r1137681.10d2d1fc05f0
+pkgver=6.1.r1139550.e3bf7e96d0f6
 pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '848ccd048f91b17f0e0192d2900c462986eeacf78bb578b2de9498c4a0526983')
+            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
 
 pkgver() {
   cd $_srcname
