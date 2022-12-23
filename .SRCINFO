@@ -1,0 +1,15 @@
+pkgbase = clap-validator
+	pkgdesc = An automatic CLAP validation and testing tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/free-audio/clap-validator
+	arch = aarch64
+	arch = x86_64
+	groups = pro-audio
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = clap-validator-0.1.0.tar.gz::https://github.com/free-audio/clap-validator/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 0f146212d353f60b3220e46ea1ccaa8439b3af4f268b0b041173763dcd9d0956
+
+pkgname = clap-validator
