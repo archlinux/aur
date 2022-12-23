@@ -15,4 +15,4 @@ if pgrep -a do-not-directly|grep alchemy ; then
 	echo "Aborting package build because Alchemy is running"
 	exit 0
 fi
-makepkg --sync --install --noconfirm
+makepkg --sync --install --noconfirm --needed
