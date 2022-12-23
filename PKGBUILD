@@ -7,7 +7,7 @@ _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
 pkgver=22.12.0
 _commit=920c89f8f43bdfe8966c8e397e7f67f5302e9435
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('GPL')
 makedepends=('lib32-libjpeg' 'lib32-gcc-libs' 'lib32-cairo'
@@ -62,6 +62,7 @@ package_lib32-poppler() {
            'lib32-fontconfig' 'lib32-openjpeg2' 'lib32-lcms2'
            "poppler>=${pkgver}" 'lib32-nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
+  provides=('libpoppler.so' 'libpoppler-cpp.so')
 
   cd build
   make DESTDIR="${pkgdir}" install
@@ -77,6 +78,7 @@ package_lib32-poppler-glib() {
   pkgdesc="Poppler glib bindings (32-bit)"
   depends=("lib32-poppler=${pkgver}" 'lib32-glib2'
            "poppler-glib>=${pkgver}")
+  provides=('libpoppler-glib.so')
 
   cd build
 
