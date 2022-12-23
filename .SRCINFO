@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-dont-track-me-google
+	pkgdesc = Firefox extensions to prevent Google from making links ugly.
+	pkgver = 4.26
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/dont-track-me-google1/
+	arch = any
+	groups = firefox-addons
+	license = MIT
+	depends = firefox
+	source = firefox-extension-dont-track-me-google-4.26.xpi::https://addons.mozilla.org/firefox/downloads/file/3790944/dont_track_me_google1-4.26.xpi
+	sha256sums = 259ee0fd1e88ec7c83e8cf2a858dfd04913def8f8e282abc65f0c2226ec0023e
+
+pkgname = firefox-extension-dont-track-me-google
