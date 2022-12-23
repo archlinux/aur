@@ -2,7 +2,7 @@
 
 pkgname=ids-peak
 pkgdesc="IDS peak is a modern, free software development kit for all USB3 Vision and GigE Vision compliant industrial cameras from any manufacturer."
-pkgver=2.0.1
+pkgver=2.3.0
 pkgrel=1
 arch=(x86_64)
 license=(custom)
@@ -10,13 +10,13 @@ url="https://en.ids-imaging.com/ids-peak.html"
 depends=('libusb' 'qt5-base' 'hicolor-icon-theme')
 
 source=(
-	"https://en.ids-imaging.com/files/downloads/ids-peak/software/linux-desktop/ids-peak-linux-x86-$pkgver.1-64.tgz"
+	"https://en.ids-imaging.com/files/downloads/ids-peak/software/linux-desktop/ids-peak-linux-x86-$pkgver.0-64.tgz"
 	"ids-peak.rules"
 )
-sha512sums=('5e45d493247edfb2d2321059d42f9d3909a9ecd90ca23913cf0522a0ed42ba2da8527327c1238e20132a0575ad34817599014d3360db4aab3a177b2640054ef4'
+sha512sums=('b4b05b449940f98a0338740a5383eb80b8e93874783ffdda4b30e8386e6cb7252184a304028a25b5f06f2277814b90e92ca26b2ce4b82adfe4e47453f19cb4e4'
             'c92de0fa8f5c95ae95a715f70b6dfedb86a566eb80a9b090bb604785837e39ef40e3896d5e8f1f9271647958b87e4cef42dc0ed3a14cc4a1dd77c560d1ad5c4b')
 
-_dir="ids_peak_$pkgver.1-12414_x86_64"
+_dir="ids-peak_$pkgver.0-15823_amd64"
 
 package() {
 	mkdir "$pkgdir/usr"
