@@ -3,28 +3,29 @@
 # Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=uksmd-git
-_reponame=uksmd
-pkgver=0.0.0.r37.f10f38e
+_pkgname=uksmd
+pkgver=0.0.0.r40.8f0349e
 pkgrel=1
-pkgdesc="Userspace KSM helper daemon (git version)"
-url="https://codeberg.org/pf-kernel/uksmd"
+pkgdesc="Userspace KSM helper daemon"
+pkgdesc+=" (git version)"
+url=https://codeberg.org/pf-kernel/uksmd
 license=(GPL3)
 arch=(x86_64)
 depends=(systemd procps-ng libcap-ng)
 makedepends=(meson)
 makedepends+=(git)
-source=(${_reponame}::git+${url}.git)
+source=(${pkgname}::git+${url}.git)
 sha256sums=('SKIP')
-conflicts=("${_reponame}")
-provides=("${_reponame}")
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 
 pkgver() {
-  cd "${_reponame}"
-  printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd ${pkgname}
+	printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${_reponame}"
+	cd ${pkgname}
 
 	arch-meson . build
 
@@ -33,7 +34,9 @@ build() {
 
 package() {
 	depends+=(UKSMD-BUILTIN)
-	cd "${_reponame}"
+
+	cd ${pkgname}
 
 	meson install -C build --destdir "${pkgdir}"
 }
+

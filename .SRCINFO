@@ -1,6 +1,6 @@
 pkgbase = uksmd-git
 	pkgdesc = Userspace KSM helper daemon (git version)
-	pkgver = 0.0.0.r37.f10f38e
+	pkgver = 0.0.0.r40.8f0349e
 	pkgrel = 1
 	url = https://codeberg.org/pf-kernel/uksmd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = uksmd-git
 	depends = libcap-ng
 	provides = uksmd
 	conflicts = uksmd
-	source = uksmd::git+https://codeberg.org/pf-kernel/uksmd.git
+	source = uksmd-git::git+https://codeberg.org/pf-kernel/uksmd.git
 	sha256sums = SKIP
 
 pkgname = uksmd-git
