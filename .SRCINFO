@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-fastforward
+	pkgdesc = Firefox extension that can bypass annoying link shorteners.
+	pkgver = 0.1992
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/fastforwardteam/
+	arch = any
+	groups = firefox-addons
+	license = unlicense
+	depends = firefox
+	source = firefox-extension-fastforward-0.1992.xpi::https://addons.mozilla.org/firefox/downloads/file/3950379/fastforwardteam-0.1992.xpi
+	sha256sums = 050cce41f8740b6b91519d247bf4b7d4753491629a69f9a71188dc5d36e19efe
+
+pkgname = firefox-extension-fastforward
