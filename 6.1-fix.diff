@@ -1,0 +1,24 @@
+diff --git a/binder/binder.c b/binder/binder.c
+index a7e620b..8b9519a 100644
+--- a/binder/binder.c
++++ b/binder/binder.c
+@@ -4109,7 +4109,9 @@ static int binder_wait_for_work(struct binder_thread *thread,
+ 	struct binder_proc *proc = thread->proc;
+ 	int ret = 0;
+ 
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,1,0)
+ 	freezer_do_not_count();
++#endif
+ 	binder_inner_proc_lock(proc);
+ 	for (;;) {
+ 		prepare_to_wait(&thread->wait, &wait, TASK_INTERRUPTIBLE);
+@@ -4129,7 +4131,9 @@ static int binder_wait_for_work(struct binder_thread *thread,
+ 	}
+ 	finish_wait(&thread->wait, &wait);
+ 	binder_inner_proc_unlock(proc);
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,1,0)
+ 	freezer_count();
++#endif
+ 
+ 	return ret;
+ }
