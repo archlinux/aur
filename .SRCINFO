@@ -1,18 +1,17 @@
 pkgbase = r-formatr
 	pkgdesc = Format R Code Automatically
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=formatR
 	arch = any
-	license = GPL2
-	license = GPL3
+	license = GPL
 	depends = r>=3.2.3
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-shiny
 	optdepends = r-testit
-	optdepends = r-rmarkdown
-	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/formatR_1.12.tar.gz
-	sha256sums = 8b52efbf43cbef25d837bb99a793a590c0958b753052c032b52304724e808c8b
+	source = https://cran.r-project.org/src/contrib/formatR_1.13.tar.gz
+	b2sums = ae9450e59ac59930a96835d7254d85f6456dc82b68a503f73cbe6add47dced2f114d5b45a508cfbd16ee1cdccc702217af8c926fb2c711d5a6aea4969084b3c4
 
 pkgname = r-formatr
