@@ -1,7 +1,7 @@
 pkgbase = jena1330-latex-font-git
-	pkgdesc = A medieval textura as used by the main writer of the Jenaer Liederhandschrift, LaTeX font, latest Git checkout.
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift", LaTeX font, latest Git checkout.
 	pkgver = r105.20160920.75d5b9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Anaphory/Jena1330
 	install = jena1330-latex-font.install
 	arch = any

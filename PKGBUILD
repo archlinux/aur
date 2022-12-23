@@ -7,9 +7,8 @@ _pkgvariantsuffix=''
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
 pkgver=r105.20160920.75d5b9e
-pkgrel=1
-pkgdesc="A medieval textura as used by the main writer of the Jenaer
-Liederhandschrift, LaTeX font, latest Git checkout."
+pkgrel=2
+pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift", LaTeX font, latest Git checkout.'
 arch=(
   'any'
 )
