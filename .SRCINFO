@@ -1,13 +1,13 @@
 pkgbase = bwplotka-bingo
 	pkgdesc = Automated versioning of Go package level binaries
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/bwplotka/bingo
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	conflicts = bingo
-	source = https://github.com/bwplotka/bingo/archive/v0.6.0.tar.gz
-	sha256sums = a192ae0a8e8358b4481d57a2027b0a1c65dbf6bd26c933bd063b251d27029c77
+	source = https://github.com/bwplotka/bingo/archive/v0.7.0.tar.gz
+	sha256sums = 70de460387b9d94b14ac9a3747a24c5b20a622a69bf6ca1b9524f265264ddb08
 
 pkgname = bwplotka-bingo
