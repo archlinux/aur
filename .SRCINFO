@@ -1,5 +1,5 @@
-pkgbase = firedragon-unsigned
-	pkgdesc = Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE. Modified to allow installation of unsiged extensions.
+pkgbase = firedragon-unsigned-extensions
+	pkgdesc = FireDragon modified to allow installation of unsigned extensions
 	pkgver = 108.0.1
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
@@ -86,4 +86,4 @@ pkgbase = firedragon-unsigned
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = firedragon-unsigned
+pkgname = firedragon-unsigned-extensions
