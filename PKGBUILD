@@ -1,6 +1,6 @@
 # Maintainer: Thomas Voss <mail@thomasvoss.com>
 pkgname=liblux-git
-pkgver=1.0.2.r2.a08cbea
+pkgver=1.0.3.r0.34e95be
 pkgrel=1
 pkgdesc="C library to interact with backlight brightness"
 arch=('x86_64' 'i686')

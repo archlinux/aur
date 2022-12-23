@@ -1,6 +1,6 @@
 pkgbase = liblux-git
 	pkgdesc = C library to interact with backlight brightness
-	pkgver = 1.0.2.r2.a08cbea
+	pkgver = 1.0.3.r0.34e95be
 	pkgrel = 1
 	url = https://git.thomasvoss.com/liblux
 	arch = x86_64
