@@ -1,16 +1,13 @@
 pkgbase = pfsshell-git
 	pkgdesc = Browse and edit PFS filesystems.
-	pkgver = 28.dce247e
+	pkgver = 101.05da6d0
 	pkgrel = 1
-	url = https://github.com/uyjulian/pfsshell
+	url = https://github.com/ps2homebrew/pfsshell
 	arch = i686
 	arch = x86_64
-	makedepends = git
-	makedepends = clang
-	makedepends = gcc
-	makedepends = make
-	source = pfsshell-git::git+https://github.com/erickpires/pfsshell.git
+	license = 
+	makedepends = meson
+	source = pfsshell-git::git+https://github.com/ps2homebrew/pfsshell.git
 	md5sums = SKIP
 
 pkgname = pfsshell-git
-

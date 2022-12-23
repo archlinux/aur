@@ -1,13 +1,12 @@
-# Maintainer: Erick Pires pires@erickpires.com
 pkgname=pfsshell-git
-pkgver=28.dce247e
+pkgver=101.05da6d0
 pkgrel=1
 pkgdesc="Browse and edit PFS filesystems."
 arch=("i686" "x86_64")
-url="https://github.com/uyjulian/pfsshell"
+url="https://github.com/ps2homebrew/pfsshell"
 license=('')
-makedepends=('git' 'clang' 'gcc' 'make')
-source=('pfsshell-git::git+https://github.com/erickpires/pfsshell.git')
+makedepends=('meson')
+source=('pfsshell-git::git+https://github.com/ps2homebrew/pfsshell.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -17,10 +16,12 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname}"
-    make
+    meson setup builddir
+    cd builddir
+    meson compile
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/${pkgname}/builddir"
     install -Dm755 pfsshell "$pkgdir/usr/bin/pfsshell"
 }
