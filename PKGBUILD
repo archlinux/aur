@@ -1,7 +1,7 @@
 # Maintainer: Padraic Fanning <fanninpm at miamioh dot edu>
 
 pkgname=lean-community-bin
-pkgver=3.50.0
+pkgver=3.50.1
 pkgrel=1
 pkgdesc='Lean Theorem Prover, maintained by the Lean community'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 conflicts=('lean-bin' 'lean-git' 'lean3-bin' 'lean2-git' 'lean-community')
 provides=('lean-community')
 source=("https://github.com/leanprover-community/lean/releases/download/v${pkgver}/lean-${pkgver}-linux.tar.gz")
-sha256sums=('dd4cb09902d787c3ce499147d9cb4c7182f6a3b85353db8109b66d0686ff4b37')
+sha256sums=('f2c1348cb635c4ce398c1b6c7e3976064224f9a738f4443ed290f37fe52a7be7')
 
 package() {
   cd $srcdir/lean-${pkgver}-linux
