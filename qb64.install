@@ -1,7 +1,9 @@
 post_install() {
 	getent group qb64 &> /dev/null || groupadd qb64
 	chgrp -R qb64 /opt/qb64/internal
-	echo 'To use qb64, you must be a member of the qb64 group.'
+	echo -e "\e[1;33m" # yellow
+	echo 'To use QB64, you must be a member of the qb64 group.'
 	echo "Run \`usermod $(logname) -a -G qb64`` to add your user to the group,"
 	echo 'then log out and log back in.'
+	echo -e "\e[1;0m" # default
 }

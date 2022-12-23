@@ -1,7 +1,7 @@
 pkgbase = qb64
 	pkgdesc = BASIC for the modern era
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qb64.org/
 	install = qb64.install
 	arch = x86_64

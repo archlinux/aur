@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=qb64
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='BASIC for the modern era'
 arch=('x86_64')
 url='https://www.qb64.org/'
