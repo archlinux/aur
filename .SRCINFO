@@ -14,6 +14,6 @@ pkgbase = twitch
 	depends = git
 	conflicts = twitch-bin
 	source = https://gitlab.com/twitch-application/application/-/archive/1.0.5-2/application-1.0.5-2.tar.bz2
-	sha256sums = e33c1e31f2c0cd8e2a457c1cac028698bfeb8d181ba6b6df59ad1d42330a7ecf
+	sha256sums = SKIP
 
 pkgname = twitch
