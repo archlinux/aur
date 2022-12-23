@@ -2,6 +2,6 @@ post_install() {
   /usr/bin/systemd-sysusers scanservjs.conf
   chown -R scanservjs:scanservjs /usr/share/webapps/scanservjs/data
   chown -R scanservjs:scanservjs /usr/share/webapps/scanservjs/config
-  chown -R scanservjs:scanservjs /etc/webapps/scanservjs/
-  chown -R scanservjs:scanservjs /var/lib/webapps/scanservjs/
+  chown -R scanservjs:scanservjs /etc/webapps/scanservjs
+  chown -R scanservjs:scanservjs /var/lib/webapps/scanservjs
 }
