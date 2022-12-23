@@ -4,15 +4,11 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r172.g726ef21
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful editor designed for use by programmers (latest development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.jedsoft.org/jed/'
-source=(
-  'git://git.jedsoft.org/git/jed.git'
-  "$pkgname.install"
-)
-install="$pkgname.install"
+source=('git://git.jedsoft.org/git/jed.git')
 license=('GPL')
 provides=('jed' 'xjed' 'rgrep')
 conflicts=('jed' 'xjed' 'rgrep')
@@ -32,6 +28,8 @@ prepare() {
 pkgver() {
   cd "$srcdir/$_pkgname" || exit 1
 
+  # The usual “git describe --long” doesn't work here,
+  # so let's invent our own thing:
   _version=$(
     awk '$2 == "JED_VERSION_STR" {print $3}' src/version.h \
     | sed -e 's/pre//;s/-/.r/;s/"//g'
@@ -55,11 +53,16 @@ build() {
 package() {
   cd "$srcdir/$_pkgname" || exit 1
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
   install -Dm0755 'src/objs/rgrep' "$pkgdir/usr/bin/rgrep"
+
+  cd "$pkgdir/usr/share/jed/lib" || exit 1
+
+  env JED_ROOT="$pkgdir/usr/share/jed" \
+    "$pkgdir/usr/bin/jed" -batch -n -l preparse.sl
 }
 
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')  # skip, skip to my Lou
 
 # eof
