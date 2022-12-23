@@ -1,14 +1,14 @@
 pkgbase = cargo-c-git
 	pkgdesc = A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries (git version)
-	pkgver = 0.9.9.r0.g3273eff
+	pkgver = 0.9.15.r0.g4c500de
 	pkgrel = 1
 	url = https://github.com/lu-zero/cargo-c/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
+	makedepends = openssl
 	depends = curl
-	depends = openssl
 	depends = zlib
 	provides = cargo-c
 	conflicts = cargo-c

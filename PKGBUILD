@@ -1,14 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cargo-c-git
-pkgver=0.9.9.r0.g3273eff
+pkgver=0.9.15.r0.g4c500de
 pkgrel=1
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries (git version)'
 arch=('x86_64')
 url='https://github.com/lu-zero/cargo-c/'
 license=('MIT')
-depends=('curl' 'openssl' 'zlib')
-makedepends=('git' 'rust')
+depends=('curl' 'zlib')
+makedepends=('git' 'rust' 'openssl')
 provides=('cargo-c')
 conflicts=('cargo-c')
 source=('git+https://github.com/lu-zero/cargo-c.git')
@@ -24,14 +24,19 @@ pkgver() {
 
 build() {
     export CFLAGS+=' -ffat-lto-objects'
-    cargo build --release --frozen --manifest-path='cargo-c/Cargo.toml'
+    export RUSTUP_TOOLCHAIN='stable'
+    export CARGO_TARGET_DIR='cargo-c/target'
+    cargo build --release --frozen --all-features --manifest-path='cargo-c/Cargo.toml'
 }
 
 check() {
-    cargo test --release --frozen --manifest-path='cargo-c/Cargo.toml'
+    export CFLAGS+=' -ffat-lto-objects'
+    export RUSTUP_TOOLCHAIN='stable'
+    export CARGO_TARGET_DIR='cargo-c/target'
+    cargo test --frozen --all-features --manifest-path='cargo-c/Cargo.toml'
 }
 
 package() {
-    cargo install --frozen --offline --no-track --path cargo-c --root "${pkgdir}/usr"
+    find cargo-c/target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
     install -D -m644 cargo-c/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
