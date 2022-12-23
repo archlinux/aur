@@ -12,20 +12,11 @@ sha256sums=('66e7205646e1e3685e5dd4eea8281fc92b0b8b45ce97ae24b72a09e15a3fd62f')
 
 build(){
     cd $pkgname-$pkgver
-    mkdir build
     cmake -H. -Bbuild
-    cd build
-    make -j
+    cmake --build build -j`getconf _NPROCESSORS_ONLN`
 }
 
 package(){
-    cd $pkgname-$pkgver/build
-    install -d $pkgdir/usr/lib/gau2grid
-    install -d $pkgdir/usr/include/gau2grid
-    install -d $pkgdir/usr/share/gau2grid/cmake
-    cp -av *.so* $pkgdir/usr/lib/gau2grid/
-    cp -av gau2grid/*.h $pkgdir/usr/include/gau2grid
-    cp -av gau2gridConfig*.cmake $pkgdir/usr/share/gau2grid/cmake
-    cp -av CMakeFiles/Export/*/*.cmake $pkgdir/usr/share/gau2grid/cmake
-    sed -r -i "s:lib\/libgg:lib\/gau2grid\/libgg:g" $pkgdir/usr/share/gau2grid/cmake/gau2gridTargets-release.cmake
+    cd $pkgname-$pkgver
+    cmake --install build --install-prefix $pkgdir/usr/
 }
