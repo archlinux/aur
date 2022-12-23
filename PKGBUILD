@@ -4,7 +4,7 @@ pkgname=g910-gkeys-git
 _appname=g910-gkeys
 _gitname=g910-gkey-macro-support
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='GKey support for Logitech G910 Keyboard on GNU/Linux'
 url='https://github.com/JSubelj/g910-gkey-macro-support'
 arch=('any')
@@ -18,6 +18,11 @@ md5sums=('SKIP')
 build() {
     cd ${srcdir}/${_gitname}
     python setup.py build
+}
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
