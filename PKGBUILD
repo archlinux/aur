@@ -4,17 +4,21 @@
 pkgname=('jed-git')
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r172.g726ef21
-pkgrel=3
+pkgrel=4
 pkgdesc='Powerful editor designed for use by programmers (latest development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://www.jedsoft.org/jed/'
-source=('git://git.jedsoft.org/git/jed.git')
+source=(
+  'git://git.jedsoft.org/git/jed.git'
+  "$pkgname.install"
+)
 license=('GPL')
 provides=('jed' 'xjed' 'rgrep')
 conflicts=('jed' 'xjed' 'rgrep')
 options=('lto')
 depends=('gpm' 'slang' 'libxft')
 makedepends=('git' 'libxext' 'libxt')
+install="$pkgname.install"
 
 prepare() {
   cd "$srcdir/$_pkgname" || exit 1
@@ -63,6 +67,6 @@ package() {
     "$pkgdir/usr/bin/jed" -batch -n -l preparse.sl
 }
 
-sha256sums=('SKIP')  # skip, skip to my Lou
+sha256sums=('SKIP' 'SKIP')  # Skip to my Lou
 
 # eof
