@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.18.r1093875.a1a9d5f736c7
+	pkgver = 6.0.r1125805.de9a71e391a9
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
+	source = linux-amd-staging-drm-next-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144
+	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules

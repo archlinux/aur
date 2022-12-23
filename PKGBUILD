@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=5.18.r1093875.a1a9d5f736c7
+pkgver=6.0.r1125805.de9a71e391a9
 pkgrel=1
 pkgdesc='Linux kernel with AMDGPU WIP patches'
 _product="${pkgbase%-git}"
@@ -16,13 +16,13 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-agd5f
+_srcname=$pkgbase
 source=(
-  "${_srcname}::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
+  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '85f7327e262056043514a24eb6c8d46e3ac6a10a6caff09d664dec8827829144')
+            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
 
 pkgver() {
   cd $_srcname
@@ -157,7 +157,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
