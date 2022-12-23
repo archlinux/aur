@@ -3,7 +3,7 @@
 
 _basename=imath
 pkgname=lib32-imath
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (32-bit)'
 url='https://github.com/AcademySoftwareFoundation/Imath'
@@ -12,7 +12,7 @@ license=(BSD)
 depends=(lib32-gcc-libs imath)
 makedepends=(cmake)
 source=("https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$_basename-$pkgver.tar.gz")
-sha256sums=('1e9c7c94797cf7b7e61908aed1f80a331088cc7d8873318f70376e4aed5f25fb')
+sha256sums=('ea5592230f5ab917bea3ceab266cf38eb4aa4a523078d46eac0f5a89c52304db')
 
 build() {
     export CC='gcc -m32'
