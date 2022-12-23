@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 pkgname=scanservjs
-pkgver=2.22.0
-pkgrel=2
+pkgver=2.23.0
+pkgrel=1
 pkgdesc="SANE scanner nodejs web ui"
 arch=('any')
 url="https://github.com/sbs20/scanservjs"
@@ -9,12 +9,12 @@ license=('GPL')
 depends=('sane' 'imagemagick' 'curl' 'nodejs' 'tesseract')
 makedepends=('npm')
 install=scanservjs.install
-backup=('etc/webapps/scanservjs' 'var/lib/webapps/scanservjs')
+backup=('etc/webapps/scanservjs/config.js' 'etc/webapps/scanservjs/devices.json')
 source=(
 "https://github.com/sbs20/scanservjs/archive/refs/tags/v${pkgver}.tar.gz"
 "scanservjs.sysusersd"
 )
-sha512sums=('148ad273afe9a66a1d1fcb53dcb4226a824e9aefedb49ef90e72d0dffcbeea586e8b03289fc2142a84892849d1f576e82011559ae4d2c9311d3f987ca084bf09'
+sha512sums=('8df036292de426191129859f8fa89cd28e90b87c6a7e90751c98100a36c433e888bdfe3db6fc1b0d3d9693dcdf53a26fbe0728c45f9363a9879698ad78d22080'
             '48cfc5f2ec0fb1428d6d745cfe9e63f1a020d8bdd94225058b9ab16e077ad83492a68b2b974a4c55f071bddf90202a8b3a7b25fdabdb20ac7a94cef8acd7e6d6')
 
 build() {
