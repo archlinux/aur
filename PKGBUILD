@@ -3,7 +3,7 @@
 # Contributor: Rodrigo Severo <rsev at protonmail dot com>
 
 pkgname='therion'
-pkgver='6.1.3'
+pkgver='6.1.4'
 pkgrel='2'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
@@ -41,7 +41,7 @@ source=(
 )
 
 sha256sums=(
-	'5639a44ba64fccac27bf75ab520b1e01c39de82ac49a5cdee2726b2a91d666de'
+	'3b1e3f76e70d9730284abaff236bb86e55c5434bf4a1eb7d31f5236e3d5769d3'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
 )
 
