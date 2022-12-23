@@ -1,0 +1,10 @@
+--- BambuStudio/deps/wxWidgets/wxWidgets.cmake	2022-12-21 18:44:27.746440442 -0800
++++ BambuStudio/deps/wxWidgets/wxWidgets.cmake.new	2022-12-21 18:37:24.393095747 -0800
+@@ -49,6 +49,7 @@
+         -DwxUSE_LIBJPEG=sys
+         -DwxUSE_LIBTIFF=sys
+         -DwxUSE_EXPAT=sys
++	-DwxUSE_GLCANVAS_EGL=OFF
+ )
+ 
+ if (MSVC)
