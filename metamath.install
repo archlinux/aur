@@ -1,9 +1,9 @@
 post_install() {
-  echo ">>> Further info:"
-  echo "    http://us.metamath.org/"
+	echo ">>> Further info:"
+	echo "    http://us.metamath.org/"
 }
 
 post_upgrade() {
-    post_install
+	post_install
 }  
 
