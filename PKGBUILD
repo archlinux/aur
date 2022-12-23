@@ -4,7 +4,7 @@
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.5_r48732.g2f346b674f
+pkgver=6.6.9_r50289.gfeda3d3727
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -30,7 +30,7 @@ options+=(!emptydirs !buildflags !strip !lto)
 install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
-b2sums=('SKIP'
+sha256sum=('SKIP'
         '8f367877df512b63b2f993fa7cd95b223f3e0fcd392a9b0700f73f1f85b5188dcace6abe8cf0b603ac115955ae297fbcfb6c6aaebcbc35fea8465c3ab7958d61')
 
 pkgver() {
@@ -44,13 +44,13 @@ pkgver() {
 prepare() {
     cd "${pkgname}" || exit 1
     export USE_VENV=1
-    ../../compile.bash prepare
+    ../compile.bash prepare
 }
 
 build() {
     cd "${pkgname}" || exit 1
     export USE_VENV=1
-    ../../compile.bash build
+    ../compile.bash build
 }
 
 package() {
@@ -61,3 +61,5 @@ package() {
     sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
+sha256sums=('SKIP'
+            '638758b69aeb0e145b2af29db7206453e0b6c0ee77c4c644f66bf4e6252fc285')
