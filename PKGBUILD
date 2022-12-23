@@ -21,7 +21,7 @@ build() {
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
