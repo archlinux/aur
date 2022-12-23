@@ -1,6 +1,6 @@
 # Maintainer: Thomas Voss <mail@thomasvoss.com>
 pkgname=clux-git
-pkgver=1.0.1
+pkgver=1.0.1.r1.d0c0c7b
 pkgrel=1
 pkgdesc="Command-line utility to interact with screen brightness"
 arch=('x86_64' 'i686')
