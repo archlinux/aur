@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=lib32-tk
-pkgver=8.6.12
+pkgver=8.6.13
 pkgrel=1
 pkgdesc="A windowing toolkit for use with tcl"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url="http://tcl.sourceforge.net/"
 license=('custom')
 depends=('lib32-libxss' 'lib32-libxft' "lib32-tcl-ar>=${pkgver}" 'tk')
 options=('staticlibs')
-source=("http://downloads.sourceforge.net/sourceforge/tcl/tk${pkgver}-src.tar.gz")
-md5sums=('1d6dcf6120356e3d211e056dff5e462a')
+source=("https://cfhcable.dl.sourceforge.net/project/tcl/Tcl/${pkgver}/tk${pkgver}-src.tar.gz")
+sha256sums=('2e65fa069a23365440a3c56c556b8673b5e32a283800d8d9b257e3f584ce0675')
 
 build() {
 cd tk${pkgver}/unix
