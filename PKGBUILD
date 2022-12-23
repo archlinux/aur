@@ -42,15 +42,9 @@ build() {
     build \
     --cross-file cross-wine.conf \
     --buildtype=release \
+    --unity=on \
+    --unity-size=1000 \
     -Dbitbridge=true
-  # FIXME: Restore these at some point. Wine 7.21/7.22 (and likely also some
-  #        more versions after that) will crash or freeze on startup because of
-  #        Wine bug https://bugs.winehq.org/show_bug.cgi?id=53912.
-  #        I was hoping this would be fixed in time for 7.22, but since it
-  #        wasn't just disabling unity builds and praying this will work seems
-  #        like the only alternative for now.
-  # --unity=on \
-  # --unity-size=1000 \
 
   # The unity build takes can take up to 2 GB of RAM per target, so if the
   # system does not have enough RAM to build everything at once we'll limit the
