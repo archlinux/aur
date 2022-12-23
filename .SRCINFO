@@ -1,18 +1,20 @@
 pkgbase = zellij-selector
 	pkgdesc = Select zellij session
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector
 	arch = any
 	license = MPL2
 	makedepends = make
+	makedepends = git
+	makedepends = shellcheck
 	depends = sh
 	depends = libnewt
 	depends = zellij
 	optdepends = fish: Option to option fish shell
 	optdepends = zsh: Option to open zsh shell
 	optdepends = bash: Option to open bash shell
-	source = zellij-selector::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git#tag=v1.2.1
+	source = zellij-selector::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git#tag=v1.2.2
 	sha256sums = SKIP
 
 pkgname = zellij-selector
