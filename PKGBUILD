@@ -19,4 +19,5 @@ build(){
 package(){
     cd $pkgname-$pkgver
     cmake --install build --prefix $pkgdir/usr/
+    mv $pkgdir/usr/share/cmake/gau2grid $pkgdir/usr/share
 }
