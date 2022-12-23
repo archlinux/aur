@@ -1,0 +1,14 @@
+pkgbase = clux
+	pkgdesc = Command-line utility to interact with screen brightness
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://git.thomasvoss.com/lux
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = liblux
+	makedepends = git
+	source = lux::git+git://git.thomasvoss.com/lux.git#tag=v1.0.1
+	b2sums = SKIP
+
+pkgname = clux
