@@ -1,6 +1,6 @@
 pkgbase = xfwm4-gaps
 	pkgdesc = Xfce's window manager - now with extra gaps
-	pkgver = 4.16.1
+	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfwm4/start
 	arch = x86_64
@@ -15,11 +15,9 @@ pkgbase = xfwm4-gaps
 	depends = hicolor-icon-theme
 	provides = xfwm4
 	conflicts = xfwm4
-	source = https://archive.xfce.org/src/xfce/xfwm4/4.16/xfwm4-4.16.1.tar.bz2
-	source = client-Handle-removal-of-GTK_FRAME_EXTENTS.patch
+	source = https://archive.xfce.org/src/xfce/xfwm4/4.18/xfwm4-4.18.0.tar.bz2
 	source = gaps.patch
-	sha256sums = b5b24ca04bd73c642db0a4b4df81d262381d758f01b51108257d48b391b8718c
-	sha256sums = SKIP
+	sha256sums = 92cd1b889bb25cb4bc06c1c6736c238d96e79c1e706b9f77fad0a89d6e5fc13f
 	sha256sums = SKIP
 
 pkgname = xfwm4-gaps

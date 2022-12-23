@@ -1,5 +1,5 @@
 pkgname=xfwm4-gaps
-pkgver=4.16.1
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Xfce's window manager - now with extra gaps"
 arch=('x86_64')
@@ -12,16 +12,12 @@ makedepends=('intltool')
 provides=('xfwm4')
 conflicts=('xfwm4')
 source=(https://archive.xfce.org/src/xfce/xfwm4/${pkgver%.*}/xfwm4-$pkgver.tar.bz2
-        client-Handle-removal-of-GTK_FRAME_EXTENTS.patch
         gaps.patch)
-sha256sums=('b5b24ca04bd73c642db0a4b4df81d262381d758f01b51108257d48b391b8718c'
-            SKIP
+sha256sums=('92cd1b889bb25cb4bc06c1c6736c238d96e79c1e706b9f77fad0a89d6e5fc13f'
             SKIP)
 
 prepare() {
   cd "$srcdir/xfwm4-$pkgver"
-  # https://gitlab.xfce.org/xfce/xfwm4/-/issues/603
-  patch -Np1 -i ../client-Handle-removal-of-GTK_FRAME_EXTENTS.patch
   patch -Np1 -i ../gaps.patch
 }
 
@@ -31,9 +27,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
     --localstatedir=/var \
-    --disable-static \
     --enable-startup-notification \
     --enable-randr \
     --enable-compositor \
