@@ -2,8 +2,8 @@
 
 pkgname="deemix-gui-git"
 _pkgname="deemix-gui"
-pkgver=r181.174f7b999b
-pkgrel=2
+pkgver=r222.5d447b6035
+pkgrel=1
 pkgdesc="A gui electron app for the deemix lib"
 arch=('x86_64')
 url="https://gitlab.com/RemixDev/$_pkgname"
@@ -26,7 +26,7 @@ prepare() {
   cd deemix-gui
   git submodule init
   git config submodule.webui.url $srcdir/deemix-webui
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
