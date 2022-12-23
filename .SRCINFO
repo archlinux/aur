@@ -1,17 +1,20 @@
 pkgbase = xcfun
 	pkgdesc = Exchange-Correlation functionals with arbitrary order derivatives
-	pkgver = 1.x
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://dftlibs.org/xcfun/
-	arch = i686
 	arch = x86_64
-	license = GPL3
-	makedepends = git
+	license = MPL2.0
+	depends = gcc-fortran
+	depends = python
+	depends = pybind11
+	depends = python-numpy
 	makedepends = cmake
-	provides = xcfun=1.x
+	checkdepends = python-pytest
+	provides = xcfun
 	conflicts = xcfun-pyscf
-	source = xcfun::git+https://github.com/dftlibs/xcfun.git#branch=stable-1.x
-	md5sums = SKIP
+	source = xcfun-2.1.1.tar.gz::https://github.com/dftlibs/xcfun/archive/v2.1.1.tar.gz
+	sha256sums = 8b602df74c7be83d501532565deafd1b7881946d94789122f24c309a669298ab
 
 pkgname = xcfun
 
