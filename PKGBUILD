@@ -6,7 +6,7 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -35,6 +35,8 @@ build() {
   fi
   mkdir build && cd build
 
+  export CFLAGS="$CFLAGS -DDO_USERDIRS=1"
+  export CXXFLAGS="$CXXFLAGS -DDO_USERDIRS=1"
   meson setup ../ \
   --prefix /usr \
   --libexecdir lib \
