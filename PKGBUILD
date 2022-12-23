@@ -1,14 +1,14 @@
 # Maintainer: childofunix at gmail dot com
 
 pkgname="rmm-git"
-pkgver=1.0.11
+pkgver=1.0.12.r7.gbb3b90e
 pkgrel=1
 pkgdesc="RimWorld Mod Manager"
 arch=("any")
 url="https://github.com/Spoons/rmm.git"
 license=("GPL")
 depends=("steamcmd" "python" "python-beautifulsoup4" "python-tabulate" "python-networkx") 
-makedepends=("git" "python-setuptools")
+makedepends=("git" "python-setuptools" "python-pip")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 changelog=ChangeLog
