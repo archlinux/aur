@@ -1,6 +1,6 @@
 pkgbase = user-admin
 	pkgdesc = Mate-Desktop user management tool
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/zhuyaliang/user-admin
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = user-admin
 	depends = libpwquality
 	depends = mate-desktop
 	options = !emptydirs
-	source = https://github.com/zhuyaliang/user-admin/archive/1.6.0.tar.gz
-	sha256sums = 305f2ea548c2eca4af741ee8cfeaa5ded7dac3b29f9a731f884abad00b7600c5
+	source = https://github.com/zhuyaliang/user-admin/archive/v1.7.0.tar.gz
+	sha256sums = b4eb0783b382ed9405c76b765148d105dd113e20f66e61ad63d6fb7de7cafe1d
 
 pkgname = user-admin
-
