@@ -1,0 +1,47 @@
+pkgbase = jena1330-fonts-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF and TTF font, latest Git checkout.
+	pkgver = r105.20160920.75d5b9e
+	pkgrel = 4
+	url = http://www.linta.de/Jena1330/
+	arch = any
+	license = OFL
+	makedepends = git
+	makedepends = fontforge
+	makedepends = perl
+	makedepends = python
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	source = jena1330-fonts::git+https://github.com/Anaphory/Jena1330.git
+	source = LICENSE.OFL1.1.txt
+	sha256sums = SKIP
+	sha256sums = c9c5ffaa19f9427e2bf9ae8be6da4afb98dde3e0be07c8470410addf7afcd54d
+
+pkgname = jena1330-latex-font-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX font, latest Git checkout.
+	provides = jena1330-latex-font
+	conflicts = jena1330-latex-font
+
+pkgname = otf-jena1330-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". OTF font, latest Git checkout.
+	provides = otf-jena1330
+	conflicts = otf-jena1330
+
+pkgname = ttf-jena1330-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". TTF font, latest Git checkout.
+	provides = ttf-jena1330
+	conflicts = ttf-jena1330
+
+pkgname = t1-jena1330-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". Postscript Type 1 font, latest Git checkout.
+	provides = t1-jena1330
+	conflicts = t1-jena1330
+
+pkgname = woff-jena1330-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". WOFF font, latest Git checkout.
+	provides = woff-jena1330
+	conflicts = woff-jena1330
+
+pkgname = woff2-jena1330-git
+	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". WOFF2 font, latest Git checkout.
+	provides = woff2-jena1330
+	conflicts = woff2-jena1330
