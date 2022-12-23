@@ -1,16 +1,16 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=qb64
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1
+pkgrel=1
 pkgdesc='BASIC for the modern era'
 arch=('x86_64')
-url='https://www.qb64.org/'
+url='https://www.qb64.com/'
 license=('custom')
 makedepends=('gcc' 'zlib' 'xorg-xmessage')
 options=('!strip')
 install=qb64.install
-source=("https://github.com/QB64Team/qb64/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba4ce7a7a7574ff065707f85c8d5cb741063eae7f7b7e55eb79f9037f300e991')
+source=("https://github.com/QB64Official/qb64/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0fac0e540ed7fe18ec405e68c540b7348f5f1e7b4f0c140862d9b590ba2a1c44')
 
 prepare() {
 	cd "$pkgname-$pkgver"
