@@ -148,6 +148,8 @@ This package provides both pieces in one package.
 
 ## Revisions
 
+- r8: Second iteration, minor updates (fix OS X test failure, update windows
+  skip comments).
 - r7: Second iteration, fix a typo.
 - r6: Second iteration, minor updates (skip tests on windows, changelog, update
   docs, rebase onto upstream).
