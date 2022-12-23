@@ -36,6 +36,7 @@ pkgbase = audacious-plugins-git
 	depends = lirc
 	depends = mpg123
 	depends = neon
+	depends = opusfile
 	depends = pipewire
 	depends = qt5-x11extras
 	depends = wavpack
