@@ -7,12 +7,12 @@ _pkgvariantsuffix=''
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
 pkgver=r105.20160920.75d5b9e
-pkgrel=2
+pkgrel=3
 pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift", LaTeX font, latest Git checkout.'
 arch=(
   'any'
 )
-url="https://github.com/Anaphory/${_fontname}"
+url="http://www.linta.de/Jena1330/"
 license=('OFL')
 depends=(
 )
@@ -34,7 +34,7 @@ provides=(
 )
 install="${_fontname_lowercase}-latex-font.install"
 source=(
-  "${_pkgname}::git+${url}.git"  # Official upstream source
+  "${_pkgname}::git+https://github.com/Anaphory/${_fontname}.git"  # Official upstream source
   "LICENSE.OFL1.1.txt"
   "${install}"
 )
