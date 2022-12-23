@@ -1,19 +1,17 @@
-# Maintainer: Cookie Engineer <@cookiengineer>
-
+# Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-privacy-pass
-pkgver=2.0.6
+pkgver=3.0.4
 pkgrel=1
-pkgdesc='Handle passes containing cryptographically blinded tokens for bypassing challenge pages.'
-url=https://github.com/privacypass/challenge-bypass-extension
+pkgdesc='Firefox extension implements the client-side of the Privacy Pass protocol providing unlinkable cryptographic tokens.'
 arch=('any')
-license=('BSD')
+url='https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/'
+license=('BSD-3')
 depends=('firefox')
-source=("https://addons.mozilla.org/firefox/downloads/file/3556492/privacy_pass-$pkgver-fx.xpi")
-noextract=("${source##*/}")
-sha512sums=('6cab6d4951febd0629231416d1553f14eb8ed6141450f0cb1461dd408945d7a4c242856eabb48bf3fad7d896e759b17ae3db879d1d4a151c0e66a90aec89d8f7')
+groups=('firefox-addons')
+source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/4029152/privacy_pass-${pkgver}.xpi")
+sha256sums=('acb6d3001e2af078792bdde7154113dacb9434eb0d55d81e96923b11a0594a9b')
 
 package() {
-  install -Dm755 "${source##*/}" "$pkgdir"/usr/lib/firefox/browser/extensions/privacy-pass.xpi
+    install -Dm644 ${pkgname}-${pkgver}.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/{48748554-4c01-49e8-94af-79662bf34d50}.xpi"
 }
-
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
