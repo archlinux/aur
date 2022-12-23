@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.9.0.r3880.ge2bb92b2e
+	pkgver = 0.10.0.r931.gf211c1559a
 	pkgrel = 1
 	url = https://ziglang.org
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = zig-git
 	makedepends = cmake
 	makedepends = git
 	depends = clang
-	depends = llvm>=14
+	depends = llvm
 	depends = lld
 	provides = zig
 	conflicts = zig
-	source = git+https://github.com/ziglang/zig.git#commit=e2bb92b2e27dc54852a0227345e294ae383358fd
+	source = git+https://github.com/ziglang/zig.git
 	md5sums = SKIP
 
 pkgname = zig-git
