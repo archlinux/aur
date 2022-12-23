@@ -1,5 +1,5 @@
 pkgname="techmino-git"
-pkgver=0.17.8.r4685.f91fe34a
+pkgver=0.17.10.r4728.bc634b2e
 pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("git+https://github.com/26F-Studio/Techmino.git"
 	"TechminoDevelopment.desktop")
 sha256sums=('SKIP'
 	'SKIP'
-	'51b329331a978d592033feec9dbdc9acfcf5bd89ae1b9bfe33b6b00033ddf913'
+	'5ff7108d7be5ffe83f31b8a678108a57eb7a21c9240694cd4f61a73f9340ef98'
 	'fce377e467bc614bae1b8fb96d52b32b3f6d65103b28c72cc3f91248ce4aca82')
 prepare() {
 	cd ${srcdir}/Techmino
@@ -43,6 +43,5 @@ package() {
 	cat TechminoDevelopment.png game.love >game_icon.love
 	install -Dm644 "game_icon.love" "${pkgdir}/usr/share/TechminoDevelopment/Techmino.love"
 	install -Dm644 "./x64/CCloader.so" "${pkgdir}/usr/share/TechminoDevelopment/CCloader.so"
-	install -Dm644 "./x64/libcold_clear.so" "${pkgdir}/usr/share/TechminoDevelopment/build/x64/libcold_clear.so"
 	install -Dm644 "TechminoDevelopment.desktop" "${pkgdir}/usr/share/applications/TechminoDevelopment.desktop"
 }
