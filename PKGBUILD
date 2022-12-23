@@ -4,9 +4,9 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.0.13
+pkgver=6.0.15
 pkgrel=1
-build_id=5152553
+build_id=5175597
 fedora=37
 extras=301.fsync.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
@@ -31,10 +31,10 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('080f11d2758f60814dc6a2c60b727c61b5305b3b97def52d6d906737857e8cf8'
-            'dd5d01e30212f875a6d910b4a2c46a719056605d5eb21b73f6b83dd260e510ca'
-            '91dc962ee87526f72d29c4ab9ea40463e19bb3ffe0b8d75371f85670ca8aee84'
-            '2cad95fd9ac888edd51ca780448421be6ce4f06931b351fe5e205264010398b8')
+sha256sums=('31bbe3398ae9d6ce7e2780a902b1a7276738567c033d12a9fada202f99828121'
+            '2b92a1b02669a076d204ebc085eaad3da570ca24e39dd5a85fef118949ab16f7'
+            '9742a6d11590bc228e0195c0a74471fd2545311335db0f7e87667c950881117f'
+            'd9377a6daea311adf21f05df4eab47dffb419f152df181332bc9df7084ce1eaa')
 
 package() {
 
@@ -47,8 +47,8 @@ package() {
   cp -r ${srcmodulesdir} "${pkgdir}/usr/lib/modules"
   cp -r "${srcdir}/usr" "${pkgdir}/"
 
-  msg2 "Installing boot image..."
-  install -Dm644 "$modulesdir/vmlinuz" "boot/vmlinuz-${pkgver}-fsync-nobara"
+  #msg2 "Installing boot image..."
+  #install -Dm644 "$modulesdir/vmlinuz" "boot/vmlinuz-${pkgver}-fsync-nobara"
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgname}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
