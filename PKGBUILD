@@ -1,8 +1,8 @@
 
 # Maintainer: Zehka <aur@zehka.net>
 pkgname=guglielmo
-pkgver=v0.3
-pkgrel=2
+pkgver=v0.4
+pkgrel=0
 epoch=
 pkgdesc="Qt based FM / Dab tuner"
 arch=("any")
