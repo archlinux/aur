@@ -3,18 +3,17 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
-_name=PyPDF2
 pkgname=python-pypdf2
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='Python library for splitting, merging, cropping, and transforming pages of PDF files'
 arch=(any)
-url="https://github.com/py-pdf/$_name"
+url="https://github.com/py-pdf/PyPDF2"
 license=(BSD)
 depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel python-flit-core)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('1f7bfaa7d8e596a445fe0c990cbc7325fefe40b079816585aeacc6d169c82c24')
+sha256sums=('9c34f31b6a54076b779245f48ce25622a9b70f739c667e5e7bd1e19f207949e7')
 
 build() {
   cd pypdf-$pkgver
