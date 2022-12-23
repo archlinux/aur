@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=textpieces
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Transform text without using random websites"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libadwaita' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
 makedepends=('blueprint-compiler' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('00666274e11336f79913112152cee1dac34cc36051d160c818f0d43413a1e511ecf889c7213854c27c7a29c3a9026848b67e5a39221334f00e259cf33ed5b2c0')
+b2sums=('8bba17f548325e274f3d346c759b7350c359f80ec589147fa127656dc262df3e1b8a177f68980d1e117b80bd38ed3ac27b0cb669ae580b78c33a1c184b0ccb8c')
 
 build() {
   arch-meson $pkgname-$pkgver build
