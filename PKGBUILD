@@ -1,7 +1,7 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=0.7.0.r99.g506714ed
+pkgver=0.7.0.r201.g5853ad97
 pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
@@ -76,26 +76,20 @@ pkgver() {
     local _tag
     _tag="$(git -C libjxl tag --list --sort='-v:refname' 'v[[:digit:]]*' | sed 's/^v//;/[[:alpha:]]/d' | head -n1)"
     printf "${_tag}.r%s.g%s" "$(git -C libjxl rev-list --count "v${_tag}..HEAD")" \
-                             "$(git -C libjxl rev-parse --short HEAD)"
+        "$(git -C libjxl rev-parse --short HEAD)"
 }
 
 build() {
-    # We force clang and lld as suggested by the repo
+    # We "use" clang and lld as suggested by the repo
     export LDFLAGS="-fuse-ld=lld -Wl,--thinlto-jobs=all"
-    COMMON_FLAGS="-O3 -march=native -flto=thin -pipe"
+    export CFLAGS+=" -flto=thin" CXXFLAGS+=" -flto=thin"
     export CC=clang CXX=clang++
-    export CFLAGS="${COMMON_FLAGS}" CXXFLAGS="${COMMON_FLAGS}"
 
     cmake -B build -S libjxl \
         -DBUILD_TESTING=0 \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
-        -DCMAKE_C_COMPILER="${CC}" \
-        -DCMAKE_CXX_COMPILER="${CXX}" \
-        -DCMAKE_C_FLAGS="${CFLAGS}" \
-        -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
-        -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" \
         -DJPEGXL_ENABLE_DEVTOOLS=1 \
         -DJPEGXL_ENABLE_EXAMPLES=0 \
         -DJPEGXL_ENABLE_PLUGINS=1 \
@@ -106,6 +100,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_HWY=1 \
         -DJPEGXL_BUNDLE_LIBPNG=0 \
         -Wno-dev
+
     make -C build all doc -j $(nproc)
 }
 
