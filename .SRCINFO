@@ -1,9 +1,10 @@
 pkgbase = minesweeper-terminal-git
 	pkgdesc = Terminal Minesweeper game written in C
 	pkgver = r5.285fd95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mekb-turtle/minesweeper
 	arch = any
+	makedepends = git
 	source = minesweeper::git+https://github.com/mekb-turtle/minesweeper.git
 	sha256sums = SKIP
 
