@@ -1,6 +1,6 @@
 pkgbase = python-niaarm
 	pkgdesc = A minimalistic framework for numerical association rule mining
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/NiaARM
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-niaarm
 	makedepends = python-poetry-core
 	depends = python-niapy
 	depends = python-nltk
-	source = NiaARM-0.2.3.tar.gz::https://github.com/firefly-cpp/NiaARM/archive/0.2.3.tar.gz
-	sha512sums = 3fbf214a2961adf320bc9e6e38a3409ecec48679359f5ad1efe0e1be5b85fa52601e74b0d9c47c18751314c8603ccf3a45db9b8f9fcd28bbda510dcc6284b21f
+	source = NiaARM-0.2.4.tar.gz::https://github.com/firefly-cpp/NiaARM/archive/0.2.4.tar.gz
+	sha512sums = 327e6daa706d35abf37e845bee3de1d0115525c7d8ed69f3848d637e692419dc2cc4ab28dd380431bbd373a5aa4fb0d72eb37b62c4f623139dfeabaea1ed6aee
 
 pkgname = python-niaarm
