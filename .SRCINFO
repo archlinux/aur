@@ -1,6 +1,6 @@
 pkgbase = onedev
 	pkgdesc = A self-hosted Git server with CI/CD and Kanban
-	pkgver = 7.8.15
+	pkgver = 7.8.16
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = onedev
 	license = custom:Microsoft Software License
 	license = custom:Sun Microsystems Inc Binary Code License
 	license = custom:Jetty License
-	source = https://code.onedev.io/~downloads/projects/160/builds/3225/artifacts/onedev-7.8.15.zip
+	source = https://code.onedev.io/~downloads/projects/160/builds/3238/artifacts/onedev-7.8.16.zip
 	source = sysusers.conf
 	source = onedev.service
-	sha256sums = 789a6a2b383283e58a01b81b08b62131d711a8d03d9476de1fa1277608466287
+	sha256sums = 677e5b01842b63fc6fff50058bd5442fb1a7e4b49990f5c8b1e9f1396f5283c2
 	sha256sums = ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82
 	sha256sums = b5c84783296f23287341ca36a62d64204b71285c42e040a788c8864b65d231e6
 
