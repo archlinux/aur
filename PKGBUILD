@@ -1,4 +1,5 @@
-# Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
+# Maintainer: cysp74 at gmail dot com
+
 _pkgname=xsecurelock
 pkgname=xsecurelock-git
 pkgver=1.2.r7.gc75d8e2
