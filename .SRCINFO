@@ -1,6 +1,6 @@
 pkgbase = mcbash
 	pkgdesc = scan for valid MAC addresses on Stalker Portal servers
-	pkgver = 0.4.9
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/dougy147/mcbash.git
 	install = post_install.install
