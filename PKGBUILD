@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3770.r0.g9f461253a
+pkgver=v1.7.3780.r0.g18bdf4a8d
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -61,16 +61,14 @@ conflicts=(pcsx2)
 
 source=(
 git+https://github.com/PCSX2/pcsx2.git
-0001-QtHost.cpp-Fixed-Resources-dir.patch
-0002-Added-QT-Desktop-file.patch
+0001-Fix-resources-Fix-CMake.patch
 )
 
 prepare()
 {
   cd $srcdir/pcsx2
   git submodule update --init --recursive
-  git apply -3 "${srcdir}/0001-QtHost.cpp-Fixed-Resources-dir.patch"
-  git apply -3 "${srcdir}/0002-Added-QT-Desktop-file.patch"
+  git apply -3 "${srcdir}/0001-Fix-resources-Fix-CMake.patch"
 
   export CMAKE_C_COMPILER=/usr/bin/clang-12
   export CMAKE_CXX_COMPILER=/usr/bin/clang++-12
@@ -112,5 +110,5 @@ package()
 # vim: ts=2 sw=2 et:
 
 sha256sums=('SKIP'
-            '88207a76ba366a343b5b9d8f90da0f44f2dd8145df0ad7582c223ff072528473'
-            '33b3d6bde2c3973db918a28d4eacbef6e5db4be65856091988364f840d3702e1')
+            '5b7e23e32c65b07c0450250e2faf6f1e62a03dd75342766a0c917ee768abcd30'
+)
