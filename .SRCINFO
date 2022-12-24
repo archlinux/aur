@@ -1,7 +1,7 @@
 pkgbase = xmake
 	pkgdesc = A cross-platform build utility based on Lua
 	pkgver = 2.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmake-io/xmake
 	arch = i686
 	arch = x86_64

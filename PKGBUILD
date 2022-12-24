@@ -3,7 +3,7 @@
 
 pkgname=xmake
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform build utility based on Lua"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xmake-io/xmake"
