@@ -32,7 +32,6 @@ package() {
     install -Dm644 "${srcdir}/openasar-git-discord-upgrade.hook" -t "${pkgdir}/usr/share/libalpm/hooks/"
     cd "${srcdir}/OpenAsar"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    bash scripts/injectPolyfills.sh
     sed -i -e "s/nightly/nightly-$(git rev-parse HEAD | cut -c 1-7)/" src/index.js
     node scripts/strip.js
     asar pack src app.asar
