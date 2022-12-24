@@ -5,7 +5,7 @@
 
 pkgname=courier-maildrop
 _srcname=maildrop
-pkgver=3.0.9
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="mail delivery agent - procmail like but nicer syntax"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('courier-authlib>=0.71.0' 'gamin' 'pcre2' 'gdbm' 'courier-unicode>=2.1'
 conflicts=('courier-mta')
 options=('!libtool' '!staticlibs')
 source=(http://downloads.sourceforge.net/project/courier/${_srcname}/${pkgver}/${_srcname}-${pkgver}.tar.bz2)
-sha512sums=('8ce61151b000d14947ba51722a981b1dc2d14ff488f1cdd555eebb7c925e5f9b8b4bea8be5ff3fa621a2c75306f5393f245c49b4758e4419cca8b252deea6be6')
+sha512sums=('4d4ab1acd9f81beb54af9af86d0f8c3145f962f1ff2fd5e9209e31b63054cc41b3e4a1300965a8855a39dbcfa1cdbdef2ad194af1f12e079c1361b12b293ed56')
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
