@@ -2,8 +2,8 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.48.r11.g2791466
-pkgrel=2
+pkgver=3.11.51.r3.gf863708
+pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -20,8 +20,10 @@ conflicts=($_pkgname "steamcompmgr")
 source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+        "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -47,6 +49,7 @@ prepare() {
     git submodule init
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
     git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
+    git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
     git -c protocol.file.allow=always submodule update
 
     # make stb.wrap use our local clone
