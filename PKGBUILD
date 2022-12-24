@@ -25,7 +25,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
