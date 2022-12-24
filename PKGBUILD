@@ -3,7 +3,8 @@
 
 _pkgname=SPIRV-Headers
 pkgname=spirv-headers-git
-pkgver=1.5.4.raytracing.fixed.r0.gf027d53
+epoch=1
+pkgver=1.3.236.0.r4.g34d0464
 pkgrel=1
 pkgdesc='SPIR-V header files Git version'
 arch=('any')
@@ -13,11 +14,11 @@ source=("git+https://github.com/KhronosGroup/$_pkgname.git")
 sha1sums=('SKIP')
 makedepends=('git' 'cmake')
 conflicts=('spirv-headers')
-provides=("spirv-headers=$pkgver")
+provides=("spirv-headers=1:$pkgver")
 
 pkgver() {
     cd "$_pkgname"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^sdk-//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {

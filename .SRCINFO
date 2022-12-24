@@ -1,16 +1,16 @@
 pkgbase = spirv-headers-git
 	pkgdesc = SPIR-V header files Git version
-	pkgver = 1.5.4.raytracing.fixed.r0.gf027d53
+	pkgver = 1.3.236.0.r4.g34d0464
 	pkgrel = 1
+	epoch = 1
 	url = https://www.khronos.org/registry/spir-v/
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	provides = spirv-headers=1.5.4.raytracing.fixed.r0.gf027d53
+	provides = spirv-headers=1:1.3.236.0.r4.g34d0464
 	conflicts = spirv-headers
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	sha1sums = SKIP
 
 pkgname = spirv-headers-git
-
