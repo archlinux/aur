@@ -2,8 +2,8 @@
 
 _pkgname=nvml_fix
 pkgname=nvml-fix-git
-pkgrel=3
-pkgver=r35.038fa0c
+pkgrel=1
+pkgver=r37.9be4552
 pkgdesc="A workaround for an annoying bug in nVidia's NVML library."
 url=https://github.com/CFSworks/nvml_fix
 arch=('x86_64' 'i686')
@@ -19,10 +19,9 @@ source=("git+${url}.git"
 		"81-nvml-fix-reapply.hook"
 		)
 sha256sums=('SKIP'
-'40c4d6ed233647fd604cb9e4f030266e5c6a3d1a048b198aa2804411e12cfe39'
-'7eaee1f6fedcecb75e04b3f25167fbe4e94bf235c4c6d95228312fbc0c55d3f6'
-'51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
-)
+            '51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
+            '40c4d6ed233647fd604cb9e4f030266e5c6a3d1a048b198aa2804411e12cfe39'
+            '38c127ad138605e3c5982fb4e359ec39e093da3e3b5fd0448cb43d5dfb45113c')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
