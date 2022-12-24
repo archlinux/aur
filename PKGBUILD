@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Winger <bmw@disroot.org>
 
 pkgname=portmod
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A cli tool to manage mods for OpenMW"
 provides=('portmod')
@@ -10,14 +10,14 @@ replaces=('openmmm')
 arch=(any)
 url="https://gitlab.com/portmod/portmod"
 license=(GPL3)
-depends=("python" "patool" "python-setuptools" "python-colorama" "python-appdirs" "python-gitpython"
+depends=("python" "patool" "python-setuptools" "python-colorama" "python-gitpython"
          "python-progressbar" "python-restrictedpython" "bubblewrap" "python-redbaron"
          "python-python-sat" "python-requests" "python-chardet" "python-fasteners")
 makedepends=("python" "python-setuptools" "python-setuptools-scm" "rust" "python-setuptools-rust" "python-packaging" "python-sphinx" "python-sphinx-argparse" "make")
 checkdepends=("python-pytest")
-optdepends=("omwllf" "tes3cmd" "tr-patcher" "python-argcomplete")
+optdepends=("tr-patcher" "python-argcomplete")
 source=("https://gitlab.com/portmod/portmod/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('547f608c3ff6e733bf7700f06fa2f8e8fd0520e83aa24014be831dd49e819d7e97f7e663bce1e9b8513e012309697bcd80b4e0e329854568d9ebf478fb53e675')
+sha512sums=('6cdad2a9b79566180ef4c207c33c2f94e04040fc1ad439c1e92096f13c0d7a2cf3dc9fe0c5b3c770d6c7eb550bf4a5a236b8bcb35d6dad5e7b32597adf942552')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
