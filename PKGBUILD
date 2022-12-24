@@ -1,7 +1,7 @@
 # Maintainer: Daniel Mensinger <daniel@mensinger-ka.de>
 _pkgname=qScan
 pkgname=qscan
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="QT document scanner using SANE"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ source=(
     https://github.com/mensinda/enumGen/archive/refs/tags/v1.1.2.tar.gz # Compile time code generator
 )
 noextract=()
-sha256sums=('68226957436a77f8ffc3a5139dbe73771c7f089a87953a7abaa7f0e8f778acf1'
+sha256sums=('0ebed19209d47b2c5fcf622f4ff578514dcc13769dbe7546712c846d18f93222'
             '987e608f52e651e1c90514893485331227f0064e887068124fac1a8cb96d7a8a')
 
 prepare() {
