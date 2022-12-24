@@ -5,7 +5,7 @@
 
 
 pkgname=pianoteq-stage
-pkgver=8.0.2
+pkgver=8.0.5
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -18,10 +18,10 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v802.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v805.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('dfacf3b71ebf37356a8f3964026e742cafdab3d3ae35ec0086af065f24f426137bab99ceb53fabd80080a197d16fe72989e30be58dc3dd45e8fe7d7e299d59ba'
+b2sums=('a02ac49b2a27c6fc9115d4b0eb56c1845381d7a575c8bf466888d31fb82f46ae6a0f4beb6d7199c16682f3b78582980a728dd2966630a53c5de17a4ff8ec1ef0'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare(){
