@@ -1,0 +1,20 @@
+pkgbase = picocad-bin
+	pkgdesc = A program to build and texture lowpoly 3D models.
+	pkgver = 102
+	pkgrel = 1
+	url = https://johanpeitz.itch.io/picocad
+	arch = x86_64
+	license = custom:commercial
+	depends = sdl2
+	conflicts = picocad
+	options = !purge
+	source = local://picocad-102.zip
+	source = local://toolbox-102.zip
+	source = io.itch.johanpeitz.picoCAD.desktop
+	source = io.itch.johanpeitz.picoCAD-Toolbox.desktop
+	sha256sums = a2efb498b65fa4a52aea4d2ea1f85cbe154715a690055dc4b0880b805b29b9f6
+	sha256sums = 265292fcf8a64cc95b853ead907e2db94bd1dfbe23ccb6ee23e9d3055f1c2aae
+	sha256sums = dfb80c72a95495dc9da36a0cf5907f3e40c336a93bdfaf55ac40c88c734cc0d9
+	sha256sums = 7589fd68be322813d5efdae48b3f90a0eb15f9662b8e138303ef28f7cc7edb31
+
+pkgname = picocad-bin

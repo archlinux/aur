@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=picoCAD Toolbox
+Comment=picoSYNTH is a playful tool where you by connecting various pieces of equipment to each other can create anything from short loops to chippy beats.
+Path=/opt/picocad/toolbox
+Exec=/opt/picocad/toolbox/toolbox
+Icon=picocad-toolbox
+Terminal=false
+Categories=3DGraphics;
+
