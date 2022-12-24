@@ -1,4 +1,4 @@
-# Maintainer: JSH <jsh6789 at gmail dot com>
+# Maintainer: cysp74 at gmail dot com
 
 pkgname=pocl-git
 _pkgname=pocl
