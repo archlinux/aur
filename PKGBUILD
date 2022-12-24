@@ -3,8 +3,8 @@
 
 pkgname=raid-check-systemd
 pkgver=4.2
-pkgrel=3
-_centrel=2
+pkgrel=4
+_centrel=7
 pkgdesc="Raid data scrubbing script with systemd timer to be used with mdadm."
 arch=('any')
 url="https://wiki.archlinux.org/index.php/RAID#Scrubbing"
@@ -15,7 +15,7 @@ source=("http://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/mdad
         'raid-check.service'
         'raid-check.timer')
 
-sha256sums=('97c360a0e0518ae7dff57f5515201229fa980a6632b0f8afa5d366944954792c'
+sha256sums=('7bac4fab8071be84c404da1acd199fa711007c2910371f43960ecd3c703ac68e'
             '90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b'
             '1a0095d05f57d1a9fc4d234e2c21db9e369ca755f0f31e61030b7a7aa840dee1')
             
