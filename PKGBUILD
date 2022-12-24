@@ -8,7 +8,7 @@ url="https://github.com/mekb-turtle/mekfetch"
 source=("mekfetch::git+${url}.git")
 makedepends=('git')
 sha256sums=(SKIP)
-optdepends=('ttf-nerd-fonts-symbols: Nerd font support')
+optdepends=('nerd-fonts: Nerd font support')
 package() {
 	install -Dm755 "$srcdir/mekfetch/mekfetch" "$pkgdir/usr/bin/mekfetch"
 }
