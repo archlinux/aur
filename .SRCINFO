@@ -1,4 +1,4 @@
-pkgbase = mediainfo-gui
+pkgbase = mediainfo-gui-qt
 	pkgdesc = Supplies technical and tag information about a video or audio file (Qt GUI interface)
 	pkgver = 22.12
 	pkgrel = 1

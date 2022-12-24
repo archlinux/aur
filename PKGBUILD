@@ -1,7 +1,7 @@
 # Maintainer: Juan Simón <play4pro at protonmail dot com>
 # Contributor: Giusy Digital <kurmikon AT libero DOT it>
 
-pkgbase=mediainfo-gui
+_pkgbasename=mediainfo-gui
 pkgname=mediainfo-gui-qt
 pkgver=22.12
 pkgrel=1
@@ -11,8 +11,8 @@ url="https://github.com/MediaArea/MediaInfo"
 license=("BSD")
 depends=("libmediainfo" "qt5-base" "hicolor-icon-theme")
 makedepends=("glibc")
-provides=("$pkgbase")
-conflicts=("$pkgbase")
+provides=("$_pkgbasename")
+conflicts=("$_pkgbasename")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v$pkgver.tar.gz"
     "kde4-service.desktop" "konqueror-service.desktop" "kservices5.desktop")
 sha256sums=('c307462c692e4e8e674bf56bf198f4247d58bfbb43868ed8aa2ea2f9f12193ec'
@@ -29,18 +29,18 @@ build() {
 package() {
     cd "$srcdir"
     install -Dm644 "kde4-service.desktop" \
-        "$pkgdir/usr/share/kde4/services/ServiceMenus/$pkgbase.desktop"
+        "$pkgdir/usr/share/kde4/services/ServiceMenus/$_pkgbasename.desktop"
     install -Dm644 "konqueror-service.desktop" \
-        "$pkgdir/usr/share/apps/konqueror/servicemenus/$pkgbase.desktop"
+        "$pkgdir/usr/share/apps/konqueror/servicemenus/$_pkgbasename.desktop"
     install -Dm644 "kservices5.desktop" \
-        "$pkgdir/usr/share/kservices5/ServiceMenus/$pkgbase.desktop"
+        "$pkgdir/usr/share/kservices5/ServiceMenus/$_pkgbasename.desktop"
     
     cd "MediaInfo-$pkgver"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "Source/Resource/Image/MediaInfo.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/mediainfo.svg"
-    install -Dm644 "Project/GNU/GUI/$pkgbase.desktop" \
-        "$pkgdir/usr/share/applications/$pkgbase.desktop"
+    install -Dm644 "Project/GNU/GUI/$_pkgbasename.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
         
     cd "Project/QMake/GUI"
     make INSTALL_ROOT="$pkgdir" install
