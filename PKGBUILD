@@ -1,6 +1,6 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 pkgname=onedev
-pkgver=7.8.14
+pkgver=7.8.15
 pkgrel=1
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'
          'custom:Jetty License')
-source=("https://code.onedev.io/~downloads/projects/160/builds/3212/artifacts/onedev-$pkgver.zip"
+source=("https://code.onedev.io/~downloads/projects/160/builds/3225/artifacts/onedev-$pkgver.zip"
         "sysusers.conf"
         "onedev.service")
-sha256sums=('aeb07ed748739f2389fd65102c472c47bd199488f9648284aa471a84085ed4ec'
+sha256sums=('789a6a2b383283e58a01b81b08b62131d711a8d03d9476de1fa1277608466287'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             'b5c84783296f23287341ca36a62d64204b71285c42e040a788c8864b65d231e6')
 
