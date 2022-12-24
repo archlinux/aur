@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=didyoumean
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'libxcb' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b23b0c5ef1a984032461c1d5144b5162c87bed561e19e9bea6f059d282e1a482aa240e52b6a237e864d3bcca7ade8b46ef90452d51a1de3dc34761b69325f7ec')
+sha512sums=('317daa601d3b6e0696faac47b8b3cdbda6ff3efafe859189afaa1cad1290a0a0069504b67c3d1a75bec4c42ec1008e5daf485f124c60e77d3c8c38e12616adc0')
 
 prepare() {
   cd "$pkgname-$pkgver"
