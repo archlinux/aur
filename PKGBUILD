@@ -1,13 +1,13 @@
 # Maintainer: Alireza S.N. <alireza6677 at gmail dot com>
 
 pkgname=libkrunfw-git
-pkgver=v2.0.0.r25.gb7b6746
-pkgrel=2
+pkgver=v2.0.0.r76.g481975e
+pkgrel=1
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 arch=("x86_64")
 url="https://github.com/containers/libkrunfw"
 license=("GPL2")
-depends=()
+depends=("bc")
 makedepends=("cargo" "git" "gcc" "python-pyelftools")
 provides=("libkrunfw")
 conflicts=("libkrunfw")
