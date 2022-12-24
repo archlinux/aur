@@ -41,8 +41,6 @@ pkgbase = tenacity-wxgtk3-git
 	provides = tenacity
 	conflicts = tenacity
 	source = git+https://codeberg.org/tenacityteam/tenacity.git#branch=main
-	source = cmake-wxgtk3.2.patch
 	sha256sums = SKIP
-	sha256sums = d45856d8cc21a3ba5477db7890882877dc4d957aa33cd8d61517e36c61befd6d
 
 pkgname = tenacity-wxgtk3-git

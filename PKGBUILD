@@ -21,10 +21,8 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg4.4: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://codeberg.org/tenacityteam/tenacity.git#branch=main"
-        cmake-wxgtk3.2.patch)
-sha256sums=('SKIP'
-            'd45856d8cc21a3ba5477db7890882877dc4d957aa33cd8d61517e36c61befd6d')
+source=("git+https://codeberg.org/tenacityteam/tenacity.git#branch=main")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/tenacity
@@ -40,7 +38,6 @@ prepare() {
     cd ..
   done
   cd ../..
-  patch CMakeLists.txt $srcdir/cmake-wxgtk3.2.patch
   mkdir -p build
 }
 
