@@ -6,7 +6,7 @@ index a7e620b..8b9519a 100644
  	struct binder_proc *proc = thread->proc;
  	int ret = 0;
  
-+#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,1,0)
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,0,0)
  	freezer_do_not_count();
 +#endif
  	binder_inner_proc_lock(proc);
@@ -16,7 +16,7 @@ index a7e620b..8b9519a 100644
  	}
  	finish_wait(&thread->wait, &wait);
  	binder_inner_proc_unlock(proc);
-+#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,1,0)
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(6,0,0)
  	freezer_count();
 +#endif
  
