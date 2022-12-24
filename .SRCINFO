@@ -1,0 +1,13 @@
+pkgbase = specterext-faucet
+	pkgdesc = Specter faucet extention for regtest
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://specter.solutions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/stepansnigirev/specterext-faucet/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 9051633e45595a0cac395c9009445807be4be16913730f12d47472ac377afbb6
+
+pkgname = specterext-faucet
