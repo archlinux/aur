@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=4.0.4
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-pygments: syntax highlighting'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('910d939943553ef1cd8668af6058f1992d37cf0fe23d0cdef15ef8634e9b9942'
+sha256sums=('d77ba2eb1d1240f47cc44f5fcb9230cc65681834e7e27edf17c5ada462d3fb07'
             'SKIP')
 validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvid@gmail.com>
 

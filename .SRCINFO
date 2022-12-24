@@ -1,6 +1,6 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
-	pkgver = 4.0.4
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://git-cola.github.io
 	arch = any
@@ -22,10 +22,10 @@ pkgbase = git-cola
 	optdepends = python-pygments: syntax highlighting
 	optdepends = python-send2trash: enables "Send to Trash" functionality.
 	optdepends = tcl: to use the built-in ssh-askpass handler
-	source = https://files.pythonhosted.org/packages/source/g/git-cola/git-cola-4.0.4.tar.gz
-	source = https://files.pythonhosted.org/packages/source/g/git-cola/git-cola-4.0.4.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/g/git-cola/git-cola-4.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/g/git-cola/git-cola-4.1.0.tar.gz.asc
 	validpgpkeys = FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0
-	sha256sums = 910d939943553ef1cd8668af6058f1992d37cf0fe23d0cdef15ef8634e9b9942
+	sha256sums = d77ba2eb1d1240f47cc44f5fcb9230cc65681834e7e27edf17c5ada462d3fb07
 	sha256sums = SKIP
 
 pkgname = git-cola
