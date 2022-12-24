@@ -1,38 +1,32 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
-# Contributor: ugur
-
-pkgname=esp-idf-git
+# Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 _pkgname=esp-idf
-pkgver=r18070.1d7068e4be
+pkgname=${_pkgname}-git
+pkgver=5.1.dev.r2509.cfef24863f
 pkgrel=1
-pkgdesc="ESP specific API/libraries from Espressif"
-arch=('i686' 'x86_64')
+pkgdesc='Espressif IoT Development Framework. Official development framework for ESP32.'
+arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
 url="https://github.com/espressif/esp-idf"
 license=('Apache')
-makedepends=('git')
-depends=('python' 'python-pyserial')
+depends=('cmake' 'git' 'libusb' 'python' 'python-click' 'python-cryptography' 'python-future' 'python-pyelftools' 'python-pyparsing' 'python-pyserial' 'python-virtualenv')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 options=('!strip')
 install='esp-idf-git.install'
-# source=(esp-idf::git+https://github.com/espressif/esp-idf.git#commit=9a26296a)
-source=(esp-idf::git+https://github.com/espressif/esp-idf.git)
+source=('git+https://github.com/espressif/esp-idf.git')
 md5sums=('SKIP')
 
-prepare() {
-  cd $srcdir/${_pkgname}/
-  ./tools/set-submodules-to-github.sh  > /dev/null
-}
-
 pkgver() {
-  cd "$srcdir/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${_pkgname}"
+	git describe | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//'
 }
 
-build() {
+prepare() {
 	cd $srcdir/${_pkgname}
 	git submodule update --init
 }
+
 package() {
-  mkdir -p ${pkgdir}/opt/esp-idf-sdk
-  cd "${srcdir}/${_pkgname}"
-  cp -R . ${pkgdir}/opt/esp-idf-sdk
+	mkdir -p ${pkgdir}/opt/esp-idf
+	cd "${srcdir}/${_pkgname}"
+	cp -R . ${pkgdir}/opt/esp-idf
 }

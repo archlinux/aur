@@ -1,7 +1,21 @@
 post_install() {
-	cat <<HERE
-Set ESPIDF variable to /opt/esp-idf-sdk in your profile
-e. g. like this:
-  echo 'export ESPIDF=/opt/esp-idf-sdk' >>~/.profile
-HERE
+	echo -e "\e[1;33m" # yellow
+
+	echo 'To use ESP-IDF:'
+	echo
+	echo '1. Run /opt/esp-idf/install.sh to install ESP-IDF to ~/.espressif.'
+	echo '   You only have to do this once after installing or upgrading'
+	echo '   the esp-idf-git package.'
+	echo
+	echo '2. Run `source /opt/esp-idf/export.sh` to add idf.py and idf_tools.py'
+	echo '   to your current PATH. You will have to do this in every terminal'
+	echo '   where you want to use ESP-IDF. Alternatively, you can add'
+	echo '   "source /opt/esp-idf/export.sh" to ~/.bashrc or the equivalent for'
+	echo '   your shell to load ESP-IDF automatically in all terminals.'
+
+	echo -e "\e[1;0m" # default
+}
+
+post_upgrade() {
+	post_install
 }
