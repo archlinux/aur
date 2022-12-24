@@ -41,6 +41,6 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = 0001-Fix-resources-Fix-CMake.patch
 	sha256sums = SKIP
-	sha256sums = 5b7e23e32c65b07c0450250e2faf6f1e62a03dd75342766a0c917ee768abcd30
+	sha256sums = 2ae537def01e43b07589eb09011660fbe10c3ffd77d1dd8582cf92fbe3f3f4a9
 
 pkgname = pcsx2-git

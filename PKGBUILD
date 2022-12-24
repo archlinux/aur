@@ -70,8 +70,8 @@ prepare()
   git submodule update --init --recursive
   git apply -3 "${srcdir}/0001-Fix-resources-Fix-CMake.patch"
 
-  export CMAKE_C_COMPILER=/usr/bin/clang-12
-  export CMAKE_CXX_COMPILER=/usr/bin/clang++-12
+  export CMAKE_C_COMPILER=/usr/bin/clang
+  export CMAKE_CXX_COMPILER=/usr/bin/clang++
   export CMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
   export CMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
 }
@@ -84,6 +84,9 @@ pkgver()
 
 build()
 {
+  cd $srcdir/pcsx2
+  cp -prv bin/resources/* pcsx2-qt/resources/ | grep '\->'
+  cd ..
   mkdir -p build
   cd build
 
@@ -104,11 +107,12 @@ build()
 
 package()
 {
+  ls
     DESTDIR="${pkgdir}" cmake --install build
 }
 
 # vim: ts=2 sw=2 et:
 
 sha256sums=('SKIP'
-            '5b7e23e32c65b07c0450250e2faf6f1e62a03dd75342766a0c917ee768abcd30'
+            '2ae537def01e43b07589eb09011660fbe10c3ffd77d1dd8582cf92fbe3f3f4a9'
 )

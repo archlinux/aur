@@ -1,13 +1,13 @@
-From a01eceba4f1b28fa2a6e9fd3c64058b12955db08 Mon Sep 17 00:00:00 2001
+From 99611370656da6f2a124a3f55db579ee2ab5f7b2 Mon Sep 17 00:00:00 2001
 From: kenshen112 <finalfantasytimothy@gmail.com>
 Date: Sat, 24 Dec 2022 10:00:03 -0700
 Subject: [PATCH] Fix resources, Fix CMake
 
 ---
- cmake/BuildParameters.cmake   |  9 +++++++++
- pcsx2-qt/CMakeLists.txt       |  8 ++++----
- pcsx2/Frontend/CommonHost.cpp | 12 +++++++-----
- 3 files changed, 20 insertions(+), 9 deletions(-)
+ cmake/BuildParameters.cmake   | 9 +++++++++
+ pcsx2-qt/CMakeLists.txt       | 7 ++++---
+ pcsx2/Frontend/CommonHost.cpp | 8 +++++---
+ 3 files changed, 18 insertions(+), 6 deletions(-)
 
 diff --git a/cmake/BuildParameters.cmake b/cmake/BuildParameters.cmake
 index f38e0bea8..2e11ee7f7 100644
@@ -30,10 +30,10 @@ index f38e0bea8..2e11ee7f7 100644
  	option(OSX_USE_DEFAULT_SEARCH_PATH "Don't prioritize system library paths" OFF)
  	option(SKIP_POSTPROCESS_BUNDLE "Skip postprocessing bundle for redistributability" OFF)
 diff --git a/pcsx2-qt/CMakeLists.txt b/pcsx2-qt/CMakeLists.txt
-index 7e822cb2a..0581bca2b 100644
+index 7e822cb2a..319d442d5 100644
 --- a/pcsx2-qt/CMakeLists.txt
 +++ b/pcsx2-qt/CMakeLists.txt
-@@ -4,11 +4,11 @@ set(CMAKE_AUTOUIC ON)
+@@ -4,9 +4,10 @@ set(CMAKE_AUTOUIC ON)
  
  add_executable(pcsx2-qt)
  
@@ -42,38 +42,33 @@ index 7e822cb2a..0581bca2b 100644
 -else()
 +if(PACKAGE_MODE)
 +	install(TARGETS pcsx2-qt DESTINATION ${CMAKE_INSTALL_BINDIR})
++	install(DIRECTORY resources DESTINATION ${CMAKE_INSTALL_DATADIR}/PCSX2)
 + else()
  	install(TARGETS pcsx2-qt DESTINATION ${CMAKE_SOURCE_DIR}/bin)
--endif()
-+ endif()
+ endif()
  
- target_sources(pcsx2-qt PRIVATE
- 	AboutDialog.cpp
 diff --git a/pcsx2/Frontend/CommonHost.cpp b/pcsx2/Frontend/CommonHost.cpp
-index ab992e483..477fdce63 100644
+index ab992e483..6269b9748 100644
 --- a/pcsx2/Frontend/CommonHost.cpp
 +++ b/pcsx2/Frontend/CommonHost.cpp
-@@ -128,13 +128,15 @@ void CommonHost::SetAppRoot()
+@@ -128,12 +128,14 @@ void CommonHost::SetAppRoot()
  
  void CommonHost::SetResourcesDirectory()
  {
 -#ifndef __APPLE__
--	// On Windows/Linux, these are in the binary directory.
--	EmuFolders::Resources = Path::Combine(EmuFolders::AppRoot, "resources");
--#else
 +#ifdef __APPLE__
- 	// On macOS, this is in the bundle resources directory.
- 	EmuFolders::Resources = Path::Canonicalize(Path::Combine(EmuFolders::AppRoot, "../Resources"));
--#endif
-+ #elif !defined(PCSX2_APP_DATADIR)
-+ 	// On Windows/Linux, these are in the binary directory.
-+ 	EmuFolders::Resources = Path::Combine(EmuFolders::AppRoot, "resources");
-+ #else
-+ EmuFolders::Resources = Path::Canonicalize(Path::Combine(EmuFolders::AppRoot, PCSX2_APP_DATADIR "/resources"));
-+ #endif
++	// On macOS, this is in the bundle resources directory.
++	EmuFolders::Resources = Path::Canonicalize(Path::Combine(EmuFolders::AppRoot, "../Resources"));
++#elif !defined(PCSX2_APP_DATADIR)
+ 	// On Windows/Linux, these are in the binary directory.
+ 	EmuFolders::Resources = Path::Combine(EmuFolders::AppRoot, "resources");
+ #else
+-	// On macOS, this is in the bundle resources directory.
+-	EmuFolders::Resources = Path::Canonicalize(Path::Combine(EmuFolders::AppRoot, "../Resources"));
++	EmuFolders::Resources = Path::Canonicalize(Path::Combine(EmuFolders::AppRoot, PCSX2_APP_DATADIR "/resources"));
+ #endif
  }
  
- bool CommonHost::ShouldUsePortableMode()
 -- 
 2.38.1
 
