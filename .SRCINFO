@@ -1,0 +1,16 @@
+pkgbase = specterext-liquidissuer
+	pkgdesc = Issue Liquid assets with specter-desktop
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://specter.solutions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-embit
+	depends = python-flask
+	source = https://github.com/cryptoadvance/specterext-liquidissuer/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = d6826b66686ec5f1814d8cb1d84a7a4ce9fda98ad4b96d51da776cda0272fbb5
+
+pkgname = specterext-liquidissuer
