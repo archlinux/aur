@@ -15,8 +15,8 @@
 # Rust package guidelines are applicable here or not, but try to follow them anyway.
 
 pkgname=libblkio
-pkgver=1.1.1
-_fragment=#commit=d056f92019b42b76a6ed0934e47f8b2d73beb007 # tags/v1.1.1^0
+pkgver=1.2.2
+_fragment=#commit=896397e44daf2bbe3df32717ee15f49fe1a072a3 # tags/v1.2.2^0
 pkgrel=1
 pkgdesc="High-performance block device I/O library with C API"
 arch=(x86_64)
@@ -24,6 +24,7 @@ url="https://gitlab.com/libblkio/libblkio"
 license=(MIT Apache)
 depends=(gcc-libs)
 makedepends=(cargo git meson python-docutils)
+(( _ARCH_TEST_EXTRA )) && checkdepends=(qemu-img)
 source=(git+https://gitlab.com/libblkio/libblkio.git"$_fragment")
 sha256sums=('SKIP')
 
@@ -37,7 +38,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   cargo fetch --locked --target "$CARCH"-unknown-linux-gnu
-  sed -i 's/\(^    --locked\)/\1 --offline/' src/cargo-build.sh # XXX fragile!
+  sed -i 's/--locked/--frozen/' src/cargo-build.sh
 }
 
 build() {
@@ -47,8 +48,33 @@ build() {
 }
 
 check() {
+  # Refer to tests/meson.build for the list of test suites. We cannot run the
+  # 'virtio-blk-vhost-vdpa' test suite because it requires kernel modules pre-loaded.
+
   cd $pkgname
-  meson test -C build --print-errorlogs
+  meson test -C build --suite generic --suite io_uring --suite examples --print-errorlogs
+
+  # Don't run the 'virtio-blk-vhost-user' test suite by default, because running a daemon
+  # inside a PKGBUILD is a bit iffy. Pass _ARCH_TEST_EXTRA=1 into the build environment if
+  # you want it to run.
+
+  if (( _ARCH_TEST_EXTRA )); then
+    # Set up the test suite.
+    local _test_file=/tmp/libblkio-vhost-user-tests.qcow2
+    local _test_socket=/tmp/libblkio-vhost-user-tests.sock
+    qemu-img create -f qcow2 $_test_file 1M
+    qemu-storage-daemon \
+      --blockdev file,filename=$_test_file,node-name=file \
+      --blockdev qcow2,file=file,node-name=qcow2 \
+      --export type=vhost-user-blk,id=export,addr.type=unix,addr.path=$_test_socket,node-name=qcow2,writable=on,num-queues=2 &
+    local _qsd_pid=$!
+
+    meson test -C build --suite virtio-blk-vhost-user --print-errorlogs
+
+    # Clean up.
+    kill $_qsd_pid
+    rm -v $_test_file
+  fi
 }
 
 package() {
