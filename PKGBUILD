@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=kali-themes
-pkgver=2022.4.3
+pkgver=2023.1.0
 pkgrel=1
 pkgdesc="GTK theme included with Kali Linux"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 options=('!strip' '!buildflags' '!makeflags')
 makedepends=('optipng' 'librsvg')
 source=("https://gitlab.com/kalilinux/packages/$pkgname/-/archive/kali/$pkgver/$pkgname-kali-$pkgver.tar.gz")
-sha512sums=('57b447a0224658c44d29ee3a99288eeb6a71750f764ec61a5c8c429192eb5d6a351e1fac38053d17206f5d98f3690ed3ec3b2f2598ff808b435e887115cb7a19')
+sha512sums=('565f1c24f6a330a27b9c2aba046dd15509e5da943a7c8f1f982d345017494e919d32d84bd6ea23d1b45180913a6ee015116993284efe8a5b1ccaa3567f01d845')
 
 build() {
 	cd "$pkgname-kali-$pkgver"
