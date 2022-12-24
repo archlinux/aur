@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=16.0.0_r444994.34a3259fab86
+pkgver=16.0.0_r446772.105fef5dca7e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -36,9 +36,15 @@ sha512sums=('SKIP'
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
-# NINJAFLAGS is an env var used to pass commandline options to ninja
-# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-            
+# Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
+# It can also happen that the kernel oom killer interferes and kills important tasks.
+# A reasonable value for them to avoid these issues appears to be 80% of available cores.
+# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or example for a system with 24 cores NINJAFLAGS is an env var used to pass commandline options to ninja
+# example for systems with 24 cores
+# NINJAFLAGS="-j 20 -l 20"
+# LITFLAGS="-j 20"
+# NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
+
 pkgver() {
     cd llvm-project/llvm
 
@@ -91,7 +97,7 @@ build() {
         -D LLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator \
         -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
         -D LLVM_SPIRV_INCLUDE_TESTS=ON \
-        -D LLVM_LIT_ARGS="-sv --ignore-fail" \
+        -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
 
     ninja -C _build $NINJAFLAGS 
@@ -175,7 +181,7 @@ package_llvm-libs-minimal-git() {
 
 package_spirv-llvm-translator-minimal-git() {
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version"
-depends=(llvm-minimal-git=$pkgver-$pkgrel 'spirv-tools')
+depends=(llvm-minimal-git=$pkgver-$pkgrel 'spirv-tools-git')
 provides=('spirv-llvm-translator')
 conflicts=('spirv-llvm-translator')
 
