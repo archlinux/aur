@@ -1,0 +1,20 @@
+pkgbase = mrcpp-git
+    pkgname = mrcpp-git
+    pkgver = r1025.134cf94
+    pkgrel = 1
+    pkgdesc = MultiResolution Computation Program Package
+    url = https://github.com/MRChemSoft/mrcpp
+    arch = x86_64
+    license = LGPL
+    depends = eigen3
+    depends = blas
+    depends = openmp
+    depends = openmpi
+    makedepends = cmake
+    provides = mrcpp
+    conflicts = mrcpp
+    source = git+https://github.com/MRChemSoft/mrcpp
+    sha256sums = SKIP
+
+pkgname = mrcpp-git
+
