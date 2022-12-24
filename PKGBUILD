@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Faster zlib and gzip compatible compression and decompression by providing python bindings for the ISA-L library'
 arch=('x86_64')
 url="https://github.com/pycompression/python-isal"
-license=('Custom:PSF-2.0')
+license=('PSF')
 depends=(
          'python'
         )
