@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-cucumber-compatibility-kit
-pkgver=11.0.1
-pkgrel=3
+pkgver=11.1.0
+pkgrel=1
 pkgdesc="Kit to check compatibility with official cucumber implementation"
 arch=(any)
 url='https://github.com/cucumber/compatibility-kit'
@@ -11,7 +11,7 @@ depends=(ruby-cucumber-messages ruby-rake ruby-rspec)
 makedepends=(npm)
 options=(!emptydirs)
 source=(https://github.com/cucumber/compatibility-kit/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('d9ae3e2362253f77207b47938f2457265a3fb5cb3ecf02666a64953028f07622')
+sha256sums=('628f4eb274ae1f27b06bd30227aea7e6da61534fd86ed64dc9e15e976fe0389b')
 
 prepare() {
   cd compatibility-kit-$pkgver/ruby
