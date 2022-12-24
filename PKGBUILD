@@ -1,15 +1,15 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=eartag-git
-pkgver=r101.68bbada
+pkgver=0.3.0.r1.g5959d7b
 pkgrel=1
 pkgdesc="Simple music tag editor"
 arch=('any')
 url="https://github.com/knuxify/eartag"
-license=('GPL3')
-depends=('libadwaita' 'taglib' 'python-gobject' 'python-eyed3' 'python-pillow' 'python-mutagen' 'python-pytaglib' 'python-magic')
+license=('MIT')
+depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-mutagen' 'python-magic')
 makedepends=('git' 'meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream-glib' 'python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
@@ -17,10 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -29,7 +26,7 @@ build() {
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
