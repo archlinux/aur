@@ -1,0 +1,10 @@
+[Unit]
+Description=A dreadfully simple socket listener that executes commands
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hare-hook
+
+[Install]
+WantedBy=multi-user.target
