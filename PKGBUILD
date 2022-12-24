@@ -1,6 +1,6 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
-pkgname=tt-rss-plugin-af-readablity-git
+pkgname=tt-rss-plugin-af-readability-git
 pkgver=r1.0226e0c
 pkgrel=1
 pkgdesc="Readability plugin for tt-rss"

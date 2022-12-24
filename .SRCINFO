@@ -1,4 +1,4 @@
-pkgbase = tt-rss-plugin-af-readablity-git
+pkgbase = tt-rss-plugin-af-readability-git
 	pkgdesc = Readability plugin for tt-rss
 	pkgver = r1.0226e0c
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = tt-rss-plugin-af-readablity-git
 	source = git+https://dev.tt-rss.org/tt-rss/ttrss-af-readability.git
 	sha256sums = SKIP
 
-pkgname = tt-rss-plugin-af-readablity-git
+pkgname = tt-rss-plugin-af-readability-git
