@@ -2,7 +2,7 @@
 # Maintainer: Nicolas Karolak <nicolas at karolak dot fr>
 
 pkgname='devc-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='CLI tool to manage your devcontainers.'
 url='https://github.con/nikaro/devc'
@@ -12,11 +12,11 @@ provides=('devc')
 conflicts=('devc' 'devc-bin' 'devc-git')
 optdepends=('docker: for docker backend' 'docker-compose: for docker-compose backend')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0/devc_1.0.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('154a36ba86b508954fc218e0dbc53d06dfc0db00dff694632ef58124514dba19')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.1/devc_1.0.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('75d3c17632cefed237b6829d5c3e60485ebb452e854737702c35f4d806046f07')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.0/devc_1.0.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('594e19cda9130b62ee23528acad03fd4b834798254a25e81ab43c2cb3dbdbb59')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/devc/releases/download/v1.0.1/devc_1.0.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('59e8344128436c513320328331eef2f03478bf936ad59713c46428c5157884ba')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin/" "./devc"
