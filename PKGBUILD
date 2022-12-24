@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r18076.gd853da3b0b'
+pkgver='5.0.r18097.g582d6b738b'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -28,9 +28,11 @@ source=(
 	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
 	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	"$pkgname-implot::git+https://github.com/epezent/implot.git"
 	"$pkgname-$pkgver-$pkgrel-system-libmgba.diff::https://github.com/$_mainpkgname/$_projectname/commit/afde3a0e0d2bc49a5d890d16611432aa6eb76428.diff" # https://github.com/dolphin-emu/dolphin/pull/11362
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,6 +72,12 @@ prepare() {
 	git submodule init "$_vmapath"
 	git config "submodule.$_vmapath.url" "$srcdir/$pkgname-vma/"
 	git -c protocol.file.allow=always submodule update "$_vmapath"
+
+	# Provide implot submodule
+	_implotpath='Externals/implot/implot'
+	git submodule init "$_implotpath"
+	git config "submodule.$_implotpath.url" "$srcdir/$pkgname-implot/"
+	git -c protocol.file.allow=always submodule update "$_implotpath"
 }
 
 pkgver() {
