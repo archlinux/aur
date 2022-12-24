@@ -6,13 +6,14 @@ _name=xopen
 pkgver=1.7.0
 _pkgver=1.7.0
 pkgrel=1
-pkgdesc='Python library to open compressed files transparently'
-arch=('x86_64')
+pkgdesc='Python library to pen compressed files transparently'
+arch=('any')
 url="https://github.com/pycompression/xopen/"
 license=('MIT')
 depends=(
         'python'
-        'pigz'
+        'python-typing_extensions'
+        'python-zstandard'
         'python-isal'
         )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
