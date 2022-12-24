@@ -11,5 +11,42 @@ ExecStart=/usr/bin/muse-hub-service
 Restart=always
 RestartSec=5
 WorkingDirectory=/opt/muse-hub
+
+ReadWritePaths=/tmp /srv/muse-hub
+
+TemporaryFileSystem=/opt:ro /srv:rw
+BindReadOnlyPaths=/opt/muse-hub
+BindPaths=-/srv/muse-hub /tmp
+
+NoNewPrivileges=yes
+PrivateTmp=no
+PrivateDevices=yes
+PrivateUsers=yes
+PrivateMounts=yes
+DevicePolicy=closed
+
+ProtectSystem=strict
+ProtectHome=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectProc=noaccess
+
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+MemoryDenyWriteExecute=no
+LockPersonality=yes
+
+IPAddressDeny=10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.64.0.0/10,fc00::/7,fd00::/8,fec0::/10,localhost,link-local,multicast
+
 [Install]
 WantedBy=multi-user.target
