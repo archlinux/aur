@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=6.0.6.arch1
+pkgver=6.1.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -84,7 +84,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v6.0-r0.patch
+    0009-prjc_v6.1-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -102,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '272dd11f791469d8bdf0c260228d591bc367141e56c07dfa26c7d54aa2549b8e76919f55cf1c5adf9572d13785a8b40410454b63ae8e2067943c2ac4a1677d01'
-            'cbc6b26e8ab7916f4b9b36ef1242a43690c8d40677cc688a007c07c8c7b5396751fb9b51e17b83be4a96f5a74aaa4561f94d0360c94ed073a41856cbf9a52334'
+            '43eb44979e3b8d3098524351e966e1f79d0a3a51a85e59176716a10fda43cc8baa71d886ab0bc36617f7774cf14579e2ebdec232d1d88fcbe3cb7a2b5d757322'
+            '48bd8d10ebd46ad176c2e6b07fb30bded6bac39fbd837ead060736bb045f97ef50d16ed8ddc3d4c1cc15e94e6da425dba652f1e57f8f7c3db252b8df8e83c946'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -269,7 +269,7 @@ _package-headers() {
     msg2 "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
