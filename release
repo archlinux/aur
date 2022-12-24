@@ -25,13 +25,13 @@ CHECKSUMS_FILE="checksums-$VERSION.txt"
 sed -r "s/^pkgver=.*$/pkgver=\"$VERSION\"/g" PKGBUILD -i
 
 # get checksums
-wget -q -nc https://github.com/SpatiumPortae/portal/releases/download/v1.0.4/checksums.txt -O $CHECKSUMS_FILE
+wget -q -nc "https://github.com/SpatiumPortae/portal/releases/download/v$VERSION/checksums.txt" -O $CHECKSUMS_FILE
 SUM_x86="$(grep 'Linux_x86_64.tar.gz' $CHECKSUMS_FILE | cut -d\  -f1)"
 SUM_arm="$(grep 'Linux_arm64.tar.gz' $CHECKSUMS_FILE | cut -d\  -f1)"
 
 # upate shasums
-sed -r "s/^sha256sums_x86_64=\([\"'][^\"']+[\"']\)$/sha256sums_x86_64=(\"$SUM_x86\")/" PKGBUILD -i
-sed -r "s/^sha256sums_aarch64=\([\"'][^\"']+[\"']\)$/sha256sums_aarch64=(\"$SUM_arm\")/" PKGBUILD -i
+sed -r "s/sha256sums_x86_64=\([\"'][^\"']+[\"']\)$/sha256sums_x86_64=(\"$SUM_x86\")/" PKGBUILD -i
+sed -r "s/sha256sums_aarch64=\([\"'][^\"']+[\"']\)$/sha256sums_aarch64=(\"$SUM_arm\")/" PKGBUILD -i
 
 # regenerate .SRCINFO
 makepkg -f && makepkg --printsrcinfo > .SRCINFO
