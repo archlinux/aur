@@ -1,0 +1,24 @@
+diff --git a/apps/studio/src/common/platform_info.ts b/apps/studio/src/common/platform_info.ts
+index e18d7c4f..3fe4b259 100644
+--- a/apps/studio/src/common/platform_info.ts
++++ b/apps/studio/src/common/platform_info.ts
+@@ -4,8 +4,8 @@ import * as electron from 'electron'
+ const e = electron.remote ? electron.remote : electron
+ const p = electron.remote ? electron.remote.process : process
+ const platform = p.env.OS_OVERRIDE ? p.env.OS_OVERRIDE : p.platform
+-const testMode = p.env.TEST_MODE ? true : false
+-const isDevEnv = !(e.app && e.app.isPackaged);
++const testMode = false;
++const isDevEnv = false;
+ const isWindows = platform === 'win32'
+ const isMac = platform === 'darwin'
+ const easyPlatform = isWindows ? 'windows' : (isMac ? 'mac' : 'linux')
+@@ -13,7 +13,7 @@ let windowPrefersDarkMode = false
+ if (electron.remote) {
+   windowPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+ }
+-const updatesDisabled = !!p.env.BEEKEEPER_DISABLE_UPDATES
++const updatesDisabled = true;
+ 
+ let userDirectory =  testMode ? './tmp' : e.app.getPath("userData")
+ const downloadsDirectory = testMode ? './tmp' : e.app.getPath('downloads')
