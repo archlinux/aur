@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B6rc1.r0.g5b6095ad
+pkgver=B6.r0.g188f25c6
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -87,7 +87,7 @@ package_looking-glass-module-dkms-git() {
 
 package_looking-glass-host-git() {
 	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('libxcb' 'zlib')
+	depends=('libxcb' 'zlib' 'pipewire')
 	provides=("${_pkgname}-host")
 	conflicts=("${_pkgname}-host")
 
