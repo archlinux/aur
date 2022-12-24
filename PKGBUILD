@@ -1,10 +1,10 @@
 pkgname=knusperli-git
 _pkgname="${pkgname%-git}"
-pkgver=0.0.0.r10.g415439b
+pkgver=r11.415439b
 pkgrel=1
 pkgdesc='A deblocking JPEG decoder'
 arch=('x86_64')
-url="https://github.com/google/knusperli/"
+url="https://github.com/google/knusperli"
 license=('Apache')
 depends=(
   'gcc-libs'
@@ -22,14 +22,9 @@ sha256sums=(
   'SKIP'
 )
 
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  git tag v0.0.0 d9f1186bd361de372486166ef198485d27cf6b62
-}
-
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
