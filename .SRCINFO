@@ -1,6 +1,6 @@
 pkgbase = eaglemode
 	pkgdesc = Visit almost everything in your PC simply by zooming in
-	pkgver = 0.95.2
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = http://eaglemode.sourceforge.net/
 	arch = i686
@@ -17,7 +17,8 @@ pkgbase = eaglemode
 	depends = xdg-utils
 	depends = xine-lib
 	depends = xz
-	source = https://downloads.sourceforge.net/eaglemode/eaglemode-0.95.2.tar.bz2
-	sha256sums = 0c99daf98dd2569adc8e572f7735ad8a6b3574bd358cc9a3d66714950e25edb4
+	optdepends = perl: Fetching stock market info for the emStocks plugin
+	source = https://downloads.sourceforge.net/eaglemode/eaglemode-0.96.0.tar.bz2
+	sha256sums = 68c5572697f0b3dae1d8469afc4cd22f0b70be7d295499446e1c73bd7304d61b
 
 pkgname = eaglemode
