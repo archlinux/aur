@@ -5,7 +5,7 @@ pkgver=r40.0a7fffb
 pkgrel=1
 pkgdesc="Highly configurable clock written in bash with soundpack and voice options."
 arch=('any')
-url="https://gitlab.com/stormdragon2976/$_pkgname"
+url="https://git.stormux.org/storm/$_pkgname"
 license=('WTFPL')
 depends=('bash')
 makedepends=('git')
@@ -22,7 +22,7 @@ optdepends=('espeak: TTS support'
 'yad: for talking-clock-gui to work')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
+source=("git+${url}")
 md5sums=("SKIP")
 
 pkgver()

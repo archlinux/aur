@@ -2,7 +2,7 @@ pkgbase = talking-clock-git
 	pkgdesc = Highly configurable clock written in bash with soundpack and voice options.
 	pkgver = r40.0a7fffb
 	pkgrel = 1
-	url = https://gitlab.com/stormdragon2976/talking-clock
+	url = https://git.stormux.org/storm/talking-clock
 	arch = any
 	license = WTFPL
 	makedepends = git
@@ -20,8 +20,7 @@ pkgbase = talking-clock-git
 	optdepends = yad: for talking-clock-gui to work
 	provides = talking-clock
 	conflicts = talking-clock
-	source = git+https://gitlab.com/stormdragon2976/talking-clock.git
+	source = git+https://git.stormux.org/storm/talking-clock
 	md5sums = SKIP
 
 pkgname = talking-clock-git
-
