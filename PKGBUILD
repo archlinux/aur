@@ -1,4 +1,5 @@
 # Maintainer: ahmetlii
+
 pkgname='organicmaps-git'
 pkgver='2022.11.24_3'
 pkgrel='4'
@@ -6,7 +7,7 @@ pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists b
 arch=("x86_64" "ARM") #ARM untested, but the binary includes compatibility
 depends=("cmake>=3.22.1" "qt5-base" "clang" "ninja" "python3")
 optdepends=("ccache")
-makedepends=("git" "gendesk" "libxml2")
+makedepends=("git" "git-lfs" "gendesk" "libxml2")
 license=("Apache")
 url="https://github.com/organicmaps/organicmaps"
 conflicts=("${pkgname%-git}-bin")
@@ -19,7 +20,7 @@ prepare() {
 
 pkgver() {
  cd $pkgname
- xmllint --xpath "string(//releases/release/@version)"  "${srcdir}/${pkgname}/packaging/app.organicmaps.desktop.metainfo.xml"
+ xmllint --xpath "string(//releases/release/@version)"  "${srcdir}/${pkgname}/packaging/app.organicmaps.desktop.metainfo.xml" | sed -r 's/-/_/g'
 }
 
 build() {
@@ -27,9 +28,10 @@ build() {
 }
 
 package() {
+ STR=$(xmllint --xpath "string(//releases/release/@version)"  "${srcdir}/${pkgname}/packaging/app.organicmaps.desktop.metainfo.xml" | sed -r 's/[.03-]//g')
  install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
  cp -r "$srcdir/$pkgname/data" "$pkgdir/usr/share/${pkgname%-git}"
- install -dm777 "$pkgdir/usr/share/organicmaps/data/221119" #needs to be changed manually every time the upstream has a new release
+ install -dm777 "$pkgdir/usr/share/organicmaps/data/${str#?}"
  install -Dm644 "$srcdir/omim-build-release/OMaps.app/Contents/Resources/mac.icns" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "/usr/bin/OMaps --data_path=/usr/share/${pkgname%-git}/data" --name "OrganicMaps" --icon="/usr/share/pixmaps/${pkgname%-git}.png" --categories="Utility;Maps;Navigation" --startupnotify=true
  install -Dm755 "$srcdir/omim-build-release/OMaps" "$pkgdir/usr/bin/OMaps"
