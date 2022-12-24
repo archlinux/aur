@@ -5,7 +5,7 @@
 pkgname=('flutter-light-common' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
 pkgbase=flutter-light
 _pkgname=flutter
-pkgver=3.3.9
+pkgver=3.3.10
 pkgrel=1
 makedepends=("python")
 optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
@@ -20,7 +20,7 @@ source=(
   "${_pkgname}.csh"
 )
 
-sha256sums=('5aac9006137157ecaf041beeb326e0395eed50950291553b60e07568a1454767'
+sha256sums=('d24e83f7a6b829d163feeef1abfcc30869f0c5d1af93e9917426265dad507024'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
