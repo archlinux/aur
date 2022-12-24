@@ -2,7 +2,7 @@
 
 pkgname=rocksdb-lite
 pkgver=7.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
