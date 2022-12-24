@@ -4,14 +4,14 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=orage-git
-pkgver=4.12.1.r546.g9474e560
+pkgver=4.16.0.r416.g6115255b
 pkgrel=1
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=("i686" "x86_64")
 license=('GPL2')
 url="https://docs.xfce.org/apps/orage/start"
 groups=('xfce4-goodies')
-depends=('xfce4-panel' 'libnotify' 'dbus-glib' 'libical')
+depends=('libxfce4ui' 'libnotify' 'libical')
 makedepends=('git' 'xfce4-dev-tools')
 provides=("orage")
 conflicts=("orage")
