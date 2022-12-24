@@ -2,8 +2,8 @@
 
 pkgname='upscayl-appimage'
 pkgdesc='Free and Open Source AI Image Upscaler'
-pkgver='1.5.5'
-pkgrel='4'
+pkgver='2.0.0'
+pkgrel='1'
 arch=('x86_64')
 url='https://github.com/upscayl/upscayl'
 _repo='https://github.com/upscayl/upscayl'
@@ -15,7 +15,7 @@ makedepends=(
   'findutils'
 )
 source=(
-  "https://github.com/upscayl/upscayl/releases/download/v$pkgver/Upscayl-$pkgver.AppImage"
+  "https://github.com/upscayl/upscayl/releases/download/v$pkgver/upscayl-$pkgver-linux.AppImage"
   "https://github.com/upscayl/upscayl/raw/v$pkgver/Real-ESRGAN_LICENSE.txt"
   'upscayl.desktop'
   'upscayl'
@@ -35,8 +35,8 @@ provides=(
 )
 
 build() {
-  chmod +x "./Upscayl-$pkgver.AppImage"
-  "./Upscayl-$pkgver.AppImage" --appimage-extract
+  chmod +x "./upscayl-$pkgver-linux.AppImage"
+  "./upscayl-$pkgver-linux.AppImage" --appimage-extract
   chmod 755 squashfs-root
 }
 
