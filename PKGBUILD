@@ -9,8 +9,8 @@ url=https://harehook.net
 license=(Unlicense)
 makedepends=(hare)
 source=("$pkgname-v$pkgver.tar.gz::https://git.sr.ht/~johnholmesii/$pkgname/archive/v$pkgver.tar.gz"
-        "file://$(pwd)/$pkgname.service"
-        "file://$(pwd)/$pkgname.conf")
+        "$pkgname.service"
+        "$pkgname.conf")
 
 sha256sums=('acb4a53d3f2da9ae637802e2578748d2b99da03849aa77356435684442ca8542'
             'd5e89e2d5c89f74a812c23819f18aaaf8717007aa71372dd02e5da2a5a3982d0'
