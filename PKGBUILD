@@ -12,7 +12,7 @@ _mainpkgname="$_projectname-beta"
 _noguipkgname="$_projectname-beta-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$_mainpkgname-git" "$_noguipkgname-git")
-pkgver=5.0.r17269.g48c9c224cf
+pkgver=5.0.r17995.g8bad821019
 pkgrel=1
 pkgdesc='A Gamecube / Wii emulator - monthly beta release'
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=48c9c224cf9f82f0f9f2690b7cc6283d7448480c")
+source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=8bad821019721b9b72701b495da95656ace5fea5")
 sha256sums=('SKIP')
 
 prepare() {
