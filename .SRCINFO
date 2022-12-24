@@ -1,9 +1,10 @@
 pkgbase = todo-mekb-git
 	pkgdesc = Terminal to-do list written in C
 	pkgver = r13.f301191
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mekb-turtle/todo
 	arch = any
+	makedepends = git
 	source = todo::git+https://github.com/mekb-turtle/todo.git
 	sha256sums = SKIP
 
