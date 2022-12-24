@@ -8,7 +8,7 @@ pkgver=0.8.5.r11.g7d69f70
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
-url="http://z411.github.io/trackma/"
+url="https://z411.github.io/trackma/"
 license=('GPL3')
 depends=('python'
          'python-pyinotify')
