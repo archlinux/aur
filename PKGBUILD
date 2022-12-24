@@ -8,7 +8,7 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r14126.gef91e7c8d
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - repo wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -61,6 +61,7 @@ package() {
   cd $srcdir/tenacity/build
   make DESTDIR="${pkgdir}" install
   test -f ${pkgdir}/usr/tenacity && rm ${pkgdir}/usr/tenacity # remove unused launch script
+  test -f ${pkgdir}/usr/audacity && rm ${pkgdir}/usr/audacity # remove unused launch script
 
   mv "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-audacity-project.xpm" \
      "${pkgdir}/usr/share/pixmaps/gnome-mime-application-x-tenacity-project.xpm"
