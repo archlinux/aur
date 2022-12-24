@@ -14,10 +14,11 @@ sha256sums=('d490ff8825fa53fe5abfb549310cb54a2dfef1ebd3f82e24548483772994e06a')
 
 build() {
     cd "$srcdir"
-    make build
+    ./configure
+    make
 }
 
 package() {
     cd "$srcdir"
-    make install DESTDIR="${pkgdir}" PREFIX="/usr"
+    make install PREFIX="${pkgdir}/usr"
 }
