@@ -1,5 +1,4 @@
-pkg
-src
-*.tar.*
-*.log
-tab-options.patch
+*
+PKGBUILD
+.SRCINFO
+.gitignore

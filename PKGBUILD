@@ -1,6 +1,6 @@
 _pkgname=dolphin
 pkgname="${_pkgname}-tabopts"
-pkgver=22.08.3
+pkgver=22.12.0
 pkgrel=1
 pkgdesc='KDE File Manager - with tab options patch'
 arch=(x86_64)
@@ -28,16 +28,29 @@ conflicts=("$_pkgname")
 groups=(kde-applications kde-system)
 source=(
   https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz
-  "tab-options.patch"::"https://invent.kde.org/system/dolphin/-/merge_requests/269.patch"
+
+  # add tab options
+  https://invent.kde.org/system/dolphin/-/merge_requests/269.patch
+
+  # fix copy-pasting issues
+  https://invent.kde.org/system/dolphin/-/commit/c8aed8ac.patch
+
+  # fix regressions; revert KIO removal
+  https://invent.kde.org/system/dolphin/-/merge_requests/480.patch
 )
 sha256sums=(
-  '971489a59cdd6b297e2142eb3315847addafbc4e3504e1609fe5e1d119cf15a3'
+  '487c04953a7b505a638adce16cb3d4df3a3345ffc27e069d4f84730e4ad6ac26'
   '5fdc620d687ad0d8a6ca6f5e0457b7130b10da2a87a1e10bf1ef41295f8bf3a7'
+  'ce74e2e5079ebe2522bf2420c25a74a524cef47502311bb7e602d906813fcf24'
+  'df86b0fad61a6be28361456983b462af180bf3fc891ae095fc611a11ba8dee86'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/tab-options.patch"
+
+  for p in "${srcdir}/"*.patch ; do
+    patch -p1 -i "$p"
+  done
 }
 
 build() {

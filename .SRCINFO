@@ -1,6 +1,6 @@
 pkgbase = dolphin-tabopts
 	pkgdesc = KDE File Manager - with tab options patch
-	pkgver = 22.08.3
+	pkgver = 22.12.0
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -23,9 +23,13 @@ pkgbase = dolphin-tabopts
 	optdepends = purpose: share context menu
 	provides = dolphin
 	conflicts = dolphin
-	source = https://download.kde.org/stable/release-service/22.08.3/src/dolphin-22.08.3.tar.xz
-	source = tab-options.patch::https://invent.kde.org/system/dolphin/-/merge_requests/269.patch
-	sha256sums = 971489a59cdd6b297e2142eb3315847addafbc4e3504e1609fe5e1d119cf15a3
+	source = https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz
+	source = https://invent.kde.org/system/dolphin/-/merge_requests/269.patch
+	source = https://invent.kde.org/system/dolphin/-/commit/c8aed8ac.patch
+	source = https://invent.kde.org/system/dolphin/-/merge_requests/480.patch
+	sha256sums = 487c04953a7b505a638adce16cb3d4df3a3345ffc27e069d4f84730e4ad6ac26
 	sha256sums = 5fdc620d687ad0d8a6ca6f5e0457b7130b10da2a87a1e10bf1ef41295f8bf3a7
+	sha256sums = ce74e2e5079ebe2522bf2420c25a74a524cef47502311bb7e602d906813fcf24
+	sha256sums = df86b0fad61a6be28361456983b462af180bf3fc891ae095fc611a11ba8dee86
 
 pkgname = dolphin-tabopts
