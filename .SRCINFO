@@ -1,7 +1,7 @@
 pkgbase = xorg-fonts-75dpi-otb
 	pkgdesc = X.org 75dpi fonts (OTB version)
 	pkgver = 1.0.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://gitlab.freedesktop.org/
 	arch = any
 	license = custom
