@@ -1,7 +1,7 @@
 pkgbase = finitodo
 	pkgdesc = Finitodo is a graphical task/todo list manager for Linux that aims to be highly versatile yet not overly complicated. It has robust functionality in areas like reccurence/sorting/filtering but doesn't require digging through lots of menu screens to use.
 	pkgver = 2.0
-	pkgrel = 12
+	pkgrel = 2.0-13
 	url = https://gitlab.com/finitodo/finitodo
 	arch = x86_64
 	license = GPL
