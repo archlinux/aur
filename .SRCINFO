@@ -1,15 +1,16 @@
 pkgbase = nmapsi4
 	pkgdesc = Qt5-based Gui for nmap
 	pkgver = 0.5.alpha2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nmapsi4/nmapsi4
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake>=2.8.2
-	makedepends = qt5-webkit>=5.7
+	makedepends = qt5-tools>=5.7
 	depends = nmap>=6.00
 	depends = bind-tools
+	depends = qt5-webengine
 	source = https://github.com/nmapsi4/nmapsi4/archive/refs/tags/v0.5-alpha2.tar.gz
 	md5sums = 296843cc03147436fba210de30309b3c
 
