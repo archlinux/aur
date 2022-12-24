@@ -5,7 +5,7 @@
 
 pkgname=xorg-fonts-100dpi-otb
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="X.org 100dpi fonts (OTB version)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
@@ -30,6 +30,10 @@ build() {
       pushd "${dir}"
       shopt -s nullglob
       for f in *.bdf; do
+        family_name="$(grep -F 'FAMILY_NAME "' "$f")"
+        family_name="${family_name%\"}"
+        family_name_otb="$family_name (OTB)"
+        sed -i "s/$family_name/$family_name_otb/" "$f"
         fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
       done
       shopt -u nullglob
