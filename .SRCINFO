@@ -1,0 +1,11 @@
+pkgbase = protoscope
+	pkgdesc = A simple language to represent and emit the Protobuf wire format.
+	pkgver = 8e7a6aafa2c9958527b1e0747e66e1bfff045819
+	pkgrel = 1
+	url = https://github.com/protocolbuffers/protoscope
+	arch = any
+	license = Apache
+	makedepends = go
+	provides = protoscope
+
+pkgname = protoscope
