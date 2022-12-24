@@ -1,0 +1,13 @@
+pkgbase = specterext-exfund
+	pkgdesc = Specter extension to fund multiple addresses from a wallet.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://specter.solutions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/stepansnigirev/specterext-exfund/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 3e338362392c13d721b1e23e8a00be178bb0af377205831f05d102c54fc3bb3e
+
+pkgname = specterext-exfund
