@@ -1,6 +1,6 @@
 pkgbase = cppaper
 	pkgdesc = A Static Site/Blog Generator written in c++
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://cppaper.yurisantos.dev/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cppaper
 	makedepends = meson
 	makedepends = gcc
 	provides = cppaper
-	source = https://github.com/Yrds/cppaper/archive/refs/tags/0.8.1.tar.gz
+	source = https://github.com/Yrds/cppaper/archive/refs/tags/0.9.0.tar.gz
 	b2sums = 99c48caa9df3a70fda38d43f274a0eb1fcb04101dd9364b72a164e89bf07a154f7e97d31944d33aa91380f5a0ed397845f9d5920152bb75bb8c91ef53df7e269
 
 pkgname = cppaper
