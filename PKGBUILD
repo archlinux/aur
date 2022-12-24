@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('glib2' 'deadbeef' )
 conflicts=('deadbeef-mpris-plugin')
 options=('!libtool')
-source=(https://github.com/Serranya/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
+source=(https://github.com/DeaDBeeF-Player/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz)
 md5sums=('c7e6b795bb5092e1aa5af7e2d1640d70')
 
 build() {

@@ -10,7 +10,7 @@ pkgbase = deadbeef-mpris2-plugin
 	depends = deadbeef
 	conflicts = deadbeef-mpris-plugin
 	options = !libtool
-	source = https://github.com/Serranya/deadbeef-mpris2-plugin/releases/download/v1.14/deadbeef-mpris2-plugin-1.14.tar.xz
+	source = https://github.com/DeaDBeeF-Player/deadbeef-mpris2-plugin/releases/download/v1.14/deadbeef-mpris2-plugin-1.14.tar.xz
 	md5sums = c7e6b795bb5092e1aa5af7e2d1640d70
 
 pkgname = deadbeef-mpris2-plugin
