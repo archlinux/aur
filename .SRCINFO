@@ -1,6 +1,6 @@
 pkgbase = qscan
 	pkgdesc = QT document scanner using SANE
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/mensinda/qScan
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = qscan
 	depends = qt5-base
 	depends = imagemagick
 	depends = spdlog
-	source = https://github.com/mensinda/qScan/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/mensinda/qScan/archive/refs/tags/v1.0.2.tar.gz
 	source = https://github.com/mensinda/enumGen/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 8072a5c9ece93be1e7bb39c303a709fcd926aa942faff6bc367a8c26629b480e
+	sha256sums = 68226957436a77f8ffc3a5139dbe73771c7f089a87953a7abaa7f0e8f778acf1
 	sha256sums = 987e608f52e651e1c90514893485331227f0064e887068124fac1a8cb96d7a8a
 
 pkgname = qscan
