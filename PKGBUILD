@@ -2,7 +2,7 @@
 pkgname=qdigidoc4
 pkgver=4.2.14.4431
 _rls_tag=v4.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64' 'i686')
 url="http://www.id.ee/"
@@ -36,6 +36,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver/$pkgname-build"
   export BUILD_NUMBER=${pkgver##*.}
+  export CXXFLAGS=${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS}
   cmake .. -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
            -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
