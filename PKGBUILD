@@ -54,7 +54,7 @@ makedepends=(
 source=(
     'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
 )
-sha256sums=('42363b8a6915014d238eebbf0e5681b2b1ed6bd7f7a3231994648021758644b3')
+sha256sums=('3414afc826241a3e7a0cc4c188ccbca5100c37a7b2e98e5b650194b091b912e9')
 install=cryptopro-csp-k1.install
 options=(!strip)
 
