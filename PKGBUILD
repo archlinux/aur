@@ -1,6 +1,6 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-gnome-static-background-git
-pkgver=r9.abd1228
+pkgver=r12.75093fb
 pkgrel=1
 pkgdesc="Static Wallpaper in Overview"
 arch=('any')

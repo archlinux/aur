@@ -1,4 +1,5 @@
-*.tar.gz
-*.pkg.tar.zst
-*/*
-
+*
+!gnome-shell-extension-gnome-static-background-git.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO
