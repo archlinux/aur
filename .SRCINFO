@@ -1,6 +1,6 @@
 pkgbase = devc
 	pkgdesc = A CLI tool to manage your devcontainers
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/nikaro/devc
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = devc
 	conflicts = devc
 	conflicts = devc-bin
 	conflicts = devc-git
-	source = devc-v1.0.0.tar.gz::https://github.com/nikaro/devc/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 9e216efa27a804d57f43bbb86e608c8caad8fd5b7cb529bee377ab659961ca91
+	source = devc-v1.0.1.tar.gz::https://github.com/nikaro/devc/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 39aa8e6fbc5e1c7ebe57a89c4f9a3060a2e052465b50e07784afe5f824118b60
 
 pkgname = devc
