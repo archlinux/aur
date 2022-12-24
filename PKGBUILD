@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.3519.r404.gb1b3f0dba
+pkgver=v1.7.3767.r0.g23f1c1a14
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -81,7 +81,7 @@ prepare()
 pkgver()
 {
   cd $srcdir/pcsx2
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
