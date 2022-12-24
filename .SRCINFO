@@ -1,7 +1,7 @@
 pkgbase = xorg-fonts-misc-otb
 	pkgdesc = X.org misc fonts (OTB version)
 	pkgver = 1.0.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://gitlab.freedesktop.org/
 	arch = any
 	license = custom
