@@ -1,20 +1,20 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=eartag
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Simple music tag editor"
 arch=('any')
 url="https://github.com/knuxify/eartag"
-license=('GPL3')
-depends=('libadwaita' 'taglib' 'python-gobject' 'python-eyed3' 'python-pillow' 'python-mutagen' 'python-pytaglib' 'python-magic')
+license=('MIT')
+depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-mutagen' 'python-magic')
 makedepends=('meson')
-checkdepends=('appstream-glib')
-source=($url/archive/$pkgver.tar.gz)
-b2sums=('0e8f1ce84396e2a6a65583c04940d391bbdcca7e3fd439f8216ffb99d43bd9aeb98f15dc3836ffc423b653c1c113ad7e161a97309f52c291501b503969ee4d13')
+checkdepends=('appstream-glib' 'python-pytest')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+b2sums=('08f1911b8049634ebed2f496e288fc8e4ebcf8b3745f83255df7cf98cba63fa1000351a89c9be8762e812a07c98beb365fc7574f0763c8ba73119ce114a0d2b5')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 
