@@ -1,7 +1,7 @@
 pkgbase = dmusic
 	pkgdesc = Compact and native Yandex Music client
 	pkgver = 0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/levovix0/DMusic
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = dmusic
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-multimedia
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = openssl-1.1
