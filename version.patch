@@ -1,12 +1,12 @@
-diff --unified --recursive --text specter-desktop-1.13.1/setup.py specter-desktop-1.13.1/setup.py
---- specter-desktop-1.13.1/setup.py	2021-06-27 16:59:48.882756807 -0500
-+++ specter-desktop-1.13.1/setup.py	2021-06-27 17:00:39.369469975 -0500
+diff --unified --recursive --text specter-desktop-1.14.2/setup.py specter-desktop-1.14.2/setup.py
+--- specter-desktop-1.14.2/setup.py	2021-06-27 16:59:48.882756807 -0500
++++ specter-desktop-1.14.2/setup.py	2021-06-27 17:00:39.369469975 -0500
 @@ -19,7 +19,7 @@
  
  setup(
      name="cryptoadvance.specter",
 -    version="vx.y.z-get-replaced-by-release-script",
-+    version="1.13.1",
++    version="1.14.2",
      author="Stepan Snigirev, Kim Neunert",
      author_email="snigirev.stepan@gmail.com, kim.neunert@gmail.com",
      description="A GUI for Bitcoin Core optimised to work with airgapped hardware wallets",
