@@ -1,6 +1,6 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libxcb: X11 clipboard support'
 provides=('didyoumean')
 conflicts=('didyoumean')
 source=("https://github.com/hisbaan/didyoumean/releases/download/v${pkgver}/dym-${pkgver}-x86_64-linux-gnu.tar.gz")
-sha256sums=("e7d922dcc93843efa0b92cb8df988ea7935c80f1734ded253c6a0a3ed434e45f")
+sha256sums=("6b1db7e2475e27f53801c65bbf1b0b8ac856c95178975686f12631d51cc0f35c")
 
 package() {
     cd "$srcdir/"
