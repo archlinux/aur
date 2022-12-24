@@ -1,12 +1,13 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 # Contributor: Simon Hauser <Simon-Hauser@outlook.de>
 # Contributor: Jean Lucas <jean@4ray.co>
+# Contributor: XenHat <aur@xenh.at>
 
 # https://github.com/orhun/pkgbuilds
 
 pkgname=spotify-tui
 pkgver=0.25.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Spotify client for the terminal written in Rust"
 arch=('x86_64')
 url="https://github.com/Rigellute/spotify-tui"
@@ -32,6 +33,7 @@ prepare() {
   for patch in 'Cargo.toml.patch' 'Cargo.lock.patch'; do
     patch -p0 -i "$srcdir/$patch"
   done
+  cargo update
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -39,7 +41,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --release
   ./target/release/spt --completions bash > target/release/spt-completion.bash
   ./target/release/spt --completions zsh > target/release/spt-completion.zsh
   ./target/release/spt --completions fish > target/release/spt-completion.fish
@@ -48,7 +50,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  cargo test
 }
 
 package() {
