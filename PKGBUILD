@@ -3,8 +3,8 @@
 
 pkgname=python-mecab
 _pkgname=mecab-python3
-pkgver=1.0.5
-_pkgver="v1.0.5"
+pkgver=1.0.6
+_pkgver="v1.0.6"
 pkgrel=1
 pkgdesc="Morphological Analysis Tool - Python3 interface"
 arch=('x86_64' 'i686')
