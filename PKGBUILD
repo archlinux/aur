@@ -5,7 +5,7 @@ pkgdesc="MultiResolution Computation Program Package"
 arch=(x86_64)
 url="https://github.com/MRChemSoft/mrcpp"
 license=(LGPL)
-depends=(eigen3 blas openmp openmpi)
+depends=(eigen blas openmp openmpi)
 makedepends=(cmake)
 provides=(mrcpp)
 conflicts=(mrcpp)
@@ -31,4 +31,7 @@ check(){
 package(){
     cd $pkgname
     cmake --install build --prefix $pkgdir/usr/
+    install -d $pkgdir/usr/share/MRCPP/cmake
+    mv $pkgdir/usr/share/cmake/MRCPP/* $pkgdir/usr/share/MRCPP/cmake
+    rm -rf $pkgdir/usr/share/cmake/MRCPP
 }
