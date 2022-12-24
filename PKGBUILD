@@ -2,7 +2,7 @@
 
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
-pkgver=1.9.0.r73.gb0f80ef
+pkgver=1.9.0.r87.g7e02dc3
 pkgrel=1
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
