@@ -1,7 +1,7 @@
 pkgbase = pulsar-bin
 	pkgdesc = A community-led hyper-hackable text editor, built on electron
 	pkgver = 1.100.0beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pulsar-edit/pulsar
 	arch = x86_64
 	license = MIT
