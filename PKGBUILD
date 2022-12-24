@@ -4,9 +4,9 @@
 pkgname='stanc'
 pkgdesc="A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo."
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-url='http://mc-stan.org/'
+url='https://mc-stan.org/'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('texlive-bin' 'texlive-core' 'doxygen'

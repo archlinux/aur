@@ -1,8 +1,8 @@
 pkgbase = stanc
 	pkgdesc = A package for obtaining Bayesian inference using the No-U-Turn sampler, a variant of Hamiltonian Monte Carlo.
 	pkgver = 2.31.0
-	pkgrel = 1
-	url = http://mc-stan.org/
+	pkgrel = 2
+	url = https://mc-stan.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
