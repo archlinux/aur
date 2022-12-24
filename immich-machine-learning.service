@@ -1,0 +1,38 @@
+[Unit]
+Description=immich machine learning
+Documentation=https://github.com/immich-app/immich
+Requires=postgresql.service
+After=network.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=immich
+Group=immich
+Type=simple
+Restart=on-failure
+
+EnvironmentFile=/etc/immich.conf
+Environment=NODE_ENV=production
+SyslogIdentifier=immich-machine-learning
+ExecStart=node dist/main.js
+
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+RestrictNamespaces=yes
+
+SystemCallArchitectures=native
+AmbientCapabilities=
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+
+WorkingDirectory=/var/lib/immich/app/machine-learning
+ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload
+
+[Install]
+WantedBy=multi-user.target

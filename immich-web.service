@@ -1,0 +1,37 @@
+[Unit]
+Description=immich web
+Documentation=https://github.com/immich-app/immich
+After=network.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=immich
+Group=immich
+Type=simple
+Restart=on-failure
+
+EnvironmentFile=/etc/immich.conf
+Environment=NODE_ENV=production
+SyslogIdentifier=immich-web
+ExecStart=node build/index.js
+
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+RestrictNamespaces=yes
+
+SystemCallArchitectures=native
+AmbientCapabilities=
+CapabilityBoundingSet=
+NoNewPrivileges=yes
+
+WorkingDirectory=/var/lib/immich/app/web
+ReadWritePaths=/tmp /var/tmp
+
+[Install]
+WantedBy=multi-user.target

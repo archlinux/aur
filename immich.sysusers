@@ -1,0 +1,2 @@
+u	immich	-	"immich user"	/var/lib/immich	/usr/bin/bash
+m	immich	redis
