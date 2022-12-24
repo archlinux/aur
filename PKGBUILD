@@ -1,14 +1,15 @@
 # Maintainer: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
+_electron=electron20
 pkgname=wire-desktop
 pkgver=3.30.3018
-pkgrel=1
+pkgrel=2
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
-depends=('electron' 'xdg-utils')
+depends=("${_electron}" 'xdg-utils')
 makedepends=('git' 'npm' 'yarn' 'nodejs-lts-gallium')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
@@ -24,7 +25,7 @@ prepare() {
     cat << EOF > "${pkgname}"
 #!/usr/bin/env sh
 
-electron20 "/usr/lib/${pkgname}" "\$@"
+${_electron} "/usr/lib/${pkgname}" "\$@"
 EOF
 }
 
