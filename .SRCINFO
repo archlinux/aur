@@ -1,7 +1,7 @@
 pkgbase = pinball
 	pkgdesc = The Emilia Pinball Project strives to fulfil your needs for a great pinball game in Linux
 	pkgver = 0.3.20201218
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pinball.sourceforge.net/
 	install = pinball.install
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = pinball
 	depends = sdl_image
 	depends = mesa
 	depends = libtool
-	options = !makeflags
 	options = libtool
 	source = https://github.com/adoptware/pinball/archive/refs/tags/0.3.20201218.tar.gz
 	sha256sums = 61981c192630f3c99865dc3b3d095df94e97ede9d7df0e8d8601eb39eef54c6d
