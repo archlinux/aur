@@ -27,5 +27,5 @@ check(){
 
 package(){
     cd $pkgname-$pkgver
-    cmake --install build --install-prefix $pkgdir/usr/
+    cmake --install build --prefix $pkgdir/usr/
 }
