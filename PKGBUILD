@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=speedtest-go-git
-pkgver=1.3.0.r0.g6967f21
+pkgver=1.3.1.r9.ge55185e
 pkgrel=1
 pkgdesc="Command Line Interface and pure Go API for speedtest.net"
 arch=('x86_64')
