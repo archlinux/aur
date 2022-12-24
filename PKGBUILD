@@ -27,10 +27,12 @@ build() {
       pushd "${dir}"
       shopt -s nullglob
       for f in *.bdf; do
-        family_name="$(grep -F 'FAMILY_NAME "' "$f")"
-        family_name="${family_name%\"}"
-        family_name_otb="$family_name (OTB)"
-        sed -i "s/$family_name/$family_name_otb/" "$f"
+        if grep -Fq 'FAMILY_NAME "' "$f" 2>/dev/null; then
+          family_name="$(grep -F 'FAMILY_NAME "' "$f")"
+          family_name="${family_name%\"}"
+          family_name_otb="$family_name (OTB)"
+          sed -i "s/$family_name/$family_name_otb/" "$f"
+        fi
         fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
       done
       shopt -u nullglob
