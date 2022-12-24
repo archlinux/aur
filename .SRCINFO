@@ -1,9 +1,10 @@
 pkgbase = odus-git
 	pkgdesc = Light-weight sudo alternative
-	pkgver = r44.1d3dd7b
+	pkgver = r50.458b6a9
 	pkgrel = 1
 	url = https://github.com/mekb-turtle/odus
 	arch = any
+	makedepends = git
 	source = odus::git+https://github.com/mekb-turtle/odus.git
 	sha256sums = SKIP
 
