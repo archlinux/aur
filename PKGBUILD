@@ -60,10 +60,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-_srcver_tag=v6.0.6.arch1
-pkgver=v6.0.6.arch1.r1125405.56a0bd50df12
+pkgver=v6.1.1.arch1.r1140607.3684119f4f18
 pkgrel=1
 pkgdesc="Linux"
+_srcver_tag=v6.1.1.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -105,7 +105,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '8fd6ca51d98287f4b4bcc6f7b19b688d1bcd38887497eebac9c4cbdb229d4db8fb6fe5fb305cac55cbed35ab8a931d1d29a825eeaac0d507a6e5329a6f674382')
+            '38f98f10f634966bcbe3470a92e562e2789ae9179e54e8d8983c8dd08bbba1667a3714224a0de22f1611e0f89f406c50e0ff8efb1b9b79a0e7bdd40d05165b82')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -126,7 +126,7 @@ prepare() {
 
     #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
     #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
-    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #git fetch upstream_stable $v{_srcver_tag//.arch*/}
     #git merge --no-edit --no-commit FETCH_HEAD
 
     FullPatchesArray=(
@@ -281,7 +281,7 @@ _package-headers() {
     msg2 "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
