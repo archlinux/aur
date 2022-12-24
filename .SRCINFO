@@ -1,0 +1,50 @@
+pkgbase = tela-circle-icon-theme-spl-git
+	pkgdesc = A flat colorful design icon theme
+	pkgver = 2022.11.06.r26.g1aac9cf5
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Tela-circle-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = bash
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = hicolor-icon-theme
+	provides = tela-circle-icon-theme
+	provides = tela-circle-icon-theme-git
+	options = !strip
+	source = tela-circle-icon-theme-spl::git+https://github.com/vinceliuice/Tela-circle-icon-theme.git
+	b2sums = SKIP
+
+pkgname = tela-circle-icon-theme-all-git
+	pkgdesc = A flat colorful design icon theme (all variants)
+	conflicts = tela-circle-icon-theme-all-git
+
+pkgname = tela-circle-icon-theme-standard-git
+
+pkgname = tela-circle-icon-theme-black-git
+
+pkgname = tela-circle-icon-theme-blue-git
+
+pkgname = tela-circle-icon-theme-brown-git
+
+pkgname = tela-circle-icon-theme-green-git
+
+pkgname = tela-circle-icon-theme-grey-git
+
+pkgname = tela-circle-icon-theme-orange-git
+
+pkgname = tela-circle-icon-theme-pink-git
+
+pkgname = tela-circle-icon-theme-purple-git
+
+pkgname = tela-circle-icon-theme-red-git
+
+pkgname = tela-circle-icon-theme-yellow-git
+
+pkgname = tela-circle-icon-theme-manjaro-git
+
+pkgname = tela-circle-icon-theme-ubuntu-git
+
+pkgname = tela-circle-icon-theme-dracula-git
+
+pkgname = tela-circle-icon-theme-nord-git
