@@ -2,7 +2,7 @@
 
 _pkgname=nvml_fix
 pkgname=nvml-fix-git
-pkgrel=2
+pkgrel=3
 pkgver=r35.038fa0c
 pkgdesc="A workaround for an annoying bug in nVidia's NVML library."
 url=https://github.com/CFSworks/nvml_fix
@@ -38,11 +38,11 @@ build() {
 	make TARGET_VER=$NVIDIA_VERSION libdir=/usr/lib
 }
 package() {
-	install -Dm644 "${srcdir}/${_pkgname}/Makefile" "${pkgdir}/usr/src/nvml-fix-1/Makefile"
-	install -Dm644 "${srcdir}/${_pkgname}/empty.c" "${pkgdir}/usr/src/nvml-fix-1/empty.c"
-	install -Dm644 "${srcdir}/${_pkgname}/nvml_fix.c" "${pkgdir}/usr/src/nvml-fix-1/nvml_fix.c"
-	install -Dm644 "${srcdir}/${_pkgname}/nvml_v9.h" "${pkgdir}/usr/src/nvml-fix-1/nvml_v9.h"
-	install -Dm644 "${srcdir}/${_pkgname}/nvml_v3.h" "${pkgdir}/usr/src/nvml-fix-1/nvml_v3.h"
+	install -Dm644 "${srcdir}/${_pkgname}/Makefile" "${pkgdir}/usr/src/nvml-fix/Makefile"
+	install -Dm644 "${srcdir}/${_pkgname}/empty.c" "${pkgdir}/usr/src/nvml-fix/empty.c"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_fix.c" "${pkgdir}/usr/src/nvml-fix/nvml_fix.c"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_v9.h" "${pkgdir}/usr/src/nvml-fix/nvml_v9.h"
+	install -Dm644 "${srcdir}/${_pkgname}/nvml_v3.h" "${pkgdir}/usr/src/nvml-fix/nvml_v3.h"
 	install -Dm755 "${srcdir}/${_pkgname}/libnvidia-ml.so.1" "${pkgdir}/usr/lib/libnvidia-ml.so.1.fix"
 	install -Dm644 "${srcdir}/nvml-fix-install.hook" "${pkgdir}/usr/share/libalpm/hooks/nvml-fix-install.hook"
 	install -Dm644 "${srcdir}/80-nvml-fix-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/80-nvml-fix-upgrade.hook"
