@@ -6,7 +6,7 @@
 # Author: Pete Hildebrandt <send2ph at googlemail dot com>
 
 pkgname=sispmctl
-pkgver=4.9
+pkgver=4.10
 pkgrel=1
 pkgdesc="Control Gembird SIS-PM programmable power outlet strips"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://sispmctl.sourceforge.net"
 license=('GPL2')
 depends=('libusb-compat')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6a9ec7125e8c01bb45d4a3b56f07fb41fc437020c8dcd8c0f29ebb98dc55a647')
+sha256sums=('e648b6e87584330a0a693e7b521ebbc863608d6c97ef929063542b459d16bc6f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
