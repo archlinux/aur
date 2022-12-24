@@ -12,8 +12,8 @@ pkgname=(
   "woff2-jena1330${_vcssuffix}"
 )
 pkgver=r105.20160920.75d5b9e
-pkgrel=4
-pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF and TTF font, latest Git checkout.'
+pkgrel=5
+pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.'
 arch=(
   'any'
 )
