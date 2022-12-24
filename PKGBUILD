@@ -8,7 +8,7 @@ url="https://github.com/$pkgname/$pkgname"
 license=('GPL3')
 _electronpkg='electron13'
 depends=("$_electronpkg")
-makedepends=('git' 'libxcrypt-compat' 'nodejs<19.0.0' 'npm' 'python' 'yarn')
+makedepends=('git' 'libxcrypt-compat' 'nodejs>=16.0.0' 'nodejs<19.0.0' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'electron-builder-config.diff'

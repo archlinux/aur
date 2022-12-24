@@ -10,6 +10,7 @@ pkgbase = beekeeper-studio
 	license = GPL3
 	makedepends = git
 	makedepends = libxcrypt-compat
+	makedepends = nodejs>=16.0.0
 	makedepends = nodejs<19.0.0
 	makedepends = npm
 	makedepends = python
