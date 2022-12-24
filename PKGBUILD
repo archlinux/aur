@@ -5,7 +5,7 @@
 # Committer: Manolis Tzanidakis <manolis@archlinux.org>
 
 pkgname=courier-imap
-pkgver=5.1.9
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,7 +23,7 @@ source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgnam
 	courier-imapd.service
 	courier-pop3d.service
 	courier-pop3d-ssl.service)
-sha512sums=('f52e2d3b6e660be45ac4423a5b13cbf12fc3c69e24c8f7586c31861408dae812b43d6c4114631589b62b3610bf78280d66aee98a8f7324a23758a43ad87c9b82'
+sha512sums=('88ce60b666bc1db10059ffd34f76d8275f399ac1833ee820308db25df49ab4914a03547e6d58075d5fecb34204b5fb958877db06b3bb4529eb8cb9e547bbcf63'
             '3a5334b38dcae3f4caeaef0819debe6c13ead992dafb224eef7bdaee6d1c8c1faa4fb995ec79aeb71abf5ea03f05eb6d1981386b2b90058ba6fd0c2c82c34f04'
             'f293231a59f92ffb2e1835b56216ec6658cb48c97f5d2701be4d809600ee6f49f0a2678f9156f084e097d9fab8bd8de53acb9862457da313afcbf06326d75dcb'
             '20d8bab38bbb00023437c9384894471649e75b10bbcf7d3a7b3923b6453af96421c494bc5f7f83f5463a266d0d14dfb0ba0e08b01ea3e4deac24f40f5e986b2f'
