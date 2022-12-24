@@ -1,6 +1,6 @@
 pkgbase = kimi-theme-git
 	pkgdesc = Kimi is a light Gtk3.20+ theme
-	pkgver = r144.20f566c
+	pkgver = r146.cb22d3f
 	pkgrel = 1
 	url = https://github.com/EliverLara/Kimi
 	arch = any
