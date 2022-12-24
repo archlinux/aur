@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biocViews
-_pkgver=1.66.1
+_pkgver=1.66.2
 pkgname=r-${_pkgname,,}
-pkgver=1.66.1
+pkgver=1.66.2
 pkgrel=1
 pkgdesc='Categorized views of R package repositories'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('024c6992650ca38ffa7a7a9bbd599567b05dad156e9a059df6caec24ea9ff4f6')
+sha256sums=('3ea58d8881883672b9a97e91e60524a4faa8b67bec0c9c6fb8a311c77ba4bd39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
