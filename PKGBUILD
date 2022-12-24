@@ -1,9 +1,8 @@
 # Maintainer: Tony <tony@libpcap.net>
 
 pkgname=rocksdb-static
-#pkgver=7.7.3
 pkgver=7.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Embedded key-value store for fast storage (static library)'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
