@@ -1,4 +1,5 @@
-*.tar.gz
-*.pkg.tar.zst
-*/*
-
+*
+!gnome-shell-extension-compiz-alike-windows-effect-git.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO
