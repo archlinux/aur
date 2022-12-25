@@ -10,8 +10,6 @@ license=('GPL3')
 depends=('libadwaita' 'imagemagick' 'ghostscript' 'imath' 'libheif' 'liblqr' 'libjxl' 'openexr' 'python-gobject' 'python-docutils' 'python-svglib' 'python-pymupdf' 'swig' 'webp-pixbuf-loader')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 _commit=2c5b0c9c250078ca5b84f2f2609da81c4ab96ddb # tags/1.5.0^0
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')

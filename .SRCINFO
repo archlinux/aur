@@ -23,8 +23,6 @@ pkgbase = converter
 	depends = python-pymupdf
 	depends = swig
 	depends = webp-pixbuf-loader
-	provides = converter
-	conflicts = converter
 	source = converter::git+https://gitlab.com/adhami3310/Converter.git#commit=2c5b0c9c250078ca5b84f2f2609da81c4ab96ddb
 	b2sums = SKIP
 
