@@ -8,6 +8,7 @@ arch=('any')
 url="https://gitlab.freedesktop.org/"
 license=('custom')
 makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
+depends=('xorg-fonts-alias-75dpi' 'xorg-fonts-alias-100dpi' 'xorg-fonts-alias-misc')
 source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/adobe-utopia-75dpi/-/archive/master/adobe-utopia-75dpi-master.tar.gz
         ${url}/xorg/font/bh-75dpi/-/archive/master/bh-75dpi-master.tar.gz
