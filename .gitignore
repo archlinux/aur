@@ -1,4 +1,5 @@
-*.tar.gz
-*.pkg.tar.zst
-*/*
-
+*
+!gnome-shell-extension-applications-overview-tooltip.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO

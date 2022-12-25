@@ -1,7 +1,7 @@
-# Maintainer: Christian Schendel <doppelhelix at gmail dot com>
+# Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
-pkgver=15.r0.g2e86a02
-pkgrel=2
+pkgver=16.r0.gdac0b90
+pkgrel=1
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
