@@ -19,7 +19,7 @@ source=("git+${url}.git"
 		"81-nvml-fix-reapply.hook"
 		)
 sha256sums=('SKIP'
-            '51c2e28e88193a8b2435ff23eb4d1818f8cdaaba32f7c2562862fae2223d3a35'
+            'd58867733fbe2a47c440645875535e11b83ee5b9123af9979fb56953915c7253'
             '40c4d6ed233647fd604cb9e4f030266e5c6a3d1a048b198aa2804411e12cfe39'
             '38c127ad138605e3c5982fb4e359ec39e093da3e3b5fd0448cb43d5dfb45113c')
 

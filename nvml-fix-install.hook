@@ -7,5 +7,5 @@ Target = nvml-fix-git
 [Action]
 Description = Applying nvml_fix...
 When = PostTransaction
-Exec = /bin/sh -c "rm /usr/lib/libnvidia-ml.so.1 && ln -s /usr/lib/libnvidia-ml.so.1.fix /usr/lib/libnvidia-ml.so.1"
+Exec = /bin/sh -c "ln -sf /usr/lib/libnvidia-ml.so.1.fix /usr/lib/libnvidia-ml.so.1"
 NeedsTargets
