@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-gtk-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A GTK4 alternative to an-anime-game-launcher-bin"
 url="https://github.com/an-anime-team/an-anime-game-launcher-gtk"
@@ -37,7 +37,7 @@ source=(
 )
 
 md5sums=(
-    'c741987c55ee1fef2cfc03292a9f92c1'
+    '83aad61ff163f5d319bbc3688a760088'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
     '12d89b3be2072437e7b252af97274142'
 )

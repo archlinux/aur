@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-gtk-bin
 	pkgdesc = A GTK4 alternative to an-anime-game-launcher-bin
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/an-anime-team/an-anime-game-launcher-gtk
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = an-anime-game-launcher-gtk-bin
 	provides = an-anime-game-launcher
 	conflicts = an-anime-game-launcher-bin
 	conflicts = an-anime-game-launcher
-	source = an-anime-game-launcher_1.2.3::https://github.com/an-anime-team/an-anime-game-launcher-gtk/releases/download/1.2.3/anime-game-launcher
+	source = an-anime-game-launcher_1.2.4::https://github.com/an-anime-team/an-anime-game-launcher-gtk/releases/download/1.2.4/anime-game-launcher
 	source = icon.png
 	source = an-anime-game-launcher.desktop
-	md5sums = c741987c55ee1fef2cfc03292a9f92c1
+	md5sums = 83aad61ff163f5d319bbc3688a760088
 	md5sums = c1a5499b80a55d3d238ef5c5d2c93c99
 	md5sums = 12d89b3be2072437e7b252af97274142
 
