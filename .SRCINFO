@@ -1,0 +1,15 @@
+pkgbase = ttop
+	pkgdesc = Interactive Nim Shell / REPL / Playground
+	pkgver = v0.4.2
+	pkgrel = 1
+	url = https://github.com/inv2004/ttop
+	install = .INSTALL
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	provides = ttop
+	source = git+https://github.com/inv2004/ttop
+	sha256sums = SKIP
+
+pkgname = ttop
