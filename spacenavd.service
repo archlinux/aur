@@ -1,5 +1,5 @@
 [Unit]
-Description=Userspace Daemon of the spacenav driver.
+Description=Spacenav driver daemon
 
 [Service]
 Type=forking

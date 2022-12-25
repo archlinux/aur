@@ -1,16 +1,15 @@
 pkgbase = spacenavd
-	pkgdesc = The spacenav project provides a free, compatible alternative, to the proprietary 3Dconnexion device driver and SDK, for their 3D input devices (called 'space navigator', 'space pilot', 'space traveller', etc).
-	pkgver = 1.0
+	pkgdesc = Free user-space driver for 6-dof space-mice (space navigator, space pilot, space traveller, ...)
+	pkgver = 1.2
 	pkgrel = 1
-	url = http://spacenav.sourceforge.net/
+	url = https://spacenav.sourceforge.net/
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = libx11
-	provides = spacenavd
 	backup = etc/spnavrc
-	source = https://github.com/FreeSpacenav/spacenavd/releases/download/v1.0/spacenavd-1.0.tar.gz
+	source = https://github.com/FreeSpacenav/spacenavd/releases/download/v1.2/spacenavd-1.2.tar.gz
 	source = spacenavd.service
-	sha256sums = 8e3af4e8767bc07f9e19773d769c66e169fc752ae305b7ed9f71ede86cc95a9a
-	sha256sums = 5a1122cf44acdf34537bc2ef7c1ad3776872f335b2993d68833c23f999d96c11
+	sha256sums = 94f28b56dcdb9e9439ea51a06fb1aae3ab5c5db3ca532d188c6d77d2148cc575
+	sha256sums = aeb15629aba253b76205e9a50dbc54fe35df5ab6b25a25da16ecb7f261e587d5
 
 pkgname = spacenavd
