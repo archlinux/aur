@@ -1,8 +1,8 @@
 # Maintainers: NNNN4 <NNNNFour4@gmail.com>
 
 pkgname=etterna
-pkgver=0.71.2
-pkgrel=5
+pkgver=0.72.0
+pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
@@ -20,8 +20,8 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}"
 )
-sha256sums=('18b2db6cec8a9c241ce3f750f83fa312b2f3cb00f05d735e5142e39e156d9c47'
-            '560e9f7af1d719f95d50fc01847af849df3711783e2d51b1f8148442c2c99d85'
+sha256sums=('bd14b6b5909429c148244661b248e8a4096f146a79a1619e9755f713d56bb181'
+            '61bbef1c217eaa69bbf37791fa3c365526a1409d99866cd7ca2a190610fb9eaa'
             '3962c6a32780c51d9523126a6de09e5212be428452bc4e34991f98403df444cb'
             '6487ffe86bd2de027d83e9eabbdc5c80b0dfe1b6c96df92b60ab0991d9e28c9f'
 )
