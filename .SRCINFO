@@ -1,0 +1,15 @@
+pkgbase = bltui
+	pkgdesc = Bluetooth TUI
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/simonadi/bltui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = bluez
+	provides = bltui
+	source = git+https://github.com/simonadi/bltui.git
+	sha256sums = 49ab1b965a7368543375ba0fe78b9f1ec2c2db3343afb053de783dd5d89cd0aa
+
+pkgname = bltui
