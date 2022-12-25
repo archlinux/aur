@@ -4,7 +4,7 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=0.1.36
+pkgver=0.1.37
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -12,11 +12,11 @@ license=('GPL2')
 url="http://butt.sourceforge.net/"
 depends=('fltk' 'dbus' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 source=(${pkgname}-${pkgver}.tar.gz::"http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('0acc1d9ae8194fd78483bdabc6692937116825abe4feb20136bdc9cd6b73579568e1473d1e4a088933d2970cab344ee9392e23f6db9a609bea0269cedcbea8c8')
+b2sums=('1166c54672217e24ef604247d2dd56a68a2f36f6f59e94149b70d55b0c576f17b6c9ad11e829a0244096efde759bc459e0c6ae5e737b1f98067689d25669da57')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr LDFLAGS="-L$(dirname $(fltk-config --libs))"
   make
 }
 
