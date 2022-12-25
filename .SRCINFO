@@ -1,7 +1,7 @@
 pkgbase = below-git
 	pkgdesc = An interactive resource monitor for modern Linux systems
-	pkgver = v0.2.0.r35.g584fdef
-	pkgrel = 2
+	pkgver = v0.6.3.r25.g43f24d32
+	pkgrel = 1
 	url = https://github.com/facebookincubator/below/
 	arch = x86_64
 	license = Apache-2.0
