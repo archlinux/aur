@@ -1,7 +1,8 @@
-# Maintainer: DuckSoft <realducksoft at gmail dot com>
+# Maintainer A8PX <a8PxaiSB3PeUc2iHhD8WJqFo at protonmail dot com>
+# Contributor DuckSoft <realducksoft at gmail dot com>
 pkgname=pingtunnel-git
 _pkgname=${pkgname%-git}
-pkgver=2.3.r0.ga575bab
+pkgver=2.6.r11.g8d63ad5
 pkgrel=1
 pkgdesc="A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding."
 depends=(glibc)
@@ -12,7 +13,7 @@ makedepends=(go git)
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/esrrhs/pingtunnel"
-source=("$_pkgname::git+$url.git")
+source=("$_pkgname::git+$url.git#branch=delete")
 sha512sums=('SKIP')
 
 pkgver() {

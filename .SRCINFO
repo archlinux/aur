@@ -11,8 +11,7 @@ pkgbase = pingtunnel-git
 	optdepends = geoip-database: geolite country database
 	provides = pingtunnel
 	conflicts = pingtunnel
-	source = pingtunnel::git+https://github.com/esrrhs/pingtunnel.git
+	source = pingtunnel::git+https://github.com/esrrhs/pingtunnel.git#branch=delete
 	sha512sums = SKIP
 
 pkgname = pingtunnel-git
-
