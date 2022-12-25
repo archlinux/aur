@@ -1,0 +1,9 @@
+post_install() {
+    echo "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
+    echo "If you prefer strict hardened settings execute 'mkdir ~/.firedragon && cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
+}
+
+post_upgrade() {
+    echo "To use profile-sync-daemon add firedragon to ~/.config/psd/psd.conf"
+    echo "If you prefer strict hardened settings execute 'cp /usr/lib/firedragon/firedragon.overrides.cfg ~/.firedragon/'"
+}
