@@ -1,0 +1,18 @@
+pkgbase = python-pairwisedist
+	pkgdesc = Calculate the pairwise-distance matrix for an array of n samples by p features
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/GuyTeichman/pairwisedist
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pairwisedist/pairwisedist-1.2.0.tar.gz
+	md5sums = fdd4e8e67ab8d8a6205bd1695aea75ca
+
+pkgname = python-pairwisedist
