@@ -1,5 +1,5 @@
 pkgbase = soh-git
-	pkgver = 5.1.0.r0.g639e51bb8
+	pkgver = 5.1.3.develop.bradley.r1.g85bccab1b
 	pkgrel = 1
 	url = https://shipofharkinian.com/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = soh-git
 	depends = glew
 	depends = libpng
 	noextract = assets-headers-gc_nmq_pal_f.tar.xz
-	source = git+https://github.com/HarbourMasters/Shipwright.git
+	source = git+https://github.com/HarbourMasters/Shipwright.git#branch=develop-bradley
 	source = git+https://github.com/kenix3/libultraship.git
 	source = soh.desktop
 	source = soh-use-appbasedir.patch

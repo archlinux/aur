@@ -1,9 +1,10 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
+_branch=develop-bradley
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.1.0.r0.g639e51bb8
+pkgver=5.1.3.develop.bradley.r1.g85bccab1b
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -11,7 +12,7 @@ _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
-source=("git+https://github.com/HarbourMasters/${_reponame}.git"
+source=("git+https://github.com/HarbourMasters/${_reponame}.git#branch=${_branch}"
         "git+https://github.com/kenix3/libultraship.git"
         "soh.desktop"
         "soh-use-appbasedir.patch"
@@ -41,7 +42,8 @@ SHIP_PREFIX=/opt/soh
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed "s/[^-]*-g/${_branch}-r&/;s/-/./g"
+  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
