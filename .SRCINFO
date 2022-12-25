@@ -1,6 +1,6 @@
 pkgbase = python-simber
 	pkgdesc = Simple, minimal, powerful logging library for Python
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/simber
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-simber
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-colorama
-	source = https://github.com/deepjyoti30/simber/archive/0.2.4.tar.gz
+	source = https://github.com/deepjyoti30/simber/archive/0.2.5.tar.gz
 	md5sums = SKIP
 
 pkgname = python-simber
