@@ -13,6 +13,11 @@ sha512sums=('e9d563fe285083e115268bd598d48fa3c9d1089be4f15783cb809c48b68c9d6b15b
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
+  if [[ $CC == "clang" ]];then
+    CFLAGS+=" -flto"
+    LDFLAGS+=" -flto -fuse-ld=lld"
+  fi
+
   make
 }
 
