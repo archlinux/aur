@@ -35,7 +35,6 @@ md5sums=(
 )
 validpgpkeys=()
 package() {
-	echo '[警告] 请勿使用Pamac构建软件'
 	info '解压缩源文件...'
 	cd ${srcdir}
  	tar -xf data.tar.xz ./usr/lib/electronic-wechat/resources/app.asar
