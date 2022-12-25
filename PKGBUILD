@@ -4,7 +4,7 @@ _pkgname=flowGraph
 _pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Identifying differential cell populations in flow cytometry data accounting for marker frequency'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -30,6 +30,7 @@ depends=(
 )
 optdepends=(
   r-biocstyle
+  r-dplyr
   r-knitr
   r-rmarkdown
   r-testthat
