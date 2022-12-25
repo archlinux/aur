@@ -1,7 +1,7 @@
 # Maintainer: 3Jl0y_PYCCKUi <3jl0y_pycckui at riseup dot net>
 
 pkgname=ntfysh
-pkgver=1.29.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST "
 arch=("x86_64")

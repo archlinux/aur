@@ -1,6 +1,6 @@
 pkgbase = ntfysh
 	pkgdesc = Send push notifications to your phone or desktop using PUT/POST
-	pkgver = 1.29.0
+	pkgver = 1.30.1
 	pkgrel = 1
 	url = https://ntfy.sh
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ntfysh
 	makedepends = git
 	conflicts = ntfysh-bin
 	conflicts = ntfy
-	source = ntfysh::git+https://github.com/binwiederhier/ntfy.git#tag=v1.29.0
+	source = ntfysh::git+https://github.com/binwiederhier/ntfy.git#tag=v1.30.1
 	source = ntfy.sysusers
 	b2sums = SKIP
 	b2sums = 958bdfc80eeb8ed62508593a94b379d7c099373a4ed2af3eaeedebdca05519378e2bc20940950db4f848be0575cebe16bcb79b794133e8f4467418f8e34278ca
