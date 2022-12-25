@@ -22,7 +22,7 @@ depends=(
   'libxcb'
   'libxkbcommon.so'
   'pango'
-  'pcre'
+  'pcre2'
   'ttf-font'
 )
 makedepends=(meson ninja scdoc setconf wayland-protocols)
