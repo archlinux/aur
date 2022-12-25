@@ -1,48 +1,35 @@
 # Maintainer: Presence <dan465 at mail dot com>
 
 pkgname=pyobd
-pkgver=0.9.3
-pkgrel=3
+pkgver=1.12
+pkgrel=1
 pkgdesc="An OBD-II compliant car diagnostic tool"
 arch=('any')
-url="http://www.obdtester.com/pyobd"
+url="https://github.com/barracuda-fsh/pyobd"
 license=('GPL')
-depends=('wxpython' 'python2-pyserial' 'hicolor-icon-theme')
+depends=('python-wxpython' 'python-pyserial' 'python-numpy' 'python-tornado' 'python-pint' 'hicolor-icon-theme')
 install=pyobd.install
-source=(http://www.obdtester.com/download/${pkgname}_${pkgver}.tar.gz
-        fix-configure-dialog.patch
+source=(https://github.com/barracuda-fsh/pyobd/archive/refs/tags/v${pkgver}.tar.gz
+        pyobd
+        pyobd.desktop
         pyobd.png)
-sha256sums=('f3004db4000e2bc166aae3b4342c98aa62f74f3372c5829472af0ee56c5e110c'
-            '7537ba8401e1c6dcdad8ffcbb037b9042e10cf957834f83417c60ca0fd2ae14f'
+sha256sums=('43a61c06b2fc9c6f44f0149f6a6d71cd60226af8b2c6056cef209c901eec6236'
+            '78399115ad17dedfaf6d0391e8bc5cf11575b0dcab4beff8103bbabe094d998f'
+            'c305544cf5b42cfaa8cba20143e8cf8900c9018cd91114c409d50a6bab993024'
             '14d0d90dcda38c339dc8397f004923075f6d4fce37b7c8539021f4a77b3a86fd')
 
-prepare() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-
-	#Fix desktop file
-	sed -i -e "s#/usr/share/pyobd/pyobd.gif#$pkgname#" \
-		-e "s#python /usr/bin/pyobd#$pkgname#" \
-		-e "s#Name=pyOBD: OBD2 Diagnostics#Name=pyOBD\nGenericName=OBD2 Diagnostics#" \
-                -e "s#UTF8#UTF-8#" \
-		"pyobd.desktop"
-
-    #Fix configure dialog
-    patch -Np1 -i "$srcdir/fix-configure-dialog.patch"
-
-	#Set executable to run with python2
-	sed -i "s%#!/usr/bin/env python%#!/usr/bin/python2%" "pyobd"
-}
-
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
 
-	install -Dm644 "pyobd.desktop"      "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$srcdir/pyobd.png"  "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-	install -Dm644 "COPYING"            "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-	install -Dm755 "pyobd"              "$pkgdir/usr/lib/$pkgname/pyobd"
-	install -m644 -t "$pkgdir/usr/lib/$pkgname/" *.py{,c}
+    install -Dm644 "$srcdir/pyobd.desktop"  "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/pyobd.png"      "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+    install -Dm644 "COPYING"                "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    install -Dm644 "pyobd.ico"              "$pkgdir/usr/lib/$pkgname/pyobd.ico"
+    install -Dm755 "$srcdir/pyobd"          "$pkgdir/usr/bin/pyobd"
 
-	mkdir -p "$pkgdir/usr/bin/"
-	ln -sf "../lib/$pkgname/pyobd" "$pkgdir/usr/bin/$pkgname"
+    mkdir -p "$pkgdir/usr/lib/$pkgname/obd/protocols/"
+    install -m644 -t "$pkgdir/usr/lib/$pkgname/" *.py
+    install -m644 -t "$pkgdir/usr/lib/$pkgname/obd/" obd/*.py
+    install -m644 -t "$pkgdir/usr/lib/$pkgname/obd/protocols/" obd/protocols/*.py
 }
 
