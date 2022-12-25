@@ -2,7 +2,7 @@
 
 pkgname='zellij-selector'
 pkgver='1.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
@@ -12,7 +12,7 @@ makedepends=('make' 'git' 'shellcheck')
 optdepends=('fish: Option to option fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
-source=("$pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git#tag=v$pkgver")
+source=("$pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
