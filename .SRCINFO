@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-compiz
 	pkgdesc = Panel for the Xfce desktop environment with fixes for Compiz
-	pkgver = 4.16.4
+	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://www.xfce.org/
 	arch = i686
@@ -19,13 +19,11 @@ pkgbase = xfce4-panel-compiz
 	depends = libdbusmenu-gtk3
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = xfce4-panel=4.16.4
+	provides = xfce4-panel=4.18.0
 	conflicts = xfce4-panel
-	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.16/xfce4-panel-4.16.4.tar.bz2
-	source = xfce4-panel-4.16.1-invert_scroll_workspaces-1.patch
-	source = xfce4-panel-4.16.1-wrap_workspaces_ui-1.patch
-	sha256sums = 1faf51a81a655244dba4c6ac9dd33e3ab0d78a9ee096c218b38fed6642c9cd84
-	sha256sums = 1bf92366667f38197ae882c011f2b0380c4548278b419fd004f9c21aab1a587e
-	sha256sums = c01adcba7bfe94e84253c5748dcab6c9e2b0d5da7d6c7aab64114a70513eafbf
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.18/xfce4-panel-4.18.0.tar.bz2
+	source = xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch
+	sha256sums = be80023fd546587831bab25ded15ae4c9e346289a75744b6ba4cf4ee53794710
+	sha256sums = b88569bba5cb5b26c6347d3f0e211244e83868622d1495068bfcf4c9f38cc332
 
 pkgname = xfce4-panel-compiz

@@ -5,7 +5,7 @@
 
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
-pkgver=4.16.4
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
@@ -18,21 +18,16 @@ makedepends=('intltool' 'gobject-introspection' 'vala' 'xfce4-dev-tools')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
 source=("https://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2"
-	  "xfce4-panel-4.16.1-invert_scroll_workspaces-1.patch"
-	  "xfce4-panel-4.16.1-wrap_workspaces_ui-1.patch")
-sha256sums=('1faf51a81a655244dba4c6ac9dd33e3ab0d78a9ee096c218b38fed6642c9cd84'
-            '1bf92366667f38197ae882c011f2b0380c4548278b419fd004f9c21aab1a587e'
-            'c01adcba7bfe94e84253c5748dcab6c9e2b0d5da7d6c7aab64114a70513eafbf')
-		
+	  "xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch")
+sha256sums=('be80023fd546587831bab25ded15ae4c9e346289a75744b6ba4cf4ee53794710'
+            'b88569bba5cb5b26c6347d3f0e211244e83868622d1495068bfcf4c9f38cc332')
+
 prepare() {
   cd "$srcdir/$_realname-$pkgver"
 
   # See https://gitlab.xfce.org/xfce/xfwm4/-/issues/6#note_23168
   echo "Applying xfce4-panel-$pkgver-invert_scroll_workspaces-1.patch:"
-  patch -p1 -i "$srcdir/xfce4-panel-4.16.1-invert_scroll_workspaces-1.patch"
-  
-  echo "Applying xfce4-panel-$pkgver-wrap_workspaces_ui-1.patch:"
-  patch -p1 -i "$srcdir/xfce4-panel-4.16.1-wrap_workspaces_ui-1.patch"
+  patch -p1 -i "$srcdir/xfce4-panel-4.18.0-invert_scroll_workspaces-1.patch"
 }
 
 build() {
