@@ -1,0 +1,17 @@
+pkgbase = gnome-shell-extension-privacy-menu-git
+	pkgdesc = Privacy Quick Settings Menu GNOME Extension
+	pkgver = 9.0.r1.g83cdad5
+	pkgrel = 1
+	url = https://github.com/stuarthayhurst/privacy-menu-extension
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	depends = glib2
+	depends = gnome-shell
+	provides = gnome-shell-extension-privacy-menu
+	conflicts = gnome-shell-extension-privacy-menu
+	source = gnome-shell-extension-privacy-menu::git+https://github.com/stuarthayhurst/privacy-menu-extension.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-privacy-menu-git
