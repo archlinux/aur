@@ -1,4 +1,6 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+# Contributor: Leszek Lesner <leszek@zevenos.com>
+# Contributor: Lane Kohen < fx@hi2.in >
 
 pkgname=rootactions-servicemenu-git
 _pkgname=rootactions-servicemenu
