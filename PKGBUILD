@@ -1,28 +1,31 @@
- 
-# Maintainer: Leszek Lesner <leszek@zevenos.com>
-# Contributor: Lane Kohen < fx@hi2.in >
-pkgname=rootactions-servicemenu
-pkgver=2.7.3
-_pkgver=2.7.3+p20201123+git20201207.1957
+# Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
+
+pkgname=rootactions-servicemenu-git
+_pkgname=rootactions-servicemenu
+pkgver=r16.cdfe53f
 pkgrel=1
-pkgdesc="Allows admin users to perform several root only actions from dolphin via polkit agent developed by "
+pkgdesc="Allows admin users to perform several root only actions from dolphin via polkit agent"
 arch=(any)
-_arch=amd64
 url="https://netrunner.com"
 license=(GPL)
 groups=(admin)
 depends=(dolphin kdialog perl polkit)
 optdepends=(kate)
-conflicts=(kde-servicemenus-rootactions)
-source=("http://ds9-eu.s3-eu-central-1.amazonaws.com/dci/packages/netrunner/pool/extras/r/rootactions-servicemenu/${pkgname}_${_pkgver}_${_arch}.deb")
-sha256sums=('20065254c2d7ac1d0ac569177106911d778dd737bbd33784512986fef1a0791b')
+provides=($_pkgname)
+conflicts=($_pkgname kde-servicemenus-rootactions)
+source=("$_pkgname::git+https://www.opencode.net/netrunner/rootactions-servicemenu.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-    tar xvf data.tar.xz -C "${pkgdir}"/
-    chmod  644  "$pkgdir/usr/share/kservices5/ServiceMenus/10-rootactionsfolders.desktop"
-    chmod  644  "$pkgdir/usr/share/kservices5/ServiceMenus/11-rootactionsfiles.desktop"
-    chmod  755  "$pkgdir/usr/bin/rootactions-servicemenu.pl"
-    chmod  644  "$pkgdir/usr/share/polkit-1/actions/com.netrunner.pkexec.rootactions.policy"
-    chmod  644  "$pkgdir/usr/share/doc/$pkgname/copyright"
-    chmod  644  "$pkgdir/usr/share/doc/$pkgname/changelog.gz"
-} 
+    cd "$_pkgname"
+
+    install -Dm 644 "usr/share/kservices5/ServiceMenus/10-rootactionsfolders.desktop" "$pkgdir/usr/share/kservices5/ServiceMenus/10-rootactionsfolders.desktop"
+    install -Dm 644 "usr/share/kservices5/ServiceMenus/11-rootactionsfiles.desktop" "$pkgdir/usr/share/kservices5/ServiceMenus/11-rootactionsfiles.desktop"
+    install -Dm 755 "usr/bin/rootactions-servicemenu.pl" "$pkgdir/usr/bin/rootactions-servicemenu.pl"
+    install -Dm 644 "usr/share/polkit-1/actions/com.netrunner.pkexec.rootactions.policy" "$pkgdir/usr/share/polkit-1/actions/com.netrunner.pkexec.rootactions.policy"
+}

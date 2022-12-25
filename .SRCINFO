@@ -1,6 +1,6 @@
-pkgbase = rootactions-servicemenu
-	pkgdesc = Allows admin users to perform several root only actions from dolphin via polkit agent developed by
-	pkgver = 2.7.3
+pkgbase = rootactions-servicemenu-git
+	pkgdesc = Allows admin users to perform several root only actions from dolphin via polkit agent
+	pkgver = r16.cdfe53f
 	pkgrel = 1
 	url = https://netrunner.com
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = rootactions-servicemenu
 	depends = perl
 	depends = polkit
 	optdepends = kate
+	provides = rootactions-servicemenu
+	conflicts = rootactions-servicemenu
 	conflicts = kde-servicemenus-rootactions
-	source = http://ds9-eu.s3-eu-central-1.amazonaws.com/dci/packages/netrunner/pool/extras/r/rootactions-servicemenu/rootactions-servicemenu_2.7.3+p20201123+git20201207.1957_amd64.deb
-	sha256sums = 20065254c2d7ac1d0ac569177106911d778dd737bbd33784512986fef1a0791b
+	source = rootactions-servicemenu::git+https://www.opencode.net/netrunner/rootactions-servicemenu.git
+	sha256sums = SKIP
 
-pkgname = rootactions-servicemenu
-
+pkgname = rootactions-servicemenu-git

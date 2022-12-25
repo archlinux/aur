@@ -1,0 +1,4 @@
+pkg/
+src/
+rootactions-servicemenu/
+*.tar.zst*
