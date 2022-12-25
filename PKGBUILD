@@ -1,26 +1,31 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=flowtime
-_pkgname=Flowtime
-pkgver=2.5
+pkgver=3.0
 pkgrel=1
 pkgdesc="Get what motivates you done, without losing concentration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Diego-Ivan/Flowtime"
 license=('GPL3')
-depends=('gstreamer' 'libadwaita' 'libxml2')
-makedepends=('meson' 'vala')
+depends=('gstreamer' 'libadwaita' 'libxml2' 'libgee')
+makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
-source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('09cc953138160c172470e8cea096b29dc985cb80f40513e642be694f21ba154743ef4dde68a5511fb2f7242622e14ee38582de818bda72b6a4fd06b1bdcf2590')
+_commit=aac2c1ecfc0d2081af9fa2f9010caa73486b937a # tags/3.0^0
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  arch-meson $_pkgname-$pkgver build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
