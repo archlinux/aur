@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica-light
-pkgver=13.1.0
+pkgver=13.2.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation."
 provides=('mathematica')
@@ -73,7 +73,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('43fee918e0520250daab1d962fb3a594')
+md5sums=('ef49db7285ea47b8e083304dddbaba03')
 options=("!strip")
 
 ## To build this package you need to place the mathematica installer into your
