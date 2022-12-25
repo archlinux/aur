@@ -16,5 +16,5 @@ sha256sums=("SKIP")
 
 package()
 {
-  install -Dm755 "$srcdir/$pkgname/notflix /usr/bin/notflix"
+  install -Dm755 "$srcdir/$pkgname/notflix" "/usr/bin/notflix"
 }
