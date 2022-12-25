@@ -1,7 +1,7 @@
 pkgbase = clash-verge-bin
 	pkgdesc = A Clash GUI based on tauri.
 	pkgver = 1.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/zzzgydi/clash-verge
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = clash-verge-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = clash
-	depends = openssl-1.1
 	optdepends = clash-meta: Another Clash Kernel
 	source = clash-verge-1.2.1-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v1.2.1/clash-verge_1.2.1_amd64.deb
 	sha512sums = c73cfe2b1fbf2b60a4819413db37684c1a1b3813d8e3acb77822ca0edb8ec10253da360a994a3e89960ff1a1f6b5406c0dde47cb5d6d3ea57ef691a21d7394df
