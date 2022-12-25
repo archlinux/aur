@@ -1,5 +1,6 @@
 stages:
   - build
+  - publish
 
 build:
   stage: build
@@ -10,5 +11,16 @@ build:
     - passwd -d builduser
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
     - sudo -u builduser makepkg -s --noconfirm
-    - "bash -c 'source PKGBUILD && curl --header \"JOB-TOKEN: $CI_JOB_TOKEN\" --upload-file \"$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst\" \"$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/$pkgname/$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst\"'"
+  artifacts:
+    paths:
+      - "*.pkg.tar.zst"
   timeout: 2h
+
+publish:
+  stage: publish
+  image: alpine:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - apk add curl
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file "zellij-selector-$CI_COMMIT_TAG-any.pkg.tar.zst" "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/zellij-selector/$CI_COMMIT_TAG/zellij-selector-$CI_COMMIT_TAG-any.pkg.tar.zst"'
