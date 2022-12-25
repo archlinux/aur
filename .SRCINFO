@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gtk3
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
-	pkgver = 3.24.35
+	pkgver = 3.24.36
 	pkgrel = 1
 	url = https://www.gtk.org
 	install = mingw-w64-gtk3.install
@@ -8,10 +8,10 @@ pkgbase = mingw-w64-gtk3
 	license = LGPL
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
-	makedepends = mingw-w64-configure
-	makedepends = gobject-introspection
-	makedepends = gtk-update-icon-cache
+	makedepends = mingw-w64-meson
+	makedepends = gdk-pixbuf2
 	makedepends = python
+	makedepends = sassc
 	depends = mingw-w64-crt
 	depends = mingw-w64-adwaita-icon-theme
 	depends = mingw-w64-atk>=2.15.1
@@ -19,12 +19,13 @@ pkgbase = mingw-w64-gtk3
 	depends = mingw-w64-fribidi>=0.19.7
 	depends = mingw-w64-gdk-pixbuf2>=2.30.0
 	depends = mingw-w64-glib2>=2.57.2
+	depends = mingw-w64-harfbuzz>=0.9
 	depends = mingw-w64-libepoxy>=1.4
 	depends = mingw-w64-pango>=1.41.0
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.35.tar.xz
-	sha256sums = ec10fe6d712ef0b3c63b5f932639c9d1ae99fce94f500f6f06965629fef60bd1
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
+	sha256sums = 27a6ef157743350c807ffea59baa1d70226dbede82a5e953ffd58ea6059fe691
 
 pkgname = mingw-w64-gtk3

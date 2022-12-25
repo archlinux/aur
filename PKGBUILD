@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.24.35
+pkgver=3.24.36
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -11,10 +11,10 @@ license=('LGPL')
 makedepends=(
   'mingw-w64-gcc'
   'mingw-w64-pkg-config'
-  'mingw-w64-configure'
-  'gobject-introspection'
-  'gtk-update-icon-cache'
-  'python') # python is required to run gdbus-codegen
+  'mingw-w64-meson'
+  'gdk-pixbuf2' # gdk-pixbuf-pixdata
+  'python' # gdbus-codegen
+  'sassc')
 depends=(
   'mingw-w64-crt'
   'mingw-w64-adwaita-icon-theme'
@@ -23,13 +23,14 @@ depends=(
   'mingw-w64-fribidi>=0.19.7'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
   'mingw-w64-glib2>=2.57.2'
+  'mingw-w64-harfbuzz>=0.9'
   'mingw-w64-libepoxy>=1.4'
   'mingw-w64-pango>=1.41.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz")
 sha256sums=(
-  'ec10fe6d712ef0b3c63b5f932639c9d1ae99fce94f500f6f06965629fef60bd1')
+  '27a6ef157743350c807ffea59baa1d70226dbede82a5e953ffd58ea6059fe691')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
@@ -48,15 +49,17 @@ prepare() {
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
   for _arch in "${_architectures[@]}"; do
-    export PKG_CONFIG="${_arch}-pkg-config"
-    export PKG_CONFIG_FOR_BUILD="pkg-config"
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
-    "${_arch}-configure" \
-      --enable-broadway-backend \
-      --enable-win32-backend \
-      --disable-cups
-    make GLIB_COMPILE_RESOURCES=glib-compile-resources PYTHON=python
+    "${_arch}-meson" \
+      --default-library both \
+      -Dbroadway_backend=true \
+      -Dwin32_backend=true \
+      -Dprint_backends= \
+      -Dgtk_doc=false \
+      -Dman=false \
+      -Dintrospection=false
+    ninja
     cd ..
   done
 }
@@ -65,13 +68,11 @@ package() {
   cd "${srcdir}/gtk+-${pkgver}"
   for _arch in "${_architectures[@]}"; do
     cd "build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    find "$pkgdir/usr/${_arch}" -name '*.exe' -exec "${_arch}-strip" '{}' ';'
-    find "$pkgdir/usr/${_arch}" -name '*.dll' -exec "${_arch}-strip" --strip-unneeded '{}' ';'
-    find "$pkgdir/usr/${_arch}" '(' -name '*.a' -o -name '*.dll' ')' -exec "${_arch}-strip" -g '{}' ';'
-    rm "$pkgdir/usr/${_arch}/lib/"*.def
-    rm -r "$pkgdir/usr/${_arch}/etc"
-    rm -r "$pkgdir/usr/${_arch}/share/man"
+    DESTDIR="${pkgdir}" ninja install
+    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec "${_arch}-strip" '{}' ';'
+    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec "${_arch}-strip" --strip-unneeded '{}' ';'
+    find "${pkgdir}/usr/${_arch}" '(' -name '*.a' -o -name '*.dll' ')' -exec "${_arch}-strip" -g '{}' ';'
+    rm -r "${pkgdir}/usr/${_arch}/etc"
     cd ..
   done
 }
