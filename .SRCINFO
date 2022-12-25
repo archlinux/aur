@@ -1,7 +1,7 @@
 pkgbase = malachite
 	pkgdesc = Tool for packaging and maintaining pacman repositories
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://git.getcryst.al/crystal/software/malachite
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = malachite
 	depends = git
 	depends = pacman-contrib
 	depends = gnupg
-	source = malachite-2.1.0::https://git.getcryst.al/crystal/software/malachite/-/archive/v2.1.0/malachite-v2.1.0.tar.gz
-	sha256sums = 1099ea27ffd0cead66458e5f4a0c36939f7b560844fa1ab8f678ede4d792c2f9
+	source = malachite-2.1.1::https://git.getcryst.al/crystal/software/malachite/-/archive/v2.1.1/malachite-v2.1.1.tar.gz
+	sha256sums = d5a9e195c67faed3cb207b99d507404403745329a93c740449213135da6e8cb0
 
 pkgname = malachite
