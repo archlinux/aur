@@ -3,7 +3,7 @@
 
 _pkgname=virtualgl
 pkgname=$_pkgname-git
-pkgver=2.4.r632.gcfc39560
+pkgver=2.4.r681.g3979e912
 pkgrel=1
 pkgdesc='Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libxv' 'glu' 'libjpeg-turbo' 'xcb-util-keysyms' 'opencl-driver' 'ocl-i
 makedepends=('git' 'cmake' 'mesa' 'opencl-headers' 'ninja' )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/VirtualGL/virtualgl.git#branch=dev")
+source=("$_pkgname::git+https://github.com/VirtualGL/virtualgl.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
