@@ -1,19 +1,18 @@
 _pkgname=gourou
 pkgname="${_pkgname}-git"
-pkgver=r100.6e3958f
-pkgrel=2
+pkgver=r105.e4bd73c
+pkgrel=3
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)"
-arch=('any')
+arch=('x86_64')
 license=('LGPL3')
 url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 conflicts=(gourou gourou-bin)
 provides=(libgourou)
 options=(strip)
-source=("git://soutade.fr/libgourou.git" "git://soutade.fr/updfparser.git" "ssl.patch" "build.patch")
+source=("git://soutade.fr/libgourou.git" "git://soutade.fr/updfparser.git" "build.patch")
 sha512sums=('SKIP'
             'SKIP'
-            '904a95f817a6062270c77bd19dd3d9acf7169210bddfef211ae5df89772078a2e7847817f2d2cb2d0a8c3ad6272fb13c1f3821d340196eea3e50c9f80872156f'
             '72e75df3b3aa036013f68262285b996657f7ed1849367f8521689067a6a5eeb6584e0b8661508ecb2977a1741462d4edab9bf6da24ae67d5c6f4417085d9f428')
 
 
@@ -27,7 +26,7 @@ pkgver() {
 
 prepare(){
 	cd libgourou
-	for patch in build ssl; do
+	for patch in build; do
 		patch --forward --strip=1 --input="../$patch.patch"
 	done
 }
