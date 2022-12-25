@@ -12,10 +12,6 @@ provides=("bltui")
 source=("git+https://github.com/simonadi/bltui.git")
 md5sums=('SKIP')
 
-pkgver() {
-    convco version --bump
-}
-
 prepare() {
     cd $pkgname
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
