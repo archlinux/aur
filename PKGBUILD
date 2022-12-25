@@ -3,8 +3,8 @@
 # Contributor: Grassblock <hi@imgb.space>
 
 pkgname=("yesplaymusicosd-origin-git" "yesplaymusicosd-origin-electron-git")
-pkgver=0.4.5.r41.g9ae65c6
-pkgrel=5
+pkgver=0.4.5.r45.g5e459bd
+pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork)."
 arch=("x86_64" "aarch64")
 url="https://github.com/shih-liang/YesPlayMusicOSD" 
@@ -14,7 +14,7 @@ conflicts=("yesplaymusicosd" "yesplaymusic")
 depends=(
     "gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" 
     "snappy" "libnotify" "libappindicator-gtk3")
-makedepends=("git" "libvips" "nodejs=16.18.0" "yarn" "node-gyp")
+makedepends=("git" "libvips" "nodejs=16.19.0" "yarn" "node-gyp")
 optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=(
     "git+https://github.com/shih-liang/YesPlayMusicOSD.git"

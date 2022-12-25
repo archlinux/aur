@@ -1,14 +1,14 @@
 pkgbase = yesplaymusicosd-origin-git
 	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux :electron: 支持桌面歌词！(no fork).
-	pkgver = 0.4.5.r41.g9ae65c6
-	pkgrel = 5
+	pkgver = 0.4.5.r45.g5e459bd
+	pkgrel = 1
 	url = https://github.com/shih-liang/YesPlayMusicOSD
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = libvips
-	makedepends = nodejs=16.18.0
+	makedepends = nodejs=16.19.0
 	makedepends = yarn
 	makedepends = node-gyp
 	depends = gtk3
