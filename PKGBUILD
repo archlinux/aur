@@ -1,6 +1,6 @@
 # Maintainer : Simon <viknesh.adi@gmail.com>
 pkgname=bltui
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Bluetooth TUI"
 arch=("x86_64")
