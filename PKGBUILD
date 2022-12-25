@@ -2,7 +2,7 @@
 
 pkgname=xorg-fonts-web-otb
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg bitmap fonts - small sizes only, so that anti-aliased fonts can serve as fallback for larger sizes. Works best in web browsers and desktop environments / window managers that do not use large fonts (eg, in screen lockers)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
@@ -31,7 +31,11 @@ source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/mutt-misc/-/archive/master/mutt-misc-master.tar.gz
         ${url}/xorg/font/schumacher-misc/-/archive/master/schumacher-misc-master.tar.gz
         ${url}/xorg/font/sony-misc/-/archive/master/sony-misc-master.tar.gz
-        ${url}/xorg/font/sun-misc/-/archive/master/sun-misc-master.tar.gz)
+        ${url}/xorg/font/sun-misc/-/archive/master/sun-misc-master.tar.gz
+        ${url}/xorg/font/cronyx-cyrillic/-/archive/master/cronyx-cyrillic-master.tar.gz
+        ${url}/xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
+        ${url}/xorg/font/screen-cyrillic/-/archive/master/screen-cyrillic-master.tar.gz
+        ${url}/xorg/font/winitzki-cyrillic/-/archive/master/winitzki-cyrillic-master.tar.gz)
 md5sums=('0cba842df3c423f4e297e1b538f3c533'
          'c9fc3977d1b52566588dcbb4ddaaf49e'
          '0aebf329ab88ad11c6222a793892100c'
@@ -55,7 +59,11 @@ md5sums=('0cba842df3c423f4e297e1b538f3c533'
          'e5bcd3cefbc5e77474cf74aedf6a416b'
          '37dffbac5f4524a0f742f4af22b5914b'
          '4606e07f5e29e1eccdbf47a2f7c33842'
-         '084775f3656adad65965efc70d20d69f')
+         '084775f3656adad65965efc70d20d69f'
+         '5a799bab6b679de660740c70adac78d8'
+         'f34c5292f5e12ea4b045baf4c723a2bf'
+         '7ec6f2e510314b0ddbf6526997f7ac4b'
+         '0e4554730f898dd6dc0e05d1047c7840')
 
 build() {
   cd "${srcdir}"
@@ -68,6 +76,8 @@ build() {
       elif [[ "${dir}" == *misc* ]]; then
         max_pixel_size=13
         rm -rf {7,8}*.bdf 2>/dev/null
+      elif [[ "${dir}" == *cyrillic* ]]; then
+        max_pixel_size=14
       else
         max_pixel_size=10
       fi
@@ -87,7 +97,11 @@ build() {
         if grep -Fq 'FAMILY_NAME "' "$f" 2>/dev/null; then
           family_name="$(grep -F 'FAMILY_NAME "' "$f")"
           family_name="${family_name%\"}"
-          family_name_otb="$family_name Web (OTB)"
+          if  [[ "${dir}" == *cyrillic* ]]; then
+            family_name_otb="$family_name Cyrillic Web (OTB)"
+          else
+            family_name_otb="$family_name Web (OTB)"
+          fi
           sed -i "s/$family_name/$family_name_otb/" "$f"
         fi
         fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
@@ -110,6 +124,8 @@ package() {
         g=100dpi
       elif [[ "${dir}" == *misc* ]]; then
         g=misc
+      elif [[ "${dir}" == *cyrillic* ]]; then
+        g=cyrillic
       fi
       install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir}"
       install -m755 -d "${pkgdir}/usr/share/fonts/${g}"
