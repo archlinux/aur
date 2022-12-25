@@ -1,7 +1,7 @@
 # Maintainer: pkfbcedkrz <pkfbcedkrz@gmail.com>
 pkgname=xorg-fonts-cronyx-75dpi
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="X.org cyrillic fonts (Cronyx collection)"
 arch=('any')
 url="https://packages.debian.org/bullseye/xfonts-cronyx-75dpi"
@@ -12,5 +12,6 @@ md5sums=('4f590ee0e14d24482f50c20a13418866')
 
 package() {
     tar xf data.tar.xz
+    find usr -type f -iname '*o_*.pcf*' -delete
     mv usr $pkgdir/
 }
