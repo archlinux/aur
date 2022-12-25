@@ -5,7 +5,7 @@ pkgname=('avxsynth-git'
          'avxedit-git'
          )
 pkgver=20150407.80dcb7e
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux Port of AviSynth. (Git version)"
 arch=('x86_64')
 url='http://www.avxsynth.org'
@@ -22,8 +22,8 @@ makedepends=('git'
              'sdl12-compat'
              )
 source=('git+https://github.com/avxsynth/avxsynth.git'
-        'https://ffmpeg.org/releases/ffmpeg-2.3.6.tar.bz2'
-        'https://github.com/FFMS/ffms2/archive/refs/tags/2.22.tar.gz'
+        'https://ffmpeg.org/releases/ffmpeg-4.4.3.tar.bz2'
+        'https://github.com/FFMS/ffms2/archive/refs/tags/2.23.tar.gz'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/120.diff'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/121.diff'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/122.diff'
@@ -32,8 +32,8 @@ source=('git+https://github.com/avxsynth/avxsynth.git'
         'qt5.patch'
         )
 sha256sums=('SKIP'
-            'SKIP'
-            '7c5202fa2e49186fb3bb815e5b12ca71f05ec09cb707ffd9465852e21a06fdad'
+            '33b8c2dbcd530fe1db5710415345609b4ca227bd0da1e3a9332dbb0f11fd273a'
+            'b09b2aa2b1c6f87f94a0a0dd8284b3c791cbe77f0f3df57af99ddebcd15273ed'
             '87952a30be26f6db89e5b1d89c9bdb9c9567654bdaa2ce80503ce28f8f0a272a'
             '6534ae6c2e09b3c13ca4d9c47e1d3a4c8895575d3202b0d3ab80b25504bff94d'
             'a2cf0517db8368c53912cde5cbd81d6f29cf0c4a5db5a25483284fe0b38012cb'
@@ -72,9 +72,9 @@ build() {
   export PYTHON=python
 
   cd "${srcdir}/build-ffmpeg"
-  ../ffmpeg-2.3.6/configure \
+  ../ffmpeg-4.4.3/configure \
     --prefix="${srcdir}/fakeroot" \
-    --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,programs,doc,vdpau,vaapi} \
+    --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,programs,doc,vdpau,vaapi,cuda,cuvid,nvenc} \
     --enable-pic \
     --enable-avisynth \
     --enable-avresample \
@@ -86,7 +86,7 @@ build() {
   export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
   cd "${srcdir}/build-ffms2"
-  ../ffms2-2.22/configure \
+  ../ffms2-2.23/configure \
     --prefix="${srcdir}/fakeroot" \
     --enable-shared=no \
     --with-pic
