@@ -1,6 +1,6 @@
 pkgbase = pingtunnel-git
 	pkgdesc = A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding.
-	pkgver = 2.3.r0.ga575bab
+	pkgver = 2.6.r11.g8d63ad5
 	pkgrel = 1
 	url = https://github.com/esrrhs/pingtunnel
 	arch = x86_64
