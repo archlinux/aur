@@ -1,11 +1,9 @@
 # Maintainer: Bipin Kumar <bipin@ccmb.res.in>
 
 pkgname=python-isal
-_module='isal'
-_name=isal 
+_module=${pkgname#python-}
 pkgver=1.1.0
-_pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Faster zlib and gzip compatible compression and decompression by providing python bindings for the ISA-L library'
 arch=('x86_64')
 url="https://github.com/pycompression/python-isal"
@@ -28,12 +26,12 @@ source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$
 sha256sums=('1364f4e3255a57d51c01422ab3ae785a43c076d516ebf49f6a25adecf8232105')
 
 build() {
-    cd "$_name-$pkgver"
+    cd "$_module-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd "$_module-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/$_name-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 "$srcdir/$_module-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
