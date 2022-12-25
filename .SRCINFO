@@ -10,6 +10,6 @@ pkgbase = bltui
 	depends = bluez
 	provides = bltui
 	source = git+https://github.com/simonadi/bltui.git
-	sha256sums = 49ab1b965a7368543375ba0fe78b9f1ec2c2db3343afb053de783dd5d89cd0aa
+	md5sums = SKIP
 
 pkgname = bltui
