@@ -1,0 +1,20 @@
+pkgbase = python-upsetplot
+	pkgdesc = Python implementation of UpSet plots by Lex et al. doi:10.1109/TVCG.2014.2346248
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/jnothman/UpSetPlot
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-seaborn
+	source = https://files.pythonhosted.org/packages/source/U/UpSetPlot/UpSetPlot-0.7.0.tar.gz
+	sha256sums = a37e1bf19397212c2143b5004b83ecb7b0e144d1211bd2ec63654e57f87890f8
+
+pkgname = python-upsetplot
