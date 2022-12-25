@@ -22,7 +22,7 @@
 # 'perl-xml-libxml' 'perl-xml-sax-expat' in makedepends
 
 pkgname=conky-cairo
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='conky - built for nvidia - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'

@@ -1,6 +1,6 @@
 pkgbase = conky-cairo
 	pkgdesc = conky - built for nvidia - Just change one variable to build the git version - defaults to release version.
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/brndnmtthws/conky
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = conky-cairo
 	conflicts = conky
 	replaces = torsmo
 	replaces = conky
-	source = https://github.com/brndnmtthws/conky/archive/v1.15.0.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/v1.16.0.tar.gz
 	md5sums = SKIP
 
 pkgname = conky-cairo
