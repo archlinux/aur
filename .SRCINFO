@@ -1,6 +1,6 @@
 pkgbase = virtualgl-git
 	pkgdesc = Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card
-	pkgver = 2.4.r632.gcfc39560
+	pkgver = 2.4.r681.g3979e912
 	pkgrel = 1
 	url = http://www.virtualgl.org/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = virtualgl-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = mesa
+	makedepends = libxtst
 	makedepends = opencl-headers
 	makedepends = ninja
 	depends = libxv
@@ -19,7 +20,7 @@ pkgbase = virtualgl-git
 	depends = xorg-xhost
 	provides = virtualgl
 	conflicts = virtualgl
-	source = virtualgl::git+https://github.com/VirtualGL/virtualgl.git#branch=dev
+	source = virtualgl::git+https://github.com/VirtualGL/virtualgl.git#branch=main
 	sha256sums = SKIP
 
 pkgname = virtualgl-git

@@ -10,7 +10,7 @@ arch=('x86_64')
 url='http://www.virtualgl.org/'
 license=('LGPL')
 depends=('libxv' 'glu' 'libjpeg-turbo' 'xcb-util-keysyms' 'opencl-driver' 'ocl-icd' 'xorg-xhost')
-makedepends=('git' 'cmake' 'mesa' 'opencl-headers' 'ninja' )
+makedepends=('git' 'cmake' 'mesa' 'libxtst' 'opencl-headers' 'ninja' )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/VirtualGL/virtualgl.git#branch=main")
