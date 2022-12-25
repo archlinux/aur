@@ -5,7 +5,7 @@ pkgname=('avxsynth-git'
          'avxedit-git'
          )
 pkgver=20150407.80dcb7e
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux Port of AviSynth. (Git version)"
 arch=('x86_64')
 url='http://www.avxsynth.org'
@@ -22,6 +22,8 @@ makedepends=('git'
              'ffms2'
              )
 source=('git+https://github.com/avxsynth/avxsynth.git'
+        'https://ffmpeg.org/releases/ffmpeg-2.3.6.tar.bz2'
+        'https://github.com/FFMS/ffms2/archive/refs/tags/2.22.tar.gz'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/120.diff'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/121.diff'
         'https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/122.diff'
@@ -30,6 +32,8 @@ source=('git+https://github.com/avxsynth/avxsynth.git'
         'qt5.patch'
         )
 sha256sums=('SKIP'
+            'SKIP'
+            '7c5202fa2e49186fb3bb815e5b12ca71f05ec09cb707ffd9465852e21a06fdad'
             '87952a30be26f6db89e5b1d89c9bdb9c9567654bdaa2ce80503ce28f8f0a272a'
             '6534ae6c2e09b3c13ca4d9c47e1d3a4c8895575d3202b0d3ab80b25504bff94d'
             'a2cf0517db8368c53912cde5cbd81d6f29cf0c4a5db5a25483284fe0b38012cb'
@@ -38,12 +42,12 @@ sha256sums=('SKIP'
             'fb155fc2dbdb2450c3761781c571ec4335d1fa5169bd1fb2332386eb047c6d8a'
             )
 
-# Due a incompatibility with FFms2 from GIT, turn disable the plugin
-if [ "$(pacman -Q ffms2 &> /dev/null && echo $?)" == "0" ]; then
-  _disable_ffms2="--disable-ffms2"
-else
-  _ffms2="ffms2"
-fi
+# # Due a incompatibility with FFms2 from GIT, turn disable the plugin
+# if [ "$(pacman -Q ffms2 &> /dev/null && echo $?)" == "0" ]; then
+#   _disable_ffms2="--disable-ffms2"
+# else
+#   _ffms2="ffms2"
+# fi
 
 pkgver() {
   cd avxsynth
@@ -51,7 +55,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  mkdir -p build build-ffmpeg build-ffms2
 
   cd avxsynth
 
@@ -70,26 +74,44 @@ prepare() {
 }
 
 build() {
-  cd avxsynth
-
   export CXXFLAGS="${CXXFLAGS} -std=c++11"
+  
+  cd "${srcdir}/build-ffmpeg"
+  ../ffmpeg-2.3.6/configure \
+    --prefix="${srcdir}/fakeroot" \
+    --disable-{network,{encod,mux}ers,hwaccels,{in,out}devs,debug,programs,doc,vdpau,vaapi} \
+    --enable-pic \
+    --enable-avisynth \
+    --enable-avresample \
+    --enable-gpl
 
+  make install
+
+  export PKG_CONFIG_LIBDIR="${srcdir}/fakeroot/lib/pkgconfig"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_LIBDIR}:/usr/lib/pkgconfig:/usr/share/pkgconfig"
+
+  cd "${srcdir}/build-ffms2"
+  ../ffms2-2.22/configure \
+    --prefix="${srcdir}/fakeroot" \
+    --enable-shared=no
+
+  make install-libLTLIBRARIES install-pkgconfigDATA install-includeHEADERS
+
+  cd "${srcdir}/avxsynth"
   autoreconf -if
 
   cd "${srcdir}/build"
   ffms2_CFLAGS="-I${srcdir}/fakeroot" \
-    ../avxsynth/configure \
+  ../avxsynth/configure \
     --prefix=/usr \
-    --enable-silent-rules \
-    ${_disable_ffms2}
+    --enable-silent-rules
 
-  LC_ALL=C make -j1
+  make
 }
 
 package_avxsynth-git() {
   pkgdesc="Linux Port of AviSynth. (Git version)"
-  depends=(${_ffms2}
-           'ffmpeg'
+  depends=('ffmpeg'
            'log4cpp'
            'pango'
            )
