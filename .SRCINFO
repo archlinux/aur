@@ -1,7 +1,7 @@
 pkgbase = python-dnaio
 	pkgdesc = Python library for very efficient parsing and writing of FASTQ and FASTA files
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcelm/dnaio/
 	arch = x86_64
 	license = MIT
