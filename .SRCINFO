@@ -1,7 +1,7 @@
 pkgbase = upscayl-bin
 	pkgdesc = Free and Open Source AI Image Upscaler
-	pkgver = 1.5.5
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/upscayl/upscayl
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = upscayl-bin
 	provides = upscayl
 	conflicts = upscayl
 	options = !strip
-	source = https://github.com/upscayl/upscayl/releases/download/v1.5.5/Upscayl-1.5.5.AppImage
-	sha512sums = 161c864fce65009234c5950358b4869fbb0899d931d03e394431a9fe5027c00281705713c6fb0e33cd30f6d37687538e53167f6c3d116ee1749cff7cff8b5147
+	source = https://github.com/upscayl/upscayl/releases/download/v2.0.0/upscayl-2.0.0-linux.AppImage
+	sha512sums = f6b6940336afd969c2b9b83150c5166dff4611f8c6b0260fe1cd46095bfb2c594229d606a2ea43206ec9b5590a1ffda6708717c35171b67784ab63ff6966fcd7
 
 pkgname = upscayl-bin

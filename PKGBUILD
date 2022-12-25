@@ -3,8 +3,8 @@
 
 _pkgname=upscayl
 pkgname=$_pkgname-bin
-pkgver=1.5.5
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
@@ -14,18 +14,18 @@ makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
-source=("https://github.com/upscayl/upscayl/releases/download/v${pkgver}/Upscayl-${pkgver}.AppImage")
-sha512sums=('161c864fce65009234c5950358b4869fbb0899d931d03e394431a9fe5027c00281705713c6fb0e33cd30f6d37687538e53167f6c3d116ee1749cff7cff8b5147')
+source=("https://github.com/upscayl/upscayl/releases/download/v${pkgver}/upscayl-${pkgver}-linux.AppImage")
+sha512sums=('f6b6940336afd969c2b9b83150c5166dff4611f8c6b0260fe1cd46095bfb2c594229d606a2ea43206ec9b5590a1ffda6708717c35171b67784ab63ff6966fcd7')
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
-  chmod 755 Upscayl-${pkgver}.AppImage
-  ./Upscayl-${pkgver}.AppImage --appimage-extract
+  chmod 755 upscayl-${pkgver}-linux.AppImage
+  ./upscayl-${pkgver}-linux.AppImage --appimage-extract
   sed -i 's|^Exec=.*|Exec=upscayl|' squashfs-root/upscayl.desktop
 }
 
 package() {
   install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/upscayl.png "$pkgdir/usr/share/pixmaps/upscayl.png"
   install -Dm644 squashfs-root/upscayl.desktop "$pkgdir/usr/share/applications/upscayl.desktop"
-  install -Dm755 Upscayl-${pkgver}.AppImage "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 upscayl-${pkgver}-linux.AppImage "$pkgdir/usr/bin/$_pkgname"
 }
