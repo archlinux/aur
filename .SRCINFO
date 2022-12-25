@@ -1,7 +1,7 @@
 pkgbase = python-tryton
 	pkgdesc = Tryton desktop client
 	pkgver = 6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tryton.org
 	arch = any
 	license = GPL3
