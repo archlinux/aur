@@ -11,7 +11,7 @@ license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git rust
+  git rust llvm
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -60,7 +60,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make htmldocs all
+  make LLVM=1 htmldocs all
 }
 
 _package() {

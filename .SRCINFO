@@ -20,6 +20,7 @@ pkgbase = linux-rust
 	makedepends = texlive-latexextra
 	makedepends = git
 	makedepends = rust
+	makedepends = llvm
 	options = !strip
 	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1-arch1
 	source = config
