@@ -11,7 +11,6 @@ pkgbase = avxsynth-git
 	makedepends = python2
 	makedepends = qt5-base
 	makedepends = qt5-tools
-	makedepends = mplayer
 	makedepends = log4cpp
 	makedepends = pango
 	makedepends = ffms2
@@ -19,12 +18,14 @@ pkgbase = avxsynth-git
 	source = https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/120.diff
 	source = https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/121.diff
 	source = https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/122.diff
+	source = https://patch-diff.githubusercontent.com/raw/avxsynth/avxsynth/pull/126.diff
 	source = c++11_fix.patch
 	source = qt5.patch
 	sha256sums = SKIP
 	sha256sums = 87952a30be26f6db89e5b1d89c9bdb9c9567654bdaa2ce80503ce28f8f0a272a
 	sha256sums = 6534ae6c2e09b3c13ca4d9c47e1d3a4c8895575d3202b0d3ab80b25504bff94d
 	sha256sums = a2cf0517db8368c53912cde5cbd81d6f29cf0c4a5db5a25483284fe0b38012cb
+	sha256sums = f6a825b6b5da58d7ebdb67252885262908bda86edf248b78771c8ffaef3e00b9
 	sha256sums = ac83efa3a3a78ed4c1935ea47dafbdb46b9c6b03c1f4ab214850eda708ee0cc6
 	sha256sums = fb155fc2dbdb2450c3761781c571ec4335d1fa5169bd1fb2332386eb047c6d8a
 
@@ -42,4 +43,3 @@ pkgname = avxedit-git
 	depends = avxsynth-git
 	provides = avxedit
 	conflicts = avxedit
-
