@@ -2,13 +2,13 @@
 
 pkgname=teamredminer-bin
 _pkgbasename=teamredminer
-pkgver=0.10.2
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Optimized miner for AMD GPUs"
 arch=("x86_64")
 url="https://github.com/todxx/teamredminer"
 source=("${_pkgbasename}-${pkgver}.tgz::https://github.com/todxx/teamredminer/releases/download/v${pkgver}/teamredminer-v${pkgver}-linux.tgz")
-sha256sums=('dd3da7bf89f39356df637ccbc318af14b16591b02d3b0cd30add57764693af71')
+sha256sums=('1d9763b53220fc6aba165abfb2f1b0701c69653d7f8c39dc1f110085defa6222')
 options=('!strip')
 
 package() {
