@@ -1,0 +1,22 @@
+pkgbase = xorg-fonts-web-cyrillic-otb
+	pkgdesc = Xorg bitmap fonts (cyrillic) - small sizes only, so that anti-aliased fonts can serve as fallback for larger sizes. Works best in web browsers and desktop environments / window managers that do not use large fonts (eg, in screen lockers)
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = fonttosfnt-git
+	makedepends = xorg-bdftopcf
+	makedepends = xorg-font-util
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-util-macros
+	source = https://gitlab.freedesktop.org//xorg/font/cronyx-cyrillic/-/archive/master/cronyx-cyrillic-master.tar.gz
+	source = https://gitlab.freedesktop.org//xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
+	source = https://gitlab.freedesktop.org//xorg/font/screen-cyrillic/-/archive/master/screen-cyrillic-master.tar.gz
+	source = https://gitlab.freedesktop.org//xorg/font/winitzki-cyrillic/-/archive/master/winitzki-cyrillic-master.tar.gz
+	md5sums = 5a799bab6b679de660740c70adac78d8
+	md5sums = f34c5292f5e12ea4b045baf4c723a2bf
+	md5sums = 7ec6f2e510314b0ddbf6526997f7ac4b
+	md5sums = 0e4554730f898dd6dc0e05d1047c7840
+
+pkgname = xorg-fonts-web-cyrillic-otb
