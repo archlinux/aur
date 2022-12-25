@@ -2,7 +2,7 @@
 # Maintainer: Andres Rodriguez Michel <andresmichelrodriguez@gmail.com>
 pkgname=git-prompt
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Displays a compact color-coded git status, git branch, and more inside your shell prompt"
 arch=(any)
 url="https://github.com/Dosx001/GitPrompt"
@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd "GitPrompt-$pkgver"
-	install -Dm755 bin/GitPrompt "${pkgdir}/usr/bin/$pkgname"
+	install -Dm755 bin/gitprompt "${pkgdir}/usr/bin/$pkgname"
 }
