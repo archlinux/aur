@@ -1,0 +1,817 @@
+Author: Robert Mader <robert.mader@posteo.de>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
+Editor: Mingi Sung <FiestaLake@protonmail.com>
+Commit: 04bee34be0a841e414eec06337069cc7a2c2ecaa
+Last Updated: 12/25/22 (Mutter 43.2+r3+g97dd7fb10-1)
+---
+
+!2677 (merged)
+!2671 (merged)
+!2755 (merged)
+Revert 74dd9037
+!2754 (merged)
+!2717 (merged)
+!2723 (merged)
+!2747 (merged)
+!2750 (merged)
+!2707 (merged)
+!2736 (merged)
+!2737 (merged)
+!2762 (merged)
+!2766 (merged)
+
+---
+diff --git a/clutter/clutter/clutter-actor-private.h b/clutter/clutter/clutter-actor-private.h
+index 0dd038564af3a95200f23061e9da118096d272ff..764705447d7b835dca200e7e46e552ef2c3a01ec 100644
+--- a/clutter/clutter/clutter-actor-private.h
++++ b/clutter/clutter/clutter-actor-private.h
+@@ -255,8 +255,7 @@ void                            _clutter_actor_attach_clone
+ void                            _clutter_actor_detach_clone                             (ClutterActor *actor,
+                                                                                          ClutterActor *clone);
+ void                            _clutter_actor_queue_only_relayout                      (ClutterActor *actor);
+-void                            clutter_actor_clear_stage_views_recursive               (ClutterActor *actor,
+-                                                                                         gboolean      stop_transitions);
++void                            clutter_actor_clear_stage_views_recursive               (ClutterActor *actor);
+ 
+ float                           clutter_actor_get_real_resource_scale                   (ClutterActor *actor);
+ 
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index da5ea14708db2cc53d87b0b321d57076410d8fa2..75f86e44bbab57c3bdec1b46c50b8d529a56525c 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -4256,7 +4256,7 @@ clutter_actor_remove_child_internal (ClutterActor                 *self,
+    * cleared as the child and its children leave the actor tree.
+    */
+   if (clear_stage_views && !CLUTTER_ACTOR_IN_DESTRUCTION (child))
+-    clutter_actor_clear_stage_views_recursive (child, stop_transitions);
++    clutter_actor_clear_stage_views_recursive (child);
+ 
+   if (emit_parent_set && !CLUTTER_ACTOR_IN_DESTRUCTION (child))
+     g_signal_emit (child, actor_signals[PARENT_SET], 0, self);
+@@ -15402,12 +15402,8 @@ clear_stage_views_cb (ClutterActor *actor,
+                       int           depth,
+                       gpointer      user_data)
+ {
+-  gboolean stop_transitions = GPOINTER_TO_INT (user_data);
+   g_autoptr (GList) old_stage_views = NULL;
+ 
+-  if (stop_transitions)
+-    _clutter_actor_stop_transitions (actor);
+-
+   actor->priv->needs_update_stage_views = TRUE;
+ 
+   old_stage_views = g_steal_pointer (&actor->priv->stage_views);
+@@ -15433,14 +15429,13 @@ maybe_emit_stage_views_changed_cb (ClutterActor *actor,
+ }
+ 
+ void
+-clutter_actor_clear_stage_views_recursive (ClutterActor *self,
+-                                           gboolean      stop_transitions)
++clutter_actor_clear_stage_views_recursive (ClutterActor *self)
+ {
+   _clutter_actor_traverse (self,
+                            CLUTTER_ACTOR_TRAVERSE_DEPTH_FIRST,
+                            clear_stage_views_cb,
+                            NULL,
+-                           GINT_TO_POINTER (stop_transitions));
++                           NULL);
+   _clutter_actor_traverse (self,
+                            CLUTTER_ACTOR_TRAVERSE_DEPTH_FIRST,
+                            maybe_emit_stage_views_changed_cb,
+@@ -15719,11 +15714,21 @@ clutter_actor_is_effectively_on_stage_view (ClutterActor     *self,
+               ClutterActor *clone = key;
+               GList *clone_views;
+ 
++              if (!CLUTTER_ACTOR_IS_MAPPED (clone))
++                continue;
++
+               clone_views = clutter_actor_peek_stage_views (clone);
+               if (g_list_find (clone_views, view))
+                 return TRUE;
+             }
+         }
++
++      /* Clones will force-show their own source actor but not children of
++       * it, so if we're hidden and an actor up the hierarchy has a clone,
++       * we won't be visible.
++       */
++      if (!CLUTTER_ACTOR_IS_VISIBLE (actor))
++        return FALSE;
+     }
+ 
+   return FALSE;
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index d3ef4fd0bb4204a594be5de84fad15f9d9a51f49..7d24cf4a8f25c27cb167cf30475576585344f928 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -3112,7 +3112,7 @@ clutter_stage_peek_stage_views (ClutterStage *stage)
+ void
+ clutter_stage_clear_stage_views (ClutterStage *stage)
+ {
+-  clutter_actor_clear_stage_views_recursive (CLUTTER_ACTOR (stage), FALSE);
++  clutter_actor_clear_stage_views_recursive (CLUTTER_ACTOR (stage));
+ }
+ 
+ GList *
+diff --git a/src/backends/meta-backend.c b/src/backends/meta-backend.c
+index 606c0eda65f28673644e08a5ebc25982cde3654d..3da49cd7661387013cb69cbe85f1f838c2e0fca9 100644
+--- a/src/backends/meta-backend.c
++++ b/src/backends/meta-backend.c
+@@ -1048,9 +1048,6 @@ update_pointer_visibility_from_event (MetaBackend  *backend,
+   uint32_t time_ms;
+ 
+   device = clutter_event_get_source_device (event);
+-  if (clutter_input_device_get_device_mode (device) != CLUTTER_INPUT_MODE_PHYSICAL)
+-    return;
+-
+   device_type = clutter_input_device_get_device_type (device);
+   time_ms = clutter_event_get_time (event);
+ 
+diff --git a/src/backends/meta-screen-cast-stream-src.c b/src/backends/meta-screen-cast-stream-src.c
+index 7914d02d201ec33de812b8600aef03337a18e80a..3fdafbf550b785186276c2f65396d767b025f9d1 100644
+--- a/src/backends/meta-screen-cast-stream-src.c
++++ b/src/backends/meta-screen-cast-stream-src.c
+@@ -445,8 +445,8 @@ meta_screen_cast_stream_src_set_cursor_sprite_metadata (MetaScreenCastStreamSrc
+ 
+   texture_width = cogl_texture_get_width (cursor_texture);
+   texture_height = cogl_texture_get_height (cursor_texture);
+-  bitmap_width = texture_width * scale;
+-  bitmap_height = texture_height * scale;
++  bitmap_width = ceilf (texture_width * scale);
++  bitmap_height = ceilf (texture_height * scale);
+ 
+   spa_meta_bitmap->size.width = bitmap_width;
+   spa_meta_bitmap->size.height = bitmap_height;
+@@ -624,8 +624,8 @@ meta_screen_cast_stream_src_maybe_record_frame (MetaScreenCastStreamSrc  *src,
+       int64_t time_since_last_frame_us;
+ 
+       min_interval_us =
+-        ((G_USEC_PER_SEC * priv->video_format.max_framerate.denom) /
+-         priv->video_format.max_framerate.num);
++        ((G_USEC_PER_SEC * ((int64_t) priv->video_format.max_framerate.denom)) /
++         ((int64_t) priv->video_format.max_framerate.num));
+ 
+       time_since_last_frame_us = now_us - priv->last_frame_timestamp_us;
+       if (time_since_last_frame_us < min_interval_us)
+diff --git a/src/compositor/meta-feedback-actor.c b/src/compositor/meta-feedback-actor.c
+index fcab89714a8a4c754fd6571df16b8ca6ec7b0e23..7baba3a18edb41455f4a4fcdf7ea3c603608c9ac 100644
+--- a/src/compositor/meta-feedback-actor.c
++++ b/src/compositor/meta-feedback-actor.c
+@@ -59,6 +59,15 @@ meta_feedback_actor_constructed (GObject *object)
+   display = meta_get_display ();
+   feedback_group = meta_get_feedback_group_for_display (display);
+   clutter_actor_add_child (feedback_group, CLUTTER_ACTOR (object));
++  meta_disable_unredirect_for_display (display);
++}
++
++static void
++meta_feedback_actor_finalize (GObject *object)
++{
++  meta_enable_unredirect_for_display (meta_get_display ());
++
++  G_OBJECT_CLASS (meta_feedback_actor_parent_class)->finalize (object);
+ }
+ 
+ static void
+@@ -128,6 +137,7 @@ meta_feedback_actor_class_init (MetaFeedbackActorClass *klass)
+   GParamSpec *pspec;
+ 
+   object_class->constructed = meta_feedback_actor_constructed;
++  object_class->finalize = meta_feedback_actor_finalize;
+   object_class->set_property = meta_feedback_actor_set_property;
+   object_class->get_property = meta_feedback_actor_get_property;
+ 
+diff --git a/src/compositor/meta-surface-actor-wayland.c b/src/compositor/meta-surface-actor-wayland.c
+index b58f328dc3272b9f418beda90c607b1759d5b345..b8d3546273a680f6ebc998642135acf8b685dc09 100644
+--- a/src/compositor/meta-surface-actor-wayland.c
++++ b/src/compositor/meta-surface-actor-wayland.c
+@@ -67,60 +67,79 @@ meta_surface_actor_wayland_is_opaque (MetaSurfaceActor *actor)
+ 
+ #define UNOBSCURED_TRESHOLD 0.1
+ 
+-ClutterStageView *
+-meta_surface_actor_wayland_get_current_primary_view (MetaSurfaceActor *actor,
+-                                                     ClutterStage     *stage)
++gboolean
++meta_surface_actor_wayland_is_view_primary (MetaSurfaceActor *actor,
++                                            ClutterStageView *stage_view)
+ {
+   ClutterStageView *current_primary_view = NULL;
+   float highest_refresh_rate = 0.f;
+   float biggest_unobscurred_fraction = 0.f;
+   GList *l;
+ 
+-  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++  if (!clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
++                                                   stage_view))
++    return FALSE;
++
++  if (clutter_actor_has_mapped_clones (CLUTTER_ACTOR (actor)))
+     {
+-      ClutterStageView *stage_view = l->data;
+-      float refresh_rate;
+-      float unobscurred_fraction = 1.f;
++      ClutterStage *stage;
+ 
+-      if (clutter_actor_has_mapped_clones (CLUTTER_ACTOR (actor)))
++      stage = CLUTTER_STAGE (clutter_actor_get_stage (CLUTTER_ACTOR (actor)));
++      for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
+         {
++          ClutterStageView *view = l->data;
++          float refresh_rate;
++
+           if (!clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
+-                                                           stage_view))
++                                                           view))
+             continue;
+-        }
+-      else
+-        {
+-          if (l->next || biggest_unobscurred_fraction > 0.f)
+-            {
+-              if (meta_surface_actor_is_obscured_on_stage_view (actor,
+-                                                                stage_view,
+-                                                                &unobscurred_fraction))
+-                continue;
+-            }
+-          else
++
++          refresh_rate = clutter_stage_view_get_refresh_rate (view);
++          if (refresh_rate > highest_refresh_rate)
+             {
+-              if (meta_surface_actor_is_obscured (actor) ||
+-                  !clutter_actor_is_effectively_on_stage_view (CLUTTER_ACTOR (actor),
+-                                                               stage_view))
+-                continue;
++              current_primary_view = view;
++              highest_refresh_rate = refresh_rate;
+             }
+         }
+ 
+-      refresh_rate = clutter_stage_view_get_refresh_rate (stage_view);
++      return current_primary_view == stage_view;
++    }
++
++  l = clutter_actor_peek_stage_views (CLUTTER_ACTOR (actor));
++  g_return_val_if_fail (l, FALSE);
++
++  if (!l->next)
++    {
++      g_return_val_if_fail (l->data == stage_view, FALSE);
++      return !meta_surface_actor_is_obscured (actor);
++    }
++
++  for (; l; l = l->next)
++    {
++      ClutterStageView *view = l->data;
++      float refresh_rate;
++      float unobscurred_fraction;
++
++      if (meta_surface_actor_is_obscured_on_stage_view (actor,
++                                                        view,
++                                                        &unobscurred_fraction))
++        continue;
++
++      refresh_rate = clutter_stage_view_get_refresh_rate (view);
+ 
+       if ((refresh_rate > highest_refresh_rate &&
+-           (unobscurred_fraction > UNOBSCURED_TRESHOLD ||
+-            biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD)) ||
++           (biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD ||
++            unobscurred_fraction > UNOBSCURED_TRESHOLD)) ||
+           (biggest_unobscurred_fraction < UNOBSCURED_TRESHOLD &&
+            unobscurred_fraction > UNOBSCURED_TRESHOLD))
+         {
+-          current_primary_view = stage_view;
++          current_primary_view = view;
+           highest_refresh_rate = refresh_rate;
+           biggest_unobscurred_fraction = unobscurred_fraction;
+         }
+     }
+ 
+-  return current_primary_view;
++  return current_primary_view == stage_view;
+ }
+ 
+ static void
+diff --git a/src/compositor/meta-surface-actor-wayland.h b/src/compositor/meta-surface-actor-wayland.h
+index 1a349af91f250978ff356a3114d1da3817010089..fa0550f66e03576acb2fede4c8482dfddc13f57c 100644
+--- a/src/compositor/meta-surface-actor-wayland.h
++++ b/src/compositor/meta-surface-actor-wayland.h
+@@ -44,8 +44,8 @@ MetaSurfaceActor * meta_surface_actor_wayland_new (MetaWaylandSurface *surface);
+ MetaWaylandSurface * meta_surface_actor_wayland_get_surface (MetaSurfaceActorWayland *self);
+ void meta_surface_actor_wayland_surface_destroyed (MetaSurfaceActorWayland *self);
+ 
+-ClutterStageView * meta_surface_actor_wayland_get_current_primary_view (MetaSurfaceActor *actor,
+-                                                                        ClutterStage     *stage);
++gboolean meta_surface_actor_wayland_is_view_primary (MetaSurfaceActor *actor,
++                                                     ClutterStageView *stage_view);
+ 
+ G_END_DECLS
+ 
+diff --git a/src/compositor/meta-window-actor-wayland.c b/src/compositor/meta-window-actor-wayland.c
+index 3b87f013909375a8e842942e0a47af19a22f30bc..29278a5182042e2901a29eaa9de38aed71f39528 100644
+--- a/src/compositor/meta-window-actor-wayland.c
++++ b/src/compositor/meta-window-actor-wayland.c
+@@ -298,22 +298,30 @@ meta_window_actor_wayland_get_scanout_candidate (MetaWindowActor *actor)
+   MetaWindowActorWayland *self = META_WINDOW_ACTOR_WAYLAND (actor);
+   ClutterActor *surface_container = CLUTTER_ACTOR (self->surface_container);
+   ClutterActor *child_actor;
+-  MetaSurfaceActor *topmost_surface_actor;
++  ClutterActorIter iter;
++  MetaSurfaceActor *topmost_surface_actor = NULL;
+   MetaWindow *window;
++  int n_mapped_surfaces = 0;
+ 
+   if (clutter_actor_get_last_child (CLUTTER_ACTOR (self)) != surface_container)
+     return NULL;
+ 
+-  child_actor = clutter_actor_get_last_child (surface_container);
+-  if (!child_actor)
+-    return NULL;
++  clutter_actor_iter_init (&iter, surface_container);
++  while (clutter_actor_iter_next (&iter, &child_actor))
++    {
++      if (!clutter_actor_is_mapped (child_actor))
++        continue;
+ 
+-  topmost_surface_actor = META_SURFACE_ACTOR (child_actor);
++      topmost_surface_actor = META_SURFACE_ACTOR (child_actor);
++      n_mapped_surfaces++;
++    }
++
++  if (!topmost_surface_actor)
++    return NULL;
+ 
+   window = meta_window_actor_get_meta_window (actor);
+   if (!meta_surface_actor_is_opaque (topmost_surface_actor) &&
+-      !(meta_window_is_fullscreen (window) &&
+-        clutter_actor_get_n_children (surface_container) == 1))
++      !(meta_window_is_fullscreen (window) && n_mapped_surfaces == 1))
+     return NULL;
+ 
+   return topmost_surface_actor;
+diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
+index fcf97ae85f934e56f6b5b692dfcec406abeb9038..02e81f0aac035800bc92e6e9cd53ef4227279eb2 100644
+--- a/src/compositor/meta-window-actor.c
++++ b/src/compositor/meta-window-actor.c
+@@ -1218,15 +1218,20 @@ meta_window_actor_transform_cursor_position (MetaScreenCastWindow *screen_cast_w
+       meta_cursor_sprite_get_cogl_texture (cursor_sprite) &&
+       out_cursor_scale)
+     {
+-      MetaShapedTexture *stex;
+-      double texture_scale;
++      MetaLogicalMonitor *logical_monitor;
++      float view_scale;
+       float cursor_texture_scale;
+ 
+-      stex = meta_surface_actor_get_texture (priv->surface);
+-      texture_scale = meta_shaped_texture_get_buffer_scale (stex);
++      logical_monitor = meta_window_get_main_logical_monitor (window);
++
++      if (meta_is_stage_views_scaled ())
++        view_scale = meta_logical_monitor_get_scale (logical_monitor);
++      else
++        view_scale = 1.0;
++
+       cursor_texture_scale = meta_cursor_sprite_get_texture_scale (cursor_sprite);
+ 
+-      *out_cursor_scale = texture_scale / cursor_texture_scale;
++      *out_cursor_scale = view_scale * cursor_texture_scale;
+     }
+ 
+   if (cursor_sprite &&
+@@ -1239,11 +1244,18 @@ meta_window_actor_transform_cursor_position (MetaScreenCastWindow *screen_cast_w
+ 
+   if (out_relative_cursor_position)
+     {
++      float resource_scale;
++
+       clutter_actor_transform_stage_point (CLUTTER_ACTOR (priv->surface),
+                                            cursor_position->x,
+                                            cursor_position->y,
+                                            &out_relative_cursor_position->x,
+                                            &out_relative_cursor_position->y);
++
++      resource_scale =
++        clutter_actor_get_resource_scale (CLUTTER_ACTOR (window_actor));
++      out_relative_cursor_position->x *= resource_scale;
++      out_relative_cursor_position->y *= resource_scale;
+     }
+ 
+   return TRUE;
+diff --git a/src/core/display.c b/src/core/display.c
+index 353a4fb34f196c5509f3fadad5ff8280659e573d..470ff804b19a60bdf5e555e18821ffef1da00aa9 100644
+--- a/src/core/display.c
++++ b/src/core/display.c
+@@ -1277,6 +1277,12 @@ meta_grab_op_is_moving (MetaGrabOp op)
+ gboolean
+ meta_display_windows_are_interactable (MetaDisplay *display)
+ {
++  MetaBackend *backend = meta_get_backend ();
++  MetaStage *stage = META_STAGE (meta_backend_get_stage (backend));
++
++  if (clutter_stage_get_grab_actor (CLUTTER_STAGE (stage)))
++    return FALSE;
++
+   switch (display->event_route)
+     {
+     case META_EVENT_ROUTE_NORMAL:
+@@ -1437,8 +1443,6 @@ meta_display_sync_wayland_input_focus (MetaDisplay *display)
+     focus_window = NULL;
+   else if (is_no_focus_xwindow)
+     focus_window = NULL;
+-  else if (clutter_stage_get_grab_actor (CLUTTER_STAGE (stage)))
+-    focus_window = NULL;
+   else if (display->focus_window && display->focus_window->surface)
+     focus_window = display->focus_window;
+   else
+diff --git a/src/core/window.c b/src/core/window.c
+index c5ee5af50674d90780fdb61e3b37398cd6ec9816..f32a7e674964169eb27f52abb16490e3dfb720cf 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -4596,9 +4596,9 @@ meta_window_focus (MetaWindow  *window,
+ 
+   META_WINDOW_GET_CLASS (window)->focus (window, timestamp);
+ 
+-  /* Move to the front of the focusing workspace's MRU list.
+-   * We should only be "removing" it from the MRU list if it's
+-   * not already there.  Note that it's possible that we might
++  /* Move to the front of all workspaces' MRU lists the window
++   * is on. We should only be "removing" it from the MRU list if
++   * it's already there.  Note that it's possible that we might
+    * be processing this FocusIn after we've changed to a
+    * different workspace; we should therefore update the MRU
+    * list only if the window is actually on the active
+@@ -4608,20 +4608,20 @@ meta_window_focus (MetaWindow  *window,
+       meta_window_located_on_workspace (window,
+                                         workspace_manager->active_workspace))
+     {
+-      GList *link;
++      GList *l;
+ 
+-      link = g_list_find (workspace_manager->active_workspace->mru_list,
+-                          window);
+-      g_assert (link);
++      for (l = workspace_manager->workspaces; l != NULL; l = l->next)
++        {
++          MetaWorkspace *workspace = l->data;
++          GList *link;
+ 
+-      workspace_manager->active_workspace->mru_list =
+-        g_list_remove_link (workspace_manager->active_workspace->mru_list,
+-                            link);
+-      g_list_free (link);
++          link = g_list_find (workspace->mru_list, window);
++          if (!link)
++            continue;
+ 
+-      workspace_manager->active_workspace->mru_list =
+-        g_list_prepend (workspace_manager->active_workspace->mru_list,
+-                        window);
++          workspace->mru_list = g_list_delete_link (workspace->mru_list, link);
++          workspace->mru_list = g_list_prepend (workspace->mru_list, window);
++        }
+     }
+ 
+   backend = meta_get_backend ();
+diff --git a/src/core/workspace.c b/src/core/workspace.c
+index 03b177e555b7b1f4cc182133d60811428b51e34f..e933995f3d46866426a5f07cf44e2d1f2c274d1a 100644
+--- a/src/core/workspace.c
++++ b/src/core/workspace.c
+@@ -481,30 +481,35 @@ meta_workspace_queue_calc_showing  (MetaWorkspace *workspace)
+ }
+ 
+ static void
+-workspace_switch_sound(MetaWorkspace *from,
+-                       MetaWorkspace *to)
++workspace_switch_sound (MetaWorkspace *from,
++                        MetaWorkspace *to)
+ {
+   MetaSoundPlayer *player;
+   MetaWorkspaceLayout layout;
+-  int i, nw, x, y, fi, ti;
+-  const char *e;
++  int n_workspaces;
++  int from_idx, to_idx;
++  int i;
++  int x, y;
++  const char *sound_name;
+ 
+-  nw = meta_workspace_manager_get_n_workspaces (from->manager);
+-  fi = meta_workspace_index(from);
+-  ti = meta_workspace_index(to);
++  n_workspaces = meta_workspace_manager_get_n_workspaces (from->manager);
++  from_idx = meta_workspace_index(from);
++  to_idx = meta_workspace_index(to);
+ 
+   meta_workspace_manager_calc_workspace_layout (from->manager,
+-                                                nw,
+-                                                fi,
++                                                n_workspaces,
++                                                from_idx,
+                                                 &layout);
+ 
+-  for (i = 0; i < nw; i++)
+-    if (layout.grid[i] == ti)
+-      break;
++  for (i = 0; i < n_workspaces; i++)
++    {
++      if (layout.grid[i] == to_idx)
++        break;
++    }
+ 
+-  if (i >= nw)
++  if (i >= n_workspaces)
+     {
+-      meta_bug("Failed to find destination workspace in layout");
++      g_warning ("Failed to find destination workspace in layout");
+       goto finish;
+     }
+ 
+@@ -519,21 +524,23 @@ workspace_switch_sound(MetaWorkspace *from,
+      movement but not such much vertical movement. */
+ 
+   if (x < layout.current_col)
+-    e = "desktop-switch-left";
++    sound_name = "desktop-switch-left";
+   else if (x > layout.current_col)
+-    e = "desktop-switch-right";
++    sound_name = "desktop-switch-right";
+   else if (y < layout.current_row)
+-    e = "desktop-switch-up";
++    sound_name = "desktop-switch-up";
+   else if (y > layout.current_row)
+-    e = "desktop-switch-down";
++    sound_name = "desktop-switch-down";
+   else
+     {
+-      meta_bug("Uh, origin and destination workspace at same logic position!");
++      g_warn_if_reached ();
+       goto finish;
+     }
+ 
+   player = meta_display_get_sound_player (from->display);
+-  meta_sound_player_play_from_theme (player, e, _("Workspace switched"), NULL);
++  meta_sound_player_play_from_theme (player,
++                                     sound_name, _("Workspace switched"),
++                                     NULL);
+ 
+  finish:
+   meta_workspace_manager_free_workspace_layout (&layout);
+@@ -570,6 +577,9 @@ meta_workspace_activate_with_focus (MetaWorkspace *workspace,
+   gint num_workspaces, current_space, new_space;
+   MetaMotionDirection direction;
+ 
++  g_return_if_fail (META_IS_WORKSPACE (workspace));
++  g_return_if_fail (meta_workspace_index (workspace) != -1);
++
+   meta_verbose ("Activating workspace %d",
+                 meta_workspace_index (workspace));
+ 
+@@ -1316,15 +1326,40 @@ meta_workspace_get_name (MetaWorkspace *workspace)
+   return meta_prefs_get_workspace_name (meta_workspace_index (workspace));
+ }
+ 
++static MetaWindow *
++get_focused_workspace_window (MetaWorkspace *workspace)
++{
++  g_autoptr (GList) windows = NULL;
++  GList *l;
++
++  windows = meta_workspace_list_windows (workspace);
++
++  for (l = windows; l != NULL; l = l->next)
++    {
++      MetaWindow *window = l->data;
++
++      if (meta_window_has_focus (window))
++        return window;
++    }
++
++  return NULL;
++}
++
+ void
+ meta_workspace_focus_default_window (MetaWorkspace *workspace,
+                                      MetaWindow    *not_this_one,
+                                      guint32        timestamp)
+ {
++  MetaWindow *focus;
++
+   if (timestamp == META_CURRENT_TIME)
+     meta_warning ("META_CURRENT_TIME used to choose focus window; "
+                   "focus window may not be correct.");
+ 
++  focus = get_focused_workspace_window (workspace);
++  if (focus != NULL && focus != not_this_one)
++    return;
++
+   if (meta_prefs_get_focus_mode () == G_DESKTOP_FOCUS_MODE_CLICK ||
+       !workspace->display->mouse_mode)
+     {
+diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
+index 362785c89c32c84c280c7dd0c68836ad5f21009d..2b76d943a554472ee3218903de79f1e70cb5a251 100644
+--- a/src/wayland/meta-wayland-actor-surface.c
++++ b/src/wayland/meta-wayland-actor-surface.c
+@@ -304,10 +304,15 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
+       priv->actor &&
+       !meta_surface_actor_is_obscured (priv->actor))
+     {
+-      MetaBackend *backend = meta_get_backend ();
+-      ClutterActor *stage = meta_backend_get_stage (backend);
++      GList *l;
+ 
+-      clutter_stage_schedule_update (CLUTTER_STAGE (stage));
++      for (l = clutter_actor_peek_stage_views (CLUTTER_ACTOR (priv->actor)); l;
++           l = l->next)
++        {
++          ClutterStageView *view = l->data;
++
++          clutter_stage_view_schedule_update (view);
++        }
+     }
+ 
+   meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
+diff --git a/src/wayland/meta-wayland-outputs.c b/src/wayland/meta-wayland-outputs.c
+index 84fb3190d2930f0ca632f3fa99995dfbe2b1a8ff..bdce99c6c7a6eaf842d9f3207802ebe53035b5ea 100644
+--- a/src/wayland/meta-wayland-outputs.c
++++ b/src/wayland/meta-wayland-outputs.c
+@@ -144,23 +144,6 @@ calculate_wayland_output_scale (MetaMonitor *monitor)
+   return ceilf (scale);
+ }
+ 
+-static void
+-get_native_output_mode_resolution (MetaMonitor     *monitor,
+-                                   MetaMonitorMode *mode,
+-                                   int             *mode_width,
+-                                   int             *mode_height)
+-{
+-  MetaLogicalMonitor *logical_monitor;
+-  MetaMonitorTransform transform;
+-
+-  logical_monitor = meta_monitor_get_logical_monitor (monitor);
+-  transform = meta_logical_monitor_get_transform (logical_monitor);
+-  if (meta_monitor_transform_is_rotated (transform))
+-    meta_monitor_mode_get_resolution (mode, mode_height, mode_width);
+-  else
+-    meta_monitor_mode_get_resolution (mode, mode_width, mode_height);
+-}
+-
+ static enum wl_output_transform
+ wl_output_transform_from_transform (MetaMonitorTransform transform)
+ {
+@@ -259,10 +242,9 @@ send_output_events (struct wl_resource *resource,
+   if (current_mode == preferred_mode)
+     mode_flags |= WL_OUTPUT_MODE_PREFERRED;
+ 
+-  get_native_output_mode_resolution (monitor,
+-                                     current_mode,
+-                                     &new_width,
+-                                     &new_height);
++  meta_monitor_mode_get_resolution (current_mode,
++                                    &new_width,
++                                    &new_height);
+   if (need_all_events ||
+       wayland_output->mode_width != new_width ||
+       wayland_output->mode_height != new_height ||
+@@ -365,10 +347,9 @@ meta_wayland_output_set_monitor (MetaWaylandOutput *wayland_output,
+   wayland_output->transform =
+     meta_logical_monitor_get_transform (logical_monitor);
+ 
+-  get_native_output_mode_resolution (monitor,
+-                                     current_mode,
+-                                     &wayland_output->mode_width,
+-                                     &wayland_output->mode_height);
++  meta_monitor_mode_get_resolution (current_mode,
++                                    &wayland_output->mode_width,
++                                    &wayland_output->mode_height);
+ }
+ 
+ static void
+diff --git a/src/wayland/meta-wayland-pointer-constraints.c b/src/wayland/meta-wayland-pointer-constraints.c
+index 965b95ddadc1ce4a0bba72ddaf577a0f98542758..598b5fcd28897e2758a7472ac42f1af8b7c4caed 100644
+--- a/src/wayland/meta-wayland-pointer-constraints.c
++++ b/src/wayland/meta-wayland-pointer-constraints.c
+@@ -39,6 +39,7 @@
+ #include "wayland/meta-wayland-private.h"
+ #include "wayland/meta-wayland-region.h"
+ #include "wayland/meta-wayland-seat.h"
++#include "wayland/meta-wayland-subsurface.h"
+ #include "wayland/meta-wayland-surface.h"
+ #include "wayland/meta-xwayland.h"
+ 
+@@ -193,8 +194,6 @@ surface_constraint_data_new (MetaWaylandSurface *surface)
+     }
+   else
+     {
+-      /* TODO: Support constraints on non-toplevel windows, such as subsurfaces.
+-       */
+       g_warn_if_reached ();
+     }
+ 
+@@ -463,8 +462,10 @@ should_constraint_be_enabled (MetaWaylandPointerConstraint *constraint)
+       /*
+        * Locks from Xwayland may come before we have had the opportunity to
+        * associate the X11 Window with the wl_surface.
++       * For subsurfaces the window of the ancestor might be gone already.
+        */
+-      g_warn_if_fail (meta_xwayland_is_xwayland_surface (constraint->surface));
++      g_warn_if_fail (meta_xwayland_is_xwayland_surface (constraint->surface) ||
++                      META_IS_WAYLAND_SUBSURFACE (constraint->surface->role));
+       return FALSE;
+     }
+ 
+diff --git a/src/wayland/meta-wayland-presentation-time.c b/src/wayland/meta-wayland-presentation-time.c
+index fb99445eb70dd72d95e8e425a3230be8505b8b25..5fe17191c99a8d29aaa92cc338ed58ff908a3073 100644
+--- a/src/wayland/meta-wayland-presentation-time.c
++++ b/src/wayland/meta-wayland-presentation-time.c
+@@ -156,7 +156,6 @@ on_after_paint (ClutterStage          *stage,
+       GList *l_cur = l;
+       MetaWaylandSurface *surface = l->data;
+       MetaSurfaceActor *actor;
+-      ClutterStageView *surface_primary_view;
+ 
+       l = l->next;
+ 
+@@ -164,9 +163,8 @@ on_after_paint (ClutterStage          *stage,
+       if (!actor)
+         continue;
+ 
+-      surface_primary_view =
+-        meta_surface_actor_wayland_get_current_primary_view (actor, stage);
+-      if (stage_view != surface_primary_view)
++      if (!meta_surface_actor_wayland_is_view_primary (actor,
++                                                       stage_view))
+         continue;
+ 
+       if (!wl_list_empty (&surface->presentation_time.feedback_list))
+diff --git a/src/wayland/meta-wayland-subsurface.c b/src/wayland/meta-wayland-subsurface.c
+index 6a23c861004484b755b56b2703ae2852503007b6..f044c525b9d7ccac61a7bcbe5413d77578126d87 100644
+--- a/src/wayland/meta-wayland-subsurface.c
++++ b/src/wayland/meta-wayland-subsurface.c
+@@ -193,6 +193,20 @@ meta_wayland_subsurface_get_toplevel (MetaWaylandSurfaceRole *surface_role)
+     return NULL;
+ }
+ 
++static MetaWindow *
++meta_wayland_subsurface_get_window (MetaWaylandSurfaceRole *surface_role)
++{
++  MetaWaylandSurface *surface =
++    meta_wayland_surface_role_get_surface (surface_role);
++  MetaWaylandSurface *parent;
++
++  parent = surface->protocol_state.parent;
++  if (parent)
++    return meta_wayland_surface_get_window (parent);
++  else
++    return NULL;
++}
++
+ static gboolean
+ meta_wayland_subsurface_should_cache_state (MetaWaylandSurfaceRole *surface_role)
+ {
+@@ -252,10 +266,8 @@ meta_wayland_subsurface_sync_actor_state (MetaWaylandActorSurface *actor_surface
+     meta_wayland_surface_role_get_surface (surface_role);
+   MetaWaylandActorSurfaceClass *actor_surface_class =
+     META_WAYLAND_ACTOR_SURFACE_CLASS (meta_wayland_subsurface_parent_class);
+-  MetaWaylandSurface *toplevel_surface;
+ 
+-  toplevel_surface = meta_wayland_surface_get_toplevel (surface);
+-  if (toplevel_surface && meta_wayland_surface_get_window (toplevel_surface))
++  if (meta_wayland_surface_get_window (surface))
+     actor_surface_class->sync_actor_state (actor_surface);
+ 
+   sync_actor_subsurface_state (surface);
+@@ -276,6 +288,7 @@ meta_wayland_subsurface_class_init (MetaWaylandSubsurfaceClass *klass)
+ 
+   surface_role_class->assigned = meta_wayland_subsurface_assigned;
+   surface_role_class->get_toplevel = meta_wayland_subsurface_get_toplevel;
++  surface_role_class->get_window = meta_wayland_subsurface_get_window;
+   surface_role_class->should_cache_state = meta_wayland_subsurface_should_cache_state;
+   surface_role_class->notify_subsurface_state_changed =
+     meta_wayland_subsurface_notify_subsurface_state_changed;
+diff --git a/src/wayland/meta-wayland.c b/src/wayland/meta-wayland.c
+index 9d066b19cb4d555b720f908b3f099ee8fbab4235..b3888650a18c62ca80e77a1ac0cb28e40b7be979 100644
+--- a/src/wayland/meta-wayland.c
++++ b/src/wayland/meta-wayland.c
+@@ -224,7 +224,6 @@ on_after_update (ClutterStage          *stage,
+       MetaWaylandSurface *surface = l->data;
+       MetaSurfaceActor *actor;
+       MetaWaylandActorSurface *actor_surface;
+-      ClutterStageView *surface_primary_view;
+ 
+       l = l->next;
+ 
+@@ -232,9 +231,8 @@ on_after_update (ClutterStage          *stage,
+       if (!actor)
+         continue;
+ 
+-      surface_primary_view =
+-        meta_surface_actor_wayland_get_current_primary_view (actor, stage);
+-      if (stage_view != surface_primary_view)
++      if (!meta_surface_actor_wayland_is_view_primary (actor,
++                                                       stage_view))
+         continue;
+ 
+       actor_surface = META_WAYLAND_ACTOR_SURFACE (surface->role);

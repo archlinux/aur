@@ -12,8 +12,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2671' '2702' '2751')
-_merge_requests_to_use=('1441' '1880' '2671' '2702' '2751')
+# Merge Requests List: ('579' '1441' '1880' '2702' '2763')
+_merge_requests_to_use=('1441' '1880' '2702' '2763')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -31,8 +31,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.2
-pkgrel=2
+pkgver=43.2+r3+g97dd7fb10
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -46,19 +46,17 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
+_commit=97dd7fb106ea2ea2e6a1d61a2693a6ae76359688  # tags/43.2^3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
         'mr2702.patch'
-        'mr2671.patch'
-        'mr2751.patch')
+        'mr2763.patch')
 sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
-            '65981409a5fc5ebfa95c7178f588cb2564f405cf55cbc7a315ecd4ac6c892b1c'
+            '20a90016dab0de9fb8e9cd7b38644e41d2006796f332b7a2d7c92bdf71bc3a4a'
             '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
-            '3737094e4d9c71b31a7e38922ad67d64e77a78524e492ecc9fc4172e129c9acc'
-            'dfa55caa40e970fca74e68a74d104db92438950b4fc954717963b857e4cd28f1')
+            '3cb32c36ca0de989713459d91359e81bba7ff9cafea612b5e6294cc4daac8108')
 
 pkgver() {
   cd $pkgname
@@ -143,6 +141,13 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
+  # Title: Backports for 43.3
+  # Author: Robert Mader <robert.mader@posteo.de>
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
+  # Type: 1
+  # Status: 2 & 3
+  pick_mr '2763' 'mr2763.patch' 'patch'
+
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
@@ -160,25 +165,6 @@ prepare() {
   # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
   #          Fixes: #1162
   pick_mr '1880' 'mr1880.patch' 'patch'
-
-  # Title: surface-actor-wayland: Clean up and optimize check for primary view
-  # Author: Robert Mader <robert.mader@posteo.de>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2671
-  # Type: 1
-  # Status: 2
-  # Comment: Avoid some allocations, save some CPU cycles and make the code easier to read.
-  # NOTE: This changes mutter's behaviors, which can bring regressions when using some extensions.
-  pick_mr '2671' 'mr2671.patch' 'patch'
-
-  # Title: [43] tiling: Skip the resize effect for tiled windows during user grabs
-  # Author: Michael Webster <miketwebster@gmail.com>
-  # Author: Robert Mader <robert.mader@posteo.de>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2751
-  # Type: 1
-  # Status: 2
-  # Comment: The incremental changes don't need to be animated.
-  #          Closes: #2246 (closed)
-  pick_mr '2751' 'mr2751.patch' 'patch'
 
 }
 

@@ -2,7 +2,7 @@ Author: Michel Dänzer <mdaenzer@redhat.com>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1880
 Editor: Mingi Sung <FiestaLake@protonmail.com>
 Commit: 05efcb4b21acc98fa5636542888c0fe2da05781b
-Last Updated: 12/3/22 (Mutter 43.1+r24+g030e9b8b2-1)
+Last Updated: 12/25/22 (Mutter 43.2+r3+g97dd7fb10-1)
 ---
 
 If mutter's GPU work directly depends on unfinished client work,
@@ -641,9 +641,9 @@ index 6a23c8610..63150d006 100644
      }
    else
 @@ -276,7 +252,7 @@ meta_wayland_subsurface_class_init (MetaWaylandSubsurfaceClass *klass)
- 
    surface_role_class->assigned = meta_wayland_subsurface_assigned;
    surface_role_class->get_toplevel = meta_wayland_subsurface_get_toplevel;
+   surface_role_class->get_window = meta_wayland_subsurface_get_window;
 -  surface_role_class->should_cache_state = meta_wayland_subsurface_should_cache_state;
 +  surface_role_class->is_synchronized = meta_wayland_subsurface_is_synchronized;
    surface_role_class->notify_subsurface_state_changed =
