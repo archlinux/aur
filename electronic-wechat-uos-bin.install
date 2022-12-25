@@ -1,11 +1,14 @@
 function note() {
-    printf "${blue}==>${yellow} 提示:${bold} $1${all_off}\n"
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
+	all_off="$(tput sgr0)"
+	bold="${all_off}$(tput bold)"
+	blue="${bold}$(tput setaf 4)"
+	yellow="${bold}$(tput setaf 3)"
+    printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+    fi
 }
-
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
 
 function post_install(){
     note '如果桌面通知无法送达, 请检查是否正确设置 libnotify'

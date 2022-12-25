@@ -55,9 +55,13 @@ exec electron /opt/electronic-wechat-uos-bin/resources/app.asar' >${pkgdir}/usr/
 }
 
 function info() {
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
 	all_off="$(tput sgr0)"
 	bold="${all_off}$(tput bold)"
 	blue="${bold}$(tput setaf 4)"
 	yellow="${bold}$(tput setaf 3)"
     printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+    fi
 }
