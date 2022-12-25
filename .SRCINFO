@@ -1,6 +1,6 @@
 pkgbase = zig-static
 	pkgdesc = robust, optimal, and clear programming language
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = zig-static
 	provides = zig
 	conflicts = zig
 	options = !strip
-	source_x86_64 = https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz
-	md5sums_x86_64 = 01daf426d9e1c86aad6e4b26351e1ae8
-	source_aarch64 = https://ziglang.org/download/0.9.1/zig-linux-aarch64-0.9.1.tar.xz
-	md5sums_aarch64 = d7b665a034281572664ed73fc3ec6684
+	source_x86_64 = https://ziglang.org/download/0.10.0/zig-linux-x86_64-0.10.0.tar.xz
+	md5sums_x86_64 = a73088e3806e4973f241665f73f23376
+	source_aarch64 = https://ziglang.org/download/0.10.0/zig-linux-aarch64-0.10.0.tar.xz
+	md5sums_aarch64 = 9b3cfb88e300071ac3a3f273abd158e0
 
 pkgname = zig-static
