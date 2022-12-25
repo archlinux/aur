@@ -12,13 +12,13 @@ pkgbase = soundux
 	makedepends = pipewire
 	depends = pulseaudio
 	depends = webkit2gtk
-	depends = libwnck3
 	depends = libappindicator-gtk3
 	depends = lsb-release
 	optdepends = youtube-dl: unmaintained downloader integration
 	optdepends = yt-dlp-drop-in: recommended downloader integration
 	optdepends = ffmpeg: downloader integration
 	optdepends = pipewire: pipewire backend
+	optdepends = libwnck3: icon support on X11
 	source = https://github.com/Soundux/Soundux/releases/download/0.2.7/soundux-0.2.7.tar.gz
 	sha256sums = 017003fc96f49df30575975f3904c0d8a500e325a9d2bca8c3dc69fed0cab0a7
 
