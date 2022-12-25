@@ -3,7 +3,15 @@ self_path=$(realpath $0)
 environment_file=$(dirname $self_path)/beast2-environment
 source $environment_file
 
+extra_jfx_modules=(
+  web
+  media
+)
+
+EXTRA_JFX_MODULES=$(printf "javafx.%s," "${extra_jfx_modules[@]}" |sed 's/,*$//g')
+JFX_MODULES="${JFX_MODULES},$EXTRA_JFX_MODULES"
+
 "$JAVA" -Dlauncher.wait.for.exit=true -Xms256m -Xmx8g -Djava.library.path=$LD_LIBRARY_PATH -Duser.language=en \
     -cp $DEFAULT_CP:$BEAST_LIB/launcher.jar \
-    --module-path $JFX_LIBS --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.media \
+    --module-path $JFX_LIBS --add-modules "$JFX_MODULES" \
     beast.pkgmgmt.launcher.BeautiLauncher -capture $*

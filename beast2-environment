@@ -1,15 +1,38 @@
 #!/bin/sh
 
-# General environment for beast2
+# General environment for beast2, sourced by other beast2 excutables
 
 export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default}
 export BEAST=/usr/share/beast2
-JFX="$JAVA_HOME/lib"
-export JFX_LIBS="$JFX/javafx.controls.jar:$JFX/javafx.fxml.jar:$JFX/javafx.graphics.jar:$JFX/javafx.base.jar:$JFX/javafx.web.jar:$JFX/javafx.media.jar"
+export DEFAULT_CP="/usr/share/beast2/lib/beagle.jar"
 export BEAST_LIB="$BEAST/lib"
-export DEFAULT_CP="/usr/share/beast2/lib"
-
 export JAVA="$JAVA_HOME"/bin/java
+JFX="$JAVA_HOME/lib"
+export CLASS_PATH="/usr/share/beast2/lib:${JFX}"
+
+
+jfx_modules=(
+    controls
+    fxml
+    graphics
+    base
+    web
+    media
+    swing
+)
+for mod in ${jfx_modules[@]}
+do
+    JFX_LIBS="$JFX_LIBS:$JFX/javafx.${mod}.jar"
+done
+
+loaded_jfx_modules=(
+  controls
+  fxml
+)
+JFX_MODULES=$(printf "javafx.%s," "${loaded_jfx_modules[@]}" |sed 's/,*$//g')
+
+export JFX_LIBS
+export JFX_MODULES
 
 # use BEAGLE_LIB if the BEAGLE library is not in a standard location
 export BEAST_EXTRA_LIBS="$BEAST_EXTRA_LIBS:$BEAGLE_LIB"

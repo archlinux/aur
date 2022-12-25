@@ -3,7 +3,8 @@ self_path=$(realpath $0)
 environment_file=$(dirname $self_path)/beast2-environment
 source $environment_file
 
+
 "$JAVA" -Xms256m -Xmx8g -Djava.library.path="$BEAST_LIB" \
     -cp "$BEAST_LIB/DensiTree.jar:$BEAST/DensiTree.app/Contents/Resources/Java/DensiTree.jar" \
-    --module-path $JFX_LIBS --add-modules javafx.controls,javafx.fxml \
+    --module-path $JFX_LIBS --add-modules "$JFX_MODULES" \
     viz.DensiTree $*

@@ -5,5 +5,5 @@ source $environment_file
 
 "$JAVA" -Dlauncher.wait.for.exit=true -Xms256m -Xmx8g -Djava.library.path=$LD_LIBRARY_PATH -Duser.language=en \
     -cp $DEFAULT_CP:$BEAST_LIB/launcher.jar \
-    --module-path $JFX_LIBS --add-modules javafx.controls,javafx.fxml \
+    --module-path $JFX_LIBS --add-modules "$JFX_MODULES" \
     beast.pkgmgmt.launcher.LogCombinerLauncher $*
