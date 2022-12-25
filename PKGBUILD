@@ -18,7 +18,8 @@ makedepends=('git'
 #              'mplayer'
              'log4cpp'
              'pango'
-             'ffms2'
+             'libjpeg-turbo'
+             'sdl12-compat'
              )
 source=('git+https://github.com/avxsynth/avxsynth.git'
         'https://ffmpeg.org/releases/ffmpeg-2.3.6.tar.bz2'
@@ -108,7 +109,11 @@ build() {
 package_avxsynth-git() {
   pkgdesc="Linux Port of AviSynth. (Git version)"
   depends=('log4cpp'
-           'pango'
+           'libpango-1.0.so'
+           'libpangocairo-1.0.so'
+           'libpangoft2-1.0.so'
+           'sdl12-compat'
+           'libjpeg.so'
            )
   provides=('avxsynth')
   conflicts=('avxsynth')
