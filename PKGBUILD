@@ -10,8 +10,7 @@ pkgdesc="X.org 75dpi fonts (OTB version)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
 license=('custom')
-makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
-depends=('xorg-fonts-alias-75dpi')
+makedepends=('fonttosfnt-git')
 source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/adobe-utopia-75dpi/-/archive/master/adobe-utopia-75dpi-master.tar.gz
         ${url}/xorg/font/bh-75dpi/-/archive/master/bh-75dpi-master.tar.gz
