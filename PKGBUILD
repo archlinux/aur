@@ -1,18 +1,18 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=converter
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Converter is a GTK4+libadwaita application that allows you to convert and manipulate a given image. It is a front-end for ImageMagick."
 arch=('any')
 url="https://gitlab.com/adhami3310/Converter"
 license=('GPL3')
-depends=('libadwaita' 'imagemagick' 'python-gobject' 'python-svglib' 'python-pymupdf' 'swig')
+depends=('libadwaita' 'imagemagick' 'ghostscript' 'imath' 'libheif' 'liblqr' 'libjxl' 'openexr' 'python-gobject' 'python-docutils' 'python-svglib' 'python-pymupdf' 'swig' 'webp-pixbuf-loader')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_commit=a16923f922441820a4b8a0f639bd935d6d3cffd4 # tags/1.4.0^0
+_commit=2c5b0c9c250078ca5b84f2f2609da81c4ab96ddb # tags/1.5.0^0
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
