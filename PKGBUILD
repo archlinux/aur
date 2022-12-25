@@ -7,8 +7,7 @@ pkgdesc="Xorg bitmap fonts - small sizes only, so that anti-aliased fonts can se
 arch=('any')
 url="https://gitlab.freedesktop.org/"
 license=('custom')
-makedepends=('fonttosfnt-git' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
-depends=()
+makedepends=('fonttosfnt-git')
 source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/adobe-utopia-75dpi/-/archive/master/adobe-utopia-75dpi-master.tar.gz
         ${url}/xorg/font/bh-75dpi/-/archive/master/bh-75dpi-master.tar.gz
