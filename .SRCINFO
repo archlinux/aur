@@ -1,14 +1,13 @@
 pkgbase = avxsynth-git
 	pkgdesc = Linux Port of AviSynth. (Git version)
 	pkgver = 20150407.80dcb7e
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.avxsynth.org
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = yasm
-	makedepends = subversion
-	makedepends = python2
+	makedepends = python
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	makedepends = log4cpp

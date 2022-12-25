@@ -5,15 +5,14 @@ pkgname=('avxsynth-git'
          'avxedit-git'
          )
 pkgver=20150407.80dcb7e
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Port of AviSynth. (Git version)"
 arch=('x86_64')
 url='http://www.avxsynth.org'
 license=('GPL2')
 makedepends=('git'
              'yasm'
-             'subversion'
-             'python2'
+             'python'
              'qt5-base'
              'qt5-tools'
 #              'mplayer'
@@ -67,7 +66,9 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS="${CXXFLAGS} -std=c++11"
+  CXXFLAGS+=" -std=c++11"
+  LDFLAGS+=" -Wl,--allow-multiple-definition"
+  export PYTHON=python
 
   cd "${srcdir}/build-ffmpeg"
   ../ffmpeg-2.3.6/configure \
@@ -86,7 +87,8 @@ build() {
   cd "${srcdir}/build-ffms2"
   ../ffms2-2.22/configure \
     --prefix="${srcdir}/fakeroot" \
-    --enable-shared=no
+    --enable-shared=no \
+    --with-pic
 
   make install-libLTLIBRARIES install-pkgconfigDATA install-includeHEADERS
 
@@ -97,7 +99,8 @@ build() {
   ffms2_CFLAGS="-I${srcdir}/fakeroot" \
   ../avxsynth/configure \
     --prefix=/usr \
-    --enable-silent-rules
+    --enable-silent-rules \
+    --with-pic
 
   make
 }
