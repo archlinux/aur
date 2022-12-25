@@ -1,7 +1,7 @@
 pkgbase = python-xopen
 	pkgdesc = Python library to pen compressed files transparently
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pycompression/xopen/
 	arch = any
 	license = MIT
