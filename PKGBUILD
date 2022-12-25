@@ -3,8 +3,8 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=1.1.1
-_pkgtag=1.1
+pkgver=1.2
+_pkgtag=1.2
 pkgrel=1
 pkgdesc="Free and open source planetarium showing a realistic sky in 3D"
 arch=('x86_64')
@@ -21,12 +21,12 @@ _download_url="https://github.com/Stellarium/$_pkgname/releases/download/v$_pkgt
 source=(
 	"$_download_url/$_target"
 	"$_download_url/$_verifyfile"
-	$_pkgname.bash
+	"$_pkgname.bash"
 )
 sha256sums=(
-	'053db8567959e0739f3757ad26831b170836f7539408df803ad67c215afb6771'
-	'c783512818c0a8d6cc62dc4226a924a6de4c27764b206a3a33773bbe28d7019e'
-	'8971af52c47a77fb968219190909f7cd5feb9126e33c323eeeb9783e405e8dd1'
+	'081c88d008345fc0a73788872687905e54717b9269747e9e776e539720c8fa03'
+	'fcb8c3c9bd61d29cf9559c655ada18ddae14959665809d8e3140791ba6c12f92'
+	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
 _squashfs_root="squashfs-root"

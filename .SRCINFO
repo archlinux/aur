@@ -1,17 +1,17 @@
 pkgbase = stellarium-bin
 	pkgdesc = Free and open source planetarium showing a realistic sky in 3D
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://stellarium.org/
 	arch = x86_64
 	license = GPL2
 	conflicts = stellarium
-	source = https://github.com/Stellarium/stellarium/releases/download/v1.1/Stellarium-1.1.1-x86_64.AppImage
-	source = https://github.com/Stellarium/stellarium/releases/download/v1.1/Stellarium-1.1.1-x86_64.AppImage.asc
+	source = https://github.com/Stellarium/stellarium/releases/download/v1.2/Stellarium-1.2-x86_64.AppImage
+	source = https://github.com/Stellarium/stellarium/releases/download/v1.2/Stellarium-1.2-x86_64.AppImage.asc
 	source = stellarium.bash
 	validpgpkeys = 79151C2E6351E7278DA1A730BF38D4D02A328DFF
-	sha256sums = 053db8567959e0739f3757ad26831b170836f7539408df803ad67c215afb6771
-	sha256sums = c783512818c0a8d6cc62dc4226a924a6de4c27764b206a3a33773bbe28d7019e
-	sha256sums = 8971af52c47a77fb968219190909f7cd5feb9126e33c323eeeb9783e405e8dd1
+	sha256sums = 081c88d008345fc0a73788872687905e54717b9269747e9e776e539720c8fa03
+	sha256sums = fcb8c3c9bd61d29cf9559c655ada18ddae14959665809d8e3140791ba6c12f92
+	sha256sums = cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff
 
 pkgname = stellarium-bin
