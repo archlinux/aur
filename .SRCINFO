@@ -1,13 +1,13 @@
 pkgbase = gau
 	pkgdesc = Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl
-	pkgver = 2.0.8
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/lc/gau
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = gau-2.0.8.tar.gz::https://github.com/lc/gau/archive/v2.0.8.tar.gz
-	sha256sums = 9604f0b7bf258547778a155afd2c58d32eeeb82d3bcbcbe97616ccefd1287d9a
+	source = gau-2.1.2.tar.gz::https://github.com/lc/gau/archive/v2.1.2.tar.gz
+	sha256sums = 2900ba86dfda01b5d8a90e1547f158feb134f6d2b757ff8fc77d96d290f72e4c
 
 pkgname = gau
