@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ctwm-bzr
-pkgver=4.1.0.beta706
+pkgver=4.1.0.r706
 pkgrel=1
 pkgdesc="Claude's Tab Window Manager"
 arch=('i686' 'x86_64')		
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname//-bzr/}
-  printf $s%s $(cat VERSION|tr - .|sed 's+post+r+') $(bzr revno)
+  printf $s%s $(cat VERSION|tr - .|sed 's+beta+r+') $(bzr revno)
 }
 
 build() {

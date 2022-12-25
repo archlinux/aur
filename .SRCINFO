@@ -1,6 +1,6 @@
 pkgbase = ctwm-bzr
 	pkgdesc = Claude's Tab Window Manager
-	pkgver = 4.1.0.beta706
+	pkgver = 4.1.0.r706
 	pkgrel = 1
 	url = http://ctwm.org/
 	arch = i686
