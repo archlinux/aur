@@ -1,6 +1,6 @@
 pkgbase = ctwm-bzr
 	pkgdesc = Claude's Tab Window Manager
-	pkgver = 4.0.3.r682
+	pkgver = 4.1.0.beta706
 	pkgrel = 1
 	url = http://ctwm.org/
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = ctwm-bzr
 	depends = libjpeg
 	provides = ctwm
 	conflicts = ctwm
-	source = bzr+lp:ctwm
+	source = ctwm::bzr+https://code.launchpad.net/~ctwm/ctwm/trunk
 	md5sums = SKIP
 
 pkgname = ctwm-bzr
-

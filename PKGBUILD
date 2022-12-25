@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ctwm-bzr
-pkgver=4.0.3.r682
+pkgver=4.1.0.beta706
 pkgrel=1
 pkgdesc="Claude's Tab Window Manager"
 arch=('i686' 'x86_64')		
@@ -12,7 +12,7 @@ provides=('ctwm')
 conflicts=('ctwm')
 depends=('libxmu' 'libxpm' 'libjpeg')
 makedepends=('breezy' 'cmake')
-source=("bzr+lp:${pkgname%-bzr}")
+source=("${pkgname%-bzr}::bzr+https://code.launchpad.net/~ctwm/ctwm/trunk")
 md5sums=('SKIP')
 
 pkgver() {
