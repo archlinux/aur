@@ -1,6 +1,6 @@
 pkgbase = mathematica
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation.
-	pkgver = 13.1.0
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	arch = x86_64
@@ -56,7 +56,7 @@ pkgbase = mathematica
 	optdepends = tesseract
 	optdepends = zlib
 	options = !strip
-	source = local://Mathematica_13.1.0_BNDL_LINUX.sh
-	md5sums = 23e6c72f6b948cefc4f588ec563af488
+	source = local://Mathematica_13.2.0_BNDL_LINUX.sh
+	md5sums = 05a0eaaafef2e4478454cb28e0ab4bc8
 
 pkgname = mathematica

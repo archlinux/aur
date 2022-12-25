@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=13.1.0
+pkgver=13.2.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
@@ -71,7 +71,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_BNDL_LINUX.sh")
-md5sums=('23e6c72f6b948cefc4f588ec563af488')
+md5sums=('05a0eaaafef2e4478454cb28e0ab4bc8')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
