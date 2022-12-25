@@ -1,7 +1,7 @@
 # Maintainer: inv2004 (https://github.com/inv2004)
 
 pkgname=ttop
-pkgver=v0.4.2
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Interactive Nim Shell / REPL / Playground"
 arch=('x86_64')
@@ -20,7 +20,8 @@ install=".INSTALL"
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s" $(git tag | sort -V | tail -1)
+    VER=$(git tag | sort -V | tail -1)
+    printf "%s" "${VER#v}"
 }
 
 prepare() {
