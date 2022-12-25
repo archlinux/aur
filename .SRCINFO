@@ -29,7 +29,7 @@ pkgbase = linux-rust
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 62effb595c19d3925cb472ffbd789369042196582331daec9500ea1078c19b0c
+	sha256sums = d17b03decf4ba3fbb672d46d6dfdff35464b49c31e8abb833da55b738546761d
 
 pkgname = linux-rust
 	pkgdesc = The Linux kernel and modules
