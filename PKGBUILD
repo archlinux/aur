@@ -34,7 +34,7 @@ conflicts=('mangohud')
 _srcdir="MangoHud-$pkgver"
 
 build() {
-    ln -sf "$srcdir/imgui-$_imgui_ver" "$_srcdir/subprojects/imgui"
+    ln -sf "$srcdir/imgui-$_imgui_ver" "$_srcdir/subprojects/imgui-$_imgui_ver"
     
     arch-meson                          \
         -Dappend_libdir_mangohud=false  \
