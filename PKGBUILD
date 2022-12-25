@@ -4,7 +4,7 @@
 
 pkgname=xorg-fonts-cyrillic-otb
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="X.org cyrillic fonts (OTB version)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
@@ -29,7 +29,7 @@ build() {
         if grep -Fq 'FAMILY_NAME "' "$f" 2>/dev/null; then
           family_name="$(grep -F 'FAMILY_NAME "' "$f")"
           family_name="${family_name%\"}"
-          family_name_otb="$family_name (OTB)"
+          family_name_otb="$family_name Cyrillic (OTB)"
           sed -i "s/$family_name/$family_name_otb/" "$f"
         fi
         fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"

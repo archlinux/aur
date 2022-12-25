@@ -1,7 +1,7 @@
 pkgbase = xorg-fonts-cyrillic-otb
 	pkgdesc = X.org cyrillic fonts (OTB version)
 	pkgver = 1.0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gitlab.freedesktop.org/
 	arch = any
 	license = custom
