@@ -1,7 +1,7 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-git
 _pkgname=findex
-pkgver=0.6.0.16
+pkgver=0.6.0.44
 pkgver() {
 	cd findex
 	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./'
@@ -35,11 +35,7 @@ build() {
 
     rustup default stable
 
-    if [[ -z $WAYLAND_DISPLAY ]]; then
-      cargo build --release --features xorg
-    else
-      cargo build --release --features wayland
-    fi
+    cargo build --release
 }
 
 package() {
