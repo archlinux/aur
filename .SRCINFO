@@ -1,0 +1,13 @@
+pkgbase = vim-arm-syntax-git
+	pkgdesc = ARMv4 through 7 syntax highlighting for vim
+	pkgver = r58.e0abb52
+	pkgrel = 1
+	url = https://github.com/ARM9/arm-syntax-vim
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = git+https://github.com/ARM9/arm-syntax-vim#branch=master
+	sha256sums = SKIP
+
+pkgname = vim-arm-syntax-git
