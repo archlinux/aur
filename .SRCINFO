@@ -35,7 +35,6 @@ pkgbase = avxsynth-git
 
 pkgname = avxsynth-git
 	pkgdesc = Linux Port of AviSynth. (Git version)
-	depends = ffmpeg
 	depends = log4cpp
 	depends = pango
 	provides = avxsynth

@@ -42,13 +42,6 @@ sha256sums=('SKIP'
             'fb155fc2dbdb2450c3761781c571ec4335d1fa5169bd1fb2332386eb047c6d8a'
             )
 
-# # Due a incompatibility with FFms2 from GIT, turn disable the plugin
-# if [ "$(pacman -Q ffms2 &> /dev/null && echo $?)" == "0" ]; then
-#   _disable_ffms2="--disable-ffms2"
-# else
-#   _ffms2="ffms2"
-# fi
-
 pkgver() {
   cd avxsynth
   echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
@@ -75,7 +68,7 @@ prepare() {
 
 build() {
   export CXXFLAGS="${CXXFLAGS} -std=c++11"
-  
+
   cd "${srcdir}/build-ffmpeg"
   ../ffmpeg-2.3.6/configure \
     --prefix="${srcdir}/fakeroot" \
@@ -111,8 +104,7 @@ build() {
 
 package_avxsynth-git() {
   pkgdesc="Linux Port of AviSynth. (Git version)"
-  depends=('ffmpeg'
-           'log4cpp'
+  depends=('log4cpp'
            'pango'
            )
   provides=('avxsynth')
