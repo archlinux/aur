@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
-	pkgver = 1.8.3.post0
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://lightning.ai
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-pytorch-lightning
 	depends = uvicorn
 	optdepends = python-apex: mixed precision support
 	optdepends = python-horovod: for distributed training
-	source = https://files.pythonhosted.org/packages/source/p/pytorch-lightning/pytorch-lightning-1.8.3.post0.tar.gz
-	sha512sums = 95dae2e52aab8bd0a9620ce7193e84e1c73fe086de3a15684705ffccc91b90cc1ef6d2346449b01f9880e6c8494fda1a8a5f8acbef15a2cb413822b4b1331729
+	source = https://files.pythonhosted.org/packages/source/p/pytorch-lightning/pytorch-lightning-1.8.6.tar.gz
+	sha512sums = 85e6474637f5d237c22cf0775ee8d6f56c000c3c0376af2087b68d0c4311608d35d02e856ef1dddca1c481e531ee0fb246357b91f5c185637a740c80a0152510
 
 pkgname = python-pytorch-lightning
