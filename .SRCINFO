@@ -1,7 +1,7 @@
 pkgbase = r-tidytext
 	pkgdesc = Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=tidytext
 	arch = any
 	license = MIT
@@ -38,7 +38,7 @@ pkgbase = r-tidytext
 	optdepends = r-topicmodels
 	optdepends = r-vdiffr
 	optdepends = r-wordcloud
-	source = https://cran.r-project.org/src/contrib/tidytext_0.3.4.tar.gz
-	sha256sums = a6bc772e0669fdf09884ec6990a642924a45b44d5c4fda83ecb1121f1b2f6756
+	source = https://cran.r-project.org/src/contrib/tidytext_0.4.0.tar.gz
+	sha256sums = b3aadcdce641c83d47cb69ea504bbf34ea31fe628387d03c0d19a8d0e1279dfb
 
 pkgname = r-tidytext
