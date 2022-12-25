@@ -1,0 +1,22 @@
+pkgbase = cxcli-bin
+	pkgdesc = The missing CLI for your Dialogflow CX projects
+	pkgver = 1.7.7
+	pkgrel = 1
+	url = https://cxcli.xavidop.me
+	license = Apache-2.0
+	conflicts = dialogflow-cx-cli
+	provides = dialogflow-cx-cli
+	arch = aarch64
+	source_aarch64 = https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.7.7/cxcli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f79a525e47493d05b60082c863a7fd1374c24cfc0b898f3e954a65e01924f38
+	arch = armv7h
+	source_armv7h = https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.7.7/cxcli_Linux_armv7.tar.gz
+	sha256sums_armv7h = 5f7bfcdfad7cba79c1f76f7fff25ca79570e054b5ea51aa16276e704977b3f8d
+	arch = i686
+	source_i686 = https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.7.7/cxcli_Linux_i386.tar.gz
+	sha256sums_i686 = c9c00aaea355910cd719f48fdf4e848b3fd1030399851ee05e814f371f5fabe9
+	arch = x86_64
+	source_x86_64 = https://github.com/xavidop/dialogflow-cx-cli/releases/download/v1.7.7/cxcli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0fd70ff97b5c9790f2a86da5fbf07ed9d3a900d0da086a3b4a29f2c120c6b528
+	
+pkgname = cxcli-bin
