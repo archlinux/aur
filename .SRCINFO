@@ -1,0 +1,18 @@
+pkgbase = python-types-markdown
+	pkgdesc = Typing stubs for Markdown
+	pkgver = 3.4.2.1
+	pkgrel = 00
+	url = https://github.com/python/typeshed
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python
+	noextract = types_Markdown-3.4.2.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/48/65/d7bea36fadce0ba07e362defb2545f7e323c0f8876d5929b0c23b98d8822/types_Markdown-3.4.2.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 7f51213faa171b1d8d2a8639524083d5
+	md5sums = 84cbb431042e656c3ccddf7f5ecc2d84
+
+pkgname = python-types-markdown
