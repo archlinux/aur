@@ -1,12 +1,12 @@
-# Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
+# Maintainer: Ben Alex <ben.alex@acegi.com.au>
 pkgname=openhab3
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
 license=("EPL")
-depends=("java-runtime-headless=11" "archlinux-java-run")
+depends=("java-runtime-headless=11")
 optdepends=("openhab3-addons: add-on archives for offline use")
 
 conflicts=("openhab3-snapshot")
@@ -25,13 +25,13 @@ source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-rel
         "${pkgname}.patch"
         "karaf_wrapper.sh"
         "${pkgname}.hook")
-
-sha256sums=('9eaf098dfbb79f102c9ca83135594224d19ba33ac31194ef278111620443786b'
+sha256sums=('24151d2c19ce83bab687457d7786ae6460a3258f2ab0892be01a0ee9e5be2dfb'
             '995bb5eacc583c22fe97555fd67e69911a63cfb02449a046481b5a0e64f4032c'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b'
             '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762'
             '119c1e670eec082012778d53ff2b3e446036139fd7d7c5dd5b731cd576b1100a')
+
 
 prepare() {
     patch -p1 < ${srcdir}/${pkgname}.patch
