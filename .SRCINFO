@@ -1,0 +1,12 @@
+pkgbase = git-prompt
+	pkgdesc = Displays a compact color-coded git status, git branch, and more inside your shell prompt
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dosx001/GitPrompt
+	arch = any
+	makedepends = cmake
+	makedepends = make
+	source = https://github.com/Dosx001/GitPrompt/archive/refs/tags/1.0.0.tar.gz
+	md5sums = 52b6ef43dcdf4136bc47fd50359c0987
+
+pkgname = git-prompt
