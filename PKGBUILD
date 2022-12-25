@@ -20,7 +20,7 @@ prepare() {
     cd "$srcdir/${pkgname%-git}"
     sed -i 's|\binstall_fonts();||g' 'PersianCalendar@oxygenws.com/extension.js'
     sed -i 's|\buninstall_fonts();||g' 'PersianCalendar@oxygenws.com/extension.js'
-    sed -i 's|Vazir,|Vazirmatn,|g' 'PersianCalendar@oxygenws.com/stylesheet.css'
+    sed -i 's|Vazir, ||g' 'PersianCalendar@oxygenws.com/stylesheet.css'
 }
 
 pkgver() {
