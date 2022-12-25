@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel < doppelhelix@gmail.com >
 
 pkgname=fortune-mod-de
-pkgver=0.34
-pkgrel=2
+pkgver=0.35
+pkgrel=1
 pkgdesc="Fortune Cookies in german, from the Debian project"
 url="https://packages.debian.org/source/sid/fortunes-de"
 depends=('fortune-mod')
@@ -10,9 +10,10 @@ makedepends=('recode')
 source=(http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_$pkgver.orig.tar.gz)
 arch=('any')
 license=('GPL2')
-md5sums=('4d461b13da65c5964a73de744f5217b1')
+md5sums=('c3ff83748c0cf07f6265636a142a27ad')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
+
 build() {
 	cd "$srcdir/fortunes-de-${pkgver}"
 	

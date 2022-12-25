@@ -1,7 +1,7 @@
 pkgbase = fortune-mod-de
 	pkgdesc = Fortune Cookies in german, from the Debian project
-	pkgver = 0.34
-	pkgrel = 2
+	pkgver = 0.35
+	pkgrel = 1
 	url = https://packages.debian.org/source/sid/fortunes-de
 	arch = any
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = fortune-mod-de
 	depends = fortune-mod
 	provides = fortune-mod-de
 	conflicts = fortune-mod-de
-	source = http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_0.34.orig.tar.gz
-	md5sums = 4d461b13da65c5964a73de744f5217b1
+	source = http://ftp.de.debian.org/debian/pool/main/f/fortunes-de/fortunes-de_0.35.orig.tar.gz
+	md5sums = c3ff83748c0cf07f6265636a142a27ad
 
 pkgname = fortune-mod-de
