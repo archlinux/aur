@@ -1,5 +1,5 @@
 pkgbase = xorg-server-bug865
-	pkgver = 21.1.5
+	pkgver = 21.1.6
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -36,14 +36,14 @@ pkgbase = xorg-server-bug865
 	makedepends = systemd
 	makedepends = meson
 	makedepends = git
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.5.tar.xz
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.5.tar.xz.sig
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.6.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-21.1.6.tar.xz.sig
 	source = xvfb-run
 	source = xvfb-run.1
 	source = 0002-xephyr_Dont_check_for_SeatId_anymore.patch
 	source = freedesktop-bug-865.patch
-	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha512sums = a39c6ba36f94241d330b679a9a6fe2c5fda73fc3f5a9308a7a9cfd0d58503e407291759c9e553455c07cf5a3862952ae3904334eeca29c97ff5af7cffd2e6953
+	validpgpkeys = 67DC86F2623FC5FD4BB5225D14706DBE1E4B4540
+	sha512sums = 5e3cf879facf3a04aa64b7f6129226ea68a97109a7daca5146b57b4c707cc76a4fbad1924997dd319efd8c8c20eb5bb59570a719101b76ae07e923b7e9656239
 	sha512sums = SKIP
 	sha512sums = 87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2
 	sha512sums = de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22
@@ -70,7 +70,7 @@ pkgname = xorg-server-bug865
 	provides = X-ABI-XINPUT_VERSION=24.4
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=21.1.5
+	provides = xorg-server=21.1.6
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
