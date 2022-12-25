@@ -31,5 +31,3 @@ package() {
   cd "${srcdir}/SAM"
   install -D -m755 sam "${pkgdir}"/usr/bin/sam
 }
-
-# vim:set ts=2 sw=2 et:
