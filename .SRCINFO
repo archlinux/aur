@@ -1,13 +1,12 @@
 pkgbase = wg_tool
 	pkgdesc = Tool to manage wireguard server and users
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/gene-git/wg_tool
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-build
-	makedepends = python-installer
+	makedepends = python-pip
 	makedepends = python-wheel
 	makedepends = python-poetry
 	makedepends = rsync
