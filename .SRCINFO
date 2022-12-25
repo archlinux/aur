@@ -1,0 +1,24 @@
+pkgbase = notflix-old
+	pkgdesc = A shell script to search and stream torrents. Old version with dmenu and webtorrent
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Andy3153/notflix-old
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = curl
+	depends = dmenu
+	depends = gawk
+	depends = grep
+	depends = libnotify
+	depends = mpv
+	depends = sed
+	depends = webtorrent-cli
+	provides = notflix
+	conflicts = notflix-git
+	source = git+https://github.com/Andy3153/notflix-old.git
+	sha256sums = SKIP
+
+pkgname = notflix-old
