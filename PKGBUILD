@@ -1,8 +1,8 @@
 # Maintainer: Daniel Xu <dxu@dxuuu.xyz>
 pkgname=below-git
 _pkgname=below
-pkgver=v0.2.0.r35.g584fdef
-pkgrel=2
+pkgver=v0.6.3.r25.g43f24d32
+pkgrel=1
 pkgdesc="An interactive resource monitor for modern Linux systems"
 arch=('x86_64')
 url="https://github.com/facebookincubator/below/"
