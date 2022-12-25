@@ -2,9 +2,7 @@ TARGET  = numlockl
 SRCS    = numlockl.c
 OBJS    = $(SRCS:.c=.o)
 LIBS    = -lbsd
-LDFLAGS+=-fuse-ld=lld
 CPPFLAGS+=-Wall
-CFLAGS+=-flto
 prefix = /usr
 exec_prefix = ${prefix}
 bindir=${exec_prefix}/bin
