@@ -63,7 +63,6 @@
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 : "${_subarch:=""}"
-subarch=35
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
