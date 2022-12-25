@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=fortune-mod-de-git
-pkgver=0.34.r383.gc0e2322
+pkgver=0.35.r390.g941bb9e
 pkgrel=1
 pkgdesc="Fortune Cookies in German, from the Debian project"
 url="https://salsa.debian.org/debian/fortunes-de"
@@ -25,7 +25,8 @@ build() {
   PREFIX=`pwd`/build \
   DOCDIR=usr/share/doc/${pkgname%-git} \
   BINDIR=usr/bin \
-  FORTUNESDIR=usr/share/fortune ./install.sh -utf8
+  FORTUNESDIR=usr/share/fortune \
+  ./install.sh -utf8
 }
 
 package() {
@@ -34,8 +35,10 @@ package() {
   cp -r * "${pkgdir}"
   # Remove *.u8 files and strip ".fortunes" from filenames
   cd $pkgdir/usr/share/fortune/de
+  mv debian debian-de
+  mv debian.dat debian-de.dat
   rm *.u8
-  for f in *.fortunes*; do
-    mv $f ${f/.fortunes}
-  done
+  mv * ..
+  cd ..
+  rm -r de
 }
