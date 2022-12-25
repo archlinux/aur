@@ -4,7 +4,7 @@ _pkgname=GeomxTools
 _pkgver=3.2.0
 pkgname=r-${_pkgname,,}
 pkgver=3.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='NanoString GeoMx Tools'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,21 +16,27 @@ depends=(
   r-data.table
   r-dplyr
   r-envstats
+  r-ggally
+  r-ggplot2
   r-lmertest
   r-nanostringnctools
-  r-outliers
   r-readxl
   r-reshape2
   r-rjson
+  r-rlang
   r-s4vectors
   r-seuratobject
-  r-ggally
+  r-stringr
 )
 optdepends=(
   r-ggiraph
   r-knitr
   r-parallel
+  r-patchwork
   r-rmarkdown
+  r-seurat
+  r-spatialdecon
+  r-spatialexperiment
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
