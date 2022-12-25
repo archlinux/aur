@@ -1,18 +1,20 @@
 pkgname=gcc9-bin
 pkgver=9.5.0_1ubuntu3
-_pkgver=`curl -s --retry 5 https://packages.ubuntu.com/kinetic/gcc-9|grep Package:|cut -d\( -f2|cut -d\) -f1|tr - _`
+_web=https://packages.ubuntu.com
+_dist=`curl -sL --retry 5 $_web/g++-9\&exact=1|grep resultlink|cut -d\" -f2|tail -1`
+_pkgver=`curl -s --retry 5 $_web/$_dist/g++-9|grep Package:|cut -d\( -f2|cut -d\) -f1|tr - _`
 pkgrel=2
 pkgdesc="The GNU Compiler Collection (series 9.x)"
 arch=(x86_64 aarch64)
 _arch=`uname -m|sed s/x86_/amd/\;s/arch/rm/`
-url=https://packages.ubuntu.com/kinetic/g++-9
+url=$_web/$_dist/g++-9
 license=({,L}GPL FDL custom)
 depends=(libisl)
 provides=(gcc9)
 conflicts=(gcc9)
 source=(http://`[ $_arch = amd64 ] && echo archive.ubuntu.com/ubuntu || echo ports.ubuntu.com`/pool/universe/g/gcc-9/{{cpp,g++,gcc}-9,lib{gcc,stdc++}-9-dev}_${_pkgver/_/-}_$_arch.deb)
 noextract=(*.deb)
-md5sums=($(for I in {{cpp,g++,gcc}-9,lib{gcc,stdc++}-9-dev};do curl -s --retry 5 https://packages.ubuntu.com/kinetic/$_arch/$I/download|grep MD5|cut -d\> -f6|cut -d\< -f1;done))
+md5sums=($(for I in {{cpp,g++,gcc}-9,lib{gcc,stdc++}-9-dev};do curl -s --retry 5 $_web/$_dist/$_arch/$I/download|grep MD5|cut -d\> -f6|cut -d\< -f1;done))
 pkgver(){
 	echo $_pkgver
 }
