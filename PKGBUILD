@@ -3,7 +3,7 @@
 _base=tryton
 pkgname=python-${_base}
 pkgver=6.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Tryton desktop client"
 arch=(any)
 url="https://${_base}.org"
@@ -19,8 +19,8 @@ conflicts=(${_base})
 prepare() {
   cd ${_base}-${pkgver}
   # https://foss.heptapod.net/tryton/tryton/-/issues/10777
-  sed -i 's/^            record.destroy()/            # record.destroy()/' ${_base}-${pkgver}/tryton/gui/window/view_form/model/group.py
-  sed -i '140 a \ \ \ \ \ \ \ \ \ \ \ \ record.destroy()' ${_base}-${pkgver}/tryton/gui/window/view_form/model/group.py
+  sed -i 's/^            record.destroy()/            # record.destroy()/' tryton/gui/window/view_form/model/group.py
+  sed -i '140 a \ \ \ \ \ \ \ \ \ \ \ \ record.destroy()' tryton/gui/window/view_form/model/group.py
 }
 
 build() {
