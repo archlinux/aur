@@ -24,6 +24,7 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
         "$_pkgname.desktop"
         "notes.install"
         )
+options=(!strip) # sorry, seems like dotnet bug
 
 sha256sums=('SKIP'
             'a3e5a2e4b8e7b17776bfa3fc33cb33f13bc26d6756ba5ada8200ca708f33e293'
@@ -55,10 +56,6 @@ build() {
         PREFIX="0.7.0.0-pre"
     else
         PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
-    fi
-
-    if check_option "strip" y; then
-        EXTRA_OPTIONS="/p:DebugType=None /p:DebugSymbols=false"
     fi
 
     ./build.sh linux-x64 \
