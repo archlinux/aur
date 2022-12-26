@@ -9,7 +9,8 @@ pkgbase = bltui
 	makedepends = git
 	depends = bluez
 	provides = bltui
+	conflicts = bltui
 	source = git+https://github.com/simonadi/bltui.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = bltui
