@@ -1,0 +1,12 @@
+pkgbase = pass-xkcd
+	pkgdesc = A pass extension for generating xkcd-style passphrases.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/slothgrind/pass-xkcd
+	arch = any
+	license = GPL3
+	depends = pass
+	source = https://gitlab.com/slothgrind/pass-xkcd/-/archive/v0.0.1/pass-xkcd-v0.0.1.tar.gz
+	sha256sums = ebfd2f85ae2b62cfcebd0e17e735558c09a249cf63344e6acfdbdbe38b38f6a9
+
+pkgname = pass-xkcd

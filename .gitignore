@@ -1,0 +1,5 @@
+# Ignore artifacts created by Arch Linux packaging tools.
+pkg/*
+src/*
+*.gz
+*.zst
