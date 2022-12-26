@@ -1,6 +1,6 @@
 pkgbase = electronwmd-appimage
 	pkgdesc = Upload music to NetMD MiniDisc devices
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://web.minidisc.wiki/
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = electronwmd-appimage
 	provides = electronwmd
 	conflicts = web-minidisc-pro
 	conflicts = electronwmd
-	noextract = electronwmd-1.3.0.AppImage
+	noextract = electronwmd-1.3.2.AppImage
 	options = !strip
-	source = electronwmd-1.3.0.AppImage::https://github.com/asivery/ElectronWMD/releases/download/v0.2.1-1.3.0/electronwmd-0.2.1-1.3.0-linux_x86_64.AppImage
+	source = electronwmd-1.3.2.AppImage::https://github.com/asivery/ElectronWMD/releases/download/v0.2.2-1.3.2/electronwmd-0.2.2-1.3.2-linux_x86_64.AppImage
 	source = electronwmd.desktop.patch
 	source = electronwmd.sh
-	sha256sums = 617fbbe6470f0b2bea087f1c3aab6c6f6c3212d21e4dbeff0b4960d86201fde5
+	sha256sums = 4b1be7a8dd8b524969228d0092602b7e00994714bc7d40cdddb4a5016a3b27e7
 	sha256sums = 591c38d58d2f1f9a63252ff95917bdfff66f4c9684940f20e958194ee3cac0eb
 	sha256sums = 17538d248d36555d08227cf28c0e3436d92c0ed00f317dd9a1833a3cc847a530
 
