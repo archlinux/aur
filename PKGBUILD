@@ -118,7 +118,7 @@ package() {
       elif [[ "${dir}" == *cyrillic* ]]; then
         g=cyrillic
       fi
-      install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir}"
+      install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.${dir%-*}"
       install -m755 -d "${pkgdir}/usr/share/fonts/${g}"
       shopt -s nullglob
       for f in *-web.otb; do
