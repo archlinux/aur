@@ -1,12 +1,12 @@
 pkgbase = protonlaunch
 	pkgdesc = A small piece of script to launch Proton directly from the CLI, similar to Wine
-	pkgver = 0.6
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/h0m3/protonlaunch
 	arch = any
 	license = BSD
 	depends = steam
-	optdepends = steam-native
+	optdepends = steam-native-runtime
 	source = protonlaunch::git+https://github.com/h0m3/protonlaunch.git#branch=main
 	sha256sums = SKIP
 
