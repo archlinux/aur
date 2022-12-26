@@ -1,6 +1,6 @@
 pkgbase = brotli-git
 	pkgdesc = Brotli compression library
-	pkgver = 1.0.9.r33.g4ec6703
+	pkgver = 1.0.9.r51.g509d441
 	pkgrel = 1
 	url = https://github.com/google/brotli
 	arch = i686
@@ -8,13 +8,15 @@ pkgbase = brotli-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	source = git+https://github.com/google/brotli.git
 	sha256sums = SKIP
 
 pkgname = brotli-git
 	depends = glibc
-	provides = brotli
+	provides = brotli=1.0.9.r51.g509d441
 	provides = libbrotlicommon.so
 	provides = libbrotlidec.so
 	provides = libbrotlienc.so
@@ -22,5 +24,5 @@ pkgname = brotli-git
 
 pkgname = python-brotli-git
 	depends = python
-	provides = python-brotli
+	provides = python-brotli=1.0.9.r51.g509d441
 	conflicts = python-brotli

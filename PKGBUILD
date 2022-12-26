@@ -2,13 +2,13 @@
 
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git')
-pkgver=1.0.9.r33.g4ec6703
+pkgver=1.0.9.r51.g509d441
 pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
 license=('MIT')
-makedepends=('git' 'cmake' 'python-setuptools')
+makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/google/brotli.git")
 sha256sums=('SKIP')
 
@@ -22,8 +22,6 @@ pkgver() {
 build() {
   cd "brotli"
 
-  python "setup.py" build
-
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
@@ -31,6 +29,11 @@ build() {
     -DCMAKE_INSTALL_LIBDIR="lib" \
     ./
   make -C "_build"
+
+  python \
+    -m build \
+    --wheel \
+    --no-isolation
 }
 
 check() {
@@ -41,7 +44,7 @@ check() {
 
 package_brotli-git() {
   depends=('glibc')
-  provides=('brotli' 'libbrotlicommon.so' 'libbrotlidec.so' 'libbrotlienc.so')
+  provides=("brotli=$pkgver" 'libbrotlicommon.so' 'libbrotlidec.so' 'libbrotlienc.so')
   conflicts=('brotli')
 
   cd "brotli"
@@ -52,13 +55,13 @@ package_brotli-git() {
 
 package_python-brotli-git() {
   depends=('python')
-  provides=('python-brotli')
+  provides=("python-brotli=$pkgver")
   conflicts=('python-brotli')
 
   cd "brotli"
 
-  python "setup.py" install \
-    --optimize 1 \
-    --skip-build \
-    --root "$pkgdir"
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
 }
