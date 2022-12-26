@@ -1,15 +1,15 @@
 pkgbase = ruby-fog-vsphere
 	pkgdesc = Fog for vSphere
-	pkgver = 3.5.2
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/fog/fog-vsphere
 	arch = any
 	license = MIT
 	depends = ruby-fog-core
-	depends = ruby-rbvmomi
-	noextract = fog-vsphere-3.5.2.gem
+	depends = ruby-rbvmomi2
+	noextract = fog-vsphere-3.6.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-vsphere-3.5.2.gem
-	sha256sums = 6ff73472c76510c4f136c3fe9e7dca76752cbce1910262b96685d4b3c3f6857c
+	source = https://rubygems.org/downloads/fog-vsphere-3.6.0.gem
+	sha256sums = fa72bbdb91bf346446f7c4c5423c3b97176b758b40bf71dbbdaf1e8878a5ae0b
 
 pkgname = ruby-fog-vsphere
