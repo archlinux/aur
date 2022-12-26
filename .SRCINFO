@@ -1,0 +1,16 @@
+pkgbase = paulfrische-dmenu-git
+	pkgdesc = This is my build of dmenu using the grid patch and the tokyonight color scheme.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/paulfrische/dmenu
+	arch = any
+	license = MIT
+	makedepends = make
+	makedepends = git
+	provides = dmenu
+	conflicts = dmenu
+	replaces = dmenu
+	source = https://github.com/paulfrische/dmenu/archive/refs/heads/main.zip
+	sha256sums = 1eba59778628544ca8fc0a9c1f3a445a4519581c04e676e6a12927318f8fbdd2
+
+pkgname = paulfrische-dmenu-git
