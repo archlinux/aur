@@ -1,13 +1,13 @@
 pkgbase = otf-asana-math
 	pkgdesc = A font to typeset maths in Xe(La)TeX and Lua(La)TeX by Apostolos Syropoulos
 	pkgver = 000.958
-	pkgrel = 3
-	url = https://www.ctan.org/pkg/asana-math
+	pkgrel = 4
+	url = https://www.ctan.org/pkg/Asana-Math
 	arch = any
-	license = Custom: OFL
+	license = OFL
 	source = https://mirrors.ctan.org/fonts/Asana-Math.zip
 	source = https://mirrors.ctan.org/fonts/drm/licenses/OFL.txt
-	md5sums = 6de861f535bae901c8ec6f6dd57195a2
-	md5sums = d9c061be3572a59ede6b6aceba986604
+	sha512sums = 6fb14c67c040e7c4d4c6a73ec1545f1da061b9cb4f6553549b38e1e08044bbba09a3af9029182ca48e78c59e951ab07b5684bfeb1948684406c6c590f65eb98c
+	sha512sums = 17633f5890738d2ddeaeefe270a1fdf5ea71475888b04859e042a1e36ff24ac12b690625b9933d4194e00f799c01076b9020c5bebad964e805fdff75ab87a247
 
 pkgname = otf-asana-math
