@@ -1,0 +1,19 @@
+pkgbase = python-mdx_truly_sane_lists
+	pkgdesc = Extension for Python-Markdown that makes lists truly sane. Custom indents for nested lists and fix for messy linebreaks.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/radude/mdx_truly_sane_lists
+	arch = any
+	license = custom:MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-markdown
+	source = https://files.pythonhosted.org/packages/source/m/mdx_truly_sane_lists/mdx_truly_sane_lists-1.3.tar.gz
+	source = LICENSE
+	sha256sums = b661022df7520a1e113af7c355c62216b384c867e4f59fb8ee7ad511e6e77f45
+	sha256sums = 9ea8a12deea1b232d639881e35b0540f8678315ebcc27053a9d8359bd78ad040
+
+pkgname = python-mdx_truly_sane_lists
