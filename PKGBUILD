@@ -2,7 +2,7 @@
 # Maintainer: Ilesh Thiada <ileshkt@gmail.com>
 pkgname=ferium-gui-bin
 _pkgname=ferium-gui
-pkgver=4.2.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64" "aarch64")
@@ -15,8 +15,8 @@ license=('MPL2')
 source_x86_64=("$_pkgname-$pkgver-$pkgrel.x86_64.zip::${url}/releases/download/v${pkgver}/ferium-linux.zip")
 source_aarch64=("$_pkgname-$pkgver-$pkgrel.aarch64.zip::${url}/releases/download/v${pkgver}/ferium-linux-arm64.zip")
 
-sha256sums_x86_64=('9716593e299e64689044237848a9d0849df7f3e77fb9086aff9fd79baed299a6')
-sha256sums_aarch64=('5300cdaaa1aa7ee86a93384ad19c6025e532399286324d9b8a061650ed358414')
+sha256sums_x86_64=('cf75bcbb684676ece4e7fbb3bac24c12becdd7aff4a08807dda8b6cd8570f895')
+sha256sums_aarch64=('d34b608672cae4bc6cec06478c2ff91c48c81c2a995b2913c96a903aa054a838')
 
 package() {
 	cd "$srcdir"
