@@ -7,7 +7,7 @@ then
         echo "DISPLAY and/or WAYLAND_DISPLAY is not set"
         exit 64
     fi
-    dotnet ./OpenTabletDriver.Daemon.dll
+    ./OpenTabletDriver.Daemon
 else
-    dotnet ./OpenTabletDriver.Console.dll "$@"
+    ./OpenTabletDriver.Console "$@"
 fi

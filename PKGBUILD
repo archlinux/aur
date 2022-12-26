@@ -27,8 +27,8 @@ source=('git+https://github.com/OpenTabletDriver/OpenTabletDriver'
 options=(!strip) # sorry, seems like dotnet bug
 
 sha256sums=('SKIP'
-            'a3e5a2e4b8e7b17776bfa3fc33cb33f13bc26d6756ba5ada8200ca708f33e293'
-            '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
+            '05b7792f0ee8ffcee40225dd750fe453800c511d228eff5bafe3dd6189390caf'
+            'cdd143d2a18d0eb226585d796f39258a2c1575b31475c50d794ecbfab12d64d3'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
             'cddf5b0928bc6e1d8d87ac503b4dd31536d956b1f37e7e3fa1c1b47a0ad23880')
@@ -72,7 +72,7 @@ package() {
 
     shopt -s nullglob
     cd "$srcdir/$_pkgname/bin"
-    for binary in *.dll *.json *.pdb; do
+    for binary in OpenTabletDriver.* *.pdb; do
         install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
     done
     cd "$srcdir"
