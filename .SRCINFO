@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-listen1
 	pkgdesc = One for all free music in China
 	pkgver = 2.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://listen1.github.io/listen1
 	arch = any
 	license = MIT
