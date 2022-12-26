@@ -3,7 +3,7 @@
 pkgname=python-grilops
 _name=${pkgname#python-}
 pkgver=0.9.1
-pkgrel=2
+pkgrel=1
 pkgdesc='GRId LOgic Puzzle Solver'
 arch=(any)
 url=https://github.com/obijywk/grilops
