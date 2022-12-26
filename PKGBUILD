@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3787.r0.g3cfc4cd5b
+pkgver=v1.7.3791.r0.ga42143690
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -114,5 +114,5 @@ package()
 # vim: ts=2 sw=2 et:
 
 sha256sums=('SKIP'
-            '2ae537def01e43b07589eb09011660fbe10c3ffd77d1dd8582cf92fbe3f3f4a9'
+            'd345759a6ca19023ba9775c6f4b847d5510c38eea83406571dc0d2fc72ec3d3a'
 )
