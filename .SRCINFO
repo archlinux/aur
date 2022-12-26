@@ -6,7 +6,6 @@ pkgbase = asdf-vm
 	install = asdf-vm.install
 	arch = any
 	license = MIT
-	makedepends = cpio
 	depends = curl
 	depends = git
 	optdepends = autoconf

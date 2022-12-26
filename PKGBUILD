@@ -11,7 +11,6 @@ depends=(
   'curl'
   'git'
 )
-makedepends=('cpio')
 optdepends=(
   'autoconf'
   'automake'
@@ -48,8 +47,16 @@ package() {
   local usrshare="${pkgdir}/usr/share"
 
   local docdir="${usrshare}/doc/${pkgname}"
-  find . -path ./.github -prune -o -name '*.md' -print | cpio -pd "${docdir}"
+  mkdir -p "${docdir}"
   cp help.txt "${docdir}"
+
+  # https://aur.archlinux.org/packages/asdf-vm#comment-886293
+  find . \
+    -path ./.github \
+    -prune \
+    -o \
+    -name '*.md' \
+    -exec cp --parents '{}' "${docdir}" \;
 
   install -Dm644 -t "${usrshare}/licenses/${pkgname}/" LICENSE
 
