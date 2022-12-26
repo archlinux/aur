@@ -1,16 +1,16 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap-bin
-pkgver="0.5.2"
+pkgver="0.7.0"
 pkgrel=1
 pkgdesc='a simplistic papermc helper (pre-compiled)'
 url='https://github.com/talwat/pap'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT')
-sha256sums_i686=('2e93a15d2370deb5b55fac540bda07bb84b286ff610ce1920fe53d3e1e7e9453')
-sha256sums_x86_64=('224c9f39bf391f5203b20bb7b269f191d2531daa75f0ef289915e1fea470c5e3')
-sha256sums_armv7h=('57c883cab8fb15410491bd0440487ebde183e429df88787f423750a6cede43ac')
-sha256sums_armv6h=('f882313cd3520ec937362b9055122926bbfa3ff9ee6e6583fc3e3868e7716b1b')
-sha256sums_aarch64=('c01a3a860b505f3f59b68511eb9b7163ac836a35532202c7541ceb98b10f99ae')
+sha256sums_i686=('e35b4a4592c26341c9209a6c324c1ab539eacf8d79f5cef8743b70743b130fc9')
+sha256sums_x86_64=('f35d1966c20d1c89156280f5b4127ab5a5e2befb2c2832a520b95257f8452d7f')
+sha256sums_armv7h=('3ff751457f7545df0b34985beed0d84cdec645a9fdd6ad9fd13e4e4fce8fcb40')
+sha256sums_armv6h=('337eea8a3091f38747582e1a095ab71cf3794466c4303b6a1896862e2786a4a1')
+sha256sums_aarch64=('156545cdbfd1780df55bf25a0b54db992056a87369b0dd70035af9730e7b2f51')
 
 source_x86_64=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${pkgver}_linux_x86_64")
 source_i686=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${pkgver}_linux_i386")
