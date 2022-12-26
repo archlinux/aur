@@ -1,5 +1,5 @@
 pkgbase = ttop
-	pkgdesc = Interactive Nim Shell / REPL / Playground
+	pkgdesc = System monitoring tool with TUI and historical data service
 	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/inv2004/ttop
