@@ -1,28 +1,21 @@
 pkgname=youtube
 _pkgname=Youtube
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Unnofficial Youtube desktop application"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/youtube-desktop/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("youtube-git" "youtube-bin")
 source=("https://gitlab.com/youtube-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
-sha256sums=('aeda9a7bf2753a852c193813a0f524ba71c003180697bd10c5c7dbbef87d96b7')
-
+sha256sums=('SKIP')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+        for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    cat <<EOT >> $_pkgname
-    #!/bin/bash
-    cd /opt/$_pkgname &&
-    npm start
-EOT
-
-    chmod +x $_pkgname
+    chmod +x $pkgname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
@@ -32,7 +25,7 @@ EOT
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin"
+    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
