@@ -1,7 +1,7 @@
 # Maintainer: pkfbcedkrz <pkfbcedkrz@gmail.com>
 pkgname=xorg-fonts-cronyx-75dpi
 pkgver=2.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="X.org cyrillic fonts (PCF version). Intended for use with Qt applications that do not fully support OTB fonts (eg, pcmanfm-qt)"
 arch=('any')
 url="https://packages.debian.org/bullseye/xfonts-cronyx-75dpi"
