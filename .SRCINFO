@@ -8,6 +8,6 @@ pkgbase = otf-asana-math
 	source = https://mirrors.ctan.org/fonts/Asana-Math.zip
 	source = https://mirrors.ctan.org/fonts/drm/licenses/OFL.txt
 	md5sums = 6de861f535bae901c8ec6f6dd57195a2
-	md5sums = 6ed93967ff0dc6dd9c8d31c17f817a06
+	md5sums = d9c061be3572a59ede6b6aceba986604
 
 pkgname = otf-asana-math

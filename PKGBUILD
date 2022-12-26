@@ -10,7 +10,7 @@ url="https://www.ctan.org/pkg/asana-math"
 source=("https://mirrors.ctan.org/fonts/Asana-Math.zip"
   "https://mirrors.ctan.org/fonts/drm/licenses/OFL.txt")
 md5sums=('6de861f535bae901c8ec6f6dd57195a2'
-  '6ed93967ff0dc6dd9c8d31c17f817a06')
+  'd9c061be3572a59ede6b6aceba986604')
 
 package() {
   mkdir -p $pkgdir/usr/share/fonts/$pkgname
