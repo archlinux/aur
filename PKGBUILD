@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liblouis-git
-pkgver=3.24.0.r1.gadef2526
+pkgver=3.24.0.r3.g2ce32bd0
 pkgrel=1
 pkgdesc="An open-source braille translator, back-translator and formatter"
 arch=('i686' 'x86_64')
 url="http://liblouis.org/"
 license=('LGPL')
 depends=('glibc')
-makedepends=('git' 'help2man' 'perl' 'python')
+makedepends=('git' 'help2man' 'perl' 'python-build' 'python-installer' 'python-wheel')
 provides=("liblouis=$pkgver")
 conflicts=('liblouis')
 options=('staticlibs')
@@ -33,6 +33,12 @@ build() {
     --prefix="/usr" \
     --enable-ucs4
   make
+
+  cd "python"
+  python \
+    -m build \
+    --wheel \
+    --no-isolation
 }
 
 check() {
@@ -47,9 +53,8 @@ package() {
   make DESTDIR="$pkgdir" install
 
   cd "python"
-  LD_PRELOAD+=":$srcdir/liblouis/liblouis/.libs/liblouis.so"
-  python "setup.py" install \
-    --root="$pkgdir" \
-    --prefix="/usr" \
-    --optimize=1
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
 }
