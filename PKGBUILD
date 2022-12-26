@@ -46,5 +46,5 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgname}/libnvidia-ml.so.1" "${pkgdir}/usr/lib/libnvidia-ml.so.1.fix"
 	install -Dm644 "${srcdir}/nvml-fix-install.hook" "${pkgdir}/usr/share/libalpm/hooks/nvml-fix-install.hook"
 	install -Dm644 "${srcdir}/80-nvml-fix-upgrade.hook" "${pkgdir}/usr/share/libalpm/hooks/80-nvml-fix-upgrade.hook"
-	install -Dm644 "${srcdir}/81-nvml-fix-reapply.hook" "${pkgdir}/usr/share/libalpm/hooks/81-nvml-fix-install.hook"
+	install -Dm644 "${srcdir}/81-nvml-fix-reapply.hook" "${pkgdir}/usr/share/libalpm/hooks/81-nvml-fix-reapp.hook"
 }
