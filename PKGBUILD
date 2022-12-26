@@ -42,7 +42,7 @@ package() {
   install -Dm644 ../cat-radio-icon.png "${pkgdir}/usr/share/pixmaps/cat-radio-icon.png"
   install -Dm644 ../sdrtrunk.desktop   "${pkgdir}/usr/share/applications/sdrtrunk.desktop"
   
-  cd "sdr-trunk-linux-${CARCH}-v${_pkgsubver}"
+  cd "sdr-trunk-linux-${CARCH}-v${pkgver}"
   mkdir -p "${pkgdir}/opt/sdrtrunk"
   cp -ra * "${pkgdir}/opt/sdrtrunk"
 }
