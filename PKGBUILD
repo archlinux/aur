@@ -2,7 +2,7 @@
 # Contributor: Dejan Cabrilo <dcabrilo [at] bitspan [dot] rs>
 
 pkgname=tdom
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A fast XML/DOM/XPath package for Tcl written in C"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('tcl'
 	 'gumbo-parser')
 source=(http://tdom.org/downloads/tdom-${pkgver}-src.tgz
 	no-build-dir.patch)
-sha256sums=('232da9c0fc65add1ed12206172a8ccbe7459441e68d3cf9b4da9f3d7f7f9f10b'
+sha256sums=('b46bcb6750283bcf41bd6f220cf06e7074752dc8b9a87a192bd81e53caad53f9'
             '45c8c54582b55af785c10019271c53cdab0c2a1e4cc858c12af8e217f00cdb48')
 
 
