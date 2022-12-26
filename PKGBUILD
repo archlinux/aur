@@ -13,7 +13,7 @@ source=("https://ftp.gnu.org/gnu/unifont/unifont-${pkgver}/unifont-${pkgver}.bdf
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 md5sums=('2907ccbd46da1d1053bb6effeede024f'
          'SKIP'
-         '1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87')
+         '4cba5a7530b5f046a1305d520cde8c2b')
 
 build() {
 	cd "${srcdir}"
