@@ -1,6 +1,6 @@
 pkgbase = applesmc-next-dkms
 	pkgdesc = Updated applesmc driver with charge threshold
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gurumeditation.org/1256/applesmc-next-battery-charge-thresholds-for-linux-on-apple-hardware/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = applesmc-next-dkms
 	optdepends = tlp: battery charge threshold support
 	provides = APPLESMC-MODULE
 	provides = SBS-MODULE
-	source = https://github.com/c---/applesmc-next/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = d23c80d253ef18401e22a34ec67c154125d08794a2100957cff4683b7321670e
+	source = https://github.com/c---/applesmc-next/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 59f0c6cb9a9c39a452cd18ffd09329d660bd2109327ed33b8470b748929ce531
 
 pkgname = applesmc-next-dkms
