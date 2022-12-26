@@ -3,14 +3,17 @@
 _commit=5f978acec7feea53aead493ee2b916ff99a811df
 pkgname=deemix
 pkgver=3.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://gitlab.com/RemixDev/deemix-py'
 license=('GPL3')
 depends=(
-    'python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen'
-    'python-spotipy' 'python-eventlet' 'python-deezer-py>=1.0.0'
+    'python>=3.7' 'python-click' 'python-pycryptodomex' 'python-mutagen'
+    'python-eventlet' 'python-deezer-py>=1.3.0'
+)
+optdepends=(
+    'python-spotipy>=2.11.0: download using metadata from Spotify'
 )
 makedepends=('python-setuptools')
 source=("https://gitlab.com/RemixDev/deemix-py/-/archive/$_commit/deemix-py-$_commit.tar.gz")
