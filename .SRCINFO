@@ -1,12 +1,11 @@
 pkgbase = charcoal
 	pkgdesc = Charcoal, a command line dictionary
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/LighghtEeloo/Charcoal
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = charcoal-0.2.3.tar.gz::https://github.com/LighghtEeloo/Charcoal/archive/v0.2.3.tar.gz
-	sha256sums = 9d314e3c9f736ca9af4ed89e36c1e7e623aa6b59f4be5603d5c34b868c60bd12
+	source = charcoal-0.2.4.tar.gz::https://github.com/LighghtEeloo/Charcoal/archive/v0.2.4.tar.gz
 
 pkgname = charcoal
