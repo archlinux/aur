@@ -8,8 +8,8 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 
 pkgname=ntfsprogs-ntfs3
-pkgver=2022.5.17
-pkgrel=6
+pkgver=2022.10.3
+pkgrel=1
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://github.com/tuxera/ntfs-3g'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("ntfs-3g_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'mount.ntfs'
         'udisks_ntfs3_mount_options.rules'
         )
-sha256sums=('49680b2dd38c472368425923b0178195e24705fc355c78764632e5835000db49'
+sha256sums=('8bd7749ea9d8534c9f0664d48b576e90b96d45ec8803c9427f6ffaa2f0dde299'
             'c468ffe0d9baac40aff77acaf2ef71baf9cd4a05355de639ad832839156eadf6'
             '8baa89042d50a1704e71aec8537315bbdc99dfe67e189db6392511fb151264ab')
 
