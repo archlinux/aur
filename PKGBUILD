@@ -18,6 +18,10 @@ md5sums=('2907ccbd46da1d1053bb6effeede024f'
 build() {
 	cd "${srcdir}"
 	f="unifont-${pkgver}.bdf"
+	family_name="$(grep -F 'FAMILY_NAME "' "$f")"
+    family_name="${family_name%\"}"
+    family_name_otb="$family_name (OTB)"
+    sed -i "s/$family_name/$family_name_otb/" "$f"
     fonttosfnt -b -c -g 2 -m 2 -o "${f/bdf/otb}" "$f"
 }
 
