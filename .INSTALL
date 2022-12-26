@@ -3,11 +3,11 @@ pkgname=ttop
 
 post_install() {
     systemctl daemon-reload
-    systemctl start "${pkgname}.timer" "${pkgname}.service"
+    systemctl start "${pkgname}.timer"
 }
 
 pre_remove() {
-    systemctl stop "${pkgname}.timer" "${pkgname}.service"
+    systemctl stop "${pkgname}.timer"
 }
 
 post_remove() {
