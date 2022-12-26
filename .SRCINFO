@@ -1,6 +1,6 @@
 pkgbase = audiotube-git
 	pkgdesc = Client for YouTube Music
-	pkgver = 21.08.r23.ge8e6a5f
+	pkgver = 22.11.r23.g8925508
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/audiotube
 	arch = x86_64
