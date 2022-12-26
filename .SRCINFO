@@ -1,6 +1,6 @@
 pkgbase = muc-git
 	pkgdesc = Visualize your most used commands
-	pkgver = r14.8035b8a
+	pkgver = r16.297353d
 	pkgrel = 1
 	url = https://github.com/nate-sys/muc
 	arch = any
