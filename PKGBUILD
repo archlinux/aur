@@ -2,13 +2,13 @@
 
 pkgname=bloscpack-git
 pkgver=0.16.0.r46.g5efdadf
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface to and serialization format for Blosc"
 arch=('any')
 url="https://github.com/Blosc/bloscpack"
 license=('MIT')
 depends=('python-blosc' 'python-deprecated' 'python-numpy' 'python-six')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=("bloscpack=$pkgver")
 conflicts=('bloscpack')
 source=("git+https://github.com/Blosc/bloscpack.git")
@@ -24,14 +24,18 @@ pkgver() {
 build() {
   cd "bloscpack"
 
-  python "setup.py" build
+  python \
+    -m build \
+    --wheel \
+    --no-isolation
 }
 
 package() {
   cd "bloscpack"
 
-  python "setup.py" install \
-    --optimize 1 \
-    --root "$pkgdir"
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bloscpack"
 }
