@@ -75,7 +75,7 @@ _per_gov=${_per_gov-y}
 _tcp_bbr2=${_tcp_bbr2-y}
 
 ### Running with a 1000HZ, 750Hz, 600 Hz, 500Hz, 300Hz, 250Hz and 100Hz tick rate
-_HZ_ticks=${_HZ_ticks-750}
+_HZ_ticks=${_HZ_ticks-500}
 
 ## Choose between perodic, idle or full
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
@@ -96,6 +96,14 @@ _kyber_disable=${_kyber_disable-y}
 # 'stats' - enable multigenerational LRU with stats
 # 'none' - disable multigenerational LRU
 _lru_config=${_lru_config-'standard'}
+
+### Transparent Hugepages
+# ATTENTION - one of two predefined values should be selected!
+# 'always' - always enable THP
+# 'madvise' - madvise, prevent applications from allocating more memory resources than necessary
+# More infos here:
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-configuring_transparent_huge_pages
+_hugepage=${_hugepage-'always'}
 
 ## Enable DAMON
 _damon=${_damon-}
@@ -184,10 +192,10 @@ else
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.1
+_major=6.2
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc8
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -195,7 +203,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -225,7 +233,7 @@ source=(
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/cachyos/zfs.git#commit=21bd7661334cd865d17934bebbcaf8d3356279ee")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=f28c7302cb77a8cb6112690d0eed0bf4adeeae15")
 fi
 ## Latency NICE Support
 if [ -n "$_latency_nice" ]; then
@@ -263,13 +271,11 @@ if [ "$_cpusched" = "tt" ]; then
 fi
 ## Hardened Patches with BORE Scheduler
 if [ "$_cpusched" = "hardened" ]; then
-    source+=("${_patchsource}/sched/0001-bore.patch"
+    source+=("${_patchsource}/sched/0001-bore-cachy.patch"
          "${_patchsource}/misc/0001-hardened.patch")
 fi
 ## Kernel CFI Patch
 if [ -n "$_use_kcfi" ]; then
-    source+=("${_patchsource}/misc/0001-kcfi.patch")
-    depends+=(llvm-git llvm-libs-git python)
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -278,7 +284,7 @@ if [ -n "$_use_kcfi" ]; then
 fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
+    source+=("${_patchsource}/misc/0001-bcachefs.patch")
 fi
 if [ -n "$_use_gcc_lto" ]; then
 ## GCC-LTO Patch
@@ -627,6 +633,25 @@ prepare() {
            error "The value is empty. Choose the correct one again."
         fi
          error "Enabling multigenerational LRU failed!"
+         exit
+    fi
+
+   ### Select THP
+    if [ "$_hugepage" = "always" ]; then
+       echo "Enable THP always..."
+       scripts/config --disable TRANSPARENT_HUGEPAGE_MADVISE \
+           --enable TRANSPARENT_HUGEPAGE_ALWAYS
+    elif [ "$_hugepage" = "madvise" ]; then
+       echo "Enable THP madvise..."
+       scripts/config --disable TRANSPARENT_HUGEPAGE_ALWAYS \
+           --enable TRANSPARENT_HUGEPAGE_MADVISE
+    else
+        if [ -n "$_hugepage" ]; then
+           error "The value $_hugepage is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Setting THP has failed!"
          exit
     fi
 
@@ -990,9 +1015,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('61063135667b1e6177cf933cf12f08f2d8ce6a094d61616d0869466c3b6dc7ae'
-            '28832ea41f4429260f4b1a355f89a2bda1332d3893b42b349897d4661ffc3d96'
+sha256sums=('cb8079f8ccd77328bf340805bae0ce45c437107c51001986f55b64b66277280e'
+            '2a4737179d7a45c59a71c7dd5454a6142ddc0fa08b2ae433b9780e7e0cb7de8b'
             '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
-            '1638f816f56bb0989e71848b906c229aa0db2f08d482a5d52ad05761677d6dc5'
-            '7b3c12a19efe84f023bd64f0c984c73b0ec7a73c78cba96b5f92c5263ed2a46f'
-            'e74a2454da0b83435a95fa3c5d13b104e87c5003abcb1291fe055aa4d340e0ae')
+            'd4cad38aa216fc671b9fc7552c2fa3043c229143e66a548b51d0f729364b1f55'
+            '7aa2d13e3aa8ddba51f338552d016e5f37fedc54537bad9080e12cecedf46673'
+            'b29d35fd272cc59856c2276d40d1e387d6fb30fb43af26d48be60b3efe012837')
