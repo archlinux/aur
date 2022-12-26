@@ -1,6 +1,6 @@
 pkgbase = dooble-bin
 	pkgdesc = Dooble is the scientific browser
-	pkgver = 2022.11.15
+	pkgver = 2022.12.25
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = dooble-bin
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	conflicts = dooble
-	noextract = Dooble-2022.11.15_amd64.deb
+	noextract = Dooble-2022.12.25_amd64.deb
 	options = !strip
-	source = https://github.com/textbrowser/dooble/releases/download/2022.11.15/Dooble-2022.11.15_amd64.deb
-	source = LICENSE-2022.11.15::https://github.com/textbrowser/dooble/raw/2022.11.15/LICENSE
-	sha256sums = 0905cf9bd7e45b1696bd47b43754f5b28e28521b1b96a5dae2626a78927c15e1
+	source = https://github.com/textbrowser/dooble/releases/download/2022.12.25/Dooble-2022.12.25_amd64.deb
+	source = LICENSE-2022.12.25::https://github.com/textbrowser/dooble/raw/2022.12.25/LICENSE
+	sha256sums = 82b9e322810dc7c8d6c3ad4fb017c9685b5857e90aa17ea9e386c0f61016837b
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
 
 pkgname = dooble-bin
