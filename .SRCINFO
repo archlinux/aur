@@ -1,6 +1,6 @@
 pkgbase = spotify-player
 	pkgdesc = A command driven spotify player.
-	pkgver = 0.9.8
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/aome510/spotify-player
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spotify-player
 	makedepends = cargo
 	depends = alsa-lib
 	depends = openssl
-	source = spotify-player-0.9.8.tar.gz::https://github.com/aome510/spotify-player/archive/v0.9.8.tar.gz
-	sha512sums = 0e0f671749318171a2608f81950d49a9b353df4a670ad824d28051b8a01643b55d1b204034372505aa1549459b53dea5b3f5ce7d78f3cf1c1e46c3ee8bd6b599
+	source = spotify-player-0.10.0.tar.gz::https://github.com/aome510/spotify-player/archive/v0.10.0.tar.gz
+	sha512sums = a8e93e20292863d5d172eb3ae095c22efa15ad3ccbcbb5fb11e1c6c4b86088662d758e283eac24e3c3e9378cbd457e8b085d0fb611e278e1030d5613fc27dd98
 
 pkgname = spotify-player
