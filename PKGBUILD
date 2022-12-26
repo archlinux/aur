@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.9.6.r0.gd07e3cb
+pkgver=1.14.0.r2.g0c56d50
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
@@ -11,7 +11,7 @@ url="https://github.com/libretro/libretro-core-info"
 license=('MIT')
 groups=('libretro')
 makedepends=('git')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
