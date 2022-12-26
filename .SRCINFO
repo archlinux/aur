@@ -1,15 +1,17 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
 	pkgver = 1.0.6
-	pkgrel = 2
-	arch = any
+	pkgrel = 3
+	arch = x86_64
+	arch = aarch64
 	license = GPL
+	makedepends = unzip
 	depends = libelectron
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = git+https://gitlab.com/netlify-desktop/application
+	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.6-3/application-1.0.6-3.tar.bz2
 	sha256sums = SKIP
 
 pkgname = netlify-application
