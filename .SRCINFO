@@ -1,0 +1,13 @@
+pkgbase = code-stream-cli
+	pkgdesc = VMware vRealize Automation Code Stream CLI
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/vmware/code-stream-cli
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	depends = glibc
+	source = https://github.com/vmware/code-stream-cli/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = eaf05ea29887cc060049fb60bc14bb23334ba8548212ce18e2542090419f8edb
+
+pkgname = code-stream-cli
