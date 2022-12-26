@@ -1,0 +1,19 @@
+pkgbase = ruby-rbvmomi2
+	pkgdesc = Ruby interface to the VMware vSphere API
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/rbvmomi2
+	arch = any
+	license = MIT
+	depends = ruby-builder
+	depends = ruby-json
+	depends = ruby-nokogiri
+	depends = ruby-optimist
+	provides = ruby-rbvmomi
+	conflicts = ruby-rbvmomi
+	noextract = rbvmomi2-3.5.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rbvmomi2-3.5.0.gem
+	sha256sums = c609474f0bb8f7ea6403de11a640ae7082f011facd8c8e12843265a8d450f019
+
+pkgname = ruby-rbvmomi2
