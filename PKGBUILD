@@ -2,15 +2,15 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2022.07.30
+pkgver=2022.12.26
 pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-_nativefier=49
+_nativefier=50
 _electron=19
-depends=("electron${_electronv}")
+depends=("electron${_electron}")
 makedepends=(
   'curl'
   'gendesk'
