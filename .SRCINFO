@@ -1,0 +1,11 @@
+pkgbase = shclrz
+	pkgdesc = coloring output in the shell
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/shclrz
+	arch = any
+	license = GPL3
+	source = https://github.com/alexcoder04/shclrz/archive/refs/tags/v0.3.0.tar.gz
+	md5sums = f292c2e57ad2f69a998a18b209e50672
+
+pkgname = shclrz
