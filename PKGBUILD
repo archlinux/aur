@@ -10,7 +10,7 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=2
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
@@ -20,7 +20,7 @@ depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree o
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=2db39bdc99ef371a5ce66eb6d7ec733ec5fe03fc"
+source=("git+https://github.com/blender/cycles.git#commit=baefb5d379474fe95014420d6e5c472e17c637bd"
         0001-Remove-FindClang.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
