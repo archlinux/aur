@@ -49,6 +49,9 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  echo "Installing rust-bindgen"
+  cargo install --locked --version $(scripts/min-tool-version.sh bindgen) bindgen
+
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
