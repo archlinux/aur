@@ -1,13 +1,13 @@
 pkgbase = flipperbit
 	pkgdesc = Corrupted files generator. Random bits flipper.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://crates.io/crates/flipperbit
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = flipperbit-0.1.2.tar.gz::https://static.crates.io/crates/flipperbit/flipperbit-0.1.2.crate
-	b2sums = c68247be297aab43672896fe64c6b9db755b0d87f4d6e70b3de1b260c2ebd2834775784c91e5ae08697f854c1a01239bea4eadfe94bda851ecf117e84c101d56
+	source = flipperbit-0.1.3.tar.gz::https://static.crates.io/crates/flipperbit/flipperbit-0.1.3.crate
+	b2sums = 8a7bb4ed94a7ba48e084f479b3beffc293b609975d740473d74cde233d31b31a08ad61b2257593a1736f7bc7dd82da14258ffc86de104c624468274c8eaa5980
 
 pkgname = flipperbit
