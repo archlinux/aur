@@ -1,12 +1,12 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 pkgname=openhab3
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
 license=("EPL")
-depends=("java-runtime-headless=11")
+depends=("java-runtime-headless=11" "archlinux-java-run")
 optdepends=("openhab3-addons: add-on archives for offline use")
 
 conflicts=("openhab3-snapshot")
