@@ -1,18 +1,12 @@
-# Maintainer: Sauliusl <luksaulius[at]gmail[dot]com>
+# Contributor: Sauliusl <luksaulius[at]gmail[dot]com>
 pkgname=beads
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bias Elimination Algorithm for Deep Sequencing."
 url="http://beads.sourceforge.net/"
 arch=('x86_64')
 license=('unknown')
 depends=('python2' 'java-environment')
-optdepends=()
-makedepends=('python2')
-conflicts=()
-replaces=()
-backup=()
-install=()
 source=("http://downloads.sourceforge.net/project/beads/BEADS-${pkgver}.tar.gz"
 		"beads.sh")
 sha1sums=('f83587d3b8c7b1eb619d81e17499e8f8fdae3138'
@@ -30,5 +24,3 @@ package() {
   install -d ${pkgdir}/usr/share/java/${pkgname}
   install -Dm0644 BEADSjava.jar ${pkgdir}/usr/share/java/${pkgname}
 }
-
-# vim:set ts=2 sw=2 et:
