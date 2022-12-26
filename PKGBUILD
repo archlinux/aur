@@ -11,9 +11,9 @@ pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
 license=('LGPL3')
-depends=('dotnet-runtime-6.0' 'dotnet-host>=6.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime>=7.0' 'dotnet-host>=7.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
-makedepends=('git' 'dotnet-sdk>=6.0')
+makedepends=('git' 'dotnet-sdk>=7.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
