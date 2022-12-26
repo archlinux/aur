@@ -11,7 +11,7 @@ license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git rust llvm
+  git rust llvm lld
 )
 options=('!strip')
 _srcname=archlinux-linux
