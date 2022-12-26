@@ -1,6 +1,6 @@
 pkgbase = todoist-nativefier
 	pkgdesc = Todoist in shared Electron runtime
-	pkgver = 2022.07.30
+	pkgver = 2022.12.26
 	pkgrel = 1
 	url = https://todoist.com
 	arch = x86_64
@@ -8,6 +8,6 @@ pkgbase = todoist-nativefier
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = yarn
-	depends = electron
+	depends = electron19
 
 pkgname = todoist-nativefier

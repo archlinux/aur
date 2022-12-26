@@ -1,15 +1,15 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2022.07.30
+pkgver=2022.12.26
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
-_nativefier=49
+_nativefier=50
 _electron=19
-depends=("electron${_electronv}")
+depends=("electron${_electron}")
 makedepends=(
   'curl'
   'gendesk'
