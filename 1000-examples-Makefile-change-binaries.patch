@@ -1,0 +1,20 @@
+diff -pNaru5 a/examples/Makefile b/examples/Makefile
+--- a/examples/Makefile	1993-12-08 00:36:58.000000000 -0500
++++ b/examples/Makefile	2022-12-25 22:38:06.486309104 -0500
+@@ -2,13 +2,13 @@
+ # Examples for "p2c", the Pascal to C translator.
+ 
+ 
+ # The following definitions assume p2c has been compiled into the "home"
+ # directory as shown in src/Makefile.
+-P2C = ../p2c
+-INC = ../home
+-LIB = ../home/libp2c.a
++P2C = ../check/usr/bin/p2c
++INC = ../check/usr/include
++LIB = ../check/usr/lib/libp2c.a
+ 
+ 
+ default: comp
+ 
+ 

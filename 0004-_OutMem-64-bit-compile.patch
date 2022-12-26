@@ -1,0 +1,33 @@
+diff -pNaru5 a/src/p2c.h b/src/p2c.h
+--- a/src/p2c.h	1993-12-08 00:36:54.000000000 -0500
++++ b/src/p2c.h	2022-12-25 23:54:13.122754732 -0500
+@@ -309,11 +309,12 @@ extern long     strtol      PP( (Const C
+ extern Anyptr   malloc      PP( (size_t) );
+ extern Void     free        PP( (Anyptr) );
+ #endif
+ #endif
+ 
+-extern int      _OutMem     PV();
++#include <stdint.h>
++extern intptr_t _OutMem     PV();
+ extern int      _CaseCheck  PV();
+ extern int      _NilCheck   PV();
+ extern int	_Escape     PP( (int) );
+ extern int	_EscIO      PP( (int) );
+ extern int	_EscIO2     PP( (int, Char *) );
+diff -pNaru5 a/src/p2clib.c b/src/p2clib.c
+--- a/src/p2clib.c	1993-12-08 00:36:53.000000000 -0500
++++ b/src/p2clib.c	2022-12-25 23:54:47.053106957 -0500
+@@ -959,11 +959,11 @@ register int len, n;
+ }
+ 
+ 
+ 
+ 
+-int _OutMem()
++intptr_t _OutMem()
+ {
+     return _Escape(-2);
+ }
+ 
+ int _CaseCheck()

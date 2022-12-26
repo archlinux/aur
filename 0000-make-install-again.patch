@@ -1,0 +1,164 @@
+diff -pNaru5 a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2015-11-18 15:12:06.000000000 -0500
++++ b/src/Makefile	2022-12-26 01:26:47.885095920 -0500
+@@ -17,34 +17,34 @@
+ # the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
+ SHELL = /bin/sh
+ 
+ # Directories (private version)
+-HOMEDIR = ../home
+-INCDIR = ../home/p2c
+-BINDIR = ..
+-LIBDIR = ../home
+-MANDIR = ../home
+-MANFILE = p2c.cat          # human-readable manual (for cat.1)
++#HOMEDIR = ../home
++#INCDIR = ../home/p2c
++#BINDIR = ..
++#LIBDIR = ../home
++#MANDIR = ../home
++#MANFILE = p2c.cat          # human-readable manual (for cat.1)
+ #MANFILE = p2c.man.inst    # uncompressed nroff source (for man.1)
+ #MANFILE = p2c.man.Z       # compressed nroff source (for man.1.Z)
+ 
+ # Directories (public version)
+-#HOMEDIR = /usr/lib/p2c
+-#INCDIR = /usr/include/p2c
+-#BINDIR = /usr/bin
+-#LIBDIR = /usr/lib
+-#MANDIR = /usr/man/man1
+-#MANFILE = p2c.man.inst
++HOMEDIR = /usr/lib/p2c
++INCDIR = /usr/include/p2c
++BINDIR = /usr/bin
++LIBDIR = /usr/lib
++MANDIR = /usr/share/man/man1
++MANFILE = p2c.man.inst
+ 
+ # Compiler options
+ CC = cc                    # you may wish to use gcc here instead
+ OPT = # -O		   # uncomment this for optimization
+ DEB = # -g		   # uncomment this for debugging
+ DEFS =	-DTEST_MALLOC      # place other -D types of things here # TDS 2015nov18
+ CFLAGS = $(OPT) $(DEB) $(DEFS)
+-LFLAGS =
++LFLAGS = $(LDFLAGS)
+ 
+ 
+ # Custom translator modules
+ CUSTSRCS = hpmods.c citmods.c
+ CUSTOBJS = hpmods.o citmods.o
+@@ -62,21 +62,22 @@ OBJS = $(P2COBJS) $(CUSTOBJS)
+ 
+ LIBSRCS = p2clib.c loc.p2clib.c
+ LIBOBJS = p2clib.o loc.p2clib.o
+ OTHERLIBOBJS =
+ 
+-ABSHOMEDIR = `cd $(HOMEDIR); pwd`
+-ABSINCDIR = `cd $(INCDIR); pwd`
+-ABSLIBDIR = `cd $(LIBDIR); pwd`
++ABSHOMEDIR = $(HOMEDIR)
++ABSINCDIR = $(INCDIR)
++ABSLIBDIR = $(LIBDIR)
+ 
+ MISCSRCS = makeproto.c
+ PROTOS = p2c.proto p2c.hdrs
+ HDRS = trans.h p2c.h
+ 
+ 
+ # Top-level targets
+-all: proto p2c libp2c.a p2c.cat
++all: proto p2c libp2c.a p2c.cat p2cc
++$(OBJS): proto
+ proto: $(PROTOS)
+ 
+ 
+ # Making p2c
+ p2c: $(OBJS)
+@@ -138,70 +139,28 @@ p2cc: p2cc.perl
+ #  First, make sure $(HOMEDIR) and $(INCDIR) exist and are writable;
+ #  Second, make sure $(LIBDIR), $(BINDIR) and $(MANDIR) are writable;
+ #  Third, execute "make install" to compile and set things up.
+ # (You may need to have a system operator do these steps for you.)
+ 
+-COPY = cp
++COPY = install -Dp
+ 
+ newhome:
+-	rm -f trans.o     # force trans.c to be recompiled (if HOMEDIR changes)
++	rm -f trans.o p2cc     # force trans.c to be recompiled (if HOMEDIR changes)
+ 
+-install: proto \
+-	makedirs \
+-	$(BINDIR)/p2c         \
+-	$(BINDIR)/p2cc        \
+-	$(LIBDIR)/libp2c.a    \
+-	$(MANDIR)/p2c.1	      \
+-	$(INCDIR)/p2c.h	      \
+-	$(HOMEDIR)/p2crc      \
+-	$(HOMEDIR)/loc.p2crc  \
+-	$(HOMEDIR)/system.imp \
+-	$(HOMEDIR)/system.m2  \
+-	$(HOMEDIR)/turbo.imp  \
+-	$(HOMEDIR)/string.pas
+-
+-SHELL=/bin/sh
+-makedirs:
+-	if [ ! -d $(HOMEDIR) ]; then mkdir $(HOMEDIR); else true; fi
+-	if [ ! -d $(BINDIR) ]; then mkdir $(BINDIR); else true; fi
+-	if [ ! -d $(LIBDIR) ]; then mkdir $(LIBDIR); else true; fi
+-	if [ ! -d $(MANDIR) ]; then mkdir $(MANDIR); else true; fi
+-	if [ ! -d $(INCDIR) ]; then mkdir $(INCDIR); else true; fi
+-
+-$(BINDIR)/p2c: p2c
+-	$(COPY)  p2c          $(BINDIR)/p2c
+-
+-$(BINDIR)/p2cc: p2cc
+-	$(COPY)  p2cc         $(BINDIR)/p2cc
+-
+-$(LIBDIR)/libp2c.a: libp2c.a
+-	$(COPY)  libp2c.a     $(LIBDIR)/libp2c.a
+-	if [ -f /usr/bin/ranlib -o -f /bin/ranlib ]; then ranlib $(LIBDIR)/libp2c.a; fi
+-
+-$(MANDIR)/p2c.1: $(MANFILE)
+-	$(COPY)  $(MANFILE)   $(MANDIR)/p2c.1
+-
+-$(INCDIR)/p2c.h: p2c.h
+-	$(COPY)  p2c.h        $(INCDIR)/p2c.h
+-
+-$(HOMEDIR)/p2crc: sys.p2crc
+-	$(COPY)  sys.p2crc    $(HOMEDIR)/p2crc
+-
+-$(HOMEDIR)/loc.p2crc: loc.p2crc
+-	$(COPY)  loc.p2crc    $(HOMEDIR)/loc.p2crc
+-
+-$(HOMEDIR)/system.imp: system.imp
+-	$(COPY)  system.imp   $(HOMEDIR)/system.imp
+-
+-$(HOMEDIR)/system.m2: system.m2
+-	$(COPY)  system.m2    $(HOMEDIR)/system.m2
+-
+-$(HOMEDIR)/turbo.imp: turbo.imp
+-	$(COPY)  turbo.imp    $(HOMEDIR)/turbo.imp
+-
+-$(HOMEDIR)/string.pas: string.pas
+-	$(COPY)  string.pas   $(HOMEDIR)/string.pas
++install:
++	$(COPY)  p2c          $(DESTDIR)$(BINDIR)/p2c
++	$(COPY)  p2cc         $(DESTDIR)$(BINDIR)/p2cc
++	$(COPY)  libp2c.a     $(DESTDIR)$(LIBDIR)/libp2c.a
++	if [ -f /usr/bin/ranlib -o -f /bin/ranlib ]; then ranlib $(DESTDIR)$(LIBDIR)/libp2c.a; fi
++	$(COPY)  $(MANFILE)   $(DESTDIR)$(MANDIR)/p2c.1
++	$(COPY)  p2c.h        $(DESTDIR)$(INCDIR)/p2c.h
++	$(COPY)  sys.p2crc    $(DESTDIR)$(HOMEDIR)/p2crc
++	$(COPY)  loc.p2crc    $(DESTDIR)$(HOMEDIR)/loc.p2crc
++	$(COPY)  system.imp   $(DESTDIR)$(HOMEDIR)/system.imp
++	$(COPY)  system.m2    $(DESTDIR)$(HOMEDIR)/system.m2
++	$(COPY)  turbo.imp    $(DESTDIR)$(HOMEDIR)/turbo.imp
++	$(COPY)  string.pas   $(DESTDIR)$(HOMEDIR)/string.pas
+ 
+ 
+ 
+ # Miscellaneous
+ tags:

@@ -1,0 +1,16 @@
+diff -pNaru5 a/src/sys.p2crc b/src/sys.p2crc
+--- a/src/sys.p2crc	1993-12-08 00:36:47.000000000 -0500
++++ b/src/sys.p2crc	2022-12-25 22:24:10.007285626 -0500
+@@ -221,11 +221,11 @@ UseAnyptrMacros                 # 1=use
+ UsePPMacros                     # 1=use PP and PV macros for prototypes
+                                 # 0=do not use these macros for prototypes
+                                 # 2=use them only for external/forward
+ 				# default=0 if AnsiC=1, else 2
+ 
+-MainType			# Type name to put in front of "main";
++MainType	int		# Type name to put in front of "main";
+ 				# generally either "int" or "void".  Blank
+ 				# works on most systems.
+ 
+ ReplaceAfter                    # Textual replacements on output text lines;
+ ReplaceAfter                    # see ReplaceBefore for details.

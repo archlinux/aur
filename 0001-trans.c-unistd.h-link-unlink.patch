@@ -1,0 +1,33 @@
+diff -pNaru5 a/src/trans.c b/src/trans.c
+--- a/src/trans.c	2015-10-02 13:52:53.000000000 -0400
++++ b/src/trans.c	2022-12-25 21:43:08.603410698 -0500
+@@ -18,10 +18,11 @@ the Free Software Foundation, Inc., 675
+ 
+ 
+ 
+ #define define_globals
+ #define PROTO_TRANS_C
++#include <unistd.h>
+ #include "trans.h"
+ 
+ #include <time.h>
+ 
+ 
+diff -pNaru5 a/src/trans.h b/src/trans.h
+--- a/src/trans.h	2015-10-05 19:04:46.000000000 -0400
++++ b/src/trans.h	2022-12-25 21:52:49.184033191 -0500
+@@ -1861,12 +1861,14 @@ extern Expr *new_array_size;
+ 
+ 
+ 
+ /* Our library omits declarations for these functions! */
+ 
++/*
+ int link           PP( (char *, char *) );
+ int unlink         PP( (char *) );
++*/
+ 
+ 
+ 
+ #define minspcthresh ((minspacingthresh >= 0) ? minspacingthresh : minspacing)
+ 
