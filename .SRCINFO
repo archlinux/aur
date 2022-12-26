@@ -1,6 +1,6 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
-	pkgver = 3.3.0
+	pkgver = 3.5.0
 	pkgrel = 2
 	url = https://github.com/blender/cycles.git
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = cycles-standalone
 	optdepends = cuda
 	optdepends = optix
 	provides = cycles
-	source = git+https://github.com/blender/cycles.git#commit=2db39bdc99ef371a5ce66eb6d7ec733ec5fe03fc
+	source = git+https://github.com/blender/cycles.git#commit=baefb5d379474fe95014420d6e5c472e17c637bd
 	source = 0001-Remove-FindClang.patch
 	source = cycles_wrap.sh
 	sha256sums = SKIP
