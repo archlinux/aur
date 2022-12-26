@@ -1,0 +1,13 @@
+diff --git a/src/graphic_model/engravers/lomse_wedge_engraver.cpp b/src/graphic_model/engravers/lomse_wedge_engraver.cpp
+index 7d35a3a1..d375787d 100644
+--- a/src/graphic_model/engravers/lomse_wedge_engraver.cpp
++++ b/src/graphic_model/engravers/lomse_wedge_engraver.cpp
+@@ -19,6 +19,8 @@
+ #include "lomse_aux_shapes_aligner.h"
+ #include "lomse_vertical_profile.h"
+ 
++#include <limits>
++
+ 
+ namespace lomse
+ {
