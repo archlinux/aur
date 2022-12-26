@@ -7,13 +7,19 @@ fdtput /boot/dtbs/rk3288-openhour.dtb -t u /mmc@ff0f0000 bus-width 4
 fdtput /boot/dtbs/rk3288-openhour.dtb -t s /mmc@ff0f0000 cap-sd-highspeed
 fdtput /boot/dtbs/rk3288-openhour.dtb -t x /mmc@ff0f0000 card-detect-delay 0xc8
 
-target="rk3288"
-ubootdev=$(ls /dev/disk/by-partlabel/${target}-*-uboot | head -n1)
-[ ! -L "$ubootdev" ] && exit 0
-[ ! -n "$ubootdev" ] && exit 0
-rkdev=$(basename $ubootdev)
-rkdev=${rkdev/"${target}-"/""}
+rootdev=$(lsblk -pilno pkname,type,mountpoint | grep -G 'part /$' |  head -n1 | cut -d " " -f1)
+partlabeluboot=$(lsblk -plno partlabel $rootdev | grep -G '\-uboot$' )
+[ ! -n "$partlabeluboot" ] && exit 0
+rkdev=${partlabeluboot#*-}
+target=${partlabeluboot%"-$rkdev"}
 rkdev=${rkdev/"-uboot"/""}
+if [[ "$rkdev" =~ "@" ]]; then
+  atfdevice=${rkdev#*@}
+  rkdev=${rkdev%"@$atfdevice"}
+fi
+ubootdev="/dev/disk/by-partlabel/${partlabeluboot}"
+[ ! -L "$ubootdev" ] && exit 0
+
 cp -vf "/boot/dtbs/${target}-${rkdev}.dtb" "/boot/dtbs/${target}-tojoin.dtb"
 for bp in $(shopt -s nullglob; echo /boot/dtbos/*.dts); do
   echo Creating overlay from $bp

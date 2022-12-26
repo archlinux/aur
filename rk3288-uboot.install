@@ -1,13 +1,16 @@
 post_upgrade() {
-  target="rk3288"
-  ubootdev="/dev/disk/by-partlabel/${target}-${rkdev}-uboot"
-  ubootdev=$(ls /dev/disk/by-partlabel/${target}-*-uboot | head -n1)
-  if [ -n "$ubootdev" ]; then
-    rkdev=$(basename $ubootdev)
-    rkdev=${rkdev/"${target}-"/""}
+  rootdev=$(lsblk -pilno pkname,type,mountpoint | grep -G 'part /$' |  head -n1 | cut -d " " -f1)
+  partlabeluboot=$(lsblk -plno partlabel $rootdev | grep -G '\-uboot$' )
+  if [ -n "$partlabeluboot" ]; then
+    rkdev=${partlabeluboot#*-}
+    target=${partlabeluboot%"-$rkdev"}
     rkdev=${rkdev/"-uboot"/""}
+    if [[ "$rkdev" =~ "@" ]]; then
+      atfdevice=${rkdev#*@}
+      rkdev=${rkdev%"@$atfdevice"}
+    fi
+    ubootdev="/dev/disk/by-partlabel/${partlabeluboot}"
     if [ -L "$ubootdev" ]; then
-      ###[ "$rkdev" == "openhour" ] && rkdev="miqi"
       file="/boot/uboot/u-boot-with-spl-${target}-${rkdev}.bin.xz"
       if [ -f "$file" ]; then
         echo "Writing ${file} to $(realpath ${ubootdev})"
@@ -26,9 +29,8 @@ post_install() {
 
 post_remove() {
   rm -vf /boot/dtbs/rk3288-openhour.dtb
-  target="rk3288"
-  rm -vf /boot/dtbs/${target}-tojoin.dtb
-  rm -vf /boot/dtbs/${target}-joined.dtb
+  rm -vf /boot/dtbs/*-tojoin.dtb
+  rm -vf /boot/dtbs/*-joined.dtb
   rm -vf /boot/dtbos/*.dtbo
 }
 
