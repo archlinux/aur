@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła <micwoj9292 at gmail dot com>
 
 pkgname=python2-pytz
-pkgver=2022.6
+pkgver=2022.7
 pkgrel=1
 arch=('any')
 url="https://pypi.python.org/pypi/pytz"
@@ -9,7 +9,7 @@ license=("MIT")
 pkgdesc="Cross platform time zone library for Python2"
 depends=('python2')
 source=("https://pypi.io/packages/source/p/pytz/pytz-${pkgver}.tar.gz")
-sha512sums=('ea0343453d011e252fba64502984e2a43ea7c7437a211025ca68a4a45178c8aaef4c2b65261434289b21166a99a1941ec9e2d9d26bb3d22a76cbaa421250131d')
+sha512sums=('48bad8a88e124c0935bf307713659228100c5c38230b3ee7f0aa92e46a1a305c4cebef388208dc7090ba59f51c4816f78789a091d69541615e885a9ad61c475b')
 validpgpkeys=('C7ECC365AB6F255E1EB9BA1701FA998FBAC6374A')
 
 build(){

@@ -1,13 +1,13 @@
 pkgbase = python2-pytz
 	pkgdesc = Cross platform time zone library for Python2
-	pkgver = 2022.6
+	pkgver = 2022.7
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pytz
 	arch = any
 	license = MIT
 	depends = python2
-	source = https://pypi.io/packages/source/p/pytz/pytz-2022.6.tar.gz
+	source = https://pypi.io/packages/source/p/pytz/pytz-2022.7.tar.gz
 	validpgpkeys = C7ECC365AB6F255E1EB9BA1701FA998FBAC6374A
-	sha512sums = ea0343453d011e252fba64502984e2a43ea7c7437a211025ca68a4a45178c8aaef4c2b65261434289b21166a99a1941ec9e2d9d26bb3d22a76cbaa421250131d
+	sha512sums = 48bad8a88e124c0935bf307713659228100c5c38230b3ee7f0aa92e46a1a305c4cebef388208dc7090ba59f51c4816f78789a091d69541615e885a9ad61c475b
 
 pkgname = python2-pytz
