@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ufw-git
-pkgver=r1862.g97af0c9
+pkgver=r1911.g506546a
 pkgrel=1
 pkgdesc="Uncomplicated firewall"
 arch=('any')
 url="https://launchpad.net/ufw"
 license=('GPL3')
 depends=('python' 'iptables')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=('ufw')
 conflicts=('ufw')
 backup=('etc/default/ufw'
@@ -47,12 +47,22 @@ pkgver() {
   printf "r%s.g%s" "$_rev" "$_hash"
 }
 
+build() {
+  cd "ufw"
+
+  python \
+    -m build \
+    --wheel \
+    --no-isolation
+}
+
 package() {
   cd "ufw"
 
-  python "setup.py" install \
-    --optimize 1 \
-    --root "$pkgdir"
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
 
   install -Dm644 "$srcdir/ufw.service" -t "$pkgdir/usr/lib/systemd/system"
 }
