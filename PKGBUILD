@@ -1,9 +1,7 @@
-# Maintainer: Evan Chen <evan@evanchen.cc>
-
 pkgname=python-grilops
 _name=${pkgname#python-}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='GRId LOgic Puzzle Solver'
 arch=(any)
 url=https://github.com/obijywk/grilops
@@ -21,6 +19,7 @@ build() {
 }
 
 package() {
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

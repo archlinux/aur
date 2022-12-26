@@ -1,7 +1,7 @@
 pkgbase = python-grilops
 	pkgdesc = GRId LOgic Puzzle Solver
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obijywk/grilops
 	arch = any
 	license = MIT
