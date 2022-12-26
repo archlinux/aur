@@ -9,8 +9,9 @@ url="https://github.com/simonadi/bltui"
 depends=("bluez")
 makedepends=("cargo" "git")
 provides=("bltui")
+conflicts=("bltui")
 source=("git+https://github.com/simonadi/bltui.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 prepare() {
     cd $pkgname
