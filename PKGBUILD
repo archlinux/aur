@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms-git
-pkgver=6.0.r0.gf76349c
+pkgver=6.2.r0.g1b929c0
 pkgrel=1
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
@@ -13,17 +13,17 @@ conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
 
 source=(
-    "Makefile.patch"
     "dkms.conf"
+    "Makefile.patch"
 )
 
 sha256sums=(
+    'ebb7f7cb975c5ee7a49475190403c11ddffab2664e594ac11d1fc0a5542e872c'
     'fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac'
-    '87ec3e1fdd50c2218eb93aa73fbcaa018275c12ea2ee6648b815e57207d2e132'
 )
 
-_ver="6.0"
-_since="1664139662"
+_ver="6.2"
+_since="1672004499"
 
 # The whole kernel history is very huge, so downloading it is a pain.
 # Also commits count is insane and we don't want to see all that in pkgver.
@@ -31,7 +31,7 @@ _since="1664139662"
 # Make a shallow clone since the specified timestamp.
 
 pkgver() {
-    cd "${srcdir}/repo"
+    cd "repo"
 
     local rev
     rev=$(("$(git rev-list --count HEAD)" - 1))
@@ -42,8 +42,6 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}"
-
     if [ ! -d "repo" ]; then
         git clone --shallow-since="${_since}" --filter=tree:0 --no-checkout --single-branch "${url}" "repo"
     fi
@@ -58,11 +56,7 @@ prepare() {
 }
 
 package() {
-    local src="${pkgdir}/usr/src"
-    install -dm755 "${src}"
-
-    cd "${srcdir}"
-    local dest="${src}/ntfs3-${_ver}"
-    cp -r "repo/fs/ntfs3" "${dest}"
-    install -Dm644 -t "${dest}" "dkms.conf"
+    local dest="${pkgdir}/usr/src/ntfs3-${_ver}"
+    install -Dm644 -t "${dest}" "${source[0]}"
+    cp -rpT "repo/fs/ntfs3" "${dest}"
 }

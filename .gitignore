@@ -1,4 +1,6 @@
-pkg/
-src/
-ntfs3/
-*.pkg.tar.*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!dkms.conf
+!*.patch
