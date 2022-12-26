@@ -3,7 +3,7 @@
 
 _pkgname=virtualgl
 pkgname=$_pkgname-git
-pkgver=2.4.r681.g3979e912
+pkgver=3.1beta1.r6.g3979e912
 pkgrel=1
 pkgdesc='Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card'
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
