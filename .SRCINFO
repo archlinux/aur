@@ -28,7 +28,6 @@ pkgbase = trueconf-client
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-svg
-	depends = qt5-webkit
 	depends = qt5-webview
 	depends = qt5-webengine
 	depends = qt5-webchannel
