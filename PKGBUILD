@@ -2,8 +2,8 @@
 # Contributor: Leszek Lesner <leszek@zevenos.com>
 # Contributor: Lane Kohen < fx@hi2.in >
 
-pkgname=rootactions-servicemenu-git
 _pkgname=rootactions-servicemenu
+pkgname=$_pkgname-git
 pkgver=r16.cdfe53f
 pkgrel=1
 pkgdesc="Allows admin users to perform several root only actions from dolphin via polkit agent"
