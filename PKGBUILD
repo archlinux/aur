@@ -3,7 +3,7 @@
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
 pkgver=1.2.2.r2.g58b7762
-pkgrel=1
+pkgrel=2
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
