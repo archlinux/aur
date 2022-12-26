@@ -5,7 +5,6 @@ pkgbase = firefox-extension-listen1
 	url = https://listen1.github.io/listen1
 	arch = any
 	license = MIT
-	makedepends = zip
 	depends = firefox
 	noextract = listen1_firefox_extension.2.27.0.xpi
 	source = https://github.com/windmiles/listen1_firefox_extension/releases/download/release/listen1_firefox_extension.2.27.0.xpi

@@ -9,7 +9,6 @@ _githuburl="https://github.com/windmiles/listen1_firefox_extension"
 _name=${_githuburl##*/}
 license=('MIT')
 depends=("firefox")
-makedepends=("zip")
 noextract=("${_name}.${pkgver}.xpi")
 source=("${_githuburl}/releases/download/release/${_name}.${pkgver}.xpi")
 sha256sums=('841da634d315b03ad84fbbfb0109fea135e5e10c65699f07f509ea0c5d3e4c44')
