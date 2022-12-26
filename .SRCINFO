@@ -1,19 +1,19 @@
 pkgbase = bloscpack-git
 	pkgdesc = Command line interface to and serialization format for Blosc
-	pkgver = 0.16.0.r6.g45038d3
+	pkgver = 0.16.0.r46.g5efdadf
 	pkgrel = 1
 	url = https://github.com/Blosc/bloscpack
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-blosc
 	depends = python-deprecated
 	depends = python-numpy
 	depends = python-six
-	provides = bloscpack
+	provides = bloscpack=0.16.0.r46.g5efdadf
 	conflicts = bloscpack
 	source = git+https://github.com/Blosc/bloscpack.git
 	sha256sums = SKIP
 
 pkgname = bloscpack-git
-
