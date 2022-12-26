@@ -2,7 +2,7 @@
 
 pkgname=charcoal
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Charcoal, a command line dictionary"
 arch=('x86_64')
 reponame=Charcoal
@@ -38,3 +38,4 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
+sha256sums=('482b1d2e8ae907c54b36d6682c215fe798e804c406121204039410d7aea65454')
