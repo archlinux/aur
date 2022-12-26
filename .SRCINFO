@@ -8,7 +8,6 @@ pkgbase = gvim-gtk2
 	license = custom:vim
 	makedepends = git
 	makedepends = libxt
-	makedepends = python2
 	makedepends = python
 	makedepends = ruby
 	depends = libxt
@@ -20,7 +19,6 @@ pkgbase = gvim-gtk2
 	optdepends = lua: Lua interpreter
 	optdepends = perl: Perl interpreter
 	optdepends = python: Python 3 interpreter
-	optdepends = python2: Python 2 interpreter
 	optdepends = ruby: Ruby interpreter
 	provides = gvim=9.0.1097
 	provides = xxd

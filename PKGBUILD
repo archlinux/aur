@@ -11,11 +11,10 @@ license=("custom:vim")
 depends=("libxt" "gawk" "gtk2" "tcsh" "gpm" "acl")
 optdepends=("lua: Lua interpreter" "perl: Perl interpreter" 
             "python: Python 3 interpreter"
-            "python2: Python 2 interpreter" 
             "ruby: Ruby interpreter")
 makedepends=("git" "libxt"
 #"lua"
- "python2" "python" "ruby")
+"python" "ruby")
 provides=("gvim=$pkgver" "xxd" "vim-runtime=$pkgver" "vim=$pkgver")
 conflicts=("vim-minimal-git" "vim-git" "vim-runtime" "vim-runtime-git"
            "vim-minimal" "vim" "vim-python3" "gvim" "gvim-gtk3" "gvim-python3" "gvim-git")
@@ -47,7 +46,6 @@ prepare() {
       --enable-cscope \
       --enable-multibyte \
       --enable-perlinterp=dynamic \
-      --enable-pythoninterp=dynamic \
       --enable-python3interp=dynamic \
       --enable-rubyinterp=dynamic
      # --enable-luainterp=dynamic    
