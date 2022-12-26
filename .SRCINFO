@@ -1,7 +1,7 @@
 pkgbase = libretro-database-git
 	pkgdesc = RetroArch's cheatcode files, content data files, etc.
-	pkgver = 1.9.5.r3.g658a2c29
-	pkgrel = 3
+	pkgver = 1.14.0.r8.g3e565a4a
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/libretro-database
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = libretro-database-git
 	license = MIT
 	makedepends = git
 	optdepends = retroarch
-	provides = libretro-database
+	provides = libretro-database=1.14.0.r8.g3e565a4a
 	conflicts = libretro-database
 	options = !strip
 	source = libretro-database::git+https://github.com/libretro/libretro-database.git

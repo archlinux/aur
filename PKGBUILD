@@ -2,8 +2,8 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-database
 pkgname=$_pkgname-git
-pkgver=1.9.5.r3.g658a2c29
-pkgrel=3
+pkgver=1.14.0.r8.g3e565a4a
+pkgrel=1
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip')
 source=("$_pkgname::git+$url.git")
