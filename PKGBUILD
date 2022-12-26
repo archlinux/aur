@@ -2,13 +2,13 @@
 
 pkgbase=protobuf-git
 pkgname=('protobuf-git' 'python-protobuf-git')
-pkgver=21.5.r411.gd8421bd49
+pkgver=21.12.r1098.gb598b2dd1
 pkgrel=1
 pkgdesc="Google's data interchange format"
 arch=('i686' 'x86_64')
 url="https://developers.google.com/protocol-buffers/"
 license=('BSD')
-makedepends=('git' 'cmake' 'gtest' 'python-setuptools')
+makedepends=('git' 'cmake' 'gtest' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/protocolbuffers/protobuf.git")
 sha256sums=('SKIP')
 
@@ -41,8 +41,11 @@ build() {
   make -C "_build"
 
   cd "python"
-  python "setup.py" build \
-    --cpp_implementation
+  python \
+    -m build \
+    --wheel \
+    --no-isolation \
+    --config-setting="--cpp_implementation"
 }
 
 check() {
@@ -78,9 +81,8 @@ package_python-protobuf-git() {
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/python-protobuf"
 
   cd "python"
-  python "setup.py" install \
-    --optimize 1 \
-    --skip-build \
-    --root "$pkgdir" \
-    --cpp_implementation
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
 }
