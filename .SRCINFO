@@ -1,6 +1,6 @@
 pkgbase = ttop
 	pkgdesc = Interactive Nim Shell / REPL / Playground
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/inv2004/ttop
 	install = .INSTALL
