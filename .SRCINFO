@@ -1,7 +1,7 @@
 pkgbase = python-types-markdown
 	pkgdesc = Typing stubs for Markdown
 	pkgver = 3.4.2.1
-	pkgrel = 00
+	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
 	license = Apache

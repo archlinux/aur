@@ -3,7 +3,7 @@
 pkgname=python-types-markdown
 _name=types-Markdown
 pkgver=3.4.2.1
-pkgrel=00
+pkgrel=1
 pkgdesc='Typing stubs for Markdown'
 arch=(any)
 url=https://github.com/python/typeshed
