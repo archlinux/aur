@@ -2,7 +2,7 @@
 # Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Console Bibliography"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('cobib')
 url="https://gitlab.com/mrossinek/${pkgname}"
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests' 'python-requests-oauthlib')
 source=("https://gitlab.com/mrossinek/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('8da04e18b157d5285bd3e2c39d02b173e96495656e38ea2af7ebd4a355d3efa5560710bbb7e561b06e36d4810e33f835ed91a16c65b7e3b2243bba243dac7ca7')
+sha512sums=('8950670d1a20429fdc24fba60ee86c3292ceae677bb0172b0ccca1ec06c785d1f815af1bd30ba62b207241d8ea8c3e6b2f11cee82a956166d612c5c07411956a')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
