@@ -1,6 +1,6 @@
 pkgbase = pict-rs
 	pkgdesc = A simple image hosting service
-	pkgver = 0.4.0.beta.8
+	pkgver = 0.4.0.beta.9
 	pkgrel = 1
 	url = https://crates.io/crates/pict-rs
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = pict-rs
 	depends = ffmpeg
 	depends = perl-image-exiftool
 	options = !lto
-	source = pict-rs-0.4.0.beta.8.tar.gz::https://static.crates.io/crates/pict-rs/pict-rs-0.4.0-beta.8.crate
-	sha512sums = 583ec121ea378acc4ae96fc6d3930d3b5b77c97d334323137b5830e7d07c461097a225ba535ee31c87d2ad8488604f6b3220fec8a78d71533985b0c5c0bc3a58
-	b2sums = bf941bee97636b898a93c7629cd97a4c99ac0e1d3ed4b5843f46506db0ed10c14b57d5cd5181c0318936c672367c7c98b6ef8251c02f8d66865805f2649e80b4
+	source = pict-rs-0.4.0.beta.9.tar.gz::https://static.crates.io/crates/pict-rs/pict-rs-0.4.0-beta.9.crate
+	sha512sums = 02cceabc9c7dbf21e48b3bbca5e60481a1b4438284ca687f6a370b61a8489ecd3abf449b1663a1ee5f63e170dc600264fe9ceaef387a6cf85539cbf878a81c89
+	b2sums = e32e97313d5995e516c35b5f86a25993a4bb13c22910e8df9098271fcb2f3982a3d39d3db77c26ddac8860d2aacce2adfa2a66f7c7bb7e70681d36b96b51c985
 
 pkgname = pict-rs
