@@ -6,7 +6,9 @@ pkgbase = iroh-git
 	arch = x86_64
 	license = MIT
 	license = Apache
+	makedepends = git
 	makedepends = cargo
+	depends = gcc-libs
 	source = iroh-git::git+https://github.com/n0-computer/iroh.git#tag=v0.1.1
 	sha256sums = SKIP
 

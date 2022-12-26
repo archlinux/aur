@@ -6,8 +6,8 @@ pkgdesc='An Implementation IPFS in Rust'
 arch=(x86_64)
 url='https://github.com/n0-computer/iroh'
 license=(MIT Apache)
-depends=()
-makedepends=(cargo)
+depends=(gcc-libs)
+makedepends=(git cargo)
 checkdepends=()
 source=($pkgname::git+https://github.com/n0-computer/iroh.git#tag=v$pkgver)
 sha256sums=('SKIP')
