@@ -11,7 +11,5 @@ md5sums=('4f590ee0e14d24482f50c20a13418866')
 
 package() {
     tar xf data.tar.xz
-    find usr -type f -iname '*ho_*.pcf*' -delete
-    find usr -type f -iname '*hbo_*.pcf*' -delete
     mv usr $pkgdir/
 }
