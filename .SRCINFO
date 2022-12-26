@@ -6,9 +6,9 @@ pkgbase = validity-sensors-tools-git
 	arch = x86_64
 	license = unknown
 	makedepends = python-setuptools
-	depends = python-pycrypto
+	depends = python-pycryptodome
 	depends = python-pyusb
-	depends = python-fastecdsa=1.7.4
+	depends = python-fastecdsa
 	depends = innoextract
 	depends = libusb
 	depends = usbutils
@@ -17,9 +17,6 @@ pkgbase = validity-sensors-tools-git
 	conflicts = validity-sensors-tools
 	conflicts = python-proto9x
 	source = validity-sensors-tools::git+https://github.com/3v1n0/python-validity.git
-	source = 0001-Monkey-patch-time-to-fix-bug-in-pycrypto.patch
 	sha256sums = SKIP
-	sha256sums = 9987b7765ff2921250de1c378b5cb8ac6f05d9f133211f0add358dffda6e33c1
 
 pkgname = validity-sensors-tools-git
-
