@@ -71,16 +71,7 @@ build() {
     if [ -d "${dir}" ]; then
       pushd "${dir}"
       shopt -s nullglob
-      if [ "${dir}" == adobe-100dpi-master ]; then
-        max_pixel_size=12
-      elif [[ "${dir}" == *misc* ]]; then
-        max_pixel_size=13
-        rm -rf {7,8}*.bdf 2>/dev/null
-      elif [[ "${dir}" == *cyrillic* ]]; then
-        max_pixel_size=14
-      else
-        max_pixel_size=10
-      fi
+      max_pixel_size=18
       for f in *.bdf; do
         name="${f%.bdf}"
         mv "$f" "${name}-web.bdf"
