@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Get new version info
-URL=$(curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r| cut -d "_" -f2)
+URL=$(curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r | cut -d "_" -f2)
 VER=$(curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.version' -r)
 
 # Update PKGBUILD
@@ -21,7 +21,7 @@ makepkg --printsrcinfo > .SRCINFO
 git add .SRCINFO PKGBUILD
 git commit -m "Update to $VER"
 
-# CLeanup
+# Cleanup
 rm -rf pkg/ src/ *.snap *.pkg.tar.zst
 
 printf "\nAll done!\nRemember to git push!\n"
