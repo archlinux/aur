@@ -16,7 +16,7 @@ sha512sum_first_src_sum() {
   sed -Ei "s/pkgver=.*\$/pkgver="'"'"$(get_latest_release_tag $pkgbin)"'"'"/g" PKGBUILD
 
   # Calculate sum on first in source()
-  wget "$url/releases/download/v$pkgver/$pkgsrc"
+  curl -Lo "$pkgsrc" "$url/releases/download/v$pkgver/$pkgsrc"
   local sha=$(sha512sum $pkgsrc | cut -d " " -f1)
   rm $pkgsrc
   echo $sha
