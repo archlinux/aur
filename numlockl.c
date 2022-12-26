@@ -12,12 +12,16 @@
 #include <sys/time.h>
 #include <linux/input.h>
 #include <linux/uinput.h>
+#include <linux/kd.h>
 #include <bsd/string.h>
+#include <sys/ioctl.h>
+#include <sys/syscall.h>
 
 int lstat(const char *restrict path, struct stat *restrict buf);
 int syncfs(int fd);
 
 #define VERSION "1.0"
+char leds[256] = "/sys/class/leds/";
 
 void usage( const char* argv0 ) {
     printf( "NumLockL " VERSION "\n"
@@ -31,13 +35,28 @@ void usage( const char* argv0 ) {
         , argv0 );
 }
 
-int get_state(void){
+int get_state(char *leds){
+        int retval;
+        char buf[2]="";
+
+        int fd = open(leds, O_RDONLY);
+        if (fd < 0) { fprintf(stderr,"get_state %s\n",leds);exit(1); }
+        retval = read(fd, buf, 1);
+        if (retval < 0) {
+            perror("\nRead failure");
+            close(fd);
+            return -1;
+            }
+        close(fd);
+        return atoi(buf);
+}
+
+int get_led_path(char *leds, size_t size){
         int retval;
         char buf[2]="";
         DIR *dp;
         struct dirent *entry;
         struct stat statbuf;
-        char leds[256] = "/sys/class/leds/";
 
         if ((dp = opendir(leds)) == NULL) {
                 fprintf(stderr,"cannot open directory: %s\n", leds);
@@ -51,8 +70,8 @@ int get_state(void){
                                 continue;
                         }
                         if(strstr(entry->d_name, "numlock")) {
-                                strlcat(leds,entry->d_name,sizeof(leds));
-                                strlcat(leds,"/brightness",sizeof(leds));
+                                strlcat(leds,entry->d_name,size);
+                                strlcat(leds,"/brightness",size);
                                 int fd = open(leds, O_RDONLY);
                                 if (fd < 0) { perror(leds);closedir(dp);exit(1); }
                                 retval = read(fd, buf, 1);
@@ -67,7 +86,7 @@ int get_state(void){
                 }
         }
         closedir(dp);
-        return atoi(buf);
+        return retval;
 }
 
 void emit(int fd, int type, int code, int val)
@@ -89,7 +108,7 @@ void emit(int fd, int type, int code, int val)
 }
 
 int press_numlock(int state) {
-    int                    fd;
+    int fd;
     struct uinput_user_dev uidev;
 
     fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
@@ -137,7 +156,7 @@ int press_numlock(int state) {
             return -1;
     }
     close(fd);
-    if (state == get_state()) {
+    if (state == get_state(leds)) {
         fprintf(stderr, "NumLock can't change\n");
         return -1;
     }
@@ -180,7 +199,10 @@ int main( int argc, char* argv[] ) {
                 usage( argv[ 0 ] );
                 return 1;
         }
-        int state = get_state();
+        if(get_led_path(leds, sizeof(leds)) == -1) {
+            perror(leds);exit(1);
+        };
+        int state = get_state(leds);
         if( argc == 1 ) {
                 numlock_state(state);
         }
