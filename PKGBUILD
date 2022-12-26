@@ -3,7 +3,7 @@
 pkgname=python-mdx_truly_sane_lists
 _name=${pkgname#python-}
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Extension for Python-Markdown that makes lists truly sane. Custom
 indents for nested lists and fix for messy linebreaks.'
 arch=(any)
@@ -24,4 +24,5 @@ build() {
 package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
