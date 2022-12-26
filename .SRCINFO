@@ -1,5 +1,5 @@
 pkgbase = nvml-fix-git
-	pkgdesc = A workaround for an annoying bug in nVidia's NVML library.
+	pkgdesc = A workaround for an annoying bug in the NVML library of nVidia 470 or older drivers.
 	pkgver = r37.9be4552
 	pkgrel = 3
 	url = https://github.com/CFSworks/nvml_fix

@@ -4,7 +4,7 @@ _pkgname=nvml_fix
 pkgname=nvml-fix-git
 pkgrel=3
 pkgver=r37.9be4552
-pkgdesc="A workaround for an annoying bug in nVidia's NVML library."
+pkgdesc="A workaround for an annoying bug in the NVML library of nVidia 470 or older drivers."
 url=https://github.com/CFSworks/nvml_fix
 arch=('x86_64' 'i686')
 conflicts=(${pkgname%-git})
@@ -36,6 +36,7 @@ build() {
 	cd ${srcdir}/${_pkgname}
 	make TARGET_VER=$NVIDIA_VERSION libdir=/usr/lib
 }
+
 package() {
 	install -Dm644 "${srcdir}/${_pkgname}/Makefile" "${pkgdir}/usr/src/nvml-fix/Makefile"
 	install -Dm644 "${srcdir}/${_pkgname}/empty.c" "${pkgdir}/usr/src/nvml-fix/empty.c"
