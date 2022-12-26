@@ -1,0 +1,5 @@
+!config.json
+!*.service
+!*.timer
+!PKGBUILD
+!.SRFINFO
