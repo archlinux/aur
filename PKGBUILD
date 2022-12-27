@@ -5,7 +5,7 @@ pkgname=lib32-babl
 _pkgbase=babl
 pkgver=0.1.98
 _tag="BABL_${pkgver//./_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic, any to any, pixel format conversion library (32-bit)"
 arch=(x86_64)
 url="https://gegl.org/babl/"
@@ -32,6 +32,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C "build" install
-  rm -r "$pkgdir/usr/include"
+  rm -rf "$pkgdir"/usr/{bin,include}
 }
 
