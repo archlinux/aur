@@ -1,7 +1,7 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=1.11.1.r4.g28fe369
+pkgver=1.11.2.r1.ge45a34e
 pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
@@ -22,10 +22,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha
-  fi
-
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
@@ -42,6 +38,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build:/usr/share/gocode"
 
   cd "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
   make bin
