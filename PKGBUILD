@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.8.09
+pkgver=1.9.8.10
 pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('unknown')
 source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('08ce2ac8f86d4b6c73bc21b1d9a362efebe730ddadcc05831bc73ce6d732bee9'
+sha256sums=('eb11013c4b6a440c16caff8f785b5a93532898a7ecdfef6dbeddea46edeb9bc3'
             'b508c7f10382a3ada34ee1797163c448559b1993898422f096c5381fd4abc7a6'
             '8f0a73964ae79785a5d79983887e436f6fce5626abc5ced5c7a300f67d90f2bc')
 
