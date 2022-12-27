@@ -1,37 +1,35 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-casd
-pkgver=0.0.46.r0.ga4295e8
+pkgver=0.0.63
 pkgrel=1
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
 url="https://buildgrid.build"
 license=('Apache')
-depends=('buildbox-common' 'util-linux-libs')
-makedepends=('cmake' 'git')
-_commit=a4295e88eb2418865566304185725730670fc523 # release 0.0.46
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#commit=$_commit")
+depends=(google-glog grpc util-linux-libs)
+makedepends=(benchmark 'buildbox-common' 'cmake' 'git' ninja)
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#tag=0.0.63&commit=121b55b4fd996a714900e6b94310394b3bccdb26")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   mkdir -p build
   cd build
-  cmake ../$pkgname             \
-    -DCMAKE_BUILD_TYPE=Release  \
+  cmake ../buildbox-casd \
+    -G Ninja \
+    -DCMAKE_CXX_FLAGS=-Wno-error=restrict \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  ninja
 }
 
 check() {
   cd build
-  make -k test
+  echo "Test 'cas_proxy_tests' and 'local_cas_service_tests' can take some time."
+  ninja -k-1 test
 }
 
 package() {
   cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
 }
