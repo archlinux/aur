@@ -1,0 +1,12 @@
+pkgbase = kafka-questdb-connector
+	pkgdesc = KafkaConnect plugin for PostgreSQL
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/questdb/kafka-questdb-connector
+	arch = any
+	license = Apache
+	depends = java-runtime>=11
+	source = https://github.com/questdb/kafka-questdb-connector/releases/download/v0.5/kafka-questdb-connector-0.5-bin.zip
+	sha256sums = c9d2a800777796f11b4f1ddc380d56c5b7893cf18311c223e3bd59e66a50ed49
+
+pkgname = kafka-questdb-connector-bin
