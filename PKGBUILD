@@ -5,7 +5,7 @@ _program_name=GalaxyBudsClient
 _pkgname="${_program_name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=4.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
       'armv7h'
