@@ -1,6 +1,6 @@
 pkgbase = r-phantasus
 	pkgdesc = Visual and interactive gene expression analysis
-	pkgver = 1.18.2
+	pkgver = 1.18.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/phantasus
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-phantasus
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/phantasus_1.18.2.tar.gz
-	sha256sums = 3d3ffe5ac91f67cd52aa6b2b192d9e6f275a5c3664871c996f735a1a6f385a16
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phantasus_1.18.4.tar.gz
+	sha256sums = 115215e4693078c22fd2b02eccdd4f19240e07cffd33a92de1a7e429bb315666
 
 pkgname = r-phantasus
