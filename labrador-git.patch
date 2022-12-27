@@ -1,0 +1,126 @@
+diff --git a/Desktop_Interface/Labrador.pro b/Desktop_Interface/Labrador.pro
+index 4b137ce9..d785c01e 100644
+--- a/Desktop_Interface/Labrador.pro
++++ b/Desktop_Interface/Labrador.pro
+@@ -15,7 +15,7 @@ CONFIG += c++14
+ 
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
+ 
+-TARGET = Labrador
++TARGET = labrador
+ TEMPLATE = app
+ 
+ QCP_VER = 1
+@@ -164,11 +164,13 @@ unix:!android:!macx{
+         }
+     }
+     
+-    other.files += bin/firmware
++    firmware.files += bin/firmware/labrafirm_0006*
++    firmware.path = /usr/lib/firmware
++
+     other.files += bin/waveforms
+-    other.path = /usr/bin/EspoTek-Labrador
++    other.path = /usr/share/labrador
+     
+-    target.path = /usr/bin/EspoTek-Labrador
++    target.path = /usr/bin
+     
+     udev.path = /etc/udev/rules.d
+     udev.files = rules.d/69-labrador.rules
+@@ -187,13 +189,7 @@ unix:!android:!macx{
+     }
+     desktop.path = /usr/share/applications
+     
+-    symlink.path = /usr/bin
+-    symlink.extra = ln -sf ${INSTALL_ROOT}/usr/bin/EspoTek-Labrador/Labrador /usr/bin/labrador
+-    
+     udevextra.path = /etc/udev/rules.d
+-    !equals(DEB, 1){
+-        udevextra.extra = udevadm control --reload-rules && udevadm trigger
+-    }
+ 
+     equals(APPIMAGE, 1){
+         other.path = /usr/bin
+@@ -203,13 +199,13 @@ unix:!android:!macx{
+     INSTALLS += target
+     INSTALLS += lib_deploy
+     INSTALLS += other
++    INSTALLS += firmware
+     INSTALLS += udev
+     INSTALLS += icon48
+     INSTALLS += icon256
+     INSTALLS += desktop
+ 
+     !equals(APPIMAGE, 1){
+-        INSTALLS += symlink
+         INSTALLS += udevextra
+     }
+ }
+@@ -250,11 +246,6 @@ unix:HEADERS += unixusbdriver.h
+ ########       SHARED ANDROID/LINUX GCC FLAGS      #########
+ ###########################################################
+ 
+-unix:!macx: QMAKE_CXXFLAGS_RELEASE -= -O0
+-unix:!macx: QMAKE_CXXFLAGS_RELEASE -= -O1
+-unix:!macx: QMAKE_CXXFLAGS_RELEASE -= -O2
+-unix:!macx: QMAKE_CXXFLAGS_RELEASE -= -O3
+-
+ android: QMAKE_CXXFLAGS_RELEASE -= -O0
+ android: QMAKE_CXXFLAGS_RELEASE -= -O1
+ android: QMAKE_CXXFLAGS_RELEASE -= -O2
+diff --git a/Desktop_Interface/functiongencontrol.cpp b/Desktop_Interface/functiongencontrol.cpp
+index 465d172d..b60e07d7 100644
+--- a/Desktop_Interface/functiongencontrol.cpp
++++ b/Desktop_Interface/functiongencontrol.cpp
+@@ -54,8 +54,8 @@ void SingleChannelController::waveformName(QString newName)
+ 
+ #else
+ 
+-    QByteArray filePath = QCoreApplication::applicationDirPath()
+-		.append("/waveforms/").append(newName).toLocal8Bit();
++    QString file_location = "/usr/share/labrador/waveforms/";
++    QByteArray filePath = file_location.append(newName).toLocal8Bit();
+ 
+     qDebug() << "opening" << filePath;
+ 
+diff --git a/Desktop_Interface/genericusbdriver.cpp b/Desktop_Interface/genericusbdriver.cpp
+index 98643ccb..29402fe0 100644
+--- a/Desktop_Interface/genericusbdriver.cpp
++++ b/Desktop_Interface/genericusbdriver.cpp
+@@ -365,7 +365,7 @@ void genericUsbDriver::setGain(double newGain){
+ void genericUsbDriver::avrDebug(void){
+     usbSendControl(0xc0, 0xa0, 0, 0, sizeof(unified_debug), NULL);
+ 
+-    qDebug() << "unified debug is of size" << sizeof(unified_debug);
++    //qDebug() << "unified debug is of size" << sizeof(unified_debug);
+     /*
+ #ifndef PLATFORM_ANDROID
+     unified_debug *udsPtr = (unified_debug *) inBuffer;
+diff --git a/Desktop_Interface/resources/espotek-labrador.desktop b/Desktop_Interface/resources/espotek-labrador.desktop
+index 5fb47dda..5a5e494d 100644
+--- a/Desktop_Interface/resources/espotek-labrador.desktop
++++ b/Desktop_Interface/resources/espotek-labrador.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=EspoTek Labrador
+ Comment=Software Interface for Labrador Board
+-Exec=/usr/bin/EspoTek-Labrador/Labrador 
++Exec=/usr/bin/labrador 
+ Terminal=false
+ Type=Application
+ Categories=Education;Electronics;
+diff --git a/Desktop_Interface/ui_elements/espocombobox.cpp b/Desktop_Interface/ui_elements/espocombobox.cpp
+index e5cc38a6..de1b37a7 100644
+--- a/Desktop_Interface/ui_elements/espocombobox.cpp
++++ b/Desktop_Interface/ui_elements/espocombobox.cpp
+@@ -33,8 +33,7 @@ void espoComboBox::readWaveformList(void)
+     delete newNames;
+     qt_list.close();
+ #else
+-    QString dirString = QCoreApplication::applicationDirPath();
+-    dirString.append("/waveforms/_list.wfl");
++    QString dirString = "/usr/share/labrador/waveforms/_list.wfl";
+     QByteArray array = dirString.toLocal8Bit();
+     char* buffer = array.data();
+     //qDebug() << buffer;
