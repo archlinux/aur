@@ -1,6 +1,6 @@
 pkgbase = dde-kwin-git
 	pkgdesc = KWin configures on DDE
-	pkgver = 5.5.11.r24.g8a778b65f
+	pkgver = 5.5.11.r25.gff663502d
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-kwin
 	arch = x86_64

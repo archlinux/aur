@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dde-kwin-git
-pkgver=5.5.11.r24.g8a778b65f
+pkgver=5.5.11.r25.gff663502d
 pkgrel=1
 pkgdesc='KWin configures on DDE'
 arch=('x86_64' 'aarch64')
