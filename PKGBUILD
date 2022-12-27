@@ -1,46 +1,66 @@
-# Maintainer: Jouni Rinne <l33tmmx swirlything gmail dot com>
+# Maintainer: Michael Zech <keldrin at web dot de>
+# Contributor: Stephan Eisvogel <eisvogel at seitics dot de>
+# Contributor: Jouni Rinne <l33tmmx swirlything gmail dot com>
 # Contributor: Deon Spengler <deon at spengler dot co dot za>
-pkgname=labrador-git
-pkgdesc="Qt5 GUI for EspoTek all-in-one USB oscilloscope/ signal generator/ PSU/ logic analyzer/ multimeter"
-pkgver=1.0.r502.ac5052cd
+pkgname='labrador-git'
+pkgver=r583.2cc0678b
 pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://espotek.com/labrador/"
-license=('GPL3')
-depends=('qt5-base' 'hicolor-icon-theme')
+epoch=1
+pkgdesc='Qt5 GUI for EspoTek all-in-one USB oscilloscope/ signal generator/ PSU/ logic analyzer/ multimeter'
+arch=('x86_64')
+url="https://github.com/espotek/labrador"
+license=('GPL')
+depends=('qt5-base>=5.15.7' 'hicolor-icon-theme' 'fftw')
 makedepends=('git')
 optdepends=('dfu-programmer: USB programmer for Atmel chips'
-            'dfu-util: USB firmware down/uploader')
+	    'dfu-util: USB firmware down/uploader')
 conflicts=('labrador' 'libdfuprog')
-source=("git+https://github.com/EspoTek/Labrador.git"
-        "labrador-install.patch"
-        "Labrador_pinout.png")
-sha256sums=('SKIP'
-            '6584acad931a8dc281ac75e92234d10af0194ff6e3d40a9a67509763a29b92f4'
-            '0879b78874b86b648b067d69c21500717df518874cb3f87ed40ea3d6e44979bd')
+install="${pkgname}.install"
+source=('labrador-git::git+https://github.com/espotek/labrador#branch=master'
+	'libdfuprog::git+https://github.com/EspoTek/libdfuprog'
+	'labrador-git.install'
+	'labrador-git.patch')
+md5sums=('SKIP'
+         'SKIP'
+         'cbfdce82698b92281f31c314373c4b6b'
+         'e7ddb103fed89acd20408a959a5ad9ba')
 
 pkgver() {
-    cd ${srcdir}/Labrador
-    printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd ${srcdir}/Labrador/Desktop_Interface
-    patch -p0 -i ../../labrador-install.patch
+	cd "${srcdir}/libdfuprog"
+	chmod +x libdfuprog_make_linux
+	# ugly workaround to get rid of pre-compiled libfduprog
+	rm -rf "${srcdir}/${pkgname}/Desktop_Interface/build_linux/libdfuprog"
+
+	cd "$srcdir/${pkgname}"
+	patch -p1 < ../../labrador-git.patch
 }
 
 build() {
-    cd ${srcdir}/Labrador/Desktop_Interface
-    qmake -makefile Labrador.pro
-    make
+	cd "${srcdir}/libdfuprog"
+	./bootstrap.sh
+	./libdfuprog_make_linux
+	# ugly workaround part II: get fresh libfduprog in place
+	install -Dm644 "${srcdir}/libdfuprog/src/libdfuprog-0.9.so" \
+		"${srcdir}/${pkgname}/Desktop_Interface/build_linux/libdfuprog/lib/x64/libdfuprog-0.9.so"	
+	install -Dm644 "${srcdir}/libdfuprog/src/main.h" \
+		"${srcdir}/${pkgname}/Desktop_Interface/build_linux/libdfuprog/include/libdfuprog.h"	
+
+	cd "$srcdir/${pkgname}/Desktop_Interface"
+	qmake -makefile Labrador.pro
+	make
+}
+
+check() {
+	cd "$srcdir/${pkgname}/Desktop_Interface"
+	make -k check
 }
 
 package() {
-    cd ${srcdir}/Labrador/Desktop_Interface
-    make INSTALL_ROOT=${pkgdir} install
-    mkdir -p ${pkgdir}/usr/share/doc/EspoTek-Labrador
-    cp ../../Labrador_pinout.png ${pkgdir}/usr/share/doc/EspoTek-Labrador/
-    cp ../{pinout.svg,README.md} ${pkgdir}/usr/share/doc/EspoTek-Labrador/
-    ln -s /usr/bin/EspoTek-Labrador/Labrador ${pkgdir}/usr/bin/labrador
-    rm ${pkgdir}/usr/bin/EspoTek-Labrador/firmware/{dfu-programmer.exe,flash.bat,wipe.bat}
+	cd "$srcdir/${pkgname}/Desktop_Interface"
+	make INSTALL_ROOT="$pkgdir" install
 }
