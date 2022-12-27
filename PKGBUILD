@@ -2,7 +2,7 @@
 
 pkgname=kimi-linphone-desktop
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included)."
 arch=('x86_64')
 url="https://linphone.org"
@@ -180,10 +180,10 @@ build() {
     PARALLEL_JOBS=$(nproc)
     echo "Setting number of parallel jobs to: $PARALLEL_JOBS"
     
-    #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    echo cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    cmake  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    echo cmake  -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    cmake  -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     #echo "Showing the result:"
     #find "$BUILD_IT_HERE"
     echo "--- cmake configuration should have completed here ---"
