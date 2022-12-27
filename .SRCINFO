@@ -1,18 +1,16 @@
 pkgbase = desktime
 	pkgdesc = Desktime client for Linux
-	pkgver = 5.1.30
+	pkgver = 6.0.0
 	pkgrel = 0
 	url = https://desktime.com
 	install = desktime.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = libappindicator-gtk2
 	depends = libxss
-	source = desktime-5.1.30.deb::https://desktime.com/updates/linux/update/?x64
-	md5sums = 4521ce6d95e24af9377109252a12334a
+	source = desktime-6.0.0.deb::https://desktime.com/updates/electron/linux?deb
+	md5sums = 8d9fbf67074d1feec730c0983aeb3c46
 
 pkgname = desktime
-
