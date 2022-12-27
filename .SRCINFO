@@ -9,7 +9,6 @@ pkgbase = pap-bin
 	arch = armv6h
 	arch = aarch64
 	license = MIT
-	depends = pacman
 	optdepends = java-runtime: running the downloaded jarfiles
 	provides = pap
 	conflicts = pap

@@ -20,7 +20,6 @@ source_aarch64=("https://github.com/talwat/pap/releases/download/v$pkgver/pap_${
 
 conflicts=('pap')
 provides=('pap')
-depends=('pacman')
 optdepends=('java-runtime: running the downloaded jarfiles')
 
 package() {
