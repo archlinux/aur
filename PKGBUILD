@@ -1,4 +1,5 @@
-# Maintainer: gato_lento <vukk.euob at gmail>
+# Maintainer: Jack Rubacha <rubacha.jack03@gmail.com>
+# Contributor: gato_lento <vukk.euob at gmail>
 # Contributor: Jonas Schwartz
 _program_name=GalaxyBudsClient
 _pkgname="${_program_name,,}"
@@ -45,7 +46,7 @@ package() {
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${srcdir}/icon_white.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
-sha256sums=('eb8dd01c7400ce823f9e53dce5420fd10129d05d9ae93c4864a1606496b6d65a'
+sha256sums=('88677692ff1d7202b9f7aedbb5ec6cc01684041b94220a8da8feb69d9a028f70'
             '04b551470a2e0ccd99b266d313265321113886f5808b872bf928a97442bf930a')
 sha256sums_x86_64=('8e07ebbcf4cd4e2700e319ed146de8a7e4cd5b28ffdc24a3d4340c294f0a6274')
 sha256sums_armv7h=('714df59b7f0bcf505e51efa4ab186a0ad637c3a448d409bbc2164c38b597f35a')

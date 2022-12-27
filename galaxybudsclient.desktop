@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=GalaxyBudsClient
 Comment=Galaxy Buds client
-GenericName=Galaxy buds client
-Exec=env DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 /usr/bin/galaxybudsclient
+GenericName=Galaxy Buds client
+Exec=/usr/bin/galaxybudsclient
 Icon=galaxybudsclient
 Type=Application
 StartupNotify=true
