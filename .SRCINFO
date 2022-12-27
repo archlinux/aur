@@ -1,0 +1,13 @@
+pkgbase = deepin-wayland-protocols-git
+	pkgdesc = deepin Specific Protocols for Wayland
+	pkgver = 1.6.0.deepin.1.2.r0.g193899b
+	pkgrel = 1
+	url = https://github.com/justforlxz/deepin-wayland-protocols
+	arch = any
+	license = LGPL
+	makedepends = qt5-base
+	makedepends = extra-cmake-modules
+	source = deepin-wayland-protocols-git::git+https://github.com/linuxdeepin/deepin-wayland-protocols
+	sha256sums = SKIP
+
+pkgname = deepin-wayland-protocols-git
