@@ -4,7 +4,7 @@
 # Contributor: Wesley Moore <wes@wezm.net>
 
 pkgname=neovim-gtk
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='GTK UI for Neovim written in Rust'
 arch=(x86_64 i686)
@@ -13,11 +13,21 @@ license=(GPL3)
 depends=(neovim gtk4 vte3)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4badee0dedb3f2a22e953a3d940a3ebf90bd347a93d79f852fe7c3ea1bc5c3e3')
+source=("$url/archive/v$pkgver/$_archive.tar.gz"
+	Cargo.lock)
+sha256sums=('c31fe39dedb8fc06e992b9c9ec38e10bbea4d3962e5e4f3bc586a53ded26ad11'
+            'a827b2ed979efce0962dd98ffb59c6c12995e164794fa755494f0780f761a1ef')
+
+# https://github.com/Lyude/neovim-gtk/issues/58
+updlockfiles() {
+	cd "$_archive"
+	cargo update
+	cp Cargo.lock "$outdir/"
+}
 
 prepare() {
 	cd "$_archive"
+	cp "$srcdir/Cargo.lock" .
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
