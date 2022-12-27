@@ -1,8 +1,8 @@
 pkgbase = fgsl-git
 	pkgdesc = A Fortran interface to the GNU Scientific Library
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
-	url = https://doku.lrz.de/display/PUBLIC/FGSL+-+A+Fortran+interface+to+the+GNU+Scientific+Library
+	url = https://github.com/reinh-bader/fgsl/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,4 +15,3 @@ pkgbase = fgsl-git
 	sha256sums = SKIP
 
 pkgname = fgsl-git
-
