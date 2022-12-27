@@ -1,7 +1,7 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial inheritor of neofetch."
 arch=('any')
 url="https://github.com/Jin-Asanami/unifetch"
@@ -22,6 +22,7 @@ optdepends=(
   'xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
 )
 checkdepends=('shellcheck')
+provides=('neofetch')
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('2cbdf86ace9d53bf9a67c706c7d40739c5577f64db09ee18bc5728f9c216d4df20610a76bb526d7cca2d0cda5388c4781ba54a6f5c013039253b4847d5795d19')
