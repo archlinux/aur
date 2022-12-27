@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=helium-gtk-theme
 pkgdesc='GTK4 and GNOME Shell themes used in tauOS'
-pkgver=1.1.22
+pkgver=1.1.32
 pkgrel=1
 url=https://github.com/tau-OS/tau-helium
 arch=(any)
 license=(GPL2)
 makedepends=(meson dart-sass)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('267bcac896dd7293da21219552edba469e4f7c16404d408b9715435e00d15393651828bc5514497cc11d5bd6ff495b6f54ec1825a20e2040c940f12ede20fa92')
+b2sums=('8e1c7bff1a29af89ef017d625d33025a2c476e4233d62c20ab64584224464ebcf60695e60cb4671c42d9db28697297a9bd70ce2e45df8292180db93f808701ad')
 
 build () {
 	rm -rf _build
