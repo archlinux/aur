@@ -12,7 +12,6 @@ depends=(
 	liri-appcenter-git
 	liri-browser-git
 	liri-calculator-git
-	liri-eglfs-git
 	liri-files-git
 	liri-networkmanager-git
 	liri-qtintegration-git
@@ -27,6 +26,5 @@ depends=(
 	liri-text-git
 	liri-themes-git
 	liri-wallpapers-git
-	qml-xwayland-git
 	xdg-desktop-portal-liri-git
 )
