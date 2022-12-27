@@ -1,0 +1,25 @@
+pkgbase = infisical-bin
+	pkgdesc = The official Infisical CLI
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://infisical.com
+	license = MIT
+	conflicts = infisical
+	provides = infisical
+	arch = aarch64
+	source_aarch64 = https://github.com/Infisical/infisical/releases/download/v0.1.16/infisical_0.1.16_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1089aaa76a2a8046bbafd54e4b32cf16bd819a5bd25f9db37046fd73cf6b44ce
+	arch = armv6h
+	source_armv6h = https://github.com/Infisical/infisical/releases/download/v0.1.16/infisical_0.1.16_linux_armv6.tar.gz
+	sha256sums_armv6h = d78cac95c417ae316f651c26baf0d7b9d616afe8be082e550b59189d5451a61f
+	arch = armv7h
+	source_armv7h = https://github.com/Infisical/infisical/releases/download/v0.1.16/infisical_0.1.16_linux_armv7.tar.gz
+	sha256sums_armv7h = 7d26682bccef477123fb9075dde04b40f62f8d2532909cec44bc593f7b491278
+	arch = i686
+	source_i686 = https://github.com/Infisical/infisical/releases/download/v0.1.16/infisical_0.1.16_linux_386.tar.gz
+	sha256sums_i686 = e333d44e220e2230711e5b68c0672a0fc230503e44e219cabd69e22b5a7da7f4
+	arch = x86_64
+	source_x86_64 = https://github.com/Infisical/infisical/releases/download/v0.1.16/infisical_0.1.16_linux_amd64.tar.gz
+	sha256sums_x86_64 = c8d09b95a6928221a2528ff4255631aaca97d8795b6530143101a9d23d8c335f
+	
+pkgname = infisical-bin
