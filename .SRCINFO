@@ -1,18 +1,18 @@
 pkgbase = bst-external
 	pkgdesc = A collection of extra plugins for BuildStream
-	pkgver = 0.23.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://gitlab.com/BuildStream/bst-external
 	arch = any
 	license = LGPL2.1
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
 	depends = buildstream
 	depends = python-requests
 	depends = python-pytoml
-	source = https://gitlab.com/BuildStream/bst-external/-/archive/0.23.0/bst-external-0.23.0.tar.bz2
-	sha256sums = b01e8147ad85ad85e76c23c8bbfef2da9e1e9421990d4b27bd8c6166dc4e385c
+	source = git+https://gitlab.com/BuildStream/bst-external#tag=0.29.0&commit=374e63502bd3c8ed6e4dd87630bd6830f00e8f92
+	sha256sums = SKIP
 
 pkgname = bst-external
-
