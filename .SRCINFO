@@ -1,7 +1,7 @@
 pkgbase = python-grid-strategy
 	pkgdesc = Organize matplotlib plots using different grid strategies
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/matplotlib/grid-strategy
 	arch = any
 	license = Apache

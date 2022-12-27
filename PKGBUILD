@@ -3,7 +3,7 @@
 pkgname=python-grid-strategy
 _module=${pkgname#python-}
 pkgver=0.0.1
-pkgrel=1
+pkgrel=4
 pkgdesc='Organize matplotlib plots using different grid strategies'
 arch=('any')
 url="https://github.com/matplotlib/grid-strategy"
@@ -25,7 +25,7 @@ sha256sums=('d8db1c12e6f33eb55ba56a5b19f4848aae862a9a343fea422a353c46ab6ccc23')
 
 build() {
     cd "$_module-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
