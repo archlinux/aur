@@ -33,16 +33,11 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  if [[ ! -z ${sha} ]];then
-    git checkout -b $sha 
-  fi
-
   cd $srcdir
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
-  mkdir -p build/src/github.com/linuxdeepin/dde/api
-  cp -a $pkgname/* build/src/github.com/linuxdeepin/dde/api/
+  mkdir -p build/src/github.com/linuxdeepin/dde-api
+  cp -a $pkgname/* build/src/github.com/linuxdeepin/dde-api/
 
   # golang-deepin-lib's dependency, remove when go packaging resumes
   go get -v github.com/cryptix/wav
