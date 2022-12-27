@@ -9,7 +9,6 @@ pkgbase = liri-git-meta
 	depends = liri-appcenter-git
 	depends = liri-browser-git
 	depends = liri-calculator-git
-	depends = liri-eglfs-git
 	depends = liri-files-git
 	depends = liri-networkmanager-git
 	depends = liri-qtintegration-git
@@ -24,7 +23,6 @@ pkgbase = liri-git-meta
 	depends = liri-text-git
 	depends = liri-themes-git
 	depends = liri-wallpapers-git
-	depends = qml-xwayland-git
 	depends = xdg-desktop-portal-liri-git
 
 pkgname = liri-git-meta
