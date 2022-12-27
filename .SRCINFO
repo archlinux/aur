@@ -24,7 +24,6 @@ pkgbase = ananicy-cpp-git
 	optdepends = ananicy-rules: Rules based for ananicy-cpp
 	provides = ananicy-cpp
 	conflicts = ananicy-cpp
-	options = !strip
 	source = ananicy-cpp::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git
 	source = git+https://gitlab.com/vnepogodin/std-format.git
 	sha512sums = SKIP

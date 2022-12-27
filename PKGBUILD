@@ -19,7 +19,6 @@ sha512sums=('SKIP'
             'SKIP')
 provides=('ananicy-cpp')
 conflicts=('ananicy-cpp')
-options=(!strip)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -30,13 +29,19 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
 
-  export CFLAGS="${CFLAGS}"
-  export CXXFLAGS="${CXXFLAGS}"
-  export LDFLAGS="${LDFLAGS}"
-
   git submodule init
   git config submodule."external/std-format".url "${srcdir}/std-format"
   git -c protocol.file.allow=always submodule update
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
+
+  export CFLAGS="${CFLAGS}"
+  export CXXFLAGS="${CXXFLAGS}"
+  export LDFLAGS="${LDFLAGS}"
 
   cmake -S . -Bbuild \
         -GNinja \
@@ -47,12 +52,7 @@ prepare() {
         -DUSE_BPF_PROC_IMPL=ON \
         -DBPF_BUILD_LIBBPF=OFF \
         -DUSE_EXTERNAL_FMTLIB=ON
-}
 
-build() {
-  cd "${srcdir}/${_pkgname}"
-
-  _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
   cmake --build build --target ananicy-cpp --parallel $_cpuCount
 }
 
