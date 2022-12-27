@@ -1,0 +1,15 @@
+pkgbase = python-pint-pandas
+	pkgdesc = Pandas support for pint.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/hgrecco/pint-pandas
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pint
+	source = https://files.pythonhosted.org/packages/source/p/pint-pandas/Pint-Pandas-0.3.tar.gz
+	sha256sums = 154c05ebe3a295abe8c177a90317bae887d37ea5b88813a38e10e1d64fd1589d
+
+pkgname = python-pint-pandas
