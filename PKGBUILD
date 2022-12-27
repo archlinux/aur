@@ -5,7 +5,7 @@
 
 pkgname=appleseed-git
 pkgver=2.1.0.beta.r283.g8c894f29d
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
 arch=(i686 x86_64)
