@@ -1,13 +1,13 @@
 pkgbase = dracut-hook-uefi
 	pkgdesc = Install/remove hooks for dracut unified kernel images for systemd-boot
-	pkgver = 16
+	pkgver = 17
 	pkgrel = 1
 	url = https://github.com/swsnr/dracut-hook-uefi
 	arch = any
 	license = APACHE
 	depends = dracut
 	depends = binutils
-	source = https://github.com/swsnr/dracut-hook-uefi/archive/refs/tags/v16.tar.gz
-	sha256sums = 3b2946ce3af2c61c1197a3a1d654204f82b95ff83a7c625e1410cad87dd06935
+	source = https://github.com/swsnr/dracut-hook-uefi/archive/refs/tags/v17.tar.gz
+	sha256sums = 2dca141c7ceed8f0b85b04fb8781e440f7e0f263afa7145541deb098c637cd7d
 
 pkgname = dracut-hook-uefi
