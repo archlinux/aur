@@ -2,7 +2,7 @@
 pkgname=rlbotgui-rust-bin
 git_pkgname=rlbot_gui_rust
 cargo_pkgname=rl-bot-gui
-pkgver=1.0.17
+pkgver=1.0.36
 pkgrel=1
 pkgdesc="A Rust GUI for the RLBot framework"
 arch=("x86_64")
