@@ -1,0 +1,495 @@
+# This patch-file is based on the Wayland patches by 依云 (lilydjwg).
+# See the following URLs for details:
+# https://github.com/vim/vim/pull/9639
+# https://github.com/lilydjwg/vim/tree/wayland
+
+diff --git a/src/clipboard.c b/src/clipboard.c
+index e140113ff..48eb5233a 100644
+--- a/src/clipboard.c
++++ b/src/clipboard.c
+@@ -217,11 +217,8 @@ clip_copy_selection(Clipboard_T *clip)
+     if (VIsual_active && (State & MODE_NORMAL) && clip->available)
+     {
+ 	clip_update_selection(clip);
+-	clip_free_selection(clip);
+-	clip_own_selection(clip);
+ 	if (clip->owned)
+ 	    clip_get_selection(clip);
+-	clip_gen_set_selection(clip);
+     }
+ }
+ 
+@@ -1333,7 +1330,6 @@ check_clipboard_option(void)
+ #ifdef FEAT_GUI_GTK
+ 	if (gui.in_use)
+ 	{
+-	    gui_gtk_set_selection_targets();
+ 	    gui_gtk_set_dnd_targets();
+ 	}
+ #endif
+diff --git a/src/gui_beval.c b/src/gui_beval.c
+index e1b0e4bfd..a897301b3 100644
+--- a/src/gui_beval.c
++++ b/src/gui_beval.c
+@@ -1011,6 +1011,7 @@ cancelBalloon(BalloonEval *beval)
+ createBalloonEvalWindow(BalloonEval *beval)
+ {
+     beval->balloonShell = gtk_window_new(GTK_WINDOW_POPUP);
++    gtk_window_set_transient_for(GTK_WINDOW(beval->balloonShell), GTK_WINDOW(gui.mainwin));
+ 
+     gtk_widget_set_app_paintable(beval->balloonShell, TRUE);
+     gtk_window_set_resizable(GTK_WINDOW(beval->balloonShell), FALSE);
+diff --git a/src/gui_gtk_x11.c b/src/gui_gtk_x11.c
+index 25685ddb2..52f8c2b80 100644
+--- a/src/gui_gtk_x11.c
++++ b/src/gui_gtk_x11.c
+@@ -116,6 +116,7 @@ enum
+     TARGET_TEXT,
+     TARGET_TEXT_URI_LIST,
+     TARGET_TEXT_PLAIN,
++    TARGET_TEXT_PLAIN_UTF8,
+     TARGET_VIM,
+     TARGET_VIMENC
+ };
+@@ -132,7 +133,9 @@ static const GtkTargetEntry selection_targets[] =
+     {"UTF8_STRING",	0, TARGET_UTF8_STRING},
+     {"COMPOUND_TEXT",	0, TARGET_COMPOUND_TEXT},
+     {"TEXT",		0, TARGET_TEXT},
+-    {"STRING",		0, TARGET_STRING}
++    {"STRING",		0, TARGET_STRING},
++    {"text/plain;charset=utf-8", 0, TARGET_TEXT_PLAIN_UTF8},
++    {"text/plain",	0, TARGET_TEXT_PLAIN}
+ };
+ #define N_SELECTION_TARGETS ARRAY_LENGTH(selection_targets)
+ 
+@@ -1527,6 +1530,8 @@ selection_get_cb(GtkWidget	    *widget UNUSED,
+ 	    && info != (guint)TARGET_VIMENC
+ 	    && info != (guint)TARGET_VIM
+ 	    && info != (guint)TARGET_COMPOUND_TEXT
++	    && info != (guint)TARGET_TEXT_PLAIN
++	    && info != (guint)TARGET_TEXT_PLAIN_UTF8
+ 	    && info != (guint)TARGET_TEXT)
+ 	return;
+ 
+@@ -1658,11 +1663,12 @@ selection_get_cb(GtkWidget	    *widget UNUSED,
+     int
+ gui_mch_early_init_check(int give_message)
+ {
+-    char_u *p;
++    char_u *p, *q;
+ 
+     // Guess that when $DISPLAY isn't set the GUI can't start.
+     p = mch_getenv((char_u *)"DISPLAY");
+-    if (p == NULL || *p == NUL)
++    q = mch_getenv((char_u *)"WAYLAND_DISPLAY");
++    if ((p == NULL || *p == NUL) && (q == NULL || *q == NUL))
+     {
+ 	gui.dying = TRUE;
+ 	if (give_message)
+@@ -1695,7 +1701,10 @@ gui_mch_init_check(void)
+ #if GTK_CHECK_VERSION(3,10,0)
+     // Vim currently assumes that Gtk means X11, so it cannot use native Gtk
+     // support for other backends such as Wayland.
+-    gdk_set_allowed_backends ("x11");
++    //
++    // Use an environment variable to enable unfinished Wayland support.
++    if (getenv("GVIM_ENABLE_WAYLAND") == NULL)
++	gdk_set_allowed_backends ("x11");
+ #endif
+ 
+ #ifdef FEAT_GUI_GNOME
+@@ -2501,10 +2510,12 @@ setup_save_yourself(void)
+ 	// Fall back to old method
+ 
+ 	// first get the existing value
+-	GdkWindow * const mainwin_win = gtk_widget_get_window(gui.mainwin);
++	Display * dpy = gui_mch_get_display();
++	if (!dpy)
++	    return;
+ 
+-	if (XGetWMProtocols(GDK_WINDOW_XDISPLAY(mainwin_win),
+-		    GDK_WINDOW_XID(mainwin_win),
++	GdkWindow * const mainwin_win = gtk_widget_get_window(gui.mainwin);
++	if (XGetWMProtocols(dpy, GDK_WINDOW_XID(mainwin_win),
+ 		    &existing_atoms, &count))
+ 	{
+ 	    Atom	*new_atoms;
+@@ -2612,7 +2623,11 @@ mainwin_realize(GtkWidget *widget UNUSED, gpointer data UNUSED)
+     // When started with "--echo-wid" argument, write window ID on stdout.
+     if (echo_wid_arg)
+     {
+-	printf("WID: %ld\n", (long)GDK_WINDOW_XID(mainwin_win));
++	if (gui_mch_get_display()) {
++	    printf("WID: %ld\n", (long)GDK_WINDOW_XID(mainwin_win));
++	} else {
++	    printf("WID: 0\n");
++	}
+ 	fflush(stdout);
+     }
+ 
+@@ -2647,27 +2662,29 @@ mainwin_realize(GtkWidget *widget UNUSED, gpointer data UNUSED)
+ 	setup_save_yourself();
+ 
+ #ifdef FEAT_CLIENTSERVER
+-    if (serverName == NULL && serverDelayedStartName != NULL)
+-    {
+-	// This is a :gui command in a plain vim with no previous server
+-	commWindow = GDK_WINDOW_XID(mainwin_win);
++    if (gui_mch_get_display()) {
++	if (serverName == NULL && serverDelayedStartName != NULL)
++	{
++	    // This is a :gui command in a plain vim with no previous server
++	    commWindow = GDK_WINDOW_XID(mainwin_win);
+ 
+-	(void)serverRegisterName(GDK_WINDOW_XDISPLAY(mainwin_win),
+-				 serverDelayedStartName);
+-    }
+-    else
+-    {
+-	/*
+-	 * Cannot handle "XLib-only" windows with gtk event routines, we'll
+-	 * have to change the "server" registration to that of the main window
+-	 * If we have not registered a name yet, remember the window.
+-	 */
+-	serverChangeRegisteredWindow(GDK_WINDOW_XDISPLAY(mainwin_win),
+-				     GDK_WINDOW_XID(mainwin_win));
++	    (void)serverRegisterName(GDK_WINDOW_XDISPLAY(mainwin_win),
++				    serverDelayedStartName);
++	}
++	else
++	{
++	    /*
++	    * Cannot handle "XLib-only" windows with gtk event routines, we'll
++	    * have to change the "server" registration to that of the main window
++	    * If we have not registered a name yet, remember the window.
++	    */
++	    serverChangeRegisteredWindow(GDK_WINDOW_XDISPLAY(mainwin_win),
++					GDK_WINDOW_XID(mainwin_win));
++	}
++	gtk_widget_add_events(gui.mainwin, GDK_PROPERTY_CHANGE_MASK);
++	g_signal_connect(G_OBJECT(gui.mainwin), "property-notify-event",
++			G_CALLBACK(property_event), NULL);
+     }
+-    gtk_widget_add_events(gui.mainwin, GDK_PROPERTY_CHANGE_MASK);
+-    g_signal_connect(G_OBJECT(gui.mainwin), "property-notify-event",
+-		     G_CALLBACK(property_event), NULL);
+ #endif
+ }
+ 
+@@ -3531,30 +3548,27 @@ gui_mch_set_curtab(int nr)
+  * Add selection targets for PRIMARY and CLIPBOARD selections.
+  */
+     void
+-gui_gtk_set_selection_targets(void)
++gui_gtk_set_selection_targets(GdkAtom selection)
+ {
+     int		    i, j = 0;
+-    int		    n_targets = N_SELECTION_TARGETS;
+-    GtkTargetEntry  targets[N_SELECTION_TARGETS];
++    static int	    n_targets = N_SELECTION_TARGETS;
++    static GtkTargetEntry  targets[N_SELECTION_TARGETS];
+ 
+-    for (i = 0; i < (int)N_SELECTION_TARGETS; ++i)
+-    {
+-	// OpenOffice tries to use TARGET_HTML and fails when we don't
+-	// return something, instead of trying another target. Therefore only
+-	// offer TARGET_HTML when it works.
+-	if (!clip_html && selection_targets[i].info == TARGET_HTML)
+-	    n_targets--;
+-	else
+-	    targets[j++] = selection_targets[i];
++    if (targets[0].target == NULL) {
++	for (i = 0; i < (int)N_SELECTION_TARGETS; ++i)
++	{
++	    // OpenOffice tries to use TARGET_HTML and fails when we don't
++	    // return something, instead of trying another target. Therefore only
++	    // offer TARGET_HTML when it works.
++	    if (!clip_html && selection_targets[i].info == TARGET_HTML)
++		n_targets--;
++	    else
++		targets[j++] = selection_targets[i];
++	}
+     }
+ 
+-    gtk_selection_clear_targets(gui.drawarea, (GdkAtom)GDK_SELECTION_PRIMARY);
+-    gtk_selection_clear_targets(gui.drawarea, (GdkAtom)clip_plus.gtk_sel_atom);
+-    gtk_selection_add_targets(gui.drawarea,
+-			      (GdkAtom)GDK_SELECTION_PRIMARY,
+-			      targets, n_targets);
+-    gtk_selection_add_targets(gui.drawarea,
+-			      (GdkAtom)clip_plus.gtk_sel_atom,
++    gtk_selection_clear_targets(gui.drawarea, selection);
++    gtk_selection_add_targets(gui.drawarea, selection,
+ 			      targets, n_targets);
+ }
+ 
+@@ -4032,19 +4046,6 @@ gui_mch_init(void)
+     g_signal_connect(G_OBJECT(gui.drawarea), "scroll-event",
+ 		     G_CALLBACK(&scroll_event), NULL);
+ 
+-    /*
+-     * Add selection handler functions.
+-     */
+-    g_signal_connect(G_OBJECT(gui.drawarea), "selection-clear-event",
+-		     G_CALLBACK(selection_clear_event), NULL);
+-    g_signal_connect(G_OBJECT(gui.drawarea), "selection-received",
+-		     G_CALLBACK(selection_received_cb), NULL);
+-
+-    gui_gtk_set_selection_targets();
+-
+-    g_signal_connect(G_OBJECT(gui.drawarea), "selection-get",
+-		     G_CALLBACK(selection_get_cb), NULL);
+-
+     // Pretend we don't have input focus, we will get an event if we do.
+     gui.in_focus = FALSE;
+ 
+@@ -4577,6 +4578,17 @@ gui_mch_open(void)
+ #endif
+     }
+ 
++    /*
++     * Add selection handler functions.
++     */
++    g_signal_connect(G_OBJECT(gui.drawarea), "selection-clear-event",
++		     G_CALLBACK(selection_clear_event), NULL);
++    g_signal_connect(G_OBJECT(gui.drawarea), "selection-received",
++		     G_CALLBACK(selection_received_cb), NULL);
++
++    g_signal_connect(G_OBJECT(gui.drawarea), "selection-get",
++		     G_CALLBACK(selection_get_cb), NULL);
++
+     return OK;
+ }
+ 
+@@ -6162,9 +6174,10 @@ gui_mch_haskey(char_u *name)
+     int
+ gui_get_x11_windis(Window *win, Display **dis)
+ {
+-    if (gui.mainwin != NULL && gtk_widget_get_window(gui.mainwin) != NULL)
++    Display * dpy = gui_mch_get_display();
++    if (dpy)
+     {
+-	*dis = GDK_WINDOW_XDISPLAY(gtk_widget_get_window(gui.mainwin));
++	*dis = dpy;
+ 	*win = GDK_WINDOW_XID(gtk_widget_get_window(gui.mainwin));
+ 	return OK;
+     }
+@@ -6175,18 +6188,18 @@ gui_get_x11_windis(Window *win, Display **dis)
+ }
+ #endif
+ 
+-#if defined(FEAT_CLIENTSERVER) \
+-	|| (defined(FEAT_X11) && defined(FEAT_CLIPBOARD)) || defined(PROTO)
+-
+     Display *
+ gui_mch_get_display(void)
+ {
+-    if (gui.mainwin != NULL && gtk_widget_get_window(gui.mainwin) != NULL)
++    if (gui.mainwin != NULL && gtk_widget_get_window(gui.mainwin) != NULL
++#if GTK_CHECK_VERSION(3,0,0)
++	    && GDK_IS_X11_DISPLAY(gtk_widget_get_display(gui.mainwin))
++#endif
++	)
+ 	return GDK_WINDOW_XDISPLAY(gtk_widget_get_window(gui.mainwin));
+     else
+ 	return NULL;
+ }
+-#endif
+ 
+     void
+ gui_mch_beep(void)
+@@ -6838,9 +6851,11 @@ clip_mch_request_selection(Clipboard_T *cbd)
+ 	    return;
+     }
+ 
+-    // Final fallback position - use the X CUT_BUFFER0 store
+-    yank_cut_buffer0(GDK_WINDOW_XDISPLAY(gtk_widget_get_window(gui.mainwin)),
+-	    cbd);
++    if (gui_mch_get_display()) {
++	// Final fallback position - use the X CUT_BUFFER0 store
++	yank_cut_buffer0(GDK_WINDOW_XDISPLAY(gtk_widget_get_window(gui.mainwin)),
++		cbd);
++    }
+ }
+ 
+ /*
+@@ -6862,10 +6877,19 @@ clip_mch_lose_selection(Clipboard_T *cbd UNUSED)
+     int
+ clip_mch_own_selection(Clipboard_T *cbd)
+ {
++    // If we're blocking autocmds, we are filling the register to offer the
++    // selection (inside selection-get)
++    if (is_autocmd_blocked())
++	return OK;
++
+     int success;
+ 
+     success = gtk_selection_owner_set(gui.drawarea, cbd->gtk_sel_atom,
+-				      gui.event_time);
++				    gui.event_time);
++    // don't update on every visual selection change
++    if (!(cbd->owned && VIsual_active)) {
++	gui_gtk_set_selection_targets(cbd->gtk_sel_atom);
++    }
+     gui_mch_update();
+     return (success) ? OK : FAIL;
+ }
+@@ -6998,9 +7022,11 @@ gui_mch_setmouse(int x, int y)
+     // Sorry for the Xlib call, but we can't avoid it, since there is no
+     // internal GDK mechanism present to accomplish this.  (and for good
+     // reason...)
+-    XWarpPointer(GDK_WINDOW_XDISPLAY(gtk_widget_get_window(gui.drawarea)),
+-		 (Window)0, GDK_WINDOW_XID(gtk_widget_get_window(gui.drawarea)),
+-		 0, 0, 0U, 0U, x, y);
++    Display * dpy = gui_mch_get_display();
++    if (dpy) {
++	XWarpPointer(dpy, (Window)0, GDK_WINDOW_XID(gtk_widget_get_window(gui.drawarea)),
++		    0, 0, 0U, 0U, x, y);
++    }
+ }
+ 
+ 
+diff --git a/src/os_unix.c b/src/os_unix.c
+index db57902dc..41b0c9ff9 100644
+--- a/src/os_unix.c
++++ b/src/os_unix.c
+@@ -2253,12 +2253,11 @@ mch_settitle(char_u *title, char_u *icon)
+ #ifdef FEAT_X11
+     if (get_x11_windis() == OK)
+ 	type = 1;
+-#else
+-# if defined(FEAT_GUI_PHOTON) \
++#endif
++#if defined(FEAT_GUI_PHOTON) \
+     || defined(FEAT_GUI_GTK) || defined(FEAT_GUI_HAIKU)
+     if (gui.in_use)
+ 	type = 1;
+-# endif
+ #endif
+ 
+     /*
+diff --git a/src/proto/gui_gtk_x11.pro b/src/proto/gui_gtk_x11.pro
+index 3fa2ac96d..3480bf3af 100644
+--- a/src/proto/gui_gtk_x11.pro
++++ b/src/proto/gui_gtk_x11.pro
+@@ -13,7 +13,7 @@ void gui_mch_show_tabline(int showit);
+ int gui_mch_showing_tabline(void);
+ void gui_mch_update_tabline(void);
+ void gui_mch_set_curtab(int nr);
+-void gui_gtk_set_selection_targets(void);
++void gui_gtk_set_selection_targets(GdkAtom);
+ void gui_gtk_set_dnd_targets(void);
+ int gui_mch_init(void);
+ void gui_mch_forked(void);
+diff --git a/src/testdir/check.vim b/src/testdir/check.vim
+index 82abb6467..e67d39ad2 100644
+--- a/src/testdir/check.vim
++++ b/src/testdir/check.vim
+@@ -160,6 +160,14 @@ func CheckEnv(name)
+   endif
+ endfunc
+ 
++" Command to Check for pure X11 (no Wayland)
++command -nargs=0 CheckX11 call CheckX11()
++func CheckX11()
++  if !empty($WAYLAND_DISPLAY) || empty($DISPLAY)
++    throw 'Skipped: not pure X11 environment'
++  endif
++endfunc
++
+ " Command to check that we are using the GUI
+ command CheckGui call CheckGui()
+ func CheckGui()
+diff --git a/src/testdir/test_clientserver.vim b/src/testdir/test_clientserver.vim
+index 64c9ab8e8..991e96fb9 100644
+--- a/src/testdir/test_clientserver.vim
++++ b/src/testdir/test_clientserver.vim
+@@ -13,7 +13,7 @@ source shared.vim
+ 
+ func Check_X11_Connection()
+   if has('x11')
+-    CheckEnv DISPLAY
++    CheckX11
+     try
+       call remote_send('xxx', '')
+     catch
+diff --git a/src/testdir/test_python3.vim b/src/testdir/test_python3.vim
+index 56d20796a..a20ed4e8a 100644
+--- a/src/testdir/test_python3.vim
++++ b/src/testdir/test_python3.vim
+@@ -22,9 +22,9 @@ func Test_AAA_python3_setup()
+     import sys
+     import re
+ 
+-    py33_type_error_pattern = re.compile('^__call__\(\) takes (\d+) positional argument but (\d+) were given$')
++    py33_type_error_pattern = re.compile(r'^__call__\(\) takes (\d+) positional argument but (\d+) were given$')
+     py37_exception_repr = re.compile(r'([^\(\),])(\)+)$')
+-    py39_type_error_pattern = re.compile('\w+\.([^(]+\(\) takes)')
++    py39_type_error_pattern = re.compile(r'\w+\.([^(]+\(\) takes)')
+     py310_type_error_pattern = re.compile('takes (\d+) positional argument but (\d+) were given')
+ 
+     def emsg(ei):
+diff --git a/src/testdir/test_quotestar.vim b/src/testdir/test_quotestar.vim
+index 1d2694254..322ce6260 100644
+--- a/src/testdir/test_quotestar.vim
++++ b/src/testdir/test_quotestar.vim
+@@ -139,8 +139,8 @@ func Test_quotestar()
+   if has('macunix')
+     let skipped = Do_test_quotestar_for_macunix()
+   elseif has('x11')
+-    if empty($DISPLAY)
+-      let skipped = "Test can only run when $DISPLAY is set."
++    if empty($DISPLAY) || !empty($WAYLAND_DISPLAY)
++      let skipped = "Test can only run when $DISPLAY is set and $WAYLAND_DISPLAY is not set."
+     else
+       let skipped = Do_test_quotestar_for_x11()
+     endif
+diff --git a/src/testdir/test_startup.vim b/src/testdir/test_startup.vim
+index 081c7f890..180a99072 100644
+--- a/src/testdir/test_startup.vim
++++ b/src/testdir/test_startup.vim
+@@ -523,18 +523,27 @@ func Test_geometry()
+       call writefile([&columns, &lines, getwinposx(), getwinposy(), string(getwinpos())], "Xtest_geometry")
+       qall
+     [CODE]
++"<<<<<<< HEAD
++    " Hide menu because gtk insists to make the window wide enough to show it completely
++    "if RunVim(['set guioptions-=m'], after, '-f -g -geometry 31x13+41+43')
++"=======
+     " Some window managers have a bar at the top that pushes windows down,
+     " need to use at least 130, let's do 150
+-    if RunVim([], after, '-f -g -geometry 31x13+41+150')
++    "if RunVim([], after, '-f -g -geometry 31x13+41+150')
++">>>>>>> vim/master
++    if RunVim(['set guioptions-=m'], after, '-f -g -geometry 31x13+41+150')
+       let lines = readfile('Xtest_geometry')
+       " Depending on the GUI library and the windowing system the final size
+       " might be a bit different, allow for some tolerance.  Tuned based on
+       " actual failures.
+       call assert_inrange(31, 35, str2nr(lines[0]))
+       call assert_equal('13', lines[1])
+-      call assert_equal('41', lines[2])
+-      call assert_equal('150', lines[3])
+-      call assert_equal('[41, 150]', lines[4])
++      " on Wayland there is no way to set or retrieve window positions
++      if empty($WAYLAND_DISPLAY)
++        call assert_equal('41', lines[2])
++        call assert_equal('150', lines[3])
++        call assert_equal('[41, 150]', lines[4])
++      endif
+     endif
+   endif
+ 
+diff --git a/src/testdir/test_vim9_builtin.vim b/src/testdir/test_vim9_builtin.vim
+index 005f89ca1..d99b56831 100644
+--- a/src/testdir/test_vim9_builtin.vim
++++ b/src/testdir/test_vim9_builtin.vim
+@@ -3329,7 +3329,7 @@ def Test_remote_foreground()
+   CheckFeature clientserver
+   # remote_foreground() doesn't fail on MS-Windows
+   CheckNotMSWindows
+-  CheckEnv DISPLAY
++  CheckX11
+ 
+   v9.CheckDefAndScriptFailure(['remote_foreground(10)'], ['E1013: Argument 1: type mismatch, expected string but got number', 'E1174: String required for argument 1'])
+   assert_fails('remote_foreground("NonExistingServer")', 'E241:')
