@@ -1,0 +1,16 @@
+pkgbase = stc8prog-git
+	pkgdesc = STC MCU ISP flash tool
+	pkgver = 1.4.r5.g5151cba
+	pkgrel = 1
+	url = https://github.com/IOsetting/stc8prog
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = Apache
+	depends = glibc
+	provides = stc8prog-git
+	conflicts = stc8prog
+	source = stc8prog::git+https://github.com/IOsetting/stc8prog.git
+	sha256sums = SKIP
+
+pkgname = stc8prog-git
