@@ -7,7 +7,8 @@ _target="arm-none-eabi"
 _pkgbase="gcc"
 pkgname="${_target}-${_pkgbase}55"
 pkgver=5.5.0
-_islver=0.24
+# _islver=0.24
+_islver=0.18
 pkgrel=1
 # _snapshot=7-20170907
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target'
@@ -17,16 +18,17 @@ url="http://${_domain}"
 _ftp_url="ftp://${_domain}/pub/${_pkgbase}"
 license=(GPL LGPL FDL)
 depends=("${_target}-binutils" "zlib" "libmpc")
-makedepends=("gmp" "mpfr" "${_target}-newlib")
+makedepends=("gcc7" "gmp" "mpfr" "${_target}-newlib")
 provides=("${_target}-gcc")
 conflicts=("${_target}-gcc")
 optdepends=("${_target}-newlib: Standard C library optimized for embedded systems")
 options=(!emptydirs !strip)
-source=("ftp://${_pkgbase_url}/releases/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
-        # "ftp://${_pkgbase_url}/snapshots/${_snapshot}/${_pkgbase}-${_snapshot}.tar.xz"
-        "https://${_pkgbase_url}/infrastructure/isl-${_islver}.tar.bz2"
+source=("${_ftp_url}/releases/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
+        # "${_ftp_url}/snapshots/${_snapshot}/${_pkgbase}-${_snapshot}.tar.xz"
+        "${_ftp_url}/infrastructure/isl-${_islver}.tar.bz2"
         "enable-with-multilib-list-for-arm.patch")
 sha512sums=('670ff52c2ae12c7852c12987e91798c5aa8bd6daf21f0d6e0cd57a4aa59cc4f06a837fe76426eaa1424cfddca937bed377680700eadc04d76b9180d462364fa1'
+            # 'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
             '4831a862a0ee50918297f35da48919f326ad9e8b3a2a97d4b130e08c0e781a0e6c44e918d2618ba73be2ce0f8d0365b063ed5650a4bd8a5e26ee37a78647b2d2')
 
@@ -53,6 +55,20 @@ prepare() {
 }
 
 _build_gcc() {
+  local _flag _rmflag
+  local _flags=()
+  local _cflags=()
+  local _rmflags=("-fstack-clash-protection" "-fcf-protection")
+  IFS=' ' read -r -a _flags <<< "${CFLAGS}"
+  for _flag in "${_flags[@]}"; do
+      if [ "${_flag}" != "-fstack-clash-protection" ] && [ "${_flag}" != "-fcf-protection" ]; then
+          _cflags+=("${_flag}")
+      fi
+  done
+  export CFLAGS="${_cflags[*]}"
+  LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+  CC="/usr/bin/gcc-7" \
+  CXX="/usr/bin/g++-7" \
   $srcdir/$_basedir/configure \
     --target=$_target \
     --prefix=/usr \
@@ -89,7 +105,14 @@ _build_gcc() {
     --with-bugurl='https://bugs.archlinux.org/' \
     --with-multilib-list=armv6-m,armv7-m,armv7e-m,armv7-r
 
-  make INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
+  LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+  CC="/usr/bin/gcc-7" \
+  CXX="/usr/bin/g++-7" \
+  cc="/usr/bin/gcc-7" \
+  cxx="/usr/bin/g++-7" \
+  make CC="/usr/bin/gcc-7" \
+       CXX="/usr/bin/g++-7" \
+       INHIBIT_LIBC_CFLAGS='-DUSE_TM_CLONE_REGISTRY=0'
 }
 
 build() {
