@@ -1,6 +1,6 @@
 pkgbase = fusion-studio
 	pkgdesc = GPU accelerated 2D and 3D compositing and motion graphics software. Requires USB activation dongle.
-	pkgver = 18.1
+	pkgver = 18.1.2
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/products/fusion
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = fusion-studio
 	depends = qt5-x11extras
 	depends = tbb
 	optdepends = cuda: gpu acceleration
-	source = fusion-studio-18.1.tar.gz::fusion-studio://3871c2d117cf49949a9eb903ffdd69be
-	sha256sums = 5253ceae01338b0fa75eac6cd9d1b608dc66e800468fabc2a14d504931ab6ce0
+	source = fusion-studio-18.1.2.tar.gz::fusion-studio://931eab2387ea48ed8cdec3bea3d923ba
+	sha256sums = 7c8f25090e7ed2627f4c1c14ece841cfeca93ea23d9d14ec4d04ea2fcb0dc04d
 
 pkgname = fusion-studio
 
