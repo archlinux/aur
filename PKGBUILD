@@ -1,4 +1,5 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
+# Contributor: XZS <d dot f dot fischer at web dot de>
 # Contributor: Martin Lukes <martin.meridius@gmail.com>
 # Contributor: Samuel Littley <samuel.littley@toastwaffle.com>
 # Contributor: William Giokas <1007380@gmail.com>
@@ -6,12 +7,12 @@
 _longname="Mini Metro"
 pkgname="${_longname,,}"
 pkgname="${pkgname/ }"
-pkgver=41
+pkgver=52
 pkgrel=1
 pkgdesc='minimalistic subway layout game'
 url="http://dinopoloclub.com/${pkgname}/"
 license=('custom:None')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('libgl' 'libx11' 'glu' 'desktop-file-utils' 'gtk-update-icon-cache')
 makedepends=('imagemagick')
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
@@ -20,23 +21,20 @@ source=("hib://${_longname/ }-release-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "starter.sh"
         "${pkgname}.png::${url%/*/*}/wp-content/uploads/2019/08/${_longname/ /-}-Icon.png")
-md5sums=('01f6f15ba835e1c54e52df90ff890408'
-         'b89a42a38136d0a126c8c13657b21c3f'
-         '5006f1c488369854b7ac714168742aae'
-         '8412b1e4cc11be455af993d921a68ced')
+sha256sums=('7f7bdfbf22ac694c61e1fcd334a1368d17f192c4b380772a82e46950668716c8'
+            'b6353b9b373bd4ff23b11509c41b72cd28d5a8046546cd512a2dd7a62ef16dd3'
+            '5bef1047ade8fded513686f30fa378a22c4f8376325eb76e123c355a05ed059b'
+            '2498480f8ddfcb8a990431e01d98704aac9f88c5b733e2dc485e613e84de045b')
 
 package() {
   # Prepare variables.
   destdir="$pkgdir/opt/$pkgname"
-  if [ "$CARCH" == 'i686' ]
-  then
-    CARCH=x86
-  fi
   install -d "$destdir" "$pkgdir"/usr/{bin,share/applications}
 
   # Install the game and data files.
   cp -r --no-preserve=mode,ownership "${_longname}_Data" "$destdir"
-  install "$_longname.$CARCH" "$destdir"
+  install "$_longname" "$destdir"
+  install "UnityPlayer.so" "$destdir"
 
   # Care for the icon.
   for size in 16 22 24 32 36 48 64 72 96 128 192 256 384 512; do
@@ -46,7 +44,7 @@ package() {
   done
 
   # Compose the desktop entry and starter.
-  export longname="$_longname" pkgname pkgdesc CARCH
+  export longname="$_longname" pkgname pkgdesc
   envsubst < "$pkgname.desktop" > "$pkgdir/usr/share/applications/$pkgname.desktop"
   envsubst < starter.sh > "$pkgdir/usr/bin/$pkgname"
   chmod +x "$pkgdir/usr/bin/$pkgname"
