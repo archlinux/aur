@@ -1,6 +1,6 @@
 pkgbase = mount-zip
 	pkgdesc = FUSE file system for ZIP archives
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/google/mount-zip
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mount-zip
 	depends = icu
 	depends = fuse2>=2.7
 	depends = libzip>=1.0
-	source = https://github.com/google/mount-zip/archive/refs/tags/v1.0.7.tar.gz
-	sha256sums = c59061b01c5f71ce14d2069fca72d5bd0ce2b2f336b38f9edf1b32b9a3ab2c4d
+	source = https://github.com/google/mount-zip/archive/refs/tags/v1.0.8.tar.gz
+	sha256sums = 00b6e388d9022ef3bdf5e0d10c409db3feb55f30b1ec8d8f518d810563e5fc0c
 
 pkgname = mount-zip
