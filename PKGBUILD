@@ -5,21 +5,24 @@ pkgrel=1
 pkgdesc="A tool for easily creating git commit messages using gitmoji"
 url="https://github.com/unlink2/mji"
 license=("MIT")
-arch=("x86_64")
-makedepends=("cargo")
+arch=("any")
+makedepends=("cargo" "git")
+source=("$pkgname::git+https://github.com/unlink2/mji")
+sha256sums=('SKIP')
+provides=("mji")
 
 pkgver() {
+    cd "$pkgname"
     (git describe --long --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    return 0
+    cd "$pkgname"
+    cargo build --release 
 }
 
 package() {
-    cd ..
-    usrdir="$pkgdir/usr"
-    mkdir -p $usrdir
-    cargo install --no-track --path . --root "$usrdir"
+    cd "$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
 
