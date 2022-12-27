@@ -1,6 +1,6 @@
 pkgbase = siyuan-kernel
 	pkgdesc = Build Your Eternal Digital Garden.
-	pkgver = 2.5.5
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/siyuan-note/siyuan
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = siyuan-kernel
 	license = GPL3
 	makedepends = go
 	makedepends = pnpm
-	source = siyuan-2.5.5.tar.gz::https://github.com/siyuan-note/siyuan/archive/refs/tags/v2.5.5.tar.gz
+	source = siyuan-2.6.0.tar.gz::https://github.com/siyuan-note/siyuan/archive/refs/tags/v2.6.0.tar.gz
 	source = siyuan-kernel.service
-	sha256sums = 49231c5b99b36317989f39d9d1651e0d046cd93a2fddcb265a8b7e2ab3a1b020
+	sha256sums = 2283f4dd384b514ced186a2120af96a3d1acc91a50aadfbbdc85cec19829f96e
 	sha256sums = 3a264b1e664521d43daf33bf7966edd3beaf0e26a700c3a8b39a42800f990a53
 
 pkgname = siyuan-kernel
