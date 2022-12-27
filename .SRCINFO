@@ -1,6 +1,6 @@
 pkgbase = motivewave
 	pkgdesc = Advanced trading and charting application.
-	pkgver = 6.6.10
+	pkgver = 6.6.12
 	pkgrel = 1
 	url = https://www.motivewave.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = motivewave
 	depends = gtk3
 	depends = java-runtime
 	depends = xorg-xrandr
-	source = motivewave-6.6.10.deb::https://www.motivewave.com/update/download.do?file_type=LINUX
-	sha512sums = 0a1deee9f2a021eec0f78a09e38dd878c67485d07cd4d18e3dd95ef062f971c8451501acb98d804d6627b0ad673b90681e1f1371f8cc526a16fa91bfeed8a9ac
+	source = motivewave-6.6.3.deb::https://www.motivewave.com/update/download.do?file_type=LINUX
+	sha512sums = E0CBE2926492CA0EE3101B7832EACB253B803D1E7C777F422DA4022C205BD536D3A3EC4F4C943D6644523FCE5282B6C83CF730A28BE201EDB5D7605CB12688E6
 
 pkgname = motivewave
