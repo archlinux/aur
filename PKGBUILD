@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://flavio.tordini.org/musique"
 license=('custom')
 depends=('phonon-qt5' 'taglib' 'mpv')
-source=("${_debpkg}-${pkgver}.deb::http://flavio.tordini.org/files/${_debpkg}/${_debpkg}.deb")
+source=("${_debpkg}-${pkgver}.deb::https://flavio.tordini.org/files/${_debpkg}/${_debpkg}.deb")
 sha256sums=('2b114eb2b3461c82730b4e33f6292adb8a9b2efb2218ec5b11245838d1c6bd8a')
 
 package() {
