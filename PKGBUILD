@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-source-copy
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Copy and paste scenes, sources and filters on clipboard"
 arch=("x86_64" "aarch64")
@@ -9,7 +9,7 @@ url="https://obsproject.com/forum/resources/source-copy.1261/"
 license=("GPL2")
 depends=("obs-studio>=28")
 makedepends=("cmake" "git")
-source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=c88b3c997439247749a5bffc70a69eee8929742a")
+source=("$pkgname::git+https://github.com/exeldro/$pkgname#commit=2a325813e969f6c62b1d413195a1340c4a2a40e4")
 sha256sums=("SKIP")
 
 build() {
