@@ -2,7 +2,7 @@
 
 pkgname=searxng-git
 pkgver=1.0.0+r2737+g966e9c3c
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -27,7 +27,7 @@ depends=(
         'python-httpx-socks'
         'python-async-timeout'
         'python-langdetect'
-        'python-fasttext'
+        'python-fasttext-predict'
         'python-setproctitle'
         'python-redis'
         'python-markdown-it-py'
