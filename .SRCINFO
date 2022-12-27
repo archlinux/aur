@@ -1,28 +1,28 @@
 pkgbase = linux-aarch64-flippy-bin
-	pkgver = 6.0.10
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/ophub/kernel
 	arch = aarch64
 	license = GPL2
-	noextract = boot-6.0.10-flippy-79+.tar.gz
-	noextract = dtb-allwinner-6.0.10-flippy-79+.tar.gz
-	noextract = dtb-amlogic-6.0.10-flippy-79+.tar.gz
-	noextract = dtb-rockchip-6.0.10-flippy-79+.tar.gz
-	noextract = header-6.0.10-flippy-79+.tar.gz
-	noextract = modules-6.0.10-flippy-79+.tar.gz
+	noextract = boot-6.1.1-flippy-80+.tar.gz
+	noextract = dtb-allwinner-6.1.1-flippy-80+.tar.gz
+	noextract = dtb-amlogic-6.1.1-flippy-80+.tar.gz
+	noextract = dtb-rockchip-6.1.1-flippy-80+.tar.gz
+	noextract = header-6.1.1-flippy-80+.tar.gz
+	noextract = modules-6.1.1-flippy-80+.tar.gz
 	options = !strip
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/boot-6.0.10-flippy-79+.tar.gz
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/dtb-allwinner-6.0.10-flippy-79+.tar.gz
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/dtb-amlogic-6.0.10-flippy-79+.tar.gz
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/dtb-rockchip-6.0.10-flippy-79+.tar.gz
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/header-6.0.10-flippy-79+.tar.gz
-	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.0.10/modules-6.0.10-flippy-79+.tar.gz
-	sha256sums = 0d662986ba89a178d4914b257d3928b48a58b57d45c6adaa2017cbda890f0942
-	sha256sums = 585e9c6055aeed4573c4cf59d9e769df206b7a79846866ab42ce2bb40d029095
-	sha256sums = 2c8465c22c5003b11b9d47332595f5e1ce6d93b84d1ef69380ad55f63db3b5dd
-	sha256sums = b1d03e6c22a616407fe80d7fffbf13d353c7358aae31994018cc0f68c2bc2b68
-	sha256sums = 929ea00721a3c9a50164cfe32f81dd36138c9a17d818a332d7a84052b955d185
-	sha256sums = 481fc30788384f8163631cca6bc4e14907d912f78ed7064247c452c747f41afb
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/boot-6.1.1-flippy-80+.tar.gz
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/dtb-allwinner-6.1.1-flippy-80+.tar.gz
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/dtb-amlogic-6.1.1-flippy-80+.tar.gz
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/dtb-rockchip-6.1.1-flippy-80+.tar.gz
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/header-6.1.1-flippy-80+.tar.gz
+	source = https://github.com/ophub/kernel/raw/main/pub/stable/6.1.1/modules-6.1.1-flippy-80+.tar.gz
+	sha256sums = 81b8b5946b25d7a43c522136beb974aa92e7120b6e11c474bb07dd46e4e7c91d
+	sha256sums = acec35a813c02d2be1bd044f924c6f66535c401063da07a146c75e1792978e5f
+	sha256sums = c4312444de2e05f5406715aba76540398935464969a4e1d0596a84f51a222e2c
+	sha256sums = d899b395dff1540f767a721eab7d1c33e33c6e322f831650739fcfe77fada250
+	sha256sums = 99ac63efe00dafab25a9e5607190d348d9c5ebfd336c2365e066cbf724095d32
+	sha256sums = 8a91595f4fa3aebe88cb0a09762c9c330cbfca1479173e90c73572e908dbe077
 
 pkgname = linux-aarch64-flippy-bin
 	pkgdesc = The Linux Kernel and module - flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub.
@@ -36,29 +36,29 @@ pkgname = linux-aarch64-flippy-bin
 	optdepends = linux-aarch64-flippy-dtb-allwinner: dtbs for Allwinner SoCs
 	optdepends = linux-aarch64-flippy-dtb-amlogic: dtbs for Amlogic SoCs
 	optdepends = linux-aarch64-flippy-dtb-rockchip: dtbs for Rockchip SoCs
-	provides = linux-aarch64-flippy=6.0.10
+	provides = linux-aarch64-flippy=6.1.1
 	conflicts = linux-aarch64-flippy
 	backup = etc/mkinitcpio.d/linux-aarch64-flippy.preset
 
 pkgname = linux-aarch64-flippy-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub.
-	provides = linux-aarch64-flippy-headers=6.0.10
+	provides = linux-aarch64-flippy-headers=6.1.1
 	conflicts = linux-aarch64-flippy-headers
 
 pkgname = linux-aarch64-flippy-bin-dtb-allwinner
 	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.0.10
-	provides = linux-aarch64-flippy-dtb-allwinner=6.0.10
+	provides = linux-aarch64-flippy-dtb=6.1.1
+	provides = linux-aarch64-flippy-dtb-allwinner=6.1.1
 	conflicts = linux-aarch64-flippy-dtb-allwinner
 
 pkgname = linux-aarch64-flippy-bin-dtb-amlogic
 	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.0.10
-	provides = linux-aarch64-flippy-dtb-amlogic=6.0.10
+	provides = linux-aarch64-flippy-dtb=6.1.1
+	provides = linux-aarch64-flippy-dtb-amlogic=6.1.1
 	conflicts = linux-aarch64-flippy-dtb-amlogic
 
 pkgname = linux-aarch64-flippy-bin-dtb-rockchip
 	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.0.10
-	provides = linux-aarch64-flippy-dtb-rockchip=6.0.10
+	provides = linux-aarch64-flippy-dtb=6.1.1
+	provides = linux-aarch64-flippy-dtb-rockchip=6.1.1
 	conflicts = linux-aarch64-flippy-dtb-rockchip
