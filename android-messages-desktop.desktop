@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Android Messages
-Exec=android-messages-desktop
-Terminal=false
-Type=Application
-Icon=android-messages-desktop
-StartupWMClass=Android Messages
-Comment=Messages for web, as a desktop app
-Categories=Internet;
