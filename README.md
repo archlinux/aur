@@ -148,6 +148,9 @@ This package provides both pieces in one package.
 
 ## Revisions
 
+- r9: Second iteration, rebase onto upstream, to get it up-to-date.  Partly
+  merged upstream: by now, `fix-project-local-flags` is merged upstream.  This
+  package runs a build and still applies `fix-dynamic-deps-2-arts`.
 - r8: Second iteration, minor updates (fix OS X test failure, update windows
   skip comments).
 - r7: Second iteration, fix a typo.
