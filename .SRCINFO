@@ -1,6 +1,6 @@
 pkgbase = dsda-doom
 	pkgdesc = Fork of PrBoom+ with extra tooling for demo recording and playback, with a focus on speedrunning
-	pkgver = 0.25.0
+	pkgver = 0.25.2
 	pkgrel = 1
 	url = https://github.com/kraflab/dsda-doom
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = dsda-doom
 	depends = sdl2_net
 	depends = dumb
 	depends = portmidi
-	source = https://github.com/kraflab/dsda-doom/archive/refs/tags/v0.25.0.tar.gz
-	sha256sums = caad205a35a6339f3a73019b17818c214de4f3b7822fcc2350e7cae63a044b8b
+	source = https://github.com/kraflab/dsda-doom/archive/refs/tags/v0.25.2.tar.gz
+	sha256sums = e030491e4cb7ade1d297164d95286fc1853bb08b2077397cbb4a46c4869b3280
 
 pkgname = dsda-doom
