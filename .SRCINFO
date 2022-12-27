@@ -1,6 +1,6 @@
 pkgbase = csbooks
 	pkgdesc = A smart solution to manage all your PDF, EPUB and MOBI files
-	pkgver = 6.6.0
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://caesiumstudio.com/csbooks
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = csbooks
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
-	noextract = csbooks-6.6.0.pacman
-	source = csbooks-6.6.0.pacman::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-6.6.0.pacman
+	noextract = csbooks-7.3.1.pacman
+	source = csbooks-7.3.1.pacman::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-7.3.1.pacman
 	source = LICENSE
-	sha256sums = 48817ef9d18a166f6601f5d1eb08d3b5f741d60b2e0d0b7ceae471f27d534dff
+	sha256sums = f775891a492e8db4c16fd46a8fc76a982e1a562336f4d8864bf7fcb162101819
 	sha256sums = c8d3a419a16631576fc8cc9d530311e4b9c4e1fb5331048cfe81a98b9c8b66fb
 
 pkgname = csbooks
