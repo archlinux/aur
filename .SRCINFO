@@ -1,7 +1,7 @@
 pkgbase = ttf-seto
-	pkgdesc = handwriting Japanese font including JIS X 0213 kanji
-	pkgver = 6.20
-	pkgrel = 8
+	pkgdesc = handwriting Japanese font including JIS X 0213 kanji (Extracted from ubuntu package)
+	pkgver = 1
+	pkgrel = 9
 	url = https://setofont.osdn.jp/
 	arch = any
 	license = OFL:1.1
