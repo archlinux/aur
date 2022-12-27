@@ -1,4 +1,4 @@
-# Maintainer: Götz Christ <goetzchrist@gmail.com>
+# Maintainer: Götz <me@local>
 # Contributor: Francisco Lopes <francisco@oblita.com>
 pkgname=interception-caps2esc-delay-git
 _realname=interception-caps2esc
