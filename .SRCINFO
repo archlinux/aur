@@ -6,7 +6,6 @@ pkgbase = pap
 	arch = any
 	license = MIT
 	makedepends = go
-	depends = pacman
 	optdepends = java-runtime: running the downloaded jarfiles
 	source = pap-0.8.0.tar.gz::https://github.com/talwat/pap/archive/v0.8.0.tar.gz
 	sha256sums = 7d07805249555d769a42ee0db712d356b6e0d061d34c30bc6f184d94d5a66dc7
