@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements, multiple monitor support, integration with GSConnect extension. For Gnome shell 40,41,42,43. Works best on Wayland, now works on X11. Please see Readme for X11.
-	pkgver = 26
+	pkgver = 27
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = x86_64
