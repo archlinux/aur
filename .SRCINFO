@@ -1,0 +1,19 @@
+pkgbase = dde-kwin-git
+	pkgdesc = KWin configures on DDE
+	pkgver = 5.5.11.r24.g8a778b65f
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-kwin
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = expac
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = deepin-qt5integration-git
+	depends = deepin-wallpapers-git
+	depends = kwin
+	source = dde-kwin-git::git+https://github.com/linuxdeepin/dde-kwin/
+	sha512sums = SKIP
+
+pkgname = dde-kwin-git
