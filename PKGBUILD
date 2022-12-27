@@ -1,8 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
-# Co-Maintainer: Alexander Mezin <mezin.alexander at gmail dot com>
-
+# Contributer: Alexander Mezin <mezin.alexander at gmail dot com>
 pkgname=gnome-shell-extension-ddterm-git
-pkgver=41.r17.g6738335
+pkgver=43.r6.g56ffce0
 pkgrel=1
 pkgdesc="Another Drop Down Terminal Extension for GNOME Shell (Github version)."
 arch=('any')
@@ -17,22 +16,22 @@ source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     npm install --omit dev --cache "${srcdir}/npm-cache"
 }
 
 build() {
-    cd "${pkgname%-git}"
+    cd "${srcdir}/${pkgname%-git}"
     make build
 }
 
 package() {
-    cd "${pkgname%-git}"
-    make DESTDIR="$pkgdir/" install
+    cd "${srcdir}/${pkgname%-git}"
+    make DESTDIR="${pkgdir}/" install
 }
 # vim:set ts=4 sw=4 et:
