@@ -2,7 +2,7 @@
 
 _name=matlab-engine-for-python
 pkgname=python-matlabengine
-pkgver=9.13.4
+pkgver=9.13.5
 pkgrel=1
 pkgdesc='A module to call MATLAB from Python'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(matlab python)
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('e54cab66babf4afbc2e21b4f0b9550e3cb42f547b88dbf0008c05ad09381788c67ad6c2840e40e7a69629513004641dfd08249b8a709b11f43b93ffc48e6f6ec')
+b2sums=('5f93aefb9cc06fc86cd7fcb09d7c6ae0529602d8db69cfa4b4cc45a935eb8937377f5c875acd134bf401897a0b49b628763d5937d6273e9404e0bc3d0af84927')
 
 build() {
     cd $_name-$pkgver
