@@ -1,9 +1,8 @@
-# Maintainer: Flaviu Tamas <me@flaviutamas.com>
-# Contributor: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Kodi Craft <kodi@kdcf.me> 
 
-_pkgname=nushell
-pkgname=$_pkgname-git
-pkgver=0.60.0.r50.ga2872b4cc
+_pkgname=nushell-kodi
+pkgname=$_pkgname
+pkgver=34c09d6b7
 pkgrel=1
 makedepends=('rust' 'cargo' 'python' 'git')
 # libx11 required for stable preset
@@ -11,11 +10,11 @@ depends=('openssl' 'zlib' 'e2fsprogs' 'libx11' 'curl')
 optdepends=('libxcb')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A new type of shell"
-source=("$pkgname::git+https://github.com/nushell/nushell.git")
+source=("$pkgname::git+https://github.com/KodiCraft/nushell")
 url="https://www.nushell.sh"
 license=('MIT')
 sha256sums=('SKIP')
-conflicts=('nushell')
+conflicts=('nushell' 'nushell-git')
 
 build() {
     return 0
@@ -23,7 +22,7 @@ build() {
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

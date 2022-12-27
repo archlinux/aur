@@ -1,6 +1,6 @@
-pkgbase = nushell-git
+pkgbase = nushell-kodi
 	pkgdesc = A new type of shell
-	pkgver = 0.15.0.r2.ga268e825
+	pkgver = 34c09d6b7
 	pkgrel = 1
 	url = https://www.nushell.sh
 	arch = i686
@@ -19,7 +19,8 @@ pkgbase = nushell-git
 	depends = curl
 	optdepends = libxcb
 	conflicts = nushell
-	source = nushell-git::git+https://github.com/nushell/nushell.git
+	conflicts = nushell-git
+	source = nushell-kodi::git+https://github.com/KodiCraft/nushell
 	sha256sums = SKIP
 
-pkgname = nushell-git
+pkgname = nushell-kodi
