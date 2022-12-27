@@ -15,7 +15,7 @@ depends=(
 makedepends=(
 	'cmake>=3.21.1' git
 	# clang
-	$([[ $CC+$CXX == *clang* ]] && echo 'clang>=12 llvm>=12')
+	$([[ ${CC-}+${CXX-} == *clang* ]] && echo 'clang>=12 llvm>=12')
 	# unbundled vcpkg
 	'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8' rapidjson
 	# cemu
