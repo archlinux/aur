@@ -1,0 +1,6 @@
+PolyMC/
+libnbtplusplus/
+quazip/
+src/
+pkg/
+*.pkg.tar.zst

@@ -6,13 +6,13 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-qt5-git
-pkgver=1.4.0.r348.gc089f9b5
-pkgrel=2
+pkgver=1.4.0.r390.g7839bd0e
+pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5')
+depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'qt5-charts')
 provides=('polymc' 'polymc-qt5')
 conflicts=('polymc' 'polymc-qt5')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus' 'ghc-filesystem')
@@ -39,7 +39,7 @@ prepare() {
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
