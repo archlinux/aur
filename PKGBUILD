@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv
-pkgver=32+fixes.20220310.ae60e830
+pkgver=32+fixes.20221129.44f88ed4
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -32,8 +32,8 @@ depends=(
     'libxml2'
     'libxrandr'
     'libzip'
+    'lzo'
     'qt5-script'
-    'qt5-webkit'
     'soundtouch'
     'taglib'
     'x264'

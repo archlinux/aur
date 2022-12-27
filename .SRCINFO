@@ -1,6 +1,6 @@
 pkgbase = mythtv
 	pkgdesc = A Homebrew PVR project
-	pkgver = 32+fixes.20220310.ae60e830
+	pkgver = 32+fixes.20221129.44f88ed4
 	pkgrel = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
@@ -43,8 +43,8 @@ pkgbase = mythtv
 	depends = libxml2
 	depends = libxrandr
 	depends = libzip
+	depends = lzo
 	depends = qt5-script
-	depends = qt5-webkit
 	depends = soundtouch
 	depends = taglib
 	depends = x264
