@@ -1,37 +1,34 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-common
-pkgver=0.0.46.r0.g66fd3e2
+pkgver=0.0.64
 pkgrel=1
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
 url="https://buildgrid.build"
 license=('Apache')
-depends=('c-ares' 'grpc' 'gtest' 'gmock' 'gflags' 'google-glog' 'benchmark')
-makedepends=('cmake' 'git')
-_commit=66fd3e2ddca23b673c464c25a79ef877b44ec349 # release 0.0.46
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=$_commit")
+depends=('gflags' 'google-glog' 'grpc' 'gtest')
+makedepends=('benchmark' 'c-ares' 'cmake' 'git' 'gmock'  ninja)
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#tag=0.0.64&commit=f41c9fabaeb0f34a61f19cd217b0dcea4caa0893")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   mkdir -p build
   cd build
-  cmake ../$pkgname             \
-    -DCMAKE_BUILD_TYPE=Release  \
+  cmake ../buildbox-common \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  ninja
 }
 
 check() {
   cd build
-  make -k test
+  echo "Sometimes 'streamingstandardoutputinotifyfilemonitor' fails, just rerun it."
+  ninja -k-1 test
 }
 
 package() {
   cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir/" ninja install
 }
