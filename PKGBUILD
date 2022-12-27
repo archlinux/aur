@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Rasteli <archgabr@tutanota.com>
 pkgname=glr-dmenu-git
-pkgver=5.0.r20.055568c
+pkgver=5.2.r23.d22dfd4
 pkgrel=1
 pkgdesc="My personal build of dmenu."
 arch=(x86_64)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "5.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {

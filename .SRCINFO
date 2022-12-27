@@ -1,6 +1,6 @@
 pkgbase = glr-dmenu-git
 	pkgdesc = My personal build of dmenu.
-	pkgver = 5.0.r20.055568c
+	pkgver = 5.2.r23.d22dfd4
 	pkgrel = 1
 	url = https://gitlab.com/glr01/glr-dmenu.git
 	arch = x86_64
