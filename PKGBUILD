@@ -44,12 +44,12 @@ check()
 package()
 {
     # TODO
-    declare site_packages
-    site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
-    readonly site_packages
+    declare _site_packages
+    _site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
+    readonly _site_packages
 
     # Assure that the directories exist.
-    mkdir -p "${pkgdir}"/"${site_packages}"/freqtrade/rpc/api_server/ui/installed/
+    mkdir -p "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
     mkdir -p "${pkgdir}"/usr/lib/systemd/system/
     mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
@@ -59,10 +59,10 @@ package()
     install -Dm644 "${srcdir}"/freqtrade@.service "${pkgdir}"/usr/lib/systemd/system/
 
     # TODO
-    rm -r "${pkgdir}"/"${site_packages}"/tests/
+    rm -r "${pkgdir}"/"${_site_packages}"/tests/
 
-    rsync -r "${srcdir}"/assets/ "${pkgdir}"/"${site_packages}"/freqtrade/rpc/api_server/ui/installed/assets/
-    install -Dm644 "${srcdir}"/favicon.ico "${srcdir}"/index.html "${pkgdir}"/"${site_packages}"/freqtrade/rpc/api_server/ui/installed/
+    rsync -r "${srcdir}"/assets/ "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/assets/
+    install -Dm644 "${srcdir}"/favicon.ico "${srcdir}"/index.html "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
