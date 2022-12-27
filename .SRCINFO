@@ -1,6 +1,6 @@
 pkgbase = vcvrack-bin
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = vcvrack-bin
 	provides = vcvrack-fundamental
 	conflicts = vcvrack
 	conflicts = vcvrack-fundamental
-	source = https://vcvrack.com/downloads/RackFree-2.2.1-lin-x64.zip
+	source = https://vcvrack.com/downloads/RackFree-2.2.2-lin-x64.zip
 	source = vcvrack.desktop
 	source = vcvrack
-	sha256sums = 54cac3987b090c882bf609089a60ff8298533a2113476ae0eecb6e116816f55d
+	sha256sums = dcc0ac248d26949611eb1c1193908b0ab13c7483b0ec563ad132f8385fb39b9c
 	sha256sums = 37208ccb5cdd319fce9d05aa913bc657d582b2371ef0f51b3a7e04586ac0f717
 	sha256sums = d98a5e0c8d811aa9edf0040570e5363da712d676b46e82b2c64e8aad4b876417
 
