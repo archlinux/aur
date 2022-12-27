@@ -9,6 +9,8 @@ url="https://github.com/linuxdeepin/dde-kwin"
 license=('GPL3')
 depends=('deepin-qt5integration-git' 'deepin-wallpapers-git' 'kwin')
 makedepends=('extra-cmake-modules' 'expac' 'ninja' 'qt5-tools')
+provides=('dde-kwin-reborn')
+conflicts=('dde-kwin-reborn')
 source=("$pkgname::git+https://github.com/linuxdeepin/dde-kwin/")
 sha512sums=('SKIP')
 

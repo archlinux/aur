@@ -13,6 +13,8 @@ pkgbase = dde-kwin-git
 	depends = deepin-qt5integration-git
 	depends = deepin-wallpapers-git
 	depends = kwin
+	provides = dde-kwin-reborn
+	conflicts = dde-kwin-reborn
 	source = dde-kwin-git::git+https://github.com/linuxdeepin/dde-kwin/
 	sha512sums = SKIP
 
