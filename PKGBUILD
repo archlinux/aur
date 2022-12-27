@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=apk-editor-studio-bin
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
 provides=("${pkgname%-bin}")
@@ -16,7 +16,7 @@ depends=('qt5-base'
          'android-sdk-platform-tools')
 optdepends=('libsecret: Enable password manager backend')
 source=("https://github.com/kefir500/apk-editor-studio/releases/download/v${pkgver}/apk-editor-studio_linux_${pkgver}.AppImage")
-sha256sums=('181e3b75d3b31a3d8653700b90101d7897db7544e61c57fb606d2c6083eaf49f')
+sha256sums=('0255cae22e5fb4e80e479d1417b70d190d4213063c1f2c2a7824130df319eef5')
 
 prepare() {
   chmod +x "${pkgname%-bin}_linux_$pkgver.AppImage"
