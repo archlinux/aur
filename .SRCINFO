@@ -2,9 +2,11 @@ pkgbase = ttf-seto
 	pkgdesc = handwriting Japanese font including JIS X 0213 kanji (Extracted from ubuntu package)
 	pkgver = 1
 	pkgrel = 9
+	epoch = 7
 	url = https://setofont.osdn.jp/
 	arch = any
 	license = OFL:1.1
+	makedepends = glibc
 	source = http://ports.ubuntu.com/pool/universe/f/fonts-seto/fonts-seto_6.20-8_all.deb
 	sha256sums = 41316849ede6874adf1b60207f9d3fc25111953729c5c45ac84e9e4f76d5f53f
 
