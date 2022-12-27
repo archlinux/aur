@@ -5,14 +5,14 @@
 
 pkgname=autoconf2.13
 pkgver=2.13
-pkgrel=6
+pkgrel=7
 pkgdesc="A GNU tool for automatically configuring source code (Legacy 2.1x version)"
 arch=(any)
 url="https://www.gnu.org/software/autoconf/"
 license=('GPL2')
 depends=('perl')
 source=(https://ftp.gnu.org/gnu/autoconf/autoconf-${pkgver}.tar.gz)
-md5sums=('9de56d4a161a723228220b0f425dc711')
+sha256sums=('f0611136bee505811e9ca11ca7ac188ef5323a8e2ef19cffd3edb3cf08fd791e')
 
 build() {
   cd "${srcdir}/autoconf-${pkgver}"
