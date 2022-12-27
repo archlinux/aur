@@ -2,12 +2,12 @@
 
 pkgname=textpieces
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Transform text without using random websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/liferooter/textpieces"
 license=('GPL3')
-depends=('libadwaita' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
+depends=('libadwaita' 'libportal-gtk4' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
 makedepends=('blueprint-compiler' 'meson' 'vala')
 checkdepends=('appstream-glib')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
