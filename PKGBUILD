@@ -57,6 +57,8 @@ prepare() {
 build(){
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export GO111MODULE=off
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+
   cd $pkgname
   make
 }
