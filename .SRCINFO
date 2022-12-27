@@ -1,0 +1,20 @@
+pkgbase = buildbox-run-bubblewrap
+	pkgdesc = An implementation of a runner for BuildGrid/buildbox using Bubblewrap.
+	pkgver = 0.0.64
+	pkgrel = 1
+	url = https://buildgrid.build
+	arch = x86_64
+	license = Apache
+	makedepends = benchmark
+	makedepends = buildbox-common
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = bubblewrap
+	depends = google-glog
+	depends = grpc
+	depends = util-linux-libs
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-run-bubblewrap#tag=0.0.64&commit=0f9a932d92305d2bc8d15a962b7caf707286f97a
+	sha256sums = SKIP
+
+pkgname = buildbox-run-bubblewrap
