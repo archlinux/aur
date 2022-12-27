@@ -10,12 +10,12 @@ depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
 conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
-depends=('libelf' 'libmpc' 'libisl')
+depends=(libelf)
 _gcc=gcc-12.2.0
 _binutils=binutils-2.39
 _newlib=newlib-4.2.0.20211231
 license=('GPL' 'BSD')
-options=(!strip)
+options=('!strip')
 
 source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
@@ -41,7 +41,8 @@ build()
 {
 	cd "${srcdir}/obj"
 	"${srcdir}/${_gcc}/configure" --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
-	--with-system-zlib --disable-nls
+	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
+	--enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions
 
 	make
 }
@@ -55,6 +56,7 @@ package()
 	rm -rf "${pkgdir}"/usr/lib/libcc1.*
 	rm -rf "${pkgdir}"/usr/lib/bfd-plugins
 	find "${pkgdir}" -name '*.py' -delete 
+
 
 	# local variable is scoped to the function, for general tidiness. 
 	local regex='ELF ().*(executable|shared object).*'
