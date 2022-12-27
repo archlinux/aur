@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-sdl2
 	pkgdesc = x86 emulator with builtin DOS, with patches and more features
-	pkgver = 2022.08.0
+	pkgver = 2022.12.26
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -11,13 +11,12 @@ pkgbase = dosbox-x-sdl2
 	depends = fluidsynth
 	depends = libxkbfile
 	depends = libxrandr
-	depends = ffmpeg4.4
 	depends = sdl2_net
 	depends = libslirp
 	conflicts = dosbox-x-git
 	conflicts = dosbox-x
 	conflicts = dosbox-x-sdl2-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-windows-v2022.08.0.tar.gz
-	sha256sums = bac936ee198b607fb0cc55dfc4575e44b700dbc9138904d2e264792a6e6a941c
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v2022.12.26.tar.gz
+	sha256sums = 39fb1ed19ea31e11883aa57655493b3100ac6b328ef59c799b840b9bfdfacb7b
 
 pkgname = dosbox-x-sdl2
