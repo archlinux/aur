@@ -9,7 +9,8 @@ User=klipper
 SupplementaryGroups=moonraker-admin
 SyslogIdentifier=moonraker
 RemainAfterExit=yes
-ExecStart=/usr/bin/python /opt/moonraker/moonraker/moonraker.py -c /etc/klipper/moonraker.conf -n
+EnvironmentFile=/var/opt/moonraker/systemd/moonraker.env
+ExecStart=/usr/bin/python /opt/moonraker/moonraker/moonraker.py -n $MOONRAKER_ARGS
 Restart=always
 RestartSec=10
 

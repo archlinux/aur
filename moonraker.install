@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  if [[ "$(vercmp "r1494.358aee9" "${2}")" -eq 1 ]]; then
+    echo <<END
+moonraker now uses a unified "datapath" directory for all runtime files. See
+https://moonraker.readthedocs.io/en/latest/installation/#data-folder-structure
+https://moonraker.readthedocs.io/en/latest/user_changes/#october-14th-2022
+for more information. This means the location of /var/opt/moonraker/db and
+/var/opt/moonraker/gcode changes to /var/opt/moonraker/database and
+/var/opt/moonraker/gcodes respectively. The old locations can be copied or
+symlinked over.
+END
+  fi
+}
