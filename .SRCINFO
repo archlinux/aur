@@ -20,6 +20,7 @@ pkgbase = golang-deepin-lib-git
 	depends = libcanberra
 	depends = golang-gopkg-alecthomas-kingpin.v2
 	depends = golang-deepin-gir-git
+	depends = golang-github-stretchr-testify
 	depends = golang-github-linuxdeepin-go-x11-client-git
 	depends = golang-golang-x-net
 	depends = golang-golang-x-image

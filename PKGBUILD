@@ -9,6 +9,7 @@ url="https://github.com/linuxdeepin/go-lib"
 license=('GPL3')
 depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'mobile-broadband-provider-info' 'libx11' 'libcanberra'
          'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git'
+         'golang-github-stretchr-testify'
          'golang-github-linuxdeepin-go-x11-client-git' 'golang-golang-x-net' 'golang-golang-x-image')
          # 'golang-github-cryptix-wav' not packaged yet, paused until our go packaging standards formed
 makedepends=('iso-codes' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v3' 'git' 'go') # git needed only for go get
