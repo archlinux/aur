@@ -1,0 +1,15 @@
+pkgbase = python-auto-walrus
+	pkgdesc = A tool and pre-commit hook to automatically apply the awesome walrus operator.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/MarcoGorelli/auto-walrus
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/a/auto-walrus/auto_walrus-0.2.2.tar.gz
+	sha256sums = c7125868e6fb428089b9b7a68ce46969058f3fd732c07203e745a3fc75bb8b67
+
+pkgname = python-auto-walrus
