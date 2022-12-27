@@ -17,6 +17,8 @@ makedepends=(extra-cmake-modules
 	     dde-kwin-git
 	     python
 	     ninja)
+provides=('deepin-kwin-reborn' 'deepin-kwin')
+conflicts=('deepin-kwin-reborn' 'deepin-kwin')
 source=("$pkgname::git+https://github.com/linuxdeepin/deepin-kwin")
 install=deepin-kwin.install
 sha256sums=('SKIP')
