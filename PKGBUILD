@@ -1,9 +1,10 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer:  Adam Brenner <adam@aeb.io>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=php-ioncube_loader
-pkgver=12.0.4
+pkgver=12.0.5
 _phpver=8.1
 #_php_name="php${_phpver%.*}"
 _php_name=php
@@ -18,9 +19,9 @@ backup=("${_conf}")
 source_i686=("ioncube_loader-i686-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz")
 source_x86_64=("ioncube_loader-x86_64-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz")
 source_aarch64=("ioncube_loader-aarch64-${pkgver}.tar.gz::https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_aarch64.tar.gz")
-sha256sums_i686=('a7ba0c6292b3ef75611f1265e0dbe94fa548026958a4a2a8718e7fcb19bb4464')
-sha256sums_x86_64=('a9d31a0bc802f7cdb0066b298eed66c0b2163c5ceb28de6214afb96eececfb2b')
-sha256sums_aarch64=('c043a643b80e0147bf98208c78de9d03428c537a48a181a7406d72f0e50f545a')
+sha256sums_i686=('2fbf7255c9117b5dc3be8e506dbdddb03f26922786f61317a4423c6b0b41d32d')
+sha256sums_x86_64=('c4d6d65d19909c9029b928b19c1f982a47fb33d2c7834a6a1c9babe861ef55f6')
+sha256sums_aarch64=('bcfe4ab3ed095c74097c01d19021b12de2a6f08b626cb86b9e2bfb3770f5a40e')
 
 package() {
 	cd ioncube
