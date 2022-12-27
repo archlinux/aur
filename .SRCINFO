@@ -1,0 +1,15 @@
+pkgbase = grafana-pcp-bin
+	pkgdesc = Performance Co-Pilot Grafana Plugin
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/performancecopilot/grafana-pcp
+	arch = x86_64
+	license = Apache-2.0
+	depends = grafana
+	provides = grafana-pcp
+	conflicts = grafana-pcp
+	options = !strip
+	source = https://github.com/performancecopilot/grafana-pcp/releases/download/v5.1.1/performancecopilot-pcp-app-5.1.1.zip
+	sha256sums = c5cb68df7b61c438d703def168da0c881073c64bb8d0c370b6f1a6510aca3351
+
+pkgname = grafana-pcp-bin
