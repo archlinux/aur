@@ -2,7 +2,7 @@
 
 pkgname=golang-deepin-lib-git
 pkgver=5.9.1.r0.gae4320a
-pkgrel=1
+pkgrel=2
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
 url="https://github.com/linuxdeepin/go-lib"
