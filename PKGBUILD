@@ -1,15 +1,19 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream
-pkgver=1.6.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A powerful and flexible software integration toolset"
-arch=('any')
+arch=(x86_64)
 url="https://buildstream.build"
-license=('LGPL')
+license=('Apache')
 depends=(
-    bubblewrap
+    buildbox-casd
+    buildbox-fuse
+    buildbox-run-bubblewrap
+    python
     python-click
-    python-gobject
+    python-dateutil
     python-grpcio
     python-jinja
     python-pluginbase
@@ -17,21 +21,21 @@ depends=(
     python-psutil
     python-pyroaring
     python-ruamel-yaml
-    python-six
+    python-setuptools
     python-ujson
     # specific host site dependencies
-    bzr git lzip ostree python-arpy
+    bzip2 gzip lzip tar xz
 )
-makedepends=(python-setuptools cython)
-source=("https://download.gnome.org/sources/BuildStream/${pkgver%.*}/BuildStream-$pkgver.tar.xz")
-sha256sums=('2ba614e13c0641c28e27dc3c41e5b2418e729a9e39ffc06064b8b713390a6b5c')
+makedepends=(cython git python-packaging)
+source=("git+https://github.com/apache/buildstream.git#tag=2.0.0&commit=f27bc3bed2bdbb3dfd72fdbfa59a7607d74123a7")
+sha256sums=('SKIP')
 
 build() {
-  cd BuildStream-$pkgver
+  cd buildstream
   python setup.py build
 }
 
 package() {
-  cd BuildStream-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd buildstream
+  python setup.py install --root="$pkgdir/" --skip-build
 }
