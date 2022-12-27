@@ -1,6 +1,6 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=golored
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="color shell scripts' output"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('e5c294283f396bade246de400450ca8f')
+md5sums=('8561eb21f693deac1cd9777de426a699')
 
 build(){
     cd "$pkgname-$pkgver"
