@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
-	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements, multiple monitor support, integration with GSConnect extension. For Gnome shell 40,41,42,43. Works best on Wayland, now works on X11. Please see Readme for X11.
+	pkgdesc = A Gtk4 fork from the official desktop icons project, with several enhancements, multiple monitor support, integration with GSConnect extension. For Gnome shell 40,41,42,43. Please see Readme for X11.
 	pkgver = 27
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
@@ -10,8 +10,8 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	makedepends = meson
 	makedepends = glib2
 	depends = gnome-shell, file-roller, nautilus
-	conflicts = gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons-ng
-	provides = gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons-ng, gnome-shell-extension-desktop-icons
+	conflicts = gnome-shell-extension-desktop-icons-ng, gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons
+	provides =  gnome-shell-extension-desktop-icons-ng, gnome-shell-extension-desktop-icons-ng-git, gnome-shell-extension-desktop-icons
 	source = desktop-icons-ng-Gtk4-27.tar.gz::https://gitlab.com/smedius/desktop-icons-ng/-/archive/Gtk4-27/desktop-icons-ng-Gtk4-27.tar.gz
 	sha256sums = 56ee8aa26aa6186cf82f7198832651f57523e69b3047ba3bc9479d34efb8341e
 	sha512sums = 71ae8ceb1e9d05d2e87458610feea4baaf17fdba1b44b2ac546d23444303f750bf940450ae35422c7a3fc047cbce5959ed376593ef6a95d927a2efd68e566a4c
