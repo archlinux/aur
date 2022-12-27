@@ -1,0 +1,19 @@
+pkgbase = dwayland-git
+	pkgdesc = Qt-style Client and Server library wrapper for the Wayland libraries
+	pkgver = 5.24.3.deepin.1.4.r0.g3e2d16d
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qt5-tools
+	makedepends = qt5-doc
+	makedepends = wayland-protocols
+	makedepends = deepin-wayland-protocols-git
+	makedepends = ninja
+	depends = qt5-wayland
+	options = debug
+	source = dwayland-git::git+https://github.com/justforlxz/dwayland
+	sha256sums = SKIP
+
+pkgname = dwayland-git
