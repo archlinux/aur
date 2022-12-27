@@ -2,7 +2,7 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1395.g28c8aa4
+pkgver=0.2.r1420.gdbc6033
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -24,6 +24,11 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^cubeb-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	# https://github.com/mozilla/cubeb/issues/736
+	sed -i '/cubeb_add_test(logging)/d' $_pkgname/CMakeLists.txt
 }
 
 build() {
