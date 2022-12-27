@@ -7,6 +7,10 @@ pkgbase = deepin-wayland-protocols-git
 	license = LGPL
 	makedepends = qt5-base
 	makedepends = extra-cmake-modules
+	provides = deepin-wayland-protocols-reborn
+	provides = deepin-wayland-protocols
+	conflicts = deepin-wayland-protocols-reborn
+	conflicts = deepin-wayland-protocols
 	source = deepin-wayland-protocols-git::git+https://github.com/linuxdeepin/deepin-wayland-protocols
 	sha256sums = SKIP
 

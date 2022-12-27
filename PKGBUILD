@@ -8,6 +8,8 @@ url="https://github.com/justforlxz/deepin-wayland-protocols"
 arch=(any)
 license=(LGPL)
 makedepends=(qt5-base extra-cmake-modules)
+provides=('deepin-wayland-protocols-reborn' 'deepin-wayland-protocols')
+conflicts=('deepin-wayland-protocols-reborn' 'deepin-wayland-protocols')
 source=("${pkgname}::git+https://github.com/linuxdeepin/deepin-wayland-protocols")
 sha256sums=('SKIP')
 
