@@ -1,6 +1,6 @@
 [Unit]
 Description=Odoo Open Source ERP and CRM
-After=network.target
+After=network-online.target
 
 [Service]
 Type=simple
