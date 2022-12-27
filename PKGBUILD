@@ -3,17 +3,17 @@
 _name=ItChat-UOS
 pkgname=python-itchat-uos-git
 pkgrel=1
-pkgver=r201.6ce8b5a
+pkgver=r202.ff4ad96
 pkgdesc="A complete and graceful API for Wechat."
 url=https://pypi.org/project/itchat-uos
 arch=("any")
 license=("MIT")
 provides=("python-itchat")
-conflicts=("python-itchat" "python-itchat-git")
 depends=('python-requests' 'python-pyqrcode' 'python-pypng')
 source=('git+https://github.com/why2lyj/ItChat-UOS.git')
+conflicts=("python-itchat" "python-itchat-git" "python-itchat-uos")
 # https://github.com/why2lyj/ItChat-UOS/commit/2f141acc3e780fe516516ea74d82c0d5c8a9ffce.patch
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 makedepends=('python-setuptools' 'git')
 
 pkgver() {

@@ -13,6 +13,7 @@ pkgbase = python-itchat-uos-git
 	provides = python-itchat
 	conflicts = python-itchat
 	conflicts = python-itchat-git
+	conflicts = python-itchat-uos
 	source = git+https://github.com/why2lyj/ItChat-UOS.git
 	sha256sums = SKIP
 
