@@ -2,7 +2,7 @@
 # Contributor: Sam L. Yes <samlukeyes123@gmail.com>
 pkgname=visualdl
 pkgdesc="Deep Learning Visualization Toolkit"
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 arch=(any)
 url="https://github.com/PaddlePaddle/${pkgname}"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(python-baidubce flake8 python-flask-babel python-pillow python-protobuf python-requests python-matplotlib python-pandas)
 makedepends=(shellcheck rustup npm yarn) # python-setuptools
 source=(VisualDL-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f1cf4ce4e405615aaec5594edf8410d595f4602328b0366bdc5ad87389dd1d5d9068d424ab1639fb349fe77f6cbc5a85474d6e192ab8fcb1f43559021dcd667b')
+sha512sums=('044972ba44e11427c16cf5751224a5c8bd7c85d71b371995ea2a438e00807ae9ee29f6af701138f16c5dad2af7f5afb41dbd9050359842e346d5dc9736a0cf0e')
 
 build() {
   cd "VisualDL-${pkgver}"
