@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=0.21.0.31043.g7a8a453746
+pkgver=0.21.0.31436.g14994bd9f7
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -97,8 +97,8 @@ build() {
     -D INSTALL_TO_SITEPACKAGES=ON \
     -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
     -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
-    -D CMAKE_INSTALL_DATAROOTDIR='../../share' \
-    -D CMAKE_INSTALL_DOCDIR='../../doc/freecad'
+    -D CMAKE_INSTALL_DATAROOTDIR='/usr/share' \
+    -D CMAKE_INSTALL_DOCDIR='/usr/share/doc/freecad'
 
   cmake --build build
 }
