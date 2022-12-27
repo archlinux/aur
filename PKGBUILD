@@ -1,11 +1,11 @@
 # Maintainer: kumax <kumax2048@pm.me>
 pkgname=firefox-extension-listen1
 pkgver=2.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc="One for all free music in China"
 arch=("any")
 url="https://listen1.github.io/listen1"
-_githuburl="https://github.com/windmiles/listen1_firefox_extension"
+_githuburl="https://github.com/listen1/listen1_chrome_extension"
 _name=${_githuburl##*/}
 license=('MIT')
 depends=("firefox")
