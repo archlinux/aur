@@ -1,6 +1,6 @@
 pkgbase = ferium-gui-bin
 	pkgdesc = Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/theRookieCoder/ferium
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ferium-gui-bin
 	conflicts = ferium-bin
 	conflicts = ferium-gui-git
 	conflicts = ferium-git
-	source_x86_64 = ferium-gui-4.3.0-1.x86_64.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.3.0/ferium-linux.zip
-	sha256sums_x86_64 = cf75bcbb684676ece4e7fbb3bac24c12becdd7aff4a08807dda8b6cd8570f895
-	source_aarch64 = ferium-gui-4.3.0-1.aarch64.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.3.0/ferium-linux-arm64.zip
-	sha256sums_aarch64 = d34b608672cae4bc6cec06478c2ff91c48c81c2a995b2913c96a903aa054a838
+	source_x86_64 = ferium-gui-4.3.1-1.x86_64.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.3.1/ferium-linux.zip
+	sha256sums_x86_64 = 39fa155bb642c10b462382ec4b79148914209ea0fbbd83ab13e1986c78286f86
+	source_aarch64 = ferium-gui-4.3.1-1.aarch64.zip::https://github.com/theRookieCoder/ferium/releases/download/v4.3.1/ferium-linux-arm64.zip
+	sha256sums_aarch64 = ae15788eadff0ec1c6ca03f57036e82bd34b9321b96da6f4b7a8b42144d93ca8
 
 pkgname = ferium-gui-bin
