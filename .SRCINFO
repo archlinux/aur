@@ -1,7 +1,7 @@
 pkgbase = 123-bin
 	pkgdesc = Create, modify, and process financial or scientific models.
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/taviso/123elf
 	arch = i386
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = 123-bin
 	makedepends = gcc
 	makedepends = binutils
 	makedepends = xz
+	makedepends = git
 	depends = lib32-ncurses
 	provides = 123
 	noextract = 123UNIX1.IMG

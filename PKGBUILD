@@ -1,7 +1,7 @@
 # Maintainer: Audun-Marius Gangstø <audun@gangsto.org>
 pkgname=123-bin
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Create, modify, and process financial or scientific models."
 arch=("i386" "i686" "x86_64")
@@ -9,7 +9,7 @@ url="https://github.com/taviso/123elf"
 license=('unknown')
 groups=()
 depends=("lib32-ncurses")
-makedepends=('unzip' 'cpio' 'gcc' 'binutils' 'xz')
+makedepends=('unzip' 'cpio' 'gcc' 'binutils' 'xz' 'git')
 checkdepends=()
 optdepends=()
 provides=('123')
