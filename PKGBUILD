@@ -3,7 +3,7 @@
 _arch=aarch64
 _target=$_arch-none-elf
 pkgname=$_target-toolchain
-pkgver=20220621
+pkgver=20221227
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
