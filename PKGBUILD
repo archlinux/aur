@@ -13,16 +13,16 @@ provides=('goreleaser' 'goreleaser-pro')
 conflicts=('goreleaser' 'goreleaser-pro')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.14.0-pro/goreleaser-pro_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3013f20c95f62b987938a3ae8b2b014cd8b328d23388130ad655485966d3667e')
+sha256sums_aarch64=('18b9764323e0f818afc2c78bff19c5f3a1fa23c32c0ce43dce86d255000fffba')
 
 source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.14.0-pro/goreleaser-pro_Linux_armv6.tar.gz")
-sha256sums_armv6h=('4cff3a1ae5369c54f102c9b2aa2e27bd4b224fe4dacc6bf5dc1fd5eb08f1ff83')
+sha256sums_armv6h=('c355867e427904dd6e14829d2ef9727624464bc9f97b52ff9a553e1cac166e20')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.14.0-pro/goreleaser-pro_Linux_i386.tar.gz")
-sha256sums_i686=('5b8ae91984e7bb924fc961c50807d17b0a3eb87feca682c532c8c8cb7ad353f9')
+sha256sums_i686=('baeeea8f8de5723e856d48635bea1441e31dd71b88aec83aaa384a794bf29343')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.14.0-pro/goreleaser-pro_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('22813e3219ba0ab9b4a6b243acb1d05b27e98a0a64348497ec0c30082672e4ac')
+sha256sums_x86_64=('e0a1d0de42b4f11031a3bdd47b7f8e74e052d17d3ec38c4c4b5e9b3d748a1ba4')
 
 package() {
   # bin
