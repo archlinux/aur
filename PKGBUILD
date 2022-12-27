@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='f4d7a8482d244ab885e503d291155269'
-_referid='b7130ebf043448368dbd1ea1be93888d'
+_downloadid='1ea37eaee99740fe8a063783f4afe636'
+_referid='7a1a0b5ffaf34f9588fd46683d40da75'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -61,12 +61,12 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=18.1.1
+pkgver=18.1.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
-depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'ocl-icd' 'openssl-1.0' 'fuse2'
+depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'ocl-icd' 'fuse2'
          'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets' 'libxcrypt-compat'
          'shared-mime-info' 'gtk-update-icon-cache')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
@@ -76,13 +76,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('d029fe52f78077fb60313c52952dad811d7cdc1455ce5bbcc948e9c1a8c66530')
+	sha256sums=('f6af12b67010d798e15fc38778a9c0067d7c27d396f44ab80fe75d1ffde72571')
 	conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('97c7a6acb980a5b06a6c09d02964e68bcf6d729f6c73b595948b49e421fe80b3')
+	sha256sums=('c81475ec8e159a06b96f7790641bc690cd588594bf9184fc2fbdea8f4cf81799')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 

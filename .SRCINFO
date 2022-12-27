@@ -1,6 +1,6 @@
 pkgbase = davinci-resolve-studio
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.
-	pkgver = 18.1.1
+	pkgver = 18.1.2
 	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = davinci-resolve-studio
 	depends = gstreamer
 	depends = libpng12
 	depends = ocl-icd
-	depends = openssl-1.0
 	depends = fuse2
 	depends = opencl-driver
 	depends = qt5-base
@@ -28,7 +27,7 @@ pkgbase = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_Studio_18.1.1_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.1/DaVinci_Resolve_Studio_18.1.1_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=VwF0wJHwpdrHt8zfHkbLz7RHN/NDixTVis4fz5FYbp5Q6TTix8EYTCnkdQW5nywvH7C9YP5V0sLdz7rOz4Tf6oMbhf//diSt1N2ICgzAkGYY80XqV9YXdvu5mrOyCD9UN6VqIuyBeqxcxKQCBtPa94744E30H936gMdsA28auIQcvg5DUwKWrMvxKks1306u9aF5MXgpIu54NTw4ov5QHtw0rcsrDA52XjO4ijWldnEm+eLkOtnTcS1JVpjVmcMLs4wro7h/ORIhq7MIhrWUGnNJdeTioJZmPM4Z5uzU7Iajx2kX1ugNVITm9tL9QqYLhfCgdfUElKx9OFA+AjT/JA==&Expires=1669315434
-	sha256sums = d029fe52f78077fb60313c52952dad811d7cdc1455ce5bbcc948e9c1a8c66530
+	source = DaVinci_Resolve_Studio_18.1.2_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.2/DaVinci_Resolve_Studio_18.1.2_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=joAG+4bIHOGk4qs9osmIcaH/h/9jkFk3SYsk6u4YR1x8U/ofamGnZo8Mcr9t7YAIy3g+taJAsynzV4GnnWVNPz3B9l6XpdslZFOS6IhKmrVb9ZefRGb3NyVT7Pi5Rv4lnjTofeoXzcp5IvnCODXyyMRwNE/SRAwRu549rwbiJp8W+iCDtjQSYxWEYoxen2nY8GsSB9xl8W8RSYnPTr1sBb1/Xx7B1Jgvi4VqCby76lWPK28sq3ZOa/eVgwsNiaAhBYlocEgPCHkNciaCqafBJp3p98ebuokBMeyuliZk7GJ5kRIFXX1puYVffVlrsnVUeMVHykwpxHflsTCWDcffcw==&Expires=1672192262
+	sha256sums = f6af12b67010d798e15fc38778a9c0067d7c27d396f44ab80fe75d1ffde72571
 
 pkgname = davinci-resolve-studio
