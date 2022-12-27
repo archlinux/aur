@@ -1,6 +1,6 @@
 pkgbase = shell-piper
 	pkgdesc = Write a temporary file and pass it to a program
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Mrfiregem/shell-piper
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = shell-piper
 	makedepends = python-installer
 	depends = python
 	provides = shellpiper
-	source = shell-piper-0.5.1.tar.gz::https://github.com/Mrfiregem/shell-piper/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = c48c77af76dd218e15b6d1423b9cd8aaec989f170c24486ab5b095ff9999263d
+	source = shell-piper-0.6.0.tar.gz::https://github.com/Mrfiregem/shell-piper/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 0d18d524018db53201fca375c6a7d9077d89a7c142406130fa7455f6c572abc9
 
 pkgname = shell-piper
