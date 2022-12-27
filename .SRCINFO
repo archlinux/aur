@@ -1,5 +1,5 @@
 pkgbase = shelldel
-	pkgdesc = Simple script, which provides more convenient backup options for QuiteRSS
+	pkgdesc = Freedesktop-compliant trashcan implemented in Shell script
 	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/Jorengarenar/shellDel
