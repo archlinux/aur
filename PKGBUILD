@@ -1,14 +1,14 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=textpieces-git
-pkgver=3.3.1.r12.g8bc349a
+pkgver=3.4.1.r0.gb14fd2c
 pkgrel=1
 pkgdesc="Transform text without using random websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/liferooter/textpieces"
 license=('GPL3')
-depends=('libadwaita' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
-makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
+depends=('libadwaita' 'libportal-gtk4' 'gtksourceview5' 'json-glib' 'libgee' 'python-pyaml')
+makedepends=('git' 'blueprint-compiler' 'meson' 'vala')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
