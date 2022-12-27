@@ -1,11 +1,11 @@
 pkgbase = apk-tools-static-bin
 	pkgdesc = Alpine Package Keeper - package manager for alpine
-	pkgver = 2.12.9
-	pkgrel = 7
+	pkgver = 2.12.10
+	pkgrel = 1
 	url = https://pkgs.alpinelinux.org/package/edge/main/x86/apk-tools-static
 	arch = any
 	license = Apache
-	source = apk-tools-static-2.12.9_7.tgz::http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/apk-tools-static-2.12.9-r7.apk
-	sha512sums = 398cac8ebd63d18a8be5155816dec6bf764ccbdcf048922998bfa1e2d2690e4143916d9d104ff2bcaa5d6077ddd8c87c0342b04b5e53d46c3475be9b036d0e06
+	source = apk-tools-static-2.12.10_1.tgz::http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/apk-tools-static-2.12.10-r1.apk
+	sha512sums = d51ff67bcb789ad2dfdead6ff5fdc128cf066526cdba006d1e3f8389b21598da4450665e5cf6c1c2d4a0838673e65f6860d9697bba2f6ddcef1688639ed3c3a8
 
 pkgname = apk-tools-static-bin
