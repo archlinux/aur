@@ -1,7 +1,7 @@
 pkgbase = golored
 	pkgdesc = color shell scripts' output
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexcoder04/golored
 	arch = x86_64
 	license = GPL3

@@ -1,7 +1,7 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=golored
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="color shell scripts' output"
 arch=('x86_64')
 url="https://github.com/alexcoder04/golored"
@@ -32,7 +32,7 @@ build(){
     export GOOS="linux"
     export GOARCH="amd64"
 
-    make build
+    go build -ldflags "-X main.VERSION=$pkgver" -o "$pkgname" .
 }
 
 package() {
