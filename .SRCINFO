@@ -1,13 +1,13 @@
 pkgbase = firefox-extension-gooreplacer
 	pkgdesc = A browser extension to modify HTTP requests
 	pkgver = 3.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liujiacai.net/gooreplacer/
 	arch = any
 	license = MIT
+	makedepends = zip
 	depends = firefox
-	noextract = firefox_gooreplacer_1653621114.zip
 	source = https://github.com/jiacai2050/gooreplacer/releases/download/v3.13.0/firefox_gooreplacer_1653621114.zip
-	sha256sums = 0d38d88b61217535a7f5c984fed1667cf41b64b17df06c392214476fcfc8758c
+	sha256sums = 82a24ee0bbbdd409e606787abcd9b80ab6d96b462a2d78744d79e500770584a9
 
 pkgname = firefox-extension-gooreplacer
