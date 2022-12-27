@@ -16,7 +16,7 @@ optdepends=('cuda' 'libcap' 'libdrm')
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=c0b042fa8a9bb0e37c217724174a843e3cd72399")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=c1f0daa024645a00af3f0e9d96098a08cf11531b")
 sha256sums=('SKIP')
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-    pushd "$pkgname/src_assets/common/assets/web"
+    pushd "$pkgname"
     npm install
     popd
 
