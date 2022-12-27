@@ -11,18 +11,18 @@ url="http://www.gnu.org"
 conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
 depends=('libelf' 'libmpc' 'libisl')
-_gcc=gcc-12.1.0
-_binutils=binutils-2.38
+_gcc=gcc-12.2.0
+_binutils=binutils-2.39
 _newlib=newlib-4.2.0.20211231
 license=('GPL' 'BSD')
-options=('!strip')
+options=(!strip)
 
 source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('2121d295292814a6761edf1fba08c5f633ebe16f52b80e7b73a91050e71e1d2ed98bf17eebad263e191879561c02b48906c53faa4c4670c486a26fc75df23900'
-            '8bf0b0d193c9c010e0518ee2b2e5a830898af206510992483b427477ed178396cd210235e85fd7bd99a96fc6d5eedbeccbd48317a10f752b7336ada8b2bb826d'
+sha512sums=('e9e857bd81bf7a370307d6848c81b2f5403db8c7b5207f54bce3f3faac3bde63445684092c2bc1a2427cddb6f7746496d9fbbef05fbbd77f2810b2998f1f9173'
+            '68e038f339a8c21faa19a57bbc447a51c817f47c2e06d740847c6e9cc3396c025d35d5369fa8c3f8b70414757c89f0e577939ddc0d70f283182504920f53b0a3'
             '0c3efd7b74a6b8457a717cbb6aa6c5ff268eeaba375535465c6bd6502c3d32b54a9bc3ba7f2c6990f78e29152eee2f62acb39b674d24f9ddf440374a1ec9d2e8')
 
 CFLAGS=${CFLAGS/-Werror=format-security/}
@@ -31,10 +31,7 @@ CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 prepare() {
 	cd "${srcdir}/${_gcc}"
 	
-	#we use libiberty from binutils. Otherwise the compilation will fail.
-	rm -rf libiberty
-
-	for i in bfd binutils gas gold ld libiberty libctf opcodes; do ln -sv ../${_binutils}/$i; done
+	for i in bfd binutils gas gold ld libctf opcodes; do ln -sv ../${_binutils}/$i; done
 	for i in newlib libgloss; do ln -sf ../${_newlib}/$i; done
 
 	mkdir -p "${srcdir}/obj"
