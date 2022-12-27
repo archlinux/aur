@@ -1,0 +1,4 @@
+#!/bin/sh
+export PYTHONHOME=/usr/lib/python2.7
+export PYTHONPATH=/usr/lib/python2.7
+exec /opt/appleseed/bin/appleseed.cli "$@"
