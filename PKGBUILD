@@ -15,8 +15,8 @@ url="https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding"
 license=('GPL3')
 depends=('gnome-shell' 'file-roller' 'nautilus')
 makedepends=('git' 'meson' 'glib2')
-conflicts=("${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}" "${_shellextension}-${_basename}")
-provides=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-${_basename}-git")
+conflicts=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
+provides=("${_shellextension}-${_basename}" "${_shellextension}-${_basename}-git" "${_shellextension}-desktop-icons")
 
 source=("${_extname}-Gtk4-${pkgver}.tar.gz::https://gitlab.com/smedius/${_basename}/-/archive/Gtk4-${pkgver}/${_basename}-Gtk4-${pkgver}.tar.gz")
 sha256sums=('56ee8aa26aa6186cf82f7198832651f57523e69b3047ba3bc9479d34efb8341e')
