@@ -2,7 +2,7 @@
 
 _pkgbase=synaptics-led
 pkgname=synaptics-led-dkms
-pkgver=6.0.2
+pkgver=6.1.1
 pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
@@ -16,7 +16,7 @@ install=${pkgname}.install
 
 source=("https://github.com/vantu5z/synaptics-led/archive/refs/tags/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('05d2b8670a362ea4b9a33d0ca36472dd5a5a646aed3f93c5c27c25167e7da89e'
+sha256sums=('fe21fd2044adea2bb69a682b90e77fcf37d2d5483f2dc4e38d858682e33523c3'
             '4bae506df68782fc57471eb983b3ec332694e642c43defeeeba3e3af0802b69f')
 
 package() {
