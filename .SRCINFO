@@ -33,6 +33,7 @@ pkgbase = ihaskell-git
 	depends = haskell-utf8-string
 	depends = haskell-vector
 	depends = jupyterlab
+	conflicts = ihaskell
 	source = git+https://github.com/gibiansky/IHaskell
 	sha256sums = SKIP
 
