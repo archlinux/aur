@@ -1,6 +1,6 @@
 pkgbase = prjoxide-git
 	pkgdesc = Project Oxide LatticeSemi 28nm Nexus FPGA Bitstream Database
-	pkgver = r348.b5d88c3
+	pkgver = r441.ea89720
 	pkgrel = 1
 	url = https://github.com/gatecat/prjoxide
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = prjoxide-git
 	sha256sums = SKIP
 
 pkgname = prjoxide-git
-

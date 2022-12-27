@@ -1,6 +1,6 @@
 # Maintainer: Richard Petri <git@rpls.de>
 pkgname=prjoxide-git
-pkgver=r348.b5d88c3
+pkgver=r441.ea89720
 pkgrel=1
 pkgdesc='Project Oxide LatticeSemi 28nm Nexus FPGA Bitstream Database'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ prepare() {
   git submodule init
   git config submodule.database.url "$srcdir/database"
   git config submodule.3rdparty/fpga-interchange-schema.url "$srcdir/fpga-interchange-schema"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
