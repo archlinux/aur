@@ -1,8 +1,29 @@
+From 6b65eb4172f23efbdd36351ab0770ff9be3a39a5 Mon Sep 17 00:00:00 2001
+From: Christoph Heiss <christoph@c8h4.io>
+Date: Tue, 27 Dec 2022 22:38:26 +0100
+Subject: [PATCH] drivers: net: alx: Re-enable WoL functionality
+
+This essentially reverts commit bc2bebe8de8e ("alx: remove WoL
+support"), which removed WoL due to being broken on *some* machines
+only.
+
+This patch is only compatible with v6.1+ due to a change in the netif
+API in commit b48b89f9c189 ("net: drop the weight argument from
+netif_napi_add").
+
+Signed-off-by: Christoph Heiss <christoph@c8h4.io>
+---
+ drivers/net/ethernet/atheros/alx/ethtool.c |  36 +++++
+ drivers/net/ethernet/atheros/alx/hw.c      | 154 ++++++++++++++++++++
+ drivers/net/ethernet/atheros/alx/hw.h      |   5 +
+ drivers/net/ethernet/atheros/alx/main.c    | 155 +++++++++++++++++----
+ 4 files changed, 323 insertions(+), 27 deletions(-)
+
 diff --git a/drivers/net/ethernet/atheros/alx/ethtool.c b/drivers/net/ethernet/atheros/alx/ethtool.c
-index 2f4eabf652e8..859e27236ce4 100644
+index b716adacd815..9c9d78488bfa 100644
 --- a/drivers/net/ethernet/atheros/alx/ethtool.c
 +++ b/drivers/net/ethernet/atheros/alx/ethtool.c
-@@ -310,11 +310,47 @@ static int alx_get_sset_count(struct net_device *netdev, int sset)
+@@ -321,11 +321,47 @@ static int alx_get_sset_count(struct net_device *netdev, int sset)
  	}
  }
  
@@ -51,7 +72,7 @@ index 2f4eabf652e8..859e27236ce4 100644
  	.get_strings	= alx_get_strings,
  	.get_sset_count	= alx_get_sset_count,
 diff --git a/drivers/net/ethernet/atheros/alx/hw.c b/drivers/net/ethernet/atheros/alx/hw.c
-index 6ac40b0003a3..4791b9dbbe26 100644
+index 6ac40b0003a3..c5a785335fe1 100644
 --- a/drivers/net/ethernet/atheros/alx/hw.c
 +++ b/drivers/net/ethernet/atheros/alx/hw.c
 @@ -332,6 +332,16 @@ void alx_set_macaddr(struct alx_hw *hw, const u8 *addr)
@@ -71,14 +92,13 @@ index 6ac40b0003a3..4791b9dbbe26 100644
  static void alx_reset_osc(struct alx_hw *hw, u8 rev)
  {
  	u32 val, val2;
-@@ -848,6 +858,66 @@ void alx_post_phy_link(struct alx_hw *hw)
+@@ -848,6 +858,65 @@ void alx_post_phy_link(struct alx_hw *hw)
  	}
  }
  
-+
 +/* NOTE:
-+ *    1. phy link must be established before calling this function
-+ *    2. wol option (pattern,magic,link,etc.) is configed before call it.
++ *    1. PHY link must be already established.
++ *    2. WoL options (pattern, magic, link, etc.) must be configured.
 + */
 +int alx_pre_suspend(struct alx_hw *hw, int speed, u8 duplex)
 +{
@@ -138,7 +158,7 @@ index 6ac40b0003a3..4791b9dbbe26 100644
  bool alx_phy_configured(struct alx_hw *hw)
  {
  	u32 cfg, hw_cfg;
-@@ -920,6 +990,26 @@ int alx_clear_phy_intr(struct alx_hw *hw)
+@@ -920,6 +989,26 @@ int alx_clear_phy_intr(struct alx_hw *hw)
  	return alx_read_phy_reg(hw, ALX_MII_ISR, &isr);
  }
  
@@ -165,7 +185,7 @@ index 6ac40b0003a3..4791b9dbbe26 100644
  void alx_disable_rss(struct alx_hw *hw)
  {
  	u32 ctrl = alx_read_mem32(hw, ALX_RXQ0);
-@@ -1045,6 +1135,71 @@ void alx_mask_msix(struct alx_hw *hw, int index, bool mask)
+@@ -1045,6 +1134,71 @@ void alx_mask_msix(struct alx_hw *hw, int index, bool mask)
  }
  
  
@@ -274,7 +294,7 @@ index e42d7e0947eb..a7fb6c8d846a 100644
  void alx_update_hw_stats(struct alx_hw *hw);
  
 diff --git a/drivers/net/ethernet/atheros/alx/main.c b/drivers/net/ethernet/atheros/alx/main.c
-index 7748b276e5fd..5c01c429efff 100644
+index d30d11872719..92a07d335e82 100644
 --- a/drivers/net/ethernet/atheros/alx/main.c
 +++ b/drivers/net/ethernet/atheros/alx/main.c
 @@ -1069,6 +1069,7 @@ static int alx_init_sw(struct alx_priv *alx)
@@ -285,7 +305,7 @@ index 7748b276e5fd..5c01c429efff 100644
  	hw->imt = 200;
  	alx->int_mask = ALX_ISR_MISC;
  	hw->dma_chnl = hw->max_dma_chnl;
-@@ -1347,6 +1348,66 @@ static int alx_stop(struct net_device *netdev)
+@@ -1371,6 +1372,78 @@ static int alx_stop(struct net_device *netdev)
  	return 0;
  }
  
@@ -294,45 +314,55 @@ index 7748b276e5fd..5c01c429efff 100644
 +	struct alx_priv *alx = pci_get_drvdata(pdev);
 +	struct net_device *netdev = alx->dev;
 +	struct alx_hw *hw = &alx->hw;
-+	int err, speed;
++	int err = 0, speed;
 +	u8 duplex;
++
++	if (!netif_running(alx->dev))
++		return 0;
 +
 +	netif_device_detach(netdev);
 +
-+	if (netif_running(netdev))
-+		__alx_stop(alx);
++	mutex_lock(&alx->mtx);
++	__alx_stop(alx);
 +
-+#ifdef CONFIG_PM_SLEEP
 +	err = pci_save_state(pdev);
 +	if (err)
-+		return err;
-+#endif
++		goto out;
 +
 +	err = alx_select_powersaving_speed(hw, &speed, &duplex);
 +	if (err)
-+		return err;
++		goto out;
++
 +	err = alx_clear_phy_intr(hw);
 +	if (err)
-+		return err;
++		goto out;
++
 +	err = alx_pre_suspend(hw, speed, duplex);
 +	if (err)
-+		return err;
++		goto out;
++
 +	err = alx_config_wol(hw);
 +	if (err)
-+		return err;
++		goto out;
 +
 +	*wol_en = false;
 +	if (hw->sleep_ctrl & ALX_SLEEP_ACTIVE) {
-+		netif_info(alx, wol, netdev,
-+			   "wol: ctrl=%X, speed=%X\n",
++		netif_info(alx, wol, netdev, "wol enabled: ctrl=%X, speed=%X\n",
 +			   hw->sleep_ctrl, speed);
 +		device_set_wakeup_enable(&pdev->dev, true);
 +		*wol_en = true;
 +	}
 +
-+	pci_disable_device(pdev);
++	/* TODO: Sometimes, the pdev is apparently already disabled,
++	 * probably some race condition somewhere.
++	 * For now, just check to be sure.
++	 */
++	if (pci_is_enabled(pdev))
++		pci_disable_device(pdev);
 +
-+	return 0;
++out:
++	mutex_unlock(&alx->mtx);
++	return err;
 +}
 +
 +static void alx_shutdown(struct pci_dev *pdev)
@@ -340,19 +370,21 @@ index 7748b276e5fd..5c01c429efff 100644
 +	int err;
 +	bool wol_en;
 +
++	rtnl_lock();
 +	err = __alx_shutdown(pdev, &wol_en);
 +	if (!err) {
 +		pci_wake_from_d3(pdev, wol_en);
 +		pci_set_power_state(pdev, PCI_D3hot);
 +	} else {
-+		dev_err(&pdev->dev, "shutdown fail %d\n", err);
++		dev_err(&pdev->dev, "shutdown fail: %d\n", err);
 +	}
++	rtnl_unlock();
 +}
 +
  static void alx_link_check(struct work_struct *work)
  {
  	struct alx_priv *alx;
-@@ -1837,6 +1898,7 @@ static int alx_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+@@ -1865,6 +1938,7 @@ static int alx_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  		goto out_unmap;
  	}
  
@@ -360,17 +392,27 @@ index 7748b276e5fd..5c01c429efff 100644
  	netdev_info(netdev,
  		    "Qualcomm Atheros AR816x/AR817x Ethernet [%pM]\n",
  		    netdev->dev_addr);
-@@ -1877,42 +1939,74 @@ static void alx_remove(struct pci_dev *pdev)
+@@ -1909,17 +1983,24 @@ static void alx_remove(struct pci_dev *pdev)
  static int alx_suspend(struct device *dev)
  {
  	struct alx_priv *alx = dev_get_drvdata(dev);
+-
+-	if (!netif_running(alx->dev))
+-		return 0;
 +	struct pci_dev *pdev = alx->hw.pdev;
 +	int err;
 +	bool wol_en;
-+
+ 
+ 	rtnl_lock();
+-	netif_device_detach(alx->dev);
+-
+-	mutex_lock(&alx->mtx);
+-	__alx_stop(alx);
+-	mutex_unlock(&alx->mtx);
 +	err = __alx_shutdown(pdev, &wol_en);
+ 	rtnl_unlock();
 +	if (err) {
-+		dev_err(&pdev->dev, "shutdown fail in suspend %d\n", err);
++		dev_err(&pdev->dev, "failed to shutdown for suspend: %d\n", err);
 +		return err;
 +	}
 +
@@ -381,13 +423,9 @@ index 7748b276e5fd..5c01c429efff 100644
 +		pci_set_power_state(pdev, PCI_D3hot);
 +	}
  
--	if (!netif_running(alx->dev))
--		return 0;
--	netif_device_detach(alx->dev);
--	__alx_stop(alx);
  	return 0;
  }
- 
+@@ -1927,36 +2008,51 @@ static int alx_suspend(struct device *dev)
  static int alx_resume(struct device *dev)
  {
  	struct alx_priv *alx = dev_get_drvdata(dev);
@@ -396,66 +434,68 @@ index 7748b276e5fd..5c01c429efff 100644
 +	struct pci_dev *pdev = hw->pdev;
  	int err;
  
--	alx_reset_phy(hw);
+-	rtnl_lock();
+-	mutex_lock(&alx->mtx);
 +	pci_set_power_state(pdev, PCI_D0);
 +	pci_restore_state(pdev);
 +	pci_save_state(pdev);
- 
--	if (!netif_running(alx->dev))
--		return 0;
++
 +	pci_enable_wake(pdev, PCI_D3hot, 0);
 +	pci_enable_wake(pdev, PCI_D3cold, 0);
- 
--	rtnl_lock();
--	err = __alx_open(alx, true);
--	rtnl_unlock();
--	if (err)
--		return err;
++
 +	hw->link_speed = SPEED_UNKNOWN;
 +	alx->int_mask = ALX_ISR_MISC;
- 
--	netif_device_attach(alx->dev);
++
 +	alx_reset_pcie(hw);
-+	alx_reset_phy(hw);
+ 	alx_reset_phy(hw);
  
--	return 0;
--}
+-	if (!netif_running(alx->dev)) {
+-		err = 0;
+-		goto unlock;
 +	err = alx_reset_mac(hw);
 +	if (err) {
 +		netif_err(alx, hw, alx->dev,
-+			  "resume:reset_mac fail %d\n", err);
++			  "failed to reset MAC on resume: %d\n", err);
++		return -EIO;
+ 	}
+ 
+-	err = __alx_open(alx, true);
+-	if (err)
+-		goto unlock;
++	err = alx_setup_speed_duplex(hw, hw->adv_cfg, hw->flowctrl);
++	if (err) {
++		netif_err(alx, hw, alx->dev,
++			  "failed to set link speed on resume: %d\n", err);
 +		return -EIO;
 +	}
+ 
+-	netif_device_attach(alx->dev);
++	if (netif_running(netdev)) {
++		rtnl_lock();
++		err = __alx_open(alx, true);
++		rtnl_unlock();
++		if (err)
++			return err;
++	}
+ 
+-unlock:
+-	mutex_unlock(&alx->mtx);
+-	rtnl_unlock();
++	netif_device_attach(netdev);
+ 	return err;
+ }
  
 -static SIMPLE_DEV_PM_OPS(alx_pm_ops, alx_suspend, alx_resume);
 -#define ALX_PM_OPS      (&alx_pm_ops)
 -#else
 -#define ALX_PM_OPS      NULL
 -#endif
-+	err = alx_setup_speed_duplex(hw, hw->adv_cfg, hw->flowctrl);
-+	if (err) {
-+		netif_err(alx, hw, alx->dev,
-+			  "resume:setup_speed_duplex fail %d\n", err);
-+		return -EIO;
-+	}
- 
-+	if (netif_running(netdev)) {
-+		rtnl_lock();
-+		err = __alx_open(alx, true);
-+		rtnl_unlock();
-+
-+		if (err)
-+			return err;
-+	}
-+
-+	netif_device_attach(netdev);
-+	return err;
-+}
+-
 +#endif /* CONFIG_PM_SLEEP */
  
  static pci_ers_result_t alx_pci_error_detected(struct pci_dev *pdev,
  					       pci_channel_state_t state)
-@@ -1956,6 +2050,8 @@ static pci_ers_result_t alx_pci_error_slot_reset(struct pci_dev *pdev)
+@@ -2000,6 +2096,8 @@ static pci_ers_result_t alx_pci_error_slot_reset(struct pci_dev *pdev)
  	}
  
  	pci_set_master(pdev);
@@ -464,16 +504,11 @@ index 7748b276e5fd..5c01c429efff 100644
  
  	alx_reset_pcie(hw);
  	if (!alx_reset_mac(hw))
-@@ -2005,11 +2101,19 @@ static const struct pci_device_id alx_pci_tbl[] = {
+@@ -2049,13 +2147,16 @@ static const struct pci_device_id alx_pci_tbl[] = {
  	{}
  };
  
-+#ifdef CONFIG_PM_SLEEP
 +static SIMPLE_DEV_PM_OPS(alx_pm_ops, alx_suspend, alx_resume);
-+#define ALX_PM_OPS      (&alx_pm_ops)
-+#else
-+#define ALX_PM_OPS      NULL
-+#endif
 +
  static struct pci_driver alx_driver = {
  	.name        = alx_drv_name,
@@ -482,5 +517,11 @@ index 7748b276e5fd..5c01c429efff 100644
  	.remove      = alx_remove,
 +	.shutdown    = alx_shutdown,
  	.err_handler = &alx_err_handlers,
- 	.driver.pm   = ALX_PM_OPS,
+-	.driver.pm   = ALX_PM_OPS,
++	.driver.pm   = pm_sleep_ptr(&alx_pm_ops),
  };
+ 
+ module_pci_driver(alx_driver);
+-- 
+2.39.0
+
