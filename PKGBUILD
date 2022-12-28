@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61794.37542d94992
+pkgver=r61828.b228c778668
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -83,7 +83,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
-  "0001-fix-mesa-22.3.0-build.patch::https://raw.githubusercontent.com/LibreELEC/LibreELEC.tv/master/packages/mediacenter/kodi/patches/kodi-100.01.fix-mesa-22.3.0-build.patch"
+  0001-upstream-build-fixes-from-debian.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/22291.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -109,7 +109,7 @@ b2sums=('SKIP'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '7a351aa891015524f8377763dd1b9fbe1162c1431131995a75d9acdafa6c500f80ae01b0d2ac82e2be5ac286430cc15c8c2de6901da56c1d22d82d0566160a60')
+        '318f8f31d7033b62a3135f86dba87c3c5691d7fee0688aa7bc087157d8834a6ce54c9287fbfd4edd36e5ba6ea5ee8a39745361f7db8f66627ce6f59e85e4c1b2')
 
 pkgver() {
   cd "$_gitname"
@@ -124,7 +124,7 @@ prepare() {
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
-  patch -p1 -i ../0001-fix-mesa-22.3.0-build.patch
+  patch -p1 -i ../0001-upstream-build-fixes-from-debian.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
