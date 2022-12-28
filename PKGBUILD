@@ -4,15 +4,14 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-patched-filechooser-icon-view
-pkgver=3.24.35
-pkgrel=2
+pkgver=3.24.36
+pkgrel=1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
 url="https://github.com/Dudemanguy/gtk"
 depends=(
   adwaita-icon-theme
-  at-spi2-atk
   atk
   cairo
   cantarell-fonts
@@ -20,21 +19,28 @@ depends=(
   desktop-file-utils
   fribidi
   gdk-pixbuf2
+  glib2
+  harfbuzz
   gtk-update-icon-cache
   iso-codes
   libcloudproviders
   libcolord
   libcups
+  libegl
   libepoxy
+  libgl
   librsvg
   libxcomposite
+  libx11
   libxcursor
   libxdamage
+  libxext
+  libxfixes
   libxi
   libxinerama
   libxkbcommon
   libxrandr
-  mesa
+  libxrender
   pango
   shared-mime-info
   tracker3
@@ -51,12 +57,18 @@ makedepends=(
 )
 optdepends=('evince: Default print preview command'
             'glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
-provides=(gtk3=$pkgver gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
+provides=(
+  gtk3=$pkgver
+  gtk3-print-backends
+  libgailutil-3.so
+  libgdk-3.so
+  libgtk-3.so
+)
 conflicts=(gtk3 gtk3-print-backends)
 replaces=('gtk3-print-backends<=3.22.26-1')
 license=(LGPL)
 install=gtk3.install
-_commit=14cf55f98ddd71ad3f91487eda1c7f14d67de119  # tags/3.24.35^0
+_commit=35516a5e866cd77390eb71d72d5b67f45dc4302c  # tags/3.24.36^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
   gtk-query-immodules-3.0.hook
@@ -73,14 +85,6 @@ pkgver() {
 
 prepare() {
   cd gtk
-
-  # Crash in gnome-screenshot
-  # https://gitlab.gnome.org/GNOME/gtk/-/issues/4456
-  git cherry-pick -n e413f5c43259a22269aa1e75767dd545e10119b5
-
-  # https://bugs.archlinux.org/task/76651
-  # https://gitlab.gnome.org/GNOME/gtk/-/issues/5365
-  git cherry-pick -n 3f1536632f682c355d0c3abe1afc80cf975c2cce
 
   # apply icon-view patch
   git apply -3 ../gtk3-filechooser-icon-view.patch
