@@ -9,7 +9,7 @@ url="https://github.com/jaraco/jaraco.packaging"
 license=('MIT')
 depends=('python' 'python-build')
 makedepends=('python-installer' 'python-setuptools-scm' 'python-wheel')
-#makedepends+=('python-pip' 'python-rst.linker' 'python-sphinx-furo' 'python-sphinx-lint') # for building docs
+#makedepends+=('python-rst.linker' 'python-sphinx-furo' 'python-sphinx-lint') # for building docs
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('0aab5c32ce8c495dcc253028b46196d7e198f127b200a488d32b65cba8eee337')
 
