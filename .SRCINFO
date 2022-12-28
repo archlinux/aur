@@ -1,4 +1,4 @@
-pkgbase = lizzie-improve-git
+pkgbase = lizzie-improve
 	pkgdesc = Analysis interface for KataGo/Leela Zero, more features added by yzy
 	pkgver = r12.ba104a2
 	pkgrel = 1
@@ -11,7 +11,6 @@ pkgbase = lizzie-improve-git
 	depends = unzip
 	provides = lizzie
 	conflicts = lizzie
-	conflicts = lizzie-improve
 	source = https://github.com/yzyray/lizzieyzy/archive/refs/heads/main.zip
 	source = lizzie.sh
 	source = lizzie.desktop
@@ -23,4 +22,4 @@ pkgbase = lizzie-improve-git
 	sha256sums = 2d42917fd7a3b905696bcfcb7b0be96260cf88207db0cb4983e3082447fa7336
 	sha256sums = SKIP
 
-pkgname = lizzie-improve-git
+pkgname = lizzie-improve

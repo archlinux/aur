@@ -1,6 +1,6 @@
 # Maintainer: Ralph Zhou <ralph-zhou@qq.com>
 
-pkgname=lizzie-improve-git
+pkgname=lizzie-improve
 _gitname=lizzieyzy-main
 _pkgname=lizzie
 pkgver=r12.ba104a2
@@ -12,7 +12,7 @@ license=('GPLv3')
 depends=('bash' 'java-runtime' 'unzip')
 makedepends=('git')
 provides=('lizzie')
-conflicts=('lizzie' 'lizzie-improve')
+conflicts=('lizzie') 
 source=("https://github.com/yzyray/lizzieyzy/archive/refs/heads/main.zip"
         "lizzie.sh"
         "lizzie.desktop"
