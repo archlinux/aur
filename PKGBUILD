@@ -1,8 +1,8 @@
 # Maintainer: David Peter <mail@david-peter.de>
 _npmname=insect
-_npmver=5.7.0
+_npmver=5.8.0
 pkgname=insect
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(71ea692f793a9664b1f4aba4d79cb9ff6499501f)
+sha1sums=(519d459949d2b93290ab765c11a7596a7b4e2b70)
 
 package() {
   cd $srcdir
