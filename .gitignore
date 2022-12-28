@@ -1,0 +1,4 @@
+*.zst
+/comictagger/
+/pkg/
+/src/
