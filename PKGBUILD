@@ -10,7 +10,7 @@ url="https://www.motivewave.com"
 license=('custom')
 depends=('bc' 'ffmpeg' 'gtk2' 'gtk3' 'java-runtime' 'xorg-xrandr')
 source=("${pkgname}-${pkgver}.deb::https://www.motivewave.com/update/download.do?file_type=LINUX")
-sha512sums=('E0CBE2926492CA0EE3101B7832EACB253B803D1E7C777F422DA4022C205BD536D3A3EC4F4C943D6644523FCE5282B6C83CF730A28BE201EDB5D7605CB12688E6')
+sha512sums=('e0cbe2926492ca0ee3101b7832eacb253b803d1e7c777f422da4022c205bd536d3a3ec4f4c943d6644523fce5282b6c83cf730a28be201edb5d7605cb12688e6')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
