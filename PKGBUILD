@@ -5,7 +5,7 @@ pkgname=most-snapshot
 _pkgname=most
 pkgver=5.2.0
 _prever='5.2.0'
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,6 +16,7 @@ source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
 #validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis <davis@space.mit.edu>
 provides=('most')
 conflicts=('most')
+options=('lto')
 # Taken from https://jedsoft.org/snapshots/
 md5sums=('9677a974b85ca60c05f2c86063316faa')
 
