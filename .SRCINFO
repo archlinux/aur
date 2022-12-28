@@ -1,6 +1,6 @@
 pkgbase = dtkwidget-git
 	pkgdesc = Deepin graphical user interface library
-	pkgver = 5.6.0.2.r28.g01aae744
+	pkgver = 5.6.3.r20.g99113616
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkwidget
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = dtkwidget-git
 	depends = startup-notification
 	provides = dtkwidget
 	conflicts = dtkwidget
-	source = dtkwidget.tar.gz::https://github.com/linuxdeepin/dtkwidget/archive/01aae7443a2ae7c3071d62ba8f428a8835e41249.tar.gz
-	sha512sums = 04cd55bdc92c0c442440a13ba6fe7bf78658ce4ecabdb558a262218a71c6570f24c2f57c301ce8ebce3ff6016b216ce0b21b2fdb05733dc19ad8cd20284e4ced
+	source = dtkwidget-git::git+https://github.com/linuxdeepin/dtkwidget
+	sha512sums = SKIP
 
 pkgname = dtkwidget-git
