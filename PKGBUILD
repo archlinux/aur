@@ -12,7 +12,7 @@ pkgname=(
   "woff2-jena1330${_vcssuffix}"
 )
 pkgver=r105.20160920.75d5b9e
-pkgrel=5
+pkgrel=6
 pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.'
 arch=(
   'any'
@@ -82,15 +82,20 @@ build() {
 
 package_jena1330-latex-font-git() {
   pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX font, latest Git checkout.'
+  depends=("t1-jena1330${_vcssuffix}=${pkgver}")
   provides=("${pkgname%"${_vcssuffix}"}")
   conflicts=("${pkgname%"${_vcssuffix}"}")
 
   cd "${srcdir}/${_pkgbase}"
 
-  install -D -m644 -v "work/Jena1330.afm"                     "${pkgdir}/usr/share/texmf-dist/fonts/afm/public/jena1330/Jena1330.afm"
   install -D -m644 -v "work/Jena1330.tfm"                     "${pkgdir}/usr/share/texmf-dist/fonts/tfm/public/jena1330/Jena1330.tfm"
-  install -D -m644 -v "work/Jena1330.pfb"                     "${pkgdir}/usr/share/texmf-dist/fonts/type1/public/jena1330/Jena1330.pfb"
   install -D -m644 -v "work/jena1330.sty"                     "${pkgdir}/usr/share/texmf/tex/latex/jena1330/jena1330.sty"
+
+  ## Provided by t1-jena1330 -- create directories and then symlink the files:
+  install -d -m755 -v "${pkgdir}/usr/share/texmf-dist/fonts/afm/public/jena1330"
+  install -d -m755 -v "${pkgdir}/usr/share/texmf-dist/fonts/type1/public/jena1330"
+  ln -sv "/usr/share/fonts/Type1/Jena1330.afm"                "${pkgdir}/usr/share/texmf-dist/fonts/afm/public/jena1330/Jena1330.afm"
+  ln -sv "/usr/share/fonts/Type1/Jena1330.pfb"                "${pkgdir}/usr/share/texmf-dist/fonts/type1/public/jena1330/Jena1330.pfb"
 
   install -D -m644 -v 'work/BottomLeft.jpg'                   "${pkgdir}/usr/share/doc/${pkgname%"${_vcssuffix}"}/examples/BottomLeft.jpg"
   install -D -m644 -v 'work/TopRight.jpg'                     "${pkgdir}/usr/share/doc/${pkgname%"${_vcssuffix}"}/examples/TopRight.jpg"

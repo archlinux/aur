@@ -1,7 +1,7 @@
 pkgbase = jena1330-fonts-git
 	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.
 	pkgver = r105.20160920.75d5b9e
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.linta.de/Jena1330/
 	arch = any
 	license = OFL
@@ -18,6 +18,7 @@ pkgbase = jena1330-fonts-git
 
 pkgname = jena1330-latex-font-git
 	pkgdesc = A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX font, latest Git checkout.
+	depends = t1-jena1330-git=r105.20160920.75d5b9e
 	provides = jena1330-latex-font
 	conflicts = jena1330-latex-font
 
