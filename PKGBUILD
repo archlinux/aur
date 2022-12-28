@@ -1,10 +1,12 @@
 # Maintainer: Klaus Alexander Seistrup
 # -*- mode: sh -*-
 
-pkgname=slang-snapshot
-_pkgname=slang
-pkgver=2.3.3
-pkgrel=2
+pkgname='slang-snapshot'
+_pkgname='slang'
+_pkgver='2.3.4-5'
+_prever="pre$_pkgver"
+pkgver="${_pkgver/-/.}"
+pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('x86_64' 'armv7h' 'aarch64')
 provides=('slang')
@@ -17,43 +19,40 @@ depends=(
   'pcre'
 )
 backup=('etc/slsh.rc')
-options=('!makeflags')
-source=("${url}slang-$pkgver.tar.gz")
+options=('lto' '!makeflags')
+source=("${url}slang-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('4d6049513ae780ea6e288a46c3dc4d15')
+md5sums=('f4913d9b0f686fa00dfb0b165f30e900')
 
 build() {
-  cd "${_pkgname}-${pkgver}" || exit 1
-
-  export CFLAGS="$CFLAGS -flto=auto"
+  cd "${_pkgname}-${_prever}" || exit 1
 
   ./configure --prefix=/usr --sysconfdir=/etc
-
   make
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}" || exit 1
+  cd "${_pkgname}-${_prever}" || exit 1
 
   test "$CARCH" = 'i686' || make check
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}" || exit 1
+  cd "${_pkgname}-${_prever}" || exit 1
 
   make DESTDIR="${pkgdir}" install-all
 }
 
 # Calculated
 sha256sums=(
-  '3d091652ccb27026034093ba261de94492337e9ae69ed4e37f5a3ca22c74ccc2'
+  'f82d8ec4baa47dbf16e7e3b7b23ccc8ff9f426886b63f3fb1b97aa9d6c2b76f7'
 )
 sha512sums=(
-  '97cd6c704f9a7bc4e4f062443c56e51b2b26f4943fdc8bf54c86d427df608f4bcb8d5f7b2c6d26fa417c7a9905850fd9ad4ed84b91a8e8499446348ffa398d74'
+  '7c2ab5f3f4736c9671b715122be0fb39675ffc742902366f0b2261c11e28005ca9cb4c1eb966f310f085022be9632ee2c53aa56ef7c628c2f47578a8c2c7e9f2'
 )
 b2sums=(
-  'e8a2adc2f8bd81a8d5137e1a8e25a99110b56fb89db12afe8a2133b54ea0cec07a747cf04744f99f7e34d0e1ad278696b71f84e373c23c6f2c7fdf6dda0869a8'
+  '6105c2fa7ef1c9b20d78896e0b03f9676bb63b932ac3630a0c2f6879b3fd0d96f1289084fefd69e84c977c1b48494e5f8fbe928b76198bb3e057921a39bfb4e5'
 )
 
 # eof
