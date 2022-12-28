@@ -4,7 +4,7 @@
 
 pkgname=jabref-bin
 _pkgname=jabref
-pkgver=5.7
+pkgver=5.8
 
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; bin version which bundles the Java runtime"
@@ -13,8 +13,7 @@ url="https://www.jabref.org/"
 license=('MIT')
 provides=('jabref')
 conflicts=('jabref')
-depends=('glibc'
-         'freetype2'
+depends=('freetype2'
          'libxtst'
          'libnet'
          'libxrender'
@@ -26,7 +25,7 @@ source=(https://github.com/JabRef/jabref/releases/download/v${pkgver}/JabRef-${p
         jabref.sh
         JabRef.desktop
         JabRef.svg)
-sha256sums=('ab501f51487fbb9f01332f9a32331387545fcf3f77aaec38430c3fed62a4ae0d'
+sha256sums=('2a01b13435d6c7f5cbe808a757e4106db19d3f59ff0a64213f6ee90ddb90c648'
             '4cee727d46de1fe49a7e89e18584e87c031826517582923a1c4d93ae1e5138f6'
             '857807c9240181f5d7e783898e94e523beaba8b6b55617931141cbffba41c70d'
             '81a9ce53092525d1ba964435a0558654441a85e818581453a50df1045017c131'
@@ -46,7 +45,7 @@ package() {
   chmod +x ${pkgdir}/opt/jabref/lib/jabrefHost.py
 
   install -Dm755 jabref.sh ${pkgdir}/usr/bin/jabref
-  install -Dm755 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
+  install -Dm644 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
   install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.md
 }
