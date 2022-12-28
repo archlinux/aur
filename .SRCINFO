@@ -1,31 +1,17 @@
 pkgbase = xrcsimulator
 	pkgdesc = FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator
-	pkgver = 5.8f
+	pkgver = 9.0d
 	pkgrel = 1
 	url = http://xrcsimulator.org
 	arch = x86_64
 	license = unknown
-	depends = gtk2
+	depends = zlib
+	depends = bash
 	optdepends = openvr: For VR support
 	replaces = ftcfrcsimulator
-	source = xrcsimulator-5.8f.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1489
+	source = xrcsimulator-9.0d.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=1993
 	source = xrcsimulator.desktop
-	source = 16x16.png
-	source = 24x24.png
-	source = 32x32.png
-	source = 48x48.png
-	source = 64x64.png
-	source = 128x128.png
-	source = 256x256.png
-	sha1sums = c711b1c4d9748c0a0206af612834f03b179ed5d2
+	sha1sums = c3de9e1c8abba20360c12d2375e79cd6ce8597a8
 	sha1sums = 07ee699a267425f01c7e28c2369ba6521bd515ec
-	sha1sums = 7a0283d47e945b66a82dcbd11bdd10a6406dd027
-	sha1sums = deb5297344427dd07d8044543f1c023b0c4c001c
-	sha1sums = 01312dc1c5bbcb69c5b910c674d8f51c7564d8b3
-	sha1sums = bcb139939ae04ddabf011816d137e3c356e509c4
-	sha1sums = 02e1963f4a8fca718e0404f19341548b46e8fcdd
-	sha1sums = e0ed7e877be272cbe2ae5a5f4e913ee04bc5bb4c
-	sha1sums = 0359a58666f88aefa8403846b74b877587e9a306
 
 pkgname = xrcsimulator
-
