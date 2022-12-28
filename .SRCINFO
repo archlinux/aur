@@ -1,7 +1,7 @@
 pkgbase = ulauncher-git
 	pkgdesc = Application launcher for Linux
 	pkgver = DEV
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ulauncher.io
 	install = ulauncher.install
 	arch = any

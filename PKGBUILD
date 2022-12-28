@@ -5,7 +5,7 @@
 
 pkgname=ulauncher-git
 pkgver=DEV
-pkgrel=1
+pkgrel=2
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd ulauncher
-  desktop-file-validate "ulauncher.desktop"
+  desktop-file-validate "io.ulauncher.Ulauncher.desktop"
 }
 
 package() {
