@@ -1,6 +1,6 @@
 pkgbase = python-numpy-flame
 	pkgdesc = Scientific tools for Python, compiled with libFLAME
-	pkgver = 1.23.5
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = python-numpy-flame
 	depends = cblas
 	depends = libflame
 	depends = python
-	provides = python3-numpy=1.23.5
-	provides = python-numpy=1.23.5
+	provides = python3-numpy=1.24.1
+	provides = python-numpy=1.24.1
 	conflicts = python3-numpy
 	conflicts = python-numpy
 	options = staticlibs
-	source = https://github.com/numpy/numpy/releases/download/v1.23.5/numpy-1.23.5.tar.gz
-	sha256sums = 1b1766d6f397c18153d40015ddfc79ddb715cabadc04d2d228d4e5a8bc4ded1a
+	source = https://github.com/numpy/numpy/releases/download/v1.24.1/numpy-1.24.1.tar.gz
+	sha256sums = 2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2
 
 pkgname = python-numpy-flame
