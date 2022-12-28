@@ -1,0 +1,15 @@
+post_install() {
+  echo "Enable Super Micro Fan Control as systemd service"
+  echo "by running:"
+  echo "$ systemctl enable smfc.service"
+  echo
+  echo "This service depends on syslog-ng, make sure"
+  echo "it is running and has been configured correctly."
+  echo
+  echo "Modify /opt/smfc/smfc.conf and fill 'hd_names' with"
+  echo "the hard drive and/or SSD you'd like to monitor the"
+  echo "temperatures of."
+  echo
+  echo "Increase verbosity of the service by modifying"
+  echo "command-line arguments in /etc/default/smfc."
+}
