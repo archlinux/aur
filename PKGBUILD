@@ -33,7 +33,7 @@ sha256sums=('SKIP')
 prepare() {
   # init submodules
   cd $_projectname
-  git submodule update --init
+  git submodule update --init --recursive
 
   if [[ -d build ]]; then
     rm -rf build
