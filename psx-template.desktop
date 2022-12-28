@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=%_title% (%_uuid%)
+Comment=%pkgdesc%
+Type=Application
+TryExec=duckstation-qt
+Exec=duckstation-nogui -fullscreen "/usr/games/%_app_id%/%_uuid%.cue"
+Icon=%_app_id%
+Terminal=false
+Categories=Games;
+Keywords=PSX
+Actions=preferences;
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=duckstation-qt
+
+X-Desktop-File-Install-Version=0.26
