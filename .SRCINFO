@@ -1,6 +1,6 @@
 pkgbase = deepin-session-shell-git
 	pkgdesc = Deepin desktop-environment - session-shell module
-	pkgver = 5.5.24.r8.ga2f84d4
+	pkgver = 5.6.3.r9.g36589226
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-session-shell
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = deepin-session-shell-git
 	conflicts = deepin-session-ui<5
 	conflicts = deepin-session-shell
 	source = deepin-session-shell-git::git+https://github.com/linuxdeepin/dde-session-shell
+	source = dde-lock.pam
 	sha512sums = SKIP
+	sha512sums = 36fb91a00b57e43e0c3b00b85a8b7bcbf8e7eb2ea908ce81fcb06272e8516ee667feb1c37238067e17fb5bb4b3e3d1cf6778982268ab9873035e38f4748cd968
 
 pkgname = deepin-session-shell-git
