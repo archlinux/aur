@@ -17,7 +17,7 @@ source=("https://github.com/$_name/Addon/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('ae8af03e72047c93be2503153bd901d9')
 
 prepare() {
-  cd $pkgver
+  cd Addon-$pkgver
   sed -i 's/"default_locale": "en",/"default_locale": "en",\
     "browser_specific_settings": {\
       "gecko": {\
@@ -27,7 +27,7 @@ prepare() {
 }
 
 package() {
-  cd $pkgver
+  cd Addon-$pkgver
   install -d "$pkgdir"/usr/lib/firefox/browser/extensions
   zip -r \
     "$pkgdir"/usr/lib/firefox/browser/extensions/{74145f27-f039-47ce-a470-a662b129930a}.xpi \
