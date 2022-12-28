@@ -1,0 +1,10 @@
+# ignore build files
+
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.tar.gz
+*.sig
+*.log
+src/
+pkg/
+.cache/
