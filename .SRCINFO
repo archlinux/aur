@@ -1,0 +1,20 @@
+pkgbase = pa-age-git
+	pkgdesc = a simple password manager. encryption via age, written in portable posix shell
+	pkgver = r25.a78000e
+	pkgrel = 1
+	url = https://github.com/biox/pa
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = age
+	optdepends = bemenu: optional launcher
+	optdepends = dmenu: optional launcher
+	optdepends = fuzzel: optional launcher
+	optdepends = rofi: optional launcher
+	provides = pa
+	conflicts = pa
+	conflicts = pa-bin
+	source = git+https://github.com/biox/pa.git
+	sha256sums = SKIP
+
+pkgname = pa-age-git
