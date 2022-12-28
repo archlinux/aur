@@ -2,21 +2,40 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
 arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
 depends=('sqlite'
-         'openssl'
-         'libcrypt.so=2'
+         'libssl.so'
+         'libcrypt.so'
+         'libcrypto.so'
+         'libsqlite3.so'
          )
 makedepends=('icu'
              'net-snmp'
              'openslp'
              'setconf'
              'libxcrypt'
+             'openssl'
              )
+provides=('libpegclient.so'
+          'libpegcommon.so'
+          'libpegconfig.so'
+          'libpegexportserver.so'
+          'libpeggeneral.so'
+          'libpeghandler.so'
+          'libpegindicationservice.so'
+          'libpeglistener.so'
+          'libpegprovider.so'
+          'libpegprm.so'
+          'libpegrepository.so'
+          'libpegslp_client.so'
+          'libpegquerycommon.so'
+          'libpegqueryexpression.so'
+          'libpegwql.so'
+          )
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.7.0-PIE.patch'
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.9.0-no-rpath.patch'
@@ -91,24 +110,7 @@ build() {
 }
 
 package() {
-  _pegasus_lib=(
-                'libpegclient.so.1'
-                'libpegcommon.so.1'
-                'libpegconfig.so.1'
-                'libpegexportserver.so.1'
-                'libpeggeneral.so.1'
-                'libpeghandler.so.1'
-                'libpegindicationservice.so.1'
-                'libpeglistener.so.1'
-                'libpegprovider.so.1'
-                'libpegprm.so.1'
-                'libpegrepository.so.1'
-                'libpegslp_client.so.1'
-                'libpegquerycommon.so.1'
-                'libpegqueryexpression.so.1'
-                'libpegwql.so.1'
-                )
-  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" "${pkgdir}/usr/lib/${i}"; done
+  for i in ${provides[@]}.1; do install -Dm755 "${srcdir}/pegasus/lib/${i}" "${pkgdir}/usr/lib/${i}"; done
 
   # Create soname links
   _create_links
