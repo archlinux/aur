@@ -1,0 +1,18 @@
+pkgbase = nautilus-checksums-git
+	pkgdesc = Add checksums to Nautilus' properties window
+	pkgver = r1.6474434
+	pkgrel = 1
+	url = https://gitlab.gnome.org/madmurphy/nautilus-checksums
+	install = nautilus-checksums-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libnautilus-extension
+	provides = nautilus-checksums
+	conflicts = nautilus-checksums
+	conflicts = nautilus-checksums-bin
+	source = git+https://gitlab.gnome.org/madmurphy/nautilus-checksums.git
+	sha256sums = SKIP
+
+pkgname = nautilus-checksums-git
