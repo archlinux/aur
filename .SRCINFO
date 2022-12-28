@@ -1,6 +1,6 @@
 pkgbase = zork++-bin
 	pkgdesc = A modern C++ project manager and build system for modern C++
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/zerodaycode/Zork
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = zork++-bin
 	depends = zlib
 	provides = zork++
 	conflicts = zork++
-	source = zork++-bin-0.4.0.tar.gz::https://github.com/zerodaycode/Zork/releases/download/v0.4.0/zork-linux.tar.gz
-	source = zork++-bin-0.4.0-src.zip::https://github.com/zerodaycode/Zork/archive/refs/tags/v0.4.0.zip
-	sha256sums = 50ba8e45435df9e0e28e62a45ae9513b2a72be6f2754008f7dc22a91ad64ae3a
-	sha256sums = f644b24dc60872432e791b7908ac2ab7b2c9010b6a6d4ee4253c7ecf90ae7c66
+	source = zork++-bin-0.4.1.tar.gz::https://github.com/zerodaycode/Zork/releases/download/v0.4.1/zork-linux.tar.gz
+	source = zork++-bin-0.4.1-src.zip::https://github.com/zerodaycode/Zork/archive/refs/tags/v0.4.1.zip
+	sha256sums = 6b15c131cec5169320a9c2a6e47f06a574c4106fd8fbc1cab5aa066c07a85793
+	sha256sums = 9cd1a516f593ff7e5d52df7903c516e498d2e07b9fe2556f9605ac66e681027b
 
 pkgname = zork++-bin
