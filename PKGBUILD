@@ -5,6 +5,7 @@ pkgname=aercbook-bin
 pkgver=0.1.2
 pkgrel=1
 pkgdesc='A minimal address book for the aerc email client'
+provides=('aercbook')
 arch=('x86_64')
 url='https://git.sr.ht/~renerocksai/aercbook'
 license=('MIT')
