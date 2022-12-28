@@ -17,7 +17,6 @@ depends=(
   'pango'
   'python-cairocffi'
   'python-pywlroots>=0.15.24' 'python-pywlroots<0.16.0'
-  'xorg-xwayland'
 )
 
 makedepends=(
@@ -58,6 +57,7 @@ optdepends=(
   'python-psutil: graph, net and memory widget'
   'python-setproctitle: change process name to qtile'
   'python-xdg: launchbar widget'
+  'xorg-xwayland: XWayland support'
 )
 provides=('qtile')
 conflicts=('qtile')

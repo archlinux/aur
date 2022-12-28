@@ -29,7 +29,6 @@ pkgbase = qtile-wayland-git
 	depends = python-cairocffi
 	depends = python-pywlroots>=0.15.24
 	depends = python-pywlroots<0.16.0
-	depends = xorg-xwayland
 	optdepends = alsa-utils: volume widget
 	optdepends = canto-daemon: canto widget
 	optdepends = cmus: cmus widget
@@ -46,6 +45,7 @@ pkgbase = qtile-wayland-git
 	optdepends = python-psutil: graph, net and memory widget
 	optdepends = python-setproctitle: change process name to qtile
 	optdepends = python-xdg: launchbar widget
+	optdepends = xorg-xwayland: XWayland support
 	provides = qtile
 	conflicts = qtile
 	source = git+https://github.com/qtile/qtile
