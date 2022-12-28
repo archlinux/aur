@@ -1,6 +1,6 @@
 pkgbase = lceda-pro
 	pkgdesc = 免费、专业、强大的国产PCB设计工具
-	pkgver = 1.9.22
+	pkgver = 1.9.23
 	pkgrel = 1
 	url = https://pro.lceda.cn/
 	install = lceda-pro.install
@@ -22,11 +22,11 @@ pkgbase = lceda-pro
 	source = lceda-pro.install
 	sha256sums = 9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5
 	sha256sums = f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a
-	source_x86_64 = lceda-pro-x86_64-1.9.22.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-1.9.22.zip
-	sha256sums_x86_64 = 7384de23797f4289d1d1332cad9ec1f9994a18e20ff7b2ee67eea475f83a0fe7
-	source_aarch64 = lceda-pro-aarch64-1.9.22.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-1.9.22.zip
-	sha256sums_aarch64 = 2470089bd6a47c0bde4f029257142367cc4c342e19d749f05f4a5214039d0de1
-	source_loong64 = lceda-pro-loong64-1.9.22.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-1.9.22.zip
-	sha256sums_loong64 = 1c8ba2f70bdfa159447181a7de4a2b40411b35a1ac0b5cc51fe1ae743a8d43c0
+	source_x86_64 = lceda-pro-x86_64-1.9.23.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-1.9.23.zip
+	sha256sums_x86_64 = d0749914f985f9ad882eb9c30c13fd04d26b450125f1d485550518098cf3f6cc
+	source_aarch64 = lceda-pro-aarch64-1.9.23.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-1.9.23.zip
+	sha256sums_aarch64 = 432b6686323ae82427c6cb34ad0df1e71ea6cf8fe6701f6d1c16ef2a90520cc9
+	source_loong64 = lceda-pro-loong64-1.9.23.zip::https://image.lceda.cn/files/lceda-pro-linux-loong64-1.9.23.zip
+	sha256sums_loong64 = 0dbfaf5ea81670659432bd807b443dc44182be7ab02cbcc7ca420f931f802edd
 
 pkgname = lceda-pro
