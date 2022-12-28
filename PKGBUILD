@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=flacon-git
-pkgver=9.5.1.0.g9b3bef9
+pkgver=9.5.1.31.g79ffe9c
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64')
@@ -23,6 +23,7 @@ optdepends=('faac: For AAC support'
             'mac: For APE support'
             'mp3gain: For MP3 Replay Gain support'
             'vorbis-tools: For OGG support'
+            'opus-tools: For OPUS support'
             'ttaenc: For TrueAudio support'
             'vorbisgain: For OGG Replay Gain support'
             'wavpack: For WavPack support'
@@ -34,6 +35,7 @@ checkdepends=('faac'
               'lame'
               'mac'
               'vorbis-tools'
+              'opus-tools'
               'ttaenc'
               'wavpack'
               'alacenc-git'
