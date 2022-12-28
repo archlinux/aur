@@ -2,7 +2,7 @@
 
 pkgname=python-pairwisedist
 _module=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Calculate the pairwise-distance matrix for an array of n samples by p features'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
              'python-pytest-runner'
             )
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-md5sums=('fdd4e8e67ab8d8a6205bd1695aea75ca')
+md5sums=('9ff7554ab02ff78338ee5447b425caa2')
 
 build() {
     cd "$_module-$pkgver"
