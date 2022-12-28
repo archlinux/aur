@@ -3,7 +3,7 @@
 _target=m68k-elf
 pkgname=$_target-toolchain
 pkgver=20221227
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
