@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1274
+pkgver=mainline.0.1286
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
@@ -19,21 +19,21 @@ makedepends=(
 	'cpp-jwt>=1.4'
 	'cubeb>=r1486'
 	'dynarmic>=6.4'
-	'ffmpeg>=4.3.1'
+	'ffmpeg>=2:4.3.1'
 	'fmt>=9'
 	'git'
 	'glslang'
 	'libinih>=52'
 	'libusb>=1.0.24'
 	'libva'
-	'lz4>=1.8'
+	'lz4>=1:1.8'
 	'nlohmann-json>=3.8'
 	'openssl'
 	'opus>=1.3'
 	'qt5-tools>=5.15'
 	'sdl2>=2.0.18'
-	'spirv-headers>=1.2.198'
-	'vulkan-headers>=1.3.213'
+	'spirv-headers>=1:1.2.198'
+	'vulkan-headers>=1:1.3.238'
 	'xbyak>=6.64'
 	'zstd>=1.5'
 )
