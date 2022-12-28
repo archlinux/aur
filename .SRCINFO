@@ -1,6 +1,6 @@
 pkgbase = qspeakers
 	pkgdesc = DIY speaker design software
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = http://brouits.free.fr/qspeakers/
 	install = qspeakers.install
@@ -11,7 +11,7 @@ pkgbase = qspeakers
 	makedepends = qt5-tools
 	depends = qt5-charts
 	conflicts = qspeakers-svn
-	source = http://brouits.free.fr/qspeakers/qspeakers-1.6.4.tar.gz
-	sha256sums = e5441f009963758307ff9aca07061b723dd858c0d2d12220e1f1bd6a6280685f
+	source = http://brouits.free.fr/qspeakers/qspeakers-1.6.5.tar.gz
+	sha256sums = 96586d829d946987a4697bea30bffb8c5489d79e90592246b36f6977509d1f98
 
 pkgname = qspeakers
