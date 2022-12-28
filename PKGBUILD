@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-git
-pkgver=3.0.7.r1856.g8aa82b3370
+pkgver=3.1.0.beta1.r2065.g43a9e682d8
 pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
@@ -34,7 +34,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | grep "openssl-" | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^openssl-//'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^openssl-//;s/-/./g'
 }
 
 build() {
