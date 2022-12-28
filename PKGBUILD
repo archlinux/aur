@@ -1,6 +1,6 @@
 pkgname=fheroes2
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Recreation of the Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
@@ -13,7 +13,7 @@ optdepends=('curl: download demo version files'
 makedepends=('cmake' 'gettext' 'ninja')
 conflicts=('fheroes2-git')
 source=(
-  $pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz
+  "$pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz"
 )
 sha256sums=('80468b4eaf128ac5179a3416a02e2a2ef4ab34d90876b179fccd8d505f950440')
 
@@ -24,6 +24,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
+
+  make -C docs
 }
 
 package() {
@@ -32,6 +34,8 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -dm755 "$pkgdir/usr/share/fheroes2/maps"
+
+  install -Dm644 docs/fheroes2.6 "$pkgdir/usr/share/man/man6/fheroes2.6"
 }
 
 # vim:set ts=2 sw=2 et:
