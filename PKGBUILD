@@ -1,7 +1,7 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname="bambustudio"
-pkgver=01.04.00.17
+pkgver=01.04.01.52
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers"
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=(
   'CMakeLists.txt.patch'
   'bambu-studio.sh'
   )
-sha512sums=('f4ef1212163e11373eca317eafafcc324a5fdb41a8cba3da17fb166bbea1a27a55a8aa1f3810648131c1235b681f8b1e8c8cf784bccf144620a67fe467f77689'
+sha512sums=('a03dbb7d2dd7b3db7ab00934224dc54da754f3cf1bd4ab0b3799f1b2549426b2bc719a0fe9407093cd9b82b085c69f1ca6c999cd7d30ad699bf3440351aa4b0d'
             '419e7ffb8044531a1c78cd191a96c11f719b439afce674f7e31d1d2e0dc57ecc03cea27ab4ad5ee6522606630fd59ac1745b9a1b787db14893561a4495806117'
             '674fc00a73b2e5997e5f3dcf74299a2ab5dfac5114247f8b6b0c87bf14f289413ec668a39063ef10a557cc2c45ca08e52a7b1714a1f9f69763edf3a7faa1d01c'
-            'd9161e40ceee4d9600ed5c1b76db0080b5e70425877adcf13603f7bcdea17f2149d9444b458e023db93f758d078b47cca91af6878d104c690ffe389ec01e84a7'
+            '04d46a8b3ffe459ff19e94a2545f1e7b2cca336d3a3688b7aefbafbfe341301009cf61b59c1901629bbc9919e0a5e0462fb3346d5b72d3264b03e9175fa54c5a'
             'e3cb1b072754ae6443fa136fffa263761b5e4e3da5dca1e91b7c4d577daaf01afa0affde04f1355fc404fcd336852db4ce8dc57938833f864346a0b17c12d6d6')
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
   # fix broken udev install reference
   patch -p0 < "$srcdir/CMakeLists.txt.patch"
   # remove invalid UTF-8 chars
-  patch -p0 < "$srcdir/TreeSupport.cpp.patch"
+#  patch -p0 < "$srcdir/TreeSupport.cpp.patch"
 }
 
 build() {
