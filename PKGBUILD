@@ -4,7 +4,7 @@
 pkgname=sunshine
 pkgver=0.16.0
 pkgrel=1
-pkgdesc="Sunshine is a Gamestream host for Moonlight."
+pkgdesc="Sunshine is a self-hosted game stream host for Moonlight."
 arch=('x86_64' 'i686')
 url=https://app.lizardbyte.dev
 license=('GPL3')
@@ -16,7 +16,7 @@ optdepends=('cuda' 'libcap' 'libdrm')
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=27919697a7388b953bca9fc26df52bc47dfe17d2")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=88a450bf1f781d5cbad47b56960686b05ac0ba33")
 sha256sums=('SKIP')
 
 prepare() {
