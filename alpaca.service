@@ -1,0 +1,11 @@
+[Unit]
+Description=Alpaca Proxy Server
+After=network.target
+
+[Service]
+EnvironmentFile=%h/.config/alpaca.environment
+ExecStart=/usr/bin/alpaca -C ${PAC_URL} -l ${LISTEN_ADDRESS} -p ${LISTEN_PORT}
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
