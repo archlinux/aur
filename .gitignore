@@ -1,3 +1,4 @@
-pkg
-src
-lensfun*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
