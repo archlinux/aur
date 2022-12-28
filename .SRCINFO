@@ -1,5 +1,5 @@
 pkgbase = mounriver-studio-community-bin
-	pkgver = 120
+	pkgver = 130
 	pkgrel = 1
 	url = http://www.mounriver.com/
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = mounriver-studio-community-bin
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
 	optdepends = wchisp: WCH ISP Tool in Rust
 	provides = MounRiver-Studio-Community-Linux
-	noextract = mounriver-studio-community-bin-120.tar.xz
+	noextract = mounriver-studio-community-bin-130.tar.xz
 	options = !strip
-	source = mounriver-studio-community-bin-120.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V120.tar.xz
-	sha256sums = 2b1816b4ef5f6046897d168948851c9214a079d8c6935e4b8fdc295894f7e89a
+	source = mounriver-studio-community-bin-130.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V130.tar.xz
+	sha256sums = dd692f617b1c67a66d27a85d3e19e65668e8f462df7a732d6cd40803d663c762
 
 pkgname = mounriver-studio-community-bin
 	pkgdesc = 为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。
