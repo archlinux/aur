@@ -1,35 +1,34 @@
-# Maintainer: Luís Ferreira <contact@lsferreira.net>
-
-pkgname=vulkan-headers-git
-pkgver=r232.c51545d3
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Luís Ferreira <contact@lsferreira.net>
+_pkgname=vulkan-headers
+pkgname=$_pkgname-git
+pkgver=1.3.238.r5.gb232cb2
 pkgrel=1
 pkgdesc="Vulkan header files"
-groups=('vulkan-devel')
 arch=('any')
 url="https://github.com/KhronosGroup/Vulkan-Headers"
-provides=('vulkan-headers' 'vulkan-hpp')
 license=('Apache')
-conflicts=('vulkan-headers')
-source=("git+https://github.com/KhronosGroup/Vulkan-Headers.git")
-sha512sums=('SKIP')
-makedepends=(cmake git)
+groups=('vulkan-devel')
+makedepends=('cmake' 'git')
+provides=("$_pkgname=1:$pkgver" "vulkan-hpp=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
+
 pkgver() {
-  cd "$srcdir/Vulkan-Headers"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	git describe --long --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/Vulkan-Headers"
-
-  rm -rf build ; mkdir build ; cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    ..
-  make
+	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  cd "$srcdir/Vulkan-Headers/build"
-
-  make DESTDIR="${pkgdir}" install
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
 }
