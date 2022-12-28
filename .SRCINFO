@@ -27,6 +27,7 @@ pkgbase = kimi-linphone-desktop
 	makedepends = qt5-webview
 	makedepends = qt5-xcb-private-headers
 	makedepends = yasm
+	makedepends = chrpath
 	depends = glew
 	depends = gsm
 	depends = hicolor-icon-theme

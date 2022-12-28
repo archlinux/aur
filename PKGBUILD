@@ -9,7 +9,7 @@ url="https://linphone.org"
 license=('GPL3')
 # During compilation problems, use gcc from the previous release, for instance 'gcc11'
 depends=('glew' 'gsm' 'hicolor-icon-theme' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech')
-makedepends=('cmake' 'doxygen' 'git' 'glew' 'gcc' 'make' 'nasm' 'pandoc' 'patch' 'python-pystache' 'python-six' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech' 'qt5-tools' 'qt5-wayland' 'qt5-webview' 'qt5-xcb-private-headers' 'yasm')
+makedepends=('cmake' 'doxygen' 'git' 'glew' 'gcc' 'make' 'nasm' 'pandoc' 'patch' 'python-pystache' 'python-six' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-speech' 'qt5-tools' 'qt5-wayland' 'qt5-webview' 'qt5-xcb-private-headers' 'yasm' 'chrpath')
 install=${pkgname}.install
 # A 'release' is usually selected by adding the tag
 # '#tag=x.y.z'
@@ -183,16 +183,17 @@ build() {
     #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     # 	 -DCMAKE_SKIP_RPATH=ON
+    #	 -DCMAKE_SKIP_INSTALL_RPATH=ON
     echo cmake -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE" \
 	 -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS \
 	 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	 -DENABLE_UPDATE_CHECK=OFF \
-	 -DCMAKE_SKIP_INSTALL_RPATH=ON
+	 -DCMAKE_SKIP_RPATH=ON
     cmake -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE" \
 	  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS \
 	  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	  -DENABLE_UPDATE_CHECK=OFF \
-	  -DCMAKE_SKIP_INSTALL_RPATH=ON
+	  -DCMAKE_SKIP_RPATH=ON
     #echo "Showing the result:"
     #find "$BUILD_IT_HERE"
     echo "--- cmake configuration should have completed here ---"
@@ -201,6 +202,8 @@ build() {
     #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
     echo cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
     cmake --build "$BUILD_IT_HERE" --target install --parallel $PARALLEL_JOBS --config RelWithDebInfo
+    # Fix RPATH error during packaging
+    chrpath -d ${builddir}/OUTPUT/bin/linphone
     echo "--- Build should have completed here ---"
     echo "--- Exiting section build() ---"
 }
