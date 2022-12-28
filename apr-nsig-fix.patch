@@ -1,9 +1,9 @@
-diff -Naur freeswitch-1.10.7.pristine/libs/apr/include/apr_general.h freeswitch-1.10.7/libs/apr/include/apr_general.h
---- freeswitch-1.10.7.pristine/libs/apr/include/apr_general.h	2021-10-28 16:05:37.752029385 +0000
-+++ freeswitch-1.10.7/libs/apr/include/apr_general.h	2021-10-28 16:08:18.345230793 +0000
+diff -Naur freeswitch-1.10.8.pristine/libs/apr/include/fspr_general.h freeswitch-1.10.8/libs/apr/include/fspr_general.h
+--- freeswitch-1.10.8.pristine/libs/apr/include/fspr_general.h	2022-12-28 12:25:07.076204573 +0000
++++ freeswitch-1.10.8/libs/apr/include/fspr_general.h	2022-12-28 12:26:34.536771598 +0000
 @@ -29,9 +29,9 @@
- #include "apr_pools.h"
- #include "apr_errno.h"
+ #include "fspr_pools.h"
+ #include "fspr_errno.h"
  
 -#if !defined(_ANSI_SOURCE) && defined(_DARWIN_C_SOURCE)
 -#define NSIG __DARWIN_NSIG

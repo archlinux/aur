@@ -1,0 +1,12 @@
+diff -Naur freeswitch-1.10.8.pristine/src/mod/event_handlers/mod_event_zmq/Makefile.am freeswitch-1.10.8/src/mod/event_handlers/mod_event_zmq/Makefile.am
+--- freeswitch-1.10.8.pristine/src/mod/event_handlers/mod_event_zmq/Makefile.am	2022-12-28 19:08:53.136009309 +0000
++++ freeswitch-1.10.8/src/mod/event_handlers/mod_event_zmq/Makefile.am	2022-12-28 19:09:28.626542887 +0000
+@@ -2,7 +2,7 @@
+ MODNAME=mod_event_zmq
+ ZMQ=zeromq-2.1.9
+ 
+-ZMQ_BASEURL=http://download.zeromq.org
++ZMQ_BASEURL=https://github.com/zeromq/zeromq2-x/releases/download/v2.1.9
+ ZMQ_BASEURL_ALT=http://download.zeromq.org/historic
+ 
+ ZMQ_DIR=$(switch_srcdir)/libs/$(ZMQ)

@@ -2,8 +2,7 @@
 # Contributor: Brent Saner <r00t (at) square-r00t (dot) net>
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
-validpgpkeys=('412D089B780A1E986489A79F3BE997D520108D8F'
-              '748231EBCBD808A14F5E85D28C004C2F93481F6B')
+validpgpkeys=('071C6FAFDA426F1F3984C488E56023217FBB112D')
 
 # This builds the FreeSWITCH open source telephone engine
 # from the freeswitch git.  It enables the following modules
@@ -166,8 +165,8 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.10.7
-pkgrel=2
+pkgver=1.10.8
+pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -227,6 +226,7 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
 	 'freeswitch-arch.patch'  # required for 1.6.17
          'apr-nsig-fix.patch'
          'python-3.10.patch'
+         'fix-zmq-url.patch'
          'freeswitch.conf.d.sig'
          'README.freeswitch.sig'
          'run.freeswitch.sig'
@@ -235,7 +235,8 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'freeswitch.service.sig'
 	 'freeswitch-arch.patch.sig'
          'apr-nsig-fix.patch.sig'  # required for 1.6.17
-         'python-3.10.patch.sig' )
+         'python-3.10.patch.sig'
+         'fix-zmq-url.patch.sig' )
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -245,8 +246,10 @@ sha512sums=('SKIP'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
 	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
-            'd82ab534e9912d7440e66643c30d9e2691973f8915a00ed7c794fc8fc3649439fe6538d3b17e2eb2838a448ef394a613fb89429afa70055cdcaefd54339f6022'
+            'dd23352fe208b1c7f36ff6dec9ff8288795f99448273e5ec38fd44deb3eb37a8756ad55225bce31f464e3ae43afe4c38883d64f251bc3f0c529890009a3324e9'
             '4739be0c1c6783ace2bd10f7573b1ca86be013d21a7f973b5fd348c98fb9ed1a548baacee6bb65b7501251106c8dbd7266997f8699d2d7070a2bd7efe145b866'
+            'cf55641654538af737246f9c838b98c081cf4b00e5713b821b86e0fc02df7b6605ea26fed9b5e9d3740a7766ac33d6effec324d3cc9ed6a7d6faeb9ba744f35f'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -275,6 +278,7 @@ prepare() {
 
   patch -Np1 -i ../apr-nsig-fix.patch
   patch -Np1 -i ../python-3.10.patch
+  patch -Np1 -i ../fix-zmq-url.patch
 
   # BUILD BEGINS
   msg "Bootstrapping..."
