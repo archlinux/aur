@@ -5,17 +5,18 @@
 pkgname=addinclude-git
 _pkgname=addinclude
 _authorname=xyproto
-pkgver=1.1.1
+pkgver=1.2.0
+#.r5.g4997fa0
 #.r1.g9d6e3c8
 pkgrel=1
 pkgdesc='Add include statements to header and sourcefiles, for C and C++'
 arch=(x86_64)
 url='https://github.com/xyproto/addinclude'
 license=(GPL2)
-makedepends=(go)
+makedepends=('go' 'git')
 provides=(addinclude)
 conflicts=(addinclude)
-source=("${_pkgname}::git://github.com/${_authorname}/${_pkgname}.git#branch=main")
+source=("${_pkgname}::git+https://github.com/${_authorname}/${_pkgname}.git#branch=main")
 
 pkgver() {
         cd "${_pkgname}"
