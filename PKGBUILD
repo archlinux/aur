@@ -10,14 +10,14 @@ readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
 pkgver="2022.11"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Free, open source crypto trading bot."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
 license=("GPL3")
 # TODO "python-xgboost-git"
-depends=("python" "python-aiofiles" "python-aiohttp" "python-arrow" "python-blosc" "python-cachetools" "python-catboost" "python-ccxt" "python-colorama" "python-cryptography" "python-dateutil" "python-fastapi" "python-filelock" "python-gym" "python-janus" "python-jinja" "python-joblib" "python-jsonschema" "python-lightgbm" "python-numpy" "python-orjson" "python-pandas" "python-pandas-ta" "python-plotly" "python-progressbar" "python-psutil" "python-py-find-1st" "python-pyarrow" "python-pycoingecko" "python-pydantic" "python-pyjwt" "python-prompt_toolkit" "python-pytorch" "python-questionary" "python-rapidjson" "python-requests" "python-schedule" "python-scikit-learn" "python-scikit-optimize" "python-scipy" "python-sdnotify" "python-sqlalchemy" "python-stable-baselines3" "python-stable-baselines3-contrib" "python-starlette" "python-ta-lib" "python-tables" "python-tabulate" "python-technical" "python-telegram-bot" "python-tensorflow" "python-urllib3" "python-uvloop" "python-websockets" "tensorboard" "uvicorn")
-makedepends=("python-build" "python-installer" "rsync")
+depends=("python" "python-aiofiles" "python-aiohttp" "python-arrow" "python-blosc" "python-cachetools" "python-catboost" "python-ccxt" "python-colorama" "python-cryptography" "python-dateutil" "python-fastapi" "python-filelock" "python-gym" "python-janus" "python-jinja" "python-joblib" "python-jsonschema" "python-lightgbm" "python-numpy" "python-orjson" "python-pandas" "python-pandas-ta" "python-plotly" "python-progressbar" "python-prompt_toolkit" "python-psutil" "python-py-find-1st" "python-pyarrow" "python-pycoingecko" "python-pydantic" "python-pyjwt" "python-pytorch" "python-questionary" "python-rapidjson" "python-requests" "python-schedule" "python-scikit-learn" "python-scikit-optimize" "python-scipy" "python-sdnotify" "python-sqlalchemy" "python-stable-baselines3" "python-stable-baselines3-contrib" "python-starlette" "python-ta-lib" "python-tables" "python-tabulate" "python-technical" "python-telegram-bot" "python-tensorflow" "python-urllib3" "python-uvloop" "python-websockets" "systemd" "tensorboard" "uvicorn")
+makedepends=("python-build" "python-installer")
 checkdepends=(
     "python-httpx" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-pytest-mock" "python-pytest-random-order" "python-time-machine")
 conflicts=("python-freqtrade-git")
@@ -43,7 +43,6 @@ check()
 
 package()
 {
-    # TODO
     declare _site_packages
     _site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
     readonly _site_packages
@@ -56,13 +55,12 @@ package()
     # Install the software.
     cd "${srcdir}"/"${_pkgname}"-"${pkgver}"/ || exit 1
     python -m installer -d "${pkgdir}" "${srcdir}"/"${_pkgname}"-"${pkgver}"/dist/*.whl
-    install -Dm644 "${srcdir}"/freqtrade@.service "${pkgdir}"/usr/lib/systemd/system/
-
-    # TODO
     rm -r "${pkgdir}"/"${_site_packages}"/tests/
 
-    rsync -r "${srcdir}"/assets/ "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/assets/
+    cp -r "${srcdir}"/assets/ "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
     install -Dm644 "${srcdir}"/favicon.ico "${srcdir}"/index.html "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
+
+    install -Dm644 "${srcdir}"/freqtrade@.service "${pkgdir}"/usr/lib/systemd/system/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
