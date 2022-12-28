@@ -1,0 +1,21 @@
+pkgbase = mines-tui
+	pkgdesc = A Terminal based Minesweeper implementation
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Judro/mines
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = ncurses
+	depends = ncurses
+	provides = mines
+	source = git+https://github.com/Judro/mines
+	md5sums = SKIP
+
+pkgname = mines-tui
