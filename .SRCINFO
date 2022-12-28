@@ -1,6 +1,6 @@
 pkgbase = lib32-libarchive
 	pkgdesc = library that can create and read several streaming archive formats (32 bit)
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://libarchive.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lib32-libarchive
 	depends = lib32-zlib
 	depends = lib32-zstd
 	depends = libarchive
-	source = http://libarchive.org/downloads/libarchive-3.6.1.tar.gz
-	sha512sums = 58f7ac0c52116f73326a07dec10ff232be33b318862078785dc39f1fb2f8773b5194eabfa14764bb51ce6a5a1aa8820526e7f4c76087a6f4fcbe7789a22275b4
+	source = http://libarchive.org/downloads/libarchive-3.6.2.tar.gz
+	sha512sums = 24e476465054a29a2d48adf3c197a171b5361fa5038729a1f14d578c6701424de4e5dd6a2b20a6b697969ab43bdd8afc1585f8de0465c266f455d7eaa19e5048
 
 pkgname = lib32-libarchive
