@@ -3,7 +3,7 @@
 
 pkgname=coil64
 _gitname=Coil64
-pkgver=2.1.25
+pkgver=2.1.26
 pkgrel=1
 pkgdesc="Coil inductance calculator (formerly Coil32)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://coil32.net/"
 license=('GPL3')
 depends=('qt5-base')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/radioacoustick/$_gitname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('67dad390ddfb2f2659104a76f54a7ea4974e11e9fa60432ce59d8678f7b0c8633dbc40c30d580765622919d5eeb024b5ab03a235281f2bd4abee7f55cbf2b253')
+b2sums=('811805c27477ab9b987e16201ec45b04c924b8a923d6d62f697c576fb0363a899bf91ad7f68ce3e8337667070ad3d9c458690c2daf6c1b9c3635c81fc2fe7a0d')
 
 prepare() {
 	# Arch prefers executables be compiled position-independent
