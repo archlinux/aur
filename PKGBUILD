@@ -4,7 +4,7 @@
 pkgname=remmina-appindicator
 _pkgname=remmina
 epoch=1
-pkgver=1.4.27
+pkgver=1.4.29
 pkgrel=1
 pkgdesc='remote desktop client written in GTK+ (compiled with appindicator and with some basic plugins added)'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(GPL)
 depends=(
     avahi
     freerdp
-    libappindicator-gtk3
+    libayatana-appindicator
     libgcrypt
     libsecret
     libsodium
@@ -35,6 +35,7 @@ makedepends=(
     gtk-vnc
     harfbuzz
     libvncserver
+    ninja
     spice-gtk
     spice-protocol
     telepathy-glib
@@ -56,15 +57,15 @@ replaces=(
     remmina
 )
 source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/Remmina/Remmina/-/archive/v${pkgver/rc/-rc}/Remmina-v${pkgver/rc/-rc}.tar.bz2")
-sha512sums=('44bc067eaf2c4c10e42182aa7c3ec2aa18ec5c0ce51a2fc765884cbfc11261d3c0db537b1674424aa092caf171e647714dcc8af6d813273f7b96876a251e0575')
+sha512sums=('8fbe822d07ec800bb739579b373003ee56cbc661fd0b635e5a7af0369d2e5450e7116907a87c34e82704c2aab790ac501ee6331946751660321c917ffd9a183e')
 
 build() {
-  cmake -S Remmina-v${pkgver/rc/-rc} -B build \
+  cmake -S Remmina-v${pkgver/rc/-rc} -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DWITH_APPINDICATOR=ON \
     -DWITH_NEWS=OFF \
-    -DWITH_KF5WALLET=ON \
+    -DWITH_KF5WALLET=OFF \
     -DWITH_X2GO=ON \
     -DWITH_GVNC=ON
   cmake --build build
