@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@163.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
-pkgver=18.2.0
+pkgver=18.2.1
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
