@@ -1,6 +1,6 @@
 pkgbase = moosync-git
 	pkgdesc = A simple music player
-	pkgver = VERSION
+	pkgver = v6.0.0.r1.g33ca3245
 	pkgrel = 1
 	url = https://github.com/Moosync/Moosync
 	arch = any
