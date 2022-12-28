@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-tetris && ./rusted-tetris'
+Icon=/usr/share/pixmaps/rusted-tetris_icon.png
+Name=Rusted tetris
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Tetris - written in Rust

@@ -1,0 +1,15 @@
+pkgbase = rusted-tetris
+	pkgdesc = Tetris written in Rust
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/denix666/tetris
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/tetris/releases/download/v0.2.1/tetris_linux_x86_64.tar.gz
+	source = rusted-tetris_icon.png
+	source = rusted-tetris.desktop
+	sha256sums = 4f2fc3085db15d9a51f4f1f5bfc7d11ab8b18813787c062874b45af08316964d
+	sha256sums = 5e7f6b69d0d26f3c9bbff52a2df17e23a66da111c2da6a706f7940ff971fc072
+	sha256sums = 1a0451ff538aff6225498ebb2091e8ad2ad4c7e5955b56e74a2dd3c2d089a26c
+
+pkgname = rusted-tetris
