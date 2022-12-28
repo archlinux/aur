@@ -2,7 +2,7 @@
 
 _pkgname=vim
 pkgname=gvim-gtk2
-pkgver=9.0.1097
+pkgver=9.0.1107
 pkgrel=1
 pkgdesc="Vim, the text editor. CLI version and GTK2 GUI providing majority of features."
 arch=("i686" "x86_64")
