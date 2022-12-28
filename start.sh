@@ -38,7 +38,7 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --symlink usr/lib64 /lib64 \
     --symlink usr/bin /bin \
     --ro-bind /usr /usr \
-    --ro-bind /opt/QQ /opt/QQ \
+    --ro-bind /opt /opt \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
