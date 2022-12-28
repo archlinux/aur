@@ -1,6 +1,6 @@
 pkgbase = opencv3-opt
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version)
-	pkgver = 3.4.18
+	pkgver = 3.4.19
 	pkgrel = 1
 	url = http://opencv.org/
 	arch = x86_64
@@ -31,11 +31,11 @@ pkgbase = opencv3-opt
 	optdepends = hdf5: support for HDF5 format
 	optdepends = opencl-icd-loader: For coding with OpenCL
 	optdepends = python-numpy: Python interface
-	source = opencv-3.4.18.tar.gz::https://github.com/opencv/opencv/archive/3.4.18.zip
-	source = opencv_contrib-3.4.18.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.18.tar.gz
+	source = opencv-3.4.19.tar.gz::https://github.com/opencv/opencv/archive/3.4.19.zip
+	source = opencv_contrib-3.4.19.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.19.tar.gz
 	source = opencv-tbb.patch::https://raw.githubusercontent.com/DrAtomic/opencv-tbb-patch/main/opencv-tbb.patch
-	sha256sums = 5cf471bd1a5bcfd96d436b359a37d590cc184b6061422eef7d89e063522da1bf
-	sha256sums = 599bb4d3800a9523a91cecedb7f6d4316890275a39b8f9d66f73263f29ea1f61
+	sha256sums = 9ed59b3939196621253ccc4fcd31f03ae3135fc7f2ff658e9965f3b72b5aa93a
+	sha256sums = 4e7426f1d0f8dffafa5fe70b72ab33997d0055c7804d7d2760c7ff0a153efb38
 	sha256sums = e604f6effe0b2aacd19ad5e11544589f76ffed816036964963984ab8912266f0
 
 pkgname = opencv3-opt
@@ -44,5 +44,5 @@ pkgname = opencv3-opt
 
 pkgname = opencv3-opt-samples
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version) (samples)
-	depends = opencv3-opt=3.4.18
+	depends = opencv3-opt=3.4.19
 	provides = opencv3-samples
