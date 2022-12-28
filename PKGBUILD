@@ -2,7 +2,7 @@
 
 _gemname=sawsge
 pkgname=sawsge
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Simple Markdown static site generator for blogs or projects'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-tomlrb pandoc ruby-pandoc-ruby ruby-nokogiri ruby-parallel)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('547b45701d41ff452fce88ac5d76da7cf3e18a82a1026f44dce8c0a464e99489')
+sha256sums=('6ae33bbc23f25f46b02f2f1ed9d4fe296cfbd94f1c145fba7941748a1a98d1a4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
