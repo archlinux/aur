@@ -1,5 +1,5 @@
 pkgname=openwsman
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
 source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d260464c8af4c009c743778c667df02a2f558a216a5dfb79ebbef75fc947ba6f')
+sha256sums=('f916b20956a64426c60a34fa2eaf2c8a13c7047ea2d2585329a6f33e00113be1')
 
 build() {
 	cd "$pkgname-$pkgver"

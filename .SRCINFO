@@ -1,6 +1,6 @@
 pkgbase = openwsman
 	pkgdesc = Opensource Implementation of WS-Management
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://openwsman.github.io/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = openwsman
 	backup = etc/openwsman/openwsman_client.conf
 	backup = etc/openwsman/ssleay.cnf
 	backup = etc/pam.d/openwsman
-	source = https://github.com/Openwsman/openwsman/archive/v2.7.1/openwsman-2.7.1.tar.gz
-	sha256sums = d260464c8af4c009c743778c667df02a2f558a216a5dfb79ebbef75fc947ba6f
+	source = https://github.com/Openwsman/openwsman/archive/v2.7.2/openwsman-2.7.2.tar.gz
+	sha256sums = f916b20956a64426c60a34fa2eaf2c8a13c7047ea2d2585329a6f33e00113be1
 
 pkgname = openwsman
