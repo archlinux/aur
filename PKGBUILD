@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Pipeline for bulk segregant analysis. doi:10.7717/peerj.13170'
 arch=('x86_64')
 url="https://github.com/YuSugihara/QTL-seq"
-license=('unknown')
+license=('GPL')
 depends=(
          'bwa'
          'samtools'
@@ -37,5 +37,4 @@ build() {
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  # no license mentioned on git page/journal
 }
