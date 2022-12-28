@@ -3,22 +3,22 @@ packager='Natalia Portillo <claunia@claunia.com>'
 _netcoretarget='netcoreapp3.1'
 _aarubase='Aaru'
 pkgname='aaru'
-pkgver=5.3.1
-pkgrel=2
+pkgver=5.3.2
+pkgrel=1
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.aaru.app'
 license=('GPL')
-source=('https://github.com/aaru-dps/Aaru/releases/download/v5.3.1/aaru-src-5.3.1.tar.xz'
-        'https://github.com/aaru-dps/Aaru/releases/download/v5.3.1/aaru-src-5.3.1.tar.xz.asc')
-sha256sums=('bad9c7ee930ba859214858e495a8e3733c4d5992abcd063585100c460d0aec4c'
+source=('https://github.com/aaru-dps/Aaru/releases/download/v5.3.2/aaru-src-5.3.2.tar.xz'
+          'https://github.com/aaru-dps/Aaru/releases/download/v5.3.2/aaru-src-5.3.2.tar.xz.asc')
+sha256sums=('abb2dfdf26bafa829a30ba45685c206654e902a7134ed7fbd109207f51be6dc5'
             'SKIP')
-makedepends=('dotnet-sdk>=3.1.0')
+makedepends=('dotnet-sdk-3.1-bin>=3.1.0')
 options=('staticlibs')
 validpgpkeys=('236F1E21B540FC0D40F7AD1751D20488C724CA9F')
 provides=('aaru')
 conflicts=('aaru')
-depends=('icu70' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.0' 'zlib')
+depends=('icu70' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.1>=1.1.1' 'zlib')
 
 if [ $arch == 'aarch64' ]; then
     dotnet_rid=linux-arm64
