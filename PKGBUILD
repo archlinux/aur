@@ -1,7 +1,7 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch."
 arch=('any')
 url="https://github.com/Jin-Asanami/unifetch"
@@ -25,7 +25,7 @@ checkdepends=('shellcheck')
 provides=('neofetch')
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('2cbdf86ace9d53bf9a67c706c7d40739c5577f64db09ee18bc5728f9c216d4df20610a76bb526d7cca2d0cda5388c4781ba54a6f5c013039253b4847d5795d19')
+sha512sums=('b03ec2b88a81472f9c84bfc030aa84dc3e7ca0572f3094c2fba41cfe9be2de4377899b7a377e8671383d56a705ca0b4a9d0ef924eff4a80c1ca9989f6baa0de4')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
