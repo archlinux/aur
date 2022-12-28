@@ -44,7 +44,7 @@ prepare() {
   git config submodule.dmlc-core.url "${srcdir}/dmlc-core"
   git config submodule.rabit.url "${srcdir}/rabit"
   git config submodule.cub.url "${srcdir}/cub"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   patch -p1 < "${srcdir}/python_no_libs.patch"
 }
 
