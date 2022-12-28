@@ -1,0 +1,13 @@
+pkgbase = rust-docs
+	pkgdesc = Rust documentations.
+	pkgver = 1.66.0
+	pkgrel = 1
+	url = https://www.rust-lang.org/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	options = docs
+	source = https://static.rust-lang.org/dist/rust-docs-1.66.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 7255b6cd4104d98e75c27b16a7b6c07bc4bf1524d4d497f36040617373e5a783
+
+pkgname = rust-docs
