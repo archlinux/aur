@@ -6,7 +6,7 @@
 pkgbase=mididings
 pkgname=('mididings' 'mididings-docs')
 pkgver=20221228.r730.g6079f9f
-pkgrel=1
+pkgrel=2
 pkgdesc='A MIDI router & processor, supporting ALSA & JACK'
 arch=('x86_64')
 url='https://github.com/mididings/mididings'
@@ -67,7 +67,7 @@ package_mididings() {
     'python-pyliblo: send/recieve OSC messages'
     'python-pysmf: read/write standard MIDI files using the process_file() function'
     'python-pyxdg: so mididings knows where to look for config files'
-    'tcl: for livedings GUI'
+    'tk: for livedings GUI'
     'mididings-docs: documentation'
   )
 

@@ -1,7 +1,7 @@
 pkgbase = mididings
 	pkgdesc = A MIDI router & processor, supporting ALSA & JACK
 	pkgver = 20221228.r730.g6079f9f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mididings/mididings
 	arch = x86_64
 	license = GPL2
@@ -31,7 +31,7 @@ pkgname = mididings
 	optdepends = python-pyliblo: send/recieve OSC messages
 	optdepends = python-pysmf: read/write standard MIDI files using the process_file() function
 	optdepends = python-pyxdg: so mididings knows where to look for config files
-	optdepends = tcl: for livedings GUI
+	optdepends = tk: for livedings GUI
 	optdepends = mididings-docs: documentation
 
 pkgname = mididings-docs
