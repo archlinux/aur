@@ -10,7 +10,7 @@ pkgname=('xgboost-git'
 if $_with_r; then
   pkgname+=('r-xgboost-git')
 fi
-pkgver=r5804.6275cdc48
+pkgver=r6119.b05abfc49
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
