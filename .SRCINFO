@@ -1,6 +1,6 @@
 pkgbase = dtkcore-git
 	pkgdesc = DTK core modules
-	pkgver = 5.6.2.r4.g8ce7d3e
+	pkgver = 5.6.3.r16.gc57d13c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcore
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = dtkcore-git
 	depends = lshw
 	provides = dtkcore
 	conflicts = dtkcore
-	source = dtkcore.tar.gz::https://github.com/linuxdeepin/dtkcore/archive/8ce7d3e3c733ada955a4fd53b4d71ef93e456f27.tar.gz
-	sha512sums = ee352e5ae634e73511e495d1ce8177d9939f4d774d6e4cb5fadaf405dd5602bd99798ed603b466bce91fe0869e01f08558b65a43d1da9f6e8157237f638c14e6
+	source = dtkcore-git::git+https://github.com/linuxdeepin/dtkcore.git
+	sha512sums = SKIP
 
 pkgname = dtkcore-git
