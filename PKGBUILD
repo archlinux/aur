@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <deimosfr@gmail.com>
 pkgname=commitizen-go
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Command line utility to standardize git commit messages, golang version"
 arch=(x86_64)
@@ -19,4 +19,4 @@ package() {
 	cd "$pkgname-$pkgver"
     install -Dm755 "$pkgname" "$pkgdir/$git_exec_path/git-cz"
 }
-sha256sums=('4947a9ecd8f34a24f2760d8a4795f2d222ac4d063aa270ee70f8ace5684b07af')
+sha256sums=('31dbcce99c7d73bfdb2d91571e640d05d98d66e10e9cc5e594decd9fd9d0d077')
