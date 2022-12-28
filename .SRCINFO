@@ -1,12 +1,14 @@
 pkgbase = a2enmod-git
 	pkgdesc = Apache enable/disable module/site. From Debian package.
 	pkgver = 1.2.r1.g5ff0dc9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://httpd.apache.org/
 	install = a2enmod.install
 	arch = any
 	license = APACHE
+	makedepends = git
 	depends = apache
+	depends = perl
 	optdepends = php-apache: php support
 	optdepends = openssl: https support, to generate a certificate
 	provides = a2enmod

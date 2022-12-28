@@ -2,16 +2,20 @@
 
 pkgname=a2enmod-git
 pkgver=1.2.r1.g5ff0dc9
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache enable/disable module/site. From Debian package.'
 arch=('any')
 url='https://httpd.apache.org/'
 license=('APACHE')
-depends=(apache)
+depends=(
+apache
+perl
+)
 optdepends=(
 'php-apache: php support'
 'openssl: https support, to generate a certificate'
 )
+makedepends=(git)
 provides=(a2enmod)
 conflicts=(a2enmod)
 replaces=(a2enmod)
