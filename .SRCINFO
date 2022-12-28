@@ -1,6 +1,6 @@
 pkgbase = tzclock
 	pkgdesc = Cairo clock to display the time around the world
-	pkgver = 4.3
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://theknight.co.uk
 	changelog = CHANGELOG
@@ -9,7 +9,7 @@ pkgbase = tzclock
 	depends = gtk3
 	depends = libnotify
 	depends = libdial
-	source = tzclock-4.3.tar.bz2::https://theknight.co.uk/releases/Source/tzclock-4.3.tar.bz2
-	sha256sums = 43a2b821f8f45b75aa1f02433117d5e97e7d7d56d4413974f4b9a8aeb21d667a
+	source = tzclock-4.4.tar.bz2::https://theknight.co.uk/releases/Source/tzclock-4.4.tar.bz2
+	sha256sums = 9a4562f1c43ea8fb721bb98baa699dbd1fba3a9bc4dc626eba5aba7696f7a580
 
 pkgname = tzclock
