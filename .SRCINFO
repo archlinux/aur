@@ -1,14 +1,17 @@
 pkgbase = vault-kv-search
 	pkgdesc = Recursively search Hashicorp Vault for a substring.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xbglowx/vault-kv-search
 	arch = x86_64
+	arch = aarch64
 	license = MPL2
 	depends = glibc
 	optdepends = vault: in order to interact more with vault,
-	source = vault-kv-search-0.1.1-src.tar.gz::https://github.com/xbglowx/vault-kv-search/releases/download/v0.1.1/vault-kv-search-0.1.1.linux-amd64.tar.gz
 	validpgpkeys = SKIP
-	sha256sums = 7534451aaecd4ec09046b6ba26872f6cfefdf9d30a712d79cf4a938623936240
+	source_x86_64 = https://github.com/xbglowx/vault-kv-search/releases/download/v0.1.1/vault-kv-search-0.1.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = 7c151b72fca1023acc0ff71e2df70d4b3d4ce7aa9e3103e6af98ae5cdaba3a0c
+	source_aarch64 = https://github.com/xbglowx/vault-kv-search/releases/download/v0.1.1/vault-kv-search-0.1.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = 03c880bb5abe319d79965c61778826a4a1f162205006c26d883d5c8403dfd545
 
 pkgname = vault-kv-search

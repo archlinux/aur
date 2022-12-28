@@ -2,7 +2,7 @@
 
 pkgname=vault-kv-search
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Recursively search Hashicorp Vault for a substring.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/xbglowx/${pkgname}"
