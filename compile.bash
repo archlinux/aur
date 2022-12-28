@@ -48,7 +48,7 @@ build() {
 			echo "Estimated required memory to build with all cores: $((requiredmemorykb/1024/1024)) GB"
 			if [[ ${requiredmemorykb} -gt ${freememorykb} ]]; then
 				jobs=1
-				echo "Allocating build jobs according to available memory (${freememorykb}/${requiredmemorykb})..."
+				echo "Allocating build jobs according to available memory (including swap) (${freememorykb}/${requiredmemorykb})..."
 				# FIXME: Goes one iteration beyond what it should
 				while [[ $((jobs * mempercorekb)) -lt ${freememorykb} ]]; do
 					jobs=$((jobs+1))
