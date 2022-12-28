@@ -1,6 +1,6 @@
 pkgbase = dtkcommon-git
 	pkgdesc = DTK common modules
-	pkgver = 5.5.23.r18.gb7830a3
+	pkgver = 5.6.3.r1.g3781d33
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcommon
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dtkcommon-git
 	makedepends = cmake
 	makedepends = ninja
 	conflicts = dtkcommon
-	source = dtkcommon.tar.gz::https://github.com/linuxdeepin/dtkcommon/archive/b7830a3221c99cc7715675ecfaed2a04388f8af6.tar.gz
-	sha512sums = ea89005ac7de534a7d63dce9dda00aa485cdae3e337997cea01a8b624aad3c6f0676a8bc1127dbfc251fee4b6363deb10a3bb4b36366420aee8be97d2b34f17d
+	source = dtkcommon-git::git+https://github.com/linuxdeepin/dtkcommon
+	sha512sums = SKIP
 
 pkgname = dtkcommon-git
