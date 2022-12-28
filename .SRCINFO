@@ -1,0 +1,17 @@
+pkgbase = nautilus-checksums
+	pkgdesc = Add checksums to Nautilus' properties window
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/madmurphy/nautilus-checksums
+	install = nautilus-checksums.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glib2
+	depends = libnautilus-extension
+	conflicts = nautilus-checksums-git
+	conflicts = nautilus-checksums-bin
+	source = https://github.com/madmurphy/nautilus-checksums/releases/download/0.1.0/nautilus-checksums-0.1.0-with-configure.tar.gz
+	sha256sums = 46b717eaa24b95f77b74a0635cb76f70e15bd5072362545f66f94e33db89bbcf
+
+pkgname = nautilus-checksums
