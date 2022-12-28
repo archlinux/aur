@@ -14,10 +14,10 @@ groups=('firefox-addons')
 makedepends=('strip-nondeterminism' 'zip')
 #source=("https://gitlab.com/KevinRoebert/$_name/-/archive/$pkgver/$_name-$pkgver.tar.gz")
 source=("https://github.com/$_name/Addon/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('64dd90aa9fa97e69daebced93e10668c')
+md5sums=('ae8af03e72047c93be2503153bd901d9')
 
 prepare() {
-  cd Addon-$pkgver
+  cd $pkgver
   sed -i 's/"default_locale": "en",/"default_locale": "en",\
     "browser_specific_settings": {\
       "gecko": {\
@@ -27,7 +27,7 @@ prepare() {
 }
 
 package() {
-  cd Addon-$pkgver
+  cd $pkgver
   install -d "$pkgdir"/usr/lib/firefox/browser/extensions
   zip -r \
     "$pkgdir"/usr/lib/firefox/browser/extensions/{74145f27-f039-47ce-a470-a662b129930a}.xpi \

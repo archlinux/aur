@@ -9,6 +9,6 @@ pkgbase = firefox-clearurls
 	makedepends = strip-nondeterminism
 	makedepends = zip
 	source = https://github.com/ClearUrls/Addon/archive/refs/tags/1.26.0.tar.gz
-	md5sums = 64dd90aa9fa97e69daebced93e10668c
+	md5sums = ae8af03e72047c93be2503153bd901d9
 
 pkgname = firefox-clearurls
