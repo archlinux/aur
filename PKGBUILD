@@ -7,21 +7,20 @@
 
 pkgname=genymotion
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
 url="http://www.genymotion.com/"
-depends=('libpng' 'net-tools' 'protobuf' 'qca-qt5' 'qt5-script' 'qt5-webkit' 'virtualbox')
+depends=('libpng' 'net-tools' 'protobuf' 'qca-qt5' 'qt5-script' 'qt5-webkit')
+optdepends=('virtualbox')
 makedepends=('wget')
 install=$pkgname.install
 license=('custom')
 _ARCH="x64"
 DLAGENTS=("https::/usr/bin/wget -U "Mozilla" %u")
-source=("virtualbox.conf"
-        "genymotion.desktop"
+source=("genymotion.desktop"
         "https://dl.genymotion.com/releases/genymotion-$pkgver/$pkgname-${pkgver}-linux_$_ARCH.bin")
-sha512sums=('63eba0963b3344ea7e7a0035560406899d878a0761cddef9853bec95deb9812b221e98f446f240070d6448d61d6ecbcf7a990bcd52863660e8f21cf9a98c0e1d'
-            '42f629d6413e4e481ef68d019ec3071515b45d01fdb004a545c8b977a9bf2439581ca8a67ad7dead9a12a0d24e8e46ba02c5dc47abd76597451b09847cf5d78b'
+sha512sums=('42f629d6413e4e481ef68d019ec3071515b45d01fdb004a545c8b977a9bf2439581ca8a67ad7dead9a12a0d24e8e46ba02c5dc47abd76597451b09847cf5d78b'
             'ae3bfd2c4eefceb04cd67256b291e3c7bee3c3d0e212add92086709e5fd60bee4789d2ea80732bacbcad880be472e507470afd635cb766903664ea0815ed0205')
 
 package(){
@@ -48,6 +47,4 @@ package(){
   ln -s /opt/$pkgname/gmtool $pkgdir/usr/bin/gmtool
   install -Dm644 $srcdir/genymotion.desktop $pkgdir/usr/share/applications/genymotion.desktop
   chown -R root:root $pkgdir/opt/$pkgname
-
-  install -Dm644 $srcdir/virtualbox.conf $pkgdir/etc/modules-load.d/virtualbox.conf
 }
