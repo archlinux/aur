@@ -1,14 +1,14 @@
 # Maintainer: andys8 <andys8@users.noreply.github.com>
 pkgname=git-brunch
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A git command-line tool to work with branches"
 arch=('x86_64')
 url="https://github.com/andys8/git-brunch"
 license=('custom:BSD3')
 depends=('git')
 makedepends=('stack')
-source=("${pkgname}-${pkgver}::https://github.com/andys8/${pkgname}.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://github.com/andys8/${pkgname}.git#tag=v${pkgver}")
 noextract=()
 md5sums=('SKIP')
 

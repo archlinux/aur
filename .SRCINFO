@@ -1,13 +1,13 @@
 pkgbase = git-brunch
 	pkgdesc = A git command-line tool to work with branches
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andys8/git-brunch
 	arch = x86_64
 	license = custom:BSD3
 	makedepends = stack
 	depends = git
-	source = git-brunch-1.6.0::https://github.com/andys8/git-brunch.git#tag=v1.6.0
+	source = git-brunch-1.6.0::git+https://github.com/andys8/git-brunch.git#tag=v1.6.0
 	md5sums = SKIP
 
 pkgname = git-brunch
