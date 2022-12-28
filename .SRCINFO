@@ -1,7 +1,7 @@
 pkgbase = bustools
 	pkgdesc = Program for manipulating BUS files for single cell RNA-Seq datasets. doi:10.1038/s41587-021-00870-2
 	pkgver = 0.42.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BUStools/bustools/
 	arch = x86_64
 	license = BSD
