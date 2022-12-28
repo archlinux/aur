@@ -1,4 +1,6 @@
 # Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Contributor: Saulius Lukauskas <luksaulius@gmail.com>
+# Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
 pkgver=1.9.0
 pkgrel=2
