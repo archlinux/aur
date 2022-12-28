@@ -24,5 +24,7 @@ package() {
   uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
   install -dm755 "$destdir"
-  install -Dm644 extension.js metadata.json "$destdir"
+  install -dm755 "$destdir"/schemas
+  install -Dm644 extension.js prefs.js metadata.json "$destdir"
+  install -Dm644 schemas/* "$destdir"/schemas
 }
