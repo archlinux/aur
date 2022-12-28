@@ -1,6 +1,5 @@
-# Maintainer : Yamada Hayao <hayao@fascode.net>
-# Contributer: XZS <d dot f dot fischer at web dot de>
-
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor : Yamada Hayao <hayao@fascode.net>
 
 pkgname=gnome-shell-extension-coverflow-alt-tab
 pkgver=1.13
