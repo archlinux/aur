@@ -2,7 +2,7 @@
 
 pkgname=kimi-linphone-desktop
 pkgver=5.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included)."
 arch=('x86_64')
 url="https://linphone.org"
@@ -182,8 +182,17 @@ build() {
     
     #echo CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
     #CC=/usr/bin/gcc-11 CXX=/usr/bin/g++-11 cmake -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    echo cmake  -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
-    cmake  -DENABLE_UPDATE_CHECK=OFF -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS -DCMAKE_BUILD_TYPE=RelWithDebInfo -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE"
+    # 	 -DCMAKE_SKIP_RPATH=ON
+    echo cmake -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE" \
+	 -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS \
+	 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	 -DENABLE_UPDATE_CHECK=OFF \
+	 -DCMAKE_SKIP_INSTALL_RPATH=ON
+    cmake -S "$THIS_IS_WHERE_SOURCES_ARE" -B "$BUILD_IT_HERE" \
+	  -DCMAKE_BUILD_PARALLEL_LEVEL=$PARALLEL_JOBS \
+	  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	  -DENABLE_UPDATE_CHECK=OFF \
+	  -DCMAKE_SKIP_INSTALL_RPATH=ON
     #echo "Showing the result:"
     #find "$BUILD_IT_HERE"
     echo "--- cmake configuration should have completed here ---"
