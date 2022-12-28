@@ -1,14 +1,14 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=adcli-git
 _pkgname=adcli
-pkgver=0.8.2.r30.g3c93c96
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Active Directory account management tool"
 arch=(i686 x86_64)
-url="https://freedesktop.org/software/realmd/"
+url="https://gitlab.freedesktop.org/realmd/adcli"
 license=(GPL3)
-depends=(krb5 openldap)
-makedepends=(docbook-xml docbook-xsl intltool xmlto)
+depends=(cyrus-sasl-gssapi krb5 libldap)
+makedepends=(docbook-xml docbook-xsl git xmlto)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.freedesktop.org/realmd/adcli.git")
@@ -16,12 +16,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe | sed 's/-/.r/; s/-/./g'
+  git describe --tags | sed "s/-/.r/; s/-/./"
+}
+
+prepare() {
+  cd "$_pkgname"
+  autoreconf -fi
 }
 
 build() {
   cd "$_pkgname"
-  NOCONFIGURE=1 ./autogen.sh
   ./configure \
     --prefix=/usr           \
     --sbindir=/usr/bin      \
