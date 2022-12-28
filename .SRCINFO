@@ -1,12 +1,11 @@
 pkgbase = sq-bin
 	pkgdesc = Swiss-army knife for data
-	pkgver = 0.15.11
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://sq.io
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.15.11/sq_0.15.11_linux_amd64.tar.gz
-	sha256sums_x86_64 = c9d1875e901d7eaf3c58ab5dd69470d36d5cc067217bdd334f0cd89c61065337
+	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.18.2/sq-0.18.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = afb5af2438bd38faf7901b35be6808df62ea21179d4337002a6268fcba8730fe
 
 pkgname = sq-bin
-

@@ -1,14 +1,14 @@
 # Maintainer: Diego Souza <diegosouza.br@gmail.com>
 pkgname=sq-bin
 _pkgname=sq
-pkgver=0.15.11
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Swiss-army knife for data"
 arch=('x86_64')
 url="https://sq.io"
 license=('MIT')
-source_x86_64=("https://github.com/neilotoole/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c9d1875e901d7eaf3c58ab5dd69470d36d5cc067217bdd334f0cd89c61065337')
+source_x86_64=("https://github.com/neilotoole/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
+sha256sums_x86_64=('afb5af2438bd38faf7901b35be6808df62ea21179d4337002a6268fcba8730fe')
 
 package() {
     mkdir -p $pkgdir/usr/bin
