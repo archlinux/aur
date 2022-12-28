@@ -1,7 +1,7 @@
 pkgbase = r-biocsklearn
 	pkgdesc = interface to python sklearn via Rstudio reticulate
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.20.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocSklearn
 	arch = any
 	license = Artistic2.0
@@ -21,7 +21,7 @@ pkgbase = r-biocsklearn
 	optdepends = r-restfulse
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSklearn_1.20.0.tar.gz
-	sha256sums = 821c4f3982030509c6b93db35e2ac16d91808c65ef277509af04cd1370463211
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSklearn_1.20.1.tar.gz
+	sha256sums = 6d174ccbbe6d747644786e87eeeb0a482f08955eb0eb728310eaa1618dc70f9e
 
 pkgname = r-biocsklearn
