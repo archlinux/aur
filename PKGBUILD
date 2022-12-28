@@ -1,12 +1,9 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
-# Maintainer: Zookah <zookah77 at gmail dot com>
-# Maintainer: Ydallilar <yigit dot dallilar at gmail dot com>
-# Contributor: Qinq-net
 
 pkgname=osp-tracker
-pkgver=6.0.10
+pkgver=6.1.1
 arch=('x86_64')
-pkgrel=2
+pkgrel=1
 pkgdesc='Tracker video analysis and modeling tool'
 url='http://physlets.org/tracker/'
 license=('GPL3')
@@ -15,12 +12,16 @@ depends=('gtk2'
          'java-runtime')
 makedepends=('xdg-user-dirs' 'xdg-utils')
 _runname="Tracker-${pkgver}-linux-64bit-installer.run"
-source=("${url}/installers/${_runname}"
-        "tracker.sh"
-        "tracker.desktop")
-sha256sums=('97215c83235dbfa5d6d0eee97c099b94603814e40a9d569b8e4facb1c23a0835'
-         '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
-         '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b')
+source=(
+  "${url}/installers/${_runname}"
+  "tracker.sh"
+  "tracker.desktop"
+)
+sha256sums=(
+  '1d3ba421122468aebef3f9a0f7d07ad8ca6dd699076f4baabb7f4a4568345b94'
+  '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
+  '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b'
+)
 
 package() {
 
