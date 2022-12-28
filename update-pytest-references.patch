@@ -1,0 +1,32 @@
+--- a/test/test_smf.py
++++ b/test/test_smf.py
+@@ -1,6 +1,6 @@
+ from os.path import dirname, join
+ 
+-import py.test
++import pytest
+ import smf
+ 
+ EMPTY_1_TRACK_120_PPQN = ('MThd\x00\x00\x00\x06\x00\x00\x00\x01\x00\x78'
+@@ -22,7 +22,7 @@ class TestLoadSave:
+         a = smf.SMF(TEST_MID1)
+         assert len(a.tracks) == 1
+ 
+-        py.test.raises(IOError, smf.SMF, 'nonexistent.mid')
++        pytest.raises(IOError, smf.SMF, 'nonexistent.mid')
+ 
+     def test_load_from_memory(self):
+         a = smf.SMF(data=EMPTY_1_TRACK_120_PPQN)
+@@ -35,10 +35,10 @@ class TestLoadSave:
+         with open(TEST_MID1, 'rb') as f1, open(TEST_MID2, 'rb') as f2:
+             assert f1.read() == f2.read()
+ 
+-        py.test.raises(IOError, a.save, '')
++        pytest.raises(IOError, a.save, '')
+ 
+         b = smf.SMF()
+-        py.test.raises(IOError, b.save, TEST_MID2)
++        pytest.raises(IOError, b.save, TEST_MID2)
+ 
+ #    def test_save_to_memory(self):
+ #        a = smf.SMF('test.mid')

@@ -1,0 +1,24 @@
+pkgbase = python-pysmf
+	pkgdesc = Python module for reading & writing Standard MIDI Files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://das.nasophon.de/pysmf/
+	arch = x86_64
+	license = custom:BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = libsmf
+	source = python-pysmf::git+https://github.com/dsacre/pysmf#commit=84806d212c98f56563eacffb472d4114d2ad42a1
+	source = update-pytest-references.patch
+	sha512sums = SKIP
+	sha512sums = 475231e66e77472418571a585c99f4c347d50a4c29f33c3fe5fbe6ab5602b3ea86ec237fc0454a54b8e70304c3726256e4d267ed024fa987bb8b3034c0686142
+	b2sums = SKIP
+	b2sums = 3eb8d25197e68a352819bdef8a57abe17312c5cc938c61bc9a31cc1064949b036eff314e4a21d50daf81a7749a4424ed7371e7fbaab32eed46ef348ddbc7ee73
+
+pkgname = python-pysmf
