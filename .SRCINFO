@@ -7,7 +7,7 @@ pkgbase = rhythmbox-plugin-tray-icon
 	license = GPL3
 	depends = python-xapp
 	depends = rhythmbox
-	depends = xapps
+	depends = xapp
 	provides = rhythmbox-tray-icon
 	conflicts = rhythmbox-tray-icon
 	conflicts = rhythmbox-tray-icon-git
@@ -15,4 +15,3 @@ pkgbase = rhythmbox-plugin-tray-icon
 	sha256sums = e9fd16910461b582bf8b74398934c11fc68976a862e11083d469942c2201d23f
 
 pkgname = rhythmbox-plugin-tray-icon
-

@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(
     python-xapp
     rhythmbox
-    xapps
+    xapp
 )
 provides=(
     rhythmbox-tray-icon
