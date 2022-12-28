@@ -4,13 +4,13 @@
 # Contributor: Original Carlos Silva <r3pek@r3pek.org>
 
 pkgname=piper-git
-pkgver=0.7.r3.gdcec480
+pkgver=0.7.r21.g4827954
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('any')
 url='https://github.com/libratbag/piper'
 license=('GPL')
-depends=('python3' 'python-gobject>=3.0' 'libratbag' 'python-evdev' 'python-lxml' 'python-cairo' 'hicolor-icon-theme')
+depends=('python3' 'python-gobject>=3.0' 'libratbag-git' 'python-lxml' 'python-cairo' 'hicolor-icon-theme' 'libblockdev' 'libibus')
 makedepends=('git' 'meson' 'flake8' 'appstream' 'gtk-update-icon-cache' 'desktop-file-utils')
 options=(!emptydirs)
 source=("${pkgname}::git+https://github.com/libratbag/piper.git")
