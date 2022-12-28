@@ -22,7 +22,7 @@ _sourcedirectory="Moosync"
 
 pkgver() {
   cd "$srcdir/$_sourcedirectory/"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
