@@ -1,0 +1,14 @@
+pkgbase = sdc-git
+	pkgdesc = C port of SD, a very efficient flash cards app
+	pkgver = r15.cd9b330
+	pkgrel = 1
+	url = https://git.exozy.me/a/sdc
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = sqlite3
+	source = sdc::git+https://git.exozy.me/a/sdc.git
+	sha256sums = SKIP
+
+pkgname = sdc-git
