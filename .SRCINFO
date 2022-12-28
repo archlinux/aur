@@ -1,6 +1,6 @@
 pkgbase = rygel-git
 	pkgdesc = UPnP AV MediaServer and MediaRenderer
-	pkgver = 0.40.0+14+g8cdee188
+	pkgver = 0.42.0+10+geb1bfdc6
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/Rygel
