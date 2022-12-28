@@ -3,11 +3,12 @@ pkgver=v3.0.1
 _pkgver=`curl -s https://api.github.com/repos/07th-mod/ponscripter-fork/releases/latest|grep tag_name|cut -d\" -f4`
 pkgrel=2
 pkgdesc="Fork of the Ponscripter visual novel engine to take advantage of SDL2 and improve Steam integration"
-arch=(x86_64 aarch64)
+arch=(x86_64)	# for aarch64 use ponscripter-bin
 url=https://github.com/07th-mod/ponscripter-fork
 license=(GPL)
 depends=(sdl2_{image,mixer} smpeg freetype2)
 makedepends=(xmlto docbook-xsl)
+conflicts=(ponscripter-bin)
 source=(git+https://github.com/07th-mod/ponscripter-fork.git#tag=$_pkgver)
 md5sums=(SKIP)
 pkgver(){
