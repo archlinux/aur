@@ -1,0 +1,16 @@
+pkgbase = vkroots-git
+	pkgdesc = A stupid simple method of making Vulkan layers, at home!
+	pkgver = r26.e5eccf7
+	pkgrel = 1
+	url = https://github.com/Joshua-Ashton/vkroots/tree/e6b89494142eec0ac6061f82a947d2f1246d3d7a
+	arch = any
+	license = Apache
+	license = custom:MIT
+	makedepends = git
+	makedepends = meson
+	provides = vkroots
+	conflicts = vkroots
+	source = git+https://github.com/Joshua-Ashton/vkroots.git
+	sha512sums = SKIP
+
+pkgname = vkroots-git
