@@ -1,5 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=rust-docs
+epoch=1
 pkgver=1.66.0
 pkgrel=1
 pkgdesc="Rust documentations."
