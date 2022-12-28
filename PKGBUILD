@@ -3,7 +3,7 @@
 _realname=memtest86
 pkgname=$_realname-efi
 epoch=1
-pkgver=10.1build1000
+pkgver=10.2build1000
 pkgrel=1
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('any')
@@ -18,13 +18,14 @@ source=("$pkgname-$pkgver.zip::https://github.com/TheTumultuousUnicornOfDarkness
 	"memtest86-efi"
 	"memtest86-efi.conf"
 	"memtest86-efi-update.hook")
-sha512sums=('59e92f5ee7717dd6be960c75c3a10a1c15d96fc18edcaac8c6e1cf5ba422d607e69f8d979dbbd3d68ec44f0e908250f10a0ab1c999dc17d3b9b92bc64111e604'
+sha512sums=('44729c4a5c21dd13298c4b488ff7365993c41c9fcec68e8022b0c013919d7577a1801e8bb9c1b37cda71654a988e2fce1e958431368052f8b6bfeb7950784b13'
             'e509a3e0b70d6a6cacb3ab0e99c43d2eef29863f2f59fd6f0a858d9d8a97b0e7b432ac965a22e37bf01f5ba63fadcdc47eae49e68e53edb848ee8a03707e98a1'
             '5eb6231096484d8923fa9943401c5f5e654a498028b3b4c0b19d26c8265fd8882c94ee90dfa23fabcfb1f8d3812e0a502c195d57b4fbdf5cc25f3ac8dcb36759'
             'a8936ed4a1955d69251955b824cfdfc606c374d40509a767ee4e357e746947d5bf1bd6793e5a4224733907556375bee05c0dd27f8044604f136d84c9be365d42')
 
 prepare() {
-	7z x -y "$srcdir/memtest86-usb.img" -o"$srcdir/$pkgname-$pkgver" > /dev/null
+	7z e -y "$srcdir/memtest86-usb.img" '*EFI System Partition*' > /dev/null
+	7z x -y "$srcdir/"*"EFI System Partition.img" -o"$srcdir/$pkgname-$pkgver" > /dev/null
 }
 
 package() {
