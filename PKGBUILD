@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=rhythmbox-plugin-alternative-toolbar
-pkgver=0.20.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc='Modern, minimal and music-focused interface for Rhythmbox'
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=(
     rhythmbox-plugin-alternative-toolbar-git
 )
 install='rhythmbox-plugin-alternative-toolbar.install'
-_commit='6cac11564f31fdf00b367a7956f79e1a59682170'
+_commit='2e77d9e30f3af192130d3509b4a479179992882e'
 source=("${pkgname}::git+${url}#commit=${_commit}")
 sha256sums=('SKIP')
 

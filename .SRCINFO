@@ -1,6 +1,6 @@
 pkgbase = rhythmbox-plugin-alternative-toolbar
 	pkgdesc = Modern, minimal and music-focused interface for Rhythmbox
-	pkgver = 0.20.2
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = https://github.com/fossfreedom/alternative-toolbar
 	install = rhythmbox-plugin-alternative-toolbar.install
@@ -14,7 +14,7 @@ pkgbase = rhythmbox-plugin-alternative-toolbar
 	depends = python-lxml
 	depends = rhythmbox
 	conflicts = rhythmbox-plugin-alternative-toolbar-git
-	source = rhythmbox-plugin-alternative-toolbar::git+https://github.com/fossfreedom/alternative-toolbar#commit=6cac11564f31fdf00b367a7956f79e1a59682170
+	source = rhythmbox-plugin-alternative-toolbar::git+https://github.com/fossfreedom/alternative-toolbar#commit=2e77d9e30f3af192130d3509b4a479179992882e
 	sha256sums = SKIP
 
 pkgname = rhythmbox-plugin-alternative-toolbar
