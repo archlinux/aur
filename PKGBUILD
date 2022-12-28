@@ -1,7 +1,7 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 pkgname=onedev
 pkgver=7.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 url="https://code.onedev.io/onedev/server"
@@ -14,6 +14,11 @@ source=("https://code.onedev.io/~downloads/projects/160/builds/3238/artifacts/on
 sha256sums=('677e5b01842b63fc6fff50058bd5442fb1a7e4b49990f5c8b1e9f1396f5283c2'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             'b5c84783296f23287341ca36a62d64204b71285c42e040a788c8864b65d231e6')
+backup=(opt/onedev/conf/hibernate.properties
+        opt/onedev/conf/logback.xml
+        opt/onedev/conf/server.properties
+        opt/onedev/conf/wrapper.conf
+        opt/onedev/conf/wrapper-license.conf)
 
 build() {
   cd "$srcdir"
