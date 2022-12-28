@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 
 pkgname=cemu
-pkgver=2.0.272
+pkgver=2.0.274
 pkgrel=1
 pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
 arch=(x86_64)
@@ -31,7 +31,7 @@ optdepends=(
 )
 install=cemu.install
 source=(
-	git+https://github.com/cemu-project/Cemu#tag=v2.0-22
+	git+https://github.com/cemu-project/Cemu#tag=v2.0-23
 	# submodules
 	git+https://github.com/mozilla/cubeb#commit=dc511c6b3597b6384d28949285b9289e009830ea
 	git+https://github.com/ocornut/imgui#commit=8a44c31c95c8e0217f6e1fc814cbbbcca4981f14
@@ -104,7 +104,7 @@ build() {
 	      -DENABLE_VCPKG=OFF \
 	      -DPORTABLE=OFF \
 	      -DCMAKE_BUILD_TYPE=Release
-	$(which ninja 2> /dev/null || which make) -C build $([[ "$MAKEFLAGS" == *-j* ]] && echo "$MAKEFLAGS" || echo -j $(nproc))
+	$(which ninja 2> /dev/null || which make) -C build $([[ "${MAKEFLAGS-}" == *-j* ]] && echo "$MAKEFLAGS" || echo -j $(nproc))
 }
 
 package() {
