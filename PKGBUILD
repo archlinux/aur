@@ -2,7 +2,7 @@
 # Contributor : Yamada Hayao <hayao@fascode.net>
 
 pkgname=gnome-shell-extension-coverflow-alt-tab
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="Replacement of Alt-Tab, iterates through windows in a cover-flow manner"
 arch=('any')
