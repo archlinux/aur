@@ -7,7 +7,7 @@ _perlmod=CPAN-Reporter
 pkgrel=1
 pkgdesc='CPAN::Reporter - Adds CPAN Testers reporting to CPAN.pm'
 arch=('any')
-url="http://search.cpan.org/dist/CPAN-Reporter/"
+url="https://metacpan.org/dist/CPAN-Reporter/"
 license=('GPL' 'PerlArtistic')
 depends=(
 perl-capture-tiny
@@ -36,7 +36,7 @@ perl-cpan-reporter-prereqcheck
 )
 optdepends=('perl-test-reporter-transport-metabase: Metabase transport')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
 sha256sums=('2dc561c42f4644747a05e516221da731b8e260e082f1be594b98af7efe90ddc1')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
