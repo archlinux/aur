@@ -4,8 +4,8 @@
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.6.9_r50289.gfeda3d3727
-pkgrel=2
+pkgver=6.6.9_r50325.gce616a231d
+pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -23,7 +23,8 @@ optdepends=(
     'libpulse: PulseAudio support'
     'mesa-libgl: Intel, Radeon, Nouveau support'
     'nvidia-libgl: NVIDIA support'
-    'nvidia-utils: NVIDIA support')
+    'nvidia-utils: NVIDIA support'
+		'wine: More up-to-date, less buggy SLVoice support')
 provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
 options+=(!emptydirs !buildflags !strip !lto)
