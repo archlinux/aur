@@ -1,0 +1,19 @@
+pkgbase = ruff-lsp
+	pkgdesc = Language Server Protocol implementation for Ruff
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/charliermarsh/ruff-lsp
+	arch = any
+	license = MIT
+	checkdepends = python-lsp-jsonrpc
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python-pygls
+	depends = python-typing_extensions
+	depends = ruff
+	source = https://files.pythonhosted.org/packages/source/r/ruff_lsp/ruff_lsp-0.0.11.tar.gz
+	sha256sums = 123e5ac788e7edb373d04e2e9047d6e1f51d63decf46d69a086e697c8b503ab6
+	b2sums = 3ba39fa7cd55082bf34219127e7ec57a54ada02f070a585e836b2392039eb263689159ae19b4930790c253c6adc4c94c7f06c5aa6549936ea6acc268f0584687
+
+pkgname = ruff-lsp
