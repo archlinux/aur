@@ -1,5 +1,5 @@
 pkgbase = refract-bin
-	pkgdesc = Guided AVIF/JPEG XL/WebP conversion for JPEG and PNG sources. Refract GTK is a guided AVIF/JPEG XL/WebP conversion utility for JPEG and PNG sources, simplifying the task of finding the smallest acceptable quality.
+	pkgdesc = Guided AVIF/JPEG XL/WebP conversion for JPEG and PNG sources.
 	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Blobfolio/refract
