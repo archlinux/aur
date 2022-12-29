@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='sq: swiss-army knife for data'
 url='https://sq.io'
@@ -13,34 +13,33 @@ license=('MIT')
 provides=('sq')
 conflicts=('sq')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.1/sq-0.19.1-linux-arm64.tar.gz")
-sha256sums_aarch64=('28ee42f27228855936b4f841fd471a2c2e178ec29be46dadfc8dfe038354d613')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.2/sq-0.19.2-linux-arm64.tar.gz")
+sha256sums_aarch64=('4f6ad940627432c9c8cee7547aa07580c0aaf5493fa8bfe0af383d5c1b502682')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.1/sq-0.19.1-linux-amd64.tar.gz")
-sha256sums_x86_64=('fc049bd1394509439ba524bef3961ddab4c6d269731e89ae5d1a5b7bef752ccf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.2/sq-0.19.2-linux-amd64.tar.gz")
+sha256sums_x86_64=('5f683dc66147d22697194687e3a5e46c74c880d12f761d48d1b14a6a5ee87e90')
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/licenses/${_pkgname}
-  mkdir -p $pkgdir/usr/share/doc/${_pkgname}
+  # bin
+  mkdir -p "${pkgdir}/usr/bin"
+  install -Dm755 "./sq" "${pkgdir}/usr/bin/sq"
+
+  # license
+  mkdir -p "${pkgdir}/usr/share/licenses/sq"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/sq/LICENSE"
+
+
+  # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
 
+  #install -Dm644 "./completions/sq.bash" "${pkgdir}/usr/share/bash-completion/completions/sq"
+  #install -Dm644 "./completions/sq.zsh" "${pkgdir}/usr/share/zsh/site-functions/_sq"
+  #install -Dm644 "./completions/sq.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sq.fish"
 
-  # bin
-  install -Dm755 "./sq" "${pkgdir}/usr/bin/sq"
-
-  # license
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/sq/LICENSE"
-
-  # completions
-  #install -Dm644 "./completions/mybin.bash" "${pkgdir}/usr/share/bash-completion/completions/mybin"
-  #install -Dm644 "./completions/mybin.zsh" "${pkgdir}/usr/share/zsh/site-functions/_mybin"
-  #install -Dm644 "./completions/mybin.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/mybin.fish"
-
-  # man pages
+  # docs
+  mkdir -p "${pkgdir}/usr/share/doc/sq"
+  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/sq/README.md"
   #install -Dm644 "./manpages/mybin.1.gz" "${pkgdir}/usr/share/man/man1/mybin.1.gz"
-
-  cp $srcdir/README.md $pkgdir/usr/share/doc/${_pkgname}/
 }
