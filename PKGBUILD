@@ -1,5 +1,5 @@
 # Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
-pkgbase="rtodo"
+pkgbase="pkgbase"
 pkgname="rtodo-bin"
 pkgver="v0.1.1"
 pkgrel=1
