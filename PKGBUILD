@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_565
-pkgrel=4
+pkgrel=5
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
@@ -23,7 +23,7 @@ sha256sums_x86_64=('3bccda547b7fa17b1eacf5477bfafaa4016958578b0d5b2269ace0697ee4
                    '814ddc3eea99bf2e291e2eeff0c3805928e3059e23b12d41cc8bf75bb8cd5fd3')  # 热更新补丁
 sha256sums_aarch64=('d356697284837396f430228032ad7a378717cdba2e1cd724386b2ff99e1eb7bc'  # 本体
                     'f2f61581a5c09e4a7bfb23922a667e8df327d58fed9601034c4b60a08ad29049')  # 热更新补丁
-sha256sums=('eaf8dbebc6a733c9b275ea1b7c9880a113bc5675cb13f569e71a8b2cebac9388'  # start.sh
+sha256sums=('81dce28be38ea8a21fad83a276f8d7522b4fa736bde717260d87ba4b3508587a'  # start.sh
             '68069b9360c09a5e64c370dbcba54089ac4b1f8b30fc3d6d1c9b8b316a8f92c6'  # config.json
             'e9b4af9b4119876572f6fe7f48563e6b0830493a8d76e8415e15d89afe6453df'  # qq_channel_jsbridge_handler.desktop
             '63844046a2453e5320710831156805d4e2d2920a6bea774f3df9aa76e69ea179') # xdg-open.sh

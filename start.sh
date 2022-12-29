@@ -65,6 +65,9 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --ro-bind-try "${XDG_CONFIG_HOME}/eog" "${XDG_CONFIG_HOME}/eog" \
     --ro-bind-try "${XDG_CONFIG_HOME}/gwenviewrc" "${XDG_CONFIG_HOME}/gwenviewrc" \
     --symlink opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop "${HOME}/.local/share/applications/qq_channel_jsbridge_handler.desktop" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/dconf" "${XDG_CONFIG_HOME}/dconf" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/kdeglobals" "${XDG_CONFIG_HOME}/kdeglobals" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/gtk-3.0" "${XDG_CONFIG_HOME}/gtk-3.0" \
     --setenv XDG_CURRENT_DESKTOP GNOME \
     --setenv IBUS_USE_PORTAL 1 \
     --setenv DISPLAY "${NEW_DISPLAY}" \
