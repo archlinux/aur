@@ -1,36 +1,22 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
+pkgname="rtodo"
+pkgver="v0.1.1"
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
-arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
+pkgdesc="A simple To-Do list manager written in Rust"
+arch=("x86_64")
+url="https://github.com/TiagoRCorreia/rtodo"
 license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+makedepends=()
+source=("https://github.com/TiagoRCorreia/rtodo/releases/download/${pkgver}/rtodo.gz"
+        "https://raw.githubusercontent.com/TiagoRCorreia/rtodo/main/LICENSE.md")
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
-
-build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
-}
+md5sums=('65212c3174f5a3ebebfcda045d687a76'
+         '9d6236041611466d09794b98fd034310')
 
 package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+	mkdir -p ${pkgdir}/usr/bin
+	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+
+	install -Dm 755 ${srcdir}/rtodo ${pkgdir}/usr/bin/rtodo
+  install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
