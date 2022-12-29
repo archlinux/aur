@@ -1,6 +1,6 @@
 pkgbase = telegram-tdlib-git
 	pkgdesc = Cross-platform library for building Telegram clients
-	pkgver = 1.8.0
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = https://core.telegram.org/tdlib
 	arch = i686
