@@ -1,17 +1,17 @@
 # Maintainer: Brent Mackey <bjdm.92 at gmail dot com>
 pkgname='qml-lsp-git'
 _binname='qml-lsp'
-_reponame='qew-em-el-el-ess-pee'
+_reponame='qml-lsp'
 pkgrel=3
-pkgver=rjienrlwey.number.two.r14.gadb42f0
+pkgver=rjienrlwey.number.two.r33.g19c7dec
 pkgdesc='QML Language Server'
 arch=('x86_64')
-url="https://invent.kde.org/bjdm/$_reponame"
+url="https://invent.kde.org/sdk/$_reponame"
 license=('GPLv3')
 makedepends=('go' 'git')
 provides=('qml-lsp')
 conflicts=('qml-lsp' 'qml-lsp-static')
-source=("git+${url}.git")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,11 +22,6 @@ pkgver() {
 	)
 }
 
-# prepare(){
-# 	cd "$pkgname-$pkgver"
-#   mkdir -p build/
-# }
-
 build() {
   cd "$_reponame"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -34,15 +29,17 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make qml-lsp
+  go build --ldflags '-linkmode external -extldflags "-static"' -o qml-lsp ./cmd/qml-lsp
+  go build --ldflags '-linkmode external -extldflags "-static"' -o qml-lint ./cmd/qml-lint
+  go build --ldflags '-linkmode external -extldflags "-static"' -o qml-refactor-fairy ./cmd/qml-refactor-fairy
+  # TODO - upstream build fixes and segfault
+  # go build --ldflags '-linkmode external -extldflags "-static"' -o build/qml-dap ./cmd/qml-dap
+  # go build --ldflags '-linkmode external -extldflags "-static"' -o build/qml-dbg ./cmd/qml-dbg
 }
-
-# check() {
-#   cd "$pkgname-$pkgver"
-#   go test ./...
-# }
 
 package() {
   cd "$_reponame"
-  install -Dm755 bin/$_binname "$pkgdir"/usr/bin/$_binname
+  install -Dm755 qml-lsp "$pkgdir"/usr/bin/qml-lsp
+  install -Dm755 qml-lint "$pkgdir"/usr/bin/qml-lint
+  install -Dm755 qml-refactor-fairy "$pkgdir"/usr/bin/qml-refactor-fairy
 }
