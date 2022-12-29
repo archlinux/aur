@@ -1,9 +1,5 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Zaedus <thezaedus@proton.me>
+
 _pkgname="youtube-tui"
 pkgname="${_pkgname}-git"
 pkgver=r23.a5c2976
@@ -12,7 +8,7 @@ pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in R
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
 license=('GPL')
-depends=()
+depends=('libsixel')
 optdepends=(
   'mpv: default video player'
   'konsole: default terminal emulator'
