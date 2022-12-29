@@ -2,7 +2,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and flexible software integration toolset"
 arch=(x86_64)
 url="https://buildstream.build"
@@ -25,6 +25,10 @@ depends=(
     python-ujson
     # specific host site dependencies
     bzip2 gzip lzip tar xz
+)
+optdepends=(
+    "buildstream-plugins: Official BuildStream plugins like “git”"
+    "buildstream-plugins-experimental: Official experimental BuildStream plugins"
 )
 makedepends=(cython git python-packaging)
 source=("git+https://github.com/apache/buildstream.git#tag=2.0.0&commit=f27bc3bed2bdbb3dfd72fdbfa59a7607d74123a7")
