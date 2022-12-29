@@ -3,7 +3,7 @@
 pkgname=dtkcommon-git
 _pkgname=dtkcommon
 pkgver=5.6.3.r1.g3781d33
-pkgrel=2
+pkgrel=3
 pkgdesc='DTK common modules'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkcommon"
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=()
 makedepends=('git' 'qt5-tools' 'gtest' 'gmock' 'cmake' 'ninja')
 conflicts=('dtkcommon')
-providers=('dtkcommon')
+provides=('dtkcommon')
 groups=('deepin-git')
 source=("git+https://github.com/linuxdeepin/dtkcommon")
 sha512sums=('SKIP')
