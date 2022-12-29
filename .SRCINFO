@@ -1,9 +1,8 @@
 pkgbase = kraft
 	pkgdesc = Kraft helps you to handle documents like quotes and invoices in your small business.
-	pkgver = 0.98
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
@@ -11,11 +10,12 @@ pkgbase = kraft
 	makedepends = asciidoctor
 	makedepends = po4a
 	depends = akonadi-contacts
+	depends = akonadi
 	depends = ctemplate
-	depends = python-reportlab
-	depends = python-pypdf2
+	optdepends = python-reportlab: default PDF generator
+	optdepends = python-pypdf2: default PDF generator
 	optdepends = python-weasyprint: alternative PDF generator
-	source = kraft-v0.98.tar.gz::https://github.com/dragotin/kraft/archive/v0.98.tar.gz
-	sha256sums = 0f04516a5f01f0e5f56c1ec815add3a06adc3edad65858b6a54d845ac7ff9dbd
+	source = kraft-v1.0.tar.gz::https://github.com/dragotin/kraft/archive/v1.0.tar.gz
+	sha256sums = b122c5e2be40c76016bc809596779bb156d94ef10d4279cc24c33d598b5e06e4
 
 pkgname = kraft
