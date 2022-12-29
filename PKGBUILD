@@ -5,8 +5,8 @@
 # Contributor: GI_Jack <GI_Jack@hushmail.com>
 
 pkgname=gtkhash-caja
-pkgver=1.4
-pkgrel=4
+pkgver=1.5
+pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums (Gtkhash with Caja filemanager plugin)"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -16,16 +16,13 @@ depends=(
     'dconf'
     'gtk3'
     'libb2'
+    'mbedtls'
     'nettle'
 )
 
 makedepends=(
-    'caja'
-    'dconf'
-    'gtk3'
     'intltool'
     'librsvg'
-    'nettle'
     'xdg-utils'
 )
 provides=(
@@ -39,24 +36,41 @@ conflicts=(
   gtkhash-thunar
 )
 source=("${url}/releases/download/v$pkgver/gtkhash-$pkgver.tar.xz")
-sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
+sha256sums=('7102a192eca3e82ed67a8252a6850440e50c1dbea7c6364bda154ec80f8ff005')
+
+prepare() {
+  mkdir -p plugins
+}
 
 build() {
-  cd gtkhash-$pkgver
-
-  ./configure --prefix=/usr \
-              --disable-schemas-compile \
-              --enable-gtkhash \
-              --enable-linux-crypto \
-              --enable-nettle \
-              --disable-blake2 \
-              --with-gtk=3.0 \
-              --enable-caja
-
-  make
+  arch-meson "gtkhash-$pkgver" build \
+    -Dglib-checksums='true' \
+    -Dlinux-crypto='true' \
+    -Dmbedtls='true' \
+    -Dnettle='true' \
+    -Dbuild-caja='true' \
+    -Dbuild-nautilus='false' \
+    -Dbuild-nemo='false' \
+    -Dbuild-thunar='false'
+  meson compile -C build
 }
+
+check() {
+
+  desktop-file-validate build/data/*.desktop
+  appstream-util validate-relax --nonet build/data/appdata/*.appdata.xml
+  appstream-util validate-relax --nonet build/data/appdata/*.metainfo.xml
+}
+
 
 package() {
 
-  make -C gtkhash-$pkgver/src/nautilus DESTDIR="$pkgdir/" install
+  meson install -C build --destdir "$pkgdir"
+
+  install -Dm644 build/data/appdata/org.gtkhash.caja.metainfo.xml -t \
+    "$pkgdir/usr/share/metainfo/"
+  install -Dm644 build/data/caja/libgtkhash-properties-caja.caja-extension -t \
+    "$pkgdir/usr/share/caja/extensions/"
+#  install -Dm644 plugins/caja/extensions-2.0/libgtkhash-properties-caja.so -t \
+#    "$pkgdir/usr/lib/caja/extensions-2.0/"
 }
