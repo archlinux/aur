@@ -1,7 +1,7 @@
 pkgbase = buildstream
 	pkgdesc = A powerful and flexible software integration toolset
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buildstream.build
 	arch = x86_64
 	license = Apache
@@ -29,6 +29,7 @@ pkgbase = buildstream
 	depends = tar
 	depends = xz
 	optdepends = buildstream-plugins: Official BuildStream plugins like “git”
+	optdepends = buildstream-plugins-container: Official BuildStream plugin for Docker images
 	optdepends = buildstream-plugins-experimental: Official experimental BuildStream plugins
 	source = git+https://github.com/apache/buildstream.git#tag=2.0.0&commit=f27bc3bed2bdbb3dfd72fdbfa59a7607d74123a7
 	sha256sums = SKIP

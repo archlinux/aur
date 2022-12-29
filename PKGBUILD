@@ -2,7 +2,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful and flexible software integration toolset"
 arch=(x86_64)
 url="https://buildstream.build"
@@ -28,6 +28,7 @@ depends=(
 )
 optdepends=(
     "buildstream-plugins: Official BuildStream plugins like “git”"
+    "buildstream-plugins-container: Official BuildStream plugin for Docker images"
     "buildstream-plugins-experimental: Official experimental BuildStream plugins"
 )
 makedepends=(cython git python-packaging)
