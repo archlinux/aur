@@ -1,2 +1,5 @@
-*.log
-pnpm-*
+*
+
+!PKGBUILD
+!.SRCINFO
+!.gitignore
