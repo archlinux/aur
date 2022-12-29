@@ -2,10 +2,10 @@
 
 pkgname=artanis-git
 pkgver=0.5.1.r3.g6528821
-pkgrel=1
+pkgrel=4
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
-url="https://gitlab.com/NalaGinrut/artanis"
+url="https://gitlab.com/hardenedlinux/artanis"
 license=('LGPL')
 depends=('guile')
 makedepends=('git' 'texlive-core')
