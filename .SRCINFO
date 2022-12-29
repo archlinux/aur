@@ -1,0 +1,20 @@
+pkgbase = tonelib-noise-reducer-bin
+	pkgdesc = ToneLib Noise Reducer – Powerful, yet simple two-unit rack effect on guard of your mix clarity.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://tonelib.net/tl-noisereducer.html
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = glib2
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = harfbuzz
+	depends = fribidi
+	depends = pango
+	depends = freetype2
+	optdepends = jack: JACK output
+	source = tonelib-noise-reducer-bin-1.2.0.deb::https://tonelib.net/download/ToneLib-NoiseReducer-amd64.deb
+	sha256sums = dbb26e15599a988514291ae98e5b04d04eb1fb95fd46eb4d18f8837f97718ad2
+
+pkgname = tonelib-noise-reducer-bin
