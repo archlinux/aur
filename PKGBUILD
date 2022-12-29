@@ -1,5 +1,5 @@
 # Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
-pkgname="rtodo"
+pkgname="rtodo-bin"
 pkgver="v0.1.1"
 pkgrel=1
 pkgdesc="A simple To-Do list manager written in Rust"
@@ -7,6 +7,7 @@ arch=("x86_64")
 url="https://github.com/TiagoRCorreia/rtodo"
 license=("MIT")
 makedepends=()
+depends=()
 source=("https://github.com/TiagoRCorreia/rtodo/releases/download/${pkgver}/rtodo.gz"
         "https://raw.githubusercontent.com/TiagoRCorreia/rtodo/main/LICENSE.md")
 
