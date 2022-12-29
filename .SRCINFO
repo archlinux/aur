@@ -1,11 +1,11 @@
 pkgbase = ttf-nunito-sans
 	pkgdesc = A well balanced sans serif font by Jaques Le Bailly.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/Nunito+Sans
 	arch = any
 	license = custom:OFL
 	source = Nunito_Sans.zip::https://fonts.google.com/download?family=Nunito%20Sans
-	md5sums = 1dcc7c20eda64f322b73e7b10460d274
+	sha256sums = d78c9217be117541f86fe6978822772e32fa9b41d9a4b5bd4e0cfd012b553292
 
 pkgname = ttf-nunito-sans
