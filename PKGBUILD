@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/zrax/cctools'
 license=('GPL3')
 depends=('qt5-base')
-optdepends=('tworld: Tile World playtesting'
+optdepends=('tile-world: Tile World playtesting'
             'steam: Steam CC playtesting'
             'wine: MSCC playtesting')
 makedepends=('cmake' 'git')
