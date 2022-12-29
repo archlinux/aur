@@ -26,7 +26,7 @@ build() {
   fi
 
   cd $pkgname
-  cargo build --optimized
+  cargo build --profile optimized
 }
 
 install='readme.install'
