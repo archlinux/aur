@@ -21,6 +21,7 @@ pkgbase = musikcube
 	depends = curl
 	depends = ffmpeg
 	depends = taglib
+	depends = libgme
 	optdepends = libopenmpt: OpenMPT support
 	source = musikcube-0.99.3.tar.gz::https://github.com/clangen/musikcube/archive/0.99.3.tar.gz
 	sha256sums = 584c8225caad46fde83cdd520ef7d4a6633471de9693651f46d520040e9fb51d
