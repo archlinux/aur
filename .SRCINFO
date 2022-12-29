@@ -1,6 +1,6 @@
 pkgbase = libinih-git
 	pkgdesc = Simple .INI file parser in C, good for embedded systems
-	pkgver = r56.r1.g03c604a
+	pkgver = 56.r3.gd6e9d1b
 	pkgrel = 1
 	url = https://github.com/benhoyt/inih
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = libinih-git
 	makedepends = git
 	makedepends = meson
 	depends = glibc
-	provides = libinih=r56.r1.g03c604a
+	provides = libinih=56.r3.gd6e9d1b
 	provides = libinih.so
 	provides = libINIReader.so
 	conflicts = libinih
