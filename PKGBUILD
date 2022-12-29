@@ -1,4 +1,4 @@
-# Maintainer: coxackie
+# Maintainer: Kostas Kardaras <kostas.kardaras at gmail dot com>
 
 pkgname=gnome-shell-extension-no-annoyance-2-git
 pkgver=r46.c6804a4
@@ -25,6 +25,6 @@ package() {
   destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
   install -dm755 "$destdir"
   install -dm755 "$destdir"/schemas
-  install -Dm644 extension.js prefs.js metadata.json "$destdir"
+  install -Dm644 extension.js prefs.js metadata.json README.md LICENSE "$destdir"
   install -Dm644 schemas/* "$destdir"/schemas
 }
