@@ -18,7 +18,7 @@ optdepends=(
   'konsole: default terminal emulator'
   'yt-dlp: default youtube downloader'
 )
-makedepends=('curl')
+makedepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}::https://github.com/Siriusmart/youtube-tui/releases/download/v${pkgver}/${_pkgname}-full_arch-x86_64")

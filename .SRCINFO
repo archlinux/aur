@@ -5,7 +5,6 @@ pkgbase = youtube-tui-full-bin
 	url = https://github.com/Siriusmart/youtube-tui
 	arch = x86_64
 	license = GPL3
-	makedepends = curl
 	depends = libsixel
 	depends = libxcb
 	optdepends = mpv: default video player
