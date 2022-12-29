@@ -3,13 +3,13 @@
 
 pkgname=kwalletcli
 pkgver=3.03
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
 license=('custom:MirOS' 'LGPL3')
 arch=('i686' 'x86_64')
 depends=('kwallet' 'mksh')
-source=("https://www.mirbsd.org/MirOS/dist/hosted/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("http://www.mirbsd.org/MirOS/dist/hosted/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('237d427f87f2d313378aacfdb056c658f0a51fda3a8592d24792916d14efc462153aa0f9ebabdcf38375824f349208db367be6f369f3f7c9c1fea8187f787bfa')
 
 build() {
