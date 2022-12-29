@@ -10,7 +10,7 @@ pkgbase = base16-vtrgb
 	depends = kbd
 	depends = mkinitcpio
 	backup = etc/vtrgb
-	source = base16-vtrgb-2021_10_06.tar.gz::https://github.com/coderonline/base16-vtrgb/archive/2021-10-06.tar.gz
-	sha256sums = 9b8a333776b16603d10f35eb07e185364cb5d8496fe433088faecc0105135028
+	source = base16-vtrgb-2022_12_29.tar.gz::https://github.com/coderonline/base16-vtrgb/archive/2022-12-29.tar.gz
+	sha256sums = cd4b023b5b6d3ce302101393d198e5edf6c063c24f8e8c7efd05f91ce828cdc9
 
 pkgname = base16-vtrgb
