@@ -1,6 +1,6 @@
 pkgbase = rss-email
 	pkgdesc = Send new RSS/Atom posts as email
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://sr.ht/~witcher/rss-email
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rss-email
 	makedepends = scdoc
 	depends = sqlite
 	conflicts = rss-email-git
-	source = rss-email-0.4.0.tar.gz::https://git.sr.ht/~witcher/rss-email/archive/0.4.0.tar.gz
+	source = rss-email-0.4.1.tar.gz::https://git.sr.ht/~witcher/rss-email/archive/0.4.1.tar.gz
 	sha256sums = d8300c569d0b326e854bed2aa9c53e960bbba2b3ea56cb94c5e0e07c50178221
 
 pkgname = rss-email
