@@ -4,7 +4,7 @@ pkgbase=deepin-anything-git
 pkgname=(deepin-anything-git deepin-anything-dkms-git)
 pkgver=6.0.3.r2.g68428b4
 _extramodules=extramodules-ARCH
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin Anything file search tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/deepin-anything"
@@ -27,8 +27,9 @@ build() {
 
 package_deepin-anything-dkms-git() {
   depends=('dkms')
-  provides=('DEEPIN-ANYTHING-MODULE' 'deepin-anything')
-  conflicts=('DEEPIN-ANYTHING-MODULE' 'deepin-anything')
+  groups=('deepin-git')
+  provides=('DEEPIN-ANYTHING-MODULE' 'deepin-anything-dkms')
+  conflicts=('DEEPIN-ANYTHING-MODULE' 'deepin-anything-dkms')
 
   cd $pkgbase
   install -dm 755 "$pkgdir"/usr/src
@@ -39,6 +40,8 @@ package_deepin-anything-dkms-git() {
 package_deepin-anything-git() {
   depends=('DEEPIN-ANYTHING-MODULE' 'dtkcore-git' 'udisks2-qt5')
   groups=('deepin-git')
+  provides=('deepin-anything')
+  conflicts=('deepin-anything')
 
   cd $pkgbase
   make VERSION=$pkgver DESTDIR="$pkgdir" install

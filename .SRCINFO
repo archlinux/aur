@@ -1,7 +1,7 @@
 pkgbase = deepin-anything-git
 	pkgdesc = Deepin Anything file search tool
 	pkgver = 6.0.3.r2.g68428b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/deepin-anything
 	arch = x86_64
 	arch = aarch64
@@ -19,10 +19,13 @@ pkgname = deepin-anything-git
 	depends = DEEPIN-ANYTHING-MODULE
 	depends = dtkcore-git
 	depends = udisks2-qt5
+	provides = deepin-anything
+	conflicts = deepin-anything
 
 pkgname = deepin-anything-dkms-git
+	groups = deepin-git
 	depends = dkms
 	provides = DEEPIN-ANYTHING-MODULE
-	provides = deepin-anything
+	provides = deepin-anything-dkms
 	conflicts = DEEPIN-ANYTHING-MODULE
-	conflicts = deepin-anything
+	conflicts = deepin-anything-dkms
