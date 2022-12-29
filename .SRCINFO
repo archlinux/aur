@@ -1,0 +1,21 @@
+pkgbase = buildstream-plugins
+	pkgdesc = A collection of plugins for the BuildStream project.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://buildstream.build
+	arch = any
+	license = Apache
+	makedepends = cython
+	makedepends = python-packaging
+	makedepends = python-setuptools
+	depends = buildstream
+	depends = bzr
+	depends = git
+	depends = patch
+	depends = python-pip
+	depends = python-requests
+	depends = python-tomli
+	source = git+https://github.com/apache/buildstream-plugins.git#tag=2.0.0&commit=da8218fa0a1d6c5870c7d11766b17fcd7fdd39c9
+	sha256sums = SKIP
+
+pkgname = buildstream-plugins
