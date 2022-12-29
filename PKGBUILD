@@ -8,12 +8,13 @@
 
 pkgname=wpa_supplicant-wep
 pkgver=2.10
-pkgrel=7
+pkgrel=8
 pkgdesc="A utility providing key negotiation for WPA wireless networks, with WEP enabled"
 url=https://w1.fi/wpa_supplicant/
 arch=(x86_64)
 license=(GPL)
-depends=(openssl libdbus readline libnl)
+depends=(openssl libdbus readline libnl pcsclite)
+options=(debug)
 provides=(wpa_supplicant)
 conflicts=(wpa_supplicant)
 install=wpa_supplicant.install
@@ -26,7 +27,9 @@ source=(
   $archbase/wpa_supplicant-legacy-server-connect.patch
   $archbase/lower_security_level_for_tls_1.patch
   wpa_supplicant_config
-  $archbase/add_extra-ies_only_if_allowed_by_driver.patch
+  $archbase/disable-eapol-werror.patch
+  $archbase/0001-nl80211-add-extra-ies-only-if-allowed-by-driver.patch
+  $archbase/0002-AP-guard-FT-SAE-code-with-CONFIG_IEEE80211R_AP.patch
 )
 sha256sums=(20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f
             08915b040d03a3e07cdc8ea6c76b497e00059e01ce85b67413dfe41d4fc68992
@@ -34,8 +37,10 @@ sha256sums=(20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f
             d42bdbf3d4980b9f0a819612df0c39843c7e96c8afcb103aa656c824f93790b0
             8fba11e4a5056d9e710707ded93341f61fdfef6c64ced992e3936cbd2d41a011
             c3c0fb363f734c1512d24fd749b3ff7515f961b27bfadd04c128434b5c9f4a93
-            117f89641786d4c67f4622151fbe7be9f38c0a78cc3330f039c4c73786560879
-            aaedf87f1530d4e6cb00bf7981d1f868409ed892cc41b83c5613019e7b51f380)
+            877e28a711d2b67856a6c3fd46b7bf96850c4fbfc837ca55457d1f49bdf485dd
+            9aca193cc26682765467cf9131240e5de71f9b49a765a934284da5e308ea904e
+            7901d42eda48f82106901cbeb5e7be39025c878d5085a0a0d54ccbe36c3ecef4
+            24e844b0a08fe3fede1676cedfe29643375ae56ab1a5fe4f5783765a7b759c15)
 
 prepare() {
   cd wpa_supplicant-$pkgver
@@ -56,8 +61,14 @@ prepare() {
   # https://bugs.archlinux.org/task/76474
   patch -Np1 -i ../lower_security_level_for_tls_1.patch
 
+  # https://salsa.debian.org/debian/wpa/-/commit/13e1d28e4f987a220c546df94df86bb9b2371874
+  patch -Np1 -i ../disable-eapol-werror.patch
+
   # http://lists.infradead.org/pipermail/hostap/2022-January/040178.html
-  patch -Np1 -i ../add_extra-ies_only_if_allowed_by_driver.patch
+  patch -Np1 -i ../0001-nl80211-add-extra-ies-only-if-allowed-by-driver.patch
+
+  # https://lists.infradead.org/pipermail/hostap/2022-April/040352.html
+  patch -Np1 -i ../0002-AP-guard-FT-SAE-code-with-CONFIG_IEEE80211R_AP.patch
 
   cp "$srcdir/wpa_supplicant_config" wpa_supplicant/.config
 }

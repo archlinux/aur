@@ -1,4 +1,4 @@
-# Example wpa_supplicant build time configuration
+# Arch Linux wpa_supplicant build time configuration
 #
 # This file lists the configuration options that are used when building the
 # wpa_supplicant binary. All lines starting with # are ignored. Configuration
@@ -195,7 +195,7 @@ CONFIG_SMARTCARD=y
 
 # PC/SC interface for smartcards (USIM, GSM SIM)
 # Enable this if EAP-SIM or EAP-AKA is included
-#CONFIG_PCSC=y
+CONFIG_PCSC=y
 
 # Support HT overrides (disable HT/HT40, mask MCS rates, etc.)
 CONFIG_HT_OVERRIDES=y
@@ -204,7 +204,7 @@ CONFIG_HT_OVERRIDES=y
 CONFIG_VHT_OVERRIDES=y
 
 # Development testing
-#CONFIG_EAPOL_TEST=y
+CONFIG_EAPOL_TEST=y
 
 # Select control interface backend for external programs, e.g, wpa_cli:
 # unix = UNIX domain sockets (default for Linux/*BSD)
@@ -311,7 +311,7 @@ CONFIG_L2_PACKET=linux
 #CONFIG_NO_LINUX_PACKET_SOCKET_WAR=y
 
 # Support Operating Channel Validation
-#CONFIG_OCV=y
+CONFIG_OCV=y
 
 # Select TLS implementation
 # openssl = OpenSSL (default)
@@ -337,7 +337,6 @@ CONFIG_TLSV12=y
 
 # Select which ciphers to use by default with OpenSSL if the user does not
 # specify them.
-#CONFIG_TLS_DEFAULT_CIPHERS="DEFAULT:!EXP:!LOW"
 CONFIG_TLS_DEFAULT_CIPHERS="DEFAULT@SECLEVEL=1"
 
 # If CONFIG_TLS=internal is used, additional library and include paths are
@@ -570,12 +569,12 @@ CONFIG_FST=y
 CONFIG_ACS=y
 
 # Support Multi Band Operation
-#CONFIG_MBO=y
+CONFIG_MBO=y
 
 # Fast Initial Link Setup (FILS) (IEEE 802.11ai)
-#CONFIG_FILS=y
+CONFIG_FILS=y
 # FILS shared key authentication with PFS
-#CONFIG_FILS_SK_PFS=y
+CONFIG_FILS_SK_PFS=y
 
 # Support RSN on IBSS networks
 # This is needed to be able to use mode=1 network profile with proto=RSN and
@@ -634,4 +633,17 @@ CONFIG_WEP=y
 # design is still subject to change. As such, this should not yet be enabled in
 # production use.
 #CONFIG_PASN=y
+
+# WPA3-Enterprise (SuiteB-192)
+CONFIG_SUITEB=y
+
+CONFIG_SUITEB192=y
+
+# Driver support is also needed for IEEE 802.11w.
+CONFIG_IEEE80211W=y
+
+# IEEE 802.11n (High Throughput) support (mainly for AP mode)
+CONFIG_IEEE80211N=y
+
+# Used by eapol_test only, see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=985912
 CONFIG_IPV6=y
