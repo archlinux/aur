@@ -1,16 +1,21 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname=bbk-cli
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Measurement client for Bredbandskollen"
 arch=('x86_64')
 url='https://www.bredbandskollen.se/en/bredbandskollen-cli'
 license=('GPL2')
-makedepends=('git' 'gnutls')
-source=("git+https://github.com/dotse/bbk.git#commit=7b810a6"
-"https://frontend.bredbandskollen.se/download/README.txt")
-sha256sums=('SKIP'
-            '525254138b2dd44c810d5d31b1846dd2395eb6353c5f32805079da60a2f36ada')
+makedepends=('git' 'gnutls' 'wget')
+source=("git+https://github.com/dotse/bbk.git#commit=7b810a6")
+sha256sums=('SKIP')
+
+prepare () {
+
+	cd "$srcdir"
+	wget https://frontend.bredbandskollen.se/download/README.txt
+
+}
 
 build() {
 

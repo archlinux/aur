@@ -1,16 +1,14 @@
 pkgbase = bbk-cli
 	pkgdesc = Measurement client for Bredbandskollen
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bredbandskollen.se/en/bredbandskollen-cli
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = gnutls
+	makedepends = wget
 	source = git+https://github.com/dotse/bbk.git#commit=7b810a6
-	source = https://frontend.bredbandskollen.se/download/README.txt
 	sha256sums = SKIP
-	sha256sums = 525254138b2dd44c810d5d31b1846dd2395eb6353c5f32805079da60a2f36ada
 
 pkgname = bbk-cli
-
