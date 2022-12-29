@@ -4,15 +4,15 @@
 
 pkgname=openssl-git
 pkgver=3.1.0.beta1.r2065.g43a9e682d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
 license=('apache')
-depends=('glibc' 'perl')
-makedepends=('git')
-optdepends=('ca-certificates')
-provides=("openssl=$pkgver")
+depends=('glibc')
+makedepends=('git' 'perl')
+optdepends=('ca-certificates' 'perl')
+provides=("openssl=$pkgver" 'libcrypto.so' 'libssl.so')
 conflicts=('openssl')
 backup=('etc/ssl/openssl.cnf')
 options=('staticlibs')
