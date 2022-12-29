@@ -8,10 +8,7 @@ pkgbase = libsub
 	license = GPL
 	makedepends = python
 	makedepends = boost>=1.72.0
-	depends = openssl
-	depends = libxml++2.6
-	depends = xmlsec
-	depends = libsigc++>=2.0
+	makedepends = openssl
 	depends = boost-libs>=1.72.0
 	provides = libsub
 	conflicts = libsub
