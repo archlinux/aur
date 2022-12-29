@@ -2,9 +2,9 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc2.r60.71747eb
-pkgrel=1
-_kver=6.0.9
+pkgver=1.6.0rc3.r27.2cdbd97
+pkgrel=2
+_kver=6.0.15
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -18,7 +18,7 @@ source=('git+https://github.com/evilsocket/opensnitch.git'
         "https://www.kernel.org/pub/linux/kernel/v${_kver%%.*}.x/linux-${_kver}.tar.xz")
         # "https://github.com/torvalds/linux/archive/v${_kver}.tar.gz")
 sha256sums=('SKIP'
-            '6114a208e82739b4a1ab059ace35262be2a83be34cd1ae23cb8a09337db831c7')
+            'd484eb3d4f88be14b42507a85ad4b0932e92e7a742acbce74e8be007124a6820')
 options=('!strip') # we're stripping with llvm-strip
 
 pkgver() {
@@ -32,6 +32,7 @@ prepare() {
   patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}/ebpf_prog/file.patch
   cp ${srcdir}/${_pkgname}/ebpf_prog/opensnitch.c \
     ${srcdir}/${_pkgname}/ebpf_prog/common.h \
+    ${srcdir}/${_pkgname}/ebpf_prog/common_defs.h \
     ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-procs.c \
     ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-dns.c \
     ${srcdir}/${_pkgname}/ebpf_prog/Makefile samples/bpf
