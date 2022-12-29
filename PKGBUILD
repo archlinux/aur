@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkgui-git
-pkgver=5.6.3.r7.g2e8f35a
-pkgrel=2
+pkgver=5.6.3.r8.ga69ed2e
+pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkgui"
@@ -24,10 +24,10 @@ build() {
   cd $pkgname
   cmake -B build -GNinja \
     -DNOTPACKAGE=OFF \
-    -DMKSPECS_INSTALL_DIR=/usr/lib/qt/mkspecs/modules/ \
+    -DMKSPECS_INSTALL_DIR=lib/qt/mkspecs/modules/ \
     -DBUILD_DOCS=ON \
-    -DQCH_INSTALL_DESTINATION=/usr/share/doc/qt \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DQCH_INSTALL_DESTINATION=share/doc/qt \
+    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   cmake --build build
