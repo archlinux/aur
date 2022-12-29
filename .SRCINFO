@@ -1,6 +1,6 @@
 pkgbase = libcxml
 	pkgdesc = A small C++ library which makes it marginally neater to parse XML using libxml++
-	pkgver = 0.17.4
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://carlh.net/libcxml
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libcxml
 	makedepends = boost
 	depends = libxml++2.6
 	depends = boost-libs>=1.72.0
-	source = libcxml-0.17.4::git+git://git.carlh.net/git/libcxml.git#tag=v0.17.4
+	source = libcxml-0.17.5::git+git://git.carlh.net/git/libcxml.git#tag=v0.17.5
 	sha256sums = SKIP
 
 pkgname = libcxml
