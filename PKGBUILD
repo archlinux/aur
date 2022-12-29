@@ -5,8 +5,8 @@
 
 pkgbase=mididings
 pkgname=('mididings' 'mididings-docs')
-pkgver=20221228.r730.g6079f9f
-pkgrel=2
+pkgver=20221229.r737.g533429a
+pkgrel=1
 pkgdesc='A MIDI router & processor, supporting ALSA & JACK'
 arch=('x86_64')
 url='https://github.com/mididings/mididings'
@@ -23,9 +23,14 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
+  'python-sphinx'
+  'python-sphinxcontrib-fulltoc'
+  'python-pyinotify'
+  'python-pyliblo'
+  'dbus-python'
 )
 checkdepends=('python-pytest')
-_commit='6079f9f2c1774f06fa6cf2432f5276ab040f6f01'
+_commit='533429a68316d56ca49b417e2845c9e28976a511'
 source=("$pkgbase::git+https://github.com/mididings/mididings#commit=$_commit")
 b2sums=('SKIP')
 
@@ -42,7 +47,13 @@ pkgver() {
 build() {
   cd "$pkgbase"
 
+  # module
   python -m build --wheel --no-isolation
+
+  # documentation
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+
+  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-cpython-$python_version:$PYTHONPATH" make -C doc
 }
 
 check() {
@@ -50,7 +61,7 @@ check() {
 
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
 
-  PYTHONPATH="build/lib.linux-$CARCH-cpython-$python_version:$PYTHONPATH" pytest -v
+  PYTHONPATH="$(pwd)/build/lib.linux-$CARCH-cpython-$python_version:$PYTHONPATH" pytest -v
 }
 
 package_mididings() {
@@ -62,7 +73,7 @@ package_mididings() {
     'python-decorator'
   )
   optdepends=(
-    'python-dbus: send DBUS messages'
+    'dbus-python: send DBUS messages'
     'python-pyinotify: automatically restart when a script changes'
     'python-pyliblo: send/recieve OSC messages'
     'python-pysmf: read/write standard MIDI files using the process_file() function'
@@ -84,5 +95,5 @@ package_mididings-docs() {
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgbase" README
   cp -vr doc/examples "$pkgdir/usr/share/doc/$pkgbase"
-  cp -vr doc-html "$pkgdir/usr/share/doc/$pkgbase/html"
+  cp -vr doc/build/html "$pkgdir/usr/share/doc/$pkgbase"
 }

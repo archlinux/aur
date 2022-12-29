@@ -1,7 +1,7 @@
 pkgbase = mididings
 	pkgdesc = A MIDI router & processor, supporting ALSA & JACK
-	pkgver = 20221228.r730.g6079f9f
-	pkgrel = 2
+	pkgver = 20221229.r737.g533429a
+	pkgrel = 1
 	url = https://github.com/mididings/mididings
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,12 @@ pkgbase = mididings
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	source = mididings::git+https://github.com/mididings/mididings#commit=6079f9f2c1774f06fa6cf2432f5276ab040f6f01
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-fulltoc
+	makedepends = python-pyinotify
+	makedepends = python-pyliblo
+	makedepends = dbus-python
+	source = mididings::git+https://github.com/mididings/mididings#commit=533429a68316d56ca49b417e2845c9e28976a511
 	b2sums = SKIP
 
 pkgname = mididings
@@ -26,7 +31,7 @@ pkgname = mididings
 	depends = alsa-lib
 	depends = python
 	depends = python-decorator
-	optdepends = python-dbus: send DBUS messages
+	optdepends = dbus-python: send DBUS messages
 	optdepends = python-pyinotify: automatically restart when a script changes
 	optdepends = python-pyliblo: send/recieve OSC messages
 	optdepends = python-pysmf: read/write standard MIDI files using the process_file() function
