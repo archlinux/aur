@@ -5,8 +5,8 @@
 # Contributor: GI_Jack <GI_Jack@hushmail.com>
 
 pkgname=gtkhash
-pkgver=1.4
-pkgrel=5
+pkgver=1.5
+pkgrel=1
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -15,6 +15,8 @@ depends=(
     'dconf'
     'gtk3'
     'libb2'
+    'libgcrypt'
+    'mbedtls'
     'nettle'
 )
 
@@ -34,21 +36,27 @@ conflicts=(
   gtkhash-thunar
 )
 source=("${url}/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('20b57dbb8f6c6d7323f573c111a11640603a422c5f9da7b302a4981e4adc37c4')
+sha256sums=('7102a192eca3e82ed67a8252a6850440e50c1dbea7c6364bda154ec80f8ff005')
+
+prepare() {
+  mkdir -p plugins
+}
+
 
 build() {
-  cd gtkhash-$pkgver
-
-  ./configure --prefix=/usr \
-              --disable-schemas-compile \
-              --enable-gtkhash \
-              --enable-linux-crypto \
-              --enable-nettle \
-              --disable-blake2 \
-              --with-gtk=3.0
-  make
+  arch-meson "$pkgbase-$pkgver" build \
+    -Dglib-checksums='true' \
+    -Dlinux-crypto='true' \
+    -Dmbedtls='true' \
+    -Dnettle='true' \
+    -Dbuild-caja='false' \
+    -Dbuild-nautilus='false' \
+    -Dbuild-nemo='false' \
+    -Dbuild-thunar='false'
+  meson compile -C build
 }
 
 package() {
-  make -C gtkhash-$pkgver DESTDIR="$pkgdir/" install
+  meson install -C build --destdir "$pkgdir"
+
 }
