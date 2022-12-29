@@ -1,6 +1,6 @@
 pkgbase = naikari
-	pkgdesc = A 2-D space trading and mercenary game forked from the Naev project.
-	pkgver = 0.4.1
+	pkgdesc = 2-D space trading and mercenary game forked from the Naev project.
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://naikari.github.io/
 	arch = x86_64
@@ -16,10 +16,13 @@ pkgbase = naikari
 	depends = libgl
 	depends = luajit
 	depends = suitesparse
+	depends = libunibreak
+	depends = physfs
+	depends = glpk
 	provides = naikari
 	conflicts = naikari
 	conflicts = naikari-git
-	source = https://github.com/naikari/naikari/releases/download/v0.4.1/naikari-0.4.1-source.tar.xz
-	md5sums = e5730d48ba79a9fd5622567d8e0b3faa
+	source = https://github.com/naikari/naikari/releases/download/v0.5.0/naikari-0.5.0-source.tar.xz
+	md5sums = fc1de4b30be41c42392d66792d930288
 
 pkgname = naikari
