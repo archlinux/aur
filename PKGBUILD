@@ -3,11 +3,11 @@
 
 pkgname=hwatch-git
 pkgver=0.3.7.r0.g2586b94
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern alternative to the watch command (git)"
 arch=('x86_64')
 url="https://github.com/blacknon/hwatch"
-license=('MIT' 'Apache')
+license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
