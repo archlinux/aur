@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Morfeo <morfeo89@hotmail.it>
 
 pkgbase=lightdm-guest
