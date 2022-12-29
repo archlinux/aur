@@ -1,7 +1,7 @@
 fcp.enabled=true
 fcp.port=9481
 fproxy.advancedModeEnabled=true
-fproxy.css=clean
+fproxy.css=sky-dark-static
 fproxy.enabled=true
 fproxy.port=8888
 logger.dirname=/opt/freenet/logs

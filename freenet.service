@@ -6,6 +6,7 @@ After=network.target time-sync.target
 Type=forking
 User=freenet
 PIDFile=/run/freenet/freenet.pid
+UMask=0027
 LimitNOFILE=4096
 
 NoNewPrivileges=yes

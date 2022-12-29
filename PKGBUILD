@@ -4,13 +4,15 @@
 # detect java version
 # javac -version 2>&1 |awk '{split($2,v,"."); print v[1]}'
 
-_fred=build01494
+# TODO: https://github.com/freenet/fred/pull/807
+
+_fred=build01495
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1494
+pkgver=0.7.5.1495
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
@@ -33,9 +35,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '043589015aced4a9828518db5a7207382c782ff7f0f5bc2c5ad19ff559fc7f695bcd503e717bfb19bee8338abdf0b30f418a155e9c86f5016162ccad4870d82a'
-        'd8c628a79c912855a34b30cd3f1dfee40a6a629591c2a7e08221850bfd314f34fe60c9dadf23ff486949e587a7396bf1cc728b32a89571ce5825f86d782c884e'
-        '83a374354b4ade822e6ecdc0b08013ac6c1c7dd3071478d4017e998ec031a1f3d0731f76eb8470e36bf8e77f7bbe1310d8d0cf5726929fcc6db81a90cc802d04'
-        '540c911bbccea18ed2b5ad22864040b83674833746536e869ec8491974f0265239c7b4c12fb1e43f27126320adc9206d81249c5e0c9e7ce6ef2aeb46b8f9cf5b'
+        'ca5e878db039bb683395f3a5587c6c352db57fc4cbdf703ec8deacb9829fe882d8bba9efb008d9f6ea4bd636a3b4dced711d4e1df008d4a94bbf20057c1fc516'
+        'dc0c468eb6a691868f17c1dc85e161cec30e318638f8aea14f46e7480943ee146058a546ee578d5d37e9ad74b9394a6ddbbaa5ac00c02553cdd8f790a2b5e2e0'
+        '63bf5cd76cea610b362144c207121f9de54febcccf8347c21aecc25382f564292493a8a3b4fd2c7af18ca6feb041978164241d81d77dd1542619482cd7cbadbb'
         '54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d')
 
 pkgver() {
@@ -47,8 +49,8 @@ pkgver() {
 prepare() {
     cd fred
 
-    # java 17 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-7.6-aur -q
+    # java 19 support
+    git pull -r -v https://github.com/skydrome/fred.git gradle-7.6-aur-1 -q
 
     # create seednodes file for bootstrapping
     rm -f seednodes.fref
@@ -65,6 +67,7 @@ build() {
     export GRADLE_OPTS="-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"
 
     msg "Building Freenet..."
+    rm -rf build
     ./gradlew --no-build-cache --no-daemon copyRuntimeLibs
 
     for plugin in "${_plugins[@]}"; do
@@ -86,7 +89,7 @@ package() {
     install -dm755 "$pkgdir"/usr/bin
     install -dm750 "$pkgdir"/opt/freenet
     install -dm700 "$pkgdir"/opt/freenet/tmp
-    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,plugins,user}
+    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,plugins,user}
     install -dm750 "$pkgdir"/opt/freenet/{plugins/data,user/{data,certs}}
 
     # install freenet
