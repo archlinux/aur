@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.9.0
+Version=0.9.1
 Name=Qccrypt
 Comment=QT based graphical frontend for ccrypt tool
 Icon=qccrypt.png
