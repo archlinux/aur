@@ -61,9 +61,6 @@ build() {
 
     "../configure" "${_configure_opts[@]}"
 
-    echo "build_args"
-    echo "${_build_opts[@]}"
-
     make "${_build_opts[@]}"
     
     cd ..
