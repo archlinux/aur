@@ -1,0 +1,15 @@
+pkgbase = prowlet-git
+	pkgdesc = Query the Prowlarr search API from the command line.
+	pkgver = r5.6f9be29
+	pkgrel = 1
+	url = https://github.com/loiccoyle/prowlet
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = jq
+	optdepends = Prowlarr: Usenet and torrent aggregator, similar to nzbhydra2 and jackett.
+	source = prowlet::git+https://github.com/loiccoyle/prowlet.git
+	md5sums = SKIP
+
+pkgname = prowlet-git
