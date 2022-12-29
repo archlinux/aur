@@ -1,5 +1,5 @@
 pkgname=mingw-w64-nlohmann-json
-pkgver=3.10.5
+pkgver=3.11.2
 pkgrel=1
 pkgdesc='Header-only JSON library for Modern C++ (mingw-w64)'
 url='https://github.com/nlohmann/json'
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/nlohmann/json/archive/v${pkgver}.tar.gz")
-sha256sums=('5daca6ca216495edf89d167f808d1d03c4a4d929cef7da5e10f135ae1540c7e4')
+sha256sums=('d69f9deb6a75e2580465c6c4c5111b89c4dc2fa94e3a85fcd2ffcd9a143d9273')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
