@@ -1,0 +1,15 @@
+pkgbase = lchat
+	pkgdesc = line chat is a line oriented front end for ii-like chat programs.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://tools.suckless.org/lchat/
+	arch = any
+	license = ISC
+	makedepends = libgrapheme
+	provides = lchat
+	conflicts = lchat-git
+	conflicts = lchat-bin
+	source = lchat-1.0.tar.gz::https://dl.suckless.org/tools/lchat-1.0.tar.gz
+	sha256sums = 89247b5c8e853bbfc2f97909b1926fadf44d637543767e77e9e42e72242f375f
+
+pkgname = lchat
