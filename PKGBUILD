@@ -15,7 +15,7 @@ pkgname=(
   "woff2-jena1330${_vcssuffix}"
 )
 pkgver=r105.20160920.75d5b9e
-pkgrel=9
+pkgrel=10
 pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.'
 arch=(
   'any'
@@ -47,7 +47,13 @@ sha256sums=(
 
 
 prepare() {
+  msg2 "Generating 'website.url' information file ..."
   printf '%s\n' "${url}" > "${srcdir}/website.url"
+
+  cd "${srcdir}/${_pkgbase}"
+
+  msg2 "Generating GIT log 'git.log' information file ..."
+  git log > "${srcdir}/git.log"
 }
 
 pkgver() {
@@ -68,27 +74,35 @@ pkgver() {
 build() {
   cd "${srcdir}"
 
+  msg2 "Converting 'website.html' to text/plain format ..."
   html2text --no-wrap-links --body-width 0 --mark-code --reference-links --links-after-para --unicode-snob website.html > website.txt
+  msg2 "Converting 'website.html' to Markdown format ..."
   html2md -i website.html > website.md
 
   cd "${srcdir}/${_pkgbase}"
 
   # Build LaTeX stuff:
+  msg2 "Building LaTeX font files ..."
   ./BuildAndInstall
 
   # Build OTF font:
+  msg2 "Building OTF font file ..."
   fontforge -lang=ff -c 'Open("Jena1330.sfdir"); Generate("work/Jena1330.otf", "", 0x410201)'
 
   # Build TTF font:
+  msg2 "Building TTF font file ..."
   fontforge -lang=ff -c 'Open("Jena1330.sfdir"); Generate("work/Jena1330.ttf", "", 0x410201)'
 
   # Build additional Type 1 data:
+  msg2 "Building not-yet-build Postscript Type 1 font file ..."
   fontforge -lang=ff -c 'Open("Jena1330.sfdir"); Generate("work/Jena1330.pfa", "", 0x410201)'
 
   # Build WOFF font:
+  msg2 "Building WOFF font file ..."
   fontforge -lang=ff -c 'Open("Jena1330.sfdir"); Generate("work/Jena1330.woff", "", 0x410201)'
 
   # Build WOFF2 font:
+  msg2 "Building WOFF2 font file ..."
   fontforge -lang=ff -c 'Open("Jena1330.sfdir"); Generate("work/Jena1330.woff2", "", 0x410201)'
 }
 
@@ -133,6 +147,7 @@ package_jena1330-fonts-docs-git () {
   install -D -m644 -v "${srcdir}/website.txt"                     "${pkgdir}/usr/share/doc/${_pkgbase}/website.txt"
   install -D -m644 -v "${srcdir}/website.md"                      "${pkgdir}/usr/share/doc/${_pkgbase}/website.md"
   install -D -m644 -v "${srcdir}/website.url"                     "${pkgdir}/usr/share/doc/${_pkgbase}/website.url"
+  install -D -m644 -v "${srcdir}/git.log"                     "${pkgdir}/usr/share/doc/${_pkgbase}/git.log"
   install -D -m644 -v 'README'                                    "${pkgdir}/usr/share/doc/${_pkgbase}/README"
   ln -sv "/usr/share/licenses/jena1330-fonts-license/LICENSE.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/LICENSE.txt"
 
