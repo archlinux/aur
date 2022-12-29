@@ -1,0 +1,15 @@
+pkgbase = buildstream-plugins-container
+	pkgdesc = A collection of BuildStream plugins that are related to containers.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://buildstream.build
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = buildstream
+	depends = python-requests
+	source = git+https://gitlab.com/BuildStream/bst-plugins-container.git#tag=0.4.1&commit=936fb9d941ced5db3a719487b951e0b0f9bd8f21
+	sha256sums = SKIP
+
+pkgname = buildstream-plugins-container
