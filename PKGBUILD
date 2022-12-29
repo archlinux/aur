@@ -1,16 +1,16 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=shell-piper
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Write a temporary file and pass it to a program'
 arch=('any')
 url="https://github.com/Mrfiregem/shell-piper"
 license=('GPL3')
-depends=('python')
+depends=('python' 'python-rich')
 makedepends=('python-flit' 'python-installer')
 provides=('shellpiper')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mrfiregem/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0d18d524018db53201fca375c6a7d9077d89a7c142406130fa7455f6c572abc9')
+sha256sums=('88da5fb82cac19e45a68959cdf036a50431580588d3d6c806eb9fdc81b2b246f')
 
 build() {
   cd "$pkgname-$pkgver"
