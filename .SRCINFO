@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-git
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
-	pkgver = 6.6.9_r50289.gfeda3d3727
-	pkgrel = 2
+	pkgver = 6.6.9_r50326.g988886f2eb
+	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
@@ -41,6 +41,7 @@ pkgbase = alchemy-next-viewer-git
 	optdepends = mesa-libgl: Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
+	optdepends = wine: More up-to-date, less buggy SLVoice support
 	provides = alchemy-viewer
 	replaces = alchemy-viewer-git
 	options = !emptydirs
@@ -50,6 +51,6 @@ pkgbase = alchemy-next-viewer-git
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = compile.bash
 	sha256sums = SKIP
-	sha256sums = 1575d64ab07e26189c757ce5556fe5be48eab19ca9a1b6677035cda6fb8da20b
+	sha256sums = b92fde75c1e327e4afd6bf756632f0a8769c7dc34050852f4361aca26fe6293f
 
 pkgname = alchemy-next-viewer-git
