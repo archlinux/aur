@@ -2,7 +2,7 @@
 
 _name=ddns
 pkgname=python-ddns
-pkgrel=1
+pkgrel=2
 pkgver=2.12.0
 pkgdesc="Automatically update DNS records to dynamic local IP."
 url=https://pypi.org/project/ddns
