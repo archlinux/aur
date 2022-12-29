@@ -1,0 +1,16 @@
+pkgbase = cppgraphqlgen
+	pkgdesc = Set of GraphQL libraries and tools
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/microsoft/cppgraphqlgen
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pegtl
+	makedepends = rapidjson
+	depends = boost-libs
+	source = https://codeload.github.com/microsoft/cppgraphqlgen/tar.gz/v4.5.0
+	md5sums = 45b0994a06acd0a2602b2bca126f897b
+
+pkgname = cppgraphqlgen
