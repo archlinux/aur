@@ -2,7 +2,7 @@
 
 pkgname=deepin-pw-check-git
 pkgver=5.1.17.r5.g2b1147e
-pkgrel=1
+pkgrel=2
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/deepin-pw-check"
@@ -39,6 +39,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+  export GO111MODULE=off
   make
 }
 
