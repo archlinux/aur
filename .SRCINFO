@@ -1,6 +1,6 @@
 pkgbase = gdrivefs-git
 	pkgdesc = A complete FUSE adapter for Google Drive
-	pkgver = 0.14.12.r21.gc504de1
+	pkgver = 0.14.13.r5.gd307b04
 	pkgrel = 1
 	url = https://github.com/dsoprea/GDriveFS
 	arch = any
@@ -14,8 +14,9 @@ pkgbase = gdrivefs-git
 	depends = python-httplib2
 	depends = python-dateutil
 	depends = python-oauth2client
-	source = git://github.com/dsoprea/GDriveFS
+	source = git+https://github.com/dsoprea/GDriveFS
+	source = 0001-Allow-python-oauth2client-4.x.x.patch
 	sha256sums = SKIP
+	sha256sums = d10039e8ce65da644099128740b6f821de71f77facb206029994bf4bbeef659a
 
 pkgname = gdrivefs-git
-

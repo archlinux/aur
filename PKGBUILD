@@ -3,9 +3,9 @@
 # Contributors: Javier Vazquez <j.e.vasquez.v at gmail dot com>
 # Contributors: Nagy Gábor <ngm.hun at gmail dot com>
 
+_pkgname=GDriveFS
 pkgname=gdrivefs-git
-_gitname=GDriveFS
-pkgver=0.14.12.r21.gc504de1
+pkgver=0.14.13.r5.gd307b04
 pkgrel=1
 pkgdesc='A complete FUSE adapter for Google Drive'
 url='https://github.com/dsoprea/GDriveFS'
@@ -24,22 +24,36 @@ makedepends=(
 )
 license=('GPL2')
 arch=('any')
-source=("git://github.com/dsoprea/${_gitname}")
-sha256sums=('SKIP')
+source=("git+https://github.com/dsoprea/GDriveFS"
+        '0001-Allow-python-oauth2client-4.x.x.patch')
+sha256sums=('SKIP'
+            'd10039e8ce65da644099128740b6f821de71f77facb206029994bf4bbeef659a')
 
 pkgver() {
-  cd "${_gitname}"
+  cd "${_pkgname}"
   git describe --long | sed 's/-/.r/;s/-/./'
 }
 
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+  cd "${_pkgname}"
+  for p in "${source[@]}"; do
+    if [[ ${p} == *.patch ]]; then
+      git apply "${srcdir}/${p}"
+    fi
+  done
+}
+
 build() {
-  cd "${_gitname}"
+  cd "${_pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "${_gitname}"
+  cd "${_pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1
 }
-
-# vim:set ft=sh ts=2 sw=2 et:

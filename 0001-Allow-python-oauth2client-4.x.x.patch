@@ -1,0 +1,40 @@
+From f0a8ddc5c7ad9fe78d0f9ad55f20107ea1b1dd6f Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Thu, 29 Dec 2022 22:38:59 +0300
+Subject: [PATCH] Allow python-oauth2client 4.x.x
+
+---
+ gdrivefs/gdfuse.py                  | 6 ------
+ gdrivefs/resources/requirements.txt | 2 +-
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/gdrivefs/gdfuse.py b/gdrivefs/gdfuse.py
+index 7265f9e..7af85d5 100644
+--- a/gdrivefs/gdfuse.py
++++ b/gdrivefs/gdfuse.py
+@@ -851,12 +851,6 @@ def mount(auth_storage_filepath, mountpoint, debug=None, nothreads=None,
+         raise ValueError("Credential path is not valid: [%s]" %
+                          (auth_storage_filepath,))
+ 
+-    # If we don't check this here, it'll just cause a headache when things fail
+-    # during the communication.
+-    oauth2_version = tuple([int(c) for c in oauth2client.__version__.split('.')])
+-    if oauth2_version >= (4, 0, 0):
+-        raise Exception("Google does not like oauth2client >=4.0.0 .")
+-
+     fuse_opts = {}
+     
+     if option_string:
+diff --git a/gdrivefs/resources/requirements.txt b/gdrivefs/resources/requirements.txt
+index 0f3f4c2..4c77c94 100644
+--- a/gdrivefs/resources/requirements.txt
++++ b/gdrivefs/resources/requirements.txt
+@@ -5,4 +5,4 @@ fusepy>=2.0.2
+ greenlet>=0.4.2
+ httplib2>=0.9.2
+ python-dateutil>=2.2
+-oauth2client<4.0.0
++oauth2client<5.0.0
+-- 
+2.39.0
+
