@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_565
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
@@ -40,13 +40,8 @@ package() {
 	cp "${srcdir}/config.json" "${pkgdir}/opt/QQ/workarounds/config.json"
 
 
-	# 处理图标尺寸不正确的问题
-	ICON_WORKDIR="${pkgdir}/usr/share/icons/hicolor/0x0"
-	convert "${ICON_WORKDIR}/apps/qq.png" -trim +repage "${ICON_WORKDIR}/trimmed.png"
-	convert "${ICON_WORKDIR}/trimmed.png" -resize '512x512' "${ICON_WORKDIR}/resized.png"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-	mv "${ICON_WORKDIR}/resized.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/qq-nt.png"
-	rm -rf "${ICON_WORKDIR}"
+	# 处理图标文件夹不正确的问题
+	mv "${pkgdir}/usr/share/icons/hicolor/0x0" "${pkgdir}/usr/share/icons/hicolor/512x512"
 
 	# 将 LICENSE 移动到正确位置
 	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
