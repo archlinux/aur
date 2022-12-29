@@ -1,13 +1,13 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.3.9.r3331.376b3438
+pkgver=0.3.10.r3391.f2a0c3d5
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
@@ -34,15 +34,20 @@ build() {
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCONTOUR_BUILD_WITH_QT6=ON
   cmake --build build --parallel $_cpuCount
 }
 
 check() {
-  cd "${pkgname}"
-  ../build/src/contour/contour version
-  ../build/src/crispy/crispy_test
-  ../build/src/vtbackend/terminal_test
+  # for running tests, it is (currently) expected to be executed
+  # from within the source code's project root directory, in order to
+  # access some test files.
+  cd "${srcdir}/${pkgname}"
+
+  "${srcdir}"/build/src/contour/contour version
+  "${srcdir}"/build/src/crispy/crispy_test
+  "${srcdir}"/build/src/vtbackend/terminal_test
 }
 
 package() {
