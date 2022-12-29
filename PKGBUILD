@@ -23,7 +23,7 @@ depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
          'python-waitress' 'python-websockets' 'python-qtawesome' 'python-vlc'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
-            'mupdf: display pdfs'
+            'python-pymupdf: display pdfs'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
