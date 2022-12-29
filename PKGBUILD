@@ -1,6 +1,6 @@
 pkgname=briar-headless
 conflicts=('briar-headless-git')
-pkgver=1.4.3
+pkgver=1.4.18
 pkgrel=1
 pkgdesc='Briar REST API'
 arch=('x86_64' 'armv7h' 'aarch64')

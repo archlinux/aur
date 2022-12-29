@@ -1,6 +1,6 @@
 pkgbase = briar-headless
 	pkgdesc = Briar REST API
-	pkgver = 1.4.3
+	pkgver = 1.4.18
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = briar-headless
 	depends = java-runtime=11
 	depends = bash
 	conflicts = briar-headless-git
-	source = briar-headless::git+https://code.briarproject.org/briar/briar.git#tag=release-1.4.3
+	source = briar-headless::git+https://code.briarproject.org/briar/briar.git#tag=release-1.4.18
 	sha256sums = SKIP
 
 pkgname = briar-headless
