@@ -10,4 +10,4 @@ pkgbase = rtodo
 	md5sums = 65212c3174f5a3ebebfcda045d687a76
 	md5sums = 9d6236041611466d09794b98fd034310
 
-pkgname = rtodo
+pkgname = rtodo-bin
