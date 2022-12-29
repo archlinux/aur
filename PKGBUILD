@@ -1,17 +1,17 @@
-# Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
+# Maintainer:  HLFH <gaspard@dhautefeuille.eu>
 # Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 
 pkgname=elasticsearch
-pkgver=8.5.2
+pkgver=8.5.3
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
 depends=('jdk19-openjdk' 'systemd' 'libxml2')
-makedepends=('jdk19-openjdk')
+makedepends=('jdk17-openjdk')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
@@ -25,7 +25,7 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-b2sums=('5048b14d6f1ccd21d6e51ff7bd81277efa8fef3976e6aa7957e756cf788df4021061212dd49de54a327cdb44f246341e5d5277bc296243b66cc80cd3363b4cde'
+b2sums=('b058aea27dd2b3c8c072fe80d2d16102297efd3f684d88b9fd608d119dbaeff2dd2f961a4aa42c948bf66780a0b28f5fea65907804486eadedfbd02458670d79'
         'a3196d747b35510261d921996f3eb8ddcabf4d0093d36829d020722926a2b89588fd2e033bf0eecb21d8727fecac67465ee697bd009cab578f7e7e0d8429c0b2'
         'de3e45081e9f4d75c47b2d2ea4c9faabb0499153914c940faf055f34a823df1e4d244041520686fe6e6dabdb01520c3c48c9382613aeeadc3f5376bf0d1c367d'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
@@ -52,6 +52,7 @@ build() {
   cd $pkgname-$pkgver
   export PATH=/usr/lib/jvm/`archlinux-java get`/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
+  export JAVA_HOME='/usr/lib/jvm/java-17-openjdk'
   ./gradlew :modules:systemd:assemble
   ./gradlew :distribution:archives:linux-tar:assemble
 }
@@ -78,7 +79,7 @@ package() {
 
   ln -s /etc/elasticsearch "$pkgdir"/usr/share/elasticsearch/config
   ln -s /var/log/elasticsearch "$pkgdir"/usr/share/elasticsearch/logs
-  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir"/usr/share/elasticsearch/jdk
+  ln -s /usr/lib/jvm/java-19-openjdk "$pkgdir"/usr/share/elasticsearch/jdk
 
   install -Dm644 "$srcdir"/elasticsearch.service "$pkgdir"/usr/lib/systemd/system/elasticsearch.service
   install -Dm644 "$srcdir"/elasticsearch@.service "$pkgdir"/usr/lib/systemd/system/elasticsearch@.service
