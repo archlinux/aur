@@ -1,12 +1,12 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r2737+g966e9c3c
-pkgrel=3
+pkgver=1.0.0.r2771.g9b31976c
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
-license=('AGPL')
+license=('AGPL3')
 makedepends=('openssl' 'git')
 depends=(
         'uwsgi'
@@ -40,14 +40,14 @@ source=(git+$_giturl#branch=$_gitbranch
         'searxng.ini'
         'searxng.sysusers'
         'settings.yml')
-sha512sums=('SKIP'
-            'fd81a9b8eb36a32c031ce082176ec3a44f266e2f6ffc4218ce19e87353c4441ca7e252e8487d7a339eb084130157bc6c705eb4d2064605589f42e410d4eb8fb8'
-            'af9a4539f0b6949ec504068f28232553547804a49bb588a1fff75ad612196e3722c097f076bb3b4b1f1cf905d01f8915ed2af73d7e1b08bbdbad06dba41e8ea7'
-            '9aa470d0be0e943d1d49c30eba91ee141a847106eecfb3278f66ff6ca73527069820faf3792630a217dc9a30df56d65a40e569ebd9661f5f0478dffc50c26c0d')            
+b2sums=('SKIP'
+        'd6d65d00851c5504657e992d8ff44996652d56a8f0030f9fc565650c814b9ca24e060ebb461d8fcaa447bfbe6fda0fb01afdbc909b262ed15e0033809fb35fd7'
+        'becbc7783e484d15de32973b9376014b1bf2ba9494bb0fa65d08a9725715d2170c694a529038059ebc6b42969641d8c3cf02235355fbc3a45b02d28fdf0d6392'
+        '1895880f4c541080fd33dde194bb158cf7fc7d397b24e8bde14df586e0dd3dc1547f67bdc3f40161521e1c0f4e244aaab8db5028204c5d9da7972c70c7110ab7')
 
 pkgver() {
   cd searxng
-  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
 prepare() {
@@ -75,4 +75,5 @@ package() {
   install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini"
   install -Dm644 "${srcdir}/settings.yml" "${pkgdir}/etc/searxng/settings.yml" 
   install -Dm644 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}${_site_packages}/searx"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/searxng/LICENSE"
 }
