@@ -1,8 +1,8 @@
 # Maintainer: Kimi <noreply@nodomain.org>
 
 pkgname=kimi-linphone-desktop
-pkgver=5.0.3
-pkgrel=3
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="A free VoIP and video softphone based on the SIP protocol (Installed in /usr/local with all deps included)."
 arch=('x86_64')
 url="https://linphone.org"
