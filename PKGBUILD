@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.15.2.r1.ga265d43c
+pkgver=5.15.2.r9.g9406544e
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64' 'aarch64')
@@ -74,6 +74,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+  export GO111MODULE=off
 
   cd $pkgname
 #  make -C network/nm_generator gen-nm-code
