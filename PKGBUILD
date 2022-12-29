@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64')
 url="https://github.com/LinusDierheimer/fastfetch"
@@ -30,14 +30,19 @@ sha256sums=('63f1b10755f18bbcf7d8300ee3bb05cf9b16a8f8b8ffa304c92162eed747467d')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_BUILD_TYPE='RELWITHDEBINFO' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DBUILD_TESTS='ON' \
     -DENABLE_SQLITE3='OFF' \
     -DENABLE_RPM='OFF' \
     -DENABLE_IMAGEMAGICK6='OFF' \
     -DENABLE_LIBCJSON='OFF' \
     -Wno-dev
   cmake --build build
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
