@@ -9,7 +9,7 @@ _base="toolchain"
 pkgbase="${_platform}-${_module}"
 pkgname=("${pkgbase}-${_bu}"
          "${pkgbase}-gcc")
-pkgver=v2.35.2
+pkgver=v1.0
 _bu_ver="v2.35.2"
 _gcc_ver="v11.3.0"
 pkgrel=1
@@ -31,10 +31,11 @@ source=("${pkgbase}-${_bu}::git+${_github}/${_bu}#commit=${_bu_commit}"
         "${pkgbase}-gcc::git+${_github}/gcc#commit=${_gcc_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-${_bu}#branch=${_bu_branch}")
 #         "${pkgbase}-gcc::git+${_local}/${_platform}-gcc#commit=${_gcc_branch}")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 # shellcheck disable=SC2154
-build_ps2-iop-binutils() {
+build_ps2-iop-binutils-gdb() {
   local _target
   local _root="${pkgdir}/opt/ps2dev"
   local _usr="${_root}/${_module}"
@@ -55,7 +56,7 @@ build_ps2-iop-binutils() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
-  cd "${pkgbase}-${_bu}"
+  cd "${srcdir}/${pkgbase}-${_bu}"
 
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     rm -rf "build-${_target}"
@@ -80,7 +81,9 @@ package_ps2-iop-binutils-gdb() {
   local _n_cpu="$(getconf _NPROCESSORS_ONLN)"
   local _make_opts=("-j" "${_n_cpu}")
   local _target
-  cd "${pkgbase}-${_bu}"
+  cd "${srcdir}/${pkgbase}-${_bu}"
+  echo $(pwd)
+  ls
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
     make "${_make_opts}" install-strip
@@ -110,7 +113,7 @@ build_ps2-iop-gcc() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgbase}-gcc"
 
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     rm -rf "build-${_target}"
@@ -154,10 +157,14 @@ package_ps2-iop-gcc() {
   local _n_cpu="$(getconf _NPROCESSORS_ONLN)"
   local _make_opts=("-j" "${_n_cpu}")
   local _target
-  cd "${pkgbase}-${_bu}"
+  cd "${srcdir}/${pkgbase}-${_bu}"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
     make "${_make_opts}" install-strip
     cd ..
   done
+}
+
+build() {
+  "build_${_platform}-${_module}-"{"${_bu}","gcc"}
 }

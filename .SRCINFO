@@ -1,6 +1,6 @@
 pkgbase = ps2-iop
 	pkgdesc = IOP compiler used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
-	pkgver = v2.35.2
+	pkgver = v1.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2toolchain-iop
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = ps2-iop
 	checkdepends = shellcheck
 	source = ps2-iop-binutils-gdb::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
 	source = ps2-iop-gcc::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ps2-iop-binutils-gdb
