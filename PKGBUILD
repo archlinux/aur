@@ -5,7 +5,7 @@
 
 pkgname=elasticsearch
 pkgver=8.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
@@ -26,7 +26,7 @@ source=(
   remove-systemd-package-check.patch
 )
 b2sums=('b058aea27dd2b3c8c072fe80d2d16102297efd3f684d88b9fd608d119dbaeff2dd2f961a4aa42c948bf66780a0b28f5fea65907804486eadedfbd02458670d79'
-        'a3196d747b35510261d921996f3eb8ddcabf4d0093d36829d020722926a2b89588fd2e033bf0eecb21d8727fecac67465ee697bd009cab578f7e7e0d8429c0b2'
+        '069bc68cec0d4638a90205ddf61e36224c73898b219e14d36e8340fb4ff8a5e9f6bbb7c12c0e69ad0f245db7ee67c2c0afac241484f4a9c5595c22ab4e575e55'
         'de3e45081e9f4d75c47b2d2ea4c9faabb0499153914c940faf055f34a823df1e4d244041520686fe6e6dabdb01520c3c48c9382613aeeadc3f5376bf0d1c367d'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
         '91ca815aa29f619e74b8d735af234705aed7254e4ecdde5248ab2a971a6b13e4c3897ed54933b2d68d3f16c266cd20d6ce14377f988199c367c39b892ddf5bca'

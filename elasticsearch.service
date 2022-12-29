@@ -9,6 +9,7 @@ After=network-online.target
 [Service]
 Type=notify
 NotifyAccess=all
+TimeoutStartSec=60
 RuntimeDirectory=elasticsearch
 PrivateTmp=true
 Environment=ES_HOME=/usr/share/elasticsearch
