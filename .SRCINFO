@@ -1,29 +1,18 @@
 pkgbase = python-linode_api4-git
 	pkgdesc = Bindings for the Linode API v4
-	pkgver = 1.0.2.r2.g9d1509b
+	pkgver = 5.3.0.r1.g1c65238
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/linode/linode_api4-python
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python-future
-	makedepends = python2-setuptools
-	makedepends = python2-future
-	source = git+https://github.com/linode/linode_api4-python
-	sha256sums = SKIP
-
-pkgname = python-linode_api4-git
 	depends = python-future
 	provides = python-linode_api4
 	provides = python-linode-api
 	conflicts = python-linode_api4
 	conflicts = python-linode-api
+	source = git+https://github.com/linode/linode_api4-python
+	sha256sums = SKIP
 
-pkgname = python2-linode_api4-git
-	depends = python2-future
-	provides = python2-linode_api4
-	provides = python2-linode-api
-	conflicts = python2-linode_api4
-	conflicts = python2-linode-api
-
+pkgname = python-linode_api4-git
