@@ -4,15 +4,19 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.98
+pkgver=1.0
 _ver=v$pkgver
 pkgrel=1
 pkgdesc="Kraft helps you to handle documents like quotes and invoices in your small business."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
-optdepends=("python-weasyprint: alternative PDF generator")
+depends=('akonadi-contacts' 'akonadi' 'ctemplate')
+optdepends=(
+	'python-reportlab: default PDF generator'
+	'python-pypdf2: default PDF generator'
+	'python-weasyprint: alternative PDF generator'
+)
 makedepends=('cmake' 'extra-cmake-modules' 'asciidoctor' 'po4a')
 source=(
   "kraft-v${pkgver}.tar.gz::https://github.com/dragotin/kraft/archive/${_ver}.tar.gz"
@@ -49,4 +53,4 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('0f04516a5f01f0e5f56c1ec815add3a06adc3edad65858b6a54d845ac7ff9dbd')
+sha256sums=('b122c5e2be40c76016bc809596779bb156d94ef10d4279cc24c33d598b5e06e4')
