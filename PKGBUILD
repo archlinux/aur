@@ -1,4 +1,5 @@
-# Maintainer: Simon <thelinuxguy @ freenode>
+# Maintainer: Knut <kemehus at gmail dot com>
+# Contributor: Simon <thelinuxguy @ freenode>
 # Contributor: Garrett <floft.net/contact>
 
 pkgname=openlp-git
