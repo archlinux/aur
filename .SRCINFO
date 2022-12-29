@@ -1,14 +1,15 @@
 pkgbase = deepin-gtk-theme-git
 	pkgdesc = Deepin GTK Theme
-	pkgver = 2020.06.10.r15.g4025b51
+	pkgver = 2020.06.10.r34.g773c9f6
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-gtk-theme
 	arch = any
-	groups = deepin
+	groups = deepin-git
 	license = LGPL3
 	makedepends = git
 	optdepends = gtk-engine-murrine: for gtk2 themes
-	source = deepin-gtk-theme-git::git+https://github.com/linuxdeepin/deepin-gtk-theme/
+	conflicts = deepin-gtk-theme
+	source = git+https://github.com/linuxdeepin/deepin-gtk-theme.git
 	sha512sums = SKIP
 
 pkgname = deepin-gtk-theme-git
