@@ -6,7 +6,7 @@
 # Socket path is "${XDG_RUNTIME_DIR}/yubikey-agent/yubikey-agent.sock"
 
 pkgname=yubikey-agent
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A seamless ssh-agent for YubiKeys'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
   "https://github.com/FiloSottile/yubikey-agent/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '724b21f05d3f822acd222ecc8a5d8ca64c82d5304013e088d2262795da81ca4f'
+  'f156d089376772a34d2995f8261d821369a96a248ab586d27e3be0d9b72d7426'
 )
 
 build() {
