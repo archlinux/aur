@@ -1,10 +1,11 @@
 pkgbase = python-certstream
 	pkgdesc = Library for receiving certificate transparency list updates in real time
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CaliDog/certstream-python
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-websocket-client>=0.58.0
 	depends = python-termcolor
