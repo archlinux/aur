@@ -157,7 +157,7 @@ package_ps2-iop-gcc() {
   local _n_cpu="$(getconf _NPROCESSORS_ONLN)"
   local _make_opts=("-j" "${_n_cpu}")
   local _target
-  cd "${srcdir}/${pkgbase}-${_bu}"
+  cd "${srcdir}/${pkgbase}-gcc"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
     make "${_make_opts}" install-strip
