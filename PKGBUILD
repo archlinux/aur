@@ -1,7 +1,7 @@
 # Maintainer: nixi <nixi at cock dot li>
 
 pkgname=ulozto-downloader
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Uloz.to quick multiple sessions downloader'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('tor' 'tk' 'python-requests' 'python-pillow' 'python-ansicolors' 'pytho
 optdepends=('python-tflite-runtime: automatic CAPTCHA solving')
 makedepends=('python-setuptools')
 source=("https://github.com/setnicka/ulozto-downloader/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d7f6646fad0bc4742cef5ed2678c4d0046972d385bec8d3683411ce7483baea9')
+sha256sums=('326d2a2aa7353dd90681bf3692fb6f2ecc55c9cc5f046d77ef2b88bab4a4b228')
 
 package() {
 	cd "$srcdir/ulozto-downloader-$pkgver"

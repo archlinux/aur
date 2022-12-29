@@ -1,6 +1,6 @@
 pkgbase = ulozto-downloader
 	pkgdesc = Uloz.to quick multiple sessions downloader
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/setnicka/ulozto-downloader
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ulozto-downloader
 	depends = python-pysocks
 	depends = python-stem
 	optdepends = python-tflite-runtime: automatic CAPTCHA solving
-	source = https://github.com/setnicka/ulozto-downloader/archive/refs/tags/3.2.0.tar.gz
-	sha256sums = d7f6646fad0bc4742cef5ed2678c4d0046972d385bec8d3683411ce7483baea9
+	source = https://github.com/setnicka/ulozto-downloader/archive/refs/tags/3.3.0.tar.gz
+	sha256sums = 326d2a2aa7353dd90681bf3692fb6f2ecc55c9cc5f046d77ef2b88bab4a4b228
 
 pkgname = ulozto-downloader
