@@ -1,0 +1,13 @@
+pkgbase = ps2-iop
+	pkgdesc = Tools used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
+	pkgver = v2.35.2
+	pkgrel = 1
+	url = https://github.com/ps2dev/binutils-gdb
+	arch = any
+	license = BSD
+	checkdepends = shellcheck
+	provides = ps2-iop
+	source = ps2-iop::git+https://github.com/ps2dev/binutils-gdb#commit=9cca5c1781d1a03b9b3b61a3e5270cdb9c69295e
+	sha256sums = SKIP
+
+pkgname = ps2-iop
