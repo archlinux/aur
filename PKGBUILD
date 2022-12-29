@@ -4,7 +4,7 @@ pkgname=${_pkgname}-dkms-git
 pkgver=r270.ca3252c
 pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
-url="https://github.com/dini/${_pkgname}"
+url="https://github.com/lwfinger/${_pkgname}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 arch=('any')
@@ -25,7 +25,6 @@ pkgver() {
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
-    rm -r ".git"{,ignore}
 }
 
 prepare() {
@@ -46,6 +45,7 @@ package() {
         -e "s/@PKGVER@/${pkgver}/" \
         -i "${install_dir}/dkms.conf"
     cd "${srcdir}/${_pkgname}"
+    rm -r ".git"{,ignore}
     for d in $(find . -type d); do
         install -dm755 "${install_dir}/$d"
     done
