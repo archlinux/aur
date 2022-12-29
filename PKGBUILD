@@ -28,7 +28,8 @@ package() {
     cp -a src/base16-vtrgb-${VERSION}/initcpio/hooks/setvtrgb pkg/${pkgname}/usr/lib/initcpio/hooks/
     cp -a src/base16-vtrgb-${VERSION}/initcpio/install/setvtrgb pkg/${pkgname}/usr/lib/initcpio/install/
     cp -a src/base16-vtrgb-${VERSION}/initcpio/install/sd-setvtrgb pkg/${pkgname}/usr/lib/initcpio/install/
-    cp -a src/base16-vtrgb-${VERSION}/setvtrgb.service pkg/${pkgname}/usr/lib/systemd/system/initrd.target.wants/
+    cp -a src/base16-vtrgb-${VERSION}/setvtrgb.service pkg/${pkgname}/usr/lib/systemd/system/
+    ln -sf ../setvtrgb.service pkg/${pkgname}/usr/lib/systemd/system/initrd.target.wants/setvtrgb.service
     cp -ar src/base16-vtrgb-${VERSION}/consolecolors pkg/${pkgname}/usr/share/kbd/
 }
 
