@@ -5,8 +5,8 @@
 
 _pkgname=tty0tty
 pkgname=tty0tty-dkms-git
-pkgver=1.2+41.r57.20220526.c0e85cf
-pkgrel=3
+pkgver=1.2+46.r62.20221025.81f8aa2
+pkgrel=2
 pkgdesc="tty0tty Virtual Serial Cable (DKMS and userspace variant)."
 arch=(
   'i686'
@@ -31,18 +31,23 @@ conflicts=(
 source=(
   "${_pkgname}::git+${url}.git"
   '50-tty0tty.rules.arch.patch'
+  'linux-6.1-fixup.patch'
   'modules-load-tty0tty.conf'
 )
 sha256sums=(
   'SKIP'
-  '7db1bdf3aaf90b6e0c8ebe522f73a0947e35f37a47047f7ae4953d0208c3d541'
+  '4babdbb8988fae9c603c210c9afc1a9d066f40d4a6e23d609c6ae6200bc6d645'
+  '1118522e5b4ae8df6b6fcb41e278350c697de16922e8a3e54c49d7593a089c18'
   '31e97d1ea45da90c70715073d2279fc9482e497179b4fc44645684ffe7371217'
 )
 
 prepare() {
-  cd "${srcdir}/${_pkgname}/module"
+  cd "${srcdir}/${_pkgname}"
 
-  patch -p1 -N '50-tty0tty.rules' < "${srcdir}/50-tty0tty.rules.arch.patch"
+  for _patch in "${srcdir}"/*.patch; do
+    msg2 "Applying patch $(basename "${_patch}") ..."
+    patch -N -p1 --follow-symlinks -i "${_patch}"
+  done
 }
 
 pkgver() {
