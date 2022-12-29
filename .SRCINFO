@@ -1,6 +1,6 @@
 pkgbase = xmind
 	pkgdesc = Brainstorming and Mind Mapping Software
-	pkgver = 22.11.2556
+	pkgver = 22.11.2677
 	pkgrel = 1
 	url = https://www.xmind.net
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xmind
 	depends = libxkbfile
 	depends = nss
 	options = !strip
-	source_x86_64 = https://dl3.xmind.net/Xmind-for-Linux-amd64bit-22.11.2556.deb
-	sha256sums_x86_64 = af0cd02fb4fbc789e400f9fe3f5dd7d8641bc336d433b42cc332122e637e9fb0
+	source_x86_64 = https://dl3.xmind.net/Xmind-for-Linux-amd64bit-22.11.2677.deb
+	sha256sums_x86_64 = e97df5712f0f6598bb2b4ccd1c1d46d129f2d248ca313082ce79718da33ee251
 
 pkgname = xmind
