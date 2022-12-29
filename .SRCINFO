@@ -7,10 +7,10 @@ pkgbase = sq-bin
 	conflicts = sq
 	provides = sq
 	arch = aarch64
-	source_aarch64 = https://github.com/neilotoole/sq/releases/download/v0.19.0-dev1/sq-0.19.0-dev1-linux-arm64.tar.gz
-	sha256sums_aarch64 = fcc8df86395abc32af283336bf382e7dbbb79cc2c7aae3219374a6f6ee1f479f
+	source_aarch64 = https://github.com/neilotoole/sq/releases/download/v0.19.0/sq-0.19.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2572ce2bfc3dbae5f566b52487f009efb9c618cb1e3fb59189abd93c3f02f6d8
 	arch = x86_64
-	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.19.0-dev1/sq-0.19.0-dev1-linux-amd64.tar.gz
-	sha256sums_x86_64 = e88059a47e0431bb5c800d8551a30390e38e5c80194740bfa1954850c060a28c
+	source_x86_64 = https://github.com/neilotoole/sq/releases/download/v0.19.0/sq-0.19.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = dcf79310a1036a0d903a5ccb5f84ebb60a22c306626c37eb1b8a48180229266b
 	
 pkgname = sq-bin
