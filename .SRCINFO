@@ -1,6 +1,6 @@
 pkgbase = waybar-livestatus
 	pkgdesc = Tiny waybar module to fetch new alerts from livestatus.
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/cyrinux/waybar-livestatus
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = waybar-livestatus
 	optdepends = mako: to get popup notifications,
 	validpgpkeys = 4F7BC1FD97170A79267686A6FC9B1319726657D3,
 	validpgpkeys = C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E
-	source_x86_64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.4/waybar-livestatus_1.1.4_Linux_x86_64.tar.gz
-	source_x86_64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.4/waybar-livestatus_1.1.4_Linux_x86_64.tar.gz.sig
-	sha256sums_x86_64 = 970b559e8905e5a9f8142da3966acef8bcbe073a191b39a3e90980da41a0a4bf
+	source_x86_64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.2.0/waybar-livestatus_1.2.0_Linux_x86_64.tar.gz
+	source_x86_64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.2.0/waybar-livestatus_1.2.0_Linux_x86_64.tar.gz.sig
+	sha256sums_x86_64 = cf9ffff7fb392315b236835dc0efee66b47513df2e59c3af5fb2cdf46a2dc0cc
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.4/waybar-livestatus_1.1.4_Linux_aarch64.tar.gz
-	source_aarch64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.1.4/waybar-livestatus_1.1.4_Linux_x86_64.tar.gz.sig
-	sha256sums_aarch64 = c11af7e58dcb64ba7379df86c941cc39c33ba091943b5a8b309ff3c1e05cf80b
+	source_aarch64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.2.0/waybar-livestatus_1.2.0_Linux_aarch64.tar.gz
+	source_aarch64 = https://github.com/cyrinux/waybar-livestatus/releases/download/1.2.0/waybar-livestatus_1.2.0_Linux_x86_64.tar.gz.sig
+	sha256sums_aarch64 = 69c7a27e80906732e4fdb28739a0624a4438406a845638caf7268eabdf43aea9
 	sha256sums_aarch64 = SKIP
 
 pkgname = waybar-livestatus
