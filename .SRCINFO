@@ -1,0 +1,22 @@
+pkgbase = buildstream-plugins-experimental
+	pkgdesc = A collection of experimental BuildStream plugins.
+	pkgver = 1.95.4
+	pkgrel = 1
+	url = https://buildstream.build
+	arch = any
+	license = LGPL
+	makedepends = cython
+	makedepends = git
+	makedepends = python-packaging
+	makedepends = python-setuptools
+	depends = buildstream
+	depends = bazel
+	depends = git
+	depends = ostree
+	depends = python-arpy
+	depends = python-requests
+	depends = quilt
+	source = git+https://gitlab.com/BuildStream/bst-plugins-experimental.git#tag=1.95.4&commit=9454f78cb612094f98f7765e8a8ef3d139d6b1bd
+	sha256sums = SKIP
+
+pkgname = buildstream-plugins-experimental
