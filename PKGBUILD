@@ -4,16 +4,15 @@
 _pkgname=blobfuse2
 pkgname=azure-storage-fuse
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual file system adapter for Azure Blob storage (blobfuse2)"
 arch=('x86_64')
 url="https://github.com/Azure/azure-storage-fuse"
 license=('MIT')
 provides=('blobfuse2')
-depends=('fuse3' 'glibc')
+depends=('fuse2' 'fuse3' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse2-$pkgver.tar.gz")
-# https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse2-2.0.1.tar.gz
 sha256sums=('5f4c4d4823041a65f3efcc82c0ce5460de1f321f1606cc2d680ed24adb04aebc')
 
 build() {

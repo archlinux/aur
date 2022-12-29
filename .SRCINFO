@@ -1,11 +1,12 @@
 pkgbase = azure-storage-fuse
 	pkgdesc = A virtual file system adapter for Azure Blob storage (blobfuse2)
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-storage-fuse
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = fuse2
 	depends = fuse3
 	depends = glibc
 	provides = blobfuse2
