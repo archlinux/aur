@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=tut
-pkgver=1.0.30
+pkgver=1.0.31
 pkgrel=1
 pkgdesc='A TUI for Mastodon with vim inspired keys'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('404f1d6647920fc32fab02c92ee23ab4a7e2c7507d535669c4e5a29075d480b1')
+sha256sums=('dc64e8ae81d87aad156a1a23b40c974c2dd4326cfe46ac149df30576305182a5')
 
 build() {
   cd $pkgname-$pkgver
@@ -27,5 +27,10 @@ package() {
   install -Dm644 config.example.ini "$pkgdir"/usr/share/doc/$pkgname/config.example.ini
   install -Dm644 config/toot.tmpl "$pkgdir"/usr/share/doc/$pkgname/toot.tmpl
   install -Dm644 config/user.tmpl "$pkgdir"/usr/share/doc/$pkgname/user.tmpl
+  install -d "$pkgdir"/usr/share/doc/$pkgname/themes/
+  install -Dm644 config/themes/* "$pkgdir"/usr/share/doc/$pkgname/themes/
+  install -Dm644 docs/man/tut.1 "$pkgdir"/usr/share/man/man1/tut.1
+  install -Dm644 docs/man/tut.5 "$pkgdir"/usr/share/man/man5/tut.5
+  install -Dm644 docs/man/tut.7 "$pkgdir"/usr/share/man/man7/tut.7
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
