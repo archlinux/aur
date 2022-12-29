@@ -16,7 +16,7 @@ pkgrel=1
 _pkgdesc=("IOP compiler used in the creation of homebrew software "
           "for the Sony PlayStation® 2 videogame system.")
 pkgdesc="${_pkgdesc[*]}"
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
