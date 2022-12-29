@@ -1,9 +1,9 @@
 pkgbase = ps2-dvp
 	pkgdesc = Tools used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
-	pkgver = v2.14
+	pkgver = v1.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/binutils-gdb
-	arch = any
+	arch = x86_64
 	license = BSD
 	checkdepends = shellcheck
 	provides = ps2-dvp-binutils-gdb

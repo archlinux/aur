@@ -7,12 +7,13 @@ _platform="ps2"
 _pkg="binutils-gdb"
 _base="toolchain"
 pkgname="${_platform}-${_module}"
-pkgver=v2.14
+pkgver=v1.0
+_pkgver="v2.14"
 pkgrel=1
 _pkgdesc=("Tools used in the creation of homebrew software for "
           "the Sony PlayStation® 2 videogame system.")
 pkgdesc="${_pkgdesc[*]}"
-arch=('any')
+arch=('x86_64')
 license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
@@ -20,7 +21,7 @@ url="${_github}/${_pkg}"
 provides=("${_platform}-${_module}-${_pkg}")
 checkdepends=('shellcheck')
 optdepends=()
-_branch="${_module}-${pkgver}"
+_branch="${_module}-${_pkgver}"
 _commit="9cca5c1781d1a03b9b3b61a3e5270cdb9c69295e"
 source=("${pkgname}::git+${_github}/${_pkg}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-${_pkg}#branch=${_branch}")
