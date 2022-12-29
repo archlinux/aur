@@ -14,8 +14,8 @@ post_upgrade() {
       file="/boot/uboot/u-boot-with-spl-${target}-${rkdev}.bin.xz"
       if [ -f "$file" ]; then
         echo "Writing ${file} to $(realpath ${ubootdev})"
-        dd of="${ubootdev}" if="/dev/zero" 2>/dev/null
-        xz -dcv "$file" | dd of="${ubootdev}"
+        dd bs=64k of="${ubootdev}" if="/dev/zero" 2>/dev/null
+        xz -dcv "$file" | dd bs=64k of="${ubootdev}"
         sync
       fi
     fi
