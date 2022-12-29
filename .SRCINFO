@@ -1,0 +1,17 @@
+pkgbase = hwatch-git
+	pkgdesc = A modern alternative to the watch command (git)
+	pkgver = 0.3.7.r0.g2586b94
+	pkgrel = 1
+	url = https://github.com/blacknon/hwatch
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = hwatch
+	conflicts = hwatch
+	source = git+https://github.com/blacknon/hwatch
+	sha512sums = SKIP
+
+pkgname = hwatch-git
