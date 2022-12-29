@@ -5,7 +5,7 @@
 # Contributor: William Díaz <wdiaz [at] archlinux [dot] us>
 
 pkgname=cpyrit-cuda-git
-pkgver=0.5.0.r21.g6111f10
+pkgver=0.5.0.r43.gf0f1913
 pkgrel=1
 pkgdesc="The famous WPA precomputed cracker, CUDA backend (Git version)"
 url="https://github.com/JPaulMora/Pyrit"
@@ -17,7 +17,7 @@ provides=('cpyrit-cuda' 'cpyrit-cuda-svn')
 conflicts=('cpyrit-cuda' 'cpyrit-cuda-svn')
 replaces=('cpyrit-cuda-svn')
 
-source=("git://github.com/JPaulMora/Pyrit")
+source=("git+https://github.com/JPaulMora/Pyrit")
 md5sums=('SKIP')
 
 function pkgver() {
