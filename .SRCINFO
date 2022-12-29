@@ -1,0 +1,13 @@
+pkgbase = upset_cli
+	pkgdesc = tool used to create and apply UPS patches. CLI fork.
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/meunierd/upset
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	source = upset_cli::git+https://github.com/cosarara/upset.git#commit=7fc1f46165918d891bb0e6a800af3f3991cd68f1
+	sha256sums = SKIP
+
+pkgname = upset_cli
