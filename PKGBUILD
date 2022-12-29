@@ -30,7 +30,7 @@ sha256sums=('63f1b10755f18bbcf7d8300ee3bb05cf9b16a8f8b8ffa304c92162eed747467d')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE='RELWITHDEBINFO' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DBUILD_TESTS='ON' \
     -DENABLE_SQLITE3='OFF' \
