@@ -9,12 +9,12 @@ arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
 depends=('fontconfig')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'python3' 'microsoft-gsl' 'fmt' 'ninja' 'qt5-5compat' 'qt5-base' 'qt5-declarative' 'qt5-multimedia' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'python3' 'microsoft-gsl' 'fmt' 'ninja' 'qt5-base' 'qt5-declarative' 'qt5-multimedia' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
 source=("https://github.com/contour-terminal/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('473bd92530635464c5f15ede4f14bf299dbb86de806d67bc2e86a45f49717bfe76ef6be817ddc4c47b5c45ad890e6125c43575bb59f8feeca2ed61c0e9c6e348')
 provides=('contour')
 conflicts=('contour')
-options=(!strip)
+options=('!strip' 'debug')
 
 build() {
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)

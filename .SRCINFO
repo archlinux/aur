@@ -13,7 +13,6 @@ pkgbase = contour
 	makedepends = microsoft-gsl
 	makedepends = fmt
 	makedepends = ninja
-	makedepends = qt5-5compat
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	makedepends = qt5-multimedia
@@ -26,6 +25,7 @@ pkgbase = contour
 	provides = contour
 	conflicts = contour
 	options = !strip
+	options = debug
 	source = https://github.com/contour-terminal/contour/archive/refs/tags/v0.3.9.250.tar.gz
 	sha512sums = 473bd92530635464c5f15ede4f14bf299dbb86de806d67bc2e86a45f49717bfe76ef6be817ddc4c47b5c45ad890e6125c43575bb59f8feeca2ed61c0e9c6e348
 
