@@ -26,11 +26,6 @@ source=("${pkgname}::git+${_github}/${_pkg}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-${_pkg}#branch=${_branch}")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${pkgname}" || exit
-  echo "v$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-}
-
 # shellcheck disable=SC2154
 build() {
   local _target
