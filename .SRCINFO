@@ -1,7 +1,7 @@
 pkgbase = leftwm
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/leftwm/leftwm
 	install = readme.install
@@ -14,7 +14,7 @@ pkgbase = leftwm
 	optdepends = feh: used to set background images
 	optdepends = lemonbar: light weight bar
 	optdepends = polybar: light weight bar
-	source = leftwm::git+https://github.com/leftwm/leftwm.git#tag=0.4.1
+	source = leftwm-0.4.1.tar.gz::https://github.com/leftwm/leftwm/archive/refs/tags/0.4.1.tar.gz
 	md5sums = SKIP
 
 pkgname = leftwm
