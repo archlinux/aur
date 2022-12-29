@@ -1,6 +1,6 @@
 pkgbase = electrs
 	pkgdesc = An efficient re-implementation of Electrum Server in Rust
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/romanz/electrs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = electrs
 	makedepends = cmake
 	makedepends = rust
 	depends = gcc-libs
-	source = git+https://github.com/romanz/electrs.git#tag=v0.9.9
+	source = git+https://github.com/romanz/electrs.git#tag=v0.9.10
 	md5sums = SKIP
 
 pkgname = electrs
