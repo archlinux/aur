@@ -1,13 +1,13 @@
 pkgbase = python2-pycifrw
 	pkgdesc = CIF/STAR file support for Python
-	pkgver = 4.4
-	pkgrel = 2
+	pkgver = 4.4.5
+	pkgrel = 1
 	url = https://bitbucket.org/jamesrhester/pycifrw
 	arch = any
 	license = Python-2.0
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://bitbucket.org/jamesrhester/pycifrw/downloads/PyCifRW-4.4.tar.gz
-	md5sums = 33b14211e6b01a3218bda51461d2760f
+	source = https://files.pythonhosted.org/packages/source/P/PyCifRW/PyCifRW-4.4.5.tar.gz
+	sha256sums = a8fd092cbefe6ddd4b7e667d05682e5c8c2e64ba63e7ef8b3ce4c07f2ff62827
 
 pkgname = python-pycifrw
