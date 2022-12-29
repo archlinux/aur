@@ -27,7 +27,7 @@ pkgbase = dtkgui-git
 	depends = freeimage
 	provides = dtkgui
 	conflicts = dtkgui
-	source = dtkgui-git::git+https://github.com/linuxdeepin/dtkgui
+	source = git+https://github.com/linuxdeepin/dtkgui.git
 	sha512sums = SKIP
 
 pkgname = dtkgui-git
