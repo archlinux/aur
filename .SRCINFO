@@ -1,13 +1,15 @@
 pkgbase = deepin-desktop-environment-meta-git
 	pkgdesc = Deepin desktop environment meta package for git version
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = startdde-git
-	depends = deepin-kwin-reborn-git
+	depends = deepin-daemon-git
+	depends = deepin-kwin-git
+	depends = dde-kwin-git
 	depends = deepin-wallpapers-git
 	depends = deepin-control-center-git
 	depends = deepin-file-manager-git
