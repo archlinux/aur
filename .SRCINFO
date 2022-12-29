@@ -1,7 +1,7 @@
 pkgbase = base16-vtrgb
 	pkgdesc = base16 color schemes available for the linux console (vt, tty)
 	pkgver = 2022_12_29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coderonline/base16-vtrgb
 	install = base16-vtrgb.install
 	arch = any

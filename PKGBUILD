@@ -1,7 +1,7 @@
 # Maintainer: Max Christian Pohle <webmaster@coderonline.de>
 pkgname=base16-vtrgb
 pkgver=2022_12_29
-pkgrel=1
+pkgrel=2
 pkgdesc="base16 color schemes available for the linux console (vt, tty)"
 arch=('any')
 url="https://github.com/coderonline/base16-vtrgb"
