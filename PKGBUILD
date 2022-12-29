@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_565
-pkgrel=2
+pkgrel=2\3
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com'
@@ -23,7 +23,7 @@ sha256sums_x86_64=('3bccda547b7fa17b1eacf5477bfafaa4016958578b0d5b2269ace0697ee4
                    '814ddc3eea99bf2e291e2eeff0c3805928e3059e23b12d41cc8bf75bb8cd5fd3')  # 热更新补丁
 sha256sums_aarch64=('d356697284837396f430228032ad7a378717cdba2e1cd724386b2ff99e1eb7bc'  # 本体
                     'f2f61581a5c09e4a7bfb23922a667e8df327d58fed9601034c4b60a08ad29049')  # 热更新补丁
-sha256sums=('4ad245e7c62bb40a495404972c15967dd8c314daa46fa937b31ca245026da459'  # start.sh
+sha256sums=('3aeed7e5049f644d99d9469630985e90a0c6ed627a435f4d81fae9af434faa7b'  # start.sh
             '68069b9360c09a5e64c370dbcba54089ac4b1f8b30fc3d6d1c9b8b316a8f92c6'  # config.json
             'e9b4af9b4119876572f6fe7f48563e6b0830493a8d76e8415e15d89afe6453df')  # qq_channel_jsbridge_handler.desktop
 
@@ -35,8 +35,8 @@ package() {
 	chmod 755 "${pkgdir}/opt/QQ/resources/app"
 
 	# 打包相关处理
-	install -Dm644 "qq_channel_jsbridge_handler.desktop" "${pkgdir}/usr/share/applications/qq_channel_jsbridge_handler.desktop"
 	mkdir -p "${pkgdir}/opt/QQ/workarounds"
+	install -Dm644 "qq_channel_jsbridge_handler.desktop" "${pkgdir}/opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop"
 	cp "${srcdir}/config.json" "${pkgdir}/opt/QQ/workarounds/config.json"
 
 

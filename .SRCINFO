@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = Tencent QQ NT for Linux with bubblewrap wrapper
 	pkgver = 3.0.0_565
-	pkgrel = 2
+	pkgrel = 23
 	url = https://im.qq.com
 	install = linuxqq.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = linuxqq-nt-bwrap
 	source = start.sh
 	source = config.json
 	source = qq_channel_jsbridge_handler.desktop
-	sha256sums = 4ad245e7c62bb40a495404972c15967dd8c314daa46fa937b31ca245026da459
+	sha256sums = 3aeed7e5049f644d99d9469630985e90a0c6ed627a435f4d81fae9af434faa7b
 	sha256sums = 68069b9360c09a5e64c370dbcba54089ac4b1f8b30fc3d6d1c9b8b316a8f92c6
 	sha256sums = e9b4af9b4119876572f6fe7f48563e6b0830493a8d76e8415e15d89afe6453df
 	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/50eed662/QQ-v2.0.3-543_x64.deb

@@ -10,7 +10,7 @@ QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
 QQ_HOTUPDATE_VERSION="3.0.0-565"
 QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543")
 
-if [ "${DOWNLOAD_DIR}" == "${HOME}" ]; then
+if [ "${DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     DOWNLOAD_DIR="${HOME}/Downloads"
     if [ ! -e "${DOWNLOAD_DIR}" ]; then mkdir -p "${DOWNLOAD_DIR}"; fi
 fi
@@ -54,6 +54,7 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
     --bind-try "${DOWNLOAD_DIR}" "${DOWNLOAD_DIR}" \
     --bind "${QQ_APP_DIR}" "${QQ_APP_DIR}" \
+    --symlink opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop "$HOME/.local/share/applications/qq_channel_jsbridge_handler.desktop" \
     --setenv IBUS_USE_PORTAL 1 \
     --setenv DISPLAY "${NEW_DISPLAY}" \
     /opt/QQ/qq "$@"
