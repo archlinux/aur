@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust."
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
-license=('GPL')
+license=('GPL3')
 depends=('libsixel' 'libxcb')
 optdepends=(
   'mpv: default video player'
