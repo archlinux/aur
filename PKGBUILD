@@ -1,15 +1,22 @@
-# Maintainer: Harry Jeffery <me@harry.pm>
+# Maintainer: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Harry Jeffery <me@harry.pm>
 
 pkgname=libgrapheme
-pkgver=1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="unicode string library"
 url="https://libs.suckless.org/libgrapheme/"
 license=("ISC")
 arch=("x86_64")
 conflicts=("libgrapheme")
 source=("https://dl.suckless.org/libgrapheme/libgrapheme-${pkgver}.tar.gz")
-sha256sums=("8622df5150ce941d5c4665d0e09a1d42c2c25f628a27f48ca1e669576162d0f6")
+sha256sums=('a68bbddde76bd55ba5d64116ce5e42a13df045c81c0852de9ab60896aa143125')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  sed -i 's/ldconfig//g' configure
+  sed -i 's/\=\ ldconfig/\=/g' config.mk
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
