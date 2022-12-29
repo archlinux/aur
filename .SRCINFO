@@ -1,6 +1,6 @@
 pkgbase = mestrenova
 	pkgdesc = Widely used commercial NMR interpreter
-	pkgver = 14.2.3
+	pkgver = 14.3.1
 	pkgrel = 1
 	url = https://www.mestrelab.com
 	install = mestrenova.install
@@ -10,7 +10,7 @@ pkgbase = mestrenova
 	depends = glu
 	depends = openssl-1.0
 	options = !strip
-	source = https://mestrelab.com/downloads/mnova/linux/Ubuntu/20.04/mestrenova_14.2.3-29241_amd64.deb
-	sha256sums = 8be8d92692288cb254e31af39a2c6a08506dd02a1775e13db2ba87a0d3d25dd4
+	source = https://mestrelab.com/downloads/mnova/linux/Ubuntu/20.04/mestrenova_14.3.1-31739_amd64.deb
+	sha256sums = 8fd4744fedf8bcc3be8c5611f517ae6acc50405b571f4b7c3596bc19d4eb709d
 
 pkgname = mestrenova
