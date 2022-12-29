@@ -1,9 +1,9 @@
 pkgbase = mutmap
-	pkgdesc = Pipeline to identify causative mutations responsible for a phenotype. doi:10.7717/peerj.13170
+	pkgdesc = Pipeline to identify causative mutations responsible for a phenotype. https://doi.org/10.7717/peerj.13170
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YuSugihara/MutMap
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = cython
