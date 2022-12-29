@@ -1,11 +1,11 @@
 pkgbase = serveez
 	pkgdesc = server framework
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/serveez
 	arch = x86_64
 	license = GPL3
-	depends = guile
+	depends = guile2.2
 	source = serveez-0.3.1.tar.gz::https://ftp.gnu.org/gnu/serveez/serveez-0.3.1.tar.lz
 	md5sums = 02697fe81ff23365d956525ee0b6fd22
 
