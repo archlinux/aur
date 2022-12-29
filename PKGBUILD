@@ -22,7 +22,7 @@ checkdepends=('shellcheck')
 optdepends=()
 _branch="${_module}-v2.14"
 _commit="9cca5c1781d1a03b9b3b61a3e5270cdb9c69295e"
-source=("${_pkgname}::git+${_github}/${_pkg}#commit=${_commit}")
+source=("${pkgname}::git+${_github}/${_pkg}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-${_pkg}#branch=${_branch}")
 sha256sums=('SKIP')
 
