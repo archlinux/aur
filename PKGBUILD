@@ -8,17 +8,17 @@
 
 pkgname=wpa_supplicant-wep
 pkgver=2.10
-pkgrel=8
+pkgrel=9
 pkgdesc="A utility providing key negotiation for WPA wireless networks, with WEP enabled"
 url=https://w1.fi/wpa_supplicant/
 arch=(x86_64)
 license=(GPL)
 depends=(openssl libdbus readline libnl pcsclite)
-options=(debug)
 provides=(wpa_supplicant)
 conflicts=(wpa_supplicant)
 install=wpa_supplicant.install
-archbase=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wpa_supplicant/trunk
+archcommit=02aa180176a508ec8d31fad5ece78edbac11dac2
+archbase=https://raw.githubusercontent.com/archlinux/svntogit-packages/$archcommit/trunk
 source=(
   https://w1.fi/releases/wpa_supplicant-$pkgver.tar.gz
   $archbase/wpa_supplicant_tls.patch
