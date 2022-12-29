@@ -1,7 +1,7 @@
 # Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 pkgname='osu'
-pkgver='20221108'
+pkgver='20221228'
 pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
@@ -16,7 +16,7 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('636ee2f7cc4cffef28385f6f19ea0517ab03541c77a51c3bc7ddc22558d6c164'
+sha256sums=('6f4e5222162c5332cafd8e1d9335b25c190381017b968d085fb5efe4ac14d2dd'
             '0fc6b18923db85b82fa5da1cb40ccc8c0ffcaf65ee7e325af8969baa150a9fd2'
             'b689540a3f856e9429429e7477641e161ff75748eb4909a0a00b8cda5d34e76e'
             '3d98f5811539d652bf6378c2c76bff7b6d5ac82e6322942bb287ff9082f1715b'
