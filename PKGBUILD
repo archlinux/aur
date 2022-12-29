@@ -12,7 +12,7 @@ depends=()
 source=("https://github.com/TiagoRCorreia/rtodo/releases/download/${pkgver}/rtodo.gz"
         "https://raw.githubusercontent.com/TiagoRCorreia/rtodo/main/LICENSE.md")
 
-md5sums=('65212c3174f5a3ebebfcda045d687a76'
+md5sums=('a161301836eb0e31f8d3ecb35a18e3ec'
          '9d6236041611466d09794b98fd034310')
 
 package() {
