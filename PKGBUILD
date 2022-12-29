@@ -3,7 +3,7 @@
 pkgname=dtkcommon-git
 _pkgname=dtkcommon
 pkgver=5.6.3.r1.g3781d33
-pkgrel=3
+pkgrel=4
 pkgdesc='DTK common modules'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkcommon"
@@ -25,6 +25,7 @@ build() {
   cd $srcdir/$_pkgname
   cmake -B build -GNinja \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DMKSPECS_INSTALL_DIR=/usr/lib/qt/mkspecs/ \
     -DLINUXNAME="archlinux" \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
