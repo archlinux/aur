@@ -82,8 +82,6 @@ package_ps2-iop-binutils-gdb() {
   local _make_opts=("-j" "${_n_cpu}")
   local _target
   cd "${srcdir}/${pkgbase}-${_bu}"
-  echo $(pwd)
-  ls
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
     make "${_make_opts}" install-strip
@@ -166,5 +164,6 @@ package_ps2-iop-gcc() {
 }
 
 build() {
-  "build_${_platform}-${_module}-"{"${_bu}","gcc"}
+  "build_${_platform}-${_module}-${_bu}"
+  "build_${_platform}-${_module}-gcc"
 }
