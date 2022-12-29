@@ -1,0 +1,13 @@
+pkgbase = python-flask-sphinx-themes
+	pkgdesc = Sphinx themes for Flask and related projects
+	pkgver = 1.0.2
+	pkgrel = 6
+	url = https://github.com/pallets/flask-sphinx-themes
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-sphinx
+	source = python-flask-sphinx-themes-1.0.2.tar.gz::https://github.com/pallets/flask-sphinx-themes/archive/1.0.2.tar.gz
+	sha512sums = b3cbdca9719b579d4e9644b51e187a87d49e3c82083a8fff649eef74eb7a475bcc0580bcd3012081048bcbbe001ce06f1cccbed39d2f30285cfedb2304f67af3
+
+pkgname = python-flask-sphinx-themes
