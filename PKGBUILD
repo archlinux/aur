@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fribidi-git
-pkgver=1.0.12.r1.ga6a4def
+pkgver=1.0.12.r5.g2c2a014
 pkgrel=1
 pkgdesc="Implementation of the Unicode Bidirectional Algorithm"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('glibc')
 makedepends=('git' 'meson')
 provides=("fribidi=$pkgver" 'libfribidi.so')
 conflicts=('fribidi')
+options=('staticlibs')
 source=("git+https://github.com/fribidi/fribidi.git")
 sha256sums=('SKIP')
 
@@ -30,6 +31,7 @@ build() {
   meson setup \
     --buildtype=plain \
     --prefix="/usr" \
+    -Ddefault_library="both" \
     -Ddocs="false" \
     "_build"
   meson compile -C "_build"
