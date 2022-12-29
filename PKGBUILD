@@ -15,7 +15,7 @@ pkgname=(
   "woff2-jena1330${_vcssuffix}"
 )
 pkgver=r105.20160920.75d5b9e
-pkgrel=8
+pkgrel=9
 pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.'
 arch=(
   'any'
@@ -116,6 +116,7 @@ package_jena1330-fonts-docs-git () {
   pkgdesc='General documentation for the "jena1330-latex-font" and "*-jena1330" font packages. Latest Git checkout & latest upstream website fetch.'
   depends=("jena1330-fonts-license")
   optdepends=(
+    "jena1330-latex-font-example: For a LaTeX specific example."
     "jena1330-latex-font: For a 'Jena1330' LaTeX font."
     "otf-jena1330: For a 'Jena1330' OTF font."
     "ttf-jena1330: For a 'Jena1330' TTF font."
