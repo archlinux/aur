@@ -1,6 +1,6 @@
 pkgbase = project-generator
 	pkgdesc = Project generators for various embedded tools (IDE)
-	pkgver = 0.11.1
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/project-generator/project_generator
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = project-generator
 	depends = python-jinja
 	depends = python-xmltodict
 	depends = project-generator-definitions
-	source = https://github.com/project-generator/project_generator/archive/refs/tags/v0.11.1.tar.gz
-	sha512sums = aac872aac93dff8f7d0950a0a0dbd73bff139152bdf3173caf9e1005be48f35b359813b10bfe37949d86ffc7d5b1ddc46efc4ba205d30c51bf47e173fdbdc31f
+	source = https://github.com/project-generator/project_generator/archive/refs/tags/v0.11.3.tar.gz
+	sha512sums = 9d76f19102083f1dccaa9b42251f5cd85c2735ff8f0b2976b60bd2f2d3ce239c492a651daf094355ca86c44991a7d76ebb4102b6e670e6659f6aac52818f32a7
 
 pkgname = project-generator

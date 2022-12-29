@@ -1,6 +1,6 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=project-generator
-pkgver=0.11.1
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Project generators for various embedded tools (IDE)"
 url="https://github.com/project-generator/project_generator"
@@ -15,11 +15,10 @@ optdepends=()
 license=('Apache')
 arch=('any')
 source=("https://github.com/project-generator/${pkgname/-/_}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('aac872aac93dff8f7d0950a0a0dbd73bff139152bdf3173caf9e1005be48f35b359813b10bfe37949d86ffc7d5b1ddc46efc4ba205d30c51bf47e173fdbdc31f')
+sha512sums=('9d76f19102083f1dccaa9b42251f5cd85c2735ff8f0b2976b60bd2f2d3ce239c492a651daf094355ca86c44991a7d76ebb4102b6e670e6659f6aac52818f32a7')
 
 prepare() {
     mv "${srcdir}/${pkgname//-/_}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
-    cp -a "${srcdir}/${pkgname}-${pkgver}"{,-py2}
 }
 
 build() {
@@ -30,5 +29,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python  setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
