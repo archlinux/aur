@@ -1,7 +1,7 @@
 pkgbase = dtkgui-git
 	pkgdesc = Deepin Toolkit, gui module for DDE look and feel
 	pkgver = 5.6.3.r7.g2e8f35a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/dtkgui
 	arch = x86_64
 	arch = aarch64
