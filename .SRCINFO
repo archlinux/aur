@@ -1,7 +1,7 @@
 pkgbase = qtl-seq
-	pkgdesc = Pipeline for bulk segregant analysis. doi:10.7717/peerj.13170
+	pkgdesc = Pipeline for bulk segregant analysis. https://doi.org/10.7717/peerj.13170
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YuSugihara/QTL-seq
 	arch = x86_64
 	license = GPL
@@ -17,9 +17,9 @@ pkgbase = qtl-seq
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-seaborn
-	depends = mutmap
+	optdepends = mutmap: identify causative mutations responsible for phenotype
 	options = !emptydirs
-	source = https://github.com/YuSugihara/QTL-seq/archive/refs/tags/v2.2.3.tar.gz
+	source = QTL-seq-2.2.3::https://github.com/YuSugihara/QTL-seq/archive/refs/tags/v2.2.3.tar.gz
 	sha256sums = fb6e641f100316cd178254fc1f196cc5dd7bbebb18f2997c29cd896a997227d1
 
 pkgname = qtl-seq

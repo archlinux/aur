@@ -3,8 +3,8 @@
 pkgname=qtl-seq
 _name=QTL-seq
 pkgver=2.2.3
-pkgrel=1
-pkgdesc='Pipeline for bulk segregant analysis. doi:10.7717/peerj.13170'
+pkgrel=2
+pkgdesc='Pipeline for bulk segregant analysis. https://doi.org/10.7717/peerj.13170'
 arch=('x86_64')
 url="https://github.com/YuSugihara/QTL-seq"
 license=('GPL')
@@ -17,8 +17,8 @@ depends=(
          'python-matplotlib'
          'python-numpy'
          'python-pandas'
-         'python-seaborn'
-         'mutmap')
+         'python-seaborn')
+optdepends=('mutmap: identify causative mutations responsible for phenotype')
 makedepends=(
             'python-setuptools'
             'cython'
