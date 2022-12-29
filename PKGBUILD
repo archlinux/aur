@@ -12,7 +12,7 @@ license=('LGPL3')
 optdepends=('gtk-engine-murrine: for gtk2 themes')
 groups=('deepin-git')
 conflicts=($_pkgname)
-providers=($_pkgname)
+provides=($_pkgname)
 source=("git+https://github.com/linuxdeepin/deepin-gtk-theme.git")
 sha512sums=('SKIP')
 

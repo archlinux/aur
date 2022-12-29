@@ -8,6 +8,7 @@ pkgbase = deepin-gtk-theme-git
 	license = LGPL3
 	makedepends = git
 	optdepends = gtk-engine-murrine: for gtk2 themes
+	provides = deepin-gtk-theme
 	conflicts = deepin-gtk-theme
 	source = git+https://github.com/linuxdeepin/deepin-gtk-theme.git
 	sha512sums = SKIP
