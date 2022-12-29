@@ -52,7 +52,7 @@ package() {
 
   #translations
   tsrcdir="$srcdir/openlp/resources/i18n"
-  tdestdir="$pkgdir/usr/share/openlp/i18n"
+  tdestdir="$pkgdir/usr/share/$_pkgbase/i18n"
   mkdir -p "$tdestdir"
   cd "$tsrcdir"
 
