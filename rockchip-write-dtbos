@@ -17,8 +17,6 @@ if [[ "$rkdev" =~ "@" ]]; then
   atfdevice=${rkdev#*@}
   rkdev=${rkdev%"@$atfdevice"}
 fi
-ubootdev="/dev/disk/by-partlabel/${partlabeluboot}"
-[ ! -L "$ubootdev" ] && exit 0
 
 cp -vf "/boot/dtbs/${target}-${rkdev}.dtb" "/boot/dtbs/${target}-tojoin.dtb"
 for bp in $(shopt -s nullglob; echo /boot/dtbos/*.dts); do
@@ -29,8 +27,15 @@ for bp in $(shopt -s nullglob; echo /boot/dtbos/*.dts); do
          fdtput "/boot/dtbs/${target}-tojoin.dtb" ${line/"//fdtput"/""}
   done
 done
-fdtoverlay -vi "/boot/dtbs/${target}-tojoin.dtb" \
-            -o "/boot/dtbs/${target}-joined.dtb" \
-            $(shopt -s nullglob; echo /boot/dtbos/${target}-all-*.dtbo) \
-            $(shopt -s nullglob; echo /boot/dtbos/${target}-${rkdev}-*.dtbo)
+
+dtbos="$(shopt -s nullglob; echo /boot/dtbos/${target}-all-*.dtbo /boot/dtbos/${target}-${rkdev}-*.dtbo)"
+if test -n "$dtbos"; then
+  fdtoverlay -vi "/boot/dtbs/${target}-tojoin.dtb" \
+              -o "/boot/dtbs/${target}-joined.dtb" \
+              $dtbos
+else
+  echo "No overlay applied!"
+  cp -vf "/boot/dtbs/${target}-tojoin.dtb" \
+         "/boot/dtbs/${target}-joined.dtb"
+fi
 exit 0

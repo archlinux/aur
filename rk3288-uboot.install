@@ -1,26 +1,23 @@
 post_upgrade() {
+  rockchip-write-dtbos
   rootdev=$(lsblk -pilno pkname,type,mountpoint | grep -G 'part /$' |  head -n1 | cut -d " " -f1)
   partlabeluboot=$(lsblk -plno partlabel $rootdev | grep -G '\-uboot$' )
-  if [ -n "$partlabeluboot" ]; then
-    rkdev=${partlabeluboot#*-}
-    target=${partlabeluboot%"-$rkdev"}
-    rkdev=${rkdev/"-uboot"/""}
-    if [[ "$rkdev" =~ "@" ]]; then
-      atfdevice=${rkdev#*@}
-      rkdev=${rkdev%"@$atfdevice"}
-    fi
-    ubootdev="/dev/disk/by-partlabel/${partlabeluboot}"
-    if [ -L "$ubootdev" ]; then
-      file="/boot/uboot/u-boot-with-spl-${target}-${rkdev}.bin.xz"
-      if [ -f "$file" ]; then
-        echo "Writing ${file} to $(realpath ${ubootdev})"
-        dd bs=64k of="${ubootdev}" if="/dev/zero" 2>/dev/null
-        xz -dcv "$file" | dd bs=64k of="${ubootdev}"
-        sync
-      fi
-    fi
+  [ ! -n "$partlabeluboot" ] && return
+  rkdev=${partlabeluboot#*-}
+  target=${partlabeluboot%"-$rkdev"}
+  rkdev=${rkdev/"-uboot"/""}
+  if [[ "$rkdev" =~ "@" ]]; then
+    atfdevice=${rkdev#*@}
+    rkdev=${rkdev%"@$atfdevice"}
   fi
-  rockchip-write-dtbos
+  ubootdev="/dev/disk/by-partlabel/${partlabeluboot}"
+  [ ! -L "$ubootdev" ] && return
+  file="/boot/uboot/u-boot-with-spl-${target}-${rkdev}.bin.xz"
+  [ ! -f "$file" ] && return
+  echo "Writing ${file} to $(realpath ${ubootdev})"
+  dd bs=64k of="${ubootdev}" if="/dev/zero" 2>/dev/null
+  xz -dcv "$file" | dd bs=64k of="${ubootdev}"
+  sync
 }
 
 post_install() {
