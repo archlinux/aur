@@ -1,0 +1,13 @@
+pkgbase = gpto-bin
+	pkgdesc = A tiny unofficial OpenAI GPT3 client
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/alanvardy/gpto
+	arch = x86_64
+	license = MIT
+	provides = gpto
+	conflicts = gpto
+	source = https://github.com/alanvardy/gpto/releases/download/v0.1.3/gpto-0.1.3-x86_64.tar.gz
+	sha256sums = 91419808b5909504a00a8bc867d43373e08c3a089cff9afb7c4b7f39d893634b
+
+pkgname = gpto-bin
