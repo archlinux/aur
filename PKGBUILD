@@ -13,7 +13,7 @@ makedepends=('meson' 'ninja' 'git')
 provides=('naikari')
 conflicts=('naikari')
 source=('git+https://github.com/naikari/naikari.git'
-		'git+https://github.com/naikari/naikari-artwork-production.git')
+        'git+https://github.com/naikari/naikari-artwork-production.git')
 md5sums=('SKIP'
 		 'SKIP')
 
