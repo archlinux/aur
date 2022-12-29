@@ -1,0 +1,18 @@
+pkgbase = skyemu-git
+	pkgdesc = Game Boy, Game Boy Color, and Game Boy Advanced Emulator.
+	pkgver = r489.99f6cee
+	pkgrel = 1
+	url = http://skyemu.app/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libglvnd
+	depends = libxi
+	depends = alsa-lib
+	depends = libxcursor
+	provides = skyemu
+	conflicts = skyemu
+	source = skyemu::git+https://github.com/skylersaleh/SkyEmu.git
+	md5sums = SKIP
+
+pkgname = skyemu-git
