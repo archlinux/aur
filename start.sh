@@ -1,9 +1,9 @@
 #!/bin/bash
 
 USER_RUN_DIR="/run/user/$(id -u)"
-CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
-FONTCONFIG_DIR="${CONFIG_DIR}/fontconfig"
-QQ_APP_DIR="${CONFIG_DIR}/QQ"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+FONTXDG_CONFIG_HOME="${XDG_CONFIG_HOME}/fontconfig"
+QQ_APP_DIR="${XDG_CONFIG_HOME}/QQ"
 DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
 NEW_DISPLAY="${DISPLAY}"
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
@@ -39,6 +39,9 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --symlink usr/bin /bin \
     --ro-bind /usr /usr \
     --ro-bind /opt /opt \
+    --ro-bind /opt/QQ/workarounds/xdg-open.sh /usr/bin/xdg-open \
+    --ro-bind /usr/lib/snapd-xdg-open/xdg-open /snapd-xdg-open \
+    --ro-bind /usr/bin/xdg-open /real-xdg-open \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
@@ -48,13 +51,21 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --dev-bind /run/dbus /run/dbus \
     --bind "${USER_RUN_DIR}" "${USER_RUN_DIR}" \
     --ro-bind-try /etc/fonts /etc/fonts \
-    --ro-bind-try "${FONTCONFIG_DIR}" "${FONTCONFIG_DIR}" \
+    --ro-bind-try "${FONTXDG_CONFIG_HOME}" "${FONTXDG_CONFIG_HOME}" \
     --dev-bind /tmp /tmp \
     --bind-try "${HOME}/.pki" "${HOME}/.pki" \
     --ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
     --bind-try "${DOWNLOAD_DIR}" "${DOWNLOAD_DIR}" \
     --bind "${QQ_APP_DIR}" "${QQ_APP_DIR}" \
-    --symlink opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop "$HOME/.local/share/applications/qq_channel_jsbridge_handler.desktop" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/mimeapps.list" "${XDG_CONFIG_HOME}/mimeapps.list" \
+    --bind-try "${XDG_CONFIG_HOME}/glib-2.0" "${XDG_CONFIG_HOME}/glib-2.0" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/menus" "${XDG_CONFIG_HOME}/menus" \
+    --ro-bind-try "${HOME}/.local/share/mime" "${HOME}/.local/share/mime" \
+    --bind-try "${HOME}/.local/share/applications/mimeapps.list" "${HOME}/.local/share/applications/mimeapps.list" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/eog" "${XDG_CONFIG_HOME}/eog" \
+    --ro-bind-try "${XDG_CONFIG_HOME}/gwenviewrc" "${XDG_CONFIG_HOME}/gwenviewrc" \
+    --symlink opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop "${HOME}/.local/share/applications/qq_channel_jsbridge_handler.desktop" \
+    --setenv XDG_CURRENT_DESKTOP GNOME \
     --setenv IBUS_USE_PORTAL 1 \
     --setenv DISPLAY "${NEW_DISPLAY}" \
     /opt/QQ/qq "$@"
