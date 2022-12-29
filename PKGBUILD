@@ -20,5 +20,5 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 
 	install -Dm 755 ${srcdir}/rtodo ${pkgdir}/usr/bin/rtodo
-  install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm 644 ${srcdir}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
