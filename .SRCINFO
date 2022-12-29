@@ -1,0 +1,19 @@
+pkgbase = rofi-gpaste-git
+	pkgdesc = Rofi frontend for GPaste clipboard manager
+	pkgver = r33.e3f5313
+	pkgrel = 1
+	url = https://github.com/yusufaktepe/rofi-gpaste
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = rofi
+	depends = gpaste
+	depends = xclip
+	depends = xdg-utils
+	depends = xdotool
+	depends = qrencode
+	depends = zenity
+	source = git+https://github.com/yusufaktepe/rofi-gpaste.git
+	md5sums = SKIP
+
+pkgname = rofi-gpaste-git
