@@ -42,7 +42,7 @@ fiptool info $tmp/fip.bin
 fipdev="/dev/disk/by-partlabel/bpir64-${fipdev}-fip"
 [ ! -L $fipdev ] && exit 0
 echo Writing FIP to: $fipdev
-dd of=$fipdev if=/dev/zero 2>/dev/null
-dd of=$fipdev if=$tmp/fip.bin
+dd bs=1M of=$fipdev if=/dev/zero 2>/dev/null
+dd bs=1M of=$fipdev if=$tmp/fip.bin
 
 exit 0

@@ -9,7 +9,7 @@ post_upgrade() {
       echo Writing HEADER to: $device
       dd of="${device}" if=/boot/bpir64-atf-${dev}-header.bin
       echo Writing ATF to: $atfdev
-      dd of="${atfdev}" if=/boot/bpir64-atf-${dev}-atf.bin
+      dd bs=64k of="${atfdev}" if=/boot/bpir64-atf-${dev}-atf.bin
     fi
     bpir64-writefip
   fi
