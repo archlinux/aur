@@ -1,16 +1,16 @@
 pkgbase = wipe-term
 	pkgdesc = Wipe the content of your terminal with a random animation.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 0
 	url = https://github.com/ricoriedel/wipe
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	conflicts = wipe
-	source = wipe-2.1.0.tar.gz::https://github.com/ricoriedel/wipe/archive/refs/tags/v2.1.0.tar.gz
-	source = wipe-2.1.0.tar.gz.sig::https://github.com/ricoriedel/wipe/releases/download/v2.1.0/wipe-2.1.0.tar.gz.sig
-	validpgpkeys = F9A7D7F04CF97BE30275A9BA75AC868575DE7B18
-	b2sums = a01db973a5f0ad89deca2b0817345362bd72d1f9022495ad8bba757331dd613df0fff0615035f932d943eec64df3463997424fd80508430c3e376b339c51c3e0
-	b2sums = e4a033c63f9fd979b7ecca8e419dc94fb340ef682ac7fddae84273d04c4a9bfa22a7aef1672ad7bc007e3adf1f79f5c257fe1f3c0916365dcd29270ca006924c
+	source = wipe-2.1.1.tar.gz::https://github.com/ricoriedel/wipe/archive/refs/tags/v2.1.1.tar.gz
+	source = wipe-2.1.1.tar.gz.sig::https://github.com/ricoriedel/wipe/releases/download/v2.1.1/wipe-2.1.1.tar.gz.sig
+	validpgpkeys = CC38FB15A3F349D3E01757EDE8835756AADCBA00
+	b2sums = ae37c1ff6e05478a03184a73192d4aac5c6c7e85b1965123aaacd6bf0f07a691e673a092d4882887a7ef79dc901252fb4ce37e2a4d027a0d0969087942669505
+	b2sums = 8fe507cc316ab85fdb222c62c2f41de95fe1c305d519067c34623b8409506878a05c167bd02bd820bcc4c93e2030be957993b66309ec3cc3907c6c06fd50f671
 
 pkgname = wipe-term
