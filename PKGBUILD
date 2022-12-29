@@ -6,13 +6,13 @@
 # Maintainer: Zaedus <thezaedus@proton.me>
 _pkgname="youtube-tui"
 pkgname="${_pkgname}-git"
-pkgver=r23.a5c2976
+pkgver=r47.54a1ffb
 pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust."
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
 license=('GPL')
-depends=()
+depends=('libsixel' 'libxcb')
 optdepends=(
   'mpv: default video player'
   'konsole: default terminal emulator'

@@ -1,6 +1,6 @@
 pkgbase = youtube-tui-git
 	pkgdesc = An aesthetically pleasing TUI frontend to browsing YouTube written in Rust.
-	pkgver = r23.a5c2976
+	pkgver = r47.54a1ffb
 	pkgrel = 1
 	url = https://github.com/Siriusmart/youtube-tui
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = youtube-tui-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	depends = libsixel
+	depends = libxcb
 	optdepends = mpv: default video player
 	optdepends = konsole: default terminal emulator
 	optdepends = yt-dlp: default youtube downloader
