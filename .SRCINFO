@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
 	pkgver = 13.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trilinos.org
 	arch = x86_64
 	license = LGPL3
@@ -19,6 +19,8 @@ pkgbase = trilinos
 	depends = libmatio
 	depends = libx11
 	depends = hdf5-openmpi
+	provides = trilinos-sacado
+	provides = zoltan
 	source = https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-13-4-1.tar.gz
 	source = compiler-errors.patch
 	sha256sums = 5465cbff3de7ef4ac7d40eeff9d99342c00d9d20eee0a5f64f0a523093f5f1b3
