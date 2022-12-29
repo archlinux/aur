@@ -1,7 +1,7 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
 pkgver=0.4.1
-pkgrel=0
+pkgrel=1
 epoch=0
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
   fi
 
   cd $pkgname
-  cargo build --release
+  cargo build --optimized
 }
 
 install='readme.install'
