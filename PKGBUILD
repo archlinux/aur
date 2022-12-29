@@ -2,16 +2,16 @@
 
 pkgname=artanis-git
 pkgver=0.5.1.r3.g6528821
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
-url="http://web-artanis.com/"
+url="https://gitlab.com/NalaGinrut/artanis"
 license=('LGPL')
 depends=('guile')
 makedepends=('git' 'texlive-core')
 provides=('artanis')
 conflicts=('artanis')
-source=("git+https://gitlab.com/NalaGinrut/artanis.git#commit=6528821de90a93d140c2c8fd50a3b5e88fd7b4aa")
+source=("git+$url.git#commit=6528821de90a93d140c2c8fd50a3b5e88fd7b4aa")
 sha256sums=('SKIP')
 options=('!strip')
 
