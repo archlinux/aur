@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CCPlay
+Comment=Play and manage your Chip's Challenge levels in one place
+GenericName=Chip's Challenge level manager
+Exec=CCPlay
+Icon=CCPlay
+Type=Application
+StartupNotify=false
+StartupWMClass=CCPlay
+Categories=Utility;Game;

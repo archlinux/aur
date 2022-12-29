@@ -1,0 +1,25 @@
+pkgbase = chips-cctools
+	pkgdesc = Editor and Tool suite for Chip's Challenge, Chip's Challenge 2, and Tile World
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/zrax/cctools
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	optdepends = tworld: Tile World playtesting
+	optdepends = steam: Steam CC playtesting
+	optdepends = wine: MSCC playtesting
+	source = https://github.com/zrax/cctools/releases/download/3.0/cctools-3.0.tar.xz
+	source = CC2Edit.desktop
+	source = CCEdit.desktop
+	source = CCHack.desktop
+	source = CCPlay.desktop
+	sha256sums = SKIP
+	sha256sums = d2b644a68791cc3f4706cf4aaebbd8ebaa74fa8b726ce4e206eb6412861e4cb9
+	sha256sums = b7c6924afb0b946dfff7af79dfe0e9d7c10591452a99e220795b435416c266f4
+	sha256sums = 95682dffed1d9dbd57874daf40dfac5c62dba809a444afbf32b5ab4da20eb543
+	sha256sums = 09b7c1e4b1632e75cc3060190101e42ffdbc5fbfbae2fbfb68b1fb5b950aec3b
+
+pkgname = chips-cctools

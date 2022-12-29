@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CCHack
+Comment=Change various aspect of executable of the Microsoft version of CC
+GenericName=MSCC executable hack utility
+Exec=CCHack
+Icon=CCHack
+Type=Application
+StartupNotify=false
+StartupWMClass=CCHack
+Categories=Utility;Development;

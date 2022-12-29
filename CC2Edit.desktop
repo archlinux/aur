@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CC2Edit
+Comment=Create, edit and playtest CC2 levels
+GenericName=Chip's Challenge 2 level editor
+Exec=CC2Edit
+Icon=CC2Edit
+Type=Application
+StartupNotify=false
+StartupWMClass=CC2Edit
+Categories=Utility;Development;

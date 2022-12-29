@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=CCEdit
+Comment=Create, edit and playtest CC levels
+GenericName=Chip's Challenge level editor
+Exec=CCEdit
+Icon=CCEdit
+Type=Application
+StartupNotify=false
+StartupWMClass=CCEdit
+Categories=Utility;Development;
