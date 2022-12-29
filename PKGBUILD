@@ -50,8 +50,8 @@ source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
         "git+https://github.com/${_pkgname}/IXWebSocket"
 
         # LAF submodules
-        "git+https://github.com/${_pkgname}/stringencoders"
-        "git+https://github.com/${_pkgname}/googletest"
+        # temporarily removed as googletest was updated from laf, but https://github.com/aseprite/googletest was not updated
+        # "git+https://github.com/${_pkgname}/googletest"
 
         # Skia
         "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m102")
@@ -82,8 +82,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            # 'SKIP'
+            )
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -128,8 +128,7 @@ prepare() {
 
     cd laf
     git submodule init
-    git config submodule.third_party/stringencoders.url "${srcdir}/stringencoders"
-    git config submodule.third_party/googletest.url "${srcdir}/googletest" # not required if LAF_WITH_TESTS=OFF
+    # git config submodule.third_party/googletest.url "${srcdir}/googletest" # not required if LAF_WITH_TESTS=OFF
     git -c protocol.file.allow=always submodule update
 
     cd "${srcdir}/${_pkgname}"
