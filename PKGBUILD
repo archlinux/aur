@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r12800.fa3f48a2e
+pkgver=r12867.715824dea
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL3')
 groups=('libretro')
 depends=('libaio' 'libchdr' 'libgl' 'libretro-core-info' 'yaml-cpp')
 makedepends=('cmake' 'git' 'xxd')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 replaces=('libretro-pcsx2-git')
 options=('!lto') # https://github.com/libretro/LRPS2/issues/180
@@ -37,10 +37,7 @@ build() {
 	cmake -S $_pkgname -B build \
 		-DARCH_FLAG="" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DDISABLE_ADVANCE_SIMD=ON \
-		-DLIBRETRO=ON \
 		-DOPTIMIZATION_FLAG="" \
-		-DUSE_LTO=OFF \
 		-Wno-dev
 	cmake --build build
 }

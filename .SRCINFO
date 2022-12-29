@@ -1,6 +1,6 @@
 pkgbase = libretro-lrps2-git
 	pkgdesc = Sony PlayStation 2 core
-	pkgver = r12800.fa3f48a2e
+	pkgver = r12867.715824dea
 	pkgrel = 1
 	url = https://github.com/libretro/LRPS2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libretro-lrps2-git
 	depends = libgl
 	depends = libretro-core-info
 	depends = yaml-cpp
-	provides = libretro-lrps2
+	provides = libretro-lrps2=12867.715824dea
 	conflicts = libretro-lrps2
 	replaces = libretro-pcsx2-git
 	options = !lto
