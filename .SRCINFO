@@ -1,0 +1,15 @@
+pkgbase = rofi-prowlet-git
+	pkgdesc = Rofi wrapper for prowlet, Use the Prowlarr search API to find torrents.
+	pkgver = r4.dd271e2
+	pkgrel = 1
+	url = https://github.com/loiccoyle/rofi-prowlet
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = prowlet-git
+	optdepends = prowlarr: Usenet and torrent aggregator, similar to nzbhydra2 and jackett.
+	source = rofi-prowlet::git+https://github.com/loiccoyle/rofi-prowlet.git
+	md5sums = SKIP
+
+pkgname = rofi-prowlet-git
