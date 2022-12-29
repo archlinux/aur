@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd $srcdir/$_pkgname
-  qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib DTK_QML_APP_PLUGIN_PATH=/usr/lib/dtkdeclarative/qml-app DDECLARATIVE_TRANSLATIONS_DIR=/
+  qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib DTK_QML_APP_PLUGIN_PATH=/usr/lib/dtkdeclarative/qml-app
   make
 }
 
