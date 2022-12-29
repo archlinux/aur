@@ -12,11 +12,11 @@ Restart=always
 RestartSec=5
 WorkingDirectory=/opt/muse-hub
 
-ReadWritePaths=/tmp /srv/muse-hub
+ReadWritePaths=/tmp /srv/muse-hub /var/lib/MuseSampler
 
 TemporaryFileSystem=/opt:ro /srv:rw
 BindReadOnlyPaths=/opt/muse-hub
-BindPaths=-/srv/muse-hub /tmp
+BindPaths=-/srv/muse-hub -/var/lib/MuseSampler /tmp
 
 NoNewPrivileges=yes
 PrivateTmp=no
@@ -46,7 +46,7 @@ AmbientCapabilities=
 MemoryDenyWriteExecute=no
 LockPersonality=yes
 
-IPAddressDeny=10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.64.0.0/10,fc00::/7,fd00::/8,fec0::/10,localhost,link-local,multicast
+IPAddressDeny=10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 100.64.0.0/10 fc00::/7 fd00::/8 fec0::/10 localhost link-local multicast
 
 [Install]
 WantedBy=multi-user.target
