@@ -6,12 +6,13 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
 arch=(x86_64 aarch64)
+install=.install
 _plugin_name=Fundamental
 _plugin_ver=2.3.1
 _plugin_pkg=$pkgname-${_plugin_name,,}
@@ -40,7 +41,7 @@ source=(
   'profile.sh'
   'trademark.eml'
 )
-sha256sums=('e11643668e3770b61ef348bb1aeaa81345382fedc0c1c70765a4178b097de1a7'
+sha256sums=('0b2f319545b26b324211488106444939aecc8e3780161e0de6a8a7fbe31662b1'
             'ad431dfed9655e5af202403ef9e61d4b68d0861b2fe5de5a724242cac0a3eef5'
             '15e1dacd2a52d7cf67afcc548cc92b218f88a2726488e50887922e86c1493f68'
             'b706605c539dcc0953d2e5c59bec015275a576110125f9e8bc7c7dee75ec6b12'
@@ -51,7 +52,7 @@ sha256sums=('e11643668e3770b61ef348bb1aeaa81345382fedc0c1c70765a4178b097de1a7'
             'ca077ad436bcb5ffe579ee886b8e61c87e2ebd81fc762be02a9ca07235e219ff'
             '2d63d882e6b36f808e0ec739ad796fc44aa1595146e1914a4a80ce5670a2d2c0'
             '50fdd488ac51b0a32601eaf0ea0fca73180862408c9c9bd8c0ab439ac2abf655'
-            'd0d847a5dff1b8c1bfde209c8cf265096d0feb7e07e50b100b452be8cee1c9d6'
+            'daaf645f3b321449f72ae1c05d1fb285fee4c570f629d4cd9322a885fd059858'
             '21ac35c6ad4e5a29c32939b17baaf7ac1936077eda2214e28675eefcf2021db8'
             'e1da6ccf04bae3a2101151fec7ddd32e48ff92b0a1146b559fd3221c778d521f'
             '1159629aa90abb7c972c0f630d55d018b88a6b3bc3ff0bb9466cc06982f38641')

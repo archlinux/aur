@@ -1,6 +1,7 @@
-diff -aur a/plugin.mk b/plugin.mk
---- a/plugin.mk	2022-02-26 10:07:50.000000000 +0100
-+++ b/plugin.mk	2022-03-06 20:18:12.877709392 +0100
+diff --git a/plugin.mk b/plugin.mk
+index 47438416..e1f70545 100644
+--- a/plugin.mk
++++ b/plugin.mk
 @@ -1,9 +1,13 @@
 +ifndef ARCH_LIN
  ifndef RACK_DIR
@@ -9,16 +10,16 @@ diff -aur a/plugin.mk b/plugin.mk
 +else
 +RACK_DIR ?= /usr/share/vcvrack
 +endif
-
+ 
 -SLUG := $(shell jq -r .slug plugin.json)
 -VERSION := $(shell jq -r .version plugin.json)
 +SLUG ?= $(shell jq -r .slug plugin.json)
 +VERSION ?= $(shell jq -r .version plugin.json)
-
+ 
  ifndef SLUG
  $(error SLUG could not be found in manifest)
-@@ -27,10 +31,10 @@
- 	TARGET := plugin.so
+@@ -33,10 +37,10 @@ ifdef ARCH_LIN
+ 	TARGET := $(TARGET).so
  	# This prevents static variables in the DSO (dynamic shared object) from being preserved after dlclose().
  	FLAGS += -fno-gnu-unique
 -	# When Rack loads a plugin, it symlinks /tmp/Rack2 to its system dir, so the plugin can link to libRack.
@@ -31,17 +32,18 @@ diff -aur a/plugin.mk b/plugin.mk
 +	LDFLAGS += -ldl
  	RACK_USER_DIR ?= $(HOME)/.Rack2
  endif
-
-diff -aur a/src/plugin.cpp b/src/plugin.cpp
---- a/src/plugin.cpp	2022-02-26 10:07:50.000000000 +0100
-+++ b/src/plugin.cpp	2022-03-06 19:56:50.556668012 +0100
-@@ -240,6 +240,9 @@
- 	extractPackages(pluginsPath);
- 	loadPlugins(pluginsPath);
-
+ 
+diff --git a/src/plugin.cpp b/src/plugin.cpp
+index 25621f66..33571d9e 100644
+--- a/src/plugin.cpp
++++ b/src/plugin.cpp
+@@ -269,6 +269,9 @@ void init() {
+ 	if (settings::safeMode)
+ 		return;
+ 
 +	// Load system-wide plugins
 +	loadPlugins(asset::system("plugins"));
 +
- 	// If Fundamental wasn't loaded, copy the bundled Fundamental package and load it
- 	if (!settings::devMode && !getPlugin("Fundamental")) {
- 		std::string fundamentalSrc = asset::system("Fundamental.vcvplugin");
+ 	// Extract packages and load plugins
+ 	extractPackages(pluginsPath);
+ 	loadPlugins(pluginsPath);
