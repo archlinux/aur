@@ -2,7 +2,7 @@
 
 pkgname=naikari
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="2-D space trading and mercenary game forked from the Naev project."
 arch=('x86_64')
 url="https://naikari.github.io/"
@@ -16,6 +16,9 @@ md5sums=('fc1de4b30be41c42392d66792d930288')
 
 prepare() {
 	mv ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}
+}
+
+build() {
 	cd ${srcdir}/${pkgname}
 	meson setup build .
 	cd build
@@ -26,4 +29,5 @@ prepare() {
 package() {
 	cd ${srcdir}/${pkgname}
 	DESTDIR=${pkgdir} meson install -C build
+	install -D LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
 }

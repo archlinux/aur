@@ -1,7 +1,7 @@
 pkgbase = naikari
 	pkgdesc = 2-D space trading and mercenary game forked from the Naev project.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://naikari.github.io/
 	arch = x86_64
 	license = GPL3
