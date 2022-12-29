@@ -2,8 +2,8 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
-_commit=825e47522e3ae179a7820b2665c9de299b34494b
-pkgver=0.1.6.r20.g825e475
+_commit=ae75eb417d3804a6d723e2cf09647b54b15df5db
+pkgver=0.1.6.r21.gae75eb4
 pkgrel=1
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
