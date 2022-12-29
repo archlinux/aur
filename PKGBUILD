@@ -3,10 +3,10 @@
 pkgname=python-fasttext-predict-git
 pkgdesc="fasttext with wheels and no external dependency, but only the predict method (<1MB)"
 url="https://github.com/searxng/fasttext-predict"
-provides=("python-fasttext-predict-git")
+provides=("python-fasttext-predict")
 conflicts=("python-fasttext" "python-fasttest-git" "python-fasttext-predict")
 pkgver=0.9.2.1.r0.g0807442
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 license=("MIT")
 makedepends=("git" "python-setuptools")
