@@ -7,11 +7,12 @@ pkgbase = nettle7
 	license = GPL2
 	checkdepends = valgrind
 	depends = gmp
+	provides = libnettle.so.7
+	provides = libhogweed.so.5
 	source = https://ftp.gnu.org/gnu/nettle/nettle-3.5.1.tar.gz
 	source = https://ftp.gnu.org/gnu/nettle/nettle-3.5.1.tar.gz.sig
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
-	sha256sums = 75cca1998761b02e16f2db56da52992aef622bf55a3b45ec538bc2eedadc9419
-	sha256sums = SKIP
+	sha512sums = f738121b9091cbe79435fb5d46b45cf6f10912320c233829356908127bab1cac6946ca56e022a832380c44f2c10f21d2feef64cb0f4f41e3da4a681dc0131784
+	sha512sums = SKIP
 
 pkgname = nettle7
-
