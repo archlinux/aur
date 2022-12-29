@@ -8,13 +8,12 @@ pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('fontconfig')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'python3' 'microsoft-gsl' 'fmt' 'ninja' 'qt5-base' 'qt5-declarative' 'qt5-multimedia' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
+             'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("https://github.com/contour-terminal/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('473bd92530635464c5f15ede4f14bf299dbb86de806d67bc2e86a45f49717bfe76ef6be817ddc4c47b5c45ad890e6125c43575bb59f8feeca2ed61c0e9c6e348')
-provides=('contour')
-conflicts=('contour')
-options=('!strip' 'debug')
+options=('strip' 'debug')
 
 build() {
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
@@ -23,15 +22,12 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
   # Fetch embedded dependencies
-  PREPARE_ONLY_EMBEDS=ON "./${pkgname}-${pkgver}/scripts/install-deps.sh"
+  PREPARE_ONLY_EMBEDS=ON OS_OVERRIDE=arch "./${pkgname}-${pkgver}/scripts/install-deps.sh"
 
   cmake -S"${pkgname}-${pkgver}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCONTOUR_BUILD_WITH_QT6=OFF \
-        -DYAML_BUILD_SHARED_LIBS=OFF -DYAML_CPP_BUILD_CONTRIB=OFF \
-        -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF \
-        -DYAML_CPP_INSTALL=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build --parallel $_cpuCount
 }
