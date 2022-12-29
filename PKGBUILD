@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <pmavro@qovery.com>
 pkgname=qovery-cli
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc="Qovery Command Line Interface"
 arch=(x86_64)
@@ -23,4 +23,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/qovery"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('f30489dc331cec5f4572b8a635255c31')
+md5sums=('51b00eeafb5dd13aecdf18ae61ed13b7')
