@@ -8,7 +8,7 @@ pkgdesc='Stacking Wayland compositor with additional tiling capabilities, heavil
 url='https://hikari.acmelabs.space'
 license=('custom')
 arch=('x86_64')
-depends=('wlroots>=0.15' 'wlroots<0.16' 'cairo' 'pango' 'xorg-server-xwayland' 'libucl-git')
+depends=('wlroots>=0.15' 'wlroots<0.16' 'cairo' 'pango' 'xorg-xwayland' 'libucl-git')
 makedepends=('bmake' 'wayland-protocols')
 source=("https://hikari.acmelabs.space/releases/hikari-${pkgver//_/-}.tar.gz"
         "0001_xwayland.patch"
