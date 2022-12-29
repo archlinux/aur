@@ -1,6 +1,6 @@
 # Maintainer: Chi_Tang <chitang@duck.com>
 pkgname='nekoray-git'
-pkgver=2.3.r2.ge02cb5a
+pkgver=2.9
 pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64')
@@ -53,8 +53,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share/applications"
     # assets
     cp "${srcdir}/nekoray.desktop" "${pkgdir}/usr/share/applications/nekoray.desktop"
-    cp -a "${srcdir}/nekoray/assets/nekoray.png" "${pkgdir}/usr/lib/nekoray/"
-    cp -a "${srcdir}/nekoray/assets/nekobox.png" "${pkgdir}/usr/lib/nekoray/"
+    cp -a "${srcdir}/nekoray/res/public/nekoray.png" "${pkgdir}/usr/lib/nekoray/"
+    cp -a "${srcdir}/nekoray/res/public/nekobox.png" "${pkgdir}/usr/lib/nekoray/"
     ln -s "/usr/lib/nekoray/nekoray.png" "${pkgdir}/usr/share/pixmaps/nekoray.png"
     ln -s "/usr/lib/nekoray/nekobox.png" "${pkgdir}/usr/share/pixmaps/nekobox.png"
     # core
