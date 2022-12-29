@@ -1,11 +1,11 @@
 pkgbase = rtodo
 	pkgdesc = A simple To-Do list manager written in Rust
-	pkgver = v0.1.1
+	pkgver = v0.1.2
 	pkgrel = 1
 	url = https://github.com/TiagoRCorreia/rtodo
 	arch = x86_64
 	license = MIT
-	source = https://github.com/TiagoRCorreia/rtodo/releases/download/v0.1.1/rtodo.gz
+	source = https://github.com/TiagoRCorreia/rtodo/releases/download/v0.1.2/rtodo.gz
 	source = https://raw.githubusercontent.com/TiagoRCorreia/rtodo/main/LICENSE.md
 	md5sums = 65212c3174f5a3ebebfcda045d687a76
 	md5sums = 9d6236041611466d09794b98fd034310

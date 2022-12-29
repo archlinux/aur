@@ -1,7 +1,7 @@
 # Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
 pkgbase="rtodo"
 pkgname="rtodo-bin"
-pkgver="v0.1.1"
+pkgver="v0.1.2"
 pkgrel=1
 pkgdesc="A simple To-Do list manager written in Rust"
 arch=("x86_64")
