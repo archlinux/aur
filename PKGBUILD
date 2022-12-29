@@ -1,18 +1,19 @@
-# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>
+# Maintainer: Angel de Vicente <angel.de.vicente at iac dot es>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Kaspar Bumke <kaspar dot bumke at gmail dot com>
 # Contributor: maleadt <tim dot besard at gmail dot com>
 
 pkgname="turbovnc"
 pkgdesc="An optimized version of TightVNC"
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
 makedepends=('cmake' 'rsync')
 depends=('libxaw' 'libxt' 'libxi' 'libxcursor' 'libjpeg-turbo' 'java-environment>11' 'openssl' 'python')
-sha256sums=('839d6ac42cfd2af258113970915c3d38c1b9ee3f89af2c2c1379e370c8ad4aa0'
+sha256sums=('616dc72ce52351b70a239c2f464c83136e6143a23c7d316e3b29f68ea71c9949'
             'ccadf1fc708fad601e6113464d6c533a629f6dc9116f6071347cd0b465c1f48b')
 conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
 replaces=('turbovnc-bin')
