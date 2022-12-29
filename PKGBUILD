@@ -1,5 +1,5 @@
 # Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
-pkgbase="pkgbase"
+pkgbase="rtodo"
 pkgname="rtodo-bin"
 pkgver="v0.1.1"
 pkgrel=1
@@ -20,5 +20,5 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
 
 	install -Dm 755 ${srcdir}/rtodo ${pkgdir}/usr/bin/rtodo
-  install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
