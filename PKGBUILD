@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.29.2
+pkgver=0.29.3
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
@@ -40,7 +40,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "crontab_calls.patch"
         "systemd_calls.patch"
         "LICENSE")
-sha256sums=('7d5aacb0a923976c487a5c0155b0bfa2bb44fd0f9bb2523569dd03db3b1fa1ca'
+sha256sums=('b412ca57fcca9bac4c1e9a8399aaa4491093a21680e5c06a3aafe2d1cecb275f'
             '5b3e99b6be28f8c68e024d9127992bcd49c758566a6ecaa15f9788a411eab0f0'
             '55993df7e243de7a009da05f802cb0b306dc67aa181a510f6825a8b2874b2397'
             'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
