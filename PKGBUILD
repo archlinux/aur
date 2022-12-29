@@ -2,13 +2,13 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=v0.5.0.rc.1.r36.gdb2801a8c
+pkgver=v0.5.0.r1.gd94f329ac
 pkgrel=1
 pkgdesc="A 2-D space trading and mercenary game forked from the Naev project. Development branch."
 arch=('x86_64')
 url="https://naikari.github.io/"
 license=('GPL3')
-depends=('sdl2_image' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'libgl' 'luajit' 'suitesparse')
+depends=('sdl2_image' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'libgl' 'luajit' 'suitesparse' 'libunibreak' 'physfs' 'glpk')
 makedepends=('meson' 'ninja')
 provides=('naikari')
 conflicts=('naikari')
@@ -28,8 +28,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	meson build --buildtype=release --prefix=/usr
-	meson compile -C build
+	meson setup build .
+	cd build
+	meson configure --buildtype=release -Db_lto=true --prefix=/usr
+	meson compile
 }
 
 package() {
