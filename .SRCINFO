@@ -1,13 +1,15 @@
 pkgbase = deepin-icon-theme-git
 	pkgdesc = Deepin GTK Theme
-	pkgver = 2021.11.24.r0.g572b049d
+	pkgver = 2021.11.24.r15.g88a5c7ab
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-gtk-theme
 	arch = any
-	groups = deepin
+	groups = deepin-git
 	license = LGPL3
 	makedepends = git
 	optdepends = gtk-engine-murrine: for gtk2 themes
+	provides = deepin-icon-theme
+	conflicts = deepin-icon-theme
 	source = deepin-icon-theme-git::git+https://github.com/linuxdeepin/deepin-icon-theme/
 	sha512sums = SKIP
 

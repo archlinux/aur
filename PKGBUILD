@@ -5,7 +5,7 @@
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=deepin-icon-theme-git
-pkgver=2021.11.24.r0.g572b049d
+pkgver=2021.11.24.r15.g88a5c7ab
 pkgrel=1
 pkgdesc="Deepin GTK Theme"
 arch=('any')
@@ -13,7 +13,9 @@ url="https://github.com/linuxdeepin/deepin-gtk-theme"
 makedepends=('git')
 license=('LGPL3')
 optdepends=('gtk-engine-murrine: for gtk2 themes')
-groups=('deepin')
+groups=('deepin-git')
+conflicts=(deepin-icon-theme)
+provides=(deepin-icon-theme)
 source=("$pkgname::git+https://github.com/linuxdeepin/deepin-icon-theme/")
 sha512sums=('SKIP')
 
