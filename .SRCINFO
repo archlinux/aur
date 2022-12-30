@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = Tencent QQ NT for Linux with bubblewrap wrapper
 	pkgver = 3.0.0_565
-	pkgrel = 6
+	pkgrel = 7
 	url = https://im.qq.com/linuxqq/index.shtml
 	install = linuxqq.install
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = linuxqq-nt-bwrap
 	sha256sums = 63844046a2453e5320710831156805d4e2d2920a6bea774f3df9aa76e69ea179
 	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb
 	sha256sums_x86_64 = 21f05b85e5708386f93ee2d7f5bcea4ae4dc125c4d695ded99b19ddeffcd9026
-	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb
+	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_arm64.deb
 	sha256sums_aarch64 = e8894025d3e49da433384e3cb1dc5be506c1f99175c4ab2d177011187337d066
 
 pkgname = linuxqq-nt-bwrap

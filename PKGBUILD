@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_565
-pkgrel=6
+pkgrel=7
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -16,7 +16,7 @@ options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb")  # 底包
                # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${pkgver//_/-}.zip.zip")  # 热更新补丁
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb")  # 底包
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_arm64.deb")  # 底包
                 # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'qq_channel_jsbridge_handler.desktop' 'xdg-open.sh')
 sha256sums_x86_64=('21f05b85e5708386f93ee2d7f5bcea4ae4dc125c4d695ded99b19ddeffcd9026')  # 底包
