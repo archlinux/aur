@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
 # Contributor: Filip <fila pruda com>
 pkgname=poweradmin
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A web-based control panel for PowerDNS"
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=("php: to locally host poweradmin")
 provides=(poweradmin)
 conflicts=(poweradmin)
 source=("https://github.com/poweradmin/poweradmin/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('454739741cf5f7413fb98b18a3bc62c9195b2afc01e7f7b72c5874f9d9635905')
+sha256sums=('e0ea1fa87ed2e4fd1f499e379211e47524e11725b0f5d2ed46884d853c1dcdc1')
 backup=('etc/webapps/poweradmin/config.inc.php')
 
 package() {
