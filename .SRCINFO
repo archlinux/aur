@@ -1,13 +1,13 @@
 pkgbase = webcatalog-bin
 	pkgdesc = Turn Any Websites into Real Desktop Apps
-	pkgver = 44.2.2
+	pkgver = 44.3.0
 	pkgrel = 1
 	url = https://webcatalog.io/webcatalog/
 	arch = x86_64
 	options = !strip
-	source = https://cdn-2.webcatalog.io/webcatalog/WebCatalog-44.2.2.AppImage
+	source = https://cdn-2.webcatalog.io/webcatalog/WebCatalog-44.3.0.AppImage
 	source = webcatalog.patch
-	sha256sums = 1cab1db34d9efed2d2d6284de7c87d56e5b4f385c2f0a73dc061768676b30ce5
+	sha256sums = e00b63fd2edb451606d2cc4e5f30e75c4131728767e4d9efc5cdc4df59370715
 	sha256sums = 8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd
 
 pkgname = webcatalog-bin
