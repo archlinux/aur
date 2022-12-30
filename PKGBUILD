@@ -3,7 +3,7 @@
 # Contributor: Igor Moura <hi@igor.mp>
 
 pkgname=freecad-appimage
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler (AppImage version)"
 arch=('x86_64')
@@ -14,10 +14,10 @@ provides=('freecad')
 conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
-source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.20.1/FreeCAD_0.20-1-2022-08-20-conda-Linux-x86_64-py310.AppImage"
+source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.20.2/FreeCAD_0.20.2-2022-12-27-conda-Linux-x86_64-py310.AppImage"
         "freecad.sh"
         "freecad_weekly.desktop.patch")
-sha256sums=('079aa59433c4f94f00f26b21b34d350d25a42cf959dc80496106d1a6b2dd56e5'
+sha256sums=('4f0922cc0ef39fe8738b815b60bb3d5e0d4baced9ad026b442671d234cb14126'
             '0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674'
             'bec9eeb54790ebcd3c9954bf014ab24c5eaabcdb1ed6a9b4043b8acc6b3762c2')
 
@@ -33,12 +33,7 @@ prepare() {
 package() {
   install -Dm755 "${srcdir}/freecad-${pkgver}.AppImage" "${pkgdir}/opt/appimages/freecad.AppImage"
   install -Dm755 "${srcdir}/freecad.sh" "${pkgdir}/usr/bin/freecad"
-
-  install -dm755 "${pkgdir}/usr/share/"
-  install -dm755 "${pkgdir}/usr/share/mime/application"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-  mv "${srcdir}/squashfs-root/usr/share/icons/default/freecad_weekly.png" "${srcdir}/squashfs-root/usr/share/icons/default/freecad.png"
-  cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/application/x-extension-fcstd.xml"
-
   install -Dm644 "${srcdir}/squashfs-root/freecad_weekly.desktop" "${pkgdir}/usr/share/applications/freecad.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/default/freecad_weekly.png" "${pkgdir}/usr/share/pixmaps/freecad.png"
+  install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/packages/freecad.xml"
 }
