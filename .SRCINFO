@@ -1,6 +1,6 @@
 pkgbase = holo
 	pkgdesc = Minimalistic configuration management
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://holocm.org
 	arch = i686
@@ -15,11 +15,11 @@ pkgbase = holo
 	optdepends = git: to display diffs using git-diff(1)
 	optdepends = openssh: to provision SSH public keys
 	optdepends = shadow: to provision user accounts and groups
-	provides = holo-files=3.0.0
-	provides = holo-generators=3.0.0
-	provides = holo-run-scripts=3.0.0
-	provides = holo-ssh-keys=3.0.0
-	provides = holo-users-groups=3.0.0
+	provides = holo-files=3.0.1
+	provides = holo-generators=3.0.1
+	provides = holo-run-scripts=3.0.1
+	provides = holo-ssh-keys=3.0.1
+	provides = holo-users-groups=3.0.1
 	replaces = holo-run-scripts
 	replaces = holo-ssh-keys
 	replaces = holo-users-groups
@@ -29,8 +29,7 @@ pkgbase = holo
 	backup = etc/holorc.d/20-users-groups
 	backup = etc/holorc.d/25-ssh-keys
 	backup = etc/holorc.d/95-holo-run-scripts
-	source = https://github.com/holocm/holo/archive/v3.0.0.tar.gz
-	sha256sums = 9175bb015569f0f7e0398c7a29419a2be97d102d42b157b14b7339c39a424f49
+	source = https://github.com/holocm/holo/archive/v3.0.1.tar.gz
+	sha256sums = e3474253b2f8e010bd10fdedb934a1f4d21c6b66f1dfb84bfee292c230156745
 
 pkgname = holo
-
