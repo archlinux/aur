@@ -1,0 +1,5 @@
+*.zip
+*.pkg.tar.zst
+certbot-dns-gandi/
+pkg/
+src/
