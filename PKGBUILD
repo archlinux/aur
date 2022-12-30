@@ -1,7 +1,7 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 
 pkgname=ttf-martian-mono
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Free and open-source monospaced font from Evil Martians'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/evilmartians/mono'
 license=('OFL')
 source=("https://github.com/evilmartians/mono/releases/download/v$pkgver/martian-mono-$pkgver-ttf.zip"
         "https://raw.githubusercontent.com/evilmartians/mono/main/OFL.txt")
-sha256sums=('dee81d4a328abc884d5a3ef26aabe6a8c8d9f6d7c59ecb9535f473c61563d03a'
+sha256sums=('a990b5620a97b1fc6af1e9808e7af82f8bf96b2a5692beff9e01b9e5adf92a71'
             SKIP)
 
 package() {
