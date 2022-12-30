@@ -1,6 +1,6 @@
 pkgbase = marble-git
 	pkgdesc = Desktop Globe. (GIT version)
-	pkgver = 20.08.3.81.gabdada2a0
+	pkgver = 20.12.3.292.gc94802d40
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/marble
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = marble-git
 	makedepends = extra-cmake-modules
 	makedepends = krunner
 	makedepends = python
-	makedepends = qt5-webkit
+	makedepends = qt5-webengine
 	makedepends = qt5-tools
 	makedepends = qt5-serialport
 	makedepends = kparts
@@ -60,6 +60,5 @@ pkgname = marble-common-git
 	depends = libastro-git
 	depends = marble-git
 	depends = marble-data-git
-	provides = marble-common=20.08.3.81.gabdada2a0
+	provides = marble-common=20.12.3.292.gc94802d40
 	conflicts = marble-common
-
