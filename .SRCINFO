@@ -1,13 +1,13 @@
 pkgbase = pkradio
 	pkgdesc = A Pakistani radio station player.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://www.techtum.dev/work-pkradio-220409.html
 	arch = any
 	license = MIT
 	depends = python
 	depends = mpv
-	source = https://github.com/siphr/pkradio/archive/refs/tags/0.2.tar.gz
+	source = https://github.com/siphr/pkradio/archive/refs/tags/0.3.tar.gz
 	md5sums = 9d32cc9836310b746243340cc8caa880
 
 pkgname = pkradio

@@ -2,7 +2,7 @@
 
 _pypkgname=pkradio
 pkgname=pkradio
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A Pakistani radio station player."
 depends=(python mpv)
