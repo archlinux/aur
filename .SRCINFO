@@ -1,0 +1,26 @@
+pkgbase = pianoteq7
+	pkgdesc = Physical modelling piano instrument standalone program, VST2 and LV2 plugin. Legacy STANDARD version
+	pkgver = 7.5.4
+	pkgrel = 1
+	url = https://www.pianoteq.com/pianoteq
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = custom
+	makedepends = gendesk
+	makedepends = wget
+	makedepends = p7zip
+	depends = alsa-lib
+	depends = freetype2
+	depends = ttf-font
+	depends = libxext
+	optdepends = jack: JACK support for stand-alone application
+	optdepends = lv2-host: for loading the LV2 plugin
+	optdepends = vst-host: for loading the VST2 plugin
+	provides = pianoteq
+	source = local://pianoteq_linux_v754.7z
+	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
+	b2sums = 2809f79b656e287591f749b56c769031f183d9383ba16cc0daae8452b98a84bae38afd2b6f77c3886494211e12d035042385ea4c165adc24517cfcabcd08ec86
+	b2sums = bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d
+
+pkgname = pianoteq7
