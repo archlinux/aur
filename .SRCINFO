@@ -1,0 +1,17 @@
+pkgbase = python-schwifty
+	pkgdesc = Validate/generate IBANS and BICS
+	pkgver = 2022.9.0
+	pkgrel = 1
+	url = http://github.com/mdomke/schwifty
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-iso3166
+	depends = python-pycountry
+	source = https://files.pythonhosted.org/packages/source/s/schwifty/schwifty-2022.9.0.tar.gz
+	sha256sums = ff3c4ad2951f8391b9c3d13e401b751f5d8b77981673e59a91074d5513121620
+
+pkgname = python-schwifty
