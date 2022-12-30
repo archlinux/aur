@@ -6,7 +6,7 @@
 _gitname=xdm
 pkgname=xdman
 pkgver=7.2.11
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Xtreme Download Manager: download manager with multiple browser integrations"
 arch=('i686' 'x86_64')
@@ -15,8 +15,12 @@ depends=('ffmpeg' 'java-runtime>=11' 'python' 'sh' 'youtube-dl')
 makedepends=('java-environment>=11' 'maven')
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/subhra74/$_gitname/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgname.desktop"
+        "$pkgname.png"
         "$pkgname.sh")
 b2sums=('8987f8f68823b1224cb6c01becaf40be57440d4c0dba80c65b583b02964f8f5e77cd27c072a63ff4b47f6f1931f13b3d5fa63196841ecf7e28f96f5227da9b52'
+        '7f13326c9df4da0af296d46ea50b86578e91be2e65d8ff417d4c050ab212a73e6d2e62b6731ebe39743e314fc65a1da40c094fb483dbf489a4161dcab2652aaf'
+        'a8529919e8fcdb77c525d1b7c6a5dc612746ff9e03bf7a94af34cc31995a581d06982e54c03c8bbd382baafc12c043a8c71880fecaf20d0416ff5cd75b2b7dbb'
         '788ae28b70bc510b0c865bebd5f53d857820908421d40b2ecc76b390e6f5de55c2f76a93c2cc4017cbcd7df7cf4855a0243217abfccc9843dde88188fe6c3fc0')
 
 build() {
@@ -26,7 +30,12 @@ build() {
 
 package() {
 	install -Dm644 $_gitname-$pkgver/app/target/$pkgname.jar -t "$pkgdir/usr/share/java/$pkgname/"
+
+	# symlink necessary dependencies
 	ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/java/$pkgname/"
 	ln -s /usr/bin/youtube-dl "$pkgdir/usr/share/java/$pkgname/"
+
 	install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 $pkgname.png -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications/"
 }
