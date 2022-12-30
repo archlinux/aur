@@ -1,4 +1,4 @@
-# Maintainer: Mingi Sung <FiestaLake@protonmail.com>
+# Maintainer: Mingi Sung <fiestalake@disroot.org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Nevar <psi.neamf@gmail.com>
 
@@ -6,7 +6,7 @@ pkgname=nautilus-share-gtk4
 _pkgname=nautilus-share
 pkgver=0.7.5
 pkgrel=2
-pkgdesc='Nautilus extension to share folder using Samba (from debian for gtk4 support)'
+pkgdesc='Nautilus extension to share folder using Samba, which supports libnautilus-extension-4 in GTK4'
 arch=('x86_64')
 url="https://gitlab.gnome.org/coreyberla/nautilus-share"
 license=('GPL')
