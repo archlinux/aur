@@ -1,16 +1,18 @@
 pkgbase = python-flatbencode
 	pkgdesc = Fast, safe and non-recursive implementation of Bittorrent bencoding
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acatton/flatbencode/
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = python-flatbencode-0.2.1.tar.gz::https://github.com/acatton/flatbencode/archive/v0.2.1.tar.gz
 	sha256sums = 867da7bf5106909dc16cc6c6b4a99a2d42b0f5770600a84115ed04bfdec9e44d
 
 pkgname = python-flatbencode
-
