@@ -32,4 +32,4 @@ package() {
     echo 'Finished setting up pkradio.'
 }
 
-md5sums=('db00462bf01ae96017b06ed47e8fa048')
+md5sums=('93c164440a61192a0eee332eddebdd61')
