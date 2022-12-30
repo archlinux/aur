@@ -1,7 +1,7 @@
 pkgbase = solarmeter
 	pkgdesc = Read energy from ABB Aurora inverter
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahpohl/solarmeter
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = solarmeter
 	arch = aarch64
 	license = MIT
 	depends = mosquitto
+	depends = libabbaurora
 	optdepends = nodejs-node-red
 	optdepends = postgresql
 	optdepends = timescaledb

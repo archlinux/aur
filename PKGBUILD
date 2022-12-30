@@ -1,14 +1,14 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=solarmeter
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Read energy from ABB Aurora inverter"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/ahpohl/solarmeter"
 license=('MIT')
 groups=()
-depends=('mosquitto')
+depends=('mosquitto' 'libabbaurora')
 makedepends=()
 checkdepends=()
 optdepends=('nodejs-node-red' 'postgresql' 'timescaledb' 'pg_cron' 'grafana-bin')
