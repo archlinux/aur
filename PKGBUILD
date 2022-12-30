@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=deepin-ocr-git
-pkgver=r86.1d17781
+pkgver=r103.479bd09
 pkgrel=1
 pkgdesc='deepin OCR Tool'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ makedepends=(
     'git'
     'qt5-tools'
     'cmake'
+    'vulkan-headers'
 )
 optdepends=(
 )
