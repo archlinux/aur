@@ -1,0 +1,4 @@
+src/
+pkg/
+archey3/
+*.pkg.tar.zst

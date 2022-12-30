@@ -2,10 +2,10 @@
 
 _pkgname=archey3
 pkgname=${_pkgname}-git
-pkgver=0.4+r57+gac68752
+pkgver=0.4.r57.gac68752
 pkgrel=1
 pkgdesc="Python script to display system information alongside the Arch Linux logo."
-arch=('any')
+arch=('x86_64')
 url="https://lclarkmichalek.github.io/archey3/"
 license=('GPL')
 depends=('python')
@@ -15,18 +15,18 @@ optdepends=(
 'python-logbook: for logging'
 'imagemagick: for default screenshot command'
 )
-conflicts=('archey' 'archey3')
+conflicts=('archey' 'archey3' 'archey4')
 provides=('archey')
 source=("git+https://github.com/bluepeppers/archey3.git")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
 package() {
     cd "$_pkgname"
     python setup.py install --root=${pkgdir}
-    install -D -m644 COPYING ${pkgdir}/usr/share/licenses/archey/COPYING
+    install -Dm644 COPYING ${pkgdir}/usr/share/licenses/archey/COPYING
 }
