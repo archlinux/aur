@@ -22,13 +22,21 @@ sha256sums=('d85dbb3774132473d8081dcb158f34a10ccad7a90b96c7e50ea4bb61f5ce4562'
             'SKIP'
             'a44c461ae2caf4b4483c3bfbef3d5d140d528e163ef72084cf5d5afea75e298e'
 )
-validpgpkeys=('E3FF2839C048B25C084DEBE9B26995E310250568')
+
+validpgpkeys=('E3FF2839C048B25C084DEBE9B26995E310250568') # Łukasz Langa
 provides=("python=$pkgver")
 
 # import gpg key to verify Python sources..
-gpg --recv-keys B26995E310250568
+# gpg --recv-keys B26995E310250568
+
+# Remove gpg key..
+# gpg --delete-key --batch --yes 'Łukasz Langa'
 
 prepare() {
+
+  echo 'Use "gpg --recv-keys B26995E310250568" to to verify Python sources'
+  echo "After if you don't need the key, use: \"gpg --delete-key --batch --yes 'Łukasz Langa'\""
+
   cd "${srcdir}/Python-${pkgver}"
 
   patch -p1 -i "${srcdir}/mpdecimal_cy3816.patch"
@@ -84,6 +92,4 @@ package() {
   # License
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Remove gpg key..
-  gpg --delete-key --batch --yes 'Łukasz Langa'
 }
