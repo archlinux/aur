@@ -3,9 +3,9 @@
 _pkgname=admc
 pkgname=${_pkgname}-git
 pkgver=r3560.5cc7bbb0
-pkgrel=1
+pkgrel=2
 pkgdesc="Active Directory Management Center, replacement of RSAT"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/altlinux/admc"
 license=('GPL3')
 depends=('samba' 'qt5-base'  'libldap' 'krb5' 'util-linux')
@@ -26,8 +26,6 @@ prepare() {
 
 build() {
   cd build
-  ls ../
-  #cmake ../${pkgname}-v${pkgver}
   cmake ../${_pkgname} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
