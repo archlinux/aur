@@ -3,7 +3,7 @@
 
 pkgname='perl-search-elasticsearch'
 _pkgname='Search-Elasticsearch'
-pkgver='7.717'
+pkgver='8.00'
 pkgrel='1'
 pkgdesc="The official client for Elasticsearch"
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=()
 checkdepends=('perl-test-deep' 'perl-test-exception' 'perl-test-sharedfork')
 url='https://metacpan.org/release/Search-Elasticsearch'
 source=("https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/$_pkgname-$pkgver.tar.gz")
-md5sums=('16f29f464fff8782925dda5b44bed1ef')
-sha512sums=('ff35ae946d90988c9b022b48b09be5b036d1399aeee148df009f83faa49fd1b8d66e1f379c14a1ab481d17f753b6fe0d43291da4714aa50a8732a37ebd3e093a')
+md5sums=('9d40ff30b74dc1cecf4f391a6e908a0c')
+sha512sums=('2a62efc1434b40584dec5b5baf165ccb03e19b981883bfc313b297e03ea973f9ed85047b15294ce0742b6901b98cc4050214abbd29f02f46e175c410777ff42d')
 _distdir="$_pkgname-$pkgver"
 
 build() {
