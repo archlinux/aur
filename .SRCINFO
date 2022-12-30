@@ -1,0 +1,18 @@
+pkgbase = gmp4-static
+	pkgdesc = Legacy version of gmp. Provides libgmp.so.3.
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = http://gmplib.org/
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = gcc
+	depends = gcc-libs
+	depends = sh
+	depends = gmp
+	options = !libtool
+	source = https://gmplib.org/download/archive/gmp-4.3.2/gmp-4.3.2.tar.xz
+	sha256sums = f69eff1bc3d15d4e59011d587c57462a8d3d32cf2378d32d30d008a42a863325
+	sha512sums = d2ddecc7d0bcfd158f65dfdc4650b9c7092abce52835887ed896cc79870036329ea6bef3f8337a5807bbb4321676366914832ae6a7874a0e54da0203591d03d1
+
+pkgname = gmp4-static
