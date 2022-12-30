@@ -1,6 +1,6 @@
 pkgname=immich
 pkgrel=0
-pkgver=1.40.0_63
+pkgver=1.40.1_63
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
