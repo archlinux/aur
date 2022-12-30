@@ -1,23 +1,23 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=lorem-git
-pkgver=r45.b2079a5
+pkgver=1.1.r0.g144b3a1
 pkgrel=1
 pkgdesc="Simple app to generate the Lorem Ipsum placeholder text"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/design/lorem"
 license=('GPL3')
-depends=('gtk4' 'glib2' 'libadwaita')
-makedepends=('git' 'meson' 'rust')
+depends=('libadwaita')
+makedepends=('git' 'meson' 'cargo')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -26,9 +26,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
