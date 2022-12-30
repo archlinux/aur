@@ -3,9 +3,9 @@
 _pkgname=qt-mvvm
 pkgname=qt5-mvvm-git
 pkgver=r3486.59f8083e
-pkgrel=1
-pkgdesc="Model View ViewModel framework for large Qt C++ applications "
-arch=('any')
+pkgrel=2
+pkgdesc="Model View ViewModel framework for large Qt C++ applications"
+arch=('x86_64')
 url="https://github.com/gpospelov/qt-mvvm"
 license=('GPL3')
 depends=('qt5-base')
