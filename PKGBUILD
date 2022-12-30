@@ -1,7 +1,7 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
@@ -9,16 +9,19 @@ url="https://github.com/fabiocaccamo/python-benedict"
 license=('MIT')
 depends=(
 	'python'
+	'python-boto3'
 	'python-ftfy'
 	'python-mailchecker'
 	'python-phonenumbers'
 	'python-dateutil'
 	'python-fsutil'
+	'python-openpyxl'
 	'python-slugify'
 	'python-pyaml'
 	'python-requests'
 	'python-six'
 	'python-toml'
+	'python-xlrd'
 	'python-xmltodict'
 )
 makedepends=(
@@ -27,7 +30,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(
-	'7e4eb4f55ed84b0f3fecf74adf7d8b5b72421565c60a5df14b511f1705597753'
+	'7aaf8430c2ee4144f5e3d61f7b02ac229b58f8154a401539a669b4b615bee5c2'
 )
 
 build() {
