@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = Tencent QQ NT for Linux with bubblewrap wrapper
 	pkgver = 3.0.0_565
-	pkgrel = 7
+	pkgrel = 8
 	url = https://im.qq.com/linuxqq/index.shtml
 	install = linuxqq.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = linuxqq-nt-bwrap
 	depends = bubblewrap
 	depends = xdg-utils
 	depends = xdg-user-dirs
-	depends = snapd-xdg-open
+	depends = snapd-xdg-open-git
 	optdepends = libappindicator-gtk3: 以最小化到托盘
 	provides = qq-nt
 	provides = linuxqq-nt
