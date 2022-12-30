@@ -4,14 +4,14 @@
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.9.0
 pkgrel=1
-pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries"
+pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
 license=('GPL2' 'LGPL3' 'custom:EUPL')
 depends=('qt5-base'
          'qt5-tools'
          'qt5-quickcontrols'
-				 'qt5-quickcontrols2'
+         'qt5-quickcontrols2'
          'qt5-graphicaleffects'
          'pcsclite'
          'openssl'
@@ -21,18 +21,18 @@ depends=('qt5-base'
          'openjpeg2'
          'poppler-qt5'
          'poppler'
-				 'xerces-c'
-				 'libcurl-compat'
+         'xerces-c'
+         'libcurl-compat'
          'xml-security-c')
 makedepends=('zstd' 'tar' 'flatpak' 'ostree')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
-			'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
-			'ecce-gov-pt-certificates: Certificados da ECCE - quem assina dos certificados contidos em cartaodecidadao-pki')
+'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
+'ecce-gov-pt-certificates: Certificados da ECCE - quem assina dos certificados contidos em cartaodecidadao-pki')
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
 source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw-linux.x86_64.flatpak"
-							 "autenticacao-gov-pt-bin.install")
+ "autenticacao-gov-pt-bin.install")
 
 sha512sums_x86_64=('4abf163d8025effd91e8b66748e8c9d8600a42e490eeb371a7bce829d55b42b9b5ad05c785dbb136e9a19029446b5bf77d7388be079bfd9c9838ec9088cdb95a'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
@@ -47,8 +47,8 @@ prepare() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/"
-	mv "${srcdir}"/pteid_out/files/{bin,include,lib,share} "${pkgdir}/usr/"
+  mkdir -p "${pkgdir}/usr/"
+  mv "${srcdir}"/pteid_out/files/{bin,include,lib,share} "${pkgdir}/usr/"
   # cleanup pre packaged libraries
   rm -rf "${pkgdir}"/usr/include/zip*
   rm -rf "${pkgdir}"/usr/lib/libzip*
