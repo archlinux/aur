@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-hunspell
 	pkgdesc = Spell checker and morphological analyzer library and program (mingw-w64)
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://hunspell.github.io/
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = mingw-w64-hunspell
 	options = staticlibs
 	options = !debug
 	options = !emptydirs
-	source = hunspell-1.7.1.tar.gz::https://github.com/hunspell/hunspell/archive/v1.7.1.tar.gz
+	source = hunspell-1.7.2.tar.gz::https://github.com/hunspell/hunspell/archive/v1.7.2.tar.gz
 	source = 01-relocate.patch
 	source = 02-fix-link-with-pdcurses.patch
-	sha256sums = 6e3557624c608b3e6525b8bd277706db4f5a857c28fdb3cfa8d0d2b67776da8a
+	sha256sums = 69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e
 	sha256sums = b3a978749ef723481286e6237944729b6965bc57eacc5407b5f7fedf7d6aa8a1
 	sha256sums = 260432a8f01525e83124c79e375cc9f0692b1a6c97773add4c69b8efe081cf1d
 
