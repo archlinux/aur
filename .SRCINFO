@@ -6,7 +6,6 @@ pkgbase = pkradio
 	arch = any
 	license = MIT
 	depends = python
-	depends = mpv
 	source = https://github.com/siphr/pkradio/archive/refs/tags/0.3.tar.gz
 	md5sums = 9d32cc9836310b746243340cc8caa880
 
