@@ -1,7 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
-pkgname=libmpc
+pkgname=libmpc-static
 pkgver=1.3.1
 pkgrel=1
 pkgdesc='Library for the arithmetic of complex numbers with arbitrarily high precision'
