@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-mpc'
-pkgver='1.16'
+pkgver='1.30'
 pkgrel='1'
 pkgdesc="Math::MPC - perl interface to the MPC (multi precision complex) library."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gmp>=6.1.0' 'libmpc>=1.0.3' 'mpfr>=3.1.3.p4' 'perl-math-mpfr>=4.14')
 makedepends=('gmp>=6.1.0' 'libmpc>=1.0.3' 'mpfr>=3.1.3.p4' 'perl-math-mpfr>=4.14')
 url='https://metacpan.org/release/Math-MPC'
 source=("https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPC-$pkgver.tar.gz")
-b2sums=('3c7e91062fcb6adb726515691c3ff36127c40a64dbdfa3100e7cc5d86810907ca4282b69e28212a37fa748bf66ce4ac0e0c778c65333886e03b649f05f797ff4')
+b2sums=('a88259ab263377efa67a64995068d278b40c1f1425e8d5016e663501bddfa7f04e1098a8b12ce491dfa217f594729a5faa6a7722fcb0aad4f0154425422e0e33')
 _distdir="Math-MPC-${pkgver}"
 
 build() {
