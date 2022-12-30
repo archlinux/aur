@@ -6,7 +6,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.8.9pre1
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,21 +16,16 @@ depends=('dkms' 'libelf' 'openafs')
 provides=("openafs-modules=$pkgver")
 conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-	dkms.conf
-        0001-Linux-6.0-Replace-add_to_page_cache.patch)
-sha256sums=('3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a'
-            '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0'
-            'af9db57b1d65cfb7d7c58aa15df764e4bceaaa99d2c829f2c2ee317567347131')
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+	dkms.conf)
+sha256sums=('d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06'
+            '5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
-  # Changes to support Linux 6.0
-  patch -p1 < "${srcdir}"/0001-Linux-6.0-Replace-add_to_page_cache.patch
-
   # Only needed when changes to configure were made
-  ./regen.sh -q
+  #./regen.sh -q
 }
 
 build() {

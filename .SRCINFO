@@ -1,6 +1,6 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.9pre1
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
@@ -10,16 +10,14 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs
-	provides = openafs-modules=1.8.9pre1
+	provides = openafs-modules=1.8.9
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/candidate/1.8.9pre1/openafs-1.8.9pre1-src.tar.bz2
+	source = http://openafs.org/dl/openafs/1.8.9/openafs-1.8.9-src.tar.bz2
 	source = dkms.conf
-	source = 0001-Linux-6.0-Replace-add_to_page_cache.patch
-	sha256sums = 3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a
+	sha256sums = d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
-	sha256sums = af9db57b1d65cfb7d7c58aa15df764e4bceaaa99d2c829f2c2ee317567347131
 
 pkgname = openafs-modules-dkms
