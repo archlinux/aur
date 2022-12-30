@@ -20,7 +20,7 @@ conflicts=(dopamine)
 options=(!strip)
 source_x86_64=(https://github.com/digimezzo/dopamine/releases/download/v${__pkgver}${prevver}/Dopamine-${__pkgver}.${prevver}.AppImage)
 source=("dopamine.desktop")
-sha512sums=('772e3bcb8788ba35abd0069db1fc7b3629898d27015e1ba0d220766c4bd9fa36b96f9e2dd93781b11191d9017018970e955665cc688afa32566b3e66456c9237')
+sha512sums=('c27e980de4fb9e9a4a7b714c65c35aef9fe37e13f4589e5c1160e927df4dd9e0370999995d092b7009829bc1e410cd7fbfbd4f3fb11ffa05d5c5cfb1657ba793')
 sha512sums_x86_64=('4c89612b1d88b6e589b7e17f9bbeaf352277710526a051f94f8826bfa92403182ce4b7db87c968dd1d911e8dd4c496539d17af068c60fd32a2b28d998ab37822')
 
 prepare() {
