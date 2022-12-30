@@ -1,17 +1,17 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=lorem
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Simple app to generate the Lorem Ipsum placeholder text"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/design/lorem"
 license=('GPL3')
-depends=('gtk4' 'glib2' 'libadwaita')
-makedepends=('meson' 'rust')
+depends=('libadwaita')
+makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('2a517edc72a273ef3a99297afb8f7b2534f49767f267d50383852f356b8658678af30028957fc0895379b224593397f2e00b8e3130fe01dd420ba1e6acf1f2b3')
+b2sums=('6363b41be21c919673e9a378fec7667764039162409b3bb91926843dae47b9a04dfb1c4e9b18e26f401ea599e50cae964fca9159ee5c03e64b9f7a1dbf7b2e78')
 
 build() {
   arch-meson $pkgname-$pkgver build
@@ -19,7 +19,7 @@ build() {
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
