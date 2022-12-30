@@ -1,30 +1,32 @@
-# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
-
+# Maintainer: wilke
 pkgname=jcloisterzone
-pkgver=4.6.1
-pkgrel=1
+pkgver=5.10.2
+pkgrel=0
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
-url="http://jcloisterzone.com/en/"
-license=('AGPL')
-depends=('java-runtime>=8')
-source=("http://play.jcloisterzone.com/builds/JCloisterZone-${pkgver}.tgz"
-        'jcloisterzone.sh'
-        'jcloisterzone.desktop'
-        'ico.png')
-sha256sums=('6118c9fe44c77ccd336e7f85ffc993bc6ba501abe5d3ee3ad7854b2fa6f65718'
-            'a7da7c81041d2e34fed08b4b10e27f32655095dc2246bb98b4db4feb48a3e05d'
-            '7b25dfcdcb9ec286555a5f03e7b16bbc9c71f117f10aefc79b7e4537a72f4253'
-            '012a090df7f1fa30fe3ede444eab92cb2f6fd3c37e1b6786f04da9feb3f7cf38')
+url="https://github.com/farin/JCloisterZone-Client"
+license=('GPL3')
+options=('!strip')
 
-package() {
-    install -d "$pkgdir/usr/share"
-    cp -r "$srcdir/JCloisterZone" "$pkgdir/usr/share/"
-    find $pkgdir -type d -exec chmod 755 {} \;
-    find $pkgdir -type f -exec chmod 644 {} \;
-    install -D -m755 "$srcdir/${pkgname}.sh" "$pkgdir/usr/bin/${pkgname}"
-    install -D -m644 "$srcdir/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
-    install -D -m644 "$srcdir/ico.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+sha512sums=('4dfedc88f7a424e2d5b1026fbf95ff63f8952b3bc1fa9b394185341f88b8eeed1659238f629bfa067bb292dd2aaed149c3bd1c857fd2798e57a7df23ac2f8ec9')
+
+source=("https://github.com/farin/JCloisterZone-Client/releases/download/v${pkgver}/jcloisterzone-${pkgver}.AppImage")
+
+prepare() {
+	[ -d squashfs-root ] && rm -rf squashfs-root
+	chmod 755 jcloisterzone-${pkgver}.AppImage
+	./jcloisterzone-${pkgver}.AppImage --appimage-extract
+	sed -i 's|^Exec=.*|Exec=jcloisterzone|' squashfs-root/jcloisterzone.desktop
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+	for dir in squashfs-root/usr/share/icons/hicolor/*; do
+		resolution=$(basename "$dir")
+
+		mkdir -p $pkgdir/usr/share/icons/hicolor/${resolution}/apps/
+		install -Dm644 "$dir/apps/jcloisterzone.png" "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/"
+	done
+
+  	install -Dm644 squashfs-root/jcloisterzone.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  	install -Dm755 jcloisterzone-${pkgver}.AppImage "$pkgdir/usr/bin/jcloisterzone"
+}
