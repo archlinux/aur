@@ -36,7 +36,7 @@ sha256sums=('03723468a175ea77c67ede4b941f1c27e45d0b086c697a8201d12581a09d1713'
             '4202e039944fde80daa1bd3a5f332c522d8db96b4c3cf7c764355c5fc9089137'
             '76e61d1d4f5b4e7c8cd760b1fc0dc86978a8e180d184cdfc7f61fba7d5543a95'
             'e748b669bca526a08c06e5d8ec2bd371b938e57f83a2339d62e38a4527810e47')
-
+ 
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
   --use-system-snappy
