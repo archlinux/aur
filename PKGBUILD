@@ -2,19 +2,20 @@
 # Contributor: Andreas B. Wagner <AndreasBWagner@pointfree.net>
 
 pkgname=maptiler
-pkgver=11.2.1
+pkgver=12.0
 pkgrel=1
 pkgdesc="Map Tiler Desktop - software for converting your data into zoomable maps"
 arch=('x86_64')
 url="http://www.maptiler.org/"
-license=('BSD')
+license=('custom')
 depends=('gdal' 'libwebp')
 options=(!strip)
 makedepends=('dpkg')
 replaces=('maptiler-64bit')
-_pkgname="${pkgname}-desktop-${pkgver}-free-linux.deb"
-source=("${pkgname}-${pkgver}.deb"::"https://maptiler.download/desktop/${_pkgname}")
-md5sums=('884152ba8eb96d6b08381460bcc6764e')
+_pkgname="${pkgname}-engine-${pkgver}-app-linux.deb"
+# source=("https://maptiler.download/desktop/${_pkgname}")
+source=("https://maptiler.download/engine/maptiler-engine-${pkgver}-app-linux.deb")
+md5sums=('f01f625238fab620d1eb2c01c7635f13')
 
 package() {
   dpkg -x "${pkgname}-${pkgver}.deb" "$pkgdir"

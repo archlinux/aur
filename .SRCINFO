@@ -1,16 +1,16 @@
 pkgbase = maptiler
-	pkgdesc = Map Tiler Desktop - software for converting your data into zoomable maps
-	pkgver = 11.2.1
+	pkgdesc = Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth
+	pkgver = 12.0
 	pkgrel = 1
 	url = http://www.maptiler.org/
 	arch = x86_64
-	license = BSD
+	license = custom
 	makedepends = dpkg
 	depends = gdal
 	depends = libwebp
 	replaces = maptiler-64bit
 	options = !strip
-	source = maptiler-11.2.1.deb::https://maptiler.download/desktop/maptiler-desktop-11.2.1-free-linux.deb
-	md5sums = 884152ba8eb96d6b08381460bcc6764e
+	source = https://maptiler.download/engine/maptiler-engine-12.0-app-linux.deb
+	md5sums = f01f625238fab620d1eb2c01c7635f13
 
 pkgname = maptiler
