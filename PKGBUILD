@@ -6,7 +6,7 @@
 _gitname=xdm
 pkgname=xdman
 pkgver=7.2.11
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc="Xtreme Download Manager: download manager with multiple browser integrations"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-	install -Dm644 $_gitname-$pkgver/app/target/$pkgname.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+	install -Dm644 $_gitname-$pkgver/app/target/$pkgname.jar -t "$pkgdir/usr/share/java/$pkgname/"
 	ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/java/$pkgname/"
 	ln -s /usr/bin/youtube-dl "$pkgdir/usr/share/java/$pkgname/"
 	install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"

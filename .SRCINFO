@@ -1,7 +1,7 @@
 pkgbase = xdman
 	pkgdesc = Xtreme Download Manager: download manager with multiple browser integrations
 	pkgver = 7.2.11
-	pkgrel = 3
+	pkgrel = 1
 	epoch = 1
 	url = https://xtremedownloadmanager.com/
 	arch = i686
