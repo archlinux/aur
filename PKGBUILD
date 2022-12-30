@@ -17,7 +17,7 @@ sha256sums=('e6d77ccf10b19adc00bc0d72e14c708bb1fd45d0c50d6d5880e5e0501fdbe5a1' '
 
 build() {
   cd "$srcdir"
-  rm -rf ./j-wildfire-7.20.zip
+  rm -rf ./j-wildfire-7.30.zip
   rm -rf ./*.exe
   rm -rf ./start_mac.command
   echo "[Desktop Entry]" > ./jwildfire.desktop
