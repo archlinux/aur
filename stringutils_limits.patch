@@ -1,0 +1,12 @@
+diff --git a/source/libmvvm_model/mvvm/utils/stringutils.cpp b/source/libmvvm_model/mvvm/utils/stringutils.cpp
+index e072e01f..88c5696d 100644
+--- a/source/libmvvm_model/mvvm/utils/stringutils.cpp
++++ b/source/libmvvm_model/mvvm/utils/stringutils.cpp
+@@ -13,6 +13,7 @@
+ #include <iterator>
+ #include <sstream>
+ #include <string_view>
++#include <limits>
+ 
+ using namespace ModelView;
+ 

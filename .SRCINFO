@@ -1,0 +1,19 @@
+pkgbase = qt5-mvvm-git
+	pkgdesc = Model View ViewModel framework for large Qt C++ applications
+	pkgver = r3486.59f8083e
+	pkgrel = 1
+	url = https://github.com/gpospelov/qt-mvvm
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = qt5-mvvm
+	conflicts = qt5-mvvm
+	source = git+https://github.com/gpospelov/qt-mvvm.git
+	source = stringutils_limits.patch
+	md5sums = SKIP
+	md5sums = b2ab54e609cfe374f0f292f8bb8e1a79
+
+pkgname = qt5-mvvm-git
