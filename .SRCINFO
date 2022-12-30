@@ -1,6 +1,6 @@
 pkgbase = fcitx5-git
 	pkgdesc = Next generation of fcitx
-	pkgver = 5.0.18.r21.g5e18e2e
+	pkgver = 5.0.21.r16.g22454ff
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = i686
@@ -23,7 +23,6 @@ pkgbase = fcitx5-git
 	depends = libxkbfile
 	depends = fmt
 	depends = gdk-pixbuf2
-	depends = unicode-cldr-annotations
 	provides = fcitx5
 	conflicts = fcitx5
 	source = git+https://github.com/fcitx/fcitx5.git
