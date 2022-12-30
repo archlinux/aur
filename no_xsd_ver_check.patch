@@ -1,0 +1,39 @@
+diff --git a/src/plugins/common/basetypes.h b/src/plugins/common/basetypes.h
+index 5baeb33..12acd8c 100644
+--- a/src/plugins/common/basetypes.h
++++ b/src/plugins/common/basetypes.h
+@@ -58,7 +58,7 @@
+ 
+ #include <xsd/cxx/config.hxx>
+ 
+-#if (XSD_INT_VERSION != 4009911L)
++#if (XSD_INT_VERSION != 4000000L)
+ #error XSD runtime version mismatch
+ #endif
+ 
+diff --git a/src/plugins/common/policydefinitionfiles.h b/src/plugins/common/policydefinitionfiles.h
+index 2fd4bb7..251409f 100644
+--- a/src/plugins/common/policydefinitionfiles.h
++++ b/src/plugins/common/policydefinitionfiles.h
+@@ -58,7 +58,7 @@
+ 
+ #include <xsd/cxx/config.hxx>
+ 
+-#if (XSD_INT_VERSION != 4009911L)
++#if (XSD_INT_VERSION != 4000000L)
+ #error XSD runtime version mismatch
+ #endif
+ 
+diff --git a/src/plugins/common/policydefinitions.h b/src/plugins/common/policydefinitions.h
+index 9b6692b..9940127 100644
+--- a/src/plugins/common/policydefinitions.h
++++ b/src/plugins/common/policydefinitions.h
+@@ -58,7 +58,7 @@
+ 
+ #include <xsd/cxx/config.hxx>
+ 
+-#if (XSD_INT_VERSION != 4009911L)
++#if (XSD_INT_VERSION != 4000000L)
+ #error XSD runtime version mismatch
+ #endif
+ 

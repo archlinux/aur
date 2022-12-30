@@ -1,0 +1,25 @@
+pkgbase = gpui-git
+	pkgdesc = Group policy editor
+	pkgver = r658.425250a
+	pkgrel = 1
+	url = https://github.com/august-alt/admc
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = samba
+	depends = qt5-base
+	depends = qt5-mvvm
+	depends = libldap
+	depends = krb5
+	depends = util-linux
+	depends = xsd
+	provides = gpui
+	conflicts = gpui
+	source = git+https://github.com/august-alt/gpui.git
+	source = no_xsd_ver_check.patch
+	md5sums = SKIP
+	md5sums = ae2205ff9122dd410fe4b3ccaeb0baad
+
+pkgname = gpui-git
