@@ -1,8 +1,8 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=trust-dns-git
-pkgver=0.22.0.r74.ge045743b
-pkgrel=2
+pkgver=0.22.0.r84.g249fb266
+pkgrel=1
 pkgdesc='Safe and secure authoritative DNS server'
 arch=('x86_64')
 url=https://trust-dns.org/
@@ -12,6 +12,7 @@ makedepends=('git' 'cargo')
 provides=('dns' 'dnskey-to-pem' 'get-root-ksks' 'pem-to-public-dnskey' 'trust-dns')
 conflicts=('trust-dns' 'trust-dns-server')
 backup=('etc/trust-dns/trust-dns.toml')
+options=(!lto)
 source=("$pkgname::git+https://github.com/bluejekyll/trust-dns.git#branch=main"
         'avoid-dns-over-https.patch'
         'trust-dns.sysusers'

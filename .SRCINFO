@@ -1,7 +1,7 @@
 pkgbase = trust-dns-git
 	pkgdesc = Safe and secure authoritative DNS server
-	pkgver = 0.22.0.r74.ge045743b
-	pkgrel = 2
+	pkgver = 0.22.0.r84.g249fb266
+	pkgrel = 1
 	url = https://trust-dns.org/
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = trust-dns-git
 	provides = trust-dns
 	conflicts = trust-dns
 	conflicts = trust-dns-server
+	options = !lto
 	backup = etc/trust-dns/trust-dns.toml
 	source = trust-dns-git::git+https://github.com/bluejekyll/trust-dns.git#branch=main
 	source = avoid-dns-over-https.patch
