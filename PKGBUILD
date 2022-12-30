@@ -7,12 +7,12 @@ pkgname=('boost-65-compat' 'boost-65-compat-libs')
 _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
-pkgrel=6
+pkgrel=7
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
 url='https://www.boost.org/'
 license=('custom')
-makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' )
+makedepends=('python' 'python-numpy')
 source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2
     https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch
     https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch)
@@ -33,7 +33,7 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd ${_pkgname}_${_boostver}
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
@@ -59,7 +59,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=2.7 \
+      python=3.10 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
@@ -68,38 +68,12 @@ build() {
       \
       --prefix="${_stagedir}" \
       install
-
-   # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
-   # need another run for liboost_python3.so
-
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3 \
-      --with-libraries=python
-
-   "${_stagedir}"/bin/b2 clean
-   "${_stagedir}"/bin/b2 \
-      variant=release \
-      debug-symbols=off \
-      threading=multi \
-      runtime-link=shared \
-      link=shared,static \
-      toolset=gcc \
-      python=3.10 \
-      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
-      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
-      linkflags="${LDFLAGS}" \
-      --layout=system \
-      ${JOBS} \
-      \
-      --prefix="${_stagedir}/python3" \
-      --with-python \
-      install
 }
 
 package_boost-65-compat() {
    pkgdesc+=' - development headers'
    depends=("boost-65-compat-libs=${pkgver}")
-   optdepends=('python: for python bindings'
-               'python2: for python2 bindings')
+   optdepends=('python: for python bindings')
    conflicts=('boost' 'boost-libs')
    options=('staticlibs')
 
@@ -109,9 +83,6 @@ package_boost-65-compat() {
    install -d "${pkgdir}"/usr/lib
    cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/usr/lib/
    cp -a "${_stagedir}"/lib/libboost_*.so "${pkgdir}"/usr/lib/
-
-   install -Dm644 "${_stagedir}"/python3/lib/libboost_*.a \
-      "${pkgdir}"/usr/lib/
 
    install -Dm644 "${srcdir}/"${_pkgname}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost-65-compat/LICENSE_1_0.txt
@@ -132,7 +103,7 @@ package_boost-65-compat-libs() {
      libboost_math_tr1.so.$pkgver libboost_math_tr1f.so.$pkgver libboost_math_tr1l.so.$pkgver
      libboost_mpi.so.$pkgver libboost_mpi_python.so.$pkgver libboost_numpy.so.$pkgver libboost_numpy3.so.$pkgver
      libboost_prg_exec_monitor.so.$pkgver libboost_program_options.so.$pkgver
-     libboost_python.so.$pkgver libboost_python3.so.$pkgver libboost_random.so.$pkgver
+     libboost_python3.so.$pkgver libboost_random.so.$pkgver
      libboost_regex.so.$pkgver libboost_serialization.so.$pkgver libboost_signals.so.$pkgver
      libboost_stacktrace_addr2line.so.$pkgver libboost_stacktrace_basic.so.$pkgver
      libboost_stacktrace_noop.so.$pkgver libboost_system.so libboost_thread.so.$pkgver
@@ -141,7 +112,6 @@ package_boost-65-compat-libs() {
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
-   cp -a "${_stagedir}"/python3/lib/libboost_* "${pkgdir}"/usr/lib
    rm "${pkgdir}"/usr/lib/*.a
    rm "${pkgdir}"/usr/lib/*.so
 
