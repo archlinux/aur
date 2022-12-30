@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='sq: swiss-army knife for data'
 url='https://sq.io'
@@ -13,11 +13,11 @@ license=('MIT')
 provides=('sq')
 conflicts=('sq')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.2/sq-0.19.2-linux-arm64.tar.gz")
-sha256sums_aarch64=('4f6ad940627432c9c8cee7547aa07580c0aaf5493fa8bfe0af383d5c1b502682')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.20.0/sq-0.20.0-linux-arm64.tar.gz")
+sha256sums_aarch64=('0769b928a202cf0c7174b6e0fb4f086375600bba333e8bbc2ec45a8b8d43464d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.19.2/sq-0.19.2-linux-amd64.tar.gz")
-sha256sums_x86_64=('5f683dc66147d22697194687e3a5e46c74c880d12f761d48d1b14a6a5ee87e90')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.20.0/sq-0.20.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('38263083d09dc5c0f5dd1d3cf24daac90fa7b013c865be7c9192fe7eca439486')
 
 package() {
   # bin
@@ -34,12 +34,13 @@ package() {
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
 
-  #install -Dm644 "./completions/sq.bash" "${pkgdir}/usr/share/bash-completion/completions/sq"
-  #install -Dm644 "./completions/sq.zsh" "${pkgdir}/usr/share/zsh/site-functions/_sq"
-  #install -Dm644 "./completions/sq.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sq.fish"
+  install -Dm644 "./completions/sq.bash" "${pkgdir}/usr/share/bash-completion/completions/sq"
+  install -Dm644 "./completions/sq.zsh" "${pkgdir}/usr/share/zsh/site-functions/_sq"
+  install -Dm644 "./completions/sq.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sq.fish"
 
   # docs
   mkdir -p "${pkgdir}/usr/share/doc/sq"
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/sq/README.md"
-  #install -Dm644 "./manpages/mybin.1.gz" "${pkgdir}/usr/share/man/man1/mybin.1.gz"
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  install -Dm644 "./manpages/sq.1.gz" "${pkgdir}/usr/share/man/man1/sq.1.gz"
 }
