@@ -6,13 +6,13 @@
 
 pkgname=veusz
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
 url="https://veusz.github.io/"
 license=('GPL2')
 depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme')
-makedepends=('sip' 'python-tomli')
+makedepends=('sip>=6.7.5' 'python-tomli')
 optdepends=('python-h5py:  HDF5 support'
             'python-pyemf3: EMF export'
             'python-dbus: dbus interface'
