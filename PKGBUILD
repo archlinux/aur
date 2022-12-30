@@ -1,4 +1,4 @@
-# Maintainer: zer0-x
+# Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="git-cm-git"
 _pkgname=${pkgname%-git}
