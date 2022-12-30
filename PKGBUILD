@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.10.1.r4.g4726010
+pkgver=5.10.1.r6.ge7d7578
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64' 'aarch64')
@@ -30,23 +30,17 @@ prepare() {
   cd $pkgname
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
-  go get -v github.com/cryptix/wav
-  go get -v github.com/youpy/go-wav
-  go get -v golang.org/x/xerrors
-  go get -v github.com/fsnotify/fsnotify
-  go get -v github.com/godbus/dbus
-  go get -v github.com/godbus/dbus/introspect
-  go get -v github.com/godbus/dbus/prop
-  go get -v github.com/jouyouyun/hardware/graphic
+  mkdir -p $srcdir/build/src/github.com/linuxdeepin/
+  ln -sf $srcdir/$pkgname $srcdir/build/src/github.com/linuxdeepin/startdde
+  cd $srcdir/build/src/github.com/linuxdeepin/startdde
+  go get -v
   sed -i 's/sbin/bin/' Makefile
-
-  cd $srcdir/build/src/github.com/godbus/dbus
-  git reset 4b691ce883d536a867587e2fcfec1245ebddecd0
-  git checkout -- .
 }
 
 build() {
   export GOFLAGS="-mod=readonly -modcacherw"
+  export GOPATH="$srcdir/build:/usr/share/gocode"
+  export GO111MODULE=off
   cd $pkgname
   make
 }
