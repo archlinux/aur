@@ -1,8 +1,8 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=danectl-git
-pkgver=r130.9b1585f
-pkgrel=3
+pkgver=0.7.4.r8.gd0f0cc6
+pkgrel=1
 pkgdesc="DNSSEC DANE implementation manager"
 arch=('any')
 url="https://github.com/raforg/danectl"
@@ -11,12 +11,12 @@ depends=('coreutils' 'sed' 'grep' 'ldns' 'certbot' 'openssl' 'perl' 'openssh' 'g
 makedepends=('git')
 optdepends=('bash' 'zsh')
 provides=('danectl')
-source=("git+https://github.com/HLFH/danectl.git")
+source=("git+https://github.com/raforg/danectl.git")
 b2sums=('SKIP')
 
 pkgver() {
     cd danectl/
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
 package() {
