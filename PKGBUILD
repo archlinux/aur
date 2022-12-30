@@ -2,12 +2,12 @@
 _pkgname=page
 pkgname=${_pkgname}-git
 pkgrel=1
-pkgver=v4.6.2
+pkgver=v4.6.3
 pkgdesc='Pager powered by neovim and inspired by neovim-remote'
 arch=('i686' 'x86_64')
 url="https://github.com/I60R/page"
 license=('MIT')
-depends=('neovim' 'gcc-libs')
+depends=('neovim' 'gcc-libs' 'file' 'bat')
 makedepends=('rust' 'cargo' 'git')
 provides=('page')
 conflicts=('page')
