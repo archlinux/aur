@@ -1,4 +1,4 @@
-# Maintainer: zer0-x
+# Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="cwitch"
 pkgver="0.2.1"
