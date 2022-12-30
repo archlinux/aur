@@ -2,7 +2,7 @@
 
 pkgname=at32-ide-bin
 pkgver=1.0.04
-pkgrel=0
+pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
@@ -13,7 +13,7 @@ provides=(at32-ide AT32IDE)
 conflicts=()
 replaces=()
 depends=(java-runtime  desktop-file-utils gcc hidapi ncurses)
-makedepends=('libarchive')
+makedepends=(libarchive sed)
 optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。')
 backup=()
 options=()
@@ -34,7 +34,9 @@ package() {
 EOF
 
     install -Dm0644 "${pkgdir}/opt/artery32/${pkgname%-bin}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.xpm"
+
     install -Dm0644 "${pkgdir}/opt/artery32/${pkgname%-bin}/OpenOCD/contrib/60-openocd.rules" "${pkgdir}/etc/udev/rules.d/60-openocd-${pkgname%-bin}.rules"
+    sed -i 's|openocd_rules|openocd_at32-ide_rules|g' "${pkgdir}/etc/udev/rules.d/60-openocd-${pkgname%-bin}.rules"
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.arterytek.at32ide.metainfo.xml" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
