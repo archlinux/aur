@@ -1,23 +1,20 @@
 pkgbase = filtron-git
-	pkgdesc = Reverse HTTP filtering proxy. This is the current git version from master branch.
-	pkgver = 0+r61+e141a49
+	pkgdesc = Filtering reverse HTTP proxy
+	pkgver = 0.2.0.r4.gfb26e98
 	pkgrel = 1
-	url = https://github.com/asciimoo/filtron
+	url = https://github.com/HLFH/filtron
 	install = filtron.install
-	arch = i686
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	provides = filtron
 	conflicts = filtron
-	source = git+https://github.com/asciimoo/filtron
+	source = git+https://github.com/HLFH/filtron
 	source = filtron.service
 	source = rules.json
-	sha512sums = SKIP
-	sha512sums = 0b7bbe55b3fd89d589e5662699f93d7aaf3c1d77d29be9cc568f8430e4a2491ba4920ca153f4d887a29da1f51670ec06346809cc5d1f373af540e252feccc799
-	sha512sums = 2668deb746ad361ebe32ea46b361f69c0eaf591b7faebb10dd2de11e114645c5fd726d45bb6aebec5b5bcef8dcad51d4b681a5e4b1ec83f918de4929aa237285
+	b2sums = SKIP
+	b2sums = 0f2184e0fd8d3467d5358f9b8caa0cce6bdc07561a50c84681d522aa5704e02a7a3aca1e8eb49e8e731b7c8d961ac4ce97f0c7b39119daa056ebf6e444c5b582
+	b2sums = 347e84b34ce0ec4ca46dc8782ce9af995d8b7844e9020bcd9c059018a3ad1af0100a0bdf65a05956e53c16c5daf7c4aa87b4c47402a3d8b05ca981117131ce5c
 
 pkgname = filtron-git
-

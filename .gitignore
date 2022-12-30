@@ -1,0 +1,4 @@
+src/
+pkg/
+filtron/
+*.pkg.tar.zst

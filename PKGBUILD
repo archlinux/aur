@@ -1,49 +1,44 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-_branch=master
-_pkgname=filtron
-_team=github.com/asciimoo
-pkgname=${_pkgname}-git
-pkgver=0+r61+e141a49
-pkgrel=1
-pkgdesc="Reverse HTTP filtering proxy. This is the current git version from ${_branch} branch."
-arch=('i686' 'x86_64')
-url=https://${_team}/${_pkgname}
-license=(AGPL3)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-depends=(glibc)
-makedepends=(git go)
-install=${_pkgname}.install
-source=(git+$url
-	"${_pkgname}.service"
-        rules.json)
-sha512sums=('SKIP'
-            '0b7bbe55b3fd89d589e5662699f93d7aaf3c1d77d29be9cc568f8430e4a2491ba4920ca153f4d887a29da1f51670ec06346809cc5d1f373af540e252feccc799'
-            '2668deb746ad361ebe32ea46b361f69c0eaf591b7faebb10dd2de11e114645c5fd726d45bb6aebec5b5bcef8dcad51d4b681a5e4b1ec83f918de4929aa237285')
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
-prepare() {
-  mkdir -p "${srcdir}/src/${_team}"
-  mv -v "${srcdir}/${_pkgname}" "${srcdir}/src/${_team}/${_pkgname}"
-}
+pkgname=filtron-git
+pkgver=0.2.0.r4.gfb26e98
+pkgrel=1
+pkgdesc="Filtering reverse HTTP proxy"
+arch=('x86_64')
+url='https://github.com/HLFH/filtron'
+license=(AGPL3)
+provides=(filtron)
+conflicts=(filtron)
+makedepends=(git go)
+install=filtron.install
+source=(git+$url
+	filtron.service
+        rules.json)
+b2sums=('SKIP'
+        '0f2184e0fd8d3467d5358f9b8caa0cce6bdc07561a50c84681d522aa5704e02a7a3aca1e8eb49e8e731b7c8d961ac4ce97f0c7b39119daa056ebf6e444c5b582'
+        '347e84b34ce0ec4ca46dc8782ce9af995d8b7844e9020bcd9c059018a3ad1af0100a0bdf65a05956e53c16c5daf7c4aa87b4c47402a3d8b05ca981117131ce5c')
 
 pkgver() {
-  cd "$srcdir/src/${_team}/${_pkgname}"
-  printf 0+r%s+%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd filtron
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
 build() {
-  export GOPATH="$srcdir"
-  cd "$srcdir/src/${_team}/${_pkgname}"
-  go get -v -x ${_team}/${_pkgname}
+  cd filtron
+  go build -o filtron .
+}
+
+check() {
+  cd filtron
+  go test
 }
 
 package() {
   cd "$srcdir"
-  install -D bin/filtron -t "$pkgdir"/usr/bin
-  install -Dm 644 ../rules.json -t "$pkgdir"/etc/"${_pkgname}"
-  install -Dm 644 ../"${_pkgname}".service -t "$pkgdir"/usr/lib/systemd/system
-  
-  cd "$srcdir/src/${_team}/${_pkgname}"
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/"${_pkgname}"
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/"${_pkgname}"
+  install -Dm644 rules.json -t "$pkgdir"/etc/filtron
+  install -Dm644 filtron.service -t "$pkgdir"/usr/lib/systemd/system
+  cd filtron
+  install -Dm755 filtron -t "$pkgdir"/usr/bin
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/filtron
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/filtron
 }
