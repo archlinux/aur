@@ -1,8 +1,7 @@
 # Patched package:
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 # Co-maintainer: Saren Arterius <saren@wtako.net>
-# Co-maintainer: Mingi Sung <FiestaLake@protonmail.com>
-# Contributor: Joakim Soderlund <joakim.soderlund@gmail.com>
+# Co-maintainer: Mingi Sung <fiestalake@disroot.org>
 
 # Official package:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -154,7 +153,6 @@ prepare() {
   # Type: 1
   # Status: 2 & 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
-  #          (Thanks @JockeTF in AUR for the patch backported to gnome-41 before.)
   pick_mr '1441' 'mr1441.patch' 'patch'
 
   # Title: wayland/surface: Avoid using buffers with unfinished client work, sub-surface fixes
