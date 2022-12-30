@@ -21,10 +21,12 @@ depends=(
 )
 
 makedepends=(
+    'appstream-glib'
     'dconf'
     'gtk3'
     'intltool' 
     'librsvg'
+    'meson'
     'nettle'
     'xdg-utils'
 )
