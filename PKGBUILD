@@ -11,7 +11,7 @@ depends=('neovim' 'gcc-libs' 'file' 'bat')
 makedepends=('rust' 'cargo' 'git')
 provides=('page')
 conflicts=('page')
-source=("git+https://github.com/I60R/page.git")
+source=("git+https://github.com/I60R/page.git#branch=main")
 md5sums=('SKIP')
 
 
