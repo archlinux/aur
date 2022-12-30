@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt-bin
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries
 	pkgver = 3.8.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt-bin.install
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = autenticacao-gov-pt-bin
 	depends = qt5-graphicaleffects
 	depends = pcsclite>=1.5.0
 	depends = openssl
+	depends = openssl-1.1
 	depends = ccid
 	depends = libzip
 	depends = poppler-qt5
