@@ -1,0 +1,4 @@
+src/
+pkg/
+yacy_search_server/
+*.pkg.tar.zst

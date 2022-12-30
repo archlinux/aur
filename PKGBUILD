@@ -5,7 +5,7 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 
 pkgname=yacy-git
-pkgver=1.92+r1349+g32e6a5f90
+pkgver=1.92.r1370.g95e02e529
 pkgrel=1
 pkgdesc="Peer to peer search engine"
 arch=('any')
@@ -22,7 +22,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd yacy_search_server
-  git describe --tags | sed 's/^Release_//;s#v##;s#-#+#g;s#+#+r#'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/^Release_//;s/v//;s/-/./g'
 }
 
 build() {
