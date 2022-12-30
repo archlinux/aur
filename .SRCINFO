@@ -1,6 +1,6 @@
 pkgbase = dwayland-git
 	pkgdesc = Qt-style Client and Server library wrapper for the Wayland libraries
-	pkgver = 5.24.3.deepin.1.4.r0.g3e2d16d
+	pkgver = 5.24.3.deepin.1.4.r1.gf339073
 	pkgrel = 1
 	arch = x86_64
 	license = LGPL
@@ -16,8 +16,7 @@ pkgbase = dwayland-git
 	provides = dwayland
 	conflicts = dwayland-reborn
 	conflicts = dwayland
-	options = debug
-	source = dwayland-git::git+https://github.com/justforlxz/dwayland
+	source = dwayland-git::git+https://github.com/linuxdeepin/dwayland.git
 	sha256sums = SKIP
 
 pkgname = dwayland-git
