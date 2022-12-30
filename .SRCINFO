@@ -1,0 +1,16 @@
+pkgbase = dhtest-git
+	pkgdesc = A DHCP client simulation on linux
+	pkgver = r68.988afec
+	pkgrel = 1
+	url = https://github.com/saravana815/dhtest
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = dhtest
+	conflicts = dhtest
+	source = dhtest::git+https://github.com/saravana815/dhtest.git
+	sha256sums = SKIP
+
+pkgname = dhtest-git
+
