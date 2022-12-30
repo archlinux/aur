@@ -2,7 +2,7 @@
 
 _pkgname=pa
 pkgname=${_pkgname}-age-git
-pkgver=r25.a78000e
+pkgver=r41.6cd0cdb
 pkgrel=1
 pkgdesc="a simple password manager. encryption via age, written in portable posix shell "
 arch=('any')
@@ -25,8 +25,8 @@ pkgver() {
 }
 
 package() {
-	cd "${srcdir}"/"${_pkgname}"
-	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${srcdir}"/"${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm755 "${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
   install -Dm644 README "${pkgdir}"/usr/share/doc/"${_pkgname}"/README.md
   cd contrib

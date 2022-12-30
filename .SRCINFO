@@ -1,6 +1,6 @@
 pkgbase = pa-age-git
 	pkgdesc = a simple password manager. encryption via age, written in portable posix shell
-	pkgver = r25.a78000e
+	pkgver = r41.6cd0cdb
 	pkgrel = 1
 	url = https://github.com/biox/pa
 	arch = any
