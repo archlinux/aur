@@ -1,7 +1,7 @@
 #Maintainer: John Gleezowood <psyrccio@gmail.com>
 #Contributor: John Gleezowood <psyrccio@gmail.com>
 pkgname=jwildfire
-pkgver=7.20
+pkgver=7.30
 pkgrel=1
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('java-environment' 'bash')
 provides=('jwildfire')
 conflicts=('jwildfire')
 
-source=("https://jwildfire.overwhale.com/downloads/j-wildfire-7.20.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
-sha256sums=('7ac5bee977c7ff8fd242abf8ae04fbe1064c97561c15cb1cca424002283ea566' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
+source=("https://jwildfire.overwhale.com/downloads/j-wildfire-7.30.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
+sha256sums=('e6d77ccf10b19adc00bc0d72e14c708bb1fd45d0c50d6d5880e5e0501fdbe5a1' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
 
 build() {
   cd "$srcdir"
