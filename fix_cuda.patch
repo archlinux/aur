@@ -1,0 +1,26 @@
+From 2f32601be926472f142bffbe820a28d05682219a Mon Sep 17 00:00:00 2001
+From: Bernhard Bermeitinger <bernhard.bermeitinger@unisg.ch>
+Date: Fri, 27 May 2022 10:52:13 +0200
+Subject: [PATCH] fix compilation on cuda
+
+Signed-off-by: Bernhard Bermeitinger <bernhard.bermeitinger@unisg.ch>
+---
+ .../crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl | 2 +-
+ configure.py                                                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.py b/configure.py
+index 0d65e88..24fd2d5 100644
+--- a/configure.py
++++ b/configure.py
+@@ -185,7 +185,7 @@ def configure_cuda():
+     write("build --config=cuda")
+     write("build:cuda --define=using_cuda=true --define=using_cuda_nvcc=true")
+     write(
+-        "build:cuda --crosstool_top=@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
++        "build:cuda --crosstool_top=@local_config_cuda//crosstool:toolchain"
+     )
+ 
+ 
+-- 
+2.36.1

@@ -1,12 +1,12 @@
 pkgbase = python-tensorflow-addons-cuda-git
 	pkgdesc = Useful extra functionality for TensorFlow 2.x, built with CUDA support
-	pkgver = r1399.334cd7ca
-	pkgrel = 2
+	pkgver = r1490.14af819a
+	pkgrel = 1
 	url = https://github.com/tensorflow/addons
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	makedepends = bazel3
+	makedepends = bazel4
 	makedepends = rsync
 	makedepends = python-pip
 	depends = tensorflow-cuda
@@ -16,7 +16,11 @@ pkgbase = python-tensorflow-addons-cuda-git
 	depends = cudnn
 	source = git+https://github.com/tensorflow/addons.git
 	source = bazel-cuda-build-fix.patch
+	source = fix_cuda.patch
+	source = use_cub_from_cuda.patch
 	sha256sums = SKIP
 	sha256sums = 987e4933a298616a2ede9f2a938e047df20287ab7f514f104703ac7af5e8ef9d
+	sha256sums = ade7b591f96339dffacccf838006a206ccb0eb3758ae571ac77aef94520f001f
+	sha256sums = de727ac26b8353de6ff7972ae084d3c5ca692cebc05aac1d73bca221cb0cd45a
 
 pkgname = python-tensorflow-addons-cuda-git
