@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=ryusak
-pkgver=1.6.0
+pkgver=1.6.1
 _electron=electron
 pkgrel=1
 pkgdesc="Allows you to download saves and shaders for Switch emulators."
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ecks1337/RyuSAK/archive
 "${pkgname}.sh"
 "${pkgname}.desktop"
 )
-sha256sums=('6f3aed53936af8236ba2a5afd2507776d5cb78c9651b95d52cc1fe75a7ec19fd'
+sha256sums=('654cc0663b531cf27d4132e3aeaeef595674e1b8528c3c1c7124425ddb7e1bab'
             'a77f6380eb5a6a24b332c4547fc3b6417259ce31481ed5ae3981731efc3fe86e'
             'c3606d69fe492931c2ee96cd98e289d3dc7300bcd5ed41f4488d3264ef317e20')
 
