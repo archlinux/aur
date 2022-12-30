@@ -4,7 +4,7 @@ pkgname=lizzie-improve
 _gitname=lizzieyzy-main
 _pkgname=lizzie
 pkgver=r14.7dbca8a
-pkgrel=2
+pkgrel=3
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
 url="https://github.com/yzyray/lizzieyzy"
@@ -44,7 +44,7 @@ package() {
         install -Dm644 config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
         install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
         install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
-        install -Dm644 "$_pkgname".png "$pkgdir"/usr/share/icons/hicolor/512x512/"$_pkgname".png
+        install -Dm644 "$_pkgname".png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/"$_pkgname".png
         for _file in sound/*.wav
         do
             install -Dm644 "${_file}" "$pkgdir"/usr/share/"$_pkgname"/sound/"$(basename ${_file})"
