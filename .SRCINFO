@@ -1,0 +1,15 @@
+pkgbase = nvim-lazy-git
+	pkgdesc = Modern, fast and version lockable plugin manager for Neovim with some profiling tools to optimize performance
+	pkgver = stable.r11.g716b6cc
+	pkgrel = 1
+	url = https://github.com/folke/lazy.nvim
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = neovim
+	provides = nvim-lazy
+	conflicts = nvim-lazy
+	source = nvim-lazy-git::git+https://github.com/folke/lazy.nvim#branch=main
+	sha512sums = SKIP
+
+pkgname = nvim-lazy-git
