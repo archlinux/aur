@@ -1,0 +1,13 @@
+pkgbase = python-velocyto
+	pkgdesc = Velocyto is a library for the analysis of RNA velocity.
+	pkgver = 0.17.17
+	pkgrel = 1
+	url = https://velocyto.org/velocyto.py
+	arch = x86_64
+	license = BSD-2-Clause license
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/velocyto-team/velocyto.py/archive/refs/tags/0.17.17.tar.gz
+	sha256sums = 2461eabf2ec6b152240c95f7ad8a0a5768a83c72822d9398beec2981732b890d
+
+pkgname = python-velocyto
