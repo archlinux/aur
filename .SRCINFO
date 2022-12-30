@@ -1,6 +1,6 @@
 pkgbase = openafs
 	pkgdesc = Open source implementation of the AFS distributed file system
-	pkgver = 1.8.9pre1
+	pkgver = 1.8.9
 	pkgrel = 1
 	url = http://www.openafs.org
 	install = openafs.install
@@ -18,12 +18,12 @@ pkgbase = openafs
 	backup = etc/openafs/ThisCell
 	backup = etc/openafs/cacheinfo
 	backup = etc/openafs/CellServDB
-	source = http://openafs.org/dl/openafs/candidate/1.8.9pre1/openafs-1.8.9pre1-src.tar.bz2
-	source = http://openafs.org/dl/openafs/candidate/1.8.9pre1/openafs-1.8.9pre1-doc.tar.bz2
+	source = http://openafs.org/dl/openafs/1.8.9/openafs-1.8.9-src.tar.bz2
+	source = http://openafs.org/dl/openafs/1.8.9/openafs-1.8.9-doc.tar.bz2
 	source = tmpfiles.d-openafs.conf
 	source = 0001-Adjust-RedHat-config-and-service-files.patch
-	sha256sums = 3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a
-	sha256sums = f6576fdbd4796adce3f7ab114c9e34c4cca717924ab02e5d8f2dc5bf0fa93f2e
+	sha256sums = d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06
+	sha256sums = ef91e854eab4aa74268525954a41c2a2ad0a2eaf530eaa22bb9e4bf453b15939
 	sha256sums = 18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68
 	sha256sums = c67d55cf9899610d3c43389861c61ebb88d196ba8503547911dfa821b54ccd29
 
