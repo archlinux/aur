@@ -1,12 +1,12 @@
 pkgbase = danectl-git
 	pkgdesc = DNSSEC DANE implementation manager
 	pkgver = r130.9b1585f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raforg/danectl
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = bash
+	depends = sh
 	depends = coreutils
 	depends = sed
 	depends = grep
