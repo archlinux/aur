@@ -9,7 +9,7 @@ pkgbase = chromium-bypass-paywalls
 	makedepends = zip
 	optdepends = chromium: open-source web browser from Google
 	optdepends = google-chrome: Google's freeware web browser
-	source = https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v1.8.1/bypass-paywalls-chrome.crx
+	source = chromium-bypass-paywalls-1.8.1.crx::https://github.com/iamadamdev/bypass-paywalls-chrome/releases/download/v1.8.1/bypass-paywalls-chrome.crx
 	sha512sums = aea12345c1781cc056c000f5b1c55fbed14bf46fa21bc939d6f4c61c484635e81dcdad25b8269e6c38d70266eeb0f5fb2dda5279201c4144bdf3751dc5ed1d03
 
 pkgname = chromium-bypass-paywalls

@@ -12,11 +12,13 @@ makedepends=('zip')
 optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install="${pkgname}.install"
-source=("${url}/releases/download/v${pkgver}/bypass-paywalls-chrome.crx")
+source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/bypass-paywalls-chrome.crx")
 sha512sums=('aea12345c1781cc056c000f5b1c55fbed14bf46fa21bc939d6f4c61c484635e81dcdad25b8269e6c38d70266eeb0f5fb2dda5279201c4144bdf3751dc5ed1d03')
 
 package() {
-   mkdir -p "${pkgdir}/usr/share/${pkgname}"
-   rm "${srcdir}"/bypass-paywalls-chrome.crx
-   cp -dr --no-preserve=ownership "${srcdir}"/* "${pkgdir}/usr/share/${pkgname}/"
+    # remove extra symlink created by makepkg
+    rm "${srcdir}/${pkgname}-${pkgver}.crx"
+
+    mkdir -p "${pkgdir}/usr/share"
+    cp -r --no-preserve=ownership "${srcdir}" "${pkgdir}/usr/share/${pkgname}"
 }
