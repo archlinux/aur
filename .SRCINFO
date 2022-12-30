@@ -9,6 +9,7 @@ pkgbase = lpm-git
 	makedepends = git
 	depends = lite-xl
 	depends = lua
+	depends = zlib
 	depends = libzip
 	depends = libgit2
 	depends = mbedtls
