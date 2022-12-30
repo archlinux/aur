@@ -8,27 +8,29 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.5.0.r0.ga11651939
+pkgver=1.6.0.r0.g9951c73a7
 pkgrel=1
-pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
+pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL)
-source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.5.x"
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.18.tar.gz'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-0.9.2.tar.bz2'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.1.tar.gz'
+source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.6.x"
+        "https://raw.githubusercontent.com/archlinux/svntogit-community/d65d0ed4c75198d5ace79e424d4e81bb7a694426/trunk/fix-build-with-Werror-format-security.patch"
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.24.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.0.0.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz'
         #'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/ffmpeg-4.4.1.tar.bz2'
-        'https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.bz2'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.0.tar.bz2'
+        'https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.4.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdnav-6.1.1.tar.bz2'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.1.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.3.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libvpx-1.7.0.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/mfx_dispatch-1.35.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/nv-codec-headers-11.0.10.1.tar.gz'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/oneVPL-2021.6.0.tar.gz'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265_3.5.tar.gz'
-        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.3.tar.gz')
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/oneVPL-2023.1.0.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.4.1.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265-snapshot-20221130-12747.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.4.tar.gz')
 _commondeps=(libxml2 libass libvorbis opus speex libtheora lame
              libx264.so jansson libvpx libva numactl)
 _guideps=(gst-plugins-base gtk3 librsvg libgudev)
@@ -39,34 +41,37 @@ optdepends=('libdvdcss: for decoding encrypted DVDs'
             'intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc')
 sha256sums=('SKIP'
-            '4f21ee07c8bb9b73ff48dbce7cb0917cdcd4d81d33333da391d97ce7f00642fe'
-            '0d198c4fe63fe7f0395b1b17de75b21c8c4508cd3204996229355759efa30ef8'
-            'a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6'
-            '8fc9f20ac5ed95115a9e285647add0eedd5cc1a98a039ada14c132452f98ac42'
-            'e2dbaf99e84e0a9725f4985bcb85d41e52c2261cc651d8884b1b790b5ef016f9'
+            '9e46ab5c9539bd0910780f38131097c4e3871acde70c89a92abfc8edc9ec2c21'
+            '07d325da97a5a3cb58d83c54b2ce1148dc84dc9bb3971b0c30ff4cc16e159194'
+            '4a4eb6cecbc8c26916ef58886d478243de8bcc46710b369c04d6891b0155ac0f'
+            '7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90'
+            '39a0bcc8d98549f16c570624678246a6ac736c066cebdb409f9502e915b22f2b'
+            '478ffd68a0f5dde8ef6ca989b7f035b5a0a22c599142e5cd3ff7b03bbebe5f2b'
             'c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48'
-            '3e357309a17c5be3731385b9eabda6b7e3fa010f46022a06f104553bf8e21796'
+            'ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369'
             '1fec931eb5c94279ad219a5b6e0202358e94a93a90cfb1603578c326abfc1238'
             '0790ff82158837124150ab4034db37433a92caac0f145f249d2f194d8ccba3ca'
             '97e37b85922f1167b2f0bf0bb804c3d7266cc679e78814fe820cf8912a0e1291'
-            'c83590c4b0d12c4a48f4cbf4b6e8d595bf1f6f96bb262d21457793d19f7b2b6a'
-            'e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8'
-            '5e002992bfe8b9d2867fdc9266dc84faca46f0bfd931acc2ae0124972b6170a7')
-
+            '0a1991278c64849f471e4b307a7c01f465a308674f359054886c32352e887b60'
+            'e3f7fc194afc6c90b43e0b80fa24c09940cb03bea394e0e1f5d1ded18e9ab23f'
+            '1a2418fd757a3d92928acacef2ae8ddb71f7aecc8803890eacb55f6e3a62bba5'
+            '219d1bc6b7fde1355d72c9b406ebd730a4aed9c21da779660f0a4c851243e32f')
+options=(!lto)
 noextract=(
-    'AMF-1.4.18.tar.gz'
-    'dav1d-0.9.2.tar.bz2'
-    'fdk-aac-2.0.1.tar.gz'
-    'ffmpeg-4.4.1.tar.bz2'
-    'libbluray-1.3.0.tar.bz2'
+    'AMF-1.4.24.tar.gz'
+    'dav1d-1.0.0.tar.bz2'
+    'fdk-aac-2.0.2.tar.gz'
+    'ffmpeg-5.1.2.tar.bz2'
+    'libbluray-1.3.4.tar.bz2'
     'libdvdnav-6.1.1.tar.bz2'
-    'libdvdread-6.1.1.tar.bz2'
+    'libdvdread-6.1.3.tar.bz2'
     'libvpx-1.7.0.tar.gz'
     'mfx_dispatch-1.35.tar.gz'
     'nv-codec-headers-11.0.10.1.tar.gz'
-    'oneVPL-2021.6.0.tar.gz'
-    'x265_3.5.tar.gz'
-    'zimg-3.0.3.tar.gz'
+    'oneVPL-2023.1.0.tar.gz'
+    'SVT-AV1-v1.4.1.tar.gz'
+    'x265-snapshot-20221130-12747.tar.gz'
+    'zimg-3.0.4.tar.gz'
     )
 
 pkgver() {
@@ -81,6 +86,8 @@ prepare() {
   for _tarball in ${noextract[@]}; do
     cp ../${_tarball} download/
   done
+
+  patch -Np1 -i ../fix-build-with-Werror-format-security.patch
 }
 
  build() {
