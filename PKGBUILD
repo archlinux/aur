@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='gnunet-fuse'
-pkgver='0.16.0'
+pkgver='0.19.1'
 pkgrel=1
 pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('i686' 'x86_64')
@@ -215,15 +215,11 @@ _get_mirror() {
 	return 1
 }
 
-source=("$(_get_mirror _pkg_mirrors)"
-        'pthread_mutexattr_settype.patch')
-
-sha256sums=('2cbeb79cc2aa9939d5faaaf52c21da125029cb6646c1db0d3b9e9feea7f23fa6'
-            'd0a8e422f7228f685064d06cb54f38bbf307372f76f3623d1bd23ae119bfd3e8')
+source=("$(_get_mirror _pkg_mirrors)")
+sha256sums=('8f1f6f4d76c108ae74c0ec849bc9c02dc8dea412e205c56236c86cb792ccc9b4')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 < "${srcdir}/pthread_mutexattr_settype.patch"
 	./configure --prefix=/usr
 }
 
