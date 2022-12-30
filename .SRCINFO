@@ -1,14 +1,14 @@
 pkgbase = lemmy-help
 	pkgdesc = Emmylua parser and transformer
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/numToStr/lemmy-help
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = lemmy-help-v0.10.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/numToStr/lemmy-help/releases/download/v0.10.0/lemmy-help-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = lemmy-help-v0.11.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/numToStr/lemmy-help/releases/download/v0.11.0/lemmy-help-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = lemmy-help-v0.10.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/numToStr/lemmy-help/releases/download/v0.10.0/lemmy-help-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = lemmy-help-v0.11.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/numToStr/lemmy-help/releases/download/v0.11.0/lemmy-help-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = lemmy-help
