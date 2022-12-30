@@ -1,0 +1,17 @@
+pkgbase = autotype
+	pkgdesc = Unicode-friendly tool for faking key presses to type strings on X11
+	pkgver = 1.0.0.r6.f5b6527
+	pkgrel = 1
+	url = https://github.com/gemdude46/autotype
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-xlib
+	source = autotype-1.0.0::git+https://github.com/gemdude46/autotype#commit=f5b6527
+	sha256sums = SKIP
+
+pkgname = autotype
