@@ -1,6 +1,6 @@
 pkgbase = salvador
 	pkgdesc = A bash script that will help you maintain your AUR packages
-	pkgver = 2.1.5
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://gitlab.com/dpeukert/salvador
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = salvador
 	optdepends = curl: nvchecker functionality
 	optdepends = jq: nvchecker functionality
 	optdepends = nvchecker: nvchecker functionality
-	source = salvador-2.1.5-1.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/2.1.5/salvador-2.1.5.tar.gz
-	sha512sums = e78054277f0582a4db57b7ed12a0fc52418bd7e4e89edd7c50a43c0b6277824de20b88cc9e3d76658d3f1106d743a66bf55b807d22a4cf03c6feefcd75cc1630
+	source = salvador-2.2.0-1.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/2.2.0/salvador-2.2.0.tar.gz
+	sha512sums = 82589c8829be8693a02c3a862006efe653bbf933991cf53c7963b18b434ddf0405c3c5e8fce072dabb8c07433d9f69826f1a611bb77905c05e43006fcc7f0428
 
 pkgname = salvador
