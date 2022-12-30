@@ -9,7 +9,7 @@ url="https://github.com/veusz/veusz"
 arch=('x86_64')
 license=('GPL2')
 depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme' 'cblas')
-makedepends=('git' 'sip>=6.7.5')
+makedepends=('git' 'sip>=6.7.5' 'python-tomli')
 optdepends=('ghostscript: for EPS/PS output'
             'python-dbus: for dbus interface'
             'python-iminuit: improved fitting'
