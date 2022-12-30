@@ -21,8 +21,10 @@ depends=(
 )
 
 makedepends=(
+    'appstream-glib'
     'intltool'
     'librsvg'
+    'meson'
     'xdg-utils'
 )
 provides=(
