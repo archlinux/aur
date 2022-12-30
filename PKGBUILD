@@ -2,8 +2,8 @@
 
 pkgname=kaf-cli
 pkgver=v1.2.10
-pkgrel=1
-epoch=2
+pkgrel=2
+epoch=
 pkgdesc="把txt文本转成epub与mobi电子书的命令行工具"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ystyle/kaf-cli"
