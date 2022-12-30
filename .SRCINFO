@@ -1,5 +1,5 @@
-pkgbase = linuxqq-new
-	pkgdesc = New Linux QQ based on Electron
+pkgbase = linuxqq-new-firejail
+	pkgdesc = New Linux QQ based on Electron, running in Firejail (security sandbox)
 	pkgver = 3.0.0_571
 	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
@@ -17,4 +17,4 @@ pkgbase = linuxqq-new
 	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_arm64.deb
 	sha512sums_aarch64 = bab4ed630e8db0c4ff07ed13e93323031aa45cd7098543da9b03d343ba733562fe2d3e1431ba5f00cfeb47561daa793c43846782e2bc87706244ce3e3790050d
 
-pkgname = linuxqq-new
+pkgname = linuxqq-new-firejail

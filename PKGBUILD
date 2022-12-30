@@ -1,11 +1,13 @@
+# Maintainer: Yanli <beautyyuyanli at gmail dot com>
 # Maintainer: Purofle <purofle@gmail.com>
 # Contributor: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 # Contributor: Integral <luckys68@126.com>
-pkgname=linuxqq-new
+# https://github.com/BeautyYuYanli/linuxqq-new-firejail
+pkgname=linuxqq-new-firejail
 _pkgname=tencent-qq
 pkgver=3.0.0_571
 pkgrel=1
-pkgdesc='New Linux QQ based on Electron'
+pkgdesc='New Linux QQ based on Electron, running in Firejail (security sandbox)'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
@@ -27,7 +29,7 @@ package() {
 	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Launcher Fix
-	sed -i '3s!/opt/QQ/qq!/usr/bin/tencent-qq!' "${pkgdir}/usr/share/applications/qq.desktop"
+	sed -i '3s!/opt/QQ/qq!firejail --private=~/.linuxqq --noprofile /usr/bin/tencent-qq!' "${pkgdir}/usr/share/applications/qq.desktop"
 
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
