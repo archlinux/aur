@@ -5,12 +5,12 @@ _pkgver_major=3
 _pkgver_minor=4
 _pkgver_build=8033
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced, feature-rich freeware audio player (uses Wine)"
 arch=(i686 x86_64)
 url=https://getmusicbee.com
 license=(custom)
-depends=(wine winetricks lib32-libpulse)
+depends=(wine winetricks lib32-libpulse wine-mono)
 makedepends=(p7zip)
 source=("https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/multimedia/MusicBeePortable_3_4_Update2.zip"
         "${pkgname}.desktop"

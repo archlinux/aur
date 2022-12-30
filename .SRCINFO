@@ -1,7 +1,7 @@
 pkgbase = musicbee
 	pkgdesc = Advanced, feature-rich freeware audio player (uses Wine)
 	pkgver = 3.4.8033
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getmusicbee.com
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = musicbee
 	depends = wine
 	depends = winetricks
 	depends = lib32-libpulse
+	depends = wine-mono
 	source = https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/multimedia/MusicBeePortable_3_4_Update2.zip
 	source = musicbee.desktop
 	source = musicbee.sh
