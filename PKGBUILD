@@ -1,7 +1,7 @@
 # Maintainer: 160R@protonmail.com
 _pkgname=page
 pkgname=${_pkgname}-git
-pkgrel=1
+pkgrel=2
 pkgver=v4.6.3
 pkgdesc='Pager powered by neovim and inspired by neovim-remote'
 arch=('i686' 'x86_64')
