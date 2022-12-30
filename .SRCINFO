@@ -1,5 +1,5 @@
 pkgbase = nautilus-share-gtk4
-	pkgdesc = Nautilus extension to share folder using Samba (from debian for gtk4 support)
+	pkgdesc = Nautilus extension to share folder using Samba, which supports libnautilus-extension-4 in GTK4
 	pkgver = 0.7.5
 	pkgrel = 2
 	url = https://gitlab.gnome.org/coreyberla/nautilus-share
