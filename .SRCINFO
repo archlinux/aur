@@ -1,7 +1,7 @@
 pkgbase = admc-git
 	pkgdesc = Active Directory Management Center, replacement of RSAT
 	pkgver = r3560.5cc7bbb0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/altlinux/admc
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = admc-git
 	depends = libldap
 	depends = krb5
 	depends = util-linux
+	optdepends = gpui: group policies support
 	provides = admc
 	conflicts = admc
 	source = git+https://github.com/altlinux/admc.git

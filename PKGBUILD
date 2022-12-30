@@ -10,6 +10,7 @@ url="https://github.com/altlinux/admc"
 license=('GPL3')
 depends=('samba' 'qt5-base'  'libldap' 'krb5' 'util-linux')
 makedepends=('git' 'cmake' 'qt5-tools')
+optdepends=('gpui: group policies support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/altlinux/${_pkgname}.git")
