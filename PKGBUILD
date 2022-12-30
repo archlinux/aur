@@ -4,7 +4,7 @@
 # Contributor: neilotoole <neilotoole@apache.org>
 
 pkgname='sq-bin'
-pkgver=0.20.0
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='sq: swiss-army knife for data'
 url='https://sq.io'
@@ -13,11 +13,11 @@ license=('MIT')
 provides=('sq')
 conflicts=('sq')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.20.0/sq-0.20.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('0769b928a202cf0c7174b6e0fb4f086375600bba333e8bbc2ec45a8b8d43464d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.21.2/sq-0.21.2-linux-arm64.tar.gz")
+sha256sums_aarch64=('f98f90e84a8e5cf68ddffc8783da7349e977266d4ab179dffe9091cf0d56304b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.20.0/sq-0.20.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('38263083d09dc5c0f5dd1d3cf24daac90fa7b013c865be7c9192fe7eca439486')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/neilotoole/sq/releases/download/v0.21.2/sq-0.21.2-linux-amd64.tar.gz")
+sha256sums_x86_64=('81757a16afe3cdd962224624bd4699e86bf4779eaed82ecb6f0dddab416071f5')
 
 package() {
   # bin
