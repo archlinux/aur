@@ -1,0 +1,36 @@
+pkgbase = musescore3
+	pkgdesc = Create, play and print beautiful sheet music -- Version 3; End-of-life
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = https://musescore.org/
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	makedepends = lame
+	makedepends = texlive-core
+	depends = alsa-lib
+	depends = freetype2
+	depends = libpulse
+	depends = libsndfile
+	depends = libvorbisfile.so
+	depends = libportaudio.so
+	depends = libportmidi.so
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	depends = zlib
+	optdepends = lame: MP3 export
+	provides = musescore
+	conflicts = musescore
+	source = git+https://github.com/musescore/MuseScore.git#tag=3224f342d12f4af8ea782e929c49f5ce85f97da6
+	sha256sums = SKIP
+
+pkgname = musescore3
