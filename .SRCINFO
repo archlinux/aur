@@ -1,7 +1,7 @@
 pkgbase = lizzie-improve
 	pkgdesc = Analysis interface for KataGo/Leela Zero, more features added by yzy
 	pkgver = r14.7dbca8a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yzyray/lizzieyzy
 	arch = x86_64
 	license = GPLv3
