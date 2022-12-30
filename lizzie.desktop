@@ -6,4 +6,5 @@ Exec=/usr/bin/lizzie %U
 Terminal=false
 Type=Application
 Categories=Game;
+Icon=lizzie
 MimeTime=application/x-go-sgf;
