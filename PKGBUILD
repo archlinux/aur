@@ -2,12 +2,12 @@
 
 pkgname='organicmaps-git'
 pkgver='2022.11.24_3'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data'
 arch=("x86_64" "ARM") #ARM untested, but the binary includes compatibility
 depends=("cmake>=3.22.1" "qt5-base" "clang" "ninja" "python3")
 optdepends=("ccache")
-makedepends=("git" "git-lfs" "gendesk" "libxml2")
+makedepends=("git" "git-lfs" "gendesk" "libxml2" "jq")
 license=("Apache")
 url="https://github.com/organicmaps/organicmaps"
 conflicts=("${pkgname%-git}-bin")
