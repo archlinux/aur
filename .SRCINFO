@@ -1,6 +1,6 @@
 pkgbase = ncspot-cover
 	pkgdesc = Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes. Built with the `cover` feature.
-	pkgver = 0.11.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/hrkfdn/ncspot
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ncspot-cover
 	conflicts = ncspot
 	conflicts = ncspot-bin
 	conflicts = ncspot-git
-	source = ncspot-v0.11.2.tar.gz::https://github.com/hrkfdn/ncspot/archive/v0.11.2.tar.gz
-	sha512sums = e673a27067b09133975a7b8ae97fea25075ab4a5ff759fa5199100c08c5883625b5bea2a7b90983e68f9fca0b92b44964a795724c5f9327839e3d758754b949f
+	source = ncspot-v0.12.0.tar.gz::https://github.com/hrkfdn/ncspot/archive/v0.12.0.tar.gz
+	sha512sums = 6dcdba0d57d055ad920afb14358fe20a5565047803c5c3c221c9e9d473932713b63d6dd33f97f0e37937922cadb68e1593c490da43c1e9e4860cc5ab053e5f7e
 
 pkgname = ncspot-cover
