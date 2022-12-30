@@ -2,13 +2,14 @@
 
 pkgname=danectl-git
 pkgver=r130.9b1585f
-pkgrel=2
+pkgrel=3
 pkgdesc="DNSSEC DANE implementation manager"
 arch=('any')
 url="https://github.com/raforg/danectl"
 license=('GPL2')
-depends=('sh' 'coreutils' 'sed' 'grep' 'ldns' 'certbot' 'openssl' 'perl' 'openssh' 'gnupg')
+depends=('coreutils' 'sed' 'grep' 'ldns' 'certbot' 'openssl' 'perl' 'openssh' 'gnupg')
 makedepends=('git')
+optdepends=('bash' 'zsh')
 provides=('danectl')
 source=("git+https://github.com/HLFH/danectl.git")
 b2sums=('SKIP')
