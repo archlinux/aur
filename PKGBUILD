@@ -1,29 +1,27 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-x256
-pkgver=r20.d4bc9f7
+_name=${pkgname#python-}
+pkgver=0.0.3
 pkgrel=1
-pkgdesc="Find the nearest xterm 256 color index for an RGB"
+pkgdesc="Find the nearest xterm 256 color index for an RGB."
 arch=('any')
 url="https://github.com/magarcia/python-x256"
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/magarcia/$pkgname")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "https://github.com/magarcia/python-x256/raw/main/LICENSE")
+sha256sums=('f855dbccd91e53f5890283d8203855743827e7eed595d5cf19544ba3d212e001'
+            'd4024ec3d57d5c02bb53e89ddeb92b72e8c26b5593acd0573b8993d224c39dba')
 
 build() {
-  cd "$pkgname"
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
