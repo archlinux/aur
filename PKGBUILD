@@ -1,9 +1,9 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=zapzap-git
 _pkgname=com.rtosta.zapzap
-pkgver=v4.4.1.r1.ga0c9f57
-pkgrel=2
+pkgver=4.4.3.r2.gd36af54
+pkgrel=1
 pkgdesc="WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine"
 arch=('x86_64')
 url="https://github.com/rafatosta/${pkgname%-git}" 
@@ -20,7 +20,7 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
