@@ -1,0 +1,21 @@
+pkgbase = admc-git
+	pkgdesc = Altlinux group policy explorer
+	pkgver = r3560.5cc7bbb0
+	pkgrel = 1
+	url = https://github.com/altlinux/admc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = samba
+	depends = qt5-base
+	depends = libldap
+	depends = krb5
+	depends = util-linux
+	provides = admc
+	conflicts = admc
+	source = git+https://github.com/altlinux/admc.git
+	md5sums = SKIP
+
+pkgname = admc-git
