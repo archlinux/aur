@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.8.9pre1
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,10 +16,8 @@ makedepends=('libelf' 'linux-headers')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 install=openafs-modules.install
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
-        0001-Linux-6.0-Replace-add_to_page_cache.patch)
-sha256sums=('3b9d5f646b1efd24ae18ba6be45490bb01b4547725621fb335379f5754c6cb7a'
-            'af9db57b1d65cfb7d7c58aa15df764e4bceaaa99d2c829f2c2ee317567347131')
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2)
+sha256sums=('d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -34,11 +32,8 @@ _extramodules="/usr/lib/modules/${_kernelver}/extramodules"
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
-  # Changes to support Linux 6.0
-  patch -p1 < "${srcdir}"/0001-Linux-6.0-Replace-add_to_page_cache.patch
-
   # Only needed when changes to configure were made
-  ./regen.sh -q
+  #./regen.sh -q
 }
 
 build() {
