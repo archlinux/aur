@@ -6,13 +6,14 @@
 pkgname=linuxqq-new-firejail
 _pkgname=tencent-qq
 pkgver=3.0.0_571
-pkgrel=1
+pkgrel=2
 pkgdesc='New Linux QQ based on Electron, running in Firejail (security sandbox)'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
-depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
+depends=('firejail' 'nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+conflicts=('linuxqq-new')
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_${pkgver//_/-}_amd64.deb")
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_${pkgver//_/-}_arm64.deb")
 sha512sums_x86_64=('933a54d7a68da74854a2f3c5e6763366b1059295a477c74385333c30254ad3cd3d5be609f2c81b3b3c0af3816c542a63c6ee4110afb5858b04345fa41f852e5e')
