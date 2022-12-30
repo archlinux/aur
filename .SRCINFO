@@ -1,7 +1,7 @@
 pkgbase = gama
 	pkgdesc = GNU Gama package is dedicated to the adjustment of surveying networks.
 	pkgver = 2.23
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.gnu.org/software/gama/
 	arch = i686
 	arch = x86_64
