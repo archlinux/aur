@@ -1,14 +1,14 @@
 pkgbase = mosca
 	pkgdesc = Manual search tool to find bugs like a grep unix command
-	pkgver = 0.96
-	pkgrel = 2
+	pkgver = 0.98
+	pkgrel = 1
 	url = https://github.com/CoolerVoid/Mosca/
 	arch = any
 	license = GPL3
 	depends = pcre
 	provides = mosca
 	conflicts = mosca-git
-	source = mosca-0.96.tar.gz::https://github.com/CoolerVoid/Mosca/archive/refs/tags/Mosca_v096.tar.gz
-	sha256sums = f8df5d33bb08e711826dfa16bd3405da0422dc5dade47d27ed5c1e21019522c7
+	source = mosca-0.98.tar.gz::https://github.com/CoolerVoid/Mosca/archive/refs/tags/mosca_v098.tar.gz
+	sha256sums = 19b73cdbe2c98b6635396933f5763113e4a6935347896ac404170ef66b96125a
 
 pkgname = mosca
