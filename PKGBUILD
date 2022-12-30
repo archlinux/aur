@@ -2,7 +2,7 @@
 # Contributor: nate-sys <?>
 _pkgname="muc"
 pkgname="${_pkgname}-git"
-pkgver=r48.cd06b6f
+pkgver=r54.b15b06b
 pkgrel=1
 pkgdesc="Visualize your most used commands"
 arch=('any')
