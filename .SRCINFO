@@ -1,7 +1,7 @@
 pkgbase = artery-isp-console-bin
 	pkgdesc = Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。
 	pkgver = 3.0.04
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.arterytek.com/cn/product/AT32F403.jsp
 	install = artery-isp-console-bin.install
 	arch = x86_64
