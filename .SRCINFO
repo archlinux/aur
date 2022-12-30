@@ -1,12 +1,13 @@
 pkgbase = python-schwifty
 	pkgdesc = Validate/generate IBANS and BICS
 	pkgver = 2022.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/mdomke/schwifty
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python>=3.7
