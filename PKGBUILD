@@ -3,7 +3,7 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq-new
 _pkgname=tencent-qq
-pkgver=2.0.3_543
+pkgver=3.0.0_565
 pkgrel=1
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,10 @@ url="https://im.qq.com/linuxqq/"
 license=('custom')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/50eed662/QQ-v${pkgver//_/-}_x64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/50eed662/QQ-v${pkgver//_/-}_arm64.deb")
-sha512sums_x86_64=('0733ac3a85f4b14e2d1163439e0fe0bf41993339fb40ae32ba65c0c754f5c24b0709d9bdbbdfb97cfbef9ef210a96a66e27617be07d44c623880b0a4fce8e7eb')
-sha512sums_aarch64=('7d949fc87b6f360a206e3da5277cd91f5c61c0df89158bfcaaeac8fc84af4c7c5da165d48d1537c3bc88ea8b27ccd722fa5e67de71ad76115ad09c6928bf82cf')
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_${pkgver//_/-}_arm64.deb")
+sha512sums_x86_64=('f100636ac9e2dfe144e3fe908277b5290d4e0963eadd66bece56caaf27f483ac1abcf488bfbbc56e06490998fb635711918ae34de1334ae7d557741c5a20e797')
+sha512sums_aarch64=('bddf7fa38d70b8fce9d0827b748655d096176d8f0036ca37733f5ac6a09f02630f0c5c90b8096b8f796d057135eebc2664eea9e61a41d88d738b8199b26dab8f')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
@@ -28,11 +28,6 @@ package() {
 
 	# Launcher Fix
 	sed -i '3s!/opt/QQ/qq!/usr/bin/tencent-qq!' "${pkgdir}/usr/share/applications/qq.desktop"
-
-	# Icon
-	install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/qq.png" -t "${pkgdir}/usr/share/icons/hicolor/512x512/apps/"
-	rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0"
-	sed -i '6s!/opt/QQ/resources/app/512x512.png!qq!' "${pkgdir}/usr/share/applications/qq.desktop"
 
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
