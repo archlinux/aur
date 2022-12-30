@@ -1,3 +1,8 @@
+2022-12-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 0.13.r5625.91ebf8fb-1 :
+	  upstream moved to python3
+	  dropped epydoc (python2) from makedepends
+
 2020-08-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 0.13.r5484.4321df3d-1 :
 	  sources moved to https://invent.kde.org/sdk/pology.git
@@ -22,7 +27,7 @@
 
 2014-04-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 1384505-1 :
-	  python2-pygments added to makedepends 
+	  python2-pygments added to makedepends
 
 2013-04-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 1338643-1 :
