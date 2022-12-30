@@ -1,29 +1,38 @@
-# Maintainer: Uroš Vampl <mobile.leecher at gmail dot com>
+# Contributor: graysky <therealgraysky AT proton DOT me>
+# Contributor: Uroš Vampl <mobile.leecher at gmail dot com>
 
 pkgname=tigervnc-git
-pkgver=r3764.3a37af39
+pkgver=r4641.eff7fdd8
 pkgrel=1
-_xorgver=1.20.0
+_xorgver=1.20.9
 pkgdesc="Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.tigervnc.org"
 license=('GPL')
 depends=('fltk' 'pam' 'gnutls' 'libjpeg-turbo' 'libxtst' 'pixman'
 	 'xorg-xauth' 'xorg-xsetroot' 'xkeyboard-config' 'xorg-xkbcomp'
-	 'libgl' 'libgcrypt' 'perl' 'libxdamage' 'libxfont2')
-makedepends=('cmake' 'nasm' 'xorg-font-util' 'xorg-util-macros' 'xorgproto'
-	     'xtrans' 'mesa' 'git')
+	 'libgl' 'libgcrypt' 'perl' 'libxdamage' 'libxfont2' 'libdrm'
+	 'xorg-xinit')
+makedepends=('cmake' 'nasm' 'xorg-font-util' 'xorg-util-macros' 'git'
+	     'xtrans' 'xorgproto'
+	     'mesa' 'imagemagick' 'java-environment=8')
 optdepends=('mesa: for OpenGL functionality in Xvnc')
 conflicts=('tigervnc' 'tightvnc')
 provides=('tigervnc')
+backup=(etc/pam.d/tigervnc
+  etc/tigervnc/vncserver-config-defaults
+  etc/tigervnc/vncserver-config-mandatory
+  etc/tigervnc/vncserver.users)
 source=(git+https://github.com/TigerVNC/tigervnc.git
-	ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${_xorgver}.tar.bz2
-	vncserver.service
-	vncviewer.desktop)
+  https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${_xorgver}.tar.bz2
+  Xsession
+  more-xsessions.patch
+  remove-selinux.patch)
 sha256sums=('SKIP'
-            '9d967d185f05709274ee0c4f861a4672463986e550ca05725ce27974f550d3e6'
-            '80f8fc7598d05e645ae73bc3371bbdededf07136a9f024ce6ebbfe469335b16e'
-            '2ada7da1a926d78f11d2dd8ec376ac5877d2ce2bbb57a99526c13d8fcae6ddd7')
+            'e219f2e0dfe455467939149d7cd2ee53b79b512cc1d2094ae4f5c9ed9ccd3571'
+            'c9276f6ea277cf9654fb2cc3bc9dadbb2e596b5cf8ca867ee906c0080cf7f810'
+            'cb57dece026b29d7019a3e1e42fd2fb201d37fc60a70c885d2a50acffb808c06'
+            'fb8bb5bd3ec990720580a664326a70fd178ce94b97c2130462df9b1e3a3925c3')
 
 pkgver() {
   cd tigervnc
@@ -32,6 +41,9 @@ pkgver() {
 
 prepare() {
   cd tigervnc
+  patch -p1 -i "$srcdir"/more-xsessions.patch
+  patch -p1 -i "$srcdir"/remove-selinux.patch
+
   cd unix/xserver
   cp -r "$srcdir"/xorg-server-${_xorgver}/* .
   patch -Np1 -i ../xserver120.patch
@@ -42,12 +54,14 @@ build() {
 
   cmake -G "Unix Makefiles" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-
+    -DCMAKE_INSTALL_SBINDIR=/usr/bin \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/bin \
+    -DBUILD_JAVA=TRUE
   make
 
   cd unix/xserver
   autoreconf -fiv
-  ./configure --prefix=/usr \
+  CFLAGS="$CFLAGS -I/usr/include/libdrm" ./configure --prefix=/usr \
 	--disable-static --without-dtrace \
 	--disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
 	--disable-xwin --disable-xephyr --disable-kdrive --disable-xwayland \
@@ -60,10 +74,10 @@ build() {
 package() {
   cd tigervnc
   make DESTDIR="$pkgdir" install
+  install -Dm0644 java/VncViewer.jar "${pkgdir}"/usr/share/vnc/classes/VncViewer.jar
   cd unix/xserver/hw/vnc
   make DESTDIR="$pkgdir" install
-  install -Dm0644 "$srcdir"/tigervnc/contrib/systemd/user/vncserver@.service \
-    "$pkgdir"/usr/lib/systemd/user/vncserver@.service
-  install -Dm0644 "$srcdir"/vncserver.service "$pkgdir"/usr/lib/systemd/system/vncserver.service
-  install -Dm0644 "$srcdir"/vncviewer.desktop "$pkgdir"/usr/share/applications/vncviewer.desktop
+  install -Dm0755 "$srcdir"/Xsession "$pkgdir"/etc/X11/tigervnc/Xsession
+#  install -Dm0644 "$srcdir"/${pkgname}-${pkgver}/unix/vncserver/vncserver@.service \
+#    "$pkgdir"/usr/lib/systemd/user/vncserver@.service
 }

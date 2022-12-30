@@ -1,0 +1,24 @@
+diff -wbBur tigervnc-1.11.0/unix/vncserver/tigervnc.pam tigervnc-1.11.0.my/unix/vncserver/tigervnc.pam
+--- tigervnc-1.11.0/unix/vncserver/tigervnc.pam	2020-09-08 15:16:08.000000000 +0300
++++ tigervnc-1.11.0.my/unix/vncserver/tigervnc.pam	2020-09-11 18:42:35.160649140 +0300
+@@ -1,8 +1,5 @@
+ #%PAM-1.0
+-# pam_selinux.so close should be the first session rule
+--session   required     pam_selinux.so close
+ session    required     pam_loginuid.so
+--session   required     pam_selinux.so open
+ session    required     pam_namespace.so
+ session    optional     pam_keyinit.so force revoke
+ session    required     pam_limits.so
+diff -wbBur tigervnc-1.11.0/unix/vncserver/vncserver@.service.in tigervnc-1.11.0.my/unix/vncserver/vncserver@.service.in
+--- tigervnc-1.11.0/unix/vncserver/vncserver@.service.in	2020-09-08 15:16:08.000000000 +0300
++++ tigervnc-1.11.0.my/unix/vncserver/vncserver@.service.in	2020-09-11 18:42:45.223982346 +0300
+@@ -36,8 +36,7 @@
+ [Service]
+ Type=forking
+ ExecStart=@CMAKE_INSTALL_FULL_LIBEXECDIR@/vncsession-start %i
+ PIDFile=/run/vncsession-%i.pid
+-SELinuxContext=system_u:system_r:vnc_session_t:s0
+ 
+ [Install]
+ WantedBy=multi-user.target
