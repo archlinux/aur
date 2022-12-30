@@ -1,5 +1,5 @@
-/*
-!/.gitignore
-!/PKGBUILD
-!/.SRCINFO
-!/xdman.bin
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!xdman.sh

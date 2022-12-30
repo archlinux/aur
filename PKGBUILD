@@ -1,38 +1,32 @@
-# Maintainer: Chang Feng<chang_196700@hotmail.com>
-# Contributor: Ivan Fonseca <ivanfon@riseup.net>
-# Contributor: boosterdev@linuxmail.org
+# Maintainer: éclairevoyant
+# Contributor: Chang Feng <chang_196700 at hotmail dot com>
+# Contributor: Ivan Fonseca <ivanfon at riseup dot net>
+# Contributor: boosterdev at linuxmail at org
 
+_gitname=xdm
 pkgname=xdman
-_pkgver=7.2.11
-pkgver=2020.${_pkgver}
-pkgrel=2
-pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
+pkgver=7.2.11
+pkgrel=3
+epoch=1
+pkgdesc="Xtreme Download Manager: download manager with multiple browser integrations"
 arch=('i686' 'x86_64')
-url="https://subhra74.github.io/xdm/"
-depends=('java-runtime>=11')
-license=('GPL')
-source=(
-  'xdman.bin'
-  "https://github.com/subhra74/xdm/releases/download/${_pkgver}/xdm-setup-${_pkgver}.tar.xz"
-)
-sha256sums=(
-  'f50e60e27a8b70c03b564853a3c11a59105915891782c581cc803356e0008739'
-  '140413651797d97b13c5f1a2f0c528da6e46d3652bd36abd743b1a69dc610438'
-)
+url="https://xtremedownloadmanager.com/"
+depends=('ffmpeg' 'java-runtime>=11' 'python' 'sh' 'youtube-dl')
+makedepends=('java-environment>=11' 'maven')
+license=('GPL2')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/subhra74/$_gitname/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgname.sh")
+b2sums=('8987f8f68823b1224cb6c01becaf40be57440d4c0dba80c65b583b02964f8f5e77cd27c072a63ff4b47f6f1931f13b3d5fa63196841ecf7e28f96f5227da9b52'
+        '788ae28b70bc510b0c865bebd5f53d857820908421d40b2ecc76b390e6f5de55c2f76a93c2cc4017cbcd7df7cf4855a0243217abfccc9843dde88188fe6c3fc0')
 
-prepare () {
-  cd $srcdir
-  dd if="install.sh" bs=8K skip=1 | tar -xvJf -
-  rm -rf opt/xdman/jre
-  rm -rf opt/xdman/uninstall.sh
+build() {
+	cd $_gitname-$pkgver/app
+	mvn package
 }
 
 package() {
-  install -d -m755 "$pkgdir"/opt/xdman
-  install -D -m644 "$srcdir"/usr/share/applications/xdman.desktop "$pkgdir"/usr/share/applications/xdman.desktop
-  cp -dr --no-preserve='ownership' "$srcdir"/opt/xdman "$pkgdir"/opt/
-  install -D -m755 "$srcdir"/xdman.bin "$pkgdir"/opt/xdman/xdman
-
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/xdman/xdman" "$pkgdir/usr/bin/xdman"
+	install -Dm644 $_gitname-$pkgver/app/target/$pkgname.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+	ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/java/$pkgname/"
+	ln -s /usr/bin/youtube-dl "$pkgdir/usr/share/java/$pkgname/"
+	install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 }
