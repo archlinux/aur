@@ -1,13 +1,13 @@
 pkgbase = swayrbar
 	pkgdesc = swayrbar is a status command for swaybar implementing the swaybar-procotol.
-	pkgver = 0.3.2
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://git.sr.ht/~tsdh/swayr
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = swayrbar-0.3.2.tar.gz::https://static.crates.io/crates/swayrbar/swayrbar-0.3.2.crate
-	sha256sums = 001da4fea59d739113b6397a8bf8984282bfa88d3e70065fb4db9d58d5df7864
+	source = swayrbar-0.3.4.tar.gz::https://static.crates.io/crates/swayrbar/swayrbar-0.3.4.crate
+	sha256sums = 1634254a07f31d6c322d4e7a76fd9a27e7fb23970a502aaeaa80d50027f51bd6
 
 pkgname = swayrbar
