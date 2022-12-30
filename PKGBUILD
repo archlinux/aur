@@ -3,8 +3,8 @@
 pkgname=lizzie-improve
 _gitname=lizzieyzy-main
 _pkgname=lizzie
-pkgver=r14.7dbca8a
-pkgrel=3
+pkgver=r14.7dbca8d
+pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
 url="https://github.com/yzyray/lizzieyzy"
