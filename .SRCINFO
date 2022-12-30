@@ -1,6 +1,6 @@
 pkgbase = pianoteq-standard-trial-bin
-	pkgdesc = Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STANDARD trial version
-	pkgver = 7.5.4
+	pkgdesc = Physical modelling piano instrument standalone program, VST2 and LV2 plugin. STANDARD trial version
+	pkgver = 8.0.5
 	pkgrel = 1
 	url = https://www.modartt.com/pianoteq
 	arch = x86_64
@@ -14,12 +14,14 @@ pkgbase = pianoteq-standard-trial-bin
 	depends = alsa-lib
 	depends = libx11
 	optdepends = jack: JACK support for stand-alone application
+	optdepends = lv2-host: for loading the LV2 plugin
+	optdepends = vst-host: for loading the VST2 plugin
 	provides = pianoteq-standard-trial
 	conflicts = pianoteq-standard-trial
 	conflicts = pianoteq-standard-bin
-	source = local://pianoteq_linux_trial_v754.7z
+	source = local://pianoteq_linux_trial_v805.7z
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	sha256sums = ddadfe48a4c486f0eda8ae4a83813a2a22ef9f9fa3e8937a9ed21bef6bb66dd4
+	sha256sums = ab15625486e577ccd3323d7e4c87ceb083a19ae8ce189bb1dbfbb627886fb2ac
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq-standard-trial-bin
