@@ -34,5 +34,5 @@ package() {
     install -Dm644 "${srcdir}/app/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     cp -r "${srcdir}/app/extensions" "${pkgdir}/usr/share/${_pkgname}/extensions"
-    #xdg-icon-resource install --noupdate --context apps --size 256 "bilibili.png" "bilibili"
+    xdg-icon-resource install --noupdate --context apps --novendor --size 256 "bilibili.png" "bilibili"
 }
