@@ -2,12 +2,13 @@
 
 pkgname=drawio-desktop
 pkgver=20.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-depends=('electron>=21' 'electron<22' libnotify shared-mime-info)
+_electronver=21
+depends=("electron$_electronver" libnotify shared-mime-info)
 makedepends=(yarn ant 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
@@ -25,6 +26,9 @@ build() {
   cd "$srcdir/drawio-desktop-$pkgver"
 
   rm -rf "META-INF" "WEB-INF"
+
+  # Electron version compatibility check
+  grep -qF "\"electron\": \"^$_electronver." 'package.json'
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
@@ -73,7 +77,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron21 /usr/lib/draw.io "$@"' \
+  "exec electron$_electronver /usr/lib/draw.io \"\$@\"" \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
