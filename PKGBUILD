@@ -1,8 +1,8 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
-pkgver=3.0.0_565
-pkgrel=8
+pkgver=3.0.0_571
+pkgrel=1
 pkgdesc="Tencent QQ NT for Linux with bubblewrap wrapper"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -14,14 +14,14 @@ provides=('qq-nt' 'linuxqq-nt')
 conflicts=('linuxqq-new' 'linuxqq')
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb")  # 底包
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb")  # 底包
                # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${pkgver//_/-}.zip.zip")  # 热更新补丁
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_arm64.deb")  # 底包
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_arm64.deb")  # 底包
                 # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'qq_channel_jsbridge_handler.desktop' 'xdg-open.sh')
-sha256sums_x86_64=('21f05b85e5708386f93ee2d7f5bcea4ae4dc125c4d695ded99b19ddeffcd9026')  # 底包
+sha256sums_x86_64=('f0a714859c20785cc6cab4084d69c953310f1993828f42c81cb991b8aaa48264')  # 底包
                    # '814ddc3eea99bf2e291e2eeff0c3805928e3059e23b12d41cc8bf75bb8cd5fd3')  # 热更新补丁
-sha256sums_aarch64=('e8894025d3e49da433384e3cb1dc5be506c1f99175c4ab2d177011187337d066')  # 底包
+sha256sums_aarch64=('2ef13e3ebcaae0a2eef8115856b1a24f005d80eac182e3c741def730c1657e26')  # 底包
                     # 'f2f61581a5c09e4a7bfb23922a667e8df327d58fed9601034c4b60a08ad29049')  # 热更新补丁
 sha256sums=('81dce28be38ea8a21fad83a276f8d7522b4fa736bde717260d87ba4b3508587a'  # start.sh
             '68069b9360c09a5e64c370dbcba54089ac4b1f8b30fc3d6d1c9b8b316a8f92c6'  # config.json
