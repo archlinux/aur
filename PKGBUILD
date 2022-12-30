@@ -2,7 +2,7 @@
 # Co-Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=chromium-bypass-paywalls
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Bypass Paywalls is a web browser extension to help bypass paywalls for selected sites'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install="${pkgname}.install"
 source=("${url}/releases/download/v${pkgver}/bypass-paywalls-chrome.crx")
-sha512sums=('81b75a06a3c6e88f5088d18034cd5836a3660ce93a127feb76a2ac9661045760cf394e8b7772dfa2b6bfafbe60dbbff6e08b39d122c0a6bfbfaa160022cdc1d1')
+sha512sums=('aea12345c1781cc056c000f5b1c55fbed14bf46fa21bc939d6f4c61c484635e81dcdad25b8269e6c38d70266eeb0f5fb2dda5279201c4144bdf3751dc5ed1d03')
 
 package() {
    mkdir -p "${pkgdir}/usr/share/${pkgname}"
