@@ -1491,7 +1491,9 @@ PID_FILE_PATH=/run/exim.pid
 
 # DISABLE_CLIENT_CMD_LOG=yes
 
-EXTRALIBS=-ldl -lpam -lldap -llber
+INCLUDE=-I/usr/include/db5.3
+
+EXTRALIBS=-ldl -lpam -lldap -llber -ldb-5
 
 # Fix Errors on loading modules like "undefined symbol: debug_printf_indent"
 # "Error loading lookup module <modulename>.so: NULL"
