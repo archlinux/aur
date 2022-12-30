@@ -9,6 +9,7 @@ arch=("any")
 depends=("python3" "supergfxctl" "asusctl" "dbus" "dbus-python")
 makedepends=("git")
 provides=("asusctltray")
+conflicts=("asusctltray")
 source=("${pkgname%-git}::git+https://github.com/Baldomo/asusctltray.git")
 md5sums=("SKIP")
 

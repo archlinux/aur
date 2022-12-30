@@ -1,6 +1,6 @@
 pkgbase = asusctltray-git
 	pkgdesc = Simple tray profile switcher for asusctl
-	pkgver = r22.8665f1f
+	pkgver = r23.99a8731
 	pkgrel = 1
 	url = https://github.com/Baldomo/asusctltray
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = asusctltray-git
 	depends = dbus
 	depends = dbus-python
 	provides = asusctltray
+	conflicts = asusctltray
 	source = asusctltray::git+https://github.com/Baldomo/asusctltray.git
 	md5sums = SKIP
 
