@@ -1,5 +1,5 @@
 pkgbase = admc-git
-	pkgdesc = Altlinux group policy explorer
+	pkgdesc = Active Directory Management Center, replacement of RSAT
 	pkgver = r3560.5cc7bbb0
 	pkgrel = 1
 	url = https://github.com/altlinux/admc
