@@ -1,8 +1,8 @@
 Author: Robert Mader <robert.mader@posteo.de>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
 Editor: Mingi Sung <FiestaLake@protonmail.com>
-Commit: 04bee34be0a841e414eec06337069cc7a2c2ecaa
-Last Updated: 12/25/22 (Mutter 43.2+r3+g97dd7fb10-1)
+Commit: 93dbad3f376787a9e402bbf38745f3ed30bd575c
+Last Updated: 12/30/22 (Mutter 43.2+r3+g97dd7fb10-2)
 ---
 
 !2677 (merged)
@@ -13,12 +13,13 @@ Revert 74dd9037
 !2717 (merged)
 !2723 (merged)
 !2747 (merged)
-!2750 (merged)
 !2707 (merged)
 !2736 (merged)
 !2737 (merged)
 !2762 (merged)
 !2766 (merged)
+!2750 (merged)
+!2778 (merged)
 
 ---
 diff --git a/clutter/clutter/clutter-actor-private.h b/clutter/clutter/clutter-actor-private.h
@@ -153,6 +154,29 @@ index 7914d02d201ec33de812b8600aef03337a18e80a..3fdafbf550b785186276c2f65396d767
  
        time_since_last_frame_us = now_us - priv->last_frame_timestamp_us;
        if (time_since_last_frame_us < min_interval_us)
+diff --git a/src/backends/native/meta-seat-impl.c b/src/backends/native/meta-seat-impl.c
+index 96a7b2290f9f4a1d2abc6c119e50084078818bc7..23865c9059fdc00581d5a2a801dabe34beacec90 100644
+--- a/src/backends/native/meta-seat-impl.c
++++ b/src/backends/native/meta-seat-impl.c
+@@ -1733,6 +1733,18 @@ evdev_add_device (MetaSeatImpl           *seat_impl,
+   if (is_touchscreen || is_tablet_switch || is_pointer)
+     update_touch_mode (seat_impl);
+ 
++  if (type == CLUTTER_KEYBOARD_DEVICE)
++    {
++      MetaKbdA11ySettings kbd_a11y_settings;
++      MetaInputDeviceNative *keyboard_native;
++
++      keyboard_native = META_INPUT_DEVICE_NATIVE (seat_impl->core_keyboard);
++      meta_input_settings_get_kbd_a11y_settings (seat_impl->input_settings,
++                                                 &kbd_a11y_settings);
++      meta_input_device_native_apply_kbd_a11y_settings_in_impl (keyboard_native,
++                                                                &kbd_a11y_settings);
++    }
++
+   return device;
+ }
+ 
 diff --git a/src/compositor/meta-feedback-actor.c b/src/compositor/meta-feedback-actor.c
 index fcab89714a8a4c754fd6571df16b8ca6ec7b0e23..7baba3a18edb41455f4a4fcdf7ea3c603608c9ac 100644
 --- a/src/compositor/meta-feedback-actor.c

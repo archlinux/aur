@@ -32,7 +32,7 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.2+r3+g97dd7fb10
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -56,7 +56,7 @@ sha256sums=('SKIP'
             'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
             '20a90016dab0de9fb8e9cd7b38644e41d2006796f332b7a2d7c92bdf71bc3a4a'
             '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
-            '3cb32c36ca0de989713459d91359e81bba7ff9cafea612b5e6294cc4daac8108')
+            'ecb0360b5e517a4d6204c71634025ae2c7333ff0f8f33fbcc8a6566ac7acec2f')
 
 pkgver() {
   cd $pkgname
