@@ -10,7 +10,7 @@ arch=('any')
 license=('Apache')
 url='https://stratis-storage.github.io/'
 depends=('python-dbus-client-gen' 'python-into-dbus' 'python-justbytes' 'python-dateutil' 'python-packaging' 'python-psutil' 'python-wcwidth')
-makedepends=('dbus-glib' 'git' 'mpfr' 'python-argparse' 'python-dbus' 'python-pip' 'asciidoc' 'python-setuptools')
+makedepends=('dbus-glib' 'git' 'mpfr' 'python-argparse' 'dbus-python' 'python-pip' 'asciidoc' 'python-setuptools')
 #checkdepends=('python-nose' 'python-hypothesis' 'stratisd')
 source=(
   "${pkgname}-${_pkgver}.tar.gz::https://github.com/stratis-storage/stratis-cli/archive/v${_pkgver}.tar.gz"
