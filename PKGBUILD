@@ -1,7 +1,7 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=cppgraphqlgen
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of GraphQL libraries and tools"
 arch=('i686' 'x86_64')
 url="https://github.com/microsoft/cppgraphqlgen"
@@ -28,7 +28,7 @@ build()
     cd $pkgname-$pkgver
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -Wno-dev ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DGRAPHQL_INSTALL_TOOLS_DIR=/usr/lib/ -DCMAKE_BUILD_TYPE=None -Wno-dev ..
     make
 }
 
@@ -37,7 +37,5 @@ package()
     cd "$pkgname-$pkgver"
     cd build
     make DESTDIR="$pkgdir/" install
-    mv $pkgdir/usr/bin/$pkgname/* $pkgdir/usr/bin/
-    rm -fr $pkgdir/usr/bin/$pkgname
 }
 

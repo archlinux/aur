@@ -1,7 +1,7 @@
 pkgbase = cppgraphqlgen
 	pkgdesc = Set of GraphQL libraries and tools
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/cppgraphqlgen
 	arch = i686
 	arch = x86_64
