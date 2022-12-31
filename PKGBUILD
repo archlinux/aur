@@ -3,7 +3,7 @@
 # Contributor: e-search
 pkgname=e-search
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://github.com/xushengfeng/eSearch"
