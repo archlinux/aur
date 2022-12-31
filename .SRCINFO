@@ -1,5 +1,5 @@
 pkgbase = cue2pops
-	pkgdesc = Convert Playstation Games To VCD for Popstarter
+	pkgdesc = Convert Playstation Games To VCD for use with POPS.
 	pkgver = 2.0
 	pkgrel = 3
 	url = https://github.com/tallero/cue2pops-linux
