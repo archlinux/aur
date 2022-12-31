@@ -4,13 +4,13 @@ _pkgname=dockbarx
 pkgname=${_pkgname}-git
 epoch=1
 _pkgver=1.0beta
-pkgver=1.0beta+r858+d98020e
+pkgver=1.0beta2+0+g38af1e8
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/M7S/dockbarx"
 license=('GPL3')
-depends=('libkeybinder3' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pillow'
+depends=('libkeybinder3' 'python-cairo' 'dbus-python' 'python-gobject' 'python-pillow'
          'python-xlib' 'python-xdg')
 makedepends=('python-setuptools' 'python-polib' 'git')
 optdepends=('mate-panel: mate applet'
@@ -28,7 +28,7 @@ install="${_pkgname}.install"
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "%s+r%s+%s" "${_pkgver}" "$( git rev-list --count HEAD )" "$( git rev-parse --short HEAD )"
+  git describe --long --tags | sed 's:-beta:beta:;s:-:+:g'
 }
 
 package() {
