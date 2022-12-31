@@ -2,7 +2,7 @@
 
 pkgname=xdman8-beta-git
 _pkgname=xdman
-pkgver=8.0.13.r293.g1c2969b
+pkgver=8.0.16.r294.c0eeb69
 pkgrel=1
 pkgdesc="Open source download accelerator and video downloader."
 arch=(x86_64)
