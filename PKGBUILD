@@ -4,7 +4,7 @@
 
 _pkgbase=i3bard
 pkgname=i3bard-git
-pkgver=r27.4911002
+pkgver=r31.d2c6d4e
 pkgrel=1
 pkgdesc='async i3blocks clone that can synchronize multiple instances'
 arch=('any')
@@ -25,4 +25,5 @@ package() {
 
   install -Dm755 i3bard "$pkgdir"/usr/bin/i3bard
   install -Dm644 i3bard.service "$pkgdir"/usr/lib/systemd/user/i3bard.service
+  install -Dm644 i3bard.socket "$pkgdir"/usr/lib/systemd/user/i3bard.socket
 }

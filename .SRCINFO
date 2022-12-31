@@ -1,6 +1,6 @@
 pkgbase = i3bard-git
 	pkgdesc = async i3blocks clone that can synchronize multiple instances
-	pkgver = r27.4911002
+	pkgver = r31.d2c6d4e
 	pkgrel = 1
 	url = https://gitlab.com/chrooti/i3bard
 	arch = any
