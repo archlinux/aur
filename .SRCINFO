@@ -1,19 +1,18 @@
 pkgbase = sway-interactive-screenshot
 	pkgdesc = Take screenshot easly on Sway
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/moverest/sway-interactive-screenshot
 	arch = x86_64
 	license = MIT
 	depends = jq
-	depends = rofi
+	depends = fuzzel
 	depends = grim
 	depends = slurp
 	depends = libnotify
 	depends = wl-clipboard
 	optdepends = swappy: edit screenshots
-	source = https://github.com/moverest/sway-interactive-screenshot/archive/1.1.0.tar.gz
-	sha256sums = 2b9497d5710db40f0af1c1ce0ca4055b8be827aa2ee2b7644790b640dd81d98b
+	source = https://github.com/moverest/sway-interactive-screenshot/archive/1.2.0.tar.gz
+	sha256sums = cdfe3c54d296dc05da4bc151ce962f1214e66a0e3fc6c48f40a757462e382b32
 
 pkgname = sway-interactive-screenshot
-
