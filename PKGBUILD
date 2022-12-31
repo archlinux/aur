@@ -6,7 +6,7 @@
 pkgname=linuxqq-new-firejail
 _pkgname=tencent-qq
 pkgver=3.0.0_571
-pkgrel=2
+pkgrel=3
 pkgdesc='New Linux QQ based on Electron, running in Firejail (security sandbox)'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -21,16 +21,25 @@ sha512sums_aarch64=('bab4ed630e8db0c4ff07ed13e93323031aa45cd7098543da9b03d343ba7
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
-	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
+	bsdtar -xf data.tar.xz -C "${pkgdir}/"
 	chmod -R 755 "${pkgdir}/"
 
 	echo "  -> Installing..."
+
+	# Wrapper for Firejail
+	wrapper="${pkgdir}/opt/QQ/qq_wrapper"
+	echo "#!/bin/bash" > $wrapper
+	echo "mkdir ~/.linuxqq -p" >> $wrapper
+	echo "firejail --private=~/.linuxqq --noprofile /opt/QQ/qq" >> $wrapper
+	chmod 755 $wrapper
+
 	# Launcher
 	install -d "${pkgdir}/usr/bin/"
 	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/QQ/qq_wrapper" "${pkgdir}/usr/bin/${_pkgname}_wrapper"
 
 	# Launcher Fix
-	sed -i '3s!/opt/QQ/qq!firejail --private=~/.linuxqq --noprofile /usr/bin/tencent-qq!' "${pkgdir}/usr/share/applications/qq.desktop"
+	sed -i "3s!/opt/QQ/qq!/usr/bin/${_pkgname}_wrapper!" "${pkgdir}/usr/share/applications/qq.desktop"
 
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
