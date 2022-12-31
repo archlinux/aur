@@ -1,0 +1,13 @@
+pkgbase = libsignal-protocol-javascript
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/signalapp/libsignal-protocol-javascript
+	arch = any
+	license = GPL3
+	makedepends = emscripten
+	makedepends = npm
+	makedepends = grunt-cli
+	source = libsignal-protocol-javascript-1.2.0-2.tar.gz::https://github.com/signalapp/libsignal-protocol-javascript/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 3e819e5c9c4438089b58c63dabef2f1998e49ff05de40eb53bf5f274c929bc46
+
+pkgname = libsignal-protocol-javascript
