@@ -1,6 +1,6 @@
 pkgbase = vice-sdl2
 	pkgdesc = The Versatile Commodore 8-bit Emulator, SDL2 version
-	pkgver = 3.6.1
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
@@ -20,10 +20,10 @@ pkgbase = vice-sdl2
 	conflicts = vice-gnomeui-devel
 	replaces = vice
 	options = !makeflags
-	source = https://sourceforge.net/projects/vice-emu/files/releases/vice-3.6.1.tar.gz/download
+	source = https://sourceforge.net/projects/vice-emu/files/releases/vice-3.7.1.tar.gz/download
 	source = vice.desktop
 	source = vice.png
-	sha256sums = 20df84c851aaf2f5000510927f6d31b32f269916d351465c366dc0afc9dc150c
+	sha256sums = 7e3811e6024db0698bfbc321bb324572446b8853d01b4073f09865957b0cab98
 	sha256sums = e0a600d72c2352826282a0f7fcf380b24272fba10a9ed31c8fd45a21d597f3ad
 	sha256sums = 0d51f822b70d24bbc9d813d552138660cf705aaaecc12115bc1416364e1473b3
 

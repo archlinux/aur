@@ -3,7 +3,7 @@
 
 pkgname=vice-sdl2
 _pkgname=vice
-pkgver=3.6.1
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='The Versatile Commodore 8-bit Emulator, SDL2 version'
 arch=('i686' 'x86_64')
@@ -21,14 +21,14 @@ source=(
   ${_pkgname}.png
 )
 sha256sums=(
-  20df84c851aaf2f5000510927f6d31b32f269916d351465c366dc0afc9dc150c
+  7e3811e6024db0698bfbc321bb324572446b8853d01b4073f09865957b0cab98
   e0a600d72c2352826282a0f7fcf380b24272fba10a9ed31c8fd45a21d597f3ad
   0d51f822b70d24bbc9d813d552138660cf705aaaecc12115bc1416364e1473b3
 )
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  ./configure --prefix=/usr --enable-sdlui2 --with-sdlsound --disable-pdf-docs --enable-ethernet --enable-x64
+  ./configure --prefix=/usr --enable-sdl2ui --with-sdlsound --disable-pdf-docs --enable-ethernet --enable-x64
   make
 }
 
