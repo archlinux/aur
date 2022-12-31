@@ -326,7 +326,7 @@ build_ps2-ee-pthread-embedded() {
     cd "platform/${_platform}"
 
     make "${_make_opts[@]}" all
-    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
+    make DESTDIR="${srcdir}/buildroot/${_usr}" "${_make_opts[@]}" install
     cd ..
   done
 }
@@ -337,7 +337,7 @@ package_ps2-ee-pthread-embedded() {
   cd "${srcdir}/${pkgbase}-${_pe}"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "platform/${_platform}"
-    make "${_make_opts[@]}" install
+    make DESTDIR="${srcdir}/buildroot/${_usr}" "${_make_opts[@]}" install
     make "${_make_opts[@]}" clean
     cd ..
   done
@@ -348,6 +348,8 @@ build_ps2-ee-gcc-stage2() {
   local _target
 
   local _cflags=(${cflags[@]}
+                 -I"${srcdir}/buildroot/${_usr}/include"
+                 -L"${srcdir}/buildroot/${_usr}/lib"
                  -O2)
                  # -D_FORTIFY_SOURCE=0)
 
