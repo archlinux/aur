@@ -1,5 +1,5 @@
 pkgbase = linuxqq-firejail
-	pkgdesc = New Linux QQ based on Electron, running in Firejail (security sandbox)
+	pkgdesc = Run QQ in Firejail (security sandbox). Install linuxqq before this.
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/BeautyYuYanli/linuxqq-new-firejail
