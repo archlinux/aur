@@ -1,7 +1,7 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 _pkgname=tut
 pkgname=tut-bin
-pkgver=1.0.31
+pkgver=1.0.32
 pkgrel=1
 pkgdesc='A TUI for Mastodon with vim inspired keys. Same as aur/tut, but this is the binary version.'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -10,20 +10,20 @@ url="https://github.com/RasmusLindroth/$_pkgname"
 license=('MIT')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/RasmusLindroth/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-source_x86_64=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-amd64-static")
-source_i686=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-386-static")
-source_arm=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-armv5-static")
-source_armv6h=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-armv6-static")
-source_armv7h=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-armv7-static")
-source_aarch64=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.31/tut-arm64-static")
+source_x86_64=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-amd64-static")
+source_i686=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-386-static")
+source_arm=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-armv5-static")
+source_armv6h=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-armv6-static")
+source_armv7h=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-armv7-static")
+source_aarch64=("$pkgname-$pkgver-bin::https://github.com/RasmusLindroth/tut/releases/download/1.0.32/tut-arm64-static")
 
-sha256sums=('dc64e8ae81d87aad156a1a23b40c974c2dd4326cfe46ac149df30576305182a5')
-sha256sums_x86_64=('b819b84b873fef562b9ec2e43ce30e1e65acb58759007055c9e41caa705dd5a4')
-sha256sums_i686=('ccad97476a50d32dbcfbbbb487ecaddb6ba1efae11bf03ba750150dba605061b')
-sha256sums_arm=('65ba067a9bac376864a019e33927f6b1883fa42625088e0e5f327cd60fa12ac6')
-sha256sums_armv6h=('7cbd8adb912ef7c1d1e1ad01823c7e6c86a6037608df843c49c6d8113a0a96b9')
-sha256sums_armv7h=('638156c3c86411a4e6ef08e1ce45a9a563f59eb0e70fa9f8550c4792d5623565')
-sha256sums_aarch64=('f9e27dfc4752370e6ba3dfac52117486abdde8a0f8d0358bdbca3f84a1f710e5')
+sha256sums=('3795c7738707d2d20e7cc448336ab853d782ad51421a8da17c4d2c909d93efa8')
+sha256sums_x86_64=('20b11d05e323607138c421a267c1746d87e8ce7f766795f00a0ff2ad0043d7ad')
+sha256sums_i686=('619196701f53c5f8a1dcf3cc18d7ccf6128c4f37f23214ec9be2d460c7157706')
+sha256sums_arm=('2b34793ac7923a8002fa2c434d4198cd301c85d17218b5242b1445ce3be8042f')
+sha256sums_armv6h=('38b9f191395ffabadd1409c055568fc5f99df58520aed894ec53a84fb35af552')
+sha256sums_armv7h=('bc0b23f24785967188197d42f1beaf70698ba82f9e423f6322eff6113fc7c809')
+sha256sums_aarch64=('2aecac0dd39a87b0408bed20a557bd0414a368c3fbc631f85390820aef4be3c9')
 
 package() {
   install -Dm755 $pkgname-$pkgver-bin "$pkgdir"/usr/bin/$_pkgname
