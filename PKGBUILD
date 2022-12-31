@@ -3,7 +3,7 @@
 
 pkgname=amdfan
 pkgdesc="Python daemon for controlling the fans on amdgpu cards"
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 arch=('any')
 license=('GPL2')
@@ -11,7 +11,7 @@ depends=('python' 'python-yaml' 'python-numpy' 'python-rich' 'python-click')
 makedepends=('python-setuptools')
 url="https://github.com/mcgillij/amdfan"
 source=("https://github.com/mcgillij/amdfan/releases/download/$pkgver/amdfan-$pkgver.tar.gz")
-md5sums=('71b4cfeb8db57d17aa5ed94e91079b24')
+md5sums=('cb938f4c09db0d437e3991402f429114')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
