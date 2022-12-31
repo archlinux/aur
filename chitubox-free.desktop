@@ -6,4 +6,4 @@ Comment=All-in-one SLA/DLP/LCD Slicer
 Exec=chitubox-free %f
 Icon=chitubox-free
 Categories=Graphics;Utility;
-MimeType=model/chitubox;
+MimeType=model/chitubox;model/ctb;model/cbddlp;model/stl

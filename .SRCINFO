@@ -1,7 +1,7 @@
 pkgbase = chitubox-free-bin
 	pkgdesc = All-in-one SLA/DLP/LCD Slicer
 	pkgver = 1.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.chitubox.com/download.html
 	arch = x86_64
 	license = Commercial
@@ -14,8 +14,8 @@ pkgbase = chitubox-free-bin
 	source = local://launcher
 	source = local://chitubox-free.xml
 	sha256sums = c3131af2c0409759b8659f0e0b9a023bf65698245a9073051be5ff7082748e9b
-	sha256sums = 4cb392165bce42884c99c6d94d01ccb164c4efc6c6c8554f6817eba3f2c680e5
+	sha256sums = ef455760a0ed63b4f695fd5d999a338e6192e6fa9d4571791397cd5884c62c9f
 	sha256sums = 1144e0420568f0745aa6392d42c0fe0f496d18fb26e28c636bae45615180ec4e
-	sha256sums = ba5fd615e18e2239796ac69891266165b88488c05f33013f4d41646a225f64e2
+	sha256sums = 8bd846e6e12e293c8fe9a9c78e59658397dd078e1d697d72cda339ccd6ba06b2
 
 pkgname = chitubox-free-bin
