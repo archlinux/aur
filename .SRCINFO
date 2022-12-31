@@ -1,13 +1,14 @@
 pkgbase = guile-gi-git
-	pkgver = 1163.0e849b1
+	pkgdesc = Bindings for GObject Introspection and libgirepository for Guile
+	pkgver = 1223.ea5d051
 	pkgrel = 1
 	url = https://github.com/spk121/guile-gi
 	arch = x86_64
 	license = GPL3
-	depends = glib2
+	makedepends = git
+	makedepends = gobject-introspection
 	depends = guile
-	depends = gtk3
-	depends = gobject-introspection
+	depends = gobject-introspection-runtime
 	source = guile-gi-git::git+https://github.com/spk121/guile-gi.git
 	md5sums = SKIP
 
