@@ -1,0 +1,25 @@
+pkgbase = casaos-app-management
+	pkgdesc = App management service manages CasaOS app lifecycle, such as installation, running, etc.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-AppManagement
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = casaos
+	license = APACHE
+	provides = casaos
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-amd64-casaos-app-management-v0.4.0.tar.gz
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-amd64-casaos-app-management-migration-tool-v0.4.0.tar.gz
+	sha256sums_x86_64 = 7238e7760db9e7dd7e5ad5ad8d06be7be07754b7f7d15ff43a9c98a9b5de2e3c
+	sha256sums_x86_64 = 214bd922a99d76efbe73212903dc8e98d9e7bbe252aaf508e4b51c027f23f78d
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-arm64-casaos-app-management-v0.4.0.tar.gz
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-arm64-casaos-app-management-migration-tool-v0.4.0.tar.gz
+	sha256sums_aarch64 = 0c8de94c739a82acdfdae50b5b930eaa6c8d622fa036c0f9d45765182afb6249
+	sha256sums_aarch64 = e80c8346a53ba79c1a2f7e531745e5c756eab4bd84763869526d6911b1a86870
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-arm-7-casaos-app-management-v0.4.0.tar.gz
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-AppManagement/releases/download/v0.4.0/linux-arm-7-casaos-app-management-migration-tool-v0.4.0.tar.gz
+	sha256sums_armv7h = 61e28bbe46510fe414cd93f350498572a4fecdceedea3da9ef0637fd57575cfa
+	sha256sums_armv7h = 7c4ea54c396e240f484445a8cadf3c9e27784d776543278dc1b7ac771cb06699
+
+pkgname = casaos-app-management
