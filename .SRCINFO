@@ -1,14 +1,14 @@
 pkgbase = r-kmlshape
 	pkgdesc = K-Means for Longitudinal Data using Shape-Respecting Distance
 	pkgver = 0.9.5
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=kmlShape
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-kml
 	depends = r-longitudinaldata
-	source = https://cran.r-project.org/src/contrib/kmlShape_0.9.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/kmlShape/kmlShape_0.9.5.tar.gz
 	sha256sums = 617542d4981bb3ae5b839358e446b00c0706185d4d4f8f0efe561284258c65dc
 
 pkgname = r-kmlshape
