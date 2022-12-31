@@ -2,8 +2,8 @@
 
 pkgname=sol-client
 _pkgname=sol-client
-pkgver=1.8.8
-pkgrel=3
+pkgver=1.8.9
+pkgrel=1
 pkgdesc='Simple yet feature-rich open-source Minecraft client'
 url=https://github.com/Sol-Client/Client
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=('curl')
 options=(!strip)
 _appimage="Sol.Client-${pkgver}.AppImage"
 source=("https://github.com/Sol-Client/Client/releases/download/$pkgver/$_appimage")
-sha256sums=('b375a1efe5fdefdd4e940f0b238c83e4d39d1705b1b9e4f5fa3473b7b51b13db')
+sha256sums=('57d18daa8e717625bcbeb07f3b9e1f2146d4e6199debe03d7b3d8b1bc6957b09')
 
 prepare() {
 	chmod +x "${_appimage}"
