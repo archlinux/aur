@@ -42,6 +42,9 @@ sha256sums=('SKIP'
 
 _n_cpu="$(getconf _NPROCESSORS_ONLN)"
 _make_opts=(-j "${_n_cpu}")
+_root="opt/ps2dev"
+_usr="${_root}/${_module}"
+_bin="${_usr}/bin"
 
 build() {
   "build_${_platform}-${_module}-${_bu}"
@@ -51,10 +54,6 @@ build() {
 # shellcheck disable=SC2154
 build_ps2-iop-binutils-gdb() {
   local _target
-  local _root="/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
@@ -81,14 +80,14 @@ build_ps2-iop-binutils-gdb() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
-  mkdir -p "${srcdir}/temp_root"
+  mkdir -p "${srcdir}/${_bu}-root"
   cd "${srcdir}/${pkgbase}-${_bu}"
 
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --disable-separate-code
                            --disable-sim
@@ -107,7 +106,7 @@ build_ps2-iop-binutils-gdb() {
     "../configure" ${_configure_opts[@]}
 
     make "${_build_opts[@]}"
-    make DESTDIR="${srcdir}/temp_root" "${_make_opts[@]}" install
+    make DESTDIR="${srcdir}/${_bu}-root" "${_make_opts[@]}" install
     
     cd ..
   done
@@ -127,10 +126,8 @@ package_ps2-iop-binutils-gdb() {
 # shellcheck disable=SC2154
 build_ps2-iop-gcc-stage1() {
   local _target
-  local _root="/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
+  local _tbu_bin
+  local _bu_bin="${srcdir}/${_bu}-root/${_bin}"
 
   CFLAGS=""
   CXXFLAGS=""
@@ -140,17 +137,16 @@ build_ps2-iop-gcc-stage1() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  local _iop_bu_bin="${srcdir}/temp_root/opt/ps2dev/iop/bin"
-  local _iop_sbu_bin="${srcdir}/temp_root/opt/ps2dev/iop/mipsel-ps2-irx/bin"
-  export PATH="${PATH}:${_iop_bu_bin}:${_iop_sbu_bin}"
+  export PATH="${PATH}:${_bu_bin}"
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
                  -Wno-implicit-function-declaration
                  -I/usr/include
                  -L/usr/lib
+                 # -ldl
                  -static)
-                 # -ldl)
 
   local _ldflags=(-I/usr/include
                   # -rdynamic
@@ -175,10 +171,12 @@ build_ps2-iop-gcc-stage1() {
   cd "${srcdir}/${pkgbase}-gcc"
 
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
+    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --enable-languages="c"
                            --with-float=soft
@@ -187,7 +185,7 @@ build_ps2-iop-gcc-stage1() {
                            --with-mpc
                            --without-headers
                            --with-headers=no
-                           --with-newlib
+                           --without-newlib
                            --without-cloog
                            --without-ppl
                            --disable-bootstrap
@@ -208,7 +206,6 @@ build_ps2-iop-gcc-stage1() {
                            --disable-nls
                            --disable-tls)
 
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib"
     LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib" \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
