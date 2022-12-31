@@ -253,11 +253,10 @@ package_ps2-ee-newlib() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib-nano() {
   local _target
-  local _cflags=(-O2
-                 -Wno-implicit-function-declaration
+  local _cflags=(-Wno-implicit-function-declaration
+                 # -O2
                  # -D_FORTIFY_SOURCE=0
-                 -static
-                 -Wno-implicit-function-declaration)
+                 -static)
 
   local _ldflags=(${LDFLAGS}
                   # -ldl
@@ -354,10 +353,12 @@ build_ps2-ee-gcc-stage2() {
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
+                 -static
                  -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
-                  -ldl
+                  # -ldl
+                  -Bstatic
                   -s)
 
   local _build_opts=(${_make_opts[@]}
