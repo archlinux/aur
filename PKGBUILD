@@ -7,7 +7,6 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/IceWhaleTech/CasaOS-CLI"
 license=('APACHE')
 groups=('casaos')
-provides=('casaos')
 source_x86_64=(
     ${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
     )
@@ -21,7 +20,8 @@ sha256sums_x86_64=('98e2c056649120da963ee62a52056ec85ebbdaecfd2e339962ec39a94aa2
 sha256sums_armv7h=('44a79eeb0374ff9ec9c00cc5193adc7e897164058b82135a1a9b39a072575eaa')
 sha256sums_aarch64=('5b145a5fe78f7ad1c285a2e9fa892323b5ce9c9e4aaea3ecd0887f694d04bb36')
 package() {
-    install -Dm755 "${srcdir}/build/sysroot/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/build/sysroot/etc/bash_completion.d/${pkgname}-completion" "${pkgdir}/etc/bash_completion.d/${pkgname}-completion"
+    _sysdir="${srcdir}/build/sysroot"
+    install -Dm755 "${_sysdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${_sysdir}/etc/bash_completion.d/${pkgname}-completion" "${pkgdir}/etc/bash_completion.d/${pkgname}-completion"
 }
 
