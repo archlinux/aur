@@ -137,7 +137,7 @@ build_ps2-ee-gcc-stage1() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:${}${_bu_bin}"
+  export PATH="${PATH}:${_bu_bin}"
 
   local _cflags=(${cflags[@]}
                  -D_FORTIFY_SOURCE=0
@@ -356,7 +356,7 @@ build_ps2-ee-gcc-stage2() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:${}${_bu_bin}"
+  export PATH="${PATH}:${_bu_bin}"
 
   local _cflags=(${cflags[@]}
                  -I"${srcdir}/buildroot/${_usr}/include"
