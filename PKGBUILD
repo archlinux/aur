@@ -125,6 +125,15 @@ build_ps2-ee-gcc-stage1() {
   local _target
   local _tbu_bin
   local _bu_bin="${srcdir}/buildroot/${_bin}"
+
+  CFLAGS=""
+  CXXFLAGS=""
+  CPPFLAGS=""
+  LDFLAGS=""
+  export CFLAGS
+  export CXXFLAGS
+  export CPPFLAGS
+  export LDFLAGS
   export PATH="${PATH}:${_bu_bin}"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
@@ -183,6 +192,14 @@ package_ps2-ee-gcc-stage1() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib() {
   local _target
+  CFLAGS=""
+  CXXFLAGS=""
+  CPPFLAGS=""
+  LDFLAGS=""
+  export CFLAGS
+  export CXXFLAGS
+  export CPPFLAGS
+  export LDFLAGS
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  # -O2
@@ -210,8 +227,8 @@ build_ps2-ee-newlib() {
     local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}")
 
+    # CFLAGS_FOR_TARGET="-02" \
     CFLAGS="${_cflags[*]}" \
-    CFLAGS_FOR_TARGET="-02" \
     "../configure" "${_configure_opts[@]}"
 
     make "${_build_opts[@]}" all
