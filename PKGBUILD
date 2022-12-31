@@ -9,7 +9,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-sub-exporter-progressive>=0.001007' 'perl>=5.008')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-fatal')
 url='http://search.mcpan.org/dist/Const-Fast'
 source=('http://search.mcpan.org/CPAN/authors/id/L/LE/LEONT/Const-Fast-0.014.tar.gz')
