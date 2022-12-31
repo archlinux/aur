@@ -1,8 +1,8 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch-git
 _pkgname=unifetch
-pkgver=22.12
-pkgrel=27
+pkgver=23.01
+pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch, fresh version."
 arch=('any')
 url="https://github.com/jin-asanami/"
