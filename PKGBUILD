@@ -1,47 +1,28 @@
-# Maintainer: Yanli <beautyyuyanli at gmail dot com>
-# Maintainer: Purofle <purofle@gmail.com>
-# Contributor: Yidaozhan Ya <yidaozhan_ya@outlook.com>
-# Contributor: Integral <luckys68@126.com>
-# https://github.com/BeautyYuYanli/linuxqq-new-firejail
+# Maintainer: Yanli <beautyyuyanli@gmail.com>
+# Contributor: cubercsl <hi@cubercsl.site>
 pkgname=linuxqq-firejail
-_pkgname=tencent-qq
-pkgver=3.0.0_571
-pkgrel=3
+_pkgname=linuxqq
+pkgver=0.0.1
+pkgrel=1
 pkgdesc='New Linux QQ based on Electron, running in Firejail (security sandbox)'
 arch=('x86_64' 'aarch64')
-url="https://im.qq.com/linuxqq/"
-license=('custom')
-depends=('firejail' 'nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
-optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-conflicts=('linuxqq-new')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_${pkgver//_/-}_amd64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_${pkgver//_/-}_arm64.deb")
-sha512sums_x86_64=('933a54d7a68da74854a2f3c5e6763366b1059295a477c74385333c30254ad3cd3d5be609f2c81b3b3c0af3816c542a63c6ee4110afb5858b04345fa41f852e5e')
-sha512sums_aarch64=('bab4ed630e8db0c4ff07ed13e93323031aa45cd7098543da9b03d343ba733562fe2d3e1431ba5f00cfeb47561daa793c43846782e2bc87706244ce3e3790050d')
+url="https://github.com/BeautyYuYanli/linuxqq-new-firejail"
+license=('unknown')
+# TODO: add linuxqq
+depends=('firejail')
+source=("tencent-qq.profile")
+sha512sums=('8c6a8075a74c8ffaac4ee2f96c6e41d51de1a040d81f5e3d55543d614f5e60d76ec1d42d935d37cd7031999eadfe4d5597277d35f5ed20b87c781e7eb836edb4')
 
 package() {
-	echo "  -> Extracting the data.tar.xz..."
-	bsdtar -xf data.tar.xz -C "${pkgdir}/"
-	chmod -R 755 "${pkgdir}/"
+	# Patch Firejail
+	echo "  -> Patching Firejail..."
+	mkdir "${pkgdir}/etc/firejail" -p
+	mv "tencent-qq.profile" "${pkgdir}/etc/firejail/"
 
-	echo "  -> Installing..."
-
-	# Wrapper for Firejail
-	wrapper="${pkgdir}/opt/QQ/qq_wrapper"
-	echo "#!/bin/bash" > $wrapper
-	echo "mkdir ~/.linuxqq -p" >> $wrapper
-	echo "firejail --private=~/.linuxqq --noprofile /opt/QQ/qq" >> $wrapper
-	chmod 755 $wrapper
-
-	# Launcher
-	install -d "${pkgdir}/usr/bin/"
-	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${_pkgname}"
-	ln -s "/opt/QQ/qq_wrapper" "${pkgdir}/usr/bin/${_pkgname}_wrapper"
-
-	# Launcher Fix
-	sed -i "3s!/opt/QQ/qq!/usr/bin/${_pkgname}_wrapper!" "${pkgdir}/usr/share/applications/qq.desktop"
-
-	# License
-	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	# Wrap launcher
+	echo "  -> Wrapping launcher..."
+	mkdir "${pkgdir}/usr/share/applications" -p
+	cp "/usr/share/applications/qq.desktop" "${pkgdir}/usr/share/applications/qq-firejail.desktop"
+	sed -i "2s!Name=QQ!Name=QQ in Firejail!" "${pkgdir}/usr/share/applications/qq-firejail.desktop"
+	sed -i "3s!/usr/bin/${_pkgname}!firejail --profile=/etc/firejail/tencent-qq.profile /usr/bin/${_pkgname}!" "${pkgdir}/usr/share/applications/qq-firejail.desktop"
 }

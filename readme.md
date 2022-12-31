@@ -1,7 +1,3 @@
-The package run QQ NT for Linux (Electron based) within [Firejail](https://firejail.wordpress.com/). 
-
-A fake home directory `~/.linuxqq` will be created to run QQ.
-
-The PKGBUILD is forked from https://aur.archlinux.org/packages/linuxqq-new
+The package runs [linuxqq](https://aur.archlinux.org/packages/linuxqq) within patched [Firejail](https://firejail.wordpress.com/). Install [linuxqq](https://aur.archlinux.org/packages/linuxqq) before this package.
 
 The GitHub repo: https://github.com/BeautyYuYanli/linuxqq-new-firejail
