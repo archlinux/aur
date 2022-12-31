@@ -1,7 +1,7 @@
 # Maintainer: Kawaki <dev at kanjala dot com>
 _pkgname="mirro-rs"
 pkgname="${_pkgname}-git"
-pkgver=r88.8f5759d
+pkgver=r94.2c94f93
 pkgrel=1
 makedepends=('git' 'cargo')
 depends=('openssl' 'gcc-libs')
@@ -37,4 +37,6 @@ package() {
     install -Dm644 crates/$_pkgname/completions/${_pkgname}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
     install -Dm644 crates/$_pkgname/completions/_${_pkgname} "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
     install -Dm644 crates/$_pkgname/man/${_pkgname}.1 "${pkgdir}/usr/share/man/man1/_${_pkgname}.1"
+    install -Dm644 systemd/mirro-rs.service "${pkgdir}/usr/lib/systemd/system/mirro-rs.service"
+    install -Dm644 systemd/mirro-rs.timer "${pkgdir}/usr/lib/systemd/system/mirro-rs.timer"
 }
