@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Alekseev
 
 pkgname='ahriman'
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
@@ -50,6 +50,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 
-sha512sums=('28e60327de4ae37597fbcb3816d47f38d9e0b39bd4fe4a94aa26c7d6d21d3c297a21b310aff5cb71da7442ecd870cddf51b42b12fa0f7cf1cbd2189b88ba51b4'
+sha512sums=('c11bd59c1e94d04bfe5f32191a25a03961a6a5c682702a54c32742b9a9179dac001a13df4eb195682cc2f69027243f4742092937b865e04c803bd82a60125c04'
             '53d37efec812afebf86281716259f9ea78a307b83897166c72777251c3eebcb587ecee375d907514781fb2a5c808cbb24ef9f3f244f12740155d0603bf213131'
             '62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794')
