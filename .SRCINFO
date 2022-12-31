@@ -1,20 +1,21 @@
 pkgbase = soulseekqt
 	pkgdesc = A desktop client for the Soulseek peer-to-peer file sharing network
-	pkgver = 20180130
-	pkgrel = 13
+	pkgver = 20221224
+	pkgrel = 1
 	url = http://www.soulseekqt.net/news/
 	arch = x86_64
 	license = CUSTOM
 	depends = freetype2
 	options = !strip
-	source = https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-2018-1-30-64bit-appimage.tgz
-	source = selinux-mock.c
-	source = soulseekqt.sh
-	source = soulseekqt.desktop
-	md5sums = 1d98331893bc9b9d45ba34f6523353ab
-	md5sums = 4ed42be654289fc9cd7f4181c363f745
-	md5sums = eb61e1e5510c95c8c9a93f46a5541597
-	md5sums = 2544611108889c2c4c7a9084672f4d32
+	source = https://github.com/M0Rf30/soulseekqt-binaries/releases/download/20221224/SoulseekQt-2022-12-24-64bit.AppImage.tgz
+	source = https://github.com/M0Rf30/soulseekqt-binaries/raw/main/hacks/selinux-mock.c
+	source = https://github.com/M0Rf30/soulseekqt-binaries/raw/main/desktop/soulseekqt.desktop
+	source = https://github.com/M0Rf30/soulseekqt-binaries/raw/main/desktop/soulseekqt.png
+	source = https://github.com/M0Rf30/soulseekqt-binaries/raw/main/desktop/soulseekqt.sh
+	sha256sums = 86e1f5501e614cb12ee32242daff5338d1d45e3a0fd9a882d32d517b68eb1849
+	sha256sums = dabd228cf296dc4dd9462a21d16cc6cbfc77ee2abfcae3297ec783e6184dc9f4
+	sha256sums = ecb2e829138c9d8373b5ba4e042e01ef34b3701ddc306f753acf894fff4047bf
+	sha256sums = 5097f36ea49f1a61cbb975507de99dc7e768d0377e3736b431fee47f13a45e1c
+	sha256sums = 8d74a05712838f5250496d7538e8354a716e2ec4138a8bc9948886a85ef1c9cb
 
 pkgname = soulseekqt
-

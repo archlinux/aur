@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=SoulSeekQT
-Exec=soulseekqt
-Icon=soulseek
-Terminal=false
-Type=Application
-Categories=Network;P2P;
-Comment=Soulseek music-sharing client
-StartupWMClass=soulseekqt.AppImage
