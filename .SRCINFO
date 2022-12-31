@@ -1,0 +1,16 @@
+pkgbase = overlayroot
+	pkgdesc = Overlay the root filesystem with a tmpfs filesystem.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/hilderingt/archlinux-overlayroot
+	arch = any
+	license = GPLv3
+	depends = mkinitcpio
+	source = overlayroot-install.hooks
+	source = overlayroot-runtime.hooks
+	source = mount.overlayroot
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = overlayroot

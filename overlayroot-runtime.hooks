@@ -1,0 +1,152 @@
+#!/bin/sh
+
+# Copyright 2022 Tim Hildering
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+OVLROOT_MAINDIR="/.overlay"
+OVLROOT_LOWERDIR="${OVLROOT_MAINDIR}/ro"
+OVLROOT_UPPERDIR="${OVLROOT_MAINDIR}/rw"
+OVLROOT_WORKDIR="${OVLROOT_MAINDIR}/work"
+OVLROOT_FSTAB="/tmp/overlayroot.fstab"
+FSTAB_SYSTEM="/etc/fstab"
+ROOTMNT="/new_root"
+
+MSG_MODIFIED="original entry modified by overlayroot"
+MSG_DEACTIVATED="entry deactivated by overlayroot"
+
+add_comments() {
+	while [ ${#} -gt 0 ]
+	do
+   		 echo "# ${1}"; shift 1
+	done
+}
+
+fsopts_add_ro() {
+	local fsopts=${1}, fsopts_ro="ro"
+	local opt=""
+
+	for opt in ${fsopts//,/ }
+	do
+		case "${opt}" in
+			none | rw)
+				;;
+			ro)
+				fsopts_ro="${fsopts}"
+				break
+				;;
+			*)
+				fsopts_ro="${fsopts_ro},${opt}"
+				;;
+		esac
+	done
+
+	printf "%s" "${fsopts_ro}"
+}
+
+run_latehook() {
+	local line="" opts="" mnts_overlay="" mnts_rdonly=""
+	local fsopts_root="ro"
+
+	[ ${#overlayroot} -eq 0 ] && return 0
+
+	for opt in ${overlayroot//:/ }
+	do
+		case "${opt}" in
+			tmpfs=*)
+				mnts_overlay="${opt#tmpfs=}"
+				;;
+			ro=*)
+				mnts_rdonly="${opt#ro=}"
+				;;			
+			*)
+				;;
+		esac
+	done
+
+	mkdir -p "${OVLROOT_MAINDIR}"
+	mount -t "tmpfs" "overlayroot-tmpfs" "${OVLROOT_MAINDIR}"
+	
+	mkdir -p "${OVLROOT_LOWERDIR}"
+	mkdir -p "${OVLROOT_UPPERDIR}/root"
+	mkdir -p "${OVLROOT_WORKDIR}/root"
+
+	mount -o "move" "${ROOTMNT}" "${OVLROOT_LOWERDIR}"
+
+	mount -t "overlay" -o "\
+lowerdir=${OVLROOT_LOWERDIR},upperdir=${OVLROOT_UPPERDIR}/root,\
+workdir=${OVLROOT_WORKDIR}/root" "overlayroot" "${ROOTMNT}"
+
+	while IFS= read -r line
+	do
+		local fs="" fsdir="" fstype="" fsopts="" fsdump="" fspass=""
+		local error="" mnt="" fsopts_ro=""
+		local _line="${line%%#*}"
+
+		[ ${#_line} -eq 0 ] && { echo "${line}"; continue; }
+
+		read -r fs fsdir fstype fsopts fsdump fspass error <<-EOF
+		${_line}
+		EOF
+
+		if [ ${#fs} -gt 0 ]
+		then
+			if [ ${#fsopts} -eq 0 ] || [ ${#error} -ne 0 ]
+			then
+				add_comments "${MSG_DEACTIVATED}" "${line}"
+				continue
+			fi
+		else
+			echo; continue
+		fi
+
+		fsopts_ro="$(fsopts_add_ro "${fsopts}")"
+
+		if [ "${fsdir}" = "/" ]
+		then
+			fsopts_root="${fsopts_ro}"
+			add_comments "${MSG_DEACTIVATED}" "${line}"
+			continue
+		fi
+
+		for mnt in ${mnts_overlay//,/ }
+		do
+			if [ "${mnt}" = "${fsdir}" ]
+			then
+				add_comments "${MSG_MODIFIED}" "${line}"
+				fstype="overlayroot.${fstype}"
+				fsopts="${fsopts_ro}"								
+			fi
+		done
+
+		for mnt in ${mnts_rdonly//,/ }
+		do
+			if [ "${mnt}" = "${fsdir}" ]
+			then
+				add_comments "${MSG_MODIFIED}" "${line}"
+				fsopts="${fsopts_ro}"
+				fspass=0; break
+			fi
+		done
+
+		printf "%s\t%s\t%s\t%s\t%s\t%s\n" "${fs}" "${fsdir}" \
+		"${fstype}" "${fsopts}" "${fsdump}" "${fspass}"
+	done <"${ROOTMNT}/${FSTAB_SYSTEM}" >"${OVLROOT_FSTAB}"
+
+	mkdir -p "${ROOTMNT}/${OVLROOT_MAINDIR}"
+	mount -o "move" "${OVLROOT_MAINDIR}" "${ROOTMNT}/${OVLROOT_MAINDIR}"
+	mount -o "remount,${fsopts_root}" "${ROOTMNT}/${OVLROOT_LOWERDIR}"
+
+	mv "${OVLROOT_FSTAB}" "${ROOTMNT}/${FSTAB_SYSTEM}"
+}

@@ -1,0 +1,82 @@
+#!/bin/sh
+
+# Copyright 2022 Tim Hildering
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+set -e
+
+MOUNT_FS="${1}"
+MOUNT_FSDIR="${2}"
+MOUNT_FSOPTIONS=""
+MOUNT_OPTIONS=""
+MOUNT_FSTYPE=""
+
+OVLROOT_MAINDIR="/.overlay"
+OVLROOT_LOWERDIR="${OVLROOT_MAINDIR}/ro"
+OVLROOT_UPPERDIR="${OVLROOT_MAINDIR}/rw"
+OVLROOT_WORKDIR="${OVLROOT_MAINDIR}/work"
+
+BASEDIR=""
+LIMIT=10
+CNT=0
+
+shift 2
+while getopts 'fnsvN:o:t:' OPT 2>/dev/null
+do
+	case "${OPT}" in
+		f | n | s | v)
+			MOUNT_OPTIONS="${MOUNT_OPTIONS:-"-"}${OPT}"
+			;;
+		N)
+			MOUNT_OPTIONS="${MOUNT_OPTIONS} -N ${OPTARG}"
+			;;
+		o)
+			MOUNT_FSOPTIONS="${OPTARG}"
+			;;
+		t)
+			MOUNT_FSTYPE="${OPTARG#*.}"
+			;;
+		?)
+			exit 1
+			;;
+		*)
+			;;
+	esac
+done
+
+[ ${#MOUNT_FSOPTIONS} -eq 0 ] && exit 1
+[ ${#MOUNT_FSTYPE} -eq 0 ]    && exit 1
+
+BASEDIR="$(basename "${MOUNT_FSDIR}")"
+
+while [ -d "${OVLROOT_UPPERDIR}/${BASEDIR}" ]
+do
+	[ ${CNT} -gt ${LIMIT} ] && exit 1
+	BASEDIR="${BASEDIR}$((CNT=CNT+1))"
+done
+
+mkdir -p "${OVLROOT_UPPERDIR}/${BASEDIR}"
+mkdir -p "${OVLROOT_WORKDIR}/${BASEDIR}"
+
+mount ${MOUNT_OPTIONS} -t "${MOUNT_FSTYPE}" -o "${MOUNT_FSOPTIONS}" \
+"${MOUNT_FS}" "${OVLROOT_LOWERDIR}/${MOUNT_FSDIR}"
+
+mount -t "overlay" -o \
+"lowerdir=${OVLROOT_LOWERDIR}/${MOUNT_FSDIR},\
+upperdir=${OVLROOT_UPPERDIR}/${BASEDIR},\
+workdir=${OVLROOT_WORKDIR}/${BASEDIR}" "overlay-${BASEDIR}" \
+"${MOUNT_FSDIR}"
+
+exit 0
