@@ -1,6 +1,6 @@
 pkgbase = neovim-gtk
 	pkgdesc = GTK UI for Neovim written in Rust
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Lyude/neovim-gtk
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = neovim-gtk
 	depends = neovim
 	depends = gtk4
 	depends = vte3
-	source = https://github.com/Lyude/neovim-gtk/archive/v1.0.3/neovim-gtk-1.0.3.tar.gz
-	sha256sums = ed90c035a5c414c5b88de08248e87d8d6dfa222aa5422f4015dbcdf5d817d656
+	source = https://github.com/Lyude/neovim-gtk/archive/v1.0.4/neovim-gtk-1.0.4.tar.gz
+	sha256sums = d0d0dacfbfca16168361f517dee20259785379910173cc33d7d48bd301d30f18
 
 pkgname = neovim-gtk
