@@ -1,7 +1,7 @@
-# Maintainer: Ankit R Gadiya <arch@argp.in>
+# Maintainer: Kamil Krzyżanowski <kamnxt@kamnxt.com>
 
 pkgname=ruby-jekyll-compose
-pkgver=0.8.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Streamline your writing in Jekyll with these commands"
 arch=('any')
@@ -11,7 +11,7 @@ noextract=("jekyll-compose-${pkgver}.gem")
 license=('MIT')
 source=("https://rubygems.org/downloads/jekyll-compose-${pkgver}.gem"
         "LICENSE")
-md5sums=('4918f325553ccccd2b0bb88e644b940b'
+md5sums=('92ba6d2700a40559eb8257e5fb5bcd86'
          '24cbe1f463ac66eaae650087275dab91')
 
 package() {
