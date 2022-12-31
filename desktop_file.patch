@@ -1,0 +1,15 @@
+diff --git a/pihpsdr.desktop b/pihpsdr.desktop
+new file mode 100644
+index 0000000..c28d1a9
+--- /dev/null
++++ b/pihpsdr.desktop
+@@ -0,0 +1,9 @@
++[Desktop Entry]
++Name=piHPSDR
++GenericName=Amateur Radio HPSDR software
++Comment=Amateur Radio HPSDR software
++Exec=pihpsdr
++Icon=/usr/share/pihpsdr/hpsdr_icon.png
++Terminal=false
++Type=Application
++Categories=Network;HamRadio;
