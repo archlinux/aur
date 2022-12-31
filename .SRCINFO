@@ -1,0 +1,18 @@
+pkgbase = hmcl-dev-bin
+	pkgver = 3.5.3
+	pkgrel = 228
+	url = https://github.com/huanghongxun/HMCL
+	arch = any
+	license = GPL3
+	depends = jre19-openjdk
+	noextract = hmcl-dev-3.5.3.228.jar
+	noextract = start.sh
+	noextract = hmcl-dev.desktop
+	source = https://maven.aliyun.com/repository/central/org/glavo/hmcl/hmcl-dev/3.5.3.228/hmcl-dev-3.5.3.228.jar
+	source = start.sh
+	source = hmcl-dev.desktop
+	sha256sums = d4808b56a309d0857ad90781efe7f23f12847c09ab7906449a454323455fcb38
+	sha256sums = b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d
+	sha256sums = 41b822c08d4b1ecffa55dcc1defc455c82e6a6bdc86c802460e794fcc42e76e3
+
+pkgname = hmcl-dev-bin

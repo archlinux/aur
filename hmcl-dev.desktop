@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Hello Minecraft Launcher
+Exec=/opt/hmcl-dev/start.sh
+GenericName=Hello Minecraft Launcher
+Icon=/opt/hmcl-dev/icon.png
+Name=HMCL dev
+Path=/opt/hmcl-dev
+StartupNotify=false
+Terminal=false
+Type=Application
