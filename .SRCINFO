@@ -1,6 +1,6 @@
 pkgbase = mirro-rs-git
 	pkgdesc = An Arch Linux mirrorlist management tool with a TUI
-	pkgver = r85.45398ea
+	pkgver = r88.8f5759d
 	pkgrel = 1
 	url = https://github.com/kawaki-san/mirro-rs
 	arch = i686
