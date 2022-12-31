@@ -7,6 +7,7 @@ pkgbase = perl-const-fast
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-fatal
+	makedepends = perl-module-build-tiny
 	depends = perl-sub-exporter-progressive>=0.001007
 	depends = perl>=5.008
 	options = !emptydirs
@@ -15,4 +16,3 @@ pkgbase = perl-const-fast
 	sha512sums = 89258205fe31aa5a60759ed955e6dae305de69f4bc08251242a82eec9e37251b045908585c470106ed9047f604d3292eb3231c80504b29734966b58b8402a929
 
 pkgname = perl-const-fast
-
