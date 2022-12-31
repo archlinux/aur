@@ -97,6 +97,21 @@ _kyber_disable=${_kyber_disable-y}
 # 'none' - disable multigenerational LRU
 _lru_config=${_lru_config-'standard'}
 
+### Enable per-VMA locking
+# ATTENTION - one of three predefined values should be selected!
+# 'standard' - enable per-VMA locking
+# 'stats' - enable per-VMA locking with stats
+# 'none' - disable per-VMA locking
+_vma_config=${_vma_config-'standard'}
+
+### Transparent Hugepages
+# ATTENTION - one of two predefined values should be selected!
+# 'always' - always enable THP
+# 'madvise' - madvise, prevent applications from allocating more memory resources than necessary
+# More infos here:
+# https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/sect-red_hat_enterprise_linux-performance_tuning_guide-configuring_transparent_huge_pages
+_hugepage=${_hugepage-'always'}
+
 ## Enable DAMON
 _damon=${_damon-}
 
@@ -185,7 +200,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=1
+_minor=2
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -276,7 +291,7 @@ if [ -n "$_use_kcfi" ]; then
 fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
-    source+=("${_patchsource}/misc/0001-bcachefs-after-lru.patch")
+    source+=("${_patchsource}/misc/0001-bcachefs.patch")
 fi
 if [ -n "$_use_gcc_lto" ]; then
 ## GCC-LTO Patch
@@ -492,7 +507,7 @@ prepare() {
         scripts/config --set-val NR_CPUS "$_nr_cpus"
     else
         echo "Setting default NR_CPUS..."
-        scripts/config --set-val NR_CPUS 128
+        scripts/config --set-val NR_CPUS 320
     fi
 
     ### Disable MQ Deadline I/O scheduler
@@ -625,6 +640,47 @@ prepare() {
            error "The value is empty. Choose the correct one again."
         fi
          error "Enabling multigenerational LRU failed!"
+         exit
+    fi
+
+    ### Select VMA config
+    if [ "$_vma_config" = "standard" ]; then
+       echo "Enabling per-VMA locking..."
+       scripts/config --enable PER_VMA_LOCK \
+           --disable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "stats" ]; then
+       echo "Enabling per-VMA locking with stats..."
+       scripts/config --enable PER_VMA_LOCK \
+           --enable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "none" ]; then
+       echo "Disabling per-VMA locking..."
+       scripts/config --disable PER_VMA_LOCK
+    else
+        if [ -n "$_vma_config" ]; then
+           error "The value $_vma_config is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Enabling per-VMA locking failed!"
+         exit
+    fi
+
+   ### Select THP
+    if [ "$_hugepage" = "always" ]; then
+       echo "Enable THP always..."
+       scripts/config --disable TRANSPARENT_HUGEPAGE_MADVISE \
+           --enable TRANSPARENT_HUGEPAGE_ALWAYS
+    elif [ "$_hugepage" = "madvise" ]; then
+       echo "Enable THP madvise..."
+       scripts/config --disable TRANSPARENT_HUGEPAGE_ALWAYS \
+           --enable TRANSPARENT_HUGEPAGE_MADVISE
+    else
+        if [ -n "$_hugepage" ]; then
+           error "The value $_hugepage is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Setting THP has failed!"
          exit
     fi
 
@@ -988,8 +1044,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('a3e61377cf4435a9e2966b409a37a1056f6aaa59e561add9125a88e3c0971dfb'
-            'c9c662d6adbf5a4bfeee3cabab6eafe7b9a2d2d51532df2bd53df1c61b6d5260'
+sha256sums=('ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae'
+            'd4f3fc2581e338835a33983cca18bfb3225450a07c456c48c9b051c03236955a'
             '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
-            '4f0aac3acf834b5fbe933ae0e133d27db23063c4ae4317c8d21e64fa624a47b5'
+            '1ec422b623d99bcac518075d498e2a32f91151a532edb4ba51b993667b6c32a5'
             '9aeff735bbd9ae3d730f5ac0bc13a82760dade6c27cd83f0ce56cfd08f8c94ff')
