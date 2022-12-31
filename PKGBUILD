@@ -89,6 +89,7 @@ build_ps2-iop-binutils-gdb() {
     cd "build-${_target}"
     local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
+                           --infodir="/${_usr}/share/info"
                            --disable-separate-code
                            --disable-sim
                            --with-gmp
@@ -121,6 +122,7 @@ package_ps2-iop-binutils-gdb() {
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
     cd ..
   done
+  rm -rf "${pkgdir}/opt/ps2dev/iop/share/info/dir"
 }
 
 # shellcheck disable=SC2154
