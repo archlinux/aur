@@ -348,6 +348,7 @@ build_ps2-ee-gcc-stage2() {
   local _target
 
   local _cflags=(${cflags[@]}
+                 -nostdinc 
                  -I"${srcdir}/buildroot/${_usr}/include"
                  -L"${srcdir}/buildroot/${_usr}/lib"
                  -O2)
@@ -379,8 +380,16 @@ build_ps2-ee-gcc-stage2() {
                            --enable-cxx-flags=-G0
                            --enable-threads=posix)
 
+    # CC="${srcdir}//usr/bin/gcc" \
+    # CPP="/usr/bin/cpp" \
+    CPP="${srcdir}/${_bin}/${_target}-cpp" \
+    CC="${srcdir}/${_bin}/${_target}-gcc" \
     "../configure" "${_configure_opts[@]}"
 
+    # CC="/usr/bin/gcc" \
+    # CPP="/usr/bin/cpp" \
+    CPP="${srcdir}/${_bin}/${_target}-cpp" \
+    CC="${srcdir}/${_bin}/${_target}-gcc" \
     make "${_build_opts[@]}" all
     
     cd ..
