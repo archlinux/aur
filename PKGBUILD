@@ -3,7 +3,7 @@
 # Contributor: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 # Contributor: Integral <luckys68@126.com>
 # https://github.com/BeautyYuYanli/linuxqq-new-firejail
-pkgname=linuxqq-new-firejail
+pkgname=linuxqq-firejail
 _pkgname=tencent-qq
 pkgver=3.0.0_571
 pkgrel=3
