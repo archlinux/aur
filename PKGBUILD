@@ -3,10 +3,10 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1501.bc8b507
+pkgver=r1509.f39632e
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 # we use this insted of g0orx because it contains
 # a lot of fixes and it is currently developed
 url='https://github.com/dl1ycf/pihpsdr'
