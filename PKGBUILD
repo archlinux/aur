@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
 pkgdesc="collection of tools in Python for reading, visualizing and performing calculations with weather data."
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'python-setuptools-scm')
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4')
 source=("${pkgname}-${pkgver}::https://github.com/Unidata/${_basename}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3739e8089ed978ae20eaea673fe3ab95948be1329cdc0a3b4c91c7d7c3d1cf96')
+sha256sums=('951fa4377d4eaa570dff43d95fbb57f16ca72ea109a67addf0e91928bdd78a4e')
 
 build() {
 	cd "${srcdir}/${_dirname}"
