@@ -3,7 +3,7 @@
 
 pkgname=python312
 pkgver=3.12.0a3
-pkgrel=1
+pkgrel=2
 _pyver=3.12.0
 _pybasever=3.12
 _pymajver=3
@@ -32,7 +32,7 @@ prepare() {
   # rather than copies shipped in the tarball
   rm -rf Modules/expat
   rm -rf Modules/zlib
-  rm -rf Modules/_ctypes/{darwin,libffi}*
+  rm -rf Modules/_ctypes/libffi*
   rm -rf Modules/_decimal/libmpdec
 }
 
@@ -62,7 +62,7 @@ package() {
   make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Split tests
-  rm -r "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,tkinter/test,unittest/test}
+  rm -rf "$pkgdir"/usr/lib/python*/{test,ctypes/test,distutils/tests,idlelib/idle_test,lib2to3/tests,tkinter/test,unittest/test}
 
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
