@@ -1,12 +1,12 @@
 pkgbase = pyexiftool
 	pkgdesc = Library to communicate with an instance of ExifTool command-line application
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/sylikc/pyexiftool
 	arch = any
 	license = GPL3
 	makedepends = python-pip
-	source = https://files.pythonhosted.org/packages/py3/P/PyExifTool/PyExifTool-0.5.4-py3-none-any.whl
-	sha512sums = b83607a01878506174b674be3be10773b12c5c674ba1fc1e1ca46ae7fcb037da3b4c4a99d1fafc4369a413cd472588f3109fe9c85d1c3607a58983e4249e1e46
+	source = https://files.pythonhosted.org/packages/py3/P/PyExifTool/PyExifTool-0.5.5-py3-none-any.whl
+	sha512sums = fdcf66999a0419ece4e94cc5c60da62b29862517ba10a74ec8972b74990c7f0c80a8c6cc22e8ff8133241f284269ec1c35585b5a6b4e7f66e3371eba0e3b810a
 
 pkgname = python-pyexiftool
