@@ -2,9 +2,9 @@
 
 pkgbase=libreoffice-dev-i18n
 
-_pkgnamefmt=LibreOfficeDev
-_pkgver=7.5.0.0.beta1
-pkgver=7.5.0.0beta1
+_pkgnamefmt=LibreOffice
+_pkgver=7.5.0.1
+pkgver=7.5.0.1
 pkgrel=1
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
@@ -139,7 +139,7 @@ _languages=(
 )
 #  'qtz          "Reserved"                     1' ## Reserved language code?
 
-#validpgpkeys=('C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3') # "LibreOfficeDev Build Team (CODE SIGNING KEY) <build@documentfoundation.org>"
+#validpgpkeys=('C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3') # "LibreOffice Build Team (CODE SIGNING KEY) <build@documentfoundation.org>"
 
 prepare() {
   for _lang in "${_languages[@]}"; do
@@ -176,7 +176,7 @@ prepare() {
 }
 
 _package() {
-  pkgdesc="$2 language pack for LibreOfficeDev Dev"
+  pkgdesc="$2 language pack for LibreOffice Dev"
   depends=('libreoffice-dev-bin')
 
   cd "$srcdir"/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_$1/RPMS
