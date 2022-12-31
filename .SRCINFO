@@ -1,6 +1,6 @@
 pkgbase = cernbox
 	pkgdesc = Synchronization client for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk.
-	pkgver = 2.9.2_6339
+	pkgver = 2.11.1_8507
 	pkgrel = 1
 	url = http://cernbox.web.cern.ch/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = cernbox
 	optdepends = cernbox-nemo: Nemo integration
 	provides = ocsync
 	provides = cernboxsync
-	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_32/cernbox-client-2.9.2-6339.x86_64.rpm
-	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_32/libcernboxsync0-2.9.2-6339.x86_64.rpm
-	md5sums = 611a57ba3d791d57971cbb35f366a2b2
-	md5sums = d4695b5a152784eff0172fede0be3b6a
+	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_36/cernbox-client-2.11.1-8507.x86_64.rpm
+	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_36/libcernboxsync0-2.11.1-8507.x86_64.rpm
+	md5sums = ff6d0eb35cde47c7195e990803a120e5
+	md5sums = 3530fc7dac621822817c28906a4bb5f8
 
 pkgname = cernbox
