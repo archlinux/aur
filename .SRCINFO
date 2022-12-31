@@ -1,6 +1,6 @@
 pkgbase = seafile-client
 	pkgdesc = GUI client for synchronizing your local files with seafile server
-	pkgver = 8.0.9
+	pkgver = 8.0.10
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile-client
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = seafile-client
 	license = Apache
 	makedepends = cmake
 	makedepends = qt6-tools
-	depends = seafile>=8.0.9
+	depends = seafile>=8.0.10
 	depends = qt6-base
 	depends = qt6-webengine
 	depends = qt6-5compat
 	optdepends = gtk-update-icon-cache
-	source = seafile-client-8.0.9.tar.gz::https://github.com/haiwen/seafile-client/archive/v8.0.9.tar.gz
+	source = seafile-client-8.0.10.tar.gz::https://github.com/haiwen/seafile-client/archive/v8.0.10.tar.gz
 	source = fix_build_with_QT6.diff
-	sha256sums = afda765ace46f168217f4ccffdba494fade734047b782bfed1280af153d25767
+	sha256sums = 9c89c3fb1579b57f47df7ac6a8a1046393929db82982bdd73b5bbfb79ac30e78
 	sha256sums = 5fc54daff54d3ea4e263aea6c23b8c812fe5287e487a56bbf05cf935dd149229
 
 pkgname = seafile-client
