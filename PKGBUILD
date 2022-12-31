@@ -97,6 +97,13 @@ _kyber_disable=${_kyber_disable-y}
 # 'none' - disable multigenerational LRU
 _lru_config=${_lru_config-'standard'}
 
+### Enable per-VMA locking
+# ATTENTION - one of three predefined values should be selected!
+# 'standard' - enable per-VMA locking
+# 'stats' - enable per-VMA locking with stats
+# 'none' - disable per-VMA locking
+_vma_config=${_vma_config-'standard'}
+
 ### Transparent Hugepages
 # ATTENTION - one of two predefined values should be selected!
 # 'always' - always enable THP
@@ -500,7 +507,7 @@ prepare() {
         scripts/config --set-val NR_CPUS "$_nr_cpus"
     else
         echo "Setting default NR_CPUS..."
-        scripts/config --set-val NR_CPUS 128
+        scripts/config --set-val NR_CPUS 320
     fi
 
     ### Disable MQ Deadline I/O scheduler
@@ -633,6 +640,28 @@ prepare() {
            error "The value is empty. Choose the correct one again."
         fi
          error "Enabling multigenerational LRU failed!"
+         exit
+    fi
+
+    ### Select VMA config
+    if [ "$_vma_config" = "standard" ]; then
+       echo "Enabling per-VMA locking..."
+       scripts/config --enable PER_VMA_LOCK \
+           --disable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "stats" ]; then
+       echo "Enabling per-VMA locking with stats..."
+       scripts/config --enable PER_VMA_LOCK \
+           --enable PER_VMA_LOCK_STATS
+    elif [ "$_vma_config" = "none" ]; then
+       echo "Disabling per-VMA locking..."
+       scripts/config --disable PER_VMA_LOCK
+    else
+        if [ -n "$_vma_config" ]; then
+           error "The value $_vma_config is invalid. Choose the correct one again."
+        else
+           error "The value is empty. Choose the correct one again."
+        fi
+         error "Enabling per-VMA locking failed!"
          exit
     fi
 
@@ -1016,7 +1045,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('cb8079f8ccd77328bf340805bae0ce45c437107c51001986f55b64b66277280e'
-            '2a4737179d7a45c59a71c7dd5454a6142ddc0fa08b2ae433b9780e7e0cb7de8b'
+            '916892bbbcaaafda12ee7b1263454dc7495c931195ad9aaa8aff9a61b4196c03'
             '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
             'b5dadeb2b7ceb20e7a3d665b1933b00848092cb49676f173dc3c0afaea4f8d7c'
             '7aa2d13e3aa8ddba51f338552d016e5f37fedc54537bad9080e12cecedf46673'
