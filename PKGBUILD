@@ -1,4 +1,4 @@
-# Maintainer: Clément Martinez <clementmartinezdev at gmail dot com>
+# Maintainer: Clément Martinez <me at moverest dot xyz>
 pkgname=sway-interactive-screenshot
 pkgver=1.2.1
 pkgrel=1
