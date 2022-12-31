@@ -14,7 +14,7 @@ pkgbase=morisawa-biz-ud-fonts
 pkgname=(morisawa-biz-ud-mincho-fonts morisawa-biz-ud-gothic-fonts)
 pkgdesc="Morisawa BIZ UD Fonts."
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('OFL')
 groups=($pkgbase)
@@ -26,21 +26,17 @@ _base_url_m="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
 _base_url_tm="https://github.com/googlefonts/morisawa-biz-ud-mincho/releases/download/v${pkgver}/"
 source=(
   "BIZ-UDGothic-Bold.otf::${_base_url_g}sources/extensions/otf/BIZ-UDGothic-Bold.otf"
-  "BIZ-UDGothic-Bold.ttf::${_base_url_g}sources/ttf/BIZ-UDGothic-Bold.ttf"
   "BIZ-UDGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDGothic.otf"
-  "BIZ-UDGothic.ttf::${_base_url_g}sources/ttf/BIZ-UDGothic.ttf"
   "BIZ-UDPGothic-Bold.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic-Bold.otf"
-  "BIZ-UDPGothic-Bold.ttf::${_base_url_g}sources/ttf/BIZ-UDPGothic-Bold.ttf"
   "BIZ-UDPGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic.otf"
-  "BIZ-UDPGothic.ttf::${_base_url_g}sources/ttf/BIZ-UDPGothic.ttf"
   "BIZUDGothic-Bold.ttf::${_base_url_tg}BIZUDGothic-Bold.ttf"
   "BIZUDGothic-Regular.ttf::${_base_url_tg}BIZUDGothic-Regular.ttf"
   "BIZUDPGothic-Bold.ttf::${_base_url_g}fonts/ttf/BIZUDPGothic-Bold.ttf"
   "BIZUDPGothic-Regular.ttf::${_base_url_tg}BIZUDPGothic-Regular.ttf"
   "BIZ-UDMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDMincho-Medium.otf"
-  "BIZ-UDMincho-Medium.ttf::${_base_url_m}sources/ttf/BIZ-UDMincho-Medium.ttf"
   "BIZ-UDPMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDPMincho-Medium.otf"
-  "BIZ-UDPMincho-Medium.ttf::${_base_url_m}sources/ttf/BIZ-UDPMincho-Medium.ttf"
+  "BIZ-UDMincho-Heavy.otf::${_base_url_m}sources/extensions/otf/BIZ-UDMincho-Heavy.otf"
+  "BIZ-UDPMincho-Heavy.otf::${_base_url_m}sources/extensions/otf/BIZ-UDPMincho-Heavy.otf"
   "BIZUDMincho-Bold.ttf::${_base_url_tm}BIZUDMincho-Bold.ttf"
   "BIZUDMincho-Regular.ttf::${_base_url_tm}BIZUDMincho-Regular.ttf"
   "BIZUDPMincho-Bold.ttf::${_base_url_tm}BIZUDPMincho-Bold.ttf"
@@ -54,21 +50,17 @@ source=(
 )
 
 sha512sums=('b541d4406aee7b267a2e3c42aa9ca107b2f503d580ed290d2c468fa9f7da1442e532d2f2f57ef0747e85fdc4dba959db35d85f850cc6aa17d3a49ca4b358a22b'
-            '462a97a5861b417390d217e55e9ce8a73781975ab63a2c92dc69de87210a35df442baa138e43cfc81bbcbe6bc1387ae944c86f671adea2c0b362ec8b8f61a8b5'
             '6b834ccff4e76de77737d7f96b8733b1cb34ea3b350aaa7b9d8c0f468873c9f64c7d2dda6c3dd996ae972956b17e0728d75b80b657aba83cdb0d98d964779a7b'
-            'e72617ace980f52d81755a78f2995547f72a66dc04fafbdf0393b6b3aa131dff4bb981b8e279c8e6c2e52b9f886f7c59a0c4f06fa1a7ce21402ccac16c5e6f7f'
             '20b4e961e40c60e9a909ee19785d788cb8927d3a766964f064db7f5b51bdf0ba24169df2e46f7de8394110dfba9185c4d6bd1c48e5cdd578d5d4d9a1625efee8'
-            '5fd69d019a1b2f6756f7d3fb04f5026eafab3e70416f113cc5cf8e0db485d4ddc4c1244d835d0d684d8a4ea96e102f64115c0d0cc63ac37a697cb1c5202cc3ae'
             '999b452a7e203d0d3928eaa1e04a77e9bba2d1db5c254beb8bed1e3430ad919580884da179d23b8db0f11acc50dd50827938f874183c0a111ff5b6e5dcd11f24'
-            'c038b7de90ebb0535b87f72c8c8c95bae19763970dcd6648e1e4c836e585671ad1d80568265bdf0ae545f06620bc1c247ec20768a0453d2796a89d1f54384b63'
             '3b4fa7e00db803e35bac6b042636b926a05b53ef7e5b555d6e9c92b3bdd2ae39ffa11e401d4fa846603833425c22f77cf2ba2efb650e09d4ceb85a310ba0881c'
             'd9348438f908df89e50b3358fd2eb3782584abb0fa43090d9a25da3ff8947c6c7d3ef7b472001b391d1a8ad91320c87dda14e926ada17fc831493f06dec6283e'
             '220a41149e69dd363f1da4c7b8badf810c148db20695c4d5616c5742da09e10d9a3a5e509b4544ce03f7c0fd889d070428e2f6a96b3386f130a2a2e610d965f7'
             'b6ee1bc40f45bc783d01941d25b4af890b0d3ccbd2108c10821c92e1bad8803c5922495012b41dc41e0397b9343254bc069b221c2051c700c6206930ef78503f'
             'f5d9d18bb4df0256abccb7c755d7c45d61037a65c83fd21cd01084fdebd56118484de2136ecdf78d56a5c150c36a68de748b7a1475ac9fcb82f5932028064d44'
-            'a1921ab27fe73faf5ffe542400417f1e9f75c342d35aa1e005fa9d982d71450ef8e5271dacd3a5a028e763614a3f36d55622b7f88262c6be1dd714786065b618'
             'd49060d47c10c3b4fd5930b8727e2340f79a80dfa0e68e339124cb6b93925336e1d504d27785849187c81839aa07ae879b1842f8fbc58d42423480f54c043a84'
-            '24a21f6c3042ed0fa05b4f6166ed8e0647630474444df260a9b798d392973388c61f87d3d26869bb835f9de0cfb2cd38529c46cf8bece919572e8a542f531633'
+            'df8b8ac2611ff980d9a6e8f56f7c4371d5f2de27bcb9757b3452f4a1f99806a0f347e769877955158ce210efc5a40eaa50277b9194d9169aefaaf145581f6128'
+            '22555cd2b7d693f6969dc5f08447344d814c5ba197a026514d53d36cdc5eb45479b77dac4f8809c684ae72ab6de9d53add8fb91cff45f879266414678be37c44'
             '59766b48f330cea703e90cc46df59e04677202e92054cecf6f37acb6d2144c0e8e5e35787470e6b99fbb84f446dca3311c23d865561a26442f8fb69122281939'
             'e5b692e2149421e0a576f59a4fee50e1fded2fa5c750516fed3e970df39cd6f4203b8ad762869ce9d73787656e9c6764f78397a2b63974f8e2c107b0b55d0a48'
             '874db49bddf85ee794e82dc269566037803bf015a95a4229827b4aa0f0edf1534859d18a7b9a329ef3c527be21e78d9508c2073cffc9cf89f0c1351efbc09262'
