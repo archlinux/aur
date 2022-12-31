@@ -24,9 +24,18 @@ while read -r path; do
 	esac
 done
 
+add=0
+for o; do
+	case "$o" in
+	add)
+		add=1
+		;;
+	esac
+done
+
 for kernel_image in "${kernel_images[@]}"; do
 	# skip kernels not owned by pacman
-	if ! pacman -Qqo "$kernel_image" 1>/dev/null 2>/dev/null; then
+	if ((add)) && ! pacman -Qqo "$kernel_image" 1>/dev/null 2>/dev/null; then
 		continue
 	fi
 	echo +kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
