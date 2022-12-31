@@ -7,6 +7,7 @@ pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
+conflicts=('linuxqq-new' 'linuxqq-nt-bwrap')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/${pkgname}_${pkgver//_/-}_amd64.deb")
