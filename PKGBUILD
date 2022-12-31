@@ -52,6 +52,9 @@ sha256sums=('SKIP'
 
 _n_cpu="$(getconf _NPROCESSORS_ONLN)"
 _make_opts=(-j "${_n_cpu}")
+_root="opt/ps2dev"
+_usr="${_root}/${_module}"
+_bin="${_usr}/bin"
 
 build() {
   "build_${_platform}-${_module}-${_bu}"
@@ -65,10 +68,6 @@ build() {
 # shellcheck disable=SC2154
 build_ps2-ee-binutils-gdb() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
@@ -82,21 +81,23 @@ build_ps2-ee-binutils-gdb() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
+  mkdir -p "${srcdir}/${_bu}-root"
   cd "${srcdir}/${pkgbase}-${_bu}"
 
   for _target in "mips64r5900el-ps2-elf"; do
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --disable-separate-code
                            --disable-sim
                            --disable-nls)
 
-    "../configure" "${_configure_opts[@]}"
+    "../configure" ${_configure_opts[@]}
 
     make "${_build_opts[@]}"
+    make DESTDIR="${srcdir}/${_bu}-root" "${_make_opts[@]}" install
     
     cd ..
   done
@@ -108,7 +109,7 @@ package_ps2-ee-binutils-gdb() {
   cd "${srcdir}/${pkgbase}-${_bu}"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip
+    make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
     cd ..
   done
 }
@@ -116,17 +117,16 @@ package_ps2-ee-binutils-gdb() {
 # shellcheck disable=SC2154
 build_ps2-ee-gcc-stage1() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
+  local _tbu_bin
+  local _bu_bin="${srcdir}/${_bu}-root/${_bin}"
+  export PATH="${PATH}:${_bu_bin}"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
                  -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
-                  -ldl
+                  # -ldl
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -137,6 +137,8 @@ build_ps2-ee-gcc-stage1() {
   cd "${srcdir}/${pkgbase}-gcc"
 
   for _target in "mips64r5900el-ps2-elf"; do
+    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}-stage1"
     mkdir -p "build-${_target}-stage1"
     cd "build-${_target}-stage1"
@@ -183,6 +185,7 @@ build_ps2-ee-newlib() {
                  -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
+                  -ldl
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -229,6 +232,7 @@ build_ps2-ee-newlib-nano() {
   local _osver="$(uname)"
 
   local _ldflags=(${LDFLAGS}
+                  -ldl
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -286,6 +290,7 @@ build_ps2-ee-pthread-embedded() {
   local _osver="$(uname)"
 
   local _ldflags=(${LDFLAGS}
+                  -ldl
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -323,17 +328,18 @@ build_ps2-ee-gcc-stage2() {
   local _bin="${_usr}/bin"
   local _osver="$(uname)"
 
-  # local _cflags=(-D_FORTIFY_SOURCE=0
-  #                -O2
-  #                -Wno-implicit-function-declaration)
+  local _cflags=(-D_FORTIFY_SOURCE=0
+                 -O2
+                 -Wno-implicit-function-declaration)
 
-  # local _ldflags=(${LDFLAGS}
-  #                 -s)
+  local _ldflags=(${LDFLAGS}
+                  -ldl
+                  -s)
 
-  # local _build_opts=(${_make_opts[@]}
-  #                    CFLAGS="${_cflags[*]}"
-  #                    CPPFLAGS="${_cflags[*]}"
-  #                    LDFLAGS="${_ldflags[*]}")
+  local _build_opts=(${_make_opts[@]}
+                     CFLAGS="${_cflags[*]}"
+                     CPPFLAGS="${_cflags[*]}"
+                     LDFLAGS="${_ldflags[*]}")
 
   cd "${srcdir}/${pkgbase}-gcc"
 
@@ -355,7 +361,7 @@ build_ps2-ee-gcc-stage2() {
 
     "../configure" "${_configure_opts[@]}"
 
-    make "${_make_opts[@]}" all
+    make "${_build_opts[@]}" all
     
     cd ..
   done
