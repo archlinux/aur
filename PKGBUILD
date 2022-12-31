@@ -86,7 +86,7 @@ build_ps2-ee-binutils-gdb() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
-  mkdir -p "${srcdir}/${_bu}-root"
+  mkdir -p "${srcdir}/buildroot"
   cd "${srcdir}/${pkgbase}-${_bu}"
 
   for _target in "mips64r5900el-ps2-elf"; do
@@ -103,7 +103,7 @@ build_ps2-ee-binutils-gdb() {
     "../configure" ${_configure_opts[@]}
 
     make "${_build_opts[@]}"
-    make DESTDIR="${srcdir}/${_bu}-root" "${_make_opts[@]}" install
+    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
     
     cd ..
   done
@@ -124,7 +124,7 @@ package_ps2-ee-binutils-gdb() {
 build_ps2-ee-gcc-stage1() {
   local _target
   local _tbu_bin
-  local _bu_bin="${srcdir}/${_bu}-root/${_bin}"
+  local _bu_bin="${srcdir}/buildroot/${_bin}"
   export PATH="${PATH}:${_bu_bin}"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
@@ -145,7 +145,7 @@ build_ps2-ee-gcc-stage1() {
   cd "${srcdir}/${pkgbase}-gcc"
 
   for _target in "mips64r5900el-ps2-elf"; do
-    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    _tbu_bin="${srcdir}/buildroot/${_usr}/${_target}/bin"
     export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}-stage1"
     mkdir -p "build-${_target}-stage1"
@@ -163,7 +163,7 @@ build_ps2-ee-gcc-stage1() {
     "../configure" ${_configure_opts[@]}
 
     make "${_build_opts[@]}" all
-    
+    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
     cd ..
   done
 }
@@ -185,7 +185,7 @@ build_ps2-ee-newlib() {
   local _target
 
   local _cflags=(-D_FORTIFY_SOURCE=0
-                 -O2
+                 # -O2
                  -Wno-implicit-function-declaration
                  -static)
 
@@ -202,7 +202,7 @@ build_ps2-ee-newlib() {
   cd "${srcdir}/${pkgbase}-newlib"
 
   for _target in "mips64r5900el-ps2-elf"; do
-    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    _tbu_bin="${srcdir}/buildroot/${_usr}/${_target}/bin"
     export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
@@ -215,7 +215,8 @@ build_ps2-ee-newlib() {
     "../configure" "${_configure_opts[@]}"
 
     make "${_build_opts[@]}" all
-    
+    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
+
     cd ..
   done
 }
@@ -254,7 +255,7 @@ build_ps2-ee-newlib-nano() {
   cd "${srcdir}/${pkgbase}-newlib"
 
   for _target in "mips64r5900el-ps2-elf"; do
-    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    _tbu_bin="${srcdir}/buildroot/${_usr}/${_target}/bin"
     export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}-nano"
     mkdir -p "build-${_target}-nano"
@@ -277,7 +278,8 @@ build_ps2-ee-newlib-nano() {
     "../configure" "${_configure_opts[@]}"
 
     make "${_build_opts[@]}" all
-    
+    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
+
     cd ..
   done
 }
