@@ -74,9 +74,11 @@ build_ps2-ee-binutils-gdb() {
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
+                 # -static
                  -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
+                  # -Bstatic
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -92,6 +94,7 @@ build_ps2-ee-binutils-gdb() {
     mkdir -p "build-${_target}"
     cd "build-${_target}"
     local _configure_opts=(--prefix="/${_usr}"
+                           --infodir="/${_usr}/share/info"
                            --target="${_target}"
                            --disable-separate-code
                            --disable-sim
@@ -131,6 +134,7 @@ build_ps2-ee-gcc-stage1() {
 
   local _ldflags=(${LDFLAGS}
                   # -ldl
+                  # -Bstatic
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -182,10 +186,12 @@ build_ps2-ee-newlib() {
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
-                 -Wno-implicit-function-declaration)
+                 -Wno-implicit-function-declaration
+                 -static)
 
   local _ldflags=(${LDFLAGS}
-                  -ldl
+                  # -ldl
+                  -Bstatic
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -196,12 +202,15 @@ build_ps2-ee-newlib() {
   cd "${srcdir}/${pkgbase}-newlib"
 
   for _target in "mips64r5900el-ps2-elf"; do
+    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
     local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}")
 
+    CFLAGS="${_cflags[*]}" \
     CFLAGS_FOR_TARGET="-02" \
     "../configure" "${_configure_opts[@]}"
 
@@ -226,9 +235,15 @@ package_ps2-ee-newlib() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib-nano() {
   local _target
+  local _cflags=(-O2
+                 -Wno-implicit-function-declaration
+                 # -D_FORTIFY_SOURCE=0
+                 -static
+                 -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
-                  -ldl
+                  # -ldl
+                  -Bstatic
                   -s)
 
   local _build_opts=(${_make_opts[@]}
@@ -239,6 +254,8 @@ build_ps2-ee-newlib-nano() {
   cd "${srcdir}/${pkgbase}-newlib"
 
   for _target in "mips64r5900el-ps2-elf"; do
+    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
+    export PATH="${PATH}:${_tbu_bin}"
     rm -rf "build-${_target}-nano"
     mkdir -p "build-${_target}-nano"
     cd "build-${_target}-nano"
