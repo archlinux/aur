@@ -59,6 +59,12 @@ _root="opt/ps2dev"
 _usr="${_root}/${_module}"
 _bin="${_usr}/bin"
 
+cflags=(-static
+        -Wno-implicit-function-declaration)
+ldflags=(${LDFLAGS}
+         -Bstatic
+         -s)
+
 build() {
   "build_${_platform}-${_module}-${_bu}"
   "build_${_platform}-${_module}-gcc-stage1"
@@ -72,14 +78,11 @@ build() {
 build_ps2-ee-binutils-gdb() {
   local _target
 
-  local _cflags=(-D_FORTIFY_SOURCE=0
-                 -O2
-                 # -static
-                 -Wno-implicit-function-declaration)
+  local _cflags=(${cflags[@]}
+                 -D_FORTIFY_SOURCE=0
+                 -O2)
 
-  local _ldflags=(${LDFLAGS}
-                  # -Bstatic
-                  -s)
+  local _ldflags=(${ldflags[@]})
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -136,15 +139,14 @@ build_ps2-ee-gcc-stage1() {
   export LDFLAGS
   export PATH="${PATH}:${_bu_bin}"
 
-  local _cflags=(-D_FORTIFY_SOURCE=0
+  local _cflags=(${cflags[@]}
+                 -D_FORTIFY_SOURCE=0
                  -O2
                  -Wno-implicit-function-declaration
                  -static)
 
-  local _ldflags=(${LDFLAGS}
-                  # -ldl
-                  # -Bstatic
-                  -s)
+  local _ldflags=(${ldflags[@]})
+                  # -ldl)
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -201,15 +203,12 @@ build_ps2-ee-newlib() {
   export CPPFLAGS
   export LDFLAGS
 
-  local _cflags=(-D_FORTIFY_SOURCE=0
+  local _cflags=(${cflags[@]}
                  # -O2
-                 -Wno-implicit-function-declaration
-                 -static)
+                 -D_FORTIFY_SOURCE=0)
 
-  local _ldflags=(${LDFLAGS}
-                  # -ldl
-                  -Bstatic
-                  -s)
+  local _ldflags=(${ldflags[@]})
+                  # -ldl)
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -253,15 +252,12 @@ package_ps2-ee-newlib() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib-nano() {
   local _target
-  local _cflags=(-Wno-implicit-function-declaration
+  local _cflags=(${cflags[@]})
                  # -O2
-                 # -D_FORTIFY_SOURCE=0
-                 -static)
+                 # -D_FORTIFY_SOURCE=0)
 
-  local _ldflags=(${LDFLAGS}
-                  # -ldl
-                  -Bstatic
-                  -s)
+  local _ldflags=(${ldflags[@]})
+                  # -ldl)
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -316,9 +312,8 @@ package_ps2-ee-newlib-nano() {
 build_ps2-ee-pthread-embedded() {
   local _target
 
-  local _ldflags=(${LDFLAGS}
-                  -ldl
-                  -s)
+  local _ldflags=(${ldflags[@]})
+                  # -ldl)
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -331,6 +326,7 @@ build_ps2-ee-pthread-embedded() {
     cd "platform/${_platform}"
 
     make "${_make_opts[@]}" all
+    make DESTDIR="${srcdir}/buildroot" "${_make_opts[@]}" install
     cd ..
   done
 }
@@ -351,15 +347,12 @@ package_ps2-ee-pthread-embedded() {
 build_ps2-ee-gcc-stage2() {
   local _target
 
-  local _cflags=(-D_FORTIFY_SOURCE=0
-                 -O2
-                 -static
-                 -Wno-implicit-function-declaration)
+  local _cflags=(${cflags[@]}
+                 -O2)
+                 # -D_FORTIFY_SOURCE=0)
 
-  local _ldflags=(${LDFLAGS}
-                  # -ldl
-                  -Bstatic
-                  -s)
+  local _ldflags=(${ldflags[@]})
+                  # -ldl)
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -399,7 +392,6 @@ package_ps2-ee-gcc-stage2() {
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}-stage2"
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
-    make "${_make_opts[@]}" clean
     cd ..
   done
 }
