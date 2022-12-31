@@ -1,6 +1,6 @@
 pkgbase = hop-cli
 	pkgdesc = Interact with Hop in your terminal
-	pkgver = 0.2.14
+	pkgver = 0.2.15
 	pkgrel = 1
 	url = https://hop.io
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hop-cli
 	license = MPL-2.0
 	makedepends = rust
 	makedepends = cargo
-	source = hop_cli-0.2.14.tar.gz::https://github.com/hopinc/cli/archive/refs/tags/v0.2.14.tar.gz
-	sha256sums = 6ff44b4519bb4854a9880ed2e7c10ad8d5a9eba26d4b3afe0e00d71cd4f7a7a7
+	source = hop_cli-0.2.15.tar.gz::https://github.com/hopinc/cli/archive/refs/tags/v0.2.15.tar.gz
+	sha256sums = 50cc632925ee034da5e78fac736e4413dbab8dce62a3967c8efac28112ec1ba7
 
 pkgname = hop-cli
