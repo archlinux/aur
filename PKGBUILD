@@ -2,8 +2,8 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=0.5.0.r1.gd94f329ac
-pkgrel=2
+pkgver=0.5.0.r19.gf2fe421cc
+pkgrel=1
 pkgdesc="2-D space trading and mercenary game forked from the Naev project. Development branch."
 arch=('x86_64')
 url="https://naikari.github.io/"
