@@ -137,7 +137,7 @@ build_ps2-ee-gcc-stage1() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:${_bu_bin}"
+  export PATH="${PATH}:${}${_bu_bin}"
 
   local _cflags=(${cflags[@]}
                  -D_FORTIFY_SOURCE=0
@@ -346,6 +346,17 @@ package_ps2-ee-pthread-embedded() {
 # shellcheck disable=SC2154
 build_ps2-ee-gcc-stage2() {
   local _target
+  local _bu_bin="${srcdir}/buildroot/${_bin}"
+
+  CFLAGS=""
+  CXXFLAGS=""
+  CPPFLAGS=""
+  LDFLAGS=""
+  export CFLAGS
+  export CXXFLAGS
+  export CPPFLAGS
+  export LDFLAGS
+  export PATH="${PATH}:${}${_bu_bin}"
 
   local _cflags=(${cflags[@]}
                  -I"${srcdir}/buildroot/${_usr}/include"
