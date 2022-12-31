@@ -1,0 +1,26 @@
+pkgbase = casaos-user-service
+	pkgdesc = Provides user management functionalities to CasaOS.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-UserService
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = casaos
+	license = APACHE
+	provides = casaos
+	backup = etc/casaos/user-service.conf
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-amd64-casaos-user-service-v0.4.0.tar.gz
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-amd64-casaos-user-service-migration-tool-v0.4.0.tar.gz
+	sha256sums_x86_64 = 64bb6a6b465f2f04489f55251b7bb62c29360f25505d6eda377a12c584ce644d
+	sha256sums_x86_64 = 3b4baf21b8c25cff66a6145f93095343dca344993f8753df2e677c56d83ee0d2
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-arm64-casaos-user-service-v0.4.0.tar.gz
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-arm64-casaos-user-service-migration-tool-v0.4.0.tar.gz
+	sha256sums_aarch64 = b901d1c357263cc353a08a52ea5cfb481c5d0b8776df63f65309889032033e0f
+	sha256sums_aarch64 = c59f6ab85430cf7475919aaaa49523a75815aee434e141c6c921a09949074c3e
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-arm-7-casaos-user-service-v0.4.0.tar.gz
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-UserService/releases/download/v0.4.0/linux-arm-7-casaos-user-service-migration-tool-v0.4.0.tar.gz
+	sha256sums_armv7h = 6ef1a10fa156dfaa6c3055a7361e419d6fe165e28b3f67c945761f99c1658841
+	sha256sums_armv7h = afeaffe956afd6a9a92f9769c5cde58f78165ac3ea9359d867a7f74cdd89e9cd
+
+pkgname = casaos-user-service
