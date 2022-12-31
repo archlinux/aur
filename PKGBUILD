@@ -7,7 +7,6 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/IceWhaleTech/CasaOS-LocalStorage"
 license=('APACHE')
 groups=('casaos')
-provides=('casaos')
 backup=('etc/casaos/local-storage.conf')
 source_x86_64=(
 	${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
@@ -39,6 +38,5 @@ package() {
 	install -Dm755 "${_sysdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm755 "${_sysdir}/usr/bin/${pkgname}-migration-tool" "${pkgdir}/usr/bin/${pkgname}-migration-tool"
 	install -Dm644 "${_sysdir}/etc/casaos/${_name}.conf.sample" "${pkgdir}/etc/casaos/${_name}.conf"
-	install -Dm644 "${_sysdir}/etc/casaos/${_name}.conf.sample" "${pkgdir}/etc/casaos/${_name}.conf.sample"
 	install -Dm644 "${_sysdir}/usr/lib/systemd/system/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
