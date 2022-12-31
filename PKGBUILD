@@ -2,7 +2,7 @@
 
 pkgname=python-plyer
 _name=plyer
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Platform-independent wrapper for platform-dependent APIs"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/kivy/plyer"
 license=('MIT')
 options=(!emptydirs)
 source=(https://github.com/kivy/$_name/archive/$pkgver.tar.gz)
-sha256sums=('21baf4a245f192a0a61c6f1d7526b28d4d4366039c62dac3fcd746b38aee161d')
+sha256sums=('ea95f48ad127faf43a35917a002a2e292d3449f2394b6794b8ecd59f710b5fe0')
 
 build() {
   cd "$srcdir/${_name}-$pkgver"

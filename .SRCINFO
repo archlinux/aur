@@ -1,6 +1,6 @@
 pkgbase = python-plyer
 	pkgdesc = Platform-independent wrapper for platform-dependent APIs
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/kivy/plyer
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-plyer
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://github.com/kivy/plyer/archive/2.0.0.tar.gz
-	sha256sums = 21baf4a245f192a0a61c6f1d7526b28d4d4366039c62dac3fcd746b38aee161d
+	source = https://github.com/kivy/plyer/archive/2.1.0.tar.gz
+	sha256sums = ea95f48ad127faf43a35917a002a2e292d3449f2394b6794b8ecd59f710b5fe0
 
 pkgname = python-plyer
-
