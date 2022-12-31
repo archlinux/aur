@@ -355,8 +355,8 @@ build_ps2-ee-gcc-stage2() {
                  # -D_FORTIFY_SOURCE=0)
 
   local _ldflags=(${ldflags[@]}
-                  -ldl
-                  "${srcdir}/buildroot/${_usr}/lib/libpthreadmpc.a")
+                  # -ldl
+                  "${srcdir}/buildroot/${_usr}/lib/libpthread.a")
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
