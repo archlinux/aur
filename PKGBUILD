@@ -3,13 +3,14 @@
 _pkgname=libsignal-protocol-javascript
 pkgname="${_pkgname}-git"
 pkgver=1.3.0.r5.g4fbea5a
-pkgrel=1
+pkgrel=3
 license=(GPL3)
 arch=(any)
 url="https://github.com/signalapp/${_pkgname}"
+conflicts=("${_pkgname}")
 makedepends=(emscripten npm grunt-cli)
 source=("git+${url}")
-sha256sums=('SKIP')
+sha256sums=(SKIP)
 
 pkgver() {
 	cd -- "${_pkgname}"
@@ -26,4 +27,5 @@ package() {
 	cd -- "${_pkgname}"
 	install -dm755 "$pkgdir"/usr/share/webapps/"${_pkgname}"
 	cp -R dist "$pkgdir"/usr/share/webapps/"${_pkgname}"/
+	cp build/curve25519_compiled.wasm "$pkgdir"/usr/share/webapps/"${_pkgname}"/dist/
 }
