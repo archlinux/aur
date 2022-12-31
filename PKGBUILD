@@ -1,53 +1,72 @@
-# This is the PKGBUILD for sra-tools
-# Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
-# Maintainer: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
+# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Contributor: sukanka <su975853527 at gmail>
+# Contributor: Aaron Baker <aa{last name}99{at}gmail{dt}org>
+# Contributor: Georgios Amanakis <g_amanakis{at}yahoo{dt}com>
 
 pkgname=sra-tools
-pkgver=2.10.0
+_dep=ncbi-vdb
+pkgver=3.0.2
+_depver=3.0.2
 pkgrel=1
-pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
-arch=('x86_64')
-url="http://github.com/ncbi/sra-tools/"
-depends=('libxml2' 'file' 'hdf5' 'ngs' 'ncbi-vdb')
-optdepends=('fuse: mount remote genome reference files')
-provides=('sra-tools')
-license=('custom:PublicDomain')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/$pkgver.tar.gz"
-	"sra-tools.patch")
-sha256sums=('6d2b02bad674cde6b9677a522f62da092da5471d23738976abce8eae5710fa0c'
-            '59c87371b10a3d8f7c1c8312c534ec9a6374cb3428ecbeb42c60cf422cab0782')
+pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
+url="https://github.com/ncbi/sra-tools"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
+        "$_dep-$_depver.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/$_depver.tar.gz")
+license=('custom: Public Domain')
+provides=('ncbi-vdb')
+arch=(x86_64)
+depends=('hdf5' 'python' 'mbedtls' 'libxml2')
+makedepends=('cmake'  'doxygen' 'java-runtime' 'patchelf')
+sha256sums=('44b87153f25366dc16cbb1a23b1db71dad9a5b9dac58c0692404120d8eede7c8'
+            '275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59')
 
 prepare(){
-  cd $pkgname-$pkgver
-
-  # sra-tools tries to link to hdf5 as a static library but Arch provides this as 
-  # a dynamic library https://bbs.archlinux.org/viewtopic.php?id=208018
-  sed -e 's/-shdf5/-lhdf5/' -i tools/pacbio-load/Makefile
-  patch -p1 -i ../sra-tools.patch
+  cd ${srcdir}/"$pkgname-$pkgver"
+  # fix permission denied in make install,
+  # and we manually install them.
+  sed -i 's|/etc/ncbi|${CMAKE_CURRENT_SOURCE_DIR}/etc/ncbi|g' build/env.cmake
+  sed -i 's|/etc/profile.d/sra-tools|${SRC_DIR}/etc/profile.d/sra-tools|g' build/install.sh
 }
-
 build(){
-  cd "${pkgname}-${pkgver}"
-  ./configure \
-	--prefix="$pkgdir/usr/" \
-	--build-prefix="$srcdir/build_dir" \
-	--with-ngs-sdk-prefix="/usr" \
-	--with-ncbi-vdb-sources="/usr/src/ncbi-vdb-$pkgver" \
-	--with-ncbi-vdb-build="/usr/src/ncbi-vdb-$pkgver/build_dir"
+  cd "$_dep-$_depver"
+  install -d  build1
+  cd build1
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  make
+
+  cd ${srcdir}/"$pkgname-$pkgver"
+  install -d  build1
+  cd build1
+  cmake .. -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+        -DVDB_INCDIR="$srcdir/$_dep-$_depver/interfaces/" \
+        -DVDB_LIBDIR="$srcdir/$_dep-$_depver/build1/lib/" \
   make
 }
 
-#check(){
-#  cd "${pkgname}-${pkgver}"
-#  make -k test
-#}
-
 package(){
-  cd "$pkgname-$pkgver"
-#  make "ROOT=$pkgdir" install
-  make install
+  install -d  $srcdir/$_dep-$_depver/interfaces/kfg/ncbi/etc/profile.d/
 
-  # add the license
-  mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
-  cp "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$_dep-$_depver"/build1
+  make DESTDIR="$pkgdir" install
+
+  cd ${srcdir}/"$pkgname-$pkgver"/build1
+  make DESTDIR="$pkgdir" install
+  cp -rf ${srcdir}/"$pkgname-$pkgver"/etc "$pkgdir"
+  cp -rf $srcdir/$_dep-$_depver/interfaces/kfg/ncbi/etc "$pkgdir"
+  # install LICENSE file
+  install -Dm644 ${srcdir}/"$pkgname-$pkgver"/LICENSE  -t "$pkgdir"/usr/share/licenses/sra-tools/
+  # remove empty folder
+  rm -Rf "$pkgdir"/usr/include/kfg/ncbi/etc/
+  # remove symlinks, fix Insecure Runpaths, and fix filenames
+  patchelf --remove-rpath "$pkgdir"/usr/lib/libncbi-ngs.so.3.0.2
+    
+  find "$pkgdir"/usr/bin  -type l -delete
+  
+  for filename in "$pkgdir"/usr/bin/*
+    do [ -f "$filename" ] || continue
+    patchelf --remove-rpath $filename
+    mv "$filename" "${filename//.${pkgver}/}"
+  done
 }

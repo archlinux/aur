@@ -1,21 +1,22 @@
 pkgbase = sra-tools
-	pkgdesc = The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives.
-	pkgver = 2.10.0
+	pkgdesc = A collection of tools and libraries for using data in the INSDC Sequence Read Archives.
+	pkgver = 3.0.2
 	pkgrel = 1
-	url = http://github.com/ncbi/sra-tools/
+	url = https://github.com/ncbi/sra-tools
 	arch = x86_64
-	license = custom:PublicDomain
-	depends = libxml2
-	depends = file
+	license = custom: Public Domain
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = java-runtime
+	makedepends = patchelf
 	depends = hdf5
-	depends = ngs
-	depends = ncbi-vdb
-	optdepends = fuse: mount remote genome reference files
-	provides = sra-tools
-	source = sra-tools-2.10.0.tar.gz::https://github.com/ncbi/sra-tools/archive/2.10.0.tar.gz
-	source = sra-tools.patch
-	sha256sums = 6d2b02bad674cde6b9677a522f62da092da5471d23738976abce8eae5710fa0c
-	sha256sums = 59c87371b10a3d8f7c1c8312c534ec9a6374cb3428ecbeb42c60cf422cab0782
+	depends = python
+	depends = mbedtls
+	depends = libxml2
+	provides = ncbi-vdb
+	source = sra-tools-3.0.2.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.0.2.tar.gz
+	source = ncbi-vdb-3.0.2.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.0.2.tar.gz
+	sha256sums = 44b87153f25366dc16cbb1a23b1db71dad9a5b9dac58c0692404120d8eede7c8
+	sha256sums = 275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59
 
 pkgname = sra-tools
-
