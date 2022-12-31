@@ -4,7 +4,7 @@ _pkgname=ReorderCluster
 _pkgver=2.0
 pkgname=r-${_pkgname,,}
 pkgver=2.0
-pkgrel=4
+pkgrel=6
 pkgdesc='Reordering the dendrogram according to the class labels'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-gtools
   r-rcpp
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('38862ba2ef2a88ea70b12d50352a96f3b2ea032861256702387989bdfb20017f')
 
 build() {
