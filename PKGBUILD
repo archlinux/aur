@@ -2,7 +2,7 @@
 # Contributor: xatier
 _pkgname=fcitx5-mcbopomofo
 pkgname=fcitx5-mcbopomofo-git
-pkgver=243.e611aa7
+pkgver=2.4.2.r2.g1fa52be
 pkgrel=1
 pkgdesc="McBopomofo for fcitx5"
 arch=('x86_64')
@@ -18,14 +18,14 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     mkdir -p build
     cd build
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_TEST=Off
     make
 }
 
