@@ -1,12 +1,12 @@
 # Maintainer: Elias Blume <mail at elias-blu.me>
 pkgname=moonlight-qt-bin
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="moonlight-qt bin from appimage"
 arch=('x86_64')
 url="https://moonlight-stream.org"
 license=('GPL3')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme')
+depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'ffmpeg' 'sdl2_ttf' 'hicolor-icon-theme' 'openssl-1.1')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs')
 
 source=("${pkgname%-bin}-$pkgver.AppImage::https://github.com/moonlight-stream/moonlight-qt/releases/download/v${pkgver}/Moonlight-${pkgver}-x86_64.AppImage")
