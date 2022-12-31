@@ -28,6 +28,9 @@ _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
 checkdepends=('shellcheck')
+makedepends=("libgmp-static"
+             "mpfr-static"
+             "zstd-static")
 optdepends=()
 _bu_branch="${_module}-${_bu_ver}"
 _gcc_branch="${_module}-${_gcc_ver}"
@@ -123,7 +126,8 @@ build_ps2-ee-gcc-stage1() {
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
-                 -Wno-implicit-function-declaration)
+                 -Wno-implicit-function-declaration
+                 -static)
 
   local _ldflags=(${LDFLAGS}
                   # -ldl
@@ -142,7 +146,7 @@ build_ps2-ee-gcc-stage1() {
     rm -rf "build-${_target}-stage1"
     mkdir -p "build-${_target}-stage1"
     cd "build-${_target}-stage1"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --enable-languages="c"
                            --with-float=hard
@@ -152,9 +156,9 @@ build_ps2-ee-gcc-stage1() {
                            --disable-multilib
                            --disable-tls)
 
-    "../configure" "${_configure_opts[@]}"
+    "../configure" ${_configure_opts[@]}
 
-    make "${_build_opts[@]}"
+    make "${_build_opts[@]}" all
     
     cd ..
   done
@@ -166,8 +170,8 @@ package_ps2-ee-gcc-stage1() {
   cd "${srcdir}/${pkgbase}-gcc"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}-stage1"
-    make "${_make_opts}" install-strip
-    make "${_make_opts}" clean
+    make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
+    # make "${_make_opts}" clean
     cd ..
   done
 }
@@ -175,10 +179,6 @@ package_ps2-ee-gcc-stage1() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
@@ -199,7 +199,7 @@ build_ps2-ee-newlib() {
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}")
 
     CFLAGS_FOR_TARGET="-02" \
@@ -217,8 +217,8 @@ package_ps2-ee-newlib() {
   cd "${srcdir}/${pkgbase}-newlib"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip
-    make "${_make_opts}" clean
+    make ${_make_opts[@]} install-strip
+    make ${_make_opts[@]} clean
     cd ..
   done
 }
@@ -226,10 +226,6 @@ package_ps2-ee-newlib() {
 # shellcheck disable=SC2154
 build_ps2-ee-newlib-nano() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _ldflags=(${LDFLAGS}
                   -ldl
@@ -246,7 +242,7 @@ build_ps2-ee-newlib-nano() {
     rm -rf "build-${_target}-nano"
     mkdir -p "build-${_target}-nano"
     cd "build-${_target}-nano"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --disable-newlib-supplied-syscall
                            --enable-newlib-reent-small
@@ -275,8 +271,8 @@ package_ps2-ee-newlib-nano() {
   cd "${srcdir}/${pkgbase}-newlib-nano"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip
-    make "${_make_opts}" clean
+    make "${_make_opts[@]}" install-strip
+    make "${_make_opts[@]}" clean
     cd ..
   done
 }
@@ -284,10 +280,6 @@ package_ps2-ee-newlib-nano() {
 # shellcheck disable=SC2154
 build_ps2-ee-pthread-embedded() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _ldflags=(${LDFLAGS}
                   -ldl
@@ -314,8 +306,8 @@ package_ps2-ee-pthread-embedded() {
   cd "${srcdir}/${pkgbase}-${_pe}"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "platform/${_platform}"
-    make "${_make_opts}" install
-    make "${_make_opts}" clean
+    make "${_make_opts[@]}" install
+    make "${_make_opts[@]}" clean
     cd ..
   done
 }
@@ -323,10 +315,6 @@ package_ps2-ee-pthread-embedded() {
 # shellcheck disable=SC2154
 build_ps2-ee-gcc-stage2() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
-  local _bin="${_usr}/bin"
-  local _osver="$(uname)"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
@@ -347,11 +335,11 @@ build_ps2-ee-gcc-stage2() {
     rm -rf "build-${_target}-stage2"
     mkdir -p "build-${_target}-stage2"
     cd "build-${_target}-stage2"
-    local _configure_opts=(--prefix="${_usr}"
+    local _configure_opts=(--prefix="/${_usr}"
                            --target="${_target}"
                            --enable-languages="c,c++"
                            --with-float=hard
-                           --with-sysroot="${_usr}/${_target}"
+                           --with-sysroot="/${_usr}/${_target}"
                            --with-newlib
                            --disable-libssp
                            --disable-multilib
@@ -373,8 +361,8 @@ package_ps2-ee-gcc-stage2() {
   cd "${srcdir}/${pkgbase}-gcc"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}-stage2"
-    make "${_make_opts}" install-strip
-    make "${_make_opts}" clean
+    make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
+    make "${_make_opts[@]}" clean
     cd ..
   done
 }

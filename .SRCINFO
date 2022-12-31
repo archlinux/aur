@@ -6,6 +6,9 @@ pkgbase = ps2-ee
 	arch = x86_64
 	license = BSD
 	checkdepends = shellcheck
+	makedepends = libgmp-static
+	makedepends = mpfr-static
+	makedepends = zstd-static
 	source = ps2-ee-binutils-gdb::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
 	source = ps2-ee-gcc::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
 	source = ps2-ee-newlib::git+https://github.com/ps2dev/newlib#commit=6b90d31371ff4e0f41d64d7539038864899a6b40
