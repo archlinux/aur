@@ -6,8 +6,7 @@ pkgdesc="App management service manages CasaOS app lifecycle, such as installati
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/IceWhaleTech/CasaOS-AppManagement"
 license=('APACHE')
-# groups=('casaos')
-provides=('casaos')
+groups=('casaos')
 backup=('etc/casaos/app-management.conf')
 source_x86_64=(
 	${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
