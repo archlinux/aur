@@ -1,5 +1,5 @@
 pkgbase = mozc-ut-full
-	pkgver = 2.28.4800.102.20220723
+	pkgver = 2.28.4960.102.20221022
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
@@ -18,17 +18,17 @@ pkgbase = mozc-ut-full
 	makedepends = qt5-base
 	makedepends = ibus
 	makedepends = gyp
-	source = git+https://github.com/fcitx/mozc.git#commit=0ee47ed
+	source = git+https://github.com/fcitx/mozc.git#commit=d4a26a6
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
-	source = git+https://github.com/abseil/abseil-cpp.git#commit=2151058
-	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=216cea7
-	source = git+https://github.com/google/googletest.git#commit=703bd9c
-	source = git+https://chromium.googlesource.com/external/gyp#commit=9ecf45e
-	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
-	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=11086dd
-	source = git+https://github.com/google/protobuf.git#commit=cc7b1b5
-	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-20220723.tar.bz2
+	source = git+https://github.com/abseil/abseil-cpp.git
+	source = git+https://chromium.googlesource.com/breakpad/breakpad
+	source = git+https://github.com/google/googletest.git
+	source = git+https://chromium.googlesource.com/external/gyp
+	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
+	source = git+https://github.com/open-source-parsers/jsoncpp.git
+	source = git+https://github.com/google/protobuf.git
+	source = https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-20221022.tar.bz2
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
 	sha512sums = SKIP
 	sha512sums = dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302
@@ -40,7 +40,7 @@ pkgbase = mozc-ut-full
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 6fa5a6c9f97d97216d7fb4711299d3322667252a2dd74db08257edafaa3affc6db837cd9daa2c81cd4235d1c8418a10c10b22a3a6ef32aff33e69d7ec21daa5e
+	sha512sums = 08f8fe1757fd69c94d6d46a7f6cdd2398a6d946cb69531131697f5a35fdb970742fb26aa4285a2025ab14a6fe2992f4f1ec299d20b899db98cad1c53be9a0ca3
 
 pkgname = mozc-ut-full-common
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
