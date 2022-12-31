@@ -5,8 +5,8 @@
 # Contributor: phi-mah
 
 pkgname=toggldesktop-git
-_pkgname=${pkgname%-*}
-pkgver=7.5.454.r0.g918652058
+_pkgname="${pkgname%-*}"
+pkgver=7.5.473.r0.g322fb942e
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -14,11 +14,8 @@ url="https://github.com/toggl-open-source/toggldesktop"
 license=('BSD')
 depends=(
   'jsoncpp'
-  'libxss'
   'lua'
-  'openssl'
   'poco'
-  'qt5-base'
   'qt5-networkauth'
   'qt5-webengine'
   'qt5-x11extras'
@@ -35,33 +32,31 @@ sha512sums=('SKIP'
             '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd "${_pkgname}"
 
-  # patch to build
   patch -p1  < ../jsoncpp.patch
 }
 
 build() {
-  cmake -S $_pkgname \
+  cmake -S "${_pkgname}" \
     -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DTOGGL_VERSION:STRING=$pkgver \
+    -DTOGGL_VERSION:STRING="${pkgver}" \
     -DTOGGL_PRODUCTION_BUILD=ON \
     -DTOGGL_ALLOW_UPDATE_CHECK=ON \
     -DUSE_BUNDLED_LIBRARIES=OFF
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  # license file in standard location
-  install -Dm644 $_pkgname/LICENSE "$pkgdir/usr/share/licenses/$_pkgname}/LICENSE"
+  install -Dm644 ${_pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
