@@ -1,22 +1,20 @@
 pkgbase = linuxqq
-	pkgdesc = Tencent QQ for Linux
-	pkgver = 2.0.0_b2_1089
+	pkgdesc = New Linux QQ based on Electron
+	pkgver = 3.0.0_571
 	pkgrel = 1
-	epoch = 1
-	url = https://im.qq.com/linuxqq
+	url = https://im.qq.com/linuxqq/
 	arch = x86_64
+	arch = aarch64
 	license = custom
-	depends = gtk2
-	depends = glibc
-	depends = gcc-libs
 	depends = nss
-	replaces = qq-linux
-	source = linuxqq-2.0.0_b2_1089_orig_x86_64.pkg.tar.xz::https://down.qq.com/qqweb/LinuxQQ/linuxqq_2.0.0-b2-1089_x86_64.pkg.tar.xz
-	source = qq.desktop
-	source = linuxqq.install
-	sha512sums = bf1cece63f30b5dd655bf2a85128a4dcabe00de8474b90f8553091f722e7140f545f6d97b6820b9c3c1f27ebd127e8a4ebc6e247ffe503bdc2a4cd97c1145dcb
-	sha512sums = a6118c6a2dc03d22b423d4bca393c6a2ef0c8494f6480db0ee1b29ca28485e3a5e648d9485595d2d4c921d1688f72c70a70949c241b2fdde6d43bd0053cdcaa2
-	sha512sums = 11782ecda823feedc925e0ba87380dedb5ab19aeab7bd8e3be52f7e71737429ef1341a96554045b30ba91e9a7559c5a1c7cdf3bca1b75e2908a0ddad9a7b918b
+	depends = alsa-lib
+	depends = gtk3
+	depends = gjs
+	depends = at-spi2-core
+	optdepends = libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
+	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb
+	sha512sums_x86_64 = 933a54d7a68da74854a2f3c5e6763366b1059295a477c74385333c30254ad3cd3d5be609f2c81b3b3c0af3816c542a63c6ee4110afb5858b04345fa41f852e5e
+	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_arm64.deb
+	sha512sums_aarch64 = bab4ed630e8db0c4ff07ed13e93323031aa45cd7098543da9b03d343ba733562fe2d3e1431ba5f00cfeb47561daa793c43846782e2bc87706244ce3e3790050d
 
 pkgname = linuxqq
-

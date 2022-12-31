@@ -1,32 +1,33 @@
-# Maintainer: Jack Wu (OriginCode) <self@origincode.me>
-
+# Maintainer: Purofle <purofle@gmail.com>
+# Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
-pkgver=2.0.0_b2_1089
+pkgver=3.0.0_571
 pkgrel=1
-epoch=1
-arch=('x86_64')
-pkgdesc="Tencent QQ for Linux"
-url="https://im.qq.com/linuxqq"
-depends=('gtk2' 'glibc' 'gcc-libs' 'nss')
+pkgdesc='New Linux QQ based on Electron'
+arch=('x86_64' 'aarch64')
+url="https://im.qq.com/linuxqq/"
 license=('custom')
-source=(
-    "$pkgname-${pkgver}_orig_x86_64.pkg.tar.xz::https://down.qq.com/qqweb/LinuxQQ/linuxqq_2.0.0-b2-1089_x86_64.pkg.tar.xz"
-    "qq.desktop"
-    "linuxqq.install"
-)
-sha512sums=('bf1cece63f30b5dd655bf2a85128a4dcabe00de8474b90f8553091f722e7140f545f6d97b6820b9c3c1f27ebd127e8a4ebc6e247ffe503bdc2a4cd97c1145dcb'
-            'a6118c6a2dc03d22b423d4bca393c6a2ef0c8494f6480db0ee1b29ca28485e3a5e648d9485595d2d4c921d1688f72c70a70949c241b2fdde6d43bd0053cdcaa2'
-            '11782ecda823feedc925e0ba87380dedb5ab19aeab7bd8e3be52f7e71737429ef1341a96554045b30ba91e9a7559c5a1c7cdf3bca1b75e2908a0ddad9a7b918b')
-replaces=('qq-linux')
+depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
+optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/${pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/${pkgname}_${pkgver//_/-}_arm64.deb")
+sha512sums_x86_64=('933a54d7a68da74854a2f3c5e6763366b1059295a477c74385333c30254ad3cd3d5be609f2c81b3b3c0af3816c542a63c6ee4110afb5858b04345fa41f852e5e')
+sha512sums_aarch64=('bab4ed630e8db0c4ff07ed13e93323031aa45cd7098543da9b03d343ba733562fe2d3e1431ba5f00cfeb47561daa793c43846782e2bc87706244ce3e3790050d')
 
 package() {
-    mkdir -p "$pkgdir/opt/tencent-qq"
-    cp -pr "$srcdir/usr/local/bin/"* "$pkgdir/opt/tencent-qq/"
-    cp -pr "$srcdir/usr/local/share/tencent-qq/"* "$pkgdir/opt/tencent-qq/"
+	echo "  -> Extracting the data.tar.xz..."
+	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
+	chmod -R 755 "${pkgdir}/"
 
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s ../../opt/tencent-qq/qq "$pkgdir/usr/bin/qq"
-    
-    install -Dm644 "$pkgdir/opt/tencent-qq/qq.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/qq.png"
-    install -Dm644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/qq.desktop"
+	echo "  -> Installing..."
+	# Launcher
+	install -d "${pkgdir}/usr/bin/"
+	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${pkgname}"
+
+	# Launcher Fix
+	sed -i '3s!/opt/QQ/qq!/usr/bin/linuxqq!' "${pkgdir}/usr/share/applications/qq.desktop"
+
+	# License
+	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
