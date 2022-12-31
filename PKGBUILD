@@ -3,12 +3,12 @@
 
 pkgname='slang-snapshot'
 _pkgname='slang'
-_pkgver='2.3.4-5'
+_pkgver='2.3.4-6'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 provides=('slang')
 conflicts=('slang')
 url='https://jedsoft.org/snapshots/'
@@ -23,7 +23,7 @@ options=('lto' '!makeflags')
 source=("${url}slang-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('f4913d9b0f686fa00dfb0b165f30e900')
+md5sums=('7cc28752c6b6adf69b3ac8ee05849045')
 
 build() {
   cd "${_pkgname}-${_prever}" || exit 1
@@ -35,7 +35,7 @@ build() {
 check() {
   cd "${_pkgname}-${_prever}" || exit 1
 
-  test "$CARCH" = 'i686' || make check
+  test "$CARCH" != 'i686' && make check
 }
 
 package() {
@@ -46,13 +46,13 @@ package() {
 
 # Calculated
 sha256sums=(
-  'f82d8ec4baa47dbf16e7e3b7b23ccc8ff9f426886b63f3fb1b97aa9d6c2b76f7'
+  '4be0a4f6f19d4e3c1ad2ac8912e78336865ea09c31fc16e6dacf637eb2b1c713'
 )
 sha512sums=(
-  '7c2ab5f3f4736c9671b715122be0fb39675ffc742902366f0b2261c11e28005ca9cb4c1eb966f310f085022be9632ee2c53aa56ef7c628c2f47578a8c2c7e9f2'
+  '1049b85d9957a436861546fb8db24907e65700d6b59790b9f2e215d24664a771838bc89dd79d6954d415b35c8f765f709ff9a01c1a17c55aa29d9835bd33dfa0'
 )
 b2sums=(
-  '6105c2fa7ef1c9b20d78896e0b03f9676bb63b932ac3630a0c2f6879b3fd0d96f1289084fefd69e84c977c1b48494e5f8fbe928b76198bb3e057921a39bfb4e5'
+  'd1a96d9314d699e025c9076e78b094fdbbea834c13944c64d5b5c1c12b3d4b2b0aea51d15cf72a3d773686c454e5263345df8509dcc6fb741563c042d59ed117'
 )
 
 # eof
