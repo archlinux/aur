@@ -19,8 +19,8 @@ pkgname=(
   pipewire-full-ffmpeg-git
   pipewire-full-roc-git
 )
-pkgver=0.3.61.r5.gc933c5ed
-pkgrel=1
+pkgver=0.3.63.r22.ga65a58d1
+pkgrel=2
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -37,7 +37,7 @@ makedepends=(
   jack2
   vulkan-headers vulkan-icd-loader
   ffmpeg
-  roc-toolkit
+  'roc-toolkit>=0.2'
 )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -316,7 +316,7 @@ package_pipewire-full-ffmpeg-git() {
 
 package_pipewire-full-roc-git() {
   pkgdesc+=" - ROC support"
-  depends=(pipewire-full-git roc-toolkit)
+  depends=(pipewire-full-git libroc.so)
   provides=(pipewire-roc)
   conflicts=(pipewire-roc)
 

@@ -1,7 +1,7 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.61.r5.gc933c5ed
-	pkgrel = 1
+	pkgver = 0.3.63.r22.ga65a58d1
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = MIT
@@ -40,7 +40,7 @@ pkgbase = pipewire-full-git
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	makedepends = ffmpeg
-	makedepends = roc-toolkit
+	makedepends = roc-toolkit>=0.2
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
@@ -82,7 +82,7 @@ pkgname = pipewire-full-git
 	optdepends = gst-plugin-pipewire-full-git: GStreamer support
 	optdepends = ofono: ofono Bluetooth HFP support
 	optdepends = hsphfpd: hsphfpd Bluetooth HSP/HFP support
-	provides = pipewire=0.3.61
+	provides = pipewire=0.3.63
 	provides = alsa-card-profiles
 	provides = libpipewire-0.3.so
 	provides = pipewire-full-libcamera-git
@@ -203,6 +203,6 @@ pkgname = pipewire-full-ffmpeg-git
 pkgname = pipewire-full-roc-git
 	pkgdesc = Low-latency audio/video router and processor - ROC support
 	depends = pipewire-full-git
-	depends = roc-toolkit
+	depends = libroc.so
 	provides = pipewire-roc
 	conflicts = pipewire-roc
