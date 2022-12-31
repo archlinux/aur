@@ -5,7 +5,7 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.80.2.809.gaad497c13
+pkgver=2.80.2.848.gf2745fae2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -23,8 +23,8 @@ pkgver() {
 }
 
 prepare() {
-    # cleanup
-    [[ -e "$HOME/.etlegacy/legacy" ]] && cd $HOME/.etlegacy/legacy && rm -f *.so && rm -f *.dat
+    # cleanup disabled as it removes custom hud menus
+    # [[ -e "$HOME/.etlegacy/legacy" ]] && cd $HOME/.etlegacy/legacy && rm -f *.so && rm -f *.dat
     cd "$srcdir/$_gitname"
     rm -rf CMakeFiles include legacy glsl
     rm -f etl etlded *.so *.a *.cmake CMakeCache.txt install_manifest.txt
