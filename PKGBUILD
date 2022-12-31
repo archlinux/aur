@@ -14,7 +14,7 @@ makedepends=(
 	'fmt>=9'
 	'git'
 	'robin-map>=0.6.2'
-	'xbyak>=6.61'
+	'xbyak>=6.68'
 	'zydis>=4'
 )
 checkdepends=('catch2>=2.13.8' 'catch2<3')
