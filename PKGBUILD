@@ -8,7 +8,7 @@ _bu="binutils-gdb"
 _base="toolchain"
 pkgbase="${_platform}-${_module}"
 pkgname=("${pkgbase}-${_bu}"
-         "${pkgbase}-gcc")
+         "${pkgbase}-gcc-stage1")
 pkgver=v1.0
 _bu_ver="v2.35.2"
 _gcc_ver="v11.3.0"
@@ -22,6 +22,11 @@ _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
 checkdepends=('shellcheck')
+makedepends=("libgmp-static"
+             "mpfr-static"
+             "libmpc-static"
+             "gmp4"
+             "gcc7")
 optdepends=()
 _bu_branch="${_module}-${_bu_ver}"
 _gcc_branch="${_module}-${_gcc_ver}"
@@ -34,6 +39,14 @@ source=("${pkgbase}-${_bu}::git+${_github}/${_bu}#commit=${_bu_commit}"
 sha256sums=('SKIP'
             'SKIP')
 
+_n_cpu="$(getconf _NPROCESSORS_ONLN)"
+_make_opts=(-j "${_n_cpu}")
+
+build() {
+  "build_${_platform}-${_module}-${_bu}"
+  "build_${_platform}-${_module}-gcc-stage1"
+}
+
 # shellcheck disable=SC2154
 build_ps2-iop-binutils-gdb() {
   local _target
@@ -41,16 +54,27 @@ build_ps2-iop-binutils-gdb() {
   local _usr="${_root}/${_module}"
   local _bin="${_usr}/bin"
   local _osver="$(uname)"
-  local _n_cpu=$(getconf _NPROCESSORS_ONLN)
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
+                 -I/usr/include
+                 -L/usr/lib
                  -Wno-implicit-function-declaration)
 
   local _ldflags=(${LDFLAGS}
+                  -I/usr/include
+                  -L/usr/lib
+                  -lgmp
+                  -lmpfr
+                  -lmpc
+                  -static
+                  /usr/lib/libgmp4.a
+                  /usr/lib/libgmpxx4.a
+                  /usr/lib/libgmp.a
+                  /usr/lib/libmpfr.a
+                  /usr/lib/libmpc.a
                   -s)
 
-  local _make_opts=(-j "${_n_cpu}")
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
                      CPPFLAGS="${_cflags[*]}"
@@ -66,9 +90,18 @@ build_ps2-iop-binutils-gdb() {
                            --target="${_target}"
                            --disable-separate-code
                            --disable-sim
+                           --with-gmp
+                           --with-mpfr
+                           --with-mpc
                            --disable-nls)
-
-    "../configure" "${_configure_opts[@]}"
+    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    CC="/usr/bin/gcc" \
+    CXX="/usr/bin/g++" \
+    CFLAGS="${_cflags[*]}" \
+    CXXFLAGS="${_cxxflags[*]}" \
+    LDFLAGS="${_ldflags[*]}" \
+    LIBS="${_libs[*]}" \
+    "../configure" ${_configure_opts[@]}
 
     make "${_build_opts[@]}"
     
@@ -78,8 +111,6 @@ build_ps2-iop-binutils-gdb() {
 
 # shellcheck disable=SC2154
 package_ps2-iop-binutils-gdb() {
-  local _n_cpu="$(getconf _NPROCESSORS_ONLN)"
-  local _make_opts=("-j" "${_n_cpu}")
   local _target
   cd "${srcdir}/${pkgbase}-${_bu}"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
@@ -90,26 +121,49 @@ package_ps2-iop-binutils-gdb() {
 }
 
 # shellcheck disable=SC2154
-build_ps2-iop-gcc() {
+build_ps2-iop-gcc-stage1() {
   local _target
   local _root="${pkgdir}/opt/ps2dev"
   local _usr="${_root}/${_module}"
   local _bin="${_usr}/bin"
   local _osver="$(uname)"
-  local _n_cpu=$(getconf _NPROCESSORS_ONLN)
+
+  CFLAGS=""
+  CXXFLAGS=""
+  CPPFLAGS=""
+  LDFLAGS=""
+  export CFLAGS
+  export CXXFLAGS
+  export CPPFLAGS
+  export LDFLAGS
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
-                 -Wno-implicit-function-declaration)
+                 -Wno-implicit-function-declaration
+                 -I/usr/include
+                 -L/usr/lib
+                 -static)
+                 # -ldl)
 
-  local _ldflags=(${LDFLAGS}
+  local _ldflags=(-I/usr/include
+                  # -rdynamic
+                  -L/usr/lib
+                  # -ldl
+                  -Bstatic
                   -s)
 
-  local _make_opts=(-j "${_n_cpu}")
+  local _libs=(-L/usr/lib)
+               # -ldl
+               # /usr/lib/libmpc.so
+               # /usr/lib/libmpfr.so
+               # /usr/lib/libgmp.so)
+
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
+                     CXXFLAGS="${_cflags[*]}"
                      CPPFLAGS="${_cflags[*]}"
-                     LDFLAGS="${_ldflags[*]}")
+                     LDFLAGS="${_ldflags[*]}"
+                     LIBS="${_libs[*]}")
 
   cd "${srcdir}/${pkgbase}-gcc"
 
@@ -121,10 +175,14 @@ build_ps2-iop-gcc() {
                            --target="${_target}"
                            --enable-languages="c"
                            --with-float=soft
-                           --with-headers=no
+                           --with-gmp
+                           --with-mpfr
+                           --with-mpc
+                           --without-headers
                            --without-newlib
-                           --without-clog
+                           --without-cloog
                            --without-ppl
+                           --disable-bootstrap
                            --disable-decimal-float
                            --disable-libada
                            --disable-libatomic
@@ -142,18 +200,30 @@ build_ps2-iop-gcc() {
                            --disable-nls
                            --disable-tls)
 
-    "../configure" "${_configure_opts[@]}"
+    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    CC="/usr/bin/gcc" \
+    CXX="/usr/bin/g++" \
+    CFLAGS="${_cflags[*]}" \
+    CXXFLAGS="${_cxxflags[*]}" \
+    LDFLAGS="${_ldflags[*]}" \
+    LIBS="${_libs[*]}" \
+    "../configure" ${_configure_opts[@]}
 
-    make "${_build_opts[@]}"
+    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    CC="/usr/bin/gcc" \
+    CXX="/usr/bin/g++" \
+    CFLAGS="${_cflags[*]}" \
+    CXXFLAGS="${_cxxflags[*]}" \
+    LDFLAGS="${_ldflags[*]}" \
+    LIBS="${_libs[*]}" \
+    make "${_build_opts[@]}" all
     
     cd ..
   done
 }
 
 # shellcheck disable=SC2154
-package_ps2-iop-gcc() {
-  local _n_cpu="$(getconf _NPROCESSORS_ONLN)"
-  local _make_opts=("-j" "${_n_cpu}")
+package_ps2-iop-gcc-stage1() {
   local _target
   cd "${srcdir}/${pkgbase}-gcc"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
@@ -161,9 +231,4 @@ package_ps2-iop-gcc() {
     make "${_make_opts}" install-strip
     cd ..
   done
-}
-
-build() {
-  "build_${_platform}-${_module}-${_bu}"
-  "build_${_platform}-${_module}-gcc"
 }

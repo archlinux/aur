@@ -6,6 +6,11 @@ pkgbase = ps2-iop
 	arch = x86_64
 	license = BSD
 	checkdepends = shellcheck
+	makedepends = libgmp-static
+	makedepends = mpfr-static
+	makedepends = libmpc-static
+	makedepends = gmp4
+	makedepends = gcc7
 	source = ps2-iop-binutils-gdb::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
 	source = ps2-iop-gcc::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
 	sha256sums = SKIP
@@ -13,4 +18,4 @@ pkgbase = ps2-iop
 
 pkgname = ps2-iop-binutils-gdb
 
-pkgname = ps2-iop-gcc
+pkgname = ps2-iop-gcc-stage1
