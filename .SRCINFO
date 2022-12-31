@@ -1,0 +1,19 @@
+pkgbase = casaos-cli
+	pkgdesc = A command-line tool to interact with CasaOS for testing and diagnosing purpose
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-CLI
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = casaos
+	license = APACHE
+	provides = casaos
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-CLI/releases/download/v0.4.0/linux-amd64-casaos-cli-v0.4.0.tar.gz
+	sha256sums_x86_64 = 98e2c056649120da963ee62a52056ec85ebbdaecfd2e339962ec39a94aa21d0c
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-CLI/releases/download/v0.4.0/linux-arm64-casaos-cli-v0.4.0.tar.gz
+	sha256sums_aarch64 = 5b145a5fe78f7ad1c285a2e9fa892323b5ce9c9e4aaea3ecd0887f694d04bb36
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-CLI/releases/download/v0.4.0/linux-arm-7-casaos-cli-v0.4.0.tar.gz
+	sha256sums_armv7h = 44a79eeb0374ff9ec9c00cc5193adc7e897164058b82135a1a9b39a072575eaa
+
+pkgname = casaos-cli
