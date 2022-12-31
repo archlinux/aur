@@ -5,7 +5,7 @@
 
 pkgname=usb-creator
 pkgver=0.3.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://git.launchpad.net/~usb-creator-hackers/usb-creator/+git/main"
@@ -29,17 +29,17 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_$pkgver
 b2sums=('96917cd9c3aa12f876b6120214a46d468f35955fea8d66614eb2dcba0063164a6ff68be3c658511016f51900b9d5aed987b44aa5590af7922344371ba1b6d25c')
 
 prepare() {
-    cd trunk
+    cd main
     sed -i 's/except ImportError/except (ImportError, ValueError)/g' usbcreator/frontends/gtk/unitysupport.py
 }
 
 build() {
-    cd trunk
+    cd main
     python setup.py build
 }
 
 package() {
-    cd trunk
+    cd main
 
     python3 setup.py install --root="$pkgdir/" --optimize=1
 
