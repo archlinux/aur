@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pyrsistent
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("https://github.com/tobgu/pyrsistent/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('1b954e2621ffad03a8885abf69673d842669c0f69f26f33ef02353b7eb46dd966c8d56b208cbc9de3ed197218ef578221bb5bc389b14db7321224e7a21515f7e')
+sha512sums=('045d9ca4a2a5c5525887fbbcae77b2bc0271e6a596686ad6281c74fb1f6c8d8a4b0c9444cbd951900d953c61d51cf9452290f1e63e9107f7828bfea6e6b34545')
 
 build() {
   cd pyrsistent-$pkgver
