@@ -1,0 +1,18 @@
+pkgbase = matsuba-bin
+	pkgdesc = lightweight japanese ime written in rust
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MrPicklePinosaur/matsuba
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = xdotool
+	depends = xmodmap
+	depends = sqlite3
+	provides = matsud
+	provides = matsucli
+	source = https://github.com/MrPicklePinosaur/matsuba/releases/download/v1.0/matsuba-linux.zip
+	md5sums = SKIP
+
+pkgname = matsuba-bin
