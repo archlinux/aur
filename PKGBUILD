@@ -18,7 +18,7 @@ prepare() {
     cd "$pkgname-$_pkgver"
 
     export RUSTUP_TOOLCHAIN=nightly
-    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
