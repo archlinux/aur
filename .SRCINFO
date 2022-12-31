@@ -1,5 +1,5 @@
 pkgbase = gmp4-static
-	pkgdesc = Legacy version of gmp. Provides libgmp.so.3.
+	pkgdesc = Legacy version of gmp. Provides libgmp4.a
 	pkgver = 4.3.2
 	pkgrel = 1
 	url = http://gmplib.org/
