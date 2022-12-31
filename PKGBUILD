@@ -6,10 +6,8 @@ pkgdesc="CasaOS Gateway is a dynamic API gateway service that can be used to exp
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/IceWhaleTech/CasaOS-Gateway"
 license=('APACHE')
-groups=('casaos')
-provides=('casaos')
 backup=('etc/casaos/gateway.ini')
-
+groups=('casaos')
 source_x86_64=(
 	${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-v${pkgver}.tar.gz
     ${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-migration-tool-v${pkgver}.tar.gz
