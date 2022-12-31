@@ -383,10 +383,9 @@ build_ps2-ee-gcc-stage2() {
 
     # CPP="${srcdir}/${_bin}/${_target}-cpp" \
     # CC="${srcdir}/${_bin}/${_target}-gcc" \
-    CC="${srcdir}//usr/bin/gcc" \
+    CC="/usr/bin/gcc" \
     CPP="/usr/bin/cpp" \
-
-    "../configure" "${_configure_opts[@]}"
+    "../configure" ${_configure_opts[@]}
 
     # CPP="${srcdir}/${_bin}/${_target}-cpp" \
     # CC="${srcdir}/${_bin}/${_target}-gcc" \
