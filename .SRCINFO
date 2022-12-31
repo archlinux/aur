@@ -1,14 +1,14 @@
 pkgbase = sol-client
 	pkgdesc = Simple yet feature-rich open-source Minecraft client
-	pkgver = 1.8.8
-	pkgrel = 3
+	pkgver = 1.8.9
+	pkgrel = 1
 	url = https://github.com/Sol-Client/Client
 	arch = x86_64
 	license = GPL3
 	makedepends = curl
 	depends = jre8-openjdk
 	options = !strip
-	source = https://github.com/Sol-Client/Client/releases/download/1.8.8/Sol.Client-1.8.8.AppImage
-	sha256sums = b375a1efe5fdefdd4e940f0b238c83e4d39d1705b1b9e4f5fa3473b7b51b13db
+	source = https://github.com/Sol-Client/Client/releases/download/1.8.9/Sol.Client-1.8.9.AppImage
+	sha256sums = 57d18daa8e717625bcbeb07f3b9e1f2146d4e6199debe03d7b3d8b1bc6957b09
 
 pkgname = sol-client
