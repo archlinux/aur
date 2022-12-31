@@ -1,0 +1,35 @@
+pkgbase = forgejo
+	pkgdesc = A lightweight software forge
+	pkgver = 1.18.0.1
+	pkgrel = 1
+	url = https://forgejo.org
+	arch = x86_64
+	license = MIT
+	checkdepends = openssh
+	makedepends = go
+	makedepends = nodejs
+	makedepends = npm
+	depends = git
+	optdepends = mariadb: MariaDB support
+	optdepends = memcached: MemCached support
+	optdepends = openssh: GIT over SSH support
+	optdepends = pam: Authentication via PAM support
+	optdepends = postgresql: PostgreSQL support
+	optdepends = redis: Redis support
+	optdepends = sqlite: SQLite support
+	options = !lto
+	backup = etc/forgejo/app.ini
+	source = forgejo::git+https://codeberg.org/forgejo/forgejo#commit=88445b62374e8165d44d5520de736a7b7c98fd1b
+	source = systemd.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha512sums = SKIP
+	sha512sums = 90684aa56930f40ff791fb4789375bbcf69cecc98c3a9fd3764c6f53e60bb32ddedd83cd75c00ff9d6aa90741361815dc7e23904ac355075b0f0990853639198
+	sha512sums = 933c0b6cee9d32d2b11a8ee2476e20c5f06a089ed4310ffb24155902f308b4fb447b3b2f3bf7dee76be24475873da5bd026c4823cd56590b20bdf2805f4d07a8
+	sha512sums = c43bac86c75078a27e4ac022d8c09b22118f8eff73e1e4d5358f3b67ec7c4376ff7b8520aa9018f489ab2d0dea88d2748c71405fa3293924979808b3b873b237
+	b2sums = SKIP
+	b2sums = 6c51a7d121dc365c9839d5a6cb3d0edf36018f0ca34c5e9b21dc8f45ea21fa05971f12aedc5af6dcc5c1bd81f7430ab4df1e63f8cd19e1dfcb8088538edf9c15
+	b2sums = cab7b5cbf24242e3d941725111de012c0ee16495e8f367ab48cb02b2261133c262a1704f58b20fd08ec626bcb23cef2473b55e19dbf7db60c243b1f30fd13743
+	b2sums = eb4dd769dc540c8bc75cdf0bfbd889940f5a0d0a3eafda5faa9166be3de88375a245a4adcc1e27ee0807cefde8afaa068e10e8397e7025861af107352824bfc6
+
+pkgname = forgejo

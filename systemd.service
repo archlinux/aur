@@ -1,0 +1,51 @@
+[Unit]
+Description=Forgejo
+After=syslog.target
+After=network.target
+After=mysqld.service
+After=postgresql.service
+After=memcached.service
+After=redis.service
+
+[Service]
+User=forgejo
+Group=forgejo
+Type=simple
+WorkingDirectory=~
+RuntimeDirectory=forgejo
+LogsDirectory=forgejo
+StateDirectory=forgejo
+Environment=USER=forgejo HOME=/var/lib/forgejo GITEA_WORK_DIR=/var/lib/forgejo
+ExecStart=/usr/bin/forgejo web -c /etc/forgejo/app.ini
+Restart=always
+RestartSec=2s
+ReadWritePaths=/etc/forgejo/app.ini
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+#Required by commit search
+#MemoryDenyWriteExecute=true
+NoNewPrivileges=True
+#SecureBits=noroot-locked
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
