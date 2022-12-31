@@ -2,7 +2,7 @@
 
 _pkgname=minizip-ng
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.0.7
+pkgver=3.0.8
 pkgrel=1
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
 url='https://github.com/zlib-ng/minizip-ng'
@@ -13,7 +13,6 @@ depends=(
 	'mingw-w64-zstd'
 	'mingw-w64-libiconv'
 	'mingw-w64-openssl'
-	
 )
 makedepends=('mingw-w64-cmake')
 #checkdepends=('mingw-w64-wine')
@@ -22,8 +21,8 @@ options=(!strip !buildflags staticlibs)
 optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/zlib-ng/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
-	'iconv.patch')
-sha256sums=('39981a0db1bb6da504909bce63d7493286c5e50825c056564544c990d15c55cf'
+	"${pkgname}-iconv.patch")
+sha256sums=('27cc2f62cd02d79b71b346fc6ace02728385f8ba9c6b5f124062b0790a04629a'
             'a56c446d180fbc00cc6e5d8eef20de7f73f35e37d914019c43894a5ee0136f71')
 
 _srcdir="${_pkgname}-${pkgver}"
@@ -33,7 +32,7 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG
 
 prepare() {
 	cd "${_srcdir}"
-	patch -p1 -i "${srcdir}/iconv.patch"
+	patch -p1 -i "${srcdir}/${pkgname}-iconv.patch"
 }
 
 build() {
