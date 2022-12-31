@@ -17,21 +17,12 @@ makedepends=('scons' 'clang' 'llvm' 'gengetopt' 'python' 'ragel')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/roc-streaming/roc-toolkit/archive/v${pkgver}.tar.gz")
 sha256sums=('dd09507827babfed20304f6728a2cb0828b7c5ac0aaa34f07ec72abae36ce022')
 
-_run_scons() {
-  local opts=(
-    --prefix=/usr
-    --with-openfec-includes=/usr/include/openfec
-  )
-
-  scons ${opts[@]} "${@}"
-}
-
 build() {
   cd "$_pkgname-$pkgver"
-  scons
+  scons --prefix=/usr
 }
 
 package() {
   cd "$_pkgname-$pkgver"
-  _run_scons --prefix="$pkgdir/usr" install
+  scons --prefix="$pkgdir/usr" install
 }
