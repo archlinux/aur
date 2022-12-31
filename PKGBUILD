@@ -1,7 +1,7 @@
 # Maintainer: henning mueller <mail@nning.io>
 
 pkgname=protonutils
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="CLI tool that provides different utilities to make using the Proton compatibility tool more easily"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('66868e7f695d3415c92e6afc9cb70a64e427852722131acafb394ca02156f3d9')
+sha256sums=('caa373b55416c570d0ae6053b2d4f8502001a82dc1455e6d80ff5fd9a5d87cad')
 
 prepare() {
   cd "$pkgname-$pkgver"
