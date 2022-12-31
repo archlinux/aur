@@ -95,7 +95,7 @@ build_ps2-iop-binutils-gdb() {
                            --with-mpfr
                            --with-mpc
                            --disable-nls)
-    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    LD_LIBRARY_PATH=/usr/lib \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
     CFLAGS="${_cflags[*]}" \
@@ -113,10 +113,12 @@ build_ps2-iop-binutils-gdb() {
 # shellcheck disable=SC2154
 package_ps2-iop-binutils-gdb() {
   local _target
+  local _dest="${pkgdir}/opt/ps2dev"
+  local _usr="${_root}/${_module}"
   cd "${srcdir}/${pkgbase}-${_bu}"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip
+    make "${_make_opts}" install-strip "${_make_opts}"
     cd ..
   done
 }
@@ -201,7 +203,7 @@ build_ps2-iop-gcc-stage1() {
                            --disable-nls
                            --disable-tls)
 
-    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    LD_LIBRARY_PATH=/usr/lib \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
     CFLAGS="${_cflags[*]}" \
@@ -210,7 +212,7 @@ build_ps2-iop-gcc-stage1() {
     LIBS="${_libs[*]}" \
     "../configure" ${_configure_opts[@]}
 
-    # LD_LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0 \
+    LD_LIBRARY_PATH=/usr/lib \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
     CFLAGS="${_cflags[*]}" \
