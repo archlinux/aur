@@ -1,7 +1,7 @@
 pkgbase = r-spatstat.core
 	pkgdesc = Core Functionality of the 'spatstat' Family
 	pkgver = 2.4.4
-	pkgrel = 3
+	pkgrel = 6
 	url = https://cran.r-project.org/package=spatstat.core
 	arch = x86_64
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = r-spatstat.core
 	optdepends = r-spatial
 	optdepends = r-spatstat
 	optdepends = r-spatstat.linnet
-	source = https://cran.r-project.org/src/contrib/spatstat.core_2.4-4.tar.gz
+	source = https://cran.r-project.org/src/contrib/Archive/spatstat.core/spatstat.core_2.4-4.tar.gz
 	sha256sums = e38c39efe8b14d6e8fdbee8dd870b90c52f78ea571ab7988fd3685f48347d13b
 
 pkgname = r-spatstat.core

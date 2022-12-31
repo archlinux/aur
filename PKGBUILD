@@ -4,7 +4,7 @@ _pkgname=spatstat.core
 _pkgver=2.4-4
 pkgname=r-${_pkgname,,}
 pkgver=2.4.4
-pkgrel=3
+pkgrel=6
 pkgdesc="Core Functionality of the 'spatstat' Family"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-spatstat
   r-spatstat.linnet
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e38c39efe8b14d6e8fdbee8dd870b90c52f78ea571ab7988fd3685f48347d13b')
 
 build() {
