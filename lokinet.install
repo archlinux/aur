@@ -1,13 +1,48 @@
 
+migrate_config() {
+	if [ ! -e etc/loki/lokinet.ini ]
+	then
+		if [ -f var/lib/lokinet/lokinet.ini ]
+		then
+			cp -f var/lib/lokinet/lokinet.ini etc/loki/lokinet.ini.new
+			chmod 644 etc/loki/lokinet.ini.new
+			mv -f etc/loki/lokinet.ini{.new,}
+			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new
+			mv -f var/lib/lokinet/lokinet.ini{.new,}
+		else
+			pushd etc/loki/ >/dev/null
+			rm -f lokinet.ini.new
+			/usr/bin/lokinet -g ./lokinet.ini.new >/dev/null 2>&1
+			chmod 644 etc/loki/lokinet.ini.new
+			mv -f lokinet.ini{.new,}
+			popd >/dev/null
+			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new
+			mv -f var/lib/lokinet/lokinet.ini{.new,}
+		fi
+	else
+		chmod 644 etc/loki/lokinet.ini
+	fi
+}
+
+del_seed() {
+	rm -f var/lib/lokinet/bootstrap.signed
+}
+
 post_install() {
+	migrate_config
+	del_seed
+
 	cat <<-EOF
-		  To generate default config (optional, will be invoked by lokinet service if needed):
-		    systemctl start lokinet-default-config
-		  To adjust upstream DNS servers and other options, edit /var/lib/lokinet/lokinet.ini
+		  To adjust upstream DNS servers and other options, edit /etc/loki/lokinet.ini
 		  To start lokinet:
 		    systemctl start lokinet
 		  To get .loki domains resolve, enable systemd-resolved: https://wiki.archlinux.org/index.php/Systemd-resolved
 		  Alternatively, replace /etc/resolv.conf contents with:
 		    nameserver 127.3.2.1
 		EOF
+}
+
+post_upgrade() {
+	migrate_config
+	del_seed
 }
