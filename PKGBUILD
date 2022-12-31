@@ -51,7 +51,7 @@ build() {
 # shellcheck disable=SC2154
 build_ps2-iop-binutils-gdb() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
+  local _root="/opt/ps2dev"
   local _usr="${_root}/${_module}"
   local _bin="${_usr}/bin"
   local _osver="$(uname)"
@@ -81,6 +81,7 @@ build_ps2-iop-binutils-gdb() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
+  mkdir -p "${srcdir}/temp_root"
   cd "${srcdir}/${pkgbase}-${_bu}"
 
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
@@ -104,7 +105,8 @@ build_ps2-iop-binutils-gdb() {
     LIBS="${_libs[*]}" \
     "../configure" ${_configure_opts[@]}
 
-    make "${_build_opts[@]}"
+    make ${_build_opts[@]}
+    make DESTDIR="${srcdir}/temp_root" ${_make_opts[@]} install
     
     cd ..
   done
@@ -113,12 +115,10 @@ build_ps2-iop-binutils-gdb() {
 # shellcheck disable=SC2154
 package_ps2-iop-binutils-gdb() {
   local _target
-  local _dest="${pkgdir}/opt/ps2dev"
-  local _usr="${_root}/${_module}"
   cd "${srcdir}/${pkgbase}-${_bu}"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip "${_make_opts}"
+    make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
     cd ..
   done
 }
@@ -126,7 +126,7 @@ package_ps2-iop-binutils-gdb() {
 # shellcheck disable=SC2154
 build_ps2-iop-gcc-stage1() {
   local _target
-  local _root="${pkgdir}/opt/ps2dev"
+  local _root="/opt/ps2dev"
   local _usr="${_root}/${_module}"
   local _bin="${_usr}/bin"
   local _osver="$(uname)"
@@ -139,6 +139,7 @@ build_ps2-iop-gcc-stage1() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
+  export PATH="${PATH}:${srcdir}/temp_root/opt/ps2dev/iop/bin:${srcdir}/temp_root/opt/ps2dev/iop/mipsel-ps2-irx/bin"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
@@ -182,7 +183,8 @@ build_ps2-iop-gcc-stage1() {
                            --with-mpfr
                            --with-mpc
                            --without-headers
-                           --without-newlib
+                           --with-headers=no
+                           --with-newlib
                            --without-cloog
                            --without-ppl
                            --disable-bootstrap
@@ -203,7 +205,8 @@ build_ps2-iop-gcc-stage1() {
                            --disable-nls
                            --disable-tls)
 
-    LD_LIBRARY_PATH=/usr/lib \
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib" \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
     CFLAGS="${_cflags[*]}" \
@@ -231,7 +234,7 @@ package_ps2-iop-gcc-stage1() {
   cd "${srcdir}/${pkgbase}-gcc"
   for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
     cd "build-${_target}"
-    make "${_make_opts}" install-strip
+    make DESTDIR="${pkgdir}" "${_make_opts}" install-strip
     cd ..
   done
 }
