@@ -1,0 +1,13 @@
+pkgbase = casaos-ui
+	pkgdesc = The front-end of CasaOS,build with VueJS.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-UI
+	arch = any
+	groups = casaos
+	license = unknown
+	provides = casaos
+	source = https://github.com/IceWhaleTech/CasaOS-UI/releases/download/v0.4.0/linux-all-casaos-v0.4.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = casaos-ui
