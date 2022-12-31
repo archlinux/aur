@@ -1,0 +1,26 @@
+pkgbase = casaos-local-storage
+	pkgdesc = Local Storage service provides local storage and disk management functionalities to CasaOS.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-LocalStorage
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = casaos
+	license = APACHE
+	provides = casaos
+	backup = etc/casaos/local-storage.conf
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-amd64-casaos-local-storage-v0.4.0.tar.gz
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-amd64-casaos-local-storage-migration-tool-v0.4.0.tar.gz
+	sha256sums_x86_64 = 87c4dbb8f8f6fcfee3a2b194c664c1ac5ae5918d75675d7702b4b125f3dad469
+	sha256sums_x86_64 = dc245730d8e93fa0e41bf594e9808ac1384ad781e45e7275499cd3c3df82ac06
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-arm64-casaos-local-storage-v0.4.0.tar.gz
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-arm64-casaos-local-storage-migration-tool-v0.4.0.tar.gz
+	sha256sums_aarch64 = 8e70c474004ae1c24f21cfb94931e790d0e5e1661555dcceccb362222cdaf287
+	sha256sums_aarch64 = db752f02b4245a36bbcc4df15b965745dce5057417524d2bbfe92011cb2a3a81
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-arm-7-casaos-local-storage-v0.4.0.tar.gz
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-LocalStorage/releases/download/v0.4.0/linux-arm-7-casaos-local-storage-migration-tool-v0.4.0.tar.gz
+	sha256sums_armv7h = dc9da498fb7c15a4322a62a79173308b19a0ef431b892c7d3f9a4379ea3aa527
+	sha256sums_armv7h = 3bbef466619fdf38610b740279922f6290f232791230ea7a2d9ecd15c00a44fa
+
+pkgname = casaos-local-storage
