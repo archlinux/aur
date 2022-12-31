@@ -12,35 +12,39 @@
 
 pkgbase=morisawa-biz-ud-fonts
 pkgname=(morisawa-biz-ud-mincho-fonts morisawa-biz-ud-gothic-fonts)
-pkgver=1.05
-pkgrel=2
 pkgdesc="Morisawa BIZ UD Fonts."
+pkgver=1.06
+pkgrel=1
 arch=('any')
-url="https://github.com/googlefonts/morisawa-biz-ud-mincho"
 license=('OFL')
 groups=($pkgbase)
 
-_base_url="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
+g_pkgver=1.05
 _base_url_g="https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/"
+_base_url_tg="https://github.com/googlefonts/morisawa-biz-ud-gothic/releases/download/v${g_pkgver}/"
+_base_url_m="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
+_base_url_tm="https://github.com/googlefonts/morisawa-biz-ud-mincho/releases/download/v${pkgver}/"
 source=(
   "BIZ-UDGothic-Bold.otf::${_base_url_g}sources/extensions/otf/BIZ-UDGothic-Bold.otf"
   "BIZ-UDGothic-Bold.ttf::${_base_url_g}sources/ttf/BIZ-UDGothic-Bold.ttf"
   "BIZ-UDGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDGothic.otf"
   "BIZ-UDGothic.ttf::${_base_url_g}sources/ttf/BIZ-UDGothic.ttf"
-  "BIZ-UDMincho-Medium.otf::${_base_url}sources/extensions/otf/BIZ-UDMincho-Medium.otf"
-  "BIZ-UDMincho-Medium.ttf::${_base_url}sources/ttf/BIZ-UDMincho-Medium.ttf"
   "BIZ-UDPGothic-Bold.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic-Bold.otf"
   "BIZ-UDPGothic-Bold.ttf::${_base_url_g}sources/ttf/BIZ-UDPGothic-Bold.ttf"
   "BIZ-UDPGothic.otf::${_base_url_g}sources/extensions/otf/BIZ-UDPGothic.otf"
   "BIZ-UDPGothic.ttf::${_base_url_g}sources/ttf/BIZ-UDPGothic.ttf"
-  "BIZ-UDPMincho-Medium.otf::${_base_url}sources/extensions/otf/BIZ-UDPMincho-Medium.otf"
-  "BIZ-UDPMincho-Medium.ttf::${_base_url}sources/ttf/BIZ-UDPMincho-Medium.ttf"
-  "BIZUDGothic-Bold.ttf::${_base_url_g}fonts/ttf/BIZUDGothic-Bold.ttf"
-  "BIZUDGothic-Regular.ttf::${_base_url_g}fonts/ttf/BIZUDGothic-Regular.ttf"
-  "BIZUDMincho-Regular.ttf::${_base_url}fonts/ttf/BIZUDMincho-Regular.ttf"
+  "BIZUDGothic-Bold.ttf::${_base_url_tg}BIZUDGothic-Bold.ttf"
+  "BIZUDGothic-Regular.ttf::${_base_url_tg}BIZUDGothic-Regular.ttf"
   "BIZUDPGothic-Bold.ttf::${_base_url_g}fonts/ttf/BIZUDPGothic-Bold.ttf"
-  "BIZUDPGothic-Regular.ttf::${_base_url_g}fonts/ttf/BIZUDPGothic-Regular.ttf"
-  "BIZUDPMincho-Regular.ttf::${_base_url}fonts/ttf/BIZUDPMincho-Regular.ttf"
+  "BIZUDPGothic-Regular.ttf::${_base_url_tg}BIZUDPGothic-Regular.ttf"
+  "BIZ-UDMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDMincho-Medium.otf"
+  "BIZ-UDMincho-Medium.ttf::${_base_url_m}sources/ttf/BIZ-UDMincho-Medium.ttf"
+  "BIZ-UDPMincho-Medium.otf::${_base_url_m}sources/extensions/otf/BIZ-UDPMincho-Medium.otf"
+  "BIZ-UDPMincho-Medium.ttf::${_base_url_m}sources/ttf/BIZ-UDPMincho-Medium.ttf"
+  "BIZUDMincho-Bold.ttf::${_base_url_tm}BIZUDMincho-Bold.ttf"
+  "BIZUDMincho-Regular.ttf::${_base_url_tm}BIZUDMincho-Regular.ttf"
+  "BIZUDPMincho-Bold.ttf::${_base_url_tm}BIZUDPMincho-Bold.ttf"
+  "BIZUDPMincho-Regular.ttf::${_base_url_tm}BIZUDPMincho-Regular.ttf"
   "AUTHORS-gothic.txt::https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/AUTHORS.txt"
   "AUTHORS-mincho.txt::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/AUTHORS.txt"
   "CONTRIBUTORS-gothic.txt::https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/CONTRIBUTORS.txt"
@@ -49,32 +53,35 @@ source=(
   "LICENSE-OFL-mincho.txt::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/OFL.txt"
 )
 
-sha256sums=('35a57b411066610c824f401630fa6b5ead7bf6d8e38ba511d108053228c70c2e'
-            '8b7ea71a067150e9c0b4d18224f2f0a2070e9e2d6ca934dd179c337328f4045b'
-            '14f9365a1a231e5cfac2fe7517bec7d2eefb2b5f4f60abe862a31b3dc7a8d8cb'
-            '199ab92575dc744af01aa76219dc9bcfac30f3234c1fbc083f6d4ce827e2af19'
-            '5d0439cbdbf09ba0ae0ec21f4fb43108da00833ea845403dc29285107d5a1ac4'
-            'c941f14870251fdcb1e890eec808bf608a7bcbe25c3f2dc3b343fa0934d73bbe'
-            '5f95b8cff32804673ddb76919ae355758f5c464da8c61fb606dbf28cee8b025e'
-            '4d8aca47377f8d57af6444bcc4b23cf40b6b100351ea1d6528af94f4e9e326ca'
-            '2df2038230c521bcdd99f036022da2c980159081420e01f6a778f9aec7f24ee0'
-            '967b03145bd9715b800eb24f816cd84d7de625d368f88a1cef8be18cbe078674'
-            '62adfd5a6e0a3096d326fb54bd905236a15b22dd826a4e351a3d5c401a9e9af8'
-            '3ede4d32c3042da19a34f5685a86f1503ae38ccec3390bc02bca4bfc77c48529'
-            '98a528b6b638463041968783cc0f63adaf4cdc26f5398afed68bab712d1113f3'
-            '709fcd41e3209fb765da750472f55ccdf925653e9fa7e1eb007cb65c8f749c75'
-            'b0519d00c7269ae600c4afa52b649da1722a87c8902f1118a6c039015380fd9f'
-            '91e6e67841a04533e893885de3643333a803e35242d8b60e343107f506ac5bfa'
-            'a8e73ddd5a208b2bef62c2846a87c173cd7aae101725044d9e723d361093d7db'
-            '57aabfae577f8c1340a278d47a30beaee58d18f47f2d4d09e4cea745d5a1bc57'
-            'cfd728c227f41117d8c23179963b72d97c7cff01345dc755b6cb819fa1d55ba2'
-            'cfd728c227f41117d8c23179963b72d97c7cff01345dc755b6cb819fa1d55ba2'
-            'e7511d722f989a8cab2701b39d76e38524a25a62faaac296fc48bf04bab0f2ed'
-            'e7511d722f989a8cab2701b39d76e38524a25a62faaac296fc48bf04bab0f2ed'
-            'e753d7155d53c747d037a445e584c8ecfca6dd79846db610417e282a736b28bc'
-            'ef0ed524b3bd012f37015e986809eed6f67905456ebfc1ebd7fcc2765282ee01')
+sha512sums=('b541d4406aee7b267a2e3c42aa9ca107b2f503d580ed290d2c468fa9f7da1442e532d2f2f57ef0747e85fdc4dba959db35d85f850cc6aa17d3a49ca4b358a22b'
+            '462a97a5861b417390d217e55e9ce8a73781975ab63a2c92dc69de87210a35df442baa138e43cfc81bbcbe6bc1387ae944c86f671adea2c0b362ec8b8f61a8b5'
+            '6b834ccff4e76de77737d7f96b8733b1cb34ea3b350aaa7b9d8c0f468873c9f64c7d2dda6c3dd996ae972956b17e0728d75b80b657aba83cdb0d98d964779a7b'
+            'e72617ace980f52d81755a78f2995547f72a66dc04fafbdf0393b6b3aa131dff4bb981b8e279c8e6c2e52b9f886f7c59a0c4f06fa1a7ce21402ccac16c5e6f7f'
+            '20b4e961e40c60e9a909ee19785d788cb8927d3a766964f064db7f5b51bdf0ba24169df2e46f7de8394110dfba9185c4d6bd1c48e5cdd578d5d4d9a1625efee8'
+            '5fd69d019a1b2f6756f7d3fb04f5026eafab3e70416f113cc5cf8e0db485d4ddc4c1244d835d0d684d8a4ea96e102f64115c0d0cc63ac37a697cb1c5202cc3ae'
+            '999b452a7e203d0d3928eaa1e04a77e9bba2d1db5c254beb8bed1e3430ad919580884da179d23b8db0f11acc50dd50827938f874183c0a111ff5b6e5dcd11f24'
+            'c038b7de90ebb0535b87f72c8c8c95bae19763970dcd6648e1e4c836e585671ad1d80568265bdf0ae545f06620bc1c247ec20768a0453d2796a89d1f54384b63'
+            '3b4fa7e00db803e35bac6b042636b926a05b53ef7e5b555d6e9c92b3bdd2ae39ffa11e401d4fa846603833425c22f77cf2ba2efb650e09d4ceb85a310ba0881c'
+            'd9348438f908df89e50b3358fd2eb3782584abb0fa43090d9a25da3ff8947c6c7d3ef7b472001b391d1a8ad91320c87dda14e926ada17fc831493f06dec6283e'
+            '220a41149e69dd363f1da4c7b8badf810c148db20695c4d5616c5742da09e10d9a3a5e509b4544ce03f7c0fd889d070428e2f6a96b3386f130a2a2e610d965f7'
+            'b6ee1bc40f45bc783d01941d25b4af890b0d3ccbd2108c10821c92e1bad8803c5922495012b41dc41e0397b9343254bc069b221c2051c700c6206930ef78503f'
+            'f5d9d18bb4df0256abccb7c755d7c45d61037a65c83fd21cd01084fdebd56118484de2136ecdf78d56a5c150c36a68de748b7a1475ac9fcb82f5932028064d44'
+            'a1921ab27fe73faf5ffe542400417f1e9f75c342d35aa1e005fa9d982d71450ef8e5271dacd3a5a028e763614a3f36d55622b7f88262c6be1dd714786065b618'
+            'd49060d47c10c3b4fd5930b8727e2340f79a80dfa0e68e339124cb6b93925336e1d504d27785849187c81839aa07ae879b1842f8fbc58d42423480f54c043a84'
+            '24a21f6c3042ed0fa05b4f6166ed8e0647630474444df260a9b798d392973388c61f87d3d26869bb835f9de0cfb2cd38529c46cf8bece919572e8a542f531633'
+            '59766b48f330cea703e90cc46df59e04677202e92054cecf6f37acb6d2144c0e8e5e35787470e6b99fbb84f446dca3311c23d865561a26442f8fb69122281939'
+            'e5b692e2149421e0a576f59a4fee50e1fded2fa5c750516fed3e970df39cd6f4203b8ad762869ce9d73787656e9c6764f78397a2b63974f8e2c107b0b55d0a48'
+            '874db49bddf85ee794e82dc269566037803bf015a95a4229827b4aa0f0edf1534859d18a7b9a329ef3c527be21e78d9508c2073cffc9cf89f0c1351efbc09262'
+            'ad86eefa421928423cb126e74f73058b7e59ead4b291bab2075f61ac3e7d4d25ff8a181086883d3801114aaa74484a84646a877214cbd990dcf8a3f072fb12e2'
+            'dd004601b9d0c79890d67137c448ee357734877f65b0a3bc1f9b73b5116c94cb978db9c2f47235c11912c47b5dfd04512fb5c68023e1214976a8c4184d142216'
+            'dd004601b9d0c79890d67137c448ee357734877f65b0a3bc1f9b73b5116c94cb978db9c2f47235c11912c47b5dfd04512fb5c68023e1214976a8c4184d142216'
+            'f4e415ede8786e028028103c81a9d5b45777e5163d6589d12dcf4ab5fffc94a3542dba47c0640c097d09be659a45a8235a9558cd250914d6688a05e01af191b6'
+            'f4e415ede8786e028028103c81a9d5b45777e5163d6589d12dcf4ab5fffc94a3542dba47c0640c097d09be659a45a8235a9558cd250914d6688a05e01af191b6'
+            'cf02e1328facb47bb6d8ea1008fc5de7965cb604833f8fa2054cfe51a4d0bbec8f96a33b520042457cf4ddd2b256fbfbf2e4c925ebc3eba6afad32cc63e94e9b'
+            'a6ae9e9eefe4e172f5025a017e8cf694417e9ce478f17a8937b9737ffc2808a365d606472e3a4ebf275a0f02dda500b2d36106464bbfa6973fa539783e1191b6')
 
 package_morisawa-biz-ud-mincho-fonts (){
+  url="https://github.com/googlefonts/morisawa-biz-ud-mincho"
   install -dm0755 "$pkgdir"/usr/share/fonts/TTF
   install -Dm0644 "$srcdir"/*Mincho*.ttf "$pkgdir"/usr/share/fonts/TTF
   install -Dm644 LICENSE-OFL-mincho.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-mincho-fonts
@@ -87,6 +94,8 @@ package_morisawa-biz-ud-mincho-fonts (){
 
  
 package_morisawa-biz-ud-gothic-fonts (){
+  url="https://github.com/googlefonts/morisawa-biz-ud-gothic"
+  install -dm0755 "$pkgdir"/usr/share/fonts/TTF
   install -dm0755 "$pkgdir"/usr/share/fonts/TTF
   install -Dm0644 "$srcdir"/*Gothic*.ttf "$pkgdir"/usr/share/fonts/TTF
   install -Dm644 LICENSE-OFL-gothic.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-gothic-fonts
