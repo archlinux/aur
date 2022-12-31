@@ -25,8 +25,9 @@ checkdepends=('shellcheck')
 makedepends=("libgmp-static"
              "mpfr-static"
              "libmpc-static"
-             "gmp4"
-             "gcc7")
+             "gmp4-static"
+             "gcc7"
+             "zstd-static")
 optdepends=()
 _bu_branch="${_module}-${_bu_ver}"
 _gcc_branch="${_module}-${_gcc_ver}"
