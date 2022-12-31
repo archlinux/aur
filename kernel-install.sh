@@ -42,5 +42,5 @@ for kernel_image in "${kernel_images[@]}"; do
 		[[ ! -f "${kernel_image%/vmlinuz}/pkgbase" ]] && continue
 	fi
 	echo +kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
-	kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
+	kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image" || true
 done
