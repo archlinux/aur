@@ -1,0 +1,26 @@
+pkgbase = casaos-message-bus
+	pkgdesc = Message bus accepts events and actions from various sources and delivers them to subscribers.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/IceWhaleTech/CasaOS-MessageBus
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = casaos
+	license = APACHE
+	provides = casaos
+	backup = etc/casaos/message-bus.conf
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-amd64-casaos-message-bus-v0.4.0.tar.gz
+	source_x86_64 = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-amd64-casaos-message-bus-migration-tool-v0.4.0.tar.gz
+	sha256sums_x86_64 = 84c9678bfe6da66a2e8919f523d99bcf8e20adcfd15fdbce29b1e3c38899f013
+	sha256sums_x86_64 = e00dd554bf103412393e968ca035a2ec7f6d80b2b4251e799faa7540bb0f2ab1
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-arm64-casaos-message-bus-v0.4.0.tar.gz
+	source_aarch64 = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-arm64-casaos-message-bus-migration-tool-v0.4.0.tar.gz
+	sha256sums_aarch64 = 8f34045f90792c52fe5568eb284bd6870a6f6c9e8944396ce3e5876ba08c4a88
+	sha256sums_aarch64 = a13aab841ab2c3cb1ac3a599d45c101a294e87519163287626a6501e510c892a
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-arm-7-casaos-message-bus-v0.4.0.tar.gz
+	source_armv7h = https://github.com/IceWhaleTech/CasaOS-MessageBus/releases/download/v0.4.0/linux-arm-7-casaos-message-bus-migration-tool-v0.4.0.tar.gz
+	sha256sums_armv7h = 48a3f0af57abdae63e7866eb60985458fef6960603d9eee01db3605d50ca705f
+	sha256sums_armv7h = 4013f27458646af36fcc7e50d2a0dc7f2dbee84b982773bb91f402e59a8ed468
+
+pkgname = casaos-message-bus
