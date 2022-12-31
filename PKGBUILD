@@ -348,14 +348,15 @@ build_ps2-ee-gcc-stage2() {
   local _target
 
   local _cflags=(${cflags[@]}
-                 -nostdinc 
                  -I"${srcdir}/buildroot/${_usr}/include"
                  -L"${srcdir}/buildroot/${_usr}/lib"
+                 -I"/usr/include"
                  -O2)
                  # -D_FORTIFY_SOURCE=0)
 
-  local _ldflags=(${ldflags[@]})
-                  # -ldl)
+  local _ldflags=(${ldflags[@]}
+                  -ldl
+                  "${srcdir}/buildroot/${_usr}/lib/libpthreadmpc.a")
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
@@ -380,16 +381,17 @@ build_ps2-ee-gcc-stage2() {
                            --enable-cxx-flags=-G0
                            --enable-threads=posix)
 
-    # CC="${srcdir}//usr/bin/gcc" \
-    # CPP="/usr/bin/cpp" \
-    CPP="${srcdir}/${_bin}/${_target}-cpp" \
-    CC="${srcdir}/${_bin}/${_target}-gcc" \
+    # CPP="${srcdir}/${_bin}/${_target}-cpp" \
+    # CC="${srcdir}/${_bin}/${_target}-gcc" \
+    CC="${srcdir}//usr/bin/gcc" \
+    CPP="/usr/bin/cpp" \
+
     "../configure" "${_configure_opts[@]}"
 
-    # CC="/usr/bin/gcc" \
-    # CPP="/usr/bin/cpp" \
-    CPP="${srcdir}/${_bin}/${_target}-cpp" \
-    CC="${srcdir}/${_bin}/${_target}-gcc" \
+    # CPP="${srcdir}/${_bin}/${_target}-cpp" \
+    # CC="${srcdir}/${_bin}/${_target}-gcc" \
+    CC="/usr/bin/gcc" \
+    CPP="/usr/bin/cpp" \
     make "${_build_opts[@]}" all
     
     cd ..
