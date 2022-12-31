@@ -1,6 +1,6 @@
 pkgbase = xdman8-beta-git
 	pkgdesc = Open source download accelerator and video downloader.
-	pkgver = 8.0.16.r294.c0eeb69
+	pkgver = 8.0.16.r297.gc0eeb69
 	pkgrel = 1
 	url = https://xtremedownloadmanager.com
 	arch = x86_64
