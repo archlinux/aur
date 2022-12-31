@@ -6,7 +6,6 @@ arch=('any')
 url="https://github.com/IceWhaleTech/CasaOS-UI"
 license=('unknown')
 groups=('casaos')
-provides=('casaos')
 source=(
     ${url}/releases/download/v${pkgver}/linux-all-casaos-v${pkgver}.tar.gz
 )
