@@ -140,7 +140,9 @@ build_ps2-iop-gcc-stage1() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:${srcdir}/temp_root/opt/ps2dev/iop/bin:${srcdir}/temp_root/opt/ps2dev/iop/mipsel-ps2-irx/bin"
+  local _iop_bu_bin="${srcdir}/temp_root/opt/ps2dev/iop/bin"
+  local _iop_sbu_bin="${srcdir}/temp_root/opt/ps2dev/iop/mipsel-ps2-irx/bin"
+  export PATH="${PATH}:${_iop_bu_bin}:${_iop_sbu_bin}"
 
   local _cflags=(-D_FORTIFY_SOURCE=0
                  -O2
