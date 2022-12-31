@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=dcnnt
-pkgver=0.7.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Yet another tool to connect Android phone with desktop similar to KDE Connect'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-pycryptodome')
 makedepends=('python-setuptools')
 source=("$url/archive/$pkgver/$pkgname-py-$pkgver.tar.gz")
-sha256sums=('31e63b99d6190fd58741f1f9804ec55749d519b414052fce7a478c5f02acab1f')
+sha256sums=('695fbcfa225d54f4dca45b2d02ead71f55ccebd7f7c72c80db98f40c97237335')
 
 build() {
   cd "$pkgname-py-$pkgver"
