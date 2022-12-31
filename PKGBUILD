@@ -96,6 +96,7 @@ build_ps2-iop-binutils-gdb() {
                            --with-mpfr
                            --with-mpc
                            --disable-nls)
+
     LD_LIBRARY_PATH=/usr/lib \
     CC="/usr/bin/gcc" \
     CXX="/usr/bin/g++" \
@@ -105,8 +106,8 @@ build_ps2-iop-binutils-gdb() {
     LIBS="${_libs[*]}" \
     "../configure" ${_configure_opts[@]}
 
-    make ${_build_opts[@]}
-    make DESTDIR="${srcdir}/temp_root" ${_make_opts[@]} install
+    make "${_build_opts[@]}"
+    make DESTDIR="${srcdir}/temp_root" "${_make_opts[@]}" install
     
     cd ..
   done
