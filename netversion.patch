@@ -5,7 +5,7 @@
    -->
    <PropertyGroup>
 -    <RuntimeFrameworkVersion>6.0.9</RuntimeFrameworkVersion>
-+    <RuntimeFrameworkVersion>6.0.10</RuntimeFrameworkVersion>
++    <RuntimeFrameworkVersion>6.0.12</RuntimeFrameworkVersion>
    </PropertyGroup>
  
 -</Project>
