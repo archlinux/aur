@@ -1,0 +1,31 @@
+pkgbase = srb2kart-galaxy-git
+	pkgdesc = A SRB2Kart-Moe-Mansion like Build for people that are missing some of its features.
+	pkgver = r7569.af46e4f6
+	pkgrel = 1
+	url = https://mb.srb2.org/addons/srb2kart-galaxy.4500/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = mesa
+	makedepends = glu
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2kart-data>=1.6
+	depends = curl
+	depends = discord-rpc-git
+	provides = srb2kart-galaxy
+	conflicts = srb2kart-galaxy
+	options = !buildflags
+	source = git+https://git.do.srb2.org/Galactice/Kart-Public.git
+	source = srb2kart.desktop
+	source = srb2kart-opengl.desktop
+	sha256sums = SKIP
+	sha256sums = 39dbfbd455da1ba18f3032dada55d2002ed1e30710b486ddd56adfbe45648c62
+	sha256sums = 794f5de70c3a43c7ac201251a669f00eb22fd7ad9dc4fbbf474bf8243cbe64e1
+	makedepends_i686 = nasm
+
+pkgname = srb2kart-galaxy-git
