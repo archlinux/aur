@@ -73,6 +73,6 @@ package() {
     install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-# curl https://releases.fluentbit.io/1.x/source-1.x.y.tar.gz.{md5,sha256}
+# curl -s https://releases.fluentbit.io/2.0/source-2.0.x.tar.gz.{md5,sha256} | awk '{print $1}'
 md5sums=('cb093fd6742971b6c4e09a2a90bf0dd7')
 sha256sums=('1c957607a3442eb51727648d8260302e8e9194b437c091791dffeb049edc8f93')
