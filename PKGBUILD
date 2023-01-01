@@ -2,36 +2,32 @@
 
 pkgname=xfce4-dockbarx-plugin
 epoch=1
-_pkgver=0.6
-pkgver=0.6+r65+aa9c974
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/m7s/xfce4-dockbarx-plugin"
+#url="https://github.com/m7s/xfce4-dockbarx-plugin"
+url="https://github.com/xuzhen/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx>=1.0beta' 'xfce4-panel>=4.12')
-makedepends=('git' 'vala')
-_commit='aa9c974d82df99ede2c6eabf4d7b1663bfd69f42'
-source=("${pkgname}::git+https://github.com/xuzhen/${pkgname}#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "%s+r%s+%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+depends=('dockbarx>=1.0beta' 'xfce4-panel')
+makedepends=('vala' 'cmake')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('57b4f183a3a8f0ce3385502af95c5ff1fde49132dee81d2b036653c9802584bd')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  PREFIX=/usr python ./waf configure
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  [ -d build ] && rm -fr build
+  mkdir build
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  python ./waf build
+  cd "${srcdir}/${pkgname}-${pkgver}"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make  
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="${pkgdir}" python ./waf install
+  cd "${srcdir}/${pkgname}-${pkgver}"/build
+  make DESTDIR="${pkgdir}" install
 }
 
