@@ -1,4 +1,4 @@
-From c2337439f6d74e9f8e003e55c786839886bc4911 Mon Sep 17 00:00:00 2001
+From e3bf21dfa982692c41ec68c656f024863b0313d2 Mon Sep 17 00:00:00 2001
 From: Matthew Auld <matthew.auld@intel.com>
 Date: Tue, 6 Dec 2022 16:11:41 +0000
 Subject: [PATCH 2/4] drm/i915: improve the catch-all evict to handle lock
@@ -92,7 +92,7 @@ index 845023c14eb3..094e92ed28db 100644
  			err = eb_reserve_vma(eb, ev, pin_flags);
  			if (err)
 diff --git a/drivers/gpu/drm/i915/gem/i915_gem_mman.c b/drivers/gpu/drm/i915/gem/i915_gem_mman.c
-index 73d9eda1d6b7..c83d98e1dc5d 100644
+index e63329bc8065..354c1d6dab84 100644
 --- a/drivers/gpu/drm/i915/gem/i915_gem_mman.c
 +++ b/drivers/gpu/drm/i915/gem/i915_gem_mman.c
 @@ -369,7 +369,7 @@ static vm_fault_t vm_fault_gtt(struct vm_fault *vmf)

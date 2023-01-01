@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.1.1
+pkgver=6.1.2
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -92,20 +92,20 @@ source=(
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-drm-i915-improve-the-catch-all-evict-to-handle-lock-.patch
-  0003-futex-Resend-potentially-swallowed-owner-death-notif.patch
+  0003-ALSA-hda-hdmi-Static-PCM-mapping-again-with-AMD-HDMI.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('a3e61377cf4435a9e2966b409a37a1056f6aaa59e561add9125a88e3c0971dfb'
+sha256sums=('ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae'
             'SKIP'
             '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
-            '865fa8cc41186a42225e89c845d438aefae6332d1ef18b94ef3aae04deb5e784'
-            '9c6191b355fcaf41cfeb92105ea0d24bbc51c993877d3fb5325f139997ede058'
-            '748e40e3a4b889850e8f86aee7ff96a93d43476a6529316bd823e18e23fc82f8')
+            '00c7b866ba5393639d5ca2349883909ad6b1bedf6091e857c83f208e0838479c'
+            '0cde718acd7e96ce5f221db696459b145162196f6fb6b729e3f9231672c40df1'
+            '6d808871fc1bc318c193f021ca2680e1f2cd28802248fb16a350cf9c5ca3af7b')
 
 prepare() {
   cd linux-${pkgver}
