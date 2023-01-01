@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=ja2-stracciatella
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Jagged Alliance 2 Stracciatella"
 arch=('x86_64')
 url="https://github.com/ja2-stracciatella/ja2-stracciatella"
@@ -26,9 +26,9 @@ build() {
 
     # We deliberately don't set the build type here, because upstream sets a
     # reasonable default type
-    cmake -GNinja -B build \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
+    cmake -GNinja -B build -S "${srcdir}/ja2-stracciatella-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
         -DEXTRA_DATA_DIR=/usr/share/ja2 \
         -DLOCAL_LUA_LIB=OFF \
         -DLOCAL_SOL_LIB=OFF \
@@ -39,7 +39,7 @@ build() {
         -DLOCAL_MINIAUDIO_LIB=OFF \
         -DMINIAUDIO_INCLUDE_DIR="${srcdir}/miniaudio-${_miniaudio_commit}" \
         -DWITH_UNITTESTS=OFF \
-        "${srcdir}/ja2-stracciatella-${pkgver}"
+        -Wno-dev
     cmake --build build
 }
 
