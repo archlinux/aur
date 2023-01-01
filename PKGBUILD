@@ -6,7 +6,6 @@ _module="ee"
 _platform="ps2"
 _pe="pthread-embedded"
 _base="toolchain"
-# pkgbase="${_platform}-${_module}"
 pkgname=("${target}-newlib-nano")
 pkgver="v4.1.0"
 pkgrel=1
