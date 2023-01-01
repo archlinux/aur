@@ -2,13 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=i3-workspace-brightness-git
-pkgver=1.0.2.r0.g37dc57b
-pkgrel=2
+pkgver=1.0.3.r1.g9eaf442
+pkgrel=1
 pkgdesc="Utility to auto-adjust the brightness of i3wm workspaces (git)"
 arch=('x86_64')
 url="https://github.com/orhun/i3-workspace-brightness"
 license=('GPL3')
-makedepends=('rust' 'git')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+$url")
@@ -19,9 +20,14 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {
