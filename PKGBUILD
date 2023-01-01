@@ -3,9 +3,9 @@
 pkgname=groom-git
 _pkgname=${pkgname%-git}
 pkgver=r1.365ba93
-pkgrel=3
+pkgrel=4
 pkgdesc='Self-hosted HTTPS reverse-proxy, used to expose local private services to the public internet over secure websocket tunnels. Alternative to ngrok.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pyke369/${_pkgname}"
 license=('MIT')
 depends=('glibc')

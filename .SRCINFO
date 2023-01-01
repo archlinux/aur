@@ -1,9 +1,10 @@
 pkgbase = groom-git
 	pkgdesc = Self-hosted HTTPS reverse-proxy, used to expose local private services to the public internet over secure websocket tunnels. Alternative to ngrok.
 	pkgver = r1.365ba93
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pyke369/groom
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
@@ -13,4 +14,3 @@ pkgbase = groom-git
 	sha256sums = SKIP
 
 pkgname = groom-git
-
