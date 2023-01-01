@@ -1,16 +1,16 @@
 # Maintainer: Will Gauvin <wgauvin@gmail.com>
 
 pkgname=libindi-astromechfoc
-pkgver=1.9.6
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for Astromechanics Focuser T-Ring"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64)
-depends=(libindi=1.9.6)
+depends=(libindi=${pkgver})
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=('2d2f45d54231b941f896df4069df84a339efb5b9b81f2e060422f29e1c900b84')
+sha256sums=('93e3fb958516f2541ceb6ef3daa17def9f68dab1e9768d0be58526307781ca74')
 
 prepare() {
   mkdir -p build
