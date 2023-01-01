@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.24.1
+pkgver=2.24.4
 pkgrel=1
 pkgdesc='A simple, modern & fast web-based email client'
 arch=('any')
@@ -21,18 +21,21 @@ optdepends=(
   'php-pgsql: storage backend for contacts'
   'php-sqlite: storage backend for contacts'
 )
-_commit='af59dd3d0daceba8112ffe7e814f012634f7e2fc'
+_commit='c8deecb4aa2054581ba0c756ce6ee27de90b9849'
 source=(
   "$pkgname::git+https://github.com/the-djmaze/snappymail.git#commit=$_commit"
   'sysusers.conf'
   'tmpfiles.conf'
+  'update-package.json.patch'
 )
 sha512sums=('SKIP'
             '5dc55dc3655bd2e075dfc69572cde967d4ec9b5ebe27807a893c1beaa681e1af8639a80e3c09d665ddb7a6f40475ae6ad951ca9a243d1533ad68783077a1d51a'
-            '991dfdb415f2cff30107addf6fcf9349865a7d91a8e2f2c42b3d561541016f1af41f41aeec23300de8b3d9b75938f14dd073fd6daa245b5fcbcb9ca2166adb48')
+            '991dfdb415f2cff30107addf6fcf9349865a7d91a8e2f2c42b3d561541016f1af41f41aeec23300de8b3d9b75938f14dd073fd6daa245b5fcbcb9ca2166adb48'
+            '65b5360c36bbf76d6671088fa05e729b7ce4dd524c5eb5ef871962f65d38829cd03337be17ed29cc97fd5ffb7a49d40b42e7ebe49780726fbe00d7db20e2cb34')
 b2sums=('SKIP'
         'e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003'
-        'be25b05d775ac4e88065e8018a1026b4c41a073639e59e6520818b7ca578cc93ac2120bd090caf1d255fade69a6680ca764b14cb32f6dd61c80b521d1b16f205')
+        'be25b05d775ac4e88065e8018a1026b4c41a073639e59e6520818b7ca578cc93ac2120bd090caf1d255fade69a6680ca764b14cb32f6dd61c80b521d1b16f205'
+        'fe1b458470d7af1d54f91ddf92ada57d2f7827987b8c6265078cf2a00292c9732ddd00a33a73fd9921f28271ae12a16620dc6c7c7b0db37dad74b5adef4aefd6')
 
 pkgver() {
   cd "$pkgname"
@@ -45,6 +48,9 @@ prepare() {
   mkdir -p build
 
   cd "$pkgname"
+
+  # whoops.
+  patch -p1 -i "$srcdir/update-package.json.patch"
 
   # ensure data path is set to /var/lib/snappymail
   sed \
