@@ -2,7 +2,7 @@
 
 pkgname=clipboard
 _pkgname=Clipboard
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,10 +11,10 @@ license=('GPL3')
 makedepends=('cmake')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('dae1744b8841a673e07c582beddaf104e346d729a5e6df7dcf9bccb30c70228a')
+sha256sums=('353a6bf459c64284bfbbdd40b59c8b17061d901c26fa58af5761f47b29fc18b5')
 
 build () {
-	cmake -B build -S "${_pkgname}-${pkgver}/src" \
+	cmake -B build -S "${_pkgname}-${pkgver}" \
 	-DCMAKE_BUILD_TYPE='None' \
 	-DCMAKE_INSTALL_PREFIX='/usr' \
 	-Wno-dev
