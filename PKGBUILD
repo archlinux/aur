@@ -15,14 +15,13 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/gcc"
-checkdepends=('shellcheck')
 makedepends=("${target}-binutils"
              "libgmp-static"
              "mpfr-static"
              "libmpc-static"
              "zstd-static")
 optdepends=()
-_branch="${_module}-${_gcc_ver}"
+_branch="${_module}-${pkgver}"
 _commit="331453616ac96717cfef82d21c03573c8984f17d"
 source=("${pkgname}::git+${_github}/gcc#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-gcc#commit=${_branch}")
@@ -53,7 +52,6 @@ build() {
   export LDFLAGS
 
   local _cflags=(${cflags[@]}
-                 # -D_FORTIFY_SOURCE=0
                  -I/usr/include
                  -static)
 
@@ -77,8 +75,6 @@ build() {
                            --build=${CHOST}
                            --enable-languages="c"
                            --with-float=hard
-                           # --with-as=/usr/bin/${_target}
-                           # --with-ld=/usr/bin/${_target}
                            --without-headers
                            --without-newlib
                            --disable-libssp
