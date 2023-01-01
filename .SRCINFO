@@ -1,0 +1,15 @@
+pkgbase = python-efficient_apriori
+	pkgdesc = An efficient Python implementation of the Apriori algorithm.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/tommyod/Efficient-Apriori
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.6
+	source = https://files.pythonhosted.org/packages/source/e/efficient_apriori/efficient_apriori-2.0.1.tar.gz
+	sha256sums = ab0ec6df70c0386d378dc80494393b1403c44f89b5115091cdbb89c066ad1616
+
+pkgname = python-efficient_apriori
