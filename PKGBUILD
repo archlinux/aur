@@ -1,8 +1,8 @@
 # Maintainer: Autumn Boyhan <autumn@crisismodel.com>
 
 pkgname=naikari
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="2-D space trading and mercenary game forked from the Naev project."
 arch=('x86_64')
 url="https://naikari.github.io/"
@@ -12,7 +12,7 @@ makedepends=('meson' 'ninja')
 provides=('naikari')
 conflicts=('naikari' 'naikari-git')
 source=("https://github.com/naikari/naikari/releases/download/v${pkgver}/${pkgname}-${pkgver}-source.tar.xz")
-md5sums=('fc1de4b30be41c42392d66792d930288')
+md5sums=('a86b12a16cf43d5efeee7df41b46cf7d')
 
 prepare() {
 	mv ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}
