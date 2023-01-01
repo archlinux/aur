@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.4.6.0
+pkgver=2.4.7.0
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -32,7 +32,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('a220e2bc56812b946f7ecc22dd8139b8101b51ea97522deed84a1bb6928f51dc')
+sha256sums=('c936ea78addad01a468debdc8a15844c0e7c081e2b64beb29d8713f7da565a80')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -42,11 +42,6 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG
 	-DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
 	-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=''
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
-
-prepare() {
-	cd "${_srcdir}"
-	sed -i 's/void OIIO_API operator++(int) {/void operator++(int) {/' 'src/include/OpenImageIO/imagebuf.h'
-}
 
 build() {
 	for _arch in ${_architectures}; do
