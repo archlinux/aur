@@ -19,7 +19,7 @@ optdepends=('mate-panel: mate applet'
             'python-pyudev: dockx battery applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
-source=(${url}/archive/refs/tags/${_pkgver}.tar.gz)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
 sha256sums=('418101acb09a4fd4fd94280fa5a313a4fab103fd105ca267ea72fc609f5bb865')
 install="${pkgname}.install"
 

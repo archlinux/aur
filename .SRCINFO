@@ -25,7 +25,7 @@ pkgbase = dockbarx
 	optdepends = python-pyudev: dockx battery applet
 	optdepends = gconf: export settings from older versions of dockbarx
 	optdepends = python-lxml: import settings script
-	source = https://github.com/xuzhen/dockbarx/archive/refs/tags/1.0-beta2.tar.gz
+	source = dockbarx-1.0beta2.tar.gz::https://github.com/xuzhen/dockbarx/archive/refs/tags/1.0-beta2.tar.gz
 	sha256sums = 418101acb09a4fd4fd94280fa5a313a4fab103fd105ca267ea72fc609f5bb865
 
 pkgname = dockbarx
