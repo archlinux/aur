@@ -1,0 +1,18 @@
+pkgbase = dmarc_report
+	pkgdesc = Generate nice reports from one or more DMARC report files
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/gene-git/dmarc_report
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = rsync
+	depends = python>3.9
+	depends = python-netaddr
+	source = git+https://github.com/gene-git/dmarc_report
+	sha512sums = SKIP
+
+pkgname = dmarc_report
