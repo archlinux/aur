@@ -1,0 +1,16 @@
+pkgbase = python-logilab-common
+	pkgdesc = Useful miscellaneous modules used by Logilab projects
+	pkgver = 1.9.7
+	pkgrel = 1
+	url = https://www.logilab.org/project/logilab-common
+	arch = any
+	license = LGPL
+	checkdepends = python-pytz
+	checkdepends = python-pytest
+	depends = python-setuptools
+	depends = python-mypy_extensions
+	depends = python-typing_extensions
+	source = https://pypi.io/packages/source/l/logilab-common/logilab-common-1.9.7.tar.gz
+	sha512sums = d87217840fa6a65e272ff3f4b2200ff2dbc5e13bd86c02abfee13e888ac1accd27d228965e7cfcca58597ce24a756be1f4f996b7261b88f29abf331a2e8549cd
+
+pkgname = python-logilab-common
