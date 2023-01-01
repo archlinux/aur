@@ -1,42 +1,33 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
-pkgname='perl-sub-exporter-formethods'
-pkgver='0.100054'
-pkgrel='1'
-pkgdesc="helper routines for using Sub::Exporter to build methods"
+pkgname=perl-sub-exporter-formethods
+pkgver=0.100055
+pkgrel=1
+pkgdesc="Helper routines for using Sub::Exporter to build methods"
 arch=('any')
+url="https://metacpan.org/dist/Sub-Exporter-ForMethods"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl-sub-exporter')
 checkdepends=('perl-namespace-autoclean')
-url='https://metacpan.org/release/Sub-Exporter-ForMethods'
-source=('https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Sub-Exporter-ForMethods-0.100054.tar.gz')
-sha256sums=('eef61c9421688bb3a7beaca71623df11c8a749307ae428abdabc556e2bfafc3e')
-_distdir="Sub-Exporter-ForMethods-0.100054"
+source=("https://www.cpan.org/modules/by-module/Sub/Sub-Exporter-ForMethods-${pkgver}.tar.gz")
+sha512sums=('d4e2a02d7628f5d51b3d17937ba3f14ae4efead8e1ca298ae7c901e15177fa2e6df4367543303f21307137d857e232190a8b2c286ff6fe64fbae11e26172868d')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Sub-Exporter-ForMethods-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Sub-Exporter-ForMethods-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "${srcdir}/Sub-Exporter-ForMethods-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
