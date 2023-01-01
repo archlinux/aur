@@ -27,6 +27,7 @@ build() {
     # We deliberately don't set the build type here, because upstream sets a
     # reasonable default type
     cmake -GNinja -B build \
+        -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DEXTRA_DATA_DIR=/usr/share/ja2 \
         -DLOCAL_LUA_LIB=OFF \
