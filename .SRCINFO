@@ -5,7 +5,6 @@ pkgbase = mips64r5900el-ps2-elf-gcc-stage1
 	url = https://github.com/ps2dev/gcc
 	arch = x86_64
 	license = BSD
-	checkdepends = shellcheck
 	makedepends = mips64r5900el-ps2-elf-binutils
 	makedepends = libgmp-static
 	makedepends = mpfr-static
