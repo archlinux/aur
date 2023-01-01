@@ -56,15 +56,18 @@ build() {
   export LDFLAGS
 
   local _cflags=(${cflags[@]}
-                 -I"/usr/${platform}/include/pthread-embedded"
-                 -I"/usr/${platform}/include/pthread-embedded/bits"
+                 -I"/usr/${target}/include/pthread-embedded"
+                 # -include "/usr/${target}/include/pthread-embedded/pthread.h"
+                 -I"/usr/${target}/include/pthread-embedded/bits"
+                 # -I"/usr/${target}/include/newlib-nano"
                  # -std=c99
                  # -std=c++98
                  # -nostdinc
                  -O2)
 
   local _ldflags=(${ldflags[@]}
-                  -L"/usr/${platform}/lib/pthread-embedded")
+                  -L"/usr/${target}/lib/pthread-embedded"
+                  -L"/usr/${target}/lib/newlib-nano")
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
