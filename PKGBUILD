@@ -31,7 +31,8 @@ build() {
   mv ${srcdir}/dpkgdir/temp/app.asar ${srcdir}/dpkgdir/usr/lib/electronic-wechat/
   mv ${srcdir}/dpkgdir/temp/icon.png ${srcdir}/dpkgdir/usr/share/icons/hicolor/512x512/apps/electronic-wechat.png
   echo -e '#!/bin/bash \nelectron13 /usr/lib/electronic-wechat/app.asar' > ${srcdir}/dpkgdir/usr/lib/electronic-wechat/wechat
-  echo "#!/bin/bash \nexec electron /usr/lib/electronic-wechat/app.asar" > ${srcdir}/dpkgdir/usr/bin/wechat
+  echo -e "#!/bin/bash 
+  exec electron6 /usr/lib/electronic-wechat/app.asar" > ${srcdir}/dpkgdir/usr/bin/wechat
   echo -e "[Desktop Entry]
 Name=Electronic Wechat
 Comment=Unofficial WeChat client built with React, MobX and Electron.
