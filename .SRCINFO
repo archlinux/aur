@@ -1,7 +1,7 @@
 pkgbase = sema
 	pkgdesc = Semantic commit tool
-	pkgver = 2.1.0
-	pkgrel = 17
+	pkgver = 2.1.1
+	pkgrel = 18
 	url = https://github.com/sharpvik/sema
 	arch = x86_64
 	license = MIT
