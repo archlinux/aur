@@ -1,12 +1,16 @@
 pkgbase = highflux-preview-bin
 	pkgdesc = Highflux preview version
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 3
 	url = https://www.highflux.io/
 	arch = any
 	license = copyright
 	depends = wget
 	conflicts = highflux
 	conflicts = hf
+	source = entry.desktop
+	source = https://www.highflux.io/ping/dl_redirect/linux_tgz
+	sha256sums = 7b346ed8a4ff76d44b77e57504406d3d56c88cd2c9770379173c374af45a0d3d
+	sha256sums = 47028ba2e52a48aca7a888d8e8acf2c1ed6151be310fc236b1af004ac01a7547
 
 pkgname = highflux-preview-bin
