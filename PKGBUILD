@@ -2,16 +2,16 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-string-errf
-pkgver=0.008
+pkgver=0.009
 pkgrel=1
 pkgdesc="A simple sprintf-like dialect"
 arch=('any')
+url="https://metacpan.org/dist/String-Errf"
 license=('PerlArtistic' 'GPL')
-depends=('perl' 'perl-params-util' 'perl-string-formatter')
+depends=('perl' 'perl-params-util' 'perl-string-formatter' 'perl-sub-exporter')
 checkdepends=('perl-timedate' 'perl-json-maybexs')
-url="https://metacpan.org/release/String-Errf"
 source=("https://www.cpan.org/modules/by-module/String/String-Errf-${pkgver}.tar.gz")
-sha512sums=('0684613c932ace4b7ee2f44a73a1bfd90ce195203ffb3da8ec5689d7ed912854490288d8e559cd97ff7af5b8c0486abdb357353c1dee4edbdc4b17ada56b156b')
+sha512sums=('2089e1240e896e1e573a38911965171103b085b99aeacb06e92b59846017c133bee0db71cc39c963e3d63a1e939b5503941fb4efbf83b856d87a0e3a332ba571')
 
 build() {
   cd "${srcdir}/String-Errf-${pkgver}"

@@ -1,8 +1,8 @@
 pkgbase = perl-string-errf
 	pkgdesc = A simple sprintf-like dialect
-	pkgver = 0.008
+	pkgver = 0.009
 	pkgrel = 1
-	url = https://metacpan.org/release/String-Errf
+	url = https://metacpan.org/dist/String-Errf
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -11,7 +11,8 @@ pkgbase = perl-string-errf
 	depends = perl
 	depends = perl-params-util
 	depends = perl-string-formatter
-	source = https://www.cpan.org/modules/by-module/String/String-Errf-0.008.tar.gz
-	sha512sums = 0684613c932ace4b7ee2f44a73a1bfd90ce195203ffb3da8ec5689d7ed912854490288d8e559cd97ff7af5b8c0486abdb357353c1dee4edbdc4b17ada56b156b
+	depends = perl-sub-exporter
+	source = https://www.cpan.org/modules/by-module/String/String-Errf-0.009.tar.gz
+	sha512sums = 2089e1240e896e1e573a38911965171103b085b99aeacb06e92b59846017c133bee0db71cc39c963e3d63a1e939b5503941fb4efbf83b856d87a0e3a332ba571
 
 pkgname = perl-string-errf
