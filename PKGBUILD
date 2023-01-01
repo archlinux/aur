@@ -10,7 +10,8 @@ _base="toolchain"
 pkgname="${target}-${_pe}"
 pkgver=v1.0
 pkgrel=1
-_pkgdesc=("EE compiler which is used in the creation of homebrew software "
+_pkgdesc=("Open Source Software implementation of the "
+          "Threads component of the POSIX 1003.1 2001 Standard "
           "for the Sony PlayStation® 2 videogame system.")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')

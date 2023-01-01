@@ -1,5 +1,5 @@
 pkgbase = mips64r5900el-ps2-elf-pthread-embedded
-	pkgdesc = EE compiler which is used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
+	pkgdesc = Open Source Software implementation of the Threads component of the POSIX 1003.1 2001 Standard for the Sony PlayStation® 2 videogame system.
 	pkgver = v1.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2toolchain-ee
