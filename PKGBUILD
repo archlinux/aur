@@ -18,7 +18,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 _name=srb2kart-galaxy
 pkgname=${_name}-git
-pkgver=r7569.af46e4f6
+pkgver=r7584.ef8e6abe
 _dataver=1.6
 pkgrel=1
 pkgdesc="A SRB2Kart-Moe-Mansion like Build for people that are missing some of its features."
@@ -37,8 +37,8 @@ options=(!buildflags)
 provides=("${_name}")
 conflicts=("${_name}")
 source=("git+https://git.do.srb2.org/Galactice/Kart-Public.git"
-        "srb2kart.desktop"
-        "srb2kart-opengl.desktop")
+        "srb2kart-galaxy.desktop"
+        "srb2kart-galaxy-opengl.desktop")
 sha256sums=('SKIP'
             '39dbfbd455da1ba18f3032dada55d2002ed1e30710b486ddd56adfbe45648c62'
             '794f5de70c3a43c7ac201251a669f00eb22fd7ad9dc4fbbf474bf8243cbe64e1')
@@ -69,7 +69,7 @@ package() {
   # icon + .desktop
   install -Dm644 "$srcdir"/Kart-Public/src/sdl/SDL_icon.xpm \
     "$pkgdir"/usr/share/pixmaps/srb2kart-galaxy.xpm
-  install -Dm644 srb2kart.desktop "$pkgdir"/usr/share/applications/srb2kart-galaxy.desktop
-  install -m644 srb2kart-opengl.desktop "$pkgdir"/usr/share/applications/srb2kart-galaxy-opengl.desktop
+  install -Dm644 srb2kart-galaxy.desktop "$pkgdir"/usr/share/applications/srb2kart-galaxy.desktop
+  install -m644 srb2kart-galaxy-opengl.desktop "$pkgdir"/usr/share/applications/srb2kart-galaxy-opengl.desktop
 }
 
