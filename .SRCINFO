@@ -1,0 +1,14 @@
+pkgbase = python-hat-aio
+	pkgdesc = Hat async utility library
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/hat-open/hat-aio
+	arch = any
+	license = Apache
+	makedepends = python-hat-doit
+	makedepends = python-installer
+	depends = python-hat-util
+	source = https://github.com/hat-open/hat-aio/archive/refs/tags/v0.7.3.tar.gz
+	sha256sums = 48974816473754ca85fc97fa28b6b6cd7ac840040a2b2fcd1c6ad9544ddf40ab
+
+pkgname = python-hat-aio
