@@ -9,9 +9,7 @@ _base="toolchain"
 pkgname=("${target}-newlib")
 pkgver="v4.1.0"
 pkgrel=1
-_pkgdesc=("EE compiler which is used in the creation of homebrew software "
-          "for the Sony PlayStation® 2 videogame system.")
-pkgdesc="${_pkgdesc[*]}"
+pkgdesc="A C library intended for use on embedded systems (${target})"
 arch=('x86_64')
 license=('BSD')
 _github="https://github.com/ps2dev"

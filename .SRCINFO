@@ -1,5 +1,5 @@
 pkgbase = mips64r5900el-ps2-elf-newlib
-	pkgdesc = EE compiler which is used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
+	pkgdesc = A C library intended for use on embedded systems (mips64r5900el-ps2-elf)
 	pkgver = v4.1.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2toolchain-ee
