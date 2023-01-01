@@ -1,14 +1,13 @@
+DIR=/usr/share/zlodej/DATADISK
 post_install(){
-  DIR=/usr/share/zlodej/DATADISK
-  cp -n $DIR/{ORIGIN,GAMES}.LST
-  USER=`w|tail -1|cut -d' ' -f1`
-  chown $USER:$USER $DIR/GAMES.LST
+	cp -n $DIR/{ORIGIN,GAMES}.LST
+	USER=`who -m|cut -d\  -f1`
+	chown $USER: $DIR/GAMES.LST
 }
 pre_remove(){
-  DIR=/usr/share/zlodej/DATADISK
-  [ "`diff $DIR/{ORIGIN,GAMES}.LST`" = "" ] && rm $DIR/GAMES.LST || true
+	[ "`diff $DIR/{ORIGIN,GAMES}.LST`" = "" ] && rm $DIR/GAMES.LST || true
 }
 post_remove(){
-  DIR=/usr/share/zlodej
-  [ -d $DIR ] && echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $DIR -type f|sort`\e[m" || true
+	DIR=/usr/share/zlodej
+	[ -d $DIR ] && echo -e "\e[31mNásledující soubory nebyly odstraněny:\n\n`find $DIR -type f|sort`\e[m" || true
 }
