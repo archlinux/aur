@@ -1,16 +1,15 @@
 pkgbase = perl-config-mvp-reader-ini
-	pkgdesc = an MVP config reader for .ini files
-	pkgver = 2.101464
+	pkgdesc = An MVP config reader for .ini files
+	pkgver = 2.101465
 	pkgrel = 1
-	url = https://metacpan.org/release/Config-MVP-Reader-INI
+	url = https://metacpan.org/dist/Config-MVP-Reader-INI
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-config-ini
 	depends = perl-config-mvp
 	depends = perl-moose
-	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Config-MVP-Reader-INI-2.101464.tar.gz
-	sha256sums = 3994b05e414416ac06982a3faf4296c53fb96f30c851a182f42dd4e3cf7481c0
+	source = https://www.cpan.org/modules/by-module/Config/Config-MVP-Reader-INI-2.101465.tar.gz
+	sha512sums = 5e8386a402e5d17ba84d953ba094b42385503c1d279c27575a2cc1cd064c05ec2f8d12d5ce0b9411793ae6201356329889c6284b1a2e8bd51a506c44d2cfa3aa
 
 pkgname = perl-config-mvp-reader-ini

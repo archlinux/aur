@@ -1,48 +1,32 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
-pkgname='perl-config-mvp-reader-ini'
-pkgver='2.101464'
-pkgrel='1'
-pkgdesc="an MVP config reader for .ini files"
+pkgname=perl-config-mvp-reader-ini
+pkgver=2.101465
+pkgrel=1
+pkgdesc="An MVP config reader for .ini files"
 arch=('any')
+url="https://metacpan.org/dist/Config-MVP-Reader-INI"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl-config-ini' 'perl-config-mvp' 'perl-moose')
-url='https://metacpan.org/release/Config-MVP-Reader-INI'
-source=(https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Config-MVP-Reader-INI-$pkgver.tar.gz)
-sha256sums=('3994b05e414416ac06982a3faf4296c53fb96f30c851a182f42dd4e3cf7481c0')
-_distdir="Config-MVP-Reader-INI-$pkgver"
+source=("https://www.cpan.org/modules/by-module/Config/Config-MVP-Reader-INI-${pkgver}.tar.gz")
+sha512sums=('5e8386a402e5d17ba84d953ba094b42385503c1d279c27575a2cc1cd064c05ec2f8d12d5ce0b9411793ae6201356329889c6284b1a2e8bd51a506c44d2cfa3aa')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Config-MVP-Reader-INI-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Config-MVP-Reader-INI-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "${srcdir}/Config-MVP-Reader-INI-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
