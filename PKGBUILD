@@ -5,7 +5,7 @@
 
 pkgname=gamescope
 pkgver=3.11.48
-pkgrel=2
+pkgrel=3
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/Plagman/gamescope
@@ -18,7 +18,7 @@ depends=(
   libliftoff.so
   libpipewire-0.3.so
   libvulkan.so
-  libwlroots.so
+  libwlroots.so=10
   libx11
   libxcomposite
   libxdamage
@@ -33,7 +33,6 @@ depends=(
   vulkan-icd-loader
   wayland
   wayland-protocols
-  wlroots
   xorg-server-xwayland
 )
 makedepends=(
@@ -58,6 +57,7 @@ pkgver() {
 }
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
   export LDFLAGS="$LDFLAGS -lrt"
   arch-meson gamescope build \
     -Dforce_fallback_for=stb \
