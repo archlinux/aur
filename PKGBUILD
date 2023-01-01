@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hilbish
-pkgver=1.2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,11 +13,10 @@ install="$pkgname.install"
 options=('!emptydirs')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e5bb77a90e05ee8ab063e4372919f58f6c6ccd341056750a581899ca193782a4')
+sha256sums=('9adb3ed5efd4f4c5719f152379a7fa081bfcb563f2edea3b90162a49f20b32e2')
 
 prepare() {
 	cd "Hilbish-$pkgver"
-	sed -i '\|/etc/shells|d' Makefile
 	go mod download
 }
 
@@ -26,11 +25,10 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "Hilbish-$pkgver"
-	## `make build` does not build due to overriding our ldflags
-	go build
+	go build -ldflags "-linkmode=external -X main.dataDir=/usr/share/hilbish"
 }
 
 check() {
@@ -39,8 +37,11 @@ check() {
 }
 
 package() {
+	## do not use the taskfile, install everything manually
 	cd "Hilbish-$pkgver"
-	DESTDIR="$pkgdir/" make install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv "$pkgname" -t "$pkgdir/usr/bin/"
+	install -dv "$pkgdir/usr/share/hilbish/"
+	cp -av libs docs emmyLuaDocs nature .hilbishrc.lua "$pkgdir/usr/share/hilbish/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
