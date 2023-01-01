@@ -4,7 +4,7 @@
 pkgbase=curator
 pkgname=(python-elasticsearch-curator curator)
 pkgver=5.7.6
-pkgrel=8
+pkgrel=9
 pkgdesc='Curator: Tending your Elasticsearch indices'
 url='https://github.com/elastic/curator'
 arch=('x86_64')
@@ -60,7 +60,7 @@ package_python-elasticsearch-curator() {
 }
 
 package_curator() {
-  depends=('python' 'python-setuptools' 'python-elasticsearch-curator')
+  depends=('python' 'python-elasticsearch-curator')
   provides=("elasticsearch-curator=${pkgver}-${pkgrel}")
   cd curator-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
