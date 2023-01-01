@@ -4,7 +4,7 @@
 _pkgname=themix-export-spotify
 _reponame=oomoxify
 pkgname="${_pkgname}-git"
-pkgver=1.2.6.r0.g5fab7c1
+pkgver=1.2.7.r0.gf3de4d6
 pkgrel=1
 pkgdesc="Export plugin for Themix GUI designer to apply color palettes to Spotify desktop player"
 arch=('x86_64' 'i686')
