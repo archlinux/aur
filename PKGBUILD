@@ -1,18 +1,19 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=6.3.1.r5.g905d8228
+pkgver=6.4.2.r11.g4bf4d656
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
 license=('BSD')
-depends=('gcc-libs')
+depends=('llvm-libs')
 makedepends=(
 	'boost>=1.57'
 	'cmake>=3.12'
 	'fmt>=9'
 	'git'
+	'llvm'
 	'robin-map>=0.6.2'
 	'xbyak>=6.68'
 	'zydis>=4'
@@ -36,6 +37,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDYNARMIC_IGNORE_ASSERTS=ON \
 		-DDYNARMIC_TESTS="$CHECKFUNC" \
+		-DDYNARMIC_USE_LLVM=ON \
 		-DDYNARMIC_USE_PRECOMPILED_HEADERS=OFF \
 		-Wno-dev
 	cmake --build build
