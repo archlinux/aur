@@ -1,7 +1,6 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 # shellcheck disable=SC2034
-# _target="arm-none-eabi"
 target="mips64r5900el-ps2-elf"
 _module="ee"
 _platform="ps2"
@@ -22,12 +21,13 @@ makedepends=("${target}-binutils"
              "${target}-gcc-stage1"
              "${target}-newlib"
              "${target}-newlib-nano"
+             "${target}-pthread-embedded"
              "libgmp-static"
              "mpfr-static"
              "libmpc-static"
              "zstd-static")
 optdepends=()
-_branch="${_module}-${_gcc_ver}"
+_branch="${_module}-${pkgver}"
 _commit="331453616ac96717cfef82d21c03573c8984f17d"
 source=("${target}-gcc::git+${_github}/gcc#commit=${_commit}")
 # source=("${pkgbase}-gcc::git+${_local}/${_platform}-gcc#commit=${_branch}")
@@ -57,26 +57,22 @@ build() {
   export LDFLAGS
 
   local _cflags=(${cflags[@]}
-                 # -I"${srcdir}/buildroot/${_usr}/include"
-                 # -L"${srcdir}/buildroot/${_usr}/lib"
-                 # -I"/usr/include"
+                 -I"/usr/${platform}/include/pthread-embedded"
+                 -I"/usr/${platform}/include/pthread-embedded/bits"
                  # -std=c99
                  # -std=c++98
                  # -nostdinc
                  -O2)
-                 # -D_FORTIFY_SOURCE=0)
 
-  local _ldflags=(${ldflags[@]})
-                  # -ldl
-                  # "-lstdio"
-                  # "${srcdir}/buildroot/${_usr}/lib/libpthread.a")
+  local _ldflags=(${ldflags[@]}
+                  -L"/usr/${platform}/lib/pthread-embedded")
 
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
-  cd "${srcdir}/${target}-gcc"
+  cd "${srcdir}/${pkgname}"
 
   for _target in "${target}"; do
     rm -rf "build-${_target}"
@@ -94,16 +90,8 @@ build() {
                            --enable-cxx-flags=-G0
                            --enable-threads=posix)
 
-    # CPP="${srcdir}/${_bin}/${_target}-cpp" \
-    # CC="${srcdir}/${_bin}/${_target}-gcc" \
-    # CC="/usr/bin/gcc" \
-    # CPP="/usr/bin/cpp" \
     "../configure" ${_configure_opts[@]}
 
-    # CPP="${srcdir}/${_bin}/${_target}-cpp" \
-    # CC="${srcdir}/${_bin}/${_target}-gcc" \
-    # CC="/usr/bin/gcc" \
-    # CPP="/usr/bin/cpp" \
     make "${_build_opts[@]}" all
     
     cd ..
@@ -113,9 +101,9 @@ build() {
 # shellcheck disable=SC2154
 package() {
   local _target
-  cd "${srcdir}/${target}-gcc"
+  cd "${srcdir}/${pkgname}"
   for _target in "${target}"; do
-    cd "build-${_target}-stage2"
+    cd "build-${_target}"
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
     cd ..
   done
