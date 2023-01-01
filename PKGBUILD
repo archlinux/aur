@@ -3,7 +3,7 @@
 _name=moderngl
 
 pkgname=python-moderngl-git
-pkgver=5.6.4.r85.gd219778e
+pkgver=5.7.4.r47.g1c33db79
 pkgrel=1
 pkgdesc="Modern OpenGL binding for python."
 
