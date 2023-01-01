@@ -6,13 +6,13 @@
 
 pkgname=stgit-git
 _pkgname=stgit
-pkgver=r2706.22e16e99
+pkgver=r2722.8ba765f6
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="https://stacked-git.github.io/"
 license=('GPL2')
 arch=(x86_64)
-depends=('git' 'libgit2' 'curl' 'bzip2')
+depends=('git' 'curl' 'bzip2')
 makedepends=('cargo' 'asciidoc' 'xmlto')
 conflicts=('stgit')
 source=("${_pkgname}::git+https://github.com/stacked-git/stgit.git")

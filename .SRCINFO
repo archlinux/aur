@@ -1,6 +1,6 @@
 pkgbase = stgit-git
 	pkgdesc = Pushing/popping patches to/from a stack on top of Git, similar to Quilt
-	pkgver = r2706.22e16e99
+	pkgver = r2722.8ba765f6
 	pkgrel = 1
 	url = https://stacked-git.github.io/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = stgit-git
 	makedepends = asciidoc
 	makedepends = xmlto
 	depends = git
-	depends = libgit2
 	depends = curl
 	depends = bzip2
 	conflicts = stgit
