@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
@@ -9,41 +9,29 @@ license=('GPL3')
 conflicts=('autojump')
 provides=('autojump')
 depends=()
-makedepends=('python>=3.8')
+makedepends=('python>=3.8' 'cargo')
 options=()
 install=
 _autojump_version='22.5.3'
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${pkgver}-${CARCH}-unknown-linux-musl.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/archive/refs/tags/${pkgver}.tar.gz"
     "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
 )
-md5sums=('b7ab473f1dc541c0d8503b32f969a2f4'
+md5sums=('b5e691a80b2cc30e673a981b04004c82'
          '29f1a7df736814c747645703bf00ce48')
-
-# alt arches
-source_aarch64=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums_aarch64=('b7ab473f1dc541c0d8503b32f969a2f4'
-                 '29f1a7df736814c747645703bf00ce48')
-source_arm=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${pkgver}-${CARCH}-unknown-linux-gnueabi.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums_arm=('b7ab473f1dc541c0d8503b32f969a2f4'
-             '29f1a7df736814c747645703bf00ce48')
-source_armv7h=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums_armv7h=('b7ab473f1dc541c0d8503b32f969a2f4'
-                '29f1a7df736814c747645703bf00ce48')
 
 prepare() {
     cd "autojump-release-v${_autojump_version}"
     sed -i "s:/env python:/python3:g" bin/autojump
     sed -i "/print('\\\\n\\\\t' + source_msg)/ s@source_msg@source_msg.replace('$pkgdir', '')@" install.py
+    # workaround - the Cargo.toml version is outdated
+    cd "../${pkgname}-${pkgver}"
+    sed -i 's/^version = "0.4.0"$/version = "'"${pkgver}"'"/' Cargo.toml
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --offline --all-features --release --target-dir target
 }
 
 package() {
@@ -78,7 +66,7 @@ package() {
     rm -r "${pkgdir}/usr/share/man/"
 
     # install the Rust binary
-    install -Dm755 "${srcdir}/autojump" "${pkgdir}/usr/bin/autojump"
+    install -Dm755 "${srcdir}/$pkgname-$pkgver/target/release/autojump" "${pkgdir}/usr/bin/autojump"
 }
 
 # vim:set ts=4 sw=4 et:
