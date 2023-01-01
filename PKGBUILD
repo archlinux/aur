@@ -2,8 +2,8 @@
 # -*- mode: sh -*-
 
 pkgname='slang-snapshot'
-_pkgname='slang'
-_pkgver='2.3.4-6'
+_pkgname="${pkgname%-snapshot}"
+_pkgver='2.3.4-7'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
@@ -23,7 +23,7 @@ options=('lto' '!makeflags')
 source=("${url}slang-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('7cc28752c6b6adf69b3ac8ee05849045')
+md5sums=('21e4c33194a26d8fb2304afea107e88b')
 
 build() {
   cd "${_pkgname}-${_prever}" || exit 1
@@ -46,13 +46,13 @@ package() {
 
 # Calculated
 sha256sums=(
-  '4be0a4f6f19d4e3c1ad2ac8912e78336865ea09c31fc16e6dacf637eb2b1c713'
+  '7c773efa3c258ed916de152c3c29fe360cefca7ffaea1e6fd8f386085f096872'
 )
 sha512sums=(
-  '1049b85d9957a436861546fb8db24907e65700d6b59790b9f2e215d24664a771838bc89dd79d6954d415b35c8f765f709ff9a01c1a17c55aa29d9835bd33dfa0'
+  'aaa75ba4b3849a5438cc179ab88df29f539f9b332d26df75c80ac6a7e6bf79c49754ace82207e10fc981558d2f1348d479bb7266999dd18d05071d65e7d9a8ff'
 )
 b2sums=(
-  'd1a96d9314d699e025c9076e78b094fdbbea834c13944c64d5b5c1c12b3d4b2b0aea51d15cf72a3d773686c454e5263345df8509dcc6fb741563c042d59ed117'
+  '48d228f9c6ed848b1c7210c89f626fa60a0bb80168fa78fee2682ead0bda5aa47e8871d27c75987aa8a9db68f4640cbcd75b6375145a0ee09280752f36454f7d'
 )
 
 # eof
