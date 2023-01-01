@@ -1,7 +1,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=dockbarx
-epoch=1
+epoch=2
 _pkgver=1.0-beta2
 pkgver=1.0beta2
 pkgrel=1
