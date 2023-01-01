@@ -1,4 +1,4 @@
-# Maintainer: Bozo Kopic <biozo@kopic.xyz>
+# Maintainer: Bozo Kopic <bozo@kopic.xyz>
 
 _name=hat-doit
 pkgname=python-$_name
