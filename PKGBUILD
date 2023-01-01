@@ -1,6 +1,6 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=tarsnystemd
-pkgver=0.1
+pkgver=0.2
 _pkgver="v$pkgver"
 pkgrel=2
 pkgdesc="SystemD and tarsnap, finally together."
@@ -14,7 +14,7 @@ backup=('etc/tarsnap.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/-/archive/$_pkgver/$pkgname-$_pkgver.tar.gz"
 )
-sha512sums=('2893386fec049f69cd3946ad265eeefc0ad9cf95c8cd1bc1920a457801bf388029d2195da2c49aa7545072d52448744580d0c9b0e71443f2b651a37213c4fd31')
+sha512sums=('5f4a6623ccc2bcd51904fa951e78f6d816853a4a68eabba14637f0967b10977aebc74b3aac31c56cae6169d80200681e22591baa6398b5552e5bd83c20087826')
 
 package() {
 	cd "$pkgname-${_pkgver}"
