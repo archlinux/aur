@@ -2,19 +2,25 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=i3-workspace-brightness
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Utility to auto-adjust the brightness of i3wm workspaces"
 arch=('x86_64')
 url="https://github.com/orhun/i3-workspace-brightness"
 license=('GPL3')
-makedepends=('rust')
+depends=('gcc-libs')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('7e0e52c0af16c2a8374b91a4a2ca3e48c3c6d0bfe4c811d60095ebc12e5f7862a43141b16ccf1b04901c09282379650009ad981d3f9a1fd9c250cca1738cc7a1')
+sha512sums=('48acbd462b38eee6123fcf333be81eb4585c62f1f291d25039c1d00ed219dd3b4cd946fc043387f12f6fbba29ba9f246ea8076e16288aa0ce09e49e854b79955')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 package() {
