@@ -1,6 +1,6 @@
 pkgbase = retrovirtualmachine
 	pkgdesc = Emulator of the Amstrad CPC and the ZX Spectrum home computers
-	pkgver = 2.0.beta.1.r7
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://www.retrovirtualmachine.org
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = retrovirtualmachine
 	depends = libxi
 	depends = hicolor-icon-theme
 	depends = libglvnd
-	source = retrovirtualmachine-2.0.beta.1.r7.deb::https://static.retrovm.org/release/beta1/linux/x64/RetroVirtualMachine.2.0.beta-1.r7.linux.x64.deb
-	sha256sums = 9f90afe4dda04430cedeb7919e6e879bf9d86df9c1bfc6349102901d9ec0fbc0
+	source = retrovirtualmachine-2.1.1.deb::https://static.retrovm.org/release/2.1.1/RetroVirtualMachine.2.1.1.Linux.x64.deb
+	sha256sums = 0eae66491e1c3b75cffde5ff950328b9ed8ba731e772fc09dfe96de998af8e29
 
 pkgname = retrovirtualmachine
-
