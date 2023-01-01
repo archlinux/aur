@@ -3,8 +3,8 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.16.0.post0
-pkgrel=2
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a44861413b01a8d472603ed1c27abde0267f423c527cfd87e9ce1b284263227b79418fc98e8d0c1876f78c89438037f0b79e629eb9c384f6c83983a5307c4e10')
+sha512sums=('37660cfd6f08b27e5e62ba4f12fed3907ed246c6ce344e70c205396d155e3357ade667fe77c08aaf3391e7c22b70b11586972dd61c8069e2ffbeeb2cc138a8c4')
 
 conflicts=('python-manimlib')
 
@@ -34,7 +34,7 @@ depends=(
 	'python-scipy'
 	'python-setuptools'
 	'python-tqdm'
-	# 'python-watchdog' uses AUR's git version while community is OOD
+	# 'python-watchdog' uses AUR git version while community is OOD
 	'python-networkx'
 	# Aur dependencies
 	'python-cloup'
@@ -43,12 +43,13 @@ depends=(
 	'python-isosurfaces'
 	'python-manimpango'
 	'python-mapbox-earcut'
-	'python-moderngl-git'
+	'python-moderngl'
 	'python-moderngl-window'
 	'python-pydub'
 	'python-screeninfo'
 	'python-skia-pathops'
 	'python-srt'
+	'python-svgelements'
 	'python-watchdog-git'
 )
 makedepends=(
