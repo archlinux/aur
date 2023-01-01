@@ -4,13 +4,14 @@
 _pkgname=mpv-danmaku
 pkgname=$_pkgname-git
 pkgver=0.1.0.r3.7d81c04
-pkgrel=1
+pkgrel=2
 pkgdesc='MPV plugin that loads bilibili comments automaticaly'
 url='https://github.com/skbeh/mpv-danmaku'
 arch=('x86_64')
 license=('GPL3')
-depends=('mpv')
+depends=('mpv' 'danmu2ass')
 makedepends=('cargo' 'git')
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
