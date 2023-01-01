@@ -4,7 +4,7 @@
 
 pkgname=python-pysvn
 _name=${pkgname#python-}
-pkgver=1.9.18
+pkgver=1.9.20
 pkgrel=1
 pkgdesc="The Pythonic interface to Subversion"
 url="https://pysvn.sourceforge.io/"
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('Apache')
 source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz"
        "fix-setup.py.patch")
-sha256sums=('9543ec36e98c630668891d46b7f86a74b2e81ce6726d1c70beef7e794d4263bf'
+sha256sums=('2db033f8a8c46379e448903324dc259d2458a16af88b52134543d5dd9047edc7'
             '59b56272570bdf957570cafb57680a4516f8f0dfbf94c301f133410130b0a8be')
 
 prepare() {
