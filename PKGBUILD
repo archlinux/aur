@@ -8,8 +8,8 @@ pkgdesc="rtl8821CE driver with firmware"
 arch=('i686' 'x86_64')
 url="https://github.com/tomaspinho/rtl8821ce"
 license=('GPL2')
-depends=('dkms' 'bc' 'linux-headers')
-makedepends=('git' 'bc' 'linux-headers')
+depends=('dkms' 'bc')
+makedepends=('git' 'bc')
 conflicts=("${_pkgbase}")
 source=("git+https://github.com/tomaspinho/rtl8821ce.git")
 #        'dkms.conf')
