@@ -1,7 +1,7 @@
 pkgbase = miru-bin
 	pkgdesc = Bittorrent streaming software for cats
 	pkgver = 3.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThaUnknown/miru
 	install = miru-bin.install
 	arch = x86_64
