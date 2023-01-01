@@ -1,9 +1,9 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
 
 _pkgname=nulloy
 pkgname=${_pkgname}-git
-pkgver=0.8.2.pre112.0.g7d3a897
-pkgrel=2
+pkgver=0.9.5.11.g97342d8
+pkgrel=1
 pkgdesc='A music player with a waveform progress bar. Qt5 development version.'
 arch=('i686' 'x86_64')
 url='http://nulloy.com/'

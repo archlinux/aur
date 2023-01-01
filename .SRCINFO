@@ -1,7 +1,7 @@
 pkgbase = nulloy-git
 	pkgdesc = A music player with a waveform progress bar. Qt5 development version.
-	pkgver = 0.8.2.pre112.0.g7d3a897
-	pkgrel = 2
+	pkgver = 0.9.5.11.g97342d8
+	pkgrel = 1
 	url = http://nulloy.com/
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,9 @@ pkgbase = nulloy-git
 	depends = gst-plugins-ugly
 	depends = taglib
 	depends = hicolor-icon-theme
-	provides = nulloy=0.8.2.pre112.0.g7d3a897
+	provides = nulloy=0.9.5.11.g97342d8
 	conflicts = nulloy
 	source = git+https://github.com/nulloy/nulloy.git
 	sha512sums = SKIP
 
 pkgname = nulloy-git
-
