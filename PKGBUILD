@@ -4,7 +4,7 @@
 # Maintainer: zzy-ac <zzy-ac@qq.com>
 
 pkgname=electronic-wechat
-pkgver=2.3.3
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="  Better WeChat client under Linux. Which used system Electron and removed the useless content in the package"
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=('electronic-wechat-uos-electron' 'electronic-wechat-uos-bin')
 conflicts=('electronic-wechat-uos-electron' 'electronic-wechat-uos-bin')
 source=(
   https://github.com/zzy-ac/${pkgname}/releases/download/v${pkgver}-${pkgrel}/${pkgname}_${pkgver}_amd64.deb)
-sha256sums=('0ff156122a1cb64071d0e2b9466f8ab2801404ac29a760d3c9d3124b6cb36777')
+sha256sums=('2b080c5296a39c0d4c6dcc8bdc30b9aacaefd372d98433481f59e1be3602c4c5')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
