@@ -1,21 +1,21 @@
 pkgbase = xfce4-dockbarx-plugin-git
-	pkgdesc = Embed DockbarX in the xfce4-panel
-	pkgver = 0.6+r65+aa9c974
+	pkgdesc = Embed DockbarX in the xfce4-panel (latest git commit)
+	pkgver = 0.7.1+0+g4fe0feb
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/m7s/xfce4-dockbarx-plugin
+	url = https://github.com/xuzhen/xfce4-dockbarx-plugin
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = X11
-	makedepends = git
+	makedepends = cmake
 	makedepends = vala
+	makedepends = git
 	depends = dockbarx>=1.0beta
-	depends = xfce4-panel>=4.12
-	provides = xfce4-dockbarx-plugin=0.6+r65+aa9c974
+	depends = xfce4-panel
+	provides = xfce4-dockbarx-plugin=0.7.1+0+g4fe0feb
 	source = xfce4-dockbarx-plugin::git+https://github.com/xuzhen/xfce4-dockbarx-plugin#branch=pygi-python3
 	sha256sums = SKIP
 
 pkgname = xfce4-dockbarx-plugin-git
-
