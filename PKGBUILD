@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=foobar2000-encoders
 pkgname=$_pkgname-bin
-_pkgver=2022-05-25
+_pkgver=2022-11-30
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Encoder binaries for the Converter component"
@@ -13,7 +13,7 @@ optdepends=('foobar2000>=1.1.14')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://www.foobar2000.org/files/Free_Encoder_Pack-$_pkgver.exe")
-b2sums=('5ebf45d3331a1ebeb56df35dc0b62e413fc5d4de67742a2f50f6434f618c0478331a90065ce95c3b360dbc7754d25ff2519a6aaca7832f89ac440f6e9f2fcda4')
+b2sums=('d14f266a94a12567a525c142ac0544498f1947a9e652b8c0f0c803885751d9029d5f361b21cbefd3b077a66ffd19660b78d0b49fa4a7b52f225b82e1ca5e532a')
 
 prepare() {
 	7z x Free_Encoder_Pack-$_pkgver.exe
