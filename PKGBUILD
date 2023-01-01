@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
-pkgver=5535.00390fb62
-pkgrel=1
+pkgver=5645.9a54eb66f
+pkgrel=2
 pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
 url="https://github.com/EKA2L1/EKA2L1"
@@ -49,7 +49,7 @@ prepare() {
 	cd "${srcdir}/${_pkgname}-git"
 	git submodule update --recursive --init
     sed -i 's/-Werror//g' src/external/mbedtls/CMakeLists.txt
-    sed -i 's/constexpr size_t signal_stack_size = std::max(SIGSTKSZ/const size_t signal_stack_size = std::max<size_t>(SIGSTKSZ/g' src/external/dynarmic/src/backend/x64/exception_handler_posix.cpp 
+    #sed -i 's/constexpr size_t signal_stack_size = std::max(SIGSTKSZ/const size_t signal_stack_size = std::max<size_t>(SIGSTKSZ/g' src/external/dynarmic/src/backend/x64/exception_handler_posix.cpp 
 }
 
 build() {
