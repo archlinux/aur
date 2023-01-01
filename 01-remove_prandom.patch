@@ -1,0 +1,13 @@
+--- a/blackmagic-io-12.4.1a15/bm_util.c	2023-01-01 13:26:47.100202432 +0100
++++ b/blackmagic-io-12.4.1a15/bm_util.c	2023-01-01 13:09:53.705229108 +0100
+@@ -902,7 +902,9 @@
+ // Random
+ uint32_t bm_random32(void)
+ {
+-#if KERNEL_VERSION_OR_LATER(3, 8, 0)
++#if KERNEL_VERSION_OR_LATER(6, 1, 0)
++	return get_random_u32();
++#elif KERNEL_VERSION_OR_LATER(3, 8, 0)
+ 	return prandom_u32();
+ #elif KERNEL_VERSION_OR_LATER(2, 6, 19)
+ 	return random32();

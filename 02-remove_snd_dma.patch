@@ -1,0 +1,14 @@
+--- a/blackmagic-io-12.4.1a15/bmio_audio.c	2023-01-01 13:28:20.699872928 +0100
++++ b/blackmagic-io-12.4.1a15/bmio_audio.c	2023-01-01 13:09:47.085284412 +0100
+@@ -432,7 +432,11 @@
+
+ 	snd_pcm_lib_preallocate_pages_for_all(pcm,
+ 		SNDRV_DMA_TYPE_CONTINUOUS,
+-		snd_dma_continuous_data(GFP_KERNEL),
++		#if KERNEL_VERSION_OR_LATER(6, 1, 0)
++			NULL,
++		#else
++			snd_dma_continuous_data(GFP_KERNEL),
++		#endif
+ 		bmio_audio_hardware.buffer_size,
+ 		bmio_audio_hardware.buffer_size);
