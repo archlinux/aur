@@ -2,16 +2,16 @@
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 
 pkgname=gnome-shell-extension-disable-unredirect
-pkgver=3
-pkgrel=3
-_commit='1cfe33516762f524f708cb284a973bd9278ca029'
+pkgver=3.3
+pkgrel=1
+_commit='4bedd2c81e8adc1acc11a319272f2187d82b4002'
 pkgdesc="Disables unredirect fullscreen windows in gnome-shell"
 arch=('any')
 url="https://github.com/kazysmaster/gnome-shell-extension-disable-unredirect"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/kazysmaster/${pkgname}/archive/${_commit}.tar.gz")
-sha512sums=('395daaf1a7baea2280a8e33544e61b43b5eccab050b454fdcc0b023e9a7a5690ab82497d9b3b9b9cd4dc1a39a57f12cfd2115eca1d6d2b801b47dccd4ecfc346')
+sha512sums=('49037861147d837ee81fff30c00ed8364962b0fc0566eb287b153ce22d1be94007d679ea692e3ce4d74a875405b50fa9394b7db57a63445e229e824f37fcb826')
 
 package() {
   cd "${srcdir}/${pkgname}-${_commit}/unredirect@vaina.lt"
