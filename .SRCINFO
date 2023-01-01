@@ -1,8 +1,8 @@
 pkgbase = mips64r5900el-ps2-elf-binutils
-	pkgdesc = EE compiler which is used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Sony PlayStation® 2 videogame system (binutils).
 	pkgver = v2.38.0
 	pkgrel = 1
-	url = https://github.com/ps2dev/ps2toolchain-ee
+	url = https://github.com/ps2dev/binutils-gdb
 	arch = x86_64
 	license = BSD
 	checkdepends = shellcheck
@@ -10,6 +10,7 @@ pkgbase = mips64r5900el-ps2-elf-binutils
 	makedepends = mpfr-static
 	makedepends = libmpc-static
 	makedepends = zstd-static
+	provides = ps2-ee-binutils
 	source = mips64r5900el-ps2-elf-binutils::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
 	sha256sums = SKIP
 
