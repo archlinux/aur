@@ -1,8 +1,8 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainbase
-pkgver=0.4.1
-pkgrel=1
+pkgver=0.4.2
+pkgrel=2
 pkgdesc="plainDE base files"
 arch=(any)
 url="https://plainde.org"
@@ -14,4 +14,5 @@ sha256sums=('SKIP')
 package() {
   mkdir -p $pkgdir/usr
   cp -r $srcdir/plainBase/usr/* $pkgdir/usr/
+  chmod 755 $pkgdir/usr/share/plainDE/tools/*
 }
