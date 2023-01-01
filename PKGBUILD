@@ -1,4 +1,4 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: Alfredo Ramos <alfredo.ramos@tutanota.com>
 # Contributor: Alison Watson <marrub@greyserv.net>
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
@@ -8,8 +8,8 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=4.3.0.prealpha.7877.g6e8aab8fd8
-pkgrel=2
+pkgver=5.2.0.prealpha.969.g2ccd4c9688
+pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Git version.'
 arch=('x86_64')
 url='https://krita.org'
@@ -17,21 +17,23 @@ license=('GPL3')
 
 depends=(
 	kitemviews kitemmodels ki18n kcompletion kguiaddons kcrash
-	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw giflib
+	qt5-svg qt5-multimedia quazip gsl libraw exiv2 openexr fftw
 	openjpeg2 opencolorio hicolor-icon-theme
 )
 makedepends=(
-	git extra-cmake-modules kdoctools boost eigen vc poppler-qt5
-	python-pyqt5 libheif qt5-tools sip kseexpr
+	git extra-cmake-modules kdoctools boost eigen poppler-qt5
+	python-pyqt5 libheif qt5-tools sip kseexpr libmypaint libjxl xsimd
 )
 optdepends=(
 	'poppler-qt5: PDF filter'
 	'ffmpeg: to save animations'
-	"krita-plugin-gmic: G'MIC plugin"
 	'python-pyqt5: for the Python plugins'
 	'libheif: HEIF filter'
 	'kseexpr: SeExpr generator layer'
 	'kimageformats: PSD support'
+	'libmypaint: support for MyPaint brushes'
+	'krita-plugin-gmic: GMic plugin'
+	'libjxl: JPEG-XL filter'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=(calligra-krita krita-il10n krita)
