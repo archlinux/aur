@@ -1,7 +1,7 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainde-meta
-pkgver=0.4
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Meta package to install plainDE"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
