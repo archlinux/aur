@@ -5,7 +5,11 @@ pkgbase = excite-cli
 	url = git+https://github.com/nshan651/excite-cli
 	arch = x86_64
 	license = GPL3
+	makedepends = busted>=2.1
 	depends = lua>=5.1
+	depends = json-lua
+	depends = argparse
+	depends = lua-curl
 	source = git+https://github.com/nshan651/excite-cli
 	md5sums = SKIP
 
