@@ -1,6 +1,6 @@
 pkgbase = lbry-sdk
 	pkgdesc = The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps.
-	pkgver = 0.110.0
+	pkgver = 0.112.0
 	pkgrel = 1
 	url = https://github.com/lbryio/lbry-sdk
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = lbry-sdk
 	provides = lbrynet
 	conflicts = lbrynet
 	options = !buildflags
-	source = lbry-sdk-0.110.0.tar.gz::https://github.com/lbryio/lbry-sdk/archive/refs/tags/v0.110.0.tar.gz
-	source = lbry-sdk-0.110.0.patch
+	source = lbry-sdk-0.112.0.tar.gz::https://github.com/lbryio/lbry-sdk/archive/refs/tags/v0.112.0.tar.gz
+	source = lbry-sdk-0.112.0.patch
 	source = lbry-venv.patch
-	sha256sums = 500af0ad225008dd11706deab95e4cfe665f84a28e8fe6e6e3f08c7607173c59
-	sha256sums = 698c9bda191eeed83890e5151a2d4e942de660153785ca6a9d5acaa370573ab2
-	sha256sums = 5ceda274f79f183507c1ab93a18e0df33ceadfa837857e033cb658b1b58eb123
+	sha256sums = bc1466b1ef99ffacbb7ee1ef5df301a6c9ce86c2df505de714ba5db69839c2ce
+	sha256sums = 6d7ae523b05dab708f7bcb6fe0ea6d0008512cc1d895202204dfacfccb27d83d
+	sha256sums = 053e7f128eb0ab4e5637f94a3a08af3a80c851b57f4eab26710ec1c85bcce6e7
 
 pkgname = lbry-sdk

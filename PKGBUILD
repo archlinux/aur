@@ -1,6 +1,6 @@
 # Maintainer: missing <liri_bucketful at slmail dot me>
 pkgname=lbry-sdk
-pkgver=0.110.0
+pkgver=0.112.0
 pkgrel=1
 pkgdesc="The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps."
 arch=('x86_64')
@@ -13,9 +13,9 @@ options=('!buildflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbry-sdk/archive/refs/tags/v${pkgver}.tar.gz"
         "lbry-sdk-${pkgver}.patch"
         'lbry-venv.patch')
-sha256sums=('500af0ad225008dd11706deab95e4cfe665f84a28e8fe6e6e3f08c7607173c59'
-            '698c9bda191eeed83890e5151a2d4e942de660153785ca6a9d5acaa370573ab2'
-            '5ceda274f79f183507c1ab93a18e0df33ceadfa837857e033cb658b1b58eb123')
+sha256sums=('bc1466b1ef99ffacbb7ee1ef5df301a6c9ce86c2df505de714ba5db69839c2ce'
+            '6d7ae523b05dab708f7bcb6fe0ea6d0008512cc1d895202204dfacfccb27d83d'
+            '053e7f128eb0ab4e5637f94a3a08af3a80c851b57f4eab26710ec1c85bcce6e7')
 
 build() {
 	python -m venv lbry-venv

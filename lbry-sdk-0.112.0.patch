@@ -1,0 +1,97 @@
+diff --unified --recursive --text --color lbry-sdk-0.112.0_orig/lbry/extras/cli.py lbry-sdk-0.112.0/lbry/extras/cli.py
+--- lbry-sdk-0.112.0_orig/lbry/extras/cli.py	2023-01-01 18:33:36.229999970 +0000
++++ lbry-sdk-0.112.0/lbry/extras/cli.py	2023-01-01 19:47:02.369999942 +0000
+@@ -326,7 +326,7 @@
+         else:
+             parsed = docopt(doc, command_args)
+             params = set_kwargs(parsed)
+-            asyncio.get_event_loop().run_until_complete(execute_command(conf, api_method_name, params))
++            asyncio.run(execute_command(conf, api_method_name, params))
+     elif args.group is not None:
+         args.group_parser.print_help()
+     else:
+diff --unified --recursive --text --color lbry-sdk-0.112.0_orig/lbry/extras/daemon/daemon.py lbry-sdk-0.112.0/lbry/extras/daemon/daemon.py
+--- lbry-sdk-0.112.0_orig/lbry/extras/daemon/daemon.py	2023-01-01 18:33:36.233333303 +0000
++++ lbry-sdk-0.112.0/lbry/extras/daemon/daemon.py	2023-01-01 18:39:08.666666613 +0000
+@@ -4981,7 +4981,7 @@
+         if not is_valid_blobhash(blob_hash):
+             # TODO: use error from lbry.error
+             raise Exception("invalid blob hash")
+-        peer_q = asyncio.Queue(loop=self.component_manager.loop)
++        peer_q = asyncio.Queue()
+         if self.component_manager.has_component(TRACKER_ANNOUNCER_COMPONENT):
+             tracker = self.component_manager.get_component(TRACKER_ANNOUNCER_COMPONENT)
+             tracker_peers = await tracker.get_kademlia_peer_list(bytes.fromhex(blob_hash))
+diff --unified --recursive --text --color lbry-sdk-0.112.0_orig/lbry/torrent/session.py lbry-sdk-0.112.0/lbry/torrent/session.py
+--- lbry-sdk-0.112.0_orig/lbry/torrent/session.py	2023-01-01 18:33:36.239999970 +0000
++++ lbry-sdk-0.112.0/lbry/torrent/session.py	2023-01-01 18:40:15.063333296 +0000
+@@ -22,9 +22,9 @@
+         self._loop = loop
+         self._executor = executor
+         self._handle: libtorrent.torrent_handle = handle
+-        self.started = asyncio.Event(loop=loop)
+-        self.finished = asyncio.Event(loop=loop)
+-        self.metadata_completed = asyncio.Event(loop=loop)
++        self.started = asyncio.Event()
++        self.finished = asyncio.Event()
++        self.metadata_completed = asyncio.Event()
+         self.size = 0
+         self.total_wanted_done = 0
+         self.name = ''
+diff --unified --recursive --text --color lbry-sdk-0.112.0_orig/setup.py lbry-sdk-0.112.0/setup.py
+--- lbry-sdk-0.112.0_orig/setup.py	2023-01-01 18:33:36.243333303 +0000
++++ lbry-sdk-0.112.0/setup.py	2023-01-01 18:55:54.213333275 +0000
+@@ -28,33 +28,33 @@
+         ],
+     },
+     install_requires=[
+-        'aiohttp==3.7.4',
+-        'aioupnp==0.0.18',
+-        'appdirs==1.4.3',
+-        'certifi>=2021.10.08',
+-        'colorama==0.3.7',
+-        'distro==1.4.0',
+-        'base58==1.0.0',
+-        'cffi==1.13.2',
+-        'cryptography==2.5',
++        'aiohttp',
++        'aioupnp',
++        'appdirs',
++        'certifi',
++        'colorama',
++        'distro',
++        'base58',
++        'cffi',
++        'cryptography',
+         'protobuf==3.17.2',
+-        'prometheus_client==0.7.1',
+-        'ecdsa==0.13.3',
+-        'pyyaml==5.3.1',
+-        'docopt==0.6.2',
+-        'hachoir==3.1.2',
+-        'coincurve==15.0.0',
+-        'pbkdf2==1.3',
+-        'filetype==1.0.9',
+-        'libtorrent==2.0.6',
++        'prometheus_client',
++        'ecdsa',
++        'pyyaml',
++        'docopt',
++        'hachoir',
++        'coincurve',
++        'pbkdf2',
++        'filetype',
++        'libtorrent',
+     ],
+     extras_require={
+         'lint': [
+-            'pylint==2.10.0'
++            'pylint'
+         ],
+         'test': [
+             'coverage',
+-            'jsonschema==4.4.0',
++            'jsonschema',
+         ],
+         'hub': [
+             'hub@git+https://github.com/lbryio/hub.git@024aceda53fe6d1ab8d519b73584437c25de6975'

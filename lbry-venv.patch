@@ -1,16 +1,22 @@
-diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py.old lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py
---- lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py.old	2020-10-15 21:35:13.000000000 +0100
-+++ lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py	2022-10-15 19:07:45.223333354 +0100
-@@ -163,7 +163,7 @@
-             'GetExternalIPAddress'
-         ]
-         try:
--            gateway = cls(datagram, lan_address, gateway_address, loop=loop)
-+            gateway = cls(datagram, lan_address, gateway_address)
-             log.debug('get gateway descriptor %s', datagram.location)
-             await gateway.discover_commands()
-             requirements_met = all([gateway.commands.is_registered(required) for required in required_commands])
-@@ -224,13 +224,13 @@
+diff --unified --recursive --text --color lbry-venv_orig/lib/python3.10/site-packages/aiohttp/helpers.py lbry-venv/lib/python3.10/site-packages/aiohttp/helpers.py
+--- lbry-venv_orig/lib/python3.10/site-packages/aiohttp/helpers.py	2023-01-01 19:07:33.509999949 +0000
++++ lbry-venv/lib/python3.10/site-packages/aiohttp/helpers.py	2023-01-01 19:13:48.179999948 +0000
+@@ -275,9 +275,9 @@
+     loop: Optional[asyncio.AbstractEventLoop] = None,
+ ) -> "Optional[asyncio.Task[Any]]":
+     if sys.version_info >= (3, 7):
+-        return asyncio.current_task(loop=loop)
++        return asyncio.current_task()
+     else:
+-        return asyncio.Task.current_task(loop=loop)
++        return asyncio.Task.current_task()
+ 
+ 
+ def get_running_loop(
+diff --unified --recursive --text --color lbry-venv_orig/lib/python3.10/site-packages/aioupnp/gateway.py lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py
+--- lbry-venv_orig/lib/python3.10/site-packages/aioupnp/gateway.py	2023-01-01 19:07:33.489999949 +0000
++++ lbry-venv/lib/python3.10/site-packages/aioupnp/gateway.py	2023-01-01 19:24:15.403333287 +0000
+@@ -224,7 +224,7 @@
          try:
              return await asyncio.wait_for(loop.create_task(
                  cls._discover_gateway(lan_address, gateway_address, timeout, loop)
@@ -19,25 +25,9 @@ diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/py
          except asyncio.TimeoutError:
              raise UPnPError(f"M-SEARCH for {gateway_address}:1900 timed out")
  
-     async def discover_commands(self) -> None:
-         response, xml_bytes, get_err = await scpd_get(
--            self.path.decode(), self.base_ip.decode(), self.port, loop=self._loop
-+            self.path.decode(), self.base_ip.decode(), self.port
-         )
-         self._xml_response = xml_bytes
-         if get_err is not None:
-@@ -278,7 +278,7 @@
-             raise UPnPError("no service type")
- 
-         log.debug("get descriptor for %s from %s", service.serviceType, service.SCPDURL)
--        service_dict, xml_bytes, get_err = await scpd_get(service.SCPDURL, self.base_ip.decode(), self.port, loop=loop)
-+        service_dict, xml_bytes, get_err = await scpd_get(service.SCPDURL, self.base_ip.decode(), self.port)
-         self._service_descriptors[service.SCPDURL] = xml_bytes.decode()
- 
-         if get_err is not None:
-diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/scpd.py
---- lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2022-05-07 23:04:48.363333323 +0200
-+++ lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2022-05-06 23:10:44.523333086 +0200
+diff --unified --recursive --text --color lbry-venv_orig/lib/python3.10/site-packages/aioupnp/protocols/scpd.py lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py
+--- lbry-venv_orig/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2023-01-01 19:07:33.489999949 +0000
++++ lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/scpd.py	2023-01-01 19:23:18.466666620 +0000
 @@ -141,7 +141,7 @@
      assert isinstance(protocol, SCPDHTTPClientProtocol)
  
@@ -56,9 +46,9 @@ diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/py
          raw_response, body, response_code, response_msg = await wait_task
      except asyncio.TimeoutError:
          return {}, b'', UPnPError("Timeout")
-diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py
---- lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2022-05-07 23:04:48.366666656 +0200
-+++ lbry-venv_new/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2022-05-06 23:26:52.969999640 +0200
+diff --unified --recursive --text --color lbry-venv_orig/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py
+--- lbry-venv_orig/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2023-01-01 19:07:33.489999949 +0000
++++ lbry-venv/lib/python3.10/site-packages/aioupnp/protocols/ssdp.py	2023-01-01 19:22:35.083333286 +0000
 @@ -31,8 +31,8 @@
          self.transport: Optional[DatagramTransport] = None
          self._pending_searches: List[PendingSearch] = []
@@ -79,3 +69,21 @@ diff --exclude __pycache__ --unified --recursive --text --color lbry-venv/lib/py
  
      def datagram_received(self, data: bytes, addr: Tuple[str, int]) -> None:  # type: ignore
          if addr[0] == self.bind_address:
+diff --unified --recursive --text --color lbry-venv_orig/lib/python3.10/site-packages/async_timeout/__init__.py lbry-venv/lib/python3.10/site-packages/async_timeout/__init__.py
+--- lbry-venv_orig/lib/python3.10/site-packages/async_timeout/__init__.py	2023-01-01 19:07:33.483333282 +0000
++++ lbry-venv/lib/python3.10/site-packages/async_timeout/__init__.py	2023-01-01 19:09:49.423333274 +0000
+@@ -225,12 +225,12 @@
+ if sys.version_info >= (3, 7):
+ 
+     def _current_task(loop: asyncio.AbstractEventLoop) -> "Optional[asyncio.Task[Any]]":
+-        return asyncio.current_task(loop=loop)
++        return asyncio.current_task()
+ 
+ else:
+ 
+     def _current_task(loop: asyncio.AbstractEventLoop) -> "Optional[asyncio.Task[Any]]":
+-        return asyncio.Task.current_task(loop=loop)
++        return asyncio.Task.current_task()
+ 
+ 
+ if sys.version_info >= (3, 7):
