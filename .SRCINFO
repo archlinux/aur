@@ -1,6 +1,6 @@
 pkgbase = otb-unifont
 	pkgdesc = A free bitmap font with wide Unicode support (OTB version)
-	pkgver = 14.0.01
+	pkgver = 15.0.01
 	pkgrel = 1
 	url = https://ftp.gnu.org/gnu/unifont
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = otb-unifont
 	conflicts = pcf-unifont
 	conflicts = ttf-unifont-csur
 	conflicts = hex-unifont
-	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.01/unifont-14.0.01.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.01/unifont-14.0.01.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-15.0.01/unifont-15.0.01.bdf.gz.sig
 	source = otbconvert.pe
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	md5sums = 79cf5e91d2f43fd96ad1c1a3ae792fa6
+	md5sums = 2907ccbd46da1d1053bb6effeede024f
 	md5sums = SKIP
 	md5sums = 8b6d81ad1956b2d7eb5dbead68dacdf4
 
