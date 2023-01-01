@@ -23,29 +23,29 @@ sha256sums=('d1cfa8d214a0116cb34504918548ed79ae3a2642a5039df4bfcac707102464c8'
 # validpgpkeys=('9EA06BE6FD613A03') # Tasso Evangelista
 
 prepare() {
-	_ver="$(</usr/lib/electron/version)"
-	cd "Rocket.Chat.Electron-$pkgver"
-	yarn upgrade "electron@$_ver"
+    _ver="$(</usr/lib/electron/version)"
+    cd "Rocket.Chat.Electron-$pkgver"
+    yarn upgrade "electron@$_ver"
 }
 
 build() {
-	cd "Rocket.Chat.Electron-$pkgver"
-	local i686=ia32 x86_64=x64
-	export NODE_ENV=production
-	yarn build
-	yarn run electron-builder --linux --"${!CARCH}" --dir \
-		-c.electronDist=/usr/lib/electron \
-		-c.electronVersion="$_ver"
+    cd "Rocket.Chat.Electron-$pkgver"
+    local i686=ia32 x86_64=x64
+    export NODE_ENV=production
+    yarn build
+    yarn run electron-builder --linux --"${!CARCH}" --dir \
+         -c.electronDist=/usr/lib/electron \
+         -c.electronVersion="$_ver"
 }
 
 package() {
-	local i686=linux-ia32-unpacked x86_64=linux-unpacked
-	install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
-	install -D -t "${pkgdir}/usr/bin" "$pkgname"
+    local i686=linux-ia32-unpacked x86_64=linux-unpacked
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
+    install -D -t "${pkgdir}/usr/bin" "$pkgname"
 
-	cd "Rocket.Chat.Electron-$pkgver"
-	install -Dm644 "build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-	install -d "$pkgdir/usr/lib/$pkgname/"
-	asar e "dist/${!CARCH}/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
+    cd "Rocket.Chat.Electron-$pkgver"
+    install -Dm644 "build/icons/512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    install -d "$pkgdir/usr/lib/$pkgname/"
+    asar e "dist/${!CARCH}/resources/app.asar" "$pkgdir/usr/lib/$pkgname/"
 }
