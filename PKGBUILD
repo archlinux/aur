@@ -35,8 +35,9 @@ pkgver() {
 build() {
     cd "${srcdir}"
 
-    cmake -GNinja -B build \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
+    cmake -GNinja -B build -S "${srcdir}/ja2-stracciatella" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
         -DEXTRA_DATA_DIR=/usr/share/ja2 \
         -DLOCAL_LUA_LIB=OFF \
         -DLOCAL_SOL_LIB=OFF \
@@ -47,7 +48,7 @@ build() {
         -DLOCAL_MINIAUDIO_LIB=OFF \
         -DMINIAUDIO_INCLUDE_DIR="${srcdir}/miniaudio-${_miniaudio_commit}" \
         -DWITH_UNITTESTS=OFF \
-        "${srcdir}/ja2-stracciatella"
+        -Wno-dev
     cmake --build build
 }
 
@@ -59,5 +60,3 @@ package() {
     install -m644 -Dt "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/ja2-stracciatella/README.md"
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/ja2-stracciatella/SFI Source Code license agreement.txt"
 }
-
-# vim:set ts=2 sw=2 et:
