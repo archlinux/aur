@@ -7,6 +7,7 @@ pkgbase = mips64r5900el-ps2-elf-pthread-embedded
 	license = BSD
 	checkdepends = shellcheck
 	makedepends = mips64r5900el-ps2-elf-gcc-stage1
+	makedepends = mips64r5900el-ps2-elf-newlib
 	makedepends = libgmp-static
 	makedepends = mpfr-static
 	makedepends = libmpc-static

@@ -20,6 +20,7 @@ _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
 checkdepends=('shellcheck')
 makedepends=("${target}-gcc-stage1"
+             "${target}-newlib"
              "libgmp-static"
              "mpfr-static"
              "libmpc-static"
@@ -61,9 +62,20 @@ build() {
 # shellcheck disable=SC2154
 package() {
   local _target
+  local _include="${pkgdir}/usr/${target}/include/${_pe}"
+  local _lib="${pkgdir}/usr/${target}/lib/${_pe}"
+  mkdir -p "${pkgdir}/${_pe}-include"
+  mkdir -p "${pkgdir}/${_pe}-lib"
   cd "${srcdir}/${pkgname}"
   for _target in "${target}"; do
-    make -C platform/ps2 DESTDIR="${pkgdir}" "${_make_opts[@]}" install
+    make -C platform/ps2 DESTDIR="${pkgdir}/usr/${target}" "${_make_opts[@]}" install
+    mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/${_pe}-include"
+    mkdir -p "${_include}"
+    mv "${pkgdir}/${_pe}-include/"* "${_include}"
+    mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/${_pe}-lib"
+    mkdir -p "${_pe}-lib"
+    mv "${pkgdir}/${_pe}-lib/"* "${_lib}"
     cd ..
+    rm -rf "${pkgdir}/${_pe}-include" "${pkgdir}/${_pe}-lib"
   done
 }
