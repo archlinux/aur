@@ -2,7 +2,7 @@
 _pkgname=rtl8723bu
 pkgname=${_pkgname}-dkms-git
 pkgver=r270.ca3252c
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/${_pkgname}"
 provides=("${_pkgname}")
