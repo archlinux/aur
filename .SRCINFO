@@ -1,0 +1,25 @@
+pkgbase = python-hat-doit
+	pkgdesc = Hat build utility functions
+	pkgver = 0.11.9
+	pkgrel = 1
+	url = https://github.com/hat-open/hat-doit
+	arch = any
+	license = Apache
+	makedepends = python-installer
+	depends = python-build
+	depends = python-doit
+	depends = flake8
+	depends = python-sphinx-furo
+	depends = python-packaging
+	depends = python-pdoc
+	depends = python-pytest
+	depends = python-pytest-asyncio
+	depends = python-pytest-cov
+	depends = python-pytest-timeout
+	depends = python-setuptools
+	depends = python-sphinx
+	depends = python-wheel
+	source = https://github.com/hat-open/hat-doit/archive/refs/tags/v0.11.9.tar.gz
+	sha256sums = 8856d5466f2578a625153dae7a2d24c1ae43712fb1ad4057ad456ae58fe2aaa6
+
+pkgname = python-hat-doit
