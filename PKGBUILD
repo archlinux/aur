@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 _pkgname=mmcv
 pkgname=(python-mmcv python-mmcv-full)
 pkgver=1.7.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='OpenMMLab Computer Vision Foundation'
 arch=('x86_64')
@@ -13,6 +13,7 @@ license=('Apache')
 depends=(
   python-addict
   python-numpy
+  python-opencv
   python-pillow
   python-yaml
   yapf
@@ -30,8 +31,6 @@ sha512sums=('8475aa3aa8e3134c4eb6e60b02cc6a677b8363e39ca679edbe9691df607a1804712
 prepare() {
   cd "${_pkgname}-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-full-${pkgver}"
-  # install setuptools 59.6, see also https://github.com/open-mmlab/mmcv/issues/2271
-  pip install -U setuptools==59.6
 }
 
 build() {
