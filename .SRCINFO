@@ -1,6 +1,6 @@
 pkgbase = electronic-wechat
 	pkgdesc = Better WeChat client under Linux. Which used system Electron and removed the useless content in the package
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/zzy-ac/electronic-wechat
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = electronic-wechat
 	provides = electronic-wechat-uos-bin
 	conflicts = electronic-wechat-uos-electron
 	conflicts = electronic-wechat-uos-bin
-	source = https://github.com/zzy-ac/electronic-wechat/releases/download/v2.3.2-1/electronic-wechat_2.3.2_amd64.deb
-	sha256sums = 2b080c5296a39c0d4c6dcc8bdc30b9aacaefd372d98433481f59e1be3602c4c5
+	source = https://github.com/zzy-ac/electronic-wechat/releases/download/v2.3.3-1/electronic-wechat_2.3.3_amd64.deb
+	sha256sums = 0ff156122a1cb64071d0e2b9466f8ab2801404ac29a760d3c9d3124b6cb36777
 
 pkgname = electronic-wechat
