@@ -2,7 +2,7 @@
 
 _pkgname=dockbarx
 pkgname=${_pkgname}-git
-epoch=1
+epoch=2
 _pkgver=1.0beta
 pkgver=1.0beta2+0+g38af1e8
 pkgrel=1
