@@ -1,0 +1,12 @@
+pkgbase = qt-ads-git
+	pkgdesc = Qt Advanced Docking System lets you create customizable layouts using a full featured window docking system similar to what is found in many popular integrated development environments (IDEs) such as Visual Studio.
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
+	arch = x86_64
+	license = LGPL2.1
+	depends = qt5-base
+	source = git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System
+	sha512sums = SKIP
+
+pkgname = qt-ads-git
