@@ -6,26 +6,6 @@ pkgbase = ps2-ee
 	arch = x86_64
 	license = BSD
 	checkdepends = shellcheck
-	makedepends = libgmp-static
-	makedepends = mpfr-static
-	makedepends = zstd-static
-	source = ps2-ee-binutils-gdb::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
-	source = ps2-ee-gcc::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
-	source = ps2-ee-newlib::git+https://github.com/ps2dev/newlib#commit=6b90d31371ff4e0f41d64d7539038864899a6b40
-	source = ps2-ee-pthread-embedded::git+https://github.com/ps2dev/pthread-embedded#commit=ea029de9a92d565fcb00fbf9e0c0ed99df0ef79d
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	depends = mips64r5900el-ps2-elf-gcc
 
-pkgname = ps2-ee-binutils-gdb
-
-pkgname = ps2-ee-gcc-stage1
-
-pkgname = ps2-ee-newlib
-
-pkgname = ps2-ee-newlib-nano
-
-pkgname = ps2-ee-pthread-embedded
-
-pkgname = ps2-ee-gcc-stage2
+pkgname = ps2-ee
