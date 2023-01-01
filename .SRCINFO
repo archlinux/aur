@@ -1,5 +1,5 @@
 pkgbase = sway-interactive-screenshot
-	pkgdesc = Take screenshot easly on Sway
+	pkgdesc = Interactively take screenshot within Sway.
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/moverest/sway-interactive-screenshot
