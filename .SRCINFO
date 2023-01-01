@@ -1,15 +1,13 @@
 pkgbase = pastesearch
 	pkgdesc = Cli pastebin searcher
-	pkgver = 2020.10.11
+	pkgver = 2021.05.20
 	pkgrel = 1
 	url = https://github.com/mmpx12/pastesearch
 	arch = any
 	license = MIT
 	depends = curl
 	depends = jq
-	depends = bash
-	source = pastesearch-2020.10.11::git+https://github.com/mmpx12/pastesearch.git
-	sha1sums = SKIP
+	source = pastesearch-2021.05.20::https://github.com/mmpx12/pastesearch/archive/refs/tags/bash.tar.gz
+	sha256sums = 8084999580617aea2f502e57fb54c00f7ef06d17d43a7201d09c1db5ebe92eb3
 
 pkgname = pastesearch
-
