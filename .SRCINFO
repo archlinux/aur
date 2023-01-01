@@ -1,6 +1,6 @@
 pkgbase = trackballs
 	pkgdesc = Simple game similar to the classical game Marble Madness on the Amiga in the 80's
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://trackballs.github.io/
 	install = trackballs.install
@@ -14,7 +14,7 @@ pkgbase = trackballs
 	depends = hicolor-icon-theme
 	depends = gettext
 	replaces = trackballs-music
-	source = https://github.com/trackballs/trackballs/archive/v1.3.3.tar.gz
-	md5sums = 404c325211f7ea13339a693c91aa6bf2
+	source = https://github.com/trackballs/trackballs/archive/v1.3.4.tar.gz
+	md5sums = f6508956edfb14fde500f1adf272bdcf
 
 pkgname = trackballs
