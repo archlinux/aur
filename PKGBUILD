@@ -6,7 +6,7 @@
 pkgname=linuxqq-new-firejail
 _pkgname=tencent-qq
 pkgver=3.0.0_571
-pkgrel=3
+pkgrel=4
 pkgdesc='New Linux QQ based on Electron, running in Firejail (security sandbox)'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -30,7 +30,7 @@ package() {
 	wrapper="${pkgdir}/opt/QQ/qq_wrapper"
 	echo "#!/bin/bash" > $wrapper
 	echo "mkdir ~/.linuxqq -p" >> $wrapper
-	echo "firejail --private=~/.linuxqq --noprofile /opt/QQ/qq" >> $wrapper
+	echo "firejail --private=~/.linuxqq /opt/QQ/qq" >> $wrapper
 	chmod 755 $wrapper
 
 	# Launcher
