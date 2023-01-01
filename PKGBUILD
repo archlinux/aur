@@ -14,6 +14,7 @@ makedepends=('bc')
 backup=('etc/psiconv/psiconv.conf')
 source=("http://www.frodo.looijaard.name/system/files/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('286e427b10f4d10aaeef1944210a2ea6')
+sha512sums=('ec21d1e4734ad79dc19146223d7016bd53b3a3bb602f3a55489663ccbf3a4c6f5c6417728e798b4448acc2e49ff5145f58c812edfdd6c11ee9060128b6157d3a')
 
 prepare() {
   cd $pkgname-$pkgver
