@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _appdata_id=org.nicotine_plus.Nicotine
-pkgver=3.3.0.dev4.r8514.577411e21
+pkgver=3.3.0.dev4.r8612.420bfa71c
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -15,7 +15,6 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 optdepends=('gtk4: default Gtk version'
             'libadwaita: used with gtk4 if available'
             'gtk3: fallback if gtk4 is not installed'
-            'gspell: for spell checking in chat (Gtk 3 only)'
             'libayatana-appindicator: tray icon (Gtk 3 only')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
@@ -54,4 +53,12 @@ check() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  cd po
+  for lang in $(ls *.po); do
+    echo "lang: ${lang}"
+    lang=${lang::-3}
+    install -d "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES"
+    msgfmt -c -o "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES/nicotine.mo" "${lang}.po"
+  done
 }
