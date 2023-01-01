@@ -5,7 +5,7 @@ pkgrel=1
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
-url="https://guiscrcpy.github.io"
+url="https://guiscrcpy.srev.in"
 license=('GPL3')
 depends=('libxinerama' 'pyside2' 'python' 'python-cairosvg' 'python-click' 'python-colorama'
          'python-coloredlogs' 'python-psutil' 'python-pynput' 'python-qtpy'
