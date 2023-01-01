@@ -11,29 +11,22 @@ _fragment="#tag=$_ver"
 
 pkgname=usd
 pkgver=${_ver#v}
-pkgrel=1
+pkgrel=2
 pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://graphics.pixar.com/usd/docs/index.html"
 license=('Apache')
-depends+=('boost-libs' 'glew' 'openexr' 'python-opengl' 'pyside6' 'pyside2')
+depends+=('boost-libs' 'glew' 'openexr' 'python-opengl' 'pyside6' 'pyside2' 'opensubdiv')
 makedepends+=('boost' 'cmake' 'git' 'ninja' 'python-jinja' 'inetutils' 'doxygen' 'glfw' 'glew' 'python' 'python-pygments' 'python-docutils' 'opencl-headers' 'cuda')
 provides=("usd=${pkgver}")
 conflicts=("usd")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz
-        "https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v${_opensubdivver//./_}.tar.gz"
         )
 sha512sums=('SKIP'
             '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
-            'fc8f28b79347015c8991150535c1339e695d96947c72fadd4fa27b546a0813c1125cd175ee03bed5aacdb3609f74c4e526ef70103d1195ba9f7df041e73ea9fb'
             )
 options=(!lto)
-
-
-
-
-
 
 prepare() {
 
@@ -53,31 +46,6 @@ prepare() {
     -DSYSTEM_NAME=Linux \
     -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
     -P cmake/tbb_config_installer.cmake
-
-  ############################
-  #     opensubdiv 3.4.4     #
-  ############################
-  # opensubdiv also depends on tbb and the upstream package is patched to work
-  # with tbb2021, so we need to rebuild targeting tbb2019 to build
-  # usd with -DPXR_BUILD_MONOLITHIC
-  mkdir -p "${srcdir}"/opensubdiv344
-  cd "${srcdir}"/"OpenSubdiv-${_opensubdivver//./_}"
-
-  mkdir -p build
-  cd build
-
-  mkdir -p CMakeFiles/osd_static_gpu.dir/osd
-
-  cmake .. \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DTBB_LOCATION="${srcdir}"/tbb2019/usr \
-      -DOSD_CUDA_NVCC_FLAGS='--gpu-architecture=compute_53' \
-      -DCUDA_HOST_COMPILER=/usr/bin/g++ \
-      -DCMAKE_INSTALL_PREFIX="${srcdir}"/opensubdiv344/usr
-
-  make
-  make install
-
 }
 
 build() {
@@ -85,7 +53,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr/usd
     -DPXR_BUILD_TESTS=ON
     -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
-    -DOPENSUBDIV_ROOT_DIR="${srcdir}"/opensubdiv344/usr
     -DBoost_NO_BOOST_CMAKE=ON
     -DPXR_USE_PYTHON_3=ON
     -DBUILD_SHARED_LIBS=ON
