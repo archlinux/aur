@@ -1,0 +1,16 @@
+pkgbase = s2253-dkms
+	pkgdesc = Driver for the Sensoray 2253 USB frame grabber
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = http://www.sensoray.com/products/2253.htm
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	provides = s2253
+	conflicts = s2253
+	source = https://www.sensoray.com/downloads/sdk_x53_linux_1.2.16.tar.bz2
+	source = dkms.conf
+	sha256sums = 5a6b16797ec0187df4bda863e0f87651ff3f31b29f1ad6003ce740407e10c4a2
+	sha256sums = d6074cc3b24eb86a53571175b4ce6b58510f04f1c5a022041bb8c76ad9d58eed
+
+pkgname = s2253-dkms
