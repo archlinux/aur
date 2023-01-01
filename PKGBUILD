@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=('x86_64')
@@ -11,8 +11,9 @@ license=('Apache')
 depends=('glibc')
 makedepends=('cmake')
 provides=('libiwasm.so')
+changelog=RELEASE_NOTES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/WAMR-$pkgver.tar.gz")
-sha256sums=('3bf621401e6f97f81c357ad019d17bdab8f3478b9b3adf1cfe8a4f243aef1769')
+sha256sums=('976b928f420040a77e793051e4d742208adf157370b9ad0f5535e126adb31eb0')
 
 build() {
 	cmake \
