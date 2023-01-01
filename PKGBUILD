@@ -6,7 +6,7 @@
 
 pkgname=python-telegram-bot
 pkgver=20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python interface for the Telegram Bot API"
 url="https://github.com/${pkgname}/${pkgname}"
 license=(GPL3 LGPL)
@@ -20,9 +20,10 @@ optdepends=('python-cryptography: for support cryptography library'
   'python-apscheduler: for job queue support'
   'python-pytz: for job queue support')
 # 'python-aiolimiter: for rate limiter'
-source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz) # {,.asc}
-# validpgpkeys=('655BB4F56CDB0E0E4500CF572E9E0E127EF3F283') # Hinrich Mahler <hinrich.mahler@freenet.de>
-sha512sums=('7bdfb5aa2d7f074639814a87eb4e18c7a247d56aafa2c3656ebcd7857960453c5a43e0aabbf140cd68aab01aa248ae16dd5848688a886a825da019ce75f220c2')
+source=(${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
+validpgpkeys=('4CBA518847044E289548BD9FA2B984A9073022B2') # Hinrich Mahler (Key for signing releases of python-telegram-bot <22366557+Bibo-Joshi@users.noreply.github.com>
+sha512sums=('7bdfb5aa2d7f074639814a87eb4e18c7a247d56aafa2c3656ebcd7857960453c5a43e0aabbf140cd68aab01aa248ae16dd5848688a886a825da019ce75f220c2'
+  'SKIP')
 
 build() {
   cd ${pkgname}-${pkgver}

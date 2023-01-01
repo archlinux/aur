@@ -1,7 +1,7 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A pure Python interface for the Telegram Bot API
 	pkgver = 20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
 	license = GPL3
@@ -14,6 +14,9 @@ pkgbase = python-telegram-bot
 	optdepends = python-apscheduler: for job queue support
 	optdepends = python-pytz: for job queue support
 	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.0/python-telegram-bot-20.0.tar.gz
+	source = https://github.com/python-telegram-bot/python-telegram-bot/releases/download/v20.0/python-telegram-bot-20.0.tar.gz.asc
+	validpgpkeys = 4CBA518847044E289548BD9FA2B984A9073022B2
 	sha512sums = 7bdfb5aa2d7f074639814a87eb4e18c7a247d56aafa2c3656ebcd7857960453c5a43e0aabbf140cd68aab01aa248ae16dd5848688a886a825da019ce75f220c2
+	sha512sums = SKIP
 
 pkgname = python-telegram-bot
