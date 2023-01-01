@@ -1,42 +1,33 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
-pkgname='perl-mixin-linewise'
-pkgver='0.110'
-pkgrel='1'
-pkgdesc="write your linewise code for handles; this does the rest"
+pkgname=perl-mixin-linewise
+pkgver=0.111
+pkgrel=1
+pkgdesc="Write your linewise code for handles; this does the rest"
 arch=('any')
+url="https://metacpan.org/dist/Mixin-Linewise"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl-sub-exporter' 'perl-perlio-utf8-strict')
-url='https://metacpan.org/release/Mixin-Linewise'
-source=('https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Mixin-Linewise-0.110.tar.gz')
-sha256sums=('a7f120b7aa82dfb1a5ad1aa11abd33232b26a2b09c654e649e97a3c2128b1d8b')
-_distdir="Mixin-Linewise-0.110"
+source=("https://www.cpan.org/authors/id/R/RJ/RJBS/Mixin-Linewise-${pkgver}.tar.gz")
+sha512sums=('282c9bbb825ee05f1d916fdfb1caad6c04a917a26c10ae18dc9883706e612915186c49a96209af254329f346bc731547a20ff2db136f0ceaf1edd5d21b120195')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Mixin-Linewise-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/Mixin-Linewise-${pkgver}"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "${srcdir}/Mixin-Linewise-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
