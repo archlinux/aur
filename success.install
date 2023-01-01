@@ -1,4 +1,4 @@
 post_install(){
-  USER=`w|tail -1|cut -d' ' -f1`
-  XDG_RUNTIME_DIR=/run/user/`id -u $USER` aplay /usr/share/heart-of-darkness/hodsuccess.wav
+	USER=`who -m|cut -d\  -f1`
+	XDG_RUNTIME_DIR=/run/user/`id -u $USER` aplay /usr/share/heart-of-darkness/hodsuccess.wav
 }

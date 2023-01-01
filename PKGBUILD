@@ -10,8 +10,8 @@ install=success.install
 source=(https://heartofdarkness.ca/Download/speedrun/Heart%20of%20Darkness%20UK.iso)
 md5sums=(a16c091967d16d830910383390306b04)
 build(){
-    bsdtar xf HeartOfDarkness_En.EXE
+	bsdtar xf HeartOfDarkness_En.EXE
 }
 package(){
-    install paf/hod.paf SETUP.DAT *_HOD.{LVL,SSS,MST} hodsuccess.wav -Dt $pkgdir/usr/share/$pkgname
+	install paf/hod.paf SETUP.DAT *_HOD.{LVL,SSS,MST} hodsuccess.wav -Dt "$pkgdir"/usr/share/$pkgname
 }
