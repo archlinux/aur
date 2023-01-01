@@ -1,6 +1,6 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
-pkgver=0.3.2.r13.g86127f7
+pkgver=0.4.0.r1.gdfdc983
 pkgrel=1
 epoch=
 pkgdesc="Thunar plugins"
@@ -11,7 +11,9 @@ groups=()
 depends=(thunarx-python)
 makedepends=(python-setuptools python-build python-setuptools-scm python-wheel)
 checkdepends=()
-optdepends=()
+optdepends=( 
+    "git-annex: Git Annex support"
+)
 provides=("${pkgname%-git}")
 conflicts=()
 replaces=(thunar-plugins-git)
@@ -19,7 +21,7 @@ backup=()
 options=()
 install=${pkgname%-git}.install
 changelog=
-source=("${pkgname%-git}::git+$url#branch=install-activator-with-setuptools")
+source=("${pkgname%-git}::git+$url")
 noextract=()
 md5sums=(SKIP)
 validpgpkeys=()

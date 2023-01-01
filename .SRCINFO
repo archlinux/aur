@@ -1,6 +1,6 @@
 pkgbase = python-thunar-plugins-git
 	pkgdesc = Thunar plugins
-	pkgver = 0.3.2.r13.g86127f7
+	pkgver = 0.4.0.r1.gdfdc983
 	pkgrel = 1
 	url = https://gitlab.com/nobodyinperson/thunar-plugins
 	install = python-thunar-plugins.install
@@ -12,9 +12,10 @@ pkgbase = python-thunar-plugins-git
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = thunarx-python
+	optdepends = git-annex: Git Annex support
 	provides = python-thunar-plugins
 	replaces = thunar-plugins-git
-	source = python-thunar-plugins::git+https://gitlab.com/nobodyinperson/thunar-plugins#branch=install-activator-with-setuptools
+	source = python-thunar-plugins::git+https://gitlab.com/nobodyinperson/thunar-plugins
 	md5sums = SKIP
 
 pkgname = python-thunar-plugins-git
