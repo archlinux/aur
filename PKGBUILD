@@ -3,7 +3,7 @@
 _name=mapbox_earcut_python
 
 pkgname=python-mapbox-earcut
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Python bindings for the C++ implementation of the Mapbox Earcut library."
 
@@ -12,7 +12,7 @@ license=('custom')
 url="https://github.com/skogler/mapbox_earcut_python"
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8f3687ac11497ad73c2a3dd1d1203dccf655da623d1638e638978a59388e0c057ca6f895782b609d59a2a4be478d6daf2294523a946c8a5d232dcfe718e4eec9')
+sha512sums=('cdb32585cbaf74c15e59af0ae70d983dd2f9bc9cfe1b59b3eadc4d442f7d962241854b589a035deae67cacd9334833b911d0981f0d417fe587348fc7d24f0c0a')
 
 depends=('python')
 makedepends=(
