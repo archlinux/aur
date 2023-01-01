@@ -1,7 +1,7 @@
 pkgbase = fastocr
 	pkgdesc = FastOCR is a desktop application for OCR API.
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BruceZhang1993/FastOCR
 	arch = any
 	license = LGPL3

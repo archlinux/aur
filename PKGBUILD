@@ -2,7 +2,7 @@
 pkgname=fastocr
 _reponame=FastOCR
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
 url='https://github.com/BruceZhang1993/FastOCR'
