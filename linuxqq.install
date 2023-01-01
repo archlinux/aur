@@ -2,7 +2,7 @@ post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
 	# SUID chrome-sandbox for Electron 5+
-	chmod 4755 '/opt/QQ/chrome-sandbox' || true
+	# chmod 4755 '/opt/QQ/chrome-sandbox' || true
 
 	update-mime-database /usr/share/mime || true
 	update-desktop-database /usr/share/applications || true
