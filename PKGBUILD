@@ -1,7 +1,8 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
+# Maintainer: Sebastian LaVine <mail@smlavine.com>
+# Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
