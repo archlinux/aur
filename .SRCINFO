@@ -5,7 +5,6 @@ pkgbase = mips64r5900el-ps2-elf-newlib
 	url = https://github.com/ps2dev/ps2toolchain-ee
 	arch = x86_64
 	license = BSD
-	checkdepends = shellcheck
 	makedepends = mips64r5900el-ps2-elf-binutils
 	makedepends = mips64r5900el-ps2-elf-gcc-stage1
 	makedepends = libgmp-static
