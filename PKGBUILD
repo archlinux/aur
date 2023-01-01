@@ -3,13 +3,14 @@
 _pkgname=danmu2ass
 pkgname=$_pkgname-git
 pkgver=0.2.2.r10.b7b6435
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert danmuku of Bilibili to ass subtitle file'
 url='https://github.com/gwy15/danmu2ass'
 arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha256sums=('SKIP')
