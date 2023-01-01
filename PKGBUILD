@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/hhannine/system_hotkey310"
 license=('BSD')
 depends=('python-xcffib')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 _commit='c0ee3549d5a1c66dee90ec669c95c4c0a81ab050'
 source=("${pkgname}::git+${url}#commit=${_commit}"
         'rename_without_310.patch')

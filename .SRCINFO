@@ -7,6 +7,7 @@ pkgbase = python-system_hotkey
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-xcffib
 	source = python-system_hotkey::git+https://github.com/hhannine/system_hotkey310#commit=c0ee3549d5a1c66dee90ec669c95c4c0a81ab050
 	source = rename_without_310.patch
