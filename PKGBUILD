@@ -1,6 +1,6 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
-pkgver=0.2.1.r3.g30be4dc
+pkgver=0.3.2.r13.g86127f7
 pkgrel=1
 epoch=
 pkgdesc="Thunar plugins"
@@ -9,17 +9,17 @@ url="https://gitlab.com/nobodyinperson/thunar-plugins"
 license=('GPL')
 groups=()
 depends=(thunarx-python)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-build python-setuptools-scm python-wheel)
 checkdepends=()
 optdepends=()
-provides=(python-thunar-plugins)
+provides=("${pkgname%-git}")
 conflicts=()
 replaces=(thunar-plugins-git)
 backup=()
 options=()
 install=${pkgname%-git}.install
 changelog=
-source=("${pkgname%-git}::git+https://gitlab.com/nobodyinperson/thunar-plugins.git")
+source=("${pkgname%-git}::git+$url#branch=install-activator-with-setuptools")
 noextract=()
 md5sums=(SKIP)
 validpgpkeys=()
@@ -31,14 +31,12 @@ pkgver () {
 
 build () {
     cd "$srcdir/${pkgname%-git}"
-    python setup.py build
+    rm -rf dist/
+    python -m build --wheel --no-isolation
 }
 
 package () {
     cd "$srcdir/${pkgname%-git}"
     export PYTHONHASHSEED=0
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    extensions_dir="$pkgdir"/usr/share/thunarx-python/extensions/
-    mkdir -p "$extensions_dir"
-    ln -rsf "$pkgdir"/usr/lib/python*/site-packages/thunar_plugins/activator.py "$extensions_dir"/${pkgname%-git}.py
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
