@@ -4,7 +4,6 @@
 target="mips64r5900el-ps2-elf"
 _module="ee"
 _platform="ps2"
-_pe="pthread-embedded"
 _base="toolchain"
 pkgname=("${target}-newlib-nano")
 pkgver="v4.1.0"
@@ -15,7 +14,6 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
-checkdepends=('shellcheck')
 makedepends=("${target}-binutils"
              "${target}-gcc-stage1"
              "libgmp-static"
