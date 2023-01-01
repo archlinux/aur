@@ -1,7 +1,7 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
 
 pkgname='zellij-selector'
-pkgver='2.0.0'
+pkgver='2.1.0'
 pkgrel='1'
 pkgdesc='Select zellij session'
 arch=('any')
