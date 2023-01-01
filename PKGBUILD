@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-plugins-git
-pkgver=2020.06.r874.gf66d9495
+pkgver=2020.06.r1061.g24295477
 _basis_pkgver=1_15_update2
 pkgrel=1
 pkgdesc="Plugins for the Magnum C++11/C++14 graphics engine (Git version)"
@@ -45,6 +45,7 @@ build() {
         -DMAGNUM_WITH_FREETYPEFONT=ON \
         -DMAGNUM_WITH_GLSLANGSHADERCONVERTER=ON \
         -DMAGNUM_WITH_GLTFIMPORTER=ON \
+        -DMAGNUM_WITH_GLTFSCENECONVERTER=ON \
         -DMAGNUM_WITH_ICOIMPORTER=ON \
         -DMAGNUM_WITH_JPEGIMPORTER=ON \
         -DMAGNUM_WITH_JPEGIMAGECONVERTER=ON \
@@ -69,6 +70,7 @@ build() {
         -DMAGNUM_WITH_STBVORBISAUDIOIMPORTER=ON \
         -DMAGNUM_WITH_STLIMPORTER=ON \
         -DMAGNUM_WITH_TINYGLTFIMPORTER=ON \
+        -DMAGNUM_WITH_UFBXIMPORTER=ON \
         -DMAGNUM_WITH_WEBPIMPORTER=ON \
         -G Ninja
     ninja
