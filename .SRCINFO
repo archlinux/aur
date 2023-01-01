@@ -1,6 +1,6 @@
 pkgbase = ledger-go
 	pkgdesc = A double-entry accounting system with a command-line reporting interface
-	pkgver = 1.10.4
+	pkgver = 1.10.5
 	pkgrel = 1
 	url = https://github.com/howeyc/ledger
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ledger-go
 	depends = glibc
 	provides = ledger
 	conflicts = ledger
-	source = ledger-1.10.4.tar.gz::https://github.com/howeyc/ledger/archive/v1.10.4.tar.gz
-	sha256sums = 9820274b796461bcb532c69c389775edd9f7fcc1e188d02c98648c71c03a04d2
+	source = ledger-1.10.5.tar.gz::https://github.com/howeyc/ledger/archive/v1.10.5.tar.gz
+	sha256sums = 386cdd42f501db56b01a5ecab98939a137a0734acc8c2dd73a25ed6fef6d8e11
 
 pkgname = ledger-go
