@@ -9,21 +9,17 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=3.3.26
+pkgver=3.5.15
 pkgrel=1
 pkgdesc='Multipurpose automation tool for downloading media content from different sources'
 arch=('any')
 url='https://github.com/flexget/flexget'
 license=('MIT')
 depends=(
-  # documented in requirements.in
   'python-apscheduler'
   'python-beautifulsoup4'
   'python-cherrypy'
-  'python-click'
   'python-colorama'
-  'python-colorclass'
-  'python-dateutil'
   'python-feedparser'
   'python-flask'
   'python-flask-compress'
@@ -36,7 +32,6 @@ depends=(
   'python-jinja'
   'python-jsonschema'
   'python-loguru'
-  'python-more-itertools'
   'python-packaging'
   'python-psutil'
   'python-pynzb'
@@ -47,27 +42,22 @@ depends=(
   'python-rich'
   'python-rpyc'
   'python-sqlalchemy'
-  'python-terminaltables'
-  'python-yaml'
-  'python-zxcvbn'
-)
+  'python-werkzeug'
+  'python-zxcvbn')
 optdepends=(
   'python-boto3: SNS output plugin'
   'python-rarfile: decompress plugin'
-  'python-transmissionrpc: Transmission support'
-)
+  'python-transmissionrpc: Transmission support')
 makedepends=(
   'python-build'
   'python-installer'
-  'python-paver'
   'python-setuptools'
-  'python-wheel'
-)
+  'python-wheel')
 source=(
   "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/F/$_pkgname/$_pkgname-$pkgver.tar.gz"
   'flexget.service'
   'flexget@.service')
-sha256sums=('487911fa44e26e3f1126017d87d4b4a7d1f09553390bb9788d033db755d2388a'
+sha256sums=('2ad4c2d93a8716e66a9506c425f0559929956340289fb64d22af1e11fb9da7b9'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
@@ -96,15 +86,15 @@ package() {
   cd "$_pkgname-$pkgver"
 
   # Install wheel according to new Python packaging guidelines
-  # PYTHONHASHSEED is for reproducible builds
-  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Symlink license instead of installing a copy
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s "$_site/$_pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "$_site/$_pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
   # install systemd user unit
-  install -Dm644 "$srcdir/$pkgname"{,@}.service -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dvm644 "$srcdir/$pkgname"{,@}.service -t "$pkgdir/usr/lib/systemd/user/"
 }
+
 # vim:set ts=2 sw=2 et:
