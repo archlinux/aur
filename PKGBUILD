@@ -100,11 +100,21 @@ build() {
 # shellcheck disable=SC2154
 package() {
   local _target
+  local _include="${pkgdir}/usr/${target}/include/newlib-nano"
+  local _lib="${pkgdir}/usr/${target}/lib/newlib-nano"
+  mkdir -p "${pkgdir}/newlib-include"
+  mkdir -p "${pkgdir}/newlib-lib"
   cd "${srcdir}/${target}-newlib"
   for _target in "mips64r5900el-ps2-elf"; do
     cd "build-${_target}"
     make DESTDIR="${pkgdir}" ${_make_opts[@]} install-strip
-    # make ${_make_opts[@]} clean
+    mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/newlib-include"
+    mkdir -p "${_include}"
+    mv "${pkgdir}/newlib-include/"* "${_include}"
+    mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/newlib-lib"
+    mkdir -p "${_lib}"
+    mv "${pkgdir}/newlib-lib/"* "${_lib}"
     cd ..
+    rm -rf "${pkgdir}/newlib-include" "${pkgdir}/newlib-lib"
   done
 }
