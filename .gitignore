@@ -1,11 +1,6 @@
-pkg
-src
-linux.install.pkg
-*.xz
-*.zst
-*.sign
-*.src.tar.gz
-*.log
-*.part
-*.sig
-archlinux-linux/
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!config
+!*.patch

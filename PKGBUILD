@@ -6,7 +6,7 @@
 
 pkgbase=linux-vfio
 pkgver=6.1.1.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -21,9 +21,9 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  config         # the main kernel config file
-  add-acs-overrides.patch
-  i915-vga-arbiter.patch
+  config                       # the main kernel config file
+  0001-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+  0002-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,8 +33,8 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
-            'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '5092c62db5ca8f6b806996ba3db0f610d9ad73d499384394e16823dda097f9cd')
+            'b8f977aa923aa6076703b88262e395c56ce9df2943a52448d8a0e32cc90b1a70'
+            '750c57539f17332cafe01a978a0133fc9500dbe37a411b823dad2eee66652cfc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -207,6 +207,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
-
