@@ -1,7 +1,7 @@
 pkgbase = arch-update
 	pkgdesc = An update notifier/applier that assists you with important pre/post update tasks.
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Antiz96/arch-update
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = arch-update
 	optdepends = libnotify: Desktop notification support
 	optdepends = sudo: Privilege elevation
 	optdepends = doas: Privilege elavation
-	source = arch-update-1.4.2::https://github.com/Antiz96/arch-update/archive/v1.4.2.tar.gz
+	source = arch-update-1.4.2.tar.gz::https://github.com/Antiz96/arch-update/archive/v1.4.2.tar.gz
 	sha256sums = e382adaa778e372dab4aa2bceb17b22a0e878b7cc11d0a7a7c71bf83f976560d
 
 pkgname = arch-update

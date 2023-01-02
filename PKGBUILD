@@ -2,7 +2,7 @@
 
 pkgname=arch-update
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An update notifier/applier that assists you with important pre/post update tasks."
 arch=('any')
 url="https://github.com/Antiz96/arch-update"
@@ -13,10 +13,10 @@ optdepends=('yay: AUR support'
 	    'libnotify: Desktop notification support'
 	    'sudo: Privilege elevation'
 	    'doas: Privilege elavation')
-source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('e382adaa778e372dab4aa2bceb17b22a0e878b7cc11d0a7a7c71bf83f976560d')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
