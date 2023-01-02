@@ -5,11 +5,11 @@ pkgver=1.3
 pkgrel=1
 pkgdesc="An i3lock-color Wrapper Script That Reads Colors Directly From Xresources"
 arch=("any")
-url="https://github.com/SafwanLjd/BlurLocker"
+url="https://gitlab.com/SafwanLjd/BlurLocker"
 license=("GPL3")
 depends=("i3lock-color" "xgetres")
-source=("https://github.com/SafwanLjd/BlurLocker/releases/download/$pkgver/$pkgname.tar.gz")
-sha1sums=("b82a1c1fbbf2dd2571e3a74a41d4deded4d33c67")
+source=("https://gitlab.com/SafwanLjd/BlurLocker/-/archive/v$pkgver/BlurLocker-v$pkgver.tar.gz")
+sha1sums=("0bbf0f28b298bcd2888a2706a6301eb649a54a46")
 
 package() {
   install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
