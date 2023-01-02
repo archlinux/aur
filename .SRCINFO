@@ -1,0 +1,19 @@
+pkgbase = s6-git
+	pkgdesc = A small suite of programs for UNIX, designed to allow process supervision
+	pkgver = 2.11.1.2.r0.gcb45493
+	pkgrel = 1
+	url = https://skarnet.org/software/s6/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = glibc
+	depends = execline
+	depends = skalibs
+	provides = s6=2.11.1.2.r0.gcb45493
+	conflicts = s6
+	options = staticlibs
+	source = git+https://github.com/skarnet/s6.git
+	sha256sums = SKIP
+
+pkgname = s6-git
