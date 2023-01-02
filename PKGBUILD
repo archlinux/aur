@@ -3,7 +3,7 @@
 
 pkgname='lure-bin'
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
@@ -29,6 +29,6 @@ package() {
   install -Dm755 ./lure "${pkgdir}/usr/bin/lure"
 
   # completions
-  install -Dm755 ./scripts/completion/bash /usr/share/bash-completion/completions/lure
-  install -Dm755 ./scripts/completion/zsh /usr/share/zsh/site-functions/_lure
+  install -Dm755 ./scripts/completion/bash ${pkgdir}/usr/share/bash-completion/completions/lure
+  install -Dm755 ./scripts/completion/zsh ${pkgdir}/usr/share/zsh/site-functions/_lure
 }
