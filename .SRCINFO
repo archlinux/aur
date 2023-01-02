@@ -1,0 +1,13 @@
+pkgbase = mdtohtml
+	pkgdesc = Markdown to HTML converter
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git.sr.ht/~adnano/mdtohtml
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = scdoc
+	source = https://git.sr.ht/~adnano/mdtohtml/archive/0.1.2.tar.gz
+	sha256sums = f80e3ada4762b9535ee12cd9548d0c30733095b5631a6347f044ed278865384c
+
+pkgname = mdtohtml
