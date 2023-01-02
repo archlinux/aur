@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-desktop-icons-ng
 	pkgdesc = A fork from the official desktop icons project, with several enhancements like Drag'n'Drop.
 	pkgver = 47
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/rastersoft/desktop-icons-ng
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-desktop-icons-ng
 	makedepends = meson
 	makedepends = glib2
 	depends = gnome-shell>=3.38
-	source = desktop-icons-ng-47::https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/47/desktop-icons-ng-47.tar.gz
+	source = https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/47/desktop-icons-ng-47.tar.gz
 	sha256sums = 520ae7bc4dfed49aaa17e379f21b694c51ffc789daad058c3b8617e02e4d0e24
 
 pkgname = gnome-shell-extension-desktop-icons-ng
