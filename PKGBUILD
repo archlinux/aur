@@ -2,7 +2,7 @@
 
 pkgname=lowcharts-git
 _pkgname="${pkgname%-git}"
-pkgver=0.5.7.r71.ab83202
+pkgver=0.5.7.r79.0e1d316
 pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal (git version)"
 arch=('x86_64' 'i686' 'aarch64')
@@ -20,12 +20,13 @@ pkgver() {
 }
 
 check() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
 	cargo test --locked --release
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
+
 	cargo install --no-track --locked --root "${pkgdir}/usr" --path "${srcdir}/${_pkgname}"
 	
 	install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
