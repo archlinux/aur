@@ -4,7 +4,7 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
