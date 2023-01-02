@@ -2,7 +2,7 @@
 # Contributor: Jelle van der Waa <jelle@dwaa.nl>
 
 pkgname=pushgateway
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Prometheus push acceptor for ephemeral and batch jobs."
 arch=('x86_64')
@@ -44,5 +44,5 @@ package() {
 }
 
 
-sha512sums=('7b1da7eecf03c4f7b493d025920e93c52333becf7da6a2d7bdd0eb6f9a2a4a5d08b00786d0796682a465d84750e2c8092cdb1c4ca59a08f15b8b586d6eaa5f1a'
+sha512sums=('01ebcdb85f059c330195f37f9466e2042311d8196948881f07d53f1ac4c7daedf343c14856f51db274df00b652b09eb52c735f04f774baf66559697864e1f93b'
             'baf8f41a9643b7c8e9bdf59a38c6275df8861ed4c033de3ef3dd80ed8687d001724f43cad968d5f6c2d4c3541aa4d8b84d7c3a266f149e780c7168074b37f711')
