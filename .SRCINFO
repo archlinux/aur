@@ -1,21 +1,21 @@
 pkgbase = jsettlers-git
 	pkgdesc = A Remake of "The Settlers III" for Windows, Linux, Mac and Android - forked by paulwedeck
-	pkgver = 0.5.3.alpha2.r6.g9737816cc
+	pkgver = 0.6.0.4.alpha.r1.ga78705865
 	pkgrel = 1
 	url = https://github.com/paulwedeck/settlers-remake
 	install = jsettlers-git.install
 	arch = any
 	license = MIT
-	makedepends = jdk8-openjdk
+	makedepends = jdk11-openjdk
 	makedepends = unzip
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	depends = sh
 	optdepends = settlers3-demo-data
 	provides = jsettlers
-	noextract = gradle-7.0.2-all.zip
+	noextract = gradle-7.4.2-all.zip
 	source = jsettlers::git+https://github.com/paulwedeck/settlers-remake.git
-	source = https://services.gradle.org/distributions/gradle-7.0.2-all.zip
+	source = https://services.gradle.org/distributions/gradle-7.4.2-all.zip
 	sha512sums = SKIP
-	sha512sums = d849d272b36b931f77befe54d16ae81e753ecf62499db1d67897f98594158a444c670e290dc77c6d550937b6eaa4144a269b729812979d800afda5b1bf53463d
+	sha512sums = 2e1d05486baa9661d5c8ffead2df87874a66f6cfc958ee6840432b89d221d8b0af9e3cad3675766f5413d12aa61c5b5fb0dd82f4164e5da3022865eba9ceadbf
 
 pkgname = jsettlers-git

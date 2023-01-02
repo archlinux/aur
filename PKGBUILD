@@ -1,29 +1,29 @@
-# Maintainer: aligator <aligator at-symbol suncraft-server dot de>
+# Maintainer: aligator <aligator at-symbol aligator.dev>
 pkgrel=1
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.5.3.alpha2.r6.g9737816cc
+pkgver=0.6.0.4.alpha.r1.ga78705865
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-_gradlever='7.0.2'
+_gradlever='7.4.2'
 
 arch=('any')
 pkgdesc='A Remake of "The Settlers III" for Windows, Linux, Mac and Android - forked by paulwedeck'
 url='https://github.com/paulwedeck/settlers-remake'
 license=('MIT')
 provides=(${_pkgname})
-depends=('java-runtime>=8' 'sh')
+depends=('java-runtime>=11' 'sh')
 optdepends=('settlers3-demo-data')
-makedepends=('jdk8-openjdk' 'unzip')
+makedepends=('jdk11-openjdk' 'unzip')
 install=${pkgname}'.install'
 source=("jsettlers::git+https://github.com/paulwedeck/settlers-remake.git"
         "https://services.gradle.org/distributions/gradle-${_gradlever}-all.zip")
 noextract=("gradle-${_gradlever}-all.zip")
 sha512sums=('SKIP'
-            'd849d272b36b931f77befe54d16ae81e753ecf62499db1d67897f98594158a444c670e290dc77c6d550937b6eaa4144a269b729812979d800afda5b1bf53463d')
+            '2e1d05486baa9661d5c8ffead2df87874a66f6cfc958ee6840432b89d221d8b0af9e3cad3675766f5413d12aa61c5b5fb0dd82f4164e5da3022865eba9ceadbf')
 
 prepare() {
   # prepare gradle to use downloaded zip
@@ -35,9 +35,9 @@ build() {
     cd ${srcdir}/${_pkgname}
     
     # build game (without android)
-    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseJSettlers || return 1
+    JAVA_HOME="/usr/lib/jvm/java-11-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseJSettlers || return 1
     # build server
-    JAVA_HOME="/usr/lib/jvm/java-8-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseDedicatedServer || return 1
+    JAVA_HOME="/usr/lib/jvm/java-11-openjdk" ANDROID_HOME="" ./gradlew --gradle-user-home=. releaseDedicatedServer || return 1
 }
 
 package() {
@@ -89,6 +89,6 @@ package() {
 
     install -Dm644 ../${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 ../${_mapCreatorScript}.desktop "${pkgdir}/usr/share/applications/${_mapCreatorScript}.desktop"
-    install -Dm644 ${srcdir}/jsettlers/jsettlers.mapcreator/src/main/resources/jsettlers/mapcreator/main/window/icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    install -Dm644 ${srcdir}/jsettlers/jsettlers.mapcreator/src/main/resources/jsettlers/mapcreator/main/window/icon.png "${pkgdir}/usr/share/pixmaps/${_mapCreatorScript}.png"
+    install -Dm644 ${srcdir}/jsettlers/jsettlers.main.swing/src/main/resources/jsettlers/main/swing/icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 ${srcdir}/jsettlers/jsettlers.main.swing/src/main/resources/jsettlers/main/swing/icon.png "${pkgdir}/usr/share/pixmaps/${_mapCreatorScript}.png"
 }
