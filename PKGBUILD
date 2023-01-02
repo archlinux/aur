@@ -4,7 +4,7 @@
 pkgname=pscale
 _pkgname=pscale
 pkgver=0.126.0
-pkgrel=3
+pkgrel=4
 pkgdesc='PlanetScale CLI client package for Arch'
 arch=('x86_64')
 url='https://github.com/planetscale/cli'
