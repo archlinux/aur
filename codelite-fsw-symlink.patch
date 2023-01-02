@@ -141,10 +141,10 @@ index acc395b44..98aba584e 100644
  
  void MainBook::OnEditorModified(clCommandEvent& event)
 diff --git Plugin/globals.cpp Plugin/globals.cpp
-index 68e87c0b1..2800d4b44 100644
+index b4c591b8b..4d3e7133c 100644
 --- Plugin/globals.cpp
 +++ Plugin/globals.cpp
-@@ -1220,7 +1220,7 @@ wxFileName wxReadLink(const wxFileName& filename)
+@@ -1092,7 +1092,7 @@ wxFileName wxReadLink(const wxFileName& filename)
      if(wxIsFileSymlink(filename)) {
  #if defined(__WXGTK__)
          // Use 'realpath' on Linux, otherwise this breaks on relative symlinks, and (untested) on symlinks-to-symlinks
@@ -153,7 +153,7 @@ index 68e87c0b1..2800d4b44 100644
  
  #else  // OSX
          wxFileName realFileName;
-@@ -1243,7 +1243,7 @@ wxFileName wxReadLink(const wxFileName& filename)
+@@ -1115,7 +1115,7 @@ wxFileName wxReadLink(const wxFileName& filename)
  wxString CLRealPath(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
                                                // any symlinked dirs in the path
  {
