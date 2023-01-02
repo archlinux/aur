@@ -1,6 +1,6 @@
 pkgbase = fakturama
 	pkgdesc = Creates invoices with ZUGFeRD / XRechnung support
-	pkgver = 2.1.3
+	pkgver = 2.1.3.b
 	pkgrel = 1
 	url = https://www.fakturama.info
 	install = fakturama.install
@@ -9,10 +9,10 @@ pkgbase = fakturama
 	depends = java-runtime>=11
 	depends = webkit2gtk
 	optdepends = libreoffice-fresh
-	source = fakturama-2.1.3.tar.gz::https://files.fakturama.info/release/v2.1.3/Installer_Fakturama_linux_x64_2.1.3.tar.gz
+	source = fakturama-2.1.3.b.tar.gz::https://files.fakturama.info/release/v2.1.3b/Installer_Fakturama_linux_x64_2.1.3b.tar.gz
 	source = fakturama2.desktop
 	source = fakturama2-clean.desktop
-	sha256sums = 02368dad552395b046b1568afe79dcf49f48c881ddbada9902ee273c6edeb6b2
+	sha256sums = 74065c3f97cfa2dd2c5da33f0a16291533039c55130aa48915a2f6babb770aca
 	sha256sums = 550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c
 	sha256sums = 96ac2d3815e37f993ea92c0598c5b4350d69e57f0c415bde7dafbecfe1e4e407
 
