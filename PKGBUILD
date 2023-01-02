@@ -12,7 +12,6 @@ source=("$url")
 md5sums=('SKIP')
 
 build() {
-    luarocks install --local json-lua 
     luarocks install --local lua-curl
     luarocks install --local busted
     luarocks install --local argparse
