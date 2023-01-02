@@ -1,0 +1,12 @@
+diff --color -Naur glfw-orig/src/init.c glfw/src/init.c
+--- glfw-orig/src/init.c	2022-08-27 20:14:40.589979000 +0200
++++ glfw/src/init.c	2022-08-27 20:24:11.606494854 +0200
+@@ -447,7 +447,7 @@
+ 
+     glfwDefaultWindowHints();
+ 
+-    fprintf(stderr, "!!! Patched GLFW from https://github.com/Admicos/minecraft-wayland\n"
++    fprintf(stderr, "!!! Patched GLFW from https://github.com/Admicos/minecraft-wayland (one-nineteen-libdecoration)\n"
+          "!!! If any issues with the window, or some issues with rendering, occur, "
+          "first try with the built-in GLFW, and if that solves the issue, report there first.\n"
+          "!!! Use outside Minecraft is untested, and things might break.\n");

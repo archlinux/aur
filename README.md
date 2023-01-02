@@ -1,5 +1,3 @@
-<B> This repository is for hosting the Gnome specific changes of the parent repository and to host the package on AUR. Please submit any issues or PRs on the parent repository </B>
-
 # The better way of running Minecraft Without XWayland
 
 Because I **REALLY** had nothing better to do with my life.
