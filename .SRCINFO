@@ -1,0 +1,15 @@
+pkgbase = mstflint3
+	pkgdesc = OpenFabrics Alliance firmware burning application (old version) for Mellanox ConnectX-2
+	pkgver = 3.8.0.27
+	pkgrel = 1
+	url = https://www.openfabrics.org/index.php/overview.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = custom:"OpenIB.org BSD"
+	depends = python
+	depends = sqlite
+	source = https://www.openfabrics.org/downloads/mstflint/mstflint-3.8.0-1.27.gf3d39b6.tar.gz
+	sha256sums = SKIP
+
+pkgname = mstflint3
