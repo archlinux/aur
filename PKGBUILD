@@ -9,7 +9,7 @@ url="https://github.com/lincheney/fzf-tab-completion"
 license=('GPL3')
 depends=('fzf')
 optdepends=('rl_custom_function: readline support')
-makedepends=('rust' 'cargo')
+makedepends=('cargo')
 provides=("$_pkgname")
 install=$pkgname.install
 source=("$_pkgname::git+https://github.com/lincheney/$_pkgname.git")
@@ -22,12 +22,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  (cd readline && cargo build --release)
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  (cd readline && cargo build --release --locked)
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  (cd readline && cargo test --release)
+  export RUSTUP_TOOLCHAIN=stable
+  (cd readline && cargo test --frozen)
 }
 
 package() {
