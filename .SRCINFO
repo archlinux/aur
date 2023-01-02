@@ -1,14 +1,14 @@
 pkgbase = bpfmon
 	pkgdesc = BPF based visual packet rate monitor
-	pkgver = 2.50
+	pkgver = 2.51
 	pkgrel = 1
 	url = https://github.com/bbonev/bpfmon
 	arch = any
 	license = GPL2
 	depends = glibc
 	depends = libyascreen.so
-	source = https://github.com/bbonev/bpfmon/releases/download/v2.50/bpfmon-2.50.tar.xz
-	source = https://github.com/bbonev/bpfmon/releases/download/v2.50/bpfmon-2.50.tar.xz.asc
+	source = https://github.com/bbonev/bpfmon/releases/download/v2.51/bpfmon-2.51.tar.xz
+	source = https://github.com/bbonev/bpfmon/releases/download/v2.51/bpfmon-2.51.tar.xz.asc
 	validpgpkeys = BA60BC20F37E59444D6D25001365720913D2F22D
 	md5sums = SKIP
 	md5sums = SKIP

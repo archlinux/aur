@@ -2,7 +2,7 @@
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
 pkgname=bpfmon
-pkgver=2.50
+pkgver=2.51
 pkgrel=1
 pkgdesc="BPF based visual packet rate monitor"
 arch=('any')
