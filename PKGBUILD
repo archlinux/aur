@@ -1,8 +1,8 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 pkgname=fzf-tab-completion-git
 _pkgname=${pkgname%-git}
-pkgver=r310.edbccc2
-pkgrel=2
+pkgver=r343.0874776
+pkgrel=1
 pkgdesc="Tab completion using fzf in zsh, bash, GNU readline apps (e.g. python, php -a etc.)"
 arch=('i686' 'x86_64')
 url="https://github.com/lincheney/fzf-tab-completion"
@@ -37,6 +37,7 @@ package() {
 
   install -D -m755 bash/fzf-bash-completion.sh $pkgdir/usr/share/$_pkgname/bash/fzf-bash-completion.sh
   install -D -m755 zsh/fzf-zsh-completion.sh $pkgdir/usr/share/$_pkgname/zsh/fzf-zsh-completion.sh
+  install -D -m755 node/fzf-node-completion.js $pkgdir/usr/share/$_pkgname/node/fzf-node-completion.js
 
   install -D -m644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
 }
