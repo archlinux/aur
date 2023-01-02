@@ -1,0 +1,14 @@
+--- markdown_editor/editor.py.orig	2020-09-16 03:14:40.000000000 -0700
++++ markdown_editor/editor.py	2023-01-02 08:42:01.291349928 -0800
+@@ -14,9 +14,9 @@
+ 
+ sys.path.append(script_dir)
+ 
+-MARKDOWN_EXT = ('footnotes', 'attr_list', 'def_list', 'tables', 'abbr')
++MARKDOWN_EXT = ('footnotes', 'attr_list', 'def_list', 'tables', 'abbr', 'md_in_html')
+ PYMDOWNX_EXT = (
+-    'pymdownx.betterem', 'pymdownx.superfences', 'pymdownx.extrarawhtml', 'pymdownx.tasklist', 'pymdownx.tilde')
++    'pymdownx.betterem', 'pymdownx.superfences', 'pymdownx.tasklist', 'pymdownx.tilde')
+ MARKDOWN_CSS = join(script_dir, 'css/markdown.css')
+ PYGMENTS_CSS = join(script_dir, 'css/pygments.css')
+ 

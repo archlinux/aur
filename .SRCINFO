@@ -1,0 +1,22 @@
+pkgbase = markdown-editor
+	pkgdesc = standalone editor for your local markdown files
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/ncornette/Python-Markdown-Editor
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-markdown
+	depends = python-bottle
+	depends = python-pygments
+	depends = pymdown-extensions
+	source = https://files.pythonhosted.org/packages/source/M/Markdown-Editor/Markdown-Editor-1.0.7.tar.gz
+	source = editor.patch
+	sha256sums = 25161686b18889249847570727a69e9cba8383754f279f4baaf4113deb3fbe52
+	sha256sums = fb4fca31312f795006d5c01332d9e367f56b7d7f2c6f31c2c9155a0bf7f377c2
+
+pkgname = markdown-editor
