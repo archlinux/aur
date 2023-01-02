@@ -1,0 +1,5 @@
+post_install() {
+	echo ':: Do not run the beads.py script by itself.'
+	echo ':: Use the wrapper script installed as `beads`.'
+	echo ':: This will load all necessary java classes at runtime.'
+}

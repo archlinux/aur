@@ -1,15 +1,16 @@
 pkgbase = beads
 	pkgdesc = Bias Elimination Algorithm for Deep Sequencing.
 	pkgver = 1.1
-	pkgrel = 2
-	url = http://beads.sourceforge.net/
-	arch = x86_64
+	pkgrel = 3
+	url = https://beads.sourceforge.net/
+	install = beads.install
+	arch = any
 	license = unknown
 	depends = python2
 	depends = java-environment
-	source = http://downloads.sourceforge.net/project/beads/BEADS-1.1.tar.gz
+	source = beads-1.1.tar.gz::https://downloads.sourceforge.net/project/beads/BEADS-1.1.tar.gz
 	source = beads.sh
-	sha1sums = f83587d3b8c7b1eb619d81e17499e8f8fdae3138
-	sha1sums = b30b472b1ff087eb3c015f00bd4619b346421cf5
+	sha256sums = 108d2f7cd84da9c6923c7b39d6496b5c1b06fe66bfa9989e8e18f0cd511db6f1
+	sha256sums = 0be9c6938aebc5f0f68d453e241865c0c0c06af405dbac8c11993e37eda87a9c
 
 pkgname = beads
