@@ -10,7 +10,7 @@ pkgname='dmarc_report'
 pkgdesc='Generate nice reports from one or more DMARC report files'
 _gitname='dmarc_report'
 
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 url="https://github.com/gene-git/dmarc_report"
 
