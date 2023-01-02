@@ -12,5 +12,5 @@ source=("https://gitlab.com/SafwanLjd/BlurLocker/-/archive/v$pkgver/BlurLocker-v
 sha1sums=("0bbf0f28b298bcd2888a2706a6301eb649a54a46")
 
 package() {
-  install -Dm755 "$srcdir/BlurLocker-v$pkgver" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/BlurLocker-v$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
