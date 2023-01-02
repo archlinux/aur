@@ -1,5 +1,5 @@
 pkgbase = btcpayserver
-	pkgdesc = Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor.
+	pkgdesc = Accept Bitcoin payments. Free, open source and self-hosted Bitcoin payment processor.
 	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/btcpayserver/btcpayserver

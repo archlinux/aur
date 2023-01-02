@@ -8,7 +8,7 @@
 pkgname="btcpayserver"
 pkgver="1.7.3"
 pkgrel="1"
-pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
+pkgdesc="Accept Bitcoin payments. Free, open source and self-hosted Bitcoin payment processor."
 arch=("x86_64")
 url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
