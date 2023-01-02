@@ -3,7 +3,7 @@
 
 pkgname='lure-bin'
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
