@@ -1,7 +1,7 @@
 pkgbase = sonic-pi-tool
 	pkgdesc = A handy command line utility for playing with the Sonic Pi server. It can be used instead of the Sonic Pi GUI.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emlyn/sonic-pi-tool
 	arch = any
 	license = GPL
