@@ -1,7 +1,7 @@
 pkgbase = certificate-ripper-bin
 	pkgdesc = A CLI tool to extract server certificates
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hakky54/certificate-ripper
 	arch = x86_64
 	arch = aarch64

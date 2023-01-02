@@ -4,7 +4,7 @@ pkgname=certificate-ripper-bin
 _pkgname="${pkgname%-bin}"
 _shortname=crip
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to extract server certificates"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hakky54/certificate-ripper"
@@ -17,6 +17,5 @@ sha256sums_x86_64=(883f45afd42a00cd174a64b841198381eca5b4ba5a87b74189de6f9cc4ac7
 sha256sums_aarch64=(e4ed19fd8ac32ee76096f338767dad7123742eee28c94378b53852e4d255b4af)
 
 package() {
-  cd "${srcdir}"
-  install -Dm 755 "${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
+	install -Dm 755 "${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
 }
