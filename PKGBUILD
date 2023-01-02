@@ -1,17 +1,17 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=127.r35.gfccd73f8e
+pkgver=131.r29.gd40b890d8
 pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
-depends=(gtk3 gtksourceview3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
+depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
 makedepends=(mesa git)
 provides=(ares-emu)
 conflicts=(ares-emu)
-source=("git+https://github.com/higan-emu/ares.git"
+source=("git+https://github.com/ares-emulator/ares.git"
         "ares-paths.patch")
 sha256sums=("SKIP"
            "5805cfea308e46b0a209613d4693f3bb15ebb750436fc80d478437e464b6bf52")
