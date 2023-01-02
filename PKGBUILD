@@ -13,7 +13,7 @@ source=("$pkgname::git+$url.git")
 md5sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/${pkgname%-*}"
+	cd "$srcdir/${pkgname}"
 	printf "%s" "$(git describe | cut -c2- | sed 's!-!.r!' | tr - .)"
 }
 
