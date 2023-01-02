@@ -9,6 +9,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/nurse/nkf"
 license=('custom')
 depends=('glibc')
+makedepends=('git')
 conflicts=('nkf')
 source=(git+https://github.com/nurse/nkf
         LICENSE)
