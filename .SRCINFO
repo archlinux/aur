@@ -9,6 +9,6 @@ pkgbase = doh-proxy
 	makedepends = cargo
 	depends = gcc-libs
 	source = https://github.com/jedisct1/doh-server/archive/0.9.6.tar.gz
-	sha512sums = 811fd7b42c3d6a4eef15bdbf09e4a78a9f4b5e7a7ba08aafca84d27b8449a7f46be15525fdc88d4700606cc7489ef2c9c48961289998f3e02d6f39d64c45cd6a
+	sha512sums = 92621e1d75e8a7cbad9bab0159e85a92e008f8fc252284a56c066c4652f05181c82af7ac0175bf3d7ebd891e07ef32c99fd4a43240cc3b7104d7bccd887854e1
 
 pkgname = doh-proxy
