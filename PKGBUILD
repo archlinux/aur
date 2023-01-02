@@ -2,7 +2,7 @@
 _prjname=MControlCenter
 pkgname=mcontrolcenter-bin
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An application that allows you to change the settings of MSI laptops'
 arch=('x86_64')
 url='https://github.com/dmitry-s93/MControlCenter'
@@ -11,8 +11,19 @@ depends=('qt5-base' 'hicolor-icon-theme')
 source=(https://github.com/dmitry-s93/$_prjname/releases/download/${pkgver}/${_prjname}-${pkgver}.tar.gz)
 b2sums=('e62aa0348b31975d3fa14b8279e4781903b64fbbfd7f9f6068facbf7a4b8ce639af5c36f813255d089b9860f8ba5addce47d4ea8277d39c3fc1309a2f6a7fdfe')
 
+prepare() {
+    echo "ec_sys" >> $pkgname-kmod.conf
+    echo "options ec_sys write_support=1" >> $pkgname-opts.conf
+}
+
 package() {
     _binname=mcontrolcenter
+
+    # load ec_sys on boot
+    install -Dm644 $pkgname-kmod.conf $pkgdir/etc/modules-load.d/$_binname.conf
+
+    # set ec_sys options
+    install -Dm644 $pkgname-opts.conf $pkgdir/etc/modprobe.d/$_binname.conf
     
     cd "$_prjname-$pkgver/app/"
     install -Dm755 $_binname $pkgdir/usr/bin/$_binname
