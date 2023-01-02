@@ -4,7 +4,7 @@
 
 pkgname=ddgr
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('fb6601ad533f2925d2d6299ab9e6dd48da0b75e99ef9ed9068f37e516380b5e6')
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}"
 
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 
