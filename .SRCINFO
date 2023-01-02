@@ -1,7 +1,7 @@
 pkgbase = zaman
 	pkgdesc = Print man pages in a PDF file (with vim keys support) for an easier reading
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Antiz96/zaman
 	arch = any
 	license = GPL3
