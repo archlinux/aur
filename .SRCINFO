@@ -1,7 +1,7 @@
 pkgbase = meadowlark-git
 	pkgdesc = Opensource DAW (digital audio workstation)
-	pkgver = v0.3.0.r1255.gc85e1e52
-	pkgrel = 0
+	pkgver = 0.0.0
+	pkgrel = 1
 	url = https://github.com/MeadowlarkDAW/Meadowlark
 	arch = i686
 	arch = x86_64
