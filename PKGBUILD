@@ -1,13 +1,13 @@
 # Maintainer: ShutSentry <shutsentry@nospam.com>
 pkgname=shutsentry
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="ShutSentry is a virtual dead-man-switch that protects computers from unauthorized physical access, by presenting an on-screen password-challenge prompt at regular time intervals, and/or reacting to other trigger events like USB/Bluetooth device changes."
 arch=(x86_64)
 url="https://gitlab.com/shutsentry/shutsentry"
 license=('GPL')
-depends=(gtk3)
-makedepends=(git make)
+depends=()
+makedepends=()
 optdepends=()
 provides=(shutsentry)
 source=('git+https://gitlab.com/shutsentry/shutsentry.git')
