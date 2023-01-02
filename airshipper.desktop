@@ -5,5 +5,5 @@ Comment=Official launcher for Veloren - the open-world, open-source multiplayer 
 Exec=airshipper
 Categories=Game
 Keywords=veloren
-Icon=veloren.png
+Icon=veloren
 Terminal=false
