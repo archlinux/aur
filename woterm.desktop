@@ -1,0 +1,11 @@
+[Desktop Entry]
+Terminal=false
+Categories=Application;Network;Security;Qt;
+Type=Application
+Exec=/opt/woterm/runapp.sh
+Name[en_US]=WoTerm
+Name=WoTerm
+GenericName=WoTerm Remote Assistant
+Icon[en_US]=/opt/woterm/woterm.png
+Icon=/opt/woterm/woterm.png
+Comment[en_US]=WoTerm Remote Assistant

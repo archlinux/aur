@@ -1,0 +1,13 @@
+pkgbase = woterm
+	pkgdesc = 支持SSH/SFTP/RLOGIN/TELNET/SERIALlPORT/VNC/RDP的跨平台远程管理工具
+	pkgver = 9.26.2
+	pkgrel = 1
+	url = https://github.com/aoyiduo/woterm/
+	arch = x86_64
+	license = GPL 3.0
+	source = woterm.tar.gz::https://github.com/aoyiduo/woterm/releases/download/v9.26.2/woterm-linux-x86_64-v9.26.2-202301021647.tar.gz
+	source = woterm.desktop
+	sha256sums = 6e9891a606a46f64c3f783d0e2259f57ee23bf68b6e6146d4fda52cd6738482c
+	sha256sums = d36005e302f489f0b04e9f391fc1ed7b32fbf1d4315f397e9abc5fee18555cc7
+
+pkgname = woterm
