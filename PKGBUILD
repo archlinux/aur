@@ -6,7 +6,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r14122.gf2175e1a3
+pkgver=r14302.gbe828e6cf
 pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
