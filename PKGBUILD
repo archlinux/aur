@@ -11,6 +11,7 @@ url="https://github.com/creativeprojects/resticprofile"
 license=("GPL3")
 depends=("glibc" "restic")
 makedepends=("go")
+options=(!lto)
 source=("https://github.com/creativeprojects/resticprofile/archive/v${pkgver}.tar.gz")
 sha256sums=("304c370965735be61d0947d13bef18099a9cc1754bb7bd38350f690c057e808d")
 
@@ -25,7 +26,6 @@ build() {
 
     LC_ALL=C _build_date="$(date)"
 
-    #go mod vendor
     go build -o resticprofile -v -ldflags "-X 'main.commit=${_commit_hash}' -X 'main.date=${_build_date}' -X 'main.builtBy=makepkg'"
 }
 
