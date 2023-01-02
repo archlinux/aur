@@ -4,7 +4,7 @@
 pkgname='perl-sub-exporter-globexporter'
 _module='Sub-Exporter-GlobExporter'
 _author='R/RJ/RJBS'
-pkgver='0.005'
+pkgver='0.006'
 pkgrel='1'
 pkgdesc='Export shared globs with Sub::Exporter collectors.'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 depends=('perl-sub-exporter')
 url="https://metacpan.org/release/$_module"
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('2fc45eefe6de07cd3fd8af9e799c697fbd35a02ecd5bf9bcd8c94cefb6db7a63')
+sha256sums=('de743f08026701c2a6a222a8b41c4cdc254b1a4afe7ef98987cd3aba4ce52696')
 
 build() {
    (
