@@ -2,23 +2,33 @@
 # Maintainer: Arsen Musayelyan <arsen@arsenm.dev>
 
 pkgname='lure-bin'
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'armv6h' 'i686' 'x86_64')
 license=('GPLv3')
 provides=('lure')
 conflicts=('lure')
 depends=('sudo' 'pacman')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.5/lure_0.0.5_linux_aarch64.tar.gz")
-sha256sums_aarch64=('da00720af03b48b38fbc44dd05b9c0787907f7abe0a1fd41a5e6fa0d1e705563')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_aarch64.tar.gz")
+sha256sums_aarch64=('90ef1bbdfc4d4b338e2136671b0ec3f4aea2ae33646682ba8f662e08fadca3e7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.5/lure_0.0.5_linux_x86_64.tar.gz")
-sha256sums_x86_64=('fc64d7aacff2318b1617e2268a9c08975813e2ea1d1717cf24e55dcb6c1b2e27')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_armv6.tar.gz")
+sha256sums_armv6h=('514a36d635381b7722317e2e844b70d4d8ac5ffba2bf27f9c9d3dd4f650cda3a')
+
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_i386.tar.gz")
+sha256sums_i686=('a5370faaf1b777ade4361e4ce9304376db314879c5b545d39605107b1a572b1c')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_x86_64.tar.gz")
+sha256sums_x86_64=('42ec5e8e123ef42063bbb5fb3dd2b5d1ca217bef7f68f1956a6d25a75b29519f')
 
 package() {
   # binaries
-  install -Dm755 "./lure" "${pkgdir}/usr/bin/lure"
+  install -Dm755 ./lure "${pkgdir}/usr/bin/lure"
+
+  # completions
+  install -Dm755 ./scripts/completion/bash /usr/share/bash-completion/completions/lure
+  install -Dm755 ./scripts/completion/zsh /usr/share/zsh/site-functions/_lure
 }
