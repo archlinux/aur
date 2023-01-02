@@ -1,5 +1,27 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
+# Note: this PKGBUILD is a little more complicated than it could be,
+# because we try to be strictly pedantic about separating the download
+# phase from the build phase to conform to PKGBUILD ideals.
+#
+# Namely, all PKGBUILDs should ideally be written such that:
+#
+# - The download phase is done by the package build tool
+#   (i.e. everything and anything that needs to be obtained from the
+#   Internet is listed in the source array).
+#
+# - The download phase does not run any external code.
+#
+# - The build phase does not access the Internet.
+#
+# Satisfying these constraints allows users to configure the download
+# mechanisms to e.g. use proxies and provides security and
+# reproducibility guarantees.
+#
+# If you are packaging btdu and don't care about the above, you can
+# skip all the "dub add-local ..." commands and simply run "dub build
+# -b release", as documented in btdu's README.
+
 pkgname=btdu
 pkgver=0.5.0
 pkgrel=1
@@ -10,7 +32,7 @@ license=('GPL2')
 depends=('ncurses' 'd-runtime')
 makedepends=('d-compiler' 'dub' 'dtools')
 
-# these should match dub.selections.json
+# These should match dub.selections.json from the btdu repository:
 _d_ae_ver=0.0.3228
 _d_btrfs_ver=0.0.13
 _d_ncurses_ver=0.0.149
