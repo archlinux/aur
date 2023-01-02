@@ -1,17 +1,14 @@
 pkgbase = ondir-git
-	pkgdesc = a small program to automate tasks specific to certain directories
+	pkgdesc = Small program to automate tasks specific to certain directories
 	pkgver = r13.55279f0
-	pkgrel = 1
-	url = https://github.com/alecthomas/ondir.git
+	pkgrel = 2
+	url = https://github.com/alecthomas/ondir
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	provides = ondir-git
-	conflicts = ondir-git
-	source = ondir-git::git://github.com/alecthomas/ondir.git
+	source = git+https://github.com/alecthomas/ondir.git
 	md5sums = SKIP
 
 pkgname = ondir-git
-

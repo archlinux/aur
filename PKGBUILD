@@ -1,35 +1,35 @@
-# Maintainer: Akhil J <akhil.j@outlook.in>
+# Maintainer: aulonsal <seraur at aulonsal dot com>
+# Contributor: Akhil J <akhil.j@outlook.in>
 
 pkgname=ondir-git
+_pkgname="${pkgname%-git}"
 pkgver=r13.55279f0
-pkgrel=1
-pkgdesc="a small program to automate tasks specific to certain directories"
+pkgrel=2
+pkgdesc="Small program to automate tasks specific to certain directories"
 arch=('i686' 'x86_64')
-url="https://github.com/alecthomas/ondir.git"
+url="https://github.com/alecthomas/ondir"
 license=('GPL2')
-makedepends=('git')
 depends=('glibc')
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("$pkgname::git://github.com/alecthomas/ondir.git")
+makedepends=('git')
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
   sed -i '/USE_ONENTERLEAVE/c#define USE_ONENTERLEAVE' conf.h
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_pkgname"
   make CFLAGS="$CFLAGS "'-DVERSION=\"$(VERSION)\" -DGLOBAL_CONF=\"$(CONF)\"' LDFLAGS="$LDFLAGS"
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname"
   make DESTDIR="$pkgdir" install
 }
