@@ -15,22 +15,36 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-OVLROOT_MAINDIR="/.overlay"
-OVLROOT_LOWERDIR="${OVLROOT_MAINDIR}/ro"
-OVLROOT_UPPERDIR="${OVLROOT_MAINDIR}/rw"
-OVLROOT_WORKDIR="${OVLROOT_MAINDIR}/work"
+MSG_MODIFIED="original line modified by overlayroot"
+MSG_DEACTIVATED="line deactivated by overlayroot"
+OVLROOT_FS_ROONLY="msdos,fat,vfat,iso9660,udf,ntfs-3g,ntfs3"
+OVLROOT_FS_RAMONLY="tmpfs,devpts,devtmpfs,tracefs,debugfs,\
+configfs,securityfs,proc,sysfs,swap,ramfs"
+OVLROOT_CFGFILE="/etc/overlayroot.conf"
 OVLROOT_FSTAB="/tmp/overlayroot.fstab"
+OVLROOT_MAINDIR="/.overlay"
+OVLROOT_LOWERDIR_NAME="ro"
+OVLROOT_UPPERDIR_NAME="rw"
+OVLROOT_WORKDIR_NAME="work"
 FSTAB_SYSTEM="/etc/fstab"
 ROOTMNT="/new_root"
-
-MSG_MODIFIED="original entry modified by overlayroot"
-MSG_DEACTIVATED="entry deactivated by overlayroot"
 
 add_comments() {
 	while [ ${#} -gt 0 ]
 	do
    		 echo "# ${1}"; shift 1
 	done
+}
+
+list_contains() {
+	local list="${1}" item="${2}"
+
+	for _item in ${list}
+	do
+		[ "${_item}" = "${item}" ] && return 0	
+	done
+
+	return 1
 }
 
 fsopts_add_ro() {
@@ -56,10 +70,11 @@ fsopts_add_ro() {
 }
 
 run_latehook() {
-	local line="" opts="" mnts_overlay="" mnts_rdonly=""
+	local line="" options="" noswap="" mnts_overlay="" mnts_rdonly=""
+	local ovlroot_lowerdir="" ovlroot_upperdir="" ovlroot_workdir=""
 	local fsopts_root="ro"
 
-	[ ${#overlayroot} -eq 0 ] && return 0
+	[ ${#overlayroot} -eq 0 ] && return
 
 	for opt in ${overlayroot//:/ }
 	do
@@ -69,29 +84,47 @@ run_latehook() {
 				;;
 			ro=*)
 				mnts_rdonly="${opt#ro=}"
-				;;			
-			*)
 				;;
+			opts=*)
+				options="${opt#options=}"
+
+				for opt in ${options//,/ }
+				do
+					case "${opt}" in
+						noswap)
+							noswap="y"
+							;;
+					esac
+				done
+				;;	
 		esac
 	done
+
+	[ -f "${OVLROOT_CFGFILE}" ] && . "${OVLROOT_CFGFILE}"
+
+	ovlroot_lowerdir="${OVLROOT_MAINDIR}/${OVLROOT_LOWERDIR_NAME}"
+	ovlroot_upperdir="${OVLROOT_MAINDIR}/${OVLROOT_UPPERDIR_NAME}"
+	ovlroot_workdir="${OVLROOT_MAINDIR}/${OVLROOT_WORKDIR_NAME}"
 
 	mkdir -p "${OVLROOT_MAINDIR}"
 	mount -t "tmpfs" "overlayroot-tmpfs" "${OVLROOT_MAINDIR}"
 	
-	mkdir -p "${OVLROOT_LOWERDIR}"
-	mkdir -p "${OVLROOT_UPPERDIR}/root"
-	mkdir -p "${OVLROOT_WORKDIR}/root"
+	mkdir -p "${ovlroot_lowerdir}"
+	mkdir -p "${ovlroot_upperdir}/root"
+	mkdir -p "${ovlroot_workdir}/root"
 
-	mount -o "move" "${ROOTMNT}" "${OVLROOT_LOWERDIR}"
+	mount -o "move" "${ROOTMNT}" "${ovlroot_lowerdir}"
+	mount -t "overlay" -o "lowerdir=${ovlroot_lowerdir},\
+upperdir=${ovlroot_upperdir}/root,workdir=${ovlroot_workdir}/root" \
+"overlayroot" "${ROOTMNT}"
 
-	mount -t "overlay" -o "\
-lowerdir=${OVLROOT_LOWERDIR},upperdir=${OVLROOT_UPPERDIR}/root,\
-workdir=${OVLROOT_WORKDIR}/root" "overlayroot" "${ROOTMNT}"
+	mkdir -p "${ROOTMNT}/${OVLROOT_MAINDIR}"
+	mount -o "move" "${OVLROOT_MAINDIR}" "${ROOTMNT}/${OVLROOT_MAINDIR}"
 
 	while IFS= read -r line
 	do
 		local fs="" fsdir="" fstype="" fsopts="" fsdump="" fspass=""
-		local error="" mnt="" fsopts_ro=""
+		local error="" fsclass="" fsopts_ro=""
 		local _line="${line%%#*}"
 
 		[ ${#_line} -eq 0 ] && { echo "${line}"; continue; }
@@ -113,40 +146,60 @@ workdir=${OVLROOT_WORKDIR}/root" "overlayroot" "${ROOTMNT}"
 
 		fsopts_ro="$(fsopts_add_ro "${fsopts}")"
 
+		if [ "${fstype}" = "swap" ]
+		then
+			if [ "${noswap}" = "y" ]
+			then
+				add_comments "${MSG_DEACTIVATED}" "${line}"
+				continue
+			fi
+
+			fsclass="ram_only"
+		else
+			if   list_contains "${OVLROOT_FS_ROONLY//,/ }" "${fstype}"
+			then
+				fsclass="ro_only"
+			elif list_contains "${OVLROOT_FS_RAMONLY//,/ }" "${fstype}"
+			then
+				fsclass="ram_only"
+			else
+				fsclass="overlay"
+			fi
+		fi
+
 		if [ "${fsdir}" = "/" ]
 		then
+			[ "${fsclass}" != "overlay" ] && return
+
 			fsopts_root="${fsopts_ro}"
 			add_comments "${MSG_DEACTIVATED}" "${line}"
 			continue
 		fi
 
-		for mnt in ${mnts_overlay//,/ }
-		do
-			if [ "${mnt}" = "${fsdir}" ]
+		if [ "${fsclass}" != "ram_only" ]
+		then
+			if [ "${mnts_overlay}" = "all" ] || \
+			   list_contains "${mnts_overlay//,/ }" "${fsdir}"
 			then
-				add_comments "${MSG_MODIFIED}" "${line}"
-				fstype="overlayroot.${fstype}"
-				fsopts="${fsopts_ro}"								
-			fi
-		done
-
-		for mnt in ${mnts_rdonly//,/ }
-		do
-			if [ "${mnt}" = "${fsdir}" ]
+				if [ "${fsclass}" != "ro_only" ]
+				then
+					add_comments "${MSG_MODIFIED}" "${line}"
+					fstype="overlayroot.${fstype}"
+					fsopts="${fsopts_ro}"
+				fi
+			elif [ "${mnts_rdonly}" = "all" ] ||
+				 list_contains "${mnts_rdonly//,/ }" "${fsdir}"
 			then
 				add_comments "${MSG_MODIFIED}" "${line}"
 				fsopts="${fsopts_ro}"
-				fspass=0; break
+				fspass=0
 			fi
-		done
+		fi
 
 		printf "%s\t%s\t%s\t%s\t%s\t%s\n" "${fs}" "${fsdir}" \
 		"${fstype}" "${fsopts}" "${fsdump}" "${fspass}"
 	done <"${ROOTMNT}/${FSTAB_SYSTEM}" >"${OVLROOT_FSTAB}"
 
-	mkdir -p "${ROOTMNT}/${OVLROOT_MAINDIR}"
-	mount -o "move" "${OVLROOT_MAINDIR}" "${ROOTMNT}/${OVLROOT_MAINDIR}"
-	mount -o "remount,${fsopts_root}" "${ROOTMNT}/${OVLROOT_LOWERDIR}"
-
+	mount -o "remount,${fsopts_root}" "${ROOTMNT}/${ovlroot_lowerdir}"
 	mv "${OVLROOT_FSTAB}" "${ROOTMNT}/${FSTAB_SYSTEM}"
 }

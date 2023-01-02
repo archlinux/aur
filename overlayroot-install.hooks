@@ -17,4 +17,5 @@
 
 build() {
   add_runscript
+  add_file "/etc/overlayroot.conf" "/etc/overlayroot.conf" "644"
 }

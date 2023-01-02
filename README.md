@@ -28,12 +28,45 @@ write access is not needed and you want to protect it against changes.
 - add `overlayroot` to the end of __HOOKS__ array in mkinitcpio.conf
 - update initramfs with `mkinitcpio -P`
 
-### 2.2 Kernel command line
+### 2.2 Kernel Command Line
 - add `overlayroot` to your kernel command line
 - optional:
+	- add `opts=<option>,...` to `overlayroot=...`
+		 - available options:
+			 - `noswap` : deactivate swap space
 	- add `tmpfs=/<path>/<to>/<mountpoint>,...` to `overlayroot=...` to overlay
-	  these filesystems with a tmpfs filesystem
-	- add `ro=/<path>/<to>/<mountpoint>,...` to `overlayroot=...` to mount these
+	  filesystems with a tmpfs filesystem
+	- add `ro=/<path>/<to>/<mountpoint>,...` to `overlayroot=...` to mount
 	  filesystems read-only
-	- separate both options with a `:`
-	- complete example: `overlayroot=tmpfs=/usr:ro=/boot,/boot/efi`
+	- specify `all` instead of dedicated mountpoints for `tmpfs` or `ro`
+	- separate options with a `:`
+	- examples: 
+		overlayroot=tmpfs=/usr:ro=/boot,/boot/efi
+		overlayroot=tmpfs=all:opts=noswap
+		overlayroot=ro=all
+
+### 2.3 Configuration File
+- path `/etc/overlayroot.conf`
+	- `OVLROOT_FS_ROONLY=<fs>,...` filesystems that can't be used as lower layer
+		 - examples: `msdos, (v)fat, ntfs-3g`
+	- `OVLROOT_FS_RAMONLY=<fs>,...` filesystems that are always ignored by overlayroot
+		 - examples: `tmpfs, proc, sysfs`
+	- `OVLROOT_FSTAB=/<path>/<to>/<fstab>` modified fstab created by overlayroot 
+	  during initramfs phase to replace system-wide fstab
+		 - default: `/tmp/overlayroot.fstab`
+	- `OVLROOT_MAINDIR=/<path>/<to>/<mountpoint>` mountpoint for tmpfs filesystem
+		 - default: `/.overlay`
+	- `OVLROOT_LOWDERDIR_NAME=<dirname>` subdirectory of all lower filesystem mounts
+		 - default: `ro`
+	- `OVLROOT_UPPERDIR_NAME=<dirname>` subdirectory for all changes made to the filesystems
+		 - default: `rw`
+	- `OVLROOT_WORKDIR_NAME=<dirname>` subdirectory needed by OverlayFS
+		 - default: `work`
+	- `FSTAB_SYSTEM=/<path>/<to>/<fstab>` system-wide fstab
+		 - default: `/etc/fstab`
+	- `ROOTMNT=/<path>/<to>/<mountpoint>` mountpoint of root filesystem in initramfs phase
+		 - default: `/new_root`
+
+
+
+
