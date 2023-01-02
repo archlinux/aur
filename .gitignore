@@ -1,2 +1,4 @@
+/pkg/
 /smithay-git/
 /src/
+*.tar.zst

@@ -1,6 +1,6 @@
 pkgbase = smithay-git
 	pkgdesc = A smithy for rusty wayland compositors
-	pkgver = v0.3.0.r380.g68386dfbb4
+	pkgver = v0.3.0.r1255.gc85e1e52
 	pkgrel = 1
 	url = https://github.com/Smithay/smithay
 	arch = i686

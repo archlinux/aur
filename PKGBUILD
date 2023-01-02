@@ -2,7 +2,7 @@
 
 _basename=smithay
 pkgname="$_basename-git"
-pkgver=v0.3.0.r380.g68386dfbb4
+pkgver=v0.3.0.r1255.gc85e1e52
 pkgrel=1
 pkgdesc="A smithy for rusty wayland compositors"
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ pkgver() {
 
 build() {
   cd ${pkgname}/anvil
-  cargo run -- --winit
+  cargo build
+  # to run:
+  # cargo run -- --winit
 }
 
 package() {
