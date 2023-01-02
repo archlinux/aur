@@ -1,6 +1,6 @@
 # Maintainer: Isaiah Bierbrauer <isaiah@isaiahbierbrauer.com>
 pkgname=wsbg-git
-pkgver=r129.9ec3b35
+pkgver=r132.de5e2aa
 pkgrel=1
 pkgdesc="Workspace wallpaper tool for Sway"
 arch=("i686" "x86_64")
@@ -8,7 +8,7 @@ url="https://isaiahbierbrauer.com/wsbg"
 license=("MIT")
 depends=(
   "wayland"
-  "cairo"
+  "pixman"
   "gdk-pixbuf2"
 )
 makedepends=(

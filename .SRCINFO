@@ -1,6 +1,6 @@
 pkgbase = wsbg-git
 	pkgdesc = Workspace wallpaper tool for Sway
-	pkgver = r129.9ec3b35
+	pkgver = r132.de5e2aa
 	pkgrel = 1
 	url = https://isaiahbierbrauer.com/wsbg
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = wsbg-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = cairo
+	depends = pixman
 	depends = gdk-pixbuf2
 	provides = wsbg
 	conflicts = wsbg
