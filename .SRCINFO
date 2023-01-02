@@ -1,7 +1,7 @@
 pkgbase = malias
 	pkgdesc = An alias manager that allows you to easily add, delete or list your bash aliases
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Antiz96/malias
 	arch = any
 	license = GPL3
