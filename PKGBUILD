@@ -1,3 +1,4 @@
+# Maintainer: Ingo Meyer <IJ_M@gmx.de>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
