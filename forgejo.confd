@@ -1,0 +1,4 @@
+FORGEJO_USER=forgejo
+FORGEJO_CONF=/etc/forgejo/app.ini
+FORGEJO_WORK_DIR=/var/lib/forgejo
+FORGEJO_LOG_FILE=/var/log/forgejo/http.log
