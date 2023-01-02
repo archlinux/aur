@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 11.11
-	pkgrel = 2
+	pkgver = 12.0
+	pkgrel = 1
 	url = https://github.com/sonic2kk/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -40,7 +40,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = pev: optional for extracting data from the game exe
 	optdepends = gdb: optional for starting the game under the debugger gdb
 	optdepends = xdg-utils: optional for opening game paths
-	source = steamtinkerlaunch-11.11.tar.gz::https://github.com/sonic2kk/steamtinkerlaunch/archive/v11.11.tar.gz
-	sha256sums = 1e7f9d52753ff9203ddcd69461e6160530dba03747ecfb2a15d7e5dd435d34c4
+	source = steamtinkerlaunch-12.0.tar.gz::https://github.com/sonic2kk/steamtinkerlaunch/archive/v12.0.tar.gz
+	sha256sums = c20dabbf08722a3da207e6b5eaf515b5ca76c25138345940df689d5250c60e04
 
 pkgname = steamtinkerlaunch
