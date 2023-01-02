@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cargo build --offline --all-features --release --target-dir target
+    cargo build --all-features --release --target-dir target
 }
 
 package() {
