@@ -1,36 +1,28 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
-pkgname="YoLang"
-pkgver="1.2.15"
+# Maintainer: Ali Riza Keskin <aliriza.keskin@pardus.org.tr>
+pkgname="pardus-lightdm-greeter"
+pkgver="0.0.2"
 pkgrel=1
-pkgdesc="Lightweight, simple interpretive programming language"
+pkgdesc="A customizable lightdm greeter for Pardus GNU/Linux."
 arch=("any")
-url="https://github.com/PowerAngelXD/YoLang"
-license=("MIT")
-makedepends=("cmake"
-            "make")
-provides=("yolang")
-source=("$pkgname-$pkgver.zip::https://github.com/PowerAngelXD/YoLang/archive/refs/heads/master.zip")
-md5sums=("764407b9d4a7267dc857555a6a2fdaef")
+url="https://github.com/pardus/pardus-lightdm-greeter"
+license=(GPL3)
+makedepends=("make")
+source=("https://github.com/pardus/$pkgname/archive/refs/tags/debian/$pkgver.zip")
+md5sums=("7021671ddb57ed9cffbcdce905d7f0d0")
 
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-# }
+depends=(
+    python-gobject
+    python-xlib
+    gtk3
+    lightdm
+)
 
 build() {
-	cd "$pkgname-master"
-	cmake -S .
-	make
+    cd "$pkgname-debian-$pkgver"
+    make
 }
 
 package() {
-	cd "$pkgname-master"
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  install -m=777 "yolang" "${pkgdir}/usr/bin"
+  cd "$pkgname-debian-$pkgver"
+  make install DESTDIR="${pkgdir}"
 }

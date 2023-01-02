@@ -1,8 +1,0 @@
-partial modifier_keys
-xkb_symbols "caps_switch_latch" {
-  key <CAPS> {
-    type[Group1]="THREE_LEVEL",
-    symbols[Group1] = [ ISO_Level3_Latch, ISO_Level3_Shift, ISO_Level3_Latch ]
-  };
-  include "level3(modifier_mapping)"
-};
