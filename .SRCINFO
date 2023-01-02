@@ -1,10 +1,11 @@
 pkgbase = mount-zip
 	pkgdesc = FUSE file system for ZIP archives
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mount-zip
 	arch = x86_64
 	license = GPL3
+	checkdepends = python
 	makedepends = boost
 	makedepends = make
 	makedepends = pandoc
