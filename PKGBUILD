@@ -2,7 +2,7 @@
 # Previous Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=mc-agent
-pkgver=r59.fef4de4
+pkgver=r62.30e78a7
 pkgrel=2
 pkgdesc='Simple ssh-agent that loads keys stored from Moolticute'
 arch=('x86_64')
@@ -24,8 +24,6 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  pwd
-  ls -la
   go build 
 }
 
@@ -33,6 +31,6 @@ package() {
   cd "$pkgname"
 find
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 systemd/mc-agent.service "$pkgdir"/etc/systemd/user/mc-agent.service
+  install -Dm644 init/mc-agent.service "$pkgdir"/etc/systemd/user/mc-agent.service
 
 }
