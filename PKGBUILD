@@ -3,7 +3,7 @@
 pkgname=ame-git
 _pkgname=amethyst
 _shortname="${pkgname%-git}"
-pkgver=4.0.3.r604.1526f04
+pkgver=4.0.3.r642.d2008a5
 pkgrel=1
 pkgdesc='Amethyst is a fast and efficient AUR helper (git version)'
 arch=('x86_64' 'aarch64')
@@ -28,19 +28,19 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     install -Dm 755 "target/release/${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_shortname}/README.md"
 }

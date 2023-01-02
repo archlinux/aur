@@ -1,6 +1,6 @@
 pkgbase = ame-git
 	pkgdesc = Amethyst is a fast and efficient AUR helper (git version)
-	pkgver = 4.0.3.r604.1526f04
+	pkgver = 4.0.3.r642.d2008a5
 	pkgrel = 1
 	url = https://git.getcryst.al/crystal/software/amethyst
 	arch = x86_64
