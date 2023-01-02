@@ -15,6 +15,16 @@ source=("https://github.com/planetscale/cli/releases/download/v${pkgver}/${_pkgn
 
 package() {
   install -Dm755 pscale ${pkgdir}/usr/bin/pscale
-}
+  
+  if [ -d "/usr/share/fish/vendor_completions.d/" ]; then
+    install -Dm755 completions/pscale.fish /usr/share/fish/vendor_completions.d/pscale.fish
+  fi
 
-# vim:set ts=2 sw=2 et:
+  if [ -d "/usr/share/bash-completion/completions/" ]; then
+    install -Dm755 completions/pscale.bash /usr/share/bash-completion/completions/_pscale
+  fi
+  
+  if [ -d "/usr/share/zsh/site-functions/" ]; then
+   install -Dm755 completions/pscale.zsh /usr/share/zsh/site-functions/_pscale
+  fi
+}
