@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.1.1.arch1
-	pkgrel = 2
-	url = https://github.com/archlinux/linux/commits/v6.1.1-arch1
+	pkgver = 6.1.2.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.1.2-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -13,14 +13,14 @@ pkgbase = linux-vfio
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx<6.0.0
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1.1-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1.2-arch1
 	source = config
 	source = 0001-add-acs-overrides.patch
 	source = 0002-i915-vga-arbiter.patch
