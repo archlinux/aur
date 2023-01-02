@@ -1,15 +1,12 @@
 pkgbase = chkrootkit
 	pkgdesc = Locally checks for signs of a rootkit
-	pkgver = 0.55
+	pkgver = 0.56
 	pkgrel = 1
 	url = http://www.chkrootkit.org/
 	arch = x86_64
 	license = CUSTOM
 	optdepends = tiger: a wrapper for chkrootkit
-	source = ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit-0.55.tar.gz
-	source = chkrootkit-0.55.tar.gz.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 742dca90a761ecff149d8704cb3a252adfe8f9d5e15dd060e9db4d5f6dcd3820933ae13cbee99ea5a8c6144932cf97c0616a177af3ba5a1726b51bb304e7d63e
-	sha512sums = SKIP
+	source = ftp://ftp.chkrootkit.org/pub/seg/pac/chkrootkit-0.56.tar.gz
+	sha512sums = 23d07313ec720cab4c28ac0a7c203c3d7b13503d224c0f9eb585addb5dd54901cb200506777aac84e93a258163d571863c5609d4d0f1bb3f0ddeb2e5ab959520
 
 pkgname = chkrootkit
