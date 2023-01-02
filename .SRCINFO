@@ -1,7 +1,7 @@
 pkgbase = bd
 	pkgdesc = Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly
 	pkgver = 1.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vigneshwaranr/bd
 	arch = any
 	license = MIT
