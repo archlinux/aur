@@ -14,7 +14,9 @@ pkgbase = ldtk
 	options = !makeflags
 	source = ldtk-1.2.0.tar.gz::https://github.com/deepnight/ldtk/archive/v1.2.0.tar.gz
 	source = ldtk.desktop
+	source = ldtk.app.min.css::https://raw.githubusercontent.com/deepnight/ldtk/ce782669ed09a2a9274b1a31461a517d237ad37c/app/assets/css/app.min.css
 	sha256sums = ad116b86555a5dd06e8a35aaf3ef2a28a9ad97dbf1a8253a6bf6291946e76815
 	sha256sums = 5f15970200f2b14fd79eaaac03347e0b2d4845403347cb6ecfa57ee17e6642c0
+	sha256sums = SKIP
 
 pkgname = ldtk
