@@ -44,11 +44,11 @@ package() {
   rm -rvf "${pkgdir}/usr/lib"
   rm -rvf "${pkgdir}/usr/share/mstflint"
 
-  # Rename all mst* binaries to mst3*
+  # Rename all mst* binaries to mst*3
   for bin in mst{config,flint,mcra,mread,mtserver,mwrite,regdump,vpd}; do
     mv -v "${pkgdir}/usr/bin/${bin}" \
-          "${pkgdir}/usr/bin/${bin/#mst/mst3}"
+          "${pkgdir}/usr/bin/${bin}3"
   done
   mv -v "${pkgdir}/usr/share/man/man1/mstflint.1" \
-        "${pkgdir}/usr/share/man/man1/mst3flint.1"
+        "${pkgdir}/usr/share/man/man1/mstflint3.1"
 }
