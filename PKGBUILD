@@ -1,5 +1,5 @@
 pkgname=webcord
-pkgver=4.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=(
-    '2a9421a4261c62e5d49f13e7b689a9a1cf85733cf20f181e7ae64d0758c4a710'
+    '3f22e5db824b73780f33b1eba8e9bf7cd3998cf65cf9304d3fc0c624319192f9'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '43ccf5216bb029deb2af2792218b35793f930200117f5bf8201a2406f66af583'
 )
