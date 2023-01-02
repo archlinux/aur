@@ -4,16 +4,24 @@
 pkgname=picsimlab-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
 arch=('x86_64')
 url='https://github.com/lcgamboa/picsimlab'
 license=('GPL2')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('wxgtk3'
+depends=('gtkwave'
+	 'gpsim'
+	 'libgcrypt'
+	 'cutecom'
+	 'gedit'
+	 'glib2'
          'picsim'
-         'openal')
+         'openal'
+	 'pixman'
+	 'wxgtk3'
+	 'zlib')
 makedepends=('tar')
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_18.04.6_LTS_amd64.deb")
 # source=("${_pkgname}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_20.10_amd64.deb/download")
