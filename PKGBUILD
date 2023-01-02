@@ -2,7 +2,7 @@
 
 pkgname=at32-ide-bin
 pkgver=1.0.04
-pkgrel=3
+pkgrel=4
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
@@ -33,6 +33,8 @@ package() {
 #!/bin/bash
 /opt/artery32/${pkgname%-bin}/AT32IDE "\$@"
 EOF
+
+    chmod 664 "${pkgdir}/opt/artery32/${pkgname%-bin}/AT32IDE.ini"
 
     install -Dm0644 "${pkgdir}/opt/artery32/${pkgname%-bin}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.xpm"
 
