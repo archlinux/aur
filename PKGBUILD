@@ -94,9 +94,9 @@ prepare()
     git -c protocol.file.allow=always submodule update
 
     # GeoIP database
-    declare -i _current_year
+    declare _current_year
     _current_year="$(date +"%Y")"
-    declare -i _current_month
+    declare _current_month
     _current_month="$(date +"%m")"
 
     while [[ "$(curl -o /dev/null/ -sw "%{http_code}" https://download.db-ip.com/free/dbip-city-lite-"${_current_year}"-"${_current_month}".mmdb.gz || true)" != "200" ]]; do
