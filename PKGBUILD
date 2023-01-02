@@ -1,17 +1,18 @@
 # Maintainer: Yanli <beautyyuyanli@gmail.com>
 # Contributor: cubercsl <hi@cubercsl.site>
+# Contributor: glitsj16
 pkgname=linuxqq-firejail
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Run QQ in Firejail (security sandbox). Install linuxqq before this.'
 arch=('x86_64' 'aarch64')
-url="https://github.com/BeautyYuYanli/linuxqq-new-firejail"
+url="https://github.com/BeautyYuYanli/linuxqq-firejail"
 license=('unknown')
 # TODO: add linuxqq
 depends=('firejail')
-profile="tencent-qq.profile"
+profile="linuxqq.profile"
 source=("${profile}")
-sha512sums=('8c6a8075a74c8ffaac4ee2f96c6e41d51de1a040d81f5e3d55543d614f5e60d76ec1d42d935d37cd7031999eadfe4d5597277d35f5ed20b87c781e7eb836edb4')
+sha512sums=('a4ee0f052e34868363067afd7a0964a1e3b8967c153fac0a52b0669e2f1ab84c0a1a2709f855c42fb3bb5271c3c909d7bdae285772e3b599cb3a77f6b298d376')
 
 package() {
 	# Patch Firejail
