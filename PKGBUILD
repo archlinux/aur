@@ -3,7 +3,7 @@
 # Contributer: Bruce Zhang
 
 pkgname=lx-music
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname.desktop"
         'dev-app-update.yml'
         )
-sha256sums=('40b369d24e32ce6746d4d34697658b851cd83592bde6bf598076a7a697fa8e74'
+sha256sums=('5b02a0ce6d34547d90f7f17480b87f441731f00ffd8929f2e9cb3a3cd5b3a001'
             '0ef83101a4ec2a835f4a9f22567526c6e0b6fcc5a8e7308134c765dd1b53d355'
             '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
             'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
