@@ -1,7 +1,7 @@
 pkgbase = unifetch
 	pkgdesc = An unofficial inheritor of neofetch.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jin-Asanami/unifetch
 	arch = any
 	license = MIT
@@ -19,7 +19,6 @@ pkgbase = unifetch
 	optdepends = xorg-xprop: Desktop Environment and Window Manager
 	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
-	provides = neofetch
 	conflicts = unifetch
 	source = https://github.com/Jin-Asanami/unifetch/archive/refs/tags/1.2.tar.gz
 	sha512sums = b03ec2b88a81472f9c84bfc030aa84dc3e7ca0572f3094c2fba41cfe9be2de4377899b7a377e8671383d56a705ca0b4a9d0ef924eff4a80c1ca9989f6baa0de4
