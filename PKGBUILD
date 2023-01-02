@@ -44,49 +44,41 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 ## Choose between GCC and CLANG config (default is CLANG)
-if [ -z ${_compiler+x} ]; then
-  _compiler=clang
-fi
+_compiler=${_compiler-'clang'}
 
 # Compress modules with ZSTD (to save disk space)
-if [ -z ${_compress_modules+x} ]; then
-  _compress_modules=n
-fi
+_compress_modules=${_compress_modules-n}
 
 # Setting some security options
-use_selinux=n
-use_tomoyo=n
-use_yama=n
-use_apparmor=y
+use_selinux=${use_selinux-n}
+use_tomoyo=${use_tomoyo-n}
+use_yama=${use_yama-n}
+use_apparmor=${use_apparmor-y}
 
 # kvm settings
-if [ -z ${_use_kvm+x} ]; then
-  _use_kvm=y
-fi
+_use_kvm=${_use_kvm-y}
 
 # optimization (default O3)
-if [ -z ${_use_O3+x} ];then
-  _use_O3=y
-fi
+_use_O3=${_use_O3-y}
 
 # Use LLVM Type ( "full" or "thin" )
-if [ -z ${_use_llvm_type+x} ]; then
-  _use_llvm_type="thin"
-fi
+_use_llvm_type=${_use_llvm_type-'full'}
 
 # cpufreq gov (available:performance,ondemand,conservative,userspace,schedutil,powersave)
-if [ -z ${_cpufreq+x} ]; then
-  _cpufreq=performance
-fi
+_cpufreq=${_cpufreq-'performance'}
 
 # LRU setting
-if [ -z ${_use_lru+x} ]; then
-  _use_lru=y
-fi
+_use_lru=${_use_lru-y}
 
 # zram setting
-if [ -z ${_use_zram+x} ]; then
-  _use_zram=y
+_use_zram=${_use_zram-}
+
+# Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64-v1 (default) / config_x86-64-v2 / config_x86-64-v3 / config_x86-64-v4
+# This will be overwritten by selecting any option in microarchitecture script
+# Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
+if [ -z ${_config+x} ]; then
+  _config=config_x86-64-v1
 fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -109,20 +101,20 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
-_major=5.15
-pkgver=${_major}.54
-_branch=5.x
+_major=6.1
+pkgver=${_major}.2
+_branch=6.x
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri'
 url="http://www.xanmod.org/"
 arch=(x86_64)
-
 license=(GPL2)
+depends=(uksmd)
 makedepends=(
   bc cpio kmod libelf perl tar xz
 )
-_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_patches_url="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _jobs=$(nproc)
 _core=$(nproc --all)
 if [ "${_compiler}" = "clang" ]; then
@@ -133,10 +125,10 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-tt/patch-${pkgver}-xanmod${xanmod}-tt.xz"
+        "https://github.com/antman666/linux-xanmod-tt-uksm-cjktty/releases/download/linux-xanmod-tt-uksm-cjktty_v${pkgver}/patch-${pkgver}-xanmod${xanmod}-tt.zst"
         choose-gcc-optimization.sh
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
-        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0002-UKSM.patch::${_patches_url}/uksmd-cachyos-patches-all/0001-uksmd-cachyos-patches.patch"
        )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -151,12 +143,12 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            'bb223ac91f3d0ad1cad7ec7c30fbb7f14c4398861be5b035aae207bb121f6c5c'
+            '27e034ebe01a31f190c9fa1e593df216578db07d75d3463c129f4360dda3e3e0'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
-            'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
+            'c5bdf89d7867c368dfd7b7c16e5a50a99ca8022de28ab15315bdcb5dab8aad85'
+            '1e88663a54843a747d717ea6f2fc5d1233056c30433e1b685d09cae9921a2cff')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -171,7 +163,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  #echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
@@ -184,7 +176,7 @@ prepare() {
   done
 
   # Applying configuration
-  cp -vf CONFIGS/xanmod/${_compiler}/config .config
+  cp -vf CONFIGS/xanmod/gcc/${_config} .config
 
   # enable LTO_CLANG
   if [ "${_compiler}" = "clang" ]; then
