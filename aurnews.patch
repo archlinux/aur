@@ -1,20 +1,20 @@
-From 42442dcb0767d1b361c909acb1155c1b150f1945 Mon Sep 17 00:00:00 2001
+From f57ae92607e99c470985641c5d2272674a2c2b27 Mon Sep 17 00:00:00 2001
 From: egnappahz <egnappah@gmail.com>
-Date: Mon, 28 Nov 2022 11:15:24 +0100
+Date: Mon, 2 Jan 2023 09:14:56 +0100
 Subject: [PATCH] AURNEWS patch
 
 Signed-off-by: egnappahz <egnappah@gmail.com>
 ---
- pikaur/install_cli.py      | 5 +++++
+ pikaur/install_cli.py      | 6 ++++++
  pikaur/print_department.py | 2 +-
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ 2 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/pikaur/install_cli.py b/pikaur/install_cli.py
-index b378bbe..832cc00 100644
+index bf7d534..7c2ef32 100644
 --- a/pikaur/install_cli.py
 +++ b/pikaur/install_cli.py
-@@ -771,6 +771,11 @@ class InstallPackagesCLI():
-             _pkg_label = bold_line(', '.join(pkg_build.package_names))
+@@ -768,6 +768,12 @@ class InstallPackagesCLI():
+             _pkg_label = bold_line(", ".join(pkg_build.package_names))
              _skip_diff_label = translate("Not showing diff for {pkg} package ({reason})")
  
 +            for pkgname_eggz in pkg_build.package_names:
@@ -22,14 +22,15 @@ index b378bbe..832cc00 100644
 +                os.system("curl -s https://aur.archlinux.org/packages/" + str(pkgname_eggz) + " | grep '<div id=\"comment-' -A10 | grep 'p>' | sed 's/.*<p>//g' | sed 's/<\/p>/\\n/g' | grep -v '</div>' | head -n20")
 +                print_stdout(color_line("/----------- End comments for " + pkgname_eggz + " -----------/",11))
 +
++
              if (
                      pkg_build.package_base in self.reviewed_package_bases
              ):
 diff --git a/pikaur/print_department.py b/pikaur/print_department.py
-index 7ad0267..fb24afb 100644
+index b782730..b191d31 100644
 --- a/pikaur/print_department.py
 +++ b/pikaur/print_department.py
-@@ -55,7 +55,7 @@ def print_version(pacman_version: str, pyalpm_version: str, quiet: bool = False)
+@@ -56,7 +56,7 @@ def print_version(pacman_version: str, pyalpm_version: str, *, quiet: bool = Fal
    l  /       \        l
    j  ●   .   ●        l      """ + pacman_version + r"""
   { )  ._,.__,   , -.  {      pyalpm v""" + pyalpm_version + r"""
@@ -39,5 +40,5 @@ index 7ad0267..fb24afb 100644
  """)
  
 -- 
-2.38.1
+2.39.0
 
