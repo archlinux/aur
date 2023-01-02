@@ -5,7 +5,7 @@
 
 pkgname=rocketchat-desktop
 pkgver=3.8.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('any')
 url='https://github.com/RocketChat/Rocket.Chat.Electron'
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
     cd "Rocket.Chat.Electron-$pkgver"
-    local i686=ia32 x86_64=x64
+    local i686=ia32 x86_64=x64 aarch64=linux-arm64-unpacked
     export NODE_ENV=production
     export NODE_OPTIONS='--openssl-legacy-provider'
     yarn build
