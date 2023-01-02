@@ -1,17 +1,17 @@
 # Maintainer: Miroslav Jarý <mira.jary@gmail.com>
 
 pkgname=yin-yang
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
-depends=('python-psutil' 'python-suntime' 'python-systemd' 'python-pyqt6' 'pyside6' 'qt6-positioning')
+depends=('hicolor-icon-theme' 'python-numpy' 'python-psutil' 'pyside6' 'python-pyqt6' 'qt6-positioning' 'python-suntime' 'python-systemd')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v3.2.0.zip")
-sha256sums=('b1f0704c47c58b70e1fb0987e393e140c0dcf74b1dc669e5b3c1a8ce2f8b70c6')
+source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v$pkgver.zip")
+sha256sums=('dfdc31d9d07e26d28d8b6c6501181281c61ecad40a4d9a53a84012aff7db4898')
 
 package() {
     # This is a modified version of scripts/install.sh
@@ -35,7 +35,7 @@ package() {
     done
 
     # Pre-cleanup
-    rm -r README*.md tests/ requirements.txt
+    rm -r README*.md scripts/ tests/ requirements.txt
 
     # copy files
     cp -r ./* "$pkgdir/opt/yin-yang/"
@@ -82,8 +82,7 @@ cat << "EOF"
      "Y8888o._     _.oP"
        `""Y888boodP""'
 EOF
-    echo ""
-    echo ""
-    echo "checkout https://github.com/daehruoydeef/Yin-Yang for help"
-    echo "Yin-Yang is now installed"
+echo ""
+echo ""
+echo "Check out https://github.com/daehruoydeef/Yin-Yang for help"
 }
