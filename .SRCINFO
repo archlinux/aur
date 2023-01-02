@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-caffeine
 	pkgdesc = Extension for GNOME shell to disable screensaver and auto suspend
 	pkgver = 42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eonpatapon/gnome-shell-extension-caffeine
 	arch = any
 	license = GPL2
 	depends = gnome-shell
 	depends = gnome-shell-extensions
-	source = gnome-shell-extension-caffeine-42::https://github.com/eonpatapon/gnome-shell-extension-caffeine/archive/v42.tar.gz
+	source = gnome-shell-extension-caffeine-42.tar.gz::https://github.com/eonpatapon/gnome-shell-extension-caffeine/archive/v42.tar.gz
 	sha256sums = 6c62ab77ef8b5ad8b219b0ff47557f9375f9fc62046767fc76705620c3177e04
 
 pkgname = gnome-shell-extension-caffeine
