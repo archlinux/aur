@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('MIT')
 url="https://forum.xda-developers.com/crossdevice-dev/sony/progress-newflasher-xperia-command-line-t3619426"
 depends=('zlib' 'expat')
+makedepends=('git')
 source=(git+https://github.com/newflasher/newflasher)
 md5sums=('SKIP')
 
