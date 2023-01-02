@@ -1,6 +1,6 @@
 pkgbase = r-locfit
 	pkgdesc = Local Regression, Likelihood and Density Estimation
-	pkgver = 1.5.9.6
+	pkgver = 1.5.9.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=locfit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-locfit
 	depends = r
 	optdepends = r-gam
 	optdepends = r-interp
-	source = https://cran.r-project.org/src/contrib/locfit_1.5-9.6.tar.gz
-	sha256sums = 1ee89e4003cb769feae61ada7ac0a971df30644824f7ed84a21dd5719f713476
+	source = https://cran.r-project.org/src/contrib/locfit_1.5-9.7.tar.gz
+	sha256sums = 48e5fcd089fbc609d8e4c62c390425fba1dd167ad95ae0bddc175cbbe1517aff
 
 pkgname = r-locfit
