@@ -1,0 +1,13 @@
+pkgbase = gmnitohtml
+	pkgdesc = Gemini text to HTML converter
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git.sr.ht/~adnano/gmnitohtml
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = scdoc
+	source = https://git.sr.ht/~adnano/gmnitohtml/archive/0.1.2.tar.gz
+	sha256sums = ae86594d0c3c0af8cc42ccf23b3463c1c20dd724395815a302699d10b9205d64
+
+pkgname = gmnitohtml
