@@ -1,10 +1,10 @@
 # CPAN Name  : Plack
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Christian Sturm <reezer@reezer.org>
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-plack
-pkgver=1.0048
+pkgver=1.0050
 pkgrel=1
 pkgdesc='Perl Superglue for Web frameworks and Web Servers'
 arch=('any')
@@ -12,28 +12,28 @@ url='https://metacpan.org/release/Plack'
 license=('PerlArtistic' 'GPL')
 
 depends=(
-	'perl>=5.10.1' # for Pod::Usage >= 1.36
-	'perl-apache-logformat-compiler>=0.33'
-	'perl-cookie-baker>=0.07'
-	'perl-devel-stacktrace>=1.23'
-	'perl-devel-stacktrace-ashtml>=0.11'
-	'perl-file-sharedir>=1.00'
+	'perl'
+	'perl-apache-logformat-compiler'
+	'perl-cookie-baker'
+	'perl-devel-stacktrace'
+	'perl-devel-stacktrace-ashtml'
+	'perl-file-sharedir'
 	'perl-filesys-notify-simple'
-	'perl-http-entity-parser>=0.25'
-	'perl-http-message>=5.814'
-	'perl-http-headers-fast>=0.18'
-	'perl-http-tiny>=0.034'
-	'perl-hash-multivalue>=0.05'
-	'perl-stream-buffered>=0.02'
-	'perl-test-tcp>=2.15'
+	'perl-http-entity-parser'
+	'perl-http-message'
+	'perl-http-headers-fast'
+	'perl-http-tiny'
+	'perl-hash-multivalue'
+	'perl-stream-buffered'
+	'perl-test-tcp'
 	'perl-try-tiny'
-	'perl-uri>=1.59'
-	'perl-www-form-urlencoded>=0.23')
+	'perl-uri'
+	'perl-www-form-urlencoded')
 makedepends=(
-	'perl-extutils-makemaker>=6.30'
-	'perl-file-sharedir-install>=0.06')
+	'perl-extutils-makemaker'
+	'perl-file-sharedir-install')
 checkdepends=(
-#	'perl-cgi-compile'
+	'perl-cgi-compile'
 	'perl-http-request-ascgi'
 	'perl-fcgi'
 	'perl-fcgi-procmanager'
@@ -42,10 +42,14 @@ checkdepends=(
 	'perl-io-handle-util'
 	'perl-log-dispatch-array'
 	'perl-lwp-protocol-http10'
-	'perl-mime-types')
-source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-1.0048.tar.gz)
+	'perl-mime-types'
+	'perl-log-log4perl'
+	'perl-module-refresh'
+	'perl-cgi-emulate-psgi')
+
+source=(http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Plack-$pkgver.tar.gz)
 options=(!emptydirs)
-md5sums=('36282b473b4521219c44a9db437b650f')
+md5sums=('0856a900a981769e3d79f0a10ccc3e65')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
@@ -53,20 +57,20 @@ sanitize() {
 }
 
 build() {
-	cd Plack-1.0048
+	cd Plack-$pkgver
 	sanitize
 	/usr/bin/perl Makefile.PL INSTALLDIRS=vendor
 	make
 }
 
 check() {
-	cd Plack-1.0048
+	cd Plack-$pkgver
 	sanitize
 	make test
 }
 
 package() {
-	cd Plack-1.0048
+	cd Plack-$pkgver
 	sanitize
 	make install DESTDIR="$pkgdir"
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
