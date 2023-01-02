@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=colorpicker-keshavbhatt
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Powerful screen ColorPicker/Chooser application for Linux Desktop"
 arch=("x86_64")
@@ -10,10 +10,10 @@ license=("MIT")
 depends=("qt5-base")
 conflicts=("colorpicker" "color-picker")
 source=(
-    "https://github.com/keshavbhatt/ColorPicker/archive/refs/tags/1.0.2.tar.gz"
+    "https://github.com/keshavbhatt/ColorPicker/archive/refs/tags/1.0.3.tar.gz"
 )
 sha512sums=(
-    "82ef4af0a0eee1dcf45499154115bff6b0c654f7c9b268e5955e29748b1dd51d864bb193364d36874c11387eb6294e189ded157ab384aadb6ba09e1007b0685c"
+    "3bd200aba8dca9f53d6b2a65befec399d937e790c472b03f7dd57e4a366a1abf0f27f0792765f87052864cc0f5d416908de44a098e360b45dd8c2d651084fbbf"
 )
 
 build() {
