@@ -28,7 +28,7 @@ index 9f72c04..6462b11 100755
          lablGL/*.o) f="-g -Wno-pointer-sign -Werror -O2";;
          link.o)
 -            f="-g -std=c11 $muinc -Wall -Werror -Wextra -pedantic "
-+            f="$CFLAGS -g -std=c11 $(pkg-config --cflags "${mudeps[@]}") -Wall -Wextra -pedantic "
++            f="$CFLAGS -g -std=c11 $(pkg-config --cflags "${mudeps[@]}") -Wall -Werror -Wextra -pedantic "
              test "${mbt-}" = "debug" || f+="-O2 "
              $darwin && f+="-DMACOS -D_GNU_SOURCE -DGL_H='<OpenGL/gl.h>'" \
                      || f+="-D_POSIX_C_SOURCE -DGL_H='<GL/gl.h>'"
