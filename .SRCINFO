@@ -10,7 +10,7 @@ pkgbase = ponscripter-bin
 	depends = freetype2
 	provides = ponscripter
 	conflicts = ponscripter
-	source = https://github.com/07th-mod/ponscripter-fork/releases/download/v3.0.1/ponscr-linux.zip
+	source = https://github.com/07th-mod/ponscripter-fork/releases/download/v3.0.2/ponscr-3.0.2-linux.zip
 	md5sums = SKIP
 	depends_aarch64 = box64
 

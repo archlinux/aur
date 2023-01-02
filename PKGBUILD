@@ -19,6 +19,6 @@ package(){
 	[ $CARCH = x86_64 ] &&
 	install ponscr -Dt "$pkgdir"/usr/bin ||
 	install ponscr -D "$pkgdir"/usr/bin/ponscr-x86_64
-	echo -e '#!/bin/sh\nbox64 ponscr-x86_64'>"$pkgdir"/usr/bin/ponscr
+	echo -e '#!/bin/sh\nbox64 ponscr-x86_64 "$@"'>"$pkgdir"/usr/bin/ponscr	# force box64 if binfmt is missing
 	chmod +x "$pkgdir"/usr/bin/ponscr
 }
