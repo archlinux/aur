@@ -5,7 +5,7 @@
 pkgname=ame
 _pkgname=amethyst
 pkgver=4.0.3
-pkgrel=3
+pkgrel=4
 _codename='Funky Fish'
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
@@ -19,16 +19,16 @@ depends=(
     'less'
 )
 makedepends=('cargo')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
+source=("${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 sha256sums=('850b6eda89316e4da1148506377471c1cda878077143b6f1983b61b0dba8d8c0')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${_pkgname}-v${pkgver}"
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${_pkgname}-v${pkgver}"
     export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     export AMETHYST_CODENAME="${_codename}"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}"
+    cd "${_pkgname}-v${pkgver}"
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
