@@ -1,7 +1,7 @@
 pkgbase = unrar-free
 	pkgdesc = Free utility to extract files from RAR archives.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gitlab.com/bgermann/unrar-free
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = unrar-free
 	arch = aarch64
 	license = GPL
 	depends = libarchive
-	source = unrar-free-0.1.2::https://gitlab.com/bgermann/unrar-free/-/archive/0.1.2/unrar-free-0.1.2.tar.gz
+	source = https://gitlab.com/bgermann/unrar-free/-/archive/0.1.2/unrar-free-0.1.2.tar.gz
 	sha256sums = dbd559cd608c34d646615c383ee21a4c6dea84b669db43427717d8b46c4eac45
 
 pkgname = unrar-free
