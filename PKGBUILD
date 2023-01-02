@@ -3,14 +3,14 @@
 
 pkgname=rl_custom_function-git
 _pkgname=${pkgname%-git}
-pkgver=r23.76bce87
+pkgver=r25.931201a
 pkgrel=1
 pkgdesc="Enable to inject custom functions into any readline applications"
 arch=('i686' 'x86_64')
 url="https://github.com/lincheney/rl_custom_function"
 license=('GPL3')
 depends=('readline')
-makedepends=('rust' 'cargo')
+makedepends=('cargo')
 provides=("$_pkgname")
 install=$pkgname.install
 source=("$_pkgname::git+https://github.com/lincheney/$_pkgname.git")
@@ -23,14 +23,17 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --locked
   touch main.c
   gcc -m32 -shared main.c -o librl_custom_function.so
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  cargo test --release
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
