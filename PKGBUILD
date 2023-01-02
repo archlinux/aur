@@ -88,7 +88,7 @@ build () {
        -D b_ndebug=true \
        -D platforms=auto \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
-       -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio-experimental \
+       -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio-experimental,microsoft-experimental \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
@@ -125,7 +125,6 @@ package() {
     # remove script file from /usr/bin
     # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
     rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
 
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
