@@ -14,13 +14,7 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz.sig"
-		fs74747.patch
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 < "${srcdir}/fs74747.patch"
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,5 +34,4 @@ check() {
 }
 
 sha256sums=('2f0817556396c3273d3942442879034047c6072e355ec75b46e1bece5b857371'
-            'SKIP'
-            '7e6e1c11ea571e4e7eca6d5c6417f63b6063295b761abf417726167e4e413623')
+            'SKIP')
