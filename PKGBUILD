@@ -7,7 +7,7 @@ pkgdesc="Open source monospace/Nerd Font font with round corner for IDE and comm
 arch=("any")
 url="https://gitee.com/subframe7536/Maple/"
 license=("OFL")
-provides=("ttf-maple")
+provides=("ttf-maple-lastest")
 source=("https://gitee.com/subframe7536/Maple/releases/download/v$pkgver/MapleMono.zip"
         "https://gitee.com/subframe7536/Maple/releases/download/v$pkgver/MapleMono-NF.zip"
         "https://gitee.com/subframe7536/Maple/releases/download/v$pkgver/MapleMono-SC-NF.zip"
