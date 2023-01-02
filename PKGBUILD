@@ -2,7 +2,7 @@
 
 pkgname=at32-ide-bin
 pkgver=1.0.04
-pkgrel=2
+pkgrel=3
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。"
@@ -14,7 +14,8 @@ conflicts=()
 replaces=()
 depends=(java-runtime  desktop-file-utils gcc hidapi ncurses)
 makedepends=(libarchive sed)
-optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。')
+optdepends=('artery-isp-console-bin: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
+            'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
 options=()
 install=${pkgname}.install
