@@ -5,8 +5,8 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=10.2.r108.c301dd2c8
-pkgrel=2
+pkgver=10.2.2.r435.552eb9dd6
+pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -119,7 +119,7 @@ package() {
   install -Dm 644 ../ghidra-root.desktop -t "$pkgdir"/usr/share/applications
 
   echo -e "${_prefix}Setting up desktop icon"
-  install -Dm 644 Ghidra/Framework/Generic/src/main/resources/images/GhidraIcon64.png "$pkgdir"/usr/share/pixmaps/ghidra.png
+  install -Dm 644 Ghidra/Framework/Gui/src/main/resources/images/GhidraIcon64.png "$pkgdir"/usr/share/pixmaps/ghidra.png
 
   echo -e "${_prefix}Setting up policy file for the \"run as root\" desktop shortcut"
   install -Dm 644 ../ghidra.policy -t "$pkgdir"/usr/share/polkit-1/actions
