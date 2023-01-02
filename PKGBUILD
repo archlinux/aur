@@ -5,7 +5,7 @@
 
 pkgname=ddgr-git
 _pkgname="${pkgname%-git}"
-pkgver=2.1.r293.dba0cf8
+pkgver=2.1.r294.fedc902
 pkgrel=1
 pkgdesc="DuckDuckGo from the terminal (git version)"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${_pkgname}"
 	
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
 

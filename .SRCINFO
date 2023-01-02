@@ -1,6 +1,6 @@
 pkgbase = ddgr-git
 	pkgdesc = DuckDuckGo from the terminal (git version)
-	pkgver = 2.1.r293.dba0cf8
+	pkgver = 2.1.r294.fedc902
 	pkgrel = 1
 	url = https://github.com/jarun/ddgr
 	arch = any
