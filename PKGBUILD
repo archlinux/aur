@@ -1,44 +1,41 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=torrent-git
-pkgver=r1306.00f4067
+pkgver=1.26.1.r767.g8c267645
 pkgrel=1
-epoch=
 pkgdesc="Full-featured BitTorrent client package and utilities"
 arch=('i686' 'x86_64')
 url="https://github.com/anacrolix/torrent"
 license=('MPL')
-groups=()
-depends=('')
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('torrent')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/anacrolix/torrent
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url.git")
+md5sums=(SKIP)
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-*}"
+	printf "%s" "$(git describe | cut -c2- | sed 's!-!.r!' | tr - .)"
 }
 
 build() {
-  GOPATH="$srcdir" go get ${_gourl}/cmd/...
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	
+	cd "$srcdir/${pkgname}"
+	[[ -d build ]] || mkdir build
+	go build -o build ./...
+
 }
 
 package() {
-  cd "$srcdir"
-  for i in bin/*; do
-    install -Dm755 $i "$pkgdir/usr/$i"
-  done
-  install -Dm644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -Dm644 src/${_gourl}/TODO $pkgdir/usr/share/doc/${pkgname%-*}/TODO
-  install -Dm644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$srcdir/${pkgname}/build"
+	for i in *; do
+		install -Dm755 $i "$pkgdir/usr/bin/$i"
+	done
+	rm -rf $pkgdir/usr/bin/issue-*
+	install -Dm644 ../README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
