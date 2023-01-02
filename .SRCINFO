@@ -1,13 +1,9 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
 	pkgver = 150_86e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://parsec.app
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = custom
 	depends = gcc-libs
 	depends = libglvnd
@@ -17,7 +13,7 @@ pkgbase = parsec-bin
 	optdepends = libva: For hardware accelerated decoding
 	provides = parsec
 	options = !strip
-	source_x86_64 = parsec-bin-150_86e.deb::https://builds.parsecgaming.com/package/parsec-linux.deb
-	sha256sums_x86_64 = c30072f3a4ddac7687f626b8d32876e327791bce164d74448a147ef48ea8eae5
+	source = parsec-bin-150_86e.deb::https://builds.parsecgaming.com/package/parsec-linux.deb
+	sha256sums = c30072f3a4ddac7687f626b8d32876e327791bce164d74448a147ef48ea8eae5
 
 pkgname = parsec-bin
