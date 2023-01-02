@@ -1,6 +1,6 @@
 pkgbase = freeciv21
 	pkgdesc = Freeciv for the 21st Century
-	pkgver = 3.0_beta.7
+	pkgver = 3.0_rc.1
 	pkgrel = 1
 	url = https://github.com/longturn/freeciv21
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = freeciv21
 	depends = sdl2_mixer
 	depends = karchive
 	depends = libertinus-font
-	source = freeciv21-3.0_beta.7.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0-beta.7/Freeciv21-v3.0-beta.7.tar.gz
-	sha256sums = 11b84011744d2a0e4f365d9eab3a8d7b08e8ef4d05011cc5c1847b251f359686
+	source = freeciv21-3.0_rc.1.tar.gz::https://github.com/longturn/freeciv21/releases/download/v3.0-rc.1/Freeciv21-v3.0-rc.1.tar.gz
+	sha256sums = 063c63cb47c593110fd164833e54fd47a80e09da5aec6c5efcee8fbb8c82f359
 
 pkgname = freeciv21
