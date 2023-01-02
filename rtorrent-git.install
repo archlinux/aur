@@ -2,7 +2,6 @@ post_install() {
 	echo '==> If you would like to use wTorrent (http://wiki.archlinux.org/index.php/WTorrent),'
 	echo '    please add the following line to your ~/.rtorrent.rc:'
 	echo '	scgi_port = localhost:5000'
-EOM
 }
 
 post_upgrade() {
