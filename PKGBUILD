@@ -5,8 +5,8 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=1.2.1
-pkgrel=1
+pkgver=1.3
+pkgrel=3
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr -lf to count all lines. Run lctr for help!"
 arch=(x86_64)
@@ -34,13 +34,18 @@ pkgver(){
     printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-package() {
+prepare() {
     cd ..
     git clone https://github.com/spynetS/Linecounter.git lctr
     cd lctr
-    pwd
-    ls
-    chmod 755 ./build.sh
-    exec ./build.sh
+}
+
+build() {
+    pip install pyinstaller
+    python3 -m PyInstaller --onefile ./src/main.py
+}
+
+package() {
+    cp ./dist/main $pkgdir/usr/bin/lctr
+    export lctr=/user/bin/lctr
 }
