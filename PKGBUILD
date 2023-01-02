@@ -2,17 +2,25 @@
 
 pkgname="osslsigncode"
 pkgver="2.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
 license=('GPL')
 depends=('curl' 'openssl')
 makedepends=('cmake')
-source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('b50a7c8a8fb6668e999d9e63a931e5888c31f202ca539b62a385be6bacb03c2d25ac5fabd660c779817f0ebea14e9dfe05cdcb180c1cd25f818c07c28ebd88ce')
+source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
+        "legacy_pkcs12_ciphers_support_01_119b88bb3d572b2c5deacf466b5c1dce6acc13eb.patch"
+        "legacy_pkcs12_ciphers_support_02_2dcbc99f79ba9e2c1b88fac15f0017d4e859ccde.patch"
+       )
+sha512sums=('b50a7c8a8fb6668e999d9e63a931e5888c31f202ca539b62a385be6bacb03c2d25ac5fabd660c779817f0ebea14e9dfe05cdcb180c1cd25f818c07c28ebd88ce'
+            'a3a27c5adc2fc5c04a109f6b8a7fd5e12128e786d82f782fcd529cabc88d709c19363c1d38cc3de7680557bd84a93371b85033c6c46f4e4ee82f0bfd61a33a7e'
+            '62553cef66fe8ae31ba7252e23aed51b0ff6f562bc204f2039410e63285690676a96cf4a4ad5b6c12eacd68adef811bbfe1022c72a092ac7dc4b7427de7bef43')
 
 prepare() {
+  patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/legacy_pkcs12_ciphers_support_01_119b88bb3d572b2c5deacf466b5c1dce6acc13eb.patch"
+  # patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/legacy_pkcs12_ciphers_support_02_2dcbc99f79ba9e2c1b88fac15f0017d4e859ccde.patch"
+
   cmake \
     -B build -S "$srcdir/osslsigncode-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
