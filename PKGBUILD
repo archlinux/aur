@@ -23,6 +23,6 @@ package() {
 
   python -m installer -d "${pkgdir}" dist/*.whl
 
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.rst"
 }
