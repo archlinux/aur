@@ -1,0 +1,15 @@
+pkgbase = python-poetry-plugin-up
+	pkgdesc = Poetry plugin that updates dependencies and bumps their versions in pyproject.toml file
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/MousaZeidBaker/poetry-plugin-up
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-poetry
+	source = https://github.com/MousaZeidBaker/poetry-plugin-up/archive/0.2.1/poetry-plugin-up-0.2.1.tar.gz
+	sha256sums = ba239be4b0939a86ed3b5776e6a11ddc22132c9e4018c0b73462a34aae50fc8d
+
+pkgname = python-poetry-plugin-up
