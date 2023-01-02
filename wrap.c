@@ -1,5 +1,5 @@
 // by https://aur.archlinux.org/account/AvianaCruz
-#include <openssl/ssl.h>
+#include <stddef.h>
 
 #ifdef WRAP_FORCE_SINK_HARDWARE
 #include <dlfcn.h>
@@ -8,7 +8,7 @@
 #include <string.h>
 #endif
 
-X509 *SSL_get_peer_certificate(const SSL *s) { return NULL; }
+void *SSL_get_peer_certificate(const void *s) { return NULL; }
 
 #ifdef WRAP_FORCE_SINK_HARDWARE
 typedef pa_operation *(*wrap_pa_get_sink_by_name_t)(pa_context *c,

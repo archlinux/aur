@@ -8,7 +8,7 @@ pkgver=3.12.0.400
 _pkgver_arm=${pkgver} # 两个版本有时候不一样
 _x86_md5=e078bf97365540d9f0ff063f93372a9c
 _arm_md5=11814f6931a0a599f394d8845c223feb
-pkgrel=7
+pkgrel=8
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -29,7 +29,7 @@ depends=('qt5-webengine' 'qt5-x11extras' 'libxinerama'
 optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
 makedepends=('patchelf')
 sha512sums=('ec38033e07b543962d9cf9ce6859fa21c1cec88420089ccd07f7e64055dc723b658dec625ca0918d2bad21328138d4520c0427a6327942dacdb90f0a609d92e2'
-    'e398d7384ba9916ea7c566a621c8ba0d5aa0ad4dd7611492db07ec631c199df8055990b3d38d07a03adcc80ead4d5403d6d0ef0fae340921beb154e82ae74572')
+    'a575dea4d4bb898dec8c62153bf1c3395c2a4c55f4613a434e23a2465002c0e899e3ae491b13e4839206ae04e469b999895e0ef32e21cf78a678ce29521a6061')
 sha512sums_x86_64=('af52afe5a95cfe9abcae91d927d5f165126edb9efa14315957803eaffb30a60a9121cc63b398f7162c8956bfbcf5a1793a2561cd19f245e3eaf07a5b55662831')
 sha512sums_aarch64=('02ddf2908597b2db490d599ca7c6dcc2fe77e1f7eec2aa914581c07c462c9517a3c73406111e4706c2474c85c037cb1e04642f9769492f9a3383ca11502ba1b8')
 
@@ -65,7 +65,7 @@ prepare() {
 build() {
     cd "$srcdir"
     # Uncomment the end part of next line to enable force hardware sink patch
-    "${CC:-cc}" $CFLAGS -fPIC -shared -o libwemeetwrap.so wrap.c # -D WRAP_FORCE_SINK_HARDWARE
+    "${CC:-cc}" $CFLAGS -fPIC -shared -o libwemeetwrap.so wrap.c #-D WRAP_FORCE_SINK_HARDWARE
 }
 
 package() {
