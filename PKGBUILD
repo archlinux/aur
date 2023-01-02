@@ -10,8 +10,12 @@ depends=('lua>=5.1' 'luarocks')
 makedepends=()
 source=("$url")
 md5sums=('SKIP')
-# 'json-lua' 'argparse' 'lua-curl' 'busted>=2.1'
+
 build() {
+    luarocks install --local json-lua 
+    luarocks install --local lua-curl
+    luarocks install --local busted
+    luarocks install --local argparse
     cd "$pkgname"
     make
 }
