@@ -6,11 +6,11 @@ pkgdesc="A Terminal-Based Citation Generator"
 arch=('x86_64')
 url="git+https://github.com/nshan651/excite-cli"
 license=('GPL3')
-depends=('lua>=5.1' 'json-lua' 'argparse' 'lua-curl') 
-makedepends=('busted>=2.1')
+depends=('lua>=5.1' 'luarocks') 
+makedepends=()
 source=("$url")
 md5sums=('SKIP')
-
+# 'json-lua' 'argparse' 'lua-curl' 'busted>=2.1'
 build() {
     cd "$pkgname"
     make
