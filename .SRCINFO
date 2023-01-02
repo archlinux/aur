@@ -1,11 +1,11 @@
 pkgbase = botan1.10
-	pkgdesc = Obsolete branch of a crypto library written in C++ - for Monotone
+	pkgdesc = Obsolete branch of the Botan crypto library for Monotone
 	pkgver = 1.10.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://botan.randombit.net/
 	arch = x86_64
 	license = BSD
-	makedepends = python2
+	makedepends = python
 	depends = gcc-libs
 	depends = sh
 	source = https://botan.randombit.net/releases/old/Botan-1.10.17.tgz

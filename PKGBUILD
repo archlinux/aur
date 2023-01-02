@@ -4,13 +4,13 @@
 
 pkgname=botan1.10
 pkgver=1.10.17
-pkgrel=2
-pkgdesc='Obsolete branch of a crypto library written in C++ - for Monotone'
+pkgrel=3
+pkgdesc='Obsolete branch of the Botan crypto library for Monotone'
 license=('BSD')
 arch=('x86_64')
 url='http://botan.randombit.net/'
 depends=('gcc-libs' 'sh')
-makedepends=('python2')
+makedepends=('python')
 source=("https://botan.randombit.net/releases/old/Botan-${pkgver}.tgz"{,.asc}
         "sphinx-python3.diff")
 sha512sums=('a47cab3af113652247c8efc8b0f043eb62175eaa8554833d5fc3016ea94dbdd8aa722ab9b5226cc5f133afbcc088d54362111630eaa4594812c39925cc3c8649'
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "Botan-$pkgver"
 
-  python2 configure.py --prefix=/usr --enable-modules=cvc
+  python configure.py --prefix=/usr --enable-modules=cvc
   make
 }
 
