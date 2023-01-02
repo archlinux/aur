@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of Telegram Desktop messaging app.
-	pkgver = 4.4.1
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = forkgram
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/Forkgram/tdesktop/releases/download/v4.4.1/frk-v4.4.1-full.tar.gz
+	source = https://github.com/Forkgram/tdesktop/releases/download/v4.5.1/frk-v4.5.1-full.tar.gz
 	source = block-sponsored_messages.patch
-	sha512sums = 2b485c3fb4fb9f8a334973de27c52fd4f093363564e05493b70dd6f132fbe5051b426edca4799735900846a7da9e9695f0b7f6eda706c174cd8a70174aeb5610
+	sha512sums = 3fa84f99390bb322afa6fc0a42223039934e8e4d313787484b8ee2d6a80be828af32df1ee3cf8714e4853ab41b3db8740763a2daef2a9523a12bb02169675253
 	sha512sums = a52be36a626a79442c1f34496a1444e8012515f67a8899a34c5a97109a847a6a5d8c87f866c5c6315b87bfe411e902315a64cf93d413d7bf070b819a5f93d828
 
 pkgname = forkgram
