@@ -18,14 +18,14 @@ package() {
   install -Dm755 pscale ${pkgdir}/usr/bin/pscale
   
   if [ -d "/usr/share/fish/vendor_completions.d/" ]; then
-    sudo install -Dm744 completions/pscale.fish /usr/share/fish/vendor_completions.d/pscale.fish
+    install -Dm744 completions/pscale.fish ${pkgdir}/usr/share/fish/vendor_completions.d/pscale.fish
   fi
 
   if [ -d "/usr/share/bash-completion/completions/" ]; then
-    sudo install -Dm744 completions/pscale.bash /usr/share/bash-completion/completions/_pscale
+    install -Dm744 completions/pscale.bash ${pkgdir}/usr/share/bash-completion/completions/_pscale
   fi
   
   if [ -d "/usr/share/zsh/site-functions/" ]; then
-   sudo install -Dm744 completions/pscale.zsh /usr/share/zsh/site-functions/_pscale
+   install -Dm744 completions/pscale.zsh ${pkgdir}/usr/share/zsh/site-functions/_pscale
   fi
 }
