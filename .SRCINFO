@@ -1,0 +1,16 @@
+pkgbase = meadowlark-git
+	pkgdesc = Opensource DAW (digital audio workstation)
+	pkgver = v0.3.0.r1255.gc85e1e52
+	pkgrel = 0
+	url = https://github.com/MeadowlarkDAW/Meadowlark
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	makedepends = git
+	makedepends = rust
+	provides = meadowlark
+	conflicts = meadowlark
+	source = meadowlark-git::git+https://github.com/MeadowlarkDAW/meadowlark.git
+	sha1sums = SKIP
+
+pkgname = meadowlark-git
