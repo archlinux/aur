@@ -1,6 +1,6 @@
 pkgbase = ensenso-sdk
 	pkgdesc = Ensenso SDK and tools
-	pkgver = 3.3.1417
+	pkgver = 3.4.715
 	pkgrel = 1
 	url = http://ensenso.com
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = ensenso-sdk
 	optdepends = ueyed: for capturing from live cameras
 	optdepends = qt4: for included GUI tools
 	options = !strip
-	source = ensenso-sdk-3.3.1417.tar.bz2::https://download.ensenso.com/s/ensensosdk/download?files=ensenso-sdk-3.3.1417-x64.tar.bz2
+	source = ensenso-sdk-3.4.715.tar.bz2::https://download.optonic.com/s/ensensosdk/download?files=ensenso-sdk-3.4.715-x64.tar.bz2
 	source = nxCalTab
 	source = nxProfiler
 	source = nxTreeEdit
 	source = nxView
-	sha512sums = 59ee0a94ea13a8b6dbaf2d0924bae391c78ee515bf3ea2b7fcc3c820785d0d05711335cd182e1b52d379a2618a9d4147a90fe32f55f29be5ecc7048c57059dd1
+	sha512sums = 034ba46246339d267cdf887ff8dfc9c25fa59c3bb084814a26d30533f61c570e79ac763a13f40c29c1b2d963677d3e16215c7e39c898a1970214fda11fbefccc
 	sha512sums = 811e6727de246ddf791e5f67136d81a28b667285574612d37df09f228441c3b59829f2376abe3d5fb17bfc20dee03a65acaf3bbb7be22493fddef08d12a811c6
 	sha512sums = 646f56e962e0150cc40a54c6cee546992af79e4e1fff290fadb97d12453bf8778706d690e3650418636d73215d4dce825b6d7ae84ecff3840d53764ec5427d19
 	sha512sums = 4c3e8a8f3a2953cfed52c355d6847dc075aad52f80bb04fd898008c57e629e8a25c497396beef120f948faa7ea0a92125b3dde5c7390db7ad3137deeffeb3c79
@@ -25,3 +25,5 @@ pkgbase = ensenso-sdk
 pkgname = ensenso-sdk
 
 pkgname = ensenso-sdk-doc
+
+pkgname = ensenso-sdk-examples
