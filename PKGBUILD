@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-log-dispatch-array'
-pkgver='1.003'
-pkgrel='4'
+pkgver='1.005'
+pkgrel='1'
 pkgdesc="log events to an array (reference)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,10 +12,10 @@ depends=('perl-log-dispatch>=0')
 makedepends=()
 checkdepends=('perl-test-deep>=0' 'perl-namespace-autoclean' 'perl-specio' 'perl-eval-closure' 'perl-params-validationcompiler' )
 url='http://search.cpan.org/dist/Log-Dispatch-Array'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Log-Dispatch-Array-1.003.tar.gz')
-md5sums=('e4c6caa0c6907fee5562ab8f9ab49021')
-sha512sums=('00482172dc41355de5a27f7ae167c1f2c8644c41a2484e4fd5709765ab6a413d15ec268af89cef6a521a0a5570be2652b02efec9a717e8325bbfb8fd51a4bb68')
-_distdir="Log-Dispatch-Array-1.003"
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Log-Dispatch-Array-$pkgver.tar.gz")
+md5sums=('ba5371862efa974c27ba42b93761d8ea')
+sha512sums=('35d632ae0d2b8c34f132884c606b7e2ec12ad3e763ebc043a53449c0a63da03adf661ae2aa45f1b95d50f39a662f472e37f013ada727fbe53242c7d5d361e87e')
+_distdir="Log-Dispatch-Array-$pkgver"
 
 build() {
    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
