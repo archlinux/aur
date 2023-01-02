@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -32,7 +32,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('e7e1ff46ff4e9b9e9a98b9927f0982aabecbbce58df240dfbe6090e3dbca057d')
+sha256sums=('283d04137d0101936a9dcc65eb664f348a2a7f812cf8a6f2ff7ca2636e0ccdd0')
 validpgpkeys=()
 
 prepare() {
