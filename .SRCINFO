@@ -1,6 +1,6 @@
 pkgbase = resticprofile
-	pkgdesc = Configuration profiles for restic backup
-	pkgver = 0.16.0
+	pkgdesc = Configuration profiles manager and scheduler for restic backup
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/creativeprojects/resticprofile
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = resticprofile
 	makedepends = go
 	depends = glibc
 	depends = restic
-	source = https://github.com/creativeprojects/resticprofile/archive/v0.16.0.tar.gz
-	sha256sums = 082f74ffced8e4f35b86a22b40013faaba70a12a9f5b676b2f27c030f2c2510d
+	source = https://github.com/creativeprojects/resticprofile/archive/v0.19.0.tar.gz
+	sha256sums = 304c370965735be61d0947d13bef18099a9cc1754bb7bd38350f690c057e808d
 
 pkgname = resticprofile
