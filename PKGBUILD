@@ -1,8 +1,9 @@
-# Maintainer: Mike Polvere <mic.tjs@gmail.com>
-# Contributor: uberushaximus <uberushaximus@gmail.com>
+# Maintainer: Jonathan Tinkham <sctincman at gmail dot com>
+# Contributor: Mike Polvere <mic.tjs at gmail dot com>
+# Contributor: uberushaximus <uberushaximus at gmail dot com>
 
 pkgname=libretro-bsnes-mercury-git
-pkgver=314.4e221df
+pkgver=343.fb9a41f
 pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores with various performance improvements'
 arch=('i686' 'x86_64')
@@ -16,21 +17,26 @@ makedepends=('git')
 source=("git+https://github.com/libretro/${_gitname}")
 sha256sums=('SKIP')
 
+prepare() {
+  for p in accuracy balanced performance; do
+    cp -r ${_gitname} ${_gitname}-${p}
+  done
+}
+
 pkgver() {
     cd "${_gitname}"
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-    cd "${_gitname}"
-    for i in accuracy balanced performance; do
-        make profile=${i}
+    for p in accuracy balanced performance; do
+        make PROFILE=${p} -C ${_gitname}-${p}
     done
 }
 
 package() {
     install -Dm644 "${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-    for i in accuracy balanced performance; do
-        install -Dm644 "${_gitname}/out/${_libname}_${i}_libretro.so" "${pkgdir}/usr/lib/libretro/${_libname}_${i}_libretro.so"
+    for p in accuracy balanced performance; do
+        install -Dm644 "${_gitname}-${p}/${_libname}_${p}_libretro.so" -t "${pkgdir}/usr/lib/libretro/"
     done
 }
