@@ -1,6 +1,6 @@
 pkgbase = pods-git
 	pkgdesc = A Podman desktop application
-	pkgver = r493.5c6c578
+	pkgver = r1868.5964e81
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
@@ -12,6 +12,9 @@ pkgbase = pods-git
 	depends = gtk4
 	depends = libadwaita
 	depends = podman
+	depends = gtksourceview5
+	depends = libpanel
+	depends = vte4
 	provides = pods
 	conflicts = pods
 	source = git+https://github.com/marhkb/pods.git

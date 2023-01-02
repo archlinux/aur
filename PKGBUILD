@@ -1,13 +1,13 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=pods-git
-pkgver=r493.5c6c578
+pkgver=r1868.5964e81
 pkgrel=1
 pkgdesc='A Podman desktop application'
 arch=(x86_64)
 url=https://github.com/marhkb/pods
 license=(GPL3)
-depends=(gtk4 libadwaita podman)
+depends=(gtk4 libadwaita podman gtksourceview5 libpanel vte4)
 makedepends=(git meson rust)
 checkdepends=(appstream-glib)
 provides=("${pkgname%-git}")
@@ -17,7 +17,6 @@ md5sums=(SKIP)
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
