@@ -3,7 +3,7 @@
 pkgname=clipboard-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal (binary version)."
 arch=('x86_64')
 url="https://github.com/Slackadays/Clipboard"
@@ -15,6 +15,5 @@ source=("${_pkgname}-${pkgver}-amd64.zip::${url}/releases/download/${pkgver}/${_
 sha256sums=('93416eea4924d9b8da002e99651687f145239ffdffc6689d92b71b72c57f2edc')
 
 package() {
-	cd "${srcdir}"
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
