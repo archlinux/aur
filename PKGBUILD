@@ -6,7 +6,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=1.13.1
 _pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -16,7 +16,8 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'intel-oneapi-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'gcc11' 'onednn')
+             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'gcc11' 'onednn'
+             'vulkan-headers' 'shaderc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
@@ -208,6 +209,7 @@ prepare() {
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
   export USE_GLOG=ON
+  export USE_VULKAN=ON
   export BUILD_BINARY=ON
   export USE_OBSERVERS=ON
   export USE_OPENCV=ON
