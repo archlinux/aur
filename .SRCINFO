@@ -1,7 +1,7 @@
 pkgbase = glfw-wayland-minecraft-libdecoration
 	pkgdesc = A free, open source, portable framework for graphical application development (wayland, patched for Minecraft)
 	pkgver = 3.4.0+1.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Admicos/minecraft-wayland
 	arch = x86_64
 	license = custom:ZLIB
