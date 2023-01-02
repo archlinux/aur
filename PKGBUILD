@@ -1,6 +1,6 @@
 # Contributor: bb010g <bb010g@bb010g.com>
 pkgname=perl-cgi-compile
-pkgver=0.22
+pkgver=0.25
 pkgrel=1
 pkgdesc='Compile .cgi scripts to a code reference like ModPerl::Registry'
 _dist=CGI-Compile
@@ -11,8 +11,8 @@ depends=(perl perl-file-pushd)
 makedepends=(perl-module-build-tiny)
 checkdepends=(perl-{cgi{,-emulate-psgi},switch,test-{nowarnings,requires}})
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/$_dist-$pkgver.tar.gz")
-md5sums=('a6b364e8f3eb45f63d69ae6d5602eb21')
+source=("https://cpan.metacpan.org/authors/id/R/RK/RKITOVER/$_dist-$pkgver.tar.gz")
+md5sums=('f15c25f41cb592b992c0988ac6a08612')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
