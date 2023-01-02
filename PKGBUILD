@@ -1,11 +1,12 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Kevin Stolp <kevinstolp@gmail.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-utils
-pkgver=2.1.6
-pkgrel=2
+pkgver=2.1.7
+pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
@@ -14,11 +15,11 @@ optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('15339014f8d2131348eb937bf8893849806b6d2645ea607a18c7f117749dbd7a'
+sha256sums=('6462e63e185de6ff10c64ffa6ed773201a082f9dd13e603d7e8136fcb4aca71b'
             'SKIP'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
-b2sums=('615fe7a2128af77c6c855ea52b6503a78f0c992ea845b02875ac19aa9dd155c5d4110b668da91c463f96a54767ab92e67e5303572337352484c055c0a0ff9e46'
+b2sums=('9c85c3eb72f3bb39bc4fd44aaa80338ca197a4e8183436fee73cd56705abfdaecfaf1b6fbe8dd508ccce707c8259c7ab6e1733b60b17757f0a7ff92d4e52bbad'
         'SKIP'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
         'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
