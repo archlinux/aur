@@ -1,16 +1,16 @@
 pkgbase = dnote-server-bin
 	pkgdesc = A simple command line notebook for programmers (Server)
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.getdnote.com/
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
 	provides = dnote-server
 	conflicts = dnote-server
-	source_x86_64 = dnote-server-2.0.1-amd64.tar.gz::https://github.com/dnote/dnote/releases/download/server-v2.0.1/dnote_server_2.0.1_linux_amd64.tar.gz
+	source_x86_64 = https://github.com/dnote/dnote/releases/download/server-v2.0.1/dnote_server_2.0.1_linux_amd64.tar.gz
 	sha256sums_x86_64 = ed10a3a0484c3fce800faa0f786b1656b9edbf66a0aeeb3261053d78496b8077
-	source_aarch64 = dnote-server-2.0.1-arm64.tar.gz::https://github.com/dnote/dnote/releases/download/server-v2.0.1/dnote_server_2.0.1_linux_arm64.tar.gz
+	source_aarch64 = https://github.com/dnote/dnote/releases/download/server-v2.0.1/dnote_server_2.0.1_linux_arm64.tar.gz
 	sha256sums_aarch64 = 0613d5bdaab7cb067420e3b32e5a676ec0b14a071b36014cd646d81c72dbc137
 
 pkgname = dnote-server-bin
