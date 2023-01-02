@@ -1,6 +1,6 @@
 pkgbase = codelite-git
 	pkgdesc = Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++
-	pkgver = 16.7.0.r1.g38f75a2cc
+	pkgver = 16.7.0.r74.g768c73af4
 	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = i686

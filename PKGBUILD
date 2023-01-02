@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=16.7.0.r1.g38f75a2cc
+pkgver=16.7.0.r74.g768c73af4
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -101,6 +101,7 @@ build() {
   cmake -G "Unix Makefiles" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCL_PREFIX=/usr \
     -DWITH_PCH=0  \
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
     -DWITH_NATIVEBOOK=1 \
