@@ -94,6 +94,7 @@ prepare()
     git -c protocol.file.allow=always submodule update
 
     # GeoIP database
+    ## Do not use option "-i" as it will remove the preceding "0".
     declare _current_year
     _current_year="$(date +"%Y")"
     declare _current_month
