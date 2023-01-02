@@ -12,6 +12,7 @@ license=('Apache')
 provides=('pscale')
 conflicts=('pscale' 'pscale-git' 'pscale-bin' 'pscale-cli')
 source=("https://github.com/planetscale/cli/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('657cac6a64a5e03eb035f5b906bbe767883a7253632e66f13fcaa3979d5c8179')
 
 package() {
   install -Dm755 pscale ${pkgdir}/usr/bin/pscale
