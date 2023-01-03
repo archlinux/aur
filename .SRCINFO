@@ -1,15 +1,15 @@
 pkgbase = gen-license
 	pkgdesc = Create licenses for your projects right from your terminal!
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 3
 	url = https://github.com/nexxeln/license-generator
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = gen-license-0.1.1.tar.gz::https://static.crates.io/crates/gen-license/gen-license-0.1.1.crate
+	source = gen-license-0.1.2.tar.gz::https://static.crates.io/crates/gen-license/gen-license-0.1.2.crate
 	validpgpkeys = 86395E99314F4E382517AF976558C915A20CDD93
-	md5sums = 4893275e1e08b10d9982acbf9cc39604
+	md5sums = b227d2e73609cb388657dc9df9ac8d31
 
 pkgname = gen-license

@@ -1,8 +1,8 @@
 # Maintainer: Saumit Dinesan <justsaumit@protonmail.com>
 _realname=license-generator
 pkgname=gen-license
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="Create licenses for your projects right from your terminal!"
 arch=('x86_64')
 url="https://github.com/nexxeln/license-generator"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-md5sums=('4893275e1e08b10d9982acbf9cc39604')
+md5sums=('b227d2e73609cb388657dc9df9ac8d31')
 validpgpkeys=('86395E99314F4E382517AF976558C915A20CDD93')
 
 prepare() {
