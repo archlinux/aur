@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-accountsservice-git
-pkgver=v1.3.0.r26.ge8a9950
+pkgver=v1.3.0.r28.ge1cf4e4
 pkgrel=1
 pkgdesc="Qt-style wrapper for Accounts Service"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
