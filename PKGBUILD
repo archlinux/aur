@@ -47,7 +47,7 @@ ldflags=(${LDFLAGS}
 prepare() {
   cd "${srcdir}/${pkgname}" || exit
   rm "isl" || true
-  ln -s "../isl-${_islver}" "isl"
+  # ln -s "../isl-${_islver}" "isl"
 }
 
 # shellcheck disable=SC2154
@@ -65,7 +65,7 @@ build() {
 
   local _cflags=(${cflags[@]}
                  -I/usr/include
-                 -std=gnu++98
+                 # -std=gnu++98
                  -static)
 
   local _ldflags=(${ldflags[@]})
