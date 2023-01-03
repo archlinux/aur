@@ -1,0 +1,16 @@
+pkgbase = bflat-bin
+	pkgdesc = bflat
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://github.com/bflattened/bflat
+	arch = x86_64
+	license = AGPLv3
+	depends = glibc
+	depends = zlib
+	provides = bflat
+	conflicts = bflat
+	options = !strip
+	source = https://github.com/bflattened/bflat/releases/download/v7.0.1/bflat-7.0.1-linux-glibc-x64.tar.gz
+	sha256sums = 9bb567b469f742bf091ccfca2bd4fd53fb529685ba7d1b4e6312c046e0350b8b
+
+pkgname = bflat-bin
