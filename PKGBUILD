@@ -1,9 +1,9 @@
 # CPAN Name  : String-Interpolate
-# Maintainer: Kirill Goncharov <kdgoncharov at gmail dot com>
+# Maintainer: xuhcc <xuhcc at cryptolab dot net>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-string-interpolate'
-pkgver='0.32'
+pkgver='0.33'
 pkgrel='1'
 pkgdesc="Wrapper for builtin the Perl interpolation engine."
 arch=('any')
@@ -12,10 +12,10 @@ options=('!emptydirs')
 depends=('perl-padwalker>=0' 'perl-safe-hole>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/String-Interpolate'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/String-Interpolate-0.32.tar.gz')
-md5sums=('0ea13c3b89da1dcfa437b5a70332960f')
-sha512sums=('a782ec8e1084fec291342d61a68edd4d43c647aefa693923e7548f001c5f7aead27ba6721d6054fef051041af3b0beac5e9b07de88c63220c257be72fb720e93')
-_distdir="String-Interpolate-0.32"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/String-Interpolate-0.33.tar.gz')
+md5sums=('8a60634dfb00b1088c7fafd345f576f2')
+sha512sums=('49201f084d9cfc7cde39a9d1474f3f5ab3de05bbc1121403d9b7508125f178c3bd7d5c00097a011354ce119de1799b2b3c49ae6cfaead99a0e061cbdc6ec2efb')
+_distdir="String-Interpolate-0.33"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
