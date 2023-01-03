@@ -3,8 +3,8 @@
 
 pkgname=timestampit
 pkgver=0.3.3.1
-pkgrel=1
-pkgdesc='Prefix each line with a date/time stamp (formerly timestamp/stampit)'
+pkgrel=2
+pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://codeberg.org/kas/timestampit/'
 license=('GPL3')
