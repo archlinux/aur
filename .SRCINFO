@@ -1,0 +1,15 @@
+pkgbase = riscv64-elf-binutils-git
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the RISCV64 (bare-metal) target
+	pkgver = gdb.13.branchpoint.r268.gb46632ca160
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = zlib
+	provides = riscv64-elf-binutils
+	conflicts = riscv64-elf-binutils
+	source = git+https://sourceware.org/git/binutils-gdb.git
+	sha512sums = SKIP
+
+pkgname = riscv64-elf-binutils-git
