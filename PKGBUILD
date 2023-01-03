@@ -1,6 +1,6 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 pkgname='perl-moosex-setonce'
-pkgver='0.201'
+pkgver='0.203'
 pkgrel='1'
 epoch='1'
 pkgdesc="write-once, read-many attributes for Moose"
@@ -10,9 +10,9 @@ options=('!emptydirs')
 depends=('perl-moose')
 checkdepends=('perl-test-fatal')
 url='https://metacpan.org/release/MooseX-SetOnce'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-SetOnce-0.201.tar.gz')
-md5sums=('3e2d450e32f910e24dbeb7ed59b4e79e')
-_distdir="MooseX-SetOnce-0.201"
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/MooseX-SetOnce-0.203.tar.gz')
+md5sums=('b3429b9252ec1f001251f3dcdc9389fc')
+_distdir="MooseX-SetOnce-0.203"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
