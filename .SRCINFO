@@ -1,6 +1,6 @@
 pkgbase = liri-appcenter-git
 	pkgdesc = App Center for Liri OS
-	pkgver = v0.1.0.r243.g925e600
+	pkgver = v0.1.0.r250.gd8c36da
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
