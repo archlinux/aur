@@ -24,7 +24,7 @@ _gapps_list=(
     'vending-x86_64'
 )
 source=(
-    "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "https://web.archive.org/web/20210607055240if_/https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
@@ -32,7 +32,7 @@ source=(
     "XposedInstaller_3.1.5.apk::http://web.archive.org/web/20190807034045if_/https://dl.xda-developers.com/4/3/9/3/0/8/2/XposedInstaller_3.1.5.apk?key=vp4YYV_q9R9UXFJdEqPa6w&ts=1565149304"
     "magisk-init-rc.patch"
     "init-magisk.sh"
-    "https://xnopyt.info/busybox"
+    "http://web.archive.org/web/20210420103020if_/https://xnopyt.info/busybox"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
