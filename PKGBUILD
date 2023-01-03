@@ -1,8 +1,8 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=4.1
-pkgrel=2
+pkgver=4.4
+pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
@@ -11,11 +11,12 @@ _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
 _appimage="eID_klient-${_upstream_arch}.AppImage"
+_archive="eID_klient_${_upstream_arch}.tar.gz"
 _url="https://eidas.minv.sk/downloadservice/eidklient/linux"
 # alternative version URI: https://eidas.minv.sk/TCTokenService/download/linux/ubuntu/version.txt
 source=("${_url}/eID_klient_release_notes.txt")
-source_i686=("${_url}/${_appimage}")
-source_x86_64=("${_url}/${_appimage}")
+source_i686=("${_url}/${_archive}")
+source_x86_64=("${_url}/${_archive}")
 # upstream update would break this PKGBUILD if we used integrity checks
 md5sums=('SKIP')
 md5sums_i686=('SKIP')
@@ -43,6 +44,17 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+    # It seems this is unnecessary (however it's done like this in the upstream package)
+    #ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/VirtualKeyboard"
+
+    install -dm755 "${pkgdir}/usr/lib/eID_klient"
+    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
+
+    install -m644 ${srcdir}/squashfs-root/lib/libCardAPI* "${pkgdir}/usr/lib/eID_klient/"
+    install -m644 ${srcdir}/squashfs-root/lib/libbotan* "${pkgdir}/usr/lib/eID_klient/"
+    install -m644 ${srcdir}/squashfs-root/lib/libpkcs11_* "${pkgdir}/usr/lib/eID_klient/"
+    install -m644 ${srcdir}/squashfs-root/lib/libcrypto* "${pkgdir}/usr/lib/eID_klient/"
+    install -m644 ${srcdir}/squashfs-root/lib/libssl* "${pkgdir}/usr/lib/eID_klient/"
 
     # Icons + desktop file
     tar -x -C "${pkgdir}/usr" -f "${srcdir}/squashfs-root/share.tar"

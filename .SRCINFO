@@ -1,7 +1,7 @@
 pkgbase = eidklient
 	pkgdesc = Slovak eID Client
-	pkgver = 4.1
-	pkgrel = 2
+	pkgver = 4.4
+	pkgrel = 1
 	url = https://www.slovensko.sk/
 	install = eidklient.install
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = eidklient
 	options = !strip
 	source = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_release_notes.txt
 	md5sums = SKIP
-	source_i686 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient-x86_64.AppImage
+	source_i686 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
 	md5sums_i686 = SKIP
-	source_x86_64 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient-x86_64.AppImage
+	source_x86_64 = https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
 	md5sums_x86_64 = SKIP
 
 pkgname = eidklient
