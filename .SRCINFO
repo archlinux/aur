@@ -1,0 +1,16 @@
+pkgbase = marswm-git
+	pkgdesc = A rusty successor to moonwm
+	pkgver = 0.1.0.r0.g62df0c0
+	pkgrel = 1
+	url = https://github.com/jzbor/marswm
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	provides = marswm
+	provides = mars-relay
+	conflicts = marswm
+	conflicts = mars-relay
+	source = git+https://github.com/jzbor/marswm
+	sha512sums = SKIP
+
+pkgname = marswm-git
