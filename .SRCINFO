@@ -1,13 +1,13 @@
 pkgbase = oras
 	pkgdesc = A command line tool that allows you to push and pull files from any OCI registry
-	pkgver = 0.12.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/deislabs/oras
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = oras-0.12.0.tar.gz::https://github.com/oras-project/oras/archive/v0.12.0.tar.gz
-	sha512sums = 589324805c38f485ecb0122e35984cd6d7b87150c2e67d36bb3ca759750b9ccc9a4803aea9c56c4cbbfb19c914fe7a077d9d091b70b54babc446ac01d3bc2091
+	source = git+https://github.com/oras-project/oras#commit=v0.16.0
+	sha512sums = SKIP
 
 pkgname = oras
