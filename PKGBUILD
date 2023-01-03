@@ -4,7 +4,7 @@
 pkgname='se98-icon-theme-git'
 pkgver=0.2.15
 pkgrel=1
-pkgdesc="Windows 98 Second Edition inspired icon theme"
+pkgdesc="Windows 98 Second Edition (Win98SE) inspired icon theme"
 arch=(any)
 url="https://github.com/nestoris/Win98SE"
 license=('GPLv2')
