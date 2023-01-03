@@ -6,7 +6,7 @@
 
 pkgname=openshot
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
@@ -19,9 +19,9 @@ source=(
   https://github.com/OpenShot/openshot-qt/archive/v$pkgver/$pkgname-$pkgver.tar.gz
   $pkgname-2.6.1-no_metric_default.patch
 )
-sha512sums=('c44c4ad25d321ea26e6fbafd8df0fca7dd2d7fc0827de208f60ebe98b0615e0f3d594660e6b482ebab25216cc26c9ece5b92bb6f26ab60d2e731d2194cc3e774'
+sha512sums=('d1115095b34937419d0f08aadacc849768a97ba5d3866a46cb8d416a26ac7fbb754b383c99ea8cb70291bd08cec0343191e71cfdd19c046bbd1a43541fc0673a'
             'd52441559897ce0de476a6120b7e36b082bbcb0722436a77c1a60456a86d02f370df6bc58384c838a3ad2df47c1603a6fabd5044c303284bac2ea75a99a76a8a')
-b2sums=('777f3e12932e08b2b2811ae10ba3c86ef8b64e821b1742d54e8b0c1cb3de544bcbd9b2a1544bc5b48c38066c9d106ac224888b4f3064b15963c69b36dcfabc51'
+b2sums=('1e7bd8921a472e4ff62b160d67fcb5a8d8c0e6614a28cce87db5078fae5401c69610bd44801344da55fc4df3c8f973263b75a8567d4372fc350f76dbeec428a1'
         '6f75f37be8d3e03090a8ca53e645b3269f92c7f44aa39cfbe1a03266a36d508d5c18eebbb5792ed9d6d031b3694902bc3fa3a2dac745aad60b2bc331657a364a')
 
 prepare() {
