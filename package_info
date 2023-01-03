@@ -2,4 +2,4 @@
 PackageAuthor=[prowlarr](https://aur.archlinux.org/packages/prowlarr/)
 UpdateMethod=External
 UpdateMethodMessage=flag [prowlarr](https://aur.archlinux.org/packages/prowlarr/) [out-of-date](https://aur.archlinux.org/pkgbase/prowlarr/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
-Branch=develop
+Branch=master
