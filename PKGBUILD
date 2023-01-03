@@ -11,7 +11,7 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-OFF}
 
 _reponame=tageditor
 pkgname=tageditor-cli
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (GUI disabled)'
@@ -24,7 +24,7 @@ provides=("${pkgname%-cli}")
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('48991e04a95caeaa60a458a3c05b127d96268a2c3092487010ba7f1fe7c94f3e')
+sha256sums=('1bc7bc43605503a264c065dd531299b23d1e124444d6cf6286f1b5763dc66074')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
