@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=aura-browser
-pkgver=5.26.4
+pkgver=5.26.5
 pkgrel=1
 pkgdesc='Browser for a fully immersed Big Screen experience allowing you to navigate the world wide web using just your remote control'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL2)
 depends=(kirigami2 ki18n qt5-webengine qt5-multimedia qt5-virtualkeyboard)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('daa51b684c221c91ea038115969111a6cf308e1ecffb2ede845ace0ed616fbbe'
+sha256sums=('d146c85ed27a1b8a227376dae8cdec5719585beae636c9a097e714b851011236'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
