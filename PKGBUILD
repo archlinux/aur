@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-shell-git
-pkgver=v0.9.0.r595.g9171b3f8
+pkgver=v0.9.0.r617.gb1cfe9c9
 pkgrel=1
 pkgdesc="QtQuick and Wayland based shell for convergence"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,9 +9,8 @@ url='https://liri.io'
 license=('GPL3')
 depends=('qt5-tools' 'qt5-wayland' 'qt5-accountsservice-git' 'qt5-gsettings-git'
          'polkit-qt5' 'solid' 'pam' 'pipewire' 'dconf' 'libliri-git' 'fluid-git'
-	 'liri-qtintegration-git' 'qml-xwayland-git' 'liri-eglfs-git'
-	 'liri-wayland-git')
-makedepends=('git' 'liri-cmake-shared-git')
+	 'liri-qtintegration-git' 'aurora-compositor-git')
+makedepends=('git' 'liri-cmake-shared-git' 'aurora-scanner-git')
 options=(debug !strip)
 conflicts=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-shell')
 replaces=('hawaii-shell-git' 'papyros-shell-git' 'liri-workspace-git' 'liri-shell')
