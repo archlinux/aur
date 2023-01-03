@@ -5,8 +5,6 @@ pkgbase = ps2-iop
 	url = https://github.com/ps2dev/ps2toolchain-iop
 	arch = x86_64
 	license = BSD
-	depends = mipsel-ps2-irx-binutils
-	depends = mipsel-ps2-elf-binutils
 	depends = mipsel-ps2-irx-gcc-stage1
 	depends = mipsel-ps2-elf-gcc-stage1
 
