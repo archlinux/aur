@@ -1,0 +1,13 @@
+pkgbase = xppaut-bin
+	pkgdesc = Tool for simulating, animating, and analyzing dynamical systems
+	pkgver = 8.0
+	pkgrel = 1
+	url = https://sites.pitt.edu/~phase/bard/bardware/xpp/xpp.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	source = https://sites.pitt.edu/~phase/bard/bardware/binary/latest/xpplinux.tgz
+	md5sums = 4645feb732deca97bb4a276b74c21010
+
+pkgname = xppaut-bin
