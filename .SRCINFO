@@ -1,0 +1,33 @@
+pkgbase = flaresolverr-git
+	pkgdesc = A proxy server to bypass Cloudflare protection
+	pkgver = 2.2.8.r21.g36226b3
+	pkgrel = 1
+	url = https://github.com/FlareSolverr/FlareSolverr
+	install = flaresolverr.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = chromium
+	depends = python-bottle
+	depends = python-waitress
+	depends = python-selenium
+	depends = python-func-timeout
+	depends = python-requests
+	depends = python-websockets
+	depends = python-xvfbwrapper
+	provides = flaresolverr
+	conflicts = flaresolverr-bin
+	source = git+https://github.com/FlareSolverr/FlareSolverr#branch=v3beta
+	source = flaresolverr.service
+	source = flaresolverr.sysusers
+	source = flaresolverr.tmpfiles
+	source = flaresolverr.install
+	b2sums = SKIP
+	b2sums = d4bd9d9b94bb010e84ce4c20d01b3892de0aa2ec5c1b0479d2a508a775c8cc6b402c3fe95e2a0684380d737ecd3d00074fefa2f44d4fa3c64087bdcb9fe443e2
+	b2sums = dcddece13d5e2f4cf67f67de656fd0b282c465c903221ce8f2194181e64323bb66e7b6e40738e4d04fdbb730a00f661d4b0725ae177a2adc333fa64faa2adb20
+	b2sums = a1c34e40611e30a86d6ead6bec5fea3ca217dd3b317c84967ffb6f187c35e00eedcfcebda64cbb8bc42ea96b778366e71be702aeab5f1f9d320fe087b6147474
+	b2sums = 51d89f0c3bc9c0c66dfa56e6756e5e3525fad523f0f843a662684ccd288f958898257a4be00f92debf416203aabdbeeb75233e5d154da74f670e2cf10dbfd801
+
+pkgname = flaresolverr-git
