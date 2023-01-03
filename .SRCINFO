@@ -1,10 +1,13 @@
 pkgbase = liri-git-meta
 	pkgdesc = Meta package to install all the LiriOS ecosystem (git version)
-	pkgver = 0.9
-	pkgrel = 5
+	pkgver = 0.9.0
+	pkgrel = 6
 	url = https://liri.io/
 	arch = any
 	license = GPL3
+	depends = aurora-compositor-git
+	depends = aurora-client-git
+	depends = aurora-scanner-git
 	depends = libliri-git
 	depends = liri-appcenter-git
 	depends = liri-browser-git
