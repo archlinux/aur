@@ -1,0 +1,18 @@
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2023-01-03 03:02:48.143913958 -0500
++++ b/ptyx/ptym.c	2023-01-03 03:08:12.439130071 -0500
+@@ -414,11 +414,13 @@ static int ptyx_master_ioctl(struct tty_
+ 		{
+  	 		ptyx_print(PTYX_DEBUG_IOCTL, ("ptyx_master_ioctl(%d): TCGETS, SLAVE NOT OPEN, returning default termios\n", ptyx_info->line));
+ 			// slave not open so use the slave's default termios
+ 			tmp_termios = &ptyx_info->s_driver->init_termios;
+ 		}
+-#if (LINUX_VERSION_CODE >  KERNEL_VERSION(2,6,23))		// Greater than 2.6.23
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0))
++		if (copy_to_user((struct termios *)arg, tmp_termios, sizeof(struct termios)))
++#elif (LINUX_VERSION_CODE >  KERNEL_VERSION(2,6,23))		// Greater than 2.6.23
+ #ifdef TCGETS2
+ 		if (kernel_termios_to_user_termios_1((struct termios *)arg, tmp_termios))
+ #else
+ 		if (kernel_termios_to_user_termios((struct termios *)arg, tmp_termios))
+ #endif

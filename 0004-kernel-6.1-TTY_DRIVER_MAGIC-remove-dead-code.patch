@@ -1,0 +1,39 @@
+diff -pNaru5 a/ptyx/ptymod.c b/ptyx/ptymod.c
+--- a/ptyx/ptymod.c	2023-01-03 02:30:05.978629790 -0500
++++ b/ptyx/ptymod.c	2023-01-03 02:33:52.608566523 -0500
+@@ -349,11 +349,10 @@ static int __init ptyx_init(void)
+ 		ptyx_info->c_driver = ptyx_control_driver;
+ 	}
+ 	
+ // Master Driver 
+ 	ptyx_master_driver->owner = THIS_MODULE;
+-	ptyx_master_driver->magic = TTY_DRIVER_MAGIC;
+ 	ptyx_master_driver->driver_name = "ptyx_master";
+ 	ptyx_master_driver->name = PTYX_MASTER_NAME;
+ 	ptyx_master_driver->major = PTYX_MASTER_MAJOR;
+ 	ptyx_master_driver->minor_start = 0;
+ 	ptyx_master_driver->type = TTY_DRIVER_TYPE_SERIAL;
+@@ -368,11 +367,10 @@ static int __init ptyx_init(void)
+ 	tty_set_operations(ptyx_master_driver, &ptyx_ops_master);
+ 
+ 
+ // Slave driver
+ 	ptyx_slave_driver->owner = THIS_MODULE;
+-	ptyx_slave_driver->magic = TTY_DRIVER_MAGIC;
+ 	ptyx_slave_driver->driver_name = "ptyx_slave";
+ 	ptyx_slave_driver->name = PTYX_SLAVE_NAME;
+ 	ptyx_slave_driver->major = PTYX_SLAVE_MAJOR;
+ 	ptyx_slave_driver->minor_start = 0;
+ 	ptyx_slave_driver->type = TTY_DRIVER_TYPE_SERIAL;
+@@ -383,11 +381,10 @@ static int __init ptyx_init(void)
+ 	ptyx_slave_driver->driver_state = pty_state_table;		// global pointer ot private data
+ 	tty_set_operations(ptyx_slave_driver, &ptyx_ops_slave);
+ 
+ 	// Control status Driver 
+ 	ptyx_control_driver->owner = THIS_MODULE;
+-	ptyx_control_driver->magic = TTY_DRIVER_MAGIC;
+ 	ptyx_control_driver->driver_name = "ptyx_control";
+ 	ptyx_control_driver->name = PTYX_CTRL_NAME;
+ 	ptyx_control_driver->major = PTYX_CTRL_MAJOR;
+ 	ptyx_control_driver->minor_start = 0;
+ 	ptyx_control_driver->type = TTY_DRIVER_TYPE_SERIAL;

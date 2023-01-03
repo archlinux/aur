@@ -97,7 +97,7 @@ _dlver='6.10.0-1'
 pkgver="${_dlver//-/.}"
 #_dlver='6.8.0-2' # only use this with a version change patch set
 _srcdir="${pkgname}-${_dlver%%-*}"
-pkgrel='3'
+pkgrel='4'
 pkgdesc='tty driver for Perle IOLan+ DS TS SDS STS SCS JetStream LanStream LinkStream and 3rd party serial console terminal device servers'
 _pkgdescshort='Perle TruePort driver for Ethernet serial servers'
 arch=('i686' 'x86_64')
@@ -125,19 +125,28 @@ source=(
   '0001-kernel-5.13-dropped-tty_check_change.patch'
   '0002-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  '0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
+  '0006-kernel-6.0-set_termios-const-ktermios.patch'
 )
 md5sums=('5a529676de30706133255ba4e8dae5b0'
          '56444e2f404aa2e6a2c9e8e2bd919fcf'
          'fb798f306553cb253b30ff5af5ba2f40'
          'a103f2791c03733b1fd75493864fb464'
          '5206e863cf6340c05325d86935d4b40c'
-         'f464a0217b85a76657bcb7aa022f9a95')
+         'f464a0217b85a76657bcb7aa022f9a95'
+         '835219e7c692cc699ec23f4e183f70bf'
+         '2cc11aa436180b3daabad46d1b6bf3fb'
+         'f9cb0fd97631bfbe1adae4c65cf23155')
 sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
             '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
             '5f806246751d3a91c59bd97273221d1066006bafc7ed598c3d93f9b7bdae65a1'
             '88181bc7a0a5fa5a1320cbed20e02e1329b03b4c9800fc691990754b9a9aac18'
             'ee64f971753fb4fd8a488e32e8fe3de9c468a00a1d1b995329bcfe87c93cedf7'
-            '04025f2dc6fe868e890853e355d1d31fff6d3c463ad89db1cedda5f3843078a3')
+            '04025f2dc6fe868e890853e355d1d31fff6d3c463ad89db1cedda5f3843078a3'
+            '31ffbbe3de9605aa5c974e92b24c22876c8091eac3c1ada8bb83c76ad829cc8c'
+            '1ed2794858d1268e53d73f3d4a34a4d2bf84a24ffbfa8babca7ce10e97e60d6c'
+            '106c1f10c0d132759c10d5fa7b3aa9594aa142b6cd718c0428805a112a8351dd')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -176,6 +185,20 @@ prepare() {
   #cd ..; cp -pr trueport-6.10.0{,.orig}; false
   # diff -pNaru5 trueport-6.10.0{.orig,} > '0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   patch -Nup1 -i "${srcdir}/0003-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  patch -Nup1 -i "${srcdir}/0004-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0005-kernel-6.1-kernel_termios_to_user_termios_1-termios_internal.badpatch'
+  # diff -pNaru5 'a' 'b' > '0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch'
+  patch -Nup1 -i "${srcdir}/0005-kernel-6.1-kernel_termios_to_user_termios_1-copy_to_user.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0006-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0006-kernel-6.0-set_termios-const-ktermios.patch"
 
   # insert parameters and make install script non interactive.
   set +u; msg2 'Checking SSL with rpm_build'; set -u

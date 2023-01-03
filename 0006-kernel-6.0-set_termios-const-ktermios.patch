@@ -1,0 +1,38 @@
+diff -pNaru5 a/ptyx/ptym.c b/ptyx/ptym.c
+--- a/ptyx/ptym.c	2023-01-03 02:54:09.808495447 -0500
++++ b/ptyx/ptym.c	2023-01-03 02:55:07.318357038 -0500
+@@ -728,11 +728,15 @@ out:
+ 
+ 	return retval;
+ }
+ 
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0))
+ static void ptyx_master_set_termios(struct tty_struct *tty, STRUCT_TERMIOS *old_termios)
++#else
++static void ptyx_master_set_termios(struct tty_struct *tty, const STRUCT_TERMIOS *old_termios)
++#endif
+ {
+ 	
+ 	ptyx_print(PTYX_DEBUG_TERMIOS, ("ptyx_master_set_termios: called current->state=%lx\n",current->state));
+ 
+ #if (LINUX_VERSION_CODE <  KERNEL_VERSION(3,7,0))		// Less than 3.7.0
+diff -pNaru5 a/ptyx/ptys.c b/ptyx/ptys.c
+--- a/ptyx/ptys.c	2023-01-03 02:54:09.805162119 -0500
++++ b/ptyx/ptys.c	2023-01-03 02:56:49.417950986 -0500
+@@ -1107,11 +1107,15 @@ out:
+ 
+ 	return retval;
+ }
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
+ static void ptyx_slave_set_termios(struct tty_struct *tty, STRUCT_TERMIOS *old_termios)
++#else
++static void ptyx_slave_set_termios(struct tty_struct *tty, const STRUCT_TERMIOS *old_termios)
++#endif
+ {
+ 	struct ptyx_struct *ptyx_info = (struct ptyx_struct *)tty->driver_data;
+ 	
+ 	ptyx_print(PTYX_DEBUG_TERMIOS, ("ptyx_slave_set_termios(%d): called current->state=%lx\n", 
+ 		 				ptyx_info->line, current->state));
