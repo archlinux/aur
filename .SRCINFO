@@ -1,31 +1,25 @@
 pkgbase = ubports-installer-git
 	pkgdesc = A simple tool to install Ubuntu Touch on UBports devices
-	pkgver = 0.8.8_beta.r3.g9319bc3
+	pkgver = 0.9.8_beta.r3.g1756231
 	pkgrel = 1
 	url = https://github.com/ubports/ubports-installer
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = nodejs-lts-fermium
+	makedepends = nodejs
 	makedepends = npm
 	depends = android-tools
 	depends = android-udev
-	depends = electron
+	depends = dbus
+	depends = glib2
 	depends = heimdall
 	provides = ubports-installer
 	conflicts = ubports-installer
 	source = ubports-installer-git::git+https://github.com/ubports/ubports-installer.git
 	source = ubports-installer
 	source = ubports-installer.desktop
-	source = 01-disable-update-check.patch
-	source = 02-never-udev.patch
-	source = 03-electrondist.patch
 	sha256sums = SKIP
-	sha256sums = e3167aa1469a33d1eca4dae377ed51675bea08e61e6d17f94f83a241538be56b
+	sha256sums = 461694d8ebce4d14e27be15d278ab1c1610c998962a94a7aaff1c64886f85dbe
 	sha256sums = 7f59cb66ab7e59caeff93f697e47f26f43a9a221258f4d89dee580e41dd7a39a
-	sha256sums = f5a47dd84c2ce46528385a673d93e465132a80a5a72de5b4cf41e055f9f60fe4
-	sha256sums = a9d899eaf4e8a004c20d7d9ff6af696aa9cd5602e5e95583f4fe27ecaa7aa03f
-	sha256sums = 768fcea52f63fed0bebb61861437db5f7e1f00358ad594c8d5593adc43a0f0c0
 
 pkgname = ubports-installer-git
-

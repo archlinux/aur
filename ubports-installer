@@ -1,2 +1,2 @@
 #!/bin/sh
-USE_SYSTEM_TOOLS=1 exec electron /usr/share/ubports-installer/app.asar "$@"
+USE_SYSTEM_TOOLS=1 exec /opt/ubports-installer/ubports-installer "$@"
