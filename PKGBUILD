@@ -18,7 +18,7 @@ _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/gcc"
 makedepends=("${target}-binutils"
-             "${target}-gcc-stage1"
+             "${pkgname}-stage1"
              "${target}-newlib"
              "${target}-newlib-nano"
              # "${target}-pthread-embedded"
@@ -26,32 +26,33 @@ makedepends=("${target}-binutils"
              "mpfr-static"
              "libmpc-static"
              "zstd-static")
+conflicts=("${pkgname}-stage1")
 optdepends=()
 _branch="${_module}-${pkgver}"
 _commit="331453616ac96717cfef82d21c03573c8984f17d"
-source=("${target}-gcc::git+${_github}/gcc#commit=${_commit}"
+source=("${pkgname}::git+${url}#commit=${_commit}"
         "https://libisl.sourceforge.io/isl-${_islver}.tar.xz")
-# source=("${pkgbase}-gcc::git+${_local}/${_platform}-gcc#commit=${_branch}")
+# source=("${pkgname}::git+${_local}/${_platform}-gcc#commit=${_branch}")
 sha256sums=('SKIP'
-            'SKIP')
-            # '6d6c1aa00e2a6dfc509fa46d9a9dbe93af0c451e196a670577a148feecf6b8a5')
+            '6d6c1aa00e2a6dfc509fa46d9a9dbe93af0c451e196a670577a148feecf6b8a5')
 
 _n_cpu="$(getconf _NPROCESSORS_ONLN)"
 _make_opts=(-j "${_n_cpu}")
 
 cflags=(-static
-        -Bstatic
+        -O2
+        # -Bstatic
         -Wno-implicit-function-declaration)
 
 ldflags=(${LDFLAGS}
          # -Bstatic
-         -Bdynamic
+         # -Bdynamic
          -s)
 
 prepare() {
   cd "${srcdir}/${pkgname}" || exit
   rm "isl" || true
-  ln -s "../isl-${_islver}" "isl"
+  # ln -s "../isl-${_islver}" "isl"
 }
 
 # shellcheck disable=SC2154
@@ -66,12 +67,12 @@ build() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:/usr/${target}/bin"
+  # export PATH="${PATH}:/usr/${target}/bin"
 
-  local _cflags=(${cflags[@]}
-                 -I/usr/include
+  local _cflags=(${cflags[@]})
+                 # -I/usr/include
                  # -I/usr/include/isl
-                 -L"/usr/lib"
+                 # -L"/usr/lib"
                  # -I"/usr/${target}/include"
                  # -L"/usr/${target}/lib"
                  # -I"/usr/${target}/include/pthread-embedded"
@@ -81,8 +82,7 @@ build() {
                  # -L"/usr/${target}/lib/newlib-nano"
                  # -std=c99
                  # -std=c++11
-                 # -nostdinc
-                 -O2)
+                 # -nostdinc)
 
   local _ldflags=(${ldflags[@]})
                   # -L"/usr/${target}/lib"
@@ -97,7 +97,7 @@ build() {
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
                      CPPFLAGS="${_cflags[*]}"
-                     CXXFLAGS="${_cflags[*]}"
+                     # CXXFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
   cd "${srcdir}/${pkgname}"
@@ -122,12 +122,14 @@ build() {
                            --with-sysroot="/usr/${_target}"
                            --with-newlib
                            # --disable-graphite
-                           --with-isl
+                           # --with-isl
                            # --with-osl
                            --disable-libssp
                            --disable-multilib
                            --enable-cxx-flags=-G0
                            --enable-threads=posix
+                           FLAGS=-fPIC
+                           CPPFLAGS=-fPIC
                            --disable-tls)
 
   export CFLAGS="${_cflags[*]}"
@@ -141,9 +143,10 @@ build() {
     # CC="/usr/bin/gcc-11" \
     # CPP="/usr/bin/cpp-11" \
     # CXX="/usr/bin/g++-11" \
-    CC="/usr/bin/gcc-7" \
-    CPP="/usr/bin/cpp-7" \
-    CXX="/usr/bin/g++-7" \
+    # CC="/usr/bin/gcc-7" \
+    # CPP="/usr/bin/cpp-7" \
+    # CXX="/usr/bin/g++-7" \
+
     "../configure" ${_configure_opts[@]}
 
     # CC="/usr/bin/${target}-gcc" \
