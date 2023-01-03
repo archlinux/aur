@@ -1,20 +1,18 @@
 pkgbase = chatgpt-desktop-bin
-	pkgdesc = Unofficial open source OpenAI ChatGPT desktop app.
-	pkgver = 0.2.0
+	pkgdesc = ChatGPT Desktop Application (Mac, Windows and Linux)
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/sonnylazuardi/chatgpt-desktop
 	arch = x86_64
-	license = MIT
+	license = Apache
 	makedepends = binutils
 	makedepends = tar
 	depends = openssl-1.1
 	depends = webkit2gtk
-	provides = chatgpt-desktop=0.2.0
+	provides = chatgpt-desktop=0.7.4
 	conflicts = chatgpt-desktop
-	noextract = chatgpt_0.2.0_amd64.deb
-	source = https://github.com/sonnylazuardi/chatgpt-desktop/raw/master/releases/chatgpt_0.2.0_amd64.deb
-	source = https://github.com/sonnylazuardi/chatgpt-desktop/blob/95d851695787dfed6088da1b4bdce4f621ace397/LICENSE
-	sha256sums = 93e569017bf4171c1fee93e5129c2ad1ed7ff8be17666a9efed1c573926e782f
-	sha256sums = SKIP
+	noextract = chat-gpt_0.7.4_amd64.deb
+	source = https://github.com/lencx/ChatGPT/releases/download/v0.7.4/chat-gpt_0.7.4_amd64.deb
+	sha256sums = 06795e6e82d8a42be050eed5b4873c9757edb1352fb85496b47b7179c5b9a94c
 
 pkgname = chatgpt-desktop-bin
