@@ -1,30 +1,40 @@
-# Maintainer: William J. Bowman <aur@williamjbowman.com>
-# Contributor: Vasco Costa <vasco dot costa at geekslot dot com>
-pkgname=hoard
-_pkgname=Hoard
-pkgver=3.11
-pkgrel=1
-pkgdesc="Fast scalable and memory-efficient memory allocator"
-arch=('i686' 'x86_64')
-url="http://www.hoard.org/"
-license=('GPL')
-depends=('gcc')
-install=$pkgname.install
-source=()
-md5sums=()
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
 
-build() {
-  cd ${srcdir}
-  git clone --recursive --single-branch -b $pkgver https://github.com/emeryberger/Hoard.git
-  cd $_pkgname/src
-  if [ "$CARCH" = "x86_64" ]; then
-    make linux-gcc-x86-64 || return 1
-  else
-    make linux-gcc-x86 || return 1
-  fi
+pkgname=hoard
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="A CLI command organizer written in Rust"
+arch=('x86_64')
+url="https://github.com/Hyde46/hoard"
+license=('MIT')
+depends=('gcc-libs' 'openssl')
+makedepends=('cargo')
+install="$pkgname.install"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('4989ca2ae4ae7344dbc46cdd30d130901d49d27f6bedee0656c33d3b05edca90')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-package(){
-  cd ${srcdir}/$_pkgname/src
-  install -D -m755 libhoard.so ${pkgdir}/usr/lib/libhoard.so
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --frozen
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --frozen
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "src/shell/$pkgname.bash" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "src/shell/$pkgname.zsh" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "src/shell/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
 }

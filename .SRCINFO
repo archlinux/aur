@@ -1,13 +1,15 @@
 pkgbase = hoard
-	pkgdesc = Fast scalable and memory-efficient memory allocator
-	pkgver = 3.11
+	pkgdesc = A CLI command organizer written in Rust
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = http://www.hoard.org/
+	url = https://github.com/Hyde46/hoard
 	install = hoard.install
-	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = gcc
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = hoard-1.3.0.tar.gz::https://github.com/Hyde46/hoard/archive/v1.3.0.tar.gz
+	sha256sums = 4989ca2ae4ae7344dbc46cdd30d130901d49d27f6bedee0656c33d3b05edca90
 
 pkgname = hoard
-
