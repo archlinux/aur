@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -34,7 +34,6 @@ pkgname = backintime-cli
 	depends = python-keyring
 	depends = rsync
 	depends = python-packaging
-	depends = python-pyfakefs
 	optdepends = backintime: QT5 GUI version
 	optdepends = encfs: encrypted filesystem in user-space
 	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
