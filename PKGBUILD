@@ -2,13 +2,13 @@
 
 pkgname=emake-git
 _pkgname=emake
-pkgver=3.6.9.r60.a0bf239
+pkgver=3.6.10.r65.f0e91dd
 pkgrel=1
 pkgdesc='Yet the simplest build toolchain for gcc/clang projects'
 arch=('any')
 url='https://github.com/skywind3000/emake'
 license=('GPL')
-depends=(python2)
+depends=(python)
 makedepends=(git)
 provides=(emake)
 conflicts=(emake)
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  _pkgver=$(python2 "${srcdir}/${pkgname}/${_pkgname}.py" -help|head -n 1|cut -f 2 -d ' ')
+  _pkgver=$(python "${srcdir}/${pkgname}/${_pkgname}.py" -help|head -n 1|cut -f 2 -d ' ')
   ver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   echo "${_pkgver}.${ver}"
 }
