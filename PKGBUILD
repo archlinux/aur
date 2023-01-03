@@ -3,6 +3,7 @@
 pkgname=linuxqq
 pkgver=3.0.0_571
 pkgrel=2
+epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
