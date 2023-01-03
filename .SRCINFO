@@ -1,6 +1,6 @@
 pkgbase = stc-isp-wine
 	pkgver = 6.91F
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.stcmcudata.com
 	install = stc-isp-wine.install
 	arch = x86_64

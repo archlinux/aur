@@ -3,7 +3,7 @@
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
 pkgver=6.91F
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="http://www.stcmcudata.com"
 license=('unknow')
@@ -126,7 +126,7 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
 
     cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
 fi
 
 if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
@@ -245,7 +245,7 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
 
     cp -r /${_stc}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
 
-    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
+    ln -s /${_stc}/${pkgname%-wine}/${pkgname%-wine}-v${pkgver}.exe "$HOME"/.${pkgname%-wine}/${pkgname%-wine} || exit 1
 fi
 
 if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
