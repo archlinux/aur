@@ -10,16 +10,16 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=apache-mod_auth_mellon
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.18.1
+pkgrel=1
 pkgdesc="Authentication module for Apache that authenticates the user against a SAML 2.0 IdP, and grants access to directories depending on attributes received from the IdP."
 arch=('i686' 'x86_64')
 url="https://github.com/latchset/mod_auth_mellon"
 license=('LGPL')
-depends=('apache' 'lasso>=2.8.0' 'curl')
+depends=('apache' 'lasso>=2.8.0' 'curl' 'openssl>=3.0.0')
 makedepends=('apache' 'lasso>=2.8.0' 'curl')
 source=("https://github.com/latchset/mod_auth_mellon/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('477ac302fda9ed33b2ca51e88379250a41cc85111e71cacc8ba9f16cd8a2b63af6393fb038fc8f5c211b97926ef368c5989c92570c2e3c9eae072c7b4d32d7d5')
+sha512sums=('fab00f1cb00eb9d3f083efaff7ef3b356c4816c996ef86efb495955cd6ee9abb9433d5193e067840a8f0bd555c5ffbab1f8b4a4f3c1e3c09d36b34346a224696')
 
 build() {
   cd "$srcdir"/mod_auth_mellon-$pkgver
