@@ -1,0 +1,4 @@
+qtaccountsservice/
+pkg/
+src/
+*.pkg.tar.*
