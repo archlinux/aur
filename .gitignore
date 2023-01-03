@@ -1,0 +1,4 @@
+libliri/
+pkg/
+src/
+*.pkg.tar.*
