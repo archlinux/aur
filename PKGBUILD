@@ -2,7 +2,7 @@
 pkgname=oqsprovider
 _pkgname=oqs-provider
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
@@ -16,7 +16,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${_pk
 b2sums=('92b6bf8141c0bd62dd64e2ff34b76ac2e5d7af65cd97c2f28f13605817459cddb68f925e9fae5873a69481ee05751d2bf620fe83e4fd90354fa7fbf0c4f19ab3')
 
 build() {
-    cmake -LAH -S "${_pkgname}-${pkgver}"
     cmake -B build -S "${_pkgname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
