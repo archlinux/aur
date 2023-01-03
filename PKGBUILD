@@ -14,8 +14,9 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}"
-depends=("${_platform}-"{"dvp","iop"})
-         # "${_platform}-ee")
+depends=("${_platform}-toolchain")
+# depends=("${_platform}-"{"dvp","iop"})
+#          "${_platform}-ee")
 optdepends=()
 source=("${pkgname}::git+${url}#tag=${pkgver}")
 sha256sums=('SKIP')
