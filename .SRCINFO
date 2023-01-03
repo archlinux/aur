@@ -1,6 +1,6 @@
 pkgbase = ytdownloader-gui
 	pkgdesc = GUI video downloader supporting hundreds of sites
-	pkgver = 3.10.1
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = https://github.com/aandrew-me/ytDownloader
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = ytdownloader-gui
 	depends = ffmpeg
 	depends = electron
 	conflicts = ytdownloader-gui
-	source = ytdownloader-gui-3.10.1::https://github.com/aandrew-me/ytDownloader/archive/refs/tags/v3.10.1.tar.gz
+	source = ytdownloader-gui-3.10.2::https://github.com/aandrew-me/ytDownloader/archive/refs/tags/v3.10.2.tar.gz
 	source = ytdownloader-gui.sh
 	source = ytdownloader-gui.desktop
 	md5sums = SKIP

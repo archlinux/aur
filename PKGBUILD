@@ -1,6 +1,6 @@
 # Maintainer: Andrew <aandrew.me@pm.me>
 pkgname="ytdownloader-gui"
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="GUI video downloader supporting hundreds of sites"
 arch=('any')
