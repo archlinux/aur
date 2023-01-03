@@ -4,7 +4,7 @@ pkgver="0.7.4"
 pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=("x86_64")
-url="https://github.com/sonnylazuardi/${pkgname/-bin/}"
+url="https://github.com/lencx/ChatGPT"
 makedepends=("binutils"
              "tar")
 depends=("openssl-1.1"
