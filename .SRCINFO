@@ -5,6 +5,6 @@ pkgbase = ps2-ee
 	url = https://github.com/ps2dev/ps2toolchain-ee
 	arch = x86_64
 	license = BSD
-	depends = mips64r5900el-ps2-elf-gcc
+	depends = mips64r5900el-ps2-elf-gcc-stage1
 
 pkgname = ps2-ee
