@@ -1,3 +1,0 @@
-#!/bin/sh
-[ x"$container" !=  x"firejail" ] && exec /usr/bin/xdg-open "${@}"
-exec /usr/lib/flatpak-xdg-utils/xdg-open "${@}"
