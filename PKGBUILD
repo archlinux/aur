@@ -2,7 +2,7 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.1.3.r166.33585b9
+pkgver=0.2.0.r289.7c9418a
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,6 @@ license=('GPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git' 'cmake')
-install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -30,4 +29,5 @@ build () {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
+	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/cb"
 }
