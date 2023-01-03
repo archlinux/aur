@@ -2,7 +2,7 @@
 # Contributor: malacology
 
 pkgname=tpsdig
-pkgver=2.31
+pkgver=2021.6.3
 pkgrel=1
 pkgdesc="Digitize landmarks & outlines from image files, scanner, or video"
 arch=('any')
