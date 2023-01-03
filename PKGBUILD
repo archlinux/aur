@@ -3,7 +3,7 @@
 
 pkgname=go-task
 _pkgname=task
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
@@ -14,11 +14,12 @@ conflicts=('gotask-taskfile')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b4f6021777f87f261a5646c0092e1b7d6dd252c4fc84ded015b89e0dae59383d')
 
-sha256sums=('250a788958f306a11a4e8a621635d4f752478e4396c6a222a8f6ea640a220bff')
+_archive="$_pkgname-$pkgver"
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   sed -i 's/complete -F _task task/complete -F _task go-task/' completion/bash/task.bash
   sed -i 's/set GO_TASK_PROGNAME task/set GO_TASK_PROGNAME go-task/' completion/fish/task.fish
@@ -27,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -39,13 +40,13 @@ build() {
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   go test ./...
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   install -Dm755 bin/task "${pkgdir}/usr/bin/go-task"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
