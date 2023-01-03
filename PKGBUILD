@@ -114,6 +114,7 @@ build() {
                            --target="${_target}"
                            --host=${CHOST}
                            --build=${CHOST}
+                           --datarootdir="/usr/${_target}/share"
                            --enable-languages="c,c++"
                            --disable-bootstrap
                            --disable-shared
