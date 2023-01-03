@@ -3,7 +3,7 @@
 # Former maintainer: Tobias Hübner <dasNeutrum@gmx.de>
 
 _pkgname=sonarqube
-pkgname=${_pkgname}
+pkgname=sonarqube-bin
 pkgver=9.8.0.63668
 pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
@@ -24,7 +24,7 @@ conflicts=("${_pkgname}-lts")
 provides=("${_pkgname}")
 options=('!strip')
 
-install=${pkgname}.install
+install=${_pkgname}.install
 source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
         "${_pkgname}.service"
         "${_pkgname}-tmpfile.conf"

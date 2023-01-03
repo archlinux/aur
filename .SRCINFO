@@ -1,4 +1,4 @@
-pkgbase = sonarqube
+pkgbase = sonarqube-bin
 	pkgdesc = An open source platform for continuous inspection of code quality
 	pkgver = 9.8.0.63668
 	pkgrel = 1
@@ -26,4 +26,4 @@ pkgbase = sonarqube
 	sha256sums = 43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d
 	sha256sums = 682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68
 
-pkgname = sonarqube
+pkgname = sonarqube-bin
