@@ -1,0 +1,15 @@
+pkgbase = orgtbl-query
+	pkgdesc = query the contents of emacs org-mode tables in files
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://sr.ht/~minshall/orgtbl-query/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gawk
+	optdepends = emacs: create and operate on org-mode files
+	source = git+https://git.sr.ht/~minshall/orgtbl-query#tag=b44cd466efc3d98f659a2d4dc3ce6cc1aac9299d?signed
+	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
+	sha256sums = SKIP
+
+pkgname = orgtbl-query
