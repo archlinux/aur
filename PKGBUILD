@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=dockle
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="Container Image Linter for Security, Helping build the Best-Practice Docker Image"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/goodwithtech/dockle"
 license=('Apache')
 makedepends=('go' 'git' 'btrfs-progs')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d9010e51d834e17501f7a638496c8d41b3762255f45dbff9749db8945b2b1b0e')
+sha256sums=('ee9865cfe7f3ec7562da1022139bc87e898debc8d3db2321361cf1d73b47b54a')
 
 prepare(){
   cd "$pkgname-$pkgver"
