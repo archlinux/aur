@@ -1,0 +1,4 @@
+themes/
+pkg/
+src/
+*.pkg.tar.*
