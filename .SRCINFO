@@ -1,6 +1,6 @@
 pkgbase = timestampit
 	pkgdesc = Prefix each line with a date/time stamp (formerly timestamp/stampit)
-	pkgver = 0.3.3
+	pkgver = 0.3.3.1
 	pkgrel = 1
 	url = https://codeberg.org/kas/timestampit/
 	arch = i686
@@ -13,9 +13,10 @@ pkgbase = timestampit
 	provides = stampit
 	conflicts = timestamp
 	conflicts = stampit
-	source = timestampit-0.3.3.tar.gz::https://codeberg.org/kas/timestampit/archive/v0.3.3.tar.gz
-	sha256sums = d08237ff446054ebaea6751ab7a9c2b2a47b196efd51c6ff1527a3a2ec5d9ce9
-	sha512sums = c7fdcfaf27a6e42b7993fe4a7ac60a6de24859ab3b1fd6b6a53e801842e3bf526a8ff44233b4489af8fe09d857ead3592c21bb50c73a20ce61cf10020de5d6e0
-	b2sums = d3a7473c1a4a1679cada14a44c4a9c7d1d1b1ca9a2e909e3fa0bd2cabdbfd05c1a73c71593bdcfa811f4fc03aa153b7803ad02364c7bf8d49825378fde50c63a
+	options = lto
+	source = timestampit-0.3.3.1.tar.gz::https://codeberg.org/kas/timestampit/archive/v0.3.3.1.tar.gz
+	sha256sums = a6b5057e1fe1f5aca1a9cbc1523b75638833cffc13f087faa93b6cb397a22394
+	sha512sums = 6abb60cde49bbf4a1eb2e72b2c67bca9c70f6bb8359cfab195069f102017e95e6cf6341308398a69e3aa7261d53139f9b79b82f3e4bb39f921ebc8c27f428ae3
+	b2sums = 0927c971be2a12b2d5a49552727553c9071bca82e2fd040bf12f6483095a9f9fe1037c866b45032c4f3dce80890a66bdf80d9e4758fef2276ec01bfe196036c2
 
 pkgname = timestampit
