@@ -3,16 +3,16 @@
 _name=aqtinstall
 pkgname=python-aqtinstall
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Another unofficial Qt installer"
 arch=(any)
 url="https://github.com/miurahr/aqtinstall"
 license=('MIT')
 depends=(python python-defusedxml python-requests python-beautifulsoup4
          python-semantic-version python-texttable python-patch
-         python-py7zr)
-makedepends=('python-twine' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-socket')
+         python-py7zr python-humanize)
+makedepends=(python-twine python-build python-installer python-wheel python-setuptools-scm)
+checkdepends=(python-pytest python-pytest-socket)
 source=($pkgname::git+${url}.git#tag=v${pkgver})
 sha512sums=('SKIP')
 
