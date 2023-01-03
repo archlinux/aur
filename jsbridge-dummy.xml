@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="x-scheme-handler/jsbridge">
+    <comment>dummy JSBridge handler, provided by linuxqq-firejail</comment>
+  </mime-type>
+</mime-info>

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=JSBridge Dummy
+Exec=echo [JSBridge Dummy] %u
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/jsbridge;
+Comment=dummy JSBridge handler, provided by linuxqq-firejail
