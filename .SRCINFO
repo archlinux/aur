@@ -1,5 +1,5 @@
 pkgbase = perl-role-identifiable
-	pkgver = 0.008
+	pkgver = 0.009
 	pkgrel = 1
 	url = https://metacpan.org/release/Role-Identifiable
 	arch = any
@@ -7,7 +7,7 @@ pkgbase = perl-role-identifiable
 	license = GPL
 	depends = perl-moose
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Role-Identifiable-0.008.tar.gz
-	md5sums = 7ef3a4ab369b4fd55ab3ed183d4b2934
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Role-Identifiable-0.009.tar.gz
+	md5sums = 8bddf447d6e5ad55949c17c0a4fa6971
 
 pkgname = perl-role-identifiable

@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname='perl-role-identifiable'
-pkgver='0.008'
+pkgver='0.009'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl-moose')
 url='https://metacpan.org/release/Role-Identifiable'
 source=(https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Role-Identifiable-$pkgver.tar.gz)
-md5sums=('7ef3a4ab369b4fd55ab3ed183d4b2934')
+md5sums=('8bddf447d6e5ad55949c17c0a4fa6971')
 _distdir="Role-Identifiable-$pkgver"
 
 build() {
