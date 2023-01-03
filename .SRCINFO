@@ -12,6 +12,7 @@ pkgbase = aurora-compositor-git
 	makedepends = git
 	makedepends = liri-cmake-shared-git
 	makedepends = aurora-scanner-git
+	makedepends = wayland-protocols
 	makedepends = xcb-util-cursor
 	makedepends = libxcursor
 	depends = systemd

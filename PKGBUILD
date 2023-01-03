@@ -11,7 +11,7 @@ depends=('systemd' 'libdrm' 'libinput' 'qt5-declarative' 'qt5-wayland'
          'xkeyboard-config' 'libxkbcommon' 'glib2' 'fontconfig' 'freetype2')
 optdepends=('xorg-server-xwayland: Xwayland support')
 makedepends=('git' 'liri-cmake-shared-git' 'aurora-scanner-git'
-             'xcb-util-cursor' 'libxcursor')
+             'wayland-protocols' 'xcb-util-cursor' 'libxcursor')
 conflicts=('aurora-compositor')
 replaces=('aurora-compositor')
 provides=('aurora-compositor')
