@@ -7,7 +7,7 @@
 pkgname="turbovnc"
 pkgdesc="An optimized version of TightVNC"
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.turbovnc.org/"
 license=('GPL')
@@ -19,6 +19,8 @@ conflicts=('turbovnc-bin' 'tigervnc' 'tigervnc-svn' 'tightvnc')
 replaces=('turbovnc-bin')
 source=(${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/${pkgname}/files/${pkgver}/${pkgname}-${pkgver}.tar.gz/download
         vncserver.service)
+backup=(etc/turbovncserver.conf
+        etc/turbovncserver-security.conf)
 
 build() {
   mkdir -p "${srcdir}"/${pkgname}-${pkgver}/build
