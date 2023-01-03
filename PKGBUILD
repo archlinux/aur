@@ -2,7 +2,7 @@
 # Contributor: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=autojump-rs
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate your filesystem from the command line (in Rust)"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/xen0n/autojump-rs"
@@ -14,27 +14,19 @@ makedepends=('python>=3.8')
 options=()
 install=
 _autojump_version='22.5.3'
-source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums=('1cabb0c3551c865f2da81a2e2af48423'
-         '29f1a7df736814c747645703bf00ce48')
 
-# alt arches
-source_aarch64=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums_aarch64=('c20e6afc93e038cae8fe13179fa8d51c'
-                 '29f1a7df736814c747645703bf00ce48')
+source=("autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz")
+md5sums=('29f1a7df736814c747645703bf00ce48')
 
-source_i686=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz"
-    "autojump-${_autojump_version}.tar.gz::https://github.com/wting/autojump/archive/release-v${_autojump_version}.tar.gz"
-)
-md5sums_i686=('2bb1476558d240416629c41af39a44c3'
-              '29f1a7df736814c747645703bf00ce48')
+# architecture-specific binaries
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz")
+md5sums_x86_64=('1cabb0c3551c865f2da81a2e2af48423')
+
+source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz")
+md5sums_aarch64=('c20e6afc93e038cae8fe13179fa8d51c')
+
+source_i686=("$pkgname-$pkgver.tar.gz::https://github.com/xen0n/autojump-rs/releases/download/${pkgver}/autojump-${CARCH}-unknown-linux-musl.tar.gz")
+md5sums_i686=('2bb1476558d240416629c41af39a44c3')
 
 prepare() {
     cd "autojump-release-v${_autojump_version}"
