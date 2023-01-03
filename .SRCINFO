@@ -1,0 +1,21 @@
+pkgbase = aurora-scanner-git
+	pkgdesc = Converts XML protocol descriptions to C++ code for Aurora compositors and clients
+	pkgver = r10.c2e3441
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-cmake-shared-git
+	depends = qt5-base
+	provides = aurora-scanner
+	conflicts = aurora-scanner
+	replaces = aurora-scanner
+	source = aurora-scanner::git+https://github.com/lirios/aurora-scanner.git#branch=develop
+	md5sums = SKIP
+
+pkgname = aurora-scanner-git
