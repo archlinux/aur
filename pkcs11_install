@@ -11,16 +11,11 @@ build() {
 
     # OPENSC
     add_file /etc/opensc.conf
-    add_binary /usr/lib/libopensc.so.8
-    add_binary /usr/lib/libopensc.so.8.0.0
     add_binary /usr/lib/opensc-pkcs11.so
     add_binary /usr/lib/pkcs11/opensc-pkcs11.so
 
     # PCSCLITE
     add_binary /usr/lib/libpcsclite.so
-    add_binary /usr/lib/libpcsclite.so.1
-    add_binary /usr/lib/libpcsclite.so.1.0.0
-
 
     # PCSCD at boot before cryptsetup
     add_systemd_unit pcscd.service

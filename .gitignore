@@ -1,4 +1,4 @@
 *.pkg.tar.xz
-lighthouse/
+*.pkg.tar.zst
 pkg/
 src/
