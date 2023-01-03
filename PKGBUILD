@@ -1,7 +1,7 @@
 # Contributor: Kars Wang <jaklsy AT gmail.com>
 
 pkgname='perl-perl-prereqscanner'
-pkgver=1.024
+pkgver=1.025
 pkgrel=1
 pkgdesc='a tool to scan your Perl code for its prerequisites'
 _dist='Perl-PrereqScanner'
@@ -11,7 +11,7 @@ license=('PerlArtistic' 'GPL')
 depends=('perl-moose' 'perl-getopt-long-descriptive' 'perl-module-path' 'perl-ppi' 'perl-string-rewriteprefix')
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_dist-$pkgver.tar.gz")
-sha256sums=('30ebc3871882806589bd8f4d92689113e149c9a596bfd930eba745d54f1a5b64')
+sha256sums=('ac9acde2c608d270336cc1b312cc49a52c603c1163e196fee749cd296321eca7')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
