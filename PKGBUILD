@@ -4,9 +4,9 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.0.15
+pkgver=6.0.16
 pkgrel=1
-build_id=5175597
+build_id=5196547
 fedora=37
 extras=301.fsync.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
@@ -31,10 +31,10 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('31bbe3398ae9d6ce7e2780a902b1a7276738567c033d12a9fada202f99828121'
-            '2b92a1b02669a076d204ebc085eaad3da570ca24e39dd5a85fef118949ab16f7'
-            '9742a6d11590bc228e0195c0a74471fd2545311335db0f7e87667c950881117f'
-            'd9377a6daea311adf21f05df4eab47dffb419f152df181332bc9df7084ce1eaa')
+sha256sums=('0937d818c9c801830ab5503225bc43be0220dae37b1996f0e0d87144c83cb4db'
+            '9a68ffc3e581ad7bacae14f2755eef7ff6ead0829d3308dd948698596b90bbf2'
+            '3783d96977ba74a782419372141d5e8e04f655bc2df38e7aaf83162f6f0db937'
+            '5c7de9ae5d05fb5774680fd0fdff58a1e207c3949370473a1207ba9a11986a25')
 
 package() {
 
@@ -49,6 +49,15 @@ package() {
 
   #msg2 "Installing boot image..."
   #install -Dm644 "$modulesdir/vmlinuz" "boot/vmlinuz-${pkgver}-fsync-nobara"
+
+  # Used by dmks
+  mv "${pkgdir}"/usr/src/kernels/* "${pkgdir}"/usr/src/
+  rmdir "${pkgdir}"/usr/src/kernels
+  cd "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64
+  ln -sf /usr/src/${pkgver}-${extras}.x86_64 build
+
+  # Perms
+  chmod 644 "${pkgdir}"/usr/lib/modules/${pkgver}-${extras}.x86_64/vmlinuz
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgname}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
