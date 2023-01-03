@@ -85,6 +85,7 @@ build() {
                            --target="${_target}"
                            --host=${CHOST}
                            --build=${CHOST}
+                           --infodir="/usr/${target}/share/info"
                            --enable-languages="c"
                            --with-float=soft
                            --with-gmp
