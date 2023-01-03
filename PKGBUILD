@@ -3,13 +3,13 @@
 # a base for this one.
 
 pkgname=headphones-git
-pkgver=0.5.18.r159.gda9287d7
-pkgrel=5
+pkgver=0.6.0.r0.ga78f38c1
+pkgrel=1
 pkgdesc="Music downloader for usenet and torrents."
 arch=('any')
 url="https://github.com/rembo10/headphones"
 license=('GPL3')
-depends=('python2')
+depends=('python')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
