@@ -1,13 +1,12 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-themes-git
-pkgver=v0.9.0.r59.g0b1e96b
+pkgver=v0.9.0.r62.gea29cc9
 pkgrel=1
 pkgdesc="Themes for uniform look and feel throughout Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
-depends=('liri-shell-git')
 makedepends=('git' 'liri-cmake-shared-git')
 conflicts=('liri-themes')
 replaces=('liri-themes')
