@@ -1,0 +1,15 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2023-01-03 02:12:34.380355007 -0500
++++ b/nslink.c	2023-01-03 02:12:46.210343269 -0500
+@@ -5636,11 +5636,10 @@ int register_tty_driver(tBoxPortCount *u
+ 
+         // Set up the tty driver structure and then register this
+         // driver with the tty layer.
+         nslink_driver = tty_alloc_driver((MAX_NRP_TOTAL_PORTS - 1),0);
+ 
+-        nslink_driver->magic = TTY_DRIVER_MAGIC;
+         nslink_driver->driver_name = "NS-Link";
+         nslink_driver->name = "ttySI";
+         nslink_driver->num = bp.portCount;
+         nslink_driver->major = 0; // dynamically allocated major number
+         nslink_driver->minor_start = 0;

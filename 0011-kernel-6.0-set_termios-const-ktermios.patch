@@ -1,0 +1,19 @@
+diff -pNaru5 a/nslink.c b/nslink.c
+--- a/nslink.c	2023-01-03 02:18:37.770057769 -0500
++++ b/nslink.c	2023-01-03 02:19:36.499474484 -0500
+@@ -3043,11 +3043,15 @@ static void nrp_close(struct tty_struct
+         DebugOpen("ttySI%d (count=%d) enter\n", info->line, info->port.count);
+         tty_port_close(&info->port, tty, filp);
+         DebugOpen("ttySI%d (count=%d) return\n", info->line, info->port.count);
+ }
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(6,0,0)
+ static void nrp_set_termios(struct tty_struct *tty, struct ktermios *old_termios)
++#else
++static void nrp_set_termios(struct tty_struct *tty, const struct ktermios *old_termios)
++#endif
+ {
+         struct nr_port *info = (struct nr_port *) tty->driver_data;
+         unsigned cflag;
+ #if LINUX_VERSION_CODE >= VERSION_CODE(3,7,0)
+         struct ktermios *termios = &tty->termios;

@@ -25,7 +25,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -56,6 +56,8 @@ source=(
   '0007-service-priority.patch'
   '0008-python3-firmware.patch'
   '0009-python3-nslink.patch'
+  '0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  '0011-kernel-6.0-set_termios-const-ktermios.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
@@ -67,7 +69,9 @@ md5sums=('b59906d80268e69a24c211b398ffd10c'
          'f85645dfe886b57273b475d3c6cd0964'
          'e5692035f047cdec52658f67954c6f4d'
          '8c329cf0f9c90cfd07ba86a4027eec48'
-         'e21d8211b2f209ace648340cb5583805')
+         'e21d8211b2f209ace648340cb5583805'
+         '2774e3aa64717a7613e96fd86f649ea1'
+         '98788ff1378604e9fda43eb6ef9e9e3d')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
@@ -78,7 +82,9 @@ sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             '364a4fb9d8695067ee8d235d7763c59f6df417937b901a1810e00d397db21aee'
             'bfa34783131c52e0bc0645c76469aaf504b13ac16d57b02d5ea9002603fb583e'
             '1353bc403b56ef0b00f4b87826991812ee24bcc9a0b2612c0027317a7aa86736'
-            'a84e1a9884580917afe55816b4ec9b44ec0f4977144e7f4325647ff58642ecd6')
+            'a84e1a9884580917afe55816b4ec9b44ec0f4977144e7f4325647ff58642ecd6'
+            '2b909997f0662ae9a49463be4c1ef2af718882924071e0d74b9c04d9d1198691'
+            '7f181d1542b542989b319caf85621725389d7681cf2d5c3bb57dc774d14f1b76')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -140,6 +146,15 @@ prepare() {
   #rm -f *.orig; cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0009-python3-nslink.patch'
   patch -Nup1 -i "${srcdir}/0009-python3-nslink.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  patch -Nup1 -i "${srcdir}/0010-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0011-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0011-kernel-6.0-set_termios-const-ktermios.patch"
 
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison
