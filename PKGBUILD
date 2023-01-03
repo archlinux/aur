@@ -4,12 +4,11 @@
 
 pkgname=dive
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for exploring each layer in a docker image"
 url="https://github.com/wagoodman/$pkgname"
 arch=("x86_64")
 license=("MIT")
-depends=("docker")
 makedepends=("go")
 conflicts=("dive-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
