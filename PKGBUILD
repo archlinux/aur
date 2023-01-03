@@ -19,8 +19,7 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
-checkdepends=('shellcheck')
-makedepends=("${target}-gcc-stage1"
+makedepends=("${target}-gcc"
              "${target}-newlib"
              "libgmp-static"
              "mpfr-static"
