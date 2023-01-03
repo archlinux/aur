@@ -2,7 +2,7 @@
 _pkgname=dezor
 pkgname=dezor-appimage
 pkgver=0.35.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The web browser including VPN & Adblocker"
 arch=('x86_64')
 url='https://dezor.net'
@@ -26,9 +26,9 @@ prepare() {
 }
 
 package() {
-	pushd "${srcdir}/squashfs-root"
-	find "usr/share/icons" -type f -exec install -Dm 644 "{}" "${pkgdir}/{}" \; > /dev/null
-	popd
+	pushd "${srcdir}/squashfs-root" > /dev/null
+	find "usr/share/icons" -type f -exec install -Dm 644 "{}" "${pkgdir}/{}" \;
+	popd > /dev/null
 
 	install -Dm 644 "${srcdir}/squashfs-root/$_pkgname.desktop" "${pkgdir}/usr/share/applications/$_pkgname.desktop"
 	install -Dm 755 "${srcdir}/$_pkgname-$pkgver.AppImage" "${pkgdir}/opt/appimages/$_pkgname.AppImage"
