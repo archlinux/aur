@@ -1,6 +1,6 @@
 pkgbase = perl-string-flogger
 	pkgdesc = string munging for loggers
-	pkgver = 1.101245
+	pkgver = 1.101246
 	pkgrel = 1
 	url = https://metacpan.org/release/String-Flogger
 	arch = any
@@ -10,9 +10,7 @@ pkgbase = perl-string-flogger
 	depends = perl-params-util
 	depends = perl-sub-exporter
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-Flogger-1.101245.tar.gz
-	md5sums = e8de99012e46e31027107a548362bf25
-	sha512sums = 6bd9c413ba1816221278521f6a43d475f4d4748be23034da0340b37e20044afb2d26e03b7529ddac3d98485cc1de69a4b0dcffe75ce61eea1eed7b154ab6e11e
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/String-Flogger-1.101246.tar.gz
+	md5sums = 7ec46873fa6964cf0ec5e59f3f152c72
 
 pkgname = perl-string-flogger
-
