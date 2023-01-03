@@ -16,7 +16,7 @@ license=('custom: Public Domain')
 provides=('ncbi-vdb')
 arch=(x86_64)
 depends=('hdf5' 'python' 'mbedtls' 'libxml2')
-makedepends=('cmake'  'doxygen' 'java-runtime' 'patchelf')
+makedepends=('cmake'  'doxygen' 'java-runtime')
 sha256sums=('44b87153f25366dc16cbb1a23b1db71dad9a5b9dac58c0692404120d8eede7c8'
             '275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59')
 
@@ -31,17 +31,22 @@ build(){
   cd "$_dep-$_depver"
   install -d  build1
   cd build1
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+  cmake .. -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -Wno-dev \
+        -DCMAKE_SKIP_RPATH=YES
   make
 
   cd ${srcdir}/"$pkgname-$pkgver"
   install -d  build1
   cd build1
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
+  cmake .. -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
         -DVDB_INCDIR="$srcdir/$_dep-$_depver/interfaces/" \
         -DVDB_LIBDIR="$srcdir/$_dep-$_depver/build1/lib/" \
+        -Wno-dev \
+        -DCMAKE_SKIP_RPATH=YES
   make
 }
 
@@ -59,14 +64,12 @@ package(){
   install -Dm644 ${srcdir}/"$pkgname-$pkgver"/LICENSE  -t "$pkgdir"/usr/share/licenses/sra-tools/
   # remove empty folder
   rm -Rf "$pkgdir"/usr/include/kfg/ncbi/etc/
-  # remove symlinks, fix Insecure Runpaths, and fix filenames
-  patchelf --remove-rpath "$pkgdir"/usr/lib/libncbi-ngs.so.3.0.2
-    
+  # remove symlinks and fix filenames
+      
   find "$pkgdir"/usr/bin  -type l -delete
   
   for filename in "$pkgdir"/usr/bin/*
     do [ -f "$filename" ] || continue
-    patchelf --remove-rpath $filename
     mv "$filename" "${filename//.${pkgver}/}"
   done
 }

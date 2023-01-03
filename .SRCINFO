@@ -8,7 +8,6 @@ pkgbase = sra-tools
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = java-runtime
-	makedepends = patchelf
 	depends = hdf5
 	depends = python
 	depends = mbedtls
