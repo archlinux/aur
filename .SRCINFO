@@ -1,6 +1,6 @@
 pkgbase = pulse-glass-tri-color
-	pkgdesc = Pulse Glass cursor theme
-	pkgver = 1.0
+	pkgdesc = This small derivative collection comprises of Amber, Jade and Sapphire (orange,green,blue). Sizes Regular (32px) and Small (24px) apply.
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://store.kde.org/p/999818/
 	arch = any

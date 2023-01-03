@@ -1,9 +1,9 @@
 # Maintainer: ssfdust <ssfdust@gmail.com>
 
 pkgname=pulse-glass-tri-color
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="Pulse Glass cursor theme"
+pkgdesc="This small derivative collection comprises of Amber, Jade and Sapphire (orange,green,blue). Sizes Regular (32px) and Small (24px) apply."
 arch=('any')
 url="https://store.kde.org/p/999818/"
 license=('GPL')
