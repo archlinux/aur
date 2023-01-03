@@ -1,0 +1,4 @@
+fluid/
+pkg/
+src/
+*.pkg.tar.*
