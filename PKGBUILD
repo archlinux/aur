@@ -21,7 +21,7 @@ makedepends=("${target}-binutils"
              "${target}-gcc-stage1"
              "${target}-newlib"
              "${target}-newlib-nano"
-             "${target}-pthread-embedded"
+             # "${target}-pthread-embedded"
              "libgmp-static"
              "mpfr-static"
              "libmpc-static"
@@ -40,10 +40,12 @@ _n_cpu="$(getconf _NPROCESSORS_ONLN)"
 _make_opts=(-j "${_n_cpu}")
 
 cflags=(-static
+        -Bstatic
         -Wno-implicit-function-declaration)
 
 ldflags=(${LDFLAGS}
-         -Bstatic
+         # -Bstatic
+         -Bdynamic
          -s)
 
 prepare() {
@@ -76,19 +78,19 @@ build() {
                  # -include "/usr/${target}/include/pthread-embedded/pthread.h"
                  # -I"/usr/${target}/include/pthread-embedded/bits"
                  # -I"/usr/${target}/include/newlib-nano"
-                 # -I"/usr/${target}/include/newlib-nano"
+                 # -L"/usr/${target}/lib/newlib-nano"
                  # -std=c99
-                 # -std=c++98
+                 # -std=c++11
                  # -nostdinc
                  -O2)
 
-  local _ldflags=(${ldflags[@]}
+  local _ldflags=(${ldflags[@]})
                   # -L"/usr/${target}/lib"
                   # -L"/usr/${target}/lib/pthread-embedded"
                   # -lstdin
-                  -l:libisl.a
+                  # -l:libisl.a)
                   # -ldl
-                  -lpthread)
+                  # -lpthread)
                   # -llibisl)
                   # -L"/usr/${target}/lib/newlib-nano")
 
@@ -127,6 +129,11 @@ build() {
                            --enable-cxx-flags=-G0
                            --enable-threads=posix
                            --disable-tls)
+
+  export CFLAGS="${_cflags[*]}"
+  export CXXFLAGS="${_cflags[*]}"
+  export CPPFLAGS="${_cflags[*]}"
+  export LDFLAGS="${_ldflags[*]}"
 
     # CC="/usr/bin/${target}-gcc" \
     # CPP="/usr/bin/${target}-cpp" \
