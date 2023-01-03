@@ -20,7 +20,7 @@ optdepends=(
   'qt6-declarative: Qt Quick integration'
   "$_name-doc: API documentation"
 )
-provides=(libqtforkawesome-qt6.so)
+provides=(libqtforkawesome-qt6.so libqtquickforkawesome-qt6.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")

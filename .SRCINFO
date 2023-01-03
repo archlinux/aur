@@ -20,6 +20,7 @@ pkgbase = qtforkawesome-qt6
 	optdepends = qt6-declarative: Qt Quick integration
 	optdepends = qtforkawesome-doc: API documentation
 	provides = libqtforkawesome-qt6.so
+	provides = libqtquickforkawesome-qt6.so
 	source = qtforkawesome-0.1.0.tar.gz::https://github.com/Martchus/qtforkawesome/archive/v0.1.0.tar.gz
 	source = Fork-Awesome-1.2.0::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/1.2.0.tar.gz
 	sha256sums = 2d71cc6824148194263fda763a78d3ae7ed5a4d0e673181fc5afeabc47e2445e
