@@ -1,0 +1,4 @@
+aurora-client/
+pkg/
+src/
+*.pkg.tar.*
