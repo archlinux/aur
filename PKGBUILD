@@ -144,6 +144,7 @@ package() {
   for _target in "${target}"; do
     cd "build-${_target}"
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
+    rm -rf "${pkgdir}/usr/${target}/share/info/dir"
     cd ..
   done
 }
