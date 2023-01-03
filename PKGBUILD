@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/bradford-smith94/$pkgname"
 license=('MIT')
 install=informant.install
+makedepends=('python-setuptools')
 depends=('python' 'python-docopt' 'python-dateutil' 'python-feedparser' 'python-html2text' 'python-cachecontrol' 'python-lockfile')
 source=("https://github.com/bradford-smith94/$pkgname/archive/v$pkgver.tar.gz")
 options=(zipman)

@@ -6,6 +6,7 @@ pkgbase = informant
 	install = informant.install
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-docopt
 	depends = python-dateutil
@@ -15,6 +16,6 @@ pkgbase = informant
 	depends = python-lockfile
 	options = zipman
 	source = https://github.com/bradford-smith94/informant/archive/v0.4.5.tar.gz
-	sha256sums = 4f8745bec30fb82396b141f99a529d542085bcda982a9d178ebba5c07fd4425f
+	sha256sums = b82d6accae509bcda3fc4a02b849e9093cbc18f0f728422f27570539c9c53751
 
 pkgname = informant
