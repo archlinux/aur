@@ -1,5 +1,5 @@
 pkgbase = bflat-bin
-	pkgdesc = bflat
+	pkgdesc = Bflat C# compiler
 	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/bflattened/bflat

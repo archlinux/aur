@@ -2,7 +2,7 @@
 pkgname=bflat-bin
 pkgver=7.0.1
 pkgrel=1
-pkgdesc="bflat"
+pkgdesc="Bflat C# compiler"
 arch=('x86_64')
 url="https://github.com/bflattened/bflat"
 license=('AGPLv3')
