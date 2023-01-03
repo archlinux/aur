@@ -4,7 +4,7 @@ _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
 pkgver=1.3.235
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (mingw-w64)'
 arch=(any)
 url='https://www.khronos.org/vulkan/'
@@ -15,12 +15,12 @@ depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz"
-  'https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch')
+  "${pkgname}-710.patch::https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch")
 sha256sums=('948407ba3662801b87bae170db2ed1a7aebe900bb66405be7d301bf656140595'
             '55736dff82300a74834beb9c832c8c2937158f7ada5993a01d832664f72c38a9')
 
 _srcdir="${_dirname}-${pkgver}"
-_architectures='x86_64-w64-mingw32'
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=(
   -Wno-dev
   -DCMAKE_BUILD_TYPE=Release
@@ -31,7 +31,7 @@ _flags=(
 
 prepare() {
   cd "${_srcdir}"
-  patch -p1 -i '../710.patch'
+  patch -p1 -i "../${pkgname}-710.patch"
 }
 
 build() {
