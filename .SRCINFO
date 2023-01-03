@@ -1,6 +1,6 @@
 pkgbase = p4v
 	pkgdesc = Perforce Visual Client
-	pkgver = 2022.2.2336701
+	pkgver = 2022.3.2370885
 	pkgrel = 1
 	url = https://www.perforce.com
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = p4v
 	source = p4admin.desktop
 	source = p4merge.desktop
 	source = LICENSE
-	source = 20221010-p4v-2022.2.2336701.tgz::https://www.perforce.com/downloads/perforce/r22.2/bin.linux26x86_64/p4v.tgz
+	source = 20230103-p4v-2022.3.2370885.tgz::https://www.perforce.com/downloads/perforce/r22.3/bin.linux26x86_64/p4v.tgz
 	sha256sums = 1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0
 	sha256sums = 10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827
 	sha256sums = 139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = 8fdade4aafe25f568a61cfd80823aa90599c2a404b7c6b4a0862c84b07a9f8d2
+	sha256sums = 9fdee2b543a2c1c73119b50b6a88e10738db96587726f5c5441778cc59fcbb36
 
 pkgname = p4v
