@@ -2,7 +2,7 @@
 
 pkgname=numlockl
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Turns on the numlock key.'
 arch=('x86_64')
 url='https://gitlab.com/phoepsilonix/numlockl'
