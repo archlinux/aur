@@ -1,6 +1,6 @@
 pkgbase = p4
 	pkgdesc = Perforce command line client
-	pkgver = 2022.1.2344699
+	pkgver = 2022.2.2369846
 	pkgrel = 1
 	url = https://www.perforce.com
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = p4
 	validpgpkeys = 7123CB760FF18869
 	validpgpkeys = E58131C0AEA7B082C6DC4C937123CB760FF18869
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	source_i686 = 22.1-20221010-p4::https://www.perforce.com/downloads/perforce/r22.1/bin.linux26x86/p4
-	source_i686 = 22.1-20221010-p4.asc::https://www.perforce.com/downloads/perforce/r22.1/bin.linux26x86/p4.asc
+	source_i686 = 22.2-20230103-p4::https://www.perforce.com/downloads/perforce/r22.2/bin.linux26x86/p4
+	source_i686 = 22.2-20230103-p4.asc::https://www.perforce.com/downloads/perforce/r22.2/bin.linux26x86/p4.asc
 	sha256sums_i686 = SKIP
 	sha256sums_i686 = SKIP
-	source_x86_64 = 22.1-20221010-p4::https://www.perforce.com/downloads/perforce/r22.1/bin.linux26x86_64/p4
-	source_x86_64 = 22.1-20221010-p4.asc::https://www.perforce.com/downloads/perforce/r22.1/bin.linux26x86_64/p4.asc
+	source_x86_64 = 22.2-20230103-p4::https://www.perforce.com/downloads/perforce/r22.2/bin.linux26x86_64/p4
+	source_x86_64 = 22.2-20230103-p4.asc::https://www.perforce.com/downloads/perforce/r22.2/bin.linux26x86_64/p4.asc
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
