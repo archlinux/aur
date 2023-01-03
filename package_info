@@ -1,0 +1,5 @@
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[prowlarr-develop](https://aur.archlinux.org/packages/prowlarr-develop/)
+UpdateMethod=External
+UpdateMethodMessage=flag [prowlarr-develop](https://aur.archlinux.org/packages/prowlarr-develop/) [out-of-date](https://aur.archlinux.org/pkgbase/prowlarr-develop/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
+Branch=develop

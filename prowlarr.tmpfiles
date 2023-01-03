@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/prowlarr 0755 prowlarr prowlarr
+Z /var/lib/prowlarr - prowlarr prowlarr
+L /var/log/prowlarr - - - - /var/lib/prowlarr/logs/
