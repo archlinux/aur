@@ -1,6 +1,6 @@
 pkgbase = linux-drm-tip-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 6.1.r1140694.a29956c69a56
+	pkgver = 6.2.r1153952.259088715ebd
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = linux-drm-tip-git
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx<6.0.0
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
