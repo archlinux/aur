@@ -3,11 +3,11 @@
 pkgname=flaresolverr-git
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.0.0.r21.g36226b3
+pkgver=3.0.0.r35.g33249fc
 pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
-url='https://github.com/FlareSolverr/FlareSolverr'
+url='https://github.com/AeonLucid/FlareSolverr'
 license=('MIT')
 depends=('python' 'chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout' 'python-requests' 'python-websockets' 'python-xvfbwrapper')
 makedepends=('git')
