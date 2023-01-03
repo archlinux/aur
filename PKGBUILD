@@ -3,7 +3,7 @@
 
 pkgname=python-google-resumable-media
 _pkg="${pkgname#python-}"
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 	'python-aiohttp: for aiohttp support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('27c52620bd364d1c8116eaac4ea2afcbfb81ae9139fb3199652fcac1724bfb6c')
+sha256sums=('8d5518502f92b9ecc84ac46779bd4f09694ecb3ba38a3e7ca737a86d15cbca1f')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -27,11 +27,11 @@ build() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dvm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv \
 		"$_site/${_pkg//-/_}-$pkgver.dist-info/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/"
 }

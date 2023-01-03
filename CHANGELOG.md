@@ -4,21 +4,40 @@
 
 [1]: https://pypi.org/project/google-resumable-media/#history
 
-### [2.3.3](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.2...v2.3.3) (2022-05-05)
+## [2.4.0](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.3...v2.4.0) (2022-09-29)
+
+
+### Features
+
+* Handle interrupted downloads with decompressive transcoding ([#346](https://github.com/googleapis/google-resumable-media-python/issues/346)) ([f4d26b7](https://github.com/googleapis/google-resumable-media-python/commit/f4d26b7317bf452c8bc4e7f140f9d10e088b8644))
+
+
+### Bug Fixes
+
+* Allow recover to check the status of upload regardless of state ([#343](https://github.com/googleapis/google-resumable-media-python/issues/343)) ([3599267](https://github.com/googleapis/google-resumable-media-python/commit/3599267df25e54be8d1aa07a673f74d7230aa0b7))
+* Require python 3.7+ ([#337](https://github.com/googleapis/google-resumable-media-python/issues/337)) ([942665f](https://github.com/googleapis/google-resumable-media-python/commit/942665f1bb01d2efb604e0be52736690160973b9))
+* Use unittest.mock ([#329](https://github.com/googleapis/google-resumable-media-python/issues/329)) ([82f9769](https://github.com/googleapis/google-resumable-media-python/commit/82f9769f3368404d1854dd22eeed34eeb25ea835))
+
+
+### Documentation
+
+* Fix changelog header to consistent size ([#331](https://github.com/googleapis/google-resumable-media-python/issues/331)) ([7b1dc9c](https://github.com/googleapis/google-resumable-media-python/commit/7b1dc9cc547d6cff7d1340d5b688d1cb0c492e2a))
+
+## [2.3.3](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.2...v2.3.3) (2022-05-05)
 
 
 ### Bug Fixes
 
 * retry client side requests timeout ([#319](https://github.com/googleapis/google-resumable-media-python/issues/319)) ([d0649c7](https://github.com/googleapis/google-resumable-media-python/commit/d0649c7509f4a45623d8676cbc37690864e1ca2f))
 
-### [2.3.2](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.1...v2.3.2) (2022-03-08)
+## [2.3.2](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.1...v2.3.2) (2022-03-08)
 
 
 ### Bug Fixes
 
 * append existing headers in prepare_initiate_request ([#314](https://github.com/googleapis/google-resumable-media-python/issues/314)) ([dfaa317](https://github.com/googleapis/google-resumable-media-python/commit/dfaa31703b1bdce80012622687f8cb02db7f4570))
 
-### [2.3.1](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.0...v2.3.1) (2022-03-03)
+## [2.3.1](https://github.com/googleapis/google-resumable-media-python/compare/v2.3.0...v2.3.1) (2022-03-03)
 
 
 ### Bug Fixes
@@ -32,7 +51,7 @@
 
 * safely resume interrupted downloads ([#294](https://github.com/googleapis/google-resumable-media-python/issues/294)) ([b363329](https://github.com/googleapis/google-resumable-media-python/commit/b36332915a783ef748bc6f8126bc6b41ee9a044d))
 
-### [2.2.1](https://github.com/googleapis/google-resumable-media-python/compare/v2.2.0...v2.2.1) (2022-02-09)
+## [2.2.1](https://github.com/googleapis/google-resumable-media-python/compare/v2.2.0...v2.2.1) (2022-02-09)
 
 
 ### Bug Fixes
@@ -64,7 +83,7 @@
 
 * Include ConnectionError and urllib3 exception as retriable ([#282](https://www.github.com/googleapis/google-resumable-media-python/issues/282)) ([d33465f](https://www.github.com/googleapis/google-resumable-media-python/commit/d33465fc047f4188dd967871ea93255aefd4ac2e))
 
-### [2.0.3](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.2...v2.0.3) (2021-09-20)
+## [2.0.3](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.2...v2.0.3) (2021-09-20)
 
 
 ### Bug Fixes
@@ -72,14 +91,14 @@
 * add REQUEST_TIMEOUT 408 as retryable code ([#270](https://www.github.com/googleapis/google-resumable-media-python/issues/270)) ([d0ad0aa](https://www.github.com/googleapis/google-resumable-media-python/commit/d0ad0aade5f4e7c8efed4f4339fc31fb3304fd3c))
 * un-pin google-crc32c ([#267](https://www.github.com/googleapis/google-resumable-media-python/issues/267)) ([6b03a13](https://www.github.com/googleapis/google-resumable-media-python/commit/6b03a13717e1d4d18186bdf2146d5b452d9e3237))
 
-### [2.0.2](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.1...v2.0.2) (2021-09-02)
+## [2.0.2](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.1...v2.0.2) (2021-09-02)
 
 
 ### Bug Fixes
 
 * temporarily pin google-crc32c to 1.1.2 to mitigate upstream issue affecting OS X Big Sur ([#264](https://www.github.com/googleapis/google-resumable-media-python/issues/264)) ([9fa344f](https://www.github.com/googleapis/google-resumable-media-python/commit/9fa344f42a99db1af27b8ca126a2ea6b3c01d837))
 
-### [2.0.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.0...v2.0.1) (2021-08-30)
+## [2.0.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v2.0.0...v2.0.1) (2021-08-30)
 
 
 ### Bug Fixes
@@ -105,21 +124,21 @@
 
 * drop Python 2.7 support ([#229](https://www.github.com/googleapis/google-resumable-media-python/issues/229)) ([af10d4b](https://www.github.com/googleapis/google-resumable-media-python/commit/af10d4b9a5a3f97f08cf1c634f13b0fb24fc83b3))
 
-### [1.3.3](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.2...v1.3.3) (2021-07-30)
+## [1.3.3](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.2...v1.3.3) (2021-07-30)
 
 
 ### Reverts
 
 * revert "fix: add retry coverage to the streaming portion of a download" ([#245](https://www.github.com/googleapis/google-resumable-media-python/issues/245)) ([98673d0](https://www.github.com/googleapis/google-resumable-media-python/commit/98673d01e90de8ea8fb101348dd9d15ae4e0531d))
 
-### [1.3.2](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.1...v1.3.2) (2021-07-27)
+## [1.3.2](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.1...v1.3.2) (2021-07-27)
 
 
 ### Bug Fixes
 
 * add retry coverage to the streaming portion of a download ([#241](https://www.github.com/googleapis/google-resumable-media-python/issues/241)) ([cc1f07c](https://www.github.com/googleapis/google-resumable-media-python/commit/cc1f07c241876dba62927f841b1a61aa2554996a))
 
-### [1.3.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.0...v1.3.1) (2021-06-18)
+## [1.3.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v1.3.0...v1.3.1) (2021-06-18)
 
 
 ### Bug Fixes
@@ -166,7 +185,7 @@
 
 * bump 'google-crc32c >= 1.0' ([#162](https://www.github.com/googleapis/google-resumable-media-python/issues/162)) ([eaf9faa](https://www.github.com/googleapis/google-resumable-media-python/commit/eaf9faa80dc51bd719161557584e151b30c7e082))
 
-### [0.7.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v0.7.0...v0.7.1) (2020-08-06)
+## [0.7.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v0.7.0...v0.7.1) (2020-08-06)
 
 
 ### Dependencies
@@ -203,7 +222,7 @@
 
 * update client_documentation link ([#136](https://www.github.com/googleapis/google-resumable-media-python/issues/136)) ([063b4f9](https://www.github.com/googleapis/google-resumable-media-python/commit/063b4f9f3ea3dff850d9ae46b2abf25d08312320))
 
-### [0.5.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v0.5.0...v0.5.1) (2020-05-26)
+## [0.5.1](https://www.github.com/googleapis/google-resumable-media-python/compare/v0.5.0...v0.5.1) (2020-05-26)
 
 
 ### Bug Fixes
