@@ -1,5 +1,5 @@
 pkgname=mingw-w64-sdl2
-pkgver=2.26.1
+pkgver=2.26.2
 pkgrel=1
 pkgdesc='A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2) (mingw-w64)'
 license=('MIT')
@@ -10,7 +10,7 @@ _archs=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 source=("${url}/release/SDL2-${pkgver}.tar.gz")
-sha256sums=('02537cc7ebd74071631038b237ec4bfbb3f4830ba019e569434da33f42373e04')
+sha256sums=('95d39bc3de037fbdfa722623737340648de4f180a601b0afad27645d150b99e0')
 options=(staticlibs '!strip' '!buildflags')
 
 prepare() {
