@@ -16,8 +16,8 @@ license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/gcc"
-makedepends=("${target}-binutils"
-             "libgmp-static"
+depends=("${target}-binutils")
+makedepends=("libgmp-static"
              "mpfr-static"
              "libmpc-static"
              "gmp4-static"
