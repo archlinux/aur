@@ -1,0 +1,5 @@
+*.deb
+*.zst
+pkg/
+src/
+dtimgextract/

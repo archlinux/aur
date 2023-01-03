@@ -1,0 +1,18 @@
+pkgbase = dtimgextract-git
+	pkgdesc = Tool to decompile a qualcomm dt.img into its split dtb files for the supported boards.
+	pkgver = 23.db133c1
+	pkgrel = 1
+	url = https://github.com/s0be/dtimgextract
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	provides = dtimgextract
+	conflicts = dtimgextract
+	source = git+https://github.com/s0be/dtimgextract
+	sha256sums = SKIP
+
+pkgname = dtimgextract-git
