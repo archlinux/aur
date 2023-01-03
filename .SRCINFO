@@ -1,0 +1,16 @@
+pkgbase = xdm
+	pkgdesc = XXiaoA's dotfiles manager
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/XXiaoA/xdm
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	provides = xdm
+	source = https://github.com/XXiaoA/xdm/releases/download/0.4.1/xdm-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/XXiaoA/xdm/main/LICENSE
+	sha1sums = ce943cf077d18a74b1f79a850f3937ceb7b5650d
+	sha1sums = SKIP
+
+pkgname = xdm
