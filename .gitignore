@@ -1,0 +1,4 @@
+cmake-shared/
+pkg/
+src/
+*.pkg.tar.*
