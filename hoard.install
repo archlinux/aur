@@ -1,0 +1,6 @@
+post_install() {
+	echo "--------------------------------------------"
+	echo "Add the following code to your .bashrc file:"
+	echo "source /usr/share/doc/hoard/hoard.bash"
+	echo "--------------------------------------------"
+}
