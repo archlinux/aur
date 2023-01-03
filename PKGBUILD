@@ -1,6 +1,6 @@
 pkgname=toot
 _name=toot
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="a Mastodon CLI client"
 makedepends=('python-setuptools')
@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('any')
 url="https://github.com/ihabunek/toot"
 source=(https://github.com/ihabunek/${_name}/archive/${pkgver}.zip)
-sha256sums=('3c4aa4b7e8ed64b1e540332daa613e99fa2c053d2e9fbb9a8ed3d078abf9cb9b')
+sha256sums=('70d60aec78db3391835e5f062ed63b0d27472b888fcc70359817593ef2e5a707')
 
 build() {
     cd "$pkgname-$pkgver"
