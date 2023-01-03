@@ -1,9 +1,8 @@
 pkgbase = clipboard-bin
 	pkgdesc = Cut, copy, and paste anything in your terminal (binary version).
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Slackadays/Clipboard
-	install = clipboard.install
 	arch = x86_64
 	license = GPL3
 	provides = clipboard
