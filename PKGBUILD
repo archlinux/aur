@@ -64,7 +64,7 @@ build() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  # export PATH="${PATH}:/usr/${target}/bin"
+  export PATH="${PATH}:/usr/${target}/bin"
 
   local _cflags=(${cflags[@]}
                  -I/usr/include
