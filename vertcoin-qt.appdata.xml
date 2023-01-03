@@ -9,12 +9,9 @@
     <url type="bugtracker">https://github.com/vertcoin-project/vertcoin-core/issues</url>
     <launchable type="desktop-id">vertcoin-qt.desktop</launchable>
     <description>
-        <p>Vertcoin is an experimental digital currency that enables instant
-            payments to anyone, anywhere in the world. Vertcoin uses
-            peer-to-peer technology to operate with no central authority:
-            managing transactions and issuing money are carried out
-            collectively by the network. Vertcoin Core is the name of open
-            source software which enables the use of this currency.</p>
+        <p> Vertcoin Core connects to the Vertcoin peer-to-peer network to download and
+            fully validate blocks and transactions. It also includes a wallet and
+            graphical user interface.</p>
     </description>
     <screenshots>
         <screenshot>
