@@ -10,7 +10,7 @@ pkgname=("${target}-${_bu}")
 pkgver="v2.35.2"
 pkgrel=1
 _pkgdesc=("A set of programs to assemble and manipulate binary and object files "
-          "for the Sony PlayStation® 2 videogame system (binutils, ${_target}).")
+          "for the Sony PlayStation® 2 videogame system (binutils, ${target}).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('BSD')

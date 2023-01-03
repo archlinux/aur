@@ -1,5 +1,5 @@
 pkgbase = mipsel-ps2-irx-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Sony PlayStation® 2 videogame system (binutils, ).
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Sony PlayStation® 2 videogame system (binutils, mipsel-ps2-irx).
 	pkgver = v2.35.2
 	pkgrel = 1
 	url = https://github.com/ps2dev/binutils-gdb
