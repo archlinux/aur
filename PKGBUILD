@@ -2,8 +2,8 @@
 # -*- mode: sh -*-
 
 pkgname=timestampit
-pkgver=0.3.3.1
-pkgrel=2
+pkgver=0.3.3.2
+pkgrel=1
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://codeberg.org/kas/timestampit/'
@@ -35,13 +35,13 @@ package() {
 }
 
 sha256sums=(
-  'a6b5057e1fe1f5aca1a9cbc1523b75638833cffc13f087faa93b6cb397a22394'
+  'a837ef6d2a9d96584512dabd657a90642e8a128b30a062527093e23e5efcacf9'
 )
 sha512sums=(
-  '6abb60cde49bbf4a1eb2e72b2c67bca9c70f6bb8359cfab195069f102017e95e6cf6341308398a69e3aa7261d53139f9b79b82f3e4bb39f921ebc8c27f428ae3'
+  '492aca94307d7cd1ff333bc22f29b1c7380b01eb3a84ff317f9f6f874c84707c7d4045c67799596fa4d235e7ff035412883a1605869a33dbfb7cffffe6f323b1'
 )
 b2sums=(
-  '0927c971be2a12b2d5a49552727553c9071bca82e2fd040bf12f6483095a9f9fe1037c866b45032c4f3dce80890a66bdf80d9e4758fef2276ec01bfe196036c2'
+  '3bf5979183e24026a055173401e8adda4454f78d100ea5f0d31f26ce2ba584784a735c251151afcbb6b4a32674a2dbb9cc9f673a55b315425cb370031b46a247'
 )
 
 # eof
