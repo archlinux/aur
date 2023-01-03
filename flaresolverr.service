@@ -12,7 +12,7 @@ Group=flaresolverr
 Environment="LOG_LEVEL=info"
 Environment="CAPTCHA_SOLVER=none"
 WorkingDirectory=/srv/http/flaresolverr
-ExecStart=/usr/bin/flaresolverr
+ExecStart=/usr/bin/python /srv/http/flaresolverr/src/flaresolverr.py
 TimeoutStopSec=30
 
 [Install]
