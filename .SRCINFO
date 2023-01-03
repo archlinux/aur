@@ -1,7 +1,7 @@
 pkgbase = btdu-bin
 	pkgdesc = Sampling disk usage profiler for btrfs
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyberShadow/btdu
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = btdu-bin
 	depends = ncurses
 	provides = btdu=0.5.0
 	conflicts = btdu
-	source = btdu-bin-0.5.0.man1::https://github.com/CyberShadow/btdu/raw/master/btdu.1
+	source = btdu-bin-0.5.0.man1::https://github.com/CyberShadow/btdu/raw/v0.5.0/btdu.1
 	b2sums = 27fdc27646a09bd2822d5f6b2acfa15c6caaaeaa1115e91f60f2460231bec4a5843caeb4770311f75cd4c3d3153e025ccf7347f3ecf7c35bc95d74e501a87e27
 	source_x86_64 = btdu-bin-0.5.0::https://github.com/CyberShadow/btdu/releases/download/v0.5.0/btdu-static-x86_64
 	b2sums_x86_64 = e35e33764e9473ec2aca0096ff6315d3f142c3f9a7556ba3c8529447cdb85d6b92de9620478094f2d405aa1f9b69605faac741905d3cb63eb309d6f24f1f00ac

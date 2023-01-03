@@ -3,7 +3,7 @@
 _pkgname=btdu
 pkgname="$_pkgname-bin"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sampling disk usage profiler for btrfs'
 arch=('x86_64' 'aarch64')
 url="https://github.com/CyberShadow/$_pkgname"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('ncurses')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$pkgname-$pkgver.man1::$url/raw/master/btdu.1")
+source=("$pkgname-$pkgver.man1::$url/raw/v$pkgver/btdu.1")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-static-x86_64")
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-glibc-aarch64")
 b2sums=('27fdc27646a09bd2822d5f6b2acfa15c6caaaeaa1115e91f60f2460231bec4a5843caeb4770311f75cd4c3d3153e025ccf7347f3ecf7c35bc95d74e501a87e27')
