@@ -1,7 +1,7 @@
 pkgbase = xfce4-dockbarx-plugin
 	pkgdesc = Embed DockbarX in the xfce4-panel
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/xuzhen/xfce4-dockbarx-plugin
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = xfce4-dockbarx-plugin
 	arch = armv7h
 	arch = aarch64
 	license = X11
-	makedepends = vala
 	makedepends = cmake
 	depends = dockbarx>=1.0beta
 	depends = xfce4-panel
