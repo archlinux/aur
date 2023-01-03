@@ -6,7 +6,7 @@
 
 pkgname=openshot
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An award-winning free and open-source video editor"
 arch=(any)
 url="https://www.openshot.org/"
