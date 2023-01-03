@@ -1,6 +1,6 @@
 pkgbase = mips64r5900el-ps2-elf-gcc-stage1
-	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (mips64r5900el-ps2-elf)
-	pkgver = v11.3.0
+	pkgdesc = The GNU Compiler Collection. Stage 1 for toolchain building (mips64r5900el-ps2-elf).
+	pkgver = v10.2.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/gcc
 	arch = x86_64
@@ -10,7 +10,10 @@ pkgbase = mips64r5900el-ps2-elf-gcc-stage1
 	makedepends = mpfr-static
 	makedepends = libmpc-static
 	makedepends = zstd-static
+	provides = mips64r5900el-ps2-elf-gcc
 	source = mips64r5900el-ps2-elf-gcc-stage1::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
+	source = https://libisl.sourceforge.io/isl-0.21.tar.xz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mips64r5900el-ps2-elf-gcc-stage1
