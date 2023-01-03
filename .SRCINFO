@@ -1,6 +1,6 @@
 pkgbase = libliri-git
 	pkgdesc = Utilities for Liri Quick applications
-	pkgver = r178.f332dbb
+	pkgver = r183.5ebe982
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
