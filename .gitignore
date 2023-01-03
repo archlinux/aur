@@ -1,0 +1,4 @@
+appcenter/
+pkg/
+src/
+*.pkg.tar.*
