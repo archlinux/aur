@@ -1,0 +1,5 @@
+LICENSE.pdf
+pcoip-client-*.pkg.tar.*
+*.deb
+pkg/
+src/
