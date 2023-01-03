@@ -12,7 +12,7 @@ pkgbase = anbox-image-gapps-rooted-xposed
 	provides = anbox-image
 	conflicts = anbox-image
 	noextract = XposedInstaller_3.1.5.apk
-	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
+	source = https://web.archive.org/web/20210607055240if_/https://build.anbox.io/android-images/2018/07/19/android_amd64.img
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs
 	source = http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip
@@ -22,7 +22,7 @@ pkgbase = anbox-image-gapps-rooted-xposed
 	source = media_codecs_google_video.xml
 	source = media_codecs_google_audio.xml
 	source = media_codecs_google_telephony.xml
-	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20201201/open_gapps-x86_64-7.1-pico-20201201.zip
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20220503/open_gapps-x86_64-7.1-pico-20220503.zip
 	md5sums = 26874452a6521ec2e37400670d438e33
 	md5sums = 7ebf618b1af94a02322d9f2d2610090b
 	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
@@ -33,7 +33,6 @@ pkgbase = anbox-image-gapps-rooted-xposed
 	md5sums = 599598e70060eb74c119cf7dac0ce466
 	md5sums = 43193761081a04ca18a28d4a6e039950
 	md5sums = 91f5f3e5c31f8e221ae8f318527dcb83
-	md5sums = e88fa62b318ad5bdb4b7db5ea63e17b7
+	md5sums = 45d25ed9295097c27dd79de009549eb8
 
 pkgname = anbox-image-gapps-rooted-xposed
-

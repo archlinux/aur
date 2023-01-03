@@ -30,7 +30,7 @@ _gapps_list=(
     'vending-x86_64'
 )
 source=(
-    "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "https://web.archive.org/web/20210607055240if_/https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip"
