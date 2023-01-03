@@ -65,18 +65,18 @@ package() {
   local _target
   local _include="${pkgdir}/usr/${target}/include/${_pe}"
   local _lib="${pkgdir}/usr/${target}/lib/${_pe}"
-  mkdir -p "${pkgdir}/${_pe}-include"
-  mkdir -p "${pkgdir}/${_pe}-lib"
+  # mkdir -p "${pkgdir}/${_pe}-include"
+  # mkdir -p "${pkgdir}/${_pe}-lib"
   cd "${srcdir}/${pkgname}"
   for _target in "${target}"; do
     make -C platform/ps2 DESTDIR="${pkgdir}/usr/${target}" "${_make_opts[@]}" install
-    mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/${_pe}-include"
-    mkdir -p "${_include}"
-    mv "${pkgdir}/${_pe}-include/"* "${_include}"
-    mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/${_pe}-lib"
-    mkdir -p "${_pe}-lib"
-    mv "${pkgdir}/${_pe}-lib/"* "${_lib}"
-    cd ..
-    rm -rf "${pkgdir}/${_pe}-include" "${pkgdir}/${_pe}-lib"
+    # mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/${_pe}-include"
+    # mkdir -p "${_include}"
+    # mv "${pkgdir}/${_pe}-include/"* "${_include}"
+    # mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/${_pe}-lib"
+    # mkdir -p "${_lib}"
+    # mv "${pkgdir}/${_pe}-lib/"* "${_lib}"
+    # cd ..
+    # rm -rf "${pkgdir}/${_pe}-include" "${pkgdir}/${_pe}-lib"
   done
 }
