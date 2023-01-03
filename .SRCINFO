@@ -1,0 +1,11 @@
+pkgbase = dvp-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Sony PlayStation® 2 videogame system (binutils, dvp).
+	pkgver = v2.14
+	pkgrel = 1
+	url = https://github.com/ps2dev/binutils-gdb
+	arch = x86_64
+	license = BSD
+	source = dvp-binutils::git+https://github.com/ps2dev/binutils-gdb#commit=9cca5c1781d1a03b9b3b61a3e5270cdb9c69295e
+	sha256sums = SKIP
+
+pkgname = dvp-binutils
