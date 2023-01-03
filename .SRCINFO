@@ -1,6 +1,6 @@
 pkgbase = cando-git
 	pkgdesc = Bringing Common Lisp and C++ Together, including Cando
-	pkgver = 2.0.0_40_g219c77771_g40c77e59
+	pkgver = 2.1.0_1_g271276dbe_ga01a9a5a
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
