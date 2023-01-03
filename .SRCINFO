@@ -1,6 +1,6 @@
 pkgbase = dmarc_report
 	pkgdesc = Generate nice reports from one or more DMARC report files
-	pkgver = 1.3.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/gene-git/dmarc_report
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = dmarc_report
 	makedepends = rsync
 	depends = python>3.9
 	depends = python-netaddr
+	depends = python-tomli
 	source = git+https://github.com/gene-git/dmarc_report
 	sha512sums = SKIP
 
