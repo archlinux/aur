@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='8'
+pkgrel='9'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -108,6 +108,9 @@ source=(
   '0009-kernel-5.14-task_struct.state-unsigned-tty.patch'
   '0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0011-kernel-5.17-change-PDE_DATA.patch'
+  '0012-kernel-serial_UART_XMIT_SIZE.patch' # https://hastebin.com/bipeleyize.diff https://lore.kernel.org/linux-arm-kernel/6fb33489-946f-ad92-df35-7f608420bc7@linux.intel.com/T/
+  '0013-kernel-6.1-set_termios-const-ktermios.patch' # https://hastebin.com/rewemacese.csharp https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  '0013a-kernel-6.0-set_termios-const-ktermios.patch'
   'npreal2.sh'
 )
 #_srcdir="${pkgname}"
@@ -126,6 +129,9 @@ md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          '16504fb58a0416a26fe04e8e3d9867a7'
          'd3716370fdd8b1ad888498fc82fca9f4'
          '9f62a0a931436bda473259832d9ebc5b'
+         '93789057c6b3f66467ed936987ed003c'
+         '9303500d793cb4ebaa79b428607d403d'
+         '2d79f7913c70bad8ae9316360bc2d13a'
          '90ac27b669542c11b0a9b6763f6e0d9b')
 sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
@@ -139,6 +145,9 @@ sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7c9380a794725418015d62411f697850096b3c8a62666f5ec9e562e93ba3ee4c'
             'd61ca42d7fe58b409c1a1c7237788d412c36042acaa61e95008e48ec580b5153'
             '609388af991dd4095300dec76f85d5abceb68395fde5e157fa084fb4af8cad60'
+            '6c6abf4902c235cc1d39bcf97005de1e10962c9b42263b5ffd57a9c856be8934'
+            '4a02f4f4963ee10da37614e3cc6a205225b8a052db71240c397d32fe48365a2b'
+            'b9b73e078fef61fae0191c9b9bba8c20560559b777014911f4298ec0367b2fcf'
             '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -245,58 +254,66 @@ prepare() {
     -i 'nport.h'
 
   #diff -pNau5 'mxmknod'{.orig,} > '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
-  patch -Nbup0 -i "${srcdir}/0001-mxmknod-folder-fix-and-chgrp-uucp.patch"
+  patch -Nup0 -i "${srcdir}/0001-mxmknod-folder-fix-and-chgrp-uucp.patch"
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0002-kernel-5.0.0-access_ok.patch'
-  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
+  #patch -Nup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
-  patch -Nbup0 -i "${srcdir}/0003-kernel-5.6-proc_dir_entry-proc_ops.patch"
+  patch -Nup0 -i "${srcdir}/0003-kernel-5.6-proc_dir_entry-proc_ops.patch"
 
   #cp -p 'mxloadsvr.c'{,.orig}; false
   #diff -pNau5 'mxloadsvr.c'{.orig,} > '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
-  patch -Nbup0 -i "${srcdir}/0004-mxloadsvr.c-disable-built-in-systemd-support.patch"
+  patch -Nup0 -i "${srcdir}/0004-mxloadsvr.c-disable-built-in-systemd-support.patch"
 
   # Not compatible with Kernel 4.4 headers
   #sed -n -e '/^#ifndef __KERNEL__/,/^#endif/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" | sed -e 's:__KERNEL__:ASYNC_INITIALIZED:g' >> 'npreal2_kernel510.h'
   sed -n -E -e '/ASYNCB_INITIALIZED|ASYNCB_CLOSING|ASYNCB_NORMAL_ACTIVE|ASYNCB_CHECK_CD/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" >> 'npreal2_kernel510.h'
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0005-kernel-5.10-async-initialized.patch'
-  patch -Nbup0 -i "${srcdir}/0005-kernel-5.10-async-initialized.patch"
+  patch -Nup0 -i "${srcdir}/0005-kernel-5.10-async-initialized.patch"
   sed -e '/ArchLinuxPatch-0005-Begin/ r npreal2_kernel510.h' -i 'npreal2.c'
   rm 'npreal2_kernel510.h'
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0006-kernel-5.12-tty-low_latency.patch'
-  patch -Nbup0 -i "${srcdir}/0006-kernel-5.12-tty-low_latency.patch"
+  patch -Nup0 -i "${srcdir}/0006-kernel-5.12-tty-low_latency.patch"
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0007-tty_unregister_driver-void.patch'
-  patch -Nbup0 -i "${srcdir}/0007-tty_unregister_driver-void.patch"
+  patch -Nup0 -i "${srcdir}/0007-tty_unregister_driver-void.patch"
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0008-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nbup0 -i "${srcdir}/0008-kernel-5.13-dropped-tty_check_change.patch"
+  patch -Nup0 -i "${srcdir}/0008-kernel-5.13-dropped-tty_check_change.patch"
 
   # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
   # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
   # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
   #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0009-kernel-5.14-task_struct.state-unsigned-tty.patch'
-  patch -Nbup0 -i "${srcdir}/0009-kernel-5.14-task_struct.state-unsigned-tty.patch"
+  patch -Nup0 -i "${srcdir}/0009-kernel-5.14-task_struct.state-unsigned-tty.patch"
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
   #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nbup0 -i "${srcdir}/0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  patch -Nup0 -i "${srcdir}/0010-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
 
   # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
   #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0011-kernel-5.17-change-PDE_DATA.patch'
-  patch -Nbup0 -i "${startdir}/0011-kernel-5.17-change-PDE_DATA.patch"
+  patch -Nup0 -i "${srcdir}/0011-kernel-5.17-change-PDE_DATA.patch"
+
+  # Avenger 2023-01-02 08:00 (UTC)
+  patch -Nup0 -i "${srcdir}/0012-kernel-serial_UART_XMIT_SIZE.patch"
+
+  # Avenger 2023-01-02 08:00 (UTC)
+  #rm -f *.orig; cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0013a-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup0 -i "${srcdir}/0013a-kernel-6.0-set_termios-const-ktermios.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

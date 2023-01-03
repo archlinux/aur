@@ -1,0 +1,67 @@
+--- npreal2.c	2022-12-15 12:56:21.327747314 +0100
++++ npreal2.c	2022-12-15 12:56:56.314313178 +0100
+@@ -1109,8 +1109,8 @@
+ 
+ 	while ( 1 )
+ 	{
+-		c = MIN(count, MIN(SERIAL_XMIT_SIZE - info->xmit_cnt - 1,
+-				SERIAL_XMIT_SIZE - info->xmit_head));
++		c = MIN(count, MIN(UART_XMIT_SIZE - info->xmit_cnt - 1,
++				UART_XMIT_SIZE - info->xmit_head));
+ 
+ 		if ( c <= 0 )
+ 			break;
+@@ -1125,7 +1125,7 @@
+ 			memcpy(info->xmit_buf + info->xmit_head, buf, c);
+ 
+ 		DOWN(info->tx_lock, flags);
+-		info->xmit_head = (info->xmit_head + c) & (SERIAL_XMIT_SIZE - 1);
++		info->xmit_head = (info->xmit_head + c) & (UART_XMIT_SIZE - 1);
+ 		info->xmit_cnt += c;
+ 		UP(info->tx_lock, flags);
+ 
+@@ -1171,7 +1171,7 @@
+ 		return 0;
+ 	}
+ 
+-	if ( info->xmit_cnt >= SERIAL_XMIT_SIZE - 1 )
++	if ( info->xmit_cnt >= UART_XMIT_SIZE - 1 )
+ 	{
+ 		//up(&info->tx_semaphore);
+ 		UP(info->tx_lock, flags);
+@@ -1186,7 +1186,7 @@
+ 	}
+ 
+ 	info->xmit_buf[info->xmit_head++] = ch;
+-	info->xmit_head &= SERIAL_XMIT_SIZE - 1;
++	info->xmit_head &= UART_XMIT_SIZE - 1;
+ 	info->xmit_cnt++;
+ 
+ 	nd->tx_ready = 1;
+@@ -1230,7 +1230,7 @@
+ 	if (!info)
+ 		return 0;
+ 
+-	ret = SERIAL_XMIT_SIZE - info->xmit_cnt - 1;
++	ret = UART_XMIT_SIZE - info->xmit_cnt - 1;
+ 	if ( ret < 0 )
+ 		ret = 0;
+ 	return(ret);
+@@ -3836,7 +3836,7 @@
+ 	while ( count )
+ 	{
+ 		cnt = MIN(count, MIN( info->xmit_cnt,
+-				SERIAL_XMIT_SIZE - info->xmit_tail));
++				UART_XMIT_SIZE - info->xmit_tail));
+ 		if ( cnt <= 0 )
+ 			break;
+ 		if (copy_to_user( buf+rtn,info->xmit_buf + info->xmit_tail,cnt ))
+@@ -3850,7 +3850,7 @@
+ 		DOWN(info->tx_lock, flags);
+ 		info->xmit_cnt -= cnt;
+ 		info->xmit_tail += cnt;
+-		info->xmit_tail = info->xmit_tail & (SERIAL_XMIT_SIZE - 1);
++		info->xmit_tail = info->xmit_tail & (UART_XMIT_SIZE - 1);
+ 		info->icount.tx += cnt;
+ 		UP(info->tx_lock, flags);
+ 	}

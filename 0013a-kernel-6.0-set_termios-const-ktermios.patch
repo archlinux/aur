@@ -1,0 +1,52 @@
+--- npreal2.c.orig	2023-01-02 23:02:37.555942414 -0500
++++ npreal2.c	2023-01-02 23:07:31.938419910 -0500
+@@ -423,12 +423,17 @@ static int	npreal_chars_in_buffer(struct
+ static void	npreal_flush_chars(struct tty_struct *);
+ static int	npreal_put_char(struct tty_struct *,unsigned char);
+ static int	npreal_ioctl(struct tty_struct *,uint,ulong);
+ static void	npreal_throttle(struct tty_struct *);
+ static void	npreal_unthrottle(struct tty_struct *);
++#if LINUX_VERSION_CODE < VERSION_CODE(6,0,0)
+ static void	npreal_set_termios(struct tty_struct *,struct ktermios *);
+ static int	npreal_port_init(struct npreal_struct *,struct ktermios *);
++#else
++static void	npreal_set_termios(struct tty_struct *,const struct ktermios *);
++static int	npreal_port_init(struct npreal_struct *,const struct ktermios *);
++#endif
+ static void	npreal_stop(struct tty_struct *);
+ static void	npreal_start(struct tty_struct *);
+ static void	npreal_hangup(struct tty_struct *);
+ static inline void npreal_check_modem_status(struct npreal_struct *,int);
+ static int	npreal_block_til_ready(struct tty_struct *,struct file *, struct npreal_struct *);
+@@ -1610,11 +1615,15 @@ static void npreal_unthrottle(struct tty
+  *
+  * Note : that a well-designed tty driver should be prepared to accept the case
+  * where old == NULL, and try to do something rational.
+  */
+ static void npreal_set_termios(struct tty_struct * tty,
++#if LINUX_VERSION_CODE < VERSION_CODE(6,0,0)
+ 		struct ktermios * old_termios)
++#else
++		const struct ktermios * old_termios)
++#endif
+ {
+ 	struct npreal_struct *info = (struct npreal_struct *)tty->driver_data;
+ 
+ 	DBGPRINT(MX_DEBUG_LOUD, "(Entry)\n");
+ 
+@@ -2172,11 +2181,15 @@ static void npreal_shutdown(struct nprea
+ }
+ /*
+  * set npreal serial state
+  */
+ static int npreal_port_init(struct npreal_struct *info,
++#if LINUX_VERSION_CODE < VERSION_CODE(6,0,0)
+ 		struct ktermios *old_termios)
++#else
++		const struct ktermios *old_termios)
++#endif
+ {
+ 	struct 	ktermios	*termio;
+ 	int32_t     baud,mode;
+ 	int		baudIndex,modem_status;
+ 	struct 	nd_struct	*nd;

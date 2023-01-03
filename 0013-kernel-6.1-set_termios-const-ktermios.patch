@@ -1,0 +1,31 @@
+--- npreal2.c	2022-12-15 12:56:56.314313178 +0100
++++ npreal2.c	2023-01-02 08:40:08.501468104 +0100
+@@ -425,8 +425,8 @@
+ static int	npreal_ioctl(struct tty_struct *,uint,ulong);
+ static void	npreal_throttle(struct tty_struct *);
+ static void	npreal_unthrottle(struct tty_struct *);
+-static void	npreal_set_termios(struct tty_struct *,struct ktermios *);
+-static int	npreal_port_init(struct npreal_struct *,struct ktermios *);
++static void	npreal_set_termios(struct tty_struct *,const struct ktermios *);
++static int	npreal_port_init(struct npreal_struct *,const struct ktermios *);
+ static void	npreal_stop(struct tty_struct *);
+ static void	npreal_start(struct tty_struct *);
+ static void	npreal_hangup(struct tty_struct *);
+@@ -1612,7 +1612,7 @@
+  * where old == NULL, and try to do something rational.
+  */
+ static void npreal_set_termios(struct tty_struct * tty,
+-		struct ktermios * old_termios)
++		const struct ktermios * old_termios)
+ {
+ 	struct npreal_struct *info = (struct npreal_struct *)tty->driver_data;
+ 
+@@ -2174,7 +2174,7 @@
+  * set npreal serial state
+  */
+ static int npreal_port_init(struct npreal_struct *info,
+-		struct ktermios *old_termios)
++		const struct ktermios *old_termios)
+ {
+ 	struct 	ktermios	*termio;
+ 	int32_t     baud,mode;
