@@ -2,7 +2,7 @@
 # Contributor: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-tally
-pkgver=1.0.17
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="Graph the number of crates that depend on your crate over time"
 url="https://github.com/dtolnay/cargo-tally"
@@ -11,7 +11,7 @@ optdepends=('gnuplot: display graphs')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT' 'APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dtolnay/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('ebea4bb21ad19271576051432183e5780ab62c75d826013dc4d1a22926509519941ad811b3446341612343ea0132afba104c5be504198cd9df19760b0befb1c4')
+sha512sums=('a23151b13d39f1073ee34eb5caddab921f309ccd4f2a52bbc7962c097c826992a2e1331bd6a74d2d30577da1086bafa762785aadf095d5f0ef65eece0dea316c')
 
 build() {
   cd "${pkgname}-${pkgver}"
