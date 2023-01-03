@@ -10,7 +10,7 @@ clean:
 
 test:
 	make clean
-	makepkg
+	makepkg --cleanbuild
 	namcap PKGBUILD
 	namcap *.pkg.tar.zst
 

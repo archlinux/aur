@@ -1,7 +1,7 @@
 # Maintainer: Miroslav Jarý <mira.jary@gmail.com>
 
 pkgname=yin-yang
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Light/dark theme switcher for Linux. Supports popular Desktops, text editors and more!"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'python-numpy' 'python-psutil' 'pyside6' 'python-p
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.zip::https://github.com/oskarsh/Yin-Yang/archive/refs/tags/v$pkgver.zip")
-sha256sums=('dfdc31d9d07e26d28d8b6c6501181281c61ecad40a4d9a53a84012aff7db4898')
+sha256sums=('d0ef9cbec44df28ff0771230ae80f8eb4b0a1455be41b2e64b110bca7294dafa')
 
 package() {
     # This is a modified version of scripts/install.sh
@@ -24,7 +24,6 @@ package() {
         "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
         "$pkgdir/usr/share/applications/"
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-        "$pkgdir/usr/lib/systemd/user/"
         "$pkgdir/usr/share/licenses/yin-yang"
     )
     for dir in "${DIRS[@]}"
@@ -34,12 +33,12 @@ package() {
         fi
     done
 
-    # Pre-cleanup
-    rm -r README*.md scripts/ tests/ requirements.txt
+    # Pre-cleanup not needed files
+    rm -r .??* README*.md scripts/ tests/ requirements.txt
 
     # copy files
     cp -r ./* "$pkgdir/opt/yin-yang/"
-    # cleanup unnecessary files
+    # move license to correct folder
     mv "$pkgdir/opt/yin-yang/LICENSE" "$pkgdir/usr/share/licenses/yin-yang/MIT"
 
     # copy manifest for firefox extension
@@ -50,9 +49,6 @@ package() {
     cp ./resources/Yin-Yang.desktop "$pkgdir/usr/share/applications/Yin-Yang.desktop"
     # copy icon
     cp ./resources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/yin_yang.svg"
-    # systemd unit files
-    cp ./resources/yin_yang.service "$pkgdir/usr/lib/systemd/user/yin_yang.service"
-    cp ./resources/yin_yang.timer "$pkgdir/usr/lib/systemd/user/yin_yang.timer"
 
     cat << "EOF"
  __     ___          __     __
@@ -84,5 +80,5 @@ cat << "EOF"
 EOF
 echo ""
 echo ""
-echo "Check out https://github.com/daehruoydeef/Yin-Yang for help"
+echo "Check out https://github.com/oskarsh/Yin-Yang for help"
 }
