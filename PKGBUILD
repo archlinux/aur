@@ -17,8 +17,8 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('2397e8e69038192c0c7ce942002dd97b1c3b8732672587349663733473f7d5ef'
-            '72101aaff88a915d533ada42e650f928724c84e0177b7d6be726d016517e791c')
+sha256sums=('679424f15ae778cb83baa956960eda8fd669438be2b842eba8b85bdb2923ffaa'
+            '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 prepare() {
   cd "$pkgname-$pkgver"
