@@ -20,7 +20,7 @@ sha256sums_x86_64=('ed10b71df04123b757ef743d3e95755edaff45860a3f040d6f00c7400535
 
 package() {
 	cd ${srcdir}
-	install -D -m755 cli "${pkgdir}/usr/bin/${_pkgname}-cli" 
-	install -D -m755 server "${pkgdir}/usr/bin/${_pkgname}-server" 
+	install -D -m755 cli "${pkgdir}/usr/bin/${_pkgname}-cli"
+	install -D -m755 server "${pkgdir}/usr/bin/${_pkgname}-server"
 	install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
