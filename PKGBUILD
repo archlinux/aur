@@ -6,8 +6,8 @@
 # Contributor:  Pooler                   <https://bitcointalk.org/index.php?action=profile;u=43931>
 
 pkgname=electrum-vtc
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Lightweight Vertcoin wallet'
 arch=('any')
 url='https://vertcoin.org/'
@@ -27,11 +27,10 @@ optdepends=('python-btchip: BTChip hardware wallet support'
             'python-rpyc: send commands to Electrum Python console from an external script'
             'python-qdarkstyle: optional dark theme in graphical mode'
             'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
-            'create-verthash-datafile: generate verthash.dat'
             )
 
-source=("https://github.com/vertcoin-project/electrum/releases/download/v${pkgver}/Electrum-VTC-v${pkgver}.tar.gz")
-sha256sums=('10628f93fb126b358481d797480654aaebc0ea7a202da1d6b8dbd1c4e127d764')
+source=("https://github.com/vertcoin-project/electrum/releases/download/v${pkgver}/Electrum-VTC-${pkgver}.tar.gz")
+sha256sums=('2b89b7ef5ed3a5c90738f60909648f48d8a8a50207fdecffca844d001fb9dfb8')
 provides=('electrum-vtc')
 conflicts=('electrum-vtc')
 
