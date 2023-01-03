@@ -2,7 +2,7 @@
 
 pkgname=imlib
 pkgver=1.9.15
-pkgrel=17
+pkgrel=18
 pkgdesc="General image handling library for X11 and Gtk"
 arch=('x86_64')
 url="http://freshmeat.net/projects/imlib/"
