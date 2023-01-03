@@ -3,7 +3,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=gdevelop
-pkgver=5.1.153
+pkgver=5.1.155
 pkgrel=1
 pkgdesc="Open-source, cross-platform game creator designed to be used by everyone - no programming skills required."
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('gdevelop')
 source=("https://github.com/4ian/GDevelop/releases/download/v${pkgver//.b/-b}/GDevelop-${pkgver%%.*}-${pkgver//.b/-b}.AppImage"
         'https://github.com/4ian/GDevelop/raw/master/Core/docs/images/glogo.png'
         'gdevelop.desktop')
-sha256sums=('5be98afdf6d28cdc61461fe665b1501a003221eee0636f765c5b8f749c4d4c5c'
+sha256sums=('594b8a86e690add0199b7a9afa151c435fb97550109f379b782c3761545913d8'
             '6ec8974d1c073442e1e653ac75d8ab4c1ed1cc1c2d14c6d73d6c50543a4f4b5f'
             'd6074b92d0e5896a33cc007fa59eb35759569047b3a31d35108134beb538e039')
 options=('!strip')
