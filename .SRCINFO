@@ -1,8 +1,8 @@
 pkgbase = mips64r5900el-ps2-elf-gcc
-	pkgdesc = EE compiler which is used in the creation of homebrew software for the Sony PlayStation® 2 videogame system.
-	pkgver = v11.3.0
+	pkgdesc = The GNU Compiler Collection (mips64r5900el-ps2-elf).
+	pkgver = v10.2.0
 	pkgrel = 1
-	url = https://github.com/ps2dev/ps2toolchain-ee
+	url = https://github.com/ps2dev/gcc
 	arch = x86_64
 	license = BSD
 	makedepends = mips64r5900el-ps2-elf-binutils
@@ -15,7 +15,7 @@ pkgbase = mips64r5900el-ps2-elf-gcc
 	makedepends = libmpc-static
 	makedepends = zstd-static
 	source = mips64r5900el-ps2-elf-gcc::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
-	source = https://libisl.sourceforge.io/isl-0.15.tar.xz
+	source = https://libisl.sourceforge.io/isl-0.21.tar.xz
 	sha256sums = SKIP
 	sha256sums = SKIP
 

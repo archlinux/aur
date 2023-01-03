@@ -1,22 +1,22 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 # shellcheck disable=SC2034
-target="mips64r5900el-ps2-elf"
 _module="ee"
 _platform="ps2"
+target="mips64r5900el-${_platform}-elf"
 _base="toolchain"
 pkgname="${target}-gcc"
-pkgver="v11.3.0"
-_islver="0.15"
+pkgver="v10.2.0"
+# pkgver="v11.3.0"
+_islver="0.21"
 pkgrel=1
-_pkgdesc=("EE compiler which is used in the creation of homebrew software "
-          "for the Sony PlayStation® 2 videogame system.")
+_pkgdesc=("The GNU Compiler Collection (${target}).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('BSD')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
-url="${_github}/${_platform}${_base}-${_module}"
+url="${_github}/gcc"
 makedepends=("${target}-binutils"
              "${target}-gcc-stage1"
              "${target}-newlib"
@@ -64,16 +64,18 @@ build() {
   export CXXFLAGS
   export CPPFLAGS
   export LDFLAGS
-  export PATH="${PATH}:/usr/${target}/bin"
+  # export PATH="${PATH}:/usr/${target}/bin"
 
   local _cflags=(${cflags[@]}
                  -I/usr/include
                  # -I/usr/include/isl
                  -L"/usr/lib"
                  # -I"/usr/${target}/include"
+                 # -L"/usr/${target}/lib"
                  # -I"/usr/${target}/include/pthread-embedded"
                  # -include "/usr/${target}/include/pthread-embedded/pthread.h"
                  # -I"/usr/${target}/include/pthread-embedded/bits"
+                 # -I"/usr/${target}/include/newlib-nano"
                  # -I"/usr/${target}/include/newlib-nano"
                  # -std=c99
                  # -std=c++98
@@ -84,6 +86,8 @@ build() {
                   # -L"/usr/${target}/lib"
                   # -L"/usr/${target}/lib/pthread-embedded"
                   # -lstdin
+                  -l:libisl.a
+                  # -ldl
                   -lpthread)
                   # -llibisl)
                   # -L"/usr/${target}/lib/newlib-nano")
@@ -106,32 +110,42 @@ build() {
                            --with-sysroot=/usr/${_target}
                            --with-build-sysroot=/usr/${_target}
                            --target="${_target}"
+                           --host=${CHOST}
+                           --build=${CHOST}
                            --enable-languages="c,c++"
+                           --disable-bootstrap
+                           --disable-shared
+                           --enable-static
                            --with-float=hard
                            --with-sysroot="/usr/${_target}"
                            --with-newlib
-                           --with-isl=/usr
+                           # --disable-graphite
+                           --with-isl
+                           # --with-osl
                            --disable-libssp
                            --disable-multilib
-                           --disable-tls
                            --enable-cxx-flags=-G0
-                           --enable-threads=posix)
+                           --enable-threads=posix
+                           --disable-tls)
 
     # CC="/usr/bin/${target}-gcc" \
     # CPP="/usr/bin/${target}-cpp" \
     # CXX="/usr/bin/${target}-g++" \
-    CC="/usr/bin/gcc-11" \
-    CPP="/usr/bin/cpp-11" \
-    CXX="/usr/bin/g++-11" \
+    # CC="/usr/bin/gcc-11" \
+    # CPP="/usr/bin/cpp-11" \
+    # CXX="/usr/bin/g++-11" \
+    CC="/usr/bin/gcc-7" \
+    CPP="/usr/bin/cpp-7" \
+    CXX="/usr/bin/g++-7" \
     "../configure" ${_configure_opts[@]}
 
     # CC="/usr/bin/${target}-gcc" \
     # CPP="/usr/bin/${target}-cpp" \
     # CXX="/usr/bin/${target}-g++" \
-    CC="/usr/bin/gcc-11" \
-    CPP="/usr/bin/cpp-11" \
-    CXX="/usr/bin/g++-11" \
-    make "${_build_opts[@]}" # all
+    # CC="/usr/bin/gcc-11" \
+    # CPP="/usr/bin/cpp-11" \
+    # CXX="/usr/bin/g++-11" \
+    make "${_build_opts[@]}" all
     
     cd ..
   done
