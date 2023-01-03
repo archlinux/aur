@@ -1,6 +1,6 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=ucto
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 pkgdesc="An advanced rule-based (regular-expression) and unicode-aware tokenizer for various languages. Tokenization is an essential first step in any NLP pipeline."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="ucto"
 url="https://languagemachines.github.io/ucto"
-source=(https://github.com/LanguageMachines/ucto/archive/v0.25.tar.gz)
-md5sums=(45afc2639b88d2e619ffca9fdad6beb3)
+source=(https://github.com/LanguageMachines/ucto/archive/v0.26.tar.gz)
+md5sums=(a98461026b2cd0584cfd824fe9c5624a)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
