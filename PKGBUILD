@@ -2,10 +2,10 @@
 
 pkgname=mupen64plus-rsp-parallel-git
 pkgver=r90.4cf680b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Parallel RSP is a fast RSP LLE plugin for mupen64plus"
-arch=("x86_64" "i686")
+arch=("x86_64")
 url="https://github.com/Mastergatto/parallel-rsp"
 license=("LGPL3" "MIT")
 depends=("mupen64plus-git")
@@ -15,7 +15,7 @@ conflicts=(mupen64plus-rsp-parallel)
 source=("git+https://github.com/Mastergatto/parallel-rsp.git#branch=m64p"
         "fix-build.patch")
 sha256sums=("SKIP"
-            "badfbb0a51ddca3b514e238a547ffe86523bbcd00d09b81a6efaca5c19ce4d7d")
+            "65d6385d8636048e4337ac0a4eed3dc9bfb8ddd37d329f6b6a30a7fda9c1f2e8")
 
 _pkgname=mupen64plus-rsp-parallel
 _pkgdir=parallel-rsp
