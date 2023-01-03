@@ -2,9 +2,9 @@
 # Maintainer: Jef Roosens
 
 pkgname='vieter-git'
-pkgver=0.3.0.r42.g8a2b121
+pkgver=0.5.0.r0.g8a0214b
 pkgrel=1
-pkgdesc='Archlinux repository server & package build system, written in V (development version)'
+pkgdesc='Lightweight Pacman repository server & package build system (development version)'
 depends=('glibc' 'openssl' 'libarchive' 'sqlite')
 makedepends=('git' 'vlang')
 arch=('x86_64' 'aarch64')

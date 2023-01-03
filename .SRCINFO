@@ -1,6 +1,6 @@
 pkgbase = vieter-git
-	pkgdesc = Archlinux repository server & package build system, written in V (development version)
-	pkgver = 0.3.0.r42.g8a2b121
+	pkgdesc = Lightweight Pacman repository server & package build system (development version)
+	pkgver = 0.5.0.r0.g8a0214b
 	pkgrel = 1
 	url = https://git.rustybever.be/vieter-v/vieter
 	arch = x86_64
