@@ -8,7 +8,8 @@ arch=(x86_64)
 depends=(ccid pcsclite)
 optdepends=('sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)')
 license=(custom)
-source=('https://www.dropbox.com/s/q66bhnjoq0xzuas/SAC_Linux_10.8.105_R1_GA.zip?dl=0'
+source=('https://www.dropbox.com/s/q66bhnjoq0xzuas/SAC_Linux_10.8.105_R1_GA.zip'
+        #'https://nullroute.lt/tmp/2023/pkg/SAC_Linux_10.8.105_R1_GA.zip'
         eToken.conf
         safenetauthenticationclient.service)
 sha256sums=('18ecac33e8a1ddb894c23423074592ffd77a272a7255b519d20992662a5c699e'

@@ -8,7 +8,7 @@ pkgbase = sac-core
 	depends = ccid
 	depends = pcsclite
 	optdepends = sac-core-legacy: Support for eToken 32K/64K (CardOS 4.2)
-	source = https://www.dropbox.com/s/q66bhnjoq0xzuas/SAC_Linux_10.8.105_R1_GA.zip?dl=0
+	source = https://www.dropbox.com/s/q66bhnjoq0xzuas/SAC_Linux_10.8.105_R1_GA.zip
 	source = eToken.conf
 	source = safenetauthenticationclient.service
 	validpgpkeys = B37EBA84D2EB0C786F91EEF77F8AA801285DEE57
