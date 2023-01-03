@@ -4,7 +4,7 @@ pkgname=flaresolverr-git
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=2.2.8.r21.g36226b3
-pkgrel=2
+pkgrel=3
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -33,7 +33,6 @@ pkgver() {
 package() {
   mkdir -p "$pkgdir/srv/http/$_pkgname"
   install -Dm644 flaresolverr.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  rm "${srcdir}/${__pkgname}/flaresolverr.service"
   install -Dm644 "${srcdir}/${__pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   rm "${srcdir}/${__pkgname}/LICENSE"
   cp -a "${srcdir}/${__pkgname}/". "${pkgdir}/srv/http/${_pkgname}"
