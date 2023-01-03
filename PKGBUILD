@@ -15,7 +15,7 @@ _json_export=${MINGW_64_TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -30,7 +30,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'n
 [[ $_json_export == ON ]] && makedepends+=('mingw-w64-reflective-rapidjson')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('48991e04a95caeaa60a458a3c05b127d96268a2c3092487010ba7f1fe7c94f3e')
+sha256sums=('1bc7bc43605503a264c065dd531299b23d1e124444d6cf6286f1b5763dc66074')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
