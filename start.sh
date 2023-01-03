@@ -2,13 +2,14 @@
 
 USER_RUN_DIR="/run/user/$(id -u)"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-FONTXDG_CONFIG_HOME="${XDG_CONFIG_HOME}/fontconfig"
+FONTCONFIG_HOME="${XDG_CONFIG_HOME}/fontconfig"
 QQ_APP_DIR="${XDG_CONFIG_HOME}/QQ"
 DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
-NEW_DISPLAY="${DISPLAY}"
+
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
-QQ_HOTUPDATE_VERSION="3.0.0-565"
-QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543")
+QQ_HOTUPDATE_VERSION="3.0.0-571"
+QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565")
+
 
 if [ "${DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     DOWNLOAD_DIR="${HOME}/Downloads"
@@ -40,8 +41,7 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --ro-bind /usr /usr \
     --ro-bind /opt /opt \
     --ro-bind /opt/QQ/workarounds/xdg-open.sh /usr/bin/xdg-open \
-    --ro-bind /usr/lib/snapd-xdg-open/xdg-open /snapd-xdg-open \
-    --ro-bind /usr/bin/xdg-open /real-xdg-open \
+    --ro-bind /usr/lib/flatpak-xdg-utils/xdg-open /real-xdg-open \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
@@ -51,29 +51,21 @@ bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshar
     --dev-bind /run/dbus /run/dbus \
     --bind "${USER_RUN_DIR}" "${USER_RUN_DIR}" \
     --ro-bind-try /etc/fonts /etc/fonts \
-    --ro-bind-try "${FONTXDG_CONFIG_HOME}" "${FONTXDG_CONFIG_HOME}" \
     --dev-bind /tmp /tmp \
     --bind-try "${HOME}/.pki" "${HOME}/.pki" \
     --ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
     --bind-try "${DOWNLOAD_DIR}" "${DOWNLOAD_DIR}" \
     --bind "${QQ_APP_DIR}" "${QQ_APP_DIR}" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/mimeapps.list" "${XDG_CONFIG_HOME}/mimeapps.list" \
-    --bind-try "${XDG_CONFIG_HOME}/glib-2.0" "${XDG_CONFIG_HOME}/glib-2.0" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/menus" "${XDG_CONFIG_HOME}/menus" \
-    --ro-bind-try "${HOME}/.local/share/mime" "${HOME}/.local/share/mime" \
-    --bind-try "${HOME}/.local/share/applications/mimeapps.list" "${HOME}/.local/share/applications/mimeapps.list" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/eog" "${XDG_CONFIG_HOME}/eog" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/gwenviewrc" "${XDG_CONFIG_HOME}/gwenviewrc" \
-    --symlink opt/QQ/workarounds/qq_channel_jsbridge_handler.desktop "${HOME}/.local/share/applications/qq_channel_jsbridge_handler.desktop" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/dconf" "${XDG_CONFIG_HOME}/dconf" \
-    --ro-bind-try "${XDG_CONFIG_HOME}/kdeglobals" "${XDG_CONFIG_HOME}/kdeglobals" \
+    --ro-bind-try "${FONTCONFIG_HOME}" "${FONTCONFIG_HOME}" \
+    --ro-bind-try "${HOME}/.icons" "${HOME}/.icons" \
+    --ro-bind-try "${HOME}/local/share/.icons" "${HOME}/local/share/.icons" \
     --ro-bind-try "${XDG_CONFIG_HOME}/gtk-3.0" "${XDG_CONFIG_HOME}/gtk-3.0" \
-    --setenv XDG_CURRENT_DESKTOP GNOME \
     --setenv IBUS_USE_PORTAL 1 \
-    --setenv DISPLAY "${NEW_DISPLAY}" \
     /opt/QQ/qq "$@"
 
 # 移除无用崩溃报告和日志
-# 如果需要向腾讯反馈 bug，请注释掉如下两行
+# 如果需要向腾讯反馈 bug，请注释掉如下几行
 rm -rf "${QQ_APP_DIR}/crash_files"
-rm -rf  "${QQ_APP_DIR}/nt_qq_"**"/nt_data/log/"*
+rm "${QQ_APP_DIR}/log/app_launcher-"*".log"
+rm "${QQ_APP_DIR}/nt_qq_"*"/nt_data/log/"*
+rm "${QQ_APP_DIR}/Crashpad/pending/"*
