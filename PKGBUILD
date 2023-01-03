@@ -2,7 +2,7 @@
 
 _pkgname='pbpctrl'
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r1.ge71c5eb
+pkgver=0.1.1.r0.ged2b648
 pkgrel=1
 pkgdesc='Control Google Pixel Buds Pro from the Linux command line.'
 url='https://github.com/qzed/pbpctrl'
