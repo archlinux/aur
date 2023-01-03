@@ -1,6 +1,6 @@
 pkgbase = nibbler-git
 	pkgdesc = Leela Chess Zero (Lc0) interface
-	pkgver = 2.1.0
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/rooklift/nibbler
 	arch = i686
@@ -12,4 +12,3 @@ pkgbase = nibbler-git
 	md5sums = SKIP
 
 pkgname = nibbler-git
-

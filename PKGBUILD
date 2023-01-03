@@ -32,8 +32,8 @@ package() {
     cd "${srcdir}/${_pkgname}"
     install -m755 -d "${pkgdir}/opt/${_pkgname}/modules"
     install -m755 -d "${pkgdir}/opt/${_pkgname}/pieces"
-    cp -r "$srcdir/${_pkgname}"/src/modules/* "${pkgdir}/opt/${_pkgname}/modules"
-    cp -r "$srcdir/${_pkgname}"/src/pieces/* "${pkgdir}/opt/${_pkgname}/pieces"
-    cp -r "$srcdir/${_pkgname}"/src/*.{css,html,js,json} "${pkgdir}/opt/${_pkgname}"
+    cp -r "$srcdir/${_pkgname}"/files/src/modules/* "${pkgdir}/opt/${_pkgname}/modules"
+    cp -r "$srcdir/${_pkgname}"/files/src/pieces/* "${pkgdir}/opt/${_pkgname}/pieces"
+    cp -r "$srcdir/${_pkgname}"/files/src/*.{css,html,js,json} "${pkgdir}/opt/${_pkgname}"
     install -Dm755 nibbler $pkgdir/usr/bin/nibbler
 }
