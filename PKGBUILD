@@ -21,21 +21,39 @@ source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
 build() {
-  ls
-
   export CFLAGS=""
-  local _cflags=(-I/usr/mips64r5900el-ps2-elf/include/pthread-embedded
-                 -L/usr/mips64r5900el-ps2-elf/lib/pthread-embedded)
+  export LDLAGS=""
 
-  local _build_opts=(CFLAGS="${_cflags[*]}")
+  local _cflags=(-static
+                 -I/usr/mips64r5900el-ps2-elf/include
+                 -I/usr/mips64r5900el-ps2-elf/include/newlib-nano
+                 -I/usr/mips64r5900el-ps2-elf/include/pthread-embedded
+                 -include /usr/mips64r5900el-ps2-elf/include/pthread-embedded/sys/pte_generic_osal.h)
 
+  local _ldflags=(-L/usr/mips64r5900el-ps2-elf/lib
+                  -L/usr/mips64r5900el-ps2-elf/lib/newlib-nano
+                  -L/usr/mips64r5900el-ps2-elf/lib/pthread-embedded
+                  -l:libthread.a
+                  -Bstatic)
+
+  local _build_opts=(CFLAGS="${_cflags[*]}"
+                     CPPFLAGS="${_ldflags[*]}"
+                     CXXFLAGS="${_ldflags[*]}"
+                     LDFLAGS="${_ldflags[*]}")
+
+  export C_INCLUDE_PATH="/usr/mips64r5900el-ps2-elf/include/pthread-embedded"
   export CFLAGS="${_cflags[*]}"
   export CPPFLAGS="${_cflags[*]}"
+  export CXXFLAGS="${_cflags[*]}"
+  export LDFLAGS="${_ldflags[*]}"
 
   cd "${srcdir}/${pkgname}"
+  # make clean
   CFLAGS="${_cflags[*]}" \
   CPPFLAGS="${_cflags[*]}" \
-  make "${_build_opts[@]}"
+  CXXFLAGS="${_cflags[*]}" \
+  LDFLAGS="${_ldlags[*]}" \
+  make "${_build_opts[@]}" build
 }
 
 # shellcheck disable=SC2154
