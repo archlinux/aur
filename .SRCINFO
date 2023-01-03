@@ -1,7 +1,7 @@
 pkgbase = transfer-bin
 	pkgdesc = 集合多个API的大文件传输工具.
 	pkgver = 0.4.17
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/Mikubill/transfer
 	arch = x86_64
 	arch = aarch64

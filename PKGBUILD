@@ -1,7 +1,7 @@
 # Maintainer: HaoCheng <ch1994@outlook.com>
 pkgname=transfer-bin
 pkgver=0.4.17
-pkgrel=3
+pkgrel=1
 pkgdesc="集合多个API的大文件传输工具."
 arch=("x86_64" "aarch64" "i686" "armv7")
 url="https://github.com/Mikubill/transfer"
