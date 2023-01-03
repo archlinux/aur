@@ -64,9 +64,8 @@ build() {
   export LDFLAGS
 
   local _cflags=(${cflags[@]}
-                 -I/usr/include
-                 # -std=gnu++98
-                 -static)
+                 -I/usr/include)
+                 # -std=gnu++98)
 
   local _ldflags=(${ldflags[@]})
                   # -ldl)
