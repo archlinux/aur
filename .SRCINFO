@@ -1,0 +1,21 @@
+pkgbase = rtools-git
+	pkgdesc = RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。
+	pkgver = 1.0.0.r3.g4601ee3
+	pkgrel = 1
+	url = https://gitee.com/RiceChen0/rtools
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-charts
+	depends = qt5-serialport
+	depends = qt5-networkauth
+	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
+	provides = RTools
+	conflicts = rtools
+	options = !strip
+	source = rtools::git+https://gitee.com/RiceChen0/rtools.git
+	sha256sums = SKIP
+
+pkgname = rtools-git
