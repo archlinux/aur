@@ -68,7 +68,7 @@ _verify_repo() {
         _err "PGP signature of 'Release' could not be verified"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
-    elif ! egrep -qs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
+    elif ! grep -Eqs "^\\[GNUPG:\\] VALIDSIG $jagexpgpkey " <<< "$_out"; then
         _err "PGP signature of 'Release' was not made by Jagex"
         echo "$_out" | grep -v "^\\[GNUPG:\\]"
         return 1
