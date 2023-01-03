@@ -47,7 +47,7 @@ ldflags=(${LDFLAGS}
 prepare() {
   cd "${srcdir}/${pkgname}" || exit
   rm "isl" || true
-  # ln -s "../isl-${_islver}" "isl"
+  ln -s "../isl-${_islver}" "isl"
 }
 
 # shellcheck disable=SC2154
@@ -74,7 +74,7 @@ build() {
   local _build_opts=(${_make_opts[@]}
                      CFLAGS="${_cflags[*]}"
                      CPPFLAGS="${_cflags[*]}"
-                     CXXFLAGS="${_cflags[*]}"
+                     # CXXFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
   cd "${srcdir}/${pkgname}"
@@ -92,11 +92,11 @@ build() {
                            --without-headers
                            --without-newlib
                            --disable-libssp
-                           # --with-isl
+                           --with-isl
                            --disable-multilib
                            --disable-tls)
 
-    "../configure" ${_configure_opts[@]}
+    "../configure" "${_configure_opts[@]}"
 
     make "${_build_opts[@]}" all
     cd ..
