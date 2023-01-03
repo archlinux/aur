@@ -1,7 +1,7 @@
 pkgbase = libisl15
 	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://isl.gforge.inria.fr/
 	arch = x86_64
 	arch = i686
