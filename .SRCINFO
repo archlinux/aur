@@ -3,7 +3,6 @@ pkgbase = python-pyds9
 	pkgver = 1.8.1
 	pkgrel = 1
 	url = http://hea-www.harvard.edu/RD/ds9/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python
