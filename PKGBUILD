@@ -73,7 +73,7 @@ build() {
     cd "build-${_target}"
     local _configure_opts=(--prefix="/usr"
                            --target="${_target}"
-                           --infodir="/usr/share/info"
+                           --infodir="/usr/${_target}/share/info"
                            --disable-separate-code
                            --disable-sim
                            --with-gmp
