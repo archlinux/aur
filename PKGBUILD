@@ -19,7 +19,7 @@ optdepends=(
   "$_name-doc: API documentation"
 )
 makedepends=('cmake' 'git' 'ninja' 'perl-yaml-libyaml' 'qtutilities-git' 'qt5-declarative')
-provides=(libqtforkawesome-git.so)
+provides=(libqtforkawesome-git.so libqtquickforkawesome-git.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
