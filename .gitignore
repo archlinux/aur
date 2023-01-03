@@ -1,0 +1,4 @@
+aurora-compositor/
+pkg/
+src/
+*.pkg.tar.*

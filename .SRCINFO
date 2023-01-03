@@ -1,0 +1,34 @@
+pkgbase = aurora-compositor-git
+	pkgdesc = Framework for Qt-based Wayland compositors
+	pkgver = r4125.6c650ed5
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-cmake-shared-git
+	makedepends = aurora-scanner-git
+	makedepends = xcb-util-cursor
+	makedepends = libxcursor
+	depends = systemd
+	depends = libdrm
+	depends = libinput
+	depends = qt5-declarative
+	depends = qt5-wayland
+	depends = xkeyboard-config
+	depends = libxkbcommon
+	depends = glib2
+	depends = fontconfig
+	depends = freetype2
+	optdepends = xorg-server-xwayland: Xwayland support
+	provides = aurora-compositor
+	conflicts = aurora-compositor
+	replaces = aurora-compositor
+	source = aurora-compositor::git+https://github.com/lirios/aurora-compositor.git#branch=develop
+	md5sums = SKIP
+
+pkgname = aurora-compositor-git
