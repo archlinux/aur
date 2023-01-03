@@ -21,7 +21,7 @@ makedepends=("${target}-binutils"
              "${pkgname}-stage1"
              "${target}-newlib"
              "${target}-newlib-nano"
-             # "${target}-pthread-embedded"
+             "${target}-pthread-embedded"
              "libgmp-static"
              "mpfr-static"
              "libmpc-static"
@@ -34,7 +34,7 @@ source=("${pkgname}::git+${url}#commit=${_commit}"
         "https://libisl.sourceforge.io/isl-${_islver}.tar.xz")
 # source=("${pkgname}::git+${_local}/${_platform}-gcc#commit=${_branch}")
 sha256sums=('SKIP'
-            '6d6c1aa00e2a6dfc509fa46d9a9dbe93af0c451e196a670577a148feecf6b8a5')
+            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960')
 
 _n_cpu="$(getconf _NPROCESSORS_ONLN)"
 _make_opts=(-j "${_n_cpu}")
