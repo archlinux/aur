@@ -53,7 +53,7 @@ depends=(
   'python-twitter'
   'python-pytz'
   'python-requests'
-  'python-requests-oauthlibs'
+  'python-requests-oauthlib'
   'python-simplejson'
   'python-six'
   'python-soupsieve'
