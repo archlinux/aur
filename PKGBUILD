@@ -54,9 +54,9 @@ build() {
                            --disable-nls
                            --disable-build-warnings)
 
-    "../configure" "${_configure_opts[@]}"
+    "../configure" ${_configure_opts[@]}
 
-    make ${_build_opts[@]}
+    make # ${_build_opts[@]}
     
     cd ..
   done
@@ -68,7 +68,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   for _target in "${target}"; do
     cd "build-${_target}"
-    make DESTDIR="${pkgdir}" ${_make_opts} install
+    make DESTDIR="${pkgdir}" install # ${_make_opts[@]}
     cd ..
   done
 }
