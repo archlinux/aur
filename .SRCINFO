@@ -1,9 +1,8 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Slackadays/Clipboard
-	install = clipboard.install
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
