@@ -1,0 +1,4 @@
+qtgsettings/
+pkg/
+src/
+*.pkg.tar.*
