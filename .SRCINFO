@@ -1,7 +1,7 @@
 pkgbase = python-mmcv
 	pkgdesc = OpenMMLab Computer Vision Foundation
-	pkgver = 1.7.0
-	pkgrel = 5
+	pkgver = 1.7.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/open-mmlab/mmcv
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = python-mmcv
 	depends = python-pillow
 	depends = python-yaml
 	depends = yapf
-	source = python-mmcv-1.7.0.tar.gz::https://github.com/open-mmlab/mmcv/archive/v1.7.0.tar.gz
-	sha512sums = 8475aa3aa8e3134c4eb6e60b02cc6a677b8363e39ca679edbe9691df607a1804712fd2c98ff8b53c2b5c8d6d9e4e1993ddfdcddca08d5df9f4e552061aa26bb2
+	source = python-mmcv-1.7.1.tar.gz::https://github.com/open-mmlab/mmcv/archive/v1.7.1.tar.gz
+	sha512sums = 17af262323b46fc54521363d73eb87af1e196d4e345500db24991601cae74003fc01d1b7665cc5c8590f489086883883afca292b01904529ef1d50c441234d29
 
 pkgname = python-mmcv
 	pkgdesc = OpenMMLab Computer Vision Foundation(cpu version, without cuda ops)
@@ -40,5 +40,5 @@ pkgname = python-mmcv-full
 	depends = yapf
 	depends = cuda
 	depends = python-pytorch-cuda
-	provides = python-mmcv=1.7.0
+	provides = python-mmcv=1.7.1
 	conflicts = python-mmcv
