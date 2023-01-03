@@ -5,8 +5,7 @@ pkgbase = ps2-sdk
 	url = https://github.com/ps2dev/ps2sdk
 	arch = x86_64
 	license = BSD
-	depends = ps2-dvp
-	depends = ps2-iop
+	depends = ps2-toolchain
 	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk#tag=v1.3.0
 	sha256sums = SKIP
 
