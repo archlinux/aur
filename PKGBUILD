@@ -77,9 +77,7 @@ build() {
 
   cd "${srcdir}/${pkgname}"
 
-  for _target in "mipsel-ps2-irx" "mipsel-ps2-elf"; do
-    _tbu_bin="${srcdir}/${_bu}-root/${_usr}/${_target}/bin"
-    export PATH="${PATH}:${_tbu_bin}"
+  for _target in "${target}"; do
     rm -rf "build-${_target}"
     mkdir -p "build-${_target}"
     cd "build-${_target}"
@@ -146,6 +144,7 @@ package() {
   for _target in "${target}"; do
     cd "build-${_target}"
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install-strip
+    rm -rf "${pkgdir}/usr/${target}/share/info/dir"
     cd ..
   done
 }
