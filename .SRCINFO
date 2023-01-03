@@ -1,13 +1,13 @@
 pkgbase = allsorts-tools
 	pkgdesc = Font debugging tools based on the Allsorts font shaping engine
-	pkgver = 0.8.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/yeslogic/allsorts-tools
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
-	source = allsorts-tools-0.8.0.tar.gz::https://github.com/yeslogic/allsorts-tools/archive/0.8.0.tar.gz
-	sha256sums = 2b1a2f4a7bc2f4e243dd9c2acaa406fbf8d4524082b6f1ac06e289db5aa54499
+	source = allsorts-tools-0.10.0.tar.gz::https://github.com/yeslogic/allsorts-tools/archive/0.10.0.tar.gz
+	sha256sums = dfdc8941fa1b3eb185ddcab885eab91be985613de62824afc99b4a556fc430c9
 
 pkgname = allsorts-tools
