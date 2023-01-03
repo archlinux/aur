@@ -1,14 +1,14 @@
 pkgbase = numlockl
 	pkgdesc = Turns on the numlock key.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/phoepsilonix/numlockl
 	arch = x86_64
 	license = MIT
 	depends = libbsd
-	source = https://gitlab.com/phoepsilonix/numlockl/-/archive/v1.0.4/numlockl-v1.0.4.tar.gz
+	source = https://gitlab.com/phoepsilonix/numlockl/-/archive/v1.0.5/numlockl-v1.0.5.tar.gz
 	source = LICENSE
-	sha512sums = 99aa3e0f02f0c58fc729a182f35c63d3e055b16374847e4b7960e6b0bff56d2a6b4164440e52e5959dfa6c522e2b33d26f188c5941bd473fe21fd09b8d448539
+	sha512sums = cdbeec9dddeed8ab12e56052c566996430bad5e8231972e9a64bef9d2f94ad78d1b835a3784f24347fc8bb5d1e2f7fb2ea25edd9591a620361157f36a2e5ce93
 	sha512sums = c5ac1d5ef4e6b12206d27369087fca7d39cedc2ad3cd625caa5b5c558ab003195a8158ab19206b89e0ccbd4e9c1b39348a72923ba2c35c8d33fc603fae3f4bd8
 
 pkgname = numlockl
