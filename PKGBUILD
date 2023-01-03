@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
 pkgname=openui5
-pkgver=1.106.0
+pkgver=1.108.2
 pkgrel=1
 pkgdesc='Lets you build enterprise-ready web applications, responsive to all devices, running on almost any browser of your choice.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('jq' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SAP/${pkgname}/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-b2sums=('1fa6b926f7d9073729441ec4da651f696390216a5f85788f5d7f0f263906c34ed9d8384f052d7ee2db49d1392922720259145b860f53d17667b2dab35d9473de')
+b2sums=('408b6fb59ab0c974aed3b63b589e0316c34be40b4841b3e3512e22fa8388c835611fdaa6546e2b4a51bf155717141a06c7851ddb60c3c1fff0032137a150c3da')
 
 package() {
     npm install --cache "${srcdir}/npm-cache" -g --prefix="${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
