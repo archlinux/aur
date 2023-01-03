@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-git
 pkgver=6.1.r1139550.e3bf7e96d0f6
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
 _branch=drm-next
@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')

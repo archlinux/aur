@@ -1,7 +1,7 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
 	pkgver = 6.1.r1139550.e3bf7e96d0f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,7 @@ pkgbase = linux-amd-git
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
-	makedepends = python-sphinx
+	makedepends = python-sphinx<6.0.0
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
