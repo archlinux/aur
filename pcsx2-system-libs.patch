@@ -1,0 +1,25 @@
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index 1e4e07333..2e31bcf99 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -249,7 +249,6 @@ add_subdirectory(3rdparty/imgui EXCLUDE_FROM_ALL)
+ 
+ if(USE_VULKAN)
+ 	add_subdirectory(3rdparty/glslang EXCLUDE_FROM_ALL)
+-	add_subdirectory(3rdparty/vulkan-headers EXCLUDE_FROM_ALL)
+ endif()
+ 
+ if(CUBEB_API)
+diff --git a/common/CMakeLists.txt b/common/CMakeLists.txt
+index 69a2728f3..5a9857d42 100644
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -135,7 +135,7 @@ target_sources(common PRIVATE
+ 
+ if(USE_VULKAN)
+ 	target_link_libraries(common PUBLIC
+-		Vulkan-Headers glslang
++		glslang
+ 	)
+ 	target_sources(common PRIVATE
+ 		Vulkan/ShaderCache.cpp

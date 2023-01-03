@@ -1,0 +1,11 @@
+post_install() {
+  echo 'Enabling networking capabilities'
+  setcap 'CAP_NET_ADMIN+eip CAP_NET_RAW+eip' usr/bin/pcsx2-qt
+}
+
+post_upgrade() {
+  echo 'Enabling networking capabilities'
+  setcap 'CAP_NET_ADMIN+eip CAP_NET_RAW+eip' usr/bin/pcsx2-qt
+}
+
+# vim: ts=2 sw=2 et:
