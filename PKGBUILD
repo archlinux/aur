@@ -14,16 +14,38 @@ source=('https://www.dropbox.com/s/q66bhnjoq0xzuas/SAC_Linux_10.8.105_R1_GA.zip?
 sha256sums=('18ecac33e8a1ddb894c23423074592ffd77a272a7255b519d20992662a5c699e'
             '85b850b820610e029428e577ca0e48f6fb7b4148ae8d702ca20b191963046c6c'
             'eb8b4e105d8b75f11e4b83ca6c4a605f781f50cc0f0405a5d1deccb5580fd055')
-#validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
+validpgpkeys=('B37EBA84D2EB0C786F91EEF77F8AA801285DEE57')
 
 _dir="SAC Linux 10.8.1050 R1 GA"
 _rn_pdf="007-013841-004-SafeNet Authentication Client_10.8_R1_Linux_GA_Release_Notes.pdf"
 _ag_pdf="007-013842-002_SafeNet Authentication Client_10.8_R1_Linux_GA_Administrator_Guide_Rev C.pdf"
 _ug_pdf="007-013843-002_SafeNet Authentication Client_10.8_R1_Linux_GA_User_Guide_Rev C.pdf"
 
+_err() {
+    printf '\e[1;31mError:\e[m %s\n' "$*" >&2
+}
+
 prepare() {
-  #ar x "$_dir/Installation/withoutUI/Ubuntu-2004/safenetauthenticationclient-core_${pkgver}_amd64.deb"
-  ar x "$_dir/Installation/Standard/Ubuntu-2204/safenetauthenticationclient_${pkgver}_amd64.deb"
+  _key="$_dir/Installation/Standard/Ubuntu-2204/GPG-KEY-SafenetAuthenticationClient.txt"
+  _deb="$_dir/Installation/Standard/Ubuntu-2204/safenetauthenticationclient_${pkgver}_amd64.deb"
+  #_deb="$_dir/Installation/withoutUI/Ubuntu-2004/safenetauthenticationclient-core_${pkgver}_amd64.deb"
+
+  if (( ! SKIPPGPCHECK )); then
+    echo "Verifying PGP signature of '${_deb}'..."
+    # gpg --import "$_key"
+    if ! _out=$(gpg --batch --status-fd 1 --trust-model always \
+                    --auto-key-retrieve --verify "$_deb.asc" "$_deb" 2>&1); then
+        _err "PGP signature verification failed"
+        echo "$_out" | grep -v "^\\[GNUPG:\\]"
+        return 1
+    elif ! grep -qs "^\\[GNUPG:\\] VALIDSIG ${validpgpkeys[0]} " <<< "$_out"; then
+        _err "PGP signature was not made by Thales"
+        echo "$_out" | grep -v "^\\[GNUPG:\\]"
+        return 1
+    fi
+  fi
+
+  ar x "$_deb"
   bsdtar -xf data.tar.gz
 }
 
