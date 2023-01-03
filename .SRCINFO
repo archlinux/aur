@@ -1,11 +1,12 @@
 pkgbase = alive
 	pkgdesc = periodic ping program
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/alive
 	arch = any
 	license = GPL3
 	depends = guile
+	depends = iputils
 	source = alive-2.0.5.tar.gz::https://ftp.gnu.org/gnu/alive/alive-2.0.5.tar.lz
 	md5sums = c32f7faf1c8a23beadaf7032b151cc24
 
