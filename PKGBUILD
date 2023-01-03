@@ -4,7 +4,7 @@ pkgver=0.16.0
 pkgrel=1
 pkgdesc='A command line tool that allows you to push and pull files from any OCI registry'
 arch=(x86_64)
-url='https://github.com/deislabs/oras'
+url='https://github.com/oras-project/oras'
 license=(MIT)
 makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/oras-project/oras#commit=v$pkgver")
