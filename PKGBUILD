@@ -1,7 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 # shellcheck disable=SC2034
-# _target="mipsel-ps2"
+_target="mipsel-ps2"
 _module="iop"
 _platform="ps2"
 _base="toolchain"
