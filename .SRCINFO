@@ -1,6 +1,6 @@
 pkgbase = fastly-bin
 	pkgdesc = A CLI for interacting with the Fastly platform
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/fastly/cli
 	license = Apache license 2.0
@@ -8,13 +8,13 @@ pkgbase = fastly-bin
 	conflicts = fastly
 	provides = fastly
 	arch = aarch64
-	source_aarch64 = https://github.com/fastly/cli/releases/download/v4.5.0/fastly_v4.5.0_linux-arm64.tar.gz
-	sha256sums_aarch64 = 3a7aa37e8601ce19cf0797dffecdb8f9266362416bafd368e549b5d9736178b5
+	source_aarch64 = https://github.com/fastly/cli/releases/download/v4.6.0/fastly_v4.6.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 1e74383094ae912f79bfffa949a9df57a2624c35565c4935ab250abf08e653f6
 	arch = i686
-	source_i686 = https://github.com/fastly/cli/releases/download/v4.5.0/fastly_v4.5.0_linux-386.tar.gz
-	sha256sums_i686 = 93f64dbf732b4ce947184365627473152ccdf6b5699b7d7da173eaf0b2b75f73
+	source_i686 = https://github.com/fastly/cli/releases/download/v4.6.0/fastly_v4.6.0_linux-386.tar.gz
+	sha256sums_i686 = df213533c8ca6383e1b278c0d2e376971a4211e4a833eb82f5d419a0c0ae7e9e
 	arch = x86_64
-	source_x86_64 = https://github.com/fastly/cli/releases/download/v4.5.0/fastly_v4.5.0_linux-amd64.tar.gz
-	sha256sums_x86_64 = 27e8b5e58dda28f1a77c04659f264b8c088f574194047b8c7ce87d0f1191de88
+	source_x86_64 = https://github.com/fastly/cli/releases/download/v4.6.0/fastly_v4.6.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = 1e9653862a6d255aa4911aa6fb55daac8410696265bb5eb1d56cf0b8ce0a4e86
 	
 pkgname = fastly-bin
