@@ -4,7 +4,7 @@
 _pkgname=themix-export-spotify
 _reponame=oomoxify
 pkgname="${_pkgname}-git"
-pkgver=1.2.7.r0.gf3de4d6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Export plugin for Themix GUI designer to apply color palettes to Spotify desktop player"
 arch=('x86_64' 'i686')
@@ -41,7 +41,7 @@ conflicts=(
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --always --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
