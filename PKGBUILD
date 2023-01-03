@@ -1,11 +1,15 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
-
+## Temporarily tracking the AeonLucid/FlareSolverr git version
+## It adds 2captcha support, support for Cloudflare UAM 
+## and partial support for Cloudflare Turnstile.
+## It will switch back to upstream repo once AeonLucid changes
+## are implemented and completed or when upstream works.
 pkgname=flaresolverr-git
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=3.0.0.r35.g33249fc
-pkgrel=2
-pkgdesc='A proxy server to bypass Cloudflare protection'
+pkgrel=3
+pkgdesc='A proxy server to bypass Cloudflare protection (AeonLucid/FlareSolverr git version)'
 arch=('x86_64')
 url='https://github.com/AeonLucid/FlareSolverr'
 license=('MIT')

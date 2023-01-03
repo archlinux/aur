@@ -1,7 +1,7 @@
 pkgbase = flaresolverr-git
-	pkgdesc = A proxy server to bypass Cloudflare protection
+	pkgdesc = A proxy server to bypass Cloudflare protection (AeonLucid/FlareSolverr git version)
 	pkgver = 3.0.0.r35.g33249fc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AeonLucid/FlareSolverr
 	install = flaresolverr.install
 	arch = x86_64
