@@ -1,0 +1,4 @@
+qtintegration/
+pkg/
+src/
+*.pkg.tar.*
