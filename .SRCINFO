@@ -1,14 +1,13 @@
 pkgbase = ps2-sdk
 	pkgdesc = Homebrew Sony Playstation® 2 videogame system SDK.
-	pkgver = v1.0
+	pkgver = v1.3.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2sdk
 	arch = x86_64
 	license = BSD
 	depends = ps2-dvp
 	depends = ps2-iop
-	depends = ps2-ee
-	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk
+	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk#tag=v1.3.0
 	sha256sums = SKIP
 
 pkgname = ps2-sdk
