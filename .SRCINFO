@@ -1,0 +1,23 @@
+pkgbase = python-hledger-utils-git
+	pkgdesc = Utilities extending the hledger plaintextaccounting tool
+	pkgver = 1.0.0.r1.g647eb22
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/hledger-utils
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-rich
+	depends = python-psutil
+	depends = hledger
+	provides = python-hledger-utils
+	conflicts = python-hledger-utils
+	source = python-hledger-utils::git+https://gitlab.com/nobodyinperson/hledger-utils
+	md5sums = SKIP
+
+pkgname = python-hledger-utils-git
