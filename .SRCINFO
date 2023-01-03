@@ -1,0 +1,21 @@
+pkgbase = kde-inotify-survey
+	pkgdesc = Tooling for monitoring inotify limits and informing the user when they have been or about to be reached.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://invent.kde.org/system/kde-inotify-survey
+	arch = x86_64
+	groups = kde-applications
+	license = BSD
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kio
+	depends = ki18n
+	depends = kcoreaddons
+	depends = knotifications
+	depends = kdbusaddons
+	depends = kauth
+	source = git+https://invent.kde.org/system/kde-inotify-survey.git#tag=v1.0.0
+	validpgpkeys = SKIP
+	sha256sums = SKIP
+
+pkgname = kde-inotify-survey
