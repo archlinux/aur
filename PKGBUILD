@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,10 +80,10 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=830b3c68c1fb1e9176028d02ef86f3cf76aa2476
+_kernel_base_commit=d6a980a0da6cacb523bb1e069b1780ae1c3086a7
 _kernel_arch_tag=${pkgver}-arch1
 _arch_config_commit=94647cd1eefbdb81665c9bc9b6a0fbcee39fed1c
-_prjc_version=6.1-r0
+_prjc_version=6.1-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
@@ -92,20 +92,18 @@ source=(
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
-  "${pkgbase}-${pkgver}-sched_alt_Add_missing_rq_lock_irq_function.patch::https://gitlab.com/torvic9/linux-stable/-/commit/4157360d2e1cbdfb8065f151dbe057b17188a23f.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('ae60257860b2bd1bd708d183f0443afc60ebbd2b3d535c45e44c2e541bd0928530a3b62de6385dd4e4726ebbedcc0a871d4f3ffb4105b9f1f6d8ed7467f5688e'
+b2sums=('0bca96ecd7ef972ee436f790c84e7d35c4a592dfbf1bd27fd9d66c8d3aacab311bb4ee06c42f22079b20c7fbe8ae9df12844f699a673d7e534f76b5f5b6ce788'
         'SKIP'
         '28dbe5ad21c9aedeada04b61aa4d5e86ad67651d2dc25496c7d0c1bcfcb69a4df9415a393b29d841207836308340074ac557a19ab09278eb678bf41712d585c1'
-        '8387d565fbb017b0fa9c5f9dc955b0036514d7cb7146ffdf5218c45748d507f61ea63b1739920c068a387bfcde0c5ff4104eb69fa5c83e7ee7144e8fe96e2052'
+        'af920f4e3e3bc506d6ab4c30b0cde3d14a89fe188198b2b4af452bd959e177c2c0cf3ed02e78f8db17b1f4e19fccf2f820bc6e4cd5092f10d13c07b47e7a9e42'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        'b686909f5a3feb7a644ee4a7078b5b62f480ff23f4a5da57f8f4ad70a89b4a9366e0ffe4c6beb9a892d1e4e52ee9d596c33d0509312e410689cf08e2f2716b58'
-        'a2172407f07f4a85d61d117b366b34aa8fb496b06a499f2440aeae6852e995bcfd48c8ea4738299866f3fc08f783ee9a61cdb8ef4822f2924218a2747f3e9842')
+        '4524878eca71764014e3f27323d57fe96f8dbc0d39125a47e8b0facf4042aefb3268734b7a14cd65d91fce91c63167db1da430d5b1bf5c90019172cb6ac31017')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -158,7 +156,6 @@ prepare() {
 
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
-  patch -Np1 -i "$srcdir/linux-prjc-6.1-sched_alt_Add_missing_rq_lock_irq_function.patch"
 
   if [[ -n "$_clangbuild" ]]; then
     scripts/config -e LTO_CLANG_THIN
