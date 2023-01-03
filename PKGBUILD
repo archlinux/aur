@@ -4,8 +4,8 @@
 # from: git
 
 pkgname=anbox-image-nocsd
-pkgver=r12.4e93da62
-pkgrel=2
+pkgver=r13.71ed84a0
+pkgrel=1
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -24,8 +24,8 @@ _img_rel=ssd-pr-v1
 #  curl --config /dev/null -o /dev/null -Ls https://github.com/bromite/bromite/releases/latest -w '%{url_effective}\n' \
 #  | xargs basename
 #)"
-_fdroidver=1014003
-_fdroidprivver=2120
+_fdroidver=1015055
+_fdroidprivver=2130
 
 source=(
   "android_amd64.img::https://github.com/thdaemon/anbox/releases/download/$_img_rel/android.img"
@@ -44,8 +44,8 @@ noextract=('fdroid-prev.apk' 'fdroid.apk' 'webview.apk')
 md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad'
-         '2b8799d8775e2d414e04635e1b90c4a7'
-         'dc7a163cc47fd2a2c441a266df06e69b'
+         '93ba80a6cf3a8a7b98b955b3a9310fac'
+         'b04353155aceb36207a206d6dd14ba6a'
          '360c6d7b14a538c8034b282b0371be9b'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
