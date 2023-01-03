@@ -9,7 +9,9 @@ pkgbase = gen-license
 	depends = gcc-libs
 	depends = glibc
 	source = gen-license-0.1.2.tar.gz::https://static.crates.io/crates/gen-license/gen-license-0.1.2.crate
+	source = LICENSE
 	validpgpkeys = 86395E99314F4E382517AF976558C915A20CDD93
 	md5sums = b227d2e73609cb388657dc9df9ac8d31
+	md5sums = SKIP
 
 pkgname = gen-license
