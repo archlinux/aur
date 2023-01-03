@@ -2,15 +2,15 @@
 # Mon Jan  4 12:21:17 UTC 2016
 pkgbase = tnt
 	pkgdesc = The Template Numerical Toolkit is an interface for scientific computing in C++.
-	pkgver = 3.0.12
+	pkgver = 126
 	pkgrel = 1
 	epoch = 1
 	url = http://math.nist.gov/tnt
 	arch = any
 	license = custom
-	source = http://math.nist.gov/tnt/tnt_3_0.12.zip
+	source = http://math.nist.gov/tnt/tnt_126.zip
 	source = license.txt
-	md5sums = f96c7500523cf780a802820086c10e70
+	md5sums = e87a913a44c0fe3694914b0f42c61fb1
 	md5sums = 4c3fa4245a5cf2cb3d0c98d82dd78d04
 
 pkgname = tnt
