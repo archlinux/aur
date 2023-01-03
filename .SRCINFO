@@ -1,7 +1,7 @@
 pkgbase = vieter
-	pkgdesc = Archlinux repository server & package build system, written in V.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgdesc = Lightweight Pacman repository server & package build system
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://git.rustybever.be/vieter-v/vieter
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = vieter
 	depends = openssl
 	depends = libarchive
 	depends = sqlite
-	source = vieter-0.3.0.tar.gz::https://git.rustybever.be/vieter-v/vieter/archive/0.3.0.tar.gz
-	sha256sums = 829c2f5a755c64b21b7b30df20848f679b1e05af5b446a67a75ae0e0c3279fac
+	source = vieter-0.5.0.tar.gz::https://git.rustybever.be/vieter-v/vieter/archive/0.5.0.tar.gz
+	sha256sums = bb836feb26c7049c763ea02968cfd253b0089acef2c19fa21167434928d1f5f6
 
 pkgname = vieter

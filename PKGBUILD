@@ -2,18 +2,26 @@
 # Maintainer: Jef Roosens
 
 pkgname='vieter'
-pkgver='0.3.0'
-pkgrel=2
-pkgdesc='Archlinux repository server & package build system, written in V.'
+pkgver='0.5.0'
+pkgrel=1
+pkgdesc='Lightweight Pacman repository server & package build system'
 depends=('glibc' 'openssl' 'libarchive' 'sqlite')
 makedepends=('vlang')
 arch=('x86_64' 'aarch64')
 url='https://git.rustybever.be/vieter-v/vieter'
 license=('AGPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.rustybever.be/vieter-v/vieter/archive/${pkgver}.tar.gz")
-sha256sums=('829c2f5a755c64b21b7b30df20848f679b1e05af5b446a67a75ae0e0c3279fac')
+sha256sums=('bb836feb26c7049c763ea02968cfd253b0089acef2c19fa21167434928d1f5f6')
+
+prepare() {
+    export VMODULES="${srcdir}/.vmodules"
+
+    cd "${pkgname}/src" && v install
+}
 
 build() {
+    export VMODULES="${srcdir}/.vmodules"
+
     cd "${pkgname}"
 
     make prod
@@ -25,11 +33,9 @@ build() {
 }
 
 package() {
-    cd "${pkgname}"
-
     install -dm755 "${pkgdir}/usr/bin"
-    install -Dm755 'pvieter' "${pkgdir}/usr/bin/vieter"
+    install -Dm755 "${pkgname}/pvieter" "${pkgdir}/usr/bin/vieter"
 
     install -dm755 "${pkgdir}/usr/share/man/man1"
-    install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1"
+    install -Dm644 "${pkgname}/man"/*.1 "${pkgdir}/usr/share/man/man1"
 }
