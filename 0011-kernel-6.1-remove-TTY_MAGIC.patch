@@ -1,0 +1,45 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_net_ops.c b/driver/2.6.27/dgrp_net_ops.c
+--- a/driver/2.6.27/dgrp_net_ops.c	2022-11-02 12:57:58.000000000 -0400
++++ b/driver/2.6.27/dgrp_net_ops.c	2023-01-03 01:32:48.395681042 -0500
+@@ -531,11 +531,11 @@ static void dgrp_input(struct ch_struct
+ 	}
+ 
+ 	tty = (ch->ch_tun).un_tty;
+ 
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		ch->ch_rout = ch->ch_rin;
+ 		DGRP_UNLOCK(nd->nd_lock, lock_flags);
+ 		dbg_net_trace(INPUT, ("bad tty struct, discarding input data\n"));
+ 		return;
+ 	}
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2022-11-02 12:57:58.000000000 -0400
++++ b/driver/2.6.27/dgrp_tty.c	2023-01-03 01:32:20.776597151 -0500
+@@ -3236,11 +3236,11 @@ static int dgrp_tty_digigetedelay(struct
+ 	int tmp;
+ 
+ 	if (!retinfo)
+ 		return -EFAULT;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return -EFAULT;
+ 
+ 	un = tty->driver_data;
+ 
+ 	if (!un)
+@@ -3271,11 +3271,11 @@ static int dgrp_tty_digisetedelay(struct
+ {
+ 	struct un_struct *un;
+ 	struct ch_struct *ch;
+ 	int new_digi;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return -EFAULT;
+ 
+ 	un = tty->driver_data;
+ 
+ 	if (!un)

@@ -1,0 +1,19 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2023-01-03 01:50:17.756406551 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2023-01-03 01:50:45.197687357 -0500
+@@ -60,11 +60,15 @@
+ #else
+ #include <linux/sched/signal.h>	/* For in_egroup_p() and signal_pending() */
+ #endif
+ 
+ #include <linux/serial.h>
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,1,0)
+ #include <linux/termios.h>
++#else
++#include <linux/termios_internal.h>
++#endif
+ #include <linux/delay.h>
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(3,10,0)
+ #include <linux/slab.h>
+ #endif
+ 

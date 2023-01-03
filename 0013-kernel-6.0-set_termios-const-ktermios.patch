@@ -1,0 +1,35 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2023-01-03 01:55:00.701769691 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2023-01-03 01:57:04.319274515 -0500
+@@ -124,11 +124,15 @@ static void dgrp_tty_flush_buffer(struct
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,0,0)
+ static int dgrp_tty_ioctl(struct tty_struct *, struct file *, unsigned int, unsigned long);
+ #else
+ static int dgrp_tty_ioctl(struct tty_struct *, unsigned int, unsigned long);
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
+ static void dgrp_tty_set_termios(struct tty_struct *, struct ktermios *);
++#else
++static void dgrp_tty_set_termios(struct tty_struct *, const struct ktermios *);
++#endif
+ static void dgrp_tty_stop(struct tty_struct *);
+ static void dgrp_tty_start(struct tty_struct *);
+ static void dgrp_tty_throttle(struct tty_struct *);
+ static void dgrp_tty_unthrottle(struct tty_struct *);
+ static void dgrp_tty_hangup(struct tty_struct *);
+@@ -3836,11 +3840,15 @@ __attribute__ ((__fallthrough__));
+  *  and try to do something rational.
+  *
+  *  So we need to make sure that our copies of ch_oflag,
+  *  ch_clag, and ch_iflag reflect the tty->termios flags.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,0,0)
+ static void dgrp_tty_set_termios(struct tty_struct *tty, struct ktermios *old)
++#else
++static void dgrp_tty_set_termios(struct tty_struct *tty, const struct ktermios *old)
++#endif
+ {
+ 	struct ktermios *ts;
+ 	struct ch_struct *ch;
+ 	struct un_struct *un;
+ 

@@ -103,9 +103,10 @@ pkgname='dgrp'
 #_pkgver='1.9-36'; _dl='81000137_X.tgz'
 #_pkgver='1.9-38'; _dl='81000137_Y.tgz'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
-_pkgver='1.9-40'; _dl='40002086_AA.tgz'
+#_pkgver='1.9-40'; _dl='40002086_AA.tgz'
+_pkgver='1.9-41'; _dl='40002086_AB.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='8'
+pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -181,7 +182,8 @@ _srcdir="dgrp-${_filever%%-*}"
 source=(
   #"${pkgname}-${pkgver}-81000137_X.tgz::http://ftp1.digi.com/support/driver/81000137_X.tgz"
   #"${pkgname}-${pkgver}-beta.tgz::ftp://ftp1.digi.com/support/driver/RealPort%20Linux%20Beta%20Driver/dgrp-${_filever}_y1p.tgz.rpm"
-  "${pkgname##*-}-${pkgver}-${_dl}::http://ftp1.digi.com/support/driver/${_dl}"
+  #"${pkgname##*-}-${pkgver}-${_dl}::http://ftp1.digi.com/support/driver/${_dl}"
+  "${pkgname##*-}-${pkgver}-${_dl}::https://hub.digi.com/dp/path=/support/asset/realport-driver-for-linux-tgz/"
   'drpadmin' 'drpadmin.1' # "autorebuild-${pkgname}.sh"
   'addp_perl-1.0.tgz::https://github.com/severach/addp/archive/f92a6fd2050c9f32a5a11cac18cd9def78138530.tar.gz'
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
@@ -198,12 +200,15 @@ source=(
   '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
   '0010-kernel-5.17-change-PDE_DATA.patch'
+  '0011-kernel-6.1-remove-TTY_MAGIC.patch'
+  '0012-kernel-6.1-INIT_C_CC-termios_internal.patch'
+  '0013-kernel-6.0-set_termios-const-ktermios.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-md5sums=('175349c08d19158c88ad582c76916397'
+md5sums=('df7d7093759350208fbe5abf5ceb27de'
          'b4af5022ba96fcc2429263cfbbe85bae'
          '9feebec170552c9186e713e7f5852e14'
          'e9ae823e597f2b63d95e6d6a8e25cde3'
@@ -247,8 +252,11 @@ md5sums=('175349c08d19158c88ad582c76916397'
          '5dfc03b8f6b8d190b63271b8ef32986c'
          'f60c03c266bec028b4df4b7996deaacb'
          '3b51a73b29843bfc6db748351dea464b'
-         'a841defc71b4b1da33ac9b24cdff52ca')
-sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
+         'a841defc71b4b1da33ac9b24cdff52ca'
+         '18dad6ca1c3bc2dd5206fe8caf4bcdf1'
+         'bca5ff7935af3fe539ec30f1e9f59190'
+         '40cf223579346f664c113cb7adcba434')
+sha256sums=('9ab56e0c841a1eab13e9ced8f1ff6943be6643773dbbbb7b189462950b9f2113'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -292,7 +300,10 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '50975ac2377ffd24874746df4b820de1734f53eb322bd25ccc9d51148129a2e0'
             '0ae424e8211836edbededafd308cf9ae73cdb791752c4fc43e1c194db7b77cab'
             '1d6ab72eec4977b7789d0f5af3dc907bebdd21e417abb5dcfdac80c460a77bae'
-            'd1c641d3f024e8e11c4a36bf58570afb4b63fcaa4a22f05c59b513a35a6a4af7')
+            'd1c641d3f024e8e11c4a36bf58570afb4b63fcaa4a22f05c59b513a35a6a4af7'
+            '2b9ccbe92e4e1cbeafd16208ef011209bce30b6d3f9b4f288d0b83418479b1bc'
+            '2ac185b8a27855c22d64d2e3f56e28f6a4442b1141ad46e4a0a078e0e22adc53'
+            'a23535a5681516931d7de12e35c49086cb38b5a44f831acd5840640e5f26ce09')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -402,38 +413,55 @@ prepare() {
     #cp -pr driver/2.6.27{,.orig}; false
     #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
     patch -Nup0 -i "${srcdir}/0004-kernel-5.6-proc_dir_entry-proc_ops.patch"
+
+    #cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
+    patch -Nup0 -i "${srcdir}/0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
+
+    #cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.13-dropped-tty_check_change.patch'
+    patch -Nup0 -i "${srcdir}/0006-kernel-5.13-dropped-tty_check_change.patch"
+
+    # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
+    # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
+    # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
+    #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
+    patch -Nup0 -i "${srcdir}/0007-kernel-5.14-task_struct.state-unsigned-tty.patch"
+
+    # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+    # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
+    #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+    patch -Nup0 -i "${srcdir}/0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+    # https://lore.kernel.org/all/20210914091134.17426-2-jslaby@suse.cz/
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
+    patch -Nup1 -i "${startdir}/0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch"
+
+    # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0010-kernel-5.17-change-PDE_DATA.patch'
+    patch -Nup1 -i "${startdir}/0010-kernel-5.17-change-PDE_DATA.patch"
   fi
 
-  #cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
-  patch -Nup0 -i "${srcdir}/0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
+  if :; then
+    # https://lore.kernel.org/lkml/723478a270a3858f27843cbec621df4d5d44efcc.1663288066.git.nabijaczleweli@nabijaczleweli.xyz/T/
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0011-kernel-6.1-remove-TTY_MAGIC.patch'
+    patch -Nup1 -i "${startdir}/0011-kernel-6.1-remove-TTY_MAGIC.patch"
 
-  #cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nup0 -i "${srcdir}/0006-kernel-5.13-dropped-tty_check_change.patch"
+    # https://www.uwsg.indiana.edu/hypermail/linux/kernel/1809.1/00449.html
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0012-kernel-6.1-INIT_C_CC-termios_internal.patch'
+    patch -Nup1 -i "${startdir}/0012-kernel-6.1-INIT_C_CC-termios_internal.patch"
 
-  # unsigned write_room https://www.spinics.net/lists/linux-serial/msg42297.html
-  # unsigned chars_in_buffer https://www.spinics.net/lists/linux-serial/msg42299.html
-  # set_current_state https://linux-kernel.vger.kernel.narkive.com/xnPfKhYP/patch-2-5-52-use-set-current-state-instead-of-current-state-take-1
-  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0007-kernel-5.14-task_struct.state-unsigned-tty.patch'
-  patch -Nup0 -i "${srcdir}/0007-kernel-5.14-task_struct.state-unsigned-tty.patch"
-
-  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
-  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup0 -i "${srcdir}/0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
-
-  # https://lore.kernel.org/all/20210914091134.17426-2-jslaby@suse.cz/
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch'
-  patch -Nup1 -i "${startdir}/0009-kernel-5.16-remove-LDISC_FLAG_DEFINED.patch"
-
-  # https://www.spinics.net/lists/linux-fsdevel/msg207433.html
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0010-kernel-5.17-change-PDE_DATA.patch'
-  patch -Nup1 -i "${startdir}/0010-kernel-5.17-change-PDE_DATA.patch"
+    # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    # diff -pNaru5 'a' 'b' > '0013-kernel-6.0-set_termios-const-ktermios.patch'
+    patch -Nup1 -i "${startdir}/0013-kernel-6.0-set_termios-const-ktermios.patch"
+  fi
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
@@ -584,6 +612,9 @@ package() {
   install -dm755 "${pkgdir}/etc/udev/rules.d/"
   touch "${pkgdir}/${backup[0]}" # postinstall handles the pacsave file automatically
   chmod 644 "${pkgdir}/${backup[0]}"
+  if [ ! -s "${pkgdir}/tmp/dgrp/10-dgrp.rules" ]; then
+    mv "${pkgdir}/etc/udev/rules.d/10-dgrp.rules" "${pkgdir}/tmp/dgrp/10-dgrp.rules" # 1.9-41
+  fi
   sed -e 's:^KERNEL=="cu_dgrp:#&:g' -i "${pkgdir}/tmp/dgrp/10-dgrp.rules" # Recommended by Digi
   cat > "${pkgdir}/etc/udev/rules.d/10-dgrp.rules" << EOF
 # Automatically generated by ${pkgname}-${pkgver} PKGBUILD from Arch Linux AUR
