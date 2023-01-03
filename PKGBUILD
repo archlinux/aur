@@ -4,7 +4,7 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=6.04
+pkgver=6.06
 pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
@@ -18,7 +18,8 @@ source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-sha1sums=('86eec2287f7b4555e2317df93f0d6cf23c02f52c'
+#sha1sums=('86eec2287f7b4555e2317df93f0d6cf23c02f52c'
+sha1sums=('fa7e1da709972c640a913d42039ba8609ed6218e'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
           '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
           'e561e36c7bae61c3f5da65e4fb19a22e698f4584')
@@ -48,6 +49,10 @@ package() {
   cd "${pkgdir}/usr/share/applications/screensavers/"
   sh "${srcdir}/migrate-xscreensaver-config.sh" "${pkgdir}/usr/share/xscreensaver/config/*.xml"
   rm -r "${pkgdir}/usr/share/xscreensaver"
+  # There are property files that conflict with xfce4-xscreensaver - remove them.
+  # Thank you @dpirate & @Barracuda for your patience
+  rm "${pkgdir}/usr/share/applications/xscreensaver.desktop"
+  rm "${pkgdir}/usr/share/applications/xscreensaver-settings.desktop"
   rmdir "${pkgdir}/etc"
   # popsquares exists on most frontends
   if [ -d "${pkgdir}/usr/share/applications/screensavers/popsquares.desktop" ]; then
