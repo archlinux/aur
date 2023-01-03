@@ -1,0 +1,16 @@
+pkgbase = libisl25-static
+	pkgdesc = Library for manipulating sets and relations of integer points bounded by linear constraints
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://libisl.sourceforge.io
+	arch = x86_64
+	license = MIT
+	depends = gmp
+	provides = isl
+	provides = libisl.so
+	replaces = isl
+	options = staticlibs
+	source = https://libisl.sourceforge.io/isl-0.25.tar.xz
+	b2sums = 54a13ba8a5d7666f62f3fb20db278d15b803400cb8b69f119b18fd1f54f7d02f1e07cd1e189803fc416afaa81b35e2247ef6b3da3d8cddc463b05cc9b3921890
+
+pkgname = libisl25-static
