@@ -1,0 +1,9 @@
+ #!/usr/bin/env bash
+
+explicitly_asked=$(longoverdue | grep -c "reboot required")
+critical_services_updated=$(longoverdue | grep -c "kubelet")
+kernel_updated=$(longoverdue | grep -c "running kernel")
+
+if (( $(( explicitly_asked + critical_services_updated + kernel_updated )) > 0 )); then
+    touch /var/run/reboot-required
+fi

@@ -1,0 +1,14 @@
+pkgbase = kured-sentinel
+	pkgdesc = Pacman hook to create the sentinel file for kured.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vbouchaud/aur/tree/main/kured-sentinel
+	arch = any
+	license = MIT
+	depends = longoverdue
+	source = kured-sentinel
+	source = kured-sentinel.hook
+	sha256sums = c050b7b8b6bb244b16ad84c3d162b91ddbf9ebaeda423df7418e4ad646fe99b3
+	sha256sums = 9124af974ca641ff1421bc077ae6e4f7dae0704bf0ba7a7d6630d75afdbe1a06
+
+pkgname = kured-sentinel

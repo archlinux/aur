@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = File
+Target = usr/*
+
+[Action]
+Description = Adding reboot sentinel file if needed...
+Depends = longoverdue
+When = PostTransaction
+Exec = /usr/bin/sentinel
