@@ -1,6 +1,6 @@
 pkgbase = mkaudiocdrimg
 	pkgdesc = Make an audio CD-R image from media files.
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gitlab.com/tallero/mkaudiocdrimg
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mkaudiocdrimg
 	depends = ffmpeg
 	depends = shntool
 	depends = python-appdirs
-	source = mkaudiocdrimg::git+https://gitlab.com/tallero/mkaudiocdrimg#tag=1.2
+	source = mkaudiocdrimg::git+https://gitlab.com/tallero/mkaudiocdrimg#tag=1.2.1
 	sha256sums = SKIP
 
 pkgname = mkaudiocdrimg
