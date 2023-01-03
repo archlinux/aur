@@ -1,14 +1,14 @@
 # Maintainer: Martin Thierer <thierer@web.de>
 
 pkgname=unp64
-pkgver=2.36
+pkgver=2.37
 pkgrel=1
 pkgdesc='Generic C64 prg unpacker'
 url='http://iancoog.altervista.org/'
 license=('unknown')
 arch=('x86_64')
 source=("http://iancoog.altervista.org/C/unp64_${pkgver/./}.7z")
-md5sums=('06d2c3f8a17d7c79bddf719694d521bf')
+md5sums=('6f533cbeef28ad026058bd74116edcb3')
 
 build() {
   cd "${srcdir}/unp64_${pkgver/./}/src"
