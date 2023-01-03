@@ -1,14 +1,12 @@
 pkgbase = run-one
 	pkgdesc = Run just one instance of a command and its args at a time
 	pkgver = 1.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/run-one
 	arch = any
 	license = GPL3
 	depends = sh
-	depends = util-linux
-	source = run-one-1.17.tgz::https://bazaar.launchpad.net/~run-one/run-one/trunk/tarball/70
-	sha256sums = 2582ec486ad91dacda511967a87fd80eec6bf924867576477c8f5cd93df3f91a
+	source = run-one-1.17.tgz::https://launchpad.net/run-one/trunk/1.17/+download/run-one_1.17.orig.tar.gz
+	sha256sums = b7c9b257b52f29ba0d923a4dfee4edd47332ebeca0200c65f309eb6ae33f701f
 
 pkgname = run-one
-
