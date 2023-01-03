@@ -1,7 +1,7 @@
 pkgbase = camv-rnd
 	pkgdesc = free/open source, small, flexible viewer for PCB-related CAM file formats
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.repo.hu/projects/camv-rnd/
 	arch = i686
 	arch = x86_64
