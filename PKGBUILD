@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.3.43
+pkgver=1.3.103
 pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in impossible spaces'
 arch=('x86_64')
