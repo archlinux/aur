@@ -1,6 +1,6 @@
 pkgbase = backintime
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -8,15 +8,14 @@ pkgbase = backintime
 	checkdepends = python-dbus
 	checkdepends = rsync
 	checkdepends = systemd
+	checkdepends = python-pyfakefs
 	makedepends = python
-	source = backintime-1.3.2.tar.gz::https://github.com/bit-team/backintime/archive/v1.3.2.tar.gz
-	source = 001-fix-test-test_tools-add-sleep-for-flaky-systems.patch::https://patch-diff.githubusercontent.com/raw/bit-team/backintime/pull/1214.patch
-	b2sums = 64d312ca8f140bf42ed8d41cb915adc8e181e535e13f9a2b2f1cee9c8ab18254df15604b869f98e5978cb204d558eaf602ea3d158a52527843ba2c045d702545
-	b2sums = f840b40cebb5a360db319fddb404217cff94e62df36e155ebd41ff44cf357a29697c461e83b878d044230f902b91beaaccf604d12e68d93f58c0b5360237cb7e
+	source = backintime-1.3.3.tar.gz::https://github.com/bit-team/backintime/archive/8495f9dc3953343a0352bb3ffbdcfab7f93c10ad.tar.gz
+	b2sums = 5900c265718d3d3fad1ce3e38719c6e12cb435105d0b714a4602e1a541d3610d8cb552e13a1c59acf2bfc67290637fc2aacae971865d67fcfad92ad85a64d161
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT5 GUI version.
-	depends = backintime-cli=1.3.2
+	depends = backintime-cli=1.3.3
 	depends = libnotify
 	depends = polkit
 	depends = python-dbus
@@ -34,6 +33,8 @@ pkgname = backintime-cli
 	depends = python-dbus
 	depends = python-keyring
 	depends = rsync
+	depends = python-packaging
+	depends = python-pyfakefs
 	optdepends = backintime: QT5 GUI version
 	optdepends = encfs: encrypted filesystem in user-space
 	optdepends = pm-utils: for laptops allows an option to not snapshot on battery
