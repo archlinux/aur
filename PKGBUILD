@@ -2,7 +2,7 @@
 
 pkgname=numlockl
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Turns on the numlock key.'
 arch=('x86_64')
 url='https://gitlab.com/phoepsilonix/numlockl'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 source=(https://gitlab.com/phoepsilonix/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz
         LICENSE)
-sha512sums=('3563b34f14d7cd966d92ce4b3d9c8961fa90a7a86de3b813741044437e46bec779d4b3131a7bc0e546c29a9b49c87cccc1176a7095ddc0c814a73c90205f68e0'
+sha512sums=('5b4253439917779410efd3b96f86a987509da923b8d37d7f25be27e5ed5faf82ea9e284e1a4850c7efa47177e85f931a7fa73722c644deff309919426e5f0fae'
             'c5ac1d5ef4e6b12206d27369087fca7d39cedc2ad3cd625caa5b5c558ab003195a8158ab19206b89e0ccbd4e9c1b39348a72923ba2c35c8d33fc603fae3f4bd8')
 
 build() {
