@@ -2,7 +2,7 @@
 # Contributor: Evgeniy Dobromliskiy <voltasar at gmail dot com>
 
 pkgname='se98-icon-theme-git'
-pkgver=0.2.14
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="Windows 98 Second Edition inspired icon theme"
 arch=(any)
