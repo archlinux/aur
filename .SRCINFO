@@ -2,6 +2,7 @@ pkgbase = linuxqq-firejail
 	pkgdesc = Run QQ in Firejail (security sandbox). Install linuxqq before this.
 	pkgver = 0.0.2
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/BeautyYuYanli/linuxqq-firejail
 	arch = x86_64
 	arch = aarch64
