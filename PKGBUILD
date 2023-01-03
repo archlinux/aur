@@ -2,7 +2,7 @@
 pkgname=python-pleroma-bot
 _name=${pkgname#python-}
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bot for mirroring one or multiple Twitter accounts in Pleroma/Mastodon."
 arch=("any")
 url="https://github.com/robertoszek/$_name"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  depends=("python-oauthlib" "python-requests-oauthlib" "python-requests" "python-pyaml")
+  depends=("python-oauthlib" "python-requests-oauthlib" "python-requests" "python-pyaml" "python-tqdm" "python-beautifulsoup4" "python-feedparser")
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 || return 1
   mkdir -p "${pkgdir}/var/log/pleroma-bot"
