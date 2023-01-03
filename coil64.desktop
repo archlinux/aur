@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Coil64
+Comment=Coil inductance calculator (formerly Coil32)
+Exec=coil64
+Icon=coil64
+Terminal=false
+StartupNotify=false
+Categories=Application;Office;

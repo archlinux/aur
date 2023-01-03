@@ -2,3 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!coil64.desktop
+!coil64.png

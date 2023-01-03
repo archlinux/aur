@@ -1,12 +1,16 @@
 pkgbase = coil64
 	pkgdesc = Coil inductance calculator (formerly Coil32)
 	pkgver = 2.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coil32.net/
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	source = coil64-2.1.26.tar.gz::https://github.com/radioacoustick/Coil64/archive/refs/tags/v2.1.26.tar.gz
+	source = coil64.desktop
+	source = coil64.png
 	b2sums = 811805c27477ab9b987e16201ec45b04c924b8a923d6d62f697c576fb0363a899bf91ad7f68ce3e8337667070ad3d9c458690c2daf6c1b9c3635c81fc2fe7a0d
+	b2sums = 0eff9bb34f0c2ee12db8a1f86d43bb5b8322f4f7e4b062cc5b528f4e794930942a0e917eca4c093cd6128a34254fa74fa1cb84bf494524eab4f7195b626b29c8
+	b2sums = dd9575c42bbc66895343cd33c08512511fa6afca476c970e11a7a0bed231be1e34f1ad24f94086342cc3317a9dc589c2b9a1412ad7eaafaabebc75052c5ec04a
 
 pkgname = coil64
