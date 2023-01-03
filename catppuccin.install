@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: To use this theme, set it with fish_config.'
+}
+
+post_upgrade() {
+	echo ":: This theme's install location has changed."
+	post_install
+}

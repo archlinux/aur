@@ -1,8 +1,9 @@
 pkgbase = fish-catppuccin-git
 	pkgdesc = Soothing pastel theme for Fish Shell
-	pkgver = r54.cb79527
-	pkgrel = 2
+	pkgver = r61.b909666
+	pkgrel = 1
 	url = https://github.com/catppuccin/fish
+	install = catppuccin.install
 	arch = any
 	license = MIT
 	makedepends = git

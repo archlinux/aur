@@ -7,14 +7,15 @@ pkgname=(
 	'fish-catppuccin-macchiato-git'
 	'fish-catppuccin-mocha-git')
 _pkg="${pkgbase%-git}"
-pkgver=r54.cb79527
-pkgrel=2
+pkgver=r61.b909666
+pkgrel=1
 pkgdesc="Soothing pastel theme for Fish Shell"
 arch=('any')
 url='https://github.com/catppuccin/fish'
 license=('MIT')
 depends=('fish')
 makedepends=('git')
+install=catppuccin.install
 source=("$_pkg::git+$url")
 sha256sums=('SKIP')
 
@@ -25,8 +26,8 @@ pkgver() {
 
 _package() {
 	cd "$_pkg"
-	install -Dm644 conf.d/$1.fish -t "$pkgdir/usr/share/fish/vendor_conf.d/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 themes/"$1.theme" -t "$pkgdir/usr/share/fish/tools/web_config/themes/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_fish-catppuccin-frappe-git() {
@@ -34,7 +35,7 @@ package_fish-catppuccin-frappe-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	_package frappe
+	_package "Catppuccin Frappe"
 }
 
 package_fish-catppuccin-latte-git() {
@@ -42,7 +43,7 @@ package_fish-catppuccin-latte-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	_package latte
+	_package "Catppuccin Latte"
 }
 
 package_fish-catppuccin-macchiato-git() {
@@ -50,7 +51,7 @@ package_fish-catppuccin-macchiato-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	_package macchiato
+	_package "Catppuccin Macchiato"
 }
 
 package_fish-catppuccin-mocha-git() {
@@ -58,5 +59,5 @@ package_fish-catppuccin-mocha-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	_package mocha
+	_package "Catppuccin Mocha"
 }
