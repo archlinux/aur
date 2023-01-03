@@ -23,7 +23,7 @@ pkgname="asix-${_modulename,,}"
 #pkgver='1.6.0'; _dl='529'
 #pkgver='1.7.0'; _dl='1162'
 pkgver='1.8.0'; _dl='1229'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
 url='https://www.asix.com.tw/'
@@ -33,17 +33,22 @@ makedepends=('gzip' 'findutils' 'sed' 'diffutils' 'patch')
 install="${pkgname}-install.sh"
 _srcdir="AX99100_SP_PP_SPI_Linux_Driver_v${pkgver}_Source"
 source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/${_dl}")
-source+=('0000-ax99100_sp.c-ch.patch')
-source+=('0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch')
-source+=('0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch')
+source+=(
+  '0000-ax99100_sp.c-ch.patch'
+  '0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch'
+  '0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch'
+  '0003-kernel-6.0-set_termios-const-ktermios.patch'
+)
 md5sums=('eb1f8c5e347b308702a9082c79bd469b'
          'e992800dddd65a174ac531448e3f1498'
          'ab3d71682ad549eb51ae8a13aa90efc5'
-         '8bf51364274f661b3f88fafb23b61f87')
+         '8bf51364274f661b3f88fafb23b61f87'
+         'e3ae65a199f4bdc7153fb73f60fd9ea0')
 sha256sums=('d4eda7e48f335e670c6f5286d744dcf111aaa7304dc921ac89089cf253e5cf1d'
             '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36'
             '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54'
-            'be4b1bf9b404b6704002e6d6866af42bb69bda487f5ad063e575a374192969d5')
+            'be4b1bf9b404b6704002e6d6866af42bb69bda487f5ad063e575a374192969d5'
+            '58cf6c6dee888be410ba208e694199548093632a5a7dc0feaec08b3ca3cffc1b')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -90,6 +95,11 @@ prepare() {
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   # diff -pNaru5 'a' 'b' > '0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch'
   patch -Nup1 -i "${srcdir}/0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0003-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0003-kernel-6.0-set_termios-const-ktermios.patch"
 
   # Make package and DKMS compatible
   # cp -p 'Makefile' 'Makefile.Arch'

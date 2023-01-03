@@ -1,7 +1,7 @@
 pkgbase = asix-ax99100
 	pkgdesc = kernel module driver for Asix serial RS-232 port
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asix.com.tw/
 	install = asix-ax99100-install.sh
 	arch = i686
@@ -19,13 +19,16 @@ pkgbase = asix-ax99100
 	source = 0000-ax99100_sp.c-ch.patch
 	source = 0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch
 	source = 0002-kernel-5.18-pci_free_consistent-pci_alloc_consistent.patch
+	source = 0003-kernel-6.0-set_termios-const-ktermios.patch
 	md5sums = eb1f8c5e347b308702a9082c79bd469b
 	md5sums = e992800dddd65a174ac531448e3f1498
 	md5sums = ab3d71682ad549eb51ae8a13aa90efc5
 	md5sums = 8bf51364274f661b3f88fafb23b61f87
+	md5sums = e3ae65a199f4bdc7153fb73f60fd9ea0
 	sha256sums = d4eda7e48f335e670c6f5286d744dcf111aaa7304dc921ac89089cf253e5cf1d
 	sha256sums = 158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36
 	sha256sums = 86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54
 	sha256sums = be4b1bf9b404b6704002e6d6866af42bb69bda487f5ad063e575a374192969d5
+	sha256sums = 58cf6c6dee888be410ba208e694199548093632a5a7dc0feaec08b3ca3cffc1b
 
 pkgname = asix-ax99100
