@@ -2,7 +2,7 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
-pkgver=v6.90U
+pkgver=6.91F
 pkgrel=0
 arch=('x86_64')
 url="http://www.stcmcudata.com"
@@ -12,25 +12,27 @@ conflicts=('stc-isp' 'stc-isp-bin')
 replaces=('stc-isp-bin')
 depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
 optdepends=()
-makedepends=('unarchiver')
+makedepends=('libarchive')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${pkgname%-wine}-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${pkgver}.zip"
-        "${pkgname%-wine}-tiny-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${pkgver}-tiny.zip"
+source=("${pkgname%-wine}-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}.zip"
+        "${pkgname%-wine}-tiny-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}-tiny.zip"
         "stc-isp-wine.install"
         "stc-isp-tiny-wine.install")
-sha256sums=('90fbbad582a28316f63e4a92bce92b6aa319a0fcd5a7f92f93f97dce83fb7249'
-            '45f701b3f0d23a61f0024018796fc39b69ef35847cc30656b9d4a6bffdc4fe83'
+sha256sums=('ea1f559b6bafb79f70fb81e8cb816e60184376074aab8ffefe08a121e6f3f093'
+            '8cc5b4b906bfa84d114d69f159ef2343021e04f8d5318e3f3bdd6affd69eafa1'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6')
-noextract=("${pkgname%-wine}-${pkgver}.zip"
-            "${pkgname%-wine}-tiny-${pkgver}.zip")
+# noextract=("${pkgname%-wine}-v${pkgver}.zip"
+#             "${pkgname%-wine}-tiny-v${pkgver}.zip")
 
-prepare() {
-    unar -e GBK "${srcdir}/${pkgname%-wine}-${pkgver}.zip"
-    unar -e GBK "${srcdir}/${pkgname%-wine}-tiny-${pkgver}.zip"
-}
+# prepare() {
+#     unar -e GBK "${srcdir}/${pkgname%-wine}-v${pkgver}.zip"
+#     unar -e GBK "${srcdir}/${pkgname%-wine}-tiny-v${pkgver}.zip"
+#     bsdtar -xf  "${srcdir}/${pkgname%-wine}-v${pkgver}.zip"
+#     bsdtar -xf  "${srcdir}/${pkgname%-wine}-tiny-v${pkgver}.zip"
+# }
 
 package_stc-isp-wine() {
     export LC_CTYPE="zh_CN.UTF-8"
@@ -42,7 +44,8 @@ package_stc-isp-wine() {
 
     install -dm0755 "${pkgdir}/${_stc}/${pkgname%-wine}"
 
-    cp -ra "${srcdir}/${pkgname%-wine}-${pkgver}/${pkgname%-wine}-${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
+#     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
+    cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
 
     find "${pkgdir}/${_stc}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${_stc}" -type d -exec chmod 755 "{}" \;
@@ -160,7 +163,8 @@ package_stc-isp-tiny-wine() {
 
     install -dm0755 "${pkgdir}/${_stc}/${pkgname%-wine}"
 
-    cp -ra "${srcdir}/${pkgname%-wine}-${pkgver}/${pkgname%-tiny-wine}-${pkgver}-tiny.exe" "${pkgdir}/${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe"
+#     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}/${pkgname%-tiny-wine}-v${pkgver}-tiny.exe" "${pkgdir}/${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe"
+    cp -ra "${srcdir}/${pkgname%-tiny-wine}-v${pkgver}-tiny.exe" "${pkgdir}/${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe"
 
     find "${pkgdir}/${_stc}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${_stc}" -type d -exec chmod 755 "{}" \;
