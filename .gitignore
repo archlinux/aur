@@ -1,0 +1,4 @@
+shell/
+pkg/
+src/
+*.pkg.tar.*
