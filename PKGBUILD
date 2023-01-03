@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3829.r0.g26d5ee0c9
+pkgver=v1.7.3842.r0.g2459145db
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -85,7 +85,6 @@ pkgver()
 build()
 {
   cd $srcdir/pcsx2
-  cp -prv bin/resources/* pcsx2-qt/resources/ | grep '\->'
   cd ..
   mkdir -p build
   cd build
@@ -103,16 +102,18 @@ build()
     -DPACKAGE_MODE=ON \
     -DDISABLE_SETCAP=ON
   ninja -j$(nproc)
+
+  cd ..
+  cp -r pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop build/bin/PCSX2.desktop
 }
 
 package()
 {
-  ls
     DESTDIR="${pkgdir}" cmake --install build
 }
 
 # vim: ts=2 sw=2 et:
 
 sha256sums=('SKIP'
-            'd345759a6ca19023ba9775c6f4b847d5510c38eea83406571dc0d2fc72ec3d3a'
+            'b69b3369e62bee6b6063b49621144343bb9ba81fd51f38e5e9bee4efbc731230'
 )

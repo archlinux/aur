@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.3829.r0.g26d5ee0c9
+	pkgver = v1.7.3842.r0.g2459145db
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = post.install
@@ -41,6 +41,6 @@ pkgbase = pcsx2-git
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = 0001-Fix-resources-Fix-CMake.patch
 	sha256sums = SKIP
-	sha256sums = d345759a6ca19023ba9775c6f4b847d5510c38eea83406571dc0d2fc72ec3d3a
+	sha256sums = b69b3369e62bee6b6063b49621144343bb9ba81fd51f38e5e9bee4efbc731230
 
 pkgname = pcsx2-git
