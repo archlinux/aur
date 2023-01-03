@@ -12,7 +12,6 @@ pkgbase = libxfce4windowing-devel
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	makedepends = xfce4-dev-tools
 	depends = gtk3
 	depends = libwnck3
 	provides = libxfce4windowing=4.19.0

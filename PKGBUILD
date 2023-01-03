@@ -10,7 +10,7 @@ url="https://docs.xfce.org/xfce/libxfce4windowing/start"
 license=('LGPL2.1')
 groups=('xfce4-devel')
 depends=('gtk3' 'libwnck3')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'xfce4-dev-tools')
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
