@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 _module="iop"
 _platform="ps2"
-target="mipsel-${_platform}-elf"
+target="mipsel-${_platform}-irx"
 _bu="binutils"
 _base="toolchain"
 pkgname=("${target}-${_bu}")
