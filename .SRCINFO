@@ -1,4 +1,4 @@
-pkgbase = libxfce4windowing-devel
+pkgbase = libxfce4windowing-git
 	pkgdesc = Windowing concept abstraction library for X11 and Wayland (git checkout)
 	pkgver = 4.19.0+1+ga4062a9
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = libxfce4windowing-devel
 	source = libxfce4windowing::git+https://gitlab.xfce.org/xfce/libxfce4windowing
 	sha256sums = SKIP
 
-pkgname = libxfce4windowing-devel
+pkgname = libxfce4windowing-git

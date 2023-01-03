@@ -1,7 +1,7 @@
 # Maintainer:  twa022 <twa022 at gmail dot com>
 
 _pkgname=libxfce4windowing
-pkgname=${_pkgname}-devel
+pkgname=${_pkgname}-git
 pkgver=4.19.0+1+ga4062a9
 pkgrel=1
 pkgdesc="Windowing concept abstraction library for X11 and Wayland (git checkout)"
