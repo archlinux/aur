@@ -1,7 +1,7 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
 	pkgver = 6.2.r1153517.f422fa7cd858
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
 	license = GPL2

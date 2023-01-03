@@ -3,7 +3,7 @@
 
 pkgbase=linux-drm-next-git
 pkgver=6.2.r1153517.f422fa7cd858
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
