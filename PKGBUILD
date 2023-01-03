@@ -3,7 +3,7 @@
 
 pkgname=python-google-cloud-storage
 _pkg=python-storage
-pkgver=2.5.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -14,8 +14,8 @@ depends=(
 	'python-google-auth'
 	'python-google-cloud-core'
 	'python-google-resumable-media'
-	'python-protobuf'
 	'python-requests')
+optdepends=('python-protobuf')
 makedepends=(
 	'python-build'
 	'python-installer'
@@ -26,7 +26,7 @@ makedepends=(
 # checkdepends=('python-pytest-runner' 'python-mock' 'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('576a880584e997b61172256ef53f013b24d9111274cfac3a33fb1e23d3ba81bd')
+sha256sums=('97d8a36e9421ea6f6933cc2c11ca8a993d6f1db84739e31283e362d48d7d81f5')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -42,7 +42,7 @@ build() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 docs/build/google-cloud-storage.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 docs/build/google-cloud-storage.1 -t "$pkgdir/usr/share/man/man1/"
 }
