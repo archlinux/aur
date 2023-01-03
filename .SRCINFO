@@ -10,6 +10,7 @@ pkgbase = gnuastro
 	depends = libgit2
 	depends = ghostscript
 	depends = libjpeg
+	optdepends = ds9: for astscript-fits-view
 	source = http://ftp.gnu.org/gnu/gnuastro/gnuastro-0.19.tar.gz
 	md5sums = cac1722072b95ddd19e92271e5a2e30a
 
