@@ -5,7 +5,7 @@
 _pkgname=sonarqube
 pkgname=sonarqube-bin
 pkgver=9.8.0.63668
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
