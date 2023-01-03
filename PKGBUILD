@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(sane gtkmm graphicsmagick boost-libs)
 makedepends=(boost systemd)
 optdepends=('tesseract: OCR support')
-source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_$pkgver.orig.tar.gz
+source=(https://sources.archlinux.org/other/community/imagescan/imagescan_$pkgver.orig.tar.gz
         boost-1.74.patch)
 sha256sums=('e83704398c51a3166fd62c25b89e95cf6262e52f3dc6e627db3e7556e2220d64'
             'e7da445c970a4a99b476b3bb994d0d18f327e0cd166cd87ba24fcd16abee7d49')
