@@ -1,7 +1,7 @@
 # Maintainer: Sin Kim <kimsin98@gmail.com>
 
 pkgname=webchanges
-pkgver=3.10.3
+pkgver=3.12
 pkgrel=1
 pkgdesc='Check web content for changes and notify'
 arch=('any')
@@ -22,14 +22,14 @@ optdepends=('python-playwright: option to use browser'
             'python-pillow: ocr filter'
             'python-pdftotext: pdf2text filter'
             'python-deepdiff: deep difference'
-            'python-matrix-client: matrix reporter'
+            'python-matrix-client-git: matrix reporter'
             'python-pushbullet.py: pushbullet reporter'
             'python-chump: pushover reporter'
             'python-aioxmpp: xmpp reporter'
             'python-redis: redis database'
             'python-keyring: password keyring storage')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f6f519500fb9cbac92c2863127987158852ec6e4bfd9494180f30c0f4932962e')
+sha256sums=('ea3178da9447524ebc85caf897323b36d3e362950e678ac4014ec6dfb6e20e4b')
 
 build() {
     cd "$pkgname-$pkgver"

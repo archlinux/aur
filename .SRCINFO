@@ -1,6 +1,6 @@
 pkgbase = webchanges
 	pkgdesc = Check web content for changes and notify
-	pkgver = 3.10.3
+	pkgver = 3.12
 	pkgrel = 1
 	url = https://pypi.org/project/webchanges
 	arch = any
@@ -28,13 +28,13 @@ pkgbase = webchanges
 	optdepends = python-pillow: ocr filter
 	optdepends = python-pdftotext: pdf2text filter
 	optdepends = python-deepdiff: deep difference
-	optdepends = python-matrix-client: matrix reporter
+	optdepends = python-matrix-client-git: matrix reporter
 	optdepends = python-pushbullet.py: pushbullet reporter
 	optdepends = python-chump: pushover reporter
 	optdepends = python-aioxmpp: xmpp reporter
 	optdepends = python-redis: redis database
 	optdepends = python-keyring: password keyring storage
-	source = https://files.pythonhosted.org/packages/source/w/webchanges/webchanges-3.10.3.tar.gz
-	sha256sums = f6f519500fb9cbac92c2863127987158852ec6e4bfd9494180f30c0f4932962e
+	source = https://files.pythonhosted.org/packages/source/w/webchanges/webchanges-3.12.tar.gz
+	sha256sums = ea3178da9447524ebc85caf897323b36d3e362950e678ac4014ec6dfb6e20e4b
 
 pkgname = webchanges
