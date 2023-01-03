@@ -2,7 +2,7 @@
 # Contributor: cubercsl <hi@cubercsl.site>
 # Contributor: glitsj16
 pkgname=linuxqq-firejail
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 epoch=1
 pkgdesc='QQ in Firejail (security sandbox).'
@@ -11,7 +11,7 @@ url="https://github.com/BeautyYuYanli/linuxqq-firejail"
 license=('unknown')
 depends=('firejail' 'xdg-desktop-portal' 'flatpak-xdg-utils')
 provides=('linuxqq')
-profile="linuxqq.profile"
+profile="linuxqq-strict.profile"
 source=(
 	"${profile}"
 	"git+https://aur.archlinux.org/linuxqq.git"

@@ -1,6 +1,6 @@
 pkgbase = linuxqq-firejail
-	pkgdesc = Run QQ in Firejail (security sandbox). Install linuxqq before this.
-	pkgver = 0.0.4
+	pkgdesc = QQ in Firejail (security sandbox).
+	pkgver = 0.0.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/BeautyYuYanli/linuxqq-firejail
@@ -11,7 +11,7 @@ pkgbase = linuxqq-firejail
 	depends = xdg-desktop-portal
 	depends = flatpak-xdg-utils
 	provides = linuxqq
-	source = linuxqq.profile
+	source = linuxqq-strict.profile
 	source = git+https://aur.archlinux.org/linuxqq.git
 	sha512sums = 8f5f51ad0c90594ceaae60d67a5c44c7444fcc65d58e4fb942a9570d9a088c69e2bfb49140af2cb99c774c8bd2f5cd7f7e9456c23429ea7a0147871e7c5841be
 	sha512sums = SKIP
