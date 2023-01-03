@@ -1,0 +1,18 @@
+pkgbase = mipsel-ps2-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Sony PlayStation® 2 videogame system (binutils, ).
+	pkgver = v2.35.2
+	pkgrel = 1
+	url = https://github.com/ps2dev/binutils-gdb
+	arch = x86_64
+	license = BSD
+	checkdepends = shellcheck
+	makedepends = libgmp-static
+	makedepends = mpfr-static
+	makedepends = libmpc-static
+	makedepends = gmp4-static
+	makedepends = gcc7
+	makedepends = zstd-static
+	source = mipsel-ps2-elf-binutils::git+https://github.com/ps2dev/binutils-gdb#commit=04d85a33e7dd7a10b937dca8855a526c4b92601a
+	sha256sums = SKIP
+
+pkgname = mipsel-ps2-elf-binutils
