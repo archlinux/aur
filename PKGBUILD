@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 _osver="$(uname)"
 _n_cpu=$(getconf _NPROCESSORS_ONLN)
-_make_opts=(-j "${_n_cpu}")
+# _make_opts=(-j "${_n_cpu}")
 
 # shellcheck disable=SC2154
 build() {
@@ -43,6 +43,8 @@ build() {
                      CPPFLAGS="${_cflags[*]}"
                      LDFLAGS="${_ldflags[*]}")
 
+  export CFLAGS=""
+
   cd "${srcdir}/${pkgname}"
 
   for _target in "${target}"; do
@@ -50,13 +52,17 @@ build() {
     mkdir -p "build-${_target}"
     cd "build-${_target}"
     local _configure_opts=(--prefix="/usr"
-                           --target="${_target}"
+                           --with-sysroot="/usr/${target}"
+                           --libdir="/usr/${target}/lib"
+                           --infodir="/usr/${target}/share/info"
+                           --mandir="/usr/${target}/man"
+                           --target="${target}"
                            --disable-nls
                            --disable-build-warnings)
 
     "../configure" ${_configure_opts[@]}
 
-    make # ${_build_opts[@]}
+    make "${_build_opts[@]}"
     
     cd ..
   done
