@@ -5,12 +5,12 @@ pkgbase = mipsel-ps2-elf-gcc-stage1
 	url = https://github.com/ps2dev/gcc
 	arch = x86_64
 	license = BSD
-	makedepends = mipsel-ps2-elf-binutils
 	makedepends = libgmp-static
 	makedepends = mpfr-static
 	makedepends = libmpc-static
 	makedepends = gmp4-static
 	makedepends = zstd-static
+	depends = mipsel-ps2-elf-binutils
 	source = mipsel-ps2-elf-gcc-stage1::git+https://github.com/ps2dev/gcc#commit=331453616ac96717cfef82d21c03573c8984f17d
 	sha256sums = SKIP
 
