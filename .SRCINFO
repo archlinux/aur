@@ -14,6 +14,7 @@ pkgbase = aurora-client-git
 	makedepends = aurora-scanner-git
 	depends = qt5-base
 	depends = qt5-wayland
+	depends = qt5-declarative
 	provides = aurora-client
 	conflicts = aurora-client
 	replaces = aurora-client
