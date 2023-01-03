@@ -3,14 +3,12 @@
 
 pkgname=retrovirtualmachine
 pkgver=2.1.1
-#_pkgver=2.0.beta-1.r7
-pkgrel=1
-pkgdesc="Emulator of the Amstrad CPC and the ZX Spectrum home computers"
+pkgrel=2
+pkgdesc="Emulator for ZX Spectrum (including Pentagon and TK models), Amstrad CPC (including Plus models), MSX-1, Colecovision SEGA SG-1000 and Sega Master System machines"
 url="https://www.retrovirtualmachine.org"
 arch=('x86_64')
 license=('custom:unknown')
 depends=('libxinerama'
-         'systemd-libs'
          'libxi'
          'hicolor-icon-theme'
          'libglvnd')
