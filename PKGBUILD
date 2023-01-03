@@ -9,7 +9,7 @@ url="https://github.com/lytedev/Iosevka"
 license=('SIL Open Font License v1.1')
 source=("https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-nerd-font-${pkgver}.tar.zstd"
 	"${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}-LICENSE.md")
-sha256sums=("88c83aa6fd1044fe1cf06e65329ae8a6716ca672f919e967ed6f63912382eeb9"
+sha256sums=("7e453d2f691f8090869f5da9e7bd25b6e1552d6b0b1ed5fb454ec2e428314fff"
 	"46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1")
 
 package() {
