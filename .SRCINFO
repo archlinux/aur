@@ -7,6 +7,7 @@ pkgbase = ps2-sdk
 	license = BSD
 	depends = ps2-dvp
 	depends = ps2-iop
+	depends = ps2-ee
 	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk
 	sha256sums = SKIP
 
