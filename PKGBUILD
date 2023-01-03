@@ -3,7 +3,7 @@
 pkgname=gimp-nufraw
 _realver=0.43-3
 pkgver=0.43.3
-pkgrel=6
+pkgrel=7
 pkgdesc='Converter for raw files; utility and GIMP plugin'
 url='https://sourceforge.net/projects/nufraw/'
 arch=('x86_64')
@@ -47,4 +47,3 @@ package() {
   make -C "nufraw-${_realver}" DESTDIR="$pkgdir" install
   rm -f "$pkgdir/usr/bin/dcraw"
 }
-
