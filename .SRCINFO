@@ -1,15 +1,20 @@
 pkgbase = liboqs
 	pkgdesc = C library for prototyping and experimenting with quantum-resistant cryptography
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openquantumsafe.org/liboqs/
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-yaml
 	makedepends = cmake
 	makedepends = ninja
 	depends = gcc-libs
 	depends = openssl
 	source = liboqs-0.7.2.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.7.2.tar.gz
+	source = fix-sha3.patch::https://patch-diff.githubusercontent.com/raw/open-quantum-safe/liboqs/pull/1339.patch
 	b2sums = d0ebef728cf5dbf40ef9644e58dfe32bf609770e61ffc9de19d919f5bdf2b157e406be3ee577e9b5a8036de8e758297ae33fe193f873349af180bb591924857b
+	b2sums = b0b7a92acfb4e826ca89a82f7cd64eed206fd5ddf20a558beb2caa992345557d61f14d510814eca3d0b4b016751642e21411f2340e1d096745eff91ec0f0c938
 
 pkgname = liboqs
