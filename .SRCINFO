@@ -1,6 +1,6 @@
 pkgbase = liri-qtintegration-git
 	pkgdesc = Qt applications integration with Liri desktop environment
-	pkgver = r190.1dab05a
+	pkgver = r196.d655548
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = liri-qtintegration-git
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-gsettings-git
-	depends = liri-wayland-git
+	depends = aurora-client-git
 	provides = liri-qtintegration
 	conflicts = liri-qtintegration
 	conflicts = liri-platformtheme-git

@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qtintegration-git
-pkgver=r190.1dab05a
+pkgver=r196.d655548
 pkgrel=1
 pkgdesc="Qt applications integration with Liri desktop environment"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-gsettings-git' 'liri-wayland-git')
+depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-gsettings-git' 'aurora-client-git')
 makedepends=('git' 'liri-cmake-shared-git')
 options=(debug !strip)
 conflicts=('liri-qtintegration' 'liri-platformtheme-git' 'liri-materialdecoration-git')
