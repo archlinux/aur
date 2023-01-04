@@ -1,0 +1,18 @@
+pkgbase = dbc_parser_cpp-git
+	pkgdesc = C++ DBC Parser
+	pkgver = r34.g23689d8
+	pkgrel = 1
+	url = https://github.com/LinuxDevon/dbc_parser_cpp
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = catch2
+	provides = dbc
+	conflicts = dbc
+	options = staticlibs
+	source = git+https://github.com/LinuxDevon/dbc_parser_cpp.git
+	sha256sums = SKIP
+
+pkgname = dbc_parser_cpp-git
