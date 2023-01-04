@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 pkgname=abyss-engine-git
-pkgver=r248.7f266ae
+pkgver=r254.bf1feb3
 pkgrel=1
 pkgdesc="A game engine designed to run games similar to 2000's style ARPGs such as Diablo II"
 arch=('i686' 'x86_64')
 url="https://github.com/AbyssEngine/AbyssEngine"
 license=('GPL3')
 depends=('argh' 'cppzmq' 'ffmpeg' 'lua' 'lua-lpeg' 'sdl2_ttf' 'spdlog' 'sol2')
-makedepends=('cmake' 'git' "gtest")
+makedepends=('cmake' 'git' 'gtest' 'luarocks')
 provides=("${pkgname%-git}" "opendiablo2-git")
 conflicts=("${pkgname%-git}" "opendiablo2-git")
 source=("${pkgname%-git}::git+${url}"
@@ -57,4 +57,7 @@ package() {
 
   install -Dm755 "${srcdir}/opendiablo2.sh" \
     "${pkgdir}/usr/bin/opendiablo2"
+
+  # remove unneeded dotfiles
+  find "${pkgdir}/usr/share/opendiablo2" -iname ".*" -prune -exec rm -r '{}' \;
 }

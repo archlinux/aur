@@ -1,7 +1,7 @@
 post_install() {
   cat <<EOF
 Copy required files(e.g. d2exp.mpq,d2data.mpq..) to your Diablo 2 directory
-(default is /usr/share/opendiablo2/mpqs)
+(default is /usr/share/opendiablo2/DATA/MPQ-D2)
 EOF
 }
 
