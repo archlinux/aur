@@ -1,6 +1,6 @@
 pkgbase = thlink-client-gtk
 	pkgdesc = Touhou Project Game Netplay Tool (client)
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/weilinfox/youmu-thlink/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = thlink-client-gtk
 	depends = gtk3
 	depends = glib2
 	depends = cairo
-	source = https://github.com/weilinfox/youmu-thlink/archive/refs/tags/v0.0.8.tar.gz
-	md5sums = a1d0918f5c4de2341bf4b369bf2961f6
+	source = https://github.com/weilinfox/youmu-thlink/archive/refs/tags/v0.0.9.tar.gz
+	md5sums = 9285edb203c8facef658f1cb8eb0c4f4
 
 pkgname = thlink-client-gtk
