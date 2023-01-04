@@ -2,7 +2,7 @@
 
 pkgname=tiledb
 _pkgname=TileDB
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('make')
 depends=('gcc' 'cmake' 'lz4' 'bzip2' 'zstd' 'zlib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('bc5aabc8bb2951a3882b660aa694353de7c22c5ba0a7ab12817452f3f6d2311d')
+sha256sums=('5749c9693ea2f3e9823429ee6c2b7fad825040faa7df97d91ee318d53b65e681')
 
 build() {
   ls
