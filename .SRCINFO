@@ -1,13 +1,13 @@
 pkgbase = base-ex-cli
-	pkgdesc = CLI for BaseEx (base conversion)
-	pkgver = 0.2.5
+	pkgdesc = CLI for BaseEx -- Base2-Base62, Base16, Base32, Base58, Base64, UUencode, Base85, Base91, LEB128, Ecoji, Base2048, BasePhi
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/UmamiAppearance/BaseExCLI
 	arch = x86_64
 	license = GPL
 	makedepends = npm
-	noextract = base-ex-cli-0.2.5.tgz
-	source = https://registry.npmjs.org/base-ex-cli/-/base-ex-cli-0.2.5.tgz
-	sha256sums = c999ea106bf8252e690ab5167ea06e2af82d59cee0468d0548248f120f81b63b
+	noextract = base-ex-cli-0.3.0.tgz
+	source = https://registry.npmjs.org/base-ex-cli/-/base-ex-cli-0.3.0.tgz
+	sha256sums = bbd6fb63652eec9b5bc0f4058b5b4a154b1ba79450d58dc97abf1e50d8294de1
 
 pkgname = base-ex-cli
