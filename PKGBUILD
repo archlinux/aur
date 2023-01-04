@@ -67,7 +67,7 @@ build() {
     --dest . \
     --name cryptomator \
     --vendor "Skymatic GmbH" \
-    --copyright "(C) 2016 - 2022 Skymatic GmbH" \
+    --copyright "(C) 2016 - 2023 Skymatic GmbH" \
     --java-options "-Xss5m" \
     --java-options "-Xmx256m" \
     --java-options "-Dfile.encoding=\"utf-8\"" \
