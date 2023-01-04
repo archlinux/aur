@@ -1,0 +1,13 @@
+post_install() {
+	# Hint user about ov config file
+  echo ">> ov provides two example config files (ov.yaml, ov-less.yaml) but none of them are inherited by default."
+  echo ">> You can find them here '/usr/share/ov' and here is an example of how to use the default ov.yaml:"
+  echo ">> $ cp /usr/share/ov/ov.yaml ~/.ov.yaml"
+}
+
+post_upgrade() {
+  # Hint user about ov config file
+  echo ">> ov provides two example config files (ov.yaml, ov-less.yaml) but none of them are inherited by default."
+  echo ">> You can find them here '/usr/share/ov' and here is an example of how to use the default ov.yaml:"
+  echo ">> $ cp /usr/share/ov/ov.yaml ~/.ov.yaml"
+}

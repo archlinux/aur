@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# ...but
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!ov-bin.*
