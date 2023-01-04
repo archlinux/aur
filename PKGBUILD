@@ -2,7 +2,7 @@
 # Based on package from David Pflug <david@pflug.email>
 # Based on package from Phil Martella <philmartella@live.com>
 # Based on brother-hl3150cdw by MCMic <come.bernigaud@laposte.net>
-pkgname="brother-hl4570cdw"
+pkgname="brother-hl4570cdw-git"
 pkgver=1.1.4
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother HL-4570CDW"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
-install='brother-hl4570cdw.install'
+install='brother-hl4570cdw-git.install'
 source=(
 	"https://download.brother.com/welcome/dlf005943/hl4570cdwlpr-1.1.1-5.i386.rpm"
 	"https://download.brother.com/welcome/dlf005945/hl4570cdwcupswrapper-1.1.1-5.i386.rpm"
