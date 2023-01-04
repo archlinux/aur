@@ -2,24 +2,49 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.6.2.r13.g28dfcb0bc
+pkgver=5.6.2.r16.g37a169143
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
-depends=('dtkwidget-git' 'deepin-account-faces-git' 'libpwquality' 'startdde-git'
-         'deepin-daemon-git' 'startdde-git' 'networkmanager-qt'
-         'deepin-qt-dbus-factory-git' 'deepin-network-core-git'
-         'deepin-pw-check-git')
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'qt5-base' 'qt5-x11extras' 'qt5-multimedia' 'qt5-svg' 'dtkcore-git' 'dtkwidget-git' 'dtkgui-git' 'networkmanager-qt' 'deepin-network-core-git' 'deepin-qt-dbus-factory-git' 'gtest' 'gmock' 'polkit-qt5' 'deepin-pw-check-git')
+depends=(
+    'dtkwidget-git'
+    'deepin-account-faces-git'
+    'libpwquality'
+    'startdde-git'
+    'deepin-daemon-git'
+    'startdde-git'
+    'deepin-qt-dbus-factory-git'
+    'deepin-pw-check-git'
+)
+makedepends=(
+    'git'
+    'cmake'
+    'ninja'
+    'qt5-tools'
+    'qt5-base'
+    'qt5-x11extras'
+    'qt5-multimedia'
+    'qt5-svg'
+    'dtkcore-git'
+    'dtkwidget-git'
+    'dtkgui-git'
+    'deepin-qt-dbus-factory-git'
+    'gtest'
+    'gmock'
+    'polkit-qt5'
+    'deepin-pw-check-git'
+)
 optdepends=('redshift: automatic color temperature support'
             'networkmanager-openconnect: for OpenConnect support'
             'networkmanager-openvpn: for OpenVPN support'
             'networkmanager-pptp: for PPTP support'
             'networkmanager-strongswan: for StrongSwan support'
             'networkmanager-vpnc: for VPNC support'
-            'network-manager-sstp: for SSTP support')
+            'network-manager-sstp: for SSTP support'
+            'deepin-network-core-git'
+)
 # Not packaged: network-manager-l2tp
 conflicts=('deepin-control-center')
 provides=('deepin-control-center')
