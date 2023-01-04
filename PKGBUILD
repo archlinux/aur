@@ -48,4 +48,4 @@ package() {
 }
 
 sha256sums=('a7a1a44d4b1160cb29096c3c065fed42f507926c4e566584d0e5c9db9e5460f6'
-            'c943f4efe1e3840958b18476dfcad8ab454a36dabbda553aba764dca3dd1a904')
+            '81e9a94f7fbaf0c6ee8a66f6f0930fab64fc0c06f2d718821672701d0d27cacb')
