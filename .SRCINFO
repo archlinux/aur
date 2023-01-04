@@ -1,0 +1,13 @@
+pkgbase = pandoc-secnos
+	pkgdesc = Section number filter for pandoc
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/tomduck/pandoc-secnos
+	arch = any
+	license = GPL
+	depends = pandoc-xnos>=2.5.0
+	depends = pandoc-xnos<3.0
+	source = https://github.com/tomduck/pandoc-secnos/archive/2.2.2.tar.gz
+	md5sums = 88f658c1ce21e9b555a799a55824b24d
+
+pkgname = pandoc-secnos
