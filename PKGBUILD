@@ -8,7 +8,7 @@ pkgname=pstate-frequency-git
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver (git version)"
 # shellcheck disable=SC2034
-pkgver="3.13.0".r961.b22bd0e
+pkgver="3.13.0".r964.a417c32
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -26,6 +26,12 @@ conflicts=('pstate-frequency')
 # shellcheck disable=SC2034
 license=('GPL2')
 url="https://github.com/pyamsoft/pstate-frequency.git"
+# shellcheck disable=SC2034
+backup=('etc/pstate-frequency.d/00-auto.plan'
+        'etc/pstate-frequency.d/01-powersave.plan'
+        'etc/pstate-frequency.d/02-balanced.plan'
+        'etc/pstate-frequency.d/03-performance.plan'
+        'etc/pstate-frequency.d/04-max.plan')
 
 ##
 # The SHA256 is constantly changing since this is
