@@ -1,14 +1,16 @@
 pkgbase = steam-removable-media-git
 	pkgdesc = Automounts and imports removable media as a Steam library
-	pkgver = 22.12.r22.b62fe42
+	pkgver = 23.01.r23.05226e5
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/steam-removable-media
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = parted
+	depends = f3
+	provides = steam-removable-media
 	conflicts = jupiter-hw-support
-	source = steam-removable-media::git+https://github.com/ShadowBlip/steam-removable-media.git#tag=b62fe42c7c96bc428b52467a776ebb22e81b1af4
+	source = steam-removable-media::git+https://github.com/ShadowBlip/steam-removable-media.git#tag=05226e5abcc51f720ba16eaf07b805d90de7be11
 	sha256sums = SKIP
 
 pkgname = steam-removable-media-git
