@@ -1,0 +1,13 @@
+pkgbase = aseprite-than
+	pkgdesc = A dark theme for Aseprite
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://tungkradle.github.io/aseprite-than/
+	arch = any
+	license = custom:cc-by-4.0
+	depends = aseprite>=1.2
+	noextract = than-v1.2.5.zip
+	source = https://github.com/tungkradle/aseprite-than/releases/download/v1.2.5/than-v1.2.5.zip
+	sha256sums = c6788eba615423cf4e7a7c776fde4a1c2b39a60fa49e5750284d373bd0e5b712
+
+pkgname = aseprite-than
