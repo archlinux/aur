@@ -1,15 +1,15 @@
 pkgbase = mpdris2-rs
 	pkgdesc = Exposing MPRIS V2.1 D-Bus interface for mpd
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/szclsya/mpdris2-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = dbus
-	source = mpdris2-rs-0.1.1.tar.gz::https://github.com/szclsya/mpdris2-rs/archive/0.1.1.tar.gz
+	source = mpdris2-rs-0.1.2.tar.gz::https://github.com/szclsya/mpdris2-rs/archive/0.1.2.tar.gz
 	source = mpdris2-rs.service
-	sha512sums = f92371e14afbb171e240e2b9a4ff0c7dd56b92fa110e9fe972a29fc6b0fe1d93ac795755e478c06a1da61afa573100a6b428e37b7ac530ae792aa0e39df685eb
+	sha512sums = f3e7b1eb0aca3ac38a477fd87f01f25224ca9fd2dd45f2d463e6dd50727e5eb4723d21f531365687596e499de303424e9471a388ee1c9795a38df69d08755375
 	sha512sums = SKIP
 
 pkgname = mpdris2-rs
