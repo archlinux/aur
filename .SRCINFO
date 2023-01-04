@@ -1,0 +1,19 @@
+pkgbase = python-torchsde
+	pkgdesc = Differentiable SDE solvers with GPU support and efficient sensitivity analysis
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/google-research/torchsde
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-boltons
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pytorch
+	depends = python-trampoline
+	source = torchsde-0.2.4::https://github.com/google-research/torchsde/archive/refs/tags/v0.2.4.tar.gz
+	sha512sums = 07ff7271f417acee0178a8f1f6780dd59b2aed57cb5350c2c0c0fbfdb82f0989d88faa53eb59ccb284a821ec3629dc24a8cfc935dbe973fd1186f2daf84b2916
+
+pkgname = python-torchsde
