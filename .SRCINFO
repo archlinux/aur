@@ -1,6 +1,6 @@
 pkgbase = android-udev-git
 	pkgdesc = Udev rules to connect Android devices to your linux box
-	pkgver = 20220903.r0.ga565217
+	pkgver = 20230104.r0.g323881f
 	pkgrel = 1
 	url = https://github.com/M0Rf30/android-udev-rules
 	arch = any
