@@ -2,7 +2,7 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.9.45
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.18' 'git')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('1f8232a3b777d056d1d7e01979036b64b8050243808cd51ea3d8068a70acbf57')
+sha256sums=('b6ea295fe3ac3c237510d9eae0883a47ee82254a4f8bb03d4f8f49d464a95dfa')
 
 build() {
   echo "*** build daemon***"
