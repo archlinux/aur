@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_basever=5.15.7
-pkgver=5.15.7+kde+r3
+_basever=5.15.8
+pkgver=5.15.8+kde+r3
 pkgrel=1
-_commit=4e35fe9429920067c17596986b486fb1c1e95db0
+_commit=f8949655ccfacc2d34cfb0af23c540db84a2b9e5
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
