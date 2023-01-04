@@ -1,6 +1,6 @@
 pkgbase = python-eth-account
 	pkgdesc = Sign Ethereum transactions and messages with local private keys
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-account
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-eth-account
 	depends = python-eth-utils
 	depends = python-hexbytes
 	depends = python-rlp
-	source = https://files.pythonhosted.org/packages/source/e/eth-account/eth-account-0.7.0.tar.gz
-	sha256sums = 61360e9e514e09e49929ed365ca0e1656758ecbd11248c629ad85b4335c2661a
+	source = https://files.pythonhosted.org/packages/source/e/eth-account/eth-account-0.8.0.tar.gz
+	sha256sums = ccb2d90a16c81c8ea4ca4dc76a70b50f1d63cea6aff3c5a5eddedf9e45143eca
 
 pkgname = python-eth-account
