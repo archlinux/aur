@@ -15,7 +15,7 @@ arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip')
-source=('$_source_name::https://developer.apple.com/design/downloads/NY-Font.dmg')
+source=('$_source_name::https://devimages-cdn.apple.com/design/resources/download/NY.dmg')
 sha512sums=('f0a07d5531a2bfb00c3dd9ed9c2f56e9bd5ae55efce153d34cd18005473e14aca9baa19ce044dd99201b72ab94fd576dcb1ce771b6d3d3efe37740d38ae3fad3')
 
 prepare() {
