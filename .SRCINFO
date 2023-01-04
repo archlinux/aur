@@ -1,0 +1,18 @@
+pkgbase = clipboard-to-file-git
+	pkgdesc = Folder color switcher extension for nautilus, caja, and nemo
+	pkgver = 0.0.9+r36+a1861f8
+	pkgrel = 1
+	url = https://github.com/costales/clipboard-to-file
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	optdepends = python-nautilus: Nautilus extension
+	optdepends = nemo-python>=3.9.0: Nemo extension
+	optdepends = python-caja: Caja extension
+	conflicts = folder-color-nautilus-bzr
+	source = clipboard-to-file::git+https://github.com/costales/clipboard-to-file
+	sha256sums = SKIP
+
+pkgname = clipboard-to-file-git
