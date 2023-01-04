@@ -13,5 +13,5 @@ sha1sums=('2e6908b70295127313dba3b16e23b48bcbf97b42')
 
 package() {
   install -d "$pkgdir/usr/share/themes/BetterGruvbox"
-  cp -rv "${srcdir}/BetterGruvbox-v$pkgver/*" "$pkgdir/usr/share/themes/BetterGruvbox"
+  cp -rv "${srcdir}/BetterGruvbox-v$pkgver/"* "$pkgdir/usr/share/themes/BetterGruvbox"
 }
