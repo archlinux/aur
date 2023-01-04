@@ -8,7 +8,7 @@
 
 _pkgname=conky
 pkgname=conky-cli
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Lightweight system monitor for X, without X11 dependencies"
 url='https://github.com/brndnmtthws/conky'
@@ -21,9 +21,7 @@ depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('a293530980bf5ec2250e6d52533cb3426de66c99477ae15430215b3e4b536593')
-
-options=('!strip' 'debug')
+sha256sums=('c3558bc028bcfc583d8e7775aed20a0f264ff47dbf0debdf70a95b3a180069dc')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -38,11 +36,11 @@ build() {
 	cmake \
 		-B build \
 		-D CMAKE_BUILD_TYPE=Release \
-		-D MAINTAINER_MODE=ON \
 		-D BUILD_EXTRAS=ON \
 		-D BUILD_HDDTEMP=OFF \
 		-D BUILD_PORT_MONITORS=OFF \
 		-D BUILD_X11=OFF \
+		-D BUILD_WAYLAND=OFF \
 		-D BUILD_XDAMAGE=OFF \
 		-D BUILD_XFT=OFF \
 		-D BUILD_WLAN=ON \
