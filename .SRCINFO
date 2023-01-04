@@ -1,7 +1,7 @@
 pkgbase = ocaml-fdkaac
 	pkgdesc = OCaml bingind for the fdk-aac library
-	pkgver = 0.3.2
-	pkgrel = 3
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/savonet/ocaml-fdkaac
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = ocaml-fdkaac
 	depends = ocaml
 	depends = libfdk-aac
 	options = !strip
-	source = https://github.com/savonet/ocaml-fdkaac/archive/0.3.2.tar.gz
-	sha256sums = 0de28749e1435839ead013c385c6b963b88b57770e362e067139c2fd67a52e5f
+	source = https://github.com/savonet/ocaml-fdkaac/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = c660008a9c4fc397963ee8c135b6b1b666b700ce1193ba77986b3c97c71fb404
 
 pkgname = ocaml-fdkaac
-
