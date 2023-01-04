@@ -6,7 +6,7 @@ pkgdesc="Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotif
 arch=('x86_64')
 url="https://onetagger.github.io/"
 license=('GPL3')
-depends=('alsa-lib' 'curl' 'libsndfile' 'openssl' 'wget')
+depends=('alsa-lib' 'curl' 'libsndfile' 'openssl' 'webkit2gtk-4.1' 'wget')
 makedepends=('cargo' 'npm')
 source=(
   "https://github.com/Marekkon5/onetagger/archive/refs/tags/${pkgver}.tar.gz"

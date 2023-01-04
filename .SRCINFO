@@ -11,6 +11,7 @@ pkgbase = onetagger
 	depends = curl
 	depends = libsndfile
 	depends = openssl
+	depends = webkit2gtk-4.1
 	depends = wget
 	source = https://github.com/Marekkon5/onetagger/archive/refs/tags/1.5.1.tar.gz
 	source = onetagger.desktop
