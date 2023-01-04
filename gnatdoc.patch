@@ -1,0 +1,21 @@
+From 8a15e9d49248f2305091438d4dbfc395eb77bb7f Mon Sep 17 00:00:00 2001
+From: Vadim Godunko <godunko@adacore.com>
+Date: Wed, 21 Sep 2022 14:04:33 +0300
+Subject: [PATCH] V721-007 Fix build with latest GNATdoc
+
+---
+ source/ada/lsp-ada_handlers.adb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/source/ada/lsp-ada_handlers.adb b/source/ada/lsp-ada_handlers.adb
+index 0991cd57..d65291cf 100644
+--- a/source/ada/lsp-ada_handlers.adb
++++ b/source/ada/lsp-ada_handlers.adb
+@@ -3075,6 +3075,7 @@ package body LSP.Ada_Handlers is
+       Options : constant
+         GNATdoc.Comments.Options.Extractor_Options :=
+           (Style    => Self.Options.Documentation.Style,
++           Pattern  => <>,
+            Fallback => True);
+ 
+    begin

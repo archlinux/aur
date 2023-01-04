@@ -1,0 +1,63 @@
+From 579b5f9f6655e0403f8ea9ae4ad90ee90b3d88de Mon Sep 17 00:00:00 2001
+From: Maxim Reznik <reznik@adacore.com>
+Date: Fri, 23 Dec 2022 14:14:32 +0200
+Subject: [PATCH] Update ALS after changes in Spawn.
+
+---
+ source/client/lsp-raw_clients.adb | 2 +-
+ source/tester/tester-tests.adb    | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/source/client/lsp-raw_clients.adb b/source/client/lsp-raw_clients.adb
+index e1b9e7e0..fb6d27c3 100644
+--- a/source/client/lsp-raw_clients.adb
++++ b/source/client/lsp-raw_clients.adb
+@@ -71,7 +71,7 @@ package body LSP.Raw_Clients is
+ 
+    function Is_Server_Running (Self : Raw_Client'Class) return Boolean is
+    begin
+-      return Self.Server.Status in Spawn.Processes.Running;
++      return Self.Server.Status in Spawn.Running;
+    end Is_Server_Running;
+ 
+    -------------------------------
+diff --git a/source/tester/tester-tests.adb b/source/tester/tester-tests.adb
+index 191a479f..2d53c625 100644
+--- a/source/tester/tester-tests.adb
++++ b/source/tester/tester-tests.adb
+@@ -204,7 +204,7 @@ package body Tester.Tests is
+       Self.Send_Message (Text);
+ 
+       loop
+-         Spawn.Processes.Monitor_Loop (Timeout => 100);
++         Spawn.Processes.Monitor_Loop (Timeout => 0.1);
+          exit when GNATCOLL.JSON.Length (Self.Waits) = 0;
+ 
+          if Ada.Calendar.Clock - Self.Started > Timeout
+@@ -408,7 +408,7 @@ package body Tester.Tests is
+       Listener.Process.Close_Standard_Error;
+ 
+       loop
+-         Spawn.Processes.Monitor_Loop (Timeout => 10);
++         Spawn.Processes.Monitor_Loop (Timeout => 0.01);
+          exit when Listener.Done;
+       end loop;
+ 
+@@ -469,7 +469,7 @@ package body Tester.Tests is
+       Self.Start;
+ 
+       loop
+-         Spawn.Processes.Monitor_Loop (Timeout => 1);
++         Spawn.Processes.Monitor_Loop (Timeout => 0.001);
+          exit when Self.Is_Server_Running;
+       end loop;
+ 
+@@ -511,7 +511,7 @@ package body Tester.Tests is
+       end if;
+ 
+       loop
+-         Spawn.Processes.Monitor_Loop (Timeout => 1);
++         Spawn.Processes.Monitor_Loop (Timeout => 0.001);
+          exit when not Self.Is_Server_Running;
+       end loop;
+ 

@@ -1,0 +1,956 @@
+From 95a945d305c47d6799bbc85852d98da0d76183c4 Mon Sep 17 00:00:00 2001
+From: Joao Azevedo <azevedo@adacore.com>
+Date: Wed, 12 Oct 2022 14:12:05 +0100
+Subject: [PATCH] VA12-013 Update test baseline due to laltools changes
+
+---
+ source/ada/lsp-ada_contexts.adb                                | 3 ---
+ source/ada/lsp-ada_contexts.ads                                | 3 +--
+ .../ada_lsp/refactoring_pull_up_declaration/V207-019/test.json | 2 +-
+ 3 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/source/ada/lsp-ada_contexts.adb b/source/ada/lsp-ada_contexts.adb
+index c585252b..45596b32 100644
+--- a/source/ada/lsp-ada_contexts.adb
++++ b/source/ada/lsp-ada_contexts.adb
+@@ -892,9 +892,6 @@ package body LSP.Ada_Contexts is
+       Self.Source_Dirs.Clear;
+       Self.Tree := null;
+ 
+-      --  Destroy gnatpp's command line
+-      Utils.Command_Lines.Clear (Self.PP_Options);
+-
+       --  Cleanup gnatpp's template tables
+       Pp.Actions.Clear_Template_Tables;
+    end Free;
+diff --git a/source/ada/lsp-ada_contexts.ads b/source/ada/lsp-ada_contexts.ads
+index 271d274d..7989b324 100644
+--- a/source/ada/lsp-ada_contexts.ads
++++ b/source/ada/lsp-ada_contexts.ads
+@@ -358,7 +358,6 @@ private
+    is (Self.Source_Files.Length);
+ 
+    function Get_PP_Options (Self : Context) return
+-     Utils.Command_Lines.Command_Line is
+-       (Utils.Command_Lines.Copy_Command_Line (Self.PP_Options));
++     Utils.Command_Lines.Command_Line is (Self.PP_Options);
+ 
+ end LSP.Ada_Contexts;
+diff --git a/testsuite/ada_lsp/refactoring_pull_up_declaration/V207-019/test.json b/testsuite/ada_lsp/refactoring_pull_up_declaration/V207-019/test.json
+index 4cd2124a..a01e8e38 100644
+--- a/testsuite/ada_lsp/refactoring_pull_up_declaration/V207-019/test.json
++++ b/testsuite/ada_lsp/refactoring_pull_up_declaration/V207-019/test.json
+@@ -259,7 +259,7 @@
+                                                     "character": 0
+                                                 }
+                                             },
+-                                            "newText": "\n   procedure Foo is null;\n"
++                                            "newText": "   procedure Foo is null;\n\n"
+                                         },
+                                         {
+                                             "range": {
+From 41cb0924dbcdb61a7b598604d0a614cf3e90e9eb Mon Sep 17 00:00:00 2001
+From: Joao Azevedo <azevedo@adacore.com>
+Date: Thu, 10 Nov 2022 16:45:16 +0000
+Subject: [PATCH] VB10-040 Adjust to latest gnatpp partial formatting API
+
+Support partial formatting of Ada_List slices.
+Update tests baseline.
+---
+ source/ada/lsp-ada_completions.adb            |   6 +-
+ source/ada/lsp-ada_documents.adb              |  86 +--
+ source/ada/lsp-ada_documents.ads              |   2 +-
+ .../T527-019.range_formatting/test.json       | 619 ++++++++----------
+ .../test.json                                 |  48 +-
+ 5 files changed, 339 insertions(+), 422 deletions(-)
+
+diff --git a/source/ada/lsp-ada_completions.adb b/source/ada/lsp-ada_completions.adb
+index b3d9fb51..89f751c9 100644
+--- a/source/ada/lsp-ada_completions.adb
++++ b/source/ada/lsp-ada_completions.adb
+@@ -397,15 +397,15 @@ package body LSP.Ada_Completions is
+                     Filename => "",
+                     Buffer   => Full,
+                     Rule     => Rule);
+-               Pp.Actions.Set_Partial_Gnatpp_Offset (Offset);
++               Pp.Actions.Set_Partial_GNATPP_Offset (Offset);
+                Pp.Actions.Format_Vector
+                  (Cmd            => Cmd,
+                   Input          => Input,
+                   Node           => Root (Tmp_Unit),
+                   Output         => Output,
+                   Messages       => PP_Messages,
+-                  Partial_Gnatpp => True);
+-               Pp.Actions.Set_Partial_Gnatpp_Offset (0);
++                  Partial_GNATPP => True);
++               Pp.Actions.Set_Partial_GNATPP_Offset (0);
+             exception
+                when E : others =>
+                   --  Failed to pretty print the snippet, keep the previous
+diff --git a/source/ada/lsp-ada_documents.adb b/source/ada/lsp-ada_documents.adb
+index 7e465e59..5f1f8395 100644
+--- a/source/ada/lsp-ada_documents.adb
++++ b/source/ada/lsp-ada_documents.adb
+@@ -615,7 +615,7 @@ package body LSP.Ada_Documents is
+      (Self     : Document;
+       Span     : LSP.Messages.Span;
+       New_Text : VSS.Strings.Virtual_String;
+-      Edit     : out LSP.Messages.TextEdit_Vector)
++      Edit     : in out LSP.Messages.TextEdit_Vector)
+    is
+       use LSP.Types;
+       use LSP.Messages;
+@@ -1121,68 +1121,50 @@ package body LSP.Ada_Documents is
+          end loop;
+       end Append_PP_Messages;
+ 
+-      Output : Char_Vector;
+-
+-      PP_Messages : Pp.Scanner.Source_Message_Vector;
+-
+-      Input_Selection_Range : constant Source_Location_Range :=
+-        (if Span = LSP.Messages.Empty_Span then
+-           No_Source_Location_Range
+-         else
+-           Make_Range
+-             (Self.Get_Source_Location (Span.first),
+-              Self.Get_Source_Location (Span.last)));
+-
+-      Output_Selection_Range : Source_Location_Range;
+-
+-      Unit                 : constant Analysis_Unit :=
+-        Self.Unit (Context);
+-      Enclosing_Node       : Ada_Node;
+-
+    begin
+       Context.Trace.Trace ("On Range_Formatting");
++
+       Context.Trace.Trace ("Format_Selection");
+-      begin
+-         Format_Selection
+-           (Main_Unit                => Unit,
+-            Input_Selection_Range    => Input_Selection_Range,
+-            Output                   => Output,
+-            Output_Selection_Range   => Output_Selection_Range,
+-            PP_Messages              => PP_Messages,
+-            Formatted_Node           => Enclosing_Node,
+-            PP_Options               => PP_Options,
+-            Force_Source_Line_Breaks => False);
++      declare
++         Unit                    : constant Analysis_Unit :=
++           Self.Unit (Context);
++         Input_Selection_Range   : constant Source_Location_Range :=
++           (if Span = LSP.Messages.Empty_Span then No_Source_Location_Range
++            else Make_Range
++                (Self.Get_Source_Location (Span.first),
++                 Self.Get_Source_Location (Span.last)));
++         Partial_Formatting_Edit :
++           constant Laltools.Partial_GNATPP.Partial_Formatting_Edit :=
++             Format_Selection (Unit, Input_Selection_Range, PP_Options);
+ 
+-      exception
+-         when others =>
+-            Append_PP_Messages (PP_Messages);
++      begin
++         if not Partial_Formatting_Edit.Diagnostics.Is_Empty then
++            Append_PP_Messages (Partial_Formatting_Edit.Diagnostics);
++            Context.Trace.Trace
++              ("Non empty diagnostics from GNATPP - "
++               & "not continuing with Range_Formatting");
+             return False;
+-      end;
++         end if;
+ 
+-      if not PP_Messages.Is_Empty then
+-         Context.Trace.Trace
+-           ("Non empty PP_Messages - appending them to Messages");
+-         Append_PP_Messages (PP_Messages);
+-         return False;
+-      end if;
++         Context.Trace.Trace ("Computing Range_Formatting Text_Edits");
++         Edit.Clear;
++         declare
++            Edit_Span : constant LSP.Messages.Span :=
++              Self.To_LSP_Range (Partial_Formatting_Edit.Edit.Location);
++            Edit_Text : constant VSS.Strings.Virtual_String :=
++              VSS.Strings.Conversions.To_Virtual_String
++                (Partial_Formatting_Edit.Edit.Text);
+ 
+-      Context.Trace.Trace ("Computing Range_Formatting Text_Edits");
+-      declare
+-         Edit_Span  : constant LSP.Messages.Span :=
+-           Self.To_LSP_Range (Output_Selection_Range);
+-         Output_Str : constant String :=
+-           Char_Vectors.Elems (Output) (1 .. Char_Vectors.Last_Index (Output));
+-         Edit_Text  : constant VSS.Strings.Virtual_String :=
+-           VSS.Strings.Conversions.To_Virtual_String (Output_Str);
++         begin
++            Edit.Append (TextEdit'(Edit_Span, Edit_Text));
++         end;
+ 
+-      begin
+-         Self.Diff_Symbols (Edit_Span, Edit_Text, Edit);
++         return True;
+       end;
+ 
+-      return True;
+-
+    exception
+-      when others =>
++      when E : others =>
++         Log (Self.Trace, E, "in Range_Formatting");
+          return False;
+    end Range_Formatting;
+ 
+diff --git a/source/ada/lsp-ada_documents.ads b/source/ada/lsp-ada_documents.ads
+index 063d26a2..31ce7e5c 100644
+--- a/source/ada/lsp-ada_documents.ads
++++ b/source/ada/lsp-ada_documents.ads
+@@ -388,7 +388,7 @@ private
+      (Self     : Document;
+       Span     : LSP.Messages.Span;
+       New_Text : VSS.Strings.Virtual_String;
+-      Edit     : out LSP.Messages.TextEdit_Vector);
++      Edit     : in out LSP.Messages.TextEdit_Vector);
+    --  Create a diff between document Text inside Span and New_Chunk and
+    --  return Text_Edit. Tests individual symbols instead of lines
+    --  as above. Do not use it for large text slices because it
+diff --git a/testsuite/ada_lsp/T527-019.range_formatting/test.json b/testsuite/ada_lsp/T527-019.range_formatting/test.json
+index d7841c2e..c75db82d 100644
+--- a/testsuite/ada_lsp/T527-019.range_formatting/test.json
++++ b/testsuite/ada_lsp/T527-019.range_formatting/test.json
+@@ -1,346 +1,307 @@
+ [
+-   {
+-      "comment": [
+-         "Test rangeFormatting request"
+-      ]
+-   },
+-   {
+-      "start": {
+-         "cmd": [
+-            "${ALS}"
+-         ]
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "params": {
+-               "processId": 20634,
+-               "capabilities": {
+-                  "textDocument": {
+-                     "rangeFormatting": {
+-                        "dynamicRegistration": true
+-                     }
+-                  }
+-               },
+-               "rootUri": "$URI{.}"
++    {
++        "comment": [
++            "Test rangeFormatting request"
++        ]
++    },
++    {
++        "start": {
++            "cmd": [
++                "${ALS}"
++            ]
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "params": {
++                    "processId": 20634,
++                    "capabilities": {
++                        "textDocument": {
++                            "rangeFormatting": {
++                                "dynamicRegistration": true
++                            }
++                        }
++                    },
++                    "rootUri": "$URI{.}"
++                },
++                "jsonrpc": "2.0",
++                "id": 1,
++                "method": "initialize"
+             },
+-            "jsonrpc": "2.0",
+-            "id": 1,
+-            "method": "initialize"
+-         },
+-         "wait": [
+-            {
+-               "id": 1,
+-               "result": {
+-                  "capabilities": {
+-                     "textDocumentSync": 2
+-                  }
+-               }
+-            }
+-         ]
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "jsonrpc": "2.0",
+-            "method": "initialized"
+-         },
+-         "wait": []
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "params": {
+-               "settings": {
+-                  "ada": {
+-                     "enableDiagnostics": false
+-                  }
+-               }
++            "wait": [
++                {
++                    "id": 1,
++                    "result": {
++                        "capabilities": {
++                            "textDocumentSync": 2
++                        }
++                    }
++                }
++            ]
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "jsonrpc": "2.0",
++                "method": "initialized"
+             },
+-            "jsonrpc": "2.0",
+-            "method": "workspace/didChangeConfiguration"
+-         },
+-         "wait": [
+-            {
+-               "jsonrpc": "2.0",
+-               "id": 2,
+-               "method": "client/registerCapability",
+-               "params": {
+-                  "registrations": [
+-                     {
+-                        "method": "textDocument/rangeFormatting",
+-                        "registerOptions": {
+-                           "documentSelector": [
+-                              "ada"
+-                           ]
++            "wait": []
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "params": {
++                    "settings": {
++                        "ada": {
++                            "enableDiagnostics": false
+                         }
+-                     }
+-                  ]
+-               }
+-            }
+-         ]
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "params": {
+-               "textDocument": {
+-                  "text": "procedure Main is\n   --  comment\n   X : Integer := (1\n      + 2\n        + 3);\n   begin\n       --  Insert code here.\n   null;\nend Main;\n",
+-                  "version": 0,
+-                  "uri": "$URI{main.adb}",
+-                  "languageId": "Ada"
+-               }
++                    }
++                },
++                "jsonrpc": "2.0",
++                "method": "workspace/didChangeConfiguration"
++            },
++            "wait": [
++                {
++                    "jsonrpc": "2.0",
++                    "id": 2,
++                    "method": "client/registerCapability",
++                    "params": {
++                        "registrations": [
++                            {
++                                "method": "textDocument/rangeFormatting",
++                                "registerOptions": {
++                                    "documentSelector": [
++                                        "ada"
++                                    ]
++                                }
++                            }
++                        ]
++                    }
++                }
++            ]
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "params": {
++                    "textDocument": {
++                        "text": "procedure Main is\n   --  comment\n   X : Integer := (1\n      + 2\n        + 3);\n   begin\n       --  Insert code here.\n   null;\nend Main;\n",
++                        "version": 0,
++                        "uri": "$URI{main.adb}",
++                        "languageId": "Ada"
++                    }
++                },
++                "jsonrpc": "2.0",
++                "method": "textDocument/didOpen"
+             },
+-            "jsonrpc": "2.0",
+-            "method": "textDocument/didOpen"
+-         },
+-         "wait": []
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "jsonrpc": "2.0",
+-            "id": 3,
+-            "method": "textDocument/rangeFormatting",
+-            "params": {
+-               "textDocument": {
+-                  "uri": "$URI{main.adb}"
+-               },
+-               "range": {
+-                  "start": {
+-                     "line": 2,
+-                     "character": 0
+-                  },
+-                  "end": {
+-                     "line": 6,
+-                     "character": 0
+-                  }
+-               },
+-               "options": {
+-                  "insertSpaces": true,
+-                  "tabSize": 3
+-               }
+-            }
+-         },
+-         "wait": [
+-            {
+-               "id": 3,
+-               "result": [
+-                  {
+-                  "range": {
+-                     "start": {
+-                        "line": 2,
+-                        "character": 20
+-                     },
+-                     "end": {
+-                        "line": 3,
+-                        "character": 5
+-                     }
+-                  },
+-                  "newText": ""
+-                  },
+-                  {
+-                  "range": {
+-                     "start": {
+-                        "line": 3,
+-                        "character": 9
+-                     },
+-                     "end": {
+-                        "line": 4,
+-                        "character": 7
+-                     }
+-                  },
+-                  "newText": ""
+-                  },
+-                  {
+-                  "range": {
+-                     "start": {
+-                        "line": 5,
+-                        "character": 0
+-                     },
+-                     "end": {
+-                        "line": 5,
+-                        "character": 3
+-                     }
+-                  },
+-                  "newText": ""
+-                  },
+-                  {
+-                  "range": {
+-                     "start": {
+-                        "line": 6,
+-                        "character": 0
+-                     },
+-                     "end": {
+-                        "line": 6,
+-                        "character": 4
+-                     }
+-                  },
+-                  "newText": ""
+-                  }
+-               ]
+-            }
+-         ]
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "jsonrpc": "2.0",
+-            "method": "textDocument/didChange",
+-            "params": {
+-               "textDocument": {
+-                  "uri": "$URI{main.adb}",
+-                  "version": 2
+-               },
+-               "contentChanges": [
+-                  {
+-                     "range": {
++            "wait": []
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "jsonrpc": "2.0",
++                "id": 3,
++                "method": "textDocument/rangeFormatting",
++                "params": {
++                    "textDocument": {
++                        "uri": "$URI{main.adb}"
++                    },
++                    "range": {
+                         "start": {
+-                           "line": 5,
+-                           "character": 0
++                            "line": 2,
++                            "character": 0
+                         },
+                         "end": {
+-                           "line": 5,
+-                           "character": 3
++                            "line": 6,
++                            "character": 0
+                         }
+-                     },
+-                     "rangeLength": 3,
+-                     "text": ""
+-                  },
+-                  {
+-                     "range": {
+-                        "start": {
+-                           "line": 4,
+-                           "character": 3
+-                        },
+-                        "end": {
+-                           "line": 4,
+-                           "character": 8
++                    },
++                    "options": {
++                        "insertSpaces": true,
++                        "tabSize": 3
++                    }
++                }
++            },
++            "wait": [
++                {
++                    "id": 3,
++                    "result": [
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 0,
++                                    "character": 0
++                                },
++                                "end": {
++                                    "line": 8,
++                                    "character": 9
++                                }
++                            },
++                            "newText": "procedure Main is\n   --  comment\n   X : Integer := (1 + 2 + 3);\nbegin\n   --  Insert code here.\n   null;\nend Main;"
+                         }
+-                     },
+-                     "rangeLength": 5,
+-                     "text": ""
+-                  },
+-                  {
+-                     "range": {
+-                        "start": {
+-                           "line": 3,
+-                           "character": 9
++                    ]
++                }
++            ]
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "jsonrpc": "2.0",
++                "method": "textDocument/didChange",
++                "params": {
++                    "textDocument": {
++                        "uri": "$URI{main.adb}",
++                        "version": 2
++                    },
++                    "contentChanges": [
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 6,
++                                    "character": 0
++                                },
++                                "end": {
++                                    "line": 6,
++                                    "character": 4
++                                }
++                            },
++                            "rangeLength": 4,
++                            "text": ""
+                         },
+-                        "end": {
+-                           "line": 4,
+-                           "character": 2
+-                        }
+-                     },
+-                     "rangeLength": 3,
+-                     "text": ""
+-                  },
+-                  {
+-                     "range": {
+-                        "start": {
+-                           "line": 3,
+-                           "character": 5
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 5,
++                                    "character": 0
++                                },
++                                "end": {
++                                    "line": 5,
++                                    "character": 3
++                                }
++                            },
++                            "rangeLength": 3,
++                            "text": ""
+                         },
+-                        "end": {
+-                           "line": 3,
+-                           "character": 6
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 4,
++                                    "character": 5
++                                },
++                                "end": {
++                                    "line": 4,
++                                    "character": 8
++                                }
++                            },
++                            "rangeLength": 3,
++                            "text": ""
++                        },
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 3,
++                                    "character": 9
++                                },
++                                "end": {
++                                    "line": 4,
++                                    "character": 4
++                                }
++                            },
++                            "rangeLength": 5,
++                            "text": ""
++                        },
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 2,
++                                    "character": 20
++                                },
++                                "end": {
++                                    "line": 3,
++                                    "character": 5
++                                }
++                            },
++                            "rangeLength": 6,
++                            "text": ""
+                         }
+-                     },
+-                     "rangeLength": 1,
+-                     "text": ""
+-                  },
+-                  {
+-                     "range": {
++                    ]
++                }
++            },
++            "wait": []
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "jsonrpc": "2.0",
++                "id": 4,
++                "method": "textDocument/rangeFormatting",
++                "params": {
++                    "textDocument": {
++                        "uri": "$URI{main.adb}"
++                    },
++                    "range": {
+                         "start": {
+-                           "line": 2,
+-                           "character": 20
++                            "line": 4,
++                            "character": 0
+                         },
+                         "end": {
+-                           "line": 3,
+-                           "character": 4
++                            "line": 6,
++                            "character": 0
++                        }
++                    },
++                    "options": {
++                        "insertSpaces": true,
++                        "tabSize": 3
++                    }
++                }
++            },
++            "wait": [
++                {
++                    "id": 4,
++                    "result": [
++                        {
++                            "range": {
++                                "start": {
++                                    "line": 0,
++                                    "character": 0
++                                },
++                                "end": {
++                                    "line": 6,
++                                    "character": 9
++                                }
++                            },
++                            "newText": "procedure Main is\n   --  comment\n   X : Integer := (1 + 2 + 3);\nbegin\n   --  Insert code here.\n   null;\nend Main;"
+                         }
+-                     },
+-                     "rangeLength": 5,
+-                     "text": ""
+-                  }
+-               ]
+-            }
+-         },
+-         "wait": []
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "jsonrpc": "2.0",
+-            "id": 4,
+-            "method": "textDocument/rangeFormatting",
+-            "params": {
+-               "textDocument": {
+-                  "uri": "$URI{main.adb}"
+-               },
+-               "range": {
+-                  "start": {
+-                     "line": 4,
+-                     "character": 0
+-                  },
+-                  "end": {
+-                     "line": 6,
+-                     "character": 0
+-                  }
+-               },
+-               "options": {
+-                  "insertSpaces": true,
+-                  "tabSize": 3
+-               }
+-            }
+-         },
+-         "wait": [
+-            {
+-               "id": 4,
+-               "result": [
+-               {
+-                  "range": {
+-                     "start": {
+-                        "line": 4,
+-                        "character": 0
+-                     },
+-                     "end": {
+-                        "line": 4,
+-                        "character": 4
+-                     }
+-                  },
+-                  "newText": ""
+-                  }
+-             ]
+-            }
+-         ]
+-      }
+-   },
+-   {
+-      "send": {
+-         "request": {
+-            "jsonrpc": "2.0",
+-            "id": 5,
+-            "method": "shutdown"
+-         },
+-         "wait": [
+-            {
+-               "id": 5,
+-               "result": null
+-            }
+-         ]
+-      }
+-   },
+-   {
+-      "stop": {
+-         "exit_code": 0
+-      }
+-   }
+-]
++                    ]
++                }
++            ]
++        }
++    },
++    {
++        "send": {
++            "request": {
++                "jsonrpc": "2.0",
++                "id": 5,
++                "method": "shutdown"
++            },
++            "wait": [
++                {
++                    "id": 5,
++                    "result": null
++                }
++            ]
++        }
++    },
++    {
++        "stop": {
++            "exit_code": 0
++        }
++    }
++]
+\ No newline at end of file
+diff --git a/testsuite/ada_lsp/range_formatting/UB30-006_range_format_whole_document/test.json b/testsuite/ada_lsp/range_formatting/UB30-006_range_format_whole_document/test.json
+index dbb6eeca..74769937 100644
+--- a/testsuite/ada_lsp/range_formatting/UB30-006_range_format_whole_document/test.json
++++ b/testsuite/ada_lsp/range_formatting/UB30-006_range_format_whole_document/test.json
+@@ -156,43 +156,17 @@
+                     "id": 12,
+                     "result": [
+                         {
+-                        "range": {
+-                           "start": {
+-                              "line": 4,
+-                              "character": 0
+-                           },
+-                           "end": {
+-                              "line": 4,
+-                              "character": 0
+-                           }
+-                        },
+-                        "newText": "   "
+-                        },
+-                        {
+-                        "range": {
+-                           "start": {
+-                              "line": 5,
+-                              "character": 0
+-                           },
+-                           "end": {
+-                              "line": 5,
+-                              "character": 3
+-                           }
+-                        },
+-                        "newText": ""
+-                        },
+-                        {
+-                        "range": {
+-                           "start": {
+-                              "line": 7,
+-                              "character": 0
+-                           },
+-                           "end": {
+-                              "line": 7,
+-                              "character": 3
+-                           }
+-                        },
+-                        "newText": ""
++                            "range": {
++                                "start": {
++                                    "line": 0,
++                                    "character": 0
++                                },
++                                "end": {
++                                    "line": 9,
++                                    "character": 9
++                                }
++                            },
++                            "newText": "procedure Main is\n\nbegin\n   declare\n      A : Integer;\n   begin\n      null;\n   end;\n\nend Main;"
+                         }
+                    ]
+                 }
+
+From 4c8c6b56756d3b39aa43a29384343c75843eba46 Mon Sep 17 00:00:00 2001
+From: Anthony Leonardo Gracio <leonardo@adacore.com>
+Date: Thu, 6 Oct 2022 14:23:43 +0200
+Subject: [PATCH] V624-007: clear gnatpp's template tables
+
+This fixes a memory leak.
+---
+ source/ada/lsp-ada_contexts.adb | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/source/ada/lsp-ada_contexts.adb b/source/ada/lsp-ada_contexts.adb
+index 1f09af86..c585252b 100644
+--- a/source/ada/lsp-ada_contexts.adb
++++ b/source/ada/lsp-ada_contexts.adb
+@@ -37,6 +37,8 @@ with Langkit_Support.Slocs;
+ 
+ with Utils.Command_Lines.Common;
+ 
++with Pp.Actions;
++
+ package body LSP.Ada_Contexts is
+ 
+    Indexing_Trace   : constant Trace_Handle := Create ("ALS.INDEXING", Off);
+@@ -890,8 +892,11 @@ package body LSP.Ada_Contexts is
+       Self.Source_Dirs.Clear;
+       Self.Tree := null;
+ 
+-      --  Destroy GnatPP command line
++      --  Destroy gnatpp's command line
+       Utils.Command_Lines.Clear (Self.PP_Options);
++
++      --  Cleanup gnatpp's template tables
++      Pp.Actions.Clear_Template_Tables;
+    end Free;
+ 
+    -----------------
+

@@ -1,0 +1,24 @@
+Index: ada_language_server-23.0.12/source/ada/lsp-ada_handlers-file_readers.adb
+===================================================================
+--- ada_language_server-23.0.12.orig/source/ada/lsp-ada_handlers-file_readers.adb
++++ ada_language_server-23.0.12/source/ada/lsp-ada_handlers-file_readers.adb
+@@ -176,7 +176,7 @@ package body LSP.Ada_Handlers.File_Reade
+               (Buffer => null, Last => 0);
+ 
+          begin
+-            VSS.Strings.Conversions.Set_UTF_8_String (Text, Buffer.all);
++            Buffer.all := VSS.Strings.Conversions.To_UTF_8_String (Text);
+ 
+             Libadalang.Preprocessing.Preprocess
+               (Data        => Self.Preprocessing_Data,
+@@ -219,8 +219,8 @@ package body LSP.Ada_Handlers.File_Reade
+             First  => 1,
+             Last   => Natural (Text.Character_Length));
+ 
+-         VSS.Strings.Conversions.Set_Wide_Wide_String
+-           (Text, Contents.Buffer.all);
++         Contents.Buffer.all := VSS.Strings.Conversions.To_Wide_Wide_String
++           (Text);
+       end if;
+    end Read;
+ 

@@ -1,0 +1,60 @@
+From ac18f3896b86600cd0272d5413bf6285ecd73590 Mon Sep 17 00:00:00 2001
+From: Joao Azevedo <azevedo@adacore.com>
+Date: Tue, 20 Dec 2022 09:50:19 +0000
+Subject: [PATCH] Update to latest LAL API for accept statements
+
+---
+ source/ada/lsp-ada_completions-end_names.adb | 2 +-
+ source/ada/lsp-ada_handlers.adb              | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/source/ada/lsp-ada_completions-end_names.adb b/source/ada/lsp-ada_completions-end_names.adb
+index 9bb85218a..b1fca333a 100644
+--- a/source/ada/lsp-ada_completions-end_names.adb
++++ b/source/ada/lsp-ada_completions-end_names.adb
+@@ -96,7 +96,7 @@ package body LSP.Ada_Completions.End_Names is
+             when Libadalang.Common.Ada_Accept_Stmt_With_Stmts_Range =>
+ 
+                return VSS.Strings.To_Virtual_String
+-                 (Node.As_Accept_Stmt_With_Stmts.F_Name.Text);
++                 (Node.As_Accept_Stmt_With_Stmts.F_Body_Decl.F_Name.Text);
+ 
+             when Libadalang.Common.Ada_Select_Stmt_Range =>
+                return "select";
+diff --git a/source/ada/lsp-ada_handlers.adb b/source/ada/lsp-ada_handlers.adb
+index ec162fd53..c82850e78 100644
+--- a/source/ada/lsp-ada_handlers.adb
++++ b/source/ada/lsp-ada_handlers.adb
+@@ -2618,7 +2618,8 @@ package body LSP.Ada_Handlers is
+ 
+          if Entry_Decl_Node /= Libadalang.Analysis.No_Entry_Decl then
+             for Accept_Node of Entry_Decl_Node.P_Accept_Stmts loop
+-               Append_Location (Response.result, Accept_Node.F_Name);
++               Append_Location
++                 (Response.result, Accept_Node.F_Body_Decl.F_Name);
+             end loop;
+          end if;
+       end Resolve_In_Context;
+From c9a51bc9565b5ad862db050efa3f7231f53ca779 Mon Sep 17 00:00:00 2001
+From: Anthony Leonardo Gracio <leonardo@.adacore.com>
+Date: Wed, 14 Dec 2022 10:24:28 +0000
+Subject: [PATCH] VC14-004: Fix ALS edge builds
+
+---
+ source/ada/lsp-ada_completions.adb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/ada/lsp-ada_completions.adb b/source/ada/lsp-ada_completions.adb
+index 89f751c9..999d7d9c 100644
+--- a/source/ada/lsp-ada_completions.adb
++++ b/source/ada/lsp-ada_completions.adb
+@@ -98,7 +98,7 @@ package body LSP.Ada_Completions is
+                Info      : constant Name_Information := Names (Cursor);
+                Name      : constant Libadalang.Analysis.Defining_Name :=
+                  Completion_Maps.Key (Cursor);
+-               Selector  : constant Libadalang.Analysis.Single_Tok_Node :=
++               Selector  : constant Libadalang.Analysis.Name :=
+                  Name.P_Relative_Name;
+                Label     : VSS.Strings.Virtual_String;
+                Canonical : VSS.Strings.Virtual_String;
+
