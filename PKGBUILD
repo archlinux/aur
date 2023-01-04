@@ -3,7 +3,7 @@
 
 pkgname=cargo-public-api
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="List and diff the public API of Rust library crates"
 arch=('x86_64')
 url="https://github.com/Enselic/cargo-public-api"
