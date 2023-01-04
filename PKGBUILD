@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Kevin Morris <kevr at 0cost dot org>
 pkgname=system76-kbd-led-git
-pkgver=0.1.r13.g21f071d
+pkgver=0.1.r14.gba5bbd7
 pkgrel=1
 pkgdesc="System76 keyboard backlight LED controller."
 arch=('x86_64')
@@ -12,7 +12,6 @@ makedepends=('git' 'boost' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
-options=('debug' '!strip')
 source=('git+https://github.com/kevr/system76-kbd-led.git')
 sha256sums=('SKIP')
 
@@ -23,9 +22,7 @@ pkgver() {
 
 build() {
   cmake -B build -S "${pkgname%-git}" \
-    -DCMAKE_BUILD_TYPE='Debug' \
-    -DCMAKE_C_FLAGS_DEBUG="-g $CFLAGS" \
-    -DCMAKE_CXX_FLAGS_DEBUG="-g $CXXFLAGS" \
+    -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DPKG_VERSION="$pkgver" \
     -Wno-dev
