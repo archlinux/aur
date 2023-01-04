@@ -20,6 +20,7 @@ CONFIG_DIR="$HOME/.config/cn.com.10jqka"
 main() {
     if [ -d "$CONFIG_DIR/users" ]; then
         echo "配置 $CONFIG_DIR 已经存在?"
+        exit
     fi
     mkdir -p "$CONFIG_DIR/users"
     touch "$CONFIG_DIR/B8D8.dat"

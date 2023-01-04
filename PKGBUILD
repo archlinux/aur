@@ -3,7 +3,7 @@
 pkgname='cn.com.10jqka'
 # the versin is from deb package
 pkgver=2.7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="cn.com.10jqka - a tool for scanning the stock infomation"
 arch=("x86_64")
 url="https://www.10jqka.com.cn"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
     '40c9a5c551cdc48e10b51e003e70254919d89aa0a1481ab63324a37a363648fd'
-    'c4640f9fd19cc2c9370deae878398829eae893aede4153b7db5db563cb1a2992'
+    '269df82f6723982b7d9aaa3d90fc680dcbdc3a555e32340cc2de0439ac581c46'
 )
 
 package() {
