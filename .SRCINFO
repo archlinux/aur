@@ -1,6 +1,6 @@
 pkgbase = google-cloud-cpp
 	pkgdesc = C++ Client Libraries for Google Cloud Services
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-cpp/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = google-cloud-cpp
 	depends = curl
 	depends = abseil-cpp
 	depends = google-crc32c
-	source = google-cloud-cpp-2.5.0.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v2.5.0.tar.gz
-	sha256sums = ac93ef722d08bfb220343bde2f633c7c11f15e34ec3ecd0a57dbd3ff729cc3a6
+	source = google-cloud-cpp-2.6.0.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v2.6.0.tar.gz
+	sha256sums = 56b2dcbb30c14335f2c0d9a77ac46a9ef780acf78eaa17a03db474c54a4acb2c
 
 pkgname = google-cloud-cpp
