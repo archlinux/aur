@@ -26,6 +26,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         'config'
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+        '0102-drmi915_Improve_the_catch_all-evict_to_handle_lock_contention.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -49,7 +50,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0999-acs.gitpatch')
 sha256sums=('6dc89ae7a7513e433c597c7346ed7ff4bfd115ea43a3b5e27a6bdb38c5580317'
             '3e4cb5dbde61b7f1600255cb17859e6bf433f017e2bf30296a1d4e702973159c'
-            '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
+            'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
+            '431ac870eacba9719f3e241fd3bd80573c99bb51b821029fb7a2232e862d935e'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '50f4ccc4aeb0ffb8ec648b90a84ff188dbfed5364075cf0c6045c5696caf6ca9'
