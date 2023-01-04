@@ -5,9 +5,9 @@
 
 pkgname=sra-tools
 _dep=ncbi-vdb
-pkgver=3.0.2
+pkgver=3.0.3
 _depver=3.0.2
-pkgrel=2
+pkgrel=1
 pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
 url="https://github.com/ncbi/sra-tools"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
@@ -17,7 +17,7 @@ provides=('ncbi-vdb')
 arch=(x86_64)
 depends=('hdf5' 'python' 'mbedtls' 'libxml2')
 makedepends=('cmake'  'doxygen' 'java-runtime')
-sha256sums=('44b87153f25366dc16cbb1a23b1db71dad9a5b9dac58c0692404120d8eede7c8'
+sha256sums=('ea4b9a4b2e6e40e6b2bf36b01eb8df2b50280ef9dcdc66b504c1d1296600afbd'
             '275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59')
 
 prepare(){

@@ -1,7 +1,7 @@
 pkgbase = sra-tools
 	pkgdesc = A collection of tools and libraries for using data in the INSDC Sequence Read Archives
-	pkgver = 3.0.2
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = https://github.com/ncbi/sra-tools
 	arch = x86_64
 	license = custom: Public Domain
@@ -13,9 +13,9 @@ pkgbase = sra-tools
 	depends = mbedtls
 	depends = libxml2
 	provides = ncbi-vdb
-	source = sra-tools-3.0.2.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.0.2.tar.gz
+	source = sra-tools-3.0.3.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.0.3.tar.gz
 	source = ncbi-vdb-3.0.2.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/3.0.2.tar.gz
-	sha256sums = 44b87153f25366dc16cbb1a23b1db71dad9a5b9dac58c0692404120d8eede7c8
+	sha256sums = ea4b9a4b2e6e40e6b2bf36b01eb8df2b50280ef9dcdc66b504c1d1296600afbd
 	sha256sums = 275ccb225ddb156688c8c71f772f73276cb18ebff773a51150f86f8002ed2d59
 
 pkgname = sra-tools
