@@ -1,20 +1,24 @@
-# Maintainer: Huck Boles <huboles@protonmail.com>
+# Maintainer: Huck Boles <huck@huck.website>
+# shellcheck disable=all
+
 pkgname=odot
-pkgver=0.1.1
-pkgrel=4
-pkgdesc="Task manager written in c"
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Command line task manager with groups."
 arch=('any')
 url="https://download.huck.website"
 license=('GPL')
+groups=()
+depends=()
 makedepends=('gcc')
-source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz")
-install=odot.install
-sha256sums=('13dd54b3722f5420023bfba2f7e31480a0d6a1f22959d7be9c0fe5511f56aae9')
-build() {
-    cd "$srcdir"
-    gcc main.c -o odot
-}
+checkdepends=()
+optdepends=()
+source=("$pkgname-$pkgver.tar.gz::$url/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.sig::$url/$pkgname-$pkgver.tar.gz.sig")
+validpgpkeys=('79C7FF1705F4BD138A40F09454437D8EAEF8818C')
+
+sha256sums=('3d1caa929f32c0f17104e8dfc308166acd157f216ed6c46fc8e9a8e5093b1894' 'SKIP')
+
 package() {
-	cd "$srcdir"
-    install -CDm755 odot -T "$pkgdir/usr/bin/odot" 
+	make install
 }

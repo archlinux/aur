@@ -1,13 +1,14 @@
 pkgbase = odot
-	pkgdesc = Task manager written in c
-	pkgver = 0.1.1
-	pkgrel = 4
+	pkgdesc = Command line task manager with groups.
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://download.huck.website
-	install = odot.install
 	arch = any
 	license = GPL
 	makedepends = gcc
-	source = odot-0.1.1.tar.gz::https://download.huck.website/odot-0.1.1.tar.gz
-	sha256sums = 13dd54b3722f5420023bfba2f7e31480a0d6a1f22959d7be9c0fe5511f56aae9
+	source = odot-0.2.1.tar.gz::https://download.huck.website/odot-0.2.1.tar.gz
+	source = odot-0.2.1.tar.gz.sig::https://download.huck.website/odot-0.2.1.tar.gz.sig
+	validpgpkeys = 79C7FF1705F4BD138A40F09454437D8EAEF8818C
+	sha256sums = 3d1caa929f32c0f17104e8dfc308166acd157f216ed6c46fc8e9a8e5093b1894
 
 pkgname = odot
