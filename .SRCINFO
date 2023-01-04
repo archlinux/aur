@@ -1,0 +1,23 @@
+pkgbase = kondo-git
+	pkgdesc = Save disk space by cleaning non-essential files from software projects.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/tbillington/kondo
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = gtk3
+	depends = gcc-libs
+	source = kondo::git+https://github.com/tbillington/kondo.git
+	sha256sums = SKIP
+
+pkgname = kondo-git
+	provides = kondo
+	conflicts = kondo
+
+pkgname = kondo-ui-git
+	depends = gcc-libs
+	depends = gtk3
+	provides = kondo-ui
+	conflicts = kondo-ui
