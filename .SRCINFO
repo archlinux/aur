@@ -1,7 +1,7 @@
 pkgbase = revchatgpt-git
 	pkgdesc = Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API.
-	pkgver = 0.0.44+11.r525.20221223.efff7f5
-	pkgrel = 2
+	pkgver = 0.0.48.3+3.r590.20230104.1f7acd2
+	pkgrel = 1
 	url = https://github.com/ChatGPT-Hackers/revChatGPT
 	arch = any
 	license = GPL2
@@ -14,15 +14,15 @@ pkgbase = revchatgpt-git
 	depends = python-httpx
 	depends = python-nest-asyncio
 	depends = python-playwright
-	provides = revchatgpt=0.0.44+11.r525.20221223.efff7f5
-	provides = chatgpt=0.0.44+11.r525.20221223.efff7f5
-	provides = chatgpt-git=0.0.44+11.r525.20221223.efff7f5
-	provides = python-revchatgpt=0.0.44+11.r525.20221223.efff7f5
+	provides = revchatgpt=0.0.48.3+3.r590.20230104.1f7acd2
+	provides = chatgpt=0.0.48.3+3.r590.20230104.1f7acd2
+	provides = chatgpt-git=0.0.48.3+3.r590.20230104.1f7acd2
+	provides = python-revchatgpt=0.0.48.3+3.r590.20230104.1f7acd2
 	conflicts = revchatgpt
 	conflicts = chatgpt
 	conflicts = python-revchatgpt
-	replaces = chatgpt<=0.0.44+11.r525.20221223.efff7f5
-	replaces = chatgpt-git<=0.0.44+11.r525.20221223.efff7f5
+	replaces = chatgpt<=0.0.48.3+3.r590.20230104.1f7acd2
+	replaces = chatgpt-git<=0.0.48.3+3.r590.20230104.1f7acd2
 	source = revchatgpt::git+https://github.com/ChatGPT-Hackers/revChatGPT.git
 	sha256sums = SKIP
 

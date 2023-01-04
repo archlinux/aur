@@ -3,8 +3,8 @@
 
 _pkgname=revchatgpt
 pkgname="${_pkgname}-git"
-pkgver=0.0.44+11.r525.20221223.efff7f5
-pkgrel=2
+pkgver=0.0.48.3+3.r590.20230104.1f7acd2
+pkgrel=1
 pkgdesc="Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API."
 arch=(
   'any'
@@ -81,6 +81,8 @@ package() {
 
   export PYTHONHASHSEED=0
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  ln -svr "${pkgdir}/usr/bin/revChatGPT"            "${pkgdir}/usr/bin/revchatgpt"
 
   install -D -v -m644 logo.png                      "${pkgdir}/usr/share/pixmaps/revchatgpt.png"
 
