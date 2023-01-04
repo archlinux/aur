@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.4.4.0.r8.396140e
+pkgver=1.4.4.1.r0.db425de
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
