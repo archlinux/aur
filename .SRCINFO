@@ -1,6 +1,6 @@
 pkgbase = python-qutip
 	pkgdesc = QuTiP is open-source software for simulating the dynamics of open quantum systems
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://qutip.org/index.html
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = python-qutip
 	optdepends = python-nose: Optional, For running tests.
 	optdepends = python-scikit-umfpack: Optional, Faster (~2-5x) steady state calculations.
 	optdepends = openmp: Optional, For OPENMP support
-	source = https://github.com/qutip/qutip/archive/v4.7.0.tar.gz
-	md5sums = a2c0721e37dda0925eaecc43dc0079fc
+	source = https://github.com/qutip/qutip/archive/v4.7.1.tar.gz
+	md5sums = 1618b509fa12121337916dd81cc4ffad
 
 pkgname = python-qutip

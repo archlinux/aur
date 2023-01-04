@@ -4,7 +4,7 @@
 _name=qutip
 _pkgname=qutip
 pkgname=python-qutip
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="QuTiP is open-source software for simulating the dynamics of open quantum systems"
 arch=("x86_64")
@@ -23,7 +23,7 @@ optdepends=(
 )
 
 source=("https://github.com/qutip/qutip/archive/v$pkgver.tar.gz")
-md5sums=('a2c0721e37dda0925eaecc43dc0079fc')
+md5sums=('1618b509fa12121337916dd81cc4ffad')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
@@ -38,4 +38,13 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
     install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  cd "$PWD/tmp_install"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD$site_packages:$PYTHONPATH" python -c 'import qutip.testing; qutip.testing.run()'
+
 }
