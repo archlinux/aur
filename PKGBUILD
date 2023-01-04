@@ -2,10 +2,10 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-lottie
-_basever=5.15.7
-pkgver=5.15.7
+_basever=5.15.8
+pkgver=5.15.8
 pkgrel=1
-_commit=8bb9237e4e1462f405d931a8a513ed4c27632d9e
+_commit=56f94cb8e2da9801ada7aa06f86ccf807f5a4ed8
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
