@@ -1,0 +1,13 @@
+pkgbase = python-trampoline
+	pkgdesc = Simple and tiny yield-based trampoline implementation for python
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.com/ferreum/trampoline
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/t/trampoline/trampoline-0.1.2-py3-none-any.whl
+	sha512sums = c83a396fb746a393d7326c895f647b781d8a9c39ec6a58b85060cbe444ab141f2204f45ee55eefcc67dad6f8bf7ab6da24e96dbd54fb9859b93c359c8b55355c
+
+pkgname = python-trampoline
