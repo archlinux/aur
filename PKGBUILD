@@ -1,4 +1,4 @@
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer Carey Minaieva <jedi2light@jedi2light.moe>
 
 pkgname=pocketbook-pro-sdk-linux-libwine
 pkgver=12.5
