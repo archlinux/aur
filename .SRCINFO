@@ -1,5 +1,5 @@
 pkgbase = brother-hl4570cdw-git
-	pkgdesc = LPR and CUPS driver for the Brother HL4570CDW
+	pkgdesc = LPR and CUPS driver for the Brother HL-4570CDW
 	pkgver = 1.1.4
 	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
