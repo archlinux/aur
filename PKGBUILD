@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=('alice-vision' 'alice-vision-cuda')
 pkgver=2.4.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -69,8 +69,10 @@ prepare() {
 build() {
   cd AliceVision
 
-  # Patch out flag that causes failures during texturing stage.
+  # Patch out flags that causes failures during various stages.
   export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}"
+  export CXXFLAGS="${CXXFLAGS/-fcf-protection}"
+  export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection}"
 
   cmake \
     -Bbuild \
