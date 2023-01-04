@@ -2,18 +2,18 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=imhex-bin
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM. "
 arch=("x86_64")
 url="https://github.com/WerWolv/ImHex"
 license=('GPL2')
-depends=(glfw mbedtls python freetype2 libglvnd dbus xdg-desktop-portal curl fmt yara nlohmann-json)
+depends=(glfw mbedtls freetype2 libglvnd dbus xdg-desktop-portal curl fmt yara nlohmann-json)
 makedepends=(git)
 provides=(imhex)
 conflicts=(imhex)
 source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux.pkg.tar.zst")
-md5sums=(76dea35e36cc2ef70d278bfeaf075f04)
+md5sums=()
 
 package() {
     install -Dm755 "$srcdir/usr/bin/imhex" "$pkgdir/usr/bin/imhex"
