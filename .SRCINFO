@@ -1,6 +1,6 @@
 pkgbase = gf-git
 	pkgdesc = Gamedev Framework (gf) is a framework to build 2D games in C++17. It is based on SDL and OpenGL ES 2.0, and presents an API that is very similar to the graphics module of SFML with additional features (development version).
-	pkgver = 1.0.0.r1606.bb7b6e6-1
+	pkgver = 1.0.0.r1607.877e07e
 	pkgrel = 1
 	url = https://gamedevframework.github.io/
 	arch = x86_64
