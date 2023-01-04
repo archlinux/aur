@@ -9,8 +9,8 @@ pkgdesc="Lightweight package for interacting with ChatGPT's API by OpenAI. Uses 
 arch=(
   'any'
 )
-# url="https://github.com/acheong08/ChatGPT"
-url="https://github.com/ChatGPT-Hackers/revChatGPT"
+url="https://github.com/acheong08/ChatGPT"
+# url="https://github.com/ChatGPT-Hackers/revChatGPT"
 license=('GPL2')
 depends=(
   'python'
