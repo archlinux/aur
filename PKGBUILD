@@ -5,17 +5,17 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
-_tag='df6d84c1cf4bbc2b998f4d320542c78df674512d' # git rev-parse v${pkgver}
-pkgver=0.34.1
-pkgrel=2
+_tag='33f10b1aee5fef45960728fe8595d1603c8a9a85' # git rev-parse v${pkgver}
+pkgver=0.35.0
+pkgrel=1
 pkgdesc="Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support)."
 arch=(i686 x86_64)
 # We link against libraries that are licensed GPLv3 explicitly, so our
 # package is GPLv3 only as well. (Is this still correct?)
 license=('GPL3')
 url="https://mpv.io"
-depends=(libcdio-paranoia libdvdnav ffmpeg libxkbcommon libxrandr libxss luajit uchardet libxinerama vulkan-icd-loader shaderc libplacebo libpulse)
-makedepends=(git python-docutils wayland-protocols wayland vulkan-headers waf)
+depends=('libcdio-paranoia' 'libdvdnav' 'ffmpeg' 'libxkbcommon' 'libxrandr' 'libxss' 'luajit' 'uchardet' 'libxinerama' 'vulkan-icd-loader' 'shaderc' 'libplacebo' 'libpulse' 'libxpresent')
+makedepends=('git' 'python-docutils' 'wayland-protocols' 'wayland' 'vulkan-headers' 'waf')
 optdepends=('yt-dlp: for video-sharing websites playback'
             'youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')

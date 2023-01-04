@@ -1,7 +1,7 @@
 pkgbase = mpv-light-pulse
 	pkgdesc = Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support).
-	pkgver = 0.34.1
-	pkgrel = 2
+	pkgver = 0.35.0
+	pkgrel = 1
 	url = https://mpv.io
 	arch = i686
 	arch = x86_64
@@ -25,12 +25,13 @@ pkgbase = mpv-light-pulse
 	depends = shaderc
 	depends = libplacebo
 	depends = libpulse
+	depends = libxpresent
 	optdepends = yt-dlp: for video-sharing websites playback
 	optdepends = youtube-dl: for video-sharing websites playback
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = git+https://github.com/mpv-player/mpv.git#tag=df6d84c1cf4bbc2b998f4d320542c78df674512d?signed
+	source = git+https://github.com/mpv-player/mpv.git#tag=33f10b1aee5fef45960728fe8595d1603c8a9a85?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 
