@@ -4,9 +4,8 @@ _pkgname=dmsg
 _githuborg=skycoin
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver='0.0.1'
-pkgrel=1
-#pkgrel=1
+pkgver=0.0.1
+pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
@@ -15,6 +14,10 @@ makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check p
 #source=("git+https://github.com/FrappeFortyTwo/dmsg.git#branch=${BRANCH:-enhancement/improve-dmsgpty}")
 source=("git+${url}.git#branch=${BRANCH:-develop}")
 sha256sums=('SKIP')
+
+pkgver(){
+	git describe --always
+}
 
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
@@ -34,6 +37,8 @@ export CC=musl-gcc
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
+_msg2 "commit hash:"
+git rev-parse HEAD
 go mod tidy
 go mod vendor
 
@@ -42,56 +47,6 @@ for _i in ${_cmddir}/*/*.go ; do
 	_dir=${_i/*skycoin\/dmsg\/}
 	_dir=${_dir%\/*}
 	cd $_dir
-	#temporary fix
-	if [[ $_i == *"dmsg-discovery"* ]] ; then
-	go get github.com/VictoriaMetrics/metrics
-	go get github.com/go-chi/chi/v5
-	go get github.com/go-chi/chi/v5/middleware
-	go get github.com/go-redis/redis/v8
-	go get github.com/json-iterator/go
-	go get github.com/pires/go-proxyproto
-	go get github.com/sirupsen/logrus
-	go get github.com/skycoin/noise
-	go get github.com/skycoin/skycoin/src/cipher
-	go get github.com/skycoin/skywire-utilities/pkg/buildinfo
-	go get github.com/skycoin/skywire-utilities/pkg/cipher
-	go get github.com/skycoin/skywire-utilities/pkg/cmdutil
-	go get github.com/skycoin/skywire-utilities/pkg/httputil
-	go get github.com/skycoin/skywire-utilities/pkg/logging
-	go get github.com/skycoin/skywire-utilities/pkg/metricsutil
-	go get github.com/skycoin/skywire-utilities/pkg/netutil
-	go get github.com/skycoin/skywire-utilities/pkg/networkmonitor
-	go get github.com/skycoin/skywire-utilities/pkg/skyenv
-	go get github.com/skycoin/yamux
-	go get github.com/spf13/cobra
-	go get github.com/skycoin/dmsg/internal/dmsg-discovery/store
-	fi
-	if [[ $_i == *"dmsgpty-cli"* ]] ; then
-	go get github.com/skycoin/dmsg/pkg/dmsgpty
-	go get golang.org/x/term@v0.0.0-20210927222741-03fcf44c2211
-	go get github.com/skycoin/skywire/pkg/skyenv
-	go get nhooyr.io/websocket
-	go get github.com/VictoriaMetrics/metrics
-	go get github.com/go-chi/chi/v5
-	go get github.com/go-chi/chi/v5/middleware
-	go get github.com/go-redis/redis/v8
-	go get github.com/json-iterator/go
-	go get github.com/pires/go-proxyproto
-	go get github.com/sirupsen/logrus
-	go get github.com/skycoin/noise
-	go get github.com/skycoin/skycoin/src/cipher
-	go get github.com/skycoin/skywire-utilities/pkg/buildinfo
-	go get github.com/skycoin/skywire-utilities/pkg/cipher
-	go get github.com/skycoin/skywire-utilities/pkg/cmdutil
-	go get github.com/skycoin/skywire-utilities/pkg/httputil
-	go get github.com/skycoin/skywire-utilities/pkg/logging
-	go get github.com/skycoin/skywire-utilities/pkg/metricsutil
-	go get github.com/skycoin/skywire-utilities/pkg/netutil
-	go get github.com/skycoin/skywire-utilities/pkg/networkmonitor
-	go get github.com/skycoin/skywire-utilities/pkg/skyenv
-	go get github.com/skycoin/yamux
-	go get github.com/spf13/cobra
-	fi
 	go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
 	cd ../../
 done
