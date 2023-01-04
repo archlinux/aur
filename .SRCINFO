@@ -1,7 +1,7 @@
 pkgbase = deepin-dock-git
 	pkgdesc = Deepin desktop-environment - dock module
 	pkgver = 5.6.2.r12.g92bb6933e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linuxdeepin/dde-dock
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,7 @@ pkgbase = deepin-dock-git
 	makedepends = deepin-qt-dbus-factory
 	makedepends = libdbusmenu-qt5
 	makedepends = dtkcommon-git
+	makedepends = deepin-control-center-git
 	depends = qt5-svg
 	depends = deepin-daemon-git
 	depends = deepin-qt5integration-git

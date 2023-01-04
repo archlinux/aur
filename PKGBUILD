@@ -2,7 +2,7 @@
 
 pkgname=deepin-dock-git
 pkgver=5.6.2.r12.g92bb6933e
-pkgrel=2
+pkgrel=3
 pkgdesc='Deepin desktop-environment - dock module'
 arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-dock"
@@ -28,6 +28,7 @@ makedepends=(
     'deepin-qt-dbus-factory'
     'libdbusmenu-qt5'
     'dtkcommon-git'
+    'deepin-control-center-git'
 )
 conflicts=('deepin-dock')
 provides=('deepin-dock')
