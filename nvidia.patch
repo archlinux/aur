@@ -1,30 +1,6 @@
---- examples/dmabuf-capture.c	2022-02-03 16:19:54.000000000 -0500
-+++ examples/dmabuf-capture.c	2022-08-20 09:29:17.031186547 -0400
-@@ -1,4 +1,5 @@
- #define _POSIX_C_SOURCE 199309L
-+#include <libavcodec/avcodec.h>
- #include <libavformat/avformat.h>
- #include <libavutil/display.h>
- #include <libavutil/hwcontext_drm.h>
-@@ -619,12 +620,12 @@
- 	}
- 
- 	/* Find encoder */
--	AVCodec *out_codec = avcodec_find_encoder_by_name(ctx->encoder_name);
-+	const AVCodec *out_codec = avcodec_find_encoder_by_name(ctx->encoder_name);
- 	if (!out_codec) {
- 		av_log(ctx, AV_LOG_ERROR, "Codec not found (not compiled in lavc?)!\n");
- 		return AVERROR(EINVAL);
- 	}
--	ctx->avf->oformat->video_codec = out_codec->id;
-+	ctx->avf->oformat = av_guess_format(ctx->encoder_name, NULL, NULL);
- 	ctx->is_software_encoder = !(out_codec->capabilities & AV_CODEC_CAP_HARDWARE);
- 
- 	ctx->avctx = avcodec_alloc_context3(out_codec);
-
---- render/gles2/renderer.c	2022-02-03 16:19:54.000000000 -0500
-+++ render/gles2/renderer.c	2022-08-20 09:29:26.937878381 -0400
-@@ -159,7 +159,7 @@
+--- render/gles2/renderer.c	2022-12-25 10:50:12.000000000 -0500
++++ render/gles2/renderer.c	2023-01-04 18:34:37.961431132 -0500
+@@ -165,7 +165,7 @@
  		assert(wlr_egl_is_current(renderer->egl));
  
  		push_gles2_debug(renderer);
