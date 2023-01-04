@@ -1,5 +1,5 @@
 # Author m101
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer Carey Minaieva <jedi2light@jedi2light.moe>
 
 pkgname=fate-the-game
 pkgver=0.2
