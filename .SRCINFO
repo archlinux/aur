@@ -1,7 +1,7 @@
 pkgbase = needrestart
 	pkgdesc = Restart daemons after library updates.
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liske/needrestart
 	arch = any
 	license = GPL
@@ -14,6 +14,8 @@ pkgbase = needrestart
 	optdepends = iucode-tool: for outdated microcode detection
 	options = !emptydirs
 	source = needrestart-3.6.tar.gz::https://github.com/liske/needrestart/archive/v3.6.tar.gz
+	source = needrestart.hook
 	sha256sums = 3dced40d6116287b163da018d57014b0b7cee04794a95f8602126e2c296ed1a7
+	sha256sums = e5c6696a281f5445a3b7e2b7d1055f9189a2c39d4940721aa0c2718780f15f63
 
 pkgname = needrestart
