@@ -1,12 +1,17 @@
 pkgbase = chimeraos-device-quirks-git
 	pkgdesc = A collection of device specific configuration files
-	pkgver = r3.f02d2a2
+	pkgver = r5.83cf17d
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/device-quirks
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = git
 	depends = systemd
+	depends = ryzenadj-controller-git
 	source = chimeraos-device-quirks::git+https://github.com/ChimeraOS/device-quirks.git
 	md5sums = SKIP
 
