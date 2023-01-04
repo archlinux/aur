@@ -375,3 +375,78 @@
     if (port->jack.state == FALSE || hubJack == NULL) {
        return -EINVAL;
     }
+From 78b77816d39a77b1643426ece1ebd48776d83c1b Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 7 Oct 2022 12:56:44 +0200
+Subject: [PATCH] vmnet: work around field-spanning write warning
+
+The vmnet code uses struct VNet_EventHeader for an event header which is
+followed by variable amount of payload data but does use a flexible array
+member like most similar structures. When building with FORTIFY_SOURCE
+against kernel 6.1-rc1, this results in runtime warnings like
+
+  memcpy: detected field-spanning write (size 28) of single field "&t->event"
+
+in VNetEvent_Send() and VNetUserListenerEventHandler(). Create a helper for
+copying full event structure and for implement it using two separate copy
+statements, one for fixed header and one for the variable payload. Another
+approach would be the use of unsafe_memcpy() but this code does not seem to
+be performance critical so let us split the memcpy() instead.
+---
+ vmnet-only/vnet.h             | 8 ++++++++
+ vmnet-only/vnetEvent.c        | 2 +-
+ vmnet-only/vnetUserListener.c | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/vmnet-only/vnet.h b/vmnet-only/vnet.h
+index d6691d5c..d5bb5572 100644
+--- a/vmnet-only/vnet.h
++++ b/vmnet-only/vnet.h
+@@ -270,6 +270,7 @@ typedef struct VNet_EventHeader {
+    uint32 eventId;
+    uint32 classSet;
+    uint32 type;
++   char payload[];
+ } VNet_EventHeader;
+ #pragma pack(pop)
+ 
+@@ -287,6 +288,13 @@ typedef struct VNet_LinkStateEvent {
+ } VNet_LinkStateEvent;
+ #pragma pack(pop)
+ 
++static inline void VNet_Event_copy(VNet_EventHeader *dst,
++			      const VNet_EventHeader *src)
++{
++	*dst = *src;
++	memcpy(dst->payload, src->payload, src->size - sizeof(*src));
++}
++
+ /*
+  *----------------------------------------------------------------------------
+  */
+diff --git a/vmnet-only/vnetEvent.c b/vmnet-only/vnetEvent.c
+index 3fda7f5a..062398e0 100644
+--- a/vmnet-only/vnetEvent.c
++++ b/vmnet-only/vnetEvent.c
+@@ -402,7 +402,7 @@ VNetEvent_Send(VNetEvent_Sender *s, // IN: a sender
+       p->nextEvent = s->firstEvent;
+       s->firstEvent = p;
+    }
+-   memcpy(&p->event, e, e->size);
++   VNet_Event_copy(&p->event, e);
+ 
+    /* send event */
+    classSet = e->classSet;
+diff --git a/vmnet-only/vnetUserListener.c b/vmnet-only/vnetUserListener.c
+index 114f3907..e9f51755 100644
+--- a/vmnet-only/vnetUserListener.c
++++ b/vmnet-only/vnetUserListener.c
+@@ -226,7 +226,7 @@ VNetUserListenerEventHandler(void *context,       // IN: the user listener
+       return;
+    }
+    t->nextEvent = NULL;
+-   memcpy(&t->event, e, e->size);
++   VNet_Event_copy(&t->event, e);
+ 
+    /* append event to event list */
+    userListener = (VNetUserListener*)context;
