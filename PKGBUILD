@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=('x86_64')
 url="https://openquantumsafe.org/liboqs/"
@@ -12,6 +12,7 @@ depends=(
 )
 makedepends=(
     'cmake'
+    'doxygen'
     'ninja'
 )
 checkdepends=(
@@ -31,6 +32,8 @@ b2sums=(
 prepare() {
     # See https://github.com/open-quantum-safe/liboqs/issues/1338
     patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/fix-sha3.patch"
+    sed -i -e 's/OUTPUT_DIRECTORY       = build\/docs/OUTPUT_DIRECTORY       = ..\/build\/docs/' \
+        "$pkgname-$pkgver/docs/.Doxyfile"
 }
 
 build() {
@@ -46,6 +49,7 @@ build() {
         -DOQS_OPT_TARGET=x86-64 \
         -Wno-dev
     ninja -C build
+    ninja -C build gen_docs
 }
 
 check() {
@@ -54,5 +58,7 @@ check() {
 
 package() {
     ninja -C build install
-    install -D -m0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m0644 "${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d "${pkgdir}/usr/share/doc/"
+    cp -r build/docs/html "${pkgdir}/usr/share/doc/${pkgname}"
 }

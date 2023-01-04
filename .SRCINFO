@@ -1,7 +1,7 @@
 pkgbase = liboqs
 	pkgdesc = C library for prototyping and experimenting with quantum-resistant cryptography
 	pkgver = 0.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://openquantumsafe.org/liboqs/
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = liboqs
 	checkdepends = python-pytest-xdist
 	checkdepends = python-yaml
 	makedepends = cmake
+	makedepends = doxygen
 	makedepends = ninja
 	depends = gcc-libs
 	depends = openssl
