@@ -2,8 +2,7 @@
 # Contributor: frousties
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-_pkgver=1.0-33
-pkgver=1.0.33.r2.gb6e4cda
+pkgver=1.0.34.r8.g75da1e0
 pkgrel=1
 pkgdesc="Tacent View. An image and texture viewer for tga, png, apng, exr, dds, gif, hdr, jpg, tiff, ico, webp, and bmp files."
 arch=('i686' 'x86_64')
@@ -28,5 +27,8 @@ build() {
 package() {
 	# Cleaning some rogue .gitignore lying around
 	find . -name ".gitignore" -exec rm -rf {} \;
-	cp -r "${srcdir}/build/ViewerInstall/Package/${_pkgname}_${_pkgver}/usr" "${pkgdir}"
+	
+	cd "${srcdir}/build/ViewerInstall/Package/"
+	INPUT=$(find . -maxdepth 1 -type d | grep "${_pkgname}_*")
+	cp -r "${INPUT}/usr" "${pkgdir}"
 }
