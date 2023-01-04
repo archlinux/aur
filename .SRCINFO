@@ -1,13 +1,14 @@
 pkgbase = python-svgelements
 	pkgdesc = Svg Elements Parsing
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meerk40t/svgelements
 	arch = any
 	license = MIT
 	checkdepends = python-scipy
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	optdepends = python-numpy: enable npoint() to do lightning fast linearization for Shapes
