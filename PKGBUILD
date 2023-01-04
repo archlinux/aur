@@ -1,26 +1,24 @@
 # Maintainer: Anthony25 <Anthony Ruhier>
 
-pkgbase=python-pytest-flask
-_pkgbase="${pkgbase#python-}"
 pkgname=python-pytest-flask
-pkgver=1.0.0
+_name=pytest-flask
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A set of pytest fixtures to test Flask applications."
 arch=(any)
 url='https://github.com/pytest-dev/pytest-flask'
 license=(MIT)
-makedepends=(
-  "python-pytest"
-  python-setuptools
-)
-depends=('python-flask' 'python-werkzeug')
-options=(!emptydirs)
-source=("https://github.com/pytest-dev/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('7a1008d2020607d059fb34ed5c63045c904b5f2df81931199979da776238beed')
+makedepends=('python-setuptools')
+depends=('python-pytest' 'python-flask' 'python-werkzeug')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+b2sums=('c0cbfdcf843573eba07cd009dc33b5f651dc859f94bd2059dccbf81ce6cc4c56870004b393254d9aa1beb5ff6225e3184ce26f71d74189eb6cb81b3ce0e3b219')
 
-package_python-pytest-flask() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+build() {
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
+}
