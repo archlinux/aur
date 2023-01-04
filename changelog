@@ -1,0 +1,25 @@
+# 2023-01-01: Stable release 18621 (22.12)
+
+Major enhancements
+	#21605: Add tabs to Image Viewer Dialog. This allows users to have multiple geotagged image layers, and quickly switch between them. 
+Medium enhancements
+	#22337: View GPX waypoint images also in Image Viewer Dialog
+	#22504: Enhance Align Nodes in Circle tool: When multiple ways are selected and they are not connected in a ring, then each of the selected closed ways will be circularized. 
+Minor enhancements
+	#22489: Display JOSMs Mastodon account in about dialog
+	#22487: Don't re-enable object hover preview on layer change
+	r18598: Set Look And Feel back to default if an external Look and Feel blocks the JOSM start
+	#22515: Fix shortcuts for search string icons on toolbar made with Search tool
+	#20528: Allow to copy from welcome screen
+	#21324: Display correct number x of tags in Command stack when pasting tags instead of always "1" ("pasting x tags to y objects")
+	#13097: Allow Angle Snapping in WGS84 projection
+	#22064: Make Save Session available outside of Expert Mode 
+Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+	#19826: Fix cycleway rendering in combination with oneway:bicycle=no and for cycleway:both
+	#22375: Add subdivision Scotland (GB-SCT) and all subdivisions of Belgium - Flanders (BE-VLG), Wallonia (BE-WAL), Brussels (BE-BRU) to internal boundaries file
+	r18597: Update power=transformer preset: removed transformer=auto (replaced by windings:auto=true) and transformer=traction (replaced by transformer=main)
+	r18597: Update landuse=residential preset for newer in-use values: adds halting_site, single_family, and trailer_park 
+
+More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.12:
+
+https://josm.openstreetmap.de/log/josm/?rev=18621&stop_rev=18584
