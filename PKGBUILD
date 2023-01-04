@@ -4,7 +4,7 @@ pkgname=adguardhome-bin
 _pkgname=AdGuardHome
 pkgver=0.107.21
 _pkgver="v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Network-wide ads and trackers blocking DNS server (binary version).'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/AdguardTeam/AdGuardHome'
@@ -26,5 +26,5 @@ sha256sums_armv7h=('5917700ead5cd6e46e4b1167246ade850e221d0e9221b8f4e7c26600bffa
 
 package() {
     install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/var/lib/adguardhome/${_pkgname}"
-    install -Dm644 "../${_pkgname}.service" "${pkgdir}/etc/systemd/system/${_pkgname}.service"
+    install -Dm644 "../adguardhome.service" "${pkgdir}/usr/lib/systemd/system/adguardhome.service"
 }
