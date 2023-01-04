@@ -1,0 +1,15 @@
+pkgbase = termimg
+	pkgdesc = Display images in an X terminal
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mads256h/termimg
+	arch = any
+	license = AGPL3
+	makedepends = cmake
+	depends = libxres
+	depends = procps-ng
+	depends = imlib2
+	source = termimg-0.1.1.tar.gz::https://github.com/mads256h/termimg/archive/v0.1.1.tar.gz
+	sha256sums = f3fc6c36b930370bbd1c13387803b1ee8149d7011aa88eb46a9eab9c796429fa
+
+pkgname = termimg
