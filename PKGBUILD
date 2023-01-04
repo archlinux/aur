@@ -9,7 +9,7 @@ pkgdesc="Yandex Music client"
 arch=('x86_64')
 url="https://gitlab.com/KirMozor/Yamux"
 license=('GPL3')
-depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3' 'gst-plugins-good', 'gst-plugins-bad', 'gst-plugin-pipewire')
+depends=('gstreamer' 'dotnet-runtime>=6.0.0' 'gtk3' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugin-pipewire')
 makedepends=("dotnet-sdk>=6.0.0")
 source=("https://gitlab.com/KirMozor/Yamux/-/archive/Yamux-v60/Yamux-Yamux-v60.tar.gz")
 md5sums=('2df955ef696ad3d269372597a57a6515')
