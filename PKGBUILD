@@ -3,7 +3,7 @@
 pkgname='cn.com.10jqka'
 # the versin is from deb package
 pkgver=2.7.1.2
-pkgrel=0
+pkgrel=1
 pkgdesc="cn.com.10jqka - a tool for scanning the stock infomation"
 arch=("x86_64")
 url="https://www.10jqka.com.cn"
@@ -11,9 +11,15 @@ url="https://www.10jqka.com.cn"
 license=('custom')
 depends=()
 
-source=("http://resource.thsi.cn/soft/${pkgname}_${pkgver}_amd64.deb")
-
-sha256sums=('40c9a5c551cdc48e10b51e003e70254919d89aa0a1481ab63324a37a363648fd')
+install='cn.com.10jqka.install'
+source=(
+    "http://resource.thsi.cn/soft/${pkgname}_${pkgver}_amd64.deb"
+    update_config.sh
+)
+sha256sums=(
+    '40c9a5c551cdc48e10b51e003e70254919d89aa0a1481ab63324a37a363648fd'
+    'c4640f9fd19cc2c9370deae878398829eae893aede4153b7db5db563cb1a2992'
+)
 
 package() {
     tar xf data.tar.xz -C ${pkgdir}/
@@ -30,4 +36,5 @@ package() {
 
     install -d "${pkgdir}/usr/share/applications"
     install -m644 "${pkgdir}/opt/cn.com.10jqka/entries/applications/cn.com.10jqka.desktop" "${pkgdir}/usr/share/applications/"
+    install -D -m755 -t "$pkgdir/opt/cn.com.10jqka/" "$srcdir/update_config.sh"
 }
