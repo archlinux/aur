@@ -1,18 +1,17 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
-_name=esbuild
-pkgname=${_name}
-pkgver=0.16.13
+pkgname=esbuild
+pkgver=0.16.14
 pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://${_name}.github.io/"
+url="https://${pkgname}.github.io/"
 license=('MIT')
 makedepends=('go')
-_snapshot="${_name}-${pkgver}"
-source=("${_snapshot}.tar.gz::https://github.com/evanw/${_name}/archive/v${pkgver}.tar.gz")
-b2sums=('4122dd0198171bf607401a8255620b4d0bb04281b42685aa78d8a55ba251455f614f603e8745f00abe4e0dba621c3c6c2b0555adf05f233a9a8ac35a90133acc')
+_snapshot="${pkgname}-${pkgver}"
+source=("${_snapshot}.tar.gz::https://github.com/evanw/${pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('44275c2fe445ea67ffd4e770e337ef8463828d7843682d6b5ec6c60493166a2883f4beb0694992a5d3e7d063172a381cb46153a4e2f4d72710ef678504e95994')
 
 build() {
     set -a
@@ -28,12 +27,12 @@ build() {
 }
 
 package() {
-    local bin="/usr/bin/${_name}"
-    install -Dm755 "build/${_name}" "${pkgdir}${bin}"
+    local bin="/usr/bin/${pkgname}"
+    install -Dm755 "build/${pkgname}" "${pkgdir}${bin}"
 
     local profile="/etc/profile.d"
     install -dm755 "${pkgdir}${profile}"
-    echo "export ESBUILD_BINARY_PATH='${bin}'" > "${pkgdir}${profile}/${_name}.sh"
+    echo "export ESBUILD_BINARY_PATH='${bin}'" > "${pkgdir}${profile}/${pkgname}.sh"
 
     cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.md"
