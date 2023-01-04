@@ -4,7 +4,7 @@
 
 pkgname=river-noxwayland-git
 _pkgname=river
-pkgver=0.2.0_dev.r119.ge35c147
+pkgver=0.3.0_dev.r1.ge49db76
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
