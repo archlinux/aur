@@ -1,7 +1,7 @@
 pkgbase = adguardhome-bin
 	pkgdesc = Network-wide ads and trackers blocking DNS server (binary version).
 	pkgver = 0.107.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AdguardTeam/AdGuardHome
 	install = adguardhome-bin.install
 	arch = i686
