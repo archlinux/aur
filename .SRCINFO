@@ -1,7 +1,7 @@
 pkgbase = xfce4-theme-switcher
 	pkgdesc = Utility for fast switch betwen Xfce4 themes.
 	pkgver = 0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/linux-stuffs/xfce4-theme-switcher
 	arch = any
 	groups = xfce4-goodies
@@ -21,7 +21,7 @@ pkgbase = xfce4-theme-switcher
 	provides = xfce4-theme-switcher
 	conflicts = xfce4-theme-switcher
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-5.tar.gz
+	source = https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-6.tar.gz
 	sha256sums = SKIP
 
 pkgname = xfce4-theme-switcher

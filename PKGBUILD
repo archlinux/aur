@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xfce4-theme-switcher
 pkgver=0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Utility for fast switch betwen Xfce4 themes."
 
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}")
 depends=('bash' 'xfce4-whiskermenu-plugin' 'coreutils' 'grep' 'sed' 'python3' 'conky' 'plank' 'xfce4-panel' 'gtk3' 'python-gobject>=3.38')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-5.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-6.tar.gz')
 sha256sums=('SKIP')
 
 
