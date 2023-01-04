@@ -6,10 +6,10 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 readonly _pkgname="NostalgiaForInfinity"
-declare -r _tag="51118631961146d8363a8a1e31d96c3e18ea9ccd"
+declare -r _tag="0246163cefe2718d3368380c17032506533a2319"
 
 pkgname="python-nostalgiaforinfinity"
-pkgver="11.3.102"
+pkgver="11.3.107"
 pkgrel="1"
 pkgdesc="Trading strategy for the Freqtrade crypto bot."
 arch=("any")
