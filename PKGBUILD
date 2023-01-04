@@ -18,8 +18,8 @@ sha512sums_x86_64=("f03a1677623b6ecc6eaf45b279acc291bf181577c9df7dc672424597a3f6
 sha512sums_armv7h=("c00ef1e45eec800b727c1c481b8242e66761493b5e906cd3ee0c7977deac69940af0a8dfce083d0ef70ae80263bbb76c6b1f9d22dcd968c0bf6197a0f514a210")
 sha512sums_aarch64=("98c5c839b4f586183caa1236951f1b4e6fc4bdb047a30b25dc5b9054fe2ed24cc9d120c4476d2e4a7804c496514228bd14cfd8603c2fc5b058571dd4843eb6ae")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
-source_armv7h=("${_pkgname}-armv7h-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7.tar.gz")
-source_aarch64=("${_pkgname}-aarch64-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
+source_armv7h=("${_pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7.tar.gz")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
 backup=("etc/${_pkgname}/config.json")
 
 package() {
