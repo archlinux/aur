@@ -4,6 +4,7 @@ Comment=Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotify
 Icon=onetagger
 Exec=onetagger
 Terminal=false
+Type=Application
 StartupNotify=true
 StartupWMClass=onetagger
 Categories=AudioVideo;Audio;AudioVideoEditing;
