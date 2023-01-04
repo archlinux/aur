@@ -30,6 +30,7 @@ build() {
   cmake \
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DOPTION_RUN_DOXYGEN=OFF \
     ./
   make -C "_build"
@@ -39,5 +40,4 @@ package() {
   cd "vector_blf"
 
   make -C "_build" DESTDIR="$pkgdir" install
-  #install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/vector_blf"
 }
