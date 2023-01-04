@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ryzenadj-controller-git
 _pkgbase=ryzenadj-controller
-pkgver=1.0.0.r4.g2648dba
+pkgver=1.0.0.r5.g5ae9f3a
 pkgrel=1
 pkgdesc="Python module that provides a userspace interface for RyzenAdj using Unix Sockets"
 arch=('x86_64')
@@ -11,6 +11,7 @@ groups=()
 depends=('python' 'ryzenadj-git')
 optdepends=()
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'git')
+provides=('ryzenadj-controller')
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git")
 sha256sums=('SKIP')
 pkgver() {
