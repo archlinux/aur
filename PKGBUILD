@@ -2,7 +2,7 @@
 
 _pkgname=RTools
 pkgname=rtools-git
-pkgver=1.0.0.r5.g37d1d52
+pkgver=1.0.0.r7.g8733560
 pkgrel=1
 pkgdesc="RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。"
 arch=('x86_64' 'aarch64')
@@ -33,42 +33,6 @@ build() {
 
 package() {
     install -Dm0755 "${srcdir}/${pkgname%-git}/${_pkgname}/${_pkgname%s}" "${pkgdir}/usr/bin/${pkgname%-git}"
-
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.gitee.ricechen0.rtools.metainfo.xml" << EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application">
-  <id>com.gitee.ricechen0.rtools</id>
-
-  <name>RTools</name>
-  <summary>RTools</summary>
-
-  <metadata_license>MIT</metadata_license>
-  <project_license>Apache-2.0</project_license>
-
-  <description>
-    <p>
-      RTools(米饭工具集)是开发工具集桌面悬浮窗软件，每一个子功能如同一颗米粒组成一碗米饭。
-    </p>
-  </description>
-
-  <launchable type="desktop-id">com.gitee.ricechen0.rtools.desktop</launchable>
-</component>
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/com.gitee.ricechen0.rtools.desktop" << EOF
-[Desktop Entry]
-Version=1.0
-Type=Application
-
-Name=RTools
-Comment=RTools
-Categories=Development;Electronics;
-
-Icon=rtools
-Exec=rtools
-Terminal=false
-EOF
-
+    cp -rv "${srcdir}/${pkgname%-git}/${_pkgname}/linux/usr" "${pkgdir}/"
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-    install -Dm644 "$srcdir/${pkgname%-git}/${_pkgname}/Image/logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
