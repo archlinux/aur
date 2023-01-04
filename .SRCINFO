@@ -1,6 +1,6 @@
 pkgbase = tacentview-git
 	pkgdesc = Tacent View. An image and texture viewer for tga, png, apng, exr, dds, gif, hdr, jpg, tiff, ico, webp, and bmp files.
-	pkgver = 1.0.32.r6.gf08c019
+	pkgver = 1.0.34.r8.g75da1e0
 	pkgrel = 1
 	url = https://github.com/bluescan/tacentview
 	arch = i686
@@ -9,6 +9,9 @@ pkgbase = tacentview-git
 	license = ISC
 	depends = gcc
 	depends = libx11
+	depends = cmake
+	depends = ninja
+	depends = dpkg
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = git+https://github.com/bluescan/tacentview.git
