@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=journald-broker
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A log-based event dispatcher daemon for systemd's journal"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}")
 backup=(etc/systemd/journald-broker.toml)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a9e789835dda61c7834e49d75c4c2bcd619d96934b6243a2829a0ae8f2309cb0')
+sha256sums=('380b32286b048ede4d4edee638528fe42f2b8931da288c5dd2a72abd21339e40')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
