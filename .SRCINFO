@@ -1,0 +1,17 @@
+pkgbase = vector_blf-git
+	pkgdesc = This is a library to access Binary Log File (BLF) files from Vector Informatik.
+	pkgver = r480.g02f0a2f
+	pkgrel = 1
+	url = https://github.com/Technica-Engineering/vector_blf
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	provides = vector_blf
+	conflicts = vector_blf
+	options = staticlibs
+	source = git+https://github.com/Technica-Engineering/vector_blf.git
+	sha256sums = SKIP
+
+pkgname = vector_blf-git
