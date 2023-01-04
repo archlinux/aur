@@ -1,0 +1,21 @@
+pkgbase = brother-hl4570cdw-git
+	pkgdesc = LPR and CUPS driver for the Brother HL4570CDW
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl4570cdw-git.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf005943/hl4570cdwlpr-1.1.1-5.i386.rpm
+	source = https://download.brother.com/welcome/dlf005945/hl4570cdwcupswrapper-1.1.1-5.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha512sums = 7a46a6ce98d1f053ff72c5aa689a557ffa966672557c04132a078637b1a6486581794d1828a0fc8e8d9c37e97a541649d7a97e4424ff35e1c6da3c01c998578e
+	sha512sums = dc9447cce7b70899fa77d4d6ba5f5a41d4709ed60d408efe98e6cb03a6740278b556ae065c66b4aee3f644bbd0cbc563ca7fa953c1559d3573872314ccbb6a08
+	sha512sums = bd035acc69734d954c132df67e80476094044d2c929e97bd6e0467aacfeefa9883da7474af8d8ff7fa65c3043ec6e1d8e0386e032c3f2121c36b0f6bfd079c86
+	sha512sums = bf555e3622b68cc8a4d89f9fbb26ca09f29acf66c07d517be8aa7b58d985e1408d0d1bde408ba3b0e0aa842a69d6ebf0b4a1d194673203f42a3cbcecdcfaca06
+pkgname = brother-hl4570cdw
+
