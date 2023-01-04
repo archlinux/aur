@@ -1,21 +1,21 @@
 pkgbase = linux-xanmod-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - x64v2
-	pkgver = 6.1.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = jq
 	makedepends = curl
-	noextract = linux-image-6.1.2-x64v2-xanmod1_6.1.2-x64v2-xanmod1-0.20230101.79838fe_amd64.deb
-	noextract = linux-headers-6.1.2-x64v2-xanmod1_6.1.2-x64v2-xanmod1-0.20230101.79838fe_amd64.deb
+	noextract = linux-image-6.1.3-x64v2-xanmod1_6.1.3-x64v2-xanmod1-0.20230104.7dc2484_amd64.deb
+	noextract = linux-headers-6.1.3-x64v2-xanmod1_6.1.3-x64v2-xanmod1-0.20230104.7dc2484_amd64.deb
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.1.2-xanmod1/linux-image-6.1.2-x64v2-xanmod1_6.1.2-x64v2-xanmod1-0.20230101.79838fe_amd64.deb
-	source = https://github.com/xanmod/linux/releases/download/6.1.2-xanmod1/linux-headers-6.1.2-x64v2-xanmod1_6.1.2-x64v2-xanmod1-0.20230101.79838fe_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.3-xanmod1/linux-image-6.1.3-x64v2-xanmod1_6.1.3-x64v2-xanmod1-0.20230104.7dc2484_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.3-xanmod1/linux-headers-6.1.3-x64v2-xanmod1_6.1.3-x64v2-xanmod1-0.20230104.7dc2484_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = abb845ec9f74becd45024067acf5f5ea48628c4cc4ab02b3856a3aa89ecc0eac
-	sha256sums = 669ea74c98bf27faa0ba3190fd8de16290e7b3ff97df74f68daa49e3cd8c5570
+	sha256sums = 59c8c00d675e787c8d63192649f5b8f0be9766c1875c8efeea02fc81fb2aa966
+	sha256sums = 29bdd7e815ac846bedda10d86dbc8ed3ccaf846fdfe1b0bf865029116e555be2
 
 pkgname = linux-xanmod-linux-bin-x64v2
 
