@@ -1,11 +1,11 @@
 [Desktop Entry]
-Version=2.0.4-4
+Version=2.0.6-2
 Name=Stream Deck UI
 GenericName=Stream Deck UI
 Comment=Application used to configure Elgato Stream Deck products
 Terminal=false
 Type=Application
-Exec=python /usr/bin/streamdeck
+Exec=/bin/sh -c "xhost +; python /usr/bin/streamdeck"
 MimeType=application/x-executable;
 Categories=Network;
 Icon=elgato.png
