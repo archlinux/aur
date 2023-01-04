@@ -1,18 +1,16 @@
 pkgbase = libcs50
 	pkgdesc = CS50 Library for C
-	pkgver = 10.1.1
+	pkgver = 11.0.1
 	pkgrel = 1
 	url = https://github.com/cs50/libcs50
 	arch = i686
 	arch = x86_64
 	groups = cs50
 	license = MIT
-	makedepends = asciidoctor
 	conflicts = libcs50-git
-	source = libcs50-10.1.1.tar.gz::https://github.com/cs50/libcs50/archive/v10.1.1.tar.gz
+	source = libcs50-11.0.1.tar.gz::https://github.com/cs50/libcs50/archive/v11.0.1.tar.gz
 	source = Makefile.patch
-	sha256sums = 32d5d7aafbb20f2b6181f7e79df6757699208324ab202bc5984f55669557a7d4
+	sha256sums = 339a3903d20af5b1eff27515a0756e33d182fdafc02c7712b11f5b34c6252788
 	sha256sums = 4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f
 
 pkgname = libcs50
-
