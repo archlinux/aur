@@ -3,7 +3,7 @@
 pkgname=sing-box-bin
 _pkgname=sing-box
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The universal proxy platform."
 provides=("sing-box")
 conflicts=("sing-box" "sing-box-beta" "sing-box-git")
