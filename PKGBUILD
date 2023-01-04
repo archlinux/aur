@@ -2,26 +2,23 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.17.6
-pkgrel=2
+pkgver=0.18.4
+pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
-depends=('qt5-charts' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg' 'qt5-x11extras')
-makedepends=('cmake' 'git' 'muparser' 'python' 'qt5-declarative' 'virtualbox' 'virtualbox-sdk')
-optdepends=('muparser: Calculator plugin'
-            'python: Python extension'
-            'virtualbox: VirtualBox plugin')
+depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
+makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python')
+optdepends=('muparser: calculator plugin'
+            'python: python extension'
+            'python-docker: python docker plugin'
+            'python-urllib3: python web plugins')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
-        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git"
-        "mirrors/xkcd-plugin::git+https://github.com/bergercookie/xkcd-albert-plugin.git"
-        "mirrors/jetbrains-plugin::git+https://github.com/mqus/jetbrains-albert-plugin.git")
+        "mirrors/qhotkey::git+https://github.com/Skycoder42/QHotkey.git#tag=1.5.0")
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -32,22 +29,17 @@ prepare() {
 
   cd "$srcdir/albert"
   git submodule init
+  
   git config submodule.plugins.url "$srcdir/plugins"
   git -c protocol.file.allow=always submodule update plugins
+  
+  git config submodule.lib/QHotkey.url "$srcdir/qhotkey"
+  git -c protocol.file.allow=always submodule update lib/QHotkey
 
   cd "$srcdir/albert/plugins"
   git submodule init
-  git config submodule.python/pybind11.url "$srcdir/pybind11"
-  git config submodule.python/share/modules.url "$srcdir/python"
-  git -c protocol.file.allow=always submodule update python/pybind11 python/share/modules
-  
-  cd "$srcdir/albert/plugins/python/share/modules"
-  git submodule init
-  git config submodule.jetbrains_projects.url "$srcdir/jetbrains-plugin"
-  git config submodule.xkcd.url "$srcdir/xkcd-plugin"
-  # currently submodules are out-of-dated in upstream
-  # so we have to checkout them
-  git -c protocol.file.allow=always submodule update --remote --merge jetbrains_projects xkcd
+  git config submodule.python/plugins.url "$srcdir/python"
+  git -c protocol.file.allow=always submodule update python/plugins
 }
 
 
@@ -58,23 +50,22 @@ build() {
     -DCMAKE_BUILD_TYPE=MinSizeRel \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -Wno-dev \
-    -DBUILD_WIDGETBOXMODEL=ON \
-    -DBUILD_QMLBOXMODEL=ON \
-    -DBUILD_APPLICATIONS=ON \
+    -DQHOTKEY_INSTALL=OFF \
+    -DBUILD_WIDGETSBOXMODEL=ON \
+    -DBUILD_APPLICATIONS_XDG=ON \
     -DBUILD_CALCULATOR=ON \
-    -DBUILD_CHROMEBOOKMARKS=ON \
+    -DBUILD_CHROMIUM=ON \
     -DBUILD_DEBUG=OFF \
     -DBUILD_FILES=ON \
-    -DBUILD_FIREFOXBOOKMARKS=ON \
-    -DBUILD_HASHGENERATOR=ON \
-    -DBUILD_MPRIS=ON \
+    -DBUILD_HASH=ON \
     -DBUILD_PYTHON=ON \
+    -DBUILD_SNIPPETS=ON \
     -DBUILD_SSH=ON \
     -DBUILD_SYSTEM=ON \
     -DBUILD_TEMPLATE=OFF \
     -DBUILD_TERMINAL=ON \
-    -DBUILD_VIRTUALBOX=ON
+    -DBUILD_URLHANDLER=ON \
+    -DBUILD_WEBSEARCH=ON
 
   make
 }
@@ -84,6 +75,10 @@ package() {
   cd build
 
   make DESTDIR="$pkgdir/" install
+  
+  # remove some trash
+  rm -r "$pkgdir/usr/share/albert/python/plugins/.archive"
+  rm -r "$pkgdir/usr/share/albert/python/plugins/.git"*
 }
 
 # vim:set ts=2 sw=2 et:

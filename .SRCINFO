@@ -1,33 +1,26 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
-	pkgver = 0.17.6
-	pkgrel = 2
+	pkgver = 0.18.4
+	pkgrel = 1
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = git
 	makedepends = muparser
+	makedepends = pybind11
 	makedepends = python
-	makedepends = qt5-declarative
-	makedepends = virtualbox
-	makedepends = virtualbox-sdk
-	depends = qt5-charts
-	depends = qt5-graphicaleffects
-	depends = qt5-quickcontrols
-	depends = qt5-svg
-	depends = qt5-x11extras
-	optdepends = muparser: Calculator plugin
-	optdepends = python: Python extension
-	optdepends = virtualbox: VirtualBox plugin
-	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.17.6
+	depends = hicolor-icon-theme
+	depends = qt6-scxml
+	depends = qt6-svg
+	optdepends = muparser: calculator plugin
+	optdepends = python: python extension
+	optdepends = python-docker: python docker plugin
+	optdepends = python-urllib3: python web plugins
+	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.18.4
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
-	source = mirrors/pybind11::git+https://github.com/pybind/pybind11.git
-	source = mirrors/xkcd-plugin::git+https://github.com/bergercookie/xkcd-albert-plugin.git
-	source = mirrors/jetbrains-plugin::git+https://github.com/mqus/jetbrains-albert-plugin.git
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = mirrors/qhotkey::git+https://github.com/Skycoder42/QHotkey.git#tag=1.5.0
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
