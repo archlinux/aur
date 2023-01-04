@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
 pkgver=0.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=('x86_64')
 url="https://openquantumsafe.org/liboqs/"
@@ -32,6 +32,9 @@ b2sums=(
 prepare() {
     # See https://github.com/open-quantum-safe/liboqs/issues/1338
     patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/fix-sha3.patch"
+
+    # Fix hardcoded output for docs in Doxyfile
+    # See https://github.com/open-quantum-safe/liboqs/issues/1341
     sed -i -e 's/OUTPUT_DIRECTORY       = build\/docs/OUTPUT_DIRECTORY       = ..\/build\/docs/' \
         "$pkgname-$pkgver/docs/.Doxyfile"
 }
@@ -47,6 +50,10 @@ build() {
         -DOQS_USE_SHA2_OPENSSL=ON \
         -DOQS_USE_SHA3_OPENSSL=ON \
         -DOQS_OPT_TARGET=x86-64 \
+        -DOQS_ENABLE_SIG_RAINBOW=OFF \
+        -DOQS_ENABLE_SIG_PICNIC=OFF \
+        -DOQS_ENABLE_KEM_SABER=OFF \
+        -DOQS_ENABLE_KEM_NTRU=OFF \
         -Wno-dev
     ninja -C build
     ninja -C build gen_docs
