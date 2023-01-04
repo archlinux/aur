@@ -19,6 +19,7 @@ source=(
 )
 sha256sums=('339a3903d20af5b1eff27515a0756e33d182fdafc02c7712b11f5b34c6252788'
             '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f')
+install=libcs50.install
 
 prepare() {
   cd "${pkgname}-${pkgver}"
