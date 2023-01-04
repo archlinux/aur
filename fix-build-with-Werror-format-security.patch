@@ -1,0 +1,61 @@
+From 4d8f5fe1c4b29edfbcc77e4774378e05b38688db Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutrelis.com>
+Date: Wed, 28 Dec 2022 22:23:50 +0200
+Subject: [PATCH] LinGUI: fix build with -Werror=format-security
+
+Add missing format strings where needed.
+
+Fixes: f6c0971c0042 ("Added XDG color-scheme implementation")
+Fixes: 3c71841d7716 ("LinGUI: Add warning color to dialog buttons")
+Fixes: 23f067ef4186 ("LinGUI: Add subtitle and audio track names to queue")
+---
+ gtk/src/callbacks.c    | 2 +-
+ gtk/src/color-scheme.c | 2 +-
+ gtk/src/queuehandler.c | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/gtk/src/callbacks.c b/gtk/src/callbacks.c
+index d815e10e2..eed9a4510 100644
+--- a/gtk/src/callbacks.c
++++ b/gtk/src/callbacks.c
+@@ -3790,7 +3790,7 @@ ghb_title_message_dialog(GtkWindow *parent, GtkMessageType type, const gchar *ti
+                             type, GTK_BUTTONS_NONE,
+                             "%s", title);
+     if (message)
+-        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), message);
++        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(dialog), "%s", message);
+ 
+     gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+                            no, GTK_RESPONSE_NO,
+diff --git a/gtk/src/color-scheme.c b/gtk/src/color-scheme.c
+index 6fbf65e71..0816d6808 100644
+--- a/gtk/src/color-scheme.c
++++ b/gtk/src/color-scheme.c
+@@ -173,7 +173,7 @@ DesktopColorScheme color_scheme_get_desktop_scheme (void)
+                                     DBUS_TIMEOUT, NULL, &error);
+     if (!result)
+     {
+-        g_debug(error->message);
++        g_debug("%s", error->message);
+         return DESKTOP_NO_PREFERENCE;
+     }
+ 
+diff --git a/gtk/src/queuehandler.c b/gtk/src/queuehandler.c
+index db186fbe3..a2b3e96aa 100644
+--- a/gtk/src/queuehandler.c
++++ b/gtk/src/queuehandler.c
+@@ -682,12 +682,12 @@ queue_update_summary(GhbValue * queueDict, signal_user_data_t *ud)
+         def         = ghb_dict_get_bool(subsettings, "Default");
+         name        = ghb_dict_get_string(subsettings, "Name");
+ 
+-        g_string_append_printf(str, sep);
++        g_string_append_printf(str, "%s", sep);
+         if (name)
+         {
+             g_string_append_printf(str, "%s - ", name);
+         }
+-        g_string_append_printf(str, desc);
++        g_string_append_printf(str, "%s", desc);
+         free(desc);
+         if (force)
+         {
