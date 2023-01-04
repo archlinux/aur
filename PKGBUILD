@@ -1,6 +1,6 @@
 # Maintainer: Ifkum Rfnl ifkumrfnl@gmail.com
 pkgname='hoholsay'
-pkgver=0.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="Cowsay but better"
 arch=('any')
