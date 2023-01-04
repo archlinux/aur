@@ -2,34 +2,38 @@
 
 pkgname=automua
 pkgver=2023.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Email client configuration made easy"
 arch=('any')
 license=('GPL3')
 backup=('etc/automua/automua.conf')
 url='https://github.com/HLFH/automua'
-depends=('python')
-source=('setupvenv.sh'
-        'automua.sysusers'
+depends=('python' 'python-hatchling' 'python-flask' 'python-flask-migrate' 'python-flask-sqlalchemy' 'python-ldap3' 'python-werkzeug' 'python-sqlalchemy' 'python-alembic' 'python-lxml')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest' 'python-coverage')
+optdepends=('python-mysqlclient')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'automua.conf'
-        'automua.service'
-        'automua.tmpfiles')
-b2sums=('a96f41433156756b650a9216ffe44a027b41d64b0fd37eac0e64297eadccb584925e0cefed38ba06d0129aefbd34a4c57559bfabfe43d36076373193e2ef6906'
-        '9f5f26ee77c39c9988c60fbfa6ea0e492a00769bc8e827da88d149e78d919f2eff1ac160ff5af82deddeea03581dc150278564bdcf7401e42c337f4977a2ff07'
-        '1ecda927911fe33f96c4a040593e190185b7c5450411c2b26ad4c35953c6d27813316bfff88fa3fcfd48c06fa1f2e4444f23a7ad8dff149a2661d404c28ea216'
-        'e49984b707dab4553bbe9ba393e9ab7b53282faf0983dbbb9995bb1effc62939549174cd399de44f755576873c88184c072b3fbc1bd97ed3b110d452c9dae042'
-        '5093bc61755faf1641cd99a605e65f84e349bb4870e0822540f2357260bdae11242e8e987be2cc6b55fdee1984ec00cac8f6bff8b44676f929a19823cb5d2d9f')
+        'automua.service')
+b2sums=('cfa5128602e1d4119590c34094e4b984d3970c1df33dd32ea35bc8e954ef1d6f8a16bdb25764a81ad01b15f9303cddd1218f34b8867d84ed81d0b633ba359d36'
+        'aa90ba9f0d8ed7764027a263f22010e4af0060fad28a771c4dd84b4270eeb3e7b5b78b3cab3c8d50d8a7b6beef7bf567b2cabbb8579ca87b419904c9f4ecbc46'
+        '44056a40b51d74f02fe36751701568316620e3fceff118992cb359c61e9f1079ecc6c6f5a2a6e0e3ae8482548cfa14a5c3496dd7985153ee0cca6b24080e305c')
+
+build() {
+  cd $pkgname-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+# community/python-flask-sqlalchemy and aur/python-pytest-flask are outdated
+#check() {
+#  cd $pkgname-$pkgver
+#  AUTOMUA_CONF=tests/unittest.conf RUN_LDAP_TESTS=0 PYTHONPATH=. coverage run --source automua -m pytest
+#  coverage html --rcfile=tests/coverage.rc
+#}
 
 package() {
-  mkdir -p "$pkgdir/etc/automua"
-  mkdir -p "$pkgdir/srv/http/automua"
-  cd "$pkgdir/srv/http/automua"
-  install -Dm644 "${srcdir}/setupvenv.sh" "setupvenv.sh"
-  sh setupvenv.sh
-  source .venv/bin/activate
-  pip install -Iv $pkgname==$pkgver
-  install -Dm644 "${srcdir}/automua.sysusers" "${pkgdir}/usr/lib/sysusers.d/automua.conf"
-  install -Dm644 "${srcdir}/automua.conf" "${pkgdir}/etc/automua/automua.conf"
-  install -Dm644 "${srcdir}/automua.service" "${pkgdir}/usr/lib/systemd/system/automua.service"
-  install -Dm644 "${srcdir}/automua.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/automua.conf"
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    mkdir -p "$pkgdir/etc/automua"
+    install -Dm644 "${srcdir}/automua.conf" "${pkgdir}/etc/automua/automua.conf"
+    install -Dm644 "${srcdir}/automua.service" "${pkgdir}/usr/lib/systemd/system/automua.service"
 }
