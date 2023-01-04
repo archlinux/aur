@@ -3,14 +3,14 @@
 
 _target=aarch64-none-elf
 pkgname=${_target}-gcc-bin
-pkgver=11.3.rel1
+pkgver=12.2.rel1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
 arch=('x86_64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
 license=('GPL' 'LGPL')
 source=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-x86_64-${_target}.tar.xz)
-sha256sums=('fb9e562a90de1b3a2961b952193c1c6520872aa1482c0a5e0ab79970ec6e7690')
+sha256sums=('62d66e0ad7bd7f2a183d236ee301a5c73c737c886c7944aa4f39415aab528daf')
 
 package() {
   mkdir -p ${pkgdir}/usr
