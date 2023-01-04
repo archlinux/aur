@@ -1,6 +1,6 @@
 # Maintainer: Ali Riza Keskin <aliriza.keskin@pardus.org.tr>
 pkgname="pardus-lightdm-greeter"
-pkgver="0.0.2"
+pkgver="0.0.3"
 pkgrel=1
 pkgdesc="A customizable lightdm greeter for Pardus GNU/Linux."
 arch=("any")
