@@ -15,7 +15,7 @@ pkgbase = gf
 	depends = zlib
 	depends = pugixml
 	provides = gf
-	conflicts = gf
+	conflicts = gf-git
 	source = git+https://github.com/GamedevFramework/gf
 	sha256sums = SKIP
 
