@@ -2,7 +2,7 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.4.7.0
+pkgver=2.4.7.1
 pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
@@ -32,26 +32,42 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('c936ea78addad01a468debdc8a15844c0e7c081e2b64beb29d8713f7da565a80')
+sha256sums=('fd298f71e44c6776863db4b37c4a1388dba0d2eb37378afea95ab07a7cd6ecd4')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -fpermissive'
-	-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=OFF
-	-DUSE_EXTERNAL_PUGIXML=ON -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
-	-DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
-	-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=''
+_flags=(
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -fpermissive'
+	-DBUILD_DOCS=OFF
+	-DBUILD_MISSING_FMT=OFF
+	-DBUILD_MISSING_ROBINMAP=OFF
+	-DUSE_EXTERNAL_PUGIXML=ON
+	-DCMAKE_CXX_STANDARD=20
+	-DINSTALL_DOCS=OFF 
+	-DUSE_PYTHON=OFF
+	-DUSE_QT=OFF
+	-DUSE_CCACHE=OFF 
+	-DUSE_SIMD=sse4.2
+	-DEMBEDPLUGINS=ON
+	-DSTOP_ON_WARNING=OFF
+	-DOPTIONAL_DEPS=''
 	-DREQUIRED_DEPS='JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw;Libheif;Ptex' )
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_TESTING=OFF -DOIIO_BUILD_TESTS=OFF \
-			-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF -DOIIO_BUILD_TOOLS=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static" \
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DBUILD_TESTING=OFF -DOIIO_BUILD_TESTS=OFF \
+			-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF \
+			-DOIIO_BUILD_TOOLS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static" \
 			-DCMAKE_FIND_NO_INSTALL_PREFIX=ON
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF -DOIIO_BUILD_TESTS=OFF \
-			-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF -DOIIO_BUILD_TOOLS=ON
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTING=OFF -DOIIO_BUILD_TESTS=OFF \
+			-DOIIO_DOWNLOAD_MISSING_TESTDATA=OFF \
+			-DOIIO_BUILD_TOOLS=ON
 		cmake --build "build-${_arch}"
 	done
 }
