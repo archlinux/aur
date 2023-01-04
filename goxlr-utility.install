@@ -1,13 +1,14 @@
 post_install() {
     udevadm control --reload-rules
-    echo "You may need to replug your GoXLR before running the Daemon"
+    udevadm trigger
 }
 
 post_upgrade() {
     udevadm control --reload-rules
-    echo "You may need to replug your GoXLR before running the Daemon"
+    udevadm trigger
 }
 
 post_remove() {
     udevadm control --reload-rules
+    udevadm trigger
 }
