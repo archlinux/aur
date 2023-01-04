@@ -5,29 +5,21 @@
 
 pkgbase=python-itypes
 _pkgbase="${pkgbase#python-}"
-pkgname=(python-itypes python2-itypes)
+pkgname=python-itypes
 pkgver=1.2.0
 pkgrel=1
 pkgdesc='Basic immutable container types for Python.'
 arch=(any)
 url='https://github.com/tomchristie/itypes'
 license=(BSD)
-makedepends=(
-  python-setuptools
-  python2-setuptools
-)
+makedepends=(python-setuptools)
 options=(!emptydirs)
 source=("https://github.com/tomchristie/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha256sums=('4b01b8625dff71c2d566380647bbc55fad4c02430426b9fcd71be6f0d090c1bb')
 
-package_python-itypes() {
+package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-package_python2-itypes() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

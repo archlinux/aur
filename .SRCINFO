@@ -6,12 +6,8 @@ pkgbase = python-itypes
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://github.com/tomchristie/itypes/archive/1.2.0.tar.gz
 	sha256sums = 4b01b8625dff71c2d566380647bbc55fad4c02430426b9fcd71be6f0d090c1bb
 
 pkgname = python-itypes
-
-pkgname = python2-itypes
-
