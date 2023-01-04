@@ -3,8 +3,8 @@
 # Based on package from Phil Martella <philmartella@live.com>
 # Based on brother-hl3150cdw by MCMic <come.bernigaud@laposte.net>
 pkgname="brother-hl4570cdw-git"
-pkgver=1.1.4
-pkgrel=1
+pkgver=1.1.1
+pkgrel=5
 pkgdesc="LPR and CUPS driver for the Brother HL-4570CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
