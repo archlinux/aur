@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch-git
-pkgver=0.3.7.r0.g2586b94
-pkgrel=2
+pkgver=0.3.9.r0.g52e280b
+pkgrel=1
 pkgdesc="A modern alternative to the watch command (git)"
 arch=('x86_64')
 url="https://github.com/blacknon/hwatch"
