@@ -10,4 +10,4 @@ Restart=on-abort
 ExecStart=/usr/bin/sing-box run -D /etc/sing-box
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

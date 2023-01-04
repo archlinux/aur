@@ -1,7 +1,7 @@
 pkgbase = sing-box-bin
 	pkgdesc = The universal proxy platform.
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SagerNet/sing-box
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = sing-box-bin
 	backup = etc/sing-box/config.json
 	source = sing-box.service
 	source = config.json
-	sha512sums = da1513df4776abde3120527c96a7931b4c9d161b50338494759dd3f350511fbc12eef38ad2c41cd7f32ac3b57801ebc22f128b155fbc93cf7075506fd609f41f
+	sha512sums = 8401816280aadf29cf7573aa811c36bb04e88cdf77983c48beb473ec46755a1defbf9c1bf270571a1e24a33a13678bb8a67dafd7eb207b65df5447ebcac0fdab
 	sha512sums = 5c2571270d448f664a37751382ccede549448bc49dc2ef4fa27ffda4c8c0c9f63df01f9c97b4e095661359dc205711d4efca189cea2e47842e68f1b2dc2bc42f
 	source_x86_64 = sing-box-1.1.2-x86_64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.1.2/sing-box-1.1.2-linux-amd64.tar.gz
 	sha512sums_x86_64 = f03a1677623b6ecc6eaf45b279acc291bf181577c9df7dc672424597a3f68e258700d7a2e693b45cf95387f5bed4c07ad56327c6e432d3e5effb420357ab18b1
