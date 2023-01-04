@@ -1,0 +1,12 @@
+pkgbase = reposync-zextras
+	pkgdesc = Mirrors Debian and RedHat repositories to an AWS S3 bucket (with Cloudfront support) or a local directory
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/Zextras/reposync
+	arch = x86_64
+	license = AGPL3
+	makedepends = cargo
+	source = https://github.com/Zextras/reposync/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = 661efd17e88a655f71f4c0e83256b73e9f0f894b56fc6966c6139f9c3bd85648
+
+pkgname = reposync-zextras
