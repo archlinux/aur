@@ -2,7 +2,7 @@
 
 pkgname=('handbrake-nvenc' 'handbrake-nvenc-cli')
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -13,7 +13,7 @@ _guideps=('gst-plugins-base' 'gtk3' 'librsvg' 'libgudev')
 makedepends=('intltool' 'python' 'nasm' 'wget' 'cmake' 'meson'
              "${_commondeps[@]}" "${_guideps[@]}")
 options=('!lto') # https://bugs.archlinux.org/task/72600
-source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver-source.tar.bz2{,.sig}
+source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2{,.sig}
         fix-build-with-Werror-format-security.patch)
 sha256sums=('7f23c76038b7bf329089d0eb33c14898400fcc0426e310e87dc11e538c103cda'
             'SKIP'
