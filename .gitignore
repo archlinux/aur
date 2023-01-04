@@ -1,0 +1,9 @@
+# ignore everything
+*
+
+# but these
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!config.json
+!sing-box.service

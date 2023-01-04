@@ -1,0 +1,13 @@
+[Unit]
+Description=sing-box service
+After=network.target nss-lookup.target
+
+[Service]
+Type=exec
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+Restart=on-abort
+ExecStart=/usr/bin/sing-box run -D /etc/sing-box
+
+[Install]
+WantedBy=default.target
