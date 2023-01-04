@@ -2,20 +2,21 @@
 pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
-pkgver=3.46.0
+pkgver=3.47.0
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/purocean/yn'
 license=('AGPL3')
 provides=("${_pkgname}")
 depends=(${_electron} 'pandoc')
 makedepends=('asar' 'yarn' 'jq' 'moreutils' 'node-gyp' 'git')
-source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
-        "$_pkgname.sh"
-        )
-sha256sums=('53eec8e594b69f5ca23507ff92a19c271152b0b3d65686b720b6f073dd7e9014'
-            'e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
+source=("$_pkgname.sh")
+source_x86_64=("$_pkgname-$pkgver-amd64.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb")
+source_aarch64=("$_pkgname-$pkgver-aarch64.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-arm64-${pkgver}.deb")
+sha256sums=('e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
+sha256sums_x86_64=('65f986f8e37e33f41ebfcc8548d4cbc0ab171c286e9bfc2ba995424f6a23c0cd')
+sha256sums_aarch64=('9c5f6d5c914997fad6afc63c82aed960b4b4f2884b92f3e228c6d6bc0e9734f0')
 options=(!strip)
 prepare() {
 	cd ${srcdir}
