@@ -1,17 +1,17 @@
 pkgbase = labrecorder
 	pkgdesc = Default LSL (LabStreamingLayer) recording program (stable release). It allows to record all streams on the lab network (or a subset) into a single file, with time synchronization between streams.
-	pkgver = 1.16.0
-	pkgrel = 2
+	pkgver = 1.16.3
+	pkgrel = 1
 	url = https://github.com/sccn/liblsl/
 	arch = any
 	license = MIT
-	makedepends = boost
+	makedepends = boost-libs
 	makedepends = cmake
 	makedepends = qt5-base
 	depends = liblsl
 	provides = labrecorder
 	conflicts = labrecorder
-	source = labrecorder-1.16.0::git+https://github.com/labstreaminglayer/App-LabRecorder.git#tag=v1.16.0
+	source = labrecorder-1.16.3::git+https://github.com/labstreaminglayer/App-LabRecorder.git#tag=v1.16.3
 	md5sums = SKIP
 
 pkgname = labrecorder
