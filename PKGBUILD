@@ -8,7 +8,7 @@ license=(GPL3)
 depends=(poppler-glib gtk3)
 makedepends=(git vala meson)
 _commit=3c1d224634e87ded61d70e11fdb4c567f4ca6acb
-source=("git://github.com/arrufat/pdftag.git#commit=$_commit")
+source=("git+https://github.com/arrufat/pdftag.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {

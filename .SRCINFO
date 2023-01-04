@@ -11,8 +11,7 @@ pkgbase = pdftag
 	makedepends = meson
 	depends = poppler-glib
 	depends = gtk3
-	source = git://github.com/arrufat/pdftag.git#commit=3c1d224634e87ded61d70e11fdb4c567f4ca6acb
+	source = git+https://github.com/arrufat/pdftag.git#commit=3c1d224634e87ded61d70e11fdb4c567f4ca6acb
 	md5sums = SKIP
 
 pkgname = pdftag
-
