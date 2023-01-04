@@ -1,6 +1,6 @@
 pkgname=mingw-w64-mpfr
 _pkgver=4.1.1
-pkgver=$_pkgver
+pkgver=$_pkgver.p1
 pkgrel=1
 pkgdesc="Multiple-precision floating-point library (mingw-w64)"
 arch=(any)
@@ -16,6 +16,11 @@ validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D'
               'A534BE3F83E241D918280AEB5831D11A0D4DB02A') # Vincent Lefevre <vincent@vinc17.net>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare() {
+  cd "$srcdir"/mpfr-${_pkgver}
+  curl -L https://www.mpfr.org/mpfr-4.1.1/allpatches | patch -p1
+}
 
 build() {
   cd "$srcdir"/mpfr-${_pkgver}

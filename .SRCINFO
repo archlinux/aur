@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mpfr
 	pkgdesc = Multiple-precision floating-point library (mingw-w64)
-	pkgver = 4.1.1
+	pkgver = 4.1.1.p1
 	pkgrel = 1
 	url = http://www.mpfr.org
 	arch = any
