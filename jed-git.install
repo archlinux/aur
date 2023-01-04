@@ -10,7 +10,7 @@ NB: If you come from another packaging of jed you may have to
     remove existing *.slc and *.dfa files in \$JED_ROOT prior
     to installing the present package, e.g.:
 
-      \$ cd /usr/share/jed
+      \$ cd /usr/share/jed/lib
       \$ sudo rm *.slc *.dfa
 
     Alternatively, pacman can overwrite conflicting *.slc and
