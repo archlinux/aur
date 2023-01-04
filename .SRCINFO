@@ -1,19 +1,20 @@
 pkgbase = python-svgelements
 	pkgdesc = Svg Elements Parsing
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/meerk40t/svgelements
 	arch = any
 	license = MIT
+	checkdepends = python-pillow
 	checkdepends = python-scipy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	optdepends = python-numpy: enable npoint() to do lightning fast linearization for Shapes
-	optdepends = python-pillow: load images with PIL/Pillow
-	optdepends = python-scipy: quickly provide the exact correct answer for the arc length
+	optdepends = python-numpy: fast linearization for Shapes
+	optdepends = python-pillow: load images with SVGImage
+	optdepends = python-scipy: exact arc length
 	source = https://files.pythonhosted.org/packages/source/s/svgelements/svgelements-1.9.0.tar.gz
 	b2sums = 6bc972ead10757c6b7945583c7bf7aae5d6cca0820425627a4f6e0050240a87afa26591f4d3cc60794e04af6386442b13d2bf8c1615d875531d7f8c6567eff43
 
