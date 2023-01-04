@@ -2,14 +2,14 @@
 
 pkgname=automua
 pkgver=2023.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Email client configuration made easy"
 arch=('any')
 license=('GPL3')
 backup=('etc/automua/automua.conf')
 url='https://github.com/HLFH/automua'
 depends=('python' 'python-hatchling' 'python-flask' 'python-flask-migrate' 'python-flask-sqlalchemy' 'python-ldap3' 'python-werkzeug' 'python-sqlalchemy' 'python-alembic' 'python-lxml')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest' 'python-coverage')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest' 'python-pytest-flask' 'python-coverage')
 optdepends=('python-mysqlclient')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'automua.conf'
@@ -23,7 +23,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-# community/python-flask-sqlalchemy and aur/python-pytest-flask are outdated
+# community/python-flask-sqlalchemy is outdated
 #check() {
 #  cd $pkgname-$pkgver
 #  AUTOMUA_CONF=tests/unittest.conf RUN_LDAP_TESTS=0 PYTHONPATH=. coverage run --source automua -m pytest

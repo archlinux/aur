@@ -1,7 +1,7 @@
 pkgbase = automua
 	pkgdesc = Email client configuration made easy
 	pkgver = 2023.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HLFH/automua
 	arch = any
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = automua
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-pytest
+	makedepends = python-pytest-flask
 	makedepends = python-coverage
 	depends = python
 	depends = python-hatchling
