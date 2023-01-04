@@ -2,7 +2,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.18.4
+pkgver=0.18.5
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
 makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python')
 optdepends=('muparser: calculator plugin'
             'python: python extension'
-            'python-docker: python docker plugin'
             'python-urllib3: python web plugins')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
