@@ -5,7 +5,7 @@
 
 pkgbase=python-coreapi
 _pkgbase="${pkgbase#python-}"
-pkgname=(python-coreapi python2-coreapi)
+pkgname=python-coreapi
 pkgver=2.3.3
 pkgrel=1
 pkgdesc='Python client library for Core API. http://core-api.github.io/python-client/'
@@ -14,13 +14,12 @@ url='https://github.com/core-api/python-client'
 license=(BSD)
 makedepends=(
   python-setuptools
-  python2-setuptools
 )
 options=(!emptydirs)
 source=("https://github.com/core-api/python-client/archive/${pkgver}.tar.gz")
 sha256sums=('e4a29e73793efb4dc34006f00ff966b3fe05ca9fe36868145c8dad7cfe0a816c')
 
-package_python-coreapi() {
+package() {
   depends=(
     'python-coreschema'
     'python-itypes'
@@ -29,17 +28,6 @@ package_python-coreapi() {
   )
   cd "${srcdir}/python-client-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-package_python2-coreapi() {
-  depends=(
-    'python2-coreschema'
-    'python2-itypes'
-    'python2-requests'
-    'python2-uritemplate'
-  )
-  cd "${srcdir}/python-client-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

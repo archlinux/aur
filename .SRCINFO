@@ -6,7 +6,6 @@ pkgbase = python-coreapi
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://github.com/core-api/python-client/archive/2.3.3.tar.gz
 	sha256sums = e4a29e73793efb4dc34006f00ff966b3fe05ca9fe36868145c8dad7cfe0a816c
@@ -16,10 +15,3 @@ pkgname = python-coreapi
 	depends = python-itypes
 	depends = python-requests
 	depends = python-uritemplate
-
-pkgname = python2-coreapi
-	depends = python2-coreschema
-	depends = python2-itypes
-	depends = python2-requests
-	depends = python2-uritemplate
-
