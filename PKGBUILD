@@ -1,28 +1,24 @@
-# Maintainer: Felipe F. Tonello <eu@felipetonello.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Felipe F. Tonello <eu@felipetonello.com>
 
-pkgbase=python-codegen
-_pkgbase=codegen
-pkgname=('python-codegen' 'python2-codegen')
+pkgname=python-codegen
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Extension to ast that allow ast -> python code generation."
-arch=('any')
+arch=(any)
 url="http://github.com/andreif/codegen"
-license=('BSD')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=(https://github.com/andreif/${_pkgbase}/archive/${pkgver}.tar.gz)
-md5sums=('3700a064df8c1d3915bfe2944ece9d33')
+license=(BSD)
+makedepends=(python-setuptools)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andreif/codegen/archive/${pkgver}.tar.gz")
+sha256sums=('2dadd04a2802de27e0fe5a19b76538f6da9d39ff244036afa00c1bba754de5ee')
 
-package_python-codegen() {
-    cd ${srcdir}/${_pkgbase}-${pkgver}
-    python3 setup.py install --root ${pkgdir} --prefix=/usr
-
-    install -D -m 644 README.md ${pkgdir}/usr/share/licenses/${pkgname}/README.md
+build() {
+  cd "${srcdir}/codegen-${pkgver}"
+  python setup.py build
 }
 
-package_python2-codegen() {
-    cd ${srcdir}/${_pkgbase}-${pkgver}
-    python2 setup.py install --root ${pkgdir} --prefix=/usr
-
-    install -D -m 644 README.md ${pkgdir}/usr/share/licenses/${pkgname}/README.md
+package() {
+  cd "${srcdir}/codegen-${pkgver}"
+  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="${pkgdir}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
