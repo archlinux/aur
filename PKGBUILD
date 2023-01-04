@@ -5,7 +5,7 @@ _pkgname=arrow
 _pkgver=10.0.1
 pkgname=r-${_pkgname,,}
 pkgver=10.0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Integration to 'Apache' 'Arrow'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -53,7 +53,7 @@ source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('1edc641ec9ed8b1b8aa762e56f282c47fde2f03584bc69542463f383758a8d37')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL --configure-vars="ARROW_WITH_ZSTD=ON" ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {

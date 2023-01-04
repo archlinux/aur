@@ -1,7 +1,7 @@
 pkgbase = r-arrow
 	pkgdesc = Integration to 'Apache' 'Arrow'
 	pkgver = 10.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=arrow
 	arch = x86_64
 	license = Apache
