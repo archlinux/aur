@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-snake && ./snake'
+Icon=/usr/share/pixmaps/rusted-snake_icon.png
+Name=Rusted snake
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Snake - written in Rust

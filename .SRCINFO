@@ -1,0 +1,15 @@
+pkgbase = rusted-snake
+	pkgdesc = Snake game written in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/denix666/snake
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/snake/releases/download/v0.1.1/snake_linux_x86_64.tar.gz
+	source = rusted-snake_icon.png
+	source = rusted-snake.desktop
+	sha256sums = f6130a75560ab94979d30c2ba2bb9e5dd83eff31663e0640a09148abde285fab
+	sha256sums = 843abaa769cce4d43a9d48cc01afdd6d3a5cd61c09806df33509f03401108bad
+	sha256sums = 64cdd19060c20b9422d2fb855486da212686fac4d191066eb5c63fbae618c827
+
+pkgname = rusted-snake
