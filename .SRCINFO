@@ -1,0 +1,14 @@
+pkgbase = sevi-icon-theme-blue-dark
+	pkgdesc = A colorful design icon theme based on Reversal - Blue Dark
+	pkgver = r194.959a351
+	pkgrel = 1
+	url = https://github.com/TaylanTatli/Sevi
+	arch = any
+	license = CC BY-SA 4.0
+	makedepends = git
+	makedepends = gtk-update-icon-cache
+	options = !strip
+	source = git+https://github.com/TaylanTatli/Sevi.git
+	sha256sums = SKIP
+
+pkgname = sevi-icon-theme-blue-dark
