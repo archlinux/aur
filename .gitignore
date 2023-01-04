@@ -1,5 +1,4 @@
-debhelper*
-pkg
-src
-*.tar.*
-*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
