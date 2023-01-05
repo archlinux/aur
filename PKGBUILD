@@ -8,14 +8,14 @@ pkgname=(
   'handbrake-llvm-optimized-cli'
 )
 
-function git_version() {
+_commit=e4a1a435a678c13a85c2426708a0fc9bafd00186
+pkgver() {
   git -C HandBrake/ fetch --prune --prune-tags
   git -C HandBrake/ gc --auto --prune=now
-  git -C HandBrake/ log
-  git -C HandBrake/ describe | sed -e 's/^v//g' -e 's/^/pkgver=/g' -e 's/-/.r/' -e 's/-/./'
+  git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.0.r11.gdf57d7b5a
+pkgver=1.6.0.r12.ge4a1a435a
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -60,7 +60,7 @@ makedepends=(
   "${_guideps[@]}"
 )
 options=('!lto') # https://bugs.archlinux.org/task/72600
-source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#branch=master")
+source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=${_commit}")
 sha256sums=('SKIP')
 
 prepare() {
