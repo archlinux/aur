@@ -1,6 +1,6 @@
 pkgbase = libarcstk-git
 	pkgdesc = Toolkit to calculate and verify AccurateRip checksums and ids
-	pkgver = r593.601af78
+	pkgver = 0.1.0rc4+0.601af78
 	pkgrel = 1
 	url = https://codeberg.org/tristero/libarcstk
 	arch = x86_64

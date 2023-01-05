@@ -1,7 +1,7 @@
 # Maintainer: tristero <crf8472@web.de>
 
 pkgname=libarcstk-git
-pkgver=r593.601af78
+pkgver=0.1.0rc4+0.601af78
 pkgrel=1
 pkgdesc='Toolkit to calculate and verify AccurateRip checksums and ids'
 arch=('x86_64')
@@ -20,8 +20,10 @@ md5sums=('SKIP')
 pkgver()
 {
 	cd "${srcdir}/${pkgname%-git}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long HEAD | \
+		sed 's/-\(alpha\|beta\|rc\)\.\([0-9]\+\)-/\1\2+/' | \
+		sed 's/g\([a-z0-9]\+\)$/\1/' | \
+		sed 's/-/./g'
 }
 
 
@@ -40,6 +42,9 @@ build()
 
     cmake --build .
 }
+
+
+## No check() function
 
 
 package()
