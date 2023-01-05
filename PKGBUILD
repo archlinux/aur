@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=moar
-pkgver=1.11.1
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(go)
 optdepends=(highlight)
 checkdepends=(highlight)
 source=("https://github.com/walles/moar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e7f391eff362a94d82b1f57bb6ca9dd78a9c1ae126a3bb4aa385a7607e7dbe5b')
+sha256sums=('78a63a16c6370270aaf4c2d5e606aa05d738950b4c73922e2169b4cefc7ab760')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
