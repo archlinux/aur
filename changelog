@@ -1,3 +1,8 @@
+# 2023-01-04: Hotfix release 18622 for 22.12
+
+Medium enhancements
+	#22625 (hotfix): Fix SOE for GPX waypoint images in ImageViewer dialog (introduced after #22337 due to rework in #21605) 
+
 # 2023-01-01: Stable release 18621 (22.12)
 
 Major enhancements
