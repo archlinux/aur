@@ -39,6 +39,9 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	# temporarily fix broken build-dependencies relying on md4 hashes, which are unsupported on OpenSSL3
+	# https://github.com/streamlink/streamlink-twitch-gui/issues/944
+	NODE_OPTIONS=--openssl-legacy-provider \
 	yarn run grunt clean:tmp_prod webpack:prod "compile:${_arch}"
 }
 
