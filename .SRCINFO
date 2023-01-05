@@ -1,0 +1,16 @@
+pkgbase = vaa3d-bin
+	pkgdesc = 3D Visualization-Assisted Analysis
+	pkgver = v3.200
+	pkgrel = 1
+	url = www.vaa3d.org
+	arch = any
+	license = custom
+	depends = libpng12
+	provides = vaa3d
+	conflicts = vaa3d
+	source = LICENSE::https://github.com/Vaa3D/Vaa3D_Wiki/wiki/LicenseAndAgreement.wiki
+	source = vaa3d-v3.200.tar.gz::https://github.com/Vaa3D/release/releases/download/v3.200/Vaa3D_Ubuntu_64bit_v3.200.tar.gz
+	sha256sums = SKIP
+	sha256sums = fa267a6b02b340f9ab01f671dbd681bd5da1814abf31596170344106c07c19d8
+
+pkgname = vaa3d-bin
