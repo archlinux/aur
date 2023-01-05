@@ -1,7 +1,7 @@
 # Contributor: tristero
 
 pkgname=arcs-tools-git
-pkgver=0.1.0alpha2+12.4572a9f
+pkgver=0.1.0alpha2+15.bf2587c
 pkgrel=1
 pkgdesc='Example Toolkit for AccurateRip checksums and ids'
 arch=('x86_64')
