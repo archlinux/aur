@@ -1,9 +1,10 @@
 # Maintainer: André Kugland <kugland at gmail dot com>
 
 pkgname=ttf-tiro-indigo-git
+pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India"
 _fonttype=${pkgname/-*/} # otf/ttf
 pkgver=r41.24f67ca
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/TiroTypeworks/Indigo"
 license=('OFL')
