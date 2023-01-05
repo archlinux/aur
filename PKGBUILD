@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wasi-compiler-rt
-pkgver=14.0.6
+pkgver=15.0.6
 pkgrel=1
 pkgdesc='WASI LLVM compiler runtime'
 arch=('any')
@@ -9,18 +9,25 @@ url='https://compiler-rt.llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=('wasi-libc')
 makedepends=('cmake' 'ninja' 'llvm' 'clang' 'lld')
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz"{,.sig}
+source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz{,.sig}
+        https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/cmake-$pkgver.src.tar.xz{,.sig}
         WASI.cmake
         wasi-toolchain.cmake)
-b2sums=('59ec01a216f507848c7a1f9c14dca7db7da9c80218f6a16f010d7f994ef8e66fca201aa790ea03e56e349fa44eb72960342fcff3a874672f6ea5262205fa0d75'
+b2sums=('e909ba7e0651c759b8cdfa0dddb3fbbf47ba77a7296d05aa9883dded1186ab6ed3101628cd34ad31b80a12815ecb3f04a780dbe07e2e43a5c3af303c7ae5798b'
+        'SKIP'
+        '07cde9b8ea7c5e4726f094841a295351796798e033bf4d9a6dbddd128fa99cf3234baab5a5c94adb8de80ca537905626081e3e23cab8d547856f6534ca481a9d'
         'SKIP'
         'c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4'
         '74c63bb838bc2e6d7980370fb3d47f8fd2f1dd8b6dc82302c7cc0b80e0fb1e8e21c1c62d6de0b78e478fc22611a5867e52b1ef7a566796fe831fffd98b17c940')
 options=('staticlibs')
-validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
+validpgpkeys=(
+  '474E22316ABF4785A88C6E8EA2C794A986419D8A' # Tom Stellard <tstellar@redhat.com>
+  'D574BD5D1D0E98895E3BF90044F2485E45D59042' # Tobias Hieta <tobias@hieta.se>
+)
 
 prepare() {
   # Platform files have been copied from here https://github.com/WebAssembly/wasi-sdk
+  mv cmake{-$pkgver.src,}
   mkdir -p cmake/Platform
   cp WASI.cmake cmake/Platform
 }
