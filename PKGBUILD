@@ -1,6 +1,6 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
-pkgver=1.39.2
+pkgver=1.39.3
 pkgrel=1
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=(
 	"omnisharp-mono-$pkgver.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$pkgver/omnisharp-mono.tar.gz"
 	'omnisharp.sh'
 )
-sha256sums=('73bd38b648f628a069a4a7b0d90a722e3857bad52e872d851768acba3a1c6a4d'
+sha256sums=('0a5388f1ff259e03d8529e2edba49a06ca5303b537c61cf0701e6ec348df557b'
             '784a5643fde85bbec73f329b0bff1589451f7d976df3087e6667ad60a1768da9')
 
 package() {
