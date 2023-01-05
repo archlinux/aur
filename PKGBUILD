@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pyte' 'python-pexpect' 'python-ptyprocess')
 replaces=('rtichoke')
 source=($pkgname-$pkgver.tar.gz::https://github.com/randy3k/radian/archive/v$pkgver.tar.gz)
-sha256sums=('787181025eef5dd0c0ec1e448a55cc63705c341342a79134656f1e1aa77a146e')
+sha256sums=('b8272b8d4b6b6f76c4fc4f7add81bc0435db46fdf7f88e072359a68a9edc3583')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
