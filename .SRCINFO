@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsrealesrgan-git
 	pkgdesc = Plugin for Vapoursynth: vsrealesrgan (GIT version)
-	pkgver = 2.0.0.0.gb66f5b1
+	pkgver = 4.0.1.2.gba2fe5c
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-realesrgan
 	arch = any
