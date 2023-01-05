@@ -1,16 +1,21 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Rasmus Moorats <xx@nns.ee>
 
 pkgname=openssl-1.0
 _ver=1.0.2u
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=3
+pkgrel=4
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
-depends=('perl')
+depends=('glibc')
+makedepends=('diffutils'
+             'gcc'
+             'make'
+             'patch'
+             'perl')
 optdepends=('ca-certificates')
 options=('!makeflags')
 source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
@@ -66,7 +71,7 @@ check() {
 	# https://www.mail-archive.com/openssl-users@openssl.org/msg83702.html
 	rm rehash.time
 	make OPENSSL_CONF= rehash
-	
+
 	make test
 }
 
