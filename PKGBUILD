@@ -1,30 +1,24 @@
-# PKGBUILD for HOOMD-blue. This pulls from git, but uses the "maint" version.
-# Maintainer: Asmund Ervik <aaervik@gmail.com>
+# Maintainer: Ayush Shenoy <ayush.shenoy92@gmail.com>
+# Contributor: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v2.2.2.r1.g6e386396a
+pkgver=v3.7.0
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
-arch=('any')
-url="http://codeblue.umich.edu/hoomd-blue/index.html"
-license=('custom: University of Michigan "MIT-Like"')
-depends=(python boost cuda cmake openmpi gcc6)
+arch=("any")
+url="glotzerlab.engin.umich.edu/hoomd-blue"
+license=("custom:BSD-3-Clause")
+depends=('python' 'boost' 'cuda' 'cmake' 'openmpi' 'cereal' 'pybind11' 'eigen')
 makedepends=(git)
 optdepends=('nvidia: running simulations on GPU')
 provides=(hoomd-blue)
-source=(hoomd-blue::git+https://bitbucket.org/glotzer/hoomd-blue#branch=maint)
+source=("hoomd-blue::git+https://github.com/glotzerlab/hoomd-blue#tag=$pkgver")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
 build() {
-	cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname"
+    git submodule update --init
 	mkdir -p build && cd build
-  export CC=gcc-6
-  export CXX=g++-6
-  cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
+    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS=-march=native -DCMAKE_C_FLAGS=-march=native \
     -DENABLE_CUDA=ON -DENABLE_MPI=ON -DSINGLE_PRECISION=ON \
     -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
@@ -32,16 +26,11 @@ build() {
 
 package() {
   # Install the license
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
   # Install the software
-	cd "$srcdir/$pkgname/build"
-	make DESTDIR="$pkgdir" install -j8
-
-	# Patch some lines that reference the source build directory
-  sed -i 's/HOOMD_SOURCE_DIR.*/HOOMD_SOURCE_DIR "\/usr\/include\/hoomd"/' "$pkgdir/usr/hoomd/include/HOOMDVersion.h"
-  sed -i 's/HOOMD_BINARY_DIR.*/HOOMD_BINARY_DIR "\/usr\/bin"/' "$pkgdir/usr/hoomd/include/HOOMDVersion.h"
+    cd "$srcdir/$pkgname/build"
+    make DESTDIR="$pkgdir" install
 
   # Uncomment this if you want to test the install (takes quite a long time):
 	#make check -j8
