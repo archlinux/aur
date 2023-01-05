@@ -1,6 +1,6 @@
 pkgbase = greetd
 	pkgdesc = Generic greeter daemon
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/greetd
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = greetd
 	optdepends = greetd-wlgreet: Wayland greeter
 	backup = etc/greetd/config.toml
 	backup = etc/pam.d/greetd
-	source = https://git.sr.ht/~kennylevinsen/greetd/archive/0.8.0.tar.gz
+	source = https://git.sr.ht/~kennylevinsen/greetd/archive/0.9.0.tar.gz
 	source = greetd.pam
-	sha256sums = 47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f
+	sha256sums = a0cec141dea7fd7838b60a52237692d0fd5a0169cf748b8f8379d8409a3768eb
 	sha256sums = 993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92
 
 pkgname = greetd
