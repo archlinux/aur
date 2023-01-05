@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/binge-desktop/application"
 license=('GPL')
 conflicts=("binge-bin")
+replace=("binge-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("https://gitlab.com/binge-desktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
