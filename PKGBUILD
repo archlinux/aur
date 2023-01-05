@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1.10"
-pkgrel=5
+pkgrel=6
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -24,7 +24,6 @@ prepare() {
 
   sudo -S rm /usr/share/rime-data/{rime.lua,essay.txt,punctuator.yaml}
   sudo -S rm /usr/share/rime-data/build/flypy.{prism,reverse,table}.bin
-  sudo -S rm /usr/share/rime-data/build/flypy_{sys,top,user}.txt
   sudo -S rm /usr/share/rime-data/opencc/{emoji_category.txt,HKVariants.txt,s2tw.json,\
 t2hk.json,tw2sp.json,TWVariantsRevPhrases.txt,emoji.json,jp2t.json,s2twp.json,\
 t2jp.json,tw2t.json,TWVariantsRev.txt,emoji_word.txt,JPShinjitaiCharacters.txt,\
@@ -33,6 +32,7 @@ JPShinjitaiPhrases.txt,STPhrases.txt,t2tw.json,TWPhrasesName.txt,hk2t.json,\
 JPVariants.txt,symbol_category.txt,TSCharacters.txt,TWPhrasesOther.txt,\
 HKVariantsRevPhrases.txt,s2hk.json,symbol.json,TSPhrases.txt,TWPhrasesRev.txt,\
 HKVariantsRev.txt,s2t.json,symbol_word.txt,tw2s.json,TWPhrases.txt}
+  sudo -S rm /usr/share/rime-data/flypy_{sys,top,user}.txt
   sudo -S rm /usr/share/rime-data/flypy.{custom,schema}.yaml
   sudo -S rm /usr/share/rime-data/clover.{base.dict,dict,key_bindings,schema}.yaml
   sudo -S rm /usr/share/rime-data/THUOCL_{animal,caijing,car,chengyu,diming,\
