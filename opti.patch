@@ -1,0 +1,21 @@
+--- src/hyprland/Makefile	2023-01-04 21:30:07.661014721 -0600
++++ /tmp/Makefile	2022-12-31 18:38:41.783333715 -0600
+@@ -1,6 +1,6 @@
+ include config.mk
+ 
+-CFLAGS += -I. -DWLR_USE_UNSTABLE -std=c99
++CFLAGS += -I. -DWLR_USE_UNSTABLE -std=c99 -O3
+ 
+ WAYLAND_PROTOCOLS=$(shell pkg-config --variable=pkgdatadir wayland-protocols)
+ WAYLAND_SCANNER=$(shell pkg-config --variable=wayland_scanner wayland-scanner)
+@@ -130,8 +130,8 @@
+ 	cmake --build ./build --config Release --target all -j$(shell nproc)
+ 
+ release:
+-	mkdir -p build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja
+-	cmake --build ./build --config Release --target all -j$(shell nproc)
++	mkdir -p build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja -DINTERPROCEDURAL_OPTIMIZATION=TRUE
++	cmake --build ./build --config Release --target all
+ 
+ debug:
+ 	mkdir -p build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Debug -H./ -B./build -G Ninja
