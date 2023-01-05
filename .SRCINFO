@@ -1,6 +1,6 @@
 pkgbase = dolphin-meld
 	pkgdesc = KDE File Manager, using Meld rather than Kompare
-	pkgver = 22.12.0
+	pkgver = 22.12.1
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin/
 	arch = x86_64
@@ -21,21 +21,17 @@ pkgbase = dolphin-meld
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
-	provides = dolphin=22.12.0
-	conflicts = dolphin=22.12.0
+	provides = dolphin=22.12.1
+	conflicts = dolphin=22.12.1
 	options = debug
-	source = https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz
-	source = https://download.kde.org/stable/release-service/22.12.0/src/dolphin-22.12.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/22.12.1/src/dolphin-22.12.1.tar.xz
+	source = https://download.kde.org/stable/release-service/22.12.1/src/dolphin-22.12.1.tar.xz.sig
 	source = dolphin-meld.patch
-	source = https://invent.kde.org/system/dolphin/-/commit/c8aed8ac.patch
-	source = dolphin-pr480.patch::https://invent.kde.org/system/dolphin/-/merge_requests/480.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 487c04953a7b505a638adce16cb3d4df3a3345ffc27e069d4f84730e4ad6ac26
+	sha256sums = 7f694aa000090ec501f7318fca15c980e57addd4d1532862d2250a8840d88cea
 	sha256sums = SKIP
 	sha256sums = 9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a
-	sha256sums = ce74e2e5079ebe2522bf2420c25a74a524cef47502311bb7e602d906813fcf24
-	sha256sums = df86b0fad61a6be28361456983b462af180bf3fc891ae095fc611a11ba8dee86
 
 pkgname = dolphin-meld
