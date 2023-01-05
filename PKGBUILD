@@ -1,7 +1,7 @@
 # Contributor: tristero
 
 pkgname=arcs-tools-git
-pkgver=r2.cb1f8b4
+pkgver=0.1.0alpha2+12.4572a9f
 pkgrel=1
 pkgdesc='Example Toolkit for AccurateRip checksums and ids'
 arch=('x86_64')
@@ -12,15 +12,17 @@ conflicts=("${pkgname%-git}")
 depends=('gcc-libs' 'libarcstk' 'libarcsdec')
 makedepends=('git>=2.0' 'cmake>=3.9.6')
 optdepends=('doxygen>=1.8.14: build documentation' )
-source=("${pkgname%-git}::git+ssh://git@codeberg.org/tristero/${pkgname%-git}.git#branch=master")
+source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
 md5sums=('SKIP')
 
 
 pkgver()
 {
 	cd "${srcdir}/${pkgname%-git}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long HEAD | \
+		sed 's/-\(alpha\|beta\|rc\)\.\([0-9]\+\)-/\1\2+/' | \
+		sed 's/g\([a-z0-9]\+\)$/\1/' | \
+		sed 's/-/./g'
 }
 
 
@@ -32,7 +34,6 @@ build()
     msg "Configure"
 
 	cmake -DCMAKE_BUILD_TYPE=Release    \
-		  -DWITH_TESTS=ON               \
 		  -DCMAKE_INSTALL_PREFIX="/usr" \
 		  "${srcdir}/${pkgname%-git}/"
 
@@ -42,12 +43,7 @@ build()
 }
 
 
-check()
-{
-    msg "Perform tests"
-
-	ctest
-}
+## No check() function
 
 
 package()

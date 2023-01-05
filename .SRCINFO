@@ -1,6 +1,6 @@
 pkgbase = arcs-tools-git
 	pkgdesc = Example Toolkit for AccurateRip checksums and ids
-	pkgver = r2.cb1f8b4
+	pkgver = 0.1.0alpha2+12.4572a9f
 	pkgrel = 1
 	url = https://codeberg.org/tristero/arcs-tools
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = arcs-tools-git
 	optdepends = doxygen>=1.8.14: build documentation
 	provides = arcs-tools
 	conflicts = arcs-tools
-	source = arcs-tools::git+ssh://git@codeberg.org/tristero/arcs-tools.git#branch=master
+	source = arcs-tools::git+https://codeberg.org/tristero/arcs-tools.git#branch=main
 	md5sums = SKIP
 
 pkgname = arcs-tools-git
