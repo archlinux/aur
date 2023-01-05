@@ -5,12 +5,7 @@ pkgbase = mips64r5900el-ps2-elf-newlib-nano
 	url = https://github.com/ps2dev/ps2toolchain-ee
 	arch = x86_64
 	license = BSD
-	makedepends = mips64r5900el-ps2-elf-binutils
-	makedepends = mips64r5900el-ps2-elf-gcc-stage1
-	makedepends = libgmp-static
-	makedepends = mpfr-static
-	makedepends = libmpc-static
-	makedepends = zstd-static
+	makedepends = mips64r5900el-ps2-elf-gcc
 	source = mips64r5900el-ps2-elf-newlib::git+https://github.com/ps2dev/newlib#commit=6b90d31371ff4e0f41d64d7539038864899a6b40
 	sha256sums = SKIP
 
