@@ -12,7 +12,7 @@ pkgbase = libarcstk-git
 	optdepends = python-virtualenv: build HTML documentation with m.css
 	provides = libarcstk
 	conflicts = libarcstk
-	source = libarcstk::git+https://codeberg.org/tristero/libarcstk.git#branch=master
+	source = libarcstk::git+https://codeberg.org/tristero/libarcstk.git#branch=main
 	md5sums = SKIP
 
 pkgname = libarcstk-git
