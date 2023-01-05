@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('libax25')
 makedepends=('make')
 source=(
-    "http://www.linux-ax25.org/pub/${pkgname}/${pkgname}-${_pkgver}.tar.gz"
+    "https://ham.packet-radio.net/packet/ax25/${pkgname}/${pkgname}-${_pkgver}.tar.gz"
     'ax25.patch'
 )
 backup=('etc/ax25/ax25.profile'
