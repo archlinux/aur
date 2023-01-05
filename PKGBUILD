@@ -3,15 +3,16 @@
 
 _pkgname=ua-parser
 pkgname=python-ua-parser
-pkgver=0.15.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Python port of Browserscope's user agent parser"
 arch=('any')
 url="https://pypi.python.org/pypi/ua-parser"
 license=('MIT')
+makedepends=(python-build python-installer python-wheel python-setuptools)
 depends=('python' 'python-pyaml')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e441c982ffe81aa7e31af40ac6bf1d39f8ad24f1d34a2d91baae415470b26e9b')
+sha256sums=('ed3efc695f475ffe56248c9789b3016247e9c20e3556cfa4d5aadc78ab4b26c6')
 
 #Tests only run from git resursive checkout
 #check() {
@@ -21,10 +22,10 @@ sha256sums=('e441c982ffe81aa7e31af40ac6bf1d39f8ad24f1d34a2d91baae415470b26e9b')
 
 build() {
   cd $srcdir/${_pkgname}-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
