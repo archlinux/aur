@@ -1,6 +1,6 @@
 pkgbase = transmission-cli-git
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)
-	pkgver = 4.0.0.beta.1.r6.gaeaa6ca52
+	pkgver = 4.0.0.beta.3.r2.gcc4cbff04
 	pkgrel = 1
 	url = http://www.transmissionbt.com/
 	arch = x86_64
@@ -18,23 +18,23 @@ pkgbase = transmission-cli-git
 	depends = libnatpmp
 	depends = libdeflate
 	depends = libpsl
-	depends = fmt
-	depends = fast_float
 	depends = libutp
 	provides = transmission-cli
 	conflicts = transmission-cli
 	replaces = transmission-cli
-	source = transmission::git+https://github.com/transmission/transmission.git
+	source = git+https://github.com/transmission/transmission.git
 	source = transmission-cli.sysusers
 	source = transmission-cli.tmpfiles
-	source = arc4::git+https://github.com/transmission/arc4
-	source = googletest::git+https://github.com/google/googletest.git
-	source = utfcpp::git+https://github.com/transmission/utfcpp#branch=post-3.2.1-transmission
-	source = libutp::git+https://github.com/transmission/libutp#branch=post-3.4-transmission
-	source = wide-integer::git+https://github.com/transmission/wide-integer.git
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/transmission/utfcpp#branch=post-3.2.1-transmission
+	source = git+https://github.com/transmission/libutp#branch=post-3.4-transmission
+	source = git+https://github.com/transmission/fmt#branch=9-x-y
+	source = git+https://github.com/transmission/fast_float.git
+	source = git+https://github.com/transmission/wide-integer.git
 	sha256sums = SKIP
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
