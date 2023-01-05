@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-git
-pkgver=2022.1.4.r0.g8f6d55d
-pkgrel=3
+pkgver=2023.1.1.r0.g5d7b6af
+pkgrel=1
 pkgdesc='oneAPI Video Processing Library (git version)'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
@@ -28,13 +28,11 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
-        -DBUILD_PYTHON_BINDING:BOOL='ON' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
         -DBUILD_TESTS:BOOL='ON' \
         -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
         -DONEAPI_INSTALL_LICENSEDIR:STRING="share/licenses/${pkgname}" \
         -DONEAPI_INSTALL_PYTHONDIR:STRING="lib/python${_pyver}" \
-        -DPYTHON_INSTALL_DIR:STRING="lib/python${_pyver}" \
         -Wno-dev
     make -C build
 }
