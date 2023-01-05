@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vardefunc-git
 	pkgdesc = Plugin for Vapoursynth: vardefunc (GIT version)
 	pkgver = 0.7.2.1.g14a6b2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ichunjo/Vardefunc
 	arch = any
 	license = GPL

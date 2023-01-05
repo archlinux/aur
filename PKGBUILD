@@ -3,7 +3,7 @@
 _plug=vardefunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=0.7.2.1.g14a6b2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Ichunjo/Vardefunc'
