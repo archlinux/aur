@@ -2,7 +2,7 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.6.2.r16.g37a169143
+pkgver=5.6.2.r17.g584fe1c3b
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,7 @@ makedepends=(
     'qt5-x11extras'
     'qt5-multimedia'
     'qt5-svg'
+    'dtkcommon-git'
     'dtkcore-git'
     'dtkwidget-git'
     'dtkgui-git'
