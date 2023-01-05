@@ -1,7 +1,7 @@
 # Maintainer: Marcel Campello <marcel.campello@prafrentex.com.br>
 pkgname=leiningen-full
 
-pkgver=2.9.10
+pkgver=2.10.0
 pkgrel=1
 
 pkgdesc='For automating Clojure projects without setting your hair on fire.'
@@ -19,8 +19,8 @@ replaces=('leiningen-with-completion')
 
 source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.jar")
-sha256sums=('abc47643ff10c5bcafec32d1c2f704e005d3781a316223dd4db370e4c0646f47'
-            'a228530f00b50753acfddc3de38a0d737b6f5c1aec49af202e70a0ad28c249c9')
+sha256sums=('6b04dbe0934ab4c34dc27b0055ad290d2ba9c0f454c1bda7defa58d62946b743'
+            'd27299bad34075ac2864d0bd0559f835c6e2c476c0b0a283bcbdb574fdadbb34')
 noextract=("leiningen-${pkgver}-standalone.jar")
 
 package() {
@@ -45,6 +45,6 @@ package() {
 
   # shell completions
   install bash_completion.bash -T "${pkgdir}/usr/share/bash-completion/completions/lein" -Dm 0644
-  install zsh_completion.zsh -T "${pkgdir}/usr/share/zsh/site-functions/_lein" -Dm 0644 
+  install zsh_completion.zsh -T "${pkgdir}/usr/share/zsh/site-functions/_lein" -Dm 0644
   install pcmpl-lein.el -t "${pkgdir}/usr/share/emacs/site-lisp" -Dm 0644
 }
