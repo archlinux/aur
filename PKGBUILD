@@ -2,11 +2,11 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=kvazaar-git
-pkgver=2.1.0.r133.ga4005046
+pkgver=2.2.0.r0.g37a0404b
 pkgrel=1
 pkgdesc='An open-source HEVC encoder (git version)'
 arch=('x86_64')
-url='http://ultravideo.fi/#encoder'
+url='https://github.com/ultravideo/kvazaar/'
 license=('BSD')
 depends=('crypto++')
 makedepends=('git' 'yasm')
@@ -41,6 +41,6 @@ check() {
 
 package() {
     make -C kvazaar DESTDIR="$pkgdir" install
-    install -d -m755 "${pkgdir}/usr/share/licenses/kvazaar"
-    mv "${pkgdir}/usr/share/doc/kvazaar"/LICENSE* "${pkgdir}/usr/share/licenses/kvazaar"
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/doc/kvazaar"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}"
 }
