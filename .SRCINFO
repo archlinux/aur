@@ -1,6 +1,6 @@
 pkgbase = xampp
 	pkgdesc = A stand-alone LAMPP distribution
-	pkgver = 8.1.10
+	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://www.apachefriends.org
 	install = xampp.install
@@ -40,7 +40,7 @@ pkgbase = xampp
 	sha256sums = 39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883
 	sha256sums = 8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426
 	sha256sums = 83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d
-	source_x86_64 = https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.1.10/xampp-linux-x64-8.1.10-0-installer.run
-	sha256sums_x86_64 = b1d79c066b5c524a4a9631ecef3226a10446f0b4a8e052e13e98e4fe793ce034
+	source_x86_64 = https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.2.0/xampp-linux-x64-8.2.0-0-installer.run
+	sha256sums_x86_64 = 37fcc864cce6937f889437e1981216b62082a2a040865f32196d0d51b7d98ac3
 
 pkgname = xampp
