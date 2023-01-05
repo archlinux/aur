@@ -1,6 +1,6 @@
 pkgbase = spectacle-no-purpose
 	pkgdesc = KDE screenshot capture utility, without the dependency on purpose.
-	pkgver = 22.12.0
+	pkgver = 22.12.1
 	pkgrel = 1
 	url = https://apps.kde.org/spectacle/
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = spectacle-no-purpose
 	depends = kimageannotator
 	provides = spectacle
 	conflicts = spectacle
-	source = https://download.kde.org/stable/release-service/22.12.0/src/spectacle-22.12.0.tar.xz
-	source = https://download.kde.org/stable/release-service/22.12.0/src/spectacle-22.12.0.tar.xz.sig
+	source = https://download.kde.org/stable/release-service/22.12.1/src/spectacle-22.12.1.tar.xz
+	source = https://download.kde.org/stable/release-service/22.12.1/src/spectacle-22.12.1.tar.xz.sig
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
-	sha256sums = 3aab82cb2dfe24e17722a89720f26a1b35a4c9a8867af8a62607876609fb1817
+	sha256sums = e8a8ab8e9ebde514d546c7247de9ee8d2f50578291a7f637b386d6a5b987f116
 	sha256sums = SKIP
 
 pkgname = spectacle-no-purpose

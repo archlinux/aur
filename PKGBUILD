@@ -1,6 +1,6 @@
 _name=spectacle
 pkgname=${_name}-no-purpose
-pkgver=22.12.0
+pkgver=22.12.1
 pkgrel=1
 pkgdesc='KDE screenshot capture utility, without the dependency on purpose.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ _snapshot="${_name}-${pkgver}"
 source=("https://download.kde.org/stable/release-service/${pkgver}/src/${_snapshot}.tar.xz"{,.sig})
 
 sha256sums=(
-    '3aab82cb2dfe24e17722a89720f26a1b35a4c9a8867af8a62607876609fb1817'
+    'e8a8ab8e9ebde514d546c7247de9ee8d2f50578291a7f637b386d6a5b987f116'
     'SKIP'
 )
 
