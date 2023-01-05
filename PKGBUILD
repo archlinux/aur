@@ -30,6 +30,9 @@ depends=(
 		"python-ytmusicapi"
 		"python-spotipy"
 		"youtube-search-python"
+		"python-brotli"
+        "python-websockets"
+        "python-pycryptodomex"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=("tensorflow: Trim Support")
