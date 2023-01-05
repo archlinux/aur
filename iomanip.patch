@@ -10,7 +10,7 @@ Subject: [PATCH] [all] iomanip include missing on vs2022
  3 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/src/aliceVision/keyframe/KeyframeSelector.cpp b/src/aliceVision/keyframe/KeyframeSelector.cpp
-index bfe2dccc66..2243ab5c3e 100644
+index bfe2dccc6..2243ab5c3 100644
 --- a/src/aliceVision/keyframe/KeyframeSelector.cpp
 +++ b/src/aliceVision/keyframe/KeyframeSelector.cpp
 @@ -16,7 +16,7 @@
@@ -23,7 +23,7 @@ index bfe2dccc66..2243ab5c3e 100644
  
  namespace aliceVision {
 diff --git a/src/software/pipeline/main_LdrToHdrMerge.cpp b/src/software/pipeline/main_LdrToHdrMerge.cpp
-index b3dc72c3e5..da87d7e379 100644
+index b3dc72c3e..da87d7e37 100644
 --- a/src/software/pipeline/main_LdrToHdrMerge.cpp
 +++ b/src/software/pipeline/main_LdrToHdrMerge.cpp
 @@ -24,6 +24,7 @@
@@ -35,7 +35,7 @@ index b3dc72c3e5..da87d7e379 100644
  // These constants define the current software version.
  // They must be updated when the command line is changed.
 diff --git a/src/software/pipeline/main_featureExtraction.cpp b/src/software/pipeline/main_featureExtraction.cpp
-index 70b49fbee8..5d59dfabb5 100644
+index 70b49fbee..5d59dfabb 100644
 --- a/src/software/pipeline/main_featureExtraction.cpp
 +++ b/src/software/pipeline/main_featureExtraction.cpp
 @@ -34,6 +34,7 @@

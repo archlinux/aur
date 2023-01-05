@@ -10,7 +10,7 @@ global namespace.
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/src/aliceVision/fuseCut/DelaunayGraphCut.cpp b/src/aliceVision/fuseCut/DelaunayGraphCut.cpp
-index 95e705fbfe..38b8f93054 100644
+index 95e705fbf..38b8f9305 100644
 --- a/src/aliceVision/fuseCut/DelaunayGraphCut.cpp
 +++ b/src/aliceVision/fuseCut/DelaunayGraphCut.cpp
 @@ -29,6 +29,7 @@

@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=('alice-vision' 'alice-vision-cuda')
 pkgver=2.4.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -25,8 +25,8 @@ sha256sums=('SKIP'
             'SKIP'
             'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
             'de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b'
-            '8403ad7fc41c86dc771f0b1c986d22831ed7c4fee8520f8aa96171f20387bc2d'
-            '29440da035b36e3b0e4b94645551ae1bb6041c31b337136894a158217946135f')
+            '3daa4788b181f2f92b31531c24c2ccff6d1546d7824addcd8058c415138346ea'
+            '91b2942041511044c6d486f3ed0f29ce9d498906be7a2230703a706ea6a92743')
 
 prepare() {
   cd AliceVision
