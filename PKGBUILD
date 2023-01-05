@@ -2,12 +2,12 @@
 
 _plug=vsrgtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.1.ge85b088
+pkgver=1.3.5.0.g929ebd2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-rgtools'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-removegrain-git'
          'vapoursynth-plugin-rgsf-git'
@@ -35,7 +35,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
