@@ -1,0 +1,2971 @@
+diff -aurN a/SamTSE/Sources/amp11lib/ampdec.cpp b/SamTSE/Sources/amp11lib/ampdec.cpp
+--- a/SamTSE/Sources/amp11lib/ampdec.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/amp11lib/ampdec.cpp	2023-01-05 19:38:24.123960737 +0300
+@@ -248,13 +248,16 @@
+   mainbufpos=0;
+   mainbuflen=0;
+   atend=0;
+-  if (orglay==2)
++  if (orglay==2) {
+     seekinit3(discard);
+-  if (extra)
+-    if (discard!=(seekinitframes+extra))
++  }
++  if (extra) {
++    if (discard!=(seekinitframes+extra)) {
+       ampegdecoder::decode(0);
+-    else
++    } else {
+       resetsynth();
++    }
++  }
+   if (frpos)
+   {
+     if (decode(framebuf))
+@@ -292,20 +295,22 @@
+   {
+     if ((framepos==framesize)&&((len-rd)>=framesize))
+     {
+-      if (!decode((short*)((char*)buf+rd)))
++      if (!decode((short*)((char*)buf+rd))) {
+         break;
++      }
+       curframe++;
+       rd+=framesize;
+       continue;
+     }
+-    if (framepos==framesize)
++    if (framepos==framesize) {
+       if (decode(framebuf))
+       {
+         framepos=0;
+         curframe++;
+-      }
+-      else
++      } else {
+         break;
++      }
++    }
+     int l=framesize-framepos;
+     if (l>(len-rd))
+       l=len-rd;
+@@ -323,19 +328,23 @@
+   {
+     stream=!(file->getmode()&modeseek);
+     int layer,lsf,freq,stereo;
+-    if (!getheader(*file, layer, lsf, freq, stereo, rate))
+-      return 0;
+-    if (stream)
+-      rate=0;
++    if (!getheader(*file, layer, lsf, freq, stereo, rate)) {
++      return 0; 
++    }
++    if (stream) {
++      rate=0; 
++    }
+     atend=0;
+   }
+-  if (atend)
++  if (atend) {
+     return 0;
+-  if (!decodehdr(init))
++  }
++  if (!decodehdr(init)) {
+     if (init)
+-      return 0;
++     { return 0; }
+     else
+-      atend=1;
++     { atend=1; }
++  }
+   if (init)
+   {
+     seekinitframes=0;
+diff -aurN a/SamTSE/Sources/amp11lib/binfile/binfile.cpp b/SamTSE/Sources/amp11lib/binfile/binfile.cpp
+--- a/SamTSE/Sources/amp11lib/binfile/binfile.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/amp11lib/binfile/binfile.cpp	2023-01-05 19:38:24.123960737 +0300
+@@ -137,11 +137,13 @@
+     }
+     bufdirty=0;
+   }
+-  if (!(mode&modeseek))
+-    if (force==2)
++  if (!(mode&modeseek)) {
++    if (force==2) {
+       ret=!buflen;
+-    else
++    } else {
+       return !buflen;
++    }
++  }
+   bufstart=filepos;
+   bufpos=0;
+   buflen=0;
+@@ -496,13 +498,16 @@
+     return l1+l2;
+   }
+   l1=len;
+-  if (l1>=bufmax)
++  if (l1>=bufmax) {
+     l1=0;
+-  if (l1>(bufmax-bufpos))
+-    if (!bufdirty)
++  }
++  if (l1>(bufmax-bufpos)) {
++    if (!bufdirty) {
+       invalidatebuffer(0);
+-    else
++    } else {
+       l1=bufmax-bufpos;
++    }
++  }
+   if (l1)
+   {
+     memcpy(buffer+bufpos, buf, l1);
+diff -aurN a/SamTSE/Sources/amp11lib/binfile/binfstd.cpp b/SamTSE/Sources/amp11lib/binfile/binfstd.cpp
+--- a/SamTSE/Sources/amp11lib/binfile/binfstd.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/amp11lib/binfile/binfstd.cpp	2023-01-05 19:38:24.123960737 +0300
+@@ -78,7 +78,7 @@
+ {
+   closemode();
+   if (trunc)
+-    ftruncate(handle, lseek(handle, 0, SEEK_CUR));
++    int x = ftruncate(handle, lseek(handle, 0, SEEK_CUR));
+   ::close(handle);
+   return 0;
+ }
+diff -aurN a/SamTSE/Sources/CMakeLists.txt b/SamTSE/Sources/CMakeLists.txt
+--- a/SamTSE/Sources/CMakeLists.txt	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/CMakeLists.txt	2023-01-05 19:38:23.993960435 +0300
+@@ -91,6 +91,8 @@
+ # Set up some sanity stuff...
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux" OR CMAKE_SYSTEM_NAME MATCHES "GNU|kFreeBSD")
+     SET(LINUX TRUE)
++	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format-security -Wno-reorder -Wno-unused-but-set-variable -Wno-maybe-uninitialized -Wno-class-memaccess -Wno-unused-function -Wno-format")
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-format-security -Wno-reorder -Wno-unused-but-set-variable -Wno-maybe-uninitialized -Wno-class-memaccess -Wno-unused-function -Wno-format")
+ endif()
+ if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+     SET(FREEBSD TRUE)
+diff -aurN a/SamTSE/Sources/Ecc/Main.cpp b/SamTSE/Sources/Ecc/Main.cpp
+--- a/SamTSE/Sources/Ecc/Main.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Ecc/Main.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -244,10 +244,10 @@
+ 
+       // skip #line directives
+       while(strNewLine[0]=='#' && strNewLine[1]=='l' && !feof(fNew)) {
+-        fgets(strNewLine, sizeof(strNewLine)-1, fNew);
++        char *str = fgets(strNewLine, sizeof(strNewLine)-1, fNew);
+       }
+       while(strOldLine[0]=='#' && strOldLine[1]=='l' && !feof(fOld)) {
+-        fgets(strOldLine, sizeof(strOldLine)-1, fOld);
++        char *str = fgets(strOldLine, sizeof(strOldLine)-1, fOld);
+       }
+       if (strcmp(strNewLine, strOldLine)!=0) {
+         iChanged = 1;
+diff -aurN a/SamTSE/Sources/Ecc/StdH.h b/SamTSE/Sources/Ecc/StdH.h
+--- a/SamTSE/Sources/Ecc/StdH.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Ecc/StdH.h	2023-01-05 19:38:23.997293776 +0300
+@@ -29,5 +29,5 @@
+ #include <errno.h>
+ #include <sys/param.h>
+ #include <unistd.h>
+-#define _fullpath(x, y, z) realpath(y, x)
++#define _fullpath(x, y, z) char *res = realpath(y, x)
+ #endif
+diff -aurN a/SamTSE/Sources/Engine/Base/Input.cpp b/SamTSE/Sources/Engine/Base/Input.cpp
+--- a/SamTSE/Sources/Engine/Base/Input.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Input.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -74,7 +74,7 @@
+ void CInput::SetKeyNames( void)
+ {
+   // set name "None" for all keys, known keys will override this default name
+-  for( INDEX iKey=0; iKey<ARRAYCOUNT(inp_strButtonNames); iKey++) {
++  for( INDEX iKey=0; iKey<static_cast<INDEX>(ARRAYCOUNT(inp_strButtonNames)); iKey++) {
+     inp_strButtonNames[iKey] = "None";
+     inp_strButtonNamesTra[iKey] = TRANS("None");
+   }
+diff -aurN a/SamTSE/Sources/Engine/Base/SDL/SDLInput.cpp b/SamTSE/Sources/Engine/Base/SDL/SDLInput.cpp
+--- a/SamTSE/Sources/Engine/Base/SDL/SDLInput.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/SDL/SDLInput.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -224,12 +224,12 @@
+ static void MakeConversionTables(void)
+ {
+   // clear conversion tables
+-  for (int i = 0; i < ARRAYCOUNT(_aiScancodeToKid); i++) {
++  for (int i = 0; i < static_cast<int>(ARRAYCOUNT(_aiScancodeToKid)); i++) {
+     _aiScancodeToKid[i] = -1;
+   }
+ 
+   // for each Key
+-  for (INDEX iKey=0; iKey<ARRAYCOUNT(_akcKeys); iKey++) {
++  for (INDEX iKey=0; iKey<static_cast<INDEX>(ARRAYCOUNT(_akcKeys)); iKey++) {
+     const KeyConversion &kc = _akcKeys[iKey];
+ 
+     // get codes
+@@ -301,7 +301,7 @@
+     // convert virtualkey to kid
+   const INDEX iKID = _aiScancodeToKid[event->key.keysym.scancode];
+ 
+-  if (iKID>=0 && iKID<ARRAYCOUNT(_abKeysPressed)) {
++  if (iKID>=0 && iKID<static_cast<INDEX>(ARRAYCOUNT(_abKeysPressed))) {
+     //CPrintF("%s: %d\n", _pInput->inp_strButtonNames[iKID], bDown);
+     _abKeysPressed[iKID] = bDown;
+   }
+@@ -555,7 +555,7 @@
+ BOOL CInput::PlatformSetKeyNames(void)
+ {
+   // for each Key
+-  for (INDEX iKey=0; iKey<ARRAYCOUNT(_akcKeys); iKey++) {
++  for (INDEX iKey=0; iKey<static_cast<int>(ARRAYCOUNT(_akcKeys)); iKey++) {
+     const KeyConversion &kc = _akcKeys[iKey];
+     // set the name
+     if (kc.kc_strName!=NULL) {
+@@ -727,7 +727,7 @@
+ 
+     const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+     // for each Key
+-    for (INDEX iKey=0; iKey<ARRAYCOUNT(_akcKeys); iKey++) {
++    for (INDEX iKey=0; iKey<static_cast<INDEX>(ARRAYCOUNT(_akcKeys)); iKey++) {
+       const KeyConversion &kc = _akcKeys[iKey];
+       // get codes
+       INDEX iKID  = kc.kc_iKID;
+diff -aurN a/SamTSE/Sources/Engine/Base/Shell.cpp b/SamTSE/Sources/Engine/Base/Shell.cpp
+--- a/SamTSE/Sources/Engine/Base/Shell.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Shell.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -489,7 +489,7 @@
+ CTString ToUpper(const CTString &strResult)
+ {
+   char *pch = (char*)(const char *)strResult;
+-  for(INDEX i=0; i<strlen(pch); i++) {
++  for(INDEX i=0; i<static_cast<INDEX>(strlen(pch)); i++) {
+     pch[i]=toupper(pch[i]);
+   }
+   return strResult;
+@@ -502,7 +502,7 @@
+ CTString ToLower(const CTString &strResult)
+ {
+   char *pch = (char*)(const char *)strResult;
+-  for(INDEX i=0; i<strlen(pch); i++) {
++  for(INDEX i=0; i<static_cast<INDEX>(strlen(pch)); i++) {
+     pch[i]=tolower(pch[i]);
+   }
+   return strResult;
+diff -aurN a/SamTSE/Sources/Engine/Base/Stream.cpp b/SamTSE/Sources/Engine/Base/Stream.cpp
+--- a/SamTSE/Sources/Engine/Base/Stream.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Stream.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -1104,7 +1104,7 @@
+     return;
+   }
+ 
+-  fread(pvBuffer, slSize, 1, fstrm_pFile);
++  size_t x = fread(pvBuffer, slSize, 1, fstrm_pFile);
+ }
+ 
+ /* Write a block of data to stream. */
+diff -aurN a/SamTSE/Sources/Engine/Base/Timer.cpp b/SamTSE/Sources/Engine/Base/Timer.cpp
+--- a/SamTSE/Sources/Engine/Base/Timer.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Timer.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -624,7 +624,7 @@
+     #ifdef PLATFORM_FREEBSD
+       if( tm_TimerID==0x00) FatalError(TRANS("Cannot initialize multimedia timer!"));
+     #else
+-      if( tm_TimerID==NULL) FatalError(TRANS("Cannot initialize multimedia timer!"));
++      if( tm_TimerID==0x00) FatalError(TRANS("Cannot initialize multimedia timer!"));
+     #endif
+    #endif
+ 
+diff -aurN a/SamTSE/Sources/Engine/Base/Translation.cpp b/SamTSE/Sources/Engine/Base/Translation.cpp
+--- a/SamTSE/Sources/Engine/Base/Translation.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Translation.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -200,7 +200,7 @@
+ ENGINE_API const char *TranslateConst(const char *str, INDEX iOffset)
+ {
+   // skip first bytes
+-  if (strlen(str)>=iOffset) {
++  if (static_cast<INDEX>(strlen(str))>=iOffset) {
+     str+=iOffset;
+   } else {
+     ASSERT(FALSE);
+diff -aurN a/SamTSE/Sources/Engine/Base/Unzip.cpp b/SamTSE/Sources/Engine/Base/Unzip.cpp
+--- a/SamTSE/Sources/Engine/Base/Unzip.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Base/Unzip.cpp	2023-01-05 19:38:23.997293776 +0300
+@@ -222,7 +222,7 @@
+   }
+ }
+ 
+-#define READ_ZIPFIELD(f, x) { fread(&x, sizeof(x), 1, f); BYTESWAP(x); }
++#define READ_ZIPFIELD(f, x) { size_t _size = fread(&x, sizeof(x), 1, f); BYTESWAP(x); }
+ 
+ // read directory of a zip archive and add all files in it to active set
+ void ReadZIPDirectory_t(CTFileName *pfnmZip)
+@@ -248,7 +248,7 @@
+     // read signature
+     fseek(f, iPos, SEEK_SET);
+     SLONG slSig;
+-    fread(&slSig, sizeof(slSig), 1, f);
++    size_t _size = fread(&slSig, sizeof(slSig), 1, f);
+     BYTESWAP(slSig);
+     // if this is the sig
+     if (slSig==SIGNATURE_EOD) {
+@@ -295,7 +295,7 @@
+   for (INDEX iFile=0; iFile<eod.eod_swEntriesInDir; iFile++) {
+     // read the sig
+     SLONG slSig;
+-    fread(&slSig, sizeof(slSig), 1, f);
++    size_t _size = fread(&slSig, sizeof(slSig), 1, f);
+     BYTESWAP(slSig);
+ 
+     // if this is not the expected sig
+@@ -333,7 +333,7 @@
+     if (fh.fh_swFileNameLen<=0) {
+       ThrowF_t(TRANS("%s: Invalid filepath length in zip"), (const char *) (CTString&)*pfnmZip);
+     }
+-    fread(strBuffer, fh.fh_swFileNameLen, 1, f);
++    _size = fread(strBuffer, fh.fh_swFileNameLen, 1, f);
+ 
+     // skip eventual comment and extra fields
+     if (fh.fh_swFileCommentLen+fh.fh_swExtraFieldLen>0) {
+@@ -636,7 +636,7 @@
+   fseek(zh.zh_fFile, zh.zh_zeEntry.ze_slDataOffset, SEEK_SET);
+   // read the sig
+   SLONG slSig;
+-  fread(&slSig, sizeof(slSig), 1, zh.zh_fFile);
++  size_t _size = fread(&slSig, sizeof(slSig), 1, zh.zh_fFile);
+   BYTESWAP(slSig);
+   // if this is not the expected sig
+   if (slSig!=SIGNATURE_LFH) {
+@@ -758,14 +758,14 @@
+   if (zh.zh_zeEntry.ze_bStored) {
+     // just read from file
+     fseek(zh.zh_fFile, zh.zh_zeEntry.ze_slDataOffset+slStart, SEEK_SET);
+-    fread(pub, 1, slLen, zh.zh_fFile);
++    size_t _size = fread(pub, 1, slLen, zh.zh_fFile);
+     return;
+   }
+ 
+   CTSingleLock slZip(&zip_csLock, TRUE);
+ 
+   // if behind the current pointer
+-  if (slStart<zh.zh_zstream.total_out) {
++  if (static_cast<ULONG>(slStart) < zh.zh_zstream.total_out) {
+     // reset the zlib stream to beginning
+     inflateReset(&zh.zh_zstream);
+     zh.zh_zstream.avail_in = 0;
+@@ -775,7 +775,7 @@
+   }
+ 
+   // while ahead of the current pointer
+-  while (slStart>zh.zh_zstream.total_out) {
++  while (static_cast<ULONG>(slStart) > zh.zh_zstream.total_out) {
+     // if zlib has no more input
+     while(zh.zh_zstream.avail_in==0) {
+       // read more to it
+@@ -800,7 +800,7 @@
+   }
+ 
+   // if not streaming continuously
+-  if (slStart!=zh.zh_zstream.total_out) {
++  if (static_cast<ULONG>(slStart) != zh.zh_zstream.total_out) {
+     // this should not happen
+     ASSERT(FALSE);
+     // read empty
+diff -aurN a/SamTSE/Sources/Engine/Brushes/BrushArchive.cpp b/SamTSE/Sources/Engine/Brushes/BrushArchive.cpp
+--- a/SamTSE/Sources/Engine/Brushes/BrushArchive.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Brushes/BrushArchive.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -37,8 +37,13 @@
+ template CDynamicArray<CBrush3D>;
+ #endif
+ 
+-__extern BOOL _bPortalSectorLinksPreLoaded = FALSE;
+-__extern BOOL _bEntitySectorLinksPreLoaded = FALSE;
++#ifdef _MSC_VER
++extern BOOL _bPortalSectorLinksPreLoaded = FALSE;
++extern BOOL _bEntitySectorLinksPreLoaded = FALSE;
++#else
++BOOL _bPortalSectorLinksPreLoaded = FALSE;
++BOOL _bEntitySectorLinksPreLoaded = FALSE;
++#endif
+ 
+ /*
+  * Calculate bounding boxes in all brushes.
+@@ -150,10 +155,10 @@
+                 }
+                 // create a BSP polygon from the brush polygon
+                 CBrushPolygon        &brpo2 = *itbpo2;
+-                BSPPolygon<FLOAT, 3> bspo2;
++                BSPPolygon<DOUBLE, 3> bspo2;
+                 brpo2.CreateBSPPolygonNonPrecise(bspo2);
+                 // split the polygon with the BSP of the sector
+-                FLOATbspcutter3D bcCutter(bspo2, *itbsc1->bsc_bspBSPTree.bt_pbnRoot);
++                DOUBLEbspcutter3D bcCutter(bspo2, *itbsc1->bsc_bspBSPTree.bt_pbnRoot);
+                 // if anything remains on the border looking outside
+                 if (bcCutter.bc_abedInside.Count()>0
+                   ||bcCutter.bc_abedBorderInside.Count()>0
+diff -aurN a/SamTSE/Sources/Engine/Brushes/Brush.h b/SamTSE/Sources/Engine/Brushes/Brush.h
+--- a/SamTSE/Sources/Engine/Brushes/Brush.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Brushes/Brush.h	2023-01-05 19:38:24.000627117 +0300
+@@ -399,6 +399,7 @@
+   }
+ #endif
+ };
++
+ class ENGINE_API CBrushPolygon {
+ public:
+ // implementation:
+@@ -496,6 +497,7 @@
+   return(NULL);
+ }
+ 
++
+ // selection of brush polygons
+ typedef CSelection<CBrushPolygon, BPOF_SELECTED>       CBrushPolygonSelection;
+ // selection of brush polygons used for CSG
+@@ -571,7 +573,7 @@
+   FLOATaabbox3D bsc_boxBoundingBox;                   // bounding box in absolute space
+   FLOATaabbox3D bsc_boxRelative;                      // bounding box in relative space
+   CListNode bsc_lnInActiveSectors; // node in sectors active in some operation (e.g. rendering)
+-  FLOATbsptree3D &bsc_bspBSPTree;  // the local bsp tree of the sector
++  DOUBLEbsptree3D &bsc_bspBSPTree;  // the local bsp tree of the sector
+   CRelationDst bsc_rdOtherSidePortals;  // relation to portals pointing to this sector
+   CRelationSrc bsc_rsEntities;     // relation to all entities in this sector
+   CTString bsc_strName;   // sector name
+diff -aurN a/SamTSE/Sources/Engine/Brushes/BrushIO.cpp b/SamTSE/Sources/Engine/Brushes/BrushIO.cpp
+--- a/SamTSE/Sources/Engine/Brushes/BrushIO.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Brushes/BrushIO.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -236,7 +236,7 @@
+   if (bpt_toTexture.GetData()!=NULL) {
+     bpt_toTexture.GetData()->AddToCRCTable();
+   }
+-  strm>>bpt_mdMapping;
++  strm.Read_t(&bpt_mdMapping, sizeof(bpt_mdMapping));
+   strm>>s.bpt_ubScroll;
+   strm>>s.bpt_ubBlend;
+   strm>>s.bpt_ubFlags;
+@@ -415,7 +415,7 @@
+   // for each vertex
+   {FOREACHINSTATICARRAY(bsc_abvxVertices, CBrushVertex, itbvx) {
+     // read precise vertex coordinates
+-    (*pistrm)>>itbvx->bvx_vdPreciseRelative;
++   pistrm->Read_t(&itbvx->bvx_vdPreciseRelative, sizeof(DOUBLE3D));
+     // remember sector pointer
+     itbvx->bvx_pbscSector = this;
+   }}
+@@ -430,7 +430,7 @@
+   // for each plane
+   {FOREACHINSTATICARRAY(bsc_abplPlanes, CBrushPlane, itbpl) {
+     // read precise plane coordinates
+-    (*pistrm)>>itbpl->bpl_pldPreciseRelative;
++    pistrm->Read_t(&itbpl->bpl_pldPreciseRelative, sizeof(DOUBLEplane3D));
+   }}
+ 
+   (*pistrm).ExpectID_t("EDGs");  // 'edges'
+@@ -491,11 +491,7 @@
+       bpo.bpo_abptTextures[2].Read_t(*pistrm);
+ 
+       // read other polygon properties
+-#ifdef PLATFORM_UNIX
+-      (*pistrm)>>bpo.bpo_bppProperties;
+-#else
+-	  (*pistrm).Read_t(&bpo.bpo_bppProperties, sizeof(bpo.bpo_bppProperties));
+-#endif
++      (*pistrm).Read_t(&bpo.bpo_bppProperties, sizeof(bpo.bpo_bppProperties));
+ 
+     } else {
+       // read textures
+@@ -512,11 +508,7 @@
+       // read texture mapping
+       bpo.bpo_mdShadow.ReadOld_t(*pistrm);
+       // read other polygon properties
+-#ifdef PLATFORM_UNIX
+-      (*pistrm)>>bpo.bpo_bppProperties;
+-#else
+-	  (*pistrm).Read_t(&bpo.bpo_bppProperties, sizeof(bpo.bpo_bppProperties));
+-#endif
++      (*pistrm).Read_t(&bpo.bpo_bppProperties, sizeof(bpo.bpo_bppProperties));
+ 
+       // adjust polygon and texture properties
+       bpo.bpo_abptTextures[0].bpt_mdMapping = bpo.bpo_mdShadow;
+@@ -600,9 +592,7 @@
+       bpo.bpo_aiTriangleElements.New(ctElements);
+       // read all element indices
+       if (ctElements>0) {
+-        for (INDEX i = 0; i < ctElements; i++) {
+-          (*pistrm)>>bpo.bpo_aiTriangleElements[i];
+-        }
++        (*pistrm).Read_t(&bpo.bpo_aiTriangleElements[0], ctElements*sizeof(INDEX));
+       }
+     }
+ 
+diff -aurN a/SamTSE/Sources/Engine/Brushes/BrushSector.cpp b/SamTSE/Sources/Engine/Brushes/BrushSector.cpp
+--- a/SamTSE/Sources/Engine/Brushes/BrushSector.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Brushes/BrushSector.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -34,7 +34,7 @@
+ //template CDynamicArray<CBrushVertex>;
+ 
+ CBrushSector::CBrushSector(const CBrushSector &c) 
+-: bsc_bspBSPTree(*new FLOATbsptree3D)
++: bsc_bspBSPTree(*new DOUBLEbsptree3D)
+ { 
+   ASSERT(FALSE);
+ };
+@@ -54,7 +54,7 @@
+ , bsc_ulTempFlags(0)
+ , bsc_ulVisFlags(0)
+ , bsc_strName("")
+-, bsc_bspBSPTree(*new FLOATbsptree3D)
++, bsc_bspBSPTree(*new DOUBLEbsptree3D)
+ {
+ 
+ };
+@@ -140,7 +140,7 @@
+       ((pen->en_ulFlags&ENF_ZONING) || pen->en_RenderType==CEntity::RT_FIELDBRUSH) ) {
+       // create an array of bsp polygons for sector polygons
+       INDEX ctPolygons = bsc_abpoPolygons.Count();
+-      CDynamicArray< BSPPolygon<FLOAT, 3> > arbpoPolygons;
++      CDynamicArray< BSPPolygon<DOUBLE, 3> > arbpoPolygons;
+       arbpoPolygons.New(ctPolygons);
+ 
+       // for all polygons in this sector
+@@ -148,7 +148,7 @@
+       {for(INDEX iPolygon=0; iPolygon<ctPolygons; iPolygon++){
+         // create a BSP polygon from the brush polygon
+         CBrushPolygon         &brpo = bsc_abpoPolygons[iPolygon];
+-        BSPPolygon<FLOAT, 3> &bspo = arbpoPolygons[iPolygon];
++        BSPPolygon<DOUBLE, 3> &bspo = arbpoPolygons[iPolygon];
+         brpo.CreateBSPPolygon(bspo);
+       }}
+       arbpoPolygons.Unlock();
+@@ -234,14 +234,14 @@
+       
+       // if the sphere is inside the sector
+       if (bsc_bspBSPTree.TestSphere(
+-          vSphereCenter, fSphereRadius)>=0) {
++          FLOATtoDOUBLE(vSphereCenter), FLOATtoDOUBLE(fSphereRadius))>=0) {
+         // make oriented bounding box of the entity
+         FLOATobbox3D boxEntity(iten->en_boxSpatialClassification, 
+           iten->en_plPlacement.pl_PositionVector, iten->en_mRotation);
+ 
+         // if the box is inside the sector
+         if (boxSector.HasContactWith(boxEntity) &&
+-          bsc_bspBSPTree.TestBox(boxEntity)>=0) {
++          bsc_bspBSPTree.TestBox(FLOATtoDOUBLE(boxEntity))>=0) {
+           // relate the entity to the sector
+           if (iten->en_RenderType==CEntity::RT_BRUSH
+             ||iten->en_RenderType==CEntity::RT_FIELDBRUSH
+diff -aurN a/SamTSE/Sources/Engine/Classes/MovableEntity.es b/SamTSE/Sources/Engine/Classes/MovableEntity.es
+--- a/SamTSE/Sources/Engine/Classes/MovableEntity.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Classes/MovableEntity.es	2023-01-05 19:38:24.000627117 +0300
+@@ -899,8 +899,8 @@
+       }
+ 
+       // get min/max parameters of entity inside sector
+-      float dMin, dMax;
+-      bsc.bsc_bspBSPTree.FindLineMinMax(vMin, vMax, dMin, dMax);
++      double dMin, dMax;
++      bsc.bsc_bspBSPTree.FindLineMinMax(FLOATtoDOUBLE(vMin), FLOATtoDOUBLE(vMax), dMin, dMax);
+ 
+       // if sector content is not default
+       INDEX iContent = bsc.GetContentType();
+diff -aurN a/SamTSE/Sources/Engine/Classes/PlayerEntity.es b/SamTSE/Sources/Engine/Classes/PlayerEntity.es
+--- a/SamTSE/Sources/Engine/Classes/PlayerEntity.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Classes/PlayerEntity.es	2023-01-05 19:38:24.000627117 +0300
+@@ -130,7 +130,7 @@
+     strm.FPrintF_t("player: %s\n", 
+       (const char *) en_pcCharacter.GetName());
+     strm.FPrintF_t("GUID: ");
+-    {for (INDEX i=0; i<sizeof(en_pcCharacter.pc_aubGUID); i++) {
++    {for (INDEX i=0; i<static_cast<INDEX>(sizeof(en_pcCharacter.pc_aubGUID)); i++) {
+       strm.FPrintF_t("%02X", en_pcCharacter.pc_aubGUID[i]);
+     }}
+     strm.FPrintF_t("\n");
+diff -aurN a/SamTSE/Sources/Engine/Engine.cpp b/SamTSE/Sources/Engine/Engine.cpp
+--- a/SamTSE/Sources/Engine/Engine.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Engine.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -116,13 +116,11 @@
+ static INDEX sys_iGameBits = 0;
+ ENGINE_API INDEX sys_iSysPath = 0;
+ 
+-#ifdef PLATFORM_WIN32
+ // Entities Adjesters
+ ENGINE_API FLOAT _fPlayerFOVAdjuster = 1.0f;
+ ENGINE_API FLOAT _fWeaponFOVAdjuster = 1.0f;
+ ENGINE_API FLOAT _fArmorHeightAdjuster = 1.5f;
+ ENGINE_API FLOAT _fFragScorerHeightAdjuster = 1.5f;
+-#endif
+ 
+ //
+ char _path[2048];
+@@ -396,7 +394,7 @@
+ 	char strTmpPath[MAX_PATH] = "";
+ 
+ 	_pFileSystem->GetExecutablePath(strExePath, sizeof(strExePath) - 1);
+-	strncpy(strTmpPath, strExePath, sizeof(strTmpPath) - 1);
++	strncpy(strTmpPath, strExePath, sizeof(strTmpPath));
+ 	strDirPath[sizeof(strTmpPath) - 1] = 0;
+ 	// remove name from application path
+ 	StrRev(strTmpPath);
+@@ -669,7 +667,7 @@
+   _pFileSystem = CFileSystem::GetInstance(" ", gamename);
+ #endif
+ 
+-  #pragma message(">> Remove this from SE_InitEngine : _bWorldEditorApp")
++  //#pragma message(">> Remove this from SE_InitEngine : _bWorldEditorApp")
+   if(strGameID=="SeriousEditor") {
+     _bWorldEditorApp = TRUE;
+   }
+@@ -764,7 +762,7 @@
+ 
+     if( access((const char *) _fnmUserDir+_strLogFile+".cfg", F_OK) == 0 ) {
+       _fd = open((const char *) _fnmUserDir+_strLogFile+".cfg", O_RDONLY,S_IRUSR);
+-      read(_fd, _path, 2048);
++      size_t x = read(_fd, _path, 2048);
+       _fnmUserDataPath = (CTString)_path + "/";
+       close(_fd);
+       CPrintF(TRANSV("Testing home path: %s\n"), (const char *) _fnmUserDataPath);
+@@ -808,7 +806,7 @@
+           //_fnmApplicationPath = (CTFileName) _PATH + "/";
+           CPrintF(TRANSV("Found home path: %s\n"), (const char *) _fnm_home_TestFile);
+           _fd = open((const char *) _fnmUserDir+_strLogFile+".cfg", O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
+-          write(_fd, _path, 2948);
++          size_t x = write(_fd, _path, 2048);
+           close(_fd);
+         } else {
+           CPrintF(TRANSV("ERROR: Game data not ound!\n"));
+diff -aurN a/SamTSE/Sources/Engine/Entities/EntityClass.cpp b/SamTSE/Sources/Engine/Entities/EntityClass.cpp
+--- a/SamTSE/Sources/Engine/Entities/EntityClass.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Entities/EntityClass.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -499,7 +499,7 @@
+   // for each component
+   for (INDEX iComponent=0; iComponent<dec_ctComponents; iComponent++) {
+     // if it has that same identifier
+-    if (dec_aecComponents[iComponent].ec_slID==slID) {
++    if (dec_aecComponents[iComponent].ec_slID==static_cast<ULONG>(slID)) {
+ 
+       // if it also has same type
+       if (dec_aecComponents[iComponent].ec_ectType==ectType) {
+diff -aurN a/SamTSE/Sources/Engine/Entities/EntityCopying.cpp b/SamTSE/Sources/Engine/Entities/EntityCopying.cpp
+--- a/SamTSE/Sources/Engine/Entities/EntityCopying.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Entities/EntityCopying.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -163,7 +163,7 @@
+     }
+   // if this is a terrain
+   } else if( enOther.en_RenderType == RT_TERRAIN) {
+-    #pragma message(">> CEntity::Copy")
++    //#pragma message(">> CEntity::Copy")
+     ASSERT(FALSE);
+   // if this is a model
+   } if ( enOther.en_RenderType == RT_MODEL || en_RenderType == RT_EDITORMODEL) {
+diff -aurN a/SamTSE/Sources/Engine/Entities/Entity.cpp b/SamTSE/Sources/Engine/Entities/Entity.cpp
+--- a/SamTSE/Sources/Engine/Entities/Entity.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Entities/Entity.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -1830,7 +1830,7 @@
+   // make oriented bounding box of the entity
+   FLOATobbox3D boxEntity = FLOATobbox3D(en_boxSpatialClassification, 
+     en_plPlacement.pl_PositionVector, en_mRotation);
+-  //DOUBLEobbox3D boxdEntity = FLOATtoDOUBLE(boxEntity);
++  DOUBLEobbox3D boxdEntity = FLOATtoDOUBLE(boxEntity);
+ 
+   // unset spatial clasification
+   en_rdSectors.Clear();
+@@ -1854,10 +1854,10 @@
+           
+           // if the sphere is inside the sector
+           if (itbsc->bsc_bspBSPTree.TestSphere(
+-              vSphereCenter, fSphereRadius)>=0) {
++              FLOATtoDOUBLE(vSphereCenter), FLOATtoDOUBLE(fSphereRadius))>=0) {
+ 
+             // if the box is inside the sector
+-            if (itbsc->bsc_bspBSPTree.TestBox(boxEntity)>=0) {
++            if (itbsc->bsc_bspBSPTree.TestBox(boxdEntity)>=0) {
+               // relate the entity to the sector
+               if (en_RenderType==RT_BRUSH
+                 ||en_RenderType==RT_FIELDBRUSH
+@@ -1894,7 +1894,7 @@
+   // make oriented bounding box of the entity
+   FLOATobbox3D oboxEntity = FLOATobbox3D(en_boxSpatialClassification, 
+     en_plPlacement.pl_PositionVector, en_mRotation);
+-  //DOUBLEobbox3D oboxdEntity = FLOATtoDOUBLE(oboxEntity);
++  DOUBLEobbox3D oboxdEntity = FLOATtoDOUBLE(oboxEntity);
+ 
+   CListHead lhActive;
+   // for each sector around this entity
+@@ -1925,13 +1925,13 @@
+         (pbsc->bsc_boxBoundingBox.HasContactWith(boxEntity))&&
+         // the sphere is inside the sector
+         (pbsc->bsc_bspBSPTree.TestSphere(
+-              vSphereCenter, fSphereRadius)>=0)&&
++			FLOATtoDOUBLE(vSphereCenter), fSphereRadius)>=0)&&
+         // (use more detailed testing for moving brushes)
+         (en_RenderType!=RT_BRUSH||
+           // oriented box touches box of sector
+-          (oboxEntity.HasContactWith(FLOATobbox3D(pbsc->bsc_boxBoundingBox)))&&
++          ((oboxEntity.HasContactWith(FLOATobbox3D(pbsc->bsc_boxBoundingBox)))&&
+           // oriented box is in bsp
+-          (pbsc->bsc_bspBSPTree.TestBox(oboxEntity)>=0));
++          (pbsc->bsc_bspBSPTree.TestBox(oboxdEntity)>=0)));
+     // if it is not
+     if (!bIn) {
+       // if it has link
+@@ -2870,7 +2870,7 @@
+   // for each sector around entity
+   {FOREACHSRCOFDST(en_rdSectors, CBrushSector, bsc_rsEntities, pbsc)
+     // if point is in this sector
+-    if( pbsc->bsc_bspBSPTree.TestSphere(vPointAbs, 0.01)>=0) {
++    if( pbsc->bsc_bspBSPTree.TestSphere(FLOATtoDOUBLE(vPointAbs), 0.01)>=0) {
+       // return that
+       return pbsc;
+     }
+diff -aurN a/SamTSE/Sources/Engine/Entities/FieldBSPTesting.cpp b/SamTSE/Sources/Engine/Entities/FieldBSPTesting.cpp
+--- a/SamTSE/Sources/Engine/Entities/FieldBSPTesting.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Entities/FieldBSPTesting.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -43,11 +43,11 @@
+     const FLOAT3D &v = pen->en_plPlacement.pl_PositionVector;
+     const FLOATmatrix3D &m = pen->en_mRotation;
+     FLOATobbox3D boxEntity = FLOATobbox3D(pen->en_boxSpatialClassification, v, m);
+-    //DOUBLEobbox3D boxdEntity = FLOATtoDOUBLE(boxEntity);
++    DOUBLEobbox3D boxdEntity = FLOATtoDOUBLE(boxEntity);
+ 
+     // if the box touches the sector's BSP
+     if (boxEntity.HasContactWith(FLOATobbox3D(_pbsc->bsc_boxBoundingBox)) &&
+-      _pbsc->bsc_bspBSPTree.TestBox(boxEntity)<=0) {
++      _pbsc->bsc_bspBSPTree.TestBox(boxdEntity)<=0) {
+ 
+       // for each collision sphere
+       CStaticArray<CMovingSphere> &absSpheres = pen->en_pciCollisionInfo->ci_absSpheres;
+@@ -56,7 +56,7 @@
+         ms.ms_vRelativeCenter0 = ms.ms_vCenter*m+v;
+         // if the sphere is in the sector
+         if (_pbsc->bsc_bspBSPTree.TestSphere(
+-          ms.ms_vRelativeCenter0, ms.ms_fR)<=0) {
++          FLOATtoDOUBLE(ms.ms_vRelativeCenter0), ms.ms_fR)<=0) {
+           return TRUE;
+         }
+       }
+diff -aurN a/SamTSE/Sources/Engine/GameAgent/GameAgent.cpp b/SamTSE/Sources/Engine/GameAgent/GameAgent.cpp
+--- a/SamTSE/Sources/Engine/GameAgent/GameAgent.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/GameAgent/GameAgent.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -179,11 +179,11 @@
+ 
+ */
+ //extern CTString ga_strServer = "master1.croteam.org";
+-extern CTString ga_strServer = "sam.ostap.eu";
++__extern CTString ga_strServer = "sam.ostap.eu";
+ //extern CTString ga_strMSLegacy = "master1.croteam.org";
+-extern CTString ga_strMSLegacy = "sam.ostap.eu";
++__extern CTString ga_strMSLegacy = "sam.ostap.eu";
+ 
+-extern BOOL ga_bMSLegacy = TRUE;
++__extern BOOL ga_bMSLegacy = TRUE;
+ //extern BOOL ga_bMSLegacy = FALSE;
+ 
+ #ifdef WIN32
+@@ -1330,7 +1330,7 @@
+         _pNetwork->ga_strEnumerationStatus = "";
+ 
+         sIPPort* pServers = (sIPPort*)(_szBuffer + 1);
+-        while(iLen - ((CHAR*)pServers - _szBuffer) >= sizeof(sIPPort)) {
++        while(iLen - ((CHAR*)pServers - _szBuffer) >= static_cast<int>(sizeof(sIPPort))) {
+           sIPPort ip = *pServers;
+ 
+           CTString strIP;
+diff -aurN a/SamTSE/Sources/Engine/Graphics/Adapter.cpp b/SamTSE/Sources/Engine/Graphics/Adapter.cpp
+--- a/SamTSE/Sources/Engine/Graphics/Adapter.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Graphics/Adapter.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -380,7 +380,7 @@
+   const int total = SDL_GetNumDisplayModes(dpy);
+   for (int i = 0; i < total; i++)
+   {
+-    if (pda->da_ctDisplayModes >= ARRAYCOUNT(pda->da_admDisplayModes))
++    if (pda->da_ctDisplayModes >= static_cast<INDEX>(ARRAYCOUNT(pda->da_admDisplayModes)))
+       break;
+ 
+     SDL_DisplayMode mode;
+diff -aurN a/SamTSE/Sources/Engine/Graphics/Font.cpp b/SamTSE/Sources/Engine/Graphics/Font.cpp
+--- a/SamTSE/Sources/Engine/Graphics/Font.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Graphics/Font.cpp	2023-01-05 19:38:24.000627117 +0300
+@@ -149,7 +149,7 @@
+ 
+   // find number of letters in line (assuming that the 1st line represents the width of every line)
+   INDEX iLettersInLine=0;
+-  while( (strLettersOrder[iLettersInLine]!='\n') && iLettersInLine<strlen(strLettersOrder)) iLettersInLine++;
++  while( (strLettersOrder[iLettersInLine]!='\n') && iLettersInLine < static_cast<INDEX>(strlen(strLettersOrder))) iLettersInLine++;
+   if( iLettersInLine<=0) FatalError( "Invalid font definition ASCII file.");
+ 
+   // determine pixelcheck mast depending of alpha channel usage
+@@ -162,11 +162,11 @@
+   // for all letters in font (ranging from space to last letter that user defined)
+   INDEX iLetter=0;
+   INDEX iCurrentLetterLine = 0;
+-  while( iLetter<strlen(strLettersOrder))
++  while( iLetter < static_cast<INDEX>(strlen(strLettersOrder)))
+   { // for letters in one line
+     for( INDEX iCurrentLetterColumn=0; iCurrentLetterColumn<iLettersInLine; iCurrentLetterColumn++)
+     { // test if we at the end of whole array
+-      if( iLetter>=strlen(strLettersOrder)) break;
++      if( iLetter >= static_cast<INDEX>(strlen(strLettersOrder))) break;
+       // get char params
+       unsigned char chrLetter = strLettersOrder[iLetter++];
+       // reset current letter's width
+diff -aurN a/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp b/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp
+--- a/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Graphics/TextureEffects.cpp	2023-01-05 19:38:24.003960458 +0300
+@@ -692,7 +692,7 @@
+     ffp.pixV+=ffp.ubSpeed;
+     // when falled down reinitialize
+     if (ffp.pixV >= _pixBufferHeight) {
+-      if (ff.ulPointToReinitialize == iIndex) {
++      if (static_cast<INDEX>(ff.ulPointToReinitialize) == iIndex) {
+         ff.ulPointToReinitialize++;
+         if (ff.ulPointToReinitialize >= FIREFALL_POINTS) ff.ulPointToReinitialize = 0;
+         ffp.pixU = ff.pixU+(RNDW%ff.ulWidth);
+@@ -3045,7 +3045,7 @@
+     for( PIX pixV=1; pixV<_pixBufferHeight-1; pixV++)
+     {
+       ULONG ulNew = ((ULONG)pubNew[_pixBufferWidth+slOffset] + (ULONG)pubNew[_pixBufferWidth*2+slOffset]) >>1;
+-      if( ulNew>slDensity) {
++      if( ulNew>static_cast<ULONG>(slDensity)) {
+         ULONG ulNewDensity = RNDW&slDensity;
+         ulNew -= ulNewDensity;
+         SLONG slDifusion = (SLONG)asbMod3Sub1Table[ulNewDensity]; // (SLONG)(ulNewDensity%3-1);
+diff -aurN a/SamTSE/Sources/Engine/Light/LayerMixer.cpp b/SamTSE/Sources/Engine/Light/LayerMixer.cpp
+--- a/SamTSE/Sources/Engine/Light/LayerMixer.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Light/LayerMixer.cpp	2023-01-05 19:38:24.007293799 +0300
+@@ -1,4 +1,6 @@
+ /* Copyright (c) 2002-2012 Croteam Ltd. 
++Copyright (c) 2021 by ZCaliptium.
++
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of version 2 of the GNU General Public License as published by
+ the Free Software Foundation
+@@ -33,6 +35,15 @@
+ #include <Engine/Templates/StaticArray.cpp>
+ #include <Engine/Templates/DynamicArray.cpp>
+ 
++#if (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++#include <xmmintrin.h>
++#endif
++
++#if defined(__GNUC__) 
++#define SE_MMXINTOPT 1
++#endif
++
+ // asm shortcuts
+ #define O offset
+ #define Q qword ptr
+@@ -160,7 +171,18 @@
+   IncrementByteWithClip(pub[2], (long) (((UBYTE*)&lm_colLight)[1] *slIntensity)>>16);
+ }
+ 
++#if (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++inline UBYTE SaturateSignedWordToUnsignedByte(SLONG sl)
++{
++  if (sl <= -1) {
++    return 0;
++  }
+   
++  return sl >= 256 ? 255 : sl;
++}
++#endif
++
+ // remember general data
+ void CLayerMixer::CalculateData( CBrushShadowMap *pbsm, INDEX iMipmap)
+ {
+@@ -431,8 +453,159 @@
+         : FPU_REGS, MMX_REGS, "eax", "ecx", "edi", "cc", "memory"
+   );
+ 
+-#else
++#elif (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++
++  // prepare color
++  __m64 tmp_mm7;
++
++  #ifdef SE_MMXINTOPT
++  __m64 tmp_mm0;
+ 
++  //tmp_mm7.m64_u64 = 0;
++  memset(&tmp_mm7, INDEX(0), sizeof(tmp_mm7));
++  //tmp_mm7.m64_i64 = ulLightRGB;
++  memcpy(&tmp_mm7, &ulLightRGB, 4);
++  //tmp_mm0.m64_u64 = 0;
++  memset(&tmp_mm0, INDEX(0), sizeof(tmp_mm0));
++  tmp_mm7 = _m_punpcklbw(tmp_mm7, tmp_mm0); // punpcklbw
++  tmp_mm7 = _m_psllwi(tmp_mm7, 1);          // psllw
++  _mm_empty(); // emms
++
++  #else
++
++  // punpcklbw
++  tmp_mm7.m64_u16[0] = (ulLightRGB & 0x000000FF);
++  tmp_mm7.m64_u16[1] = (ulLightRGB & 0x0000FF00) >> 8;
++  tmp_mm7.m64_u16[2] = (ulLightRGB & 0x00FF0000) >> 16;
++  tmp_mm7.m64_u16[3] = (ulLightRGB & 0xFF000000) >> 24;
++
++  // psllw
++  tmp_mm7.m64_u16[0] <<= 1;
++  tmp_mm7.m64_u16[1] <<= 1;
++  tmp_mm7.m64_u16[2] <<= 1;
++  tmp_mm7.m64_u16[3] <<= 1;
++  #endif
++
++  PIX pixV = _iRowCt;
++  UBYTE *pubLayer = (UBYTE *)_pulLayer; // temp carret
++
++  // row loop
++  do {
++    PIX pixU = _iPixCt;  
++    
++    SLONG slL2Point = _slL2Row;
++    SLONG slDL2oDU = _slDL2oDURow;
++    
++    // pixel loop
++    do {
++      // if the point is not masked
++      if (slL2Point < FTOX)
++      {
++        SLONG slL = (slL2Point >> SHIFTX) & (SQRTTABLESIZE - 1);  // and is just for degenerate cases
++        SLONG slIntensity = _slLightMax;
++        slL = aubSqrt[slL];
++        if (slL > _slHotSpot) {
++          slIntensity = ((255 - slL) * _slLightStep);
++        }
++
++        ULONG *pulPixel = (ULONG *)pubLayer;
++        ULONG ulPixel = *pulPixel;
++
++        // mix underlaying pixels with the calculated one
++        __m64 tmp_mm6, tmp_mm10;
++        
++        #ifdef SE_MMXINTOPT
++        //tmp_mm6.m64_u64 = 0;
++		memset(&tmp_mm6, INDEX(0), sizeof(tmp_mm6));
++        tmp_mm6 = _mm_cvtsi32_si64(slIntensity);
++        tmp_mm6 = _mm_unpacklo_pi16(tmp_mm6, tmp_mm6);  // punpcklwd
++        tmp_mm6 = _mm_unpacklo_pi32(tmp_mm6, tmp_mm6);  // punpckldq
++        tmp_mm6 = _mm_mulhi_pi16(tmp_mm6, tmp_mm7);     // _m_pmulhw
++        _mm_empty(); // emms
++        
++        #else
++        
++        // punpcklwd & punpckldq
++        tmp_mm6.m64_u16[0] = slIntensity;
++        tmp_mm6.m64_u16[1] = slIntensity;
++        tmp_mm6.m64_u16[2] = slIntensity;
++        tmp_mm6.m64_u16[3] = slIntensity;
++
++        // pmulhw   mm7, mm6
++        tmp_mm6.m64_u16[0] = (tmp_mm6.m64_i16[0] * tmp_mm7.m64_i16[0]) >> 16;
++        tmp_mm6.m64_u16[1] = (tmp_mm6.m64_i16[1] * tmp_mm7.m64_i16[1]) >> 16;
++        tmp_mm6.m64_u16[2] = (tmp_mm6.m64_i16[2] * tmp_mm7.m64_i16[2]) >> 16;
++        tmp_mm6.m64_u16[3] = (tmp_mm6.m64_i16[3] * tmp_mm7.m64_i16[3]) >> 16;
++        #endif
++
++        __m64 tmp_mm5;
++
++        // add light pixel to underlying pixel
++        #ifdef SE_MMXINTOPT
++        memset(&tmp_mm10, INDEX(0), sizeof(tmp_mm10));
++        tmp_mm5 = _mm_cvtsi32_si64(ulPixel);
++        tmp_mm5 = _mm_unpacklo_pi8(tmp_mm5, tmp_mm10);    // punpcklbw
++        tmp_mm5 = _mm_add_pi16(tmp_mm5, tmp_mm6);       // paddw
++        tmp_mm5 = _mm_packs_pu16(tmp_mm5, tmp_mm10);      // packuswb
++        ulPixel = _mm_cvtsi64_si32(tmp_mm5);
++        _mm_empty(); // emms
++        
++        #else
++          
++        // punpcklbw
++        tmp_mm5.m64_u16[0] = (ulPixel & 0x000000FF);
++        tmp_mm5.m64_u16[1] = (ulPixel & 0x0000FF00) >> 8;
++        tmp_mm5.m64_u16[2] = (ulPixel & 0x00FF0000) >> 16;
++        tmp_mm5.m64_u16[3] = (ulPixel & 0xFF000000) >> 24;
++
++        // paddw
++        tmp_mm5.m64_i16[0] += tmp_mm6.m64_i16[0];
++        tmp_mm5.m64_i16[1] += tmp_mm6.m64_i16[1];
++        tmp_mm5.m64_i16[2] += tmp_mm6.m64_i16[2];
++        tmp_mm5.m64_i16[3] += tmp_mm6.m64_i16[3];
++
++        // packuswb
++        tmp_mm5.m64_u8[0] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[0]);
++        tmp_mm5.m64_u8[1] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[1]);
++        tmp_mm5.m64_u8[2] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[2]);
++        tmp_mm5.m64_u8[3] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[3]);
++
++        ulPixel = tmp_mm5.m64_u32[0];
++        #endif
++
++        *pulPixel = ulPixel;
++      }
++      
++      // advance to next pixel
++      // add     edi, 4
++      pubLayer += 4;
++
++      // movd    eax, mm3
++      // add     ebx, eax
++      slL2Point += slDL2oDU;
++
++      // paddd   mm3, Q [mmDDL2oDU]
++      slDL2oDU += _slDDL2oDU;
++      pixU--;
++    } while (pixU > 0);
++  
++    // advance to the next row
++    pubLayer += _slModulo; // add     edi, D [_slModulo]
++
++    // paddd   mm1, mm2
++    // MM1 = _slDL2oDURow | _slL2Row
++    // MM2 = _slDDL2oDUoDV | _slDL2oDV
++    _slL2Row += _slDL2oDV;
++    _slDL2oDURow += _slDDL2oDUoDV;
++    
++    // paddd   mm2, Q [mmDDL2oDV]
++    _slDL2oDV += _slDDL2oDV; 
++    
++    pixV--;
++  } while (pixV > 0);
++
++#else
+     // !!! FIXME WARNING: I have not checked this code, and it could be
+     // !!! FIXME           totally and utterly wrong.  --ryan.
+ //  STUBBED("may not work");
+@@ -463,7 +636,6 @@
+     _slDL2oDV    += _slDDL2oDV;
+     _slDL2oDURow += _slDDL2oDUoDV;
+   }
+-
+ #endif
+ }
+ 
+@@ -647,8 +819,169 @@
+           "cc", "memory"
+   );
+ 
+-#else   // Portable C version...
++#elif (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++
++  // prepare color
++  __m64 tmp_mm7;
++
++  #ifdef SE_MMXINTOPT
++  __m64 tmp_mm0;
++
++  //tmp_mm7.m64_u64 = 0;
++  memset(&tmp_mm7, INDEX(0), sizeof(tmp_mm7));
++  //tmp_mm7.m64_i64 = ulLightRGB;
++  memcpy(&tmp_mm7, &ulLightRGB, 4);
++  //tmp_mm0.m64_u64 = 0;
++  memset(&tmp_mm0, INDEX(0), sizeof(tmp_mm0));
++  tmp_mm7 = _m_punpcklbw(tmp_mm7, tmp_mm0); // punpcklbw
++  tmp_mm7 = _m_psllwi(tmp_mm7, 1);          // psllw
++  _mm_empty(); // emms
++
++  #else
++
++  // punpcklbw
++  tmp_mm7.m64_u16[0] = (ulLightRGB & 0x000000FF);
++  tmp_mm7.m64_u16[1] = (ulLightRGB & 0x0000FF00) >> 8;
++  tmp_mm7.m64_u16[2] = (ulLightRGB & 0x00FF0000) >> 16;
++  tmp_mm7.m64_u16[3] = (ulLightRGB & 0xFF000000) >> 24;
++
++  // psllw
++  tmp_mm7.m64_u16[0] <<= 1;
++  tmp_mm7.m64_u16[1] <<= 1;
++  tmp_mm7.m64_u16[2] <<= 1;
++  tmp_mm7.m64_u16[3] <<= 1;
++  #endif
++
++  PIX pixV = _iRowCt;
++  UBYTE *pubLayer = (UBYTE *)_pulLayer; // temp carret
++
++  // row loop
++  do {
++    PIX pixU = _iPixCt;  
++    
++    SLONG slL2Point = _slL2Row;
++    SLONG slDL2oDU = _slDL2oDURow;
++    
++    // pixel loop
++    do {
++      // if the point is not masked
++      if ((*pubMask & ubMask) && (slL2Point < FTOX))
++      {
++        // calculate intensities and do actual drawing of shadow pixel ARGB
++        SLONG slL = (slL2Point >> SHIFTX)&(SQRTTABLESIZE-1);  // and is just for degenerate cases
++        SLONG slIntensity = _slLightMax;
++        slL = aubSqrt[slL];
++
++        if (slL > _slHotSpot) {
++          slIntensity = ((255 - slL) * _slLightStep);
++        }
++
++        ULONG *pulPixel = (ULONG *)pubLayer;
++        ULONG ulPixel = *pulPixel;
++
++        // mix underlaying pixels with the calculated one
++        __m64 tmp_mm6, tmp_mm10;
++        
++        #ifdef SE_MMXINTOPT
++        //tmp_mm6.m64_u64 = 0;
++		memset(&tmp_mm6, INDEX(0), sizeof(tmp_mm6));
++        tmp_mm6 = _mm_cvtsi32_si64(slIntensity);
++        tmp_mm6 = _mm_unpacklo_pi16(tmp_mm6, tmp_mm6);  // punpcklwd
++        tmp_mm6 = _mm_unpacklo_pi32(tmp_mm6, tmp_mm6);  // punpckldq
++        tmp_mm6 = _mm_mulhi_pi16(tmp_mm6, tmp_mm7);     // _m_pmulhw
++        _mm_empty(); // emms
++        
++        #else
++        
++        // punpcklwd & punpckldq
++        tmp_mm6.m64_u16[0] = slIntensity;
++        tmp_mm6.m64_u16[1] = slIntensity;
++        tmp_mm6.m64_u16[2] = slIntensity;
++        tmp_mm6.m64_u16[3] = slIntensity;
++
++        // pmulhw   mm7, mm6
++        tmp_mm6.m64_u16[0] = (tmp_mm6.m64_i16[0] * tmp_mm7.m64_i16[0]) >> 16;
++        tmp_mm6.m64_u16[1] = (tmp_mm6.m64_i16[1] * tmp_mm7.m64_i16[1]) >> 16;
++        tmp_mm6.m64_u16[2] = (tmp_mm6.m64_i16[2] * tmp_mm7.m64_i16[2]) >> 16;
++        tmp_mm6.m64_u16[3] = (tmp_mm6.m64_i16[3] * tmp_mm7.m64_i16[3]) >> 16;
++        #endif
++
++        __m64 tmp_mm5;
++
++        // add light pixel to underlying pixel
++        #ifdef SE_MMXINTOPT
++        memset(&tmp_mm10, INDEX(0), sizeof(tmp_mm10));
++        tmp_mm5 = _mm_cvtsi32_si64(ulPixel);
++        tmp_mm5 = _mm_unpacklo_pi8(tmp_mm5,tmp_mm10);    // punpcklbw
++        tmp_mm5 = _mm_add_pi16(tmp_mm5, tmp_mm6);       // paddw
++        tmp_mm5 = _mm_packs_pu16(tmp_mm5, tmp_mm10);      // packuswb
++        ulPixel = _mm_cvtsi64_si32(tmp_mm5);
++        _mm_empty(); // emms
++        
++        #else
++          
++        // punpcklbw
++        tmp_mm5.m64_u16[0] = (ulPixel & 0x000000FF);
++        tmp_mm5.m64_u16[1] = (ulPixel & 0x0000FF00) >> 8;
++        tmp_mm5.m64_u16[2] = (ulPixel & 0x00FF0000) >> 16;
++        tmp_mm5.m64_u16[3] = (ulPixel & 0xFF000000) >> 24;
++
++        // paddw
++        tmp_mm5.m64_i16[0] += tmp_mm6.m64_i16[0];
++        tmp_mm5.m64_i16[1] += tmp_mm6.m64_i16[1];
++        tmp_mm5.m64_i16[2] += tmp_mm6.m64_i16[2];
++        tmp_mm5.m64_i16[3] += tmp_mm6.m64_i16[3];
++
++        // packuswb
++        tmp_mm5.m64_u8[0] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[0]);
++        tmp_mm5.m64_u8[1] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[1]);
++        tmp_mm5.m64_u8[2] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[2]);
++        tmp_mm5.m64_u8[3] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[3]);
++
++        ulPixel = tmp_mm5.m64_u32[0];
++        #endif
++
++        *pulPixel = ulPixel;
++      }
++      
++      // advance to next pixel
++      // add     edi, 4
++      pubLayer += 4;
++
++      // movd    eax, mm3
++      // add     ebx, eax
++      slL2Point += slDL2oDU;
++
++      // paddd   mm3, Q [mmDDL2oDU]
++      slDL2oDU += _slDDL2oDU;
++
++      ubMask <<= 1;
++      if (ubMask == 0)
++      {
++        pubMask++;
++        ubMask = 1;
++      }
+ 
++      pixU--;
++    } while (pixU > 0);
++  
++    // advance to the next row
++    pubLayer += _slModulo; // add     edi, D [_slModulo]
++
++    // paddd   mm1, mm2
++    // MM1 = _slDL2oDURow | _slL2Row
++    // MM2 = _slDDL2oDUoDV | _slDL2oDV
++    _slL2Row += _slDL2oDV;
++    _slDL2oDURow += _slDDL2oDUoDV;
++    
++    // paddd   mm2, Q [mmDDL2oDV]
++    _slDL2oDV += _slDDL2oDV; 
++    
++    pixV--;
++  } while (pixV > 0);
++
++#else   // Portable C version...
+   UBYTE* pubLayer = (UBYTE*)_pulLayer;
+   for( PIX pixV=0; pixV<_iRowCt; pixV++)
+   {
+@@ -681,7 +1014,6 @@
+     _slDL2oDV    += _slDDL2oDV;
+     _slDL2oDURow += _slDDL2oDUoDV;
+   }
+-
+ #endif
+ 
+ }
+@@ -853,6 +1185,167 @@
+         : FPU_REGS, MMX_REGS, "eax", "ecx", "edi", "cc", "memory"
+   );
+ 
++#elif (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++
++  // for each pixel in the shadow map
++
++  // prepare color
++  __m64 tmp_mm7;
++
++  #ifdef SE_MMXINTOPT
++  __m64 tmp_mm0;
++
++  //tmp_mm7.m64_u64 = 0;
++  memset(&tmp_mm7, INDEX(0), sizeof(tmp_mm7));
++  //tmp_mm7.m64_i64 = ulLightRGB;
++  memcpy(&tmp_mm7, &ulLightRGB, 4);
++  //tmp_mm0.m64_u64 = 0;
++  memset(&tmp_mm0, INDEX(0), sizeof(tmp_mm0));
++  tmp_mm7 = _m_punpcklbw(tmp_mm7, tmp_mm0); // punpcklbw
++  tmp_mm7 = _m_psllwi(tmp_mm7, 1);          // psllw
++  _mm_empty(); // emms
++
++  #else
++
++  // punpcklbw
++  tmp_mm7.m64_u16[0] = (ulLightRGB & 0x000000FF);
++  tmp_mm7.m64_u16[1] = (ulLightRGB & 0x0000FF00) >> 8;
++  tmp_mm7.m64_u16[2] = (ulLightRGB & 0x00FF0000) >> 16;
++  tmp_mm7.m64_u16[3] = (ulLightRGB & 0xFF000000) >> 24;
++
++  // psllw
++  tmp_mm7.m64_u16[0] <<= 1;
++  tmp_mm7.m64_u16[1] <<= 1;
++  tmp_mm7.m64_u16[2] <<= 1;
++  tmp_mm7.m64_u16[3] <<= 1;
++  #endif
++
++  PIX pixV = _iRowCt;
++  UBYTE *pubLayer = (UBYTE *)_pulLayer; // temp carret
++
++  // row loop
++  do {
++    PIX pixU = _iPixCt;  
++    
++    SLONG slL2Point = _slL2Row;
++    SLONG slDL2oDU = _slDL2oDURow;
++    
++    // pixel loop
++    do {
++      // if the point is not masked
++      if (slL2Point < FTOX)
++      {
++        SLONG sl1oL = (slL2Point >> SHIFTX) & (SQRTTABLESIZE - 1);  // and is just for degenerate cases
++        sl1oL = auw1oSqrt[sl1oL];
++        
++        SLONG slIntensity = _slLightMax; // ecx, D [_slLightMax]
++        
++        // calculate intensities and do actual drawing of shadow pixel ARGB
++        if (sl1oL < slMax1oL) {
++          // mov     eax, D [sl1oL]
++          // mov     ecx, D [slIntensity]
++          // lea     ecx, [eax-256]
++          // imul    ecx, D [_slLightStep]
++          slIntensity = ((sl1oL - 256) * _slLightStep);
++        }
++
++        ULONG *pulPixel = (ULONG *)pubLayer;
++        ULONG ulPixel = *pulPixel;
++
++        // mix underlaying pixels with the calculated one
++        __m64 tmp_mm6, tmp_mm10;
++        
++        #ifdef SE_MMXINTOPT
++        //tmp_mm6.m64_u64 = 0;
++		memset(&tmp_mm6, INDEX(0), sizeof(tmp_mm6));
++        tmp_mm6 = _mm_cvtsi32_si64(slIntensity);
++        tmp_mm6 = _mm_unpacklo_pi16(tmp_mm6, tmp_mm6);  // punpcklwd
++        tmp_mm6 = _mm_unpacklo_pi32(tmp_mm6, tmp_mm6);  // punpckldq
++        tmp_mm6 = _mm_mulhi_pi16(tmp_mm6, tmp_mm7);     // _m_pmulhw
++        _mm_empty(); // emms
++        
++        #else
++        
++        // punpcklwd & punpckldq
++        tmp_mm6.m64_u16[0] = slIntensity;
++        tmp_mm6.m64_u16[1] = slIntensity;
++        tmp_mm6.m64_u16[2] = slIntensity;
++        tmp_mm6.m64_u16[3] = slIntensity;
++
++        // pmulhw   mm7, mm6
++        tmp_mm6.m64_u16[0] = (tmp_mm6.m64_i16[0] * tmp_mm7.m64_i16[0]) >> 16;
++        tmp_mm6.m64_u16[1] = (tmp_mm6.m64_i16[1] * tmp_mm7.m64_i16[1]) >> 16;
++        tmp_mm6.m64_u16[2] = (tmp_mm6.m64_i16[2] * tmp_mm7.m64_i16[2]) >> 16;
++        tmp_mm6.m64_u16[3] = (tmp_mm6.m64_i16[3] * tmp_mm7.m64_i16[3]) >> 16;
++        #endif
++
++        __m64 tmp_mm5;
++
++        // add light pixel to underlying pixel
++        #ifdef SE_MMXINTOPT
++        memset(&tmp_mm10, INDEX(0), sizeof(tmp_mm10));
++        tmp_mm5 = _mm_cvtsi32_si64(ulPixel);
++        tmp_mm5 = _mm_unpacklo_pi8(tmp_mm5, tmp_mm10);    // punpcklbw
++        tmp_mm5 = _mm_add_pi16(tmp_mm5, tmp_mm6);       // paddw
++        tmp_mm5 = _mm_packs_pu16(tmp_mm5, tmp_mm10);      // packuswb
++        ulPixel = _mm_cvtsi64_si32(tmp_mm5);
++        _mm_empty(); // emms
++        
++        #else
++          
++        // punpcklbw
++        tmp_mm5.m64_u16[0] = (ulPixel & 0x000000FF);
++        tmp_mm5.m64_u16[1] = (ulPixel & 0x0000FF00) >> 8;
++        tmp_mm5.m64_u16[2] = (ulPixel & 0x00FF0000) >> 16;
++        tmp_mm5.m64_u16[3] = (ulPixel & 0xFF000000) >> 24;
++
++        // paddw
++        tmp_mm5.m64_i16[0] += tmp_mm6.m64_i16[0];
++        tmp_mm5.m64_i16[1] += tmp_mm6.m64_i16[1];
++        tmp_mm5.m64_i16[2] += tmp_mm6.m64_i16[2];
++        tmp_mm5.m64_i16[3] += tmp_mm6.m64_i16[3];
++
++        // packuswb
++        tmp_mm5.m64_u8[0] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[0]);
++        tmp_mm5.m64_u8[1] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[1]);
++        tmp_mm5.m64_u8[2] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[2]);
++        tmp_mm5.m64_u8[3] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[3]);
++
++        ulPixel = tmp_mm5.m64_u32[0];
++        #endif
++
++        *pulPixel = ulPixel;
++      }
++      
++      // advance to next pixel
++      // add     edi, 4
++      pubLayer += 4;
++
++      // movd    eax, mm3
++      // add     ebx, eax
++      slL2Point += slDL2oDU;
++
++      // paddd   mm3, Q [mmDDL2oDU]
++      slDL2oDU += _slDDL2oDU;
++      pixU--;
++    } while (pixU > 0);
++  
++    // advance to the next row
++    pubLayer += _slModulo; // add     edi, D [_slModulo]
++
++    // paddd   mm1, mm2
++    // MM1 = _slDL2oDURow | _slL2Row
++    // MM2 = _slDDL2oDUoDV | _slDL2oDV
++    _slL2Row += _slDL2oDV;
++    _slDL2oDURow += _slDDL2oDUoDV;
++    
++    // paddd   mm2, Q [mmDDL2oDV]
++    _slDL2oDV += _slDDL2oDV; 
++    
++    pixV--;
++  } while (pixV > 0);
++
+ #else
+   // for each pixel in the shadow map
+   UBYTE* pubLayer = (UBYTE*)_pulLayer;
+@@ -1068,6 +1561,174 @@
+           "cc", "memory"
+   );
+ 
++#elif (defined(__x86_64__) && defined(__GNUC__)) || (defined(PLATFORM_64BIT) && defined(_MSC_VER)) \
++  && (!defined(PLATFORM_PANDORA) || !defined(PLATFORM_PYRA) || !defined(PLATFORM_RPI4) || !defined(__e2k__))
++
++  // prepare color
++  __m64 tmp_mm7;
++
++  #ifdef SE_MMXINTOPT
++  __m64 tmp_mm0;
++
++  //tmp_mm7.m64_u64 = 0;
++  memset(&tmp_mm7, INDEX(0), sizeof(tmp_mm7));
++  //tmp_mm7.m64_i64 = ulLightRGB;
++  memcpy(&tmp_mm7, &ulLightRGB, 4);
++  //tmp_mm0.m64_u64 = 0;
++  memset(&tmp_mm0, INDEX(0), sizeof(tmp_mm0));
++  tmp_mm7 = _m_punpcklbw(tmp_mm7, tmp_mm0); // punpcklbw
++  tmp_mm7 = _m_psllwi(tmp_mm7, 1);          // psllw
++  _mm_empty(); // emms
++
++  #else
++
++  // punpcklbw
++  tmp_mm7.m64_u16[0] = (ulLightRGB & 0x000000FF);
++  tmp_mm7.m64_u16[1] = (ulLightRGB & 0x0000FF00) >> 8;
++  tmp_mm7.m64_u16[2] = (ulLightRGB & 0x00FF0000) >> 16;
++  tmp_mm7.m64_u16[3] = (ulLightRGB & 0xFF000000) >> 24;
++
++  // psllw
++  tmp_mm7.m64_u16[0] <<= 1;
++  tmp_mm7.m64_u16[1] <<= 1;
++  tmp_mm7.m64_u16[2] <<= 1;
++  tmp_mm7.m64_u16[3] <<= 1;
++  #endif
++
++  PIX pixV = _iRowCt;
++  UBYTE *pubLayer = (UBYTE *)_pulLayer; // temp carret
++
++  // row loop
++  do {
++    PIX pixU = _iPixCt;  
++    
++    SLONG slL2Point = _slL2Row;
++    SLONG slDL2oDU = _slDL2oDURow;
++    
++    // pixel loop
++    do {
++      // if the point is not masked
++      if ((*pubMask & ubMask) && (slL2Point < FTOX))
++      {
++        SLONG sl1oL = (slL2Point >> SHIFTX) & (SQRTTABLESIZE - 1);  // and is just for degenerate cases
++        sl1oL = auw1oSqrt[sl1oL];
++        
++        SLONG slIntensity = _slLightMax; // ecx, D [_slLightMax]
++        
++        // calculate intensities and do actual drawing of shadow pixel ARGB
++        if (sl1oL < slMax1oL) {
++          // mov     eax, D [sl1oL]
++          // mov     ecx, D [slIntensity]
++          // lea     ecx, [eax-256]
++          // imul    ecx, D [_slLightStep]
++          slIntensity = ((sl1oL - 256) * _slLightStep);
++        }
++
++        ULONG *pulPixel = (ULONG *)pubLayer;
++        ULONG ulPixel = *pulPixel;
++
++        // mix underlaying pixels with the calculated one
++        __m64 tmp_mm6, tmp_mm10;
++        
++        #ifdef SE_MMXINTOPT
++
++        //tmp_mm6.m64_u64 = 0;
++		memset(&tmp_mm6, INDEX(0), sizeof(tmp_mm6));
++        tmp_mm6 = _mm_cvtsi32_si64(slIntensity);
++        tmp_mm6 = _mm_unpacklo_pi16(tmp_mm6, tmp_mm6);  // punpcklwd
++        tmp_mm6 = _mm_unpacklo_pi32(tmp_mm6, tmp_mm6);  // punpckldq
++        tmp_mm6 = _mm_mulhi_pi16(tmp_mm6, tmp_mm7);     // _m_pmulhw
++        _mm_empty(); // emms
++        
++        #else
++        
++        // punpcklwd & punpckldq
++        tmp_mm6.m64_u16[0] = slIntensity;
++        tmp_mm6.m64_u16[1] = slIntensity;
++        tmp_mm6.m64_u16[2] = slIntensity;
++        tmp_mm6.m64_u16[3] = slIntensity;
++
++        // pmulhw   mm7, mm6
++        tmp_mm6.m64_u16[0] = (tmp_mm6.m64_i16[0] * tmp_mm7.m64_i16[0]) >> 16;
++        tmp_mm6.m64_u16[1] = (tmp_mm6.m64_i16[1] * tmp_mm7.m64_i16[1]) >> 16;
++        tmp_mm6.m64_u16[2] = (tmp_mm6.m64_i16[2] * tmp_mm7.m64_i16[2]) >> 16;
++        tmp_mm6.m64_u16[3] = (tmp_mm6.m64_i16[3] * tmp_mm7.m64_i16[3]) >> 16;
++
++        #endif
++
++        __m64 tmp_mm5;
++
++        // add light pixel to underlying pixel
++        #ifdef SE_MMXINTOPT
++        memset(&tmp_mm10, INDEX(0), sizeof(tmp_mm10));
++        tmp_mm5 = _mm_cvtsi32_si64(ulPixel);
++        tmp_mm5 = _mm_unpacklo_pi8(tmp_mm5, tmp_mm10);    // punpcklbw
++        tmp_mm5 = _mm_add_pi16(tmp_mm5, tmp_mm6);       // paddw
++        tmp_mm5 = _mm_packs_pu16(tmp_mm5, tmp_mm10);      // packuswb
++        ulPixel = _mm_cvtsi64_si32(tmp_mm5);
++        _mm_empty(); // emms
++        
++        #else
++          
++        // punpcklbw
++        tmp_mm5.m64_u16[0] = (ulPixel & 0x000000FF);
++        tmp_mm5.m64_u16[1] = (ulPixel & 0x0000FF00) >> 8;
++        tmp_mm5.m64_u16[2] = (ulPixel & 0x00FF0000) >> 16;
++        tmp_mm5.m64_u16[3] = (ulPixel & 0xFF000000) >> 24;
++
++        // paddw
++        tmp_mm5.m64_i16[0] += tmp_mm6.m64_i16[0];
++        tmp_mm5.m64_i16[1] += tmp_mm6.m64_i16[1];
++        tmp_mm5.m64_i16[2] += tmp_mm6.m64_i16[2];
++        tmp_mm5.m64_i16[3] += tmp_mm6.m64_i16[3];
++
++        // packuswb
++        tmp_mm5.m64_u8[0] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[0]);
++        tmp_mm5.m64_u8[1] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[1]);
++        tmp_mm5.m64_u8[2] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[2]);
++        tmp_mm5.m64_u8[3] = SaturateSignedWordToUnsignedByte(tmp_mm5.m64_i16[3]);
++
++        ulPixel = tmp_mm5.m64_u32[0];
++        #endif
++
++        *pulPixel = ulPixel;
++      }
++      
++      // advance to next pixel
++      // add     edi, 4
++      pubLayer += 4;
++
++      // movd    eax, mm3
++      // add     ebx, eax
++      slL2Point += slDL2oDU;
++
++      // paddd   mm3, Q [mmDDL2oDU]
++      slDL2oDU += _slDDL2oDU;
++
++      ubMask <<= 1;
++      if (ubMask == 0)
++      {
++        pubMask++;
++        ubMask = 1;
++      }
++
++      pixU--;
++    } while (pixU > 0);
++  
++    // advance to the next row
++    pubLayer += _slModulo; // add     edi, D [_slModulo]
++
++    // paddd   mm1, mm2
++    // MM1 = _slDL2oDURow | _slL2Row
++    // MM2 = _slDDL2oDUoDV | _slDL2oDV
++    _slL2Row += _slDL2oDV;
++    _slDL2oDURow += _slDDL2oDUoDV;
++    
++    // paddd   mm2, Q [mmDDL2oDV]
++    _slDL2oDV += _slDDL2oDV; 
++    
++    pixV--;
++  } while (pixV > 0);
+ #else
+ 
+   // for each pixel in the shadow map
+@@ -1105,6 +1766,7 @@
+     _slDL2oDURow += _slDDL2oDUoDV;
+   }
+ 
++
+ #endif
+ 
+ }
+diff -aurN a/SamTSE/Sources/Engine/Light/LightSource.cpp b/SamTSE/Sources/Engine/Light/LightSource.cpp
+--- a/SamTSE/Sources/Engine/Light/LightSource.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Light/LightSource.cpp	2023-01-05 19:38:24.007293799 +0300
+@@ -420,7 +420,7 @@
+   }
+ 
+   // for each layer of the light source
+-  FLOAT3D dvOrigin = *_pvOrigin;
++  DOUBLE3D dvOrigin = FLOATtoDOUBLE(*_pvOrigin);
+   {FORDELETELIST(CBrushShadowLayer, bsl_lnInLightSource, ls_lhLayers, itbsl) {
+     CBrushPolygon *pbpo = itbsl->bsl_pbsmShadowMap->GetBrushPolygon();
+     CEntity *penWithPolygon = pbpo->bpo_pbscSector->bsc_pbmBrushMip->bm_pbrBrush->br_penEntity;
+@@ -493,7 +493,7 @@
+             if (!itbsc->bsc_boxBoundingBox.HasContactWith(_boxLight)
+               ||(itbsc->bsc_bspBSPTree.bt_pbnRoot!=NULL
+               &&!(itbsc->bsc_bspBSPTree.TestSphere(
+-                 dvOrigin, _rRange)>=0) )) {
++                 dvOrigin, FLOATtoDOUBLE(_rRange))>=0) )) {
+               // skip it
+               continue;
+             }
+diff -aurN a/SamTSE/Sources/Engine/Math/Float.cpp b/SamTSE/Sources/Engine/Math/Float.cpp
+--- a/SamTSE/Sources/Engine/Math/Float.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Math/Float.cpp	2023-01-05 19:38:24.007293799 +0300
+@@ -17,11 +17,16 @@
+ 
+ #include <Engine/Math/Float.h>
+ 
++// Note: macro redefinition	for _MSC_VER
++// As a result of redefinition, objects inside the world are located incorrectly.
++// For Windows, you need to use the definitions from the header which is in the SDK.
++#if (!defined _MSC_VER)
+ #define MCW_PC    0x0300
+ #define _MCW_PC     MCW_PC
+ #define _PC_24    0x0000
+ #define _PC_53    0x0200
+ #define _PC_64    0x0300
++#endif
+ 
+ // !!! FIXME: I'd like to remove any dependency on the FPU control word from the game, asap.  --ryan.
+ #if (defined _MSC_VER)
+diff -aurN a/SamTSE/Sources/Engine/Network/Buffer.cpp b/SamTSE/Sources/Engine/Network/Buffer.cpp
+--- a/SamTSE/Sources/Engine/Network/Buffer.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/Buffer.cpp	2023-01-05 19:38:24.010627141 +0300
+@@ -383,7 +383,7 @@
+   slbhSize = ReadBytes(&bh, sizeof(bh));
+ 
+   // if the header information is not in buffer
+-  if (slbhSize < sizeof(bh)) {
++  if (static_cast<size_t>(slbhSize) < sizeof(bh)) {
+     // unwind
+     UnreadBytes(slbhSize);
+     // nothing to receive
+@@ -440,7 +440,7 @@
+   slbhSize = ReadBytes(&bh, sizeof(bh));
+ 
+   // if the header information is not in buffer
+-  if (slbhSize < sizeof(bh)) {
++  if (static_cast<size_t>(slbhSize) < sizeof(bh)) {
+     // unwind
+     UnreadBytes(slbhSize);
+     // nothing to receive
+@@ -529,7 +529,7 @@
+     slbhSize = ReadBytes(&bh, sizeof(bh));
+ 
+     // if the header information is not in buffer
+-    if (slbhSize < sizeof(bh)) {
++    if (static_cast<size_t>(slbhSize) < sizeof(bh)) {
+       // unwind
+       UnreadBytes(slbhSize);
+       // nothing to receive
+@@ -640,7 +640,7 @@
+     UnreadBytes(slbhSize);
+ 
+     // if the header information is not in buffer
+-    if (slbhSize < sizeof(bh)) {
++    if (static_cast<size_t>(slbhSize) < sizeof(bh)) {
+       // no information available
+       slExpectedSize = 0;
+       slReceivedSoFar = 0;
+diff -aurN a/SamTSE/Sources/Engine/Network/CommunicationInterface.cpp b/SamTSE/Sources/Engine/Network/CommunicationInterface.cpp
+--- a/SamTSE/Sources/Engine/Network/CommunicationInterface.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/CommunicationInterface.cpp	2023-01-05 19:38:24.010627141 +0300
+@@ -362,7 +362,7 @@
+       cm_strName = net_strLocalHost;
+       cm_ulLocalHost = StringToAddress(cm_strName);
+       // if invalid
+-      if (cm_ulLocalHost==0 || cm_ulLocalHost==-1) {
++      if (cm_ulLocalHost==0 || cm_ulLocalHost==-1UL) {
+         cm_ulLocalHost=0;
+         // report it
+         CPrintF(TRANSV("  requested local address is invalid\n"));
+@@ -1311,7 +1311,7 @@
+ 			// if block received
+ 			} else {
+ 				// if there is not at least one byte more in the packet than the header size
+-				if (slSizeReceived <= MAX_HEADER_SIZE) {
++				if (slSizeReceived <= static_cast<SLONG>(MAX_HEADER_SIZE)) {
+ 					// the packet is in error
+           extern INDEX net_bReportMiscErrors;          
+           if (net_bReportMiscErrors) {
+diff -aurN a/SamTSE/Sources/Engine/Network/CPacket.cpp b/SamTSE/Sources/Engine/Network/CPacket.cpp
+--- a/SamTSE/Sources/Engine/Network/CPacket.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/CPacket.cpp	2023-01-05 19:38:24.010627141 +0300
+@@ -184,7 +184,7 @@
+ 	ASSERT(pv != NULL);
+ 	ASSERT(pa_pubPacketData != NULL);
+ 
+-	if (slExpectedSize < (pa_slSize - MAX_HEADER_SIZE)) {
++	if (slExpectedSize < static_cast<SLONG>((pa_slSize - MAX_HEADER_SIZE))) {
+ 		return FALSE;
+ 	}
+ 	
+diff -aurN a/SamTSE/Sources/Engine/Network/PlayerBuffer.cpp b/SamTSE/Sources/Engine/Network/PlayerBuffer.cpp
+--- a/SamTSE/Sources/Engine/Network/PlayerBuffer.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/PlayerBuffer.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -119,7 +119,7 @@
+ 
+   // create a new delta action packet between last sent and current action
+   CPlayerAction paDelta;
+-  for (INDEX i=0; i<sizeof(CPlayerAction); i++) {
++  for (INDEX i = 0; i < static_cast<INDEX>(sizeof(CPlayerAction)); i++) {
+     ((UBYTE*)&paDelta)[i] = ((UBYTE*)&paCurrent)[i] ^ ((UBYTE*)&plb_paLastAction)[i];
+   }
+   // if the client that message is sent to owns the player
+diff -aurN a/SamTSE/Sources/Engine/Network/PlayerTarget.cpp b/SamTSE/Sources/Engine/Network/PlayerTarget.cpp
+--- a/SamTSE/Sources/Engine/Network/PlayerTarget.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/PlayerTarget.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -135,7 +135,7 @@
+   // create a new action packet from last received packet and given delta
+   plt_paPreLastAction = plt_paLastAction;
+   __int64 llTag = plt_paLastAction.pa_llCreated += paDelta.pa_llCreated;
+-  for (INDEX i=0; i<sizeof(CPlayerAction); i++) {
++  for (INDEX i = 0; i < static_cast<INDEX>(sizeof(CPlayerAction)); i++) {
+     ((UBYTE*)&plt_paLastAction)[i] ^= ((UBYTE*)&paDelta)[i];
+   }
+   plt_paLastAction.pa_llCreated = llTag;
+diff -aurN a/SamTSE/Sources/Engine/Network/Server.cpp b/SamTSE/Sources/Engine/Network/Server.cpp
+--- a/SamTSE/Sources/Engine/Network/Server.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Network/Server.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -1526,7 +1526,7 @@
+         continue;
+       }
+       // if message is public or the client has some of destination players
+-      if (ulTo==-1 || ulTo&MaskOfPlayersOnClient(iSession)) {
++      if (ulTo==-1UL || ulTo&MaskOfPlayersOnClient(iSession)) {
+         // send the message to that computer
+         _pNetwork->SendToClient(iSession, nmOut);
+       }
+diff -aurN a/SamTSE/Sources/Engine/Rendering/RenderAdding.cpp b/SamTSE/Sources/Engine/Rendering/RenderAdding.cpp
+--- a/SamTSE/Sources/Engine/Rendering/RenderAdding.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Rendering/RenderAdding.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -624,7 +624,7 @@
+     // if this is terrain entity
+     } else if( iten->en_RenderType==CEntity::RT_TERRAIN) {
+       // get model's bounding box for current frame
+-      #pragma message(">> Is terrain visible")
++      //#pragma message(">> Is terrain visible")
+       FLOATaabbox3D boxTerrain;
+       iten->GetTerrain()->GetAllTerrainBBox(boxTerrain);
+       // get center and radius of the bounding sphere
+@@ -662,7 +662,7 @@
+   ASSERT(!(pen->en_ulFlags&ENF_ZONING));
+ 
+   // make parameters for minimum sphere to add
+-  re_vdViewSphere = vEyesPos;
++  re_vdViewSphere = FLOATtoDOUBLE(vEyesPos);
+   re_dViewSphereR = re_prProjection->NearClipDistanceR()*1.5f;
+ 
+   CListHead lhToAdd;
+@@ -751,7 +751,7 @@
+   FLOAT3D vSphereCenter = boxNear.Center();
+ 
+   re_dViewSphereR = re_prProjection->NearClipDistanceR()*1.5f;
+-  re_vdViewSphere = vSphereCenter;
++  re_vdViewSphere = FLOATtoDOUBLE(vSphereCenter);
+ 
+   // for all entities in world
+   FOREACHINDYNAMICCONTAINER(re_pwoWorld->wo_cenEntities, CEntity, iten) {
+@@ -792,7 +792,7 @@
+          &&!((itbsc->bsc_ulFlags&BSCF_HIDDEN) && !re_bRenderingShadows)) {
+           // if the sphere is inside the sector
+           if (itbsc->bsc_bspBSPTree.TestSphere(
+-			  vSphereCenter, fSphereRadius) >= 0) {
++			  FLOATtoDOUBLE(vSphereCenter), FLOATtoDOUBLE(fSphereRadius)) >= 0) {
+ 
+             // add that sector to active sectors
+             AddActiveSector(itbsc.Current());
+diff -aurN a/SamTSE/Sources/Engine/Rendering/Render_internal.h b/SamTSE/Sources/Engine/Rendering/Render_internal.h
+--- a/SamTSE/Sources/Engine/Rendering/Render_internal.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Rendering/Render_internal.h	2023-01-05 19:38:24.013960482 +0300
+@@ -287,10 +287,8 @@
+   CEntity           *re_penViewer;    // entity that is viewed from
+   CDynamicContainer<CScreenPolygon> *re_pcspoViewPolygons;  // polygons that is viewed from (for mirrors)
+   CAnyProjection3D   re_prProjection; // projection to viewer space
+-  FLOAT3D re_vdViewSphere;
+-  FLOAT   re_dViewSphereR;
+-  // DOUBLE3D re_vdViewSphere;
+-  // DOUBLE   re_dViewSphereR;
++   DOUBLE3D re_vdViewSphere;
++   DOUBLE   re_dViewSphereR;
+ 
+   // used for fixing problems with extra trapezoids generated on t-junctions
+   FLOAT re_fEdgeOffsetI;
+diff -aurN a/SamTSE/Sources/Engine/Rendering/RenderModels.cpp b/SamTSE/Sources/Engine/Rendering/RenderModels.cpp
+--- a/SamTSE/Sources/Engine/Rendering/RenderModels.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Rendering/RenderModels.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -29,12 +29,19 @@
+ {
+   BOOL bHasAlpha0 = dm0.dm_ulFlags&DMF_HASALPHA;
+   BOOL bHasAlpha1 = dm1.dm_ulFlags&DMF_HASALPHA;
+-       if (! bHasAlpha0 &&  bHasAlpha1) return -1;
+-  else if (  bHasAlpha0 && !bHasAlpha1) return +1;
++  if(! bHasAlpha0 &&  bHasAlpha1) {
++     return -1;
++  }  else if(  bHasAlpha0 && !bHasAlpha1) {
++     return +1;
++  }
+ 
+-       if (dm0.dm_fDistance<dm1.dm_fDistance) return -1;
+-  else if (dm0.dm_fDistance>dm1.dm_fDistance) return +1;
+-  else                                        return  0;
++  if(dm0.dm_fDistance<dm1.dm_fDistance) {
++     return -1;
++  } else if(dm0.dm_fDistance>dm1.dm_fDistance) {
++     return +1;
++  } else {
++     return  0;
++  }
+ }
+ 
+ static int qsort_CompareDelayedModels( const void *ppdm0, const void *ppdm1)
+diff -aurN a/SamTSE/Sources/Engine/Ska/ModelInstance.cpp b/SamTSE/Sources/Engine/Ska/ModelInstance.cpp
+--- a/SamTSE/Sources/Engine/Ska/ModelInstance.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Ska/ModelInstance.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -84,7 +84,11 @@
+ 
+   _yy_mi = &mi;
+   SMCPushBuffer(fnFileName, strIncludeFile, TRUE);
++#ifdef __GNUC__
+   engine_ska_yyparse();
++#else
++  syyparse();
++#endif
+ }
+ 
+ // Create model instance and parse smc file in it
+@@ -904,13 +908,13 @@
+ 
+ BOOL CModelInstance::IsModelVisible( FLOAT fMipFactor)
+ {
+-  #pragma message(">> IsModelVisible")
++  //#pragma message(">> IsModelVisible")
+   return TRUE;
+ }
+ 
+ BOOL CModelInstance::HasShadow(FLOAT fMipFactor)
+ {
+-  #pragma message(">> HasShadow")
++  //#pragma message(">> HasShadow")
+   return TRUE;
+ }
+ 
+diff -aurN a/SamTSE/Sources/Engine/Ska/ParsingSmbs.h b/SamTSE/Sources/Engine/Ska/ParsingSmbs.h
+--- a/SamTSE/Sources/Engine/Ska/ParsingSmbs.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Ska/ParsingSmbs.h	2023-01-05 19:38:24.013960482 +0300
+@@ -14,10 +14,17 @@
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+ 
+ // needed for parser and scanner
++#ifdef __GNUC__
+ extern int engine_ska_yylex(void);
+ extern void engine_ska_yyerror(const char *s);
+ extern int engine_ska_yyparse(void);
+ extern void engine_ska_yyrestart(FILE *f);
++#else
++extern int yylex(void);
++extern void yyerror(const char *s);
++extern int syyparse(void);
++extern void syyrestart(FILE *f);
++#endif
+ 
+ #define YY_NEVER_INTERACTIVE 1
+ 
+diff -aurN a/SamTSE/Sources/Engine/Ska/RMRender.cpp b/SamTSE/Sources/Engine/Ska/RMRender.cpp
+--- a/SamTSE/Sources/Engine/Ska/RMRender.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Ska/RMRender.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -465,7 +465,7 @@
+       avVertices.Push(ctvtx);
+       // for each vertex in prepared mesh
+       for(INDEX ivtx=0;ivtx<ctvtx;ivtx++) {
+-        #pragma message(">> Fix this")
++        //#pragma message(">> Fix this")
+         FLOAT3D vVtx = FLOAT3D(_pavFinalVertices[ivtx].x,_pavFinalVertices[ivtx].y,_pavFinalVertices[ivtx].z);
+         FLOAT3D vNor = FLOAT3D(_panFinalNormals[ivtx].nx,_panFinalNormals[ivtx].ny,_panFinalNormals[ivtx].nz);
+         // add vertex to given vertex array
+@@ -1330,7 +1330,7 @@
+   // if skeleton lod is larger than lod count
+   if(iSkeletonLod >= ctslods) {
+     // use skeleton finest skeleton lod
+-    #pragma message(">> Check if this is ok")
++    //#pragma message(">> Check if this is ok")
+     iSkeletonLod = 0;
+     ASSERT(FALSE);
+   }
+@@ -2150,7 +2150,7 @@
+       
+       // if mesh is transformed to view space
+       if(rmsh.rmsh_bTransToViewSpace) {
+-        #pragma message(">> FIX THIS !!!")
++        //#pragma message(">> FIX THIS !!!")
+         // no ObjToView matrix is needed in shader so set empty matrix
+         Matrix12 mIdentity;
+         MakeIdentityMatrix(mIdentity);
+@@ -2383,7 +2383,7 @@
+     } else {
+       Matrix12 &m12 = _aRenModels[rmsh.rmsh_iRenModelIndex].rm_mStrTransform;
+       FLOAT gfxm[16];
+-      #pragma message(">> Fix face forward meshes, when objects are left in object space")
++      //#pragma message(">> Fix face forward meshes, when objects are left in object space")
+ 
+       // set view matrix to gfx
+       gfxm[ 0] = m12[ 0];  gfxm[ 1] = m12[ 4];  gfxm[ 2] = m12[ 8];  gfxm[ 3] = 0;
+@@ -2576,7 +2576,7 @@
+     RenderSkeleton();
+     gfxEnableDepthTest();
+   }
+-  #pragma message(">> Add ska_bShowActiveBones")
++  //#pragma message(">> Add ska_bShowActiveBones")
+   if(/*ska_bShowActiveBones || */ RM_GetFlags() & RMF_SHOWACTIVEBONES) {
+     gfxDisableTexture();
+     gfxDisableDepthTest();
+diff -aurN a/SamTSE/Sources/Engine/Sound/SoundDecoder.cpp b/SamTSE/Sources/Engine/Sound/SoundDecoder.cpp
+--- a/SamTSE/Sources/Engine/Sound/SoundDecoder.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Sound/SoundDecoder.cpp	2023-01-05 19:38:24.013960482 +0300
+@@ -62,7 +62,7 @@
+   // get amp11lib function pointers
+   const char *strName;
+ 
+-  #ifdef PLATFORM_WIN32
++  #if (defined PLATFORM_WIN32) && (!defined PLATFORM_64BIT)
+     #define DLLFUNCTION(dll, output, name, inputs, params, required) \
+       strName = "_" #name "@" #params;  \
+       p##name = (output (__stdcall*) inputs) _hAmp11lib->FindSymbol(strName); \
+diff -aurN a/SamTSE/Sources/Engine/Templates/BSP.cpp b/SamTSE/Sources/Engine/Templates/BSP.cpp
+--- a/SamTSE/Sources/Engine/Templates/BSP.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Templates/BSP.cpp	2023-01-05 19:38:24.017293823 +0300
+@@ -1513,12 +1513,7 @@
+   for(INDEX iNode=0; iNode<ctNodes; iNode++) {
+     BSPNode<Type, iDimensions> &bn = bt_abnNodes[iNode];
+     // read it from disk
+-    //strm.Read_t(&(Plane<Type, iDimensions>&)bn, sizeof(Plane<Type, iDimensions>));
+-    //strm >> ((Plane<Type, iDimensions>&)bn);
+-    Plane<DOUBLE, iDimensions> tmp;
+-    strm >> tmp;
+-    ((Plane<FLOAT, iDimensions> &)bn) = DOUBLEtoFLOAT(tmp);
+-
++    strm.Read_t(&(Plane<Type, iDimensions>&)bn, sizeof(Plane<Type, iDimensions>));
+     strm>>(INDEX&)bn.bn_bnlLocation;
+ 
+     INDEX iFront;
+@@ -1568,8 +1563,7 @@
+   for(INDEX iNode=0; iNode<ctNodes; iNode++) {
+     BSPNode<Type, iDimensions> &bn = bt_abnNodes[iNode];
+     // write it to disk
+-    //strm.Write_t(&(Plane<Type, iDimensions>&)bn, sizeof(Plane<Type, iDimensions>));
+-    strm << ((Plane<Type, iDimensions>&)bn);
++    strm.Write_t(&(Plane<Type, iDimensions>&)bn, sizeof(Plane<Type, iDimensions>));
+     strm<<(INDEX&)bn.bn_bnlLocation;
+ 
+     INDEX iFront;
+diff -aurN a/SamTSE/Sources/Engine/Terrain/Terrain.cpp b/SamTSE/Sources/Engine/Terrain/Terrain.cpp
+--- a/SamTSE/Sources/Engine/Terrain/Terrain.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Terrain/Terrain.cpp	2023-01-05 19:38:24.017293823 +0300
+@@ -545,7 +545,7 @@
+ void CTerrain::SetShadowMapsSize(INDEX iShadowMapAspect, INDEX iShadingMapAspect)
+ {
+   // TEMP
+-  #pragma message(">> Clamp dn SetShadowMapsSize")
++  //#pragma message(">> Clamp dn SetShadowMapsSize")
+ 
+   if(iShadingMapAspect<0) {
+     iShadingMapAspect = 0;
+@@ -1101,7 +1101,7 @@
+     ULONG *pulFirstInMipSrc = (ULONG*)&ptdSrc->td_pulFrames[iMipAdr];
+   
+     // for each row
+-    for(UINT ir=0;ir<ptdDest->GetPixHeight();ir++)
++    for(UINT ir = 0; ir < static_cast<UINT>(ptdDest->GetPixHeight()); ir++)
+     {
+       // get first byte for src mip texture in this row
+       ULONG *pulSrcRow = &pulFirstInMipSrc[(ir&(iSrcMipWidth-1))*iSrcMipWidth];//%
+@@ -1110,7 +1110,7 @@
+       UBYTE *pubEdgeMaskRow = &ubFirstInEdgeMap[iMaskVPos];
+       SLONG xMaskHPos = 0;
+       // for each column
+-      for(UINT ic=0;ic<ptdDest->GetPixWidth();ic++)
++      for(UINT ic = 0; ic < static_cast<UINT>(ptdDest->GetPixWidth()); ic++)
+       {
+         ULONG *ulSrc = &pulSrcRow[ic&(iSrcMipWidth-1)];
+         INDEX iMask = (INDEX)(xMaskHPos>>16);
+@@ -1142,7 +1142,7 @@
+   INDEX ctMipMaps = GetNoOfMipmaps(ptdDest->GetPixWidth(),ptdDest->GetPixHeight());
+   MakeMipmaps(ctMipMaps, ptdDest->td_pulFrames, ptdDest->GetPixWidth(), ptdDest->GetPixHeight());
+ 
+-  #pragma message(">> Fix DitherMipmaps")
++  //#pragma message(">> Fix DitherMipmaps")
+   INDEX iDithering = 4;
+   DitherMipmaps(iDithering,ptdDest->td_pulFrames,ptdDest->td_pulFrames,ptdDest->GetPixWidth(),ptdDest->GetPixHeight());
+   // force topmap upload
+@@ -1904,7 +1904,7 @@
+   (*istrFile).ExpectID_t("TRHM");  // 'Terrain heightmap'
+ 
+   // read height map
+-  for (ULONG i = 0; i < tr_pixHeightMapWidth*tr_pixHeightMapHeight; i++)
++  for (ULONG i = 0; i < static_cast<ULONG>(tr_pixHeightMapWidth*tr_pixHeightMapHeight); i++)
+     (*istrFile)>>tr_auwHeightMap[i];
+   (*istrFile).ExpectID_t("THEN");  // 'Terrain heightmap end'
+ 
+diff -aurN a/SamTSE/Sources/Engine/Terrain/TerrainMisc.cpp b/SamTSE/Sources/Engine/Terrain/TerrainMisc.cpp
+--- a/SamTSE/Sources/Engine/Terrain/TerrainMisc.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Terrain/TerrainMisc.cpp	2023-01-05 19:38:24.017293823 +0300
+@@ -47,7 +47,7 @@
+ SLONG  _slSharedTopMapSize = 0; // Size of shared memory allocated for topmap regeneration
+ #endif
+ extern INDEX  _ctShadowMapUpdates;
+-#pragma message(">> Create class with destructor to clear shared topmap memory")
++//#pragma message(">> Create class with destructor to clear shared topmap memory")
+ 
+ FLOATaabbox3D _bboxDrawOne;
+ FLOATaabbox3D _bboxDrawTwo;
+@@ -292,7 +292,7 @@
+ FLOAT3D _vDirection; // TEMP
+ FLOAT3D _vHitExact; // TEMP
+ 
+-#pragma message(">> Remove Rect from ExtractPolygonsInBox")
++//#pragma message(">> Remove Rect from ExtractPolygonsInBox")
+ // Extract polygons in given box and returns clipped rectangle
+ Rect ExtractPolygonsInBox(CTerrain *ptrTerrain, const FLOATaabbox3D &bboxExtract, GFXVertex4 **pavVtx, 
+                           INDEX_T **paiInd, INDEX &ctVtx,INDEX &ctInd,BOOL bFixSize/*=FALSE*/)
+diff -aurN a/SamTSE/Sources/Engine/Terrain/TerrainRayCasting.cpp b/SamTSE/Sources/Engine/Terrain/TerrainRayCasting.cpp
+--- a/SamTSE/Sources/Engine/Terrain/TerrainRayCasting.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Terrain/TerrainRayCasting.cpp	2023-01-05 19:38:24.017293823 +0300
+@@ -197,7 +197,7 @@
+   return fDistance;
+ }
+ 
+-#pragma message(">> Remove defined NUMDIM, RIGHT, LEFT ...")
++//#pragma message(">> Remove defined NUMDIM, RIGHT, LEFT ...")
+ #define NUMDIM	3
+ #define RIGHT	  0
+ #define LEFT	  1
+diff -aurN a/SamTSE/Sources/Engine/Terrain/TerrainRender.cpp b/SamTSE/Sources/Engine/Terrain/TerrainRender.cpp
+--- a/SamTSE/Sources/Engine/Terrain/TerrainRender.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Engine/Terrain/TerrainRender.cpp	2023-01-05 19:38:24.017293823 +0300
+@@ -240,7 +240,7 @@
+         // First vertex is lerped between top and bottom vertices
+         Lerp(pavDst[0],pavSrc[0],pavSrc[-tt.tt_ctLodVtxX],pavSrc[tt.tt_ctLodVtxX],fLerpFactor);
+         // is this odd vertex in row
+-        #pragma message(">> Fix this")
++        //#pragma message(">> Fix this")
+         if(((ix+iy)/2)%2) {
+         // if(iFacing&1)
+           // Second vertex (diagonal one) is lerped between topright and bottom left vertices
+@@ -856,7 +856,7 @@
+ static FLOAT   _fHazeAdd;
+ 
+ // check vertex against haze
+-#pragma message(">> no asm in GetHazeMapInVertex and GetFogMapInVertex")
++//#pragma message(">> no asm in GetHazeMapInVertex and GetFogMapInVertex")
+ static void GetHazeMapInVertex( GFXVertex4 &vtx, GFXTexCoord &txHaze)
+ {
+   const FLOAT fD = vtx.x*_vViewerObj(1) + vtx.y*_vViewerObj(2) + vtx.z*_vViewerObj(3);
+@@ -1243,7 +1243,7 @@
+ 
+   extern FLOATaabbox3D _bboxDrawOne;
+   extern FLOATaabbox3D _bboxDrawTwo;
+-  #pragma message(">> Remove gfxDrawWireBox")
++  //#pragma message(">> Remove gfxDrawWireBox")
+ 
+   FLOATaabbox3D bboxAllTerrain;
+   extern FLOAT3D _vHitBegin;
+diff -aurN a/SamTSE/Sources/Entities/Common/HUD.cpp b/SamTSE/Sources/Entities/Common/HUD.cpp
+--- a/SamTSE/Sources/Entities/Common/HUD.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Entities/Common/HUD.cpp	2023-01-05 19:38:24.020627164 +0300
+@@ -15,8 +15,8 @@
+ #define TOP_HEALTH 100
+ 
+ #ifdef PLATFORM_UNIX
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fArmorHeightAdjuster = 1.0f;
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fFragScorerHeightAdjuster = 1.0f;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fArmorHeightAdjuster;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fFragScorerHeightAdjuster;
+ #else
+ extern __declspec(dllimport) FLOAT _fArmorHeightAdjuster;
+ extern __declspec(dllimport) FLOAT _fFragScorerHeightAdjuster;
+diff -aurN a/SamTSE/Sources/Entities/DestroyableArchitecture.es b/SamTSE/Sources/Entities/DestroyableArchitecture.es
+--- a/SamTSE/Sources/Entities/DestroyableArchitecture.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Entities/DestroyableArchitecture.es	2023-01-05 19:38:24.020627164 +0300
+@@ -219,7 +219,7 @@
+ 
+   void DestroyObelisk()
+   {
+-    for( INDEX iDebris=0; iDebris<ARRAYCOUNT(_ObeliskDebrisInfo); iDebris++)
++    for( INDEX iDebris=0; iDebris < static_cast<INDEX>(ARRAYCOUNT(_ObeliskDebrisInfo)); iDebris++)
+     {
+       DebrisInfo &di = _ObeliskDebrisInfo[iDebris];
+       FLOAT3D vOffset = FLOAT3D( di.vOffset[0], di.vOffset[1], di.vOffset[2])*m_fStretch;
+@@ -281,7 +281,7 @@
+ 
+   void DestroyPylon()
+   {
+-    for( INDEX iDebris=0; iDebris<ARRAYCOUNT(_PylonDebrisInfo); iDebris++)
++    for( INDEX iDebris=0; iDebris < static_cast<INDEX>((ARRAYCOUNT(_PylonDebrisInfo))); iDebris++)
+     {
+       DebrisInfo &di = _PylonDebrisInfo[iDebris];
+       FLOAT3D vOffset = FLOAT3D( di.vOffset[0], di.vOffset[1], di.vOffset[2])*m_fStretch;
+diff -aurN a/SamTSE/Sources/Entities/Player.es b/SamTSE/Sources/Entities/Player.es
+--- a/SamTSE/Sources/Entities/Player.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Entities/Player.es	2023-01-05 19:38:24.023960505 +0300
+@@ -35,16 +35,16 @@
+ #include "Entities/WorldSettingsController.h"
+ 
+ #ifdef PLATFORM_UNIX
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fWeaponFOVAdjuster = 1.0f;
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fPlayerFOVAdjuster = 1.0f;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fWeaponFOVAdjuster;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fPlayerFOVAdjuster;
+ #else
+ extern __declspec(dllimport) FLOAT _fWeaponFOVAdjuster;
+ extern __declspec(dllimport) FLOAT _fPlayerFOVAdjuster;
+ #endif
+ 
+-extern INDEX hud_bShowPing				= TRUE;
+-extern INDEX hud_bShowKills				= TRUE;
+-extern INDEX hud_bShowScore				= TRUE;
++INDEX hud_bShowPing = FALSE;
++INDEX hud_bShowKills = FALSE;
++INDEX hud_bShowScore = TRUE;
+ 
+ extern void JumpFromBouncer(CEntity *penToBounce, CEntity *penBouncer);
+ // from game
+diff -aurN a/SamTSE/Sources/Entities/Projectile.es b/SamTSE/Sources/Entities/Projectile.es
+--- a/SamTSE/Sources/Entities/Projectile.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Entities/Projectile.es	2023-01-05 19:38:24.023960505 +0300
+@@ -1383,7 +1383,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // spawn smaller lava bombs
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%3; iDebris++)
++  for( INDEX iDebris=0; iDebris < static_cast<INDEX>(3+IRnd()%3); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+@@ -1735,7 +1735,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // debris
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%2; iDebris++)
++  for( INDEX iDebris=0; iDebris < static_cast<INDEX>(3+IRnd()%2); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+@@ -1971,7 +1971,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // debris
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%2; iDebris++)
++  for( INDEX iDebris=0; iDebris < static_cast<INDEX>(3+IRnd()%2); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+diff -aurN a/SamTSE/Sources/Entities/WorldBase.es b/SamTSE/Sources/Entities/WorldBase.es
+--- a/SamTSE/Sources/Entities/WorldBase.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/Entities/WorldBase.es	2023-01-05 19:38:24.023960505 +0300
+@@ -933,14 +933,14 @@
+     ulFirst = offsetof(CWorldBase, m_penGradient0);
+     ulLast  = offsetof(CWorldBase, m_penGradient19);
+     strClass = "Gradient Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset) >= ulFirst) && (static_cast<ULONG>(slPropertyOffset) <=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+     // if gravity marker
+     ulFirst = offsetof(CWorldBase, m_penGravity0);
+     ulLast  = offsetof(CWorldBase, m_penGravity9);
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset) >= ulFirst) && (static_cast<ULONG>(slPropertyOffset) <=ulLast) ) {
+       return 
+         IsDerivedFromClass(penTarget, "Gravity Marker")||
+         IsDerivedFromClass(penTarget, "Gravity Router");
+@@ -950,7 +950,7 @@
+     ulFirst = offsetof(CWorldBase, m_penMirror0);
+     ulLast  = offsetof(CWorldBase, m_penMirror4);
+     strClass = "Mirror Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset) >= ulFirst) && (static_cast<ULONG>(slPropertyOffset) <=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+@@ -958,7 +958,7 @@
+     ulFirst = offsetof(CWorldBase, m_penFog0);
+     ulLast  = offsetof(CWorldBase, m_penFog4);
+     strClass = "Fog Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset) >= ulFirst) && (static_cast<ULONG>(slPropertyOffset) <=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+@@ -966,7 +966,7 @@
+     ulFirst = offsetof(CWorldBase, m_penHaze0);
+     ulLast  = offsetof(CWorldBase, m_penHaze4);
+     strClass = "Haze Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset) >= ulFirst) && (static_cast<ULONG>(slPropertyOffset) <=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+diff -aurN a/SamTSE/Sources/EntitiesMP/Common/HUD.cpp b/SamTSE/Sources/EntitiesMP/Common/HUD.cpp
+--- a/SamTSE/Sources/EntitiesMP/Common/HUD.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/Common/HUD.cpp	2023-01-05 19:38:24.023960505 +0300
+@@ -32,8 +32,8 @@
+ #define TOP_HEALTH 100
+ 
+ #ifdef PLATFORM_UNIX
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fArmorHeightAdjuster = 1.0f;
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fFragScorerHeightAdjuster = 1.0f;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fArmorHeightAdjuster;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fFragScorerHeightAdjuster;
+ #else
+ extern __declspec(dllimport) FLOAT _fArmorHeightAdjuster;
+ extern __declspec(dllimport) FLOAT _fFragScorerHeightAdjuster;
+diff -aurN a/SamTSE/Sources/EntitiesMP/Common/Particles.cpp b/SamTSE/Sources/EntitiesMP/Common/Particles.cpp
+--- a/SamTSE/Sources/EntitiesMP/Common/Particles.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/Common/Particles.cpp	2023-01-05 19:38:24.023960505 +0300
+@@ -536,7 +536,7 @@
+       // delete the cache for this EPH and this DrawPort
+       INDEX iDrawPort = Particle_GetDrawPortID();
+       {FORDELETELIST(CGrowthCache, cgc_Node, eph->lhCache, itCache)
+-        if (itCache->ulID==iDrawPort) {
++        if (itCache->ulID==static_cast<ULONG>(iDrawPort)) {
+           itCache->acgParticles.Clear();
+           itCache->cgc_Node.Remove();
+           delete &itCache.Current();
+@@ -2603,7 +2603,7 @@
+   // find growth cache and check if it is initialised
+   CGrowthCache *cgc = NULL;
+   {FOREACHINLIST(CGrowthCache, cgc_Node, eph->lhCache, itCache)
+-    if (itCache->ulID==iDrawPort) cgc = itCache;
++    if (itCache->ulID==static_cast<ULONG>(iDrawPort)) cgc = itCache;
+   }
+   // if no cache found, create one
+   if (cgc==NULL)
+@@ -2780,7 +2780,7 @@
+   // fill structures from cache
+   CGrowthCache *cgc = NULL;
+   {FOREACHINLIST(CGrowthCache, cgc_Node, eph->lhCache, itCache)
+-    if (itCache->ulID==iDrawPort) cgc = itCache;
++    if (itCache->ulID==static_cast<ULONG>(iDrawPort)) cgc = itCache;
+   }
+   ASSERT(cgc!=NULL);
+   static CStaticStackArray<CGrowth> acgDraw;
+diff -aurN a/SamTSE/Sources/EntitiesMP/DestroyableArchitecture.es b/SamTSE/Sources/EntitiesMP/DestroyableArchitecture.es
+--- a/SamTSE/Sources/EntitiesMP/DestroyableArchitecture.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/DestroyableArchitecture.es	2023-01-05 19:38:24.023960505 +0300
+@@ -238,7 +238,7 @@
+ 
+   void DestroyObelisk()
+   {
+-    for( INDEX iDebris=0; iDebris<ARRAYCOUNT(_ObeliskDebrisInfo); iDebris++)
++    for( INDEX iDebris = 0; iDebris < static_cast<INDEX>(ARRAYCOUNT(_ObeliskDebrisInfo)); iDebris++)
+     {
+       DebrisInfo &di = _ObeliskDebrisInfo[iDebris];
+       FLOAT3D vOffset = FLOAT3D( di.vOffset[0], di.vOffset[1], di.vOffset[2])*m_fStretch;
+@@ -305,7 +305,7 @@
+ 
+   void DestroyPylon()
+   {
+-    for( INDEX iDebris=0; iDebris<ARRAYCOUNT(_PylonDebrisInfo); iDebris++)
++    for( INDEX iDebris = 0; iDebris < static_cast<INDEX>(ARRAYCOUNT(_PylonDebrisInfo)); iDebris++)
+     {
+       DebrisInfo &di = _PylonDebrisInfo[iDebris];
+       FLOAT3D vOffset = FLOAT3D( di.vOffset[0], di.vOffset[1], di.vOffset[2])*m_fStretch;
+diff -aurN a/SamTSE/Sources/EntitiesMP/Player.es b/SamTSE/Sources/EntitiesMP/Player.es
+--- a/SamTSE/Sources/EntitiesMP/Player.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/Player.es	2023-01-05 19:38:24.027293846 +0300
+@@ -57,16 +57,16 @@
+ #include "EntitiesMP/HudPicHolder.h"
+ 
+ #ifdef PLATFORM_UNIX
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fWeaponFOVAdjuster = 1.0f;
+-extern "C" __attribute__ ((visibility("default"))) FLOAT _fPlayerFOVAdjuster = 1.0f;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fWeaponFOVAdjuster;
++extern "C" __attribute__ ((visibility("default"))) FLOAT _fPlayerFOVAdjuster;
+ #else
+ extern __declspec(dllimport) FLOAT _fWeaponFOVAdjuster;
+ extern __declspec(dllimport) FLOAT _fPlayerFOVAdjuster;
+ #endif
+ 
+-extern INDEX hud_bShowPing				= TRUE;
+-extern INDEX hud_bShowKills				= TRUE;
+-extern INDEX hud_bShowScore				= TRUE;
++INDEX hud_bShowPing	= FALSE;
++INDEX hud_bShowKills = FALSE;
++INDEX hud_bShowScore = TRUE;
+ 
+ extern void JumpFromBouncer(CEntity *penToBounce, CEntity *penBouncer);
+ // from game
+@@ -2200,7 +2200,7 @@
+       {
+         fIntensity = 0.5f-0.5f*cos((m_tmInvisibility-tmNow)*(6.0f*3.1415927f/3.0f));
+       }
+-      if (_ulPlayerRenderingMask == 1<<GetMyPlayerIndex()) {
++      if (_ulPlayerRenderingMask == static_cast<ULONG>(1<<GetMyPlayerIndex())) {
+         colAlpha = (colAlpha&0xffffff00)|(INDEX)(INVISIBILITY_ALPHA_LOCAL+(FLOAT)(254-INVISIBILITY_ALPHA_LOCAL)*fIntensity);
+       } else if (TRUE) {
+         if ((m_tmInvisibility-tmNow)<1.28f) {
+diff -aurN a/SamTSE/Sources/EntitiesMP/Projectile.es b/SamTSE/Sources/EntitiesMP/Projectile.es
+--- a/SamTSE/Sources/EntitiesMP/Projectile.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/Projectile.es	2023-01-05 19:38:24.027293846 +0300
+@@ -1654,7 +1654,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // spawn smaller lava bombs
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%3; iDebris++)
++  for( INDEX iDebris = 0; iDebris < static_cast<INDEX>(3+IRnd()%3); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+@@ -2015,7 +2015,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // debris
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%2; iDebris++)
++  for( INDEX iDebris =0 ; iDebris < static_cast<INDEX>(3+IRnd()%2); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+@@ -2254,7 +2254,7 @@
+   penSpray->Initialize( eSpawnSpray);
+ 
+   // debris
+-  for( INDEX iDebris=0; iDebris<3+IRnd()%2; iDebris++)
++  for( INDEX iDebris = 0; iDebris < static_cast<INDEX>(3+IRnd()%2); iDebris++)
+   {
+     FLOAT fHeading = (FRnd()-0.5f)*180.0f;
+     FLOAT fPitch = 10.0f+FRnd()*40.0f;
+diff -aurN a/SamTSE/Sources/EntitiesMP/Summoner.es b/SamTSE/Sources/EntitiesMP/Summoner.es
+--- a/SamTSE/Sources/EntitiesMP/Summoner.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/Summoner.es	2023-01-05 19:38:24.030627187 +0300
+@@ -207,8 +207,8 @@
+  
+   BOOL IsTargetValid(SLONG slPropertyOffset, CEntity *penTarget)
+   {
+-    if ( slPropertyOffset >= _offsetof(CSummoner, m_penGroup01Template01) &&
+-      slPropertyOffset <= _offsetof(CSummoner, m_penGroup03Template06))
++    if ( static_cast<size_t>(slPropertyOffset) >= _offsetof(CSummoner, m_penGroup01Template01) &&
++      static_cast<size_t>(slPropertyOffset) <= _offsetof(CSummoner, m_penGroup03Template06))
+     {
+       if (IsDerivedFromClass(penTarget, "Enemy Base")) {
+         if (((CEnemyBase &)*penTarget).m_bTemplate) {
+diff -aurN a/SamTSE/Sources/EntitiesMP/WorldBase.es b/SamTSE/Sources/EntitiesMP/WorldBase.es
+--- a/SamTSE/Sources/EntitiesMP/WorldBase.es	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/EntitiesMP/WorldBase.es	2023-01-05 19:38:24.030627187 +0300
+@@ -1050,14 +1050,14 @@
+     ulFirst = _offsetof(CWorldBase, m_penGradient0);
+     ulLast  = _offsetof(CWorldBase, m_penGradient19);
+     strClass = "Gradient Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset)>=ulFirst) && (static_cast<ULONG>(slPropertyOffset)<=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+     // if gravity marker
+     ulFirst = _offsetof(CWorldBase, m_penGravity0);
+     ulLast  = _offsetof(CWorldBase, m_penGravity9);
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset)>=ulFirst) && (static_cast<ULONG>(slPropertyOffset)<=ulLast) ) {
+       return 
+         IsDerivedFromClass(penTarget, "Gravity Marker")||
+         IsDerivedFromClass(penTarget, "Gravity Router");
+@@ -1067,7 +1067,7 @@
+     ulFirst = _offsetof(CWorldBase, m_penMirror0);
+     ulLast  = _offsetof(CWorldBase, m_penMirror4);
+     strClass = "Mirror Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset)>=ulFirst) && (static_cast<ULONG>(slPropertyOffset)<=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+@@ -1075,7 +1075,7 @@
+     ulFirst = _offsetof(CWorldBase, m_penFog0);
+     ulLast  = _offsetof(CWorldBase, m_penFog9);
+     strClass = "Fog Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset)>=ulFirst) && (static_cast<ULONG>(slPropertyOffset)<=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+@@ -1083,7 +1083,7 @@
+     ulFirst = _offsetof(CWorldBase, m_penHaze0);
+     ulLast  = _offsetof(CWorldBase, m_penHaze4);
+     strClass = "Haze Marker";
+-    if( (slPropertyOffset>=ulFirst) && (slPropertyOffset<=ulLast) ) {
++    if( (static_cast<ULONG>(slPropertyOffset)>=ulFirst) && (static_cast<ULONG>(slPropertyOffset)<=ulLast) ) {
+       return (IsDerivedFromClass(penTarget, strClass));
+     }
+ 
+diff -aurN a/SamTSE/Sources/GameMP/Console.cpp b/SamTSE/Sources/GameMP/Console.cpp
+--- a/SamTSE/Sources/GameMP/Console.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/GameMP/Console.cpp	2023-01-05 19:38:24.043960551 +0300
+@@ -553,7 +553,7 @@
+   case VK_BACK:    Key_Backspace(bShift, FALSE);  break;
+   case VK_DELETE:  Key_Backspace(bShift, TRUE);   break;
+   case VK_LEFT:    if( iCursorPos > 0)                      iCursorPos--;  break;
+-  case VK_RIGHT:   if( iCursorPos < strlen(strEditingLine)) iCursorPos++;  break;
++  case VK_RIGHT:   if( iCursorPos < static_cast<INDEX>(strlen(strEditingLine))) iCursorPos++;  break;
+   case VK_HOME:    iCursorPos = 0;                       break;
+   case VK_END:     iCursorPos = strlen(strEditingLine);  break;
+   }
+diff -aurN a/SamTSE/Sources/GameMP/Game.cpp b/SamTSE/Sources/GameMP/Game.cpp
+--- a/SamTSE/Sources/GameMP/Game.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/GameMP/Game.cpp	2023-01-05 19:38:24.043960551 +0300
+@@ -1058,9 +1058,9 @@
+   _pShell->Execute(CTString("include \"")+fnmStartupScript+"\";");
+ 
+   // check the size and pointer of player control variables that are local to each player
+-  if (ctl_slPlayerControlsSize<=0
+-    ||ctl_slPlayerControlsSize>sizeof(((CLocalPlayer*)NULL)->lp_ubPlayerControlsState)
+-    ||ctl_pvPlayerControls==NULL) {
++  if (ctl_slPlayerControlsSize <= 0
++    || static_cast<ULONG>(ctl_slPlayerControlsSize) > sizeof(((CLocalPlayer*)NULL)->lp_ubPlayerControlsState)
++    || ctl_pvPlayerControls == NULL) {
+     FatalError(TRANS("Current player controls are invalid."));
+   }
+ 
+@@ -2282,7 +2282,7 @@
+     // timer must not occur during prescanning
+     { 
+ #if defined(PLATFORM_UNIX) && !defined(SINGLE_THREADED)
+-      #warning "This seems to cause Race Condition, so disabled"
++      //#warning "This seems to cause Race Condition, so disabled"
+ #else
+       CTSingleLock csTimer(&_pTimer->tm_csHooks, TRUE);
+ #endif
+diff -aurN a/SamTSE/Sources/SeriousSam/Menu.cpp b/SamTSE/Sources/SeriousSam/Menu.cpp
+--- a/SamTSE/Sources/SeriousSam/Menu.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/SeriousSam/Menu.cpp	2023-01-05 19:38:24.110627373 +0300
+@@ -28,14 +28,14 @@
+ extern CTextureObject *_ptoLogoODI;
+ extern CTextureObject *_ptoLogoEAX;
+ //##############################################################################################################################3
+-extern FLOAT _fMenuPlayerProfileAdjuster = 0.35f;
++__extern FLOAT _fMenuPlayerProfileAdjuster = 0.35f;
+ 
+-extern FLOAT _fGlobalListAdjuster = 0.7f;
+-extern FLOAT _fGlobalTipAdjuster  = 0.90f;
+-extern FLOAT _fGlobalProfileAdjuster = 0.95f;
+-extern FLOAT _fGlobalModAdjuster = 0.75f;
+-extern FLOAT _fGlobalOptionsAdjuster = 0.75f;
+-extern FLOAT _fGlobalButtonAdjuster  = 1.0f;
++__extern FLOAT _fGlobalListAdjuster = 0.7f;
++__extern FLOAT _fGlobalTipAdjuster  = 0.90f;
++__extern FLOAT _fGlobalProfileAdjuster = 0.95f;
++__extern FLOAT _fGlobalModAdjuster = 0.75f;
++__extern FLOAT _fGlobalOptionsAdjuster = 0.75f;
++__extern FLOAT _fGlobalButtonAdjuster  = 1.0f;
+ 
+ 
+ extern FLOAT _fBigStartJ; 			//Position of contents below large font title
+@@ -169,15 +169,16 @@
+ }
+ 
+ // mouse cursor position
+-extern PIX _pixCursorPosI = 0;
+-extern PIX _pixCursorPosJ = 0;
+-extern PIX _pixCursorExternPosI = 0;
+-extern PIX _pixCursorExternPosJ = 0;
+-extern BOOL _bMouseUsedLast = FALSE;
+-extern CMenuGadget *_pmgUnderCursor =  NULL;
++__extern PIX _pixCursorPosI = 0;
++__extern PIX _pixCursorPosJ = 0;
++__extern PIX _pixCursorExternPosI = 0;
++__extern PIX _pixCursorExternPosJ = 0;
++__extern BOOL _bMouseUsedLast = FALSE;
++__extern CMenuGadget *_pmgUnderCursor =  NULL;
++__extern BOOL _bMouseRight = FALSE;
++
+ extern BOOL _bDefiningKey;
+ extern BOOL _bEditingString;
+-extern BOOL _bMouseRight = FALSE;
+ 
+ // thumbnail for showing in menu
+ CTextureObject _toThumbnail;
+@@ -2256,7 +2257,7 @@
+   }
+ 
+   // for each mode
+-  for(ctGameTypeRadioTexts=0; ctGameTypeRadioTexts<ARRAYCOUNT(astrGameTypeRadioTexts); ctGameTypeRadioTexts++) {
++  for(ctGameTypeRadioTexts=0; ctGameTypeRadioTexts < static_cast<INDEX>(ARRAYCOUNT(astrGameTypeRadioTexts)); ctGameTypeRadioTexts++) {
+     // get the text
+     CTString (*pFunc)(INDEX) = (CTString (*)(INDEX))pss->ss_pvValue;
+     CTString strMode = pFunc(ctGameTypeRadioTexts);
+@@ -4102,7 +4103,7 @@
+   gm_lhGadgets.AddTail( mgPlayerNameLabel.mg_lnNode);
+ 
+   // setup of player name button is done on start menu
+-  mgPlayerName.mg_strText = "<???>";
++  mgPlayerName.mg_strText = "<***>";
+   mgPlayerName.mg_ctMaxStringLen = 25;
+   mgPlayerName.mg_boxOnScreen = BoxPlayerEdit(1.25, _fGlobalProfileAdjuster);
+   mgPlayerName.mg_bfsFontSize = BFS_MEDIUM;
+@@ -4120,7 +4121,7 @@
+   gm_lhGadgets.AddTail( mgPlayerTeamLabel.mg_lnNode);
+ 
+   // setup of player name button is done on start menu
+-  mgPlayerTeam.mg_strText = "<???>";
++  mgPlayerTeam.mg_strText = "<***>";
+   mgPlayerName.mg_ctMaxStringLen = 25;
+   mgPlayerTeam.mg_boxOnScreen = BoxPlayerEdit(2.25f, _fGlobalProfileAdjuster);
+   mgPlayerTeam.mg_bfsFontSize = BFS_MEDIUM;
+@@ -5662,7 +5663,7 @@
+   gm_lhGadgets.AddTail(mgServerList.mg_lnNode);
+ 
+   ASSERT(ARRAYCOUNT(mgServerColumn)==ARRAYCOUNT(mgServerFilter));
+-  for (INDEX i=0; i<ARRAYCOUNT(mgServerFilter); i++) {
++  for (INDEX i=0; i < static_cast<INDEX>(ARRAYCOUNT(mgServerFilter)); i++) {
+     mgServerColumn[i].mg_strText = "";
+     mgServerColumn[i].mg_boxOnScreen = BoxPlayerEdit(5.0, _fGlobalProfileAdjuster);
+     mgServerColumn[i].mg_bfsFontSize = BFS_SMALL;
+diff -aurN a/SamTSE/Sources/SeriousSam/MenuGadgets.cpp b/SamTSE/Sources/SeriousSam/MenuGadgets.cpp
+--- a/SamTSE/Sources/SeriousSam/MenuGadgets.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/SeriousSam/MenuGadgets.cpp	2023-01-05 19:38:24.110627373 +0300
+@@ -18,9 +18,9 @@
+ //##############################################################################################################################3
+ //##############################################################################################################################3
+ //##############################################################################################################################3
+-extern FLOAT _fGlobalTopAdjuster = 0.15f;
+-extern FLOAT _fGlobalInfoAdjuster = 0.05f;
+-extern FLOAT _fGlobalProfileFOVAdjuster = 90.0f;
++__extern FLOAT _fGlobalTopAdjuster = 0.15f;
++__extern FLOAT _fGlobalInfoAdjuster = 0.05f;
++__extern FLOAT _fGlobalProfileFOVAdjuster = 90.0f;
+ ENGINE_API extern FLOAT _fWeaponFOVAdjuster;
+ //##############################################################################################################################3
+ //##############################################################################################################################3
+@@ -515,7 +515,7 @@
+   case VK_RETURN:  case VK_LBUTTON: *mg_pstrToChange = mg_strText;  Clear(); OnStringChanged();  break;
+   case VK_ESCAPE:  case VK_RBUTTON:  mg_strText = *mg_pstrToChange; Clear(); OnStringCanceled(); break;
+   case VK_LEFT:    if( mg_iCursorPos > 0)                  mg_iCursorPos--;  break;
+-  case VK_RIGHT:   if( mg_iCursorPos < strlen(mg_strText)) mg_iCursorPos++;  break;
++  case VK_RIGHT:   if( mg_iCursorPos < static_cast<INDEX>(strlen(mg_strText))) mg_iCursorPos++;  break;
+   case VK_HOME:    mg_iCursorPos = 0;                   break;
+   case VK_END:     mg_iCursorPos = strlen(mg_strText);  break;
+   case VK_BACK:    Key_BackDel( mg_strText, mg_iCursorPos, bShift, FALSE);  break;
+@@ -1421,7 +1421,7 @@
+   INDEX iSession=0;
+ 
+   INDEX ctColumns[7];
+-  {for (INDEX i=0; i<ARRAYCOUNT(ctColumns); i++) {
++  {for (INDEX i=0; i < static_cast<INDEX>(ARRAYCOUNT(ctColumns)); i++) {
+     ctColumns[i] = mgServerColumn[i].mg_strText.Length()+1;
+   }}
+ 
+@@ -1466,14 +1466,14 @@
+   mg_pixHeaderMaxJ = pixTopJ+(pixLineSize+pixCharSizeJ)*2;
+   memcpy(mg_pixHeaderI, apixSeparatorI, sizeof(mg_pixHeaderI));
+ 
+-  {for (INDEX i=0; i<ARRAYCOUNT(mgServerFilter); i++) {
++  {for (INDEX i=0; i < static_cast<INDEX>(ARRAYCOUNT(mgServerFilter)); i++) {
+     mgServerColumn[i].mg_boxOnScreen = PixBoxToFloatBox(pdp, 
+       PIXaabbox2D( PIX2D(apixSeparatorI[i]+pixCharSizeI/2,pixTopJ+pixLineSize*4), PIX2D(apixSeparatorI[i+1]-pixCharSizeI/2,pixTopJ+pixLineSize*4+pixCharSizeJ) ));
+     mgServerFilter[i].mg_boxOnScreen = PixBoxToFloatBox(pdp, 
+       PIXaabbox2D( PIX2D(apixSeparatorI[i]+pixCharSizeI/2,pixFilterTopJ), PIX2D(apixSeparatorI[i+1]-pixCharSizeI/2,pixFilterTopJ+pixCharSizeJ) ));
+   }}
+ 
+-  for (INDEX i=0; i<ARRAYCOUNT(apixSeparatorI); i++) {
++  for (INDEX i=0; i < static_cast<INDEX>(ARRAYCOUNT(apixSeparatorI)); i++) {
+     pdp->DrawLine(apixSeparatorI[i], pixTopJ, apixSeparatorI[i], pixBottomJ, col|CT_OPAQUE);
+   }
+   pdp->DrawLine(apixSeparatorI[0], pixTopJ, apixSeparatorI[8], pixTopJ, col|CT_OPAQUE);
+diff -aurN a/SamTSE/Sources/SeriousSam/MenuPrinting.cpp b/SamTSE/Sources/SeriousSam/MenuPrinting.cpp
+--- a/SamTSE/Sources/SeriousSam/MenuPrinting.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/SeriousSam/MenuPrinting.cpp	2023-01-05 19:38:24.110627373 +0300
+@@ -4,15 +4,15 @@
+ 
+ #include "MenuPrinting.h"
+ 
+-extern FLOAT _fBigStartJ	= 0.25f;
+-extern FLOAT _fBigSizeJ		= 0.066f;
+-extern FLOAT _fMediumSizeJ	= 0.04f;
+-extern FLOAT _fNoStartI		= 0.25f;
+-extern FLOAT _fNoSizeI		= 0.04f;
+-extern FLOAT _fNoSpaceI		= 0.01f;
+-extern FLOAT _fNoUpStartJ	= 0.24f;
+-extern FLOAT _fNoDownStartJ	= 0.44f;
+-extern FLOAT _fNoSizeJ		= 0.04f;
++__extern FLOAT _fBigStartJ	= 0.25f;
++__extern FLOAT _fBigSizeJ		= 0.066f;
++__extern FLOAT _fMediumSizeJ	= 0.04f;
++__extern FLOAT _fNoStartI		= 0.25f;
++__extern FLOAT _fNoSizeI		= 0.04f;
++__extern FLOAT _fNoSpaceI		= 0.01f;
++__extern FLOAT _fNoUpStartJ	= 0.24f;
++__extern FLOAT _fNoDownStartJ	= 0.44f;
++__extern FLOAT _fNoSizeJ		= 0.04f;
+ 
+ #ifdef SAM_VERSION_FE105
+ #define _scaler_ 3.5
+diff -aurN a/SamTSE/Sources/SeriousSam/SeriousSam.cpp b/SamTSE/Sources/SeriousSam/SeriousSam.cpp
+--- a/SamTSE/Sources/SeriousSam/SeriousSam.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/SeriousSam/SeriousSam.cpp	2023-01-05 19:38:24.110627373 +0300
+@@ -86,43 +86,43 @@
+ extern FLOAT _fNoSizeJ;
+ 
+ // application state variables
+-extern BOOL _bRunning = TRUE;
+-extern BOOL _bQuitScreen = TRUE;
+-extern BOOL bMenuActive = FALSE;
+-extern BOOL bMenuRendering = FALSE;
++__extern BOOL _bRunning = TRUE;
++__extern BOOL _bQuitScreen = TRUE;
++__extern BOOL bMenuActive = FALSE;
++__extern BOOL bMenuRendering = FALSE;
+ 
+ extern BOOL _bDefiningKey;
+ static BOOL _bReconsiderInput = FALSE;
+-extern PIX  _pixDesktopWidth = 0;    // desktop width when started (for some tests)
++__extern PIX  _pixDesktopWidth = 0;    // desktop width when started (for some tests)
+ 
+ static INDEX sam_iMaxFPSActive   = 500;
+ static INDEX sam_iMaxFPSInactive = 10;
+ static INDEX sam_bPauseOnMinimize = TRUE; // auto-pause when window has been minimized
+-extern INDEX sam_bWideScreen = FALSE;
+-extern FLOAT sam_fPlayerOffset = 0.0f;
++__extern INDEX sam_bWideScreen = FALSE;
++__extern FLOAT sam_fPlayerOffset = 0.0f;
+ 
+ // display mode settings
+-extern INDEX sam_bFullScreenActive = FALSE;
+-extern INDEX sam_iScreenSizeI = 1024;  // current size of the window
+-extern INDEX sam_iScreenSizeJ = 768;  // current size of the window
+-extern INDEX sam_iAspectSizeI = 16;  //
+-extern INDEX sam_iAspectSizeJ = 9;  //
+-extern INDEX sam_iDisplayDepth  = 0;  // 0==default, 1==16bit, 2==32bit
+-extern INDEX sam_iDisplayAdapter = 0;
++__extern INDEX sam_bFullScreenActive = FALSE;
++__extern INDEX sam_iScreenSizeI = 1024;  // current size of the window
++__extern INDEX sam_iScreenSizeJ = 768;  // current size of the window
++__extern INDEX sam_iAspectSizeI = 16;  //
++__extern INDEX sam_iAspectSizeJ = 9;  //
++__extern INDEX sam_iDisplayDepth  = 0;  // 0==default, 1==16bit, 2==32bit
++__extern INDEX sam_iDisplayAdapter = 0;
+ #ifdef SE1_VULKAN
+-extern INDEX sam_iGfxAPI = 1; // default opengl //1;         // 1==Vulkan
++__extern INDEX sam_iGfxAPI = 1; // default opengl //1;         // 1==Vulkan
+ #else
+-extern INDEX sam_iGfxAPI = 0;                                // 0==OpenGL
++__extern INDEX sam_iGfxAPI = 0;                                // 0==OpenGL
+ #endif // SE1_VULKAN
+-extern INDEX sam_bFirstStarted = FALSE;
+-extern FLOAT sam_tmDisplayModeReport = 5.0f;
+-extern INDEX sam_bShowAllLevels = FALSE;
+-extern INDEX sam_bMentalActivated = FALSE;
++__extern INDEX sam_bFirstStarted = FALSE;
++__extern FLOAT sam_tmDisplayModeReport = 5.0f;
++__extern INDEX sam_bShowAllLevels = FALSE;
++__extern INDEX sam_bMentalActivated = FALSE;
+ 
+ // network settings
+-extern CTString sam_strNetworkSettings = "";
++__extern CTString sam_strNetworkSettings = "";
+ // command line
+-extern CTString sam_strCommandLine = "";
++__extern CTString sam_strCommandLine = "";
+ 
+ // 0...app started for the first time
+ // 1...all ok
+@@ -131,25 +131,25 @@
+ static TIME _tmDisplayModeChanged = 100.0f; // when display mode was last changed
+ 
+ // rendering preferences for automatic settings
+-extern INDEX sam_iVideoSetup = 1;  // 0==speed, 1==normal, 2==quality, 3==custom
++__extern INDEX sam_iVideoSetup = 1;  // 0==speed, 1==normal, 2==quality, 3==custom
+ // automatic adjustment of audio quality
+-extern BOOL sam_bAutoAdjustAudio = TRUE;
++__extern BOOL sam_bAutoAdjustAudio = TRUE;
+ 
+-extern INDEX sam_bAutoPlayDemos = TRUE;
++__extern INDEX sam_bAutoPlayDemos = TRUE;
+ static INDEX _bInAutoPlayLoop = TRUE;
+ 
+ // menu calling
+-extern INDEX sam_bMenuSave     = FALSE;
+-extern INDEX sam_bMenuLoad     = FALSE;
+-extern INDEX sam_bMenuControls = FALSE;
+-extern INDEX sam_bMenuHiScore  = FALSE;
+-extern INDEX sam_bToggleConsole = FALSE;
+-extern INDEX sam_iStartCredits = FALSE;
++__extern INDEX sam_bMenuSave     = FALSE;
++__extern INDEX sam_bMenuLoad     = FALSE;
++__extern INDEX sam_bMenuControls = FALSE;
++__extern INDEX sam_bMenuHiScore  = FALSE;
++__extern INDEX sam_bToggleConsole = FALSE;
++__extern INDEX sam_iStartCredits = FALSE;
+ 
+ // for mod re-loading
+-extern CTFileName _fnmModToLoad = CTString("");
+-extern CTString _strModServerJoin = CTString("");
+-extern CTString _strURLToVisit = CTString("");
++__extern CTFileName _fnmModToLoad = CTString("");
++__extern CTString _strModServerJoin = CTString("");
++__extern CTString _strURLToVisit = CTString("");
+ static char _strExePath[MAX_PATH] = "";
+ ENGINE_API extern INDEX sys_iSysPath;
+ 
+@@ -157,16 +157,16 @@
+ // 0 - nothing
+ // 1 - start (invoke console)
+ // 2 - console invoked, waiting for one redraw
+-extern INDEX _iAddonExecState = 0;
+-extern CTFileName _fnmAddonToExec = CTString("");
++__extern INDEX _iAddonExecState = 0;
++__extern CTFileName _fnmAddonToExec = CTString("");
+ 
+ // logo textures
+ static CTextureObject  _toLogoCT;
+ static CTextureObject  _toLogoODI;
+ static CTextureObject  _toLogoEAX;
+-extern CTextureObject *_ptoLogoCT  = NULL;
+-extern CTextureObject *_ptoLogoODI = NULL;
+-extern CTextureObject *_ptoLogoEAX = NULL;
++__extern CTextureObject *_ptoLogoCT  = NULL;
++__extern CTextureObject *_ptoLogoODI = NULL;
++__extern CTextureObject *_ptoLogoEAX = NULL;
+ 
+ #ifdef FIRST_ENCOUNTER  // First Encounter
+ CTString sam_strVersion = "1.10";
+@@ -1401,7 +1401,7 @@
+       }
+ 
+       // if toggling console
+-      BOOL bConsoleKey = sam_bToggleConsole || msg.message==WM_KEYDOWN && 
++      BOOL bConsoleKey = sam_bToggleConsole || (msg.message==WM_KEYDOWN && 
+             // !!! FIXME: rcg11162001 This sucks.
+             // FIXME: DG: we could use SDL_SCANCODE_GRAVE ?
+         #ifdef PLATFORM_UNIX
+@@ -1409,7 +1409,7 @@
+         #else
+         (MapVirtualKey(msg.wParam, 0)==41 // scan code for '~'
+         #endif
+-        || msg.wParam==VK_F1 || (msg.wParam==VK_ESCAPE && _iAddonExecState==3));
++        || msg.wParam==VK_F1 || (msg.wParam==VK_ESCAPE && _iAddonExecState==3)));
+       if(bConsoleKey && !_bDefiningKey)
+       {
+         sam_bToggleConsole = FALSE;
+@@ -1579,6 +1579,9 @@
+     argv[2] = (const char *)"+game";
+     argv[3] = (const char *)strMod;
+     argv[4] = NULL;
++    argv[5] = NULL;
++    argv[6] = NULL;
++    argv[7] = NULL;
+     if (_strModServerJoin!="") {
+       argv[4] = (const char *)" +connect ";
+       argv[5] = (const char *)_strModServerJoin;
+@@ -1586,11 +1589,11 @@
+       argv[7] = NULL;
+     }
+ #ifdef PLATFORM_WIN32
+-    _execl((const char *)argv[0],(const char *)argv[1],(const char *)argv[2],(const char *)argv[3],
++    _execl((const char *)argv[0],(const char *)argv[1],(const char *)argv[2],(const char *)argv[3], \
+        (const char *)argv[4],(const char *)argv[5],(const char *)argv[6],(const char *)argv[7]);
+     MessageBoxA(0, "Error launching the Mod!\n", "Serious Sam", MB_OK|MB_ICONERROR);
+ #else
+-    execl((const char *)argv[0],(const char *)argv[1],(const char *)argv[2],(const char *)argv[3],
++    execl((const char *)argv[0],(const char *)argv[1],(const char *)argv[2],(const char *)argv[3], \
+        (const char *)argv[4],(const char *)argv[5],(const char *)argv[6],(const char *)argv[7]);
+     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                          "Serious Sam",
+diff -aurN a/SamTSE/Sources/SeriousSam/StdH.h b/SamTSE/Sources/SeriousSam/StdH.h
+--- a/SamTSE/Sources/SeriousSam/StdH.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/SeriousSam/StdH.h	2023-01-05 19:38:24.110627373 +0300
+@@ -31,6 +31,12 @@
+ #define _offsetof offsetof
+ #endif
+ 
++#ifdef _MSC_VER
++#define __extern extern
++#else
++#define __extern
++#endif
++
+ #ifdef PLATFORM_UNIX
+ #define DECL_DLL 
+ #endif
+diff -aurN a/SamTSE/Sources/WorldEditor/Browser.cpp b/SamTSE/Sources/WorldEditor/Browser.cpp
+--- a/SamTSE/Sources/WorldEditor/Browser.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/Browser.cpp	2023-01-05 19:38:24.113960714 +0300
+@@ -162,8 +162,8 @@
+   InsertedDir = m_TreeCtrl.InsertItem( 0, L"", 0, 0, TVIS_SELECTED, TVIF_STATE, 0,
+                                        hParent, TVI_SORT );
+ 
+-  pOneDirectory->vtn_Handle = (ULONG) InsertedDir;
+-  m_TreeCtrl.SetItemData( InsertedDir, (ULONG)(pOneDirectory));
++  pOneDirectory->vtn_Handle = (HTREEITEM) InsertedDir;
++  m_TreeCtrl.SetItemData( InsertedDir, (DWORD_PTR)(pOneDirectory));
+   m_TreeCtrl.SetItemText( InsertedDir, CString(pOneDirectory->vtn_strName));
+   m_TreeCtrl.SetItemImage( InsertedDir, pOneDirectory->vtn_itIconType,
+                            pOneDirectory->vtn_itIconType + NO_OF_ICONS);
+@@ -801,15 +801,18 @@
+ 
+ CVirtualTreeNode *CBrowser::GetSelectedDirectory(void)
+ {
+-  if( m_TreeCtrl.GetCount() != 0)
+-  {
+-    HTREEITEM pSelectedItem = m_TreeCtrl.GetSelectedItem();
+-    if( pSelectedItem!=NULL)
+-    {
+-      return (CVirtualTreeNode *)m_TreeCtrl.GetItemData( pSelectedItem);
+-    }
+-  }
+-  return NULL;
++	if (m_TreeCtrl.GetCount() != 0)
++	{
++		HTREEITEM pSelectedItem = m_TreeCtrl.GetSelectedItem();
++		if (pSelectedItem != NULL)
++		{
++			DWORD_PTR hItem = m_TreeCtrl.GetItemData(pSelectedItem);
++			CVirtualTreeNode * cthItem = reinterpret_cast<CVirtualTreeNode *>(hItem);
++			return cthItem;
++			//return (CVirtualTreeNode *)m_TreeCtrl.GetItemData(pSelectedItem);
++		}
++	}
++	return NULL;
+ }
+ 
+ void CBrowser::OpenSelectedDirectory(void)
+diff -aurN a/SamTSE/Sources/WorldEditor/CSGDesitnationCombo.cpp b/SamTSE/Sources/WorldEditor/CSGDesitnationCombo.cpp
+--- a/SamTSE/Sources/WorldEditor/CSGDesitnationCombo.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/CSGDesitnationCombo.cpp	2023-01-05 19:38:24.113960714 +0300
+@@ -95,7 +95,7 @@
+             // add it to CSG destination combo
+             INDEX iComboEntry = AddString( CString(strEntityName));
+             // set item's data as ptr to current entity
+-            SetItemData( iComboEntry, (ULONG)(&*iten));
++            SetItemData( iComboEntry, (DWORD_PTR)(&*iten));
+             // try to select previously selected combo entry
+             if( strEntityName == m_strLastSelectedName)
+             {
+diff -aurN a/SamTSE/Sources/WorldEditor/DlgLinkTree.cpp b/SamTSE/Sources/WorldEditor/DlgLinkTree.cpp
+--- a/SamTSE/Sources/WorldEditor/DlgLinkTree.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/DlgLinkTree.cpp	2023-01-05 19:38:24.113960714 +0300
+@@ -182,7 +182,7 @@
+   HTREEITEM InsertedEntity;
+   InsertedEntity = m_ctrTree.InsertItem( 0, L"", 0, 0,
+     TVIS_SELECTED, TVIF_STATE, 0, hParent, 0);
+-  m_ctrTree.SetItemData( InsertedEntity, (ULONG)(pen));
++  m_ctrTree.SetItemData( InsertedEntity, (DWORD_PTR)(pen));
+   CTString strText="";
+   if( m_bClass)
+   {
+diff -aurN a/SamTSE/Sources/WorldEditor/DlgPgPrimitive.cpp b/SamTSE/Sources/WorldEditor/DlgPgPrimitive.cpp
+--- a/SamTSE/Sources/WorldEditor/DlgPgPrimitive.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/DlgPgPrimitive.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -614,7 +614,7 @@
+ 
+     INDEX iAddedAs = m_comboPrimitiveHistory.AddString(CString(
+       strNo+strDescription+strPosition+strTriangularisation));
+-    m_comboPrimitiveHistory.SetItemData( iAddedAs, (ULONG) &itPrim->pihb_vfpPrimitive);
++    m_comboPrimitiveHistory.SetItemData( iAddedAs, (DWORD_PTR) &itPrim->pihb_vfpPrimitive);
+     iCt++;
+   }
+ 	return TRUE;
+diff -aurN a/SamTSE/Sources/WorldEditor/DlgPgShadow.cpp b/SamTSE/Sources/WorldEditor/DlgPgShadow.cpp
+--- a/SamTSE/Sources/WorldEditor/DlgPgShadow.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/DlgPgShadow.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -316,7 +316,7 @@
+     strIlluminationName = pDoc->m_woWorld.wo_aitIlluminationTypes[iIllumination].it_strName;
+     if(strIlluminationName == "") break;
+     INDEX iAddedAs = m_ComboIllumination.AddString( CString(strIlluminationName));
+-    m_ComboIllumination.SetItemData( iAddedAs, (ULONG) iIllumination);
++    m_ComboIllumination.SetItemData( iAddedAs, (DWORD_PTR) iIllumination);
+   }
+   for(INDEX iBlend=0; iBlend<256; iBlend++)
+   {
+diff -aurN a/SamTSE/Sources/WorldEditor/DlgSelectByName.cpp b/SamTSE/Sources/WorldEditor/DlgSelectByName.cpp
+--- a/SamTSE/Sources/WorldEditor/DlgSelectByName.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/DlgSelectByName.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -108,7 +108,7 @@
+       // add it to list box
+       INDEX iListEntry = m_ListBox.AddString( CString(strEntityName));
+       // set item's data as ptr to current entity
+-      m_ListBox.SetItemData( iListEntry, (ULONG)(&*iten));
++      m_ListBox.SetItemData( iListEntry, (DWORD_PTR)(&*iten));
+       // if current entity is selected
+       if( iten->IsSelected( ENF_SELECTED))
+       {
+diff -aurN a/SamTSE/Sources/WorldEditor/PrimitiveHistoryCombo.cpp b/SamTSE/Sources/WorldEditor/PrimitiveHistoryCombo.cpp
+--- a/SamTSE/Sources/WorldEditor/PrimitiveHistoryCombo.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/PrimitiveHistoryCombo.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -66,7 +66,7 @@
+   }
+   
+   CValuesForPrimitive *pVFP = (CValuesForPrimitive *) GetItemData( iItem);
+-  if( (ULONG) pVFP == CB_ERR) return;
++  if( (ULONG_PTR) pVFP == CB_ERR) return;
+ 
+   CDC *pDC = CDC::FromHandle( lpDrawItemStruct->hDC);
+   RECT rectItem = lpDrawItemStruct->rcItem;
+diff -aurN a/SamTSE/Sources/WorldEditor/PropertyComboBar.cpp b/SamTSE/Sources/WorldEditor/PropertyComboBar.cpp
+--- a/SamTSE/Sources/WorldEditor/PropertyComboBar.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/PropertyComboBar.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -1127,7 +1127,7 @@
+                   iAddedAs = m_EditEnumComboBox.AddString( L"Unnamed");
+                 }
+                 // set entity ptr as item's data
+-                m_EditEnumComboBox.SetItemData( iAddedAs, (ULONG) &*iten);
++                m_EditEnumComboBox.SetItemData( iAddedAs, (DWORD_PTR) &*iten);
+               }
+             }}
+ 
+@@ -1213,7 +1213,7 @@
+                 // add animation to combo
+                 INDEX iAddedAs = m_EditEnumComboBox.AddString( CString(aiInfo.ai_AnimName));
+                 // set animation number as item's data
+-                m_EditEnumComboBox.SetItemData( iAddedAs, (ULONG) iAnimation);
++                m_EditEnumComboBox.SetItemData( iAddedAs, (DWORD_PTR) iAnimation);
+               }
+             }
+ 
+@@ -1282,7 +1282,7 @@
+               // add illumination type to combo
+               INDEX iAddedAs = m_EditEnumComboBox.AddString( CString(strIlluminationName));
+               // set illumination type number as item's data
+-              m_EditEnumComboBox.SetItemData( iAddedAs, (ULONG) iIllumination);
++              m_EditEnumComboBox.SetItemData( iAddedAs, (DWORD_PTR) iIllumination);
+             }
+ 
+             // lock selection's dynamic container
+diff -aurN a/SamTSE/Sources/WorldEditor/PropertyComboBox.cpp b/SamTSE/Sources/WorldEditor/PropertyComboBox.cpp
+--- a/SamTSE/Sources/WorldEditor/PropertyComboBox.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/PropertyComboBox.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -263,7 +263,7 @@
+           // add property name and shortcut key
+           INDEX iAddedAs = AddString( CString(itProp->pid_strName + achrShortcutKey));
+           // set ptr to property ID object
+-          SetItemData( iAddedAs, (ULONG) &*itProp);
++          SetItemData( iAddedAs, (DWORD_PTR) &*itProp);
+           // enable combo
+           EnableWindow();
+         }
+diff -aurN a/SamTSE/Sources/WorldEditor/TerrainInterface.cpp b/SamTSE/Sources/WorldEditor/TerrainInterface.cpp
+--- a/SamTSE/Sources/WorldEditor/TerrainInterface.cpp	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/TerrainInterface.cpp	2023-01-05 19:38:24.117294055 +0300
+@@ -1352,9 +1352,9 @@
+     CTerrainLayer *ptlLayer=GetLayer(iLayer);
+     if(ptlLayer!=NULL)
+     {
+-      BOOL bOldValue=*(BOOL*)((UBYTE*)ptlLayer+(ULONG)ptib->tib_pfData1);
++      BOOL bOldValue=*(BOOL*)((UBYTE*)ptlLayer+(ULONG_PTR)ptib->tib_pfData1);
+       bOldValue=!bOldValue;
+-      *(BOOL*)((UBYTE*)ptlLayer+(ULONG)ptib->tib_pfData1)=bOldValue;
++      *(BOOL*)((UBYTE*)ptlLayer+(ULONG_PTR)ptib->tib_pfData1)=bOldValue;
+     }
+   }
+ }
+@@ -1374,7 +1374,7 @@
+     CTerrainLayer *ptlLayer=GetLayer(iLayer);
+     if(ptlLayer!=NULL)
+     {
+-      FLOAT *pfNormalized=(FLOAT *)((UBYTE*)ptlLayer+(ULONG)ptib->tib_pfData1);
++      FLOAT *pfNormalized=(FLOAT *)((UBYTE*)ptlLayer+(ULONG_PTR)ptib->tib_pfData1);
+       FLOAT fValue=*pfNormalized;
+       strInfo.PrintF("%s: %d%%", ptib->tib_strToolTip, INDEX(floor(fValue*100.0f+0.5f)));
+       return strInfo;
+@@ -1391,7 +1391,7 @@
+   CTerrainLayer *ptlLayer=GetLayer(iLayer);
+   if(ptlLayer==NULL) return;
+   
+-  FLOAT *pfNormalized=(FLOAT *)((UBYTE*)ptlLayer+(ULONG)ptib->tib_pfData1);
++  FLOAT *pfNormalized=(FLOAT *)((UBYTE*)ptlLayer+(ULONG_PTR)ptib->tib_pfData1);
+   FLOAT fOldValue=*pfNormalized;
+   FLOAT fAddX=ptib->tib_fDataDelta*fdx;
+   FLOAT fNewValue=Clamp( fOldValue+fAddX, 0.0f, 1.0f);
+diff -aurN a/SamTSE/Sources/WorldEditor/VirtualTreeNode.h b/SamTSE/Sources/WorldEditor/VirtualTreeNode.h
+--- a/SamTSE/Sources/WorldEditor/VirtualTreeNode.h	2022-12-20 18:00:19.000000000 +0300
++++ b/SamTSE/Sources/WorldEditor/VirtualTreeNode.h	2023-01-05 19:38:24.117294055 +0300
+@@ -40,7 +40,7 @@
+   CListNode vtn_lnInDirectory;
+   CListHead vtn_lhChildren;           // valid if this is a directory
+   CVirtualTreeNode *vnt_pvtnParent;   // NULL if this is root
+-  ULONG vtn_Handle;                   // internaly use ULONG, later cast to HTREEITEM
++  HTREEITEM vtn_Handle;                   // internaly use ULONG, later cast to HTREEITEM
+   INDEX vtn_itIconType;               // INDEX of representing icon in list of icons
+   enum BrowsingMode vtn_bmBrowsingMode;// how to display items - as icons, text, ...
+   BOOL vtn_bSelected;                 // (if item) is this item curently selected
