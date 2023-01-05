@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Ichunjo/Vardefunc'
-license=('GPL')
+license=('MIT')
 depends=('python-numpy'
          'vapoursynth-plugin-nnedi3cl-git'
          'vapoursynth-plugin-placebo-git'
