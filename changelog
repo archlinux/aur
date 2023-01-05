@@ -1,3 +1,18 @@
+2022-12-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.1.11-1:
+    [!] PublicListing and MatchActively have been extracted from ASF core to standalone ItemsMatcher plugin. MatchActively feature was rewritten from scratch in regards to Steam breaking changes and is now a paid feature requiring a LicenseID to work. Please check out new ItemsMatcher wiki page for more info (@JustArchi).
+    Optimized MatchActively, which is no longer limited by matching unique sets only, surpassing previous round-based system and achieving superior speed in the process (@JustArchi #2784).
+    Added LicenseID global config property, it's used exclusively for MatchActively feature for now (@JustArchi).
+    Added optional [channel] argument to update command, this allows you to easily update experimental even if you're tracking stable channel (@JustArchi).
+    Added match command which can trigger MatchActively routine on as-needed basis (@JustArchi).
+    Added FilterBadBots global config property with default value of true, ASF will now refuse trade offers from bots that we classify as harmful towards the community (@JustArchi).
+    Added Steam Winter Sale 2022 with appID of 2243720 to SalesBlacklist (@3ncy #2764).
+    Fixed ASF crash on malformed CustomGamePlayedWhileFarming bot config property, ASF will now refuse to load such bot configs (@JustArchi).
+    Fixed CompleteTypesToSend not finding finished sets properly, regression introduced in ASF V5.3.0.0 (@ezhevita #2772).
+    Fixed extremely rare bug that could cause bot's database not being saved in certain circumstances (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-11-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.0.3-1:
     [!] ASF is now based on .NET 7, a new major version. From notable changes, this version brings a lot of performance improvements for arm64 platform. In regards to compatibility, ASF no longer supports operating systems that reached their EOL, especially Windows 7 and 8.1, as well as Debian 9 (#2745). This change warrants B version bump (@JustArchi).
@@ -124,7 +139,7 @@
     Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
     Updated localization provided by our community (@JustArchi-ArchiBot).
     Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
-    [Deprecation] ASF plugins that implement IBotCommand interface or use Bot.HasAccess(), Commands.Response() functionality will need slight code changes in regards to changes done as part #2501. We tried our best to keep them working as part of this release - the deprecated functionality will be removed in the next release cycle. 
+    [Deprecation] ASF plugins that implement IBotCommand interface or use Bot.HasAccess(), Commands.Response() functionality will need slight code changes in regards to changes done as part #2501. We tried our best to keep them working as part of this release - the deprecated functionality will be removed in the next release cycle.
 2022-01-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.1.5-1:
     Plugins breaking: All interface methods now return a Task instead of void, this will require from you slight code changes and a recompilation to work with this release. See my commit for rationale behind this change and more info. This was required to fix a race condition in STD (below), and I wouldn't be surprised if some of your plugins had exactly the same problem, just harder to trigger (@JustArchi).
