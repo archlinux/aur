@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-cpu
-pkgver=2023.1.0
+pkgver=2023.1.1
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for CPU'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('onevpl-runtime')
 source=("https://github.com/oneapi-src/oneVPL-cpu/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-onevpl-cpu-fix-build.patch'
         '020-onevpl-cpu-disable-gtest-werror.patch')
-sha256sums=('cc07c96345e41a6cd85b090e3eb0dca7c4022b08c4a3c9edc0049eed9293d39a'
+sha256sums=('54cef98ce56cf2d68ab0cedf84194036d484621e5cd68d502a0aac90f6b32c4b'
             'ee6b8f15e24a6c03337657c3b38eab0b929cc3ec539a94dd8d1d5f9a9b85b3cb'
             'a0caaa1dd7701b6a13ebe58bc6917c4f10f787f33d4d7e53d52766ddf985b980')
 
