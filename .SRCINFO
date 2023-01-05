@@ -1,26 +1,23 @@
 pkgbase = bricscad
 	pkgdesc = CAD Software for People Who Build the Future
-	pkgver = 22.2.05
+	pkgver = 23.1.07
 	pkgrel = 1
 	url = https://www.bricsys.com/
 	install = bricscad.install
 	arch = x86_64
 	license = custom
-	depends = qt5-gamepad
-	depends = qt5-3d
-	depends = qt5-wayland
-	depends = qt5-serialport
-	depends = openmotif
-	depends = webkit2gtk
+	depends = alsa-lib
+	depends = glu
 	depends = libxcrypt-compat
 	depends = nss
-	depends = glu
-	depends = libffi6
-	depends = alsa-lib
+	depends = openmotif
+	depends = qt5-3d
+	depends = qt5-wayland
+	depends = webkit2gtk
 	optdepends = bricscad-communicator>=22: Addtional import/export file format support
 	conflicts = bricscad-cn
 	options = !strip
-	source = manual://BricsCAD-V22.2.05-1-en_US-amd64.deb
-	sha256sums = 018dd04a132fcc5db33a37519680e6bb7b577f0e66949a9666034b804951ae32
+	source = manual://BricsCAD-V23.1.07-1-en_US-amd64.deb
+	sha256sums = 9f50736904accfda71672751df2af8a42c4646d6bf9f890c89693a853331fe6d
 
 pkgname = bricscad
