@@ -37,6 +37,7 @@ makedepends=(
     'polkit-qt5'
     'deepin-pw-check-git'
     'qt5-wayland'
+    'kwayland'
 )
 optdepends=('redshift: automatic color temperature support'
             'networkmanager-openconnect: for OpenConnect support'
