@@ -1,5 +1,5 @@
 pkgname=argparse
-pkgver=2.1
+pkgver=2.9
 pkgrel=1
 pkgdesc="Argument Parser for Modern C++"
 arch=(any)
@@ -7,7 +7,7 @@ url="https://github.com/p-ranav/argparse"
 license=("MIT")
 makedepends=("cmake")
 source=("https://github.com/p-ranav/argparse/archive/v${pkgver}.tar.gz")
-sha512sums=("35746e0b526bd4406c954ab315f191abc57b08b48a047f108ddacc7baace406d3ddddb1af23d41caff565afecfeb41dfedd27a08cdba8d11b59dbe7c78b7e9b0")
+sha512sums=("fa471e7d8c448510376e79927496f62775e6ed37e1dffefd607839e6005dfbc61125d0e18bfc1ff20f86cef7efd75339d7bb143dc6574d988f83c7c96896fa5f")
 
 build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
