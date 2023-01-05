@@ -1,0 +1,11 @@
+--- /atests/util.sh
++++ b/tests/util.sh
+@@ -51,7 +51,7 @@ valgrind_test() {
+             ../bin/uvg266 -i "${yuvfile}" "--input-res=${dimensions}" -o "${vvcfile}" "$@"
+ 
+     print_and_run \
+-        DecoderAppStatic -b "${vvcfile}"
++        vvc_decoder -b "${vvcfile}"
+ 
+     cleanup
+ }
