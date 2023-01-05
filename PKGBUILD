@@ -2,7 +2,7 @@
 # Contributor: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=b4
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc='Helper utility to work with patches made available via a public-inbox archive like lore.kernel.org.'
 license=('GPL')
@@ -12,7 +12,7 @@ makedepends=('git' 'python-setuptools')
 depends=('python-requests')
 source=("https://mirrors.edge.kernel.org/pub/software/devel/b4/${pkgname}-${pkgver}.tar."{xz,sign})
 validpgpkeys=('DE0E66E32F1FDD0902666B96E63EDCA9329DD07E')
-sha256sums=('a37abf6224024ffb8d9430f3f5bd72f7a7b16abfc1723a645b05b7bda68fb57e'
+sha256sums=('d7fc3a973825ef065dd52f7d7bca6a6fe4d18d1738bc9b50b20262a4c6b73585'
             'SKIP')
 
 build() {
