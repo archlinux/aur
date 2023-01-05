@@ -2,12 +2,12 @@
 
 _plug=jvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.11.6.gb81ea80
+pkgver=1.0.16.1.g0200b4f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/dnjulek/jvsfunc.git'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-lvsfunc-git'
          'vapoursynth-plugin-vsrgtools-git'
@@ -33,7 +33,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
