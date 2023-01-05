@@ -1,13 +1,14 @@
 pkgbase = uex
 	pkgdesc = UltraEdit is a powerful text editor.
 	pkgver = 21.00.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ultraedit.com/products/uex.html
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = webkit2gtk
 	depends = libjpeg
+	depends = libjpeg6
 	depends = libpng
 	depends = libsm
 	source = https://downloads.ultraedit.com/main/ue/linux/tar/uex_21.00.0.0_amd64.tar.gz
