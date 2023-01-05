@@ -1,14 +1,14 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=2.1.0.565
-_rls_tag=v2.1.0
+pkgver=2.2.0.572
+_rls_tag=v2.2.0
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
-url="https://web-eid.eu/"
+url="https://www.id.ee/"
 license=('MIT')
-depends=('openssl' 'qt5-base' 'qt5-svg' 'pcsclite')
-makedepends=('git' 'qt5-tools' 'gtest' 'gmock' 'cmake')
+depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'hicolor-icon-theme')
+makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'cmake')
 source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
@@ -45,11 +45,10 @@ build() {
              -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
              -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -ffile-prefix-map=$srcdir=." \
              -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-             -DMOZILLA_INSTALL_DIR="/usr/lib/mozilla/native-messaging-hosts" \
              -DCMAKE_INSTALL_PREFIX="/usr" \
              -DCMAKE_INSTALL_LIBDIR="lib" \
              -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
-             -DQT_DIR="/usr/lib/cmake/Qt5"
+             -DQT_DIR="/usr/lib/cmake/Qt6"
     cmake --build . --config Release
 }
 
