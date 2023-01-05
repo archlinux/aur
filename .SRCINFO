@@ -1,10 +1,11 @@
 pkgbase = sphinxcontrib-adadomain
 	pkgdesc = Adds Ada domain support to Sphinx.
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AdaCore/sphinxcontrib-adadomain
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python-sphinx
 	source = https://github.com/AdaCore/sphinxcontrib-adadomain/archive/refs/heads/master.zip
 	sha256sums = fe0b99607ee224482d3a967b27d7c1d59dfd4c9085919aa0a5a8146c44ca3c1e
