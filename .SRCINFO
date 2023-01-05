@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdpir-git
 	pkgdesc = Plugin for Vapoursynth: vsdpir (GIT version)
-	pkgver = 2.1.0.0.gc753f50
+	pkgver = 2.3.0.0.gb2dcc4b
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-dpir
 	arch = any
