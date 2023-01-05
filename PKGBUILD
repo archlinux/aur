@@ -2,7 +2,7 @@
 
 _plug=vsexprtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.2.5.0.g45301e4
+pkgver=1.3.2.0.gf5dfa41
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
