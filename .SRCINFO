@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-pyd2v-git
 	pkgdesc = Plugin for Vapoursynth: pyd2v (GIT version)
 	pkgver = 1.3.0.6.g4161694
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?t=180426
 	arch = any
 	license = MIT

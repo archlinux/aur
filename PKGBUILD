@@ -3,7 +3,7 @@
 _plug=pyd2v
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.3.0.6.g4161694
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=180426'
@@ -37,7 +37,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   rm -fr "${pkgdir}${_site_packages}"/{README.md,LICENSE}
 
