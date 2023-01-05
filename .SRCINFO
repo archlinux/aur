@@ -1,0 +1,16 @@
+pkgbase = passt-git
+	pkgdesc = Plug A Simple Socket Transport
+	pkgver = r895.310bdbd
+	pkgrel = 1
+	url = https://passt.top/passt/about/
+	arch = x86_64
+	license = AGPL3
+	license = custom:BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	provides = passt
+	conflicts = passt
+	source = git+https://passt.top/passt
+	sha256sums = SKIP
+
+pkgname = passt-git
