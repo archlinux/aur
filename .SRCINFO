@@ -1,6 +1,6 @@
 pkgbase = r-batchelor
 	pkgdesc = Single-Cell Batch Correction Methods
-	pkgver = 1.14.0
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/batchelor
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-batchelor
 	optdepends = r-scran
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/batchelor_1.14.0.tar.gz
-	sha256sums = 5b6ed5f396ab0723b639e282a4c8537f0ed85ad4e95c8975c5281ceb3ec2b7b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/batchelor_1.14.1.tar.gz
+	sha256sums = d5312d436dcb6fa2163c8e0c4febfeb533b78f284614f4f08224f46bd42248fa
 
 pkgname = r-batchelor
