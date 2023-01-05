@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsgan-git
 	pkgdesc = Plugin for Vapoursynth: vsgan (GIT version)
-	pkgver = 1.6.4.44.ga4269a8
+	pkgver = 1.6.4.61.gfbb606c
 	pkgrel = 1
 	url = https://github.com/rlaPHOENiX/VSGAN
 	arch = any
