@@ -1,0 +1,12 @@
+post_install() {
+    echo
+    echo " ----------------------------------------------------------------------------"
+    echo "  This package is deprecated. Please use the packages 'otf-tiro-indigo-git'"
+    echo "  or 'ttf-tiro-indigo-git' package instead."
+    echo " ----------------------------------------------------------------------------"
+    echo
+}
+
+post_upgrade() {
+  post_install $1
+}
