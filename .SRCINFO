@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vsbasicvsr-git
 	pkgdesc = Plugin for Vapoursynth: vsbasicvsr (GIT version)
 	pkgver = 1.2.0.0.gab1a0f5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HolyWu/vs-basicvsr
 	arch = any
 	license = Apache
