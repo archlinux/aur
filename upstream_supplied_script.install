@@ -1,0 +1,22 @@
+post_install() {
+    :
+#!/bin/bash
+
+# Link to the binary
+ln -sf '/opt/Agregore Browser/agregore-browser' '/usr/bin/agregore-browser'
+
+# SUID chrome-sandbox for Electron 5+
+chmod 4755 '/opt/Agregore Browser/chrome-sandbox' || true
+
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+
+}
+post_remove() {
+    :
+#!/bin/bash
+
+# Delete the link to the binary
+rm -f '/usr/bin/agregore-browser'
+
+}

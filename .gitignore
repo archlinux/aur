@@ -2,3 +2,4 @@ pkg/
 src/
 *.pkg.tar.*
 *.deb
+*.pacman

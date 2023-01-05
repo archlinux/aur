@@ -1,8 +1,9 @@
 pkgbase = agregore-browser-bin
 	pkgdesc = A minimal web browser for the distributed web
-	pkgver = 1.9.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/AgregoreWeb/agregore-browser
+	install = upstream_supplied_script.install
 	arch = x86_64
 	license = AGPL3
 	depends = gtk3
@@ -14,7 +15,8 @@ pkgbase = agregore-browser-bin
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
-	source_x86_64 = https://github.com/AgregoreWeb/agregore-browser/releases/download/v1.9.1/agregore-browser-1.9.1-linux-amd64.deb
-	b2sums_x86_64 = 108045cda141df41c8bc9dd2dc5f33bce49d06bc13becd5d03d82446a867542c999e0cdc48883aa330c32fdb908415387b16614ec5e18d8c10dfd2003961ee9b
+	provides = agregore-browser
+	source_x86_64 = https://github.com/AgregoreWeb/agregore-browser/releases/download/v1.10.1/agregore-browser-1.10.1-linux-x64.pacman
+	b2sums_x86_64 = c99a55880a7e95f7db79da1fa5be9dd79aba50d93e7ab8b71ca31de4e818ac70c384c9524325f4a1d27201b592d50caf7710b126b7186dcac1b42d9f12c81ec0
 
 pkgname = agregore-browser-bin
