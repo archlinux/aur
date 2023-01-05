@@ -1,12 +1,11 @@
 pkgbase = randwall-bin
 	pkgdesc = Randomly changes desktop wallpaper
-	pkgver = 0.1.12
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/arch-anes/randwall
 	arch = x86_64
 	license = MIT
-	source = randwall-bin-0.1.12-1.tar.xz::https://github.com/arch-anes/randwall/releases/download/v0.1.12/randwall_standalone_linux-x64.tar.gz
+	source = randwall-bin-0.2.0-1.tar.xz::https://github.com/arch-anes/randwall/releases/download/v0.2.0/randwall_standalone_linux-x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = randwall-bin
-
