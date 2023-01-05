@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-eoefunc-git
 	pkgdesc = Plugin for Vapoursynth: eoefunc (GIT version)
 	pkgver = r51.c40c91b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/End-of-Eternity/EoEfunc
 	arch = any
 	license = GPL

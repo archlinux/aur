@@ -3,7 +3,7 @@
 _plug=eoefunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r51.c40c91b
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/End-of-Eternity/EoEfunc'
@@ -32,5 +32,5 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 }
