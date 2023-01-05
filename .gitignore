@@ -1,5 +1,6 @@
-src
-rompr-*.tar.xz
-src
-pkg
-rompr-*.zip
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
