@@ -1,15 +1,15 @@
 pkgbase = web-eid-webextension
 	pkgdesc = Web eID browser extension
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://web-eid.eu/
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = nodejs-lts-gallium
+	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
 	depends = web-eid
-	source = web-eid-webextension::git+https://github.com/web-eid/web-eid-webextension.git#tag=v2.1.1
+	source = web-eid-webextension::git+https://github.com/web-eid/web-eid-webextension.git#tag=v2.2.0
 	source = web-eid-js::git+https://github.com/web-eid/web-eid.js.git
 	validpgpkeys = 1282B0F8809D0DC632C85A3F86B611CE24492160
 	sha256sums = SKIP
