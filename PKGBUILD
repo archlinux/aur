@@ -1,7 +1,7 @@
 # Maintainer: Tiago Correia <tiagorcorreia87@gmail.com>
 pkgbase="rtodo"
 pkgname="rtodo-bin"
-pkgver="v0.1.3"
+pkgver="v0.1.4"
 pkgrel=1
 pkgdesc="A simple To-Do list manager written in Rust"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=()
 source=("https://github.com/TiagoRCorreia/rtodo/releases/download/${pkgver}/rtodo.gz"
         "https://raw.githubusercontent.com/TiagoRCorreia/rtodo/main/LICENSE.md")
 
-md5sums=('4be52078dd113a7af27fd0d4ac38c3a8'
+md5sums=('5684467b5765bdcb9422973672dd775e'
          '9d6236041611466d09794b98fd034310')
 
 package() {
