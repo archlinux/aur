@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdehalo-git
 	pkgdesc = Plugin for Vapoursynth: vsdehalo (GIT version)
-	pkgver = 1.1.1.2.g29a497e
+	pkgver = 1.4.0.0.gc9427a8
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-dehalo
 	arch = any

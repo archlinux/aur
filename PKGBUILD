@@ -2,7 +2,7 @@
 
 _plug=vsdehalo
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.1.2.g29a497e
+pkgver=1.4.0.0.gc9427a8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -43,7 +43,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
