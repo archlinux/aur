@@ -26,7 +26,7 @@ pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
-license=('GPL3', 'CC0')
+license=('GPL3' 'CC0')
 depends=('device-mapper' 'freetype2' 'fuse2' 'gettext')
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'
              'python' 'rsync' 'texinfo' 'ttf-dejavu'
