@@ -1,6 +1,6 @@
 pkgbase = libarcstk-git
-	pkgdesc = Library to calculate and verify AccurateRip checksums and ids
-	pkgver = r169.fb1513e
+	pkgdesc = Toolkit to calculate and verify AccurateRip checksums and ids
+	pkgver = r593.601af78
 	pkgrel = 1
 	url = https://codeberg.org/tristero/libarcstk
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = libarcstk-git
 	makedepends = cmake>=3.9.6
 	depends = gcc-libs
 	optdepends = doxygen>=1.8.14: build documentation
-	optdepends = texlive-bin: build documentation manual
 	optdepends = python-virtualenv: build HTML documentation with m.css
 	provides = libarcstk
 	conflicts = libarcstk
-	source = libarcstk::git+ssh://git@codeberg.org/tristero/libarcstk.git#branch=master
+	source = libarcstk::git+https://codeberg.org/tristero/libarcstk.git#branch=master
 	md5sums = SKIP
 
 pkgname = libarcstk-git
