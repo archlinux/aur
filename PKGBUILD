@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-dfft.git'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth'
          'python-numpy'
          'python-pyfftw'
