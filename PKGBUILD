@@ -6,17 +6,17 @@
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=5.9.3
+pkgver=5.9.4
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
 url=https://zulipchat.com
 license=(Apache)
-depends=(libxkbfile gtk3 libxss nss)
-makedepends=(npm nvm python2)
+depends=(libxkbfile gtk3 libxss nss python)
+makedepends=(npm nvm)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('73ed679f88f8e5128ad963db1993db880a304e772ec394d726fc255c051a164e672d9aeee5b1611e46c9d3b1cd09e8c0ea51caf7797d537286ef447d51b13c4b'
+sha512sums=('e2288af45fbab5bfc79743eab1e933e10437c3f904b0125b8ed653d546f4600a7a22be48548a4e61ada276be62c55db4061952b436976326a4356ccbf7fa907b'
             '4899b20aaff5f8906de1c9d0f9b54d440e9b22cd19a8b383def92b973a8c4d954f88cee623744ec42546dc2f82d4849bcc1c49917efbea9ab346d41ac0dba589')
 
 _ensure_local_nvm() {
@@ -32,7 +32,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 15.14.0
+    nvm install 19.3.0
 }
 
 build() {
