@@ -1,9 +1,9 @@
 # Maintainer: tristero <crf8472@web.de>
 
 pkgname=libarcsdec-git
-pkgver=r94.d328b3a
+pkgver=0.1.0alpha4+11.64fbefc
 pkgrel=1
-pkgdesc='Library with audio decoder and TOC parser adapters for libarcstk'
+pkgdesc='Audio decoder and TOC parser adapters for libarcstk'
 arch=('x86_64')
 url="https://codeberg.org/tristero/${pkgname%-git}"
 license=('MIT')
@@ -14,17 +14,18 @@ depends=('gcc-libs' 'libarcstk'
 	'flac>=1.3.1' 'wavpack>=5.0.0' 'ffmpeg>=3.1') ## default audio decoders
 makedepends=('git>=2.0' 'cmake>=3.9.6')
 optdepends=('doxygen>=1.8.14: build documentation'
-            'texlive-bin: build documentation manual'
             'python-virtualenv: build HTML documentation with m.css')
-source=("${pkgname%-git}::git+ssh://git@codeberg.org/tristero/${pkgname%-git}.git#branch=master")
+source=("${pkgname%-git}::git+https://codeberg.org/tristero/${pkgname%-git}.git#branch=main")
 md5sums=('SKIP')
 
 
 pkgver()
 {
 	cd "${srcdir}/${pkgname%-git}"
-
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long HEAD | \
+		sed 's/-\(alpha\|beta\|rc\)\.\([0-9]\+\)-/\1\2+/' | \
+		sed 's/g\([a-z0-9]\+\)$/\1/' | \
+		sed 's/-/./g'
 }
 
 
@@ -36,7 +37,6 @@ build()
     msg "Configure"
 
 	cmake -DCMAKE_BUILD_TYPE=Release    \
-		  -DWITH_TESTS=ON               \
 		  -DCMAKE_INSTALL_PREFIX="/usr" \
 		  "${srcdir}/${pkgname%-git}/"
 
@@ -46,12 +46,7 @@ build()
 }
 
 
-check()
-{
-    msg "Perform tests"
-
-	ctest
-}
+## No check() function
 
 
 package()

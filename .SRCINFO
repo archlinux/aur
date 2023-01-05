@@ -1,6 +1,6 @@
 pkgbase = libarcsdec-git
-	pkgdesc = Library with audio decoder and TOC parser adapters for libarcstk
-	pkgver = r94.d328b3a
+	pkgdesc = Audio decoder and TOC parser adapters for libarcstk
+	pkgver = 0.1.0alpha4+11.64fbefc
 	pkgrel = 1
 	url = https://codeberg.org/tristero/libarcsdec
 	arch = x86_64
@@ -14,11 +14,10 @@ pkgbase = libarcsdec-git
 	depends = wavpack>=5.0.0
 	depends = ffmpeg>=3.1
 	optdepends = doxygen>=1.8.14: build documentation
-	optdepends = texlive-bin: build documentation manual
 	optdepends = python-virtualenv: build HTML documentation with m.css
 	provides = libarcsdec
 	conflicts = libarcsdec
-	source = libarcsdec::git+ssh://git@codeberg.org/tristero/libarcsdec.git#branch=master
+	source = libarcsdec::git+https://codeberg.org/tristero/libarcsdec.git#branch=main
 	md5sums = SKIP
 
 pkgname = libarcsdec-git
