@@ -8,7 +8,8 @@ url="https://gitlab.com/crunchyroll/application"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
-conflicts=("googlekeep-bin")
+conflicts=("crunchyroll-bin")
+replace=("crunchyroll-bin")
 source=("https://gitlab.com/crunchyroll/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
