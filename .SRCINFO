@@ -1,6 +1,6 @@
 pkgbase = arch-sign-modules
 	pkgdesc = Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen + AUR kernels
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 0
 	url = https://github.com/itoffshore/Arch-SKM
 	install = arch-sign-modules.install
@@ -10,7 +10,7 @@ pkgbase = arch-sign-modules
 	depends = rsync
 	depends = python-zstandard
 	optdepends = pacman-contrib
-	source = arch-sign-modules-0.5.4.tar.gz::https://github.com/itoffshore/Arch-SKM/archive/0.5.4.tar.gz
-	md5sums = 603d96e119984ea5719edf7d18ffdf6d
+	source = arch-sign-modules-0.5.5.tar.gz::https://github.com/itoffshore/Arch-SKM/archive/0.5.5.tar.gz
+	md5sums = f1adb7ea57e50aa476d8dc10cda1a20f
 
 pkgname = arch-sign-modules
