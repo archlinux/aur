@@ -1,19 +1,19 @@
 pkgbase = dolt-bin
 	pkgdesc = Git for data!
-	pkgver = 0.51.15
+	pkgver = 0.52.0
 	pkgrel = 1
 	url = https://www.dolthub.com/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	conflicts = dolt
-	source_x86_64 = dolt-linux-0.51.15-amd64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.51.15/dolt-linux-amd64.tar.gz
+	source_x86_64 = dolt-linux-0.52.0-amd64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.52.0/dolt-linux-amd64.tar.gz
 	source_x86_64 = LICENSE
-	sha256sums_x86_64 = c809f5a8f56ffac90c725dead7c2d9abd86146da923182ad4ee1e1df92b12e4b
+	sha256sums_x86_64 = 67feb3b13ccca4cb941e348487c52a2ea5176b4a1ff505a9deb7068ff046bd98
 	sha256sums_x86_64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
-	source_aarch64 = dolt-linux-0.51.15-arm64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.51.15/dolt-linux-arm64.tar.gz
+	source_aarch64 = dolt-linux-0.52.0-arm64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.52.0/dolt-linux-arm64.tar.gz
 	source_aarch64 = LICENSE
-	sha256sums_aarch64 = 91d97385bf8069e38e98363b5bd1470d29f5a81deed57c91c81db20791bc2090
+	sha256sums_aarch64 = 7fc0115463c0c1ebecbcccdbdfdf9ee6db3607c10edebc622bc697ec60433190
 	sha256sums_aarch64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = dolt-bin
