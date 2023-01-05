@@ -1,6 +1,6 @@
 pkgbase = dops-git
 	pkgdesc = A replacement for the default docker-ps that tries really hard to fit into the width of your terminal.
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/Mikescher/better-docker-ps
 	arch = any
