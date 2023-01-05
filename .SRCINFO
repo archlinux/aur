@@ -1,13 +1,13 @@
 pkgbase = ignoreit-bin
 	pkgdesc = Quickly load .gitignore templates
-	pkgver = 2.4.9
+	pkgver = 2.4.10
 	pkgrel = 1
 	url = https://github.com/jewlexx/ignoreit
 	arch = x86_64
 	license = MIT
 	provides = ignoreit
 	conflicts = ignoreit
-	source = ignoreit-bin-2.4.9-bin::https://github.com/jewlexx/ignoreit/releases/download/v2.4.9/ignoreit-x86_64-linux
-	sha256sums = 28cf995c24cf72b80bdc637f151d4007babcdfe11832786830c52b4645545252
+	source = ignoreit-bin-2.4.10-bin::https://github.com/jewlexx/ignoreit/releases/download/v2.4.10/ignoreit-x86_64-linux
+	sha256sums = cbd50003335e4c1f9ae7aa22e37954f87f06dd4835f10a5b1a031911e62239d6
 
 pkgname = ignoreit-bin

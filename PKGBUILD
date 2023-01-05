@@ -1,6 +1,6 @@
 # Maintainer: Juliette Cordor
 pkgname=ignoreit-bin
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 provides=("ignoreit")
 conflicts=("ignoreit")
@@ -10,7 +10,7 @@ pkgdesc="Quickly load .gitignore templates"
 license=('MIT')
 
 source=("$pkgname-$pkgver-bin::https://github.com/jewlexx/ignoreit/releases/download/v$pkgver/ignoreit-x86_64-linux")
-sha256sums=('28cf995c24cf72b80bdc637f151d4007babcdfe11832786830c52b4645545252')
+sha256sums=('cbd50003335e4c1f9ae7aa22e37954f87f06dd4835f10a5b1a031911e62239d6')
 
 build() {
     return 0
