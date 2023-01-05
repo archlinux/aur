@@ -1,0 +1,35 @@
+#!/bin/sh
+_daemon_user='ukrainealarm-client'
+_daemon_group='ukrainealarm-client'
+_var_dir='/var/ukrainealarm-client'
+
+post_install() {
+    # create daemon group, if not existing
+    if
+        getent group ${_daemon_group} >/dev/null
+    then
+        : OK group ${_daemon_group} already present
+    else
+        groupadd --system ${_daemon_group} 2> /dev/null || :
+    fi
+
+    # create daemon user, if not existing
+    if
+        getent passwd ${_daemon_user} >/dev/null
+    then
+       : OK user ${_daemon_user} already present
+    else
+        useradd --system --no-log-init --home ${_var_dir} --create-home --skel /dev/null \
+            --shell /usr/bin/nologin --comment "Linux client for receiving alarms in Ukraine" \
+            --group audio --gid ${_daemon_group} ${_daemon_user} 2> /dev/null || :
+    fi
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    userdel --force ${_daemon_user} 2> /dev/null
+    rm --dir ${_var_dir} 2> /dev/null
+}

@@ -1,0 +1,17 @@
+pkgbase = ukrainealarm-client
+	pkgdesc = Linux client for receiving alarms in Ukraine (see https://www.ukrainealarm.com/). It's allows plays sounds like in Android app and execute custom script on alarms evenents.
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://www.ukrainealarm.com/linux-app
+	install = ukrainealarm-client.install
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = glibc
+	optdepends = libpulse: A featureful, general-purpose sound server.
+	provides = ukrainealarm-client
+	conflicts = ukrainealarm-client
+	source = https://apt.ukrainealarm.com/pool/main/u/ukrainealarm-client/ukrainealarm-client_0.2.0-0~bullseye0_amd64.deb
+	sha256sums = 482b648bafd5ff4753aa67acd61feff2ae08dce212db98638fce94a29b049f4b
+
+pkgname = ukrainealarm-client-bin
