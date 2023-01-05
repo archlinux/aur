@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1.10"
-pkgrel=2
+pkgrel=3
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 install=${pkgname}.install
 
 prepare() {
-  rm /usr/share/rime-data/{rime.lua,essay.txt,punctuator.yaml,LICENSE}
+  rm /usr/share/rime-data/{rime.lua,essay.txt,punctuator.yaml}
   rm /usr/share/rime-data/build/flypy.{prism,reverse,table}.bin
   rm /usr/share/rime-data/build/flypy.{custom,schema}.yaml
   rm /usr/share/rime-data/build/flypy_{sys,top,user}.txt
