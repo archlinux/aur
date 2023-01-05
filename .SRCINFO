@@ -1,0 +1,10 @@
+pkgbase = otf-tiro-indigo-git
+	pkgver = r41.24f67ca
+	pkgrel = 1
+	url = https://github.com/TiroTypeworks/Indigo
+	arch = any
+	license = OFL
+	source = otf-tiro-indigo-git::git+https://github.com/TiroTypeworks/Indigo
+	sha256sums = SKIP
+
+pkgname = otf-tiro-indigo-git
