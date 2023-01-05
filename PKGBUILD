@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-exprtools.git'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth'
          'vapoursynth-plugin-vstools-git'
          )
