@@ -1,10 +1,10 @@
 pkgbase = vapoursynth-plugin-vsmask-git
 	pkgdesc = Plugin for Vapoursynth: vsmask (GIT version)
-	pkgver = 0.5.0.2.gc23286a
+	pkgver = 0.5.1.0.g3cd8ca7
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vsmask.git
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
 	makedepends = python-pip
 	makedepends = python-wheel

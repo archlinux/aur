@@ -2,12 +2,12 @@
 
 _plug=vsmask
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.5.0.2.gc23286a
+pkgver=0.5.1.0.g3cd8ca7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vsmask.git'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth'
          'vapoursynth-plugin-vsutil-git'
          )
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
