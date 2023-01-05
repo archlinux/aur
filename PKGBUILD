@@ -1,8 +1,10 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
+# Co-maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
+
 pkgname=nibbler-git
 _pkgname=nibbler
-pkgver=2.1.4
-pkgrel=1
+pkgver=2.4.0
+pkgrel=2
 pkgdesc="Leela Chess Zero (Lc0) interface"
 arch=('i686' 'x86_64')
 url="https://github.com/rooklift/nibbler"
@@ -14,26 +16,31 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    tag=$(git tag|grep -vE "rc|hotfix"|sort -rh|head -n 1)
+    tag=$(git tag | grep -vE "rc|hotfix" | sort -rh | head -n 1)
     echo ${tag#v}
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git checkout $(git tag|grep -v rc|sort -rh|head -n 1)
+    git checkout $(git tag | grep -vE "rc|hotfix" | sort -rh | head -n 1)
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    printf "#!/usr/bin/env bash \nelectron /opt/${_pkgname}" > nibbler
+    # launch script
+    echo -e "#!/usr/bin/env bash \nelectron /opt/${_pkgname}" > ${_pkgname}
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -m755 -d "${pkgdir}/opt/${_pkgname}/modules"
-    install -m755 -d "${pkgdir}/opt/${_pkgname}/pieces"
-    cp -r "$srcdir/${_pkgname}"/files/src/modules/* "${pkgdir}/opt/${_pkgname}/modules"
-    cp -r "$srcdir/${_pkgname}"/files/src/pieces/* "${pkgdir}/opt/${_pkgname}/pieces"
-    cp -r "$srcdir/${_pkgname}"/files/src/*.{css,html,js,json} "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 nibbler $pkgdir/usr/bin/nibbler
+    # source
+    mkdir -p ${pkgdir}/opt
+    cp -r files/src ${pkgdir}/opt/${_pkgname}
+    # bin
+    install -Dm755 -t ${pkgdir}/usr/bin ${_pkgname}
+    # desktop entry
+    install -Dm644 -t ${pkgdir}/usr/share/applications files/res/linux/${_pkgname}.desktop
+    # icon
+    install -Dm644 -t ${pkgdir}/usr/share/icons/hicolor/512x512/apps files/res/${_pkgname}.png
+    install -Dm644 -t ${pkgdir}/usr/share/icons/hicolor/scalable/apps files/res/${_pkgname}.svg
 }
