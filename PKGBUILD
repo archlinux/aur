@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=(BSD)
 source=("git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
-makedepends=(cmake ninja)
+makedepends=(git cmake ninja)
 depends=(zlib)
 
 build() {

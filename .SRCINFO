@@ -6,6 +6,7 @@ pkgbase = hdrview
 	arch = x86_64
 	arch = aarch64
 	license = BSD
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	depends = zlib
