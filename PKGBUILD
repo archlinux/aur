@@ -3,7 +3,7 @@
 
 pkgname=purple-discord-git
 _pkgname=purple-discord
-pkgver=v0.0.r757.99bdf6f
+pkgver=v0.0.r849.20e5eed
 _pkgver=v0.0.
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for Discord."
@@ -11,7 +11,7 @@ url='https://github.com/EionRobb/purple-discord'
 arch=(any)
 license=('GPL3')
 makedepends=('git' 'imagemagick' 'librsvg' 'gettext')
-depends=('libpurple' 'json-glib')
+depends=('libpurple' 'json-glib' 'qrencode')
 replaces=('purple-discord')
 provides=('purple-discord')
 conflicts=('purple-discord')
