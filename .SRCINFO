@@ -1,0 +1,14 @@
+pkgbase = stick-pointer-to-screen
+	pkgdesc = A simple program for X11 window system that prents the cursor from crossing into another monitor when you do't want it to.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/LMauricius/sticky-mouse-trap
+	arch = any
+	license = MIT
+	depends = gcc
+	depends = make
+	depends = cmake
+	source = git+https://github.com/LMauricius/sticky-mouse-trap
+	md5sums = SKIP
+
+pkgname = stick-pointer-to-screen
