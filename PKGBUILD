@@ -2,7 +2,7 @@
 
 pkgname=matrix-registration-git
 _pkgbase=matrix-registration
-pkgver=r294.a2ac098
+pkgver=r301.15044e5
 pkgrel=1
 
 pkgdesc="Webapp for token based matrix registration"
@@ -17,7 +17,8 @@ checkdepends=('python-parameterized')
 conflicts=('matrix-registration')
 provides=('matrix-registration')
 source=("matrix-registration::git+https://github.com/ZerataX/matrix-registration.git"
-	"matrix-registration.service")
+	"matrix-registration.service"
+	"https://github.com/zeratax/matrix-registration/pull/99.patch")
 
 sha256sums=('SKIP'
             '36b204dea08c49e2f02f82cd469a828c1f99742339a9f4b8dd4bf59dbe2f9c45')
@@ -63,3 +64,6 @@ package() {
 	mv ${pkgdir}/usr/{alembic,alembic.ini} ${pkgdir}/etc/${_pkgbase}
 	sed -i -e "s|script_location = alembic|script_location = /etc/${_pkgbase}/alembic/|" ${pkgdir}/etc/${_pkgbase}/alembic.ini
 }
+sha256sums=('SKIP'
+            '36b204dea08c49e2f02f82cd469a828c1f99742339a9f4b8dd4bf59dbe2f9c45'
+            'fac0f957455b86bfc786a5f85ed6ac886ce19b2cfdbac616345d264bd2169044')
