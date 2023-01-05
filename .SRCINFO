@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdenoise-git
 	pkgdesc = Plugin for Vapoursynth: vsdenoise (GIT version)
-	pkgver = 1.1.2.4.g2f34413
+	pkgver = 1.2.0.0.g1830790
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-denoise
 	arch = any
