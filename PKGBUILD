@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender < arch at JonnyJD dot net >
 
 pkgname=vim-vimwiki
-pkgver=2.5
+pkgver=2022.12.02
 pkgrel=1
 pkgdesc='A personal wiki for Vim'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vimwiki/vimwiki/archive/v${pkgver}.tar.gz")
-sha256sums=('ccbca04c0139db5fa3523cc0524b1d8f93a86d56024ff217857889216e3c3063')
+sha256sums=('13906c68f60cafe5a2aec682216be1b5349aa163eef5429425d273b574b7bcc1')
 
 package () {
   cd "${pkgname#vim-}-${pkgver}"
