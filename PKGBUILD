@@ -9,6 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 conflicts=("twitch-bin")
+replace=("twitch-bin")
 source=("https://gitlab.com/twitch-application/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
