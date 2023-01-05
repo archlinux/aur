@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vsffdnet-git
 	pkgdesc = Plugin for Vapoursynth: vsffdnet (GIT version)
 	pkgver = 1.1.1.0.ga07ab9a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HolyWu/vs-ffdnet
 	arch = any
 	license = MIT

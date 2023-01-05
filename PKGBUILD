@@ -3,7 +3,7 @@
 _plug=vsffdnet
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.1.1.0.ga07ab9a
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HolyWu/vs-ffdnet'
