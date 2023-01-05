@@ -1,6 +1,6 @@
 pkgbase = obs-color-monitor
 	pkgdesc = This plugin provides three sources to monitor color balances
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-color-monitor.1277/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-color-monitor
 	makedepends = cmake
 	depends = obs-studio>=28
 	options = debug
-	source = obs-color-monitor-0.4.3.tar.gz::https://github.com/norihiro/obs-color-monitor/archive/0.4.3.tar.gz
-	sha256sums = 709d929520b9c8d752c0b3d37940466bf586fdd33d598ac53d0690a9b46927d1
+	source = obs-color-monitor-0.4.4.tar.gz::https://github.com/norihiro/obs-color-monitor/archive/0.4.4.tar.gz
+	sha256sums = b6ecc877d7520998c699006ca0827e4f66e27583aa516684b16fa83b86205ba2
 
 pkgname = obs-color-monitor

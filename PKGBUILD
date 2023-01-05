@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-color-monitor
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="This plugin provides three sources to monitor color balances"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("709d929520b9c8d752c0b3d37940466bf586fdd33d598ac53d0690a9b46927d1")
+sha256sums=("b6ecc877d7520998c699006ca0827e4f66e27583aa516684b16fa83b86205ba2")
 
 build() {
   cd "$pkgname-$pkgver"
