@@ -1,7 +1,8 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Olivier Eblé <olivier at eble dot fr>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=immortal
-pkgver=0.24.3
+pkgver=0.24.4
 pkgrel=1
 pkgdesc="A *nix cross-platform (OS agnostic) supervisor"
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/immortal/immortal/archive/${pkgver}.tar.gz")
-sha256sums=('e31d5afb9028fb5047b5a2cc5f96c844f6480d600643a12075550f497e65f5cb')
+sha256sums=('a343581dbe58fb0faa1c65b233a067820d8d5ecefc9726da5ad3ef979a2a0b08')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
