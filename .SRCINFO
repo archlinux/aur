@@ -6,7 +6,6 @@ pkgbase = tradingview
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
-	conflicts = tradingview-bin
 	source = tradingview-2.0.2.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_31.snap
 	source = tradingview.desktop
 	b2sums = 7de1f9d6461feece62d44ef2291064f373690b4a860b5fbe934a08ce8a76908046fa828bf1546811e7b43e758ad6e16417d70213fd4c9ccffe82768571c4a9e9

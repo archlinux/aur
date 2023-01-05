@@ -1,4 +1,4 @@
-# Maintainer: Ivan Gabaldon <ivan [d0t] gab [at] inetol [d0t] net>
+# Maintainer: Ivan Gabaldon <maintainer[at]inetol.net>
 # Contributor: sukanka <su975853527 at gmail.com>
 
 pkgname=tradingview
@@ -9,7 +9,6 @@ arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
 license=('custom')
 makedepends=('squashfs-tools')
-conflicts=("$pkgname-bin")
 source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_31.snap"
         "$pkgname.desktop")
 b2sums=('7de1f9d6461feece62d44ef2291064f373690b4a860b5fbe934a08ce8a76908046fa828bf1546811e7b43e758ad6e16417d70213fd4c9ccffe82768571c4a9e9'
