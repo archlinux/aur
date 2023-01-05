@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=hm-git
-pkgver=16.24.r14.gd7b65046
+pkgver=17.0.r0.gd7d7e391
 pkgrel=1
 pkgdesc='HEVC Test Model - the reference software for HEVC (git version)'
 arch=('x86_64')
@@ -54,6 +54,7 @@ package() {
         install -D -m755 "HM-highbit/bin/${_file}" "${pkgdir}/usr/bin/${_file/Static/HighBitDepthStatic}"
     done < <(find HM-highbit/bin -maxdepth 1 -type f -executable -print0 | sed -z 's|HM\-highbit/bin||')
     
+    mv "${pkgdir}/usr/bin"/{parcatStatic,hm-parcatStatic}
     install -D -m644 HM/doc/*.pdf -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -D -m644 HM/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

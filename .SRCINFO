@@ -1,6 +1,6 @@
 pkgbase = hm-git
 	pkgdesc = HEVC Test Model - the reference software for HEVC (git version)
-	pkgver = 16.24.r14.gd7b65046
+	pkgver = 17.0.r0.gd7d7e391
 	pkgrel = 1
 	url = https://hevc.hhi.fraunhofer.de/
 	arch = x86_64
