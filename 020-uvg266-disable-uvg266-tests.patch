@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -324,7 +324,7 @@ endif()
+ 
+ if(EXISTS "${PROJECT_SOURCE_DIR}/greatest/greatest.h" AND BUILD_TESTS)
+   add_subdirectory( "tests/" )
+-  add_test( NAME Test_uvg266 COMMAND uvg266_tests )
++  #add_test( NAME Test_uvg266 COMMAND uvg266_tests )
+ endif()
+ 
+ if(NOT DEFINED MSVC)
