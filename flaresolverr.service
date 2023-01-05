@@ -1,16 +1,19 @@
 [Unit]
-Description=FlareSolverr Service
-After=network-online.target
+Description=FlareSolverr
+After=network.target
 
 [Service]
-User=flaresolverr
-Group=flaresolverr
+SyslogIdentifier=flaresolverr
 Restart=always
 RestartSec=5
-TimeoutStopSec=60
 Type=simple
-ExecStart=/opt/flaresolverr/flaresolverr
+User=flaresolverr
+Group=flaresolverr
+Environment="LOG_LEVEL=info"
+Environment="CAPTCHA_SOLVER=none"
 WorkingDirectory=/opt/flaresolverr
+ExecStart=/usr/bin/python /opt/flaresolverr/flaresolverr.py
+TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target

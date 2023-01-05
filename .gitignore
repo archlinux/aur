@@ -1,0 +1,7 @@
+src
+pkg
+FlareSolverr
+
+*.pkg.*
+*.zip
+*.pyc
