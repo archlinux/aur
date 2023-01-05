@@ -1,16 +1,19 @@
 pkgbase = python-fpyutils
 	pkgdesc = A collection of useful non-standard Python functions which aim to be simple to use
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://blog.franco.net.eu.org/software/#fpyutils
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://blog.franco.net.eu.org/software/fpyutils-3.0.0/fpyutils-3.0.0.tar.gz.sig
-	source = https://blog.franco.net.eu.org/software/fpyutils-3.0.0/fpyutils-3.0.0.tar.gz
+	source = https://blog.franco.net.eu.org/software/fpyutils-3.0.1/fpyutils-3.0.1.tar.gz.sig
+	source = https://blog.franco.net.eu.org/software/fpyutils-3.0.1/fpyutils-3.0.1.tar.gz
 	sha512sums = SKIP
-	sha512sums = 2b6b23ba65b258801b9cc71a794b49d125b62761dc1e8e455fcc8cac0d21123f177e69b46d0e59eb9e5f91693fbb8da09675d276d8eb3d0428b16a4d01546b32
+	sha512sums = 8aa0fcefada2bebe76f5d9033f54efaf9652cc8deb0a8e6015f27fdb0c83f49e12fec1790462d07f6cc56cb20a270df199091633e1992fae02bea136254de35d
 
 pkgname = python-fpyutils
