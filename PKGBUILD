@@ -1,8 +1,8 @@
-# Maintainer: Felix Springer <felixspringer149@gmail.com>
+# Maintainer: Radu C. Martin <radu dot c dot martin at gmail dot com>
 
 pkgname=vim-vimtex
 _pkgname=vimtex
-pkgver=2.11
+pkgver=2.12
 pkgrel=1
 pkgdesc='A modern Vim and neovim filetype plugin for LaTeX files'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('vim')
 makedepends=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3a7968b42f46e06ed7d18baacad198f096437428d89ebb475d026956a68342e8')
+sha256sums=('f258ad70a8b7549ea0b40081f934c4e9b45bb9b8558ebc1fbe4053918f592b5d')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
