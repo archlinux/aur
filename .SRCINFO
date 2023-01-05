@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vsdeinterlace-git
 	pkgdesc = Plugin for Vapoursynth: vsdeinterlace (GIT version)
-	pkgver = 0.2.0.1.g5045396
+	pkgver = 0.3.1.0.gc4c464d
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-deinterlace
 	arch = any
