@@ -4,8 +4,8 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=(
-    'handbrake-llvm-optimized'
-    'handbrake-llvm-optimized-cli'
+  'handbrake-llvm-optimized'
+  'handbrake-llvm-optimized-cli'
 )
 
 function git_version() {
@@ -15,39 +15,50 @@ function git_version() {
   git -C HandBrake/ describe | sed -e 's/^v//g' -e 's/^/pkgver=/g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.0.r10.gdb0798d91
-pkgrel=4
+pkgver=1.6.0.r11.gdf57d7b5a
+pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 _commondeps=(
-    'libxml2'
-    'libass'
-    'libvorbis'
-    'opus'
-    'speex'
-    'libtheora'
-    'lame'
-    'x264'
-    'jansson'
-    'libvpx'
-    'libva'
-    'numactl'
-    'bzip2'
-    'gcc-libs'
-    'zlib'
-    'xz'
-    'libjpeg-turbo'
+  'libxml2'
+  'libass'
+  'libvorbis'
+  'opus'
+  'speex'
+  'libtheora'
+  'lame'
+  'x264'
+  'jansson'
+  'libvpx'
+  'libva'
+  'numactl'
+  'bzip2'
+  'gcc-libs'
+  'zlib'
+  'xz'
+  'libjpeg-turbo'
 )
 _guideps=(
-    'gst-plugins-base'
-    'gtk3'
-    'librsvg'
-    'libgudev'
+  'gst-plugins-base'
+  'gtk3'
+  'librsvg'
+  'libgudev'
 )
-makedepends=('intltool' 'python' 'nasm' 'wget' 'cmake' 'meson' 'git'
-             'clang' 'lld' 'llvm'
-             "${_commondeps[@]}" "${_guideps[@]}")
+makedepends=(
+  'intltool'
+  'python'
+  'nasm'
+  'wget'
+  'cmake'
+  'meson'
+  'git'
+  'clang'
+  'lld'
+  'llvm'
+  "${_commondeps[@]}"
+  "${_guideps[@]}"
+)
 options=('!lto') # https://bugs.archlinux.org/task/72600
 source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#branch=master")
 sha256sums=('SKIP')
@@ -57,7 +68,6 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/HandBrake"
   unset CFLAGS CXXFLAGS LDFLAGS
   export CC="/usr/bin/clang"
   export CXX="/usr/bin/clang++"
@@ -74,6 +84,7 @@ build() {
 
   export LDFLAGS="-fuse-ld=lld"
 
+  cd "$srcdir/HandBrake"
   ./configure \
     --launch-jobs=0 \
     --prefix=/usr \
@@ -91,31 +102,39 @@ build() {
 
 package_handbrake-llvm-optimized() {
   pkgdesc="Multithreaded video transcoder optimized with LLVM"
-  depends=('desktop-file-utils' 'hicolor-icon-theme'
-           "${_commondeps[@]}" "${_guideps[@]}")
-  optdepends=('gst-plugins-good: for video previews'
-              'gst-libav: for video previews'
-              'intel-media-sdk: Intel QuickSync support'
-              'libdvdcss: for decoding encrypted DVDs')
+  depends=(
+    'desktop-file-utils'
+    'hicolor-icon-theme'
+    "${_commondeps[@]}"
+    "${_guideps[@]}"
+  )
+  optdepends=(
+    'gst-plugins-good: for video previews'
+    'gst-libav: for video previews'
+    'intel-media-sdk: Intel QuickSync support'
+    'libdvdcss: for decoding encrypted DVDs'
+  )
   provides=(handbrake)
   conflicts=(handbrake)
 
-  cd "$srcdir/HandBrake/build"
-
-  make DESTDIR="$pkgdir" install
+  make \
+    --directory="$srcdir/HandBrake/build" \
+    DESTDIR="$pkgdir" \
+    install
   rm "$pkgdir/usr/bin/HandBrakeCLI"
 }
 
 package_handbrake-llvm-optimized-cli() {
   pkgdesc="Multithreaded video transcoder optimized with LLVM (CLI)"
   depends=("${_commondeps[@]}")
-  optdepends=('intel-media-sdk: Intel QuickSync support'
-              'libdvdcss: for decoding encrypted DVDs')
+  optdepends=(
+    'intel-media-sdk: Intel QuickSync support'
+    'libdvdcss: for decoding encrypted DVDs'
+  )
   provides=(handbrake-cli)
   conflicts=(handbrake-cli)
 
-  cd "$srcdir/HandBrake/build"
-  install -D HandBrakeCLI "$pkgdir/usr/bin/HandBrakeCLI"
+  install -D "$srcdir/HandBrake/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
 }
 
 # vim:set ts=2 sw=2 et:
