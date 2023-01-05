@@ -1,7 +1,7 @@
 pkgbase = numworks-upsilon-git
 	pkgdesc = A simulator for the Numworks graphic calculator (Upsilon firmware)
-	pkgver = 1.22.1.E15.r535
-	pkgrel = 2
+	pkgver = 1.22.1.E15.r537
+	pkgrel = 1
 	url = https://getupsilon.web.app/
 	arch = x86_64
 	license = custom:CC-BY-NC-SA
