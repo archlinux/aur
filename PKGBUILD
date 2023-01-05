@@ -12,7 +12,7 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=6.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
@@ -22,6 +22,7 @@ makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh-bin: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
+provides=(mongodb="$pkgver")
 source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb.sysusers
         mongodb.tmpfiles
