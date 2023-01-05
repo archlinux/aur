@@ -6,7 +6,7 @@ pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.8
 _clangver=14.0.6
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -35,7 +35,7 @@ source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pk
         limited-api.patch)
 sha256sums=('23436302c8deb5b4cbc769b205d09604e38ba83b40708efccb7bd8c9af6f6b5d'
             '4f8815840b5df2e1e3b9f201a3402126821b0d9702920cefdc18050639143ad1'
-            '433b4fa26203ecabf6ac7d4288467a918a4fba91ef885b0a11c466aae99050cd')
+            '9d9b0d74b5159dbafd9e3c4cd794d84b671c299edab3cac1660f094e9a8791ea')
 
 prepare() {
   patch -d $_pkgfqn -p1 < fix-build.patch
@@ -47,7 +47,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DBUILD_TESTS=OFF \
-    -DFORCE_LIMITED_API=yes \
     -DPYTHON_EXECUTABLE=/usr/bin/python
   cmake --build build
 }
