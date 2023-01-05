@@ -1,0 +1,19 @@
+pkgbase = ukrainealarm-client-gui
+	pkgdesc = Linux client for receiving alarms in Ukraine (see https://www.ukrainealarm.com/). GUI package.
+	pkgver = 0.1.1
+	pkgrel = 0
+	url = https://www.ukrainealarm.com/linux-app
+	arch = x86_64
+	license = custom
+	depends = libxext
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	depends = glibc
+	optdepends = libpulse: A featureful, general-purpose sound server.
+	provides = ukrainealarm-client-gui
+	conflicts = ukrainealarm-client-gui
+	source = https://apt.ukrainealarm.com/pool/main/u/ukrainealarm-client-gui/ukrainealarm-client-gui_0.1.1-0~bullseye0_amd64.deb
+	sha256sums = 7a30db5beb07abf7432abc975d9e5ba97b3227daf6c431da3f07841633872f2b
+
+pkgname = ukrainealarm-client-gui-bin
