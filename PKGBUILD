@@ -1,6 +1,6 @@
 # Maintainer: Anima <contact@animafps.xyz>
 pkgname=teres
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
 depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc-git' 'vapoursynth-plugin-frameblender')
@@ -41,4 +41,4 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 }
-sha256sums=('6fc746e23cd6b011f7d25e3f137da98090f9a46deac90a7bd25a736e64475a97')
+sha256sums=('03dc3f4ac0691fa772308b830b11707402f8d4c36bc1cd3225c4c400c9405733')
