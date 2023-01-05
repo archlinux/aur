@@ -24,6 +24,7 @@ pkgbase = deepin-control-center-git
 	makedepends = gmock
 	makedepends = polkit-qt5
 	makedepends = deepin-pw-check-git
+	makedepends = qt5-wayland
 	depends = dtkwidget-git
 	depends = deepin-account-faces-git
 	depends = libpwquality
