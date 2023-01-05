@@ -1,24 +1,20 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
-## Temporarily tracking the AeonLucid/FlareSolverr git version
-## It adds 2captcha support, support for Cloudflare UAM 
-## and partial support for Cloudflare Turnstile.
-## It will switch back to upstream repo once AeonLucid changes
-## are implemented and completed or when upstream works.
+
 pkgname=flaresolverr-git
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.0.0.r35.g33249fc
-pkgrel=3
-pkgdesc='A proxy server to bypass Cloudflare protection (AeonLucid/FlareSolverr git version)'
-arch=('x86_64')
-url='https://github.com/AeonLucid/FlareSolverr'
+pkgver=3.0.0.r0.g85360df
+pkgrel=1
+pkgdesc='A proxy server to bypass Cloudflare protection'
+arch=('any')
+url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
-depends=('python' 'chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout' 'python-requests' 'python-websockets' 'python-xvfbwrapper' 'python-2captcha')
+depends=('python' 'chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout' 'python-requests' 'python-websockets' 'python-xvfbwrapper')
 makedepends=('git')
 provides=('flaresolverr')
 conflicts=('flaresolverr-bin')
 install='flaresolverr.install'
-source=("git+$url#branch=v3beta"
+source=("git+$url"
         "flaresolverr.service"
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
@@ -31,7 +27,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd $__pkgname
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/2.2.8/3.0.0/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
 }
 
 package() {
