@@ -5,9 +5,9 @@ pkgname=serioussam
 pkginstdir=serioussam
 xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
-pkgver=1.10.2
+pkgver=1.10.4
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc="Serious Sam Classic native Linux version with XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -28,15 +28,15 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam.xpm"
     "serioussam-tfe.sh"
     "serioussam-tse.sh"
-    "gcc-11.3_Timer.patch"
-    "hud_iscore.patch")
+    "tfe-last-update.patch"
+    "tse-last-update.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
 	"SamTSE-XPLUS.tar.xz.partaa"
 	"SamTSE-XPLUS.tar.xz.partab"
 	"SamTSE-XPLUS.tar.xz.partac")
-sha256sums=('e59880dfe320c5a97c5adc59980c66ef8bd1bbac4ddb1d02fa03221d31f8654d'
+sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
             '01b2e2d4dbdb65b2f1e174fbd6606d70806e97b6a45047ed6c58e7b801f6a879'
             'f8f35bcc54ed888b72b8660319ad089b7243b9e8d83aefabdb8f0111fcb0b728'
             '3da6b8588115cf31cb67e15f527dc8b6a83da16fe35ac8c7b78ed9522e0211a4'
@@ -48,8 +48,8 @@ sha256sums=('e59880dfe320c5a97c5adc59980c66ef8bd1bbac4ddb1d02fa03221d31f8654d'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
             'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
-            '307fbebdf1b2b88122e1125a586fcbf2d19e33fee08924536220a6c91eefa997'
-            'fef586b7fa8c9a1c9b4ff43c77b05779e1f77238d6b39089344d2a912514dc31')
+            '3e7556a71e8627ea0e94e1abd1112e493e12e27d8465aa3a7c37a138d08893b7'
+            '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -58,8 +58,8 @@ fi
 
 prepare(){
   # Prepare patch
-  cat gcc-11.3_Timer.patch > "$srcdir/$_srcname/gcc-11.3_Timer.patch"
-  cat hud_iscore.patch > "$srcdir/$_srcname/hud_iscore.patch"
+  cat tfe-last-update.patch > "$srcdir/$_srcname/tfe-last-update.patch"
+  cat tse-last-update.patch > "$srcdir/$_srcname/tse-last-update.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -93,8 +93,8 @@ prepare(){
 
   # gcc 11.3 patch && hud score patch
   cd "$srcdir/$_srcname"
-  patch -p1 < gcc-11.3_Timer.patch || return 1
-  patch -p1 < hud_iscore.patch || return 1
+  patch -p1 < tfe-last-update.patch || return 1
+  patch -p1 < tse-last-update.patch || return 1
 }
 
 build(){

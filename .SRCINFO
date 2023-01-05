@@ -1,7 +1,7 @@
 pkgbase = serioussam
 	pkgdesc = Serious Sam Classic native Linux version with XPLUS Modification.
-	pkgver = 1.10.2
-	pkgrel = 3
+	pkgver = 1.10.4
+	pkgrel = 4
 	url = https://github.com/tx00100xt/SeriousSamClassic
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = serioussam
 	depends = sdl2
 	depends = python
 	depends = bash
-	source = https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v1.10.2.tar.gz
-	sha512sums = 6f91c9e96de8f2e5383e00c88c81e911e17731a36242acf83dcfc1f090ee5a5768361f6f48dbcffc6367c336bfb04ded6acf7268aba67a877c13b85d3766a581
+	source = https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v1.10.4.tar.gz
+	sha512sums = 658cd191458241532fde7be570748a39bda2d626f66e4d99c69ea23ee0028d47562935d22d6caced344ceb5b00e9cc3fe62ac793a45ccf67f753f027afb9b6b5
 
 pkgname = serioussam
 
