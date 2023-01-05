@@ -1,0 +1,16 @@
+pkgbase = obs-browser-transition
+	pkgdesc = Plugin for OBS Studio to show a browser source during scene transition
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/browser-transition.1653/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio>=28
+	depends = obs-browser
+	source = obs-browser-transition::git+https://github.com/exeldro/obs-browser-transition#commit=97b9f8aedc349d23d41a2d9e26cf9df1b126bf3d
+	sha256sums = SKIP
+
+pkgname = obs-browser-transition
