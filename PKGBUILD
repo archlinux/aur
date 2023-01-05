@@ -8,14 +8,14 @@ pkgname=(
   'handbrake-llvm-optimized-cli'
 )
 
-_commit=e4a1a435a678c13a85c2426708a0fc9bafd00186
+_commit=788aa707cc4facca0e5df281a5d9aae153b2bf7d
 pkgver() {
   git -C HandBrake/ fetch --prune --prune-tags
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.0.r12.ge4a1a435a
+pkgver=1.6.0.r10.g788aa707c
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
