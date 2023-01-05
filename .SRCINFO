@@ -8,12 +8,12 @@ pkgbase = zander-bin
 	provides = zander
 	arch = aarch64
 	source_aarch64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.9/downloads/zander_0.1.9_linux_arm64.tar.gz
-	sha256sums_aarch64 = ac4f41f506d4848ed60d31873799c1f3138ffb99062c87125406aa50ac0952a4
+	sha256sums_aarch64 = bdc4a50638f5d98e1e093f5935e342270586bc531891661fcc4e10ec7d57c7fc
 	arch = i686
 	source_i686 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.9/downloads/zander_0.1.9_linux_i386.tar.gz
-	sha256sums_i686 = 040072239f166ab71e7137f68f4ffbce68984eacb9a2ef911d48fd322a86dba6
+	sha256sums_i686 = fc0d29e5cf34c3b3feb14b3e2f21d9532626e2a4c7bf3f8024bc4e2566a05146
 	arch = x86_64
 	source_x86_64 = https://gitlab.node-3.net/zander/zander/-/releases/v0.1.9/downloads/zander_0.1.9_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6463c370cb43009df6df3cd9430ff8317238f5c2cff6f593b71e471fed42b878
+	sha256sums_x86_64 = 8b57d8774b5e616f06fcc618f180d44dba9c7fcc088f700e0681d6a33112cae2
 	
 pkgname = zander-bin
