@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.25.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -32,20 +32,20 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c13f47520affa06b3ab4687d528084ff1f7ecc2cd9600b2e43dae0513727eb5f'
-            'b004f268d18c03e2d225179fb52ca02877e93d81d87b4f08344f19ad4ab6fd31'
-            '2110b942bba25d6d0b0fe4f4ad2b47c9907ad329a0d064ff86bf54b83965f673'
-            '6bf93b82a254f79bdf92aefda4bcf413dcbe26b4b42444f1fd18793ee35cb402')
+            '8e579494feb565e9030999d5c9336e46dee320bab34b19a657e2f27fe2edbe60'
+            '69058a91c48ed4fe19df17e6fe6b85d70630cbba42024495988397af1eb9ef86'
+            'fc44726aceb321516e8edb3ae25d6bb1e00e0e49b8f2e65ec1388db455b3a382'
+            '3e32d967b19b7fc5000888afcc611844977b4758aa73eba816fffb707c37fa5a')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '75030d92294ff36642acbae000931ee6b8f03ba6e577b66b5c70a058ca9320f521368fbe225b642df1f4138172c24d966c9ec66fd4eb7f9de24ee896e91363cf'
-        'ad679ef4fde42ebf9adefec9c3bffb9b640e79f2917141940050e285c79b13e1c7ad58f497db01dd22e56750372545ac544fb4b5400c5d5895461f931365a50e'
-        '3c10abfafeb8979924efff0b5d32e543f9ca2fa3eb4216f1c84d8cb5a6ba6c8af4c5b7e3012d4f535d132fe2492c6824473ed309e8ce09d012963de033bf37b5'
-        '2c26d8b28212b98b9bb202f86c5ff84ac4bd44732ee3a30bdca91b576f5a64802c454314baff53621aafa08f761871ae95102b1727ba1f5a5d300103895e07a6')
+        'cbc3d2d3c74efcaf3d3e8a7da657a15a6ef0b47adc0b5dad7d3668d4ae4e98d0692e7ae02b0799fc5589dec9b889f2984d02ccb48a53d9dbdf379ceecda3c8ba'
+        'dc70424a94d4380de85d92e0fba22ae574a3f1a01447b72678ec3717d65bef98dc84e1c249682fedb191b625afded4b3a799ffda2d200e2040dc69f07aa7686d'
+        '5e15df92849d3068f04959c45bc8b8d678a2b4ca72ccb3c5e87f733c169919b4b5722eb9991398ecffd4a8b2709011fb0c49b684306981b1fb89888b1794b30c'
+        'a215980d4e5faf4ab509b35a34e6c15da1ee8ab649ea1e98539129a43dd11a38906d1a178b6667662614cb48c2192f8e869cf602ede7b7aabe4baa6312dce56b')
 options=(!lto !strip)
 
 prepare() {
@@ -59,6 +59,9 @@ prepare() {
     git config --remove-section submodule.lib/external/$name
   done
   git -c protocol.file.allow=always submodule update
+
+  # Fix libromfs
+  git -C lib/external/libromfs checkout 59d8ceccb0b668e16a5d2b25c457514c9e8c1493
 
   git apply \
     "$srcdir/0001-makepkg-Fix-compiler-check.patch" \

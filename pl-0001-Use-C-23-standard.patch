@@ -1,26 +1,22 @@
-From c61bb49f6dbd1adba1653a3cef242299cd34255a Mon Sep 17 00:00:00 2001
+From 906c5d445c8a380b8ba3929b041523cb6102ba69 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 18 Aug 2022 00:57:02 +0200
 Subject: [PATCH 1/2] Use C++23 standard
 
 ---
- lib/CMakeLists.txt | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ lib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index 404f7f6..4d593ff 100644
+index 508d079..f801e3e 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -1,7 +1,7 @@
+@@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.16)
 +cmake_minimum_required(VERSION 3.20)
  project(libpl)
  
--set(CMAKE_CXX_STANDARD 20)
-+set(CMAKE_CXX_STANDARD 23)
- 
- if (LIBPL_SHARED_LIBRARY)
-     set(LIBRARY_TYPE SHARED)
+ set(CMAKE_CXX_STANDARD 23)
 -- 
-2.38.1
+2.39.0
 

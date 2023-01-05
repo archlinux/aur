@@ -1,7 +1,7 @@
-From 684cca4d5dc6874842e0a505617abcad0f26472d Mon Sep 17 00:00:00 2001
+From f7af803f6d32f9fb1297a268fc32e225db62e1bc Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 11 Jun 2022 23:08:31 +0200
-Subject: [PATCH 2/3] fix: Deduplicate resources directories
+Subject: [PATCH 2/2] fix: Deduplicate resources directories
 
 It seems to actually happens despite xdgpp already doing that...
 ---
@@ -32,7 +32,7 @@ index 3419043f..7d9d1e05 100644
      std::string combineStrings(const std::vector<std::string> &strings, const std::string &delimiter = "");
      std::string replaceStrings(std::string string, const std::string &search, const std::string &replace);
 diff --git a/lib/libimhex/source/helpers/fs.cpp b/lib/libimhex/source/helpers/fs.cpp
-index ab6e30d5..b4fce7b1 100644
+index d45a5a31..3dd1eb5e 100644
 --- a/lib/libimhex/source/helpers/fs.cpp
 +++ b/lib/libimhex/source/helpers/fs.cpp
 @@ -1,4 +1,5 @@
@@ -60,5 +60,5 @@ index ab6e30d5..b4fce7b1 100644
          #endif
      }
 -- 
-2.38.1
+2.39.0
 

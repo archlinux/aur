@@ -1,25 +1,26 @@
-From f05087e0d92d6312294b06f026ef8a19fac4eac2 Mon Sep 17 00:00:00 2001
+From d28e965509fdce0c90389a99a096f2d1ae879e8b Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
 
 ---
- lib/CMakeLists.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ lib/CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index 4d593ff..585fdb2 100644
+index f801e3e..1a36e9a 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -34,7 +34,7 @@ add_library(libpl ${LIBRARY_TYPE}
+@@ -34,8 +34,7 @@ add_library(libpl ${LIBRARY_TYPE}
          source/pl/lib/std/hash.cpp
  )
  
--target_compile_options(libpl PRIVATE -Wall -Wextra -Werror -Wno-unknown-pragmas)
+-target_compile_options(libpl PRIVATE -Wall -Wextra -Werror -Wpedantic -Wno-unknown-pragmas)
+-
 +target_compile_options(libpl PRIVATE -Wno-unknown-pragmas)
  target_include_directories(libpl PUBLIC include)
- target_link_libraries(libpl PUBLIC fmt::fmt intervaltree)
- set_property(TARGET libpl PROPERTY POSITION_INDEPENDENT_CODE ON)
+ target_link_libraries(libpl PRIVATE fmt::fmt-header-only)
+ target_link_libraries(libpl PUBLIC intervaltree)
 -- 
-2.38.1
+2.39.0
 
