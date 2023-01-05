@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl
-pkgver=2023.1.0
+pkgver=2023.1.1
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
 makedepends=('cmake' 'libx11' 'pybind11' 'python' 'wayland-protocols')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0a1991278c64849f471e4b307a7c01f465a308674f359054886c32352e887b60')
+sha256sums=('f3973f98b08564fd529079911c4e64cd5b552f6933a4a71d085609db6e5de09a')
 
 build() {
     local _pyver
@@ -22,13 +22,11 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
-        -DBUILD_PYTHON_BINDING:BOOL='ON' \
         -DBUILD_EXAMPLES:BOOL='OFF' \
         -DBUILD_TESTS:BOOL='ON' \
         -DINSTALL_EXAMPLE_CODE:BOOL='OFF' \
         -DONEAPI_INSTALL_LICENSEDIR:STRING="share/licenses/${pkgname}" \
         -DONEAPI_INSTALL_PYTHONDIR:STRING="lib/python${_pyver}" \
-        -DPYTHON_INSTALL_DIR:STRING="lib/python${_pyver}" \
         -Wno-dev
     make -C build
 }

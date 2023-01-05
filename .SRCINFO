@@ -1,6 +1,6 @@
 pkgbase = onevpl
 	pkgdesc = oneAPI Video Processing Library
-	pkgver = 2023.1.0
+	pkgver = 2023.1.1
 	pkgrel = 1
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = onevpl
 	depends = wayland
 	optdepends = onevpl-runtime: for runtime implementation
 	optdepends = python: for python bindings
-	source = https://github.com/oneapi-src/oneVPL/archive/v2023.1.0/onevpl-2023.1.0.tar.gz
-	sha256sums = 0a1991278c64849f471e4b307a7c01f465a308674f359054886c32352e887b60
+	source = https://github.com/oneapi-src/oneVPL/archive/v2023.1.1/onevpl-2023.1.1.tar.gz
+	sha256sums = f3973f98b08564fd529079911c4e64cd5b552f6933a4a71d085609db6e5de09a
 
 pkgname = onevpl
