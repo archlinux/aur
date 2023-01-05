@@ -1,5 +1,5 @@
 pkgname=rustlings
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Small exercises to get you used to reading and writing Rust code!"
 arch=(x86_64)
