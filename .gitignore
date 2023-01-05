@@ -1,3 +1,4 @@
 CMakeLists.txt
 imgui-config.cmake.in
 v1.*
+*\.pkg\.*
