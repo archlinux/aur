@@ -1,10 +1,9 @@
 # Maintainer: Muktazam Hasbi Ashidiqi (reorr)
-# Contributor: Teddy Valette (kyominii) <teddy.valette@telecomnancy.net>
 # Contributor: Nanda Okitavera (yuune)
 # Contributor: Ghani Rafif (ekickx)
 
 pkgname=mantablockscreen
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc='Another i3lock-color wrapper that mantab'
 url='https://github.com/reorr/mantablockscreen'
@@ -14,7 +13,7 @@ depends=("xorg-xrandr" "bash" "imagemagick" "i3lock-color-git" "otf-san-francisc
 "ttf-abel-regular")
 _tarname=mantablockscreen-$pkgver
 source=("$_tarname.tar.gz::https://github.com/reorr/mantablockscreen/archive/v$pkgver.tar.gz") 
-sha256sums=('0132911f65ce022207883eb4e158a78159bd01adfd40e59ff5e08de061335b60')
+sha256sums=('6047035baa77bb0f9c3290a4e7422f99e3a287fe01662d85c8aeb9c082e32ec8')
 
 package() {
   cd "$srcdir/$_tarname"
