@@ -1,6 +1,6 @@
 pkgbase = ctune-git
 	pkgdesc = NCurses internet radio player for Linux.
-	pkgver = v1.0.13
+	pkgver = v1.1.0
 	pkgrel = 0
 	url = https://github.com/An7ar35/ctune
 	arch = x86_64
