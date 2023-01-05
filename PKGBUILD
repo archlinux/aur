@@ -9,7 +9,6 @@ url='https://github.com/brandsimon/verity-squash-root/'
 license=(MIT)
 depends=(python binutils efitools sbsigntools squashfs-tools tar)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(shellcheck mypy flake8)
 checkdepends=(flake8 mypy shellcheck)
 optdepends=('age: for encrypted secure boot keys')
 backup=(etc/verity_squash_root/config.ini)
