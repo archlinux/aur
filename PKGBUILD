@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1.10"
-pkgrel=1
+pkgrel=2
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -16,6 +16,26 @@ sha256sums=('SKIP'
             '6dc75c75af900877096457eda180b4c83d439de2d66e2de60796ace6cbf6db6b')
 
 install=${pkgname}.install
+
+prepare() {
+  rm /usr/share/rime-data/{rime.lua,essay.txt,punctuator.yaml,LICENSE}
+  rm /usr/share/rime-data/build/flypy.{prism,reverse,table}.bin
+  rm /usr/share/rime-data/build/flypy.{custom,schema}.yaml
+  rm /usr/share/rime-data/build/flypy_{sys,top,user}.txt
+  rm /usr/share/rime-data/build/clover.{base.dict,dict,key_bindings,schema}.yaml
+  rm /usr/share/rime-data/build/THUOCL_{animal,caijing,car,chengyu,diming,\
+food,IT,law,lishimingren,medical,poem}.dict.yaml
+  rm /usr/share/rime-data/build/sogou_new_words.dict.yaml
+  rm /usr/share/rime-data/opencc/{emoji_category.txt,HKVariants.txt,s2tw.json,\
+t2hk.json,tw2sp.json,TWVariantsRevPhrases.txt,emoji.json,jp2t.json,s2twp.json,\
+t2jp.json,tw2t.json,TWVariantsRev.txt,emoji_word.txt,JPShinjitaiCharacters.txt,\
+STCharacters.txt,t2s.json,TWPhrasesIT.txt,TWVariants.txt,hk2s.json,\
+JPShinjitaiPhrases.txt,STPhrases.txt,t2tw.json,TWPhrasesName.txt,hk2t.json,\
+JPVariants.txt,symbol_category.txt,TSCharacters.txt,TWPhrasesOther.txt,\
+HKVariantsRevPhrases.txt,s2hk.json,symbol.json,TSPhrases.txt,TWPhrasesRev.txt,\
+HKVariantsRev.txt,s2t.json,symbol_word.txt,tw2s.json,TWPhrases.txt}
+}
+
 package() {
   cd ${srcdir}/${pkgname%-git*}/
 
