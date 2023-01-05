@@ -1,8 +1,8 @@
 ## Approved, unofficial repo of [Nordlayer](https://nordlayer.com) VPN package for Linux (esp [ArchLinux](https://archlinux.org/)) 
 
 ## Important! ##
-#### This repository is now archived as I am no longer a nordlayer user and ####
-#### hence will not be able to maintain it. You are welcome to fork it if interested ####
+#### Original repository was archived by mearaj as they are longer a nordlayer user [mearaj/nordlayer](https://github.com/mearaj/nordlayer) ####
+#### I will be trying to maintain this fork [Sidicer/nordlayer](https://github.com/Sidicer/nordlayer) of his original work ####
 
 
 To check if the repo is upto date with the official
