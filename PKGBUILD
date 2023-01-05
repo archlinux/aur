@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/foxtelgo/application"
 license=('GPL')
 conflicts=("foxtelgo-bin")
+replace=("foxtelgo-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("https://gitlab.com/foxtelgo/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
