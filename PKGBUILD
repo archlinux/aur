@@ -2,7 +2,7 @@
 
 pkgname=python-upsetplot
 _module=UpSetPlot
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Python implementation of UpSet plots by Lex et al. doi:10.1109/TVCG.2014.2346248'
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
             'python-pytest-runner'
             )
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a37e1bf19397212c2143b5004b83ecb7b0e144d1211bd2ec63654e57f87890f8')
+sha256sums=('d470afe517bd10f3b08f95bba356da4b4f0593bcffdb76e65cdc8c8cd0e3927f')
 
 build() {
     cd "$_module-$pkgver"
