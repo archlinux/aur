@@ -1,4 +1,5 @@
-# Maintainer: Alexander Samoylenko <lxmnk@tuta.io>
+# Maintainer: Eric Sandoval <esandovalruezga@gmail.com>
+# Contributor: Alexander Samoylenko <lxmnk@tuta.io>
 pkgname=xidlehook
 pkgver=0.10.0
 pkgrel=1
