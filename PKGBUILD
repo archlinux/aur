@@ -1,7 +1,7 @@
 # Maintainer: Ryszard Knop <rk@dragonic.eu>
 
 pkgname=git-pile
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Manage a pile of patches on top of a git branch"
 url="https://github.com/git-pile/git-pile"
@@ -14,7 +14,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://github.com/git-pile/git-pile/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('5e1eed27e5d962463bc805bb7addffc2411ac601d4e7007f70c6636a5c53d4f9ac4032d31138b678734753594d3a1d66eb9badbbfb16655b82ccf608ef933e60')
+sha512sums=('06bccdcfd32da3845bb64472bce1f5b91dbe8fafd1eda211efc9d97d2e4a4061dccda186c218878233b50e6a396044d9558f4a92ce88f558d1cc259a8f74c102')
 
 build() {
   cd $pkgname-$pkgver
