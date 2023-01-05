@@ -11,7 +11,7 @@ pkgbase = youtubemusic
 	depends = gtk3
 	depends = libxss
 	depends = git
-	conflicts = youtubemusic-bin
+	replaces = youtubemusic-bin
 	source = https://gitlab.com/youtube-music/application/-/archive/1.0.5-2/application-1.0.5-2.tar.bz2
 	sha256sums = SKIP
 
