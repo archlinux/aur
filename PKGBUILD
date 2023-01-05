@@ -9,7 +9,7 @@
 pkgname='xampp'
 _srcver='8.2.0'
 _binver=0
-pkgrel=1
+pkgrel=2
 
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
@@ -111,7 +111,7 @@ package() {
 	# Root location in all files
 	msg 'Setting root location globally (it might take a few minutes)...'
 	find "${pkgdir}${_xampp_root}/" -type f \
-		-exec sed -i "s/@@BITNAMI_XAMPP_ROOT@@\|@@BITROCK_INSTALLDIR@@/$(_sed_escape "${_xampp_root}")/gI" '{}' \;
+		-exec sed -i "s/@@BITNAMI_XAMPP_ROOT@@\|@@BITROCK_INSTALLDIR@@\|@@XAMPP_INSTALLDIR@@/$(_sed_escape "${_xampp_root}")/gI" '{}' \;
 
 	# Temp folders
 	install -dm777 "${pkgdir}${_xampp_root}/phpmyadmin/tmp"
@@ -132,6 +132,9 @@ package() {
 	ln -s "${_xampp_root}/xampp" "${pkgdir}${_xampp_root}/lampp"
 	test -d "${pkgdir}${_xampp_root}/share/lampp" || \
 		ln -sf "${_xampp_root}/share/xampp" "${pkgdir}${_xampp_root}/share/lampp"
+
+	echo "Include \"${_xampp_root}/apache2/conf/httpd.conf\"" >> \
+		"${pkgdir}${_xampp_root}/etc/httpd.conf"
 
 	msg 'Copying executables and launcher...'
 

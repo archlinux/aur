@@ -1,7 +1,7 @@
 pkgbase = xampp
 	pkgdesc = A stand-alone LAMPP distribution
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.apachefriends.org
 	install = xampp.install
 	arch = x86_64
