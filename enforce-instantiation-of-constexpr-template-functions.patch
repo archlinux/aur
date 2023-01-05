@@ -1,0 +1,89 @@
+From 2ba4e83e61617daee70f98fcdd76cb8bc3d6ac38 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sguelton@redhat.com>
+Date: Sat, 18 Jun 2022 13:48:41 +0200
+Subject: [PATCH] [clang] Enforce instantiation of constexpr template functions
+ during non-constexpr evaluation
+
+Otherwise these functions are not instantiated and we end up with an undefined
+symbol.
+
+Fix #55560
+
+Differential Revision: https://reviews.llvm.org/D128119
+
+(cherry picked from commit da6a14b91ad999327b41a9040577273591e4ad1d)
+---
+ clang/lib/Sema/SemaTemplateInstantiateDecl.cpp  |  5 +++--
+ .../CodeGenCXX/constexpr-late-instantiation.cpp | 17 +++++++++++++++++
+ .../SemaCXX/constexpr-late-instantiation.cpp    | 15 +++++++++++++++
+ 3 files changed, 35 insertions(+), 2 deletions(-)
+ create mode 100644 clang/test/CodeGenCXX/constexpr-late-instantiation.cpp
+ create mode 100644 clang/test/SemaCXX/constexpr-late-instantiation.cpp
+
+diff --git a/clang/lib/Sema/SemaTemplateInstantiateDecl.cpp b/clang/lib/Sema/SemaTemplateInstantiateDecl.cpp
+index 467372c71496..293782822e83 100644
+--- a/clang/lib/Sema/SemaTemplateInstantiateDecl.cpp
++++ b/clang/lib/Sema/SemaTemplateInstantiateDecl.cpp
+@@ -4826,7 +4826,8 @@ void Sema::InstantiateFunctionDefinition(SourceLocation PointOfInstantiation,
+                                      /*Complain*/DefinitionRequired)) {
+     if (DefinitionRequired)
+       Function->setInvalidDecl();
+-    else if (TSK == TSK_ExplicitInstantiationDefinition) {
++    else if (TSK == TSK_ExplicitInstantiationDefinition ||
++             (Function->isConstexpr() && !Recursive)) {
+       // Try again at the end of the translation unit (at which point a
+       // definition will be required).
+       assert(!Recursive);
+@@ -4841,7 +4842,7 @@ void Sema::InstantiateFunctionDefinition(SourceLocation PointOfInstantiation,
+         Diag(PatternDecl->getLocation(), diag::note_forward_template_decl);
+         if (getLangOpts().CPlusPlus11)
+           Diag(PointOfInstantiation, diag::note_inst_declaration_hint)
+-            << Function;
++              << Function;
+       }
+     }
+ 
+diff --git a/clang/test/CodeGenCXX/constexpr-late-instantiation.cpp b/clang/test/CodeGenCXX/constexpr-late-instantiation.cpp
+new file mode 100644
+index 000000000000..1c8eef73f2dd
+--- /dev/null
++++ b/clang/test/CodeGenCXX/constexpr-late-instantiation.cpp
+@@ -0,0 +1,17 @@
++// Make sure foo is instantiated and we don't get a link error
++// RUN: %clang_cc1 -S -emit-llvm -triple %itanium_abi_triple %s -o- | FileCheck %s
++
++template <typename T>
++constexpr T foo(T a);
++
++// CHECK-LABEL: define {{.*}} @main
++int main() {
++  // CHECK: call {{.*}} @_Z3fooIiET_S0_
++  int k = foo<int>(5);
++}
++// CHECK: }
++
++template <typename T>
++constexpr T foo(T a) {
++  return a;
++}
+diff --git a/clang/test/SemaCXX/constexpr-late-instantiation.cpp b/clang/test/SemaCXX/constexpr-late-instantiation.cpp
+new file mode 100644
+index 000000000000..ec8e071217c1
+--- /dev/null
++++ b/clang/test/SemaCXX/constexpr-late-instantiation.cpp
+@@ -0,0 +1,15 @@
++// RUN: %clang_cc1 %s -fsyntax-only -verify
++
++template <typename T>
++constexpr T foo(T a);   // expected-note {{declared here}}
++
++int main() {
++  int k = foo<int>(5);  // Ok
++  constexpr int j =     // expected-error {{constexpr variable 'j' must be initialized by a constant expression}}
++          foo<int>(5);  // expected-note {{undefined function 'foo<int>' cannot be used in a constant expression}}
++}
++
++template <typename T>
++constexpr T foo(T a) {
++  return a;
++}
