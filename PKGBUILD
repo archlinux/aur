@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
-pkgname="${_pkgname}-optimized-git"
+pkgname="${_pkgname}-opti-git"
 pkgver=r2286.0e3547e
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
