@@ -12,7 +12,6 @@ pkgbase = youtube
 	depends = gtk3
 	depends = libxss
 	depends = git
-	conflicts = youtube-git
 	conflicts = youtube-bin
 	source = https://gitlab.com/youtube-desktop/application/-/archive/1.0.8-3/application-1.0.8-3.tar.bz2
 	sha256sums = SKIP
