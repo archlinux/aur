@@ -2,7 +2,7 @@
 
 _pkgname=libraw
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='A library for reading RAW files obtained from digital photo cameras (CRW/CR2, NEF, RAF, DNG, and others) (mingw-w64)'
 url='https://www.libraw.org/'
@@ -18,7 +18,7 @@ makedepends=('mingw-w64-make' 'git')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('686899632de347e01ef27b9a4d186b800384968f2d2fd7e7c2ab182fab1ea9d0'
+sha256sums=('b63d7ffa43463f74afcc02f9083048c231349b41cc9255dec0840cf8a67b52e0'
             'SKIP')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/LibRaw/LibRaw/archive/${pkgver}.tar.gz"
@@ -35,7 +35,8 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
