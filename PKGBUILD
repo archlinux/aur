@@ -1,18 +1,17 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-html-restrict'
-pkgver='2.1.9'
+pkgver='3.0.1'
 pkgrel='1'
 pkgdesc="Strip unwanted HTML tags and attributes"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-dump>=0' 'perl-html-parser>=0' 'perl-list-moreutils>=0' 'perl-moo>=1.002000' 'perl-moox-types-mooselike>=0.23' 'perl-uri>=0' 'perl-namespace-clean>=0')
-makedepends=()
-checkdepends=('perl-test-fatal>=0')
+depends=('perl-data-dump' 'perl-moo>=1.002000' 'perl-namespace-clean' 'perl-scalar-list-utils>=1.33' 'perl-sub-quote' 'perl-type-tiny>=1.002001' 'perl-uri')
+makedepends=('perl-test-fatal')
 url='https://metacpan.org/pod/HTML::Restrict'
-source=("http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTML-Restrict-2.1.9.tar.gz")
-sha512sums=('ae915bf45439bc5f05240340873ec412b8647b51901adc67e6af9984f3fe3312952afae51f61613eb1902b2ef1c6d71b9fef2a3f65b40c66852f1766d521d748')
+source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-Restrict-v${pkgver}.tar.gz")
+sha512sums=('ec56aec2d5eedb92ef1a980fa640197d9d26b7f278ce8d45227a53e2e5c015cb7694f1df369022c873b1e590c1f3c966867690c6085c2144ab74b9d70c26d13f')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -20,7 +19,7 @@ prepare_environment() {
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
-  cd "${srcdir}/HTML-Restrict-${pkgver}"
+  cd "${srcdir}/HTML-Restrict-v${pkgver}"
 }
 
 build() {

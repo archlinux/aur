@@ -1,23 +1,21 @@
 pkgbase = perl-html-restrict
 	pkgdesc = Strip unwanted HTML tags and attributes
-	pkgver = 2.1.9
+	pkgver = 3.0.1
 	pkgrel = 1
-	url = http://search.cpan.org/dist/HTML-Restrict
+	url = https://metacpan.org/pod/HTML::Restrict
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-fatal>=0
-	depends = perl-data-dump>=0
-	depends = perl-html-parser>=0
-	depends = perl-list-moreutils>=0
+	makedepends = perl-test-fatal
+	depends = perl-data-dump
 	depends = perl-moo>=1.002000
-	depends = perl-moox-types-mooselike>=0.23
-	depends = perl-uri>=0
-	depends = perl-namespace-clean>=0
+	depends = perl-namespace-clean
+	depends = perl-scalar-list-utils>=1.33
+	depends = perl-sub-quote
+	depends = perl-type-tiny>=1.002001
+	depends = perl-uri
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/HTML-Restrict-2.1.9.tar.gz
-	md5sums = 8b3f04e61ac774fc42e76814970496ef
-	sha512sums = ae915bf45439bc5f05240340873ec412b8647b51901adc67e6af9984f3fe3312952afae51f61613eb1902b2ef1c6d71b9fef2a3f65b40c66852f1766d521d748
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-Restrict-v3.0.1.tar.gz
+	sha512sums = ec56aec2d5eedb92ef1a980fa640197d9d26b7f278ce8d45227a53e2e5c015cb7694f1df369022c873b1e590c1f3c966867690c6085c2144ab74b9d70c26d13f
 
 pkgname = perl-html-restrict
-
