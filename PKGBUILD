@@ -1,4 +1,4 @@
-# Maintainer:  Dave <orangechannel@pm.me>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=getnative
 pkgname=vapoursynth-tools-${_plug}-git
