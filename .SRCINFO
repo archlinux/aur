@@ -1,6 +1,6 @@
 pkgbase = jpeg-recompress-git
 	pkgdesc = Utilities for archiving JPEGs for long term storage - IPEP fork (fixes and webp support)
-	pkgver = 2.5.0.r0.gfa12c86
+	pkgver = 2.5.7.r0.gbeef803
 	pkgrel = 1
 	url = https://github.com/ImageProcessing-ElectronicPublications/jpeg-recompress
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = jpeg-recompress-git
 	depends = libiqa
 	depends = libjpeg
 	depends = libsmallfry
+	depends = libwebp
 	provides = jpeg-recompress
 	provides = jpeg-archive
 	conflicts = jpeg-recompress
