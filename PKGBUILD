@@ -2,10 +2,10 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=jgmenu
-_pkgver=4.4.0
+_pkgver=4.4.1
 pkgname=${_pkgname}-minimal
-pkgver=4.4.0+2c73e23
-pkgrel=2
+pkgver=4.4.1+a165616
+pkgrel=1
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme support"
 arch=('x86_64')
 url="https://github.com/johanmalm/${_pkgname}"

@@ -1,7 +1,7 @@
 pkgbase = jgmenu-minimal
 	pkgdesc = Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme support
-	pkgver = 4.4.0+2c73e23
-	pkgrel = 2
+	pkgver = 4.4.1+a165616
+	pkgrel = 1
 	url = https://github.com/johanmalm/jgmenu
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = jgmenu-minimal
 	optdepends = python
 	provides = jgmenu
 	conflicts = jgmenu
-	source = git+https://github.com/johanmalm/jgmenu.git#tag=v4.4.0
+	source = git+https://github.com/johanmalm/jgmenu.git#tag=v4.4.1
 	source = remove-unwanted-mans.patch
 	sha256sums = SKIP
 	sha256sums = ec3e0176486b0e18779145584ac76831292e8466269559f1ba23d48d94b54665
