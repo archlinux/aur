@@ -1,6 +1,6 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
-pkgname=pvc
+pkgname=pvc-git
 pkgver=1.0.0
 pkgrel=1
 epoch=
