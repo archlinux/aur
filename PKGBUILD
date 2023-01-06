@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 
 _pkgname=qiandao
 pkgname=${_pkgname}-git
