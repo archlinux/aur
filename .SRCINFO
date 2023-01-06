@@ -1,13 +1,13 @@
 pkgbase = mpv-sponsorblock
 	pkgdesc = MPV plugin that allow you to skip sponsors while watching YouTube videos
-	pkgver = 2.0.0alpha1
+	pkgver = 2.0.0alpha2
 	pkgrel = 1
 	url = https://github.com/TheCactusVert/mpv-sponsorblock
 	arch = x86_64
 	license = MIT
 	makedepends = cargo-nightly
 	depends = mpv
-	source = mpv-sponsorblock-2.0.0alpha1.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/refs/tags/v2.0.0-alpha.1.tar.gz
-	sha256sums = a800e78bfc40c63ad877b5a5ff4721977e2d03d64e70229e62e76e3396c22aaf
+	source = mpv-sponsorblock-2.0.0alpha2.tar.gz::https://github.com/TheCactusVert/mpv-sponsorblock/archive/refs/tags/v2.0.0-alpha.2.tar.gz
+	sha256sums = 9f9b1f383c505dfad86aaa90c3301fde04541cabc2e482c00586c0d36ff1707a
 
 pkgname = mpv-sponsorblock
