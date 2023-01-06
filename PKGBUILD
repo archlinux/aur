@@ -1,13 +1,13 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 pkgname=fex-emu
-pkgver=2212
+pkgver=2301
 pkgrel=1
 pkgdesc='Fast usermode x86 and x86-64 emulator for Arm64'
 url=https://fex-emu.com
 arch=(aarch64 x86_64)
 license=(MIT)
-makedepends=(git cmake ninja clang)
+makedepends=(git cmake ninja clang llvm)
 depends=(sdl2 libepoxy squashfs-tools squashfuse erofs-utils)
 source=("git+https://github.com/FEX-Emu/FEX#tag=FEX-$pkgver"
         "git+https://github.com/catchorg/Catch2"
@@ -104,4 +104,5 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 "$srcdir"/FEX/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install "$pkgdir"/usr/bin/FEXLoader "$pkgdir"/usr/bin/FEXInterpreter
 }
