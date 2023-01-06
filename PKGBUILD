@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=drtmle
-_pkgver=1.1.1
+_pkgver=1.1.2
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Doubly-Robust Nonparametric Estimation and Inference'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41b8a1f9f03c6b26b6393c8eb5c7017e61084e6eab26e12521a4bc95fea5778b')
+sha256sums=('a0af95c961f8e448cb7e983c145a64c513ffc390ceec60fa33469d78f7ef6d63')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
