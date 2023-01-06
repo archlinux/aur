@@ -1,6 +1,6 @@
 pkgbase = sidekick-browser-stable-bin
 	pkgdesc = Sidekick is a revolutionary new work OS based on the Chromium browser. Designed to be the ultimate online work experience, it brings together your team and every web tool you use – all in one interface
-	pkgver = 106.33.1.28262
+	pkgver = 108.34.1.28988
 	pkgrel = 1
 	url = https://www.meetsidekick.com/
 	install = sidekick-browser-stable-bin.install
@@ -44,7 +44,7 @@ pkgbase = sidekick-browser-stable-bin
 	provides = www-browser
 	options = !strip
 	options = !emptydirs
-	source = https://cdn.meetsidekick.com/browser-builds/sidekick-linux-release-x64-106.33.1.28262-babcec0.deb
-	sha512sums = d835a02a84746ef0eb3126c901dfbb36f7a56b93c8a600db81f4bb08c8117743359e4da3891775e645a18ca1a07e963670052590dc54de71f76c6572ad482570
+	source = https://cdn.meetsidekick.com/browser-builds/sidekick-linux-release-x64-108.34.1.28988-ab06dd1.deb
+	sha512sums = 70cbe7c46fc80cb75ac19e0d00d0a8e95bd44c2839b9b9ecf17ce73bd5be77cee0218626386c912e1dd8c6ceb8a41ccfb565deec6a5e78c50d13edb314ebb500
 
 pkgname = sidekick-browser-stable-bin
