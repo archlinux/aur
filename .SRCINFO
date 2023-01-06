@@ -1,13 +1,15 @@
 pkgbase = armv7l-glibc
 	pkgdesc = GNU C Library ARM (32bit) target
 	pkgver = 2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
+	makedepends = armv7l-binutils
 	makedepends = armv7l-gcc
-	makedepends = armv7l-linux-api-headers
+	makedepends = python
+	depends = armv7l-linux-api-headers
 	options = !strip
 	options = staticlibs
 	source = https://ftp.gnu.org/gnu/libc/glibc-2.36.tar.xz
