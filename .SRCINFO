@@ -1,13 +1,13 @@
 pkgbase = cro-chain-desktop-bin
 	pkgdesc = Crypto.com DeFi Desktop Wallet
-	pkgver = 1.3.7
+	pkgver = 1.3.8
 	pkgrel = 1
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
 	provides = cro-chain-desktop
 	conflicts = cro-chain-desktop
-	source = Crypto.com-DeFi-Desktop-Wallet-1.3.7.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v1.3.7/Crypto.com-DeFi-Desktop-Wallet-1.3.7.AppImage
-	sha512sums = 6bbf6a8fc13aca5ac7944fd23463e629980e911a3c2bd9074138bdf73228bf99baf72938595b89289eb585c125fedf8f1e438fb426214e8d7d4e272abe1eb272
+	source = Crypto.com-DeFi-Desktop-Wallet-1.3.8.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v1.3.8/Crypto.com-DeFi-Desktop-Wallet-1.3.8.AppImage
+	sha512sums = 84ebb2152c718bcdb2cbc47badfc6897a1da9992ab1de760c51f9901ff509080b4a6b73bd4966b2d4028decd01fb76ff83600949a997f27b36ad8c2786428129
 
 pkgname = cro-chain-desktop-bin

@@ -9,14 +9,14 @@ pkgname=${_pkgname}-bin
 pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 arch=('x86_64')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _appimg="Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
 source=("${_appimg}::${url}/releases/download/v${pkgver}/${_appimg}")
-sha512sums=('6bbf6a8fc13aca5ac7944fd23463e629980e911a3c2bd9074138bdf73228bf99baf72938595b89289eb585c125fedf8f1e438fb426214e8d7d4e272abe1eb272')
+sha512sums=('84ebb2152c718bcdb2cbc47badfc6897a1da9992ab1de760c51f9901ff509080b4a6b73bd4966b2d4028decd01fb76ff83600949a997f27b36ad8c2786428129')
 
 prepare() {
   # Extract files
@@ -29,7 +29,7 @@ prepare() {
   sed -e "/X-AppImage-Version/d" -i "${_pkgbin}.desktop"
 
   # Remove unnecessary files
-  rm AppRun resources/app-update.yml
+  rm "AppRun" "resources/app-update.yml"
 }
 
 package() {
