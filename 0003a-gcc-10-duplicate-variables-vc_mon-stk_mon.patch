@@ -1,0 +1,77 @@
+diff -pNarZu5 a/daemon/vcom_client.c b/daemon/vcom_client.c
+--- a/daemon/vcom_client.c	2021-09-10 02:47:19.000000000 -0400
++++ b/daemon/vcom_client.c	2023-01-03 23:58:24.161930421 -0500
+@@ -46,11 +46,12 @@ static vc_ssl_cfg m_sslcfg;
+ #endif
+ //#include "vcom_debug.h"
+ 
+ #define RBUF_SIZE	4096
+ 
+-extern void * stk_mon; 
++/*extern*/ void * stk_mon; 
++struct vc_monitor vc_mon;
+ 
+ static int recv_second_chance(int sock, char * buf, int buflen)
+ {
+ 	int ret;
+ 	struct timeval tv;
+diff -pNarZu5 a/daemon/vcom.h b/daemon/vcom.h
+--- a/daemon/vcom.h	2021-09-10 02:47:19.000000000 -0400
++++ b/daemon/vcom.h	2023-01-03 23:58:09.428532325 -0500
+@@ -126,10 +126,11 @@ static inline struct vc_ops * stk_curnt(
+ #define INO_PUSH_SWITCH 0
+ #define INO_POP_SWITCH 0
+ #define INO_RPLS_SWITCH 0
+ #define INO_RESTART_SWITCH 0
+ 
++extern
+ void * stk_mon;
+ 
+ 
+ static inline int _stk_log(struct stk_vc *stk, char * __form, ...)
+ {
+diff -pNarZu5 a/daemon/vcom_monitor_dbg.h b/daemon/vcom_monitor_dbg.h
+--- a/daemon/vcom_monitor_dbg.h	2021-09-10 02:47:19.000000000 -0400
++++ b/daemon/vcom_monitor_dbg.h	2023-01-03 23:58:09.428532325 -0500
+@@ -31,10 +31,11 @@ struct vc_monitor{
+ 	int pid;
+ 	int max_statl;
+ 	int dbg_first;
+ 	char fname[FNAME_LEN];
+ };
++extern
+ struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;
+diff -pNarZu5 a/daemon/vcom_monitor.h b/daemon/vcom_monitor.h
+--- a/daemon/vcom_monitor.h	2021-09-10 02:47:19.000000000 -0400
++++ b/daemon/vcom_monitor.h	2023-01-03 23:58:09.428532325 -0500
+@@ -28,10 +28,11 @@ struct vc_monitor{
+ 	int fd;
+ 	int pid;
+ 	int msgl;
+ 	char fname[FNAME_LEN];
+ };
++extern
+ struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;
+diff -pNarZu5 a/daemon/vcom_monitor_pre_stat.h b/daemon/vcom_monitor_pre_stat.h
+--- a/daemon/vcom_monitor_pre_stat.h	2021-09-10 02:47:19.000000000 -0400
++++ b/daemon/vcom_monitor_pre_stat.h	2023-01-03 23:58:09.428532325 -0500
+@@ -28,10 +28,11 @@ struct vc_monitor{
+ 	int pid;
+ 	int msgl;
+ 	char pre_stat[16];
+ 	char fname[FNAME_LEN];
+ };
++extern
+ struct vc_monitor vc_mon;
+ 
+ static inline int mon_init(char * fname)
+ {
+ 	vc_mon.fd = -1;

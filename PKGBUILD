@@ -51,6 +51,8 @@ _opt_MAXINSTPORTS=16  # Maximum install ports.
 
 # Uninstall cleanup: sudo rm -f /etc/advttyd.conf* /var/log/advttyd.log
 
+_opt_RAR=0
+
 set -u
 # Earlier versions of Advantech TTY were called ICOM
 # http://advdownload.advantech.com/productfile/Downloadfile1/1-NZ17GY/ICOM_LINUX_PSEUDO_TTY_DRIVER_V1.4.1.ZIP
@@ -58,8 +60,11 @@ pkgname='advantech-vcom'
 #pkgver='2.0.0'; _dl='4/1-X92NP4'
 #pkgver='2.1.0'; _dl='4/1-15OSOW4'
 #pkgver='2.2.0'; _dl='4/1-1LPJPGD'
-pkgver='2.2.1'; _dl='5/1-1NOKMCV' # not compatible with Linux 3.16
-pkgrel='4'
+#pkgver='2.2.1'; _dl='5/1-1NOKMCV'; _opt_RAR=1 # not compatible with Linux 3.16, a RAR file
+#pkgver='2.2.3'; _dl='5/1-1Y9Q0Z6' # bugs from new SSL code
+#pkgver='2.2.5'; _dl='4/1-23X5L51' # bugs and hangs
+pkgver='2.3.0'; _dl='3/1-250ZNM3' # non functional
+pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -70,32 +75,53 @@ backup=('etc/advttyd.conf')
 install="${pkgname}-install.sh"
 _srcdir="VCOM_LINUX_${pkgver}.TAR.BZ2"
 _srcdir="${_srcdir,,}"
-_srcrar="${_srcdir//.tar.bz2/.rar}"
-source=("${_srcrar}::http://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}") # a .RAR file now
+source=("${_srcdir}::https://advdownload.advantech.com/productfile/Downloadfile${_dl}/${_srcdir}")
+if [ "${_opt_RAR}" -ne 0 ]; then
+  _srcrar="${_srcdir//.tar.bz2/.rar}"
+  noextract=("${_srcrar}") # the RAR crashes bsdtar. Parsing filters is unsupported.
+  makedepends+=('unrar')
+  source[0]="${_srcrar}::${source[0]##*::}"
+fi
 #source=("${_srcdir,,}::http://downloadt.advantech.com/download/downloadsr.aspx?File_Id=${_dl}") # redirect works sooner but can be changed arbitrairly
 _srcdir="${_srcdir%\.tar*}"
 #source=("http://advdownload.advantech.com/productfile/Downloadfile4/${_dl}/${_srcdir}.rar")
 source+=(
   '0000-advman.systemd.patch'
+  '0000a-advman.systemd.patch'
+  '0000b-advman.systemd.patch'
+  '0000c-advman.systemd.patch'
   '0001-adv_main-access_ok_kernel-5-0.patch'
   '0002-adv_mmap-vm_fault_t-5-1.patch'
   '0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
+  '0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
   '0004-adv_main-proc_create_data-kernel-5.6.patch'
+  '0005-kernel-5.17-change-PDE_DATA.patch'
+  '0006-kernel-6.0-set_termios-const-ktermios.patch'
 )
-noextract=("${_srcrar}") # the RAR crashes bsdtar. Parsing filters is unsupported.
-md5sums=('6a32b5ceb5a4dccc919462a61b7c228c'
+md5sums=('a3f195545fa67310e754e682bf2414de'
          '65bb3f58bf90650cd629b94057c80da5'
+         'e8e05eebaa36ccf7bfe456ab59b75386'
+         'cf730b084619fac9c20106e8e6359ccc'
+         '8e10c250ba777d270285e0bf79d44a1d'
          '6b07ea60f898b5586ad8f23a28c32ab7'
          'b30212f45f0dcebc9b88b17e4355d298'
          '0aa930803ed243f4e45f0d31bde581c8'
-         '446602b4feef554ade9a137303883432')
-sha256sums=('98e670d7ab0b67c5ca1d7c61ffffdbf812e2bcc2680d408b749ae4f36f1c46d7'
+         '2cf8ab9c5541c38eba5fb9687142d94d'
+         '446602b4feef554ade9a137303883432'
+         '32f3a081b5926d6ea7f1cd2a22655d95'
+         'b005fdd5de28f835b7b37ecd74453785')
+sha256sums=('47d49391ad6863face08ec3129b65fa10e53c9849c10a45a7f0abb394f7ddafc'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
+            '17fa883aeaea5821e00ead10777f54f4ad6b96f3a2f07097e3d9a77755f21c10'
+            '85785f80c7be4452e5b620b5d405646f0e9bacdbec2aecea68a059b6245519aa'
+            '1959411a50b800def13849672196295db3acb4aabd1db9fbc5cc52ebf390993c'
             '9335cfe8addfdf80224d21529fe0a70a6b750fa0823cfe806f5c94ae50a06cad'
             '77edc7a806085fc738fa4536e91fce98fb8e103f8207ec0d395f340107e83d0c'
             '61c4b0c92488cce93e6b9ffca4f13eb7aa7fd8b267eb1438094ce41d96aaef53'
-            'aa71ede3478a5b482cd085ed2406a1ccd6be3b3ef76ab1fc0b45f4133d3c5a59')
-makedepends+=('unrar')
+            'de3477551219d9fc5b1924775a4456155ef5beb5bd702fbc114ca0c956607953'
+            'aa71ede3478a5b482cd085ed2406a1ccd6be3b3ef76ab1fc0b45f4133d3c5a59'
+            'b65adbcbb83a21cf0a1c17b9bc2a039ad5c633021ecd90d88d5d978a03a59c23'
+            '99b7b7a2c84d8b82a3e79b2a7abe99d1696a7ff3df350560d96ce7f049e8cb27')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -105,24 +131,50 @@ fi
 
 prepare() {
   set -u
-  unrar x "${_srcrar}"
+  if [ "${_opt_RAR}" -ne 0 ]; then
+    unrar x "${_srcrar}"
+  fi
+  if :; then
+    rm -r "${_srcdir}/driver"
+    mv 'vcom_linux_2.2.5/driver' "${_srcdir}"
+  fi
+
   cd "${_srcdir}"
 
-  #cp -p driver/adv_main.c{,.orig}; false
-  #diff -pNau5 driver/adv_main.c{.orig,} > '../0001-adv_main-access_ok_kernel-5-0.patch'
-  patch -Nbup0 -i "${srcdir}/0001-adv_main-access_ok_kernel-5-0.patch"
+  if [ "$(vercmp "${pkgver}" "2.2.1")" -le 0 ]; then
+    #cp -p driver/adv_main.c{,.orig}; false
+    #diff -pNau5 driver/adv_main.c{.orig,} > '../0001-adv_main-access_ok_kernel-5-0.patch'
+    patch -Nup0 -i "${srcdir}/0001-adv_main-access_ok_kernel-5-0.patch"
 
-  #cp -p driver/adv_mmap.c{,.orig}; false
-  #diff -pNau5 driver/adv_mmap.c{.orig,} > '../0002-adv_mmap-vm_fault_t-5-1.patch'
-  patch -Nbup0 -i "${srcdir}/0002-adv_mmap-vm_fault_t-5-1.patch"
+    #cp -p driver/adv_mmap.c{,.orig}; false
+    #diff -pNau5 driver/adv_mmap.c{.orig,} > '../0002-adv_mmap-vm_fault_t-5-1.patch'
+    patch -Nup0 -i "${srcdir}/0002-adv_mmap-vm_fault_t-5-1.patch"
 
-  #cp -pr daemon{,.orig}; false
-  #diff -pNarZu5 daemon{.orig,} > '../0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
-  patch -Nbup0 -i "${srcdir}/0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+  fi
+  if [ "$(vercmp "${pkgver}" "2.2.5")" -le 0 ]; then
+    #cp -pr daemon{,.orig}; false
+    #diff -pNarZu5 daemon{.orig,} > '../0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
+    patch -Nup0 -i "${srcdir}/0003-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+  else
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNarZu5 'a' 'b' > '0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch'
+    patch -Nup1 -i "${srcdir}/0003a-gcc-10-duplicate-variables-vc_mon-stk_mon.patch"
+  fi
+  if [ "$(vercmp "${pkgver}" "2.2.3")" -le 0 ]; then
+    #cp -p driver/adv_main.c{,.orig}; false
+    #diff -pNau5 driver/adv_main.c{.orig,} > '../0004-adv_main-proc_create_data-kernel-5.6.patch'
+    patch -Nup0 -i "${srcdir}/0004-adv_main-proc_create_data-kernel-5.6.patch"
+  fi
 
-  #cp -p driver/adv_main.c{,.orig}; false
-  #diff -pNau5 driver/adv_main.c{.orig,} > '../0004-adv_main-proc_create_data-kernel-5.6.patch'
-  patch -Nbup0 -i "${srcdir}/0004-adv_main-proc_create_data-kernel-5.6.patch"
+  if :; then
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNarZu5 'a' 'b' > '0005-kernel-5.17-change-PDE_DATA.patch'
+    patch -Nup1 -i "${srcdir}/0005-kernel-5.17-change-PDE_DATA.patch"
+
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNarZu2 'a' 'b' > '0006-kernel-6.0-set_termios-const-ktermios.patch'
+    patch -Nup1 -i "${srcdir}/0006-kernel-6.0-set_termios-const-ktermios.patch"
+  fi
 
   # Cosmetic correction of CRLF for Linux
   sed -e 's:\r$::g' -i 'readme.txt'
@@ -230,10 +282,24 @@ fi
   # Make a less noisy start/stop to not clog up the systemd logs
   sed -e 's@^\(\s*\)echo@\1: # echo@g' 'script/advman' > 'script/advman.quiet'
 
-  # Change original advman to systemd
-  #cp -p script/advman{,.orig}; false
-  #diff -pNau10 script/advman{.orig,} > '../0000-advman.systemd.patch'
-  patch -Nbup0 -i "${srcdir}/0000-advman.systemd.patch" || :
+  if [ "$(vercmp "${pkgver}" "2.2.1")" -le 0 ]; then
+    # Change original advman to systemd
+    #cp -p script/advman{,.orig}; false
+    #diff -pNau10 script/advman{.orig,} > '../0000-advman.systemd.patch'
+    patch -Nup0 -i "${srcdir}/0000-advman.systemd.patch"
+  elif [ "$(vercmp "${pkgver}" "2.2.3")" -le 0 ]; then
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNaru10 'a' 'b' > '0000a-advman.systemd.patch'
+    patch -Nup1 -i "${srcdir}/0000a-advman.systemd.patch"
+  elif [ "$(vercmp "${pkgver}" "2.2.5")" -le 0 ]; then
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNaru10 'a' 'b' > '0000b-advman.systemd.patch'
+    patch -Nup1 -i "${srcdir}/0000b-advman.systemd.patch"
+  elif [ "$(vercmp "${pkgver}" "2.3.0")" -le 0 ]; then
+    #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+    #diff -pNaru10 'a' 'b' > '0000c-advman.systemd.patch'
+    patch -Nup1 -i "${srcdir}/0000c-advman.systemd.patch"
+  fi
 
   # Tame the port count
   sed -e 's:^\(#define VCOM_PORTS\)\s.*$:'"\1 ${_opt_MAXINSTPORTS}:g" -i 'driver/advconf.h'
@@ -243,6 +309,12 @@ fi
 
   # The compiled files should not have been included
   'ma'ke -s -j1 clean # keep git-aurcheck quiet
+
+  find -type 'f' -name '*.orig' -delete
+
+  if [ "${pkgver}" = '2.2.3' ] || [ "${pkgver}" = '2.2.5' ]; then
+    sed -e 's:-Werror::g' -i $(grep --include='Makefile' -rle '-Werror' .)
+  fi
   set +u
 }
 
@@ -328,7 +400,8 @@ DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
 EOF
     ) "${_dkms}/dkms.conf"
 
-    install -Dm644 driver/* -t "${_dkms}/driver/"
+    install -d "${_dkms}/driver/"
+    cp -pr driver/* "${_dkms}/driver/"
     make -C "${_dkms}/driver/" clean
     rm "${_dkms}/driver/dkms.conf"
     sed -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \

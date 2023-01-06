@@ -1,0 +1,17 @@
+diff -pNarZu5 a/driver/adv_main.c b/driver/adv_main.c
+--- a/driver/adv_main.c	2023-01-04 00:57:59.078747397 -0500
++++ b/driver/adv_main.c	2023-01-04 00:58:20.872024158 -0500
+@@ -193,10 +193,13 @@ long adv_proc_ioctl(struct file *filp, u
+ 
+ int adv_proc_open(struct inode *inode, struct file *filp)
+ {
+ 	struct adv_vcom * data;
+ 	
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0)
++#define PDE_DATA pde_data
++#endif
+ 	data = PDE_DATA(inode);
+ 	filp->private_data = data;
+ 
+ 	return 0;
+ }

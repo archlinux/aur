@@ -1,0 +1,19 @@
+diff -pNarZu2 a/driver/adv_uart.c b/driver/adv_uart.c
+--- a/driver/adv_uart.c	2018-11-14 11:29:12.000000000 -0500
++++ b/driver/adv_uart.c	2023-01-04 01:06:59.669401278 -0500
+@@ -397,4 +397,7 @@ int adv_uart_startup(struct uart_port *p
+ }
+ 
++#ifndef LINUX_VERSION_CODE
++#include <linux/version.h>
++#endif
+ static void adv_uart_shutdown(struct uart_port *port)
+ {
+@@ -415,4 +418,7 @@ static void adv_uart_shutdown(struct uar
+ static void
+ adv_uart_set_termios(struct uart_port *port, struct ktermios *termios,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++const
++#endif
+ 		       struct ktermios *old)
+ {

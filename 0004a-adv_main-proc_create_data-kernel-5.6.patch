@@ -1,0 +1,32 @@
+diff -pNarZu5 a/driver/adv_main.c b/driver/adv_main.c
+--- a/driver/adv_main.c	2020-08-13 23:29:32.000000000 -0400
++++ b/driver/adv_main.c	2023-01-04 01:41:43.090626566 -0500
+@@ -259,18 +259,28 @@ unsigned int adv_proc_poll(struct file *
+ 	return mask;
+ }
+ 
+ extern int adv_proc_mmap(struct file *filp, struct vm_area_struct *vma);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0)
++static const struct proc_ops adv_proc_fops = {
++	.proc_open		= adv_proc_open,
++	.proc_release	= adv_proc_release,
++	.proc_mmap		= adv_proc_mmap,
++	.proc_ioctl	= adv_proc_ioctl,
++	.proc_poll		= adv_proc_poll,
++};
++#else
+ static const struct file_operations adv_proc_fops = {
+ 	.owner		= THIS_MODULE,
+ 	.open		= adv_proc_open,
+ 	.release	= adv_proc_release,
+ 	.mmap		= adv_proc_mmap,
+ 	.unlocked_ioctl	= adv_proc_ioctl,
+ 	.poll		= adv_proc_poll,
+ };
++#endif
+ 
+ 
+ void adv_main_interrupt(struct adv_vcom * data, int mask)
+ {
+ 	if(mask & ADV_INT_RX){
