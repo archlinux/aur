@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
 pkgver=12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -43,6 +43,11 @@ build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
+  _CFLAGS_FOR_TARGET="-march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions \
+  -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
+  -fstack-clash-protection"
+  _CXXFLAGS_FOR_TARGET="$_CFLAGS_FOR_TARGET -Wp,-D_GLIBCXX_ASSERTIONS"
+
   "$srcdir"/gcc/configure \
       --prefix=/usr \
       --with-sysroot=/usr/$_target/sys-root \
@@ -58,6 +63,7 @@ build() {
       --enable-default-ssp \
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
+		--enable-libstdcxx-backtrace
       --enable-linker-build-id \
       --enable-lto \
       --enable-plugin \
@@ -69,7 +75,7 @@ build() {
       --disable-werror \
       --enable-languages=c,c++,fortran \
       --with-arch=armv8-a \
-      --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 
+      --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 CFLAGS_FOR_TARGET="${_CFLAGS_FOR_TARGET}" CXXFLAGS_FOR_TARGET="${_CXXFLAGS_FOR_TARGET}"
 
   make
 }
