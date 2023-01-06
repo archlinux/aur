@@ -27,4 +27,5 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
   cp -rv ${srcdir}/${_gitdir}/usr ${pkgdir}/usr
+  cp ${srcdir}/${_gitdir}/LICENSE ${pkgdir}/usr/share/licenses/${_gitdir}/LICENSE
 }
