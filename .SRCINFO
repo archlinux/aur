@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vsswinir-git
 	pkgdesc = Plugin for Vapoursynth: vsswinir (GIT version)
 	pkgver = 1.0.0.0.gee1e764
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HolyWu/vs-swinir
 	arch = any
 	license = Apache
