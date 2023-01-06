@@ -1,28 +1,29 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=paradox-launcher
-pkgver=1.0
-pkgrel=4
-pkgdesc="Paradox Interactive Game Launcher"
+pkgver=2022.14
+pkgrel=1
+epoch=1
+pkgdesc="Paradox Interactive Game Launcher v2"
 arch=('x86_64')
 url="https://play.paradoxplaza.com/"
 license=('custom')
 depends=("libxi" "xdg-utils" "freetype2" "libgl" "gconf")
-source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher
-        ${pkgname}
-        ${pkgname}.desktop)
-sha256sums=('8c31f964a43a29efb2a598963d4d2fbc50d191fc026c0745268240f63dee993c'
-            '481ead5d9a16b532c93589c036a44b41ca7d85193c0f0158fc5ec957fc1e2c46'
-            '6687c73d211ae7e50a1658e7dd7900a5f5777fe54df3a89e4f96a5b8dc210a11')
+source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher)
+sha256sums=('9275b7b7ab25d5aa074a169cf325f81636ea8a6dc93fb519edcf9c0da0d72bd6')
 
 package() {
-  cd "${srcdir}"
-  mkdir -p "${pkgdir}"/opt/${pkgname}
+  mkdir -p "${pkgdir}"/opt
   mkdir -p "${pkgdir}"/usr/bin
-  cp -R "${srcdir}"/data/ "${pkgdir}"/opt/${pkgname} -R
 
-  install -m644 -D "${pkgdir}/opt/${pkgname}/data/desktop/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -m644 -D "${pkgdir}/opt/${pkgname}/data/EULA" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -m644 -D "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -m755 -D "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cd "${srcdir}"
+  tar -xzvf data.tar.gz
+
+  cp -R "${srcdir}"/opt/* "${pkgdir}"/opt/ -R
+  cp -R "${srcdir}"/usr/* ${pkgdir}/usr/ -R
+
+  sed -i 's|Icon=Launcher|Icon=PDXLauncher|g' "${pkgdir}"/usr/share/applications/paradox-launcher-v2.desktop
+  find "${pkgdir}"/usr/share/icons/ -type f -name "Launcher.png" -exec rename Launcher.png PDXLauncher.png {} \;
+
+  ln -s /opt/Paradox\ Interactive/Paradox\ Launcher\ v2/dowser "${pkgdir}"/usr/bin/dowser
 }
