@@ -29,11 +29,6 @@ noextract=()
 md5sums=()
 validpgpkeys=()
 
-pkgver(){
-    cd "${_pkgname}"
-    printf "1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 prepare() {
     git clone https://github.com/spynetS/Linecounter.git lctr
 }
