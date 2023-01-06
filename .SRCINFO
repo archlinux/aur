@@ -1,6 +1,6 @@
 pkgbase = rvvm-git
 	pkgdesc = The RISC-V Virtual Machine
-	pkgver = 0.5_r806.b9e2c81
+	pkgver = 0.5_r831.b632d73
 	pkgrel = 1
 	url = https://github.com/LekKit/RVVM/
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = rvvm-git
 	provides = librvvm
 	conflicts = rvvm
 	conflicts = librvvm
+	options = !strip
+	options = staticlibs
 	source = rvvm-git::git+https://github.com/LekKit/RVVM.git
 	sha256sums = SKIP
 
