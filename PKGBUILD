@@ -1,42 +1,40 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=liblcf-git
-pkgver=0.7.0.r0.g01b73de9
+pkgver=0.7.0.r11.g0ed38af4
 pkgrel=1
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
 url="https://easyrpg.org"
 license=('MIT')
 conflicts=('liblcf')
-provides=("liblcf=${pkgver%.r*}" 'lcf2xml')
+provides=("liblcf=${pkgver%.r*}" 'lcf2xml' 'lcfstrings')
 depends=('gcc-libs' 'expat' 'icu')
-makedepends=('git')
+makedepends=('git' 'cmake' 'ninja')
 source=(liblcf::"git+https://github.com/EasyRPG/liblcf.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd liblcf
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+  git -C liblcf describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
-build () {
-  cd liblcf
+prepare() {
+  rm -rf aurbuild
+}
 
-  autoreconf -i
-  ./configure --prefix=/usr \
-    --enable-shared --disable-static \
-    --disable-update-mimedb
-  make
+build() {
+  cmake -S liblcf -B aurbuild -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIBLCF_UPDATE_MIMEDB=OFF
+  cmake --build aurbuild
 }
 
 check() {
-  make -C liblcf check
+  cmake --build aurbuild --target check
 }
 
 package () {
-  cd liblcf
-
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install aurbuild
   # license
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 liblcf/COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }

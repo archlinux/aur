@@ -1,17 +1,20 @@
 pkgbase = liblcf-git
 	pkgdesc = Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)
-	pkgver = 0.7.0.r0.g01b73de9
+	pkgver = 0.7.0.r11.g0ed38af4
 	pkgrel = 1
 	url = https://easyrpg.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	depends = gcc-libs
 	depends = expat
 	depends = icu
 	provides = liblcf=0.7.0
 	provides = lcf2xml
+	provides = lcfstrings
 	conflicts = liblcf
 	source = liblcf::git+https://github.com/EasyRPG/liblcf.git
 	md5sums = SKIP
