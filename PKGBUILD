@@ -5,7 +5,7 @@
 pkgbase='concourse-git'
 pkgname=('concourse-git' 'concourse-fly-cli-git')
 pkgver=v7.9.0.r17.gf3cb492d1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
@@ -42,7 +42,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -ldflags=-X=github.com/concourse/concourse.Version=${pkgver} -mod=readonly -modcacherw"
+  concourse_version=$(git describe --abbrev=0 --tags)
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -ldflags=-X=github.com/concourse/concourse.Version=${concourse_version} -mod=readonly -modcacherw"
 
   yarn build
   go build -o concourse ./cmd/concourse

@@ -1,6 +1,6 @@
 pkgbase = concourse-git
 	pkgver = v7.9.0.r17.gf3cb492d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://concourse-ci.org
 	arch = x86_64
 	license = Apache-2.0
