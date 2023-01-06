@@ -1,7 +1,7 @@
 # Maintainer: Mahamudul Hasan <919.hasan@gmail.com>
 pkgname=gnome-shell-extension-maximize-to-empty-workspace-git
 _uuid="MaximizeToEmptyWorkspace-extension@kaisersite.de"
-pkgver=12.r21.a9c046d
+pkgver=r21.a9c046d
 pkgrel=1
 pkgdesc='New and maximized windows will be moved to empty workspaces. Supports multiple monitors.'
 arch=('any')
@@ -16,8 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  local _version="$(grep -Po '(?<="version": )[^\n|,]*' ${_uuid}/metadata.json)"
-  printf "${_version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
