@@ -5,7 +5,7 @@ _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-glibc
 pkgver=2.36
-pkgrel=2
+pkgrel=3
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM (32bit) target"
 arch=(any)
@@ -50,12 +50,12 @@ build() {
       --disable-timezone-tools \
       --disable-werror
 
-  make
+  make --jobserver-style=pipe
 }
 
 package() {
   cd glibc-build
-  make DESTDIR="$pkgdir"/usr/$_target/sys-root install 
+  make --jobserver-style=pipe DESTDIR="$pkgdir"/usr/$_target/sys-root install
 
   #we don't want static libraries. Only keep the one that we really need.
   find "$pkgdir"/usr/$_target/sys-root  -name '*.a' -and -not -name libc_nonshared.a -delete

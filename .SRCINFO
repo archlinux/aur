@@ -1,7 +1,7 @@
 pkgbase = armv7l-glibc
 	pkgdesc = GNU C Library ARM (32bit) target
 	pkgver = 2.36
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
