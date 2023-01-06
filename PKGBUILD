@@ -1,7 +1,7 @@
 # Maintainer: HaoCheng<ch1994@outlook.com>
 pkgname=stream-url-bin
 _pkgname=stream-url
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A command line tool to get stream urls written in rust."
 arch=('aarch64' 'x86_64')
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/tkit1994/stream-url/releases/download/v${pkgv
 
 
 sha256sums=('5d733fd59ba3db2ef7350a9f2e2551982614720ad557da02657102c22d3b9f0e')
-sha256sums_aarch64=('914be6b66d956f325681bab35f3fb9094f39e302e62a4f22bc6309b05d2c0972')
-sha256sums_x86_64=('395fcbe48c95059ac39f117196119969b95f35357f08523b602d256be331411b')
+sha256sums_aarch64=('748cc3d766ada23a8075b1536203aa75d48ba64174469a4729eb6d6c55e8c747')
+sha256sums_x86_64=('97805c31d6230d83392319a86553b659b3f19cc9963f0155d47c1cdd31d89e07')
 
 package() {
 	cd ${srcdir}
