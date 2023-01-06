@@ -1,7 +1,7 @@
 # Maintainer: Kacper Zybała <zyperpl at gmail dot com>
 
 pkgname=ldtk
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('haxe' 'git' 'nodejs' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deepnight/$pkgname/archive/v$pkgver.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('5d3470173e1675cc4a236bd1d07b4bf2337ca40ba2434f0ff3d414382d442c53'
+sha256sums=('26c9c9a518f5cb2b871640a6d7cc7dbb1e13ebf00fe29c0adabe7454c30f9a54'
             '5f15970200f2b14fd79eaaac03347e0b2d4845403347cb6ecfa57ee17e6642c0')
 options=('!strip' 'emptydirs' '!makeflags')
 
@@ -27,8 +27,8 @@ build() {
   haxelib git hxnodejs https://github.com/HaxeFoundation/hxnodejs.git e37e79fce8a2a2177a0a73ce9d8eff2acdbcfa8b --always
   haxelib git electron https://github.com/tong/hxelectron.git f409a6117214f52ddf1cc39977a711e2c0622247 --always
   haxelib git heaps-aseprite https://github.com/AustinEast/heaps-aseprite.git 81aee42a6c1548433003e3c589d58e9fdf01415e --always
-  haxelib git deepnightLibs https://github.com/deepnight/deepnightLibs.git c34e7681574881b71240fb2a8b89567f9b12c37c --always
-  haxelib git ldtk-haxe-api https://github.com/deepnight/ldtk-haxe-api.git 5bae37bd935d627ee41e1afa3542ec29eb1daeff --always
+  haxelib git deepnightLibs https://github.com/deepnight/deepnightLibs.git 86c5e2227884d9aa4b937b25e954946a2e936545 --always
+  haxelib git ldtk-haxe-api https://github.com/deepnight/ldtk-haxe-api.git dc1cac660ac02b237a6f5eb6dfcf1fa40fd6d029 --always
   haxelib list
   
   pushd app
