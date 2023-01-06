@@ -1,15 +1,14 @@
 pkgbase = apgdiff
 	pkgdesc = A free PostgreSQL diff tool that is useful for comparison/diffing of database schemas
-	pkgver = 2.4
-	pkgrel = 3
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = http://www.apgdiff.com/
 	arch = any
 	makedepends = maven
 	depends = jre11-openjdk-headless
 	source = apgdiff
-	source = https://www.apgdiff.com/download/apgdiff-2.4-src.zip
-	sha256sums = 83a43b2759e0dc7ec3c4433ec09aef3aae83bdb3f88321d2578bd35b2ab1119f
-	sha256sums = 8551a3e10c7aae3a04efc5dad655575484b63a3323f07db5e81c50b42d88129c
+	source = https://github.com/fordfrog/apgdiff/archive/refs/tags/release_2.7.0.tar.gz
+	sha256sums = d2a627da0011c69c8698a0e78c7b2bdbd9ed90dbca9050490ba5ec6898cbf1f4
+	sha256sums = 932a7e9fef69a289f4c7bed31a9c0709ebd2816c834b65bad796bdc49ca38341
 
 pkgname = apgdiff
-
