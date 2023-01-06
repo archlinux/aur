@@ -2,7 +2,7 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 pkgname=libvirt-vnc
-pkgver=8.5.0
+pkgver=8.10.0
 pkgrel=1
 pkgdesc='Libvirt runtime libraries and headers exclusively for VNC support.'
 arch=('x86_64')
@@ -27,16 +27,12 @@ conflicts=(
 )
 source=(
   "https://libvirt.org/sources/libvirt-${pkgver}.tar.xz"{,.asc}
-  "libvirt-meson.build.patch"
-  "libvirt-tools-meson.build.patch"
-  "libvirt-src-meson.build.patch"
+  "minimize.patch"
 )
 sha256sums=(
   '401e99b5e1b83de39a86347e091a85eb4dba82a87053dfcb5aa250328f97db62'
   'SKIP'
-  '9c6dc059fa0a716d35cc6fa43b470bd5feb0aec476472bfbb8747c40f8105984'
-  'bfcaff2fb2b1c24d7d04e0cc747c6ce288770b814aeee54ab8449cf24c9eab0c'
-  'f0517979df85bde1f9f98d2ad22e5464d00e3c778f2829bdd7b258bbb6ee470b'
+  '32359d73eb958a50e50478d7eca406c69fad0a48cc923ca3118474ebdb81463c'
 )
 validpgpkeys=(
   '453B65310595562855471199CA68BE8010084C9C' # Jiří Denemark <jdenemar@redhat.com>
@@ -45,9 +41,7 @@ validpgpkeys=(
 
 prepare() {
   cd "${srcdir}/libvirt-${pkgver}"
-  patch meson.build < "${srcdir}/libvirt-meson.build.patch"
-  patch tools/meson.build < "${srcdir}/libvirt-tools-meson.build.patch"
-  patch src/meson.build < "${srcdir}/libvirt-src-meson.build.patch"
+  patch meson.build < "${srcdir}/minimize.patch"
 }
 
 build() {
@@ -120,7 +114,6 @@ build() {
     -Dstorage_mpath=disabled \
     -Dstorage_rbd=disabled \
     -Dstorage_scsi=disabled \
-    -Dstorage_sheepdog=disabled \
     -Dstorage_vstorage=disabled \
     -Dstorage_zfs=disabled \
     -Dsysctl_config=disabled \

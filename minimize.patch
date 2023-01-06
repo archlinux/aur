@@ -1,0 +1,111 @@
+diff --git a/meson.build b/meson.build
+index ce4d2a7..0e42b0f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -904,7 +904,7 @@ endif
+ # FIXME rewrite to use dependency() once we can use 2.4.48
+ attr_dep = cc.find_library('attr', required: get_option('attr'))
+ if attr_dep.found()
+-  conf.set('WITH_LIBATTR', 1)
++  conf.set('WITH_LIBATTR', 0)
+ endif
+ 
+ audit_dep = dependency('audit', required: get_option('audit'))
+@@ -935,7 +935,7 @@ endif
+ devmapper_version = '1.0.0'
+ devmapper_dep = dependency('devmapper', version: '>=' + devmapper_version, required: false)
+ if devmapper_dep.found()
+-  conf.set('WITH_DEVMAPPER', 1)
++  conf.set('WITH_DEVMAPPER', 0)
+ endif
+ 
+ dlopen_use = host_machine.system() != 'windows'
+@@ -950,12 +950,12 @@ endif
+ fuse_version = '3.1.0'
+ fuse_dep = dependency('fuse3', version: '>=' + fuse_version, required: false)
+ if fuse_dep.found()
+-  conf.set('WITH_FUSE', 3)
++  conf.set('WITH_FUSE', 0)
+ else
+   fuse_version = '2.8.6'
+   fuse_dep = dependency('fuse', version: '>=' + fuse_version, required: get_option('fuse'))
+   if fuse_dep.found()
+-    conf.set('WITH_FUSE', 1)
++    conf.set('WITH_FUSE', 0)
+   endif
+ endif
+ 
+@@ -2092,9 +2092,9 @@ if build_tests
+   subdir('tests')
+ endif
+ 
+-subdir('examples')
++#subdir('examples')
+ 
+-subdir('po')
++#subdir('po')
+ 
+ gen_docs = not get_option('docs').disabled()
+ if gen_docs
+@@ -2109,7 +2109,7 @@ pkgconfig_files = [
+   'libvirt.pc.in',
+   'libvirt-qemu.pc.in',
+   'libvirt-lxc.pc.in',
+-  'libvirt-admin.pc.in',
++#  'libvirt-admin.pc.in',
+ ]
+ 
+ pkgconfig_conf = configuration_data({
+diff --git a/src/meson.build b/src/meson.build
+index 35951d8..f0ef78e 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -559,7 +559,7 @@ if conf.has('WITH_REMOTE')
+       libvirt_lib,
+     ],
+     link_depends: libvirt_admin_link_depends,
+-    install: true,
++    install: false,
+     install_rpath: libvirt_rpath,
+     version: libvirt_lib_version,
+     soversion: libvirt_so_version,
+diff --git a/tools/meson.build b/tools/meson.build
+index c41c619..ae5eef1 100644
+--- a/tools/meson.build
++++ b/tools/meson.build
+@@ -225,7 +225,7 @@ if conf.has('WITH_REMOTE')
+       libvirt_admin_lib,
+       libvirt_shell_lib,
+     ],
+-    install: true,
++    install: false,
+     install_dir: bindir,
+     install_rpath: libvirt_rpath,
+   )
+@@ -247,7 +247,7 @@ configure_file(
+   input: 'virt-xml-validate.in',
+   output: '@BASENAME@',
+   configuration: tools_conf,
+-  install: true,
++  install: false,
+   install_dir: bindir,
+   install_mode: 'rwxrwxr-x',
+ )
+@@ -256,7 +256,7 @@ configure_file(
+   input: 'virt-pki-validate.in',
+   output: '@BASENAME@',
+   configuration: tools_conf,
+-  install: true,
++  install: false,
+   install_dir: bindir,
+   install_mode: 'rwxrwxr-x',
+ )
+@@ -284,7 +284,7 @@ executable(
+   link_with: [
+     libvirt_lib
+   ],
+-  install: true,
++  install: false,
+   install_dir: bindir,
+ )
+ 
