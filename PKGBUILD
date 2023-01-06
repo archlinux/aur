@@ -3,7 +3,7 @@
 
 pkgname=libvirt-vnc-viewer
 pkgver=11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Libvirt VNC Viewer GUI application.'
 arch=('x86_64')
 url='https://gitlab.com/virt-viewer/virt-viewer'
