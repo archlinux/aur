@@ -7,9 +7,9 @@
 
 pkgname=insync
 pkgver=3.8.4.50481
-pkgrel=1
+pkgrel=2
 _dist=buster
-pkgdesc="An unofficial Google Drive and OneDrive client that runs on Linux, with support for various desktops"
+pkgdesc="An unofficial Dropbox, Google Drive, and OneDrive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
