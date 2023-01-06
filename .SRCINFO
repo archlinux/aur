@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-tools-getnative-git
 	pkgdesc = Tool for Vapoursynth: getnative (GIT version)
-	pkgver = 3.0.0.5.g13e46bd
+	pkgver = 3.2.1.0.gfd8c737
 	pkgrel = 1
 	url = https://github.com/Infiziert90/getnative
 	arch = any
