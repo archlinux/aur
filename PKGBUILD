@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fmsb
-_pkgver=0.7.4
+_pkgver=0.7.5
 pkgname=r-${_pkgname,,}
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc='Functions for Medical Statistics Book with some Demographic Data'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c216091deafd2f8171f703245c3daacf19d99f9e1462a9008f55d58c46dfb5e6')
+sha256sums=('3e17dbcb3f7ddb1ab624029bfe60f9d1f4d6fba01a60ce94dcfcfb3f11905820')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
