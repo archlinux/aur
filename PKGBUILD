@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=cryptographic-id-rs
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 protover=0.1.0
 pkgdesc='Attest the trustworthiness of a device against a human using asymmetric cryptography'
@@ -21,7 +21,7 @@ source=(
   "${pkgname}-proto-${protover}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v${protover}/cryptographic-id-protocol-v${protover}.tar.gz"
 )
 sha256sums=(
-  '027783c231e800aa177c938543ba41449776a35e385c476f03e9d512af08bb75'
+  '45b1502d64ddb5599935c26c9a8a68e664b2f23345c1ae0d94fdfd7be09e58ff'
   '526509cabc4ef6e015bcde754fbfbc5879c145e47cf74efc386d06f0921ecd22'
 )
 
