@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 
 pkgname=python-cqhttp-git
 pkgver=r30.1869819
