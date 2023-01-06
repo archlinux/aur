@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NetRep
-_pkgver=1.2.4
+_pkgver=1.2.6
 pkgname=r-${_pkgname,,}
-pkgver=1.2.4
-pkgrel=4
+pkgver=1.2.6
+pkgrel=1
 pkgdesc='Permutation Testing Network Module Preservation Across Datasets'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4dcf02fc2e9b05b3612e78c37194ddd627490cfa74ae4ef586fcb095a65894eb')
+sha256sums=('0612d2f51993039be6fd264bdbc77c084291f265e913df84d42c79925d48d243')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
