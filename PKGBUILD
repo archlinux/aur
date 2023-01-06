@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=108.0.1
+pkgver=108.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
         "libwebrtc-screen-cast-sync.patch")
-sha256sums=('9821ac130dad01383e03276bf6cc92d41329d351da1fa7fa238168f8890611ea'
+sha256sums=('42e6d6b27ad0694a4fc9dd736888ad36c99eb2dbcce96e134584805d644ca300'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
