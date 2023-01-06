@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-tools-acsuite-git
 	pkgdesc = Frame-based cutting/trimming/splicing of audio with VapourSynth (GIT version)
 	pkgver = 6.0.0.4.ge40f503
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrangeChannel/acsuite
 	arch = x86_64
 	license = Unlicense
