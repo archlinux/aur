@@ -2,7 +2,7 @@
 pkgname=colloid-kde-theme-git
 _themeName=Colloid
 _gitname="$_themeName-kde"
-pkgver=r31.9ac8ceb
+pkgver=r32.315a8fb
 pkgrel=1
 pkgdesc="colloid theme for KDE Plasma"
 arch=('any')
