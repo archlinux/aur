@@ -2,13 +2,13 @@
 
 pkgname='otf-nexon-football-gothic'
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="The NEXON FOOTBALL GOTHIC OpenType font provided by Nexon."
 arch=('any')
 url="http://levelup.nexon.com/"
 license=('custom:NEXON')
 source=(
-    "http://s.nx.com/s2/levelup/fontSite/files/FootballGothic/NexonFootballGothic_all_mac.zip"
+    "http://s.nexon.com/s2/levelup/fontSite/files/FootballGothic/NexonFootballGothic_all_mac.zip"
     "LICENSE"
 )
 sha256sums=(
