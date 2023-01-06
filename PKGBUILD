@@ -10,13 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-_commit=9904b278e045b3f60b7a729696320ea5fed264f0
+readonly _commit=a3b7be4a5e5e8a7b805871adf6ac21f5d5cfda57
+
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.0.r12.g9904b278e
+pkgver=1.6.0.r17.ga3b7be4a5
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -65,7 +66,7 @@ source=("HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=${_commit
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/HandBrake"
+  :
 }
 
 build() {
@@ -85,7 +86,7 @@ build() {
 
   export LDFLAGS="-fuse-ld=lld"
 
-  cd "$srcdir/HandBrake"
+  cd "${srcdir}/HandBrake"
   ./configure \
     --launch-jobs=0 \
     --prefix=/usr \
@@ -119,10 +120,10 @@ package_handbrake-llvm-optimized() {
   conflicts=(handbrake)
 
   make \
-    --directory="$srcdir/HandBrake/build" \
-    DESTDIR="$pkgdir" \
+    --directory="${srcdir}/HandBrake/build" \
+    DESTDIR="${pkgdir}" \
     install
-  rm "$pkgdir/usr/bin/HandBrakeCLI"
+  rm "${pkgdir}/usr/bin/HandBrakeCLI"
 }
 
 package_handbrake-llvm-optimized-cli() {
@@ -135,7 +136,7 @@ package_handbrake-llvm-optimized-cli() {
   provides=(handbrake-cli)
   conflicts=(handbrake-cli)
 
-  install -D "$srcdir/HandBrake/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
+  install -D "${srcdir}/HandBrake/build/HandBrakeCLI" "${pkgdir}/usr/bin/HandBrakeCLI"
 }
 
 # vim:set ts=2 sw=2 et:
