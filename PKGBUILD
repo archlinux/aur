@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -34,7 +34,7 @@ replaces=('cartaodecidadao-bin')
 source_x86_64=("https://aplicacoes.autenticacao.gov.pt/apps/pteid-mw-linux.x86_64.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('4abf163d8025effd91e8b66748e8c9d8600a42e490eeb371a7bce829d55b42b9b5ad05c785dbb136e9a19029446b5bf77d7388be079bfd9c9838ec9088cdb95a'
+sha512sums_x86_64=('0260f89642c6743b37a9e0157d5e70276042820f2a70931dc8e271968c8ee40c29ddf1e845aa524aeaacaf53b94d3ebeab5793b220a43c8a233446e602521d00'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
