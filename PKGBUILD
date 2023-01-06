@@ -1,7 +1,8 @@
-# Maintainer: Tomoghno Sen <tomoghno at outlook dot com>
+# Maintainer: LordDemecrius83 <lorddemecrius83@proton.me>
+# Contributor: Tomoghno Sen <tomoghno at outlook dot com>
 
 pkgname=elementary-mixer
-pkgver=0.1.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Change the volume of apps"
 arch=('x86_64')
@@ -11,8 +12,8 @@ depends=('granite' 'libhandy')
 makedepends=('meson' 'vala')
 provides=('com.github.childishgiant.mixer')
 conflicts=('com.github.childishgiant.mixer')
-source=("mixer-$pkgver.tar.gz::https://github.com/ChildishGiant/mixer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4131df912f141b60911e6f571bab6871c4ba9b49003c0532a77a57de9a818ed2')
+source=("mixer-$pkgver.tar.gz::https://github.com/ChildishGiant/mixer/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('bb932aedecfd79e74fea5a14953364306f55f8cc3ee789caa90976b7395c9002')
 
 build() {
 	arch-meson mixer-$pkgver build
