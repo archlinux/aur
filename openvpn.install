@@ -10,3 +10,7 @@ post_upgrade() {
   echo "   so remove 'user' and 'group' directives."
   echo '   Scripts that require elevated privileges may need a workaround.'
 }
+
+post_install() {
+  setcap cap_net_raw,cap_net_admin+eip /usr/bin/openvpn
+}

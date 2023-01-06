@@ -2,9 +2,9 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=openvpn
-_pkgver=2.5.7
+_pkgver=2.5.8
 pkgname=${_pkgname}-password-save
-pkgver=2.5.7+a0f9a3e9
+pkgver=2.5.8+0357ceb
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
