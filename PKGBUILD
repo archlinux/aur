@@ -4,7 +4,7 @@ pkgver=0.8.5
 pkgrel=1
 pkgdesc="Delicately-TUICed high-performance proxy built on top of the QUIC protocol" 
 url="https://github.com/EAimTY/tuic"
-license=("GPLv3")
+license=("GPL3")
 arch=("x86_64")
 provides=("tuic=$pkgver")
 
