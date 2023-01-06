@@ -1,6 +1,6 @@
 pkgbase = python-matlabengine
 	pkgdesc = A module to call MATLAB from Python
-	pkgver = 9.13.6
+	pkgver = 9.13.7
 	pkgrel = 1
 	url = https://github.com/mathworks/matlab-engine-for-python
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-matlabengine
 	makedepends = python-wheel
 	depends = matlab
 	depends = python
-	source = https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/9.13.6.tar.gz
-	b2sums = 15638ee6e27a9ea6f98fa008d6973ec504f972137025cdbb50737362493f4aa50ce15208a86c0d7f82dc3b024f12d4a2eb05b947257bed69f1695a3a05ce6653
+	source = https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/9.13.7.tar.gz
+	b2sums = a2ecd7369442933f16a2f1e1c27ab1aae4d050087b8446e2e48e1b0122740b285040f3c8db9fb7ebca586823c2255c18a0ef235140148b5c48c0a120db5e6690
 
 pkgname = python-matlabengine
