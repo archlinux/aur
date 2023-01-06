@@ -1,4 +1,4 @@
-_kernel_version=6.0.11-zen-g1fece111c505-dirty
+_kernel_version=6.1.3-zen-g5bb03538c116-dirty
 
 _r="\033[00;31m"
 _y="\033[00;33m"
