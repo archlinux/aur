@@ -2,9 +2,9 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=xfce4-settings
-_pkgver=4.16.3
+_pkgver=4.18.1
 pkgname=${_pkgname}-standalone
-pkgver=4.16.3+024399b1
+pkgver=4.18.1+1ce79a55
 pkgrel=1
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ groups=('xfce4')
 depends=('exo' 'libxfce4ui' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
 makedepends=('intltool' 'xf86-input-libinput' 'git' 'xfce4-dev-tools' 'garcon')
-optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
+optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling' 'elementary-icon-theme')
 
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
