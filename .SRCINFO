@@ -1,7 +1,7 @@
 pkgbase = aarch64-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
 	pkgver = 12.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL

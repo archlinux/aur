@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
 pkgver=12.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -63,7 +63,7 @@ build() {
       --enable-default-ssp \
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
-		--enable-libstdcxx-backtrace
+		--enable-libstdcxx-backtrace \
       --enable-linker-build-id \
       --enable-lto \
       --enable-plugin \
