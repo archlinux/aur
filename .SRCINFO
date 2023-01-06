@@ -1,7 +1,7 @@
 pkgbase = netcfg-git
-	pkgdesc = Network configuration and profile scripts (install only if you really know that you want this instead of netctl). Includes patch to make wifi-menu work, OpenRC and systemd initscripts.
+	pkgdesc = [WARNING: DEPRECATED! Install only if you really know that you want to use 'netcfg'. Upstream is no longer maintained since ~2013.] Network configuration and profile scripts. Includes patch to make wifi-menu work, OpenRC and systemd initscripts.
 	pkgver = 4.0.r563_20130808_54f4656
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/GNU-Pony/netcfg/
 	install = netcfg.install
