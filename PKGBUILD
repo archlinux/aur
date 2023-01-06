@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cvms
-_pkgver=1.3.7
+_pkgver=1.3.8
 pkgname=r-${_pkgname,,}
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Cross-Validation for Model Selection'
 arch=('any')
@@ -47,7 +47,7 @@ optdepends=(
   r-xpectr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('da1c57ae04f01ace2d0cc7ca21bd3758582e694ed71de11dc9a02960ce5b86d8')
+sha256sums=('9a2a5ba293a0a091c9aafd4e16169966eab513a1ad8cbec4f3310fec90eebd40')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
