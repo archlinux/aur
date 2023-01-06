@@ -1,7 +1,7 @@
 pkgbase = rime-pure-git-direct
 	pkgdesc = 一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库
 	pkgver = 1.1.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/Direct-A/rime-pure
 	install = rime-pure-git-direct.install
 	arch = x86_64

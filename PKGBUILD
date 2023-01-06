@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1.10"
-pkgrel=7
+pkgrel=8
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -40,7 +40,8 @@ THUOCL_{animal,caijing,car,chengyu,diming,food,IT,law,lishimingren,medical,poem}
 )
   for f in ${F_LIST[@]}
   do
-    [[ -f ${f} ]] && sudo -S rm /usr/share/rime-data/${f}
+    f_path="/usr/share/rime-data/${f}"
+    [[ -f ${f_path} ]] && sudo -S rm ${f_path}
   done
 }
 
