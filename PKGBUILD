@@ -1,6 +1,6 @@
 pkgname=haruhishot
 pkgver=0.2.7
-pkgrel=1.0
+pkgrel=2.0
 pkgdesc='One day Haruhi Suzumiya made a wlr screenshot tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Decodetalkers/haruhishot'
