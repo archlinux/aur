@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cBioPortalData
-_pkgver=2.10.2
+_pkgver=2.10.3
 pkgname=r-${_pkgname,,}
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 pkgdesc='Exposes and makes available data from the cBioPortal web resources'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('31d9d4d7aa017bcbedc80118b3c0c41d06649a3f1e30057e712bd3998e0d9210')
+sha256sums=('dcfab9cf89a91ff7ccb4c5bbeaca8eeb8ffd08f7f98870b200364b8266bec144')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
