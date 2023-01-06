@@ -2,7 +2,8 @@
 
 pkgname=emake-git
 _pkgname=emake
-pkgver=3.6.10.r65.f0e91dd
+pkgver=3.6.12.r73.7d7c8cb
+_pkgver=3.6.12
 pkgrel=1
 pkgdesc='Yet the simplest build toolchain for gcc/clang projects'
 arch=('any')
@@ -17,9 +18,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  _pkgver=$(python "${srcdir}/${pkgname}/${_pkgname}.py" -help|head -n 1|cut -f 2 -d ' ')
-  ver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-  echo "${_pkgver}.${ver}"
+  _ver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+  echo "${_pkgver}.${_ver}"
 }
 
 package() {

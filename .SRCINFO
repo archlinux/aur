@@ -1,6 +1,6 @@
 pkgbase = emake-git
 	pkgdesc = Yet the simplest build toolchain for gcc/clang projects
-	pkgver = 3.6.10.r65.f0e91dd
+	pkgver = 3.6.12.r73.7d7c8cb
 	pkgrel = 1
 	url = https://github.com/skywind3000/emake
 	arch = any
