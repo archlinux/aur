@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-maximize-to-empty-workspace-git
 _uuid="MaximizeToEmptyWorkspace-extension@kaisersite.de"
 pkgver=r21.a9c046d
-pkgrel=1
+pkgrel=2
 pkgdesc='New and maximized windows will be moved to empty workspaces. Supports multiple monitors.'
 arch=('any')
 url="https://github.com/kaiseracm/gnome-shell-extension-maximize-to-empty-workspace"
