@@ -1,7 +1,7 @@
 pkgbase = roonserver
 	pkgdesc = The music player for music lovers
 	pkgver = 2.0.1182
-	pkgrel = 2
+	pkgrel = 3
 	url = https://roonlabs.com/
 	install = roonserver.install
 	arch = x86_64

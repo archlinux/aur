@@ -1,9 +1,21 @@
 post_install () {
+if [ ! -d /var/roon ]; then
+mkdir -p /var/roon
+fi
+chown -R roon:roon /var/roon
+chown -R roon:roon /opt/RoonServer
+
+}
+
+post_upgrade() {
+if [ ! -d /var/roon ]; then
+mkdir -p /var/roon
+fi
 chown -R roon:roon /var/roon
 chown -R roon:roon /opt/RoonServer
 }
 
-post_upgrade() {
-chown -R roon:roon /var/roon
-chown -R roon:roon /opt/RoonServer
+post_remove() {
+userdel roon
+groupdel roon
 }
