@@ -1,14 +1,13 @@
 pkgbase = windscribe-v2-bin
 	pkgdesc = Windscribe GUI tool for Linux
 	pkgver = 2.5.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://windscribe.com/guides/linux
 	install = windscribe-v2-bin.install
 	arch = x86_64
 	license = GPL2
 	depends = bash
 	depends = nftables
-	depends = systemd
 	provides = windscribe
 	conflicts = windscribe-cli
 	options = !strip
