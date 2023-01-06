@@ -12,13 +12,13 @@ provides=('duckstation-qt' 'duckstation')
 options=('!strip')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
-source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/duckstation-qt-x64.AppImage")
+source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage")
 sha256sums=('SKIP')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
   ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/64x64/apps/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+  install -Dm644 squashfs-root/${pkgname%-bin}.png "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
           --name "DuckStation-Qt" \

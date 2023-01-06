@@ -10,8 +10,7 @@ pkgbase = duckstation-qt-bin
 	provides = duckstation
 	noextract = duckstation-qt-latest.AppImage
 	options = !strip
-	source = duckstation-qt-latest.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/duckstation-qt-x64.AppImage
+	source = duckstation-qt-latest.AppImage::https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage
 	sha256sums = SKIP
 
 pkgname = duckstation-qt-bin
-
