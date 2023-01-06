@@ -3,7 +3,7 @@
 
 pkgname=libvirt-glib-vnc
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Libvirt-Glib runtime libraries and headers exclusively for VNC support.'
 arch=('x86_64')
 url="https://gitlab.com/libvirt/libvirt-glib"
