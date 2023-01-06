@@ -1,0 +1,10 @@
+pkgbase = pvc
+	pkgdesc = command line tool to change version of aur packages
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = python-pip
+	depends = python
+
+pkgname = pvc
