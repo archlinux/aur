@@ -2,8 +2,8 @@
 
 _plug=vstools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.6.2.4.g869482c
-pkgrel=1
+pkgver=1.6.11.0.g814ba73
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-tools.git'
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

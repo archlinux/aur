@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vstools-git
 	pkgdesc = Plugin for Vapoursynth: vstools (GIT version)
-	pkgver = 1.6.2.4.g869482c
-	pkgrel = 1
+	pkgver = 1.6.11.0.g814ba73
+	pkgrel = 2
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-tools.git
 	arch = any
 	license = GPL
