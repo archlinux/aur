@@ -5,7 +5,7 @@
 
 pkgname=akkoma-bin
 pkgver=22.12
-pkgrel=1
+pkgrel=2
 pkgdesc='a smallish microblogging platform, aka the cooler pleroma'
 url='https://akkoma.social'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -25,7 +25,7 @@ source=('akkoma.sysusers'
         'akkoma.service'
         'COPYING')
 sha256sums=('0247ee5cc24049ebc37a00634aad8ed9a44d0f9a399a1373284375f5c861a089'
-            'a65db472aa3b2d384a796bda157e36dff19754400f8f1caca53e7e8d55373837'
+            '20715a673d70c3eafc160de98a325d1f253abc1dc89ff280d121c95ba5e9bb81'
             '44181109808ca6ff3e856c0b9800978f9c9dc28b6d98ac71862c06ed354f98e2'
             '1da9737d28754b51adae10a6391c8e83c40fe052dc4b04438a1dd0587a5c9a41')
 sha256sums_x86_64=('c892ad17914690185196c75a728f94b639f53e00c42a194e60242fbea09e7320')
