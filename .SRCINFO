@@ -1,0 +1,16 @@
+pkgbase = fasesbox-git
+	pkgdesc = Simple utilities for a fully functionnal UNIX-like system.
+	pkgver = r247.25f1754
+	pkgrel = 1
+	url = https://git.vitali64.duckdns.org/utils/fases.git
+	arch = any
+	license = GPL3,
+	license = custom:3BSD,
+	license = custom:FreeBSDDocumentationLicense
+	makedepends = git
+	provides = fasesbox-git
+	conflicts = fasesbox-git
+	source = /fases::git+https://git.vitali64.duckdns.org/git/utils/fases.git
+	md5sums = SKIP
+
+pkgname = fasesbox-git
