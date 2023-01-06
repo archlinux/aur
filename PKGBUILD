@@ -41,7 +41,7 @@ validpgpkeys=(
 
 prepare() {
   cd "${srcdir}/libvirt-${pkgver}"
-  patch meson.build < "${srcdir}/minimize.patch"
+  patch -p0 < "${srcdir}/minimize.patch"
 }
 
 build() {
