@@ -3,7 +3,7 @@
 
 pkgname=libvirt-vnc
 pkgver=8.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Libvirt runtime libraries and headers exclusively for VNC support.'
 arch=('x86_64')
 url="https://gitlab.com/libvirt/libvirt"
@@ -41,7 +41,7 @@ validpgpkeys=(
 
 prepare() {
   cd "${srcdir}/libvirt-${pkgver}"
-  patch -p0 < "${srcdir}/minimize.patch"
+  patch -p1 < "${srcdir}/minimize.patch"
 }
 
 build() {
