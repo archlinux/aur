@@ -9,12 +9,13 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.2.12
 secp256k1ver=0.20.9
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
 makedepends=(
   'automake'
+  'autoconf'
   'git'
   'libtool'
   'protobuf'
