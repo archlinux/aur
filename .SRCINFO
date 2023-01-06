@@ -7,7 +7,6 @@ pkgbase = wimboot-bin
 	arch = any
 	license = GPL
 	optdepends = ipxe-git: iPXE network boot program
-	optdepends = ipxe-netboot: Alternative iPXE network boot program, with Archlinux network install support
 	conflicts = wimboot-git
 	source = wimboot::https://github.com/ipxe/wimboot/releases/download/v2.7.4/wimboot
 	source = wimboot.i386::https://github.com/ipxe/wimboot/releases/download/v2.7.4/wimboot.i386

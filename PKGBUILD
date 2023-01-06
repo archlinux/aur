@@ -9,8 +9,7 @@ url="https://github.com/ipxe/wimboot"
 license=('GPL')
 makedepends=()
 conflicts=(wimboot-git)
-optdepends=("ipxe-git: iPXE network boot program"
-	"ipxe-netboot: Alternative iPXE network boot program, with Archlinux network install support")
+optdepends=("ipxe-git: iPXE network boot program")
 install=wimboot.install
 source=(
   "wimboot::https://github.com/ipxe/wimboot/releases/download/v${pkgver}/wimboot"
