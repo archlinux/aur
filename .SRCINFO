@@ -1,6 +1,6 @@
 pkgbase = yuzu-mainline-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch (newest features)
-	pkgver = r22411.32d8ebcb5
+	pkgver = r22963.cb903a7c7
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = i686
@@ -49,7 +49,7 @@ pkgbase = yuzu-mainline-git
 	source = git+https://github.com/libusb/libusb.git
 	source = git+https://github.com/yuzu-emu/discord-rpc.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = git+https://github.com/ReinUsesLisp/sirit
+	source = git+https://github.com/yuzu-emu/sirit
 	source = git+https://github.com/yuzu-emu/mbedtls
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/xiph/opus.git

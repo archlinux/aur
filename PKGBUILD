@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22411.32d8ebcb5
+pkgver=r22963.cb903a7c7
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-        'git+https://github.com/ReinUsesLisp/sirit'
+        'git+https://github.com/yuzu-emu/sirit'
         'git+https://github.com/yuzu-emu/mbedtls'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/xiph/opus.git'
