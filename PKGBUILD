@@ -1,5 +1,7 @@
 # Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
 
+# Bug: New in 2.3.0 initd/advttyd.c was completely rewritten and now doesn't work
+
 _opt_DKMS=1           # This can be toggled between installs
 _opt_MAXINSTPORTS=16  # Maximum install ports.
                       # Default=256 which is plenty for normal size installations.
@@ -61,9 +63,9 @@ pkgname='advantech-vcom'
 #pkgver='2.1.0'; _dl='4/1-15OSOW4'
 #pkgver='2.2.0'; _dl='4/1-1LPJPGD'
 #pkgver='2.2.1'; _dl='5/1-1NOKMCV'; _opt_RAR=1 # not compatible with Linux 3.16, a RAR file
-#pkgver='2.2.3'; _dl='5/1-1Y9Q0Z6' # bugs from new SSL code
-#pkgver='2.2.5'; _dl='4/1-23X5L51' # bugs and hangs
-pkgver='2.3.0'; _dl='3/1-250ZNM3' # non functional
+#pkgver='2.2.3'; _dl='5/1-1Y9Q0Z6'
+#pkgver='2.2.5'; _dl='4/1-23X5L51'
+pkgver='2.3.0'; _dl='3/1-250ZNM3'
 pkgrel='1'
 pkgdesc='tty driver for Advantech Adam EKI serial console terminal servers'
 _pkgdescshort="Advantech ${pkgname} TTY driver"
@@ -109,7 +111,8 @@ md5sums=('a3f195545fa67310e754e682bf2414de'
          '2cf8ab9c5541c38eba5fb9687142d94d'
          '446602b4feef554ade9a137303883432'
          '32f3a081b5926d6ea7f1cd2a22655d95'
-         'b005fdd5de28f835b7b37ecd74453785')
+         'b005fdd5de28f835b7b37ecd74453785'
+         'f16423b34e00d486c6d5dc877ddde32c')
 sha256sums=('47d49391ad6863face08ec3129b65fa10e53c9849c10a45a7f0abb394f7ddafc'
             '02f504a23fbef07f666aaa595faba0513d9ffec5e99ebca7b7fe2299a0179e32'
             '17fa883aeaea5821e00ead10777f54f4ad6b96f3a2f07097e3d9a77755f21c10'
@@ -121,7 +124,8 @@ sha256sums=('47d49391ad6863face08ec3129b65fa10e53c9849c10a45a7f0abb394f7ddafc'
             'de3477551219d9fc5b1924775a4456155ef5beb5bd702fbc114ca0c956607953'
             'aa71ede3478a5b482cd085ed2406a1ccd6be3b3ef76ab1fc0b45f4133d3c5a59'
             'b65adbcbb83a21cf0a1c17b9bc2a039ad5c633021ecd90d88d5d978a03a59c23'
-            '99b7b7a2c84d8b82a3e79b2a7abe99d1696a7ff3df350560d96ce7f049e8cb27')
+            '99b7b7a2c84d8b82a3e79b2a7abe99d1696a7ff3df350560d96ce7f049e8cb27'
+            'eb41e2eb1b9df42840295c59266e9e2cf01c4f275ef1a11aca765dfe4c81926d')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -129,14 +133,23 @@ else
   makedepends+=('linux-headers')
 fi
 
+if [ "${pkgver}" = '2.3.0' ]; then
+  _altver='2.2.5'; _altdl='4/1-23X5L51'
+  _altdir="VCOM_LINUX_${_altver}.TAR.BZ2"
+  _altdir="${_altdir,,}"
+  source+=("${_altdir}::https://advdownload.advantech.com/productfile/Downloadfile${_altdl}/${_altdir}")
+  _altdir="${_altdir%\.tar*}"
+fi
+
 prepare() {
   set -u
   if [ "${_opt_RAR}" -ne 0 ]; then
     unrar x "${_srcrar}"
   fi
-  if :; then
-    rm -r "${_srcdir}/driver"
-    mv 'vcom_linux_2.2.5/driver' "${_srcdir}"
+
+  if [ ! -z "${_altdir:-}" ]; then
+    rm -rf "${_srcdir}/initd"
+    cp -pr "${_altdir}/initd" "${_srcdir}"
   fi
 
   cd "${_srcdir}"
