@@ -1,0 +1,21 @@
+pkgbase = libwnck3-336
+	pkgdesc = Library to manage X windows and workspaces (via pagers, tasklists, etc.) 3.36 version (Workaround for https://github.com/mate-desktop/mate-panel/issues/1230)
+	pkgver = 3.36.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libwnck
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = startup-notification
+	depends = libxres
+	provides = libwnck3
+	conflicts = libwnck3
+	options = debug
+	source = git+https://gitlab.gnome.org/GNOME/libwnck.git#commit=3c469a0d7e58e36106eea7600ae2f6fd8aaed232
+	b2sums = SKIP
+
+pkgname = libwnck3-336
