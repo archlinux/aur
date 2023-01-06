@@ -1,4 +1,5 @@
-# Maintainer: awh
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
+# Contributor: awh
 
 pkgname=pup-git
 _gitname="pup"
