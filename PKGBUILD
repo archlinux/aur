@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara-bin
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -12,7 +12,7 @@ conflicts=('cantara')
 depends=('qt5pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-linux-x86_64_bin.zip")
-md5sums=('3342f701ccde320ed8911faea2d3dac5')
+md5sums=('08252a84b3aa7101f38730a56c03d51a')
 
 package() {
 	mkdir -p $pkgdir/usr/bin/
