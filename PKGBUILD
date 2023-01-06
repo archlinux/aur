@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 
 pkgname=python-efb-qq-slave-git
 pkgver=2.0.0b3.r35.g47418ed
