@@ -1,0 +1,12 @@
+pkgbase = libcpucycles
+	pkgdesc = A microlibrary for counting CPU cycles
+	pkgver = 20230105
+	pkgrel = 1
+	url = https://cpucycles.cr.yp.to/
+	arch = x86_64
+	license = Unlicense
+	makedepends = python
+	source = https://cpucycles.cr.yp.to//libcpucycles-20230105.tar.gz
+	sha256sums = 3507da28299972b064f32db9edb2295f85bc8cb9cf7f2dcb611eee4ca3b98a51
+
+pkgname = libcpucycles
