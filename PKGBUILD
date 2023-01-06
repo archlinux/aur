@@ -5,10 +5,10 @@
 pkgbase='concourse-git'
 pkgname=('concourse-git' 'concourse-fly-cli-git')
 pkgver=v7.9.0.r17.gf3cb492d1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://concourse-ci.org'
-license=('Apache-2.0')
+license=('custom:Apache-2.0')
 source=("git+https://github.com/concourse/concourse.git")
 makedepends=('go' 'yarn')
 sha256sums=('SKIP')
@@ -63,7 +63,7 @@ package_concourse-git() {
   install -Dm755 init "${pkgdir}/usr/lib/concourse/bin/init"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 package_concourse-fly-cli-git() {
@@ -75,5 +75,5 @@ package_concourse-fly-cli-git() {
   install -Dm755 "fly/fly" "${pkgdir}/usr/bin/fly"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
