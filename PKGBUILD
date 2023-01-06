@@ -1,17 +1,17 @@
 # Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
 # Inspired from the PKGBUILD for ferdi-git.
 
-_electron='electron20'
+_electron='electron21'
 
 pkgname="ferdium-electron"
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release) - System-wide Electron edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
-makedepends=('git' 'python' 'pnpm' 'npm' 'jq' 'asar' 'nodejs-lts-gallium')
+makedepends=('git' 'python' 'pnpm' 'jq' 'asar' 'nodejs')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"
@@ -26,9 +26,8 @@ prepare() {
 
   local node_ver=$(node -v | sed -e 's/^v//')
   local pnpm_ver=$(pnpm -v)
-  local npm_ver=$(npm -v)
 
-  local jq_expr=".engines.node = \"$node_ver\" | .engines.npm = \"$npm_ver\" | .engines.pnpm = \"$pnpm_ver\""
+  local jq_expr=".engines.node = \"$node_ver\" | .engines.pnpm = \"$pnpm_ver\""
 
   jq "$jq_expr" package.json > package.tmp.json
   mv package.tmp.json package.json
@@ -37,7 +36,7 @@ prepare() {
   mv package.tmp.json recipes/package.json
 
   # Specify path for autostart file
-  sed -i -e "s#^const executablePath =.*#const executablePath = '/usr/bin/ferdium';#g" src/stores/AppStore.ts
+  sed -i -e "s#path: executablePath,#path: '/usr/bin/ferdium',#g" src/stores/AppStore.ts
   # Set noUnusedLocals to false to avoid compilation error in AppStore.ts
   sed -i -e 's#"noUnusedLocals": true#"noUnusedLocals": false#g' tsconfig.json
 }
@@ -47,8 +46,8 @@ build() {
 
   export CI=true
 
-  npm install || true
-  npm run prepare-code || true
+  pnpm install || true
+  pnpm run prepare-code || true
 
   cd "recipes"
 
@@ -57,7 +56,7 @@ build() {
 
   cd ..
 
-  NODE_ENV=production npm run build -- \
+  NODE_ENV=production pnpm run build \
     --linux --x64 --dir \
     -c.electronDist="/usr/lib/$_electron" \
     -c.electronVersion="$(cat "/usr/lib/$_electron/version" | sed -e 's/^v//')"
