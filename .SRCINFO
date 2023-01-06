@@ -1,0 +1,24 @@
+pkgbase = ved-git
+	pkgdesc = 1 MB text editor written in V with hardware accelerated text rendering (development version)
+	pkgver = r285.151a221
+	pkgrel = 1
+	url = https://github.com/vlang/ved
+	arch = x86_64
+	makedepends = git
+	makedepends = vlang-git
+	depends = glibc
+	depends = libx11
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = gcc-libs
+	depends = libxcb
+	depends = libxrender
+	depends = libxfixes
+	depends = libxext
+	depends = libxau
+	depends = libxdmcp
+	source = ved::git+https://github.com/vlang/ved
+	md5sums = SKIP
+
+pkgname = ved-git
