@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=websockify
