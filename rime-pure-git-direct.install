@@ -1,6 +1,6 @@
 post_install() {
-    echo -e "\033[1;31m###################################################################\033[0m"
-    echo -e "\nPlease enable this input scheme through the 'default.custom.yaml' file\n in the user configuration directory. For example:\n"
+    echo -e "\033[1;31m###################################################################"
+    echo -e "\nTo enable this input scheme, you should edit the 'default.custom.yaml' file\n in the user configuration directory(/usr/share/rime-data/). For example:\n"
     echo -e "\tpatch:"
     echo -e "\t  schema_list:"
     echo -e "\t    - schema: flypy"
@@ -11,6 +11,6 @@ post_install() {
 
 post_upgrade() {
     echo -e "\033[1;31m###################################################################\033[0m"
-    echo -e "\nPlease redeploy rime to take effect.\n"
+    echo -e "\n\033[1;31m#               Please redeploy rime to take effect.               #\033[0m"
     echo -e "\033[1;31m###################################################################\033[0m"
 }
