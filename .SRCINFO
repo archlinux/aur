@@ -1,6 +1,6 @@
 pkgbase = hplip-lite
 	pkgdesc = Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet
-	pkgver = 3.22.6
+	pkgver = 3.22.10
 	pkgrel = 1
 	url = https://hplipopensource.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hplip-lite
 	provides = hplip
 	conflicts = hplip
 	backup = etc/hp/hplip.conf
-	source = https://downloads.sourceforge.net/hplip/hplip-3.22.6.tar.gz
-	sha256sums = 27ed0d492febb0b47c656234820d3ce573b24ff5b62e3bf4b2c47f82868d6bb4
+	source = https://downloads.sourceforge.net/hplip/hplip-3.22.10.tar.gz
+	sha256sums = 533c3f2f6b53e4163ded4fd81d1f11ae6162a0f6451bd5e62a8382d0c1366624
 
 pkgname = hplip-lite
