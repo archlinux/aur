@@ -1,5 +1,6 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Zen Wen <zen.8841@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webkit
@@ -22,8 +23,8 @@ optdepends=('gst-plugins-good: Webm codec support')
 sha256sums=('9ca126da9273664dd23a3ccd0c9bebceb7bb534bddd743db31caf6a5a6d4a9e6'
             '0b40ed924f03ff6081af610bb0ee01560b7bd1fb68f8af02053304a01d4ccdf0'
             '4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e'
-            '6e0cee08e4fa57b04752e80817f33562f48aa42608a3a620930b6040259b4932'
-            '34f37b53ee0bc31c63ce85ebd1ae95543a8ba28483e387b20efd50574bd813be')
+            '9db5480dfbd3c440489e8e4131e3555b2af61fa4b6c19f35227588c5996be128'
+            'cc5a2b762426e9cda5a3ae056bba266b5f775ee75c0590913839c255d5f10db0')
 options=(!lto)
 
 prepare() {
