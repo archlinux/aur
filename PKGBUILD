@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1.10"
-pkgrel=6
+pkgrel=7
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -18,26 +18,30 @@ sha256sums=('SKIP'
 install=${pkgname}.install
 
 prepare() {
-  echo -e "\033[1;34m###################################################################\033[0m"
-  echo -e "\n\033[1;34m#                prepare for install following                   #\033[0m"
-  echo -e "\033[1;34m###################################################################\033[0m"
+  echo -e "\033[1;34m######################################\033[0m"
+  echo -e "\033[1;34m#    prepare for following install   #\033[0m"
+  echo -e "\033[1;34m######################################\033[0m"
 
-  sudo -S rm /usr/share/rime-data/{rime.lua,essay.txt,punctuator.yaml}
-  sudo -S rm /usr/share/rime-data/build/flypy.{prism,reverse,table}.bin
-  sudo -S rm /usr/share/rime-data/opencc/{emoji_category.txt,HKVariants.txt,s2tw.json,\
-t2hk.json,tw2sp.json,TWVariantsRevPhrases.txt,emoji.json,jp2t.json,s2twp.json,\
-t2jp.json,tw2t.json,TWVariantsRev.txt,emoji_word.txt,JPShinjitaiCharacters.txt,\
-STCharacters.txt,t2s.json,TWPhrasesIT.txt,TWVariants.txt,hk2s.json,\
-JPShinjitaiPhrases.txt,STPhrases.txt,t2tw.json,TWPhrasesName.txt,hk2t.json,\
-JPVariants.txt,symbol_category.txt,TSCharacters.txt,TWPhrasesOther.txt,\
-HKVariantsRevPhrases.txt,s2hk.json,symbol.json,TSPhrases.txt,TWPhrasesRev.txt,\
-HKVariantsRev.txt,s2t.json,symbol_word.txt,tw2s.json,TWPhrases.txt}
-  sudo -S rm /usr/share/rime-data/flypy_{sys,top,user}.txt
-  sudo -S rm /usr/share/rime-data/flypy.{custom,schema}.yaml
-  sudo -S rm /usr/share/rime-data/clover.{base.dict,dict,key_bindings,schema}.yaml
-  sudo -S rm /usr/share/rime-data/THUOCL_{animal,caijing,car,chengyu,diming,\
-food,IT,law,lishimingren,medical,poem}.dict.yaml
-  sudo -S rm /usr/share/rime-data/sogou_new_words.dict.yaml
+# FIXME: warning: could not get file information for usr/share/rime-data/opencc/
+  F_LIST=("rime.lua" "essay.txt" "punctuator.yaml" \
+flypy_{sys,top,user}.txt flypy.{custom,schema}.yaml \
+clover.{base.dict,dict,key_bindings,schema}.yaml \
+build/flypy.{prism,reverse,table}.bin \
+opencc/{emoji_category.txt,HKVariants.txt,s2tw.json,t2hk.json,tw2sp.json,\
+TWVariantsRevPhrases.txt,emoji.json,jp2t.json,s2twp.json,t2jp.json,tw2t.json,\
+TWVariantsRev.txt,emoji_word.txt,JPShinjitaiCharacters.txt,STCharacters.txt,\
+t2s.json,TWPhrasesIT.txt,TWVariants.txt,hk2s.json,JPShinjitaiPhrases.txt,\
+STPhrases.txt,t2tw.json,TWPhrasesName.txt,hk2t.json,JPVariants.txt,\
+symbol_category.txt,TSCharacters.txt,TWPhrasesOther.txt,HKVariantsRevPhrases.txt,\
+s2hk.json,symbol.json,TSPhrases.txt,TWPhrasesRev.txt,HKVariantsRev.txt,s2t.json,\
+symbol_word.txt,tw2s.json,TWPhrases.txt} \
+THUOCL_{animal,caijing,car,chengyu,diming,food,IT,law,lishimingren,medical,poem}.dict.yaml \
+"sogou_new_words.dict.yaml"
+)
+  for f in ${F_LIST[@]}
+  do
+    [[ -f ${f} ]] && sudo -S rm /usr/share/rime-data/${f}
+  done
 }
 
 package() {
@@ -57,5 +61,5 @@ package() {
   install -Dm644 clover.{base.dict,dict,key_bindings,schema}.yaml -t "$pkgdir"/usr/share/rime-data
   install -Dm644 THUOCL_{animal,caijing,car,chengyu,diming,\
 food,IT,law,lishimingren,medical,poem}.dict.yaml -t "$pkgdir"/usr/share/rime-data
-  install -Dm644 sogou_new_words.dict.yaml -t "$pkgdir"/usr/share/rime-data
+  install -Dm644 {sogou_new_words,huayu}.dict.yaml -t "$pkgdir"/usr/share/rime-data
 }
