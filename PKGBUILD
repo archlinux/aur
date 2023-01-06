@@ -3,7 +3,7 @@
 
 pkgname=velocity-xbox360-git
 pkgver=0.1.0.0.r1256.2c15bb6
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application built using the Qt framework which allows you to browse and edit Xbox 360 files."
 arch=('i686' 'x86_64')
 url="https://github.com/hetelek/Velocity.git"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt4' 'botan1.10')
 makedepends=('git')
 options=('!makeflags')
-source=("$pkgname"::'git://github.com/hetelek/Velocity.git'
+source=("${pkgname}::git+${url}"
         'velocity.desktop'
         'libbotan-version.patch'
         'Velocity.patch'

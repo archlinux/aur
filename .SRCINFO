@@ -1,7 +1,7 @@
 pkgbase = velocity-xbox360-git
 	pkgdesc = A cross-platform application built using the Qt framework which allows you to browse and edit Xbox 360 files.
 	pkgver = 0.1.0.0.r1256.2c15bb6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hetelek/Velocity.git
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = velocity-xbox360-git
 	depends = qt4
 	depends = botan1.10
 	options = !makeflags
-	source = velocity-xbox360-git::git://github.com/hetelek/Velocity.git
+	source = velocity-xbox360-git::git+https://github.com/hetelek/Velocity.git
 	source = velocity.desktop
 	source = libbotan-version.patch
 	source = Velocity.patch
