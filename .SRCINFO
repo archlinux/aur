@@ -4,7 +4,7 @@ pkgbase = tuic-bin
 	pkgrel = 1
 	url = https://github.com/EAimTY/tuic
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	provides = tuic=0.8.5
 	source = https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-client-0.8.5-x86_64-linux-gnu
 	source = https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-server-0.8.5-x86_64-linux-gnu
