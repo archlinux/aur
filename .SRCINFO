@@ -1,7 +1,7 @@
 pkgbase = sra-tools
 	pkgdesc = A collection of tools and libraries for using data in the INSDC Sequence Read Archives
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/ncbi/sra-tools
 	arch = x86_64
 	license = custom: Public Domain

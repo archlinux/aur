@@ -7,7 +7,7 @@ pkgname=sra-tools
 _dep=ncbi-vdb
 pkgver=3.0.3
 _depver=3.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
 url="https://github.com/ncbi/sra-tools"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
@@ -60,16 +60,25 @@ package(){
   make DESTDIR="$pkgdir" install
   cp -rf ${srcdir}/"$pkgname-$pkgver"/etc "$pkgdir"
   cp -rf $srcdir/$_dep-$_depver/interfaces/kfg/ncbi/etc "$pkgdir"
+
   # install LICENSE file
   install -Dm644 ${srcdir}/"$pkgname-$pkgver"/LICENSE  -t "$pkgdir"/usr/share/licenses/sra-tools/
+
   # remove empty folder
   rm -Rf "$pkgdir"/usr/include/kfg/ncbi/etc/
-  # remove symlinks and fix filenames
-      
-  find "$pkgdir"/usr/bin  -type l -delete
   
+  # remove symlinks       
+  find "$pkgdir"/usr/bin  -type l -delete
+
+  # Fix filenames: remove $pkgever suffix from end of binaries
   for filename in "$pkgdir"/usr/bin/*
     do [ -f "$filename" ] || continue
     mv "$filename" "${filename//.${pkgver}/}"
+  done
+
+  # Fix filenames: remove -orig suffix from end of binaries
+  for filename in "$pkgdir"/usr/bin/*
+    do [ -f "$filename" ] || continue
+    mv -n "$filename" "${filename//-orig/}"
   done
 }
