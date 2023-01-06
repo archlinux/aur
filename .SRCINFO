@@ -1,17 +1,17 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (beta version)
-	pkgver = 525.60.11
+	pkgver = 525.78.01
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/525.60.11/NVIDIA-Linux-x86_64-525.60.11.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/525.78.01/NVIDIA-Linux-x86_64-525.78.01.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.rules
 	source = 120-nvidia-settings-change-desktop-paths.patch
-	sha256sums = 816ee6c2e0813ccc3d4a7958f71fc49a37c60efe1d51d6146c1ce72403983d5d
+	sha256sums = 43da42d2bf69bc37ea9c7c0fa02f52db0dcc483c272f52edacad89a5cb495a93
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 4fbfd461f939f18786e79f8dba5fdb48be9f00f2ff4b1bb2f184dbce42dd6fc3
@@ -25,11 +25,11 @@ pkgname = nvidia-utils-beta
 	optdepends = nvidia-settings-beta: for the configuration tool
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-beta: for OpenCL support
-	provides = nvidia-utils=525.60.11
+	provides = nvidia-utils=525.78.01
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=525.60.11
-	provides = nvidia-libgl-beta=525.60.11
+	provides = nvidia-libgl=525.78.01
+	provides = nvidia-libgl-beta=525.78.01
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -37,16 +37,16 @@ pkgname = nvidia-utils-beta
 pkgname = opencl-nvidia-beta
 	pkgdesc = OpenCL implemention for NVIDIA (beta version)
 	depends = zlib
-	depends = nvidia-utils-beta>=525.60.11
+	depends = nvidia-utils-beta>=525.78.01
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=525.60.11
+	provides = opencl-nvidia=525.78.01
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = nvidia-settings-beta
 	pkgdesc = Tool for configuring the NVIDIA graphics driver (beta version)
-	depends = nvidia-utils-beta>=525.60.11
+	depends = nvidia-utils-beta>=525.78.01
 	depends = gtk3
-	provides = nvidia-settings=525.60.11
-	provides = nvidia-settings-beta=525.60.11
+	provides = nvidia-settings=525.78.01
+	provides = nvidia-settings-beta=525.78.01
 	conflicts = nvidia-settings
