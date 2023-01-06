@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mintstick
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='A GUI to write .img or .iso files to a USB Key. It can also format them'
 arch=('any')
@@ -35,7 +35,7 @@ conflicts=(
     mintstick-git
 )
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('baa56753ece0ef872bc0a6f7ef06df3fac62b5de01d11d6642c95bb420d8276a')
+sha256sums=('d9e34a9d071f57e76a8e42923382f0693036b196126638eba282350dc161c140')
 
 prepare() {
   cd ${pkgname}
