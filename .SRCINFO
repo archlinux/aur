@@ -1,6 +1,6 @@
 pkgbase = python-tensap
 	pkgdesc = A Python package for the approximation of functions and tensors
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/anthony-nouy/tensap
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-tensap
 	makedepends = python-setuptools
 	depends = python-scipy
 	depends = python-tensorflow
-	source = https://github.com/anthony-nouy/tensap/archive/v1.2.tar.gz
-	sha256sums = 15983d4b8bad06e86ff9537d47922f46d0132aac12be8944d0ac82c030fe6fa9
+	source = https://github.com/anthony-nouy/tensap/archive/v1.3.tar.gz
+	sha256sums = 49b269db4a6a6c818b9345d691f9a4aa052a1cb4bf746aec9e923bb2b9ac8794
 
 pkgname = python-tensap
