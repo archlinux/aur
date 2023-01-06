@@ -2,7 +2,7 @@
 
 _pkgname='ved'
 pkgname='ved-git'
-pkgver=r285.151a221
+pkgver=r288.b9f8745
 pkgrel=1
 pkgdesc='1 MB text editor written in V with hardware accelerated text rendering (development version)'
 arch=('x86_64')
@@ -43,9 +43,4 @@ package() {
 
     # ved uses a hardcored font, provided in the repository.
     install -Dm644 "${_pkgname}/RobotoMono-Regular.ttf" "${pkgdir}/usr/lib/${_pkgname}/RobotoMono-Regular.ttf"
-
-    # ved looks for syntax definitions in the directory where the binary is
-    # located.
-    install -m755 -d "${pkgdir}/usr/lib/${_pkgname}/syntax"
-    install -Dm644 "${_pkgname}/syntax"/* "${pkgdir}/usr/lib/${_pkgname}/syntax"
 }
