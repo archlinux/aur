@@ -1,12 +1,12 @@
 pkgbase = greetd-wlgreet
 	pkgdesc = Wayland greeter for greetd
-	pkgver = 0.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/wlgreet
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://git.sr.ht/~kennylevinsen/wlgreet/archive/0.4.tar.gz
-	sha256sums = b3fcb7179a3ebf791b38538a4af99d6b2ec38d15b86ce0d04ffd61cc310049ec
+	source = https://git.sr.ht/~kennylevinsen/wlgreet/archive/0.4.1.tar.gz
+	sha256sums = 6abc51625cb8a61959a745bfd56c17963ca4ab33cd79dabe8ad0daeb651b8a13
 
 pkgname = greetd-wlgreet
