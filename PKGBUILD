@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
 pkgver=2.36
-pkgrel=1
+pkgrel=2
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM64 target"
 arch=(any)
@@ -33,8 +33,8 @@ build() {
 
 #Use CFLAGS/CXXFLAGS from Arch Linux ARM
 CFLAGS="-march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions \
-        -Wformat -Werror=format-security \
-        -fstack-clash-protection"
+-Wformat -Werror=format-security \
+-fstack-clash-protection"
 
   ../glibc-$pkgver/configure \
       --prefix=/usr \
@@ -52,12 +52,12 @@ CFLAGS="-march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions 
       --disable-werror \
       --disable-timezone-tools
 
-  make
+  make --jobserver-style=pipe
 }
 
 package() {
   cd glibc-build
-  make DESTDIR="$pkgdir"/usr/$_target/sys-root install 
+  make --jobserver-style=pipe DESTDIR="$pkgdir"/usr/$_target/sys-root install 
 
   #we don't want static libraries. Only keep the one that we really need.
   find "$pkgdir"/usr/$_target/sys-root  -name '*.a' -and -not -name libc_nonshared.a -delete
