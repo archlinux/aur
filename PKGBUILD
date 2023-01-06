@@ -3,7 +3,7 @@
 
 _pkgname='httpx'
 pkgname="${_pkgname}-bin"
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='Fast and multi-purpose HTTP toolkit'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -17,9 +17,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pk
 source_armv6h=("${_pkgname}-${pkgver}-armv6.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
 
-sha256sums_x86_64=('4dc46e5246b48fbfe1ba34dc574c55b77b6ee3e02e3a62e8bca1f2f4434a42b0')
-sha256sums_armv6h=('21b170e20df58f6fcd38af81328588c8d381e3b8972dbff2b90d6fec3678ec2a')
-sha256sums_aarch64=('4dd120cdb8b034cb56c49c261e018f4f344c7864eca9321d3316042130cc736f')
+sha256sums_x86_64=('7c89d5c94690acc2c276f677fa007eb6f1e1a6324f35d1e8d1e3fc62a7f15282')
+sha256sums_armv6h=('446717faca21ea93295c1981aa185181b1623318b142940c095d2bc0d5e0a738')
+sha256sums_aarch64=('bf99b7bcf161ca69adc13df50f7f5bc803f5e4afaad2ee4412dde744af519383')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
