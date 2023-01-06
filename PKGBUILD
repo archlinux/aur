@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vsrife
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.0.0.0.g321d486
+pkgver=3.1.0.0.g91e894f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -13,12 +13,12 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'python-pip'
-             'python-wheel'
+             'python-pytorch-tensorrt'
              )
 optdepends=('python-pytorch: CPU'
-            'python-pytorch-opt: CPU with AVX2 optimizations'
+            'python-pytorch-opt: CPU with AVX2 CPU optimizations'
             'python-pytorch-cuda: CUDA and CPU'
-            'python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations'
+            'python-pytorch-cuda-opt: CUDA and CPU with AVX2 CPU optimizations'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -31,18 +31,18 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  python -m vsrife.__init__
+  cd "${_plug}/vsrife"
+  python __init__.py
 }
 
 build() {
   cd "${_plug}"
-  python -c "import setuptools; setuptools.setup()" bdist_wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
