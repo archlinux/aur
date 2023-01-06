@@ -2,7 +2,7 @@
 
 pkgname=ouch-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Painless compression and decompression in the terminal (binary release)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/ouch-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('4b03c6a54b12e2038600cfb450aebac70bd9516fc9bf50a78c93f93fef75e60b')
+sha256sums=('b27902df86aa2b4df28e1d53214af1d5391beabd4c1cbee850d80c2168329d62')
 
 package() {
   # Binary releaes is archived in a folder with a generic name, it is not ideal

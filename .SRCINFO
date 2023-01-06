@@ -1,6 +1,6 @@
 pkgbase = ouch-bin
 	pkgdesc = Painless compression and decompression in the terminal (binary release)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ouch-org/ouch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ouch-bin
 	provides = ouch
 	conflicts = ouch
 	conflicts = ouch-git
-	source = ouch-0.4.0.tar.gz::https://github.com/ouch-org/ouch/releases/download/0.4.0/ouch-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 4b03c6a54b12e2038600cfb450aebac70bd9516fc9bf50a78c93f93fef75e60b
+	source = ouch-0.4.1.tar.gz::https://github.com/ouch-org/ouch/releases/download/0.4.1/ouch-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = b27902df86aa2b4df28e1d53214af1d5391beabd4c1cbee850d80c2168329d62
 
 pkgname = ouch-bin
