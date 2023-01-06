@@ -1,0 +1,13 @@
+post_install() {
+	cat << EOF
+wimboot needs to be loaded as kernel via iPXE
+network boot program. iPXE will download and map
+additional boot.wim dependencies (bootmgr,
+bootmgr.efi, boot/bcd, and boot/boot.sdi) on
+memory.
+
+For more information, visit
+https://ipxe.org/wimboot
+
+EOF
+}
