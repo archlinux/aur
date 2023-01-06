@@ -5,10 +5,10 @@
 pkgbase='concourse'
 pkgname=('concourse' 'concourse-fly-cli' 'concourse-resource-types')
 pkgver=7.9.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
-license=('Apache-2.0')
+license=('custom:Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz"
         "https://github.com/concourse/concourse/releases/download/v${pkgver}/concourse-${pkgver}-linux-amd64.tgz")
 makedepends=('go' 'yarn')
@@ -58,7 +58,7 @@ package_concourse() {
   install -Dm755 init "${pkgdir}/usr/lib/concourse/bin/init"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 package_concourse-fly-cli() {
@@ -70,7 +70,7 @@ package_concourse-fly-cli() {
   install -Dm755 "fly/fly" "${pkgdir}/usr/bin/fly"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s /usr/share/licenses/common/Apache/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 package_concourse-resource-types() {
