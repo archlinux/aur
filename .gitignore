@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+
+# makepkg
+pkg/
+*.tar.gz
+src/
+*.pkg.tar.zst
