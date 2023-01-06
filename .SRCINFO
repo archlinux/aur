@@ -1,15 +1,14 @@
 pkgbase = vivado-boards-git
-	pkgdesc = Vivado Board Files for Digilent Boards
-	pkgver = r117.1066a74
-	pkgrel = 2
+	pkgdesc = Vivado Board Files for Digilent FPGA Boards
+	pkgver = r193.c9000e6
+	pkgrel = 1
 	url = https://reference.digilentinc.com/reference/software/vivado/board-files
 	arch = any
-	license = unknown
-	depends = xilinx-vivado-dummy
+	license = MIT
+	depends = vivado
 	provides = vivado-boards
 	conflicts = vivado-boards
 	source = vivado-boards::git+https://github.com/Digilent/vivado-boards.git
 	md5sums = SKIP
 
 pkgname = vivado-boards-git
-
