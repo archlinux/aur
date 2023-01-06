@@ -1,4 +1,4 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
