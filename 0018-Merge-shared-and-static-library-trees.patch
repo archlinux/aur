@@ -1,4 +1,4 @@
-From 023f8e269822d8a102e4143e7194db355497e94f Mon Sep 17 00:00:00 2001
+From 5b83c1db098d278544411e5ee79de4976ba4ece2 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/32] Merge shared and static library trees
@@ -17,7 +17,7 @@ Change-Id: I1de08df42d83d411aae519691cd3cde1fd6f3d1d
  7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index 49755f7abf..53c67f885b 100644
+index 63d6b3f278..eda4a35013 100644
 --- a/configure.pri
 +++ b/configure.pri
 @@ -659,7 +659,12 @@ defineTest(qtConfOutput_machineTuple) {
@@ -33,8 +33,8 @@ index 49755f7abf..53c67f885b 100644
 +    write_file($$QT_BUILD_TREE/mkspecs/qdevice$$DEVICE_PRI_SUFFIX, $${currentConfig}.output.devicePro)|error()
  }
  
- # type (empty or 'host'), option name, default value
-@@ -1398,3 +1403,12 @@ defineTest(createConfigStatus) {
+ # Output is written after configuring each Qt module,
+@@ -1421,3 +1426,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.38.1
+2.39.0
 

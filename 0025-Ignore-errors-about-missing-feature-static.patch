@@ -1,4 +1,4 @@
-From 5d1d2b337004f676c84e030c1281d69babba974a Mon Sep 17 00:00:00 2001
+From 4a47563258f0edb743548ef3651dac8f049f453a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
 Subject: [PATCH 25/32] Ignore errors about missing feature static
@@ -32,5 +32,5 @@ index 7777e615bd..5f30366660 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 -- 
-2.38.1
+2.39.0
 
