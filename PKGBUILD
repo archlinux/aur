@@ -1,3 +1,4 @@
+# Maintainer: éclairevoyant
 
 _pkgname=torch7-sys
 pkgname="$_pkgname-git"
