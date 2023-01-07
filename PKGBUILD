@@ -8,7 +8,7 @@ arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh'
 license=('MPL2')
 depends=('sh' 'jq')
-makedepends=('make' 'git' 'shellcheck' 'shellspec')
+makedepends=('git' 'shellcheck' 'shellspec')
 source=("$pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
