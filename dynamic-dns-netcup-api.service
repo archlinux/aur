@@ -3,7 +3,7 @@ Description=periodic update of netcup dynDNS
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/php -d open_basedir=/usr/share/dynamic-dns-netcup-api/:/etc/dynamic-dns-netcup-api/ -f /usr/share/dynamic-dns-netcup-api/update.php -q -c /etc/dynamic-dns-netcup-api/config.php
+ExecStart=/usr/bin/php -d open_basedir=/usr/share/dynamic-dns-netcup-api/:/etc/dynamic-dns-netcup-api/ -f /usr/share/dynamic-dns-netcup-api/update.php -- -c /etc/dynamic-dns-netcup-api/config.php
 
 Type=oneshot
 ProtectSystem=strict

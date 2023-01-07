@@ -15,7 +15,7 @@ source=("https://github.com/stecklars/${pkgname}/archive/refs/tags/v${pkgver}.ta
         ${pkgname}.service
         ${pkgname}.timer)
 sha256sums=('2c6d94e6b3fe863878dda9071aadf4cae4153367639c0e48f85b632e765c356a'
-            'f3b4203f84a19d4a37b9bc12a394c8c6be6ccb55f68b6aa0cf47482aeb7a335e'
+            '359db333e91a49c9a9413dc52f524ef47c2192186cb7edfbf5277cd54bb5cb7d'
             '2b5d495fcb9c30171ec5244bd2182681ff931a7a8ccef317eb0d7a93ae34d99a')
 
 package() {
