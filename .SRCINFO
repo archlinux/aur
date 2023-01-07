@@ -11,7 +11,7 @@ pkgbase = torch7-paths-git
 	depends = luajit
 	provides = torch7-paths
 	conflicts = torch7-paths
-	source = git+https://github.com/torch/paths
+	source = torch7-paths::git+https://github.com/torch/paths
 	b2sums = SKIP
 
 pkgname = torch7-paths-git
