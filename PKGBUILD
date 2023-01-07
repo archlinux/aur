@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Emma Tebibyte <emma@tebibyte.media>
 
 pkgname=sysexits
 pkgver=7.2
