@@ -22,7 +22,7 @@ pkgbase = wsjtx
 	depends = libpulse
 	depends = libpng
 	depends = fftw
-	source = http://physics.princeton.edu/pulsar/K1JT/wsjtx-2.5.4.tgz
+	source = http://downloads.sourceforge.net/sourceforge/wsjt/wsjtx-2.5.4.tgz
 	sha512sums = c4092d03af3346f0244d942c3db693f5d2c1ed7a2ec9077ded039b7d162e15abdaf09dcb9997d1833d25c366eb03a0dab6114313d423e7e2c9ff37d965261efc
 
 pkgname = wsjtx
