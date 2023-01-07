@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3842.r0.g2459145db
+pkgver=v1.7.3869.r0.ge4c9416c4
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -47,6 +47,8 @@ depends=(
 )
 makedepends=(
   cmake
+  clang
+  lld
   git
   xorgproto
   ninja
@@ -95,12 +97,10 @@ build()
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
     -DQT_BUILD=ON \
-    -DXDG_STD=TRUE \
     -DUSE_VULKAN=ON \
     -DDISABLE_ADVANCE_SIMD=ON \
     -GNinja \
-    -DPACKAGE_MODE=ON \
-    -DDISABLE_SETCAP=ON
+    -DPACKAGE_MODE=ON
   ninja -j$(nproc)
 
   cd ..
