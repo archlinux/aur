@@ -14,7 +14,7 @@ url='https://metacpan.org/release/Gtk2-Ex-Simple-List'
 source=("http://www.cpan.org/modules/by-module/Gtk2/RMCFARLA/Gtk2-Perl-Ex/Gtk2-Ex-Simple-List-${pkgver}.tar.gz")
 md5sums=('f66c71bbb794b699f0c3e8ca7cebc35b')
 sha512sums=('df57509eb386aff41630b7da2d9b810b1e9308dec407dbe792a4282f2d7331cb3639755af8232bf6312e0537784dab5f1d035c919909a53e584173ce24aa6a09')
-_distdir="Gtk2-Ex-Simple-List-0.50"
+_distdir="Gtk2-Ex-Simple-List-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
