@@ -1,7 +1,7 @@
 # Maintainer: Yuji Hagiwara <yuuzi41 at gmail dot com>
 
 pkgname=openvswitch-dpdk
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Production Quality, Multilayer Open Virtual Switch, with DPDK feature"
 url="http://openvswitch.org"
@@ -17,7 +17,7 @@ makedepends=('python-six')
 optdepends=('python-six')
 provides=('openvswitch')
 options=('debug')
-sha256sums=('779e2e03ed32bfedace89c4b63ea3f12205ce11443db0302e1b6ad5b29ef57c9'
+sha256sums=('f506650a76f1f2cefbdfb583f343412102f170abc55c6ff875677926b9bd9463'
             'e8dc21e50fc886bfd6aa55991bdb3cb66907e11b071045452bb12de01a3ecbd9'
             'fa2412b81c77921418131a4f6fd38956f50ffcc7b908ec91f94d3607a05d060b'
             '412a8d9a2d71f61b915d5e29c0ba44baae7770f564d885f99460b27a4cf1d398')
