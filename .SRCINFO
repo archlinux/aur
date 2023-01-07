@@ -1,0 +1,14 @@
+pkgbase = shellspec-git
+	pkgdesc = BDD style unit testing framework for POSIX compliant shell script
+	pkgver = 0.1.0.r0.g846ffdc
+	pkgrel = 1
+	url = https://shellspec.info
+	arch = any
+	license = MIT
+	depends = sh
+	provides = shellspec
+	conflicts = shellspec
+	source = shellspec::git+https://github.com/shellspec/shellspec.git
+	sha256sums = SKIP
+
+pkgname = shellspec-git
