@@ -6,7 +6,7 @@
 #NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 pkgname='mozc-ut'
-pkgver=2.28.4960.102.20221230
+pkgver=2.28.4960.102.20230107
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -22,9 +22,9 @@ provides=('mozc=2.28.4960.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7ec82c9356dbd5e15736627cfef05ec0f2c9bb9b"
-        'https://osdn.net/downloads/users/40/40056/mozcdic-ut-20221230.tar.bz2')
+        'https://osdn.net/downloads/users/40/40082/mozcdic-ut-20230107.tar.bz2')
 sha256sums=('SKIP'
-            'edb5d956a486def36f2bcd078263272a372f0871686d850e973dc3edb73dbfb3')
+            '2c3514cc4e21c227fd4b327847bf967c7c2394d8d2f4e22751c894b4fc744db3')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -32,7 +32,7 @@ prepare() {
     git submodule update --init --recursive
 
     # Append the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20221230/mozcdic-ut-20221230.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20230107/mozcdic-ut-20230107.txt >> data/dictionary_oss/dictionary00.txt
 
     # Temp fix for Bazel 6.0.0
     sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20221230/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20230107/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
