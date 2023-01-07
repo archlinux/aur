@@ -1,7 +1,7 @@
 pkgbase = lib32-gst-bad-ugly
 	pkgdesc = Multimedia graph framework (32-bit)
 	pkgver = 1.20.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -76,15 +76,14 @@ pkgbase = lib32-gst-bad-ugly
 	sha256sums = 11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70
 	sha256sums = 79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f
 
-pkgname = lib32-gst-libav-latest
+pkgname = lib32-gst-libav
 	pkgdesc = Multimedia graph framework (32-bit) - libav plugin
 	depends = lib32-gst-plugins-base-libs=1.20.5
 	depends = lib32-ffmpeg
 	provides = lib32-gst-ffmpeg=1.20.5
-	provides = lib32-gst-libav=1.20.5
-	conflicts = lib32-gst-libav
+	replaces = lib32-gst-libav-latest
 
-pkgname = lib32-gst-plugins-ugly-latest
+pkgname = lib32-gst-plugins-ugly
 	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
 	depends = lib32-gst-plugins-base-libs=1.20.5
 	depends = lib32-libdvdread
@@ -94,10 +93,9 @@ pkgname = lib32-gst-plugins-ugly-latest
 	depends = lib32-libcdio
 	depends = lib32-x264
 	depends = lib32-opencore-amr
-	provides = lib32-gst-plugins-ugly=1.20.5
-	conflicts = lib32-gst-plugins-ugly
+	replaces = lib32-gst-plugins-ugly-latest
 
-pkgname = lib32-gst-plugins-bad-libs-latest
+pkgname = lib32-gst-plugins-bad-libs
 	pkgdesc = Multimedia graph framework (32-bit) - bad
 	depends = lib32-gst-plugins-base-libs=1.20.5
 	depends = lib32-libxkbcommon-x11
@@ -107,12 +105,11 @@ pkgname = lib32-gst-plugins-bad-libs-latest
 	depends = lib32-libx11
 	depends = lib32-libgudev
 	depends = lib32-libusb
-	provides = lib32-gst-plugins-bad-libs=1.20.5
-	conflicts = lib32-gst-plugins-bad-libs
+	replaces = lib32-gst-plugins-bad-libs-latest
 
-pkgname = lib32-gst-plugins-bad-latest
+pkgname = lib32-gst-plugins-bad
 	pkgdesc = Multimedia graph framework (32-bit) - bad plugins
-	depends = lib32-gst-plugins-bad-libs-latest=1.20.5
+	depends = lib32-gst-plugins-bad-libs=1.20.5
 	depends = lib32-aom
 	depends = lib32-libass
 	depends = lib32-libbs2b
@@ -165,5 +162,4 @@ pkgname = lib32-gst-plugins-bad-latest
 	depends = lib32-wildmidi
 	depends = lib32-x265
 	depends = lib32-zbar
-	provides = lib32-gst-plugins-bad=1.20.5
-	conflicts = lib32-gst-plugins-bad
+	replaces = lib32-gst-plugins-bad-latest
