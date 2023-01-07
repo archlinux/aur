@@ -1,0 +1,27 @@
+pkgbase = rk3588-uboot-git
+	pkgdesc = U-Boot for RK3588 Boards
+	pkgver = 2017.09r52761.75b12f8295
+	pkgrel = 1
+	url = https://github.com/radxa/u-boot
+	install = rk3588-uboot-git.install
+	arch = aarch64
+	license = GPL3
+	makedepends = wget
+	makedepends = dtc
+	backup = boot/extlinux/extlinux.conf
+	source = git+https://github.com/radxa/u-boot.git#branch=stable-5.10-rock5
+	source = src/rk3588_ddr.bin::https://github.com/radxa/rkbin/raw/9840e87723eef7c41235b89af8c049c1bcd3d133/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.08.bin
+	source = src/rk3588_bl31.elf::https://github.com/radxa/rkbin/raw/9840e87723eef7c41235b89af8c049c1bcd3d133/bin/rk35/rk3588_bl31_v1.28.elf
+	source = rockchip-write-dtbos
+	source = 95-boot.hook
+	source = 040-limit_mode_to_config_max.patch
+	source = extlinux.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rk3588-uboot-git
