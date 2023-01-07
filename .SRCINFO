@@ -1,12 +1,13 @@
 pkgbase = commando-bin
 	pkgdesc = A fast, locate-like utility to search for commands in Arch Linux repos
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/DumbMahreeo/commando
 	install = commando.install
 	arch = x86_64
 	license = MIT
 	depends = libarchive
+	depends = openssl-1.1
 	provides = commando
 	conflicts = commando
 	source = https://github.com/DumbMahreeo/commando/releases/download/v0.6.0/commando-bin.gz
