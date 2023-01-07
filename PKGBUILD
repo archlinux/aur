@@ -2,8 +2,6 @@
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
-
 pkgname=zfs-dkms
 pkgver=2.1.7
 pkgrel=1
