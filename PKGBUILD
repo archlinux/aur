@@ -135,7 +135,7 @@ _use_auto_optimization=${_use_auto_optimization-y}
 _disable_debug=${_disable_debug-}
 
 ## Enable zram/zswap ZSTD compression
-_zstd_compression=${_zstd_compression-y}
+_zstd_compression=${_zstd_compression-}
 
 ### Selecting the ZSTD kernel and modules compression level
 # ATTENTION - one of two predefined values should be selected!
@@ -200,7 +200,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -1048,8 +1048,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('6dc89ae7a7513e433c597c7346ed7ff4bfd115ea43a3b5e27a6bdb38c5580317'
+sha256sums=('8aa8f64fa60bb13381a9608d1fefbdd0555e2a70c40b2c7d0671b0d64aa4559e'
             'd4f3fc2581e338835a33983cca18bfb3225450a07c456c48c9b051c03236955a'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'daa88229f69ef9bcab4f41e6757935aa0cdd1377bc576d62ddb9c546f73ae946'
+            '6e7088fcbcda85fb0ebe48ca3426879e510b0a23a97d0c15c6bfa91204c279b4'
             '9aeff735bbd9ae3d730f5ac0bc13a82760dade6c27cd83f0ce56cfd08f8c94ff')
