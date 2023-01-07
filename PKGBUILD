@@ -11,14 +11,14 @@
 
 _qt_module=qtgraphicaleffects
 pkgname=mingw-w64-qt5-graphicaleffects-static
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Graphical effects for use with Qt Quick 2 (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=a2b1600300cda89804d48ec90e0068a075fecc8b
+_commit=4119e4e6dc94447d773a01c1d6e4de0fefb9235a
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
