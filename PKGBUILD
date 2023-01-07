@@ -2,7 +2,7 @@
 pkgname=clipto-bin
 pkgver=7.2.17
 pkgrel=8
-_electronversion=20
+_electronversion=22
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
 url="https://clipto.pro"
@@ -16,7 +16,7 @@ replaces=("${pkgname%-bin}.pro")
 source=("https://github.com/clipto-pro/Desktop/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.AppImage"
         "${pkgname%-bin}")
 sha256sums=('ed0fc3b0e84efc986fdb41a1a38a1483c61d3c128eaa5014e97dc14c3b376028'
-            '4668c84dc0fae7324f905da6fb894fbb7674eeec673836c506994298732c8904')
+            'db84ac53c715824c3e9ec63ed7cf8c3112fb50576adc78a26568491a780c58bf')
 
 prepare() {
   chmod +x "${pkgname%-bin}-$pkgver.AppImage"
