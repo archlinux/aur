@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-scxml
 	pkgdesc = Static and runtime integration of SCXML models into Qt code (mingw-w64)
-	pkgver = 5.15.7
+	pkgver = 5.15.8
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-scxml
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtscxml#commit=e1faea1db52b91d90ef64dd57eb6529e323b5526
+	source = git+https://invent.kde.org/qt/qt/qtscxml#commit=0c93f94a44e2dce7eed9d17d4976b0c1e14be7bb
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-scxml
