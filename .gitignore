@@ -15,5 +15,27 @@ premake-export-compile-commands/
 snappy/
 xbyak/
 yaml-cpp/
+DirectXShaderCompiler/
+FFmpeg/
+FidelityFX-CAS/
+FidelityFX-FSR/
+SDL2/
+VulkanMemoryAllocator/
+aes_128/
+catch/
+cpptoml/
+cxxopts/
+date/
+discord-rpc/
+disruptorplus/
+fmt/
+glslang/
+premake-androidndk/
+premake-cmake/
+rapidjson/
+utfcpp/
+xenia-linux-fixes/
+xxhash/
+
 
 *.pkg.tar.xz
