@@ -2,12 +2,14 @@
 pkgname=catch2v3
 _gitcommit=ab6c7375be9a8e71ee84c6f8537113f9f47daf99
 pkgver=3.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD (v3)"
 arch=('x86_64')
 url="https://github.com/catchorg/Catch2/"
 license=('Boost')
 makedepends=('git' 'cmake')
+provides=("catch2=$pkgver")
+conflicts=(catch2)
 source=(${pkgname}::"git+https://github.com/catchorg/Catch2#commit=${_gitcommit}?signed")
 sha512sums=('SKIP')
 validpgpkeys=(
