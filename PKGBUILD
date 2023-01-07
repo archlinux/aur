@@ -1,6 +1,6 @@
 # based on vscodium-features
 # Original Maintainer: Carson Rueter <roachh at proton mail dot com>
-# Maintainer: Marcus Behrendt <marcus dot behrendt dot 86 at bigbrother(gmail) dot com >
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=vscodium-features
 pkgver=1.59.0
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
 md5sums=('1f08c4648040bc4e90d483764851b421'
-         'fc3312785ce4a67a6443a7bc72caf78a')
+         '77d5a7cb93fd94ee0983d8fa3203a9b4')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"

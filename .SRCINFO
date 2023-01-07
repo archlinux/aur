@@ -1,6 +1,6 @@
 pkgbase = vscodium-features
 	pkgdesc = Unblock some features in VSCodium
-	pkgver = 1.59.0
+	pkgver = 1.66.1
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	install = vscodium-features.install
@@ -14,6 +14,6 @@ pkgbase = vscodium-features
 	source = vscodium-features.hook
 	source = patch.sh
 	md5sums = 1f08c4648040bc4e90d483764851b421
-	md5sums = fc3312785ce4a67a6443a7bc72caf78a
+	md5sums = 77d5a7cb93fd94ee0983d8fa3203a9b4
 
 pkgname = vscodium-features
