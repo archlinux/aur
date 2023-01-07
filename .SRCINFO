@@ -1,6 +1,6 @@
 pkgbase = smiley-sans
-	pkgdesc = 得意黑 Smiley Sans
-	pkgver = 1.1.0
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/atelier-anchor/smiley-sans
 	arch = any
@@ -8,20 +8,20 @@ pkgbase = smiley-sans
 	makedepends = python-brotli
 	makedepends = python-fontmake
 	makedepends = python-fonttools
-	source = smiley-sans-1.1.0.tar.gz::https://github.com/atelier-anchor/smiley-sans/archive/refs/tags/v1.1.0.tar.gz
-	sha512sums = 7cd2f2c231d756e3a97a94c6e548499bad1a004d2d002799ac22c826dd35c8fe8320b983f447f7a2719671c63c3846462e9fa91509029f2ab858c5b754d1598c
+	source = smiley-sans-1.1.1.tar.gz::https://github.com/atelier-anchor/smiley-sans/archive/refs/tags/v1.1.1.tar.gz
+	sha512sums = abeea79a7938af0ffe673aae74100129a3d99dd377ebab92a3426bae029c085c5f3ae3978880f0311829c80a13faa264bf061f539aafc672a93f53917c66348f
 
 pkgname = otf-smiley-sans
-	pkgdesc = 得意黑 Smiley Sans (otf)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (otf)
 	provides = otf-smiley-sans
 	conflicts = otf-smiley-sans
 
 pkgname = ttf-smiley-sans
-	pkgdesc = 得意黑 Smiley Sans (ttf)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (ttf)
 	provides = ttf-smiley-sans
 	conflicts = ttf-smiley-sans
 
 pkgname = woff2-smiley-sans
-	pkgdesc = 得意黑 Smiley Sans (woff2)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (woff2)
 	provides = woff2-smiley-sans
 	conflicts = woff2-smiley-sans

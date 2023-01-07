@@ -2,9 +2,9 @@
 
 pkgbase='smiley-sans'
 pkgname=({otf,ttf,woff2}-${pkgbase})
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='得意黑 Smiley Sans'
+pkgdesc='一款在人文观感和几何特征中寻找平衡的中文黑体'
 url='https://github.com/atelier-anchor/smiley-sans'
 license=('OFL')
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-brotli' 'python-fontmake' 'python-fonttools')
 
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha512sums=('7cd2f2c231d756e3a97a94c6e548499bad1a004d2d002799ac22c826dd35c8fe8320b983f447f7a2719671c63c3846462e9fa91509029f2ab858c5b754d1598c')
+sha512sums=('abeea79a7938af0ffe673aae74100129a3d99dd377ebab92a3426bae029c085c5f3ae3978880f0311829c80a13faa264bf061f539aafc672a93f53917c66348f')
 
 build() {
   rm -rf "${srcdir}/${pkgbase}-${pkgver}/build/"
@@ -35,5 +35,3 @@ for _pkgname in "${pkgname[@]}"; do
     _package
   }"
 done
-
-# vim:set ts=2 sw=2 et:
