@@ -4,8 +4,8 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc-bootstrap
-pkgver=12.2.0
-pkgrel=1
+pkgver=12.2.1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target - bootstrap compiler'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -15,11 +15,10 @@ makedepends=($_arch-binutils)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit=908e612067e42ded881db10d38768f23307bf55e
-source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig})
+_commit=6b1adeb22789e190e87b905761f8a47a2e4e830a
+source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
-sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff'
-	'SKIP')
+sha256sums=('SKIP')
 
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
@@ -43,7 +42,7 @@ build() {
   CFLAGS=${CFLAGS/-Werror=format-security/}
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
-  "$srcdir"/gcc-$pkgver/configure \
+  "$srcdir"/gcc/configure \
       --prefix=/usr \
       --with-sysroot=/usr/$_target/sys-root \
       --libexecdir=/usr/lib \
@@ -53,7 +52,7 @@ build() {
       --with-system-zlib \
       --disable-multilib --disable-werror \
       --disable-threads --without-headers  \
-      --disable-shared --with-newlib
+      --disable-shared --with-newlib --with-arch=armv8-a
 
   make all-gcc all-target-libgcc
 }
