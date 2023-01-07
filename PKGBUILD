@@ -1,15 +1,18 @@
+# Maintainer: James Beddek <$(base64 --decode <<<'dGVsYW5zQHBvc3Rlby5kZQo=')>
 
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname="vivado-boards-git"
 pkgver=r193.c9000e6
 pkgrel=1
 pkgdesc="Vivado Board Files for Digilent FPGA Boards"
-arch=('any')
+
 url="https://reference.digilentinc.com/reference/software/vivado/board-files"
 license=("MIT")
+arch=('any')
+
 depends=('vivado')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+
 source=("${pkgname%-git}::git+https://github.com/Digilent/${pkgname%-git}.git")
 md5sums=('SKIP')
 
