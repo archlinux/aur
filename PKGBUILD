@@ -1,21 +1,28 @@
 pkgname=webcord
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
 license=('MIT')
-depends=('electron20')
 makedepends=('npm' 'esbuild')
 options=('!strip' '!emptydirs')
+
+_emin=17
+_emax=22
+optdepends=()
+
+for ((i = _emax; i >= _emin; i--)); do
+    optdepends+=("electron${i}: runtime")
+done
 
 _srcname="${_repo}-${pkgver}"
 
 source=(
     "${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "buildInfo.json"
-    "app.desktop"
+    "webcord.desktop"
 )
 
 sha256sums=(
@@ -40,12 +47,13 @@ build() {
 package() {
     local lib="/usr/lib/${pkgname}"
     local bin="/usr/bin"
+    local exec="${pkgdir}${bin}/webcord"
     local sources="${lib}/sources"
     local icons="/usr/share/icons/hicolor/512x512/apps"
 
     install -dm755 "${pkgdir}"{"${bin}","${sources}","${icons}"}
     install -Dm644 -t "${pkgdir}${lib}" "${source[1]}"
-    install -Dm644 "${source[2]}" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${source[2]}"
 
     cd "${_srcname}"
     cp -rdt "${pkgdir}${lib}" "package.json" "app" "node_modules"
@@ -55,8 +63,18 @@ package() {
     ln -sT "../sources/translations" "${pkgdir}${lib}/app/translations"
     ln -sT "${sources}/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
 
-    local exec="${pkgdir}${bin}/webcord"
-    echo "#!/bin/sh" > "${exec}"
-    echo "${depends[0]} '${lib}' \"\$@\"" >> "${exec}"
+    echo "#!/bin/sh
+
+for i in {${_emax}..${_emin}}; do
+    cmd=\"electron\${i}\"
+    if command -v \"\${cmd}\" > /dev/null; then
+        echo \"Found Electron \${i}.\"
+        exec \"\${cmd}\" '${lib}' \"\$@\"
+    fi
+done
+
+echo 'No compatible Electron version found!'
+exit 1" > "${exec}"
+
     chmod +x "${exec}"
 }
