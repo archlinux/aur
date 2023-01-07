@@ -1,8 +1,7 @@
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname='perl-test-cpan-meta'
-pkgver='0.24'
+pkgver='0.25'
 pkgrel='1'
 pkgdesc="Validate your CPAN META.yml files."
 arch=('any')
@@ -10,37 +9,34 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='https://metacpan.org/release/Test-CPAN-Meta'
-source=('http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-CPAN-Meta-0.24.tar.gz')
-md5sums=('b91f2d47eff5945fa40ca0ce62efa4af')
-sha512sums=('b81ee69ceef6bb2e43dc3efffd732832e480af5bc55fef31c63d3fbef0e2c92244925ecfb649db5dfa21ae4e7773f41a5e6a96f0282c6f65c325b51a7cfaaf84')
-_distdir="Test-CPAN-Meta-0.24"
+url='https://metacpan.org/pod/Test::CPAN::Meta'
+source=("https://cpan.metacpan.org/authors/id/B/BA/BARBIE/Test-CPAN-Meta-${pkgver}.tar.gz")
+sha512sums=('60a3414e1e0f9aaa1a9459aedd76a6d937742a4197d0d5ce9330348138997d372ca3f454c262fb6dd757699168aa7d1c2653c4066060c9c5685a6fe407260580')
+
+prepare_environment() {
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+    PERL_AUTOINSTALL=--skipdeps                            \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  cd "${srcdir}/Test-CPAN-Meta-${pkgver}"
+}
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  prepare_environment
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  prepare_environment
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  prepare_environment
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:

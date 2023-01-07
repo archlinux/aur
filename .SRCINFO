@@ -1,16 +1,14 @@
 pkgbase = perl-test-cpan-meta
 	pkgdesc = Validate your CPAN META.yml files.
-	pkgver = 0.24
+	pkgver = 0.25
 	pkgrel = 1
-	url = https://metacpan.org/release/Test-CPAN-Meta
+	url = https://metacpan.org/pod/Test::CPAN::Meta
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BA/BARBIE/Test-CPAN-Meta-0.24.tar.gz
-	md5sums = b91f2d47eff5945fa40ca0ce62efa4af
-	sha512sums = b81ee69ceef6bb2e43dc3efffd732832e480af5bc55fef31c63d3fbef0e2c92244925ecfb649db5dfa21ae4e7773f41a5e6a96f0282c6f65c325b51a7cfaaf84
+	source = https://cpan.metacpan.org/authors/id/B/BA/BARBIE/Test-CPAN-Meta-0.25.tar.gz
+	sha512sums = 60a3414e1e0f9aaa1a9459aedd76a6d937742a4197d0d5ce9330348138997d372ca3f454c262fb6dd757699168aa7d1c2653c4066060c9c5685a6fe407260580
 
 pkgname = perl-test-cpan-meta
-
