@@ -1,6 +1,6 @@
 pkgbase = butane
 	pkgdesc = Human readable Butane Configs into machine readable Ignition Configs Translator
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/coreos/butane
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = butane
 	makedepends = git
 	makedepends = go
 	makedepends = make
-	source = git+https://github.com/coreos/butane.git#tag=v0.16.0
+	source = git+https://github.com/coreos/butane.git#tag=v0.17.0
 	source = change-bin-dir.patch
 	sha256sums = SKIP
 	sha256sums = bdb99494bf163a89269858f2aeb28b389837e9eb0b92b7b2c20e5a03f4941cde
