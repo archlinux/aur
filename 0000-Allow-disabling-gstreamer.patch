@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Mon, 6 Jun 2022 00:29:08 +0200
+Subject: [PATCH] meson: Allow building with system orc
+---
+ meson.build | 2 +-
+ meson_options.txt | 1 +
+ 2 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 83eae5a482..31a12d7c7a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -92,7 +92,7 @@ endif
+ 
+ # Ordered list of subprojects (dict has no ordering guarantees)
+ subprojects = [
+-  ['gstreamer', {'build-hotdoc': true}],
++  ['gstreamer', {'option': get_option('gstreamer'), 'build-hotdoc': true}],
+   ['gst-plugins-base', {'option': get_option('base'), 'build-hotdoc': true}],
+   ['gst-plugins-good', {'option': get_option('good'), 'build-hotdoc': true}],
+   ['libnice', { 'option': get_option('libnice'), 'match_gst_version': false}],
+diff --git a/meson_options.txt b/meson_options.txt
+index 7a43f34430..522e6662a7 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -3,6 +3,7 @@ option('python', type : 'feature', value : 'auto')
+ option('libav', type : 'feature', value : 'auto')
+ option('libnice', type : 'feature', value : 'auto')
+ option('base', type : 'feature', value : 'enabled')
++option('gstreamer', type : 'feature', value : 'enabled')
+ option('good', type : 'feature', value : 'enabled')
+ option('ugly', type : 'feature', value : 'auto')
+ option('bad', type : 'feature', value : 'auto')
