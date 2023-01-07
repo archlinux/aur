@@ -1,15 +1,14 @@
 pkgbase = python-kernel-driver
 	pkgdesc = A Jupyter kernel driver
-	pkgver = 0.0.5
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/davidbrochart/kernel_driver.git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/9a/90/bae13566f2d90743ad8d5a2256ed521f02e67fc01f49b3b124ac690672a7/kernel_driver-0.0.5.tar.gz
-	sha256sums = f7c58743b1df06066beaed038804a30bebb05587fc014a94fa382e7bfba748ca
+	source = https://files.pythonhosted.org/packages/source/k/kernel_driver/kernel_driver-0.0.7.tar.gz
+	sha256sums = 1fe9add2cc14851246e1527c8d878514f7cf5511d05bf1176f7d36c4cb43a763
 
 pkgname = python-kernel-driver
 	depends = python
-
