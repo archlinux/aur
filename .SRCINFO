@@ -1,18 +1,18 @@
 pkgbase = android-messages-desktop
 	pkgdesc = Android Messages as a cross-platform desktop app
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrangeDrangon/android-messages-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	depends = electron20
+	depends = electron22
 	source = android-messages-desktop-5.4.1.tar.gz::https://github.com/OrangeDrangon/android-messages-desktop/archive/v5.4.1.tar.gz
 	source = android-messages-desktop.sh
 	source = android-messages-desktop.desktop
 	sha256sums = 0869dd24a3b845f9e6a5b11041f9f42af0d6d2494079d6391208891f1a23dafc
-	sha256sums = e7151555e8f57ab7c212aef1cc2312abc796fd6258713158c683eb5e099c7201
+	sha256sums = 2d8ca068ad5dca8654067e64b988235c1c95d669585b0c2d93e74103a0e4d68a
 	sha256sums = 1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a
 
 pkgname = android-messages-desktop
