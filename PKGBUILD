@@ -3,12 +3,13 @@
 _pkgname=shellspec
 pkgname=$_pkgname-git
 pkgver=0.28.1.r120.gf800240
-pkgrel=1
+pkgrel=2
 pkgdesc='BDD style unit testing framework for POSIX compliant shell script'
 arch=('any')
 url='https://shellspec.info'
 license=('MIT')
 depends=('sh')
+makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/shellspec/shellspec.git")
