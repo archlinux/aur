@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
-	pkgver = 5.15.7+kde+r1
+	pkgver = 5.15.8+kde+r1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-multimedia
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtmultimedia#commit=f3dc18968c437c993886d3bfb668b62344a10860
+	source = git+https://invent.kde.org/qt/qt/qtmultimedia#commit=0d7cc33ac1404758886acef4f804b788c6774e98
 	source = 0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch
 	source = 0002-Fix-build-with-ANGLE.patch
 	source = 0003-Workaround-multiple-definition-errors-with-amstrmid-.patch

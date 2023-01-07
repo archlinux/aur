@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
