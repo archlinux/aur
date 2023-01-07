@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
 pkgver=2.36
-pkgrel=3
+pkgrel=4
 _commit=4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c
 pkgdesc="GNU C Library ARM64 target"
 arch=(any)
@@ -46,7 +46,6 @@ CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
       --enable-bind-now \
       --disable-multi-arch \
       --enable-stack-protector=strong \
-		--disable-crypt \
       --disable-profile \
       --disable-werror \
       --disable-timezone-tools
