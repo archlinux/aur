@@ -1,0 +1,92 @@
+diff --git a/Makefile b/Makefile
+index b41aaa6..7dfc996 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-QMAKE = qmake-qt4
++QMAKE = qmake-qt5
+ UNAME = $(shell uname -s)
+ 
+ ifeq ($(UNAME), Linux)
+diff --git a/Velocity/Velocity.pro b/Velocity/Velocity.pro
+index e81a196..f4b043e 100644
+--- a/Velocity/Velocity.pro
++++ b/Velocity/Velocity.pro
+@@ -16,6 +16,9 @@ win32:UI_DIR = ../Velocity
+ VERSION = 0.1.0.0
+ DEFINES += VERSION=\\\"$$VERSION\\\"
+ 
++QMAKE_CXXFLAGS += -std=c++0x
++QMAKE_CLFLAGS += -std=c++0x
++
+ # linking against botan (and adding to include path)
+ win32 {
+     LIBS += -LC:/botan/ -lbotan-1.10
+@@ -27,7 +30,7 @@ macx {
+ }
+ unix {
+     INCLUDEPATH += /usr/include/botan-1.10
+-    LIBS += /usr/lib/libbotan-1.10.so.0
++    LIBS += /usr/lib/libbotan-1.10.so
+ }
+ 
+ # phonon, icon
+diff --git a/Velocity/mainwindow.ui b/Velocity/mainwindow.ui
+index 905990e..4f1a44c 100644
+--- a/Velocity/mainwindow.ui
++++ b/Velocity/mainwindow.ui
+@@ -237,9 +237,6 @@
+    <property name="text">
+     <string>Profile Creator</string>
+    </property>
+-   <property name="softKeyRole">
+-    <enum>QAction::NoSoftKey</enum>
+-   </property>
+    <property name="iconVisibleInMenu">
+     <bool>true</bool>
+    </property>
+@@ -248,9 +245,6 @@
+    <property name="text">
+     <string>Profile Editor</string>
+    </property>
+-   <property name="softKeyRole">
+-    <enum>QAction::NoSoftKey</enum>
+-   </property>
+    <property name="iconVisibleInMenu">
+     <bool>true</bool>
+    </property>
+diff --git a/Velocity/nightcharts.h b/Velocity/nightcharts.h
+index 11e4506..4664349 100644
+--- a/Velocity/nightcharts.h
++++ b/Velocity/nightcharts.h
+@@ -25,6 +25,7 @@
+ #include <QVector>
+ #include <QDebug>
+ #include <QLinearGradient>
++#include <QPainterPath>
+ #include <math.h>
+ 
+ class pieceNC
+diff --git a/XboxInternals/XboxInternals.pro b/XboxInternals/XboxInternals.pro
+index 9ad9978..a111cfa 100644
+--- a/XboxInternals/XboxInternals.pro
++++ b/XboxInternals/XboxInternals.pro
+@@ -15,6 +15,9 @@ unix:CONFIG += staticlib app_bundle
+ # flags (lets step it up a notch)
+ QMAKE_CXXFLAGS = -O3
+ 
++QMAKE_CXXFLAGS += -std=c++0x
++QMAKE_CLFLAGS += -std=c++0x
++
+ # linking against botan (and adding to include path)
+ win32 {
+     include(Stfs/Botan.pri)
+@@ -28,7 +31,7 @@ macx {
+ }
+ unix {
+     INCLUDEPATH += /usr/include/botan-1.10
+-    LIBS += /usr/lib/libbotan-1.10.so.0
++    LIBS += /usr/lib/libbotan-1.10.so
+ }
+ 
+ SOURCES += \
