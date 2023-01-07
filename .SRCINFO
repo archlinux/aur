@@ -1,18 +1,17 @@
 pkgbase = hdrview-git
-	pkgdesc = HDRView is a simple research-oriented high-dynamic range image viewer with an emphasis on examining and comparing images, and including minimalistic tonemapping capabilities
-	pkgver = 269.8436cf9
-	pkgrel = 3
-	url = https://bitbucket.org/wkjarosz/hdrview
+	pkgdesc = High dynamic range (HDR) image viewer and comparison tool
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/wkjarosz/hdrview
 	arch = x86_64
 	license = BSD
-	makedepends = cmake
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
 	depends = zlib
 	provides = hdrview
-	source = git+https://bitbucket.org/wkjarosz/hdrview.git
-	source = hdrview-git.patch
+	conflicts = hdrview
+	source = git+https://github.com/wkjarosz/hdrview
 	sha256sums = SKIP
-	sha256sums = 29450b60ca46062663ec603a0b68f8500cf882761654f756b81afb368845fdc5
 
 pkgname = hdrview-git
-
