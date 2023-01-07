@@ -6,16 +6,15 @@ pkgbase = aarch64-glibc
 	arch = any
 	license = GPL
 	license = LGPL
+	makedepends = git
 	makedepends = aarch64-gcc
 	makedepends = aarch64-linux-api-headers
 	makedepends = python
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.36.tar.xz
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.36.tar.xz.sig
+	source = git+https://sourceware.org/git/glibc.git#commit=4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 1c959fea240906226062cb4b1e7ebce71a9f0e3c0836c09e7e3423d434fcfe75
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = aarch64-glibc
