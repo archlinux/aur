@@ -4,9 +4,9 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=timeDate
-_pkgver=4021.107
+_pkgver=4022.108
 pkgname=r-${_pkgname,,}
-pkgver=4021.107
+pkgver=4022.108
 pkgrel=1
 pkgdesc='Rmetrics - Chronological and Calendar Objects'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-runit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4fa74cf1f2c17edf992190acb4ef4d025a6f03c462e5443d0211965c0451a4c4')
+sha256sums=('a5949b4fe2f6bdff751fc0793df8e3150cc25c078d48a28c066c10a6c4bfceef')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
