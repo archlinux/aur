@@ -16,7 +16,7 @@ pkgbase = torch7-git
 	optdepends = torch7-trepl-git: Interactive REPL shell
 	provides = torch7
 	conflicts = torch7
-	source = torch7::git+https://github.com/torch/torch7
+	source = git+https://github.com/torch/torch7
 	b2sums = SKIP
 
 pkgname = torch7-git

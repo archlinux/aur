@@ -13,7 +13,7 @@ makedepends=('cmake' 'git')
 optdepends=('torch7-trepl-git: Interactive REPL shell')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/torch/$_pkgname")
+source=("git+https://github.com/torch/$_pkgname")
 b2sums=('SKIP')
 
 pkgver() {
