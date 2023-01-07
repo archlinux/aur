@@ -1,6 +1,6 @@
 pkgbase = hyprland
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks.
-	pkgver = 0.19.2beta
+	pkgver = 0.20.0beta
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = hyprland
 	options = !makeflags
 	options = !buildflags
 	options = !strip
-	source = hyprland-0.19.2beta.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.19.2beta/source-v0.19.2beta.tar.gz
-	sha256sums = a7d52ba61e6a75e619f86e2a10b1eea3ff342c5f669ef4f2f3a74983f76d5ccb
+	source = hyprland-0.20.0beta.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.20.0beta/source-v0.20.0beta.tar.gz
+	sha256sums = ae7601ec5562ca1a31015789a5cc2c548b90bfba3f19082716bebc4b07cf3560
 
 pkgname = hyprland
