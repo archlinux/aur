@@ -8,7 +8,7 @@
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
 pkgver=11.1.0.11664
-pkgrel=3
+pkgrel=4
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -41,7 +41,7 @@ prepare() {
 }
 
 package_wps-office-cn() {
-    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtool' 'libxslt' 'qt5-base')
+    depends=('fontconfig' 'xorg-mkfontdir' 'libxrender' 'desktop-file-utils' 'shared-mime-info' 'xdg-utils' 'glu' 'openssl-1.1' 'sdl2' 'libpulse' 'hicolor-icon-theme' 'libxss' 'sqlite' 'libtiff5' 'libtool' 'libxslt' 'qt5-base')
     optdepends=('cups: for printing support'
                 'libjpeg-turbo: JPEG image codec support'
                 'pango: for complex (right-to-left) text support'
