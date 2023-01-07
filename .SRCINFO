@@ -1,12 +1,12 @@
 pkgbase = texlive-europecv
 	pkgdesc = Unofficial class for European curricula vitæ
-	pkgver = 2021.05.09
+	pkgver = 2022.08.03
 	pkgrel = 1
 	url = http://www.ctan.org/tex-archive/macros/latex/contrib/europecv/
 	arch = any
 	license = GPL
 	depends = texlive-latexextra
-	source = https://github.com/gsilano/EuropeCV/archive/2021.05.09.zip
-	sha256sums = c4fd5ac6d37601ba75d5931d9b1128984f4eddb7183efcefd1640d621451bacf
+	source = https://github.com/gsilano/EuropeCV/archive/2022.08.03.zip
+	sha256sums = a0d7812b615662906f8f127766449ebe5d5f98efe95c2860627124c8adc200b2
 
 pkgname = texlive-europecv
