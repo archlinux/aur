@@ -1,13 +1,13 @@
 pkgbase = listenbrainz-mpd
 	pkgdesc = ListenBrainz submission client for MPD
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://codeberg.org/elomatreb/listenbrainz-mpd
 	arch = x86_64
 	license = AGPL3
 	makedepends = cargo
 	depends = openssl
-	source = listenbrainz-mpd-2.0.0.tar.gz::https://static.crates.io/crates/listenbrainz-mpd/listenbrainz-mpd-2.0.0.crate
-	sha256sums = d4b1af673238bbbecbb08bf9e1b96337f8fa47db45c4b8e95367b804d233e723
+	source = listenbrainz-mpd-2.0.1.tar.gz::https://static.crates.io/crates/listenbrainz-mpd/listenbrainz-mpd-2.0.1.crate
+	sha256sums = 45a58e1d51a6c2c7f27b2790d9fddf979bbbbefeece7013be86d249cf36c36da
 
 pkgname = listenbrainz-mpd
