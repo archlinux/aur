@@ -1,6 +1,6 @@
 pkgbase = vpv
 	pkgdesc = Image viewer (with GDAL and Octave support)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 0
 	url = https://github.com/kidanger/vpv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vpv
 	depends = libjpeg-turbo
 	depends = gdal
 	depends = octave
-	source = https://github.com/kidanger/vpv/archive/v0.8.0.tar.gz
-	md5sums = a586e3dc930e04ae240fd41858004f50
+	source = https://github.com/kidanger/vpv/archive/v0.8.1.tar.gz
+	md5sums = 2497d0dfbb034523e75e6a9c52641fa8
 
 pkgname = vpv
