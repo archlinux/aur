@@ -1,0 +1,8 @@
+/.vscode/
+/ccloader-git/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
+*.zip
