@@ -4,20 +4,11 @@ stages:
 
 build:
   stage: build
-  image: archlinux:base-devel
+  image: stefanwimmer128/archlinux-chaotic-paru-user
+  before_script:
+    - paru -S --noconfirm shellspec-bin
   script:
-    - pacman-key --init
-    - pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
-    - pacman-key --lsign-key FBA220DFC880C036
-    - pacman -U --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-    - |
-      echo '[chaotic-aur]
-      Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
-    - pacman -Syu --noconfirm paru
-    - useradd builduser -m
-    - passwd -d builduser
-    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-    - sudo -u builduser sh -c 'paru -S --noconfirm shellspec-bin && makepkg -s --noconfirm'
+    - makepkg -s --noconfirm
   artifacts:
     paths:
       - "*.pkg.tar.zst"
