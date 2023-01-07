@@ -1,0 +1,4 @@
+pre_install() {
+    echo "Remember to modify your btrbk config, otherwise logger will not be started."
+    echo "See https://gitlab.com/KodyVB/btrbk-pac#[profiles] for details."
+}

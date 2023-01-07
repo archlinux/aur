@@ -1,0 +1,20 @@
+pkgbase = btrbk-pac-git
+	pkgdesc = A set of scripts and pacman hooks which automate btrbk processes and logs the relevant snapshot and information.
+	pkgver = r35.d0e14d1
+	pkgrel = 1
+	url = https://gitlab.com/KodyVB/btrbk-pac
+	install = btrbk-pac.install
+	arch = any
+	makedepends = git
+	depends = btrbk
+	provides = btrbk-pac
+	conflicts = btrbk-pac
+	backup = etc/btrbk_logger/btrbk_logger.conf
+	source = git+https://gitlab.com/KodyVB/btrbk-pac.git
+	source = btrbk_logger.conf
+	source = btrbk-pac.install
+	sha256sums = SKIP
+	sha256sums = d0b4b26a5fac3fc765e83ea9e76d9067379798e4526a39d094354b41705f7322
+	sha256sums = d26f0a77f7bcc84b049589a8049b956262e507eedcca603258b41067a89c9a57
+
+pkgname = btrbk-pac-git
