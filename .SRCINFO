@@ -8,10 +8,12 @@ pkgbase = hdrview-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	depends = hicolor-icon-theme
+	depends = libglvnd
 	depends = zlib
 	provides = hdrview
 	conflicts = hdrview
-	source = git+https://github.com/wkjarosz/hdrview
+	source = hdrview-git::git+https://github.com/wkjarosz/hdrview
 	sha256sums = SKIP
 
 pkgname = hdrview-git
