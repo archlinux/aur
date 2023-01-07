@@ -1,0 +1,11 @@
+--- Makefile.in		2023-01-07 23:12:31.119156934 +0100
++++ Makefile.in.new	2023-01-07 23:10:08.151195830 +0100
+@@ -2,7 +2,7 @@
+ ccsrc = $(wildcard src/*.cc)
+ mochdr = src/ui.h
+ mocsrc = $(mochdr:.h=.moc.cc)
+-obj = $(csrc:.c=.o) $(ccsrc:.cc=.o) $(mocsrc:.cc=.o) res.cc
++obj = $(sort $(csrc:.c=.o) $(ccsrc:.cc=.o) $(mocsrc:.cc=.o)) res.cc
+ dep = $(csrc:.c=.d) $(ccsrc:.cc=.d)
+ bin = spnavcfg
+ 
