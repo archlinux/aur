@@ -5,7 +5,6 @@ pkgbase = youtube-tui-nodefaults-bin
 	url = https://github.com/Siriusmart/youtube-tui
 	arch = x86_64
 	license = GPL3
-	depends = libsixel
 	depends = libxcb
 	optdepends = mpv: default video player
 	optdepends = konsole: default terminal emulator

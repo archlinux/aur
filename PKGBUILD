@@ -12,7 +12,7 @@ pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in R
 arch=('x86_64')
 url="https://github.com/Siriusmart/youtube-tui"
 license=('GPL3')
-depends=('libsixel' 'libxcb')
+depends=('libxcb')
 optdepends=(
   'mpv: default video player'
   'konsole: default terminal emulator'
