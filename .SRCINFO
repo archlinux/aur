@@ -1,6 +1,6 @@
 pkgbase = python-tables
 	pkgdesc = Hierarchical datasets for Python
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 2
 	url = https://pypi.org/project/tables
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-tables
 	depends = python-oldest-supported-numpy
 	depends = python-numexpr
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/t/tables/tables-3.7.0.tar.gz
-	sha256sums = e92a887ad6f2a983e564a69902de4a7645c30069fc01abd353ec5da255c5e1fe
+	source = https://files.pythonhosted.org/packages/source/t/tables/tables-3.8.0.tar.gz
+	sha256sums = 34f3fa2366ce20b18f1df573a77c1d27306ce1f2a41d9f9eff621b5192ea8788
 
 pkgname = python-tables
