@@ -1,6 +1,6 @@
 pkgbase = r-bsgenome
 	pkgdesc = Software infrastructure for efficient representation of full genomes and their SNPs
-	pkgver = 1.66.1
+	pkgver = 1.66.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BSgenome
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-bsgenome
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
 	optdepends = r-xtrasnplocs.hsapiens.dbsnp144.grch38
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BSgenome_1.66.1.tar.gz
-	sha256sums = 35bb835797f72da5387e444e53081f588342f454588431aaaf78d8c2a5daf7bf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BSgenome_1.66.2.tar.gz
+	sha256sums = ee82e4a9eae724c855511ef6de6eeb9a8b896052cdb7f3715bc410ae4561e55c
 
 pkgname = r-bsgenome
