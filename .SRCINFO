@@ -9,6 +9,7 @@ pkgbase = apx-git
 	depends = pacman>5
 	depends = git
 	depends = distrobox
+	depends = docker
 	provides = apx
 	conflicts = apx
 	options = !lto

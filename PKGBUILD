@@ -11,6 +11,7 @@ depends=(
   'pacman>5'
   'git'
   'distrobox'
+  'docker'
   )
 makedepends=('go>=1.17')
 options=(!lto)
