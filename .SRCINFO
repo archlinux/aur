@@ -1,6 +1,6 @@
 pkgbase = r-reactable
 	pkgdesc = Interactive Data Tables Based on 'React Table'
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=reactable
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-reactable
 	optdepends = r-testthat
 	optdepends = r-tippy
 	optdepends = r-v8
-	source = https://cran.r-project.org/src/contrib/reactable_0.4.2.tar.gz
-	sha256sums = 80448ab11af6b721e8b20d88c7c55421463ec63e0bd930b73d626824d1bfa157
+	source = https://cran.r-project.org/src/contrib/reactable_0.4.3.tar.gz
+	sha256sums = 97fd4bc79ddbf22f1ac5ddaf6aae8d32cc3ac953b0446fdb5140cda319c3feec
 
 pkgname = r-reactable

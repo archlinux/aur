@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=reactable
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Interactive Data Tables Based on 'React Table'"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-v8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('80448ab11af6b721e8b20d88c7c55421463ec63e0bd930b73d626824d1bfa157')
+sha256sums=('97fd4bc79ddbf22f1ac5ddaf6aae8d32cc3ac953b0446fdb5140cda319c3feec')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
