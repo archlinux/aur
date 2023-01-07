@@ -1,10 +1,8 @@
 pkgbase = epsonscan2
 	pkgdesc = Epson scanner management utility
 	pkgver = 6.7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://support.epson.net/linux/en/epsonscan2.php
-	arch = i686
-	arch = pentium4
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
