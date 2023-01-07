@@ -12,7 +12,7 @@ pkgname=(
     "${_pkgbase}-gx551-git"
     "${_pkgbase}-g533-git"
 )
-pkgver=r350.ce4f032
+pkgver=r353.5b34b32
 pkgrel=1
 pkgdesc="Linux newest feature-rich configurable driver for Asus numpad"
 arch=('any')
@@ -39,6 +39,7 @@ _package() {
     install -Dm644 "asus_touchpad.X11.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad.X11.service"
     install -Dm644 "asus_touchpad_suspend.service" "${pkgdir}/usr/lib/systemd/system/asus_touchpad_suspend.service"
     install -Dm 644 -t "${pkgdir}/usr/share/asus_touchpad_numpad-driver/numpad_layouts" numpad_layouts/*.py
+    install -Dm 644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE.md"
 }
 
 main() {
