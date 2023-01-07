@@ -1,9 +1,25 @@
+post_install(){
+ cat <<INFO
+
+Shlink has been installed successfully.
+Please run \`(cd /usr/share/webapps/shlink && sudo -u http php vendor/bin/shlink-installer install)\`
+to configure the database and other options.
+You can find more information here:
+
+https://github.com/shlinkio/shlink/#configure
+
+INFO
+}
+
 post_upgrade(){
  cat <<INFO
 
 Shlink has been updated successfully.
-Please run \`sudo -u http php /usr/share/webapps/shlink/bin/update\`
+Please run \`(cd /usr/share/webapps/shlink && sudo -u http php vendor/bin/shlink-installer update)\`
 to migrate the database and configure new options.
+
+You can provide `/usr/share/webapps/shlink` when asked to import the existing configuration.
+
 You can find more information here:
 
 https://github.com/shlinkio/shlink/#update-to-new-version

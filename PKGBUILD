@@ -7,7 +7,7 @@ pkgdesc="The definitive self-hosted URL shortener"
 url="https://shlink.io"
 license=("MIT")
 arch=("any")
-depends=("php>=8.1" "php-gd")
+depends=("php>=8.1" "php-gd" "php-intl" "php-apcu")
 optdepends=("mariadb: database"
             "mssql-server: database"
             "mysql: database"
@@ -19,6 +19,7 @@ source=("https://github.com/shlinkio/shlink/releases/download/v$pkgver/$pkgname$
 sha256sums=('e37e91cd86a8d495952783d1eeb94f157ddfe42f50849a3c2f979b1f9d991963')
 install="$pkgname.install"
 options=("!strip")
+backup=("usr/share/webapps/shlink/config/params/generated_config.php")
 
 # https://wiki.archlinux.org/title/DeveloperWiki:UID_/_GID_Database
 _http_uid_gid=33
