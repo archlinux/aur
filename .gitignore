@@ -1,8 +1,7 @@
 *
 !PKGBUILD
 !.SRCINFO
-!0000-Allow-disabling-gstreamer.patch
-!0001-meson-Allow-building-with-system-orc.patch
 !0002-HACK-meson-Disable-broken-tests.patch
 !0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 !.gitignore
+!0001-Allow-disabling-gstreamer.patch

@@ -1,7 +1,7 @@
 pkgbase = lib32-gst-bad-ugly
 	pkgdesc = Multimedia graph framework (32-bit)
 	pkgver = 1.20.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
 	license = LGPL
@@ -67,14 +67,12 @@ pkgbase = lib32-gst-bad-ugly
 	makedepends = lib32-ffmpeg
 	options = !debug
 	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git#tag=1.20.5
-	source = 0000-Allow-disabling-gstreamer.patch
-	source = 0001-meson-Allow-building-with-system-orc.patch
+	source = 0001-Allow-disabling-gstreamer.patch
 	source = 0002-HACK-meson-Disable-broken-tests.patch
 	source = 0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
 	sha256sums = SKIP
 	sha256sums = 79b4d76bdb1ccf05099eff677d72cdf9df50788261891be41065aca21b4ea8b6
-	sha256sums = 292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683
 	sha256sums = 11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70
 	sha256sums = 79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f
 
@@ -84,6 +82,7 @@ pkgname = lib32-gst-libav-latest
 	depends = lib32-ffmpeg
 	provides = lib32-gst-ffmpeg=1.20.5
 	provides = lib32-gst-libav=1.20.5
+	conflicts = lib32-gst-libav
 
 pkgname = lib32-gst-plugins-ugly-latest
 	pkgdesc = Multimedia graph framework (32-bit) - ugly plugins
@@ -96,6 +95,7 @@ pkgname = lib32-gst-plugins-ugly-latest
 	depends = lib32-x264
 	depends = lib32-opencore-amr
 	provides = lib32-gst-plugins-ugly=1.20.5
+	conflicts = lib32-gst-plugins-ugly
 
 pkgname = lib32-gst-plugins-bad-libs-latest
 	pkgdesc = Multimedia graph framework (32-bit) - bad
@@ -108,6 +108,7 @@ pkgname = lib32-gst-plugins-bad-libs-latest
 	depends = lib32-libgudev
 	depends = lib32-libusb
 	provides = lib32-gst-plugins-bad-libs=1.20.5
+	conflicts = lib32-gst-plugins-bad-libs
 
 pkgname = lib32-gst-plugins-bad-latest
 	pkgdesc = Multimedia graph framework (32-bit) - bad plugins
@@ -165,3 +166,4 @@ pkgname = lib32-gst-plugins-bad-latest
 	depends = lib32-x265
 	depends = lib32-zbar
 	provides = lib32-gst-plugins-bad=1.20.5
+	conflicts = lib32-gst-plugins-bad

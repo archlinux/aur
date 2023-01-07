@@ -9,7 +9,7 @@ pkgname=(
     lib32-gst-plugins-bad-latest
 )
 pkgver=1.20.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -37,14 +37,12 @@ checkdepends=(xorg-server-xvfb)
 options=(!debug)
 source=(
   "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git#tag=$pkgver"
-  0000-Allow-disabling-gstreamer.patch
-  0001-meson-Allow-building-with-system-orc.patch
+  0001-Allow-disabling-gstreamer.patch
   0002-HACK-meson-Disable-broken-tests.patch
   0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 )
 sha256sums=('SKIP'
             '79b4d76bdb1ccf05099eff677d72cdf9df50788261891be41065aca21b4ea8b6'
-            '292edebc224557db08404b0d53e2824413f0aad2a99c991de2cb8ccc6e9a7683'
             '11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70'
             '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
 validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
@@ -56,13 +54,13 @@ pkgver() {
 
 prepare() {
   cd gstreamer
-  git apply -3 ../0000-Allow-disabling-gstreamer.patch
-  # Fix linking with system orc
-  git apply -3 ../0001-meson-Allow-building-with-system-orc.patch
+
+  # Disable gstreamer
+  git apply -3 ../0001-Allow-disabling-gstreamer.patch
 
   # Disable broken tests
   git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
-  
+
   # Workaround broken detection of underscore prefixes
   # https://github.com/mesonbuild/meson/issues/5482
   git apply -3 ../0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
@@ -86,6 +84,7 @@ build() {
     -D libav=disabled
     -D libnice=disabled
     -D omx=disabled
+    -D orc=disabled
     -D python=disabled
     -D qt5=disabled
     -D rs=disabled
@@ -150,18 +149,31 @@ check() (
     meson test -C build --print-errorlogs || :
 )
 
+_cleanup() {
+  rm -rf "$pkgdir"/usr/{include,share}
+
+  if [[ -d "$pkgdir/usr/bin" ]];then
+    for _i in "$pkgdir"/usr/bin/*; do
+      mv "${_i}" "${_i}-32"
+    done
+  fi
+}
+
 package_lib32-gst-libav-latest() {
   pkgdesc+=" - libav plugin"
   depends=("lib32-gst-plugins-base-libs=$pkgver" lib32-ffmpeg)
   provides=("lib32-gst-ffmpeg=$pkgver" "lib32-gst-libav=$pkgver")
+  conflicts=('lib32-gst-libav')
 
   DESTDIR="$pkgdir" meson install -C build \
     --skip-subprojects gst-plugins-ugly,gst-plugins-bad
+  _cleanup
 }
 
 package_lib32-gst-plugins-bad-latest() {
   pkgdesc+=" - bad plugins"
   provides=("lib32-gst-plugins-bad=$pkgver")
+  conflicts=('lib32-gst-plugins-bad')
   depends=(
     "lib32-gst-plugins-bad-libs-latest=$pkgver" lib32-aom lib32-libass
     lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-pango lib32-lcms2
@@ -186,14 +198,11 @@ package_lib32-gst-plugins-bad-libs-latest() {
     lib32-libva lib32-libdrm lib32-libx11 lib32-libgudev lib32-libusb
   )
   provides=("lib32-gst-plugins-bad-libs=$pkgver")
+  conflicts=('lib32-gst-plugins-bad-libs')
 
   DESTDIR="$pkgdir" meson install -C build \
     --skip-subprojects gst-plugins-ugly,gst-libav
-  rm -R "$pkgdir"/usr/{share,include}
-
-  for _i in "$pkgdir"/usr/bin/*; do
-    mv "${_i}" "${_i}-32"
-  done
+  _cleanup
 
   # bad-libs
   local _libs _files
@@ -228,9 +237,11 @@ package_lib32-gst-plugins-ugly-latest() {
     lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libsidplay lib32-libcdio lib32-x264 lib32-opencore-amr
   )
   provides=("lib32-gst-plugins-ugly=$pkgver")
+  conflicts=('lib32-gst-plugins-ugly')
 
   DESTDIR="$pkgdir" meson install -C build \
     --skip-subprojects gst-plugins-bad,gst-libav
+  _cleanup
 }
 
 # vim: ft=sh:ts=2:et:
