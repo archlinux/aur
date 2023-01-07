@@ -1,17 +1,15 @@
 pkgbase = perl-mime-encwords
 	pkgdesc = deal with RFC 2047 encoded words (improved)
-	pkgver = 1.014.2
+	pkgver = 1.014.3
 	pkgrel = 1
-	url = http://search.cpan.org/dist/MIME-EncWords
+	url = https://metacpan.org/pod/MIME::EncWords
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	depends = perl-mime-charset>=1.010.1
 	depends = perl>=5.005
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEZUMI/MIME-EncWords-1.014.2.tar.gz
-	md5sums = 5f809ae650489d1988d8aabd32d4d689
-	sha512sums = 279381d2d22dda57d3d9cb57954eae1be14751cbcdb01d49e794b04c43b9a3879684b3a432c4f938d1d47b77fd8869bcf5917d69a35daf492b96879e1c39c03f
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEZUMI/MIME-EncWords-1.014.3.tar.gz
+	sha512sums = 77deed0b9b61101ba67f4d498213af9dc1078738fb0992661aa1b260ef394b84341173e5319579c4651f9b6271be0f80d4e96455c7caa9f81accb3db16601af8
 
 pkgname = perl-mime-encwords
-
