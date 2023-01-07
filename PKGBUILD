@@ -3,7 +3,7 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=vscodium-features
-pkgver=1.59.0
+pkgver=1.66.1
 pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
