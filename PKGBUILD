@@ -1,6 +1,6 @@
 # Maintainer: ROllerozxa <rollerozxa@voxelmanip.se>
 pkgname=principia-git
-pkgver=r52.7378abb
+pkgver=r115.3b6d2bd
 pkgrel=1
 pkgdesc="Physics-based sandbox building game."
 url='https://github.com/Bithack/principia/'
@@ -26,9 +26,9 @@ build() {
 
 package() {
 	cd principia/build-linux
-	install -Dm755 "apparatus2" "${pkgdir}/opt/principia/principia"
+	install -Dm755 "principia" "${pkgdir}/opt/principia/principia"
 	install -d "${pkgdir}/usr/bin/"
-	ln -s /opt/principia/principia "${pkgdir}/usr/bin/"
+	ln -s /opt/principia/principia "${pkgdir}/usr/bin/principia"
 	
 	install -Dm644 "principia.desktop" "${pkgdir}/usr/share/applications/principia.desktop"
 	install -Dm644 "principia-url-handler.desktop" "${pkgdir}/usr/share/applications/principia-url-handler.desktop"
