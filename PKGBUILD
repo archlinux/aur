@@ -2,8 +2,8 @@
 
 _pkgbase=simexec
 pkgname=simexec-git
-pkgver=r179.a256b92
-pkgrel=3
+pkgver=r181.c00d19e
+pkgrel=2
 pkgdesc="Execute a program with the given argv"
 arch=('any')
 url="https://git.sr.ht/~trinity/src/tree/main/item/simexec/packaging.md"
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	cd "src/$_pkgbase/"
+	cd "$srcdir/src/$_pkgbase/"
 	mkdir -p "$pkgdir/usr/bin/"
 	mkdir -p "$pkgdir/usr/share/man/man1/"
 	cp "$_pkgbase" "$pkgdir/usr/bin/"
