@@ -1,40 +1,39 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='File name manipulation module for Torch7'
-pkgname='torch7-paths-git'
+# Maintainer: éclairevoyant
+# Contributor: Adrián Pérez de Castro <aperez at igalia dot com>
+
+_pkgname=torch7-paths
+pkgname="$_pkgname-git"
 pkgver=r41.68d579a
-pkgrel=1
-makedepends=('cmake' 'git')
-depends=('luajit')
-conflicts=('torch7-paths')
-provides=('torch7-paths')
+pkgrel=2
+pkgdesc='File name manipulation module for Torch7'
 arch=('x86_64' 'i686')
-url='https://github.com/torch/paths'
+_gitname=paths
+url="https://github.com/torch/$_gitname"
 license=('BSD')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+depends=('luajit')
+makedepends=('cmake' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url")
+b2sums=('SKIP')
 
 pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	cd $_gitname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
-	cd "${pkgname}"
+	cd $_gitname
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLUADIR=/usr/share/lua/5.1 \
 		-DLIBDIR=/usr/lib/lua/5.1 \
 		-DLUALIB=/usr/lib/libluajit-5.1.so \
-		-DLUA_INCDIR=/usr/include/luajit-2.0 \
+		-DLUA_INCDIR=/usr/include/luajit-2.1 \
 		-DLUA_LIBDIR=/usr/lib
 	make
 }
 
 package () {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make -C$_gitname DESTDIR="$pkgdir" install
 }
