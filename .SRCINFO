@@ -5,7 +5,6 @@ pkgbase = zellij-selector
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector
 	arch = any
 	license = MPL2
-	makedepends = make
 	makedepends = git
 	makedepends = shellcheck
 	depends = sh
