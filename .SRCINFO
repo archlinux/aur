@@ -1,10 +1,10 @@
 pkgbase = dwarffortress-linuxdwarfpack-appimage
 	pkgdesc = The AppImage of lnp-forge built LinuxDwarfPack appimage
-	pkgver = 0.47.05_r7
+	pkgver = 0.47.05_r8
 	pkgrel = 1
 	url = https://github.com/McArcady/lnp-forge
 	arch = x86_64
-	license = unknown
+	license = mixed
 	depends = ncurses
 	depends = qt5-base
 	depends = webkit2gtk
@@ -26,7 +26,7 @@ pkgbase = dwarffortress-linuxdwarfpack-appimage
 	optdepends = alsa-lib: for alsa sound
 	optdepends = libpulse: for pulse sound
 	options = !strip
-	source = https://github.com/McArcady/lnp-forge/releases/download/0.47.05-r7/Dwarf_Fortress-0.47.05-r7-x86_64.AppImage
-	sha256sums = aebb171bf69721e9441c4fb28a9ee4e779b1858b3e087e9a6ad4de0cda8500e5
+	source = https://github.com/McArcady/lnp-forge/releases/download/0.47.05-r8/Dwarf_Fortress-0.47.05-r8-x86_64.AppImage
+	sha256sums = c4ac2e9780993f8ad6ede8a5d08499213e9c7541fdde919cc42b849c90e05a04
 
 pkgname = dwarffortress-linuxdwarfpack-appimage
