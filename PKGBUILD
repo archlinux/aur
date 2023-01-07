@@ -9,7 +9,7 @@ arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq')
-makedepends=('make' 'git' 'shellcheck')
+makedepends=('git' 'shellcheck')
 optdepends=('fish: Option to option fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
