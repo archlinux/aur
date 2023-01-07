@@ -1,11 +1,12 @@
 pkgbase = libiqa-git
 	pkgdesc = Image Quality Assessment (IQA) - fast, accurate, and reliable C library for measuring image quality
-	pkgver = 1.1.2.1.r0.g157f921
+	pkgver = 1.1.2.1.r1.g5441721
 	pkgrel = 1
 	url = https://github.com/ImageProcessing-ElectronicPublications/libiqa
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	depends = glibc
 	provides = libiqa
 	conflicts = libiqa
 	source = libiqa-git::git+https://github.com/ImageProcessing-ElectronicPublications/libiqa
