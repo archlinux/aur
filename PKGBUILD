@@ -9,14 +9,14 @@
 
 _qt_module=qtconnectivity
 pkgname=mingw-w64-qt5-connectivity-static
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
 depends=('mingw-w64-qt5-base-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=6796953f92a1d3af30d0676e56ec5dfd82199611
+_commit=056294c0493f814c3951ef57e5d0656efe643fb5
 _basever=$pkgver
 pkgver+=+kde+r5
 makedepends+=('git')
