@@ -4,7 +4,7 @@
 _electron=electron20
 pkgname=wire-desktop
 pkgver=3.30.3018
-pkgrel=2
+pkgrel=3
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
