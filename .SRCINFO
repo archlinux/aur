@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-mavros
 	pkgdesc = ROS - MAVROS -- MAVLink extendable communication node for ROS with proxy for Ground Control Station.
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = ros-noetic-mavros
 	depends = ros-noetic-std-srvs
 	depends = ros-noetic-rosunit
 	depends = gtest
-	source = ros-noetic-mavros-1.14.0.tar.gz::https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/1.14.0.tar.gz
-	sha256sums = 4c7a33080cb79b3adb5794c2b3057e64b019c36ee24806d4045120625bec5e02
+	source = ros-noetic-mavros-1.15.0.tar.gz::https://github.com/mavlink/mavros-release/archive/refs/tags/upstream/1.15.0.tar.gz
+	sha256sums = 0d9207a1548d051c0e9fe6630197c48599d720c9833b5be618b9d7857ef01ca8
 
 pkgname = ros-noetic-mavros
