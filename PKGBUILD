@@ -1,8 +1,8 @@
 # Maintainer: Puqns67 <me@puqns67.icu>
 
 pkgbase='smiley-sans'
-pkgname=("otf-${pkgbase}" "ttf-${pkgbase}" "woff2-${pkgbase}")
-pkgver=1.0.0
+pkgname=({otf,ttf,woff2}-${pkgbase})
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='得意黑 Smiley Sans'
 url='https://github.com/atelier-anchor/smiley-sans'
@@ -12,7 +12,7 @@ makedepends=('python-brotli' 'python-fontmake' 'python-fonttools')
 
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha512sums=('c5c22eaa3fc3d0f8e15752a63acc8e76ffee7615064cfc332804316aabb45bd28f7e8a72b0d6ae9291cbb91d0d631c8cc58da72ed41ecfa8c7159aaaea66dba3')
+sha512sums=('7cd2f2c231d756e3a97a94c6e548499bad1a004d2d002799ac22c826dd35c8fe8320b983f447f7a2719671c63c3846462e9fa91509029f2ab858c5b754d1598c')
 
 build() {
   rm -rf "${srcdir}/${pkgbase}-${pkgver}/build/"
@@ -20,37 +20,20 @@ build() {
   sh "${srcdir}/${pkgbase}-${pkgver}/build.sh"
 }
 
-package_otf-smiley-sans() {
-  # tags
-  pkgdesc+=" (otf)"
-  conflicts=('otf-smiley-sans')
+_package() {
+  pkgdesc+=" (${pkgname%-${pkgbase}})"
+  provides=(${pkgname})
+  conflicts=(${pkgname})
 
-  # font files
-  cd "${srcdir}/${pkgbase}-${pkgver}/build/"
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" *.otf
-
-  # license
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" ${srcdir}/${pkgbase}-${pkgver}/build/*.${pkgname%-${pkgbase}}
   install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_ttf-smiley-sans() {
-  pkgdesc+=" (ttf)"
-  conflicts=('ttf-smiley-sans')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/build/"
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" *.ttf
-
-  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_woff2-smiley-sans() {
-  pkgdesc+=" (woff2)"
-  conflicts=('woff2-smiley-sans')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}/build/"
-  install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgbase}" *.woff2
-
-  install -Dm644 "${srcdir}/${pkgbase}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+for _pkgname in "${pkgname[@]}"; do
+  eval "package_${_pkgname}() {
+    $(declare -f "_package")
+    _package
+  }"
+done
 
 # vim:set ts=2 sw=2 et:
