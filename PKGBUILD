@@ -1,7 +1,7 @@
 #PACKAGER="TimeTrap <zhaoyuanpan@gmail.com>"
 pkgname=lib32-libtiff5
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for manipulation of TIFF images'
 arch=(x86_64)
 url=http://www.simplesystems.org/libtiff/
@@ -11,6 +11,9 @@ depends=(
   lib32-glibc
   lib32-libjpeg-turbo
   libtiff5
+  zstd
+  xz
+  zstd
 )
 makedepends=()
 source=(
@@ -37,8 +40,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  ./autogen.sh
 }
 
 build() {
