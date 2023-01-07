@@ -23,10 +23,6 @@ prepare() {
 
   sed -i '1 i #include "zlib.h"' \
          "$srcdir/$pkgname-$_pkgver/src/CommonUtility/DbgLog.cpp"
-#
-#  sed -i 's/qt5/qt6/g; s/Qt5/Qt6/g; s/QT5/QT6/g' \
-#         "$srcdir/$pkgname-$_pkgver/src/DetectAlert/CMakeLists.txt" \
-#         "$srcdir/$pkgname-$_pkgver/src/Standalone/CMakeLists.txt"
 }
 
 build() {
