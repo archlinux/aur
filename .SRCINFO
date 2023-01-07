@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-translations
 	pkgdesc = A cross-platform application and UI framework (Translations, mingw-w64)
-	pkgver = 6.4.1
+	pkgver = 6.4.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-qt6-translations
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.1/submodules/qttranslations-everywhere-src-6.4.1.tar.xz
-	sha256sums = 44dbc6f1d256d2048c96fa665c240e0075c2e67188c93986a39ede3556a16a12
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.2/submodules/qttranslations-everywhere-src-6.4.2.tar.xz
+	sha256sums = bbe0291502c2604b72fef730e1935bd22f8b921d8c473250f298a723b2a9c496
 
 pkgname = mingw-w64-qt6-translations
