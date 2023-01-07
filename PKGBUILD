@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-atheris
-pkgver=2.1.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A coverage-guided fuzzer for Python and Python extensions'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=(
   'python-setuptools'
   'pybind11'
 )
-_commit='6068f9e520ba4f7218075f1a6bf3426b288d17f8'
+_commit='f0a4ae0ff06aeacb836684f3f5e03394eaefab53'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
