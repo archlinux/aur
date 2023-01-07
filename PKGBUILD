@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-show-asm
 _binname=cargo-asm
-pkgver=0.2.3
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Cargo subcommand to display ASM, LLVM-IR and MIR for Rust source code'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,12 +14,15 @@ depends=(
 )
 provides=($_binname)
 conflicts=($_binname)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2095905557d49f130ebe6b520a816bfe12ebd447cb837fdba4d8874df7103fa2')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        "$url/commit/8677f88deba6f5f943ff2c4ed103331d872ecbe8.patch")
+sha256sums=('6498fb8b6f4ae6aad4a1f1e50a7615e41f0171b051247120fc3a02b08cc832e0'
+            'e24adbf35edf3aa64bda1e83efdc57b081b130b410f6c06aefc9453ba75b964f')
 
 prepare() {
     cd "$pkgname-$pkgver"
 
+    patch --forward --strip=1 --input="${srcdir}/8677f88deba6f5f943ff2c4ed103331d872ecbe8.patch"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
