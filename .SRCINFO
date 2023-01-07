@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-script
 	pkgdesc = Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)
-	pkgver = 5.15.11
+	pkgver = 5.15.12
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-qt5-script
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://code.qt.io/qt/qtscript.git#tag=v5.15.11-lts
+	source = git+https://code.qt.io/qt/qtscript.git#tag=v5.15.12-lts
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-script
