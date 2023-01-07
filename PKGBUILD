@@ -1,6 +1,6 @@
 # Maintainer: Azad Ahmadi <azadahmadi@mailo.com>
 pkgname=gscal
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="GTK Simple Calendar"
 arch=(any)
@@ -12,9 +12,9 @@ provides=(gscal)
 conflicts=()
 replaces=()
 options=()
-source=("https://files.pythonhosted.org/packages/40/c1/6764b442c9b656cafda4c56ebc4abdb04f98e1d437a7d5a49836047099c5/gscal-0.3.0.tar.gz")
-md5sums=("d3b09fcae421b5d82b2c0adb64be490c")
-sha256sums=("5490dbbebf97c81be64086f1b29cdd2c6813817edc7428753db395e08f35ff37")
+source=("https://files.pythonhosted.org/packages/48/a7/79709835118ad14d1e8e8bb177976120f2a5446431c2718f76d42d363367/gscal-0.3.1.tar.gz")
+md5sums=("ede434e1f6231dccccec6a6075426612")
+sha256sums=("3cf5a4e85f26f851dab12faa2db0a64716a1126666dd6b467ac530c546be34b7")
 
 build() {
     cd "$pkgname-$pkgver"
