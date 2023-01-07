@@ -3,12 +3,13 @@
 pkgname=ramfetch-git
 _pkgname=ramfetch
 pkgver=1.0.0.a1d4d40
-pkgrel=1
+pkgrel=2
 pkgdesc="A fetch which displays memory info using /proc/meminfo"
 arch=('x86_64')
 url="https://github.com/gentoo-btw/$_pkgname"
 license=('MIT')
 makedepends=('git')
+conflicts=('ramfetch')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
