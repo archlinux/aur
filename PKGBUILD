@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61870.8fdbdb18900
+pkgver=r61877.ccf87d61f64
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -58,7 +58,7 @@ _sse_workaround=1
 # https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdread/tags
 #
-# fmt and crossguid can be found http://mirrors.kodi.tv/build-deps/sources/
+# fmt and crossguid can be found https://mirrors.kodi.tv/build-deps/sources/
 #
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
@@ -76,12 +76,12 @@ source=(
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
+  "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
 )
 noextract=(
