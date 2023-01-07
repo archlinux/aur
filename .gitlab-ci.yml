@@ -4,13 +4,11 @@ stages:
 
 build:
   stage: build
-  image: archlinux:base-devel
+  image: stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    paru -Syu --noconfirm
   script:
-    - pacman -Syu --noconfirm
-    - useradd builduser -m
-    - passwd -d builduser
-    - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers
-    - sudo -u builduser makepkg -s --noconfirm
+    - makepkg -s --noconfirm
   artifacts:
     paths:
       - "*.pkg.tar.zst"
