@@ -1,0 +1,16 @@
+pkgbase = footy-git
+	pkgdesc = A simple shell script that displays the latest football scores, fixtures and standings.
+	pkgver = r81.0608ed5
+	pkgrel = 1
+	url = https://github.com/fritzrehde/footy
+	install = footy.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = bash
+	provides = footy
+	source = footy::git+https://github.com/fritzrehde/footy.git
+	md5sums = SKIP
+
+pkgname = footy-git
