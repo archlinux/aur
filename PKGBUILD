@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_571
-pkgrel=3
+pkgrel=4
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -23,7 +23,7 @@ sha256sums_x86_64=('f0a714859c20785cc6cab4084d69c953310f1993828f42c81cb991b8aaa4
                    # '814ddc3eea99bf2e291e2eeff0c3805928e3059e23b12d41cc8bf75bb8cd5fd3')  # 热更新补丁
 sha256sums_aarch64=('2ef13e3ebcaae0a2eef8115856b1a24f005d80eac182e3c741def730c1657e26')  # 底包
                     # 'f2f61581a5c09e4a7bfb23922a667e8df327d58fed9601034c4b60a08ad29049')  # 热更新补丁
-sha256sums=('277284dcf139bdc2e78a507cdbcff407199e9b958c83dd294503c16c999c0017'  # start.sh
+sha256sums=('215ae97927dcb25e95ed65a108b07eb889dcb974d4ebd8ed333a75a9ea58bee3'  # start.sh
             '82182e49c883e16c7ff38e4722c3950e2758b4342c51521147423026965196a9'  # config.json
             'a57a3c34943168d4fdb7d8ddec0c09097b997405b9cd88af205a80fa7cfd899a')  # xdg-open.sh
 

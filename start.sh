@@ -34,7 +34,7 @@ else
     done
 fi
 
-bwrap --new-session --die-with-parent --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try \
+bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cgroup-try \
     --symlink usr/lib /lib \
     --symlink usr/lib64 /lib64 \
     --symlink usr/bin /bin \
