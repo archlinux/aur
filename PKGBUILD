@@ -8,8 +8,8 @@ arch=('any')
 url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${pkgname}")
-depends=('electron' 'libvips')
-makedepends=('nvm' 'yarn' 'node-gyp')
+depends=('electron' 'libvips', 'alsa')
+makedepends=('yarn' 'node-gyp', 'cargo')
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop builder-args.sh)
 sha256sums=('0caeff0625c6a3a911ee471fc00fd7cc82998312652a223116cbd85d27001849'
             'a0707852a076771f61238ee8bc65483a7495caa60075cd10bace56a1d7be24e5'
