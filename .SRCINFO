@@ -1,0 +1,17 @@
+pkgbase = zip-password-finder-git
+	pkgdesc = Find the password of protected ZIP files (git)
+	pkgver = 0.5.0.r4.gc1b5cb1
+	pkgrel = 1
+	url = https://github.com/agourlay/zip-password-finder
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = bzip2
+	provides = zip-password-finder
+	conflicts = zip-password-finder
+	options = !lto
+	source = git+https://github.com/agourlay/zip-password-finder
+	sha512sums = SKIP
+
+pkgname = zip-password-finder-git
