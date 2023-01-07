@@ -3,7 +3,7 @@
 
 pkgname='shellspec'
 pkgver=0.28.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BDD style unit testing framework for POSIX compliant shell script"
 url="https://shellspec.info"
 license=('MIT')
