@@ -1,6 +1,6 @@
 pkgbase = r-seriation
 	pkgdesc = Infrastructure for Ordering Objects Using Seriation
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=seriation
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-seriation
 	optdepends = r-scales
 	optdepends = r-testthat
 	optdepends = r-umap
-	source = https://cran.r-project.org/src/contrib/seriation_1.4.0.tar.gz
-	sha256sums = bd321f44ab94953dfc80e1f8609f8c04cecc91d35b2414d8ad4d4acd53298dad
+	source = https://cran.r-project.org/src/contrib/seriation_1.4.1.tar.gz
+	sha256sums = b9ce26a82f519f355c8054d10f78086e5c3f70fe998522408aa091ada83a1fad
 
 pkgname = r-seriation
