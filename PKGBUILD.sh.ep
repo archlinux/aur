@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt5-module';
 \
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Adds support for getting events from gamepad devices (mingw-w64)"
