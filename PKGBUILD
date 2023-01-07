@@ -1,7 +1,7 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=autobrr-bin
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A modern download automation tool for torrents"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('none')
 source=("https://github.com/autobrr/autobrr/releases/download/v${pkgver}/autobrr_${pkgver}_linux_${arch}.tar.gz"
 	'autobrr@.service')
 
-sha256sums=('406b13289db309f03f484d9d1c012cbce01c007566b325a9609c074134164fd0'
+sha256sums=('aa906d5d0b6feca85a549dae6fc35fcada209ce505123232ecd9c3ff0d64489f'
             'd7cd9d0ea06f7197428df93f2a8a4b1c48fd8791da07a780e2386a0614e3d586')
 
 package() {
