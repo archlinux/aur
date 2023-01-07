@@ -1,13 +1,13 @@
---- a/gns3-gui-2.2.35.1/requirements.txt	2022-11-10 15:21:14.000000000 +0100
-+++ b/gns3-gui-2.2.35.1/requirements.txt	2022-11-11 17:49:28.072012381 +0100
+--- a/gns3-gui-2.2.36/requirements.txt	2023-01-04 12:46:30.000000000 +0100
++++ b/gns3-gui-2.2.36/requirements.txt	2023-01-07 15:01:06.174228879 +0100
 @@ -1,7 +1,5 @@
--jsonschema>=4.17.0,<4.18; python_version >= '3.7'
+-jsonschema>=4.17.3,<4.18; python_version >= '3.7'
 -jsonschema==3.2.0; python_version < '3.7'  # v3.2.0 is the last version to support Python 3.6
--sentry-sdk==1.10.1,<1.11
--psutil==5.9.2
-+jsonschema>=4.17.0
-+sentry-sdk>=1.10.1
-+psutil>=5.9.2
+-sentry-sdk==1.12.1,<1.13
+-psutil==5.9.4
++jsonschema>=4.17.3
++sentry-sdk>=1.12.1
++psutil>=5.9.4
  distro>=1.7.0
 -setuptools>=60.8.1; python_version >= '3.7'
 -setuptools==59.6.0; python_version < '3.7'  # v59.6.0 is the last version to support Python 3.6
