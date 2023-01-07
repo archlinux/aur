@@ -10,7 +10,7 @@
 
 _qt_module=qtnetworkauth
 pkgname=mingw-w64-qt5-networkauth-static
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Network authentication module (mingw-w64)"
@@ -18,7 +18,7 @@ depends=('mingw-w64-qt5-base-static')
 optdepends=()
 makedepends=('mingw-w64-gcc')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=f34ac77b5955126be60faa2b801be2d19dff896f
+_commit=f082a4c84c54e888b8d023ba68b7085551403425
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
