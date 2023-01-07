@@ -1,5 +1,5 @@
 # Maintainer: TimeTrap <844177178@qq.com>
-pkgname=xmcl-launcher
+pkgname=xmcl-launcher-bin
 pkgver=0.33.1
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
