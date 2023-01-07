@@ -1,7 +1,7 @@
 pkgbase = zfs-utils
 	pkgdesc = Userspace utilities for the Zettabyte File System.
 	pkgver = 2.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
