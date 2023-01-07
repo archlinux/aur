@@ -1,34 +1,30 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='Tool to aid wrapping C functions to be used from Lua'
-pkgname='torch7-cwrap-git'
+# Maintainer: éclairevoyant
+# Contributor: Adrián Pérez de Castro <aperez at igalia dot com>
+
+_pkgname=torch7-cwrap
+pkgname="$_pkgname-git"
 pkgver=r35.dbd0a62
-pkgrel=1
-conflicts=('torch7-cwrap')
-provides=('torch7-cwrap')
+pkgrel=2
+pkgdesc='Tool to aid wrapping C functions to be used from Lua'
 arch=('any')
-url='https://github.com/torch/cwrap'
+_gitname=cwrap
+url="https://github.com/torch/$_gitname"
+license=('custom')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 makedepends=('git')
-license=('BSD')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+source=("git+$url")
+b2sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+pkgver() {
+	cd $_gitname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
-	echo 'Nothing to build'
-}
-
-package () {
-	cd "${pkgname}"
-	for filename in *.lua ; do
-		install -Dm644 "${filename}" \
-			"${pkgdir}/usr/share/lua/5.1/cwrap/${filename}"
+package() {
+	cd $_gitname
+	for filename in *.lua; do
+		install -Dm644 "$filename" "$pkgdir/usr/share/lua/5.1/cwrap/$filename"
 	done
+	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
