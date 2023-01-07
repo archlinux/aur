@@ -1,4 +1,4 @@
-# Added to AUR4: GI_Jack <iamjacksemail@hackermail.com>
+# Added to AUR4: GI_Jack <GI_Jack@hackermail.com>
 # Contributor: Jens Pranaitis <jens@chaox.net>
 pkgname=evilgrade
 pkgver=2.0.9
