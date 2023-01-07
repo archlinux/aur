@@ -1,7 +1,7 @@
 pkgbase = mautrix-wsproxy-git
 	pkgdesc = A websocket proxy for Matrix appservices - latest git commit
 	pkgver = 0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/mautrix/wsproxy
 	install = mautrix-wsproxy.install
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = mautrix-wsproxy-git
 	source = mautrix-wsproxy::git+https://github.com/mautrix/wsproxy.git
 	source = mautrix-wsproxy.service
 	sha256sums = SKIP
-	sha256sums = 0454295b274064e3303e0e98f4cffbddd2b4a977f743b04e916ce09be0975fd3
+	sha256sums = 72fd829b7ec5ceea3f8b7b20139c71bec00081c4a34fc1a16c0ca86e269d19aa
 
 pkgname = mautrix-wsproxy-git

@@ -3,7 +3,7 @@
 pkgname=mautrix-wsproxy-git
 _pkgname=mautrix-wsproxy
 pkgver=0
-pkgrel=4
+pkgrel=6
 pkgdesc="A websocket proxy for Matrix appservices - latest git commit"
 arch=('x86_64')
 license=('AGPL')
@@ -13,7 +13,7 @@ url="https://github.com/mautrix/wsproxy"
 source=(${_pkgname}::git+https://github.com/mautrix/wsproxy.git
         ${_pkgname}.service)
 sha256sums=('SKIP'
-	    '0454295b274064e3303e0e98f4cffbddd2b4a977f743b04e916ce09be0975fd3')
+	    '72fd829b7ec5ceea3f8b7b20139c71bec00081c4a34fc1a16c0ca86e269d19aa')
 install=${_pkgname}.install
 
 # https://wiki.archlinux.org/title/VCS_package_guidelines :
