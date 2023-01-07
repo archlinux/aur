@@ -1,6 +1,6 @@
 pkgbase = shellspec-git
 	pkgdesc = BDD style unit testing framework for POSIX compliant shell script
-	pkgver = 0.1.0.r0.g846ffdc
+	pkgver = 0.28.1.r120.gf800240
 	pkgrel = 1
 	url = https://shellspec.info
 	arch = any
