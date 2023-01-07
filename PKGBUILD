@@ -2,7 +2,7 @@
 
 pkgname=transg-tui-git
 pkgver=r28.3d06006
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal UI for transmission torrent client."
 arch=(x86_64)
 url="https://github.com/PanAeon/transg-tui"
@@ -29,6 +29,7 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm755 "target/release/transgression-tui" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "target/release/transgression-tui" \
+    "${pkgdir}/usr/bin/${pkgname%-git}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
