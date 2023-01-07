@@ -5,17 +5,16 @@ pkgbase = torch7-cunn-git
 	url = https://github.com/torch/cunn
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = custom
 	makedepends = cmake
 	makedepends = git
-	depends = torch7-git>=r819
 	depends = cuda
-	depends = torch7-nn-git
 	depends = torch7-cutorch-git
+	depends = torch7-git>=r819
+	depends = torch7-nn-git
 	provides = torch7-cunn
 	conflicts = torch7-cunn
-	source = torch7-cunn-git::git+https://github.com/torch/cunn
-	sha512sums = SKIP
+	source = torch7-cunn::git+https://github.com/torch/cunn
+	b2sums = SKIP
 
 pkgname = torch7-cunn-git
-
