@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
 pkgver=0.7.0a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
@@ -22,7 +22,8 @@ optdepends=('python-svgwrite: blender bim addon svg support'
       'python-isodate: blender bim addon'
       'python-olca-ipc: blender bim addon life cycle analysis support'
       'python-toposort: ifcpatch'
-      'python-xsdata: blender bim addon')
+      'python-xsdata: blender bim addon'
+      'python-brickschema: brickschema support')
 makedepends=('cmake' 'boost>=1.58.0' 'swig' 'python-babel')
 provides=('ifcopenshell' 'blender-plugin-bim' 'IfcConvert' 'IfcGeomServer' 'python-ifcpatch' 'python-ifcdiff' 'python-bcf' 'python-bimtester' 'python-ifccsv')
 conflicts=()
@@ -30,7 +31,8 @@ replaces=()
 backup=()
 source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/v${pkgver//_/-}.tar.gz"
         "git+https://github.com/IfcOpenShell/svgfill.git"
-        "git+https://github.com/svgpp/svgpp.git")
+        "git+https://github.com/svgpp/svgpp.git"
+        "https://github.com/BrickSchema/Brick/releases/download/v1.3.0/Brick.ttl")
 _blender_ver=$(blender --version | grep -Po 'Blender \K[0-9].[0-9]+')
 _python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
 _iosdir="IfcOpenShell-${pkgver//_/-}"
@@ -42,6 +44,7 @@ prepare() {
   rm -r "svgfill/3rdparty/svgpp"
   ln -s "../../svgpp" "svgfill/3rdparty"
   sed -i 's/lib_ext a/lib_ext so/' ${srcdir}/${_iosdir}/cmake/CMakeLists.txt
+  cp "${srcdir}/Brick.ttl" "${srcdir}/${_iosdir}/src/blenderbim/blenderbim/bim/schema"
 }
 
 build() {
@@ -100,4 +103,4 @@ package_blender-plugin-bim() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('0814f545b57a5f4de0211151de99fcc7' 'SKIP' 'SKIP')
+md5sums=('0814f545b57a5f4de0211151de99fcc7' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89')
