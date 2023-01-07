@@ -1,6 +1,6 @@
 pkgbase = go-chroma
 	pkgdesc = Chroma — A general purpose syntax highlighter in pure Go
-	pkgver = 2.2.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/alecthomas/chroma
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = go-chroma
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/alecthomas/chroma/archive/v2.2.0.tar.gz
-	sha256sums = 6870cb8c47897f2a75abaf3e6cbb160989b4e915b86fdcd9322fb17e073ccd81
+	source = https://github.com/alecthomas/chroma/archive/v2.4.0.tar.gz
+	sha256sums = 15289ce536e734767e06816c6bb33537121c3b70c2ecbc3431afe95942bb0fce
 
 pkgname = go-chroma
