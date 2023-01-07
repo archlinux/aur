@@ -1,7 +1,7 @@
 pkgbase = python-ghtopdep
 	pkgdesc = CLI tool for sorting dependents repositories and packages by stars.
-	pkgver = 0.3.13
-	pkgrel = 2
+	pkgver = 0.3.14
+	pkgrel = 1
 	url = https://github.com/github-tooling/ghtopdep
 	arch = any
 	license = MIT
@@ -11,13 +11,13 @@ pkgbase = python-ghtopdep
 	depends = python-appdirs
 	depends = python-cachecontrol
 	depends = python-click
-	depends = python-github3.py
+	depends = python-github3py
 	depends = python-halo
 	depends = python-pipdate
 	depends = python-requests
 	depends = python-selectolax
 	depends = python-tabulate
-	source = python-ghtopdep-0.3.13.tar.gz::https://files.pythonhosted.org/packages/source/g/ghtopdep/ghtopdep-0.3.13.tar.gz
-	sha256sums = c92026411beb38dec238871293c277b3ebb3c79d6366387bcb023aa6eed23714
+	source = python-ghtopdep-0.3.14.tar.gz::https://files.pythonhosted.org/packages/source/g/ghtopdep/ghtopdep-0.3.14.tar.gz
+	sha256sums = 04bc9951ffc9ea04eddc4a8625da278da5947ecefb275549493e6a1da7f78f60
 
 pkgname = python-ghtopdep
