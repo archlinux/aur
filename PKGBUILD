@@ -6,7 +6,8 @@
 
 pkgname=rutorrent
 _pkgname=ruTorrent
-pkgver=3.10
+pkgver=4.0
+_pkgver=4.0-stable
 pkgrel=1
 pkgdesc="Yet another web front-end for rTorrent"
 arch=('any')
@@ -16,11 +17,11 @@ depends=(php curl gzip coreutils)
 optdepends=('mod_scgi: for SCGI protocol')
 conflicts=(rutorrent-plugins)
 source=( 
-    $pkgname-$pkgver.tar.gz::https://github.com/Novik/ruTorrent/archive/v${pkgver}.tar.gz
+    $pkgname-$_pkgver.tar.gz::https://github.com/Novik/ruTorrent/archive/v${_pkgver}.tar.gz
     apache.example.conf
     apache.example.site.conf
 )
-sha256sums=('dac1e3e0079eb475066d6be738b8372596fa382b074792db5ecab31bce6cfa6d'
+sha256sums=('bc160e411950a49455e8cf6bd76a2dff4e0f89c0ea0c30950556bdaa86093348'
             '79b5aab7ef928727b3ec2aa0f1b0869310adde11cd774d148c03025deb6dec0c'
             '9afe7d2a9aadb5fd6a0fcd907f7f46bdc3630c369a5a684c51bbeeb5b4d354aa')
 backup=( 
@@ -31,14 +32,14 @@ backup=(
 options=(emptydirs !strip)
 
 prepare() {
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/$_pkgname-$_pkgver
     rm -f .gitignore
     msg2 "Removing files with Russian letters in filenames"
     cd plugins/tracklabels/labels
     find . -print0 | perl -MFile::Path=remove_tree -n0e 'chomp; remove_tree($_, {verbose=>1}) if /[[:^ascii:][:cntrl:]]/'
 }
 package() {
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/$_pkgname-$_pkgver
   
     install -d "$pkgdir"/usr/share/webapps
     install -d "$pkgdir"/etc/webapps/$pkgname
