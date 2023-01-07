@@ -2,14 +2,15 @@
 
 pkgname=pulse-glass-tri-color
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This small derivative collection comprises of Amber, Jade and Sapphire (orange,green,blue). Sizes Regular (32px) and Small (24px) apply."
 arch=('any')
 url="https://store.kde.org/p/999818/"
 license=('GPL')
 depends=()
-source=("${pkgname}.tar.gz::https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1460735003/Pulse-Glass-Jan-2017-Fix.tar.gz?response-content-disposition=attachment%3B%2520Pulse-Glass-Jan-2017-Fix.tar.gz&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230103T072143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Signature=6c5d9d0b77ab8963c680cab66c25f2d0614d23b1a975287dca5d7b7ba7d8a3ee")
-sha256sums=('cd45db012f6f34c13b3012b63ed7d2e6692392f5ec7e669ac51752db991c27cf')
+# source=("${pkgname}.tar.gz::https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1460735003/Pulse-Glass-Jan-2017-Fix.tar.gz?response-content-disposition=attachment%3B%2520Pulse-Glass-Jan-2017-Fix.tar.gz&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=RWJAQUNCHT7V2NCLZ2AL%2F20230103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230103T072143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=60&X-Amz-Signature=6c5d9d0b77ab8963c680cab66c25f2d0614d23b1a975287dca5d7b7ba7d8a3ee")
+source=("Pulse-Glass-Jan-2017-Fix-Small.tar.zst" "Pulse-Glass-Jan-2017-Fix-Regular.tar.zst")
+sha256sums=('2038467dd15cad66dac7c96c35ef23e51a1f6203fc621d9a01caaf11897dffc8' '958557ea44e463dcb5bfd13119065640e4c9abd05fdf448c13daf21f19a7f93a')
 
 package() {
     cd "${srcdir}"
