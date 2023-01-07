@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 # Contributor: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=(ifcopenshell-git blender-plugin-bim-git)
-pkgver=221213.r0.g05cd11ae1
+pkgver=230107.r2.g73d43649a
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon. GIT version."
 arch=('x86_64' 'i686')
@@ -116,4 +116,4 @@ package_blender-plugin-bim-git() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('SKIP' 'SKIP' 'SKIP' '5a2d3512fb67f54afa695498f192f131')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
