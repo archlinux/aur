@@ -1,0 +1,12 @@
+pkgbase = firewalld-services-games
+	pkgdesc = Firewalld services for some games
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NikolasK-source/Firewalld_Games
+	arch = any
+	license = MIT
+	depends = firewalld
+	source = git+https://github.com/NikolasK-source/Firewalld_Games.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = firewalld-services-games
