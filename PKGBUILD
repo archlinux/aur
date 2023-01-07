@@ -3,8 +3,8 @@
 
 _pkgname=torch7-paths
 pkgname="$_pkgname-git"
-pkgver=r41.68d579a
-pkgrel=2
+pkgver=r45.4ebe222
+pkgrel=1
 pkgdesc='File name manipulation module for Torch7'
 arch=('x86_64' 'i686')
 _gitname=paths

@@ -1,7 +1,7 @@
 pkgbase = torch7-paths-git
 	pkgdesc = File name manipulation module for Torch7
-	pkgver = r41.68d579a
-	pkgrel = 2
+	pkgver = r45.4ebe222
+	pkgrel = 1
 	url = https://github.com/torch/paths
 	arch = x86_64
 	arch = i686
