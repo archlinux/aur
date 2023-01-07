@@ -1,7 +1,7 @@
 pkgbase = wps-office
 	pkgdesc = Kingsoft Office (WPS Office) - an office productivity suite
 	pkgver = 11.1.0.11664
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wps-community.org
 	arch = x86_64
 	license = custom
@@ -26,6 +26,7 @@ pkgname = wps-office
 	depends = hicolor-icon-theme
 	depends = libxss
 	depends = sqlite
+	depends = libtiff5
 	depends = libtool
 	depends = libxslt
 	depends = qt5-base
