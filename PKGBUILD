@@ -10,16 +10,16 @@
 
 _qt_module=qtsvg
 pkgname=mingw-w64-qt5-svg
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=83296f10ebdb9a666b11dc69f3a148c38b9c425c
+_commit=a7a0f2491334e8cb4ef5731f5eb741f3f7b9af76
 _basever=$pkgver
-pkgver+=+kde+r9
+pkgver+=+kde+r8
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
