@@ -1,0 +1,11 @@
+pkgbase = dingtalk-sans
+	pkgdesc = 钉钉进步体 dingtalk jinbuti
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://page.dingtalk.com/wow/dingtalk/default/dingtalk/y-W5aF3_ZJwzulU0nceIl
+	arch = any
+	license = commercial
+	source = dingtalk-sans-1.0.0.zip::https://files.alicdn.com/tpsservice/0f4e697671849694f93f0df8ebddf0d2.zip
+	sha256sums = dc6e2685e1d7b72e2e010c14ac3b5f00822fb4ae03285b99383104c5fda997bb
+
+pkgname = ttf-dingtalk-sans
