@@ -35,6 +35,7 @@ build() {
 }
 
 package() {
-	make -C$_gitname DESTDIR="$pkgdir" install
+	cd $_gitname
+	make DESTDIR="$pkgdir" install
 	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
