@@ -6,7 +6,7 @@ build:
   stage: build
   image: stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
-    - paru -S --noconfirm shellspec-bin
+    - paru -Syu --noconfirm shellspec-bin
   script:
     - makepkg -s --noconfirm
   artifacts:
