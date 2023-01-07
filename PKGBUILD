@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays-git
-pkgver=0.90.5.r25.gbccbdc0
+pkgver=0.90.5.r29.gee3c1f0
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL3')
 depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm'
