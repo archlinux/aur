@@ -1,6 +1,6 @@
 pkgname=webcord
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
@@ -9,11 +9,11 @@ license=('MIT')
 makedepends=('npm' 'esbuild')
 options=('!strip' '!emptydirs')
 
-_emin=17
-_emax=22
+_evers=()
 optdepends=()
 
-for ((i = _emax; i >= _emin; i--)); do
+for ((i = 22; i >= 17; i--)); do
+    _evers+=("${i}")
     optdepends+=("electron${i}: runtime")
 done
 
@@ -65,7 +65,7 @@ package() {
 
     echo "#!/bin/sh
 
-for i in {${_emax}..${_emin}}; do
+for i in ${_evers[*]}; do
     cmd=\"electron\${i}\"
     if command -v \"\${cmd}\" > /dev/null; then
         echo \"Found Electron \${i}.\"
