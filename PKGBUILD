@@ -1,3 +1,4 @@
+# Maintainer: LordDemecrius83 <lorddemecrius83@proton.me>
 # Contributor: Colin Keenan <colinnkeenan at gmail dot com>
 
 # After installing this package (nautilus-data), you can get gnome-search-tool for Xfce without nautilus/gnome-desktop.
@@ -16,7 +17,7 @@
 # The advantage of gnome-search-tool-no-nautilus from AUR over rebuilding with abs is that upgrades will be easier.
 
 pkgname=nautilus-data
-pkgver=3.38.2
+pkgver=43.1
 pkgrel=1
 pkgdesc="Nautilus data files for gnome-search-tool"
 url="http://www.ubuntuupdates.org/package/core/trusty/main/base/nautilus-data"
@@ -25,9 +26,9 @@ license=('GPL')
 conflicts=('nautilus')
 install=${pkgname}.install
 
-source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_3.38.2-1ubuntu3_all.deb)
-md5sums=('539a2f0bb3e34b8093bce1b2e6f3e0c7')
+source=(http://security.ubuntu.com/ubuntu/pool/main/n/nautilus/nautilus-data_43.1-1ubuntu2_all.deb)
+md5sums=('8fe9cb343f45a4ff11b6edce38be80dd')
 
 package() {
-  tar xvf data.tar.xz -C "$pkgdir"
+  tar xvf data.tar.zst -C "$pkgdir"
 }
