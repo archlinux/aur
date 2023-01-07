@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 pkgname=oh-my-posh
 pkgver=12.35.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
@@ -22,8 +22,9 @@ build() {
 }
 package() {
     cd "$pkgname-$pkgver/src"
-    install -Dm 755 ./oh-my-posh -t "${pkgdir}/usr/bin/"
+    install -Dm 755 ./src "${pkgdir}/usr/bin/oh-my-posh"
     install -Dm 644 "../COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -d "${pkgdir}/usr/share/oh-my-posh/themes"
     install -m 644 ../themes/* -t "${pkgdir}/usr/share/oh-my-posh/themes"
 }
+
