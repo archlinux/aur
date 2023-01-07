@@ -2,7 +2,7 @@
 
 pkgname=firewalld-services-games
 pkgrel=1
-pkgver=1.0.0
+pkgver=1.1.0
 pkgdesc="Firewalld services for some games"
 url="https://github.com/NikolasK-source/Firewalld_Games"
 license=('MIT')
