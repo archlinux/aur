@@ -1,6 +1,6 @@
 pkgbase = python-nbtermix
 	pkgdesc = Fork of nbterm. Jupyter Notebooks in Your terminal.
-	pkgver = 0.1.2
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/mtatton/nbterm
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-nbtermix
 	makedepends = python-setuptools
 	depends = python
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/source/n/nbtermix/nbtermix-0.1.2.tar.gz
-	sha256sums = 5c0568311cecf0992e0c2f80fea028c969bf877181481fa040bea442449d13c2
+	source = https://files.pythonhosted.org/packages/source/n/nbtermix/nbtermix-0.1.5.tar.gz
+	sha256sums = 44643afc46bd5cc3bcf796b298827784e26e233affa5e2faebc83563b6ca34a6
 
 pkgname = python-nbtermix
 	depends = python
