@@ -10,7 +10,7 @@ pkgrel=2
 source=("nedots.rs-0.1.5.tar.gz::$url/archive/$pkgver.tar.gz")
 makedepends=("cargo")
 provides=("nedots")
-sha256sums=("ffef5dc141b61907a7878c1166ddb253cbbb894b24b100c1b55df5091f1f4768")
+sha256sums=("3b14aaf3ae8abbfcfb4c6336ad92c8f5164cda9bf94312446881a70d3f4e6862")
 
 cd_src() {
 	cd "nedots.rs-$pkgver" || return

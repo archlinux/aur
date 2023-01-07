@@ -8,6 +8,6 @@ pkgbase = nedots
 	makedepends = cargo
 	provides = nedots
 	source = nedots.rs-0.1.5.tar.gz::https://git.sr.ht/~nedia/nedots.rs/archive/0.1.6.tar.gz
-	sha256sums = ffef5dc141b61907a7878c1166ddb253cbbb894b24b100c1b55df5091f1f4768
+	sha256sums = 3b14aaf3ae8abbfcfb4c6336ad92c8f5164cda9bf94312446881a70d3f4e6862
 
 pkgname = nedots
