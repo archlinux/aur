@@ -135,7 +135,7 @@ _use_auto_optimization=${_use_auto_optimization-y}
 _disable_debug=${_disable_debug-}
 
 ## Enable zram/zswap ZSTD compression
-_zstd_compression=${_zstd_compression-y}
+_zstd_compression=${_zstd_compression-}
 
 ### Selecting the ZSTD kernel and modules compression level
 # ATTENTION - one of two predefined values should be selected!
@@ -200,7 +200,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=2
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -210,7 +210,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux hardenened BORE scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -1052,10 +1052,10 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('ee41f3c4f599b2f46f08aae428c9243db403e7292eb2c9f04ee34909b038d1ae'
+sha256sums=('8aa8f64fa60bb13381a9608d1fefbdd0555e2a70c40b2c7d0671b0d64aa4559e'
             'd4f3fc2581e338835a33983cca18bfb3225450a07c456c48c9b051c03236955a'
-            '32e77b3b71225c9f04df2d44c25f982773a8fff9927d26788366baab5e242e74'
-            'acdffe9b6d633fdff4bdccc97449350772c841c074f1f06dd2f6aa28af0e3c25'
+            '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
+            '6e7088fcbcda85fb0ebe48ca3426879e510b0a23a97d0c15c6bfa91204c279b4'
             '0241632f91c112dcdffbdc203a9245ee3234f9a8b4e5e2c2de45fd0d228840da'
             '564b08b5c076ad3b24ee2e975cac0630628581ce7c3b0eeaa40ce888136a00c6'
             '578b2f7b7926a4a75a63869c7808858f75e7bd570ffcefb1d788040185602c6c')
