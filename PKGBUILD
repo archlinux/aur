@@ -3,9 +3,9 @@
 _pkgbase='smiley-sans'
 pkgbase="${_pkgbase}-bin"
 pkgname=({otf,ttf,woff2}-${pkgbase})
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='得意黑 Smiley Sans'
+pkgdesc='一款在人文观感和几何特征中寻找平衡的中文黑体'
 url='https://github.com/atelier-anchor/smiley-sans'
 license=('OFL')
 arch=('any')
@@ -13,7 +13,7 @@ arch=('any')
 source=("${_pkgbase}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgbase}-v${pkgver}.zip"
         "LICENSE::${url}/raw/v${pkgver}/LICENSE")
 
-sha512sums=('4c1fac35d384f8169f3a810bf2df4e69577029c240eab1046f1daa8b95a761f809ba9e7d83dd129f5007bc86c5ca4e8894b969ac2e9e773e73aa751f39b5aa4a'
+sha512sums=('61bcc6d8957a6a7426c3a76968bea4fb4fb8a1da4dda4036c3c9533f8cc8120bfae879b51e73dc3b0399558b03709df5781fbac94deb16ed7d6a4a3e13dd837c'
             'f5d63f0427d68c9414779119477f1c0ca0c51d6fc7e349934a32d85b0aa15d63a1f56a313f9b41daec25ae63e482ad3f73fc45414b21d40e0e93addb11f47db6')
 
 _package() {
@@ -31,5 +31,3 @@ for _pkgname in "${pkgname[@]}"; do
     _package
   }"
 done
-
-# vim:set ts=2 sw=2 et:

@@ -1,26 +1,26 @@
 pkgbase = smiley-sans-bin
-	pkgdesc = 得意黑 Smiley Sans
-	pkgver = 1.1.0
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/atelier-anchor/smiley-sans
 	arch = any
 	license = OFL
-	source = smiley-sans-1.1.0.zip::https://github.com/atelier-anchor/smiley-sans/releases/download/v1.1.0/smiley-sans-v1.1.0.zip
-	source = LICENSE::https://github.com/atelier-anchor/smiley-sans/raw/v1.1.0/LICENSE
-	sha512sums = 4c1fac35d384f8169f3a810bf2df4e69577029c240eab1046f1daa8b95a761f809ba9e7d83dd129f5007bc86c5ca4e8894b969ac2e9e773e73aa751f39b5aa4a
+	source = smiley-sans-1.1.1.zip::https://github.com/atelier-anchor/smiley-sans/releases/download/v1.1.1/smiley-sans-v1.1.1.zip
+	source = LICENSE::https://github.com/atelier-anchor/smiley-sans/raw/v1.1.1/LICENSE
+	sha512sums = 61bcc6d8957a6a7426c3a76968bea4fb4fb8a1da4dda4036c3c9533f8cc8120bfae879b51e73dc3b0399558b03709df5781fbac94deb16ed7d6a4a3e13dd837c
 	sha512sums = f5d63f0427d68c9414779119477f1c0ca0c51d6fc7e349934a32d85b0aa15d63a1f56a313f9b41daec25ae63e482ad3f73fc45414b21d40e0e93addb11f47db6
 
 pkgname = otf-smiley-sans-bin
-	pkgdesc = 得意黑 Smiley Sans (otf)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (otf)
 	provides = otf-smiley-sans
 	conflicts = otf-smiley-sans
 
 pkgname = ttf-smiley-sans-bin
-	pkgdesc = 得意黑 Smiley Sans (ttf)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (ttf)
 	provides = ttf-smiley-sans
 	conflicts = ttf-smiley-sans
 
 pkgname = woff2-smiley-sans-bin
-	pkgdesc = 得意黑 Smiley Sans (woff2)
+	pkgdesc = 一款在人文观感和几何特征中寻找平衡的中文黑体 (woff2)
 	provides = woff2-smiley-sans
 	conflicts = woff2-smiley-sans
