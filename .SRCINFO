@@ -1,7 +1,7 @@
 pkgbase = ccloader-git
 	pkgdesc = Burn CC2530/CC2531/CC2540/CC2541 firmware using an Arduino
 	pkgver = r14.2ad8a4f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RedBearLab/CCLoader
 	arch = x86_64
 	license = custom:undecided
