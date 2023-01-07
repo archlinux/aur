@@ -21,16 +21,11 @@ _sourcedirectory="Moosync-$pkgver"
 build() {
     cd "$srcdir/$_sourcedirectory/"
 
-    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-    nvm install 18
-    nvm use 18
-
     # Remove electron from package.json
     sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
+
+    # Remove postinstall from package.json
+    sed -i -e 's/\"postinstall\":.*/\"postinstall\": \"patch-package\",/' package.json
 
     yarn install --ignore-engines || true
 
