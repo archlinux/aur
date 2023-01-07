@@ -3,7 +3,7 @@
 _pkgbase=ccloader
 pkgname=ccloader-git
 pkgver=r14.2ad8a4f
-pkgrel=2
+pkgrel=3
 pkgdesc='Burn CC2530/CC2531/CC2540/CC2541 firmware using an Arduino'
 arch=('x86_64')
 url='https://github.com/RedBearLab/CCLoader'
@@ -39,10 +39,10 @@ package() {
     "${srcdir}/${pkgname}/SourceCode/Linux/${_pkgbase}"
 
   echo >&2 'Packaging the Arduino sketch'
-  install -D -m 755 -t "${pkgdir}/usr/share/${pkgname}/Arduino/CCLoader" \
+  install -D -m 644 -t "${pkgdir}/usr/share/${pkgname}/Arduino/CCLoader" \
     "${srcdir}/${pkgname}/Arduino/CCLoader/CCLoader.ino"
 
   echo >&2 'Packaging README.md'
-  install -D -m 755 -t "${pkgdir}/usr/share/doc/${_pkgbase}" \
+  install -D -m 644 -t "${pkgdir}/usr/share/doc/${_pkgbase}" \
     "${srcdir}/${pkgname}/"{CCLoader.jpg,README.md}
 }
