@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks
 	pkgver = 3.0.0_571
-	pkgrel = 3
+	pkgrel = 4
 	url = https://im.qq.com/linuxqq/index.shtml
 	install = linuxqq.install
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = linuxqq-nt-bwrap
 	source = start.sh
 	source = config.json
 	source = xdg-open.sh
-	sha256sums = 277284dcf139bdc2e78a507cdbcff407199e9b958c83dd294503c16c999c0017
+	sha256sums = 215ae97927dcb25e95ed65a108b07eb889dcb974d4ebd8ed333a75a9ea58bee3
 	sha256sums = 82182e49c883e16c7ff38e4722c3950e2758b4342c51521147423026965196a9
 	sha256sums = a57a3c34943168d4fdb7d8ddec0c09097b997405b9cd88af205a80fa7cfd899a
 	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb
