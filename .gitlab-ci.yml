@@ -5,6 +5,8 @@ stages:
 build:
   stage: build
   image: stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    - paru -Syu --noconfirm
   script:
     - gpg --recv-key EBE41E90F6F12F6D
     - makepkg -s --noconfirm
