@@ -1,43 +1,44 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='Neural networks package for Torch7'
-pkgname='torch7-nn-git'
-pkgver=r1484.b56f0c0
+# Maintainer: éclairevoyant
+# Contributor: Adrián Pérez de Castro <aperez at igalia dot com>
+
+_pkgname=torch7-nn
+pkgname="$_pkgname-git"
+pkgver=r1839.8726825
 pkgrel=1
-makedepends=('cmake' 'git')
-depends=('torch7-git>=r819')
-conflicts=('torch7-nn')
-provides=('torch7-nn')
+pkgdesc='Neural networks package for Torch7'
 arch=('x86_64' 'i686')
 url='https://github.com/torch/nn'
-license=('BSD')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+license=('custom')
+depends=('torch7-git>=r819')
+makedepends=('cmake' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url")
+b2sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+pkgver() {
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
-	cd "${pkgname}"
+build() {
+	cd $_pkgname
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
-package () {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+package() {
+	cd $_pkgname
+	make DESTDIR="$pkgdir" install
 
 	# Move Lua C module
-	mkdir -p "${pkgdir}/usr/lib/lua/5.1"
-	mv "${pkgdir}/usr/lib/libTHNN.so" "${pkgdir}/usr/lib/lua/5.1/"
+	install -dm755 "$pkgdir/usr/lib/lua/5.1/"
+	mv "$pkgdir/usr/lib/libTHNN.so" "$pkgdir/usr/lib/lua/5.1/"
 
 	# Move pure Lua modules
-	mkdir -p "${pkgdir}/usr/share/lua/5.1"
-	mv "${pkgdir}/usr/lua/nn" "${pkgdir}/usr/share/lua/5.1/"
-	rm -rf "${pkgdir}/usr/lua"
+	install -dm755 "$pkgdir/usr/share/lua/5.1/"
+	mv "$pkgdir/usr/lua/nn" "${pkgdir}/usr/share/lua/5.1/"
+	rm -rf "$pkgdir/usr/lua"
+
+	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
