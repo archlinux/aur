@@ -11,16 +11,16 @@
 
 _qt_module=qtquickcontrols2
 pkgname=mingw-w64-qt5-quickcontrols2-static
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=9ff77702cc3649cbaf94046742d682d77cdea698
+_commit=56ce8233382a091a8476c831edd416b5f704ae4f
 _basever=$pkgver
-pkgver+=+kde+r5
+pkgver+=+kde+r7
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
