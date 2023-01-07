@@ -1,7 +1,7 @@
 pkgbase = python-matlabengine
 	pkgdesc = A module to call MATLAB from Python
 	pkgver = 9.13.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mathworks/matlab-engine-for-python
 	arch = x86_64
 	license = MIT

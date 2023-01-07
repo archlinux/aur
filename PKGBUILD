@@ -3,7 +3,7 @@
 _name=matlab-engine-for-python
 pkgname=python-matlabengine
 pkgver=9.13.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A module to call MATLAB from Python'
 arch=(x86_64)
 url='https://github.com/mathworks/matlab-engine-for-python'
@@ -15,6 +15,8 @@ b2sums=('a2ecd7369442933f16a2f1e1c27ab1aae4d050087b8446e2e48e1b0122740b285040f3c
 
 build() {
     cd $_name-$pkgver
+    _malabroot=$(matlab -nodisplay -nojvm -batch "matlabroot" | grep -Eo "/.*[^']")
+    export LD_LIBRARY_PATH=$_matlabroot/bin/glnxa64
     python -m build --wheel --no-isolation
 }
 
