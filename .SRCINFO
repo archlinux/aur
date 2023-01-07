@@ -5,7 +5,6 @@ pkgbase = jq.sh-git
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
 	arch = any
 	license = MPL2
-	makedepends = make
 	makedepends = git
 	makedepends = shellcheck
 	makedepends = shellspec
