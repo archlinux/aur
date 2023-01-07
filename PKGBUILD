@@ -6,7 +6,7 @@ _commit=f887fa45dfaeeddfe20c9835ae7ca3a0823b661b
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -23,8 +23,7 @@ url='https://electronjs.org/'
 # shellcheck disable=SC2034
 license=('MIT' 'custom')
 # shellcheck disable=SC2034
-depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
-         'snappy')
+depends=('c-ares' 'gtk3' 'libevent' 'nss')
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
@@ -74,26 +73,31 @@ sha256sums=('SKIP'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
             'e8ea8528ecb119de3380555c60ac8495ebdef502359fa2114c6c5c98f84698cd')
 
-_system_libs=('ffmpeg'
-              'flac'
-              'fontconfig'
-              'freetype'
-              'harfbuzz-ng'
-              'icu'
-              'libdrm'
-              'libevent'
-              'libjpeg'
-              'libpng'
-#              'libvpx'
-              'libwebp'
-              'libxml'
-              'libxslt'
-#              'openh264'
-              'opus'
-              're2'
-              'snappy'
-              'zlib'
-             )
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -gA _system_libs=(
+  [ffmpeg]=ffmpeg
+  [flac]=flac
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
+  [libdrm]=
+  [libjpeg]=libjpeg
+  [libpng]=libpng
+  #[libvpx]=libvpx
+  [libwebp]=libwebp
+  [libxml]=libxml2
+  [libxslt]=libxslt
+  [opus]=opus
+  [re2]=re2
+  [snappy]=snappy
+  [zlib]=minizip
+)
+_unwanted_bundled_libs=(
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+)
+depends+=(${_system_libs[@]})
 
 prepare() {
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
@@ -104,29 +108,31 @@ prepare() {
     sed -i "s|@ELECTRON_NAME@|Electron|" electron.desktop
   fi
 
-  export PATH="${PATH}:${srcdir:?}/depot_tools"
+cat >.gclient <<EOF
+solutions = [
+  {
+    "name": "src/electron",
+    "url": "file://${srcdir}/electron@${_commit}",
+    "deps_file": "DEPS",
+    "managed": False,
+    "custom_deps": {
+      "src": None,
+    },
+    "custom_vars": {},
+  },
+]
+EOF
+
+  export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
+  export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Fetching chromium..."
-  git clone --branch=${_chromiumver} --depth=1 \
-      https://chromium.googlesource.com/chromium/src.git
+  git clone -b ${_chromiumver} --depth=2 https://chromium.googlesource.com/chromium/src
 
-  echo "solutions = [
-  {
-    \"name\": \"src/electron\",
-    \"url\": \"file://${srcdir}/electron@${_commit}\",
-    \"deps_file\": \"DEPS\",
-    \"managed\": False,
-    \"custom_deps\": {
-      \"src\": None,
-    },
-    \"custom_vars\": {},
-  },
-]" > .gclient
-
-  python "${srcdir}/depot_tools/gclient.py" sync \
+  depot_tools/gclient.py sync -D \
+      --nohooks \
       --with_branch_heads \
-      --with_tags \
-      --nohooks
+      --with_tags
 
   (
     cd src/electron || exit
@@ -141,23 +147,15 @@ prepare() {
     --revision-id-only --header src/gpu/config/gpu_lists_version.h
   src/build/util/lastchange.py -m SKIA_COMMIT_HASH \
     -s src/third_party/skia --header src/skia/ext/skia_commit_hash.h
+  src/tools/update_pgo_profiles.py --target=linux update \
+    --gs-url-base=chromium-optimization-profiles/pgo_profiles
+  depot_tools/download_from_google_storage.py --no_resume --extract --no_auth \
+    --bucket chromium-nodejs -s src/third_party/node/node_modules.tar.gz.sha1
   # Create sysmlink to system clang-format
   ln -s /usr/bin/clang-format src/buildtools/linux64
   # Create sysmlink to system Node.js
   mkdir -p src/third_party/node/linux/node-linux-x64/bin
   ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
-  src/third_party/depot_tools/download_from_google_storage.py \
-    --no_resume --extract --no_auth --bucket chromium-nodejs \
-    -s src/third_party/node/node_modules.tar.gz.sha1
-  python src/tools/download_optimization_profile.py \
-    --newest_state=src/chrome/android/profiles/newest.txt \
-    --local_state=src/chrome/android/profiles/local.txt \
-    --output_name=src/chrome/android/profiles/afdo.prof \
-    --gs_url_base=chromeos-prebuilt/afdo-job/llvm
-  #vpython src/tools/update_pgo_profiles.py \
-  #  --target=linux \
-  #  update \
-  #  --gs-url-base=chromium-optimization-profiles/pgo_profiles
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
   cd src/electron || exit
@@ -190,24 +188,29 @@ prepare() {
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
+  # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
-      tools/generate_shim_headers/generate_shim_headers.py
-  for lib in $(printf "%s\n" "${_system_libs[@]}" | sed 's/^libjpeg$/&_turbo/'); do
-      third_party_dir="third_party/${lib}"
-      if [ ! -d "${third_party_dir}" ]; then
-        third_party_dir="base/${third_party_dir}"
-      fi
-      find "${third_party_dir}" -type f \
-          \! -path "${third_party_dir}/chromium/*" \
-          \! -path "${third_party_dir}/google/*" \
-          \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
-          \! -regex '.*\.\(gn\|gni\|isolate\)' \
-          -delete
+    tools/generate_shim_headers/generate_shim_headers.py
+  # Remove bundled libraries for which we will use the system copies; this
+  # *should* do what the remove_bundled_libraries.py script does, with the
+  # added benefit of not having to list all the remaining libraries
+  local _lib
+  for _lib in ${_unwanted_bundled_libs[@]}; do
+    third_party_dir="third_party/$_lib"
+    if [ ! -d "${third_party_dir}" ]; then
+      third_party_dir="base/${third_party_dir}"
+    fi
+    find "${third_party_dir}" -type f \
+        \! -path "${third_party_dir}/chromium/*" \
+        \! -path "${third_party_dir}/google/*" \
+        \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
+        \! -regex '.*\.\(gn\|gni\|isolate\)' \
+        -delete
   done
-  build/linux/unbundle/replace_gn_files.py \
-      --system-libraries \
-      "${_system_libs[@]}"
+
+  ./build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${!_system_libs[@]}"
 }
 
 build() {
@@ -257,7 +260,7 @@ build() {
     host_toolchain = "//build/toolchain/linux/unbundle:default"
     clang_use_chrome_plugins = false
     symbol_level = 0
-    chrome_pgo_phase = 0
+    chrome_pgo_phase = 2
     treat_warnings_as_errors = false
     rtc_use_pipewire = true
     link_pulseaudio = true
