@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
