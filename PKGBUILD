@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.7.71
+pkgver=0.7.72
 pkgrel=1
 pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='22db3304a454b2d289a9d5ea488fa3c3dec836f4'
+_commit='a0cffd77debf6caf8804a0fbb2d04fb9c54c13a6'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
   'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
@@ -78,7 +78,7 @@ prepare() {
   git config submodule.genconfig.url "$srcdir/github.com-mborgerson-genconfig"
   git config submodule.hw/xbox/nv2a/thirdparty/nv2a_vsh_cpu.url "$srcdir/github.com-abaire-nv2a_vsh_cpu"
 
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # generate license file
   python scripts/gen-license.py > XEMU_LICENSE
