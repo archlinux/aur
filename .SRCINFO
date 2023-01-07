@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-svg
 	pkgdesc = Classes for displaying the contents of SVG files (android)
-	pkgver = 6.4.1
+	pkgver = 6.4.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-svg
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.1/submodules/qtsvg-everywhere-src-6.4.1.tar.xz
-	sha256sums = 5e5345c5941567db883f9daf8ab25108c6f3a527453b1a13c62290849bce9ce5
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.2/submodules/qtsvg-everywhere-src-6.4.2.tar.xz
+	sha256sums = b746af3cb1793621d8ed7eae38d9ad5a15541dc2742031069f2ae3fe87590314
 
 pkgname = android-aarch64-qt6-svg
