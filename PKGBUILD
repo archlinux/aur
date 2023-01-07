@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A system utility package for Torch.'
 arch=('x86_64' 'i686')
 url='https://github.com/torch/sys'
-license=('custom')
+license=('BSD')
 depends=('torch7-git>=r819')
 makedepends=('cmake' 'git')
 provides=('torch7-sys')
@@ -39,5 +39,5 @@ package() {
 	mv "$pkgdir/usr/lua/sys" "$pkgdir/usr/share/lua/5.1/"
 	rm -rf "$pkgdir/usr/lua"
 
-	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
