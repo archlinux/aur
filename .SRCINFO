@@ -1,6 +1,6 @@
 pkgbase = prs
 	pkgdesc = Secure, fast & convenient password manager CLI using GPG and git to sync
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/timvisee/prs
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = prs
 	depends = libxkbcommon
 	depends = skim
 	optdepends = tomb: password store Tomb support
-	source = https://gitlab.com/timvisee/prs/-/archive/v0.3.5/prs-v0.3.5.tar.gz
-	sha512sums = 7263c139437ee6625921d10be893ccc341cfd4497a7e30bfb2188612af6a390d4b0c1876a0ba6cb5c3164dab6def0fea8f3fbd6ec27e77e91656b96d790313a9
+	source = https://gitlab.com/timvisee/prs/-/archive/v0.4.0/prs-v0.4.0.tar.gz
+	sha512sums = 4d9d4c82bf9daa1c2d585141592511aed5e0405496f865643ce1de1872f8a4bcf6ea140ef1b8722b0fef9c6b2dc7a50e7a4ec5988bacdd824f784d05934fef7d
 
 pkgname = prs
