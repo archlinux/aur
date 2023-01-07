@@ -1,0 +1,19 @@
+pkgbase = jq.sh-git
+	pkgdesc = jq-in-shell integration library
+	pkgver = 0.1.0.r0.g846ffdc
+	pkgrel = 1
+	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
+	arch = any
+	license = MPL2
+	makedepends = make
+	makedepends = git
+	makedepends = shellcheck
+	makedepends = shellspec
+	depends = sh
+	depends = jq
+	provides = jq.sh
+	conflicts = jq.sh
+	source = jq.sh::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git
+	sha256sums = SKIP
+
+pkgname = jq.sh-git

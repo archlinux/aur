@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/jq.sh/
+/*.tar.zst
