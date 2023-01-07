@@ -5,31 +5,38 @@ _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
 pkgver=2.39
-pkgrel=2
+pkgrel=3
+_commit=88ac930a725b8aac8284a2738f03b843f4343dd0
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('zlib' 'elfutils')
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
-          'SKIP')
+depends=('glibc' 'zlib' 'elfutils')
+makedepends=('git')
+source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
+sha256sums=('SKIP')
 
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
-build() {
-  cd binutils-$pkgver
+prepare() {
+		  mkdir -p binutils-build
+}
 
-  ./configure \
+build() {
+  cd binutils-build
+
+  "$srcdir"/binutils-gdb/configure \
    --target=$_target \
    --with-sysroot=/usr/$_target/sys-root \
    --prefix=/usr \
+	--enable-default-execstack=no \
    --enable-deterministic-archives \
    --enable-gold \
    --enable-install-libiberty \
+   --enable-jansson \
    --enable-ld=default \
-   --enable-lto \
+   --enable-new-dtags \
    --enable-plugins \
    --enable-relro \
    --enable-shared \
@@ -42,13 +49,13 @@ build() {
    --disable-werror \
    --with-debuginfod \
    --with-pic \
-   --with-system-zlib
+   --with-system-zlib \
 
   make
 }
 
 package() {
-  cd binutils-$pkgver
+  cd binutils-build
 
   make DESTDIR="$pkgdir" install
 
