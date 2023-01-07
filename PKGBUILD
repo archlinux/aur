@@ -3,7 +3,7 @@
 
 pkgname=zfsbootmenu-efi-bin
 _pkgname=zfsbootmenu
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="ZFS bootloader for root-on-ZFS systems - EFI binary"
 license=('MIT')
@@ -11,10 +11,10 @@ url="https://github.com/zbm-dev/${_pkgname}"
 arch=('x86_64')
 depends=('zfs')
 optdepends=('efibootmgr' 'refind' 'syslinux' 'grub')
-source=("${_pkgname}-release-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-release-vmlinuz-$CARCH-v${pkgver}.EFI"
-        "${_pkgname}-recovery-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-recovery-vmlinuz-$CARCH-v${pkgver}.EFI")
-sha256sums=('ce035bd5f2313b41cc7c6fcfe8f4b21293e6988bf391bbd0fd6e4b1256cb606c'
-            'e13244739e28eb041116e636734cb64d9fd2c6b66d118ca7275441251e839d65')
+source=("${_pkgname}-release-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-release-$CARCH-v${pkgver}-vmlinuz.EFI"
+        "${_pkgname}-recovery-vmlinuz-$CARCH.EFI::${url}/releases/download/v${pkgver}/${_pkgname}-recovery-$CARCH-v${pkgver}-vmlinuz.EFI")
+sha256sums=('df99e6acc312c5d388ec4b5a49438f71fc022c61bb031e54159236ae22ab2252'
+            '8d5245c6d4e568f1320902800cce2ede36fae09d353b72ef5ca3aa9b906d3eba')
 
 package() {
         efimounts=$(lsblk -rno parttypename,mountpoint | awk -e '/EFI\\x20\(FAT-12\/16\/32\)|EFI\\x20System/ {print $2}' | tr -s '\n')
