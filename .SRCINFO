@@ -1,6 +1,6 @@
 pkgbase = cryptographic-id-rs
 	pkgdesc = Attest the trustworthiness of a device against a human using asymmetric cryptography
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://gitlab.com/cryptographic_id/cryptographic-id-rs
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cryptographic-id-rs
 	depends = systemd
 	optdepends = age: encrypted keys with age
 	optdepends = kbd: change console-font for qr-codes
-	source = cryptographic-id-rs-0.1.3.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-rs/-/archive/v0.1.3/cryptographic-id-rs-v0.1.3.tar.gz
+	source = cryptographic-id-rs-0.1.4.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-rs/-/archive/v0.1.4/cryptographic-id-rs-v0.1.4.tar.gz
 	source = cryptographic-id-rs-proto-0.1.0.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v0.1.0/cryptographic-id-protocol-v0.1.0.tar.gz
-	sha256sums = 45b1502d64ddb5599935c26c9a8a68e664b2f23345c1ae0d94fdfd7be09e58ff
+	sha256sums = a78422da951dd9d9bd8891b8025bf8a6a237d10d7c72fb54d926e1510b0dee18
 	sha256sums = 526509cabc4ef6e015bcde754fbfbc5879c145e47cf74efc386d06f0921ecd22
 
 pkgname = cryptographic-id-rs
