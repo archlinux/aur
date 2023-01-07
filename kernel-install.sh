@@ -18,7 +18,7 @@ while read -r path; do
 		kernel_images+=("/$path")
 		;;
 	*)
-		kernel_images=(/usr/lib/modules/*/vmlinuz)
+		kernel_images+=(/usr/lib/modules/*/vmlinuz)
 		break
 		;;
 	esac
