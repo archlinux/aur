@@ -1,9 +1,10 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	makedepends = unzip
 	depends = gtk3
@@ -12,7 +13,9 @@ pkgbase = fluffychat-bin
 	optdepends = libolm: E2E Encryption support
 	provides = fluffychat
 	conflicts = fluffychat
-	source_x86_64 = fluffychat-v1.7.2_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.7.2/fluffychat-linux-x86.tar.gz
-	sha256sums_x86_64 = e604a1bddb46e639f632ef165898e121daa28ef4b862290846ccfd6dc2e1fe93
+	source_x86_64 = fluffychat-v1.8.0_x86_64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.8.0/fluffychat-linux-x86.tar.gz
+	sha256sums_x86_64 = 5220933195bd5807f02a0e71270b3ade6093f339f65723bc04ff6467a942c726
+	source_aarch64 = fluffychat-v1.8.0_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/1.8.0/fluffychat-linux-arm64.tar.gz
+	sha256sums_aarch64 = ff18eda6a82818f8b14be751c6257b70e83be878209189dd7cf651a61c1b4c39
 
 pkgname = fluffychat-bin
