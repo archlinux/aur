@@ -2,20 +2,20 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.30.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
-url="https://github.com/lunaryorn/mdcat"
+url="https://github.com/swsnr/mdcat"
 license=('MPL2')
 options=(!lto)
-depends=('gcc-libs')
+depends=('gcc-libs' 'openssl')
 makedepends=('asciidoctor'
              'cargo')
 optdepends=('less: for mdless'
             'librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('e4f96b9df490d1a1b11d8a7c84ef5636b242d3f3d5fe5fae1ab53847a80a7eba')
+sha256sums=('9776fddd6caa835a2b01a32bdab08a005855a2ce18b530da35ea95ddee30e0fb')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
