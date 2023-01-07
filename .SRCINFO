@@ -1,6 +1,6 @@
 pkgbase = python-desktop-entry-lib
 	pkgdesc = A library for working with .desktop files
-	pkgver = 2.0
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://gitlab.com/JakobDev/desktop-entry-lib
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-desktop-entry-lib
 	depends = python
 	depends = xdg-user-dirs
 	depends = desktop-file-utils
-	source = python-desktop-entry-lib-2.0.tar.gz::https://gitlab.com/JakobDev/desktop-entry-lib/-/archive/2.0/desktop-entry-lib-2.0.tar.gz
-	sha256sums = b97b3dbd6d5d4d7ca0c9e2e69fe9a8dd1c35ec6c465361e372a64e4ca4e7e71d
+	source = python-desktop-entry-lib-2.2.tar.gz::https://gitlab.com/JakobDev/desktop-entry-lib/-/archive/2.2/desktop-entry-lib-2.2.tar.gz
+	sha256sums = 441d26449b071ec53dce8b402729040efebd42a032c227e2334dc6b786929793
 
 pkgname = python-desktop-entry-lib
