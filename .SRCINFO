@@ -1,5 +1,5 @@
 pkgbase = kodi-nexus-git
-	pkgver = r61785.b7dda23265e
+	pkgver = r61791.fac12d4e0dd
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -72,12 +72,12 @@ pkgbase = kodi-nexus-git
 	source = libdvdnav-6.1.1-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.1.1-Next-Nexus-Alpha2-2.tar.gz
 	source = libdvdread-6.1.3-Next-Nexus-Alpha2-2.tar.gz::https://github.com/xbmc/libdvdread/archive/6.1.3-Next-Nexus-Alpha2-2.tar.gz
 	source = ffmpeg-4.4.1-Nexus-Alpha1.tar.gz::https://github.com/xbmc/FFmpeg/archive/4.4.1-Nexus-Alpha1.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/fmt-9.1.0.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/spdlog-1.10.0.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/flatbuffers-2.0.0.tar.gz
-	source = http://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.2.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/fmt-9.1.0.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/spdlog-1.10.0.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/crossguid-ca1bf4b810e2d188d04cb6286f957008ee1b7681.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/fstrcmp-0.7.D001.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/flatbuffers-2.0.0.tar.gz
+	source = https://mirrors.kodi.tv/build-deps/sources/libudfread-1.1.2.tar.gz
 	source = cheat-sse-build.patch
 	b2sums = SKIP
 	b2sums = 2f503d3ab767094958f7ec10b4ad11ffd02665deee571c8f3c739bef5fc7e2ff84babc5a3fdee638dc095f896b72fe3ce65e6b688674cb5f7b7b77190992688c
@@ -132,7 +132,7 @@ pkgname = kodi-nexus-git
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r61785.b7dda23265e
+	provides = kodi=r61791.fac12d4e0dd
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -145,7 +145,7 @@ pkgname = kodi-nexus-git-eventclients
 	pkgdesc = Kodi Event Clients (Nexus branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r61785.b7dda23265e
+	provides = kodi-eventclients=r61791.fac12d4e0dd
 	conflicts = kodi-eventclients
 
 pkgname = kodi-nexus-git-tools-texturepacker
@@ -154,11 +154,11 @@ pkgname = kodi-nexus-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r61785.b7dda23265e
+	provides = kodi-tools-texturepacker=r61791.fac12d4e0dd
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-nexus-git-dev
 	pkgdesc = Kodi dev files (Nexus branch)
 	depends = kodi-nexus-git
-	provides = kodi-nexus-dev=r61785.b7dda23265e
+	provides = kodi-nexus-dev=r61791.fac12d4e0dd
 	conflicts = kodi-nexus-dev
