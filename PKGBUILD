@@ -9,7 +9,7 @@
 
 _qt_module=qtspeech
 pkgname=mingw-w64-qt5-speech-static
-pkgver=5.15.7
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Qt module to make text to speech and speech recognition easy (mingw-w64)"
@@ -20,7 +20,7 @@ makedepends=('mingw-w64-gcc')
 #optdepends=('mingw-w64-flite: flite TTS backend' 'mingw-w64-speech-dispatcher: speech-dispatcher TTS backend')
 #makedepends=('mingw-w64-gcc' 'mingw-w64-flite' 'mingw-w64-speech-dispatcher')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=d32f4a479d38a11f547598004b975f4356424a16
+_commit=255845e2b2e605363762be25932d92fc10d32749
 _basever=$pkgver
 pkgver+=+kde+r1
 makedepends+=('git')
