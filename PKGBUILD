@@ -1,8 +1,8 @@
 # Maintainer: Felix Kauselmann <licorn at gmail dot com>
 pkgname=(yacreader yacreaderlibraryserver)
 pkgbase=yacreader
-pkgver=9.10.0
-_pkgext=2210304
+pkgver=9.11.0
+_pkgext=2301073
 pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection."
 arch=('i686' 'x86_64')
@@ -16,15 +16,8 @@ optdepends=(
 )
 conflicts=('yacreader-bin' 'yacreaderlibraryserver-standalone' 'yacreader-git')
 install='yacreader.install'
-source=( "https://github.com/YACReader/yacreader/releases/download/${pkgver}/yacreader-${pkgver}.${_pkgext}-src.tar.xz"
-               "translation.patch::https://github.com/YACReader/yacreader/commit/7ed8426caddee8b01a9aca54ac496401fa42d12f.patch")
-sha256sums=('37ffe008f00f03d4cfdecdad792241d7da009d98af293b7462ed1bd9639c0281'
-            'da8124c2d38c79ed9bdaf65167f74ceb782b068bba1e9ca64a2bddfa1285344b')
-
-prepare() {
-  cd $srcdir/$pkgbase-$pkgver.${_pkgext}/
-  patch --forward --strip=1 --input="${srcdir}/translation.patch"
-}
+source=( "https://github.com/YACReader/yacreader/releases/download/${pkgver}/yacreader-${pkgver}.${_pkgext}-src.tar.xz")
+sha256sums=('49f0481e1337fe34088d347e438b8778dfcd62dc585177c11506006d3d64c0f8')
 
 build() {
   cd $srcdir/$pkgbase-$pkgver.${_pkgext}/
