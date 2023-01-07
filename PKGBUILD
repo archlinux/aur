@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=3
+pkgrel=4
 pkgver=9.13.0.2049777
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
@@ -73,7 +73,7 @@ package() {
     --categories 'Development;Education;Science;Mathematics;IDE' \
     --mimetypes 'application/x-matlab-data;text/x-matlab' \
     --icon 'matlab' \
-    --exec 'matlab'
+    --exec 'matlab -desktop'
 
   msg2 "Installing desktop files..."
   install -Dm644 "$srcdir/matlab.desktop" \

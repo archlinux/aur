@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = 9.13.0.2049777
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.mathworks.com
 	arch = x86_64
 	license = custom
