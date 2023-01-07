@@ -1,4 +1,4 @@
-From 91b278a3d9d073c6d474be142e88ee75bbec5bdd Mon Sep 17 00:00:00 2001
+From a903fff188187e93c49724a797c257e4173fbf0f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 25 Sep 2016 21:44:42 +0200
 Subject: [PATCH] Fix linguist macro
@@ -38,5 +38,5 @@ index ab1534144..1106633d0 100644
              DEPENDS ${_abs_FILE} VERBATIM
          )
 -- 
-2.38.1
+2.39.0
 
