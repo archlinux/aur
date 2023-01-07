@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-uget-integration
+	pkgdesc = uGet Download Manager integration extension for Firefox.
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/ugetintegration/
+	arch = any
+	groups = firefox-addons
+	license = GPL3
+	depends = firefox
+	noextract = firefox-extension-uget-integration-2.1.3.zip
+	source = firefox-extension-uget-integration-2.1.3.zip::https://github.com/ugetdm/uget-extension/releases/download/v2.1.3/uget-integration-firefox.zip
+	sha512sums = 77a1983445cc9ed055cd0483d92f1041b0fd5a32c03579143ddc290472e6d6c9454475a1c091df12bd09a472f683de2751ccc64dff17615da6237eac4edfb32f
+
+pkgname = firefox-extension-uget-integration
