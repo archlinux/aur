@@ -14,16 +14,16 @@ depends=('luajit')
 makedepends=('cmake' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url")
+source=("$_pkgname::git+$url")
 b2sums=('SKIP')
 
 pkgver() {
-	cd $_gitname
+	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd $_gitname
+	cd $_pkgname
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLUADIR=/usr/share/lua/5.1 \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-	cd $_gitname
+	cd $_pkgname
 	make DESTDIR="$pkgdir" install
 	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
