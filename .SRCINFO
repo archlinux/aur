@@ -1,6 +1,6 @@
 pkgbase = smiley-sans-git
 	pkgdesc = 得意黑 Smiley Sans 开发版
-	pkgver = 1.1.0.r0.g331eaf9
+	pkgver = 1.1.1.r0.gb02c006
 	pkgrel = 1
 	url = https://github.com/atelier-anchor/smiley-sans
 	arch = any
