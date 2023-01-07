@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=cryptographic-id-rs
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 protocol_ver=0.1.0
 pkgdesc='Attest the trustworthiness of a device against a human using asymmetric cryptography'
@@ -21,7 +21,7 @@ source=(
   "${pkgname}-proto-${protocol_ver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v${protocol_ver}/cryptographic-id-protocol-v${protocol_ver}.tar.gz"
 )
 sha256sums=(
-  'a78422da951dd9d9bd8891b8025bf8a6a237d10d7c72fb54d926e1510b0dee18'
+  '4addef916a8c777da5200dcfe80eb2520a207796bb631a858889780e376e7db0'
   '526509cabc4ef6e015bcde754fbfbc5879c145e47cf74efc386d06f0921ecd22'
 )
 
@@ -49,7 +49,7 @@ package() {
   install -dm 755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/cryptographic_id"
   install -dm 755 "${pkgdir}/usr/lib/initcpio/install"
   install -dm 755 "${pkgdir}/usr/lib/systemd/system"
-  install -m 777 /dev/null "${pkgdir}/etc/cryptographic_id/initramfs/font"
+  install -m 600 /dev/null "${pkgdir}/etc/cryptographic_id/initramfs/font"
   install -Dm 755 usr/bin/* "${pkgdir}/usr/bin"
   install -Dm 644 usr/lib/cryptographic_id/* "${pkgdir}/usr/lib/cryptographic_id"
   install -Dm 755 target/release/cryptographic-id-rs "${pkgdir}/usr/lib/cryptographic_id"
