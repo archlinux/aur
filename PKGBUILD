@@ -5,7 +5,7 @@
 # See: https://gitlab.com/timvisee/prs/-/tree/master/pkg/aur/prs-git
 
 pkgname=prs-git
-pkgver=0.3.5.r0.gbb316c8
+pkgver=0.4.0.r0.gd8db08a
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync (git)"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
-_prs_cli_features=alias,clipboard,notify,backend-gpgme,select-skim-bin,tomb
+_prs_cli_features=alias,clipboard,notify,backend-gpgme,select-skim-bin,tomb,totp
 
 pkgver() {
     cd "${pkgname%-git}"
