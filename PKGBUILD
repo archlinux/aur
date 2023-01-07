@@ -13,16 +13,16 @@ license=('custom')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git')
-source=("git+$url")
+source=("$_pkgname::git+$url")
 b2sums=('SKIP')
 
 pkgver() {
-	cd $_gitname
+	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd $_gitname
+	cd $_pkgname
 	for filename in *.lua; do
 		install -Dm644 "$filename" "$pkgdir/usr/share/lua/5.1/cwrap/$filename"
 	done
