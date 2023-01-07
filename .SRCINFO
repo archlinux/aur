@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-serialport-static
 	pkgdesc = Provides access to hardware and virtual serial ports (mingw-w64)
-	pkgver = 5.15.7
+	pkgver = 5.15.8
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt5-serialport-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtserialport#commit=966cf2a2077a8470715894363ad46ea7df0665fa
+	source = git+https://invent.kde.org/qt/qt/qtserialport#commit=e2851096dc6f6a7cfa635d69ea950b382e3658ab
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-serialport-static
