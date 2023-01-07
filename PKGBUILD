@@ -2,7 +2,7 @@
 
 _base=QXlsx
 pkgname=${_base,,}
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Excel file(*.xlsx) reader/writer library using Qt 5 or 6"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('qt6-base')
 makedepends=('cmake' 'ninja')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e6c3dd8822f2a8ab8bcd1a7434db7b202291e3d8de407e4629bdfc1afef507b57da4bc4a715d57b8d75915ce4b623189269083824c35d8e02d49d3e8909cceee')
+sha512sums=('5ec63c210b12c037acd9f3cc4d351b9bd488add65872a27cca536117349ac2c2501649cb7c2f35e1ee95289e98bf9e9fea6554aef1379deafb50c5016ed21fe5')
 
 build() {
   cmake \
