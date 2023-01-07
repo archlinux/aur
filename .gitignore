@@ -1,0 +1,12 @@
+# Any
+*
+
+# self
+!/.gitignore
+
+# AUR required files
+!/PKGBUILD
+!/.SRCINFO
+
+# Source files
+!/config.json

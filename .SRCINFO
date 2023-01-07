@@ -1,0 +1,20 @@
+pkgbase = apx-git
+	pkgdesc = Vanilla OS package manager
+	pkgver = 1.4.0.r13.gd6805ba
+	pkgrel = 1
+	url = https://github.com/Vanilla-OS/apx
+	arch = x86_64
+	license = GPL3
+	makedepends = go>=1.17
+	depends = pacman>5
+	depends = git
+	depends = distrobox
+	provides = apx
+	conflicts = apx
+	options = !lto
+	source = apx::git+https://github.com/Vanilla-OS/apx.git#branch=main
+	source = config.json
+	sha256sums = SKIP
+	sha256sums = 972073c7a632d624091ab4b1f88b761ac3309ee137bef53de33e543154502e71
+
+pkgname = apx-git
