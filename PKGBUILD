@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
@@ -11,7 +11,7 @@ depends=(ruby-async-http ruby-bake ruby-build-files ruby-markly ruby-rugged)
 checkdepends=(ruby-rspec ruby-bake-test git)
 options=(!emptydirs)
 source=(https://github.com/ioquatix/bake-modernize/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('98fc54014bd5ab8b00b9c2f0d65d8dedb4f9e2438c8d0b42920be365e3644396')
+sha256sums=('bf7faa0d3fab749a859d4084cb7fced7829d17fc05126f51ca40437d095955ca')
 
 prepare() {
   cd bake-modernize-$pkgver
