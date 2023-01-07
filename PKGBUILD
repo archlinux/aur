@@ -1,43 +1,42 @@
-# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgdesc='A system utility package for Torch.'
-pkgname='torch7-sys-git'
-pkgver=1.1.0.r12.gcadd701
+
+_pkgname=torch7-sys
+pkgname="$_pkgname-git"
+pkgver=1.1.0.r25.f073f05
 pkgrel=1
-makedepends=('cmake' 'git')
-depends=('torch7-git>=r819')
-conflicts=('torch7-sys')
-provides=('torch7-sys')
+pkgdesc='A system utility package for Torch.'
 arch=('x86_64' 'i686')
 url='https://github.com/torch/sys'
-license=('BSD')
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+license=('custom')
+depends=('torch7-git>=r819')
+makedepends=('cmake' 'git')
+provides=('torch7-sys')
+conflicts=('torch7-sys')
+source=("$_pkgname::git+$url")
+b2sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+pkgver() {
+	cd $_pkgname
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
-build () {
-	cd "${pkgname}"
+build() {
+	cd $_pkgname
 	cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
 	make
 }
 
-package () {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+package() {
+	cd $_pkgname
+	make DESTDIR="$pkgdir" install
 
 	# Move Lua C module
-	mkdir -p "${pkgdir}/usr/lib/lua/5.1"
-	mv "${pkgdir}/usr/lib/libsys.so" "${pkgdir}/usr/lib/lua/5.1/"
+	install -dm755 "$pkgdir/usr/lib/lua/5.1/"
+	mv "$pkgdir/usr/lib/libsys.so" "$pkgdir/usr/lib/lua/5.1/"
 
 	# Move pure Lua modules
-	mkdir -p "${pkgdir}/usr/share/lua/5.1"
-	mv "${pkgdir}/usr/lua/sys" "${pkgdir}/usr/share/lua/5.1/"
-	rm -rf "${pkgdir}/usr/lua"
+	install -dm755 "$pkgdir/usr/share/lua/5.1/"
+	mv "$pkgdir/usr/lua/sys" "$pkgdir/usr/share/lua/5.1/"
+	rm -rf "$pkgdir/usr/lua"
+
+	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
