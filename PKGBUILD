@@ -6,7 +6,7 @@ pkgbase=python-glymur
 _pyname=Glymur
 pkgname=('python-glymur')
 #'python-glymur-doc')
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -35,7 +35,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.10.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.11.rst"
 #       "https://raw.githubusercontent.com/quintusdias/glymur/master/docs/source/whatsnew/0.12.rst")
-md5sums=('986d237a2154ed946b5e5fe0b01e6c87')
+md5sums=('9ca8f34dd0d2e9ca49c546c43100426c')
 #        'SKIP'
 #        'SKIP'
 #        'SKIP'
