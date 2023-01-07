@@ -8,7 +8,7 @@ pkgbase = torch7-cwrap-git
 	makedepends = git
 	provides = torch7-cwrap
 	conflicts = torch7-cwrap
-	source = git+https://github.com/torch/cwrap
+	source = torch7-cwrap::git+https://github.com/torch/cwrap
 	b2sums = SKIP
 
 pkgname = torch7-cwrap-git
