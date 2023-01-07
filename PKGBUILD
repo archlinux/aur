@@ -9,7 +9,7 @@ pkgdesc='File name manipulation module for Torch7'
 arch=('x86_64' 'i686')
 _gitname=paths
 url="https://github.com/torch/$_gitname"
-license=('BSD')
+license=('custom')
 depends=('luajit')
 makedepends=('cmake' 'git')
 provides=("$_pkgname")
@@ -17,12 +17,12 @@ conflicts=("$_pkgname")
 source=("git+$url")
 b2sums=('SKIP')
 
-pkgver () {
+pkgver() {
 	cd $_gitname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build () {
+build() {
 	cd $_gitname
 	cmake . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -34,6 +34,7 @@ build () {
 	make
 }
 
-package () {
+package() {
 	make -C$_gitname DESTDIR="$pkgdir" install
+	install -Dm644 COPYRIGHT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
