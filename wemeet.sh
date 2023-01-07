@@ -18,7 +18,6 @@ if [ -f /usr/bin/bwrap ]; then
     mkdir -p "$WEMEET_APP_DIR"
     exec bwrap \
         --new-session \
-        --die-with-parent \
         --unshare-user-try --unshare-pid --unshare-uts --unshare-cgroup-try \
         --ro-bind / / \
         --dev-bind /dev /dev \
