@@ -9,7 +9,7 @@ pkgname=(
     lib32-gst-plugins-bad
 )
 pkgver=1.20.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -66,10 +66,20 @@ prepare() {
   git apply -3 ../0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 }
 
+_fix_pkgconf() {
+  if $PKG_CONFIG --variable=libexecdir "$1" | grep -q /usr/libexec; then
+    sed 's@/libexec@/lib32@' "/usr/lib32/pkgconfig/$1.pc" > "$srcdir/pc/$1.pc"
+  fi
+}
+
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
+  export PKG_CONFIG_PATH="$srcdir/pc"
+  mkdir -p pc
+  _fix_pkgconf gstreamer-1.0
+  _fix_pkgconf gstreamer-base-1.0
 
   local meson_options=(
     --libdir=lib32
