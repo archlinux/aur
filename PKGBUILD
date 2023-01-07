@@ -3,7 +3,7 @@
 _name=blink
 _pkgname=blink-qt
 pkgname=blink-git
-pkgver=5.3.0.r1473.cd25488
+pkgver=5.5.1.r1544.aa2432b
 pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
@@ -12,17 +12,24 @@ license=('GPL-3+')
 depends=(
   'icu'
   'libvncserver'
+  'python-application'
+  'python-eventlib'
   'python-gevent'
   'python-gmpy2'
   'python-google-api-python-client'
+  'python-lxml'
   'python-oauth2client'
   'python-pgpy'
   'python-pyopenssl'
-  'python-pyqt5'
+#  'python-pyqt5' currently python-pyqt5-webkit provides python-pyqt5
+  'python-pyqt5-webkit'
+  'python-requests'
   'python-service-identity'
   'python-sipsimple'
   'python-formencode'
   'python-sqlobject'
+  'python-twisted'
+  'python-zope-interface'
   'qt5-svg'
   'qt5-webkit'
   )
