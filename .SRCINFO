@@ -1,6 +1,6 @@
 pkgbase = zellij-selector-git
 	pkgdesc = Select zellij session
-	pkgver = 1.2.2.r3.gaf88c92
+	pkgver = 2.1.0.r3.g5126436
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zellij-selector-git
 	depends = sh
 	depends = libnewt
 	depends = zellij
-	depends = jq
+	depends = jq.sh
 	optdepends = fish: Option to option fish shell
 	optdepends = zsh: Option to open zsh shell
 	optdepends = bash: Option to open bash shell
