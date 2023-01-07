@@ -1,0 +1,16 @@
+pkgbase = libtiff5
+	pkgdesc = Library for manipulation of TIFF images
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = http://www.simplesystems.org/libtiff
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = gcc-libs
+	depends = libjpeg-turbo
+	depends = zlib
+	depends = zstd
+	source = https://download.osgeo.org/libtiff/tiff-4.4.0.tar.gz
+	sha256sums = 917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed
+
+pkgname = libtiff5
