@@ -9,7 +9,7 @@ url="https://shellspec.info"
 license=('MIT')
 arch=('any')
 depends=('sh')
-makedepends=()
+makedepends=('git')
 source=("shellspec::git+https://github.com/shellspec/shellspec.git#tag=$pkgver")
 sha256sums=('SKIP')
 

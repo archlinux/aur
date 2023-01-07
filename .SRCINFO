@@ -5,6 +5,7 @@ pkgbase = shellspec
 	url = https://shellspec.info
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = sh
 	source = shellspec::git+https://github.com/shellspec/shellspec.git#tag=0.28.1
 	sha256sums = SKIP
