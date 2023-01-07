@@ -1,6 +1,55 @@
 selectolax Changelog
 ====================
 
+Version 0.3.12
+-------------
+
+Released
+
+- Update `lexbor`
+- Add Python 3.11 wheels
+
+
+Version 0.3.11
+-------------
+
+Released
+
+- Fix out-of-bounds bug for ``merge_text_nodes`` method.
+
+
+Version 0.3.10
+--------------
+
+Released
+
+This release does not contain any changes.
+Due to a typo in the version number (`#70`_), we need to make a new release.
+
+.. _#70: https://github.com/rushter/selectolax/issues/70
+
+Version 0.3.9
+-------------
+
+Released
+
+- Remove trailing separator when using ``text(deep=True, separator='x')``.
+- Add a new ``merge_text_nodes`` method for Modest backend.
+
+Version 0.3.8
+-------------
+
+Released
+
+- Fix incorrect text handling when using ``text(deep=True)`` on a text node.
+
+Version 0.3.7
+-------------
+
+Released
+
+- Fix return type of HTMLParser.tags
+
 Version 0.3.6
 -------------
 
