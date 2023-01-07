@@ -34,13 +34,6 @@ for o; do
 done
 
 for kernel_image in "${kernel_images[@]}"; do
-	if ((add)); then
-		# skip kernels not currently owned by pacman
-		! pacman -Qqo "$kernel_image" 1>/dev/null 2>/dev/null && continue
-	else
-		# skip kernels never owned by pacman
-		[[ ! -f "${kernel_image%/vmlinuz}/pkgbase" ]] && continue
-	fi
 	echo +kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image"
 	kernel-install "$@" "$(extract_kernel_version "$kernel_image")" "$kernel_image" || true
 done
