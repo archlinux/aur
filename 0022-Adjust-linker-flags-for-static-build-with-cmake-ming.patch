@@ -1,4 +1,4 @@
-From 76e511cfc2f94b1377506ab23c01eb054b57e0fd Mon Sep 17 00:00:00 2001
+From 252cb205e9069c6ee3a0f01625fe121e81a16456 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
 Subject: [PATCH 22/32] Adjust linker flags for static build with
@@ -27,5 +27,5 @@ index 9da1361c95..5e802dea4c 100644
 +set_target_properties(${IMPORTED_TARGET_NAME} PROPERTIES \"INTERFACE_LINK_LIBRARIES\" \"$<${_isExe}:-static;ws2_32>\")
 +unset(_isExe)
 -- 
-2.38.1
+2.39.0
 

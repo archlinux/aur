@@ -1,4 +1,4 @@
-From 27076c6cd038453d236179c4b9ae98fb0c36c6b5 Mon Sep 17 00:00:00 2001
+From a3e83b9f0720cce1ca8adba22bcedad41364d612 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
 Subject: [PATCH 07/32] Fix linking against shared/static libpng
@@ -26,5 +26,5 @@ index 12c95742d2..e0043542ec 100644
              ],
              "use": [
 -- 
-2.38.1
+2.39.0
 
