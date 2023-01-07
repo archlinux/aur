@@ -1,3 +1,4 @@
+# Maintainer: GI_Jack - GI_Jack@hackermail.com
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
