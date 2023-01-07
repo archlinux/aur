@@ -1,20 +1,29 @@
 pkgbase = python-sphinx-astropy
 	pkgdesc = Sphinx extensions and configuration specific to the Astropy project
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/astropy/sphinx-astropy
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-astropy-sphinx-theme
+	checkdepends = python-numpydoc
+	checkdepends = python-sphinxcontrib.jquery
+	checkdepends = python-sphinx-automodapi
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.8.0.tar.gz
+	md5sums = 1080a54c73c327fe6511764110b09508
+
+pkgname = python-sphinx-astropy
+	depends = python-packaging
 	depends = python-sphinx>=1.7
 	depends = python-astropy-sphinx-theme
 	depends = python-sphinx-automodapi
 	depends = python-sphinx-gallery
 	depends = python-numpydoc
+	depends = python-sphinxcontrib.jquery
 	depends = python-pillow
-	depends = python-pytest-doctestplus>=0.11.0
-	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.7.0.tar.gz
-	md5sums = a5e01881d8f9faef1231f7e0c7884c53
-
-pkgname = python-sphinx-astropy
+	depends = python-pytest-doctestplus>=0.11
