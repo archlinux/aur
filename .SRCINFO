@@ -1,9 +1,11 @@
 pkgbase = greetd-artix-openrc
 	pkgdesc = OpenRC init scripts for greetd
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
+	depends = greetd
+	depends = openrc
 	backup = etc/init.d/greetd
 	backup = etc/conf.d/greetd
 	source = greetd.initd

@@ -2,7 +2,7 @@
 
 pkgname=greetd-artix-openrc
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRC init scripts for greetd"
 arch=('any')
 license=(GPL3)
@@ -11,7 +11,7 @@ source=("greetd.initd"
 sha256sums=('a599f719a445eee3b9f3f38962e9ae706b3ef0986affbca95f025dd98095bbd8'
             'aeed4de39fdb471e0ad8a7f1471232e97925447213292fe4c57317aab6cf035a')
 
-requires=('greetd' 'openrc')
+depends=('greetd' 'openrc')
 
 backup=(
     'etc/init.d/greetd'
