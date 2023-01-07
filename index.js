@@ -7,6 +7,7 @@ app.whenReady().then(() => {
 		backgroundColor: "#161512",
 		webPreferences: {
 			preload: path.join(app.getAppPath(), "preload.js"),
+			sandbox: false,
 		},
 	});
 	mainWindow.loadFile("www/index.html");
