@@ -3,12 +3,13 @@
 # Contributor: Hugo Posnic <huluti@manjaro.org>
 
 pkgname=archlinux-hello
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A tool providing access to documentation and support for new Arch Linux users."
 url="https://github.com/KoraggKnightWolf/archlinux-hello"
 arch=('any')
 license=('GPL')
+provides=('archlinux-hello')
 depends=('gtk3' 'python-gobject')
 makedepends=('git')
 #optdepends=('calamares: universal installer framework')
