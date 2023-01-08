@@ -3,7 +3,7 @@
 # Contributor: Daniel Plank <tyrolyean@semi-professional.net>
 
 pkgname=freerouting
-pkgver=1.6.2
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Advanced PCB autorouter"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('jdk17-openjdk>=17' git)
 optdepends=('kicad: for use with PCB editor')
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "freerouting.sh")
-sha256sums=('91af882b6764de69a2eeb0e4711836fe7ac3dc41a31e057134577cc9697dd29a'
+sha256sums=('b05a54e907ef1cb82b749c262727e2ab2a1ad8d20f5e6b91d0af4bcf4e903fe7'
             '8144ced213d127ef0d16abc787055bc3dd646db66ddee762ae9ba02f55bb3f73')
 
 build() {
