@@ -16,7 +16,7 @@ license=('GPL2')
 depends=('autoconf' 'automake' 'gnome-common' 'gconf>=2.0' 'gnome-icon-theme' 'gstreamer>=1.0' 'libnotify>=0.4.1' 'libunique>=1.0' 'libappindicator-gtk3')
 makedepends=('pkgconfig' 'intltool')
 optdepends=('gnome-control-center')
-install=$pkgname.INSTALL
+install=$pkgname.install
 source=(https://gitea.artixlinux.org/linuxer/alarm-clock/archive/${pkgver}.tar.gz)
 sha512sums=('SKIP')
 
