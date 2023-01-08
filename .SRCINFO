@@ -1,6 +1,6 @@
 pkgbase = rlpcli
 	pkgdesc = CLI helper to get paswords and site settings directly from a LessPass server
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ogarcia/rlpcli
 	arch = arm
@@ -12,8 +12,8 @@ pkgbase = rlpcli
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	depends = openssl
-	source = rlpcli-0.2.0.tar.gz::https://github.com/ogarcia/rlpcli/archive/0.2.0.tar.gz
-	b2sums = e79cbc1e245d395ebb06c90556a9dae366bd0c91b8020abc27fe18c3382e43bb168a9d474f32fe959a09bf0798c0f598473f72d43e6f8ab0efec7c450c656feb
+	options = !lto
+	source = rlpcli-0.3.0.tar.gz::https://github.com/ogarcia/rlpcli/archive/0.3.0.tar.gz
+	b2sums = 99abe4d9d15623ef5f53d4f4e5432a3964705f614e2610e61e22a4f751da6f05ef25d97f827b7020fa6dda2666b70f94a4471bba83f7e1202a5f4ca2415c61e9
 
 pkgname = rlpcli
