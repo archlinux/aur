@@ -1,7 +1,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=pvc-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 epoch=
 pkgdesc="command line tool to change version of aur packages"
