@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 6.1.4.lqx2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-lqx
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 6ed2a73c2699d0810e54753715635736fc370288ad5ce95c594f2379959b0e418665cd71bc512a0273fe226fe90074d8b10d14c209080a6466498417a4fdda68
 	sha512sums = SKIP
-	sha512sums = 50da5eb93cc01d631cb4a68e23de1d61488973e27e5b377f9c98a249554becf8203c65815d475ee6b0884c6f7dcc1282e40561f7e1b1fe89b7ab7f6652cc5e88
+	sha512sums = aeeae187b2b74b13c9945af547d08365eca1be911bdb38cbaa562a425ba8dc4f1beb00603fb88a69ee9c6aad064d705e4fa8577f1c6357a39ef6b09b46670488
 
 pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
