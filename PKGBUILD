@@ -3,12 +3,11 @@
 pkgname=polypane
 _pkgname=Polypane
 pkgver=12.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for building responsive websites and apps."
 arch=('x86_64' 'i686')
 url="https://polypane.app"
 license=('https://polypane.app/legal/')
-# Will always fetch latest, so checksum will change.
 sha256sums=('e8735b0917df43c1f020224435bf66b29770a2666e02b816af9260365e77d080')
 makedepends=('p7zip' 'curl' 'jq')
 noextract=("$_pkgname-${pkgver}.AppImage")
@@ -16,10 +15,6 @@ options=('!strip')
 
 source=(${_pkgname}-${pkgver}.AppImage::https://github.com/firstversionist/polypane/releases/download/v${pkgver}/polypane-${pkgver}.AppImage)
 
-
-pkgver() {
-  curl https://api.github.com/repos/firstversionist/polypane/releases/latest | jq -r '.tag_name' | cut -c 2-
-}
 
 prepare() {
     cd "${srcdir}"
