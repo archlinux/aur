@@ -1,0 +1,12 @@
+pkgbase = gskit
+	pkgdesc = C interface to the Sony Playstation® 2 videogame system Graphics Synthesizer.
+	pkgver = v1.3.2
+	pkgrel = 1
+	url = https://github.com/ps2dev/gskit
+	arch = x86_64
+	license = BSD
+	makedepends = ps2-toolchain
+	source = gskit::git+https://github.com/ps2dev/gskit#commit=32c5f7c39b8353de9790b94486385dfc08d0409d
+	sha256sums = SKIP
+
+pkgname = gskit
