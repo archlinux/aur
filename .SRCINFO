@@ -1,7 +1,7 @@
 pkgbase = r-toster
 	pkgdesc = Two One-Sided Tests (TOST) Equivalence Testing
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=TOSTER
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = r-toster
 	depends = r-ggdist
 	depends = r-ggplot2
 	depends = r-jmvcore
+	depends = r-r6
 	depends = r-tidyr
 	optdepends = r-afex
 	optdepends = r-broom
