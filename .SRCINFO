@@ -1,6 +1,6 @@
 pkgbase = polypane
 	pkgdesc = Browser for building responsive websites and apps.
-	pkgver = 11.0.0
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = https://polypane.app
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = polypane
 	makedepends = p7zip
 	makedepends = curl
 	makedepends = jq
-	noextract = Polypane-11.0.0.AppImage
+	noextract = Polypane-12.0.1.AppImage
 	options = !strip
-	source = Polypane-11.0.0.AppImage::https://github.com/firstversionist/polypane/releases/download/v11.0.0/polypane-11.0.0.AppImage
-	sha256sums = SKIP
+	source = Polypane-12.0.1.AppImage::https://github.com/firstversionist/polypane/releases/download/v12.0.1/polypane-12.0.1.AppImage
+	sha256sums = e8735b0917df43c1f020224435bf66b29770a2666e02b816af9260365e77d080
 
 pkgname = polypane
