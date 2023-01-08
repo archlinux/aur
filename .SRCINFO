@@ -1,0 +1,20 @@
+pkgbase = python-picotool-git
+	pkgdesc = Tools and Python libraries for manipulating Pico-8 game files.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/dansanderson/picotool
+	arch = any
+	license = MIT
+	checkdepends = flake8
+	checkdepends = mypy
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-pypng
+	provides = python-picotool
+	conflicts = python-picotool
+	source = git+https://github.com/dansanderson/picotool.git
+	sha256sums = SKIP
+
+pkgname = python-picotool-git
