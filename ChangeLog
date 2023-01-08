@@ -555,3 +555,20 @@ Fixes:
 - We fixed a problem that was causing the wrong time to be displayed when selecting your available slots
 - We fixed an issue that could cause calendar events to become unresponsive
 - We fixed an issue that occurred when setting the time of an event in other time zones
+
+=== Morgen 2.6.4
+New Features:
+- Deep links for Things 3, Evernote, Obsidian, Todoist, and other tools are now recognized and clickable in the event and task description.
+- You can now choose to automatically dim down past events. This makes it easier to distinguish what is coming next in your agenda from what's already happened. Dim past events using the toggle in the calendar view dropdown menu.
+- Choose to apply automatic theme switching based on your system settings. That means switching between light and dark mode can now align with the rest of your system. To enable this, go to Preferences > General > Theme.
+- Morgen will now use your system default font. This reduces eye fatigue when working across different apps.
+- Events marked as free are now transparent, easily distinguishing them from events marked as busy.
+
+Improvements:
+- We've made big improvements to event creation and rendering. Creating events is way smoother and you'll notice that when navigating across weeks and months, events appear quickly without delay.
+- Morgen now launches 2X faster. We're focused on improving Morgen's speed such that each interaction will take less than 100ms.
+ 
+Fixes:
+- We fixed a major issue that caused the synchronization of Outlook calendars to fail with events created by Microsoft Bookings.
+- Avoid scrolling the calendar when using Space as a shortcut to toggle the sidebar.
+We fixed a layout issue on tasks with priority on the Month view.
