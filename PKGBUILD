@@ -60,9 +60,7 @@ build() {
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISABLE_ADVANCE_SIMD=OFF \
-		-DBUILD_TESTING=OFF \
 		-DLIBRETRO=ON \
-		-DWITH_SYSTEM_ZLIB=ON \
 		-DUSE_LTO=OFF \
 		-Wno-dev
 	cmake --build 'build'
