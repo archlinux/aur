@@ -1,7 +1,7 @@
 pkgbase = r-rnexml
 	pkgdesc = Semantically Rich I/O for the 'NeXML' Format
 	pkgver = 2.4.9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RNeXML
 	arch = any
 	license = BSD
@@ -23,6 +23,7 @@ pkgbase = r-rnexml
 	optdepends = r-knitcitations
 	optdepends = r-knitr
 	optdepends = r-phytools
+	optdepends = r-progress
 	optdepends = r-rdflib
 	optdepends = r-rfigshare
 	optdepends = r-rmarkdown
