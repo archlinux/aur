@@ -4,7 +4,7 @@ _pkgname=condformat
 _pkgver=0.10.0
 pkgname=r-${_pkgname,,}
 pkgver=0.10.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Conditional Formatting in Data Frames'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,6 +29,7 @@ optdepends=(
   r-promises
   r-shiny
   r-testthat
+  r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('26cfee9646af7d1ff1dbcf667359467133cef249d411b8247933f5f2197cdbc7')
