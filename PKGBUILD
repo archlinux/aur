@@ -1,6 +1,6 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=steam-boilr-gui
-pkgver=1.7.6
+pkgver=1.7.21
 pkgrel=1
 _tag="v.${pkgver}"
 _ver="v.${pkgver}"
@@ -24,7 +24,7 @@ provides=('boilr-gui')
 source=("https://github.com/PhilipK/BoilR/archive/refs/tags/${_tag}.tar.gz"
         "boilr.png"
         "boilr.desktop")
-sha256sums=('188924577f36129e739697326f92d8ccc18cbd900761650d532681ab364d77b0'
+sha256sums=('b4108b60f80d55e826b96f2fbee34b2697ce6b5eab26c58608d5668be8d7f5f7'
             'baab109c6311f05ddbf647aa384b42098db9308c27cb50537f99bb341930387f'
             'c8e71371c9dc39db087e79d5a32df1ee0f4dd2cf5d069e38b491c3b9812d8424')
 
