@@ -1,6 +1,6 @@
 pkgbase = overlayaz-git
 	pkgdesc = Photo visibility analysis software
-	pkgver = 20220418
+	pkgver = 20230108
 	pkgrel = 1
 	url = https://github.com/kkonradpl/overlayaz
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = overlayaz-git
 	depends = gtk3
 	depends = osm-gps-map
 	depends = sqlite3
+	depends = libgexiv2
 	provides = overlayaz
 	conflicts = overlayaz
 	source = git+https://github.com/kkonradpl/overlayaz

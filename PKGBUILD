@@ -1,13 +1,13 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 
 pkgname=overlayaz-git
-pkgver=20220418
+pkgver=20230108
 pkgrel=1
 pkgdesc="Photo visibility analysis software"
 arch=('x86_64')
 url="https://github.com/kkonradpl/overlayaz"
 license=('GPL2')
-depends=('curl' 'json-c' 'gtk3' 'osm-gps-map' 'sqlite3')
+depends=('curl' 'json-c' 'gtk3' 'osm-gps-map' 'sqlite3' 'libgexiv2')
 provides=('overlayaz')
 conflicts=('overlayaz')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'json-c' 'gtk3' 'osm-gps-map' 'sqlite3' 'cmocka')
