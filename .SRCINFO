@@ -1,7 +1,7 @@
 pkgbase = cewe-fotowelt
 	pkgdesc = an offline client for creating photobooks and other photo products and ordering them from CEWE or partners
 	pkgver = 7.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cewe.de/
 	install = cewe-fotowelt.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = cewe-fotowelt
 	depends = wget
 	depends = snappy
 	depends = libxcrypt-compat
+	depends = libtiff5
 	conflicts = cewe-fotobuch
 	conflicts = cewe-fotoservice
 	conflicts = cewe-monlivrephoto-fnac
