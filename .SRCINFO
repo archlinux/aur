@@ -13,6 +13,7 @@ pkgbase = python-picotool-git
 	depends = python
 	depends = python-pypng
 	provides = python-picotool
+	provides = p8tool
 	conflicts = python-picotool
 	source = git+https://github.com/dansanderson/picotool.git
 	sha256sums = SKIP
