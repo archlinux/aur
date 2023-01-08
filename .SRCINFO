@@ -1,0 +1,14 @@
+pkgbase = offline-cheatbreaker
+	pkgdesc = Continuation of the abandoned PvP modpack for Minecraft called CheatBreaker
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://offlinecheatbreaker.com
+	arch = x86_64
+	license = unknown
+	depends = fuse
+	depends = xorg-xrandr
+	options = !strip
+	source = https://github.com/Offline-CheatBreaker/Launcher/releases/download/2.2.0/Offline_CheatBreaker.AppImage
+	sha256sums = d68525fc49b38eda9e9813fb873ed1076a21f9d6e1246f2295ef5b5a503654a1
+
+pkgname = offline-cheatbreaker
