@@ -3,10 +3,10 @@
 _module=browser-cookie3
 pkgname=python-$_module
 pkgver=0.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads cookies used by your web browser into a cookiejar object"
 url="https://github.com/borisbabic/browser_cookie3"
-depends=('python-pyaes' 'python-pbkdf2' 'python-keyring' 'python-lz4' 'python-pycryptodome' 'python-secretstorage')
+depends=('python-keyring' 'python-lz4' 'python-pycryptodomex' 'python-secretstorage')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
