@@ -1,0 +1,17 @@
+pkgbase = evremap-git
+	pkgdesc = Systemwide keyboard input remapper (written by @wez)
+	pkgver = r27.6ac2a1c
+	pkgrel = 1
+	url = https://github.com/wez/evremap
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = libevdev
+	provides = evremap
+	conflicts = evremap
+	source = git+https://github.com/wez/evremap.git
+	b2sums = SKIP
+
+pkgname = evremap-git
