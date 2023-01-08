@@ -1,3 +1,14 @@
+# 10.0.22 / 2023-01-08
+
+* changes to upstream cmake changed way we deal with that
+	* all cmake speific patches have been dropped
+	* find_package should now wor as intended
+	* pkg-config should continue to work as before
+* symlink is now provided in place of the embedded nlohmann/json
+	* package still uses systemwide packaged version
+	* helps easier adoption of online tutorials and similar resources
+	* helps with compatibility with other installations
+
 # 10.0.19 / 2022-09-14
 
 * first version on AUR

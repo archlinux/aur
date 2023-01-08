@@ -1,6 +1,6 @@
 pkgbase = dpp-git
 	pkgdesc = Lightweight and Scalable C++ Discord API Bot Library - git version
-	pkgver = 10.0.19.r5.4b73548a
+	pkgver = 10.0.22.r1.788377d2
 	pkgrel = 1
 	url = https://dpp.dev/
 	install = dpp-git.install
@@ -8,6 +8,7 @@ pkgbase = dpp-git
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	makedepends = pkgconf
 	makedepends = git
 	depends = gcc-libs
 	depends = openssl
