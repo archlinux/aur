@@ -1,7 +1,7 @@
 pkgbase = r-dorng
 	pkgdesc = Generic Reproducible Parallel Backend for 'foreach' Loops
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=doRNG
 	arch = any
 	license = GPL
@@ -15,7 +15,6 @@ pkgbase = r-dorng
 	optdepends = r-doparallel
 	optdepends = r-doredis
 	optdepends = r-knitr
-	optdepends = r-pkgmaker
 	optdepends = r-rbenchmark
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/doRNG_1.8.3.tar.gz
