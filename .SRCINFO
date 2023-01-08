@@ -8,3 +8,4 @@ pkgbase = ctrisr-git
 	makedepends = gcc
 
 pkgname = ctrisr-git
+
