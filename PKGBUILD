@@ -11,19 +11,19 @@ license=(MIT)
 depends=(coreutils openssl tpm2-tools util-linux systemd)
 makedepends=(cargo rust)
 checkdepends=(shellcheck)
+backup=('etc/cryptographic_id/initramfs/font')
 optdepends=(
   'age: encrypted keys with age'
   'kbd: change console-font for qr-codes'
 )
-backup=()
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-rs/-/archive/v${pkgver}/cryptographic-id-rs-v${pkgver}.tar.gz"
   "${pkgname}-proto-${protocol_ver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v${protocol_ver}/cryptographic-id-protocol-v${protocol_ver}.tar.gz"
 )
-sha256sums=(
-  '4addef916a8c777da5200dcfe80eb2520a207796bb631a858889780e376e7db0'
-  '526509cabc4ef6e015bcde754fbfbc5879c145e47cf74efc386d06f0921ecd22'
-)
+sha512sums=('83e4d53664967288c89c5d7544f58e6e07ca0a852cd2152a14ff8f974c732737923a84e117f25d7614d26752a5c0b062bddd8e976095a38481342523c13af284'
+            '328a37f16ca4ca20f4ef9e978e2a88bbb28e685837c74ec6b687f41324739f03b24765896daf03bde88b42134784223fa4457de7edb61ef699bb31a9de78ece2')
+b2sums=('0ac2b7bef3ee1b200456aa70e8063f09bf87c9ecbcb0a28067f50394f62cac7575c28bfca9cbccf50e71bcabd3d3120780901bd10c4930b2ce8d30eec4c58193'
+        'bec00059a589f26799ea500461d1038becd5642fe1d55b0191dbd1ed961f80bb29fb380768b8826bcd72a3c2cde1daacc263fde8f58820a5a8cb2b5e2de94069')
 
 prepare() {
   cp "cryptographic-id-protocol-v${protocol_ver}"/* "${pkgname}-v${pkgver}/src/cryptographic-id-protocol/"
