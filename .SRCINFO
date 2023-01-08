@@ -1,7 +1,7 @@
 pkgbase = r-rncl
 	pkgdesc = An Interface to the Nexus Class Library
-	pkgver = 0.8.6
-	pkgrel = 3
+	pkgver = 0.8.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rncl
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,7 @@ pkgbase = r-rncl
 	depends = r-rcpp
 	optdepends = r-ape
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rncl_0.8.6.tar.gz
-	sha256sums = fcc972c04fb43ace0876eb640a6433caddf6ec8304f7ceee37107d812ce68ffb
+	source = https://cran.r-project.org/src/contrib/rncl_0.8.7.tar.gz
+	sha256sums = 1d876e4f5f2b8a24cc3ea1002c29eedbc0ca96011b0fa15b085e5b75cfc7993a
 
 pkgname = r-rncl
