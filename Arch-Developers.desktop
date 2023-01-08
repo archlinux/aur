@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Archlinux development team
-Exec=xdg-open http://www.archlinux.org/developers/
+Exec=xdg-open https://archlinux.org/people/developers
 Icon=arch-logo
 Name=Developers
 StartupNotify=true

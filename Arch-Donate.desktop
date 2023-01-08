@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Archlinux Donations
-Exec=xdg-open http://www.archlinux.org/donate/
+Exec=xdg-open https://archlinux.org/donate
 Icon=arch-logo
 Name=Donate
 StartupNotify=true

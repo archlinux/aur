@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Archlinux goodie shopping
-Exec=xdg-open http://www.zazzle.com/archlinux/
+Exec=xdg-open https://www.zazzle.com/archlinux+gifts
 Icon=arch-logo
 Name=Schwag
 StartupNotify=true

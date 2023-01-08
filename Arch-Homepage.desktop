@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Archlinux homepage
-Exec=xdg-open http://www.archlinux.org
+Exec=xdg-open https://archlinux.org
 Icon=arch-logo
 Name=Homepage
 StartupNotify=true

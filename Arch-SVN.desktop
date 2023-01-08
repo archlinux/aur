@@ -1,6 +1,6 @@
 [Desktop Entry]
 Comment=Archlinux SVN
-Exec=xdg-open http://projects.archlinux.org/svntogit/
+Exec=xdg-open https://github.com/archlinux/svntogit-packages
 Icon=arch-logo
 Name=SVN
 StartupNotify=true
