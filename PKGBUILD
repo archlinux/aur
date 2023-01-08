@@ -3,7 +3,7 @@
 # Original package from: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=6.0.12.arch1
+pkgver=6.1.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -12,7 +12,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -29,7 +29,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'f66b82f4a99c99dedb128a027c7e23a70c2853984c44ecbd79d16bd76f1f5bac'
+            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
             # -- covolunablu-gaming patches --
             'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d')
 
