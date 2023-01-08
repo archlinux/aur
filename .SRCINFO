@@ -1,11 +1,11 @@
 pkgbase = bbg
 	pkgdesc = A static blog generator built with electron
 	pkgver = 20221223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbg-contributors/bbg
 	arch = any
 	license = Unlicense
-	depends = electron20
+	depends = electron22
 	conflicts = bbg-git
 	source = bbg.sh
 	source = icon.png::https://github.com/bbg-contributors/bbg-resources/raw/30dfd1cbdfbed040a74f05b0312302f3bf0c1c85/icon.png

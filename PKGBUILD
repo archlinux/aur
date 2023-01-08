@@ -2,12 +2,12 @@
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
 pkgver=20221223
-pkgrel=1
+pkgrel=2
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/bbg-contributors/bbg"
 license=('Unlicense')
-depends=('electron20')
+depends=('electron22')
 conflicts=("${pkgname}-git")
 source=(
 	'bbg.sh'
