@@ -1,13 +1,13 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
 
 pkgname='zellij-selector'
-pkgver='2.1.0'
+pkgver='2.2.0'
 pkgrel='1'
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
 license=('MPL2')
-depends=('sh' 'libnewt' 'zellij' 'jq')
+depends=('sh' 'libnewt' 'zellij' 'jq.sh')
 makedepends=('git' 'shellcheck')
 optdepends=('fish: Option to option fish shell'
             'zsh: Option to open zsh shell'
