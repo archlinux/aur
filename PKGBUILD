@@ -1,13 +1,13 @@
 # Contributor: derfenix <derfenix@gmail.com>
 
 pkgname=neochat-git
-pkgver=r1900.1e78c6ca
+pkgver=r1901.7002132b
 pkgrel=1
 pkgdesc="A client for matrix, the decentralized communication protocol"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/network/neochat"
 license=('GPL3')
-depends=('libquotient<0.7' 'qtkeychain' 'qt5-quickcontrols2>=5.15.0' 'qt5-multimedia>=5.15.0' 'qt5-svg>=5.15.0' 'qt5-base>=5.15.0' 'kirigami2>=5.74.0' 'kitemmodels>=5.74.0' 'ki18n>=5.74.0' 'knotifications>=5.74.0' 'kconfig>=5.74.0' 'kcoreaddons>=5.74.0' 'kquickimageeditor' 'kdbusaddons' 'cmark' 'qcoro' 'syntax-highlighting')
+depends=("qqc2-desktop-style" "kirigami-addons" "libquotient" "kquickimageeditor" "kitemmodels" "kio" "syntax-highlighting" "qtkeychain-qt5" "cmark" "hicolor-icon-theme" "qcoro-qt5")
 makedepends=('cmake>=3.1.0' 'git' 'extra-cmake-modules') 
 source=("neochat::git+https://invent.kde.org/network/neochat.git")
 conflicts=('neochat')
@@ -15,17 +15,17 @@ provides=('neochat')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "neochat"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "neochat"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd neochat
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
-  make -C build
+	cd neochat
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -B build
+	make -C build
 }
 
 package() {
-   cd "${srcdir}/neochat"
-   make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+	cd "${srcdir}/neochat"
+	make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
 }

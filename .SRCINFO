@@ -9,23 +9,17 @@ pkgbase = neochat-git
 	makedepends = cmake>=3.1.0
 	makedepends = git
 	makedepends = extra-cmake-modules
-	depends = libquotient<0.7
-	depends = qtkeychain
-	depends = qt5-quickcontrols2>=5.15.0
-	depends = qt5-multimedia>=5.15.0
-	depends = qt5-svg>=5.15.0
-	depends = qt5-base>=5.15.0
-	depends = kirigami2>=5.74.0
-	depends = kitemmodels>=5.74.0
-	depends = ki18n>=5.74.0
-	depends = knotifications>=5.74.0
-	depends = kconfig>=5.74.0
-	depends = kcoreaddons>=5.74.0
+	depends = qqc2-desktop-style
+	depends = kirigami-addons
+	depends = libquotient
 	depends = kquickimageeditor
-	depends = kdbusaddons
-	depends = cmark
-	depends = qcoro
+	depends = kitemmodels
+	depends = kio
 	depends = syntax-highlighting
+	depends = qtkeychain-qt5
+	depends = cmark
+	depends = hicolor-icon-theme
+	depends = qcoro-qt5
 	provides = neochat
 	conflicts = neochat
 	source = neochat::git+https://invent.kde.org/network/neochat.git
