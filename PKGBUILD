@@ -1,22 +1,22 @@
 # Maintainer: project-repo <archlinux-aur@project-repo.co>
 pkgname=cagebreak
-pkgver=1.9.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Tiling wayland compositor based on cage inspired by ratpoison'
 arch=('x86_64')
 url='https://github.com/project-repo/cagebreak'
 license=('MIT')
-depends=('wayland' 'libxkbcommon' 'wlroots<0.16.0' 'pango')
+depends=('wayland' 'libxkbcommon' 'wlroots<0.17.0' 'pango')
 makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols')
 optdepends=('wl-clipboard: clipboard support'
             'xorg-xwayland: x application support')
 options=('!buildflags' '!strip')
 conflicts=('cagebreak-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
-sha512sums=('563e985791b4d206f5cf0dc98d8060bd54fd076801a8b56a8f81447ab11f219f352c73ccd4d0113aae7a5dd3d9ff8aee6a166e31b4c2d6705c08dddf479f997a')
+sha512sums=('9f2ed0721080a1d271db3edf864acad85219be2402fb09f5605f12d4410dd30cdb17f768c6e6fcf77d4fc32f7bb6ed1175ab1b671d8afc8dbface74598696ae8')
 build() {
 	cd "$pkgname"
-	meson build --buildtype=release -Dman-pages=true -Dxwayland=true
+	meson setup build --buildtype=debug -Dman-pages=true -Dxwayland=true
 	ninja -C build
 }
 package() {
