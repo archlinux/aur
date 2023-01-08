@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
 license=('LGPL2.1')
-url='http://www.videolan.org/developers/libbluray.html'
+url='https://www.videolan.org/developers/libbluray.html'
 depends=('libxml2.so'
          'libfontconfig.so'
          'libfreetype.so'
