@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=river
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('zig' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river-bin' 'river-git' 'river-noxwayland-git')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ee2b723d7e3871e3f245b671d0efe4a21f511b2d8f9859cf1c719eedae103bcc')
+sha256sums=('24ff465ba4dc85590378c50dd48d99b027139066566ee36bab1f91870b26121b')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
