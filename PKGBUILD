@@ -2,7 +2,7 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.0.r289.7c9418a
+pkgver=0.2.1r2.r352.f2b1751
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,6 +11,8 @@ license=('GPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('git' 'cmake')
+optdepends=('libx11: X11 support'
+	    'wayland: Wayland support')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 

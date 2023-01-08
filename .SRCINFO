@@ -1,6 +1,6 @@
 pkgbase = clipboard-git
 	pkgdesc = Cut, copy, and paste anything in your terminal (git version).
-	pkgver = 0.2.0.r289.7c9418a
+	pkgver = 0.2.1r2.r352.f2b1751
 	pkgrel = 1
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = clipboard-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	optdepends = libx11: X11 support
+	optdepends = wayland: Wayland support
 	provides = clipboard
 	conflicts = clipboard
 	source = clipboard::git+https://github.com/Slackadays/Clipboard.git
