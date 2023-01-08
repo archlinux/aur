@@ -1,6 +1,6 @@
 pkgbase = python-quantiphy
 	pkgdesc = Offers support for the pairing of a number and a unit of measure
-	pkgver = 2.18.0
+	pkgver = 2.19
 	pkgrel = 1
 	url = https://github.com/KenKundert/quantiphy
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-quantiphy
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-flit-core
-	source = https://files.pythonhosted.org/packages/source/q/quantiphy/quantiphy-2.18.0.tar.gz
-	sha256sums = eca14abfa83c3171cea7212a1a11fd6e004d029e5500b342b260b48c72f50d66
+	source = https://files.pythonhosted.org/packages/source/q/quantiphy/quantiphy-2.19.tar.gz
+	sha256sums = 9dc004a1047948a6e50d783f6f443e1e4d988fc1a44ca1d2b4821d1e96fb935a
 
 pkgname = python-quantiphy
