@@ -1,15 +1,15 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=d11amp
-pkgver=0.59
-pkgrel=2
+pkgver=0.61
+pkgrel=1
 pkgdesc="Oldschool MP3 player (Winamp lookalike)"
 arch=(x86_64)
 depends=(gtk4 gdk-pixbuf2 mpg123 libzip portaudio)
 license=(BSD)
 url="https://dettus.net/d11amp/"
-source=("https://dettus.net/d11amp/d11amp_0.59.tar.bz2")
-sha256sums=('596fe28fd2a0898bfff00aa5b79457633e73e7526b866b698419c134049e9841')
+source=("https://dettus.net/d11amp/d11amp_${pkgver}.tar.bz2")
+sha256sums=('c0eb416c033077b195ddc24a9d232e9bfa806fb777b57280e7f833b6267ced09')
 
 build() {
     cd "${srcdir}/${pkgname}_${pkgver}/"
