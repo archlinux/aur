@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=ampl-asl
-_gitcommit=a472ade54461f0ed9dbec5bca69889e1dcdf6e89
-pkgver=20220520
+_gitcommit=193c580d790684cdac798062fd23bdf5db01aebc
+pkgver=20221103
 pkgrel=1
 pkgdesc="AMPL Solver Library"
 arch=(x86_64)
