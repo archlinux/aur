@@ -37,8 +37,8 @@ package() {
 	cd $pkgname
 	ls
 	sudo mkdir -p "/usr/bin/${pkgname}"
-	cp -rf * "/usr/bin/${pkgname}"
-	mv "/usr/bin/${pkgname}/enchiridion.sh" /usr/bin/
+	sudo cp -rf * "/usr/bin/${pkgname}"
+	sudo mv "/usr/bin/${pkgname}/enchiridion.sh" /usr/bin/
 	rm -rf $pkgname
 
 }
