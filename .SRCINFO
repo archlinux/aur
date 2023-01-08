@@ -1,6 +1,6 @@
 pkgbase = 64gram-desktop
 	pkgdesc = Unofficial desktop version of Telegram messaging app
-	pkgver = 1.0.62
+	pkgver = 1.0.63
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/TDesktop-x64/tdesktop
@@ -44,9 +44,9 @@ pkgbase = 64gram-desktop
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v1.0.62/64Gram-1.0.62-full.tar.gz
+	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v1.0.63/64Gram-1.0.63-full.tar.gz
 	source = block-sponsored_messages.patch
-	sha512sums = 93980b16b7041999f4ac539c691a27bac2fdc04e785504c664b8ccdd707961d388b6b6cf3376f7d9416a5739180d8a33d9b87c89298f84da43426c612c29008b
+	sha512sums = 9fe21e52229f6b00511e694004f94625f30736e2fd185ad41fd49c2e66c0007fe1618185b2a3d083e3d022c43e15a896cd210fdb4fd24afe2f75d4dbb129861c
 	sha512sums = c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae
 
 pkgname = 64gram-desktop
