@@ -23,17 +23,17 @@ sha256sums=('SKIP')
 conflicts=('tartube')
 
 pkgver() {
-  cd "${srcdir}/$pkgname"
+  cd "${srcdir}/$_pkgname"
   git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	python setup.py build
 }
 
 package() {
-  cd $pkgname
+  cd "$_pkgname"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   _sitepkgs_dir="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
   mv "${pkgdir}/tartube/icons" "${pkgdir}${_sitepkgs_dir}/tartube/"
