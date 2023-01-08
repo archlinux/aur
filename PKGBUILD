@@ -1,14 +1,16 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdread-git
-pkgver=6.1.2.6.gcddaf6e
+pkgver=6.1.3.9.gba2227b
 pkgrel=1
 pkgdesc="Library to access DVD disks. (GIT version)"
 arch=('x86_64')
-url='http://dvdnav.mplayerhq.hu'
 license=('GPL2')
+url='http://dvdnav.mplayerhq.hu'
 depends=('libdvdcss.so')
-makedepends=('git')
+makedepends=('git'
+             'libdvdcss'
+             )
 provides=('libdvdread'
           'libdvdread.so'
           )
