@@ -7,29 +7,34 @@ _iop="${_arch}el-${_platform}"
 _ee="${_arch}64r5900el-${_platform}-elf"
 _base="sdk"
 _pkgname="${_platform}${_base}"
-# pkgname="${_platform}-${_base}"
-pkgname="gskit"
+_pkg="gskit"
+pkgname="${_pkg}"
 pkgver="v1.3.2"
 pkgrel=1
 _pkgdesc=("C interface to the Sony Playstation® 2 videogame system Graphics Synthesizer.")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
-license=('BSD')
+license=('custom')
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
-url="${_github}/${pkgname}"
+url="${_github}/${pkg}"
 makedepends=("${_platform}-toolchain")
 optdepends=()
-# _lwip_branch="${_platform}-${_lwip_ver}"
 _commit="32c5f7c39b8353de9790b94486385dfc08d0409d"
 source=("${pkgname}::git+${url}#commit=${_commit}")
-#         "lwip::git+${_github}/lwip#branch=${_lwip_branch}")
+# source=("${pkgname}::git+${_local}/${pkgname}#commit=${_commit}")
 sha256sums=('SKIP')
 
 _cflags=(-I"/usr/${_ee}/include/pthread-embedded")
          # -nostdinc
          # -I"/usr/${_ee}/include/newlib-nano")
          # -static)
+
+_iop_incs=(-I"/usr/${_iop}/include"
+           -I"/usr/include/${_platform}${_base}")
+
+_ee_incs=(-I"/usr/${_ee}/include"
+          -I"/usr/include/${_platform}${_base}")
 
 _ldflags=(-L"/usr/${_ee}/lib/pthread-embedded"
           # -L"/usr/${_ee}/lib/newlib-nano"
@@ -38,17 +43,28 @@ _ldflags=(-L"/usr/${_ee}/lib/pthread-embedded"
           "/usr/${_ee}/lib/newlib-nano/libg_nano.a"
           "/usr/${_ee}/lib/newlib-nano/crt0.o")
 
+_make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}")
+
 _build_opts=(CFLAGS="${_cflags[*]}"
              CPPFLAGS="${_cflags[*]}"
              CXXFLAGS="${_cflags[*]}"
              LDFLAGS="${_ldflags[*]}")
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  sed -i 's/PS2SDK/PS2SDKDATADIR/g' "Makefile"
+  sed -i 's/PS2SDK/PS2SDKDATADIR/g' "Makefile.pref"
+}
 
 build() {
   export CFLAGS=""
   export CXXFLAGS=""
   export CPPFLAGS=""
   export LDLAGS=""
+  export IOP_CC=""
+  export EE_CC=""
+  export EE_INCS=""
+  export PS2SDKDATADIR=""
 
   # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
 #   export IOP_CFLAGS="${_cflags[*]}"
@@ -60,9 +76,12 @@ build() {
 #   export LDFLAGS="${_ldflags[*]}"
 #   export PS2SDK="${pkgdir}/usr"
   export IOP_TOOL_PREFIX="${_iop}-elf-"
+  export IOP_INCS="${_iop_incs[*]}"
+  export EE_CC="${_ee}-gcc"
+  export EE_INCS="${_ee_incs[*]}"
+  export PS2SDKDATADIR="/usr/share/ps2sdk"
 
   cd "${srcdir}/${pkgname}"
-  ls
   # make clean
   # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/${_ee}/lib/pthread-embedded" \
   # IOP_CFLAGS="${_cflags[*]}" \
@@ -73,7 +92,11 @@ build() {
   # EE_LDLAGS="${_cflags[*]}" \
   # IOP_LDLAGS="${_cflags[*]}" \
   # LDFLAGS="${_ldflags[*]}" \
-  # make "${_build_opts[@]}" build
+  IOP_INCS="${_iop_incs[*]}" \
+  EE_CC="${_ee}-gcc" \
+  EE_INCS="${_ee_incs[*]}" \
+  PS2SDKDATADIR="/usr/share/ps2sdk" \
+  make ${_make_opts[@]} # "${_build_opts[@]}" build
 }
 
 # shellcheck disable=SC2154
@@ -85,15 +108,15 @@ package() {
   export LDLAGS=""
 
   # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
-  export IOP_CFLAGS="${_cflags[*]}"
-  export IOP_LDFLAGS="${_cflags[*]}"
-  export EE_CFLAGS="${_cflags[*]}"
-  export CFLAGS="${_cflags[*]}"
-  export CPPFLAGS="${_cflags[*]}"
-  export CXXFLAGS="${_cflags[*]}"
-  export LDFLAGS="${_ldflags[*]}"
-  export PS2SDK="${pkgdir}/usr"
-  export IOP_TOOL_PREFIX="${_iop}-elf-"
+  # export IOP_CFLAGS="${_cflags[*]}"
+  # export IOP_LDFLAGS="${_cflags[*]}"
+  # export EE_CFLAGS="${_cflags[*]}"
+  # export CFLAGS="${_cflags[*]}"
+  # export CPPFLAGS="${_cflags[*]}"
+  # export CXXFLAGS="${_cflags[*]}"
+  # export LDFLAGS="${_ldflags[*]}"
+  # export PS2SDK="${pkgdir}/usr"
+  # export IOP_TOOL_PREFIX="${_iop}-elf-"
 
   cd "${srcdir}/${pkgname}"
   ls
@@ -125,5 +148,4 @@ package() {
   # rmdir common
   # mkdir -p "share/licenses/${_pkgname}"
   # mv LICENSE "share/licenses/${_pkgname}"
-
 }
