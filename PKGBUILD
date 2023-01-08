@@ -21,7 +21,7 @@ depends=()
 _gccver="55"
 _include="/usr/${_target}/include"
 makedepends=("${_target}-gcc${_gccver}")
-checkdepends=('shellcheck')
+checkdepends=()
 optdepends=()
 _branch="develop"
 source=("${_pkg}::git+${_local}/${_pkg}#branch=${_branch}")
@@ -43,10 +43,6 @@ package_pocket-station-tools-git() {
   cd "${_pkg}/tools" || exit
   for _dir in $(ls .); do
     cd "${_dir}"
-    # arm-none-eabi-gcc -o "./${_dir}" \
-    #                        --specs=nosys.specs \
-    #                        -I"${_include}" \
-    #                        "main.c"
     gcc -o "./${_dir}" "main.c"
     mv "${_dir}" "${_pin}"
     cd ..
