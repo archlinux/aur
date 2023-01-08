@@ -1,11 +1,11 @@
 pkgbase = siyuan-note-bin
 	pkgdesc = A local-first personal knowledge management system
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://b3log.org/siyuan/
 	arch = x86_64
 	license = AGPL3
-	depends = electron22-bin
+	depends = electron22
 	optdepends = pandoc: docx export.
 	provides = siyuan-note
 	source = siyuan-note-bin-2.6.2.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v2.6.2/siyuan-2.6.2-linux.tar.gz
