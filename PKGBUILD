@@ -16,7 +16,8 @@ install=x3270.install
 source=(http://x3270.bgp.nu/download/$pkgpath/suite3270-$pkgver-src.tgz
         x3270.desktop)
 
-sha256sums=('ef576c231d0d62340e335fc33aac45075b0d991a00404348d114fb59740cce2f'
+
+sha256sums=('68f16dd3bc75f50c054e8482711e76fcf5b4984aacc47a359fd94f01c9c0a429'
             'bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f')
 
 build() {
