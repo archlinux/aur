@@ -22,6 +22,7 @@ _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
 depends=("${target}-binutils"
          "${target}-gcc"
+         "${target}-newlib"
          "${target}-newlib-nano"
          "${target}-${_pe}")
 optdepends=()
