@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${_pkgname}")
 depends=('electron' 'libvips' 'alsa-lib')
 makedepends=('yarn' 'node-gyp' 'cargo')
-source=("git+https://github.com/Moosync/Moosync.git" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v6.0.0/Moosync-6.0.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
+source=("git+https://github.com/Moosync/Moosync.git" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
 conflicts=("${_pkgname}")
 sha256sums=('SKIP'
             '59f11f9e78486423dae41a54f553ef6658360a5b9df298b35b65b8093f065fb0'
