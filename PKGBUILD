@@ -5,17 +5,17 @@ _pkgname=brendaDb
 _pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=1.12.0
-pkgrel=1
+pkgrel=3
 pkgdesc='The BRENDA Enzyme Database'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('MIT')
 depends=(
+  gcc
   r
   r-biocfilecache
   r-biocparallel
   r-crayon
-  r-curl
   r-dplyr
   r-magrittr
   r-purrr
@@ -25,8 +25,6 @@ depends=(
   r-stringr
   r-tibble
   r-tidyr
-  r-xml2
-  gcc
 )
 optdepends=(
   r-biocstyle
