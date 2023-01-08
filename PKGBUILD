@@ -1,27 +1,23 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=libslink
-pkgver=2.6
-pkgrel=2
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="A SeedLink client library written in C."
 arch=("x86_64")
-url="https://ds.iris.edu/ds/nodes/dmc/services/seedlink/"
+url="https://github.com/EarthScope/libslink"
 license=('Apache-2.0')
-source=("${pkgname}-${pkgver}.tar.gz::https://ds.iris.edu/pub/programs/SeedLink/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('98e7be4bb6604ffd32b755cacc8c238128da91e3465517acdd42869de5ff15f4')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3f05a1345a1a36f0e40b14fc103ea6ea66f81cbdf5f7abd4ae11a026b7d58b9d')
 
 build() {
-	cd "${pkgname}"
+	cd "${pkgname}-${pkgver}"
 	make shared
 }
 
 package() {
-	cd "${pkgname}"
-	install -Dt ${pkgdir}/usr/include/ -m644 libslink.h slplatform.h
-	install -Dt ${pkgdir}/usr/lib/ libslink.so.${pkgver}
-	ln -s libslink.so.${pkgver} ${pkgdir}/usr/lib/libslink.so.${pkgver%%.*}
-	ln -s libslink.so.${pkgver} ${pkgdir}/usr/lib/libslink.so
-	install -Dt ${pkgdir}/usr/share/doc/${pkgname}/ -m644 doc/UsersGuide-libslink
-	install -Dt ${pkgdir}/usr/share/man/man3/ -m644 doc/*.3
-	cp -r example ${pkgdir}/usr/share/doc/${pkgname}/
+	cd "${pkgname}-${pkgver}"
+	make DESTDIR=${pkgdir} install
+	install -D -t ${pkgdir}/usr/share/doc/${pkgname}/ -m 644 doc/UsersGuide-libslink
+	install -D -t ${pkgdir}/usr/share/man/man3/ -m 644 doc/sl_*.3
 }
 # vim:set ts=4 sw=4 et:

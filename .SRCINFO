@@ -1,11 +1,11 @@
 pkgbase = libslink
 	pkgdesc = A SeedLink client library written in C.
-	pkgver = 2.6
-	pkgrel = 2
-	url = https://ds.iris.edu/ds/nodes/dmc/services/seedlink/
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/EarthScope/libslink
 	arch = x86_64
 	license = Apache-2.0
-	source = libslink-2.6.tar.gz::https://ds.iris.edu/pub/programs/SeedLink/libslink-2.6.tar.gz
-	sha256sums = 98e7be4bb6604ffd32b755cacc8c238128da91e3465517acdd42869de5ff15f4
+	source = libslink-2.7.1.tar.gz::https://github.com/EarthScope/libslink/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 3f05a1345a1a36f0e40b14fc103ea6ea66f81cbdf5f7abd4ae11a026b7d58b9d
 
 pkgname = libslink
