@@ -1,17 +1,15 @@
 pkgbase = python-rtf_tokenize
-	pkgdesc = A simple RTF tokenizer.
+	pkgdesc = Simple RTF tokenizer package for Python
 	pkgver = 1.0.0
-	pkgrel = 6
-	url = https://github.com/benoit-pierre/rtf_tokenize
+	pkgrel = 7
+	url = https://github.com/openstenoproject/rtf_tokenize
 	arch = any
 	license = GPL2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pytest
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-rtf_tokenize-1.0.0.tar.gz::https://github.com/benoit-pierre/rtf_tokenize/archive/refs/tags/1.0.0.tar.gz
+	source = https://github.com/openstenoproject/rtf_tokenize/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = bcaecdf0d6092659ab988a8f4a406a72fd7d712791446d002b2818738289ae40
 
 pkgname = python-rtf_tokenize

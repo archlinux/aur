@@ -1,37 +1,24 @@
-# Maintainer: Benoit Pierre <benoit.pierre@gmail.com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Benoit Pierre <benoit.pierre@gmail.com>
 
-pkgname=python-rtf_tokenize
-pkgdesc="A simple RTF tokenizer."
+pkgname="python-rtf_tokenize"
 pkgver=1.0.0
-pkgrel=6
-arch=('any')
-license=('GPL2')
-depends=('python')
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-pytest'
-  'python-setuptools'
-  'python-wheel'
-)
-url="https://github.com/benoit-pierre/rtf_tokenize"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/rtf_tokenize/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=(bcaecdf0d6092659ab988a8f4a406a72fd7d712791446d002b2818738289ae40)
+pkgrel=7
+pkgdesc="Simple RTF tokenizer package for Python"
+url="https://github.com/openstenoproject/rtf_tokenize"
+license=("GPL2")
+arch=("any")
+depends=("python")
+makedepends=("python-build" "python-installer" "python-wheel")
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('bcaecdf0d6092659ab988a8f4a406a72fd7d712791446d002b2818738289ae40')
 
-build() {
-  cd "rtf_tokenize-$pkgver"
-  pyproject-build --no-isolation --skip-dependency-check --wheel
+build(){
+ cd "rtf_tokenize-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "rtf_tokenize-$pkgver"
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')" pytest test
+package(){
+ cd "rtf_tokenize-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-package() {
-  cd "rtf_tokenize-$pkgver"
-  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
-  chmod og+rX -R "$pkgdir"
-}
-
-# vim:set sw=2 sts=2 et:
