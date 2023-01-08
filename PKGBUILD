@@ -19,36 +19,36 @@ sha512sums=("SKIP")
 
 # Thanks to Morguldir <morguldir@protonmail.com> for this!
 pkgver() {
-    cd "$pkgname"
+	cd "$pkgname"
 
-    _info="$(git blame -s CMakeLists.txt | grep set\(API)"
-    _commit="$(echo $_info | awk '{print $1}')"
-    _ver="$(echo $_info | awk '{print $4}' | sed s/[^0-9.]//g)"
-    _patch_ver="$(git blame -p CMakeLists.txt | grep project\(Quotient | sed s/[^0-9]//g)"
-    _revisions="$(git rev-list --count $_commit..HEAD)"
-    _current_commit="$(git log --pretty=format:'%h' -n 1)"
-    printf "%s.%d.r%d.g%s" $_ver $_patch_ver $_revisions $_current_commit
+	_info="$(git blame -s CMakeLists.txt | grep set\(API)"
+	_commit="$(echo $_info | awk '{print $1}')"
+	_ver="$(echo $_info | awk '{print $4}' | sed s/[^0-9.]//g)"
+	_patch_ver="$(git blame -p CMakeLists.txt | grep project\(Quotient | sed s/[^0-9]//g)"
+	_revisions="$(git rev-list --count $_commit..HEAD)"
+	_current_commit="$(git log --pretty=format:'%h' -n 1)"
+	printf "%s.%d.r%d.g%s" $_ver $_patch_ver $_revisions $_current_commit
 }
 
 prepare() {
-    mkdir -p "build"
+	mkdir -p "build"
 }
 
 build() {
-    cd "build"
-    cmake ../${pkgname} \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=1
+	cd "build"
+	cmake ../${pkgname} \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DBUILD_SHARED_LIBS=1
 
-    make
+	make
 }
 
 package() {
-    cd "build"
-    make DESTDIR="${pkgdir}" install
+	cd "build"
+	make DESTDIR="${pkgdir}" install
 
-    cd "../$pkgname"
-    install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	cd "../$pkgname"
+	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
