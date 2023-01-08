@@ -2,12 +2,12 @@
 pkgname=sinsy-isengaara-git
 _pkgname=sinsy
 pkgver=0.9.6rc0.r3.g036c33a
-pkgrel=3
+pkgrel=4
 pkgdesc="fork of sinsy made to use with qtau"
 arch=('x86_64')
 url="https://notabug.org/isengaara/sinsy"
 license=('BSD')
-depends=('hts-engine-api-git' 'sekai-git' 'boost-libs')
+depends=('hts-engine-api-git' 'sekai-git' 'boost')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
