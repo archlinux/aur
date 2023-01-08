@@ -4,7 +4,7 @@
 _pkgname=themix-plugin-base16
 _reponame=$_pkgname
 pkgname="${_pkgname}-git"
-pkgver=1.5.2.r0.gc5d5f66
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Import and export plugin for Themix GUI designer to use color palettes from Base16 project"
 arch=('x86_64' 'i686')
@@ -36,7 +36,7 @@ conflicts=(
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --always --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
