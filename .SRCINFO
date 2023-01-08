@@ -1,6 +1,6 @@
 pkgbase = glslviewer
 	pkgdesc = Console-based GLSL Sandbox for 2D/3D shaders
-	pkgver = 2.1.2
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/patriciogonzalezvivo/glslViewer
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = glslviewer
 	depends = glfw-x11
 	depends = ncurses
 	depends = ffmpeg
-	source = glslviewer::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=2.1.2
+	source = glslviewer::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=v3.1.1
 	source = git+https://github.com/patriciogonzalezvivo/ada
 	source = git+https://github.com/mackron/miniaudio
 	md5sums = SKIP
