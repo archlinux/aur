@@ -4,7 +4,7 @@
 # Contributor: Original Carlos Silva <r3pek@r3pek.org>
 
 pkgname=piper-git
-pkgver=0.7.r21.g4827954
+pkgver=0.7.r22.g9bf4f25
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = piper-git
 	pkgdesc = Piper is a GUI interface to ratbagd, the system daemon for configurable mice
-	pkgver = 0.7.r21.g4827954
+	pkgver = 0.7.r22.g9bf4f25
 	pkgrel = 1
 	url = https://github.com/libratbag/piper
 	arch = any
