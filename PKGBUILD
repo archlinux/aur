@@ -1,7 +1,7 @@
 # Maintainer: Francesco Palumbo <phranz@subfc.net>
 
 pkgname=guish
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="A language and army knife to make and modify GUIs."
 arch=('x86_64')
@@ -11,17 +11,21 @@ depends=('libx11' 'libxtst' 'imlib2')
 makedepends=('git' 'libx11' 'libxtst' 'imlib2')
 provides=(guish)
 conflicts=(guish guish-git)
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish/archive/2.4.1.tar.gz")
-sha512sums=('d1731f4139e72c85b343ed3cdb5269231d6c7df1c393544045d9a4394fa819afd1f808f143b3e4ffcd83c4a45971d152612e7c1e1c94c7f118e3440c44985f75')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/phranz/guish/archive/2.4.3.tar.gz")
+sha512sums=('9a715a01ecbb65a3727e091238b33174d10b118c29fb9fabf115364625be1951bf9f9e3b89388ed914772be5d898f7780ec940a3d3053b982e1645bf817eff51')
 
 build() {
     cd "${pkgname}"
-	./configure --prefix=/usr
-	make
+	make ENABLE_X11=1 ENABLE_CONTROL=1 ENABLE_IMAGES=1
+}
+
+check() {
+    cd "${pkgname}"
+    make tests
 }
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
 
