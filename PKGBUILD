@@ -1,5 +1,5 @@
 pkgname=bibcal-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgdesc="Calculate dates based on the Bible and the 1st Book of Enoch."
 pkgrel=1
 arch=(x86_64)
@@ -13,11 +13,11 @@ source=("$url/releases/download/$pkgver/${pkgname%-bin}-$pkgver-linux-x86_64.tar
         "${pkgname%-bin}-$pkgver.LICENSE::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/LICENSE"
         "${pkgname%-bin}-$pkgver.README.md::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/README.md")
 sha256sums=(
-  "ac0cdc9d406de95443e118c9cd63bb9014a8771c1d35cfce81768eac78040854"
-  "a1ef5553e86269819c52df2c81c49298714884a19ad1437c68e77e32a4ae34bf"
+  "c055b137e85ee427b003d6037e6a50802c392ea37ea8db2a6887b6a64d604f8b"
+  "2b93a1b68c001eb24f862f85faf9a5360fc2e4e7366a586f1c54ecc736ff0e96"
   SKIP
-  "42ff7de4bd2675dff14a44fe4c2eb7d5b88f616f8206e72e9aa3a209f51365ba"
-  "df767201ad5022bfcee84cebcd8a03600bf900d4a7b0a35cfd57cca60ce6f77c"
+  "04b6032d78f8dfa062b98017b8930885f6a6fa6ee3de12bff99f68aea86bbfb3"
+  "c8f94bf092faf3e954d85124996538e1891a054f2879cf9c9f837a3b29499930"
 )
 validpgpkeys=('2BEFDA8D830FA1E0C458915824EBD0202640D9B0') # Johan Thoren (GitHub Signing Key) <johan@thoren.xyz>
 
