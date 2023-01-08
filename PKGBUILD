@@ -77,7 +77,6 @@ options=('!strip')
 _reponame="linux-bcachefs"
 _repo_url="https://github.com/koverstreet/bcachefs.git"
 
-_reponame_arch="linux-archlinux"
 _repo_url_arch="https://github.com/archlinux/linux.git"
 
 _reponame_upstream="linux"
@@ -117,7 +116,7 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
     git remote add arch_stable "${_repo_url_arch}" || true
     git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
