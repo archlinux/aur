@@ -4,7 +4,7 @@ _pkgname=this.path
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Get Executing Script's Path, from 'RStudio', 'Rgui', 'VSCode', 'Rscript' (Shells Including Windows Command-Line / / Unix Terminal), and 'source'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
 )
 optdepends=(
+  r-knitr
   r-microbenchmark
   r-rprojroot
   r-rstudioapi
