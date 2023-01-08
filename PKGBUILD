@@ -1,7 +1,8 @@
 # Maintainer: Robert Sprunk <arch-aur@sprunk.me>
 # Contributor: Bryn Edwards <bryn.edwards@gmail.com>
+# Contributor: trap000d
 pkgname=supysonic
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A Python implementation of the Subsonic server API."
 arch=('any')
@@ -9,13 +10,12 @@ url="https://github.com/spl0k/$pkgname"
 license=('AGPL')
 depends=(
   'python-flask'
-  'python-pony'
+  'python-peewee'
   'python-pillow'
   'python-requests'
-  'python-mutagen'
-  'python-watchdog'
-  'python-zipstream'
   'python-mediafile'
+  'python-watchdog'
+  'python-zipstream-ng'
 )
 makedepends=(
   'git'
@@ -29,14 +29,15 @@ optdepends=('ffmpeg: Transcoder support'
             'mod_wsgi: Apache WSGI module'
             'postgresql: PostgreSQL database'
             'python-psycopg2: PostgreSQL database support'
-            'python-waitress: pure-Python WSGI server')
+            'python-waitress: pure-Python WSGI server'
+            'gunicorn: WSGI HTTP Server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/spl0k/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.ini"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "$pkgname-daemon.service"
         "$pkgname-waitress.service")
-sha256sums=('f30c8e05a10d286db73f242e5899ec548a189c296687acd88c9f29e296f15647'
+sha256sums=('f5047b6a8085180999c3516df4f8e5f0cb8bc5310906e086337d54e9145d6570'
             'e8a10b2be1c3b6757cee8928f2e585351da9e9b6eadfa68c8905913108a26b80'
             'b4b723d30fb45f86a15ec218910cd3935aac4546d5e2f9a1e1bc79cccfb98480'
             '430eba10de5381a425074b89d0a46fb770be5112b26e81ac6a2b55765675cb13'
