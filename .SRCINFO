@@ -1,6 +1,6 @@
 pkgbase = wmcompanion
 	pkgdesc = Desktop system event listener for minimal window manager users
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/kriansa/wmcompanion
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = wmcompanion
 	depends = python
 	depends = python-dbus-next
 	optdepends = python-xcffib: X11 functionality
-	source = https://github.com/kriansa/wmcompanion/archive/v0.6.1.tar.gz
-	sha256sums = 6c5bae8ef3a673aeaaa7a35e830675ffadc0dc29ac0fae6de5c635a845256889
+	source = https://github.com/kriansa/wmcompanion/archive/v0.6.2.tar.gz
+	sha256sums = b8fdfb2585f432446af7852ba31d112b8716dae36392034fa39501bc8b8a406c
 
 pkgname = wmcompanion
