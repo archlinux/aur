@@ -1,6 +1,6 @@
 pkgbase = bbg-git
 	pkgdesc = A static blog generator built with electron
-	pkgver = 20220809.r9.2b91f0f
+	pkgver = 20221223.r28.d878445
 	pkgrel = 1
 	url = https://github.com/bbg-contributors/bbg
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = bbg-git
 	makedepends = git
 	makedepends = yarn
 	makedepends = asar
-	depends = electron20
+	depends = electron22
 	provides = bbg
 	conflicts = bbg
 	source = bbg.sh
