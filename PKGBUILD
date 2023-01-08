@@ -3,7 +3,7 @@
 
 pkgname=pencil
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -16,7 +16,6 @@ source=("https://github.com/evolus/pencil/archive/v$pkgver.tar.gz"
         '0001-do-not-download-electron.patch')
 sha256sums=('84675567281ccdd0d5e273e628cf99a9b76d15245794ef4d38c5bfb2d64c0468'
             '273aa85290169ac313d0990c41d9d697a1266dbca885fc389d9ef8f415d37720')
-conflicts=('evolus-pencil-bin' 'pencil-v2')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
