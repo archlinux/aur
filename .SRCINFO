@@ -1,7 +1,7 @@
 pkgbase = ov
 	pkgdesc = Feature-rich terminal-based text viewer
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noborus/ov
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=ov
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-rich terminal-based text viewer"
 arch=('x86_64')
 url="https://github.com/noborus/ov"
@@ -36,4 +36,5 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dt "$pkgdir/usr/share/doc/ov" -m644 ov.yaml ov-less.yaml
 }
