@@ -1,7 +1,7 @@
 pkgbase = r-tidyselect
 	pkgdesc = Select from a Set of Strings
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=tidyselect
 	arch = any
 	license = MIT
