@@ -12,6 +12,6 @@ pkgbase = mambaforge
 	options = libtool
 	options = staticlibs
 	source = mambaforge-22.9.0-2.sh::https://github.com/conda-forge/miniforge/releases/download/22.9.0-2/Mambaforge-22.9.0-2-Linux-x86_64.sh
-	sha256sums = 26cf4a5cd3a3b9085f75911b459b969d6ff8ab426ef9a8e7ce3b47cc683ead86
+	sha256sums = d2bb6c33f2373131fc71283baae9eb81a279708d007e55d627d85abe30c2d0eb
 
 pkgname = mambaforge
