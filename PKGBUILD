@@ -2,14 +2,13 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=libquotient-git
-pkgver=0.6.0.r387.g7036ed0
+pkgver=0.7.0.r1157.gcaab4f04
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64 aarch64)
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2")
-depends=("qt5-base" "qt5-multimedia")
-optdepends=("qt5-olm-git")
+depends=("qt5-base" "qt5-multimedia" "qtkeychain-qt5")
 makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")

@@ -1,6 +1,6 @@
 pkgbase = libquotient-git
 	pkgdesc = A Qt5 library to write cross-platform clients for Matrix
-	pkgver = 0.6.0.r387.g7036ed0
+	pkgver = 0.7.0.r387.caab4f0
 	pkgrel = 1
 	url = https://github.com/quotient-im/libQuotient
 	arch = x86_64
@@ -12,11 +12,10 @@ pkgbase = libquotient-git
 	makedepends = gcc
 	depends = qt5-base
 	depends = qt5-multimedia
-	optdepends = qt5-olm-git
+	depends = qtkeychain-qt5
 	provides = libquotient
 	conflicts = libquotient
 	source = libquotient-git::git+https://github.com/quotient-im/libQuotient.git
 	sha512sums = SKIP
 
 pkgname = libquotient-git
-
