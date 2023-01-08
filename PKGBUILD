@@ -4,7 +4,7 @@ _pkgname=libretro-pcsx2
 pkgname=${_pkgname}-git
 provides=($_pkgname)
 conflicts=($_pkgname)
-pkgver=12920
+pkgver=r12920.3a80e0ff0
 pkgrel=1
 pkgdesc='Sony PlayStation 2 core'
 arch=('x86_64')
@@ -38,11 +38,16 @@ _srcdir="$_pkgname"
 
 pkgver() {
 	cd "$_srcdir"
-	git rev-list --count HEAD
+	( set -o pipefail
+		git describe --abbrev=8 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
 	cd "$_srcdir"
+	
+	sed '/set(CMAKE_C_COMPILER_LAUNCHER ccache)/d; /set(CMAKE_CXX_COMPILER_LAUNCHER ccache)/d' -i 'CMakeLists.txt'
 	
 	# https://github.com/libretro/LRPS2/issues/180
 	echo 'set_source_files_properties(FastJmp.cpp PROPERTIES COMPILE_FLAGS -fno-lto)' >> 'common/src/Utilities/CMakeLists.txt'
