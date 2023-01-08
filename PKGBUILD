@@ -34,11 +34,9 @@ pkgver(){
 	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
-	cd $pkgname
-	ls
-	sudo mkdir -p "/usr/bin/${pkgname}"
-	sudo cp -rf * "/usr/bin/${pkgname}"
-	sudo mv "/usr/bin/${pkgname}/enchiridion.sh" /usr/bin/
-	rm -rf $pkgname
+	cd "${pkgname}"
+	sudo mkdir -p /usr/bin/"${pkgname}"
+	sudo cp -rf * /usr/bin/"${pkgname}"
+	sudo mv /usr/bin/"${pkgname}"/enchiridion.sh /usr/bin/
 
 }
