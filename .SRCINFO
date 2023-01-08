@@ -1,6 +1,6 @@
 pkgbase = jq.sh-bin
 	pkgdesc = jq-in-shell integration library
-	pkgver = 0.1.0.r1
+	pkgver = 0.2.0.r1
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = jq.sh-bin
 	depends = jq
 	provides = jq.sh
 	conflicts = jq.sh
-	source = jq.sh-0.1.0.r1.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh-pkgbuild/-/package_files/55/download
-	sha256sums = 689bb2ee18df4b16cf2149dbc9f2ce4c34ec73e1eaa89ad1d4766d3b16f36fbc
+	source = jq.sh-0.2.0.r1.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh-pkgbuild/-/package_files/57/download
+	sha256sums = 67acba8c1f3cb2f5e85443ad70076608f95afde15277e3f4517baa0c87123618
 
 pkgname = jq.sh-bin
