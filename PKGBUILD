@@ -5,7 +5,7 @@
 
 # Maintainer: Prabuddh Mathur <prabuddhmathur2002@gmail.com>
 pkgname=enchiridion-robin-homer-git
-pkgver=1.0.r1.e6b14ab
+pkgver=1.0.r5.ed25171
 pkgrel=1
 epoch=
 pkgdesc="A script to run The Enchiridion of Epictetus narrated by Robin Homer of Vox Stoica on Youtube. Specific parts can be played along with any random part from it."
@@ -37,6 +37,6 @@ package() {
 	cd "${pkgname}"
 	sudo mkdir -p /usr/bin/"${pkgname}"
 	sudo cp -rf * /usr/bin/"${pkgname}"
-	sudo mv /usr/bin/"${pkgname}"/enchiridion.sh /usr/bin/
+	sudo mv /usr/bin/"${pkgname}"/enchiridion /usr/bin/
 
 }
