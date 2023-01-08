@@ -5,7 +5,7 @@
 
 pkgname=lyx
 pkgver=2.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('x86_64')
 url="https://www.lyx.org"
@@ -17,7 +17,7 @@ optdepends=('rcs: built-in version control system'
   'python: support for python scripts')
 license=('GPL')
 backup=('etc/lyx/lyxrc.dist')
-options=('emptydirs')
+options=('emptydirs' '!lto')
 source=(https://ftp.lip6.fr/pub/lyx/stable/${pkgver::4}x/lyx-${pkgver}-1.tar.gz{,.sig}
   lyxrc.dist)
 validpgpkeys=('FE66471B43559707AFDAD955DE7A44FAC7FB382D') # LyX Release Manager (Signing LyX tarballs and binaries) <sanda@lyx.org>
