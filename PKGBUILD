@@ -1,20 +1,20 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=slarchive
-pkgver=2.2
+pkgver=3.1
 pkgrel=1
 pkgdesc="A SeedLink client for archiving data streams."
 arch=("x86_64")
-url="https://ds.iris.edu/ds/nodes/dmc/software/downloads/slarchive/"
-license=('GPL3')
+url="https://github.com/EarthScope/slarchive"
+license=('Apache-2.0')
 depends=('libslink')
-source=("${pkgname}-${pkgver}.tar.gz::http://www.iris.edu/pub/programs/SeedLink/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d73c5d8865f0104984b229dfc626068dadce8332f7e034598dc8988125818573')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2b142e3292ffc6e4f4010e162d3f86beed8518967a770a4764b52d0f38cdf322')
 
 prepare() {
     cd "${pkgname}-${pkgver}/src"
-    sed -i 's|CFLAGS += -I../libslink||' Makefile
-    sed -i 's|GCCFLAGS = -O2 -Wall -I../libslink||' Makefile
-    sed -i 's|LDFLAGS = -L../libslink||' Makefile
+    sed -i 's|^CFLAGS .*||' Makefile
+    sed -i 's|^GCCFLAGS .*||' Makefile
+    sed -i 's|^LDFLAGS .*||' Makefile
 }
 
 build() {
