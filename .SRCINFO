@@ -1,5 +1,5 @@
 pkgbase = aarch64-gcc
-	pkgdesc = The GNU Compiler Collection - cross compiler for armv7l
+	pkgdesc = The GNU Compiler Collection - cross compiler for aarch64
 	pkgver = 12.2.1
 	pkgrel = 1
 	url = https://gcc.gnu.org/

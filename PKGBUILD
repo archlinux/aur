@@ -6,7 +6,7 @@ _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
 pkgver=12.2.1
 pkgrel=1
-pkgdesc='The GNU Compiler Collection - cross compiler for armv7l'
+pkgdesc='The GNU Compiler Collection - cross compiler for aarch64'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
@@ -38,8 +38,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
 	_CFLAGS_FOR_TARGET="-march=armv8-a -O2 -pipe -fstack-protector-strong -fno-plt -fexceptions \
-  -Wp,-D_FORTIFY_SOURCE=2 -Wformat \
-  -fstack-clash-protection"
+  -Wp,-D_FORTIFY_SOURCE=2 -Wformat -fstack-clash-protection"
 
 
   "$srcdir"/gcc/configure \
