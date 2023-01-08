@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=2
+pkgrel=3
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -83,7 +83,7 @@ md5sums=(SKIP SKIP)
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat' 'libtiff5')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
