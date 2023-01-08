@@ -1,14 +1,13 @@
 pkgbase = serenade.ai
 	pkgdesc = Serenade is the most powerful way to program using natural speech.
-	pkgver = 1.6.3
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://serenade.ai
 	install = serenadeai.install
 	arch = any
 	provides = serenade.ai
-	noextract = Serenade-1.6.3.AppImage
-	source = Serenade-1.6.3.AppImage::https://cdn.serenade.ai/app/Serenade-1.6.3.AppImage
-	sha1sums = 734857e0344c12dcfacf871505ba31b9750fe856
+	noextract = Serenade-2.0.2.AppImage
+	source = Serenade-2.0.2.AppImage::https://serenadecdn.com/app/Serenade-2.0.2.AppImage
+	sha1sums = 19361df2b91ca444400b4e7da368c52b4c5d32ec
 
 pkgname = serenade.ai
-
