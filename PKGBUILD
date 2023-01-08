@@ -1,8 +1,10 @@
 # Maintainer nfnty <arch at nfnty dot se>
 # Maintainer evorster <evorster at gmail dot com>
 
-pkgname=('mlt-git')
+_gitname='mlt'
 _srcname='mlt'
+pkgbase=$_gitname-git
+pkgname=('mlt-git')
 pkgdesc='Multimedia Framework'
 pkgver=r5946.1673114203.0b1d574c 
 pkgrel=1
@@ -36,21 +38,34 @@ makedepends=( 	'ladspa'
 		)
 
 provides=("${pkgname[0]%-git}") conflicts=("${pkgname[0]%-git}")
-source=(	"${_srcname}::git+${url}.git"
+source=(	"${_gitname}::git+${url}.git"
+		"git+https://gitlab.com/mattbas/glaxnimate.git"
 		)
-sha512sums=(	'SKIP'
+sha512sums=(	'SKIP' 'SKIP'
 		)
-pkgver(){ 	cd "${srcdir}/${_srcname}"
+pkgver(){ 	cd "${srcdir}/${_gitname}"
 		printf 'r%s.%s.%s\n' \
 		"$( git rev-list --count 'HEAD' )" \
     		"$( git log --max-count='1' --pretty='format:%ct' )" \
     		"$( git rev-parse --short 'HEAD' )"
 		}
 
-prepare(){ 	echo "Prepare"
-		cd ${srcdir}/${_srcname}/src/modules/glaxnimate
+prepare(){ 	cd "${srcdir}/${_gitname}"
+
+		echo "Initialize Submodules"
 		git submodule init
-		git submodule update
+
+		echo "Updating git submodule paths"
+		git config submodule.src/external/glaxnimate.url "$srcdir/glaxnimate"
+
+		echo "Updating git submodules"
+		git -c protocol.file.allow=always submodule update
+
+## Thanks to darling-git packager showing me how to do submodules. 
+## There are some examples on how to deal with recursion in there too.
+# Old way of doing the submodule
+#		cd ${srcdir}/${_gitname}/src/modules/glaxnimate
+#		git submodule update
 		}
 
 build(){ 	rm -rf build

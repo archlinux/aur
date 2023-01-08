@@ -32,6 +32,8 @@ pkgbase = mlt-git
 	provides = mlt
 	conflicts = mlt
 	source = mlt::git+https://github.com/mltframework/mlt.git
+	source = git+https://gitlab.com/mattbas/glaxnimate.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = mlt-git
