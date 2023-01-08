@@ -1,7 +1,7 @@
 pkgbase = bob
 	pkgdesc = A version manager for neovim
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MordechaiHadad/bob
 	arch = x86_64
 	license = MIT
