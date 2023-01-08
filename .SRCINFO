@@ -1,0 +1,16 @@
+pkgbase = spitbol-git
+	pkgdesc = An extremely high performance implementation of the SNOBOL4 language that brings raw power and speed to non-numeric computation.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/spitbol/x64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nasm
+	source = spitbol-git::git+https://github.com/spitbol/x64
+	source = git+https://github.com/spitbol/spitbol-docs
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spitbol-git
