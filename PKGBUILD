@@ -2,35 +2,39 @@
 _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
 license=(MIT)
 depends=(ipython python-tokenize-rt python-tomli)
-makedepends=(python-setuptools)
-checkdepends=(python-pytest yapf python-pydocstyle python-isort autopep8 flake8 mypy python-black python-autoflake mdformat pyupgrade blacken-docs python-pylint)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-jupytext yapf python-isort mypy flake8
+  python-black blacken-docs python-pydocstyle autopep8 pyupgrade mdformat
+  python-autoflake python-pylint ruff)
 optdepends=('python-black: toolchain support'
   'flake8: toolchain support'
   'python-isort: toolchain support'
   'mypy: toolchain support'
   'python-pylint: toolchain support'
   'pyupgrade: toolchain support')
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('907641d061685c82ae9897151e7a04014a5e3ab5f203cb2911befa85dde2b9a273d73c02c01ce6a617137870f0c4b845c11076843f1a10bf51eb5967d3550f0e')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('67c6e94d003f9f4414a9f5818766e77f2210ee4c249db6552e34ce327ef32f2c8fc15bed029de77daa86fc785643d220ebeafdafe191bfbf2d5b32213309bd49')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest tests -k 'not diff_present and not return_code and not version and not black and not pylint_works'
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest tests -k 'not return_code and not version and not black and not ruff_works'
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
