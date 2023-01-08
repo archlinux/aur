@@ -37,7 +37,3 @@ commit:
 .PHONY: push
 push:
 	git push 'ssh://aur@aur.archlinux.org/$(call escape,$(PKG_NAME)).git' "$$( git symbolic-ref HEAD ):master"
-
-.PHONY: clean
-clean:
-	find '$(call escape,$(this_dir))' -type f '-(' -name '*.tar.gz' -o -name '*.tar.zst' '-)' -delete
