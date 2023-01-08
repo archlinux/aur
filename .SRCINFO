@@ -1,7 +1,7 @@
 pkgbase = cn.com.10jqka
-	pkgdesc = cn.com.10jqka - a tool for scanning the stock infomation
+	pkgdesc = cn.com.10jqka(royalflush/tonghuashun/同花顺) - a tool for scanning the stock infomation.
 	pkgver = 2.7.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.10jqka.com.cn
 	install = cn.com.10jqka.install
 	arch = x86_64

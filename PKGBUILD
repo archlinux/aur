@@ -3,8 +3,8 @@
 pkgname='cn.com.10jqka'
 # the versin is from deb package
 pkgver=2.7.1.2
-pkgrel=2
-pkgdesc="cn.com.10jqka - a tool for scanning the stock infomation"
+pkgrel=3
+pkgdesc="cn.com.10jqka(royalflush/tonghuashun/同花顺) - a tool for scanning the stock infomation."
 arch=("x86_64")
 url="https://www.10jqka.com.cn"
 # url="http://activity.10jqka.com.cn/acmake/cache/1380.html"
