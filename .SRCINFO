@@ -1,13 +1,12 @@
 pkgbase = r-rsample
 	pkgdesc = General Resampling Infrastructure
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rsample
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-dplyr
-	depends = r-ellipsis
 	depends = r-furrr
 	depends = r-generics
 	depends = r-glue
