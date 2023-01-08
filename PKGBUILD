@@ -1,10 +1,10 @@
-pkgname=arkenfox-user.js
-pkgver=107.0
+_name=arkenfox
+_repo=user.js
+pkgname=${_name}-${_repo}
+pkgver=108.0
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
-_name="${pkgname%-*}"
-_repo="${pkgname#*-}"
 url="https://github.com/${_name}/${_repo}"
 license=('MIT')
 options=('!strip')
@@ -13,14 +13,14 @@ _snapshot="${_repo}-${pkgver}"
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-    "updater.patch"
-    "cleaner.patch"
+    "01-updater.patch"
+    "02-cleaner.patch"
 )
 
 sha256sums=(
-    '2561bd4197c241deceac754842f53347c8d0984ce3e0f8fd459d6096b81a462d'
-    '61d9058c971e732dfe7626851b4b2380622b931578fe009b7c5f143fb3135362'
-    '4d54a6c1787be81201e735cdd905181dc57d7906cb9b21419b236f3b8b6db983'
+    '758a008be37f0feae7fd9c82bba22b322e012bd13ffa7eb806626b2b5eb341fb'
+    'b959bcf913be4de147e2ef1cf9953bfa43ab9b5a26bfda9fb8f80cb452c97980'
+    'f1b3cbbc01c24a371970844a3bc3af129e85b35b46b3000c905bf7fe34205ffa'
 )
 
 prepare() {
@@ -30,17 +30,17 @@ prepare() {
 }
 
 package() {
-    local lib="${pkgdir}/usr/lib/${pkgname}"
-    local bin="${pkgdir}/usr/bin"
-    local updater="updater.sh"
-    local cleaner="prefsCleaner.sh"
-
-    install -dm755 "${bin}"
-    ln -s "${lib#"${pkgdir}"}/${updater}" "${bin}/${_name}-updater"
-    ln -s "${lib#"${pkgdir}"}/${cleaner}" "${bin}/${_name}-cleaner"
+    local lib="/usr/lib/${pkgname}"
+    local bin="/usr/bin"
+    install -dm755 "${pkgdir}"{"${lib}","${bin}"}
 
     cd "${_snapshot}"
-    install -Dm755 -t "${lib}" "${updater}" "${cleaner}"
-    install -Dm644 -t "${lib}" "user.js"
+    local updater="updater.sh"
+    local cleaner="prefsCleaner.sh"
+    install -Dm755 -t "${pkgdir}${lib}" "${updater}" "${cleaner}"
+    install -Dm644 -t "${pkgdir}${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"
+
+    ln -s "${lib}/${updater}" "${pkgdir}${bin}/${_name}-updater"
+    ln -s "${lib}/${cleaner}" "${pkgdir}${bin}/${_name}-cleaner"
 }
