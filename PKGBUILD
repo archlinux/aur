@@ -3,7 +3,7 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Text User Interface using Rich"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('python-aiohttp: for HTTP server'
   'python-msgpack: for MessagePack serializer'
   'python-httpx: for async support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e4d52537351f1638050da23ef400774266ad6ec23ce2fde024a34bc5363cd29bd8f65a7332b872b0a2ed43381c6dd88312d2417676a91506175a41922dcb6a26')
+sha512sums=('859836c869c02aeb02555510711335986f85dc593a83d206863fc077fd777e119fec2fbfae972bddb13f421129c99062abfd589917e675c78e9c62bad968788b')
 
 build() {
   cd ${_base}-${pkgver}
