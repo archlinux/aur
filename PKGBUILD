@@ -1,7 +1,7 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=jqp
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A TUI playground to experiment with jq"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b4e57b1c859f658b24934afd2835e9a5fbddff8404fa7a200d64e55d10665acb')
+sha256sums=('0039fe0d17be1931f03dcf236d1b5e280aeffb1070abecfecee3323eb2423d4c')
 
 build() {
 	cd "${pkgname}-${pkgver}"
