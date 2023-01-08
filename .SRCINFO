@@ -1,7 +1,7 @@
 pkgbase = xmcl-launcher-bin
 	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
 	pkgver = 0.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xmcl.app/
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = xmcl-launcher-bin
 	optdepends = jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)
 	optdepends = jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本
 	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.33.1/xmcl-0.33.1-amd64.deb
+	source = xmcl.png
 	sha256sums = 5ed62fa373fec0787ecda33c2cb1458e7e5bfcdced02c075643bf015bfe5ee8d
+	sha256sums = 7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742
 
 pkgname = xmcl-launcher-bin
