@@ -6,7 +6,7 @@ pkgbase = ps2-sdk
 	arch = x86_64
 	license = BSD
 	depends = ps2-toolchain
-	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk#tag=v1.3.0
+	source = ps2-sdk::git+https://github.com/ps2dev/ps2sdk#commit=e21d1bb80642ced81a1290550426ed29dc17c38e
 	source = lwip::git+https://github.com/ps2dev/lwip#branch=ps2-v2.0.3
 	sha256sums = SKIP
 	sha256sums = SKIP
