@@ -1,13 +1,13 @@
 pkgbase = playlist-maker-rs
 	pkgdesc = M3u playlist creator that uses query-like statments to find the requested songs, implemented in Rust
-	pkgver = 0.2.0
+	pkgver = 0.4.0.r10.363a44d
 	pkgrel = 1
 	url = https://github.com/FilipeMCruz/playlist-maker
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = 0.2.0.tar.gz::https://github.com/FilipeMCruz/playlist-maker/archive/v0.2.0.tar.gz
-	sha256sums = 13c0599da6ac0053ebd41e42811e05da6cfcc03179e19f03c8d9a71a6988ca18
+	source = 0.4.0.tar.gz::https://github.com/FilipeMCruz/playlist-maker/archive/v0.4.0.tar.gz
+	sha256sums = 05527060f6243e8ad2da128656426106c6ad29a80cd6764a6585eb5779de30e7
 
 pkgname = playlist-maker-rs

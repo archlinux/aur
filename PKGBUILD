@@ -1,9 +1,9 @@
 # Maintainer: Filipe Cruz <filipecruz@tuta.io>
 _pkgname=playlist-maker
 _binname=pl-mker
-_pkgver=0.2.0
+_pkgver=0.4.0
 pkgname=playlist-maker-rs
-pkgver=$_pkgver
+pkgver=0.4.0.r10.363a44d
 pkgrel=1
 pkgdesc='M3u playlist creator that uses query-like statments to find the requested songs, implemented in Rust'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/FilipeMCruz/playlist-maker"
 license=('MIT')
 makedepends=('cargo')
 source=("$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('13c0599da6ac0053ebd41e42811e05da6cfcc03179e19f03c8d9a71a6988ca18')
+sha256sums=('05527060f6243e8ad2da128656426106c6ad29a80cd6764a6585eb5779de30e7')
 
 pkgver() {
   cd "$_pkgname-$_pkgver"
