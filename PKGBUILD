@@ -1,7 +1,7 @@
 # Maintainer: Arun Mahapatra <arun@codito.in>
 
 pkgname=habito
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple commandline habits tracker."
 url="https://github.com/codito/habito"
@@ -9,9 +9,9 @@ license=("MIT")
 arch=("any")
 provides=("habito")
 makedepends=("python-setuptools")
-depends=("python" "python-click" "python-peewee>=3.0.15" "python-terminaltables")
+depends=("python>=3.5" "python-click" "python-peewee>=3.0.15" "python-terminaltables")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=("e41ccc9a9daa912ec0121cad3bff1075030937d5c91a972446514c3ee8cc53099f6bcbb5f8333111177e74ebd1c99303a6728ba879034a11029a2f31ed7f3a12")
+sha512sums=("78c39e1f18c8e0459001e6d7158886e403fc193c8c574063136df6e450e3308aeac4d4f70d57f4088caaaedf1be36717daec3dfab1feb89efb81708cf47c3ebd")
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
