@@ -1,7 +1,7 @@
 pkgbase = xppaut-bin
 	pkgdesc = Tool for simulating, animating, and analyzing dynamical systems
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.pitt.edu/~phase/bard/bardware/xpp/xpp.html
 	arch = i686
 	arch = x86_64
