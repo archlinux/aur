@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Library to access DVD disks. (GIT version)"
 arch=('x86_64')
 license=('GPL2')
-url='http://dvdnav.mplayerhq.hu'
+url='https://dvdnav.mplayerhq.hu'
 depends=('libdvdcss.so')
 makedepends=('git'
              'libdvdcss'
