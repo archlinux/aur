@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-space-invaders && ./space-invaders'
+Icon=/usr/share/pixmaps/rusted-space-invaders_icon.png
+Name=Rusted space-invaders
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Space invaders - written in Rust

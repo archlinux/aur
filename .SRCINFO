@@ -1,0 +1,15 @@
+pkgbase = rusted-space-invaders
+	pkgdesc = Space invaders written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/denix666/space-invaders
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/space-invaders/releases/download/v0.1.2/space-invaders_linux_x86_64.tar.gz
+	source = rusted-space-invaders_icon.png
+	source = rusted-space-invaders.desktop
+	sha256sums = 3136cc3c85a084d6febc6cd5753e1836853610241f38117f8e939f082ac683c8
+	sha256sums = 4cb7980b255c64d2bc3e4dc0e5f7015c203f704013714dfa5d166963119b0c08
+	sha256sums = 7c90612a5b7b070f30f294300f38dda1c11ba735f8c1b9d6a12ddc90c0715530
+
+pkgname = rusted-space-invaders
