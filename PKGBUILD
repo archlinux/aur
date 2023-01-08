@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
 license=('LGPL')
-url='http://www.videolan.org/developers/libaacs.html'
+url='https://www.videolan.org/developers/libaacs.html'
 depends=('libgcrypt'
          'libudfread.git'
          )
