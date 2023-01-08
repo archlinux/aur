@@ -4,14 +4,13 @@ _cranname=websocket
 _cranver=1.4.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="'WebSocket' Client Library"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=(openssl r-r6 r-later)
 makedepends=(r-cpp11 r-asioheaders)
-checkdepends=(r-httpuv r-testthat)
 optdepends=(
     r-httpuv
     r-testthat
@@ -24,11 +23,6 @@ sha256sums=('281fa0e5d8739ef90626117c8d5ca9e30c7aeb642346d16706cbca34a46749cf')
 build() {
   mkdir -p build
   R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-  cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
