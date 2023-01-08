@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='UDF reader. (GIT version)'
 arch=('x86_64')
 license=('LGPL2.1')
-url='http://git.videolan.org/?p=libudfread.git;a=summary'
+url='https://git.videolan.org/?p=libudfread.git;a=summary'
 depends=('glibc')
 makedepends=('git')
 provides=('libudfread'
