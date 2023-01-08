@@ -14,7 +14,7 @@ makedepends=('yarn' 'node-gyp' 'cargo')
 source=("git+https://github.com/Moosync/Moosync.git" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
 conflicts=("${_pkgname}")
 sha256sums=('SKIP'
-            '59f11f9e78486423dae41a54f553ef6658360a5b9df298b35b65b8093f065fb0'
+            '0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
             '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
             'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
