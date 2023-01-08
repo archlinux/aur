@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1330.e88c9da_5.8.6_arch1_1
+pkgver=r1536.9a225f4_6.1.3_arch1_1
 _updatedmodules="$(uname -r)/updates"
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -13,11 +13,15 @@ depends=('tbs-firmware')
 makedepends=('git' 'linux-headers' 'patchutils' 'perl-proc-processtable')
 provides=("$_pkgname")
 conflicts=('tbs-dvb-drivers')
+source=('kernel6.patch')
+sha256sums=('a8fdaff1a6a5ca98dd31cd5c215a0bb4d6b797a38c4056a6cfdd7c91c7c928ee')
 
 prepare() {
 
-    git clone https://github.com/tbsdtv/$_gitname.git
+	git clone https://github.com/tbsdtv/$_gitname.git
     git clone --depth=1 https://github.com/tbsdtv/$_pkgname.git -b latest "$srcdir/media"
+	cd "$srcdir"
+	patch -p0 -i ../kernel6.patch
 
 }
 
