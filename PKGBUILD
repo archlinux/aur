@@ -3,7 +3,7 @@
 #shellcheck disable=SC2015
 
 pkgname=upbge-git
-pkgver=124406.bec4dc092e6
+pkgver=126159.652481335f6
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -42,7 +42,7 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "b5c9bf4fa265389db4b3f23e96d74cc86c51d908b8943eb80967614d8af1ea1a"
-  "333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703"
+  "9fbaa455500a364bb9188524a31a5afca99036741500a5cebff568d0164f4514"
   "155c04f971d3f45618a89fa73d91e21ba493ae24029475e18192c49c3fcd8cb4"
   "6e7392cfb159165dfd63e0cc7858e1ffdabc2aae4126288aca6a15082d3c7efc")
 
