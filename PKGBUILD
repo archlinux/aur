@@ -1,6 +1,6 @@
 # Maintainer: RRRRRm <isxiongzj@gmail.com>
 pkgname=beslyric-for-x-git
-pkgver=v3.1.2.r177.g27a7e7d
+pkgver=v3.2.0.r2.g8b06a38
 pkgrel=1
 pkgdesc="An simple but useful lyrics generator, mainly for Netease Cloud Music."
 arch=('i686' 'x86_64')
