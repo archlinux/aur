@@ -1,3 +1,15 @@
+# 10.0.22-1 / 2023-01-08
+
+* bump to new library version
+	* major cmake rehaul, fixes several longstanding issues
+	* support for various new small Discord features
+	* various fixes
+	* see library changelog for full list
+* changes to upstream cmake changed way we deal with that
+	* all cmake speific patches have been dropped
+	* find_package should now wor as intended
+	* pkg-config should continue to work as before
+
 # 10.0.21-1 / 2022-11-02
 
 * bump to new library version
