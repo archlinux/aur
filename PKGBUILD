@@ -60,10 +60,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v6.1.2.arch1.r1140610.b7dc4d8e7fb1
+pkgver=6.1.4.arch1.r1140610.b7dc4d8e7fb1
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v6.1.2.arch1
+_srcver_tag=6.1.3.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -91,7 +91,6 @@ _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
     "${_reponame}::git+${_repo_url}#branch=master"
-    "${_reponame_arch}::git+${_repo_url_arch}"
     #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
@@ -103,7 +102,6 @@ validpgpkeys=(
     "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             '764d47db02fa8c09349408020f614b29b41657681f83f96c1ad150974515d6ae8515f5faa2e2fe3c451714928700ed54aa483fdfa3307bc3bb0ad8841edd7c3f')
 
@@ -120,8 +118,8 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
-    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
+    git remote add arch_stable "${_repo_url_arch}" || true
+    git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
 
     #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."

@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v6.1.2.arch1.r1140610.b7dc4d8e7fb1
+	pkgver = 6.1.4.arch1.r1140610.b7dc4d8e7fb1
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -21,14 +21,12 @@ pkgbase = linux-bcachefs-git
 	makedepends = git
 	options = !strip
 	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#branch=master
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 764d47db02fa8c09349408020f614b29b41657681f83f96c1ad150974515d6ae8515f5faa2e2fe3c451714928700ed54aa483fdfa3307bc3bb0ad8841edd7c3f
