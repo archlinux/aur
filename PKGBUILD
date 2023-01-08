@@ -2,7 +2,7 @@
 
 pkgname=gamescope-session-git
 _gitdir=gamescope-session
-pkgver=r83.38698c2
+pkgver=r89.dfef341
 pkgrel=1
 pkgdesc="Steam Big Picture Mode session based on gamescope for ChimeraOS"
 arch=('any')
@@ -27,5 +27,5 @@ pkgver() {
 package() {
 	cd "$srcdir/${_gitdir}"
   cp -rv ${srcdir}/${_gitdir}/usr ${pkgdir}/usr
-  cp ${srcdir}/${_gitdir}/LICENSE ${pkgdir}/usr/share/licenses/${_gitdir}/LICENSE
+  install -Dm644 ${srcdir}/${_gitdir}/LICENSE ${pkgdir}/usr/share/licenses/${_gitdir}/LICENSE
 }
