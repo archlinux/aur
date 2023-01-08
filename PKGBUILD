@@ -32,24 +32,24 @@ optdepends=('gstreamer: for HTML5 audio/video'
 options=('!strip')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/$_pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
-  git submodule init
-  git submodule update
+	cd "$srcdir/$_pkgname"
+	git submodule init
+	git submodule update
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make all
+	cd "$srcdir/$_pkgname"
+	make all
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make install PREFIX=/usr DESTDIR="${pkgdir}"
-  install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
-  install -m644 licenses/* "$pkgdir"/usr/share/licenses/$pkgname/
+	cd "$srcdir/$_pkgname"
+	make install PREFIX=/usr DESTDIR="${pkgdir}"
+	install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
+	install -m644 licenses/* "$pkgdir"/usr/share/licenses/$pkgname/
 }
