@@ -1,7 +1,7 @@
 pkgbase = r-ggside
 	pkgdesc = Side Grammar Graphics
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggside
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = r-ggside
 	depends = r-rlang
 	depends = r-scales
 	depends = r-tibble
+	depends = r-vctrs
 	optdepends = r-dplyr
 	optdepends = r-ggdendro
 	optdepends = r-knitr

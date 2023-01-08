@@ -4,7 +4,7 @@ _pkgname=ggside
 _pkgver=0.2.2
 pkgname=r-${_pkgname,,}
 pkgver=0.2.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Side Grammar Graphics'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-rlang
   r-scales
   r-tibble
+  r-vctrs
 )
 optdepends=(
   r-dplyr
