@@ -22,8 +22,6 @@ endef
 
 PKG_NAME := config-links
 
-this_dir := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
-
 .PHONY: DO
 DO:
 
@@ -32,7 +30,7 @@ all: package
 
 .PHONY: package
 package:
-	makepkg --clean --cleanbuild --force --syncdeps && makepkg --printsrcinfo > '$(call escape,$(this_dir))/.SRCINFO'
+	makepkg --clean --cleanbuild --force --syncdeps && makepkg --printsrcinfo > .SRCINFO
 
 .PHONY: commit
 commit:
