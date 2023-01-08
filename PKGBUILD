@@ -4,7 +4,7 @@ _pkgname=tidytree
 _pkgver=0.4.2
 pkgname=r-${_pkgname,,}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=3
 pkgdesc='A Tidy Tool for Phylogenetic Tree Data Manipulation'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,6 +12,7 @@ license=('Artistic2.0')
 depends=(
   r
   r-ape
+  r-cli
   r-dplyr
   r-lazyeval
   r-magrittr
