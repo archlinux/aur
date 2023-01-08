@@ -1,23 +1,25 @@
 pkgbase = r-officer
 	pkgdesc = Manipulation of Microsoft Word and PowerPoint Documents
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=officer
 	arch = any
 	license = GPL
 	depends = r
+	depends = r-openssl
 	depends = r-r6
 	depends = r-uuid
 	depends = r-xml2
 	depends = r-zip
 	optdepends = r-base64enc
 	optdepends = r-devemf
+	optdepends = r-doconv
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rsvg
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/officer_0.5.0.tar.gz
-	sha256sums = 0662fd634487bf1d8ff8e85f55749e6bc756daf4d7be8f3d96b5ac276fd175a6
+	source = https://cran.r-project.org/src/contrib/officer_0.5.1.tar.gz
+	sha256sums = 9cc0756c3a5b51e8e112759a86cde0b946b6b45d22ced95b1cfe0a55112c08e5
 
 pkgname = r-officer
