@@ -12,18 +12,18 @@ provides=(Ryujinx)
 conflicts=(Ryujinx)
 options=('!strip')
 source=("${url}/releases/download/${pkgver}/ryujinx-${pkgver}-linux_x64.tar.gz"
-        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx.desktop'
-        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-logo.svg'
-        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/ryujinx-mime.xml')
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/Ryujinx.desktop'
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/misc/Logo.svg'
+        'https://raw.githubusercontent.com/Ryujinx/Ryujinx/master/distribution/linux/mime/Ryujinx.xml')
 
 b2sums=('8c6c41a8e26320f6dbc3ffdd23a10a079f7f31776b3c782b61b2632e17a3ca80343ee5e027ac0fa38e3a9cc6a30800885363ace9a77515ad52e626f599cfaacd'
-        '56f1f5ce656d9b9c14ec79effe4c6498ddf26c325770d8463a1b0819fce00e6bbb005b8625c616c48d03551265fb6ce3ee94be79c187fcddcf9aeed99cffcbd5'
+        'ed7edb44c1b6ace90c00738754577b8779b34847e286662971ecc148871b1995698adcc4a0841b4bd7d804d1b0aee960565f9c68680abb9ade55f46fd89b1863'
         'f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996'
-        '8ad90ddda6b76e6661cd0c9c38f19906aa09b6f4ff1f9b21f739b490590001068bee4f3f985f41e67fd2092f6b361bb8a422702b4820915d2eec6233341d99b3')
+        '0002cccf2a3e9dec4b0646e8d50ed105dfd4544baf49ae4868cc2a0785839ab578171063b6149b54fee947a38d88bbd6552647f6c69c590acf8fd1b12835c67a')
 
 prepare() {
 	# avoid crash due to stack smashing detection (https://github.com/Ryujinx/Ryujinx/issues/3183#issuecomment-1292808614)
-	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' "${srcdir}/ryujinx.desktop"
+	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' "${srcdir}/Ryujinx.desktop"
 }
 
 package() {
@@ -37,7 +37,7 @@ package() {
 	mkdir --parents "${pkgdir}/usr/bin"
 	ln --symbolic "/opt/ryujinx/Ryujinx" "${pkgdir}/usr/bin/Ryujinx"
 	
-	install -D "${srcdir}/ryujinx.desktop" "${pkgdir}/usr/share/applications/ryujinx.desktop"
-	install -D "${srcdir}/ryujinx-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
-	install -D "${srcdir}/ryujinx-mime.xml" "${pkgdir}/usr/share/mime/packages/ryujinx.xml"
+	install -D "${srcdir}/Ryujinx.desktop" "${pkgdir}/usr/share/applications/Ryujinx.desktop"
+	install -D "${srcdir}/Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
+	install -D "${srcdir}/Ryujinx.xml" "${pkgdir}/usr/share/mime/packages/Ryujinx.xml"
 }
