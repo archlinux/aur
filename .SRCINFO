@@ -1,8 +1,8 @@
 pkgbase = tuxpaint
 	pkgdesc = Drawing program designed for young children
 	pkgver = 0.9.28
-	pkgrel = 1
-	url = http://tuxpaint.org/
+	pkgrel = 2
+	url = https://tuxpaint.org/
 	arch = x86_64
 	license = GPL
 	makedepends = gperf
@@ -22,6 +22,8 @@ pkgbase = tuxpaint
 	optdepends = python2: zh_tw font generator script
 	backup = etc/tuxpaint/tuxpaint.conf
 	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-0.9.28-sdl2.tar.gz
+	source = freetype2.patch
 	sha256sums = 4f1ed9330feab324070b93630d79ced50ccc4816ab76750119f012b5d904709d
+	sha256sums = SKIP
 
 pkgname = tuxpaint

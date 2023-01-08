@@ -1,0 +1,28 @@
+--- a/Makefile	2023-01-08 11:38:30.203521345 +0000
++++ b/Makefile	2023-01-08 12:03:51.732619208 +0000
+@@ -292,6 +292,7 @@
+ # SDL Pango is needed to render complex scripts like Thai and Arabic
+ SDL2_PANGO_LIB:=$(call linktest,SDL2_Pango,-lSDL2_Pango,$(SDL_LIBS))
+ NOPANGOFLAG:=$(if $(SDL2_PANGO_LIB),,-DNO_SDLPANGO$(warning -lSDL2_Pango failed, no scripts for you!))
++SDL2_PANGO_CFLAGS:=$(shell $(PKG_CONFIG) SDL2_Pango --cflags)
+ 
+ SDL_LIBS+=$(SDL_MIXER_LIB) $(SDL2_PANGO_LIB)
+ 
+@@ -1213,7 +1215,7 @@
+ 		src/get_fname.h src/debug.h
+ 	@echo
+ 	@echo "...Compiling font support..."
+-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(SDL2_PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-c src/fonts.c -o obj/fonts.o
+ 
+ obj/dirwalk.o:	src/dirwalk.c src/dirwalk.h src/progressbar.h src/fonts.h \
+@@ -1221,7 +1221,7 @@
+ 		src/debug.h
+ 	@echo
+ 	@echo "...Compiling directory-walking support..."
+-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(SDL2_PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-c src/dirwalk.c -o obj/dirwalk.o
+ 
+ obj/cursor.o:	src/cursor.c src/cursor.h src/debug.h
