@@ -36,5 +36,5 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dt "$pkgdir/usr/share/doc/ov" -m644 ov.yaml ov-less.yaml
+    install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 ov.yaml ov-less.yaml
 }
