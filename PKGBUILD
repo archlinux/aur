@@ -1,7 +1,7 @@
 # Maintainer: Keinv Yue <yuezk001@gmail.com>
 
-_pkgver="1.4.8+21snapshot.gd356839"
-_commit="d3568398591d3df2b56eab4d6ff9f48b187c0557"
+_pkgver="1.4.8+27snapshot.gb39983a"
+_commit="b39983a0f8ef48297ae0483501feeb9e84349821"
 pkgname=globalprotect-openconnect-git
 pkgver=${_pkgver}
 pkgrel=1
@@ -13,7 +13,7 @@ backup=(
     etc/gpservice/gp.conf
 )
 install=gp.install
-depends=('openconnect>=8.0.0' qt5-base qt5-webengine qt5-websockets)
+depends=('openconnect>=8.0.0' qt5-base qt5-webengine qt5-websockets qt5-tools qtkeychain-qt5)
 makedepends=(git cmake)
 conflicts=('globalprotect-openconnect')
 provides=('globalprotect-openconnect' 'gpclient' 'gpservice')
