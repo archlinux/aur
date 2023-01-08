@@ -4,7 +4,7 @@ _pkgname=ggbeeswarm
 _pkgver=0.7.1
 pkgname=r-${_pkgname,,}
 pkgver=0.7.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Categorical Scatter (Violin Point) Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-beeswarm
   r-ggplot2
+  r-lifecycle
   r-vipor
 )
 optdepends=(
