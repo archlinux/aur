@@ -17,7 +17,7 @@ makedepends=('git'
              'libxml2'
              'fontconfig'
              'libudfread-git'
-             'java-environment<=17'
+             'java-environment<=19'
              )
 optdepends=('libaacs: Enable AACS decryption'
             'java-runtime<=19: BD-J library'

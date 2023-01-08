@@ -10,7 +10,7 @@ pkgbase = libbluray-git
 	makedepends = libxml2
 	makedepends = fontconfig
 	makedepends = libudfread-git
-	makedepends = java-environment<=17
+	makedepends = java-environment<=19
 	depends = libxml2.so
 	depends = libfontconfig.so
 	depends = libfreetype.so
