@@ -5,7 +5,7 @@ _pkgname=topicmodels
 _pkgver=0.2-13
 pkgname=r-${_pkgname,,}
 pkgver=0.2.13
-pkgrel=1
+pkgrel=3
 pkgdesc='Topic Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,6 @@ depends=(
 )
 optdepends=(
   r-corpus.jss.papers
-  r-lasso2
   r-lattice
   r-lda
   r-oaiharvester

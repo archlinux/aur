@@ -1,7 +1,7 @@
 pkgbase = r-topicmodels
 	pkgdesc = Topic Models
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=topicmodels
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,6 @@ pkgbase = r-topicmodels
 	depends = r-tm
 	depends = gsl
 	optdepends = r-corpus.jss.papers
-	optdepends = r-lasso2
 	optdepends = r-lattice
 	optdepends = r-lda
 	optdepends = r-oaiharvester
