@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdcss-git
-pkgver=1.4.3.1.g812aacb
+pkgver=1.4.3.3.gd0b6a29
 pkgrel=1
 pkgdesc='A portable abstraction library for DVD decryption. (GIT version)'
 arch=('x86_64')
