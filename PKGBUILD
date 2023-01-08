@@ -17,7 +17,7 @@ install="$pkgname.install"
 
 _setvars() {
 	cd "$srcdir"
-	_full="xmcl-$pkgver"
+	_full="xmcl-$pkgver-x64"
 }
 
 pkgver() {
