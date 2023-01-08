@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec /usr/bin/electron20 /usr/lib/qqmusic/app.asar "$@"
+exec /usr/bin/electron22 /usr/lib/qqmusic/app.asar "$@"
