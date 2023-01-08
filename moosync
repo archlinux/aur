@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /opt/Moosync/resources/app.asar "$@"
+exec /opt/Moosync/moosync "$@"
