@@ -1,4 +1,4 @@
-From e2a95d65caa1a08fa18e3ceecdae26e3b658c74f Mon Sep 17 00:00:00 2001
+From 860330960bff0454841fbe8554a2630c9186af97 Mon Sep 17 00:00:00 2001
 From: David Rosca <nowrep@gmail.com>
 Date: Sun, 28 Aug 2022 10:15:16 +0200
 Subject: [PATCH] obs-ffmpeg: Make AMF encoder work on Linux
@@ -8,32 +8,564 @@ Only the fallback encoders are available (no texture support).
 Requires AMD proprietary Vulkan driver, using different driver
 will be detected on startup and the encoders disabled.
 ---
- plugins/obs-ffmpeg/CMakeLists.txt             |   3 +-
+ ...fmpeg-Make-AMF-encoder-work-on-Linux.patch | 520 ++++++++++++++++++
+ plugins/obs-ffmpeg/CMakeLists.txt             |   3 +
  .../obs-ffmpeg/obs-amf-test/CMakeLists.txt    |  11 +-
- .../obs-amf-test/obs-amf-test-linux.cpp       | 135 ++++++++++++++++++
+ .../obs-amf-test/obs-amf-test-linux.cpp       | 140 +++++
  plugins/obs-ffmpeg/obs-ffmpeg.c               |  10 +-
  plugins/obs-ffmpeg/texture-amf-opts.hpp       |   2 +-
- plugins/obs-ffmpeg/texture-amf.cpp            |  74 +++++++++-
- 6 files changed, 223 insertions(+), 12 deletions(-)
+ plugins/obs-ffmpeg/texture-amf.cpp            |  93 +++-
+ 7 files changed, 756 insertions(+), 23 deletions(-)
+ create mode 100644 0001-obs-ffmpeg-Make-AMF-encoder-work-on-Linux.patch
  create mode 100644 plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
 
+diff --git a/0001-obs-ffmpeg-Make-AMF-encoder-work-on-Linux.patch b/0001-obs-ffmpeg-Make-AMF-encoder-work-on-Linux.patch
+new file mode 100644
+index 000000000..d0eea6e5f
+--- /dev/null
++++ b/0001-obs-ffmpeg-Make-AMF-encoder-work-on-Linux.patch
+@@ -0,0 +1,520 @@
++From 18d5caa0866d5b44405208c1cd2125e65773f6df Mon Sep 17 00:00:00 2001
++From: David Rosca <nowrep@gmail.com>
++Date: Sun, 28 Aug 2022 10:15:16 +0200
++Subject: [PATCH] obs-ffmpeg: Make AMF encoder work on Linux
++
++Only the fallback encoders are available (no texture support).
++
++Requires AMD proprietary Vulkan driver, using different driver
++will be detected on startup and the encoders disabled.
++---
++ plugins/obs-ffmpeg/CMakeLists.txt             |   3 +
++ .../obs-ffmpeg/obs-amf-test/CMakeLists.txt    |  11 +-
++ .../obs-amf-test/obs-amf-test-linux.cpp       | 140 ++++++++++++++++++
++ plugins/obs-ffmpeg/obs-ffmpeg.c               |  10 +-
++ plugins/obs-ffmpeg/texture-amf-opts.hpp       |   2 +-
++ plugins/obs-ffmpeg/texture-amf.cpp            |  87 +++++++++--
++ 6 files changed, 237 insertions(+), 16 deletions(-)
++ create mode 100644 plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
++
++diff --git a/plugins/obs-ffmpeg/CMakeLists.txt b/plugins/obs-ffmpeg/CMakeLists.txt
++index 9671ef978..084c40747 100644
++--- a/plugins/obs-ffmpeg/CMakeLists.txt
+++++ b/plugins/obs-ffmpeg/CMakeLists.txt
++@@ -119,11 +119,14 @@ if(OS_WINDOWS)
++             obs-ffmpeg.rc)
++ 
++ elseif(OS_POSIX AND NOT OS_MACOS)
+++  add_subdirectory(obs-amf-test)
++   find_package(Libva REQUIRED)
++   find_package(Libpci REQUIRED)
++   target_sources(obs-ffmpeg PRIVATE obs-ffmpeg-vaapi.c vaapi-utils.c
++                                     vaapi-utils.h)
++   target_link_libraries(obs-ffmpeg PRIVATE Libva::va LIBPCI::LIBPCI)
+++  target_sources(obs-ffmpeg PRIVATE obs-ffmpeg-vaapi.c texture-amf.cpp)
+++  target_link_libraries(obs-ffmpeg PRIVATE LIBPCI::LIBPCI)
++ endif()
++ 
++ setup_plugin_target(obs-ffmpeg)
++diff --git a/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt b/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
++index 85347e73d..034b4cc3b 100644
++--- a/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
+++++ b/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
++@@ -3,8 +3,15 @@ project(obs-amf-test)
++ include_directories(SYSTEM ${CMAKE_SOURCE_DIR}/libobs)
++ 
++ add_executable(obs-amf-test)
++-target_sources(obs-amf-test PRIVATE obs-amf-test.cpp)
++-target_link_libraries(obs-amf-test d3d11 dxgi dxguid)
+++
+++if(OS_WINDOWS)
+++  target_sources(obs-amf-test PRIVATE obs-amf-test.cpp)
+++  target_link_libraries(obs-amf-test d3d11 dxgi dxguid)
+++elseif(OS_POSIX AND NOT OS_MACOS)
+++  find_package(Vulkan REQUIRED)
+++  target_sources(obs-amf-test PRIVATE obs-amf-test-linux.cpp)
+++  target_link_libraries(obs-amf-test dl Vulkan::Vulkan)
+++endif()
++ 
++ set_target_properties(obs-amf-test PROPERTIES FOLDER "plugins/obs-ffmpeg")
++ 
++diff --git a/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp b/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
++new file mode 100644
++index 000000000..018486e0c
++--- /dev/null
+++++ b/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
++@@ -0,0 +1,140 @@
+++#include "../external/AMF/include/core/Factory.h"
+++#include "../external/AMF/include/core/Trace.h"
+++#include "../external/AMF/include/components/VideoEncoderVCE.h"
+++#include "../external/AMF/include/components/VideoEncoderHEVC.h"
+++#include "../external/AMF/include/components/VideoEncoderAV1.h"
+++
+++#include <dlfcn.h>
+++#include <vulkan/vulkan.hpp>
+++
+++#include <string>
+++#include <map>
+++
+++using namespace amf;
+++
+++struct adapter_caps {
+++	bool is_amd = false;
+++	bool supports_avc = false;
+++	bool supports_hevc = false;
+++	bool supports_av1 = false;
+++};
+++
+++static AMFFactory *amf_factory = nullptr;
+++static std::map<uint32_t, adapter_caps> adapter_info;
+++
+++static bool has_encoder(AMFContextPtr &amf_context, const wchar_t *encoder_name)
+++{
+++	AMFComponentPtr encoder;
+++	AMF_RESULT res = amf_factory->CreateComponent(amf_context, encoder_name,
+++						      &encoder);
+++	return res == AMF_OK;
+++}
+++
+++static bool get_adapter_caps(uint32_t adapter_idx)
+++{
+++	if (adapter_idx)
+++		return false;
+++
+++	adapter_caps &caps = adapter_info[adapter_idx];
+++
+++	AMF_RESULT res;
+++	AMFContextPtr amf_context;
+++	res = amf_factory->CreateContext(&amf_context);
+++	if (res != AMF_OK)
+++		return true;
+++
+++	AMFContext1 *context1 = NULL;
+++	res = amf_context->QueryInterface(AMFContext1::IID(),
+++					  (void **)&context1);
+++	if (res != AMF_OK)
+++		return false;
+++	res = context1->InitVulkan(nullptr);
+++	context1->Release();
+++	if (res != AMF_OK)
+++		return false;
+++
+++	caps.is_amd = true;
+++	caps.supports_avc = has_encoder(amf_context, AMFVideoEncoderVCE_AVC);
+++	caps.supports_hevc = has_encoder(amf_context, AMFVideoEncoder_HEVC);
+++	caps.supports_av1 = has_encoder(amf_context, AMFVideoEncoder_AV1);
+++
+++	return true;
+++}
+++
+++int main(void)
+++try {
+++	AMF_RESULT res;
+++	VkResult vkres;
+++
+++	VkApplicationInfo app_info = {};
+++	app_info.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+++	app_info.pApplicationName = "obs-amf-test";
+++	app_info.apiVersion = VK_API_VERSION_1_2;
+++
+++	VkInstanceCreateInfo info = {};
+++	info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+++	info.pApplicationInfo = &app_info;
+++
+++	VkInstance instance;
+++	vkres = vkCreateInstance(&info, nullptr, &instance);
+++	if (vkres != VK_SUCCESS)
+++		throw "Failed to initialize Vulkan";
+++
+++	uint32_t device_count;
+++	vkres = vkEnumeratePhysicalDevices(instance, &device_count, nullptr);
+++	if (vkres != VK_SUCCESS || !device_count)
+++		throw "Failed to enumerate Vulkan devices";
+++
+++	VkPhysicalDevice *devices = new VkPhysicalDevice[device_count];
+++	vkres = vkEnumeratePhysicalDevices(instance, &device_count, devices);
+++	if (vkres != VK_SUCCESS)
+++		throw "Failed to enumerate Vulkan devices";
+++
+++	VkPhysicalDeviceDriverProperties driver_props = {};
+++	driver_props.sType =
+++		VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES;
+++	VkPhysicalDeviceProperties2 device_props = {};
+++	device_props.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
+++	device_props.pNext = &driver_props;
+++	vkGetPhysicalDeviceProperties2(devices[0], &device_props);
+++
+++	if (strcmp(driver_props.driverName, "AMD proprietary driver"))
+++		throw "Not running AMD proprietary driver";
+++
+++	vkDestroyInstance(instance, nullptr);
+++
+++	/* --------------------------------------------------------- */
+++	/* try initializing amf, I guess                             */
+++
+++	void *amf_module = dlopen(AMF_DLL_NAMEA, RTLD_LAZY);
+++	if (!amf_module)
+++		throw "Failed to load AMF lib";
+++
+++	auto init = (AMFInit_Fn)dlsym(amf_module, AMF_INIT_FUNCTION_NAME);
+++	if (!init)
+++		throw "Failed to get init func";
+++
+++	res = init(AMF_FULL_VERSION, &amf_factory);
+++	if (res != AMF_OK)
+++		throw "AMFInit failed";
+++
+++	uint32_t idx = 0;
+++	while (get_adapter_caps(idx++))
+++		;
+++
+++	for (auto &[idx, caps] : adapter_info) {
+++		printf("[%u]\n", idx);
+++		printf("is_amd=%s\n", caps.is_amd ? "true" : "false");
+++		printf("supports_avc=%s\n",
+++		       caps.supports_avc ? "true" : "false");
+++		printf("supports_hevc=%s\n",
+++		       caps.supports_hevc ? "true" : "false");
+++		printf("supports_av1=%s\n",
+++		       caps.supports_av1 ? "true" : "false");
+++	}
+++
+++	return 0;
+++} catch (const char *text) {
+++	printf("[error]\nstring=%s\n", text);
+++	return 0;
+++}
++diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
++index f1884c789..bce316d4f 100644
++--- a/plugins/obs-ffmpeg/obs-ffmpeg.c
+++++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
++@@ -339,6 +339,9 @@ static bool h264_vaapi_supported(void)
++ #ifdef _WIN32
++ extern void jim_nvenc_load(bool h264, bool hevc, bool av1);
++ extern void jim_nvenc_unload(void);
+++#endif
+++
+++#if defined(_WIN32) || defined(__linux__)
++ extern void amf_load(void);
++ extern void amf_unload(void);
++ #endif
++@@ -408,7 +411,7 @@ bool obs_module_load(void)
++ #endif
++ 	}
++ 
++-#ifdef _WIN32
+++#if defined(_WIN32) || defined(__linux__)
++ 	amf_load();
++ #endif
++ 
++@@ -440,8 +443,11 @@ void obs_module_unload(void)
++ 	obs_ffmpeg_unload_logging();
++ #endif
++ 
++-#ifdef _WIN32
+++#if defined(_WIN32) || defined(__linux__)
++ 	amf_unload();
+++#endif
+++
+++#ifdef _WIN32
++ 	jim_nvenc_unload();
++ #endif
++ }
++diff --git a/plugins/obs-ffmpeg/texture-amf-opts.hpp b/plugins/obs-ffmpeg/texture-amf-opts.hpp
++index b1c37d200..d28e3f77e 100644
++--- a/plugins/obs-ffmpeg/texture-amf-opts.hpp
+++++ b/plugins/obs-ffmpeg/texture-amf-opts.hpp
++@@ -321,7 +321,7 @@ static void amf_apply_opt(amf_base *enc, obs_option *opt)
++ 			val = atoi(opt->value);
++ 		}
++ 
++-		os_utf8_to_wcs(opt->name, 0, wname, _countof(wname));
+++		os_utf8_to_wcs(opt->name, 0, wname, amf_countof(wname));
++ 		if (is_bool) {
++ 			bool bool_val = (bool)val;
++ 			set_amf_property(enc, wname, bool_val);
++diff --git a/plugins/obs-ffmpeg/texture-amf.cpp b/plugins/obs-ffmpeg/texture-amf.cpp
++index 7916cf85d..f1df1f2cc 100644
++--- a/plugins/obs-ffmpeg/texture-amf.cpp
+++++ b/plugins/obs-ffmpeg/texture-amf.cpp
++@@ -20,6 +20,7 @@
++ #include "external/AMF/include/core/Factory.h"
++ #include "external/AMF/include/core/Trace.h"
++ 
+++#ifdef _WIN32
++ #include <dxgi.h>
++ #include <d3d11.h>
++ #include <d3d11_1.h>
++@@ -27,6 +28,8 @@
++ #include <util/windows/device-enum.h>
++ #include <util/windows/HRError.hpp>
++ #include <util/windows/ComPtr.hpp>
+++#endif
+++
++ #include <util/platform.h>
++ #include <util/util.hpp>
++ #include <util/pipe.h>
++@@ -57,8 +60,10 @@ struct amf_error {
++ 
++ struct handle_tex {
++ 	uint32_t handle;
+++#ifdef _WIN32
++ 	ComPtr<ID3D11Texture2D> tex;
++ 	ComPtr<IDXGIKeyedMutex> km;
+++#endif
++ };
++ 
++ struct adapter_caps {
++@@ -74,7 +79,7 @@ static std::map<uint32_t, adapter_caps> caps;
++ static bool h264_supported = false;
++ static AMFFactory *amf_factory = nullptr;
++ static AMFTrace *amf_trace = nullptr;
++-static HMODULE amf_module = nullptr;
+++static void *amf_module = nullptr;
++ static uint64_t amf_version = 0;
++ 
++ /* ========================================================================= */
++@@ -122,9 +127,11 @@ struct amf_base {
++ 	virtual void init() = 0;
++ };
++ 
++-using d3dtex_t = ComPtr<ID3D11Texture2D>;
++ using buf_t = std::vector<uint8_t>;
++ 
+++#ifdef _WIN32
+++using d3dtex_t = ComPtr<ID3D11Texture2D>;
+++
++ struct amf_texencode : amf_base, public AMFSurfaceObserver {
++ 	volatile bool destroying = false;
++ 
++@@ -161,6 +168,7 @@ struct amf_texencode : amf_base, public AMFSurfaceObserver {
++ 			throw amf_error("InitDX11 failed", res);
++ 	}
++ };
+++#endif
++ 
++ struct amf_fallback : amf_base, public AMFSurfaceObserver {
++ 	volatile bool destroying = false;
++@@ -188,9 +196,21 @@ struct amf_fallback : amf_base, public AMFSurfaceObserver {
++ 
++ 	void init() override
++ 	{
+++#if defined(_WIN32)
++ 		AMF_RESULT res = amf_context->InitDX11(nullptr, AMF_DX11_1);
++ 		if (res != AMF_OK)
++ 			throw amf_error("InitDX11 failed", res);
+++#elif defined(__linux__)
+++		AMFContext1 *context1 = NULL;
+++		AMF_RESULT res = amf_context->QueryInterface(
+++			AMFContext1::IID(), (void **)&context1);
+++		if (res != AMF_OK)
+++			throw amf_error("CreateContext1 failed", res);
+++		res = context1->InitVulkan(nullptr);
+++		context1->Release();
+++		if (res != AMF_OK)
+++			throw amf_error("InitVulkan failed", res);
+++#endif
++ 	}
++ };
++ 
++@@ -249,6 +269,7 @@ static void set_amf_property(amf_base *enc, const wchar_t *name, const T &value)
++ /* ------------------------------------------------------------------------- */
++ /* Implementation                                                            */
++ 
+++#ifdef _WIN32
++ static HMODULE get_lib(const char *lib)
++ {
++ 	HMODULE mod = GetModuleHandleA(lib);
++@@ -395,6 +416,7 @@ static void get_tex_from_handle(amf_texencode *enc, uint32_t handle,
++ 	*km_out = km.Detach();
++ 	*tex_out = tex.Detach();
++ }
+++#endif
++ 
++ static constexpr amf_int64 macroblock_size = 16;
++ 
++@@ -640,6 +662,7 @@ static void amf_encode_base(amf_base *enc, AMFSurface *amf_surf,
++ static bool amf_encode_tex(void *data, uint32_t handle, int64_t pts,
++ 			   uint64_t lock_key, uint64_t *next_key,
++ 			   encoder_packet *packet, bool *received_packet)
+++#ifdef _WIN32
++ try {
++ 	amf_texencode *enc = (amf_texencode *)data;
++ 	ID3D11DeviceContext *context = enc->context;
++@@ -716,6 +739,18 @@ try {
++ 	*received_packet = false;
++ 	return false;
++ }
+++#else
+++{
+++	UNUSED_PARAMETER(data);
+++	UNUSED_PARAMETER(handle);
+++	UNUSED_PARAMETER(pts);
+++	UNUSED_PARAMETER(lock_key);
+++	UNUSED_PARAMETER(next_key);
+++	UNUSED_PARAMETER(packet);
+++	UNUSED_PARAMETER(received_packet);
+++	return false;
+++}
+++#endif
++ 
++ static buf_t alloc_buf(amf_fallback *enc)
++ {
++@@ -1406,6 +1441,7 @@ static void amf_avc_create_internal(amf_base *enc, obs_data_t *settings)
++ 
++ static void *amf_avc_create_texencode(obs_data_t *settings,
++ 				      obs_encoder_t *encoder)
+++#ifdef _WIN32
++ try {
++ 	check_texture_encode_capability(encoder, amf_codec_type::AVC);
++ 
++@@ -1428,6 +1464,12 @@ try {
++ 	blog(LOG_ERROR, "[texture-amf-h264] %s: %s", __FUNCTION__, err);
++ 	return obs_encoder_create_rerouted(encoder, "h264_fallback_amf");
++ }
+++#else
+++{
+++	UNUSED_PARAMETER(settings);
+++	return obs_encoder_create_rerouted(encoder, "h264_fallback_amf");
+++}
+++#endif
++ 
++ static void *amf_avc_create_fallback(obs_data_t *settings,
++ 				     obs_encoder_t *encoder)
++@@ -1748,6 +1790,7 @@ static void amf_hevc_create_internal(amf_base *enc, obs_data_t *settings)
++ 
++ static void *amf_hevc_create_texencode(obs_data_t *settings,
++ 				       obs_encoder_t *encoder)
+++#ifdef _WIN32
++ try {
++ 	check_texture_encode_capability(encoder, amf_codec_type::HEVC);
++ 
++@@ -1770,6 +1813,12 @@ try {
++ 	blog(LOG_ERROR, "[texture-amf-h265] %s: %s", __FUNCTION__, err);
++ 	return obs_encoder_create_rerouted(encoder, "h265_fallback_amf");
++ }
+++#else
+++{
+++	UNUSED_PARAMETER(settings);
+++	return obs_encoder_create_rerouted(encoder, "h265_fallback_amf");
+++}
+++#endif
++ 
++ static void *amf_hevc_create_fallback(obs_data_t *settings,
++ 				      obs_encoder_t *encoder)
++@@ -2047,6 +2096,7 @@ static void amf_av1_create_internal(amf_base *enc, obs_data_t *settings)
++ 
++ static void *amf_av1_create_texencode(obs_data_t *settings,
++ 				      obs_encoder_t *encoder)
+++#ifdef _WIN32
++ try {
++ 	check_texture_encode_capability(encoder, amf_codec_type::AV1);
++ 
++@@ -2069,6 +2119,12 @@ try {
++ 	blog(LOG_ERROR, "[texture-amf-av1] %s: %s", __FUNCTION__, err);
++ 	return obs_encoder_create_rerouted(encoder, "av1_fallback_amf");
++ }
+++#else
+++{
+++	UNUSED_PARAMETER(settings);
+++	return obs_encoder_create_rerouted(encoder, "av1_fallback_amf");
+++}
+++#endif
++ 
++ static void *amf_av1_create_fallback(obs_data_t *settings,
++ 				     obs_encoder_t *encoder)
++@@ -2151,6 +2207,12 @@ static void register_av1()
++ /* ========================================================================= */
++ /* Global Stuff                                                              */
++ 
+++#ifdef _WIN32
+++#define OBS_AMF_TEST "obs-amf-test.exe"
+++#else
+++#define OBS_AMF_TEST "obs-amf-test"
+++#endif
+++
++ static bool enum_luids(void *param, uint32_t idx, uint64_t luid)
++ {
++ 	std::stringstream &cmd = *(std::stringstream *)param;
++@@ -2162,6 +2224,7 @@ static bool enum_luids(void *param, uint32_t idx, uint64_t luid)
++ extern "C" void amf_load(void)
++ try {
++ 	AMF_RESULT res;
+++#ifdef _WIN32
++ 	HMODULE amf_module_test;
++ 
++ 	/* Check if the DLL is present before running the more expensive */
++@@ -2171,18 +2234,20 @@ try {
++ 	if (!amf_module_test)
++ 		throw "No AMF library";
++ 	FreeLibrary(amf_module_test);
+++#else
+++	void *amf_module_test = os_dlopen(AMF_DLL_NAMEA);
+++	if (!amf_module_test)
+++		throw "No AMF library";
+++	os_dlclose(amf_module_test);
+++#endif
++ 
++ 	/* ----------------------------------- */
++ 	/* Check for supported codecs          */
++ 
++-	BPtr<char> test_exe = os_get_executable_path_ptr("obs-amf-test.exe");
++-	std::stringstream cmd;
+++	BPtr<char> test_exe = os_get_executable_path_ptr(OBS_AMF_TEST);
++ 	std::string caps_str;
++ 
++-	cmd << test_exe;
++-	enum_graphics_device_luids(enum_luids, &cmd);
++-
++-	os_process_pipe_t *pp = os_process_pipe_create(cmd.str().c_str(), "r");
+++	os_process_pipe_t *pp = os_process_pipe_create(test_exe, "r");
++ 	if (!pp)
++ 		throw "Failed to launch the AMF test process I guess";
++ 
++@@ -2240,12 +2305,12 @@ try {
++ 	/* ----------------------------------- */
++ 	/* Init AMF                            */
++ 
++-	amf_module = LoadLibraryW(AMF_DLL_NAME);
+++	amf_module = os_dlopen(AMF_DLL_NAMEA);
++ 	if (!amf_module)
++ 		throw "AMF library failed to load";
++ 
++ 	AMFInit_Fn init =
++-		(AMFInit_Fn)GetProcAddress(amf_module, AMF_INIT_FUNCTION_NAME);
+++		(AMFInit_Fn)os_dlsym(amf_module, AMF_INIT_FUNCTION_NAME);
++ 	if (!init)
++ 		throw "Failed to get AMFInit address";
++ 
++@@ -2257,7 +2322,7 @@ try {
++ 	if (res != AMF_OK)
++ 		throw amf_error("GetTrace failed", res);
++ 
++-	AMFQueryVersion_Fn get_ver = (AMFQueryVersion_Fn)GetProcAddress(
+++	AMFQueryVersion_Fn get_ver = (AMFQueryVersion_Fn)os_dlsym(
++ 		amf_module, AMF_QUERY_VERSION_FUNCTION_NAME);
++ 	if (!get_ver)
++ 		throw "Failed to get AMFQueryVersion address";
++-- 
++2.39.0
++
 diff --git a/plugins/obs-ffmpeg/CMakeLists.txt b/plugins/obs-ffmpeg/CMakeLists.txt
-index 98b88876d13d5..83d61c218a759 100644
+index 9671ef978..084c40747 100644
 --- a/plugins/obs-ffmpeg/CMakeLists.txt
 +++ b/plugins/obs-ffmpeg/CMakeLists.txt
-@@ -112,8 +112,9 @@ if(OS_WINDOWS)
-                        jim-nvenc.h jim-nvenc-helpers.c obs-ffmpeg.rc)
+@@ -119,11 +119,14 @@ if(OS_WINDOWS)
+             obs-ffmpeg.rc)
  
  elseif(OS_POSIX AND NOT OS_MACOS)
 +  add_subdirectory(obs-amf-test)
+   find_package(Libva REQUIRED)
    find_package(Libpci REQUIRED)
--  target_sources(obs-ffmpeg PRIVATE obs-ffmpeg-vaapi.c)
+   target_sources(obs-ffmpeg PRIVATE obs-ffmpeg-vaapi.c vaapi-utils.c
+                                     vaapi-utils.h)
+   target_link_libraries(obs-ffmpeg PRIVATE Libva::va LIBPCI::LIBPCI)
 +  target_sources(obs-ffmpeg PRIVATE obs-ffmpeg-vaapi.c texture-amf.cpp)
-   target_link_libraries(obs-ffmpeg PRIVATE LIBPCI::LIBPCI)
++  target_link_libraries(obs-ffmpeg PRIVATE LIBPCI::LIBPCI)
  endif()
  
+ setup_plugin_target(obs-ffmpeg)
 diff --git a/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt b/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
-index 85347e73dfeaf..034b4cc3b053c 100644
+index 85347e73d..034b4cc3b 100644
 --- a/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
 +++ b/plugins/obs-ffmpeg/obs-amf-test/CMakeLists.txt
 @@ -3,8 +3,15 @@ project(obs-amf-test)
@@ -56,14 +588,15 @@ index 85347e73dfeaf..034b4cc3b053c 100644
  
 diff --git a/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp b/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
 new file mode 100644
-index 0000000000000..263103b7104b7
+index 000000000..018486e0c
 --- /dev/null
 +++ b/plugins/obs-ffmpeg/obs-amf-test/obs-amf-test-linux.cpp
-@@ -0,0 +1,135 @@
+@@ -0,0 +1,140 @@
 +#include "../external/AMF/include/core/Factory.h"
 +#include "../external/AMF/include/core/Trace.h"
 +#include "../external/AMF/include/components/VideoEncoderVCE.h"
 +#include "../external/AMF/include/components/VideoEncoderHEVC.h"
++#include "../external/AMF/include/components/VideoEncoderAV1.h"
 +
 +#include <dlfcn.h>
 +#include <vulkan/vulkan.hpp>
@@ -77,6 +610,7 @@ index 0000000000000..263103b7104b7
 +	bool is_amd = false;
 +	bool supports_avc = false;
 +	bool supports_hevc = false;
++	bool supports_av1 = false;
 +};
 +
 +static AMFFactory *amf_factory = nullptr;
@@ -116,6 +650,7 @@ index 0000000000000..263103b7104b7
 +	caps.is_amd = true;
 +	caps.supports_avc = has_encoder(amf_context, AMFVideoEncoderVCE_AVC);
 +	caps.supports_hevc = has_encoder(amf_context, AMFVideoEncoder_HEVC);
++	caps.supports_av1 = has_encoder(amf_context, AMFVideoEncoder_AV1);
 +
 +	return true;
 +}
@@ -188,6 +723,8 @@ index 0000000000000..263103b7104b7
 +		       caps.supports_avc ? "true" : "false");
 +		printf("supports_hevc=%s\n",
 +		       caps.supports_hevc ? "true" : "false");
++		printf("supports_av1=%s\n",
++		       caps.supports_av1 ? "true" : "false");
 +	}
 +
 +	return 0;
@@ -196,12 +733,12 @@ index 0000000000000..263103b7104b7
 +	return 0;
 +}
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
-index 1d1131d1355fb..08d234aab6aab 100644
+index f1884c789..bce316d4f 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
-@@ -294,6 +294,9 @@ static bool vaapi_supported(void)
+@@ -339,6 +339,9 @@ static bool h264_vaapi_supported(void)
  #ifdef _WIN32
- extern void jim_nvenc_load(bool h264, bool hevc);
+ extern void jim_nvenc_load(bool h264, bool hevc, bool av1);
  extern void jim_nvenc_unload(void);
 +#endif
 +
@@ -209,7 +746,7 @@ index 1d1131d1355fb..08d234aab6aab 100644
  extern void amf_load(void);
  extern void amf_unload(void);
  #endif
-@@ -356,7 +359,7 @@ bool obs_module_load(void)
+@@ -408,7 +411,7 @@ bool obs_module_load(void)
  #endif
  	}
  
@@ -218,7 +755,7 @@ index 1d1131d1355fb..08d234aab6aab 100644
  	amf_load();
  #endif
  
-@@ -380,8 +383,11 @@ void obs_module_unload(void)
+@@ -440,8 +443,11 @@ void obs_module_unload(void)
  	obs_ffmpeg_unload_logging();
  #endif
  
@@ -232,10 +769,10 @@ index 1d1131d1355fb..08d234aab6aab 100644
  #endif
  }
 diff --git a/plugins/obs-ffmpeg/texture-amf-opts.hpp b/plugins/obs-ffmpeg/texture-amf-opts.hpp
-index b8270290955d1..3cc4e1cd19d07 100644
+index b1c37d200..d28e3f77e 100644
 --- a/plugins/obs-ffmpeg/texture-amf-opts.hpp
 +++ b/plugins/obs-ffmpeg/texture-amf-opts.hpp
-@@ -261,7 +261,7 @@ static void amf_apply_opt(amf_base *enc, obs_option *opt)
+@@ -321,7 +321,7 @@ static void amf_apply_opt(amf_base *enc, obs_option *opt)
  			val = atoi(opt->value);
  		}
  
@@ -245,10 +782,10 @@ index b8270290955d1..3cc4e1cd19d07 100644
  			bool bool_val = (bool)val;
  			set_amf_property(enc, wname, bool_val);
 diff --git a/plugins/obs-ffmpeg/texture-amf.cpp b/plugins/obs-ffmpeg/texture-amf.cpp
-index a0e7a8a16cfa3..2a73def3ab309 100644
+index 7916cf85d..201be298c 100644
 --- a/plugins/obs-ffmpeg/texture-amf.cpp
 +++ b/plugins/obs-ffmpeg/texture-amf.cpp
-@@ -19,12 +19,15 @@
+@@ -20,6 +20,7 @@
  #include "external/AMF/include/core/Factory.h"
  #include "external/AMF/include/core/Trace.h"
  
@@ -256,7 +793,8 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  #include <dxgi.h>
  #include <d3d11.h>
  #include <d3d11_1.h>
- 
+@@ -27,6 +28,8 @@
+ #include <util/windows/device-enum.h>
  #include <util/windows/HRError.hpp>
  #include <util/windows/ComPtr.hpp>
 +#endif
@@ -264,7 +802,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  #include <util/platform.h>
  #include <util/util.hpp>
  #include <util/pipe.h>
-@@ -55,8 +58,10 @@ struct amf_error {
+@@ -57,8 +60,10 @@ struct amf_error {
  
  struct handle_tex {
  	uint32_t handle;
@@ -275,7 +813,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  };
  
  struct adapter_caps {
-@@ -71,7 +76,7 @@ static std::map<uint32_t, adapter_caps> caps;
+@@ -74,7 +79,7 @@ static std::map<uint32_t, adapter_caps> caps;
  static bool h264_supported = false;
  static AMFFactory *amf_factory = nullptr;
  static AMFTrace *amf_trace = nullptr;
@@ -284,7 +822,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  static uint64_t amf_version = 0;
  
  /* ========================================================================= */
-@@ -118,9 +123,11 @@ struct amf_base {
+@@ -122,9 +127,11 @@ struct amf_base {
  	virtual void init() = 0;
  };
  
@@ -297,7 +835,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  struct amf_texencode : amf_base, public AMFSurfaceObserver {
  	volatile bool destroying = false;
  
-@@ -157,6 +164,7 @@ struct amf_texencode : amf_base, public AMFSurfaceObserver {
+@@ -161,6 +168,7 @@ struct amf_texencode : amf_base, public AMFSurfaceObserver {
  			throw amf_error("InitDX11 failed", res);
  	}
  };
@@ -305,7 +843,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  
  struct amf_fallback : amf_base, public AMFSurfaceObserver {
  	volatile bool destroying = false;
-@@ -184,9 +192,21 @@ struct amf_fallback : amf_base, public AMFSurfaceObserver {
+@@ -188,9 +196,21 @@ struct amf_fallback : amf_base, public AMFSurfaceObserver {
  
  	void init() override
  	{
@@ -327,7 +865,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  	}
  };
  
-@@ -236,6 +256,7 @@ static void set_amf_property(amf_base *enc, const wchar_t *name, const T &value)
+@@ -249,6 +269,7 @@ static void set_amf_property(amf_base *enc, const wchar_t *name, const T &value)
  /* ------------------------------------------------------------------------- */
  /* Implementation                                                            */
  
@@ -335,7 +873,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  static HMODULE get_lib(const char *lib)
  {
  	HMODULE mod = GetModuleHandleA(lib);
-@@ -382,6 +403,7 @@ static void get_tex_from_handle(amf_texencode *enc, uint32_t handle,
+@@ -395,6 +416,7 @@ static void get_tex_from_handle(amf_texencode *enc, uint32_t handle,
  	*km_out = km.Detach();
  	*tex_out = tex.Detach();
  }
@@ -343,7 +881,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  
  static constexpr amf_int64 macroblock_size = 16;
  
-@@ -548,6 +570,7 @@ static void amf_encode_base(amf_base *enc, AMFSurface *amf_surf,
+@@ -640,6 +662,7 @@ static void amf_encode_base(amf_base *enc, AMFSurface *amf_surf,
  static bool amf_encode_tex(void *data, uint32_t handle, int64_t pts,
  			   uint64_t lock_key, uint64_t *next_key,
  			   encoder_packet *packet, bool *received_packet)
@@ -351,7 +889,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  try {
  	amf_texencode *enc = (amf_texencode *)data;
  	ID3D11DeviceContext *context = enc->context;
-@@ -624,6 +647,18 @@ try {
+@@ -716,6 +739,18 @@ try {
  	*received_packet = false;
  	return false;
  }
@@ -370,15 +908,15 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  
  static buf_t alloc_buf(amf_fallback *enc)
  {
-@@ -1247,6 +1282,7 @@ static void amf_avc_create_internal(amf_base *enc, obs_data_t *settings)
+@@ -1406,6 +1441,7 @@ static void amf_avc_create_internal(amf_base *enc, obs_data_t *settings)
  
  static void *amf_avc_create_texencode(obs_data_t *settings,
  				      obs_encoder_t *encoder)
 +#ifdef _WIN32
  try {
- 	check_texture_encode_capability(encoder, false);
+ 	check_texture_encode_capability(encoder, amf_codec_type::AVC);
  
-@@ -1269,6 +1305,12 @@ try {
+@@ -1428,6 +1464,12 @@ try {
  	blog(LOG_ERROR, "[texture-amf-h264] %s: %s", __FUNCTION__, err);
  	return obs_encoder_create_rerouted(encoder, "h264_fallback_amf");
  }
@@ -391,15 +929,15 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  
  static void *amf_avc_create_fallback(obs_data_t *settings,
  				     obs_encoder_t *encoder)
-@@ -1579,6 +1621,7 @@ static void amf_hevc_create_internal(amf_base *enc, obs_data_t *settings)
+@@ -1748,6 +1790,7 @@ static void amf_hevc_create_internal(amf_base *enc, obs_data_t *settings)
  
  static void *amf_hevc_create_texencode(obs_data_t *settings,
  				       obs_encoder_t *encoder)
 +#ifdef _WIN32
  try {
- 	check_texture_encode_capability(encoder, true);
+ 	check_texture_encode_capability(encoder, amf_codec_type::HEVC);
  
-@@ -1601,6 +1644,12 @@ try {
+@@ -1770,6 +1813,12 @@ try {
  	blog(LOG_ERROR, "[texture-amf-h265] %s: %s", __FUNCTION__, err);
  	return obs_encoder_create_rerouted(encoder, "h265_fallback_amf");
  }
@@ -412,16 +950,44 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  
  static void *amf_hevc_create_fallback(obs_data_t *settings,
  				      obs_encoder_t *encoder)
-@@ -1675,9 +1724,16 @@ static void register_hevc()
+@@ -2047,6 +2096,7 @@ static void amf_av1_create_internal(amf_base *enc, obs_data_t *settings)
+ 
+ static void *amf_av1_create_texencode(obs_data_t *settings,
+ 				      obs_encoder_t *encoder)
++#ifdef _WIN32
+ try {
+ 	check_texture_encode_capability(encoder, amf_codec_type::AV1);
+ 
+@@ -2069,6 +2119,12 @@ try {
+ 	blog(LOG_ERROR, "[texture-amf-av1] %s: %s", __FUNCTION__, err);
+ 	return obs_encoder_create_rerouted(encoder, "av1_fallback_amf");
+ }
++#else
++{
++	UNUSED_PARAMETER(settings);
++	return obs_encoder_create_rerouted(encoder, "av1_fallback_amf");
++}
++#endif
+ 
+ static void *amf_av1_create_fallback(obs_data_t *settings,
+ 				     obs_encoder_t *encoder)
+@@ -2151,17 +2207,16 @@ static void register_av1()
  /* ========================================================================= */
  /* Global Stuff                                                              */
  
+-static bool enum_luids(void *param, uint32_t idx, uint64_t luid)
+-{
+-	std::stringstream &cmd = *(std::stringstream *)param;
+-	cmd << " " << std::hex << luid;
+-	UNUSED_PARAMETER(idx);
+-	return true;
+-}
 +#ifdef _WIN32
 +#define OBS_AMF_TEST "obs-amf-test.exe"
 +#else
 +#define OBS_AMF_TEST "obs-amf-test"
 +#endif
-+
+ 
  extern "C" void amf_load(void)
  try {
  	AMF_RESULT res;
@@ -429,7 +995,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  	HMODULE amf_module_test;
  
  	/* Check if the DLL is present before running the more expensive */
-@@ -1687,11 +1743,17 @@ try {
+@@ -2171,18 +2226,20 @@ try {
  	if (!amf_module_test)
  		throw "No AMF library";
  	FreeLibrary(amf_module_test);
@@ -441,14 +1007,22 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
 +#endif
  
  	/* ----------------------------------- */
- 	/* Check for AVC/HEVC support          */
+ 	/* Check for supported codecs          */
  
 -	BPtr<char> test_exe = os_get_executable_path_ptr("obs-amf-test.exe");
+-	std::stringstream cmd;
 +	BPtr<char> test_exe = os_get_executable_path_ptr(OBS_AMF_TEST);
  	std::string caps_str;
  
- 	os_process_pipe_t *pp = os_process_pipe_create(test_exe, "r");
-@@ -1748,12 +1810,12 @@ try {
+-	cmd << test_exe;
+-	enum_graphics_device_luids(enum_luids, &cmd);
+-
+-	os_process_pipe_t *pp = os_process_pipe_create(cmd.str().c_str(), "r");
++	os_process_pipe_t *pp = os_process_pipe_create(test_exe, "r");
+ 	if (!pp)
+ 		throw "Failed to launch the AMF test process I guess";
+ 
+@@ -2240,12 +2297,12 @@ try {
  	/* ----------------------------------- */
  	/* Init AMF                            */
  
@@ -463,7 +1037,7 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  	if (!init)
  		throw "Failed to get AMFInit address";
  
-@@ -1765,7 +1827,7 @@ try {
+@@ -2257,7 +2314,7 @@ try {
  	if (res != AMF_OK)
  		throw amf_error("GetTrace failed", res);
  
@@ -472,3 +1046,6 @@ index a0e7a8a16cfa3..2a73def3ab309 100644
  		amf_module, AMF_QUERY_VERSION_FUNCTION_NAME);
  	if (!get_ver)
  		throw "Failed to get AMFQueryVersion address";
+-- 
+2.39.0
+
