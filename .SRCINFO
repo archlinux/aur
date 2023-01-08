@@ -1,6 +1,6 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes
-	pkgver = 28.1.2
+	pkgver = 29.0.0
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=28.1.2
+	provides = obs-studio=29.0.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -58,7 +58,7 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=28.1.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.0.0
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = qr::git+https://github.com/nayuki/QR-Code-generator.git
@@ -68,7 +68,7 @@ pkgbase = obs-studio-tytan652
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e7d55263ebe675873e993d670a9f7472e8559ca8134ff3760f1091b127190857
+	sha256sums = 7a0c359d573ccf2951e4b621465338ee235cb7e535725fdb9bc53a7ff779da4e
 	sha256sums = ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5
 
 pkgname = obs-studio-tytan652
