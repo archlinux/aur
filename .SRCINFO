@@ -2,14 +2,14 @@ pkgbase = enchiridion-robin-homer-git
 	pkgdesc = A script to run The Enchiridion of Epictetus narrated by Robin Homer of Vox Stoica on Youtube. Specific parts can be played along with any random part from it.
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/PrabuddhMathur/the_enchiridion.git
+	url = https://github.com/PrabuddhMathur/enchiridion-robin-homer-git.git
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	depends = ffmpeg
-	provides = the_enchiridion
-	source = git+https://github.com/PrabuddhMathur/the_enchiridion.git
+	provides = the_enchiridion_of_epictetus
+	source = git+https://github.com/PrabuddhMathur/enchiridion-robin-homer-git.git
 	md5sums = SKIP
 
 pkgname = enchiridion-robin-homer-git
