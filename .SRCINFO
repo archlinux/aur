@@ -1,4 +1,4 @@
-pkgbase = nyxt-browser-git
+pkgbase = nyxt-git
 	pkgdesc = A keyboard-driven web browser designed for power users
 	pkgver = latest
 	pkgrel = 1
@@ -21,10 +21,13 @@ pkgbase = nyxt-browser-git
 	optdepends = gst-plugins-bad: for HTML5 audio/video
 	optdepends = gst-plugins-ugly: for HTML5 audio/video
 	provides = nyxt
+	provides = nyxt-browser
+	provides = nyxt-browser-git
 	conflicts = nyxt
+	conflicts = nyxt-browser
+	conflicts = nyxt-browser-git
 	options = !strip
-	options = !makeflags
-	source = nyxt-browser::git+https://github.com/atlas-engineer/nyxt.git
+	source = nyxt::git+https://github.com/atlas-engineer/nyxt.git
 	sha256sums = SKIP
 
-pkgname = nyxt-browser-git
+pkgname = nyxt-git

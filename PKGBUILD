@@ -2,7 +2,7 @@
 # Contributor: Cillian Berragan <cjberragan@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
-_pkgname=nyxt-browser
+_pkgname=nyxt
 pkgname=$_pkgname-git
 pkgver=latest
 pkgrel=1
@@ -10,9 +10,9 @@ pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
 url='https://nyxt.atlas.engineer'
 license=('custom:BSD')
-conflicts=('nyxt')
-provides=('nyxt')
-source=($_pkgname::git+https://github.com/atlas-engineer/nyxt.git)
+conflicts=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
+provides=("$_pkgname" "$_pkgname-browser" "$_pkgname-browser-git")
+source=("$_pkgname::git+https://github.com/atlas-engineer/$_pkgname.git")
 sha256sums=('SKIP')
 # If someday Next works with other Lisps, replace 'sbcl' with 'common-lisp'.
 makedepends=('git' 'sbcl' 'cl-asdf')
@@ -28,7 +28,8 @@ optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-bad: for HTML5 audio/video'
             'gst-plugins-ugly: for HTML5 audio/video')
 # Binary will not run otherwise.
-options=('!strip' '!makeflags')
+#options=('!strip' '!makeflags')
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
