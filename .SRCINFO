@@ -1,6 +1,6 @@
 pkgbase = mlt-git
 	pkgdesc = Multimedia Framework
-	pkgver = r5896.1664322823.350fb53d
+	pkgver = r5946.1673114203.0b1d574c
 	pkgrel = 1
 	url = https://github.com/mltframework/mlt
 	arch = i686
