@@ -1,0 +1,12 @@
+pkgbase = freemcboot
+	pkgdesc = 'Free MemoryCard Boot' for Sony Playstation® 2 videogame system.
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://github.com/TnA-Plastic/FreeMcBoot
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	source = freemcboot::git+https://github.com/TnA-Plastic/FreeMcBoot#commit=2e4eef9a1ec5612cde1121d185996fd08fecb930
+	sha256sums = SKIP
+
+pkgname = freemcboot
