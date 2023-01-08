@@ -1,6 +1,6 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 pkgname=ryujinx-git
-pkgver=r2378.472119c8d
+pkgver=r2510.6f60e102a
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -35,9 +35,9 @@ package() {
 	mkdir -p -m 777 "${pkgdir}/opt/ryujinx/Logs"
 	mkdir -p "${pkgdir}/usr/bin/"
 
-	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx.desktop" "${pkgdir}/usr/share/applications/ryujinx.desktop"
-	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx-logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ryujinx.svg"
-	install -D "${srcdir}/Ryujinx/distribution/linux/ryujinx-mime.xml" "${pkgdir}/usr/share/mime/packages/ryujinx-mime.xml"
+	install -D "${srcdir}/Ryujinx/distribution/linux/Ryujinx.desktop" "${pkgdir}/usr/share/applications/Ryujinx.desktop"
+	install -D "${srcdir}/Ryujinx/distribution/misc/Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/Ryujinx.svg"
+	install -D "${srcdir}/Ryujinx/distribution/linux/mime/Ryujinx.xml" "${pkgdir}/usr/share/mime/packages/Ryujinx.xml"
 
 	cp -R ${srcdir}/Ryujinx/Ryujinx/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
 	cp -R ${srcdir}/Ryujinx/Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/* "${pkgdir}/opt/ryujinx/"
