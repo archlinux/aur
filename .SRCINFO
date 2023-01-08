@@ -1,6 +1,6 @@
 pkgbase = guish
 	pkgdesc = A language and army knife to make and modify GUIs.
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://codeberg.org/phranz/guish
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = guish
 	provides = guish
 	conflicts = guish
 	conflicts = guish-git
-	source = guish-2.4.3.tar.gz::https://codeberg.org/phranz/guish/archive/2.4.3.tar.gz
-	sha512sums = 9a715a01ecbb65a3727e091238b33174d10b118c29fb9fabf115364625be1951bf9f9e3b89388ed914772be5d898f7780ec940a3d3053b982e1645bf817eff51
+	source = guish-2.4.4.tar.gz::https://codeberg.org/phranz/guish/archive/2.4.4.tar.gz
+	sha512sums = c17094e3ddb6b6520f8ba4fd4d62763b38f273d188994d06ec54f0455d684e38d027a4614785966e3cf04ced868267c7f7ff96467f2aa6ff64172c2255827514
 
 pkgname = guish
