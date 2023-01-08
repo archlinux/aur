@@ -1,6 +1,6 @@
 pkgbase = repokeeper
 	pkgdesc = Local AUR packages repository keeper and updater
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/tibor95/repokeeper
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = repokeeper
 	makedepends = python-setuptools
 	depends = python
 	backup = etc/repokeeper.conf
-	source = git+https://github.com/tibor95/repokeeper.git#commit=a07a67ddb4a782e0319dbcf93e1611bc62e37fb8
+	source = git+https://github.com/tibor95/repokeeper.git#commit=0ca3947bfd92ef15c89459af8c73d7b52be3f0c8
 	md5sums = SKIP
 
 pkgname = repokeeper
