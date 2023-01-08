@@ -1,15 +1,15 @@
 pkgbase = nonogram-cli
 	pkgdesc = A fast command-line based nonogram solver.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 0
 	url = https://github.com/ricoriedel/nonogram-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = nonogram-rs-2.2.0.tar.gz::https://github.com/ricoriedel/nonogram-rs/archive/refs/tags/v2.2.0.tar.gz
-	source = nonogram-rs-2.2.0.tar.gz.sig::https://github.com/ricoriedel/nonogram-rs/releases/download/v2.2.0/nonogram-rs-2.2.0.tar.gz.sig
+	source = nonogram-rs-2.2.1.tar.gz::https://github.com/ricoriedel/nonogram-rs/archive/refs/tags/v2.2.1.tar.gz
+	source = nonogram-rs-2.2.1.tar.gz.sig::https://github.com/ricoriedel/nonogram-rs/releases/download/v2.2.1/nonogram-rs-2.2.1.tar.gz.sig
 	validpgpkeys = CC38FB15A3F349D3E01757EDE8835756AADCBA00
-	b2sums = d22d8003c7b2fe23ff478ec363afce3327825807719ce4a1b5f2c802fa7ee72e0f3f539443aef8b4ddf8f473a9daf1f034c0579df93cdf27489b9aebb79400e1
-	b2sums = ff7cd5c1c29867422499f71b9546566ef4673cc8331e9e27dffdf01743e254693e57ab4dc680b4dc73e5adcf13bc7de4bee06379efabda00de58973afccef4c0
+	b2sums = 1bda4a7aabf14efd341bde33d548b57535b1889bb440f0e444a32c5403dc46fba93508815e1de8ca18c41c1ea00dd0a5b4d9f57b2ef5febfcd04cf9fbcc45950
+	b2sums = b6692237bb7b57a794bed0f50d0b0af3a04b9d90a4e85423b85acbaab1d8138e1b804e0bca111b522ad69ece2a8c22bc954f5482f7254e8c60e5bc158aa7f271
 
 pkgname = nonogram-cli
