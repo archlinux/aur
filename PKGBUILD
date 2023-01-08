@@ -1,7 +1,7 @@
 # Maintainer: stefanwimmer128 <info at stefanwimmer128 dot eu>
 
 pkgname='jq.sh'
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel='1'
 pkgdesc='jq-in-shell integration library'
 arch=('any')
