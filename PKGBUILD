@@ -4,14 +4,13 @@ _pkgname=keras
 _pkgver=2.11.0
 pkgname=r-${_pkgname,,}
 pkgver=2.11.0
-pkgrel=1
+pkgrel=3
 pkgdesc="R Interface to 'Keras'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
-  r-ellipsis
   r-generics
   r-glue
   r-magrittr
