@@ -5,6 +5,7 @@ pkgbase = ps2-ee
 	url = https://github.com/ps2dev/ps2toolchain-ee
 	arch = x86_64
 	license = BSD
+	depends = mips64r5900el-ps2-elf-binutils
 	depends = mips64r5900el-ps2-elf-gcc
 	depends = mips64r5900el-ps2-elf-newlib-nano
 	depends = mips64r5900el-ps2-elf-pthread-embedded
