@@ -90,7 +90,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs29-git"
 fi
-pkgver=29.0.60.162735
+pkgver=29.0.60.164121
 pkgrel=1
 pkgdesc="GNU Emacs. Development emacs29 branch."
 arch=('x86_64')
