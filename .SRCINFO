@@ -1,14 +1,13 @@
 pkgbase = wsmancli
 	pkgdesc = Command line client utilities for WS-Management
-	pkgver = 2.6.0
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/Openwsman/wsmancli
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD
 	depends = openwsman>=2.5
-	source = https://github.com/Openwsman/wsmancli/archive/v2.6.0/wsmancli-2.6.0.tar.gz
-	md5sums = df418d6d78160fd4f88f890a8953907a
+	source = https://github.com/Openwsman/wsmancli/archive/v2.6.2/wsmancli-2.6.2.tar.gz
+	sha256sums = 0d71728a66e810d5d20fbabc954460946c80ea84e2a394f5db0ee91225d90c59
 
 pkgname = wsmancli
-

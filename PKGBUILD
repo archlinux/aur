@@ -1,13 +1,13 @@
 pkgname=wsmancli
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Command line client utilities for WS-Management"
 arch=('i686' 'x86_64')
 url="https://github.com/Openwsman/$pkgname"
-license=('BSD')
+license=('custom:BSD')
 depends=('openwsman>=2.5')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('df418d6d78160fd4f88f890a8953907a')
+sha256sums=('0d71728a66e810d5d20fbabc954460946c80ea84e2a394f5db0ee91225d90c59')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,6 +19,8 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+
+	install -Dp -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
