@@ -10,6 +10,7 @@ pkgbase = jq.sh
 	makedepends = shellspec
 	depends = sh
 	depends = jq
+	depends = moreutils
 	source = jq.sh::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git#tag=v0.3.0
 	sha256sums = SKIP
 

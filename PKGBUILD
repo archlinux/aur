@@ -7,7 +7,7 @@ pkgdesc='jq-in-shell integration library'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh'
 license=('MPL2')
-depends=('sh' 'jq')
+depends=('sh' 'jq' 'moreutils')
 makedepends=('git' 'shellcheck' 'shellspec')
 source=("$pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git#tag=v$pkgver")
 sha256sums=('SKIP')
