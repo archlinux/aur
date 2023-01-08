@@ -1,0 +1,31 @@
+pkgbase = osmin
+	pkgdesc = Satellite Navigator & Tracker On-Road/Off-Road for Mobile
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = https://github.com/janbar/osmin
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = clang
+	makedepends = cmake
+	makedepends = double-conversion
+	makedepends = git
+	makedepends = glib2
+	makedepends = md4c
+	makedepends = tslib
+	makedepends = xcb-util-image
+	makedepends = xcb-util-keysyms
+	makedepends = xdg-utils
+	depends = openmp
+	depends = qt5-graphicaleffects
+	depends = qt5-location
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols2
+	depends = qt5-sensors
+	depends = qt5-svg
+	depends = qt5-wayland
+	depends = qt5-remoteobjects
+	source = git+https://github.com/janbar/osmin.git#commit=033d9e6ca80d979072752a4d1529ff10180fda2a
+	sha256sums = SKIP
+
+pkgname = osmin
