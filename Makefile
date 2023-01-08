@@ -36,6 +36,7 @@ package:
 
 .PHONY: commit
 commit:
+	git add .SRCINFO
 	source PKGBUILD && git commit -am "aur: $$pkgver-$$pkgrel"
 
 .PHONY: push
