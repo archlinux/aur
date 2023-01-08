@@ -1,7 +1,7 @@
 pkgbase = r-reticulate
 	pkgdesc = Interface to 'Python'
-	pkgver = 1.26
-	pkgrel = 3
+	pkgver = 1.27
+	pkgrel = 1
 	url = https://cran.r-project.org/package=reticulate
 	arch = x86_64
 	license = Apache
@@ -19,7 +19,7 @@ pkgbase = r-reticulate
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/reticulate_1.26.tar.gz
-	sha256sums = 3fd74823bde1b0e094db7c2bf6b40ee2501f8d724b4c35b53da95c3c588c74c5
+	source = https://cran.r-project.org/src/contrib/reticulate_1.27.tar.gz
+	sha256sums = 9d568457a14a96be9d6956b8dffde59ca579de4baecef4c4b93f513ac83369a6
 
 pkgname = r-reticulate
