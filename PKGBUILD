@@ -11,7 +11,7 @@ license=('GPL3')
 provides=("${_pkgname}")
 depends=('electron' 'libvips' 'alsa-lib')
 source=("${_pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" moosync moosync.desktop)
-sha256sums=('943b5abc7c2bb70ba8a536802c55dd557d9ccbfaf54dfd3681076ac5550ed76b'
+sha256sums=('0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
             '4ed86e1f5a969e6c03fe8efb66ec136c2f37b21010a37eacd414675b784b1058'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
 conflicts=("${_pkgname}")
