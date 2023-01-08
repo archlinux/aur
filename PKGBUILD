@@ -2,15 +2,17 @@
 
 pkgname=clipboard
 _pkgname=Clipboard
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1r2
+pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
 license=('GPL3')
 makedepends=('cmake')
+optdepends=('libx11: X11 support'
+	    'wayland: Wayland support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('353a6bf459c64284bfbbdd40b59c8b17061d901c26fa58af5761f47b29fc18b5')
+sha256sums=('3d88f14aa38530f0af74c492e0e708b206b56e67bc6d04275dfe12e6983c865a')
 
 build () {
 	cmake -B build -S "${_pkgname}-${pkgver}" \

@@ -1,14 +1,16 @@
 pkgbase = clipboard
 	pkgdesc = Cut, copy, and paste anything in your terminal.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1r2
+	pkgrel = 1
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = GPL3
 	makedepends = cmake
-	source = clipboard-0.2.0.tar.gz::https://github.com/Slackadays/Clipboard/archive/0.2.0.tar.gz
-	sha256sums = 353a6bf459c64284bfbbdd40b59c8b17061d901c26fa58af5761f47b29fc18b5
+	optdepends = libx11: X11 support
+	optdepends = wayland: Wayland support
+	source = clipboard-0.2.1r2.tar.gz::https://github.com/Slackadays/Clipboard/archive/0.2.1r2.tar.gz
+	sha256sums = 3d88f14aa38530f0af74c492e0e708b206b56e67bc6d04275dfe12e6983c865a
 
 pkgname = clipboard
