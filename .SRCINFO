@@ -1,8 +1,8 @@
 pkgbase = gerbv-git
 	pkgdesc = An open source Gerber file (RS-274X only) viewer
-	pkgver = 2.9.5.r1.g3ece126
+	pkgver = 2.9.6.r1.g6b4f6ba
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://github.com/gerbv/gerbv
 	arch = i686
 	arch = x86_64
