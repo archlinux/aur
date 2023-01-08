@@ -1,14 +1,14 @@
 pkgbase = r-tidytext
 	pkgdesc = Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidytext
 	arch = any
 	license = MIT
 	depends = r
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-generics
-	depends = r-hunspell
 	depends = r-janeaustenr
 	depends = r-lifecycle
 	depends = r-purrr
@@ -21,6 +21,7 @@ pkgbase = r-tidytext
 	optdepends = r-covr
 	optdepends = r-data.table
 	optdepends = r-ggplot2
+	optdepends = r-hunspell
 	optdepends = r-knitr
 	optdepends = r-mallet
 	optdepends = r-nlp
