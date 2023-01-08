@@ -35,7 +35,7 @@ prepare() {
 
 build() {
 	cd "build"
-	cmake ../${pkgname} \
+	Quotient_ENABLE_E2EE=ON cmake ../${pkgname} \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_INSTALL_LIBDIR=lib \
 	-DCMAKE_BUILD_TYPE=Release \
