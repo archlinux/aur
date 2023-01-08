@@ -1,7 +1,7 @@
 pkgbase = r-biocsklearn
 	pkgdesc = interface to python sklearn via Rstudio reticulate
 	pkgver = 1.20.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/BiocSklearn
 	arch = any
 	license = Artistic2.0
@@ -12,7 +12,6 @@ pkgbase = r-biocsklearn
 	depends = python-scikit-learn
 	depends = r
 	depends = r-basilisk
-	depends = r-basilisk.utils
 	depends = r-reticulate
 	depends = r-summarizedexperiment
 	optdepends = r-biocstyle

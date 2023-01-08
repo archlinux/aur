@@ -5,7 +5,7 @@ _pkgname=BiocSklearn
 _pkgver=1.20.1
 pkgname=r-${_pkgname,,}
 pkgver=1.20.1
-pkgrel=1
+pkgrel=3
 pkgdesc='interface to python sklearn via Rstudio reticulate'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   python-scikit-learn
   r
   r-basilisk
-  r-basilisk.utils
   r-reticulate
   r-summarizedexperiment
 )
