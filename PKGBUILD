@@ -1,16 +1,19 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.10.0.0.g2ed84a0
+pkgver=0.11.1.12.g37b8a48
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
 license=('LGPL')
 url='http://www.videolan.org/developers/libaacs.html'
-depends=('libgcrypt')
+depends=('libgcrypt'
+         'libudfread.git'
+         )
 makedepends=('git'
              'flex'
              'bison'
+             'libudfread-git'
              )
 provides=('libaacs'
           'libaacs.so'
