@@ -1,6 +1,6 @@
 # Maintainer: Julius Drodofsky <juliusdrodofsky@outlook.de>
 pkgname=mines-tui
-pkgver=0.4.0-1
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="A Terminal based Minesweeper implementation"

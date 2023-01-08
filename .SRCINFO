@@ -1,6 +1,6 @@
 pkgbase = mines-tui
 	pkgdesc = A Terminal based Minesweeper implementation
-	pkgver = 0.4.0-2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Judro/mines
 	arch = x86_64
