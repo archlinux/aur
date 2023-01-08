@@ -6,7 +6,7 @@ _pkgname=lava
 _pkgver=1.7.1
 pkgname=r-${_pkgname,,}
 pkgver=1.7.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Latent Variable Models'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,12 +24,10 @@ optdepends=(
   r-ellipse
   r-fields
   r-geepack
-  r-gof
   r-graph
   r-igraph
   r-kernsmooth
   r-knitr
-  r-lava.tobit
   r-lavasearch2
   r-lme4
   r-matrix

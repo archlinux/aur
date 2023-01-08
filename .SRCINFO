@@ -1,7 +1,7 @@
 pkgbase = r-lava
 	pkgdesc = Latent Variable Models
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=lava
 	arch = any
 	license = GPL
@@ -15,12 +15,10 @@ pkgbase = r-lava
 	optdepends = r-ellipse
 	optdepends = r-fields
 	optdepends = r-geepack
-	optdepends = r-gof
 	optdepends = r-graph
 	optdepends = r-igraph
 	optdepends = r-kernsmooth
 	optdepends = r-knitr
-	optdepends = r-lava.tobit
 	optdepends = r-lavasearch2
 	optdepends = r-lme4
 	optdepends = r-matrix
