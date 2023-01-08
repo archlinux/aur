@@ -1,9 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libudfread-git
-pkgver=1.0.0.32.g09059bb
+pkgver=1.1.2.2.gb3e6936
 pkgrel=1
-pkgdesc="UDF reader. (GIT version)"
+pkgdesc='UDF reader. (GIT version)'
 arch=('x86_64')
 license=('LGPL2.1')
 url='http://git.videolan.org/?p=libudfread.git;a=summary'
