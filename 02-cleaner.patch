@@ -1,0 +1,71 @@
+--- prefsCleaner.sh
++++ prefsCleaner.sh
+@@ -9,12 +8,0 @@
+-## DON'T GO HIGHER THAN VERSION x.9 !! ( because of ASCII comparison in update_prefsCleaner() )
+-
+-readonly CURRDIR=$(pwd)
+-
+-## get the full path of this script (readlink for Linux, greadlink for Mac with coreutils installed)
+-SCRIPT_FILE=$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || greadlink -f "${BASH_SOURCE[0]}" 2>/dev/null)
+-
+-## fallback for Macs without coreutils
+-[ -z "$SCRIPT_FILE" ] && SCRIPT_FILE=${BASH_SOURCE[0]}
+-
+-
+-AUTOUPDATE=true
+@@ -23,11 +10,0 @@
+-## download method priority: curl -> wget
+-DOWNLOAD_METHOD=''
+-if command -v curl >/dev/null; then
+-	DOWNLOAD_METHOD='curl --max-redirs 3 -so'
+-elif command -v wget >/dev/null; then
+-	DOWNLOAD_METHOD='wget --max-redirect 3 --quiet -O'
+-else
+-	AUTOUPDATE=false
+-	echo -e "No curl or wget detected.\nAutomatic self-update disabled!"
+-fi
+-
+@@ -35,2 +11,0 @@
+-	## change directory back to the original working directory
+-	cd "${CURRDIR}"
+@@ -46,7 +21 @@
+-    -d           Don't auto-update prefsCleaner.sh"
+-}
+-
+-download_file() { # expects URL as argument ($1)
+-  declare -r tf=$(mktemp)
+-
+-  $DOWNLOAD_METHOD "${tf}" "$1" &>/dev/null && echo "$tf" || echo '' # return the temp-filename or empty string on error
++"
+@@ -64,18 +32,0 @@
+-## returns the version number of a prefsCleaner.sh file
+-get_prefsCleaner_version() {
+-	echo "$(sed -n '5 s/.*[[:blank:]]\([[:digit:]]*\.[[:digit:]]*\)/\1/p' "$1")"
+-}
+-
+-## updates the prefsCleaner.sh file based on the latest public version
+-update_prefsCleaner() {
+-	declare -r tmpfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/prefsCleaner.sh')"
+-	[ -z "$tmpfile" ] && echo -e "Error! Could not download prefsCleaner.sh" && return 1 # check if download failed
+-
+-	[[ $(get_prefsCleaner_version "$SCRIPT_FILE") == $(get_prefsCleaner_version "$tmpfile") ]] && return 0
+-
+-	mv "$tmpfile" "$SCRIPT_FILE"
+-	chmod u+x "$SCRIPT_FILE"
+-	"$SCRIPT_FILE" "$@" -d
+-	exit 0
+-}
+-
+@@ -121 +72 @@
+-while getopts "sd" opt; do
++while getopts "s" opt; do
+@@ -126,3 +76,0 @@
+-		d)
+-			AUTOUPDATE=false
+-			;;
+@@ -131,5 +78,0 @@
+-
+-## change directory to the Firefox profile directory
+-cd "$(dirname "${SCRIPT_FILE}")"
+-
+-[ "$AUTOUPDATE" = true ] && update_prefsCleaner "$@"

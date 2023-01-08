@@ -1,11 +1,11 @@
-pkgname=arkenfox-user.js-git
-pkgver=107.0.r0.gcc0f053
+_name=arkenfox
+_repo=user.js
+_base=${_name}-${_repo}
+pkgname=${_base}-git
+pkgver=108.0.r0.g62a68f0
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
-_base="${pkgname%-*}"
-_name="${_base%-*}"
-_repo="${_base#*-}"
 url="https://github.com/${_name}/${_repo}"
 license=('MIT')
 makedepends=('git')
@@ -15,14 +15,14 @@ options=('!strip')
 
 source=(
     "${_repo}::git+${url}"
-    "updater.patch"
-    "cleaner.patch"
+    "01-updater.patch"
+    "02-cleaner.patch"
 )
 
 sha256sums=(
     'SKIP'
-    '61d9058c971e732dfe7626851b4b2380622b931578fe009b7c5f143fb3135362'
-    '4d54a6c1787be81201e735cdd905181dc57d7906cb9b21419b236f3b8b6db983'
+    'b959bcf913be4de147e2ef1cf9953bfa43ab9b5a26bfda9fb8f80cb452c97980'
+    'f1b3cbbc01c24a371970844a3bc3af129e85b35b46b3000c905bf7fe34205ffa'
 )
 
 pkgver() {
@@ -37,17 +37,17 @@ prepare() {
 }
 
 package() {
-    local lib="${pkgdir}/usr/lib/${pkgname}"
-    local bin="${pkgdir}/usr/bin"
-    local updater="updater.sh"
-    local cleaner="prefsCleaner.sh"
-
-    install -dm755 "${bin}"
-    ln -s "${lib#"${pkgdir}"}/${updater}" "${bin}/${_name}-updater"
-    ln -s "${lib#"${pkgdir}"}/${cleaner}" "${bin}/${_name}-cleaner"
+    local lib="/usr/lib/${pkgname}"
+    local bin="/usr/bin"
+    install -dm755 "${pkgdir}"{"${lib}","${bin}"}
 
     cd "${_repo}"
-    install -Dm755 -t "${lib}" "${updater}" "${cleaner}"
-    install -Dm644 -t "${lib}" "user.js"
+    local updater="updater.sh"
+    local cleaner="prefsCleaner.sh"
+    install -Dm755 -t "${pkgdir}${lib}" "${updater}" "${cleaner}"
+    install -Dm644 -t "${pkgdir}${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"
+
+    ln -s "${lib}/${updater}" "${pkgdir}${bin}/${_name}-updater"
+    ln -s "${lib}/${cleaner}" "${pkgdir}${bin}/${_name}-cleaner"
 }
