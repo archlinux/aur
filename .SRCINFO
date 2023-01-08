@@ -1,14 +1,17 @@
 pkgbase = sdl2_pango
 	pkgdesc = Connects Pango to SDL2
-	pkgver = 0.1.2
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/markuskimius/SDL2_Pango
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	depends = pango
+	depends = freetype2
 	depends = sdl2
-	source = sdl2_pango-748d126fb6900107e6344ee962b8b48e2b73c88e::git+https://github.com/markuskimius/SDL2_Pango.git#commit=748d126fb6900107e6344ee962b8b48e2b73c88e
+	source = sdl2_pango-3afd884fddf8d81dbe2c140135deea0c79de31c1::git+https://github.com/markuskimius/SDL2_Pango.git#commit=3afd884fddf8d81dbe2c140135deea0c79de31c1
+	source = freetype2.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sdl2_pango

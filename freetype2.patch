@@ -1,0 +1,10 @@
+--- a/SDL2_Pango.pc.in	2023-01-08 11:31:09.327472007 +0000
++++ b/SDL2_Pango.pc.in	2023-01-08 11:30:55.174055302 +0000
+@@ -6,6 +6,6 @@
+ Name: SDL2_Pango
+ Description: SDL2 library for internationalized text rendering
+ Version: @VERSION@
+-Requires: pango
++Requires: pango, freetype2
+ Libs: -L${libdir} -lSDL2_Pango
+ Cflags: -I${includedir}
