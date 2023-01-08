@@ -2,7 +2,7 @@
 
 _pkgname=jasper-i3blocks-blocklets
 pkgname="$_pkgname-git"
-pkgver=r76.c0dfcc9
+pkgver=r82.1fd9244
 pkgrel=1
 epoch=2
 pkgdesc="Jasper's blocklets for i3blocks"
@@ -11,7 +11,7 @@ url="https://github.com/jasper1378/$_pkgname"
 license=('MIT')
 groups=('i3')
 depends=('pulseaudio')
-makedepends=('git')
+makedepends=('git' 'gcc>=11.1.0')
 #checkdepends=()
 #optdepends=()
 provides=("$_pkgname=$pkgver")
