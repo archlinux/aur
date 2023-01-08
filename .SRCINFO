@@ -1,6 +1,6 @@
 pkgbase = jq.sh-git
 	pkgdesc = jq-in-shell integration library
-	pkgver = 0.1.0.r0.g846ffdc
+	pkgver = 0.3.0.r0.g2a534da
 	pkgrel = 1
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = jq.sh-git
 	makedepends = shellspec
 	depends = sh
 	depends = jq
+	depends = moreutils
 	provides = jq.sh
 	conflicts = jq.sh
 	source = jq.sh::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git
