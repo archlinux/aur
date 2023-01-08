@@ -2,29 +2,26 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r4438.g14365b67a0
+pkgver=orttraining_rc2.r4995.g74fe45bf09
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
 url="https://onnxruntime.ai/"
 license=('MIT')
-depends=('gcc-libs' 'python')
-makedepends=('git' 'cmake' 'ninja')
+depends=('gcc-libs' 'python' 'protobuf')
+makedepends=('git' 'cmake' 'ninja' 'clang')
 checkdepends=()
 optdepends=()
 provides=('onnxruntime')
 conflicts=('onnxruntime')
 replaces=()
 options=()
-# install=
-# changelog=
 source=("git+https://github.com/microsoft/onnxruntime.git#branch=main")
 md5sums=('SKIP')
 
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
-	sed -i s'/-Werror //g' "$srcdir"/onnxruntime/cmake/external/flatbuffers/CMakeLists.txt
 }
 
 pkgver() {
@@ -35,9 +32,15 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	# ./build.sh --config RelWithDebInfo --build_shared_lib --parallel
-
-	#export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+	# export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 	# rm -rf $srcdir/$_pkgname-build
+
+	# Use clang to avoid build failure. Same as
+	# * https://github.com/pytorch/pytorch/issues/77939
+	# * https://github.com/opencv/opencv/pull/22512
+	export CC=clang
+	export CXX=clang++
+
 	cmake -S $srcdir/$_pkgname/cmake \
 		-B $srcdir/$_pkgname-build \
 		-G Ninja \
