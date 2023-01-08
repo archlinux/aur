@@ -21,11 +21,6 @@ b2sums=('8c6c41a8e26320f6dbc3ffdd23a10a079f7f31776b3c782b61b2632e17a3ca80343ee5e
         'f96fe6146018fd869c55e413b2cc6cf12f17c5257af52df14f57978133792c7fb76e8526b15a5120dbf12a9fed7b8e4723a3ff9f2e45b613b10ee1017ba0b996'
         '0002cccf2a3e9dec4b0646e8d50ed105dfd4544baf49ae4868cc2a0785839ab578171063b6149b54fee947a38d88bbd6552647f6c69c590acf8fd1b12835c67a')
 
-prepare() {
-	# avoid crash due to stack smashing detection (https://github.com/Ryujinx/Ryujinx/issues/3183#issuecomment-1292808614)
-	sed --in-place 's/Exec=Ryujinx/Exec=env COMPlus_EnableAlternateStackCheck=1 Ryujinx/' "${srcdir}/Ryujinx.desktop"
-}
-
 package() {
 	mkdir --parents "${pkgdir}/opt"
 	cp --recursive "${srcdir}/publish" "${pkgdir}/opt/ryujinx"
