@@ -27,8 +27,6 @@ optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-good: for HTML5 audio/video'
             'gst-plugins-bad: for HTML5 audio/video'
             'gst-plugins-ugly: for HTML5 audio/video')
-# Binary will not run otherwise.
-#options=('!strip' '!makeflags')
 options=('!strip')
 
 pkgver() {
