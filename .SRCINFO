@@ -1,10 +1,10 @@
 pkgbase = oh-my-posh-git
 	pkgdesc = A prompt theme engine for any shell.
-	pkgver = r2061.ac665b65
+	pkgver = r2373.d4ebc71f
 	pkgrel = 1
 	url = https://github.com/JanDeDobbeleer/oh-my-posh
 	arch = x86_64
-	license = GPLv3
+	license = MIT
 	makedepends = git
 	makedepends = go
 	provides = oh-my-posh

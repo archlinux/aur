@@ -8,13 +8,13 @@ pkgver() {
   cd "oh-my-posh"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r2061.ac665b65
+pkgver=r2373.d4ebc71f
 pkgrel=1
 pkgbase=oh-my-posh-git
 replaces=()
 arch=('x86_64')
 url="https://github.com/JanDeDobbeleer/oh-my-posh"
-license=('GPLv3')
+license=('MIT')
 groups=()
 makedepends=('git' 'go')
 depends=()
@@ -25,6 +25,6 @@ sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/oh-my-posh/src"
-  go build
+  go build -o ./oh-my-posh
   install -Dm 755 ./oh-my-posh -t "${pkgdir}/usr/bin/"
 }
