@@ -2,15 +2,15 @@
 
 _pkgname=moosync
 pkgname=${_pkgname}-git
-pkgrel=1
+pkgrel=2
 pkgver=v6.0.0.r1.g33ca3245
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
 license=('GPL3')
 provides=("${_pkgname}")
-depends=('electron' 'libvips')
-makedepends=('nvm' 'yarn' 'node-gyp')
+depends=('electron' 'libvips' 'alsa-lib')
+makedepends=('yarn' 'node-gyp' 'cargo')
 source=("git+https://github.com/Moosync/Moosync.git" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v6.0.0/Moosync-6.0.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
 conflicts=("${_pkgname}")
 sha256sums=('SKIP'
@@ -28,18 +28,13 @@ pkgver() {
 build() {
     cd "$srcdir/$_sourcedirectory/"
 
-    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-    nvm install 18
-    nvm use 18
-
     # Remove electron from package.json
     sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
 
-    yarn install
+    # Remove postinstall from package.json
+    sed -i -e 's/\"postinstall\":.*/\"postinstall\": \"patch-package\",/' package.json
+
+    yarn install --ignore-engines || true
 
     . "$srcdir/builder-args.sh"
     yarn electron:build -- $ELECTRON_BUILDER_ARCH_ARGS --linux --dir 
