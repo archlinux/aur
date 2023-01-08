@@ -7,14 +7,14 @@ pkgname=dataplot
 pkgver=20210713
 pkgrel=1
 pkgdesc="Software for scientific visualization, statistical analysis, and non-linear modeling."
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.itl.nist.gov/div898/software/${pkgname}"
 license=('custom')
-depends=('cairo' 'gd' 'gcc-libs' 'fontconfig' 'expat' 'libpng' 'zlib' 'libjpeg' 'libx11' 'freetype2' 'tcsh' 'readline' 'termcap' 'tk')
-makedepends=('imagemagick' 'gcc-fortran' 'gendesk')
-# backup=('usr/share/dataplot/frscript/xdpConfig')
-source=("${url}/ftp/unix/dataplot-${pkgver}.tar.gz"
-  "dataplot.sh")
+depends=(cairo gd gcc-libs fontconfig expat libpng zlib libjpeg-turbo libx11 freetype2 tcsh readline termcap tk)
+makedepends=(imagemagick gcc-fortran gendesk)
+# backup=('usr/share/${pkgname}/frscript/xdpConfig')
+source=("${url}/ftp/unix/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}.sh")
 sha512sums=('5e1920b1ad795c189a587bd8cc2d26a4fff259c84cc89ee4c5a4d86c6606cc2f61fc9b7dddcea998bf94c4b8123076c35205da828926c637776f481f41c8fbb8'
   '62d40b182ec2212a0cf27ac548a3a4b46598291c7407dbb8d51633bf088841b3bdf1917c0b223c3d234e8eb149aba3a0ec5d35ac66a4ac4f1521a485ca87a411')
 
