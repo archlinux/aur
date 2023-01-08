@@ -1,7 +1,7 @@
-From c1ed6974bffaee49ae8a82838a4cf7cd8ebad36c Mon Sep 17 00:00:00 2001
+From 370afe321657e7306b3f93de710c837567c4820d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=A9clairevoyant?=
  <848000+eclairevoyant@users.noreply.github.com>
-Date: Sun, 1 Jan 2023 16:21:00 -0500
+Date: Sun, 8 Jan 2023 14:05:13 -0500
 Subject: [PATCH 1/2] add-acs-overrides
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] add-acs-overrides
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 42af9ca0127e..4f94a9f2cff0 100644
+index 6b838869554b..8471f29f8c8f 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4145,6 +4145,14 @@
+@@ -4162,6 +4162,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.

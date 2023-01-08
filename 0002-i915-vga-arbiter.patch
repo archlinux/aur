@@ -1,7 +1,7 @@
-From c8894968896294c7ced91b86fb59ca2c1aa6e031 Mon Sep 17 00:00:00 2001
+From efbf3120a8b4bbc66963a696de439501714a1718 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=A9clairevoyant?=
  <848000+eclairevoyant@users.noreply.github.com>
-Date: Sun, 1 Jan 2023 16:21:24 -0500
+Date: Sun, 8 Jan 2023 14:05:15 -0500
 Subject: [PATCH 2/2] i915-vga-arbiter
 
 ---
