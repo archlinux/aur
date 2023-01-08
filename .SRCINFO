@@ -1,6 +1,6 @@
 pkgbase = playlist-maker-rs-bin
 	pkgdesc = M3u playlist creator that uses query-like statments to find the requested songs, implemented in Rust: binary version
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/FilipeMCruz/playlist-maker
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = playlist-maker-rs-bin
 	makedepends = cargo
 	provides = playlist-maker-rs
 	conflicts = playlist-maker-rs
-	source = 0.2.0.tar.gz::https://github.com/FilipeMCruz/playlist-maker/releases/download/v0.2.0/playlist-maker-x86_64-unknown-linux-musl.tar.gz
+	source = 0.4.0.tar.gz::https://github.com/FilipeMCruz/playlist-maker/releases/download/v0.4.0/playlist-maker-x86_64-unknown-linux-musl.tar.gz
 	source = pl-mker.zsh::https://raw.githubusercontent.com/FilipeMCruz/playlist-maker/master/autocompletions/_pl-mker
 	source = pl-mker.bash::https://raw.githubusercontent.com/FilipeMCruz/playlist-maker/master/autocompletions/pl-mker.bash
 	source = pl-mker.fish::https://raw.githubusercontent.com/FilipeMCruz/playlist-maker/master/autocompletions/pl-mker.fish
-	sha256sums = c40d0fff8839d4996220302a398a0db1fe696c3274c6e85508bfd82206bab4ce
-	sha256sums = cf2becda1336fa7cb20210f63f91c8256e964b6c39d51f8b1ab02918b93522b1
-	sha256sums = 3534b24795e056d03c7fab25730fa9d740923bfab9ab4665edda862d71a41a61
-	sha256sums = a7e60eb195e59f390f8b8d52d75410a2561c6b40bfa5b04d0ebf4556f30e4656
+	sha256sums = 476b52b675f2834f4df3239732bf41f7b93d8f1b0ee47c87f76fa3ffbc2cebae
+	sha256sums = 9ec1f70ffd5b2ad549984f9cf412392515ba0b591a45d335be94412218d1fa17
+	sha256sums = 3822f7ce5359c3749d17b5954fc580a9d64ac1e550a3632306bea6a86a771002
+	sha256sums = 2853f86cf95199ad8bd4c41cbf0cc3275668a8d8f5722084a0fb7d2a09dfcdd1
 
 pkgname = playlist-maker-rs-bin
