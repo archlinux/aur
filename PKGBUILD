@@ -3,12 +3,12 @@ _base=AST-Monitor
 pkgname=python-${_base,,}
 pkgdesc="A wearable Raspberry Pi computer for cyclists"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
 license=(MIT)
 depends=(python-sport-activities-features python-pyqt-feedback-flow python-pyqt5-webengine qt5-svg)
-makedepends=(python-build python-install python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 optdepends=('python-openant: for ANT sensor support'
   'python-adafruit-circuitpython-gps: for GPS sensor support'
@@ -28,6 +28,6 @@ check() {
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
