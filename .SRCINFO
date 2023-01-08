@@ -1,0 +1,15 @@
+pkgbase = cmake-common
+	pkgdesc = Various utilities to help develop C++/CMake projects
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://github.com/egor-tensin/cmake-common
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cmake_common/cmake_common-3.4.tar.gz
+	md5sums = SKIP
+
+pkgname = cmake-common

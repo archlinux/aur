@@ -1,0 +1,16 @@
+cmake-common on AUR
+===================
+
+There're a bunch of useful one-liners in Makefile.
+
+  * Make the package (this also updates .SRCINFO):
+
+      make package
+
+  * Commit the changes:
+
+      make commit
+
+  * Push to the AUR repository:
+
+      make push
