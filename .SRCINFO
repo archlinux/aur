@@ -1,0 +1,11 @@
+pkgbase = iterm2-shell-integration
+	pkgdesc = Shell integration of iTerm2, useful when SSH from macOS.
+	pkgver = 3.4.19
+	pkgrel = 1
+	url = https://iterm2.com
+	arch = any
+	license = GPL
+	source = https://github.com/gnachman/iTerm2/archive/refs/tags/v3.4.19.tar.gz
+	sha256sums = bf8a6583bb2796f25d66f708b27103f7aaf0b78896284daa649450cfc3730d3f
+
+pkgname = iterm2-shell-integration
