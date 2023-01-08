@@ -1,11 +1,11 @@
 pkgbase = plog
 	pkgdesc = Portable, simple and extensible C++ logging library
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/SergiusTheBest/plog
 	arch = any
-	license = MPL2
-	source = https://github.com/SergiusTheBest/plog/archive/1.1.8.zip
-	sha256sums = 80cf2a2f49e9c0f17327c129d863bc320d7ac48a799d26ba585fd2123a76c404
+	license = MIT
+	source = https://github.com/SergiusTheBest/plog/archive/1.1.9.zip
+	sha256sums = 42905ee0d0f5e29396f11670c0ca91a03c92779ed685cc8edb4ef086fd47bedd
 
 pkgname = plog
