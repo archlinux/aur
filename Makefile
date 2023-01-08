@@ -22,9 +22,6 @@ endef
 
 PKG_NAME := config-links
 
-.PHONY: DO
-DO:
-
 .PHONY: all
 all: package
 
