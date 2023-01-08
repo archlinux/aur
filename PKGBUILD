@@ -8,7 +8,7 @@ _pkgname=roxygen2
 _pkgver=7.2.3
 pkgname=r-${_pkgname,,}
 pkgver=7.2.3
-pkgrel=1
+pkgrel=3
 pkgdesc='In-Line Documentation for R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,6 @@ depends=(
   r-commonmark
   r-cpp11
   r-desc
-  r-digest
   r-knitr
   r-pkgload
   r-purrr
