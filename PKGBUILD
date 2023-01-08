@@ -9,7 +9,7 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.14.3
+pkgver=1.14.4
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -32,7 +32,7 @@ makedepends=(
   snappy
   zlib
 )
-_tag=190344a6100b1b932f7a4100a9e98af2e34cc907
+_tag=c7a75cec3500e1640b534f2f3e201f62cd07f8e6
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
   git+https://github.com/Kingcom/armips.git
