@@ -50,6 +50,14 @@ _build_opts=(CFLAGS="${_cflags[*]}"
              CXXFLAGS="${_cflags[*]}"
              LDFLAGS="${_ldflags[*]}")
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  local _sample _samples=()
+  _samples=($(find . | grep Makefile))
+  for _sample in "${_samples[@]}"; do
+    sed -i 's/include $(PS2SDK)\/samples/include $(PS2SDKDATADIR)\/samples/g' "${_sample}"
+  done
+}
 
 build() {
   export CFLAGS=""
@@ -81,6 +89,7 @@ build() {
   # IOP_LDLAGS="${_cflags[*]}" \
   # LDFLAGS="${_ldflags[*]}" \
   # make "${_build_opts[@]}" build
+  make
 }
 
 # shellcheck disable=SC2154
