@@ -4,6 +4,92 @@
 
 [1]: https://pypi.org/project/google-cloud-bigquery-storage/#history
 
+## [2.17.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.16.2...v2.17.0) (2022-12-14)
+
+
+### Features
+
+* Add estimated number of rows to CreateReadSession response ([#542](https://github.com/googleapis/python-bigquery-storage/issues/542)) ([16c19a4](https://github.com/googleapis/python-bigquery-storage/commit/16c19a45b8172e64fb8e7c1d68ecf6a1c73048f9))
+* Add missing_value_interpretations to AppendRowsRequest ([#529](https://github.com/googleapis/python-bigquery-storage/issues/529)) ([2ba8bae](https://github.com/googleapis/python-bigquery-storage/commit/2ba8bae95356f04010bd099b1cebe38d0a6378d5))
+
+
+### Bug Fixes
+
+* **deps:** Require google-api-core &gt;=1.34.0, >=2.11.0  ([5e2fc1e](https://github.com/googleapis/python-bigquery-storage/commit/5e2fc1e8db4f76110aa70413838d710e64093b13))
+* Drop usage of pkg_resources ([5e2fc1e](https://github.com/googleapis/python-bigquery-storage/commit/5e2fc1e8db4f76110aa70413838d710e64093b13))
+* Fix timeout default values ([5e2fc1e](https://github.com/googleapis/python-bigquery-storage/commit/5e2fc1e8db4f76110aa70413838d710e64093b13))
+
+
+### Documentation
+
+* **samples:** Snippetgen should call await on the operation coroutine before calling result ([5e2fc1e](https://github.com/googleapis/python-bigquery-storage/commit/5e2fc1e8db4f76110aa70413838d710e64093b13))
+
+## [2.16.2](https://github.com/googleapis/python-bigquery-storage/compare/v2.16.1...v2.16.2) (2022-10-07)
+
+
+### Bug Fixes
+
+* **deps:** Allow protobuf 3.19.5 ([#522](https://github.com/googleapis/python-bigquery-storage/issues/522)) ([cbe3fef](https://github.com/googleapis/python-bigquery-storage/commit/cbe3fef5b1df55bb8b58fb399d119a0439c872c6))
+
+## [2.16.1](https://github.com/googleapis/python-bigquery-storage/compare/v2.16.0...v2.16.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* **deps:** Require protobuf >= 3.20.2 ([#517](https://github.com/googleapis/python-bigquery-storage/issues/517)) ([53d72c7](https://github.com/googleapis/python-bigquery-storage/commit/53d72c7bf8fbe63bc1ea769ed4d8f6e1daad5b87))
+
+## [2.16.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.15.0...v2.16.0) (2022-09-19)
+
+
+### Features
+
+* Add location to WriteStream and add WriteStreamView support ([#507](https://github.com/googleapis/python-bigquery-storage/issues/507)) ([20371ef](https://github.com/googleapis/python-bigquery-storage/commit/20371ef91b2071cbdf0000a5fbecb7db71184fae))
+* add proto annotation for non-ascii field mapping ([7eba58c](https://github.com/googleapis/python-bigquery-storage/commit/7eba58c13a770a2876b75a520f5222528f848b89))
+
+## [2.15.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.14.2...v2.15.0) (2022-09-06)
+
+
+### Features
+
+* Allow users to set Apache Avro output format options through avro_serialization_options param in TableReadOptions message ([#490](https://github.com/googleapis/python-bigquery-storage/issues/490)) ([0c1264d](https://github.com/googleapis/python-bigquery-storage/commit/0c1264d47b6d412b11524fee484cff6473480890))
+
+## [2.14.2](https://github.com/googleapis/python-bigquery-storage/compare/v2.14.1...v2.14.2) (2022-08-12)
+
+
+### Bug Fixes
+
+* **deps:** allow protobuf < 5.0.0 ([#486](https://github.com/googleapis/python-bigquery-storage/issues/486)) ([e96a352](https://github.com/googleapis/python-bigquery-storage/commit/e96a3529c3fc0f971a34aa9a8e51634eb4e1ee5d))
+* **deps:** drop freezegun dependency in extras ([#481](https://github.com/googleapis/python-bigquery-storage/issues/481)) ([7ba7953](https://github.com/googleapis/python-bigquery-storage/commit/7ba7953dd7b5f0fd676871064946fae8d1ceb57e))
+* **deps:** require proto-plus >= 1.22.0 ([e96a352](https://github.com/googleapis/python-bigquery-storage/commit/e96a3529c3fc0f971a34aa9a8e51634eb4e1ee5d))
+
+
+### Documentation
+
+* clarify size limitations for AppendRowsRequest ([#474](https://github.com/googleapis/python-bigquery-storage/issues/474)) ([7132617](https://github.com/googleapis/python-bigquery-storage/commit/7132617ec15eba7855dac33b4757f6d63cc80aba))
+
+## [2.14.1](https://github.com/googleapis/python-bigquery-storage/compare/v2.14.0...v2.14.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core>=1.32.0,>=2.8.0 ([#469](https://github.com/googleapis/python-bigquery-storage/issues/469)) ([42f7a0d](https://github.com/googleapis/python-bigquery-storage/commit/42f7a0db343a47aa9fe4f3c55688480a8537def4))
+
+## [2.14.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.13.2...v2.14.0) (2022-07-08)
+
+
+### Features
+
+* add audience parameter ([346c719](https://github.com/googleapis/python-bigquery-storage/commit/346c7199e2bd85c77403f1288988c2d64b435ee8))
+* add fields to eventually contain row level errors ([346c719](https://github.com/googleapis/python-bigquery-storage/commit/346c7199e2bd85c77403f1288988c2d64b435ee8))
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 2.8.0 ([346c719](https://github.com/googleapis/python-bigquery-storage/commit/346c7199e2bd85c77403f1288988c2d64b435ee8))
+* handle AttributeError in bigquery_storage writer ([#414](https://github.com/googleapis/python-bigquery-storage/issues/414)) ([2cb641a](https://github.com/googleapis/python-bigquery-storage/commit/2cb641a7e0e8bfde23693b4f59f6b914520d7364))
+* Modify client lib retry policy for CreateWriteStream with longer backoff, more error code and longer overall time ([346c719](https://github.com/googleapis/python-bigquery-storage/commit/346c7199e2bd85c77403f1288988c2d64b435ee8))
+* require python 3.7+ ([#468](https://github.com/googleapis/python-bigquery-storage/issues/468)) ([c13b1e5](https://github.com/googleapis/python-bigquery-storage/commit/c13b1e5e59e8ce2794b339809ce9f6a0ba66439c))
+
 ## [2.13.2](https://github.com/googleapis/python-bigquery-storage/compare/v2.13.1...v2.13.2) (2022-06-06)
 
 

@@ -3,7 +3,7 @@
 
 pkgname=python-google-cloud-bigquery-storage
 _pkg='python-bigquery-storage'
-pkgver=2.13.2
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="BigQuery Storage API client library"
 arch=('any')
@@ -11,12 +11,12 @@ url="https://github.com/googleapis/python-bigquery-storage"
 license=('Apache')
 depends=('python-google-api-core' 'python-grpcio' 'python-proto-plus' 'python-protobuf')
 makedepends=(
-	'python-setuptools'
 	'python-build'
 	'python-installer'
-	'python-wheel'
+	'python-recommonmark'
+	'python-setuptools'
 	'python-sphinx'
-	'python-recommonmark')
+	'python-wheel')
 optdepends=(
 	'python-arrow: pyarrow support'
 	'python-fastavro: fastavro support'
@@ -28,7 +28,7 @@ optdepends=(
 # 	'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('33e666b8c15498a2b84c217da65d8232f324554badba87705d7f296ab7b274c3')
+sha256sums=('93f8f2fc1938bfb5152c5e31b0652258d39daa4c9b79e5524984bfc65d454b0b')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -45,12 +45,12 @@ build() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 docs/_build/google-cloud-bigquery-storage.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 docs/_build/google-cloud-bigquery-storage.1 -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv \
 		"$_site/google_cloud_bigquery_storage-$pkgver.dist-info/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/"
 }
