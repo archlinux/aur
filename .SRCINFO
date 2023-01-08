@@ -1,0 +1,12 @@
+pkgbase = ps2-ports
+	pkgdesc = Ports of useful libraries to Sony Playstation® 2 videogame system SDK.
+	pkgver = v1.3.0
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = custom
+	depends = ps2-toolchain
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-ports
