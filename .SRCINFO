@@ -1,0 +1,12 @@
+pkgbase = ps2-isjpcm
+	pkgdesc = Ports of useful libraries to Sony Playstation® 2 videogame system SDK.
+	pkgver = v2.2
+	pkgrel = 1
+	url = https://github.com/ps2homebrew/isjpcm
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	source = ps2-isjpcm::git+https://github.com/ps2homebrew/isjpcm#commit=1b913952e5c7a715efacf2d2088658741b62c73a
+	sha256sums = SKIP
+
+pkgname = ps2-isjpcm
