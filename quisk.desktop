@@ -1,16 +1,9 @@
 [Desktop Entry]
-Name=quisk
-Name[en_US]=quisk
-Comment=Software defined radio
-Comment[en_US]=Software defined radio
-Encoding=UTF-8
-Exec=python2 /opt/quisk/quisk.py
-Icon=
-MimeType=text
-StartupNotify=true
+Name=Quisk
+GenericName=Software Defined Radio (SDR) transceiver
+Comment=Software Defined Radio (SDR) transceiver
+Exec=quisk
+Icon=/usr/share/quisk/quisk_icon.png
 Terminal=false
-TerminalOptions=
 Type=Application
-Categories=Application;HamRadio
-X-DCOP-ServiceType=none
-X-KDE-SubstituteUID=false
+Categories=Network;HamRadio;
