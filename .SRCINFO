@@ -1,0 +1,16 @@
+pkgbase = wofi-symbol-git
+	pkgdesc = Symbol picker for Wayland using wofi and wtype
+	pkgver = 0.r26
+	pkgrel = 1
+	url = https://github.com/mijoharas/wofi-symbol
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = wofi
+	optdepends = wtype
+	provides = wofi-symbol
+	conflicts = wofi-symbol
+	source = wofi-symbol-git::git+https://github.com/mijoharas/wofi-symbol
+	sha512sums = SKIP
+
+pkgname = wofi-symbol-git
