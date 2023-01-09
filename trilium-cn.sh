@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/opt/trilium-cn/
+cd /opt/trilium-cn/
 ./trilium
