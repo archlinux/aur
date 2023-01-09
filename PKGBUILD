@@ -1,4 +1,5 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
+# Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
 pkgver=7.9.3
 pkgrel=1
