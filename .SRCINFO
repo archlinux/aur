@@ -1,7 +1,7 @@
 pkgbase = qtile-wayland-git
 	pkgdesc = A full-featured, pure-Python tiling window manager - Wayland. (git version)
 	pkgver = 0.20.0.r33.gc1f50739
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.qtile.org
 	install = qtile-wayland-git.install
 	arch = x86_64
