@@ -11,6 +11,7 @@ provides=("uftrace=${pkgver%+*}")
 conflicts=('uftrace')
 source=("git+$url")
 sha1sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
   cd "$srcdir"/uftrace
