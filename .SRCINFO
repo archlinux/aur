@@ -1,0 +1,28 @@
+pkgbase = deadbeef-plugin-quicksearch-git
+	pkgver = r27.14fba1b
+	pkgrel = 1
+	url = https://github.com/cboxdoerfer/ddb_quick_search
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = deadbeef
+	makedepends = gtk2
+	makedepends = gtk3
+	source = git+https://github.com/cboxdoerfer/ddb_quick_search
+	md5sums = SKIP
+
+pkgname = deadbeef-plugin-quicksearch-gtk2-git
+	pkgdesc = Quick Search Plugin for the DeaDBeeF audio player GTK2
+	depends = deadbeef
+	depends = gtk2
+	provides = deadbeef-plugin-quicksearch-gtk2
+	conflicts = deadbeef-plugin-quicksearch-gtk2
+
+pkgname = deadbeef-plugin-quicksearch-gtk3-git
+	pkgdesc = Quick Search Plugin for the DeaDBeeF audio player GTK3
+	depends = deadbeef
+	depends = gtk3
+	provides = deadbeef-plugin-quicksearch-gtk3
+	conflicts = deadbeef-plugin-quicksearch-gtk3
