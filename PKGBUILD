@@ -3,13 +3,13 @@
 
 pkgname='pico-8'
 pkgver='0.2.5e'
-pkgrel=1
+pkgrel=2
 pkgdesc="A fantasy console for making, sharing and playing tiny games and other computer programs."
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.lexaloffle.com/pico-8.php"
 license=('custom:commercial')
-depends=('glibc' 'sdl2')
-optdepends=('wget: BBS download support')
+depends=('glibc' 'sdl2' 'curl')
+optdepends=()
 provides=('pico8')
 
 source=("${pkgname}.desktop"
