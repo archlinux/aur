@@ -3,9 +3,9 @@
 
 pkgname=qt5-websockets
 _basever=5.15.8
-pkgver=5.15.8+kde+r2
+pkgver=5.15.8+kde+r3
 pkgrel=1
-_commit=63fb8da1ecf8e48262cd515690cf71a425f92bf5
+_commit=90f3590c3c49a0820462af9a778dd13d8df42244
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
