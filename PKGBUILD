@@ -1,5 +1,5 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-# Maintainer: Edgar Luque <git@edgarluque.com>
+# Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
 pkgver=16.6
