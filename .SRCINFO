@@ -4,7 +4,7 @@ pkgbase = ps2-isjpcm
 	pkgrel = 1
 	url = https://github.com/ps2homebrew/isjpcm
 	arch = x86_64
-	license = custom
+	license = LGPL2.1
 	makedepends = ps2-sdk
 	source = ps2-isjpcm::git+https://github.com/ps2homebrew/isjpcm#commit=1b913952e5c7a715efacf2d2088658741b62c73a
 	sha256sums = SKIP
