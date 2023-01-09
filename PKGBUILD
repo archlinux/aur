@@ -10,7 +10,7 @@ license=(BSD)
 source=("$pkgname::git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 makedepends=(git cmake ninja)
-depends=(hicolor-icon-theme libglvnd zlib)
+depends=(hicolor-icon-theme libglvnd zlib libx{i,randr,inerama,cursor})
 
 build() {
   cmake -S $pkgname -B build \

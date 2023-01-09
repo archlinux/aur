@@ -12,6 +12,10 @@ pkgbase = hdrview
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = zlib
+	depends = libxi
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
 	source = hdrview::git+https://github.com/wkjarosz/hdrview#tag=v1.7.1
 	sha256sums = SKIP
 
