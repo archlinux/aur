@@ -1,0 +1,22 @@
+pkgbase = libquotient-encryption
+	pkgdesc = A Qt5 library to write cross-platform clients for Matrix
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/quotient-im/libQuotient
+	arch = x86_64
+	arch = aarch64
+	license = LGPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qtkeychain-qt5
+	depends = libolm
+	provides = libquotient
+	conflicts = libquotient
+	source = libquotient-encryption.tar.gz::https://github.com/quotient-im/libQuotient/archive/refs/tags/0.7.0.tar.gz
+	sha512sums = 6770e3caa6198a77fc33bf7edd2a34d5673e01474b639aa020af989046ff04c44ff5ce26b6418ae31fcca49cc54a147052153ed5c60706f26c177ebd57d452c5
+
+pkgname = libquotient-encryption
