@@ -2,8 +2,8 @@
 
 pkgname=hornet-bin
 _pkgname=hornet
-pkgver=1.2.1
-_pkgver=1.2.1
+pkgver=1.2.2
+_pkgver=1.2.2
 pkgrel=1
 pkgdesc='Powerful, community driven IOTA fullnode software written in Go (official precompiled binary)'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/gohornet/hornet/releases/download/v${_pkgver}
 source_aarch64=("https://github.com/gohornet/hornet/releases/download/v${_pkgver}/${_pkgname}_${_pkgver}_arm64.deb")
 sha256sums=('a3f57844e655d3691814a8c181594f9ea2a8948f730a7493a0538856e895e6dc'
             'a4019c885241329bfe5e091d0698cce1303a0ec8ce404f2e2dccbd5516c829c5')
-sha256sums_x86_64=('a5ddf22b4ca9f5250a1174c3ea6da07de4327cae613c7316f045a21ca3a81f84')
-sha256sums_aarch64=('4c154aa6e7aec756f34685c3f3cefc03a389a9e10f1df2134c250cf559f6b8dd')
+sha256sums_x86_64=('9111e5c47635af75732a59b3eb35836f01c343b1260e60e43965920b5bd14470')
+sha256sums_aarch64=('eb5a674fcc88717ed56ac4ffc5cd4fc027cba1bffc8b07b47f605f97a56c0098')
 backup=('var/lib/hornet/private_tangle/config_private_tangle.json'
         'var/lib/hornet/config.json'
         'var/lib/hornet/config_comnet.json'
