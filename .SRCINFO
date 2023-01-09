@@ -1,7 +1,7 @@
 pkgbase = bemoji
 	pkgdesc = Emoji picker that remembers your favorites
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marty-oehme/bemoji
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = bemoji
 	optdepends = wofi: Emoji picker menu
 	optdepends = rofi: Emoji picker menu
 	optdepends = dmenu: Emoji picker menu
-	optdepends = wl-copy: Clipboard support
+	optdepends = wl-clipboard: Clipboard support
 	optdepends = xclip: Clipboard support
 	optdepends = xsel: Clipboard support
 	optdepends = wtype: Auto-typing support

@@ -1,7 +1,7 @@
 # Maintainer: Thayne McCombs <astrothayne+aur@gmail.com>
 pkgname=bemoji
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji picker that remembers your favorites"
 arch=('any')
 url="https://github.com/marty-oehme/bemoji"
@@ -12,7 +12,7 @@ optdepends=(
   'wofi: Emoji picker menu'
   'rofi: Emoji picker menu'
   'dmenu: Emoji picker menu'
-  'wl-copy: Clipboard support'
+  'wl-clipboard: Clipboard support'
   'xclip: Clipboard support'
   'xsel: Clipboard support'
   'wtype: Auto-typing support'
