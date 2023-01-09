@@ -18,7 +18,7 @@ Shlink has been updated successfully.
 Please run \`(cd /usr/share/webapps/shlink && sudo -u http php vendor/bin/shlink-installer update)\`
 to migrate the database and configure new options.
 
-You can provide `/usr/share/webapps/shlink` when asked to import the existing configuration.
+You can provide \`/usr/share/webapps/shlink\` when asked to import the existing configuration.
 
 You can find more information here:
 
