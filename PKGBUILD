@@ -5,7 +5,7 @@
 
 pkgname=qtile-git
 pkgver=0.20.0.r33.gc1f50739
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured, pure-Python tiling window manager - X11. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
@@ -76,6 +76,8 @@ pkgver() {
 
 build() {
   cd qtile
+  export CFLAGS="$CFLAGS -I/usr/include/wlroots0.15"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/wlroots0.15"
   python setup.py build
   ./scripts/ffibuild
 }
