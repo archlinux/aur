@@ -2,7 +2,7 @@
 
 _plug=mvtools
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=23.0.g6d805e2
+pkgver=23.8.g8ec2a19
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -28,6 +28,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  CFLAGS="${CFLAGS/-O2/-O3}"
+  CXXFLAGS="${CXXFLAGS/-O2/-O3}"
 }
 
 build() {
