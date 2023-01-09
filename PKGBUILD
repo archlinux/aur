@@ -1,13 +1,12 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=brother-dcp-l8450cdw
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother DCP-L8450CDW"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://solutions.brother.com/linux"
 license=('GPL2' 'custom:Brother EULA')
-depends=('cups')
-depends_x86_64=('lib32-glibc')
+depends=('cups' 'which' 'lib32-glibc')
 source=("https://download.brother.com/welcome/dlf101082/dcpl8450cdwlpr-1.1.2-1.i386.rpm"
         "https://download.brother.com/welcome/dlf101083/dcpl8450cdwcupswrapper-1.1.3-1.i386.rpm"
         wrapper.patch)
