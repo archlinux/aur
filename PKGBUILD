@@ -1,6 +1,6 @@
 # Maintainer: abs3nt <abs3nt@asdf.cafe>
 pkgname="gospt"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 epoch=1
 pkgdesc="Spotify TUI and CLI written in Go"
@@ -14,4 +14,4 @@ source=(
 package() {
 	install -Dm755 gospt "${pkgdir}"/usr/bin/gospt
 }
-sha256sums=('86edafaed5464860306ca255defad9390c30222ccf030ee06bf080cefe2d7e68')
+sha256sums=('6ce6b7743cd6bcd4d6c929528cf40ba4d943b97ae1453a0114c318a6f8cde4b2')
