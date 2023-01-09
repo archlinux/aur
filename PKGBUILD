@@ -6,29 +6,26 @@
 # Contributor: Alessandro Nakamuta <alessandro dot ufms at gmail dot com>
 
 pkgname=alarm-clock-applet
-pkgver=1.0.1
-pkgrel=5
-pkgdesc="A fully-featured alarm clock for GTK panel"
+pkgver=0.4.1
+pkgrel=1
+epoch=1
+pkgdesc="A fully-featured alarm clock for use with an AppIndicator implementation."
 arch=('x86_64' 'i686')
 _alias=alarm-clock
-url="http://alarm-clock.pseudoberries.com"
+url="https://alarm-clock-applet.github.io/"
 license=('GPL2')
-depends=('autoconf' 'automake' 'gnome-common' 'gconf>=2.0' 'gnome-icon-theme' 'gstreamer>=1.0' 'libnotify>=0.4.1' 'libunique>=1.0' 'libappindicator-gtk3')
-makedepends=('pkgconfig' 'intltool')
-optdepends=('gnome-control-center')
+depends=('gettext' 'gstreamer>=1.0' 'gst-plugins-base' 'gst-plugins-good' 'libnotify>=0.4.1' 'glib2' 'gtk3' 'libayatana-appindicator')
+makedepends=('cmake' 'pkgconfig' 'perl' 'gzip')
+optdepends=('gnome-control-center' 'playerctl' 'gconf>=2.0')
 install=$pkgname.install
-source=(https://gitea.artixlinux.org/linuxer/alarm-clock/archive/${pkgver}.tar.gz)
-sha512sums=('SKIP')
+source=($_alias-$pkgver.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('9c7e6cb068e042f1dbb425d3d8dee61dcf3ef34b931099e7c301945234cf15196ed10da0f3de134f62ea92ef0edee6c54fbd5e95c89a8e38f99e6ff3a32bea94')
 
 build() {
-  cd "$srcdir/$_alias"
-  ./autogen.sh
-  autoreconf -i
-  ./configure --prefix=/usr
-  make
+  cmake -B build -S "$_alias-$pkgver" -DCMAKE_BUILD_TYPE=None -DALLOW_MISSING_GCONF=1 -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_alias"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }

@@ -1,11 +1,30 @@
 post_install() {
 	gtk-update-icon-cache /usr/share/icons/hicolor/
+	if command -v gconftool-2 &> /dev/null; then
+		if [ -d "/etc/gconf/gconf.xml.defaults" ]; then
+			GCONF_CONFIG_SOURCE="xml:merged:/etc/gconf/gconf.xml.defaults" gconftool-2 --makefile-install-rule /etc/gconf/schemas/alarm-clock.schemas
+		else
+			GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule /etc/gconf/schemas/alarm-clock.schemas
+		fi
+	fi
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
 }
 
 post_upgrade(){
 	gtk-update-icon-cache /usr/share/icons/hicolor/
 }
 
+pre_remove(){
+	if command -v gconftool-2 &> /dev/null; then
+		if [ -d "/etc/gconf/gconf.xml.defaults" ]; then
+			GCONF_CONFIG_SOURCE="xml:merged:/etc/gconf/gconf.xml.defaults" gconftool-2 --makefile-uninstall-rule /etc/gconf/schemas/alarm-clock.schemas
+		else
+			GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-uninstall-rule /etc/gconf/schemas/alarm-clock.schemas
+		fi
+	fi
+}
+
 post_remove(){
 	gtk-update-icon-cache /usr/share/icons/hicolor/
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
 }

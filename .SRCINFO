@@ -1,26 +1,30 @@
 pkgbase = alarm-clock-applet
-	pkgdesc = A fully-featured alarm clock for GTK panel
-	pkgver = 1.0.1
-	pkgrel = 5
-	url = http://alarm-clock.pseudoberries.com
+	pkgdesc = A fully-featured alarm clock for use with an AppIndicator implementation.
+	pkgver = 0.4.1
+	pkgrel = 1
+	epoch = 1
+	url = https://alarm-clock-applet.github.io/
 	install = alarm-clock-applet.install
 	arch = x86_64
 	arch = i686
 	license = GPL2
+	makedepends = cmake
 	makedepends = pkgconfig
-	makedepends = intltool
-	depends = autoconf
-	depends = automake
-	depends = gnome-common
-	depends = gconf>=2.0
-	depends = gnome-icon-theme
+	makedepends = perl
+	makedepends = gzip
+	depends = gettext
 	depends = gstreamer>=1.0
+	depends = gst-plugins-base
+	depends = gst-plugins-good
 	depends = libnotify>=0.4.1
-	depends = libunique>=1.0
-	depends = libappindicator-gtk3
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
 	optdepends = gnome-control-center
-	source = https://gitea.artixlinux.org/linuxer/alarm-clock/archive/1.0.1.tar.gz
-	sha512sums = SKIP
+	optdepends = playerctl
+	optdepends = gconf>=2.0
+	source = alarm-clock-0.4.1.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/0.4.1.tar.gz
+	sha512sums = 9c7e6cb068e042f1dbb425d3d8dee61dcf3ef34b931099e7c301945234cf15196ed10da0f3de134f62ea92ef0edee6c54fbd5e95c89a8e38f99e6ff3a32bea94
 
 pkgname = alarm-clock-applet
 
