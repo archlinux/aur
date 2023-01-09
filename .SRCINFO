@@ -1,10 +1,10 @@
 pkgbase = madplay
-	pkgdesc = An high-quality MPEG audio decoder (Sony Playstation® 2 videogame system port).
+	pkgdesc = Front-end for libmad.
 	pkgver = 0.15.2b
 	pkgrel = 1
 	url = https://sourceforge.net/projects/mad
 	arch = x86_64
-	license = custom
+	license = GPL
 	makedepends = libid3tag
 	depends = libmad
 	source = madplay.tar.gz::https://sourceforge.net/projects/mad/files/madplay/0.15.2b/madplay-0.15.2b.tar.gz
