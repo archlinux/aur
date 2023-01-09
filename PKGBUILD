@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
