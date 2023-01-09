@@ -1,5 +1,5 @@
 pkgbase = ps2-isjpcm
-	pkgdesc = Ports of useful libraries to Sony Playstation® 2 videogame system SDK.
+	pkgdesc = Sound library from Sjeep (Sony Playstation® 2 videogame system port).
 	pkgver = v2.2
 	pkgrel = 1
 	url = https://github.com/ps2homebrew/isjpcm
