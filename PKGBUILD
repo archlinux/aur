@@ -16,12 +16,12 @@ install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.gz")
 conflicts=('tiny-media-manager')
 # https://gitlab.com/tinyMediaManager/tinyMediaManager/-/packages
-source=("tmm_${pkgver}_${pkgrel}_linux.tar.gz::https://gitlab.com/tinyMediaManager/tinyMediaManager/-/package_files/47165550/download"
+source=("tmm_${pkgver}_${pkgrel}_linux.tar.gz::https://archive.tinymediamanager.org/v${pkgver}/tmm_${pkgver}_linux.tar.gz"
         "tinyMediaManager.desktop"
         "tinymediamanager"
         "tinymediamanager-cli"
         "tinymediamanager.JAVA_OPTS")
-sha256sums=('de7ec1502c238028420be892bd73648a8275b6fecd8e75365d482ae25df5f3ad'
+sha256sums=('5e3e25ee87f0f292ab795fd723df5835dbb42073b44bcca4d4c390c883469ec5'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
             '4bf36dd16bfc02a39ddde88cfcf30b4f4a5f0b08d2b34ffbab03f6553f57d596'
             '2d3df36c67a710b03b8fea3ac58c49307da8db22b7c6f8fd0011552fe94dde26'
