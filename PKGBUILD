@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3869.r0.ge4c9416c4
+pkgver=v1.7.3876.r0.gf924ab721
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -71,11 +71,6 @@ prepare()
   cd $srcdir/pcsx2
   git submodule update --init --recursive
   git apply -3 "${srcdir}/0001-Fix-resources-Fix-CMake.patch"
-
-  export CMAKE_C_COMPILER=/usr/bin/clang
-  export CMAKE_CXX_COMPILER=/usr/bin/clang++
-  export CMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld"
-  export CMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld"
 }
 
 pkgver()
@@ -95,6 +90,10 @@ build()
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+    -DCMAKE_C_COMPILER=/usr/bin/clang \
+    -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DWAYLAND_API=ON \
     -DQT_BUILD=ON \
     -DUSE_VULKAN=ON \

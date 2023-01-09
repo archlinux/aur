@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.3869.r0.ge4c9416c4
+	pkgver = v1.7.3876.r0.gf924ab721
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = post.install
