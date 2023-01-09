@@ -1,29 +1,44 @@
 # Maintainer: Sachin Krishnan T V <sachu92@gmail.com>
 # Contributor: ZWindL <zwindl@protonmail.com>
-pkgbase=python-gdbgui
+
+_name='gdbgui'
 pkgname=python-gdbgui
-_module='gdbgui'
-pkgver=0.15.0.1
+pkgver=0.15.1.0
 pkgrel=1
-pkgdesc="Browser-based frontend to gdb (gnu debugger). Add breakpoints, view the stack, visualize data structures, and more in C, C++, Go, Rust, and Fortran. Run gdbgui from the terminal and a new tab will open in your browser. https://gdbgui.com"
-url="https://github.com/cs01/gdbgui"
-depends=('python' 'python-flask' 'python-flask-compress' 'python-flask-socketio' 'python-pygments' 'python-brotli' 'python-pygdbmi>=0.10.0.0' 'python-gevent' 'python-gevent-websocket')
-makedepends=('python-setuptools' 'yarn')
+pkgdesc="Browser-based frontend to gdb. Debug C, C++, Go, or Rust."
+url='https://www.gdbgui.com'
 license=('GPL')
+depends=('python'
+         'python-brotli'
+         'python-gevent'
+         'python-gevent-websocket'
+         'python-flask'
+         'python-flask-compress'
+         'python-flask-socketio'
+         'python-pygdbmi>=0.10.0.0'
+         'python-pygments')
+makedepends=('python-setuptools' 'yarn')
+checkdepends=('python-nox' 'python-pytest' 'python-pytest-cov')
 arch=('any')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cs01/gdbgui/archive/v${pkgver}.tar.gz")
-md5sums=('8cb3515dd02b3e4788d4bbbaa940c4fe')
+source=("https://github.com/cs01/gdbgui/archive/v$pkgver.tar.gz")
+b2sums=('9076e31eb0b0e19c81e5ec0346baf7c253f2fabdc904936d9b7e4aa7eef6d40989e911b991af5fe64aca07c13aa84a9c93b5216b5b1227c444a528979ae25ba8')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    rm -rf tests
+    cd $_name-$pkgver
+    export NODE_OPTIONS=--openssl-legacy-provider # otherwise it fails to build
     yarn install
     yarn build
     python setup.py build
 }
 
+check() {
+    cd $_name-$pkgver
+    nox -s python_tests
+    nox -s js_tests
+}
+
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd $_name-$pkgver
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
