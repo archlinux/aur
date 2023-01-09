@@ -2,7 +2,7 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
-pkgver=37.0.3.0
+pkgver=37.0.4.0
 pkgrel=1
 pkgver_libffmpeg=0.70.1
 pkgdesc="Fast, smart and powerful browser based on Blink"
@@ -16,9 +16,10 @@ _channel=release
 source_i686=("${pkgname}-30.0.0.5_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/${_channel}/${pkgname}_amd64.deb")
 source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
-md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83' 'bd185c11aa13dc7cd6be7793c07eca2e')
+md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83'
+         'bd185c11aa13dc7cd6be7793c07eca2e')
 md5sums_i686=('dc3b1d6b986c23dcd8e3aac6a598d6f2')
-md5sums_x86_64=('1D50094813DEB2B53CA4CF523B6C825E')
+md5sums_x86_64=('b030479c05441585fc353111a52fb7b9')
 
 prepare() {
     bsdtar -xf data.tar.xz
