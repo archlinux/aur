@@ -1,8 +1,8 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-cn"
 pkgver=0.57.5_20221216
-pkgrel=1
-pkgdesc="Trilium notes 中文版"
+pkgrel=2
+pkgdesc="Trilium Notes 中文版"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
 license=('AGPL3')
@@ -31,5 +31,4 @@ Terminal=false
 Type=Application
 Categories=Office
 StartupWMClass=trilium notes" > "$pkgdir/usr/share/applications/trilium-cn.desktop"
-    chmod -R 0755 "$pkgdir"
 }
