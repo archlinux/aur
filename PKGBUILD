@@ -3,7 +3,7 @@
 _pkgname=onedrive
 pkgname=$_pkgname-abraunegg
 pkgver=2.4.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Free OneDrive client written in D - abraunegg's fork. Follows the releases on https://github.com/abraunegg/onedrive/releases"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/abraunegg/onedrive"
@@ -35,8 +35,8 @@ build() {
 
 package() {
 	cd "$_pkgname-$pkgver"
-	make DESTDIR=$pkgdir PREFIX=/usr install
+	make DESTDIR="$pkgdir" PREFIX=/usr install
 
 	# Move documentation to onedrive-abraunegg to avoid conflicts
-	mv $pkgdir/usr/share/doc/onedrive $pkgdir/usr/share/doc/onedrive-abraunegg
+	mv "${pkgdir}/usr/share/doc/onedrive" "${pkgdir}/usr/share/doc/onedrive-abraunegg"
 }
