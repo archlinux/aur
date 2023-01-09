@@ -30,7 +30,11 @@ build() {
     make
 }
 
-# sadly, no check() 
+check() {
+    cd "${pkgname}"
+
+    make check
+}
 
 package() {
     cd "${pkgname}"
