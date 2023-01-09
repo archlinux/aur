@@ -1,6 +1,6 @@
-diff -r -U1 open-av4ms.orig.python2/debian/postinst open-av4ms.arch.python2/debian/postinst
---- open-av4ms.orig.python2/debian/postinst	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/debian/postinst	2023-01-09 13:52:09.189674801 +0100
+diff -r -U1 open-av4ms.raspbian.python2/debian/postinst open-av4ms.arch.python2/debian/postinst
+--- open-av4ms.raspbian.python2/debian/postinst	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/debian/postinst	2023-01-09 17:18:22.169287768 +0100
 @@ -21,32 +21,33 @@
      configure)
 -    adduser www-data dialout
@@ -58,9 +58,9 @@ diff -r -U1 open-av4ms.orig.python2/debian/postinst open-av4ms.arch.python2/debi
 +  deluser  av4ms-server
 +	;;
      *)
-diff -r -U1 open-av4ms.orig.python2/etc/av4server.conf open-av4ms.arch.python2/etc/av4server.conf
---- open-av4ms.orig.python2/etc/av4server.conf	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/av4server.conf	2023-01-09 12:56:20.939779536 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/av4server.conf open-av4ms.arch.python2/etc/av4server.conf
+--- open-av4ms.raspbian.python2/etc/av4server.conf	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/av4server.conf	2023-01-09 17:18:22.169287768 +0100
 @@ -2,3 +2,3 @@
  device = /dev/ttyUSB0
 -logdir = /home/www/av4logs
@@ -71,9 +71,9 @@ diff -r -U1 open-av4ms.orig.python2/etc/av4server.conf open-av4ms.arch.python2/e
 -rawrecord = false
 \ No newline at end of file
 +rawrecord = false
-diff -r -U1 open-av4ms.orig.python2/etc/cron.weekly/av4ms-version open-av4ms.arch.python2/etc/cron.weekly/av4ms-version
---- open-av4ms.orig.python2/etc/cron.weekly/av4ms-version	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/cron.weekly/av4ms-version	2023-01-09 13:13:57.279746493 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/cron.weekly/av4ms-version open-av4ms.arch.python2/etc/cron.weekly/av4ms-version
+--- open-av4ms.raspbian.python2/etc/cron.weekly/av4ms-version	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/cron.weekly/av4ms-version	2023-01-09 17:18:22.169287768 +0100
 @@ -4,6 +4,5 @@
  #
 -wget -q --tries=10 --timeout=20 -O /home/www/static/av4vers.js 'http://av4ms.fahrner.name/js/av4vers.js'
@@ -83,9 +83,9 @@ diff -r -U1 open-av4ms.orig.python2/etc/cron.weekly/av4ms-version open-av4ms.arc
 +  chown av4ms-server:av4ms-server /usr/share/open-av4ms/static/av4vers.js
  fi
 -
-diff -r -U1 open-av4ms.orig.python2/etc/init.d/av4server open-av4ms.arch.python2/etc/init.d/av4server
---- open-av4ms.orig.python2/etc/init.d/av4server	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/init.d/av4server	2023-01-09 13:40:57.209695821 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/init.d/av4server open-av4ms.arch.python2/etc/init.d/av4server
+--- open-av4ms.raspbian.python2/etc/init.d/av4server	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/init.d/av4server	2023-01-09 17:18:22.169287768 +0100
 @@ -15,6 +15,6 @@
  PATH=/sbin:/bin:/usr/sbin:/usr/bin
 -DAEMON=/home/www/av4server.py
@@ -96,9 +96,9 @@ diff -r -U1 open-av4ms.orig.python2/etc/init.d/av4server open-av4ms.arch.python2
 +DESC="AV4ms server"
 +PIDFILE=/run/open-av4ms/av4server/$NAME.pid
  SCRIPTNAME=/etc/init.d/$NAME
-diff -r -U1 open-av4ms.orig.python2/etc/init.d/pilocator open-av4ms.arch.python2/etc/init.d/pilocator
---- open-av4ms.orig.python2/etc/init.d/pilocator	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/init.d/pilocator	2023-01-09 13:11:54.159750345 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/init.d/pilocator open-av4ms.arch.python2/etc/init.d/pilocator
+--- open-av4ms.raspbian.python2/etc/init.d/pilocator	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/init.d/pilocator	2023-01-09 17:18:22.169287768 +0100
 @@ -15,6 +15,6 @@
  PATH=/sbin:/bin:/usr/sbin:/usr/bin
 -DAEMON=/home/www/pilocatord.py
@@ -108,9 +108,9 @@ diff -r -U1 open-av4ms.orig.python2/etc/init.d/pilocator open-av4ms.arch.python2
 -PIDFILE=/tmp/$NAME.pid
 +PIDFILE=/run/pilocator/$NAME.pid
  SCRIPTNAME=/etc/init.d/$NAME
-diff -r -U1 open-av4ms.orig.python2/etc/init.d/webserver open-av4ms.arch.python2/etc/init.d/webserver
---- open-av4ms.orig.python2/etc/init.d/webserver	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/init.d/webserver	2023-01-09 13:40:49.889696050 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/init.d/webserver open-av4ms.arch.python2/etc/init.d/webserver
+--- open-av4ms.raspbian.python2/etc/init.d/webserver	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/init.d/webserver	2023-01-09 17:18:22.169287768 +0100
 @@ -2,3 +2,3 @@
  ### BEGIN INIT INFO
 -# Provides:          webserver
@@ -127,9 +127,9 @@ diff -r -U1 open-av4ms.orig.python2/etc/init.d/webserver open-av4ms.arch.python2
 +DESC="AV4ms web server"
 +PIDFILE=/run/open-av4ms/av4server/$NAME.pid
  SCRIPTNAME=/etc/init.d/$NAME
-diff -r -U1 open-av4ms.orig.python2/etc/logrotate.d/av4server open-av4ms.arch.python2/etc/logrotate.d/av4server
---- open-av4ms.orig.python2/etc/logrotate.d/av4server	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/etc/logrotate.d/av4server	2023-01-09 13:38:46.729699903 +0100
+diff -r -U1 open-av4ms.raspbian.python2/etc/logrotate.d/av4server open-av4ms.arch.python2/etc/logrotate.d/av4server
+--- open-av4ms.raspbian.python2/etc/logrotate.d/av4server	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/etc/logrotate.d/av4server	2023-01-09 17:18:22.169287768 +0100
 @@ -1,2 +1,2 @@
 -/var/log/av4server/*.log {
 +/var/log/open-av4ms/av4server/*.log {
@@ -139,23 +139,23 @@ diff -r -U1 open-av4ms.orig.python2/etc/logrotate.d/av4server open-av4ms.arch.py
 -	delaycompress
 +        delaycompress
          notifempty
-diff -r -U1 open-av4ms.orig.python2/home/www/av4analyse.py open-av4ms.arch.python2/home/www/av4analyse.py
---- open-av4ms.orig.python2/home/www/av4analyse.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/av4analyse.py	2023-01-09 15:10:44.439527306 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/av4analyse.py open-av4ms.arch.python2/home/www/av4analyse.py
+--- open-av4ms.raspbian.python2/home/www/av4analyse.py	2023-01-09 17:35:29.509255632 +0100
++++ open-av4ms.arch.python2/home/www/av4analyse.py	2023-01-09 17:18:22.179287768 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*-coding: utf-8 -*-
-diff -r -U1 open-av4ms.orig.python2/home/www/av4logbuch.py open-av4ms.arch.python2/home/www/av4logbuch.py
---- open-av4ms.orig.python2/home/www/av4logbuch.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/av4logbuch.py	2023-01-09 15:10:42.679527361 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/av4logbuch.py open-av4ms.arch.python2/home/www/av4logbuch.py
+--- open-av4ms.raspbian.python2/home/www/av4logbuch.py	2023-01-09 17:35:28.329255669 +0100
++++ open-av4ms.arch.python2/home/www/av4logbuch.py	2023-01-09 17:18:22.179287768 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*-coding: utf-8 -*-
-diff -r -U1 open-av4ms.orig.python2/home/www/av4server.py open-av4ms.arch.python2/home/www/av4server.py
---- open-av4ms.orig.python2/home/www/av4server.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/av4server.py	2023-01-09 15:10:40.919527416 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/av4server.py open-av4ms.arch.python2/home/www/av4server.py
+--- open-av4ms.raspbian.python2/home/www/av4server.py	2023-01-09 17:35:27.129255707 +0100
++++ open-av4ms.arch.python2/home/www/av4server.py	2023-01-09 17:37:53.359251133 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -169,42 +169,118 @@ diff -r -U1 open-av4ms.orig.python2/home/www/av4server.py open-av4ms.arch.python
 -sys.path.insert(0, '/home/www/odslib')
 +sys.path.append('/usr/lib/python'+str(sys.version_info.major)+'.'+str(sys.version_info.minor)+'/site-packages/open-av4ms/odslib')
  import odslib
+@@ -88,3 +89,3 @@
+ 		config = ConfigParser.RawConfigParser()
+-		config.read('/etc/av4server.conf')
++		config.read('/etc/open-av4ms/av4server.conf')
+ 		self.DeviceName = config.get('av4server','device')
 @@ -264,3 +265,3 @@
  			fn = fn[:-4]
 -		fn = '/home/www/av4logs/' + fn + '.ods'
 +		fn = '/var/log/open-av4ms/av4server/av4logs' + fn + '.ods'
  
-@@ -526,3 +527,3 @@
- 		logger = logging.getLogger('av4server')
+@@ -523,37 +524,37 @@
+ 	global logger
+-	try:
+-		locale.setlocale(locale.LC_ALL, '')
+-		logger = logging.getLogger('av4server')
 -		hdlr = logging.handlers.TimedRotatingFileHandler('/var/log/av4server/av4server.log',\
-+		hdlr = logging.handlers.TimedRotatingFileHandler('/var/log/open-av4ms/av4server/av4server.log',\
- 						when='midnight',backupCount=7)
-diff -r -U1 open-av4ms.orig.python2/home/www/odslib/odslib.py open-av4ms.arch.python2/home/www/odslib/odslib.py
---- open-av4ms.orig.python2/home/www/odslib/odslib.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/odslib/odslib.py	2023-01-09 15:11:04.759526670 +0100
+-						when='midnight',backupCount=7)
+-		formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+-		hdlr.setFormatter(formatter)
+-		logger.addHandler(hdlr) 
+-		logger.setLevel(logging.INFO)
+-
+-		#Warten bis Netzwerk bereit ist
+-		logger.info("Waiting for Network")
+-		WaitForNetwork()
+-		
+-		# Pyro Server starten
+-		logger.info("Init Pyro Server")
+-		Pyro.core.initServer()
+-		logger.info("Initiate Pyro Daemon")
+-		pyrodaemon = Pyro.core.Daemon()
+-		logger.info("Connect to Pyro Daemon")
+-		uri=pyrodaemon.connect(AV4Server(),'AV4Server')
+-
+-		# enter the service loop.
+-		print 'AV4Server is ready.'
+-		print 'The URI is: ',uri
+-
+-		logger.info('The URI is: ' + uri.__str__())
+-		pyrodaemon.requestLoop()
+-	except SystemExit:
+-		sys.exit()
+-	except:
+-		f = open('/tmp/av4server.trace','w')
+-		traceback.print_exc(file=f)
+-		f.close()
+-		sys.exit()
++	# try: # Switch off exception handling, in order to be thrown an error to the terminal.
++	locale.setlocale(locale.LC_ALL, '')
++	logger = logging.getLogger('av4server')
++	hdlr = logging.handlers.TimedRotatingFileHandler('/var/log/open-av4ms/av4server/av4server.log',\
++					when='midnight',backupCount=7)
++	formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
++	hdlr.setFormatter(formatter)
++	logger.addHandler(hdlr) 
++	logger.setLevel(logging.INFO)
++
++	#Warten bis Netzwerk bereit ist
++	logger.info("Waiting for Network")
++	WaitForNetwork()
++	
++	# Pyro Server starten
++	logger.info("Init Pyro Server")
++	Pyro.core.initServer()
++	logger.info("Initiate Pyro Daemon")
++	pyrodaemon = Pyro.core.Daemon()
++	logger.info("Connect to Pyro Daemon")
++	uri=pyrodaemon.connect(AV4Server(),'AV4Server')
++
++	# enter the service loop.
++	print 'AV4Server is ready.'
++	print 'The URI is: ',uri
++
++	logger.info('The URI is: ' + uri.__str__())
++	pyrodaemon.requestLoop()
++	# except SystemExit:
++	# 	sys.exit()
++	# except:
++	# 	f = open('/tmp/av4server.trace','w')
++	# 	traceback.print_exc(file=f)
++	# 	f.close()
++	# 	sys.exit()
+ 	
+@@ -571,3 +572,3 @@
+ 		umask=0o002,
+-		pidfile = PidFile("/tmp/av4server.pid"),
++		pidfile = PidFile("/run/open-av4ms/av4server/av4server.pid"),
+ 		files_preserve = [sys.stdout,sys.stderr]
+diff -r -U1 open-av4ms.raspbian.python2/home/www/odslib/odslib.py open-av4ms.arch.python2/home/www/odslib/odslib.py
+--- open-av4ms.raspbian.python2/home/www/odslib/odslib.py	2023-01-09 17:35:43.179255205 +0100
++++ open-av4ms.arch.python2/home/www/odslib/odslib.py	2023-01-09 17:18:22.179287768 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*-coding: utf-8 -*-
-Only in open-av4ms.arch.python2/home/www/odslib: __pycache__
-diff -r -U1 open-av4ms.orig.python2/home/www/Pages.py open-av4ms.arch.python2/home/www/Pages.py
---- open-av4ms.orig.python2/home/www/Pages.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/Pages.py	2023-01-09 15:10:38.419527494 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/Pages.py open-av4ms.arch.python2/home/www/Pages.py
+--- open-av4ms.raspbian.python2/home/www/Pages.py	2023-01-09 17:35:25.599255755 +0100
++++ open-av4ms.arch.python2/home/www/Pages.py	2023-01-09 17:18:22.179287768 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*-coding: utf-8 -*-
-Only in open-av4ms.arch.python2/home/www: __pycache__
-diff -r -U1 open-av4ms.orig.python2/home/www/Status.py open-av4ms.arch.python2/home/www/Status.py
---- open-av4ms.orig.python2/home/www/Status.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/Status.py	2023-01-09 15:10:33.009527663 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/Status.py open-av4ms.arch.python2/home/www/Status.py
+--- open-av4ms.raspbian.python2/home/www/Status.py	2023-01-09 17:35:23.129255832 +0100
++++ open-av4ms.arch.python2/home/www/Status.py	2023-01-09 17:18:22.179287768 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  #-*-coding: utf-8 -*-
-diff -r -U1 open-av4ms.orig.python2/home/www/webserver.py open-av4ms.arch.python2/home/www/webserver.py
---- open-av4ms.orig.python2/home/www/webserver.py	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/home/www/webserver.py	2023-01-09 15:10:30.619527738 +0100
+diff -r -U1 open-av4ms.raspbian.python2/home/www/webserver.py open-av4ms.arch.python2/home/www/webserver.py
+--- open-av4ms.raspbian.python2/home/www/webserver.py	2023-01-09 17:35:18.939255963 +0100
++++ open-av4ms.arch.python2/home/www/webserver.py	2023-01-09 17:28:16.349269182 +0100
 @@ -1,2 +1,2 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
@@ -235,17 +311,17 @@ diff -r -U1 open-av4ms.orig.python2/home/www/webserver.py open-av4ms.arch.python
 -	pidfile = PidFile("/tmp/webserver.pid"),
 +	pidfile = PidFile("/run/open-av4ms/av4server/av4webserver.pid"),
  	files_preserve = [sys.stdout,sys.stderr]
-diff -r -U1 open-av4ms.orig.python2/usr/local/bin/av4config open-av4ms.arch.python2/usr/local/bin/av4config
---- open-av4ms.orig.python2/usr/local/bin/av4config	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/usr/local/bin/av4config	2023-01-09 13:07:49.399758001 +0100
+diff -r -U1 open-av4ms.raspbian.python2/usr/local/bin/av4config open-av4ms.arch.python2/usr/local/bin/av4config
+--- open-av4ms.raspbian.python2/usr/local/bin/av4config	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/usr/local/bin/av4config	2023-01-09 17:18:22.179287768 +0100
 @@ -6,3 +6,3 @@
  
 -conffile = '/etc/av4server.conf'
 +conffile = '/etc/open-av4ms/av4server.conf'
  
-diff -r -U1 open-av4ms.orig.python2/usr/local/bin/av4update open-av4ms.arch.python2/usr/local/bin/av4update
---- open-av4ms.orig.python2/usr/local/bin/av4update	2023-01-09 11:41:53.019919295 +0100
-+++ open-av4ms.arch.python2/usr/local/bin/av4update	2023-01-09 13:52:43.499673728 +0100
+diff -r -U1 open-av4ms.raspbian.python2/usr/local/bin/av4update open-av4ms.arch.python2/usr/local/bin/av4update
+--- open-av4ms.raspbian.python2/usr/local/bin/av4update	2023-01-09 17:17:31.789289344 +0100
++++ open-av4ms.arch.python2/usr/local/bin/av4update	2023-01-09 17:18:22.179287768 +0100
 @@ -2,3 +2,3 @@
  
 -beta="$1"

@@ -3,7 +3,7 @@
 _pkgname=open-av4ms
 pkgname="${_pkgname}-git"
 pkgver=1.5+1.r7.20181017.e7ac570
-pkgrel=2
+pkgrel=3
 pkgdesc="Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'."
 url='https://gitlab.com/corbolais/open-av4ms'
 arch=(
@@ -47,7 +47,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'a0dffe4fab675aa5969d54edd8bf714e131754c14283e2a7640ca88f054344ab'
+  'ee58fc4f947f307dbb1e424809ee691acb68391af6be8369286dae8fc08e234d'
   '01760fc8c5b37a86c4b37f48923bde6aaad302a94161f84bb253671d613beaf3'
 )
 
