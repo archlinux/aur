@@ -4,7 +4,7 @@
 pkgname=libquotient-encryption
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
+pkgdesc="A Qt5 library to write cross-platform clients for Matrix, with experimental encryption support enabled"
 arch=(x86_64 aarch64)
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2")
