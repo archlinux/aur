@@ -21,8 +21,8 @@ pkgver() {
     git describe --long --tags | awk 'gsub(/(^v[^0-9]*|-.*)/,"")'
 }
 
-package_se98-icon-theme-git() {
-    pkgdesc="Windows 98 Second Edition inspired icon theme"
+package() {
+    pkgdesc="Windows 98 Second Edition (Win98SE) inspired icon theme"
     provides=(se98-icon-theme)
     conflicts=(se98-icon-theme)
 

@@ -14,6 +14,6 @@ pkgbase = se98-icon-theme-git
 	sha256sums = SKIP
 
 pkgname = se98-icon-theme-git
-	pkgdesc = Windows 98 Second Edition inspired icon theme
+	pkgdesc = Windows 98 Second Edition (Win98SE) inspired icon theme
 	provides = se98-icon-theme
 	conflicts = se98-icon-theme
