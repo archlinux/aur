@@ -4,7 +4,7 @@ pkgname=gnome-shell-extension-forge
 _pkgname=forge
 _gnomever=43
 pkgver=61
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/jmmaranan/forge"
@@ -21,5 +21,15 @@ build() {
 
 package() {
     cd ${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/
-    make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
+    local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+    local destdir="$pkgdir/usr/share/gnome-shell/extensions/$uuid"
+
+    install -d "$destdir"
+    cp -rT temp "$destdir"
+
+    cp -r temp/locale "$pkgdir/usr/share/"
+    rm -rf "$destdir/locale"
+
+    install -Dm644 "temp/schemas/org.gnome.shell.extensions.forge.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
+    rm -rf "$destdir/schemas"
 }
