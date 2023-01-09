@@ -1,7 +1,7 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 # TODO try to rip apart the fat jar and improve installation per https://wiki.archlinux.org/index.php/Java_package_guidelines
 pkgname=apache-jena-fuseki
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='SPARQL server built on the Jena Java framework for building Semantic Web and Linked Data applications'
 arch=('any')
@@ -13,7 +13,7 @@ source=(
     'fuseki-server'
 )
 sha512sums=(
-    '12a7c242584fa739d0d1d2a4025267552069d8bf7b411545d0328e3cacc3bceddaac0584b405772b51464c33f695da86182a60480c72a661264677281771e700'
+    '9646343a23c2563357207f559cb7437aa91b52d02b87e70d77b746b609e93ed0ad9dce06e072f864d53422946f24aa8ee60d9c594c1f82e8f2ab226eba56e474'
     'SKIP'
 )
 
