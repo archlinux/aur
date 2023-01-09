@@ -150,7 +150,7 @@
            // in which case we use the average between the two.
 --- src/screen.C
 +++ src/screen.C
-@@ -2538,8 +2538,8 @@
+@@ -2539,8 +2539,8 @@
                  XSetForeground (dpy, gc, lookup_color(fore, pix_colors));
  
                XDrawLine (dpy, vt, gc,

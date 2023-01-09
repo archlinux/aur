@@ -120,16 +120,16 @@
      }
  #endif
  }
-@@ -3411,7 +3411,7 @@
-         return;
- 
+@@ -3415,7 +3415,7 @@
+   if (str[0] == '?' && !str[1])
+     {
        rgba c;
 -      pix_colors_focused[color].get (c);
 +      lookup_color(color, pix_colors_focused).get (c);
-       color -= minCOLOR;
+       char rgba_str[32];
  
  #if XFT
-@@ -3915,7 +3915,7 @@
+@@ -3924,7 +3924,7 @@
  {
    unsigned int i;
    short rendset;
@@ -138,7 +138,7 @@
  
    if (nargs == 0)
      {
-@@ -4021,6 +4021,20 @@
+@@ -4030,6 +4030,20 @@
              break;
  
            case 38: // set fg color, ISO 8613-6
@@ -159,7 +159,7 @@
            case 48: // set bg color, ISO 8613-6
              {
                unsigned int fgbg = arg[i] == 38 ? Color_fg : Color_bg;
-@@ -4033,6 +4047,14 @@
+@@ -4042,6 +4056,14 @@
  
                    scr_color (idx, fgbg);
                  }
@@ -176,7 +176,7 @@
                    unsigned int r = arg[i + 2];
 --- src/init.C
 +++ src/init.C
-@@ -1121,7 +1121,7 @@
+@@ -1138,7 +1138,7 @@
  
    for (i = 0; i < NRS_COLORS; i++)
      if (const char *name = rs[Rs_color + i])
@@ -185,7 +185,7 @@
  
    /*
     * get scrollBar shadow colors
-@@ -1130,13 +1130,13 @@
+@@ -1147,13 +1147,13 @@
     * from the fvwm window manager.
     */
  #ifdef RXVT_SCROLLBAR
@@ -202,7 +202,7 @@
                     rgba (
                       min ((int)rgba::MAX_CC, max (cscroll.r / 5, cscroll.r) * 7 / 5),
                       min ((int)rgba::MAX_CC, max (cscroll.g / 5, cscroll.g) * 7 / 5),
-@@ -1378,8 +1378,8 @@
+@@ -1395,8 +1395,8 @@
    window_calc (0, 0);
  
    /* sub-window placement & size in rxvt_term::resize_all_windows () */
@@ -213,7 +213,7 @@
    attributes.colormap         = cmap;
  
    top = XCreateWindow (dpy, parent,
-@@ -1476,8 +1476,8 @@
+@@ -1493,8 +1493,8 @@
                              window_vt_x, window_vt_y,
                              vt_width, vt_height,
                              0,
@@ -224,7 +224,7 @@
  
    attributes.bit_gravity = NorthWestGravity;
    XChangeWindowAttributes (dpy, vt, CWBitGravity, &attributes);
-@@ -1494,8 +1494,8 @@
+@@ -1511,8 +1511,8 @@
    vt_ev.start (display, vt);
  
    /* graphics context for the vt window */
@@ -583,7 +583,7 @@
    void scr_tab (int count, bool ht = false) noexcept;
 --- src/rxvtperl.xs
 +++ src/rxvtperl.xs
-@@ -795,6 +795,18 @@
+@@ -802,6 +802,18 @@
  
  PROTOTYPES: ENABLE
  
@@ -602,7 +602,7 @@
  BOOT:
  {
    sv_setsv (get_sv ("urxvt::LIBDIR",   1), newSVpvn (LIBDIR,   sizeof (LIBDIR)   - 1));
-@@ -1107,43 +1119,43 @@
+@@ -1128,43 +1140,43 @@
          OUTPUT:
          RETVAL
  
@@ -658,7 +658,7 @@
  	CODE:
  {
          if (!IN_RANGE_EXC (new_value, 0, RS_customCount))
-@@ -1563,8 +1575,8 @@
+@@ -1619,8 +1631,8 @@
          THIS->vt_emask_perl |= emask;
          THIS->vt_select_input ();
  
@@ -669,7 +669,7 @@
  	CODE:
          RETVAL = THIS->rstyle;
          THIS->rstyle = new_rstyle;
-@@ -2050,10 +2062,10 @@
+@@ -2106,10 +2118,10 @@
          RETVAL
  
  void
@@ -682,7 +682,7 @@
  
  void
  rxvt_term::scr_bell ()
-@@ -2119,7 +2131,7 @@
+@@ -2175,7 +2187,7 @@
  }
  
  SV *
@@ -691,7 +691,7 @@
  	CODE:
  {
          overlay *o = new overlay (THIS, x, y, w, h, rstyle, border);
-@@ -2218,8 +2230,8 @@
+@@ -2297,8 +2309,8 @@
  XCreateSimpleWindow (rxvt_term *term, Window parent, int x, int y, unsigned int width, unsigned int height)
  	C_ARGS: term->dpy, (Window)parent,
                  x, y, width, height, 0,
@@ -702,7 +702,7 @@
  
  #endif
  
-@@ -2353,7 +2365,7 @@
+@@ -2432,7 +2444,7 @@
              img->reify ()
                 ->replace (img);
  
@@ -713,7 +713,7 @@
              THIS->bg_img = img;
 --- src/screen.C
 +++ src/screen.C
-@@ -626,12 +626,51 @@
+@@ -627,12 +627,51 @@
      rstyle = SET_BGCOLOR (rstyle, color);
  }
  
@@ -766,7 +766,7 @@
  {
    if (set)
      rstyle |= style;
-@@ -1389,13 +1428,13 @@
+@@ -1390,13 +1429,13 @@
  
        if (mapped)
          {
@@ -782,7 +782,7 @@
            XChangeGC (dpy, gc, GCForeground, &gcvalue);
          }
      }
-@@ -1724,15 +1763,15 @@
+@@ -1725,15 +1764,15 @@
          }
        else
  #endif
@@ -802,7 +802,7 @@
        XChangeGC (dpy, gc, GCBackground | GCForeground, &gcvalue);
  
        scr_clear ();
-@@ -2430,14 +2469,14 @@
+@@ -2431,14 +2470,14 @@
              {
                if (showcursor && focus && row == screen.cur.row
                    && IN_RANGE_EXC (col, cur_col, cur_col + cursorwidth))
@@ -820,7 +820,7 @@
  
                XDrawLine (dpy, vt, gc,
                           xpixel, ypixel + font->ascent + 1,
-@@ -2457,7 +2496,7 @@
+@@ -2458,7 +2497,7 @@
              scr_set_char_rend (ROW(screen.cur.row), cur_col, cur_rend);
            else if (oldcursor.row >= 0)
              {
@@ -829,7 +829,7 @@
                if (cursor_type == 1)
                  XFillRectangle (dpy, vt, gc,
                                  Col2Pixel (cur_col),
-@@ -2474,7 +2513,7 @@
+@@ -2475,7 +2514,7 @@
          }
        else if (oldcursor.row >= 0)
          {
@@ -838,7 +838,7 @@
  
            XDrawRectangle (dpy, vt, gc,
                            Col2Pixel (cur_col),
-@@ -2543,15 +2582,15 @@
+@@ -2544,15 +2583,15 @@
        else
  # endif
          {
@@ -857,7 +857,7 @@
      }
  
    XClearWindow (dpy, parent);
-@@ -2561,7 +2600,7 @@
+@@ -2562,7 +2601,7 @@
        if (transparent)
          XSetWindowBackgroundPixmap (dpy, scrollBar.win, ParentRelative);
        else

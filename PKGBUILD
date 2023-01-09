@@ -2,8 +2,8 @@
 # Contributor: ferdig <ferdinand.goldmann@jku.at>
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
-pkgver=9.30
-pkgrel=6
+pkgver=9.31
+pkgrel=1
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -13,7 +13,9 @@ depends=(
     'libxt'
     'perl'
     'startup-notification'
+    'libnsl'
     'libptytty'
+    'libxext'
 )
 optdepends=(
     'gtk2-perl: to use the urxvt-tabbed'
@@ -29,7 +31,6 @@ conflicts=(
     'rxvt-unicode-terminfo'
     'urxvt-resize-font'
     'urxvt-perls'
-    'urxvt-perls-git'
 )
 source=(
     http://dist.schmorp.de/$_pkgname/$_pkgname-$pkgver.tar.bz2
@@ -41,22 +42,27 @@ source=(
     '24-bit-color.patch'
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
-    'perl-background-fix.patch'
 )
-b2sums=('645164e37e9e484c66f5047836689e4e4727575dfdcbefc64affb70d9110497529fdcc7d476f77737efed5cee4af314e1e1ccbcb42b506bb7e653b827c24a0c7'
+b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a247907878639db5fac3dcd3b6be3d839347787bcf08ca602ae246607f750b'
         'eff2407a1551d57d7a9e9000a9bad760afd4d9b7a0fa15c375ec821d185561a99c3761319c1cbed5cdd512b39faf339fb78387220eae161c9a33a859fc4733d2'
         '2c4bc054e89b1bbd9ebce18cee64728b5ebb3aa915ce3ec7957e1a95da34c26ea757d324041b6c65db5902b60d0009176ff6aabc5093c5b2665c4b6997a3f60f'
         '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
         '7f760beda37d781ae5bfff280fb912b3210ed4e60c82d279706feb023e5e10e9c5abe8eaa9bef6d7da460df39808c56de91ee2d5ffc63ea0c2e402810fa3dfb5'
         '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
-        '714c6f6b25dded535be85107ff1495175fbec1568f46eac7f59a0ef1af873bf3ac73bc312611c4a4443127f66d5fde48f30f342ca1f632541066d1bd6e11b560'
-        'f9c56c35579155f33f2c09a580554a58e82e1de328d3bf3037386ab1cecb2970abeffe215ad9909706c398c506e369936584024672aac379f78a7f5bbcecc560'
-        'c2e0b6be3df3cf037ffa1db9a5acff92dacd8ad6244b152bcb83cfd13bc3fc7a72dbd39b0ee97855c27ba960f2de5d5558516d12e4ec876d5d8bdba9eef11e1a'
-        'd7f8b1472de6563d329f0edac6839a1625af4b74a782fb7080d30b804a5bb7292cf8b136c0682e535e5806092eddbe970399f3591e9150c6929ab85056c30be1')
+        '03c250e1aedbe50924b34cc9261921b3bf7af6786ce3fea61cbcf145b79b6eb4e101e63fa08f00baaabe530bb164e6bcfd4c04ddbacf0dcc28fdebef0519b9e0'
+        '8d360d8b0cd274b63f3c0c7651b358cf94aa71c39adb15ca5d8f3c8a05d930bf96ac559e6b7eceb6b3706a2caa3bf7002f75f596a1efdb5e54e43d20b9341590'
+        '77b2a764558660cbc16325eacca3a2b17d3071d59c7a956a43c796a8d9374f5d202012e13a50ef4d978e2826009d9f1a93fb118d97e27e4cfbf0569e1d781082')
 _dir="$_pkgname-$pkgver"
 
 prepare() {
     cd $_dir
+
+    ################################################################
+    #                                                              #
+    #  If someone has better solutions for the rewritten patches,  #
+    #                      please contact me!                      #
+    #                                                              #
+    ################################################################
 
     # the repo with original 24-bit-color.patch is no longer available:
     # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
@@ -69,16 +75,6 @@ prepare() {
     # https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
     # patch rewritten to work with version ≥ 9.29
     patch -p0 -i ../improve-font-rendering.patch
-
-    ################################################################
-    #                                                              #
-    #  If someone has better solutions for the rewritten patches,  #
-    #                      please contact me!                      #
-    #                                                              #
-    ################################################################
-
-    # patch to fix perl module background by ferdig
-    patch -p0 -i ../perl-background-fix.patch
 }
 
 build() {
@@ -88,11 +84,10 @@ build() {
     #                                                              #
     #   This is an opinionated build. If you miss features, feel   #
     #   free to enable them below before you build the package.    #
-    #           (eg. --enable-pixbuf and --enable-fading)          #
+    #          (e.g. --enable-pixbuf and --enable-fading)          #
     #                                                              #
     ################################################################
 
-    # disable smart-resize (FS#34807)
     # do not specify --with-terminfo (FS#46424)
     ./configure \
         --prefix=/usr \

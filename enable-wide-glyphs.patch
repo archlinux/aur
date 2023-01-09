@@ -173,7 +173,7 @@
            // the xft font cell might differ from the terminal font cell,
 --- src/screen.C
 +++ src/screen.C
-@@ -975,7 +975,61 @@
+@@ -976,7 +976,61 @@
  # endif
  #endif
  
@@ -236,7 +236,7 @@
  
            // if the character doesn't fit into the remaining columns...
            if (ecb_unlikely (screen.cur.col > ncol - width && ncol >= width))
-@@ -2434,7 +2488,12 @@
+@@ -2435,7 +2489,12 @@
                  text--, count++, xpixel -= fwidth;
  
                // force redraw after "careful" characters to avoid pixel droppings
@@ -252,7 +252,7 @@
                // force redraw before "careful" characters to avoid pixel droppings
 --- src/xdefaults.C
 +++ src/xdefaults.C
-@@ -298,6 +298,9 @@
+@@ -299,6 +299,9 @@
  #if ENABLE_STYLES
                                      "styles,"
  #endif
