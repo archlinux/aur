@@ -1,7 +1,7 @@
 pkgbase = gallery-dl
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
 	pkgver = 1.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikf/gallery-dl
 	arch = any
 	license = GPL2
@@ -17,7 +17,9 @@ pkgbase = gallery-dl
 	optdepends = python-pysocks: SOCKS support
 	optdepends = python-brotli: for brotli decompression
 	source = git+https://github.com/mikf/gallery-dl.git#tag=5e22b13aa3dcb51fc58227f7e0fcf59cffdf265e?signed
+	source = https://github.com/mikf/gallery-dl/commit/dfe4f00ca2b9da6128b04ff32ba50910d07cf183.patch
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
 	sha512sums = SKIP
+	sha512sums = c44adfcfcc79013547d847a8c501e68d0a587055a5a511178cd3e0e82fa20ee6769cdadebdb6ad187402b61fd8cf86eff093ff962026f7f1da8c53fe4a89840f
 
 pkgname = gallery-dl
