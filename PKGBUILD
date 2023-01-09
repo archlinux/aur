@@ -29,6 +29,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
+  #FIXME: drop in the next update, as the fix has been upstreamed
   # Fixup desktop file
   sed \
     -e 's/Exec=hdrview/Exec=HDRView/' \
