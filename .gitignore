@@ -1,0 +1,6 @@
+*-Setup
+*.src.tar*
+*.xz
+*.pkg.tar*
+pkg
+src

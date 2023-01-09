@@ -1,8 +1,8 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 
 pkgname=coolvlviewer-experimental
-pkgver=1.29.0.4
-_pkgver=12904
+pkgver=1.30.1.16
+_pkgver=130116
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer'; built from source)"
 url="http://sldev.free.fr"
@@ -20,15 +20,15 @@ optdepends=(
 	'lib32-freealut: for OpenAL support'
 	'lib32-libidn11: for voice support'
 	'wine: for SLVoice support')
-makedepends=("cmake" "bison" "flex" "python2" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama" "lib32-libxinerama")
+makedepends=("cmake" "bison" "flex" "python" "make" "bzip2" "glibc" "libx11" "libgl" "libxrender" "libidn" "libxinerama" "lib32-libxinerama")
 arch=('x86_64')
 conflicts=('coolvlviewer-bin' 'coolvlviewer' 'coolvlviewer-experimental-bin')
 install=coolvlviewer.install
 source=("http://sldev.free.fr/sources/CoolVLViewer-src-${_pkgver}.tar.bz2"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-sha1sums=('1e70b1760d6f2ea6da25ac2fe4ae4e5d03fcc6e1'
-          'e294bc6af8df44320d6eddecb57f519146f53238'
+sha1sums=('6029636790f783d741ce866ff45d35e1fe27ecc7'
+          'e08076db600f7dcee78c0f7b861e8e78f16a069d'
           '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
 build() {
@@ -40,28 +40,28 @@ package() {
 	# Install Desktop File
 	install -D -m644 $srcdir/coolvlviewer.desktop \
 		$pkgdir/usr/share/applications/coolvlviewer.desktop
-	
+
 	# Install Icon File
 	install -D -m755 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/cvlv_icon.png \
 		$pkgdir/usr/share/pixmaps/clvl_icon.png
-	
+
 	# Install Launcher
 	install -D -m755 $srcdir/coolvlviewer.launcher \
 		$pkgdir/usr/bin/coolvlviewer
-	
+
 	# Install License
 	install -D -m644 $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/licenses.txt \
 		$pkgdir/usr/share/licenses/$pkgname/LISENSE
-	
+
 	# Move Data to Destination Directory
 	mv $srcdir/linden/indra/viewer-linux-x86_64-release/newview/CoolVLViewer-x86_64-$pkgver/ $srcdir/coolvlviewer
 	install -d $pkgdir/opt/
 	mv coolvlviewer/ $pkgdir/opt/
-	
+
 	# Change Permissions of files to root:games
 	chown -R root:games $pkgdir/opt/coolvlviewer
 	chmod -R g+rw $pkgdir/opt/coolvlviewer
-	
+
 	# Make Binary Group-Executable
 	chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
 }
