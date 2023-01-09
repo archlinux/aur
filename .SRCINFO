@@ -1,6 +1,6 @@
 pkgbase = featherpad-qt5
 	pkgdesc = Lightweight Qt5 plain text editor
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 1
 	url = https://github.com/tsujan/FeatherPad
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = featherpad-qt5
 	depends = qt5-x11extras
 	provides = featherpad
 	conflicts = featherpad
-	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.4/FeatherPad-1.3.4.tar.xz
-	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.4/FeatherPad-1.3.4.tar.xz.asc
+	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.5/FeatherPad-1.3.5.tar.xz
+	source = https://github.com/tsujan/FeatherPad/releases/download/V1.3.5/FeatherPad-1.3.5.tar.xz.asc
 	source = featherpad.appdata.xml
 	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
-	sha256sums = 7c0c508a9900193582d8f60af4ec87c23173c73afdf371299bc1e88d8336718b
+	sha256sums = 2feec98446d9b37f3735323701a5ee22a8bca7a05ed3d5f884a4245cf06c1dff
 	sha256sums = SKIP
 	sha256sums = d67bc310f4c31257b795beabbce2d0887640088b0fe3040307906da0d9f760d9
 
