@@ -1,8 +1,8 @@
 # Maintainer: Gijs Burghoorn <me@gburghoorn.com>
 pkgname=lemurs-git
 _pkgname=lemurs
-pkgver=0.3.0.r1.g37f773b
-pkgrel=1
+pkgver=0.3.0.r3.g3ec31f4
+pkgrel=2
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/coastalwhite/lemurs"
