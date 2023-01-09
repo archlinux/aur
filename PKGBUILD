@@ -2,14 +2,14 @@
 
 _pkgname='uhi'
 pkgname="python-${_pkgname}"
-pkgver='0.3.2'
+pkgver='0.3.3'
 pkgrel=1
 pkgdesc="Contains the code for the PlottableHistogram Protocol, to be used in type checking libraries wanting to conform to the protocol."
 arch=('any')
 url='https://github.com/scikit-hep/uhi'
 license=('MIT')
 depends=('python-numpy' 'python-typing_extensions' 'root')
-makedepends=('git' 'python-build' 'python-installer' 'python-flit-core' 'python-flit' 'python-hatchling')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatch-vcs' 'python-hatchling')
 checkdepends=('python-pytest' 'python-boost-histogram' 'python-importlib-metadata')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
