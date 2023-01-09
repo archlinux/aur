@@ -1,12 +1,12 @@
 pkgbase = canvas-downloader-bin
 	pkgdesc = Downloads files from all courses in canvas.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/stein212/canvas-downloader
+	url = https://github.com/k-walter/canvas-downloader
 	arch = x86_64
 	depends = gcc-libs
 	depends = openssl
-	source = https://github.com/stein212/canvas-downloader/releases/download/v0.1.6/canvas-downloader-x86_64-unknown-linux-gnu-v0.1.6
-	sha256sums = d97c2e5c8c4ddfc02c8177c42c30ae8f3afed338e0cbc57449feeaf960886157
+	source = https://github.com/k-walter/canvas-downloader/releases/download/v0.1.7/canvas-downloader-x86_64-unknown-linux-gnu-v0.1.7
+	sha256sums = 2ac006e4f7c2b05d559b7cba970793551a5324676cef94c74eb6828a4a6c6849
 
 pkgname = canvas-downloader-bin
