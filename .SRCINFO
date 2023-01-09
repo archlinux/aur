@@ -1,0 +1,19 @@
+pkgbase = perl-alien-gimp
+	pkgdesc = Encapsulate install info for GIMP
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/dist/Alien-Gimp
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-extutils-depends
+	makedepends = perl-io-all
+	makedepends = perl-extutils-pkgconfig
+	depends = perl
+	depends = gimp
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/Alien-Gimp-0.10.tar.gz
+	md5sums = 1291e5f1642566a97486a91bee7af0bc
+
+pkgname = perl-alien-gimp
