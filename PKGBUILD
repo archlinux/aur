@@ -3,7 +3,7 @@
 _pkgname=open-av4ms
 pkgname="${_pkgname}-git"
 pkgver=1.5+1.r7.20181017.e7ac570
-pkgrel=3
+pkgrel=4
 pkgdesc="Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'."
 url='https://gitlab.com/corbolais/open-av4ms'
 arch=(
@@ -61,6 +61,7 @@ prepare() {
   #patch -N -p1 --follow-symlinks -i "${srcdir}/python3.patch"
 
   printf '%s\n' "${url}" > "${srcdir}/website.url"
+  git log > "${srcdir}/git.log"
 }
 
 pkgver() {
@@ -157,6 +158,7 @@ package() {
     install -D -m755 -v   "${_sysvinit}"                                "${pkgdir}/sysvinit/init.d/$(basename "${_sysvinit}")"
   done
   install -D -m644 -v     "${srcdir}/website.url"                       "${pkgdir}/usr/share/doc/${_pkgname}/website.url"
+  install -D -m644 -v     "${srcdir}/git.log"                           "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
 
 
   ## Install license:
