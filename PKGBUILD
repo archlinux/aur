@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git checkout $(git tag | grep -vE "rc|hotfix" | sort -rh | head -n 1)
+    git checkout v$(pkgver)
 }
 
 build() {
