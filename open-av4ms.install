@@ -1,0 +1,32 @@
+pre_install() {
+  true
+}
+
+post_install() {
+  printf '%s\n' "--> Creating user and group 'av4ms-server' ..."
+  useradd --user-group --no-create-home --system --shell /bin/false av4ms-server
+  printf '%s\n' "    Remember that this service is to be run as the user 'av4ms-server'."
+  chown -R av4ms-server:av4ms-server /var/log/open-av4ms/av4server
+  chown -R av4ms-server:av4ms-server /run/open-av4ms/av4server
+
+  printf '%s\n' "--> Password for av4webserver is stored in '/etc/open-av4ms/Password.py.'"
+  printf '%s\n' "    By default none is set, please set one if you don't want the webserver to be open."
+}
+
+pre_upgrade() {
+  true
+}
+
+post_upgrade() {
+  true
+}
+
+pre_remove() {
+  printf '%s\n' "--> Deleting user and group 'av4ms-server' ..."
+  userdel  av4ms-server
+  groupdel av4ms-server
+}
+
+post_remove() {
+  true
+}

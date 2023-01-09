@@ -1,0 +1,33 @@
+pkgbase = open-av4ms-git
+	pkgdesc = Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'.
+	pkgver = 1.5+1.r7.20181017.e7ac570
+	pkgrel = 1
+	url = https://gitlab.com/corbolais/open-av4ms
+	install = open-av4ms.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2
+	depends = python2-daemon
+	depends = python2-netifaces
+	depends = python2-pyro3
+	depends = python2-pyserial
+	optdepends = logrotate: To rotate the webserver logs.
+	optdepends = sysvinit: For system-V-style initscript.
+	optdepends = wget: For av4update Raspian(!) helper script.
+	provides = open-av4ms=1.5+1.r7.20181017.e7ac570
+	provides = av4ms-server=1.5+1.r7.20181017.e7ac570
+	conflicts = open-av4ms
+	conflicts = av4ms-server
+	options = emptydirs
+	backup = etc/open-av4ms/av4server.conf
+	backup = etc/open-av4ms/Password.py
+	backup = etc/logrotate.d/av4server
+	source = open-av4ms::git+https://gitlab.com/corbolais/open-av4ms.git
+	source = arch-adaption.patch
+	source = open-av4ms.install
+	sha256sums = SKIP
+	sha256sums = a0dffe4fab675aa5969d54edd8bf714e131754c14283e2a7640ca88f054344ab
+	sha256sums = 01760fc8c5b37a86c4b37f48923bde6aaad302a94161f84bb253671d613beaf3
+
+pkgname = open-av4ms-git
