@@ -10,10 +10,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.6.0')
+provides=('gdal=3.6.2')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.6.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('f57b57bb460bf4cb3d601f981e3315b164bcf2f6da1f1b7e72f9ce771e58e4c88619833ca366b6a7c70ed1032bcf3c959f81d60254e136b40fb715937a7e5a59')
+b2sums=('c90606b642c632dd5ec224d63aa80c158c9ee04c6ca0341815f7449b319bf9442d65c2f9b981aedd242713ef6909a30f620b448ba26baf6cd8a31e2a9ae0dd8a')
 
 build() {
   cmake -B build -S $_pkgbase-$pkgver \
