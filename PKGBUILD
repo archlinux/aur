@@ -2,17 +2,17 @@
 
 pkgname=docker-abuild-git
 _pkgname=docker-abuild
-pkgver=r126.a5c4d5e
+pkgver=r139.d5b2431
 pkgrel=1
 pkgdesc="Dockerised abuild"
 arch=(any)
-url="https://github.com/alpinelinux/docker-abuild"
+url="https://gitlab.alpinelinux.org/alpine/docker-abuild"
 license=(MIT)
 provides=(docker-abuild)
 conflicts=(docker-abuild)
 depends=(bash)
 makedepends=(git)
-source=("git+https://git.alpinelinux.org/docker-abuild")
+source=("git+https://gitlab.alpinelinux.org/alpine/docker-abuild.git")
 sha512sums=('SKIP')
 
 pkgver() {
