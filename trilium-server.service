@@ -1,0 +1,40 @@
+[Unit]
+Description=Trilium Notes server daemon
+After=syslog.target network.target
+
+[Service]
+User=triliumserver
+Group=triliumserver
+Type=simple
+Environment=TRILIUM_DATA_DIR=trilium-data/
+ExecStart=./trilium.sh
+WorkingDirectory=/opt/trilium-server
+
+# Security
+ProtectProc=invisible
+ProtectSystem=strict
+ReadWritePaths=/var/lib/trilium-server
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateIPC=yes
+PrivateUsers=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+
+TimeoutStopSec=20
+# KillMode=process leads to error, according to https://www.freedesktop.org/software/systemd/man/systemd.kill.html
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

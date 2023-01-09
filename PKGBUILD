@@ -1,7 +1,7 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-server-cn"
 pkgver=0.57.5_20221216
-pkgrel=1
+pkgrel=2
 pkgdesc="Trilium Notes 服务端 中文版"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
@@ -18,6 +18,6 @@ package()
     # Move main files
     mv trilium-linux-x64-server/* "$pkgdir/opt/$pkgname"
     # Create command and make it executable
-    cp trilium-server "$pkgdir/usr/bin/trilium-server"
-    chmod 0755 "$pkgdir/usr/bin/trilium-server"
+    install -vDm755 "${srcdir}/trilium-server.sh" "${pkgdir}/usr/bin/trilium-server"
+    install -vDm644 "${srcdir}/trilium-server.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
