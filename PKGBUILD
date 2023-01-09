@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=mastodon-twitter-sync
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Synchronizes posts from Mastodon to Twitter and back"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cd9e3950092b120410155a24f2162b5bc07646619187d18e1edf1feee95b9ee5')
+sha256sums=('37fbc8b3f43604cc7090c4afa32c3872e9b0d0b515e79d9a61d4c11607798953')
 
 prepare() {
 	cd "$pkgname-$pkgver"
