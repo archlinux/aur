@@ -1,0 +1,11 @@
+diff --git a/common/src/Utilities/CMakeLists.txt b/common/src/Utilities/CMakeLists.txt
+index 1f6b9b12d..808aab8a2 100644
+--- a/common/src/Utilities/CMakeLists.txt
++++ b/common/src/Utilities/CMakeLists.txt
+@@ -84,3 +84,6 @@ endif()
+ 
+ add_pcsx2_lib(${Output} "${UtilitiesFinalSources}" "${UtilitiesFinalLibs}" "${UtilitiesFinalFlags}")
+ add_pcsx2_lib(${Output}_NO_TLS "${UtilitiesFinalSources}" "${UtilitiesFinalLibs}" "${UtilitiesFinalFlags} -DPCSX2_THREAD_LOCAL=0")
++if(USE_GCC)
++	set_source_files_properties(FastJmp.cpp PROPERTIES COMPILE_FLAGS -fno-lto)
++endif()

@@ -1,0 +1,58 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef4492932..1c749511e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,6 @@ get_git_version_info()
+ write_svnrev_h()
+ add_definitions(-D__LIBRETRO__)
+ 
+-add_subdirectory(3rdparty/wxwidgets3.0)
+ 
+ # make common
+ if(common_libs)
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index 049ebb6be..37e902b89 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -16,8 +16,7 @@ find_package(LibLZMA)
+ set(OpenGL_GL_PREFERENCE GLVND)
+ find_package(OpenGL)
+ find_package(PNG)
+-set(wxWidgets_FOUND 1)
+-set(wxWidgets_USE_FILE 3rdparty/wxwidgets3.0/UsewxWidgets.cmake)
++find_package(wxWidgets COMPONENTS core CONFIG)
+ find_package(ZLIB)
+ 
+ ## Use pcsx2 package to find module
+@@ -51,7 +50,7 @@ if(OPENGL_FOUND)
+ endif()
+ 
+ if(wxWidgets_FOUND)
+-	include(${wxWidgets_USE_FILE})
++	set(wxWidgets_LIBRARIES wx::core)
+ endif()
+ 
+ if(PCAP_FOUND)
+@@ -116,7 +115,5 @@ if((GCC_VERSION VERSION_EQUAL "9.0" OR GCC_VERSION VERSION_GREATER "9.0") AND GC
+     This text being in a compile log in an open issue may cause it to be closed.")
+ endif()
+ 
+-add_subdirectory(3rdparty/libchdr EXCLUDE_FROM_ALL)
+-include_directories(3rdparty/libchdr/include)
+-add_subdirectory(3rdparty/yaml-cpp EXCLUDE_FROM_ALL)
+-include_directories(3rdparty/yaml-cpp/include)
++check_lib(LIBCHDR libchdr)
++find_package(yaml-cpp)
+diff --git a/common/src/Utilities/CMakeLists.txt b/common/src/Utilities/CMakeLists.txt
+index 1f6b9b12d..1d0e1d4fb 100644
+--- a/common/src/Utilities/CMakeLists.txt
++++ b/common/src/Utilities/CMakeLists.txt
+@@ -74,7 +74,7 @@ set(UtilitiesFinalLibs
+     ${LIBC_LIBRARIES} # Gold (new linux linker) does not get automatically dependency of dependency
+ 	${wxWidgets_LIBRARIES}
+ 	yaml-cpp
+-	chdr-static
++	chdr
+ )
+ 
+ if(MSVC)
