@@ -3,8 +3,8 @@
 
 pkgname='doc2go-bin'
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Your Go project's documentation, to-go.'
+pkgrel=2
+pkgdesc='Your Go documentation, to-go.'
 url='https://github.com/abhinav/doc2go'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('Apache')
