@@ -1,0 +1,17 @@
+pkgbase = ifd-rutokens
+	pkgdesc = Aktiv Co Rutoken S driver. Allows users to access Rutoken S through pcsc-lite.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.rutoken.ru/support/download/nix/
+	install = ifd-rutokens.install
+	arch = x86_64
+	groups = 
+	license = custom
+	depends = glibc>=2.3.2
+	depends = libusb-compat>=0.1.8
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://download.rutoken.ru/Rutoken/Drivers_Unix/1.0.4/Linux/x64/ifd-rutokens_1.0.4_amd64.deb
+	sha512sums_x86_64 = 7e7733bfa16838a69d9361366a73062231f31feca0f8ea3ae155b78f08014c2fe4ea2d147dcfc58ae2ba4afaaa14be55e6efd34b87586d1ded488d4267dba984
+
+pkgname = ifd-rutokens
