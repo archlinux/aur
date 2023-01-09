@@ -1,0 +1,22 @@
+pkgbase = inter-doom
+	pkgdesc = A limit-removing source port of Doom with enhancements and translation to the Russian language
+	pkgver = 6.1
+	pkgrel = 1
+	url = https://github.com/JNechaevsky/inter-doom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python3
+	makedepends = git
+	depends = sdl2>=2.0.18
+	depends = sdl2_mixer>=2.0.2
+	depends = sdl2_net>=2.0.0
+	depends = libsamplerate
+	optdepends = doom1-wad: Doom shareware game data
+	source = inter-doom-6.1.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/6.1.tar.gz
+	b2sums = e96f9f9db4b49e070a1116a23b86391ebe231c85fb5b870d2c38d90ad18a05761212f287953b606f84f95d8d111c41af27ad17ff8e6860e5a834a51aa3c32a01
+
+pkgname = inter-doom
