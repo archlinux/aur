@@ -2,7 +2,7 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
 pkgver=7.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 url="https://code.onedev.io/onedev/server"
