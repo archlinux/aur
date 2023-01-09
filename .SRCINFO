@@ -29,5 +29,3 @@ pkgname = onedev
 	depends = java-runtime-headless>11.0.0
 	depends = git>2.11.1
 	depends = curl
-	depends = fontconfig
-	depends = ttf-dejavu

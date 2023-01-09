@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
+  depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl')
   install -o 663 -g 663 -d "$pkgdir/opt/onedev"
   cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/onedev"
   chown -R 663:663 "$pkgdir/opt/onedev"
