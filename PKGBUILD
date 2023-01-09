@@ -1,6 +1,6 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=gaffer-bin
-pkgver=1.1.6.0
+pkgver=1.2.0.0a1
 pkgrel=1
 pkgdesc="Gaffer is a VFX application that enables look developers, lighters, and compositors to easily build, tweak, iterate, and render scenes."
 arch=('any')
@@ -8,13 +8,13 @@ url="https://www.gafferhq.org/"
 license=('BSD-3')
 depends=('python')
 provides=('gaffer')
-source=(https://github.com/GafferHQ/gaffer/releases/download/$pkgver/gaffer-$pkgver-linux-python3.tar.gz)
-noextract=("$provides-$pkgver-linux-python3.tar.gz")
-md5sums=('04ba580da975df08ec3bbb8dbafe11f9') #autofill using updpkgsums
+source=(https://github.com/GafferHQ/gaffer/releases/download/$pkgver/gaffer-$pkgver-linux.tar.gz)
+noextract=("$provides-$pkgver-linux.tar.gz")
+md5sums=('f6d478fce2e3bcf7f6c2d75929e6c559')
 options=('!strip')
 
 prepare() {
-  bsdtar xf "$provides-$pkgver-linux-python3.tar.gz"
+  bsdtar xf "$provides-$pkgver-linux.tar.gz"
 }
 
 package() {
@@ -24,7 +24,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/mime/application"
   mkdir -p "${pkgdir}/usr/share/applications"
 
-  mv "$provides-$pkgver-linux-python3" "${pkgdir}/opt/gaffer"
+  mv "$provides-$pkgver-linux" "${pkgdir}/opt/gaffer"
 
   cp "$srcdir/../gaffer.desktop" "${pkgdir}/usr/share/applications/"
   cp "$srcdir/../x-gaffer.xml" "${pkgdir}/usr/share/mime/application/"
