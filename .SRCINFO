@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-theme-dracula-git
+	pkgdesc = Dracula theme for GNOME Shell
+	pkgver = 293.b64d36a
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = gnome-shell-theme-dracula
+	conflicts = gnome-shell-theme-dracula
+	source = gnome-shell-theme-dracula::git+https://github.com/dracula/gtk.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-theme-dracula-git
