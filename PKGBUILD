@@ -1,7 +1,7 @@
 # Maintainer: gardenapple <mailbox@appl.garden>
 
 pkgname=tere-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Faster alternative to using cd and ls to browse folders in your terminal'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("https://github.com/mgunyho/tere/releases/download/v$pkgver/tere-$pkgver
         "https://github.com/mgunyho/tere/raw/v$pkgver/LICENSE")
 provides=('tere')
 conflicts=('tere')
-sha256sums=('f786cc3e957d95cf4bfb126daf000dbc2b240890a820ed924a6449a0fe32d1f9'
+sha256sums=('581b54bdfc5b2eff15287b66d57459633282fec04b1c8a20b0310cb98b503613'
             '6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665')
 install=$pkgname.install
 
