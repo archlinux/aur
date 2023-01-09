@@ -1,8 +1,8 @@
 # Maintainers: NNNN4 <NNNNFour4@gmail.com>
 
 pkgname=etterna
-pkgver=0.72.0
-pkgrel=2
+pkgver=0.72.1
+pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
@@ -16,12 +16,12 @@ install='etterna.install'
 changelog=
 source=(
     "${pkgname}-${pkgver}-Linux.tar.gz::https://github.com/etternagame/${pkgname}/releases/download/v${pkgver}/Etterna-${pkgver}-Linux.tar.gz"
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame/${pkgname}/archive/v${pkgver}.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/etternagame/${pkgname}/master/LICENSE"
     "${pkgname}.desktop"
     "${pkgname}"
 )
-sha256sums=('bd14b6b5909429c148244661b248e8a4096f146a79a1619e9755f713d56bb181'
-            '61bbef1c217eaa69bbf37791fa3c365526a1409d99866cd7ca2a190610fb9eaa'
+sha256sums=('36db982c15eb4a8b5082ecccec7f92320c48e7a3c6da07721e635b3abe2185b5'
+            '83d08801949ae7b28f79b7106ff760811e3ea0ebb892c11a07d64f7dcc7e9867'
             '3962c6a32780c51d9523126a6de09e5212be428452bc4e34991f98403df444cb'
             '6487ffe86bd2de027d83e9eabbdc5c80b0dfe1b6c96df92b60ab0991d9e28c9f'
 )
@@ -47,6 +47,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "${srcdir}/Etterna-${pkgver}-Linux/Etterna/Themes/_fallback/Graphics/Common window icon.png" "$pkgdir/opt/${pkgname}/icon.png" 
 
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

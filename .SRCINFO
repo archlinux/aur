@@ -1,7 +1,7 @@
 pkgbase = etterna
 	pkgdesc = A advanced cross-platform rhythm game focused on keyboard play
-	pkgver = 0.72.0
-	pkgrel = 2
+	pkgver = 0.72.1
+	pkgrel = 1
 	url = https://etternaonline.com
 	install = etterna.install
 	arch = i686
@@ -16,12 +16,12 @@ pkgbase = etterna
 	optdepends = jack: Audio server
 	provides = etterna
 	conflicts = etterna-git
-	source = etterna-0.72.0-Linux.tar.gz::https://github.com/etternagame/etterna/releases/download/v0.71.2/Etterna-0.71.2-Linux.tar.gz
-	source = etterna-0.72.0.tar.gz::https://github.com/etternagame/etterna/archive/v0.71.2.tar.gz
+	source = etterna-0.72.1-Linux.tar.gz::https://github.com/etternagame/etterna/releases/download/v0.71.2/Etterna-0.71.2-Linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/etternagame/etterna/master/LICENSE
 	source = etterna.desktop
 	source = etterna
-	sha256sums = bd14b6b5909429c148244661b248e8a4096f146a79a1619e9755f713d56bb181
-	sha256sums = 61bbef1c217eaa69bbf37791fa3c365526a1409d99866cd7ca2a190610fb9eaa
+	sha256sums = 36db982c15eb4a8b5082ecccec7f92320c48e7a3c6da07721e635b3abe2185b5
+	sha256sums = 83d08801949ae7b28f79b7106ff760811e3ea0ebb892c11a07d64f7dcc7e9867
 	sha256sums = 3962c6a32780c51d9523126a6de09e5212be428452bc4e34991f98403df444cb
 	sha256sums = 6487ffe86bd2de027d83e9eabbdc5c80b0dfe1b6c96df92b60ab0991d9e28c9f
 
