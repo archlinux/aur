@@ -1,9 +1,9 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=uftrace-git
-pkgver=0.9.3+95.g562e3b3
+pkgver=0.13+0.g53ec12d
 pkgrel=1
-pkgdesc="Function (graph) tracer for user-space"
+pkgdesc="Function graph tracer for C/C++/Rust"
 arch=(x86_64)
 url="https://github.com/namhyung/uftrace"
 license=('GPL2')
