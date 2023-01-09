@@ -8,15 +8,15 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.55
-pkgrel=7
+pkgver=2.1.56
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
 provides=('anki')
 conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-qt5')
-options=('!ccache' '!lto')
+options=('!lto')
 depends=(
     # anki & aqt
     'python-beautifulsoup4'
@@ -41,8 +41,8 @@ depends=(
 )
 makedepends=(
     'rsync'
-    'git'
     'ninja'
+    'git'
     'cargo'
     'python-installer'
     'libxcrypt-compat'
