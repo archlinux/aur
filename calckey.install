@@ -1,0 +1,27 @@
+post_install() {
+    printf "You've successfully installed calckey!\n"
+    if ! [ -f "/etc/webapps/calckey/default.yml" ]; then
+        cp "/etc/webapps/calckey/example.yml" "/etc/webapps/calckey/default.yml"
+        fi
+    printf "More on the setup: https://wiki.archlinux.org/title/Calckey\n"
+}
+
+## $1: new package version
+## $2: old package version
+pre_upgrade() {
+    ## Ignore reinstallations of the same or older versions
+    if [ $(vercmp $1 $2) -gt 0 ] ; then
+        ## Shut down the calckey service before touching it's files
+        if systemctl is-active calckey.service > /dev/null; then
+            printf "Shutting down calckey\n"
+            systemctl stop calckey.service
+        fi
+    fi
+}
+
+post_upgrade() {
+    ## Ignore reinstallations of the same or older versions
+    if [ $(vercmp $1 $2) -gt 0 ] ; then
+        /usr/bin/calckey -m
+    fi
+}

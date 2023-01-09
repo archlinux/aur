@@ -1,21 +1,21 @@
 [Unit]
-Description=Misskey Server
+Description=Calckey Server
 Requires=postgresql.service redis.service
 After=postgresql.service redis.service
 
 [Service]
 Type=simple
-User=misskey
-Group=misskey
+User=calckey
+Group=calckey
 PermissionsStartOnly=true
-WorkingDirectory=/usr/share/webapps/misskey
+WorkingDirectory=/usr/share/webapps/calckey
 Environment=NODE_ENV=production
-Environment=HOME=/usr/share/webapps/misskey
+Environment=HOME=/usr/share/webapps/calckey
 ExecStart=npm start
 Restart=on-failure
-ReadWritePaths=/etc/webapps/misskey/default.yml
-ReadWritePaths=/var/cache/misskey
-ReadWritePaths=/var/lib/misskey
+ReadWritePaths=/etc/webapps/calckey/default.yml
+ReadWritePaths=/var/cache/calckey
+ReadWritePaths=/var/lib/calckey
 LockPersonality=true
 NoNewPrivileges=true
 PrivateDevices=true

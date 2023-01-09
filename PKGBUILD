@@ -1,38 +1,33 @@
-# Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
+# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
+# Based on https://aur.archlinux.org/packages/misskey
 
-pkgname=misskey
-pkgver=12.119.2
+pkgname=calckey
+pkgver=13.0.5
 pkgrel=1
-pkgdesc='🌎 An interplanetary microblogging platform 🚀 (Experimental)'
-url='https://github.com/misskey-dev/misskey'
+pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
+url='https://calckey.cloud'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
-depends=('nodejs-lts-gallium' 'npm' 'postgresql' 'redis' 'yarn')
+depends=('nodejs' 'npm' 'postgresql' 'redis' 'yarn')
 makedepends=('git' 'python')
 options=('debug')
-install='misskey.install'
+install='calckey.install'
 optdepends=('elasticsearch: Search functionality'
             'ffmpeg: Media de-encode functionality'
             'nginx: Reverse-proxy usage')
-_commit='a5a74f4434b179cdb1f97af98bf294c8b18de0e2' #tag/12.119.2
-source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
+_commit='78e6f38ef247c5ea7e7d49d00af2ba99673a3ff9' #tag/13.0.5
+source=("git+https://codeberg.org/calckey/calckey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sh"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-md5sums=('SKIP'
-         '1477ba0bb17656e9c26663af8daeb95b'
-         '9abc87cea2314b95334d4ad3b309e931'
-         '3247c7dd69df09a6268528deb82ccd3e'
-         'a3fe48c606eabebf818106648c0bf0d9'
-         'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
-            'bc5faebd8ad9ebebc0ead16989a1803c8ae8ba65001ad32ff9de46e8809525bc'
-            '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
-            'c566c30c73557f13c756afe5b160e6560d0a24077d6583ab85667e3c7697dc13'
-            'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
-            'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
+            '9c97cf0b759ed9b79deb08044b688fe480ced068981f20636f0aa12e47752290'
+            '64f805ff3d8a69eb03b0ab4359147f7ef39d94691b6c1e7b0529cdb7a53985d2'
+            'f52d600205f5d7f18b44bdceba78d2f28d36cc3d434ffca3a3433c47700a0d8c'
+            '51252a058e84cf3772634aa7b02199cab8ddd08fefdfc5849836403780db6470'
+            '151406c810174393235353753034eb4f2f6916dcc969c3753d0ec5bb27913a8a')
 
 pkgver() {
     cd "${pkgname}"
@@ -44,6 +39,7 @@ prepare() {
 
     # Dependency handling
     git submodule update --init
+    corepack enable
     HOME="${srcdir}/${pkgname}" yarn install
 
     # Example configuration
@@ -52,8 +48,8 @@ prepare() {
     _example_file="${srcdir}/${pkgname}/.config/example.yml"
 
     sed -i \
-        's|example-misskey-user|misskey|;
-        s|  pass: example-misskey-pass|# pass: misskey|;
+        's|example-calckey-user|calckey|;
+        s|  pass: example-calckey-pass|# pass: calckey|;
         s|#outgoingAddressFamily: ipv4|outgoingAddressFamily: dual|' \
         ${_example_file}
 }
@@ -93,7 +89,7 @@ build() {
     rm -r "${srcdir}/${pkgname}/cypress"
     rm -r "${srcdir}/${pkgname}/.cache"
     rm -r "${srcdir}/${pkgname}/docs"
-    rm -r "${srcdir}/${pkgname}/misskey-assets"
+    rm -r "${srcdir}/${pkgname}/calckey-assets"
     rm -rf "${srcdir}/${pkgname}/.npm"
     rm -r "${srcdir}/${pkgname}/scripts"
     rm -r "${srcdir}/${pkgname}/.yarn"
@@ -125,7 +121,7 @@ package() {
     # files (upload, …)
     ln -s "/var/lib/${pkgname}/files" "${pkgdir}/usr/share/webapps/${pkgname}/files"
 
-    # misskey helper script
+    # calckey helper script
     install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # license

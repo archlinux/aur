@@ -1,7 +1,0 @@
-#Type Path                              Mode    User    Group   Age     Argument
-d   /var/lib/misskey                    0770    misskey misskey -       -
-d   /var/lib/misskey/npm                0770    misskey misskey -       -
-d   /var/lib/misskey/yarn               0770    misskey misskey -       -
-d   /var/lib/misskey/files              0770    misskey misskey -       -
-z   /etc/webapps/misskey/config.json    0660    misskey misskey -       -
-d   /var/cache/misskey                  0755    misskey misskey -       -

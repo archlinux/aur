@@ -43,7 +43,7 @@ fi
 Dependencylist=(
   "/usr/bin/runuser"
   "/usr/bin/systemctl"
-  "/usr/bin/yarn"
+  "yarn"
 )
 
 for dep in ${Dependencylist[@]}; do
@@ -62,17 +62,17 @@ fi
 
 HELP()
 {
-   printf "Misskey helper script.\n"
+   printf "Calckey helper script.\n"
    printf "\n"
    printf "Syntax: %s -[i|I|m|M|h]\n" $0
    printf "options:\n"
-   printf -- "  -i\tInitialize misskey databases for the first run.\n"
+   printf -- "  -i\tInitialize calckey databases for the first run.\n"
    printf -- "  -I\tSame as -i, without DB and Redis check. (For use with external database servers)\n"
    printf -- "  -m\tMigrate the database to the new version.\n"
    printf -- "  -M\tSame as -m, without DB and Redis check. (For use with external database servers)\n"
    printf -- "  -h\tPrint this Help.\n"
    printf "\n"
-   printf "https://wiki.archlinux.org/title/Misskey\n"
+   printf "https://wiki.archlinux.org/title/Calckey\n"
 }
 
 PSQL_REDIS_STATUS()
@@ -95,32 +95,32 @@ fi
 
 INIT()
 {
-    ## It should be impossible that misskey runs before init, but better check anyways
-    if /usr/bin/systemctl is-active misskey.service > /dev/null; then
-        printf "Shutting down misskey…\n"
-        /usr/bin/systemctl stop misskey.service
+    ## It should be impossible that calckey runs before init, but better check anyways
+    if /usr/bin/systemctl is-active calckey.service > /dev/null; then
+        printf "Shutting down calckey…\n"
+        /usr/bin/systemctl stop calckey.service
     fi
-    printf "Initialize Misskey databases…\n"
-    cd /usr/share/webapps/misskey
-    /usr/bin/runuser -u misskey -- env HOME="/usr/share/webapps/misskey" /usr/bin/yarn run init
+    printf "Initialize Calckey databases…\n"
+    cd /usr/share/webapps/calckey
+    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" yarn run init
 }
 
 MIGRATE()
 {
-    # Misskey needs to be stopped before migration.
-    if /usr/bin/systemctl is-active misskey.service > /dev/null; then
-        printf "Shutting down misskey\n"
-        /usr/bin/systemctl stop misskey.service
+    # Calckey needs to be stopped before migration.
+    if /usr/bin/systemctl is-active calckey.service > /dev/null; then
+        printf "Shutting down calckey\n"
+        /usr/bin/systemctl stop calckey.service
         MK_ACTIVE=1
     fi
     printf "Migrate data to new version\n"
-    cd "/usr/share/webapps/misskey/"
-    /usr/bin/runuser -u misskey -- env HOME="/usr/share/webapps/misskey" /usr/bin/yarn migrate
+    cd "/usr/share/webapps/calckey/"
+    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" yarn migrate
     if ! [ -z ${MK_ACTIVE+x} ] ; then
-        printf "starting up misskey\n"
-        /usr/bin/systemctl start misskey.service
+        printf "starting up calckey\n"
+        /usr/bin/systemctl start calckey.service
     else
-        printf "Misskey service is *not* started\n"
+        printf "Calckey service is *not* started\n"
         printf "Thats your job!\n"
     fi
 }
