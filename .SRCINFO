@@ -1,0 +1,17 @@
+pkgbase = sddm-theme-corners-git
+	pkgdesc = Theme for SDDM that puts stuff on the corners of the screen
+	pkgver = r22.ded1bcc
+	pkgrel = 1
+	url = https://github.com/aczw/sddm-theme-corners
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	backup = usr/share/sddm/themes/corners/theme.conf
+	source = git+https://github.com/aczw/sddm-theme-corners.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-corners-git
