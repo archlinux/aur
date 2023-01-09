@@ -1,0 +1,19 @@
+pkgbase = python-blendmodes
+	pkgdesc = Use this module to apply a number of blending modes to a background and foreground image
+	pkgver = 2022
+	pkgrel = 1
+	url = https://github.com/FHPythonUtils/BlendModes
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-aenum
+	depends = python-deprecation
+	source = https://files.pythonhosted.org/packages/source/b/blendmodes/blendmodes-2022.tar.gz
+	sha512sums = 4a51005085bc565880a3df8c33108f95cc57208c582ab314b82bafc3501e01af95bafcde8efb96bb90a86d94f5d5b46e2f7a988fbde632d15cccce624dcee7be
+
+pkgname = python-blendmodes
