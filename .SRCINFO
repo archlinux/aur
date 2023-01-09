@@ -1,0 +1,13 @@
+pkgbase = soot-with-dependencies
+	pkgdesc = A Java Bytecode Analysis and Transformation Framework.
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://www.sable.mcgill.ca/soot
+	arch = any
+	license = LGPL
+	depends = java-runtime
+	depends = bash
+	source = soot-with-dependencies-4.3.0.jar::https://repo1.maven.org/maven2/org/soot-oss/soot/4.3.0/soot-4.3.0-jar-with-dependencies.jar
+	md5sums = f116a9fa038aa4213b5700456cc31ba9
+
+pkgname = soot-with-dependencies
