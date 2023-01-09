@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Multi-featured system monitor."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('dmidecode' 'iproute2' 'libadwaita' 'polkit' 'python-cairo' 'python-gob
          'util-linux')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('126b929f5c40b97c7046b4304bcbf28cd85d15cd9eb84bd3741ef0c373805b7e')
+sha256sums=('fa66d62513e1bf02d53efa0637b2fce32fac15e7a868d7b63e89f46abbba6004')
 
 build() {
   cd "$pkgname-$pkgver"
