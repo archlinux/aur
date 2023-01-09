@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Trilium 中文版
+GenericName=笔记应用
+Comment=Trilium 中文版
+Exec=trilium-cn %f
+Icon=/opt/$pkgname/icon.png
+Terminal=false
+Type=Application
+Categories=Office
+StartupWMClass=trilium notes
