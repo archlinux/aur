@@ -1,0 +1,22 @@
+pkgbase = bemoji
+	pkgdesc = Emoji picker that remembers your favorites
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/marty-oehme/bemoji
+	arch = any
+	license = MIT
+	depends = curl
+	optdepends = bemenu: Emoji picker menu
+	optdepends = wofi: Emoji picker menu
+	optdepends = rofi: Emoji picker menu
+	optdepends = dmenu: Emoji picker menu
+	optdepends = wl-copy: Clipboard support
+	optdepends = xclip: Clipboard support
+	optdepends = xsel: Clipboard support
+	optdepends = wtype: Auto-typing support
+	optdepends = xdotool: Auto-typing support
+	conflicts = bemoji-git
+	source = https://github.com/marty-oehme/bemoji/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 8a61b267ad79340da62c0826ca6cd12f6fccc2ccefb78bdbb6a6cbadd8cd3169
+
+pkgname = bemoji
