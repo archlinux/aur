@@ -2,7 +2,7 @@ pkgbase = apt-dater
 	pkgdesc = Terminal-based remote package update manager
 	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://www.ibh.de/apt-dater
+	url = https://github.com/DE-IBH/apt-dater
 	install = apt-dater.install
 	arch = i686
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = apt-dater
 	sha256sums = 6f06dbc545d8a42b7ea0bb67f5c90514bbe9b793a3a36a3c3544072691ce0dc9
 
 pkgname = apt-dater
-
