@@ -10,7 +10,7 @@ source=("$pkgname-$pkgver.ttf::$url/releases/download/v$pkgver/LXGWNeoXiHei.ttf"
         *.md)
 sha256sums=('69d2fd66ddd2f8d7dc62f5918d044df62152aa70fa85f442c06f0b6f14b9d7a8'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
-            'bce9800ab47cd0961c2a536d5ecfb983442d58eec1db5ff88a5f1a8d1c682367')
+            '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
 package() {
   install -Dm644 "$pkgname-$pkgver.ttf" -t "$pkgdir/usr/share/fonts/TTF/"
