@@ -14,7 +14,7 @@ checkdepends=(python-scipy python-networkx python-rtree python-lxml
               python-shapely python-pillow python-sympy python-requests
               python-msgpack python-pyglet python-jsonschema
               python-svg.path python-collada python-pyinstrument
-              python-mapbox-earcut)
+              python-mapbox-earcut openscad)
 optdepends=('python-networkx: graph operations'
             'python-pyglet: preview windows'
             'python-rtree: vector path handling'
