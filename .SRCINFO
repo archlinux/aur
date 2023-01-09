@@ -1,7 +1,7 @@
 pkgbase = jcloisterzone
 	pkgdesc = A Java version of the Carcassonne board game.
 	pkgver = 5.10.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/farin/JCloisterZone-Client
 	arch = any
 	license = GPL3

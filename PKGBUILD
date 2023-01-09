@@ -1,7 +1,7 @@
 # Maintainer: wilke
 pkgname=jcloisterzone
 pkgver=5.10.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
 url="https://github.com/farin/JCloisterZone-Client"
@@ -23,7 +23,7 @@ package() {
 	for dir in squashfs-root/usr/share/icons/hicolor/*; do
 		resolution=$(basename "$dir")
 
-		mkdir -p $pkgdir/usr/share/icons/hicolor/${resolution}/apps/
+		mkdir -p "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/"
 		install -Dm644 "$dir/apps/jcloisterzone.png" "$pkgdir/usr/share/icons/hicolor/${resolution}/apps/"
 	done
 
