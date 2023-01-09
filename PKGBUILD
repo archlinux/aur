@@ -6,7 +6,7 @@ _commit=f887fa45dfaeeddfe20c9835ae7ca3a0823b661b
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=3
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -42,7 +42,7 @@ if [[ ${_use_suffix} == 0 ]]; then
   provides=("electron${_major_ver}")
 fi
 # shellcheck disable=SC2034
-options=('!lto') # Electron adds its own flags for ThinLTO
+options=('debug' '!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
@@ -259,7 +259,7 @@ build() {
     custom_toolchain = "//build/toolchain/linux/unbundle:default"
     host_toolchain = "//build/toolchain/linux/unbundle:default"
     clang_use_chrome_plugins = false
-    symbol_level = 0
+    symbol_level = 0 # sufficient for backtraces on x86(_64)
     chrome_pgo_phase = 2
     treat_warnings_as_errors = false
     rtc_use_pipewire = true
@@ -273,9 +273,6 @@ build() {
   gn gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${GN_EXTRA_ARGS}"
   ninja -C out/Release electron
-  # Strip before zip to avoid
-  # zipfile.LargeZipFile: Filesize would require ZIP64 extensions
-  strip -s out/Release/electron
   ninja -C out/Release electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
 }
