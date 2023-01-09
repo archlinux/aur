@@ -1,13 +1,14 @@
 pkgbase = gpr
 	pkgdesc = Parser for Ada GPR project files.
 	pkgver = 23.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AdaCore/gpr
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = Apache
 	makedepends = gprbuild
+	makedepends = python-e3-core
 	depends = python
 	depends = libadalang
 	depends = which
