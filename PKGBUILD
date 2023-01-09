@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 pkgname=kcc-beta
-_pkgver=5.5.3-beta-darodi.17
-pkgver=5.5.3+beta+darodi.17
+_pkgver=5.5.3-beta-darodi.20
+pkgver=5.5.3+beta+darodi.20
 pkgrel=1
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
@@ -16,19 +16,11 @@ makedepends=('python-setuptools')
 provides=(kcc)
 conflicts=(kcc)
 source=(kindlecomicconverter.desktop
-        kcc-slugify.patch
         https://github.com/darodi/kcc/archive/refs/tags/v${_pkgver}.tar.gz)
 md5sums=('f25b30fbc1bc1db491173215fe411789'
-         '6c42b8ca8db09b62208a0819b11cff28'
-         'f77e175d635cb0431df9aa0a30be602c')
+         'fa7bd105b9b891fb782adec3a2a5b9b0')
 sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
-            '3043a7652f4b177340df350fbe63d59c82f91eeb8697964bbd960ae38aa290d3'
-            '38896e853f6ed418e6ab2f6e6b35644e66314f87d391ef16e5270f703e365088')
-
-prepare() {
-  cd "$srcdir/kcc-${_pkgver}"
-  patch -p1 < "$srcdir"/kcc-slugify.patch
-}
+            'b14528526c238c6915574ec6b3c41f9045ce835a02b4e1803d9a407866aee35c')
 
 build() {
   cd "$srcdir/kcc-${_pkgver}"
