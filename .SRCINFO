@@ -1,6 +1,6 @@
 pkgbase = yoku
 	pkgdesc = Markdown based TUI todo
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 0
 	url = https://github.com/misobarisic/yoku
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yoku
 	provides = yoku
 	conflicts = yoku
 	conflicts = yoku-bin
-	source = yoku-0.1.1.tar.gz::https://github.com/misobarisic/yoku/archive/v0.1.1.tar.gz
-	sha256sums = d0bc5c84e39b5dd61b52d669d96f2f7a98798f9ed05bcbd8fa9a972f17dcf602
+	source = yoku-0.1.2.tar.gz::https://github.com/misobarisic/yoku/archive/v0.1.2.tar.gz
+	sha256sums = 0e33fc6f44ef79dc4e626ca8bebba29a41ecd751ffee67b7248d9da89f549569
 
 pkgname = yoku
