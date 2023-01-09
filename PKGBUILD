@@ -1,6 +1,6 @@
 # Maintainer: onemoresuza <aur at onemoresuza dot mailer dot me>
 pkgname='ttf-literation'
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A ttf Nerd Font based on ttf-liberation"
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom:SIL Open Font License Version 1.1')
 provides=('ttf-font-nerd'
           'ttf-font')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/LiberationMono.zip")
-sha256sums=('f53545d935ae2d4124bc1f88a67576457defb90f70829b8f8b6a77fa9e3cdd6b')
+sha256sums=('16a492fbc24aeb5e201fa7d21478c8b7629f96b49827fb5369e8b0d8a75c022b')
 
 package() {
   cd "${srcdir}"
