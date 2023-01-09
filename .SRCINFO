@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-focus-indicator-git
+	pkgdesc = An Extension for GNOME Shell for indicating window focus (Github version).
+	pkgver = r34.7256444
+	pkgrel = 1
+	url = https://github.com/Leleat/focus-indicator-prototype
+	install = gnome-shell-extension-focus-indicator.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-focus-indicator
+	conflicts = gnome-shell-extension-focus-indicator
+	source = gnome-shell-extension-focus-indicator::git+https://github.com/Leleat/focus-indicator-prototype.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-focus-indicator-git
