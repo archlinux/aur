@@ -2,21 +2,22 @@
 Type = Path
 Operation = Install
 Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
 Operation = Remove
 Target = usr/lib/kernel/install.*
 Target = etc/kernel/install.*
 Target = usr/src/*/dkms.conf
 
 [Trigger]
-Type = Path
-Operation = Install
-Operation = Upgrade
-Target = usr/lib/modules/*/vmlinuz
-
-[Trigger]
 Type = Package
 Operation = Install
 Operation = Upgrade
+Operation = Remove
 Target = systemd
 Target = amd-ucode
 Target = intel-ucode
@@ -28,5 +29,5 @@ Target = mkinitcpio
 [Action]
 Description = Installing kernel and initrd to $BOOT... (kernel-install)
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/kernel-install.sh add
+Exec = /usr/share/libalpm/scripts/kernel-install add
 NeedsTargets

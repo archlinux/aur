@@ -1,8 +1,7 @@
 #!/bin/bash
 
 set -euo pipefail
-# Inherit set -e down to command substitutions
-shopt -s inherit_errexit
+shopt -s inherit_errexit nullglob
 
 extract_kernel_version() {
 	local heads
@@ -10,6 +9,7 @@ extract_kernel_version() {
 	echo "${heads##*/}"
 }
 
+all_kernel_images=0
 kernel_images=()
 
 while read -r path; do
@@ -18,19 +18,14 @@ while read -r path; do
 		kernel_images+=("/$path")
 		;;
 	*)
-		kernel_images+=(/usr/lib/modules/*/vmlinuz)
-		break
+		all_kernel_images=1
 		;;
 	esac
 done
 
-add=0
-for o; do
-	case "$o" in
-	add)
-		add=1
-		;;
-	esac
+((all_kernel_images)) && for file in /usr/lib/modules/*/vmlinuz; do
+	pacman -Qqo "$file" 1>/dev/null 2>/dev/null &&
+		kernel_images+=("$file")
 done
 
 for kernel_image in "${kernel_images[@]}"; do

@@ -1,19 +1,33 @@
 [Trigger]
 Type = Path
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Trigger]
+Type = Path
 Operation = Install
 Operation = Upgrade
 Operation = Remove
 Target = usr/lib/kernel/install.*
 Target = etc/kernel/install.*
+Target = usr/src/*/dkms.conf
 
 [Trigger]
-Type = Path
+Type = Package
+Operation = Install
 Operation = Upgrade
 Operation = Remove
-Target = usr/lib/modules/*/vmlinuz
+Target = systemd
+Target = amd-ucode
+Target = intel-ucode
+Target = plymouth
+Target = cryptsetup
+Target = dracut
+Target = mkinitcpio
 
 [Action]
 Description = Removing kernel and initrd from $BOOT... (kernel-install)
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/kernel-install.sh remove
+Exec = /usr/share/libalpm/scripts/kernel-install remove
 NeedsTargets
