@@ -1,6 +1,6 @@
 pkgbase = st-luke-git
 	pkgdesc = Simple virtual terminal emulator for X
-	pkgver = 0.8.5.r1383.ebf6f66
+	pkgver = 0.8.5.r1391.36d225d
 	pkgrel = 1
 	url = https://github.com/LukeSmithxyz/st.git
 	arch = i686
