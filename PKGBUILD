@@ -2,7 +2,7 @@
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
@@ -15,11 +15,14 @@ depends=(
   perl
   perl-dbd-sqlite
 )
-source=("https://github.com/mchehab/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d7c9ad61a13ca230e376db4014ae3192992eff10908adf38fad1917609f7d341')
+source=("nprocessors.patch"
+	"https://github.com/mchehab/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bca975681559ed6cc7383f936b00ad370fbd803f7193685f4da9d0cbfaf6feea'
+	    'd7c9ad61a13ca230e376db4014ae3192992eff10908adf38fad1917609f7d341')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < "${srcdir}/nprocessors.patch"
   autoreconf -vfi
 }
 

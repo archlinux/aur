@@ -1,0 +1,13 @@
+diff --git a/ras-events.c b/ras-events.c
+index 39cab20..319f049 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -328,7 +328,7 @@ static void parse_ras_data(struct pthread_data *pdata, struct kbuffer *kbuf,
+ 
+ static int get_num_cpus(struct ras_events *ras)
+ {
+-	return sysconf(_SC_NPROCESSORS_CONF);
++	return sysconf(_SC_NPROCESSORS_ONLN);
+ #if 0
+ 	char fname[MAX_PATH + 1];
+ 	int num_cpus = 0;
