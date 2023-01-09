@@ -1,7 +1,7 @@
 # Maintainer: Alex Tharp <alex@toastercup.io>
 
 pkgname=coolvlviewer-experimental-bin
-pkgver=1.29.0.4
+pkgver=1.30.1.16
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life (C) (secondlife) and OpenSim (opensimulator) grids. ('VL' stands for virtual life, formerly known as 'Cool SL Viewer', binary)"
 url="http://sldev.free.fr"
@@ -25,8 +25,8 @@ install=coolvlviewer.install
 source=("http://sldev.free.fr/binaries/CoolVLViewer-${pkgver}-Linux-x86_64-Setup"
         "coolvlviewer.desktop"
         "coolvlviewer.launcher")
-sha1sums=('1fb5414224dfab5261257ce43c1dbcd61d7388a9'
-          'e294bc6af8df44320d6eddecb57f519146f53238'
+sha1sums=('1184c0ccc0cf4d1b0a73529ec45128a10469bda9'
+          'e08076db600f7dcee78c0f7b861e8e78f16a069d'
           '3ef1284a00a4437e4c34f809311ee0672604ef04')
 
 build() {
@@ -61,7 +61,7 @@ package() {
 	# Change Permissions of files to root:games
 	chown -R root:games $pkgdir/opt/coolvlviewer
 	chmod -R g+rw $pkgdir/opt/coolvlviewer
-	
+
 	# Make Binary Group-Executable
 	chmod g+x $pkgdir/opt/coolvlviewer/cool_vl_viewer
 }
