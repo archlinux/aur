@@ -1,6 +1,6 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 pkgname=ydb-cli-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='YDB CLI is the client-side command line interface for YDB databases.'
 arch=('x86_64')
