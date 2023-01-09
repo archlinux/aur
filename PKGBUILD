@@ -1,17 +1,35 @@
-# Maintainer: abs3nt <abs3nt@asdf.cafe>
-pkgname="gospt"
+pkgname=gospt
 pkgver=0.0.2
 pkgrel=1
-epoch=1
-pkgdesc="Spotify TUI and CLI written in Go"
-arch=("x86_64" "amd64")
-url="https://gitea.asdf.cafe/abs3nt/gospt"
+pkgdesc='Spotify TUI And CLI written in Go'
+arch=('x86_64')
+url="https://gitea.asdf.cafe/abs3nt/$pkgname"
 license=('GPL')
-depends=()
-source=(
-  "https://gitea.asdf.cafe/abs3nt/gospt/releases/download/v${pkgver}/gospt"
-)
-package() {
-	install -Dm755 gospt "${pkgdir}"/usr/bin/gospt
+makedepends=('go')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('11dd23973ad1804176fc9d7a0f552c02b5f435694a1742236a78a8dcbd67c4c8')
+
+prepare(){
+  cd "$pkgname"
+  mkdir -p build/
 }
-sha256sums=('6ce6b7743cd6bcd4d6c929528cf40ba4d943b97ae1453a0114c318a6f8cde4b2')
+
+build() {
+  cd "$pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o build ./...
+}
+
+check() {
+  cd "$pkgname"
+  go test ./...
+}
+
+package() {
+  cd "$pkgname"
+  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+}
