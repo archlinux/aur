@@ -1,7 +1,7 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-cn"
 pkgver=0.57.5_20221216
-pkgrel=2
+pkgrel=3
 pkgdesc="Trilium Notes 中文版"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
@@ -19,7 +19,8 @@ package() {
     mv trilium-linux-x64/* "$pkgdir/opt/$pkgname"
     # Write command and make executable
     echo -e "#!/bin/sh
-/opt/$pkgname/trilium" > "$pkgdir/usr/bin/trilium-cn"
+cd /opt/opt/$pkgname/
+./trilium" > "$pkgdir/usr/bin/trilium-cn"
     # Create .desktop file
     echo -e "[Desktop Entry]
 Name=Trilium 中文版

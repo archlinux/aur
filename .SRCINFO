@@ -1,7 +1,7 @@
 pkgbase = trilium-cn
 	pkgdesc = Trilium Notes 中文版
 	pkgver = 0.57.5_20221216
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Nriver/trilium-translation
 	arch = x86_64
 	license = AGPL3
