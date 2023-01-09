@@ -1,15 +1,16 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-elixir-git
-pkgver=r198.7402438
+pkgver=r50.b20eaa7
 pkgrel=1
+epoch=1
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('x86_64')
-url="https://github.com/ananthakumaran/tree-sitter-elixir"
-license=('MIT')
+url="https://github.com/elixir-lang/tree-sitter-elixir"
+license=('Apache')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
-provides=("${pkgname%-git}")
+makedepends=('git' 'libc++' 'libtree-sitter.so' 'npm')
+provides=("${pkgname%-git}" 'libtree-sitter-elixir.so')
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
@@ -28,17 +29,13 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -c scanner.cc
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+	export PARSER_NAME=elixir
+	export PREFIX=/usr
+	cd "$pkgname"
+	make
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-elixir.so"
-	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
-	ln -s "/usr/lib/libtree-sitter-elixir.so" "$pkgdir/usr/share/nvim/runtime/parser/elixir.so"
 	cd "$pkgname"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	DESTDIR="$pkgdir" make install
 }
-
