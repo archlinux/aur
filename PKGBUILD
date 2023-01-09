@@ -3,7 +3,7 @@
 
 _pkgname=hdrview
 pkgname=$_pkgname-git
-pkgver=1.7.1
+pkgver=1.7.1+1.g47da311b30
 pkgrel=1
 pkgdesc='High dynamic range (HDR) image viewer and comparison tool'
 url='https://github.com/wkjarosz/hdrview'
@@ -36,12 +36,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  # Fixup desktop file
-  sed \
-    -e 's/Exec=hdrview/Exec=HDRView/' \
-    -e 's/Icon=hdrview.png/Icon=hdrview/' \
-    -i "$pkgdir"/usr/share/applications/hdrview.desktop
 
   # Project installs a copy of its own deps as well
   for dep in Imath
