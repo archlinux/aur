@@ -1,7 +1,7 @@
 pkgbase = open-av4ms-git
 	pkgdesc = Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'.
 	pkgver = 1.5+1.r7.20181017.e7ac570
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/corbolais/open-av4ms
 	install = open-av4ms.install
 	arch = any

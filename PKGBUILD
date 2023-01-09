@@ -3,7 +3,7 @@
 _pkgname=open-av4ms
 pkgname="${_pkgname}-git"
 pkgver=1.5+1.r7.20181017.e7ac570
-pkgrel=1
+pkgrel=2
 pkgdesc="Log and monitor the serial output of the MiMH/ NiCd battery chargers 'AV4m+'/ 'AV4ms'."
 url='https://gitlab.com/corbolais/open-av4ms'
 arch=(
@@ -106,8 +106,8 @@ package() {
   for _pybin in "home/www"/{av4server.py,webserver.py}; do
     install -D -m755 -v   "${_pybin}"                                   "${pkgdir}/usr/lib/${_pkgname}/$(basename "${_pybin}")"
   done
-  ln -sv                  "${pkgdir}/usr/lib/${_pkgname}/av4server.py"  "${pkgdir}/usr/bin/av4server"
-  ln -sv                  "${pkgdir}/usr/lib/${_pkgname}/webserver.py"  "${pkgdir}/usr/bin/av4webserver"
+  ln -sv                  "/usr/lib/${_pkgname}/av4server.py"  "${pkgdir}/usr/bin/av4server"
+  ln -sv                  "/usr/lib/${_pkgname}/webserver.py"  "${pkgdir}/usr/bin/av4webserver"
 
 
   ## Install python modules:
