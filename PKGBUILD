@@ -4,13 +4,13 @@
 
 pkgname=webmin
 pkgver=2.010
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
 license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
-optdepends=('perl-socket6: For IPv6 support')
+optdepends=('perl-socket6: For IPv6 support' 'perl-io-tty: For xterm module')
 backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/config' 'etc/webmin/webmin.acl' \
 'etc/webmin/acl/config' \

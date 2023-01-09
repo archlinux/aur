@@ -1,7 +1,7 @@
 pkgbase = webmin
 	pkgdesc = A web-based administration interface for Unix systems
 	pkgver = 2.010
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/
 	arch = any
 	license = custom:webmin
@@ -11,6 +11,7 @@ pkgbase = webmin
 	depends = perl-encode-detect
 	depends = openssl
 	optdepends = perl-socket6: For IPv6 support
+	optdepends = perl-io-tty: For xterm module
 	options = !strip
 	options = !zipman
 	backup = etc/webmin/miniserv.conf
