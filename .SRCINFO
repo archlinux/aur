@@ -1,0 +1,25 @@
+pkgbase = doc2go-bin
+	pkgdesc = Your Go project's documentation, to-go.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abhinav/doc2go
+	license = Apache
+	conflicts = doc2go
+	provides = doc2go
+	arch = aarch64
+	source_aarch64 = https://github.com/abhinav/doc2go/releases/download/v0.1.0/doc2go-linux-arm64.tar.gz
+	sha256sums_aarch64 = b0b9fe9dc82716f5316f114f8b1e79758aa97719b6d1e126fe82f148c2fa8475
+	arch = armv6h
+	source_armv6h = https://github.com/abhinav/doc2go/releases/download/v0.1.0/doc2go-linux-armv6.tar.gz
+	sha256sums_armv6h = ca28689b2b7452595c1f63c539b4f3b9ebaff310ccd58bce90e0e2bac9df27c1
+	arch = armv7h
+	source_armv7h = https://github.com/abhinav/doc2go/releases/download/v0.1.0/doc2go-linux-armv7.tar.gz
+	sha256sums_armv7h = dbd398ffaeebdd059e5255a455eed270f13fe2f13bc94c38b474bab0f8b58ba0
+	arch = i686
+	source_i686 = https://github.com/abhinav/doc2go/releases/download/v0.1.0/doc2go-linux-386.tar.gz
+	sha256sums_i686 = 4045fb89712386ba7c97ad565b411410d969024a7447d120204c03e3d8f0fb2c
+	arch = x86_64
+	source_x86_64 = https://github.com/abhinav/doc2go/releases/download/v0.1.0/doc2go-linux-amd64.tar.gz
+	sha256sums_x86_64 = 38131c4e7777da7bdd724f4240506146a1baad29e986f093fc551bb732a41d96
+	
+pkgname = doc2go-bin
