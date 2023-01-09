@@ -1,15 +1,14 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=goawk
-pkgver=1.8.1
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="AWK interpreter written in go"
 url="https://github.com/benhoyt/goawk"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('180f99f242f98f811444d84ce8ea8efbaeeb01ffad5cfc016ff5d71b3ed48ffd')
+sha256sums=('3846a1bdacedb1c87edf7627ebd67fe29ce7b2cdafa77a8528eb45b22df5506d')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,6 +28,12 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   go test ./...
 }
 
