@@ -1,7 +1,8 @@
-# Maintainer: Vladislav Vishnyakov <split7fire {at} yandex {dot} ru>
+# Maintainer: Dmitriy Q <krotesk{at}mail{dot}ru>
+# Contributor: Vladislav Vishnyakov <split7fire {at} yandex {dot} ru>
 
 pkgname=keepass-ru
-pkgver=2.30
+pkgver=2.51
 pkgrel=1
 pkgdesc="Russian locale for KeePass"
 license=('GPL2')
@@ -10,11 +11,11 @@ makedepends=("unzip")
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Russian.zip)
 arch=(any)
-md5sums=('7dfe3d8ef064462c719b65e7ecd44853')
+md5sums=('8545c2c00e6dc53fc9645458563680eb')
 
 package(){
   cd ${srcdir}
 
-   install -d "${pkgdir}"/usr/share/keepass
-   install -Dm 644 ${srcdir}/*.lngx "${pkgdir}"/usr/share/keepass/
+   install -d "${pkgdir}"/usr/share/keepass/Languages/
+   install -Dm 644 ${srcdir}/*.lngx "${pkgdir}"/usr/share/keepass/Languages/
 }
