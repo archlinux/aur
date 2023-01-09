@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.0.0_devel.163975.a3249415e23.5269a95f00c4d6964d487d9dbd94f62b
+pkgver=23.0.0_devel.164934.b64afc1d37a.932463d268438ce945b21718552d92ab
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -26,15 +26,12 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
-        '0001-anv-force-MEDIA_INTERFACE_DESCRIPTOR_LOAD-reemit-aft.patch'
         '0002-intel-fs-always-mask-the-bottom-bits-of-the-sampler-.patch'
         'LICENSE')
 md5sums=('SKIP'
-         '102af8525e4c1f266cc54b038d1b9314'
          '094f900983f68bec0325bd29d4789ad5'
          '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
-            '4ff7c359f08aedb1fb6eb2c6bb34bafa399edfa7916cd6cce7844bb38795e84c0265324e3fc7d37237d4824f029cb04da176bcf476785fd2e35a8b0ce4f8a394'
             '5dd0cb8affa9cfe6e7d94f59b8e23727036fd8ab76938321f8d266315f30611584da6f6277fe2aa920130483302adab5e57e2bc08f1bd3c62ea57b3e4b007305'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
