@@ -6,3 +6,4 @@ Exec=/usr/bin/jadx-gui
 Terminal=false
 Type=Application
 Icon=jadx
+Categories=Development;Utility;

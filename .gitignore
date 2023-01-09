@@ -1,4 +1,5 @@
 *.tar.xz
+*.tar.zst
 *.png
 pkg/
 src/
