@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=rom-properties
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='This shell extension adds a few nice features to file browsers for managing video game ROM and disc images'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('curl' 'zlib' 'libpng' 'libjpeg-turbo' 'nettle' 'tinyxml2' 'libseccomp'
 optdepends=('zstd' 'lz4' 'lzo')
 makedepends=('cmake' 'pkgconf' 'gettext')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v${pkgver}.tar.gz")
-sha256sums=('35831eb1ae58f46bda279609a91cb44779b1532d4efd8ec62262d951f76034bb')
+sha256sums=('0322ade297b0b04196741da8b87e9b12d06ab58dbca8f0fef5fc3da1754f7904')
 
 build() {
   cd "${pkgname}-${pkgver}"
