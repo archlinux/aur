@@ -1,7 +1,7 @@
 pkgbase = sferum
 	pkgdesc = Образовательная платформа №1
-	pkgver = 1.1.10
-	pkgrel = 85.1
+	pkgver = 1.1.12
+	pkgrel = 91
 	url = https://sferum.ru/
 	arch = x86_64
 	arch = i686
@@ -15,11 +15,11 @@ pkgbase = sferum
 	depends = at-spi2-core
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source_x86_64 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-10/sferum-amd64.deb
-	md5sums_x86_64 = fff7bd875476523346c2d5358f092a9e
-	source_i686 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-10/sferum-i386.deb
-	md5sums_i686 = c0f1824ad90a573f6e844e8c874cf580
-	source_pentium4 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-10/sferum-i386.deb
-	md5sums_pentium4 = c0f1824ad90a573f6e844e8c874cf580
+	source_x86_64 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-12/sferum-amd64.deb
+	md5sums_x86_64 = 396009e6d502ef7916f5028f7921e1c9
+	source_i686 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-12/sferum-i386.deb
+	md5sums_i686 = 6cee81cfe7402a482c68e7094a8a9d2f
+	source_pentium4 = sferum.deb::https://st.mycdn.me/static/sferum/1-1-12/sferum-i386.deb
+	md5sums_pentium4 = 6cee81cfe7402a482c68e7094a8a9d2f
 
 pkgname = sferum
