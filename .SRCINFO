@@ -6,6 +6,7 @@ pkgbase = argouml-bin
 	arch = any
 	license = EPL
 	depends = java-runtime
+	provides = argouml
 	source = argouml-bin-0.35.1.tar.gz::https://github.com/argouml-tigris-org/argouml/releases/download/VERSION_0_35_1/ArgoUML-0.35.1.tar.gz
 	source = argouml.desktop
 	sha256sums = 5e5230eb1bd29c545ae6fd56c0bdfbee86b1e6c2c538d6df22728fa3e3ab1639
