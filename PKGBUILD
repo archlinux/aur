@@ -1,14 +1,14 @@
 # Maintainer: Ronald Record <github@ronrecord.com>
 
 pkgname=musicplayerplus
-pkgver=v3.0.0r2
+pkgver=v3.0.1r1
 pkgrel=1
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
 arch=('x86_64' 'armv7h')
 url="https://github.com/doctorfree/MusicPlayerPlus"
 license=('MIT')
 depends=(util-linux bc boost-libs coreutils curl flac jq libcurl-compat libmpdclient ncurses readline taglib mediainfo mpd ffmpeg4.4 inotify-tools figlet tmux fzf mpc python python-pip python-numpy python-six mplayer eigen fftw clang libsamplerate chromaprint iniparser libyaml swig alsa-lib alsa-utils libpulse sndio sqlite qt5-base wget wmctrl xorg-xdpyinfo xorg-xprop xorg-xrandr yt-dlp)
-makedepends=(boost cargo git pandoc qt5-tools zip)
+makedepends=(autoconf-archive boost cargo git pandoc qt5-tools zip)
 optdepends=('cool-retro-term: cool retro terminal emulator')
 install=musicplayerplus.install
 source=("${pkgname}::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=${pkgver}")
