@@ -1,6 +1,6 @@
 pkgbase = ddnet-maps-git
 	pkgdesc = All released maps with configs for DDraceNetwork server
-	pkgver = r1620.g9b4a5578
+	pkgver = r1679.g142b9c0a
 	pkgrel = 1
 	url = https://ddnet.org
 	arch = any

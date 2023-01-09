@@ -1,8 +1,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-# Maintainer: Edgar Luque <git@edgarluque.com>
+# Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-maps-git
-pkgver=r1620.g9b4a5578
+pkgver=r1679.g142b9c0a
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
