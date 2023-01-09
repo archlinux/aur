@@ -10,6 +10,7 @@ arch=('any')
 url="https://argouml-tigris-org.github.io/"
 license=('EPL')
 depends=('java-runtime')
+provides=('argouml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/argouml-tigris-org/argouml/releases/download/VERSION_0_35_1/ArgoUML-0.35.1.tar.gz"
         "${_pkgname}.desktop");
 noextract=()
