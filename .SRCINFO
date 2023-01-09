@@ -1,6 +1,6 @@
 pkgbase = jqp-bin
 	pkgdesc = A TUI playground to experiment with jq
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/noahgorstein/jqp
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jqp-bin
 	depends = tar
 	conflicts = jqp
 	options = !strip
-	source = jqp-0.3.0.tar.gz::https://github.com/noahgorstein/jqp/releases/download/v0.3.0/jqp_0.3.0_Linux_x86_64.tar.gz
-	sha256sums = 9ce831b694d2ecb186259aa331aa4db97a88a5f4ea14d15910472b9d167f068a
+	source = jqp-0.4.0.tar.gz::https://github.com/noahgorstein/jqp/releases/download/v0.4.0/jqp_0.4.0_Linux_x86_64.tar.gz
+	sha256sums = 8736e220b34f0b7f71c0648752897eca383c08e6f84d426c6c426d8f79fa2231
 
 pkgname = jqp-bin
