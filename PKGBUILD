@@ -3,7 +3,7 @@ pkgname=ossia-score
 pkgver=3.1.6
 _pkgver=3.1.6
 release_tag=v3.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts"
 arch=('x86_64')
 url="https://ossia.io"
@@ -34,7 +34,7 @@ build() {
   -DSCORE_DEPLOYMENT_BUILD=1 \
   -DCMAKE_SKIP_RPATH=ON \
   -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-  -DQT_VERSION="Qt6;6.4" \
+  -DQT_VERSION="Qt6;6.2" \
   "$srcdir"
 
   cmake --build .
