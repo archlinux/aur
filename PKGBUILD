@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
-# Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
-# Maintainer: Kevin Del Castillo <quebin31@gmail.com>
+# Contributor: Franklyn Tackitt <franklyn@tackitt.net>
+# Contributor: Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-uefi
 pkgver=17
