@@ -6,14 +6,13 @@ _platform="ps2"
 _iop="${_arch}el-${_platform}"
 _ee="${_arch}64r5900el-${_platform}-elf"
 _base="sdk"
-_ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="libpng"
 pkgname="${_platform}-${_pkg}"
 pkgver="v1.6.37"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("A C library for reading, creating, and modifying zip archives "
+_pkgdesc=("FreeType is a freely available software library to render fonts "
           "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
