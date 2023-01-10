@@ -1,0 +1,21 @@
+pkgbase = python-xlmhg
+	pkgdesc = XL-mHG: A Semiparametric Test for Enrichment. https://doi.org/10.1371/journal.pone.0143196
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://github.com/flo-compbio/xlmhg
+	arch = x86_64
+	license = BSD
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-sphinx
+	depends = python
+	depends = cython
+	depends = python-numpy
+	depends = python-plotly
+	source = https://files.pythonhosted.org/packages/source/x/xlmhg/xlmhg-2.5.4.tar.gz
+	source = xlmhg.patch.tar.gz
+	sha256sums = 3d6764ff16f8eea8522a094cfa119b80ebe4a7c23ae75f2111d0a8306ddd4e57
+	sha256sums = 7d078876c97f4028f3bbfed53cac324b9eeb21640720b5695d7f77b8039c1c5c
+
+pkgname = python-xlmhg
