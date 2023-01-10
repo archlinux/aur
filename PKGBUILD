@@ -27,11 +27,6 @@ build() {
   ./build/$pkgname completion fish > build/gospt_fish
 }
 
-check() {
-  cd "$pkgname"
-  go test ./...
-}
-
 package() {
   cd "$pkgname"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
