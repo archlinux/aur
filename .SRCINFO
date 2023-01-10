@@ -6,15 +6,12 @@ pkgbase = jupyter-octave_kernel-git
 	arch = any
 	license = BSD
 	makedepends = python-pip
-	depends = jupyter
 	depends = jupyter-metakernel>=0.24.2
 	depends = jupyter-notebook
 	depends = octave
-	optdepends = gnuplot: for making plots
 	optdepends = jupyterlab-git: JupyterLab computational environment
 	provides = jupyter-octave_kernel
 	source = git+https://github.com/Calysto/octave_kernel.git
 	sha256sums = SKIP
 
 pkgname = jupyter-octave_kernel-git
-

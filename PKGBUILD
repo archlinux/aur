@@ -8,10 +8,10 @@ pkgdesc="A Jupyter kernel for Octave (git version)"
 arch=('any')
 url="https://github.com/Calysto/octave_kernel"
 license=('BSD')
-depends=('jupyter' 'jupyter-metakernel>=0.24.2' 'jupyter-notebook' 'octave')
+depends=('jupyter-metakernel>=0.24.2' 'jupyter-notebook' 'octave')
 makedepends=('python-pip')
 provides=('jupyter-octave_kernel')
-optdepends=('gnuplot: for making plots' 'jupyterlab-git: JupyterLab computational environment')
+optdepends=('jupyterlab-git: JupyterLab computational environment')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
