@@ -1,20 +1,18 @@
 pkgbase = lossywav-git
 	pkgdesc = lossy audio pre-processor
-	pkgver = 1.4.2p.r1.r6.g8780b67
+	pkgver = 1.4.2p.r19.gdf1f75e
 	pkgrel = 1
-	url = https://github.com/Sound-Linux-More/lossywav-for-linux
+	url = https://github.com/xiota/lossywav-for-posix
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	depends = gcc-libs
+	depends = fftw
 	provides = lossywav
 	conflicts = lossywav
-	source = lossywav::git+https://github.com/Sound-Linux-More/lossywav-for-linux
-	source = makefile-ldflags.diff
+	source = lossywav::git+https://github.com/xiota/lossywav-for-posix
 	md5sums = SKIP
-	md5sums = 65713062cfd510acfcd06ce5ee4b503c
 
 pkgname = lossywav-git
