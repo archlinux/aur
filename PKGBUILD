@@ -15,10 +15,6 @@ _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_platform}${_base}-${_module}"
 makedepends=("${target}-gcc")
-             # "libgmp-static"
-             # "mpfr-static"
-             # "libmpc-static"
-             # "zstd-static")
 optdepends=()
 _branch="${_module}-${pkgver}"
 _commit="6b90d31371ff4e0f41d64d7539038864899a6b40"
@@ -122,7 +118,7 @@ package() {
     ln -s "/usr/${_target}/lib/newlib-nano/libc_nano.a" libc_nano.a
     ln -s "/usr/${_target}/lib/newlib-nano/libg_nano.a" libg_nano.a
     ln -s "/usr/${_target}/lib/newlib-nano/libm_nano.a" libm_nano.a
-    # cd ..
+    cd ..
   done
   rm -rf "${pkgdir}/newlib-include" # "${pkgdir}/newlib-lib"
 }
