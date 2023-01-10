@@ -1,10 +1,10 @@
 # Maintainer: Maxim Baz <archlinux at maximbaz dot com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
-_electron=electron20
+_electron=electron21
 pkgname=wire-desktop
 pkgver=3.30.3018
-pkgrel=3
+pkgrel=4
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
