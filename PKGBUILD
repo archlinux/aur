@@ -2,20 +2,19 @@
 
 _pkgname=smines
 pkgname=$_pkgname-git
-pkgver=r133.38f66f7
+pkgver=r136.4251ea7
 pkgrel=1
 pkgdesc="Minesweeper for the terminal, using C and ncurses."
 arch=(any)
 url="https://github.com/BBaoVanC/$_pkgname"
-license=('GPL3')
-makedepends=('git' 'ncurses')
+license=(GPL3)
+depends=(ncurses)
+makedepends=(git meson)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("git+$url.git")
 sha256sums=('SKIP')
-
-_makeopts="--directory=$_pkgname"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -23,15 +22,12 @@ pkgver() {
 }
 
 build() {
-    make $_makeopts
+    arch-meson $_pkgname build
+    meson compile -C build
 }
 
 package() {
-    local installopts='--mode 0644 -D --target-directory'
-    local shrdir="$pkgdir/usr/share"
-    local licdir="$shrdir/licenses/$pkgname"
-    local docdir="$shrdir/doc/$pkgname"
-    make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
-    install $installopts "$licdir" "$_pkgname/LICENSE"
-    install $installopts "$docdir" "$_pkgname/README.md"
+    meson install -C build --destdir "$pkgdir"
+    install -m 0644 -D -t "$pkgdir/usr/share/licenses/$_pkgname/" "$_pkgname/LICENSE"
+    install -m 0644 -D -t "$pkgdir/usr/share/doc/$_pkgname/" "$_pkgname/README.md"
 }
