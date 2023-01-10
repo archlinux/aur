@@ -2,7 +2,7 @@
 
 pkgname=openra-gen-git
 _pkgname=${pkgname/-git}
-pkgver=1169.git.9af97f9
+pkgver=1221.git.6b04de7
 pkgrel=1
 pkgdesc="A mod of OpenRA based on Command & Conquer: Generals"
 arch=('any')
@@ -51,7 +51,7 @@ package() {
     cp -r mods/gen $pkgdir/usr/lib/${_pkgname}/mods
     cp -r generals-alpha-engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
-    cp -r $srcdir/${_pkgname}.appdata.xml $pkgdir/usr/share/appdata/${_pkgname}.appdata.xml
+    cp -r $srcdir/../${_pkgname}.appdata.xml $pkgdir/usr/share/appdata/${_pkgname}.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
     install -Dm644 mods/gen/icon.png $pkgdir/usr/share/pixmaps/${_pkgname}.png
     for i in 16x16 32x32 48x48 64x64 128x128 256x256
