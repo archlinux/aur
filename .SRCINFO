@@ -1,0 +1,15 @@
+pkgbase = ps2-libzip
+	pkgdesc = A C library for reading, creating, and modifying zip archives (Sony Playstation® 2 videogame system port).
+	pkgver = v1.9.2
+	pkgrel = 1
+	url = https://github.com/nih-at/libzip
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-libzip::git+https://github.com/nih-at/libzip#commit=5ff839680134437dbf4678f3d0c7b371d84f4964
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-libzip
