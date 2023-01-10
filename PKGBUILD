@@ -1,21 +1,22 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=peg-e
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Peg elimination game'
 arch=('x86_64')
-url="https://gottcode.org/$pkgname/"
+url="https://gottcode.org/${pkgname}/"
 license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
-source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('b6f510de5523d8b9da6b06c1682eb93f86f264651cc3b4295e0033f8a1464176')
+source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('c0e3e11080126b9ea893bf613d6ce4a7421c1e01eccd6ef252461e183d27e3b9')
 
 build() {
-  cmake -B build -S $pkgbase-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "${pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
   cmake --build build
 }
 

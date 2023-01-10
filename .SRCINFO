@@ -1,6 +1,6 @@
 pkgbase = peg-e
 	pkgdesc = Peg elimination game
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://gottcode.org/peg-e/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = peg-e
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = https://gottcode.org/peg-e/peg-e-1.3.1-src.tar.bz2
-	sha256sums = b6f510de5523d8b9da6b06c1682eb93f86f264651cc3b4295e0033f8a1464176
+	source = https://gottcode.org/peg-e/peg-e-1.3.2.tar.bz2
+	sha256sums = c0e3e11080126b9ea893bf613d6ce4a7421c1e01eccd6ef252461e183d27e3b9
 
 pkgname = peg-e
