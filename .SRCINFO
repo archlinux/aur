@@ -1,7 +1,7 @@
 pkgbase = hyprland-autoname-workspaces-bin
 	pkgdesc = Hyprland autoname workspace.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyrinux/hyprland-autoname-workspaces
 	arch = x86_64
 	arch = aarch64
@@ -15,11 +15,15 @@ pkgbase = hyprland-autoname-workspaces-bin
 	validpgpkeys = C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E
 	source_x86_64 = https://github.com/cyrinux/hyprland-autoname-workspaces/releases/download/1.1.0/hyprland-autoname-workspaces_1.1.0_Linux_x86_64.tar.gz
 	source_x86_64 = https://github.com/cyrinux/hyprland-autoname-workspaces/releases/download/1.1.0/hyprland-autoname-workspaces_1.1.0_Linux_x86_64.tar.gz.sig
+	source_x86_64 = https://raw.githubusercontent.com/cyrinux/hyprland-autoname-workspaces/1.1.0/hyprland-autoname-workspaces.service
 	sha256sums_x86_64 = 68e3965a4b2250579af2893a101ce062ccfe2b3c8f2884563ef4a90a3e9dfcf1
 	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 1737174aa89426aa6806f38168e559041c119ad45cffa766d1bd067cc5c418a2
 	source_aarch64 = https://github.com/cyrinux/hyprland-autoname-workspaces/releases/download/1.1.0/hyprland-autoname-workspaces_1.1.0_Linux_aarch64.tar.gz
 	source_aarch64 = https://github.com/cyrinux/hyprland-autoname-workspaces/releases/download/1.1.0/hyprland-autoname-workspaces_1.1.0_Linux_aarch64.tar.gz.sig
+	source_aarch64 = https://raw.githubusercontent.com/cyrinux/hyprland-autoname-workspaces/1.1.0/hyprland-autoname-workspaces.service
 	sha256sums_aarch64 = 45ef7211fff9b0230bd2b7c8569597f44b30b976d68f5c30a201fe541d0a3ae7
 	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 1737174aa89426aa6806f38168e559041c119ad45cffa766d1bd067cc5c418a2
 
 pkgname = hyprland-autoname-workspaces-bin
