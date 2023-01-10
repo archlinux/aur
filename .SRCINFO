@@ -1,6 +1,6 @@
 pkgbase = lossywav-git
-	pkgdesc = lossy audio pre-processor
-	pkgver = 1.4.2p.r19.gdf1f75e
+	pkgdesc = lossy audio pre-processor to improve flac encoding efficiency
+	pkgver = 1.4.2p.r19.g8612808
 	pkgrel = 1
 	url = https://github.com/xiota/lossywav-for-posix
 	arch = i686
