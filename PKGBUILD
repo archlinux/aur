@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::https://codeberg.org/dyfet/$pkgname/archive/v$pkgver.tar.gz)
 makedepends=(cmake pkgconf gcc)
-
+sha256sums=('e20e5f382fffc9d41e2092e54caebb73452483a14e3e06fac55913b4a808c0fd') 
 
 build() {
 	cd "$srcdir/$pkgname"
