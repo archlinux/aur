@@ -1,0 +1,40 @@
+# Copyright (C) 2020-2021 David Sugar <tychosoft@gmail.com>.
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[Unit]
+Description=storehouse release tarballs
+ConditionPathExists=/usr/sbin/storehouse
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+Alias=storehouse.service
+
+[Service]
+# Environment support
+EnvironmentFile=-/etc/default/storehouse
+
+# Basic permissions
+UMask=007
+User=root
+Group=root
+WorkingDirectory=/var/lib/storehouse
+RuntimeDirectory=storehouse
+RuntimeDirectoryMode=0750
+PermissionsStartOnly=True
+
+# Execution model
+Type=simple
+ExecStart=/usr/sbin/storehouse -v
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+RestartPreventExitStatus=255
+
