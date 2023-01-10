@@ -1,12 +1,12 @@
 pkgbase = gospt
 	pkgdesc = Spotify TUI And CLI written in Go
-	pkgver = 0.0.3
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://gitea.asdf.cafe/abs3nt/gospt
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = https://gitea.asdf.cafe/abs3nt/gospt/archive/v0.0.3.tar.gz
-	sha256sums = 0f47f157680df65dcded6fa8815ad4339eef13e6e922327f0e3134b1f9abbbaf
+	source = https://gitea.asdf.cafe/abs3nt/gospt/archive/v0.0.5.tar.gz
+	sha256sums = 391bccbf432c11c0744aa401db8bb796203f900b6714b1c851cc28ea015845bd
 
 pkgname = gospt
