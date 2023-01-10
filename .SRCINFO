@@ -1,7 +1,7 @@
 pkgbase = waydroid-settings
 	pkgdesc = A GTK4 app to control Waydroid settings
 	pkgver = 22.1217
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
 	makedepends = blueprint-compiler
