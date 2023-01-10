@@ -1,0 +1,4 @@
+pkg/
+src/
+smines/
+*.pkg.tar.zst
