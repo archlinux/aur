@@ -1,18 +1,18 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server-git
-pkgver=v0.1.1.r3.g40d9352
-pkgrel=2
+pkgver=v0.1.6.r5.g60c376a
+pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
 license=('MIT')
 groups=()
-depends=("python-pygls" "python-pyparsing" "cmake")
-makedepends=("python-setuptools" "python-poetry" "git")
+depends=("python-pygls" "python-pyparsing" "cmake" "cmake-format")
+makedepends=("python-build" "python-installer" "git")
 optdepends=()
 provides=(${pkgname%-git})
-conflicts=(${pkgname%-git} "cmake-format")
+conflicts=(${pkgname%-git})
 replaces=()
 backup=()
 options=()
@@ -21,21 +21,6 @@ changelog=
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha256sums=("SKIP")
-
-prepare() {
-	cd "$srcdir/$pkgname"
-	poetry build --format=sdist
-
-	# Quick hack to use the tarball from poetry
-	mkdir -p untar
-	tar -xvf dist/*.tar.gz -C untar
-	mv untar/* $pkgname
-
-	cd $pkgname
-
-	sed -i "s/from distutils.core import setup/from setuptools import setup/" setup.py
-	sed -i "s/pygls>=0.8.1,<0.9.0/pygls>=0.8.1/" setup.py
-}
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -47,14 +32,14 @@ pkgver() {
 
 
 build() {
-	cd "$srcdir/$pkgname/$pkgname"
+	cd "$srcdir/$pkgname"
 
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$pkgname/$pkgname"
+	cd "$srcdir/$pkgname"
 
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
