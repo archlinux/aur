@@ -1,21 +1,22 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=connectagram
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
-pkgdesc='A word unscrambling game'
+pkgdesc='Word unscrambling game'
 arch=('x86_64')
-url="https://gottcode.org/$pkgname/"
+url="https://gottcode.org/${pkgname}/"
 license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
-source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('d0029a5c6f7af600e7d1317bac925b690f4a63b8b7b9c3843287aedb46c8cb8b')
+source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('1b96f7e5f375531aee814a3377aff27d9e70a451168da919dbe3875dda8aa9c0')
 
 build() {
-  cmake -B build -S $pkgbase-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "${pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
   cmake --build build
 }
 
