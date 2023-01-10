@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9374.a1159c081
+pkgver=r9391.f16706288
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -21,51 +21,8 @@ depends=('shared-mime-info'
          'libfdk-aac'
          'libusb')
 makedepends=('git' 'cmake' 'python' 'doxygen')
-source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
-        'boost::git+https://github.com/citra-emu/ext-boost.git'
-        'git+https://github.com/neobrain/nihstro.git'
-        'soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
-        'catch2::git+https://github.com/catchorg/Catch2.git'
-        'git+https://github.com/MerryMage/dynarmic.git'
-        'git+https://github.com/herumi/xbyak.git'
-        'git+https://github.com/weidai11/cryptopp.git'
-        'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/lsalzman/enet.git'
-        'git+https://github.com/svn2github/inih.git'
-        'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
-        'git+https://github.com/libusb/libusb.git'
-        'cubeb::git+https://github.com/mozilla/cubeb.git'
-        'git+https://github.com/discord/discord-rpc.git'
-        'git+https://github.com/arun11299/cpp-jwt.git'
-        'git+https://github.com/wwylele/teakra.git'
-        'git+https://github.com/lvandeve/lodepng.git'
-        'git+https://github.com/facebook/zstd.git'
-        'git+https://github.com/lemenkov/libyuv.git'
-        'git+https://github.com/libsdl-org/SDL.git'
-        # cubeb dependencies
-        'git+https://github.com/arsenm/sanitizers-cmake.git')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -75,17 +32,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{boost,nihstro,soundtouch,catch2,dynarmic,xbyak,cryptopp/cryptopp,fmt,enet,inih/inih,libressl,libusb/libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng/lodepng,zstd,libyuv,sdl2/SDL}; do
-        git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule##*/}"
-    done
-        git -c protocol.file.allow=allways submodule update --init
-
-    cd externals/cubeb
-
-    for submodule in cmake/sanitizers-cmake; do
-        git config -file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule##*/}"
-    done
-        git -c protocol.file.allow=allways submodule update --init
+    git submodule update --init
 }
 
 build() {
@@ -112,9 +59,10 @@ build() {
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
-      -DENABLE_SCRIPTING=ON \
       -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
-      -DENABLE_FFMPEG_AUDIO_DECODER=ON
+      -DENABLE_FFMPEG_AUDIO_DECODER=ON \
+      -DUSE_SYSTEM_BOOST=OFF \
+      -DUSE_SYSTEM_SDL2=ON
     make
 }
 
@@ -128,4 +76,7 @@ package() {
     make DESTDIR="$pkgdir/" install
     rm -rf "$pkgdir/usr/include/tsl"
     rm -rf "$pkgdir/usr/share/cmake/tsl-robin-map"
+    rm -rf "$pkgdir/usr/include/fmt"
+    rm -rf "$pkgdir/usr/lib/cmake/fmt"
+    rm -rf "$pkgdir/usr/lib/pkgconfig"
 }
