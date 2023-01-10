@@ -1,0 +1,22 @@
+diff -Naur Commander_Wars-Beta28_Build2.bak/coreengine/settings.cpp Commander_Wars-Beta28_Build2/coreengine/settings.cpp
+--- Commander_Wars-Beta28_Build2.bak/coreengine/settings.cpp	2023-01-10 15:01:38.398027544 +0100
++++ Commander_Wars-Beta28_Build2/coreengine/settings.cpp	2023-01-10 15:02:00.128132071 +0100
+@@ -8,7 +8,6 @@
+ #endif
+ #include <QScreen>
+ #include <QLocale>
+-#include <QStandardPaths>
+ #include <QDir>
+ #include <QFileInfoList>
+ #include <QInputDevice>
+diff -Naur Commander_Wars-Beta28_Build2.bak/coreengine/settings.h Commander_Wars-Beta28_Build2/coreengine/settings.h
+--- Commander_Wars-Beta28_Build2.bak/coreengine/settings.h	2023-01-10 15:01:38.398027544 +0100
++++ Commander_Wars-Beta28_Build2/coreengine/settings.h	2023-01-10 15:01:52.758096507 +0100
+@@ -7,6 +7,7 @@
+ #include <QObject>
+ #include <QTranslator>
+ #include <QSettings>
++#include <QStandardPaths>
+ #ifdef AUDIOSUPPORT
+ #include <QMediaDevices>
+ #include <QAudioDevice>
