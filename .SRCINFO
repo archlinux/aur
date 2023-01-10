@@ -1,6 +1,6 @@
 pkgbase = qtspim
 	pkgdesc = New user interface for spim, a MIPS simulator.
-	pkgver = 9.1.22
+	pkgver = 9.1.23
 	pkgrel = 1
 	url = http://spimsimulator.sourceforge.net/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = qtspim
 	makedepends = qt5-tools
 	makedepends = subversion
 	makedepends = icu
+	makedepends = bison
 	depends = qt5-base
-	source = svn://svn.code.sf.net/p/spimsimulator/code/#revision=739
+	source = svn://svn.code.sf.net/p/spimsimulator/code/#revision=754
 	sha256sums = SKIP
 
 pkgname = qtspim
-
