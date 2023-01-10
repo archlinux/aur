@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigassertr
-_pkgver=0.1.5
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.5
-pkgrel=4
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Assertion and Message Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a94645fba4602bb5e9c9b2a3febc1ba99e151a042f4eddf02c896c4b327a6d03')
+sha256sums=('7780f02c0eee3941d430982f2a345a488c9834633561a54cdd2c306aa30c612e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
