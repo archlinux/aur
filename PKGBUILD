@@ -13,8 +13,8 @@ pkgname="${_platform}-${_pkg}"
 pkgver="v5.4.0"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("Compression library implementing the deflate compression method found in gzip and PKZIP "
-          "Sony Playstation® 2 videogame system port).")
+_pkgdesc=("Free general-purpose data compression software with high compression ratio "
+          "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('custom')
