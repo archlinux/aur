@@ -2,8 +2,8 @@
 
 pkgname=python-aeppl
 _pkgname=aeppl
-pkgver=0.0.50
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Tools for an Aesara-based PPL"
 arch=('any')
 url="https://github.com/aesara-devs/aeppl"
@@ -18,7 +18,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('857b1c134060da1552175eab7da94a2b1c9e794a169ebb51b022cb27d8a9dbf7')
+sha256sums=('c7b7a13aa2a054b098ce5c18a7c57646f37b14fbf04eabbca1ad766f9b447e71')
 
 build() {
   cd "$_pkgname-$pkgver"
