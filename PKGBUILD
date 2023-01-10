@@ -1,6 +1,6 @@
 pkgname=vim-flake8
-pkgver=1.6
-pkgrel=1
+pkgver=1.7
+pkgrel=0
 pkgdesc='Flake8 plugin for Vim'
 arch=('any')
 license=('BSD 2-Clause')
