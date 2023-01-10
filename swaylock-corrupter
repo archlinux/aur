@@ -1,0 +1,3 @@
+#!/bin/sh
+FILE="/tmp/ss.png"
+grim $FILE; corrupter $FILE $FILE; swaylock -i $FILE; rm $FILE 
