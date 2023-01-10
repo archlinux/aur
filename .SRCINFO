@@ -1,10 +1,10 @@
 pkgbase = openra-rv-git
 	pkgdesc = A Command & Conquer: Red Alert 2-inspired mod of OpenRA
-	pkgver = 3102.git.dcf73d1
+	pkgver = 3959.git.66c9a08
 	pkgrel = 1
 	url = https://github.com/MustaphaTR/Romanovs-Vengeance
 	install = openra-rv.install
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = dos2unix
 	makedepends = git
@@ -19,6 +19,8 @@ pkgbase = openra-rv-git
 	depends = lua51
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
+	depends = libxss
+	depends = java-runtime
 	depends = desktop-file-utils
 	depends = xdg-utils
 	depends = zenity
@@ -29,9 +31,8 @@ pkgbase = openra-rv-git
 	source = openra-rv.appdata.xml
 	source = openra-rv.desktop
 	md5sums = SKIP
-	md5sums = 80198a3797c5f4103536702d15e37f19
+	md5sums = f13888474aeeb31acbe019d10d3d644c
 	md5sums = cdade4bc4fcba3ea1d3dea6bd0e9a2c9
 	md5sums = 98c237db6df1eb777658842765948ea2
 
 pkgname = openra-rv-git
-
