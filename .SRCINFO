@@ -1,0 +1,15 @@
+pkgbase = dict-freedict-slk-eng
+	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://freedict.org/
+	install = install.sh
+	arch = any
+	license = GPL
+	makedepends = dictd
+	makedepends = freedict-tools
+	optdepends = dictd: dict client and server
+	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
+	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+
+pkgname = dict-freedict-slk-eng
