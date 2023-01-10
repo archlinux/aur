@@ -1,8 +1,8 @@
-# Maintainer: RedTide <redtid3@gmail.com>
+# Maintainer: kamnxt <kamnxt@kamnxt.com>
 
 _pkgname="pugl"
 pkgname="${_pkgname}-git"
-pkgver=r673.d70aa80
+pkgver=r1047.4e81c17
 pkgrel=1
 pkgdesc="Minimal portable API for GUIs which is suitable for use in plugins."
 url="http://drobilla.net/software/pugl"
@@ -12,25 +12,22 @@ depends=('libx11' 'libxcb' 'libxcursor' 'libxext' 'cairo')
 makedepends=('git' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}"::"git+https://github.com/lv2/pugl"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-sha512sums=('SKIP' 'SKIP')
+source=("${pkgname}"::"git+https://github.com/lv2/pugl")
+sha512sums=('SKIP')
 pkgver() {
     cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git submodule init
-    git config submodule.waflib.url "${srcdir}/autowaf"
-    git submodule update
-}
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    python waf configure --prefix=/usr
+    cd "${srcdir}"
+    meson setup "${pkgname}" build
+    meson configure build -Ddocs=disabled
+    meson compile -C build
 }
+
 package() {
-    cd "${srcdir}/${pkgname}"
-    python waf install --destdir="${pkgdir}"
+    cd "${srcdir}/build"
+    meson install --destdir="${pkgdir}"
     install -Dm644 "${srcdir}/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
