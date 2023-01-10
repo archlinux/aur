@@ -38,6 +38,8 @@ _cflags=(-I"/usr/${_ee}/include/pthread-embedded")
          # -I"/usr/${_ee}/include/newlib-nano")
          # -static)
 
+_ee_cflags=(${_cflags[@]})
+
 _ldflags=(-L"/usr/${_ee}/lib/pthread-embedded"
           # -L"/usr/${_ee}/lib/newlib-nano"
           "/usr/${_ee}/lib/newlib-nano/libc_nano.a"
@@ -56,29 +58,30 @@ build() {
   export CXXFLAGS=""
   export CPPFLAGS=""
   export LDLAGS=""
+  export EE_CFLAGS=""
 
   # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
   export IOP_CFLAGS="${_cflags[*]}"
   export IOP_LDFLAGS="${_cflags[*]}"
-  export EE_CFLAGS="${_cflags[*]}"
   export CFLAGS="${_cflags[*]}"
   export CPPFLAGS="${_cflags[*]}"
   export CXXFLAGS="${_cflags[*]}"
   export LDFLAGS="${_ldflags[*]}"
   export PS2SDK="${pkgdir}/usr"
   export IOP_TOOL_PREFIX="${_iop}-elf-"
+  export EE_CFLAGS="${_ee_cflags[*]}"
 
   cd "${srcdir}/${pkgname}"
   # make clean
   # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/${_ee}/lib/pthread-embedded" \
   IOP_CFLAGS="${_cflags[*]}" \
-  EE_CFLAGS="${_cflags[*]}" \
   CFLAGS="${_cflags[*]}" \
   CPPFLAGS="${_cflags[*]}" \
   CXXFLAGS="${_cflags[*]}" \
   EE_LDLAGS="${_cflags[*]}" \
   IOP_LDLAGS="${_cflags[*]}" \
   LDFLAGS="${_ldflags[*]}" \
+  EE_CFLAGS="${_cflags[*]}" \
   make "${_build_opts[@]}" build
 }
 
@@ -130,5 +133,9 @@ package() {
   rmdir common
   mkdir -p "share/licenses/${_pkgname}"
   mv LICENSE "share/licenses/${_pkgname}"
-
+  cd "${pkgdir}/usr/share/${_pkgname}/samples"
+  sed -i "s~\$(PS2SDK)/ee/include~/usr/${_ee}/include~g" "Makefile.eeglobal"
+  sed -i "s~\$(PS2SDK)/ee/common/include~/usr/include/ps2sdk~g" "Makefile.eeglobal"
+  sed -i "s~\$(PS2SDK)/ee/lib~/usr/${_ee}/lib~g" "Makefile.eeglobal"
+  sed -i "s~\$(PS2SDK)/ee/startup/linkfile~/usr/${_ee}/startup/linkfile~g" "Makefile.eeglobal"
 }
