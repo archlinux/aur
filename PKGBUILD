@@ -41,8 +41,8 @@ _iop_incs=(# ${_cflags[*]}
 # _ee_incs=(-I"${_sdk_include}")
           # -I"${_ee_include}")
 
-_ldflags=( # -T"/usr/${_ee}/startup/linkfile"
-          -L"/usr/${_ee}/lib/pthread-embedded"
+_ldflags=(-L"/usr/${_ee}/lib/pthread-embedded"
+          # -T"/usr/${_ee}/startup/linkfile"
           # "/usr/lib/libz.a"
           # "/usr/lib/libid3tag.so"
           -L"/usr/${_ee}/lib")
@@ -68,9 +68,9 @@ prepare() {
     sed -i "s~\$(PS2DEV)/isjpcm/bin~/usr/${_iop}\-irx/irx~g" "${_sample}"
     sed -i "s~-I\$(PS2DEV)/isjpcm/include~-include /usr/${_ee}/include/sjpcm.h~g" "${_sample}"
     sed -i "s~-L\$(PS2DEV)/isjpcm/lib~/usr/${_ee}/lib/libsjpcm.a~g" "${_sample}"
-    # sed -i "s~-L\$(PS2SDK)/ee/lib~-L/usr/${_ee}/lib~g" "${_sample}"
-    # sed -i "s~-I\$(PS2SDK)/common/include~-I/usr/include/ps2sdk~g" "${_sample}"
-    # sed -i "s~-I\$(PS2SDK)/ee/include~-I/usr/${_ee}/include~g" "${_sample}"
+    sed -i "s~-L\$(PS2SDK)/ee/lib~-L/usr/${_ee}/lib~g" "${_sample}"
+    sed -i "s~-I\$(PS2SDK)/common/include~-I/usr/include/ps2sdk~g" "${_sample}"
+    sed -i "s~-I\$(PS2SDK)/ee/include~-I/usr/${_ee}/include~g" "${_sample}"
     # sed -i "s~\$(PS2SDK)/ee~/usr/${_ee}~g" "${_sample}"
     # sed -i "s~\$(PS2SDK)/iop~/usr/${_iop}-irx~g" "${_sample}"
     # sed -i "s/EE_INCS = -I..\/include/EE_INCS = -I\/..include -I\/usr\/${_ee}\/include\/${_platform}${_base}/g" "libmad/Makefile"
@@ -101,40 +101,41 @@ build() {
 
   cat "${srcdir}/${pkgname}/madplay/ee/src/config.h"
   local _ee_cflags=('-include' "${srcdir}/${pkgname}/madplay/ee/src/config.h"
-                    # '-include' "/usr/${srcdir}/${pkgname}/madplay/ee/src/config.h"
                     -I"${_pe_include}"
                     # '-include' "${srcdir}/${pkgname}/madplay/ee/src/config.h"
                     -I"${srcdir}/${pkgname}/madplay/ee/src"
-                    # '-include' "${srcdir}/${pkgname}/libmad/ee/include/config.h"
                     # -I"${srcdir}/${pkgname}/libmad/ee/include"
                     # '-include' "/usr/include/id3tag.h"
                     # '-include' "/usr/${_ee}/include/sjpcm.h"
                     # -I"../include")
                     # -I"${srcdir}/${_pkg}"
                     -I"${_ee_include}"
+                    -L"/usr/${_ee}/lib"
                     -Wl,-L"/usr/${_ee}/lib"
                     -I"${_sdk_include}"
                     -I"${_sdk_include}/sys")
+
+
 
   # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
   # export IOP_CFLAGS="${_cflags[*]}"
   # export IOP_LDFLAGS="${_cflags[*]}"
   # export CFLAGS="${_cflags[*]}"
   # export CPPFLAGS="${_cflags[*]}"
-  # export CXXFLAGS="${_cflags[*]}"
-  export LDFLAGS="${_ldflags[*]}"
+  # export CXXFLAGS="${_ee_cflags[*]}"
+  # export LDFLAGS="${_ldflags[*]}"
   export PS2SDK="${srcdir}/${_platform}${_base}"
-  export IOP_TOOL_PREFIX="${_iop}-elf-"
+  # export IOP_TOOL_PREFIX="${_iop}-elf-"
   # export IOP_INCS="${_iop_incs[*]}"
-  export EE_CC="${_ee}-gcc"
+  # export EE_CC="${_ee}-gcc"
   # export EE_INCS="${_ee_incs[*]}"
-  export EE_CFLAGS="${_ee_cflags[*]}"
+  # export EE_CFLAGS="${_ee_cflags[*]}"
   # export EE_LDFLAGS="${_ee_ldflags[*]}"
   export PS2SDKDATADIR="/usr/share/ps2sdk"
 
-  local _make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}"
-                    LDFLAGS="${_ldflags[*]}"
-                    EE_CFLAGS="${_ee_cflags[*]}")
+  local _make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}")
+                    # LDFLAGS="${_ldflags[*]}"
+                    # EE_CFLAGS="${_ee_cflags[*]}")
 
   cd "${srcdir}/${pkgname}"
   mkdir -p "${PS2SDK}/ee/startup"
@@ -145,16 +146,16 @@ build() {
   # cp -r "${srcdir}/${pkgname}/libmad/ee/include/bit.h" "ee/src"
   # cp -r "${srcdir}/${pkgname}/libmad/ee/include/fixed.h" "ee/src"
   # cp -r "${srcdir}/${pkgname}/libmad/ee/include/global.h" "ee/src"
-  cp -r "/usr/include/id3tag.h" "ee/src"
-  cp -r "/usr/${_ee}/startup/linkfile" "${PS2SDK}/ee/startup"
+  # cp -r "/usr/include/id3tag.h" "ee/src"
+  # cp -r "/usr/${_ee}/startup/linkfile" "${PS2SDK}/ee/startup"
   # EE_LDFLAGS="${_ldflags[*]}" \
   # CFLAGS="${_cflags[*]}" \
   # IOP_INCS="${_iop_incs[*]}" \
   # EE_INCS="${_ee_incs[*]}" \
-  EE_CFLAGS="${_ee_cflags[*]}" \
-  EE_CC="${_ee}-gcc" \
+  # LDFLAGS="${_ldflags[*]}" \
+  # EE_CFLAGS="${_ee_cflags[*]}" \
+  # EE_CC="${_ee}-gcc" \
   PS2SDKDATADIR="/usr/share/ps2sdk" \
-  LDFLAGS="${_ldflags[*]}" \
   make "${_make_opts[@]}" -C ee/src 
 }
 
