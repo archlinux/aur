@@ -1,0 +1,15 @@
+post_install() {
+  printf '%s\n' "  -> By default, module 'one' will be automatically loaded at boot due to '/usr/lib/modules-load.d/one.conf'. '/dev/one' should be automatically created."
+  printf '\n'
+  printf '%s\n' "  -> In order to load the module before reboot, type 'modprobe one' as root."
+  modprobe one
+}
+
+post_upgrade() {
+  printf '%s\n' "  -> Module 'one' is upgraded. In order to reload the new version before a reboot, type 'rmmod one && modprobe one' as root."
+}
+
+pre_remove() {
+  printf '%s\n' "  -> Unloading module 'one'."
+  rmmod one
+}
