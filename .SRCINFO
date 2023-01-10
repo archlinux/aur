@@ -1,12 +1,12 @@
 pkgbase = python-pyctr
 	pkgdesc = Python library to interact with Nintendo 3DS files
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihaveamac/pyctr
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.6
 	depends = python-pycryptodomex
 	optdepends = python-pillow: to convert SMDH icons to standard image formats
 	options = !strip

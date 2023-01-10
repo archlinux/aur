@@ -1,11 +1,11 @@
 pkgname=python-pyctr
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to interact with Nintendo 3DS files"
 arch=($CARCH)
 license=('MIT')
 url='https://github.com/ihaveamac/pyctr'
-depends=('python' 'python-pycryptodomex')
+depends=('python>=3.6' 'python-pycryptodomex')
 makedepends=('python-setuptools')
 optdepends=('python-pillow: to convert SMDH icons to standard image formats')
 options=(!strip)
