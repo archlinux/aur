@@ -4,7 +4,7 @@
 _pkgname=citra
 pkgname=$_pkgname-canary-git
 pkgver=r9391.f16706288
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    git submodule update --init
+    git submodule update --init --recursive
 }
 
 build() {
@@ -74,9 +74,8 @@ check() {
 package() {
     cd "$srcdir/$_pkgname/build"
     make DESTDIR="$pkgdir/" install
-    rm -rf "$pkgdir/usr/include/tsl"
-    rm -rf "$pkgdir/usr/share/cmake/tsl-robin-map"
-    rm -rf "$pkgdir/usr/include/fmt"
-    rm -rf "$pkgdir/usr/lib/cmake/fmt"
-    rm -rf "$pkgdir/usr/lib/pkgconfig"
+    rm -rf "$pkgdir/usr/include"
+    rm -rf "$pkgdir/usr/lib"
+    rm -rf "$pkgdir/usr/share/cmake"
+
 }
