@@ -1,6 +1,6 @@
 pkgbase = wasi-sdk-bin
 	pkgdesc = WASI-enabled WebAssembly C/C++ toolchain
-	pkgver = 16.0
+	pkgver = 17.0
 	pkgrel = 1
 	url = https://github.com/WebAssembly/wasi-sdk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wasi-sdk-bin
 	depends = clang
 	depends = lld
 	options = !strip
-	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-16/wasi-sdk-16.0-linux.tar.gz
-	sha512sums = 81470dbc3f33b806f81a2f345e547d778ccee7a7359ec5121fae32909644c20f1d425c09cda67cb784332a57e2fecd3f08f375835d3b001799e77b565e30e899
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-17/wasi-sdk-17.0-linux.tar.gz
+	sha512sums = 4d2ff0e55c427a3aefd57e9a19a35513f3a31cb73740880ef297f8c0fa402e31e6b1b91eee4cdb24cbb266c325df8d4b53d17ebc29c7b5529ba6e3f83a4ea1f0
 
 pkgname = wasi-sdk-bin
