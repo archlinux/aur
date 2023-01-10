@@ -3,7 +3,7 @@
 
 pkgname='zander-bin'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Software to manage dedicated doom server instances'
 url='https://node-3.net/zander'
 arch=('aarch64' 'i686' 'x86_64')

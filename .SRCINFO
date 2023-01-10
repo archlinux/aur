@@ -1,7 +1,7 @@
 pkgbase = zander-bin
 	pkgdesc = Software to manage dedicated doom server instances
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://node-3.net/zander
 	license = MIT
 	conflicts = zander
