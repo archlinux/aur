@@ -1,0 +1,15 @@
+pkgbase = ps2-freetype
+	pkgdesc = A C library for reading, creating, and modifying zip archives (Sony Playstation® 2 videogame system port).
+	pkgver = v2.10.4
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/freetype/freetype
+	arch = x86_64
+	license = GPL
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-freetype::git+https://gitlab.freedesktop.org/freetype/freetype#commit=6a2b3e4007e794bfc6c91030d0ed987f925164a8
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-freetype
