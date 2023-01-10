@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.1
+pkgver=5.1.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -30,12 +30,10 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "fis-csd-global-menu.patch::$_filesurl/patches/fis-csd-global-menu.patch"
         "nongnome-proxies.patch::$_filesurl/patches/nongnome-proxies.patch"
         "mozilla-ntlm-full-path.patch::$_filesurl/patches/mozilla-ntlm-full-path.patch"
-        "glibc236.patch::$_filesurl/patches/glibc236.patch"
         "libavcodec58_91.patch::$_filesurl/patches/libavcodec58_91.patch"
         "fix-langpack-id.patch::$_filesurl/patches/fix-langpack-id.patch"
         "waterfox-branded-icons.patch::$_filesurl/patches/waterfox-branded-icons.patch"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
-        "cbindgen-0.24.0.patch::$_filesurl/patches/cbindgen-0.24.0.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
         )
 sha256sums=('SKIP'
@@ -50,12 +48,10 @@ sha256sums=('SKIP'
             '6d74e7da4ade11c7e4b54a8037f3930946928e66e6a6ffb0e30180e9f1f3f364'
             '539ff4b7580762b9f2fe47a9166502b7ed4c8cc98599694bf67476606c1c90d7'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
-            '6fbe9d11e1763c6689f68526792923e5896b789d85393dd29c771ac812d2ae19'
             '27cd1dfcc545938b16db1555eecb728bea4e4666e92c4d05ec2c16eeef5064b4'
             '443fb2d0d58d89f5bdb010183f00e1a5d6bc20e35bf3d1ad93537b7c02d471a9'
             '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
             '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
-            '4628d136c3beada292e83cd8e89502cac4aa3836851b34259a665582a7713978'
             '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a')
 
 prepare() {
@@ -68,12 +64,10 @@ prepare() {
   patch -Np1 -i ../fis-csd-global-menu.patch
   patch -Np1 -i ../nongnome-proxies.patch
   patch -Np1 -i ../mozilla-ntlm-full-path.patch
-  patch -Np1 -i ../glibc236.patch
   patch -Np1 -i ../libavcodec58_91.patch
   patch -Np1 -i ../fix-langpack-id.patch
   patch -Np1 -i ../waterfox-branded-icons.patch
   patch -Np1 -i ../fix-wayland-build.patch
-  patch -Np1 -i ../cbindgen-0.24.0.patch
   patch -Np1 -i ../mach-depends.patch
 
   cat >../mozconfig <<END
