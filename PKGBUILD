@@ -6,7 +6,7 @@
 # Contributor: blind
 
 pkgname=hyper
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('hyperterm')
 replaces=('hyperterm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vercel/$pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-b2sums=('783b51d317d1560f9bcb69582a32f1b2342b874b1fce5beaf9de3d8a04c6a21407807cf9278b5659d4f366bd7f9fcc064618e3a6764c7fcbd4b914722acd7a3d'
+b2sums=('2c480fbd2162f77bfa3b3f5702a50cfb4fb7d88d133c1b916937233b8556ed2c289ab15fb166615dfcd9859a8919dd24423ed751145ae33fdc29f1c072b5b37e'
         '3e204a5417c0c0b5d0de4b25013657e4f27ec951c4c23ad9c5bf661890bcf6e6b7f81454373c5740fc424c6af022a45e6b7f204dffb67afa678cf098c545b590')
 
 _electron_file_list=(
