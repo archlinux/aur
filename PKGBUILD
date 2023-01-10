@@ -2,7 +2,7 @@
 
 pkgname=python-timebudget-git
 pkgver=0.7.r2.ge58b712
-pkgrel=2
+pkgrel=3
 pkgdesc='A stupidly-simple tool to see where your time is going in Python programs'
 arch=(any)
 url='https://github.com/leopd/timebudget'
@@ -22,7 +22,7 @@ provides=(
 conflicts=(
     python-timebudget
 )
-source=('git+git://github.com/leopd/timebudget.git')
+source=('git+https://github.com/leopd/timebudget.git')
 md5sums=('SKIP')
 
 pkgver() {
