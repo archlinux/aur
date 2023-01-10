@@ -2,8 +2,8 @@
 
 _pkgname=via
 pkgname=$_pkgname-bin
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="binary distribution of electron builds for https://usevia.app/"
 arch=(any)
 url="https://caniuse$_pkgname.com/"
@@ -21,7 +21,7 @@ optdepends=("libappindicator-gtk3: recommended for app indicator")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename")
 
-md5sums=("a48528b45af5792c5d7f26f8f0f24879")
+md5sums=("2734829f205c1cc885093bdacda1c107")
 
 build() {
   mkdir -p "${srcdir}/output"
