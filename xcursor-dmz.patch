@@ -1,0 +1,72 @@
+diff -ura --color dmz-cursor-theme-0.4.5.orig/DMZ-Black/pngs/make.sh dmz-cursor-theme-0.4.5/DMZ-Black/pngs/make.sh
+--- dmz-cursor-theme-0.4.5.orig/DMZ-Black/pngs/make.sh	2023-01-10 16:31:46.213765416 +0100
++++ dmz-cursor-theme-0.4.5/DMZ-Black/pngs/make.sh	2023-01-10 16:33:13.604206889 +0100
+@@ -97,5 +97,32 @@
+ ln -sf    sb_v_double_arrow	2870a09082c103050810ffdffffe0204
+ ln -sf    v_double_arrow	00008160000006810000408080010102
+ #ln -sf    center_ptr		centre_ptr
++ln -sf dnd-link alias
++ln -sf sb_h_double_arrow col-resize
++ln -sf left_ptr default
++ln -sf right_side e-resize
++ln -sf sb_h_double_arrow ew-resize
++ln -sf hand1 grab
++ln -sf top_right_corner ne-resize
++ln -sf fd_double_arrow nesw-resize
++ln -sf crossed_circle not-allowed
++ln -sf top_side n-resize
++ln -sf sb_v_double_arrow ns-resize
++ln -sf top_left_corner nw-resize
++ln -sf bd_double_arrow nwse-resize
++ln -sf hand2 openhand
++ln -sf hand2 pointer
++ln -sf left_ptr_watch progress
++ln -sf sb_v_double_arrow row-resize
++ln -sf bottom_right_corner se-resize
++ln -sf fd_double_arrow size_bdiag
++ln -sf bd_double_arrow size_fdiag
++ln -sf h_double_arrow size_hor
++ln -sf v_double_arrow size_ver
++ln -sf bottom_side s-resize
++ln -sf bottom_left_corner sw-resize
++ln -sf xterm text
++ln -sf watch wait
++ln -sf left_side w-resize
+ 
+ #cp -RPv * /usr/share/icons/dmz-aa/cursors/
+diff -ura --color dmz-cursor-theme-0.4.5.orig/DMZ-White/pngs/make.sh dmz-cursor-theme-0.4.5/DMZ-White/pngs/make.sh
+--- dmz-cursor-theme-0.4.5.orig/DMZ-White/pngs/make.sh	2023-01-10 16:31:46.257098969 +0100
++++ dmz-cursor-theme-0.4.5/DMZ-White/pngs/make.sh	2023-01-10 16:33:09.677520459 +0100
+@@ -97,5 +97,32 @@
+ ln -sf    sb_v_double_arrow	2870a09082c103050810ffdffffe0204
+ ln -sf    v_double_arrow	00008160000006810000408080010102
+ #ln -sf    center_ptr		centre_ptr
++ln -sf dnd-link alias
++ln -sf sb_h_double_arrow col-resize
++ln -sf left_ptr default
++ln -sf right_side e-resize
++ln -sf sb_h_double_arrow ew-resize
++ln -sf hand1 grab
++ln -sf top_right_corner ne-resize
++ln -sf fd_double_arrow nesw-resize
++ln -sf crossed_circle not-allowed
++ln -sf top_side n-resize
++ln -sf sb_v_double_arrow ns-resize
++ln -sf top_left_corner nw-resize
++ln -sf bd_double_arrow nwse-resize
++ln -sf hand2 openhand
++ln -sf hand2 pointer
++ln -sf left_ptr_watch progress
++ln -sf sb_v_double_arrow row-resize
++ln -sf bottom_right_corner se-resize
++ln -sf fd_double_arrow size_bdiag
++ln -sf bd_double_arrow size_fdiag
++ln -sf h_double_arrow size_hor
++ln -sf v_double_arrow size_ver
++ln -sf bottom_side s-resize
++ln -sf bottom_left_corner sw-resize
++ln -sf xterm text
++ln -sf watch wait
++ln -sf left_side w-resize
+ 
+ #cp -RPv * /usr/share/icons/Vanilla-DMZ/cursors/
