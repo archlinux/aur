@@ -6,15 +6,14 @@ pkgver=r23.9416add
 pkgrel=1
 pkgdesc="A plugin for rofi that emulates blezz behaviour."
 arch=('i686' 'x86_64')
-url="https://gitcrate.org/qtools/blezz"
+url="https://github.com/davatorium/rofi-blezz"
 license=('MIT')
 depends=(rofi)
 options=('!libtool')
 makedepends=('git')
 provides=('rofi-blezz')
-source=("git+https://gitcrate.org/qtools/rofi-blezz.git")
+source=("git+https://github.com/davatorium/rofi-blezz.git")
 md5sums=('SKIP')
-
 pkgver() {
   cd "${_gitname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
