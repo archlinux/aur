@@ -8,6 +8,6 @@ pkgbase = apekey
 	makedepends = rust
 	depends = fontconfig
 	source = apekey-0.1.2.tar.gz::https://github.com/doums/apekey/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = efc4838a4c40092309b827782273dd088ad091dbfa68a23e4fbbda85fed3ade6
+	sha256sums = 6b0343dcb9f058aa7acd284bb77141e138241faf7ae6f3a9c96baf7aeb38b54b
 
 pkgname = apekey
