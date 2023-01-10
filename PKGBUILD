@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python' 'chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout' 'python-requests' 'python-websockets' 'python-xvfbwrapper')
 makedepends=('git')
 provides=('flaresolverr')
-conflicts=('flaresolverr-bin')
+conflicts=('flaresolverr-bin' 'flaresolverr')
 install='flaresolverr.install'
 source=("git+$url"
         "flaresolverr.service"
