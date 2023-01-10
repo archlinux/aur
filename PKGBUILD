@@ -8,7 +8,7 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=6.2.0beta3
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -20,12 +20,10 @@ makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' '
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
-  "expire-from-source-date-epoch.patch"
   "signal-desktop-wrapper.sh"
   )
 sha512sums=('f0f5d56ba7e2d5d9efc553635eafc21923e5f6a71b915433a7d353a3160b52fd95b9c0cb27134aaba698fe1aa76efc3c42da29dc7b0d3c014d554e384f382067'
             '7b25b98de8db36af1a9da49cd214d6ced45f123f098e5665b563e462b979e67d9d570fce8fbee89776a95dc5108696da64bfbe0bd1eaf748360dfcb333483dbb'
-            '1154859e87d8a2d649bc23210f2dd8aa473f268166559a51a2a64fe6ae094c101121535623b05b711bd87aab1f219627e9274fa542fdb0e5fe6f34b46fd7b7df'
             '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
 
 prepare() {
@@ -40,9 +38,6 @@ prepare() {
   sed 's#"node": "#&>=#' -i package.json
 
   yarn install --ignore-engines
-
-  # We can't read the release date from git so we use SOURCE_DATE_EPOCH instead
-  patch --forward --strip=1 --input="${srcdir}/expire-from-source-date-epoch.patch"
 }
 
 build() {
