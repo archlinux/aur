@@ -1,5 +1,5 @@
 pkgbase = ps2-madplay
-	pkgdesc = (Sony Playstation® 2 videogame system port).
+	pkgdesc = Front-end for libmad (Sony Playstation® 2 videogame system port).
 	pkgver = v1.3.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2sdk-ports
