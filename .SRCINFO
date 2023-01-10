@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-arch-bgrt
 	pkgdesc = Jimmac's spinner theme using the ACPI bgrt graphics as background and The Arch Logo.
 	pkgver = 2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/humanbeing27/plymouth-theme-arch-bgrt
 	arch = any
 	depends = plymouth
