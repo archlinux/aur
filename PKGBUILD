@@ -1,7 +1,7 @@
 # Maintainer: inv2004 (https://github.com/inv2004)
 
 pkgname=ttop
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="System monitoring tool with TUI and historical data service"
 arch=('x86_64')
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    nimble -d:release build
+    nimble -y -d:release build
     nim r src/ttop/onoff.nim
 }
 
