@@ -13,7 +13,8 @@ pkgname="${_platform}-${_pkg}"
 pkgver="v1.2.11"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("ID3 tag manipulation library (Sony Playstation® 2 videogame system port).")
+_pkgdesc=("Compression library implementing the deflate compression method found in gzip and PKZIP "
+          "Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('custom')
@@ -73,12 +74,12 @@ prepare() {
                  "s~CMAKE_C_FLAGS_INIT \"~CMAKE_C_FLAGS_INIT \"-I${_nn_include} ~g"
                  "s~CMAKE_CXX_FLAGS_INIT \"~CMAKE_CXX_FLAGS_INIT \"-I${_nn_include} ~g"
                  "s~CMAKE_C_FLAGS_INIT \"~CMAKE_C_FLAGS_INIT \"-I${_pe_include} ~g"
-                 "s~CMAKE_CXX_FLAGS_INIT \"~CMAKE_CXX_FLAGS_INIT \"-I${_pe_include} ~g"
-                 "s~-D_EE~-Wl,-L/usr/${_ee}/lib/pthread-embedded -D_EE~g"
-                 "s~-D_EE~-Wl,-L/usr/${_ee}/lib -D_EE~g"
+                 "s~CMAKE_CXX_FLAGS_INIT \"~CMAKE_CXX_FLAGS_INIT \"-I${_pe_include} ~g")
+                 # "s~-D_EE~-Wl,-L/usr/${_ee}/lib/pthread-embedded -D_EE~g"
+                 # "s~-D_EE~-Wl,-L/usr/${_ee}/lib -D_EE~g"
                  # "s~-D_EE~-lc -D_EE~g"
-                 "s~-D_EE~-Wl,-Bstatic -D_EE~g"
-                 "s~-D_EE~-lpthread -D_EE~g")
+                 # "s~-D_EE~-Wl,-Bstatic -D_EE~g"
+                 # "s~-D_EE~-lpthread -D_EE~g")
                  # "s~-D_EE~-Wl,-L/usr/${_ee}/lib/newlib-nano -D_EE~g")
     for _rep in "${_reps[@]}"; do
         sed -i "${_rep}" "${_platform}dev.cmake"
@@ -86,8 +87,8 @@ prepare() {
     local _linker_flags=(# "-L/usr/${_ee}/lib/pthread-embedded"
                          # "-L/usr/${_ee}/lib/newlib-nano"
                          # "-lc_nano"
-                         "/usr/${_ee}/lib/libc.a")
-                         # "-L/usr/${_ee}/lib")
+                         # "/usr/${_ee}/lib/libc.a")
+                         "-L/usr/${_ee}/lib")
                          # "/usr/lib/libz.a")
     echo "SET(GCC_COVERAGE_LINK_FLAGS \"${_linker_flags[*]}\")" >> "${_platform}dev.cmake"
     # echo "find_package(libc)" >> "${_platform}dev.cmake"

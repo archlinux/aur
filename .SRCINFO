@@ -1,5 +1,5 @@
 pkgbase = ps2-zlib
-	pkgdesc = ID3 tag manipulation library (Sony Playstation® 2 videogame system port).
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP Sony Playstation® 2 videogame system port).
 	pkgver = v1.2.11
 	pkgrel = 1
 	url = https://github.com/madler/zlib
