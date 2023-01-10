@@ -1,65 +1,78 @@
-#!/usr/bin/env bash
+basename=slk-eng
+pkgname=dict-freedict-$basename
+dictd_conf=/etc/dict/dictd.conf
+datadir=/usr/share/dictd
+conf="database $basename {
+	data $datadir/$basename.dict.dz
+	index $datadir/$basename.index
+}"
 
-set -euxo pipefail
-
-TMP_DIR=/tmp/nekuvi/
-
-copy_files() {
-    mkdir -p "$TMP_DIR"
-    cp /usr/share/X11/xkb/rules/evdev.lst "$TMP_DIR"
-    cp /usr/share/X11/xkb/rules/evdev.xml "$TMP_DIR"
+post_install()
+{
+	echo
+	if pacman -Qq dictd > /dev/null 2>&1
+	then
+		if grep -q "^database *$basename" "$dictd_conf"
+		then
+			echo "$pkgname already configured in $dictd_conf"
+		else
+			echo "Adding configuration for $pkgname to $dictd_conf"
+			echo "$conf" >> "$dictd_conf"
+		fi
+		
+		if systemctl -q is-active dictd.service
+		then
+			echo "Restarting dictd service in order to" \
+				 "use the new dictionary database"
+			systemctl restart dictd.service
+		else
+			echo "Starting dictd service in order to" \
+				 "use the new dictionary database"
+			systemctl start dictd.service
+		fi
+	else
+		echo "dictd does not appear to be installed."
+		echo "In order to use this database you should either" \
+		     "install dictd or alternatively" \
+		     "another dict server and configure it on your own."
+	fi
+	echo
 }
 
-append_evdev_lst() {
-    pushd "$TMP_DIR"
-
-    if grep -q "np_prog" evdev.lst; then
-        echo "WARNING: evdev.lst already updated. This could mean that you may have tried to install this package previously. Continuing installation."
-    else
-        sed -i '/! layout/a \ \ np_prog \t Nepali for programmers' evdev.lst
-    fi
-    popd
+post_upgrade()
+{
+	if pacman -Qq dictd > /dev/null 2>&1    && \
+	   systemctl -q is-active dictd.service
+	then
+		echo -e "\nRestarting dictd service in order to" \
+		        "use the updated dictionary database"
+		systemctl restart dictd.service
+	fi
 }
 
-append_evdev_xml() {
-    pushd "$TMP_DIR"
-    read -r -d '' np_prog_layout <<EOF || true
-<!-- BEGIN np_prog -->
-    <layout>
-      <configItem>
-        <name>np_prog</name>
+post_remove()
+{
+	if pacman -Qq dictd > /dev/null 2>&1
+	then
+		current_conf="$(grep -A 3 "^database *$basename" "$dictd_conf")"
+		if test -n "$current_conf"
+		then
+			echo
+			if test "$current_conf" = "$conf"
+			then
+				echo "Removing configuration for $pkgname from $dictd_conf"
+				sed -i "/database $basename {/,/}/d" "$dictd_conf"
+			else
+				echo "User created / modified configuration" \
+					 "for $pkgname in $dictd_conf is left untouched."
+			fi
+		fi
 
-        <shortDescription>np_prog</shortDescription>
-        <description>Nepali for programmers</description>
-        <languageList>
-          <iso639Id>nep</iso639Id>
-        </languageList>
-      </configItem>
-    </layout>
-<!-- END np_prog -->
-EOF
-
-    if grep -q "np_prog" evdev.xml; then
-        echo "WARNING: evdev.lst already updated. This could mean that you may have tried to install this package previously. Continuing installation."
-    else
-        awk -v layout="$np_prog_layout" '{ print } /<layoutList>/ { print layout }' evdev.xml > temp.xml
-        cp temp.xml evdev.xml
-    fi
-    popd
+		if systemctl -q is-active dictd.service
+		then
+			echo "Restarting dictd service in order to" \
+			     "stop using the removed dictionary database"
+			systemctl restart dictd.service
+		fi
+	fi
 }
-
-install_evdev() {
-    pushd "$TMP_DIR"
-    cp evdev.* /usr/share/X11/xkb/rules/
-    popd
-}
-
-process() {
-    copy_files # copies the necessary files to a temp dir for us
-    append_evdev_lst # modify evdev.lst with np_prog
-    append_evdev_xml # add np_prog to evdev.xml
-    install_evdev
-}
-
-
-process
