@@ -1,7 +1,7 @@
 # Maintainer: mrdotx <klassiker@gmx.de>
 pkgname=cinfo
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a fast and minimal system information tool for linux-based operating systems"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/mrdotx/cinfo'

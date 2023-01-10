@@ -1,7 +1,7 @@
 pkgbase = cinfo
 	pkgdesc = a fast and minimal system information tool for linux-based operating systems
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrdotx/cinfo
 	arch = x86_64
 	arch = i686
