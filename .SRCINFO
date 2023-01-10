@@ -1,6 +1,6 @@
 pkgbase = gottet
-	pkgdesc = A tetris clone using the Qt GUI toolkit
-	pkgver = 1.2.1
+	pkgdesc = Falling blocks game
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://gottcode.org/gottet/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gottet
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = https://gottcode.org/gottet/gottet-1.2.1-src.tar.bz2
-	sha256sums = f8207e7d4ec9c5c4f9d98dba4ed85a6137f0bc77ef973742d8bf91e154b86e54
+	source = https://gottcode.org/gottet/gottet-1.2.2.tar.bz2
+	sha256sums = 9f594db87c7b6ce62f105578c100ce8dac62485c6d9b09be506166a1780092d0
 
 pkgname = gottet

@@ -1,21 +1,22 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=gottet
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
-pkgdesc='A tetris clone using the Qt GUI toolkit'
+pkgdesc='Falling blocks game'
 arch=('x86_64')
-url="https://gottcode.org/$pkgname/"
+url="https://gottcode.org/${pkgname}/"
 license=('GPL3')
 depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
-source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('f8207e7d4ec9c5c4f9d98dba4ed85a6137f0bc77ef973742d8bf91e154b86e54')
+source=("https://gottcode.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('9f594db87c7b6ce62f105578c100ce8dac62485c6d9b09be506166a1780092d0')
 
 build() {
-  cmake -B build -S $pkgbase-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -S "${pkgname}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
   cmake --build build
 }
 
