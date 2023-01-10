@@ -1,10 +1,10 @@
 pkgbase = openra-raclassic-git
 	pkgdesc = A mod of OpenRA that more faithfully recreates the Command & Conquer: Red Alert game
-	pkgver = 199.git.6559269
+	pkgver = 213.git.47c324e
 	pkgrel = 1
 	url = https://github.com/OpenRA/raclassic
 	install = openra-raclassic.install
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = msbuild
 	makedepends = dos2unix
@@ -19,6 +19,8 @@ pkgbase = openra-raclassic-git
 	depends = lua51
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
+	depends = libxss
+	depends = java-runtime
 	depends = desktop-file-utils
 	depends = xdg-utils
 	depends = zenity
@@ -29,9 +31,8 @@ pkgbase = openra-raclassic-git
 	source = openra-raclassic.appdata.xml
 	source = openra-raclassic.desktop
 	md5sums = SKIP
-	md5sums = a12b558a94aaf9046466acb26c5fb851
+	md5sums = f13888474aeeb31acbe019d10d3d644c
 	md5sums = 86cb505318478eff0ffbd3bd49bbca2e
 	md5sums = 0f6a6f3b2e76bad0dea522668d8cffbb
 
 pkgname = openra-raclassic-git
-
