@@ -1,0 +1,18 @@
+--- a/asn1tools/codecs/xer.py	2023-01-10 19:17:06.755929876 +0100
++++ b/asn1tools/codecs/xer.py	2023-01-10 19:17:12.436289029 +0100
+@@ -308,11 +308,14 @@
+ 
+     def decode(self, element):
+         if element.text is None:
+             return b''
+         else:
+-            return binascii.unhexlify(element.text)
++            if len(element.text) % 2:
++                return binascii.unhexlify("0" + element.text)
++            else:
++                return binascii.unhexlify(element.text)
+ 
+     def __repr__(self):
+         return 'OctetString({})'.format(self.name)
+ 
+ 

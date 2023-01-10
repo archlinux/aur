@@ -1,7 +1,7 @@
 pkgbase = python-asn1tools
 	pkgdesc = A Python package for ASN.1 parsing, encoding and decoding
 	pkgver = 0.156.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eerimoq/asn1tools.git
 	arch = any
 	license = MIT
@@ -13,8 +13,10 @@ pkgbase = python-asn1tools
 	depends = python-prompt_toolkit
 	depends = python-diskcache
 	source = asn1tools-0.156.0.tar.gz::https://github.com/eerimoq/asn1tools/archive/0.156.0.tar.gz
+	source = 00-handle-odd-numbered-hex-strings.patch
 	md5sums = a42fb735d3d290bd85e63ce5de58f449
+	md5sums = 0b9993eb074af91618cb5898345953c6
 	sha1sums = ab39f16eec574d229f58bd49dc079348e3df27c7
+	sha1sums = c2e9135e8bfbd08a9f81a1ec05501ff35c116173
 
 pkgname = python-asn1tools
-
