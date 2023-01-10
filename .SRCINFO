@@ -1,7 +1,7 @@
 pkgbase = memebox
 	pkgdesc = Manage and trigger media in OBS as a browser source
 	pkgver = 2022.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/negue/meme-box
 	arch = any
 	license = AGPL3
@@ -13,6 +13,6 @@ pkgbase = memebox
 	source = memebox.sh
 	b2sums = 707e4104a583a927d286845518bf56a7cee6b5cf6606f2611704ee960d9e9dab7be1614777a48d6e9f7ed14c41cc5e7d89a51d4446022b10a5b167099d9c9d7a
 	b2sums = 9a825fe91ed8dc7d8a55e6b72aa84ce498e62096f9fdd6c14710d7a173d9ea722a2aa3883e5e0afdb32957b95e15f54956785d177252862fe0a2d06ec940702f
-	b2sums = 3a92fad92d82110ace6e77f4486d6336d5c25a7e309990588d687956e05a07446cf7058e3e4211cc44370d2548f14568ec6ecc2fb57253763c6285cbe0b2b5bf
+	b2sums = 52807ca9528ed2405c5c4f2da8cfec73d99e4023908934a99c7d12b7a921e28fe79de02176a1e43a52d6c6c1376657b0558cae76bdb43b327e7345cc7cae95af
 
 pkgname = memebox
