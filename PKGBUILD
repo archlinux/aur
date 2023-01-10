@@ -1,15 +1,15 @@
 # Maintainer: Hu3rror <hu3rror@protonmail.com>
 
 pkgname=animationgarden-bin-dev
-pkgver=2.0.0
+pkgver=2.0.0.beta04
 pkgrel=1
 pkgdesc="Desktop application for Animation Garden."
 arch=('x86_64')
 url="https://github.com/Him188/animation-garden-desktop"
 license=('GPL')
 depends=('expat' 'util-linux-libs' 'xdg-utils' 'zlib')
-source=("https://github.com/Him188/animation-garden-desktop/releases/download/v2.0.0-beta02/AnimationGarden-2.0.0-debian-amd64.deb")
-sha512sums=('f3d2fd550470ee51f708e4fd10ece0c5a9e7484f013efcff505b85189a8202b5aa21f6113d15e11d1e1a0db4a6064e2bab1dabc8da82cfc67b4527113f6d5de3')
+source=("https://github.com/Him188/animation-garden-desktop/releases/download/v2.0.0-beta04/AnimationGarden-2.0.0-beta04-debian-amd64.deb")
+sha512sums=('9139a88e732b66808254ff4a338852b42e8a7a3e0bd134776eb7f65d0431295d8f297d1048f4d2fef12660d22796598ffaf432d19a65fd22e9c1743b2a87d3f4')
 conflicts=(animationgarden-bin)
 provides=(animationgarden-bin)
 
