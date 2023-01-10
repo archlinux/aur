@@ -2,15 +2,16 @@
 
 pkgname=openra-ca-git
 _pkgname=${pkgname/-git}
-pkgver=1136.git.54593c6
+pkgver=2473.git.7fb6d71
 pkgrel=1
 pkgdesc="A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods"
-arch=('any')
+arch=(x86_64)
 url="https://github.com/Inq8/CAmod"
 license=('GPL3')
 install=openra-ca.install
-depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
-         'desktop-file-utils' 'xdg-utils' 'zenity')
+depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'gtk-update-icon-cache' 
+         'libaccounts-glib' 'libibus' 'libblockdev' 'libgexiv2'
+         'desktop-file-utils' 'xdg-utils' 'zenity' 'python-gobject')
 makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-ca')
 options=(!strip)
@@ -19,7 +20,7 @@ source=("git+${url}.git"
 "openra-ca.appdata.xml"
 "openra-ca.desktop")
 md5sums=('SKIP'
-         'bdab27df863114bb7447839b9a75c0cf'
+         'f13888474aeeb31acbe019d10d3d644c'
          '1fcf493eabd3fbd6d0ccd387ecc446e6'
          'fede5894ebe787ad39d8bdaac2efdc56')
 
@@ -33,33 +34,37 @@ pkgver() {
 prepare() {
     cd $srcdir/CAmod
     dos2unix *.md
+    printf "Success in converting docs...\n"
 }
 
 build() {
     cd $srcdir/CAmod
-    make version VERSION="${pkgver}"
     make
+    make version VERSION="${pkgver}"
+    printf "Success in setting version\n" 
 }
 
 package() {
     cd $srcdir/CAmod
-    mkdir -p $pkgdir/usr/{lib/openra-ca/mods,bin,share/pixmaps,share/doc/packages/openra-ca,share/applications,share/appdata}
-    install -dm775 $pkgdir/var/games/openra-ca
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll,*.dll.config,'global mix database.dat',launch*.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ca
-    cp -r mods/ca $pkgdir/usr/lib/openra-ca/mods
-    cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ca/mods
-    install -Dm755 $srcdir/openra-ca $pkgdir/usr/bin/openra-ca
-    cp -r $srcdir/openra-ca.appdata.xml $pkgdir/usr/share/appdata/openra-ca.appdata.xml
-    cp -r README.md $pkgdir/usr/share/doc/packages/openra-ca/README.md
-    cp -r packaging/artwork/icon_512x512.png $pkgdir/usr/share/pixmaps/openra-ca.png
-
-    for i in 16x16 32x32 48x48 64x64 128x128 256x256 512x512
-    do
-         install -Dm644 packaging/artwork/icon_${i}.png $pkgdir/usr/share/icons/hicolor/$i/apps/%{name}.png
+    mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/${_pkgname},share/applications,share/appdata}
+    install -dm775 $pkgdir/var/games/${_pkgname}
+    cp -r engine/* $pkgdir/usr/lib/${_pkgname}
+    cp -r mods/ca $pkgdir/usr/lib/${_pkgname}/mods
+    cp -r mod.config $pkgdir/usr/lib/${_pkgname}
+    sed -i -e "s|./engine\"|/usr/lib/${_pkgname}\"|g" $pkgdir/usr/lib/${_pkgname}/mod.config
+    cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
+    cp -r engine/bin/{*.dll*,*.so} $pkgdir/usr/lib/${_pkgname}
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,'global mix database.dat',VERSION} $pkgdir/usr/lib/${_pkgname}
+    install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
+    cp -r $srcdir/../${_pkgname}.appdata.xml $pkgdir/usr/share/appdata/${_pkgname}.appdata.xml
+    cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
+    install -Dm644 $srcdir/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
+    for length in 16 32 48 64 128 256 512; do
+      size="${length}x${length}"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
-
-    install -Dm644 $srcdir/openra-ca.desktop $pkgdir/usr/share/applications/openra-ca.desktop
-    rm $pkgdir/usr/lib/openra-ca/*.sh
+    install -Dm644 packaging/artwork/icon_512x512.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+    rm -rf $pkgdir/usr/lib/openra-rv/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,Makefile,.sh,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
+    rm -rf $pkgdir/usr/lib/openra-rv/{mods/{all,ra,cnc,d2k,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop}
 }
-
-
