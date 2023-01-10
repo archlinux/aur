@@ -2,6 +2,6 @@
 Comment=Gowin EDA IDE
 Encoding=UTF-8
 Exec=/opt/gowin-eda-ide/bin/gw_ide
-Icon=gowin-eda-edu-ide
+Icon=gowin-eda-ide
 Name=Gowin EDA IDE
 Type=Application

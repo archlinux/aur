@@ -2,18 +2,20 @@
 
 pkgbase=gowin-eda
 pkgver=1.9.8.10
-pkgrel=1
+pkgrel=2
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
 # url="https://www.gowinsemi.com/en/support/home/"
 license=('unknown')
 source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
+        "${pkgbase}.png"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
 sha256sums=('eb11013c4b6a440c16caff8f785b5a93532898a7ecdfef6dbeddea46edeb9bc3'
-            'b508c7f10382a3ada34ee1797163c448559b1993898422f096c5381fd4abc7a6'
-            '8f0a73964ae79785a5d79983887e436f6fce5626abc5ced5c7a300f67d90f2bc')
+            '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
+            '607b4dbfe204859a8946789747992fa93e9e41692f3729c2132409bac92e01f9'
+            '13ada31589ca39eecf95dc3516f5db179ce53ac0ffbd140879f346d0d90a9829')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${pkgname}/{} \;
@@ -32,6 +34,7 @@ _package-ide() {
   pkgdesc="Gowin EDA IDE - ${_desc}"
   depends=('fontconfig' 'freetype2')
   provides=("gowin-eda-ide" "gowin-ide")
+  backup=("opt/${pkgname}/bin/gwlicense.ini")
   
   cd ${srcdir}/IDE
   
@@ -48,9 +51,13 @@ _package-ide() {
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/prim{itive.xml,_syn.vhd,_syn.v}
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/qt.conf
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/programmer.json
+  chmod 666 ${pkgdir}/opt/${pkgname}/bin/gwlicense.ini
 
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
+
+  #icon
+  install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   _install_exec gw_sh gw_ide
 
@@ -61,6 +68,11 @@ _package-ide() {
   # https://bbs.archlinux.org/viewtopic.php?id=251445
   # https://mathematica.stackexchange.com/questions/189306/cant-launch-mathematica-11-on-fedora-29
   rm -f ${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6
+
+  # fix IDE hardcode path of Programmer
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gao_{sh,analyzer}
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/plugins/ide/lib{StartPage,FpgaPrj}.so
+  ln -s /opt/${pkgbase}-programmer ${pkgdir}/opt/${pkgname}/Programmer
 }
 
 _package-programmer() {
@@ -86,10 +98,14 @@ _package-programmer() {
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
 
-  chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
+  #icon
+  install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+
+  # chmod 4755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
+  
 
   # suit for IDE hardcode path of Programmer
-  ln -s /opt/${pkgname} ${pkgdir}/opt/Programmer
+  # ln -s /opt/${pkgname} ${pkgdir}/opt/Programmer
 }
 
 pkgname=("${pkgbase}-ide" "${pkgbase}-programmer")
