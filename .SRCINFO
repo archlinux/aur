@@ -9,11 +9,12 @@ pkgbase = lossywav-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	makedepends = python
 	depends = gcc-libs
 	provides = lossywav
 	conflicts = lossywav
 	source = lossywav::git+https://github.com/Sound-Linux-More/lossywav-for-linux
+	source = makefile-ldflags.diff
 	md5sums = SKIP
+	md5sums = 65713062cfd510acfcd06ce5ee4b503c
 
 pkgname = lossywav-git

@@ -10,14 +10,16 @@ _url_posix_old="https://github.com/MoSal/lossywav-for-posix"
 url="https://github.com/Sound-Linux-More/lossywav-for-linux"
 license=('GPL')
 depends=(gcc-libs)
-makedepends=('git' 'python')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=(${provides[@]})
 source=(
   "$_pkgname::git+$url"
+  makefile-ldflags.diff
 )
 md5sums=(
   'SKIP'
+  '65713062cfd510acfcd06ce5ee4b503c'
 )
 
 pkgver() {
