@@ -3,11 +3,14 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
+makedepends=(
+    'signify'
+)
 depends=(
     'libxft'
     'libxt'
@@ -32,8 +35,11 @@ conflicts=(
     'urxvt-resize-font'
     'urxvt-perls'
 )
+_archive="$_pkgname-$pkgver"
 source=(
-    http://dist.schmorp.de/$_pkgname/$_pkgname-$pkgver.tar.bz2
+    "http://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2"
+    "$_archive.tar.bz2.signature::http://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2.sig"
+    'dist.schmorp.de.pub::http://dist.schmorp.de/signing-key.pub'
     'urxvt.desktop'
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
@@ -44,6 +50,8 @@ source=(
     'improve-font-rendering.patch'
 )
 b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a247907878639db5fac3dcd3b6be3d839347787bcf08ca602ae246607f750b'
+        '38dd570d54d55ed6f826c12ac5bc3e47adec0132ac1dcfe5e4721d444492ff000dde15047b2a06ab9691c870555f0de17593ae3a33ecda996e06465a951321d7'
+        '6d6bd90b77e67ccb876f0c78c710c9e1b82767a19aeadaac9310e5628b791586fc8475ad5179eaa2fee386ae80aae916226167ec92c5af309bba4052238326c8'
         'eff2407a1551d57d7a9e9000a9bad760afd4d9b7a0fa15c375ec821d185561a99c3761319c1cbed5cdd512b39faf339fb78387220eae161c9a33a859fc4733d2'
         '2c4bc054e89b1bbd9ebce18cee64728b5ebb3aa915ce3ec7957e1a95da34c26ea757d324041b6c65db5902b60d0009176ff6aabc5093c5b2665c4b6997a3f60f'
         '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
@@ -52,10 +60,12 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '03c250e1aedbe50924b34cc9261921b3bf7af6786ce3fea61cbcf145b79b6eb4e101e63fa08f00baaabe530bb164e6bcfd4c04ddbacf0dcc28fdebef0519b9e0'
         '8d360d8b0cd274b63f3c0c7651b358cf94aa71c39adb15ca5d8f3c8a05d930bf96ac559e6b7eceb6b3706a2caa3bf7002f75f596a1efdb5e54e43d20b9341590'
         '77b2a764558660cbc16325eacca3a2b17d3071d59c7a956a43c796a8d9374f5d202012e13a50ef4d978e2826009d9f1a93fb118d97e27e4cfbf0569e1d781082')
-_dir="$_pkgname-$pkgver"
 
 prepare() {
-    cd $_dir
+    mv -v "$_archive.tar.bz2.signature" "$_archive.tar.bz2.sig"
+    signify -V -p "dist.schmorp.de.pub" -m "$_archive.tar.bz2"
+
+    cd "$_archive"
 
     ################################################################
     #                                                              #
@@ -78,7 +88,7 @@ prepare() {
 }
 
 build() {
-    cd $_dir
+    cd "$_archive"
 
     ################################################################
     #                                                              #
@@ -132,7 +142,7 @@ package() {
     # install perl script keyboard-select (https://github.com/muennich/urxvt-perls)
     install -Dm 644 keyboard-select "$pkgdir/usr/lib/urxvt/perl/keyboard-select"
 
-    cd $_dir
+    cd "$_archive"
 
     # install terminfo
     export TERMINFO="$pkgdir/usr/share/terminfo"
