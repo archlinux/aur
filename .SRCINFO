@@ -1,6 +1,6 @@
 pkgbase = obs-gstreamer
 	pkgdesc = An OBS Studio source plugin to feed GStreamer launch pipelines into OBS Studio.
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	epoch = 1
 	url = https://obsproject.com/forum/resources/obs-gstreamer.696/
@@ -14,7 +14,7 @@ pkgbase = obs-gstreamer
 	depends = gst-plugins-base-libs
 	optdepends = gstreamer-vaapi: GStreamer VAAPI encoder
 	options = debug
-	source = git+https://github.com/fzwoch/obs-gstreamer#tag=v0.3.5
+	source = git+https://github.com/fzwoch/obs-gstreamer#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = obs-gstreamer
