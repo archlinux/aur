@@ -2,7 +2,7 @@
 
 pkgname='waydroid-settings'
 pkgver=22.1217
-pkgrel=7
+pkgrel=8
 makedepends=('blueprint-compiler' 'meson')
 depends=('vte4' 'waydroid' 'webkit2gtk-5.0')
 arch=('any')

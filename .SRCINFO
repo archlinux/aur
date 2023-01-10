@@ -1,7 +1,7 @@
 pkgbase = waydroid-settings
-	pkgdesc = GTK4 app written in Python to control Waydroid settings
+	pkgdesc = A GTK4 app to control Waydroid settings
 	pkgver = 22.1217
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
 	makedepends = blueprint-compiler
