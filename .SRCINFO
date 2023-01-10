@@ -1,0 +1,15 @@
+pkgbase = ps2-xz
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP Sony Playstation® 2 videogame system port).
+	pkgver = v5.4.0
+	pkgrel = 1
+	url = https://github.com/xz-mirror/xz
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-xz::git+https://github.com/xz-mirror/xz#commit=b69da6d4bb6bb11fc0cf066920791990d2b22a06
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-xz
