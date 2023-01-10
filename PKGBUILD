@@ -8,7 +8,7 @@ url='https://github.com/nvie/vim-flake8'
 depends=('vim>=8' 'flake8')
 groups=('vim-plugins')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("a4208478f9754ef2d188a51e3262c449ef16b48fc0208425795d71c304118c129ae20a723fff96863291bae66237f1479a591cc23e5ec90222e0614d2dcccce9")
+sha512sums=("c29cfc00e4fd94128be02e003116647819cd3b39916527b70a7684c19ef4184bce1c1556051fc269bde4696a98b752fb7b4e081c2aac46cdcdfdf35735ec76b0")
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
