@@ -1,12 +1,12 @@
 pkgbase = v2ray-china-list
 	pkgdesc = V2Ray deployment of felixonmars/dnsmasq-china-list project
-	pkgver = 20230109002730
+	pkgver = 20230110003040
 	pkgrel = 1
 	url = https://github.com/dctxmei/v2ray-china-list
 	arch = any
 	license = GPL3
 	makedepends = go
-	source = v2ray-china-list-20230109002730.tar.gz::https://github.com/dctxmei/v2ray-china-list/archive/20230109002730.tar.gz
-	sha256sums = 86e8c8133521a11fabd0a7fd26bf8051c04de62939e7835354d19d6267402c9f
+	source = v2ray-china-list-20230110003040.tar.gz::https://github.com/dctxmei/v2ray-china-list/archive/20230110003040.tar.gz
+	sha256sums = b7a74fa8d6a723050c19077f6f036aeee8589373ad3213e78bfaa9e4b79aeb94
 
 pkgname = v2ray-china-list
