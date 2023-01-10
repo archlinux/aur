@@ -1,6 +1,59 @@
 Version history
 ===============
 
+
+0.10.4
+------
+
+Replay insert mode is a new user option. By default, this is off. When it's
+off, assignments during replay cut the replay, then add the assignment, as
+they have always done. If checked, assignments cut only the future of the same
+lix: All assignments to that same lix, and nukes. The replay will keep
+assignments to different lix. You must check this in the options and then it's
+on permanently during play. You can't toggle it during play even though
+that would be useful. Click air to cancel the global future as usual.
+
+The replay tweaker will show nuke actions as "Nuke" in the line. Before, it
+tried to interpret the line as an invalid skill line and showed "Not", the
+first three letters of "Nothing".
+
+Loading a savestate always restores the savestate's replay, unless its past is
+equal to your replay's past and its future is a subset of your replay's
+future. Before, loading a savestate didn't restore the savestate's replay if
+its past was equal to your replay's past, regardless of future, and that made
+it harder to treat the savestating functionality as a stash for one replay.
+
+Radio-button options show a filled circle in the chosen box, not a checkmark.
+
+When you haven't bound a hotkey to one of the functionalities of a two-task
+button such as fast-forward, the button still showed a slash "/" at the start
+or end of its hotkey reminder. Now, the slash only appears when both functions
+have hotkeys.
+
+Fixed backroutes in lemforum: Alien Invasion: Thinner starting platform. All
+Aboard the Pain Train: Reduce steel in the central block. Down Among the Dead
+Lix: Move one platform near the bottom, it still allows my backroute from
+2022-12-22. The Circular Ruins: Lower block below the half-column. 6 Gaps, 5
+Builders: Single builders can't cross two gaps anymore and you must stretch.
+Down Among the Dead Lix: Fix a backroute by moving a lower platform right
+and making it smaller for style. The Hotel in Hell: Expose the top-left
+squisher. Add laser beam to prevent building over that squisher.
+
+Improved lemforum levels: Recycling Plant: Removed a single leaf to reduce
+precision when using the flinging gadget. Put Your Lix on Ice: Final miner
+stops more easily by herself. Climb to Freedom: Added a climbable segment to
+the rightmost climber-turning obstacle to show that climbing is a permanent
+skill. This is a Stickup: Moved steel to reduce precision in initial crowd
+control. Minimalism, 100% Built by Lixes: Removed some of the unused empty
+space. Theresa Falls Up the Stairs: Corrected the lighting of the top-right
+steel. Alien Abduction: Match graphical style of the fixed Alien Invasion.
+
+Reordered lemforum levels: Upranked Ferry Tale and You'll Get Over It from
+Lovely to Quirky. Downranked 6 Gaps, 5 Builders and Time to Change the Road
+from Quirky to Lovely. Reordered several levels within Quirky.
+
+
+
 0.10.3
 ------
 
