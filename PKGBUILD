@@ -2,11 +2,11 @@
 
 _use_suffix=1
 pkgver=21.3.4
-_commit=ba93dc3c83963826b9210fe82ebcfaca2459557a
+_commit=bd78e092d43bc099960490cf93251919ad4eaa74
 _chromiumver=106.0.5249.199
 _gcc_patchset=2
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
