@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=thunderbird-extension-send-later-git
-pkgver=9.0.10.r0.g066a766
+pkgver=9.2.8.r0.g28e8e60
 pkgrel=1
 pkgdesc=" Schedule messages to be sent at a specific time"
 arch=('any')
