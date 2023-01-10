@@ -1,6 +1,6 @@
 pkgbase = stor-age
 	pkgdesc = show aging of directories
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/idiv-biodiversity/stor-age
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stor-age
 	license = GPL
 	makedepends = cargo
 	depends = gcc-libs
-	source = stor-age-0.6.1.tar.gz::https://github.com/idiv-biodiversity/stor-age/archive/v0.6.1.tar.gz
-	md5sums = 02792a66be1789f7c9f0bf16ab16b4a2
+	source = stor-age-0.6.2.tar.gz::https://github.com/idiv-biodiversity/stor-age/archive/v0.6.2.tar.gz
+	md5sums = 9d9c67a2a64f1d3bcf4db116bf3ea7ce
 
 pkgname = stor-age
