@@ -1,0 +1,15 @@
+pkgbase = ps2-libyaml
+	pkgdesc = YAML 1.1 library (Sony Playstation® 2 videogame system port).
+	pkgver = v0.2.5
+	pkgrel = 1
+	url = https://github.com/yaml/libyaml
+	arch = x86_64
+	license = MIT
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-libyaml::git+https://github.com/yaml/libyaml#commit=2c891fc7a770e8ba2fec34fc6b545c672beb37e6
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-libyaml
