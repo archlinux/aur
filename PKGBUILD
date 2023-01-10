@@ -4,7 +4,7 @@
 
 pkgname=pyradio
 pkgver=0.8.9.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="https://github.com/coderholic/pyradio"
@@ -25,7 +25,7 @@ package() {
 
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.{html,md} build.{html,md} -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 pyradio{,_rb,_server}.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 devel/pyradio.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 devel/pyradio.png -t "$pkgdir/usr/share/icons"
 
