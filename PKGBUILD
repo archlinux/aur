@@ -5,12 +5,12 @@ pkgname=memebox
 _pkgname=meme-box
 pkgver=2022.1.1
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and trigger media in OBS as a browser source"
 arch=('any')
 url="https://github.com/negue/meme-box"
 license=('AGPL3')
-depends=('electron20')
+depends=('electron')
 makedepends=('jq' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz"
         "$pkgname.desktop"

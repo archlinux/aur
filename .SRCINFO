@@ -1,13 +1,13 @@
 pkgbase = memebox
 	pkgdesc = Manage and trigger media in OBS as a browser source
 	pkgver = 2022.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/negue/meme-box
 	arch = any
 	license = AGPL3
 	makedepends = jq
 	makedepends = npm
-	depends = electron20
+	depends = electron
 	source = memebox-2022.1.1.tar.gz::https://github.com/negue/meme-box/archive/2022.1.1.tar.gz
 	source = memebox.desktop
 	source = memebox.sh
