@@ -1,0 +1,15 @@
+pkgbase = alpine-chroot-install
+	pkgdesc = Install Alpine Linux in chroot with a breeze
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/alpinelinux/alpine-chroot-install
+	arch = any
+	license = GPL2
+	depends = coreutils
+	depends = sh
+	optdepends = qemu-user: for emulation of different architecture
+	optdepends = qemu-user-binfmt-provider: for emulation of different architecture
+	source = https://raw.githubusercontent.com/alpinelinux/alpine-chroot-install/v0.14.0/alpine-chroot-install
+	sha1sums = ccbf65f85cdc351851f8ad025bb3e65bae4d5b06
+
+pkgname = alpine-chroot-install
