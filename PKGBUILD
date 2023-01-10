@@ -17,7 +17,7 @@ _pkgdesc=("Extremely Fast Compression algorithm "
           "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
-license=('custom')
+license=('GPL2')
 _ns="${_pkg}"
 _github="https://github.com/${_ns}"
 _local="ssh://git@127.0.0.1:/home/git"
