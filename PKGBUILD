@@ -2,8 +2,8 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3 xguipro-gtk4)
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=0
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
 url="https://github.com/HVML/xGUI-Pro"
@@ -20,15 +20,13 @@ optdepends=('purc: The prime HVML interpreter for C Language.'
 backup=()
 options=()
 install=
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
-        "fix-ver-0.6.1.patch")
-sha256sums=('bf24d4aa9110d2e7b674256ea89a359ef87c9f0d44aefeb9457ac732a281836a'
-            '62638afcf82751985ee8faff07a820bd60b1b80a1475e820f63cbd1d3e0b814a')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
+sha256sums=('af8e68d269901884987326f41c318e2def786d49ab1794780d86346b5331f25e')
 
-prepare() {
-    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
-    patch -p1 < ../fix-ver-0.6.1.patch
-}
+# prepare() {
+#     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+#     patch -p1 < ../fix-ver-0.6.1.patch
+# }
 
 package_xguipro-gtk3() {
     pkgdesc+=" (gtk3)"
