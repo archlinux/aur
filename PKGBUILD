@@ -1,7 +1,7 @@
 # Maintainer: Charles Wang <charleszw16@gmail.com>
 
 pkgname=sddm-theme-corners-git
-pkgver=r22.ded1bcc
+pkgver=r27.ad3a83c
 pkgrel=1
 pkgdesc="Theme for SDDM that puts stuff on the corners of the screen"
 arch=('any')
