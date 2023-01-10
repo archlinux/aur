@@ -50,7 +50,7 @@ prepare() {
                  "s~\$ENV{PS2SDK}/common/include~${_sdk_include}~g"
                  "s~\$ENV{PS2DEV}/ee/ee~~g"
                  "s~\$ENV{PS2DEV}/ee~~g"
-                 "s~\$ENV{PS2DEV}/ports~${pkgdir}/usr/ports~g"
+                 "s~\$ENV{PS2DEV}/ports~${pkgdir}/usr/${_ee}~g"
                  "s~\$ENV{PS2DEV}~~g"
                  "s~\$ENV{PS2SDK}/ports~~g"
                  "s~\$ENV{PS2SDK}~~g"
@@ -66,7 +66,7 @@ prepare() {
 build() {
   local _cmake_opts=(-Wno-dev
                      -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_platform}-ports/ps2dev.cmake"
-                     -DCMAKE_INSTALL_PREFIX="/usr/ports"
+                     -DCMAKE_INSTALL_PREFIX="/usr/${_ee}"
                      -DBUILD_SHARED_LIBS=OFF
                      -DLDFLAGS="-L${_ee_lib}"
                      -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON)
