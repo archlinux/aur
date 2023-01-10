@@ -1,0 +1,15 @@
+pkgbase = ps2-libpng
+	pkgdesc = A C library for reading, creating, and modifying zip archives (Sony Playstation® 2 videogame system port).
+	pkgver = v1.6.37
+	pkgrel = 1
+	url = https://github.com/glennrp/libpng
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-libpng::git+https://github.com/glennrp/libpng#commit=a40189cf881e9f0db80511c382292a5604c3c3d1
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-libpng
