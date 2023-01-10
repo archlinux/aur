@@ -1,39 +1,44 @@
-# Maintainer: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+# Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 _pkgname=lossywav
 pkgname=$_pkgname-git
-pkgver=1.4.2p.r1.r0.gd110728
+pkgver=1.4.2p.r1.r6.g8780b67
 pkgrel=1
-pkgdesc="An attempt to port lossyWAV to POSIX."
+pkgdesc="lossy audio pre-processor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/MoSal/lossywav-for-posix"
+_url_windows="https://sourceforge.net/projects/lossywav/"
+_url_posix_old="https://github.com/MoSal/lossywav-for-posix"
+url="https://github.com/Sound-Linux-More/lossywav-for-linux"
 license=('GPL')
-depends=('fftw')
+depends=(gcc-libs)
 makedepends=('git' 'python')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/MoSal/lossywav-for-posix.git")
-md5sums=('SKIP')
+conflicts=(${provides[@]})
+source=(
+  "$_pkgname::git+$url"
+)
+md5sums=(
+  'SKIP'
+)
 
 pkgver() {
- cd "$_pkgname"
- git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
- cd "$_pkgname"
- ./waf configure \
-   --prefix="$pkgdir/usr" \
-   --enable-fftw3
+  cd "$srcdir/$_pkgname"
+  patch -Np1 -i "$srcdir/makefile-ldflags.diff"
 }
 
 build() {
- cd "$_pkgname"
- ./waf build
+  cd "$srcdir/$_pkgname"
+  make
 }
 
 package() {
- cd "$_pkgname"
- ./waf install --destdir=/
+  cd "$srcdir/$_pkgname"
+  install -Dm0755 lossywav-static "$pkgdir/usr/bin/lossywav"
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
