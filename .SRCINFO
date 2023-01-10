@@ -1,0 +1,21 @@
+pkgbase = ch9344-dkms
+	pkgdesc = Kernel module for CH9344/CH348
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://www.wch.cn/downloads/CH9344SER_LINUX_ZIP.html
+	arch = any
+	license = unknown
+	makedepends = unzip
+	depends = dkms
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	conflicts = ch9344
+	noextract = CH9344SER_LINUX-1.9.ZIP
+	source = CH9344SER_LINUX-1.9.ZIP::https://www.wch.cn/downloads/file/386.html
+	source = dkms.conf
+	source = fix-incompatible-pointer-types.patch
+	sha256sums = 2eb9bfb6a4e61834dc89565ef7f7b05abba77299ee05c98103a0eb85f2fb50e2
+	sha256sums = ad4c67e0c74661d19b74872f98254184d4b04e32e4c57b338a84fbcefa4c721f
+	sha256sums = 70fce0063774e6a9df1c73666b352723aeea5f37371dfaaf551926b80256b7a8
+
+pkgname = ch9344-dkms
