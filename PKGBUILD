@@ -3,7 +3,7 @@
 # Debian Upstream Maintainer: IOhannes m zmölnig <umlaeute at debian.org>
 
 pkgname=pd-lua-git
-pkgver=0.11.0.r9.gc19837a
+pkgver=0.11.1.r0.g7dcbefd
 pkgrel=1
 epoch=1
 pkgdesc="Lua bindings for Pd"
@@ -27,13 +27,11 @@ pkgver() {
 }
 
 build() {
-     cd $srcdir/pd-lua
-     make LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS"
+    make LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" -C pd-lua
 }
 
 package() {
-     cd $srcdir/pd-lua
-     make DESTDIR="$pkgdir" prefix=/usr install
-     # docs
-     install -vDm 644 README -t "$pkgdir/usr/share/doc/$pkgname/"
+    cd $srcdir/pd-lua
+    make DESTDIR="$pkgdir" PDLIBDIR=/usr/lib/pd/extra prefix=/usr install
+    install -vDm 644 README -t "$pkgdir/usr/share/doc/$pkgname/"
 }
