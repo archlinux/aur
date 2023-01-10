@@ -1,17 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pook
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Versatile and expressive HTTP traffic mocking and testing made simple in Python"
 url="https://github.com/h2non/pook"
 license=('MIT')
 arch=('any')
 depends=('python-furl' 'python-jsonschema' 'python-xmltodict')
 makedepends=('python-setuptools')
-checkdepends=('python-nose' 'python-pytest' 'python-requests')
+checkdepends=('python-nose' 'python-pytest' 'python-aiohttp' 'python-requests')
 source=("https://github.com/h2non/pook/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('c471e85620625522591937e0828a098efd8ddcad9c55fa6a7532131f63891976d0cb68d23dd5c380b05520d6dea24080d2cb7203ece7f158b4b7c1ec0cfff2bd')
+sha512sums=('9c34bde9180a5545abcaed3eb675dae8f316886073b9e8f3f0e6b717351ea693a143d27a57f03f6364d3a29c9673de6563a0bd5814eae1d7774f97534001b250')
 
 build() {
   cd pook-$pkgver
