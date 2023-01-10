@@ -52,7 +52,6 @@ package() {
     cp -r mod.config $pkgdir/usr/lib/${_pkgname}
     sed -i -e "s|./engine\"|/usr/lib/${_pkgname}\"|g" $pkgdir/usr/lib/${_pkgname}/mod.config
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
-    cp -r engine/bin/{*.dll*,*.so} $pkgdir/usr/lib/${_pkgname}
     cp -r engine/{glsl,lua,AUTHORS,COPYING,'global mix database.dat',VERSION} $pkgdir/usr/lib/${_pkgname}
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
     cp -r $srcdir/../${_pkgname}.appdata.xml $pkgdir/usr/share/appdata/${_pkgname}.appdata.xml
