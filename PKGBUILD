@@ -3,7 +3,7 @@ _pkgname=openra-yr
 pkgver=468.git.51bcf18
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
-arch=('any')
+arch=(x86_64)
 url="https://github.com/cookgreen/Yuris-Revenge"
 license=('GPL3')
 install=openra-yr.install
@@ -35,14 +35,13 @@ prepare() {
 
 build() {
     cd $srcdir/Yuris-Revenge
-    make version VERSION="${pkgver}"
     make
+    make version VERSION="${pkgver}"
 }
 
 package() {
     cd $srcdir/Yuris-Revenge
     mkdir -p $pkgdir/usr/{lib/openra-yr/mods,bin,share/pixmaps,share/doc/packages/openra-yr,share/applications,share/appdata}
-    install -dm775 $pkgdir/var/games/openra-yr
     cp -r engine/* $pkgdir/usr/lib/openra-yr
     cp -r mods/yr $pkgdir/usr/lib/openra-yr/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-yr/mods
@@ -52,8 +51,8 @@ package() {
     cp -r mods/yr/icon.png $pkgdir/usr/share/pixmaps/openra-yr.png
     install -Dm644 $srcdir/openra-yr.desktop $pkgdir/usr/share/applications/openra-yr.desktop
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
-      size="${size}x${size}"
+    for length in 16 32 48 64 128 256; do
+      size="${length}x${length}"
       cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
     rm -rf $pkgdir/usr/lib/openra-yr/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
