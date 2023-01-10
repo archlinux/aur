@@ -32,22 +32,10 @@ source=("${pkgname}::git+${_github}/${_pe}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${_platform}-${_pe}#commit=${_branch}")
 sha256sums=('SKIP')
 
-_n_cpu="$(getconf _NPROCESSORS_ONLN)"
-_make_opts=(-j "${_n_cpu}")
-
-ldflags=(${LDFLAGS}
-         -Bstatic
-         -s)
-
-
 # shellcheck disable=SC2154
 build() {
   local _target
 
-  local cflags=(-static
-                -Wno-implicit-function-declaration)
-
-  export CFLAGS=""
   export LDFLAGS=""
   export LD_LIBRARY_PATH=""
 
@@ -64,18 +52,18 @@ package() {
   local _target
   local _include="${pkgdir}/usr/${target}/include/${_pe}"
   local _lib="${pkgdir}/usr/${target}/lib/${_pe}"
-  # mkdir -p "${pkgdir}/${_pe}-include"
-  # mkdir -p "${pkgdir}/${_pe}-lib"
+  mkdir -p "${pkgdir}/${_pe}-include"
+  mkdir -p "${pkgdir}/${_pe}-lib"
   cd "${srcdir}/${pkgname}"
   for _target in "${target}"; do
     make -C platform/ps2 DESTDIR="${pkgdir}/usr/${target}" "${_make_opts[@]}" install
-    # mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/${_pe}-include"
-    # mkdir -p "${_include}"
-    # mv "${pkgdir}/${_pe}-include/"* "${_include}"
-    # mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/${_pe}-lib"
-    # mkdir -p "${_lib}"
-    # mv "${pkgdir}/${_pe}-lib/"* "${_lib}"
-    # cd ..
-    # rm -rf "${pkgdir}/${_pe}-include" "${pkgdir}/${_pe}-lib"
+    mv "${pkgdir}/usr/${target}/include/"* "${pkgdir}/${_pe}-include"
+    mkdir -p "${_include}"
+    mv "${pkgdir}/${_pe}-include/"* "${_include}"
+    mv "${pkgdir}/usr/${target}/lib/"* "${pkgdir}/${_pe}-lib"
+    mkdir -p "${_lib}"
+    mv "${pkgdir}/${_pe}-lib/"* "${_lib}"
+    cd ..
+    rm -rf "${pkgdir}/${_pe}-include" "${pkgdir}/${_pe}-lib"
   done
 }
