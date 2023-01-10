@@ -1,7 +1,7 @@
 # Maintainer: Charles Wang <charleszw16@gmail.com>
 
 pkgname=sddm-theme-corners-git
-pkgver=r27.ad3a83c
+pkgver=r28.b0d1b5a
 pkgrel=1
 pkgdesc="Theme for SDDM that puts stuff on the corners of the screen"
 arch=('any')
@@ -14,7 +14,7 @@ source=('git+https://github.com/aczw/sddm-theme-corners.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"
+    cd "${srcdir}/sddm-theme-corners"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
