@@ -1,5 +1,5 @@
 pkgname=gospt
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Spotify TUI And CLI written in Go'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://gitea.asdf.cafe/abs3nt/$pkgname"
 license=('GPL')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('835a6bf6201fa0aa865755734f4131020610f4e33491f756d6ed368bf5e4c194')
+sha256sums=('c96d4f9575c91f69a80e9ae12c916a67acc7cf5921a06cb8d8c222417e38ac12')
 
 prepare(){
   cd "$pkgname"
@@ -33,6 +33,4 @@ package() {
   install -Dm644 build/gospt_zsh "$pkgdir"/usr/share/zsh/site-functions/_gospt
   install -Dm644 build/gospt_bash "$pkgdir"/usr/share/bash-completion/completions/gospt
   install -Dm644 build/gospt_fish "$pkgdir"/usr/share/fish/vendor_completions.d/gospt.fish
-
-
 }
