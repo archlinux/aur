@@ -2,7 +2,7 @@
 
 _basename=libnice
 pkgname=lib32-libnice
-pkgver=0.1.19
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="An implementation of the IETF's draft ICE (for p2p UDP data streams) (32-bit)"
 url="https://nice.freedesktop.org"
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(lib32-gstreamer lib32-gupnp-igd libnice)
 makedepends=(git meson)
-_commit=64ef27e4847016568985f0f3c1fe4a4fb632e408 # tags/0.1.19^0
+_commit=3d9cae16a5094aadb1651572644cb5786a8b4e2d # tags/0.1.21^0
 source=("git+https://gitlab.freedesktop.org/libnice/libnice.git#commit=$_commit")
 sha256sums=('SKIP')
 
