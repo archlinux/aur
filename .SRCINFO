@@ -1,4 +1,4 @@
-pkgbase = python2-pycifrw
+pkgbase = python-pycifrw
 	pkgdesc = CIF/STAR file support for Python
 	pkgver = 4.4.5
 	pkgrel = 1
