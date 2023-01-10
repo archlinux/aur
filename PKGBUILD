@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNeXML
-_pkgver=2.4.9
+_pkgver=2.4.10
 pkgname=r-${_pkgname,,}
-pkgver=2.4.9
-pkgrel=3
+pkgver=2.4.10
+pkgrel=1
 pkgdesc="Semantically Rich I/O for the 'NeXML' Format"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -40,7 +40,7 @@ optdepends=(
   r-xslt
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4dafea5c6c70d4dba73471aafa1ca6d35e37a80bb17a054f1f967562113b1ca0')
+sha256sums=('991e05126cd047857c7c3100492e1727d4fd197dceb5f4e5fdb83ab377396d16')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
