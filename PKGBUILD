@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=spruce
-pkgver=1.29.0
-pkgrel=2
+pkgver=1.30.0
+pkgrel=1
 pkgdesc='General purpose YAML/JSON merging tool'
 arch=('x86_64')
 url='https://github.com/geofffranks/spruce'
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('357515c5e516f70b644c8fe947105ade6bc30169981196d80305bb816df6753f')
+sha256sums=('8e370a85a2590b16b6b23eadad53b76b5783836f134e6b71f76fa9abe0e42091')
 
 prepare() {
   cd "$pkgname-$pkgver"
