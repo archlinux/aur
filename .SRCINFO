@@ -1,14 +1,14 @@
 pkgbase = jackrabbit
 	pkgdesc = A fully conforming implementation of the Content Repository for Java Technology API
-	pkgver = 2.20.7
+	pkgver = 2.20.8
 	pkgrel = 1
 	url = http://jackrabbit.apache.org/
 	arch = any
 	license = APACHE
 	depends = java-environment>=8
-	noextract = jackrabbit-standalone-2.20.7.jar
+	noextract = jackrabbit-standalone-2.20.8.jar
 	options = !strip
-	source = http://www.apache.org/dist/jackrabbit/2.20.7/jackrabbit-standalone-2.20.7.jar
-	sha512sums = 9a29125eb27de30db1dad187d0720b5299f1788484e6995d005238e51d7da84f8546a2c382cd5c38641ab7a766973859565917ae2fd5c5e46c9ff96238729cc0
+	source = http://www.apache.org/dist/jackrabbit/2.20.8/jackrabbit-standalone-2.20.8.jar
+	sha512sums = 409fe9be6dcaa6c8ea074e2f7e4f7d72888208a9d70376abd3769b4c0f742f905222f20b95166a56f028b0e5c14b7b644e969e58244bd68cb29c8d24e2a0d493
 
 pkgname = jackrabbit
