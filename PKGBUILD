@@ -2,8 +2,9 @@
 # Contributor: Jack O'Sullivan <jackos1998 at gmail dot com>
 
 pkgname=obs-gstreamer
-pkgver=0.4.0
+pkgver=0.3.5
 pkgrel=1
+epoch=1
 pkgdesc="An OBS Studio source plugin to feed GStreamer launch pipelines into OBS Studio."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://obsproject.com/forum/resources/obs-gstreamer.696/"
