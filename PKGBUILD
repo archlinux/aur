@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22963.cb903a7c7
+pkgver=r22989.2b534c285
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -129,6 +129,7 @@ build() {
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
+      -DYUZU_USE_QT_MULTIMEDIA=ON \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_QT_TRANSLATION=ON \
@@ -137,10 +138,7 @@ build() {
       -DBUILD_TAG=${pkgver} \
       -DTITLE_BAR_FORMAT_IDLE="yuzu | ${pkgver} {}" \
       -DTITLE_BAR_FORMAT_RUNNING="yuzu | ${pkgver} | {}" \
-      -DDYNARMIC_NO_BUNDLED_ROBIN_MAP=ON \
-      -DYUZU_USE_BUNDLED_OPUS=OFF \
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
-      -DYUZU_USE_BUNDLED_LIBUSB=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_TESTS=OFF \
       -DBUILD_TESTS=OFF \
