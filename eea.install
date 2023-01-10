@@ -139,7 +139,7 @@ post_install() {
 			groupadd -r -f $g
 		done
 
-		for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
+		for ug in eset-eea-licensed:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-econnd:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
 			if ! id "${ug%:*}" > /dev/null 2>&1; then
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			fi
@@ -196,7 +196,7 @@ post_install() {
 	# add current eula info into CE path AcceptedEulas
 	# esmc may have already modified this by policy, in that case it is locked, so
 	# ignore error here and leave esmc to manage this setting
-	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-BUS-STANDARD" --eula-version "2020.1" > /dev/null || true
+	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-PRODUCT-LG" --eula-version "3537.0.0" > /dev/null || true
 }
 
 post_upgrade() {
@@ -236,7 +236,7 @@ post_upgrade() {
 			groupadd -r -f $g
 		done
 
-		for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
+		for ug in eset-eea-licensed:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-econnd:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
 			if ! id "${ug%:*}" > /dev/null 2>&1; then
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			fi
@@ -293,7 +293,7 @@ post_upgrade() {
 	# add current eula info into CE path AcceptedEulas
 	# esmc may have already modified this by policy, in that case it is locked, so
 	# ignore error here and leave esmc to manage this setting
-	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-BUS-STANDARD" --eula-version "2020.1" > /dev/null || true
+	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-PRODUCT-LG" --eula-version "3537.0.0" > /dev/null || true
 }
 
 pre_remove() {
@@ -317,7 +317,7 @@ pre_remove() {
 	#################################### Uninstall ####################################
 	# dissociate product
 	if ! /opt/eset/eea/sbin/lic -d >/dev/null 2>/dev/null; then
-		print_error 'License was not dissociated. Please use ESET License Administrator to dissociate license manually.'
+		print_error 'License was not dissociated. Please use an ESET Business Account to dissociate license manually.'
 	fi
 
 	# stop product, unregister from systemd/init.d
@@ -354,7 +354,7 @@ post_remove() {
 
 	#################################### Uninstall ####################################
 	# remove users and groups
-	for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
+	for ug in eset-eea-licensed:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-econnd:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
 		usr=${ug%:*}
 		userdel $usr 2>/dev/null || true
 	done

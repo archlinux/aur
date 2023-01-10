@@ -6,7 +6,7 @@
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
 _pkgver_major=9
-pkgver=9.0.5.0
+pkgver=9.1.4.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux (DKMS)'
@@ -34,7 +34,7 @@ source=("${_bundle_url}/${_bundle_file}"
   "dkms_postinst"
 )
 
-sha256sums=('d7682777d1cea6714ea0256bfc272217eb795139227edd60bafdf28d38a10aeb'
+sha256sums=('54bd3c48a2bfdec11b5db7e2a10ce83b5abe6688d0f4486e647c1da0bc51564a'
             '53df6d50f98792053da2580df7828a06eef34dd066de684a333dd7569b481f93'
             '20539f7116bf44defc2df0f244d8c02722b06b97fe6be8a049c4ecafce2d744c')
 
