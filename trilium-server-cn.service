@@ -1,0 +1,11 @@
+[Unit]
+Description=Trilium Notes server daemon
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/trilium-server-cn/trilium.sh
+WorkingDirectory=/opt/trilium-server-cn
+
+[Install]
+WantedBy=multi-user.target

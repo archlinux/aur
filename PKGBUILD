@@ -18,6 +18,6 @@ package()
     # Move main files
     mv trilium-linux-x64-server/* "$pkgdir/opt/$pkgname"
     # Create command and make it executable
-    install -vDm755 "${srcdir}/trilium-server.sh" "${pkgdir}/usr/bin/trilium-server"
-    install -vDm644 "${srcdir}/trilium-server.service" -t "${pkgdir}/usr/lib/systemd/system"
+    install -vDm755 ../trilium-server-cn.sh "${pkgdir}/usr/bin/trilium-server-cn"
+    install -vDm644 ../trilium-server-cn.service -t "${pkgdir}/usr/lib/systemd/system"
 }
