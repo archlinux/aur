@@ -1,10 +1,10 @@
 pkgbase = openra-sp-git
 	pkgdesc = A Tiberian Sun-inspired mod of OpenRA
-	pkgver = 404.git.c9a70ff
+	pkgver = 843.git.0708243
 	pkgrel = 1
 	url = https://github.com/ABrandau/Shattered-Paradise-SDK
 	install = openra-sp.install
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = dos2unix
 	makedepends = git
@@ -14,10 +14,6 @@ pkgbase = openra-sp-git
 	depends = ttf-dejavu
 	depends = openal
 	depends = libgl
-	depends = freetype2
-	depends = sdl2
-	depends = lua51
-	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = desktop-file-utils
 	depends = xdg-utils
@@ -34,4 +30,3 @@ pkgbase = openra-sp-git
 	md5sums = 451b5a8a2e603e2a140f8844461aff68
 
 pkgname = openra-sp-git
-

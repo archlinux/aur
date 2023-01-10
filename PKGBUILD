@@ -2,14 +2,14 @@
 
 pkgname=openra-sp-git
 _pkgname=${pkgname/-git}
-pkgver=404.git.c9a70ff
+pkgver=843.git.0708243
 pkgrel=1
 pkgdesc="A Tiberian Sun-inspired mod of OpenRA"
-arch=('any')
+arch=(x86_64)
 url="https://github.com/ABrandau/Shattered-Paradise-SDK"
 license=('GPL3')
 install=openra-sp.install
-depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
+depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-sp')
@@ -45,18 +45,17 @@ build() {
 package() {
     cd $srcdir/Shattered-Paradise-SDK
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-sp,share/applications,share/appdata}
-    install -dm775 $pkgdir/var/games/openra-sp
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-sp
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.so,*.exe,VERSION} $pkgdir/usr/lib/openra-sp
     cp -r mods/sp $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{as,ts,common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-sp $pkgdir/usr/bin/openra-sp
-    cp -r $srcdir/openra-sp.appdata.xml $pkgdir/usr/share/appdata/openra-sp.appdata.xml
+    cp -r $srcdir/../openra-sp.appdata.xml $pkgdir/usr/share/appdata/openra-sp.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/${_pkgname}/README.md
     install -Dm644 $srcdir/openra-sp.desktop $pkgdir/usr/share/applications/openra-sp.desktop
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
-    for size in 16 32 48 64 128 256; do
-      size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+    for length in 16 32 48 64 128 256; do
+      size="${length}x${length}"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
     rm $pkgdir/usr/lib/${_pkgname}/*.sh
 }
