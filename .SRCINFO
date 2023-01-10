@@ -1,6 +1,6 @@
 pkgbase = openra-ss-git
 	pkgdesc = A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game
-	pkgver = 294.git.3ebe267
+	pkgver = 381.git.06a2294
 	pkgrel = 1
 	url = https://github.com/MustaphaTR/sole-survivor
 	install = openra-ss.install
@@ -28,9 +28,8 @@ pkgbase = openra-ss-git
 	source = openra-ss.appdata.xml
 	source = openra-ss.desktop
 	md5sums = SKIP
-	md5sums = 4f41d431c8bb01dbb4569ca698e47402
+	md5sums = c6a01630a11e9d51a7a24ffcc7bf14e6
 	md5sums = 6f7d848e4a53dd600889572d43ed16d2
 	md5sums = b7a61da8bdec86e6756fc7a8cf6f52ae
 
 pkgname = openra-ss-git
-

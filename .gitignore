@@ -1,4 +1,5 @@
 *.xz
+*.pkg.*
 sole-survivor
 pkg
 src
