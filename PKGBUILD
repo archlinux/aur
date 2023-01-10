@@ -7,7 +7,7 @@
 
 pkgname=lxd
 pkgver=5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -28,19 +28,25 @@ optdepends=(
 source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
         "lxd.service"
-        "lxd.sysusers")
+        "lxd.sysusers"
+        "$pkgname-support-btrfs-gt-6.patch::https://github.com/lxc/lxd/commit/245b9633eba60cc1095ffb2d29b1cca4eb29a8c6.patch")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
 sha256sums=('a24cf7fbe3e5527a34deda7e8e92f17c05a51498723821f69b146d1e8e58117f'
             'SKIP'
             'b89a725223ef72b25eab25184084d069af312f8c23612c57fdb75427a510232e'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
-            'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4')
+            'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4'
+            'b2544cb6f4f004b884402b1c9909883d5d6939f209840892bb1bd5c5d86c1e0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   mkdir bin
   go mod verify
+
+  # backport fix for btrfs >= 6.0.1
+  # https://github.com/lxc/lxd/pull/11252
+  patch -p1 -i "$srcdir/$pkgname-support-btrfs-gt-6.patch"
 }
 
 build() {
