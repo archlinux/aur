@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
 pkgname=lib32-gupnp
-pkgver=1.6.0
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="An object-oriented UPNP framework (32-bit)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://wiki.gnome.org/Projects/GUPnP"
 license=(LGPL)
 depends=(lib32-gssdp gupnp)
 makedepends=(git gobject-introspection meson vala)
-_commit=f05648e240c99be32911fb0c6de84e5954470e56 # tags/gupnp-1.6.0^0
+_commit=adb51197a7e3120027a295b36beda4571e628758 # tags/gupnp-1.6.3^0
 source=("git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=$_commit")
 sha256sums=('SKIP')
 
