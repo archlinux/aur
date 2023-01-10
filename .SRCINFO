@@ -1,0 +1,15 @@
+pkgbase = ps2-lz4
+	pkgdesc = Extremely Fast Compression algorithm (Sony Playstation® 2 videogame system port).
+	pkgver = v1.9.4
+	pkgrel = 1
+	url = https://github.com/lz4/lz4
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	makedepends = cmake
+	source = ps2-lz4::git+https://github.com/lz4/lz4#commit=5ff839680134437dbf4678f3d0c7b371d84f4964
+	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps2-lz4
