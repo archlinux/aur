@@ -6,7 +6,7 @@ _aqt=aqt
 _py=cp39
 
 pkgname=anki-bin
-pkgver=2.1.55
+pkgver=2.1.56
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -36,6 +36,9 @@ depends=(
 
 	# requests
 	'python-pysocks'
+
+	# workaround
+	'python-certifi'
 )
 makedepends=(
 	'python-installer'
@@ -58,8 +61,8 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-	'9997f93aa1819a881ab905841a178d264ce4d47f75e3a1849113fc65de87fd5b'
-	'a029d770283137ed517a1a63b13b418e4a5c299eb3e297fd714712c26d6467ab'
+	'6bfe483611e99d471e1ba44d25b02668836d70d5eaca2837ef6d9f10ca449cc2'
+	'0bf9d7bfedea4c9b566439c4526e88213596644d017407f9de391dd7de3fabf1'
 	'9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
 	'53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
 	'97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a'
