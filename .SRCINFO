@@ -1,7 +1,7 @@
 pkgbase = pyenv-virtualenv
 	pkgdesc = pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
-	pkgver = 1.1.5
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pyenv/pyenv-virtualenv
 	arch = any
@@ -9,10 +9,7 @@ pkgbase = pyenv-virtualenv
 	makedepends = patch
 	depends = pyenv
 	depends = bash
-	source = https://github.com/pyenv/pyenv-virtualenv/archive/v1.1.5.tar.gz
-	source = fix-symlink-308.patch
-	md5sums = 2ebab171a403915d695c383855ac78e4
-	md5sums = 476790c1f9643d76efbb188b35ed19e0
+	source = https://github.com/pyenv/pyenv-virtualenv/archive/v1.2.0.tar.gz
+	md5sums = 0c09e896a343ce8cb7d6f57d7e71f9a6
 
 pkgname = pyenv-virtualenv
-

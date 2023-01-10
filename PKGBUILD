@@ -1,9 +1,10 @@
-# Maintainer: Ayrton Araujo <root@ayr-ton.net>
-# Maintainer: Kevin Del Castillo R. <lans9831@gmail.com>
+# Maintainer: Darkfish Tech <arch@darkfish.com.au>
+# Contributor: Ayrton Araujo <root@ayr-ton.net>
+# Contributor: Kevin Del Castillo R. <lans9831@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 pkgname=pyenv-virtualenv
-pkgver=1.1.5
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 epoch=1
 pkgdesc="pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)"
 arch=('any')
@@ -11,29 +12,22 @@ url="https://github.com/pyenv/pyenv-virtualenv"
 license=('MIT')
 depends=('pyenv' 'bash')
 makedepends=('patch')
-source=("https://github.com/pyenv/$pkgname/archive/v$pkgver.tar.gz"
-        "fix-symlink-308.patch")
-md5sums=('2ebab171a403915d695c383855ac78e4'
-         '476790c1f9643d76efbb188b35ed19e0')
-
-prepare() {
-  cd "${srcdir?}/$pkgname-$pkgver"
-
-  # Fix issue #308  
-  patch -p1 < ../fix-symlink-308.patch
-}
+source=("https://github.com/pyenv/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('0c09e896a343ce8cb7d6f57d7e71f9a6')
 
 package() {
-  mkdir -p "${pkgdir?}"/{opt/pyenv/plugins/pyenv-virtualenv,usr/bin}
+  _install_dir="usr/share/pyenv/plugins/pyenv-virtualenv"
+
+  mkdir -p "${pkgdir?}"/{${_install_dir},usr/bin}
   cd "${srcdir?}/$pkgname-$pkgver"
 
   # Intall using the script
-  PREFIX="${pkgdir}/opt/pyenv/plugins/pyenv-virtualenv" ./install.sh 
+  PREFIX="${pkgdir}/${_install_dir}" ./install.sh 
 
   # Link binaries
   pushd bin &> /dev/null
   for bin in *; do
-      ln -s /opt/pyenv/plugins/pyenv-virtualenv/bin/"$bin" "$pkgdir/usr/bin/$bin"
+      ln -s "/${_install_dir}/bin/$bin" "$pkgdir/usr/bin/$bin"
   done
   popd &> /dev/null
 
