@@ -2,12 +2,12 @@
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
 pkgver=4.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
 license=('AGPL v3')
 arch=('x86_64')
-makedepends=('npm' 'nvm' 'jq' 'moreutils')
+makedepends=('npm' 'nvm' 'jq' 'moreutils' 'fontconfig')
 options=('!strip')
 source=("https://github.com/Snapmaker/Luban/archive/refs/tags/v${pkgver}.tar.gz")
 
