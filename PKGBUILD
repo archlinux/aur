@@ -40,6 +40,6 @@ build() {
 
 package() {
     cd lctr
-    install -Dm644 ./src/fileReader.py "$pkgdir/usr/bin/fileReader"
+    install -Dm644 ./src/fileReader.py "$pkgdir/usr/bin/fileReader.py"
     install -Dm755 ./src/main.py "$pkgdir/usr/bin/lctr"
 }
