@@ -1,7 +1,7 @@
 pkgbase = r-gap
 	pkgdesc = Genetic Analysis Package
-	pkgver = 1.3.1
-	pkgrel = 3
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gap
 	arch = x86_64
 	license = GPL
@@ -51,7 +51,7 @@ pkgbase = r-gap
 	optdepends = r-rms
 	optdepends = r-shiny
 	optdepends = r-survival
-	source = https://cran.r-project.org/src/contrib/gap_1.3-1.tar.gz
-	sha256sums = 8edf25300002e37e54c20e973d7a60d503785645d17f2127aa6072e338c7ccdc
+	source = https://cran.r-project.org/src/contrib/gap_1.4-2.tar.gz
+	sha256sums = 6880c8650710eb4efc611c4387dc18ae9b2d827565100809f15134c56a06768f
 
 pkgname = r-gap
