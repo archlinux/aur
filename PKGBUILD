@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=thunderbird-extension-xnote-git
-pkgver=3.2.1.r13.g06aa353
+pkgver=3.2.1.r18.g8bb777c
 pkgrel=1
 pkgdesc="Persistent sticky notes for Thunderbird associated to mails. You can email them/print/copy to clipboard."
 arch=('any')
