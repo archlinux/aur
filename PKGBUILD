@@ -2,7 +2,7 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3 xguipro-gtk4)
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=0
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('af8e68d269901884987326f41c318e2def786d49ab1794780d86346b5331f25e')
+sha256sums=('5c89e990b35857f829f823e53991675d7e57a514c48e1057bff8ab750c67564b')
 
 # prepare() {
 #     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
