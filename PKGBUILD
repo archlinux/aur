@@ -3,16 +3,16 @@
 
 pkgname='rp++'
 _name='rp'
-pkgver=2.0.2
+pkgver=2.1
 pkgrel=1
-pkgdesc='rp++ is a fast C++ ROP gadget finder for PE/ELF/Mach-O x86/x64/ARM binaries.'
+pkgdesc='A fast C++ ROP gadget finder for PE/ELF/Mach-O x86/x64/ARM binaries.'
 arch=('x86_64')
 url='https://github.com/0vercl0k/rp'
 license=('MIT')
-depends=()
+depends=(gcc-libs)
 makedepends=('cmake' 'ninja')
-source=("https://github.com/0vercl0k/rp/archive/refs/tags/v2.0.2.tar.gz")
-sha256sums=("SKIP")
+source=(${_name}-${pkgver}.tar.gz::"https://github.com/0vercl0k/rp/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('0c02ce21f546145fc2bcc4647818fd411c8f55ed8232e28efdee8dc04f150074')
 
 build() {
     cd "${_name}-${pkgver}"
@@ -25,7 +25,7 @@ build() {
 
 package() {
     cd "${_name}-${pkgver}"
-    install -Dm755 "build/rp-lin-x64" "${pkgdir}/usr/bin/rp"
+    install -Dm755 "build/rp-lin" "${pkgdir}/usr/bin/rp"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
