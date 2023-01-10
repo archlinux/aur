@@ -18,6 +18,7 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
+  rust-toolchain
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -25,8 +26,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
+
 sha256sums=('SKIP'
-            '165ebef778236af6407bd50ce99add5e247295b65073257c95514a09cc82d74a')
+            '165ebef778236af6407bd50ce99add5e247295b65073257c95514a09cc82d74a'
+            'bc43ef34a131fd2f99047a8aca491f24fa0a36010dcb90166e73c49f58a1928d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -149,6 +152,14 @@ _package-headers() {
 
   echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
+
+  # Rust support
+  echo "Installing Rust files..."
+  install -Dt "$builddir/rust" -m644 rust/target.json
+  install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  install -Dt "$builddir/rust" -m644 rust/*.so
+  install -Dt "$builddir" -m644 ../../rust-toolchain
+
 
   echo "Stripping build tools..."
   local file
