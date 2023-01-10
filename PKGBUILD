@@ -2,7 +2,7 @@
 
 pkgname=libx52
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to control the MFD and LEDs of a Saitek X52/X52Pro HOTAS"
 arch=('x86_64')
 url="https://github.com/nirenjan/${pkgname}"
@@ -11,6 +11,7 @@ depends=('libusb' 'hidapi' 'libevdev')
 makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'python'
          'gettext' 'libusb' 'hidapi' 'libevdev' 'doxygen' 'cmocka' 'git')
 install="${pkgname}.install"
+backup=('etc/x52d/x52d.conf')
 source=("https://github.com/nirenjan/x52pro-linux/releases/download/v${pkgver}/${pkgname}_${pkgver}.orig.tar.gz")
 sha256sums=('80a6141c64c94387d5593c8b4a9b5de5c22db16a0fa9cacaf1a2a80e8a3cd96e')
 
