@@ -1,7 +1,7 @@
 pkgbase = pyradio-git
 	pkgdesc = Internet radio player for the command line
-	pkgver = 0.8.9.34
-	pkgrel = 1
+	pkgver = 0.8.9.35
+	pkgrel = 2
 	url = http://www.coderholic.com/pyradio/
 	arch = any
 	license = MIT
