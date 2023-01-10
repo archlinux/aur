@@ -1,7 +1,7 @@
 pkgbase = smines-git
 	pkgdesc = Minesweeper for the terminal, using C and ncurses.
 	pkgver = r136.4251ea7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BBaoVanC/smines
 	arch = any
 	license = GPL3

@@ -3,7 +3,7 @@
 _pkgname=smines
 pkgname=$_pkgname-git
 pkgver=r136.4251ea7
-pkgrel=1
+pkgrel=2
 pkgdesc="Minesweeper for the terminal, using C and ncurses."
 arch=(any)
 url="https://github.com/BBaoVanC/$_pkgname"
@@ -28,6 +28,6 @@ build() {
 
 package() {
     meson install -C build --destdir "$pkgdir"
-    install -m 0644 -D -t "$pkgdir/usr/share/licenses/$_pkgname/" "$_pkgname/LICENSE"
-    install -m 0644 -D -t "$pkgdir/usr/share/doc/$_pkgname/" "$_pkgname/README.md"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$_pkgname/LICENSE"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
 }
