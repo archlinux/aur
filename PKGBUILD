@@ -4,7 +4,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=stripe-cli
-pkgver=1.12.4
+pkgver=1.13.7
 pkgrel=1
 pkgdesc='CLI for Stripe'
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go git)
 source=($pkgname-$pkgver.tar.gz::https://github.com/stripe/stripe-cli/archive/v$pkgver.tar.gz)
-b2sums=('e9180586efe6a80cb233346c2f37a65cdd8412ac81c4136ce5c0c532b9ea7e250dd84843a563070fb60289ed894bb917afc37062467c0b1e6419405fd5777703')
+b2sums=('54eea034105a696ccb58fd3d049117c9a0bfc16fa4946050d01c254b3aaef3045a08ef941e27239b06d05fde9ea7e0544a0751e1e8b1d9132b09fa32f83dd63a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -35,10 +35,11 @@ build() {
     cmd/stripe/main.go
 }
 
-check() {
-  cd $pkgname-$pkgver
-  go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
-}
+# Tests are disabled until https://github.com/stripe/stripe-cli/issues/102://github.com/stripe/stripe-cli/issues/1020 is resolved
+#check() {
+#  cd $pkgname-$pkgver
+#  go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
+#}
 
 package() {
   cd $pkgname-$pkgver
