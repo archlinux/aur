@@ -3,7 +3,7 @@
 pkgname=commander-wars
 pkgver=0.28.2
 _pkgtag="Beta28_Build2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Advance Wars Clone with a lot of additions customizations and modding support"
 arch=("$CARCH")
 url="https://github.com/Robosturm/Commander_Wars"
@@ -20,8 +20,6 @@ prepare()
 {
 	cd "$srcdir/Commander_Wars-$_pkgtag"
 	patch -N -p1 -i "$srcdir/0001-fix-QStandardPaths-include.patch"
-	sed -i "0,/project (Commander_Wars/s/project (Commander_Wars /project ($pkgname /g" CMakeLists.txt #keep using old save files
-	sed -i "s/commander_wars/$pkgname/g" Commander_Wars.desktop
 	sed -i '/RPATH/d' CMakeLists.txt #remove insecure RPATH '/../'
 	mkdir -p build
 }
