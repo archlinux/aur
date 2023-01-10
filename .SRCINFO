@@ -1,4 +1,5 @@
 pkgbase = waydroid-settings
+	pkgdesc = GTK4 app written in Python to control Waydroid settings
 	pkgver = 22.1217
 	pkgrel = 6
 	url = https://github.com/axel358/Waydroid-Settings
