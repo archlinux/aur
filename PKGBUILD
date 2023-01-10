@@ -5,7 +5,7 @@
 _pkgname=nyxt
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='A keyboard-driven web browser designed for power users'
 arch=('i686' 'x86_64')
 url='https://nyxt.atlas.engineer'
