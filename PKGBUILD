@@ -14,7 +14,7 @@ pkgver="v1.2.11"
 _ports_ver="v1.3.0"
 pkgrel=1
 _pkgdesc=("Compression library implementing the deflate compression method found in gzip and PKZIP "
-          "Sony Playstation® 2 videogame system port).")
+          "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('custom')
@@ -64,6 +64,12 @@ prepare() {
 }
 
 build() {
+
+  export CFLAGS=""
+  export CXXFLAGS=""
+  export CPPFLAGS=""
+  export LDFLAGS=""
+
   local _cmake_opts=(-Wno-dev
                      -DCMAKE_TOOLCHAIN_FILE="${srcdir}/${_platform}-ports/ps2dev.cmake"
                      -DCMAKE_INSTALL_PREFIX="/usr/${_ee}"
