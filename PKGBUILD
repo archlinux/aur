@@ -135,7 +135,9 @@ package() {
   mv LICENSE "share/licenses/${_pkgname}"
   cd "${pkgdir}/usr/share/${_pkgname}/samples"
   sed -i "s~\$(PS2SDK)/ee/include~/usr/${_ee}/include~g" "Makefile.eeglobal"
-  sed -i "s~\$(PS2SDK)/ee/common/include~/usr/include/ps2sdk~g" "Makefile.eeglobal"
+  sed -i "s~\$(PS2SDK)/common/include~/usr/include/ps2sdk~g" "Makefile.eeglobal"
   sed -i "s~\$(PS2SDK)/ee/lib~/usr/${_ee}/lib~g" "Makefile.eeglobal"
   sed -i "s~\$(PS2SDK)/ee/startup/linkfile~/usr/${_ee}/startup/linkfile~g" "Makefile.eeglobal"
+  sed -i "s~EE_LDFLAGS := ~EE_LDFLAGS := -L/usr/${_ee}/lib/pthread-embedded ~g" "Makefile.eeglobal"
+  sed -i "s~EE_INCS := ~EE_INCS := -I/usr/${_ee}/include/pthread-embedded ~g" "Makefile.eeglobal"
 }
