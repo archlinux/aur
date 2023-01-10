@@ -3,7 +3,7 @@
 # Contributor: lxsycht <lux@systemli.org>
 
 pkgname=metadata-cleaner
-pkgver=2.2.8
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Python GTK application to view and clean metadata in files, using mat2"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk4' 'libadwaita' 'mat2' 'python-gobject')
 makedepends=('itstool' 'meson')
 checkdepends=('appstream' 'mypy' 'python-pycodestyle' 'python-pydocstyle' 'reuse' 'python-tomli')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('e7f472637b666b1a24f9271739da532d95d850127a9eeed228f2ff773eca54ed')
+sha256sums=('874fae73e21b956963b46b59d8206c65a39c47f09c8ec8b23cda8568769e04cc')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build
