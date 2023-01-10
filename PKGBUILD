@@ -12,7 +12,7 @@ pkgname="${_platform}-${_pkg}"
 pkgver="v1.6.37"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("FreeType is a freely available software library to render fonts "
+_pkgdesc=("A collection of routines used to create PNG format graphics files "
           "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')

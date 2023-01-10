@@ -1,5 +1,5 @@
 pkgbase = ps2-libpng
-	pkgdesc = FreeType is a freely available software library to render fonts (Sony Playstation® 2 videogame system port).
+	pkgdesc = A collection of routines used to create PNG format graphics files (Sony Playstation® 2 videogame system port).
 	pkgver = v1.6.37
 	pkgrel = 1
 	url = https://github.com/glennrp/libpng
