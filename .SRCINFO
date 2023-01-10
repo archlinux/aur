@@ -1,8 +1,8 @@
 pkgbase = ctris
-	pkgdesc = A colorized, small and flexible Tetris(TM)-clone for the console.
+	pkgdesc = A colorized, small and flexible Tetris(TM)-clone for the console written in C, using the ncurses-library.
 	pkgver = 0.42.1
-	pkgrel = 2
-	url = http://www.hackl.dhs.org/ctetris/
+	pkgrel = 3
+	url = https://github.com/dominikhackl/ctris
 	arch = i686
 	arch = x86_64
 	license = GPL

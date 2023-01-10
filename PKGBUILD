@@ -2,10 +2,10 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ctris
 pkgver=0.42.1
-pkgrel=2
-pkgdesc="A colorized, small and flexible Tetris(TM)-clone for the console."
+pkgrel=3
+pkgdesc='A colorized, small and flexible Tetris(TM)-clone for the console written in C, using the ncurses-library.'
 arch=('i686' 'x86_64')
-url="http://www.hackl.dhs.org/ctetris/"
+url='https://github.com/dominikhackl/ctris'
 license=('GPL')
 depends=('ncurses')
 source=("https://github.com/dominikhackl/$pkgname/archive/v${pkgver}.tar.gz")
