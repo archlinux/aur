@@ -7,7 +7,7 @@
 
 pkgname=alarm-clock-applet
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A fully-featured alarm clock for use with an AppIndicator implementation."
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ _alias=alarm-clock
 url="https://alarm-clock-applet.github.io/"
 license=('GPL2')
 depends=('gettext' 'gstreamer>=1.0' 'gst-plugins-base' 'gst-plugins-good' 'libnotify>=0.4.1' 'glib2' 'gtk3' 'libayatana-appindicator')
-makedepends=('cmake' 'pkgconfig' 'perl' 'gzip')
+makedepends=('cmake' 'pkgconfig' 'perl' 'gzip' 'python')
 optdepends=('gnome-control-center' 'playerctl' 'gconf>=2.0')
 install=$pkgname.install
 source=($_alias-$pkgver.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/$pkgver.tar.gz)

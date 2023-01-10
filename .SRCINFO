@@ -1,7 +1,7 @@
 pkgbase = alarm-clock-applet
 	pkgdesc = A fully-featured alarm clock for use with an AppIndicator implementation.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://alarm-clock-applet.github.io/
 	install = alarm-clock-applet.install
@@ -12,6 +12,7 @@ pkgbase = alarm-clock-applet
 	makedepends = pkgconfig
 	makedepends = perl
 	makedepends = gzip
+	makedepends = python
 	depends = gettext
 	depends = gstreamer>=1.0
 	depends = gst-plugins-base
