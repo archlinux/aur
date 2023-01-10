@@ -1,5 +1,5 @@
 pkgbase = ps2-freetype
-	pkgdesc = A C library for reading, creating, and modifying zip archives (Sony Playstation® 2 videogame system port).
+	pkgdesc = Font rasterization library (Sony Playstation® 2 videogame system port).
 	pkgver = v2.10.4
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/freetype/freetype

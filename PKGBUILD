@@ -12,7 +12,7 @@ pkgname="${_platform}-${_pkg}"
 pkgver="v2.10.4"
 _ports_ver="v1.3.0"
 pkgrel=1
-_pkgdesc=("A C library for reading, creating, and modifying zip archives "
+_pkgdesc=("Font rasterization library "
           "(Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
