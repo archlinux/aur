@@ -1,6 +1,6 @@
 pkgbase = pd-lua-git
 	pkgdesc = Lua bindings for Pd
-	pkgver = 0.10.1.r11.g3feda95
+	pkgver = 0.11.0.r9.gc19837a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/agraef/pd-lua
@@ -16,4 +16,3 @@ pkgbase = pd-lua-git
 	md5sums = SKIP
 
 pkgname = pd-lua-git
-
