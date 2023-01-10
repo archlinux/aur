@@ -35,7 +35,7 @@ build() {
     cmd/stripe/main.go
 }
 
-# Tests are disabled until https://github.com/stripe/stripe-cli/issues/102://github.com/stripe/stripe-cli/issues/1020 is resolved
+# Tests are disabled until https://github.com/stripe/stripe-cli/issues/1020 is resolved
 #check() {
 #  cd $pkgname-$pkgver
 #  go test -failfast -race -coverpkg=./... -covermode=atomic -coverprofile=coverage.txt ./... -run . -timeout=2m
