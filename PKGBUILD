@@ -3,13 +3,13 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.8.9.30.r0.gdfdaaa4
+pkgver=0.8.9.34
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
 license=('MIT')
-depends=('python-dnspython' 'python-requests' 'python-psutil')
+depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netiface')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('git' 'python-pip' 'python-wheel')
 provides=("${pkgname%-git}")
