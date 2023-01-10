@@ -1,0 +1,14 @@
+pkgbase = hactoolnet-git
+	pkgdesc = An example program that uses LibHac. It is used in a similar manner to hactool.
+	pkgver = 0.17.0.gfe2549cb
+	pkgrel = 1
+	url = https://github.com/Thealexbarney/LibHac
+	arch = any
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = dotnet-runtime
+	source = git+https://github.com/Thealexbarney/LibHac.git
+	sha256sums = SKIP
+
+pkgname = hactoolnet-git
