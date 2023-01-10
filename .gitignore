@@ -1,0 +1,7 @@
+*.xz
+pkg
+OpenSA
+src
+*.gz
+*.log*
+*.zst
