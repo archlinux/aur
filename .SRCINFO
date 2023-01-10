@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = mylibrary
 	depends = poppler
 	depends = djvulibre
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.0.2.tar.gz
-	sha256sums = 7445f2337abbad4fb346853d1f55a4c4b96f0f17e8da376b0574987740bb74cd
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v2.0.3.tar.gz
+	sha256sums = 5d67737983966a5e36f1898fd79f82f2a7cb6bab0337aa65582eea62878f3166
 
 pkgname = mylibrary
