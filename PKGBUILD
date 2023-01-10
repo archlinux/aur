@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=progressr
-_cranver=0.12.0
+_cranver=0.13.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -24,13 +24,14 @@ optdepends=(
     r-future
     r-future.apply
     r-furrr
+    r-rpushbullet
     r-rstudioapi
     r-shiny
     r-commonmark
     r-base64enc
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b8088bf551cd7d67f48f0788a1b20003be5ab16449924c0406b6906e99db5059')
+sha256sums=('0ffb3dcadde0cc191bad0ff9e05d000aa65e2fc339cfc94ebbb263088df5a4e1')
 
 build() {
   mkdir -p build
