@@ -1,31 +1,30 @@
 # Maintainer: Thibault Saunier <tsaunier@gnome.org>
 
-pkgname=dssim-git
+pkgname="dssim-git"
+_pkgname="dssim"
 pkgrel=1
-pkgver=165.2f3c156
-pkgdesc=" DSSIM C implementation"
+pkgver=r133.cdb66dbc7943
+pkgdesc="Image similarity comparison simulating human perception (multiscale SSIM in Rust)"
 arch=('x86_64')
 url="https://github.com/pornel/dssim/"
 license=(AGPL)
 depends=()
-makedepends=('ninja' 'meson')
-source=('git+https://github.com/pornel/dssim.git')
+makedepends=('git' 'rust')
+source=("git+https://github.com/pornel/${_pkgname}.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir"/dssim
-  mkdir build
-  cd build
-  meson ../ --prefix=/usr --libdir=lib/
-  ninja
+  cd "${srcdir}/${_pkgname}"
+  cargo build --release
 }
 
 package() {
-  cd "$srcdir"/dssim/build
-  DESTDIR="$pkgdir/" ninja install
-}
-
-pkgver() {
-  cd "$srcdir"/dssim
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
