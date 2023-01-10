@@ -1,0 +1,12 @@
+pkgbase = miniasm
+	pkgdesc = Overlap-Layout-Consensus-based de novo assembler for long reads
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/lh3/miniasm
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	source = miniasm-0.3.tar.gz::https://github.com/lh3/miniasm/archive/refs/tags/v0.3.tar.gz
+	sha256sums = 9b688454f30f99cf1a0b0b1316821ad92fbd44d83ff0b35b2403ee8692ba093d
+
+pkgname = miniasm
