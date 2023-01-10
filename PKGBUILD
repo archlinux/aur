@@ -3,7 +3,7 @@
 pkgname=flaresolverr-git
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.0.0.r0.g85360df
+pkgver=3.0.2.r1.g2d97f88
 pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('any')
