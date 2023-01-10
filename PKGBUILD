@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('fontconfig')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6b0343dcb9f058aa7acd284bb77141e138241faf7ae6f3a9c96baf7aeb38b54b')
+sha256sums=('a5457d05faa858cbe589abb47f65b1654001e91ee3112fb83d12f0e9194fe7fb')
 
 build() {
   cd "$pkgname-$pkgver"
