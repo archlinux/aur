@@ -7,7 +7,7 @@ arch=(any)
 url='https://github.com/humanbeing27/plymouth-theme-arch-bgrt'
 depends=('plymouth')
 source=(${url}/archive/refs/heads/main.zip)
-sha512sums=("54b21cd42d6cae8cb0bae06056c2c4b102f73d8d6458b42f387e073cf0962e11b609768ad9da87519869cb645fe89429e09da509135e414c24d625f37774ff3d")
+sha512sums=("a882e704979cdef41ecd3fb3da3a29b269c52b4857af7188f9463e8ad26252368294dec5983e55781ba123309722a78856e1c9202194bae06fbc3ec2da2e79ca")
 package(){
 	install -Dm755 -o root -g root ${srcdir}/plymouth-theme-arch-bgrt-main/plymouth-theme-arch-bgrt/* $pkgdir/usr/share/plymouth/themes/arch-bgrt
 }
