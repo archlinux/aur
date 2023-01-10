@@ -3,7 +3,7 @@
 _basename=gssdp
 pkgname=lib32-gssdp
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GObject-based API for handling resource discovery and announcement over SSDP (32-bit)"
 arch=(x86_64)
 url="http://gupnp.org/"
@@ -34,7 +34,8 @@ build() {
         -Dgtk_doc=false \
         -Dsniffer=false \
         -Dintrospection=false \
-        -Dexamples=false
+        -Dexamples=false \
+        -Dmanpages=false
 
     meson compile -C build
 }
@@ -46,5 +47,5 @@ check() {
 package() {
     DESTDIR="$pkgdir" meson install -C build
 
-    rm -rf "${pkgdir}"/usr/{include,share}
+    rm -rf "${pkgdir}/usr/include"
 }
