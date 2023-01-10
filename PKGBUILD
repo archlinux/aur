@@ -1,12 +1,13 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
-pkgver=1.8.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
 license=('custom:Agisoft EULA' 'custom')
+depends=('gcc')
 makedepends=('imagemagick')
 optdepends=('glu: mesa OpenGL lib'
             'nvidia-utils: nvidia proprietary OpenGL lib'
@@ -21,7 +22,7 @@ source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${p
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
-sha256sums=('2f29c567544a286059cd3253bf5492c7922f94ba217f0988c4cd26901e11e362'
+sha256sums=('fca1cf1463b5d90779e0f1b45cacfacb9f76b22eab4f404e8b3eb2649ec60228'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             '627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff'
             'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009')
