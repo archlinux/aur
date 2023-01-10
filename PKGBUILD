@@ -2,7 +2,7 @@
 
 pkgname=xdman8-beta-git
 _pkgname=xdman
-pkgver=8.0.16.r297.gc0eeb69
+pkgver=8.0.18.r302.g8c944ec
 pkgrel=1
 pkgdesc="Open source download accelerator and video downloader."
 arch=(x86_64)
@@ -13,8 +13,8 @@ makedepends=(dotnet-host dotnet-sdk gendesk git)
 provides=("$pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
-source=("$_pkgname"::git+https://github.com/subhra74/xdm.git#branch=feature/8.0.1
-        git+https://github.com/subhra74/xdm-helper-chrome.git)
+source=("$pkgname"::git+https://github.com/subhra74/xdm.git#branch=feature/8.0.1
+               "helper"::git+https://github.com/subhra74/xdm-helper-chrome.git)
 sha256sums=('SKIP'
             'SKIP')
 

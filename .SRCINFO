@@ -1,6 +1,6 @@
 pkgbase = xdman8-beta-git
 	pkgdesc = Open source download accelerator and video downloader.
-	pkgver = 8.0.16.r297.gc0eeb69
+	pkgver = 8.0.18.r302.g8c944ec
 	pkgrel = 1
 	url = https://xtremedownloadmanager.com
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = xdman8-beta-git
 	provides = xdman8-beta-git
 	conflicts = xdman
 	replaces = xdman
-	source = xdman::git+https://github.com/subhra74/xdm.git#branch=feature/8.0.1
-	source = git+https://github.com/subhra74/xdm-helper-chrome.git
+	source = xdman8-beta-git::git+https://github.com/subhra74/xdm.git#branch=feature/8.0.1
+	source = helper::git+https://github.com/subhra74/xdm-helper-chrome.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
