@@ -3,3 +3,4 @@ uRA
 pkg
 src
 *.gz
+*.pkg*
