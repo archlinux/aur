@@ -1,6 +1,6 @@
 pkgname=openra-yr-git
 _pkgname=openra-yr
-pkgver=462.git.7376ec2
+pkgver=468.git.51bcf18
 pkgrel=1
 pkgdesc="A Command & Conquer: Yuri's Revenge-inspired mod of OpenRA"
 arch=('any')
@@ -47,7 +47,7 @@ package() {
     cp -r mods/yr $pkgdir/usr/lib/openra-yr/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-yr/mods
     install -Dm755 $srcdir/openra-yr $pkgdir/usr/bin/openra-yr
-    cp -r $srcdir/openra-yr.appdata.xml $pkgdir/usr/share/appdata/openra-yr.appdata.xml
+    cp -r $srcdir/../openra-yr.appdata.xml $pkgdir/usr/share/appdata/openra-yr.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-yr/README.md
     cp -r mods/yr/icon.png $pkgdir/usr/share/pixmaps/openra-yr.png
     install -Dm644 $srcdir/openra-yr.desktop $pkgdir/usr/share/applications/openra-yr.desktop
