@@ -2,7 +2,7 @@
 
 pkgname=armcord-git
 pkgdesc="ArmCord dev build using the system electron. ArmCord is a custom client designed to enhance your Discord experience while keeping everything lightweight"
-pkgver=r597.52b1ff7
+pkgver=r756.81273de
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -46,7 +46,7 @@ build() {
 package() {
   cd "$srcdir"
 
-  install -Dm 644 "$pkgname/dist/linux-unpacked/resources/app.asar" "$pkgdir/usr/share/armcord/app.asar"
+  install -Dm 644 "$pkgname/dist/"*"-unpacked/resources/app.asar" "$pkgdir/usr/share/armcord/app.asar"
 
   install -Dm 755 "armcord-launcher.sh" "$pkgdir/usr/bin/armcord"
   install -Dm 644 "armcord.desktop" "$pkgdir/usr/share/applications/armcord.desktop" 
