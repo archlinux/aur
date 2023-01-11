@@ -3,7 +3,7 @@
 pkgname=libation
 _pkgname=Libation
 pkgver=8.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Audible Audiobook Manager: Liberate your Library"
 arch=("any")
 url="https://github.com/rmcrackan/Libation"
@@ -37,4 +37,8 @@ package() {
   ln -s "/usr/lib/libation/Hangover" "$pkgdir/usr/bin/Hangover"
   ln -s "/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/LibationCli"
   ln -s "/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/libationcli"
+
+  # workaround until this file is moved to the user's home directory
+  touch "$pkgdir/usr/lib/libation/appsettings.json"
+  chmod 666 "$pkgdir/usr/lib/libation/appsettings.json"
 }
