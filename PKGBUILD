@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-check
 _pkgname="${pkgname#python-}"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Pytest plugin that allows multiple failures per test'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'python-installer'
   'python-flit-core'
 )
-_commit='33c19a950f96be439fc0230f820409a49fb1e174'
+_commit='4a310a742992a86719ef9c187dfc47c5c28b32d5'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
