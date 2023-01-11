@@ -4,10 +4,10 @@
 
 pkgname=pixelorama-git
 _pkgname=pixelorama
-pkgver=1633.27d42dbd
-pkgrel=2
+pkgver=1735.493630c6
+pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
-arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'armv8' 'riscv32' 'riscv64')
+arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64')
 url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
 license=('MIT')
