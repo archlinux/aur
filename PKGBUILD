@@ -1,6 +1,6 @@
 pkgname=shibboleth-sp
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
 license=(Apache)
@@ -36,7 +36,7 @@ source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkg
         "shibboleth-sp.sysusers"
         "shibboleth-sp.tmpfiles"
         "shibd.service")
-sha256sums=('02c2eb2c723969847ab4f9ca4e843725699750301a235f76580ab9028d990398'
+sha256sums=('1d61389ab7d665ee5ac25b8d62543c41f81592118befd153475037221dd83382'
             'SKIP'
             'ba57a546c213e06c8ff79f7de3daf1927a04ba0dd24f90e6343c2783c9a09c56'
             '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
