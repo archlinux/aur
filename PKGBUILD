@@ -1,9 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+BUILDENV+=(!check)
+
 pkgname=python-dvc-render
 _pkgname=${pkgname#python-}
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for rendering DVC plots'
 arch=(any)
 license=(Apache)
@@ -12,7 +14,8 @@ _pydeps=(funcy
          tabulate)
 depends=(python
         "${_pydeps[@]/#/python-}")
-makedepends=(python-{build,installer} python-setuptools-scm{,-git-archive} python-wheel)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 checkdepends=(mypy
               python-pytest
               python-pytest-sugar
@@ -29,9 +32,9 @@ build() {
 
 check() {
 	cd "$_archive"
-	# local _pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-	# PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-${_pyver}"
-	# pytest
+	local _pyver=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-${_pyver}"
+	pytest
 }
 
 package() {
