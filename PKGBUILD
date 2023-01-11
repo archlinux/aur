@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.17.0_dev_395_g7b4c3c7bb1
+pkgver=v1.19.0_dev_286_g477a1cc40e
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -27,6 +27,7 @@ optdepends=(
     'sqlite: SQLite support'
 )
 backup=('etc/gitea/app.ini')
+options=(!lto)
 conflicts=('gitea')
 provides=('gitea')
 source=(

@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = Painless self-hosted Git service. Community managed fork of Gogs.
-	pkgver = v1.17.0_dev_395_g7b4c3c7bb1
+	pkgver = v1.19.0_dev_286_g477a1cc40e
 	pkgrel = 1
 	url = https://gitea.io/
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = gitea-git
 	optdepends = sqlite: SQLite support
 	provides = gitea
 	conflicts = gitea
+	options = !lto
 	backup = etc/gitea/app.ini
 	source = git+https://github.com/go-gitea/gitea.git#branch=main
 	source = gitea.tmpfiles
