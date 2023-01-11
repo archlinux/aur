@@ -1,6 +1,6 @@
 pkgbase = python-parselglossy
 	pkgdesc = Generic input parsing library, speaking in tongues.
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://parselglossy.readthedocs.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-parselglossy
 	makedepends = python-flit
 	depends = python
 	provides = python-parselglossy
-	source = https://files.pythonhosted.org/packages/py2.py3/p/parselglossy/parselglossy-0.7.0-py2.py3-none-any.whl
-	sha256sums = d245a9e83f31d3dbd17886269ae17cdd2bafb5bc8d5389aaf73fe96f52bd8e83
+	source = https://files.pythonhosted.org/packages/py2.py3/p/parselglossy/parselglossy-0.8.1-py2.py3-none-any.whl
+	sha256sums = 9d0978c51b1177fc4fe314d92bf096277ed520b93ea1b5cac84ca70b9b15baab
 
 pkgname = python-parselglossy
