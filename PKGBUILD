@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=mqtt-cpp
-pkgver=13.0.0
+pkgver=13.1.0
 pkgrel=0
 pkgdesc='MQTT client/server for C++14 based on Boost.Asio'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"2f0c85ac813cc6c99cc5b1ca02514ee6643abc39750bce541a362d1fcd281b8b9011cc39ddeaf4394fd3772904eed15e8ecbe6b3839caad13cae2b04201e682b"
+	"71907ba013d844d3b00c932b8598480067c0b2a2088ea95ae6d65a548145b851f6a25135f4e3c1e61cfc3831b024308e872f194bc9af7febe0036edc2e63b9d4"
 )
 
 prepare() {
