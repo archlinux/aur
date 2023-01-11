@@ -1,0 +1,4 @@
+SqlConvertTools/
+pkg/
+src/
+sqlconvert-tools-v*.pkg.tar.zst
