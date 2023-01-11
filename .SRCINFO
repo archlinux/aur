@@ -10,6 +10,8 @@ pkgbase = yas-scanner
 	depends = libxcb
 	depends = libx11
 	depends = libxrandr
+	depends = xdg-desktop-portal
+	optdepends = libdbus: screenshot on wayland
 	provides = yas-scanner
 
 pkgname = yas-scanner

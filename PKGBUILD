@@ -8,8 +8,9 @@ arch=('any')
 
 url="https://github.com/poly000/yas/tree/linux-x11-support"
 license=(unknown)
-depends=(xorg-xwininfo libxcb libx11 libxrandr)
-makedepends=("cargo")
+depends=(xorg-xwininfo libxcb libx11 libxrandr xdg-desktop-portal)
+makedepends=(cargo)
+optdepends=("libdbus: screenshot on wayland")
 provides=("yas-scanner")
 source=()
 
