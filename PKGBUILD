@@ -2,20 +2,30 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=0.8.4
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=(x86_64)
 url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
 license=(Apache LGPL2.1 MIT MPL2)
 depends=(gstreamer gtk4 dav1d libsodium libwebp)
-makedepends=(git rust meson cargo-c clang)
+makedepends=(git rust meson cargo-c clang hotdoc)
+options=(!lto)
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=${pkgver}")
 sha256sums=(SKIP)
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  cargo fetch --target x86_64-unknown-linux-gnu --manifest-path "${srcdir}/${pkgname}/Cargo.toml"
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
-  arch-meson build -D csound=disabled -D sodium=system
+  arch-meson build \
+    -D csound=disabled \
+    -D dav1d=enabled \
+    -D sodium=system
+
   ninja -C build
 }
 
