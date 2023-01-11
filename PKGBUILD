@@ -1,14 +1,14 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 pkgname=i3-layout-manager-git
 pkgver=r35.695ccf3
-pkgrel=2
+pkgrel=3
 pkgdesc="Saving, loading and managing layouts for i3wm"
 arch=('any')
 depends=('i3-wm' 'jq' 'rofi' 'xdotool' 'xorg-xrandr' 'vim' 'perl-anyevent-i3')
 url="https://github.com/klaxalk/i3-layout-manager"
 license=('GPL')
 makedepends=('git')
-provide=('i3-layout-manager')
+provides=('i3-layout-manager')
 conflicts=('i3-layout-manager')
 source=("git+https://github.com/klaxalk/i3-layout-manager.git")
 sha512sums=('SKIP')

@@ -1,7 +1,7 @@
 pkgbase = i3-layout-manager-git
 	pkgdesc = Saving, loading and managing layouts for i3wm
 	pkgver = r35.695ccf3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/klaxalk/i3-layout-manager
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = i3-layout-manager-git
 	depends = xorg-xrandr
 	depends = vim
 	depends = perl-anyevent-i3
+	provides = i3-layout-manager
 	conflicts = i3-layout-manager
 	source = git+https://github.com/klaxalk/i3-layout-manager.git
 	sha512sums = SKIP
