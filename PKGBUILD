@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=26.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -53,8 +53,8 @@ build() {
 check() {
   cd "$srcdir/bitcoin-cash-node-$pkgver/build"
 
-  msg2 'Testing... (skipped)'
-  #ninja check
+  msg2 'Testing...'
+  ninja test_bitcoin && src/test/test_bitcoin
 }
 
 package() {
