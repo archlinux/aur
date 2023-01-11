@@ -1,8 +1,8 @@
 # Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=python-runtest
 _name=runtest
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 epoch=
 pkgdesc="Numerically tolerant end-to-end test library for research software."
 arch=("x86_64")
@@ -23,7 +23,7 @@ changelog=
 source=(
   https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py2.py3-none-any.whl
 )
-sha256sums=("cc1d255767eeefce66420e4c616dd1cd8120d6c51ee83c2b15921ba1040784bc")
+sha256sums=("eee450556ca51aa7b94c289181d53cfa8ca67f362d6f1b5a5a0acd5dbbc5fb9b")
 package ()
 {
   cd "$srcdir"
