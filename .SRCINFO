@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-one-thing-git
+	pkgdesc = Put a single task or goal in your GNOME Shell top bar (Github version).
+	pkgver = 5.0.0.r0.gc4b6e72
+	pkgrel = 1
+	url = https://github.com/dantehemerson/one-thing
+	install = gnome-shell-extension-one-thing.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-one-thing
+	conflicts = gnome-shell-extension-one-thing
+	source = gnome-shell-extension-one-thing::git+https://github.com/dantehemerson/one-thing.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-one-thing-git
