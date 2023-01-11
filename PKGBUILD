@@ -7,7 +7,7 @@ pkgname=synfig-dev
 pkgver=1.5.1
 pkgrel=4
 pkgdesc="Professional vector animation program (CLI renderer only)"
-arch=(x86_64 armv7h armv8 riscv32 riscv64)
+arch=(x86_64 armv7h aarch64 riscv32 riscv64)
 url="https://synfig.org"
 license=('GPL3')
 depends=('libxml++2.6' 'libsigc++2.0' 'etl-dev>=1.5.0' 'imagemagick' 'ffmpeg4.4' 'fontconfig'
