@@ -1,0 +1,13 @@
+pkgbase = ps2-sdl_mixer
+	pkgdesc = A simple multi-channel audio mixer (Sony Playstation® 2 videogame system port).
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = custom
+	makedepends = ps2-sdk
+	makedepends = ps2-sdl
+	source = ps2-sdl_mixer::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-sdl_mixer
