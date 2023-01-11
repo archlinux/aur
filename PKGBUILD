@@ -3,12 +3,12 @@
 
 pkgname=gnome-radio
 pkgver=64.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Radio"
 license=(GPL3)
-depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad')
+depends=('libchamplain' 'geoclue' 'gst-plugins-base' 'gst-plugins-bad' 'geocode-glib')
 makedepends=('intltool' 'itstool' 'python')
 conflicts=('gnome-internet-radio-locator')
 replaces=('gnome-internet-radio-locator')
