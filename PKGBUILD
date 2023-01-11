@@ -42,7 +42,7 @@ conflicts=('caj2pdf-qt')
 source=("${pkgname}::https://github.com/sainnhe/caj2pdf-qt/archive/refs/tags/v${pkgver}.tar.gz"
         "caj2pdf::https://github.com/caj2pdf/caj2pdf/archive/${_caj2pdf_hash}.zip"
         'dev.sainnhe.caj2pdf-qt.desktop')
-md5sums=('4034b7fab5b70649244604c75b309086'
+md5sums=('0c818b614e135bad365cd1d90972ee21'
          '8fc97b57370fd00895049a80db37dd28'
          '3068f1cbf4fb1d8c04a9f8afb3fb7d54')
 
