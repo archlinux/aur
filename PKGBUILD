@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojo-mysql'
-pkgver='1.25'
+pkgver='1.26'
 pkgrel='1'
 pkgdesc="Mojolicious and Async MySQL/MariaDB"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/release/Mojo-mysql'
 source=("http://search.cpan.org/CPAN/authors/id/J/JH/JHTHORSEN/Mojo-mysql-${pkgver}.tar.gz")
-md5sums=('a1de6ea143151f548ba2565b8131ba7f')
-sha512sums=('c691b8191dee70e1b5a5bdf16f2b61312837febf497b37e16d6e7e1afdc3f6a07058f2b335e2fd4899e7c14d4c6cf6876cdc1b03c52d1e6988833bea45c39771')
+md5sums=('da988cdeb3f4e82d88ce7f2eac39a9eb')
+sha512sums=('693c1e36b00d939b9d199307065fb7051fd1a36be6f0017f6f5b40a2e61efb569956057d256bbde8bdf22d68a9e737c69c7814528a315815b6e459eb778c3621')
 _distdir="Mojo-mysql-${pkgver}"
 
 build() {
