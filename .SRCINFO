@@ -6,6 +6,8 @@ pkgbase = ps2-madplay
 	arch = x86_64
 	license = custom
 	makedepends = ps2-sdk
+	makedepends = ps2-libid3tag
+	makedepends = ps2-zlib
 	depends = ps2-libmad
 	source = ps2-madplay::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
 	sha256sums = SKIP
