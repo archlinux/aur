@@ -2,8 +2,8 @@
 
 pkgname=mozwire-git
 _pkgname=${pkgname%-git}
-pkgver=v0.8.0.r2.g69c3b49
-pkgrel=1
+pkgver=0.8.0.r2.g69c3b49
+pkgrel=2
 pkgdesc='A cross-platform client for MozillaVPN'
 url='https://github.com/NilsIrl/MozWire'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
