@@ -5,7 +5,7 @@ _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
 pkgver=r8.20230110.466ec1b
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes)."
 url='https://github.com/tinmarino/dev_one'
 arch=(
@@ -14,7 +14,7 @@ arch=(
   'i686'
   'x86_64'
 )
-license=('GPL')
+license=('GPL2')
 provides=(
   "${_pkgname}"
   "${_pkgname}${_typesuffix}"
