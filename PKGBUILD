@@ -1,6 +1,6 @@
 pkgname=xmltooling
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.2.3
+pkgrel=1
 pkgdesc="Shibboleth Project's XML processing library"
 url="https://wiki.shibboleth.net/confluence/display/OpenSAML/XMLTooling-C"
 license=(Apache)
@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("https://shibboleth.net/downloads/c++-opensaml/3.2.1/$pkgname-$pkgver.tar.gz"
         "https://shibboleth.net/downloads/c++-opensaml/3.2.1/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('b8ad9adee8d71914e700a06bb2ae1caa5d32806213a2f08490097ae22fbd405b'
+sha256sums=('4cff632057651b851e1efbe8ab1aff37fb815e1f2995987b2c9b01fdcb2bc75d'
             'SKIP')
 validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
