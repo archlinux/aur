@@ -20,26 +20,45 @@
 #
 
 #
-_pkg_name=codelite
-_pkg_ver=16.0.0-1
-#_commit=70ff062252ca69617fd227472a6492720dc19cfd
+_pkg_name="codelite"
+_pkg_ver="17.0.0"
+#_commit="70ff062252ca69617fd227472a6492720dc19cfd"
+
+# ctags submodule
+_ctags_pkg_name="eranif-ctags"
+_ctags_pkg_ident="52c724d1132d78ea44894bfe2eaca44f38a9bd85"
+_ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
+
+# dbgd/wxdap submodule
+_dbgd_pkg_name="eranif-dbgd"
+_dbgd_pkg_ident="6b4f0310c632776575495487f74b77c80732e747"
+_dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident:0:7}"
+
+# wxcfg/wx-config-msys2
+_wxcfg_pkg_name="eranif-wxcfg"
+_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
+_wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+
 
 # pkg
-pkgname=${_pkg_name}
+pkgname="${_pkg_name}"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=1
+pkgrel=0
 
+# generic: pre
+_pkg_ver="${pkgver}"
 
-# version
-_pkg_ident="${_pkg_ver}"
-_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
-##_pkg_name_ver="${_pkg_name}-${_pkg_ver//_/-}"
+# use version
+_pkg_ident="${pkgver}"
 
-# commit
-#pkg_ident="${_commit}"
-#pkg_name_ver="${_pkg_name}-${_commit}"
+# use commit
+#_pkg_ident="${_commit}"
+
+# generic: post
+_pkg_name_ver="${_pkg_name}-${_pkg_ident}"
+_pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 
 
 #
@@ -76,11 +95,17 @@ optdepends=('graphviz: callgraph visualization'
 conflicts=('codelite-unstable')
 
 source=(
-    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
-    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+    "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
+    "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
+    "codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/${_dbgd_pkg_ident}"
+    "codelite-wxcfg.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/${_wxcfg_pkg_ident}"
+    "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('96c6c3c0889ed05a176a569e9fb697a0f82c877efd49eaf1700a476b65fb091d'
+sha256sums=('ce07be2399c5b3907e5f713ce7ba2182aa8d90c44f90214f7ec841086f20fd0c'
+            '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
+            'b8feff844f0d355b7a5d2b04906be6e688021a66b9d7ed55a18d9f97cae47208'
+            '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -105,10 +130,29 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  cd "${srcdir}/${_pkg_name_ver}"
-  # temporary hack: remove wxcrafter
-  rm -rf wxcrafter
-  #patch -p0 < "${startdir}/CMakeLists.txt.patch"
+  cd "${srcdir}/${_pkg_name_ident}"
+
+  # submodule eranif-ctags
+  rmdir ctags
+  ln -s ../${_ctags_pkg_name_ident} ctags
+
+  # submodule eranif-dbgd to wxdap
+  rmdir wxdap
+  ln -s ../${_dbgd_pkg_name_ident} wxdap
+
+  # submodule eranif-wx-config-msys2 to wx-config-msys2
+  rmdir wx-config-msys2
+  ln -s ../${_wxcfg_pkg_name_ident} wx-config-msys2
+
+  # apply patches
+
+  #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
+
+  #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
+  #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
+
+  # temporary disable wxcrafter build: cl-16.1.0/wxcrafter subdir build fails with wx-3.1.7 - is this still a problem - re-test !!!
+  #mv wxcrafter wxcrafter.disable
 }
 
 
@@ -117,7 +161,7 @@ prepare()
 #
 build()
 {
-cd "${srcdir}/${_pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ident}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
@@ -126,6 +170,7 @@ export CXXFLAGS
 #WX_CONFIG="wx-config"
 #WX_CONFIG="wx-config-gtk2"
 #WX_CONFIG="wx-config-gtk3"
+#WX_CONFIG="/opt/wxgtk-dev/bin/wx-config"
 WX_CONFIG="wx-config"
 export WX_CONFIG
 
@@ -133,6 +178,7 @@ mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
 cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_PCH=0 -DWITH_WX_CONFIG=${WX_CONFIG} -DWITH_NATIVEBOOK=1 -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
+#-DCMAKE_INSTALL_RPATH=/opt/wxgtk-dev/lib
 
 #make -C "${BUILD_DIR}"
 cmake --build "${BUILD_DIR}"
@@ -144,7 +190,7 @@ cmake --build "${BUILD_DIR}"
 #
 package()
 {
-cd "${srcdir}/${_pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ident}"
 
 #make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
 DESTDIR="${pkgdir}" cmake --install "${BUILD_DIR}"
@@ -154,8 +200,8 @@ install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/lice
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 
 # universal-ctags experiment
-mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
-ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
+#mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
+#ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
 
 }
 
