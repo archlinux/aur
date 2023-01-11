@@ -1,0 +1,14 @@
+pkgbase = frigg
+	pkgdesc = Download & decrypt stock firmwares for Samsung devices
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nickelc/frigg
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = frigg-0.2.0.tar.gz::https://github.com/nickelc/frigg/archive/refs/tags/v0.2.0.tar.gz
+	sha512sums = f711b4a028fedac6eed1e8571522ea3c8fb05101130b8b9710ef91bcf3650f50754ccdd9953f7ede2f5fd85cca4cf5d7d73a783641431ffdd3e923d0a357dd9d
+
+pkgname = frigg
