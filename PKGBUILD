@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=handygccs-git
 _gitdir=HandyGCCS
-pkgver=23.01.r120.a3c8d21
+pkgver=23.01.r121.d4c5ce3
 pkgrel=1
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
@@ -11,7 +11,7 @@ groups=()
 depends=('python' 'python-evdev' 'dbus-python' 'python-bmi160-i2c')
 optdepends=()
 makedepends=('git')
-_tag=a3c8d215dbbf5637b61cce9a58e1df7460cdb07b
+_tag=d4c5ce361bd3ebbc3917571d35ae9cff2ee900a8
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
 pkgver() {
@@ -24,12 +24,10 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib/systemd/system
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
 	mkdir -p ${pkgdir}/usr/share/handygccs/scripts
-	mkdir -p ${pkgdir}/usr/share/libretro/autoconfig/udev
 
 	install -m644 usr/lib/modules-load.d/handycon.conf ${pkgdir}/usr/lib/modules-load.d
 	install -m644 usr/lib/systemd/system/handycon.service ${pkgdir}/usr/lib/systemd/system
 	install -m644 usr/lib/udev/rules.d/60-handycon.rules ${pkgdir}/usr/lib/udev/rules.d
 	install -m744 usr/share/handygccs/scripts/constants.py ${pkgdir}/usr/share/handygccs/scripts
 	install -m744 usr/share/handygccs/scripts/handycon.py ${pkgdir}/usr/share/handygccs/scripts
-	install -m644 usr/share/libretro/autoconfig/udev/HandyGCCS-Controller.cfg ${pkgdir}/usr/share/libretro/autoconfig/udev
 }
