@@ -10,7 +10,7 @@ _ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="libmad"
 pkgname="${_platform}-${_pkg}"
-pkgver="v1.3.0"
+pkgver="v0.15.1b"
 pkgrel=1
 _pkgdesc=("An high-quality MPEG audio decoder (Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 
 _iop_include="/usr/${_iop}/include"
 _ee_include="/usr/${_ee}/include"
-
+_ee_lib="/usr/${_ee}/lib"
 _sdk_include="/usr/include/${_platform}${_base}"
 _pe_include="/usr/${_ee}/include/pthread-embedded"
 
@@ -46,18 +46,13 @@ _ee_incs=(-I"${_sdk_include}")
           # -I"${_ee_include}")
 
 _ldflags=(-L"/usr/${_ee}/lib/pthread-embedded")
-          # -L"/usr/${_ee}/lib")
+          # -L"${_ee_lib}")
           # -L"/usr/${_ee}/lib/newlib-nano"
-          # "/usr/${_ee}/lib/newlib-nano/libc_nano.a"
-          # "/usr/${_ee}/lib/newlib-nano/libm_nano.a"
-          # "/usr/${_ee}/lib/newlib-nano/libg_nano.a"
-          # "/usr/${_ee}/lib/newlib-nano/crt0.o")
+          # "${_ee_lib}/newlib-nano/libc_nano.a"
+          # "${_ee_lib}/newlib-nano/libm_nano.a"
+          # "${_ee_lib}/newlib-nano/libg_nano.a"
+          # "${_ee_lib}/newlib-nano/crt0.o")
 
-_build_opts=(CFLAGS="${_cflags[*]}"
-             ${_make_opts[@]}
-             CPPFLAGS="${_cflags[*]}"
-             CXXFLAGS="${_cflags[*]}"
-             LDFLAGS="${_ldflags[*]}")
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -80,13 +75,6 @@ build() {
   export EE_CFLAGS=""
   export PS2SDKDATADIR=""
 
-  export CFLAGS="${_cflags[*]}"
-  export PS2SDK="${srcdir}/${_platform}${_base}"
-  export IOP_TOOL_PREFIX="${_iop}-elf-"
-  export EE_CC="${_ee}-gcc"
-  export EE_CFLAGS="${_ee_cflags[*]}"
-  export PS2SDKDATADIR="/usr/share/ps2sdk"
-
   local _ee_cflags=(-I"${_pe_include}"
                     '-include' "${srcdir}/${pkgname}/${_pkg}/ee/include/config.h"
                     -I"../include"
@@ -95,6 +83,14 @@ build() {
   local _make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}"
                     # LDFLAGS="${_ldgflags[*]}"
                     EE_CFLAGS="${_ee_cflags[*]}")
+
+  export CFLAGS="${_cflags[*]}"
+  export PS2SDK="${srcdir}/${_platform}${_base}"
+  export IOP_TOOL_PREFIX="${_iop}-elf-"
+  export EE_CC="${_ee}-gcc"
+  export EE_CFLAGS="${_ee_cflags[*]}"
+  export PS2SDKDATADIR="/usr/share/ps2sdk"
+
 
   cd "${srcdir}/${pkgname}"
   mkdir -p ${PS2SDK}
@@ -108,7 +104,7 @@ build() {
   EE_CC="${_ee}-gcc" \
   EE_INCS="${_ee_incs[*]}" \
   PS2SDKDATADIR="/usr/share/ps2sdk" \
-  make "${_make_opts[@]}" -C ee/src # madplay/ee/src # "${_build_opts[@]}" build
+  make "${_make_opts[@]}" -C ee/src
 }
 
 # shellcheck disable=SC2154
@@ -126,7 +122,7 @@ package() {
   cd "${srcdir}/${pkgname}"
   ls
   cd libmad
-  make DESTDIR="${pkgname}" "${_make_opts[@]}" -C "ee/src" install
+  make DESTDIR="${pkgdir}" "${_make_opts[@]}" -C "ee/src" install
   cd "${pkgdir}/usr"
   mv "ports" "${_ee}"
 }
