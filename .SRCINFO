@@ -1,0 +1,18 @@
+pkgbase = chayang-git
+	pkgdesc = Gradually dim the screen.
+	pkgver = r3.70c3b7c
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/chayang
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = git
+	depends = wayland
+	provides = chayang
+	conflicts = chayang
+	source = git+https://git.sr.ht/~emersion/chayang
+	sha256sums = SKIP
+
+pkgname = chayang-git
