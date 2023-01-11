@@ -1,6 +1,6 @@
 pkgbase = torrserver-git
 	pkgdesc = Torrent stream server
-	pkgver = MatriX.118.2.r1.g9485966
+	pkgver = MatriX.119.r0.gaa6d8af
 	pkgrel = 1
 	url = https://github.com/YouROK/TorrServer
 	install = torrserver.install
