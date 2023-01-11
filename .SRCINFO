@@ -9,6 +9,7 @@ pkgbase = hyprland-autoname-workspaces-bin
 	depends = glibc
 	depends = otf-font-awesome
 	depends = hyprland
+	provides = hyprland-autoname-workspaces
 	conflicts = hyprland-autoname-workspaces-git
 	conflicts = hyprland-autoname-workspaces
 	validpgpkeys = 4F7BC1FD97170A79267686A6FC9B1319726657D3,
