@@ -1,13 +1,16 @@
 pkgbase = apekey
 	pkgdesc = list and browse your XMonad keymap
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/doums/apekey
 	arch = x86_64
 	license = MPL2
 	makedepends = rust
+	makedepends = cargo
 	depends = fontconfig
-	source = apekey-0.1.2.tar.gz::https://github.com/doums/apekey/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = a5457d05faa858cbe589abb47f65b1654001e91ee3112fb83d12f0e9194fe7fb
+	provides = apekey
+	conflicts = apekey
+	source = apekey-0.1.3.tar.gz::https://github.com/doums/apekey/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 9124ad92b0e7a51242915cd5acaab3afa8b186f9289a5822a6a92ec2a9ff91f4
 
 pkgname = apekey
