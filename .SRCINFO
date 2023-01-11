@@ -1,0 +1,12 @@
+pkgbase = ps2-libconfig
+	pkgdesc = C/C++ Configuration File Library (Sony Playstation® 2 videogame system port).
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ps2-sdk
+	source = ps2-libconfig::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-libconfig
