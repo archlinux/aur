@@ -1,7 +1,7 @@
 pkgbase = beslyric-for-x-git
 	pkgdesc = An simple but useful lyrics generator, mainly for Netease Cloud Music.
 	pkgver = v3.2.0.r2.g8b06a38
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Beslyric-for-X/Beslyric-for-X
 	arch = i686
 	arch = x86_64
