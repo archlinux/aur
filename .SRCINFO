@@ -1,0 +1,13 @@
+pkgbase = ps2-ode
+	pkgdesc = High performance library for simulating rigid body dynamics (Sony Playstation® 2 videogame system port).
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	makedepends = ps2-sdk
+	source = ps2-ode::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-ode
