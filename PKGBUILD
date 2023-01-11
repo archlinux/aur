@@ -169,7 +169,7 @@ makedepends=(
     "e2fsprogs"
     "openssl-1.1"
     "lmdb"
-    "db"
+    "db5.3"
     "postgresql-libs"
     "unixodbc"
     "libfbclient"
