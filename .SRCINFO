@@ -1,7 +1,7 @@
 pkgbase = vim-awesome-git
 	pkgdesc = A CLI for searching, viewing, and installing the vim plugins described at vimawesome.com
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chuck-flowers/vim-awesome-cli
 	arch = any
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = vim-awesome-git
 	makedepends = gzip
 	makedepends = make
 	makedepends = pandoc
-	makedepends = sudo
 	depends = bash
 	depends = coreutils
 	depends = curl
