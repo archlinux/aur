@@ -1,13 +1,13 @@
 pkgbase = libcs50-git
 	pkgdesc = CS50 Library for C (development version)
-	pkgver = 10.1.0.r40.gb9f4bd7
+	pkgver = 11.0.1.r4.gc5bead0
 	pkgrel = 1
 	url = https://github.com/cs50/libcs50
+	install = libcs50.install
 	arch = x86_64
 	arch = i686
 	groups = cs50
-	license = MIT
-	makedepends = asciidoctor
+	license = GPL3
 	makedepends = git
 	provides = libcs50
 	conflicts = libcs50
