@@ -6,7 +6,6 @@ pkgbase = smiley-sans-git
 	arch = any
 	license = OFL-1.1
 	makedepends = git
-	makedepends = python-brotli
 	makedepends = python-fontmake
 	makedepends = python-fonttools
 	depends = fontconfig

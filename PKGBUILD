@@ -2,7 +2,7 @@
 
 pkgbase=smiley-sans-git
 pkgname=({ttf,otf,woff2}-$pkgbase)
-pkgver=1.1.1.r0.gb02c006
+pkgver=1.1.1.r2.g2c2945c
 pkgrel=1
 pkgdesc='得意黑 Smiley Sans 开发版'
 url="https://github.com/atelier-anchor/smiley-sans"
