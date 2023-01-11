@@ -3,10 +3,10 @@
 pkgname=python-xlmhg
 _name=xlmhg
 pkgver=2.5.4
-pkgrel=1
-pkgdesc='XL-mHG: A Semiparametric Test for Enrichment. https://doi.org/10.1371/journal.pone.0143196'
-arch=('x86_64')
-url='https://github.com/flo-compbio/xlmhg'
+pkgrel=2
+pkgdesc='Efficient Python implementation of the semiparametric XL-mHG test for enrichment'
+arch=(x86_64)
+url=https://github.com/flo-compbio/xlmhg
 license=(BSD)
 depends=(
          'python'

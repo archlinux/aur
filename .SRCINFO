@@ -1,7 +1,7 @@
 pkgbase = python-xlmhg
-	pkgdesc = XL-mHG: A Semiparametric Test for Enrichment. https://doi.org/10.1371/journal.pone.0143196
+	pkgdesc = Efficient Python implementation of the semiparametric XL-mHG test for enrichment
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flo-compbio/xlmhg
 	arch = x86_64
 	license = BSD
