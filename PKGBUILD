@@ -35,7 +35,7 @@ build() {
     fi
 
     cd yas
-    cargo build --release --locked --target-dir target
+    cargo build --release --target-dir target
 }
 
 package() {
