@@ -1,8 +1,8 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
-	url = https://jelmer.uk/code/ognibuild
+	url = https://github.com/jelmer/ognibuild
 	arch = any
 	license = GPL2
 	makedepends = python-build
@@ -14,10 +14,7 @@ pkgbase = ognibuild
 	depends = python-ruamel-yaml
 	depends = python-setuptools
 	depends = python-toml
-	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.16.tar.gz
-	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.16.tar.gz.asc
-	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
-	sha256sums = d594ae631b9621ac6753869a67b8cc2b7aaab62afa53db51a4de3d08a376a822
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.17.tar.gz
+	sha256sums = b0300a43dd7d75364736a78c4aa1c9d6101648164dbb31bc47c65788993568f7
 
 pkgname = ognibuild
