@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-gr-framework-git"
-pkgver="1.22.0.r1.gfcb4dec"
+pkgver="1.22.0.r4.ga7c91db"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications (Python bindings)."
 arch=("any")
