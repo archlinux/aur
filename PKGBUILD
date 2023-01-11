@@ -32,7 +32,7 @@ source=(
     "XposedInstaller_3.1.5.apk::http://web.archive.org/web/20190807034045if_/https://dl.xda-developers.com/4/3/9/3/0/8/2/XposedInstaller_3.1.5.apk?key=vp4YYV_q9R9UXFJdEqPa6w&ts=1565149304"
     "magisk-init-rc.patch"
     "init-magisk.sh"
-    "http://web.archive.org/web/20210420103020if_/https://xnopyt.info/busybox"
+    "https://web.archive.org/web/20211029184627if_/https://xnopyt.info/busybox"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
