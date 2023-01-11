@@ -3,8 +3,8 @@
 pkgbase=alimama-shuheiti
 pkgname=({ttf,otf,woff,woff2}-$pkgbase)
 pkgver=1.0.0
-pkgrel=1
-kgdesc="阿里妈妈数黑体 AlimamaShuHeiTi"
+pkgrel=2
+pkgdesc="阿里妈妈数黑体 AlimamaShuHeiTi"
 url="https://fonts.alibabagroup.com/#/more"
 makedepends=(libarchive)
 license=("Custom")
