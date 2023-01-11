@@ -3,7 +3,7 @@
 pkgbase=dataspell
 pkgname=(dataspell dataspell-jre)
 pkgver=2022.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python IDE for data scientists'
 arch=('x86_64' 'i686')
 license=('custom:jetbrains')
@@ -31,7 +31,7 @@ package_dataspell() {
   cp -a "${srcdir}"/dataspell-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
-  chmod +x /opt/dataspell/plugins/r-plugin/rwrapper*linux
+  chmod +x "${pkgdir}"/opt/dataspell/plugins/r-plugin/rwrapper*linux
 
   ln -s /opt/${pkgbase}/bin/${pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
   install -D -m 644 "${srcdir}"/jetbrains-${pkgbase}.desktop "${pkgdir}"/usr/share/applications/
