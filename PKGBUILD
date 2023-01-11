@@ -16,7 +16,7 @@ _pkgdesc=("A library for portable low-level access to a video framebuffer, audio
           "output, mouse, and keyboard (Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
-license=('custom')
+license=(LGPL)
 _ns="${_platform}${_base}"
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
