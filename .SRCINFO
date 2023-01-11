@@ -1,7 +1,7 @@
 pkgbase = ryusak
 	pkgdesc = Allows you to download saves and shaders for Switch emulators.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ecks1337/RyuSAK
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = ryusak
 	makedepends = jq
 	makedepends = moreutils
 	makedepends = git
-	depends = electron
+	depends = electron21
 	source = ryusak-1.6.1.tar.gz::https://github.com/Ecks1337/RyuSAK/archive/refs/tags/v1.6.1.tar.gz
 	source = ryusak.sh
 	source = ryusak.desktop

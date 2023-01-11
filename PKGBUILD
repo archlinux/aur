@@ -2,8 +2,8 @@
 
 pkgname=ryusak
 pkgver=1.6.1
-_electron=electron
-pkgrel=1
+_electron=electron21
+pkgrel=2
 pkgdesc="Allows you to download saves and shaders for Switch emulators."
 arch=('any')
 url="https://github.com/Ecks1337/RyuSAK"
@@ -25,9 +25,13 @@ prepare(){
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
+
+	# we are on linux, we do not need macos-alias, which causes build failure
 	jq 'del(.devDependencies."macos-alias")' package.json | sponge package.json
 
+	# convert icon
 	convert src/assets/icon.ico -thumbnail 128x128 -alpha on -background none -flatten ${pkgname}.png
+
 	sed -i "s|_ELECTRON_|${_electron}|" $srcdir/${pkgname}.sh
 }
 build(){
