@@ -1,7 +1,7 @@
 pkgbase = r-parameters
 	pkgdesc = Processing of Model Parameters
-	pkgver = 0.20.0
-	pkgrel = 3
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=parameters
 	arch = any
 	license = GPL
@@ -116,7 +116,7 @@ pkgbase = r-parameters
 	optdepends = r-truncreg
 	optdepends = r-vgam
 	optdepends = r-wrs2
-	source = https://cran.r-project.org/src/contrib/parameters_0.20.0.tar.gz
-	sha256sums = 37d1141baa0fe347bad58dc1d53bbd8802be5b6d99b5d70fc3baa0010916c99b
+	source = https://cran.r-project.org/src/contrib/parameters_0.20.1.tar.gz
+	sha256sums = 53435152750c54eae7a10734f7a62f3a56cb544b52eddd92a52fe42f50396ff7
 
 pkgname = r-parameters
