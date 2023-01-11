@@ -44,13 +44,12 @@ md5sums=('SKIP')
 noextract=()
 
 build() {
-	cd "vim-awesome-cli"
+	cd $srcdir/vim-awesome-cli
 	make all
 }
 
 package() {
-	echo "package"
-	cd "vim-awesome-cli"
-	make install
+	cd $srcdir/vim-awesome-cli
+	make PREFIX=$pkgdir/usr/local install
 }
 
