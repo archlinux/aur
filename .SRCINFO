@@ -1,9 +1,11 @@
 pkgbase = opcut
 	pkgdesc = Cutting stock problem optimizer
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bozokopic/opcut
-	arch = any
+	arch = x86_64
+	arch = armv7l
+	arch = aarch64
 	license = GPL3
 	makedepends = python-hat-doit
 	makedepends = python-installer
