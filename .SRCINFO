@@ -4,7 +4,7 @@ pkgbase = ps2-libid3tag
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2sdk-ports
 	arch = x86_64
-	license = custom
+	license = GPL2
 	makedepends = ps2-sdk
 	depends = ps2-libmad
 	source = ps2-libid3tag::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
