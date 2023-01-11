@@ -1,8 +1,0 @@
-[Desktop Entry]
-StartupNotify=True
-Exec=/opt/atelierb/4.2.1/startAB
-GenericName=atelierb
-Name=Atelier B 4.2.1
-Type=Application
-Icon=/opt/atelierb/4.2.1/bbin/AtelierB128.png
-

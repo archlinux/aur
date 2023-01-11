@@ -3,6 +3,7 @@ pkgbase = atelierb
 	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://www.atelierb.eu
+	install = atelierb.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -13,7 +14,7 @@ pkgbase = atelierb
 	depends = libsm
 	optdepends = texlive-bin
 	optdepends = firefox
-	source = https://www.atelierb.eu/wp-content/uploads/2021/12/atelierb-free-4.7.1p1-linux_x64.deb
-	sha256sums = SKIP
+	source = https://www.atelierb.eu/wp-content/uploads/2021/12/atelierb-free-4.7.1p1-linux_x64.tar.gz
+	sha256sums = ebe5a940783bb1162db56c8f25eb841fa9a55fb1b73e506bc0a65338c49a6ab5
 
 pkgname = atelierb
