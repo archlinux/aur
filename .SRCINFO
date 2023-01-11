@@ -1,0 +1,21 @@
+pkgbase = alimama-shuheiti
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.alibabagroup.com/#/more
+	arch = any
+	license = Custom
+	makedepends = libarchive
+	source = alimama-shuheiti-1.0.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlimamaShuHeiTi.zip
+	sha256sums = 4a59fb4c30cd6e58581c1a73789264bbda65512e6329488ec4a41b5aaeafbd63
+
+pkgname = ttf-alimama-shuheiti
+	pkgdesc = (ttf)
+
+pkgname = otf-alimama-shuheiti
+	pkgdesc = (otf)
+
+pkgname = woff-alimama-shuheiti
+	pkgdesc = (woff)
+
+pkgname = woff2-alimama-shuheiti
+	pkgdesc = (woff2)
