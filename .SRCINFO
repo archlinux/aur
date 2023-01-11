@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-git
 	pkgdesc = Panel for the Xfce desktop environment - git checkout
-	pkgver = 4.15.3+75+g09a78c28
+	pkgver = 4.19.0+2+g7341b4c1
 	pkgrel = 1
 	url = http://docs.xfce.org/xfce/xfce4-panel/start
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = xfce4-panel-git
 	depends = libxfce4util>=4.15.2
 	depends = libdbusmenu-gtk3
 	optdepends = xfce4-panel-profiles
-	provides = xfce4-panel=4.15.3
+	provides = xfce4-panel=4.19.0
 	conflicts = xfce4-panel
 	conflicts = xfce4-statusnotifier-plugin
 	replaces = xfce4-statusnotifier-plugin
@@ -33,4 +33,3 @@ pkgbase = xfce4-panel-git
 	sha256sums = SKIP
 
 pkgname = xfce4-panel-git
-

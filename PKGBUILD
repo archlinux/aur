@@ -5,7 +5,7 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-git
-pkgver=4.15.3+75+g09a78c28
+pkgver=4.19.0+2+g7341b4c1
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment - git checkout"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
