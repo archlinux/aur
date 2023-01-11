@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="80"
 _suffix=""
-pkgver="8.0.26"
-pkgrel="3"
+pkgver="8.0.27"
+pkgrel="1"
 pkgbase="php80"
-pkgdesc="PHP 8.0.26 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.0.27 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -209,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "net-snmp"
     "openssl-1.1"
 )
 _ext_depends_ftp=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "openssl-1.1"
 )
 _ext_depends_intl=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "icu"
 )
 _ext_depends_imap=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "pam"
     "krb5"
     "c-client"
@@ -230,45 +230,45 @@ _ext_depends_imap=(
     "openssl-1.1"
 )
 _ext_depends_gd=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "gd"
 )
 _ext_depends_mysql=(
-    "php80=8.0.26"
-    "php80-pdo=8.0.26"
-    "php80-openssl=8.0.26"
+    "php80=8.0.27"
+    "php80-pdo=8.0.27"
+    "php80-openssl=8.0.27"
 )
 _ext_depends_dba=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "unixodbc"
-    "php80-pdo=8.0.26"
+    "php80-pdo=8.0.27"
 )
 _ext_depends_pgsql=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "postgresql-libs"
-    "php80-pdo=8.0.26"
+    "php80-pdo=8.0.27"
 )
 _ext_depends_firebird=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "libfbclient"
-    "php80-pdo=8.0.26"
+    "php80-pdo=8.0.27"
 )
 _ext_depends_sqlite=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "sqlite"
-    "php80-pdo=8.0.26"
+    "php80-pdo=8.0.27"
 )
 _ext_depends_mbstring=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php80=8.0.26"
+    "php80=8.0.27"
     "krb5"
     "e2fsprogs"
     "openssl-1.1"
@@ -504,7 +504,7 @@ build() {
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
         export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
-    elif((_build_forced_openssl_11)); then
+    elif ((_build_forced_openssl_11)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
         export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
@@ -1524,7 +1524,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '0765bfbe640dba37ccc36d2bc7c7b7ba3d2c3381c9cd4305f66eca83e82a40b3'
+            'f942cbfe2f7bacbb8039fb79bbec41c76ea779ac5c8157f21e1e0c1b28a5fc3a'
             '9281736f0cbc60699992f92359a62d861c9c53391fd53e3826e77710ab981718'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
