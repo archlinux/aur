@@ -5,7 +5,7 @@
 
 
 pkgbase=regolith-de
-pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-gaps-wm-dbg i3-snapshot i3xrocks gnome-flashback ubiquity-slideshow-regolith)
+pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-snapshot i3xrocks gnome-flashback ubiquity-slideshow-regolith)
         regolith-i3xrocks # allll the i3xrocks shit
 	i3xrocks-app-launcher
 	i3xrocks-battery
@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=13
+pkgrel=14
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -143,7 +143,7 @@ sha256sums=('6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996'
             'bf588ec5f3434d73db05085a2b6b08d8dde4383dd2a1d4a74030983d2cbc929e'
             'eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370'
             'SKIP'
-            '734b6fdfbfc78cd9c41b1c32e59ef15671a0ef650719fdedfc47f50c5ec633ad'
+            'a851555a8af437bb3e3219a638f1b77c6d1b259b11f2d11a7cd82d9440d81fda'
             '705c95cdfd5847cd6c7fafe123cbdc6c3f404407118967797210189157c52e5c'
             'ffc32c177754990e7f5f7126415bd8f2d210dd875ad5ae43b057299a7d395905'
             '5f2b29ef8fb363a1121befa276d7e6251c8961b8819ac2d60a5ec2006f126c97')
@@ -203,7 +203,7 @@ package_regolith-i3 () {
 pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational dependencies"
     license=('MIT')
     arch=('x86_64')
-    depends=('i3-gaps' 'i3status' 'xorg-server' 'xcb-util-keysyms' 'xcb-util-wm'  'libev'
+    depends=('i3-wm' 'i3status' 'xorg-server' 'xcb-util-keysyms' 'xcb-util-wm'  'libev'
              'yajl'  'startup-notification'  'pango'  'perl' 'xorg-server' 'xorg-xrdb'
              'xcb-util-xrm'  'libxkbcommon-x11' 'python-i3ipc' 'gnome-flashback' 
              'accountsservice' 'cups-pk-helper' 'libgtop' 'gnome-control-center' 'gnome-desktop' 
@@ -534,7 +534,7 @@ package_regolith-desktop-config () {
     depends=('rofi' 'adobe-source-code-pro-fonts')
     optdepends=('lightdm: For the Regolith LightDM customization' 
 		'regolith-i3xrocks: For i3xrocks (i3blocks) support'
-	        'i3-gaps: For i3-gaps config support'
+	        'i3-wm: For i3-gaps config support - as of 4.22-2, i3-gaps has been upstreamed into i3-wm'
 		'picom: For compositing configuration')
     groups=('regolith-de')
 
