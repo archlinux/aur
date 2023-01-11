@@ -1,10 +1,11 @@
---- crosstool-config-overrides.old	2017-07-08 15:08:14.192759182 +0100
-+++ crosstool-config-overrides	2017-07-08 15:08:50.223178640 +0100
+--- a/crosstool-config-overrides
++++ b/crosstool-config-overrides
 @@ -1,5 +1,6 @@
  # Building static toolchain causes problems on some distros which
  # by default don't install static libs for all required dependencies
 -#CT_STATIC_TOOLCHAIN=y
 +CT_STATIC_TOOLCHAIN=y
  CT_LIBC_NEWLIB_ENABLE_TARGET_OPTSPACE=y
+-
 +CT_EXTRA_CFLAGS_FOR_BUILD="--std=c++11"
 +CT_EXTRA_CFLAGS_FOR_HOST="--std=c++11"

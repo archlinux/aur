@@ -1,7 +1,6 @@
 --- a/config/companion_libs/expat.in
 +++ b/config/companion_libs/expat.in
-@@ -6,9 +6,9 @@
- choice
+@@ -6,9 +6,9 @@ choice
  # Don't remove next line
  # CT_INSERT_VERSION_BELOW
  
@@ -13,8 +12,7 @@
  
  endchoice
  
-@@ -16,4 +16,4 @@
- config EXPAT_VERSION
+@@ -16,4 +16,4 @@ config EXPAT_VERSION
      string
  # Don't remove next line
  # CT_INSERT_VERSION_STRING_BELOW
