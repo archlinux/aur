@@ -1,0 +1,13 @@
+pkgbase = ps2-sdl_gfx
+	pkgdesc = SDL graphics drawing primitives and other support functions (Sony Playstation® 2 videogame system port).
+	pkgver = 2.0.13
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = LGPL
+	makedepends = ps2-sdk
+	makedepends = ps2-sdl
+	source = ps2-sdl_gfx::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-sdl_gfx
