@@ -1,12 +1,18 @@
 #!/bin/sh
 
-export XASH3D_RODIR="/opt/xash3d/"
-export XASH3D_BASEDIR="$HOME/.xash3d/"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${XASH3D_RODIR}"
-
+if [ -z "$XASH3D_BASEDIR" ]; then
+    if [ -n "$XDG_DATA_HOME" ]; then
+        export XASH3D_BASEDIR="$XDG_DATA_HOME/xash3d/"
+    else
+        export XASH3D_BASEDIR="$HOME/.xash3d/"
+    fi
+fi
 if [ ! -d "$XASH3D_BASEDIR" ]; then
-    echo "$XASH3D_BASEDIR not found. Create a new one and put gamefiles into it (e.g. ${XASH3D_BASEDIR}valve/)"
+    echo "$XASH3D_BASEDIR not found. Create a new one and put gamefiles into it"
     exit 1
 fi
+
+export XASH3D_RODIR="/opt/xash3d/"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${XASH3D_RODIR}:${XASH3D_BASEDIR}"
 
 /opt/xash3d/xash3d "$@"

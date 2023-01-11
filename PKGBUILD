@@ -1,7 +1,7 @@
 # Maintainer: r4v3n6101
 
 pkgname=xash3d-fwgs-git
-pkgver=r2045.360dc4f7
+pkgver=r2278.ca3b0e62
 pkgrel=1
 pkgdesc="A custom GoldSrc engine implementation"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 provides=('xash3d')
 conflicts=('xash3d-hlsdk' 'xash3d-git')
 source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs" xash3d)
-md5sums=('SKIP' '6daaa685de3566fb45708de6c45581ff')
+md5sums=('SKIP' '841343b918060f86389afcbbf3672cc2')
 
 pkgver() {
     cd $srcdir/$pkgname

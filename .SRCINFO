@@ -1,6 +1,6 @@
 pkgbase = xash3d-fwgs-git
 	pkgdesc = A custom GoldSrc engine implementation
-	pkgver = r2045.360dc4f7
+	pkgver = r2278.ca3b0e62
 	pkgrel = 1
 	url = http://xash.su/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = xash3d-fwgs-git
 	source = xash3d-fwgs-git::git+https://github.com/FWGS/xash3d-fwgs
 	source = xash3d
 	md5sums = SKIP
-	md5sums = 6daaa685de3566fb45708de6c45581ff
+	md5sums = 841343b918060f86389afcbbf3672cc2
 	depends_x86_64 = lib32-freetype2
 	depends_x86_64 = lib32-fontconfig
 	depends_x86_64 = lib32-libpulse
