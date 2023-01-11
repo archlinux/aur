@@ -1,0 +1,45 @@
+diff --git a/dump1090.c b/dump1090.c
+index 60882fc..1482224 100644
+--- a/dump1090.c
++++ b/dump1090.c
+@@ -29,6 +29,9 @@
+ //
+ #include "coaa.h"
+ #include "dump1090.h"
++
++struct modes Modes;
++
+ //
+ // ============================= Utility functions ==========================
+ //
+diff --git a/dump1090.h b/dump1090.h
+index 9ad4de0..283e760 100644
+--- a/dump1090.h
++++ b/dump1090.h
+@@ -235,10 +235,10 @@ struct stDF {
+     uint64_t         llTimestamp;                // Timestamp at which the this packet was received
+     uint32_t         addr;                       // Timestamp at which the this packet was received
+     unsigned char    msg[MODES_LONG_MSG_BYTES];  // the binary
+-} tDF;
++};
+ 
+ // Program global state
+-struct {                             // Internal state
++extern struct modes {                             // Internal state
+     pthread_t       reader_thread;
+ 
+     pthread_mutex_t data_mutex;      // Mutex to synchronize buffer access
+diff --git a/view1090.c b/view1090.c
+index 0b9b8b9..cc072fc 100644
+--- a/view1090.c
++++ b/view1090.c
+@@ -29,6 +29,9 @@
+ //
+ #include "coaa.h"
+ #include "view1090.h"
++
++struct modes Modes;
++
+ //
+ // ============================= Utility functions ==========================
+ //
