@@ -1,7 +1,7 @@
 # Maintainer: Timothy Flowers <t_chuck_flowers@yahoo.com>
 pkgname=vim-awesome-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A CLI for searching, viewing, and installing the vim plugins described at vimawesome.com"
 arch=('any')
