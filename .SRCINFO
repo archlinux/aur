@@ -1,0 +1,12 @@
+pkgbase = ps2-romfs
+	pkgdesc = Open a binary image in memory as a directory (Sony Playstation® 2 videogame system port).
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = GPL2
+	makedepends = ps2-sdk
+	source = ps2-romfs::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-romfs
