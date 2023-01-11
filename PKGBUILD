@@ -1,14 +1,14 @@
 # Maintainer: Cyrinux <pkgbuilds AT levis DOT name>
 pkgname=nmtrust-git
 pkgver=r58.464a5f0
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple framework for determining network trust with NetworkManager"
 arch=('any')
 depends=('systemd' 'networkmanager')
 url="https://github.com/pigmonkey/nmtrust"
 license=('GPL')
 makedepends=('git')
-provide=('nmtrust')
+provides=('nmtrust')
 conflicts=('nmtrust')
 source=("git+https://github.com/pigmonkey/nmtrust.git")
 sha512sums=('SKIP')
