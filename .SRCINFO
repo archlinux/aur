@@ -1,12 +1,34 @@
-pkgbase = ps2-ports
-	pkgdesc = Ports of useful libraries to Sony Playstation® 2 videogame system SDK.
+pkgbase = ps2-libmad
+	pkgdesc = Ports of useful libraries for Sony Playstation® 2 videogame system SDK.
 	pkgver = v1.3.0
 	pkgrel = 1
 	url = https://github.com/ps2dev/ps2sdk-ports
 	arch = x86_64
 	license = custom
-	depends = ps2-toolchain
-	source = ps2-ports::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	makedepends = ps2-sdk
+	depends = ps2-aalib
+	depends = ps2-expat
+	depends = ps2-freetype
+	depends = ps2-libconfig
+	depends = ps2-libjpeg
+	depends = ps2-libid3tag
+	depends = ps2-libmad
+	depends = ps2-libmikmod
+	depends = ps2-libpng
+	depends = ps2-libtiff
+	depends = ps2-libyaml
+	depends = ps2-lua
+	depends = ps2-lz4
+	depends = ps2-madplay
+	depends = ps2-romfs
+	depends = ps2-sdl
+	depends = ps2-sdl_gfx
+	depends = ps2-sdl_image
+	depends = ps2-sdl_mixer
+	depends = ps2-sdl_ttf
+	depends = ps2-xz
+	depends = ps2-zlib
+	source = ps2-libmad::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
 	sha256sums = SKIP
 
-pkgname = ps2-ports
+pkgname = ps2-libmad
