@@ -1,13 +1,14 @@
 pkgbase = xcfun-git
 	pkgdesc = Exchange-Correlation functionals with arbitrary order derivatives
 	pkgver = 2.1.1.r1.gf87ca0e
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dftlibs.org/xcfun/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = python
 	provides = xcfun
 	provides = xcfun-pyscf
 	conflicts = xcfun
@@ -16,4 +17,3 @@ pkgbase = xcfun-git
 	md5sums = SKIP
 
 pkgname = xcfun-git
-
