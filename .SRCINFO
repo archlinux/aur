@@ -1,6 +1,6 @@
 pkgbase = rutoken-plugin
 	pkgdesc = The Rutoken plugin is necessary for connecting USB devices with the browser, it allows you to identify devices and work with them.
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://www.rutoken.ru/support/download/rutoken-plugin/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = rutoken-plugin
 	makedepends = grep
 	makedepends = coreutils
 	makedepends = bash
-	source_i686 = rutoken-plugin-4.6.0.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.6.0.0/Linux/libnpRutokenPlugin-4.6.0-1.i686.rpm
-	sha256sums_i686 = 8c3649cfb0a0f65cb1d88cb33310c11edbff66cee064af1f5198bcad7d97c9cc
-	source_x86_64 = rutoken-plugin-4.6.0.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.6.0.0/Linux/libnpRutokenPlugin-4.6.0-1.x86_64.rpm
-	sha256sums_x86_64 = a42596b2cf28354c8667cc86bcad98eaf450e6024f39316a3c570b3cdc8481f8
+	source_i686 = rutoken-plugin-4.7.0.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.7.0.0/Linux/libnpRutokenPlugin-4.7.0-1.i686.rpm
+	sha256sums_i686 = 6bd81a508885d9fea273ecd53cd7ba8e238c28ba054f5c385a444e2e722ead9b
+	source_x86_64 = rutoken-plugin-4.7.0.rpm::https://download.rutoken.ru/Rutoken_Plugin/4.7.0.0/Linux/libnpRutokenPlugin-4.7.0-1.x86_64.rpm
+	sha256sums_x86_64 = 6805814b652b01bd149ac8fa5afea1cce7dbf2ea55cece34d5488a9c8ec3b902
 
 pkgname = rutoken-plugin
