@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.27"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php80"
 pkgdesc="PHP 8.0.27 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -240,7 +240,7 @@ _ext_depends_mysql=(
 )
 _ext_depends_dba=(
     "php80=8.0.27"
-    "db"
+    "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
@@ -1525,7 +1525,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             'f942cbfe2f7bacbb8039fb79bbec41c76ea779ac5c8157f21e1e0c1b28a5fc3a'
-            '9281736f0cbc60699992f92359a62d861c9c53391fd53e3826e77710ab981718'
+            'c9ab253399e58e24cf23cda5edd72a331b7b9aa9b2ac217b0ee04706cc67e93e'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             'de55d2e5ea182c244b51f2e23fca9e6d83623fe269a729fd7bebd1e70e693aac')
