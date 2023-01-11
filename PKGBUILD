@@ -34,17 +34,9 @@ check() {
 package() {
   cd "$pkgname"
 
-  # create directories
-  install -vd \
-    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
-    "$pkgdir/usr/share/common-lisp/systems"
-
   # library
+  install -vd "$pkgdir/usr/share/common-lisp/source/$_pkgname"
   cp -vr benchmark src testing ./*.asd "$pkgdir/usr/share/common-lisp/source/$_pkgname"
-  pushd "$pkgdir/usr/share/common-lisp/systems"
-  ln -s "../source/$_pkgname/$_pkgname.asd" .
-  ln -s "../source/$_pkgname/$_pkgname-text.asd" .
-  popd
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.org
