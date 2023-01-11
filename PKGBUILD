@@ -96,4 +96,6 @@ package() {
   cd "${srcdir}/${_platform}-ports/"
   PS2SDKDATADIR="/usr/share/ps2sdk" \
   make DESTDIR="${pkgdir}" "${_make_opts[@]}" -C "${_pkg}/src" install
+  cd "${pkgdir}/usr"
+  mv "ports" "${_ee}"
 }
