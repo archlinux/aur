@@ -1,10 +1,11 @@
 # Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: kleintux <reg-archlinux@klein.tuxli.ch>
 
 pkgname=system-config-users
 pkgver=1.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical interface for administering users and groups'
-arch=('i686' 'pentium4' 'x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 url='https://than.fedorapeople.org/system-config-users'
 license=('GPL')
 depends=('libselinux-python2'
@@ -15,7 +16,8 @@ depends=('libselinux-python2'
          'rpm-tools'
          'selinux-python2'
          'xdg-utils')
-makedepends=('intltool')
+makedepends=('intltool'
+             'git')
 source=('system-config-users::git+https://gitlab.com/tallero/system-config-users.git#commit=dabb1f8b')
 sha256sums=('SKIP')
 
