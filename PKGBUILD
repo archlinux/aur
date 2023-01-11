@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=26.0.0
-pkgrel=0
+pkgrel=2
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -15,14 +15,16 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin.service
         bitcoin-reindex.service
         bitcoin.install
-        bitcoin.desktop)
+        bitcoin.desktop
+        db.patch)
 sha256sums=('c87dfdf97ec8a1ee5ddb6447fcdea6e42714c79bb9424e5312dba5b083a8fcd2'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
             '497dbeefb9cd9792757a9b6e1fbfd92710d19990ee2959add6c30533ae40b6f6'
             'e2d6c370fa9f1564013ce0d255f764b8972284d5909d509a306a43994a49a113'
-            '0ba95ed8914f1c3d7fb3601a9735d53be0445aa070a003f7938bfff754677578')
+            '0ba95ed8914f1c3d7fb3601a9735d53be0445aa070a003f7938bfff754677578'
+            '4b374456a28d1172933aad0b285aa7dd4e9d67058b9b9958dd0065c6c46acba1')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt' 'bitcoin-seeder')
@@ -31,6 +33,7 @@ install=bitcoin.install
 
 build() {
   cd "$srcdir/bitcoin-cash-node-$pkgver"
+  patch -p0 < ../db.patch
 
   msg2 'Building...'
   mkdir -p build

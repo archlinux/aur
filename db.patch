@@ -1,0 +1,11 @@
+--- cmake/modules/FindBerkeleyDB.cmake	2023-01-11 10:54:39.194590964 -0500
++++ cmake/modules/FindBerkeleyDB_new.cmake	2023-01-11 10:55:04.280263188 -0500
+@@ -43,6 +43,8 @@
+ 		endforeach()
+ 	endforeach()
+ 
++  list(REVERSE ${VARIANTS})
++
+ 	set(${VARIANTS} ${${VARIANTS}} PARENT_SCOPE)
+ endfunction()
+ 
