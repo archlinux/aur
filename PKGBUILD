@@ -30,7 +30,7 @@ source=(
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"
     "magisk-init-rc.patch"
     "init-magisk.sh"
-    "http://web.archive.org/web/20210420103020if_/https://xnopyt.info/busybox"
+    "https://web.archive.org/web/20211029184627if_/https://xnopyt.info/busybox"
     "media_codecs.xml"
     "media_codecs_google_video.xml"
     "media_codecs_google_audio.xml"
