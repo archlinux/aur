@@ -20,7 +20,7 @@ backup=()
 options=()
 #install=wechat.install
 changelog=
-source=("https://store.deepinos.org.cn/store/network/${pkgname}/${pkgname}_${pkgver}_i386.deb")
+source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/network/${pkgname}/${pkgname}_${pkgver}_i386.deb")
 md5sums=('9d73b58a3c25fde6cfcc03f5e5376f56')
 validpgpkeys=()
 
