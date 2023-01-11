@@ -1,16 +1,18 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
 
 pkgname=baru
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A system monitor written in Rust and C'
 arch=('x86_64')
 url='https://github.com/doums/baru'
 license=('MPL2')
 depends=('libpulse')
-makedepends=('rust' 'cmake')
+makedepends=('rust' 'cargo')
+provides=('baru')
+conflicts=('baru')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('df653b500f7e9af542d9b5841b3eca59f5bda8911ba8759ff7c295c58006b9a9')
+sha256sums=('aabb3e977d7485f3f28c8231783b768c7da9ed3346bdcae72b7319614f03ffb2')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -19,7 +21,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dvm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dvm 644 baru.yaml -t "$pkgdir/usr/share/$pkgname/"
+  install -Dvm 755 "target/release/baru" "$pkgdir/usr/bin/baru"
+  install -Dvm 644 "baru.yaml" "$pkgdir/usr/share/baru/baru.yaml"
 }
 
