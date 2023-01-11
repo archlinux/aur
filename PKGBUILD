@@ -17,7 +17,7 @@ source=('https://download.jetbrains.com/idea/ideaIU-2021.1.3.tar.gz'
 #        'jetbrains-idea-pj.desktop')
 md5sums=('d60b5c18840552ce14499e4afb237a15'
          '394b981c187dcd127912fb33e42e0cc4'
-         '57fe89301e303790758277d3ce585522')
+         '1fa4ad059bc38108d3aaebe7bd6baac8')
 
 
 package() {
