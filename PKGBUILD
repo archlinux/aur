@@ -3,7 +3,7 @@
 
 pkgname=xvile
 _basename=vile
-pkgver=9.8_w
+pkgver=9.8_x
 _basever=${pkgver//_/}
 pkgrel=1
 pkgdesc="vi like emacs"
@@ -12,8 +12,8 @@ url="http://invisible-island.net/vile/vile.html"
 depends=('perl' 'vile' 'xaw3d')
 license=('custom')
 options=(!libtool)
-source=( ftp://ftp.invisible-island.net/vile/current/vile-${_basever}.tgz )
-sha1sums=( 7fed26774f22ffad722c1108c2c2a91ad6502ce6 )
+source=( https://invisible-island.net/archives/vile/current/vile-${_basever}.tgz )
+sha1sums=( 236d8c76439cbf60f36c53bf40c6f27f227da044 )
 
 prepare() {
   cd $srcdir/${_basename}-${_basever}
