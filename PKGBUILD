@@ -12,7 +12,7 @@ depends=('coreutils' 'findutils' 'grep' 'man-pages' 'pass' 'tcl' 'util-linux' 'w
 optdepends=(
   'wtype: type support'
   'pass-otp: OTP support')
-source=("git+${url}.git")
+source=("git+https://github.com/TinfoilSubmarine/wofi-pass.git")
 sha512sums=('SKIP')
 
 pkgver() {
