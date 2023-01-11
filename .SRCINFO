@@ -1,6 +1,6 @@
 pkgbase = python-spatialpandas
 	pkgdesc = Pandas extension arrays for spatial/geometric operations
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/holoviz/spatialpandas
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-spatialpandas
 	depends = python-pyarrow
 	depends = python-snappy
 	depends = python-retrying
-	source = spatialpandas-0.4.5.tar.gz::https://github.com/holoviz/spatialpandas/archive/v0.4.5.tar.gz
-	sha512sums = a907c9c6cfb5b52beb014f94594b302ba6247b8f78739100062e99931e9d3223529dd80e97ce80b081801348341e04073cfe202e61c73c81bb83b3ced3ac04be
+	source = spatialpandas-0.4.6.tar.gz::https://github.com/holoviz/spatialpandas/archive/v0.4.6.tar.gz
+	sha512sums = 0bbd1501b7d347c4027e03e02e962c2c780e2d1a73a19f84d37a48cd31a2daa0e8f662a9e3eb91d3ed5cfa896e7db9a87ff2d34acf7e917bc4e35844e80fae01
 
 pkgname = python-spatialpandas
