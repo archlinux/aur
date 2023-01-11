@@ -9,94 +9,81 @@ _base="sdk"
 _pkgname="${_platform}${_base}"
 _pkg="gskit"
 pkgname="${_pkg}"
-pkgver="v1.3.2"
+pkgver="v1.3.0"
 pkgrel=1
 _pkgdesc=("C interface to the Sony Playstation® 2 videogame system Graphics Synthesizer.")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
-license=('custom')
+license=("custom:AFL")
 _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
-url="${_github}/${pkg}"
-makedepends=("${_platform}-toolchain")
+url="${_github}/${_pkg}"
+makedepends=("${_platform}-${_base}=${pkgver}")
 optdepends=()
-_commit="32c5f7c39b8353de9790b94486385dfc08d0409d"
+# _commit_132="32c5f7c39b8353de9790b94486385dfc08d0409d"
+_commit="13ec7767aec3506cd16119288e09849b621df147"
 source=("${pkgname}::git+${url}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${pkgname}#commit=${_commit}")
 sha256sums=('SKIP')
 
-_cflags=(-I"/usr/${_ee}/include/pthread-embedded")
-         # -nostdinc
-         # -I"/usr/${_ee}/include/newlib-nano")
-         # -static)
-
-_iop_incs=(-I"/usr/${_iop}/include"
-           -I"/usr/include/${_platform}${_base}")
-
-_ee_incs=(-I"/usr/${_ee}/include"
-          -I"/usr/include/${_platform}${_base}")
-
-_ldflags=(-L"/usr/${_ee}/lib/pthread-embedded"
-          # -L"/usr/${_ee}/lib/newlib-nano"
-          "/usr/${_ee}/lib/newlib-nano/libc_nano.a"
-          "/usr/${_ee}/lib/newlib-nano/libm_nano.a"
-          "/usr/${_ee}/lib/newlib-nano/libg_nano.a"
-          "/usr/${_ee}/lib/newlib-nano/crt0.o")
-
-_make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}")
-
-_build_opts=(CFLAGS="${_cflags[*]}"
-             CPPFLAGS="${_cflags[*]}"
-             CXXFLAGS="${_cflags[*]}"
-             LDFLAGS="${_ldflags[*]}")
+_ee_include="/usr/${_ee}/include"
+_ee_lib="/usr/${_ee}/lib"
+_sdk_include="/usr/include/${_platform}${_base}"
+_pe_include="/usr/${_ee}/include/pthread-embedded"
+_pe_lib="/usr/${_ee}/lib/pthread-embedded"
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  sed -i 's/PS2SDK/PS2SDKDATADIR/g' "Makefile"
-  sed -i 's/PS2SDK/PS2SDKDATADIR/g' "Makefile.pref"
+  local _mf _rep
+  local _mfs=($(find . | grep Makefile)
+              $(find . | grep Rules.make))
+
+  local GSKITSRC="${srcdir}/${pkgname}"
+  local _reps=("s~include \$(PS2SDK)/samples~include \$(PS2SDKDATADIR)/samples~g"
+               "s~\$(PS2SDK)/Defs.make~/usr/share/${_platform}${_base}/Defs.make~g"
+               "s~\$(PS2SDK)/bin/bin2c~/usr/bin/bin2c~g"
+               "s~\$(PS2DEV)/isjpcm/bin~/usr/${_iop}\-irx/irx~g"
+               "s~-I\$(PS2DEV)/isjpcm/include~-include ${_ee_include}/sjpcm.h~g"
+               "s~-L\$(PS2DEV)/isjpcm/lib~${_ee_lib}/libsjpcm.a~g"
+               "s~-L\$(PS2SDK)/ee/lib~-L${_ee_lib}~g"
+               "s~-I\$(PS2SDK)/common/include~-I${_sdk_include}~g"
+               "s~-I\$(PS2SDK)/ee/include~-I${_ee_include}~g"
+               "s~-I\$(PS2SDK)/ports/include~${_ee_include}~g"
+               "s~-L\$(PS2SDK)/ports/lib~-L${_ee_lib} -r ~g"
+               "s~-T\$(PS2SDK)/ee/startup/linkfile~-T/usr/${_ee}/startup/linkfile~g"
+               "s~-lgskit -ldmakit~${GSKITSRC}/lib/libgskit.a ${GSKITSRC}/lib/libdmakit.a -r~g"
+)
+
+  for _mf in "${_mfs[@]}"; do
+    for _rep in "${_reps[@]}"; do
+      sed -i "${_rep}" "${_mf}"
+    done
+  done
 }
 
 build() {
   export CFLAGS=""
   export CXXFLAGS=""
   export CPPFLAGS=""
-  export LDLAGS=""
+  export LDFLAGS=""
   export IOP_CC=""
   export EE_CC=""
   export EE_INCS=""
+  export EE_CFLAGS=""
+  export EE_CFLAGS=""
   export PS2SDKDATADIR=""
 
-  # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
-#   export IOP_CFLAGS="${_cflags[*]}"
-#   export IOP_LDFLAGS="${_cflags[*]}"
-#   export EE_CFLAGS="${_cflags[*]}"
-#   export CFLAGS="${_cflags[*]}"
-#   export CPPFLAGS="${_cflags[*]}"
-#   export CXXFLAGS="${_cflags[*]}"
-#   export LDFLAGS="${_ldflags[*]}"
-#   export PS2SDK="${pkgdir}/usr"
-  export IOP_TOOL_PREFIX="${_iop}-elf-"
-  export IOP_INCS="${_iop_incs[*]}"
-  export EE_CC="${_ee}-gcc"
-  export EE_INCS="${_ee_incs[*]}"
-  export PS2SDKDATADIR="/usr/share/ps2sdk"
+  export PS2SDK="/usr"
+  export PS2SDKDATADIR="/usr/share/${_platform}${_base}"
+  export GSKITSRC="${srcdir}/${pkgname}"
+
+  local _make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}"
+                    GSKITSRC="${GSKITSRC}")
 
   cd "${srcdir}/${pkgname}"
-  # make clean
-  # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/${_ee}/lib/pthread-embedded" \
-  # IOP_CFLAGS="${_cflags[*]}" \
-  # EE_CFLAGS="${_cflags[*]}" \
-  # CFLAGS="${_cflags[*]}" \
-  # CPPFLAGS="${_cflags[*]}" \
-  # CXXFLAGS="${_cflags[*]}" \
-  # EE_LDLAGS="${_cflags[*]}" \
-  # IOP_LDLAGS="${_cflags[*]}" \
-  # LDFLAGS="${_ldflags[*]}" \
-  IOP_INCS="${_iop_incs[*]}" \
-  EE_CC="${_ee}-gcc" \
-  EE_INCS="${_ee_incs[*]}" \
+  GSKITSRC="${srcdir}/${pkgname}" \
   PS2SDKDATADIR="/usr/share/ps2sdk" \
-  make ${_make_opts[@]} # "${_build_opts[@]}" build
+  make "${_make_opts[@]}"
 }
 
 # shellcheck disable=SC2154
@@ -105,47 +92,14 @@ package() {
   export CFLAGS=""
   export CXXFLAGS=""
   export CPPFLAGS=""
-  export LDLAGS=""
+  export LDFLAGS=""
 
-  # export C_INCLUDE_PATH="/usr/${_ee}/include/pthread-embedded"
-  # export IOP_CFLAGS="${_cflags[*]}"
-  # export IOP_LDFLAGS="${_cflags[*]}"
-  # export EE_CFLAGS="${_cflags[*]}"
-  # export CFLAGS="${_cflags[*]}"
-  # export CPPFLAGS="${_cflags[*]}"
-  # export CXXFLAGS="${_cflags[*]}"
-  # export LDFLAGS="${_ldflags[*]}"
-  # export PS2SDK="${pkgdir}/usr"
-  # export IOP_TOOL_PREFIX="${_iop}-elf-"
+  local _make_opts=(PS2SDKDATADIR="/usr/share/${_platform}${_base}"
+                    DESTDIR="${pkgdir}")
 
   cd "${srcdir}/${pkgname}"
-  ls
-  # make clean
-  # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/${_ee}/lib/pthread-embedded" \
-  # IOP_CFLAGS="${_cflags[*]}" \
-  # EE_CFLAGS="${_cflags[*]}" \
-  # CFLAGS="${_cflags[*]}" \
-  # CPPFLAGS="${_cflags[*]}" \
-  # CXXFLAGS="${_cflags[*]}" \
-  # EE_LDLAGS="${_cflags[*]}" \
-  # IOP_LDLAGS="${_cflags[*]}" \
-  # LDFLAGS="${_ldflags[*]}" \
-  # make DESTDIR="${pkgname}" install
-  # cd "${pkgdir}/usr"
-  # ls
-  # mv "ee" "${_ee}"
-  # cp -r "iop" "${_iop}-elf"
-  # mv "iop" "${_iop}-irx"
-  # mkdir -p "share/${_pkgname}"
-  # mv AUTHORS "share/${_pkgname}"
-  # mv samples "share/${_pkgname}"
-  # mv Defs.make "share/${_pkgname}"
-  # mv CHANGELOG "share/${_pkgname}"
-  # mv ID "share/${_pkgname}"
-  # mv README.md "share/${_pkgname}"
-  # mkdir -p "include"
-  # mv "common/include" "include/${_pkgname}"
-  # rmdir common
-  # mkdir -p "share/licenses/${_pkgname}"
-  # mv LICENSE "share/licenses/${_pkgname}"
+  make "${_make_opts[@]}" install
+  cd "${pkgdir}"
+  mkdir "usr"
+  mv "gsKit" "usr/${_ee}"
 }
