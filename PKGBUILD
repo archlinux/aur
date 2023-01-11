@@ -16,13 +16,14 @@
 _phpbase="74"
 _suffix=""
 pkgver="7.4.33"
-pkgrel="2"
+pkgrel="3"
 pkgbase="php74"
 pkgdesc="PHP 7.4.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php74/conf.d"
+_build_forced_openssl_11="1"
 _build_fpm_name="php-fpm74"
 _build_fpm_service_name="php74-fpm"
 _build_icu_src_dir="icu/source"
@@ -130,7 +131,6 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "openssl-sslv3-consts.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -139,8 +139,6 @@ source=(
     "timezonedb-php7.4.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -168,8 +166,8 @@ makedepends=(
     "findutils"
     "argon2"
     "libxslt"
-    "openssl"
     "e2fsprogs"
+    "openssl-1.1"
     "lmdb"
     "db"
     "postgresql-libs"
@@ -202,7 +200,6 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "openssl-sslv3-consts.patch"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
     "debian-php-7.4.patch"
@@ -219,11 +216,11 @@ _sapi_depends=(
 _ext_depends_snmp=(
     "php74=7.4.33"
     "net-snmp"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_ftp=(
     "php74=7.4.33"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_intl=(
     "php74=7.4.33"
@@ -235,7 +232,7 @@ _ext_depends_imap=(
     "krb5"
     "c-client"
     "libxcrypt"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_gd=(
     "php74=7.4.33"
@@ -248,7 +245,7 @@ _ext_depends_mysql=(
 )
 _ext_depends_dba=(
     "php74=7.4.33"
-    "db"
+    "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
@@ -279,7 +276,7 @@ _ext_depends_openssl=(
     "php74=7.4.33"
     "krb5"
     "e2fsprogs"
-    "openssl"
+    "openssl-1.1"
 )
 _phpconfig="\
     --prefix=/usr \
@@ -512,6 +509,10 @@ build() {
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
+    elif ((_build_forced_openssl_11)); then
+        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
@@ -1530,10 +1531,9 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             '924846abf93bc613815c55dd3f5809377813ac62a9ec4eb3778675b82a27b927'
-            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             '0a3a6e8ff04ff1e0869befcf2c7bca4e886d94065da6d7a10b809a4750b961a0'
             '8fb103438fe12875dbe7c1f5b0899a81a76b4ce1456f16960e23e287d273df14'
-            'ccaad50d9e855bebd9d98bec4db6085dde3446ecd68bdbb58c1d450e1f5aeab9'
+            'c30ff6fcf75b0c0068f3d49fde8024719b3677f104d93232e52c5358c840c0f5'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             '6ef318bf8d53a2288d037e3284f4dbfc26c36fd2ecc7d62e3d5036c19ec0a707')
