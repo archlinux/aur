@@ -2,7 +2,7 @@
 
 pkgname=wofi-pass-git
 _pkgname=${pkgname%-git}
-pkgver=VERSION
+pkgver=r26.869c545
 pkgrel=1
 pkgdesc="A Wayland-native interface for conveniently using pass"
 arch=('any')
