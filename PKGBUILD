@@ -1,10 +1,11 @@
+# Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 # Maintainer: huamnbeing27 <electronneutrino27@proton.me>
 _repo_name=waydroid_script
 _script=waydroid_extras.py
 pkgname='waydroid-script'
 pkgver=23.0104
-pkgrel=1
-license=('GPL-3.0')
+pkgrel=2
+license=('GPL3')
 depends=('python-tqdm' 'python-requests' 'lzip' 'sqlite' 'waydroid')
 arch=('any')
 pkgdesc="Python Script to add OpenGapps, Widevine, Magisk, libhoudini translation library and libndk translation library to waydroid !"
