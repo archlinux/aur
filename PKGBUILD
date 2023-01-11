@@ -2,7 +2,7 @@
 
 pkgname=swaylock-corrupter
 _pkgname=corrupter
-pkgver=0.1
+pkgver=1.0
 _pkgver=1.0
 pkgrel=1
 pkgdesc='Swaylock integrated with Simple image glitcher'
@@ -15,7 +15,7 @@ provides=("${_pkgname}" "${pkgname}")
 conflicts=("${_pkgname}" "${pkgname}")
 
 license=('BSD 2-Clause')
-md5sums=('04f1c9c324d12717b10c5173a5363f25' 'fe57fb8c9a8604661840c9a4b4e7c10c')
+md5sums=('04f1c9c324d12717b10c5173a5363f25' 'c76dffc5b1327213c3f35b3e482f2be6')
 source=("${url}/releases/download/v${_pkgver}/${_pkgname}_v${_pkgver}_x86_64.tar.gz" "${pkgname}")
 
 package() {

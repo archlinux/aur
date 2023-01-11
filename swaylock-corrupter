@@ -1,3 +1,9 @@
 #!/bin/sh
-FILE="/tmp/ss.png"
-grim $FILE; corrupter $FILE $FILE; swaylock -i $FILE; rm $FILE 
+
+if [[ $# -gt 0 ]] &&  [[ $1 == "--help" ]]  ||  [[ $1 == "-h" ]]; then
+	swaylock --help |& sed -r 's/swaylock/swaylock-corrupter/g' | sed '/--image/d'
+else
+	FILE="/tmp/ss.png"
+	grim $FILE; corrupter $FILE $FILE; swaylock -i $FILE $@; rm $FILE 
+fi
+
