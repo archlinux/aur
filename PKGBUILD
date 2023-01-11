@@ -3,12 +3,13 @@
 _pipname=sfdnormalize
 pkgname=$_pipname-git
 pkgver=1.1.1.r0.g818355c
-pkgrel=1
+pkgrel=2
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
 arch=(any)
 url="https://github.com/alerque/$_pipname"
 license=(CCO)
-depends=(python)
+depends=(python
+         python-sfdutf7)
 makedepends=(git
              python-{build,installer,wheel}
              python-setuptools)
