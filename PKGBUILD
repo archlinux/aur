@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=spruce
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='General purpose YAML/JSON merging tool'
 arch=('x86_64')
@@ -9,14 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8e370a85a2590b16b6b23eadad53b76b5783836f134e6b71f76fa9abe0e42091')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  # bad go.mod
-  go mod tidy -go=1.18
-  go mod vendor
-}
+sha256sums=('84411291c07b6b44136bd8f3b7df58fffab33404805b813f614201a44364e6b7')
 
 build() {
   cd "$pkgname-$pkgver"
