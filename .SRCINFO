@@ -1,0 +1,12 @@
+pkgbase = ps2-aalib
+	pkgdesc = A portable ASCII art graphic library (Sony Playstation® 2 videogame system port).
+	pkgver = 1.4rc5
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = GPL2
+	makedepends = ps2-sdk
+	source = ps2-aalib::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-aalib
