@@ -3,7 +3,7 @@
 
 pkgname=python312
 pkgver=3.12.0a4
-pkgrel=2
+pkgrel=1
 _pyver=3.12.0
 _pybasever=3.12
 _pymajver=3
