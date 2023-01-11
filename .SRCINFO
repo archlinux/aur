@@ -1,0 +1,18 @@
+pkgbase = wlipman-git
+	pkgdesc = Simple http server in Rust
+	pkgver = r6
+	pkgrel = 1
+	url = https://github.com/OverShifted/wlipman
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = wlipman
+	source = git+https://github.com/OverShifted/wlipman.git
+	sha384sums = SKIP
+
+pkgname = wlipman-git
