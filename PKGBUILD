@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-refurb
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A tool for refurbishing and modernizing Python codebases'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-_commit='6977854c443f3a83d434c23c9b7f09f6c08ec681'
+_commit='8d3e76a913772285df70d8909cb732f506f7303c'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'skip-coverage-report.patch'
