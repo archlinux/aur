@@ -1,4 +1,4 @@
-From 062ae7131d35238dddea22c1b94acdc2846f2364 Mon Sep 17 00:00:00 2001
+From 7d48b63138ab96077b5a1a4e86bab3a859c17e3f Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Fri, 15 Jan 2021 01:04:53 +0100
 Subject: [PATCH 2/2] Rename Internet catergorie, because it does not exist
@@ -20,5 +20,5 @@ index 1e85b1e..20adba5 100755
  Keywords=Multimedia;Music;Internet;Youtube
  Hidden=false
 -- 
-2.30.0
+2.39.0
 

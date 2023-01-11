@@ -1,4 +1,4 @@
-From 91b59352e76e7367319f138fac863da79c0d8712 Mon Sep 17 00:00:00 2001
+From ed7d219ca7653c7f7a5a45396ddf7f74142857d7 Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Thu, 14 Jan 2021 23:57:02 +0100
 Subject: [PATCH 1/2] Change paths for packaging
@@ -9,19 +9,19 @@ Subject: [PATCH 1/2] Change paths for packaging
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/youplay.desktop b/youplay.desktop
-index 2b66ce6..1e85b1e 100755
+index 4be045e..1e85b1e 100755
 --- a/youplay.desktop
 +++ b/youplay.desktop
 @@ -2,11 +2,11 @@
  Name=YouPlay
  GenericName=Play music from Youtube
  Comment=Play and download music from Youtube
--Exec=/home/ralf/dev/youplay/youplay.sh
+-Exec=youplay
 +Exec=/usr/bin/youplay --gui
  Terminal=false
  Type=Application
  StartupNotify=false
--Icon=/home/ralf/dev/youplay/youplay.svg
+-Icon=org.codeberg.ralfhersel.youplay
 +Icon=/usr/share/youplay/youplay.svg
  Categories=GNOME;GTK;Utility;Internet;Music
  Keywords=Multimedia;Music;Internet;Youtube
@@ -37,5 +37,5 @@ index 6d2fb87..571f78b 100755
 +cd '/usr/share/youplay/'
 +python3 youplay.py $*
 -- 
-2.30.0
+2.39.0
 
