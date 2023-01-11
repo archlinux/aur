@@ -1,12 +1,12 @@
 pkgname=python-gradio
-pkgver=3.9.1
+pkgver=3.16.1b1
 pkgrel=1
 pkgdesc='Create UIs for your machine learning model in Python in 3 minutes '
 arch=(x86_64)
 url='https://github.com/gradio-app/gradio'
 license=('custom')
 source=("$pkgname-$pkgver::https://github.com/gradio-app/gradio/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('9291a100d16f2b44117846880f80c9862ef7bc461fd178a619a78fbe63a6b2effc5fdb8a7a21aac01b760f14e9bc12bf0bdd4a275e3374012b69d57208fab7cb')
+sha512sums=('150a5a6ad5b35e70ad197f9e9948d85f6da4f6a7ababa291f61daf872ff4517af997f0925d4dbbce701682a892fa32b40f05b2e59c1b52ec03c5e17b11c067f4')
 depends=(
     'python-aiohttp'
     'python-h11'
@@ -32,6 +32,9 @@ depends=(
     'python-websockets'
     'python-linkify-it-py'
     'python-mdit_py_plugins'
+    'python-typing_extensions'
+    'python-markupsafe'
+    'python-altair'
 )
 makedepends=(python-build python-installer python-wheel python-hatchling python-hatch-requirements-txt python-hatch-fancy-pypi-readme pnpm)
 
