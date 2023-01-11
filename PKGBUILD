@@ -1,7 +1,7 @@
 # Contributor: Oliver Graute <oliver.graute@gmail.com>
 pkgname=dnstop
 pkgver=20140915 # note: if the pkgver had been '0.99-10' then use an underscore. like '0.99_10'
-pkgrel=2
+pkgrel=3
 pkgdesc="displays various tables of DNS traffic on your network"
 arch=(i686 x86_64)
 url="http://dns.measurement-factory.com/tools/dnstop"
