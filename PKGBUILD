@@ -1,25 +1,25 @@
 pkgname=yafu
 pkgver=1.34.3
-_msievever=1.52
+_msievever=1.53
 _filenamever=1.34
-pkgrel=2
+pkgrel=3
 pkgdesc="Automated integer factorization"
 arch=('i686' 'x86_64')
 depends=('gmp' 'gmp-ecm')
 url="http://${pkgname}.sourceforge.net/"
 license=('custom')
 source=("http://sourceforge.net/projects/${pkgname}/files/${_filenamever}/${pkgname}-${_filenamever}-src.zip"
-        "http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v${_msievever}/msieve${_msievever/./}.tar.gz")
+        "http://downloads.sourceforge.net/project/msieve/msieve/Msieve%20v${_msievever}/msieve${_msievever/./}_src.tar.gz")
 sha1sums=('110553dece04ea010857c50207874c04a2b3e58d'
-          '88a1ce2354b57835231bcaca0ecb0477b975b5cd')
+          '6ecd72c5f86288edbad111415dbcc03b6c35b524')
 
 prepare() {
   cd "${srcdir}/msieve-${_msievever}"
-  sed -e 's/CFLAGS = /CFLAGS += /' \
+  sed -e 's/CFLAGS = /CFLAGS += -fcommon /' \
       -e 's/-march=core2//g' \
       -i Makefile
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -e 's/CFLAGS = /CFLAGS += /' \
+  sed -e 's/CFLAGS = /CFLAGS += -fcommon /' \
       -e 's/..\/msieve\/lib\/linux\/x86_64/..\/msieve-'"${_msievever}"'\//' \
       -e 's/-lmsieve/-lmsieve -lz/' \
       -i Makefile
