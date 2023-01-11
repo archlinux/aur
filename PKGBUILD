@@ -15,14 +15,15 @@
 ###############################################################################
 _phpbase="81"
 _suffix=""
-pkgver="8.1.12"
-pkgrel="1"
+pkgver="8.1.14"
+pkgrel="2"
 pkgbase="php81"
-pkgdesc="PHP 8.1.12 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.1.14 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php81/conf.d"
+_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm81"
 _build_fpm_service_name="php81-fpm"
 _build_icu_src_dir="icu/source"
@@ -136,8 +137,6 @@ source=(
 )
 depends=(
 )
-checkdepends=(
-)
 makedepends=(
     "acl"
     "libtool"
@@ -164,10 +163,10 @@ makedepends=(
     "findutils"
     "argon2"
     "libxslt"
-    "openssl"
     "e2fsprogs"
+    "openssl"
     "lmdb"
-    "db"
+    "db5.3"
     "postgresql-libs"
     "unixodbc"
     "libfbclient"
@@ -210,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "openssl"
 )
 _ext_depends_intl=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "icu"
 )
 _ext_depends_imap=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +230,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "gd"
 )
 _ext_depends_mysql=(
-    "php81=8.1.12"
-    "php81-pdo=8.1.12"
-    "php81-openssl=8.1.12"
+    "php81=8.1.14"
+    "php81-pdo=8.1.14"
+    "php81-openssl=8.1.14"
 )
 _ext_depends_dba=(
-    "php81=8.1.12"
-    "db"
+    "php81=8.1.14"
+    "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "unixodbc"
-    "php81-pdo=8.1.12"
+    "php81-pdo=8.1.14"
 )
 _ext_depends_pgsql=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "postgresql-libs"
-    "php81-pdo=8.1.12"
+    "php81-pdo=8.1.14"
 )
 _ext_depends_firebird=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "libfbclient"
-    "php81-pdo=8.1.12"
+    "php81-pdo=8.1.14"
 )
 _ext_depends_sqlite=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "sqlite"
-    "php81-pdo=8.1.12"
+    "php81-pdo=8.1.14"
 )
 _ext_depends_mbstring=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php81=8.1.12"
+    "php81=8.1.14"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -504,6 +503,10 @@ build() {
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
+    elif ((_build_forced_openssl_11)); then
+        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
@@ -1521,8 +1524,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '08243359e2204d842082269eedc15f08d2eca726d0e65b93fb11f4bfc51bbbab'
-            '0df807d84bc0cf948a6ed0cf453e98213d47fbc7fdedc2747855a619dc616b3c'
+            'e16e47a872d58685913ac848ce92ec49f42c1828110c98c65fb6265a08724a1a'
+            'd1778f038dd742400707307d6845c1dc40ea1962ff9676f880be88a5ebdd8577'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             'e2b4bad971ed569e9e898dcb2c7451d53e9b55f473123bbd4765d126efea6466')
