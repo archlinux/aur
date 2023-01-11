@@ -15,14 +15,15 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.0RC5"
-pkgrel="1"
+pkgver="8.2.1"
+pkgrel="2"
 pkgbase="php82"
-pkgdesc="PHP 8.2.0RC5 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.1 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php82/conf.d"
+_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm82"
 _build_fpm_service_name="php82-fpm"
 _build_icu_src_dir="icu/source"
@@ -128,15 +129,13 @@ source=(
     "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
-    "https://downloads.php.net/~pierrick/php-${pkgver}.tar.xz"
+    "https://php.net/distributions/php-${pkgver}.tar.xz"
     "debian-php-8.2.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.2.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -164,10 +163,10 @@ makedepends=(
     "findutils"
     "argon2"
     "libxslt"
-    "openssl"
     "e2fsprogs"
+    "openssl"
     "lmdb"
-    "db"
+    "db5.3"
     "postgresql-libs"
     "unixodbc"
     "libfbclient"
@@ -210,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +230,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.0RC5"
-    "php82-pdo=8.2.0RC5"
-    "php82-openssl=8.2.0RC5"
+    "php82=8.2.1"
+    "php82-pdo=8.2.1"
+    "php82-openssl=8.2.1"
 )
 _ext_depends_dba=(
-    "php82=8.2.0RC5"
-    "db"
+    "php82=8.2.1"
+    "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "unixodbc"
-    "php82-pdo=8.2.0RC5"
+    "php82-pdo=8.2.1"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "postgresql-libs"
-    "php82-pdo=8.2.0RC5"
+    "php82-pdo=8.2.1"
 )
 _ext_depends_firebird=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "libfbclient"
-    "php82-pdo=8.2.0RC5"
+    "php82-pdo=8.2.1"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "sqlite"
-    "php82-pdo=8.2.0RC5"
+    "php82-pdo=8.2.1"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.0RC5"
+    "php82=8.2.1"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -504,6 +503,10 @@ build() {
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
+    elif ((_build_forced_openssl_11)); then
+        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
@@ -1521,8 +1524,8 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '5dbd72106664b3588a047da557b6a99a3cdfcb83de9890cc3be9db5af8e4aa0e'
-            'cc0950b5eb48a1b828c878635e3905ede40f1b5560211efb25907e581dec0d18'
+            '650d3bd7a056cabf07f6a0f6f1dd8ba45cd369574bbeaa36de7d1ece212c17af'
+            '3da28d7b50560ec0e2a22725f73c22760c5e3d889fa77096e55200677f0dc361'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             'e2b4bad971ed569e9e898dcb2c7451d53e9b55f473123bbd4765d126efea6466')
