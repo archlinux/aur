@@ -5,7 +5,7 @@
 # See: https://gitlab.com/timvisee/prs/-/tree/master/pkg/aur/prs
 
 pkgname=prs
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ depends=('gpgme' 'dbus' 'libxcb' 'libxkbcommon' 'skim')
 makedepends=('cargo' 'python')
 optdepends=('tomb: password store Tomb support')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('4d9d4c82bf9daa1c2d585141592511aed5e0405496f865643ce1de1872f8a4bcf6ea140ef1b8722b0fef9c6b2dc7a50e7a4ec5988bacdd824f784d05934fef7d')
+sha512sums=('e9c6bd8f4fda20de21fce30a21f49d54c7b81ab60350649935ecbe3bd076fb7f7804bf1e58b5f98a8e68a5404b667127d70b0bcc2615fe5ff8658ee825541c9f')
 _prs_cli_features=alias,clipboard,notify,backend-gpgme,select-skim-bin,tomb,totp
 
 prepare() {
