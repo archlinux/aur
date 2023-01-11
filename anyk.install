@@ -1,3 +1,4 @@
 post_install() {
   echo "NOTE: To be able to download ÁNYK packages as normal user you have to add yourself to 'anyk' group"
+  echo "NOTE: If you're using bspwm or otherwise see just a gray window, read https://wiki.archlinux.org/title/Java#Gray_window,_applications_not_resizing_with_WM,_menus_immediately_closing"
 }
