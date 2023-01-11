@@ -22,7 +22,7 @@ _github="https://github.com/ps2dev"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_github}/${_pkgbase}"
 makedepends=("${_platform}-sdk")
-optdepends=()
+optdepends=("gskit")
 _commit="e3f9bfd51e3266b3c68de19b76f6d378f6ec643b"
 source=("${pkgname}::git+${url}#commit=${_commit}")
 # source=("${pkgname}::git+${_local}/${pkgname}#commit=${_commit}")

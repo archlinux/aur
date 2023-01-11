@@ -6,6 +6,7 @@ pkgbase = ps2-sdl
 	arch = x86_64
 	license = LGPL
 	makedepends = ps2-sdk
+	optdepends = gskit
 	source = ps2-sdl::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
 	sha256sums = SKIP
 
