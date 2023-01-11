@@ -1,10 +1,10 @@
 diff --git a/build_files/cmake/platform/platform_unix.cmake b/build_files/cmake/platform/platform_unix.cmake
-index bdf39d04d32..4322e0aa042 100644
+index 787d0f87002..659938a45b2 100644
 --- a/build_files/cmake/platform/platform_unix.cmake
 +++ b/build_files/cmake/platform/platform_unix.cmake
-@@ -334,6 +334,10 @@ if(WITH_OPENVDB)
-   endif()
+@@ -329,6 +329,10 @@ if(WITH_OPENVDB)
  endif()
+ add_bundled_libraries(openvdb/lib)
  
 +if(WITH_USD)
 +  list(APPEND __boost_packages python)
