@@ -1,18 +1,18 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=dwl
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
 url="https://github.com/djpohly/dwl"
 license=('GPL')
-depends=('wlroots>=0.15')
+depends=('wlroots>=0.16')
 makedepends=('wayland-protocols')
 optdepends=('xorg-xwayland: for XWayland support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/djpohly/$pkgname/archive/v$pkgver.tar.gz"
         config.h)
-sha256sums=('5d550b0ee6d99d0b537269b8389af4b95d1ab0b63e7bb8c2309f6c57a2d6c9c9'
-            'SKIP')
+sha256sums=('f03a260b169019ebdbfd6db1b19a3dc7861ba33609644581c530be019f22274c'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
