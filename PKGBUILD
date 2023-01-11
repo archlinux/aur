@@ -10,9 +10,10 @@ _ns="${_platform}${_base}"
 _pkgbase="${_platform}${_base}-ports"
 _pkg="sdl"
 pkgname="${_platform}-${_pkg}"
-pkgver="1.5"
+pkgver="1.2.8"
 pkgrel=1
-_pkgdesc=("Library for manipulation of TIFF images (Sony Playstation® 2 videogame system port).")
+_pkgdesc=("A library for portable low-level access to a video framebuffer, audio "
+          "output, mouse, and keyboard (Sony Playstation® 2 videogame system port).")
 pkgdesc="${_pkgdesc[*]}"
 arch=('x86_64')
 license=('custom')
