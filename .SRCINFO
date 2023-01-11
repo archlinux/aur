@@ -1,6 +1,6 @@
 pkgbase = primer-git
 	pkgdesc = PRIME GPU offload helper for Wayland systems
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/zurrty/primer
 	arch = x86_64
