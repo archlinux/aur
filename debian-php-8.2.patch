@@ -25,23 +25,6 @@ index 7564350..dda3c3a 100644
  
  ; Whether to use strict session mode.
  ; Strict session mode does not accept an uninitialized session ID, and
-diff --git a/ext/dba/dba.c b/ext/dba/dba.c
-index 57bfb5e..2bfc368 100644
---- /dev/null
-+++ b/tests/func/null-new_val.phpt
-@@ -0,0 +1,10 @@
-+--TEST--
-+ini_restore strcmp NULL new_val
-+--FILE--
-+<?php
-+
-+ini_set('error_log','ini_set_works');
-+ini_restore('error_log');
-+
-+?>
-+--EXPECT--
-diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
-index 51bdd84..79136d5 100644
 diff --git a/sapi/fpm/php-fpm.8.in b/sapi/fpm/php-fpm.8.in
 index 905946e..a4cf632 100644
 --- a/sapi/fpm/php-fpm.8.in
