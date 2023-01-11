@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=tass64
-pkgver=1.57.2900
+pkgver=1.58.2974
 pkgrel=1
 epoch=
 pkgdesc="tass64 is cross (turbo) assembler targeting the MOS 65xx series of micro processors (6502/65C02/R65C02/W65C02/65CE02/65816/DTV/65EL02)"
@@ -29,7 +29,7 @@ changelog=
 source=("http://sourceforge.net/projects/tass64/files/source/${_pkgname}-${pkgver}-src.zip")
 noextract=()
 
-sha256sums=('e4f0dcb1b00d5206ccb391eb5b8b43f4d95f064d63af739a71f5c822bbfc56a4')
+sha256sums=('3f3e2b1867664cb3b64d315fea11938f1666d79d11ea705a6937310257ef0a67')
 
 
 prepare()
