@@ -1,5 +1,5 @@
 [Unit]
-Description=Paperless Celery Beat
+Description=Paperless Celery Workers
 After=network.target
 Requires=redis.service
 PartOf=paperless.target
@@ -8,7 +8,7 @@ PartOf=paperless.target
 User=paperless
 Group=paperless
 WorkingDirectory=/usr/share/paperless/src
-ExecStart=/usr/bin/celery --app paperless beat --loglevel INFO
+ExecStart=/usr/bin/celery --app paperless worker --loglevel INFO
 Restart=on-abort
 
 [Install]

@@ -2,7 +2,7 @@
 # Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ngx"
-pkgver=1.9.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
@@ -31,6 +31,7 @@ depends=("file"
          "python-autobahn"
          "python-automat"
          "python-blessed"
+         "python-celery"
          "python-certifi"
          "python-django-channels"
          "python-django-channels-redis"
@@ -42,11 +43,11 @@ depends=("file"
          "python-daphne"
          "python-dateparser"
          "python-django"
+         "python-django-celery-results"
          "python-django-cors-headers"
          "python-django-extensions"
          "python-django-filter"
          "python-django-picklefield"
-         "python-django-q"
          "python-django-rest-framework"
          "python-filelock"
          "python-fuzzywuzzy"
@@ -105,7 +106,8 @@ depends=("file"
          "python-zope-interface"
          "pyzbar")
 optdepends=("jbig2enc: smaller PDF size"
-            "postgresql: postgres database")
+            "postgresql: postgres database"
+            "mariadb: mariadb database")
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
@@ -113,14 +115,16 @@ source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.target"
         "paperless-consumer.service"
         "paperless-scheduler.service"
+        "paperless-task-queue.service"
         "paperless-webserver.service")
-sha256sums=('7da7e355745fcc5ac837323f22f7e6d556386297a61e41f04e104fe785e85cce'
+sha256sums=('c0636475cce057e50377d64ef815cc496a2da5eb44ffe73f8c90001fee925e9b'
             '4e2ca67d7eedf14ba839af852907e1d76aa0a5ee5f4f740a3aee786c24035ace'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
-            '091dc2406139bcc52ca1f9acdb4e20723f4511b8ce6849e37c5ab88784dbac12'
+            'b64182b491708a907d2a65a2f52d51f4cf897cd8b5e874483a9ed22bbfe3b2e7'
             '95d4e665f66f63432c22d9f139769f84575cb427362865931253d9651779ec22'
-            '544821a278617c6493e7a27f25266c39d6cc10a877247fa5f807c7eaf1a460cd'
+            'fd25de09705de3b70bfe459b1f917061a2e2d342fdfa3b51982a3e5dfffee3f7'
+            '6f28ee44b0685cbe0bc7896182ec62f181ed4e6293cf8ae4b7f4c4aa86e09cc4'
             '47e47fcadf029d85fa6304191afa6362b7675216cb82ed1bad8cce42c0378e7e')
 backup=("etc/paperless.conf")
 options=("!strip")
@@ -163,5 +167,6 @@ package(){
  install -D -m 644 "paperless.target" "$pkgdir/usr/lib/systemd/system/paperless.target"
  install -D -m 644 "paperless-consumer.service" "$pkgdir/usr/lib/systemd/system/paperless-consumer.service"
  install -D -m 644 "paperless-scheduler.service" "$pkgdir/usr/lib/systemd/system/paperless-scheduler.service"
+ install -D -m 644 "paperless-task-queue.service" "$pkgdir/usr/lib/systemd/system/paperless-task-queue.service"
  install -D -m 644 "paperless-webserver.service" "$pkgdir/usr/lib/systemd/system/paperless-webserver.service"
 }
