@@ -1,12 +1,12 @@
 pkgbase = wechat-uos
 	pkgdesc = 微信官方原生桌面版 WeChat desktop
 	pkgver = 2.1.5
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
 	license = ISC
-	depends = electron20
+	depends = electron19
 	depends = bubblewrap
 	depends = lsb-release
 	depends = openssl-1.1

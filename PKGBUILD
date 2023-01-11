@@ -6,9 +6,9 @@
 
 pkgname=wechat-uos
 _pkgname=wechat
-_electron=electron20
+_electron=electron19
 pkgver=2.1.5
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
