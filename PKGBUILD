@@ -66,6 +66,8 @@ package() {
   install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/caj2pdf/dist/caj2pdf" "${pkgdir}/usr/share/${pkgname}/external/caj2pdf"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/caj2pdf/lib/libjbigdec.so" "${pkgdir}/usr/share/${pkgname}/external/libjbigdec.so"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/caj2pdf/lib/libjbig2codec.so" "${pkgdir}/usr/share/${pkgname}/external/libjbig2codec.so"
+  install -d "${pkgdir}/usr/bin"
+  ln -s /usr/share/caj2pdf-qt/caj2pdf "${pkgdir}/usr/bin/caj2pdf-qt"
   ln -s /usr/bin/mutool "${pkgdir}/usr/share/${pkgname}/external/mutool"
   install -Dm 644 "${srcdir}/dev.sainnhe.caj2pdf-qt.desktop" "${pkgdir}/usr/share/applications/dev.sainnhe.caj2pdf-qt.desktop"
   install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/icons/convert.png" "${pkgdir}/usr/share/${pkgname}/icon.png"
