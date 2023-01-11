@@ -1,0 +1,13 @@
+pkgbase = python-wakatime
+	pkgdesc = wakatime plugin for python
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/python-wakatime
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	depends = wakatime
+	source = https://files.pythonhosted.org/packages/py3/p/python-wakatime/python_wakatime-0.0.1-py3-none-any.whl
+	sha256sums = 545a054b0b36ab5a2f2f204fda3ca4c29b509a0abdb5b572252481b482d3e788
+
+pkgname = python-wakatime
