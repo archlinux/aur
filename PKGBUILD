@@ -3,7 +3,7 @@
 
 pkgname=libquotient-encryption
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix, with experimental encryption support enabled"
 arch=(x86_64 aarch64)
 url="https://github.com/quotient-im/libQuotient"
@@ -28,12 +28,12 @@ build() {
 	-DBUILD_SHARED_LIBS=1 \
 	-DQuotient_ENABLE_E2EE=ON
 
-	make
+	make -j $(nproc)
 }
 
 package() {
 	cd "build"
-	make DESTDIR="${pkgdir}" install
+	make -j $(nproc) DESTDIR="${pkgdir}" install
 
 	cd "../libQuotient-0.7.0"
 	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
