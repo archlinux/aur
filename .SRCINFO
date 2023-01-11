@@ -1,7 +1,7 @@
 pkgbase = haruhishot
 	pkgdesc = One day Haruhi Suzumiya made a wlr screenshot tool
 	pkgver = 0.3.0.1
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/Decodetalkers/haruhishot
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = haruhishot
 	makedepends = rust
 	makedepends = wayland-protocols
 	makedepends = wlroots
+	makedepends = scdoc
 	depends = wayland
 	depends = wlroots
 	depends = qt5-base
