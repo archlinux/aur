@@ -7,7 +7,7 @@ pkgname=synfigstudio-dev
 pkgver=1.5.1
 pkgrel=1
 pkgdesc="Professional vector animation program (GUI)"
-arch=(i686 x86_64 armv7 armv8 riscv32 riscv64)
+arch=(i686 x86_64 armv7 aarch64 riscv32 riscv64)
 url="https://synfig.org"
 license=('GPL3')
 depends=('gtkmm3' 'synfig-dev>=1.5.0' 'sdl_image')
