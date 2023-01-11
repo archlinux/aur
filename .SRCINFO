@@ -1,7 +1,7 @@
 pkgbase = uefitool
 	pkgdesc = UEFI firmware image viewer and editor and utilities
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = armv7h
@@ -11,6 +11,10 @@ pkgbase = uefitool
 	license = BSD
 	makedepends = zip
 	depends = qt5-base
+	provides = uefipatch
+	conflicts = uefitool-git
+	conflicts = uefipatch
+	replaces = uefipatch
 	source = UEFITool-0.28.0.tar.gz::https://github.com/LongSoft/UEFITool/archive/0.28.0.tar.gz
 	sha256sums = 453cc817e17cf9aa5c5306df1994828c4f6cf9180e67bede2bbaca1135b43d3c
 
