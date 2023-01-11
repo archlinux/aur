@@ -3,7 +3,7 @@
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
 url="https://www.ivpn.net"
@@ -17,7 +17,7 @@ sha256sums=('b6ea295fe3ac3c237510d9eae0883a47ee82254a4f8bb03d4f8f49d464a95dfa')
 build() {
   echo "*** build daemon***"
   cd "$srcdir/desktop-app-${pkgver}/daemon"
-  ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
+  IVPN_BUILD_CAN_SKIP_DOWNLOAD_SERVERS=true ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   echo "*** build CLI ***"
   cd "$srcdir/desktop-app-${pkgver}/cli"
