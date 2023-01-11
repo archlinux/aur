@@ -1,7 +1,7 @@
 pkgbase = waydroid-settings
 	pkgdesc = A GTK4 app to control Waydroid settings
 	pkgver = 22.1217
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
 	makedepends = blueprint-compiler
@@ -9,6 +9,9 @@ pkgbase = waydroid-settings
 	depends = vte4
 	depends = waydroid
 	depends = webkit2gtk-5.0
+	depends = libadwaita
+	depends = polkit
+	depends = python-gobject
 	source = https://github.com/axel358/Waydroid-Settings/archive/refs/heads/gtk4-port.zip
 	sha512sums = 6840190cbf04eceb8a6b222900e6b4803103ac057f5271d25c8d0b01e6258c39eef18027de122a3db5c7cd98e48d821ce6b925cc14bc7eabe9e603d95231d960
 
