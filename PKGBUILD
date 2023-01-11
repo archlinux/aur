@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -124,7 +124,7 @@ sha256sums=('c0636475cce057e50377d64ef815cc496a2da5eb44ffe73f8c90001fee925e9b'
             'b64182b491708a907d2a65a2f52d51f4cf897cd8b5e874483a9ed22bbfe3b2e7'
             '95d4e665f66f63432c22d9f139769f84575cb427362865931253d9651779ec22'
             'fd25de09705de3b70bfe459b1f917061a2e2d342fdfa3b51982a3e5dfffee3f7'
-            '6f28ee44b0685cbe0bc7896182ec62f181ed4e6293cf8ae4b7f4c4aa86e09cc4'
+            'fe099876da92b6c13b45efd38c9fd55c326c57321a0bf69a0fd8f61f4f0ca298'
             '47e47fcadf029d85fa6304191afa6362b7675216cb82ed1bad8cce42c0378e7e')
 backup=("etc/paperless.conf")
 options=("!strip")
