@@ -1,0 +1,22 @@
+--- a/config/companion_libs/expat.in
++++ b/config/companion_libs/expat.in
+@@ -6,9 +6,9 @@
+ choice
+ # Don't remove next line
+ # CT_INSERT_VERSION_BELOW
+ 
+-config EXPAT_V_2_1_0
++config EXPAT_V_2_5_0
+     bool
+-    prompt "2.1.0"
++    prompt "2.5.0"
+ 
+ endchoice
+ 
+@@ -16,4 +16,4 @@
+ config EXPAT_VERSION
+     string
+ # Don't remove next line
+ # CT_INSERT_VERSION_STRING_BELOW
+-    default "2.1.0" if EXPAT_V_2_1_0
++    default "2.5.0" if EXPAT_V_2_5_0

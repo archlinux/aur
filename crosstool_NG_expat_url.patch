@@ -1,0 +1,12 @@
+--- a/scripts/build/companion_libs/210-expat.sh
++++ b/scripts/build/companion_libs/210-expat.sh
+@@ -10,7 +10,7 @@
+ if [ "${CT_EXPAT_TARGET}" = "y" -o "${CT_EXPAT}" = "y" ]; then
+ 
+ do_expat_get() {
+     CT_GetFile "expat-${CT_EXPAT_VERSION}" .tar.gz    \
+-               http://downloads.sourceforge.net/project/expat/expat/${CT_EXPAT_VERSION}
++               https://sourceforge.net/projects/expat/files/expat/${CT_EXPAT_VERSION}
+ }
+ 
+ do_expat_extract() {

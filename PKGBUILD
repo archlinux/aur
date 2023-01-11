@@ -1,11 +1,11 @@
 pkgname=esp-open-sdk-git
-pkgver=1
-pkgrel=14
+pkgver=20181127203314
+pkgrel=1
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=("i686" "x86_64")
 url="https://github.com/pfalcon/esp-open-sdk"
 makedepends=("git" "gperf" "help2man" "unzip" "wget" "guile2.0")
-depends=("python" "python2" "python-pyserial" "python2-pyserial" "esptool")
+depends=("python" "python-pyserial" "esptool")
 provides=("esp-open-sdk")
 conflicts=("esp-open-sdk")
 options=("!strip" "!buildflags" "!makeflags")
@@ -30,6 +30,9 @@ prepare() {
         < "$startdir"/crosstool-config-overrides.patch
     patch examples/blinky/Makefile < "$startdir"/blinky_Makefile.patch
     patch crosstool-NG/configure.ac < "$startdir"/crosstool_NG_configure.patch
+    patch crosstool-NG/scripts/build/companion_libs/121-isl.sh < "$startdir"/crosstool_NG_isl_url.patch
+    patch crosstool-NG/config/companion_libs/expat.in <"$startdir"/crosstool_NG_expat_ver.patch
+    patch crosstool-NG/scripts/build/companion_libs/210-expat.sh <"$startdir"/crosstool_NG_expat_url.patch
     mkdir -p crosstool-NG/local-patches/gdb/7.10
     cp "$srcdir"/1000-gdb-python-3-7.patch crosstool-NG/local-patches/gdb/7.10
 }
