@@ -1,6 +1,6 @@
 pkgbase = python-sphinx_contributors
 	pkgdesc = Contributors extension for Sphinx
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://sphinx-contributors.readthedocs.io
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = python-sphinx_contributors
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-sphinx-furo
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_contributors/sphinx_contributors-0.2.6.tar.gz
-	md5sums = baaf61ea142bb2b7e27097c7821b454f
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_contributors/sphinx_contributors-0.2.7.tar.gz
+	md5sums = 7ff8fe3657645ce61639ade0d82b12fc
 
 pkgname = python-sphinx_contributors
 	depends = python>=3.7
 	depends = python-sphinx>=3
-	optdepends = python-sphinx_contributors-doc: Documentation for ndcube
+	optdepends = python-sphinx_contributors-doc: Documentation for sphinx-contributors
 
 pkgname = python-sphinx_contributors-doc
 	pkgdesc = Documentation for sphinx contributors
