@@ -12,13 +12,13 @@ provides=('zander')
 conflicts=('zander')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.2/downloads/zander_0.2.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('fd751c1e59ac9e871a886e072face64e231ee86d77a78864ee909c913734973b')
+sha256sums_aarch64=('a4fc325bd4c7e3fa9036b4e9770caa8692eab7739e10a88e46709a9f3c61ad5d')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.2/downloads/zander_0.2.2_linux_i386.tar.gz")
-sha256sums_i686=('a67693410e50405b4580e79af27839be6c22eccce7a7755cad10f6eab03dbb6d')
+sha256sums_i686=('5bbd8c5ce19eb0631d9166a89cd05a42357042e05374fd5af26714f84d242b56')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitlab.node-3.net/zander/zander/-/releases/v0.2.2/downloads/zander_0.2.2_linux_x86_64.tar.gz")
-sha256sums_x86_64=('1826dffb529a9eb2b3858f45b8fbbecd1ce6fc82f6ce18205e383d31b08fa469')
+sha256sums_x86_64=('4b29fabfdc43a5d78f520f084853a80d9a0c8eff003443b12cf664f93e77e105')
 
 package() {
   # bin
