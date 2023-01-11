@@ -1,7 +1,7 @@
 pkgbase = lokinet-gui
 	pkgdesc = Graphical user interface for lokinet
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 0
 	url = https://github.com/oxen-io/lokinet-gui
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = lokinet-gui
 	makedepends = libxcrypt-compat
 	makedepends = yarn
 	options = !strip
-	source = https://github.com/oxen-io/lokinet-gui/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/oxen-io/lokinet-gui/archive/refs/tags/v1.0.1.tar.gz
 	source = git-config
 	source = lokinet-gui.desktop
-	sha256sums = e0919464e64540a3f573ace4dfaa93d00a5d13daa754d6c054befcb882f855a0
+	sha256sums = 1e452b7bc3ce193bfc91e7681a88a78ca872073f873d37a8fe6c0a33c38fcd49
 	sha256sums = c42bf520ceb87783604e50fd6a3145eea34e8d6ff244bfbb77540cac2415f447
 	sha256sums = 1116ac3773bf24afd9d04d42809b3390d9aa7893717e2e1230852f5de50bcace
 
