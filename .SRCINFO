@@ -1,12 +1,12 @@
 pkgbase = kubeshark-bin
 	pkgdesc = A simple-yet-powerful API traffic viewer for Kubernetes enabling you to view all API communication between microservices to help your debug and troubleshoot regressions.
-	pkgver = 37.0
-	pkgrel = 2
+	pkgver = 38.1
+	pkgrel = 1
 	url = https://github.com/kubeshark/kubeshark
 	arch = x86_64
 	license = Apache
 	conflicts = mizu-bin
-	source = https://github.com/kubeshark/kubeshark/releases/download/37.0/kubeshark_linux_amd64
-	sha256sums = fb4bf8be97f3be0f67cea9679819f7bfdc66d14bd1683f04affe441d37e29885
+	source = https://github.com/kubeshark/kubeshark/releases/download/38.1/kubeshark_linux_amd64
+	sha256sums = 13816bafdd8192aef9e97e53c64917f26876000eb05ad73d36346db6cc1822fc
 
 pkgname = kubeshark-bin
