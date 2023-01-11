@@ -2,7 +2,7 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=libquotient-git
-pkgver=0.7.0.r1157.gcaab4f04
+pkgver=0.7.1.r1158.f38f5e7
 pkgrel=1
 pkgdesc="A Qt5 library to write cross-platform clients for Matrix"
 arch=(x86_64 aarch64)
@@ -42,12 +42,12 @@ build() {
 	-DBUILD_SHARED_LIBS=1 \
 	-DQuotient_ENABLE_E2EE=ON
 
-	make
+	make -j $(nproc)
 }
 
 package() {
 	cd "build"
-	make DESTDIR="${pkgdir}" install
+	make -j $(nproc) DESTDIR="${pkgdir}" install
 
 	cd "../$pkgname"
 	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
