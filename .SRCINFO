@@ -11,7 +11,7 @@ pkgbase = jetbrains-idea-pj
 	source = https://github.com/XDwanj/JetBrainsRuntime-for-Linux-x64/releases/download/jbr-linux-x64-11.0.14.1/jbr-linux-x64-11.0.14.1.tar.gz
 	md5sums = d60b5c18840552ce14499e4afb237a15
 	md5sums = 394b981c187dcd127912fb33e42e0cc4
-	md5sums = 57fe89301e303790758277d3ce585522
+	md5sums = 1fa4ad059bc38108d3aaebe7bd6baac8
 
 pkgname = jetbrains-idea-pj
 	backup = opt/jetbrains-idea-pj/bin/idea64.vmoptions
