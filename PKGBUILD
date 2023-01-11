@@ -10,10 +10,10 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-lbonn-wayland-git
-pkgver=1.7.3.wayland1.r51.g1e8c22b4
+pkgver=1.7.5.wayland1.r42.g5d4a3e14
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (fork with Wayland support)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/lbonn/rofi'
 license=(MIT)
 depends=('check' 'librsvg' 'libxdg-basedir' 'libxkbcommon-x11' 'startup-notification'
@@ -22,15 +22,20 @@ makedepends=('git' 'meson' 'wayland-protocols')
 optdepends=('i3-wm: use as a window switcher')
 provides=('rofi')
 conflicts=('rofi')
-source=("$pkgname::git+$url.git#branch=wayland")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git#branch=wayland"
+        "git+https://github.com/sardemff7/libgwater.git"
+        "git+https://github.com/sardemff7/libnkutils.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   git -C $pkgname describe --long | sed 's/\([^-]*-g\)/r\1/;s/[-+]/./g'
 }
 
 prepare() {
-  git -C $pkgname submodule update --init
+  git -C $pkgname submodule init
+  git -C $pkgname config submodule.externals/vendor/libgwater.url "$srcdir/libgwater"
+  git -C $pkgname config submodule.externals/vendor/libnkutils.url "$srcdir/libnkutils"
+  git -C $pkgname -c protocol.file.allow=always submodule update
 }
 
 build() {
