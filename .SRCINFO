@@ -1,7 +1,7 @@
 pkgbase = yas-scanner
 	pkgdesc = fast Artifact scanner for an specific anime game works well with GNOME/Wayland and all on X11
 	pkgver = 0.1.11.a716391
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/poly000/yas/tree/linux-x11-support
 	arch = any
 	license = unknown

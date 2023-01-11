@@ -1,7 +1,7 @@
 # Maintainer: poly000 <1348292515@qq.com>
 pkgname=yas-scanner
 pkgver=0.1.11.a716391
-pkgrel=1
+pkgrel=2
 pkgdesc="fast Artifact scanner for an specific anime game works well with GNOME/Wayland and all on X11"
 
 arch=('any')
