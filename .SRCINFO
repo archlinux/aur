@@ -1,0 +1,13 @@
+pkgbase = ps2-libmikmod
+	pkgdesc = Module player library supporting many formats, including MOD, S3M, IT and XM (Sony Playstation® 2 videogame system port).
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/ps2dev/ps2sdk-ports
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = ps2-sdk
+	source = ps2-libmikmod::git+https://github.com/ps2dev/ps2sdk-ports#commit=e3f9bfd51e3266b3c68de19b76f6d378f6ec643b
+	sha256sums = SKIP
+
+pkgname = ps2-libmikmod
