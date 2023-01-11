@@ -1,9 +1,8 @@
 pkgbase = atelierb
 	pkgdesc = the industrial tool to efficiently deploy the B Method
-	pkgver = 4.2.1
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = http://www.atelierb.eu
-	install = atelierb.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -14,9 +13,7 @@ pkgbase = atelierb
 	depends = libsm
 	optdepends = texlive-bin
 	optdepends = firefox
-	source = http://www.atelierb.eu/atelier-b/4.2/free/atelierb-free-4.2.1-linux.deb
-	source = AtelierB.desktop
-	source = http://www.atelierb.eu/wp-content/uploads/sites/3/atelierb/licences/4.0/licence-atelier-b-utilisation-en-V4.pdf
+	source = https://www.atelierb.eu/wp-content/uploads/2021/12/atelierb-free-4.7.1p1-linux_x64.deb
+	sha256sums = SKIP
 
 pkgname = atelierb
-
