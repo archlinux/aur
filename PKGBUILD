@@ -23,7 +23,6 @@ makedepends=(
 	'gzip'
 	'make'
 	'pandoc'
-	'sudo'
 )
 checkdepends=()
 optdepends=(
@@ -52,6 +51,6 @@ build() {
 package() {
 	echo "package"
 	cd "vim-awesome-cli"
-	sudo make install
+	make install
 }
 
