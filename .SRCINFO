@@ -1,7 +1,7 @@
 pkgbase = libation
 	pkgdesc = Audible Audiobook Manager: Liberate your Library
 	pkgver = 8.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rmcrackan/Libation
 	arch = any
 	license = GPL-3.0

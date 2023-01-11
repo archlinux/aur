@@ -3,7 +3,7 @@
 pkgname=libation
 _pkgname=Libation
 pkgver=8.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Audible Audiobook Manager: Liberate your Library"
 arch=("any")
 url="https://github.com/rmcrackan/Libation"
@@ -32,9 +32,9 @@ package() {
   mv -v build "$pkgdir/usr/lib/libation"
 
   chmod +666 "$pkgdir/usr/share/icons/hicolor/scalable/apps/libation.svg"
-  ln -s "$pkgdir/usr/lib/libation/Libation" "$pkgdir/usr/bin/Libation"
-  ln -s "$pkgdir/usr/lib/libation/Libation" "$pkgdir/usr/bin/libation"
-  ln -s "$pkgdir/usr/lib/libation/Hangover" "$pkgdir/usr/bin/Hangover"
-  ln -s "$pkgdir/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/LibationCli"
-  ln -s "$pkgdir/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/libationcli"
+  ln -s "/usr/lib/libation/Libation" "$pkgdir/usr/bin/Libation"
+  ln -s "/usr/lib/libation/Libation" "$pkgdir/usr/bin/libation"
+  ln -s "/usr/lib/libation/Hangover" "$pkgdir/usr/bin/Hangover"
+  ln -s "/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/LibationCli"
+  ln -s "/usr/lib/libation/LibationCli" "$pkgdir/usr/bin/libationcli"
 }
