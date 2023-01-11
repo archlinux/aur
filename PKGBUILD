@@ -2,7 +2,7 @@
 
 pkgname=symfony-cli
 pkgrel=6
-pkgver=5.4.20
+pkgver=5.4.21
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
 arch=('x86_64')
