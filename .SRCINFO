@@ -1,13 +1,13 @@
 pkgbase = kubelogin
 	pkgdesc = Kubectl plugin for Kubernetes OpenID Connect authentication (oidc-login)
-	pkgver = 1.25.4
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/int128/kubelogin
 	arch = x86_64
 	license = Apache
 	depends = kubectl
 	depends = glibc
-	source = kubelogin-1.25.4.zip::https://github.com/int128/kubelogin/releases/download/v1.25.4/kubelogin_linux_amd64.zip
-	sha256sums = f62c277aadf11e475620c37cfc6cc2e60c53c9628d39400305e7882c4ab25d3d
+	source = kubelogin-1.26.0.zip::https://github.com/int128/kubelogin/releases/download/v1.26.0/kubelogin_linux_amd64.zip
+	sha256sums = d75d0d1006530f14a502038325836097b5cc3c79b637619cf08cd0b4df5b3177
 
 pkgname = kubelogin
