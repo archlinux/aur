@@ -2,14 +2,14 @@
 
 _pkgname=libxfce4windowing
 pkgname=${_pkgname}-git
-pkgver=4.19.0+1+ga4062a9
+pkgver=4.19.1+5+g04c6ce2
 pkgrel=1
 pkgdesc="Windowing concept abstraction library for X11 and Wayland (git checkout)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/libxfce4windowing/start"
 license=('LGPL2.1')
 groups=('xfce4-git')
-depends=('gtk3' 'libwnck3')
+depends=( 'libwnck3' 'wayland')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'xfce4-dev-tools' 'git')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
@@ -31,6 +31,7 @@ build() {
     --libexecdir=/usr/lib \
     --localstatedir=/var \
     --disable-static \
+    --enable-wayland \
     --enable-gtk-doc \
     --disable-debug
   make
