@@ -15,8 +15,8 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="16.7.0"
-_commit="6cd58652c0c3b9e3fef1e3f5e9411aa213b623bf"
+_pkg_ver="17.0.0"
+#_commit="636e07593842da6f6f52e805c7429cb9b05cfd45"
 
 # ctags submodule
 _ctags_pkg_name="eranif-ctags"
@@ -27,6 +27,12 @@ _ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 _dbgd_pkg_name="eranif-dbgd"
 _dbgd_pkg_ident="6b4f0310c632776575495487f74b77c80732e747"
 _dbgd_pkg_name_ident="${_dbgd_pkg_name}-${_dbgd_pkg_ident:0:7}"
+
+# wxcfg/wx-config-msys2
+_wxcfg_pkg_name="eranif-wxcfg"
+_wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
+_wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+
 
 # pkg
 pkgname="${_pkg_name}-unstable"
@@ -86,12 +92,14 @@ source=(
     "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
     "codelite-dbgd.tar.gz::https://github.com/eranif/dbgd/tarball/${_dbgd_pkg_ident}"
+    "codelite-wxcfg.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/${_wxcfg_pkg_ident}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('c67f2c2db539cec702a7a7e8b2fc095d182e69b78c10c68dfd64dfd97b48b1ff'
+sha256sums=('ce07be2399c5b3907e5f713ce7ba2182aa8d90c44f90214f7ec841086f20fd0c'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
             'b8feff844f0d355b7a5d2b04906be6e688021a66b9d7ed55a18d9f97cae47208'
+            '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -125,6 +133,10 @@ prepare()
   # submodule eranif-dbgd to wxdap
   rmdir wxdap
   ln -s ../${_dbgd_pkg_name_ident} wxdap
+
+  # submodule eranif-wx-config-msys2 to wx-config-msys2
+  rmdir wx-config-msys2
+  ln -s ../${_wxcfg_pkg_name_ident} wx-config-msys2
 
   # apply patches
 
