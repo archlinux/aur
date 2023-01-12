@@ -2,8 +2,8 @@
 
 pkgname="horizontallyspinningrat"
 pkgver=1.0.1
-pkgrel=1
-depends=("sox")
+pkgrel=2
+depends=("sox" "opusfile")
 pkgdesc="The horizontally spinning rat - now on your desktop!"
 url="https://github.com/mcharlsto/rat"
 arch=("x86_64")
