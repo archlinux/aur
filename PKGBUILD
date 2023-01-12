@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=clj-kondo-bin
-pkgver=2022.12.10
+pkgver=2023.01.12
 pkgrel=1
 pkgdesc='A minimal and opinionated linter for Clojure code that sparks joy.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-static-amd64.zip")
 
-sha256sums_x86_64=('937298a30b4ef6ab765183394b7afa70624e377cc177a70c3d5b936540bf8730')
+sha256sums_x86_64=('332e081cf60500cbd09da336880d6a0ba466e00d637d2f1f2f439f399b5e8e61')
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"
