@@ -3,10 +3,10 @@
 # Contributor: portaloffreedom
 
 _pkgname=repr
-_pkgver=1.1.4
+_pkgver=1.1.5
 pkgname=r-${_pkgname,,}
-pkgver=1.1.4
-pkgrel=7
+pkgver=1.1.5
+pkgrel=1
 pkgdesc='Serializable Representations'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-vegalite
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6f799ca83e0940618dd8c22e62ffdce5ec11ba3366c5306ae58b55b53c097040')
+sha256sums=('8cc9071446553affbdf58f9106f34c409d797cbda20b3cdf6b95350dd2095efa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
