@@ -2,7 +2,7 @@
 
 pkgname=komga
 # AUTOMATICALLY UPDATED BY SCRIPT ON NEW RELEASE #
-pkgver=0.157.5
+pkgver=0.158.0
 pkgrel=1
 pkgdesc="Media server for comics/mangas/BDs with API and OPDS support "
 arch=('any')
@@ -26,7 +26,7 @@ package() {
   install -Dm644 "${srcdir}/komga.env" "${pkgdir}/etc/komga.conf"
 }
 # AUTOMATICALLY ADDED BY SCRIPT ON NEW RELEASE #
-md5sums=('46d2b549b6a8ba581dc25164c8f0f59b'
+md5sums=('0c2e28ff422ac1ad33d5e08dbbd9d5db'
          'e5713c297be47045511f06664574754f'
          'cce81e91d6710d7413f4c934834ef8e4'
          '537b1c70998d793639a3132345af33f6'
