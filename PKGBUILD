@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fstcore
-_pkgver=0.9.12
+_pkgver=0.9.14
 pkgname=r-${_pkgname,,}
-pkgver=0.9.12
-pkgrel=3
+pkgver=0.9.14
+pkgrel=1
 pkgdesc="R Bindings to the 'Fstlib' Library"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f86e7cd4074cfda812c8e5dcf0f03a5d02d37795c16c7511e11e2262c32b5a8')
+sha256sums=('d08efa06003bd65bf5131e17980904c1334afbd7474b09a841effa6810251356')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
