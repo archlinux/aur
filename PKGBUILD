@@ -1,13 +1,14 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
-pkgbase='black-magic-debug-git'
+_pkgbase='black-magic-debug'
+pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
 pkgver=1.9.0.rc1.r33.g302c8b53
-pkgrel=1
+pkgrel=2
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
 url='https://black-magic.org'
-license=('GPL')
+license=('GPL' 'BSD' 'MIT')
 makedepends=('git' 'hidapi' 'python')
 options=(!strip)
 source=("git+https://github.com/blackmagic-debug/blackmagic.git")
@@ -37,4 +38,5 @@ package_black-magic-debug-app-git() {
     depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
 
     install -Dm 755 src/blackmagic "${pkgdir}"/usr/bin/blackmagic
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgbase}" COPYING*
 }
