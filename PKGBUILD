@@ -3,7 +3,7 @@
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.2.1r2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
@@ -16,9 +16,11 @@ sha256sums=('3d88f14aa38530f0af74c492e0e708b206b56e67bc6d04275dfe12e6983c865a')
 
 build () {
 	cmake -B build -S "${_pkgname}-${pkgver}" \
-	-DCMAKE_BUILD_TYPE='None' \
-	-DCMAKE_INSTALL_PREFIX='/usr' \
-	-Wno-dev
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_C_FLAGS=-DNDEBUG \
+		-DCMAKE_CXX_FLAGS=-DNDEBUG \
+		-Wno-dev
 	cmake --build build
 }
 
