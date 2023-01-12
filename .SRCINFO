@@ -1,6 +1,6 @@
 pkgbase = ttf-google-fonts-typewolf
 	pkgdesc = Typewolf's curated collection of the 40 best fonts from the Google Fonts project
-	pkgver = 20220222
+	pkgver = 20230110
 	pkgrel = 1
 	url = https://www.typewolf.com/google-fonts
 	arch = any
@@ -106,7 +106,7 @@ pkgbase = ttf-google-fonts-typewolf
 	conflicts = ttf-google-fonts-git
 	conflicts = ttf-google-fonts-opinionated-git
 	conflicts = ttf-ibm-plex
-	source = ttf-google-fonts-typewolf-20220222-1.tar.gz::https://github.com/google/fonts/archive/36f59ed45b86f74ce844292f73296788993c4072.tar.gz
-	sha512sums = ce2e2ec4bd5d8ca6680419874fb2cecda26b772af69bd0504b5c40e0a36531d8b0160369541ad1e863c17c20f13e7f346700e9926b39fdbcbac4e94c8ca7addb
+	source = ttf-google-fonts-typewolf-20230110-1.tar.gz::https://github.com/google/fonts/archive/9aba8ae2d286384be87dbd12a8a5a0e16db14408.tar.gz
+	sha512sums = 186db42ead74af1706a01317ef907774af7de90a7a557b58e8f6677565739e919839836c6c9c57af625c5e7a1e93e1a46ea2253da4fe6aa15654d8a54e25b25b
 
 pkgname = ttf-google-fonts-typewolf

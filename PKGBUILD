@@ -1,14 +1,15 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 pkgname='ttf-google-fonts-typewolf'
-pkgver='20220222'
-_commit='36f59ed45b86f74ce844292f73296788993c4072'
+pkgver='20230110'
+_commit='9aba8ae2d286384be87dbd12a8a5a0e16db14408'
 pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
 url='https://www.typewolf.com/google-fonts'
 license=('custom:SIL Open Font License v1.1' 'Apache')
 provides=(
+	# OFL v1.1 if not specified
 	'ttf-alegreya'
 	'ttf-alegreya-sans'
 	'ttf-archivo-narrow'
@@ -32,7 +33,7 @@ provides=(
 	'ttf-merriweather'
 	'ttf-montserrat'
 	'ttf-neuton'
-	'ttf-open-sans' # Apache 2.0
+	'ttf-open-sans'
 	'ttf-playfair-display'
 	'ttf-poppins'
 	'ttf-proza-libre'
@@ -73,7 +74,7 @@ _ignore=(
 	'Roboto-Italic[wdth,wght].ttf'
 )
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-sha512sums=('ce2e2ec4bd5d8ca6680419874fb2cecda26b772af69bd0504b5c40e0a36531d8b0160369541ad1e863c17c20f13e7f346700e9926b39fdbcbac4e94c8ca7addb')
+sha512sums=('186db42ead74af1706a01317ef907774af7de90a7a557b58e8f6677565739e919839836c6c9c57af625c5e7a1e93e1a46ea2253da4fe6aa15654d8a54e25b25b')
 
 package() {
 	cd "$srcdir/fonts-$_commit/"
