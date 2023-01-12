@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=yudit-beta
-pkgver=3.0.8.beta34
+pkgver=3.0.8.beta36
 pkgrel=1
 pkgdesc="A free Unicode plain-text editor for Unix-like systems - beta version"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('yudit')
 provides=('yudit')
 optdepends=('hunspell: spell checking')
 source=("http://yudit.org/download/betas/${pkgname%-beta}-$pkgver.tar.gz")
-sha256sums=('514288f2769208f1d784112917360bd7723f509a9e688ed9a2e8697364ae13b1')
+sha256sums=('07d7229de42f4443b35d4c4826a7515a96cb731b66109f450cd89949e1920c72')
 
 build() {
   cd "${pkgname%-beta}-$pkgver"
