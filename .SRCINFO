@@ -17,5 +17,9 @@ pkgname = black-magic-debug-app-git
 	depends = libusb
 	depends = libftdi
 	depends = libhidapi-libusb.so
+	provides = black-magic-debug-app
+	conflicts = black-magic-debug-app
 
 pkgname = black-magic-debug-udev-git
+	provides = black-magic-debug-udev
+	conflicts = black-magic-debug-udev

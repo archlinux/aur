@@ -28,12 +28,17 @@ build() {
 package_black-magic-debug-udev-git() {
     cd "blackmagic"
 
+	conflicts=('black-magic-debug-udev')
+	provides=('black-magic-debug-udev')
+
     install -Dm 644 driver/99-blackmagic-uucp.rules "${pkgdir}"/usr/lib/udev/rules.d/99-blackmagic-uucp.rules
 }
 
 package_black-magic-debug-app-git() {
     cd "blackmagic"
 
+	conflicts=('black-magic-debug-app')
+	provides=('black-magic-debug-app')
     depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
 
     install -Dm 755 src/blackmagic "${pkgdir}"/usr/bin/blackmagic
