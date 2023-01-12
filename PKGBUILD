@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Maintainer: Hunter Peavey < printf "srht@die.bots" | sed "s/die.bots/krathalan.net/g" >
+# Maintainer: Hunter Peavey < printf "dev@die.bots" | sed "s/die.bots/krathalan.net/g" >
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 
 # General package information
 pkgname=krathalans-apparmor-profiles-git
-pkgver=r612.26170ff
+pkgver=r664.5e51904
 pkgrel=1
 pkgdesc="Krathalan's apparmor profiles for desktop and server software (Firefox, nginx, postfix, and more)"
 url="https://github.com/krathalan/apparmor-profiles"
