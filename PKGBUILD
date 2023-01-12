@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scRecover
-_pkgver=1.13.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='scRecover for imputation of single-cell RNA-seq data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('82bd4721023cf3829c6791eb065f9b037315132315b4265327be0f27897e8de3')
+sha256sums=('8a28a6731bd0fd51db0560630ffb8a18875dec298cf3b48803700abf75974216')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
