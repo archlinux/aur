@@ -1,11 +1,12 @@
 pkgbase = ttf-zpix
 	pkgdesc = 最像素ttf版本。支持英文、繁体中文、简体中文、日文。
 	pkgver = 3.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SolidZORO/zpix-pixel-font
 	changelog = changelog.txt
 	arch = any
 	license = custom
+	conflicts = ttf-zpix
 	source = ttf-zpix-3.1.7.ttf::https://github.com/SolidZORO/zpix-pixel-font/releases/download/v3.1.7/zpix.ttf
 	source = LICENSE
 	sha256sums = cc288e7bdd9ddf1d92e539d7b24a0f0441dcb9073b40f04706783437657d8919

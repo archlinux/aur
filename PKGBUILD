@@ -1,7 +1,7 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-zpix'
 pkgver=3.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="最像素ttf版本。支持英文、繁体中文、简体中文、日文。"
 arch=('any')
 url="https://github.com/SolidZORO/zpix-pixel-font"
@@ -9,6 +9,7 @@ changelog='changelog.txt'
 license=('custom')
 source=("${pkgname}-${pkgver}.ttf::${url}/releases/download/v${pkgver}/zpix.ttf"
         "LICENSE")
+conflicts=("ttf-zpix")
 sha256sums=('cc288e7bdd9ddf1d92e539d7b24a0f0441dcb9073b40f04706783437657d8919'
             'bb2760d6e1f31db7ddf1b085c6a063192ca499bb0e643dcb01a6b4a97884de3b')
 
