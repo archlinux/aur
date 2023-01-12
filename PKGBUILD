@@ -3,14 +3,14 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.11.51.r105.gc2e9b5f
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
 depends=(
     # gamescope
-    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire"
+    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libxmu"
     # wlroots
     "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
 )
