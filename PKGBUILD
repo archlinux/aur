@@ -32,8 +32,8 @@ export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
