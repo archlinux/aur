@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wasi-compiler-rt
-pkgver=15.0.6
+pkgver=15.0.7
 pkgrel=1
 pkgdesc='WASI LLVM compiler runtime'
 arch=('any')
@@ -13,9 +13,9 @@ source=(https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}
         https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/cmake-$pkgver.src.tar.xz{,.sig}
         WASI.cmake
         wasi-toolchain.cmake)
-b2sums=('e909ba7e0651c759b8cdfa0dddb3fbbf47ba77a7296d05aa9883dded1186ab6ed3101628cd34ad31b80a12815ecb3f04a780dbe07e2e43a5c3af303c7ae5798b'
+b2sums=('33ca4fa481f713c1c6830db0145faef3790d7450c582cca3a7afb35b2a287955d650aaad8f4c795720706a3f1e39a50b377c09eba3087bc7cd278784ab43239a'
         'SKIP'
-        '07cde9b8ea7c5e4726f094841a295351796798e033bf4d9a6dbddd128fa99cf3234baab5a5c94adb8de80ca537905626081e3e23cab8d547856f6534ca481a9d'
+        'a8baee6eb1e0447d3733337c28f7903f2112a2bc1c954afcb533a0de537295308b467fa3b497f9904a398fc992ba1aa27c62788530bba251977d9925ae380f6d'
         'SKIP'
         'c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4'
         '74c63bb838bc2e6d7980370fb3d47f8fd2f1dd8b6dc82302c7cc0b80e0fb1e8e21c1c62d6de0b78e478fc22611a5867e52b1ef7a566796fe831fffd98b17c940')
