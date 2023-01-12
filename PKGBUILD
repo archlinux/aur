@@ -10,21 +10,52 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.40.8
+pkgver=1.40.10
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
 license=(GPL)
 _pppver=2.4.9
-makedepends=(dhclient gobject-introspection gtk-doc
-             "ppp=$_pppver" modemmanager iproute2 nss polkit wpa_supplicant curl
-             systemd libmm-glib libnewt libndp libteam nftables vala perl-yaml
-             python-gobject git vala jansson bluez-libs glib2-docs iwd dnsmasq
-             openresolv libpsl audit meson)
-checkdepends=(libx11 python-dbus)
+makedepends=(
+  audit
+  bluez-libs
+  curl
+  dhclient
+  dnsmasq
+  git
+  glib2-docs
+  gobject-introspection
+  gtk-doc
+  iproute2
+  iwd
+  jansson
+  libmm-glib
+  libndp
+  libnewt
+  libpsl
+  libteam
+  meson
+  modemmanager
+  nftables
+  nss
+  openresolv
+  pacrunner
+  perl-yaml
+  polkit
+  "ppp=$_pppver"
+  python-gobject
+  systemd
+  vala
+  vala
+  wpa_supplicant
+)
+checkdepends=(
+  libx11
+  python-dbus
+)
 options=(debug)
-_commit=56e29666629b4de98121acd50f0dc364f2066384  # tags/1.40.8^0
+_commit=5a82c141562dc3a23c73514f7981d76c8b55ea19  # tags/1.40.10^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
@@ -90,20 +121,33 @@ _pick() {
 }
 
 package_networkmanager-iwd() {
-  depends=(libnm-iwd iproute2 iwd libmm-glib libnewt libndp libteam curl
-           bluez-libs libpsl audit mobile-broadband-provider-info)
+  depends=(
+    audit
+    bluez-libs
+    curl
+    iproute2
+    iwd
+    libmm-glib
+    libndp
+    libnewt
+    libnm-iwd
+    libpsl
+    libteam
+    mobile-broadband-provider-info
+  )
   provides=(networkmanager)
   conflicts=(networkmanager)
   optdepends=(
-    'polkit: let non-root users control networking'
-    'dnsmasq: connection sharing'
-    'nftables: connection sharing'
-    'iptables: connection sharing'
     'bluez: Bluetooth support'
-    'ppp: dialup connection support'
-    'modemmanager: cellular network support'
-    'openresolv: alternative resolv.conf manager'
+    'dnsmasq: connection sharing'
     'firewalld: firewall support'
+    'iptables: connection sharing'
+    'modemmanager: cellular network support'
+    'nftables: connection sharing'
+    'openresolv: alternative resolv.conf manager'
+    'pacrunner: PAC proxy support'
+    'polkit: let non-root users control networking'
+    'ppp: dialup connection support'
   )
   backup=(etc/NetworkManager/NetworkManager.conf)
   install="$pkgbase.install"
@@ -162,7 +206,13 @@ END
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
   license=(LGPL)
-  depends=(glib2 nss util-linux-libs jansson systemd-libs)
+  depends=(
+    glib2
+    jansson
+    nss
+    systemd-libs
+    util-linux-libs
+  )
   provides=(libnm libnm.so)
   conflicts=(libnm)
 
@@ -178,4 +228,4 @@ package_nm-iwd-cloud-setup() {
   mv cloud/* "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
