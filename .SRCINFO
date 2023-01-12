@@ -1,35 +1,35 @@
 pkgbase = intel-oneapi-ipp
 	pkgdesc = Intel® Integrated Performance Primitives
-	pkgver = 2021.6.0_626
+	pkgver = 2021.7.0_25396
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-ipp-2021.6.0-2021.6.0-626_amd64.deb
-	noextract = intel-oneapi-ipp-devel-2021.6.0-2021.6.0-626_amd64.deb
-	noextract = intel-oneapi-ipp-common-2021.6.0-2021.6.0-626_all.deb
-	noextract = intel-oneapi-ipp-common-devel-2021.6.0-2021.6.0-626_all.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-2021.6.0-2021.6.0-626_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-devel-2021.6.0-2021.6.0-626_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-2021.6.0-2021.6.0-626_all.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-devel-2021.6.0-2021.6.0-626_all.deb
+	noextract = intel-oneapi-ipp-2021.7.0-2021.7.0-25396_amd64.deb
+	noextract = intel-oneapi-ipp-devel-2021.7.0-2021.7.0-25396_amd64.deb
+	noextract = intel-oneapi-ipp-common-2021.7.0-2021.7.0-25396_all.deb
+	noextract = intel-oneapi-ipp-common-devel-2021.7.0-2021.7.0-25396_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-2021.7.0-2021.7.0-25396_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-devel-2021.7.0-2021.7.0-25396_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-2021.7.0-2021.7.0-25396_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-devel-2021.7.0-2021.7.0-25396_all.deb
 	source = intel-oneapi-ipp.conf
 	source = intel-oneapi-ipp.sh
-	sha256sums = abb9f14df006db5684f3b54a2a664adfaf10ca90320d97443104ffcc9e3c650f
-	sha256sums = e7bbff3f04f6e7e9618c71aa6291a14198391abdbad25927119dc9c0127ea3aa
-	sha256sums = 8635703ac473eff8aa251e5324bd339cbccdbefd3c3fe1d895e9a6508fdd49fe
-	sha256sums = c0683abd09e5d3759e62dcd96e496c9581416bee80300c189e4e81b55c145c4b
+	sha256sums = c6f30709c98a16e879edb824f384ab6ad5723a3b6cf111fc1a6b4fc07a5060e1
+	sha256sums = 70a6fc980ad128f95ae735d4c9f00e4e39f3e1828730017ddd0faeb219b9230e
+	sha256sums = c870add93cb529c23dabaf1e62bbb4d059a38ca85d930e5187989aa79a19b7c2
+	sha256sums = 9c23b560ee4a035656c2f502aad171c65386d62f7180cfe099b08bb73adbf0a9
 	sha256sums = 6d107c6b8da27adb2d643596512282c26f557387d184b8271298df831b29421f
 	sha256sums = 140334f0e2bed5ecfaa1a9a5f8a65034aa87ad8104ec63c579259f21c97c24d8
 
 pkgname = intel-oneapi-ipp
-	depends = intel-oneapi-common=2022.1.0
-	depends = intel-oneapi-tbb>=2021.6.0
-	depends = intel-oneapi-compiler>=2022.1.0
-	depends = intel-oneapi-tbb<2021.6.1
-	depends = intel-oneapi-compiler<2022.1.1
+	depends = intel-oneapi-common=2023.0.0
+	depends = intel-oneapi-tbb>=2021.8.0
+	depends = intel-oneapi-compiler>=2023.0.0
+	depends = intel-oneapi-tbb<2021.8.1
+	depends = intel-oneapi-compiler<2023.0.1
 
 pkgname = intel-oneapi-ipp-static
 	pkgdesc = Intel® Integrated Performance Primitives (static libs)
-	depends = intel-oneapi-ipp=2021.6.0_626
+	depends = intel-oneapi-ipp=2021.7.0_25396
 	options = staticlibs
