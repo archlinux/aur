@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=${_pkgbase}
-pkgver=0.2.100
+pkgver=0.2.101
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
