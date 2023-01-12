@@ -1,6 +1,6 @@
 pkgbase = godot-git
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = 4.0.r1.4ba934b
+	pkgver = 4.0.r1.e62f57f
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = godot-git
 	depends = libxrandr
 	depends = mesa
 	depends = pulseaudio
+	optdepends = libspeechd: Text-to-Speech Support
 	provides = godot
 	conflicts = godot
 	source = godot.desktop
