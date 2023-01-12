@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xts-dark-theme
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark theme for xfce4-theme switcher."
 arch=('any')
 url="https://gitlab.com/linux-stuffs/xts-themes"
@@ -10,10 +10,10 @@ groups=('xfce4-goodies')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank' 'conky')
+depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank' 'conky' 'rofi')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-dark-theme/distrib/xts-dark-theme-0.1-1.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-dark-theme/distrib/xts-dark-theme-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {
