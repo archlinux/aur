@@ -6,7 +6,7 @@ license=('GPL')
 depends=('npm' 'git')
 pkgdesc="A collection of npm dependencies for electron packages."
 _MachineType=`uname -m`
-_electron=22.0.0
+_electron=21.3.4
 _electroncastlabs=v21.3.3+wvcus
 _ecm=3.6.1
 
