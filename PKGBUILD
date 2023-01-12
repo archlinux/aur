@@ -12,7 +12,7 @@ pkgver=6.1.40
 _build=154048
 _rev=96547
 _rdeskver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE, 6.x)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -71,9 +71,9 @@ package_virtualbox6-bin() {
     _pkgname='virtualbox-bin'
     depends=('device-mapper' 'dkms' 'fontconfig' 'hicolor-icon-theme' 'libgl'
              'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
-    optdepends=('virtualbox-bin-guest-iso: for guest additions CD image'
-                'virtualbox-bin-sdk: for the software developer kit'
-                'virtualbox-ext-oracle: for Oracle extensions pack')
+    optdepends=('virtualbox6-bin-guest-iso: for guest additions CD image'
+                'virtualbox6-bin-sdk: for the software developer kit'
+                'virtualbox6-ext-oracle: for Oracle extensions pack')
     provides=("virtualbox=${pkgver}" 'virtualbox-host-dkms' 'VIRTUALBOX-HOST-MODULES')
     conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch' 'virtualbox-bin')
     replaces=('virtualbox_bin' 'virtualbox-sun')
