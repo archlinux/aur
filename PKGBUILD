@@ -2,7 +2,7 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.34.2'
+_pkgver='1.35.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff"
 	'hadron-build.diff'
 )
-sha512sums=('aae868b2552dd5a949cc9c3ff7a1bd7abeb3c5cbc5a873b6ede165a6a451bd509165e6b24381149dfc86b2e1e1b023b71d7d12d6a526ecb05bee75d03312c4f8'
+sha512sums=('b0fd7c9d2f8664972bcc80c7e58d8ba03d31ba7fe7407eea83233e60b9db8d5dcaec4a5430345251f929225ecd4ce6c1b02af8457f168fcc1837732ee55c99e5'
             'd7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1'
             '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94')
 
