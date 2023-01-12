@@ -1,0 +1,17 @@
+pkgbase = catppuccin-cursors-git
+	pkgdesc = Soothing pastel mouse cursors
+	pkgver = 0.2.0.r0.g31a2848
+	pkgrel = 1
+	url = https://github.com/catppuccin/cursors
+	arch = any
+	license = GPL2
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	conflicts = catppuccin-cursors-mocha
+	conflicts = catppuccin-cursors-macchiato
+	conflicts = catppuccin-cursors-frappe
+	conflicts = catppuccin-cursors-latte
+	source = catppuccin-cursors::git+https://github.com/catppuccin/cursors.git
+	sha256sums = SKIP
+
+pkgname = catppuccin-cursors-git
