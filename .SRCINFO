@@ -1,0 +1,13 @@
+pkgbase = dumb_runtime_dir
+	pkgdesc = Creates an XDG_RUNTIME_DIR on login and never removes it.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/ifreund/dumb_runtime_dir
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = git
+	depends = pam
+	source = git+https://github.com/ifreund/dumb_runtime_dir.git#tag=v1.0.4
+	sha256sums = SKIP
+
+pkgname = dumb_runtime_dir
