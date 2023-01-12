@@ -1,6 +1,6 @@
 pkgbase = easyeda-pro-bin
 	pkgdesc = EasyEDA Professional Edition
-	pkgver = 1.9.23
+	pkgver = 1.9.28
 	pkgrel = 1
 	url = https://pro.easyeda.com/
 	install = easyeda-pro-bin.install
@@ -18,9 +18,9 @@ pkgbase = easyeda-pro-bin
 	source = easyeda-pro-bin.install
 	sha256sums = c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74
 	sha256sums = cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76
-	source_x86_64 = easyeda-pro-1.9.23.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-1.9.23.zip
-	sha256sums_x86_64 = 11b753b8a3bbf6f71b6a87c4e187324758cdf6e34bdd93fd3f6cddb4b020978a
-	source_aarch64 = easyeda-pro-1.9.23.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-1.9.23.zip
-	sha256sums_aarch64 = 21060ef2c01a73150905e857f4ed4c1c53f928f7e44d928f8a55f3d3b2b88b85
+	source_x86_64 = easyeda-pro-1.9.28.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-1.9.28.zip
+	sha256sums_x86_64 = da2fb58bb5ce60777b9af3475cd7fd545ea936d5c1ae230c30a169d7f555de80
+	source_aarch64 = easyeda-pro-1.9.28.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-1.9.28.zip
+	sha256sums_aarch64 = 39a28af390bd5aec9a052d8481b5d3c89ded65d105360ca32339f44093de0195
 
 pkgname = easyeda-pro-bin

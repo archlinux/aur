@@ -3,7 +3,7 @@
 
 pkgname=easyeda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.9.23
+pkgver=1.9.28
 pkgrel=1
 pkgdesc="EasyEDA Professional Edition"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_x86_64=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/easye
 source_aarch64=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-${pkgver}.zip")
 sha256sums=('c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
 			'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76')
-sha256sums_x86_64=('11b753b8a3bbf6f71b6a87c4e187324758cdf6e34bdd93fd3f6cddb4b020978a')
-sha256sums_aarch64=('21060ef2c01a73150905e857f4ed4c1c53f928f7e44d928f8a55f3d3b2b88b85')
+sha256sums_x86_64=('da2fb58bb5ce60777b9af3475cd7fd545ea936d5c1ae230c30a169d7f555de80')
+sha256sums_aarch64=('39a28af390bd5aec9a052d8481b5d3c89ded65d105360ca32339f44093de0195')
 
 package() {
 	install -dm755 ${pkgdir}/opt/${_pkgname}
