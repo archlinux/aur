@@ -3,7 +3,7 @@
 
 pkgname=lceda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.9.23
+pkgver=1.9.28
 pkgrel=1
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pr
 source_aarch64=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-${pkgver}.zip")
 sha256sums=('e1c6b9641b73a56d5bffe42d8db2107af8f2c51aa5cd11c79aa998321a5e0190'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
-sha256sums_x86_64=('d0749914f985f9ad882eb9c30c13fd04d26b450125f1d485550518098cf3f6cc')
-sha256sums_aarch64=('432b6686323ae82427c6cb34ad0df1e71ea6cf8fe6701f6d1c16ef2a90520cc9')
+sha256sums_x86_64=('6872d2b76a4aa8e134cf592aed07c4521e74f16cc5efbfce95ac92d7a13d51c3')
+sha256sums_aarch64=('8813a53e29b6bce4d36b325c0baee3a636fa2ffdc216a20744e57a74e08387ec')
 # noextract=(${_pkgname}-${pkgver}.zip)
 
 package() {
