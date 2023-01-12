@@ -1,8 +1,9 @@
 # Maintainer: Matthew Charlston <firstname _at_ mcharlsto dot uk>
 
 pkgname="horizontallyspinningrat"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
+depends=("sox")
 pkgdesc="The horizontally spinning rat - now on your desktop!"
 url="https://github.com/mcharlsto/rat"
 arch=("x86_64")
