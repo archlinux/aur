@@ -1,18 +1,18 @@
 pkgbase = intel-oneapi-dpcpp-debugger
 	pkgdesc = Intel® Distribution for GDB*
-	pkgver = 2021.6.0_178
+	pkgver = 2023.0.0_25336
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-dpcpp-debugger-2021.6.0-2021.6.0-178_amd64.deb
-	noextract = intel-oneapi-dpcpp-debugger-eclipse-cfg-2021.6.0-178_all.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-2021.6.0-2021.6.0-178_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-eclipse-cfg-2021.6.0-178_all.deb
+	noextract = intel-oneapi-dpcpp-debugger-2023.0.0-2023.0.0-25336_amd64.deb
+	noextract = intel-oneapi-dpcpp-debugger-eclipse-cfg-2023.0.0-25336_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-2023.0.0-2023.0.0-25336_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dpcpp-debugger-eclipse-cfg-2023.0.0-25336_all.deb
 	source = intel-oneapi-dpcpp-debugger.conf
-	sha256sums = aba62716b81c21d431abbeda55d28db9326cbfbe13dd633c4df4655da62b85d4
-	sha256sums = 91db109a0cfe173057d88fa8a8580b84870e73bbb576ba22883e6d8cff4bb88e
+	sha256sums = c34634a9e0eb157ff4e20b4a34df2b42329c9cb0dea447b7cdae45a47b133a19
+	sha256sums = 72aaaa91b827868ca5ad015a8faee53c9f90158f664a52053db470bf2c8e1111
 	sha256sums = b27f24587d796719ac01160026e085817b077b65b25cca2959cb782eb714b965
 
 pkgname = intel-oneapi-dpcpp-debugger
-	depends = intel-oneapi-common=2022.1.0
+	depends = intel-oneapi-common=2023.0.0
