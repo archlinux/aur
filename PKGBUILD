@@ -147,7 +147,7 @@ makedepends+=(
   python
   dmg2img
   p7zip
-  uefipatch
+  uefitool
 )
 
 source+=(
