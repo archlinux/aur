@@ -1,26 +1,40 @@
 pkgbase = dxvk-async
-	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine (Windows DLL)
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 (with async patches)
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://github.com/Sporif/dxvk-async
 	arch = x86_64
-	license = zlib/libpng
-	makedepends = ninja
-	makedepends = meson>=0.49
-	makedepends = glslang
-	makedepends = mingw-w64-gcc
-	makedepends = wine
+	license = ZLIB
+	license = custom:libpng
 	depends = vulkan-icd-loader
-	optdepends = lib32-vulkan-icd-loader: 32-bit Windows application support
+	depends = wine>=4.0rc1
+	depends = lib32-vulkan-icd-loader
+	depends = bash
 	provides = dxvk
 	provides = d9vk
-	conflicts = dxvk
-	conflicts = d9vk
+	provides = dxvk=2.0
+	conflicts = d9vk-mingw-git
+	conflicts = d9vk-bin
+	conflicts = d9vk-winelib-git
+	conflicts = dxvk-bin
+	conflicts = dxvk-git
+	conflicts = dxvk-wine32-git
+	conflicts = dxvk-wine64-git
+	conflicts = dxvk-win32-git
+	conflicts = dxvk-win64-git
+	conflicts = dxvk-winelib-git
+	conflicts = dxvk-mingw-git
+	conflicts = dxvk-async-git
 	options = !strip
+	options = !buildflags
 	options = staticlibs
-	source = dxvk-1.10.1.tar.gz::https://codeload.github.com/doitsujin/dxvk/tar.gz/refs/tags/v1.10.1
-	source = https://github.com/Sporif/dxvk-async/raw/1.10.1/dxvk-async.patch
-	sha256sums = ae767e829f9528e889df943a76b34b11dea54f6706af8d625553a83e45a8e9cf
-	sha256sums = e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68
+	source = https://github.com/Sporif/dxvk-async/releases/download/2.0/dxvk-async-2.0.tar.gz
+	source = https://raw.githubusercontent.com/doitsujin/dxvk/master/LICENSE
+	source = dxvk-async-env.conf
+	source = setup_dxvk.sh
+	sha256sums = f8e250f1afd1475e90b1dcc4083ae28a1174f0900e02f52955b6525996de5e2e
+	sha256sums = 03ca4af84f5cd28cef3ed3f1ef4d17996992d35ccdbe82b29cc020ca02c16f3d
+	sha256sums = 5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300
+	sha256sums = 0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7
 
 pkgname = dxvk-async
