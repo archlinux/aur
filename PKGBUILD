@@ -2,10 +2,10 @@
 pkgname="knock-bin"
 _pkgname="knock"
 pkgver=1.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Convert ACSM files to PDF/EPUBs with one command on Linux"
 arch=('x86_64' 'aarch64')
-url="https://github.com/BentonEdmondson/knock"
+url="https://web.archive.org/web/20221020182238mp_/https://github.com/BentonEdmondson/knock"
 license=('GPL3')
 source_x86_64=("knock::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64-linux")
 source_aarch64=("knock::$url/releases/download/$pkgver/$_pkgname-$pkgver-aarch64-linux")
