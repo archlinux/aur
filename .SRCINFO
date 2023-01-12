@@ -1,0 +1,19 @@
+pkgbase = freessm-git
+	pkgdesc = Diagnostic and adjustment tool for SUBARU® vehicles
+	pkgver = 97576c0
+	pkgrel = 1
+	url = https://github.com/Comer352L/FreeSSM
+	arch = x86_64
+	arch = i686i
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = qt5-base
+	provides = FreeSSM
+	conflicts = FreeSSM
+	source = FreeSSM::git+https://github.com/Comer352L/FreeSSM.git#commit=97576c0
+	md5sums = SKIP
+
+pkgname = freessm-git
