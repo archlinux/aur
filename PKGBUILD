@@ -3,7 +3,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=cadabra2
-pkgver=2.4.2.1
+pkgver=2.4.3.2
 pkgrel=1
 pkgdesc="A field-theory motivated approach to computer algebra"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('mathjax: Doxygen documentation'
 makedepends=(boost cmake pybind11)
 
 source=($pkgname-$pkgver.tar.gz::"https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9cdee23f92e99813f76be6864aa3b0cf4711c4635ea5f90ec9dcbef5858f4045')
+sha256sums=('ae913bb1f7d562ca479ff57adf0b61c4b2e9cf83a8b5ec282ef3d27050cfcca2')
 
 prepare() {
   mkdir -p "$srcdir/build"

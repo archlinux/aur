@@ -1,6 +1,6 @@
 pkgbase = cadabra2
 	pkgdesc = A field-theory motivated approach to computer algebra
-	pkgver = 2.4.2.1
+	pkgver = 2.4.3.2
 	pkgrel = 1
 	url = https://cadabra.science
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = cadabra2
 	optdepends = mathjax: Doxygen documentation
 	optdepends = doxygen: Doxygen documentation
 	conflicts = cadabra2-git
-	source = cadabra2-2.4.2.1.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.4.2.1.tar.gz
-	sha256sums = 9cdee23f92e99813f76be6864aa3b0cf4711c4635ea5f90ec9dcbef5858f4045
+	source = cadabra2-2.4.3.2.tar.gz::https://github.com/kpeeters/cadabra2/archive/2.4.3.2.tar.gz
+	sha256sums = ae913bb1f7d562ca479ff57adf0b61c4b2e9cf83a8b5ec282ef3d27050cfcca2
 
 pkgname = cadabra2
