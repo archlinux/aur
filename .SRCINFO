@@ -1,0 +1,36 @@
+pkgbase = spark2014
+	pkgdesc = Formally defined programming language based on Ada (GNAT FSF version)
+	pkgver = 12.fsf
+	pkgrel = 1
+	url = https://www.spark-2014.org
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gprbuild
+	makedepends = coq
+	makedepends = gnatcoll-core
+	makedepends = gprbuild
+	makedepends = ocaml-num
+	makedepends = ocaml-menhir
+	makedepends = ocaml-ocamlgraph
+	makedepends = ocaml-zarith
+	makedepends = ocaml-camlzip
+	makedepends = ocaml-ocplib-simplex-git
+	makedepends = ocaml-yojson
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python
+	optdepends = alt-ergo: alternative prover
+	optdepends = z3: alternative prover
+	optdepends = cvc4: alternative prover
+	options = !makeflags
+	source = git+https://github.com/AdaCore/spark2014#branch=fsf-12
+	source = why3-adacore::git+https://github.com/AdaCore/why3#branch=fsf-12
+	source = https://github.com/gcc-mirror/gcc/archive/refs/tags/releases/gcc-12.2.0.tar.gz
+	source = makefile-fixes.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ef29a97a0f635e7bb7d41a575129cced1800641df00803cf29f04dc407985df0
+	sha256sums = 9985b6864849fb0210cdf40d64b7747cac2c8371385f9790b142d402b5b7d22a
+
+pkgname = spark2014
