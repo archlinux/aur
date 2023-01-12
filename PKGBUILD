@@ -4,13 +4,12 @@ _pkgbase='black-magic-debug'
 pkgbase="${_pkgbase}-git"
 pkgname=(black-magic-debug-app-git black-magic-debug-udev-git)
 pkgver=1.9.0.rc1.r33.g302c8b53
-pkgrel=2
+pkgrel=1
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
 url='https://black-magic.org'
 license=('GPL' 'BSD' 'MIT')
 makedepends=('git' 'hidapi' 'python')
-options=(!strip)
 source=("git+https://github.com/blackmagic-debug/blackmagic.git")
 sha256sums=('SKIP')
 
