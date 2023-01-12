@@ -1,0 +1,15 @@
+pkgbase = github-markdown-toc-go
+	pkgdesc = Easy TOC creation for GitHub README.md - golang implemerntation
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ekalinin/github-markdown-toc.go
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = github-markdown-toc
+	conflicts = github-markdown-toc
+	source = git+https://github.com/ekalinin/github-markdown-toc.go.git#branch=master
+	sha1sums = SKIP
+
+pkgname = github-markdown-toc-go
