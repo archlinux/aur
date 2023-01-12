@@ -1,0 +1,28 @@
+From 06bdb265967fdb581336578a45e1bbcdd6594920 Mon Sep 17 00:00:00 2001
+From: Marco Rubin <20150305+Rubo3@users.noreply.github.com>
+Date: Wed, 11 Jan 2023 13:04:06 +0000
+Subject: [PATCH] Remove setuptools_scm_git_archive as it's obsolete
+
+From the project [README](https://github.com/Changaco/setuptools_scm_git_archive):
+
+```
+This plugin is obsolete. ``setuptools_scm >= 7.0.0`` supports Git archives by itself.
+```
+---
+ pyproject.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index b99dd09..0f68b82 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,8 +2,7 @@
+ requires = [
+     "setuptools",
+     "wheel",
+-    "setuptools_scm",
+-    "setuptools_scm_git_archive",
++    "setuptools_scm>=7.0.0",
+     "cython",
+ ]
+ 
