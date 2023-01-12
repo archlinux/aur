@@ -1,7 +1,7 @@
 pkgbase = bordeaux
 	pkgdesc = SIP telephony applidation server
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/gnutelephony/bordeaux
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = bordeaux
 	source = bordeaux.service
 	source = bordeaux.logrotated
 	sha256sums = a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df
-	sha256sums = f25ff6788a7ae8e988498662c6b2744b82ebe1fe20f5a413cceaa6fff68f6ad4
+	sha256sums = 25ce1741acbf507209e0f70d387dc8fd8a1bc8742abde8db5f3bc6da224d6083
 	sha256sums = 462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f
 
 pkgname = bordeaux

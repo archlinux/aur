@@ -10,7 +10,7 @@
 
 [Unit]
 Description=bordeaux telephony application service
-ConditionPathExists=/usr/sbin/bordeaux
+ConditionPathExists=/usr/bin/bordeaux
 After=network.target
 
 [Install]
@@ -33,7 +33,7 @@ PermissionsStartOnly=True
 
 # Execution model
 Type=simple
-ExecStart=/usr/sbin/bordeaux -v --driver ${DRIVER} --config /etc/bordeaux.conf --prefix /var/lib/bordeaux
+ExecStart=/usr/bin/bordeaux -v --driver ${DRIVER} --config /etc/bordeaux.conf --prefix /var/lib/bordeaux
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure
