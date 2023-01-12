@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=${_pkgbase}-git
-pkgver=0.2.100.r1.ddedfe7
+pkgver=0.2.101.r25.b40a9ab
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
