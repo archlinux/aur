@@ -1,16 +1,16 @@
 pkgbase = intel-oneapi-dev-utilities
 	pkgdesc = Intel oneAPI Dev Utilities
-	pkgver = 2021.6.0_989
+	pkgver = 2021.8.0_25328
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-dev-utilities-2021.6.0-2021.6.0-989_amd64.deb
-	noextract = intel-oneapi-dev-utilities-eclipse-cfg-2021.6.0-989_all.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dev-utilities-2021.6.0-2021.6.0-989_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dev-utilities-eclipse-cfg-2021.6.0-989_all.deb
-	sha256sums = 4efe2d3556804ce77818014227e86b62e34000f511f9ea8774e064956eac2bf1
-	sha256sums = b9a4895851bbb6d69a0a87c2a12aea34b34553ab15f224a5ab81d8b98a14bc3d
+	noextract = intel-oneapi-dev-utilities-2021.8.0-2021.8.0-25328_amd64.deb
+	noextract = intel-oneapi-dev-utilities-eclipse-cfg-2021.8.0-25328_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dev-utilities-2021.8.0-2021.8.0-25328_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dev-utilities-eclipse-cfg-2021.8.0-25328_all.deb
+	sha256sums = df8513238bb753f9d169ffc7967784478ea10a2ab3cb26246c66a0d51d96d33f
+	sha256sums = e91dde74241905098eb7dc59faf37b1f3b6bb6c72fc2f4a7d17a2d6ad2d33937
 
 pkgname = intel-oneapi-dev-utilities
-	depends = intel-oneapi-common=2022.1.0
+	depends = intel-oneapi-common=2023.0.0
