@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.11.51.r54.gba46764
+pkgver=3.11.51.r105.gc2e9b5f
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -24,9 +24,11 @@ source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
+        "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
         "git+https://github.com/nothings/stb.git")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -55,6 +57,7 @@ prepare() {
     git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
     git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
     git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
+    git config submodule.subprojects/openvr.url "$srcdir/openvr"
     git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
     git -c protocol.file.allow=always submodule update
 
