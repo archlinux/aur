@@ -1,25 +1,29 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
-_base=selection
-pkgname=python-${_base}
+
+pkgname=python-selection
+_pkg="${pkgname#python-}"
 pkgdesc="API to extract content from HTML & XML documents"
-pkgver=0.0.14
+pkgver=0.0.21
 pkgrel=1
-arch=(any)
-url="https://pypi.org/project/${_base}"
-license=(MIT)
-depends=(python-lxml python-six python-weblib)
-makedepends=(python-setuptools)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('8749f6c589cbc834f676432f90028161aa9eea029a6960859ae4790378e12736c153b485696b9cf00e0e9eff29afee5b63c2fa1ee69c5d563e406cf7149f29cb')
+arch=('any')
+url='https://github.com/lorien/selection'
+license=('MIT')
+depends=('python-lxml')
+optdepends=('python-pyquery')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('a136018db3fca4ef05ff420dd41a27789b268375aa2b17a8077faa68e671aa6d')
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
