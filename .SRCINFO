@@ -1,0 +1,15 @@
+pkgbase = avt
+	pkgdesc = ali's video tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/alifurkany/avt
+	arch = any
+	license = GPL
+	depends = ffmpeg
+	depends = perl
+	depends = pipewire
+	depends = pulseaudio
+	source = git+https://gitlab.com/alifurkany/avt.git
+	sha256sums = SKIP
+
+pkgname = avt
