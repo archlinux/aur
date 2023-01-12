@@ -19,12 +19,17 @@ build() {
 }
 
 package_black-magic-debug-udev() {
+	conflicts=('black-magic-udev')
+	provides=('black-magic-udev')
+
     cd "blackmagic-full-source-v${pkgver//./_}"
 
     install -Dm 644 driver/99-blackmagic.rules "${pkgdir}"/usr/lib/udev/rules.d/99-blackmagic.rules
 }
 
 package_black-magic-debug-app() {
+	conflicts=('black-magic-app')
+	provides=('black-magic-app')
     depends=('libusb' 'libftdi' 'libhidapi-libusb.so')
 
     cd "blackmagic-full-source-v${pkgver//./_}"
