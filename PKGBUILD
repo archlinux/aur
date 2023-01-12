@@ -5,7 +5,7 @@
 #
 
 pkgname=di
-pkgver=4.50
+pkgver=4.51
 pkgrel=1
 pkgdesc="A disk information utility, displaying everything (and more) that your df command does"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://diskinfo-di.sourceforge.io/"
 license=('ZLIB')
 depends=('glibc')
 source=(https://sourceforge.net/projects/diskinfo-di/files/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('82f08b6c2549fd6ab2e9cb596135a70883ffd4136d176466ae0ec9ba67a3492a')
+sha256sums=('79b2129c4aff27428695441175940a1717fa0fe2ec2f46d1b886ebb4921461bb')
 
 #
 build()
