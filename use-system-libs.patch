@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ef4492932..1c749511e 100644
+index f9328d8c8..3e5106141 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -41,7 +41,6 @@ get_git_version_info()
@@ -11,7 +11,7 @@ index ef4492932..1c749511e 100644
  # make common
  if(common_libs)
 diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
-index 049ebb6be..37e902b89 100644
+index da6eba91e..2400785f3 100644
 --- a/cmake/SearchForStuff.cmake
 +++ b/cmake/SearchForStuff.cmake
 @@ -16,8 +16,7 @@ find_package(LibLZMA)
@@ -33,7 +33,7 @@ index 049ebb6be..37e902b89 100644
  endif()
  
  if(PCAP_FOUND)
-@@ -116,7 +115,5 @@ if((GCC_VERSION VERSION_EQUAL "9.0" OR GCC_VERSION VERSION_GREATER "9.0") AND GC
+@@ -114,7 +113,5 @@ if((GCC_VERSION VERSION_EQUAL "9.0" OR GCC_VERSION VERSION_GREATER "9.0") AND GC
      This text being in a compile log in an open issue may cause it to be closed.")
  endif()
  
@@ -44,10 +44,10 @@ index 049ebb6be..37e902b89 100644
 +check_lib(LIBCHDR libchdr)
 +find_package(yaml-cpp)
 diff --git a/common/src/Utilities/CMakeLists.txt b/common/src/Utilities/CMakeLists.txt
-index 1f6b9b12d..1d0e1d4fb 100644
+index 84b8b3cf3..f8398cf2c 100644
 --- a/common/src/Utilities/CMakeLists.txt
 +++ b/common/src/Utilities/CMakeLists.txt
-@@ -74,7 +74,7 @@ set(UtilitiesFinalLibs
+@@ -72,7 +72,7 @@ set(UtilitiesFinalLibs
      ${LIBC_LIBRARIES} # Gold (new linux linker) does not get automatically dependency of dependency
  	${wxWidgets_LIBRARIES}
  	yaml-cpp
@@ -56,3 +56,15 @@ index 1f6b9b12d..1d0e1d4fb 100644
  )
  
  if(MSVC)
+diff --git a/common/src/x86emitter/CMakeLists.txt b/common/src/x86emitter/CMakeLists.txt
+index e8dead638..19b7c3f42 100644
+--- a/common/src/x86emitter/CMakeLists.txt
++++ b/common/src/x86emitter/CMakeLists.txt
+@@ -58,6 +58,7 @@ set(x86emitterFinalSources
+ )
+ 
+ set(x86emitterFinalLibs
++	${wxWidgets_LIBRARIES}
+ )
+ 
+ add_pcsx2_lib(${Output} "${x86emitterFinalSources}" "${x86emitterFinalLibs}" "${x86emitterFinalFlags}")
