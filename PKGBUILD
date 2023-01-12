@@ -4,13 +4,13 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Deon Spengler <deon@spengler.co.za>
 pkgname=ddcutil-git
-pkgver=1.2.0.r0.g52e170ee
+pkgver=1.4.0.r0.g670b6f36
 pkgrel=1
 pkgdesc="Query and change Linux monitor settings using DDC/CI and USB."
 url="https://www.ddcutil.com"
 arch=('x86_64')
 license=('GPL2')
-depends=('glib2' 'i2c-tools' 'kmod' 'libusb' 'libdrm' 'libxrandr' 'systemd-libs')
+depends=('glib2' 'i2c-tools' 'libusb' 'libdrm' 'libxrandr')
 makedepends=('git' 'systemd')
 provides=("${pkgname%-git}=${pkgver//.r*/}" 'libddcutil.so=4')
 conflicts=("${pkgname%-git}")
@@ -22,9 +22,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$srcdir/${pkgname%-git}"
   NOCONFIGURE=1 ./autogen.sh
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
   ./configure --prefix=/usr
   make
 }
