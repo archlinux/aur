@@ -1,0 +1,41 @@
+pkgbase = dxvk-async-bin
+	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 (with async patches)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Sporif/dxvk-async
+	arch = x86_64
+	license = ZLIB
+	license = custom:libpng
+	depends = vulkan-icd-loader
+	depends = wine>=4.0rc1
+	depends = lib32-vulkan-icd-loader
+	depends = bash
+	provides = dxvk
+	provides = d9vk
+	provides = dxvk=2.0
+	conflicts = d9vk-mingw-git
+	conflicts = d9vk-bin
+	conflicts = d9vk-winelib-git
+	conflicts = dxvk-bin
+	conflicts = dxvk-git
+	conflicts = dxvk-wine32-git
+	conflicts = dxvk-wine64-git
+	conflicts = dxvk-win32-git
+	conflicts = dxvk-win64-git
+	conflicts = dxvk-winelib-git
+	conflicts = dxvk-mingw-git
+	conflicts = dxvk-async
+	conflicts = dxvk-async-git
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/Sporif/dxvk-async/releases/download/2.0/dxvk-async-2.0.tar.gz
+	source = https://raw.githubusercontent.com/doitsujin/dxvk/master/LICENSE
+	source = dxvk-async-env.conf
+	source = setup_dxvk.sh
+	sha256sums = f8e250f1afd1475e90b1dcc4083ae28a1174f0900e02f52955b6525996de5e2e
+	sha256sums = 03ca4af84f5cd28cef3ed3f1ef4d17996992d35ccdbe82b29cc020ca02c16f3d
+	sha256sums = 5ea0fbf7fddb45a8575ff001793011a594d999aaeb66ef95378bca950c844300
+	sha256sums = 0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7
+
+pkgname = dxvk-async-bin

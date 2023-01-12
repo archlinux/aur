@@ -1,0 +1,7 @@
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!dxvk-async-env.conf
+!setup_dxvk.sh
+
+*
