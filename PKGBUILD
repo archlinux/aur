@@ -6,13 +6,13 @@
 
 # TODO: https://github.com/freenet/fred/pull/807
 
-_fred=build01495
+_fred=build01496
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1495
+pkgver=0.7.5.1496
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
