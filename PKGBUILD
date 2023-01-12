@@ -12,6 +12,7 @@ sha256sums=('SKIP')
 
 package() {
   cd avt
+  git advice.detachedHead false
   git checkout tags/v$pkgver
 
   install -Dm755 avt "$pkgdir/usr/bin/avt"
