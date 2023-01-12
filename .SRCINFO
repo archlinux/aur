@@ -1,6 +1,6 @@
 pkgbase = python-plotly
 	pkgdesc = An open-source, interactive graphing library
-	pkgver = 5.11.0
+	pkgver = 5.12.0
 	pkgrel = 1
 	url = https://github.com/plotly/plotly.py
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-plotly
 	optdepends = python-pillow
 	optdepends = python-scipy
 	options = !strip
-	source = python-plotly-5.11.0.tar.gz::https://github.com/plotly/plotly.py/archive/v5.11.0.tar.gz
-	sha256sums = fb85d1c6013cb91324bd610e02f820880e14aa7daa9bbc6c3572b7250764ee33
+	source = python-plotly-5.12.0.tar.gz::https://github.com/plotly/plotly.py/archive/v5.12.0.tar.gz
+	sha256sums = bb0145d46b8fc94d341222e0435c93e0f371bf56ea82d2a5d22e951fd726e379
 
 pkgname = python-plotly
