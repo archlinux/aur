@@ -1,9 +1,10 @@
 pkgbase = px_ptop
 	pkgdesc = ps and top for Human Beings
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/walles/px
 	arch = any
 	license = MIT
+	depends = python
 
 pkgname = px_ptop
