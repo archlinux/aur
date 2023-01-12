@@ -3,7 +3,7 @@
 
 pkgname=sigasi
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE'
 arch=('x86_64')
 url='http://www.sigasi.com/'
@@ -13,8 +13,8 @@ source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${p
 depends=('glib2' 'jre11-openjdk' 'gtk3' 'webkit2gtk')
 makedepends=('unzip')
 options=('!strip')
-sha256sums=('fadb4a3da1701184f0b33c761569449074a8c137fed29ebfe4a2af949a48eb61'
-            'a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c')
+sha1sums=('ef684b6203b19751f59e4c95394de134c135f871'
+          '99dfc8c07414ab73f921bdeba790a70715624f35')
 
 package() {
 	cd "${srcdir}/"
