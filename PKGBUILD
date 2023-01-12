@@ -5,12 +5,12 @@ pkgdesc="A tool to manage configuration files/(ne)dots."
 url="https://git.sr.ht/~nedia/nedots.rs"
 arch=("x86_64")
 license=("MIT")
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=3
 source=("nedots.rs-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 makedepends=("cargo")
 provides=("nedots")
-sha256sums=("3b14aaf3ae8abbfcfb4c6336ad92c8f5164cda9bf94312446881a70d3f4e6862")
+sha256sums=("97bbe2c93c2dafc9713e0cecb0986d40de30202b5302ca65daa7d4505bba4a8e")
 
 cd_src() {
 	cd "nedots.rs-$pkgver" || return
