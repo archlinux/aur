@@ -1,7 +1,5 @@
 pkgname=tailscaledesktop
-_pkgname=Tailscaledesktop
-pkgrlname=tailscale
-_pkgrlname=Tailscale
+_pkgname=TailscaleDesktop
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Unnofficial Tailscale desktop application"
@@ -14,21 +12,21 @@ source=("https://gitlab.com/tailscaledesktop/application/-/archive/$pkgver-$pkgr
 sha256sums=('SKIP')
 
 package() {
-    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgrlname" ;done
-    cd "$srcdir/$_pkgrlname"
-    chmod +x $pkgrlname.sh
-    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgrlname"
-    install -dm755 "$pkgdir/opt/$pkgrlname"
+    for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
+    cd "$srcdir/$_pkgname"
+    chmod +x $pkgname.sh
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    install -dm755 "$pkgdir/opt/$pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
-    cp -r ./ "$pkgdir/opt/$_pkgrlname"
-    cp -r "$pkgdir/opt/$_pkgrlname/$pkgrlname.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r ./ "$pkgdir/opt/$_pkgname"
+    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgrlname/$pkgrlname.sh" "$pkgdir/usr/bin/$pkgrlname"
+    ln -s "/opt/$_pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgrlname/$_pkgrlname.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgrlname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgrlname.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
