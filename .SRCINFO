@@ -1,0 +1,21 @@
+pkgbase = bzip3-git
+	pkgdesc = A better and stronger spiritual successor to BZip2
+	pkgver = 1.2.2.r0.g7b45d73
+	pkgrel = 1
+	url = https://github.com/kspalaiologos/bzip3
+	arch = i686
+	arch = x86_64
+	license = apache
+	license = LGPL3
+	makedepends = git
+	makedepends = clang
+	depends = glibc
+	optdepends = sh
+	provides = bzip3=1.2.2.r0.g7b45d73
+	provides = libbzip3.so
+	conflicts = bzip3
+	options = staticlibs
+	source = git+https://github.com/kspalaiologos/bzip3.git
+	sha256sums = SKIP
+
+pkgname = bzip3-git
