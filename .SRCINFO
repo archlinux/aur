@@ -9,6 +9,7 @@ pkgbase = avt
 	depends = ffmpeg
 	depends = pipewire
 	depends = pulseaudio
+	depends = xorg-xdpyinfo
 	source = git+https://gitlab.com/alifurkany/avt.git
 	sha256sums = SKIP
 
