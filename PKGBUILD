@@ -12,7 +12,7 @@ pkgver=6.1.40
 _build=154048
 _rev=96547
 _rdeskver=1.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE, 6.x)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -166,7 +166,7 @@ package_virtualbox6-bin-guest-iso() {
     pkgdesc='VirtualBox guest additions ISO image for use with virtualbox6-bin package'
     arch=('any')
     provides=("virtualbox-guest-iso=${pkgver}")
-    conflicts=('virtualbox-bin-guest-iso')
+    conflicts=('virtualbox-bin-guest-iso' 'virtualbox-guest-iso')
     
     install -D -m644 "${_pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso" \
         -t "${pkgdir}/opt/VirtualBox/additions"
