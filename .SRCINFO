@@ -1,7 +1,7 @@
 pkgbase = ktra-git
 	pkgdesc = Your Little Cargo Registry
 	pkgver = 0.7.0.r0.g07ffd10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moriturus/ktra
 	arch = x86_64
 	license = Apache

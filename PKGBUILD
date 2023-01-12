@@ -3,7 +3,7 @@
 _pkgname=ktra
 pkgname=$_pkgname-git
 pkgver=0.7.0.r0.g07ffd10
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Little Cargo Registry"
 arch=("x86_64")
 url="https://github.com/moriturus/ktra"
@@ -37,6 +37,8 @@ pkgver() {
 }
 
 prepare() {
+    # git2 0.13 with libgit2 1.5 causes SIGSEGV, use a newer version of git2
+    sed -i 's/git2 = "0.13"/git2 = "^0.16.0"/g' "${srcdir}/ktra/Cargo.toml"
     cd "$_pkgname"
     cargo update
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
