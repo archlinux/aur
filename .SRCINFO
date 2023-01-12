@@ -1,0 +1,13 @@
+pkgbase = steamworks-sdk
+	pkgdesc = The Steamworks SDK provides a range of features which are designed to help ship your application or game on Steam in an efficient manner.
+	pkgver = 1.55
+	pkgrel = 1
+	url = https://partner.steamgames.com/doc/sdk
+	arch = x86
+	arch = x86_64
+	license = ValveSteamLicense
+	source = https://github.com/ShyPixie/Overlays/raw/master/dev-util/steamworks-sdk/files/steamworks_sdk_155.zip
+	sha256sums = 3d5ab5d2b5538fdbe49fd81abf3b6bc6c18b91bcc6a0fecd4122f22b243ee704
+
+pkgname = steamworks-sdk
+
