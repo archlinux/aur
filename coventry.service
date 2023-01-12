@@ -10,7 +10,7 @@
 
 [Unit]
 Description=coventry telephony service
-ConditionPathExists=/usr/sbin/coventry
+ConditionPathExists=/usr/bin/coventry
 After=network.target
 
 [Install]
@@ -32,7 +32,7 @@ PermissionsStartOnly=True
 
 # Execution model
 Type=simple
-ExecStart=/usr/sbin/coventry -v --prefix /var/lib/coventry --config /etc/coventry.conf
+ExecStart=/usr/bin/coventry -v --prefix /var/lib/coventry --config /etc/coventry.conf
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=5
