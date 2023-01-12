@@ -3,9 +3,9 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.0.r77.g993b705d
+pkgver=2.0.r215.g93fbd67a
 pkgrel=1
-pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core"
+pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL2')
