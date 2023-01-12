@@ -22,7 +22,7 @@ build() {
 }
 
 package_intel-oneapi-vtune() {
-	depends=('intel-oneapi-common=2022.1.0')
+	depends=('intel-oneapi-common=2023.0.0')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/vtune/latest
 

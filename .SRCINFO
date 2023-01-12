@@ -12,7 +12,7 @@ pkgbase = intel-oneapi-vtune
 	sha256sums = b1647fa8a328380b2f1c52fcdac3c8c7408db0d16d819064d3d9e2cdc13df93a
 
 pkgname = intel-oneapi-vtune
-	depends = intel-oneapi-common=2022.1.0
+	depends = intel-oneapi-common=2023.0.0
 
 pkgname = intel-oneapi-vtune-static
 	pkgdesc = Intel® VTune(TM) Profiler (static libs)
