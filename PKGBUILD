@@ -1,7 +1,7 @@
 # Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=easyeda-pro-electron
 _pkgname=${pkgname%-electron}
-pkgver=1.9.23
+pkgver=1.9.28
 pkgrel=1
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
 arch=('any')
@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.zip::https://image.easyeda.com/files/easyeda-pro-
         "LICENSE"
         "${_pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('11b753b8a3bbf6f71b6a87c4e187324758cdf6e34bdd93fd3f6cddb4b020978a'
+sha256sums=('da2fb58bb5ce60777b9af3475cd7fd545ea936d5c1ae230c30a169d7f555de80'
             'c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
             '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435'
             'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76')
