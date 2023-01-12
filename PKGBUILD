@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=storehouse
 pkgver=0.0.4
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="Storehouse for release tarballs"
 url="https://codeberg.org/dyfet/$pkgname"
