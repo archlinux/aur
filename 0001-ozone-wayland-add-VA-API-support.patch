@@ -17,10 +17,10 @@ by Wayland later.
 
 ---
 diff --git a/media/gpu/vaapi/vaapi_picture_factory.cc b/media/gpu/vaapi/vaapi_picture_factory.cc
-index 54825cd..0a57166 100644
+index 7f44de0..618dcd6 100644
 --- a/media/gpu/vaapi/vaapi_picture_factory.cc
 +++ b/media/gpu/vaapi/vaapi_picture_factory.cc
-@@ -105,7 +105,7 @@ uint32_t VaapiPictureFactory::GetGLTextureTarget() {
+@@ -106,7 +106,7 @@ uint32_t VaapiPictureFactory::GetGLTextureTarget() {
  }
  
  gfx::BufferFormat VaapiPictureFactory::GetBufferFormat() {
@@ -65,7 +65,7 @@ index 18c6c22..fe614b6 100644
  
  bool VaapiPictureNativePixmap::AllowOverlay() const {
 diff --git a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
-index 37e3520..9d17122 100644
+index e01a3dd..94b2bfa 100644
 --- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 +++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 @@ -560,12 +560,12 @@ void VaapiVideoDecodeAccelerator::InitiateSurfaceSetChange(
@@ -99,10 +99,10 @@ index 1a5016b..eca714b 100644
  }
  
 diff --git a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.h b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.h
-index 84ebcba..dfb2675 100644
+index 5555c11..844e1d8 100644
 --- a/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.h
 +++ b/ui/ozone/platform/wayland/gpu/gbm_pixmap_wayland.h
-@@ -92,6 +92,9 @@ class GbmPixmapWayland : public gfx::NativePixmap {
+@@ -93,6 +93,9 @@ class GbmPixmapWayland : public gfx::NativePixmap {
  
    // Says a wl_buffer has been created and must removed.
    bool created_wl_buffer_ = false;
@@ -113,7 +113,7 @@ index 84ebcba..dfb2675 100644
  
  }  // namespace ui
 diff --git a/ui/ozone/platform/wayland/ozone_platform_wayland.cc b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-index 6a6ab20..60aaef2 100644
+index 0228a26..3c938c1 100644
 --- a/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 +++ b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 @@ -296,6 +296,9 @@ class OzonePlatformWayland : public OzonePlatform,
