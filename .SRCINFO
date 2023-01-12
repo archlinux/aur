@@ -1,0 +1,20 @@
+pkgbase = gnomint-git
+	pkgdesc = Certification Authority management made easy.
+	pkgver = 202301120858
+	pkgrel = 1
+	url = http://gnomint.sf.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = intltool
+	depends = gconf
+	depends = gtk2
+	depends = sqlite
+	conflicts = gnomint-git
+	conflicts = gnomint
+	options = !buildflags
+	source = gnoMint-master.tar.gz::https://github.com/davefx/gnoMint/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = gnomint-git

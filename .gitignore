@@ -1,0 +1,7 @@
+pkg/
+src/
+gnomint-*.tar.gz
+gnoMint-*.tar.gz
+gnomint-*.tar.xz
+gnoMint-*.tar.xz
+*.zst
