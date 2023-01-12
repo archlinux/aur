@@ -1,15 +1,14 @@
-# Maintainer: Yangtse Su <yangtsesu@gmail.com>
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Contributor: Yangtse Su <yangtsesu@gmail.com>
 
 pkgbase=alibaba-puhuiti
 pkgname=({otf,ttf}-alibaba-puhuiti alibaba-puhuiti-fontconfig)
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Alibaba PuHuiTi fonts"
 arch=(any)
 license=(custom)
 url=https://ics.alibaba.com/font/alibaba-sans
-provides=(alibaba-sans)
-conflicts=(alibaba-sans)
 source=("alibaba-puhuiti-$pkgver.zip::https://ics-static.oss-cn-hangzhou.aliyuncs.com/static/ucan/alibaba_font${pkgver}.zip"
          75-alibaba.conf)
 sha512sums=('b4b9514375dd1a7717c675e87caaa87a8a9ebc549ba1275822cb0a7e3a8d0f62d3a793777467fffe1c98738a11f317c4cad2678703a74301dda0dd31892d3f47'
@@ -36,15 +35,15 @@ _package_common () {
 
 package_otf-alibaba-puhuiti () {
 	pkgdesc="$pkgdesc - OTF format"
-	depends+=(alibaba-puhuiti-fontconfig)
+	depends=(alibaba-puhuiti-fontconfig)
 	_package_common otf/*.otf
 }
 
 package_ttf-alibaba-puhuiti () {
 	pkgdesc="$pkgdesc - TTF format"
-	provides+=(alibaba-puhuiti)
-	replaces+=(alibaba-puhuiti)
-	depends+=(alibaba-puhuiti-fontconfig)
+	provides=(alibaba-puhuiti alibaba-sans)
+	replaces=(alibaba-puhuiti alibaba-sans)
+	depends=(alibaba-puhuiti-fontconfig)
 	_package_common ttf/*.ttf
 }
 
