@@ -1,17 +1,19 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer : Felix Schindler <aur at felixschindler dot net>
+# Contributor : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Rainmaker <rainmaker52@gmail.com>
 # Contributor: gary9872	<garysBoXatgeemale.com>
 # Contributor: khomutsky <bogdan@khomutsky.com>
 # Contributor: M0Rf30
 
-pkgbase=virtualbox-bin
-pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
+pkgbase=virtualbox6-bin
+_pkgbase=virtualbox-bin
+pkgname=('virtualbox6-bin' 'virtualbox6-bin-guest-iso' 'virtualbox6-bin-sdk')
 pkgver=6.1.40
 _build=154048
 _rev=96547
 _rdeskver=1.8.4
 pkgrel=1
-pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
+pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE, 6.x)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
@@ -43,7 +45,7 @@ sha256sums=('4a6b781563dd9db7bd0c8759867fce6a6ff801ccfd97fb2febb9b5fe333f788d'
             '3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635')
 
 prepare() {
-    local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
+    local _extractdir="${_pkgbase}-${pkgver}/VirtualBox-extracted"
     
     # extract files
     mkdir -p "$_extractdir"
@@ -65,14 +67,15 @@ build() {
     VBOX_INSTALL_PATH='/opt/VirtualBox' python vboxapisetup.py build
 }
 
-package_virtualbox-bin() {
+package_virtualbox6-bin() {
+    _pkgname='virtualbox-bin'
     depends=('device-mapper' 'dkms' 'fontconfig' 'hicolor-icon-theme' 'libgl'
              'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
     optdepends=('virtualbox-bin-guest-iso: for guest additions CD image'
                 'virtualbox-bin-sdk: for the software developer kit'
                 'virtualbox-ext-oracle: for Oracle extensions pack')
     provides=("virtualbox=${pkgver}" 'virtualbox-host-dkms' 'VIRTUALBOX-HOST-MODULES')
-    conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
+    conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch' 'virtualbox-bin')
     replaces=('virtualbox_bin' 'virtualbox-sun')
     backup=('etc/vbox/vbox.cfg')
     options=('!strip' '!emptydirs')
@@ -81,7 +84,7 @@ package_virtualbox-bin() {
     
     # install bundled files
     install -d -m755 "${pkgdir}/opt"
-    cp -Pr --no-preserve='ownership' "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
+    cp -Pr --no-preserve='ownership' "${_pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
     # mark binaries suid root, and make sure the directory is only writable by the user
     chmod 4755 "${pkgdir}/${_installdir}"/{VirtualBoxVM,VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo}}
@@ -110,7 +113,7 @@ package_virtualbox-bin() {
     install -D -m644 <(printf '%s\n' "INSTALL_DIR=/${_installdir}") "${pkgdir}/etc/vbox/vbox.cfg"
     
     # modules-load.d configuration
-    install -D -m644 <(printf 'vboxdrv\nvboxnetadp\nvboxnetflt\n') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+    install -D -m644 <(printf 'vboxdrv\nvboxnetadp\nvboxnetflt\n') "${pkgdir}/usr/lib/modules-load.d/${_pkgname}.conf"
     
     # systemd
     install -D -m644 vboxweb.service -t "${pkgdir}/usr/lib/systemd/system"
@@ -159,23 +162,24 @@ package_virtualbox-bin() {
     done
 }
 
-package_virtualbox-bin-guest-iso() {
-    pkgdesc='VirtualBox guest additions ISO image for use with virtualbox-bin package'
+package_virtualbox6-bin-guest-iso() {
+    pkgdesc='VirtualBox guest additions ISO image for use with virtualbox6-bin package'
     arch=('any')
-    provides=('virtualbox-guest-iso')
+    provides=("virtualbox-guest-iso=${pkgver}")
+    conflicts=('virtualbox-bin-guest-iso')
     
-    install -D -m644 "${pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso" \
+    install -D -m644 "${_pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso" \
         -t "${pkgdir}/opt/VirtualBox/additions"
 }
 
-package_virtualbox-bin-sdk() {
-    pkgdesc='VirtualBox software developer kit for use with virtualbox-bin package'
+package_virtualbox6-bin-sdk() {
+    pkgdesc='VirtualBox software developer kit for use with virtualbox6-bin package'
     arch=('any')
     license=('LGPL2.1' 'GPL2' 'BSD' 'custom')
     depends=('python')
     optdepends=('java-runtime: for webservice java bindings')
-    provides=('virtualbox-sdk')
-    conflicts=('virtualbox-sdk')
+    provides=("virtualbox-sdk=${pkgver}")
+    conflicts=('virtualbox-sdk' 'virtualbox-bin-sdk')
     
     local _dir
     local _installdir='opt/VirtualBox'
@@ -184,7 +188,7 @@ package_virtualbox-bin-sdk() {
     while read -r -d '' _dir
     do
         cp -Pr --no-preserve='ownership' "$_dir" "${pkgdir}/${_installdir}/sdk"
-    done < <(find "${pkgbase}-${pkgver}/sdk" -mindepth 1 -maxdepth 1 -type d ! -name 'installer' -print0)
+    done < <(find "${_pkgbase}-${pkgver}/sdk" -mindepth 1 -maxdepth 1 -type d ! -name 'installer' -print0)
     
     install -D -m644 "VBoxAuth-r${_rev}.h"    "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
     install -D -m644 "VBoxAuthPAM-r${_rev}.c" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthPAM.cpp"

@@ -1,5 +1,5 @@
-pkgbase = virtualbox-bin
-	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
+pkgbase = virtualbox6-bin
+	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE, 6.x)
 	pkgver = 6.1.40
 	pkgrel = 1
 	url = https://www.virtualbox.org/
@@ -32,7 +32,7 @@ pkgbase = virtualbox-bin
 	sha256sums = 09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1
 	sha256sums = 3c2089575e8c03b7517fe176e65168e15fb7aefe7e71224bf264d21812dbc635
 
-pkgname = virtualbox-bin
+pkgname = virtualbox6-bin
 	depends = device-mapper
 	depends = dkms
 	depends = fontconfig
@@ -53,19 +53,21 @@ pkgname = virtualbox-bin
 	conflicts = virtualbox
 	conflicts = virtualbox-host-dkms
 	conflicts = virtualbox-host-modules-arch
+	conflicts = virtualbox-bin
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
 	options = !strip
 	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
 
-pkgname = virtualbox-bin-guest-iso
-	pkgdesc = VirtualBox guest additions ISO image for use with virtualbox-bin package
+pkgname = virtualbox6-bin-guest-iso
+	pkgdesc = VirtualBox guest additions ISO image for use with virtualbox6-bin package
 	arch = any
-	provides = virtualbox-guest-iso
+	provides = virtualbox-guest-iso=6.1.40
+	conflicts = virtualbox-bin-guest-iso
 
-pkgname = virtualbox-bin-sdk
-	pkgdesc = VirtualBox software developer kit for use with virtualbox-bin package
+pkgname = virtualbox6-bin-sdk
+	pkgdesc = VirtualBox software developer kit for use with virtualbox6-bin package
 	arch = any
 	license = LGPL2.1
 	license = GPL2
@@ -73,5 +75,6 @@ pkgname = virtualbox-bin-sdk
 	license = custom
 	depends = python
 	optdepends = java-runtime: for webservice java bindings
-	provides = virtualbox-sdk
+	provides = virtualbox-sdk=6.1.40
 	conflicts = virtualbox-sdk
+	conflicts = virtualbox-bin-sdk
