@@ -10,7 +10,7 @@
 
 [Unit]
 Description=storehouse release tarballs
-ConditionPathExists=/usr/sbin/storehouse
+ConditionPathExists=/usr/bin/storehouse
 After=network.target
 
 [Install]
@@ -32,7 +32,7 @@ PermissionsStartOnly=True
 
 # Execution model
 Type=simple
-ExecStart=/usr/sbin/storehouse -v
+ExecStart=/usr/bin/storehouse -v
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=5
