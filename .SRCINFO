@@ -1,6 +1,6 @@
 pkgbase = libpg_query
 	pkgdesc = C library for accessing the PostgreSQL parser outside of the server environment
-	pkgver = 15.4.0.0
+	pkgver = 15.4.1.0
 	pkgrel = 1
 	url = https://github.com/pganalyze/libpg_query
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libpg_query
 	makedepends = git
 	depends = protobuf-c
 	depends = xxhash
-	source = libpg_query::git+https://github.com/pganalyze/libpg_query#commit=1ada550d901ed4edbfb6bce2163d21f4b948ab2d
+	source = libpg_query::git+https://github.com/pganalyze/libpg_query#commit=346b34d50015dd9fc9d3a1511d47d61386c70aca
 	source = dont-override-opt-level.patch
 	source = verbose-build.patch
 	source = unbundle-vendor-deps.patch
