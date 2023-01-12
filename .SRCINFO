@@ -5,12 +5,9 @@ pkgbase = black-magic-debug
 	url = https://black-magic.org
 	arch = any
 	license = GPL
-	license = BSD
-	license = MIT
 	makedepends = git
 	makedepends = hidapi
 	makedepends = python
-	options = !strip
 	source = black-magic-debug-1.8.2::https://github.com/blackmagic-debug/blackmagic/releases/download/v1.8.2/blackmagic-full-source-v1_8_2.tar.gz
 	sha256sums = 24ffe59fd4db220ab4e35ae6fd1d3f99b09c96c764c2440b174f98f771653219
 
