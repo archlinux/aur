@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.10.9
+pkgver=0.10.10
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -71,7 +71,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('126f643ca0350b90f5d21ef26558f45acff4188d27abab25b72fd46ea0f39ede')
+sha256sums=('24c5e45f5fe2226d92c7bff6ce8b55f88fabb63c09f1ad9436aa8dc1d551a44d')
 
 prepare() {
 	cd "$_archive"
@@ -85,7 +85,7 @@ prepare() {
 }
 
 build() {
-    cd "$_archive"
+	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
