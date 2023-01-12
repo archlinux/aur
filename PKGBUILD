@@ -3,7 +3,7 @@
 pkgname=osp-tracker
 pkgver=6.1.1
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
 url='http://physlets.org/tracker/'
 license=('GPL3')
@@ -18,7 +18,7 @@ source=(
   "tracker.desktop"
 )
 sha256sums=(
-  '1d3ba421122468aebef3f9a0f7d07ad8ca6dd699076f4baabb7f4a4568345b94'
+  'f2523ae64f6ba9bd8a16767f02fb9dc165e2f3a6620bf87199efe2cc8749bb93'
   '0c36e09d4f2e2ab8cd39ee1ed896ce96db217bd2eff7a8522d426e15acf93f8d'
   '73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b'
 )
