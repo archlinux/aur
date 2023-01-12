@@ -3,11 +3,11 @@
 pkgbase='black-magic-debug'
 pkgname=(black-magic-debug-app black-magic-debug-udev)
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Plug&Play in application debugger for microcontrollers'
 arch=('any')
 url='https://black-magic.org'
-license=('GPL')
+license=('GPL' 'BSD' 'MIT')
 makedepends=('git' 'hidapi' 'python')
 options=(!strip)
 source=("${pkgbase}-${pkgver}::https://github.com/blackmagic-debug/blackmagic/releases/download/v${pkgver}/blackmagic-full-source-v${pkgver//./_}.tar.gz")
@@ -20,9 +20,9 @@ build() {
 }
 
 package_black-magic-debug-udev() {
-  cd "blackmagic-full-source-v${pkgver//./_}"
+    cd "blackmagic-full-source-v${pkgver//./_}"
 
-    install -Dm 644 driver/99-blackmagic.rules "$pkgdir"/usr/lib/udev/rules.d/99-blackmagic.rules
+    install -Dm 644 driver/99-blackmagic.rules "${pkgdir}"/usr/lib/udev/rules.d/99-blackmagic.rules
 }
 
 package_black-magic-debug-app() {
@@ -30,5 +30,6 @@ package_black-magic-debug-app() {
 
     cd "blackmagic-full-source-v${pkgver//./_}"
 
-    install -Dm 755 src/blackmagic "$pkgdir"/usr/bin/blackmagic
+    install -Dm 755 src/blackmagic "${pkgdir}"/usr/bin/blackmagic
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" COPYING*
 }
