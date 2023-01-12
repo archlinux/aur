@@ -1,0 +1,19 @@
+--- Olympus/src/sharp.lua.orig	2023-01-10 02:38:42.163569080 +0000
++++ Olympus/src/sharp.lua	2023-01-10 02:40:57.413850535 +0000
+@@ -78,7 +78,7 @@
+             exename = "Olympus.Sharp.bin.osx"
+         end
+ 
+-        local exe = fs.joinpath(cwd, exename)
++        local exe = fs.joinpath(cwd, "Olympus.Sharp.exe")
+ 
+         local logpath = os.getenv("OLYMPUS_SHARP_LOGPATH") or nil
+         if logpath and #logpath == 0 then
+@@ -94,6 +94,7 @@
+         print("[sharp init]", "logging to", logpath)
+ 
+         local pargs = {
++            "mono",
+             exe,
+             pid,
+ 
