@@ -1,13 +1,13 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-fasmart-gothic'
 pkgver=1.002
-pkgrel=3
+pkgrel=4
 pkgdesc="「霞鹜尚智黑」，在「03スマートフォントUI」的基础上修改制作，将新晰黑字面横向压缩 94%，全新英数与假名，更具稳重时尚感。"
 arch=('any')
 url="https://github.com/lxgw/LxgwNeoXiHei"
 license=('custom:IPA')
 changelog="changelog.txt"
-source=("$pkgname-$pkgver.ttf::$url/releases/download/v$pkgver/LXGWFasmartGothic.ttf"
+source=("$url/releases/download/v$pkgver/LXGWFasmartGothic.ttf"
         *.md)
 conflicts=('ttf-lxgw-fasmart-gothic')
 sha256sums=('0cd01311eababf443f00ebd99e72efbe9ae00a9cd1f153fd76ca199e109d8dc2'
@@ -15,7 +15,7 @@ sha256sums=('0cd01311eababf443f00ebd99e72efbe9ae00a9cd1f153fd76ca199e109d8dc2'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
 package() {
-  install -Dm644 "$pkgname-$pkgver.ttf" -t "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 LXGWFasmartGothic.ttf -t "$pkgdir/usr/share/fonts/TTF/"
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 LICENSE_CHS.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

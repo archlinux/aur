@@ -1,13 +1,13 @@
 pkgbase = ttf-lxgw-fasmart-gothic
 	pkgdesc = 「霞鹜尚智黑」，在「03スマートフォントUI」的基础上修改制作，将新晰黑字面横向压缩 94%，全新英数与假名，更具稳重时尚感。
 	pkgver = 1.002
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lxgw/LxgwNeoXiHei
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-fasmart-gothic
-	source = ttf-lxgw-fasmart-gothic-1.002.ttf::https://github.com/lxgw/LxgwNeoXiHei/releases/download/v1.002/LXGWFasmartGothic.ttf
+	source = https://github.com/lxgw/LxgwNeoXiHei/releases/download/v1.002/LXGWFasmartGothic.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
 	sha256sums = 0cd01311eababf443f00ebd99e72efbe9ae00a9cd1f153fd76ca199e109d8dc2
