@@ -1,17 +1,18 @@
 # Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
-# Contributor: lmartinez-mirror
 
 pkgname=bato
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
-pkgdesc="Small program to send battery notifications"
+pkgdesc='Small program to send battery notifications'
 arch=('x86_64')
-url="https://github.com/doums/bato"
+url='https://github.com/doums/bato'
 license=('MPL2')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 depends=('libnotify')
-makedepends=('rust' 'cmake')
-sha256sums=('71a9673ba797cc078a980e01b5b09af92ed4b3ce5a3d2b6be519e8e0c00189e7')
+makedepends=('rust' 'cargo' 'cmake')
+provides=('bato')
+conflicts=('bato')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('913ec8446f03ad6492b624c2d2da1d5b0ddd7a1a620e3450cf8d3ca24ffc8983')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,5 +21,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dvm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dvm 755 "target/release/bato" "$pkgdir/usr/bin/bato"
+  install -Dvm 644 "bato.yaml" "$pkgdir/usr/share/doc/bato/config/bato.yaml"
 }
+

@@ -1,14 +1,17 @@
 pkgbase = bato
 	pkgdesc = Small program to send battery notifications
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/doums/bato
 	arch = x86_64
 	license = MPL2
 	makedepends = rust
+	makedepends = cargo
 	makedepends = cmake
 	depends = libnotify
-	source = bato-0.1.6.tar.gz::https://github.com/doums/bato/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 71a9673ba797cc078a980e01b5b09af92ed4b3ce5a3d2b6be519e8e0c00189e7
+	provides = bato
+	conflicts = bato
+	source = bato-0.1.7.tar.gz::https://github.com/doums/bato/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 913ec8446f03ad6492b624c2d2da1d5b0ddd7a1a620e3450cf8d3ca24ffc8983
 
 pkgname = bato
