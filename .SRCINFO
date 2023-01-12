@@ -9,8 +9,6 @@ pkgbase = pumba
 	makedepends = go
 	makedepends = git
 	source = pumba-0.9.7-1.tar.gz::https://github.com/alexei-led/pumba/archive/refs/tags/0.9.7.tar.gz
-	source = https://github.com/alexei-led/pumba/commit/cd6983.patch
 	sha256sums = 844f600da305577db726cd2b97295608641a462a5e1c457de14af216e4540fe4
-	sha256sums = e77b9003e6d79e443aed18c9bde557215a884b40a171cbefe3eeaa11a839d7e5
 
 pkgname = pumba

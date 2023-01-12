@@ -9,14 +9,8 @@ url="https://github.com/alexei-led/pumba"
 license=('Apache')
 makedepends=('go' 'git')
 checkdepends=('golangci-lint')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-        "https://github.com/alexei-led/pumba/commit/cd6983.patch")
-sha256sums=('844f600da305577db726cd2b97295608641a462a5e1c457de14af216e4540fe4'
-            'e77b9003e6d79e443aed18c9bde557215a884b40a171cbefe3eeaa11a839d7e5')
-
-prepare() {
-  patch -d "$pkgname-$pkgver" -p1 -i ../cd6983.patch
-}
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('844f600da305577db726cd2b97295608641a462a5e1c457de14af216e4540fe4')
 
 build() {
   cd "$pkgname-$pkgver"
