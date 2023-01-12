@@ -31,5 +31,5 @@ package_black-magic-debug-app() {
     cd "blackmagic-full-source-v${pkgver//./_}"
 
     install -Dm 755 src/blackmagic "${pkgdir}"/usr/bin/blackmagic
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" COPYING*
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}" COPYING
 }

@@ -1,7 +1,7 @@
 pkgbase = black-magic-debug
 	pkgdesc = Plug&Play in application debugger for microcontrollers
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://black-magic.org
 	arch = any
 	license = GPL
