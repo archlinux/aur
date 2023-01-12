@@ -3,7 +3,7 @@
 pkgname=nickvision-money-git
 _pkgname=nickvisionmoney
 _pkgid=org.nickvision.money
-pkgver=2023.1.0.beta1.r8.ge218ffa
+pkgver=2023.1.0.rc1.r42.g5199a5f
 pkgrel=1
 pkgdesc="A personal finance manager"
 arch=('aarch64' 'armv7h' 'x86_64' 'i686')
@@ -11,20 +11,17 @@ url=https://github.com/nlogozzo/$_pkgname
 license=('GPL3')
 depends=('dotnet-runtime' 'libadwaita')
 makedepends=('dotnet-sdk' 'cmake' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 source=(git+$url)
 b2sums=(SKIP)
 
-if [ "$CARCH" = x86_64 ]; then
-	_arch=x64
-elif [ "$CARCH" = i686 ]; then
-	_arch=x86
-elif [ "$CARCH" = aarch64 ]; then
-        _arch=arm64
-elif [ "$CARCH" = armv7h ]; then
-        _arch=arm
-fi
+case "$CARCH" in
+	x86_64) _arch=x64 ;;
+	i686) _arch=x86 ;;
+	aarch64) _arch=arm64 ;;
+	armv7h) _arch=arm ;;
+esac
 
 pkgver() {
 	cd $_pkgname
