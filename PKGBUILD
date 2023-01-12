@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=asciidoctor-web-pdf-git
-pkgver=v1.0.0.alpha.12.r100.ga5421d1
-pkgrel=1
+pkgver=1.0.0.alpha.16.r5.gc613be3
+pkgrel=0
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=('any')
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -10,18 +10,18 @@ license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname}  ${pkgname%-git} asciidoctor-pdf)
 #replaces=(${pkgname})
-depends=('npm' 'poppler' 'ghostscript')
+depends=(npm poppler ghostscript)
 makedepends=()
 backup=()
 options=('!strip')
-#install=${pkgname}.install
+install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
-#noextract=("${pkgname}-${_pkgver}.tar.gz")
+noextract=()
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
