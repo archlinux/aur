@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=protonup-git
-pkgver=0.1.4.r9.gd8289b0
+pkgver=0.1.5.r0.g54bcad9
 pkgrel=1
 pkgdesc="Install and Update Proton-GE"
 arch=('any')
@@ -12,15 +12,8 @@ depends=('python' 'python-requests')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/AUNaseef/protonup.git'
-        'https://github.com/AUNaseef/protonup/pull/26.patch')
-sha256sums=('SKIP'
-            'a4a2a4ea02d5457010994645a61e6c43cddaff33096a6f8ec6c2189898ddfed5')
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  patch -Np1 -i ../26.patch
-}
+source=('git+https://github.com/AUNaseef/protonup.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
