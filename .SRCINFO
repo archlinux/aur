@@ -1,6 +1,6 @@
 pkgbase = gallery-dl-bin
 	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites (bin)
-	pkgver = 1.24.3
+	pkgver = 1.24.4
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = gallery-dl-bin
 	provides = gallery-dl
 	conflicts = gallery-dl
 	conflicts = gallery-dl-git
-	source = gallery-dl-1.24.3.bin::https://github.com/mikf/gallery-dl/releases/download/v1.24.3/gallery-dl.bin
-	source = gallery-dl-1.24.3.bin.sig::https://github.com/mikf/gallery-dl/releases/download/v1.24.3/gallery-dl.bin.sig
+	source = gallery-dl-1.24.4.bin::https://github.com/mikf/gallery-dl/releases/download/v1.24.4/gallery-dl.bin
+	source = gallery-dl-1.24.4.bin.sig::https://github.com/mikf/gallery-dl/releases/download/v1.24.4/gallery-dl.bin.sig
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
-	sha512sums = e9b6d80591ee1cef0529591c00423ae17de26341abe068ae57b5f06e43c7e9fe3864b15b191e6a2c73ca9ff77f8a58ef52df52f606a5cab7b133e91ca35b16ec
+	sha512sums = 6218bc188a7d615a7f8670ced002eca2fc4d61876e4327404809bbdf31e7e49dba11061d73c46db4f9423f14d023728aafb1c8a22a9395ebfcecde5c1553ac55
 	sha512sums = SKIP
 
 pkgname = gallery-dl-bin
