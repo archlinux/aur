@@ -3,7 +3,7 @@
 
 pkgname=libgrapheme
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="unicode string library"
 url="https://libs.suckless.org/libgrapheme/"
 license=("ISC")
@@ -12,24 +12,18 @@ conflicts=("libgrapheme")
 source=("https://dl.suckless.org/libgrapheme/libgrapheme-${pkgver}.tar.gz")
 sha256sums=('a68bbddde76bd55ba5d64116ce5e42a13df045c81c0852de9ab60896aa143125')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  sed -i 's/ldconfig//g' configure
-  sed -i 's/\=\ ldconfig/\=/g' config.mk
-}
-
 build() {
   cd "${pkgname}-${pkgver}"
-  make PREFIX=/usr all
+  make PREFIX=/usr DESTDIR="${pkgdir}" LDCONFIG= all
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  make PREFIX=/usr test
+  make PREFIX=/usr DESTDIR="${pkgdir}" LDCONFIG= test
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make PREFIX=/usr DESTDIR="${pkgdir}" LDCONFIG= install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = libgrapheme
 	pkgdesc = unicode string library
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libs.suckless.org/libgrapheme/
 	arch = x86_64
 	license = ISC
