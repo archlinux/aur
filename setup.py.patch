@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index 301e4c7..ee9b540 100644
+--- a/setup.py
++++ b/setup.py
+@@ -27,8 +27,7 @@ setup_options = dict(
+     maintainer_email="larsmans@gmail.com",
+     license="MIT",
+     url="https://github.com/larsmans/seqlearn",
+-    packages=["seqlearn", "seqlearn._utils", "seqlearn._decode",
+-              "seqlearn/tests"],
++    packages=["seqlearn", "seqlearn._utils", "seqlearn._decode"],
+     classifiers=[
+         "Development Status :: 3 - Alpha",
+         "Intended Audience :: Developers",
