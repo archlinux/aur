@@ -1,7 +1,7 @@
 pkgbase = asciidoctor-web-pdf
 	pkgdesc = A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc.
-	pkgver = v1.0.0_alpha.14
-	pkgrel = 2
+	pkgver = 1.0.0_alpha.15
+	pkgrel = 0
 	url = https://github.com/Mogztter/asciidoctor-web-pdf
 	arch = any
 	license = MIT
@@ -11,9 +11,8 @@ pkgbase = asciidoctor-web-pdf
 	provides = asciidoctor-web-pdf
 	conflicts = asciidoctor-web-pdf
 	conflicts = asciidoctor-web-pdf-git
-	noextract = asciidoctor-web-pdf-v1.0.0-alpha.14.tar.gz
-	options = !strip
-	source = asciidoctor-web-pdf-v1.0.0-alpha.14.tar.gz::https://ghproxy.com/https://github.com/Mogztter/asciidoctor-web-pdf/archive/refs/tags/v1.0.0-alpha.14.tar.gz
-	sha256sums = 20914817964e927f13cb7feb36318aba18b160083515e21c58dcbcde16762520
+	noextract = asciidoctor-web-pdf-1.0.0-alpha.15.tar.gz
+	source = asciidoctor-web-pdf-1.0.0-alpha.15.tar.gz::https://github.com/Mogztter/asciidoctor-web-pdf/archive/refs/tags/v1.0.0-alpha.15.tar.gz
+	sha256sums = bc79a26b3333a91aa68c7611cc99877f8ed523f3ed633ff8ddfc12e692b70d39
 
 pkgname = asciidoctor-web-pdf
