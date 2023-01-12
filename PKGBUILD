@@ -6,7 +6,7 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=4.0.r1.4ba934b
+pkgver=4.0.r1.e62f57f
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -14,7 +14,7 @@ license=('MIT')
 arch=('i686' 'x86_64')
 makedepends=('gcc' 'git' 'scons' 'pkgconf' 'yasm')
 depends=('alsa-lib' 'glu' 'libglvnd' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'pulseaudio')
-optdepends=()
+optdepends=('libspeechd: Text-to-Speech Support')
 conflicts=("godot")
 provides=("godot")
 _arch=''
@@ -55,7 +55,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}"/${_pkgname}
-    scons platform=linuxbsd target=release_debug werror=no -j$((`nproc`+1))
+    # by default built using LTO, use `lto=none` to disable
+    scons platform=linuxbsd target=editor production=yes werror=no -j$((`nproc`+1))
 }
 
 package() {
@@ -67,7 +68,7 @@ package() {
 
     cd "${srcdir}"/${_pkgname}
 
-    install -D -m755 bin/godot.linuxbsd.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
+    install -D -m755 bin/godot.linuxbsd.editor.${_arch} "${pkgdir}"/usr/bin/godot
     install -D -m644 LICENSE.txt "${pkgdir}"/usr/share/licenses/godot-git/LICENSE
 }
 
