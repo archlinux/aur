@@ -3,7 +3,7 @@
 pkgname=obs-midi
 _pkgver=0.9.3-ALPHA-3.66
 pkgver=${_pkgver//-/_}
-pkgrel=4
+pkgrel=5
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-midi.1023/"
@@ -23,9 +23,8 @@ sha256sums=(
 prepare() {
   cd $pkgname
 
-  git config --local protocol.file.allow always
   git config submodule.src/libremidi.url $srcdir/libremidi
-  git submodule update
+  git -c protocol.file.allow=always submodule updategit submodule update
 
   # Use system libobs finder
   rm -f external/FindLibObs.cmake

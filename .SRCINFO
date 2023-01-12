@@ -1,7 +1,7 @@
 pkgbase = obs-midi
 	pkgdesc = An automated scene switcher for OBS Studio
 	pkgver = 0.9.3_ALPHA_3.66
-	pkgrel = 4
+	pkgrel = 5
 	url = https://obsproject.com/forum/resources/obs-midi.1023/
 	arch = i686
 	arch = x86_64
