@@ -3,12 +3,11 @@
 pkgbase=alibaba-puhuiti
 pkgname=({otf,ttf}-alibaba-puhuiti alibaba-puhuiti-fontconfig)
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Alibaba PuHuiTi fonts"
 arch=(any)
 license=(custom)
 url=https://ics.alibaba.com/font/alibaba-sans
-makedepends=(unzip)
 provides=(alibaba-sans)
 conflicts=(alibaba-sans)
 source=("alibaba-puhuiti-$pkgver.zip::https://ics-static.oss-cn-hangzhou.aliyuncs.com/static/ucan/alibaba_font${pkgver}.zip"
@@ -19,9 +18,11 @@ sha512sums=('b4b9514375dd1a7717c675e87caaa87a8a9ebc549ba1275822cb0a7e3a8d0f62d3a
 prepare () {
 	local winzipfile='阿里巴巴普惠体2(1).0字体包/PuHuiTi2.0 for Win 压缩.zip'
 	local maczipfile='阿里巴巴普惠体2(1).0字体包/PuHuiTi2.0 for Mac 压缩.zip'
-	unzip -q -C -o -j "$winzipfile" '*.ttf' -d ttf
-	unzip -q -C -o -j "$winzipfile" '*.otf' -d otf
-	unzip -q -C -o -j "$maczipfile" '*.pdf' -d pdf
+
+	mkdir ttf otf pdf
+	bsdtar -xf "$winzipfile" -C ttf --include '*.ttf' --strip-components=3
+	bsdtar -xf "$winzipfile" -C otf --include '*.otf' --strip-components=3
+	bsdtar -xf "$maczipfile" -C pdf --include '*.pdf' --strip-components=1
 	mv 'pdf/阿里巴巴普惠体2.0版法律声明.pdf' pdf/license.pdf
 }
 
