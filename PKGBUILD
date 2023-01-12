@@ -3,14 +3,14 @@
 _appname='firefox-syncstorage'
 _srcname='syncstorage-rs'
 pkgname="${_appname}"-git
-pkgver=0.10.2.r64.g38de833
+pkgver=0.13.0.r10.gab5df9ba
 pkgrel=1
 pkgdesc='Sync storage with build-in token server for running a self-hosted firefox sync server.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mozilla-services/'"${_srcname}"
 license=('MPL2')
 depends=('openssl' 'python-fxa' 'python-tokenlib')
-makedepends=('git' 'rust' 'cmake' 'go' 'pkgconf' 'mariadb-libs')
+makedepends=('git' 'rust' 'cmake' 'pkgconf' 'mariadb-libs')
 optdepends=('mysql: to use a local DB server')
 provides=("${_appname}")
 conflicts=("${_appname}")
@@ -28,14 +28,14 @@ pkgver() {
 
 build() {
 	cd "${_srcname}"
-	cargo build --release --features grpcio/openssl
+	cargo build --release
 }
 
 package() {
 	cd "${_srcname}"
 
 	# Installing manually
-	install -Dm 755 target/release/syncstorage "${pkgdir}"/usr/bin/"${_appname}"
+	install -Dm 755 target/release/syncserver "${pkgdir}"/usr/bin/"${_appname}"
 	install -Dm 644 config/local.example.toml "${pkgdir}"/etc/"${_appname}".toml
 	install -Dm 644 "${srcdir}/${_appname}".service "${pkgdir}"/usr/lib/systemd/system/"${_appname}".service
 }

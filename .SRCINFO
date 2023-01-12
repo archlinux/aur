@@ -1,6 +1,6 @@
 pkgbase = firefox-syncstorage-git
 	pkgdesc = Sync storage with build-in token server for running a self-hosted firefox sync server.
-	pkgver = 0.10.2.r64.g38de833
+	pkgver = 0.13.0.r10.gab5df9ba
 	pkgrel = 1
 	url = https://github.com/mozilla-services/syncstorage-rs
 	install = firefox-syncstorage.install
@@ -14,7 +14,6 @@ pkgbase = firefox-syncstorage-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cmake
-	makedepends = go
 	makedepends = pkgconf
 	makedepends = mariadb-libs
 	depends = openssl
