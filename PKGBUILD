@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
 pkgver=2023.1.1.r0.g332175e
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -47,7 +47,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "appimage/${pkgname%-git}.appdata.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "appimage/${pkgname%-git}.desktop -t" "$pkgdir/usr/share/applications/"
+  install -Dm644 "appimage/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications/"
 
   for size in 128 256; do
     install -Dm644 appimage/${pkgname%-git}-${size}.png -t \
