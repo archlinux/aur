@@ -4,7 +4,7 @@
 pkgbase=alibaba-puhuiti
 pkgname=({otf,ttf}-alibaba-puhuiti alibaba-puhuiti-fontconfig)
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Alibaba PuHuiTi fonts"
 arch=(any)
 license=(custom)
@@ -49,6 +49,7 @@ package_ttf-alibaba-puhuiti () {
 
 package_alibaba-puhuiti-fontconfig () {
 	pkgdesc="$pkgdesc - Fontconfig configuration"
+	conflicts=(alibaba-puhuiti alibaba-sans)
 	install -dm755 "${pkgdir}/usr/share/fontconfig/conf.default"
 	ln -nsf ../conf.avail/75-alibaba.conf \
 		"${pkgdir}/usr/share/fontconfig/conf.default/75-alibaba.conf"
