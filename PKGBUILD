@@ -143,7 +143,7 @@ _vmware_fusion_ver=8.5.10_7527438
 makedepends+=(
   python
   unzip
-  uefipatch
+  uefitool
 )
 
 source+=(
