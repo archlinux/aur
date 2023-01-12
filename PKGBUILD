@@ -1,7 +1,7 @@
 # Maintainer: Luiz Renato <ruizlenato@proton.me>
 
 pkgname=kamyroll-tauri-dev
-pkgver=$(git ls-remote --tags --sort='v:refname' git@github.com:kamyroll/Kamyroll-Tauri.git | tail --lines=1 | cut --delimiter='/' --fields=3 | tr '-' '_')
+pkgver=$(git ls-remote --tags --sort='v:refname' git@github.com:kamyroll/Kamyroll-Tauri.git | tail --lines=1 | cut --delimiter='/' --fields=3 | tr '-' '_' | sed 's/^v//')
 pkgrel=1
 pkgdesc='Kamyroll-Tauri is a computer client allowing you to view your favorite anime thanks to Kamyroll.'
 arch=('x86_64')
