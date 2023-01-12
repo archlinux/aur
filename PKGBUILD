@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/sphinxcontrib-eval
 _source_type=pypi-releases
-_upstreamver='0.0.2'
+_upstreamver='0.0.3'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -24,7 +24,7 @@ _bin=trans
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('df65aa4dcfbb61fe03ef6effe0741018556846f6b683ae9085f2558fe63ebc03')
+sha256sums=('c9fb71dc1901039378b0ee5a12ac74c2140a458cd2ac7a5b18ad8a344caf5505')
 
 package() {
 	cd "$srcdir" || return 1
