@@ -2,7 +2,7 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.1r2.r352.f2b1751
+pkgver=0.2.1r2.r397.24e3404
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -22,11 +22,13 @@ pkgver() {
 }
 
 build () {
-	cmake -B build -S "${_pkgname}" \
-	-DCMAKE_BUILD_TYPE='None' \
-	-DCMAKE_INSTALL_PREFIX='/usr' \
-	-Wno-dev
-	cmake --build build
+        cmake -B build -S "${_pkgname}" \
+                -DCMAKE_BUILD_TYPE='None' \
+                -DCMAKE_INSTALL_PREFIX='/usr' \
+                -DCMAKE_C_FLAGS=-DNDEBUG \
+                -DCMAKE_CXX_FLAGS=-DNDEBUG \
+                -Wno-dev
+        cmake --build build
 }
 
 package() {
