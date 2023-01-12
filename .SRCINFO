@@ -1,27 +1,27 @@
 pkgbase = intel-oneapi-ccl
 	pkgdesc = Intel® oneAPI Collective Communications Library
-	pkgver = 2021.6.0_568
+	pkgver = 2021.8.0_25371
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-ccl-2021.6.0-2021.6.0-568_amd64.deb
-	noextract = intel-oneapi-ccl-devel-2021.6.0-2021.6.0-568_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ccl-2021.6.0-2021.6.0-568_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ccl-devel-2021.6.0-2021.6.0-568_amd64.deb
+	noextract = intel-oneapi-ccl-2021.8.0-2021.8.0-25371_amd64.deb
+	noextract = intel-oneapi-ccl-devel-2021.8.0-2021.8.0-25371_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ccl-2021.8.0-2021.8.0-25371_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ccl-devel-2021.8.0-2021.8.0-25371_amd64.deb
 	source = intel-oneapi-ccl.conf
 	source = intel-oneapi-ccl.sh
-	sha256sums = d224c7026151c6d3c0830a9578b7ab904cc5c3c4ba1f491a26bbfacf58a7fa7a
-	sha256sums = eaa5d539f514453bb1ca12cdb33edebbda0ce7057f05b61b030c682ca28f51bf
+	sha256sums = a4a022ceb878f12d42f96d53819869eab3c76ea3e142bf444c2e82cf9fcf0df0
+	sha256sums = fed1c30ead5dee45c4c25305bbc3ebe36ba0ad022f0333ff203f8c400d0fc2ce
 	sha256sums = 711518e543c0b4cd40cda37357936d6c5923da64862f7afa54f673f3daadd065
 	sha256sums = dcd7b76690d94a2e86d926fbfe8d5297e616e5a49dc8d6eb146c36262aaa2041
 
 pkgname = intel-oneapi-ccl
-	depends = intel-oneapi-common=2022.1.0
-	depends = intel-oneapi-mpi>=2021.6.0
-	depends = intel-oneapi-mpi<2021.6.1
+	depends = intel-oneapi-common=2023.0.0
+	depends = intel-oneapi-mpi>=2021.8.0
+	depends = intel-oneapi-mpi<2021.8.1
 
 pkgname = intel-oneapi-ccl-static
 	pkgdesc = Intel® oneAPI Collective Communications Library (static libs)
-	depends = intel-oneapi-ccl=2021.6.0_568
+	depends = intel-oneapi-ccl=2021.8.0_25371
 	options = staticlibs
