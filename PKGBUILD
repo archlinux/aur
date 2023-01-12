@@ -1,6 +1,6 @@
 # Maintainer: Paul Stemmet <aur@luxolus.com>
 pkgname=consul-template-bin
-pkgver=0.29.5
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="Template rendering, notifier, and supervisor for HashiCorp Consul and Vault data"
 arch=('x86_64' 'i686' 'aarch64')
@@ -18,9 +18,9 @@ source_aarch64=(${pkgname}-${pkgver}.zip::https://releases.hashicorp.com/consul-
 sha256sums=('3e678bbc1818519df21741f41b9bc60fe13c1ae0f09b1b1f707e041130484268'
             '6fb7f113a9c529bcbeaec00835d86e6c99502848766c4286e6bc48c7f8a0a347'
             '91274ea60b8c8f8511427f9ff85a82d92c80755668bae11c2e3fd00dbf440a9c')
-sha256sums_x86_64=('24aa8c67a2ac95c03524d62dd0e1815359e8c9689324b48e9c75ed2b6e25a5c8')
-sha256sums_i686=('24aa8c67a2ac95c03524d62dd0e1815359e8c9689324b48e9c75ed2b6e25a5c8')
-sha256sums_aarch64=('24aa8c67a2ac95c03524d62dd0e1815359e8c9689324b48e9c75ed2b6e25a5c8')
+sha256sums_x86_64=('c78db0f0eecc4d314a5130e3b4c8bd17086c6cd9080c4caf69c606de67cbe212')
+sha256sums_i686=('c78db0f0eecc4d314a5130e3b4c8bd17086c6cd9080c4caf69c606de67cbe212')
+sha256sums_aarch64=('c78db0f0eecc4d314a5130e3b4c8bd17086c6cd9080c4caf69c606de67cbe212')
 
 package() {
 

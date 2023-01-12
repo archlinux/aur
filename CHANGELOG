@@ -1,22 +1,9 @@
-## v0.29.5 (Oct 04, 2022)
-
-BUG FIXES:
-* Fix issue with ownership change detection incorrectly indicating a change when a user or group was set but not both [[GH-1652](https://github.com/hashicorp/consul-template/pull/1652)]
-* Fix issue with nomad configuration setup [[GH-1653](https://github.com/hashicorp/consul-template/pull/1653)]
-
-## v0.29.4 (Sept 30, 2022)
-
-BUG FIXES:
-* Fix goroutine leak in vault token watcher on config reload. [[GH-1650](https://github.com/hashicorp/consul-template/issues/1650)]
-
-## v0.29.3 (Sept 30, 2022)
+## v0.30.0 (Jan 09, 2023)
 
 IMPROVEMENTS:
-* Vault token management refactor to increase encapsulation and enable testing. [[GH-1645](https://github.com/hashicorp/consul-template/pull/1645)]
+* option to exit with an error upon failure to look up data (instead of blocking and waiting for it). [[GH-1695](https://github.com/hashicorp/consul-template/pull/1695), [GH-1637](https://github.com/hashicorp/consul-template/issues/1637)]
+* tweak defaults for performance improvements [[GH-1697](https://github.com/hashicorp/consul-template/pull/1697), [GH-1603](https://github.com/hashicorp/consul-template/issues/1603)]
 
 BUG FIXES:
-* Log child process successful exits at INFO level (not ERR). [[GH-1649](https://github.com/hashicorp/consul-template/pull/1649), [GH-1282](https://github.com/hashicorp/consul-template/issues/1282)]
-* Fix reading vault agent token in wrapped format [[GH-1498](https://github.com/hashicorp/consul-template/issues/1498)]
-* Fix issue with transient goroutine leak causing unnecessary memory growth. [[GH-1644](https://github.com/hashicorp/consul-template/pull/1644)]
-* Fix issue with pkiCerts failing if cert file is moved. [[GH-1639](https://github.com/hashicorp/consul-template/pull/1639)]
-
+* properly respect reload/kill configured signals [[GH-1690](https://github.com/hashicorp/consul-template/pull/1690), [GH-1671](https://github.com/hashicorp/consul-template/issues/1671)]
+* Fix 'toTitle' function for a better support for word boundaries and unicode punctuation [[GH-1678](https://github.com/hashicorp/consul-template/pull/1678)]
