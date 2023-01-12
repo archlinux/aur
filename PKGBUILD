@@ -2,9 +2,11 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
 pkgver=7.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
+depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
+makedepends=('unzip')
 url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'
@@ -27,7 +29,6 @@ build() {
 }
 
 package() {
-  depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
   install -o 663 -g 663 -d "$pkgdir/opt/onedev"
   cp -r "$srcdir/$pkgname-$pkgver"/* "$pkgdir/opt/onedev"
   chown -R 663:663 "$pkgdir/opt/onedev"
