@@ -1,7 +1,7 @@
 pkgbase = alibaba-puhuiti
 	pkgdesc = Alibaba PuHuiTi fonts
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ics.alibaba.com/font/alibaba-sans
 	arch = any
 	license = custom
@@ -13,5 +13,16 @@ pkgbase = alibaba-puhuiti
 	sha512sums = b4b9514375dd1a7717c675e87caaa87a8a9ebc549ba1275822cb0a7e3a8d0f62d3a793777467fffe1c98738a11f317c4cad2678703a74301dda0dd31892d3f47
 	sha512sums = f05f3014ae38f4fb59d3bb06f52e05b8e122e5ba124bd166474231877346a7aeb107860a4b8304493197d43101b03a1bff6c1d79c7dc495377bb63a94cbb0be6
 
-pkgname = alibaba-puhuiti
+pkgname = otf-alibaba-puhuiti
+	pkgdesc = Alibaba PuHuiTi fonts - OTF format
+	depends = alibaba-puhuiti-fontconfig
 
+pkgname = ttf-alibaba-puhuiti
+	pkgdesc = Alibaba PuHuiTi fonts - TTF format
+	depends = alibaba-puhuiti-fontconfig
+	provides = alibaba-sans
+	provides = alibaba-puhuiti
+	replaces = alibaba-puhuiti
+
+pkgname = alibaba-puhuiti-fontconfig
+	pkgdesc = Alibaba PuHuiTi fonts - Fontconfig configuration
