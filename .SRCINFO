@@ -1,6 +1,6 @@
 pkgbase = sc-im
 	pkgdesc = A spreadsheet program based on SC
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = sc-im
 	optdepends = gnuplot: create graphs
 	conflicts = scim-spreadsheet
 	conflicts = sc-im-git
-	source = sc-im-0.8.2.tar.gz::https://github.com/andmarti1424/sc-im/archive/v0.8.2.tar.gz
-	source = arch.0.8.0.patch
-	sha256sums = 7f00c98601e7f7709431fb4cbb83707c87016a3b015d48e5a7c2f018eff4b7f7
-	sha256sums = 191c8537f75decb0bf8d00db9543b07985684bf10308ff63c6648de70b7ff6e5
+	source = sc-im-0.8.3.tar.gz::https://github.com/andmarti1424/sc-im/archive/v0.8.3.tar.gz
+	source = sc-im_arch_0.8.3.patch
+	sha256sums = 5568f9987b6d26535c0e7a427158848f1bc03d829f74e41cbcf007d8704e9bd3
+	sha256sums = 2ba5a7c20d250d14a32dd3fad956779551cc18ab5f080ce149ba8395a70d0c41
 
 pkgname = sc-im
