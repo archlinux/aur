@@ -1,12 +1,16 @@
 pkgbase = mkinitcpio-pkcs11
 	pkgdesc = Install pkcs11 in early boot (systemd cryptsetyp.target) using pcscd.socket
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	arch = any
 	depends = ccid
 	depends = opensc
 	depends = pcsclite
+	depends = p11-kit
+	depends = gnutls
 	source = pkcs11_install
-	sha256sums = accd33d28e83f3db1344f25de85338eba0bbfda260761fa1c3733b6b70d48be9
+	source = opensc.module
+	sha256sums = 0c62dd5eb978268ed13be851b9ac46dee9aaa52c655061da5ece4c69ab4ff8f7
+	sha256sums = fea71e2e2c1853bba034106d4eb40646a787ed900fef883e09d38dcb29675db4
 
 pkgname = mkinitcpio-pkcs11

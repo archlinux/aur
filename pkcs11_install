@@ -24,8 +24,6 @@ build() {
 
     # MISC
     add_binary /usr/bin/p11tool
-    # cat /etc/pkcs11/modules/opensc.module
-    # module: opensc-pkcs11.so
     add_file /etc/pkcs11/modules/opensc.module
 
 }
