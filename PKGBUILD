@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=datavzrd
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="A tool to create visual HTML reports from collections of CSV/TSV tables"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/datavzrd/datavzrd"
 license=('MIT')
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fcb1072a3ab052c1dbbfdd3abab3e4876aa7bcd8f68b468529db42521bc7c82f')
+sha256sums=('d521961bcdec4a8f7b367b6b524831944a65fb1047b681f85ddb3361032d7ca9')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -30,7 +30,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
