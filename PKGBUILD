@@ -69,7 +69,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=6.1.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -91,6 +91,7 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Revert-drm-display-dp_mst-Move-all-payload-info-into.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -101,7 +102,8 @@ sha256sums=('bc7f6d9a8a8bbe9a723e82346bba94b58d926f78bfba106b21e041e0290076fc'
             '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
-            '00c7b866ba5393639d5ca2349883909ad6b1bedf6091e857c83f208e0838479c')
+            '00c7b866ba5393639d5ca2349883909ad6b1bedf6091e857c83f208e0838479c'
+            '601a923873d2d598d5a615b09c2863aa8402ced6da24215d2b25eac3c4987ed3')
 
 prepare() {
   cd linux-${pkgver}
