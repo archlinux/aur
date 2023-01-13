@@ -1,7 +1,7 @@
 pkgbase = nuclei-openocd
 	pkgdesc = nuclei-openocd 是 Nuclei Studio IDE 的调试工具。
-	pkgver = 2022.08
-	pkgrel = 1
+	pkgver = 2022.12
+	pkgrel = 0
 	url = https://www.nucleisys.com/download.php
 	arch = x86_64
 	license = unknow
@@ -13,8 +13,8 @@ pkgbase = nuclei-openocd
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	optdepends = embedded-studio-risc-v: Segger Embedded Studio for RISC-V
 	options = !strip
-	source = https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-2022.08-linux-x64.tgz
-	sha256sums = 9f76df84e18474e3fc6c21ca7df9ae8aedd04dbbc4ce51f3dc6f16b33fc91e47
+	source = https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-2022.12-linux-x64.tgz
+	sha256sums = 785a9fc1d03cd4e4c5ae5acb9e24f933b79fc30b8b07055200146259ac029866
 
 pkgname = nuclei-openocd
 	depends = nuclei-openocd-bin

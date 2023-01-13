@@ -2,8 +2,8 @@
 
 pkgbase=nuclei-openocd
 pkgname=(nuclei-openocd nuclei-openocd-bin)
-pkgver=2022.08
-pkgrel=1
+pkgver=2022.12
+pkgrel=0
 pkgdesc="nuclei-openocd 是 Nuclei Studio IDE 的调试工具。"
 arch=("x86_64")
 makedepends=('libftdi-compat'  'libusb-compat'  'hidapi'  'libudev.so')
@@ -17,7 +17,7 @@ license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-linux-x64.tgz")
-sha256sums=('9f76df84e18474e3fc6c21ca7df9ae8aedd04dbbc4ce51f3dc6f16b33fc91e47')
+sha256sums=('785a9fc1d03cd4e4c5ae5acb9e24f933b79fc30b8b07055200146259ac029866')
 
 package_nuclei-openocd() {
 	depends=('nuclei-openocd-bin')
@@ -27,7 +27,7 @@ package_nuclei-openocd-bin() {
 	cd "$srcdir"
 
 	msg2 'Installing Nuclei OpenOCD'
-	install -dm755 "${pkgdir}/opt/nuclei/NucleiStudio/toolchain" \
+	install -dm755 "${pkgdir}/opt/nuclei/NucleiStudio/toolchain/" \
 					"${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/Nuclei_Toolchain/"
 
 	tar zxf "nuclei-openocd-${pkgver}-linux-x64.tgz"
