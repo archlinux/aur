@@ -37,7 +37,7 @@ build: .SRCINFO
 	makepkg --printsrcinfo > .SRCINFO
 
 %.pkg.tar.zst: PKGBUILD $(REPODIR)/
-	makepkg
+	makepkg -f
 
 $(REPODIR)/:
 	makepkg -o
