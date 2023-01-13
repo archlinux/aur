@@ -3,14 +3,15 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=0.2.r9.ge2bb76d
+pkgver=latest.r1.g7fcdc2f
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/adamharrison/lite-xl-plugin-manager"
 license=('MIT')
 depends=('lite-xl' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls')
-makedepends=('git')
+# vim needed for xxd
+makedepends=('git' 'vim')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/adamharrison/lite-xl-plugin-manager")
@@ -28,7 +29,9 @@ prepare() {
 
 build() {
   cd "${_gitname}"
-  gcc src/lpm.c lib/microtar/src/microtar.c -Ilib/microtar/src -lz -lgit2 \
+  lua -e 'io.open("src/lpm.luac", "wb"):write(string.dump(assert(loadfile("src/lpm.lua"))))'
+  xxd -i src/lpm.luac > src/lpm.lua.c
+  gcc -DLPM_STATIC src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c -Ilib/microtar/src -lz -lgit2 \
     -lzip -llua -lm -lmbedtls -lmbedx509 -lmbedcrypto -o lpm
 }
 
