@@ -1,7 +1,7 @@
 pkgbase = textadept
 	pkgdesc = Fast, minimalist, and remarkably extensible cross-platform text editor
 	pkgver = 11.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/orbitalquark/textadept
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = textadept
 	makedepends = wget
 	makedepends = unzip
 	source = textadept-11.4.tar.gz::https://github.com/orbitalquark/textadept/archive/textadept_11.4.tar.gz
-	sha256sums = f23deb6e178c0eab2d91f5f43d74945aa7d7e90ceb5cc043fc900f9e61562383
+	sha256sums = fe10cbe9949e3a2ec4445ace16e26eb4b905cee2e36de76295ea9a7ca6c3aba8
 
 pkgname = textadept
 	depends = gtk2
