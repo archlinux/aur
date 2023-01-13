@@ -3,7 +3,7 @@
 # Useful: https://gitlab.com/gitlab-org/gitlab/issues/17584
 
 pkgname=gitlab-pages
-pkgver=1.62.0
+pkgver=15.7.3
 pkgrel=1
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
@@ -16,7 +16,7 @@ source=("$url/-/archive/v$pkgver/$_archive.tar.bz2"
         'service.env')
 backup=("etc/$pkgname/config.cfg"
         "etc/$pkgname/service.env")
-sha256sums=('dd0d9b1eed0eea65ee01546c0719d33d10025a87913a7ad9cc5853f032a143af'
+sha256sums=('29cfe3fbc420f02280074aa3d5b8a5d6981db56bd3c3c76c313fa061140e44f1'
             'df2bb3607f500daf95ac7c3ddf2470c794a72c66ba0770029753f859f1c53082'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
