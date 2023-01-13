@@ -1,24 +1,18 @@
 pkgbase = spim-svn
 	pkgdesc = A MIPS32 simulator (SVN version)
-	pkgver = 739
+	pkgver = latest
 	pkgrel = 1
-	url = https://sourceforge.net/projects/spimsimulator/
+	url = https://spimsimulator.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	groups = emulators
 	license = custom:BSD
 	makedepends = subversion
-	makedepends = bison
-	makedepends = flex
 	depends = glibc
-	provides = spim=739
+	provides = spim
 	conflicts = spim
-	source = svn+https://svn.code.sf.net/p/spimsimulator/code/spim
-	source = svn+https://svn.code.sf.net/p/spimsimulator/code/CPU
-	source = svn+https://svn.code.sf.net/p/spimsimulator/code/Tests
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = spim::svn+https://svn.code.sf.net/p/spimsimulator/code/
 	sha256sums = SKIP
 
 pkgname = spim-svn
-
+	provides = spim-latest

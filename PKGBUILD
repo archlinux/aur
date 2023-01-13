@@ -1,49 +1,43 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: MithicSpirit <rpc01234 at gmail dot com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 
-pkgname=spim-svn
-pkgver=739
+_pkgname=spim
+pkgname="$_pkgname-svn"
+pkgver=latest
 pkgrel=1
-pkgdesc="A MIPS32 simulator (SVN version)"
+pkgdesc='A MIPS32 simulator (SVN version)'
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/spimsimulator/"
+url='https://spimsimulator.sourceforge.net/'
 license=('custom:BSD')
 groups=('emulators')
 depends=('glibc')
-makedepends=('subversion' 'bison' 'flex')
-conflicts=('spim')
-provides=("spim=$pkgver")
+makedepends=('subversion')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 
-_svntrunk='svn+https://svn.code.sf.net/p/spimsimulator/code'
-source=("$_svntrunk/spim"
-        "$_svntrunk/CPU"
-        "$_svntrunk/Tests")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("$_pkgname::svn+https://svn.code.sf.net/p/spimsimulator/code/")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd spim
-
-  local ver="$(svnversion)"
-  printf "${ver//[[:alpha:]]}"
+	cd "$srcdir/$_pkgname/$_pkgname"
+	local ver="$(svnversion)"
+	printf '%s' "${ver//[[:alpha:]]}"
 }
 
 build() {
-  cd spim
-
-  make
+	cd "$srcdir/$_pkgname/$_pkgname"
+	make
 }
 
 check() {
-  cd spim
-
-  make test
+	cd "$srcdir/$_pkgname/$_pkgname"
+	make test
 }
 
 package() {
-  cd spim
+	provides=("$_pkgname-$pkgver")
 
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 README "$pkgdir"/usr/share/licenses/$pkgname/README
+	cd "$srcdir/$_pkgname/$_pkgname"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 README "$pkgdir/usr/share/licenses/$pkgname/README"
 }
