@@ -1,6 +1,6 @@
 pkgbase = ruby-repofetch-bin
 	pkgdesc = A remote repository stat fetcher with support for 3rd-party plugins
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://spenserblack.github.io/repofetch/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = ruby-repofetch-bin
 	provides = ruby-repofetch
 	conflicts = ruby-repofetch
 	conflicts = ruby-repofetch-bin
-	noextract = repofetch-0.4.2.gem
-	source = https://rubygems.org/downloads/repofetch-0.4.2.gem
-	md5sums = fe7b901c2936ae35fb07edc288bb55f7
+	noextract = repofetch-0.4.3.gem
+	source = https://rubygems.org/downloads/repofetch-0.4.3.gem
+	md5sums = 269ebe3228bbffe7d35ada1cb2c77c2b
 
 pkgname = ruby-repofetch-bin

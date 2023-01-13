@@ -2,7 +2,7 @@
 
 pkgname=ruby-repofetch-bin
 _gemname=repofetch
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A remote repository stat fetcher with support for 3rd-party plugins"
 arch=("any")
@@ -16,8 +16,7 @@ provides=("ruby-repofetch")
 conflicts=("ruby-repofetch" "ruby-repofetch-bin")
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-md5sums=("269ebe3228bbffe7d35ada1cb2c77c2b")
-
+md5sums=("027f72b3e39efd824890a6a28706baa8")
 package() {
     local _gemdir="$(ruby -e "puts Gem.default_dir")"
 
@@ -32,3 +31,4 @@ package() {
     install --verbose -D --mode=0644 $pkgdir/$_gemdir/gems/$_gemname-$pkgver/*.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 
 }
+
