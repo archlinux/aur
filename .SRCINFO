@@ -1,5 +1,5 @@
 pkgbase = dart-system
-	pkgdesc = The dart programming language SDK (Bug)
+	pkgdesc = The dart programming language SDK (Bug https://bugs.archlinux.org/task/77107)
 	pkgver = 2.18.6
 	pkgrel = 1
 	url = https://www.dartlang.org/
