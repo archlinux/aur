@@ -2,8 +2,8 @@
 
 pkgbase=nucleistudioide
 pkgname=(nucleistudioide-bin)
-pkgver=2022.08
-pkgrel=1
+pkgver=2022.12
+pkgrel=0
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 depends=('nuclei-gcc-bin' 'nuclei-openocd-bin' 'nuclei-qemu-bin')
@@ -14,7 +14,7 @@ url="https://www.nucleisys.com/download.php"
 license=('unknow')
 options=(!strip)
 source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_${pkgver/./}-lin64.tgz")
-sha256sums=('e74beaf6643e17d961560d0e2b6640f335d7006612bee02056df70a3e3243ad3')
+sha256sums=('82ee070565f6decd032440ff5199340d849306618206f4efc7b88be0a34e22ee')
 
 package_nucleistudioide-bin() {
 	cd "$srcdir"
