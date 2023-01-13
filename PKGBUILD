@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.10
-pkgrel=5
+pkgrel=1
 pkgdesc="An 8-bit Atari computer emulator, on Wine"
 arch=('any')
 url="https://www.virtualdub.org/altirra.html"
