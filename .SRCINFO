@@ -1,7 +1,7 @@
 pkgbase = skeuowaita-git
 	pkgdesc = A skeuomorphic take on the Adwaita theme
 	pkgver = r78.83b953f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Frostbitten-jello/Skeuowaita
 	arch = any
 	license = custom
