@@ -10,7 +10,7 @@ pkgrel=1
 
 pkgdesc="A Hierarchical Profiler for PHP"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/phacility/xhprof/tree/experimental"
+url="https://pecl.php.net/package/xhprof"
 license=('Apache')
 depends=('php')
 makedepends=()
