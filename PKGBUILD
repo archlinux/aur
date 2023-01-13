@@ -21,8 +21,8 @@ build() {
   sed -i -r "s|^(SNANDer:).*$|\1 \$(OBJS)|g" Makefile
 
   cd libusb-*
-	./configure --prefix="${srcdir}/${_srcname}/src/lusb_build" --disable-udev
-	make && make install
+  autoreconf && ./configure --prefix="${srcdir}/${_srcname}/src/lusb_build" --disable-udev
+  make && make install
 
   cd ../ && make 
 }
