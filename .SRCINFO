@@ -1,0 +1,16 @@
+pkgbase = discloud-cli-bin
+	pkgdesc = Blazingly fast Discloud CLI to host your apps.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://discloudbot.com/
+	install = UwU
+	arch = x86_64
+	license = Apache
+	makedepends = unzip
+	depends = curl
+	depends = bash
+	provides = discloud
+	source = linux::https://discloud.github.io/cli-rust/installer/linux
+	sha256sums = ba8fe34943c81f79c1591be26d73835929a70b363066ac70806a79a23580103a
+
+pkgname = discloud-cli-bin
