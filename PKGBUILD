@@ -2,27 +2,28 @@
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=fluent-reader-electron
 _pkgname=fluent-reader
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI'
 arch=('any')
 url='https://hyliu.me/fluent-reader/'
 license=('BSD')
-depends=('hicolor-icon-theme' 'electron19')
+depends=('hicolor-icon-theme' 'electron21')
 makedepends=('nodejs' 'node-gyp' 'npm')
 provides=("$_pkgname")
 conflicts=(""$_pkgname"")
 source=("https://github.com/yang991178/fluent-reader/archive/v${pkgver}.tar.gz"
         'fluent-reader.desktop'
         'fluent-reader.sh')
-sha256sums=('313bf3d0a3ac607d919434234828064f6739b6f009a39088b44531a6c91ff060'
+sha256sums=('fbd17ecbebb4a10f3e2b6653a9fe5d41878a553a724e87e4c67405cb2d3e8fdf'
             '5774f9dcd354761fb94d5f8ee8a534d879a7497c1e1834273dd3f55fbfdd0be4'
-            '6ba3512d8e8c5f95e00ca2ada566c22aabfb90b6f53f4b639735fcbf1a06f998')
+            'a6758f88a37272d4ff606642859a7f379f372a5da5b901f1a85953243cf3e905')
 
 build() {
   cd ${_pkgname}-${pkgver}
   npm install
   export NODE_ENV=production
+  export NODE_OPTIONS=--openssl-legacy-provider
   npm run build
   node_modules/.bin/electron-builder --linux dir -p never
 }
