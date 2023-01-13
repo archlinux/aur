@@ -1,10 +1,11 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _fontname=spleen
 
 pkgname=spleen-font
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monospaced bitmap fonts"
 arch=('any')
 license=('BSD')
@@ -20,9 +21,15 @@ sha256sums=(
 package() {
   cd "${srcdir}/${_fontname}-${pkgver}"
 
+  # Install font to its own dir.
+  # (c.f.: https://archlinux.org/todo/fix-ttf-font-default-font-setup/)
   install -dm755 "${pkgdir}/usr/share/fonts/${_fontname}"
-  for font_file in spleen-*.*; do install -Dm644 "${font_file}" \
+  for font_file in spleen-*.otb; do install -Dm644 "${font_file}" \
     "${pkgdir}/usr/share/fonts/${_fontname}/${font_file}"; done
+  for font_file in spleen-*.otf; do install -Dm644 "${font_file}" \
+    "${pkgdir}/usr/share/fonts/${_fontname}/${font_file}"; done
+  for font_file in spleen-*.psfu; do install -Dm644 "${font_file}" \
+    "${pkgdir}/usr/share/kbd/consolefonts/${font_file}"; done
   install -Dm644 fonts.alias "${pkgdir}/usr/share/fonts/${_fontname}/fonts.alias"
 
   install -Dm644 AUTHORS "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
