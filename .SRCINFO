@@ -1,0 +1,23 @@
+pkgbase = x-minecraft-launcher
+	pkgdesc = A Minecraft launcher dedicated to providing modern UX and efficient Mod management
+	pkgver = 0.33.1
+	pkgrel = 1
+	url = https://xmcl.app
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = openssl-static
+	depends = hicolor-icon-theme
+	depends = electron
+	provides = xmcl
+	provides = xmcl-launcher
+	provides = x-minecraft-launcher
+	conflicts = xmcl-bin
+	conflicts = xmcl-launcher
+	conflicts = xmcl-launcher-bin
+	source = x-minecraft-launcher::git+https://github.com/Voxelum/x-minecraft-launcher.git#tag=v0.33.1
+	sha256sums = SKIP
+
+pkgname = x-minecraft-launcher
