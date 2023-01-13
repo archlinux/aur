@@ -7,3 +7,5 @@
 !withokta
 !logging.properties
 !awscli
+!okta-listroles
+!okta-credential_process
