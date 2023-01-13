@@ -26,7 +26,7 @@ license=('MIT')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
 options=(!strip) # strip isn't useful for python files and takes forever
-sha256sums=('bb0145d46b8fc94d341222e0435c93e0f371bf56ea82d2a5d22e951fd726e379')
+sha256sums=('33548f8abc3310acde8ba7d74a57a652ed278ef5c4a999a61ae9fb45cb1961e4')
 
 build() {
   cd plotly.py-${pkgver}/packages/python/plotly
