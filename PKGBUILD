@@ -2,13 +2,12 @@
 _npmname=node-red
 pkgver=3.0.2
 pkgname=nodejs-${_npmname}
-pkgrel=1
+pkgrel=2
 pkgdesc="A visual tool for wiring the Internet of Things."
 arch=(x86_64 i686 armv5 armv6h armv7h aarch64)
 url="https://nodered.org"
 license=("APACHE")
-depends=("nodejs>=14")
-makedepends=("npm")
+depends=("nodejs>=14" "npm")
 optdepends=()
 backup=("etc/default/${pkgname}")
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
