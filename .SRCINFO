@@ -1,17 +1,17 @@
 pkgbase = php-xhprof
 	pkgdesc = A Hierarchical Profiler for PHP
-	pkgver = 0.9.10
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://github.com/phacility/xhprof/tree/experimental
-	install = php-xhprof.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	depends = php
 	optdepends = graphviz: to generate callgraphs in reports
-	backup = etc/php/conf.d/xhprof.ini
-	source = https://github.com/phacility/xhprof/archive/dab44f76da5c8a0d4f1339f7d2ea2bc42408e8e9.zip
-	sha512sums = c8620e34d0a3816740e28efbbbbfd2c85e50dcbee907e54b86afdb1b2c49f6896203b8a84471def56cce105aef17937bf13544f35b70dab4a7f0ae1c071cb67f
+	source = https://pecl.php.net/get/xhprof-2.3.9.tgz
+	sha512sums = 38a2609d961d908c6a4b5d1ff2085ffdad4a5f7d277705c826ae19e215660802528d606c5ee052f2e65255a7a85b2a9cb9038f4785c730ec468fc76dc7bcf5de
 
 pkgname = php-xhprof
-
