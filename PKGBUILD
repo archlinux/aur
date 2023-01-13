@@ -2,7 +2,7 @@
 pkgname=olympus
 pkgver=23.01.01.01
 _commit=ad54193ca0c1b27ba7d63e78836de4fff6dd95fb
-pkgrel=1
+pkgrel=2
 pkgdesc='Everest installer / mod manager for Celeste'
 arch=('x86_64')
 url='https://github.com/EverestAPI/Olympus'
@@ -47,7 +47,8 @@ build() {
     FrameworkPathOverride=/usr/lib/mono/4.5 msbuild sharp/Olympus.Sharp.sln /p:Configuration=Release
 
     cd "$srcdir/lua-subprocess"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest subprocess-scm-1.rockspec
-    cd "$srcdir/nativefiledialog"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest lua/nfd-scm-1.rockspec
+    cd "$srcdir/nativefiledialog"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest lua/nfd-scm-1.rockspec \
+        LUA_LIBDIR=/usr/lib # nfd requires this env variable since it (incorrectly?) uses it for -L and it isn't set by default by luarocks
 }
 
 package() {

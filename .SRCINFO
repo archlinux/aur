@@ -1,7 +1,7 @@
 pkgbase = olympus
 	pkgdesc = Everest installer / mod manager for Celeste
 	pkgver = 23.01.01.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EverestAPI/Olympus
 	arch = x86_64
 	license = MIT
