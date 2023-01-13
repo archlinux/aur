@@ -1,7 +1,7 @@
 # Maintainer: Kartik Mohta <kartikmohta@gmail.com>
 
 pkgname=('python-osrf_pycommon')
-pkgver='2.1.0'
+pkgver='2.1.1'
 pkgrel=1
 pkgdesc='Commonly needed Python modules, used by Python software developed at OSRF'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('python-osrf-pycommon')
 conflicts=('python-osrf-pycommon')
 source=("https://github.com/osrf/osrf_pycommon/archive/${pkgver}.tar.gz")
-sha256sums=('4afc4b64e58bfff49788b1edf8d8f9fde3a65e0ae6dd27b995323cb3305bf92b')
+sha256sums=('881e1c63d6009fe35af730c2f21099a214121f1493707aa7869a7cfec2b704dd')
 
 _module='osrf_pycommon'
 
