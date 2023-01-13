@@ -3,7 +3,7 @@
 
 pkgname=python-plotly
 pkgver=5.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, interactive graphing library"
 arch=('x86_64')
 url="https://github.com/plotly/plotly.py"
@@ -44,7 +44,7 @@ sha256sums=('33548f8abc3310acde8ba7d74a57a652ed278ef5c4a999a61ae9fb45cb1961e4')
 
 build() {
   cd plotly.py-${pkgver}/packages/python/plotly
-  NODE_OPTIONS=--openssl-legacy-provider python setup.py build
+  SKIP_NPM=1 NODE_OPTIONS=--openssl-legacy-provider python setup.py build
 }
 
 check() {
@@ -54,7 +54,7 @@ check() {
 
 package() {
   cd plotly.py-${pkgver}/packages/python/plotly
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  SKIP_NPM=1 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
