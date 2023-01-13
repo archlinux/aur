@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sencyy <sencyy@pm.me>
 pkgname='discloud-cli-bin'
 pkgver=1.1.1
 pkgrel=1
