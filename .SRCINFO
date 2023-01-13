@@ -1,13 +1,13 @@
 pkgbase = listen1
 	pkgdesc = One for all free music in China
-	pkgver = null
+	pkgver = 2.27.0
 	pkgrel = 1
 	url = https://github.com/listen1/listen1_desktop
 	arch = x86_64
 	license = MIT
 	provides = listen1
 	conflicts = listen1-electron
-	source = https://github.com/listen1/listen1_desktop/releases/download/vnull/listen1_null_linux_amd64.deb
-	sha256sums = 31fd195ef7ad2b1a48c9864b49467170554284774e3ce6b1f6e2cfa15cb43356
+	source = https://github.com/listen1/listen1_desktop/releases/download/v2.27.0/listen1_2.27.0_linux_amd64.deb
+	sha256sums = acbf7abc05d34f11e826a4e0b69e27b57d7462faa188a9b9cfabde57c29fa563
 
 pkgname = listen1
