@@ -2,7 +2,7 @@
 
 _pkgname=jasper-i3blocks-blocklets
 pkgname="$_pkgname-git"
-pkgver=r84.a2ecd2e
+pkgver=r90.4016116
 pkgrel=1
 epoch=2
 pkgdesc="Jasper's blocklets for i3blocks"
