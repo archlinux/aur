@@ -126,7 +126,7 @@
        rgba c;
 -      pix_colors_focused[color].get (c);
 +      lookup_color(color, pix_colors_focused).get (c);
-	   char rgba_str[32];
+       char rgba_str[32];
  
  #if XFT
 @@ -3906,7 +3906,7 @@
