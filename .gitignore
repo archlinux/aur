@@ -1,0 +1,4 @@
+cups/
+src
+cups-*-source.tar.*
+*.pkg.tar.zst

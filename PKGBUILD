@@ -1,0 +1,185 @@
+# Maintainer: Sven Hebrok <xoimex[at]gmail[dot]com>
+# Automatically created from cuops PKGBUILD
+# Upstream Maintainer: Andreas Radke <andyrtr@archlinux.org>
+
+pkgdesc="The CUPS Printing System with gssapi (kerberos) enabled"
+conflicts=('libcups' 'cups')
+pkgbase="cups-gssapi"
+pkgname=('libcups-gssapi' 'cups-gssapi')
+pkgver=2.4.2
+pkgrel=3
+epoch=1
+arch=('x86_64')
+license=('Apache' 'custom')
+url="https://openprinting.github.io/cups/"
+makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
+             'cups-filters' 'bc' 'colord' 'gzip' 'autoconf' 'libusb' 'dbus'
+             'avahi'  'hicolor-icon-theme' 'systemd' 'libxcrypt' 'inetutils' 'libpaper' 'valgrind'
+             'git')
+source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz{,.sig}
+        cups.logrotate
+        cups.pam
+        cups.sysusers
+        cups-2.4.0-statedir.patch
+        # bugfixes
+        cups-freebind.patch
+        guid.patch
+        0001_Fix_OpenSSL_crash_bug.patch
+)
+sha256sums=('f03ccb40b087d1e30940a40e0141dcbba263f39974c20eb9f2521066c9c6c908'
+            'SKIP'
+            'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
+            '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
+            '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
+            'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
+            '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
+            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474'
+            '632faf08bfd1863e9ad6807aff766983e84030a0e4df441167f17de7266ca152')
+#validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
+#validpgpkeys+=('45D083946E3035282B3CCA9AF434104235DA97EB') # "CUPS.org <security@cups.org>"
+#validpgpkeys+=('845464660B686AAB36540B6F999559A027815955') # "Michael R Sweet <michael.r.sweet@gmail.com>"
+#validpgpkeys=('7ADB58203CA5F046F28025B215AA6A7F4D4227D7') # "Zdenek Dohnal (Associate Software Engineer) <zdohnal@redhat.com>"
+validpgpkeys=('7082A0A50A2E92640F3880E0E4522DCC9B246FF7') # Zdenek Dohnal (The old 4D4227D7 key revoked) <zdohnal@redhat.com>
+#options=(!makeflags)
+
+prepare() {
+  cd "cups"-${pkgver}
+
+  # move /var/run -> /run for pid file
+  patch -Np1 -i "${srcdir}"/cups-2.4.0-statedir.patch
+
+  # bug fixes
+
+  # https://github.com/OpenPrinting/cups/issues/53
+  # use IP_FREEBIND, because cupsd cannot bind to not yet existing IP address
+  patch -Np1 -i "${srcdir}"/cups-freebind.patch
+
+  # FS#56818 - https://github.com/apple/cups/issues/5236
+  patch -Np1 -i "${srcdir}"/guid.patch
+
+  # FS#75005 - Fix OpenSSL crash bug - "tls" pointer wasn't cleared after
+  # Fix OpenSSL crash bug - "tls" pointer wasn't cleared after
+  patch -Np1 -i "${srcdir}"/0001_Fix_OpenSSL_crash_bug.patch
+
+  # Rebuild configure script
+  aclocal -I config-scripts
+  autoconf -I config-scripts
+}
+
+build() {
+  cd "cups"-${pkgver}
+
+  # The build system uses only DSOFLAGS but not LDFLAGS to build some libraries.
+  export DSOFLAGS=${LDFLAGS}
+
+  # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
+  ./configure --prefix=/usr --with-gssapi \
+     --sysconfdir=/etc \
+     --localstatedir=/var \
+     --sbindir=/usr/bin \
+     --libdir=/usr/lib \
+     --with-logdir=/var/log/cups \
+     --with-docdir=/usr/share/cups/doc \
+     --with-exe-file-perm=0755 \
+     --with-cups-user=209 \
+     --with-cups-group=209 \
+     --with-max-log-size=0 \
+     --enable-pam=yes \
+     --enable-raw-printing \
+     --enable-dbus=yes \
+     --with-tls=gnutls \
+     --with-dbusdir=/usr/share/dbus-1 \
+     --enable-relro \
+     --enable-libpaper \
+     --with-optim="$CFLAGS" #--help
+  make
+}
+
+check() {
+  cd "cups"-${pkgver}
+#  make -k check || /bin/true
+#  make check
+}
+
+package_libcups-gssapi() {
+pkgdesc="The CUPS Printing System - client libraries and headers"
+depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libxcrypt')
+
+  cd cups-${pkgver}
+  make BUILDROOT="${pkgdir}" install-headers install-libs
+  # put this into the libs pkg to make other software find the libs(no pkg-config file included)
+  mkdir -p "${pkgdir}"/usr/bin
+  install -m755 "${srcdir}"/"cups"-${pkgver}/cups-config "${pkgdir}"/usr/bin/cups-config
+
+  # add license + exception
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE,NOTICE}
+}
+
+package_cups-gssapi() {
+pkgdesc="The CUPS Printing System - daemon package"
+install=cups.install
+backup=(etc/cups/cupsd.conf
+        etc/cups/snmp.conf
+        etc/cups/printers.conf
+        etc/cups/classes.conf
+        etc/cups/cups-files.conf
+        etc/cups/subscriptions.conf
+        etc/logrotate.d/cups
+        etc/pam.d/cups)
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc'
+         'dbus' 'systemd' 'libpaper' 'hicolor-icon-theme')
+optdepends=('ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
+            'xdg-utils: xdg .desktop file support'
+            'colord: for ICC color profile support'
+            'logrotate: for logfile rotation support')
+
+  cd "cups"-${pkgver}
+  make BUILDROOT="${pkgdir}" install-data install-exec
+
+  # this one we ship in the libcups pkg
+  rm -f "${pkgdir}"/usr/bin/cups-config
+
+  # kill the sysv stuff
+  rm -rf "${pkgdir}"/etc/rc*.d
+  rm -rf "${pkgdir}"/etc/init.d
+  install -D -m644 ../cups.logrotate "${pkgdir}"/etc/logrotate.d/cups
+  install -D -m644 ../cups.pam "${pkgdir}"/etc/pam.d/cups
+
+  # fix perms on /var/spool and /etc
+  chmod 755 "${pkgdir}"/var/spool
+  chmod 755 "${pkgdir}"/etc
+
+  # use cups group FS#36769
+  install -Dm644 "$srcdir"/cups.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  sed -i "s:#User 209:User 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
+  sed -i "s:#Group 209:Group 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
+
+  # install ssl directory where to store the certs, solves some samba issues
+  install -dm700 -g 209 "${pkgdir}"/etc/cups/ssl
+  # remove directory from package, it will be recreated at each server start
+  rm -rf "${pkgdir}"/run
+
+  # install some more configuration files that will get filled by cupsd
+  touch "${pkgdir}"/etc/cups/printers.conf
+  touch "${pkgdir}"/etc/cups/classes.conf
+  touch "${pkgdir}"/etc/cups/subscriptions.conf
+  chgrp -R 209 "${pkgdir}"/etc/cups
+
+  # fix .desktop file
+  sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' "${pkgdir}"/usr/share/applications/cups.desktop
+
+  # compress some driver files, adopted from Fedora
+  find "${pkgdir}"/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+
+  # remove client.conf man page
+  rm -f "${pkgdir}"/usr/share/man/man5/client.conf.5
+
+  # comment out removed filters that are now part of cups-filters
+  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "$pkgdir"/usr/share/cups/mime/mime.convs
+
+  # comment out unnecessary PageLogFormat entry
+  sed -i -e 's:PageLogFormat:#PageLogFormat:' "$pkgdir"/etc/cups/cupsd.conf*
+
+  # no more xinetd support
+  rm -rf "${pkgdir}"/etc/xinetd.d
+}
