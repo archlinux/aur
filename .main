@@ -3,8 +3,19 @@ case $1 in
   generate-srcinfo)
     makepkg --printsrcinfo > .SRCINFO
     ;;
+  push)
+    if git remote get-url aur; then
+        if ! test "$(git remote get-url aur)" = "ssh://aur@aur.archlinux.org/shadow-tech.git"; then
+            git remote set-url aur "ssh://aur@aur.archlinux.org/shadow-tech.git"
+        fi
+    else
+        git remote add aur "ssh://aur@aur.archlinux.org/shadow-tech.git"
+    fi
+    git push aur master
+    ;;
   *)
     echo "This is a helper script for the maintainers of this package"
     echo "Available Commands:"
     echo "  generate-srcinfo - generate the .SRCINFO from current build (run makepkg before to update version number)"
+    ;;
 esac
