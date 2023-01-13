@@ -1,6 +1,6 @@
 pkgbase = air
 	pkgdesc = Live reload for Go apps
-	pkgver = 1.40.4
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://github.com/cosmtrek/air
 	arch = x86_64
