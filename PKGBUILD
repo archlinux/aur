@@ -1,9 +1,9 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 _srcname=SNANDer
-_version=1.7.6
+_version=v.1.7.7
 _version_pkg_updates=1
-_gitcommit=8cf7027ecba63c80ad6edabed6c07d32eae477b8
+_gitcommit=6786ecf9183228a4cbdb91e49d277511b5afb42d
 
 pkgname=snander
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
