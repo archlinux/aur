@@ -2,12 +2,12 @@
 # Contributor: BlackCatDevel0per
 
 pkgname=solana  
-pkgver=1.13.5
+pkgver=1.13.6
 epoch=1
 _tokenver=2.0.17
 _perflibsver=0.19.3
 _rustver=1.59.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
 url="https://www.solana.com"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ source_x86_64=("perf-libs-$_perflibsver.tar.gz::https://github.com/solana-labs/s
 sha256sums=('94bdd2014eea655a3576a0c67e2a56db33cb957636ca72186711be75615c1cf5'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             '70cd710d4037210af9ea27ebcfe1be4c36992bad2a2fe816b7c371e352aecaed'
-            '62db6f48488413cf727c1f2525dc1e56b817c4365f40d75773ca4760f7eb71f9'
+            'b4dc483102cddc683a22ec235af5ceb7f5a3bbe8054a5019648f33367b7e9a92'
             'c17d42533fb666392cd577ecbc67eddad950ab8b911fa8e82e9c03dceaf37862')
 sha256sums_x86_64=('5850dc8ba63017cdb0c97357cc0e26e60f445abc1ef3c95a61b88e59afae71a4')
 noextract=("perf-libs-$_perflibsver.tar.gz")
