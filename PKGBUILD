@@ -13,16 +13,16 @@ source=("$pkgname"::"git+$url")
 md5sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname"
   echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
   cd "$srcdir/$pkgname"
 
-	mkdir -p "$pkgdir"/usr/share/icons/Skeuowaita
-	mkdir -p "$pkgdir"/usr/share/licenses/"$pkgname"
+  mkdir -p "$pkgdir"/usr/share/icons/Skeuowaita
+  mkdir -p "$pkgdir"/usr/share/licenses/"$pkgname"
 
-	cp -t "$pkgdir"/usr/share/icons/Skeuowaita/ -r index.theme scalable/ Extras/
+  cp -t "$pkgdir"/usr/share/icons/Skeuowaita/ -r index.theme scalable/ Extras/
   cp -t "$pkgdir"/usr/share/licenses/"$pkgname"/ LICENSE*
 }
