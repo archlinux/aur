@@ -2,7 +2,7 @@
 # shellcheck disable=SC2154
 # Maintainer: Pat Brisbin <pbrisbin@gmail.com>
 pkgname=okta-aws-cli-assume-role
-pkgver=2.0.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Okta AWS CLI Assume Role Tool"
 arch=('any')
@@ -14,8 +14,8 @@ source=(
   okta-aws-cli-login
 )
 noextract=("okta-aws-cli-$pkgver.jar")
-md5sums=('0fd7d270ca321b7b6aecaed98225d6b7'
-         'df2e1d5492d2ab7608c2cdf110dfd91d')
+sha256sums=('d57b8fd6de20e2bf595782690c273eb806aa555ceab20d5fa7608774f49aee78'
+            '4f047fa9970e885760b7236c039ac6a6e9824fbfc1dadbca1b6cb800b7b5a6a3')
 
 package() {
   cd "$srcdir" || exit 1
