@@ -3,7 +3,7 @@
 pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
-pkgver=v0.11.16.r22.gfd40be6
+pkgver=v0.11.16.r49.g430895e
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.'
 url='https://sublimemusic.app'
@@ -15,13 +15,13 @@ depends=(
     'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
-    'python-fuzzywuzzy'
     'python-gobject'
     'python-levenshtein'
     'python-mpv'
     'python-peewee'
     'python-requests'
     'python-semver'
+    'python-thefuzz'
 )
 optdepends=(
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
@@ -32,14 +32,14 @@ optdepends=(
 )
 makedepends=(
     'python-pip'
-    'python-poetry'
+    'python-flit'
     'python-sphinx'
     'tar'
 )
 license=('GPL3')
 arch=('any')
 source=(
-    'sublime-music-git::git+https://gitlab.com/sublime-music/sublime-music.git'
+    'sublime-music-git::git+https://github.com/sublime-music/sublime-music.git'
     'sublime-music.desktop'
 )
 sha256sums=('SKIP'
@@ -53,7 +53,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    poetry build
+    flit build
 }
 
 package() {
