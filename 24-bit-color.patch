@@ -120,13 +120,13 @@
      }
  #endif
  }
-@@ -3411,7 +3411,7 @@
+@@ -3418,7 +3418,7 @@
          return;
  
        rgba c;
 -      pix_colors_focused[color].get (c);
 +      lookup_color(color, pix_colors_focused).get (c);
-       color -= minCOLOR;
+	   char rgba_str[32];
  
  #if XFT
 @@ -3906,7 +3906,7 @@
