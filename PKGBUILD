@@ -1,7 +1,7 @@
 
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -10,13 +10,13 @@ license=('BSD-3-Clause')
 makedepends=('rust' 'cargo' 'git')
 provides=('lockbook')
 conflicts=('lockbook')
-source=("git+https://github.com/lockbook/lockbook.git")
+source=("git+https://github.com/lockbook/lockbook.git#tag=v$pkgver")
 sha256sums=('SKIP')
 groups=('lockbook')
 
 pkgver() {
   cd $srcdir/lockbook/clients/cli
-  echo "0.5.5"
+  echo "0.5.7"
 }
 
 build() {
