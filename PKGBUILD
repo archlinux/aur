@@ -6,13 +6,14 @@
 pkgname='libcs50-git'
 _gitname='libcs50'
 pkgver=11.0.1.r4.gc5bead0
-pkgrel=1
+pkgrel=2
 pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
 url="https://github.com/cs50/libcs50"
 license=('GPL3')
 groups=('cs50')
 makedepends=('git')
+optdepends=('clang: compiler currently used in CS50x course (2023)')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=(

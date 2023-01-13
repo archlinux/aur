@@ -1,7 +1,7 @@
 pkgbase = libcs50-git
 	pkgdesc = CS50 Library for C (development version)
 	pkgver = 11.0.1.r4.gc5bead0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cs50/libcs50
 	install = libcs50.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = libcs50-git
 	groups = cs50
 	license = GPL3
 	makedepends = git
+	optdepends = clang: compiler currently used in CS50x course (2023)
 	provides = libcs50
 	conflicts = libcs50
 	source = git+https://github.com/cs50/libcs50.git#branch=main
