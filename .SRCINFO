@@ -1,6 +1,6 @@
 pkgbase = xmedcon
 	pkgdesc = open source toolkit for medical image conversion
-	pkgver = 0.22.0
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = http://xmedcon.sourceforge.net/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = xmedcon
 	license = LGPL
 	depends = gtk3
 	options = !libtool
-	source = https://prdownloads.sourceforge.net/xmedcon/xmedcon-0.22.0.tar.bz2
-	sha256sums = 522ed7a0b4b34cc3c8156ff79c04429af94617ed65ee999c9cab27be7dcd1491
+	source = https://prdownloads.sourceforge.net/xmedcon/xmedcon-0.23.0.tar.bz2
+	sha256sums = 835091243a242c3cc1fb5608b9540d07204bc74d42238ec4c067a5baa543ba39
 
 pkgname = xmedcon
