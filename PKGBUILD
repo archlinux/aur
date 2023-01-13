@@ -3,7 +3,7 @@
 _pkgbase=simexec
 pkgname=simexec-git
 pkgver=r181.c00d19e
-pkgrel=2
+pkgrel=3
 pkgdesc="Execute a program with the given argv"
 arch=('any')
 url="https://git.sr.ht/~trinity/src/tree/main/item/simexec/packaging.md"
