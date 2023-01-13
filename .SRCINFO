@@ -1,7 +1,7 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
 	pkgver = 11.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cupy.dev
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-cupy
 	source = https://github.com/cupy/cupy/archive/v11.4.0.tar.gz
 	source = https://github.com/NVIDIA/cub/archive/c3cceac115c072fb63df1836ff46d8c60d9eb304.tar.gz
 	source = https://github.com/NVIDIA/jitify/archive/4a37de0be4639f222c6565ebd0654cb922b5180e.tar.gz
-	md5sums = a6b2f725d42835ce7c8b06c673d287cb
+	md5sums = c6a87d8885d23b49cbdec1becb61688c
 	md5sums = ae6435aef98378a8b323b69f6665df33
 	md5sums = 2ad752c0814c2da9909e2dcac0f50401
 
