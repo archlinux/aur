@@ -102,6 +102,7 @@ check() {
 }
 
 package_libcups-gssapi() {
+provides=('libcups')
 pkgdesc="The CUPS Printing System - client libraries and headers - with gssapi (kerberos) enabled"
 depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libxcrypt')
 
@@ -116,6 +117,7 @@ depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libx
 }
 
 package_cups-gssapi() {
+provides=('cups')
 pkgdesc="The CUPS Printing System - daemon package - with gssapi (kerberos) enabled"
 install=cups.install
 backup=(etc/cups/cupsd.conf

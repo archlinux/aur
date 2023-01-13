@@ -16,5 +16,9 @@ s/.\/configure (.+) \\/.\/configure \1 --with-gssapi \\/
 /^pkgbase=/ i pkgdesc="The CUPS Printing System with gssapi (kerberos) enabled"
 /^pkgbase=/ i conflicts=('libcups' 'cups')
 
+# add provides fields to subpackages
+/^package_cups-gssapi\(\)/ a provides=('cups')
+/^package_libcups-gssapi\(\)/ a provides=('libcups')
+
 # fix usage of "${pkgbase}"
 s/\$\{pkgbase\}/cups/g

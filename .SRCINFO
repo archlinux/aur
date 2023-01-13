@@ -60,6 +60,7 @@ pkgname = libcups-gssapi
 	depends = avahi
 	depends = libusb
 	depends = libxcrypt
+	provides = libcups
 
 pkgname = cups-gssapi
 	pkgdesc = The CUPS Printing System - daemon package - with gssapi (kerberos) enabled
@@ -77,6 +78,7 @@ pkgname = cups-gssapi
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = colord: for ICC color profile support
 	optdepends = logrotate: for logfile rotation support
+	provides = cups
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
 	backup = etc/cups/printers.conf
