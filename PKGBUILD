@@ -2,8 +2,8 @@
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
 pkgname=libreddit
-pkgver=0.27.0
-_commit=0ff92cb
+pkgver=0.27.1
+_commit=412122d
 pkgrel=1
 pkgdesc='Alternative private front-end to Reddit'
 arch=('x86_64')
