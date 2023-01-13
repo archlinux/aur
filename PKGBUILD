@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppGSL
-_pkgver=0.3.12
+_pkgver=0.3.13
 pkgname=r-${_pkgname,,}
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="'Rcpp' Integration for 'GNU GSL' Vectors and Matrices"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9504effd4929101c20de2852c62180ae5e70bb2bbabcce2f5c7c02f641e3b9e2')
+sha256sums=('fe5e73bc119c6424e1a40b6fea17417a7bba93e81dbe9b7cf86dde9b8e8d93e7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
