@@ -5,7 +5,7 @@
 
 _base=SU2
 pkgname=${_base,,}
-pkgver=7.4.0
+pkgver=7.5.0
 pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
