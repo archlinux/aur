@@ -1,16 +1,15 @@
 pkgbase = okta-aws-cli-assume-role
 	pkgdesc = Okta AWS CLI Assume Role Tool
-	pkgver = 2.0.4
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/oktadeveloper/okta-aws-cli-assume-role
 	arch = any
 	license = Apache
 	depends = java-runtime
-	noextract = okta-aws-cli-2.0.4.jar
-	source = https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases/download/v2.0.4/okta-aws-cli-2.0.4.jar
+	noextract = okta-aws-cli-3.0.0.jar
+	source = https://github.com/oktadeveloper/okta-aws-cli-assume-role/releases/download/v3.0.0/okta-aws-cli-3.0.0.jar
 	source = okta-aws-cli-login
-	md5sums = 0fd7d270ca321b7b6aecaed98225d6b7
-	md5sums = df2e1d5492d2ab7608c2cdf110dfd91d
+	sha256sums = d57b8fd6de20e2bf595782690c273eb806aa555ceab20d5fa7608774f49aee78
+	sha256sums = 4f047fa9970e885760b7236c039ac6a6e9824fbfc1dadbca1b6cb800b7b5a6a3
 
 pkgname = okta-aws-cli-assume-role
-
