@@ -2,17 +2,17 @@
 # Contributor: Andrew Steinke <rkcf@rkcf.me>
 
 pkgname=python-arabic-reshaper
-pkgver=2.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Reconstruct Arabic sentences to be used in applications that don't support Arabic"
-depends=('python-future')
+depends=('python')
 makedepends=('python-setuptools')
 optdepends=('python-fonttools')
 url="https://github.com/mpcabd/python-arabic-reshaper"
 license=('MIT')
 arch=('any')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('51d62f1c872745a344cf12607666eb72')
+md5sums=('98b0e1932b79b2fd990d2674d8c75b96')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
