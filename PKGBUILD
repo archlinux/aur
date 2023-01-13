@@ -6,14 +6,14 @@
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
-# Patch for 9.30 version obtained from https://aur.archlinux.org/rxvt-unicode-truecolor-wide-glyphs.git
+# Patch for 9.31 version obtained from https://aur.archlinux.org/rxvt-unicode-truecolor-wide-glyphs.git
 # Originally patch downloaded from
 # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
 # but 2020-02-11 aur user writed that this repo was removed.
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor
-pkgver=9.30
+pkgver=9.31
 pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color patch (24bit colors support). That enables vim 24-bit true color colorshemes'
 arch=('x86_64')
