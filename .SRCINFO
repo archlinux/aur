@@ -1,0 +1,14 @@
+pkgbase = skeuowaita-git
+	pkgdesc = A skeuomorphic take on the Adwaita theme
+	pkgver = r78.83b953f
+	pkgrel = 1
+	url = https://github.com/Frostbitten-jello/Skeuowaita
+	arch = any
+	license = custom
+	depends = adwaita-icon-theme
+	provides = skeuowaita
+	conflicts = skeuowaita
+	source = skeuowaita-git::git+https://github.com/Frostbitten-jello/Skeuowaita
+	md5sums = SKIP
+
+pkgname = skeuowaita-git
