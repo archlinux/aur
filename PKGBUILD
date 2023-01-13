@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/src/$_pkgbase/"
-	make
+  cc -o "$srcdir/src/$_pkgbase" "$srcdir/src/$_pkgbase.c"
 }
 
 package() {
