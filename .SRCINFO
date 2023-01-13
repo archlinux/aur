@@ -1,19 +1,18 @@
 pkgbase = redhat-fonts
 	pkgdesc = Red Hat fonts
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/RedHatOfficial/RedHatFont
 	arch = any
 	license = OFL
 	license = CC-BY-SA
-	source = redhat-fonts-4.0.2.tar.gz::https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz
+	source = redhat-fonts-4.0.3.tar.gz::https://github.com/RedHatOfficial/RedHatFont/archive/4.0.3.tar.gz
 	source = 64-redhat-display-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-display-fontconfig.conf
 	source = 64-redhat-mono-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-mono-fontconfig.conf
 	source = 64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-text-fontconfig.conf
-	sha256sums = 0e4e853c70dba15ba4cc93aed61ff5c64827333c2b77f3decb6e11a34af70b10
+	sha256sums = 95e9eaa3bbbb343d0d4bc519d18a216651c73b0ab191ab5532a3cb370120b2b2
 	sha256sums = 451c0fd89bf923862060d6a666d12d03be5eb6f119e35b2ddcdd9e83f33a83bf
 	sha256sums = d9a078708993bed0b6511fcbba8ef07b12e50bb0cf76c86b77f032e50f9b5129
 	sha256sums = 194ae2c929734b7fe001b89e8c88684e8331a05b9df8c27a58ce2504307b53b7
 
 pkgname = redhat-fonts
-

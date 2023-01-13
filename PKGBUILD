@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=redhat-fonts
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Red Hat fonts"
 arch=('any')
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '64-redhat-display-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-display-fontconfig.conf'
         '64-redhat-mono-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-mono-fontconfig.conf'
         '64-redhat-text-fontconfig.conf::https://src.fedoraproject.org/rpms/redhat-fonts/raw/rawhide/f/64-redhat-text-fontconfig.conf')
-sha256sums=('0e4e853c70dba15ba4cc93aed61ff5c64827333c2b77f3decb6e11a34af70b10'
+sha256sums=('95e9eaa3bbbb343d0d4bc519d18a216651c73b0ab191ab5532a3cb370120b2b2'
             '451c0fd89bf923862060d6a666d12d03be5eb6f119e35b2ddcdd9e83f33a83bf'
             'd9a078708993bed0b6511fcbba8ef07b12e50bb0cf76c86b77f032e50f9b5129'
             '194ae2c929734b7fe001b89e8c88684e8331a05b9df8c27a58ce2504307b53b7')
