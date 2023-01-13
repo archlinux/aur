@@ -7,7 +7,8 @@
 # Contributor: siasia <http://pastebin.com/qsBEmNCw>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 
-pkgname=dart
+pkgname=dart-system
+_pkgname=dart
 pkgver=2.18.6
 pkgrel=1
 pkgdesc='The dart programming language SDK (Bug)'
@@ -96,21 +97,21 @@ package() {
   cd $srcdir/sdk/out/
 
   # Create directories
-  install -d "$pkgdir"{"/opt/$pkgname-sdk",/usr/{bin,"share/doc/$pkgname"}}
+  install -d "$pkgdir"{"/opt/$_pkgname-sdk",/usr/{bin,"share/doc/$_pkgname"}}
 
   # Package the files
-  cp -a "$pkgname-sdk/"* "$pkgdir/opt/$pkgname-sdk/"
+  cp -a "$_pkgname-sdk/"* "$pkgdir/opt/$_pkgname-sdk/"
 
   # Set up symbolic links for the executables
   for f in dart dartaotruntime; do
-    ln -s "/opt/$pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f"
+    ln -s "/opt/$_pkgname-sdk/bin/$f" "$pkgdir/usr/bin/$f"
   done
 
   # Package documentation
-  install -Dm644 "$pkgdir/opt/$pkgname-sdk/README" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 "$pkgdir/opt/$_pkgname-sdk/README" -t "$pkgdir/usr/share/doc/$_pkgname"
 
   # BSD License
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

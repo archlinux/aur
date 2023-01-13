@@ -1,4 +1,4 @@
-pkgbase = dart
+pkgbase = dart-system
 	pkgdesc = The dart programming language SDK (Bug)
 	pkgver = 2.18.6
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = dart
 	sha512sums = 600a9816bb7dbc100d3183e01125726e712041e707d8d046e60ad7dea62831c6e09a5f667a82be183ad8e6d25d307cd4c6f754bab7f165240e57c440252fd8eb
 	sha512sums = SKIP
 
-pkgname = dart
+pkgname = dart-system
