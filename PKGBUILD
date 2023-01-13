@@ -3,7 +3,7 @@
 _pkgname=clusterGeneration
 _pkgver=1.3.7
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='Random Cluster Generation (with Specified Degree of Separation)'
 arch=('any')
