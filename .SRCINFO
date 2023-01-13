@@ -1,6 +1,6 @@
 pkgbase = python-etils
 	pkgdesc = Collection of eclectic utils for python
-	pkgver = 0.9.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/google/etils
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-etils
 	optdepends = python-dm-tree: for etils.etree.tree
 	optdepends = python-jax: for etils.etree.jax
 	optdepends = python-tensorflow: for etils.etree.nest
-	source = https://github.com/google/etils/archive/v0.9.0/python-etils-0.9.0.tar.gz
-	sha512sums = 9d29f1ba87ba26e6c1c6c6410f2c2db185193acc97a9aac4f774a698282e1241595e42a5fa60960ff858da4762bf4b4c5d3b4c54ba2a996dcf41c7f5631b72df
+	source = python-etils-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/e/etils/etils-1.0.0.tar.gz
+	sha256sums = d10982f7702422bea8635d5284b8bed629f51919fc122ac1e1e4abf45ec8f785
 
 pkgname = python-etils

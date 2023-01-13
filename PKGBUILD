@@ -1,7 +1,9 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-etils
-pkgver=0.9.0
+_pkg="${pkgname#python-}"
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Collection of eclectic utils for python'
 url='https://github.com/google/etils'
@@ -26,29 +28,29 @@ optdepends=(
   'python-jax: for etils.etree.jax'
   'python-tensorflow: for etils.etree.nest'
 )
-source=("https://github.com/google/etils/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('9d29f1ba87ba26e6c1c6c6410f2c2db185193acc97a9aac4f774a698282e1241595e42a5fa60960ff858da4762bf4b4c5d3b4c54ba2a996dcf41c7f5631b72df')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('d10982f7702422bea8635d5284b8bed629f51919fc122ac1e1e4abf45ec8f785')
 
 build() {
-  cd etils-$pkgver
-  python -m build --wheel --no-isolation
+	cd etils-$pkgver
+	python -m build --wheel --no-isolation
 }
 
 check() {
-  cd etils-$pkgver
-  # etils/eapp: needs simple_parsing
-  # etils/enp, etils/etree/tree_utils_test.py: needs jax
-  # etils/ecolab: needs mediapy
-  # etils/edc/frozen_utils_test.py: needs chex
-  pytest \
-    --ignore etils/eapp \
-    --ignore etils/ecolab \
-    --ignore etils/edc/frozen_utils_test.py \
-    --ignore etils/enp \
-    --ignore etils/etree/tree_utils_test.py
+	cd etils-$pkgver
+	# etils/eapp: needs simple_parsing
+	# etils/enp, etils/etree/tree_utils_test.py: needs jax
+	# etils/ecolab: needs mediapy
+	# etils/edc/frozen_utils_test.py: needs chex
+	pytest \
+		--ignore etils/eapp \
+		--ignore etils/ecolab \
+		--ignore etils/edc/frozen_utils_test.py \
+		--ignore etils/enp \
+		--ignore etils/etree/tree_utils_test.py
 }
 
 package() {
-  cd etils-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+	cd etils-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
