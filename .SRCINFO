@@ -1,0 +1,18 @@
+pkgbase = tftp-hpa-openrc
+	pkgdesc = OpenRC tftp-hpa init script
+	pkgver = 20220723
+	pkgrel = 1
+	arch = any
+	groups = openrc-system
+	license = GPL2
+	depends = openrc
+	depends = tftp-hpa
+	provides = init-tptf-hpa
+	conflicts = init-tptf-hpa
+	backup = etc/conf.d/in.tftpd
+	source = in.tftpd.initd
+	source = in.tftpd.confd
+	sha256sums = 57fc8d603045563edf8cf657e2292f5cf830111002feb47af91e868d88733297
+	sha256sums = 55e67f871f070db2b7fa1428dabf55777ca87fecdbba7fa3b03e63c63734f977
+
+pkgname = tftp-hpa-openrc
