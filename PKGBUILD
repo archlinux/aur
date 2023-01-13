@@ -1,13 +1,13 @@
 # Maintainer: Ayush Shenoy <ayush.shenoy92@gmail.com>
 # Contributor: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v3.7.0
+pkgver=v3.8.0
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=("any")
 url="https://glotzerlab.engin.umich.edu/hoomd-blue"
 license=("custom:BSD-3-Clause")
-depends=('python' 'boost' 'cuda' 'cmake' 'openmpi' 'cereal' 'pybind11' 'eigen')
+depends=('python' 'boost' 'cuda>=11.0.0' 'cmake' 'openmpi' 'cereal' 'pybind11' 'eigen')
 makedepends=(git)
 optdepends=('nvidia: running simulations on GPU')
 provides=(hoomd-blue)
@@ -25,13 +25,13 @@ build() {
 }
 
 package() {
-  # Install the license
+    # Install the license
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   
-  # Install the software
+    # Install the software
     cd "$srcdir/$pkgname/build"
     make DESTDIR="$pkgdir" install
 
-  # Uncomment this if you want to test the install (takes quite a long time):
+    # Uncomment this if you want to test the install (takes quite a long time):
 	#make check -j8
 }
