@@ -1,0 +1,18 @@
+pkgbase = quassel-core-openrc
+	pkgdesc = OpenRC quassel-core init script
+	pkgver = 20220729
+	pkgrel = 1
+	arch = any
+	groups = openrc-system
+	license = GPL2
+	depends = openrc
+	depends = quassel-core
+	provides = init-quassel-core
+	conflicts = init-quassel-core
+	backup = etc/conf.d/quasselcore
+	source = quasselcore.initd
+	source = quasselcore.confd
+	sha256sums = 2999c0a190238aa9e2a61729de910423ab8caef18ee9d22fb1ce6916020fff76
+	sha256sums = 7d7ea29e58f49a0cc56aa3df4cc54814a67510169ce6cefad7ad5e5493671df7
+
+pkgname = quassel-core-openrc
