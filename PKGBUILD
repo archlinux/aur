@@ -2,7 +2,7 @@
 
 pkgname=genx
 _name=${pkgname}3
-pkgver=3.6.17
+pkgver=3.6.18
 pkgrel=1
 pkgdesc="X-ray and Neutron reflectivity fitting software"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL v3")
 depends=("python" "python-numpy" "python-scipy" "python-matplotlib" "python-h5py" "python-wxpython" "python-appdirs" "python-requests" "python-docutils" "python-numba" "python-orsopy")
 makedepends=(python-build python-installer python-wheel)
 source=(https://github.com/aglavic/genx/releases/download/v$pkgver/GenX-$pkgver.tar.gz)
-sha256sums=("2b4c21fbbfcd1b756dd0638f2776d5d8abba9dfb0d82a980c898b1dc4c6f98c3")
+sha256sums=("d84643efd991521df6fa06d5e10b457abbcdb25242ba5a87636b49c1ccf47e77")
 
 build() {
   cd "$srcdir"/$_name-"$pkgver"
