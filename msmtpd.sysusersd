@@ -1,0 +1,2 @@
+g	msmtpd	-
+u	msmtpd	-:msmtpd	"User for the msmtp daemon"	/dev/null	-
