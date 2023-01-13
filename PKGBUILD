@@ -2,15 +2,15 @@
 pkgname=yas-scanner
 _pkgname=yas
 pkgver=0.1.11.afcfa6a
-pkgrel=3
-pkgdesc="fast Artifact scanner for an specific anime game works well with GNOME/Wayland and all on X11"
+pkgrel=4
+pkgdesc="fast Artifact scanner for a specific anime game works well with GNOME/Wayland and all on X11"
 url="https://github.com/poly000/yas/tree/linux-x11-support"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
-license=('unknown')
-depends=('xorg-xwininfo' 'libxcb' 'libx11' 'libxrandr' 'xdg-desktop-portal')
+license=('custom')
+depends=('xorg-xwininfo' 'xdotool' 'libx11' 'libxrandr' 'libxcb' 'dbus')
 makedepends=('cargo' 'git' 'git-lfs')
-optdepends=()
+optdepends=('xdg-desktop-portal: screenshot on wayland compositors other than GNOME')
 
 prepare() {
     cd "$srcdir"
