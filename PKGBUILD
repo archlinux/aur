@@ -41,7 +41,7 @@ sha256sums_x86_64=('658d7d5a65b858a71f0aa949e77d36a2871538dec07b5a3608ee628d0801
 sha256sums_aarch64=('91b47ffc022f955c458abb856921ba8615df808dbcefd799760c31c567916541')
 
 package() {
-    local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
+    local parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
     cd "Clash for Windows-${pkgver}-${parch}-linux"
     echo "Packaging application files. Please wait."
     install -d "${pkgdir}/opt/${pkgname}"
