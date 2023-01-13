@@ -1,7 +1,7 @@
 pkgbase = steamworks-sdk
 	pkgdesc = The Steamworks SDK provides a range of features which are designed to help ship your application or game on Steam in an efficient manner.
 	pkgver = 1.55
-	pkgrel = 2
+	pkgrel = 3
 	url = https://partner.steamgames.com/doc/sdk
 	arch = any
 	license = custom:ValveSteamLicense
