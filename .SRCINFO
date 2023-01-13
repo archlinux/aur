@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.61.8.g75007ae94
+	pkgver = 0.3.64.11.g5b42c07b1
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = pipewire-git
 	checkdepends = valgrind
 	makedepends = git
 	makedepends = meson
-	makedepends = doxygen
-	makedepends = graphviz
 	makedepends = libpulse
 	makedepends = alsa-lib
 	makedepends = sbc
@@ -26,19 +24,22 @@ pkgbase = pipewire-git
 	makedepends = libldac
 	makedepends = opus
 	makedepends = libfreeaptx
+	makedepends = liblc3
 	makedepends = libfdk-aac
 	makedepends = libcamera
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	makedepends = avahi
 	makedepends = webrtc-audio-processing
-	makedepends = python-docutils
 	makedepends = lilv
-	makedepends = roc-toolkit-git
+	makedepends = roc-toolkit
 	makedepends = libx11
 	makedepends = libxfixes
 	makedepends = libcanberra
 	makedepends = chrpath
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-docutils
 	options = debug
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
@@ -66,7 +67,7 @@ pkgname = pipewire-git
 	optdepends = pipewire-x11-bell-git: X11 bell
 	optdepends = realtime-privileges: realtime privileges with rt module
 	optdepends = rtkit: realtime privileges with rtkit module
-	provides = pipewire=0.3.61.8.g75007ae94
+	provides = pipewire=0.3.64.11.g5b42c07b1
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
 	backup = usr/share/pipewire/client.conf
@@ -77,7 +78,7 @@ pkgname = pipewire-git
 pkgname = pipewire-docs-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - documentation (GIT Version)
 	arch = any
-	provides = pipewire-docs=0.3.61.8.g75007ae94
+	provides = pipewire-docs=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-docs
 
 pkgname = pipewire-audio-git
@@ -88,6 +89,7 @@ pkgname = pipewire-audio-git
 	depends = libbluetooth.so
 	depends = libfdk-aac.so
 	depends = libfreeaptx.so
+	depends = liblc3.so
 	depends = libldacBT_enc.so
 	depends = liblilv-0.so
 	depends = libopus.so
@@ -96,7 +98,7 @@ pkgname = pipewire-audio-git
 	depends = libusb-1.0.so
 	depends = libwebrtc_audio_processing.so
 	depends = pipewire-git
-	provides = pipewire-audio=0.3.61.8.g75007ae94
+	provides = pipewire-audio=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-audio
 
 pkgname = pipewire-jack-git
@@ -107,7 +109,7 @@ pkgname = pipewire-jack-git
 	depends = libpipewire-0.3.so
 	depends = sh
 	optdepends = jack-example-tools: for official JACK example-clients and tools
-	provides = pipewire-jack=0.3.61.8.g75007ae94
+	provides = pipewire-jack=0.3.64.11.g5b42c07b1
 	provides = jack
 	provides = libjack.so
 	provides = libjackserver.so
@@ -119,11 +121,11 @@ pkgname = pipewire-jack-git
 
 pkgname = pipewire-alsa-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA configuration (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = libpipewire-0.3.so
 	depends = libasound.so
 	depends = pipewire-session-manager
-	provides = pipewire-alsa=0.3.61.8.g75007ae94
+	provides = pipewire-alsa=0.3.64.11.g5b42c07b1
 	provides = pulseaudio-alsa
 	conflicts = pipewire-alsa
 	conflicts = pulseaudio-alsa
@@ -138,7 +140,7 @@ pkgname = pipewire-pulse-git
 	depends = libpulse.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	provides = pipewire-pulse=0.3.61.8.g75007ae94
+	provides = pipewire-pulse=0.3.64.11.g5b42c07b1
 	provides = pulseaudio
 	provides = pulseaudio-bluetooth
 	provides = alsa-card-profiles
@@ -150,46 +152,46 @@ pkgname = pipewire-pulse-git
 
 pkgname = pipewire-ffmpeg-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - FFmpeg SPA plugin (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = libpipewire-0.3.so
 	depends = ffmpeg
-	provides = pipewire-ffmpeg=0.3.61.8.g75007ae94
+	provides = pipewire-ffmpeg=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-ffmpeg
 
 pkgname = pipewire-zeroconf-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Zeroconf support (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	provides = pipewire-zeroconf=0.3.61.8.g75007ae94
+	provides = pipewire-zeroconf=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-zeroconf
 
 pkgname = pipewire-v4l2-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - V4L2 interceptor (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = pipewire-session-manager
 	depends = libpipewire-0.3.so
 	depends = sh
-	provides = pipewire-v4l2=0.3.61.8.g75007ae94
+	provides = pipewire-v4l2=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-v4l2
 
 pkgname = pipewire-roc-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ROC support (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = libpipewire-0.3.so
-	depends = roc-toolkit-git
-	provides = pipewire-roc=0.3.61.8.g75007ae94
+	depends = libroc.so
+	provides = pipewire-roc=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-roc
 
 pkgname = pipewire-libcamera-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - libcamera support (GIT version)
-	depends = pipewire-git=0.3.61.8.g75007ae94
+	depends = pipewire-git=0.3.64.11.g5b42c07b1
 	depends = libpipewire-0.3.so
 	depends = libcamera.so
 	depends = libcamera-base.so
 	depends = gcc-libs
-	provides = pipewire-libcamera=0.3.61.8.g75007ae94
+	provides = pipewire-libcamera=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-libcamera
 
 pkgname = pipewire-x11-bell-git
@@ -197,5 +199,5 @@ pkgname = pipewire-x11-bell-git
 	depends = libcanberra.so
 	depends = libpipewire-0.3.so
 	depends = libxfixes
-	provides = pipewire-x11-bell=0.3.61.8.g75007ae94
+	provides = pipewire-x11-bell=0.3.64.11.g5b42c07b1
 	conflicts = pipewire-x11-bell

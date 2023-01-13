@@ -14,7 +14,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.61.8.g75007ae94
+pkgver=0.3.64.11.g5b42c07b1
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -22,8 +22,6 @@ url='https://pipewire.org'
 license=('MIT')
 makedepends=('git'
              'meson'
-             'doxygen'
-             'graphviz'
              'libpulse'
              'alsa-lib'
              'sbc'
@@ -39,19 +37,22 @@ makedepends=('git'
              'libldac'
              'opus'
              'libfreeaptx'
+             'liblc3'
              'libfdk-aac'
              'libcamera'
              'vulkan-headers'
              'vulkan-icd-loader'
              'avahi'
              'webrtc-audio-processing'
-             'python-docutils'
              'lilv'
-             'roc-toolkit-git'
+             'roc-toolkit'
              'libx11'
              'libxfixes'
              'libcanberra'
              'chrpath'
+             'doxygen'
+             'graphviz'
+             'python-docutils'
              )
 checkdepends=('desktop-file-utils'
               'valgrind'
@@ -87,6 +88,7 @@ build() {
     -D jack-devel=true \
     -D libjack-path=/usr/lib \
     -D session-managers=[] \
+    -D bluez5-codec-lc3=enabled \
     -D bluez5-codec-lc3plus=disabled \
     -D volume=enabled
 
@@ -233,6 +235,7 @@ package_pipewire-audio-git() {
            'libbluetooth.so'
            'libfdk-aac.so'
            'libfreeaptx.so'
+           'liblc3.so'
            'libldacBT_enc.so'
            'liblilv-0.so'
            'libopus.so'
@@ -387,7 +390,7 @@ package_pipewire-roc-git() {
   pkgdesc+=" - ROC support (GIT version)"
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
-           'roc-toolkit-git'
+           'libroc.so'
            )
   provides=("pipewire-roc=${pkgver}")
   conflicts=('pipewire-roc')
