@@ -1,12 +1,12 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r968.cd38b37
+pkgver=r1761.fef8cfa
 pkgrel=1
 pkgdesc="A BQN implementation in C."
 arch=('x86_64' 'i686' 'aarch64' 'arm')
 url="https://github.com/dzaima/CBQN"
-license=('GPL3' 'custom:ISC')
-depends=('glibc')
+license=('Apache' 'Boost' 'GPL3' 'MIT' 'custom:ISC')
+depends=('glibc' 'libffi')
 optdepends=('ttf-bqn386: BQN and APL compatible font'
   'rlwrap: Use readline in the REPL')
 makedepends=('git' 'clang')
@@ -26,8 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  make PIE='-pie' LDFLAGS="${LDFLAGS}" \
-    t='aur' f='-O2' c
+  make PIE='-pie' LDFLAGS="${LDFLAGS}" t='aur' f='-O2' c
 }
 
 check() {
@@ -36,13 +35,16 @@ check() {
 }
 
 package() {
+  # Script to allow inputting special characters if rlwrap is installed
   install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/bqn"
 
   cd "${srcdir}/${pkgname%-git}"
+  # The actual cbqn binary
   install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" BQN
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CBQN"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
 
   cd "${srcdir}/BQN-ref"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-BQN"
+  # inputrc file used by shim
   install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" editors/inputrc
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-BQN"
 }
