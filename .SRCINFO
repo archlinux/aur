@@ -2,7 +2,7 @@ pkgbase = pravega
 	pkgdesc = Open source storage system implementing streams serving continuous and unbounded data
 	pkgver = 0.12.0
 	pkgrel = 1
-	url = https://github.com/apache/pulsar-client-cpp
+	url = https://github.com/pravega/pravega
 	arch = any
 	license = Apache
 	makedepends = java-environment=11

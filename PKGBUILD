@@ -4,7 +4,7 @@ pkgver=0.12.0
 pkgrel=1
 pkgdesc='Open source storage system implementing streams serving continuous and unbounded data'
 arch=('any')
-url='https://github.com/apache/pulsar-client-cpp'
+url='https://github.com/pravega/pravega'
 license=('Apache')
 makedepends=('java-environment=11')
 depends=('java-runtime=11' 'bash')
