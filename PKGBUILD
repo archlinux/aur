@@ -1,10 +1,10 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-ezdxf
-pkgver=0.17.2
+pkgver=1.0.1b1
 pkgrel=1
 pkgdesc="Python interface to DXF"
-arch=('any')
+arch=('x86_64')
 url=https://ezdxf.mozman.at/
 license=('MIT')
 depends=(
@@ -21,7 +21,7 @@ python-nurbs
 python-pytest
 )
 source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
-sha256sums=('d134e5339d7f73b8b48f6a11e63624b201abae2a4767d54c43181132bb2f3e27')
+sha256sums=('f7d72e00585dd532ad3c369b7af63a17c305c583f44b3f113ea8888861ddea95')
 
 prepare() {
   cd ezdxf-${pkgver}
@@ -35,7 +35,7 @@ build() {
 check() {
   cd ezdxf-${pkgver}
   cd src
-  python -m pytest ../tests ../integration_tests || echo "Some tests might fail"
+  python -m pytest ../tests ../integration_tests
 }
 
 package() {
