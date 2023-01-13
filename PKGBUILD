@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1579.358aee9
+pkgver=r1595.a154c5f
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=("polkit: enable service and machine control through moonraker"
             "wireless_tools: network detection")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=('etc/klipper/moonraker.conf')
+backup=('etc/klipper/moonraker.conf' 'var/opt/moonraker/systemd/moonraker.env')
 install=moonraker.install
 source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.install' 'moonraker.conf' 'moonraker.service' 'moonraker.env' 'moonraker.rules' 'sysusers.conf' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
