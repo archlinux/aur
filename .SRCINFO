@@ -1,0 +1,16 @@
+pkgbase = pravega
+	pkgdesc = Open source storage system implementing streams serving continuous and unbounded data
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/apache/pulsar-client-cpp
+	arch = any
+	license = Apache
+	makedepends = java-environment=11
+	depends = java-runtime=11
+	depends = bash
+	source = pravega-0.12.0.tar.gz::https://github.com/pravega/pravega/archive/refs/tags/v0.12.0.tar.gz
+	source = lombok-java-v11.diff::https://github.com/pravega/pravega/commit/8a66db8c9cb34fb9689af1c2eb8978ba831fc985.diff
+	sha256sums = b1122f5fcd0467c9e82a7f7fd2d1be412a1e0f182e0c688ef27875725cf6e974
+	sha256sums = ade50c91decd8451923c5c5272f321b64330ead2a64b1a4664577971a8b89aff
+
+pkgname = pravega
