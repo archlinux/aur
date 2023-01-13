@@ -1,7 +1,7 @@
 # Maintainer: Martin Jindra <mjindra[at]derchef[dot]email>
 
 pkgname=volatility3-git
-pkgver=v2.0.1.3394.334f7a93
+pkgver=v2.4.0.3707.1641a6e4
 pkgrel=1
 pkgdesc='Advanced memory forensics framework'
 url='https://github.com/volatilityfoundation/volatility3'
