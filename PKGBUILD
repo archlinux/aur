@@ -1,20 +1,19 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
-pkgver=7.9.3
-pkgrel=4
+pkgver=7.9.4
+pkgrel=1
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
-makedepends=('unzip')
 url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'
          'custom:Jetty License')
-source=("https://code.onedev.io/~downloads/projects/160/builds/3266/artifacts/onedev-$pkgver.zip"
+source=("https://code.onedev.io/~downloads/projects/160/builds/3271/artifacts/onedev-$pkgver.tar.gz"
         "sysusers.conf"
         "onedev.service")
-sha256sums=('63914197be2b48b21f548637bf43dd6a3c70302e2a2e1075a2e538d978e58fcc'
+sha256sums=('709f721d0df65f29bb1b1d8bef7a39b3afd77193ea14c1711681ed3ca00618f7'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             'b5c84783296f23287341ca36a62d64204b71285c42e040a788c8864b65d231e6')
 backup=(opt/onedev/conf/hibernate.properties
