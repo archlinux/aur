@@ -1,0 +1,18 @@
+pkgbase = sysmon-dev64-git
+	pkgdesc = SysMon, a system monitor aiming to be fast and ready to use.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/devlocalhost/sysmon
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	optdepends = nvidia-utils: NVIDIA GPU utilization and clock speed
+	provides = sysmon-dev64
+	conflicts = sysmon-dev64
+	conflicts = sysmon-git
+	conflicts = sysmon
+	source = git+https://github.com/devlocalhost/sysmon.git
+	sha256sums = SKIP
+
+pkgname = sysmon-dev64-git
