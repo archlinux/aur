@@ -2,13 +2,13 @@
 
 pkgname="horizontallyspinningrat"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 depends=("sox" "opusfile" "bash" "sharutils")
 pkgdesc="The horizontally spinning rat - now on your desktop!"
 url="https://github.com/mcharlsto/rat"
 arch=("x86_64")
 license=("GPL3")
-source=("https://github.com/mcharlsto/rat/releases/latest/download/rat")
+source=("https://github.com/mcharlsto/rat/releases/download/${pkgver}/rat")
 sha256sums=("SKIP")
 
 package() {

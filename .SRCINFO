@@ -1,7 +1,7 @@
 pkgbase = horizontallyspinningrat
 	pkgdesc = The horizontally spinning rat - now on your desktop!
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcharlsto/rat
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = horizontallyspinningrat
 	depends = opusfile
 	depends = bash
 	depends = sharutils
-	source = https://github.com/mcharlsto/rat/releases/latest/download/rat
+	source = https://github.com/mcharlsto/rat/releases/download/1.0.3/rat
 	sha256sums = SKIP
 
 pkgname = horizontallyspinningrat
