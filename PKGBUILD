@@ -2,7 +2,7 @@
 
 _gemname=git
 pkgname=ruby-$_gemname
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Ruby library to manipulate git repositories by wrapping system calls to the git binary"
 arch=(any)
@@ -12,16 +12,16 @@ depends=(ruby git ruby-addressable ruby-rchardet)
 checkdepends=(ruby-bundler ruby-rake ruby-minitar ruby-test-unit ruby-yard)
 makedepends=(rubygems ruby-rdoc)
 source=(git+https://github.com/ruby-git/ruby-git.git#tag=v$pkgver
-        ${url}/commit/ca8ff350a63172630b8e9e919e02a0ce8e7a7a6d.patch)
+        ${url}/commit/28aa69f34f6e05ebae5731eb34c82a3659136e35.patch)
 sha256sums=('SKIP'
-            'd251e8d913a09986245cfacde761307f5dea64ee857518767548160f1fc2c8d0')
+            '0a2a249734aa64a11a6188098fbc8fcf8dd16bb0418ef11782f2fbf48e43f2a8')
 
 prepare() {
   cd ${pkgname}
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
 
   # release was cut without updating the version
-  patch -p1 -N -i "$srcdir/ca8ff350a63172630b8e9e919e02a0ce8e7a7a6d.patch"
+  patch -p1 -N -i "$srcdir/28aa69f34f6e05ebae5731eb34c82a3659136e35.patch"
 
   # we don't care about docs coverage
   sed -i -e "/require 'yardstick\/rake\/verify'/,+5d" Rakefile
