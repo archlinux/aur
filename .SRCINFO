@@ -1,15 +1,15 @@
 pkgbase = envycontrol
 	pkgdesc = Easy GPU switching for Nvidia Optimus laptops under Linux
-	pkgver = 2.1.1
+	pkgver = 2.2
 	pkgrel = 1
-	url = https://github.com/geminis3/envycontrol
+	url = https://github.com/bayasdev/envycontrol
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
 	depends = xorg-xrandr
-	source = git+https://github.com/geminis3/envycontrol.git#tag=v2.1.1
+	source = git+https://github.com/bayasdev/envycontrol.git#tag=v2.2
 	sha256sums = SKIP
 
 pkgname = envycontrol
