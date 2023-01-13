@@ -32,7 +32,7 @@ PermissionsStartOnly=True
 
 # Execution model
 Type=simple
-ExecStart=/usr/bin/storehouse -v
+ExecStart=/usr/bin/storehouse --verbose=1
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=5

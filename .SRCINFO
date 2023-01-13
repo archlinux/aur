@@ -1,7 +1,7 @@
 pkgbase = storehouse
 	pkgdesc = Storehouse for release tarballs
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dyfet/storehouse
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,6 @@ pkgbase = storehouse
 	source = storehouse-v0.0.5.tar.gz::https://codeberg.org/dyfet/storehouse/archive/v0.0.5.tar.gz
 	source = storehouse.service
 	sha256sums = 01875e31863e27da9898bdaf84e64fcd1904102d2fed2938e5892a9f733abd42
-	sha256sums = af2aaefa14f2e1e53be25ec81d8255db0108f283831c3fcc0a64dc4cdb803296
+	sha256sums = 5dadefb0087e72740da262520a9c6bc7f202911c1ce30125d4a80f958d13336c
 
 pkgname = storehouse
