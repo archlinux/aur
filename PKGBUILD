@@ -1,7 +1,7 @@
 # Maintainer: Mia Sireneva <owlnull@riseup.net>
 
 pkgname=rtsp-simple-server-bin
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='Ready-to-use RTSP / RTMP / LL-HLS server and proxy that allows to read, publish and proxy video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -27,9 +27,9 @@ sha256sums=(
 	'1498445638b106afdcf73309bcba8859b458abb7b30ce86af4d3e03f68bde251'
 	'f53f26b58da00e6f0d611e95f61a33fd7efec04f372e49db5dfb0dd16c5cc6e9'
 )
-sha256sums_x86_64=('d2ea21d5430f0d9ccefaaf337fd63add50dd70be5ce8431af0e01a018d530e22')
-sha256sums_armv7h=('72c70ba2535a39072dedfd88d56793bf6be80030aff1ee327c08adc4c5f6ed22')
-sha256sums_aarch64=('e53ff5bf778ad42006fa7d9449f9005f6d2c18c71e1db896172211158b13e949')
+sha256sums_x86_64=('4f7bef8a4bb12175bdfb563789d28bea5d0510c34786354841956939b6031131')
+sha256sums_armv7h=('814abad55af26ccb13f219acfda4cbedcb11dc1303e95fd3649656875531eed7')
+sha256sums_aarch64=('a8d4b2c24a5635f1036fd93bd24b95325d535cae74910b7dce933e3498f251b6')
 
 prepare() {
 	cd "$srcdir"
