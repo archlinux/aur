@@ -2,7 +2,7 @@
 
 pkgname='whatsapp-for-linux'
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 url="https://github.com/eneshecan/whatsapp-for-linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ md5sums=('adf487bd9f1f7f27bcdc11135e9747de')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
