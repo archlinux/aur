@@ -38,7 +38,7 @@ package() {
 
   # Install the application
   install -d $pkgdir/{opt/$pkgname,usr/bin}
-  cp -a bin lib jre plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
+  cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
   ln -s /opt/android-studio/bin/studio.sh $pkgdir/usr/bin/$pkgname
 
   # Copy licenses
