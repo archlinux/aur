@@ -17,8 +17,8 @@ pkgbase = python-stlib
 	depends = python-beautifulsoup4
 	depends = python-rsa
 	depends = steamworks-sdk
-	optdepends = stlib-plugins: A set of official plugins for stlib
-	source = https://github.com/ShyPixie/python-stlib/archive/v1.1.1.tar.gz
+	optdepends = python-stlib-plugins: A set of official plugins for stlib
+	source = https://github.com/ShyPixie/stlib/archive/v1.1.1.tar.gz
 	sha256sums = b22d84cfc4645a8710d8df24ef377c12304b0e02eb8e35c924c65578eda86c8e
 
 pkgname = python-stlib
