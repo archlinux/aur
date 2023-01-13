@@ -1,0 +1,3 @@
+#!/bin/bash
+
+OKTA_PROFILE="$1" withokta sls --stage "$1" "${@:2}"

@@ -2,4 +2,8 @@
 !.SRCINFO
 !PKGBUILD
 !README.md
-!okta-aws-cli-login
+!okta-aws
+!okta-sls
+!withokta
+!logging.properties
+!awscli
