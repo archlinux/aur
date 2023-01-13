@@ -3,7 +3,7 @@
 
 pkgname=lceda-pro-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.9.28
+pkgver=1.9.29
 pkgrel=1
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pr
 source_aarch64=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-arm64-${pkgver}.zip")
 sha256sums=('e1c6b9641b73a56d5bffe42d8db2107af8f2c51aa5cd11c79aa998321a5e0190'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
-sha256sums_x86_64=('6872d2b76a4aa8e134cf592aed07c4521e74f16cc5efbfce95ac92d7a13d51c3')
-sha256sums_aarch64=('8813a53e29b6bce4d36b325c0baee3a636fa2ffdc216a20744e57a74e08387ec')
+sha256sums_x86_64=('444aaa0ad26b6f89c57a93d2c488728178b2c560a2a0b56c1baed412475bfbf9')
+sha256sums_aarch64=('cbca13b9a102f7a0f0bd8952a01379162a81cad61a7982f0d61661393916d457')
 # noextract=(${_pkgname}-${pkgver}.zip)
 
 package() {
@@ -53,7 +53,7 @@ package() {
         ${pkgdir}/usr/share/applications/${_pkgname}.desktop
     sed -i 's|/opt/lceda-pro/||g' \
         ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-    rm -rf ${pkgdir}/opt/${_pkgname}/LCEDA-PRO.dkt
+    rm -rf ${pkgdir}/opt/${_pkgname}/lceda-pro.dkt
 
     # soft link
     find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod 644 "{}" \;
