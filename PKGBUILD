@@ -5,7 +5,7 @@
 # Contributor: luosoy <249799588@qq.com>
 
 pkgname=deepin-wine-helper
-_pkgver=5.1.44-1
+_pkgver=5.1.45-1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin Wine Helper"
@@ -19,7 +19,7 @@ optdepends=(
     'noto-fonts-cjk: recommended fonts'
 )
 source=("https://community-store-packages.deepin.com/appstore/pool/appstore/d/${pkgname}/${pkgname}_${_pkgver}_i386.deb")
-sha256sums=('33068fc17e72f769bf653b8171c135ce341dacaa84797f160f2061090b509bc3')
+sha256sums=('4a845eb7316fab4437a346261ed5696523903b6f0d00855736124f7e7ac91a13')
 
 package() {
     tar -xf data.tar.xz -C "${pkgdir}" --exclude="etc"
