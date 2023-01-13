@@ -5,17 +5,17 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="WebP library (32-bit)"
 url="https://developers.google.com/speed/webp/"
 arch=(x86_64)
 license=(BSD)
 depends=(lib32-glibc libwebp)
-provides=(libwebp{,decoder,demux,mux}.so)
+provides=(libwebp{,decoder,demux,mux}.so libsharpyuv.so)
 options=(debug)
 source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc})
-sha256sums=('7bf5a8a28cc69bcfa8cb214f2c3095703c6b73ac5fba4d5480c205331d9494df'
+sha256sums=('64ac4614db292ae8c5aa26de0295bf1623dbb3985054cb656c55e67431def17c'
             'SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
 
@@ -31,7 +31,7 @@ build() {
     --libdir=/usr/lib32 \
     --disable-static \
     --enable-swap-16bit-csp \
-    --enable-libwebp{mux,demux,decoder,extras}
+    --enable-everything
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
