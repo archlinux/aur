@@ -8,14 +8,14 @@ pkgdesc="Okta AWS CLI Assume Role Tool"
 arch=('any')
 url=https://github.com/oktadeveloper/okta-aws-cli-assume-role
 license=('Apache')
-depends=(java-runtime)
+depends=(jre11-openjdk-headless)
 source=(
   "$url/releases/download/v$pkgver/okta-aws-cli-$pkgver.jar"
   okta-aws-cli-login
 )
 noextract=("okta-aws-cli-$pkgver.jar")
 sha256sums=('d57b8fd6de20e2bf595782690c273eb806aa555ceab20d5fa7608774f49aee78'
-            '4f047fa9970e885760b7236c039ac6a6e9824fbfc1dadbca1b6cb800b7b5a6a3')
+            '83aa504c3fdc2b7549f4e656ef69ea9ffa67ba72fc32a2c1a5c46e282371a398')
 
 package() {
   cd "$srcdir" || exit 1
