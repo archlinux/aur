@@ -3,7 +3,7 @@
 _pkgname=remaCor
 _pkgver=0.0.11
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Random Effects Meta-Analysis for Correlated Test Statistics'
 arch=('any')
