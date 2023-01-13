@@ -1,7 +1,7 @@
 # Maintainer: Matthew Charlston <firstname _at_ mcharlsto dot uk>
 
 pkgname="horizontallyspinningrat"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 depends=("sox" "opusfile" "bash" "sharutils")
 pkgdesc="The horizontally spinning rat - now on your desktop!"
