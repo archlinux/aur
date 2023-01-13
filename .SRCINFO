@@ -52,7 +52,7 @@ pkgbase = cups-gssapi
 	sha256sums = 632faf08bfd1863e9ad6807aff766983e84030a0e4df441167f17de7266ca152
 
 pkgname = libcups-gssapi
-	pkgdesc = The CUPS Printing System - client libraries and headers
+	pkgdesc = The CUPS Printing System - client libraries and headers - with gssapi (kerberos) enabled
 	depends = gnutls
 	depends = libtiff>=4.0.0
 	depends = libpng>=1.5.7
@@ -62,7 +62,7 @@ pkgname = libcups-gssapi
 	depends = libxcrypt
 
 pkgname = cups-gssapi
-	pkgdesc = The CUPS Printing System - daemon package
+	pkgdesc = The CUPS Printing System - daemon package - with gssapi (kerberos) enabled
 	install = cups.install
 	depends = acl
 	depends = pam

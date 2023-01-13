@@ -9,6 +9,9 @@ s/.\/configure (.+) \\/.\/configure \1 --with-gssapi \\/
 /^(pkgbase|pkgname)=/ s/cups/cups-gssapi/g
 /^package_\S*cups\(\)/ s/cups/cups-gssapi/g
 
+# Replace description of subpackages
+/^pkgdesc=/ s/(.*)"$/\1 - with gssapi (kerberos) enabled"/
+
 # add further fields
 /^pkgbase=/ i pkgdesc="The CUPS Printing System with gssapi (kerberos) enabled"
 /^pkgbase=/ i conflicts=('libcups' 'cups')
