@@ -2,8 +2,8 @@
 pkgname=yas-scanner
 _pkgname=yas
 pkgver=0.1.11.afcfa6a
-pkgrel=4
-pkgdesc="fast Artifact scanner for a specific anime game works well with GNOME/Wayland and all on X11"
+pkgrel=5
+pkgdesc="fast Artifact scanner for a specific anime game"
 url="https://github.com/poly000/yas/tree/linux-x11-support"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 
