@@ -1,7 +1,7 @@
 pkgbase = clash-for-windows-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron.
 	pkgver = 0.20.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = clash-for-windows-bin
 	depends = gtk3
 	optdepends = nftables: TUN mode required.
 	optdepends = iproute2: TUN mode required.
+	options = !strip
 	source = clash.png::https://cdn.jsdelivr.net/gh/Dreamacro/clash@master/docs/logo.png
 	source = clash-for-windows.desktop
 	source = cfw
