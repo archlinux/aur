@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=29.0.0
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=5
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -86,7 +86,10 @@ else
   optdepends+=("python>=$_pythonver: Python scripting")
 fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
-conflicts=("obs-studio" "obs-vst" "obs-websocket")
+conflicts=(
+  "obs-studio" "obs-vst" "obs-websocket"
+  "libva-vdpau-driver" # This driver is abandonned and make OBS segfault if it happen to be loaded, try libva-nvidia-driver is you really need Nvidia decode through VAAPI
+)
 options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
@@ -119,7 +122,10 @@ fi
 if [[ $CARCH == 'x86_64' ]]; then
   makedepends+=("cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1")
   provides+=("obs-browser")
-  conflicts+=("obs-linuxbrowser" "obs-browser")
+  conflicts+=(
+    "obs-browser"
+    "obs-linuxbrowser" # This plugin is obsolete
+  )
   _browser=ON
 else
   _browser=OFF
