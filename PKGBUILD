@@ -2,9 +2,9 @@
 
 pkgname=ruby-repofetch
 _gitname=repofetch
-pkgver=v0.4.2.rc.3.r11.g21ee0fb
+pkgver=v0.4.3.r2.gf5d5be4
 pkgrel=1
-pkgdesc="A remote repository stat fetcher with support for 3rd-party plugins"
+pkgdesc="A remote repository stat fetcher with support for 3rd-party plugins devel version."
 arch=('any')
 url="https://spenserblack.github.io/repofetch/"
 gh_url="https://github.com/spenserblack/repofetch"
