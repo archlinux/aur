@@ -8,7 +8,7 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=6.3.0beta1
-pkgrel=2
+pkgrel=3
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -46,7 +46,7 @@ build() {
 
   yarn generate
   yarn prepare-beta-build
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true) bash -c 'yarn build'
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) yarn build
 }
 
 package() {
