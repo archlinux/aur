@@ -4,7 +4,7 @@
 # Contributor: Arch3y <arch3y[at]archstrike[dot]org>
 
 pkgname=zmap-git
-pkgver=3.0.0.1215.118b910-1
+pkgver=3.0.0.1215.118b910
 pkgrel=1
 pkgdesc='Fast network scanner designed for Internet-wide network surveys'
 url='https://zmap.io/'
