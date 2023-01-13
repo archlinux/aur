@@ -1,6 +1,6 @@
 pkgbase = rxvt-unicode-truecolor
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color patch (24bit colors support). That enables vim 24-bit true color colorshemes
-	pkgver = 9.30
+	pkgver = 9.31
 	pkgrel = 1
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = x86_64
