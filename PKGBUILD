@@ -8,15 +8,16 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=6.3.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://signal.org"
 depends=('gtk3' 'libvips' 'libxss' 'hicolor-icon-theme')
 # We need libxcrypt-compat for it to build: https://github.com/electron-userland/electron-builder-binaries/issues/47
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'git-lfs' 'libxcrypt-compat' 'openjpeg2')
+makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
@@ -45,14 +46,20 @@ build() {
 
   yarn generate
   yarn prepare-beta-build
-  yarn build
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true) bash -c 'yarn build'
 }
 
 package() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
-  cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
+
+  case "${CARCH}" in
+    "aarch64") folder="linux-arm64-unpacked" ;;
+    *) folder="linux-unpacked" ;;
+  esac
+  cp -a release/${folder} "${pkgdir}/usr/lib/${pkgname}"
+
   ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
 
   chmod u+s "${pkgdir}/usr/lib/${pkgname}/chrome-sandbox"
