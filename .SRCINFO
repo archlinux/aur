@@ -1,0 +1,20 @@
+pkgbase = r-remacor
+	pkgdesc = Random Effects Meta-Analysis for Correlated Test Statistics
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://cran.r-project.org/package=remaCor
+	arch = any
+	license = Artistic2.0
+	depends = r
+	depends = r-clustergeneration
+	depends = r-ggplot2
+	depends = r-mvtnorm
+	depends = r-rdpack
+	depends = r-reshape2
+	depends = r-runit
+	optdepends = r-knitr
+	optdepends = r-metafor
+	source = https://cran.r-project.org/src/contrib/remaCor_0.0.11.tar.gz
+	sha256sums = 750699c75e46dbc6a654ad29be736d886da0bc3c8a259882785d9b2ff30f1342
+
+pkgname = r-remacor
