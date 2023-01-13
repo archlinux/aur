@@ -2,7 +2,7 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
 pkgver=7.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
@@ -24,7 +24,7 @@ backup=(opt/onedev/conf/hibernate.properties
 
 build() {
   cd "$srcdir"
-  unzip -f "onedev-$pkgver.zip"
+  tar -xvzf "onedev-$pkgver.tar.gz"
 }
 
 package() {
