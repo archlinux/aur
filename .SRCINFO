@@ -1,18 +1,16 @@
 pkgbase = python-ulid-py
 	pkgdesc = Universally Unique Lexicographically Sortable Identifier
 	pkgver = 1.1.0
-	pkgrel = 00
+	pkgrel = 2
 	url = https://github.com/ahawker/ulid
 	arch = any
 	license = Apache
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	noextract = ulid_py-1.1.0-py2.py3-none-any.whl
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/42/7c/a12c879fe6c2b136a718c142115ff99397fbf62b4929d970d58ae386d55f/ulid_py-1.1.0-py2.py3-none-any.whl
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = 52c96404ddb68afe4a0c6b1ec5b8df5c
-	md5sums = ce92d64db52e57a3fe81fc6ac3ff0344
+	source = python-ulid-py-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/u/ulid-py/ulid-py-1.1.0.tar.gz
+	sha256sums = dc6884be91558df077c3011b9fb0c87d1097cb8fc6534b11f310161afd5738f0
 
 pkgname = python-ulid-py
