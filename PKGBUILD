@@ -104,6 +104,7 @@ check() {
   # test_ftplib test_imaplib test_urllib2_localnet: krb5 errors
   # test_codecmaps_jp: TODO
   export TERM=xterm
+  local -x TZ=UTC
   cd Python-${pkgver}
   LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
     xvfb-run "${srcdir}/Python-${pkgver}/python" -m test.regrtest -v -uall -x test_idle test_tk test_ttk_guionly test_ctypes test_ssl test_ftplib test_imaplib test_urllib2_localnet test_codecmaps_jp
