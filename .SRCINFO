@@ -1,13 +1,14 @@
 pkgbase = fdroidcl-bin
 	pkgdesc = F-Droid desktop client
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mvdan/fdroidcl
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	depends = android-tools
 	provides = fdroidcl
 	conflicts = fdroidcl
 	source = https://raw.githubusercontent.com/mvdan/fdroidcl/v0.6.0/LICENSE

@@ -1,11 +1,12 @@
 # Maintainer: Funami
 pkgname=fdroidcl-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="F-Droid desktop client"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/fdroidcl"
 license=('BSD')
+depends=('android-tools')
 provides=('fdroidcl')
 conflicts=('fdroidcl')
 source=("https://raw.githubusercontent.com/mvdan/fdroidcl/v${pkgver}/LICENSE")
