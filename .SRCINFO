@@ -1,0 +1,14 @@
+pkgbase = davesync
+	pkgdesc = Synchonizes and encrypts a local directory with a remote WebDAV folder
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Junker/davesync
+	arch = any
+	license = GPL3
+	depends = python-webdav4
+	depends = python-colorlog
+	depends = python-gnupg
+	source = https://github.com/Junker/davesync/archive/refs/tags/0.1.3.zip
+	sha256sums = dc0749e5f5cac5be03477b928f01fdf557be802fae16a1cae7b3659c01a639a8
+
+pkgname = davesync
