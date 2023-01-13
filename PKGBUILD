@@ -1,9 +1,9 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 
 pkgname=python-frccontrol-git
-pkgver=2022.13
+pkgver=2023.13
 pkgrel=1
-pkgdesc="Provides wrappers around Python Control for making development of state-space models for the FIRST Robotics Competition easier."
+pkgdesc="Provides SciPy wrappers that ease development of state-space models for the FIRST Robotics Competition."
 arch=("x86_64")
 url="https://github.com/calcmogul/frccontrol.git"
 license=("BSD")
