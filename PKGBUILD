@@ -3,7 +3,7 @@
 
 _gemname=fog-brightbox
 pkgname=ruby-$_gemname
-pkgver=1.8.2
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Module for the fog gem to support Brightbox Cloud'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-fog-core ruby-fog-json ruby-dry-inflector)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('6a14c65e4d41d3711814410260dacc8a3a0fe177dec91bde4d81731ac7ef9da0cb049e1e7fdfaf3b9a952f26b765d3ed34e91273e11f2a5df78fd30c272c87cb')
+sha512sums=('554fb795fee2cc27df203e0b55b5e058f71bbee30e90771df689803da543786838f26e3d9df4859730dc3887936b5648d31a8595af4eb59788d2718ea7897aa5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

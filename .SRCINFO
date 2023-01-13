@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-brightbox
 	pkgdesc = Module for the fog gem to support Brightbox Cloud
-	pkgver = 1.8.2
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://rubygems.org/gems/fog-brightbox
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-fog-brightbox
 	depends = ruby-fog-core
 	depends = ruby-fog-json
 	depends = ruby-dry-inflector
-	noextract = fog-brightbox-1.8.2.gem
+	noextract = fog-brightbox-1.9.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-brightbox-1.8.2.gem
-	sha512sums = 6a14c65e4d41d3711814410260dacc8a3a0fe177dec91bde4d81731ac7ef9da0cb049e1e7fdfaf3b9a952f26b765d3ed34e91273e11f2a5df78fd30c272c87cb
+	source = https://rubygems.org/downloads/fog-brightbox-1.9.1.gem
+	sha512sums = 554fb795fee2cc27df203e0b55b5e058f71bbee30e90771df689803da543786838f26e3d9df4859730dc3887936b5648d31a8595af4eb59788d2718ea7897aa5
 
 pkgname = ruby-fog-brightbox
