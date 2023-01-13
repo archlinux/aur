@@ -1,32 +1,32 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=csky-debugserver-bin
-pkgver=5.12.9
-pkgrel=2
+pkgver=5.16.7
+pkgrel=0
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
-url="https://occ.t-head.cn/community/download?id=616215132330000384"
+url="https://occ.t-head.cn/community/download?id=4133634465765330944"
 license=('BSD')
 groups=()
-depends=('bash')
-makedepends=("tar")
+depends=(bash)
+makedepends=(libarchive)
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
 replaces=()
 backup=()
-options=('!strip')
+options=()
 install=
 changelog=
-source=("T-Head Debugger Server User Guide v5.12.9.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1637637514397/T-Head+Debugger+Server+User+Guide.pdf"
-        "${pkgname}-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1637637575339/T-Head-DebugServer-linux-x86_64-V5.12.9-20211116.sh.tar.gz"
+source=("T-Head Debugger Server User Guide ZH-CN v5.16.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1659579718572/T-Head+Debugger+Server+User+Guide+%28ZH-CN%29_v5.16.pdf"
+        "${pkgname}-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1673423345494/T-Head-DebugServer-linux-x86_64-V5.16.7-20230109.sh.tar.gz"
         "DebugServer User Guide_v5.10.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf"
         "DebugServer User Guide v5.6.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588916696490/C-Sky+Debugger+Server+User+Guide+v5.6.pdf")
 noextract=()
-sha256sums=('c45fd650f4fc1cd792202d3392a0b19d5434d68e99167676550ea014b090adf1'
-            'bf1033418b927a1e989f7618425192ba6b80879fe1e46f6593a9180c30e408cc'
+sha256sums=('2b64d17b6589ec5252ad610a79ba15857cc3257c970d3a0dee61d0358dca7162'
+            '6d74304484970bc4997f378a86f1c32351a99895d3a530b193dba608e06a240d'
             '6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2'
             '6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2')
 #validpgpkeys=()
@@ -34,12 +34,12 @@ sha256sums=('c45fd650f4fc1cd792202d3392a0b19d5434d68e99167676550ea014b090adf1'
 prepare(){
 # Decrypt gzexe encrypted shell script
 # Origin file 92 Line: tail -n  +$LNUM $0 > tmp.tar.gz
-    tail -n +282 "${srcdir}"/*.sh > "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+    tail -n +282 "${srcdir}"/*$(pkgver)*.sh > "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 }
 
 package() {
     install -dm0755 "${pkgdir}/opt/t-head/${pkgname%-bin}"
-    tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner --no-same-permissions --strip-components=1 -C "${pkgdir}/opt/t-head/${pkgname%-bin}"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner --no-same-permissions --strip-components=1 -C "${pkgdir}/opt/t-head/${pkgname%-bin}"
     cp -r "${srcdir}"/*.pdf "${pkgdir}/opt/t-head/${pkgname%-bin}"
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" << EOF
