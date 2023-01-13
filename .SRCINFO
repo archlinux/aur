@@ -1,6 +1,6 @@
 pkgbase = buildkite-agent-bin
 	pkgdesc = The Buildkite Agent
-	pkgver = 3.40.0
+	pkgver = 3.42.0
 	pkgrel = 1
 	url = https://buildkite.com/docs/agent/v3
 	arch = x86_64
@@ -10,17 +10,17 @@ pkgbase = buildkite-agent-bin
 	options = !strip
 	options = staticlibs
 	backup = etc/buildkite-agent/buildkite-agent.cfg
-	source = git+https://github.com/buildkite/agent.git#tag=v3.40.0
+	source = git+https://github.com/buildkite/agent.git#tag=v3.42.0
 	source = buildkite-agent.sysusers
 	source = buildkite-agent.tmpfiles
 	sha256sums = SKIP
 	sha256sums = 60503a6e93dfdb533cd54c82bf9aa3087c907ce8c574b657ca4c4b102badcf71
 	sha256sums = 15f1019081d8255ac6ac121445ae4b39ef5e3f1446a319855c1f7524372366b0
-	source_x86_64 = https://github.com/buildkite/agent/releases/download/v3.40.0/buildkite-agent-linux-amd64-3.40.0.tar.gz
-	sha256sums_x86_64 = 80de3f2448e84d205db3001a603474d41d100394603aba7ba57c06deca44e4dd
-	source_armv7h = https://github.com/buildkite/agent/releases/download/v3.40.0/buildkite-agent-linux-armhf-3.40.0.tar.gz
-	sha256sums_armv7h = 64d03a44717bbeb1f99e589dd3c024c0274deff41a0fa7c86f8900ca7a556b34
-	source_aarch64 = https://github.com/buildkite/agent/releases/download/v3.40.0/buildkite-agent-linux-arm64-3.40.0.tar.gz
-	sha256sums_aarch64 = 653dc446eb0f263823fdcbfdd7ab8bee51fa665b3ea78ca3b7b5714de6a7a6f4
+	source_x86_64 = https://github.com/buildkite/agent/releases/download/v3.42.0/buildkite-agent-linux-amd64-3.42.0.tar.gz
+	sha256sums_x86_64 = 2a1b36f02f46ecc445fb8b9839de737d3c94a8f6bc7fdff8981266ca690f3551
+	source_armv7h = https://github.com/buildkite/agent/releases/download/v3.42.0/buildkite-agent-linux-armhf-3.42.0.tar.gz
+	sha256sums_armv7h = f750df714f1f4bd5e54720b6cf51ea92e85a7e4188ac0b5722e6c55b5b27b709
+	source_aarch64 = https://github.com/buildkite/agent/releases/download/v3.42.0/buildkite-agent-linux-arm64-3.42.0.tar.gz
+	sha256sums_aarch64 = f88bda679e465e2bbc062d4900af4439ace66e1566a99ef4007788c63b15eeee
 
 pkgname = buildkite-agent-bin
