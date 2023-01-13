@@ -12,13 +12,12 @@ s/.\/configure (.+) \\/.\/configure \1 --with-gssapi \\/
 # Replace description of subpackages
 /^pkgdesc=/ s/(.*)"$/\1 - with gssapi (kerberos) enabled"/
 
-# add further fields
-/^pkgbase=/ i pkgdesc="The CUPS Printing System with gssapi (kerberos) enabled"
-/^pkgbase=/ i conflicts=('libcups' 'cups')
-
 # add provides fields to subpackages
 /^package_cups-gssapi\(\)/ a provides=('cups')
-/^package_libcups-gssapi\(\)/ a provides=('libcups')
+/^package_libcups-gssapi\(\)/ a provides=("libcups=${pkgver%.r*}")
+
+/^package_cups-gssapi\(\)/ a conflicts=('cups')
+/^package_libcups-gssapi\(\)/ a conflicts=('libcups')
 
 # fix usage of "${pkgbase}"
 s/\$\{pkgbase\}/cups/g

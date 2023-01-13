@@ -1,5 +1,4 @@
 pkgbase = cups-gssapi
-	pkgdesc = The CUPS Printing System with gssapi (kerberos) enabled
 	pkgver = 2.4.2
 	pkgrel = 3
 	epoch = 1
@@ -29,8 +28,6 @@ pkgbase = cups-gssapi
 	makedepends = libpaper
 	makedepends = valgrind
 	makedepends = git
-	conflicts = libcups
-	conflicts = cups
 	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 	source = https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz.sig
 	source = cups.logrotate
@@ -60,7 +57,8 @@ pkgname = libcups-gssapi
 	depends = avahi
 	depends = libusb
 	depends = libxcrypt
-	provides = libcups
+	provides = libcups=2.4.2
+	conflicts = libcups
 
 pkgname = cups-gssapi
 	pkgdesc = The CUPS Printing System - daemon package - with gssapi (kerberos) enabled
@@ -79,6 +77,7 @@ pkgname = cups-gssapi
 	optdepends = colord: for ICC color profile support
 	optdepends = logrotate: for logfile rotation support
 	provides = cups
+	conflicts = cups
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
 	backup = etc/cups/printers.conf
