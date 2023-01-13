@@ -28,5 +28,5 @@ build() {
 }
 
 package() {
-  install -D -m755 "${srcdir}/${_srcname}/src/SNANDer" "${pkgdir}/usr/bin/SNANDer"
+  install -D -m755 "${srcdir}/${_srcname}/src/SNANDer" "${pkgdir}/usr/bin/snander"
 }
