@@ -1,0 +1,27 @@
+pkgbase = dart
+	pkgdesc = The dart programming language SDK (Bug)
+	pkgver = 2.18.6
+	pkgrel = 1
+	url = https://www.dartlang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = setconf
+	makedepends = clang
+	makedepends = gn
+	makedepends = ninja
+	makedepends = dart
+	makedepends = python
+	provides = dart
+	provides = dart-sdk
+	conflicts = dart
+	conflicts = dart-sdk
+	source = .gclient
+	source = build-config-compiler-BUILD.gn.patch
+	source = DEPS
+	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	sha512sums = 23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf
+	sha512sums = ad9753bc6a45ed2006f039c54fc0295f488532f8a205395921eaf2373c56d05c958efcdf33817d91d7e36e35733df57471762a126c09cf39292e6fe96069fc36
+	sha512sums = 600a9816bb7dbc100d3183e01125726e712041e707d8d046e60ad7dea62831c6e09a5f667a82be183ad8e6d25d307cd4c6f754bab7f165240e57c440252fd8eb
+	sha512sums = SKIP
+
+pkgname = dart

@@ -1,0 +1,30 @@
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index f2984fb8643..3e5e73d06bb 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -366,25 +366,6 @@ config("compiler") {
+     }
+   }
+ 
+-  # We want to force a recompile and relink of the world whenever our toolchain
+-  # changes since artifacts from an older version of the toolchain may or may
+-  # not be compatible with newer ones. To achieve this, we insert a synthetic
+-  # define into the compile line.
+-  if (is_clang && (is_linux || is_mac)) {
+-    if (is_linux && host_cpu == "arm64") {
+-      toolchain_stamp_file =
+-          "//buildtools/linux-arm64/clang/.versions/clang.cipd_version"
+-    } else if (is_linux) {
+-      toolchain_stamp_file =
+-          "//buildtools/linux-x64/clang/.versions/clang.cipd_version"
+-    } else {
+-      toolchain_stamp_file =
+-          "//buildtools/mac-x64/clang/.versions/clang.cipd_version"
+-    }
+-    cipd_version = read_file(toolchain_stamp_file, "json")
+-    defines = [ "TOOLCHAIN_VERSION=${cipd_version.instance_id}" ]
+-  }
+-
+   # Assign any flags set for the C compiler to asmflags so that they are sent
+   # to the assembler. The Windows assembler takes different types of flags
+   # so only do so for posix platforms.
