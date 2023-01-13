@@ -2,7 +2,7 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev
 pkgver=7.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
@@ -41,6 +41,10 @@ package() {
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/onedev/slf4j/LICENSE"
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/sqljdbc/LICENSE"
   install -D -m 0644 "$srcdir/$pkgname-$pkgver/3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/onedev/sun/LICENSE"
+}
+
+pre_upgrade() {
+  exec "$pkgdir/opt/onedev/bin/upgrade.sh /opt/onedev"
 }
 
 # vim:set ts=2 sw=2 et:
