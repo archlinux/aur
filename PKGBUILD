@@ -56,11 +56,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/
 				add-vstsdk-location-var.patch
 				build_libpds.patch
 				crashreporter.patch
+				radium.install
 )
 sha256sums=('7054cd218bee78eea01d3c6798350e531795f1e933000a3f13f95cd4cb4a04b4'
             'ed456586a1f28eec9acd081a676e61145e13f07c1a6e967c0af1f7d08be4023e' 
             '2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548' 
             '16b0c6dc95e835fed5c7d4f350780561cd996ef723b392c415db83edba07af94'
+						'f627730ff7a819e8cc5ac5c2b5f1fb2f2237327db6ea5442c55a23c1ce82ef14'
 					)
 install=radium.install
 
