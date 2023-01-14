@@ -1,0 +1,9 @@
+/src
+/pkg
+/cargo-edit
+*.xz
+*.tar.*
+*.pkg.*
+*.zip
+*.zip.sig
+*.log

@@ -1,0 +1,16 @@
+pkgbase = cargo-component-git
+	pkgdesc = Allows conveniently modify features of crate
+	pkgver = r33.b8ba57b
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/cargo-component
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = cargo
+	provides = cargo-component
+	conflicts = cargo-component
+	source = git+https://github.com/bytecodealliance/cargo-component.git
+	sha256sums = SKIP
+
+pkgname = cargo-component-git
