@@ -3,7 +3,7 @@
 
 _pkgname=supermodel
 pkgname=$_pkgname-git
-pkgver=r921.0eef09b
+pkgver=r963.78f5056
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
@@ -12,10 +12,8 @@ license=('GPL3')
 depends=('mesa' 'sdl' 'zlib' 'glu' 'sdl2_net')
 makedepends=('git')
 install=supermodel.install
-source=('supermodel.sh'
-        "$_pkgname::git+https://github.com/trzy/Supermodel.git")
-md5sums=('ea8274c2a37acddd026fce9c831530cc'
-         'SKIP')
+source=("$_pkgname::git+https://github.com/trzy/Supermodel.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -24,15 +22,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make -f 'Makefiles/Makefile.UNIX'
+  make -f 'Makefiles/Makefile.UNIX' -j16
 }
 
 package() {
   cd "$srcdir/$_pkgname"
 
-  install -Dm755 "$srcdir/supermodel.sh" "$pkgdir/usr/bin/supermodel"
-
-  install -Dm755 "bin/supermodel" "$pkgdir/usr/share/supermodel/Supermodel"
+  install -Dm755 "bin/supermodel" "$pkgdir/usr/bin/supermodel"
 
   install -Dm644 "Docs/LICENSE.txt" "$pkgdir/usr/share/licenses/supermodel/LICENSE"
   install -Dm644 "Docs/README.txt" "$pkgdir/usr/share/doc/supermodel/README"

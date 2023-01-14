@@ -2,11 +2,16 @@
 post_install() { 
   echo ""
   echo "***************************************************************"
-  echo " Supermodel has been installed in /usr/share/supermodel."
-  echo " However, Supermodel can be run by typing supermodel and it's options:"
+  echo " Supermodel can be run by typing supermodel and it's options:"
   echo " supermodel <romset> [options]"
-  echo ""
+  echo "
   echo " Note: You need to provide the full path to the romset."
+  echo "
+  echo " Configuration:
+  echo " If a Config directory exists in the current directory, Supermodel
+  echo " will use that directory. Otherwise, the emulator will create one
+  echo " at ~/.config/supermodel. If a legacy configuration exists in
+  echo " ~/.supermodel, that configuration will be used instead.
   echo "***************************************************************"
   echo ""
 }

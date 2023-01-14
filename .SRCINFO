@@ -1,6 +1,6 @@
 pkgbase = supermodel-git
 	pkgdesc = A Sega Model 3 Arcade Emulator
-	pkgver = r921.0eef09b
+	pkgver = r963.78f5056
 	pkgrel = 1
 	url = http://www.supermodel3.com/
 	install = supermodel.install
@@ -13,9 +13,7 @@ pkgbase = supermodel-git
 	depends = zlib
 	depends = glu
 	depends = sdl2_net
-	source = supermodel.sh
 	source = supermodel::git+https://github.com/trzy/Supermodel.git
-	md5sums = ea8274c2a37acddd026fce9c831530cc
 	md5sums = SKIP
 
 pkgname = supermodel-git
