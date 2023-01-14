@@ -25,6 +25,8 @@ pre_upgrade() {
 post_upgrade() {
 	udevadm control --reload-rules
 	systemctl daemon-reload
+	echo "This package is a dev version."
+	echo "Switch to g810-led package."
 }
 
 ## arg 1:  the old package version

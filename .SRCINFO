@@ -1,31 +1,29 @@
 pkgbase = g810-led-git
 	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards
-	pkgver = 0.4.3
+	pkgver = 0.4.3.r1.efa3c35
 	pkgrel = 1
-	url = https://github.com/MatMoul/g810-led
+	url = https://github.com/matmoul/g810-led
 	install = g810-led-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = gcc
-	makedepends = make
+	makedepends = systemd
 	depends = hidapi
 	optdepends = libusb: old implementation, for developpers
-	provides = g213-led=0.4.3
-	provides = g410-led=0.4.3
-	provides = g413-led=0.4.3
-	provides = g512-led=0.4.3
-	provides = g513-led=0.4.3
-	provides = g610-led=0.4.3
-	provides = g810-led=0.4.3
-	provides = g815-led=0.4.3
-	provides = g910-led=0.4.3
-	provides = gpro-led=0.4.3
-	options = !emptydirs
+	provides = g213-led=0.4.3.r1.efa3c35
+	provides = g410-led=0.4.3.r1.efa3c35
+	provides = g413-led=0.4.3.r1.efa3c35
+	provides = g512-led=0.4.3.r1.efa3c35
+	provides = g513-led=0.4.3.r1.efa3c35
+	provides = g610-led=0.4.3.r1.efa3c35
+	provides = g810-led=0.4.3.r1.efa3c35
+	provides = g815-led=0.4.3.r1.efa3c35
+	provides = g910-led=0.4.3.r1.efa3c35
+	provides = gpro-led=0.4.3.r1.efa3c35
 	backup = etc/g810-led/profile
 	backup = etc/g810-led/reboot
 	backup = etc/udev/rules.d/g810-led.rules
-	source = git+https://github.com/MatMoul/g810-led.git
-	md5sums = SKIP
+	source = git+https://github.com/matmoul/g810-led.git#commit=efa3c35e74f01a2ed2346320da8bad411bfe8ed8
+	sha256sums = SKIP
 
 pkgname = g810-led-git
