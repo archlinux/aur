@@ -3,8 +3,8 @@
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=4.4.2
-pkgrel=2
+pkgver=4.4.3
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -32,7 +32,7 @@ package() {
   cd "$srcdir" || exit 1
 
   install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm0644 message_views.sql "$pkgdir/usr/share/doc/$_pkgname/message_views.sql"
+  install -Dm0644  message_views.sql "$pkgdir/usr/share/doc/$_pkgname/message_views.sql"
   install  -m0644 {PRIVACY,README,CLI,SIMPLEX,SQL}.md "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
