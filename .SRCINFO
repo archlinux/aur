@@ -1,6 +1,6 @@
 pkgbase = avt
 	pkgdesc = ali's video tool
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 2
 	url = https://gitlab.com/alifurkany/avt
 	arch = any
