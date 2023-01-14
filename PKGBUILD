@@ -15,6 +15,7 @@ url=https://github.com/$_repo
 depends=(
   # NOTE: Some "common" dependencies are marked "missing" since the AUR packages don't exist yet.
   ffmpeg
+  mongodb
   python-aiofiles
   python-argcomplete
   python-boto3
