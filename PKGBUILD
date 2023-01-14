@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-etoile-super
-pkgver=17.0.2
+pkgver=17.0.3
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/super-ttc-iosevka-etoile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('cfc03892532d21f5ffcbb4fc5c2b81e36d307c53994c4ac4a9d0e8b558c7770a'
-            '46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1')
+sha256sums=('32e224055482ef993d240c700572d84b74b4c61f4d255cf00761fd1e71d92000'
+            '7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
