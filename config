@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 6.1.0 Kernel Configuration
+# Linux/um 6.1.6 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.2.0"
 CONFIG_CC_IS_GCC=y
@@ -103,6 +103,7 @@ CONFIG_PRINTK_SAFE_LOG_BUF_SHIFT=13
 
 CONFIG_CC_HAS_INT128=y
 CONFIG_CC_IMPLICIT_FALLTHROUGH="-Wimplicit-fallthrough=5"
+CONFIG_GCC11_NO_ARRAY_BOUNDS=y
 CONFIG_GCC12_NO_ARRAY_BOUNDS=y
 CONFIG_CC_NO_ARRAY_BOUNDS=y
 CONFIG_CGROUPS=y
