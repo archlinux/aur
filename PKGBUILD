@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-tip-git
-pkgver=6.2.r1153952.259088715ebd
+pkgver=6.2.r1155011.52aad5ad8706
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -11,8 +11,8 @@ url=https://cgit.freedesktop.org/drm-tip
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
-  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  bc libelf pahole cpio perl tar xz gettext
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
+            '1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0')
 
 pkgver() {
   cd $_srcname
