@@ -1,6 +1,6 @@
 pkgbase = citra-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r9329.c7e259366
+	pkgver = r9388.ad2cbe2b2
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = citra-git
 	source = cpp-jwt::git+https://github.com/arun11299/cpp-jwt
 	source = cubeb::git+https://github.com/mozilla/cubeb
 	source = discord-rpc::git+https://github.com/discord/discord-rpc
-	source = dynarmic::git+https://github.com/citra-emu/dynarmic
+	source = dynarmic::git+https://github.com/merryhime/dynarmic
 	source = enet::git+https://github.com/lsalzman/enet
 	source = fmt::git+https://github.com/fmtlib/fmt
 	source = libressl::git+https://github.com/citra-emu/ext-libressl-portable

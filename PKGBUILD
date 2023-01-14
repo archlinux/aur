@@ -6,7 +6,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9329.c7e259366
+pkgver=r9388.ad2cbe2b2
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         "cpp-jwt::git+https://github.com/arun11299/cpp-jwt"
         "cubeb::git+https://github.com/mozilla/cubeb"
         "discord-rpc::git+https://github.com/discord/discord-rpc"
-        "dynarmic::git+https://github.com/citra-emu/dynarmic"
+        "dynarmic::git+https://github.com/merryhime/dynarmic"
         "enet::git+https://github.com/lsalzman/enet"
         "fmt::git+https://github.com/fmtlib/fmt"
         "libressl::git+https://github.com/citra-emu/ext-libressl-portable"
@@ -125,7 +125,4 @@ package_citra-qt-git() {
 	cd "$srcdir/$_pkgbase/build"
 	make DESTDIR="$pkgdir/" install
 	rm "$pkgdir/usr/bin/citra"
-
-        # Remove leftover files from tsl.
-        rm -r "$pkgdir/usr/include/tsl" "$pkgdir/usr/share/cmake/tsl-robin-map"
 }
