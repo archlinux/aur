@@ -1,14 +1,13 @@
 pkgbase = pe-parse
 	pkgdesc = Principled, lightweight C/C++ PE parser
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trailofbits/pe-parse
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	options = staticlibs
 	source = pe-parse-2.1.1-src.tar.gz::https://github.com/trailofbits/pe-parse/archive/refs/tags/v2.1.1.tar.gz
 	sha256sums = 74c4012274e6e15128a8cf4453f63bb11155bcc14ad56ca7594a259ae8ae0202
 
