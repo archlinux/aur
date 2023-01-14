@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DiffBind
-_pkgver=3.8.3
+_pkgver=3.8.4
 pkgname=r-${_pkgname,,}
-pkgver=3.8.3
+pkgver=3.8.4
 pkgrel=1
 pkgdesc='Differential Binding Analysis of ChIP-Seq Peak Data'
 arch=('x86_64')
@@ -51,7 +51,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a876eefa2391e34b547eefd2e7d56350ab8601e170a58fc80cf464369f22f0d')
+sha256sums=('a72ba57aba0e162f277c51c1268945e46c8f6d4fe8e4437549867132710a34be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
