@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-mesa-git
 	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
-	pkgver = 22.2.0_devel.153633.27c4d8d5fa6
+	pkgver = 23.1.0_devel.165235.7e52bd7b182
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = any
 	license = custom
 	makedepends = mingw-w64-meson
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-directx-headers
 	makedepends = python-mako
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
