@@ -3,7 +3,7 @@
 
 pkgname=powdertoy-bin
 pkgver=97.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air
     pressure, velocity & heat!"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("https://powdertoy.co.uk/Download/powder-lin64.zip"
         # "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/e5c88f154a7613bcced916b17baeccc7ce016f4f/resources/generated_icons/icon_exe_16.png"
         # "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/e5c88f154a7613bcced916b17baeccc7ce016f4f/resources/generated_icons/icon_exe_32.png"
         # "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/e5c88f154a7613bcced916b17baeccc7ce016f4f/resources/generated_icons/icon_exe_48.png"
-sha1sums=('c9bb6b6b30530bcb5816fa9ffb45a0e9353ed7b0'
+sha1sums=('8047f0e76b2ae307239696b1df1459c3a5f12319'
           'SKIP'
           'SKIP'
           'SKIP'

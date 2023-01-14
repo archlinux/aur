@@ -1,7 +1,7 @@
 pkgbase = powdertoy-bin
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!
 	pkgver = 97.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://powdertoy.co.uk/
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = powdertoy-bin
 	source = https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_32.png
 	source = https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_48.png
 	source = powdertoy-tpt.desktop
-	sha1sums = c9bb6b6b30530bcb5816fa9ffb45a0e9353ed7b0
+	sha1sums = 8047f0e76b2ae307239696b1df1459c3a5f12319
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
