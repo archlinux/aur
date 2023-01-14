@@ -1,7 +1,7 @@
 # Maintainer: Ziqi Yang <mr.ziqiyang@gmail.com>
 pkgname='ttf-lxgw-neo-xihei-screen-full'
 pkgver=1.003
-pkgrel=1
+pkgrel=2
 pkgdesc="霞鹜新晰黑屏幕阅读版Droid Sans Fallback打底补全版，更适合 PC 及 Android 手机屏幕显示。"
 arch=('any')
 url="https://github.com/lxgw/LxgwNeoXiHei-Screen"
