@@ -13,7 +13,7 @@ pkgdesc="An open source toolkit for building datasets and computer vision models
 arch=(x86_64)
 url=https://github.com/$_repo
 depends=(
-  # NOTE: Some "common" dependencies are commented out since the AUR packages don't exist yet.
+  # NOTE: Some "common" dependencies are marked "missing" since the AUR packages don't exist yet.
   ffmpeg
   python-aiofiles
   python-argcomplete
@@ -23,13 +23,13 @@ depends=(
   python-eventlet
   python-flask
   python-httpx
-  # python-hypercorn
+  python-hypercorn  # missing
   python-jinja
-  # python-kaleido
+  python-kaleido  # missing
   python-matplotlib
   python-mongoengine
   python-motor
-  # python-ndjson
+  python-ndjson  # missing
   python-packaging
   python-pandas
   python-plotly
@@ -42,13 +42,13 @@ depends=(
   python-scikit-learn
   python-scikit-image
   python-setuptools
-  # python-sseclient-py
+  python-sseclient-py  # missing
   python-sse-starlette
   python-starlette
-  # python-strawberry-graphql
+  python-strawberry-graphql  # missing
   python-tabulate
-  # python-universal-analytics-python3
-  # python-voxel51-eta
+  python-universal-analytics-python3  # missing
+  python-voxel51-eta  # missing
   python-xmltodict
 )
 makedepends=(
