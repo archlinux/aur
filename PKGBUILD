@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtl
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="The x template library"
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   cd ${pkgname}-${pkgver}
   make -C build DESTDIR="${pkgdir}" install
 }
-sha512sums=('8da3f95048cb701222799e23d1934139d9cbc70edd4547315a27e3f1ec853987290da3a4295411e51785d30237d9dbbe9afc0deed24a8a77da78167940a0e641')
+sha256sums=('3286fef5fee5d58f82f7b91375cd449c819848584bae9367893501114d923cbe')
