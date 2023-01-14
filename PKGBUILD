@@ -43,7 +43,7 @@ prepare() {
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/zlib.active false
-  git submodule--helper update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
