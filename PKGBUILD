@@ -10,7 +10,7 @@ source=("$url/releases/download/v$pkgver/LXGWNeoXiHeiScreenFull.ttf"
         *.md)
 provides=('ttf-lxgw-neo-xihei-screen')
 conflicts=('ttf-lxgw-neo-xihei-screen')
-sha256sums=('a934e1e6136706f5b49672aa584044ceeffd91f633fc51f29ffd91de9c411326'
+sha256sums=('65e707c83395b83fdd352efa37bb847ab7c14a06194cbd93cd773b9ea39a2199'
             'bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1'
             '1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf')
 
