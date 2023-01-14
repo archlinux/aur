@@ -2,7 +2,7 @@
 
 pkgname=octoprint-venv
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Web interface for 3D printers (venv installation type)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://octoprint.org/"
@@ -27,10 +27,7 @@ package() {
 
     python3 -m venv "${pkgdir}/opt/$pkgname"
 
-    "${pkgdir}/opt/$pkgname/bin/pip3" install wheel
-    "${pkgdir}/opt/$pkgname/bin/pip3" install netifaces
-
-    "${pkgdir}/opt/$pkgname/bin/python3" setup.py install --optimize=1
+    "${pkgdir}/opt/$pkgname/bin/pip3" install . --compile
     sed -i "s|${pkgdir}/opt/$pkgname|/opt/$pkgname|g" "${pkgdir}/opt/$pkgname/bin/"* # relocate without breaking plugin system
 
     install -Dm644 "${srcdir}/octoprint.service" "${pkgdir}/usr/lib/systemd/system/octoprint.service"
