@@ -5,6 +5,7 @@ pkgbase = a2ln
 	url = https://github.com/patri9ck/a2ln-server
 	arch = any
 	license = GPL3
+	makedepends = python
 	makedepends = python-pip
 	depends = python
 	depends = python-pyzmq
