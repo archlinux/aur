@@ -2,12 +2,12 @@
 
 pkgname=libvdpau-va-gl-i965
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="VDPAU driver with OpenGL/VAAPI backend for i965 chipset"
 arch=('any')
 license=('none')
 url="https://bbs.archlinux.org/viewtopic.php?id=186501"
-depends=('libvdpau-va-gl')
+depends=('libvdpau-va-gl' 'libva-intel-driver' 'libva-utils' 'intel-gpu-tools' 'vdpauinfo')
 
 package() {
   install -d $pkgdir/usr/lib
