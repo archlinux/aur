@@ -1,6 +1,8 @@
 # Maintainer: NotARoomba <kg5inb1@hotmail.com>
 pkgname=wellness-wizard-git
-pkgver=1.0.1
+_exename=wellnesswizard
+_fname=WellnessWizard
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='An AI powered posture checker'
 arch=('x86_64')
@@ -35,7 +37,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share"
     install -dm755 "${pkgdir}/usr/share/applications"
     cp -fr "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/usr/share/${pkgname}/"
-    ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    echo -e "[Desktop Entry]\nName=${pkgname}\nExec=/usr/bin/${pkgname}\nIcon=/usr/share/${pkgname}/icon.png\nType=Application\nCategories=Utilities" > ${pkgdir}/usr/share/${pkgname}/${pkgname}.desktop
-    ln -s "/usr/share/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    ln -s "/usr/share/${pkgname}/${_exename}" "${pkgdir}/usr/bin/${_exename}"
+    echo -e "[Desktop Entry]\nName=${_fname}\nExec=/usr/bin/${_exename}\nIcon=/usr/share/${pkgname}/icon.png\nType=Application\nCategories=Utilities" > ${pkgdir}/usr/share/${pkgname}/${_exename}.desktop
+    ln -s "/usr/share/${pkgname}/${_exename}.desktop" "${pkgdir}/usr/share/applications/${_exename}.desktop"
 }

@@ -1,6 +1,6 @@
 pkgbase = wellness-wizard-git
 	pkgdesc = An AI powered posture checker
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/halftonenano/Hackathon_gitinit
 	arch = x86_64
