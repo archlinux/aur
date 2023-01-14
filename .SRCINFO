@@ -1,0 +1,14 @@
+pkgbase = kio-admin
+	pkgdesc = Manage files as administrator using the admin:// KIO protocol.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KDE/kio-admin
+	arch = x86_64
+	license = BSD
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = kio
+	source = https://github.com/KDE/kio-admin/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 4f202211543a260f0d8db16c37d60b29e9c02f84d98f6118b64ce4e04a44ea16
+
+pkgname = kio-admin
