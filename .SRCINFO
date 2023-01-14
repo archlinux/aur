@@ -1,0 +1,17 @@
+pkgbase = winchecksec
+	pkgdesc = Checksec, but for Windows: static detection of security mitigations in executables
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://trailofbits.github.io/winchecksec/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = cmake
+	makedepends = uthenticode
+	depends = gcc-libs
+	depends = openssl
+	depends = pe-parse
+	source = winchecksec-3.1.0-src.tar.gz::https://github.com/trailofbits/winchecksec/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = d110f9d2c762ad5376991d3eb93a696f794787629dc41f8232ec00a087864d22
+
+pkgname = winchecksec
