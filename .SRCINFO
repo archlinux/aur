@@ -1,7 +1,7 @@
 pkgbase = openrgb-bin
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	install = openrgb-bin.install
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = openrgb-bin
 	conflicts = openrgb
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://openrgb.org/releases/release_0.8/openrgb_0.8_i386_buster_fb88964.deb
-	sha512sums_i686 = 63489c1a758a73c96b7ee2cb7e1b17cbc450642921146a2176bae35ce6e598f6c0f3e86d01f2db6d5321bd2e1b6310796537c4037291fa5d99daa7a78083f4c0
-	source_x86_64 = https://openrgb.org/releases/release_0.8/openrgb_0.8_amd64_buster_fb88964.deb
-	sha512sums_x86_64 = 475c515d47ba2d2e943395add0437f1540bf8c456ed6df249053ae37177013f7842921f2490c232769da1533ce53db1c4a3e0e0d8422d0255caa78de51b9bbf4
+	source_i686 = https://openrgb.org/releases/release_0.8/openrgb_0.8_i386_bookworm_fb88964.deb
+	sha512sums_i686 = 3f64690657584d67df291dddbfa6f5b255075287797ee59d058f8b55a4e10b36c614640f0b68c1a0c80e094ac772090bb0336f2eb8479d07722054ddda24881d
+	source_x86_64 = https://openrgb.org/releases/release_0.8/openrgb_0.8_amd64_bookworm_fb88964.deb
+	sha512sums_x86_64 = d5a1884152cdc029adf6e8fffec5c7fe02df358f44b48177cbbd26e7d193fad4b82b82365882517878256cbe076f452988598799e09d14fc214b90dd68be2611
 
 pkgname = openrgb-bin
