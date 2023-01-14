@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: yustin <#archlimux-proaudio@libera.chat>
 
-pkgname=radium
+pkgname=radium7
 pkgver=7.1.68
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
