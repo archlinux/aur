@@ -2,7 +2,7 @@
 
 pkgname=msys2-pacman-mirrors
 pkgver=20221016
-pkgrel=1
+pkgrel=2
 pkgdesc="MSYS2 mirror list for use by pacman"
 arch=('any')
 url="https://www.msys2.org/dev/mirrors/"

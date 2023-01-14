@@ -1,7 +1,7 @@
 pkgbase = msys2-pacman-mirrors
 	pkgdesc = MSYS2 mirror list for use by pacman
 	pkgver = 20221016
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.msys2.org/dev/mirrors/
 	arch = any
 	license = GPL
