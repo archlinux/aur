@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RJSONIO
-_pkgver=1.3-1.6
+_pkgver=1.3-1.7
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1.6
-pkgrel=4
+pkgver=1.3.1.7
+pkgrel=1
 pkgdesc='Serialize R Objects to JSON, JavaScript Object Notation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('82d1c9ea7758b2a64ad683f9c46223dcba9aa8146b43c1115bf9aa76a657a09f')
+sha256sums=('6a3220f5179bd0b29ac7ef3b2779de039b833fda5fd8e2b76c24f0a36250a61a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
