@@ -1,24 +1,26 @@
-# Maintainer: Nici <NicolasVontobel at protonmail dot com>
+# Maintainer : prsh11 (prashantbaid80@gmail.com) 
 pkgname='manga-cli-git'
 _pkgname='manga-cli'
-pkgver=r9.a1b7cff
+pkgver=r49.7bdab0c
 pkgrel=1
-epoch=1
-pkgdesc="Bash script for reading mangas via the terminal by scraping manganato"
+pkgdesc="Manga Cli - script to read manga"
 arch=('any')
-url="https://github.com/7USTIN/manga-cli"
-license=('GPL3')
-depends=('coreutils' 'curl' 'sed' 'awk' 'diffutils' 'patch' 'img2pdf' 'zathura' 'zathura-pdf-mupdf')
-makedepends=('git') 
-source=('git+https://github.com/7USTIN/manga-cli.git')
+url="https://github.com/prsh11/manga-cli"
+license=('MIT')
+depends=('curl' 'zathura' 'zathura-cb' 'pup')
+optdepends=('zathura-pdf-poppler: view manga file as pdf' 'imagemagick: converting images to pdf') 
+makedepends=('git')
+provides=('manga-cli')
+source=("git+$url")
 md5sums=('SKIP')
-
-pkgver() {
+pkgver()
+{
 	cd "$srcdir/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-	cd "$srcdir/$_pkgname"
+package()
+{
+  cd "$srcdir/$_pkgname"                                                                       
 	install -Dm755 ./manga-cli "$pkgdir/usr/bin/manga-cli"
 }
