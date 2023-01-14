@@ -16,13 +16,13 @@ sha512sums=(386cefcb07afb813bff94a17730c13266c81a5470c719f6846132249419c99183478
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
-	# WORKAROUND: The configure/make scripts check if static version (.a) of the libbsctools libraries
-	#             are installed, and fail to detect libbsctools if they aren't.
-	#             Since even if we're going to link against the dynamic version (.so) as is typical in Arch,
+	# WORKAROUND: The configure/make scripts check if a static version (.a) of the libbsctools libraries
+	#             are installed, and fails to detect libbsctools if they aren't.
+	#             Since we're going to link against the dynamic version (.so) as is typical in Arch,
 	#             hack it up to check for the dynamic version consistently instead
 	sed -i 's/\.a/.so/g' config/libbsctools.m4
 
-	# WORKAROUND: Any this dependency is missing in the automake scripts,
+	# WORKAROUND: And this dependency is missing in the automake scripts,
 	# so the make process breaks when running the autoreconf, so add it again
 	echo 'kriger_test_DEPENDENCIES = libkriger.la' >> 'src/interpolate/service-kriger/Makefile.am'
 
