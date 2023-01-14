@@ -1,13 +1,14 @@
 # Maintainer:  Dimitris Kiziridis <dkiziridis at outlook dot com>
 
 pkgname=blackbox-terminal
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A beautiful GTK 4 terminal'
 arch=('i686' 'x86_64')
 url='https://gitlab.gnome.org/raggesilver/blackbox'
 license=('GPL3')
 depends=('libadwaita'
+         'libgee'
          'libmarble-git'
          'vte4')
 makedepends=('meson'
@@ -16,7 +17,7 @@ checkdepends=('appstream-glib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/blackbox-v${pkgver}.tar.gz"
         "launch_fix.diff"
         "rename_icons.diff")
-sha256sums=('8fbd209b81b2abb192e29e61239dafc4da072c28e7503c9788f9d18f1e55aeba'
+sha256sums=('193946a74b4bfd25b2142de52f92a92b446778cc8cea7e5538cc091d466e1a71'
             '6d675227f2e2217e823a12638c9a08eb2d35f25416dd47656135132eddef956c'
             'b06d407041adfc2ad0f5a382e6503a5115f99a3b284e484cdb07592733ad1cb6')
 
