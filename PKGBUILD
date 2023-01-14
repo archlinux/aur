@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=storehouse
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.6
+pkgrel=1
 epoch=
 pkgdesc="Storehouse for release tarballs"
 url="https://codeberg.org/dyfet/$pkgname"
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz $pkgname.service)
 makedepends=(make go)
-sha256sums=('01875e31863e27da9898bdaf84e64fcd1904102d2fed2938e5892a9f733abd42' '5dadefb0087e72740da262520a9c6bc7f202911c1ce30125d4a80f958d13336c') 
+sha256sums=('508e33ae55f473c2c8eae10cff944c502c8324fc673c394d31b2a79493d81d8f' '5dadefb0087e72740da262520a9c6bc7f202911c1ce30125d4a80f958d13336c') 
 
 build() {
     cd "$pkgname"
