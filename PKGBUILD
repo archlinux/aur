@@ -1,9 +1,10 @@
 # Maintainer: Matthew Charlston <firstname _at_ mcharlsto dot uk>
 
 pkgname="horizontallyspinningrat"
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 depends=("sox" "opusfile" "bash" "sharutils")
+optdepends=("lolcat: rainbow mode")
 pkgdesc="The horizontally spinning rat - now on your desktop!"
 url="https://github.com/mcharlsto/rat"
 arch=("x86_64")
