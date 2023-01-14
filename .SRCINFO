@@ -1,0 +1,13 @@
+pkgbase = tnoodle-wca
+	pkgdesc = Generate WCA scrambles for the Rubik's Cube and other twisty puzzles! // Unofficial Package
+	pkgver = 1.1.2
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0
+	depends = java-runtime
+	source = https://www.worldcubeassociation.org/regulations/scrambles/tnoodle/TNoodle-WCA-1.1.2.jar
+	source = tnoodle.sh
+	sha256sums = 1d6177a68a8eb1276f495d9f9ae31ad46876970b888b602d2ffdf485419acccc
+	sha256sums = 9c7ab29e77481c576c7f0308580ec0287d4ebad46c84d3b103a4fa8eba79680c
+
+pkgname = tnoodle-wca
