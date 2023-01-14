@@ -11,7 +11,10 @@ pkgbase = dune-grid-glue
 	depends = dune-grid>=2.9.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://gitlab.dune-project.org/extensions/dune-grid-glue/-/archive/v2.9.0/dune-grid-glue-v2.9.0.tar.gz
-	sha512sums = 7655f993e32af55818437cdf5c75fdbc089bd10fc168eb4fb95fda7b01ace5b3b4d5f85cd10ead3da300ebba7fea97a82178cb9773e935d6663ebaaf4ff58ab9
+	source = https://dune-project.org/download/dune-grid-glue/dune-grid-glue-2.9.0.tar.gz
+	source = https://dune-project.org/download/dune-grid-glue/dune-grid-glue-2.9.0.tar.gz.asc
+	validpgpkeys = 33EE4AA14D584BFA72AFD02D87682820AADECB71
+	sha512sums = 6bef42ec159bfa8113d1ce008a6b153c484ebe0372da078c3eea29cb53a076450ddd0a40ff0786c47c991380ea4b80b9d9efc3af46d183841bc6e1ae19c397fc
+	sha512sums = SKIP
 
 pkgname = dune-grid-glue
