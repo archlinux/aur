@@ -1,45 +1,35 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: a821
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-poppler-git
 pkgrel=1
-pkgver=0.3.0.1.gbc6e1ca
-pkgdesc="PDF support for zathura by using the poppler rendering library"
-arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/zathura-pdf-poppler"
+pkgver=0.3.1.r1.g0e0f7e4
+pkgdesc="PDF support for zathura (poppler backend)"
+arch=('x86_64')
+url="https://pwmt.org/projects/zathura-pdf-poppler"
 license=('custom')
 depends=('zathura-git' 'poppler-glib')
-makedepends=('git' 'python-sphinx' 'intltool' 'meson')
-checkdepends=('check')
-conflicts=('zathura-pdf-mupdf' 'zathura-pdf-mupdf-git' 'zathura-pdf-poppler')
-provides=('zathura-pdf-poppler-git' 'zathura-pdf-poppler')
-source=('zathura-pdf-poppler::git+https://git.pwmt.org/pwmt/zathura-pdf-poppler.git#branch=develop')
+makedepends=('git' 'meson' 'ninja')
+conflicts=('zathura-pdf-poppler')
+provides=('zathura-pdf-poppler')
+source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-pdf-poppler.git#branch=develop")
 md5sums=('SKIP')
-_gitname=zathura-pdf-poppler
 
-prepare() {
-  mkdir -p build
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
-  ninja
-}
-
-check() {
-  cd build
-  ninja test
+  cd "$pkgname"
+  arch-meson build
+  ninja -C build
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir/" ninja install
-}
-
-pkgver() {
-  cd "$_gitname"
-  local ver="$(git describe --long)"
-  printf "%s" "${ver//-/.}"
+  cd "$pkgname"
+  DESTDIR="$pkgdir/" ninja -C build install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
