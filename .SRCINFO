@@ -1,45 +1,30 @@
 pkgbase = mangohud-git
-	pkgver = 0.6.6.1.r181.g284ae0d
+	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more.
+	pkgver = 0.6.8.r48.ga67ba60
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = dbus
-	makedepends = meson
-	makedepends = python-mako
+	makedepends = gcc
+	makedepends = git
 	makedepends = glslang
-	makedepends = libglvnd
-	makedepends = lib32-libglvnd
-	makedepends = vulkan-headers
-	makedepends = vulkan-icd-loader
-	makedepends = lib32-vulkan-icd-loader
+	makedepends = libx11
 	makedepends = libxnvctrl
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = python-mako
+	makedepends = vulkan-headers
+	depends = glew
+	depends = glfw-x11
+	depends = hicolor-icon-theme
+	provides = mangohud
+	provides = mangohud-common
+	provides = mangoapp
+	conflicts = mangohud
+	conflicts = mangohud-common
+	conflicts = mangoapp
 	source = mangohud::git+https://github.com/flightlessmango/MangoHud
 	sha512sums = SKIP
 
 pkgname = mangohud-git
-	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
-	depends = gcc-libs
-	depends = dbus
-	depends = mangohud-common-git
-	optdepends = bash: mangohud helper script
-	optdepends = libxnvctrl: support for older NVIDIA GPUs
-	provides = mangohud=0.6.6.1.r181.g284ae0d
-	conflicts = mangohud
-	replaces = vulkan-mesa-layer-mango
-
-pkgname = lib32-mangohud-git
-	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-dbus
-	depends = mangohud-common-git
-	optdepends = lib32-libxnvctrl: support for older NVIDIA GPUs
-	provides = lib32-mangohud=0.6.6.1.r181.g284ae0d
-	conflicts = lib32-mangohud
-	replaces = lib32-vulkan-mesa-layer-mango
-
-pkgname = mangohud-common-git
-	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
-	provides = mangohud-common=0.6.6.1.r181.g284ae0d
-	conflicts = mangohud-common
