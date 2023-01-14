@@ -5,3 +5,4 @@ Type=Application
 Terminal=false
 MimeType=x-scheme-handler/jsbridge;
 Comment=dummy JSBridge handler, provided by linuxqq-firejail
+NoDisplay=true
