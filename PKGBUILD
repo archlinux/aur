@@ -1,4 +1,4 @@
-# Maintainer: user <user at the google email domain which is .com>
+# Maintainer: MatMoul <matmoul at the google email domain which is .com>
 
 _githubuser=matmoul
 _githubrepo=plasma-containmentactions-customdesktopmenu
