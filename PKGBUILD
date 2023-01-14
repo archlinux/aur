@@ -1,9 +1,9 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-next-git
-pkgver=6.2.r1153517.f422fa7cd858
-pkgrel=2
+pkgver=6.2.r1154080.0b45ac1170ea
+pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
@@ -11,8 +11,8 @@ arch=(x86_64)
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
-  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  bc libelf pahole cpio perl tar xz gettext
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
+            '1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0')
 
 pkgver() {
   cd $_srcname
