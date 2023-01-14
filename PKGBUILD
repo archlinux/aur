@@ -1,45 +1,42 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: a821
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf-git
 pkgrel=1
-pkgver=0.3.5.1.g878e31c
-pkgdesc="PDF support for zathura by using the mupdf library"
+pkgver=0.4.0.r1.g2c5c24b
+pkgdesc="PDF support for zathura (mupdf backend)"
 arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/zathura-pdf-mupdf"
+url="https://pwmt.org/projects/zathura-pdf-mupdf"
 license=('custom')
-depends=('zathura-git' 'libmupdf>=1.9')
-makedepends=('git' 'python-sphinx' 'intltool' 'meson')
-checkdepends=('check')
-conflicts=('zathura-pdf-mupdf')
+depends=('zathura-git' 'gumbo-parser' 'jbig2dec' 'openjpeg2')
+makedepends=('git' 'meson' 'ninja' 'libmupdf')
+conflicts=('zathura-pdf-mupdf' 'zathura-pdf-poppler')
 provides=('zathura-pdf-mupdf')
-source=('zathura-pdf-mupdf::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop')
-md5sums=('SKIP')
-_gitname=zathura-pdf-mupdf
+source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop"
+        "0001-Remove-mupdf-linking-detection.patch")
+sha256sums=('SKIP'
+            'f09e9ea91193fc225b82e4779ad8b0a5440f5938b69d19286d9c467aefa7ace3')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/-/.r/;s/-/./g'
+}
 
 prepare() {
-  mkdir -p build
+  cd "$pkgname"
+  patch -p1 < ../0001-Remove-mupdf-linking-detection.patch
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
-  ninja
-}
-
-check() {
-  cd build
-  ninja test
+  cd "$pkgname"
+  arch-meson build
+  ninja -C build
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir/" ninja install
-}
-
-pkgver() {
-  cd "$_gitname"
-  local ver="$(git describe --long)"
-  printf "%s" "${ver//-/.}"
+  cd "$pkgname"
+  DESTDIR="$pkgdir/" ninja -C build install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

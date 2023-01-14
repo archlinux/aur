@@ -1,22 +1,25 @@
 pkgbase = zathura-pdf-mupdf-git
-	pkgdesc = PDF support for zathura by using the mupdf library
-	pkgver = 0.3.5.1.g878e31c
+	pkgdesc = PDF support for zathura (mupdf backend)
+	pkgver = 0.4.0.r1.g2c5c24b
 	pkgrel = 1
-	url = http://pwmt.org/projects/zathura-pdf-mupdf
+	url = https://pwmt.org/projects/zathura-pdf-mupdf
 	arch = i686
 	arch = x86_64
 	license = custom
-	checkdepends = check
 	makedepends = git
-	makedepends = python-sphinx
-	makedepends = intltool
 	makedepends = meson
+	makedepends = ninja
+	makedepends = libmupdf
 	depends = zathura-git
-	depends = libmupdf>=1.9
+	depends = gumbo-parser
+	depends = jbig2dec
+	depends = openjpeg2
 	provides = zathura-pdf-mupdf
 	conflicts = zathura-pdf-mupdf
-	source = zathura-pdf-mupdf::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop
-	md5sums = SKIP
+	conflicts = zathura-pdf-poppler
+	source = zathura-pdf-mupdf-git::git+https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git#branch=develop
+	source = 0001-Remove-mupdf-linking-detection.patch
+	sha256sums = SKIP
+	sha256sums = f09e9ea91193fc225b82e4779ad8b0a5440f5938b69d19286d9c467aefa7ace3
 
 pkgname = zathura-pdf-mupdf-git
-
