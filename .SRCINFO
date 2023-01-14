@@ -1,5 +1,5 @@
 pkgbase = linux-rust
-	pkgdesc = Linux
+	pkgdesc = Rust Linux
 	pkgver = 6.1.1.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux/commits/v6.1.1-arch1
@@ -21,6 +21,7 @@ pkgbase = linux-rust
 	makedepends = git
 	makedepends = rust
 	makedepends = llvm
+	makedepends = lld
 	options = !strip
 	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1.1-arch1
 	source = config
@@ -32,7 +33,7 @@ pkgbase = linux-rust
 	sha256sums = d17b03decf4ba3fbb672d46d6dfdff35464b49c31e8abb833da55b738546761d
 
 pkgname = linux-rust
-	pkgdesc = The Linux kernel and modules
+	pkgdesc = The Rust Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -45,8 +46,8 @@ pkgname = linux-rust
 	replaces = wireguard-arch
 
 pkgname = linux-rust-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+	pkgdesc = Headers and scripts for building modules for the Rust Linux kernel
 	depends = pahole
 
 pkgname = linux-rust-docs
-	pkgdesc = Documentation for the Linux kernel
+	pkgdesc = Documentation for the Rust Linux kernel

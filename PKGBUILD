@@ -3,7 +3,7 @@
 pkgbase=linux-rust
 pkgver=6.1.1.arch1
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
