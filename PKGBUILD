@@ -2,7 +2,7 @@
 
 pkgname='waydroid-settings'
 pkgver=22.1217
-pkgrel=9
+pkgrel=10
 makedepends=('blueprint-compiler' 'meson')
 depends=('vte4' 'waydroid' 'webkit2gtk-5.0' 'libadwaita' 'polkit' 'python-gobject')
 arch=('any')
@@ -14,6 +14,7 @@ build(){
 	arch-meson $srcdir/Waydroid-Settings-gtk4-port build
 }
 package(){
+	mkdir -p ${pkgdir}/usr
 	cd ${pkgdir}/usr
-	DESTDIR="$pkgdir" ninja install -C $srcdir/Waydroid-Settings-gtk4-port/build
+	DESTDIR="$pkgdir" ninja install -C $srcdir/build
 }
