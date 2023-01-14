@@ -1,0 +1,16 @@
+pkgbase = kio-admin-git
+	pkgdesc = Manage files as administrator using the admin:// KIO protocol.
+	pkgver = 1.0_r95.ge884510
+	pkgrel = 1
+	url = https://invent.kde.org/system/kio-admin
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = kio-git
+	provides = kio-admin
+	conflicts = kio-admin
+	source = git+https://github.com/KDE/kio-admin.git
+	sha256sums = SKIP
+
+pkgname = kio-admin-git
