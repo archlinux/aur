@@ -3,7 +3,7 @@
 pkgname=sdrangel-bin
 pkgver=7.8.6
 _subver=1939
-pkgrel=2
+pkgrel=3
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 url="https://github.com/f4exb/sdrangel"
@@ -20,7 +20,7 @@ optdepends=('mbelib: Required for Digital Speech Decoder (DSD) demodulator'
             'hackrf: HackRF support'
             'libuhd: USRP support'
             'airspy: Airspy support'
-	    'soapyplutosdr: Soapy SDR support'
+	    'soapyplutosdr: PlutoSDR support'
             'rtl-sdr: Realtek RTL2832U support'
 	    'libsdrplay: SDRplay support')
 provides=('sdrangel')
