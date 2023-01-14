@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='buildg'
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Interactive debugger for Dockerfile, with support for IDEs (VS Code, Emacs, Neovim, etc.)'
 url='https://github.com/ktock/buildg'
@@ -10,9 +10,8 @@ optdepends=('rootlesskit: rootless execution' 'slirp4netns: rootless execution')
 license=('Apache')
 arch=('x86_64')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('c57faadd382ae19a48fb6f3e46aa440b6fdb71bc0eaac49080216e9a23371302')
+sha256sums=('87d047c4742b904e9f0f48427aec5cd157dc96ea97cd89e3ff5b1db171c6eb5e')
 
 package() {
   install -Dm755 buildg "$pkgdir/usr/bin/buildg"
-  install -Dm755 buildg.sh "$pkgdir/usr/bin/buildg.sh"
 }
