@@ -1,0 +1,17 @@
+pkgbase = gcolor2
+	pkgdesc = A simple GTK+2 color selector
+	pkgver = 0.4
+	pkgrel = 9
+	url = http://gcolor2.sf.net/
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	depends = gtk2
+	source = https://downloads.sourceforge.net/sourceforge/gcolor2/gcolor2-0.4.tar.gz
+	source = gcolor2-0.4-amd64.patch
+	source = gcolor2.desktop
+	md5sums = 02de9d925ad5921522685f402caec3ec
+	md5sums = 5791378f6f86dd25a302ad8586292dd6
+	md5sums = 1bbc11865df2a0529757cdbdf806b079
+
+pkgname = gcolor2
