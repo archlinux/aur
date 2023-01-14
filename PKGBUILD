@@ -2,7 +2,7 @@
 
 _pkgname=gyroflow
 pkgname=${_pkgname}-bin
-pkgver=1.3.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 arch=("x86_64")
@@ -18,9 +18,10 @@ source=("Gyroflow-linux64.tar.gz::https://github.com/gyroflow/gyroflow/releases/
 		"icon.svg::https://raw.githubusercontent.com/gyroflow/gyroflow/v${pkgver}/resources/icon.svg"
         "${_pkgname}.desktop")
 
-sha256sums=("0ec91969514dcf36f9445a6e1a7e35d017d34b8ee701257970db8872ca607749"
-			"93ca6486dc2c2ba3812c9a3ecd50c6787787f779922bf7e3c9b7f07b3145f7ba"
-            "9e97420c0d48fa0959312d6566410f801d82423b4a3332fe9eddb33c04469779")
+sha256sums=('2413a7cec01805585980003c2033507954246dd3cbfd5239c2a2d954eef361fd'
+            '93ca6486dc2c2ba3812c9a3ecd50c6787787f779922bf7e3c9b7f07b3145f7ba'
+            '9e97420c0d48fa0959312d6566410f801d82423b4a3332fe9eddb33c04469779')
+
 package() {
   # move the entire distribution to /usr/share
   mkdir -p "${pkgdir}"/usr/share/
