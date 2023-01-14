@@ -1,0 +1,41 @@
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/check_dependencies.sh radium-6.9.88.new/check_dependencies.sh
+--- radium-6.9.88.old/check_dependencies.sh	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/check_dependencies.sh	2021-07-25 17:42:43.213233704 +0100
+@@ -246,13 +246,6 @@
+     exit 5
+ fi
+ 
+-if [[ ! -f ~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h && ! -f ~/SDKs/"VST3 SDK"/pluginterfaces/vst2.x/aeffect.h && ! -f ~/SDKs/VST_SDK/VST2_SDK/pluginterfaces/vst2.x/aeffect.h ]] ; then
+-    echo 'Steinberg VST headers not found. (Missing "~/SDKs/vstsdk2.4/pluginterfaces/vst2.x/aeffect.h or "~/SDKs/VST3 SDK/pluginterfaces/vst2.x/aeffect.h" or "~/SDKs/VST_SDK/VST2_SDK/pluginterfaces/vst2.x/aeffect.h")'
+-    echo 'You should find these files in the "VST Audio Plug-Ins SDK" from http://www.steinberg.net/en/company/developers.html . Unless Steinberg has changed the directory structure again, it should enough to unzip the file into your ~/SDKs directory.'
+-    exit 5
+-fi
+-
+-
+ if [[ $4 == "test_build" ]] ; then
+     if [ `uname` == "Linux" ] ; then
+         if [ ! -f bin/packages/deletemetorebuild ] ; then
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/Makefile.Qt radium-6.9.88.new/Makefile.Qt
+--- radium-6.9.88.old/Makefile.Qt	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/Makefile.Qt	2021-07-25 17:42:43.219900395 +0100
+@@ -343,7 +343,7 @@
+ 
+ FLAGOPTS = $(DEFINES) -DGUIISQT -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
+ 
+-COMMONOPT = -D__STDC_FORMAT_MACROS=1 -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) $(PYOPTS) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/vstsdk2.4/ -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference -Wwrite-strings -DTHREADED_OPENGL=1
++COMMONOPT = -D__STDC_FORMAT_MACROS=1 -c `cat buildtype.opt` -I$(GCDIR)/include -I$(P) $(PYOPTS) `cat flagopts.opt` $(MIDIINC) $(OS_OPTS) $(VST_OPTS) -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/vstsdk2.4/ -I${RADIUM_VST2SDK_PATH} -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-pragmas -fno-strict-aliasing -Wmissing-field-initializers -Wnull-dereference -Wwrite-strings -DTHREADED_OPENGL=1
+ #-fdelete-null-pointer-checks 
+ # -Werror
+ 
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/pluginhost/Builds/Linux/Makefile radium-6.9.88.new/pluginhost/Builds/Linux/Makefile
+--- radium-6.9.88.old/pluginhost/Builds/Linux/Makefile	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/pluginhost/Builds/Linux/Makefile	2021-07-25 17:45:12.883773257 +0100
+@@ -17,7 +17,7 @@
+ 
+ LV2FLAGS=-I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/lv2  -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/lilv/src -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/lilv -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/sratom -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/sord/src -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/sord -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/serd -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK/lv2 -I$(JUCE_MODULES)juce_audio_processors/format_types/LV2_SDK
+ 
+-COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" $(AVAILABLES) -I /usr/include -I /usr/include/freetype2 -I$(JUCE_MODULES)/.. -I$(JUCE_MODULES) -I$(JUCE_MODULES)juce_audio_processors/format_types/VST3_SDK $(LV2FLAGS) -I $(JUCE_MODULES)JuceLibraryCode -I $(JUCE_MODULES)JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2 -DPLUGINHOST_BUILD_64BIT
++COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" $(AVAILABLES) -I /usr/include -I /usr/include/freetype2 -I$(JUCE_MODULES)/.. -I$(JUCE_MODULES) -I$(JUCE_MODULES)juce_audio_processors/format_types/VST3_SDK $(LV2FLAGS) -I $(JUCE_MODULES)JuceLibraryCode -I $(JUCE_MODULES)JuceLibraryCode/modules -I$(RADIUM_VST2SDK_PATH) -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2 -DPLUGINHOST_BUILD_64BIT
+ 
+ # -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK
+ 

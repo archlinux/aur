@@ -1,0 +1,11 @@
+### should create a symlink to ladspa in /opt/radium
+### to get rid off the errormessage
+
+post_install() {
+	ln -sf /usr/lib/ladspa /opt/radium/ladspa
+}
+
+pre_remove() {
+	rm /opt/radium/ladspa
+}
+
