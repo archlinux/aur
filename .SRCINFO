@@ -1,11 +1,10 @@
 pkgbase = unifetch
 	pkgdesc = An unofficial inheritor of neofetch.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jin-Asanami/unifetch
 	arch = any
 	license = MIT
-	checkdepends = shellcheck
 	depends = bash
 	optdepends = feh: Wallpaper Display
 	optdepends = imagemagick: Image cropping / Thumbnail creation / Take a screenshot
@@ -19,8 +18,8 @@ pkgbase = unifetch
 	optdepends = xorg-xprop: Desktop Environment and Window Manager
 	optdepends = xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)
 	optdepends = xorg-xwininfo: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal
-	conflicts = unifetch
-	source = https://github.com/Jin-Asanami/unifetch/archive/refs/tags/1.2.tar.gz
+	conflicts = unifetch-git
+	source = unifetch-1.2.tar.gz::https://github.com/Jin-Asanami/unifetch/archive/refs/tags/1.2.tar.gz
 	sha512sums = b03ec2b88a81472f9c84bfc030aa84dc3e7ca0572f3094c2fba41cfe9be2de4377899b7a377e8671383d56a705ca0b4a9d0ef924eff4a80c1ca9989f6baa0de4
 
 pkgname = unifetch
