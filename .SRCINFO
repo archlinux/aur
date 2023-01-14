@@ -1,0 +1,14 @@
+pkgbase = gnomish-icons-git
+	pkgdesc = GNOME-style icons for non-GNOME apps
+	pkgver = r8.c0bb894
+	pkgrel = 1
+	url = https://github.com/realmazharhussain/gnomish-icons
+	arch = any
+	license = custom
+	depends = adwaita-icon-theme
+	provides = gnomish-icons
+	conflicts = gnomish-icons
+	source = gnomish-icons-git::git+https://github.com/realmazharhussain/gnomish-icons
+	md5sums = SKIP
+
+pkgname = gnomish-icons-git
