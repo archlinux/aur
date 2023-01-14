@@ -13,6 +13,6 @@ pkgbase = a2ln
 	depends = python-pillow
 	depends = python-qrcode
 	source = a2ln-1.1.6.tar.gz::https://github.com/patri9ck/a2ln-server/archive/1.1.6.tar.gz
-	sha256sums = 9804d129ad861e9bc67d2615bfc42f0a29f05c086f844cbae723848a592b385a
+	sha256sums = c9a7f28c5a47e205dd1b0618e8870c68e5dc64437778cebef14509dc675ecc94
 
 pkgname = a2ln
