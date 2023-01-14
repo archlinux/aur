@@ -3,7 +3,7 @@
 pkgname="flashrom-stable"
 pkgdesc="Flashrom is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI)."
 pkgver=v1.0.rc1
-pkgrel=2
+pkgrel=3
 url="https://review.coreboot.org/plugins/gitiles/flashrom-stable"
 license=('GPL')
 source=(git+https://review.coreboot.org/flashrom-stable.git?signed#tag=v1.0-rc1)
@@ -17,7 +17,7 @@ arch=('riscv64' 'aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	make
+	make CONFIG_JLINK_SPI=yes
 }
 
 package() {

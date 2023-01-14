@@ -1,7 +1,7 @@
 pkgbase = flashrom-stable
 	pkgdesc = Flashrom is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI).
 	pkgver = v1.0.rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://review.coreboot.org/plugins/gitiles/flashrom-stable
 	arch = riscv64
 	arch = aarch64
