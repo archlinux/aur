@@ -4,7 +4,7 @@
 _electron=electron
 pkgname=deezer-enhanced
 pkgver=0.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=(any)
 url=https://github.com/duzda/deezer-enhanced
