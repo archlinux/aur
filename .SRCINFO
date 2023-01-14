@@ -1,6 +1,6 @@
 pkgbase = cutelyst
 	pkgdesc = A Web Framework built on top of Qt
-	pkgver = 3.6.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://cutelyst.org
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = cutelyst
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = grantlee
-	source = https://github.com/cutelyst/cutelyst/archive/v3.6.0.tar.gz
-	sha256sums = b066f21b85ce5afffb06b29f556ec21a6b7369401c508fb2313906d377a1d822
+	source = https://github.com/cutelyst/cutelyst/archive/v3.7.0.tar.gz
+	sha256sums = 3d3589817d813657fbdafc0c299618b1ba6aebec5c954c9c921e173e179bbea2
 
 pkgname = cutelyst
 
