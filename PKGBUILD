@@ -1,8 +1,8 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=6.2rc1.r16.g80faa9076552
+pkgver=6.2rc4.r50.g522170f4ad57
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.2
@@ -12,7 +12,7 @@ url=https://pfkernel.natalenko.name
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'b991f6a0079e9f5cb36aed0fa3df9ae1c8197f409414c74cf9697a97d0c900bf')
+            '91c312035beae406910270cf417912dc4dff363458d979329d638f9440b045d8')
 
 pkgver() {
   cd $_srcname
@@ -72,7 +72,8 @@ _package() {
               'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
               'linux-firmware: firmware images needed for some devices'
               'uksmd: userspace KSM helper daemon'
-              'v4l2loopback-utils: v4l2-loopback device utilities')
+              'v4l2loopback-utils: v4l2-loopback device utilities'
+              'linux-firmware: firmware images needed for some devices')
   provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(linux-pf ksmbd-dkms ntfs3-dkms v4l2loopback-dkms virtualbox-guest-modules-arch wireguard-arch)
 

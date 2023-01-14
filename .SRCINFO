@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 6.2rc1.r16.g80faa9076552
+	pkgver = 6.2rc4.r50.g522170f4ad57
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = linux-pf-git
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -23,7 +24,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.2
 	source = config
 	sha256sums = SKIP
-	sha256sums = b991f6a0079e9f5cb36aed0fa3df9ae1c8197f409414c74cf9697a97d0c900bf
+	sha256sums = 91c312035beae406910270cf417912dc4dff363458d979329d638f9440b045d8
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
@@ -35,6 +36,7 @@ pkgname = linux-pf-git
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = uksmd: userspace KSM helper daemon
 	optdepends = v4l2loopback-utils: v4l2-loopback device utilities
+	optdepends = linux-firmware: firmware images needed for some devices
 	provides = linux-pf
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
