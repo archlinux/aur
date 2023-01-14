@@ -1,5 +1,5 @@
 pkgname=pkcs11-provider
-pkgver=r258.g5bcba34
+pkgver=r282.g083b72d
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
@@ -20,7 +20,7 @@ checkdepends=(
   nss
   softhsm
 )
-_commit=5bcba34a42792309872ab2bbb7de32e5765f6af5
+_commit=083b72d4fe3b10dde1c17316d097e94c6d103898
 source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
 sha256sums=('SKIP')
 
