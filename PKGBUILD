@@ -7,13 +7,13 @@
 
 _pkgname=prismlauncher
 pkgname=${_pkgname}-qt5-git
-pkgver=5.0.r71.g7f441f5b
+pkgver=6.0.r156.g3de681d2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5')
+depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'cmark')
 provides=('prismlauncher' 'prismlauncher-qt5')
 conflicts=('prismlauncher' 'prismlauncher-qt5')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'tomlplusplus' 'ghc-filesystem' 'gamemode')
@@ -36,11 +36,15 @@ pkgver() {
 prepare() {
   cd "PrismLauncher"
   git submodule init
+  git config submodule.libraries/cmark.active false
+  git config submodule.libraries/extra-cmake-modules.active false
+  git config submodule.libraries/filesystem.active false
   git config submodule.libraries/libnbtplusplus.url "${srcdir}/libnbtplusplus"
   git config submodule.libraries/quazip.active false
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
-  git submodule--helper update
+  git config submodule.libraries/zlib.active false
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
