@@ -1,0 +1,16 @@
+pkgbase = wellness-wizard-git
+	pkgdesc = An AI powered posture checker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/halftonenano/Hackathon_gitinit
+	arch = x86_64
+	license = MIT
+	makedepends = electron
+	makedepends = nodejs
+	makedepends = asar
+	makedepends = imagemagick
+	depends = electron
+	depends = nodejs
+	depends = imagemagick
+
+pkgname = wellness-wizard-git
