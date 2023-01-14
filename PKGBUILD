@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR"
 arch=('aarch64' 'x86_64')
 url="https://github.com/DSheirer/sdrtrunk"
-license=('GPLv3')
-depends=('jre-openjdk' 'java-openjfx')
-provides=("sdrtrunk=${pkgver}")
-conflicts=('sdrtrunk')
+license=('GPL3')
+depends=('java-runtime' 'at-spi2-core' 'libnet' 'alsa-lib' 'gtk3')
+provides=("sdrtrunk-bin")
+conflicts=('sdrtrunk' 'sdrtrunk-git' 'sdrtrunk-bin')
 
 source_aarch64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${pkgver}/sdr-trunk-linux-aarch64-v${pkgver}.zip"
                 "cat-radio-icon.png"
