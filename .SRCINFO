@@ -1,4 +1,4 @@
-pkgbase = radium
+pkgbase = radium7
 	pkgdesc = A graphical music editor. A next generation tracker.
 	pkgver = 7.1.68
 	pkgrel = 1
@@ -41,7 +41,7 @@ pkgbase = radium
 	optdepends = ladspa-plugins: package group for plugins normally included in binary releases
 	optdepends = vst-plugins: more plugins
 	options = !strip
-	source = radium-7.1.68.tar.gz::https://github.com/kmatheussen/radium/archive/7.1.68.tar.gz
+	source = radium7-7.1.68.tar.gz::https://github.com/kmatheussen/radium/archive/7.1.68.tar.gz
 	source = add-vstsdk-location-var.patch
 	source = build_libpds.patch
 	source = crashreporter.patch
@@ -50,4 +50,4 @@ pkgbase = radium
 	sha256sums = 2f145e84c5940f4f82544ae68e668d5bd02ee7bce559d3354f60d12eaea1a548
 	sha256sums = 16b0c6dc95e835fed5c7d4f350780561cd996ef723b392c415db83edba07af94
 
-pkgname = radium
+pkgname = radium7
