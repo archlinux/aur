@@ -3,6 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: yustin <#archlimux-proaudio@libera.chat>
 
+pkgbase=radium7
 pkgname=radium7
 pkgver=7.1.68
 pkgrel=1
