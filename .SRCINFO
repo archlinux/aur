@@ -1,6 +1,6 @@
 pkgbase = wlipman-git
-	pkgdesc = Simple http server in Rust
-	pkgver = r6
+	pkgdesc = A simple clipboard manager for wayland.
+	pkgver = r7
 	pkgrel = 1
 	url = https://github.com/OverShifted/wlipman
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = wlipman-git
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
+	depends = rofi
 	provides = wlipman
 	source = git+https://github.com/OverShifted/wlipman.git
 	sha384sums = SKIP

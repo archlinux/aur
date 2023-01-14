@@ -2,13 +2,13 @@
 
 _pkgname=wlipman
 pkgname=$_pkgname-git
-pkgver=r6
+pkgver=r7
 pkgrel=1
 pkgdesc="A simple clipboard manager for wayland."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/OverShifted/wlipman"
 license=('GPL3')
-depends=('gcc-libs')
+depends=('gcc-libs' 'rofi')
 makedepends=('git' 'cargo')
 # conflicts=('wlipman')
 provides=('wlipman')
