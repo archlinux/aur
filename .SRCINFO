@@ -40,6 +40,7 @@ pkgbase = python-fiftyone
 	depends = python-strawberry-graphql
 	depends = python-tabulate
 	depends = python-universal-analytics-python3
+	depends = python-voxel51-eta
 	depends = python-xmltodict
 	source = https://files.pythonhosted.org/packages/source/f/fiftyone/fiftyone-0.18.0.tar.gz
 	sha256sums = SKIP

@@ -48,6 +48,7 @@ depends=(
   # python-strawberry-graphql
   python-tabulate
   # python-universal-analytics-python3
+  # python-voxel51-eta
   python-xmltodict
 )
 makedepends=(
