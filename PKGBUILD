@@ -1,45 +1,35 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: a821
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-djvu-git
 pkgrel=1
-pkgver=0.2.9.2.g12ef085
+pkgver=0.2.9.r3.g56b0fd5
 pkgdesc="DjVu support for zathura"
-arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/zathura/plugins/zathura-djvu"
+arch=('x86_64')
+url="https://pwmt.org/projects/zathura-djvu"
 license=('custom')
 depends=('zathura-git' 'djvulibre')
-makedepends=('git' 'python-sphinx' 'intltool' 'meson')
-checkdepends=('check')
+makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-djvu')
 provides=('zathura-djvu')
-source=('zathura-djvu::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop')
+source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop")
 md5sums=('SKIP')
-_gitname=zathura-djvu
 
-prepare() {
-  mkdir -p build
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
-  ninja
-}
-
-check() {
-  cd build
-  ninja test
+  cd "$pkgname"
+  arch-meson build
+  ninja -C build
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir/" ninja install
-}
-
-pkgver() {
-  cd "$_gitname"
-  local ver="$(git describe --long)"
-  printf "%s" "${ver//-/.}"
+  cd "$pkgname"
+  DESTDIR="$pkgdir/" ninja -C build install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
