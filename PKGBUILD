@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-curly-slab-super
-pkgver=17.0.2
+pkgver=17.0.3
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/super-ttc-iosevka-curly-slab-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('6757d2c7aa23e6160656e3d99e9521c45cd398341c495e1b20b134c52e6d0857'
-            '46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1')
+sha256sums=('444c2c5c39808338bed220bdaa3105e59f63a8115d4551e22f374404ed60a830'
+            '7484961b97b41985d54c21700e53f7142a7007d72401acbd32c0b9c6a5a0b558')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
