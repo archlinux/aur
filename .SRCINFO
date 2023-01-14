@@ -1,29 +1,29 @@
 pkgbase = zathura-git
-	pkgdesc = a document viewer
-	pkgver = 0.4.5.28.g3b4540f
-	pkgrel = 2
-	url = http://pwmt.org/projects/zathura
-	arch = i686
+	pkgdesc = Minimalistic document viewer
+	pkgver = 0.5.2.r24.g81e541e
+	pkgrel = 1
+	url = https://pwmt.org/projects/zathura
 	arch = x86_64
 	license = custom
-	checkdepends = check
 	makedepends = git
 	makedepends = python-sphinx
-	makedepends = intltool
 	makedepends = meson
-	depends = girara-git
-	depends = gtk3>=3.10
-	depends = cairo>=1.8.8
-	optdepends = zathura-pdf-poppler-git: PDF support by using poppler
-	optdepends = zathura-pdf-mupdf-git: PDF support by using mupdf
-	optdepends = zathura-djvu-git: djvu support by using djvulibre
-	optdepends = zathura-ps-git: PostSctipt support by using libspectre
-	optdepends = fish
-	optdepends = bash-completion
+	makedepends = ninja
+	makedepends = texlive-bin
+	makedepends = check
+	makedepends = appstream-glib
+	depends = file
+	depends = girara
+	depends = libsynctex
+	depends = sqlite
+	optdepends = zathura-djvu-git: DjVu support
+	optdepends = zathura-pdf-poppler-git: PDF support using Poppler
+	optdepends = zathura-pdf-mupdf-git: PDF support using MuPDF
+	optdepends = zathura-ps-git: PostSctipt support
+	optdepends = zathura-cb-git: Comic book support
 	provides = zathura
 	conflicts = zathura
-	source = zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop
+	source = zathura-git::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop
 	md5sums = SKIP
 
 pkgname = zathura-git
-

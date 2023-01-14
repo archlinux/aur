@@ -1,54 +1,47 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: a821
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=0.4.5.28.g3b4540f
-pkgrel=2
-pkgdesc="a document viewer"
-arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/zathura"
+pkgver=0.5.2.r24.g81e541e
+pkgrel=1
+pkgdesc="Minimalistic document viewer"
+arch=('x86_64')
+url="https://pwmt.org/projects/zathura"
 license=('custom')
-depends=('girara-git' 'gtk3>=3.10' 'cairo>=1.8.8')
-makedepends=('git' 'python-sphinx' 'intltool' 'meson')
-checkdepends=('check')
+depends=('file' 'girara' 'libsynctex' 'sqlite')
+makedepends=('git' 'python-sphinx' 'meson' 'ninja' 'texlive-bin' 'check' 'appstream-glib')
 conflicts=('zathura')
 provides=('zathura')
-source=('zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop')
+source=("$pkgname::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop")
 md5sums=('SKIP')
-_gitname=zathura
 
 optdepends=(
-  'zathura-pdf-poppler-git: PDF support by using poppler'
-  'zathura-pdf-mupdf-git: PDF support by using mupdf'
-  'zathura-djvu-git: djvu support by using djvulibre'
-  'zathura-ps-git: PostSctipt support by using libspectre'
-  'fish'
-  'bash-completion'
+  'zathura-djvu-git: DjVu support'
+  'zathura-pdf-poppler-git: PDF support using Poppler'
+  'zathura-pdf-mupdf-git: PDF support using MuPDF'
+  'zathura-ps-git: PostSctipt support'
+  'zathura-cb-git: Comic book support'
 )
 
-prepare() {
-  mkdir -p build
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
-  cd build
-  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
-  ninja
+  cd "$pkgname"
+  arch-meson build
+  ninja -C build
 }
 
 check() {
-  cd build
-  ninja test
+  ninja -C "$pkgname/build" test
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir/" ninja install
-}
-
-pkgver() {
-  cd "$_gitname"
-  local ver="$(git describe --long)"
-  printf "%s" "${ver//-/.}"
+  cd "$pkgname"
+  DESTDIR="$pkgdir/" ninja -C build install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
