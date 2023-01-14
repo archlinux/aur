@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
 pkgname=firefox-extension-duckduckgo-privacy-essentials
-pkgver=2022.12.27
+pkgver=2023.1.12
 pkgrel=1
 pkgdesc='DuckDuckGo Privacy Essentials browser extension for Firefox.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('firefox')
 groups=('firefox-addons')
 source=("${pkgname}-${pkgver}.zip::${_gh_url}/releases/download/${pkgver}/duckduckgo_privacy_essentials-${pkgver}.zip")
 noextract=("${pkgname}-${pkgver}.zip")
-sha512sums=('cdf9a049016c45b165a8e3d4190870d1df2a1072d38da82bd675694cf5f13c0c5e3bbb0830938202b9437771740374f0aca4baeeaab9ddc67c01fc8a3746995f')
+sha512sums=('53e90ca72524468a771395dda928a8a71f9f69c101c5c366994f36084f0096727c303781913b58f49adf1e447289955056a1d415cfe2a0492300c97e745e5d2c')
 
 package() {
     cd ${srcdir}
