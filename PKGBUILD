@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -15,6 +15,7 @@ depends=("file"
          "gunicorn"
          "imagemagick"
          "mailcap"
+         "nltk-data"
          "ocrmypdf"
          "optipng"
          "redis"
@@ -79,8 +80,8 @@ depends=("file"
          "python-gnupg"
          "python-levenshtein"
          "python-magic"
+         "python-nltk"
          "python-pytz"
-         "python-yaml"
          "python-redis"
          "python-regex"
          "python-requests"
@@ -103,6 +104,7 @@ depends=("file"
          "python-websockets"
          "python-whitenoise"
          "python-whoosh"
+         "python-yaml"
          "python-zope-interface"
          "pyzbar")
 optdepends=("jbig2enc: smaller PDF size"
