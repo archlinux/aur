@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=109.0.5414.74
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -56,10 +56,12 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
+        skia-gamma.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
             '2e07a6833ca7531ee5f64c24e31069192256bad5abbe1091ca12802ba2ad3a75'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
+            'fb8b991b5c639e795bbcb0bd4b47c05d4e8907bf59969e359526671c604329fc'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -146,6 +148,9 @@ prepare() {
 
   # Remove HEVC profile limits
   patch -Np1 -i ../remove-main-main10-profile-limit.patch
+
+  # Fix gamma values
+  patch -Np1 -i ../skia-gamma.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
