@@ -1,4 +1,4 @@
-pkgbase = easyconnect-zjjy
+pkgbase = easyconnect-rpc
 	pkgdesc = Accessing RPC's network resources over vpn connection.
 	pkgver = 7.6.7.3
 	pkgrel = 1
