@@ -2,7 +2,7 @@
 
 # https://github.com/slithery0/chatgpt-cli/archive/refs/tags/v0.0.1.tar.gz
 pkgname=chatgpt-cli-git
-pkgver=r27.98e9e52
+pkgver=r32.a737bff
 pkgrel=1
 pkgdesc='A minimal, bloat free chatgpt cli'
 

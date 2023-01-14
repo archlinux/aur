@@ -1,6 +1,6 @@
 pkgbase = chatgpt-cli-git
 	pkgdesc = A minimal, bloat free chatgpt cli
-	pkgver = r27.98e9e52
+	pkgver = r32.a737bff
 	pkgrel = 1
 	url = https://github.com/slithery0/chatgpt-cli
 	arch = i686
