@@ -1,0 +1,21 @@
+diff --git a/index.js b/index.js
+index e69de29..b4a74f3 100644
+--- a/index.js
++++ b/index.js
+@@ -2,12 +2,13 @@
+ 
+ const createWindow = () => {
+ 	const window = new BrowserWindow({
+-	  width: 800,
+-	  height: 600,
++	  width: 1200,
++	  height: 900,
++	  autoHideMenuBar: true,
+ 	  titleBarStyle: 'hidden'
+ 	});
+   
+-	window.loadFile('dist/index.html');
++	window.loadFile('index.html');
+ }
+ 
+ app.whenReady().then(() => {

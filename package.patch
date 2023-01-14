@@ -1,0 +1,33 @@
+diff --git a/package.json b/package.json
+index e69de29..b4a74f3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,7 +1,28 @@
+ {
++  "name": "wellnesswizard",
++  "description": "An AI powered app to help you fix your posture.",
++  "author": "The original authors can be found here: https://github.com/halftonenano/Hackathon_gitinit",
++  "version": "1.0.0",
++  "email": "kg5inb1@hotmail.com",
+   "scripts": {
+     "start": "electron ."
+   },
++  "dependencies": {
++    "@emotion/react": "^11.10.5",
++    "@ionic/react": "^6.4.1",
++    "@mantine/core": "^5.10.0",
++    "@mantine/form": "^5.10.0",
++    "@mantine/hooks": "^5.10.0",
++    "@mantine/notifications": "^5.10.0",
++    "@shopify/react-web-worker": "^5.0.6",
++    "face-api.js": "^0.20.0",
++    "ionicons": "^6.0.4",
++    "react": "^18.2.0",
++    "react-dom": "^18.2.0",
++    "react-router-dom": "^5.3.3",
++    "react-webcam": "^7.0.1",
++    "uuid": "^9.0.0"
++  },
+   "devDependencies": {
+     "electron": "^22.0.0"
+   }
