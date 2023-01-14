@@ -1,0 +1,13 @@
+pkgbase = tnoodle-cli
+	pkgdesc = Generate WCA scrambles for the Rubik's Cube and other twisty puzzles on the command line! // Unofficial Package
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0
+	depends = java-runtime
+	source = https://github.com/SpeedcuberOSS/tnoodle-cli/releases/download/v1.0.0/tnoodle-cli-1.0.0.jar
+	source = tnoodle.sh
+	sha256sums = 8e2f7e2e61493463d12bba3ab9d43bfa1bbf9674910c1ffa99788c125512036e
+	sha256sums = 856f708120826ece2107e0ea0596d5a1dc01560e1e305f3fd33bbee51d5566f0
+
+pkgname = tnoodle-cli
