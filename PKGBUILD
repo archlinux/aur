@@ -1,10 +1,10 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.32.3
-pkgrel=2
+pkgver=1.32.5
+pkgrel=1
 pkgdesc="NBD server toolkit"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://gitlab.com/nbdkit/nbdkit/"
 license=('custom: BSD')
 depends=()
@@ -31,12 +31,14 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
-		0001-rust-prevent-dead_code-warning.patch
+		clippy.patch
+		0001-data-don-t-ignore-SIGPIPE.patch
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}"/0001-rust-prevent-dead_code-warning.patch
+  patch -p1 < "${srcdir}"/clippy.patch
+  patch -p1 < "${srcdir}"/0001-data-don-t-ignore-SIGPIPE.patch
 }
 
 build() {
@@ -59,6 +61,7 @@ check() {
   make check
 }
 
-sha256sums=('5ef9627be6831977fc30d6808e12e01a3bb22a2805f0a250a4320f0360b9d01d'
+sha256sums=('07921293f22bfaa121cff1ba3f13d75243f5cd4864abbb20aa9686ed5649dbf4'
             'SKIP'
-            'e65e11e122e8ae2b7f93f33f42cdbd3e619f02a36038dbab4dc42c5c3e403008')
+            '3d26e9fab4bb240dcb5e19da9f9f7c74027de9ae486001a7d927fcf7be681be5'
+            'cafec77dd3e32567dd6aed27733a4fe84787751d805d27471eba66b438fa2396')
