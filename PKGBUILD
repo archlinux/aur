@@ -22,7 +22,7 @@ _merge_requests_to_use=()
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=43.2+3+g5db40c1ea
+pkgver=43.2+7+ga64cf7009
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -46,7 +46,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=5db40c1ead734a4fa6ba9ecbd475bb2b317f2eb0  # tags/43.2^3
+_commit=a64cf7009dcbdac3ba3abd6165f009b6b89bfd9e  # tags/43.2^7
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
