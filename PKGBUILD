@@ -9,7 +9,7 @@ url="https://github.com/FEniCS/${_base}"
 license=(MIT)
 makedepends=(python-build python-installer python-scikit-build pybind11)
 depends=(basix python-numpy)
-checkdepends=(python-pytest python-sympy python-fenics-ufl) # python-numba python-scipy
+checkdepends=(python-pytest python-sympy python-fenics-ufl) # python-numba
 optdepends=('python-numba: for Numba helper function support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('108acd1c6ab696e4dc15e3f8ae157285e9cd4b2e322837a504a036675320bc27cf411e69986015b304a5d8681db6f562beb2e7f1b5794bbe7a2e0eadd747ba0f')
@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer python/dist/*.whl
-  test-env/bin/python -m pytest -k 'not numba'
+  test-env/bin/python -m pytest --ignore=test/test_ufl_wrapper.py --ignore=test/test_numba.py
 }
 
 package() {
