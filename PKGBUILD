@@ -1,4 +1,5 @@
-# Maintainer: Jerry Lin <jerry73204 at gmail dot com>
+# Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
+# Original contributor: Jerry Lin <jerry73204 at gmail dot com>
 
 pkgname='python-fvcore'
 pkgver=0.1.1.post200513
