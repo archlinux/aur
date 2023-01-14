@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
-	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 6.0.r1125805.de9a71e391a9
+	pkgdesc = Linux kernel with WIP AMDGPU material
+	pkgver = 6.0.r1125978.901bf75db129
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = linux-amd-staging-drm-next-git
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -23,10 +24,10 @@ pkgbase = linux-amd-staging-drm-next-git
 	source = linux-amd-staging-drm-next-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
+	sha256sums = 1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0
 
 pkgname = linux-amd-staging-drm-next-git
-	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules
+	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,8 +40,8 @@ pkgname = linux-amd-staging-drm-next-git
 	replaces = wireguard-arch
 
 pkgname = linux-amd-staging-drm-next-headers-git
-	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU WIP patches kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with WIP AMDGPU material kernel
 	depends = pahole
 
 pkgname = linux-amd-staging-drm-next-docs-git
-	pkgdesc = Documentation for the Linux kernel with AMDGPU WIP patches kernel
+	pkgdesc = Documentation for the Linux kernel with WIP AMDGPU material kernel

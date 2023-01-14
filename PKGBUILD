@@ -1,17 +1,17 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.0.r1125805.de9a71e391a9
+pkgver=6.0.r1125978.901bf75db129
 pkgrel=1
-pkgdesc='Linux kernel with AMDGPU WIP patches'
+pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
 url=https://gitlab.freedesktop.org/agd5f/linux
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
+            '1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0')
 
 pkgver() {
   cd $_srcname
