@@ -2,7 +2,7 @@
 # Contributor: Garrett <floft.net/contact>
 
 pkgname=openlp
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('libreoffice-fresh: Display impress presentations'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
 source=("https://get.openlp.org/${pkgver}/OpenLP-${pkgver}.tar.gz" "openlp.sh")
-sha256sums=('6c28bfda7896b9f5fe8346def1f318d0111b005fc81b0aa6c2bee1c366d5a6e4'
+sha256sums=('be285c8c93cf7146f18d06b006f51e04b5807c5d7975d21e1593f6adc12f1074'
             '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = openlp
 	pkgdesc = Church presentation software.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://openlp.org/
 	install = openlp.install
@@ -24,9 +24,9 @@ pkgbase = openlp
 	optdepends = mupdf: Display pdfs
 	optdepends = python-mysql-connector: Use a mysql/mariadb database
 	optdepends = python-psycopg2: Use a postgresql database
-	source = https://get.openlp.org/3.0.0/OpenLP-3.0.0.tar.gz
+	source = https://get.openlp.org/3.0.1/OpenLP-3.0.1.tar.gz
 	source = openlp.sh
-	sha256sums = 6c28bfda7896b9f5fe8346def1f318d0111b005fc81b0aa6c2bee1c366d5a6e4
+	sha256sums = be285c8c93cf7146f18d06b006f51e04b5807c5d7975d21e1593f6adc12f1074
 	sha256sums = 19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf
 
 pkgname = openlp
