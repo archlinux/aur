@@ -2,9 +2,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=lwgeom
-_pkgver=0.2-10
+_pkgver=0.2-11
 pkgname=r-${_pkgname,,}
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Bindings to Selected 'liblwgeom' Functions for Simple Features"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ee1ff8a4f76fa884ee5f0d6ede6fb184951c78c771762cef0c8ffe4ab0b8bbbd')
+sha256sums=('7fd73cf58981f9566d946bf63ed6575ea0c70634abeaf4e60ef9615040d63419')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
