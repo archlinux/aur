@@ -1,32 +1,29 @@
-# Maintainer: MatMoul <matmoul@gmail.com>
+# Maintainer: MatMoul <matmoul at the google email domain which is .com>
+
+_githubuser=aarnt
+_githubrepo=alpm_octopi_utils
+_gitcommit=1e735c3a27803ca5b6470e946f9cac708143dfd9
 
 pkgname=alpm_octopi_utils-dev
-pkgver=1.0.2
-_pkgrealbase=alpm_octopi_utils
-_commit=1e735c3a27803ca5b6470e946f9cac708143dfd9
-pkgrel=6
-pkgdesc="Alpm utils for Octopi"
-url="https://tintaescura.com/projects/octopi/"
-arch=('i686' 'x86_64')
+pkgver=1.0.2.r1.1e735c3
+pkgrel=1
+pkgdesc='Alpm utils for Octopi'
+arch=('any')
+url="https://github.com/${_githubuser}/${_githubrepo}"
 license=('GPL3')
 depends=('pacman-contrib')
-makedepends=('vala')
-source=("https://github.com/aarnt/${_pkgrealbase}/archive/${_commit}.tar.gz")
+makedepends=('git' 'vala')
+source=("git+https://github.com/${_githubuser}/${_githubrepo}.git#commit=${_gitcommit}")
 sha256sums=('SKIP')
 
-prepare() {
-    cd "${_pkgrealbase}-${_commit}"
-}
-
 build() {
-    cd "${_pkgrealbase}-${_commit}"
+    cd "${_githubrepo}"
     make
 }
 
 package() {
-    cd "${_pkgrealbase}-${_commit}"
+    cd "${_githubrepo}"
     install -D -m755 src/libalpm_octopi_utils.so "$pkgdir"/usr/lib/libalpm_octopi_utils.so
     install -D -m644 src/libalpm_octopi_utils.pc "$pkgdir"/usr/lib/pkgconfig/libalpm_octopi_utils.pc
     install -D -m644 src/alpm_octopi_utils.h "$pkgdir"/usr/include/alpm_octopi_utils.h
 }
- 
