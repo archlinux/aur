@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('python-pip')
 depends=('python' 'python-pyzmq' 'python-gobject' 'python-setproctitle' 'python-pillow' 'python-qrcode')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c9a7f28c5a47e205dd1b0618e8870c68e5dc64437778cebef14509dc675ecc94')
+sha256sums=('fcadd578bf7972c57e578a44281232ff08de5f9610baeb2cc0ea008500e46652')
 
 package() {
 	cd "$srcdir/a2ln-server-$pkgver/"
