@@ -31,6 +31,7 @@ optdepends=(
     'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
+    'python-installer'
     'python-pip'
     'python-flit'
     'python-sphinx'
