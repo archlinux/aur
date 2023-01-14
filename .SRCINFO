@@ -1,0 +1,16 @@
+pkgbase = uthenticode
+	pkgdesc = A cross-platform library for verifying Authenticode signatures
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://trailofbits.github.io/uthenticode/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = openssl
+	options = staticlibs
+	source = uthenticode-1.0.9-src.tar.gz::https://github.com/trailofbits/uthenticode/archive/refs/tags/v1.0.9.tar.gz
+	sha256sums = 8961cc9048251ff2aff4e2073dd8b81307025211931780880abc16b108c08335
+
+pkgname = uthenticode
