@@ -41,6 +41,7 @@ build() {
 
     [[ -f /etc/zfs/zpool.cache ]] && cp "/etc/zfs/zpool.cache" "${BUILDROOT}/etc/zfs/zpool.cache.org"
     [[ -f /etc/modprobe.d/zfs.conf ]] && add_file "/etc/modprobe.d/zfs.conf"
+    [[ -f /etc/hostid ]] && add_file "/etc/hostid"
     [[ -f /etc/fstab ]] && add_file "/etc/fstab"
 }
 
