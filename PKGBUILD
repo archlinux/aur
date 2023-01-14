@@ -60,10 +60,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.1.4.arch1.r1140610.b7dc4d8e7fb1
+pkgver=6.1.3.arch1
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.1.3.arch1
+_srcver_tag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -74,13 +74,10 @@ makedepends=(
 )
 options=('!strip')
 
-_reponame="linux-bcachefs"
-_repo_url="https://github.com/koverstreet/bcachefs.git"
+_reponame="linux-archlinux"
+_repo_url="https://github.com/archlinux/linux.git"
 
-_repo_url_arch="https://github.com/archlinux/linux.git"
-
-_reponame_upstream="linux"
-_repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
+_repo_url_bcachefs="https://github.com/koverstreet/bcachefs.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
@@ -89,8 +86,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "${_reponame}::git+${_repo_url}#branch=master"
-    #"${_reponame_upstream}::git+${_repo_url_upstream}"
+    "${_reponame}::git+${_repo_url}?signed#tag=$_srcver_tag"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
 )
@@ -116,15 +112,10 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
-    git remote add arch_stable "${_repo_url_arch}" || true
-    git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
+    msg2 "Fetch and merge stable tag from ${_repo_url_bcachefs} ..."
+    git remote add bcachefs_master "${_repo_url_bcachefs}" || true
+    git fetch bcachefs_master master
     git merge --no-edit --no-commit FETCH_HEAD
-
-    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
-    #git fetch upstream_stable $v{_srcver_tag//.arch*/}
-    #git merge --no-edit --no-commit FETCH_HEAD
 
     FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
@@ -170,11 +161,6 @@ prepare() {
 
     # save configuration for later reuse
     cat .config > "$startdir/config.last"
-}
-
-pkgver() {
-    cd "${srcdir}/${_reponame}"
-    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
