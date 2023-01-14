@@ -1,5 +1,5 @@
 pkgname=christmasfetch
-pkgver=1.0.r6.9bdae4f
+pkgver=1.0.r1.0bca1d4
 pkgrel=1
 epoch=
 pkgdesc="A simple program that fetches information on the next Christmas!"
@@ -27,10 +27,11 @@ pkgver() {
 }
 
 package() {
-	cd christmasfetch
+	cd "$srcdir/$pkgname"
+	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p ${pkgdir}/opt/${pkgname}
 	cp -rf * ${pkgdir}/opt/${pkgname}
-	sudo make install
+	sudo make DESTDIR="$pkgdir" PREFIX="/usr" install
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

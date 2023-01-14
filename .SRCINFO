@@ -1,6 +1,6 @@
 pkgbase = christmasfetch
 	pkgdesc = A simple program that fetches information on the next Christmas!
-	pkgver = 1.0.r6.9bdae4f
+	pkgver = 1.0.r1.0bca1d4
 	pkgrel = 1
 	url = https://github.com/mattishere/christmasfetch.git
 	arch = x86_64
