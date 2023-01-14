@@ -1,6 +1,6 @@
 # Maintainer: NotARoomba <kg5inb1@hotmail.com>
 pkgname=wellness-wizard-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='An AI powered posture checker'
 arch=('x86_64')
