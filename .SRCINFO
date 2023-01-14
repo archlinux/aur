@@ -1,0 +1,14 @@
+pkgbase = xautocfg
+	pkgdesc = automatic keyboard repeat rate configuration
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/SFTtech/xautocfg
+	arch = x86_64
+	license = GPL3
+	depends = libx11
+	depends = libxi
+	depends = xorgproto
+	source = https://github.com/SFTtech/xautocfg/archive/refs/tags/v1.1.tar.gz
+	b2sums = c967e747601608829ab09c46063fbd75d959026edbda6e3290b923c81389607fb5500bd453f28044a6f57a8b87ebb36b2b50a853387a9b258e87cd4f901a3fc3
+
+pkgname = xautocfg
