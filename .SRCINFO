@@ -1,13 +1,13 @@
 pkgbase = ttf-lxgw-neo-xihei
 	pkgdesc = 霞鹜新晰黑。一款衍生于「IPAexゴシック」的中文黑体字型。A Simplified Chinese sans-serif font derived from IPAex Gothic.
-	pkgver = 1.002
-	pkgrel = 3
+	pkgver = 1.003
+	pkgrel = 1
 	url = https://github.com/lxgw/LxgwNeoXiHei
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-neo-xihei
-	source = https://github.com/lxgw/LxgwNeoXiHei/releases/download/v1.002/LXGWNeoXiHei.ttf
+	source = https://github.com/lxgw/LxgwNeoXiHei/releases/download/v1.003/LXGWNeoXiHei.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
 	sha256sums = dd398f0add023d0620f579cb27d52a9d2405addc2af6bb844d71721704665570
