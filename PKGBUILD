@@ -2,16 +2,16 @@
 
 pkgname=kio-admin-git
 pkgver=1.0_r95.ge884510
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage files as administrator using the admin:// KIO protocol.'
 arch=($CARCH)
-url='https://invent.kde.org/system/kio-admin'
-license=(GPL)
+url="https://github.com/KDE/${pkgname%-git}"
+license=(BSD GPL)
 depends=(kio-git)
 makedepends=(git extra-cmake-modules-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
