@@ -1,6 +1,6 @@
 pkgbase = ripasso-git
 	pkgdesc = A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust.
-	pkgver = 642.c8f0721
+	pkgver = 746.efd781f
 	pkgrel = 1
 	url = https://github.com/cortex/ripasso/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ripasso-git
 	depends = gpgme
 	depends = libgit2
 	conflicts = ripasso
-	source = git://github.com/cortex/ripasso.git
+	source = git+https://github.com/cortex/ripasso.git
 	md5sums = SKIP
 
 pkgname = ripasso-git
