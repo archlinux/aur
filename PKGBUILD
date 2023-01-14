@@ -1,6 +1,6 @@
 # Maintainer: awumii <awumii@protonmail.com>
 
-pkgname=wpc
+pkgname=wpc-bin
 pkgver=1.7.0
 pkgrel=1
 pkgdesc='Automatic Wallpaper Changer which can retrieve wallpapers from Wallhaven and Reddit (binary release)'
