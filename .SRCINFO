@@ -1,6 +1,6 @@
 pkgbase = nginx-mod-nchan
 	pkgdesc = nchan nginx module
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://nchan.io/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = nginx-mod-nchan
 	license = MIT
 	makedepends = nginx-src
 	depends = nginx
-	source = https://github.com/slact/nchan/archive/v1.3.5.tar.gz
-	sha256sums = f5a5a5dd6170fd750a232227654cdce8cdb0c3d36d114fe9b6b735641e2ccee1
+	source = https://github.com/slact/nchan/archive/v1.3.6.tar.gz
+	sha256sums = ba0b7cc6b710a20ce1ed2554caf56154035291aaf115e407d7a6bb699fde42df
 
 pkgname = nginx-mod-nchan
