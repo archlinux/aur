@@ -2,7 +2,7 @@
 
 pkgname=numlockl
 pkgver=1.0.6
-pkgrel=3
+pkgrel=5
 pkgdesc='Turns on the numlock key.'
 arch=('x86_64')
 url='https://gitlab.com/phoepsilonix/numlockl'
@@ -17,7 +17,7 @@ build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   if [[ $CC == "clang" ]];then
     CFLAGS+=" -flto -Os"
-    LDFLAGS+=" -flto -fuse-ld=lld"
+    LDFLAGS+=" -flto -Os"
   fi
 
   make
