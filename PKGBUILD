@@ -1,4 +1,4 @@
-# Maintainer: MatMoul <matmoul@gmail.com>
+# Maintainer: MatMoul <matmoul at the google email domain which is .com>
 
 pkgname=bootdisk
 pkgver=0.1
