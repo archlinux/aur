@@ -1,10 +1,11 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: danso <dev-aur@danso.ca>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: gudzpoz <gudzpoz ant live dot com>
 # Contributor: Faye Jackson <justalittleepsilon ant gmail dot com>
 
 pkgname=pleroma-bin
-pkgver=2.4.5
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.'
 url='https://pleroma.social/'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -18,9 +19,13 @@ provides=(pleroma)
 conflicts=(pleroma)
 backup=('etc/pleroma/config.exs')
 install=pleroma.install
-source_x86_64=("pleroma-x86_64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220705/artifacts/download")
-source_aarch64=("pleroma-aarch64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220709/artifacts/download")
-source_armv7h=("pleroma-armv7h-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/220707/artifacts/download")
+# sources from https://git.pleroma.social/pleroma/pleroma/-/pipelines/43177/
+# job name "amd64"
+source_x86_64=("pleroma-x86_64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/226602/artifacts/download")
+# job name "arm64"
+source_aarch64=("pleroma-aarch64-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/226606/artifacts/download")
+# job name "arm"
+source_armv7h=("pleroma-armv7h-${pkgver}.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/226604/artifacts/download")
 source=('pleroma.sysusers'
         'pleroma.tmpfiles'
         'pleroma.service'
@@ -29,9 +34,9 @@ sha256sums=('4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979'
             'b5e844fab22dc4fafdec09c1f14437a06d3a12fae753fc0be968d22eaddfd6dc'
             '268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed'
             'e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104')
-sha256sums_x86_64=('8b4e2ab17362c7b0ed3ca685e19d578ad842ac00cde2db7d8c54dfd5a4e05891')
-sha256sums_aarch64=('e432310df95ae4d915a02082252df0346ca7e112ffa4484b6a05075778c71338')
-sha256sums_armv7h=('c31dd8bb62728887cfe5488ef5818dc5e57e90f6443fbcfd501ea12044d0a94c')
+sha256sums_x86_64=('0a8a64ee9642349976ec83be3649d607115b3819a99f7d056135fbe3a5d58480')
+sha256sums_aarch64=('9b7092566d2279c0911d86f8641a2a08aef67d5f76563939459e6c1fb1144279')
+sha256sums_armv7h=('90ca77fd63ebe849659864e95af194bb8b7d268f9e5aa13756c4d6a07257a692')
 
 package() {
     cd "$srcdir"
