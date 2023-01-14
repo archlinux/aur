@@ -1,6 +1,6 @@
 pkgbase = r-basics
 	pkgdesc = Bayesian Analysis of Single-Cell Sequencing data
-	pkgver = 2.10.3
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BASiCS
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-basics
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BASiCS_2.10.3.tar.gz
-	sha256sums = ca74d747ccdd3da97508bbe13f2970fa528f6f28821dd7c32c30bf656ee4e02b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BASiCS_2.10.4.tar.gz
+	sha256sums = 6d163d89590afa367cf8468cb3966c0f47e1ca53f202d4d0a617751ede42b6ec
 
 pkgname = r-basics
