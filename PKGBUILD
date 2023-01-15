@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=ctrisr-git
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 epoch=
 pkgdesc="Tetris clone in terminal colorzied"
