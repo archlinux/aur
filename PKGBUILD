@@ -34,7 +34,6 @@ sha256sums=('e76da1f13d5ad5e0179e3fec57543126044339405ef19c397e105e0807bd4e41'
             '3a2c331177efb9530791d777297aba32822c55f0e9de116d89c640d3d1ba0843'
             '5809f21a93a26a610a11c2e41fe6c9b64a142877c2accd45c83350459b1d357c'
             'e9058d261138e637248b20243e3e81ff337ab669a4a25fbff387bf9558a682c6')
-options=(debug)
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < pam-faillock.patch # Port away from deprecated pam_tally2
