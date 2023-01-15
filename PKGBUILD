@@ -1,7 +1,7 @@
 # Maintainer: UmamiAppearance <mail@umamiappearance.eu>
 
 pkgname=base-ex-cli
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="CLI for BaseEx -- Base2-Base62, Base16, Base32, Base58, Base64, UUencode, Base85, Base91, LEB128, Ecoji, Base2048, BasePhi"
 arch=(x86_64)
