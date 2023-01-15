@@ -11,7 +11,6 @@ arch=(x86_64)
 license=(LGPL)
 depends=(glib2 pipewire fuse3 geoclue rtkit systemd)
 makedepends=(meson xmlto docbook-xsl git flatpak libportal)
-options=(debug)
 _commit=88af6c8ca4106fcf70925355350a669848e9fd5a  # tags/1.16.0^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 sha256sums=('SKIP')
