@@ -11,7 +11,7 @@ depends=('mesa' 'systemd-libs')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2') # 'git')
 conflicts=('xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
 groups=('xorg-drivers')
-options=('!emptydirs' 'debug')
+options=('!emptydirs')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
         gcc8.diff
         gcc12.1.diff)
