@@ -1,12 +1,13 @@
-# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Maintainer: René Wagner <rwa AT clttr DOT info>
+# Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
-pkgname=lcms2-git
-pkgver=2.9rc1.r12.g66aeefe
+pkgname=lcms2-ff-git
+pkgver=2.14.r44.ge71aeb6
 pkgrel=1
-pkgdesc="Small-footprint color management engine"
+pkgdesc="Small-footprint color management engine including fast_float plugin"
 arch=('i686' 'x86_64')
 url="https://www.littlecms.com/"
-license=('MIT')
+license=('GPL3')
 depends=('glibc' 'libtiff')
 makedepends=('git')
 provides=('lcms2')
@@ -26,7 +27,7 @@ build() {
   cd "Little-CMS"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure --prefix="/usr" --with-fastfloat
   make
 }
 
