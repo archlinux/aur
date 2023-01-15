@@ -14,7 +14,6 @@ license=(BSD)
 depends=(lib32-glibc libwebp)
 makedepends=(cmake ninja)
 provides=(libwebp{,decoder,demux,mux}.so libsharpyuv.so)
-options=(debug)
 source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc})
 sha256sums=('64ac4614db292ae8c5aa26de0295bf1623dbb3985054cb656c55e67431def17c'
             'SKIP')
