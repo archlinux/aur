@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sparsesvd
-_pkgver=0.2-1
+_pkgver=0.2-2
 pkgname=r-${_pkgname,,}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Sparse Truncated Singular Value Decomposition (from 'SVDLIBC')"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b3d03b4d6bfe19c4e108d0ef6e425aa66830190ba4e5b5cccf3ee6eed5abe07b')
+sha256sums=('bb40cc69ee3aec28ff1418fd16cd76d953701a7b0d6bdcb0424c71793d96d836')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
