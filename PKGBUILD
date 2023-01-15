@@ -21,7 +21,6 @@ depends=(
 )
 arch=('x86_64')
 url="https://github.com/swaywm/swaylock"
-options=(debug)
 backup=('etc/pam.d/swaylock')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
 sha256sums=('40e99cf62d9aa31727071f865a3e48d431e041fcd533936dc9ba4ffe01ae9cd3'
