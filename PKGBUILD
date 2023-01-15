@@ -14,7 +14,6 @@ depends=(qt5-networkauth python-pyqt5)
 makedepends=(sip pyqt-builder)
 source=("https://pypi.python.org/packages/source/P/PyQtNetworkAuth/PyQtNetworkAuth-$pkgver.tar.gz")
 sha256sums=('2230b6f56f4c9ad2e88bf5ac648e2f3bee9cd757550de0fb98fe0bcb31217b16')
-options=(debug)
 
 build() {
   cd PyQtNetworkAuth-$pkgver
