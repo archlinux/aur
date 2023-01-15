@@ -6,7 +6,6 @@ pkgbase = ferium-bin
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
-	depends = bzip2
 	provides = ferium
 	conflicts = ferium-gui-bin
 	conflicts = ferium-git

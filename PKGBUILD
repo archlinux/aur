@@ -6,7 +6,6 @@ pkgver=4.3.4
 pkgrel=1
 pkgdesc="Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases"
 arch=("x86_64" "aarch64")
-depends=("bzip2")
 provides=("ferium")
 conflicts=("ferium-gui-bin" "ferium-git" "ferium-gui-git")
 url="https://github.com/gorilla-devs/ferium"
