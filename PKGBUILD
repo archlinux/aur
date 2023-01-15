@@ -15,8 +15,8 @@ pkgdesc='Classes for a WebKit2 based implementation and a new QML API'
 source=("https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-$_pkgver/qtwebkit-$_pkgver.tar.xz"
          icu68.patch
          glib-2.68.patch
-         qt5-webkit-python-3.9.patch::"https://github.com/qtwebkit/qtwebkit/commit/78360c01.patch"
-         qt5-webkit-bison-3.7.patch::"https://github.com/qtwebkit/qtwebkit/commit/d92b11fe.patch")
+         qt5-webkit-python-3.9.patch
+         qt5-webkit-bison-3.7.patch)
 depends=(qt5-location qt5-sensors qt5-webchannel libwebp libxslt libxcomposite gst-plugins-base hyphen woff2)
 makedepends=(cmake ruby gperf python qt5-doc qt5-tools)
 optdepends=('gst-plugins-good: Webm codec support')
@@ -24,7 +24,7 @@ sha256sums=('9ca126da9273664dd23a3ccd0c9bebceb7bb534bddd743db31caf6a5a6d4a9e6'
             '0b40ed924f03ff6081af610bb0ee01560b7bd1fb68f8af02053304a01d4ccdf0'
             '4969dd03e482155e2490b50307dada81dda7bbc9e5398e3a53c20bc474f7c04e'
             '6e0cee08e4fa57b04752e80817f33562f48aa42608a3a620930b6040259b4932'
-            'cc5a2b762426e9cda5a3ae056bba266b5f775ee75c0590913839c255d5f10db0')
+            '34f37b53ee0bc31c63ce85ebd1ae95543a8ba28483e387b20efd50574bd813be')
 options=(!lto)
 
 prepare() {
