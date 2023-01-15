@@ -2,7 +2,7 @@
 # Contributor: Edward Wawrzynek <edward@wawrzynek.com>
 
 pkgname=xrcsimulator
-pkgver=10.0b
+pkgver=10.0d
 pkgdesc="FIRST Tech Challenge, FIRST Robotics Competition, and VEX Simulator"
 pkgrel=1
 arch=('x86_64')
@@ -17,11 +17,11 @@ replaces=('ftcfrcsimulator')
 _files_name="xRC Simulator"
 
 source=(
-	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=2017"
+	"${pkgname}-${pkgver}.zip::http://xrcsimulator.org/?smd_process_download=1&download_id=2053"
 	"xrcsimulator.desktop"
 )
 
-sha1sums=('bad30d09cdbdb0cc0e71e37abad42c566e1086cb'
+sha1sums=('e17b92eb34bfdef8d0303895b44d85bc57a6f574'
           '07ee699a267425f01c7e28c2369ba6521bd515ec')
 
 package() {
