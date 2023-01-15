@@ -3,7 +3,7 @@
 pkgname=easyconnect-rpc
 pkgver=7.6.7.3
 pkgrel=2
-pkgdesc="Accessing RPC's network resources over vpn connection!"
+pkgdesc="Accessing RPC's network resources over vpn connection."
 arch=('x86_64')
 url="https://vpn.rpc.edu.cn"
 license=('custom')
