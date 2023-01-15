@@ -26,7 +26,6 @@ makedepends=(
   ninja
 )
 provides=(libmikmod.so)
-options=(debug)
 source=(https://downloads.sourceforge.net/mikmod/libmikmod-$pkgver.tar.gz)
 md5sums=('f69d7dd06d307e888f466fc27f4f680b')
 sha256sums=('ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19')
