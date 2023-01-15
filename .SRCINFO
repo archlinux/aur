@@ -7,7 +7,6 @@ pkgbase = ferium-gui-bin
 	arch = aarch64
 	license = MPL2
 	depends = xdg-desktop-portal
-	depends = bzip2
 	provides = ferium
 	conflicts = ferium-bin
 	conflicts = ferium-gui-git
