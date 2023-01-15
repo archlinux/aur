@@ -15,7 +15,7 @@ sha1sums=('06f5bfc747f27ae9ba763a798204badf84d430b2')
 sha512sums=('afdca5c3c757948aa5050e500c511acb5e8c455c16c4b83ab689c10152e935a8b8b21fdecc1492a4b66479de6c751a1def15b4db5b6afccb4df66c58cc6c7bad')
 
 package() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-	make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions" install
+    make INSTALL_PATH="$pkgdir/usr/share/gnome-shell/extensions" install
 }
