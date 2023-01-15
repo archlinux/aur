@@ -3,7 +3,7 @@
 Name=ZapIt
 GenericName=ZapIt
 Comment=An advanced MQTT client made for the modern age.
-Exec=/usr/lib/jvm/java-18-openjdk/bin/java -jar /usr/share/java/zapit/zapit.jar %u
+Exec=java -jar /usr/share/java/zapit/zapit.jar %u
 Icon=zapit
 Terminal=false
 Type=Application
