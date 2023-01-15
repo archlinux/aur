@@ -3,7 +3,8 @@
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
 pkgver=2.0.5
-pkgrel=3
+_pkgver=upstream_version_2_0_5
+pkgrel=4
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"
@@ -15,17 +16,17 @@ provides=('grisbi')
 conflicts=('grisbi-git')
 replaces=('grisbi')
 options=(!libtool)
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bd3adbabfc4b4dfc05eff62d2b36458a24b0f00d07cf35a29f6af2f203c77a3f')
+sha256sums=('69f5cd60748864e0fb9c6d99f10bf7b9b022b87748a9c8a0fb7408267765bd66')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${srcdir}/grisbi-${_pkgver}"
 	cd pixmaps
 	convert -size 48x48 -background none grisbi.svg grisbi.png
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${srcdir}/grisbi-${_pkgver}"
+	./autogen.sh
 	./configure \
 		--disable-frenchdoc \
 		--prefix=/usr
@@ -33,8 +34,8 @@ build() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${srcdir}/grisbi-${_pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/pixmaps/grisbi.png" \
+	install -Dm 0644 "${srcdir}/grisbi-${_pkgver}/pixmaps/grisbi.png" \
 		"${pkgdir}/usr/share/pixmaps/grisbi/grisbi.png"
 }
