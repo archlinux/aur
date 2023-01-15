@@ -1,4 +1,4 @@
-# Maintainer: Daniel Souza <aur@posix.dev.br>
+# Maintainer: Daniel Souza <aur at posix dot dev dot br>
 
 _gitbranch=main
 _gitauthor=danisztls
