@@ -10,7 +10,6 @@ url="https://non.tuxfamily.org/"
 license=(GPL3)
 groups=(non-daw pro-audio)
 makedepends=(jack ladspa liblo liblrdf libsndfile libxpm ntk waf)
-options=(debug)
 source=($pkgbase-$pkgver.tar.gz::https://github.com/linuxaudio/non/archive/refs/tags/${pkgname[0]}-v$pkgver.tar.gz)
 sha512sums=('6be7075a1c55fa52ae573c60983cbd237819f8ec521730b3949b0d460c63a23805db7a9f5d54410b5808c61ecdd6ec9dc891868ae8f9467042621379633b119e')
 b2sums=('3116892847c41b097aa48af4bb96a2580e53fa879793992c07d0086841f4d1e8c13e0b390e0ae1854ab5da58a8fee8f6d7b9338a94fc4367250b5d69efa2f23e')
