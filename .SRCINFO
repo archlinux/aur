@@ -1,6 +1,6 @@
 pkgbase = rpcpp-git
-	pkgdesc = RPC++ is a tool for Discord RPC (Rich Presence) to let your friends know about your Linux system
-	pkgver = r12.ebf294e
+	pkgdesc = Tool for Discord RPC to let your friends know about your Linux system
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/grialion/rpcpp
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = rpcpp-git
 	makedepends = git
 	depends = wget
 	depends = unzip
+	depends = libx11
 	provides = rpcpp
 	conflicts = rpcpp
 	source = git+https://github.com/grialion/rpcpp.git

@@ -1,25 +1,17 @@
 # Maintainer: grialion <grialion@grial.tech>
 pkgname=rpcpp-git
-pkgver=r12.ebf294e
+pkgver=2.1.0
 pkgrel=1
-pkgdesc='RPC++ is a tool for Discord RPC (Rich Presence) to let your friends know about your Linux system'
+pkgdesc='Tool for Discord RPC to let your friends know about your Linux system'
 arch=('any')
 url='https://github.com/grialion/rpcpp'
 license=('MIT')
-depends=('wget' 'unzip')
+depends=('wget' 'unzip' 'libx11')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
 md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
