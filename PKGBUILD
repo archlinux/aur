@@ -11,7 +11,6 @@ url='https://github.com/microsoft/mimalloc'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
-options=('debug')
 _commit='28cf67e5b64c704cad993c71f29a24e781bee544'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
