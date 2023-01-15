@@ -1,0 +1,10 @@
+pkgbase = php-legacy-symlinks
+	pkgdesc = Symlinks PHP legacy binaries and configuration without the "legacy" suffix
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = php-legacy
+	provides = php
+	conflicts = php
+
+pkgname = php-legacy-symlinks
