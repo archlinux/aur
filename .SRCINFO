@@ -1,7 +1,7 @@
 pkgbase = inter-doom
 	pkgdesc = A limit-removing source port of Doom with enhancements and translation to the Russian language
 	pkgver = 6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JNechaevsky/inter-doom
 	arch = i686
 	arch = x86_64

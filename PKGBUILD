@@ -1,7 +1,7 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-doom
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A limit-removing source port of Doom with enhancements and translation to the Russian language"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/inter-doom"
@@ -22,7 +22,8 @@ build() {
     -D COMPILE_HERETIC="OFF" \
     -D COMPILE_HEXEN="OFF" \
     -D COMPILE_STRIFE="OFF" \
-    -D BUILD_VERSION_OVERWRITE="${pkgver}"
+    -D BUILD_VERSION_OVERWRITE="${pkgver}" \
+    -D NO_GIT_HASH="ON"
     cmake --build build
 }
 
