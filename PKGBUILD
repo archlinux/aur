@@ -3,59 +3,47 @@
 
 pkgname=gqrx
 pkgver=2.15.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive SDR receiver waterfall for many devices."
-arch=('x86_64')
+arch=(x86_64)
 url="http://gqrx.dk/"
-license=('GPL')
-depends=('qt6-svg' 'libpulse' 'gnuradio-osmosdr' 'libxkbcommon-x11')
-makedepends=('boost' 'cmake' 'spdlog')
-source=("$pkgname-$pkgver.tgz::https://github.com/gqrx-sdr/gqrx/archive/v$pkgver.tar.gz")
+license=(GPL3)
+depends=(gcc-libs glibc hicolor-icon-theme libvolk qt6-base qt6-svg)
+makedepends=(
+  boost
+  cmake
+  gnuradio
+  gnuradio-osmosdr
+  libpulse
+  libvolk
+)
+source=(https://github.com/gqrx-sdr/$pkgname/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
 sha256sums=('4a826b468b2fb38a59cbe1f1b566e62c3114509186a7a25ba27dc92833f3eb44')
-
-prepare() {
-  cd "$srcdir/gqrx-$pkgver"
-  echo "StartupNotify=false" >> gqrx.desktop
-
-  cd "$srcdir"
-  cp -r gqrx-$pkgver gqrx-$pkgver-alsa
-  cd gqrx-$pkgver-alsa
-  #sed -i 's/AUDIO_BACKEND = pulse/#&/' gqrx.pro
-  sed -i 's/LINUX_AUDIO_BACKEND Pulseaudio/LINUX_AUDIO_BACKEND Gr-audio/' CMakeLists.txt
-}
+b2sums=('0864e8b33efe12cbc77dc75bf9bb2c5938655e40710a99ff72da2f1bdb43bc4c2f964c1fe4d88136891417c16eed16444d8fad699f80ab8fe164bb18d62d23f6')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  rm -rf build
-  mkdir build
-  cd build
-  #qmake PREFIX=/usr/ ..
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  sed -i 's|-lpthread|& -lhidapi-libusb|' Makefile
-  make
-  cp src/gqrx ./
-  cd "$srcdir/$pkgname-$pkgver-alsa"
-  rm -rf build
-  mkdir build
-  cd build
-  #qmake PREFIX=/usr/ ..
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-  sed -i 's|-lpthread|& -llog4cpp|' Makefile
-  make
-  cp src/gqrx ./
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -S $pkgname-$pkgver
+    -W no-dev
+  )
+
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "resources/icons/gqrx.svg" "$pkgdir/usr/share/pixmaps/gqrx.svg"
+  depends+=(
+    gnuradio libgnuradio-{analog,blocks,digital,fft,filter,network,pmt,runtime}.so
+    gnuradio-osmosdr libgnuradio-osmosdr.so
+    libpulse libpulse.so libpulse-simple.so
+  )
 
-  cd "$srcdir/$pkgname-$pkgver/build"
-  #make install INSTALL_ROOT="$pkgdir"
-  #make DESTDIR="$pkgdir" install
-  install -Dm755 gqrx "$pkgdir/usr/bin/gqrx"
-
-  cd "$srcdir/$pkgname-$pkgver-alsa/build"
-  install -Dm755 gqrx "$pkgdir/usr/bin/gqrx-alsa"
+  DESTDIR="$pkgdir" cmake --install build
 }
-
