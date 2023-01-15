@@ -18,7 +18,6 @@ depends=(
     'cairo'
     'gdk-pixbuf2'  # For images other than PNG
 )
-options=(debug)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz.sig"
