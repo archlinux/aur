@@ -17,7 +17,6 @@ sha256sums=('7a813f9ea815a09c1e733d0e7dc879c64eee85f075389e87e6aab99cf0c1c1ff'
             'f4c1bffdc9b057e65e78f890f026c31fec6bf667d3d0c86abcbe4d853ac8c5f6'
             '5c6ae076d366097fa2e90aee5dd14e8cbed76e191cdad39e45fbf78648f00d64')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
-options=(debug)
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < kexi-qt-5.13.patch # Fix build with Qt 5.13
