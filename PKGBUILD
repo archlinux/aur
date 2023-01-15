@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61877.ccf87d61f64
+pkgver=r61927.eccb6e85184
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -36,6 +36,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
+  'pipewire'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
@@ -181,7 +182,7 @@ package_kodi-git() {
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre'
+    'pcre' 'pipewire'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
