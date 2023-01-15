@@ -1,7 +1,7 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
 
 pkgname='blflash'
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='BL602 serial flasher'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url=https://github.com/spacemeowx2/blflash
 license=('MIT')
 depends=('cargo')
 source=("${pkgname}"-"${pkgver}".tar.gz::${url}/archive/v"${pkgver}".tar.gz)
-sha256sums=('bb89be8ada704271d1773b4cb595cb4f66c3548f7cc0053ee2a13ea01e964e46')
+sha256sums=('14bbe9c082faa577eda3688718c92fc5da89ea802f2315ed7731b3338d4ae377')
 
 # pkgver() {
 #
