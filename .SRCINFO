@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-truecolor-wide-glyphs
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support
 	pkgver = 9.31
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = rxvt-unicode-truecolor-wide-glyphs
 	source = enable-wide-glyphs.patch
 	source = improve-font-rendering.patch
 	b2sums = 439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a247907878639db5fac3dcd3b6be3d839347787bcf08ca602ae246607f750b
-	b2sums = 38dd570d54d55ed6f826c12ac5bc3e47adec0132ac1dcfe5e4721d444492ff000dde15047b2a06ab9691c870555f0de17593ae3a33ecda996e06465a951321d7
+	b2sums = 1c58b1d53c72dbfae4f9302f5903365f84e85b2a1e9846d9dd9c712a7900e73a94621a41bee6dd75d690df8ae95d1d987d93ca4355eb8d8c423c57680df0edcf
 	b2sums = 6d6bd90b77e67ccb876f0c78c710c9e1b82767a19aeadaac9310e5628b791586fc8475ad5179eaa2fee386ae80aae916226167ec92c5af309bba4052238326c8
 	b2sums = eff2407a1551d57d7a9e9000a9bad760afd4d9b7a0fa15c375ec821d185561a99c3761319c1cbed5cdd512b39faf339fb78387220eae161c9a33a859fc4733d2
 	b2sums = 2c4bc054e89b1bbd9ebce18cee64728b5ebb3aa915ce3ec7957e1a95da34c26ea757d324041b6c65db5902b60d0009176ff6aabc5093c5b2665c4b6997a3f60f
