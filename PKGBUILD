@@ -12,7 +12,6 @@ arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
 makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig')
-options=('debug')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig}
         python310.patch)
