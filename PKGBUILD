@@ -15,7 +15,7 @@ depends=(lib32-libvorbis lib32-libltdl lib32-alsa-lib lib32-libpulse lib32-tdb
 makedepends=(gtk-doc lib32-gtk2 lib32-gtk3 git)
 provides=(lib32-libcanberra-pulse libcanberra{,-gtk,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
-options=(libtool debug)
+options=(libtool)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
 source=("git+https://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
         libcanberra-multi-backend.patch)
