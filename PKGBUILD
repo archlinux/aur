@@ -11,7 +11,6 @@ license=(GPL2)
 depends=(glib2 libproxy gnutls gsettings-desktop-schemas)
 makedepends=(meson git)
 checkdepends=(ca-certificates)
-options=(debug)
 _commit=d17632fe495c573612dd69e982a0c49af2952178  # tags/2.74.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 sha256sums=('SKIP')
