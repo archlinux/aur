@@ -2,7 +2,7 @@
 
 pkgname=htim
 pkgver=3.2.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Htop improved, htop with vim key bindings"
 arch=('x86_64' 'i686' 'aarch64' 'arm')
 url="https://gitlab.com/thelinuxguy9/htim"
@@ -13,7 +13,7 @@ optdepends=()
 provides=('htop')
 conflicts=('htop')
 source=(https://gitlab.com/thelinuxguy9/htim/-/archive/master/htim-master.tar.bz2)
-md5sums=('dc04e31435236879ad52fac477a05c11')
+md5sums=('2b89b1e0f69b2fad7b3c20bcee364840')
 validpgpkeys=()
 
 prepare() {
