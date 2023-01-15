@@ -12,7 +12,6 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 cogl libinput)
 makedepends=(gobject-introspection gtk-doc git)
-options=(debug)
 _commit=fd85623d34a54b3f5607011086cf19cb2c756a6a  # tags/1.26.4^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter.git#commit=$_commit")
 sha256sums=('SKIP')
