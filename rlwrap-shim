@@ -1,8 +1,0 @@
-#!/bin/sh
-pkgdir=/usr/share/cbqn-git
-
-if command -v 'rlwrap' >/dev/null; then
-  INPUTRC="${pkgdir}/inputrc" rlwrap "${pkgdir}/BQN" "$@"
-else
-  "${pkgdir}/BQN" "$@"
-fi
