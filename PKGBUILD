@@ -13,7 +13,6 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
          libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
-options=(debug)
 _commit=9e89a0da8d6d0da14b0b461051c064c419fc86d5  # tags/43.0^0
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
