@@ -1,27 +1,24 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl-git
-pkgver=1.22.0.r0.gb3a57c2
-pkgrel=2
+pkgver=2.1.1.r0.g7f6e792
+pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
 license=('GPL3')
-depends=('python' 'python-m3u8' 'python-requests' 'python-pyaml' 'ffmpeg')
+depends=('python-httpx' 'python-m3u8' 'python-requests' 'python-pyaml' 'ffmpeg')
 makedepends=('git' 'python-setuptools' 'python-wheel')
 optdepends=('twine: Collection of utilities for interacting with PyPI')
 checkdepends=('python-pytest')
 provides=('twitch-dl' 'twitch-dl-bin')
 conflicts=('twitch-dl' 'twitch-dl-bin')
 source=(git+$url.git)
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
