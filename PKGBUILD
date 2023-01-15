@@ -3,22 +3,23 @@
 # Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
 _pkgname=nextcloud
 pkgname=${_pkgname}-client-appimage-daily
-pkgver=3.6.50.20220907
+pkgver=3.6.50.20230115
+_appimgname=linux-${pkvger##*.}
 pkgrel=1
 epoch=1
 pkgdesc="Nextcloud desktop client (official daily AppImage build)"
 arch=('x86_64' 'i686')
-url="https://download.nextcloud.com/desktop/daily/Linux"
+url="https://download.nextcloud.com/desktop/daily/linux"
 license=('GPL2')
 provides=('nextcloud-client')
 conflicts=('nextcloud-client' 'nextcloud-client-git' 'owncloud-client')
 depends=('zlib')
 optdepends=('hicolor-icon-theme: needed for hicolor theme hierarchy')
 makedepends=('p7zip' 'curl')
-noextract=("$_pkgname.AppImage")
+noextract=("$_appimgname.AppImage")
 options=('!strip')
-source=(${_pkgname}-${pkgver}.AppImage::${url}/Nextcloud-${pkgver}-daily-x86_64.AppImage)
-sha256sums=('ba622e7ad25624142000432d0a24aec6bbbc5ac0ac11cc65120623fa502289e6')
+source=(${_pkgname}-${pkgver}.AppImage::${url}/${_appimgname}.AppImage)
+sha256sums=('2a80116597c8352ec7ddc665f59bb1e7d6529eaf6d50c4cf637c90e41b14a54c')
 
 prepare() {
     cd "${srcdir}"
