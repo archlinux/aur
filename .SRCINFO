@@ -1,7 +1,7 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
-	pkgver = 2.2201
-	pkgrel = 2
+	pkgver = 2.2202
+	pkgrel = 1
 	url = https://metacpan.org/release/Moose
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = perl-moose
 	license = GPL
 	checkdepends = perl-test-cleannamespaces>=0.13
 	checkdepends = perl-test-fatal>=0.001
-	checkdepends = perl-test-requires>=0.05
+	checkdepends = perl-test-needs>=0
 	depends = perl-cpan-meta-check>=0.011
 	depends = perl-class-load>=0.09
 	depends = perl-class-load-xs>=0.01
@@ -26,13 +26,11 @@ pkgbase = perl-moose
 	depends = perl-package-stash>=0.32
 	depends = perl-package-stash-xs>=0.24
 	depends = perl-params-util>=1.00
-	depends = perl-scalar-list-utils>=1.56
 	depends = perl-sub-exporter>=0.980
-	depends = perl-sub-name>=0.20
 	depends = perl-try-tiny>=0.17
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-2.2201.tar.gz
-	md5sums = 5ff10f1fcefc47ee8340375fb67b42a2
-	sha512sums = 71a22aab5b5de7de1e1a2df30e7526eb2913245733de9196328a6eaa9ada1699e74b58d5d3f9edbea6ddc35baf7febf0ebcce5f1210fc8777d6091acbac14260
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-2.2202.tar.gz
+	md5sums = a4e90a6ebb04fd38c8871b19557fae7d
+	sha512sums = 5012e5f69eee81cc7d3117db6837b36214f4fd85f5e2ece352953870aabed9091012ddd4b18754a603643f5ab03b6a0682728bc18a0397ab8afb3b36f3cfa68d
 
 pkgname = perl-moose

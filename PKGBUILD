@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moose'
-pkgver='2.2201'
-pkgrel='2'
+pkgver='2.2202'
+pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('x86_64' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction>=0' 'perl-devel-overloadinfo>=0.005' 'perl-devel-stacktrace>=2.03' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-scalar-list-utils>=1.56' 'perl-sub-exporter>=0.980' 'perl-sub-name>=0.20' 'perl-try-tiny>=0.17')
+depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction>=0' 'perl-devel-overloadinfo>=0.005' 'perl-devel-stacktrace>=2.03' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-sub-exporter>=0.980' 'perl-try-tiny>=0.17')
 makedepends=()
-checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05')
+checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-needs>=0')
 url='https://metacpan.org/release/Moose'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-$pkgver.tar.gz")
-md5sums=('5ff10f1fcefc47ee8340375fb67b42a2')
-sha512sums=('71a22aab5b5de7de1e1a2df30e7526eb2913245733de9196328a6eaa9ada1699e74b58d5d3f9edbea6ddc35baf7febf0ebcce5f1210fc8777d6091acbac14260')
+md5sums=('a4e90a6ebb04fd38c8871b19557fae7d')
+sha512sums=('5012e5f69eee81cc7d3117db6837b36214f4fd85f5e2ece352953870aabed9091012ddd4b18754a603643f5ab03b6a0682728bc18a0397ab8afb3b36f3cfa68d')
 _distdir="Moose-$pkgver"
 
 build() {
