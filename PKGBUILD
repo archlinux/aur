@@ -7,7 +7,7 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=lxc.5.0.0.6
+pkgver=lxc.5.0.0.130
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('dnsmasq: lxc-net.service'
   'lua-filesystem: lxc-top'
   'lua-alt-getopt: lxc-top')
 license=('LGPL')
-options=('emptydirs' 'debug')
+options=('emptydirs')
 backup=('etc/lxc/default.conf'
   'etc/default/lxc')
 provides=($_pkgname)

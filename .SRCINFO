@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers git version
-	pkgver = lxc.5.0.0.6
+	pkgver = lxc.5.0.0.130
 	pkgrel = 1
 	url = https://linuxcontainers.org
 	arch = x86_64
@@ -30,7 +30,6 @@ pkgbase = lxc-git
 	conflicts = lxc
 	conflicts = lxc-git
 	options = emptydirs
-	options = debug
 	backup = etc/lxc/default.conf
 	backup = etc/default/lxc
 	source = git+https://github.com/lxc/lxc
