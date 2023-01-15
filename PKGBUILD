@@ -9,14 +9,16 @@ arch=('x86_64' 'i686')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 
-depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
+depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
 makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
-optdepends=('cuda' 'libcap' 'libdrm')
+optdepends=('cuda: NvFBC capture support'
+            'libcap'
+            'libdrm')
 
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=9fe539f87da36514850cb4d230182d58c6992592")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=3510b8636a8a01469d687681bf27bd2812ea22b5")
 sha256sums=('SKIP')
 
 prepare() {

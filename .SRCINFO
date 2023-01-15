@@ -16,6 +16,7 @@ pkgbase = sunshine
 	depends = boost-libs
 	depends = curl
 	depends = libevdev
+	depends = libmfx
 	depends = libpulse
 	depends = libva
 	depends = libvdpau
@@ -28,10 +29,10 @@ pkgbase = sunshine
 	depends = openssl
 	depends = opus
 	depends = udev
-	optdepends = cuda
+	optdepends = cuda: NvFBC capture support
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=9fe539f87da36514850cb4d230182d58c6992592
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=3510b8636a8a01469d687681bf27bd2812ea22b5
 	sha256sums = SKIP
 
 pkgname = sunshine
