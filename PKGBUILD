@@ -12,7 +12,6 @@ depends=('openssl' 'lzo' 'lz4' 'systemd-libs' 'libsystemd.so' 'pkcs11-helper' 'l
 optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('git' 'systemd' 'python-docutils')
-options=('debug')
 install=openvpn.install
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security Mailing List <security@openvpn.net>
               'B62E6A2B4E56570B7BDC6BE01D829EFECA562812') # Gert Doering <gert@v6.de>
