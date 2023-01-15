@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10206_d8be8afed
+pkgver=r10253_2e5069c9e
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
@@ -32,7 +32,6 @@ build() {
 		-DPROC_TARGET_NUMBER=2 \
 		-DWITH_LTO="ON" \
 		-DENABLE_LIBRAW="ON" \
-		-DENABLE_MIMALLOC="ON" \
 		-DENABLE_OCIO="ON" \
 		-DBUILD_SHARED="ON"
 
