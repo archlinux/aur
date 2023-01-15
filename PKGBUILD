@@ -11,7 +11,6 @@ arch=(x86_64)
 license=(GPL)
 depends=(libnautilus-extension gtk3 gcr libcryptui libnotify)
 makedepends=(meson git)
-options=(debug)
 _commit=0fd324c191565bff76ca45a01b2da14b4ab7b3bd  # master
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
