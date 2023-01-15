@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-vuetorrent-bin
 	pkgdesc = The sleekest looking WebUI for qBittorrent made with Vue.js!
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/WDaan/VueTorrent
 	install = qbittorrent-vuetorrent.install
@@ -10,7 +10,7 @@ pkgbase = qbittorrent-vuetorrent-bin
 	optdepends = qbittorrent-nox: for use with qbittorrent-nox
 	provides = qbittorrent-vuetorrent
 	conflicts = qbittorrent-vuetorrent
-	source = vuetorrent-1.1.0.zip::https://github.com/WDaan/VueTorrent/releases/download/v1.1.0/vuetorrent.zip
-	sha512sums = 21013dcc430c49fa869547a4439ffaaf42414e81babbb42ec3533dfcef72c123578a285c7443dc46d8277beeeccdbb777879d4f49a899ab50df90115f81b9449
+	source = vuetorrent-1.2.0.zip::https://github.com/WDaan/VueTorrent/releases/download/v1.2.0/vuetorrent.zip
+	sha512sums = 3b090aafbb40455c8c6be63af76d32b8d70cbab3f6b7a39f78c882eba5c4255c2d12860c5a01e015a17711c653aa5b0141e8e7c0edae7603b01350e3441c53f8
 
 pkgname = qbittorrent-vuetorrent-bin
