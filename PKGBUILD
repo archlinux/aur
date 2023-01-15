@@ -1,10 +1,10 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland-git
-pkgver=0.9.16.r12.gd2b4076a
+pkgver=0.9.17.r6.g6c8e1865
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
 provides=('waybar')
@@ -31,6 +31,7 @@ depends=(
     'libsndio.so'
     'libxkbcommon'
     'wireplumber'
+    'playerctl'
 )
 makedepends=(
     'cmake'
