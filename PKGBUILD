@@ -4,7 +4,7 @@
 pkgname=grisbi
 pkgver=2.0.5
 _pkgver=upstream_version_2_0_5
-pkgrel=4
+pkgrel=5
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"
@@ -16,6 +16,7 @@ provides=('grisbi')
 conflicts=('grisbi-git')
 replaces=('grisbi')
 options=(!libtool)
+source=(https://github.com/grisbi/grisbi/archive/refs/tags/$_pkgver.tar.gz)
 sha256sums=('69f5cd60748864e0fb9c6d99f10bf7b9b022b87748a9c8a0fb7408267765bd66')
 
 prepare() {
