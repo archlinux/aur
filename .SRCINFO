@@ -1,0 +1,22 @@
+pkgbase = libretro-numero-git
+	pkgdesc = Texas Instruments TI-83 series core
+	pkgver = r19.765fda7
+	pkgrel = 1
+	url = https://github.com/nbarkhina/numero
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = libretro-core-info
+	provides = libretro-numero
+	conflicts = libretro-numero
+	source = libretro-numero::git+https://github.com/nbarkhina/numero.git
+	b2sums = SKIP
+
+pkgname = libretro-numero-git
