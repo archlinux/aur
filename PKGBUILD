@@ -11,13 +11,18 @@ arch=('any')
 url="https://github.com/jaedb/iris"
 license=('APACHE')
 depends=('mopidy>=3' 'python-configobj' 'python-pylast')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('mopidy-local: local library support'
             'mopidy-spotify: spotify support')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('800ebe9e922d8c6d632080d2d4cbdade39d18ceb8eeda5fd4328facf7d52ab42')
 
+build() {
+  cd "${_name}-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${_name}-$pkgver"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
