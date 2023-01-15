@@ -9,7 +9,6 @@ arch=(x86_64)
 license=(BSD)
 depends=(lib32-gcc-libs speex)
 makedepends=(git)
-options=(debug)
 _commit=5dceaaf3e23ee7fd17c80cb5f02a838fd6c18e01  # tags/Speex-1.2.1^0
 source=("git+https://gitlab.xiph.org/xiph/speex.git#commit=$_commit")
 b2sums=('SKIP')
