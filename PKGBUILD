@@ -2,14 +2,14 @@
 
 pkgbase=latex2e-help-texinfo
 pkgname=('latex2e-help-texinfo' 'latex2e-help-texinfo-es')
-pkgver=2022_01_26
+pkgver=2023_01_15
 pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format"
 url="https://ctan.org/pkg/latex2e-help-texinfo"
 arch=('any')
 license=('custom')
 source=("$pkgname-$pkgver.zip::http://mirrors.ctan.org/info/$pkgname.zip")
-sha256sums=('7fda8a7d0a3a01988e51b2b0b7947d2d677b33234da200c14edac88c2f07db6f')
+sha256sums=('455cf68f2bc29301dc1e561234c59e45648139e46c44c2f2c9db890ca413205b')
 
 package_latex2e-help-texinfo() {
   cd $pkgname
