@@ -13,7 +13,6 @@ depends=(lib32-gcc-libs openal)
 makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio
              lib32-jack lib32-pipewire git cmake ninja)
 optdepends=('lib32-fluidsynth: MIDI rendering')
-options=(debug)
 _commit=dc83d99c95a42c960150ddeee06c124134b52208  # tags/1.22.2
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 b2sums=('SKIP')
