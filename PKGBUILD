@@ -1,8 +1,9 @@
-# Maintainer: fossdd <fossdd@tutanota.com>
+# Maintainer: Daniel Souza <me@posix.dev.br>
+
 pkgname=yarr-git
 _pkgname=yarr
 pkgver=v2.3.r27.g91da774
-pkgrel=1
+pkgrel=2
 pkgdesc="yet another rss reader."
 arch=('i686' 'x86_64')
 url='https://github.com/nkanaev/yarr'

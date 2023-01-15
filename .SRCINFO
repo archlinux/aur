@@ -1,7 +1,7 @@
 pkgbase = yarr-git
 	pkgdesc = yet another rss reader.
 	pkgver = v2.3.r27.g91da774
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nkanaev/yarr
 	arch = i686
 	arch = x86_64
