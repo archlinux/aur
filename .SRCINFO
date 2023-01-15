@@ -1,10 +1,11 @@
 pkgbase = brave-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (binary release)
 	pkgver = 1.47.171
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://brave.com
 	arch = x86_64
+	arch = aarch64
 	license = MPL2
 	license = BSD
 	license = custom:chromium
@@ -19,13 +20,16 @@ pkgbase = brave-bin
 	provides = brave=1.47.171
 	provides = brave-browser
 	conflicts = brave
-	noextract = brave-bin-1.47.171.zip
+	noextract = brave-bin-1.47.171-x86_64.zip
+	noextract = brave-bin-1.47.171-aarch64.zip
 	options = !strip
-	source = brave-bin-1.47.171.zip::https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-browser-1.47.171-linux-amd64.zip
 	source = brave-bin.sh
 	source = brave-browser.desktop
-	sha256sums = 8beea410b5416ce884be1770ff08a1865bb233386e91ed7166d5ab8c28762e82
 	sha256sums = ba7d57a3328c68e6a78e49506af0e238936e823b2f463e8087c20fcf4300232a
 	sha256sums = c07276b69c7304981525ecb022f92daf7ae125a4fb05ac3442157b50826e257a
+	source_x86_64 = brave-bin-1.47.171-x86_64.zip::https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-browser-1.47.171-linux-amd64.zip
+	sha256sums_x86_64 = 8beea410b5416ce884be1770ff08a1865bb233386e91ed7166d5ab8c28762e82
+	source_aarch64 = brave-bin-1.47.171-aarch64.zip::https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-browser-1.47.171-linux-arm64.zip
+	sha256sums_aarch64 = fcc51b5896b962a4c98fb1175e444b5511f6ed759681cd919cd234fb1e0eb07c
 
 pkgname = brave-bin
