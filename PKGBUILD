@@ -6,8 +6,8 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.7-RELEASE
-pkgver=5.7.0
+_swiftver=swift-5.7.2-RELEASE
+pkgver=5.7.2
 pkgrel=1
 swiftargumentparserver=1.0.3
 swiftcryptover=1.1.5
