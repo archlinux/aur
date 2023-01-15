@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=LightBurn
-Comment=A layout, editing, and control software for lastercutters.
+Comment=A layout, editing, and control software for lasercutters.
+Keywords=2d;cad;laser cutting;
 Exec=/usr/bin/lightburn
 Icon=lightburn
 Terminal=false
