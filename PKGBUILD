@@ -17,7 +17,6 @@ provides=(python-pyqtwebengine)
 replaces=(python-pyqtwebengine)
 source=("https://pypi.python.org/packages/source/P/PyQtWebEngine/PyQtWebEngine-$pkgver.tar.gz")
 sha256sums=('ae241ef2a61c782939c58b52c2aea53ad99b30f3934c8358d5e0a6ebb3fd0721')
-options=(debug)
 
 build() {
   cd PyQtWebEngine-$pkgver
