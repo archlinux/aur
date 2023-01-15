@@ -12,7 +12,6 @@ makedepends=(cmake libpinyin anthy libchewing)
 optdepends=('anthy: japanese language support' 'libpinyin: chinese language support' 'libchewing: chinese language support')
 source=(https://github.com/maliit/keyboard/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('c3e1eb985b8ae7ce4e3e28412b7e797ff5db437ccd327e0d852a3c37f17fe456')
-options=(debug)
 
 build() {
   cmake -B build -S keyboard-$pkgver \
