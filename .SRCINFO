@@ -1,6 +1,6 @@
 pkgbase = gitahead-git
 	pkgdesc = Graphical Git client
-	pkgver = 2.6.3.r89.g711a963
+	pkgver = 2.6.3.r91.g81df5b4
 	pkgrel = 1
 	url = https://gitahead.github.io/gitahead.com/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = gitahead-git
 	provides = gitahead
 	conflicts = gitahead
 	source = git+https://github.com/gitahead/gitahead.git
-	source = git+https://github.com/stinb/libgit2.git
+	source = Gittyup-libgit2::git+https://github.com/stinb/libgit2.git
 	source = git+https://github.com/git/git.git
 	source = git+https://github.com/hunspell/hunspell.git
 	source = gitahead.desktop

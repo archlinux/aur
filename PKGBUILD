@@ -4,7 +4,7 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gitahead-git
-pkgver=2.6.3.r89.g711a963
+pkgver=2.6.3.r91.g81df5b4
 pkgrel=1
 pkgdesc="Graphical Git client"
 url="https://gitahead.github.io/gitahead.com/"
@@ -18,7 +18,7 @@ optdepends=('libgnome-keyring: for GNOME Keyring for auth credentials'
 provides=(gitahead)
 conflicts=(gitahead)
 source=("git+https://github.com/gitahead/gitahead.git"
-        "git+https://github.com/stinb/libgit2.git"
+        "Gittyup-libgit2::git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/git/git.git"
         "git+https://github.com/hunspell/hunspell.git"
         'gitahead.desktop')
@@ -37,11 +37,13 @@ prepare() {
   cd "${srcdir}/gitahead"
 
   git submodule init
-  git config 'submodule.dep/libgit2/libgit2.url' "${srcdir}/libgit2"
-  git config 'submodule.dep/libssh2/libssh2.url' "${srcdir}/libssh2"
-  git config 'submodule.dep/git/git.url' "${srcdir}/git"
-  git config 'submodule.dep/hunspell/hunspell.url' "${srcdir}/hunspell"
-  git -c submodule.dep/openssl/openssl.update=none -c submodule.dep/cmark/cmark.update=none -c submodule.dep/libssh2/libssh2.update=none submodule update
+  git config submodule.dep/libgit2/libgit2.url "${srcdir}/Gittyup-libgit2"
+  git config submodule.dep/git/git.url "${srcdir}/git"
+  git config submodule.dep/hunspell/hunspell.url "${srcdir}/hunspell"
+  git config submodule.dep/openssl/openssl.update none
+  git config submodule.dep/cmark/cmark.update none
+  git config submodule.dep/libssh2/libssh2.update none
+  git -c protocol.file.allow=always submodule update
 
   install -d build
 }
