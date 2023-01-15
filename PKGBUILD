@@ -2,7 +2,7 @@
 # Developer: Ari Archer <ari.web.xyz@gmail.com>
 
 pkgname=arigram
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A fork of tg -- a hackable telegram TUI client'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('python'
          	 'bash'
 	     	 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TruncatedDinosour/arigram/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('95c99dac2e59203353d38c690583b01969e6335600cf3d75135de4c7a343be87')
+sha256sums=('ea377ef7b655c5244a455990fa850f3c4776bbba656074b20dcaf36c5f54bdf2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
