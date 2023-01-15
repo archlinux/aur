@@ -15,7 +15,6 @@ depends=(libsecret gtk-vnc vte3 telepathy-glib avahi spice-gtk3 gnutls freerdp)
 makedepends=(docbook-xsl intltool openssh itstool spice-protocol vala
              gnome-common appstream-glib git gobject-introspection)
 optdepends=('openssh: SSH plugin')
-options=(debug)
 _commit=c86e114efe31381bff3cad008e9f2cd84a83a803  # master
 source=("git+https://gitlab.gnome.org/GNOME/vinagre.git#commit=$_commit")
 b2sums=('SKIP')
