@@ -1,17 +1,17 @@
 pkgbase = imewlconverter
-	pkgdesc = An ime word library converter support more than 20 ime tools.
-	pkgver = 2.1.1
+	pkgdesc = 一款开源免费的输入法词库转换程序
+	pkgver = 2.9.0.86.gcf86d15
 	pkgrel = 1
 	url = https://github.com/studyzy/imewlconverter
-	arch = any
-	license = GPL2
-	depends = mono
-	source = imewlconverter.exe::https://github.com/maz-1/imewlconverter/raw/master/IME%20WL%20Converter/IME%20WL%20Converter/bin/Release/ime.exe
-	source = imewlconverter.desktop
-	source = imewlconverter.png
-	md5sums = 3dacc38b3639c46a3d38a53a6ead7229
-	md5sums = 62a3f04c61d0466b8f82fb40257ed40f
-	md5sums = c337edefb46e2f5124748cc9c0078872
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk-6.0
+	depends = dotnet-runtime-6.0
+	provides = imewlconverter
+	conflicts = imewlconverter
+	source = git+https://github.com/studyzy/imewlconverter
+	sha256sums = SKIP
 
 pkgname = imewlconverter
-
