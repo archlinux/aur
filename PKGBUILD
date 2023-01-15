@@ -3,7 +3,7 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=latest.r1.g7fcdc2f
+pkgver=latest.r1.g9067926
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,11 @@ build() {
   cd "${_gitname}"
   lua -e 'io.open("src/lpm.luac", "wb"):write(string.dump(assert(loadfile("src/lpm.lua"))))'
   xxd -i src/lpm.luac > src/lpm.lua.c
-  gcc -DLPM_STATIC src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c -Ilib/microtar/src -lz -lgit2 \
-    -lzip -llua -lm -lmbedtls -lmbedx509 -lmbedcrypto -o lpm
+  git tag -d latest
+  FULL_VERSION=`git describe --tags | tail -c +2`
+  gcc -DLPM_VERSION='"'$FULL_VERSION-$CARCH-linux'"' -DLPM_STATIC \
+    src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c -Ilib/microtar/src \
+    -lz -lgit2 -lzip -llua -lm -lmbedtls -lmbedx509 -lmbedcrypto -o lpm
 }
 
 package() {
