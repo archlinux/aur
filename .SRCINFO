@@ -1,6 +1,6 @@
 pkgbase = pktd
 	pkgdesc = The PKT full node and wallet (Github binary release)
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://pkt.cash
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pktd
 	conflicts = pktwallet
 	conflicts = pld
 	conflicts = pldctl
-	source = https://github.com/pkt-cash/pktd/releases/download/pktd-v1.6.0/pktd-v1.6.0-linux.deb
-	sha256sums = ed7bdabb2b8404b7b243dae5e92f947417736c1ebff35c279097eec09f75de06
+	source = https://github.com/pkt-cash/pktd/releases/download/pktd-v1.6.1/pktd-v1.6.1-linux.deb
+	sha256sums = b0f3d8f65543015cb87c59806d92558ac48e865938214d56925ee2851731ff1a
 
 pkgname = pktd
