@@ -10,7 +10,6 @@ arch=(x86_64)
 license=(LGPL)
 depends=(clutter)
 makedepends=(gobject-introspection gtk-doc git meson)
-options=(debug)
 _commit=77483ba46384adde76f6c4599eae77eeec852c56  # tags/1.8.4^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter-gtk.git#commit=$_commit")
 sha256sums=('SKIP')
