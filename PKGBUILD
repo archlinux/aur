@@ -32,7 +32,6 @@ provides=(
   libopen-pal.so
   libopen-rte.so
 )
-options=(debug)
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/$pkgname-$pkgver.tar.bz2)
 sha256sums=('92912e175fd1234368c8730c03f4996fe5942e7479bb1d10059405e7f2b3930d')
 b2sums=('b020e3530ae5dde7b144e7c33b1a3f26f622526a4b48a97a0956fc6f49bbf9dfd5be9ebeeaf3bdc5168a307507408ba5dd8e2a537148821e1d476678177dc5d6')
