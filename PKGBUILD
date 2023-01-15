@@ -1,10 +1,10 @@
-# Maintainer: Daniel Souza <danisztls@gmail.com>
+# Maintainer: Daniel Souza <aur@posix.dev.br>
 
 _gitbranch=main
 _gitauthor=danisztls
 pkgname=arbie-git
 pkgver=v1.1.1.r0.g5a2d9d2
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic Robust Backup, an archiving and synchronization tool."
 arch=('any')
 license=('MIT')
