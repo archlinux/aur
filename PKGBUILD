@@ -1,13 +1,13 @@
 # Maintainer: Jeidnx <jeidnx@domainhier.de>
 
 pkgname=coshr-git
-pkgver=r1.b2103b7
+pkgver=r9.f098279
 pkgrel=1
 pkgdesc="Easily share the output of your commands"
 arch=("any")
 url="https://github.com/Jeidnx/coshr"
 license=('GPL')
-depends=('wl-clipboard' 'bash')
+depends=('wl-clipboard' 'bash' 'curl')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -25,6 +25,5 @@ prepare() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "$pkdir/usr/bin/"
-	install -Dm755 "$srcdir/${pkgname%-git}/coshr.sh" "$pkgdir/usr/bin/coshr"
+	make DESTDIR="$pkgdir/" install
 }

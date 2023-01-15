@@ -1,6 +1,6 @@
 pkgbase = coshr-git
 	pkgdesc = Easily share the output of your commands
-	pkgver = r1.b2103b7
+	pkgver = r9.f098279
 	pkgrel = 1
 	url = https://github.com/Jeidnx/coshr
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = coshr-git
 	makedepends = git
 	depends = wl-clipboard
 	depends = bash
+	depends = curl
 	provides = coshr
 	conflicts = coshr
 	source = git+https://github.com/Jeidnx/coshr
