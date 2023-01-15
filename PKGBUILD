@@ -23,7 +23,6 @@ makedepends=(
   git
   python
 )
-options=(debug)
 _commit=f507d167f1755b7eaea09fb1a44d29aab828b6d1  # tags/v2.10.3^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
