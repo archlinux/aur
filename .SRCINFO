@@ -8,7 +8,6 @@ pkgbase = ferium-gui-git
 	makedepends = cargo
 	makedepends = git
 	depends = xdg-desktop-portal
-	depends = bzip2
 	provides = ferium
 	conflicts = ferium-gui-bin
 	conflicts = ferium-bin
