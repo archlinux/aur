@@ -13,7 +13,6 @@ url="https://pagure.io/libaio"
 license=(LGPL2.1)
 depends=(lib32-glibc $_name=$pkgver)
 provides=(libaio.so)
-options=(debug)
 source=(https://pagure.io/libaio/archive/$_name-$pkgver/$_name-$_name-$pkgver.tar.gz)
 sha512sums=('8058c927de0b5f7079fc232d2be23272537694bf271488af1dc0330b58afc307931792ab138512c5e00aa3ea921935a6d862f575fb0cc2bf323de63d8df208cd')
 b2sums=('e06c1c1cc118c15f6bed1abfa97368d7ccc0d2e716a233cd4141936fb382e40909c340a6c882b18ee9461aaa23dd77a6644a38bdb5a00c1444538a2e0ab816d4')
