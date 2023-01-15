@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Omron LUNA-I and LUNA-88K emulator'
 pkgname=nono
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 url=http://www.pastel-flower.jp/~isaki/nono
 license=(custom)
@@ -9,7 +9,7 @@ arch=(x86_64)
 depends=(libbsd libkqueue termcap wxgtk3)
 makedepends=(bmake freebsd-mk gettext)
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-b2sums=('375d2188308a36a20df3255c229b1041062dc4f6bad2fc7c00800d3d45fd164d77ebed6a12fbb1bd3cf18dd64156b0863dee8bb540f631553eefed16ca536095')
+b2sums=('fca61c36841579e713104bb474206d8b44065a768802e8d50f5cba110f32b84dbe86dec6e51d681c7d51fb53da9f96f8db429ea6658aae8521c487fe04683a2c')
 
 prepare ()
 {
