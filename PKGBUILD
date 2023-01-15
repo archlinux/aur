@@ -17,7 +17,6 @@ install=kinit.install
 sha256sums=('acb9f420ef5002cd0253d7d8deb240d63a63b7e393c7e2337dfa52a4a3d5ff0e'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
-options=(debug)
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
