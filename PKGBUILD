@@ -2,7 +2,7 @@
 
 pkgname=cnping-git
 pkgver=r172.50efba0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal Graphical IPV4 Ping Tool by CNLohr"
 arch=('i686' 'x86_64')
 url="https://github.com/cntools/cnping"
