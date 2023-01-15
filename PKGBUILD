@@ -15,7 +15,6 @@ makedepends=(git)
 source=("git+https://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
 sha512sums=('SKIP')
 _pkgfqn=${pkgname/5-/}
-options=(debug)
 
 prepare() {
   mkdir -p build
