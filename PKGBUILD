@@ -27,5 +27,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  [ -d "${pkgdir}"/usr/lib64 ] && mv "${pkgdir}"/usr/{lib64,lib}
+  if [ -d "${pkgdir}"/usr/lib64 ]; then
+    mv "${pkgdir}"/usr/{lib64,lib}
+  fi
 }
