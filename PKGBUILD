@@ -2,9 +2,9 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=2022.11.14.r7.g6dc02256
-pkgrel=2
-epoch=1
+pkgver=50.1.r0.gc62d1f1e
+pkgrel=1
+epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
