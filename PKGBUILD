@@ -1,7 +1,7 @@
 # Maintainer: Jack R <rubacha dot jack03 at gmail.com>
 
 pkgname=open-numismat
-pkgver=1.8.12
+pkgver=1.8.16
 pkgrel=1
 pkgdesc='Coin collecting software to organize and manage your own coin catalogue.'
 arch=('any')
@@ -16,7 +16,8 @@ optdepends=(
 options=('!strip' '!emptydirs')
 source=("https://github.com/OpenNumismat/open-numismat/archive/refs/tags/${pkgver}.tar.gz" "https://github.com/OpenNumismat/open-numismat/releases/download/${pkgver}/open-numismat_${pkgver}_all.deb")
 noextract=("open-numismat_${pkgver}_all.deb")
-sha512sums=('a1b695d441992dcf5d9656d67416d6539746f82e93cab0d65923cc7d88db8e3cbcb43c2047d5be88a101b7b17e731ea4eae4a69570fd27605ddef0d7012bfa82' '26fa4a68c6bff3d2151a2a41589731d947c3cda464d3277b2191f18e9b09ce5f264a58dabdadbe202e82ef32ef4034bee2a9ffa409339fa03b572557aacc9e23')
+sha512sums=('e6daa67c0a88a8e59ff67b1463e37c2d8ccd74448200432eee047525a954e9920ab57042ad86f8649785590d48fa6da3063d0a831e3f9a9dcc2a4e5a61bad611'
+            '716b50265d13f67d5a5f116eebe4584d71d5527c510a51c1c5a6ba0ad4378363553dee6953995df6e083fd8b3cda77d338a43b57534432528f4a335a1b85713f')
 
 build() {
   #extract private_keys.py from .deb package to $${srcdir}
