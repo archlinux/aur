@@ -20,7 +20,6 @@ sha256sums=('c5871835521d015ef2ad1276b1f58340d946c2903466337f3170bac3c58d61f2'
             'SKIP'
             '79068597cd4ea57f3b1fe1b30ffeb4749bccefbbcbbf6585f57e2dc5944ae3d7')
 validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
-options=(debug)
 
 prepare() {
   patch -d phonon-backend-gstreamer-$pkgver -p1 < bbbb160f.patch # Fix tearing on wayland
