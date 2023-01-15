@@ -13,13 +13,9 @@ options=(!strip)
 _shortname='icedrive'
 _appimage="${_pkgname}.AppImage"
 source=("https://icedrive.net/downloads/portable/Icedrive_Portable_Linux-x64.AppImage")
-DLAGENTS=("https::/usr/bin/env wget -U 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)'")
+DLAGENTS=('https::/usr/bin/curl -A rofl -fLC - --retry 3 --retry-delay 3 -o %o %u')
 noextract=("${_appimage}")
-sha512sums=('0e152b567df84e8295406f7f398666643366901d29645624f74d85543999e0a7ad775f422eaefa1c2b025469770e7fb257803e3c1b587c971b4aadf1efefa712')
-
-#pkgver() {
-#  date +%Y%m%d
-#}
+sha512sums=('SKIP')
 
 prepare() {
 	chmod +x ${_appimage}
