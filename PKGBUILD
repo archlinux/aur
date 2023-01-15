@@ -13,7 +13,6 @@ optdepends=(
   'lilypond: for export to .ly and .pdf'
   'new-session-manager: for session management'
 )
-options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.gz{,.sig})
 sha512sums=('15b3babdf16287445db4a6536b7562364df1cfe2e21a60d30a13962e2f126c2175c5197c928fd4a8a4bb9411513e8799815329b30946d1798bea00b643767059'
             'SKIP')
