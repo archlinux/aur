@@ -16,7 +16,6 @@ optdepends=(
   'xorg-xhost: for authorization on xorg-xwayland'
 )
 backup=(etc/$pkgname/grub.cfg)
-options=(debug)
 source=(
   https://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/${pkgname}_$pkgver.tar.gz
   grub.cfg
