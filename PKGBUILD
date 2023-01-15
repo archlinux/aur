@@ -10,7 +10,6 @@ license=(LGPL)
 depends=(clutter gst-plugins-base-libs libxdamage libgudev gdk-pixbuf2)
 makedepends=(gobject-introspection gtk-doc git gst-plugins-good)
 optdepends=("gst-plugins-good: Video camera capture")
-options=(debug)
 _commit=01a461da1bdb3b29edd2d198b877ec0765af1f39  # tags/3.0.27^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter-gst.git#commit=$_commit"
         0001-video-sink-Remove-RGBx-BGRx-support.patch)
