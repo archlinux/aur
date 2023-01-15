@@ -1,6 +1,6 @@
 pkgbase = rnote-git
 	pkgdesc = A simple drawing application to create handwritten notes
-	pkgver = 0.5.6.r1.ga59f1e4
+	pkgver = 0.5.13.beta1.r3.g6c2fd936
 	pkgrel = 1
 	url = https://github.com/flxzt/rnote
 	arch = x86_64
@@ -19,12 +19,6 @@ pkgbase = rnote-git
 	conflicts = rnote
 	options = !lto
 	source = rnote::git+https://github.com/flxzt/rnote.git
-	source = rnote-ink-stroke-modeler-rs::git+https://github.com/flxzt/ink-stroke-modeler-rs
-	source = rnote-piet::git+https://github.com/flxzt/piet
-	source = rnote-piet-gpu::git+https://github.com/flxzt/piet-gpu
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = rnote-git
