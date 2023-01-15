@@ -26,7 +26,7 @@ pkgbase = linux-amd
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
 
 pkgname = linux-amd
-	pkgdesc = Linux kernel aimed at the latest AMD Ryzen CPU based hardware (ZNVER3/MZEN3)
+	pkgdesc = Linux kernel aimed at the ZNVER3/MZEN3 AMD Ryzen CPU based hardware
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
@@ -36,7 +36,7 @@ pkgname = linux-amd
 	backup = etc/mkinitcpio.d/linux-amd.preset
 
 pkgname = linux-amd-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel aimed at the latest AMD CPU based hardware
+	pkgdesc = Header files and scripts for building modules for Linux kernel aimed at the ZNVER3/MZEN3 AMD CPU based hardware
 
 pkgname = linux-amd-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel

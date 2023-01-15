@@ -84,7 +84,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Linux kernel aimed at the latest AMD Ryzen CPU based hardware (ZNVER3/MZEN3)"
+  pkgdesc="Linux kernel aimed at the ZNVER3/MZEN3 AMD Ryzen CPU based hardware"
   depends=('coreutils' 'linux-firmware' 'kmod' 'lzop')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
@@ -149,7 +149,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Linux kernel aimed at the latest AMD CPU based hardware"
+  pkgdesc="Header files and scripts for building modules for Linux kernel aimed at the ZNVER3/MZEN3 AMD CPU based hardware"
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
