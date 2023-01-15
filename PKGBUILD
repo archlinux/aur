@@ -2,7 +2,7 @@
 pkgname=engine-sim-git
 provides=('engine-sim')
 conflicts=('engine-sim')
-pkgver=r244.d24889c
+pkgver=r250.3d767af
 pkgrel=1
 license=('MIT')
 pkgdesc='Combustion engine simulator that generates realistic audio.'

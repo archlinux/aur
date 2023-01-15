@@ -1,6 +1,6 @@
 pkgbase = engine-sim-git
 	pkgdesc = Combustion engine simulator that generates realistic audio.
-	pkgver = r238.c695edb
+	pkgver = r250.3d767af
 	pkgrel = 1
 	url = https://github.com/ange-yaghi/engine-sim
 	arch = any
