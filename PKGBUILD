@@ -23,7 +23,6 @@ checkdepends=(
   docbook-xml
   python
 )
-options=(debug)
 _commit=5eca7fb65b7337409a02f9f94fde608edf7d1b0a  # tags/v1.1.37^0
 source=("git+https://gitlab.gnome.org/GNOME/libxslt.git#commit=$_commit"
         0001-Make-generate-id-deterministic.patch)
