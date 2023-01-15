@@ -17,7 +17,6 @@ makedepends=(
   nasm
 )
 provides=(libvpx.so)
-options=(debug)
 _tag=03265cd42b3783532de72f2ded5436652e6f5ce3
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag})
 sha256sums=(SKIP)
