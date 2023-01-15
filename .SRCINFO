@@ -1,7 +1,7 @@
 pkgbase = nwg-shell-config
 	pkgdesc = nwg-shell configuration utility
 	pkgver = 0.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell-config
 	arch = x86_64
 	license = MIT
