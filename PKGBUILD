@@ -1,20 +1,20 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=twitch-dl
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=('any')
 url="https://github.com/ihabunek/twitch-dl"
 license=('GPL3')
-depends=('python' 'python-m3u8>=1.0.0' 'python-requests' 'python-pyaml' 'ffmpeg')
+depends=('python-httpx' 'python-m3u8' 'python-requests' 'python-pyaml' 'ffmpeg')
 makedepends=('python-setuptools' 'python-wheel')
 optdepends=('twine: Collection of utilities for interacting with PyPI')
 checkdepends=('python-pytest')
 provides=('twitch-dl-bin')
 conflicts=('twitch-dl-bin')
-source=($url/archive/$pkgver.tar.gz)
-b2sums=('517d4604220e456fae83455346765e3c681b52f58f553e5e0b6a188a633920303358b2d3a23450a27cafc2c1d979f04316fa48cab99646877faad632e5a1ba35')
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+b2sums=('ff46ba66ea127c21a707b119fb1fed2f4b172cf6c738937f51dfc4539578a71443bc95f6c11da2aac453a455ae6b5b330c32db6f7a5112e4bc4f2d37790ee39f')
 
 build() {
   cd "$pkgname-$pkgver"
