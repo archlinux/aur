@@ -13,7 +13,6 @@ license=(GPL2)
 depends=(libcap=$pkgver lib32-gcc-libs lib32-glibc lib32-pam)
 makedepends=(linux-api-headers)
 provides=(libcap.so libpsx.so)
-options=(debug)
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/$_name-$pkgver.tar.{xz,sign})
 sha512sums=('ac005b622f6e065f30ce282a5c87240e7b9da75366ee537aa4835bc501b44bc242c10a4ba4dc070e2415fc7f635d1c3c4e45fbeeaf962cf7973dda82bf6377f0'
             'SKIP')
