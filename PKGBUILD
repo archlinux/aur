@@ -10,7 +10,6 @@ license=(GPL3)
 groups=(pro-audio)
 depends=(hicolor-icon-theme libcalfbox-lss python python-pyqt5 ttf-dejavu)
 optdepends=('new-session-manager: for session management')
-options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.gz{,.sig})
 sha512sums=('919a4eaf3d4f55cd133150d18139607a4edca8c67067cadd0ad423b2a3442a81cb6ada4204fb0219f11ad3a707aba20b8fb85ed7e8044cd6de1fdcd6ac64176c'
             'SKIP')
