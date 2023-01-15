@@ -1,8 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-binutils
-_binutilsver=2.39
-pkgver=2.39_r171.c378110
+_binutilsver=2.40
+pkgver=2.40_r171.c378110
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for ${_target}"
 url="http://www.gnu.org/software/binutils/"
@@ -10,10 +10,10 @@ arch=('x86_64')
 license=('GPL')
 makedepends=('git')
 depends=('libelf')
-source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
+source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.bz2"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
 )
-sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00'
+sha256sums=('f8298eb153a4b37d112e945aa5cb2850040bcf26a3ea65b5a715c83afe05e48a'
             'SKIP')
 
 pkgver() {
