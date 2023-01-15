@@ -11,7 +11,6 @@ url='https://github.com/BuddiesOfBudgie/budgie-screensaver'
 backup=('etc/pam.d/budgie-screensaver')
 depends=('dbus-glib' 'libgnomekbd' 'gnome-desktop')
 makedepends=('meson' 'intltool')
-options=('debug')
 source=("https://github.com/BuddiesOfBudgie/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"{,.asc})
 sha256sums=('563ac3f845729e9e6d184d2dbf036ab3f51ff244c27f5b286cfcb89acc147f0c'
             'SKIP')
