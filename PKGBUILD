@@ -14,7 +14,7 @@ depends=('mopidy>=3' 'python-configobj' 'python-pylast')
 makedepends=('python-setuptools' 'python-pip')
 optdepends=('mopidy-local: local library support'
             'mopidy-spotify: spotify support')
-source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/M/Mopidy-Iris/Mopidy-Iris-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-${pkgver}.tar.gz")
 sha256sums=('800ebe9e922d8c6d632080d2d4cbdade39d18ceb8eeda5fd4328facf7d52ab42')
 
 package() {
