@@ -1,0 +1,12 @@
+pkgbase = bgpkit-parser
+	pkgdesc = bgpkit-parser is a simple cli tool that allow parsing of individual MRT files
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/bgpkit/bgpkit-parser
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = bgpkit-parser-0.8.1.tar.gz::https://github.com/bgpkit/bgpkit-parser/archive/refs/tags/v0.8.1.tar.gz
+	sha512sums = d618cdcc986d4d1d7f9346eec2f3854167c1bc09eed7e78669abb2599e424de07e534840e3c01a3fafb5728b79d5092a8b0ed23b4e06dfe40e16fd7a89534472
+
+pkgname = bgpkit-parser
