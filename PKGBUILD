@@ -15,7 +15,7 @@ provides=(
   libnrf-ble-driver-sd_api_v5.so
   libnrf-ble-driver-sd_api_v6.so
 )
-options=(debug staticlibs)
+options=(staticlibs)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/NordicSemiconductor/$pkgname/archive/refs/tags/v$pkgver.tar.gz
   $pkgname-4.1.4-gcc_11.2.patch::https://github.com/NordicSemiconductor/pc-ble-driver/commit/37258e65bdbcd0b4369ae448faf650dd181816ec.patch
