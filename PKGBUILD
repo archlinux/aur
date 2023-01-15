@@ -1,8 +1,8 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gnomish-icons-git
-pkgver=r22.0beb580
+pkgver=r25.27a06b4
 pkgrel=1
-pkgdesc="Alternate versions of icons that looked ugly on GNOME"
+pkgdesc="Alternate versions of icons that look ugly on GNOME"
 arch=(any)
 url="https://github.com/realmazharhussain/gnomish-icons"
 license=('custom')

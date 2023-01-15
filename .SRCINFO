@@ -1,6 +1,6 @@
 pkgbase = gnomish-icons-git
-	pkgdesc = Alternate versions of icons that looked ugly on GNOME
-	pkgver = r22.0beb580
+	pkgdesc = Alternate versions of icons that look ugly on GNOME
+	pkgver = r25.27a06b4
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/gnomish-icons
 	arch = any
