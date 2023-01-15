@@ -9,7 +9,6 @@ url="https://git.laborejo.org/lss/libcalfbox-lss"
 license=(GPL3)
 depends=(glibc)
 makedepends=(fluidsynth glib2 jack libsndfile meson util-linux)
-options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.xz{,.sig})
 sha512sums=('66f5784adeb6ce7d4c81e917be1ce64c08b07a2fea7b56598e19ab198c79faa548c0f1cf794a9b0228bb7e63d663867a85a6b2a100320f3ee538e9a92c26d25b'
             'SKIP')
