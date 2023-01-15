@@ -1,13 +1,14 @@
 pkgbase = kodi-addon-inputstream-adaptive-any
 	pkgdesc = Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture
 	pkgver = 20.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peak3d/inputstream.adaptive
 	arch = any
 	groups = kodi
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	makedepends = patch
 	depends = kodi
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive

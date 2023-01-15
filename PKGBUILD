@@ -1,7 +1,7 @@
 # Maintainer: ivanich
 pkgname=kodi-addon-inputstream-adaptive-any
 pkgver=20.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Nexus
 _gitname=inputstream.adaptive
@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/peak3d/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'patch')
 provides=('kodi-addon-inputstream-adaptive')
 conflicts=('kodi-addon-inputstream-adaptive' 'kodi-addon-inputstream-adaptive-19');
 depends=('kodi')
