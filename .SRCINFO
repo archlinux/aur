@@ -14,9 +14,10 @@ pkgbase = eric
 	depends = python-editorconfig
 	depends = python-asttokens
 	depends = python-black
+	depends = python-isort
 	conflicts = eric-common
 	replaces = eric-common
 	source = https://downloads.sourceforge.net/eric-ide/eric7-23.1.1.tar.gz
-	sha256sums = 5d5cab34df8e0f37d4ca5ab186ebdeeb3e996ea77efa0026e11bc66334b86202
+	sha256sums = 19d337ed0a5a16a416cf4d983b7a0b10d981ce7293681277a1c39a27a7430daa
 
 pkgname = eric
