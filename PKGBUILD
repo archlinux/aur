@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make -f 'Makefiles/Makefile.UNIX' -j16
+  make -f 'Makefiles/Makefile.UNIX'
 }
 
 package() {
