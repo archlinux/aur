@@ -1,15 +1,21 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-mistletoe
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A fast, extensible Markdown parser in pure Python'
 arch=('any')
 url='https://github.com/miyuchina/mistletoe'
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-setuptools')
-_commit='cd0cd82c309094d85d60b86c2cf7cb1424e8b6f3'
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+)
+_commit='35f961cd97c8d567eb1cb82c4a859a9ca516f4f1'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -22,7 +28,7 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -34,7 +40,7 @@ check() {
 package() {
   cd "$pkgname"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
