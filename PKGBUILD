@@ -10,7 +10,7 @@ _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/$_repo
