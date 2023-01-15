@@ -11,7 +11,6 @@ url="https://flavio.tordini.org/minitube"
 license=(GPL3)
 depends=(gcc-libs glibc qt5-base qt5-declarative qt5-x11extras)
 makedepends=(mpv qt5-tools)
-options=(debug)
 source=(
   https://github.com/flaviotordini/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2
   $pkgname-3.9.3-mpv_0.35.patch
