@@ -1,19 +1,17 @@
 # Maintainer: Ali Furkan Yıldız <alifurkanyildz@gmail.com>
 pkgname=avt
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="ali's video tool"
 arch=(any)
 url='https://gitlab.com/alifurkany/avt'
-license=('GPL')
+license=('GPL3')
 depends=('bash' 'ffmpeg' 'pipewire' 'pulseaudio' 'xorg-xdpyinfo')
-source=('git+https://gitlab.com/alifurkany/avt.git')
+makedepends=('git')
+source=("git+https://gitlab.com/alifurkany/avt.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-  cd avt
-  git config advice.detachedHead false
-  git checkout tags/v$pkgver
-
+  cd "$srcdir/avt"
   install -Dm755 avt "$pkgdir/usr/bin/avt"
 }
