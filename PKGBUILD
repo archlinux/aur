@@ -15,7 +15,7 @@ license=(BSD)
 depends=(lib32-glibc lib32-libnl $_name=$pkgver)
 makedepends=(bluez-libs lib32-dbus)
 provides=(libpcap.so)
-options=(debug !staticlibs)
+options=(!staticlibs)
 source=(https://www.tcpdump.org/release/$_name-$pkgver.tar.gz{,.sig})
 sha512sums=('57bc07cbc8c326e203ce10ce1eb9f55760fc33320718d8643c65a68949334291877dffcf19af5f61eb9b4eda2d8ffe7bacee38363d2d6536cc85ae81c851684d'
             'SKIP')
