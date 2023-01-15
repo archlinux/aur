@@ -13,7 +13,6 @@ depends=(gtk3 libnotify bluez libcanberra systemd pulseaudio-bluetooth)
 makedepends=(gobject-introspection gtk-doc docbook-xsl git meson)
 checkdepends=(python-dbusmock)
 provides=(libgnome-bluetooth.so)
-options=(debug)
 _commit=736eadbfb693d9594371470ad83370d327df6f74  # tags/3.34.5^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-bluetooth.git#commit=$_commit")
 sha256sums=('SKIP')
