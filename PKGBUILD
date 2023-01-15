@@ -13,7 +13,6 @@ makedepends=('llvm14' 'cmake' 'ninja' 'python')
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'llvm14: referenced by some clang headers')
 checkdepends=('llvm')
-options=('debug')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/clang-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
