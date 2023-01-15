@@ -1,8 +1,8 @@
 pkgbase = linux-rust
 	pkgdesc = Rust Linux
-	pkgver = 6.1.5.arch2
+	pkgver = 6.1.6.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.1.5-arch2
+	url = https://github.com/archlinux/linux/commits/v6.1.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -23,14 +23,14 @@ pkgbase = linux-rust
 	makedepends = llvm
 	makedepends = lld
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1.5-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.1.6-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = d17b03decf4ba3fbb672d46d6dfdff35464b49c31e8abb833da55b738546761d
+	sha256sums = bac639d2c8246acdb4f63e8e14078e63238265692073a915d8073b5f4ed726af
 
 pkgname = linux-rust
 	pkgdesc = The Rust Linux kernel and modules
