@@ -12,7 +12,6 @@ depends=(libnm libsecret openvpn)
 makedepends=(libnma libnma-gtk4 python git)
 optdepends=('libnma: GUI support (GTK 3)'
             'libnma-gtk4: GUI support (GTK 4)')
-options=(debug)
 _commit=ae9575dd07cc2d2d51ec8d0297823e07017cb6e6  # tags/1.10.2^0
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
 sha256sums=('SKIP')
