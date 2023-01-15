@@ -42,7 +42,7 @@ if [[ ${_use_suffix} == 0 ]]; then
   provides=("electron${_major_ver}")
 fi
 # shellcheck disable=SC2034
-options=('debug' '!lto') # Electron adds its own flags for ThinLTO
+options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
