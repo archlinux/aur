@@ -18,7 +18,6 @@ makedepends=(
   lib32-dbus
   meson
 )
-options=(debug)
 _tag=4c0a26052efafae923eba42d14c5cb88da745de2
 source=(git+https://gitlab.gnome.org/GNOME/dconf.git#tag=${_tag})
 sha256sums=('SKIP')
