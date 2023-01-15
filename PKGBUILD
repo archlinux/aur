@@ -5,7 +5,7 @@
 # Contributor: Thibault Molleman <aur at thibaultmol d0t link>
 
 pkgname='sejda-desktop'
-pkgver='7.5.3'
+pkgver='7.5.4'
 pkgrel='1'
 license=('custom:EULA')
 pkgdesc='PDF editor'
@@ -13,8 +13,8 @@ arch=('x86_64')
 depends=('gconf')
 url='http://www.sejda.com/desktop'
 source=("https://sejda-cdn.com/downloads/sejda-desktop_${pkgver}_amd64.deb")
-md5sums=('045afe80abc141ca46f040fbab952360')
-sha512sums=('6c05a00a0be7b0478f0745c527ef3d50a02c2e1c582abcddb6e66459a5e4e50d23d8081780d095c74c10021baa414be1ee70a2043ced53bd29de8f9a674b27d7')
+md5sums=('e130d70e4bf219f8505f77a32316bdf3')
+sha512sums=('d2d4ae9184a550a16402e62a872e2378aec551fca7108141a6f07f37132374cf15afa8476b741bfff37be6b3271ffa112e09e9b20e34695d0550a13cc8df0973')
 options=('!strip')
 
 prepare() {
