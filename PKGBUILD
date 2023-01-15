@@ -2,7 +2,7 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=transonic
 pkgname=python-${_base}
-pkgver=0.5.2
+pkgver=0.5.2.post0
 pkgrel=1
 pkgdesc="Make your Python code fly at transonic speeds!"
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 provides=(${_base})
 source=(${_base}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f023f490cfbcb34733136f6fcdbe0e202e913d16d404fb9f59c674f5b6a9cd647060a97d043713aa380f1db27d199e6e8536e927502d2caf57daa69b23acfca7')
+sha512sums=('51c573c89b1d6ad0976f18908d32bbc1ce50679062542e48dba9165a1294646738b3c18821910c35c3e33f1f34e6e5a3f7905b87eccc1db369ee2c74c5560d17')
 
 build() {
   cd ${_base}-${pkgver}
