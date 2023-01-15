@@ -14,7 +14,6 @@ makedepends=('ruby-ronn-ng')
 replaces=('espeak-ng-espeak')
 provides=('espeak-ng-espeak')
 conflicts=('espeak-ng-espeak' 'espeak')
-options=(debug)
 source=("$url/archive/$pkgver/espeak-ng-$pkgver.tar.gz")
 b2sums=('7b5a9d0613636942374b2b414fa5cffcbefe18083dc9aa79a6ac08cc3737cbef06808bf90f0c846ec33acf481797329fb6d2f013b6f67abd6a2dfcda0d3f9343')
 
