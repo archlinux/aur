@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 e4at gmail D0_T com>
 
 pkgname=ftl
-pkgver=1.5.13
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="FTL: Faster Than Light, a spaceship simulation real-time roguelike-like (requires full copy of the game)"
 license=('custom:commercial')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.ftlgame.com/"
 depends=('gcc-libs' 'glu')
 makedepends=('imagemagick')
-_gamepkg="FTL.${pkgver}.tar.gz"
+_gamepkg="FTL.${pkgver}.Linux.zip"
 
 # You can download the Humble Indie Bundle file manually, or you can configure
 # DLAGENTS in makepkg.conf to auto-download.
@@ -23,33 +23,24 @@ _gamepkg="FTL.${pkgver}.tar.gz"
 # To auto-search through a directory containing Humble Bundle downloads, you
 # could set:
 # DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
-DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
+DLAGENTS+=("hib::/usr/bin/echo 'Could not find %u. Download manually to \"$PWD\" or setup hib:// DLAGENT in /etc/makepkg.conf.'; exit 1")
 
 source=("${_gamepkg}"::"hib://${_gamepkg}"
         ${pkgname}.sh
         ${pkgname}.desktop)
-md5sums=('791e0bc8de73fcdcd5f461a4548ea2d8'
-         'c415361a58df0857d9a42653fdaadd5a'
-         'f7a67ce1e0311d98f41e6d80d872cb97')
-PKGEXT='.pkg.tar'
+sha512sums=('9daf0712897a79b8301ecca40a86e4e8c6676cb74fd61e832f570727aed0dce84174702651eadb2267625d5058fa689a49c2e4d14556e66a2baa832784ad9948'
+            'ed984d62425f032b2190d7fafff48852825a215bdeb6ea6adaad16de97050915683d676913b2e2d92f73771b66b85fe1bef8426fdaa279b579ceedc6226218ce'
+            'cbed4a51aab1527ba71d44ac2a848c4fb233f0037f0b63c38f51c4903fe0e51b8822aff4659cbc7d26652733627eef4a44aef5df0fb57d7749aea4c309c5584d')
 
 package() {
+  archive_dir="${srcdir}/FTL.${pkgver}.Linux"
+  rm "${archive_dir}/data/FTL.x86"
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/FTL/"* "${pkgdir}/opt/${pkgname}/"
+  cp -r "${srcdir}/FTL.${pkgver}.Linux/"* "${pkgdir}/opt/${pkgname}/"
 
-  # fix file permissions
-  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
-  find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/opt/${pkgname}/FTL"
   chmod 755 "${pkgdir}/opt/${pkgname}/data/FTL"
-
-  if [ "${CARCH}" = "i686" ]; then
-    rm -r "${pkgdir}/opt/${pkgname}/data/amd64"
-    find "${pkgdir}/opt/${pkgname}/data/x86" -type f -exec chmod 755 {} +
-  else
-    rm -r "${pkgdir}/opt/${pkgname}/data/x86"
-    find "${pkgdir}/opt/${pkgname}/data/amd64" -type f -exec chmod 755 {} +
-  fi
+  chmod 755 "${pkgdir}/opt/${pkgname}/data/FTL.amd64"
 
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

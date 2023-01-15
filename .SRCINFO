@@ -1,6 +1,6 @@
 pkgbase = ftl
 	pkgdesc = FTL: Faster Than Light, a spaceship simulation real-time roguelike-like (requires full copy of the game)
-	pkgver = 1.5.13
+	pkgver = 1.6.12
 	pkgrel = 1
 	url = http://www.ftlgame.com/
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = ftl
 	makedepends = imagemagick
 	depends = gcc-libs
 	depends = glu
-	source = FTL.1.5.13.tar.gz::hib://FTL.1.5.13.tar.gz
+	source = FTL.1.6.12.Linux.zip::hib://FTL.1.6.12.Linux.zip
 	source = ftl.sh
 	source = ftl.desktop
-	md5sums = 791e0bc8de73fcdcd5f461a4548ea2d8
-	md5sums = c415361a58df0857d9a42653fdaadd5a
-	md5sums = f7a67ce1e0311d98f41e6d80d872cb97
+	sha512sums = 9daf0712897a79b8301ecca40a86e4e8c6676cb74fd61e832f570727aed0dce84174702651eadb2267625d5058fa689a49c2e4d14556e66a2baa832784ad9948
+	sha512sums = ed984d62425f032b2190d7fafff48852825a215bdeb6ea6adaad16de97050915683d676913b2e2d92f73771b66b85fe1bef8426fdaa279b579ceedc6226218ce
+	sha512sums = cbed4a51aab1527ba71d44ac2a848c4fb233f0037f0b63c38f51c4903fe0e51b8822aff4659cbc7d26652733627eef4a44aef5df0fb57d7749aea4c309c5584d
 
 pkgname = ftl
 
