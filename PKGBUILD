@@ -1,36 +1,23 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: Daniel Souza <aur at posix dot dev dot br>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=chainner-rpm
+pkgver=0.16.1
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc='ChaiNNer - rhel/centos build altered for arch'
+arch=('x86_64')
+license=('GPL3')
+url="https://github.com/chaiNNer-org/chaiNNer/"
+provides=('chainner')
+options=('!emptydirs' '!strip')
+depends=('patchelf' 'libxcrypt-compat')
+source=("https://github.com/chaiNNer-org/chaiNNer/releases/download/v${pkgver}/chaiNNer-${pkgver}-x64-linux-redhat.rpm")
+sha512sums=('7560aefe6643c22ffa8bb69ced74c95cb87abf946e10e12bce851eefc282740b01fd990b12438272b122f71e7d085f3adc30c3f47d387d06804bc61313adeaad')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
-}
-
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
-
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
-}
+package() (
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/usr/lib/"
+    mkdir -p "${pkgdir}/usr/share/"
+    cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/usr/lib/${pkgname%-rpm}/." "${pkgdir}/usr/lib/${pkgname%-rpm}/"
+    cp -r "${srcdir}/usr/share/." "${pkgdir}/usr/share/"
+)
