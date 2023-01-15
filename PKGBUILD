@@ -4,9 +4,9 @@
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
-_pkgname=rxvt-unicode
 pkgname=rxvt-unicode-pixbuf
-pkgver=9.30
+_pkgname=${pkgname%-*}
+pkgver=9.31
 pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
@@ -23,12 +23,12 @@ source=(
 'urxvt-tabbed.desktop'
 'font-width-fix.patch'
 'line-spacing-fix.patch')
-md5sums=('793ae8d59cf911fc6a93254234933d25'
-         'fec94dc986fa37ec380079d81de3e0b2'
-         'fac55f0a8404c86dad3e702146762332'
-         '8a5599197568c63720e282b9722a7990'
-         'f6bb5770d2e7b06d88882513710a267d'
-         'd4e03127a0d3bbf2e173850770651b08')
+sha1sums=('44b31b4d9890aea4a6d66998bfb0c39e727fdf39'
+		'8697f9fd671b627f95c9c2da73f9cba6a1df09fa'
+		'f2903277e6a93cc2e77e5b0ae55167ba6576d0bd'
+		'2cb8a93b546492afacd18ae5a4c01191aa4e80d9'
+		'b376ae0ae3694a2a4baf1e9b7254f9525737a531'
+		'b7fde1c46af45e831828738874f14b092b1e795f')
 
 prepare() {
 	cd $_pkgname-$pkgver
