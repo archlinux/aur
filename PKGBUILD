@@ -1,57 +1,74 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: Evangelos Paterakis <evan@geopjr.dev>
 
 pkgname=collision
-#pkgbase=collision
-#pkgname=(collision collision-nautilus-extension)
 _app_id=dev.geopjr.Collision
-pkgver=3.3.1
-pkgrel=3
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
-arch=('x86_64' 'aarch64')
-url="https://github.com/GeopJr/Collision"
-license=('BSD2')
+arch=('x86_64')
+url="https://collision.geopjr.dev"
+license=('BSD')
 depends=('libadwaita' 'libyaml')
 makedepends=('crystal' 'gobject-introspection' 'shards' 'spglib')
-optdepends=('libnautilus-extension: Extension interface for Nautilus')
-conflicts=("$pkgname-hashes" "hashbrown")
-replaces=("$pkgname-hashes" "hashbrown")
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-	0288-Use-pacman-hooks.patch)
-_source=Collision
-b2sums=('8936413820554eaaa04aa1124f31a088b088b56c9daefd70bd8f7d0748e4a915322467842395526e59a65938ecedb4dde26ad616fcf9a412350abef03cfd646d'
-        '77c51994e7d5035eda087d0e1ec03a54cd32c559438a08112af1a4f318f4fbf8a86e4c21af42e26d6b1d5a96525f4d0f55a15db1b492b84d4bb53ee7da013e9c')
+checkdepends=('appstream-glib')
+optdepends=('python-nautilus: Add a shortcut to the Nautilus right-click menu')
+conflicts=("$pkgname-hashes" 'hashbrown')
+replaces=("$pkgname-hashes" 'hashbrown')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GeopJr/Collision/archive/v$pkgver.tar.gz"
+        '0288-Use-pacman-hooks.patch')
+sha256sums=('9ea8b8df2c8ed23df3796b91a9735d765f39c5f164305eebb7356d3bdd217664'
+            '914b06a460de8a3c872bbfb4b26340c4bfe517c5cd7e1798959eb21d2202a892')
 
 prepare() {
-  cd "$_source-$pkgver"
-  patch -p1 -i ../0288-Use-pacman-hooks.patch
+  cd "Collision-$pkgver"
+  patch -Np1 -i ../0288-Use-pacman-hooks.patch
 }
 
 build() {
-  cd "$_source-$pkgver"
-  make all
-  make gresource
-  make metainfo
+  cd "Collision-$pkgver"
+  export APP_ID=dev.geopjr.Collision
+  export SHARDS_CACHE_PATH="$srcdir/shards-cache"
+  export PREFIX='/usr'
+  export PO_LOCATION='po'
+  export LOCALE_LOCATION='/share/locale'
+
+  # make desktop
+  msgfmt --desktop --template data/${APP_ID}.desktop.in -d ${PO_LOCATION} -o data/${APP_ID}.desktop
+
+  # make bindings
+  shards install
+  ./bin/gi-crystal
+
+  # make build
+  shards build -Dpreview_mt --release --no-debug
+
+  # make gresource
+  glib-compile-resources --sourcedir data --target data/${APP_ID}.gresource data/${APP_ID}.gresource.xml
+
+  # make metainfo
+  msgfmt --xml --template data/${APP_ID}.metainfo.xml.in -d ${PO_LOCATION} -o data/${APP_ID}.metainfo.xml
 }
 
 check() {
-  cd "$_source-$pkgver"
-  make test || :
+  cd "Collision-$pkgver"
+
+  # make test
+  crystal spec -Dpreview_mt --order random
+
+  appstream-util validate-relax --nonet "data/${_app_id}.metainfo.xml"
+  desktop-file-validate "data/${_app_id}.desktop"
 }
 
 package() {
-	cd "$_source-$pkgver"
-	make PREFIX="$pkgdir/usr" install
-	
-	install -Dm644 "data/$_app_id.metainfo.xml" "$pkgdir/usr/share/metainfo/$_app_id.metainfo.xml"
-	install -Dm644 "data/$_app_id.gresource.xml" "$pkgdir/usr/share/$_app_id/$_app_id.gresource.xml"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+  cd "Collision-$pkgver"
+  export PREFIX="$pkgdir/usr"
+  export PO_LOCATION='po'
+  export LOCALE_LOCATION='/share/locale'
+  make DESTDIR="$pkgdir" install
 
-#package_collision-nautilus-extension() {
-#	pkgdesc="GNOME Files extension that adds a (Check Hashes) context menu item"
-#
-#	cd "$_source-$pkgver"
-#	
-#	install -Dm644 nautilus-extension/collision-extension.py "$pkgdir/usr/share/nautilus-python/extensions/collision-extension.py"
-#}
+  install -Dm644 "data/${_app_id}.gresource.xml" -t "$pkgdir/usr/share/${_app_id}/"
+  install -Dm644 "data/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "nautilus-extension/$pkgname-extension.py" -t \
+    "$pkgdir/usr/share/nautilus-python/extensions/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
