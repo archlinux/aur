@@ -10,7 +10,7 @@ depends=('gtk3')
 provides=('antpatt')
 conflicts=('antpatt')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'gtk3' 'json-c' 'zlib' 'gsl')
-source=("https://github.com/kkonradpl/antpatt/archive/refs/tags/v1.0.1.tar.gz")
+source=("https://github.com/kkonradpl/antpatt/archive/refs/tags/v1.1.tar.gz")
 sha256sums=('8743c496bf3d97f78bbdc31048bbf657113ba25c46c25cbdebf9acc0958348eb')
 
 build() {
