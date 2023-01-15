@@ -17,7 +17,6 @@ provides=(python-pyqtpurchasing)
 replaces=(python-pyqtpurchasing)
 source=(https://pypi.python.org/packages/source/P/PyQtPurchasing/PyQtPurchasing-$pkgver.tar.gz)
 sha256sums=('8bb1df553ba6a615f8ec3d9b9c5270db3e15e831a6161773dabfdc1a7afe4834')
-options=(debug)
 
 build() {
   cd PyQtPurchasing-$pkgver
