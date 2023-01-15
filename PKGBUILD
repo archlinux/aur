@@ -11,7 +11,6 @@ license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2)
 sha256sums=('c229976bb413eb88e45cb5dfb68b27890d450149c09b331abd751e7ae0f5fa66')
-options=(debug)
 
 build() {
   cmake -B build-gtk3 -S wxWidgets-$pkgver \
