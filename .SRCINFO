@@ -1,6 +1,6 @@
 pkgbase = game-of-life
 	pkgdesc = A simulator of Conway's game of life
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/sixpounder/game-of-life
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = game-of-life
 	makedepends = meson
 	makedepends = cargo
 	depends = libadwaita
-	source = game-of-life-0.3.0.tar.gz::https://github.com/sixpounder/game-of-life/archive/v0.3.0.tar.gz
-	b2sums = 82c37ef178ad8f8eb664426acc353fe5fdce46a2d60753fd15455cc761599a2a3a1c27dafbadea0bf56842776ba198f0bda0eba78db5694e9a5b2e23a5326530
+	source = game-of-life-0.3.2.tar.gz::https://github.com/sixpounder/game-of-life/archive/v0.3.2.tar.gz
+	b2sums = ce0e2b8951c6d169c3e18bdfb465a7bdc6c841b52301379d85f9db24b786f3cca841990809fa55e191cd68342e570bb27cc55cb045c53ab70ee1f8b5cd9fb5c8
 
 pkgname = game-of-life
