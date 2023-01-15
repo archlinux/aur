@@ -1,13 +1,12 @@
 pkgname=wl-screenrec-git
 pkgver=r49.32f9a3f
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance hardware accelerated wlroots screen recorder"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/russelltg/wl-screenrec"
 license=('APACHE')
 provides=("ripgrep")
 makedepends=('cargo' 'git')
-optdepends=('fish: fish completions')
 depends=('ffmpeg')
 conflicts=('wl-screenrec')
 source=("$pkgname::git+https://github.com/russelltg/wl-screenrec")
