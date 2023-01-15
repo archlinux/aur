@@ -19,7 +19,6 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-quick3d-assimp-5.1.patch)
 sha256sums=('SKIP'
             '57a3ac54c46f86d1f99ce20653bb34215cbd65fbd36f7ee802360336e88f268e')
-options=(debug)
 
 pkgver() {
   cd $_pkgfqn
