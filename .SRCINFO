@@ -1,0 +1,22 @@
+pkgbase = inter-hexen
+	pkgdesc = A limit-removing source port of Hexen with enhancements and translation to the Russian language
+	pkgver = 6.0
+	pkgrel = 1
+	url = https://github.com/JNechaevsky/inter-doom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python3
+	depends = sdl2>=2.0.18
+	depends = sdl2_mixer>=2.0.2
+	depends = sdl2_net>=2.0.0
+	depends = libsamplerate
+	optdepends = hexen1-wad: Hexen demo game data
+	conflicts = inter-hexen-git
+	source = inter-hexen-6.0.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/hexen-6.0.tar.gz
+	b2sums = 0044145b92f1adb5e72d9fb45282d699b03feb431179bbdf20a91de69dd28c4701f8ecf8d0988dc16b46d37881fc10038c02f6363e6433b9abc6fcf3543380f0
+
+pkgname = inter-hexen
