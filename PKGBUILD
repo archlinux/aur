@@ -36,7 +36,6 @@ optdepends=(
   'jack: backend for standalone'
   'vst3-host: for VST3 plugins'
 )
-options=('debug')
 _commit='e365b6d26afd66cb6d050d39102b5ac7c2225dd8'
 source=(
   "$pkgname::git+https://github.com/reales/OPL#commit=$_commit"
