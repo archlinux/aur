@@ -11,7 +11,6 @@ license=(LGPL)
 arch=(x86_64)
 depends=(clutter-gtk libsoup cairo sqlite)
 makedepends=(gobject-introspection gtk-doc vala meson git)
-options=(debug)
 _commit=145e417f32e507b63c21ad4e915b808a6174099e  # tags/LIBCHAMPLAIN_0_12_20^0
 source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit")
 sha256sums=('SKIP')
