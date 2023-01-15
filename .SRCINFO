@@ -1,10 +1,10 @@
 pkgbase = tmpview-bin
 	pkgdesc = Viewer/converter between Turbo Macro Pro and plain text (TMPx) assembly formats
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://style64.org/release/tmpview-v1.3.1-style
 	arch = x86_64
-	license = unknown
+	license = custom:proprietary
 	depends = gcc-libs
 	options = !strip
 	source = https://style64.org/file/TMPview_v1.3.1-STYLE.zip
