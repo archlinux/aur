@@ -1,15 +1,16 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Jeremy Cowgar <jeremy@cowgar.com>
 
 pkgname=empty
-pkgver=0.6.20b
+pkgver=0.6.23c
 pkgrel=1
 pkgdesc="Run applications under pseudo-terminal sessions"
 arch=('i686' 'x86_64')
-url="http://empty.sourceforge.net/"
+url="https://empty.sourceforge.net/"
 license=('custom')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tgz)
-sha256sums=('7e6636e400856984c4405ce7bd0843aaa3329fa3efd20c58df8400a9eaa35f09')
+source=(https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tgz)
+sha256sums=('8a7ca8c7099dc6d6743ac7eafc0be3b1f8991d2c8f20cf66ce900c7f08e010bd')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
@@ -30,5 +31,5 @@ package() {
 
 # docs
   install -Dm644 CHANGELOG "${pkgdir}"/usr/share/doc/$pkgname/CHANGELOG
-  install -Dm644 README "${pkgdir}"/usr/share/doc/$pkgname/README
+  install -Dm644 README.txt "${pkgdir}"/usr/share/doc/$pkgname/README.txt
 }
