@@ -14,7 +14,6 @@ url='https://www.pcre.org/'
 license=('BSD')
 depends=('lib32-gcc-libs' "$_pkgname")
 provides=(libpcre{,16,32,posix,cpp}.so)
-options=(debug)
 source=("https://sourceforge.net/projects/pcre/files/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.bz2"{,.sig})
 sha512sums=('91bff52eed4a2dfc3f3bfdc9c672b88e7e2ffcf3c4b121540af8a4ae8c1ce05178430aa6b8000658b9bb7b4252239357250890e20ceb84b79cdfcde05154061a'
             'SKIP')
