@@ -17,7 +17,6 @@ groups=(qt qt5)
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
-options=(debug)
 
 pkgver() {
   cd $_pkgfqn
