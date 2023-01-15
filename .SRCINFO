@@ -1,6 +1,6 @@
 pkgbase = wlipman-git
 	pkgdesc = A simple clipboard manager for wayland.
-	pkgver = r7
+	pkgver = r9
 	pkgrel = 1
 	url = https://github.com/OverShifted/wlipman
 	arch = i686
