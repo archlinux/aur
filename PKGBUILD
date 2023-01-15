@@ -1,7 +1,7 @@
 # Maintainer: Kyle McLean <kylem590@gmail.com>
 
 pkgname=godot4-mono-bin
-pkgver=beta11
+pkgver=beta12
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source_x86_64=($pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godot
 
 sha512sums=('0658a4cbd5a5842c1c072eaca25cf243db14251b3b619afff076999ad9104e41e32a444bfbb771992ec9a990d814fcce234ff3c2a416493e5eb3a8d112b85235'
             '3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e')
-sha512sums_i686=('d3d11220490379ddb3c966fa3b6e6e462fa202a7fb46462461b22e292a82c3dfb678ec4c6302bc2052fdbacc2a1a72c1286523e21cbc79428203e7ae00dc01c6')
-sha512sums_x86_64=('9f3501c5ae104ad38cbd1c805f949f0e24f9498c10350751d57fbb0dab654345a0ba9b0e7dacba2d02ef2bcb7b9bdf909390ecde7d74889b1dc601134d9f9266')
+sha512sums_i686=('ed9eb7063347097425d295a73ecdc8dd72ec22c111d2abe3aae359e06b270feecc0ecbf0337648ef1671dabd0e4797240e2d24c7fb243746e9d68e1e063d0326')
+sha512sums_x86_64=('906427a891bf7eed7eaf21d429019e3ea544ca70ed9148092701cc013e21c6abd031a5de34ea82fd97bfad7d64b07dceb634cd8ba2927a6ead0662fb769baefe')
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
