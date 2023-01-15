@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://powdertoy.co.uk/"
 license=('GPL3')
 depends=('openssl' 'hicolor-icon-theme')
-source=("https://powdertoy.co.uk/Download/powder-lin64.zip"
+source=("${pkgname}-${pkgver}-${pkgrel}.zip::https://powdertoy.co.uk/Download/powder-lin64.zip"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/icon_exe.svg"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe.png"
         "https://raw.githubusercontent.com/The-Powder-Toy/The-Powder-Toy/master/resources/generated_icons/icon_exe_16.png"
