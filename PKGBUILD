@@ -1,4 +1,4 @@
-# Maintainer: Daniel Souza <aur@posix.dev.br>
+# Maintainer: Daniel Souza <aur at posix dot dev dot br>
 
 pkgname=yarr-git
 _pkgname=yarr
