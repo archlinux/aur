@@ -14,7 +14,6 @@ source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$pkgname-$pkgver
 sha256sums=('178138e3ed5ff9f224856c03dc1b4e837c6ce05072da8287aad5970e2e9875b2'
             'SKIP')
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
-options=(debug)
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
