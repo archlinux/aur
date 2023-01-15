@@ -2,8 +2,8 @@
 # Maintainer: Mantas M. <grawity@gmail.com>
 pkgname=sssd-nosmb
 _pkgname=sssd
-pkgver=2.6.1
-pkgrel=3
+pkgver=2.8.1
+pkgrel=2
 pkgdesc="System Security Services Daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/SSSD/sssd"
@@ -24,8 +24,11 @@ depends=(
   'glib2'
   'nfsidmap'
   'jansson'
+  'jose'
   'libtevent.so'
   'libldb.so'
+  'curl'
+  'pcre2'
 )
 makedepends=(
   'docbook-xsl'
@@ -43,13 +46,12 @@ checkdepends=(
   'openssh'
   'softhsm'
 )
+options=('!lto')
 backup=('etc/logrotate.d/sssd')
 source=("https://github.com/SSSD/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"{,.asc})
-sha512sums=('5b35a66c37593de738f52d5ad2f7860067af4061bd11b2f5c4b701177ef1bc3091d3c3df573d751339e9c9bb07476988b0b030b91b6a33adcb663df16be80d81'
+sha512sums=('419798fa3e7ab0ad407d9f53ead183e6c4ffb534c93ed20a944a2eea6760bffaa2336373a8d52bd43f8e7c100e52fccecc9d0859bde04f8ce4e7406102024c0e'
             'SKIP')
-validpgpkeys=('E4E366758CA0716AAB8048671EC6AB7532E7BC25'
-              '16F24229488E736048952737BA88000FE6398272'
-              '1A41DC67505F89A330828B66AFFE75DDE8508E12')
+validpgpkeys=('C13CD07FFB2DB1408E457A3CD3D21B2910CF6759')
 provides=("$_pkgname=$pkgver-$pkgrel")
 conflicts=($_pkgname)
 
