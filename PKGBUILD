@@ -1,8 +1,8 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gnomish-icons-git
-pkgver=r19.c338c18
+pkgver=r22.0beb580
 pkgrel=1
-pkgdesc="GNOME-style icons for non-GNOME apps"
+pkgdesc="Alternate versions of icons that looked ugly on GNOME"
 arch=(any)
 url="https://github.com/realmazharhussain/gnomish-icons"
 license=('custom')
