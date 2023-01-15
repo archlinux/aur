@@ -37,7 +37,6 @@ optdepends=(
   'vst3-host: for VST3 plugins'
   'lv2-host: for LV2 plugins'
 )
-options=('debug')
 _commit='2afc035ac3e70171a71840bbc2f859715b6ce765'
 source=(
   "$pkgname::git+$url#commit=$_commit"
