@@ -1,4 +1,4 @@
-# Maintainer: sh1213 <shumer1213 at gmail>
+# Original Author: sh1213 <shumer1213 at gmail>
 
 pkgname=cnping-git
 pkgver=r172.50efba0
@@ -7,7 +7,7 @@ pkgdesc="Minimal Graphical IPV4 Ping Tool by CNLohr"
 arch=('i686' 'x86_64')
 url="https://github.com/cntools/cnping"
 license=('custom')
-depends=('libxinerama')
+depends=('libxinerama' 'libgl')
 makedepends=('git')
 source=('git+https://github.com/cntools/cnping.git')
 md5sums=('SKIP')
@@ -34,6 +34,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  install -D -m4755 cnping "$pkgdir/usr/bin/cnping"
+  install -D -m755 cnping "$pkgdir/usr/bin/cnping"
+  setcap cap_net_raw+ep "$pkgdir/usr/bin/cnping"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/cnping-git/LICENSE"
 }
