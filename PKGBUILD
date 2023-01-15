@@ -12,7 +12,6 @@ license=(GPL)
 depends=(gtk3 gpgme dbus-glib libnotify gcr dconf libsm)
 makedepends=(intltool gobject-introspection gnome-common git)
 provides=(libcryptui.so)
-options=(debug)
 _commit=ed4f890ee29b94c1bedd7030d5c857e3b9edb465  # master
 source=("git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=$_commit")
 sha256sums=('SKIP')
