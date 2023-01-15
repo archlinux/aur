@@ -1,0 +1,18 @@
+pkgbase = python-urlextract
+	pkgdesc = Collects and extracts URLs from given text.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/lipoja/URLExtract
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-idna
+	depends = python-uritools
+	depends = python-platformdirs
+	depends = python-dnspython
+	source = https://files.pythonhosted.org/packages/source/u/urlextract/urlextract-1.8.0.tar.gz
+	sha256sums = 3573f6b812814efe06ca46e91e82d984edaa3cd07daaaaa296a467ad9881a037
+
+pkgname = python-urlextract
