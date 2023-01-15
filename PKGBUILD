@@ -10,7 +10,6 @@ license=(GPL3)
 groups=(pro-audio)
 depends=(hicolor-icon-theme new-session-manager python python-pyqt5
 python-pyxdg ttf-dejavu)
-options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.gz{,.sig})
 sha512sums=('22ac8c6ac8c0ee4b021f2470bac8ba0fbe15f2e49a1fa70abb68bee838c3d4799d613cc2f29e8a391b8a173c5cb983180889763796e05c3415ed8c20c2b96728'
             'SKIP')
