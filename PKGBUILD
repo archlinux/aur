@@ -22,7 +22,6 @@ makedepends=(
   git
   ninja
 )
-options=(debug)
 _commit=caccaf28e3df6ea612d2d4b39f781c4324019fdb  # tags/0.4.18
 source=("git+https://github.com/libproxy/libproxy#commit=$_commit")
 b2sums=('SKIP')
