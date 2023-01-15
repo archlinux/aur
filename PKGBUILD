@@ -10,7 +10,7 @@ url="https://github.com/CanonicalLtd/dqlite"
 license=('LGPL3')
 depends=('libuv' 'raft' 'sqlite')
 makedepends=('tcl' 'readline' 'zlib')
-options=(debug strip)
+options=(strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/canonical/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('14334a72389322d047576697f112da4cd6e1a5257d652d6162f195f2855fcd12')
 
