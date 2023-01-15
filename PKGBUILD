@@ -3,13 +3,13 @@
 pkgname=nginx-quic-mod-brotli
 epoch=1
 pkgver=1.0.9
-pkgrel=1
+pkgrel=5
 
 _commit=6e975bcb015f62e1f303054897783355e2a877dc
 _modname="ngx_${pkgname#nginx-quic-mod-}"
 if [[ $CC=="clang" ]];then
-    _cc_opt="-flto"
-    _ld_opt="-flto -fuse-ld=lld"
+    _cc_opt="-fPIC"
+    _ld_opt="$LDFLAGS -fPIC -fuse-ld=ld"
 fi
 
 pkgdesc="Brotli compression filter module for nginx"

@@ -1,7 +1,7 @@
 pkgbase = nginx-quic-mod-brotli
 	pkgdesc = Brotli compression filter module for nginx
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/google/ngx_brotli
 	arch = x86_64
