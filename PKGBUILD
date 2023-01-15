@@ -1,12 +1,12 @@
 pkgname=gimp-elsamuko-git
-pkgver=r86.91162f8
+pkgver=r88.b401697
 pkgrel=1
 pkgdesc='Varoius Gimp scripts and plugins made by elsamuko'
 arch=('i686' 'x86_64')
 url='https://github.com/elsamuko/gimp-elsamuko'
 license=('GPL3')
-depends=(gimp)
-makedepends=(git)
+depends=(gimp opencv)
+makedepends=(git qt5-base)
 conflicts=(gimp-elsamuko-plugins gimp-elsamuko-scripts)
 source=("git+$url.git")
 md5sums=(SKIP)
@@ -24,17 +24,20 @@ build(){
   gimptool --build elsamuko-get-curves.c
   popd
 
-  msg2 "Building depthmap-cv plugin TODO"
+  msg2 "Building depthmap-cv plugin"
   pushd ${pkgname%-git}/plugins/elsamuko-depthmap-cv
-#   TODO:  ld: undefined reference to symbol '_ZTIPKc@@CXXABI_1.3'
-#   ld: /usr/lib/libstdc++.so.6: error adding symbols: DSO missing from command line
-  # export CFLAGS="-I/usr/include/opencv4"
+  sed -e '/^QMAKE_POST_LINK/s/^/#/g' -i elsamuko-depthmap-cv.pro
+  qmake
+  make
   # gimptool --build elsamuko-depthmap-cv.cpp
   popd
 
   msg2 "Building saturation plugin"
   pushd ${pkgname%-git}/plugins/elsamuko-saturation
-  gimptool --build elsamuko-saturation.c
+  sed -e '/^QMAKE_POST_LINK/s/^/#/g' -i elsamuko-saturation.pro
+  qmake
+  make
+  # gimptool --build elsamuko-saturation.c
   popd
 }
 package(){
@@ -57,9 +60,9 @@ package(){
   install -Dm755 elsamuko-get-curves "$_plugins_dir/"
   popd
 
-  # pushd ${pkgname%-git}/plugins/elsamuko-depthmap-cv
-  # install -Dm755 elsamuko-depthmap-cv "$_plugins_dir/"
-  # popd
+  pushd ${pkgname%-git}/plugins/elsamuko-depthmap-cv
+  install -Dm755 elsamuko-depthmap-cv "$_plugins_dir/"
+  popd
 
   pushd ${pkgname%-git}/plugins/elsamuko-saturation
   install -Dm755 elsamuko-saturation "$_plugins_dir/"
