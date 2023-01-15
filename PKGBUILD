@@ -2,12 +2,11 @@
 
 pkgname=open-numismat
 pkgver=1.8.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Coin collecting software to organize and manage your own coin catalogue.'
 arch=('any')
 url="http://opennumismat.github.io"
 license=('GPL3')
-groups=('')
 conflicts=('open-numismat-bin' 'open-numismat-git')
 makedepends=('python-setuptools')
 depends=('python' 'python-pyqt5' 'python-pyqt5-webengine' 'python-jinja' 'python-matplotlib' 'python-numpy' 'python-xlwt' 'python-xlrd' 'python-lxml' 'python-dateutil')
@@ -37,7 +36,7 @@ package() {
   local site_packages_dir=$(python -c "import site; print(site.getsitepackages()[0])")
   mv "${srcdir}/private_keys.py" "${pkgdir}/${site_packages_dir}/OpenNumismat/"
 
-  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmap/${pkgname}.png"
+  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 }
