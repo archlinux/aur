@@ -1,19 +1,18 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=microprofile-docs
-pkgver=6.0_RC3
+pkgver=6.0
 pkgrel=1
 pkgdesc="Eclipse MicroProfile project documentations."
 arch=('any')
 url="https://github.com/eclipse/microprofile"
 license=('APACHE2')
-makedepends=('java-environment-openjdk=8' 'maven')
+makedepends=('java-environment-openjdk>=11' 'maven')
 source=("${pkgname%-docs}-${pkgver//_/-}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('e4ac84a37e2065c1230c94e43ea885fcb9c63cf83cfe90af15fff3e60333b2c6')
+sha256sums=('3bc082d81ea1c3850f07f8f2c3b5faa7c203de3731a279b7e1fb2d106d72522a')
 
 build() {
     cd "${pkgname%-docs}-${pkgver//_/-}"
-    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    #export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
     mvn -Pstaging install javadoc:javadoc
 }
 
