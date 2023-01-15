@@ -16,7 +16,6 @@ qt5-svg)
 makedepends=(catch2 cmake doxygen ffmpeg jsoncpp libopenshot-audio
 protobuf swig unittestpp x264 zeromq)
 provides=(libopenshot.so)
-options=(debug)
 source=($pkgname-$pkgver.tar.gz::https://github.com/OpenShot/$pkgname/archive/v$pkgver.tar.gz)
 sha512sums=('5c72db9c39d2afaecb1c4ebf3192cd8795d4683f2b1210029b99657baf853515b92f392c25b65ea652a71d204a1b172123d264c95f1c3676a612e21f9ca38d2e')
 b2sums=('65cadf634b6b7c6da35af64ba96c92fa32ee075966ba3d7f1711210dc784f7e263b01eecdc0c613e529cc501072b8b4a0ee6b297df62fa323ed1fddfc844f874')
