@@ -16,7 +16,6 @@ supercollider)
 makedepends=(boost cmake erlang-nox gendesk lua qt5-tools ruby-bundler)
 checkdepends=(ruby-rake)
 optdepends=('sox: for further effects')
-options=(debug)
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/samaaron/${pkgname}/archive/v${pkgver}.tar.gz
   $pkgname-3.2.0-gui_paths.patch
