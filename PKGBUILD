@@ -32,7 +32,6 @@ makedepends=(
   lib32-pipewire
   lib32-portaudio
 )
-options=(debug)
 source=($pkgname-$pkgver.tar.gz::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz)
 sha512sums=('1633294bf6c714361c381151b62d9dd2c8f388490153e7964bfa14fd647a681db9ebfe1de0a06279972d6c5b30377f67361feb4db186b1faa235600f0ae02b22')
 b2sums=('a1501303e02b3ea64d87be5cff08d5f2f2be170b38faedc8e6bc4fd18c0dafe268fa6110708664ef0659df9f0e9680551ac483d30364977e768af60dfdff7e83')
