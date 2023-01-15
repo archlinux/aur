@@ -1,6 +1,6 @@
 # Maintainer: NSK-1010 <kotone[dot]olin1010[at]gmail[dot]com>
 pkgname=floorp
-pkgver=10.8.0
+pkgver=10.9.0
 pkgrel=1
 pkgdesc="Firefox-based browser with excellent privacy protection, developed by a community of students in Japan"
 url="http://floorp.ablaze.one"
@@ -19,14 +19,14 @@ replaces=()
 backup=()
 source=("https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip"
             "floorp.desktop"
-            "https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/${pkgname}-${pkgver}.en-US.linux-${arch}.tar.bz2")
+            "https://github.com/Floorp-Projects/Floorp/releases/download/v${pkgver}/floorp-${pkgver}.en-US.linux-${arch}.tar.bz2")
 md5sums=('c12cf6c807ad562188e648c60b2b7289'
             'cecce3f030f194da95819cfaffe020e3')
 
 if test "$CARCH" == x86_64; then
-    md5sums+=('245caaef810f888ec3c4081c0f7929f8')
+    md5sums+=('c883ddc2237e33c229ebc9bbed1e6de6')
 elif test "$CARCH" == aarch64; then
-    md5sums+=('771faee7feae57a06ed1180d071744a4')
+    md5sums+=('781db25cbbbaeba247a2bd69c0090e4f')
 fi
 
 package() {
@@ -47,6 +47,7 @@ package() {
   install -Dvm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dvm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << END
 #!/bin/sh
-exec /usr/lib/${pkgname}/${pkgname} "\$@"
+exec /usr/lib/${pkgname}/${pkgname} "\"
 END
 }
+
