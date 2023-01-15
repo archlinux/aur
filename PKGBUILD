@@ -9,7 +9,7 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
