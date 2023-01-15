@@ -13,7 +13,6 @@ license=(LGPL)
 depends=(gtk4 libxml2 pcre2)
 makedepends=(gobject-introspection vala gi-docgen git meson)
 checkdepends=(xorg-server-xvfb)
-options=(debug)
 _commit=b8df3c15f72f01c1a5b42ab865b076c3876c65bd  # tags/5.6.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gtksourceview.git#commit=$_commit")
 sha256sums=('SKIP')
