@@ -19,7 +19,6 @@ sha256sums=('a7ba7ab0a132dbc3bbc81559551e90e6b0274ae3a722e4778063a9c556c4df9f'
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-options=(debug)
 
 build() {
   cmake -B build -S $pkgname-kde-$pkgver \
