@@ -1,6 +1,6 @@
 pkgbase = fluffychat-web
 	pkgdesc = Chat with your friends
-	pkgver = 1.5.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = fluffychat-web
 	provides = fluffychat-web
 	conflicts = fluffychat-web
 	backup = etc/webapps/fluffychat/config.json
-	source = fluffychat-v1.5.0.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v1.5.0/fluffychat-v1.5.0.tar.gz
-	sha256sums = f71cacae90ca6f1e5748619208dd277eaba81cf401cd4542dfce5f364b505b3a
+	source = fluffychat-v1.8.0.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v1.8.0/fluffychat-v1.8.0.tar.gz
+	sha256sums = 38dc5e7536de1981746d3c30625959ac8297cf618be523a1725087fe880c429c
 
 pkgname = fluffychat-web
