@@ -13,7 +13,6 @@ url="https://drobilla.net/software/patchage.html"
 license=(GPL3)
 depends=(atkmm gcc-libs glibc glibmm gtkmm)
 makedepends=(alsa-lib boost dbus-glib ganv glib2 gtk2 jack libsigc++ meson)
-options=(debug)
 source=(https://download.drobilla.net/$pkgname-$pkgver.tar.xz{,.sig})
 sha512sums=('c6c43afc50978db02517282c1e8c7aad131e30f6255e79e65ea17edcee0b470ec3172da2c057abe4cf4bb12a081a92165ac322cfc4ec77382bb992e74827831b'
             'SKIP')
