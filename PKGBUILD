@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://sourceforge.net/projects/ibmswtpm2/'
 license=('BSD')
 depends=('openssl')
-options=('debug')
 source=("https://downloads.sourceforge.net/${pkgname//-}/ibmtpm$pkgver.tar.gz")
 sha512sums=('564c2154e5459cbbf4ec052bea7909d1eaff0aa07b291c7de44b1204ecfda3c4156fa18da4499e4202b8772b54ae30d0c7c89bd12cd415f3882d17c8d340686d')
 
