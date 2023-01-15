@@ -30,7 +30,6 @@ checkdepends=(
   apache
   php-apache
 )
-options=(debug)
 _commit=49e0178c6f91725ca348acf6d3c5d1343e6c9eb1  # tags/3.2.2^0
 source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit")
 b2sums=('SKIP')
