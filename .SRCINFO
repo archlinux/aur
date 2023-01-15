@@ -1,6 +1,6 @@
 pkgbase = gnomish-icons-git
 	pkgdesc = GNOME-style icons for non-GNOME apps
-	pkgver = r8.c0bb894
+	pkgver = r19.c338c18
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/gnomish-icons
 	arch = any

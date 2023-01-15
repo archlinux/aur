@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 pkgname=gnomish-icons-git
-pkgver=r8.c0bb894
+pkgver=r19.c338c18
 pkgrel=1
 pkgdesc="GNOME-style icons for non-GNOME apps"
 arch=(any)
@@ -24,5 +24,5 @@ package() {
 
   mkdir -p "$pkgdir"/usr/share/licenses/"$pkgname"
   cp -rt "$pkgdir"/usr/share/licenses/"$pkgname"/ licenses LICENSE.md Credits.md
-  ln -sT /usr/share/icons/Gnomish/apps "$pkgdir"/usr/share/licenses/"$pkgname"/icons
+  ln -st "$pkgdir"/usr/share/licenses/"$pkgname"/ /usr/share/icons/Gnomish/{regular,symbolic}
 }
