@@ -1,13 +1,15 @@
 pkgbase = gimp-elsamuko-git
 	pkgdesc = Varoius Gimp scripts and plugins made by elsamuko
-	pkgver = r86.91162f8
+	pkgver = r88.b401697
 	pkgrel = 1
 	url = https://github.com/elsamuko/gimp-elsamuko
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-base
 	depends = gimp
+	depends = opencv
 	conflicts = gimp-elsamuko-plugins
 	conflicts = gimp-elsamuko-scripts
 	source = git+https://github.com/elsamuko/gimp-elsamuko.git
