@@ -1,13 +1,13 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=yarr-git
 _pkgname=yarr
-pkgver=v2.0.r29.g0c5385c
+pkgver=v2.3.r27.g91da774
 pkgrel=1
 pkgdesc="yet another rss reader."
 arch=('i686' 'x86_64')
 url='https://github.com/nkanaev/yarr'
 license=('MIT')
-source=('git+git://github.com/nkanaev/yarr')
+source=('git+https://github.com/nkanaev/yarr')
 depends=()
 makedepends=('go' 'make' 'git')
 sha1sums=('SKIP')
