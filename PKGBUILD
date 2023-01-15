@@ -3,7 +3,7 @@
 # Contributor: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=1.1' 'py
 makedepends=('python-build' 'python-installer' 'python-wheel' 'imagemagick')
 license=('GPL')
 source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('6348ccdf49d631e6d8a1e1f08809e40cf78f4eae519c1bdfe76d82a04f6a2a47')
+sha256sums=('2e0a8f4651689e8b3b650f715947c89c6d1361755ffa96391149dbe51b21a0c0')
 
 build() {
     cd $pkgname-$pkgver
