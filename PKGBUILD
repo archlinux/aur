@@ -1,6 +1,6 @@
 # Maintainer: Ali Furkan Yıldız <alifurkanyildz@gmail.com>
 pkgname=avt
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=2
 pkgdesc="ali's video tool"
 arch=(any)
