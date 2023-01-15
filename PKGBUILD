@@ -24,7 +24,6 @@ sha256sums=('c3b80abc090da3cbbc42e67a403080d7f5fe0a7c98698735bda556c60314bab4'
             'SKIP'
             'ef2601f9b2e668116a3643b4bd7ddcfc233ccfc747d813955423ca17b6a23dee')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
-options=(debug)
 
 prepare() {
   patch -d $pkgname-$_pkgver -p1 < ffmpeg5.patch # Fix build with FFmpeg 5
