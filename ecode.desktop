@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ecode
+Comment=lightweight multi-platform code editor
+Exec=/opt/ecode/bin/ecode
+Terminal=false
+Type=Application
+Icon=/opt/ecode/bin/assets/icon/ee.png
+Categories=Development;
