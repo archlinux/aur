@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.21.3+r21+gcbab7ffefb
+pkgver=1.21.3+r150+gd2ef7819d3
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -47,7 +47,7 @@ makedepends=(
   libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
   lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
-  lib32-spandsp lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi
+  lib32-spandsp lib32-libsrtp lib32-zvbi 'lib32-libnice>=0.1.20' lib32-webrtc-audio-processing lib32-wildmidi
   lib32-zbar lib32-nettle lib32-libxml2 lib32-gsm lib32-json-glib lib32-libva lib32-libxkbcommon-x11
 
   # gst-plugins-ugly
