@@ -1,10 +1,10 @@
 # Maintainer: 	whitels <2959471117 at qq dot com>
 
 _npmname=whistle
-_npmver=2.9.39
+_npmver=2.9.40
 _npmrel=1
 pkgname=nodejs-whistle # All lowercase
-pkgver=2.9.39
+pkgver=2.9.40
 pkgrel=1
 pkgdesc="HTTP, HTTP2, HTTPS, Websocket debugging proxy"
 arch=(any)
@@ -18,7 +18,7 @@ source=(
 	"${pkgname}.png::https://raw.githubusercontent.com/avwo/whistle/master/biz/webui/htdocs/img/whistle.png"
 )
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('57e476cc25da3c458f4f27a4ab367f5610b9422e'
+sha1sums=('e260c8bd495ff15a0778adb4155aa8f0e3e8816b'
           'ad7056273ff8d5c2798b4ab870f5981288a67c60'
           '74d44892ab7cac4c4b3f56b24158605ede05c984')
 
