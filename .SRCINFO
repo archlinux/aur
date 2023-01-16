@@ -1,7 +1,7 @@
 pkgbase = bottles-git
 	pkgdesc = Easily manage wineprefix using environments
-	pkgver = 50.1.r0.gc62d1f1e
-	pkgrel = 1
+	pkgver = 50.1.r7.g81354eef
+	pkgrel = 2
 	epoch = 2
 	url = https://usebottles.com/
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = bottles-git
 	depends = python-gobject
 	depends = python-markdown
 	depends = python-orjson
+	depends = python-pycurl
 	depends = python-requests
 	depends = python-steamgriddb
 	depends = python-yaml
