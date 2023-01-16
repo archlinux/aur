@@ -33,7 +33,7 @@ source=(
 )
 sha256sums=(
   "051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985"
-  '40db557cb8f9d20d91e03dbae2d9bbec75c922b0175ef383f06e44881184c3e4'
+  'b03e886435addd44eea965c7a4a59deddc34c55381af2584042b2737c89b698e'
 )
 install="geant4-full.install"
 
@@ -51,10 +51,11 @@ export G4REALSURFACEDATA=/usr/share/Geant4/data/RealSurface2.2
 export G4SAIDXSDATA=/usr/share/Geant4/data/G4SAIDDATA2.0
 export G4ABLADATA=/usr/share/Geant4/data/G4ABLA3.1
 export G4INCLDATA=/usr/share/Geant4/data/G4INCL1.0
+export G4TENDLDATA=/opt/Geant4/Libraries/G4TENDL1.4/
 export G4ENSDFSTATEDATA=/usr/share/Geant4/data/G4ENSDFSTATE2.3" >> Geant4.sh
 
   echo "
-setenv G4NEUTRONHPDATA /usr/share/Geant4/data/G4NDL4.7
+setenv G4NEUTRONHPDATA /opt/Geant4/data/G4NDL4.7
 setenv G4LEDATA /usr/share/Geant4/data/G4EMLOW8.2
 setenv G4LEVELGAMMADATA /usr/share/Geant4/data/PhotonEvaporation5.7
 setenv G4RADIOACTIVEDATA /usr/share/Geant4/data/RadioactiveDecay5.6
@@ -64,19 +65,21 @@ setenv G4REALSURFACEDATA /usr/share/Geant4/data/RealSurface2.2
 setenv G4SAIDXSDATA /usr/share/Geant4/data/G4SAIDDATA2.0
 setenv G4ABLADATA /usr/share/Geant4/data/G4ABLA3.1
 setenv G4INCLDATA /usr/share/Geant4/data/G4INCL1.0
+setenv G4TENDLDATA /opt/Geant4/Libraries/G4TENDL1.4/
 setenv G4ENSDFSTATEDATA /usr/share/Geant4/data/G4ENSDFSTATE2.3" >> Geant4.csh
 
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-   cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_INVENTOR_QT=ON \
+    -DGEANT4_USE_FREETYPE=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \
@@ -84,8 +87,9 @@ setenv G4ENSDFSTATEDATA /usr/share/Geant4/data/G4ENSDFSTATE2.3" >> Geant4.csh
     -DGEANT4_USE_XM=ON \
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
-    -DGEANT4_USE_TOOLSSG=QT \
+    -DGEANT4_INSTALL_DATASETS_TENDL=ON \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
+    -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
 
   make VERBOSE=1

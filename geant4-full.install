@@ -1,4 +1,18 @@
 #!/bin/bash
+pre_upgrade(){
+  G4LIBRARY_PATH=/opt/Geant4/Libraries
+  G4LIBRARY_BACKUP=/opt/Geant4/Lib-backup
+  file_check=/tmp/.G4_Library.tmp
+  [ "$(ls -A $G4LIBRARY_PATH)" ] && mv $G4LIBRARY_PATH $G4LIBRARY_BACKUP && touch $file_check
+}
+
+post_upgrade(){
+  G4LIBRARY_PATH=/opt/Geant4/Libraries
+  G4LIBRARY_BACKUP=/opt/Geant4/Lib-backup
+  file_check=/tmp/.G4_Library.tmp
+  [ "$(ls $file_check)" ] && mkdir $G4LIBRARY_PATH && mv $G4LIBRARY_BACKUP/* $G4LIBRARY_PATH && rmdir $G4LIBRARY_BACKUP && rm $file_check
+}
+
 post_install(){
   ln -s /usr/include/Geant4/CLHEP /usr/include/CLHEP
   ln -s /usr/include/Geant4/PTL /usr/include/PTL
