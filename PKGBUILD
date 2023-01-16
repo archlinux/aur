@@ -5,7 +5,7 @@
 
 pkgbase=scapy-git
 pkgname=('scapy-git' 'python-scapy-git')
-pkgver=2.4.5rc1.dev297
+pkgver=2.5.0.dev5
 pkgrel=1
 pkgdesc='Powerful interactive packet manipulation program written in Python'
 url='http://www.secdev.org/projects/scapy/'

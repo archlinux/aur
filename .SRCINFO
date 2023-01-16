@@ -1,6 +1,6 @@
 pkgbase = scapy-git
 	pkgdesc = Powerful interactive packet manipulation program written in Python
-	pkgver = 2.4.5rc1.dev297
+	pkgver = 2.5.0.dev5
 	pkgrel = 1
 	url = http://www.secdev.org/projects/scapy/
 	arch = any
