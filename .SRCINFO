@@ -1,0 +1,13 @@
+pkgbase = godot-fbx2gltf-bin
+	pkgdesc = A command-line tool for the conversion of the FBX file format to the glTF file format
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/godotengine/FBX2glTF/
+	arch = x86_64
+	license = BSD
+	provides = fbx2gltf-bin
+	conflicts = fbx2gltf-bin
+	source = https://github.com/godotengine/FBX2glTF/releases/download/v0.13.0-p1/FBX2glTF-linux-x86_64.zip
+	sha256sums = 68f7f609125e60197faf2edfdeee7bb0f0087f01e2b260e9b6f942377a6c8931
+
+pkgname = godot-fbx2gltf-bin
