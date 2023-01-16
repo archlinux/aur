@@ -1,7 +1,7 @@
 pkgbase = onscripter
 	pkgdesc = A game engine compatible to NScripter, to create and perform visual novel games
 	pkgver = 20220816
-	pkgrel = 1
+	pkgrel = 2
 	url = http://onscripter.sourceforge.jp/onscripter.html
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = onscripter
 	depends = fontconfig
 	depends = libjpeg
 	depends = bzip2
-	depends = smpeg1
+	depends = smpeg0
 	depends = cmake
 	depends = ninja
 	source = http://onscripter.sourceforge.jp/onscripter-20220816.tar.gz

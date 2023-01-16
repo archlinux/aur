@@ -19,7 +19,7 @@ depends=('sdl_image'
          'fontconfig'
          'libjpeg'
          'bzip2'
-         'smpeg1'
+         'smpeg0'
          'cmake'
          'ninja'
          )
