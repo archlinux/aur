@@ -4,7 +4,7 @@
 pkgname=rvgl-bin
 pkgver=21.0930a
 _gamefilesver=21.0715
-pkgrel=1
+pkgrel=2
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.org'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,11 +22,13 @@ groups=('rvgl-basic' 'rvgl-original' 'rvgl-online')
 source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${_gamefilesver}
         "rvgl_assets"::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=${pkgver}
         "rvgl_platform"::git+https://gitlab.com/re-volt/rvgl-platform.git#tag=${pkgver}
+        "rvgl"
         "RVGL.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '4313552a067486339319e6e4b13386040183e196d7b6e26a1fec56a711e4721d')
+            '576f17d542e4dab32926f48ef809c2ad4679ea87471b84f64605e7c171fbb198'
+            'ba1ed3ac45b2a823f51146f3379e81ec491e79cc3063b142f583b07191a600aa')
 
 _binsuffix='none'
 [ "$CARCH" = 'i686' ] && _binsuffix='32'
@@ -56,8 +58,10 @@ package() {
     # Platform binaries
     cd "$srcdir/rvgl_platform/linux"
     install -Dm755 "rvgl.$_binsuffix" "$pkgdir/opt/rvgl/rvgl"
+    install -Dm755 "lib/lib$_binsuffix/libunistring.so.2" "$pkgdir/opt/rvgl/lib/libunistring.so.2"
 
     # Launcher
     cd "$srcdir"
+    install -Dm755 "rvgl" "$pkgdir/usr/bin/rvgl"
     install -Dm755 "RVGL.desktop" "$pkgdir/usr/share/applications/RVGL.desktop"
 }
