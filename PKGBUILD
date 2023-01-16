@@ -2,7 +2,7 @@
 
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
-pkgver=9.4.0
+pkgver=9.5.1
 pkgrel=1
 arch=('x86_64')
 url='https://www.cubbit.io/'
@@ -11,7 +11,7 @@ depends=('gtk2' 'hicolor-icon-theme' 'libxss' 'libxtst')
 optdepends=('libappindicator-gtk2' 'libnotify')
 options=('!strip')
 source=("https://get.cubbit.io/desktop/linux/Cubbit-${pkgver}.AppImage")
-sha256sums=('8b117d59b98c4eb21acb29eec134a9a4975a0a8d1248d7aa649ec930dbd654e2')
+sha256sums=('75b8c96818e3006f83509466b26def17d012312f819053d9c2673dbaacbf199b')
 
 prepare() {
   chmod +x Cubbit-${pkgver}.AppImage
@@ -47,6 +47,7 @@ package() {
   
   install -d "$pkgdir"/usr/bin
   install -Dm755 "$srcdir"/AppRun -T "$pkgdir"/usr/bin/@cubbitdesktop
+  install -Dm755 "$srcdir"/squashfs-root/bin/gozer -T "$pkgdir"/usr/bin/gozer
   
   install -Dm644 "$srcdir"/squashfs-root/license.txt -t "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 "$srcdir"/squashfs-root/LICENSE.electron.txt -t "$pkgdir"/usr/share/licenses/$pkgname
