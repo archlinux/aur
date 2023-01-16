@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=diun
-pkgver=4.22.0
+pkgver=4.24.0
 pkgrel=2
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('diun')
 license=('MIT')
 makedepends=('go>=1.17' 'git' 'gzip' 'tar' 'gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crazy-max/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('92040b6506bf2d01d674aaee119ca198af2048a4a31d42c7af5837814c1bb238')
+sha256sums=('7c2fc0d16a7c86722f6098018d6e4a59742b7c1d12e094cbb62c4a9dfe59f847')
 
 build() {
 	cd "${pkgname}-${pkgver}"
