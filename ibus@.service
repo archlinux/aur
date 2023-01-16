@@ -12,5 +12,4 @@ ExecStop=/usr/bin/ibus exit
 Environment=DISPLAY="%I" GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"
 
 [Install]
-Alias=input-method.service
 WantedBy=default.target
