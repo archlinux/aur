@@ -3,7 +3,7 @@
 pkgname=ame-git
 _pkgname=amethyst
 _shortname="${pkgname%-git}"
-pkgver=4.0.3.r642.d2008a5
+pkgver=4.0.3.r643.182daa2
 pkgrel=1
 pkgdesc='Amethyst is a fast and efficient AUR helper (git version)'
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,6 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
-    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
