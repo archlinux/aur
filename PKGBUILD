@@ -3,9 +3,9 @@
 pkgname=libcpucycles
 epoch=
 pkgver=20230115
-pkgrel=1
+pkgrel=2
 pkgdesc="A microlibrary for counting CPU cycles"
-url=https://cpucycles.cr.yp.to/
+url=https://cpucycles.cr.yp.to
 license=(Unlicense)
 arch=(x86_64)
 makedepends=(python)
