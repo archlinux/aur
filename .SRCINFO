@@ -1,0 +1,14 @@
+pkgbase = logfilegen
+	pkgdesc = logfilegen is nginx/apache log generator for testing purposes
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/psemiletov/logfilegen
+	arch = x86_64
+	license = Public Domain
+	depends = gcc-libs
+	depends = gcc
+	depends = gzip
+	source = https://github.com/psemiletov/logfilegen/archive/0.4.1.tar.gz
+	md5sums = 3c94ef739eaf8f2e3f612a7aee9f7bad
+
+pkgname = logfilegen
