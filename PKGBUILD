@@ -1,6 +1,6 @@
 # Maintainer: TheLastGimbus <mateusz.soszynski@tuta.io>
 pkgname=gpth-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc='Tool to help you with exporting stuff from Google Photos'
 arch=('x86_64')
