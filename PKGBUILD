@@ -41,6 +41,7 @@ build() {
 
   cd $srcdir
   echo "
+export PATH=$PATH:/opt/Geant4/Geant4-v11.1.0/bin
 export G4NEUTRONHPDATA=/usr/share/Geant4/data/G4NDL4.7
 export G4LEDATA=/usr/share/Geant4/data/G4EMLOW8.2
 export G4LEVELGAMMADATA=/usr/share/Geant4/data/PhotonEvaporation5.7
@@ -55,6 +56,7 @@ export G4TENDLDATA=/opt/Geant4/Libraries/G4TENDL1.4/
 export G4ENSDFSTATEDATA=/usr/share/Geant4/data/G4ENSDFSTATE2.3" >> Geant4.sh
 
   echo "
+setenv PATH $PATH:/opt/Geant4/Geant4-v11.1.0/bin
 setenv G4NEUTRONHPDATA /opt/Geant4/data/G4NDL4.7
 setenv G4LEDATA /usr/share/Geant4/data/G4EMLOW8.2
 setenv G4LEVELGAMMADATA /usr/share/Geant4/data/PhotonEvaporation5.7
