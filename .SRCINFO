@@ -1,6 +1,6 @@
 pkgbase = ibus-daemon
 	pkgdesc = SystemD user service for IBus
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git
 	arch = any
@@ -20,4 +20,3 @@ pkgbase = ibus-daemon
 	sha512sums = SKIP
 
 pkgname = ibus-daemon
-
