@@ -1,6 +1,6 @@
 pkgbase = pulsar-bin
 	pkgdesc = A community-led hyper-hackable text editor, built on electron
-	pkgver = 1.100.0beta
+	pkgver = 1.101.0beta
 	pkgrel = 2
 	url = https://github.com/pulsar-edit/pulsar
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pulsar-bin
 	optdepends = hunspell: spell check integration
 	provides = pulsar
 	conflicts = pulsar
-	source = pulsar-1.100.0beta.deb::https://github.com/pulsar-edit/pulsar/releases/download/v1.100.0-beta/Linux.pulsar_1.100.0-beta_amd64.deb
-	sha256sums = a5ee6d068c0b3b5d0aa3feffc8107ef62d44035af22d0373cee89fddb34bd605
+	source = pulsar-1.101.0beta.deb::https://github.com/pulsar-edit/pulsar/releases/download/v1.101.0-beta/Linux.pulsar_1.101.0-beta_amd64.deb
+	sha256sums = d73d3c4a43fa1c86690ad6b13861d0eaf7a436015e327b960e1d821453c3fa39
 
 pkgname = pulsar-bin

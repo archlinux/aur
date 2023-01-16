@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Giusy Digital <kurmikon@libero.it>
 
-_pkgver=1.100.0
+_pkgver=1.101.0
 _pkgtag=beta
 _pkgrel="${_pkgver}-${_pkgtag}"
 
@@ -21,7 +21,7 @@ optdepends=(
 provides=("pulsar")
 conflicts=("pulsar")
 source=("pulsar-${pkgver}.deb::$url/releases/download/v${_pkgrel}/Linux.pulsar_${_pkgrel}_amd64.deb")
-sha256sums=('a5ee6d068c0b3b5d0aa3feffc8107ef62d44035af22d0373cee89fddb34bd605')
+sha256sums=('d73d3c4a43fa1c86690ad6b13861d0eaf7a436015e327b960e1d821453c3fa39')
 
 prepare() {
   bsdtar xf data.tar.xz
@@ -35,8 +35,8 @@ package() {
   find "$pkgdir/opt/Pulsar/resources/app/ppm" -type d -name "spec" -exec rm -rf {} +
   find "$pkgdir/opt/Pulsar/resources/app.asar.unpacked" -type d -name "spec" -exec rm -rf {} +
 
-  # Fix icon path. Remove if fixed upstream
-  mv "$pkgdir/usr/share/icons/hicolor/0x0" "$pkgdir/usr/share/icons/hicolor/scalable"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  cp "$pkgdir/opt/Pulsar/resources/pulsar.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/pulsar.svg"
 
   mkdir -p "$pkgdir/usr/bin"
   chmod +x "$pkgdir/opt/Pulsar/resources/pulsar.sh"
