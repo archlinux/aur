@@ -1,6 +1,6 @@
 pkgbase = rpcpp-git
 	pkgdesc = Tool for Discord RPC to let your friends know about your Linux system
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/grialion/rpcpp
 	arch = any

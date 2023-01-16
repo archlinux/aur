@@ -1,6 +1,6 @@
 # Maintainer: grialion <grialion@grial.tech>
 pkgname=rpcpp-git
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Tool for Discord RPC to let your friends know about your Linux system'
 arch=('any')
