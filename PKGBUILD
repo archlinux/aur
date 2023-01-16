@@ -2,7 +2,7 @@
 
 _pkgname='instalee'
 pkgname="${_pkgname}-git"
-pkgver=r70.8322f5b
+pkgver=r72.a6758cd
 pkgrel=1
 pkgdesc='Unixy universal package installation management'
 arch=('any')
@@ -16,7 +16,6 @@ source=("git+${url}")
 sha512sums=('SKIP')
 
 package() {
-  set -x
   cd "${srcdir}/${_pkgname}/"
   local usrdir="${pkgdir}/usr"
   local bin="${usrdir}/bin"
