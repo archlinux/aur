@@ -3,15 +3,15 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin-arm
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="一个 DNS 转发器"
 arch=('aarch64' 'armv7h')
 url="https://github.com/IrineSistiana/mosdns/"
 license=('GPL3')
-optdepends=('v2ray-domain-list-community: geosite.dat'
-            'v2ray-geoip: geoip.dat'
-            'v2ray-rules-dat-git: geosite.dat & geoip.dat'
-            'redis: redis support in cache plugin')
+#optdepends=('v2ray-domain-list-community: geosite.dat'
+#            'v2ray-geoip: geoip.dat'
+#            'v2ray-rules-dat-git: geosite.dat & geoip.dat'
+#            'redis: redis support in cache plugin')
 backup=('etc/mosdns/config.yaml')
 provides=('mosdns')
 
@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=('8bb851c5413e0e25e18e9d912a35b1500b54531ea961d4fc6cc8416173311c17'
-            '98fe6799dea2f84edcc89c01102cf224afb89c745a624734ea93cf2750398f5d'
+            'e6bc5034452123491e3901e2741183d528a29b00f1c01d6bbbb204549fee7306'
             '0be8eb1cdf1dd563f829c2ab86a00be4d889d22a29e34c9582caff5c2876a2e1')
 
 sha256sums_aarch64=('98490cd46f850fcfd608d21c4d196a14eed5b6223e9770fd45cf518e5fbc12b2')
