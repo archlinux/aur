@@ -6,7 +6,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.51.1.ga8334db
+pkgver=3.11.51.108.geff0ac0
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -32,6 +32,7 @@ depends=(
   libxext
   libxfixes
   libxkbcommon.so
+  libxmu
   libxrender
   libxres
   libxtst
@@ -53,7 +54,7 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=a8334dbae493381cb525c3eaed31194b3f693167
+_tag=eff0ac001e963e399ec6e4efd4ce955b0b351ea3
 source=("git+https://github.com/Samsagax/gamescope.git#tag=${_tag}")
 
 b2sums=('SKIP')
