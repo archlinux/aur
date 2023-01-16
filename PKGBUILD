@@ -1,5 +1,5 @@
 pkgname=companion
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/arch
 		"50-bitfocus-companion.rules"
 		"bitfocus-companion.desktop")
 
-sha256sums=('d7c85c3cad365167ddef4205ac4049033a45c5e7257d106f542bf1ebe25343af'
+sha256sums=('004fd0fa5ab44f42fe6f5ed260771f830633cb5a579d635767957cd126122a09'
             'c0e7cd1f730a7b4381e654b53f6fdd1c06911b2593bdfe07bba5e198fc61d5d9'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
@@ -56,7 +56,7 @@ build() {
 	rm -rf electron-output
 
 	yarn --frozen-lockfile
-	yarn --frozen-lockfile --cwd webui
+	yarn --frozen-lockfile --cwd webui --ignore-engines
 
 	yarn run dist
 }
