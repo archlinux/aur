@@ -1,17 +1,15 @@
 # Maintainer: Michael Clayfield <me@michaelclayfield.com>
 
 pkgname=icingaweb2-module-incubator
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Bleeding edge libraries useful for Icinga Web 2 modules"
 license=('GPL')
 arch=('any')
 depends=('icingaweb2')
 url="http://www.icinga.org"
-source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
-  "querybasedtable.patch")
-sha256sums=('adf86ee285f612be2d9ea4c9942520a1a1d96bcb9a3e8dd98d92eb877b0e03c4'
-            '97985fbea5448293ff7cf64c0721a8a4522d84331a4a9bdb2a39dcafd1cd4583')
+source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('292d1633b7f20b38f393e6e48236e59922ab5253aec19a1c3405b6acde09504b')
 
 prepare() {
   cd "$pkgname-$pkgver"
