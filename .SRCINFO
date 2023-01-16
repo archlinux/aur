@@ -1,0 +1,12 @@
+pkgbase = citation-style-language-styles
+	pkgdesc = Citation Style Language (CSL) citation styles
+	pkgver = 0.0.153
+	pkgrel = 1
+	url = https://github.com/citation-style-language/styles
+	arch = any
+	license = CCPL:by-sa
+	optdepends = pandoc: support pandoc --citeproc
+	source = https://github.com/citation-style-language/styles/archive/v0.0.153.tar.gz
+	sha256sums = bbdb60464ae6d0f17fb4b8b0b3d6f56913caaee2bc4297e1ae8f6589860e5b52
+
+pkgname = citation-style-language-styles
