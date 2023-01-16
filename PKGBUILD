@@ -1,6 +1,6 @@
 pkgname=wiki-loves-monuments-wallpapers
 pkgver=2021
-pkgrel=5
+pkgrel=6
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
 arch=('any')
@@ -94,7 +94,7 @@ source=(
     'image-73018828.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6e/Hardinge_Bridge_12.jpg'
     'image-82058848.jpg::https://upload.wikimedia.org/wikipedia/commons/7/71/Stawiszyn_Nieczynny_Ko%C5%9Bci%C3%B3%C5%82_Ty%C5%82_ko%C5%9Bcio%C5%82a.jpg'
     'image-82689221.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a3/Baha%27i_Temple_at_Dusk.jpg'
-    'image-82670888.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6d/011-Temple_of_the_Emerald_Buddha.jpg'
+    'image-82670888.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b5/Temple_of_the_Emerald_Buddha.jpg'
     'image-81902804.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/Unique_Moment_with_the_Moon_and_Christ_the_Redeemer_3.jpg'
     'image-82238332.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d8/201_Dome_Mosque%2C_Tangail.jpg'
     'image-82669179.jpg::https://upload.wikimedia.org/wikipedia/commons/4/41/Treppenhaus_im_Nordturm_von_Schloss_Drachenburg.jpg'
@@ -126,7 +126,7 @@ source=(
     'image-110986152.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%CE%9F%CE%B4%CF%8C%CF%82_%CE%99%CF%80%CF%80%CE%BF%CF%84%CF%8E%CE%BD.jpg'
 )
 sha1sums=(
-    '7229cb1248a1ba089d195a70489e0d09e68abd85'
+    'a8b9bb967386d9591532c60874f2b7f2cdba0cd6'
     'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
     '9f46d71d43317e3a84776c23af0e4c960f06aff0'
     '2d78387c4a6c49c5f335337e9f160e66ab891f46'
