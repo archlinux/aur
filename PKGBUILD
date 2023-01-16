@@ -69,27 +69,24 @@ setenv G4ENSDFSTATEDATA /usr/share/Geant4/data/G4ENSDFSTATE2.3" >> Geant4.csh
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  env -i \
-    QT_SELECT=6 \
-    PATH=/usr/bin \
-    cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DGEANT4_BUILD_MULTITHREADED=ON \
-      -DGEANT4_INSTALL_DATA=ON \
-      -DGEANT4_USE_G3TOG4=ON \
-      -DGEANT4_USE_GDML=ON \
-      -DGEANT4_USE_INVENTOR_QT=ON \
-      -DGEANT4_USE_OPENGL_X11=ON \
-      -DGEANT4_USE_QT=ON \
-      -DGEANT4_USE_RAYTRACER_X11=ON \
-      -DGEANT4_USE_SYSTEM_ZLIB=ON \
-      -DGEANT4_USE_XM=ON \
-      -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
-      -DGEANT4_USE_PYTHON=ON \
-      -DGEANT4_USE_TOOLSSG=QT \
-      -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
-      ../geant4-v${pkgver}
+   cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGEANT4_BUILD_MULTITHREADED=ON \
+    -DGEANT4_INSTALL_DATA=ON \
+    -DGEANT4_USE_G3TOG4=ON \
+    -DGEANT4_USE_GDML=ON \
+    -DGEANT4_USE_INVENTOR_QT=ON \
+    -DGEANT4_USE_OPENGL_X11=ON \
+    -DGEANT4_USE_QT=ON \
+    -DGEANT4_USE_RAYTRACER_X11=ON \
+    -DGEANT4_USE_SYSTEM_ZLIB=ON \
+    -DGEANT4_USE_XM=ON \
+    -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
+    -DGEANT4_USE_PYTHON=ON \
+    -DGEANT4_USE_TOOLSSG=QT \
+    -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
+    ../geant4-v${pkgver}
 
   make VERBOSE=1
 }
