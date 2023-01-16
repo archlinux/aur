@@ -1,7 +1,7 @@
 pkgbase = containerlab-bin
 	pkgdesc = containerlab enables container-based networking labs
 	pkgver = 0.34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/srl-labs/containerlab
 	arch = x86_64
 	license = BSD
