@@ -1,10 +1,10 @@
 # Maintainer: xeruf <27jf at pm dot me>
 
 _pkgname='instalee'
-pkgname="${_pkgname}-git"
-pkgver=r72.a6758cd
+pkgname="${_pkgname}-full-git"
+pkgver=r74.a6235ac
 pkgrel=1
-pkgdesc='Unixy universal package installation management'
+pkgdesc='Unixy universal package installation management with opinionated config'
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
 license=(GPL)
@@ -16,6 +16,14 @@ source=("git+${url}")
 sha512sums=('SKIP')
 
 package() {
+  globalconfigdir=/etc/xdg
+  case "$XDG_CONFIG_DIRS" in
+    (""|*$configdir*);;
+    (*) globalconfigdir=$(echo $XDG_CONFIG_DIRS | cut -d: -f1);;
+  esac
+  mkdir -p "${pkgdir}${configdir}"
+  cp -r "${srcdir}/${_pkgname}" "${pkgdir}${configdir}"
+
   cd "${srcdir}/${_pkgname}/"
   local usrdir="${pkgdir}/usr"
   local bin="${usrdir}/bin"

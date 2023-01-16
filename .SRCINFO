@@ -1,6 +1,6 @@
-pkgbase = instalee-git
-	pkgdesc = Unixy universal package installation management
-	pkgver = r72.a6758cd
+pkgbase = instalee-full-git
+	pkgdesc = Unixy universal package installation management with opinionated config
+	pkgver = r74.a6235ac
 	pkgrel = 1
 	url = https://github.com/xeruf/instalee
 	arch = any
@@ -9,4 +9,4 @@ pkgbase = instalee-git
 	source = git+https://github.com/xeruf/instalee
 	sha512sums = SKIP
 
-pkgname = instalee-git
+pkgname = instalee-full-git
