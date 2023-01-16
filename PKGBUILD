@@ -5,7 +5,7 @@
 pkgname=ame
 _pkgname=amethyst
 pkgver=4.0.3
-pkgrel=4
+pkgrel=5
 _codename='Funky Fish'
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,6 @@ prepare() {
 
 build() {
     cd "${_pkgname}-v${pkgver}"
-    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     export AMETHYST_CODENAME="${_codename}"
     cargo build --frozen --release
