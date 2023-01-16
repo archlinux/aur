@@ -71,7 +71,7 @@ build() {
   export DSOFLAGS=${LDFLAGS}
 
   # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
-  ./configure --prefix=/usr --with-gssapi \
+  ./configure --prefix=/usr --enable-gssapi \
      --sysconfdir=/etc \
      --localstatedir=/var \
      --sbindir=/usr/bin \

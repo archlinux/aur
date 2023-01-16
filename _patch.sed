@@ -3,7 +3,7 @@
 
 s/# Maintainer: (.+)/# Upstream Maintainer: \1/g
 
-s/.\/configure (.+) \\/.\/configure \1 --with-gssapi \\/
+s/.\/configure (.+) \\/.\/configure \1 --enable-gssapi \\/
 
 # replace cups with cups-gssapi in package definitions
 /^(pkgbase|pkgname)=/ s/cups/cups-gssapi/g
