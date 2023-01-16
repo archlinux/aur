@@ -3,7 +3,7 @@
 pkgname=malachite
 _pkgname=mlc
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for packaging and maintaining pacman repositories'
 arch=('x86_64' 'aarch64')
 url="https://git.getcryst.al/crystal/software/${pkgname}"
@@ -20,7 +20,6 @@ prepare() {
 
 build() {
     cd "${pkgname}-v${pkgver}"
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
