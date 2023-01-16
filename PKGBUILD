@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=xq
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 conflicts=('yq')
 options=('!lto')
-_commit='f0c2fb2fb0dcc90e9422a219ffdf437113777388'
+_commit='7c585a2e6ccd7e6e3adc63e4524023389135c938'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'manpage-template.patch'
@@ -45,16 +45,18 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
 
   # commit date for binary & man page
   local _commit_date=$(git show --no-patch --format=%cd --date=format:%Y-%m-%d)
 
   go build -v \
-    -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-compressdwarf=false \
+    -linkmode external \
+    -extldflags ${LDFLAGS} \
     -X main.commit=$_commit \
     -X main.date=$_commit_date \
     -X main.version=$pkgver" \
