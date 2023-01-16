@@ -1,6 +1,6 @@
 pkgbase = john-git
 	pkgdesc = fast password cracker (using the git repository of the jumbo patch)
-	pkgver = 1.9.0.Jumbo.1.r268.g51f7f3dcd
+	pkgver = 1.9.0.Jumbo.1.r1012.g9a55a3744
 	pkgrel = 1
 	url = http://www.openwall.com/john/
 	arch = i686
@@ -34,4 +34,3 @@ pkgbase = john-git
 	md5sums = SKIP
 
 pkgname = john-git
-

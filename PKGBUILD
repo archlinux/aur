@@ -1,11 +1,12 @@
-# Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
+# Maintainer: David Ryskalczyk <david.rysk at gmail.com>
+# Contributor: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Zezadas
 
 _pkgname=john
 pkgname=john-git
-pkgver=1.9.0.Jumbo.1.r268.g51f7f3dcd
+pkgver=1.9.0.Jumbo.1.r1012.g9a55a3744
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64' "aarch64")
@@ -32,15 +33,6 @@ pkgver() {
     git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname/"
-  sed 's|env python|env python2|' -i run/*.py
-  sed 's|/usr/bin/python|/usr/bin/python2|' -i run/*.py
-  sed 's|"x$enable_native_tests" = xyes -a "x$PKG_CONFIG"|"x$PKG_CONFIG"|' -i src/configure
-  #sed  '/CPU_FALLBACK_BINARY);/d' -i src/listconf.c
-
 }
 
 build() {
@@ -98,7 +90,9 @@ package() {
   install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
   # opencl
-  install -Dm 644 run/opencl/* -t "${pkgdir}/usr/share/john/opencl"
+  install -d "${pkgdir}/usr/share/john/opencl"
+  cp -r run/opencl/* "${pkgdir}/usr/share/john/opencl"
+  chmod -R o+r "${pkgdir}/usr/share/john/opencl"
   
   # docs
   install -d "${pkgdir}/usr/share/doc/john"
