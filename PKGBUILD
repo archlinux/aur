@@ -5,7 +5,7 @@
 _pkgname=input-leap
 pkgbase=$_pkgname-git
 pkgname=($_pkgname-headless-git $_pkgname-git)
-pkgver=2.4.0+299+g20423846
+pkgver=2.4.0+436+g47d94944
 pkgrel=1
 pkgdesc="Open-source KVM software"
 arch=(x86_64)
@@ -66,10 +66,10 @@ package_input-leap-headless-git() {
   install -Dm644 doc/*.1 -t "$pkgdir"/usr/share/man/man1
 
   # Install the examples:
-  install -Dm644 doc/barrier.conf* -t "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 doc/input-leap.conf* -t "$pkgdir"/usr/share/doc/$pkgname
 
   # Now go and delete the GUI-related files:
-  for file in /usr/bin/barrier /usr/share/applications /usr/share/icons /usr/share/metainfo; do
+  for file in /usr/bin/input-leap /usr/share/applications /usr/share/icons /usr/share/metainfo; do
     rm -rv "${pkgdir}/${file}"
   done
 }
@@ -85,7 +85,7 @@ package_input-leap-git() {
 
   # Now go and delete files that are already in
   # input-leap-headless-git:
-  for file in /usr/bin/barrier{s,c} /usr/share/man; do
+  for file in /usr/bin/input-leap{s,c} /usr/share/man; do
     rm -rv "${pkgdir}/${file}"
   done
 }
