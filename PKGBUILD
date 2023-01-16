@@ -1,6 +1,6 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 pkgname=antpatt
-pkgver=1.1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Antenna pattern plotting and analysis software."
 arch=('x86_64' 'i686')
