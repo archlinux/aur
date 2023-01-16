@@ -3,12 +3,13 @@
 pkgname='elk-zone-git'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=v0.5.0.next.1.0.g0d3908a
+pkgver=v0.5.0.next.3.0.gcc94686
 pkgrel=1
 arch=('any')
 license=('MIT')
 
-makedepends=('rust' 'cargo' 'npm')
+makedepends=('rust' 'cargo' 'cargo-tauri' 'pnpm' 'jq' 'openssl' 'appmenu-gtk-module' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 
 source=('git+https://github.com/elk-zone/elk-native.git'
         elk-zone.desktop{,.sig})
@@ -28,20 +29,17 @@ build() {
   git submodule update
 
   cd elk
-  if [ $(which pnpm 2>/dev/null) ]; then
-    pnpm i
-    pnpm run build
-  else
-    npm_config_yes=true npx pnpm i < /dev/null
-    npm run build
-  fi
-
+  pnpm i
   cd ..
-  cargo build --release
+
+  # Disable updater and only build the executable
+  echo "$(cat src-tauri/tauri.conf.json | jq 'del(.tauri.updater)')" > src-tauri/tauri.conf.json
+  echo "$(cat src-tauri/tauri.conf.json | jq '.tauri.bundle.active = false')" > src-tauri/tauri.conf.json
+  cargo tauri build
 }
 
 package() {
-  install -Dm775 elk-native/target/release/app "$pkgdir"/usr/bin/elk-zone
+  install -Dm775 elk-native/target/release/elk "$pkgdir"/usr/bin/elk-zone
   install -Dm755 elk-native/logo-dev.png "$pkgdir"/usr/share/icons/elk-zone.png
   install -Dm755 elk-zone.desktop "$pkgdir"/usr/share/applications/elk-zone.desktop
 }
