@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
-pkgver=2021
-pkgrel=6
+pkgver=2022
+pkgrel=1
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -103,9 +103,21 @@ source=(
     'image-106418621.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ad/Parque_Nacional_das_Emas_Mario_Barroso_1.jpg'
     'image-106889828.jpg::https://upload.wikimedia.org/wikipedia/commons/0/01/Parque_Nacional_da_Serra_do_Gandarela_-_Robson_de_Oliveira_-_23.jpg'
     'image-107212097.jpg::https://upload.wikimedia.org/wikipedia/commons/5/58/Montejunto_Por_do_Sol.jpg'
+    'image-121244194.jpg::https://upload.wikimedia.org/wikipedia/commons/e/ec/Ilh%C3%A9u_de_Cima_e_a_moldura.jpg'
+    'image-119273958.jpg::https://upload.wikimedia.org/wikipedia/commons/6/61/Emirati_Mountain.jpg'
+    'image-119312292.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6e/Lake_Meke_Under_The_Milky_Way.jpg'
+    'image-118639971.jpg::https://upload.wikimedia.org/wikipedia/commons/4/42/Hunter_baby_chameleon.jpg'
+    'image-121279439.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a9/Garranos_fight.jpg'
+    'image-117710173.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3f/Gemeine_Goldwespe.jpg'
+    'image-119153696.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bd/Hello_spring.jpg'
+    'image-121279430.jpg::https://upload.wikimedia.org/wikipedia/commons/0/0d/Iberian_Ibex_Fight.jpg'
+    'image-119550197.jpg::https://upload.wikimedia.org/wikipedia/commons/1/1c/Cavalluccio_su_spirografo.jpg'
+    'image-118639446.jpg::https://upload.wikimedia.org/wikipedia/commons/2/20/Mediterranean_chameleon.jpg'
+    'image-121279438.jpg::https://upload.wikimedia.org/wikipedia/commons/5/55/Iberian_Ibex_in_the_snow.jpg'
+    'image-119881117.jpg::https://upload.wikimedia.org/wikipedia/commons/5/5f/Red_Kangaroos_at_Sturt_National_Park_NSW.jpg'
 )
 sha1sums=(
-    'dcf3200bc1fc053c3a7c19b682da7270420cef12'
+    '19a551d2c71ff5ae14b4ab89f392382029df7449'
     'e58397f4cee346f2beeabc95d8902eba1db691a9'
     '1246b2cffb3709013d410024a322a8ff63760e99'
     '7d08f021a40eb746e137ab6efdf81a68c1737fee'
@@ -130,7 +142,7 @@ sha1sums=(
     'c682c8194195598073c3ae344359f7c57309f89f'
     'ba6e4f52df594aa1a71d21d53ddf3170cdaef2c5'
     '79ce9c963a6906ccdfa75bd31dbc596c6ca41634'
-    '188497c95f10181bf4dd08b81629998226b66a67'
+    '5081327be280980777321179e8c181bb364ea513'
     'a13f8c67d77b5a414c108691d510c615644f4931'
     'fc688526bd41b5d2945b04ba3130c71ba641b5d9'
     '8a803a807d2f0e128625d71ab8d8b73cf02adb4d'
@@ -200,17 +212,30 @@ sha1sums=(
     '5b79913df29d88ed64bdb92fe59feda33915803d'
     '501ee3ca8606c74538d284c508db4be6c529945d'
     '055cf83a1713287acbb874a3a2217ddabfb36f80'
+    '949542598c6fe5662c799706e65e1076dc0ddb88'
+    'ad9f034564f28d5aa9474b877c015eff0e2fdf13'
+    '3a50cddd1f8970165d6d3ef9a85be9b933b7e97a'
+    'd4670b089967ff6a303d7ffb4b3c8dbc0ab913a8'
+    'f3a5f1a6893125f0c7e542006a544b4512f5659b'
+    '0b2acc406965261645829d688855ec3b9499de6a'
+    '6a46ea8c176de76ca04027e03a168b9775e7dc92'
+    'bd51450794caf7ae18aaf48eed779a849f1a1050'
+    '55b11ff55786aa062695e3d4feee9d1f2d5a5493'
+    '2564be1fc7f8e82ed6a0e7da8dda4baf4d341697'
+    'aff0236703f65e874864d7d2d4a76c694d24ac6d'
+    'bef122556c2d13a10e6d72d40423b3b3bc6ad29e'
 )
 _index=(
-    56 49 38 25 14 1 80 57 39 26 2 81 70 58 15 3 82 59 40 27 16 71 60 28 4 83 61
-    50 41 29 17 72 62 51 42 30 18 5 84 73 63 19 6 85 74 64 52 43 31 20 7 86 75
-    44 32 8 87 76 65 45 33 9 88 77 66 46 21 10 89 78 53 47 34 11 90 79 67 35 22
-    12 91 68 54 36 23 13 69 55 48 37 24 92 93 94
+    95 56 49 38 25 14 1 80 57 39 26 2 81 70 58 15 3 82 59 40 27 16 96 71 60 28 4
+    97 83 61 50 41 29 17 72 62 51 42 30 18 5 84 73 63 19 6 85 74 64 52 43 31 20
+    7 98 86 75 44 32 8 99 87 76 65 45 33 9 88 77 66 46 21 10 100 89 78 53 47 34
+    11 101 90 79 67 35 22 12 102 91 68 54 36 23 13 103 69 55 48 37 24 104 92 105
+    106 93 94
 )
 _ultrawide=(
-    0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 0 1 1
-    1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+    1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0
+    0 1 1 1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 )
 
 prepare() {
