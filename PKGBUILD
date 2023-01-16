@@ -1,7 +1,7 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=ovsx
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Command line interface for Eclipse Open VSX'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('f1cde4d3d6c48f58b7de2c1ba630f0dc5158e4b2de61ad489d54aa888d61dc1c')
+sha256sums=('5a5d837df86e921ca3ee86bad95d94ad0422c452c130e29d3af1602f9d96803c')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/.npm" "${srcdir}/${pkgname}-${pkgver}.tgz"
