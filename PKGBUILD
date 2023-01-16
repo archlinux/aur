@@ -5,8 +5,8 @@
 
 # Maintainer: Leone <comdir@infonix.info>
 pkgname=litemanager
-pkgver=5.0
-pkgrel=2
+pkgver=5.105
+pkgrel=1
 epoch=
 pkgdesc="remote access software for remote administration of computers over the Internet or remote control in a local network, for distant learning, providing remote support to users and supervising work activity of employees."
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=("http://litemanager.com/soft/LiteManager_linux.zip"
 litemanager.png)
 
 noextract=()
-md5sums=('d5b1d3ce0ee4d62a5e8647be581c06d0'
+md5sums=('03ab2eb1e5629866f0cff2849ef69009'
          'ce19ee278e856d0e17610979ede081b4')
 
 validpgpkeys=()
