@@ -4,7 +4,7 @@
 # $ extra-x86_64-build -- -I helm-diff-3.1.3-2-x86_64.pkg.tar.zst
 
 pkgname=helmsman
-pkgver=3.16.0
+pkgver=3.16.1
 pkgrel=1
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ optdepends=(
   'helm-secrets: backend for secret encryption')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6a0296646f4fb125871eff0548a27e25bbffe696e5fb4660caf2df40ab54b924')
+sha256sums=('b91dbc1545b88ad829e7fc1cb1bfa2c6ab097ea34ab4405c1c20a42e6012651c')
 
 build() {
   cd "${pkgname}-${pkgver}"
