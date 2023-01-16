@@ -10,12 +10,16 @@ _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
-pkgrel=1
-pkgdesc="wakatime plugin for python REPLs"
+pkgrel=2
+pkgdesc="Python REPL plugin for automatic time tracking and metrics generated from your programming activity"
 arch=(any)
 url=https://github.com/$_repo
 makedepends=(python-installer)
-depends=('wakatime')
+optdepends=(
+	'wakatime: support wakatime'
+	'ptpython: support ptpython'
+	'ipython: support ipython'
+)
 license=(GPLv3)
 _py=py3
 source=(
