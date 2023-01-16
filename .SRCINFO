@@ -1,0 +1,21 @@
+pkgbase = waydroid-settings-git
+	pkgdesc = A GTK4 app to control Waydroid settings
+	pkgver = r85.bac6cd8
+	pkgrel = 3
+	url = https://github.com/axel358/Waydroid-Settings
+	arch = any
+	makedepends = blueprint-compiler
+	makedepends = meson
+	makedepends = git
+	depends = vte4
+	depends = waydroid
+	depends = webkit2gtk-5.0
+	depends = libadwaita
+	depends = polkit
+	depends = python-gobject
+	provides = waydroid-settings
+	conflicts = waydroid-settings
+	source = git+https://github.com/axel358/Waydroid-Settings.git#branch=gtk4-port
+	sha512sums = SKIP
+
+pkgname = waydroid-settings-git
