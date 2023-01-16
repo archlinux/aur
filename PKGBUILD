@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=alire
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -28,7 +28,7 @@ git+https://github.com/mosteo/optional#commit=0c7d20c0c8b48ccb6b25fb648d48382e59
 git+https://github.com/mosteo/stopwatch#commit=86e7302d29f360f98f568b6015755229949b2194
 git+https://github.com/mosteo/toml_slicer#commit=8b9dff0f450394b07ea71f0eb9b39d9c20e21f9c
 )
-b2sums=('7c8bf3eb1f18c022a5d47fbbb38db2e44807d161bf27c3c0efe5275533de977bc50cc348d057fcf57c43071fabef8df5e23cb208e8b1993da06e1170ff126732'
+b2sums=('fc70ab6ba89dbe9d949700ad57dd9dce2f215c92731010a1bd255ef63e1beaddae852183a9cf2018eb2b054c69504d7785441356ab4299b1d0043896265ee8a7'
         '15799818a362547fa67bc9e614a3ff5b4645e268f48a8a2fe451592410be3d1fae0ff0cc96853e22813e6aa5a2a9a434f8585e26cb4bb1d5b75263177b7b81a6'
         'SKIP'
         'SKIP'
