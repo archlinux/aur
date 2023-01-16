@@ -2,7 +2,7 @@
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=zsh-pure-prompt-git
-pkgver=1.20.4.r0.g47c0c88
+pkgver=1.21.0.r0.g2f13dea
 pkgrel=1
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')

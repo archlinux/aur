@@ -1,6 +1,6 @@
 pkgbase = zsh-pure-prompt-git
 	pkgdesc = Pretty, minimal and fast ZSH prompt
-	pkgver = 1.20.4.r0.g47c0c88
+	pkgver = 1.21.0.r0.g2f13dea
 	pkgrel = 1
 	url = https://github.com/sindresorhus/pure
 	arch = any
