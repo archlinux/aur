@@ -3,7 +3,7 @@
 pkgname=php-memprof
 _extname=${pkgname#php-}
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Memory profiler for PHP. Helps finding memory leaks in PHP scripts.'
 arch=('x86_64')
 url='https://github.com/arnaud-lb/php-memory-profiler'
