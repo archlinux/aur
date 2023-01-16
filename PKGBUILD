@@ -1,10 +1,10 @@
-# Copyright (C) 2019 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+# Copyright (C) 2019-2023 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the CC0 1.0 License.
 
 pkgname=guix-installer
-pkgver=v1.3.0
-pkgrel=1
+pkgver=v1.4.0
+pkgrel=2
 pkgdesc="A command line installer for Guix"
 arch=(any)
 url="https://www.gnu.org/software/guix/"
@@ -15,6 +15,7 @@ depends=('coreutils'
          'grep'
          'sed'
          'shadow'
+         'tar'
          'wget'
          'which'
          'xz')
@@ -22,9 +23,9 @@ depends=('coreutils'
 source=("https://git.savannah.gnu.org/cgit/guix.git/plain/etc/guix-install.sh?h=${pkgver}"
         "https://git.savannah.gnu.org/cgit/guix.git/plain/COPYING?h=${pkgver}")
 
-sha256sums=('bcdeaa757cd42d2c9de4791272737e9ee0d518398403955f113611f4a893380a'
+sha256sums=('ca78fa55d34d2a442c0677dc703aa56ef775859e8d8f2f8725e7ac064fb5fecb'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha512sums=('7e006d77c20a802fd1a5bd95912a64fbce3c3ac3fc9db5a77367a46408454e42ef072ff4ace912e23196f5a9496e7b35859ade755050094e24fe2937b45baca5'
+sha512sums=('5210d6f2f1a61bc178d6e7bc466d50bc902195a9c93f62a72710cc039270016828013d87744d3c99ed5939e1df8c9d3be703041a944bcc5ffb5cd65f4ca19f3c'
             '7633623b66b5e686bb94dd96a7cdb5a7e5ee00e87004fab416a5610d59c62badaf512a2e26e34e2455b7ed6b76690d2cd47464836d7d85d78b51d50f7e933d5c')
 
 prepare() {
