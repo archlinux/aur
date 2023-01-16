@@ -1,4 +1,34 @@
-#!/usr/bin/env bash
-pushd /opt/jazz2-bin/
-	mono Jazz2.exe
-popd
+#!/bin/sh
+CONFDIR=~/.local/share/Jazz²\ Resurrection
+cd "$CONFDIR"
+UPDDIR=$CONFDIR/Update
+[ "$1" = update ] || [ ! -f "$UPDDIR"/jazz2 ] && {
+	VERFILE=$UPDDIR/version
+	ICON=/usr/share/pixmaps/jazz2.png
+	[ -f "$VERFILE" ] && { CHANNEL=release;[ `grep '\.' "$VERFILE"` ] || CHANNEL=nightly;} ||
+		CHANNEL=`zenity --list --column= --column= --hide-header --text=Select\ channel: true release . nightly --radiolist --window-icon=$ICON --title= --width=0` || exit
+	TMP=/tmp/stdout
+	LINK=https://nightly.link/deathkiller/jazz2-native/workflows/linux`[ $(uname -m) = x86_64 ] || echo _cc`/master/Jazz2_Linux_`uname -m|sed s/86_//`_SDL2
+	([ $CHANNEL = release ] && curl -s https://api.github.com/repos/deathkiller/jazz2/releases/latest|grep tag_name|cut -d\" -f4>$TMP ||
+		curl -s `curl -s $LINK|grep View\ run|cut -d\" -f4`|grep commit/|cut -d\" -f4|cut -d/ -f5>$TMP)|
+			zenity --progress --text=Checking\ update... --pulsate --auto-close --no-cancel --window-icon=$ICON --title=
+	VER=`cat $TMP`;rm $TMP
+	[ $CHANNEL = release ] && LINK=https://github.com/deathkiller/jazz2/releases/download/$VER/Jazz2_${VER}_Linux
+	[ "`cat "$VERFILE" 2>/dev/null`" = $VER ] || {
+		TMP2=/tmp/ARM64
+		mkdir $TMP2
+		(curl -Lso- $LINK.zip|bsdtar -xf- -C`[ $CHANNEL = release ] && echo /tmp $(uname -m|sed s/86_//\;s/aarch/ARM/)/{Content,jazz2_sdl2} || echo $TMP2`)|
+			zenity --progress --text=Downloading\ update... --pulsate --auto-close --no-cancel --window-icon=$ICON --title=
+		mv $TMP2/jazz2{_sdl2,} 2>/dev/null
+		chmod +x $TMP2/jazz2
+		rm -fr "$UPDDIR"
+		mv $TMP2 "$UPDDIR"
+		echo $VER>"$VERFILE"
+		ln -fs Update/Content "$CONFDIR"
+	}
+}
+DIR=/share/Jazz²\ Resurrection/Source
+mkdir -p ~/.local"$DIR"
+cp -n /usr"$DIR"/* ~/.local"$DIR"
+[ -f ~/.local"$DIR"/Anims.j2a ] && rm ~/.local"$DIR"/AnimsSw.j2a || cp -n /usr"$DIR"/../AnimsSw.j2a ~/.local"$DIR"
+"$UPDDIR"/jazz2

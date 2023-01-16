@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=Jazz² Resurrection
-Comment="An open-source reimplementation of Jazz Jackrabbit 2"
-Exec=/usr/bin/jazz2
-Icon=jazz2
-Terminal=false
 Type=Application
-Categories=Game;
+Name=Jazz² Resurrection
+Exec=jazz2
+Icon=jazz2
+Comment=Open-source reimplementation of Jazz Jackrabbit 2
+Comment[cs]=Open-source reimplementace Jazz Jackrabbit 2
+Comment[sk]=Open source reimplementácia Jazz Jackrabbit 2
+Categories=Game
