@@ -1,7 +1,7 @@
 # Maintainer: ravi0li <mail+aur at moritz dot pw>
 pkgname=pomatez
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stay Focused. Take a Break."
 arch=('x86_64')
 url="https://roldanjr.github.io/pomatez/"
@@ -13,6 +13,8 @@ sha512sums=('0884ae28feb9aecb73cbb28e462489d9f237e528a9f483d49169a8809d3bc68b0ff
 
 package() {
 	cd "${pkgdir}"
+	mkdir -p usr/bin
+	ln -s /opt/Pomatez/pomatez usr/bin/pomatez
 	# extracts everything into the pkgdir
 	tar xf "${srcdir}/data.tar.xz"
 }
