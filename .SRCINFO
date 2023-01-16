@@ -1,6 +1,6 @@
 pkgbase = shaarli-git
 	pkgdesc = The personal, minimalist, super-fast, database free, bookmarking service - community repo
-	pkgver = r2229.aeda845b
+	pkgver = r2316.6d4e3978
 	pkgrel = 1
 	url = https://shaarli.readthedocs.io/en/master/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = shaarli-git
 	makedepends = composer
 	makedepends = yarn
 	makedepends = mkdocs
-	depends = php>=7.1
+	depends = php-fpm>=7.1
 	provides = shaarli
 	conflicts = shaarli
 	options = !strip
