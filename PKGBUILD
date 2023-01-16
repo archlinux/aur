@@ -2,9 +2,9 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.4.0
-srcrel=2 # Incremented when there is a new release for the same version number
-pkgrel=3
+pkgver=1.4.1
+srcrel=1 # Incremented when there is a new release for the same version number
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="https://www.xnview.com/en/xnviewmp/"
 
@@ -26,7 +26,7 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('ADDA4E08842C6E1B96B47B3C7183CD07C1A32208F7E3C86CD95C81687B4EF845'
+sha256sums=('D8F4EC75E01ED7DAD51DBFFABB01A67979421C8B7F9597C0FC307A3237F03F1E'
             '87ec80c5049745dc3018fcdcf4dddf0e877ae3b20706705f2a80715232ad2141'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
             'D16B4F1ABA4664B169211FD0FE2FF27892AA02F60A5C7C50F55D43FAB0E255DC'
