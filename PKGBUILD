@@ -7,7 +7,7 @@ _pkgbase=transmission
 pkgname=(transmission4-cli transmission4-gtk transmission4-qt libtransmission4)
 pkgver=4.00beta.3
 _pkgver=4.0.0-beta.3+r634b1e8fc1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -17,10 +17,11 @@ makedepends=(
 	gtkmm-4.0
 	intltool
 	curl
-	qt5-base
+	qt6-base
+	qt6-svg
 	libevent
 	systemd
-	qt5-tools
+	qt6-tools
 	dht
 	libb64
 	miniupnpc
@@ -53,9 +54,13 @@ build() {
   cmake -G Ninja -S . -B build \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -DRUN_CLANG_TIDY=OFF  \
-	  -DUSE_SYSTEM_UTP=OFF \
-	  -DENABLE_CLI=ON \
-	  -DENABLE_WEB=ON
+          -DUSE_SYSTEM_UTP=OFF \
+          -DENABLE_CLI=ON \
+          -DENABLE_GTK=ON \
+          -DUSE_GTK_VERSION=4 \
+          -DENABLE_QT=ON \
+          -DUSE_QT_VERSION=6 \
+          -DENABLE_WEB=ON
   cmake --build build --config Release
 }
 
@@ -110,7 +115,7 @@ package_transmission4-gtk() {
 
 package_transmission4-qt() {
   pkgdesc='Fast, easy, and free BitTorrent client (Qt GUI) (version 4)'
-  depends=(curl qt5-base libevent libb64 miniupnpc libnatpmp libdeflate)
+  depends=(curl qt6-base qt6-svg libevent libb64 miniupnpc libnatpmp libdeflate)
   optdepends=('transmission-cli: daemon and web support')
   provides=(transmission-qt)
   conflicts=(transmission-qt)
