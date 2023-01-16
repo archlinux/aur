@@ -1,0 +1,15 @@
+pkgbase = vmt
+	pkgdesc = The Very Opinionated Mail Interaction Toolkit - CLI tool
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://sr.ht/~bitfehler/vomit
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = scdoc
+	depends = gcc-libs
+	depends = openssl
+	source = vmt-0.6.0.tar.gz::https://git.sr.ht/~bitfehler/vmt/archive/v0.6.0.tar.gz
+	sha512sums = 33ce96e31768dc164f25430db3695fa8f39db85fa16d9dbf1cc330ae501f6a3d36ea1039f13b99c3ec0044401ad4d7c148918e0c8934b1c1ba83d28ed44c7085
+
+pkgname = vmt
