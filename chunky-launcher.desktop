@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Chunky Launcher
+Comment=Minecraft mapping and rendering tool
+Exec=chunky-launcher %u
+Icon=chunky
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;3DGraphics;
