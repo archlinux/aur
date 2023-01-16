@@ -5,7 +5,7 @@
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
 pkgver=2.4.2
-pkgrel=3
+pkgrel=3.1
 epoch=1
 arch=('x86_64')
 license=('Apache' 'custom')
