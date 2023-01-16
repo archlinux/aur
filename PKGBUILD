@@ -1,23 +1,21 @@
-# $Id$
-# Maintainer: Nicolas Geniteau <nicolas@lse.epita.fr>
+# Maintainer: Nicolas Geniteau <nicolas.geniteau@gmail.com>
 pkgname=gcl
-pkgver=2.6.13_pre
+pkgver=2.6.14
 pkgrel=1
 pkgdesc="GNU Common Lisp"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnu.org/software/gcl/"
-makedepends=('git')
-source=('git+git://git.sv.gnu.org/gcl.git#branch=Version_2_6_13pre')
-md5sums=('SKIP')
+source=(https://git.savannah.gnu.org/cgit/gcl.git/snapshot/gcl-Version_${pkgver//./_}.tar.gz)
+sha256sums=('9765f721d354dfe4928037cd1c963ba4aab6c28345570300c1f6bf17e8cb4562')
 
 build() {
-  cd $srcdir/$pkgname/$pkgname/
-  ./configure --prefix=/usr
-  make
+  cd $srcdir/$pkgname-Version_${pkgver//./_}/$pkgname/
+  CFLAGS="${CFLAGS} -fplt -fcf-protection=none" ./configure --prefix=/usr
+  make -j1
+  make DESTDIR=build install
 }
 
 package() {
-  cd $srcdir/$pkgname/$pkgname/
-  make DESTDIR=$pkgdir install
+  cp -r  $srcdir/$pkgname-Version_${pkgver//./_}/$pkgname/build/. $pkgdir/
 }
