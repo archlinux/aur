@@ -5,7 +5,7 @@
 
 pkgname=unrar-free
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Free utility to extract files from RAR archives."
 arch=('x86_64' 'i686' 'aarch64')
@@ -22,7 +22,8 @@ prepare() {
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	./configure CFLAGS='-Wno-format-security' --prefix=/usr
+	export CFLAGS="${CFLAGS} -Wno-format-security"
+	./configure --prefix=/usr
 	make
 }
 
