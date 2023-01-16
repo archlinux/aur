@@ -15,6 +15,7 @@ depends=(
   'python>=3'
   'boost'
 )
+provides=('geant4')
 conflicts=('geant4_devel' 'geant4' 'geant4-debug')
 optdepends=(
   'java-environment'

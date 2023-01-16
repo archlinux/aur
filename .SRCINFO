@@ -19,6 +19,7 @@ pkgbase = geant4-full
 	optdepends = tcsh
 	optdepends = geant4-lend
 	optdepends = dawn
+	provides = geant4
 	conflicts = geant4_devel
 	conflicts = geant4
 	conflicts = geant4-debug
