@@ -2,7 +2,7 @@
 _base=skimpy
 pkgname=python-${_base}
 pkgdesc="A light weight tool for creating summary statistics from dataframes"
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
@@ -11,7 +11,7 @@ depends=(python-click python-rich python-pandas python-pygments python-ipykernel
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest python-typeguard)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('296ebfdacfd88de48a7c62c468de6fd8dc57ce25da3c9a61bf601e05b4b1c1a6ecd2b34010397aeec015f3fc5f99798438db4ff68cf14a765ae888124902fcbb')
+sha512sums=('0187a4031df5a58e2206ba87b38d3db48cc531b792cd18de56ed3ccf6bb256b238653cfeb0415e524063d68c853dafc6b3e41942e9d7b71cfb0944ccad8568a3')
 
 build() {
   cd ${_base}-${pkgver}
@@ -28,10 +28,5 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  # Symlink license file
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
