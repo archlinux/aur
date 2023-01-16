@@ -2,7 +2,7 @@
 
 pkgname=jdk-android-studio
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate android-studio provided JDK with archlinux-java"
 # android-studio package depends on external java-environment on i686
 arch=(x86_64)
