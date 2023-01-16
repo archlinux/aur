@@ -3,16 +3,22 @@
 _plug=focus
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=4.0.g28efbb1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1777684#post1777684'
 license=('GPLv2')
 depends=('vapoursynth')
 makedepends=('git')
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-focus")
+provides=("vapoursynth-plugin-${_plug}"
+          'vapoursynth-plugin-temporalsoften'
+          'vapoursynth-plugin-temporalsoften-git'
+          )
+conflicts=("vapoursynth-plugin-${_plug}"
+           'vapoursynth-plugin-temporalsoften'
+           'vapoursynth-plugin-temporalsoften-git'
+           )
+source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-focus.git")
 sha256sums=('SKIP')
 options=('debug')
 

@@ -1,16 +1,20 @@
 pkgbase = vapoursynth-plugin-focus-git
 	pkgdesc = Plugin for Vapoursynth: focus (GIT version)
 	pkgver = 4.0.g28efbb1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?p=1777684#post1777684
 	arch = x86_64
 	license = GPLv2
 	makedepends = git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-focus
+	provides = vapoursynth-plugin-temporalsoften
+	provides = vapoursynth-plugin-temporalsoften-git
 	conflicts = vapoursynth-plugin-focus
+	conflicts = vapoursynth-plugin-temporalsoften
+	conflicts = vapoursynth-plugin-temporalsoften-git
 	options = debug
-	source = focus::git+https://github.com/IFeelBloated/vapoursynth-focus
+	source = focus::git+https://github.com/IFeelBloated/vapoursynth-focus.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-focus-git
