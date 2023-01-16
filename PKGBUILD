@@ -1,6 +1,6 @@
 _pkgname=art-rawconverter
 pkgname="${_pkgname}-bin"
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
@@ -23,8 +23,10 @@ depends=(
 makedepends=()
 
 optdepends=(
+  'art-rawconverter-imageio: add support for additional image formats'
   'perl-image-exiftool: metadata support for CR3 images'
 )
+
 conflicts=('art-rawconverter')
 provides=('art-rawconverter')
 
@@ -34,7 +36,7 @@ source=(
 )
 
 sha256sums=(
-  'dde8f1666daefbd446309a6c5b2a462b9d49b0f33efe7c07db411c3cc456ef97'
+  '5e17e8dcd30d05fbe26b3c1cf6922ec130cfcfebeef748412b4e539910a55fde'
   '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
 )
 
@@ -68,4 +70,7 @@ package() {
   do
     install -Dm644 "${SRC_LOC}/${i}x${i}/apps/ART.png" "${DEST_LOC}/${i}x${i}/apps/${_pkgname}.png"
   done
+
+  # Install license file
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/$pkgname"
 }
