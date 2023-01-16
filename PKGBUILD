@@ -1,31 +1,34 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Kaizhao Zhang <zhangkaizhao at gmail dot com>
 
 _pkgname=quiterss2
-_gitcommit=1e13b1493efeb35ac8308a68e2635c6d985bf22f
-
-pkgname=quiterss2-git
-pkgver=0.0.1+1+1e13b14
+pkgname="$_pkgname-git"
+pkgver=r199.4b3434f
 pkgrel=1
-pkgdesc="An open-source cross-platform news feed reader written in Qt/C++/QML"
+epoch=1
+pkgdesc="Cross-platform news feed reader written in Qt/C++/QML"
 arch=('x86_64')
 url="https://github.com/QuiteRSS/quiterss2"
-license=('GPL-3.0')
+license=('GPL3')
 depends=('qt5-webengine')
-makedepends=('git')
-conflicts=('quiterss')
-source=("git+${url}.git#commit=${_gitcommit}")
+makedepends=('git' 'qt5-tools')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
-build() {
-  cd "${srcdir}/${_pkgname}"
+pkgver() {
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-  mkdir -p build && cd build
-  qmake-qt5 CONFIG+=release PREFIX=/usr ../quiterss2.pro
-  make
+build() {
+	cd $_pkgname
+	qmake-qt5 CONFIG+=release PREFIX=/usr quiterss2.pro
+	make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/build"
-
-  make INSTALL_ROOT="$pkgdir/" install
+	cd $_pkgname
+	make INSTALL_ROOT="$pkgdir/" install
 }
