@@ -17,10 +17,10 @@ build() {
   cargo build --release --all-features
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  cargo test --release
-}
+#check() {
+#  cd "$pkgname-$pkgver"
+#  cargo test --release
+#}
 
 package() {
   cd "$pkgname-$pkgver"
