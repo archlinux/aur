@@ -6,12 +6,12 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.6.0.230113
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
 license=("custom")
-depends=("glu" 'gtk2')
+depends=("glu" 'gtk2' 'libxcrypt-compat')
 #makedepends=("icoutils")
 optdepends=('zenity: fix crashes when downloading files, not required on kde.')
 provides=('com.alibabainc.dingtalk' 'dingtalk')
@@ -73,7 +73,7 @@ package(){
     # fix open url
     install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
 
-    rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac},libstdc*}
+    rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
 
     # remove unused lib
     rm -rf ${pkgdir}/opt/${_pkgname}/release/{libcurl.so.4,libz*}

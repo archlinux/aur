@@ -1,12 +1,13 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.6.0.230113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dingtalk.com/
 	arch = x86_64
 	license = custom
 	depends = glu
 	depends = gtk2
+	depends = libxcrypt-compat
 	optdepends = zenity: fix crashes when downloading files, not required on kde.
 	provides = com.alibabainc.dingtalk
 	provides = dingtalk
