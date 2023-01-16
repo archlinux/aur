@@ -1,0 +1,18 @@
+pkgbase = attercop
+	pkgdesc = Command generations in the shell with natural language
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/msnidal/attercop
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7.1
+	depends = python-openai>=0.23.1
+	depends = python-pyperclip>=1.8.2
+	depends = python-colorama>=0.4.6
+	source = https://files.pythonhosted.org/packages/source/a/attercop/attercop-0.3.4.tar.gz
+	md5sums = 44de6f87309470fa65b015247d5bd866
+ 
+pkgname = attercop
