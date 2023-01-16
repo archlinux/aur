@@ -6,7 +6,7 @@
 
 pkgname=onscripter
 pkgver=20220816
-pkgrel=1
+pkgrel=2
 pkgdesc="A game engine compatible to NScripter, to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="http://onscripter.sourceforge.jp/onscripter.html"
@@ -36,9 +36,9 @@ b2sums=('9464616e64c9efda25054a0e31c1d490fbdc3adedcb31856c396d0317f8ac5b90a4f4d6
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    ln -s ${srcdir}/CMakeLists.txt
-    patch -p1 -i ${srcdir}/0001-fix-smpeg-header-name.patch
-    patch -p1 -i ${srcdir}/0002-fix-lua-header-name.patch
+    ln -s "${srcdir}/CMakeLists.txt"
+    patch -p1 -i "${srcdir}/0001-fix-smpeg-header-name.patch"
+    patch -p1 -i "${srcdir}/0002-fix-lua-header-name.patch"
 }
 
 build() {
@@ -46,7 +46,7 @@ build() {
 	cmake . \
 		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
-		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr
+		-DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
 	ninja
 }
 
