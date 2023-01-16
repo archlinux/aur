@@ -1,7 +1,7 @@
 # Maintainer: Matthew Charlston <firstname _at_ mcharlsto dot uk>
 
 pkgname="horizontallyspinningrat"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 depends=("sox" "opusfile" "bash" "sharutils")
 optdepends=("lolcat: rainbow mode")
