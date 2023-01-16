@@ -27,8 +27,8 @@ conflicts=('cinny-desktop')
 provides=('cinny-desktop')
 
 source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/Cinny_desktop-x86_64.deb")
-sha256sums_x86_64=('6ff42512551080965458db91dcfa3ef836c2ddfd5f52c32b20fdb12a19a0d779')
-sha512sums_x86_64=('6ab32348e13958f6911bf03f50b4a04a9b3c9b2f270967eafdfeb9cf68fd6c52aeb1ef920a223d753618e6304d66097592df49632f6713f3674ff639080afca1')
+sha256sums_x86_64=('b22100219f5c0882594e479992f4f9cab3e3446a0e97bbe353df0052b86024dc')
+sha512sums_x86_64=('5edb1c55f9e4279a6ce00e2fa4aa5c89a91677b1b7efc6247210e0a88517d1c98d912a7c08a70966659e143d4648c055494170bb580554184804c5885f8f4864')
 
 install="${pkgname}.install"
 
