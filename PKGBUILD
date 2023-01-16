@@ -3,7 +3,7 @@
 _pkgname=gfonts
 _pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Offline 'Google' Fonts for 'Markdown' and 'Shiny'"
 arch=('any')
