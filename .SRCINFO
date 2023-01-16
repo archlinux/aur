@@ -1,6 +1,6 @@
 pkgbase = r-rtriangle
 	pkgdesc = Triangle - A 2D Quality Mesh Generator and Delaunay Triangulator
-	pkgver = 1.6.0.11
+	pkgver = 1.6.0.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RTriangle
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rtriangle
 	depends = r
 	optdepends = r-geometry
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/RTriangle_1.6-0.11.tar.gz
-	sha256sums = 23fb7357ccb373f46e57beb65a6e8e1e1d645ee602433c5defd6509fcf0cd954
+	source = https://cran.r-project.org/src/contrib/RTriangle_1.6-0.12.tar.gz
+	sha256sums = bed711fa926569cc80b0735b4a042c1f9c9c9a2f271ae20a3791f7a9765d6bdb
 
 pkgname = r-rtriangle
