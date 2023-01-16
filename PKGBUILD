@@ -22,6 +22,6 @@ package(){
         DESTDIR=${pkgdir}"/usr/share/sangfor/EasyConnect/oldlib/pango" meson install -C builddir
         cd ${pkgdir}
         sed -i 's/Exec=/Exec=env LD_LIBRARY_PATH=\/usr\/share\/sangfor\/EasyConnect\/oldlib\/pango\/usr\/lib /g' "${pkgdir}/usr/share/applications/EasyConnect.desktop"
-        install -D -m644 "${pkgdir}/usr/share/sangfor/EasyConnect/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        install -D -m644 "${pkgdir}/usr/share/sangfor/EasyConnect/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
