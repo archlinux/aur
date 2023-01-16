@@ -1,22 +1,22 @@
 # Maintainer: kfrx <kfrx at protonmail dot com>
 
 pkgname=pdf-over
-pkgver=4.4.3.1
+pkgver=4.4.4
 pkgrel=1
 pkgdesc='Graphical tool for creating PAdES conforming PDF signatures'
 arch=('x86_64')
 url='https://technology.a-sit.at/en/pdf-over/'
-license=('custom:EUPL-1.1')
+license=('custom:EUPL-1.2')
 depends=('jre17-openjdk' 'bash')
 source=("LICENSE"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-${pkgver}.jar::https://technology.a-sit.at/download/pdf-over-linux?version=${pkgver}")
 noextract=("${pkgname}-${pkgver}.jar")
-sha256sums=('0dc4b0a3362f197e250604567a6b4eb16bbc34c186425401e2201a193a82549f'
+sha256sums=('6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665'
             'ec75837f568b1c0c6d0d091dcbf71d34a36b1d1f679b07baf1e411d290410e24'
             '022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd'
-            'a72409778d5ff99ea1f30f577083e672d6442203fdd47c18a55ac886fc468d0c')
+            '665b27e300ea3f9d19b163870fcb234988c840e96363adeb56d65eebf3c03b3d')
 
 package() {
   /usr/lib/jvm/java-17-openjdk/bin/java -jar "${pkgname}-${pkgver}.jar" -options <(echo "INSTALL_PATH=${srcdir}/extracted") </dev/null
