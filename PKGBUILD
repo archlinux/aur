@@ -16,7 +16,23 @@ depends=(
   'boost'
 )
 provides=('geant4')
-conflicts=('geant4_devel' 'geant4' 'geant4-debug')
+conflicts=(
+  'geant4_devel'
+  'geant4'
+  'geant4-debug'
+  'geant4-abladata'
+  'geant4-ensdfstatedata'
+  'geant4-incldata'
+  'geant4-ledata'
+  'geant4-levelgammadata'
+  'geant4-neutronhpdata'
+  'geant4-neutronxsdata'
+  'geant4-particlexsdata'
+  'geant4-piidata'
+  'geant4-radioactivedata'
+  'geant4-realsurfacedata'
+  'geant4-saiddata'
+)
 optdepends=(
   'java-environment'
   'tcsh'
