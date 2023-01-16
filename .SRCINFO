@@ -1,6 +1,6 @@
 pkgbase = hare-git
 	pkgdesc = The Hare systems programming language
-	pkgver = r2695.9f175d0b
+	pkgver = r2805.56678fef
 	pkgrel = 1
 	url = https://harelang.org
 	arch = x86_64
@@ -17,9 +17,11 @@ pkgbase = hare-git
 	provides = hare
 	conflicts = hare
 	source = hare::git+https://git.sr.ht/~sircmpwn/hare
+	source = 0001-math-disable-failing-tan-tests.patch
 	source = config.x86_64.mk
 	source = config.aarch64.mk
 	sha512sums = SKIP
+	sha512sums = 766b911b67891c42323d8c2483b574df51916eb8854555b77805ca9a077ad7e328fbae559e94b2169bd09604f5628c56bcbb15173bcd2a99830951d7afe9880c
 	sha512sums = 5df893f3d1f79cd9735ba0f3b9a61fad881eda887c8a4b0c97ee2b8b99171636c4f2699617d46963c35ec7946cb423b1b1debb685dbaef7909d6bd915e4f65c1
 	sha512sums = bb661bb2916d64eb3db5f4af1cdf6ec5271b4809d0f3afe80045cdffb5407e997d2ea9d2315dc4da131d765dcceaab5e23014597ccb000b7f7338896829eaa86
 

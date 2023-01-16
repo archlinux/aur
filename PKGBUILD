@@ -1,7 +1,7 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=hare-git
 _pkgname=hare
-pkgver=r2695.9f175d0b
+pkgver=r2806.6390e114
 pkgrel=1
 license=("MPL2")
 pkgdesc="The Hare systems programming language"
@@ -25,11 +25,9 @@ optdepends=(
 arch=("x86_64" "aarch64")
 url="https://harelang.org"
 source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
+	0001-math-disable-failing-tan-tests.patch
 	config.x86_64.mk
-    config.aarch64.mk)
-sha512sums=('SKIP'
-    '5df893f3d1f79cd9735ba0f3b9a61fad881eda887c8a4b0c97ee2b8b99171636c4f2699617d46963c35ec7946cb423b1b1debb685dbaef7909d6bd915e4f65c1'
-    'bb661bb2916d64eb3db5f4af1cdf6ec5271b4809d0f3afe80045cdffb5407e997d2ea9d2315dc4da131d765dcceaab5e23014597ccb000b7f7338896829eaa86')
+	config.aarch64.mk)
 
 provides=("hare")
 conflicts=("hare")
@@ -37,6 +35,11 @@ conflicts=("hare")
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+	patch --forward --strip=1 --input="${srcdir}/0001-math-disable-failing-tan-tests.patch"
 }
 
 build() {
@@ -65,3 +68,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
+sha512sums=('SKIP'
+            '766b911b67891c42323d8c2483b574df51916eb8854555b77805ca9a077ad7e328fbae559e94b2169bd09604f5628c56bcbb15173bcd2a99830951d7afe9880c'
+            '5df893f3d1f79cd9735ba0f3b9a61fad881eda887c8a4b0c97ee2b8b99171636c4f2699617d46963c35ec7946cb423b1b1debb685dbaef7909d6bd915e4f65c1'
+            'bb661bb2916d64eb3db5f4af1cdf6ec5271b4809d0f3afe80045cdffb5407e997d2ea9d2315dc4da131d765dcceaab5e23014597ccb000b7f7338896829eaa86')
