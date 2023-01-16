@@ -18,7 +18,7 @@ pkgbase = jazz2-bin
 	source = jazz2.desktop
 	md5sums = b5095a5ba6d2d7d20b2c4ff2a99301c5
 	md5sums = 5adcc9de4dac2c9b5456494a5573ea94
-	md5sums = 147429002b9f25ea80f85a8592680653
+	md5sums = 66e2fcda066b90cc842bdf695b763964
 	md5sums = 665ca003a5ff9eb51ce0fc4e23dd2ae9
 
 pkgname = jazz2-bin

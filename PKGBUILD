@@ -14,7 +14,7 @@ source=(
 md5sums=(
 	b5095a5ba6d2d7d20b2c4ff2a99301c5
 	5adcc9de4dac2c9b5456494a5573ea94
-	147429002b9f25ea80f85a8592680653
+	66e2fcda066b90cc842bdf695b763964
 	665ca003a5ff9eb51ce0fc4e23dd2ae9)
 package(){
 	install jazz2 -Dt "$pkgdir"/usr/bin

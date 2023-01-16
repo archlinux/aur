@@ -15,9 +15,10 @@ UPDDIR=$CONFDIR/Update
 	VER=`cat $TMP`;rm $TMP
 	[ $CHANNEL = release ] && LINK=https://github.com/deathkiller/jazz2/releases/download/$VER/Jazz2_${VER}_Linux
 	[ "`cat "$VERFILE" 2>/dev/null`" = $VER ] || {
-		TMP2=/tmp/ARM64
+		ARCH=`uname -m|sed s/86_//\;s/aarch/ARM/`
+		TMP2=/tmp/$ARCH
 		mkdir $TMP2
-		(curl -Lso- $LINK.zip|bsdtar -xf- -C`[ $CHANNEL = release ] && echo /tmp $(uname -m|sed s/86_//\;s/aarch/ARM/)/{Content,jazz2_sdl2} || echo $TMP2`)|
+		(curl -Lso- $LINK.zip|bsdtar -xf- -C`[ $CHANNEL = release ] && echo /tmp $ARCH/{Content,jazz2_sdl2} || echo $TMP2`)|
 			zenity --progress --text=Downloading\ update... --pulsate --auto-close --no-cancel --window-icon=$ICON --title=
 		mv $TMP2/jazz2{_sdl2,} 2>/dev/null
 		chmod +x $TMP2/jazz2
