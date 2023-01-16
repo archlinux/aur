@@ -3,12 +3,12 @@
 
 pkgname="monica-crm"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships."
 url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
-depends=("php>=7.4")
+depends=("php-interpreter>=7.4")
 optdepends=(
     "mariadb: use local MariaDB database"
     "nginx: supported application server"

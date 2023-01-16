@@ -1,11 +1,11 @@
 pkgbase = monica-crm
 	pkgdesc = Personal CRM. Remember everything about your friends, family and business relationships.
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.monicahq.com/
 	arch = any
 	license = AGPL3
-	depends = php>=7.4
+	depends = php-interpreter>=7.4
 	optdepends = mariadb: use local MariaDB database
 	optdepends = nginx: supported application server
 	optdepends = php-redis: cache, session and queue drivers
