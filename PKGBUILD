@@ -21,8 +21,6 @@ build () {
 	cmake -B build -S "${_pkgname}-${pkgver}" \
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DCMAKE_C_FLAGS=-DNDEBUG \
-		-DCMAKE_CXX_FLAGS=-DNDEBUG \
 		-Wno-dev
 	cmake --build build
 }
