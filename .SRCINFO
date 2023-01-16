@@ -1,0 +1,12 @@
+pkgbase = zathura-solarized-git
+	pkgdesc = the solarized color theme for zathura
+	pkgver = r3.d63c710
+	pkgrel = 1
+	url = https://github.com/lennonwoo/zathura-solarized
+	arch = any
+	license = unknown
+	depends = zathura
+	source = git+https://github.com/lennonwoo/zathura-solarized#tag=d63c710065f666fc120d2be2a2bf589d545a538e
+	sha256sums = SKIP
+
+pkgname = zathura-solarized-git
