@@ -1,0 +1,17 @@
+pkgbase = waylend
+	pkgdesc = A calm and simple logout menu
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~bitfehler/waylend
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = cargo
+	depends = atk
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = gtk3
+	source = waylend-0.1.0.tar.gz::https://git.sr.ht/~bitfehler/waylend/archive/0.1.0.tar.gz
+	sha512sums = 28edc0be571c70e8f3d4bbbd973a3d49c1a0323cc222599744940b8bd2584464a93067897c091e32782dd38f41fc62b440982b82bdc6d0ffe2452e761b32cc08
+
+pkgname = waylend
