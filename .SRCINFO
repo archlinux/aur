@@ -1,7 +1,7 @@
 pkgbase = antpatt
 	pkgdesc = Antenna pattern plotting and analysis software.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/kkonradpl/antpatt
 	arch = x86_64
 	arch = i686
