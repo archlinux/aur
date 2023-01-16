@@ -1,24 +1,27 @@
-From 74a4dbfd9950a2713327cb5ea1de4bdeec8cabaf Mon Sep 17 00:00:00 2001
-From: Waffle <waffle.lapkin@gmail.com>
-Date: Tue, 19 May 2020 11:17:13 +0300
+From e7c23f5ccd46ad7d9446fa7f92c35e7b1f86f8b5 Mon Sep 17 00:00:00 2001
+From: Maybe Waffle <waffle.lapkin@gmail.com>
+Date: Mon, 16 Jan 2023 14:58:54 +0400
 Subject: [PATCH] Change instalation path to be Arch linux friendly
 
 ---
- src/AniLibria.pro | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ src/AniLibria.pro | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
 diff --git a/src/AniLibria.pro b/src/AniLibria.pro
-index 58fdddf..33da0f8 100644
+index da83155..403c137 100644
 --- a/src/AniLibria.pro
 +++ b/src/AniLibria.pro
-@@ -92,14 +92,9 @@ QML_IMPORT_PATH =
+@@ -237,17 +237,9 @@ QML_IMPORT_PATH =
  # Additional import path used to resolve QML modules just for Qt Quick Designer
  QML_DESIGNER_IMPORT_PATH =
  
 -# Default rules for deployment.
--qnx: target.path = /tmp/$${TARGET}/bin
--else: unix:!android: target.path = /opt/$${TARGET}/bin
--
+-!flatpak{
+-    qnx: target.path = /tmp/$${TARGET}/bin
+-    else: unix:!android: target.path = /opt/$${TARGET}/bin
+-}else{
+-    target.path = $$PREFIX/bin
+-}
 -!isEmpty(target.path) {
 -    unix: INSTALLS += target desktop $${UNIX_ICONS}
 -    else:macx: INSTALLS += target
@@ -27,8 +30,8 @@ index 58fdddf..33da0f8 100644
 +target.path = /usr/bin
 +INSTALLS += target desktop $${UNIX_ICONS}
  
- HEADERS += \
-     Classes/Models/changesmodel.h \
+ flatpak {
+     metadata.path = $$PREFIX/share/metainfo
 -- 
-2.26.2
+2.39.0
 

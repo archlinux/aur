@@ -1,6 +1,6 @@
 pkgbase = anilibria-winmaclinux-git
 	pkgdesc = AniLibria client for major desktop platforms
-	pkgver = r258.c2c280c
+	pkgver = r740.09cbe54
 	pkgrel = 1
 	url = https://github.com/anilibria/anilibria-winmaclinux
 	arch = x86_64
@@ -22,9 +22,8 @@ pkgbase = anilibria-winmaclinux-git
 	source = 0001-disable-version-check.patch
 	source = 0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch
 	md5sums = SKIP
-	md5sums = 59290afaa86d49b8a1e8894032663c0d
+	md5sums = 0b51824ff7580d40cfcd4df9082610eb
 	md5sums = c8f887de1082f4e8ff46d8e253ec623e
 	md5sums = 84b73c82d8240235096b278907443848
 
 pkgname = anilibria-winmaclinux-git
-

@@ -1,6 +1,6 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux-git'
-pkgver=r258.c2c280c
+pkgver=r740.09cbe54
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/anilibria/anilibria-winmaclinux.git'
         '0001-disable-version-check.patch'
         '0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch')
 md5sums=('SKIP'
-         '59290afaa86d49b8a1e8894032663c0d'
+         '0b51824ff7580d40cfcd4df9082610eb'
          'c8f887de1082f4e8ff46d8e253ec623e'
          '84b73c82d8240235096b278907443848')
 
