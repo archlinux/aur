@@ -6,7 +6,7 @@ pkgbase = jdk-android-studio
 	install = jdk-android-studio.install
 	arch = x86_64
 	license = APACHE
-	depends = android-studio
+	depends = android-studio>=2022.01.01.19
 	depends = java-environment-common
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11

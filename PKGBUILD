@@ -8,7 +8,7 @@ pkgdesc="Integrate android-studio provided JDK with archlinux-java"
 arch=(x86_64)
 url="https://developer.android.com/studio"
 license=(APACHE)
-depends=(android-studio java-environment-common)
+depends=('android-studio>=2022.01.01.19' java-environment-common)
 provides=(java-runtime=11 java-runtime-openjdk=11
           java-environment=11 java-environment-openjdk=11)
 install=jdk-android-studio.install
