@@ -3,7 +3,7 @@
 # Contributor: Daniel Greve <greve.daniel.l@gmail.com>
 
 pkgname=zsh-pure-prompt
-pkgver=1.20.4
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Pretty, minimal and fast ZSH prompt'
 arch=('any')
@@ -12,7 +12,7 @@ _github_url='https://github.com/sindresorhus/pure'
 license=('MIT')
 depends=('zsh')
 source=("https://github.com/sindresorhus/pure/archive/v${pkgver}.tar.gz")
-sha256sums=('e9dfd0c08127f7131051f630ec2ab4349a29de337e39679d4297877811a612d2')
+sha256sums=('0c3f55dc75c0e1a47e1670ada35c2aec4a8fec2686d22c67696ecd714225a563')
 
 package() {
   cd "${srcdir}/pure-${pkgver}"
