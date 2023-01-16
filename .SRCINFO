@@ -1,24 +1,24 @@
-pkgbase = lure-bin
+pkgbase = linux-user-repository-bin
 	pkgdesc = Linux User REpository
 	pkgver = 0.0.6
 	pkgrel = 3
 	url = https://gitea.arsenm.dev/Arsen6331/lure
+	arch = aarch64
+	arch = armv6h
+	arch = i686
+	arch = x86_64
 	license = GPLv3
 	depends = sudo
 	depends = pacman
-	conflicts = lure
 	provides = lure
-	arch = aarch64
-	source_aarch64 = https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_aarch64.tar.gz
+	conflicts = lure
+	source_aarch64 = linux-user-repository-bin_0.0.6_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_aarch64.tar.gz
 	sha256sums_aarch64 = f554efe358089da9a3e2665c725af98cc5a13366ccca6a6c37f67a28fe93ce06
-	arch = armv6h
-	source_armv6h = https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_armv6.tar.gz
+	source_armv6h = linux-user-repository-bin_0.0.6_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_armv6.tar.gz
 	sha256sums_armv6h = 2a67325bb69c6e236738d4471752be4457d2ae0a3fcd9da0477545d08e13365c
-	arch = i686
-	source_i686 = https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_i386.tar.gz
+	source_i686 = linux-user-repository-bin_0.0.6_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_i386.tar.gz
 	sha256sums_i686 = 126d1fa7f06b51e77b32e473b91d9647c8f5983dcb4d00d75a4206c29d355214
-	arch = x86_64
-	source_x86_64 = https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_x86_64.tar.gz
+	source_x86_64 = linux-user-repository-bin_0.0.6_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_x86_64.tar.gz
 	sha256sums_x86_64 = 3cf95577710d283ad2bce03f0a41ee51012ae482f24387104760852e27c4fbf8
-	
-pkgname = lure-bin
+
+pkgname = linux-user-repository-bin
