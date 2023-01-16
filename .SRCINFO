@@ -1,7 +1,7 @@
 pkgbase = gbcflsh
 	pkgdesc = GameBoy Cart Flasher
 	pkgver = 1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/gbcf
 	install = gbcflsh.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = gbcflsh
 	depends = libftdi-compat
 	provides = gbcflsh
 	conflicts = gbcflsh
-	source = http://downloads.sourceforge.net/gbcf/gbcflsh_1.1_src.tar.gz
+	source = https://sourceforge.net/projects/gbcf/files/gbcflsh/1.1/gbcflsh_1.1_src.tar.gz
 	source = gbcflsh.desktop
 	source = config.patch
 	source = ultraspeed.patch
@@ -27,4 +27,3 @@ pkgbase = gbcflsh
 	md5sums = 80a6b3270c2420490890517a41e7c7ab
 
 pkgname = gbcflsh
-
