@@ -1,6 +1,6 @@
 pkgbase = clipboard-git
 	pkgdesc = Cut, copy, and paste anything in your terminal (git version).
-	pkgver = 0.2.1r2.r397.24e3404
+	pkgver = 0.2.1r2.r435.27a3a1f
 	pkgrel = 1
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
