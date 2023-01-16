@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Elk Zone
+Comment=A nimble Mastodon web client
+Exec=/usr/bin/elk-zone
+Icon=/usr/share/icons/elk-zone.png
+Terminal=false
+Categories=Network;InstantMessaging
+X-Desktop-File-Install-Version=0.26

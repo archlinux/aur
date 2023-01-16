@@ -1,0 +1,7 @@
+# makepkg files
+src
+pkg
+# built package
+*.pkg.tar.zst
+# Git remote
+elk-native
