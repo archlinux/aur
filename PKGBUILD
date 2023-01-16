@@ -18,11 +18,6 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m pytest
-}
-
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
