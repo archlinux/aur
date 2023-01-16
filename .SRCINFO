@@ -1,0 +1,15 @@
+pkgbase = python-repl-python-codestats
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/repl-python-codestats
+	arch = any
+	license = GPLv3
+	makedepends = python-installer
+	depends = python-repl-python-wakatime
+	optdepends = keyring: use keyring to restore API key
+	optdepends = ptpython: support ptpython
+	optdepends = ipython: support ipython
+	source = https://files.pythonhosted.org/packages/py3/r/repl-python-codestats/repl_python_codestats-0.0.1-py3-none-any.whl
+	sha256sums = 3a3c3974aace0815bacfb5bb223f5871c43208d7c9dfe39c929ae68e9d233a4c
+
+pkgname = python-repl-python-codestats
