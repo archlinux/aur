@@ -7,7 +7,7 @@
 _pkgname=gamescope
 pkgname=gamescope-plus
 pkgver=3.11.51.108.geff0ac0
-pkgrel=1
+pkgrel=2
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Samsagax/gamescope
@@ -40,7 +40,6 @@ depends=(
   sdl2
   vulkan-icd-loader
   wayland
-  wayland-protocols
   #wlroots
   xorg-server-xwayland
   xcb-util-errors
@@ -49,10 +48,12 @@ depends=(
 )
 makedepends=(
   git
-  glslang
   meson
   ninja
+  patch
+  glslang
   vulkan-headers
+  wayland-protocols
 )
 _tag=eff0ac001e963e399ec6e4efd4ce955b0b351ea3
 source=("git+https://github.com/Samsagax/gamescope.git#tag=${_tag}")
@@ -81,13 +82,15 @@ pkgver() {
 build() {
   export LDFLAGS="$LDFLAGS -lrt"
   arch-meson gamescope build \
-    -Dforce_fallback_for=stb \
-    -Dpipewire=enabled
+    -Dforce_fallback_for=stb,libliftoff,wlroots \
+    -Dpipewire=enabled \
+    -Dwlroots:backends=drm,libinput,x11 \
+    -Dwlroots:renderers=gles2,vulkan
   meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build --skip-subprojects
+  meson install -C build --skip-subprojects --destdir="${pkgdir}"
   install -Dm 644 gamescope/LICENSE -t "${pkgdir}"/usr/share/licenses/gamescope/
 }
 
