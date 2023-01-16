@@ -1,7 +1,7 @@
 pkgbase = pwru
 	pkgdesc = Packet, where are you? -- eBPF-based Linux kernel networking debugger
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/cilium/pwru
 	arch = x86_64
 	arch = aarch64
