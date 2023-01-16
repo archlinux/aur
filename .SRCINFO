@@ -1,0 +1,19 @@
+pkgbase = tempy-git
+	pkgdesc = Render visually pleasing weather reports as rich text to your terminal
+	pkgver = 1.0.r28.eff6685
+	pkgrel = 1
+	url = https://github.com/noprobelm/tempy.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-rich
+	depends = python-requests
+	provides = tempy
+	source = tempy-git::git+https://github.com/noprobelm/tempy.git
+	md5sums = SKIP
+
+pkgname = tempy-git
