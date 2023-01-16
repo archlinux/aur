@@ -1,7 +1,7 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux-git'
 pkgver=r740.09cbe54
-pkgrel=1
+pkgrel=2
 pkgdesc='AniLibria client for major desktop platforms'
 arch=('x86_64')
 url='https://github.com/anilibria/anilibria-winmaclinux'
