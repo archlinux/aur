@@ -2,7 +2,7 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="一个 DNS 转发器"
 arch=('x86_64')
 url="https://github.com/IrineSistiana/mosdns/"
@@ -23,6 +23,7 @@ sha256sums=('70e18bc31de9e6fbfa17d3f82316394eab201139475ab134d2e6122aca0976ff'
 
 package() {
   install -Dm755 mosdns "$pkgdir"/usr/bin/mosdns
+  install -dm755 "$pkgdir"/etc/mosdns
   install -Dm644 sysusers "$pkgdir"/usr/lib/sysusers.d/mosdns.conf
   install -Dm644 tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/mosdns.conf
   install -Dm644 service "$pkgdir"/usr/lib/systemd/system/mosdns.service

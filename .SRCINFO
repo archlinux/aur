@@ -1,7 +1,7 @@
 pkgbase = mosdns-bin
 	pkgdesc = 一个 DNS 转发器
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IrineSistiana/mosdns/
 	arch = x86_64
 	license = GPL3
