@@ -1,0 +1,12 @@
+pkgbase = zathura-gruvbox-git
+	pkgdesc = the gruvbox color theme for zathura
+	pkgver = r7.0b49904
+	pkgrel = 1
+	url = https://github.com/eastack/zathura-gruvbox
+	arch = any
+	license = unknown
+	depends = zathura
+	source = git+https://github.com/eastack/zathura-gruvbox#tag=0b49904fe77e6eb676a6318c1acb03afeb2965bb
+	sha256sums = SKIP
+
+pkgname = zathura-gruvbox-git
