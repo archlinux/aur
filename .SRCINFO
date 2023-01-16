@@ -6,8 +6,8 @@ pkgbase = solarized-colors-iconpack-git
 	arch = any
 	license = GPL
 	makedepends = git
+	options = !strip
 	source = git+https://github.com/rtlewis88/rtl88-Themes.git#branch=Solarized-Colors-Iconpack
 	sha256sums = SKIP
 
 pkgname = solarized-colors-iconpack-git
-

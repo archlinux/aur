@@ -1,4 +1,6 @@
-# Maintainer: Jouni Rinne <l33tmmx swirlything gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Jouni Rinne <l33tmmx swirlything gmail dot com>
+
 pkgname=solarized-colors-iconpack-git
 pkgver=1.0.r112.g623ad87261
 pkgrel=1
@@ -9,10 +11,11 @@ license=('GPL')
 makedepends=('git')
 source=("git+https://github.com/rtlewis88/rtl88-Themes.git#branch=Solarized-Colors-Iconpack")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver() {
-    cd ${srcdir}/rtl88-Themes
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd ${srcdir}/rtl88-Themes
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
