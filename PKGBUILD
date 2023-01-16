@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/arttor/helmify"
 license=("APACHE")
 source=(
-$pkgname-$pkgver::https://github.com/arttor/helmify/releases/download/v${pkgver}/helmify_${pkgver}_Linux_64-bit.tar.gz
+$pkgname-$pkgver.tar.gz::https://github.com/arttor/helmify/releases/download/v${pkgver}/helmify_${pkgver}_Linux_64-bit.tar.gz
 )
 sha256sums=(
 6ae7fa6726fd09a39d1b60c4ce7df7edc3fb4fbee2fc99211c217870cf8d226b
@@ -16,12 +16,14 @@ sha256sums=(
 
 build() {
   cd "$srcdir"
+  tar xvf $pkgname-$pkgver.tar.gz
 }
 
 package () {
   cd "$pkgdir"
 
   mkdir -p "usr/bin"
-  exit 1
+
+  install -Dm755 "$srcdir/${provides}" "$pkgdir/usr/bin/${provides}"
 
 }
