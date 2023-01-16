@@ -7,14 +7,6 @@ post_install() {
   echo "Install Firefox theme - copy or symlink from /usr/share/doc/orchis-theme/firefox/:"
   echo "https://github.com/vinceliuice/Orchis-theme/tree/master/src/firefox#installation"
   echo ""
-  echo "Fix for Dash to panel:"
-  echo "cd /usr/share/doc/orchis-theme/dash-to-panel"
-  echo "sudo ./install.sh "
-  echo ""
-  echo "Restore original styesheet.css before updating Dash to panel:"
-  echo "cd /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com"
-  echo "sudo mv stylesheet.css.back stylesheet.css"
-  echo ""
 }
 
 post_upgrade() {
