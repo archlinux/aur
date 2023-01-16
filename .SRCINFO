@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
-	pkgver = 102.6.0
+	pkgver = 102.7.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
@@ -55,10 +55,10 @@ pkgbase = icecat
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-b6260130b9808f550bdb35061af2d7962109a181.tar.gz
+	source = https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-7f76da3cfd5d04fa38d894f6ea6ac5f2fd0ea837.tar.gz
 	source = icecat.desktop
 	source = icecat-safe.desktop
-	sha256sums = be69a1a75157b15880adaab029109a0a96fec021791cd1ff26871b1b62b3a5e3
+	sha256sums = f7adb3ab04c7a3f5ab2ec358848c2f573171825cba27e70ad009e84fff5a4164
 	sha256sums = e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d
 	sha256sums = 33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208
 
