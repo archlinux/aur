@@ -1,0 +1,10 @@
+post_install() {
+  echo "=> The datetime plugin is unmaintained. Consider switching"
+  echo "   to the panel's clock plugin which has similar features."
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
