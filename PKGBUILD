@@ -25,8 +25,8 @@ makedepends=('rust' 'nodejs' 'npm')
 
 # This makes sure dirty builds still pull down the newest version
 source=("${pkgname}-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip")
-sha256sums=('0cc6f37112391e14cd0ef051015fc273afb1fbecb389d96927532678f16796ed')
-sha512sums=('2e1da11569d9f4338c71751b5ad55608b36b0c7b535cd1043e9537821dbe300ea507aac43a336d6f7c08e9ef2a96a121166da140092519839de022858fa047f6')
+sha256sums=('58e7d682724184b979964e59f5b9074858cbb247aa597f6a45bd98a4e6433fb7')
+sha512sums=('605fcf61ad1e54e8dd80107fefc3eb50d703d4f6fec49dc8a28bded345b19ebb651c785d28b19477952f0964fe33e5fc40e83d28e1d1db678a4ee5783d6629ca')
 
 install="${pkgname}.install"
 
