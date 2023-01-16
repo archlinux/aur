@@ -1,7 +1,7 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 
 pkgname=buildroot-meta
-pkgver=2021.02.1
+pkgver=2022.11.1
 pkgrel=1
 pkgdesc="dependency requirements for buildroot"
 arch=('any')
@@ -13,6 +13,7 @@ depends=(
   'sed'
   'make>=3.81'
   'binutils'
+  'diffutils'
   'gcc>=4.8'
   'bash'
   'patch'
@@ -26,6 +27,7 @@ depends=(
   'file'
   'bc'
   'wget'
+  'findutils'
 )
 
 optdepends=(
