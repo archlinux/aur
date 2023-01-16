@@ -1,0 +1,23 @@
+pkgbase = broadlink-mqtt-git
+	pkgdesc = mqtt client to control broadlink devices
+	pkgver = r100.d16c9ee
+	pkgrel = 1
+	url = https://github.com/eschava/broadlink-mqtt
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-paho-mqtt
+	depends = python-broadlink
+	backup = etc/broadlink-mqtt.conf
+	source = git+https://github.com/eschava/broadlink-mqtt.git
+	source = broadlink-mqtt.service
+	source = broadlink-mqtt.sysusers
+	source = broadlink-mqtt.tmpfiles
+	source = logging.conf
+	sha256sums = SKIP
+	sha256sums = 75fd82b6ad0383c9648d5bbd7000742f6f747b5492bf66bd13463485011cd1e3
+	sha256sums = 57053c5e5e440128b38557587c0a94951b00a5fd25fc1e2c6e1ec61de8a1d7e1
+	sha256sums = dab3828f253ce892a49907dcf704a9875b136838c860ca2b966d1277a41a6bb2
+	sha256sums = f2c45e497ab765b1a610763d890c8991b375505d6d543866a1478e5c0b9736d8
+
+pkgname = broadlink-mqtt-git

@@ -1,0 +1,15 @@
+[Unit]
+Description=Broadlink MQTT Service
+After=multi-user.target
+
+[Service]
+Type=simple
+User=broadlink-mqtt
+ExecStart=/usr/bin/python3 /usr/lib/broadlink-mqtt/mqtt.py
+Environment="BROADLINKMQTTCONFIGCUSTOM=/etc/broadlink-mqtt.conf"
+Environment="BROADLINKMQTTCONFIG=/usr/lib/broadlink-mqtt/mqtt.conf"
+WorkingDirectory=/usr/lib/broadlink-mqtt
+StandardInput=null
+
+[Install]
+WantedBy=multi-user.target

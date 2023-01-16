@@ -1,0 +1,5 @@
+d /var/lib/broadlink-mqtt 0755 broadlink-mqtt broadlink-mqtt
+d /var/lib/broadlink-mqtt/commands 0755 broadlink-mqtt broadlink-mqtt
+d /var/lib/broadlink-mqtt/macros 0755 broadlink-mqtt broadlink-mqtt
+L /usr/lib/broadlink-mqtt/commands - - - - /var/lib/broadlink-mqtt/commands
+L /usr/lib/broadlink-mqtt/macros - - - - /var/lib/broadlink-mqtt/macros
