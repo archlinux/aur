@@ -3,13 +3,14 @@
 
 pkgname='linux-user-repository-bin'
 pkgver=0.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
 license=('GPLv3')
-provides=('lure')
-conflicts=('lure')
+provides=('linux-user-repository')
+conflicts=('linux-user-repository')
+replaces=('lure-bin')
 depends=('sudo' 'pacman')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.6/lure_0.0.6_linux_aarch64.tar.gz")
