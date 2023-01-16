@@ -9,7 +9,6 @@ url="https://github.com/alenrajsp/${_base}"
 license=(MIT)
 depends=(python)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
 sha512sums=('8e09a9c38d1e88c752f9fdd5269b5acde2471188c809a608f0fc5f418049129bfb94b074efede4e055af8f03b88a71321f16b716fc1ca62fadaa1343ea4e7914')
 

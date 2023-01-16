@@ -5,7 +5,6 @@ pkgbase = python-tcxreader
 	url = https://github.com/alenrajsp/tcxreader
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.org/packages/source/t/tcxreader/tcxreader-0.4.4.tar.gz
