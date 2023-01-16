@@ -1,0 +1,16 @@
+pkgbase = pwru
+	pkgdesc = Packet, where are you? -- eBPF-based Linux kernel networking debugger
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/cilium/pwru
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = clang
+	makedepends = llvm
+	makedepends = go
+	depends = glibc
+	source = pwru-0.0.7.tar.gz::https://github.com/cilium/pwru/archive/v0.0.7.tar.gz
+	sha256sums = 8bc385b672fd873f975e4a92badfd75e13ed3179907705bf95707eec902536ea
+
+pkgname = pwru
