@@ -1,0 +1,20 @@
+pkgbase = creality-print-appimage
+	pkgdesc = Creality Print is a slicer dedicated to FDM printers.
+	pkgver = 3.11.1
+	pkgrel = 1
+	url = https://www.creality.com/pages/download
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	provides = creality-print
+	conflicts = creality-print
+	noextract = Creality_Print-v3.11.1-Ubutu-x86_64-Release.AppImage
+	options = !strip
+	source = https://file2-cdn.creality.com/file/1946156fb58ee2564ae71424e44c05a3/Creality_Print-v3.11.1-Ubutu-x86_64-Release.AppImage
+	source = default.desktop.patch
+	md5sums = 1946156fb58ee2564ae71424e44c05a3
+	md5sums = eba3c0e5365cc454862becb642e113a9
+	sha512sums = 0175d37fcd222da52ae12c16fbd9b55f730fa77bb587cfb2699de32e06d8592c26781c615c3d41404a62f7cc53afa26bef1edb189001a0dbf0e6ad9750fdcc68
+	sha512sums = 5c0982b7475dae73cbc0ce5b96771b969ff7779daae452cf2e0d5d26fb43981c3e614485593f5306dfda9b3d3a6a2a8f319ef62b07d668479c60d82c8c1631b0
+
+pkgname = creality-print-appimage

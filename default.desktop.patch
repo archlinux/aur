@@ -1,0 +1,13 @@
+--- squashfs-root/default.desktop
++++ squashfs-root/default.desktop
+@@ -2,8 +2,8 @@
+ Name=Creality_Print
+ GenericName=Creality_Print
+ Comment=Creality_Print
+-Exec=AppRun %F
+-Icon=default
++Exec=/usr/bin/creality-print %F
++Icon=creality-print
+ Terminal=false
+ Type=Application
+ Categories=Development
