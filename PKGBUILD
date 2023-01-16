@@ -4,7 +4,7 @@ _pkggit=lima
 
 pkgname=lima-bin
 pkgver=0.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
 url="https://github.com/lima-vm/lima"
