@@ -1,5 +1,5 @@
 pkgbase = rime-flypy
-	pkgver = 10.9.3.5
+	pkgver = 10.9.4
 	pkgrel = 1
 	url = http://flypy.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = rime-flypy
 	makedepends = librime
 	makedepends = python
 	makedepends = rime-prelude
-	source = rime-flypy-10.9.3.5.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.9.3.5.tar.gz
-	sha256sums = 8f8defeedc06466b6ecb5527c1157596f4c4d6a1079ca9c0afc03b3a516ef01e
+	source = rime-flypy-10.9.4.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.9.4.tar.gz
+	sha256sums = aa9d2e16c46b3a15467c9d63660fca81206e0549e0a4ff76301de5ee06eff264
 
 pkgname = rime-flypy
 	pkgdesc = 小鹤音形 rime 挂接文件
