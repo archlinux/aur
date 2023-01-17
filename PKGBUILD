@@ -72,10 +72,10 @@ build() {
 }
 
 check(){
-    local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+
     export QT_DEBUG_PLUGINS=1
     cd "$_name-$pkgver"
-    python setup.py pytest | tee myoutput.log
+    python setup.py pytest | tee check.log
 }
 
 package() {
