@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-cars
-pkgver=22.0514
+pkgver=22.0911
 pkgrel=1
 pkgdesc="Additional RVGL cars used for official events."
 url='https://re-volt.io/online/cars'
