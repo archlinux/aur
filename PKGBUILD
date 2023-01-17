@@ -60,6 +60,9 @@ build() {
     mv ../run/john{,-non-xop}
     ./configure "${options[@]}" CFLAGS="${CFLAGS} -mxop"
     make clean; make
+  elif [[ "${CARCH}" == "aarch64" ]]; then
+    ./configure "${options[@]}" CFLAGS="${CFLAGS/-DCPU_FALLBACK}"
+    make clean; make
   elif [[ "${CARCH}" == "i686" ]]; then
     ./configure "${options[@]}" CFLAGS="${CFLAGS}"
     make clean; make
