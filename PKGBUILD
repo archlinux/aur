@@ -1,13 +1,13 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wayprompt-git
-pkgver=0+33+916a8df
+pkgver=0+50+3d73732
 pkgrel=1
 pkgdesc='Multi-purpose prompt tool for Wayland (pinentry, himitsu)'
 url='https://git.sr.ht/~leon_plickat/wayprompt'
 license=(GPL3)
 depends=(fcft libxkbcommon pixman wayland )
-makedepends=(git wayland-protocols zig)
+makedepends=(chrpath git wayland-protocols zig)
 arch=(x86_64)
 source=(
     git+https://git.sr.ht/~leon_plickat/wayprompt
@@ -29,6 +29,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
+  sed -i 's/wayprompt.install();/wayprompt.pie=true;\nwayprompt.install();/' build.zig
   git submodule init
   git config submodule."deps/zig-wayland".url "${srcdir}/zig-wayland"
   git config submodule."deps/zig-pixman".url "${srcdir}/zig-pixman"
@@ -38,15 +39,15 @@ prepare() {
 }
 
 build() {
-    cd ${pkgname%-git}
-    zig build
+  cd ${pkgname%-git}
+  DESTDIR="build" zig build --prefix /usr install
+  chrpath --delete build/usr/bin/wayprompt
 }
 
 package() {
-    cd ${pkgname%-git}
-    install -Dm755 zig-out/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt
-    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/pinentry-wayprompt
-    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/hiprompt-wayprompt
-    ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt-cli
+  cd ${pkgname%-git}
+  mv -v build/* "${pkgdir}"
+  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/pinentry-wayprompt
+  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/hiprompt-wayprompt
+  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt-cli
 }
-
