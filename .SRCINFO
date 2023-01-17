@@ -1,6 +1,6 @@
 pkgbase = r-rmpfr
 	pkgdesc = R MPFR - Multiple Precision Floating-Point Reliable
-	pkgver = 0.8.9
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Rmpfr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-rmpfr
 	optdepends = r-polynom
 	optdepends = r-pracma
 	optdepends = r-sfsmisc
-	source = https://cran.r-project.org/src/contrib/Rmpfr_0.8-9.tar.gz
-	sha256sums = cfee5ab47d49c6433c372a267f7d849c8f7c61a84e00d08afb047eaafcdbbc8a
+	source = https://cran.r-project.org/src/contrib/Rmpfr_0.9-0.tar.gz
+	sha256sums = 1218bc3e0a9d9e4e41b96ff8f296542730fe6265cc7443b63ad4ba4c06a90120
 
 pkgname = r-rmpfr
