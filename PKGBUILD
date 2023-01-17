@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ExtDist
-_pkgver=0.6-4
+_pkgver=0.7-1
 pkgname=r-${_pkgname,,}
-pkgver=0.6.4
-pkgrel=4
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='Extending the Range of Functions for Probability Distributions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e37ebae40d68e630fd3f84bf0bc2fdd23293a7849110e68d3ef3170c554fd800')
+sha256sums=('f80079786d01e01d7b1a546653730c6e895dd7330a98b66d7ab1b5f453eb7128')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
