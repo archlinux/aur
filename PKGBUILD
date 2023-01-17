@@ -1,8 +1,8 @@
-# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at proton dot me>
 
 _pkgname=xarray-einstats
 pkgname=python-$_pkgname
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Stats, linear algebra and einops for xarray'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-poetry' 'python-build' 'python-installer'
 optdepends=('python-dask')
 checkdepends=('python-numba' 'python-einops')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/arviz-devs/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('972d3aa80877ad69d1920b17ad1b4eb07122e38f5dbac2a2881ea361d6f32a2a')
+sha256sums=('b3c74e46f32dd8dad5955d896cf832e5a38e2ebfa6d7058425928910a5f50601')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -23,5 +23,5 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
 }

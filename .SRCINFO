@@ -1,6 +1,6 @@
 pkgbase = python-xarray-einstats
 	pkgdesc = Stats, linear algebra and einops for xarray
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://einstats.python.arviz.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-xarray-einstats
 	depends = python-xarray
 	depends = python-pytest
 	optdepends = python-dask
-	source = python-xarray-einstats-0.4.0.tar.gz::https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = 972d3aa80877ad69d1920b17ad1b4eb07122e38f5dbac2a2881ea361d6f32a2a
+	source = python-xarray-einstats-0.5.0.tar.gz::https://github.com/arviz-devs/xarray-einstats/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = b3c74e46f32dd8dad5955d896cf832e5a38e2ebfa6d7058425928910a5f50601
 
 pkgname = python-xarray-einstats
