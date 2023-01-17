@@ -41,6 +41,7 @@ depends=(
          'python-plotly'
          'python-pairwisedist'
          'cutadapt'
+         'qt5-imageformats'
         )
 
 makedepends=(
@@ -54,7 +55,7 @@ makedepends=(
              'python-sphinx'
              'python-wheel'
             )
-source=(${_name}-${pkgver}.tar.gz::'https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V$pkgver.tar.gz'
+source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
         'RNAlysis.svg')
 
 sha256sums=('19c5676ad1b1cb128f87298f008e9057bd555544de2acc7c48aec48efd3737c0'
@@ -82,6 +83,7 @@ package() {
 
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    # workaround for version 3.3.0. remove for version 3.4.0
     rm -Rf "$pkgdir"/usr/lib/python3.10/site-packages/tests
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 RNAlysis.desktop -t "$pkgdir"/usr/share/applications/
