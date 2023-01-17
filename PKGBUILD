@@ -1,14 +1,14 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname='hebcal'
-pkgver=5.7.0
-pkgrel=2
+pkgver=5.7.2
+pkgrel=1
 pkgdesc='A Jewish calendar generator'
 arch=('any')
 url='https://github.com/hebcal/hebcal'
 license=('GPL2')
 depends=('perl>=5.0' 'go>=2:1.13' 'gperf')
 source=("https://github.com/hebcal/hebcal/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88a1f2492b4be94f2ad32d42441e996938f3c637c5e6e7e13120b01d8fa09db2')
+sha256sums=('c7ecb0349f2a783bb2da9c9884230045192c6d89613b41e3cf677b3fd94eff9e')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -17,7 +17,9 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make 
+  make all
+# to specify default city at build time use "make DEFAULT_CITY=[CITY] all" See upstream github issue 244 
+# available cities can be listed by running "$ hebcal cities"
 }
 
  package() {
