@@ -2,15 +2,15 @@
 
 pkgdata=ldr-translate
 pkgname=$pkgdata-gtk
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 epoch=
-pkgdesc="一个翻译软件，更适合gnome桌面，专注文献翻译，可以截图翻译、复制翻译等，顺带显示网速等系统信息"
+pkgdesc="一个翻译软件，更适合gnome桌面，专注文献翻译，可以截图翻译、复制翻译"
 arch=('x86_64')
 url="https://github.com/yuhldr/$pkgdata"
 license=('GPL')
 groups=(ldr)
-depends=(python python-requests python-psutil python-gobject libappindicator-gtk3)
+depends=(python python-requests python-gobject libappindicator-gtk3)
 checkdepends=()
 optdepends=(gnome-shell-extension-appindicator)
 provides=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(cd202cf24ae6ea7270f6c3546b5e033f)
+md5sums=(a2dce1d8eb2f11773bd05fd4e2312a2d)
 validpgpkeys=()
 
 prepare() {
