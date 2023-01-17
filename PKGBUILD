@@ -4,14 +4,14 @@
 _plugin_name=RoomReverb
 pkgname="elephantdsp-${_plugin_name,,}"
 _plugin_uri="https://www.ElephantDSP.com/plugins/Room_Reverb"
-pkgver=0.6.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A mono and stereo algorithmic room reverb audio effect plugin'
 arch=(x86_64 aarch64)
 url='https://www.elephantdsp.com/products/room-reverb/'
 license=(GPL3)
 depends=(glibc gcc-libs zlib)
-makedepends=(cmake freetype2 'juce>=7' libx11 libxcursor libxinerama libxrandr)
+makedepends=(alsa-lib cmake flac freetype2 'juce>=7' libvorbis libx11 libxcursor libxinerama libxrandr)
 checkdepends=(lv2lint lv2)
 optdepends=(
   'clap-host: for CLAP plugin'
@@ -19,20 +19,19 @@ optdepends=(
   'vst3-host: for VST3 plugin'
 )
 groups=(clap-plugins lv2-plugins pro-audio vst3-plugins)
-_clap_commit='395ab2bc5abd76f613b7ac3e4292b4e315700749'
-_clap_ext_commit='10e5042f15fef28475ca21f9e8dc3bf4fb7cfe67'
-_clap_helpers_commit='b101259ae06964c76c6806f02ec07847acb7b6dc'
+_clap_commit='af1e05ce6487151c6b36003fdb47566dbb50194e'
+_clap_ext_commit='cf93cac7ca6a1c0c548c2bda85d49e9bfdb979e1'
+_clap_helpers_commit='f0b6802305ef628c18a597878e304f9f72aaac99'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cvde/RoomReverb/archive/refs/tags/v$pkgver.tar.gz"
         "clap-juce-extensions-$_clap_ext_commit.tar.gz::https://github.com/free-audio/clap-juce-extensions/archive/$_clap_ext_commit.tar.gz"
         "clap-$_clap_commit.tar.gz::https://github.com/free-audio/clap/archive/$_clap_commit.tar.gz"
         "clap-helpers-$_clap_helpers_commit.tar.gz::https://github.com/free-audio/clap-helpers/archive/$_clap_helpers_commit.tar.gz"
         "roomreverb-devendor_juce.patch")
-sha256sums=('80f24dfe7b4d35752024ffe7379fae28767c97f441971cc461a0875c8523fa9e'
-            '7f2a38595359ef6b1eb9c90773ae11468a10e27e28e9b756dee859e1f7e2ae00'
-            'bc04ef570cf2027dd6987b546bd9295a96891ba62a60a33b91c9bdc1e4c35aef'
-            'd1915186a59d6ed217de690168ff53b4bcecd9e3a8c87ddbd5bd60b521fd3546'
+sha256sums=('d49ddec65c793abb7092c43344e25aa17d1a1370ac5427c6a79bae99e7626836'
+            '7d411dc16f8cfdf5dc7e664b90890058521c51e745212c84dffcb0f9cc2bd5ed'
+            '3092d3dab522229cd55f50a239f9e5aab2631bc561f0ed4b069eacadfb6a65bb'
+            '94ed48d50a24934b2f018507fd0111d31246d378943edb4cc3ca22bafab0a6af'
             'a7478a0113128e55fdc14e4b861f95bd65c1c64cc20c0d544bce07f90c0a6ede')
-
 
 prepare() {
   cd $_plugin_name-$pkgver
@@ -44,12 +43,12 @@ prepare() {
 
   # link external libs
   cd Libs
-  rm -rf clap-juce-extensions && \
+  rm -rf clap-juce-extensions &&
     ln -s "$srcdir"/clap-juce-extensions-$_clap_ext_commit clap-juce-extensions
   cd clap-juce-extensions/clap-libs
-  rm -rf clap && \
+  rm -rf clap &&
     ln -s "$srcdir"/clap-$_clap_commit clap
-  rm -rf clap-helpers && \
+  rm -rf clap-helpers &&
     ln -s "$srcdir"/clap-helpers-$_clap_helpers_commit clap-helpers
 }
 
@@ -69,7 +68,7 @@ check() {
 }
 
 package() {
-  depends+=(libfreetype.so libjpeg.so)
+  depends+=(libfreetype.so)
   cd $_plugin_name-$pkgver-build
   # LV2 plugin bundle
   install -Dm755 ${_plugin_name}_artefacts/Release/LV2/$_plugin_name.lv2/*.so \
