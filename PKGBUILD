@@ -2,7 +2,7 @@
 # Contributor: jerry73204 <jerry73204 at google gmail>
 _base=geoviews
 pkgname=python-${_base}
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Simple, concise geographical visualization in Python"
 arch=(any)
@@ -17,8 +17,8 @@ makedepends=(nodejs)
 #   'python-matplotlib: for '
 # )
 checkdepends=(python-pytest) # python-nbsmoke
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8cc4d468b7c043ba9a512c581c093b460f920eec0cb3cd67f2770b714a22f94762044eb2813a4660d3303d6331e3294918cc9f3670d533e3d92a091af380da30')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('a1e199a37cbc19dc6756130b891b2388f4a4a1176df507e83af0b00d8b0edd50019f278173fdb553f5370cdd86fffb175cb8201e4aa098038960d14b9658f3a9')
 
 build() {
   cd ${_base}-${pkgver}
