@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=0.6.3.r22.g3ffd4079
+pkgver=0.6.3.r24.gc2dfb350
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
@@ -38,8 +38,7 @@ check() {
   cd "rav1e"
 
   #cargo test \
-  #  --frozen \
-  #  --release
+  #  --frozen
 }
 
 package() {
@@ -47,9 +46,9 @@ package() {
 
   cargo install \
     --no-track \
-    --frozen \
+    --locked \
     --root "$pkgdir/usr" \
-    --path "$srcdir/rav1e"
+    --path .
   # for librav1e
   cargo cinstall \
     --frozen \
