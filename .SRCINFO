@@ -1,6 +1,6 @@
 pkgbase = inter-heretic
 	pkgdesc = A limit-removing source port of Heretic with enhancements and translation to the Russian language
-	pkgver = 6.1
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/inter-doom
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = inter-heretic
 	depends = libsamplerate
 	optdepends = heretic1-wad: Heretic shareware game data
 	conflicts = inter-heretic-git
-	source = inter-heretic-6.1.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/heretic-6.1.tar.gz
-	b2sums = 5f0b71964a8272896e59c147cf9ac8dce3571a9623dfebed49c09c0ee7c43253e2aed81acddbf2eb246404aa3bafdb16d336f70147a8ef70792bd25785defff0
+	source = inter-heretic-6.1.1.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/heretic-6.1.1.tar.gz
+	b2sums = 2675dbb1c3e47cdbcfaa5329b4e8772adee16b32a7c43110a07f38de0c503e9fdbbbe7d59555585df556cd002428c6f990014795d94ab45ca6d4784d377554e4
 
 pkgname = inter-heretic

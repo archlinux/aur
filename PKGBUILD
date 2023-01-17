@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-heretic
-pkgver=6.1
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="A limit-removing source port of Heretic with enhancements and translation to the Russian language"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=(cmake python3)
 optdepends=('heretic1-wad: Heretic shareware game data')
 conflicts=('inter-heretic-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/heretic-${pkgver}.tar.gz")
-b2sums=('5f0b71964a8272896e59c147cf9ac8dce3571a9623dfebed49c09c0ee7c43253e2aed81acddbf2eb246404aa3bafdb16d336f70147a8ef70792bd25785defff0')
+b2sums=('2675dbb1c3e47cdbcfaa5329b4e8772adee16b32a7c43110a07f38de0c503e9fdbbbe7d59555585df556cd002428c6f990014795d94ab45ca6d4784d377554e4')
 
 build() {
     # Upstream forces `-O2` for 'Release' build type
