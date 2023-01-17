@@ -1,6 +1,6 @@
 pkgbase = r-gmp
 	pkgdesc = Multiple Precision Arithmetic
-	pkgver = 0.6.9
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gmp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-gmp
 	optdepends = r-mass
 	optdepends = r-rmpfr
 	optdepends = r-round
-	source = https://cran.r-project.org/src/contrib/gmp_0.6-9.tar.gz
-	sha256sums = 665353631febca41fc68deebcd371ff0d5648fa2160426bc50bb2b94e105f003
+	source = https://cran.r-project.org/src/contrib/gmp_0.6-10.tar.gz
+	sha256sums = 09ed39aa1c044691e543eeaa7bd907d4b34b134ebb39e99b44ae2ca4911baecc
 
 pkgname = r-gmp
