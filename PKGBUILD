@@ -1,7 +1,8 @@
 # Maintainer: rarick <tyler dot rarick at gmail dot com>
 
 pkgname=tmux-plugin-manager
-pkgver=v3.1.0
+pkgver=3.1.0
+_git_tag=v3.1.0
 pkgrel=1
 pkgdesc="tpm - Tmux Plugin Manager"
 arch=('any')
@@ -11,7 +12,7 @@ license=('MIT')
 makedepends=('git')
 depends=('tmux>=1.9' 'bash')
 install=$pkgname.install
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#tag=$_git_tag")
 sha256sums=('SKIP')
 
 package() {

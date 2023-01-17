@@ -1,6 +1,6 @@
 pkgbase = tmux-plugin-manager
 	pkgdesc = tpm - Tmux Plugin Manager
-	pkgver = v3.1.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/tmux-plugins/tpm
 	install = tmux-plugin-manager.install
