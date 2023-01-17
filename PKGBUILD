@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=3.1.0
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Library for producing CycloneDX SBOM (Software Bill of Materials) files'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=('git' 'python-installer' 'python-poetry')
 conflicts=('python-cyclonedx-lib-git')
 options=('!strip')
 source=("${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('7fb4e9a94e70837304426d3574a60bee9431fade2c2ebfa348571575769233455ef129f82019c54a57cff324421ab146639a1bdd2f5777ccb18a56322441674d')
+sha512sums=('05cd76b10f65891938c570468e9952d79e25d1329b31495556770c2e130b4a4ee9937435d85e55054e1c0fc8b1618b79a1deecc02486f58bcdea99d052369623')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
@@ -47,7 +47,7 @@ check() {
   # shellcheck disable=SC1091
   source .venv/bin/activate
   pip install --force-reinstall dist/*.whl
-  python -m unittest discover -s tests -v
+  python -m unittest discover -v
   deactivate
 }
 
