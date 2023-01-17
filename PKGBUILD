@@ -1,32 +1,29 @@
-# Maintainer: Michael Duell < mail at akurei dot me >
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Michael Duell < mail at akurei dot me >
 # Contributor: Daniel J. Campos <dcampos2015 at my dot fit dot edu>
+
 pkgname=btrbk-git
-pkgver=0.32.2.r0.gbdc1f5c
+pkgver=0.32.5.r28.ga75765c
 pkgrel=1
-pkgdesc="A backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations."
-url="http://digint.ch/btrbk"
+pkgdesc="Backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations"
 arch=('any')
+url="https://digint.ch/btrbk/"
 license=('GPL3')
-provides=('btrbk')
-depends=('perl' 'btrfs-progs')
+depends=('btrfs-progs' 'perl')
 makedepends=('asciidoctor' 'git')
-options=('!makeflags') # temporary fix for https://github.com/digint/btrbk/pull/341
-optdepends=('openssh: remote backup support',
-        'mbuffer: --progress support and add buffering to send-stream'
-        'sudo: support for the btrfs-progs-sudo backend')
-source=("git+https://github.com/digint/btrbk.git")
+optdepends=('mbuffer: send/receive buffering and rate limiting, progress bars'
+            'openssh: transfer backups from/to remote locations',
+            'sudo: btrfs-progs-sudo backend')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/digint/btrbk.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/btrbk"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 package() {
-  cd "${srcdir}/btrbk"
-  make DESTDIR="${pkgdir}" BINDIR="/usr/bin" install
-  #install -Dm644 COPYING "$pkgdir/usr/share/licenses/btrbk/COPYING"
+  make -C $pkgname DESTDIR="$pkgdir/" install
 }
-
 
