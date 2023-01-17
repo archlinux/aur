@@ -5,7 +5,7 @@
 
 pkgname=translate-toolkit
 pkgver=3.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
 url="https://toolkit.translatehouse.org/"
@@ -20,11 +20,12 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/translate/translate/archive/
 sha256sums=('bcf2c129bdee91d776cb1780bcb25283a02b501aaaa25810a9403492ddff468f')
 
 package() {
-  cd "${srcdir}"/translate-$pkgver
+  cd translate-$pkgver
 
-#FS#70224 to fix reproducible building
+  # FS#70224 to fix reproducible build
   export PYTHONHASHSEED=0
 
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -s setup.py install --root="${pkgdir}" --optimize=1
-  python -m compileall "${pkgdir}"/usr/lib/python3.10/site-packages/translate
+  python -m compileall "${pkgdir}"/${_site-packages}/translate
 }
