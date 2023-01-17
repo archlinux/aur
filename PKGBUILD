@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=a3b7be4a5e5e8a7b805871adf6ac21f5d5cfda57
+readonly _commit=5a7fb33c9ce1ff1d416764c299ae626ccc88ebe0
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.0.r17.ga3b7be4a5
+pkgver=1.6.0.r22.g5a7fb33c9
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -69,12 +69,14 @@ prepare() {
   :
 }
 
-build() {
-  unset CFLAGS CXXFLAGS LDFLAGS
+setup_llvm() {
   export CC="/usr/bin/clang"
+  unset CFLAGS
   export CXX="/usr/bin/clang++"
+  unset CXXFLAGS
   export CPP="/usr/bin/clang-cpp"
   export LD="/usr/bin/lld"
+  export LDFLAGS="-fuse-ld=lld"
   export AR="/usr/bin/llvm-ar"
   export RANLIB="/usr/bin/llvm-ranlib"
   export NM="/usr/bin/llvm-nm"
@@ -83,8 +85,10 @@ build() {
   export OBJDUMP="/usr/bin/llvm-objdump"
   export READELF="/usr/bin/llvm-readelf"
   export STRIP="/usr/bin/llvm-strip"
+}
 
-  export LDFLAGS="-fuse-ld=lld"
+build() {
+  setup_llvm
 
   cd "${srcdir}/HandBrake"
   ./configure \
