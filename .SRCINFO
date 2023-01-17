@@ -1,18 +1,16 @@
 pkgbase = python-html-tag-names
 	pkgdesc = List of known HTML tag names
 	pkgver = 0.1.2
-	pkgrel = 00
+	pkgrel = 2
 	url = https://github.com/Riverside-Healthcare/html-tag-names
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
 	depends = python
-	noextract = html_tag_names-0.1.2-py3-none-any.whl
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/9a/e4/242318dcaa06d8525ff72332fc15cea2cffb84c06cfc73c7da6c6b45801a/html_tag_names-0.1.2-py3-none-any.whl
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = cb21b2f426f42544931cec6a11bf5609
-	md5sums = 5f6d35549fbdb35156f48a91c94792a9
+	source = python-html-tag-names-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/h/html-tag-names/html-tag-names-0.1.2.tar.gz
+	sha256sums = 04924aca48770f36b5a41c27e4d917062507be05118acb0ba869c97389084297
 
 pkgname = python-html-tag-names
