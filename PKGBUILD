@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.8.8'
+pkgver='3.8.9'
 pkgrel='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ source=(
 	'configure-environment.diff'
 	'fix-argv.diff'
 )
-sha512sums=('f2682461eb2d1135e10cfec0f1fc0b3196bf5eb6c9f02271e320feeb785b2cf6cf6fbaaa9fa64c98c11ada783547dd8cd16b09a3f6abce2e90cc76e6ab2cb99c'
+sha512sums=('b1f9d97065d1e3cd451bb84abd43e7ddd31add150f38516088b3160c61721423d2c8379dffe67e5d2c35cf2f2ace05ee2092affb325ea456699c8f95d1ffd550'
             'c8c63ffdc75ec73f6258aa0020b228f86d883de0c6608b14b3a35604dfeaebac7ae89f0dbc57b3bbb922cbfc3231117d769488f194961c68af646574d9ea49e0'
             'dc653535664904c74c812b589881994c1109c664f9174186ccd362a42172edeb0251712c98f3c9a17d7356bf47f942eff03c2294181402ff9cbc9cb211616d57'
             'ae6b5847bdf65f8fb43b3694c151f55c307b2b402624b627b755133b4173760fa4673158b77c252b8a9b18dc33be3068e2c79e23762a4de05de11447cf259c3c')
