@@ -1,0 +1,32 @@
+--- src/Makefile	2022-12-16 12:07:55.000000000 -0500
++++ src/Makefile	2023-01-17 05:21:41.801595847 -0500
+@@ -23,13 +23,13 @@
+ 
+ # For some known distributions we do not build all programs, otherwise we do.
+ BIN	=
+-SBIN	= init halt shutdown runlevel killall5 fstab-decode logsave
+-USRBIN	= last mesg readbootlog
++SBIN	=
++USRBIN	= init halt shutdown runlevel killall5 fstab-decode readbootlog
+ 
+-MAN1	= last.1 lastb.1 mesg.1 readbootlog.1
++MAN1	= readbootlog.1
+ MAN5	= initscript.5 inittab.5 initctl.5
+-MAN8	= halt.8 init.8 killall5.8 pidof.8 poweroff.8 reboot.8 runlevel.8
+-MAN8	+= shutdown.8 telinit.8 fstab-decode.8 logsave.8
++MAN8	= halt.8 init.8 killall5.8 poweroff.8 reboot.8 runlevel.8
++MAN8	+= shutdown.8 telinit.8 fstab-decode.8 
+ 
+ ifeq ($(DISTRO),)
+ SBIN	+= sulogin bootlogd
+@@ -213,10 +213,6 @@
+ 		ln -sf halt $(ROOT)/sbin/reboot
+ 		ln -sf halt $(ROOT)/sbin/poweroff
+ 		ln -sf init $(ROOT)/sbin/telinit
+-		ln -sf ../sbin/killall5 $(ROOT)/bin/pidof
+-		if [ ! -f $(ROOT)/usr/bin/lastb ]; then \
+-			ln -sf last $(ROOT)/usr/bin/lastb; \
+-		fi
+ 		$(INSTALL_DIR) $(ROOT)/usr/include/
+ 		$(INSTALL_DATA) initreq.h $(ROOT)/usr/include/
+ 		for man in $(MANPAGES) ; do \

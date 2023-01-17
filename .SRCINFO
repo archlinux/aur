@@ -1,16 +1,22 @@
 pkgbase = sysvinit
 	pkgdesc = Linux System V Init
-	pkgver = 2.99
-	pkgrel = 2
-	url = http://savannah.nongnu.org/projects/sysvinit
+	pkgver = 3.06
+	pkgrel = 1
+	url = https://github.com/slicer69/sysvinit
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = glibc
 	depends = procps-ng>=3.3.9
-	provides = sysvinit
+	optdepends = e2fsprogs
 	conflicts = systemd-sysvcompat
-	source = http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-2.99.tar.xz
-	sha256sums = b05c3677bb698afe64c997968b00c49b2a9bd320ce963523230ee7ea41197757
+	source = https://github.com/slicer69/sysvinit/releases/download/3.06/sysvinit-3.06.tar.xz
+	source = https://github.com/slicer69/sysvinit/releases/download/3.06/sysvinit-3.06.tar.xz.sig
+	source = sysvinit-makefile.patch
+	validpgpkeys = 5A2DC686CDC5D6087D88C198351F75FA45D53656
+	validpgpkeys = C1A4432D88896729E4300B04AFD1B98BF3273812
+	b2sums = 7fd2ba4bc0c8a15ddd7af2aaa1044e3bc8885a5e18a0a9c58c63897d0965d7430a9b529af4953618a9042cf13cca8a74a92ab02062c5de18d13fdf68328c11e7
+	b2sums = SKIP
+	b2sums = 8877b4523b2aeb75e602e4ef53007e9258a76a1a981e620ea3c6e275a97257f9efb060f102ea95a914c3729bd26fcc360b5613276641b61d452417bff2fa6878
 
 pkgname = sysvinit

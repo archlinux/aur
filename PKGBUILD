@@ -1,55 +1,52 @@
-# Maintainer: EatMyVenom <eat.my.venomm@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: EatMyVenom <eat.my.venomm at gmail dot com>
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=sysvinit
-pkgver=2.99
-pkgrel=2
+pkgver=3.06
+pkgrel=1
 pkgdesc='Linux System V Init'
-url='http://savannah.nongnu.org/projects/sysvinit'
+url="https://github.com/slicer69/$pkgname"
 arch=('i686' 'x86_64')
-license=('GPL')
-provides=('sysvinit')
+license=('GPL2')
 depends=('glibc' 'procps-ng>=3.3.9')
+optdepends=('e2fsprogs')
 conflicts=('systemd-sysvcompat')
-source=("http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-${pkgver}.tar.xz")
-sha256sums=('b05c3677bb698afe64c997968b00c49b2a9bd320ce963523230ee7ea41197757')
+source=($url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
+        $pkgname-makefile.patch)
+b2sums=('7fd2ba4bc0c8a15ddd7af2aaa1044e3bc8885a5e18a0a9c58c63897d0965d7430a9b529af4953618a9042cf13cca8a74a92ab02062c5de18d13fdf68328c11e7'
+        'SKIP'
+        '8877b4523b2aeb75e602e4ef53007e9258a76a1a981e620ea3c6e275a97257f9efb060f102ea95a914c3729bd26fcc360b5613276641b61d452417bff2fa6878')
+validpgpkeys=(
+	'5A2DC686CDC5D6087D88C198351F75FA45D53656' # sysvinit-verification-key-2.pub
+	'C1A4432D88896729E4300B04AFD1B98BF3273812' # sysvinit-verification-key-3.pub
+)
 
+prepare() {
+	cd $pkgname-$pkgver
 
-build()
-{
-    cd "$srcdir/$pkgname-${pkgver}"
+	# Patch for Arch's Linux filesystem hierarchy
+	if [ "$(grep 'execv("/sbin/mount", args);' < src/killall5.c | wc -l)" = 1 ]; then
+		sed -i 's|execv("/bin/mount", args);||' src/killall5.c
+	fi
+	sed -i 's|/bin:/sbin:/usr/bin:/usr/sbin|/usr/bin|' src/init.h src/shutdown.c
+	sed -i 's|/sbin:/usr/sbin:/bin:/usr/bin|/usr/bin|' src/init.h src/shutdown.c
+	sed -i 's|/bin:/usr/bin:/sbin:/usr/sbin|/usr/bin|' src/init.h src/shutdown.c
+	sed -i 's|/sbin/|/bin/|g;s|/bin/|/usr/bin/|g;s|/usr/usr/|/usr/|g' \
+		contrib/notify-pam-dead.patch man/*.{1,5,8} src/*.{c,h}
 
-    # Patch for Arch's Linux filesystem hierarchy
-    if [ "$(grep 'execv("/sbin/mount", args);' < src/killall5.c | wc -l)" = 1 ]; then
-        sed -i 's:execv("/bin/mount", args);::' src/killall5.c
-    fi
-    sed -i 's|/bin:/sbin:/usr/bin:/usr/sbin|/usr/bin|' src/init.h src/shutdown.c
-    sed -i 's|/sbin:/usr/sbin:/bin:/usr/bin|/usr/bin|' src/init.h src/shutdown.c
-    sed -i 's|/bin:/usr/bin:/sbin:/usr/sbin|/usr/bin|' src/init.h src/shutdown.c
-    sed -i 's:/sbin/:/bin/:g'    contrib/notify-pam-dead.patch man/*.{1,5,8} src/*.{c,h}
-    sed -i 's:/bin/:/usr/bin/:g' contrib/notify-pam-dead.patch man/*.{1,5,8} src/*.{c,h}
-    sed -i 's:/usr/usr/:/usr/:g' contrib/notify-pam-dead.patch man/*.{1,5,8} src/*.{c,h}
+	# last, lastb, mesg are part of util-linux
+	# pidof is part of procps-ng
+	# logsave is part of e2fsprogs
+	patch -Np0 -F0 < ../$pkgname-makefile.patch
+}
 
+build() {
+    cd $pkgname-$pkgver
     make DISTRO=archlinux
 }
 
-package()
-{
-    cd "$srcdir/$pkgname-${pkgver}"
-    mkdir -p "$pkgdir/__temp__"
-    make DISTRO=archlinux ROOT="$pkgdir/__temp__" install
-    cd "$pkgdir/__temp__"
-    rm -r bin usr/bin usr/share/man/man*/{mesg,last,pidof}.* usr/share/man/man1
-    find . | while read file; do
-        if [ -d "$file" ]; then
-            mkdir -p ".$file"
-        else
-            cp "$file" ".$file"
-        fi
-    done
-    cd ..
-    rm -r "__temp__"
-    rm -r "$pkgdir/sbin/logsave" "$pkgdir/usr/share/man/man8/logsave.8" 
-    mv "$pkgdir/sbin" "$pkgdir/usr/bin"
+package() {
+    cd $pkgname-$pkgver
+    make DISTRO=archlinux ROOT="$pkgdir" install
 }
-
