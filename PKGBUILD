@@ -1,10 +1,10 @@
 _pkgname=art-rawconverter
 pkgname="${_pkgname}-bin"
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
-url="https://bitbucket.org/agriggio/art/wiki/Home"
+url="https://bitbucket.org/agriggio/art"
 license=('GPL3')
 
 depends=(
@@ -31,12 +31,12 @@ conflicts=('art-rawconverter')
 provides=('art-rawconverter')
 
 source=(
-  "${_pkgname}-${pkgver}.tar.xz"::"https://bitbucket.org/agriggio/art/downloads/ART-${pkgver}-linux64.tar.xz"
+  "${_pkgname}-${pkgver}.tar.xz"::"$url/downloads/ART-${pkgver}-linux64.tar.xz"
   "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
 )
 
 sha256sums=(
-  '5e17e8dcd30d05fbe26b3c1cf6922ec130cfcfebeef748412b4e539910a55fde'
+  '828823f616c6eb79400c56df9696ea08c5f41388917b918734ce4b274f200c5e'
   '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
 )
 
