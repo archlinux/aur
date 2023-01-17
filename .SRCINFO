@@ -1,7 +1,7 @@
 pkgbase = web-greeter
 	pkgdesc = A modern, visually appealing greeter for LightDM
-	pkgver = 3.5.1
-	pkgrel = 2
+	pkgver = 3.5.2
+	pkgrel = 1
 	url = https://github.com/JezerM/web-greeter
 	arch = any
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = web-greeter
 	depends = gobject-introspection
 	depends = libxcb
 	depends = libx11
-	source = web-greeter-3.5.1::git+https://github.com/JezerM/web-greeter.git#tag=3.5.1
+	source = web-greeter-3.5.2::git+https://github.com/JezerM/web-greeter.git#tag=3.5.2
 	source = package.patch
 	sha512sums = SKIP
 	sha512sums = 8146f3e6047fff6ebd24cd6a2fda91322e75bef24d54cad5112e4f0daffc4f0713505f062dfb9c24255de0c2a08856f3224fe57a668247941eba73f434cad0d6
