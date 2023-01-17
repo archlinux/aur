@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Youtube-dl GUI
-Exec=yt-dlg
-Icon=youtube-dl-gui
-Categories=Network;
-Comment=GUI for youtube-dl downloader

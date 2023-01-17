@@ -2,7 +2,7 @@
 # Contributor: B4SH-B00STER
 
 pkgname=youtube-dl-gui-git
-pkgver=1.7.0.r12.g8dbf054
+pkgver=1.8.4.r22.g23ccbc4
 pkgrel=1
 pkgdesc="Cross platform front-end GUI of the popular youtube-dl written in wxPython"
 arch=('any')
@@ -15,10 +15,8 @@ optdepends=('ffmpeg: convert video files to audio-only files'
 makedepends=('git' 'python-polib' 'python-setuptools')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=($pkgname::git+$url.git
-        youtube-dl-gui.desktop)
-sha256sums=('SKIP'
-            '0c98a9550084bf7b9fd1ac9c394c6499a129b9d439bab6a256b3a1f4695ce358')
+source=($pkgname::git+$url.git)
+sha256sums=('SKIP')
 
 pkgver() {
   git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -30,17 +28,16 @@ pkgver() {
 #}
 
 package() {
-  install -Dm644 youtube-dl-gui.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-
   cd $pkgname
   python setup.py build_trans install --root="$pkgdir" --optimize=1    # --skip-build
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 yt-dlg.desktop -t "$pkgdir/usr/share/applications"
 }
 
 
 
 #  # Following the upstream build instructions
-#  # Change the Exec= line in youtube-dl-gui.desktop to Exec=youtube-dl-gui
 #
 #  pkgname=youtube-dl-gui-git
 #  pkgver=0
@@ -57,12 +54,8 @@ package() {
 #  makedepends=('git')
 #  provides=(${pkgname%-git})
 #  conflicts=(${pkgname%-git})
-#  source=($pkgname::git+$url.git
-#          youtube-dl-gui.desktop
-#          youtube-dl-gui)
-#  sha256sums=('SKIP'
-#              '0'
-#              '0')
+#  source=($pkgname::git+$url.git youtube-dl-gui)
+#  sha256sums=('SKIP' '0')
 #
 #  pkgver() {
 #    git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -77,8 +70,7 @@ package() {
 #
 #  package() {
 #    install -Dm755 youtube-dl-gui -t "$pkgdir/usr/bin"
-#    install -Dm644 youtube-dl-gui.desktop -t "$pkgdir/usr/share/applications"
-#    install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+#    install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 #
 #    cd $pkgname
 #
