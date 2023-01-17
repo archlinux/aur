@@ -3,8 +3,8 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=matlab
-pkgrel=1
-pkgver=9.13.0.2126072
+pkgrel=2
+pkgver="9.13.0.2126072"
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=(x86_64)
 url='https://www.mathworks.com'
@@ -48,6 +48,11 @@ build() {
     echo "  -> Running original installer..."
     # -inputFile makes the installation non-interactive.
     "$srcdir/matlab/install" -inputFile "$srcdir/matlab/installer_input.txt"
+
+    if [ -z "$(ls -A build)" ]; then
+        echo "==> ERROR: MATLAB installer failed, check install.log"
+        exit 1
+    fi
 
     echo "  -> Generating desktop files..."
     gendesk -f -n \
