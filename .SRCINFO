@@ -1,7 +1,7 @@
 pkgbase = simexec-git
 	pkgdesc = Execute a program with the given argv
-	pkgver = r181.c00d19e
-	pkgrel = 4
+	pkgver = r185.fd9ef9d
+	pkgrel = 5
 	url = https://git.sr.ht/~trinity/src/tree/main/item/simexec/packaging.md
 	arch = any
 	license = Unlicense

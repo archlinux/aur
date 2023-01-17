@@ -2,8 +2,8 @@
 
 _pkgbase=simexec
 pkgname=simexec-git
-pkgver=r181.c00d19e
-pkgrel=4
+pkgver=r185.fd9ef9d
+pkgrel=5
 pkgdesc="Execute a program with the given argv"
 arch=('any')
 url="https://git.sr.ht/~trinity/src/tree/main/item/simexec/packaging.md"
@@ -18,8 +18,9 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/src/$_pkgbase/"
-  cc -o "$srcdir/src/$_pkgbase" "$srcdir/src/$_pkgbase.c"
+  cd "$srcdir/src/$_pkgbase"
+	make
+  # cc -o "$srcdir/src/$_pkgbase" "$srcdir/src/$_pkgbase.c"
 }
 
 package() {
