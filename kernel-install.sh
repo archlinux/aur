@@ -6,13 +6,13 @@ shopt -s inherit_errexit nullglob
 cd /
 
 all_kernels=0
-versions=()
+declare -A versions
 
 add_file() {
 	local kver="$1"
 	kver="${kver##usr/lib/modules/}"
 	kver="${kver%%/*}"
-	versions+=("$kver")
+	versions["$kver"]=""
 }
 
 while read -r path; do
@@ -31,8 +31,8 @@ done
 		add_file "$file"
 done
 
-for kver in "${versions[@]}"; do
+for kver in "${!versions[@]}"; do
 	kimage="/usr/lib/modules/$kver/vmlinuz"
-	echo +kernel-install "$@" "$kver" "$kimage"
+	echo >&2 +kernel-install "$@" "$kver" "$kimage"
 	kernel-install "$@" "$kver" "$kimage" || true
 done
