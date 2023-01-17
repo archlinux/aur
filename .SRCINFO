@@ -1,0 +1,12 @@
+pkgbase = ioperm-git
+	pkgdesc = Start a program with access to I/O ports
+	pkgver = r1.7c190fd
+	pkgrel = 1
+	url = https://gitlab.com/alexhenrie/ioperm
+	install = ioperm.install
+	arch = x86_64
+	license = GPL
+	source = git+https://gitlab.com/alexhenrie/ioperm.git
+	sha256sums = SKIP
+
+pkgname = ioperm-git
