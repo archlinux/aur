@@ -1,11 +1,12 @@
 pkgbase = platformflashtoollite
 	pkgdesc = Flashes firmware and OS images onto Intel-based devices
 	pkgver = 5.8.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/projectceladon
 	arch = x86_64
 	license = custom
 	depends = libudev0-shim
+	depends = libusb-compat
 	source = https://github.com/projectceladon/tools/raw/master/platform_flash_tool_lite/latest/platformflashtoollite_5.8.9.0_linux_x86_64.rpm
 	sha256sums = 7105119c33e61e68377410ee83f68385a951a37db5266fb30ba73be3ef6f785b
 
