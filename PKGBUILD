@@ -1,6 +1,6 @@
 # Maintainer: Young Fellow <youngfellow.le@gmail.com>
 pkgname=setcustomres
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A utility that helps setting resolutions to monitors using (xrandr)"
 arch=('any')
