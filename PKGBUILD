@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pryr
-_pkgver=0.1.5
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.5
-pkgrel=4
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Tools for Computing on the Language'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b1653ec51850f4633cee8e2eb7d0b2724fb587b801539488b426cf88f0f770b')
+sha256sums=('68c1a30a42808eb01a64d31e521d21f2fd5a88dd2c14d05b4b7986d27a177704')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
