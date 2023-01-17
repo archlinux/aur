@@ -1,13 +1,15 @@
 pkgbase = python-libretranslate-git
 	pkgdesc = Python bindings for LibreTranslate
-	pkgver = r28.20220701
+	pkgver = r31.20221015
 	pkgrel = 1
 	url = https://github.com/argosopentech/LibreTranslate-py
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	provides = python-libretranslate
 	conflicts = python-libretranslate
@@ -15,5 +17,3 @@ pkgbase = python-libretranslate-git
 	sha256sums = SKIP
 
 pkgname = python-libretranslate-git
-	provides = python-libretranslate
-	conflicts = python-libretranslate

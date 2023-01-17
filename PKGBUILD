@@ -1,12 +1,12 @@
 # Maintainer: vantu5z <vantu5z@mail.ru>
 
 pkgname=python-libretranslate-git
-pkgver=r28.20220701
+pkgver=r31.20221015
 pkgrel=1
 pkgdesc="Python bindings for LibreTranslate"
 url="https://github.com/argosopentech/LibreTranslate-py"
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 license=('MIT')
 arch=('any')
 provides=("${pkgname%-git}")
@@ -32,6 +32,4 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 }
