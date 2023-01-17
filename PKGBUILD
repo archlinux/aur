@@ -3,12 +3,11 @@
 _pkgbase=simexec
 pkgname=simexec-git
 pkgver=r181.c00d19e
-pkgrel=3
+pkgrel=4
 pkgdesc="Execute a program with the given argv"
 arch=('any')
 url="https://git.sr.ht/~trinity/src/tree/main/item/simexec/packaging.md"
 license=('Unlicense')
-makedepends=('sysexits')
 provides=('simexec')
 source=("git+https://git.sr.ht/~trinity/src")
 md5sums=(SKIP)
