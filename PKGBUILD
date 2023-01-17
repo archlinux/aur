@@ -2,13 +2,13 @@
 
 pkgname=dataexplorer
 pkgver=3.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical tool to analyze data, gathered from various hardware devices."
 url="http://savannah.nongnu.org/projects/dataexplorer"
 arch=("i686" "x86_64")
 license=("GPL3")
 install=$pkgname.install
-makedepends=("apache-ant" "jdk8-openjdk")
+makedepends=("apache-ant" "jdk17-openjdk")
 depends=("java-runtime")
 source=("http://download.savannah.gnu.org/releases/dataexplorer/dataexplorer-$pkgver-src.tar.gz"
         "http://download.savannah.gnu.org/releases/dataexplorer/dataexplorer-$pkgver-src.tar.gz.sig"
@@ -19,7 +19,9 @@ source=("http://download.savannah.gnu.org/releases/dataexplorer/dataexplorer-$pk
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-ProfilicTechnology.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-ProfilicTechnology.rules.sig"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules"
-        "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules.sig")
+        "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules.sig"
+        "window.patch"
+        )
 noextract=("dataexplorer-$pkgver-src.tar.gz.sig"
            "40-FTDI.rules"
            "40-FTDI.rules.sig"
@@ -38,9 +40,16 @@ sha512sums=("4984408484b2cdeec2e5d2711fa84ec594739b59bae96706d6b7c9b634658c2fe83
             "3174d20d0de4b8cf0756b1fe69563ca4c3133b108bdda2bd90a8b0163d3f35c826c1356544735181023f2cbaee71a3a7224f88221ad57fa187a52c4d04fe023a"
             "e18675e1e020bf03a5a05621b1dfbc5847f2a5d881715fda59bb5662b53a2a6ddd846cab8878edc3f71da838b3760909338cd9bdaaf7871ec06bdd64e9ae1dfe"
             "8d969524ae67b5170976efd408ab4c28b23d8a33bc0d671d1b968a6cab4ebfbc80067561f1837470c8cd92e711df136851fec85e683ddf7fd1a33f93b6e39210"
-            "4d392d1e673e68b7ae14d0c696bee762587ddc5f188c03f47f920f5d474b4f9dd9d50854fbc331755fb56d6d5ca5b55306fa5109881961c1b913bb8260f0d0e4")
+            "4d392d1e673e68b7ae14d0c696bee762587ddc5f188c03f47f920f5d474b4f9dd9d50854fbc331755fb56d6d5ca5b55306fa5109881961c1b913bb8260f0d0e4"
+            "1a356a34c6a17fc8708a366b7a1331c1e9743b69ced0c0a55e6b2dc17c68868f81ab1b633d5ae4f01396fe7feba1b5f9b49a701e6c951c222dccd3a055fd5f2b")
 
 validpgpkeys=("3F0CC709ECF91C5CC0BE9E601D295C19C9C06AF6") # Winfried Bruegmann
+
+# See https://savannah.nongnu.org/bugs/?63653
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/window.patch"
+}
 
 build() {
   echo $pkgdir
