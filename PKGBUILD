@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -101,7 +101,7 @@ setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3" >> Geant4.csh
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \
-    -DGEANT4_USE_SYSTEM_ZLIB=ON \
+    -DGEANT4_USE_SYSTEM_ZLIB=OFF \
     -DGEANT4_USE_XM=ON \
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
