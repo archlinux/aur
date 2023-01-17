@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1305.454f09a
+pkgver=r1307.4abcb37
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
@@ -22,12 +22,12 @@ provides=('quickmedia' 'qm' 'quickmedia-video-player')
 conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
 options=(!strip)
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1305.454f09a.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1307.4abcb37.tar.gz"
     "twemoji-1.tar.gz::https://dec05eba.com/files/twemoji.tar.gz"
 )
 noextract=("twemoji-1.tar.gz")
 sha512sums=(
-    '5c30d25f6ae0fb0f94787847a3114ad5206886d2be08079432abe2c49a74a086a08b1221923f1889881acb30983a7f39293ba7485e25c5674876df428589e7be'
+    'e13a562b771868d4487aafad7c3547333ddda56abd1edc7d92c620b4d58bd5784b2dce91a9356e0a1992bc3e0104e75aebae28050efab4e03a6f26ae826957c6'
     'f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2'
 )
 
