@@ -2,8 +2,8 @@
 
 pkgname=dawn
 _PKGNAME=Dawn
-pkgver=3.90b
-_pkgver=3_90b
+pkgver=3.91a
+_pkgver=3_91a
 pkgrel=5
 pkgdesc="3D geometrical postscript renderer"
 url="http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html"
@@ -15,8 +15,8 @@ depends=('tcsh' 'tk' 'libx11' 'gv')
 source=("http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.tgz"
 	"${pkgname}-${pkgver}-no-interactive.patch"
 	"make_DESTDIR.patch"
-	)
-sha256sums=('be9461b490a4acfd87152407adbbe423f3735d9f00a88a9573ecaa9db24ac676'
+       )
+sha256sums=('81d855ead1117681b188242dd0be3a24e005d9bd4063fd2bda9a7a794ebcf5f4'
             '4265d3109a2802e559194f79960d32326c92cb3ffb9a54a42cb7a13f132f8db4'
             'f6afa9f21dc27f8d6bb55fa58829f805c082657c9ea7dba8aae1d39a81074ca6')
 
@@ -24,9 +24,6 @@ prepare(){
   cd $srcdir/${pkgname}_${_pkgver}
   patch -Np2 < ${srcdir}/${pkgname}-${pkgver}-no-interactive.patch
   sed -i -e '/strip/d' Makefile*in
-
-  msg 'remove: error: ISO C++ forbids comparison between pointer and integer'
-  sed -i 's|!= '\''\\0'\''|!= "\\0"|g' FRString.h
 
 }
 
