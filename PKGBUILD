@@ -1,3 +1,4 @@
+# Maintainer: Endre Szabo <endre.szabo@aur-account-merkdff.rediremail.com>
 # Maintainer: Marcel Röthke <marcel@roethke.info>
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: csllbr; Popsch <popsch@gmx.net>
@@ -5,13 +6,12 @@
 pkgname=mu
 pkgver=1.8.13
 pkgrel=1
-pkgdesc="Maildir indexer/searcher and Emacs client (mu4e)"
-arch=("x86_64" "armv7h")
+pkgdesc="Maildir indexer/searcher without the Emacs client (mu4e)"
+arch=("x86_64" "armv7h" "aarch64")
 url="http://www.djcbsoftware.nl/code/mu"
 license=("GPL")
 depends=("gmime3" "xapian-core")
-makedepends=("emacs" "meson")
-optdepends=("emacs: mu4e support")
+makedepends=("meson")
 source=("https://github.com/djcb/mu/releases/download/v${pkgver}/mu-${pkgver}.tar.xz")
 sha256sums=('20d69c1a918c1e48e6dbf5375d87ef3ed358bb6b3b7d0a120e93a88b16d5a026')
 
@@ -24,9 +24,8 @@ prepare() {
 		-Dcpp_link_args="${LDFLAGS}" \
 		-Dguile=disabled \
 		-Dreadline=enabled \
-		build
-
-
+		-Demacs=disabled \
+	build
 }
 
 
