@@ -1,7 +1,7 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
-	pkgver = 2.21.7
-	pkgrel = 3
+	pkgver = 2.21.8
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rstan
 	arch = x86_64
 	license = GPL
@@ -31,7 +31,7 @@ pkgbase = r-rstan
 	optdepends = r-runit
 	optdepends = r-shinystan
 	optdepends = r-v8
-	source = https://cran.r-project.org/src/contrib/rstan_2.21.7.tar.gz
-	sha256sums = 4495221310d390925b665c32e05ffabd3ae8857225bda65131a7ed2be41d6d45
+	source = https://cran.r-project.org/src/contrib/rstan_2.21.8.tar.gz
+	sha256sums = b2d4edc315419037970c9fa2e8740b934966d88d40548152811f3d4a28475075
 
 pkgname = r-rstan
