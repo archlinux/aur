@@ -1,0 +1,28 @@
+pkgbase = elm-compiler
+	pkgdesc = Compiler for Elm, a functional language for reliable webapps
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/elm/compiler
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-file-embed
+	depends = haskell-filelock
+	depends = haskell-sha
+	depends = haskell-snap-server
+	depends = haskell-zip-archive
+	depends = haskell-raw-strings-qq
+	depends = haskell-language-glsl
+	depends = haskell-http
+	depends = haskell-ansi-wl-pprint
+	depends = haskell-http-client-tls
+	depends = haskell-edit-distance
+	depends = haskell-utf8-string
+	conflicts = elm-git
+	source = git+https://github.com/elm/compiler.git#tag=0.19.1
+	sha256sums = SKIP
+
+pkgname = elm-compiler
