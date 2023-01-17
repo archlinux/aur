@@ -2,7 +2,7 @@
 
 pkgname=deepin-mail-bin
 _pkgname=deepin-mail
-pkgver=5.4.3_1
+pkgver=5.4.23_1
 pkgrel=1
 pkgdesc="Deepin mail"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=( 'qt5-webengine'    'dtkwidget' 'leveldb' 'poppler-qt5' 'libical')
 provides=(${_pkgname})
 source_x86_64=("https://community-packages.deepin.com/deepin/pool/non-free/d/deepin-mail/deepin-mail_${pkgver//_/-}_amd64.deb")
-sha512sums_x86_64=('4f65aaf3365d236f19c376b742451fe048e8e937df7b6c7044933863bdd178cb82616a9aca577811bb3be263eac9ea5fe68c134a21664e7803b13c3eef134a7f')
+sha512sums_x86_64=('f5938dad5fa7a84b8472c4f87ea9dd6c2d0da429cb88f4727aaaa2cc1b0d60a69d7332ef563db38140c39e9f5674f6df61fd61d90e31cebacc49a43be5b5eb75')
 
 package(){
     cd ${srcdir}
