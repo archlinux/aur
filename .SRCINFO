@@ -1,0 +1,14 @@
+pkgbase = python-torchattacks
+	pkgdesc = PyTorch implementation of adversarial attacks
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/Harry24k/adversarial-attacks-pytorch
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python-pytorch
+	optdepends = python-scipy: support tifgsm
+	source = https://files.pythonhosted.org/packages/py3/t/torchattacks/torchattacks-3.3.0-py3-none-any.whl
+	sha256sums = 9065ab20c037ec1f2eab9fc0c44d32ec0961bffea11d8949fb1cb253010401fb
+
+pkgname = python-torchattacks
