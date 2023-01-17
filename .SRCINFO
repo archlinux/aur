@@ -1,0 +1,16 @@
+pkgbase = pixel-sorter
+	pkgdesc = A command line app for pixel sorting images
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/RusticFlare/pixel-sorter
+	arch = any
+	license = MIT
+	makedepends = java-environment=11
+	depends = java-runtime>=11
+	depends = bash
+	source = pixel-sorter-4.0.3.tar.gz::https://github.com/RusticFlare/pixel-sorter/archive/v4.0.3.tar.gz
+	source = pixel-sorter
+	sha512sums = c66851227c1d90d507c00d90abc612620c8f5a11c986ebbc7b6b0a8d4bdb3b4ab0f378ec5b96753f405d3f0c98118feb9d7aa3c0482110db52d80894f1ffbe5b
+	sha512sums = 3544e79c29235f395eee05695286b5831a820b23f2fff3ca9f461f5db4e3db39b1a4b38278eed6a19ae73f850522ebd66af87651f32382b447179fd51d914036
+
+pkgname = pixel-sorter
