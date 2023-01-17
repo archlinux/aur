@@ -1,7 +1,7 @@
 # Contributor: Stefano Tortarolo <stefano@inventati.org>
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=findimagedupes
-pkgver=2.19.1
+pkgver=2.20.1
 pkgrel=1
 pkgdesc='Tool to find visually similar or duplicate images'
 arch=('any')
@@ -10,11 +10,14 @@ license=('GPL3')
 depends=('perl-file-mimeinfo' 'perl-inline-c' 'graphicsmagick')
 makedepends=('perl' 'sed')
 source=(http://www.jhnc.org/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('86be2910f2b5af31b5015e8db2d51a4a')
+md5sums=('8f2b0a2f7936d2db50d1d7fee22a76e2')
 options=('zipman')
 
-build() {
+prepare() {
 	sed -i -e "s:DIRECTORY => '/usr/local/lib/$pkgname':DIRECTORY => '/tmp':" $pkgname
+}
+
+build() {
 	pod2man findimagedupes > findimagedupes.1
 }
 
