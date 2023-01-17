@@ -6,7 +6,7 @@
 
 pkgsubn=https-everywhere
 pkgname=${pkgsubn}-chrome-git
-pkgver=67762.a126adde07
+pkgver=67794.c4d4be720e
 pkgrel=1
 pkgdesc="Chrome/Chromium extension to use HTTPS whenever possible - git/dev"
 arch=('any')
@@ -31,7 +31,7 @@ prepare() {
     git submodule init
     git config submodule.lib-wasm.url  "${srcdir}/${pkgsubn}-lib-wasm"
     git config submodule.translate.url "${srcdir}/translation"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 build() {
     cd "${srcdir}/${pkgsubn}"
