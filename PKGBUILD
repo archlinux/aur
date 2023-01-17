@@ -2,7 +2,7 @@
 _base=sport-activities-features
 pkgname=python-${_base}
 pkgdesc="Minimalistic toolbox for extracting features from sports activity files written in Python"
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-geopy python-requests python-overpy python-gpxpy python-geotiler
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('429eef46c7cb9ab9edd2363b60d8012b3c6a79977574884966902155ffb09af2d6feedfb2757eb360aa51781da39f15898e5bf9c428a75bdc9aecb6005c0a3fc')
+sha512sums=('737337d9e4a89b6ef8dfeff6b13a4e48c67d5f39004c8849e58cb989658e4cd83d61e771c8a618ec656cdd04cde6e2f30c911181b8fa318be1b08c5a0d989993')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not overpy_node_manipulation'
+  python -m pytest
 }
 
 package() {
