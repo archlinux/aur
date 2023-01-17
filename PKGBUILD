@@ -5,7 +5,7 @@
 #
 pkgname=nunit3-console
 pkgver=3.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NUnit 3 console runner"
 arch=('any')
 license=('MIT')
@@ -30,7 +30,7 @@ package() {
 	cat <<-EOF > "$pkgdir/usr/bin/nunit3-console"
 		#!/bin/sh
 		# Wrapper script for NUnit 3 console runner
-		exec $(which mono) --debug /usr/lib/${pkgname}/bin/net35/nunit3-console.exe "\$@"
+		exec $(which mono) --debug /usr/lib/${pkgname}/bin/nunit3-console.exe "\$@"
 EOF
 	chmod +x "${pkgdir}/usr/bin/nunit3-console"
 }

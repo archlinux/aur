@@ -1,7 +1,7 @@
 pkgbase = nunit3-console
 	pkgdesc = NUnit 3 console runner
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nunit.com
 	arch = any
 	license = MIT
