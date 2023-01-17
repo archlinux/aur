@@ -1,11 +1,11 @@
 pkgbase = trompeloeil-git
 	pkgdesc = Header only C++14 mocking framework
-	pkgver = 1228.6b27428
+	pkgver = 1288.45772ae
 	pkgrel = 1
 	url = https://github.com/rollbear/trompeloeil.git
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = Boost
 	makedepends = cmake
 	makedepends = make
 	optdepends = boost

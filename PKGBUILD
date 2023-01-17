@@ -1,11 +1,11 @@
 # Maintainer: muttleyxd <mateusz[ at ]szychowski.it>
 pkgname=trompeloeil-git
-pkgver=1228.6b27428
+pkgver=1288.45772ae
 pkgrel=1
 pkgdesc="Header only C++14 mocking framework"
 arch=('i686' 'x86_64')
 url="https://github.com/rollbear/trompeloeil.git"
-license=('MIT')
+license=('Boost')
 makedepends=('cmake' 'make')
 optdepends=('boost' 'catch2' 'criterion' 'cxxtest' 'doctest' 'gtest')
 provides=('trompeloeil')
