@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nlnetlabs-krill-git
-pkgver=0.10.0.r0.g2c00aa05
+pkgver=0.12.1.r0.g6374cb80
 pkgrel=1
 pkgdesc="RPKI certificate authority and publication server"
 arch=('i686' 'x86_64')
@@ -15,6 +15,15 @@ source=("git+https://github.com/NLnetLabs/krill.git")
 sha256sums=('SKIP')
 
 
+prepare() {
+  cd "krill"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
+
 pkgver() {
   cd "krill"
 
@@ -25,16 +34,15 @@ check() {
   cd "krill"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
   cd "krill"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/krill"
+    --path .
 }
