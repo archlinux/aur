@@ -1,15 +1,15 @@
 # Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
 
 pkgname=lowcharts
-pkgver=0.5.7
-pkgrel=2
+pkgver=0.5.8
+pkgrel=1
 pkgdesc="Tool to draw low-resolution graphs in terminal"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/juan-leon/lowcharts"
 license=('MIT')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c02ac4de57d10b61ec6095f85c0f33327f9dad72f0416a1ff493187f6458cc9')
+sha256sums=('6aac7dd4628a17deda0de7444c6ad928ecd3df22af3a70e06a1f2a86a4c5a3a4')
 
 check() {
 	cd "${pkgname}-${pkgver}"
