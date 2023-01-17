@@ -1,6 +1,6 @@
 pkgbase = elk-zone-git
 	pkgdesc = Native version of Elk, a nimble Mastodon web client.
-	pkgver = r88.cc94686
+	pkgver = r117.6ca37d2
 	pkgrel = 1
 	url = https://github.com/elk-zone/elk-native
 	arch = any

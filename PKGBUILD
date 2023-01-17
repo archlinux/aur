@@ -3,7 +3,7 @@
 pkgname='elk-zone-git'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=r88.cc94686
+pkgver=r117.6ca37d2
 pkgrel=1
 arch=('any')
 license=('MIT')
