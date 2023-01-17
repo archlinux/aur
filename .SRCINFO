@@ -1,15 +1,16 @@
 pkgbase = opensuperclone-git
 	pkgdesc = Fork of HDDSuperClone
-	pkgver = r101.33bd811
+	pkgver = r184.d2c9fa0
 	pkgrel = 1
 	url = https://github.com/ISpillMyDrink/OpenSuperClone
 	arch = x86_64
 	license = GPL2
-	depends = openssl
-	depends = curl
+	makedepends = git
+	makedepends = cmake
 	depends = gtk3
 	depends = libusb-compat
-	optdepends = linux-headers: Direct AHCI kernel driver
+	depends = libconfig
+	optdepends = dkms: for virtual drive and direct mode support
 	source = git+https://github.com/ISpillMyDrink/OpenSuperClone.git
 	sha512sums = SKIP
 
