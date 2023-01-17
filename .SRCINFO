@@ -1,0 +1,17 @@
+pkgbase = haskell-language-glsl
+	pkgdesc = GLSL abstract syntax tree, parser, and pretty-printer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/noteed/language-glsl
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-hunit
+	makedepends = haskell-test-framework
+	makedepends = haskell-test-framework-hunit
+	depends = ghc-libs
+	depends = haskell-prettyclass
+	source = https://hackage.haskell.org/packages/archive/language-glsl/0.3.0/language-glsl-0.3.0.tar.gz
+	sha256sums = e1ce4e6fe43ffa575a2610cbfa411de85cf29cb1118f079f9417531bd531af41
+
+pkgname = haskell-language-glsl
