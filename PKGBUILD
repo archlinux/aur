@@ -2,10 +2,10 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.24
-_commit=604397fa
+pkgver=1.2.25
+_commit=2800d4f8d4c0a986d90217fcaa1039404221129a
 pkgrel=1
-arch=('i686' 'pentium4' 'x86_64')
+arch=('x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
 url="https://gitlab.com/jengun/sdltrs"
 license=('BSD')
