@@ -1,7 +1,7 @@
 pkgbase = gandi-live-dns-rust
 	pkgdesc = Automatically updates your IP address for Gandi's Live DNS.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SeriousBug/gandi-live-dns-rust
 	install = gandi-live-dns.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gandi-live-dns-rust
 	source = https://raw.githubusercontent.com/SeriousBug/gandi-live-dns-rust/1.6.0/Packaging/gandi-live-dns.service
 	source = https://raw.githubusercontent.com/SeriousBug/gandi-live-dns-rust/1.6.0/Packaging/gandi-live-dns.timer
 	source = https://raw.githubusercontent.com/SeriousBug/gandi-live-dns-rust/1.6.0/Packaging/gandi-live-dns.sysusers
-	sha256sums = 4f9dd02e0e03fd838081c3a8dd88b386411204853399f78fa83e8781271a012f
+	sha256sums = 1940b9570eae399d9efd3209b3da27dbc047285bc5a03ed8e31df02dea21ad4a
 	sha256sums = 7ae1a8fa18e0ef41aa42c94b4a364fdab0a6c9520cbea486f8c9c7f5da22e88f
 	sha256sums = cd3b1ab682d421e8b9f230d9f44c07a9afe54ce12e55a2990fcbe606e4ccb9a3
 	sha256sums = a0e652bf8fd879dcbb96488322cac572346fa9a1dbbc2cac08b94b12d9629128
