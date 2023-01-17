@@ -3,7 +3,7 @@
 
 pkgname=clhep
 _pkgname=CLHEP
-pkgver=2.4.4.0
+pkgver=2.4.6.3
 pkgrel=1
 pkgdesc='A Class library for High Energy Physics'
 url="http://proj-clhep.web.cern.ch/"
@@ -16,7 +16,7 @@ makedepends=('cmake'         # for building the package
              'doxygen'       # foc the documentation
             )
 source=("http://proj-clhep.web.cern.ch/proj-clhep/dist1/${pkgname}-${pkgver}.tgz")
-sha256sums=('5df78c11733a091da9ae5a24ce31161d44034dd45f20455587db85f1ca1ba539')
+sha256sums=('fcd007f11b10ba4af28d027222b63148d0eb44ff7a082eee353bdf921f9c684a')
 
 build() {
 
