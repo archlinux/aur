@@ -3,7 +3,7 @@
 pkgname='elk-zone-git'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=v0.5.0.next.3.0.gcc94686
+pkgver=r88.cc94686
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -20,7 +20,7 @@ validpgpkeys=('11967103FD525D8611D25DB2654D7FAA1531BC24')
 
 pkgver() {
   cd elk-native
-  printf "$(git describe --long --tags | sed -E 's/[\s\/\\-]+/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
