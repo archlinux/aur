@@ -2,12 +2,13 @@
 
 pkgname=velero-bin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup client for Kubernetes"
 arch=('x86_64')
 url="https://github.com/vmware-tanzu/velero"
 depends=('kubectl')
-replaces=('ark-bin')
+provides=('velero')
+conflicts=('velero')
 license=('Apache')
 source=("https://github.com/vmware-tanzu/velero/releases/download/v${pkgver}/velero-v${pkgver}-linux-amd64.tar.gz")
 sha256sums=('3cf8c26b17a06f3f43ec43c854618a619f4e14e2e690bd813e55797aae1db155')
