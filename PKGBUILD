@@ -1,7 +1,7 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-doom
-pkgver=6.2
-pkgrel=2
+pkgver=6.2.1
+pkgrel=1
 pkgdesc="A limit-removing source port of Doom with enhancements and translation to the Russian language"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/inter-doom"
@@ -11,7 +11,7 @@ makedepends=(cmake python3)
 optdepends=('doom1-wad: Doom shareware game data')
 conflicts=('inter-doom-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('2ea4bc99d73a8296ea530f57eff2c8783850a54ab9bcb36b23e4df17120f5241176fc1bc7e1c28e1710c8dc9c0bfcdaeef754e986f7e75531a64774f7002e161')
+b2sums=('1873ee89b109dc9ac83d6584f44f6137c907a30026d88a4976d7b96e30974fb107d5584cf6b9539286f6ebe5f5db7cb605c21fda7895559b01a230fd15a42ed9')
 
 build() {
     # Upstream forces `-O2` for 'Release' build type
