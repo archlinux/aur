@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
   cd ${pkgname}
-	install -Dm755 hashzam.py "${pkgdir}/usr/bin/hashzami.py"
+	install -Dm755 hashzam.py "${pkgdir}/usr/bin/hashzam.py"
 	install -Dm444 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm444 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
