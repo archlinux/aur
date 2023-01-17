@@ -1,6 +1,6 @@
 pkgbase = bcunit
 	pkgdesc = Lightweight system for writing, administering, and running unit tests in C
-	pkgver = 3.0.2+12+ge910154
+	pkgver = 3.0.2+19+ge910154
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/bcunit
 	arch = x86_64
