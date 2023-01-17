@@ -4,6 +4,7 @@
 pkgname=bottles
 pkgver=50.1
 pkgrel=1
+epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"

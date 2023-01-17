@@ -2,6 +2,7 @@ pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
 	pkgver = 50.1
 	pkgrel = 1
+	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
 	license = GPL3
