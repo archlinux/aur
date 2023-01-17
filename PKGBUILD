@@ -2,7 +2,7 @@
 
 pkgdata=ldr-translate
 pkgname=$pkgdata-qt
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 epoch=
 pkgdesc="一个翻译软件，更适合kde桌面，专注文献翻译，可以截图翻译、复制翻译"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/yuhldr/$pkgdata/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=(cd202cf24ae6ea7270f6c3546b5e033f)
+md5sums=(a2dce1d8eb2f11773bd05fd4e2312a2d)
 validpgpkeys=()
 
 prepare() {
