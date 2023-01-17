@@ -6,7 +6,7 @@ _binname=vanta
 _svcname=vanta-agent
 
 pkgname=vanta-agent
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
@@ -54,4 +54,4 @@ package() {
     fi
 }
 
-sha256sums=('bdfe382703de137aec0797e1cc1ba3fb23da7f700a473d9e037ae152da16e7db')
+sha256sums=('515abfb227bf44577ed9c5ffc07672101b693ab82148e8939793e98d80826a45')
