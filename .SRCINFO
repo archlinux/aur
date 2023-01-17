@@ -1,6 +1,6 @@
 pkgbase = r-bstats
 	pkgdesc = Bayesian statistics
-	pkgver = 0.0.0.9003
+	pkgver = 0.0.0.9004
 	pkgrel = 1
 	url = https://github.com/AlexanderLyNL/bstats
 	arch = x86_64
