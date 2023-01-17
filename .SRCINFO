@@ -1,0 +1,13 @@
+pkgbase = hare-clrfmt
+	pkgdesc = ANSI escape codes for Hare
+	pkgver = r1.b980bef
+	pkgrel = 1
+	url = https://git.sr.ht/~blainsmith/hare-clrfmt
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hare
+	source = hare-clrfmt::git+https://git.sr.ht/~blainsmith/hare-clrfmt#commit=b980bef3a365721647ddedbbeacc20ac38b47f70
+	b2sums = SKIP
+
+pkgname = hare-clrfmt
