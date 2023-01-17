@@ -1,20 +1,34 @@
-# Maintainer: Michael Duell <dev _at_ akurei _._ me>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michael Duell <dev _at_ akurei _._ me>
 # Contributor: Jian Zeng <anonymousknight96 at gmail dot com>
-
-pkgname=python-telegram-send
-_name=telegram-send
+_base=telegram-send
+pkgname=python-${_base}
+pkgdesc="Send messages and files over Telegram from the command-line"
 pkgver=0.34
-pkgrel=1
-pkgdesc="Send messages and files over Telegram from the command-line."
+pkgrel=2
 arch=(any)
-url='https://github.com/rahiel/telegram-send'
-license=('GPLv3')
-makedepends=('python-setuptools')
-depends=('python-telegram-bot' 'python-colorama' 'python-appdirs' 'python-cryptography')
-source=("https://files.pythonhosted.org/packages/92/8c/0ef8546d52cfc5bfb942033cb8e1064cf14e6b1c754196229cda5ecaf8a4/telegram-send-0.34.tar.gz")
+url="https://github.com/rahiel/${_base}"
+license=(GPL3)
+depends=(python-telegram-bot python-colorama python-appdirs)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz
+  MAX_MESSAGE_LENGTH.patch::${url}/pull/117.patch)
+sha512sums=('9d9ed3db7950d68700686dc79cdd7e84547c50d5dabca2f007dba5de72c6e3f54562f252ff6ddebc1a390dbb84aec54b9c5e8fe770ce8aa2a894c194ea9c8904'
+  '7d33dedfc870e5f5c31500362da3cd252800a5a667336155948557ea1887c2e92c583a39c1232e135f879ac9cd6a080eaabda702e9b461daf7f2cd6beb7eb408')
+
+prepare() {
+  cd ${_base}-${pkgver}
+  # https://github.com/rahiel/telegram-send/issues/115
+  patch -p1 -i ../MAX_MESSAGE_LENGTH.patch
+}
+
+build() {
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+}
 
 package() {
-   cd "$srcdir/$_name-$pkgver"
-   python setup.py install --root="$pkgdir/" -O1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-b2sums=('c0f7b5ec5e28c57e9b93627ea8cc6f62800b060ffe2725fa558bef71d2646e7b00900f30b5ab02b63b329bdb61622d46e0d3441e36d7676a5b8f5c9b73d813eb')

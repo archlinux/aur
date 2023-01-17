@@ -1,16 +1,20 @@
 pkgbase = python-telegram-send
-	pkgdesc = Send messages and files over Telegram from the command-line.
+	pkgdesc = Send messages and files over Telegram from the command-line
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rahiel/telegram-send
 	arch = any
-	license = GPLv3
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-telegram-bot
 	depends = python-colorama
 	depends = python-appdirs
-	depends = python-cryptography
-	source = https://files.pythonhosted.org/packages/92/8c/0ef8546d52cfc5bfb942033cb8e1064cf14e6b1c754196229cda5ecaf8a4/telegram-send-0.34.tar.gz
-	b2sums = c0f7b5ec5e28c57e9b93627ea8cc6f62800b060ffe2725fa558bef71d2646e7b00900f30b5ab02b63b329bdb61622d46e0d3441e36d7676a5b8f5c9b73d813eb
+	source = https://pypi.org/packages/source/t/telegram-send/telegram-send-0.34.tar.gz
+	source = MAX_MESSAGE_LENGTH.patch::https://github.com/rahiel/telegram-send/pull/117.patch
+	sha512sums = 9d9ed3db7950d68700686dc79cdd7e84547c50d5dabca2f007dba5de72c6e3f54562f252ff6ddebc1a390dbb84aec54b9c5e8fe770ce8aa2a894c194ea9c8904
+	sha512sums = 7d33dedfc870e5f5c31500362da3cd252800a5a667336155948557ea1887c2e92c583a39c1232e135f879ac9cd6a080eaabda702e9b461daf7f2cd6beb7eb408
 
 pkgname = python-telegram-send
