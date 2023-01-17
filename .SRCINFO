@@ -1,16 +1,18 @@
 pkgbase = qtodotxt2-git
-	pkgdesc = A cross-platform UI client for todo.txt files
-	pkgver = 20190724
+	pkgdesc = Cross-platform UI client for todo.txt files
+	pkgver = 20220704
 	pkgrel = 1
 	url = https://github.com/QTodoTxt/QTodoTxt2
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
+	makedepends = git
 	depends = python-dateutil
 	depends = python-pyqt5
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
-	source = qtodotxt2::git+https://github.com/QTodoTxt/QTodoTxt2.git#commit=df89871
+	depends = python-setuptools
+	depends = hicolor-icon-theme
+	source = qtodotxt2::git+https://github.com/QTodoTxt/QTodoTxt2.git
 	source = qtodotxt.png
 	source = qtodotxt2.desktop
 	sha256sums = SKIP
@@ -18,4 +20,3 @@ pkgbase = qtodotxt2-git
 	sha256sums = 17aca05d232ee2ef4145da119bfefecc5dcefc0ea1c44f4d7d1777662277341d
 
 pkgname = qtodotxt2-git
-
