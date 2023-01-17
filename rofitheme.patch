@@ -1,6 +1,6 @@
 --- /etc/regolith/i3/config	2021-10-22 17:36:51.692535888 -0400
 +++ etc/regolith/i3/config	2021-10-22 17:38:12.274538822 -0400
-@@ -101,17 +101,19 @@
+@@ -101,17 +101,17 @@
  
  ## Launch // Application // <> Space ##
  set_from_resource $i3-wm.binding.launcher.app i3-wm.binding.launcher.app space
@@ -12,14 +12,12 @@
  set_from_resource $i3-wm.binding.launcher.cmd i3-wm.binding.launcher.cmd Shift+space
 -set_from_resource $i3-wm.program.launcher.cmd i3-wm.program.launcher.cmd rofi -show run -theme $rofiTheme
 +set_from_resource $i3-wm.program.launcher.cmd i3-wm.program.launcher.cmd rofi -show run -theme $(xrescat rofi.theme)
-+
  bindsym $mod+$i3-wm.binding.launcher.cmd exec $i3-wm.program.launcher.cmd
  
  ## Navigate // Window by Name // <><Ctrl> Space ##
  set_from_resource $i3-wm.binding.launcher.window i3-wm.binding.launcher.window Ctrl+space
 -set_from_resource $i3-wm.program.launcher.window i3-wm.program.launcher.window rofi -show window -theme $rofiTheme
 +set_from_resource $i3-wm.program.launcher.window i3-wm.program.launcher.window rofi -show window -theme $(xrescat rofi.theme)
-+
  bindsym $mod+$i3-wm.binding.launcher.window exec $i3-wm.program.launcher.window
  
  ## Launch // This Dialog // <><Shift> ? ##
