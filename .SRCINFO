@@ -1,32 +1,19 @@
 pkgbase = revc-git
-	pkgdesc = Grand Theft Auto Vice City reverse engineered
-	pkgver = 1
+	pkgdesc = Grand Theft Auto: Vice City reverse engineered
+	pkgver = 1.0+r870.a16fcd8d
 	pkgrel = 1
-	install = revc-git.install
+	url = https://github.com/td512/re3/tree/miami
+	install = revc.install
 	arch = x86_64
-	license = none
-	makedepends = git
+	arch = aarch64
+	license = custom:none
 	makedepends = cmake
-	makedepends = premake
+	depends = librw-git
 	depends = openal
-	depends = glew
-	depends = glfw
-	depends = libsndfile
 	depends = mpg123
-	provides = revc
-	source = git+https://github.com/erorcun/re3.git#branch=miami
-	source = git+https://github.com/aap/librw.git
-	source = git+https://github.com/xiph/ogg.git
-	source = git+https://github.com/xiph/opus.git
-	source = git+https://github.com/xiph/opusfile.git
-	source = launch.sh
-	source = GTAVC.desktop
+	source = git+https://github.com/td512/re3.git#branch=miami
+	source = reVC.desktop
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 9eb2aff2687f8cc735ea93e0460f07e0
-	md5sums = 2991b7cf6751274bfdccc7b6f0272129
+	md5sums = a7cd29fced93db056a84486f166f1ecc
 
 pkgname = revc-git

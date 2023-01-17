@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Grand Theft Auto: Vice City (reVC)
+Exec=reVC
+Path=.reVC
+Icon=reVC
+Categories=Game
