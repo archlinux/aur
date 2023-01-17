@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ce-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
-	pkgver = 2022.3.223.8214.52
+	pkgver = 2022.3.223.8617.9
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/nextversion
 	arch = any
