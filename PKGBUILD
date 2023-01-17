@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tag
-pkgver=22.0514
+pkgver=22.0911
 pkgrel=1
 pkgdesc="Additional Battle Tag levels for RVGL."
 url='https://re-volt.io/online/tracks/battle'
