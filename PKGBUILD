@@ -1,6 +1,6 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgname=inter-hexen
-pkgver=6.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A limit-removing source port of Hexen with enhancements and translation to the Russian language"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=(cmake python3)
 optdepends=('hexen1-wad: Hexen demo game data')
 conflicts=('inter-hexen-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JNechaevsky/inter-doom/archive/refs/tags/hexen-${pkgver}.tar.gz")
-b2sums=('0044145b92f1adb5e72d9fb45282d699b03feb431179bbdf20a91de69dd28c4701f8ecf8d0988dc16b46d37881fc10038c02f6363e6433b9abc6fcf3543380f0')
+b2sums=('93cf7214b4531047eddfb5181b4a30c44121b1422a52466cb78b96f901a52ffc9c7ad2fe26552be11e6be2faf1bb25446b9ae5a80ce6324ab7230f9d9dd3c022')
 
 build() {
     # Upstream forces `-O2` for 'Release' build type
