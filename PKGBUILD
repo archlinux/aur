@@ -1,6 +1,6 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=ffmpegfs
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="FUSE-based transcoding filesystem with video support from many formats to MP4, WebM, OGG, MP3, OPUS, MOV, ProRes or WAV."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
@@ -9,7 +9,7 @@ license=('GPL3' 'FDL1.3')
 makedepends=('asciidoc' 'w3m' 'xxd')
 depends=('fuse' 'ffmpeg' 'sqlite' 'libbluray' 'libdvdread' 'libcue' 'libchardet')
 source=("https://github.com/nschlia/ffmpegfs/releases/download/v$pkgver/ffmpegfs-$pkgver.tar.gz")
-sha384sums=('2c29661449ab0d78bd8b1c2a8dc0fc6c17f977c281fbe033f5b1035b369068b19d13728438ddce6bbb29cf0a21d90398')
+sha384sums=('a7fc1ef3efba7959a3cf013c4421d46cbd20ddf5a3b3221f371fa6b8706493608ad1fed3dc509c4ba4a87b8e397964a8')
 
 build() {
     cd "$pkgname-$pkgver"
