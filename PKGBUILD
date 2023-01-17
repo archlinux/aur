@@ -2,7 +2,7 @@
 
 pkgname='elm-git'
 pkgver=0.18.0.r1814.g047d5026
-pkgrel=1
+pkgrel=2
 pkgdesc='Compiler for Elm, a functional language for reliable webapps'
 arch=('x86_64' 'aarch64')
 url='https://github.com/elm/compiler'
@@ -32,7 +32,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd compiler
 
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

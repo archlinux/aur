@@ -1,7 +1,7 @@
 pkgbase = elm-git
 	pkgdesc = Compiler for Elm, a functional language for reliable webapps
 	pkgver = 0.18.0.r1814.g047d5026
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elm/compiler
 	arch = x86_64
 	arch = aarch64
