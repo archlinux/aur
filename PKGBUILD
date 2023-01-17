@@ -1,5 +1,5 @@
 pkgname=haruhishot
-pkgver=0.3.1
+pkgver=0.3.1.1
 pkgrel=1.0
 pkgdesc='One day Haruhi Suzumiya made a wlr screenshot tool'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('wayland' 'wlroots' 'qt5-base')
 makedepends=('git' 'ninja' 'meson' 'rust' 'wayland-protocols' 'wlroots' 'scdoc')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/haruhishot/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e7491313ef5f83ce08b64fd02153c6a868c549a09c175dba63fbe9a27491e1db')
+sha256sums=('600f55be1a3427c8d8391b0bf196f0009cfe9d048608ca1703c32d7225fe43d0')
 
 build() {
   cd ${pkgname}-$pkgver
