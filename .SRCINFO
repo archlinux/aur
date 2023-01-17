@@ -1,0 +1,32 @@
+pkgbase = inter-doom-git
+	pkgver = r4620.b8776844
+	pkgrel = 1
+	url = https://github.com/JNechaevsky/inter-doom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = python3
+	depends = sdl2>=2.0.18
+	depends = sdl2_mixer>=2.0.2
+	depends = sdl2_net>=2.0.0
+	depends = libsamplerate
+	source = git+https://github.com/JNechaevsky/inter-doom.git
+	b2sums = SKIP
+
+pkgname = inter-doom-git
+	pkgdesc = A limit-removing source port of Doom with enhancements and translation to the Russian language (git version)
+	optdepends = doom1-wad: Doom shareware game data
+	conflicts = inter-doom
+
+pkgname = inter-heretic-git
+	pkgdesc = A limit-removing source port of Heretic with enhancements and translation to the Russian language (git version)
+	optdepends = heretic1-wad: Heretic shareware game data
+	conflicts = inter-heretic
+
+pkgname = inter-hexen-git
+	pkgdesc = A limit-removing source port of Hexen with enhancements and translation to the Russian language (git version)
+	optdepends = hexen1-wad: Hexen demo game data
+	conflicts = inter-hexen
