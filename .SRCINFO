@@ -1,6 +1,6 @@
 pkgbase = rtsp-simple-server
 	pkgdesc = Ready-to-use and zero-dependency RTSP / RTMP / HLS server and proxy.
-	pkgver = 0.21.0
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/aler9/rtsp-simple-server/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = rtsp-simple-server
 	makedepends = go
 	provides = rtsp-simple-server
 	conflicts = rtsp-simple-server
-	source = https://github.com/aler9/rtsp-simple-server/archive/refs/tags/v0.21.0.tar.gz
+	source = https://github.com/aler9/rtsp-simple-server/archive/refs/tags/v0.21.1.tar.gz
 	source = rtsp-simple-server.service
-	sha256sums = d466bef6068ddb74abc5d5956bebb2bbbcd4bfca5a7238f8ce81eb7c3ae96d32
+	sha256sums = d3bcf8341445889ab2eb303fcc7e5358c75064fa4cd7cdb9f0b6f394ab7349d5
 	sha256sums = a6e8d22224fc76b28a7daeec4d0eb604224e136748ec760403ba1446a24f532f
 
 pkgname = rtsp-simple-server

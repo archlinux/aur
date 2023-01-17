@@ -1,7 +1,7 @@
 # Maintainer: Filip Matzner <filip.matzner@iterait.com>
 
 pkgname=rtsp-simple-server
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Ready-to-use and zero-dependency RTSP / RTMP / HLS server and proxy."
 arch=('any')
@@ -15,7 +15,7 @@ source=(
     "${pkgname}.service"
 )
 sha256sums=(
-    'd466bef6068ddb74abc5d5956bebb2bbbcd4bfca5a7238f8ce81eb7c3ae96d32'
+    'd3bcf8341445889ab2eb303fcc7e5358c75064fa4cd7cdb9f0b6f394ab7349d5'
     'a6e8d22224fc76b28a7daeec4d0eb604224e136748ec760403ba1446a24f532f'
 )
 
