@@ -1,6 +1,6 @@
 pkgname=passy
 _pkgshortname=passy
-pkgver=1.3.0.r0.gd6fb31a
+pkgver=1.3.1.r0.gaad2294
 pkgrel=1
 pkgdesc='Offline password manager with cross-platform synchronization'
 arch=('x86_64')
