@@ -8,6 +8,7 @@ arch=(x86_64)
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=(perl perl-xs-parse-keyword)
+makedepends=(perl-module-build)
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
 sha512sums=('794a8df77bfa255b83deb7004ca2a70e5f9ec76e6009897101a20c11e8969f4238bed578de5fb510590730be7dfb8b2d1431f8955863f217f7fc5a639e2f2e3b')
