@@ -1,14 +1,13 @@
 pkgbase = gcedit
 	pkgdesc = GameCube disk image editor
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = http://ikn.org.uk/app/gcedit
 	arch = any
 	license = GPL3
 	depends = python>=3.2
-	depends = python-gobject
-	source = https://launchpad.net/gcedit/trunk/0.4.2/+download/gcedit-0.4.2.tar.gz
-	md5sums = 9ea7e502cca9555a09fa0d695a87e7e5
+	depends = python-gobject>=3.11
+	source = https://launchpad.net/gcedit/trunk/0.4.3/+download/gcedit-0.4.3.tar.gz
+	sha256sums = 44762ef524db10fac0a00f4e75c16dc34f7113a6c0a9ebe7d8ca38bee51fa314
 
 pkgname = gcedit
-
