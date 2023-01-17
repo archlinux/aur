@@ -4,7 +4,7 @@
 # Contributor: Sebastien Binet <binet@lblbox>
 pkgname=python-lineprofiler
 _pkgname=line_profiler
-pkgver=3.5.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Line-by-line profiler"
 url="https://pypi.python.org/pypi/line_profiler"
@@ -13,31 +13,27 @@ license=('BSD')
 depends=('python-setuptools' 'ipython')
 makedepends=('cython')
 checkdepends=('python-pytest' 'python-ubelt')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz"
-    "cython.patch")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
-sha256sums=('bc9ad7e88112e882b16e3698040c7f9449fe72e4f15f957d2bd5e486484ff75e'
-            '3acc85c3eebe59d94edfa1624e68d06d3f4fad342d5380606f69c566d93c8131')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-  patch -p1 -i ../cython.patch
-}
+sha256sums=('4b10543d250ad900c2ab38d90d5e51aa7e645cd1e94842cda76706e486ba02b7')
 
 build() {
   cd "$_pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation 
 }
 
-check() {
-  cd "$_pkgname-${pkgver}"
-  python setup.py build_ext --inplace
-  PYTHONPATH=. pytest tests
-}
+#check() {
+  #local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  #cd "$_pkgname-${pkgver}"
+  #python -m installer --destdir=test_dir dist/*.whl
+  #export PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH"
+  #export PATH="${srcdir}/$_pkgname-${pkgver}/test_dir/usr/bin:$PATH"
+  #pytest tests
+#}
 
 package() {
   cd "line_profiler-${pkgver}"
-  python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE{,_Python}.txt "${pkgdir}/usr/share/licenses/${pkgname}"
