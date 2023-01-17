@@ -3,7 +3,7 @@
 java_=19
 pkgname="jdk${java_}-graalvm-bin"
 pkgver=22.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
       'aarch64')

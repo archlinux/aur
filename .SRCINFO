@@ -1,7 +1,7 @@
 pkgbase = jdk19-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 19 version
 	pkgver = 22.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.graalvm.org/
 	install = jdk19-graalvm-bin.install
 	arch = x86_64
