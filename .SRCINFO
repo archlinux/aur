@@ -1,23 +1,21 @@
 pkgbase = catt-git
 	pkgdesc = Cast All The Things - Send videos from many, many online sources to your Chromecast.
-	pkgver = 0.12.9.r6.ge30fa5c
+	pkgver = 0.12.9.r7.gddc5989
 	pkgrel = 1
 	url = https://github.com/skorokithakis/catt
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-setuptools
-	depends = python
 	depends = python-click
-	depends = python-ifaddr
-	depends = python-netifaces
+	depends = python-importlib-metadata
 	depends = python-pychromecast>=7.5.0
-	depends = python-requests
-	depends = youtube-dl>=2020.06.06
+	depends = yt-dlp
 	provides = catt
 	conflicts = catt
-	source = catt::git+https://github.com/skorokithakis/catt.git
+	source = catt::git+https://github.com/skorokithakis/catt
 	sha256sums = SKIP
 
 pkgname = catt-git

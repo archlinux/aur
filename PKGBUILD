@@ -1,43 +1,43 @@
 # Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 
-pkgname='catt-git'
-pkgver=0.12.9.r6.ge30fa5c
+_pkgname='catt'
+pkgname=$_pkgname-git
+pkgver=0.12.9.r7.gddc5989
 pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
 license=('BSD')
 depends=(
-  'python'
   'python-click'
-  'python-ifaddr'
-  'python-netifaces'
+  'python-importlib-metadata'
   'python-pychromecast>=7.5.0'
-  'python-requests'
-  'youtube-dl>=2020.06.06')
+  'yt-dlp'
+)
 makedepends=(
   'git'
+  'python-installer'
   'python-poetry'
   'python-setuptools'
 )
-source=("${pkgname%-*}::git+https://github.com/skorokithakis/catt.git")
+source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
-provides=("catt")
-conflicts=("catt")
+provides=("$_pkgname")
+conflicts=(${provides[@]})
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname%-*}"
+  cd "$_pkgname"
   python -m poetry build --format wheel
 }
 
 package() {
-  cd "${pkgname%-*}"
-  install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  cd "$_pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
