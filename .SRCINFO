@@ -1,7 +1,7 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
 	pkgver = 6.1.6.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux/commits/v6.1.6-arch1
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = linux-vfio
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx<6.0.0
 	makedepends = python-sphinx_rtd_theme
