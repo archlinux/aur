@@ -1,10 +1,10 @@
-From 894e1c71ab605878be140a5f288ab270110c170f Mon Sep 17 00:00:00 2001
+From c070b8aa816e52ef2ede2eaf01aee986d2a43035 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Mon, 27 Jun 2022 01:26:56 +0300
 Subject: [PATCH] AUR pkgbuild changes
 
 ---
- Makefile.in                    | 73 +++++++++++++++++++++++++++++-----
+ Makefile.in                    | 74 +++++++++++++++++++++++++++++-----
  compatibilitytool.vdf.template |  2 +-
  configure.sh                   |  2 +
  make/rules-autoconf.mk         |  4 +-
@@ -15,10 +15,10 @@ Subject: [PATCH] AUR pkgbuild changes
  make/rules-meson.mk            |  3 +-
  make/rules-winemaker.mk        |  2 +-
  proton                         |  6 +--
- 11 files changed, 90 insertions(+), 32 deletions(-)
+ 11 files changed, 91 insertions(+), 32 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index f356ed56..722d29a6 100644
+index d9fc9e73..c0529862 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -161,17 +161,18 @@ index f356ed56..722d29a6 100644
  	-Dfbdev=disabled \
  	-Ddecklink=disabled \
  	-Dcurl=disabled \
-@@ -693,7 +728,9 @@ GST_BAD_MESON_ARGS := \
+@@ -693,7 +728,10 @@ GST_BAD_MESON_ARGS := \
  	-Dvoamrwbenc=disabled \
  	-Dnvcodec=disabled \
  	-Dx265=disabled \
 +	-Dopenexr=disabled \
++	-Dzxing=disabled \
  	-Dtests=disabled \
 +	-Dintrospection=disabled \
  	-Dgobject-cast-checks=disabled \
  	-Dglib-asserts=disabled \
  	-Dglib-checks=disabled \
-@@ -711,6 +748,7 @@ $(eval $(call rules-meson,gst_bad,64))
+@@ -711,6 +749,7 @@ $(eval $(call rules-meson,gst_bad,64))
  ##
  
  GST_UGLY_MESON_ARGS := \
@@ -179,7 +180,7 @@ index f356ed56..722d29a6 100644
          -Ddoc='disabled' \
  	-Dtests=disabled \
  	-Dgobject-cast-checks=disabled \
-@@ -886,7 +924,11 @@ WINE_SOURCE_ARGS = \
+@@ -886,7 +925,11 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -191,7 +192,7 @@ index f356ed56..722d29a6 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -950,6 +992,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
+@@ -950,6 +993,9 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
  DXVK_DEPENDS = glslang
  
@@ -201,7 +202,7 @@ index f356ed56..722d29a6 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -972,6 +1017,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -972,6 +1018,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -211,7 +212,7 @@ index f356ed56..722d29a6 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -1039,6 +1087,9 @@ VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
+@@ -1039,6 +1088,9 @@ VKD3D_PROTON_MESON_ARGS32 = --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton
  VKD3D_PROTON_MESON_ARGS64 = --bindir=$(VKD3D_PROTON_DST64)/lib64/wine/vkd3d-proton
  VKD3D_PROTON_DEPENDS = glslang
  
@@ -221,7 +222,7 @@ index f356ed56..722d29a6 100644
  $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
  $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
  $(eval $(call rules-meson,vkd3d-proton,64,CROSS))
-@@ -1276,14 +1327,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
+@@ -1276,14 +1328,14 @@ $(FONTS_OBJ)/source-han/%.ttf: $$(%.ttf_CIDFONT) $$(%.ttf_FEATURES) $$(%.ttf_SEQ
  	mkdir -p $(FONTS_OBJ)/source-han
  	# Do not immediately create the target file, so that make is interrupted
  	# it will restart again
@@ -239,7 +240,7 @@ index f356ed56..722d29a6 100644
  	mv $@.tmp $@
  
  $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
-@@ -1293,10 +1344,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
+@@ -1293,10 +1345,10 @@ $(FONTS_OBJ)/ume-gothic/%.ttf: $$(%.ttf_FONT) $$(%.ttf_NAMETABLE_PATCH)
  	ttx -o $@ -m $($(notdir $@)_FONT) $(FONTS_OBJ)/ume-gothic/$(notdir $(basename $($(notdir $@)_NAMETABLE_PATCH))).ttx
  
  $(simsun.ttc): $(simsun.ttf) $(nsimsun.ttf)
@@ -438,10 +439,10 @@ index 69688a03..1c0d1d3b 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index 83a20563..79f8ede1 100755
+index cc042a99..504a9beb 100755
 --- a/proton
 +++ b/proton
-@@ -423,7 +423,6 @@ class Proton:
+@@ -424,7 +424,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -449,7 +450,7 @@ index 83a20563..79f8ede1 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1793,8 +1792,6 @@ if __name__ == "__main__":
+@@ -1808,8 +1807,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -458,7 +459,7 @@ index 83a20563..79f8ede1 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1803,7 +1800,8 @@ if __name__ == "__main__":
+@@ -1818,7 +1815,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
@@ -469,5 +470,5 @@ index 83a20563..79f8ede1 100755
      g_session.init_session(sys.argv[1] != "runinprefix")
  
 -- 
-2.38.1
+2.39.0
 
