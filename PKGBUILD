@@ -3,7 +3,7 @@
 
 pkgname=river-levee-git
 _pkgname=levee
-pkgver=0.1.1.r8.g865b8cd
+pkgver=0.1.2.r3.g520ceae
 pkgrel=1
 pkgdesc='Statusbar for the river wayland compositor'
 arch=('x86_64')
