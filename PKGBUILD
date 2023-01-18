@@ -10,7 +10,7 @@ depends=('libxrandr' 'awk')
 provides=('setcustomres')
 conflicts=('setcustomres')
 source=("v$pkgver.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('769a3ee8de387405370989bba37f44c9')
+md5sums=('5ac6a72683e8bd01392bfe3d9ee55add')
 
 package()
 {
