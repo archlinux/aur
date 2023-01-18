@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -134,6 +134,10 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-pkgbuild-changes.patch
+    0002-v45-fixes.patch
+)
+# Optional patches
+source+=(
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -270,6 +274,7 @@ prepare() {
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
+    patch -p1 -i "$srcdir"/0002-v45-fixes.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -389,4 +394,8 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
-            'e0cc0fc3b7d0ab1f168f76c39da226e7a2c8d379fdb9d42369dd2df4397233fb')
+            'e0cc0fc3b7d0ab1f168f76c39da226e7a2c8d379fdb9d42369dd2df4397233fb'
+            '4182c1456f6d565c6ab7f75a631c81bf7f4fa9c9b35d60b1acbf93cb42616266')
+# Optional patches
+sha256sums+=(
+)
