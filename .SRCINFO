@@ -1,7 +1,7 @@
 pkgbase = okta-aws-cli-assume-role
 	pkgdesc = Okta AWS CLI Assume Role Tool
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oktadeveloper/okta-aws-cli-assume-role
 	arch = any
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = okta-aws-cli-assume-role
 	sha256sums = f97662794c03af235a6180bff312744aef2cdc42982b8f832559abd29e7a1a20
 	sha256sums = 1a61e685ecf8f8eb0f2648ebed25e4a46361ba65f5570aec0824c0d55c4687c5
 	sha256sums = 7db30ef7b859bd038c1aa1330b195ee55c4892aea115eb66901f76fe0358d669
-	sha256sums = c43efdabcdb139108877a3d3fc3a0042e12d808ecdf40e5ed80149c0410ce42e
+	sha256sums = eb54ba8ccc0c15de6fa8949bba3d627a8e98286ff6ac8e2a95ce30b03e76961b
 	sha256sums = fdd1686a380673dd4c2773fdf42213cbea800edd2dc9febe0438701d5e9fbb8f
 	sha256sums = 5bc43db550eea2cb41f8f640a17af46a1f6cc8bcc61f6dea69b6a2e49f68db75
 
