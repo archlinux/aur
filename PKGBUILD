@@ -2,8 +2,8 @@
 
 pkgbase=mutter-vrr
 pkgname=(mutter-vrr mutter-vrr-docs)
-pkgver=42.4
-pkgrel=4
+pkgver=43.2
+pkgrel=1
 pkgdesc="A window manager for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -13,15 +13,15 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof gi-docgen)
+             xorg-server-xvfb wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
 optdepends=('gnome-control-center-vrr: VRR settings integration')
-_commit=9a25838e4e3f705b69b7f2e0bf22e970d8829f1f  # tags/42.4
+_commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        '42.4.patch')
+        '43.2.patch')
 
 sha256sums=('SKIP'
-            '193e7b0e0a927a87e58bd7f68a2aa551f313be5f7da8f20930b30bd0db0059af')
+            'a8d02802d0a9d87c3b59244b663b428c8c46fd937533c8e5d29db7c1d38a8be3')
 
 pkgver() {
   cd $pkgname
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 < "$srcdir/42.4.patch"
+  patch -p1 < "$srcdir/43.2.patch"
   # patch -p1 < "$srcdir/mr2464.patch"
 }
 
@@ -78,7 +78,7 @@ _pick() {
 }
 
 package_mutter-vrr() {
-  provides=(mutter libmutter-10.so)
+  provides=(mutter libmutter-11.so)
   conflicts=(mutter)
   groups=(gnome)
 

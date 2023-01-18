@@ -1,0 +1,3346 @@
+From 38a85727620799c5bfa7e1bfe6461068d35356aa Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 16 Aug 2020 17:14:03 +0300
+Subject: [PATCH 01/19] surface-actor: Add "frozen" signal
+
+This signal is emitted when the surface actor is frozen and will not
+update until it is thawed.
+---
+ src/compositor/meta-surface-actor.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index fcd94b86d..7279d7dd0 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -51,6 +51,7 @@ enum
+ {
+   REPAINT_SCHEDULED,
+   SIZE_CHANGED,
++  FROZEN,
+ 
+   LAST_SIGNAL,
+ };
+@@ -269,6 +270,13 @@ meta_surface_actor_class_init (MetaSurfaceActorClass *klass)
+                                         0,
+                                         NULL, NULL, NULL,
+                                         G_TYPE_NONE, 0);
++
++  signals[FROZEN] = g_signal_new ("frozen",
++                                  G_TYPE_FROM_CLASS (object_class),
++                                  G_SIGNAL_RUN_LAST,
++                                  0,
++                                  NULL, NULL, NULL,
++                                  G_TYPE_NONE, 0);
+ }
+ 
+ gboolean
+@@ -594,6 +602,9 @@ meta_surface_actor_set_frozen (MetaSurfaceActor *self,
+ 
+   priv->frozen = frozen;
+ 
++  if (frozen)
++    g_signal_emit (self, signals[FROZEN], 0);
++
+   if (!frozen && priv->pending_damage)
+     {
+       int i, n_rects = cairo_region_num_rectangles (priv->pending_damage);
+-- 
+2.37.3
+
+
+From c6af58e9238a17ad93f382e4d05aeca0a2390721 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 16 Aug 2020 19:50:45 +0300
+Subject: [PATCH 02/19] clutter/stage: Allow scheduling stage updates in the
+ context of an actor
+
+This is implemented using a new ClutterStageView virtual function so
+each child class can implement unique functionality around it. When not
+implemented by a child class, the virtual function keeps the existing
+behavior of a stage view update.
+
+In later commits, the virtual function would be implemented by the
+native backend to synchronize the frame clock to the update rate of
+specific actors.
+---
+ clutter/clutter/clutter-stage-view-private.h |  4 +++
+ clutter/clutter/clutter-stage-view.c         | 18 ++++++++++++
+ clutter/clutter/clutter-stage-view.h         |  3 ++
+ clutter/clutter/clutter-stage.c              | 30 ++++++++++++++++++++
+ clutter/clutter/clutter-stage.h              |  4 +++
+ 5 files changed, 59 insertions(+)
+
+diff --git a/clutter/clutter/clutter-stage-view-private.h b/clutter/clutter/clutter-stage-view-private.h
+index 309dde496..a6ea4b614 100644
+--- a/clutter/clutter/clutter-stage-view-private.h
++++ b/clutter/clutter/clutter-stage-view-private.h
+@@ -78,6 +78,10 @@ void clutter_stage_view_transform_rect_to_onscreen (ClutterStageView
+ CLUTTER_EXPORT
+ void clutter_stage_view_schedule_update (ClutterStageView *view);
+ 
++CLUTTER_EXPORT
++void clutter_stage_view_schedule_actor_update (ClutterStageView *view,
++                                               ClutterActor     *actor);
++
+ CLUTTER_EXPORT
+ void clutter_stage_view_notify_presented (ClutterStageView *view,
+                                           ClutterFrameInfo *frame_info);
+diff --git a/clutter/clutter/clutter-stage-view.c b/clutter/clutter/clutter-stage-view.c
+index aa98e6a62..7e271d71a 100644
+--- a/clutter/clutter/clutter-stage-view.c
++++ b/clutter/clutter/clutter-stage-view.c
+@@ -1099,6 +1099,22 @@ clutter_stage_view_schedule_update (ClutterStageView *view)
+   clutter_frame_clock_schedule_update (priv->frame_clock);
+ }
+ 
++void
++clutter_stage_view_schedule_actor_update (ClutterStageView *view,
++                                          ClutterActor     *actor)
++{
++  ClutterStageViewClass *view_class = CLUTTER_STAGE_VIEW_GET_CLASS (view);
++
++  view_class->schedule_actor_update (view, actor);
++}
++
++static void
++clutter_stage_view_real_schedule_actor_update (ClutterStageView *view,
++                                               ClutterActor     *actor)
++{
++  clutter_stage_view_schedule_update (view);
++}
++
+ float
+ clutter_stage_view_get_refresh_rate (ClutterStageView *view)
+ {
+@@ -1505,6 +1521,8 @@ clutter_stage_view_class_init (ClutterStageViewClass *klass)
+   object_class->dispose = clutter_stage_view_dispose;
+   object_class->finalize = clutter_stage_view_finalize;
+ 
++  klass->schedule_actor_update = clutter_stage_view_real_schedule_actor_update;
++
+   obj_props[PROP_NAME] =
+     g_param_spec_string ("name",
+                          "Name",
+diff --git a/clutter/clutter/clutter-stage-view.h b/clutter/clutter/clutter-stage-view.h
+index c8974d00d..65f669c4c 100644
+--- a/clutter/clutter/clutter-stage-view.h
++++ b/clutter/clutter/clutter-stage-view.h
+@@ -50,6 +50,9 @@ struct _ClutterStageViewClass
+                                        int                          dst_width,
+                                        int                          dst_height,
+                                        cairo_rectangle_int_t       *dst_rect);
++
++  void (* schedule_actor_update) (ClutterStageView *view,
++                                  ClutterActor     *actor);
+ };
+ 
+ CLUTTER_EXPORT
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 56919c827..6bbd48e04 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -2440,6 +2440,36 @@ clutter_stage_schedule_update (ClutterStage *stage)
+     }
+ }
+ 
++/**
++ * clutter_stage_schedule_actor_update:
++ * @stage: a #ClutterStage actor
++ * @actor: a #ClutterActor which requires an update
++ *
++ * Schedules a redraw of the #ClutterStage at the next optimal timestamp
++ * for the specified actor.
++ */
++void
++clutter_stage_schedule_actor_update (ClutterStage *stage,
++                                     ClutterActor *actor)
++{
++  ClutterStageWindow *stage_window;
++  GList *l;
++
++  if (CLUTTER_ACTOR_IN_DESTRUCTION (stage))
++    return;
++
++  stage_window = _clutter_stage_get_window (stage);
++  if (stage_window == NULL)
++    return;
++
++  for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
++    {
++      ClutterStageView *view = l->data;
++
++      clutter_stage_view_schedule_actor_update (view, actor);
++    }
++}
++
+ ClutterPaintVolume *
+ _clutter_stage_paint_volume_stack_allocate (ClutterStage *stage)
+ {
+diff --git a/clutter/clutter/clutter-stage.h b/clutter/clutter/clutter-stage.h
+index f8a2162a2..a0d039bdc 100644
+--- a/clutter/clutter/clutter-stage.h
++++ b/clutter/clutter/clutter-stage.h
+@@ -194,6 +194,10 @@ gboolean        clutter_stage_is_redraw_queued_on_view          (ClutterStage
+ CLUTTER_EXPORT
+ void clutter_stage_schedule_update (ClutterStage *stage);
+ 
++CLUTTER_EXPORT
++void clutter_stage_schedule_actor_update (ClutterStage *stage,
++                                          ClutterActor *actor);
++
+ CLUTTER_EXPORT
+ gboolean clutter_stage_get_capture_final_size (ClutterStage          *stage,
+                                                cairo_rectangle_int_t *rect,
+-- 
+2.37.3
+
+
+From fb749f3400b2be74199f3393d0db2940c7c3afa4 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 4 Aug 2020 00:28:12 +0300
+Subject: [PATCH 03/19] clutter/frame-clock: Add a mode for variable scheduling
+
+A new variable mode is introduced which allows:
+  * Immediate update scheduling, even when an update is already
+    scheduled.
+  * A timeout-based frame scheduling for every other update.
+
+This mode will be used by following commits to implement
+synchronization of page flips to actor frames.
+---
+ clutter/clutter/clutter-frame-clock.c | 106 ++++++++++++++++++++++++--
+ clutter/clutter/clutter-frame-clock.h |  10 +++
+ 2 files changed, 109 insertions(+), 7 deletions(-)
+
+diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
+index b223b8545..c56b8c31c 100644
+--- a/clutter/clutter/clutter-frame-clock.c
++++ b/clutter/clutter/clutter-frame-clock.c
+@@ -47,6 +47,8 @@ typedef struct _EstimateQueue
+ 
+ #define SYNC_DELAY_FALLBACK_FRACTION 0.875
+ 
++#define MINIMUM_REFRESH_RATE 30
++
+ typedef struct _ClutterFrameListener
+ {
+   const ClutterFrameListenerIface *iface;
+@@ -64,6 +66,7 @@ typedef enum _ClutterFrameClockState
+ {
+   CLUTTER_FRAME_CLOCK_STATE_INIT,
+   CLUTTER_FRAME_CLOCK_STATE_IDLE,
++  CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT,
+   CLUTTER_FRAME_CLOCK_STATE_SCHEDULED,
+   CLUTTER_FRAME_CLOCK_STATE_DISPATCHING,
+   CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED,
+@@ -75,6 +78,8 @@ struct _ClutterFrameClock
+ 
+   float refresh_rate;
+   int64_t refresh_interval_us;
++  int64_t minimum_refresh_interval_us;
++
+   ClutterFrameListener listener;
+ 
+   GSource *source;
+@@ -82,6 +87,8 @@ struct _ClutterFrameClock
+   int64_t frame_count;
+ 
+   ClutterFrameClockState state;
++  ClutterFrameClockMode mode;
++
+   int64_t last_dispatch_time_us;
+   int64_t last_dispatch_lateness_us;
+   int64_t last_presentation_time_us;
+@@ -315,6 +322,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       g_warn_if_reached ();
+       break;
+@@ -335,6 +343,7 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       g_warn_if_reached ();
+       break;
+@@ -547,6 +556,39 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+   *out_next_presentation_time_us = next_presentation_time_us;
+ }
+ 
++static void
++calculate_next_idle_timeout_us (ClutterFrameClock *frame_clock,
++                                int64_t           *out_next_update_time_us)
++{
++  int64_t now_us;
++  int64_t last_presentation_time_us;
++  int64_t next_presentation_time_us;
++  int64_t timeout_interval_us;
++
++  now_us = g_get_monotonic_time ();
++
++  last_presentation_time_us = frame_clock->last_presentation_time_us;
++
++  timeout_interval_us = frame_clock->minimum_refresh_interval_us;
++
++  if (last_presentation_time_us == 0)
++    {
++      *out_next_update_time_us =
++        frame_clock->last_dispatch_time_us ?
++        ((frame_clock->last_dispatch_time_us -
++          frame_clock->last_dispatch_lateness_us) + timeout_interval_us) :
++        now_us;
++      return;
++    }
++
++  next_presentation_time_us = last_presentation_time_us + timeout_interval_us;
++
++  while (next_presentation_time_us < now_us)
++    next_presentation_time_us += timeout_interval_us;
++
++  *out_next_update_time_us = next_presentation_time_us;
++}
++
+ void
+ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+ {
+@@ -559,6 +601,7 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+         case CLUTTER_FRAME_CLOCK_STATE_INIT:
+         case CLUTTER_FRAME_CLOCK_STATE_IDLE:
+           break;
++        case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+         case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+           frame_clock->pending_reschedule = TRUE;
+           frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
+@@ -599,6 +642,7 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+       next_update_time_us = g_get_monotonic_time ();
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+@@ -632,14 +676,12 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+     {
+     case CLUTTER_FRAME_CLOCK_STATE_INIT:
+       next_update_time_us = g_get_monotonic_time ();
+-      break;
++      g_source_set_ready_time (frame_clock->source, next_update_time_us);
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++      return;
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
+-      calculate_next_update_time_us (frame_clock,
+-                                     &next_update_time_us,
+-                                     &frame_clock->next_presentation_time_us);
+-      frame_clock->is_next_presentation_time_valid =
+-        (frame_clock->next_presentation_time_us != 0);
+       break;
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       return;
+     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
+@@ -648,10 +690,54 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+       return;
+     }
+ 
++  switch (frame_clock->mode)
++    {
++    case CLUTTER_FRAME_CLOCK_MODE_FIXED:
++      calculate_next_update_time_us (frame_clock,
++                                     &next_update_time_us,
++                                     &frame_clock->next_presentation_time_us);
++      frame_clock->is_next_presentation_time_valid =
++            (frame_clock->next_presentation_time_us != 0);
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++      break;
++    case CLUTTER_FRAME_CLOCK_MODE_VARIABLE:
++      calculate_next_idle_timeout_us (frame_clock,
++                                      &next_update_time_us);
++      frame_clock->is_next_presentation_time_valid = FALSE;
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT;
++      break;
++    }
++
+   g_warn_if_fail (next_update_time_us != -1);
+ 
+   g_source_set_ready_time (frame_clock->source, next_update_time_us);
+-  frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_SCHEDULED;
++}
++
++void
++clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
++                              ClutterFrameClockMode  mode)
++{
++  if (frame_clock->mode == mode)
++    return;
++
++  frame_clock->mode = mode;
++
++  switch (frame_clock->state)
++    {
++    case CLUTTER_FRAME_CLOCK_STATE_INIT:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
++    case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
++      frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
++      frame_clock->pending_reschedule = TRUE;
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
++    case CLUTTER_FRAME_CLOCK_STATE_PENDING_PRESENTED:
++      break;
++    }
++
++  maybe_reschedule_update (frame_clock);
+ }
+ 
+ static void
+@@ -715,6 +801,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+       g_warn_if_reached ();
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE_TIMEOUT:
+     case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
+       break;
+     case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
+@@ -855,6 +942,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+   init_frame_clock_source (frame_clock);
+ 
+   clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
++
++  frame_clock->minimum_refresh_interval_us =
++    (int64_t) (0.5 + G_USEC_PER_SEC / MINIMUM_REFRESH_RATE);
++
+   frame_clock->vblank_duration_us = vblank_duration_us;
+ 
+   return frame_clock;
+@@ -886,6 +977,7 @@ static void
+ clutter_frame_clock_init (ClutterFrameClock *frame_clock)
+ {
+   frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
++  frame_clock->mode = CLUTTER_FRAME_CLOCK_MODE_FIXED;
+ }
+ 
+ static void
+diff --git a/clutter/clutter/clutter-frame-clock.h b/clutter/clutter/clutter-frame-clock.h
+index 91e6b3a13..380f56c6b 100644
+--- a/clutter/clutter/clutter-frame-clock.h
++++ b/clutter/clutter/clutter-frame-clock.h
+@@ -53,6 +53,12 @@ typedef struct _ClutterFrameListenerIface
+                                 gpointer           user_data);
+ } ClutterFrameListenerIface;
+ 
++typedef enum _ClutterFrameClockMode
++{
++  CLUTTER_FRAME_CLOCK_MODE_FIXED,
++  CLUTTER_FRAME_CLOCK_MODE_VARIABLE,
++} ClutterFrameClockMode;
++
+ CLUTTER_EXPORT
+ ClutterFrameClock * clutter_frame_clock_new (float                            refresh_rate,
+                                              int64_t                          vblank_duration_us,
+@@ -62,6 +68,10 @@ ClutterFrameClock * clutter_frame_clock_new (float                            re
+ CLUTTER_EXPORT
+ void clutter_frame_clock_destroy (ClutterFrameClock *frame_clock);
+ 
++CLUTTER_EXPORT
++void clutter_frame_clock_set_mode (ClutterFrameClock     *frame_clock,
++                                   ClutterFrameClockMode  mode);
++
+ CLUTTER_EXPORT
+ void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+                                            ClutterFrameInfo  *frame_info);
+-- 
+2.37.3
+
+
+From f95ffbae130c7b0e702ab4290806dd9e85b9787e Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Fri, 10 Jul 2020 18:40:07 +0300
+Subject: [PATCH 04/19] backends/native: Introduce MetaRendererViewNative
+
+MetaRendererViewNative is a MetaRendererView which contains logic
+specific to views of the native backend. It will be used by following
+commits.
+
+In the future, per-view logic from MetaRendererNative can be moved to
+MetaRendererViewNative where it makes more sense to have it.
+---
+ src/backends/meta-renderer-view.c             | 47 ++++++++++++-------
+ src/backends/meta-renderer-view.h             | 11 +++--
+ src/backends/native/meta-renderer-native.c    | 34 +++++++-------
+ .../native/meta-renderer-view-native.c        | 43 +++++++++++++++++
+ .../native/meta-renderer-view-native.h        | 34 ++++++++++++++
+ src/meson.build                               |  2 +
+ 6 files changed, 136 insertions(+), 35 deletions(-)
+ create mode 100644 src/backends/native/meta-renderer-view-native.c
+ create mode 100644 src/backends/native/meta-renderer-view-native.h
+
+diff --git a/src/backends/meta-renderer-view.c b/src/backends/meta-renderer-view.c
+index 6064f2c82..e6d67aff1 100644
+--- a/src/backends/meta-renderer-view.c
++++ b/src/backends/meta-renderer-view.c
+@@ -49,28 +49,32 @@ enum
+ 
+ static GParamSpec *obj_props[PROP_LAST];
+ 
+-struct _MetaRendererView
++typedef struct _MetaRendererViewPrivate
+ {
+-  MetaStageView parent;
+-
+   MetaMonitorTransform transform;
+ 
+   MetaCrtc *crtc;
+-};
++} MetaRendererViewPrivate;
+ 
+-G_DEFINE_TYPE (MetaRendererView, meta_renderer_view,
+-               META_TYPE_STAGE_VIEW)
++G_DEFINE_TYPE_WITH_PRIVATE (MetaRendererView, meta_renderer_view,
++                            META_TYPE_STAGE_VIEW)
+ 
+ MetaMonitorTransform
+ meta_renderer_view_get_transform (MetaRendererView *view)
+ {
+-  return view->transform;
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->transform;
+ }
+ 
+ MetaCrtc *
+ meta_renderer_view_get_crtc (MetaRendererView *view)
+ {
+-  return view->crtc;
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->crtc;
+ }
+ 
+ static void
+@@ -78,10 +82,12 @@ meta_renderer_view_get_offscreen_transformation_matrix (ClutterStageView  *view,
+                                                         graphene_matrix_t *matrix)
+ {
+   MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (renderer_view);
+ 
+   graphene_matrix_init_identity (matrix);
+   meta_monitor_transform_transform_matrix (
+-    meta_monitor_transform_invert (renderer_view->transform), matrix);
++    meta_monitor_transform_invert (priv->transform), matrix);
+ }
+ 
+ static void
+@@ -102,9 +108,11 @@ meta_renderer_view_transform_rect_to_onscreen (ClutterStageView            *view
+                                                cairo_rectangle_int_t       *dst_rect)
+ {
+   MetaRendererView *renderer_view = META_RENDERER_VIEW (view);
+-
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (renderer_view);
++  
+   return meta_rectangle_transform (src_rect,
+-                                   renderer_view->transform,
++                                   priv->transform,
+                                    dst_width,
+                                    dst_height,
+                                    dst_rect);
+@@ -114,10 +122,13 @@ static void
+ meta_renderer_view_set_transform (MetaRendererView     *view,
+                                   MetaMonitorTransform  transform)
+ {
+-  if (view->transform == transform)
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  if (priv->transform == transform)
+     return;
+ 
+-  view->transform = transform;
++  priv->transform = transform;
+   clutter_stage_view_invalidate_offscreen_blit_pipeline (CLUTTER_STAGE_VIEW (view));
+ }
+ 
+@@ -128,14 +139,16 @@ meta_renderer_view_get_property (GObject    *object,
+                                  GParamSpec *pspec)
+ {
+   MetaRendererView *view = META_RENDERER_VIEW (object);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
+ 
+   switch (prop_id)
+     {
+     case PROP_TRANSFORM:
+-      g_value_set_uint (value, view->transform);
++      g_value_set_uint (value, priv->transform);
+       break;
+     case PROP_CRTC:
+-      g_value_set_object (value, view->crtc);
++      g_value_set_object (value, priv->crtc);
+       break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+@@ -150,6 +163,8 @@ meta_renderer_view_set_property (GObject      *object,
+                                  GParamSpec   *pspec)
+ {
+   MetaRendererView *view = META_RENDERER_VIEW (object);
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
+ 
+   switch (prop_id)
+     {
+@@ -157,7 +172,7 @@ meta_renderer_view_set_property (GObject      *object,
+       meta_renderer_view_set_transform (view, g_value_get_uint (value));
+       break;
+     case PROP_CRTC:
+-      view->crtc = g_value_get_object (value);
++      priv->crtc = g_value_get_object (value);
+       break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+diff --git a/src/backends/meta-renderer-view.h b/src/backends/meta-renderer-view.h
+index 3f21c7c48..b6247f38c 100644
+--- a/src/backends/meta-renderer-view.h
++++ b/src/backends/meta-renderer-view.h
+@@ -22,10 +22,15 @@
+ #include "backends/meta-stage-impl-private.h"
+ #include "backends/meta-stage-view-private.h"
+ 
++struct _MetaRendererViewClass
++{
++  MetaStageViewClass parent_class;
++};
++
+ #define META_TYPE_RENDERER_VIEW (meta_renderer_view_get_type ())
+-G_DECLARE_FINAL_TYPE (MetaRendererView, meta_renderer_view,
+-                      META, RENDERER_VIEW,
+-                      MetaStageView)
++G_DECLARE_DERIVABLE_TYPE (MetaRendererView, meta_renderer_view,
++                          META, RENDERER_VIEW,
++                          MetaStageView)
+ 
+ MetaMonitorTransform meta_renderer_view_get_transform (MetaRendererView *view);
+ 
+diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
+index 99fbb2bb6..4c3d70c86 100644
+--- a/src/backends/native/meta-renderer-native.c
++++ b/src/backends/native/meta-renderer-native.c
+@@ -62,6 +62,7 @@
+ #include "backends/native/meta-render-device-gbm.h"
+ #include "backends/native/meta-render-device-surfaceless.h"
+ #include "backends/native/meta-renderer-native-private.h"
++#include "backends/native/meta-renderer-view-native.h"
+ #include "cogl/cogl.h"
+ #include "core/boxes-private.h"
+ 
+@@ -1256,7 +1257,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+   int onscreen_width;
+   int onscreen_height;
+   MetaRectangle view_layout;
+-  MetaRendererView *view;
++  MetaRendererViewNative *view_native;
+   EGLSurface egl_surface;
+   GError *error = NULL;
+ 
+@@ -1368,26 +1369,27 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+   meta_rectangle_from_graphene_rect (&crtc_config->layout,
+                                      META_ROUNDING_STRATEGY_ROUND,
+                                      &view_layout);
+-  view = g_object_new (META_TYPE_RENDERER_VIEW,
+-                       "name", meta_output_get_name (output),
+-                       "stage", meta_backend_get_stage (backend),
+-                       "layout", &view_layout,
+-                       "crtc", crtc,
+-                       "scale", scale,
+-                       "framebuffer", framebuffer,
+-                       "offscreen", offscreen,
+-                       "use-shadowfb", use_shadowfb,
+-                       "transform", view_transform,
+-                       "refresh-rate", crtc_mode_info->refresh_rate,
+-                       "vblank-duration-us", crtc_mode_info->vblank_duration_us,
+-                       NULL);
++  view_native = g_object_new (META_TYPE_RENDERER_VIEW_NATIVE,
++                              "name", meta_output_get_name (output),
++                              "stage", meta_backend_get_stage (backend),
++                              "layout", &view_layout,
++                              "crtc", crtc,
++                              "scale", scale,
++                              "framebuffer", framebuffer,
++                              "offscreen", offscreen,
++                              "use-shadowfb", use_shadowfb,
++                              "transform", view_transform,
++                              "refresh-rate", crtc_mode_info->refresh_rate,
++                              "vblank-duration-us", crtc_mode_info->vblank_duration_us,
++                              NULL);
+ 
+   if (META_IS_ONSCREEN_NATIVE (framebuffer))
+     {
+       CoglDisplayEGL *cogl_display_egl;
+       CoglOnscreenEgl *onscreen_egl;
+ 
+-      meta_onscreen_native_set_view (COGL_ONSCREEN (framebuffer), view);
++      meta_onscreen_native_set_view (COGL_ONSCREEN (framebuffer),
++                                     META_RENDERER_VIEW (view_native));
+ 
+       /* Ensure we don't point to stale surfaces when creating the offscreen */
+       cogl_display_egl = cogl_display->winsys;
+@@ -1399,7 +1401,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+                                      cogl_display_egl->egl_context);
+     }
+ 
+-  return view;
++  return META_RENDERER_VIEW (view_native);
+ }
+ 
+ static void
+diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
+new file mode 100644
+index 000000000..e64a1476a
+--- /dev/null
++++ b/src/backends/native/meta-renderer-view-native.c
+@@ -0,0 +1,43 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#include "backends/native/meta-renderer-view-native.h"
++
++struct _MetaRendererViewNative
++{
++  MetaRendererView parent;
++};
++
++G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++               META_TYPE_RENDERER_VIEW)
++
++static void
++meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
++{
++}
++
++static void
++meta_renderer_view_native_init (MetaRendererViewNative *view_native)
++{
++}
+diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
+new file mode 100644
+index 000000000..34c37939c
+--- /dev/null
++++ b/src/backends/native/meta-renderer-view-native.h
+@@ -0,0 +1,34 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/*
++ * Copyright (C) 2020-2022 Dor Askayo
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
++ * 02111-1307, USA.
++ *
++ * Written by:
++ *     Dor Askayo <dor.askayo@gmail.com>
++ */
++
++#ifndef META_RENDERER_VIEW_NATIVE_H
++#define META_RENDERER_VIEW_NATIVE_H
++
++#include "backends/meta-renderer-view.h"
++
++#define META_TYPE_RENDERER_VIEW_NATIVE (meta_renderer_view_native_get_type ())
++G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
++                      META, RENDERER_VIEW_NATIVE, MetaRendererView)
++
++#endif /* META_RENDERER_VIEW_NATIVE_H */
+diff --git a/src/meson.build b/src/meson.build
+index f4d5c78df..017985b76 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -797,6 +797,8 @@ if have_native_backend
+     'backends/native/meta-renderer-native-private.h',
+     'backends/native/meta-renderer-native.c',
+     'backends/native/meta-renderer-native.h',
++    'backends/native/meta-renderer-view-native.c',
++    'backends/native/meta-renderer-view-native.h',
+     'backends/native/meta-seat-impl.c',
+     'backends/native/meta-seat-impl.h',
+     'backends/native/meta-seat-native.c',
+-- 
+2.37.3
+
+
+From 77575bdc44c32264ecb64bb0f270176f21d377dc Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sat, 4 Jul 2020 22:13:55 +0300
+Subject: [PATCH 05/19] renderer-view/native: Allow syncing frame clock updates
+ with actor updates
+
+Allow per-view tracking of actors for the purpose of synchronizing
+the frame clock to their updates.
+
+This uses the variable mode of ClutterFrameClock to either perform an
+immediate update or a delayed update depending on whether the update
+is performed in the context of the tracked actor or a different one.
+
+This approach achieves a minimal latency between updates of the actor
+and updates of the view, and delays updates of the view when the
+tracked actor has not updated.
+
+Changes in the synchronization mode are applied asynchronously at the
+preparation phase of the next frame.
+
+If the tracked actor is frozen or destroyed, the synchornization is
+stopped as no further updates from the actor are expected.
+
+For now, the only applicable synchronization mode is
+META_FRAME_SYNC_MODE_DISABLED, which doesn't synchronize to actor
+updates and keeps the frame clock on the its default fixed mode.
+When support for VRR is added in the commits to follow,
+META_FRAME_SYNC_MODE_ENABLED will be set when appropriate.
+---
+ src/backends/native/meta-renderer-native.c    |   1 +
+ .../native/meta-renderer-view-native.c        | 152 ++++++++++++++++++
+ .../native/meta-renderer-view-native.h        |   5 +
+ 3 files changed, 158 insertions(+)
+
+diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
+index 4c3d70c86..f89b9c63f 100644
+--- a/src/backends/native/meta-renderer-native.c
++++ b/src/backends/native/meta-renderer-native.c
+@@ -1469,6 +1469,7 @@ meta_renderer_native_prepare_frame (MetaRendererNative *renderer_native,
+   kms_device = meta_kms_crtc_get_device (kms_crtc);
+ 
+   meta_crtc_kms_maybe_set_gamma (crtc_kms, kms_device);
++  meta_renderer_view_native_maybe_set_frame_sync (META_RENDERER_VIEW_NATIVE (view));
+ }
+ 
+ void
+diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
+index e64a1476a..c2b38e980 100644
+--- a/src/backends/native/meta-renderer-view-native.c
++++ b/src/backends/native/meta-renderer-view-native.c
+@@ -24,20 +24,172 @@
+ 
+ #include "backends/native/meta-renderer-view-native.h"
+ 
++#include "clutter/clutter.h"
++
++typedef enum _MetaFrameSyncMode
++{
++  META_FRAME_SYNC_MODE_INIT,
++  META_FRAME_SYNC_MODE_ENABLED,
++  META_FRAME_SYNC_MODE_DISABLED,
++} MetaFrameSyncMode;
++
+ struct _MetaRendererViewNative
+ {
+   MetaRendererView parent;
++
++  gboolean frame_sync_mode_update_queued;
++
++  MetaFrameSyncMode frame_sync_mode;
++  ClutterActor *frame_sync_actor;
++
++  gulong frame_sync_actor_frozen_id;
++  gulong frame_sync_actor_destroy_id;
+ };
+ 
+ G_DEFINE_TYPE (MetaRendererViewNative, meta_renderer_view_native,
+                META_TYPE_RENDERER_VIEW)
+ 
++static void
++on_frame_sync_actor_frozen (ClutterActor           *actor,
++                            MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
++}
++
++static void
++on_frame_sync_actor_destroyed (ClutterActor           *actor,
++                               MetaRendererViewNative *view_native)
++{
++  meta_renderer_view_native_set_frame_sync_actor (view_native, NULL);
++}
++
++static void
++meta_renderer_view_native_schedule_actor_update (ClutterStageView *stage_view,
++                                                 ClutterActor     *actor)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++  ClutterFrameClock *frame_clock;
++
++  g_return_if_fail (actor != NULL);
++
++  frame_clock = clutter_stage_view_get_frame_clock (stage_view);
++
++  if (view_native->frame_sync_mode == META_FRAME_SYNC_MODE_ENABLED &&
++      actor == view_native->frame_sync_actor)
++    clutter_frame_clock_schedule_update_now (frame_clock);
++  else
++    clutter_frame_clock_schedule_update (frame_clock);
++}
++
++void
++meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                ClutterActor           *actor)
++{
++  if (G_LIKELY (actor == view_native->frame_sync_actor))
++    return;
++
++  g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                          view_native->frame_sync_actor);
++  g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                          view_native->frame_sync_actor);
++
++  if (actor)
++    {
++      view_native->frame_sync_actor_frozen_id =
++        g_signal_connect (actor, "frozen",
++                          G_CALLBACK (on_frame_sync_actor_frozen),
++                          view_native);
++      view_native->frame_sync_actor_destroy_id =
++        g_signal_connect (actor, "destroy",
++                          G_CALLBACK (on_frame_sync_actor_destroyed),
++                          view_native);
++    }
++
++  view_native->frame_sync_actor = actor;
++
++  view_native->frame_sync_mode_update_queued = TRUE;
++}
++
++static void
++meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
++                                          MetaFrameSyncMode       sync_mode)
++{
++  ClutterFrameClock *frame_clock =
++    clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
++
++  switch (sync_mode)
++    {
++    case META_FRAME_SYNC_MODE_ENABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_VARIABLE);
++      break;
++    case META_FRAME_SYNC_MODE_DISABLED:
++      clutter_frame_clock_set_mode (frame_clock,
++                                    CLUTTER_FRAME_CLOCK_MODE_FIXED);
++      break;
++    case META_FRAME_SYNC_MODE_INIT:
++      g_assert_not_reached ();
++    }
++
++  view_native->frame_sync_mode = sync_mode;
++}
++
++static MetaFrameSyncMode
++meta_renderer_view_native_get_applicable_sync_mode (MetaRendererViewNative *view_native)
++{
++  return META_FRAME_SYNC_MODE_DISABLED;
++}
++
++void
++meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native)
++{
++  MetaFrameSyncMode applicable_sync_mode;
++
++  if (G_LIKELY (!view_native->frame_sync_mode_update_queued))
++    return;
++
++  view_native->frame_sync_mode_update_queued = FALSE;
++
++  applicable_sync_mode =
++    meta_renderer_view_native_get_applicable_sync_mode (view_native);
++
++  if (applicable_sync_mode != view_native->frame_sync_mode)
++    {
++      meta_renderer_view_native_set_frame_sync (view_native,
++                                                applicable_sync_mode);
++    }
++}
++
++static void
++meta_renderer_view_native_dispose (GObject *object)
++{
++  MetaRendererViewNative *view_native = META_RENDERER_VIEW_NATIVE (object);
++
++  if (view_native->frame_sync_actor)
++    {
++      g_clear_signal_handler (&view_native->frame_sync_actor_destroy_id,
++                              view_native->frame_sync_actor);
++      g_clear_signal_handler (&view_native->frame_sync_actor_frozen_id,
++                              view_native->frame_sync_actor);
++    }
++
++  G_OBJECT_CLASS (meta_renderer_view_native_parent_class)->dispose (object);
++}
++
+ static void
+ meta_renderer_view_native_class_init (MetaRendererViewNativeClass *klass)
+ {
++  GObjectClass *object_class = G_OBJECT_CLASS (klass);
++  ClutterStageViewClass *clutter_stage_view_class = CLUTTER_STAGE_VIEW_CLASS (klass);
++
++  object_class->dispose = meta_renderer_view_native_dispose;
++
++  clutter_stage_view_class->schedule_actor_update = meta_renderer_view_native_schedule_actor_update;
+ }
+ 
+ static void
+ meta_renderer_view_native_init (MetaRendererViewNative *view_native)
+ {
++  view_native->frame_sync_mode_update_queued = TRUE;
++  view_native->frame_sync_mode = META_FRAME_SYNC_MODE_INIT;
+ }
+diff --git a/src/backends/native/meta-renderer-view-native.h b/src/backends/native/meta-renderer-view-native.h
+index 34c37939c..16e3a8d48 100644
+--- a/src/backends/native/meta-renderer-view-native.h
++++ b/src/backends/native/meta-renderer-view-native.h
+@@ -31,4 +31,9 @@
+ G_DECLARE_FINAL_TYPE (MetaRendererViewNative, meta_renderer_view_native,
+                       META, RENDERER_VIEW_NATIVE, MetaRendererView)
+ 
++void meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_native,
++                                                     ClutterActor           *actor);
++
++void meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native);
++
+ #endif /* META_RENDERER_VIEW_NATIVE_H */
+-- 
+2.37.3
+
+
+From 3960bbe6ef1258a2bfb36ec72bbbe6bc7e4d26d9 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 16 Aug 2020 20:11:48 +0300
+Subject: [PATCH 06/19] wayland/actor-surface: Schedule actor updates for frame
+ callbacks
+
+---
+ src/wayland/meta-wayland-actor-surface.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/wayland/meta-wayland-actor-surface.c b/src/wayland/meta-wayland-actor-surface.c
+index 362785c89..779a78b3b 100644
+--- a/src/wayland/meta-wayland-actor-surface.c
++++ b/src/wayland/meta-wayland-actor-surface.c
+@@ -307,7 +307,8 @@ meta_wayland_actor_surface_apply_state (MetaWaylandSurfaceRole  *surface_role,
+       MetaBackend *backend = meta_get_backend ();
+       ClutterActor *stage = meta_backend_get_stage (backend);
+ 
+-      clutter_stage_schedule_update (CLUTTER_STAGE (stage));
++      clutter_stage_schedule_actor_update (CLUTTER_STAGE (stage),
++                                           CLUTTER_ACTOR (priv->actor));
+     }
+ 
+   meta_wayland_actor_surface_queue_frame_callbacks (actor_surface, pending);
+-- 
+2.37.3
+
+
+From 51c25458ed9a86fb8b5b7e4850af2d1b01cf5808 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 16 Aug 2020 10:07:54 +0300
+Subject: [PATCH 07/19] clutter/stage: Always schedule actor updates on redraw
+
+When updates are scheduled in the context of specific actors,
+already-scheduled updates may need to be rescheduled based on the
+actor requesting the update.
+
+Allow scheduling updates for actors when the stage is already
+pending a redraw.
+---
+ clutter/clutter/clutter-stage.c | 21 +--------------------
+ 1 file changed, 1 insertion(+), 20 deletions(-)
+
+diff --git a/clutter/clutter/clutter-stage.c b/clutter/clutter/clutter-stage.c
+index 6bbd48e04..38fd52125 100644
+--- a/clutter/clutter/clutter-stage.c
++++ b/clutter/clutter/clutter-stage.c
+@@ -128,8 +128,6 @@ struct _ClutterStagePrivate
+ 
+   int update_freeze_count;
+ 
+-  gboolean pending_finish_queue_redraws;
+-
+   GHashTable *pointer_devices;
+   GHashTable *touch_sequences;
+ 
+@@ -2521,19 +2519,7 @@ clutter_stage_queue_actor_redraw (ClutterStage             *stage,
+   CLUTTER_NOTE (CLIPPING, "stage_queue_actor_redraw (actor=%s, clip=%p): ",
+                 _clutter_actor_get_debug_name (actor), clip);
+ 
+-  if (!priv->pending_finish_queue_redraws)
+-    {
+-      GList *l;
+-
+-      for (l = clutter_stage_peek_stage_views (stage); l; l = l->next)
+-        {
+-          ClutterStageView *view = l->data;
+-
+-          clutter_stage_view_schedule_update (view);
+-        }
+-
+-      priv->pending_finish_queue_redraws = TRUE;
+-    }
++  clutter_stage_schedule_actor_update (stage, actor);
+ 
+   entry = g_hash_table_lookup (priv->pending_queue_redraws, actor);
+ 
+@@ -2657,11 +2643,6 @@ clutter_stage_maybe_finish_queue_redraws (ClutterStage *stage)
+ 
+   COGL_TRACE_BEGIN_SCOPED (ClutterStageFinishQueueRedraws, "FinishQueueRedraws");
+ 
+-  if (!priv->pending_finish_queue_redraws)
+-    return;
+-
+-  priv->pending_finish_queue_redraws = FALSE;
+-
+   g_hash_table_iter_init (&iter, priv->pending_queue_redraws);
+   while (g_hash_table_iter_next (&iter, &key, &value))
+     {
+-- 
+2.37.3
+
+
+From 43697c14abbbeeeaef02b34df247c99aaa3c92d2 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 17 Mar 2020 01:44:25 +0200
+Subject: [PATCH 08/19] compositor/native: Request frame sync for compatible
+ windows
+
+---
+ src/compositor/meta-compositor-native.c      |  3 +
+ src/compositor/meta-compositor-view-native.c | 73 ++++++++++++++++++++
+ 2 files changed, 76 insertions(+)
+
+diff --git a/src/compositor/meta-compositor-native.c b/src/compositor/meta-compositor-native.c
+index e2e512494..a0e022449 100644
+--- a/src/compositor/meta-compositor-native.c
++++ b/src/compositor/meta-compositor-native.c
+@@ -45,6 +45,9 @@ meta_compositor_native_before_paint (MetaCompositor     *compositor,
+                                                     compositor);
+ #endif
+ 
++  meta_compositor_view_native_maybe_set_frame_sync (compositor_view_native,
++                                                    compositor);
++
+   parent_class = META_COMPOSITOR_CLASS (meta_compositor_native_parent_class);
+   parent_class->before_paint (compositor, compositor_view);
+ }
+diff --git a/src/compositor/meta-compositor-view-native.c b/src/compositor/meta-compositor-view-native.c
+index 932d43a3b..60047b412 100644
+--- a/src/compositor/meta-compositor-view-native.c
++++ b/src/compositor/meta-compositor-view-native.c
+@@ -31,6 +31,10 @@
+ #include "compositor/compositor-private.h"
+ #include "compositor/meta-window-actor-private.h"
+ 
++#include "backends/native/meta-renderer-view-native.h"
++#include "clutter/clutter.h"
++#include "core/window-private.h"
++
+ #ifdef HAVE_WAYLAND
+ #include "compositor/meta-surface-actor-wayland.h"
+ #include "wayland/meta-wayland-surface.h"
+@@ -189,6 +193,75 @@ meta_compositor_view_native_maybe_assign_scanout (MetaCompositorViewNative *view
+ }
+ #endif /* HAVE_WAYLAND */
+ 
++static ClutterActor *
++find_frame_sync_actor (MetaCompositorView *compositor_view,
++                       MetaCompositor     *compositor)
++{
++  MetaWindowActor *window_actor;
++  MetaWindow *window;
++  ClutterStageView *stage_view;
++  MetaRectangle view_layout;
++  MetaSurfaceActor *surface_actor;
++
++  if (meta_compositor_is_unredirect_inhibited (compositor))
++    return NULL;
++
++  window_actor =
++    meta_compositor_view_get_top_window_actor (compositor_view);
++  if (!window_actor)
++    return NULL;
++
++  if (meta_window_actor_is_frozen (window_actor))
++    return NULL;
++
++  if (meta_window_actor_effect_in_progress (window_actor))
++    return NULL;
++
++  if (clutter_actor_has_transitions (CLUTTER_ACTOR (window_actor)))
++    return NULL;
++
++  window = meta_window_actor_get_meta_window (window_actor);
++  if (!window)
++    return NULL;
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++
++  clutter_stage_view_get_layout (stage_view, &view_layout);
++
++  if (!meta_window_frame_contains_rect (window, &view_layout))
++    return NULL;
++
++  surface_actor = meta_window_actor_get_scanout_candidate (window_actor);
++  if (!surface_actor)
++    return NULL;
++
++  if (!meta_surface_actor_contains_rect (surface_actor,
++                                         &view_layout))
++    return NULL;
++
++  return CLUTTER_ACTOR (surface_actor);
++}
++
++void
++meta_compositor_view_native_maybe_set_frame_sync (MetaCompositorViewNative *view_native,
++                                                  MetaCompositor           *compositor)
++{
++  MetaCompositorView *compositor_view =
++    META_COMPOSITOR_VIEW (view_native);
++  ClutterActor *frame_sync_actor;
++  MetaRendererViewNative *renderer_view_native;
++  ClutterStageView *stage_view;
++
++  frame_sync_actor = find_frame_sync_actor (compositor_view,
++                                            compositor);
++
++  stage_view = meta_compositor_view_get_stage_view (compositor_view);
++  renderer_view_native = META_RENDERER_VIEW_NATIVE (stage_view);
++
++  meta_renderer_view_native_set_frame_sync_actor (renderer_view_native,
++                                                  frame_sync_actor);
++}
++
+ MetaCompositorViewNative *
+ meta_compositor_view_native_new (ClutterStageView *stage_view)
+ {
+-- 
+2.37.3
+
+
+From 8ff13526f3d27a5dc67be0712d53b3e1f65ece7e Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sat, 11 Jun 2022 12:50:02 +0300
+Subject: [PATCH 09/19] window: Allow checking if a window covers a rect
+
+This is just a small function to improve the readability of the code.
+---
+ src/core/window-private.h | 3 +++
+ src/core/window.c         | 8 ++++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/src/core/window-private.h b/src/core/window-private.h
+index 4f269ff37..6cddde7d6 100644
+--- a/src/core/window-private.h
++++ b/src/core/window-private.h
+@@ -716,6 +716,9 @@ void        meta_window_get_session_geometry (MetaWindow  *window,
+                                               int         *width,
+                                               int         *height);
+ 
++gboolean    meta_window_frame_contains_rect (MetaWindow    *window,
++                                             MetaRectangle *rect);
++
+ void        meta_window_update_unfocused_button_grabs (MetaWindow *window);
+ 
+ void        meta_window_update_appears_focused (MetaWindow *window);
+diff --git a/src/core/window.c b/src/core/window.c
+index 895aa7070..6dae866ca 100644
+--- a/src/core/window.c
++++ b/src/core/window.c
+@@ -4276,6 +4276,14 @@ meta_window_get_session_geometry (MetaWindow  *window,
+     window->size_hints.height_inc;
+ }
+ 
++gboolean
++meta_window_frame_contains_rect (MetaWindow    *window,
++                                 MetaRectangle *rect)
++{
++  return meta_rectangle_contains_rect (&window->rect,
++                                       rect);
++}
++
+ /**
+  * meta_window_get_buffer_rect:
+  * @window: a #MetaWindow
+-- 
+2.37.3
+
+
+From 097652ea3ed7f97128b93f9afa76126aa7f1197b Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 14 Jun 2022 01:04:03 +0300
+Subject: [PATCH 10/19] surface-actor: Allow checking if a surface actor covers
+ a rect
+
+---
+ src/compositor/meta-surface-actor.c | 16 ++++++++++++++++
+ src/compositor/meta-surface-actor.h |  3 +++
+ 2 files changed, 19 insertions(+)
+
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index 7279d7dd0..7ecef8819 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -521,6 +521,22 @@ meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                       stage_view);
+ }
+ 
++gboolean
++meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                  MetaRectangle    *rect)
++{
++  ClutterActor *actor = CLUTTER_ACTOR (surface_actor);
++  graphene_rect_t bounding_rect;
++  graphene_rect_t bound_rect;
++
++  clutter_actor_get_transformed_extents (actor, &bounding_rect);
++
++  _clutter_util_rect_from_rectangle (rect, &bound_rect);
++
++  return graphene_rect_contains_rect (&bounding_rect,
++                                      &bound_rect);
++}
++
+ void
+ meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                      cairo_region_t   *region)
+diff --git a/src/compositor/meta-surface-actor.h b/src/compositor/meta-surface-actor.h
+index f69cb1527..3128f513c 100644
+--- a/src/compositor/meta-surface-actor.h
++++ b/src/compositor/meta-surface-actor.h
+@@ -40,6 +40,9 @@ gboolean meta_surface_actor_is_obscured_on_stage_view (MetaSurfaceActor *self,
+                                                        ClutterStageView *stage_view,
+                                                        float            *unobscurred_fraction);
+ 
++gboolean meta_surface_actor_contains_rect (MetaSurfaceActor *surface_actor,
++                                           MetaRectangle    *rect);
++
+ void meta_surface_actor_set_input_region (MetaSurfaceActor *self,
+                                           cairo_region_t   *region);
+ void meta_surface_actor_set_opaque_region (MetaSurfaceActor *self,
+-- 
+2.37.3
+
+
+From d04a46fae5fcc3afaadf78ca833dbcdcedb05573 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 17 Mar 2020 21:42:37 +0200
+Subject: [PATCH 11/19] connector/kms: Detect variable refresh rate capability
+
+The "vrr_capable" property indicates whether variable refresh rate is
+supported for a connector.
+---
+ src/backends/native/meta-kms-connector-private.h |  1 +
+ src/backends/native/meta-kms-connector.c         | 15 ++++++++++++++-
+ src/backends/native/meta-kms-connector.h         |  1 +
+ 3 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/native/meta-kms-connector-private.h b/src/backends/native/meta-kms-connector-private.h
+index 73757a8fc..633421ca0 100644
+--- a/src/backends/native/meta-kms-connector-private.h
++++ b/src/backends/native/meta-kms-connector-private.h
+@@ -40,6 +40,7 @@ typedef enum _MetaKmsConnectorProp
+   META_KMS_CONNECTOR_PROP_PANEL_ORIENTATION,
+   META_KMS_CONNECTOR_PROP_NON_DESKTOP,
+   META_KMS_CONNECTOR_PROP_MAX_BPC,
++  META_KMS_CONNECTOR_PROP_VRR_CAPABLE,
+   META_KMS_CONNECTOR_N_PROPS
+ } MetaKmsConnectorProp;
+ 
+diff --git a/src/backends/native/meta-kms-connector.c b/src/backends/native/meta-kms-connector.c
+index 2bc337291..97971cf77 100644
+--- a/src/backends/native/meta-kms-connector.c
++++ b/src/backends/native/meta-kms-connector.c
+@@ -322,6 +322,10 @@ state_set_properties (MetaKmsConnectorState *state,
+   if (prop->prop_id)
+     set_privacy_screen (state, connector, prop);
+ 
++  prop = &props[META_KMS_CONNECTOR_PROP_VRR_CAPABLE];
++  if (prop->prop_id)
++    state->vrr_capable = prop->value;
++
+   prop = &props[META_KMS_CONNECTOR_PROP_MAX_BPC];
+   if (prop->prop_id)
+     {
+@@ -548,6 +552,7 @@ meta_kms_connector_state_new (void)
+   state = g_new0 (MetaKmsConnectorState, 1);
+   state->suggested_x = -1;
+   state->suggested_y = -1;
++  state->vrr_capable = FALSE;
+ 
+   return state;
+ }
+@@ -642,12 +647,15 @@ meta_kms_connector_state_changes (MetaKmsConnectorState *state,
+ 
+   if (!kms_modes_equal (state->modes, new_state->modes))
+     return META_KMS_RESOURCE_CHANGE_FULL;
+-
++  
+   if (state->max_bpc.value != new_state->max_bpc.value ||
+       state->max_bpc.min_value != new_state->max_bpc.min_value ||
+       state->max_bpc.max_value != new_state->max_bpc.max_value)
+     return META_KMS_RESOURCE_CHANGE_FULL;
+ 
++  if (state->vrr_capable != new_state->vrr_capable)
++    return META_KMS_RESOURCE_CHANGE_FULL;
++
+   if (state->privacy_screen_state != new_state->privacy_screen_state)
+     return META_KMS_RESOURCE_CHANGE_PRIVACY_SCREEN;
+ 
+@@ -966,6 +974,11 @@ init_properties (MetaKmsConnector  *connector,
+           .name = "non-desktop",
+           .type = DRM_MODE_PROP_RANGE,
+         },
++      [META_KMS_CONNECTOR_PROP_VRR_CAPABLE] =
++        {
++          .name = "vrr_capable",
++          .type = DRM_MODE_PROP_RANGE,
++        },
+       [META_KMS_CONNECTOR_PROP_MAX_BPC] =
+         {
+           .name = "max bpc",
+diff --git a/src/backends/native/meta-kms-connector.h b/src/backends/native/meta-kms-connector.h
+index bbd59d342..810d485d5 100644
+--- a/src/backends/native/meta-kms-connector.h
++++ b/src/backends/native/meta-kms-connector.h
+@@ -61,6 +61,7 @@ typedef struct _MetaKmsConnectorState
+   MetaMonitorTransform panel_orientation_transform;
+ 
+   MetaKmsRange max_bpc;
++  gboolean vrr_capable;
+ } MetaKmsConnectorState;
+ 
+ META_EXPORT_TEST
+-- 
+2.37.3
+
+
+From 8ffe6117f9a7193b11306a2b3f1c021bda49f202 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Thu, 9 Jun 2022 23:49:23 +0300
+Subject: [PATCH 12/19] kms/update: Explicitly track whether ALLOW_MODESET is
+ required
+
+---
+ src/backends/native/meta-kms-impl-device-atomic.c |  2 +-
+ src/backends/native/meta-kms-update-private.h     |  3 +++
+ src/backends/native/meta-kms-update.c             | 11 +++++++++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
+index e938e4522..5e12bb1ee 100644
+--- a/src/backends/native/meta-kms-impl-device-atomic.c
++++ b/src/backends/native/meta-kms-impl-device-atomic.c
+@@ -1001,7 +1001,7 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
+-  if (meta_kms_update_get_mode_sets (update))
++  if (meta_kms_update_needs_allow_modeset (update))
+     commit_flags |= DRM_MODE_ATOMIC_ALLOW_MODESET;
+   else
+     commit_flags |= DRM_MODE_ATOMIC_NONBLOCK;
+diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
+index 3a648ba0d..cc4e8cc81 100644
+--- a/src/backends/native/meta-kms-update-private.h
++++ b/src/backends/native/meta-kms-update-private.h
+@@ -165,6 +165,9 @@ GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++gboolean meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update);
++
+ MetaKmsCustomPageFlip * meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update);
+ 
+ void meta_kms_update_drop_plane_assignment (MetaKmsUpdate *update,
+diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
+index 4c34000ef..642aaacc0 100644
+--- a/src/backends/native/meta-kms-update.c
++++ b/src/backends/native/meta-kms-update.c
+@@ -40,6 +40,8 @@ struct _MetaKmsUpdate
+   GList *connector_updates;
+   GList *crtc_gammas;
+ 
++  gboolean needs_allow_modeset;
++
+   MetaKmsCustomPageFlip *custom_page_flip;
+ 
+   GList *page_flip_listeners;
+@@ -284,6 +286,8 @@ meta_kms_update_mode_set (MetaKmsUpdate *update,
+   };
+ 
+   update->mode_sets = g_list_prepend (update->mode_sets, mode_set);
++
++  update->needs_allow_modeset = TRUE;
+ }
+ 
+ static MetaKmsConnectorUpdate *
+@@ -655,6 +659,12 @@ meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update)
+   return update->crtc_gammas;
+ }
+ 
++gboolean
++meta_kms_update_needs_allow_modeset (MetaKmsUpdate *update)
++{
++  return update->needs_allow_modeset;
++}
++
+ void
+ meta_kms_update_lock (MetaKmsUpdate *update)
+ {
+@@ -706,6 +716,7 @@ meta_kms_update_new (MetaKmsDevice *device)
+   update = g_new0 (MetaKmsUpdate, 1);
+   update->device = device;
+   update->sequence_number = sequence_number++;
++  update->needs_allow_modeset = FALSE;
+ 
+   return update;
+ }
+-- 
+2.37.3
+
+
+From a953013f4d6e2416a6d6a337f0972a5fcdceacff Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sat, 2 Jul 2022 17:10:36 +0300
+Subject: [PATCH 13/19] kms: Allow setting the "VRR_ENABLED" property on a CRTC
+
+Add the "VRR_ENABLED" propetry ID and a function to update its value
+on a CRTC.
+
+This requires the addition of an infrastrucure to create and process
+CRTC property updates similarly to connector updates, in both the
+atomic and the simple KMS backends.
+---
+ src/backends/native/meta-kms-crtc-private.h   |  8 ++
+ src/backends/native/meta-kms-crtc.c           |  5 ++
+ .../native/meta-kms-impl-device-atomic.c      | 43 ++++++++++
+ .../native/meta-kms-impl-device-simple.c      | 78 +++++++++++++++++++
+ src/backends/native/meta-kms-update-private.h | 13 ++++
+ src/backends/native/meta-kms-update.c         | 47 +++++++++++
+ src/backends/native/meta-kms-update.h         |  4 +
+ 7 files changed, 198 insertions(+)
+
+diff --git a/src/backends/native/meta-kms-crtc-private.h b/src/backends/native/meta-kms-crtc-private.h
+index baf5f4099..8ddeb3271 100644
+--- a/src/backends/native/meta-kms-crtc-private.h
++++ b/src/backends/native/meta-kms-crtc-private.h
+@@ -30,9 +30,17 @@ typedef enum _MetaKmsCrtcProp
+   META_KMS_CRTC_PROP_MODE_ID = 0,
+   META_KMS_CRTC_PROP_ACTIVE,
+   META_KMS_CRTC_PROP_GAMMA_LUT,
++  META_KMS_CRTC_PROP_VRR_ENABLED,
+   META_KMS_CRTC_N_PROPS
+ } MetaKmsCrtcProp;
+ 
++typedef enum _MetaKmsCrtcVRRMode
++{
++  META_KMS_CRTC_VRR_MODE_DISABLED = 0,
++  META_KMS_CRTC_VRR_MODE_ENABLED,
++  META_KMS_CRTC_VRR_MODE_N_PROPS,
++} MetaKmsCrtcVRRMode;
++
+ MetaKmsCrtc * meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+                                  drmModeCrtc        *drm_crtc,
+                                  int                 idx,
+diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
+index ee9e19d2d..caff9aaef 100644
+--- a/src/backends/native/meta-kms-crtc.c
++++ b/src/backends/native/meta-kms-crtc.c
+@@ -365,6 +365,11 @@ init_properties (MetaKmsCrtc       *crtc,
+           .name = "GAMMA_LUT",
+           .type = DRM_MODE_PROP_BLOB,
+         },
++      [META_KMS_CRTC_PROP_VRR_ENABLED] =
++        {
++          .name = "VRR_ENABLED",
++          .type = DRM_MODE_PROP_RANGE,
++        },
+     }
+   };
+ }
+diff --git a/src/backends/native/meta-kms-impl-device-atomic.c b/src/backends/native/meta-kms-impl-device-atomic.c
+index 5e12bb1ee..9b49d2864 100644
+--- a/src/backends/native/meta-kms-impl-device-atomic.c
++++ b/src/backends/native/meta-kms-impl-device-atomic.c
+@@ -285,6 +285,39 @@ add_crtc_property (MetaKmsImplDevice  *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     drmModeAtomicReq   *req,
++                     GArray             *blob_ids,
++                     gpointer            update_entry,
++                     gpointer            user_data,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[atomic] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!add_crtc_property (impl_device,
++                              crtc, req,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_mode_set (MetaKmsImplDevice  *impl_device,
+                   MetaKmsUpdate      *update,
+@@ -971,6 +1004,16 @@ meta_kms_impl_device_atomic_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
++  if (!process_entries (impl_device,
++                        update,
++                        req,
++                        blob_ids,
++                        meta_kms_update_get_crtc_updates (update),
++                        NULL,
++                        process_crtc_update,
++                        &error))
++    goto err;
++
+   if (!process_entries (impl_device,
+                         update,
+                         req,
+diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
+index 648de51c6..8054b77ab 100644
+--- a/src/backends/native/meta-kms-impl-device-simple.c
++++ b/src/backends/native/meta-kms-impl-device-simple.c
+@@ -180,6 +180,47 @@ set_connector_property (MetaKmsImplDevice     *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++set_crtc_property (MetaKmsImplDevice  *impl_device,
++                   MetaKmsCrtc        *crtc,
++                   MetaKmsCrtcProp     prop,
++                   uint64_t            value,
++                   GError            **error)
++{
++  uint32_t prop_id;
++  int fd;
++  int ret;
++
++  prop_id = meta_kms_crtc_get_prop_id (crtc, prop);
++  if (!prop_id)
++    {
++      g_set_error (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
++                   "Property (%s) not found on CRTC %u",
++                   meta_kms_crtc_get_prop_name (crtc, prop),
++                   meta_kms_crtc_get_id (crtc));
++      return FALSE;
++    }
++
++  fd = meta_kms_impl_device_get_fd (impl_device);
++
++  ret = drmModeObjectSetProperty (fd,
++                                  meta_kms_crtc_get_id (crtc),
++                                  DRM_MODE_OBJECT_CRTC,
++                                  prop_id,
++                                  value);
++  if (ret != 0)
++    {
++      g_set_error (error, G_IO_ERROR, g_io_error_from_errno (-ret),
++                   "Failed to set CRTC %u property %u: %s",
++                   meta_kms_crtc_get_id (crtc),
++                   prop_id,
++                   g_strerror (-ret));
++      return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static gboolean
+ process_connector_update (MetaKmsImplDevice  *impl_device,
+                           MetaKmsUpdate      *update,
+@@ -269,6 +310,36 @@ process_connector_update (MetaKmsImplDevice  *impl_device,
+   return TRUE;
+ }
+ 
++static gboolean
++process_crtc_update (MetaKmsImplDevice  *impl_device,
++                     MetaKmsUpdate      *update,
++                     gpointer            update_entry,
++                     GError            **error)
++{
++  MetaKmsCrtcUpdate *crtc_update = update_entry;
++  MetaKmsCrtc *crtc = crtc_update->crtc;
++
++  if (crtc_update->vrr_mode.has_update)
++    {
++      meta_topic (META_DEBUG_KMS,
++                  "[simple] Setting VRR mode to %d on CRTC %u (%s)",
++                  crtc_update->vrr_mode.is_enabled ?
++                    META_KMS_CRTC_VRR_MODE_ENABLED :
++                    META_KMS_CRTC_VRR_MODE_DISABLED,
++                  meta_kms_crtc_get_id (crtc),
++                  meta_kms_impl_device_get_path (impl_device));
++
++      if (!set_crtc_property (impl_device,
++                              crtc,
++                              META_KMS_CRTC_PROP_VRR_ENABLED,
++                              crtc_update->vrr_mode.is_enabled,
++                              error))
++        return FALSE;
++    }
++
++  return TRUE;
++}
++
+ static CachedModeSet *
+ cached_mode_set_new (GList                 *connectors,
+                      const drmModeModeInfo *drm_mode,
+@@ -1520,6 +1591,13 @@ meta_kms_impl_device_simple_process_update (MetaKmsImplDevice *impl_device,
+                         &error))
+     goto err;
+ 
++  if (!process_entries (impl_device,
++                        update,
++                        meta_kms_update_get_crtc_updates (update),
++                        process_crtc_update,
++                        &error))
++    goto err;
++
+   if (!process_entries (impl_device,
+                         update,
+                         meta_kms_update_get_crtc_gammas (update),
+diff --git a/src/backends/native/meta-kms-update-private.h b/src/backends/native/meta-kms-update-private.h
+index cc4e8cc81..5e3bb9c63 100644
+--- a/src/backends/native/meta-kms-update-private.h
++++ b/src/backends/native/meta-kms-update-private.h
+@@ -89,6 +89,16 @@ typedef struct _MetaKmsConnectorUpdate
+   } max_bpc;
+ } MetaKmsConnectorUpdate;
+ 
++typedef struct _MetaKmsCrtcUpdate
++{
++  MetaKmsCrtc *crtc;
++
++  struct {
++    gboolean has_update;
++    gboolean is_enabled;
++  } vrr_mode;
++} MetaKmsCrtcUpdate;
++
+ typedef struct _MetaKmsPageFlipListener
+ {
+   MetaKmsCrtc *crtc;
+@@ -162,6 +172,9 @@ void meta_kms_update_drop_defunct_page_flip_listeners (MetaKmsUpdate *update);
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_connector_updates (MetaKmsUpdate *update);
+ 
++META_EXPORT_TEST
++GList * meta_kms_update_get_crtc_updates (MetaKmsUpdate *update);
++
+ META_EXPORT_TEST
+ GList * meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update);
+ 
+diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
+index 642aaacc0..5bdf499f9 100644
+--- a/src/backends/native/meta-kms-update.c
++++ b/src/backends/native/meta-kms-update.c
+@@ -38,6 +38,7 @@ struct _MetaKmsUpdate
+   GList *mode_sets;
+   GList *plane_assignments;
+   GList *connector_updates;
++  GList *crtc_updates;
+   GList *crtc_gammas;
+ 
+   gboolean needs_allow_modeset;
+@@ -422,6 +423,45 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+   update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
+ }
+ 
++static MetaKmsCrtcUpdate *
++ensure_crtc_update (MetaKmsUpdate *update,
++                    MetaKmsCrtc   *crtc)
++{
++  GList *l;
++  MetaKmsCrtcUpdate *crtc_update;
++
++  for (l = update->crtc_updates; l; l = l->next)
++    {
++      crtc_update = l->data;
++
++      if (crtc_update->crtc == crtc)
++        return crtc_update;
++    }
++
++  crtc_update = g_new0 (MetaKmsCrtcUpdate, 1);
++  crtc_update->crtc = crtc;
++
++  update->crtc_updates = g_list_prepend (update->crtc_updates,
++                                         crtc_update);
++
++  return crtc_update;
++}
++
++void
++meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                              MetaKmsCrtc   *crtc,
++                              gboolean       enabled)
++{
++  MetaKmsCrtcUpdate *crtc_update;
++
++  g_assert (!meta_kms_update_is_locked (update));
++  g_assert (meta_kms_crtc_get_device (crtc) == update->device);
++
++  crtc_update = ensure_crtc_update (update, crtc);
++  crtc_update->vrr_mode.has_update = TRUE;
++  crtc_update->vrr_mode.is_enabled = enabled;
++}
++
+ void
+ meta_kms_update_add_page_flip_listener (MetaKmsUpdate                       *update,
+                                         MetaKmsCrtc                         *crtc,
+@@ -653,6 +693,12 @@ meta_kms_update_get_connector_updates (MetaKmsUpdate *update)
+   return update->connector_updates;
+ }
+ 
++GList *
++meta_kms_update_get_crtc_updates (MetaKmsUpdate *update)
++{
++  return update->crtc_updates;
++}
++
+ GList *
+ meta_kms_update_get_crtc_gammas (MetaKmsUpdate *update)
+ {
+@@ -733,6 +779,7 @@ meta_kms_update_free (MetaKmsUpdate *update)
+   g_list_free_full (update->page_flip_listeners,
+                     (GDestroyNotify) meta_kms_page_flip_listener_free);
+   g_list_free_full (update->connector_updates, g_free);
++  g_list_free_full (update->crtc_updates, g_free);
+   g_list_free_full (update->crtc_gammas, (GDestroyNotify) meta_kms_crtc_gamma_free);
+   g_clear_pointer (&update->custom_page_flip, meta_kms_custom_page_flip_free);
+ 
+diff --git a/src/backends/native/meta-kms-update.h b/src/backends/native/meta-kms-update.h
+index d5557d7ce..5814490cc 100644
+--- a/src/backends/native/meta-kms-update.h
++++ b/src/backends/native/meta-kms-update.h
+@@ -127,6 +127,10 @@ void meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+                                      const uint16_t *green,
+                                      const uint16_t *blue);
+ 
++void meta_kms_update_set_vrr_mode (MetaKmsUpdate *update,
++                                   MetaKmsCrtc   *crtc,
++                                   gboolean       enabled);
++
+ void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
+                                               const int              *rectangles,
+                                               int                     n_rectangles);
+-- 
+2.37.3
+
+
+From f722e78effb392378106d0a93ff6aec2b22723c4 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sun, 31 Jul 2022 14:04:01 +0300
+Subject: [PATCH 14/19] backends/native: Disable VRR for i915 using a udev rule
+
+The i915 DRM driver currently requires setting the
+DRM_MODE_ATOMIC_ALLOW_MODESET flag on the atomic commit when updating
+the "VRR_ENABLED" KMS property.
+
+However, we prefer not to allow a modeset in the context of VRR to
+avoid a potential blanking of the monitor and a bad user experience
+around enabling and disabling VRR dynamically. As such, disable
+support for VRR with i915 using a udev rule for now.
+---
+ data/61-mutter.rules                      | 2 +-
+ src/backends/native/meta-backend-native.c | 3 +++
+ src/backends/native/meta-gpu-kms.c        | 9 +++++++++
+ src/backends/native/meta-gpu-kms.h        | 1 +
+ src/backends/native/meta-kms-types.h      | 9 +++++----
+ src/backends/native/meta-udev.c           | 7 +++++++
+ src/backends/native/meta-udev.h           | 2 ++
+ 7 files changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/data/61-mutter.rules b/data/61-mutter.rules
+index 7c2b96349..37847acab 100644
+--- a/data/61-mutter.rules
++++ b/data/61-mutter.rules
+@@ -1,117 +1,117 @@
+ DRIVERS=="amdgpu", SUBSYSTEM=="drm", TAG+="mutter-device-disable-client-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1602", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1606", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1612", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1616", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1622", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1626", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1902", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1906", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1912", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1913", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1915", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1916", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1917", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1921", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1923", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1926", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1927", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1932", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x0a84", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1a84", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1a85", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5a84", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5a85", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3184", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3185", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5902", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5906", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5908", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5913", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5915", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5917", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5912", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5916", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591d", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591e", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5921", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5923", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5926", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5927", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x593b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591c", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x87c0", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x87ca", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e90", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e93", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e99", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9c", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e91", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e92", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e96", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e98", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9a", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9b", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e94", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea9", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea5", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea6", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea7", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea8", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea1", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea4", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea0", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea3", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea2", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9b21", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba0", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba2", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba4", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba5", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba8", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9baa", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bab", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bac", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9b41", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc0", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc2", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc4", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc5", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc6", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc8", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bca", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bcb", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bcc", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9be6", TAG+="mutter-device-disable-kms-modifiers"
+-DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bf6", TAG+="mutter-device-disable-kms-modifiers"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1602", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1606", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x160e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1612", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1616", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x161e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1622", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1626", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x162e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1902", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1906", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x190e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1912", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1913", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1915", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1916", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1917", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x191e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1921", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1923", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1926", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1927", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x192d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1932", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x193d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x0a84", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1a84", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x1a85", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5a84", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5a85", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3184", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3185", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5902", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5906", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5908", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x590e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5913", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5915", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5917", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5912", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5916", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591d", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591e", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5921", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5923", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5926", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x5927", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x593b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x591c", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x87c0", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x87ca", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e90", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e93", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e99", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9c", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e91", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e92", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e96", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e98", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9a", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e9b", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3e94", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea9", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea5", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea6", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea7", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea8", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea1", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea4", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea0", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea3", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x3ea2", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9b21", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba0", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba2", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba4", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba5", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9ba8", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9baa", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bab", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bac", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9b41", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc0", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc2", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc4", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc5", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc6", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bc8", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bca", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bcb", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bcc", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9be6", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
++DRIVERS=="i915", SUBSYSTEM=="drm",ATTRS{vendor}=="0x8086", ATTRS{device}=="0x9bf6", TAG+="mutter-device-disable-kms-modifiers", TAG+="mutter-device-disable-vrr"
+ ENV{ID_PATH}=="platform-vkms", TAG+="mutter-device-ignore"
+diff --git a/src/backends/native/meta-backend-native.c b/src/backends/native/meta-backend-native.c
+index 8900875a0..14f479e40 100644
+--- a/src/backends/native/meta-backend-native.c
++++ b/src/backends/native/meta-backend-native.c
+@@ -595,6 +595,9 @@
+   if (meta_is_udev_device_disable_modifiers (device))
+     flags |= META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS;
+ 
++  if (meta_is_udev_device_disable_vrr (device))
++    flags |= META_KMS_DEVICE_FLAG_DISABLE_VRR;
++    
+   if (meta_is_udev_device_disable_client_modifiers (device))
+     flags |= META_KMS_DEVICE_FLAG_DISABLE_CLIENT_MODIFIERS;
+ 
+diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
+index 84ea6baa2..9b84b66c8 100644
+--- a/src/backends/native/meta-gpu-kms.c
++++ b/src/backends/native/meta-gpu-kms.c
+@@ -134,6 +134,15 @@ meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms)
+   return !!(flags & META_KMS_DEVICE_FLAG_PLATFORM_DEVICE);
+ }
+ 
++gboolean
++meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms)
++{
++  MetaKmsDeviceFlag flags;
++
++  flags = meta_kms_device_get_flags (gpu_kms->kms_device);
++  return !!(flags & META_KMS_DEVICE_FLAG_DISABLE_VRR);
++}
++
+ static int
+ compare_outputs (gconstpointer one,
+                  gconstpointer two)
+diff --git a/src/backends/native/meta-gpu-kms.h b/src/backends/native/meta-gpu-kms.h
+index 7a890c845..71808eed5 100644
+--- a/src/backends/native/meta-gpu-kms.h
++++ b/src/backends/native/meta-gpu-kms.h
+@@ -47,6 +47,7 @@ gboolean meta_gpu_kms_is_crtc_active (MetaGpuKms *gpu_kms,
+ 
+ gboolean meta_gpu_kms_is_boot_vga (MetaGpuKms *gpu_kms);
+ gboolean meta_gpu_kms_is_platform_device (MetaGpuKms *gpu_kms);
++gboolean meta_gpu_kms_disable_vrr (MetaGpuKms *gpu_kms);
+ 
+ MetaKmsDevice * meta_gpu_kms_get_kms_device (MetaGpuKms *gpu_kms);
+ 
+diff --git a/src/backends/native/meta-kms-types.h b/src/backends/native/meta-kms-types.h
+index 55ba42fbf..ab745aba4 100644
+--- a/src/backends/native/meta-kms-types.h
++++ b/src/backends/native/meta-kms-types.h
+@@ -60,11 +60,12 @@
+   META_KMS_DEVICE_FLAG_BOOT_VGA = 1 << 0,
+   META_KMS_DEVICE_FLAG_PLATFORM_DEVICE = 1 << 1,
+   META_KMS_DEVICE_FLAG_DISABLE_MODIFIERS = 1 << 2,
+-  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 3,
+-  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 4,
+-  META_KMS_DEVICE_FLAG_HAS_ADDFB2 = 1 << 5,
+-  META_KMS_DEVICE_FLAG_FORCE_LEGACY = 1 << 6,
+-  META_KMS_DEVICE_FLAG_DISABLE_CLIENT_MODIFIERS = 1 << 7,
++  META_KMS_DEVICE_FLAG_DISABLE_VRR = 1 << 3,
++  META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY = 1 << 4,
++  META_KMS_DEVICE_FLAG_NO_MODE_SETTING = 1 << 5,
++  META_KMS_DEVICE_FLAG_HAS_ADDFB2 = 1 << 6,
++  META_KMS_DEVICE_FLAG_FORCE_LEGACY = 1 << 7,
++  META_KMS_DEVICE_FLAG_DISABLE_CLIENT_MODIFIERS = 1 << 8,
+ } MetaKmsDeviceFlag;
+ 
+ typedef enum _MetaKmsResourceChanges
+diff --git a/src/backends/native/meta-udev.c b/src/backends/native/meta-udev.c
+index 0a9ed5fd1..fa854ce0c 100644
+--- a/src/backends/native/meta-udev.c
++++ b/src/backends/native/meta-udev.c
+@@ -103,6 +103,13 @@
+ }
+ 
+ gboolean
++meta_is_udev_device_disable_vrr (GUdevDevice *device)
++{
++  return meta_has_udev_device_tag (device,
++                                   "mutter-device-disable-vrr");
++}
++
++gboolean
+ meta_is_udev_device_disable_client_modifiers (GUdevDevice *device)
+ {
+   return meta_has_udev_device_tag (device,
+diff --git a/src/backends/native/meta-udev.h b/src/backends/native/meta-udev.h
+index dfd6337a0..dee8430f6 100644
+--- a/src/backends/native/meta-udev.h
++++ b/src/backends/native/meta-udev.h
+@@ -34,6 +34,8 @@
+ 
+ gboolean meta_is_udev_device_disable_modifiers (GUdevDevice *device);
+ 
++gboolean meta_is_udev_device_disable_vrr (GUdevDevice *device);
++
+ gboolean meta_is_udev_device_disable_client_modifiers (GUdevDevice *device);
+ 
+ gboolean meta_is_udev_device_ignore (GUdevDevice *device);
+-- 
+2.37.3
+
+
+From b8233f12bd795c281ef70fe6e756f04c2ca94b6a Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Fri, 10 Jun 2022 19:45:47 +0300
+Subject: [PATCH 15/19] output/kms: Allow setting the VRR mode of an output
+
+Add a function to check if an output is capable of VRR, a function to
+check if VRR is configured to be allowed on the output and a function
+to set the VRR mode on the CRTC of a given output.
+
+An output is considered capable of variable refresh rate when its
+connector supports it, but only if it isn't disabled for the GPU.
+---
+ src/backends/meta-monitor-manager-private.h |  1 +
+ src/backends/meta-output.c                  | 21 ++++++++++++++-
+ src/backends/meta-output.h                  |  7 +++++
+ src/backends/native/meta-output-kms.c       | 29 +++++++++++++++++++++
+ src/backends/native/meta-output-kms.h       |  3 +++
+ 5 files changed, 60 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-monitor-manager-private.h b/src/backends/meta-monitor-manager-private.h
+index d6a92bf2a..25afb3644 100644
+--- a/src/backends/meta-monitor-manager-private.h
++++ b/src/backends/meta-monitor-manager-private.h
+@@ -102,6 +102,7 @@ struct _MetaOutputAssignment
+   gboolean is_primary;
+   gboolean is_presentation;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+   gboolean has_max_bpc;
+   unsigned int max_bpc;
+ };
+diff --git a/src/backends/meta-output.c b/src/backends/meta-output.c
+index f8dd64fbe..df0ac3c10 100644
+--- a/src/backends/meta-output.c
++++ b/src/backends/meta-output.c
+@@ -55,6 +55,8 @@ typedef struct _MetaOutputPrivate
+ 
+   gboolean is_underscanning;
+ 
++  gboolean is_vrr_allowed;
++  
+   gboolean has_max_bpc;
+   unsigned int max_bpc;
+ 
+@@ -182,6 +184,22 @@ meta_output_is_underscanning (MetaOutput *output)
+   return priv->is_underscanning;
+ }
+ 
++gboolean
++meta_output_is_vrr_capable (MetaOutput *output)
++{
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_output_is_vrr_allowed (MetaOutput *output)
++{
++  MetaOutputPrivate *priv = meta_output_get_instance_private (output);
++
++  return priv->is_vrr_allowed;
++}
++
+ gboolean
+ meta_output_get_max_bpc (MetaOutput   *output,
+                          unsigned int *max_bpc)
+@@ -252,7 +270,8 @@ meta_output_assign_crtc (MetaOutput                 *output,
+   priv->is_primary = output_assignment->is_primary;
+   priv->is_presentation = output_assignment->is_presentation;
+   priv->is_underscanning = output_assignment->is_underscanning;
+-
++  priv->is_vrr_allowed = output_assignment->is_vrr_allowed;
++  
+   priv->has_max_bpc = output_assignment->has_max_bpc;
+   if (priv->has_max_bpc)
+     priv->max_bpc = output_assignment->max_bpc;
+diff --git a/src/backends/meta-output.h b/src/backends/meta-output.h
+index bdaf2ed49..37169f3b9 100644
+--- a/src/backends/meta-output.h
++++ b/src/backends/meta-output.h
+@@ -114,6 +114,8 @@ typedef struct _MetaOutputInfo
+   gboolean supports_underscanning;
+   gboolean supports_color_transform;
+ 
++  gboolean vrr_capable;
++  
+   unsigned int max_bpc_min;
+   unsigned int max_bpc_max;
+ 
+@@ -192,6 +194,11 @@ gboolean meta_output_is_presentation (MetaOutput *output);
+ META_EXPORT_TEST
+ gboolean meta_output_is_underscanning (MetaOutput *output);
+ 
++gboolean meta_output_is_vrr_capable (MetaOutput *output);
++
++META_EXPORT_TEST
++gboolean meta_output_is_vrr_allowed (MetaOutput *output);
++
+ META_EXPORT_TEST
+ gboolean meta_output_get_max_bpc (MetaOutput   *output,
+                                   unsigned int *max_bpc);
+diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
+index d002f1098..f8905e6ba 100644
+--- a/src/backends/native/meta-output-kms.c
++++ b/src/backends/native/meta-output-kms.c
+@@ -97,6 +97,32 @@ meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+     }
+ }
+ 
++void
++meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                              gboolean       enabled)
++{
++  MetaOutput *output = META_OUTPUT (output_kms);
++  const MetaOutputInfo *output_info = meta_output_get_info (output);
++  MetaCrtc *crtc;
++  MetaKmsCrtc *kms_crtc;
++  MetaKmsDevice *kms_device;
++  MetaKms *kms;
++  MetaKmsUpdate *kms_update;
++
++  g_assert (output_info->vrr_capable);
++
++  crtc = meta_output_get_assigned_crtc (output);
++  kms_crtc = meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (crtc));
++  kms_device = meta_kms_crtc_get_device (kms_crtc);
++  kms = meta_kms_device_get_kms (kms_device);
++
++  kms_update = meta_kms_ensure_pending_update (kms, kms_device);
++
++  meta_kms_update_set_vrr_mode (kms_update,
++                                kms_crtc,
++                                enabled);
++}
++
+ void
+ meta_output_kms_set_max_bpc (MetaOutputKms *output_kms,
+                              MetaKmsUpdate *kms_update)
+@@ -476,6 +502,9 @@ meta_output_kms_new (MetaGpuKms        *gpu_kms,
+   output_info->supports_underscanning =
+     meta_kms_connector_is_underscanning_supported (kms_connector);
+ 
++  output_info->vrr_capable = (connector_state->vrr_capable &&
++                              !meta_gpu_kms_disable_vrr (gpu_kms));
++
+   max_bpc_range = meta_kms_connector_get_max_bpc (kms_connector);
+   if (max_bpc_range)
+     {
+diff --git a/src/backends/native/meta-output-kms.h b/src/backends/native/meta-output-kms.h
+index 1e35dbb17..ef18b54e8 100644
+--- a/src/backends/native/meta-output-kms.h
++++ b/src/backends/native/meta-output-kms.h
+@@ -40,6 +40,9 @@ void meta_output_kms_set_power_save_mode (MetaOutputKms *output_kms,
+ void meta_output_kms_set_underscan (MetaOutputKms *output_kms,
+                                     MetaKmsUpdate *kms_update);
+ 
++void meta_output_kms_set_vrr_mode (MetaOutputKms *output_kms,
++                                   gboolean       enabled);
++
+ void meta_output_kms_set_max_bpc (MetaOutputKms *output_kms,
+                                   MetaKmsUpdate *kms_update);
+ 
+-- 
+2.37.3
+
+
+From 0bccc41fdbdc3857b50f9f335b27f3e937384a64 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 17 Mar 2020 20:57:41 +0200
+Subject: [PATCH 16/19] monitor: Allow checking the state of variable refresh
+ rate
+
+A monitor is considered to have variable refresh rate support if its
+main output supports it.
+---
+ src/backends/meta-monitor.c | 19 +++++++++++++++++++
+ src/backends/meta-monitor.h |  4 ++++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
+index e9ea57a3b..e2aa8ec88 100644
+--- a/src/backends/meta-monitor.c
++++ b/src/backends/meta-monitor.c
+@@ -372,6 +372,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
+   return meta_output_is_underscanning (output);
+ }
+ 
++gboolean
++meta_monitor_is_vrr_capable (MetaMonitor *monitor)
++{
++  const MetaOutputInfo *output_info =
++    meta_monitor_get_main_output_info (monitor);
++
++  return output_info->vrr_capable;
++}
++
++gboolean
++meta_monitor_is_vrr_allowed (MetaMonitor *monitor)
++{
++  MetaOutput *output;
++
++  output = meta_monitor_get_main_output (monitor);
++
++  return meta_output_is_vrr_allowed (output);
++}
++
+ gboolean
+ meta_monitor_get_max_bpc (MetaMonitor  *monitor,
+                           unsigned int *max_bpc)
+diff --git a/src/backends/meta-monitor.h b/src/backends/meta-monitor.h
+index 387938b3b..35bcfc604 100644
+--- a/src/backends/meta-monitor.h
++++ b/src/backends/meta-monitor.h
+@@ -120,6 +120,10 @@ gboolean meta_monitor_supports_color_transform (MetaMonitor *monitor);
+ 
+ gboolean meta_monitor_is_underscanning (MetaMonitor *monitor);
+ 
++gboolean meta_monitor_is_vrr_capable (MetaMonitor *monitor);
++
++gboolean meta_monitor_is_vrr_allowed (MetaMonitor *monitor);
++
+ gboolean meta_monitor_get_max_bpc (MetaMonitor  *monitor,
+                                    unsigned int *max_bpc);
+ 
+-- 
+2.37.3
+
+
+From e8291032468badbd82a47d8976cacfe3dc88baf4 Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Tue, 17 Mar 2020 20:52:16 +0200
+Subject: [PATCH 17/19] monitor-manager: Add variable refresh rate
+ configuration
+
+This allows enabling variable refresh rate on monitors that support it.
+
+The configuration is persistent via monitors.xml and exposed in
+DisplayConfig to be managed through DBus.
+---
+ .../org.gnome.Mutter.DisplayConfig.xml        |   7 +
+ src/backends/meta-monitor-config-manager.c    |   5 +-
+ src/backends/meta-monitor-config-manager.h    |   1 +
+ src/backends/meta-monitor-config-store.c      |  30 +++
+ src/backends/meta-monitor-manager.c           |  27 ++-
+ src/tests/meta-monitor-test-utils.c           |   4 +
+ src/tests/meta-monitor-test-utils.h           |   2 +
+ src/tests/monitor-configs/vrr-allowed.xml     |  23 +++
+ src/tests/monitor-store-unit-tests.c          |  51 +++++
+ src/tests/monitor-unit-tests.c                | 194 ++++++++++++++++++
+ 10 files changed, 342 insertions(+), 2 deletions(-)
+ create mode 100644 src/tests/monitor-configs/vrr-allowed.xml
+
+diff --git a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+index af78ec051..23ebb7720 100644
+--- a/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
++++ b/data/dbus-interfaces/org.gnome.Mutter.DisplayConfig.xml
+@@ -343,6 +343,10 @@
+ 	    - "is-underscanning" (b): whether underscanning is enabled
+ 				      (absence of this means underscanning
+ 				      not being supported)
++	    - "is-vrr-allowed" (b): whether variable refresh rate is allowed
++	                            (absence of this means variable refresh
++	                            rate not being supported)
++
+ 	    - "max-screen-size" (ii): the maximum size a screen may have
+ 				      (absence of this means unlimited screen
+ 				      size)
+@@ -461,6 +465,9 @@
+ 	        - "enable_underscanning" (b): enable monitor underscanning;
+ 					      may only be set when underscanning
+ 					      is supported (see GetCurrentState).
++	        - "allow_vrr" (b): allow variable refresh rate; may only be set
++	                           when variable refresh rate is supported (see
++	                           GetCurrentState).
+ 
+ 	@properties may effect the global monitor configuration state. Possible
+ 	properties are:
+diff --git a/src/backends/meta-monitor-config-manager.c b/src/backends/meta-monitor-config-manager.c
+index bdafba478..a4c4974c0 100644
+--- a/src/backends/meta-monitor-config-manager.c
++++ b/src/backends/meta-monitor-config-manager.c
+@@ -287,6 +287,7 @@ assign_monitor_crtc (MetaMonitor         *monitor,
+     .is_primary = assign_output_as_primary,
+     .is_presentation = assign_output_as_presentation,
+     .is_underscanning = data->monitor_config->enable_underscanning,
++    .is_vrr_allowed = data->monitor_config->allow_vrr,
+     .has_max_bpc = data->monitor_config->has_max_bpc,
+     .max_bpc = data->monitor_config->max_bpc
+   };
+@@ -693,7 +694,8 @@ create_monitor_config (MetaMonitor     *monitor,
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = meta_monitor_spec_clone (monitor_spec),
+     .mode_spec = g_memdup2 (mode_spec, sizeof (MetaMonitorModeSpec)),
+-    .enable_underscanning = meta_monitor_is_underscanning (monitor)
++    .enable_underscanning = meta_monitor_is_underscanning (monitor),
++    .allow_vrr = meta_monitor_is_vrr_allowed (monitor),
+   };
+ 
+   monitor_config->has_max_bpc =
+@@ -1047,6 +1049,7 @@ clone_monitor_config_list (GList *monitor_configs_in)
+         .mode_spec = g_memdup2 (monitor_config_in->mode_spec,
+                                 sizeof (MetaMonitorModeSpec)),
+         .enable_underscanning = monitor_config_in->enable_underscanning,
++        .allow_vrr = monitor_config_in->allow_vrr,
+         .has_max_bpc = monitor_config_in->has_max_bpc,
+         .max_bpc = monitor_config_in->max_bpc
+       };
+diff --git a/src/backends/meta-monitor-config-manager.h b/src/backends/meta-monitor-config-manager.h
+index bf45b2327..5d6ed80b1 100644
+--- a/src/backends/meta-monitor-config-manager.h
++++ b/src/backends/meta-monitor-config-manager.h
+@@ -34,6 +34,7 @@ typedef struct _MetaMonitorConfig
+   MetaMonitorSpec *monitor_spec;
+   MetaMonitorModeSpec *mode_spec;
+   gboolean enable_underscanning;
++  gboolean allow_vrr;
+   gboolean has_max_bpc;
+   unsigned int max_bpc;
+ } MetaMonitorConfig;
+diff --git a/src/backends/meta-monitor-config-store.c b/src/backends/meta-monitor-config-store.c
+index 7650334ed..0d939734a 100644
+--- a/src/backends/meta-monitor-config-store.c
++++ b/src/backends/meta-monitor-config-store.c
+@@ -167,6 +167,7 @@ typedef enum
+   STATE_MONITOR_MODE_RATE,
+   STATE_MONITOR_MODE_FLAG,
+   STATE_MONITOR_UNDERSCANNING,
++  STATE_MONITOR_VRR_ALLOWED,
+   STATE_MONITOR_MAXBPC,
+   STATE_DISABLED,
+   STATE_POLICY,
+@@ -452,6 +453,10 @@ handle_start_element (GMarkupParseContext  *context,
+           {
+             parser->state = STATE_MONITOR_UNDERSCANNING;
+           }
++        else if (g_str_equal (element_name, "vrr-allowed"))
++          {
++            parser->state = STATE_MONITOR_VRR_ALLOWED;
++          }
+         else if (g_str_equal (element_name, "maxbpc"))
+           {
+             parser->state = STATE_MONITOR_MAXBPC;
+@@ -549,6 +554,13 @@ handle_start_element (GMarkupParseContext  *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
++                     "Invalid element '%s' under vrr-allowed", element_name);
++        return;
++      }
++
+     case STATE_MONITOR_MAXBPC:
+       {
+         g_set_error (error, G_MARKUP_ERROR, G_MARKUP_ERROR_UNKNOWN_ELEMENT,
+@@ -830,6 +842,14 @@ handle_end_element (GMarkupParseContext  *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        g_assert (g_str_equal (element_name, "vrr-allowed"));
++
++        parser->state = STATE_MONITOR;
++        return;
++      }
++
+     case STATE_MONITOR_MAXBPC:
+       {
+         g_assert (g_str_equal (element_name, "maxbpc"));
+@@ -1329,6 +1349,14 @@ handle_text (GMarkupParseContext *context,
+         return;
+       }
+ 
++    case STATE_MONITOR_VRR_ALLOWED:
++      {
++        read_bool (text, text_len,
++                   &parser->current_monitor_config->allow_vrr,
++                   error);
++        return;
++      }
++
+     case STATE_MONITOR_MAXBPC:
+       {
+         int signed_max_bpc;
+@@ -1527,6 +1555,8 @@ append_monitors (GString *buffer,
+       g_string_append (buffer, "        </mode>\n");
+       if (monitor_config->enable_underscanning)
+         g_string_append (buffer, "        <underscanning>yes</underscanning>\n");
++      if (monitor_config->allow_vrr)
++        g_string_append (buffer, "        <vrr-allowed>yes</vrr-allowed>\n");
+ 
+       if (monitor_config->has_max_bpc)
+         {
+diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
+index a60518850..6defff4da 100644
+--- a/src/backends/meta-monitor-manager.c
++++ b/src/backends/meta-monitor-manager.c
+@@ -2023,6 +2023,15 @@ meta_monitor_manager_handle_get_current_state (MetaDBusDisplayConfig *skeleton,
+                                  g_variant_new_boolean (is_underscanning));
+         }
+ 
++      if (meta_monitor_is_vrr_capable (monitor))
++        {
++          gboolean vrr_allowed = meta_monitor_is_vrr_allowed (monitor);
++
++          g_variant_builder_add (&monitor_properties_builder, "{sv}",
++                                 "is-vrr-allowed",
++                                 g_variant_new_boolean (vrr_allowed));
++        }
++
+       is_builtin = meta_monitor_is_laptop_panel (monitor);
+       g_variant_builder_add (&monitor_properties_builder, "{sv}",
+                              "is-builtin",
+@@ -2342,6 +2351,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+   g_autoptr (GVariant) properties_variant = NULL;
+   gboolean enable_underscanning = FALSE;
+   gboolean set_underscanning = FALSE;
++  gboolean allow_vrr = FALSE;
++  gboolean set_allow_vrr = FALSE;
+ 
+   g_variant_get (monitor_config_variant, "(ss@a{sv})",
+                  &connector,
+@@ -2377,6 +2388,19 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+         }
+     }
+ 
++  set_allow_vrr =
++    g_variant_lookup (properties_variant, "allow_vrr", "b",
++                      &allow_vrr);
++  if (set_allow_vrr)
++    {
++      if (allow_vrr && !meta_monitor_is_vrr_capable (monitor))
++        {
++          g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
++                       "Variable refresh rate requested but unsupported");
++          return NULL;
++        }
++    }
++
+   monitor_spec = meta_monitor_spec_clone (meta_monitor_get_spec (monitor));
+ 
+   monitor_mode_spec = g_new0 (MetaMonitorModeSpec, 1);
+@@ -2386,7 +2410,8 @@ create_monitor_config_from_variant (MetaMonitorManager *manager,
+   *monitor_config = (MetaMonitorConfig) {
+     .monitor_spec = monitor_spec,
+     .mode_spec = monitor_mode_spec,
+-    .enable_underscanning = enable_underscanning
++    .enable_underscanning = enable_underscanning,
++    .allow_vrr = allow_vrr,
+   };
+ 
+   return monitor_config;
+diff --git a/src/tests/meta-monitor-test-utils.c b/src/tests/meta-monitor-test-utils.c
+index 8480e4a62..c58991a52 100644
+--- a/src/tests/meta-monitor-test-utils.c
++++ b/src/tests/meta-monitor-test-utils.c
+@@ -393,6 +393,9 @@ meta_check_monitor_configuration (MetaContext           *context,
+           g_assert_cmpint (expect->monitors[i].is_underscanning,
+                            ==,
+                            meta_output_is_underscanning (output));
++          g_assert_cmpint (expect->monitors[i].is_vrr_allowed,
++                           ==,
++                           meta_output_is_vrr_allowed (output));
+ 
+           if (!meta_output_get_max_bpc (output, &output_max_bpc))
+             output_max_bpc = 0;
+@@ -795,6 +798,7 @@ meta_create_monitor_test_setup (MetaBackend          *backend,
+ 
+           output_assignment = (MetaOutputAssignment) {
+             .is_underscanning = setup->outputs[i].is_underscanning,
++            .is_vrr_allowed = setup->outputs[i].is_vrr_allowed,
+             .has_max_bpc = !!setup->outputs[i].max_bpc,
+             .max_bpc = setup->outputs[i].max_bpc,
+           };
+diff --git a/src/tests/meta-monitor-test-utils.h b/src/tests/meta-monitor-test-utils.h
+index 278a089fa..88573ad7d 100644
+--- a/src/tests/meta-monitor-test-utils.h
++++ b/src/tests/meta-monitor-test-utils.h
+@@ -106,6 +106,7 @@ typedef struct _MonitorTestCaseOutput
+   float scale;
+   gboolean is_laptop_panel;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+   unsigned int max_bpc;
+   const char *serial;
+   MetaMonitorTransform panel_orientation_transform;
+@@ -161,6 +162,7 @@ typedef struct _MonitorTestCaseMonitor
+   int width_mm;
+   int height_mm;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+   unsigned int max_bpc;
+ } MonitorTestCaseMonitor;
+ 
+diff --git a/src/tests/monitor-configs/vrr-allowed.xml b/src/tests/monitor-configs/vrr-allowed.xml
+new file mode 100644
+index 000000000..36846e0b2
+--- /dev/null
++++ b/src/tests/monitor-configs/vrr-allowed.xml
+@@ -0,0 +1,23 @@
++<monitors version="2">
++  <configuration>
++    <logicalmonitor>
++      <x>0</x>
++      <y>0</y>
++      <primary>yes</primary>
++      <monitor>
++	<monitorspec>
++	  <connector>DP-1</connector>
++	  <vendor>MetaProduct&apos;s Inc.</vendor>
++	  <product>MetaMonitor</product>
++	  <serial>0x123456</serial>
++	</monitorspec>
++	<mode>
++	  <width>1024</width>
++	  <height>768</height>
++	  <rate>60.000495910644531</rate>
++	</mode>
++	<vrr-allowed>yes</vrr-allowed>
++      </monitor>
++    </logicalmonitor>
++  </configuration>
++</monitors>
+diff --git a/src/tests/monitor-store-unit-tests.c b/src/tests/monitor-store-unit-tests.c
+index 18622f20c..3b674138d 100644
+--- a/src/tests/monitor-store-unit-tests.c
++++ b/src/tests/monitor-store-unit-tests.c
+@@ -48,6 +48,7 @@ typedef struct _MonitorStoreTestCaseMonitor
+   const char *serial;
+   MonitorStoreTestCaseMonitorMode mode;
+   gboolean is_underscanning;
++  gboolean is_vrr_allowed;
+   unsigned int max_bpc;
+ } MonitorStoreTestCaseMonitor;
+ 
+@@ -197,6 +198,9 @@ check_monitor_store_configuration (MetaMonitorConfigStore        *config_store,
+           g_assert_cmpint (monitor_config->enable_underscanning,
+                            ==,
+                            test_monitor->is_underscanning);
++          g_assert_cmpint (monitor_config->allow_vrr,
++                           ==,
++                           test_monitor->is_vrr_allowed);
+           g_assert_cmpint (monitor_config->has_max_bpc,
+                            ==,
+                            !!test_monitor->max_bpc);
+@@ -453,6 +457,51 @@ meta_test_monitor_store_underscanning (void)
+   check_monitor_store_configurations (&expect);
+ }
+ 
++static void
++meta_test_monitor_store_vrr_allowed (void)
++{
++  MonitorStoreTestExpect expect = {
++    .configurations = {
++      {
++        .logical_monitors = {
++          {
++            .layout = {
++              .x = 0,
++              .y = 0,
++              .width = 1024,
++              .height = 768
++            },
++            .scale = 1,
++            .is_primary = TRUE,
++            .is_presentation = FALSE,
++            .monitors = {
++              {
++                .connector = "DP-1",
++                .vendor = "MetaProduct's Inc.",
++                .product = "MetaMonitor",
++                .serial = "0x123456",
++                .is_vrr_allowed = TRUE,
++                .mode = {
++                  .width = 1024,
++                  .height = 768,
++                  .refresh_rate = 60.000495910644531
++                }
++              }
++            },
++            .n_monitors = 1,
++          },
++        },
++        .n_logical_monitors = 1
++      }
++    },
++    .n_configurations = 1
++  };
++
++  meta_set_custom_monitor_config (test_context, "vrr-allowed.xml");
++
++  check_monitor_store_configurations (&expect);
++}
++
+ static void
+ meta_test_monitor_store_max_bpc (void)
+ {
+@@ -1065,6 +1114,8 @@ init_monitor_store_tests (void)
+                    meta_test_monitor_store_primary);
+   g_test_add_func ("/backends/monitor-store/underscanning",
+                    meta_test_monitor_store_underscanning);
++  g_test_add_func ("/backends/monitor-store/vrr-allowed",
++                   meta_test_monitor_store_vrr_allowed);
+   g_test_add_func ("/backends/monitor-store/max-bpc",
+                    meta_test_monitor_store_max_bpc);
+   g_test_add_func ("/backends/monitor-store/scale",
+diff --git a/src/tests/monitor-unit-tests.c b/src/tests/monitor-unit-tests.c
+index b9454f28b..224828217 100644
+--- a/src/tests/monitor-unit-tests.c
++++ b/src/tests/monitor-unit-tests.c
+@@ -3281,6 +3281,100 @@ meta_test_monitor_underscanning_config (void)
+   check_monitor_test_clients_state ();
+ }
+ 
++static void
++meta_test_monitor_vrr_allowed_config (void)
++{
++  MonitorTestCase test_case = {
++    .setup = {
++      .modes = {
++        {
++          .width = 1024,
++          .height = 768,
++          .refresh_rate = 60.0
++        }
++      },
++      .n_modes = 1,
++      .outputs = {
++        {
++          .crtc = 0,
++          .modes = { 0 },
++          .n_modes = 1,
++          .preferred_mode = 0,
++          .possible_crtcs = { 0 },
++          .n_possible_crtcs = 1,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0
++        }
++      },
++      .n_crtcs = 1
++    },
++
++    .expect = {
++      .monitors = {
++        {
++          .outputs = { 0 },
++          .n_outputs = 1,
++          .modes = {
++            {
++              .width = 1024,
++              .height = 768,
++              .refresh_rate = 60.0,
++              .crtc_modes = {
++                {
++                  .output = 0,
++                  .crtc_mode = 0
++                }
++              }
++            }
++          },
++          .n_modes = 1,
++          .current_mode = 0,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_monitors = 1,
++      .logical_monitors = {
++        {
++          .monitors = { 0 },
++          .n_monitors = 1,
++          .layout = { .x = 0, .y = 0, .width = 1024, .height = 768 },
++          .scale = 1
++        }
++      },
++      .n_logical_monitors = 1,
++      .primary_logical_monitor = 0,
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0,
++        }
++      },
++      .n_crtcs = 1,
++      .screen_width = 1024,
++      .screen_height = 768
++    }
++  };
++  MetaMonitorTestSetup *test_setup;
++
++  test_setup = meta_create_monitor_test_setup (test_backend,
++                                               &test_case.setup,
++                                               MONITOR_TEST_FLAG_NO_STORED);
++  emulate_hotplug (test_setup);
++  META_TEST_LOG_CALL ("Checking monitor configuration",
++                      meta_check_monitor_configuration (test_context,
++                                                        &test_case.expect));
++  check_monitor_test_clients_state ();
++}
++
+ static void
+ meta_test_monitor_max_bpc_config (void)
+ {
+@@ -5876,6 +5970,102 @@ meta_test_monitor_custom_underscanning_config (void)
+   check_monitor_test_clients_state ();
+ }
+ 
++static void
++meta_test_monitor_custom_vrr_allowed_config (void)
++{
++  MonitorTestCase test_case = {
++    .setup = {
++      .modes = {
++        {
++          .width = 1024,
++          .height = 768,
++          .refresh_rate = 60.000495910644531
++        }
++      },
++      .n_modes = 1,
++      .outputs = {
++        {
++          .crtc = 0,
++          .modes = { 0 },
++          .n_modes = 1,
++          .preferred_mode = 0,
++          .possible_crtcs = { 0 },
++          .n_possible_crtcs = 1,
++          .width_mm = 222,
++          .height_mm = 125
++        },
++      },
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0
++        },
++      },
++      .n_crtcs = 1
++    },
++
++    .expect = {
++      .monitors = {
++        {
++          .outputs = { 0 },
++          .n_outputs = 1,
++          .modes = {
++            {
++              .width = 1024,
++              .height = 768,
++              .refresh_rate = 60.000495910644531,
++              .crtc_modes = {
++                {
++                  .output = 0,
++                  .crtc_mode = 0
++                }
++              }
++            }
++          },
++          .n_modes = 1,
++          .current_mode = 0,
++          .width_mm = 222,
++          .height_mm = 125,
++          .is_vrr_allowed = TRUE,
++        }
++      },
++      .n_monitors = 1,
++      .logical_monitors = {
++        {
++          .monitors = { 0 },
++          .n_monitors = 1,
++          .layout = { .x = 0, .y = 0, .width = 1024, .height = 768 },
++          .scale = 1
++        }
++      },
++      .n_logical_monitors = 1,
++      .primary_logical_monitor = 0,
++      .n_outputs = 1,
++      .crtcs = {
++        {
++          .current_mode = 0,
++        }
++      },
++      .n_crtcs = 1,
++      .n_tiled_monitors = 0,
++      .screen_width = 1024,
++      .screen_height = 768
++    }
++  };
++  MetaMonitorTestSetup *test_setup;
++
++  test_setup = meta_create_monitor_test_setup (test_backend,
++                                               &test_case.setup,
++                                               MONITOR_TEST_FLAG_NONE);
++  meta_set_custom_monitor_config (test_context, "vrr-allowed.xml");
++  emulate_hotplug (test_setup);
++
++  META_TEST_LOG_CALL ("Checking monitor configuration",
++                      meta_check_monitor_configuration (test_context,
++                                                        &test_case.expect));
++  check_monitor_test_clients_state ();
++}
++
+ static void
+ meta_test_monitor_custom_scale_config (void)
+ {
+@@ -9503,6 +9693,8 @@ init_monitor_tests (void)
+                     meta_test_monitor_no_outputs);
+   add_monitor_test ("/backends/monitor/underscanning-config",
+                     meta_test_monitor_underscanning_config);
++  add_monitor_test ("/backends/monitor/vrr-allowed-config",
++                    meta_test_monitor_vrr_allowed_config);
+   add_monitor_test ("/backends/monitor/max-bpc-config",
+                     meta_test_monitor_max_bpc_config);
+   add_monitor_test ("/backends/monitor/preferred-non-first-mode",
+@@ -9537,6 +9729,8 @@ init_monitor_tests (void)
+                     meta_test_monitor_custom_primary_config);
+   add_monitor_test ("/backends/monitor/custom/underscanning-config",
+                     meta_test_monitor_custom_underscanning_config);
++  add_monitor_test ("/backends/monitor/custom/vrr-allowed-config",
++                    meta_test_monitor_custom_vrr_allowed_config);
+   add_monitor_test ("/backends/monitor/custom/scale-config",
+                     meta_test_monitor_custom_scale_config);
+   add_monitor_test ("/backends/monitor/custom/fractional-scale-config",
+-- 
+2.37.3
+
+
+From 0d96d2df7f2ad5ace16a02ed8f95a29ccb89676f Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Sat, 4 Jul 2020 01:03:19 +0300
+Subject: [PATCH 18/19] renderer-view: Keep track of the associated MetaOutput
+
+It will be used in a following commit to perform operations in the
+context of a MetaOutput from the MetaRendererViewNative.
+---
+ src/backends/meta-renderer-view.c             | 27 +++++++++++++++++++
+ src/backends/meta-renderer-view.h             |  2 ++
+ src/backends/native/meta-renderer-native.c    |  1 +
+ .../x11/nested/meta-renderer-x11-nested.c     |  1 +
+ 4 files changed, 31 insertions(+)
+
+diff --git a/src/backends/meta-renderer-view.c b/src/backends/meta-renderer-view.c
+index e6d67aff1..c5412320f 100644
+--- a/src/backends/meta-renderer-view.c
++++ b/src/backends/meta-renderer-view.c
+@@ -33,6 +33,7 @@
+ #include "backends/meta-renderer-view.h"
+ 
+ #include "backends/meta-crtc.h"
++#include "backends/meta-output.h"
+ #include "backends/meta-renderer.h"
+ #include "clutter/clutter-mutter.h"
+ #include "compositor/region-utils.h"
+@@ -43,6 +44,7 @@ enum
+ 
+   PROP_TRANSFORM,
+   PROP_CRTC,
++  PROP_OUTPUT,
+ 
+   PROP_LAST
+ };
+@@ -54,6 +56,7 @@ typedef struct _MetaRendererViewPrivate
+   MetaMonitorTransform transform;
+ 
+   MetaCrtc *crtc;
++  MetaOutput *output;
+ } MetaRendererViewPrivate;
+ 
+ G_DEFINE_TYPE_WITH_PRIVATE (MetaRendererView, meta_renderer_view,
+@@ -77,6 +80,15 @@ meta_renderer_view_get_crtc (MetaRendererView *view)
+   return priv->crtc;
+ }
+ 
++MetaOutput *
++meta_renderer_view_get_output (MetaRendererView *view)
++{
++  MetaRendererViewPrivate *priv =
++    meta_renderer_view_get_instance_private (view);
++
++  return priv->output;
++}
++
+ static void
+ meta_renderer_view_get_offscreen_transformation_matrix (ClutterStageView  *view,
+                                                         graphene_matrix_t *matrix)
+@@ -150,6 +162,9 @@ meta_renderer_view_get_property (GObject    *object,
+     case PROP_CRTC:
+       g_value_set_object (value, priv->crtc);
+       break;
++    case PROP_OUTPUT:
++      g_value_set_object (value, priv->output);
++      break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -174,6 +189,9 @@ meta_renderer_view_set_property (GObject      *object,
+     case PROP_CRTC:
+       priv->crtc = g_value_get_object (value);
+       break;
++    case PROP_OUTPUT:
++      priv->output = g_value_get_object (value);
++      break;
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -221,5 +239,14 @@ meta_renderer_view_class_init (MetaRendererViewClass *klass)
+                          G_PARAM_CONSTRUCT_ONLY |
+                          G_PARAM_STATIC_STRINGS);
+ 
++  obj_props[PROP_OUTPUT] =
++    g_param_spec_object ("output",
++                         "MetaOutput",
++                         "MetaOutput",
++                         META_TYPE_OUTPUT,
++                         G_PARAM_READWRITE |
++                         G_PARAM_CONSTRUCT_ONLY |
++                         G_PARAM_STATIC_STRINGS);
++
+   g_object_class_install_properties (object_class, PROP_LAST, obj_props);
+ }
+diff --git a/src/backends/meta-renderer-view.h b/src/backends/meta-renderer-view.h
+index b6247f38c..355e75e96 100644
+--- a/src/backends/meta-renderer-view.h
++++ b/src/backends/meta-renderer-view.h
+@@ -36,4 +36,6 @@ MetaMonitorTransform meta_renderer_view_get_transform (MetaRendererView *view);
+ 
+ MetaCrtc *meta_renderer_view_get_crtc (MetaRendererView *view);
+ 
++MetaOutput *meta_renderer_view_get_output (MetaRendererView *view);
++
+ #endif /* META_RENDERER_VIEW_H */
+diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
+index f89b9c63f..6e81a82dc 100644
+--- a/src/backends/native/meta-renderer-native.c
++++ b/src/backends/native/meta-renderer-native.c
+@@ -1374,6 +1374,7 @@ meta_renderer_native_create_view (MetaRenderer       *renderer,
+                               "stage", meta_backend_get_stage (backend),
+                               "layout", &view_layout,
+                               "crtc", crtc,
++                              "output", output,
+                               "scale", scale,
+                               "framebuffer", framebuffer,
+                               "offscreen", offscreen,
+diff --git a/src/backends/x11/nested/meta-renderer-x11-nested.c b/src/backends/x11/nested/meta-renderer-x11-nested.c
+index 7c1a4facf..2f9eca5ba 100644
+--- a/src/backends/x11/nested/meta-renderer-x11-nested.c
++++ b/src/backends/x11/nested/meta-renderer-x11-nested.c
+@@ -223,6 +223,7 @@ meta_renderer_x11_nested_create_view (MetaRenderer       *renderer,
+                        "stage", meta_backend_get_stage (backend),
+                        "layout", &view_layout,
+                        "crtc", crtc,
++                       "output", output,
+                        "refresh-rate", mode_info->refresh_rate,
+                        "framebuffer", COGL_FRAMEBUFFER (fake_onscreen),
+                        "offscreen", COGL_FRAMEBUFFER (offscreen),
+-- 
+2.37.3
+
+
+From 79dff02c73499b224ebf87eb034149447e796d8b Mon Sep 17 00:00:00 2001
+From: Dor Askayo <dor.askayo@gmail.com>
+Date: Fri, 10 Jun 2022 21:12:49 +0300
+Subject: [PATCH 19/19] renderer-view/native: Enable VRR and actor sync when
+ applicable
+
+If an actor is tracked for synchronization and VRR is configured to
+be enabled for the output, set the synchronization mode to
+META_FRAME_SYNC_MODE_ENABLED.
+
+If an actor isn't tracked for synchronization or VRR is not configured
+to be enabled for the output, set the synchronization mode to
+META_FRAME_SYNC_MODE_DISABLED.
+
+When the synchronization mode is set to META_FRAME_SYNC_MODE_ENABLED,
+enable the VRR mode on the output, and when it's set to
+META_FRAME_SYNC_MODE_DISABLED, disable it.
+
+Synchronizing frame clock updates with actor updates on the stage view
+effectively communicates the rate at which the actor updates with the
+DRM driver. Combined with enabling VRR on the CRTC, it allows the DRM
+driver to adjust the monitor's refresh rate to the rate at which the
+actor updates.
+---
+ .../native/meta-renderer-view-native.c        | 27 ++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/native/meta-renderer-view-native.c b/src/backends/native/meta-renderer-view-native.c
+index c2b38e980..d3abcd021 100644
+--- a/src/backends/native/meta-renderer-view-native.c
++++ b/src/backends/native/meta-renderer-view-native.c
+@@ -24,6 +24,11 @@
+ 
+ #include "backends/native/meta-renderer-view-native.h"
+ 
++#include "backends/meta-output.h"
++#include "backends/native/meta-crtc-kms.h"
++#include "backends/native/meta-kms.h"
++#include "backends/native/meta-kms-device.h"
++#include "backends/native/meta-output-kms.h"
+ #include "clutter/clutter.h"
+ 
+ typedef enum _MetaFrameSyncMode
+@@ -112,20 +117,24 @@ meta_renderer_view_native_set_frame_sync_actor (MetaRendererViewNative *view_nat
+ 
+ static void
+ meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
++                                          MetaOutput             *output,
+                                           MetaFrameSyncMode       sync_mode)
+ {
+   ClutterFrameClock *frame_clock =
+     clutter_stage_view_get_frame_clock (CLUTTER_STAGE_VIEW (view_native));
++  MetaOutputKms *output_kms = META_OUTPUT_KMS (output);
+ 
+   switch (sync_mode)
+     {
+     case META_FRAME_SYNC_MODE_ENABLED:
+       clutter_frame_clock_set_mode (frame_clock,
+                                     CLUTTER_FRAME_CLOCK_MODE_VARIABLE);
++      meta_output_kms_set_vrr_mode (output_kms, TRUE);
+       break;
+     case META_FRAME_SYNC_MODE_DISABLED:
+       clutter_frame_clock_set_mode (frame_clock,
+                                     CLUTTER_FRAME_CLOCK_MODE_FIXED);
++      meta_output_kms_set_vrr_mode (output_kms, FALSE);
+       break;
+     case META_FRAME_SYNC_MODE_INIT:
+       g_assert_not_reached ();
+@@ -137,12 +146,21 @@ meta_renderer_view_native_set_frame_sync (MetaRendererViewNative *view_native,
+ static MetaFrameSyncMode
+ meta_renderer_view_native_get_applicable_sync_mode (MetaRendererViewNative *view_native)
+ {
+-  return META_FRAME_SYNC_MODE_DISABLED;
++  MetaRendererView *view = META_RENDERER_VIEW (view_native);
++  MetaOutput *output = meta_renderer_view_get_output (view);
++
++  if (view_native->frame_sync_actor != NULL &&
++      meta_output_is_vrr_allowed (output))
++    return META_FRAME_SYNC_MODE_ENABLED;
++  else
++    return META_FRAME_SYNC_MODE_DISABLED;
+ }
+ 
+ void
+ meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_native)
+ {
++  MetaRendererView *view;
++  MetaOutput *output;
+   MetaFrameSyncMode applicable_sync_mode;
+ 
+   if (G_LIKELY (!view_native->frame_sync_mode_update_queued))
+@@ -150,12 +168,19 @@ meta_renderer_view_native_maybe_set_frame_sync (MetaRendererViewNative *view_nat
+ 
+   view_native->frame_sync_mode_update_queued = FALSE;
+ 
++  view = META_RENDERER_VIEW (view_native);
++  output = meta_renderer_view_get_output (view);
++
++  if (!meta_output_is_vrr_capable (output))
++    return;
++
+   applicable_sync_mode =
+     meta_renderer_view_native_get_applicable_sync_mode (view_native);
+ 
+   if (applicable_sync_mode != view_native->frame_sync_mode)
+     {
+       meta_renderer_view_native_set_frame_sync (view_native,
++                                                output,
+                                                 applicable_sync_mode);
+     }
+ }
+-- 
+2.37.3
+
