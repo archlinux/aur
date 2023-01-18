@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 252.r61711.71eaa9291d
+	pkgver = 252.r61997.42c042cfd1
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -45,6 +45,7 @@ pkgbase = systemd-git
 	makedepends = libbpf
 	makedepends = clang
 	makedepends = llvm
+	options = strip
 	source = git+https://github.com/systemd/systemd
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -133,9 +134,9 @@ pkgname = systemd-git
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=252.r61711.71eaa9291d
-	provides = udev=252.r61711.71eaa9291d
-	provides = systemd=252.r61711.71eaa9291d
+	provides = systemd-tools=252.r61997.42c042cfd1
+	provides = udev=252.r61997.42c042cfd1
+	provides = systemd=252.r61997.42c042cfd1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -173,7 +174,7 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=252.r61711.71eaa9291d
+	provides = systemd-libs=252.r61997.42c042cfd1
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -184,7 +185,7 @@ pkgname = systemd-resolvconf-git
 	depends = systemd-git
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=252.r61711.71eaa9291d
+	provides = systemd-resolvconf=252.r61997.42c042cfd1
 	conflicts = openresolv
 	conflicts = systemd-resolvconf
 
@@ -192,6 +193,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=252.r61711.71eaa9291d
+	provides = systemd-sysvcompat=252.r61997.42c042cfd1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
