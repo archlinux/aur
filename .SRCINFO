@@ -1,6 +1,6 @@
 pkgbase = rivercarro
 	pkgdesc = A slightly modified version of rivertile layout generator for river.
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://sr.ht/~novakane/rivercarro
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rivercarro
 	depends = wayland
 	depends = wayland-protocols
 	conflicts = rivercarro-git
-	source = https://git.sr.ht/~novakane/rivercarro/refs/download/v0.1.4/rivercarro-v0.1.4.tar.gz
-	sha256sums = 14355e3ec3e917a83f02c5efb2e18285efd979038e9897dcc10efce2794cfc85
+	source = https://git.sr.ht/~novakane/rivercarro/refs/download/v0.2.0/rivercarro-v0.2.0.tar.gz
+	sha256sums = 6203d10b32ff2735783408cc1bc2ac8ff7b3ca94ed652952428dcf3dd7f86e17
 
 pkgname = rivercarro
