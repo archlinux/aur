@@ -1,4 +1,5 @@
 # Maintainer: 
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Yamada Hayao <development@fascode.net>
 
 pkgname="zorin-icon-themes"
