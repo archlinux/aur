@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=7.86.0
+pkgver=7.87.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -13,19 +13,18 @@ depends=('mingw-w64-crt'
          'mingw-w64-libpsl'
          'mingw-w64-libssh2'
          'mingw-w64-openssl'
+         'mingw-w64-libnghttp2'
          'mingw-w64-zlib')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0002-nghttp2-static.patch"
         "0003-libpsl-static-libs.patch"
-	"0004-more-static-fixes.patch"
-	"b7260c4fda95196b2fa16f32b5913f25323e5098.patch")
-sha256sums=('f5ca69db03eea17fa8705bdfb1a9f58d76a46c9010518109bb38f313137e0a28'
+	"0004-more-static-fixes.patch")
+sha256sums=('5d6e128761b7110946d1276aff6f0f266f2b726f5e619f7e0a057a474155f307'
             '3ee9c75a3046f86f91290c143170179230c9adc6eabfbb79eb26f708a165b719'
             '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad'
-            '590eb65e90e756eaad993d52a101f29091ada2c742c5a607684e88fc5c560d54'
-	    '702c3f11cecae2d8cfb3cbc3359c4059e5a87db3b29a93b599f0a83a6e490383')
+            '590eb65e90e756eaad993d52a101f29091ada2c742c5a607684e88fc5c560d54')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -34,14 +33,13 @@ prepare() {
   patch -Np1 -i "${srcdir}/0002-nghttp2-static.patch"
   patch -Np1 -i "${srcdir}/0003-libpsl-static-libs.patch"
   patch -Np1 -i "${srcdir}/0004-more-static-fixes.patch"
-  patch -Np1 -i "${srcdir}/b7260c4fda95196b2fa16f32b5913f25323e5098.patch"
   autoreconf -vfi
 }
 
 build() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
   for _arch in ${_architectures}; do
-    configure_args="--with-ssl --enable-ipv6 --with-libidn2 --with-libssh2 --without-ca-bundle --without-random --with-libpsl"
+    configure_args="--with-openssl --enable-ipv6 --with-libidn2 --with-libssh2 --without-ca-bundle --without-random --with-libpsl"
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-configure $configure_args \
       --enable-static --disable-shared ..
