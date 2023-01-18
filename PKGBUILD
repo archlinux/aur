@@ -4,7 +4,7 @@
 
 
 _cranname=formatR
-_cranver=1.13
+_cranver=1.14
 pkgname=r-${_cranname,,}
 pkgdesc="Format R Code Automatically"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -26,7 +26,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('ae9450e59ac59930a96835d7254d85f6456dc82b68a503f73cbe6add47dced2f114d5b45a508cfbd16ee1cdccc702217af8c926fb2c711d5a6aea4969084b3c4')
+b2sums=("3a232a3bb0cb1f1b3c587761d5f0992f2de3047a78181b285b52d9acaf5b5c448c91dc84da53c109a9dbdf302ec8da183997f7ef027927f852f8e68504637962")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
