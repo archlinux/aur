@@ -1,6 +1,6 @@
 pkgbase = obs-vban
 	pkgdesc = This plugin provides audio sources from VBAN, audio over UDP protocol
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/vban-audio-plugin.1623/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-vban
 	makedepends = cmake
 	depends = obs-studio>=28
 	options = debug
-	source = obs-vban-0.2.1.tar.gz::https://github.com/norihiro/obs-vban/archive/0.2.1.tar.gz
-	sha256sums = 2c340b4807950e26a69388c885ad2549d453ee31d39f6a6fc528a3bdb296e315
+	source = obs-vban-0.2.3.tar.gz::https://github.com/norihiro/obs-vban/archive/0.2.3.tar.gz
+	sha256sums = 975c9c7653de229d3bb8cb1ed1a6de7095bcdf6d31bcfe395d26fef91d38eb80
 
 pkgname = obs-vban

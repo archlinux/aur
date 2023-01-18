@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-vban
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="This plugin provides audio sources from VBAN, audio over UDP protocol"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("2c340b4807950e26a69388c885ad2549d453ee31d39f6a6fc528a3bdb296e315")
+sha256sums=("975c9c7653de229d3bb8cb1ed1a6de7095bcdf6d31bcfe395d26fef91d38eb80")
 
 build() {
   cd "$pkgname-$pkgver"
