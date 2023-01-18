@@ -9,6 +9,6 @@ pkgbase = appdir
 	makedepends = make
 	makedepends = cmake
 	source = appdir-0.1.0.tar.gz::https://github.com/Forty-Bot/appdir/archive/refs/tags/0.1.0.tar.gz
-	sha512sums = SKIP
+	sha1sums = ec762349b307d857527dcd723d7aea818f4883c0
 
 pkgname = appdir

@@ -9,7 +9,7 @@ arch=('any')
 license=('LGPL3')
 makedepends=('gcc' 'make' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Forty-Bot/appdir/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha1sums=('ec762349b307d857527dcd723d7aea818f4883c0')
 
 package() {
   cd $pkgname-$pkgver
