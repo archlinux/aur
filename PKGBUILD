@@ -162,7 +162,7 @@ build() {
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
