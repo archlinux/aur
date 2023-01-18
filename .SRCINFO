@@ -1,0 +1,15 @@
+pkgbase = peakeater-git
+	pkgdesc = PeakEater is a free open-source cross-platform VST3/AU/LV2/CLAP wave shaper plugin
+	pkgver = r86.acbc3ff
+	pkgrel = 1
+	url = https://github.com/vvvar/PeakEater
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	provides = PeakEater
+	conflicts = PeakEater
+	source = git+https://github.com/vvvar/PeakEater
+	md5sums = SKIP
+
+pkgname = peakeater-git
