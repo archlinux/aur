@@ -11,7 +11,7 @@ url="https://pypi.python.org/pypi/line_profiler"
 arch=('x86_64')
 license=('BSD')
 depends=('python-setuptools' 'ipython')
-makedepends=('cython')
+makedepends=('cython3' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-ubelt')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/pyutils/line_profiler/archive/v$pkgver.tar.gz")
 
