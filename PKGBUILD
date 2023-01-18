@@ -6,13 +6,13 @@
 PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2022.1.1.19
+pkgver=2022.2.1.12
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
-#makedepends=('unzip' 'zip')
+makedepends=('unzip' 'zip')
 depends=(
 	'fontconfig'
 	'freetype2'
@@ -49,7 +49,7 @@ options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('96ec44e9ad82f3a241dbc7b3b88655e3d4f2137d784b545c3574270906a68d40'
+sha256sums=('b488265fd2a24489c8ba98085d6820e1d31ff1b4f0915a293b100ee4ed4f5007'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
             '6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1')
 
@@ -60,12 +60,12 @@ fi
 build() {
   cd "${_pkgname}"
 
-#  # Change the product name to produce a unique WM_CLASS attribute
-#  mkdir -p idea
-#  unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
-#      | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
-#  zip -r lib/resources.jar idea
-#  rm -r idea
+  # Change the product name to produce a unique WM_CLASS attribute
+  mkdir -p idea
+  unzip -p lib/resources.jar idea/AndroidStudioApplicationInfo.xml \
+      | sed "s/\"Studio\"/\"Studio Beta\"/" > idea/AndroidStudioApplicationInfo.xml
+  zip -r lib/resources.jar idea
+  rm -r idea
 }
 
 package() {

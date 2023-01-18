@@ -1,11 +1,13 @@
 pkgbase = android-studio-beta
 	pkgdesc = The Official Android IDE (Beta branch)
-	pkgver = 2022.1.1.19
+	pkgver = 2022.2.1.12
 	pkgrel = 1
 	url = https://developer.android.com/studio/preview
 	arch = i686
 	arch = x86_64
 	license = APACHE
+	makedepends = unzip
+	makedepends = zip
 	depends = fontconfig
 	depends = freetype2
 	depends = libxrender
@@ -35,10 +37,10 @@ pkgbase = android-studio-beta
 	optdepends = xorg-setxkbmap: emulator support
 	optdepends = ncurses5-compat-libs: native gdb support
 	options = !strip
-	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.19/android-studio-2022.1.1.19-linux.tar.gz
+	source = https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.2.1.12/android-studio-2022.2.1.12-linux.tar.gz
 	source = android-studio-beta.desktop
 	source = license.html
-	sha256sums = 96ec44e9ad82f3a241dbc7b3b88655e3d4f2137d784b545c3574270906a68d40
+	sha256sums = b488265fd2a24489c8ba98085d6820e1d31ff1b4f0915a293b100ee4ed4f5007
 	sha256sums = c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f
 	sha256sums = 6c4ae36e7e336f833de7d6151a4e1bb1d0133affeba9cef86f1190e0637128d1
 
