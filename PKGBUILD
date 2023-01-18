@@ -3,18 +3,18 @@
 # Contributor: Sebastien Leduc <sebastien@sleduc.fr>
 
 pkgbase='python-redmine'
-pkgname=('python-redmine' 'python2-redmine')
-pkgver='2.3.0'
+pkgname="${pkgbase}"
+pkgver='2.4.0'
 pkgrel='1'
 pkgdesc="Python library for communicating with a Redmine project management application"
 arch=("any")
-url="https://${pkgbase}.com/"
-makedepends=('python' 'python-setuptools'
-	     'python2' 'python2-setuptools')
+url="https://${pkgbase}.com"
+depends=('python-requests')
+makedepends=('python' 'python-setuptools')
 checkdepends=('python-nose' 'python-mock' 'python-requests' 'python-coverage')
 license=('Apache')
 source=("https://github.com/maxtepkeev/${pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('9c60667b79c1c93a1530d3b299beeb2278b34a33c03ac9bedd99e0d9fc9b0f3b')
+sha256sums=('746c6e0e165e21e9dea6c6e563064f3a27e38234dfe827f4a2215b89b8c11860')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -26,16 +26,7 @@ check() {
   nosetests --with-coverage --cover-erase --cover-package=redminelib
 }
 
-package_python-redmine() {
-  depends=('python-requests')
-
+package() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}"
-}
-
-package_python2-redmine() {
-  depends=('python2-requests')
-
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  python2 setup.py install -O1 --root="${pkgdir}"
+  python setup.py install -O2 --root="${pkgdir}"
 }

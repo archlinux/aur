@@ -1,8 +1,8 @@
 pkgbase = python-redmine
 	pkgdesc = Python library for communicating with a Redmine project management application
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
-	url = https://python-redmine.com/
+	url = https://python-redmine.com
 	arch = any
 	license = Apache
 	checkdepends = python-nose
@@ -11,14 +11,8 @@ pkgbase = python-redmine
 	checkdepends = python-coverage
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	source = https://github.com/maxtepkeev/python-redmine/archive/v2.3.0.tar.gz
-	sha256sums = 9c60667b79c1c93a1530d3b299beeb2278b34a33c03ac9bedd99e0d9fc9b0f3b
+	depends = python-requests
+	source = https://github.com/maxtepkeev/python-redmine/archive/v2.4.0.tar.gz
+	sha256sums = 746c6e0e165e21e9dea6c6e563064f3a27e38234dfe827f4a2215b89b8c11860
 
 pkgname = python-redmine
-	depends = python-requests
-
-pkgname = python2-redmine
-	depends = python2-requests
-
