@@ -1,11 +1,11 @@
 pkgbase = blender-plugin-luxcorerender-latest-bin
 	pkgdesc = LuxCoreRender exporter plugin for Blender
 	pkgver = 2.6.b3442
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luxcorerender.org/
 	arch = x86_64
 	license = GPL
-	depends = blender>=2.80
+	depends = blender>=3.0
 	provides = blender-plugin-luxcorerender
 	conflicts = blender-plugin-luxcorerender
 	conflicts = blender-plugin-luxcorerender-bin
