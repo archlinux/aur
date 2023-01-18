@@ -3,7 +3,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=9.1.3
+pkgver=9.1.4
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -11,9 +11,6 @@ license=('Apache')
 arch=('i686' 'x86_64')
 depends=('hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit' 'perl' 'brotli')
 makedepends=('flex' 'python-sphinx')
-
-# Temporary check disable
-BUILDENV+=('!check')
 
 source=(
     http://dlcdn.apache.org/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
@@ -24,7 +21,7 @@ source=(
     trafficserver.src_tscore_unit_tests.patch
     trafficserver.src_tscore_ink_file.patch)
 
-sha256sums=('c8bf77b034b0da6c38d3ec9f3ca85ef1038aa046170e839308b0a59709d9afb6'
+sha256sums=('186cc796d9d783c7c9313d855785b04b8573234b237802b759939c002a64b1df'
             '8c9dbabfe7a8e0ecf9f3edb3673d1ff0cd63bf79551389047a723479b8d21fac'
             'a4e6a00dea61aa3f98413f092711afb90795ef35676f6a8e3970f4163d360202'
             'fc0b437ef9f9c56ceaaa99eea7075abe15200ff540cfc505e42b0a8f762128b1'
