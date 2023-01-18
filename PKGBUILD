@@ -11,7 +11,7 @@ license=('GPL')
 options=('!emptydirs' 'purge')
 depends=('perl')
 #source=("http://downloads.sourceforge.net/project/squid-report/squid-report/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-source=("squidanalyzer-${pkgver}.tar.gz::https://github.com/darold/${pkgname}/archive/${_gitrev}.tar.gz"
+source=("squidanalyzer-${pkgver}-${_gitrev}.tar.gz::https://github.com/darold/${pkgname}/archive/${_gitrev}.tar.gz"
         'squidanalyzer.service'
         'squidanalyzer.timer')
 sha256sums=('482a791ac420109a7780b1a06664b2eb8105d26618e875ec89a1dacad8e1c7fa'
