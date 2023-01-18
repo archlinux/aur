@@ -2,7 +2,7 @@ pkgbase = showmethekey-git
 	pkgdesc = A screenkey alternative that works under Wayland via libinput.
 	pkgver = r35.daee517
 	pkgrel = 1
-	url = https://github.com/AlynxZhou/showmethekey
+	url = https://showmethekey.alynx.one/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = showmethekey-git
 	depends = udev
 	depends = libinput
 	depends = glib2
-	depends = gtk3
+	depends = gtk4
 	depends = json-glib
 	depends = cairo
 	depends = pango
@@ -26,4 +26,3 @@ pkgbase = showmethekey-git
 	sha512sums = SKIP
 
 pkgname = showmethekey-git
-
