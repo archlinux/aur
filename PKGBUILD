@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
 options+=(!strip)
-depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang'
-         'libelf' 'libffi' 'llvm' 'ncurses' 'zlib')
+depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang14'
+         'libelf' 'libffi' 'llvm14' 'ncurses' 'zlib')
 makedepends=('git' 'sbcl' 'ninja' 'pkg-config')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl')
 conflicts=('cando' 'cando-git' 'clasp-cl')
