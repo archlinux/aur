@@ -2,7 +2,7 @@
 
 pkgname=hush-lightwalletd
 _name='lightwalletd'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='HUSH Lightwallet daemon for running SDL servers'
 url='https://git.hush.is/hush/lightwalletd'
