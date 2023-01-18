@@ -15,7 +15,9 @@ depends=("curl" "jq" "streamlink")
 makedepends=("scdoc")
 optdepends=('fzf: for browsing and watching streams with fzf'
             'mpv: for watching streams'
-            'vlc: for watching streams')
+            'vlc: for watching streams'
+            'youtube-dl: for watching VODs'
+            'yt-dlp: for watching VODs')
 
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
