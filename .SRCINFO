@@ -32,7 +32,7 @@ pkgbase = sunshine
 	optdepends = cuda: NvFBC capture support
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=49fc618682b51ed52622eab2f98c1239ebd130bd
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#commit=c4c0413f9e6b711855705019b9858aa8c16b12e9
 	sha256sums = SKIP
 
 pkgname = sunshine
