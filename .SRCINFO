@@ -1,0 +1,17 @@
+pkgbase = pg_cjk_parser-git
+	pkgdesc = fts (full text search) parser derived from the default parser in PostgreSQL
+	pkgver = r18.bc0ae4f
+	pkgrel = 1
+	url = https://github.com/huangjimmy/pg_cjk_parser
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = git
+	depends = postgresql
+	depends = icu
+	provides = pg_cjk_parser
+	conflicts = pg_cjk_parser
+	source = git+https://github.com/huangjimmy/pg_cjk_parser.git
+	sha256sums = SKIP
+
+pkgname = pg_cjk_parser-git
