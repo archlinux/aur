@@ -6,12 +6,15 @@ pkgbase = amitools-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cython
 	makedepends = git
+	makedepends = python-build
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python-lhafile
 	provides = amitools
 	conflicts = amitools
 	source = amitools::git+https://github.com/cnvogelg/amitools
 	sha256sums = SKIP
 
 pkgname = amitools-git
-	depends = python
