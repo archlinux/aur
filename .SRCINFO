@@ -1,13 +1,13 @@
 pkgbase = nerd-fonts-inconsolata-go
 	pkgdesc = Patched font InconsolataGo from nerd-fonts library
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
-	source = InconsolataGo-v2.2.1.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.1/InconsolataGo.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.2.1/LICENSE
-	sha256sums = a122b4874cbc648cf83e4ea1e06a40912a42a28c21657dd08c6616e35b717480
+	source = InconsolataGo-v2.3.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0/InconsolataGo.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.3.0/LICENSE
+	sha256sums = 9e7b3924b570e549d76902a182bbcbb9ad3f2e673f481643302e349625c04de0
 	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
 
 pkgname = nerd-fonts-inconsolata-go

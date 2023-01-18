@@ -1,8 +1,8 @@
 # Maintainer: otreblan <otreblain@gmail.com>
 
 pkgname=nerd-fonts-inconsolata-go
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Patched font InconsolataGo from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -14,7 +14,7 @@ source=(
 	"$url/raw/v$pkgver/LICENSE"
 )
 
-sha256sums=('a122b4874cbc648cf83e4ea1e06a40912a42a28c21657dd08c6616e35b717480'
+sha256sums=('9e7b3924b570e549d76902a182bbcbb9ad3f2e673f481643302e349625c04de0'
             '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360')
 
 package() {
