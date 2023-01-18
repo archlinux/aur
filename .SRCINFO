@@ -6,7 +6,6 @@ pkgbase = sdrtrunk-git
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
-	depends = java-runtime
 	depends = at-spi2-core
 	depends = libnet
 	depends = alsa-lib
