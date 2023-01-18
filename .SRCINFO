@@ -1,15 +1,15 @@
 pkgbase = getax
 	pkgdesc = Application for the tax reporting of physical people in the canton of Geneva, Switzerland.
 	pkgver = 2022
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.getax.ch/support/
 	arch = x86_64
 	license = unknown
 	depends = java-runtime=11
 	depends = webkitgtk2
-	source = getax-2022-1.0.tar.gz::https://www.getax.ch/getaxpp/2022/getax2022.tar.gz
+	source = getax-2022-1.02.tar.gz::https://www.getax.ch/getaxpp/2022/getax2022.tar.gz
 	source = getax
-	sha256sums = 7a0caa488d1348c79a7ba9367e525dde9679145645a31a63570e1b97d9e2ad5b
+	sha256sums = 2fd92eb3270a5018369d651c9d9d57df456c45d71efc2f0da44473e358dfb34f
 	sha256sums = 3181ec6cbeee183de2279e75265c464e7b17f9f7e447cdbebbfbdd9af1ad2599
 
 pkgname = getax
