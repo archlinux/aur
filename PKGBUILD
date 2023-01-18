@@ -2,7 +2,7 @@
 
 pkgname=bcachefs-tools
 epoch=2
-pkgver=23
+pkgver=24
 pkgrel=1
 pkgdesc="bcachefs filesystem utilities"
 arch=(x86_64)

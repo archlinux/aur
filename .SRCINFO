@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools
 	pkgdesc = bcachefs filesystem utilities
-	pkgver = 23
+	pkgver = 24
 	pkgrel = 1
 	epoch = 2
 	url = https://evilpiepirate.org/git/bcachefs-tools.git/
@@ -13,7 +13,7 @@ pkgbase = bcachefs-tools
 	depends = keyutils
 	depends = zstd
 	depends = libsodium
-	source = git+https://evilpiepirate.org/git/bcachefs-tools.git#tag=v23
+	source = git+https://evilpiepirate.org/git/bcachefs-tools.git#tag=v24
 	sha256sums = SKIP
 
 pkgname = bcachefs-tools
