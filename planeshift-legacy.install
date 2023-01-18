@@ -1,0 +1,32 @@
+
+post_install() {
+  cat << EOF
+==>
+==> To be able to play, save configs, and update PlaneShift,
+==> add your user to the games group:
+==> # gpasswd -a USERNAME games
+EOF
+  post_upgrade
+}
+
+post_upgrade() {
+  cat << EOF
+==>
+==> Updating PlaneShift before running it is recommended.
+==>
+==> If the fonts are garbled or ugly, try doing this:
+==> Open up /opt/PlaneShift/data/config/r3dopengl.cfg in
+==> a text editor and find this line:
+==>
+==>    Video.OpenGL.FontCache.UseMultiTexturing = yes
+==>
+==> Then change 'yes' to 'no'.
+==>
+EOF
+}
+
+op=$1
+shift
+[ "$(type -t "$op")" = "function" ] && $op "$@"
+
+# vim:set ts=2 sw=2 et:

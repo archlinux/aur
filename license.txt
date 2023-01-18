@@ -1,0 +1,22 @@
+TERMS AND CONDITIONS FOR USAGE, COPYING, DISTRIBUTION AND MODIFICATION
+
+0. This License applies to any material or other work which contains a notice placed by the copyright holder saying it may be distributed under the terms of this PlaneShift Content License.
+
+1. Terms defined in this Article 1, and parenthetically elsewhere, shall throughout this License have the meanings here and there provided. Defined terms may be used in the singular or plural. Definitions:
+
+• The "Material", below, refers to any such material or work, and a "work based on the Material" means either the Material or any Derivative Work under copyright law.
+• "Derivative Work" shall mean a work containing the Material or a portion of it, such as a revision, modification, enhancement, adaptation, translation (including compilation or recompilation by computer), abridgement, condensation, expansion, or any other form in which such preexisting works may be recast, transformed, or adapted, and that, if prepared without authorization of the owner of the copyright in such preexisting work, would constitute a copyright infringement.
+• Each licensee is addressed as "you".
+• "Official PlaneShift Server" is defined as a server name and ip address. Official PlaneShift Servers are defined by Atomic Blue and published on the site http://www.planeshift.it. No other server, except the ones listed at that web site, can be considered an Official PlaneShift Server.
+
+2. You may not copy, modify, publish, transmit, sell, participate in the transfer or sale or reproduce, create Derivative Works from, distribute, perform, display or in any way exploit any of the Material released under this License unless expressly permitted by the Atomic Blue.
+
+3. You may use the provided Material, for personal use only, to connect to an Official PlaneShift Server only in conjunction with a Planeshift Client, distributed by Atomic Blue. Official PlaneShift Servers can only be designated by Atomic Blue.
+
+NO WARRANTY
+
+4. THERE IS NO WARRANTY FOR THE MATERIAL PROVIDED, TO THE EXTENT PERMITTED BY APPLICABLE LAW. THE MATERIAL IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE MATERIAL IS WITH YOU.
+
+5. IN NO EVENT SHALL ATOMIC BLUE BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE MATERIAL.
+
+END OF TERMS AND CONDITIONS
