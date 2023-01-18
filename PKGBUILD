@@ -1,5 +1,5 @@
 # Maintainer: Sasha Romijn <arch at mxsasha.eu>
-# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=rpki-client
 pkgver=8.2
