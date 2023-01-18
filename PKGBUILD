@@ -1,21 +1,18 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
-pkgver=4.5.2
+pkgver=5.3.1
 pkgrel=1
-pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
-arch=('any')
-url="https://ignitionrobotics.org/libs/common"
+pkgdesc="Provides a set of libraries that cover many different use cases."
+arch=('x86_64')
+url="https://gazebosim.org/libs/common"
 license=('Apache')
-groups=('development')
 depends=('ignition-math>=6' 'ignition-utils' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg')
-makedepends=('ignition-cmake>=2' 'util-linux')
-optdepends=()
-conflicts=()
-source=("https://github.com/ignitionrobotics/ign-common/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('b681f0efa9eb577e6c6edd307c54aa128c297606a61e9de1093ef990502569c4')
+makedepends=('ignition-cmake>=3' 'util-linux')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-common/archive/gz-common5_${pkgver}.tar.gz")
+sha256sums=('dbb7eb6639fec27bb971d0df6a0d17d8076e82a7a7f3cadb570adab02ab7d9ad')
 
-_dir="gz-common-${pkgname}4_${pkgver}"
+_dir="gz-common-gz-common5_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
