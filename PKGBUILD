@@ -21,9 +21,10 @@ source_aarch64=(
   "${_source_prefix}/clickhouse-server_${pkgver}_arm64.deb"
 )
 # for CARCH in x86_64 aarch64; do;
+#   pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=);
 #   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
-#   sha256sum clickhouse*"${pkgver}_${arch}.deb";
+#   sha256sum clickhouse*"${pkgver}_${arch}.deb" | cut -f1 -d' ';
 # done
 sha256sums_x86_64=(
 df160ccf8b4a181e2b33a1fa189305dd4481b0718ffdc32f56de6382cad4c2f2
