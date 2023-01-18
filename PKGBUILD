@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=16.0.0_r446772.105fef5dca7e
+pkgver=16.0.0_r448874.60b989792411
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -38,11 +38,11 @@ options=('staticlibs' '!lto')
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
-# A reasonable value for them to avoid these issues appears to be 80% of available cores.
-# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or example for a system with 24 cores NINJAFLAGS is an env var used to pass commandline options to ninja
+# A reasonable value for them to avoid these issues appears to be 75% of available cores.
+# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# NINJAFLAGS="-j 20 -l 20"
-# LITFLAGS="-j 20"
+# NINJAFLAGS="-j 18 -l 18"
+# LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
 pkgver() {
