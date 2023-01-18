@@ -1,6 +1,6 @@
 pkgbase = goredo
 	pkgdesc = Go implementation of djb's redo, a Makefile replacement that sucks less
-	pkgver = 1.27.1
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = http://www.goredo.cypherpunks.ru/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = goredo
 	makedepends = go>=1.14
 	provides = redo
 	conflicts = redo
-	source = http://www.goredo.cypherpunks.ru//download/goredo-1.27.1.tar.zst.sig
-	source = http://www.goredo.cypherpunks.ru//download/goredo-1.27.1.tar.zst
+	source = http://www.goredo.cypherpunks.ru//download/goredo-1.30.0.tar.zst.sig
+	source = http://www.goredo.cypherpunks.ru//download/goredo-1.30.0.tar.zst
 	validpgpkeys = 7531BB84FAF0BF35960C63B93A528DDE952C7E93
 	sha256sums = SKIP
-	sha256sums = 98c1a8a189b33753fcd61e1dbdbe627dba3820621d2032a3856d89829eea08d9
+	sha256sums = 825b20daaf2315de33e82b8ace567769f271fd2ec0c3a2c2c45012fee1cb9548
 
 pkgname = goredo
