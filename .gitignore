@@ -1,4 +1,6 @@
+/cloud-sql-proxy-*
 /cloud_sql_proxy-*
+!/cloud-sql-proxy-bin.install
 
 /*.tar.gz
 /*.pkg.tar*

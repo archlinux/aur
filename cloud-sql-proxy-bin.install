@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo "Starting from version 2 the binary is now called 'cloud-sql-proxy'"
+}
