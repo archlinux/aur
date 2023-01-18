@@ -1,0 +1,12 @@
+[Unit]
+Description=Pixel format database
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=always
+ExecStart=/usr/bin/pixfmtdb
+
+[Install]
+WantedBy=multi-user.target
