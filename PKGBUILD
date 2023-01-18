@@ -1,9 +1,9 @@
 pkgname=postsrsd
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
 arch=('i686' 'x86_64' 'armv7h')
-depends=('glibc')
+depends=('glibc' 'systemd')
 makedepends=('cmake' 'help2man')
 backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname/$pkgname.secret" "etc/$pkgname/$pkgname")    #last entry is legacy from version 1
 url="https://github.com/roehling/$pkgname"
@@ -33,8 +33,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/var/spool/postfix/srs"
-  chown postsrsd:root "$pkgdir/var/spool/postfix/srs"
 
   # dont use sbin anymore
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
