@@ -2,8 +2,8 @@
 # Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="scrutiny-bin"
-pkgver=0.5.0
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
 license=("MIT")
@@ -54,7 +54,7 @@ source_aarch64=(
  "$url/releases/download/v$pkgver/scrutiny-collector-metrics-linux-arm64"
 )
 
-sha256sums=('c0994dfb8031c801d2ad2e0669f55a36386d1592a8bf05ba4e15830edb20bcf4'
+sha256sums=('34a3494143b026fbf5bf2472661a6cd8e7eb37421b38f53fba59b2fa0c890896'
             '24f7361d47e80649d9214959bad695b3d3d00900f7669e6044e5ea155078c8a1'
             '9bbe705b34bef7f3c51ad9d0795e8b61ad95b3b38b0fc6c7af64f0cda96d5a9d'
             'd5a9f3ab0246bf14dff3c4becd2532c82a406ef1fb71da3d6e30b6eb0df7cac7'
@@ -62,16 +62,16 @@ sha256sums=('c0994dfb8031c801d2ad2e0669f55a36386d1592a8bf05ba4e15830edb20bcf4'
             '5ea2fa402bbb7b7349d24de615b14d1c2a2adfaa2faee40d851166737d82ad91'
             'e487c741ee1c3798507af7fc0c5d5ea3c5f673464169eb6192579dba097fc6e6'
             'bb30677b6ed77590124d92eb133d3a9ab73b7f812b8c91b6bb49786cee20ddde')
-sha256sums_x86_64=('99f3d41996e17d25c6d7ea1727a01a06b50e50d63960e7c2dc94ebd100f3d72a'
-                   '95beb480101c1e6c648bf04d3eb0be98d15087fac862014557cd6f35d319094e')
-sha256sums_armv5h=('aae68af31fbf0be3c6ce12ba0778b60e53dd40fb7b25ca70197c3bbe1f2aecaa'
-                   '76c74a4fc81645a4b0dda0fd7b8ba559fdd5566055f8cff853787c1185d8351a')
-sha256sums_armv6h=('09a9e2ed451aa9727180a90af6c86e68262e162b0ff11fe7eb3779c5399bdb78'
-                   'f2d94b211bfed3ed68d9c621039775db34898cec878bae8ef1de4a15cdaa9d04')
-sha256sums_armv7h=('8627b1260dbf6e358d965715d1ace6693a0866158445371c80c1cde69f34010a'
-                   '417f95e99137db651d2eebcc718dd32a9d5430fff8cc838f517e0709cd520549')
-sha256sums_aarch64=('940a7b3bceaa476c04f1a78baa657c35798e133a00c21e953f44e5de172895ac'
-                    '1a5b917704c8016e53ceb459edd683396bac6d33d8bd83f68d8dc470d2b86b65')
+sha256sums_x86_64=('7fed82275fc0b9865aa05ab444d51175f573897a232a7cd01c0be83b62a510ba'
+                   'e744a7b10e764e090ea72cd3a095da83cc1390f95c2d23ef5eabeee40081170f')
+sha256sums_armv5h=('89a87ab588524dfb12aa6ebb3a2faacde03424f79943a62173fb2afa248e7573'
+                   '791543d322915a35f6dfa040f4fd5164b387ba895d0d2a09566d48256a38cc23')
+sha256sums_armv6h=('102de9b21c2bd66296058d8450364aa2a4a4574e6f77b097bacc445eb2a75505'
+                   '4f00cf76459d6996be2bdd5a8fe86fda9b4f58c1b3c090eb18629fb874e8bdb6')
+sha256sums_armv7h=('f738b0dc43d7b99900dc32e95de05b7d47a7ae0425b7ea0bd67804ec133800b2'
+                   'b69ad4393aae4ec740d3496b1963133fda1caa58e72236911b3ff48684b3ea56')
+sha256sums_aarch64=('2813c2b9e37625a31b308842d2debd81152693ecc41754d644df8877b4747268'
+                    '1f204e54065a3279034d4ab23931d0e387a0bd0ac927940b3b96328b6ec063e0')
 
 prepare(){
  sed -i "example.scrutiny.yaml" \
