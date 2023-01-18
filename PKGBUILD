@@ -22,10 +22,10 @@ source_x86_64=("https://github.com/DSheirer/sdrtrunk/releases/download/v${_pkgve
 
 sha256sums_aarch64=('29f3ca7776efb5317fa935cc3211137b4c30602abf2cd43e9e1854de173e20c8'
                     '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
-                    'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
+                    'b07918f6523621b34b90fc34b275cdb13bef7689608e584f2f7109c84cb42919')
 sha256sums_x86_64=('964136fd815e5298a0b06bedf1a0182b897fa0bf2d2429c7bc6e5ce5a8b4b743'
                    '9cfe31c8bd4043891cf59aa76b33f30ed9b9f4403a386e5bf57f32226f3f2b26'
-                   'ea344583a65800239959917ef8849c725975ea05b571cbd74133b20b8c71f46d')
+                   'b07918f6523621b34b90fc34b275cdb13bef7689608e584f2f7109c84cb42919')
 
 package() {
   install -Dm644 ../cat-radio-icon.png "${pkgdir}/usr/share/pixmaps/cat-radio-icon.png"
