@@ -1,7 +1,7 @@
 pkgbase = otf-nerd-fonts-monacob-mono
 	pkgdesc = MonacoB fonts patched with nerd-fonts
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vjpr/monaco-bold
 	arch = any
 	license = custom:Apple
@@ -16,6 +16,6 @@ pkgbase = otf-nerd-fonts-monacob-mono
 	sha256sums = 45322eec525058c1bc55f2a999fad74eac9e9869caf7174bb292e92474d5aa73
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 91576a4d78238ad8b1a87cb8cc0d92b8d88240e6b4bb3363280455cc1d4252b5
+	sha256sums = 5e2913a0ea22e5f11e0e41ec73eaaa119fe14f0ddae73933de9f8d273918ff7c
 
 pkgname = otf-nerd-fonts-monacob-mono
