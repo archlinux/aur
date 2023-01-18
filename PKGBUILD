@@ -24,7 +24,7 @@ package() {
 
 	install -d "$pkgdir"/usr/bin
 	cd "$pkgdir/opt/pypy3/bin"
-	for i in f2py f2py3 f2py3.f2py3.$(pypy3 -V | head -1 | cut -d. -f2); do
+	for i in f2py f2py3 f2py3.$(pypy3 -V | head -1 | cut -d. -f2); do
 		mv $i "$pkgdir"/usr/bin/$i-pypy3
 	done
 }
