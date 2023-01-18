@@ -1,17 +1,17 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-utils
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Classes and functions for robot applications"
 arch=('any')
 url="https://gazebosim.org/libs/utils"
 license=('Apache')
 depends=('cmake' 'ignition-cmake')
-source=("https://github.com/gazebosim/gz-utils/archive/${pkgname}1_${pkgver}.tar.gz")
-sha256sums=('74ba40f8a35f9ae07102402d4acde11e4f9a1d52663a339388fe086527093f86')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-utils/archive/gz-utils2_${pkgver}.tar.gz")
+sha256sums=('af9e5b862e10aa0cedd97d9c5ca3eb9a443b7c9e560a083e8f0399e93e1cfafa')
 
-_dir="gz-utils-${pkgname}1_${pkgver}"
+_dir="gz-utils-gz-utils2_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
