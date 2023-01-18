@@ -1,7 +1,7 @@
 pkgbase = dawn-simple
 	pkgdesc = 3D geometrical postscript renderer
 	pkgver = 3.91a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = dawn-simple
 	optdepends = tcsh
 	optdepends = gv
 	provides = dawn
+	conflicts = dawn
 	source = http://geant4.kek.jp/~tanaka/src/dawn_3_91a.tgz
 	source = Makefile.patch
 	sha256sums = 81d855ead1117681b188242dd0be3a24e005d9bd4063fd2bda9a7a794ebcf5f4
