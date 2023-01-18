@@ -63,4 +63,4 @@ package() {
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
 sha256sums=('SKIP'
-            'b92fde75c1e327e4afd6bf756632f0a8769c7dc34050852f4361aca26fe6293f')
+            '13c2f5015ec28e6ad344619376850f4db885ee460895ea28dbe11b99091fc5de')

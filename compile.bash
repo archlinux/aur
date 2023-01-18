@@ -25,12 +25,6 @@ prepare() {
 	pip3 install --no-cache --upgrade autobuild --quiet
 }
 
-cleanbuild()
-{
-	rm -rf build-linux-64
-	git pull --prune
-	build()
-}
 build() {
 	# we have a lot of files, relax ulimit to help performance
 	if [[ -n "$USE_VENV" ]]; then
@@ -92,6 +86,13 @@ build() {
 
 	echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
 	$prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure
+}
+
+cleanbuild()
+{
+	rm -rf build-linux-64
+	git pull --prune
+	build
 }
 if [[ -n "$1" ]]; then
 	$1
