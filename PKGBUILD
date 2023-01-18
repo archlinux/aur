@@ -3,7 +3,7 @@
 pkgname=sapling-scm-bin
 _realver=0.2.20221222-152408-ha6a66d09
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Sapling SCM is a cross-platform, highly scalable, Git-compatible source control system.'
 arch=('x86_64')
@@ -11,6 +11,8 @@ license=('GPL2')
 url='https://sapling-scm.com/'
 depends=('curl' 'nodejs' 'python' 'github-cli')
 optdepends=('watchman: for faster file watching')
+provides=('sapling-scm')
+conflicts=('sapling-scm')
 
 options=('!strip')
 
