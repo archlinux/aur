@@ -18,9 +18,8 @@ pkgbase = libldap24
 	options = !makeflags
 	options = emptydirs
 	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz
-	source = https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.4.59.tgz.asc
-	validpgpkeys = 3CE269B5398BC8B785645E987F67D5FD1CE1CBCE
+	source = libldap-symbol-versions.patch
 	sha256sums = 99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34
-	sha256sums = SKIP
+	sha256sums = c7862f6605450b15aff1f967bd17d57470d6d9fa4242c6306499173f0e67938c
 
 pkgname = libldap24
