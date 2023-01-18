@@ -1,5 +1,5 @@
 # Maintainer: Tobias Heider <me@tobhe.de>
-# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
 
 pkgname=openiked
 pkgver=7.2
