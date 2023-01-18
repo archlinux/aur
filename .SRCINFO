@@ -1,6 +1,6 @@
 pkgbase = python-types-python-dateutil
 	pkgdesc = Typing stubs for python-dateutil
-	pkgver = 2.8.19.5
+	pkgver = 2.8.19.6
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-python-dateutil
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-python-dateutil/types-python-dateutil-2.8.19.5.tar.gz
-	sha256sums = ab91fc5f715f7d76d9a50d3dd74d0c68dfe38a54f0239cfa0506575ae4d87a9d
+	source = https://files.pythonhosted.org/packages/source/t/types-python-dateutil/types-python-dateutil-2.8.19.6.tar.gz
+	sha256sums = 4a6f4cc19ce4ba1a08670871e297bf3802f55d4f129e6aa2443f540b6cf803d2
 
 pkgname = python-types-python-dateutil
