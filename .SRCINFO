@@ -1,10 +1,10 @@
 pkgbase = code-stats-bash-git
-	pkgdesc = codestats plugin for bash
+	pkgdesc = code::stats plugin for bash
 	pkgver = r39.58e6695
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Freed-Wu/code-stats-bash
 	arch = any
-	license = unknown
+	license = MIT
 	depends = bash
 	depends = curl
 	source = git+https://github.com/Freed-Wu/code-stats-bash#tag=58e6695cec290ff045c82bc568ffbb4b59ba88ed

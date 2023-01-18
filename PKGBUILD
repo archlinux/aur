@@ -5,11 +5,11 @@ _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 
 pkgname=${_pkgname//_/-}-git
 pkgver=r39.58e6695
-pkgrel=1
+pkgrel=2
 pkgdesc="code::stats plugin for bash"
 arch=(any)
 url=https://github.com/$_repo
-license=(unknown)
+license=(MIT)
 depends=(bash curl)
 source=("git+$url#tag=58e6695cec290ff045c82bc568ffbb4b59ba88ed")
 sha256sums=(SKIP)
