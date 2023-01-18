@@ -11,7 +11,7 @@ bold="${all_off}$(tput bold)"
 blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 post_install() {
-	  note "使用愉快,目前打包者xiaok上初二,更新会非常缓慢（初二好紧）"
+	  note "使用愉快,目前打包者xiaok上初二,更新由little_sheepycn负责"
 }
 post_upgrade() {
     post_install
