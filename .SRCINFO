@@ -10,6 +10,7 @@ pkgbase = rmg-git
 	makedepends = nasm
 	makedepends = cmake
 	makedepends = cargo
+	makedepends = ninja
 	depends = hidapi
 	depends = libsamplerate
 	depends = minizip
