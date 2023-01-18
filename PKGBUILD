@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=0.3.0_dev.r1.ge49db76
+pkgver=0.3.0_dev.r19.g6c7586e
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
