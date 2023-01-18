@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 # Contributor: Karmenzind
 pkgname=otf-nerd-fonts-monacob-mono
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='MonacoB fonts patched with nerd-fonts'
 arch=('any')
@@ -14,8 +14,8 @@ source=('COPYRIGHT'
         'monaco-bold::git+https://github.com/vjpr/monaco-bold.git#commit=b77db4b6fc2e9df074f8db59cead862d7068e3d7'
         "nerd-fonts-glyphs::svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/font-patcher")
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('4a9d48f5368ca3b5699f61c505412a8d734a57c5da00ac0ac5ea70881f615ef3'
+            '45322eec525058c1bc55f2a999fad74eac9e9869caf7174bb292e92474d5aa73'
             'SKIP'
             'SKIP'
             '91576a4d78238ad8b1a87cb8cc0d92b8d88240e6b4bb3363280455cc1d4252b5')
