@@ -1,8 +1,8 @@
 # Maintainer: Aditya Mishra <https://github.com/pegvin/csprite/issues>
 pkgname=csprite-git
-pkgver=0.1.0.r336.g43008e3
+pkgver=0.1.0.r464.g8652b75
 pkgrel=1 # Update if you changed something but that is so minor change you don't want to change the version
-pkgdesc="a tiny pixel art editor"
+pkgdesc="a tiny pixel art tool"
 arch=('i686' 'x86_64')
 url="https://github.com/pegvin/csprite"
 license=('MIT')
@@ -30,12 +30,13 @@ build() {
     cd csprite
     git submodule update --init --recursive
 	make gen-assets
-	make all Stable=1 --jobs $NUM_CPU
+	make all BUILD_TARGET=release SDL2_STATIC_LINK=0 --jobs $NUM_CPU
 }
 
 package() {
     cd csprite
 	install -Dm644 data/csprite.desktop "$pkgdir/usr/share/applications/csprite.desktop"
-	install -Dm644 data/icon-512.png "$pkgdir/usr/share/icons/csprite.png"
+	install -Dm644 data/icon-scaled.png "$pkgdir/usr/share/icons/csprite.png"
 	install -Dm755 csprite "$pkgdir/usr/bin/csprite"
 }
+
