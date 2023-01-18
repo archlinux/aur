@@ -3,7 +3,7 @@
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 # Contributor: Federico Damián <federicodamians@gmail.com>
 pkgname=vimix-icon-theme
-_pkgver=2021-11-09
+_pkgver=2023-01-18
 pkgver=${_pkgver//-/.}
 pkgrel=2
 pkgdesc="A Material Design icon theme based on Paper Icon Theme"
@@ -13,7 +13,7 @@ license=('CC BY-SA 4.0')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 options=('!strip')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('2f70825717a0414a441c5bc75f0a5417c97c9fe775ac0b0d2db618cafb2a2a89')
+sha256sums=('9498701d2f7e7f44901e677b28f5a89daab8a0e96d5ddf20f4557458ea6b86c8')
 
 prepare() {
    cd "$pkgname-$_pkgver"
