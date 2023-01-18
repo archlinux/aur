@@ -1,5 +1,4 @@
-pkg
-src
-sigil*
-*.pkg.*
-*.log
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
