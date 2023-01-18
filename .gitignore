@@ -1,5 +1,5 @@
 src
 pkg
-*x86_64.pkg.tar.xz
-*any.pkg.tar.xz
+*x86_64.pkg.tar.zst
+*any.pkg.tar.zst
 python-fangfrisch-*.tar.gz
