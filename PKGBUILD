@@ -2,7 +2,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=108.0.1
+pkgver=109.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
@@ -67,11 +67,12 @@ options=(
   !strip
 )
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
+_arch_git_blob=https://raw.githubusercontent.com/archlinux/svntogit-packages
 # _source_tag="${pkgver}-${pkgrel%.*}"
 # _source_tag="${pkgver}-${pkgrel}"
-_source_commit='4af48fa20359dfbe9ffd8ac57619bd234923eb0e'
-# _settings_tag='7.3'
-_settings_commit='424560ba704960d712242d0e2f9e92f2027a2d15'
+_source_commit='d114d4f8e8271adcb854082060c387b16ac56352'
+# _settings_tag='7.4'
+_settings_commit='71a20c6fff90e7fbcb216f1d644ca1b40b32b8e2'
 
 install='librewolf.install'
 source=(
@@ -81,16 +82,19 @@ source=(
   "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}"
   "default192x192.png"
   "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
-  "${_arch_git}/0001-libwebrtc-screen-cast-sync.patch"
+  "0001-libwebrtc-screen-cast-sync.patch" # use modified patch including scoped_glib.cc for aarch64 as well
+  "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"
 )
-sha256sums=('9821ac130dad01383e03276bf6cc92d41329d351da1fa7fa238168f8890611ea'
+  # "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch"
+sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
             'SKIP'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
             'SKIP'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
-            '5c164f6dfdf2d97f3f317e417aaa2e6ae46a9b3a160c3162d5073fe39d203286')
+            '8c8bb5d4441c8f97c8a817ef6c4670a2d9ab18ceef4d6d4d10e38d341068ec7f'
+            '34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -203,6 +207,9 @@ fi
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
   patch -Np1 -i ../0001-libwebrtc-screen-cast-sync.patch
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
+  patch -Np1 -i ../0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
+
   # upstream patches from gentoo
 
   # pgo improvements
@@ -215,15 +222,10 @@ fi
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
-  # Debian patch to enable global menubar
-  # disabled for the default build, as it seems to cause issues in some configurations
-  # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
-  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
-
-  # KDE menu
-  # patch -Np1 -i ${_patches_dir}/mozilla-kde.patch
-  # custom patch that does not conflict with the unity patch
-  patch -Np1 -i ${_patches_dir}/mozilla-kde_after_unity.patch
+  # KDE menu and unity menubar
+  patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
+  patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
+  patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
