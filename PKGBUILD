@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=nerd-fonts-dejavu-complete
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="All variants of Nerd-Font-patched DejaVu Sans Mono"
 arch=('any')
