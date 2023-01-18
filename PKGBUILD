@@ -1,23 +1,27 @@
 pkgname=('mingw-w64-llvm')
-pkgver=14.0.6
+pkgver=15.0.7
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-depends=('mingw-w64-zlib' 'mingw-w64-z3' 'mingw-w64-libxml2' 'mingw-w64-libffi')
+depends=('mingw-w64-zlib' 'mingw-w64-z3' 'mingw-w64-libxml2' 'mingw-w64-libffi' 'mingw-w64-zstd')
 makedepends=('mingw-w64-cmake' "llvm>=${pkgver%%.*}" 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
-source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig})
-sha256sums=('050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a'
+source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
+        $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
+sha256sums=('4ad8b2cc8003c86d0078d15d987d84e3a739f24aae9033865c027abae93ee7a4'
+            'SKIP'
+            '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
             'SKIP')
+validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
+              'D574BD5D1D0E98895E3BF90044F2485E45D59042') # Tobias Hieta <tobias@hieta.se>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-
 build() {
+  mv cmake{-$pkgver.src,}
   cd "$srcdir/llvm-$pkgver.src/"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
