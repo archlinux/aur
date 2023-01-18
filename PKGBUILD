@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pixman
-pkgver=0.42.0
+pkgver=0.42.2
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-meson mingw-w64-libpng)
 depends=(mingw-w64-gcc)
 options=(staticlibs !strip !buildflags)
 source=("http://xorg.freedesktop.org/releases/individual/lib/pixman-${pkgver}.tar.xz")
-sha512sums=('43d43d1aef9b8a6167098ab68ce2cfd8c0429c4825d40a4fb468b5b51dc1a2035f8bd1b70413e4ecd77deb469b5d558f42171b423e348d5ddd8604c466ffc7d9')
+sha512sums=('3476e2676e66756b1af61b1e532cd80c985c191fb7956eb01702b419726cce99e79163b7f287f74f66414680e7396d13c3fee525cd663f12b6ac4877070ff4e8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
