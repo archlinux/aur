@@ -1,6 +1,6 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clasp-cl-git
-pkgver=2.1.0_1_g271276dbe
+pkgver=2.1.0_21_ge9ee50e55
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
