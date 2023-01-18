@@ -1,7 +1,7 @@
 pkgbase = livsdiary
-	pkgdesc = A simple command-line diary
+	pkgdesc = A simple, free and open source command-line diary
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olivia-livs/livsdiary
 	arch = x86_64
 	license = GPL3

@@ -1,8 +1,8 @@
 # Maintainer: Olivia <olmay@tuta.io>
 pkgname=livsdiary
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="A simple command-line diary"
+pkgrel=2
+pkgdesc="A simple, free and open source command-line diary"
 arch=('x86_64')
 url="https://github.com/olivia-livs/livsdiary"
 license=('GPL3')
