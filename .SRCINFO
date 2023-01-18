@@ -1,6 +1,6 @@
 pkgbase = lib32-systemd-git
 	pkgdesc = system and service manager (32-bit git version)
-	pkgver = 252.r61711.71eaa9291d
+	pkgver = 252.r61997.42c042cfd1
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -31,8 +31,9 @@ pkgbase = lib32-systemd-git
 	depends = systemd-git
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = lib32-systemd=252.r61711.71eaa9291d
+	provides = lib32-systemd=252.r61997.42c042cfd1
 	conflicts = lib32-systemd
+	options = strip
 	source = git+https://github.com/systemd/systemd
 	sha512sums = SKIP
 
