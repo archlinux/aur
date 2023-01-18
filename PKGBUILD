@@ -4,7 +4,7 @@
 pkgname=rvgl-bin
 pkgver=21.0930a
 _gamefilesver=21.0715
-pkgrel=2
+pkgrel=3
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.org'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('rvgl-dcpack: dreamcast content pack'
             'flac: for FLAC support'
             'mpg123: for MPEG support'
             'fluidsynth: for SoundFont 2 support')
-makedepends=('git')
+makedepends=('git' 'patchelf')
 groups=('rvgl-basic' 'rvgl-original' 'rvgl-online')
 source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${_gamefilesver}
         "rvgl_assets"::git+https://gitlab.com/re-volt/rvgl-assets.git#tag=${pkgver}
@@ -27,7 +27,7 @@ source=("rvgl_game_files"::git+https://gitlab.com/re-volt/game_files.git#tag=${_
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '576f17d542e4dab32926f48ef809c2ad4679ea87471b84f64605e7c171fbb198'
+            'a2a1a3f72fab4e1820b4a8fbdd3ac8fde6699588496c99013d031925e78b1e8d'
             'ba1ed3ac45b2a823f51146f3379e81ec491e79cc3063b142f583b07191a600aa')
 
 _binsuffix='none'
@@ -35,6 +35,12 @@ _binsuffix='none'
 [ "$CARCH" = 'x86_64' ] && _binsuffix='64'
 [ "$CARCH" = 'armv7h' ] && _binsuffix='armhf'
 [ "$CARCH" = 'aarch64' ] && _binsuffix='arm64'
+
+prepare() {
+    # Fix libunistring dependency
+    cd "$srcdir/rvgl_platform/linux"
+    patchelf --replace-needed "libunistring.so.2" "libunistring.so.5" "rvgl.$_binsuffix"
+}
 
 package() {
     # Core game files
@@ -58,7 +64,6 @@ package() {
     # Platform binaries
     cd "$srcdir/rvgl_platform/linux"
     install -Dm755 "rvgl.$_binsuffix" "$pkgdir/opt/rvgl/rvgl"
-    install -Dm755 "lib/lib$_binsuffix/libunistring.so.2" "$pkgdir/opt/rvgl/lib/libunistring.so.2"
 
     # Launcher
     cd "$srcdir"

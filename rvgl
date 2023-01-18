@@ -1,5 +1,3 @@
 #!/bin/bash
 
-DIR="/opt/rvgl"
-export LD_LIBRARY_PATH="$DIR/lib":$LD_LIBRARY_PATH
-cd "$DIR" && ./rvgl "$@"
+cd "/opt/rvgl" && ./rvgl "$@"
