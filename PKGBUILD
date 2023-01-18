@@ -11,10 +11,10 @@ makedepends=('libtool' 'libsasl' 'e2fsprogs' 'util-linux' 'chrpath' 'unixodbc' '
 depends=('libsasl' 'e2fsprogs')
 options=('!makeflags' 'emptydirs')
 provides=(libldap=${pkgver})
-source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz{,.asc})
+source=(https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-${pkgver}.tgz
+    libldap-symbol-versions.patch)
 sha256sums=('99f37d6747d88206c470067eda624d5e48c1011e943ec0ab217bae8712e22f34'
-            'SKIP')
-validpgpkeys=('3CE269B5398BC8B785645E987F67D5FD1CE1CBCE') # OpenLDAP Project <project@openldap.org> https://www.openldap.org/software/download/OpenLDAP/gpg-pubkey.txt
+            'c7862f6605450b15aff1f967bd17d57470d6d9fa4242c6306499173f0e67938c')
 
 prepare() {
   cd openldap-${pkgver}
@@ -22,6 +22,7 @@ prepare() {
   sed -i 's|#define LDAPI_SOCK LDAP_RUNDIR LDAP_DIRSEP "run" LDAP_DIRSEP "ldapi"|#define LDAPI_SOCK LDAP_DIRSEP "run" LDAP_DIRSEP "openldap" LDAP_DIRSEP "ldapi"|' include/ldap_defaults.h
   sed -i 's|%LOCALSTATEDIR%/run|/run/openldap|' servers/slapd/slapd.{conf,ldif}
   sed -i 's|-$(MKDIR) $(DESTDIR)$(localstatedir)/run|-$(MKDIR) $(DESTDIR)/run/openldap|' servers/slapd/Makefile.in
+  patch -p1 -i ../libldap-symbol-versions.patch
 }
 
 build() {
@@ -32,7 +33,7 @@ build() {
     --enable-dynamic --enable-syslog --enable-ipv6 --enable-local \
     --enable-crypt --enable-spasswd --enable-modules \
     --enable-backends --disable-ndb --enable-overlays=mod \
-    --with-cyrus-sasl --with-threads
+    --with-cyrus-sasl --with-threads --disable-bdb --disable-hdb --enable-static=no
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
