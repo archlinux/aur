@@ -3,8 +3,8 @@
 pkgname=openscenegraph-openmw-git
 epoch=1
 _pkgver=3.6.5
-pkgver=3.6.5.r16157.ada34a6d3
-pkgrel=3
+pkgver=3.6.5.r16162.69cfecebf
+pkgrel=5
 pkgdesc="Fork of OpenSceneGraph , with openmw-specific changes"
 arch=('x86_64')
 url="http://www.openscenegraph.org/"
@@ -29,7 +29,7 @@ build() {
         -B _build \
         -S "$srcdir"/osg \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_BUILD_TYPE=None \
+        -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_DISABLE_FIND_PACKAGE_GDAL=1 -D CMAKE_DISABLE_FIND_PACKAGE_DCMTK=1 -D CMAKE_DISABLE_FIND_PACKAGE_SDL2=1 -D CMAKE_DISABLE_FIND_PACKAGE_SDL=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_GStreamer=1 -D CMAKE_DISABLE_FIND_PACKAGE_TIFF=1  -D CMAKE_DISABLE_FIND_PACKAGE_GTA=1 -D CMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_Poppler-glib=1 -D CMAKE_DISABLE_FIND_PACKAGE_RSVG=1 -D CMAKE_DISABLE_FIND_PACKAGE_GtkGl=1 -D CMAKE_DISABLE_FIND_PACKAGE_LibVNCServer=1 \
@@ -46,6 +46,7 @@ build() {
         -D BUILD_OSG_PLUGIN_PNG=1 \
         -D BUILD_OSG_PLUGIN_FREETYPE=1 \
         -D BUILD_OSG_DEPRECATED_SERIALIZERS=0 \
+        -D BUILD_OSG_PLUGIN_DAE=1 \
         -Wno-dev
 
     VERBOSE=1 make -C _build
