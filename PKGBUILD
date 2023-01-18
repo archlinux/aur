@@ -2,7 +2,7 @@
 
 pkgname=mptp
 pkgver=0.2.4
-pkgrel=0
+pkgrel=2
 pkgdesc="A tool for single-locus species delimitation https://doi.org/10.1093/bioinformatics/btx025"
 url='https://github.com/Pas-Kapli/mptp'
 arch=('x86_64')
@@ -15,7 +15,7 @@ build(){
   cd ${srcdir}/$pkgname
   ./autogen.sh
   ./configure --prefix=$pkgdir/usr
-  make
+  make -j1
 }
 
 package() {

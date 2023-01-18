@@ -1,7 +1,7 @@
 pkgbase = mptp
 	pkgdesc = A tool for single-locus species delimitation https://doi.org/10.1093/bioinformatics/btx025
 	pkgver = 0.2.4
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/Pas-Kapli/mptp
 	arch = x86_64
 	license = AGPL
