@@ -41,7 +41,8 @@ license=('custom')
 # //               AMI Firmware Update Utility(APTIO)  v5.05.04
 # MODULE_LICENSE("Proprietary");
 
-depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'linux' 'linux-headers' 'dmidecode')
+depends=('gcc' 'make' 'sudo' 'binutils' 'glibc' 'dmidecode')
+optdepends=('linux' 'linux-headers')
 install="${pkgname}.install"
 _ver="${pkgver##*.}"
 _ver="${_ver,,}"
