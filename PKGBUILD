@@ -1,12 +1,8 @@
 # Maintainer: TobFromme
 
-# https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.1-beta1/sdr-trunk-linux-x86_64-v0.5.1-beta1.zip
-# https://github.com/DSheirer/sdrtrunk/releases/download/v0.5.1-beta1/sdr-trunk-osx-aarch64-v0.5.1-beta1.zip
-
-
 pkgname=sdrtrunk-git
 pkgver=0.5.1_beta1
-pkgrel=1
+pkgrel=2
 _pkgverdl=0.5.1-beta1
 pkgdesc="A cross-platform java application for decoding, monitoring, recording and streaming trunked mobile and related radio protocols using SDR"
 arch=('aarch64' 'x86_64')
