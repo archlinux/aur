@@ -1,0 +1,14 @@
+pkgbase = viewmailattachments
+	pkgdesc = Show HTML messages in an external browser, including embedded images
+	pkgver = r7.c0e5a9e
+	pkgrel = 1
+	url = https://github.com/akkana/scripts
+	arch = any
+	license = GPL2
+	depends = python
+	source = viewmailattachments.py-r7.c0e5a9e::https://raw.githubusercontent.com/akkana/scripts/c0e5a9e0bf22591b49ba63bf548b442df651665d/viewmailattachments.py
+	source = viewmailattachments_no_private_tab_firefox.patch
+	sha256sums = df3b0163b5d008cbdd2eadf31b5aace66251ce624f20c95c3220f5b2897b6873
+	sha256sums = f288921c859db46a9b0ccb31bb7cc802f60f901b6f2f15e9eeb06fb8c6c85844
+
+pkgname = viewmailattachments
