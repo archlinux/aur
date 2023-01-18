@@ -1,17 +1,17 @@
 pkgbase = jpwd
 	pkgdesc = A modern alternative to GNU/pwd using Java 🥰☕
-	pkgver = 0.0.3
-	pkgrel = 0
+	pkgver = 0.0.4
+	pkgrel = 1
 	epoch = 0
-	url = https://github.com/Anas-Elgarhy/jpwd
+	url = https://github.com/anas-elgarhy/jpwd
 	arch = any
 	groups = java-utils
 	license = GPL3
 	depends = jdk17-openjdk
-	depends = nerd-fonts-hack
+	depends = ttf-hack-nerd
 	provides = jpwd
 	replaces = jpwd
-	source = https://github.com/Anas-Elgarhy/jpwd/releases/download/0.0.3/jpwd-0.0.3.tar.gz
-	sha256sums = ccb2caf9e47dbdc55e70f8e2b5565d183b238d5e247aaa78a6c6fd58e2e97221
+	source = https://github.com/anas-elgarhy/jpwd/releases/download/0.0.4/jpwd-0.0.4.tar.gz
+	sha256sums = 04df1e3f03a7ace9adc41f0ff6488482d3a19a6bb7a212be06fff0ed873c611d
 
 pkgname = jpwd
