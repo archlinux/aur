@@ -1,10 +1,11 @@
 #Submitter: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname=dawn-simple
+_pkgname=dawn
 _PKGNAME=Dawn
 pkgver=3.91a
 _pkgver=3_91a
-pkgrel=1
+pkgrel=2
 pkgdesc="3D geometrical postscript renderer"
 url="http://geant4.kek.jp/~tanaka/DAWN/About_DAWN.html"
 license=("unknown")
@@ -14,7 +15,7 @@ provides=('dawn')
 depends=('tk' 'libx11')
 optdepends=('tcsh' 'gv')
 source=(
-  "http://geant4.kek.jp/~tanaka/src/${pkgname}_${_pkgver}.tgz"
+  "http://geant4.kek.jp/~tanaka/src/${_pkgname}_${_pkgver}.tgz"
   "Makefile.patch"
 )
 sha256sums=(
@@ -23,25 +24,25 @@ sha256sums=(
 )
 
 prepare(){
-  cd $srcdir/${pkgname}_${_pkgver}
+  cd $srcdir/${_pkgname}_${_pkgver}
   patch Makefile < ${srcdir}/Makefile.patch
 
 }
 
 build () {
-  cd $srcdir/${pkgname}_${_pkgver}
+  cd $srcdir/${_pkgname}_${_pkgver}
   make clean && make guiclean
   make
 }
 
 package() {
-  cd $srcdir/${pkgname}_${_pkgver}
+  cd $srcdir/${_pkgname}_${_pkgver}
   [ -d ${pkgdir}/usr/bin ] || install -d ${pkgdir}/usr/bin
   make DESTDIR=${pkgdir} install
 
-  DOCDIR=usr/share/doc/${pkgname}
+  DOCDIR=usr/share/doc/${_pkgname}
   [ -d ${pkgdir}/${DOCDIR} ] || install -d ${pkgdir}/${DOCDIR}
-  cd ${srcdir}/${pkgname}_${_pkgver}
+  cd ${srcdir}/${_pkgname}_${_pkgver}
   pdflatex DOC/G4PRIM_FORMAT_24.tex
   install -m644 DOC/*.pdf   ${pkgdir}/${DOCDIR}
   install -m644 DOC/*.html  ${pkgdir}/${DOCDIR}
@@ -56,6 +57,6 @@ package() {
 	Type=Application1
 	Categories=Utility;Science;
 	StartupNotify=false
-	" > $srcdir/$pkgname.desktop
-  install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	" > $srcdir/dawn.desktop
+  install -Dm644 $srcdir/dawn.desktop $pkgdir/usr/share/applications/dawn.desktop
 }
