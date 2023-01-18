@@ -1,6 +1,6 @@
 pkgbase = nfm-git
 	pkgdesc = Neat terminal file manager.
-	pkgver = r197.4e7a5f2
+	pkgver = r231.2b7b3e4
 	pkgrel = 1
 	url = https://sr.ht/~leon_plickat/nfm
 	arch = x86_64

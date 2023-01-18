@@ -3,7 +3,7 @@
 
 pkgname=nfm-git
 _pkgname=${pkgname%-*}
-pkgver=r197.4e7a5f2
+pkgver=r231.2b7b3e4
 pkgrel=1
 pkgdesc='Neat terminal file manager.'
 arch=('x86_64')
