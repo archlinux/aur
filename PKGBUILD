@@ -20,7 +20,7 @@ source_aarch64=(
   "${_source_prefix}/clickhouse-common-static_${pkgver}_arm64.deb"
   "${_source_prefix}/clickhouse-server_${pkgver}_arm64.deb"
 )
-# for CARCH in aarch64 x86_64; do;
+# for CARCH in x86_64 aarch64; do;
 #   [ "$CARCH" == aarch64 ] && arch=arm64 || arch=amd64;
 #   CARCH=$CARCH makepkg --verifysource --nobuild --noextract;
 #   sha256sum clickhouse*"${pkgver}_${arch}.deb";
