@@ -9,13 +9,13 @@ pkgbase = catt-git
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-setuptools
-	depends = python-click
-	depends = python-importlib-metadata
-	depends = python-pychromecast>=7.5.0
-	depends = yt-dlp
+	optdepends = python-importlib-metadata: for library bindings
 	provides = catt
 	conflicts = catt
 	source = catt::git+https://github.com/skorokithakis/catt
 	sha256sums = SKIP
 
 pkgname = catt-git
+	depends = python-click
+	depends = python-pychromecast>=7.5.0
+	depends = yt-dlp

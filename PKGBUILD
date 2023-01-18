@@ -8,9 +8,9 @@ pkgdesc='Cast All The Things - Send videos from many, many online sources to you
 arch=('any')
 url="https://github.com/skorokithakis/catt"
 license=('BSD')
-depends=(
+depends=()    # needed to run *and* build
+_rundepends=( # needed to run, but not build
   'python-click'
-  'python-importlib-metadata'
   'python-pychromecast>=7.5.0'
   'yt-dlp'
 )
@@ -36,6 +36,8 @@ build() {
 }
 
 package() {
+  depends=(${_rundepends[@]})  # needed to run, but not build
+
   cd "$_pkgname"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
