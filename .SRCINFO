@@ -1,0 +1,14 @@
+pkgbase = mercator
+	pkgdesc = a TUI openstreetmap explorer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mrusme/mercator
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	source = mercator-0.2.0.tar.gz::https://github.com/mrusme/mercator/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a25fd70c90b3a9cb5ba08e6e8b008ff1c86dff61cb8b32c3e218546e6dec3f9c
+
+pkgname = mercator
