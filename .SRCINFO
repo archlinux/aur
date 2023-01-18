@@ -1,7 +1,7 @@
 pkgbase = 8188fu-supremegamers-dkms-git
 	pkgdesc = Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)
-	pkgver = r84.b01ebdf
-	pkgrel = 2
+	pkgver = r117.26d05db
+	pkgrel = 3
 	url = https://github.com/supremegamers/rtl8188fu
 	install = 8188fu-dkms.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = 8188fu-supremegamers-dkms-git
 	depends = dkms
 	conflicts = 8188fu-dkms-git
 	conflicts = 8188fu-kelebek333-dkms-git
-	source = 8188fu::git+https://github.com/supremegamers/rtl8188fu.git
+	source = 8188fu::git+https://github.com/supremegamers/rtl8188fu.git#branch=master
 	source = blacklist-r8188fu.conf
 	source = dkms.conf
 	sha256sums = SKIP
