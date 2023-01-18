@@ -4,7 +4,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.74.1
+pkgver=2.74.4
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
@@ -13,7 +13,7 @@ makedepends=(mingw-w64-meson git)
 license=("LGPL2.1")
 options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
-_commit=058491cb6f635ff6e0a57fcdd4107a40ca91c62a  # tags/2.74.1^0
+_commit=e35768fe299d6389f8f5eef15593762389d2c07d  # tags/2.74.4^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch")
 sha256sums=('SKIP'
