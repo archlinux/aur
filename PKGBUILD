@@ -2,9 +2,9 @@
 
 pkgbase=gnome-control-center-vrr
 pkgname=(gnome-control-center-vrr)
-pkgver=42.3
-pkgrel=2
-pkgdesc="A window manager for GNOME (with VRR)"
+pkgver=43.2
+pkgrel=1
+pkgdesc="GNOME's main interface to configure various aspects of the desktop (with VRR toggle)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 arch=(x86_64)
 license=(GPL)
@@ -14,20 +14,21 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth-3.0 gnome-desktop-4
          gnome-color-manager smbclient libmm-glib libgnomekbd libibus libgudev
          bolt udisks2 libadwaita gsound colord-gtk4 gcr libmalcontent mutter-vrr)
 makedepends=(docbook-xsl modemmanager git python meson)
+checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: WebDAV file sharing'
             'gnome-remote-desktop: screen sharing'
             'rygel: media sharing'
             'openssh: remote login'
             'power-profiles-daemon: Power profiles support')
-_commit=ff5ab8f715ea02f75cff567ce86830040b0f38cc  # tags/42.3
+_commit=ec6ea052669784800846a1429dbaf3137a4b87dd  # tags/43.2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        '42.3.patch')
+        '43.2.patch')
 
 sha256sums=('SKIP'
             'SKIP'
-            '516b671b788a4d7922f642003307eda024b3f076c7ec19217b0fc2431da9bfd7')
+            '66128ee36b007bbbae45562d6613afbb8db2a12ecd60eb5dc677b0531f9a40c3')
 
 pkgver() {
   cd $pkgname
@@ -36,14 +37,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 < "$srcdir/42.3.patch"
+  patch -p1 < "$srcdir/43.2.patch"
   
   # Install bare logos into pixmaps, not icons
   sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build
 
   git submodule init subprojects/gvc
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
-  git submodule update
+  # Workaround for GIT CVE that disallowed file transfer
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {

@@ -1,10 +1,13 @@
 pkgbase = gnome-control-center-vrr
-	pkgdesc = A window manager for GNOME (with VRR)
-	pkgver = 42.3
-	pkgrel = 2
+	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with VRR toggle)
+	pkgver = 43.2
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL
+	checkdepends = python-dbusmock
+	checkdepends = python-gobject
+	checkdepends = xorg-server-xvfb
 	makedepends = docbook-xsl
 	makedepends = modemmanager
 	makedepends = git
@@ -43,12 +46,12 @@ pkgbase = gnome-control-center-vrr
 	optdepends = rygel: media sharing
 	optdepends = openssh: remote login
 	optdepends = power-profiles-daemon: Power profiles support
-	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=ff5ab8f715ea02f75cff567ce86830040b0f38cc
+	source = gnome-control-center-vrr::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=ec6ea052669784800846a1429dbaf3137a4b87dd
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = 42.3.patch
+	source = 43.2.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 516b671b788a4d7922f642003307eda024b3f076c7ec19217b0fc2431da9bfd7
+	sha256sums = 66128ee36b007bbbae45562d6613afbb8db2a12ecd60eb5dc677b0531f9a40c3
 
 pkgname = gnome-control-center-vrr
 	groups = gnome
