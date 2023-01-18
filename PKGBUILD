@@ -1,7 +1,7 @@
 # Maintainer: Luca Canavese <l.canavese@protonmail.com>
 
 pkgname=nerd-fonts-agave
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Patched font Agave from the nerd-fonts library"
 arch=("any")
