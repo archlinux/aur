@@ -6,6 +6,7 @@ pkgbase = mingw-w64-libpsl
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-meson
+	makedepends = gtk-doc
 	depends = mingw-w64-libidn2
 	depends = mingw-w64-libunistring
 	source = https://github.com/rockdaboot/libpsl/releases/download/0.21.2/libpsl-0.21.2.tar.gz
