@@ -1,15 +1,15 @@
 pkgbase = parcel-bundler
 	pkgdesc = Zero configuration build tool for the web.
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://parceljs.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = parcel-2.8.2.tgz
+	noextract = parcel-2.8.3.tgz
 	options = !strip
-	source = https://registry.npmjs.org/parcel/-/parcel-2.8.2.tgz
-	sha256sums = ff5846ea27e314a0ee49c533ad854220bbcb145bbaea465e196f1b4b81b56581
+	source = https://registry.npmjs.org/parcel/-/parcel-2.8.3.tgz
+	sha256sums = 2637ff765e5460deffcd123df7f0b325f9e48742b934f8088e48e1b66b18e5f1
 
 pkgname = parcel-bundler
