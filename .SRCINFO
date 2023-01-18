@@ -1,16 +1,21 @@
 pkgbase = amitools
 	pkgdesc = Various tools for using AmigaOS programs on other platforms
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cnvogelg/amitools
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cython
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python-lhafile
 	provides = amitools
 	conflicts = amitools
-	source = amitools-0.7.0.tar.gz::https://github.com/cnvogelg/amitools/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = b8fafbbaae09346602efdeb88e4b7cea83c6ee148b896d00f0737fad7188aa9d
+	source = amitools::git+https://github.com/cnvogelg/amitools#tag=v0.7.0
+	sha256sums = SKIP
 
 pkgname = amitools
-	depends = python

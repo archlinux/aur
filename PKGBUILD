@@ -1,31 +1,32 @@
 # Contributor: quellen <lodgerz@gmail.com>
 pkgname=amitools
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Various tools for using AmigaOS programs on other platforms"
 arch=('i686' 'x86_64')
 url="https://github.com/cnvogelg/amitools"
 license=('GPL')
-depends=()
-makedepends=('python-setuptools')
+depends=('python-lhafile')
+makedepends=(
+  'cython'
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-setuptools-scm'
+)
 provides=('amitools')
 conflicts=(${provides[@]})
 
-source=(
-  "${pkgname}-${pkgver}.tar.gz"::"$url/archive/refs/tags/v${pkgver}.tar.gz"
-)
-sha256sums=(
-  'b8fafbbaae09346602efdeb88e4b7cea83c6ee148b896d00f0737fad7188aa9d'
-)
+source=("$pkgname"::"git+$url#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  python setup.py build
+  cd "$srcdir/$pkgname"
+  python -m build
 }
 
 package() {
-  depends=('python')
-
-  cd "${srcdir}/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --prefix=/usr
+  cd "$srcdir/$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 } 
