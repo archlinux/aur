@@ -1,0 +1,26 @@
+diff --git a/electroncash/tests/test_paymentrequests.py b/electroncash/tests/test_paymentrequests.py
+index 8d26fc16b97..bae843a84ae 100644
+--- a/electroncash/tests/test_paymentrequests.py
++++ b/electroncash/tests/test_paymentrequests.py
+@@ -199,8 +199,8 @@ def test_bitpay_verify(self, mock_get):
+ 
+     def mocked_bitpay_requests_get_incorrect_digest(*args, **kwargs):
+         response = _signed_response()
+-        # Trash digest by changing last char
+-        response.headers['digest'] = response.headers['digest'][:-1] + '0'
++        # Trash digest by flipping last bit
++        response.headers['digest'] = response.headers['digest'][:-1] + chr(ord(response.headers['digest'][-1])^0x1)
+         return response
+ 
+     # Verify that a payment request verification fails if the digest is incorrect
+@@ -214,8 +214,8 @@ def test_bitpay_verify_incorrect_digest(self, mock_get):
+ 
+     def mocked_bitpay_requests_get_incorrect_signature(*args, **kwargs):
+         response = _signed_response()
+-        # Trash signature by changing last char
+-        response.headers['signature'] = response.headers['signature'][:-1] + '0'
++        # Trash signature by flipping last bit
++        response.headers['signature'] = response.headers['signature'][:-1] + chr(ord(response.headers['signature'][-1])^0x1)
+         return response
+ 
+     # Verify that a payment request verification fails if the signature is incorrect
