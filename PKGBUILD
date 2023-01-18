@@ -1,7 +1,8 @@
-# Maintainer: adorableGNU <adorablegnu@hushmail.com>
+# Maintainer: UmamiAppearance <mail@umamiappearance.eu>
+
 pkgname=pybristol
 pkgver=1.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for bristol, based on python3 and tkinter'
 arch=('any')
 url="https://github.com/adorableGNU/pyBristol"

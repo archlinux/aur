@@ -1,7 +1,7 @@
 pkgbase = pybristol
 	pkgdesc = GUI for bristol, based on python3 and tkinter
 	pkgver = 1.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adorableGNU/pyBristol
 	arch = any
 	license = GPL3
@@ -13,4 +13,3 @@ pkgbase = pybristol
 	md5sums = SKIP
 
 pkgname = pybristol
-
