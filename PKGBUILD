@@ -1,7 +1,7 @@
 # Maintainer: Salman
 #
 
-pkgname=ytdlp-gui-bin
+pkgname=ytdlp-gui
 _pkgname=ytdlp-gui
 pkgver=0.2.1
 pkgrel=2
