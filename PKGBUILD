@@ -1,10 +1,11 @@
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: ian_eo <ian.eric.ong@gmail.com>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Harley Laue <losinggeneration@yahoo.com>
 
 pkgbase=anjuta
 pkgname=('libanjuta' 'anjuta')
 pkgver=3.34.0
-pkgrel=8
+pkgrel=9
 pkgdesc="GNOME Integrated Development Environment (IDE)"
 arch=(x86_64)
 license=(GPL)
@@ -34,8 +35,8 @@ build() {
       --disable-silent-rules \
       --disable-static \
       --disable-vala \
+      --disable-plugin-devhelp \
       --enable-introspection \
-      --enable-plugin-devhelp \
       --enable-plugin-glade \
       --enable-plugin-subversion \
       --enable-glade-catalog \
