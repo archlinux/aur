@@ -4,6 +4,7 @@ pkgbase = gfxreconstruct
 	pkgrel = 1
 	url = https://github.com/LunarG/gfxreconstruct
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = cmake>=3.4
 	makedepends = git
