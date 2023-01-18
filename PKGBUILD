@@ -2,7 +2,7 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=wait4x
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("wait4x-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
-sha256sums=('465fd2845b456c7981d9c4f58478263a2625188a6ddac8420ce15f10c3681ef2')
+sha256sums=('ff54500f53093084481bb35aa3cfcb09e6c342acc30c3149af33cdefedc66ffb')
 
 build() {
 	cd "wait4x-$pkgver"
