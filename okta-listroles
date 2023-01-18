@@ -3,4 +3,4 @@ if [ -n "$https_proxy" ]; then
     readonly URI_REGEX='^(([^:/?#]+):)?(//((([^:/?#]+)@)?([^:/?#]+)(:([0-9]+))?))?(/([^?#]*))(\?([^#]*))?(#(.*))?'
     [[ $https_proxy =~ ${URI_REGEX} ]] && PROXY_CONFIG="-Dhttps.proxyHost=${BASH_REMATCH[7]} -Dhttps.proxyPort=${BASH_REMATCH[9]}"
 fi
-java ${PROXY_CONFIG}   -Djava.util.logging.config.file=/tmp/.okta/logging.properties   -classpath /tmp/.okta/okta-aws-cli.jar   com.okta.tools.ListRoles
+/usr/lib/jvm/java-11-openjdk/bin/java ${PROXY_CONFIG}   -Djava.util.logging.config.file=/tmp/.okta/logging.properties   -classpath /tmp/.okta/okta-aws-cli.jar   com.okta.tools.ListRoles
