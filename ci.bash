@@ -9,10 +9,12 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 cd "${DIR}" || return
 
+git checkout .
+git reset --hard HEAD
 git pull
 # Weird pgrep fail with the complete binary name
 if pgrep -a do-not-directly|grep alchemy ; then
 	echo "Aborting package build because Alchemy is running"
 	exit 0
 fi
-makepkg --sync --install --noconfirm --needed
+BUILDENV=(!distcc color !ccache check sign) makepkg --sync --install --noconfirm --needed

@@ -25,6 +25,12 @@ prepare() {
 	pip3 install --no-cache --upgrade autobuild --quiet
 }
 
+cleanbuild()
+{
+	rm -rf build-linux-64
+	git pull --prune
+	build()
+}
 build() {
 	# we have a lot of files, relax ulimit to help performance
 	if [[ -n "$USE_VENV" ]]; then
