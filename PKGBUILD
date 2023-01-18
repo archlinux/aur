@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220913
-pkgver=20220913.f09bebf
+_tag=20230117
+pkgver=20230117.7e4f0ed
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -149,6 +149,9 @@ package_linux-firmware-marvell-uncompressed() {
   provides=('linux-firmware-marvell')
 
   mv -v linux-firmware-marvell/* "${pkgdir}"
+
+  # remove arm64 firmware #76583
+  rm "${pkgdir}"/usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img
 }
 
 package_linux-firmware-qcom-uncompressed() {
