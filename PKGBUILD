@@ -3,7 +3,7 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=latest.r1.g9067926
+pkgver=latest.r0.gd70f827
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
