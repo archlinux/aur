@@ -24,7 +24,7 @@ source=("https://www.visual-paradigm.com/downloads/${_server}/vpce/Visual_Paradi
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('574037c928bab8f260989c1f3bfc2759dc44e986d7c6e1ac786b81765ece93bd'
+sha256sums=('a1eb250a432b722bf53cac681ab40e792c69dc9fe7dee96939a5df0041d85ddb'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
