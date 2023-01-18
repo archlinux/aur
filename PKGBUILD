@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nerd-fonts-ibm-plex-mono
 _name=IBMPlexMono
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A Nerd Font patched version of IBM Plex™ Mono"
 arch=('any')
 url="https://www.nerdfonts.com"
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('nerd-fonts' 'ttf-font-nerd')
 source=("$_name-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/$_name.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
-sha256sums=('05c76e08627cae7b334e3bcf88c41a263bd7da02680ec6f6987fc51c25cb4d39'
-            '245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360')
+sha256sums=('129b8bc4fb7f9ad68413932281c5c6c211ca0c5c34dc1987818e6bb181c7996f'
+            '1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/TTF"
