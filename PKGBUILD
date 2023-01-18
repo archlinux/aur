@@ -3,10 +3,10 @@
 
 _user=shirkdog
 pkgname=pulledpork
-pkgver=3.0.0.4
+pkgver=3.0.0.5b
 _pp2_pkgver=0.7.4
-_pp3_gitrev=d6f90aa
-pkgrel=3
+_pp3_gitrev=f82b285
+pkgrel=1
 pkgdesc="Tool to automatically update rules for snort"
 arch=('any')
 url="https://github.com/${_user}/${pkgname}3"
@@ -21,14 +21,14 @@ backup=('etc/pulledpork/pulledpork.conf'
         'etc/pulledpork/enablesid.conf'
         'etc/pulledpork/modifysid.conf')
 source=("pulledpork-${_pp2_pkgver}.tar.gz::https://github.com/${_user}/${pkgname}/archive/v${_pp2_pkgver}.tar.gz"
-        "pulledpork3-${pkgver}.tar.gz::https://github.com/${_user}/${pkgname}3/archive/${_pp3_gitrev}.tar.gz"
+        "pulledpork3-${pkgver}-${_pp3_gitrev}.tar.gz::https://github.com/${_user}/${pkgname}3/archive/${_pp3_gitrev}.tar.gz"
         "pulledpork.conf"
         "pulledpork3.conf"
         "pulledpork_update.sh"
         "pulledpork.service"
         "pulledpork.timer")
 sha256sums=('f0149eb6f723b622024295e0ee00e1acade93fae464b9fdc323fdf15e99c388c'
-            '10351b281797fa6ee033536d6cce1708bef50f9df9eadcb425fc794eace54f33'
+            '07d5b8a77267218cf88814459e14ca5225e68f998e4a86e93a99f8f947b9b298'
             '07e937f3fa0d4eefd7aee5c2ea5502b8b8060ecb06fda5f830ce74af65c33493'
             '19117d6407ba5cea93cff40c460c1e64a9c2ae68d80ca15d7f3a7586708d5302'
             'd2988ea005afb4f8a84baf20a59b616e6350fef140572794afe82cb44776ca1f'
