@@ -1,6 +1,6 @@
 pkgbase = ysoserial-git
 	pkgdesc = Tool to generate payloads that exploit unsafe Java object deserialization
-	pkgver = 0.0.5.r81.g8eb5cbf
+	pkgver = v0.0.6.r2.g2874a69
 	pkgrel = 1
 	url = https://github.com/frohoff/ysoserial
 	arch = any

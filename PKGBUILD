@@ -1,7 +1,7 @@
 # Maintainer: Drew Noel <dnoel@gdssecurity.com>
 pkgname=ysoserial-git
 pkgrel=1
-pkgver=0.0.5.r81.g8eb5cbf
+pkgver=v0.0.6.r2.g2874a69
 pkgdesc="Tool to generate payloads that exploit unsafe Java object deserialization"
 arch=("any")
 url="https://github.com/frohoff/ysoserial"
