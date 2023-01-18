@@ -1,40 +1,26 @@
-# Maintainer: yugrotavele <yugrotavele at archlinux dot us>
-# Contributor: Arkham <arkham at archlinux dot us>
-# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=dreamchess
-pkgver=0.2.0
-pkgrel=8
-pkgdesc="An open source chess game with OpenGL graphics and various chess board sets"
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="DreamChess is an open source chess game. It comes with its own engine called Dreamer."
 arch=('i686' 'x86_64')
-url="http://www.dreamchess.org/"
+url="https://github.com/dreamchess/dreamchess"
 license=('GPL3')
-depends=('mesa' 'mxml' 'sdl_mixer' 'sdl_image')
-makedepends=('autoconf' 'automake')
-source=(${pkgname}-${pkgver}.tar.gz::http://sourceforge.net/projects/dreamchess/files/dreamchess/${pkgver}/${pkgname}-${pkgver}.tar.gz/download
-        add-lpthread.diff
-        link-with-libm.diff
-        dreamchess.desktop)
-md5sums=('0e837e14819c1e7d0232c6beb4d5c185'
-         '7b2505302f63ee06039acb146326f306'
-         '53ea942ed0d004df11e4ee7b9bff9890'
-         '6034deb046a5eeecd17e23dd68ae2f71')        
+depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'expat' 'glew')
+makedepends=('flex' 'bison' 'cmake')
+provides=('dreamchess')
+conflicts=('dreamchess')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('b070a34acf69ed92e523902683d104abb295d78b6f37663f4668e929b9e90470')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # Patch
-  patch -Np1 -i "$srcdir/add-lpthread.diff"
-  patch -Np1 -i "$srcdir/link-with-libm.diff"
-  autoreconf -i
-
-  # Compile and install
-  ./configure --prefix=/usr
-  make
+        cd "$pkgname-$pkgver/cmake"
+        cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+        make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm 644 "$srcdir/dreamchess.desktop" "$pkgdir/usr/share/applications/dreamchess.desktop"
+        cd "$pkgname-$pkgver/cmake"
+        make DESTDIR="$pkgdir/" install
 }
