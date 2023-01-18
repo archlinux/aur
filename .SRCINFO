@@ -1,7 +1,7 @@
 pkgbase = bowtie2-bin
 	pkgdesc = Tool for aligning sequencing reads to long reference sequences
-	pkgver = 2.5.0
-	pkgrel = 2
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 	arch = x86_64
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = bowtie2-bin
 	depends = glibc
 	optdepends = perl
 	optdepends = python
-	provides = bowtie2=2.5.0
+	provides = bowtie2=2.5.1
 	conflicts = bowtie2
-	source_x86_64 = https://github.com/BenLangmead/bowtie2/releases/download/v2.5.0/bowtie2-2.5.0-linux-x86_64.zip
-	sha256sums_x86_64 = d5428b14019691669f038f34d232ec9a6c48f435fdc2d71a8e37dc8ba7b85613
-	source_aarch64 = https://github.com/BenLangmead/bowtie2/releases/download/v2.5.0/bowtie2-2.5.0-linux-aarch64.zip
-	sha256sums_aarch64 = 6cd79cd8251755c9486d06a333a6ec3f4c55f1fb7553c33ecd1e512bc3fca5bb
+	source_x86_64 = https://github.com/BenLangmead/bowtie2/releases/download/v2.5.1/bowtie2-2.5.1-linux-x86_64.zip
+	sha256sums_x86_64 = d0bafb67357ef19aff43a1a48adda54a61f13266f2d088d96b9736151ad444ec
+	source_aarch64 = https://github.com/BenLangmead/bowtie2/releases/download/v2.5.1/bowtie2-2.5.1-linux-aarch64.zip
+	sha256sums_aarch64 = 73263d5f24ae5af5feab405583652a9aa7421cecf7ef12f5ecf3eeb7b3b8e3fd
 
 pkgname = bowtie2-bin
