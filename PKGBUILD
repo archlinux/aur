@@ -9,11 +9,15 @@ arch=(x86_64)
 license=(GNU3)
 options=(!strip)
 source=("https://github.com/tnguye20/cider-polybar/releases/download/v.${pkgver}/cider-polybar.tar.gz")
-noextract=("cider-polybar.tar.gz")
 sha256sums=('73dfca88fa532df46b390136a77c5937eb3135e9296f265185ead75d062a2629')
 
 
 package() {
-	install -d "${pkgdir}/usr/local/bin/"
-	tar -C "${pkgdir}/usr/local/bin/" -xvf cider-polybar.tar.gz
+	# Create the folder
+	install -dm755 "${pkgdir}/usr/local/bin/"
+
+	# & move the file inside it
+	install -Dm755 \
+		"${srcdir}/cider-polybar" \
+		"${pkgdir}/usr/local/bin/"
 }
