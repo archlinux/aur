@@ -3,13 +3,13 @@
 pkgname=mingw-w64-libpsl
 _pkgname=libpsl
 pkgver=0.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Public Suffix List library (mingw-w64)'
 url='https://github.com/rockdaboot/libpsl'
 arch=(any)
 license=('MIT')
 depends=('mingw-w64-libidn2' 'mingw-w64-libunistring')
-makedepends=('mingw-w64-configure' 'python' 'gtk-doc')
+makedepends=('mingw-w64-meson')
 source=(https://github.com/rockdaboot/libpsl/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz
   c47cf796.patch)
 sha512sums=('f1df72220bf4391d4701007100b0df66c833a2cbcb7481c9d13f0b9e0cad3b66d2d15d4b976e5bad60d2ad1540355112fa1acb07aa925c241d2d7cd20681c71d'
