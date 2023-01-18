@@ -1,6 +1,6 @@
 pkgbase = upp-nightly
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
-	pkgver = 16560
+	pkgver = 16673
 	pkgrel = 1
 	url = http://www.ultimatepp.org
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = upp-nightly
 	options = !makeflags
 	options = emptydirs
 	options = !strip
-	source = https://www.ultimatepp.org/downloads/upp-posix-16560.tar.xz
-	md5sums = f7b896981b1374321e06fcfd38a68afe
+	source = https://www.ultimatepp.org/downloads/upp-posix-16673.tar.xz
+	md5sums = 0617e6b635675e07d2bfd8a79087affe
 
 pkgname = upp-nightly
 	pkgdesc = Radical and innovative multiplatform C++ framework (known as U++)
