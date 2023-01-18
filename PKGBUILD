@@ -1,10 +1,9 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_branch=develop-bradley
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.1.3.develop.bradley.r1.g85bccab1b
+pkgver=5.1.3.r35.g207d38e47
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -12,7 +11,7 @@ _depends_soh=("sdl2" "sdl2_net" "libpulse" "glew")
 _depends_soh_otr_exporter=("libpng")
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}")
 makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxinerama" "libxi" "glu")
-source=("git+https://github.com/HarbourMasters/${_reponame}.git#branch=${_branch}"
+source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/kenix3/libultraship.git"
         "soh.desktop"
         "soh-use-appbasedir.patch"
@@ -23,7 +22,7 @@ sha256sums=('SKIP'
             'SKIP'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
-            'cddea52031c2e9638a066a59746ecb4d9a0c3fb2a7e5858ccaf2441e8f3901ab'
+            '3de25d94d28f58daec33539181a8a666a20545204089996acf485325124ff9bc'
             '6e735877e7bba81f9f308f6eabbdfe5354f2c331a9acf9a16ab02a5681f2c25f'
             '3e9090d6e64929383290264822ee29313d028606fad1a14900623241159d3fd7')
 noextract=("assets-headers-gc_nmq_pal_f.tar.xz")
@@ -42,8 +41,7 @@ SHIP_PREFIX=/opt/soh
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
-  git describe --long --tags | sed "s/[^-]*-g/${_branch}-r&/;s/-/./g"
-  #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -76,9 +74,7 @@ prepare() {
     # $ cd OTRExporter
     # $ ./extract_assets.py -z ../build/ZAPD/ZAPD.out # Select your Europe Gamecube rom
     # $ cd ../soh
-    # $ ../../../remove-unneeded-asset-defines.py
-    # $ cd ..
-    # $ find soh/assets -name \*.h | XZ_OPT=-e9 tar -c -J -T - -f ../../assets-headers-gc_nmq_pal_f.tar.xz
+    # $ ../../../../create-asset-headers-archive.py ../../assets-headers-gc_nmq_pal_f.tar.xz
     #
     # Make sure to regenerate source checksums after recreating the archive
   fi
