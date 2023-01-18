@@ -19,20 +19,27 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=13.0.0_r384835.672f67300466
+pkgver=16.0.0_r448881.31ee6ae059fd
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
-             'lib32-libxml2' 'llvm-minimal-git')
+             'lib32-libxml2' 'lib32-zstd' 'llvm-minimal-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 md5sums=('SKIP')
 sha512sums=('SKIP')
-options=('staticlibs')
+options=('staticlibs' '!lto')
+# explicitly disable lto to reduce number of build hangs / test failures
 
-# NINJAFLAGS is an env var used to pass commandline options to ninja
-# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+# Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
+# It can also happen that the kernel oom killer interferes and kills important tasks.
+# A reasonable value for them to avoid these issues appears to be 75% of available cores.
+# NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
+# example for systems with 24 cores
+# NINJAFLAGS="-j 18 -l 18"
+# LITFLAGS="-j 18"
+# NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
 pkgver() {
     cd llvm-project/llvm
@@ -72,8 +79,8 @@ build() {
         -D LLVM_LINK_LLVM_DYLIB=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
+        -D LLVM_USE_PERF=ON \
         -D LLVM_INCLUDE_BENCHMARKS=OFF \
-        -D LLVM_INCLUDE_GO_TESTS=OFF \
         -D LLVM_INCLUDE_EXAMPLES=OFF \
         -D LLVM_BUILD_DOCS=OFF \
         -D LLVM_INCLUDE_DOCS=OFF \
@@ -84,6 +91,7 @@ build() {
         -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_ENABLE_BINDINGS=OFF \
+        -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
         
         ninja -C _build $NINJAFLAGS

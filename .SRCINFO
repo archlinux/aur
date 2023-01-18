@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 13.0.0_r384835.672f67300466
+	pkgver = 16.0.0_r448881.31ee6ae059fd
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -12,15 +12,17 @@ pkgbase = lib32-llvm-minimal-git
 	makedepends = python
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libxml2
+	makedepends = lib32-zstd
 	makedepends = llvm-minimal-git
 	options = staticlibs
+	options = !lto
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	md5sums = SKIP
 	sha512sums = SKIP
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=13.0.0_r384835.672f67300466-1
+	depends = lib32-llvm-libs-minimal-git=16.0.0_r448881.31ee6ae059fd-1
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm
@@ -34,4 +36,3 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-gcc-libs
 	optdepends = lib32-llvm-libs: for LLVMgold linker
 	provides = lib32-llvm-libs
-
