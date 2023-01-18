@@ -1,7 +1,7 @@
 pkgbase = keepassxc-cryptomator
 	pkgdesc = Store Cryptomator vault passwords in KeePassXC
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://plugin.purejava.org/
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = keepassxc-cryptomator
 	depends = cryptomator
 	depends = keepassxc
 	options = !strip
-	source = keepassxc-cryptomator-1.2.0.tar.gz::https://github.com/purejava/keepassxc-cryptomator/archive/refs/tags/1.2.0.tar.gz
-	source = keepassxc-cryptomator-1.2.0.tar.gz.sig::https://github.com/purejava/keepassxc-cryptomator/releases/download/1.2.0/keepassxc-cryptomator-1.2.0.tar.gz.sig
+	source = keepassxc-cryptomator-1.2.1.tar.gz::https://github.com/purejava/keepassxc-cryptomator/releases/download/1.2.1/keepassxc-cryptomator-1.2.1.tar.gz
+	source = keepassxc-cryptomator-1.2.1.tar.gz.sig::https://github.com/purejava/keepassxc-cryptomator/releases/download/1.2.1/keepassxc-cryptomator-1.2.1.tar.gz.sig
 	validpgpkeys = 54CF8E1F55CE7E977A0E41895BFB2076ABC48776
-	sha256sums = 4e77c41a86de2a119571dd4eff9ec127eafa53c37c035dd4f6aba7abf6e56e68
+	sha256sums = ce7ffbd92ee373793cd1023d73b50032218964adea2efab58c576ca472199340
 	sha256sums = SKIP
 
 pkgname = keepassxc-cryptomator
