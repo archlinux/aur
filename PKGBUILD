@@ -14,8 +14,9 @@ optdepends=(
     'libxnvctrl: NVIDIA GPU stats'
     'lib32-mangohud-git: 32-bit support'
 )
-provides=('mangohud')
-replaces=('mangohud-common-git' 'vulkan-mesa-layer-mango')
+provides=('mangohud' 'mangohud-common')
+conflicts=('mangohud' 'mangohud-common' 'mangohud-common-git')
+replaces=('mangohud-common-git')
 source=("${_pkgname%"-git"}::git+$url")
 sha512sums=('SKIP')
 
@@ -40,4 +41,5 @@ build() {
 package() {
     meson install --destdir="$pkgdir" -C build
     install -Dm664 "${_pkgname%"-git"}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    rm "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json"
 }

@@ -20,8 +20,11 @@ pkgbase = mangohud-git
 	optdepends = libxnvctrl: NVIDIA GPU stats
 	optdepends = lib32-mangohud-git: 32-bit support
 	provides = mangohud
+	provides = mangohud-common
+	conflicts = mangohud
+	conflicts = mangohud-common
+	conflicts = mangohud-common-git
 	replaces = mangohud-common-git
-	replaces = vulkan-mesa-layer-mango
 	source = mangohud::git+https://github.com/flightlessmango/MangoHud
 	sha512sums = SKIP
 
