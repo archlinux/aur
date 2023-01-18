@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r18097.g582d6b738b'
+pkgver='5.0.r18269.g1cd11b8f3a'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -29,15 +29,13 @@ source=(
 	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
-	"$pkgname-$pkgver-$pkgrel-system-libmgba.diff::https://github.com/$_mainpkgname/$_projectname/commit/afde3a0e0d2bc49a5d890d16611432aa6eb76428.diff" # https://github.com/dolphin-emu/dolphin/pull/11362
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '1fe1501ccacb158464bd17efaae5263f0bc8639edb40a29227969d803e1c99860373df40fe0da7828f4bd2fecff4801695f7d303a49bdfbb8087fbca3b1b468d')
+            'SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -45,9 +43,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Apply patch to use system libmgba
-	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-$pkgrel-system-libmgba.diff"
 
 	# Provide SPIRV-Cross submodule
 	_spirvcrosspath='Externals/spirv_cross/SPIRV-Cross'
