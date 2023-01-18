@@ -110,6 +110,7 @@ setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3" >> Geant4.csh
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
 
+  #set GEANT4_BUILD_TLS_MODEL=global-dynamic and GEANT4_USE_PYTHON=ON for compatibility with g4python
   make VERBOSE=1
 }
 
