@@ -7,7 +7,7 @@ pkgdesc="A cross-platform java application for decoding, monitoring, recording a
 arch=('aarch64' 'x86_64')
 url="https://github.com/DSheirer/sdrtrunk"
 license=('GPL3')
-depends=('java-runtime' 'at-spi2-core' 'libnet' 'alsa-lib' 'gtk3')
+depends=('at-spi2-core' 'libnet' 'alsa-lib' 'gtk3')
 provides=("sdrtrunk-bin")
 conflicts=('sdrtrunk' 'sdrtrunk-git' 'sdrtrunk-bin')
 
