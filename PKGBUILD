@@ -1,7 +1,7 @@
 # Maintainer: Kritias <theodoridisgr at gmail dot com>
 # Previous Maintainer: aksr <aksr at t-com dot me>
 pkgname=creduce-git
-pkgver=2.10.0.94.g4ae77d1
+pkgver=2.10.0.96.g8d56bee
 pkgrel=1
 pkgdesc='A C program reducer.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('clang' 'llvm' 'perl-exporter-lite' 'perl-file-which' 'perl-getopt-tabu
          'perl-regexp-common' 'zlib')
 optdepends=('perl-term-readkey')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/csmith-project/creduce.git#branch=llvm-13.0")
+source=("$pkgname::git+https://github.com/csmith-project/creduce.git")
 md5sums=('SKIP')
 
 pkgver() {

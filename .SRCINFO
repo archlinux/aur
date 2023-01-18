@@ -1,6 +1,6 @@
 pkgbase = creduce-git
 	pkgdesc = A C program reducer.
-	pkgver = 2.10.0.94.g4ae77d1
+	pkgver = 2.10.0.96.g8d56bee
 	pkgrel = 1
 	url = https://github.com/csmith-project/creduce
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = creduce-git
 	depends = perl-regexp-common
 	depends = zlib
 	optdepends = perl-term-readkey
-	source = creduce-git::git+https://github.com/csmith-project/creduce.git#branch=llvm-13.0
+	source = creduce-git::git+https://github.com/csmith-project/creduce.git
 	md5sums = SKIP
 
 pkgname = creduce-git
