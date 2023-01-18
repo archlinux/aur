@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=nerd-fonts-fantasque-sans-mono
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Patched font FantasqueSansMono from the nerd-fonts library"
 arch=("any")
