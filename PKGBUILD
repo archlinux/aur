@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/repl-python-codestats
 _source_type=pypi-releases
-_upstreamver='0.0.2'
+_upstreamver='0.0.3'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -26,7 +26,7 @@ _py=py3
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('6e80347297aa8093c715148f84f82daea597fcc78f8b2e08c94d776e992ad796')
+sha256sums=('b6fa1f0b76a9a9ba39e59b8d222e54da5c174c5d8ee6818b2f82bc21fa7c4ee9')
 
 package() {
 	cd "$srcdir" || return 1
