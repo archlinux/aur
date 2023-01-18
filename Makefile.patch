@@ -1,0 +1,11 @@
+--- Makefile	2018-12-28 08:06:36.000000000 +0100
++++ Makefile_new	2023-01-16 16:08:38.789086345 +0100
+@@ -14,7 +14,7 @@
+ WISH = wish
+ 
+ ### Directory where to install executable files
+-INSTALL_DIR = /usr/local/bin
++INSTALL_DIR = $(DESTDIR)/usr/bin
+ 
+ 
+ 
