@@ -1,19 +1,20 @@
-# $Id$
+# Maintainer: xeruf <27jf at pm dot me>
 # Maintainer: Philipp Schmidt <philschmidt@gmx.net>
-# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Creator: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
+pkgname="${_pkgname}-git"
 _pkgname=samba-mounter
 pkgname=samba-mounter-git
-pkgver=158.7f5915f
+pkgver=207.0c56c2d
 pkgrel=1
 pkgdesc="User space mount tool for samba"
-url="https://cgit.kde.org/samba-mounter.git"
+url="https://invent.kde.org/system/samba-mounter.git/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('kauth' 'cifs-utils' 'smbclient' 'kcmutils' 'kconfig' 'kio' 'ki18n' 'solid')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
-provides=('samba-mounter' 'samba-mounter-frameworks-git')
-source=("git://anongit.kde.org/samba-mounter.git")
+provides=("${_pkgname}"  "${_pkgname}-frameworks-git")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

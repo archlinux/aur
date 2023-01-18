@@ -1,8 +1,8 @@
 pkgbase = samba-mounter-git
 	pkgdesc = User space mount tool for samba
-	pkgver = 158.7f5915f
+	pkgver = 207.0c56c2d
 	pkgrel = 1
-	url = https://cgit.kde.org/samba-mounter.git
+	url = https://invent.kde.org/system/samba-mounter.git/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -19,8 +19,7 @@ pkgbase = samba-mounter-git
 	depends = solid
 	provides = samba-mounter
 	provides = samba-mounter-frameworks-git
-	source = git://anongit.kde.org/samba-mounter.git
+	source = git+https://invent.kde.org/system/samba-mounter.git/
 	sha256sums = SKIP
 
 pkgname = samba-mounter-git
-
