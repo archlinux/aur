@@ -8,6 +8,7 @@ url="https://github.com/lxgw/LxgwNeoXiHei-Screen"
 license=('custom:IPA')
 source=("$pkgname-$pkgver-$pkgrel.ttf::$url/releases/download/v$pkgver/LXGWNeoXiHeiScreenFull.ttf"
         *.md)
+changelog='changelog.txt'
 provides=('ttf-lxgw-neo-xihei-screen')
 conflicts=('ttf-lxgw-neo-xihei-screen')
 sha256sums=('9a0fdd01e09aa518a7632b5f19f3c3e5fddb18bf1314b90e68b850337288835e'
