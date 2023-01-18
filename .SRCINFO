@@ -1,7 +1,7 @@
 pkgbase = bristol
 	pkgdesc = Vintage synthesizers emulator
 	pkgver = 0.60.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bristol.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = bristol
 	depends = libx11
 	options = !libtool
 	source = http://downloads.sourceforge.net/sourceforge/bristol/bristol-0.60.11.tar.gz
-	md5sums = 9ea4dacdac0dba3048156e2f6a5ee4d6
+	source = https://sources.debian.org/data/main/b/bristol/0.60.11-3.1/debian/patches/04-gcc_10.patch
 	sha256sums = 7d1f0bbd0d7d303fc77c6b9549b61708d7a83b4dc007818011b1f55d1fa922ba
+	sha256sums = 4080f34444e301fcd94b454813dc646f39fb2e5787f3fe74cdc9c36520458c81
 
 pkgname = bristol
-
