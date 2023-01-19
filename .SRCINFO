@@ -1,6 +1,6 @@
 pkgbase = electron22-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 22
-	pkgver = 22.0.2
+	pkgver = 22.0.3
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = electron22-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron22=22.0.2
-	provides = electron=22.0.2
+	provides = electron22=22.0.3
+	provides = electron=22.0.3
 	conflicts = electron22
-	source_x86_64 = electron22-bin-chromedriver-22.0.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v22.0.2/chromedriver-v22.0.2-linux-x64.zip
-	source_x86_64 = electron22-bin-22.0.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v22.0.2/electron-v22.0.2-linux-x64.zip
-	sha256sums_x86_64 = 339f0dca5a2cbf4b92f1ea30b4b8669f84ded376cb39806aef49207aff540101
-	sha256sums_x86_64 = 4daf242595639461f6c7164860fdb58c2f344eca24b379ea9c9e604c4cf443e5
-	source_aarch64 = electron22-bin-chromedriver-22.0.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v22.0.2/chromedriver-v22.0.2-linux-arm64.zip
-	source_aarch64 = electron22-bin-22.0.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v22.0.2/electron-v22.0.2-linux-arm64.zip
-	sha256sums_aarch64 = 4f49aa6952ff8d9c978438978ef8da33888c4765e1d6042170f7b7aaf8cdec1d
-	sha256sums_aarch64 = 4ad1c687878a09b2bd18be63db7dd08bac9f57a104fa5e632df04e96ba8b7439
+	source_x86_64 = electron22-bin-chromedriver-22.0.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v22.0.3/chromedriver-v22.0.3-linux-x64.zip
+	source_x86_64 = electron22-bin-22.0.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v22.0.3/electron-v22.0.3-linux-x64.zip
+	sha256sums_x86_64 = a3c80c24755b16ee7c72846ec14459ed3e96c2d0ac9f9d9c1788965ba7136f3a
+	sha256sums_x86_64 = 08030f48def226e2cf64bf11701e9aaf434ec8fe13970636f8c19d231699661e
+	source_aarch64 = electron22-bin-chromedriver-22.0.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v22.0.3/chromedriver-v22.0.3-linux-arm64.zip
+	source_aarch64 = electron22-bin-22.0.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v22.0.3/electron-v22.0.3-linux-arm64.zip
+	sha256sums_aarch64 = bffa9328e7518d93f17d2b71ae8ebe9758ad7857d3bba8602b79ce4a0ba7bad1
+	sha256sums_aarch64 = 5f5ecf9c0efa0622fe9fff7a99b5175bc4bed5f0023f2cc2620066c33724653d
 
 pkgname = electron22-bin
