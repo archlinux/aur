@@ -3,12 +3,20 @@
 pkgname=python-zodb
 _pkgname=ZODB
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A native object database for Python"
 arch=(any)
 url="http://www.zodb.org/en/latest/index.html"
 license=('ZPL')
-depends=('python' 'python-persistent' 'python-zodbpickle' 'python-transaction' 'python-zcatalog')
+depends=(
+	'python'
+	'python-btrees'
+	'python-persistent'
+	'python-transaction'
+	'python-zc.lockfile'
+	'python-zcatalog'
+	'python-zodbpickle'
+)
 optdepends=('python-btreefolder2')
 makedepends=('python-setuptools')
 
