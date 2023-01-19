@@ -2,7 +2,7 @@
 
 pkgname=freecad-assembly3-appimage
 pkgver=2023.01.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Assembly3 workbench for FreeCAD."
 arch=('x86_64')
 url="https://github.com/realthunder/FreeCAD"
@@ -25,7 +25,7 @@ source=(
 sha512sums=(
   "9d8853995cac30fbc7505fc0a5ae105fbcf5e4c94dab6a60b36737e930e115b95e1c24ab184abe143fa4e4a63d3a01b7cd004bcecbb9efd86e3ef68a5b5d2898"
   "4d1b0998dc55adcfb2ac2f33382bce6467078aaa33dbd3bedf5c2102da853d4186836ad4103ea6100f34068751a5a9d627c022bf2f01deb712e88c6c58e0e292"
-  "6a47efb5fb429829b31a322620b90fbd36b9def22479aa7fefbce20a51373720140c28b6aadae4c630bcf1629d6ca9099fceb2444e88954d0e5b53a9f612e233"
+  "6f8f60c9a823ac328c1d70db36486adf5268bd8d2cb2d5acd6058254b67b40e4cfa2806d01da679ac092d9ca6b7688f6435415c12e05e6afe207fb8e1b6a622e"
 )
 
 prepare() {

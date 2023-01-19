@@ -8,7 +8,7 @@
 -Icon=freecad_link
 +Name=FreeCAD Assembly3
 +Exec=/usr/bin/freecad-asm3 %F
-+Icon=freecad-asm3-appimage
++Icon=freecad-assembly3-appimage
  Type=Application
 -Categories=Engineering;
 +Categories=Engineering;Construction;Development;
