@@ -3,7 +3,7 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc="A Python binding for QuantLib."
 arch=("x86_64")
@@ -13,13 +13,11 @@ options=(!libtool)
 depends=("quantlib>=$pkgver" "python" "openmp")
 makedepends=("clang" "boost")
 source=(https://github.com/lballabio/$_pkgname/releases/download/$_pkgname-v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=("e3dec686bd3e42767d955dae78f8b8e1ffca13a0d58985d6ac541a2593e58b3f")
+sha256sums=("77b3eadc0e956740f8d84c9bb9c884e4e4aec3e9f97464b8f79e08efe2672525")
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
   autoreconf -if
-  sed -i "s#boost::dynamic_pointer_cast#ext::dynamic_pointer_cast#g" \
-    Python/QuantLib/quantlib_wrap.cpp
 }
 
 build() {
