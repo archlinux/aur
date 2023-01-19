@@ -4,7 +4,7 @@
 pkgname=ytdlp-gui
 _pkgname=ytdlp-gui
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")
