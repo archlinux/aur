@@ -1,6 +1,6 @@
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r3050.7620d87f
+	pkgver = r3059.50379d35
 	pkgrel = 1
 	url = https://ycm-core.github.io/YouCompleteMe/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vim-youcompleteme-git
 	depends = python>=3.6
 	depends = python-watchdog
 	depends = python-bottle
-	depends = clang>=11.0
+	depends = clang
 	optdepends = gopls: Go semantic completion
 	optdepends = nodejs-tern: JavaScript semantic completion
 	optdepends = rust-analyzer: Rust semantic completion
