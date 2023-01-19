@@ -1,7 +1,7 @@
 pkgbase = python-i3
 	pkgdesc = Python based tools for i3 users and developers
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ziberna/i3-py
 	arch = any
 	license = BSD
