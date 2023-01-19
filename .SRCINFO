@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-victor-mono
 	pkgdesc = Patched font Victor Mono from nerd-fonts
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = nerd-fonts-victor-mono
 	conflicts = nerd-fonts-complete
 	conflicts = nerd-fonts-complete-mono-glyphs
 	conflicts = nerd-fonts-victor-mono
-	source = nerd-fonts-victor-mono-2.2.2.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/VictorMono.zip
-	sha256sums = 21261fbd995653d97ec0879808c2b4fe5cd23dadd43ef4254bd10c30267d8658
+	source = nerd-fonts-victor-mono-2.3.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0/VictorMono.zip
+	b2sums = 6a052d04869bc8d9575a2ad736b8063b8cf45caa45345862a7b7aedb461c095cb689ef29d2ed5ed6c4cf9bf012bd90c4d8b17b9a88a32542b7bee8b92e920107
 
 pkgname = ttf-nerd-fonts-victor-mono
 	provides = nerd-fonts-victor-mono
@@ -23,8 +23,3 @@ pkgname = ttf-nerd-fonts-victor-mono
 	provides = ttf-nerd-fonts
 	provides = ttf-nerd-fonts-symbols
 	provides = ttf-nerd-fonts-symbols-mono
-
-pkgname = otf-nerd-fonts-victor-mono
-	provides = nerd-fonts-victor-mono
-	provides = ttf-font
-	provides = otf-nerd-fonts
