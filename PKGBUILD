@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rearrr
-_pkgver=0.3.2
+_pkgver=0.3.3
 pkgname=r-${_pkgname,,}
-pkgver=0.3.2
-pkgrel=3
+pkgver=0.3.3
+pkgrel=1
 pkgdesc='Rearranging Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-xpectr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d87137062a0daaff8e7ce02d1d5534e6123681e387f9d28f7e8de0cfc0205f55')
+sha256sums=('c1f301ce27779d4249ace194b2224300c1dd61878955b9b52e09973ca274b5ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

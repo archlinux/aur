@@ -1,7 +1,7 @@
 pkgbase = r-rearrr
 	pkgdesc = Rearranging Data
-	pkgver = 0.3.2
-	pkgrel = 3
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rearrr
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = r-rearrr
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-xpectr
-	source = https://cran.r-project.org/src/contrib/rearrr_0.3.2.tar.gz
-	sha256sums = d87137062a0daaff8e7ce02d1d5534e6123681e387f9d28f7e8de0cfc0205f55
+	source = https://cran.r-project.org/src/contrib/rearrr_0.3.3.tar.gz
+	sha256sums = c1f301ce27779d4249ace194b2224300c1dd61878955b9b52e09973ca274b5ba
 
 pkgname = r-rearrr
