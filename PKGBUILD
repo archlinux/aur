@@ -2,13 +2,13 @@
 
 _pkgname=entr
 pkgname=entr-git
-pkgver=r503.4482030
+pkgver=r528.828a2a4
 pkgrel=1
 pkgdesc="Run arbitrary commands when files change."
 arch=('i686' 'x86_64')
 url="http://eradman.com/entrproject"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'vim' 'tmux')
 optdepends=()
 makedepends=('git')
 conflicts=('entr')
