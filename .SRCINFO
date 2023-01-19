@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_deck_of_many_things_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_deck_of_many_things
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_deck_of_many_things_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_deck_of_many_things_v5_0_0_0040_29222.sh
+	sha256sums = 46dffd5a0b11f59d0ee879ddc6ffcc9f2e6f226299bd69f2e1ef9f31275947c9
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_deck_of_many_things_dlc
