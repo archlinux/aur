@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camilladsp
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='IIR and FIR engine for crossovers, room correction etc.'
 url=https://github.com/HEnquist/camilladsp
@@ -13,7 +13,7 @@ source=(https://github.com/HEnquist/camilladsp/archive/refs/tags/v$pkgver.tar.gz
         camilladsp.install
         camilladsp.service
         camilladsp.yml)
-sha256sums=('890d84d2ae105968d536d9795ff4c9da2acedb7e6eaa7794a45fc4ca02c028ed'
+sha256sums=('6b2c239390024f5f5dfebd2c8a8089acbebc81b6addfe3af68153064e5e36612'
             '15e9bb22a32472b88bd092d5bdbca0cdc7de8d0a476e954558ca8e00ab8c4517'
             '993f05f04e1627b1739046e3c59d880deec1d4849525fa0e633dda5493923b48'
             'dd7932754e220e3e68250dae326ce6a81f6a61ce7923f6e001c9c3c1787a3b07')
