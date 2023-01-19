@@ -5,9 +5,9 @@
 # Contributor: torvic9 AT mailbox DOT org
 # Contributor: lsf
 
-pkgname=firedragon-unsigned-extensions
-_pkgname=FireDragon
 __pkgname=firedragon
+pkgname=$__pkgname-unsigned-extensions
+_pkgname=FireDragon
 pkgver=109.0
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
