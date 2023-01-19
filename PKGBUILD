@@ -4,7 +4,7 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.20.1.r0.g06320b2
+pkgver=0.21.0.r0.gf0cbdc1
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git' 'nasm')
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "$_pkgname"
