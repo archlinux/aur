@@ -2,9 +2,9 @@
 
 _java_ver=19
 _jdkname="zulu-${_java_ver}"
-_zulu_build="${_java_ver}.30.11-ca"
+_zulu_build="${_java_ver}.32.13-ca"
 pkgname="${_jdkname}-bin"
-pkgver="${_java_ver}.0.1"
+pkgver="${_java_ver}.0.2"
 pkgrel=1
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('aarch64' 'x86_64')
@@ -26,8 +26,8 @@ provides=(
 install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed')
-sha256sums_x86_64=('2ac8cd9e7e1e30c8fba107164a2ded9fad698326899564af4b1254815adfaa8a')
+sha256sums_aarch64=('76216efa69e448fe487d57310372aea0df1cf15b82974c84a8cb0d97eb934165')
+sha256sums_x86_64=('4a994aded1d9b35258d543a59d4963d2687a1094a818b79a21f00273fbbc5bca')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
