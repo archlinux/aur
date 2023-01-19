@@ -3,14 +3,14 @@
 pkgname=denaro
 _pkgname=nickvisionmoney
 _pkgid=org.nickvision.money
-pkgver=2023.1.0
+pkgver=2023.1.1
 pkgrel=1
 pkgdesc="A personal finance manager"
 arch=('aarch64' 'armv7h' 'x86_64' 'i686')
 url=https://github.com/nlogozzo/$_pkgname
 license=('GPL3')
-depends=('dotnet-runtime' 'libadwaita')
-makedepends=('dotnet-sdk' 'cmake' 'git')
+depends=('dotnet-runtime>=7' 'libadwaita')
+makedepends=('dotnet-sdk>=7' 'cmake' 'git')
 conflicts=('nickvision-money' 'nickvision-money-git')
 replaces=(nickvision-money)
 source=(git+$url#tag=$pkgver)
