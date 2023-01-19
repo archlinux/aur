@@ -1,6 +1,6 @@
 pkgbase = cargo-lock
 	pkgdesc = Self-contained Cargo.lock parser
-	pkgver = 8.0.2
+	pkgver = 8.0.3
 	pkgrel = 1
 	url = https://github.com/rustsec/rustsec/tree/main/cargo-lock
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-lock
 	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/rustsec/rustsec/archive/cargo-lock/v8.0.2/cargo-lock-8.0.2.tar.gz
-	sha256sums = 35be5d4c12524d566a30fba7212e21c7326228ea416929950587712b71c176d1
+	source = https://github.com/rustsec/rustsec/archive/cargo-lock/v8.0.3/cargo-lock-8.0.3.tar.gz
+	sha256sums = 4612708a00b85d7790f2a74fc29c1308f5f1f263d85113e251899f8de6f6e850
 
 pkgname = cargo-lock
