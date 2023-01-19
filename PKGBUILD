@@ -1,7 +1,7 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=verible-bin
-pkgver=0.0.2162
+pkgver=0.0.2613
 pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
 arch=('x86_64')
@@ -18,7 +18,7 @@ prepare() {
 }
 
 pkgver() {
-  cat latest | jq '.tag_name' | grep -Eo '([0-9\.]+\-[0-9]+)' | tr '-' '.'
+  cat latest | jq '.tag_name' | grep -Eo '([0-9\.]+\-[0-9]+)' | tr '\-' '.'
 }
 
 package() {
