@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_the_forgotten_sanctum_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_the_forgotten_sanctum
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_the_forgotten_sanctum_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_the_forgotten_sanctum_v5_0_0_0040_29222.sh
+	sha256sums = d755a0e8a70ed7b0c756a65899141e1e992a0a5b25ce8bbe244b8bc55153c9bd
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_the_forgotten_sanctum_dlc
