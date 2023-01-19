@@ -1,6 +1,6 @@
 pkgbase = kodi-nexus-git
 	pkgver = r61834.ec5b71680e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -47,7 +47,6 @@ pkgbase = kodi-nexus-git
 	makedepends = swig
 	makedepends = upower
 	makedepends = giflib
-	makedepends = rapidjson
 	makedepends = ghostscript
 	makedepends = meson
 	makedepends = gtest
