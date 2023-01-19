@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_explorers_pack_pet_cosmo_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_obsidian_edition_release
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_explorer_s_pack_pet_cosmo_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_explorer_s_pack_pet_cosmo_v5_0_0_0040_29222.sh
+	sha256sums = c36bdca0731083a1988fde93290cf75a7ab6108eda013954444a0531dae6ff3b
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_explorers_pack_pet_cosmo_dlc
