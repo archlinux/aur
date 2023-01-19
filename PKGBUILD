@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Morten Linderud <morten@linderud.pw> 
 pkgname=nerd-fonts-git
-pkgver=2.3.0.RC.r51.gbbdb7377d
+pkgver=2.3.1.r1.g50a189317
 pkgrel=1
 epoch=1
 pkgdesc="Iconic font aggregator, collection, and patcher: 34 patched fonts (77k variations). Includes popular glyph collections such as Font Awesome & fonts such as Hack"
