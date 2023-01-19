@@ -7,47 +7,89 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=108.0.2
+pkgver=109.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
-license=(MPL GPL LGPL)
-url="https://cachyos.org"
-depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse
-         aom harfbuzz graphite
-         libvpx libjpeg zlib icu libevent pipewire dav1d)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-zstandard git binutils lld dump_syms
-             'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
+license=(
+  GPL
+  LGPL
+  MPL
+)
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  icu
+  libevent
+  libjpeg
+  libpulse
+  libvpx
+  libwebp
+  libxt
+  mime-types
+  nss
+  ttf-font
+  zlib
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mesa
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+groups=('cachyos')
+options=(
+  !debug
+  !emptydirs
+  !lto
+  !makeflags
+  !strip
+)
+install=cachy-browser.install
 backup=('usr/lib/cachy-browser/cachy.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
-groups=('cachyos')
-options=(!emptydirs !makeflags !strip !lto !debug)
-_arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
-_common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='1.4'
-install=cachy-browser.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
-        "libwebrtc-screen-cast-sync.patch")
-sha256sums=('42e6d6b27ad0694a4fc9dd736888ad36c99eb2dbcce96e134584805d644ca300'
+        "libwebrtc-screen-cast-sync.patch"
+        "0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch")
+sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499'
-            '5c164f6dfdf2d97f3f317e417aaa2e6ae46a9b3a160c3162d5073fe39d203286')
+            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a'
+            '34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
@@ -213,10 +255,10 @@ END
     msg2 "Patch Devtools to bypass devtool detection"
     patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
-    msg2 "KDE UNITY"
-    patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
-    msg2 "mozilla-kde_after_unity"
-    patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+#    msg2 "KDE UNITY"
+#    patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+#    msg2 "mozilla-kde_after_unity"
+#    patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
@@ -227,9 +269,10 @@ END
     # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
     msg2 "Arch patch"
     patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
-
-    msg2 "Match to system libs"
-    patch -Np1 -i ../match.patch
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
+    patch -Np1 -i ../0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
+#    msg2 "Match to system libs"
+#    patch -Np1 -i ../match.patch
 
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
