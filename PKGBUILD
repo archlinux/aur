@@ -3,7 +3,7 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=4.0.0.beta.2.r0.gbceb368f1
+pkgver=4.0.0.beta.3.r28.g770da79cf
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
@@ -35,7 +35,9 @@ build() {
   mkdir -p build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DENABLE_QT=OFF \ # We only want gtk, thanks!
+  -DENABLE_TESTS=OFF # They took a lot of time to get build :(
   make
 }
 
