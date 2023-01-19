@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r57760.f8fdeb6b1b1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -35,7 +35,7 @@ makedepends=(
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest' 'graphviz'
+  'upower' 'giflib'             'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm

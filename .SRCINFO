@@ -1,6 +1,6 @@
 pkgbase = kodi-matrix-git
 	pkgver = r57760.f8fdeb6b1b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -47,7 +47,6 @@ pkgbase = kodi-matrix-git
 	makedepends = swig
 	makedepends = upower
 	makedepends = giflib
-	makedepends = rapidjson
 	makedepends = ghostscript
 	makedepends = meson
 	makedepends = gtest
