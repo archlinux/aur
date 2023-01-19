@@ -1,6 +1,6 @@
 pkgbase = linux-amd-raven
 	pkgver = 6.1.v.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-amd-raven
 	source = linux.install
 	source = more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 7a67c1f414bee147f0be7bead010433fb6d240e0c9f3d4889635ef6fda0dc45d
+	sha256sums = 284f306244c0d86229321a08fdd74a7ff5c072675c385ee6277a3766dae9b28d
 	sha256sums = fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
