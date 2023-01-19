@@ -3,8 +3,8 @@
 pkgname=canonical-multipass
 _realname=multipass
 _builddir=_build
-pkgver=1.10.1
-pkgrel=0
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
 url="https://multipass.run"
