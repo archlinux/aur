@@ -3,12 +3,12 @@
 _pkgname=elasticsearch
 pkgname=elasticsearch7
 pkgver=7.17.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:SSPL+Elastic-2.0')
-depends=('jre-openjdk-headless' 'libxml2')
+depends=('jre19-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 source=(
