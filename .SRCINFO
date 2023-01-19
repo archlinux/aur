@@ -1,7 +1,7 @@
 pkgbase = stork
 	pkgdesc = Impossibly fast web search, made for static sites.
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jameslittle230/stork
 	arch = x86_64
 	license = Apache
