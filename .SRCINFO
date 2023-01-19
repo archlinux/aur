@@ -1,0 +1,16 @@
+pkgbase = cider-polybar
+	pkgdesc = A PolyBar custom script to interact with Cider - An open-source, community-oriented Apple Music
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tnguye20/cider-polybar
+	arch = x86_64
+	license = GNU3
+	makedepends = typescript
+	makedepends = nodejs
+	makedepends = npm
+	conflicts = cider-polybar-bin
+	options = !strip
+	source = git+https://github.com/tnguye20/cider-polybar.git
+	sha256sums = SKIP
+
+pkgname = cider-polybar
