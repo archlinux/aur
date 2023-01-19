@@ -4,7 +4,7 @@
 _pkgname="vita3k"
 _remoteurl="https://github.com/Vita3K/Vita3K"
 pkgname="${_pkgname}-git"
-pkgver=r2807.3b74ceb5
+pkgver=r2992.6a0b2c8c
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=(
 depends=(
 	'gtk3'
 	'sdl2'
-	'unzip'
 	'xdg-desktop-portal'
+	'dbus'
 )
 optdepends=(
 	'vulkan-validation-layers: Descriptive vulkan errors'

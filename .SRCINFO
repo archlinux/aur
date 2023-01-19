@@ -1,6 +1,6 @@
 pkgbase = vita3k-git
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r2807.3b74ceb5
+	pkgver = r2992.6a0b2c8c
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = vita3k-git
 	makedepends = lld
 	depends = gtk3
 	depends = sdl2
-	depends = unzip
 	depends = xdg-desktop-portal
+	depends = dbus
 	optdepends = vulkan-validation-layers: Descriptive vulkan errors
 	provides = vita3k
 	conflicts = vita3k
