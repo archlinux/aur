@@ -1,0 +1,13 @@
+pkgbase = ruby-enumerable-statistics
+	pkgdesc = Enumerable::Statistics provides some methods to calculate statistical summary in arrays and enumerables.
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/mrkn/enumerable-statistics
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = enumerable-statistics-2.0.7.gem
+	source = https://rubygems.org/downloads/enumerable-statistics-2.0.7.gem
+	sha256sums = eeb84581376305327b31465e7b088146ea7909d19eb637d5677e51f099759636
+
+pkgname = ruby-enumerable-statistics
