@@ -9,13 +9,13 @@ pkgname=zig-dev-bin
 # "newer" greater than the new version scheme
 epoch=1
 # NOTE: Hyphen -> underscore
-pkgver=0.11.0_dev.681+f02073434
+pkgver=0.11.0_dev.1364+72c09b7b3
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64' 'aarch64')
 url="https://ziglang.org/"
 license=('MIT')
-makedepends=(curl jq)
+makedepends=(curl jq minisign)
 options=('!strip')
 provides=('zig')
 conflicts=('zig')
@@ -25,18 +25,21 @@ conflicts=('zig')
 source=(
     "hello.zig"
 )
-# GPG verification is not currently possible because Zig binaries aren't signed
 # Hardcoded sha256 not possible because this is a an auto-updating (nightly) package
 #
-# Zig Issue for signed binaries: https://github.com/ziglang/zig/issues/4945
+# Zig currently uses minisign to sign the binaries, which pacman doesn't support
+# See zig issue for signed binaries: https://github.com/ziglang/zig/issues/4945
 sha256sums=(
     "SKIP"
 )
 
+# https://ziglang.org/download/
+ZIG_MINISIGN_KEY="RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U";
+
 # Prints a warning message to stderr
 warning() {
-    echo -en "\e[33;1mWARNING\e[0m: ";
-    echo "$@";
+    echo -en "\e[33;1mWARNING\e[0m: " >&2;
+    echo "$@" >&2;
 }
 
 pkgver() {
@@ -56,25 +59,31 @@ prepare() {
     pushd "${srcdir}" > /dev/null;
     local index_file="zig-version-index.json";
     local newurl="$(jq -r ".master.\"${CARCH}-linux\".tarball" $index_file)";
+    local newurl_sig="$newurl.minisig";
     local newfile="zig-linux-${CARCH}-${newver}.tar.xz";
-    source+=("${newfile}:${newurl}")
+    local newfile_sig="$newfile.minisig";
+    source+=("${newfile}:${newurl}" "${newfile_sig}:${newurl_sig}")
     local expected_hash="$(jq -r ".master.\"${CARCH}-linux\".shasum" "$index_file")"
-    sha256sums+=("$newhash")
-    if [[ -f "$newfile" ]]; then
-        echo "Reusing existing $newfile";
+    sha256sums+=("$expected_hash" "SKIP")
+    if [[ -f "$newfile" && -f "$newfile_sig" ]]; then
+        echo "Reusing existing $newfile (and signature)";
     else
-        echo "Downloading Zig $newver from $newurl" >&2;
+        echo "Downloading Zig $newver from $newurl";
         curl -Ss "$newurl" -o "$newfile";
+        echo "Downloading signature...";
+        curl -Ss "$newurl_sig" -o "$newfile_sig";
     fi;
-    echo "" >&2
-    warning "No way to GPG/SHA verify the version ahead of time";
-    echo "See Zig issue https://github.com/ziglang/zig/issues/4945 for signed binaries" >&2;
     echo "" >&2;
     local actual_hash="$(sha256sum "$newfile" | grep -oE '^\w+')"
     if [[ "$expected_hash" != "$actual_hash" ]]; then
         echo "ERROR: Expected hash $expected_hash for $newfile, but got $actual_hash" >&2;
         exit 1;
     fi;
+    echo "Using minisign to check signature";
+    if ! minisign -V -P "$ZIG_MINISIGN_KEY" -m "$newfile" -x "$newfile_sig"; then
+        echo "ERROR: Failed to check signature for $newfile" >&2;
+        exit 1;
+    fi
     echo "Extracting file";
     tar -xf "$newfile";
     popd > /dev/null;
