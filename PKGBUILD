@@ -3,7 +3,7 @@
 pkgname='elk-zone-git'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=r159.2eb4a8a
+pkgver=r167.6439cff
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('rust' 'cargo' 'cargo-tauri' 'pnpm' 'jq' 'openssl' 'appmenu-gtk-module' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 
-source=('git+https://github.com/elk-zone/elk-native.git'
+source=("$pkgname::git+https://github.com/elk-zone/elk-native.git"
         elk-zone.desktop{,.sig})
 sha256sums=('SKIP'
             '0bf937c26ee016cf3592c2e574778bf827f9d6d795e03bf068b56f09a38c58fe'
@@ -19,12 +19,12 @@ sha256sums=('SKIP'
 validpgpkeys=('11967103FD525D8611D25DB2654D7FAA1531BC24')
 
 pkgver() {
-  cd elk-native
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd elk-native
+  cd "$pkgname"
   git submodule init
   git submodule update
 

@@ -1,6 +1,6 @@
 pkgbase = elk-zone-git
 	pkgdesc = Native version of Elk, a nimble Mastodon web client.
-	pkgver = r159.2eb4a8a
+	pkgver = r167.6439cff
 	pkgrel = 1
 	url = https://github.com/elk-zone/elk-native
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = elk-zone-git
 	depends = libappindicator-gtk3
 	depends = librsvg
 	depends = libvips
-	source = git+https://github.com/elk-zone/elk-native.git
+	source = elk-zone-git::git+https://github.com/elk-zone/elk-native.git
 	source = elk-zone.desktop
 	source = elk-zone.desktop.sig
 	validpgpkeys = 11967103FD525D8611D25DB2654D7FAA1531BC24
