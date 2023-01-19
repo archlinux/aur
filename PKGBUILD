@@ -2,12 +2,12 @@
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
 license=('GPL3')
-depends=('gjs' 'libadwaita' 'webkit2gtk')
+depends=('gjs' 'libadwaita' 'webkit2gtk-5.0')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('gst-plugins-bad: May be necessary for some websites')
