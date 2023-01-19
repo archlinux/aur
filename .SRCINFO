@@ -1,0 +1,14 @@
+pkgbase = gog-pillars_of_eternity_white_march_dlc
+	pkgdesc = DLC for the pillars of eternity game.
+	pkgver = 3.07.0.1318
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_the_white_march_expansion_pass
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity
+	source = pillars_of_eternity_white_march_part_1_dlc_en_3_07_0_1318_17464.sh::gog://pillars_of_eternity_white_march_part_1_dlc_en_3_07_0_1318_17464.sh
+	source = pillars_of_eternity_white_march_part_2_dlc_en_3_07_0_1318_17464.sh::gog://pillars_of_eternity_white_march_part_2_dlc_en_3_07_0_1318_17464.sh
+	sha256sums = 86fd6f1a6fc77891c76b5207152d22a0951c3d57e9a8730b13c3c54d80e824b9
+	sha256sums = c5445c983d6000aa0b5457d10939657c0fd24f7f1bc2de5acd9572fe986e2706
+
+pkgname = gog-pillars_of_eternity_white_march_dlc
