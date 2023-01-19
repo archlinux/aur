@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-luxcorerender-latest-bin
 	pkgdesc = LuxCoreRender exporter plugin for Blender
-	pkgver = 2.6.b3454
+	pkgver = 2.6.b3455
 	pkgrel = 1
 	url = https://luxcorerender.org/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = blender-plugin-luxcorerender-latest-bin
 	conflicts = blender-plugin-luxcorerender
 	conflicts = blender-plugin-luxcorerender-bin
 	conflicts = blender-plugin-luxcorerender-git
-	source = BlendLuxCore_b3454.zip::https://dev.azure.com/LuxCoreRender/515e1515-ba0d-4e8f-b7d2-c1710274de10/_apis/build/builds/3454/artifacts?artifactName=BlendLuxCore&api-version=7.0&%24format=zip
-	sha512sums = ec7544b6a0234f2e4dc65f0bcb455f8e050204af913acee20b99f47bb549cf1eb64064e8e72faa9fcbe002864b3d7425da2ecf944d8e8d53a52612f45f9cd32d
-	b2sums = 175ffb0da645484819d66b8f200ac596ef7a15b125a0f022fe39981e25e046b5f312207c12c0d8d6f9999263e34cfe4fe070c4e5d52cf0df320b904ae34a9d3c
+	source = BlendLuxCore_b3455.zip::https://dev.azure.com/LuxCoreRender/515e1515-ba0d-4e8f-b7d2-c1710274de10/_apis/build/builds/3455/artifacts?artifactName=BlendLuxCore&api-version=7.0&%24format=zip
+	sha512sums = 38ffc120317ea6ea68cceb78b5bb44bb56cf8e252cc33c78a5ddfad002b42f6906a0e88111f421a9b468db6362d9915fab3f3514f6855959271b9ed6a6ccd5df
+	b2sums = 4128b30ed70f732137a97e1111789be6ed312552db6112507e3fbf6b59fa4484b906a68285d6966929c2795598af373aa1131f99056865ef431b39d005c48d10
 
 pkgname = blender-plugin-luxcorerender-latest-bin
