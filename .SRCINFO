@@ -1,7 +1,7 @@
 pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink
 	pkgver = 37.0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.slimjet.com
 	arch = x86_64
 	license = custom:freeware
@@ -12,6 +12,7 @@ pkgbase = slimjet
 	depends = ttf-font
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = ttf-liberation: fix fonts for some PDFs
+	conflicts = slimjet-git
 	options = !emptydirs
 	options = !strip
 	source = LICENSE

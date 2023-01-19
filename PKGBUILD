@@ -3,7 +3,7 @@
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
 pkgver=37.0.4.0
-pkgrel=2
+pkgrel=3
 pkgver_libffmpeg=0.71.1
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
@@ -11,6 +11,7 @@ url="http://www.slimjet.com"
 license=('custom:freeware')
 depends=('gtk3' 'harfbuzz-icu' 'libxss' 'nss' 'ttf-font')
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
+conflicts=('slimjet-git')
 options=('!emptydirs' '!strip')
 _channel=release
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/${_channel}/${pkgname}_amd64.deb")
