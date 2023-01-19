@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nerd-fonts-jetbrains-mono
 _name=JetBrainsMono
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A Nerd Font patched version of JetBrains Mono"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('nerd-fonts' 'ttf-font-nerd')
 source=("$_name-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/$_name.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/LICENSE")
-sha256sums=('12c75a1eb7909460b53f203f160cbcf7315cc2805930511c4fe0901e5c48dc90'
+sha256sums=('f10282c2c8857e80f5b6c589944a0b8f17c88ec4865acf3309e2066066691f68'
             '1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160')
 
 package() {
