@@ -1,0 +1,15 @@
+pkgbase = sdorfehs-git
+	pkgdesc = sdorfehs is a tiling window manager descended from ratpoison.
+	pkgver = 1670.fb30a72
+	pkgrel = 1
+	url = https://github.com/jcs/sdorfehs
+	arch = x86_64
+	license = GPL2
+	depends = libxft
+	depends = libxres
+	source = sdorfehs::git+https://github.com/jcs/sdorfehs.git#branch=master
+	source = sdorfehs.desktop
+	b2sums = SKIP
+	b2sums = 6e2774bf0c0618684c95bfb29c83b3cf2db8a4e389fb40c035d09ea987e6ddc5f98cbc0d2f5f3f3afc1db70a5ee8a175e94751e2b9fcee6fb37bb949eab8db7d
+
+pkgname = sdorfehs-git
