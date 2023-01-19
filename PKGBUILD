@@ -13,7 +13,7 @@ license=('OSL')
 makedepends=('git')
 depends=('bash')
 
-source=('git://github.com/coreymwamba/bash-fuzzy-clock')
+source=('git+https://github.com/coreymwamba/bash-fuzzy-clock')
 md5sums=('SKIP')
 pkgver() {
   cd "$_pkgname"

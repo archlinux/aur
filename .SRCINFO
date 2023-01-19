@@ -9,8 +9,7 @@ pkgbase = bash-fuzzy-clock-git
 	depends = bash
 	conflicts = bash-fuzzy-clock
 	replaces = bash-fuzzy-clock
-	source = git://github.com/coreymwamba/bash-fuzzy-clock
+	source = git+https://github.com/coreymwamba/bash-fuzzy-clock
 	md5sums = SKIP
 
 pkgname = bash-fuzzy-clock-git
-
