@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=3.106.5
+pkgver=3.107.3
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${p
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
 replaces=("${pkgname%-bin}-linux")
-sha512sums=('046fa0cecd728c2bb6235ffac5c8d797909c2f34af24b96462645fe936ff615c491d98f924847956d1e7311ecb1c742753c9f8e51c706fc7a4c546a4b79a41a0'
-            '3a5295c4c1210f7f634d3593e224d2e85caf4f89761e3da9ddca1a5e81fa48e3caaee1be590975e6205ede2589d588852ff854df376b68d5c061834d95c68898'
+sha512sums=('a6347e11d7523f8001548d1ad60659c6ca999a183ed3d08628bfa867d5c458dc8aa9782cdd5f2289fbdda8d02d3ea413196f0b98b6f6583ce35d5d697d3cedc6'
+            '38e2e68c68fe8f3626a125bf2387e8548e1b0fa74a71ccbf5d4caf1b9dd26bc74e04b3ea900604a281de3b395f61fe627972f8958b3d18104d43b084f8c73a0b'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
