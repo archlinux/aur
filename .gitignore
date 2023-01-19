@@ -1,4 +1,4 @@
 !.gitignore
-elasticsearch-7*
 src/
 pkg/
+*.tar.gz
