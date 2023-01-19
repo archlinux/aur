@@ -1,8 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 pkgname=tabixpp
-_pkgver=1.1.1
-pkgver=1.1.1
-pkgrel=7
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="C++ wrapper to tabix indexer"
 arch=('x86_64')
 url="https://github.com/ekg/tabixpp"
@@ -12,15 +11,12 @@ makedepends=( 'make' 'gcc')
 optdepends=()
 source=(
 "https://github.com/vcflib/tabixpp/archive/refs/tags/v${pkgver}.tar.gz"
-"001-vcflib.patch" #currently, needed for vcflib
 )
-md5sums=('6441f3e3bbeb6c642edc7dea1c4cf8c3'
-         '13a1791ce310d1b1ca900abb08ebc7db')
+md5sums=('b15f7e39476040e621ad9bb0f12fab83')
 
 
 build() {
   cd "$pkgname"-${pkgver}
-  patch --strip=1 < ../001-vcflib.patch
   make CC=gcc HTS_HEADERS=/usr/include/htslib HTS_LIB=/usr/lib/libhts.so PREFIX=/usr
 }
 

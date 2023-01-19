@@ -1,16 +1,14 @@
 pkgbase = tabixpp
 	pkgdesc = C++ wrapper to tabix indexer
-	pkgver = 1.1.1
-	pkgrel = 7
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/ekg/tabixpp
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = gcc
 	depends = htslib
-	source = https://github.com/vcflib/tabixpp/archive/refs/tags/v1.1.1.tar.gz
-	source = 001-vcflib.patch
-	md5sums = 6441f3e3bbeb6c642edc7dea1c4cf8c3
-	md5sums = 13a1791ce310d1b1ca900abb08ebc7db
+	source = https://github.com/vcflib/tabixpp/archive/refs/tags/v1.1.2.tar.gz
+	md5sums = b15f7e39476040e621ad9bb0f12fab83
 
 pkgname = tabixpp
