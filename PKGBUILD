@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd dovi_tool
 
-  git describe --match "libdovi-[0-9]*" --long HEAD --tags | sed 's/^libdovi\.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --match "libdovi-[0-9]*" --long HEAD --tags | sed 's/^libdovi-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
