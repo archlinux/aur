@@ -1,0 +1,20 @@
+pkgbase = simp
+	pkgdesc = A simple and fast image manipulation program
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/Kl4rry/simp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = openssl
+	makedepends = nasm
+	makedepends = gendesk
+	depends = gtk3
+	depends = libxcb
+	depends = libxkbcommon
+	depends = dav1d
+	source = simp-3.3.1.tar.gz::https://static.crates.io/crates/simp/simp-3.3.1.crate
+	md5sums = SKIP
+
+pkgname = simp
