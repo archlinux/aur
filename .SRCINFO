@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_scalawag_pack_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_scalawags_pack
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_scalawag_pack_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_scalawag_pack_v5_0_0_0040_29222.sh
+	sha256sums = c2fe35cc60a89cce18ce19db41b3a7838e61b2fa67e386e0eec58fccdf324acd
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_scalawag_pack_dlc
