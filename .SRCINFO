@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_rum_runners_pack_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_rum_runners_pack
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_rum_runner_s_pack_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_rum_runner_s_pack_v5_0_0_0040_29222.sh
+	sha256sums = d06abb0f35e30fa93845fec026210526eedf7d54a40ea63cf32680013c046b44
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_rum_runners_pack_dlc
