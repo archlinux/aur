@@ -1,0 +1,14 @@
+pkgbase = gog-pillars_of_eternity
+	pkgdesc = Come to the original and incredible world of Eora, and go on an unforgettable adventure where the choices you make and the paths you choose shape your destiny.
+	pkgver = 3.07.0.1318
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_definitive_edition
+	arch = x86_64
+	license = custom
+	makedepends = gogextract
+	source = pillars_of_eternity_en_3_07_0_1318_17461.sh::gog://pillars_of_eternity_en_3_07_0_1318_17461.sh
+	source = pillars_of_eternity.desktop
+	sha256sums = fcf826d65e520a74b6c52296c1ac88e540014ac1c044a8404e1f87f5766b0b79
+	sha256sums = 05e8bc4670cb965a2757048ffc330808725eb2da6e8648f5dd185f8ca632300a
+
+pkgname = gog-pillars_of_eternity
