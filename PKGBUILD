@@ -1,14 +1,11 @@
 # Maintainer:  HLFH <gaspard@dhautefeuille.eu>
-# Contributor: Justin Kromlinger <hashworks@archlinux.org>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 
 pkgname=elasticsearch
 pkgver=8.6.0
-pkgrel=1
-pkgdesc="Distributed RESTful search engine built on top of Lucene"
+pkgrel=2
+pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
-url="https://www.elastic.co/products/elasticsearch"
+url="https://www.elastic.co/elasticsearch/"
 license=('custom:SSPL+Elastic-2.0')
 depends=('jdk19-openjdk' 'systemd' 'libxml2')
 makedepends=('jdk17-openjdk')
@@ -24,7 +21,7 @@ source=(
   elasticsearch.default
 )
 b2sums=('bc2ea9f10345dd78c1a58da4955d2ff21addca055e33efb77b734f2851f9a00e86a758a404e6ca8abe5fc7894558646b7891f4fefaaa41e6169a38a236c7ff49'
-        '069bc68cec0d4638a90205ddf61e36224c73898b219e14d36e8340fb4ff8a5e9f6bbb7c12c0e69ad0f245db7ee67c2c0afac241484f4a9c5595c22ab4e575e55'
+        'c8dbd265243ae59398dd022a9ec99d72ab20f24623dafdc1d12b468b8fff541d3d54ba0db37be012a865010e04e072cfbf81793dfd85fbb42bfb7dfbf535a60c'
         'de3e45081e9f4d75c47b2d2ea4c9faabb0499153914c940faf055f34a823df1e4d244041520686fe6e6dabdb01520c3c48c9382613aeeadc3f5376bf0d1c367d'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
         '91ca815aa29f619e74b8d735af234705aed7254e4ecdde5248ab2a971a6b13e4c3897ed54933b2d68d3f16c266cd20d6ce14377f988199c367c39b892ddf5bca'
