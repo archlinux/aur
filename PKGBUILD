@@ -7,7 +7,7 @@
 _pkgname=elasticsearch
 pkgname=elasticsearch7
 pkgver=7.17.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
@@ -54,7 +54,6 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
   ./gradlew :modules:systemd:assemble
   ./gradlew :distribution:archives:linux-tar:assemble
