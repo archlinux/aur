@@ -1,0 +1,16 @@
+pkgbase = dvd-screensaver-sway-git
+	pkgdesc = Moves a floating sway window like the dvd screensaver
+	pkgver = r9.ec802e1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/NiciTheNici/dvd-screensaver-sway
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	optdepends = sway: preferred window manager
+	optdepends = i3-wm: alternative window manager
+	source = git+https://github.com/NiciTheNici/dvd-screensaver-sway.git
+	md5sums = SKIP
+
+pkgname = dvd-screensaver-sway-git
