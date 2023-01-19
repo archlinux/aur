@@ -1,3 +1,57 @@
+cloudflare-warp (2023.1.133) unstable; urgency=medium
+  * Fixed an issue where clients could lose IPv4 connectivity
+  * Fixed an issue where clients would attempt to configure DNS in posture-only or proxy modes.
+  * Increased MDM check timeout to improve compatibility with certain management solutions.
+
+cloudflare-warp (2022.12.542) unstable; urgency=medium
+  * Added support for network location aware for Zero Trust organizations
+  * Improved captive portal handling for some captive portals
+  * Fixes for several edge case issues with Zero Trust organizations
+  * Turning on DNS logging no longer forces a disconnect and reconnect
+  * Modified initial connectivity check behavior to now validate both IPv4 and
+    IPv6 are working (previously we only checked IPv4). Test will pass if either
+    connects successfully.
+  * Fixed DNS issue where TXT records were not being correctly returned when at
+    the end of a CNAME chain.
+  * Addressed some edge case performance issues with certain NXDOMAIN returns
+
+ -- Jeff Hiner <jhiner@cloudflare.com> Thu, 5 Jan 2023 09:51:00 -0700
+
+cloudflare-warp (2022.10.116) unstable; urgency=medium
+  * Modified behavior of warp-cli enable-dns-log to automatically turn off after
+    7 days (this is the equivalent of manually running warp-cli disable-dns-log)
+  * Fixed issue where device posture timers were paused while device was asleep.
+    Posture tests are now immediately ran on device wakeup and all timers
+    restarted.
+  * Decreased warp-diag zip file sizes by 60-80%.
+  * Fixed issue where mdm.xml file updates may have been missed.
+  * Fixed issue where warp DNS servers were still set after WARP was turned off
+
+ -- Matt Schulte <mschulte@cloudflare.com> Mon, 21 Nov 2022 11:00:00 -0400
+
+cloudflare-warp (2022.9.591) unstable; urgency=medium
+  * Fixed issue where device posture check results stopped sending after 24
+    hours (or possibly even sooner)
+
+ -- Matt Schulte <mschulte@cloudflare.com> Wed, 12 Oct 2022 07:00:00 -0700
+
+cloudflare-warp (2022.9.505) unstable; urgency=medium
+  * Improved connection time on slow network connections
+  * Fixed bug where initial teams registration could take awhile to show up on
+    client UI
+  * Fixed bug that could cause Teams registration to fail (mostly server side
+    but mentioning here as well) and handoff from the success page in the
+    browser to the client
+  * Fixed DNS fallback timeouts and related performance issues
+  * Fixed issue where coming out of sleep on some systems could take an
+    unreasonably long time to connect
+  * Fixed InvalidPacket error in logs that indicated the client needed to reset
+    its connection
+  * Fixed issue where user experienced no network after boot
+  * Fixed issue where warp-diag rotated daemon logs did not collect older logs
+
+ -- Matt Schulte <mschulte@cloudflare.com> Thu, 6 Oct 2022 11:00:00 -0700
+
 cloudflare-warp (2022.8.936) unstable; urgency=medium
 
   * Fixed issue where warp-cli set-custom-endpoint could be used by users
