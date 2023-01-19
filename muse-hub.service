@@ -16,7 +16,7 @@ ReadWritePaths=/tmp /srv/muse-hub /var/lib/MuseSampler
 
 TemporaryFileSystem=/opt:ro /srv:rw
 BindReadOnlyPaths=/opt/muse-hub
-BindPaths=-/srv/muse-hub -/var/lib/MuseSampler /tmp
+BindPaths=-/srv/muse-hub -/var/lib/MuseSampler /usr/lib /tmp
 
 NoNewPrivileges=yes
 PrivateTmp=no
