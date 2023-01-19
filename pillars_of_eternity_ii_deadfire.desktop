@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pillars of Eternity II Deadfire
+Exec=pillars_of_eternity_ii_deadfire
+Icon=pillars_of_eternity_ii_deadfire.png
+Terminal=false
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;

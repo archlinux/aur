@@ -1,0 +1,14 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire
+	pkgdesc = Pursue a rogue god over land and sea in the sequel to the RPG Pillars of Eternity
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_obsidian_edition_release
+	arch = x86_64
+	license = custom
+	makedepends = gogextract
+	source = pillars_of_eternity_ii_deadfire_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_v5_0_0_0040_29222.sh
+	source = pillars_of_eternity_ii_deadfire.desktop
+	sha256sums = e976deeeacb2b9ef24c4eb8a081ee4f3b9ade5cbeaff452bf742ac16ec212998
+	sha256sums = 95edb413c00dbf8f1390440912acfe89ac160912004d6655810fdb300c99660d
+
+pkgname = gog-pillars_of_eternity_ii_deadfire
