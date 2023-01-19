@@ -2,9 +2,9 @@
 
 pkgname=harec
 pkgver=r1444.cfcc227
-pkgrel=1
+pkgrel=2
 pkgdesc='The Hare programming language - bootstrapped compiler'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://harelang.org/'
 license=('GPL3')
 depends=('qbe')
