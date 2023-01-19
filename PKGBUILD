@@ -2,10 +2,10 @@
 
 pkgname=tad-bin
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for viewing and analyzing tabular data such as CSV files"
 arch=("x86_64")
-depends=("openssl-1.1")
+depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core")
 url="https://www.tadviewer.com/"
 license=("MIT")
 source=(
