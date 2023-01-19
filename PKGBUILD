@@ -34,6 +34,6 @@ package() {
     install -Dm644 "${srcdir}/app/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     cp -r "${srcdir}/app/extensions" "${pkgdir}/usr/share/${_pkgname}/extensions"
-    #xdg-icon-resource install --noupdate --context apps --novendor --size 256 "bilibili.png" "bilibili"
-    #这句话不知为什么有人报错，就先暂时注释掉，如果有解决方案请告诉我
+    xdg-icon-resource install --noupdate --context apps --novendor --size 256 "/usr/share/icons/hicolor/512x512/apps/bilibili.png" "bilibili"
+    #https://aur.archlinux.org/packages/bilibili-bin#comment-898371
 }
