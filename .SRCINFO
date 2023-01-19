@@ -1,6 +1,6 @@
 pkgbase = goldendict-webengine-pr-git
 	pkgdesc = Feature-rich dictionary lookup program supporting multiple dictionary formats
-	pkgver = 22.12.02.r0.ga64d1bb4
+	pkgver = 22.12.02.r9.gec753210
 	pkgrel = 1
 	url = https://github.com/goldendict/goldendict/pull/1542
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = goldendict-webengine-pr-git
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = goldendict=22.12.02.r0.ga64d1bb4
+	provides = goldendict=22.12.02.r9.gec753210
 	conflicts = goldendict
 	source = goldendict-webengine-pr-git::git+https://github.com/vedgy/goldendict.git#branch=we/webkit-or-webengine
 	b2sums = SKIP
