@@ -1,7 +1,7 @@
 ---
 camilla_host: "0.0.0.0"
 camilla_port: 1234
-port: 5000
+port: 5005
 config_dir: "/srv/http/data/camilladsp/configs"
 coeff_dir: "/srv/http/data/camilladsp/coeffs"
 default_config: "/srv/http/data/camilladsp/configs/default_config.yml"

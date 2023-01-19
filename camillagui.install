@@ -1,6 +1,6 @@
 post_install() {
 	chown -R http:http srv/http/settings/camillagui
 	chmod -R 755 srv/http/settings/camillagui
-	cp -f srv/http/data/camilladsp/configs/{camilladsp,default_config}.yml
+	cp -f /srv/http/data/camilladsp/configs/{camilladsp,default_config}.yml
 	ln -sf /srv/http/data/camilladsp/configs/camilladsp.yml srv/http/data/camilladsp/configs/active_config.yml
 }
