@@ -1,13 +1,13 @@
 pkgbase = book-searcher-bin
 	pkgdesc = Create and search books index, create your private library.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/book-searcher-org/book-searcher
 	arch = x86_64
 	license = BSD
 	depends = webkit2gtk
 	depends = gtk3
-	source = book-searcher-0.8.3-x86_64.deb::https://github.com/book-searcher-org/book-searcher/releases/download/0.8.3/Book-Searcher-desktop_0.8.3_amd64.deb
-	sha512sums = 55183094e9d0c6027b7af9d9bf0616807b1f92d43ee0e8c82f712ca9b0fc131110103aeb10bd5b778640a0ed30e246dbe85cdd6a6e52be5fbd5e91113573e964
+	source = book-searcher-0.8.4-x86_64.deb::https://github.com/book-searcher-org/book-searcher/releases/download/0.8.4/Book-Searcher-desktop_0.8.4_amd64.deb
+	sha512sums = f2f260bb733eeb4284083bd86ae5b1d8faad8c49e1d3fbcd8e15f11ab9a64398d8793cbd68fa1c543cdc8338ce077c1aacd16e415b4ef9f0c00e8ee366274acc
 
 pkgname = book-searcher-bin
