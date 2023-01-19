@@ -1,6 +1,6 @@
 pkgname=nerd-fonts-cascadia-code
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Patched Cascadia Code (Caskaydia Cove) font with extra glyphs"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -9,7 +9,7 @@ depends=("fontconfig")
 conflicts=("nerd-fonts-complete" "nerd-fonts-git")
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/CascadiaCode.zip")
-sha256sums=("417c3e57a1185bcd432592fa7e1c182ac2ccd559e79ba25a5f7778ee346206f8")
+sha256sums=("cf6cbed1f52fe7f9085df4e9cc2d5da5e56d82b3c048a39832a5b5dbfd636022")
 
 prepare() {
   find "${srcdir}" -name '*Windows*' -delete
