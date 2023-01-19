@@ -3,7 +3,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=10.2.6
+pkgver=11.2.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go>=1.17.0' 'rust')
 provides=('tctl' 'tsh')
 
-_webassets_ref='7d687f6907da48e528924ab3486e0467c134bc99'
+_webassets_ref=8553f8c11de7932b9c347514820f7c95402471d2
 
 _go_srcpath="go/src/github.com/gravitational"
 
@@ -22,12 +22,6 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
         "teleport.service"
         "teleport@.service"
         "teleport.install")
-
-sha256sums=('85090cbc25ff0d415488c5dedfe2f4c40d1b72b8ee5c61eda11ee14b71bce314'
-            'fdff671af37cbad76f7f2a04cc9e729bab1d8ab20ad34ee6c26a6317992dc6ef'
-            '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
-            '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
-            'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
 
 prepare() {
     install -dm755 "${srcdir}/go/src/github.com"
@@ -65,14 +59,12 @@ build() {
 
 package_teleport() {
     install=teleport.install
-    replaces=('teleport-client')
+	optdepends=('teleport-client: for "tsh" and "tctl" commands')
 
     cd "${srcdir}/${_go_srcpath}"
 
     # Install binaries
     install -Dm755 build/teleport "${pkgdir}/usr/bin/teleport"
-    install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
-    install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 
     # Install services
     install -Dm644 ${srcdir}/teleport.service "${pkgdir}/usr/lib/systemd/system/teleport.service"
@@ -84,10 +76,13 @@ package_teleport() {
 }
 
 package_teleport-client() {
-    replaces=('teleport')
-
     cd "${srcdir}/${_go_srcpath}"
 
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
+sha512sums=('b9d2ffe5faf7f5d3605361b5c83087de6ce72f813ca641d29b53acdf695f13d7c8b626155bbd0c1f270c7b672057e7bf598257e488bacba71e96b29cb809f5a5'
+            '3f1824dcface44de05bb26ba9b5313445e4a532c321bfb59a3a6f29e47e83c1dc9ba7c476b32d1e5bec7c0cd2db87affa1cf108f557f6397748bf48d7f6042b7'
+            '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
+            '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
+            '439360d3b5132e1307eecc0afa7187edbab63fcfdb5c5b6e4d2ddbe3efbc6ef38f0710f4fdf08d674927a88c80195f3b46f2af26d9f735b1052c5e853ff2ca67')
