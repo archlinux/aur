@@ -63,7 +63,7 @@ _lqxpatchrel=16
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=6.1.7.lqx2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -152,15 +152,15 @@ prepare() {
     ### Selecting the CPU scheduler
 	if [ "$_projectc" = "bmq" ]; then
 		echo "Selecting BMQ CPU scheduler..."
-		scripts/config --enable CONFIG_SCHED_BMQ
-		scripts/config --disable CONFIG_SCHED_PDS
+		scripts/config -e CONFIG_SCHED_BMQ
+		scripts/config -d CONFIG_SCHED_PDS
 	elif [ "$_projectc" = "pds" ]; then
 		echo "Selecting PDS CPU scheduler..."
-		scripts/config --disable CONFIG_SCHED_BMQ
-		scripts/config --enable CONFIG_SCHED_PDS
+		scripts/config -d CONFIG_SCHED_BMQ
+		scripts/config -e CONFIG_SCHED_PDS
 	elif [ "$_projectc" = "none" ]; then
 		echo "Selecting Completely Fair Scheduler..."
-		scripts/config --disable CONFIG_SCHED_ALT
+		scripts/config -d CONFIG_SCHED_ALT
 	else
 		if [ -n "$_projectc" ]; then
 			error "The value $_projectc is invalid. Choose the correct one again."
@@ -175,7 +175,7 @@ prepare() {
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            scripts/config --disable CONFIG_NUMA
+            scripts/config -d CONFIG_NUMA
         fi
 
     ### Optionally load needed modules for the make localmodconfig
@@ -192,7 +192,7 @@ prepare() {
 
     ## Use DWARF5 debug info for Arch
   echo "Upgrading debug info from toolchain default to DWARF v5..."
-  scripts/config --enable CONFIG_DEBUG_INFO_DWARF5
+  scripts/config -e CONFIG_DEBUG_INFO_DWARF5
 
     ### Running make nconfig
 	[[ -z "$_makenconfig" ]] ||  make nconfig
