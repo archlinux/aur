@@ -170,11 +170,10 @@ END
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
-  # Debian patch to enable global menubar
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity-menubar.patch
-
-  # KDE menu
-  patch -Np1 -i "${_librewolf_patches_dir}"/mozilla-kde_after_unity.patch
+  # KDE menu and unity menubar
+  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/mozilla-kde.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/firefox-kde.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
@@ -245,6 +244,9 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
   patch -Np1 -i "${_patches_dir}"/custom/libwebrtc-screen-cast-sync.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
+  patch -Np1 -i "${_patches_dir}"/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
