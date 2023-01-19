@@ -1,5 +1,5 @@
 pkgbase = handbrake-llvm-optimized
-	pkgver = 1.6.0.r22.g5a7fb33c9
+	pkgver = 1.6.0.r25.gd56ec51e2
 	pkgrel = 1
 	url = https://handbrake.fr/
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = handbrake-llvm-optimized
 	makedepends = librsvg
 	makedepends = libgudev
 	options = !lto
-	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=5a7fb33c9ce1ff1d416764c299ae626ccc88ebe0
+	source = HandBrake::git+https://github.com/HandBrake/HandBrake.git#tag=d56ec51e26dcac5dc82c6f2466a18bad6be69627
 	sha256sums = SKIP
 
 pkgname = handbrake-llvm-optimized
