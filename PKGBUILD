@@ -1,6 +1,6 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=sea-orm-cli
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="CLI for the Sea-Orm crate"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=('sqlite' 'postgresql-libs' 'libmariadbclient')
 makedepends=('cargo')
 source=("https://github.com/SeaQL/sea-orm/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('9576f4eb06fb193951e5ed734876ab1230f8dc9a14a8e6b4a28f17ac5a950a381e3b589a543693d4cc3d7a63cd7b93d9fa07edb536c719efc88aea3c3870d71f')
+sha512sums=('22ee2cdf5dfcb5db6691ee789e5c22cfa5ecdbe8454e29198a1796a17646eb0b3d20e1287bb2d3bd4b576dcac2c04543a5953d5065982f48f80359eae98b7786')
 
 prepare() {
   # Enter the sea-orm-cli source folder downloaded from GitHub
