@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=36.6bda56e
+pkgver=40.1b2992e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -21,13 +21,13 @@ depends=('vapoursynth'
 optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
   'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'
 )
-makedepends=('git')
+makedepends=('git'
+  'python-poetry'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/shssoichiro/soifunc.git")
 sha256sums=('SKIP')
-
-_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
@@ -37,9 +37,15 @@ pkgver() {
   printf "%s.%s" "$_rev" "$_hash"
 }
 
+build() {
+  cd "${_plug}"
+  poetry build -f wheel
+}
+
 package() {
   cd "${_plug}"
-  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
