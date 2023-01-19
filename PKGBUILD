@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r4995.g74fe45bf09
+pkgver=orttraining_rc2.r5079.gb51415b0ea
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'ninja' 'clang')
 checkdepends=()
 optdepends=()
 provides=('onnxruntime')
-conflicts=('onnxruntime')
+conflicts=('onnxruntime' 'flatbuffers')
 replaces=()
 options=()
 source=("git+https://github.com/microsoft/onnxruntime.git#branch=main")
@@ -41,8 +41,8 @@ build() {
 	export CC=clang
 	export CXX=clang++
 
-	cmake -S $srcdir/$_pkgname/cmake \
-		-B $srcdir/$_pkgname-build \
+	cmake -S "$srcdir"/$_pkgname/cmake \
+		-B "$srcdir"/$_pkgname-build \
 		-G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr/ \
 		-DCMAKE_PREFIX_PATH=/usr/ \
@@ -52,8 +52,10 @@ build() {
 		-DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
 		-DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
 		-DPYTHON_EXECUTABLE:FILEPATH=$(which python) \
-		.
-	ninja -C $srcdir/$_pkgname-build
+
+	sed -i 's/-Werror //g' "$srcdir"/$_pkgname-build/_deps/flatbuffers-src/CMakeLists.txt
+
+	ninja -C "$srcdir"/$_pkgname-build
 }
 
 check() {
