@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_beast_of_winter_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_the_beast_of_winter
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_beast_of_winter_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_beast_of_winter_v5_0_0_0040_29222.sh
+	sha256sums = 7d3454e2ba4285d9c862820cf373e86818257e3a9823edd89b82de56ae37ba7d
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_beast_of_winter_dlc
