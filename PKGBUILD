@@ -16,7 +16,7 @@ source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/YouROK/TorrServer/re
 source_armv7h=("$pkgname-$pkgver-armv7h::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-arm7")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-arm64")
 source_i686=("$pkgname-$pkgver-i686::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-386")
-b2sums=('7f782b726427560e8064dfcb7f10cc8c7b3e400923a211074b8ef81ece542b3b233c0f69810fd4366e67b3dad2cdd82ee42c8142fc7098c5d8b68ae75f802e79'
+b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
         '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
 b2sums_x86_64=('5dc0c78526e7ff4900b9e91590a66bc420a6eae9c043464ab14b7597d1c39ed618713545e8de3e1698c933c1a7ab08e3e31e5e94a4122a7ba5c69a8676d5eb0f')
 b2sums_armv7h=('7a1762c4c94cfdca3e449935ea37da37f1a9a0e5697fece17adbde0c4fdb2229dedc529b70452d8801251293ec8c8e69d047053ac0129f3ab59b7086bc858f82')
