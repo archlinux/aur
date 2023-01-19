@@ -5,8 +5,8 @@ pkgbase = elasticsearch7
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
 	license = Apache
-	makedepends = java-environment=18
-	depends = java-runtime-headless<=17
+	makedepends = java-environment
+	depends = java-runtime-headless
 	depends = systemd
 	depends = libxml2
 	provides = elasticsearch=7.17.6

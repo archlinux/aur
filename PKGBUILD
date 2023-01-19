@@ -12,8 +12,8 @@ pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
-depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
-makedepends=('java-environment=18')
+depends=('java-runtime-headless' 'systemd' 'libxml2')
+makedepends=('java-environment')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 source=(
