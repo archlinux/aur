@@ -1,38 +1,41 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=kdisplay-kwinft
-pkgver=5.26.0
-_pkgver=5.26.0
+pkgver=5.26.5.r1520.g2c74b7e
 pkgrel=1
 pkgdesc='App and daemon for display managing'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/kdisplay"
 license=(LGPL)
-depends=('kxmlgui' 'disman' 'qt5-graphicaleffects' 'hicolor-icon-theme' qt5-sensors kcmutils kirigami2 plasma-framework)
-provides=(kdisplay)
-conflicts=(kdisplay)
-makedepends=(extra-cmake-modules)
-source=("https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@$_pkgver/kdisplay-kdisplay@$_pkgver.tar.gz")
-md5sums=('c1ab2a52423f262372bcbe6cf628d114')
+depends=(disman kcmutils kirigami2 plasma-framework qt5-sensors)
+provides=(kscreen)
+conflicts=(kscreen)
+makedepends=(extra-cmake-modules git kdoctools qt5-tools)
+source=("git+https://gitlab.com/kwinft/kdisplay.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  _ver=5.26.5
+  cd kdisplay
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  tar -xvf kdisplay-kdisplay@$_pkgver.tar.gz
-  mkdir -p "$srcdir"/build/make
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir"/build
-  cmake "$srcdir/kdisplay-kdisplay@$_pkgver" \
+  cd build
+  cmake ../kdisplay \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
 
 package() {
-  cd "$srcdir"/build
+  cd build
   make DESTDIR="$pkgdir" install
 }
