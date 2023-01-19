@@ -1,3 +1,41 @@
+## GE-Proton7-45
+
+Removed deprecated broken dxvk-async patch:
+
+Upstream DXVK has implemented the GraphicsPipelineLibrary (GPL) back in August, which takes over dxvk-async's job:
+
+https://www.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library
+doitsujin/dxvk#2798
+
+Driver support for Nvidia was added in version 515.49.10:
+https://developer.nvidia.com/vulkan-driver
+
+Driver support for AMD/RADV was added in August 2022 and is an ongoing WIP:
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/17542
+
+Per the above, it can be exposed/enabled for testing on AMD/RADV via:
+RADV_PERFTEST=gpl
+
+dxvk-async now causes problems with the dxvk-cache, which is not something new users may know how to clear:
+Sporif/dxvk-async#55
+
+In light of the above, in addition to the current rebase still not working properly, I am removing the dxvk-async patch from Proton-GE.
+
+RIP dxvk-async 2018-2023
+
+## GE-Proton7-44
+
+- wine: updated to latest bleeding edge (includes alt+tab fix)
+- wine-staging: rebased for latest proton-wine bleeding edge
+- dxvk: updated to latest git (includes HDR patches)
+- vkd3d-proton: updated to latest git (includes HDR patches)
+- proton: import upstream changes (includes prefix sync revert/fix)
+- protonfixes: add workaround for pentiment launch failure (thanks tgurr)
+- protonfixes: add multiplayer fix for stronghold hd/stronghold crusader hd/ stronghold crusader extreme hd (thanks jopejoe1)
+- protonfixes: add framerate fix for Battle Fantia Revised Edition (thanks ranplayer)
+- protonfixes: add launcher workaround for Assassin's Creed Brotherhood (thanks ranplayer)
+
+
 ## GE-Proton7-43
 
 - import upstream proton changes
