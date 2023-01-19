@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export WINEPREFIX="${HOME}/.estlcam-wine"
+if [ -f "${WINEPREFIX}/drive_c/Program Files/Estlcam11/Estlcam.exe" ]; then
+	exec "${WINEPREFIX}/drive_c/Program Files/Estlcam11/Estlcam.exe" "$@"
+elif [ -f "${WINEPREFIX}/drive_c/Program Files (x86)/Estlcam11/Estlcam.exe" ]; then
+	exec wine "${WINEPREFIX}/drive_c/Program Files (x86)/Estlcam11/Estlcam.exe" "$@"
+else
+	exec wine /usr/share/estlcam-wine/Estlcam_setup.exe
+fi

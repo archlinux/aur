@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Estlcam
+Comment=Estlcam: 2D / 3D CAM und CNC Steuerung... - wine installation
+Exec=estlcam %F
+Icon=Estlcam.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Application;Graphics;
+StartupNotify=true
