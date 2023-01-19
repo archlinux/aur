@@ -1,0 +1,20 @@
+pkgbase = xlivebg-git
+	pkgdesc = Live wallpapers for the X window system
+	pkgver = r180.23afaea
+	pkgrel = 1
+	url = http://nuclear.mutantstargoat.com/sw/xlivebg
+	arch = x86_64
+	license = GPL3
+	makedepends = glu
+	makedepends = libxrandr
+	makedepends = openmotif
+	makedepends = git
+	depends = glu
+	depends = libxrandr
+	depends = openmotif
+	provides = xlivebg
+	conflicts = xlivebg
+	source = git+https://github.com/jtsiomb/xlivebg.git
+	md5sums = SKIP
+
+pkgname = xlivebg-git
