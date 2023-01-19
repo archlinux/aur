@@ -1,6 +1,6 @@
 # Maintainer: gabrielzschmitz <gabrielzschmitz@protonmail.com>
 pkgname='tomato.c-git'
-pkgver=r135.d0ee8cc
+pkgver=r136.ad3f0b4
 pkgrel=1
 pkgdesc="A pomodoro timer written in pure C"
 arch=('x86_64')
@@ -26,5 +26,10 @@ build() {
 package() {
     cd Tomato.C
     sudo make install
+}
+
+post_remove() {
+    cd Tomato.C
+    sudo make uninstall
 }
 
