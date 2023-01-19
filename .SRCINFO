@@ -1,0 +1,14 @@
+pkgbase = python-i3-tree
+	pkgdesc = Convenient Python lib to manipulate an i3 WM tree
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/dustbyte/i3-tree
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python-i3
+	source = https://files.pythonhosted.org/packages/a9/5a/902e87bf1a43480b00c82c2804f96d6e6ea6bdb6435ed40f2b4a94923a85/i3-tree-0.2.tar.gz
+	sha256sums = 14584d6d9dd71f2823d91a253dfad5f8032ac9d7d29bf3f713cd34fde1709c12
+
+pkgname = python-i3-tree

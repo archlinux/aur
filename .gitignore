@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+pkg
+src
+python-i3-0.6.4-1-any.pkg.tar.zst
+*.tar.zst
