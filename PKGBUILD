@@ -15,7 +15,7 @@ provides=("ytdlp-gui")
 conflicts=("ytdlp-gui")
 
 source=("${url}/ytdlp-gui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("8e5d773f8b330359160ef398e9de5d34e2e4ced3ffc94d7570e2e6af112b5d9b")
+sha256sums=("4de0ca30da2bb4b8114ee2e29f2e2c94b2d965c2a66b77ab813300ff5c587908")
 
 build() {
     cd "$_pkgname-${pkgver}"
