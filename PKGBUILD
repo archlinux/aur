@@ -68,8 +68,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.1.6
-pkgrel=2
+pkgver=6.1.7
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -91,23 +91,23 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-docs-Fix-the-docs-build-with-Sphinx-6.0.patch
-  0003-Revert-drm-display-dp_mst-Move-all-payload-info-into.patch
-  0004-netfilter-nft_payload-incorrect-arithmetics-when-fet.patch
+  0002-Revert-drm-display-dp_mst-Move-all-payload-info-into.patch
+  0003-btrfs-fix-invalid-leaf-access-due-to-inline-extent-d.patch
+  0004-wifi-mac80211-fix-initialization-of-rx-link-and-rx-l.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3e4d8e561da5703a205ae8d7b2bed6c5c64fc4299eebcbfd20481e63b57d5ee3'
+sha256sums=('4ab048bad2e7380d3b827f1fad5ad2d2fc4f2e80e1c604d85d1f8781debe600f'
             'SKIP'
             '1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
-            'e804772a555fcd60140e0ea35f8269c57d7c32d3440f0ff06c044b21a8f4681e'
-            'a46f8d26cb20397b06812af7d56800a0994fcd263262e3ca5f22dc2247c2b623'
-            '59c4479ecd93ecc3c6ca452f24e4ec8bc92fec8a99109222e6ac457fc1ea5d12'
-            '05feb34e7ab03085dd7d4ae252bea419a7d13048b081451e1e23b31dcc2b58db')
+            'b28485e4b036abc85725f9c3ee036b83b31905f35567088f5c4b678371832c42'
+            'de5af5d1bad793cf3959df743f50a07421156e3e5e7ec95999f78089c2df2b17'
+            '2ef9b1da56c0ccc615112713a516a2f6e275d3cde5d0aab2666c43a12d065443'
+            '68cc969cb5f4c5e1733260230cf13f64a1c59289b770058cd960f1550fe4d71f')
 
 prepare() {
   cd linux-${pkgver}

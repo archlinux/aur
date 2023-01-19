@@ -1,0 +1,67 @@
+From 0a772f0e9788d760313382ec21b81dca83515966 Mon Sep 17 00:00:00 2001
+From: Filipe Manana <fdmanana@suse.com>
+Date: Thu, 12 Jan 2023 14:17:20 +0000
+Subject: [PATCH 3/5] btrfs: fix invalid leaf access due to inline extent
+ during lseek
+
+During lseek, for SEEK_DATA and SEEK_HOLE modes, we access the disk_bytenr
+of anextent without checking its type. However inline extents have their
+data starting the offset of the disk_bytenr field, so accessing that field
+when we have an inline extent can result in either of the following:
+
+1) Interpret the inline extent's data as a disk_bytenr value;
+
+2) In case the inline data is less than 8 bytes, we access part of some
+   other item in the leaf, or unused space in the leaf;
+
+3) In case the inline data is less than 8 bytes and the extent item is
+   the first item in the leaf, we can access beyond the leaf's limit.
+
+So fix this by not accessing the disk_bytenr field if we have an inline
+extent.
+
+Fixes: b6e833567ea1 ("btrfs: make hole and data seeking a lot more efficient")
+Reported-by: Matthias Schoepfer <matthias.schoepfer@googlemail.com>
+Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=216908
+Link: https://lore.kernel.org/linux-btrfs/7f25442f-b121-2a3a-5a3d-22bcaae83cd4@leemhuis.info/
+Signed-off-by: Filipe Manana <fdmanana@suse.com>
+Cherry-picked-for: https://bugs.archlinux.org/task/77041
+---
+ fs/btrfs/file.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/fs/btrfs/file.c b/fs/btrfs/file.c
+index 9bef8eaa074a..23056d9914d8 100644
+--- a/fs/btrfs/file.c
++++ b/fs/btrfs/file.c
+@@ -3838,6 +3838,7 @@ static loff_t find_desired_extent(struct btrfs_inode *inode, loff_t offset,
+ 		struct extent_buffer *leaf = path->nodes[0];
+ 		struct btrfs_file_extent_item *extent;
+ 		u64 extent_end;
++		u8 type;
+ 
+ 		if (path->slots[0] >= btrfs_header_nritems(leaf)) {
+ 			ret = btrfs_next_leaf(root, path);
+@@ -3892,10 +3893,16 @@ static loff_t find_desired_extent(struct btrfs_inode *inode, loff_t offset,
+ 
+ 		extent = btrfs_item_ptr(leaf, path->slots[0],
+ 					struct btrfs_file_extent_item);
++		type = btrfs_file_extent_type(leaf, extent);
+ 
+-		if (btrfs_file_extent_disk_bytenr(leaf, extent) == 0 ||
+-		    btrfs_file_extent_type(leaf, extent) ==
+-		    BTRFS_FILE_EXTENT_PREALLOC) {
++		/*
++		 * Can't access the extent's disk_bytenr field if this is an
++		 * inline extent, since at that offset, it's where the extent
++		 * data starts.
++		 */
++		if (type == BTRFS_FILE_EXTENT_PREALLOC ||
++		    (type == BTRFS_FILE_EXTENT_REG &&
++		     btrfs_file_extent_disk_bytenr(leaf, extent) == 0)) {
+ 			/*
+ 			 * Explicit hole or prealloc extent, search for delalloc.
+ 			 * A prealloc extent is treated like a hole.
+-- 
+2.39.1
+

@@ -1,7 +1,7 @@
-From 7c4fed4d2afd27d7acb8835f8e79f49c99c03cdf Mon Sep 17 00:00:00 2001
+From 96c2a11329533bb221e884bc8b91c6fc2f305dd8 Mon Sep 17 00:00:00 2001
 From: Wayne Lin <Wayne.Lin@amd.com>
 Date: Thu, 12 Jan 2023 16:50:44 +0800
-Subject: [PATCH 3/4] Revert "drm/display/dp_mst: Move all payload info into
+Subject: [PATCH 2/5] Revert "drm/display/dp_mst: Move all payload info into
  the atomic state"
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -33,6 +33,7 @@ Cc: Ville Syrjälä <ville.syrjala@linux.intel.com>
 Cc: Ben Skeggs <bskeggs@redhat.com>
 Cc: Stanislav Lisovskiy <stanislav.lisovskiy@intel.com>
 Cc: Fangzhi Zuo <Jerry.Zuo@amd.com>
+Cherry-picked-for: https://bugs.archlinux.org/task/76934
 ---
  .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  53 +-
  .../amd/display/amdgpu_dm/amdgpu_dm_helpers.c | 104 ++-
@@ -2474,5 +2475,5 @@ index 41fd8352ab65..1d2f77835de5 100644
  
  /**
 -- 
-2.39.0
+2.39.1
 
