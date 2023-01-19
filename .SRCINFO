@@ -8,10 +8,10 @@ pkgbase = denaro-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=7
 	makedepends = cmake
 	makedepends = git
-	depends = dotnet-runtime
+	depends = dotnet-runtime>=7
 	depends = libadwaita
 	provides = denaro
 	provides = nickvision-money
