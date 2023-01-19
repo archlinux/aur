@@ -1,7 +1,7 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 
 pkgname=tad-bin
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Desktop application for viewing and analyzing tabular data such as CSV files"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
   "tad"
   "LICENSE"
 )
-sha256sums=('c929e03157c26ab545322ba715a003e796ce644eb53bfd46009757e214078e77'
+sha256sums=('0fb53ce3ede4114d269bdc2b997beb13ad3fe492e81396add59f7d2ddc69cb00'
             '49bcc24cee42880c79e6a0809b0831ab5453edc4517477853974961ffd033294'
             'a242ac627b07bec45c06620e20a5d046b6b31433cdf0a8011da35760b9a54b0e')
 
