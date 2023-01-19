@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('btrfs-progs' 'perl')
 makedepends=('asciidoctor' 'git')
 optdepends=('mbuffer: send/receive buffering and rate limiting, progress bars'
-            'openssh: transfer backups from/to remote locations',
+            'openssh: transfer backups from/to remote locations'
             'sudo: btrfs-progs-sudo backend')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
