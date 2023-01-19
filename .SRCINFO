@@ -1,6 +1,6 @@
 pkgbase = r-tiledb
 	pkgdesc = Universal Storage Engine for Sparse and Dense Multidimensional Arrays
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tiledb
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-tiledb
 	optdepends = r-simplermarkdown
 	optdepends = r-tibble
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/tiledb_0.17.1.tar.gz
-	sha256sums = 74f0ab0b9f4d6159242897527bfb9a62ee4d7c277cdd17872f32ff2a81f94de6
+	source = https://cran.r-project.org/src/contrib/tiledb_0.18.0.tar.gz
+	sha256sums = f0fae6bb8890ab278c1bc2ccbac1f0eefada1d4a1dc64eff9b861b7cf9f840b4
 
 pkgname = r-tiledb
