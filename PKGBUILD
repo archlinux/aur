@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -11,16 +11,14 @@ depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.tar.gz"
   "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
-  "0105-wechat-iconv-dependency.patch"
-  "0012-make-header-usable-with-C-compiler.patch"
-  "0008-mingw-w64-cmake-lib-path.patch"
-  "0010-find-libpng-header.patch")
-sha256sums=('1ec1cba65f9f20fe5a41fda1586e01c70ea0c9a6d7b67c9e13edf0cfe2239277'
-  '1777d5fd2b59029cf537e5fd6f8aa68d707075822f90bde683fcde086f85f7a7'
-  '3cf6a17b234ddf4f20e042acce329823e970aa06873d63652fa132c46ee56739'
-  '9f918a974e9d5227fce3702b1f38716a7fb79586dda9256b5df44dcc0f858c3b'
-  '7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34'
-  'd6ad5a0865eefe662ca4c7aceb6aa7b1fd5fcd27e1e65ca839d442f054095e69')
+  "0001-mingw-w64-cmake.patch"
+  "0004-generate-proper-pkg-config-file.patch"
+  "0008-mingw-w64-cmake-lib-path.patch")
+sha256sums=('8df0079cdbe179748a18d44731af62a245a45ebf5085223dc03133954c662973'
+  '42df840cf9055e59d0e22c249cfb19f04743e1bdad113d31b1573d3934d62584'
+  '34e63a897024d41adeadcf593480ae4074ecaed5fc7b05ba5cc2469c7669a83e'
+  '7fac6a7788638f8843f562381413ce13c59038d2fafc5dc05258195128e5caf5'
+  '7398e66f80be37382bd427b5eb3a1201a23113c14e71435a44df8779ea1b8a34')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -51,10 +49,9 @@ _cmakeopts=('-DCMAKE_SKIP_RPATH=ON'
             '-DOPENCV_GENERATE_SETUPVARS=OFF')
 
 prepare() {
+  patch -d $srcdir/opencv-$pkgver -p1 < 0001-mingw-w64-cmake.patch
+  patch -d $srcdir/opencv-$pkgver -p1 < 0004-generate-proper-pkg-config-file.patch
   patch -d $srcdir/opencv-$pkgver -p1 < 0008-mingw-w64-cmake-lib-path.patch
-  patch -d $srcdir/opencv-$pkgver -p1 < 0010-find-libpng-header.patch 
-  patch -d $srcdir/opencv-$pkgver -p1 < 0012-make-header-usable-with-C-compiler.patch 
-  patch -d $srcdir/opencv_contrib-$pkgver -p1 < 0105-wechat-iconv-dependency.patch 
 }
 
 build() {
@@ -95,18 +92,11 @@ package() {
     mv "$pkgdir/static/usr/${_arch}/lib/"*.a "$pkgdir/usr/${_arch}/lib/"
  
     install -d "$pkgdir"/usr/${_arch}/lib/pkgconfig
-    install -d "$pkgdir"/usr/${_arch}/lib/cmake/opencv4
-    install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
-    # fix paths
-    sed -i "s/\/\/usr\/${_arch}\/lib/\/lib/g" ./unix-install/opencv4.pc
     # fix static builds. To be able to static build lapack.pc should be fixed too
     # adding Libs.private: -lgfortran -lquadmath
     sed -i "s/^Libs.private.*/& -lgdi32 -lcomdlg32/" ./unix-install/opencv4.pc
     echo "Requires.private: libjpeg libtiff-4 libpng libwebp lapack cblas" >> ./unix-install/opencv4.pc
-    rm "$pkgdir"/usr/${_arch}/LICENSE
-    # fix cmake INSTALL_PATH
-    sed -i "s/^get_filename_component(OpenCV_INSTALL_PATH.*/get_filename_component(OpenCV_INSTALL_PATH \"\$\{OpenCV_CONFIG_PATH\}\/..\/..\/..\/\" REALPATH)/g" ./unix-install/OpenCVConfig.cmake
-    install -m644 ./unix-install/OpenCVConfig.cmake "$pkgdir"/usr/${_arch}/lib/cmake/opencv4
+    install -m644 ./unix-install/opencv4.pc "$pkgdir"/usr/${_arch}/lib/pkgconfig/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     rm -r "$pkgdir/static"
