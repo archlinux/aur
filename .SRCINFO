@@ -5,6 +5,7 @@ pkgbase = gcedit
 	url = http://ikn.org.uk/app/gcedit
 	arch = any
 	license = GPL3
+	makedepends = python-setuptools
 	depends = python>=3.2
 	depends = python-gobject>=3.11
 	source = https://launchpad.net/gcedit/trunk/0.4.3/+download/gcedit-0.4.3.tar.gz

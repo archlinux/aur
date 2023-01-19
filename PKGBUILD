@@ -6,6 +6,7 @@ pkgdesc="GameCube disk image editor"
 arch=(any)
 url=http://ikn.org.uk/app/gcedit
 license=(GPL3)
+makedepends=(python-setuptools)
 depends=("python>=3.2" "python-gobject>=3.11")
 source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 sha256sums=('44762ef524db10fac0a00f4e75c16dc34f7113a6c0a9ebe7d8ca38bee51fa314')
