@@ -1,6 +1,6 @@
 pkgbase = fotokilof
 	pkgdesc = GUI for ImageMagick
-	pkgver = 3.8.3
+	pkgver = 4.2.4
 	pkgrel = 1
 	url = https://github.com/TeaM-TL/FotoKilof
 	arch = any
@@ -9,11 +9,12 @@ pkgbase = fotokilof
 	depends = imagemagick
 	depends = tk
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/F/FotoKilof/FotoKilof-3.8.3.tar.gz
+	depends = python-wand
+	source = https://files.pythonhosted.org/packages/source/F/FotoKilof/FotoKilof-4.2.4.tar.gz
 	source = 0001-fix-character-in-setup.py-entrypoint-gui_script.patch
 	source = fotokilof.desktop
-	sha256sums = b799f04eb2ff80e46816bffb985fef16992f1553e17b38143fb5dacbe082bd62
-	sha256sums = e0d3b71864705c1dce83f89d674015b7fb5f17c18470c2b78e1635de48a518e6
+	sha256sums = 768111a3ddd0a5a5355a1a244bb278ddec852288d3731264c37b0fd92875c67b
+	sha256sums = 324ed917847f4b72a15660ce1ea73053f25cb3d70ed5651b153ed18d03fe6e17
 	sha256sums = 8f6610e5b14c7ecc3d099b6c03ee2ea638b6080d625d4d7ed2e6baa95daaf1c2
 
 pkgname = fotokilof
