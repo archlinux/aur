@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.1.4.r1.g59e521c
+pkgver=1.1.4.r5.gfe49290
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -48,6 +48,8 @@ build(){
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
+            s|CapabilityBoundingSet=\(.*\)$|CapabilityBoundingSet=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
+            s|AmbientCapabilities=\(.*\)$|AmbientCapabilities=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
             s/WorkingDirectory=\(.*\)$/WorkingDirectory=-\1\nExecStartPre=+install -o ${_pkgname} -g ${_pkgname} -d -m 0700 \1/" release/config/${_pkgname}*.service
 
     echo 'u sing-box - "Sing-box Service" - -' > "release/config/${_pkgname}.sysusers"
