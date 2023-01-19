@@ -1,0 +1,9 @@
+#!/bin/bash
+post_install(){
+echo "Please remember to preload libG4run.so before use"
+echo "export LD_PRELOAD=libG4run.so"
+}
+post_upgrade(){
+echo "Please remember to preload libG4run.so before use"
+echo "export LD_PRELOAD=libG4run.so"
+}

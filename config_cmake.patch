@@ -1,0 +1,25 @@
+--- config.cmake	2023-01-17 16:44:51.915732371 +0100
++++ config_new.cmake	2023-01-17 14:13:37.911503681 +0100
+@@ -6,19 +6,15 @@
+ #==============================================================================
+ # Installation prefixes
+ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+-  set(CMAKE_INSTALL_PREFIX $ENV{HOME}/opt/geant4/geant4py-11.0.0
++  set(CMAKE_INSTALL_PREFIX /opt/Geant4/geant4py-11.0.0
+   CACHE PATH "Install prefix" FORCE)
+ endif()
+ 
+ # Geant4 installation path
+-set(GEANT4_INSTALL $ENV{HOME}/opt/geant4/11.0
++set(GEANT4_INSTALL /opt/Geant4/Geant4-v11.1.0
+     CACHE STRING "Geant4 installation path")
+ 
+ # Pybind11 cmake files location
+ # Mac Homebrew
+-set(pybind11_DIR /opt/homebrew/share/cmake/pybind11
++set(pybind11_DIR /usr/lib/cmake/pybind11/
+     CACHE STRING "Pybind11 search path")
+-
+-# alternaive pybind11 path
+-#set(pybind11_DIR /opt/pybind11/share/cmake/pybind11
+-#    CACHE STRING "Pybind11 search path")

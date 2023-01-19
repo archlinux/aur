@@ -1,0 +1,20 @@
+pkgbase = g4python-git
+	pkgdesc = Geant4 python Bindings
+	pkgver = 11.0.0
+	pkgrel = 1
+	install = g4python.install
+	arch = x86_64
+	makedepends = cmake
+	depends = pybind11
+	depends = geant4
+	provides = g4python
+	source = g4python-git::git+https://github.com/koichi-murakami/g4python.git
+	source = g4python.install
+	source = Geant4Config_cmake.patch
+	source = config_cmake.patch
+	sha256sums = SKIP
+	sha256sums = 34c4d158305d85a9408bf15683557395a250019e653a5e7f740992be50b950d4
+	sha256sums = d1fc6a1fc5716ba915ad8a88b1505557cf34dff54db40fbf1d4e145814c4d38b
+	sha256sums = c8731e74b01d563ba23cfa7b68097af17d944917a4c7f8eb804612ab608c43ae
+
+pkgname = g4python-git

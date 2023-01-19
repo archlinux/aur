@@ -1,0 +1,15 @@
+--- Geant4Config.cmake	2023-01-17 16:44:10.219109803 +0100
++++ Geant4Config_new.cmake	2023-01-17 16:38:30.956894149 +0100
+@@ -72,9 +72,9 @@
+                       G4RayTracer G4VRML G4vis_management G4modeling
+                       G4interfaces G4persistency G4analysis
+                       G4error_propagation G4readout G4physicslists
+-                      G4tasking G4run G4event G4tracking G4parmodels
++                      G4run G4event G4parmodels
+                       G4processes G4digits_hits G4track G4particles
+                       G4geometry G4materials G4graphics_reps G4intercoms
+-                      G4global G4ptl G4clhep G4zlib)
++                      G4global G4ptl G4clhep)
+ 
+-set(GEANT4_LIBRARIES_WITH_OGL G4OpenGL G4gl2ps ${GEANT4_LIBRARIES})
++set(GEANT4_LIBRARIES_WITH_OGL G4OpenGL ${GEANT4_LIBRARIES})
