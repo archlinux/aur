@@ -1,6 +1,6 @@
 # Maintainer: Jordan Cannon <LiteracyFanatic@gmail.com>
 pkgname=nerd-fonts-profont
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Patched font ProFont from nerd-fonts library'
 arch=('any')
