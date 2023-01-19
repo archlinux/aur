@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-openh264
 	pkgdesc = GStreamer open-source multimedia framework OpenH264 plugins
-	pkgver = 1.20.4
+	pkgver = 1.20.5
 	pkgrel = 1
 	url = https://gstreamer.freedesktop.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gst-plugins-openh264
 	makedepends = git
 	depends = gst-plugins-base-libs
 	depends = openh264
-	source = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.20.4.tar.xz
-	sha256sums = a1a3f53b3604d9a04fdd0bf9a1a616c3d2dab5320489e9ecee1178e81e33a16a
+	source = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.20.5.tar.xz
+	sha256sums = f431214b0754d7037adcde93c3195106196588973e5b32dcb24938805f866363
 
 pkgname = gst-plugins-openh264

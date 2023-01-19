@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-openh264
 _pkgname=gst-plugins-bad
-pkgver=1.20.4
+pkgver=1.20.5
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenH264 plugins"
 url="https://gstreamer.freedesktop.org/"
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(gst-plugins-base-libs openh264)
 makedepends=(meson git)
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('a1a3f53b3604d9a04fdd0bf9a1a616c3d2dab5320489e9ecee1178e81e33a16a')
+sha256sums=('f431214b0754d7037adcde93c3195106196588973e5b32dcb24938805f866363')
 
 build() {
   arch-meson $_pkgname-$pkgver build \
