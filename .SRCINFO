@@ -1,0 +1,15 @@
+pkgbase = ruby-youplot
+	pkgdesc = YouPlot is a command line tool that draws plots on the terminal.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/red-data-tools/YouPlot
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-unicode_plot
+	noextract = youplot-0.4.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/youplot-0.4.5.gem
+	sha256sums = 31b7a5d38a0924953e77a5cc8d463106c1282e457fddea1dbeb3bd297931be46
+
+pkgname = ruby-youplot
