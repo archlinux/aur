@@ -1,7 +1,7 @@
 # Maintainer: rcorre <ryan at rcorre.net>
 
 pkgname=godot-blender-exporter-git
-pkgver=252.3e66e12
+pkgver=271.b8b883d
 pkgrel=1
 pkgdesc="Exporter for Blender, made for the Godot Engine"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('blender' 'python')
 makedepends=('git')
 provides=('godot-blender-exporter')
 conflicts=('godot-blender-exporter')
-source=("$pkgname::git://github.com/godotengine/godot-blender-exporter.git")
+source=("$pkgname::git+https://github.com/godotengine/godot-blender-exporter.git")
 md5sums=('SKIP')
 _blenderver=$(blender -v | head -n1 | cut -f2 -d ' ' | cut -d. -f-2)
 
