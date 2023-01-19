@@ -2,15 +2,21 @@
 
 pkgname=paradox-launcher
 pkgver=2023.1.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Paradox Interactive Game Launcher v2"
 arch=('x86_64')
 url="https://play.paradoxplaza.com/"
 license=('custom')
 depends=("libxi" "xdg-utils" "freetype2" "libgl" "gconf")
-source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher)
+_source=https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-linux
+source=(${pkgname}-${pkgver}.deb::${_source})
 sha256sums=('b7898ac729157f8cd227311538cf21829d1d210f191aaeccc16aa138a129d48b')
+
+pkgver() {
+  ADDR=$(curl -ILs -o /dev/null -w %{url_effective} ${_source});
+  echo "$ADDR" | awk -F- '{print $4}' | awk -F. '{print $1}' | sed 's/_/./g';
+}
 
 package() {
   mkdir -p "${pkgdir}"/opt
