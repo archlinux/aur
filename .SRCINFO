@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_deadfire_pack_dlc
+	pkgdesc = DLC for the pillars of eternity game.
+	pkgver = 3.07.0.1318
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_deadfire_pack
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity
+	source = pillars_of_eternity_deadfire_pack_dlc_en_3_07_0_1318_20099.sh::gog://pillars_of_eternity_deadfire_pack_dlc_en_3_07_0_1318_20099.sh
+	sha256sums = d0c0fd6798177cd44b90ad716f72c9bb9eaa5a78870a168364f37bf5d49b72d4
+
+pkgname = gog-pillars_of_eternity_deadfire_pack_dlc
