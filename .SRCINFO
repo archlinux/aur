@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_seeker_slayer_survivor_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_seeker_slayer_survivor
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_seeker_slayer_survivor_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_seeker_slayer_survivor_v5_0_0_0040_29222.sh
+	sha256sums = fb72bdb4c506f6d748d82709f52cd863267d2aaea509020bb5ebd6aee9cec927
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_seeker_slayer_survivor_dlc
