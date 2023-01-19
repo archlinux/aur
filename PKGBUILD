@@ -2,8 +2,8 @@
 
 _appname=phonetrack
 _releasename=$_appname-oc
-pkgname=nextcloud-app-$_appname
-pkgver=0.7.2
+pkgname="nextcloud-app-$_appname"
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://gitlab.com/eneiluj/$_releasename"
 license=('AGPL')
 makedepends=('npm' 'rsync' 'yq')
 source=("$url/-/archive/v$pkgver/$_releasename-v$pkgver.tar.gz")
-sha512sums=('318893c565e1b9b14929e5b335a6975259ca17d87478a3d09a615a080d74b08d5a4d57e6ddeccbce644a955b3e3a22ac2accb506927269a7a1dc11c532673a12')
+sha512sums=('8f7dd8149fed4a87a067d0d314ddce3c5a1a34cb9d613e278b2a70bcce88920a6e1f69bfa8114db78c1bbd2a5484db1bfa4c8be88b3363525b1ae1566cbee62b')
 
 prepare() {
     cd "$srcdir/$_releasename-v$pkgver"
@@ -37,7 +37,7 @@ package() {
 
     cd "$srcdir/$_releasename-v$pkgver"
     _destdir="$pkgdir/usr/share/webapps/nextcloud/apps"
-    make build_dir=build sign_dir="$_destdir" version="v$pkgver" appstore
+    make build_dir=build sign_dir="$_destdir" version="v$pkgver" build_release
 
     # Remove auxiliary script
     rm -f "$_destdir/$_appname/l10n/descriptions/gen_info.xml.sh"
