@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 36.6bda56e
+	pkgver = 40.1b2992e
 	pkgrel = 1
 	url = https://github.com/shssoichiro/soifunc
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-poetry
 	depends = vapoursynth
 	depends = vapoursynth-plugin-vsutil-git
 	depends = vapoursynth-plugin-muvsfunc-git
