@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=portal-bin
-pkgver="1.0.6"
+pkgver="1.0.7"
 pkgrel=1
 pkgdesc="Quick and easy command-line file transfer utility from any computer to another"
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ optdepends=()
 provides=(portal)
 source_x86_64=("https://github.com/ZinoKader/portal/releases/download/v${pkgver}/portal_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("https://github.com/ZinoKader/portal/releases/download/v${pkgver}/portal_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=("afaaf60b9fdee96cc4e40cecdc92614826c2382df07e00f1bfe85d22af6cbe65")
-sha256sums_aarch64=("13dd9191d235781cb82c5f34f9390ff831a10e8c4a37bfda2994dbd4d5660285")
+sha256sums_x86_64=("705211ddeaa927f265cdbcbb1e6c805c93baae42e0c4a2928eab2b86f909fec9")
+sha256sums_aarch64=("a724a2413708ea01b20872cef9ac90c2fb3593d1cc1a49787f23d189eca1b007")
 
 package() {
   cd "$srcdir"
