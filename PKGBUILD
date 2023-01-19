@@ -23,6 +23,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./configure --prefix=/usr
+	make -C libs
 	make
 }
 
