@@ -1,11 +1,12 @@
 # Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
+# Contributor: Alex Hirzel
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 # Contributor: Leandro de Assis <leandrodiassis@gmail.com>
 # Contributor: Thomas Dziedzic
 # Contributor: Christoph Fink <christoph.fink@gmail.com>
 
 pkgname=geoserver-bin
-pkgver=2.18.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
 arch=("any")
@@ -20,7 +21,7 @@ source=(
     "geoserver.service"
     "geoserver.sysusers"
 )
-sha256sums=('7089efb82e70e814dd0697110ac29d6bddc7215ddb8ab120b19aebf4957762ea'
+sha256sums=('ebcf88bdb3820634dd060e5d41bfb2769da7b6dd3b7ef5b09b800b73a9b568de'
             '576c36670c418aa25730986e592c8b0f4a0657d3129aafbe7c783ff3ed527abe'
             'b746621be690e385341a41d850cd297e6c70e936024e6eea43f98022e53cb301'
             'edd692b53b71a684b20e0e7a87b0047aaefc2286574355fb5c08770af2652d08')
