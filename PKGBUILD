@@ -20,7 +20,10 @@ options=(!strip)
 
 prepare() {
   rm -rf "$srcdir/azure-cli"
-  grep -v -E '^===>|^$' install.response | python "$srcdir/install-$pkgver.py"
+
+  # /usr/bin/python to ensure we use system python, rather than anaconda or something else.
+  grep -v -E '^===>|^$' install.response | /usr/bin/python "$srcdir/install-$pkgver.py"
+
   find "$srcdir/azure-cli/bin" -type f -print0 | xargs -0 sed -i -e "s|$srcdir|/opt|g"
 }
 
