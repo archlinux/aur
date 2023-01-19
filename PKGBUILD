@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 _pkgbase=liquidtux
 pkgname=liquidtux-dkms-git
-pkgver=0.1.0.r68.3b80daf
+pkgver=0.1.0.r92.2ceefc1
 pkgrel=1
 pkgdesc="Linux kernel hwmon drivers for AIO liquid coolers and other devices (DKMS, Git)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -22,8 +22,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-
-	install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-	sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-	cp Makefile Kbuild *.c "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+	make "PKGVER=$pkgver" "DESTDIR=$pkgdir/" dkms_install
 }
