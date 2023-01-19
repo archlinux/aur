@@ -6,7 +6,7 @@
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='哔哩哔哩官方客户端linux移植版。Bilibili official desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron17' 'libappindicator-gtk3')
@@ -34,5 +34,6 @@ package() {
     install -Dm644 "${srcdir}/app/app-update.yml" "${pkgdir}/usr/share/${_pkgname}/app-update.yml"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     cp -r "${srcdir}/app/extensions" "${pkgdir}/usr/share/${_pkgname}/extensions"
-    xdg-icon-resource install --noupdate --context apps --novendor --size 256 "bilibili.png" "bilibili"
+    #xdg-icon-resource install --noupdate --context apps --novendor --size 256 "bilibili.png" "bilibili"
+    #这句话不知为什么有人报错，就先暂时注释掉，如果有解决方案请告诉我
 }
