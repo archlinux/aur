@@ -1,17 +1,19 @@
 pkgbase = icons-in-terminal
 	pkgdesc = Icon fonts in terminal without a need for replacing or patching existing
 	pkgver = r93.b12286d
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sebastiencs/icons-in-terminal
 	arch = any
 	license = custom:MIT
 	makedepends = git
+	makedepends = xmlstarlet
 	depends = bash
 	provides = icons-in-terminal
 	conflicts = icons-in-terminal
-	source = git://github.com/sebastiencs/icons-in-terminal.git
+	source = icons-in-terminal::git+https://github.com/sebastiencs/icons-in-terminal.git
+	source = icons-in-terminal-PR50.patch::https://github.com/sebastiencs/icons-in-terminal/pull/50.patch
 	sha1sums = SKIP
+	sha1sums = 9d7df34c3c895df45d372bbd32bf5a6ddebc600c
 
 pkgname = icons-in-terminal
 	install = icons-in-terminal.install
-

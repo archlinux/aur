@@ -2,7 +2,7 @@
 
 pkgname=icons-in-terminal
 pkgver=r93.b12286d
-pkgrel=4
+pkgrel=5
 pkgdesc="Icon fonts in terminal without a need for replacing or patching existing"
 url="https://github.com/sebastiencs/icons-in-terminal"
 arch=('any')
@@ -10,9 +10,12 @@ license=('custom:MIT')
 provides=('icons-in-terminal')
 conflicts=('icons-in-terminal')
 depends=('bash')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/sebastiencs/$pkgname.git")
-sha1sums=('SKIP')
+makedepends=('git' 'xmlstarlet')
+source=(
+    "$pkgname::git+https://github.com/sebastiencs/$pkgname.git"
+    "$pkgname-PR50.patch::https://github.com/sebastiencs/icons-in-terminal/pull/50.patch")
+sha1sums=('SKIP'
+          '9d7df34c3c895df45d372bbd32bf5a6ddebc600c')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -21,6 +24,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgname"
+    
+    patch -p1 -i "../$pkgname-PR50.patch"
 
     sed -i 's filename="./build/mapping.txt" filename="/usr/share/icons-in-terminal/mapping.txt" ' print_icons.sh
     ./scripts/generate_fontconfig.sh > "30-$pkgname.conf"
