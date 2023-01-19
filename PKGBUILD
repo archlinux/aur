@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230113.r0.g6b31ffe9c8b9
+pkgver=20230119.r0.gaa5c49149a82
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -121,8 +121,8 @@ prepare() {
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		echo "Setting tick rate to 1k..."
-                scripts/config --disable CONFIG_HZ_300
-                scripts/config --enable CONFIG_HZ_1000
+                scripts/config -d CONFIG_HZ_300
+                scripts/config -e CONFIG_HZ_1000
                 scripts/config --set-val CONFIG_HZ 1000
 	fi
 
@@ -130,7 +130,7 @@ prepare() {
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            scripts/config --disable CONFIG_NUMA
+            scripts/config -d CONFIG_NUMA
         fi
 
     ### Optionally load needed modules for the make localmodconfig
