@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=libdovi-git
-pkgver=1.7.0.g9444267
+pkgver=3.0.0.gf2683ac
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API)'
 arch=('any')
