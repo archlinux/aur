@@ -1,0 +1,18 @@
+pkgbase = tomato.c-git
+	pkgdesc = A pomodoro timer written in pure C
+	pkgver = r135.d0ee8cc
+	pkgrel = 1
+	url = https://github.com/gabrielzschmitz/Tomato.C.git
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = ncurses
+	makedepends = pkgconf
+	makedepends = git
+	depends = libnotify
+	depends = mpv
+	provides = tomato
+	source = git+https://github.com/gabrielzschmitz/Tomato.C.git
+	md5sums = SKIP
+
+pkgname = tomato.c-git
