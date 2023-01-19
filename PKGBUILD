@@ -2,14 +2,14 @@
 
 _pkgname=kube-hunter
 pkgname=$_pkgname-bin
-pkgver=0.6.1
+pkgver=0.6.8
 pkgrel=0
 pkgdesc="Hunt for security weaknesses in Kubernetes clusters"
 url="https://github.com/aquasecurity/$_pkgname"
 license=('APACHE')
 source=("$_pkgname-$pkgver::$url/releases/download/v$pkgver/${_pkgname}-linux-x86_64-refs.tags.v$pkgver")
 arch=('x86_64')
-sha512sums=('8ecccea0d03280d05c897b7dd41e2a3328116a5c2cf5e21bec27f96936082dbbef5d9fd683d4e3fa46ea7c77d93404945613712aa4bec0981bb80508a93aa82c')
+sha512sums=('04fdedda9656f77d436f907ff983573074499a39e73aa27541b89c9d2f81e0d6cbf2f0804b77a57f97af855d3375fd898afe28d273267c6f20420e773ff01318')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
