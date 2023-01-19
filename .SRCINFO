@@ -1,13 +1,13 @@
-pkgbase = kubectl-access-matrix-bin
+pkgbase = kubectl-rakkess-bin
 	pkgdesc = Review Access - kubectl plugin to show an access matrix for k8s server resources
 	pkgver = 0.5.0
 	pkgrel = 0
-	url = https://github.com/corneliusweig/access-matrix
+	url = https://github.com/corneliusweig/rakkess
 	arch = x86_64
 	license = APACHE
-	conflicts = access-matrix
-	conflicts = access-matrix-git
-	source = access-matrix-0.5.0.tar.gz::https://github.com/corneliusweig/rakkess/releases/download/v0.5.0/access-matrix-amd64-linux.tar.gz
-	sha512sums = 9f30e6998fcacecb13b4847722a845dad4f3d565b1b5a6de777b9e16937a796d44561611f272a2829f1aaceb5e47c5ad8dce3ec48296ee7d64559658d2f90663
+	conflicts = rakkess
+	conflicts = rakkess-git
+	source = rakkess-0.5.0.tar.gz::https://github.com/corneliusweig/rakkess/releases/download/v0.5.0/rakkess-amd64-linux.tar.gz
+	sha512sums = 55199498f41c7c3ee11b3a23e0547d888ea0ec2e069e975f2b8c352cc6d5b4ed7271600aea99364d369648b40231a025578d03316c3c61e2c193b08b7237568f
 
-pkgname = kubectl-access-matrix-bin
+pkgname = kubectl-rakkess-bin

@@ -1,6 +1,6 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
-_pkgname=access-matrix
+_pkgname=rakkess
 pkgname=kubectl-$_pkgname-bin
 pkgver=0.5.0
 pkgrel=0
@@ -9,7 +9,7 @@ url="https://github.com/corneliusweig/$_pkgname"
 license=('APACHE')
 arch=('x86_64')
 source=("$_pkgname-$pkgver.tar.gz::${url/$_pkgname/rakkess}/releases/download/v$pkgver/${_pkgname}-amd64-linux.tar.gz")
-sha512sums=('9f30e6998fcacecb13b4847722a845dad4f3d565b1b5a6de777b9e16937a796d44561611f272a2829f1aaceb5e47c5ad8dce3ec48296ee7d64559658d2f90663')
+sha512sums=('55199498f41c7c3ee11b3a23e0547d888ea0ec2e069e975f2b8c352cc6d5b4ed7271600aea99364d369648b40231a025578d03316c3c61e2c193b08b7237568f')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
