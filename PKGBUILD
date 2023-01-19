@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.1.4"
 pkgver="${_version//[v-]/}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -44,6 +44,8 @@ build(){
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
+            s|CapabilityBoundingSet=\(.*\)$|CapabilityBoundingSet=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
+            s|AmbientCapabilities=\(.*\)$|AmbientCapabilities=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
             s|WorkingDirectory=\(.*\)$|WorkingDirectory=-\1\nExecStartPre=+install -o ${_pkgname} -g ${_pkgname} -d -m 0700 \1|" release/config/${_pkgname}*.service
 
     echo "u ${_pkgname} - \"Sing-box Service\" - -" > "release/config/${_pkgname}.sysusers"
