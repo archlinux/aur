@@ -1,13 +1,13 @@
 pkgbase = nerd-fonts-profont
 	pkgdesc = Patched font ProFont from nerd-fonts library
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/ProFont.zip
 	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.3.1/LICENSE
 	sha256sums = 76e0d6a68de99ecc40690b847c2bb93813c4992fd8697bd4e2cfaf89a58135f3
-	sha256sums = 245b522abb5aba0d8e84898bf6d5e95102620637626106bfd0061189a2370360
+	sha256sums = 1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160
 
 pkgname = nerd-fonts-profont
