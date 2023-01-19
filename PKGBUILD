@@ -1,7 +1,7 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=paradox-launcher
-pkgver=2022.14
+pkgver=2023.1.1
 pkgrel=1
 epoch=1
 pkgdesc="Paradox Interactive Game Launcher v2"
@@ -10,7 +10,7 @@ url="https://play.paradoxplaza.com/"
 license=('custom')
 depends=("libxi" "xdg-utils" "freetype2" "libgl" "gconf")
 source=(${pkgname}-${pkgver}.zip::http://launcher.paradoxplaza.com/linux_launcher)
-sha256sums=('9275b7b7ab25d5aa074a169cf325f81636ea8a6dc93fb519edcf9c0da0d72bd6')
+sha256sums=('b7898ac729157f8cd227311538cf21829d1d210f191aaeccc16aa138a129d48b')
 
 package() {
   mkdir -p "${pkgdir}"/opt
