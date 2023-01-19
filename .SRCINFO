@@ -1,0 +1,22 @@
+pkgbase = python-eigency
+	pkgdesc = Cython interface to Eigen library
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/wouterboomsma/eigency
+	arch = x86_64
+	license = MIT
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-oldest-supported-numpy
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = eigen
+	depends = python-numpy
+	depends = python-setuptools
+	source = python-eigency-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/e/eigency/eigency-2.0.0.tar.gz
+	source = use-system-eigen.diff::https://patch-diff.githubusercontent.com/raw/wouterboomsma/eigency/pull/59.diff
+	sha256sums = a2b5e20631f7775490e8f1d648abbcd4686596b07344af0a3f62d42ec1309286
+	sha256sums = 8f8a7654d762b56a6fd4720c33c6a8d8a7e48778f1bff1e28ced61f734ab962f
+
+pkgname = python-eigency
