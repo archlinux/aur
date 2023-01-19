@@ -1,12 +1,12 @@
 pkgbase = nova
 	pkgdesc = A cli tool to find outdated Helm charts running in your Kubernetes cluster
-	pkgver = 3.4.0
-	pkgrel = 1
+	pkgver = 3.6.0
+	pkgrel = 0
 	url = https://github.com/FairwindsOps/nova
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = nova-3.4.0.tar.gz::https://github.com/FairwindsOps/nova/archive/3.4.0.tar.gz
-	md5sums = 52358dcd7db9a8294d43639abc76fff2
+	source = nova-3.6.0.tar.gz::https://github.com/FairwindsOps/nova/archive/3.6.0.tar.gz
+	md5sums = 12ae25095d6e32de8277b773b23c64dc
 
 pkgname = nova
