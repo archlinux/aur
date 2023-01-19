@@ -240,11 +240,6 @@ END
   # Faster multilocate
   patch -Np1 -i "${_librewolf_patches_dir}"/faster-package-multi-locale.patch
 
-  # https://bugs.archlinux.org/task/76231
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
-  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
-  patch -Np1 -i "${_patches_dir}"/custom/libwebrtc-screen-cast-sync.patch
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
   patch -Np1 -i "${_patches_dir}"/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 
