@@ -3,7 +3,7 @@
 
 pkgname=python-prefixed
 _name=${pkgname#python-}
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Prefixed provides an alternative implementation of the built-in float which supports formatted output with SI (decimal) and IEC (binary) prefixes.'
 arch=(any)
@@ -12,7 +12,7 @@ license=(MPL2)
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('b134d734136250b17b68eede65a3370fab0134412cb66bc8be3568ff05bdf8e4')
+sha256sums=('b39fbfac72618fa1eeb5b3fd9ed1341f10dd90df75499cb4c38a6c3ef47cdd94')
 
 build() {
   cd prefixed-$pkgver
