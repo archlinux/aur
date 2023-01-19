@@ -1,0 +1,12 @@
+pkgbase = gog-pillars_of_eternity_ii_deadfire_beard_and_hair_pack_dlc
+	pkgdesc = DLC for the pillars of eternity ii deadfire game.
+	pkgver = 5.0.0.0040
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pillars_of_eternity_ii_deadfire_beard_and_hair_pack
+	arch = x86_64
+	license = custom
+	depends = gog-pillars_of_eternity_ii_deadfire
+	source = pillars_of_eternity_ii_deadfire_beard_and_hair_pack_v5_0_0_0040_29222.sh::gog://pillars_of_eternity_ii_deadfire_beard_and_hair_pack_v5_0_0_0040_29222.sh
+	sha256sums = f2f4661fb50a8b3770dd843eebf3ca199a49caff62baade7c18dff7542701fbe
+
+pkgname = gog-pillars_of_eternity_ii_deadfire_beard_and_hair_pack_dlc
