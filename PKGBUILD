@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=libdovi-git
-pkgver=3.0.0.gf2683ac
+pkgver=3.0.0.r0.gf2683ac
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API)'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd dovi_tool
 
-  printf "%s.g%s" "$(cargo pkgid --manifest-path dolby_vision/Cargo.toml | cut -d# -f2 | cut -d: -f2)" "$(git rev-parse --short HEAD)"
+  git describe --match "libdovi-[0-9]*" --long HEAD --tags | sed 's/^libdovi\.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
