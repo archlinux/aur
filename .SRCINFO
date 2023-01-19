@@ -1,6 +1,6 @@
 pkgbase = sdformat
-	pkgdesc = SDF Converter for gazebo
-	pkgver = 12.5.0
+	pkgdesc = Simulation Description Format (SDFormat) parser and description files.
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = http://sdformat.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = sdformat
 	depends = ignition-math>=6
 	depends = python-psutil
 	depends = urdfdom
-	source = sdformat-12.5.0.tar.gz::https://github.com/ignitionrobotics/sdformat/archive/sdformat12_12.5.0.tar.gz
-	sha256sums = 3896772db68b7ca7b18bbf1945a72206885b03d3f0caf29491be5b53b79a7124
+	source = sdformat-13.2.0.tar.gz::https://github.com/gazebosim/sdformat/archive/sdformat13_13.2.0.tar.gz
+	sha256sums = e1084091f65caf8aabd4cfca6df3a7bf3a9563de1715829810813840598d5de3
 
 pkgname = sdformat
