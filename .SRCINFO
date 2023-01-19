@@ -1,6 +1,6 @@
 pkgbase = linux-amd
 	pkgver = 6.1.v.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-amd
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20230105/more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 7eee96c80ce3de7cf715e32cd8e59046a0dd13fd262c5f906de5400fc24b17e9
+	sha256sums = c400cabda883bc6cac115f79253937214062f48748305ce7560d1803d683bc10
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
