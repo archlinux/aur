@@ -1,39 +1,42 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=wrapland-kwinft
-pkgver=5.26.0
-_pkgver=0.526.0
+pkgver=5.26.5.r1816.g0f130e9
+_ver=5.26.5
 pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/wrapland"
 license=(LGPL)
-depends=('kwayland' 'wayland')
+depends=('kwayland')
 provides=("wrapland")
 conflicts=("wrapland")
-makedepends=(extra-cmake-modules doxygen qt5-tools wayland-protocols pkgconf)
-source=("https://gitlab.com/kwinft/wrapland/-/archive/wrapland@$_pkgver/wrapland-wrapland@$_pkgver.tar.gz")
-md5sums=('80c0543b132a4706efdc2ee0f35951d6')
+makedepends=(doxygen extra-cmake-modules git qt5-doc qt5-tools wayland-protocols)
+source=("git+https://gitlab.com/kwinft/wrapland.git")
+md5sums=('SKIP')
+
+pkgver() {
+  _ver=5.26.5
+  cd wrapland
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
 
 prepare() {
-  tar -xvf wrapland-wrapland@$_pkgver.tar.gz
-  mkdir -p "$srcdir"/build/make
+  mkdir -p build
 }
 
 build() {
-  cd "$srcdir"/build
-  cmake "$srcdir/wrapland-wrapland@$_pkgver" \
+  cd build
+  cmake ../wrapland \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_LIBEXECDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   make
 }
 
 package() {
-  cd "$srcdir"/build
+  cd build
   make DESTDIR="$pkgdir" install
 }
