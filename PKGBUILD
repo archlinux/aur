@@ -8,7 +8,7 @@
 pkgname=firedragon-unsigned-extensions
 _pkgname=FireDragon
 __pkgname=firedragon
-pkgver=109.0
+pkgver=108.0.2
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -44,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
+sha256sums=('42e6d6b27ad0694a4fc9dd736888ad36c99eb2dbcce96e134584805d644ca300'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
