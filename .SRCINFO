@@ -1,13 +1,11 @@
 pkgbase = elasticsearch7
 	pkgdesc = Free and Open, Distributed, RESTful Search Engine
 	pkgver = 7.17.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.elastic.co/elasticsearch/
 	arch = x86_64
 	license = custom:SSPL+Elastic-2.0
-	makedepends = jdk17-openjdk
-	depends = jdk19-openjdk
-	depends = systemd
+	depends = jre-openjdk-headless
 	depends = libxml2
 	provides = elasticsearch=7.17.8
 	conflicts = elasticsearch

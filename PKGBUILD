@@ -1,14 +1,14 @@
 # Maintainer:  HLFH <gaspard@dhautefeuille.eu>
 
+_pkgname=elasticsearch
 pkgname=elasticsearch7
 pkgver=7.17.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:SSPL+Elastic-2.0')
-depends=('jdk19-openjdk' 'systemd' 'libxml2')
-makedepends=('jdk17-openjdk')
+depends=('jre-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 source=(
@@ -38,7 +38,7 @@ backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/default/elasticsearch')
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   install -dm755 "$pkgdir"/{usr/share,var/lib,var/log}/elasticsearch
   install -dm755 "$pkgdir"/usr/bin
@@ -72,5 +72,5 @@ package() {
   sed -i '2iJAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
   sed -i 's/ES_BUNDLED_JDK=true/ES_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
 
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
 }
