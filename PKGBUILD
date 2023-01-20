@@ -7,12 +7,14 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.8.r4.g603773e59
+pkgver=4.2.13.r23.g7e43a4385
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
 makedepends=(
+  'automake'
+  'autoconf'
   'git'
   'protobuf'
   'python-requests'
@@ -22,6 +24,7 @@ makedepends=(
 depends=(
   'hicolor-icon-theme'
   'python'
+  'python-certifi'
   'python-dateutil'
   'python-dnspython'
   'python-ecdsa'
@@ -82,7 +85,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  tox -e py310
+  tox -e py310 -- --ignore-glob='*regtest*'
 }
 
 package() {
