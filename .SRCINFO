@@ -1,6 +1,6 @@
 pkgbase = setcustomres
 	pkgdesc = A utility that helps setting resolutions to monitors using (xrandr)
-	pkgver = 1.0.1
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/YoungFellow-le/setcustomres
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = setcustomres
 	depends = awk
 	provides = setcustomres
 	conflicts = setcustomres
-	source = v1.0.1.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v1.0.1.tar.gz
-	md5sums = 5ac6a72683e8bd01392bfe3d9ee55add
+	source = v2.0.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v2.0.tar.gz
+	md5sums = f90b3d2055e587231c3859c751014049
 
 pkgname = setcustomres
