@@ -2,9 +2,9 @@
 
 pkgname=mpfrc++
 pkgver=3.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Multiple-precision floating-point library  for C++'
-arch=(x86_64)
+arch=(any)
 url='http://www.holoborodko.com/pavel/'
 license=(GPL3)
 depends=('mpfr')
