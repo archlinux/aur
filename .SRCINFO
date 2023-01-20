@@ -1,0 +1,18 @@
+pkgbase = utility-git
+	pkgdesc = General purpose C utility library
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/jmdaemon/utility
+	arch = any
+	license = AGPL3
+	makedepends = make
+	depends = logc
+	depends = glibc
+	depends = gmp
+	depends = mpfr
+	provides = utility
+	conflicts = utility
+	source = utility-git::git+https://github.com/jmdaemon/utility
+	sha512sums = SKIP
+
+pkgname = utility-git

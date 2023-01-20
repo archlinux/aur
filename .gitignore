@@ -1,0 +1,5 @@
+*.zst
+pkg
+pkgname
+src
+*-git
