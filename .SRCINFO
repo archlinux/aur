@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.46.144
+	pkgver = 1.47.171
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = brave
 	makedepends = java-runtime-headless
 	makedepends = jq
 	makedepends = lld
-	makedepends = llvm-git
+	makedepends = llvm
 	makedepends = ninja
 	makedepends = npm
 	makedepends = pipewire
@@ -63,12 +63,13 @@ pkgbase = brave
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.46.144
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.46.144
-	source = chromium::git+https://github.com/chromium/chromium.git#tag=108.0.5359.128
+	options = !lto
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.47.171
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.47.171
+	source = chromium::git+https://github.com/chromium/chromium.git#tag=109.0.5414.87
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-108-patchset-2/chromium-108-patchset-2.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-109-patchset-2/chromium-109-patchset-2.tar.xz
 	source = https://gitlab.com/hadogenes/brave-patches/-/archive/brave-1.28-patches-1/brave-patches-brave-1.28-patches-1.zip
 	source = chromium-launcher-electron-app.patch
 	source = chromium-launcher-vendor.patch
@@ -79,33 +80,31 @@ pkgbase = brave
 	source = brave-1.43-brave_today-base_utf_string_conversions.patch
 	source = brave-1.43-debounce-debounce_navigation_throttle_fix.patch
 	source = brave-1.43-ntp_background_images-std-size_t.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/chromium-icu72.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/disable-GlobalMediaControlsCastStartStop.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/angle-wayland-include-protocol.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0cfb1b8e921c83e78f1909a6640b6eaa66388679/trunk/use-oauth2-client-switches-as-default.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/fix-the-way-to-handle-codecs-in-the-system-icu.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/disable-GlobalMediaControlsCastStartStop.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/angle-wayland-include-protocol.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/af67369c3290d89ff1939728249b3cfd1e91c9ed/trunk/use-oauth2-client-switches-as-default.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652
+	sha256sums = 75b7c781f1df70b056ce1bc651318b8e0377d7b177e51b2ac3aed9b2b9c01afb
 	sha256sums = c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe
 	sha256sums = 9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5
 	sha256sums = 404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88
-	sha256sums = f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef
+	sha256sums = a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8
 	sha256sums = a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b
 	sha256sums = 5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e
 	sha256sums = 0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6
 	sha256sums = ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93
 	sha256sums = 30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f
 	sha256sums = ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b
-	sha256sums = 9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716
-	sha256sums = dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572
 	sha256sums = b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454
+	sha256sums = a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3
 	sha256sums = 30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44
 	sha256sums = 4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152
 	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302

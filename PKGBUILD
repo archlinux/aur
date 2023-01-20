@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.46.144
+pkgver=1.47.171
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
@@ -59,7 +59,7 @@ makedepends=(cargo-audit
              java-runtime-headless
              jq
              lld
-             'llvm-git'
+             llvm
              ninja
              npm
              pipewire
@@ -69,7 +69,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend'
             'qt5-base: enable Qt5 with --enable-features=AllowQt')
-_chromium_ver=108.0.5359.128
+options=('!lto') # Chromium adds its own flags for ThinLTO
+_chromium_ver=109.0.5414.87
 _gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
@@ -92,10 +93,9 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-brave_today-base_utf_string_conversions.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
         brave-1.43-ntp_background_images-std-size_t.patch)
-_arch_revision=0cfb1b8e921c83e78f1909a6640b6eaa66388679
-_patches=(re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-          chromium-icu72.patch
-          v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
+_arch_revision=af67369c3290d89ff1939728249b3cfd1e91c9ed
+_patches=(v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
+          fix-the-way-to-handle-codecs-in-the-system-icu.patch
           REVERT-roll-src-third_party-ffmpeg-m102.patch
           REVERT-roll-src-third_party-ffmpeg-m106.patch
           disable-GlobalMediaControlsCastStartStop.patch
@@ -109,20 +109,19 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
+            '75b7c781f1df70b056ce1bc651318b8e0377d7b177e51b2ac3aed9b2b9c01afb'
             'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
-            'f4345b63200a8bcf00876fa2f6eba99c49c97af1b6253b159072fbfad8fefeef'
+            'a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8'
             'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
             '0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6'
             'ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
-            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
-            'dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572'
             'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
+            'a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
@@ -169,8 +168,6 @@ prepare() {
   patch -Np1 -i ../chromium-launcher-vendor.patch
 
   cd ../brave-browser
-
-  export RUSTUP_TOOLCHAIN=stable
 
   export DEPOT_TOOLS_UPDATE=0
   export PATH="${PATH}:${srcdir:?}/depot_tools"
@@ -252,9 +249,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}/re-fix-TFLite-build-error-on-linux-with-system-zlib.patch"
-  patch -Np1 -i "${srcdir}/chromium-icu72.patch"
   patch -Np1 -d v8 <"${srcdir}/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch"
+  patch -Np1 -i "${srcdir}/fix-the-way-to-handle-codecs-in-the-system-icu.patch"
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
@@ -315,7 +311,6 @@ prepare() {
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
   make CHROMIUM_APP=Brave CHROMIUM_NAME=brave -C chromium-launcher-$_launcher_ver
 
   cd "brave-browser"
@@ -365,7 +360,7 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       'symbol_level=0' # sufficient for backtraces on x86(_64)
-      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
       'treat_warnings_as_errors=false'
       'disable_fieldtrial_testing_config=true'
       'blink_enable_generated_code_formatting=false'
@@ -381,7 +376,7 @@ build() {
       'enable_hangout_services_extension=true'
       'enable_widevine=true'
       'enable_nacl=false'
-      'use_vaapi=true'
+      #'use_vaapi=true'
     )
     _flags+=("rustup_path=\"$HOME/.rustup\"" "cargo_path=\"$HOME/.cargo\"")
 
@@ -463,7 +458,6 @@ build() {
 
 package() {
   cd chromium-launcher-$_launcher_ver
-  export RUSTUP_TOOLCHAIN=stable
   make PREFIX=/usr DESTDIR="$pkgdir" CHROMIUM_NAME=brave install
 
   install -Dm644 LICENSE \
