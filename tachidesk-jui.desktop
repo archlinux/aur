@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TachideskJUI
+Comment=Manga Reader
+Exec=/usr/bin/tachidesk-jui "\\$@"
+Icon=tachidesk-jui
+Terminal=false
+Categories=Network;
