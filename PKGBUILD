@@ -8,14 +8,15 @@ _appimage="${_pkgname}.AppImage"
 
 pkgname="${_pkgname}-appimage"
 pkgver=20221215
-pkgrel=1
-pkgdesc="A gui electron app for the deemix lib."
+pkgrel=2
+pkgdesc="A gui electron app for the deemix lib"
 arch=("${_carchbase}_${_carchbit}")
 url="https://deemix.app/gui"
 license=("GPL3")
 depends=("alsa-lib" "dbus-glib" "gtk3" "libdbusmenu-gtk2" "libindicator-gtk2" "nss")
 source=("https://archive.org/download/linux-x64-latest/${_originalappimagefilename}")
 sha256sums=('7b69de7a6b00cc69e20695c83d86ca9392d01e860bbc58f9ffc42ccc27284d83')
+md5sums=('1b51eeaa29ecea32af2c08f262fd576b')
 
 prepare() {
     mv ./${_originalappimagefilename} ./${_appimage}
