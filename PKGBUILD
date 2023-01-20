@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -273,7 +273,6 @@ prepare() {
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
-    patch -p1 -i "$srcdir"/0002-v45-fixes.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
