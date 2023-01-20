@@ -1,6 +1,6 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=obs-shaderfilter-git
-pkgver=1.21.2
+pkgver=1.21.3.r3.gfe622e1
 pkgrel=1
 pkgdesc="enables custom shaders for OBS sources"
 arch=('x86_64')
@@ -25,5 +25,8 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    mkdir -p $pkgdir/usr/lib/obs-plugins/
+    mkdir -p $pkgdir/usr/share/obs/obs-plugins/$_basename
+    cp   $srcdir/build/rundir/RelWithDebInfo/obs-plugins/64bit/obs-shaderfilter.so $pkgdir/usr/lib/obs-plugins
+    cp -R  $srcdir/build/rundir/RelWithDebInfo/data/obs-plugins/$_basename/data/*  $pkgdir/usr/share/obs/obs-plugins/$_basename
 }
