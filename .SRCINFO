@@ -1,0 +1,14 @@
+pkgbase = epherome
+	pkgdesc = Powerful Minecraft Launcher.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://epherome.com/
+	arch = x86_64
+	license = GPL
+	depends = electron
+	provides = epherome
+	conflicts = epherome
+	source = Epherome-0.7.2.deb::https://github.com/ResetPower/Epherome/releases/download/0.7.2/Epherome-0.7.2.deb
+	sha512sums = db640860e9e6b0fcbec344fc5355ea32ff3c52b5a386d045faed6894e5920e3bf09d61e9632f8a00e6131b37f4ae8ca9d342c37e464749f28d19a85a0dc0742a
+
+pkgname = epherome
