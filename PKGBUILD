@@ -2,8 +2,8 @@
 # Contributor: jwwolf <jwwolf+arch@gmail.com>
 
 pkgname=onioncat
-pkgver=0.4.7
-pkgrel=2
+pkgver=4.10.0
+pkgrel=1
 pkgdesc='OnionCat is a VPN-adapter, which uses Tor or I2P as its transport.'
 arch=('i686' 'x86_64')
 url='https://www.onioncat.org/'
@@ -17,7 +17,7 @@ validpgpkeys=('98678E06063007E4A1F0B9C59BD601668E24F29D') # Bernhard R. Fischer 
 #            'SKIP'
 #            'SKIP'
 #            'SKIP')
-sha512sums=('4b2932e0426d5df4e064c17afd932f2db9acea2775917cd21aff169eae7324bcf17bdfa69332a99bf1b2e52f391d1c28f057d56e96bb41c65d4c823bf373f3b3')
+sha512sums=('5a2999947edcf6dea46f66c2eed1980604ccb30e49e7bdbcd22fd6c961dc8751bac0c0d4b5b26b51b689f8dfaae893c86579b24341002c41626582f16d2431eb')
 
 build() {
     cd "${pkgname}-${pkgver}"
