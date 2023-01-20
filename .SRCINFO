@@ -14,6 +14,6 @@ pkgbase = python-pyrogram
 	depends = python-pysocks
 	options = !emptydirs
 	source = https://github.com/pyrogram/pyrogram/archive/refs/tags/v2.0.97.tar.gz
-	sha256sums = 862df3a98923c54853cdc8a0136bd1a04124fbe4487a26081a40e0b6dc6f0934
+	sha256sums = 619608661ec19f95825589abbf298f430f6559ad5f6f58401ab82b547d9ea89a
 
 pkgname = python-pyrogram
