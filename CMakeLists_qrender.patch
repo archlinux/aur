@@ -1,0 +1,26 @@
+diff -upr ffDiaporama.r0/src/qdvdauthor-2.3.1/qrender/ffmpeg-0.6.3/CMakeLists.txt ffDiaporama.r1/src/qdvdauthor-2.3.1/qrender/ffmpeg-0.6.3/CMakeLists.txt
+--- qdvdauthor.r0/qrender/ffmpeg-0.6.3/CMakeLists.txt	2017-11-25 08:36:00.000000000 +0100
++++ qdvdauthor.r1/qrender/ffmpeg-0.6.3/CMakeLists.txt	2023-01-19 19:19:07.385087235 +0100
+@@ -1,12 +1,12 @@
+ ########### install files ###############
+ 
+-INSTALL(FILES lib/libavcodec.so.52            DESTINATION  lib64/)
+-INSTALL(FILES lib/libavcodec.so.52.72.2       DESTINATION  lib64/)
+-INSTALL(FILES lib/libavdevice.so.52           DESTINATION  lib64/)
+-INSTALL(FILES lib/libavdevice.so.52.2.0       DESTINATION  lib64/)
+-INSTALL(FILES lib/libavformat.so.52           DESTINATION  lib64/)
+-INSTALL(FILES lib/libavformat.so.52.64.2      DESTINATION  lib64/)
+-INSTALL(FILES lib/libavutil.so.50             DESTINATION  lib64/)
+-INSTALL(FILES lib/libavutil.so.50.15.1        DESTINATION  lib64/)
+-INSTALL(FILES lib/libswscale.so.0             DESTINATION  lib64/)
+-INSTALL(FILES lib/libswscale.so.0.11.0        DESTINATION  lib64/)
++#INSTALL(FILES lib/libavcodec.so.52            DESTINATION  lib64/)
++#INSTALL(FILES lib/libavcodec.so.52.72.2       DESTINATION  lib64/)
++#INSTALL(FILES lib/libavdevice.so.52           DESTINATION  lib64/)
++#INSTALL(FILES lib/libavdevice.so.52.2.0       DESTINATION  lib64/)
++#INSTALL(FILES lib/libavformat.so.52           DESTINATION  lib64/)
++#INSTALL(FILES lib/libavformat.so.52.64.2      DESTINATION  lib64/)
++#INSTALL(FILES lib/libavutil.so.50             DESTINATION  lib64/)
++#INSTALL(FILES lib/libavutil.so.50.15.1        DESTINATION  lib64/)
++#INSTALL(FILES lib/libswscale.so.0             DESTINATION  lib64/)
++#INSTALL(FILES lib/libswscale.so.0.11.0        DESTINATION  lib64/)

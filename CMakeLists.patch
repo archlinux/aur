@@ -1,0 +1,45 @@
+diff -upr ffDiaporama.r0/src/qdvdauthor-2.3.1/CMakeLists.txt ffDiaporama.r1/src/qdvdauthor-2.3.1/CMakeLists.txt
+--- qdvdauthor.r0/CMakeLists.txt	2021-08-03 11:23:22.000000000 +0200
++++ qdvdauthor.r1/CMakeLists.txt	2023-01-19 19:18:03.189089001 +0100
+@@ -262,20 +262,20 @@
+        #${FFMPEG_AVCODEC_INCLUDE_DIR}
+        #${FFMPEG_AVFORMAT_INCLUDE_DIR}
+        #${FFMPEG_SWSCALE_INCLUDE_DIR}
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/include
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/include
+       #/usr/local/include
+        #/usr/local/include/ffmpeg063
+-      #/usr/include/ffmpeg063
++      /opt/ffmpeg063/include
+     )
+     set(FFMPEG_LIBRARIES
+        #${FFMPEG_AVCODEC_LIBRARY}
+        #${FFMPEG_AVFORMAT_LIBRARY}
+        #${FFMPEG_AVUTIL_LIBRARY}
+        #${FFMPEG_SWSCALE_LIBRARY}
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavcodec.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavformat.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavutil.so
+-      ${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libswscale.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavcodec.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavformat.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libavutil.so
++      #${CMAKE_SOURCE_DIR}/qrender/ffmpeg-0.6.3/lib/libswscale.so
+        #/usr/local/lib64/libavcodec.so
+        #/usr/local/lib64/libavformat.so
+        #/usr/local/lib64/libavutil.so
+@@ -284,10 +284,10 @@
+       #/usr/lib/libavformat.so
+       #/usr/lib/libavutil.so
+       #/usr/lib/libswscale.so
+-      #/usr/local/lib/libavcodec.so
+-      #/usr/local/lib/libavformat.so
+-      #/usr/local/lib/libavutil.so
+-      #/usr/local/lib/libswscale.so
++      /opt/ffmpeg063/lib/libavcodec.so
++      /opt/ffmpeg063/lib/libavformat.so
++      /opt/ffmpeg063/lib/libavutil.so
++      /opt/ffmpeg063/lib/libswscale.so
+     )
+ #endif (FFMPEG_FOUND)
+ 

@@ -18,8 +18,18 @@ provides=(
   'qrender'
 )
 options=()
-source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-013a.tar.gz")
-md5sums=('47cc4cc2ba33d8058f7978b9ba89f127')
+source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-013.tar.gz"
+        'CMakeLists.patch'
+        'CMakeLists_qrender.patch')
+md5sums=('c678e035b7547f02ed9eca9c78b38769'
+         'c9c7641aff17d1f9a299f4ea4fa03c6b'
+         '612adb519f1dc94a403740e9c08a9afe')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/CMakeLists.patch"
+  patch --forward --strip=1 --input="${srcdir}/CMakeLists_qrender.patch"
+}
 
 build() {
   cd qdvdauthor-${pkgver}/build
