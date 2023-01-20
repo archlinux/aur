@@ -15,7 +15,7 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=19.0.2.u1
+pkgver=19.0.2.1.u1
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
@@ -53,7 +53,7 @@ source=(
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
 )
-b2sums=('5105dcddaab722554efd61aa0f68e40af76876ca425a8998c124a1f31f49f3c7b915ec12d45c752a3db94c0b685ebf6349b3ba440db9793185ecf72a9f1fa744'
+b2sums=('fba1046c83e709ba9558b0e9a5a164a86ca919781b822e52c7fa6a514d44aaa78a58e3639ca7be429916b95549f85ae8d916cd4b2b3f8e471c1fb87b988f4c46'
         'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
         '30f5f096f29a85b7d3a40de6bd3420fc951e24eee1d19017c41f3553c1d44832bd87742af691c9f68c1149ea827faf88edfa6af1e27cb324b7bf7d093a74398e'
         '13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e')
