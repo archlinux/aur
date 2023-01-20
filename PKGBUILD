@@ -1,7 +1,7 @@
 # Maintainer: Samuel Forestier <dev+archey@samuel.domains>
 
 pkgname=archey4
-pkgver=4.14.0.1
+pkgver=4.14.1.0
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
@@ -21,8 +21,8 @@ conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('7e9d25252f9e0451a674d5e921fa3309')
-sha1sums=('ce43cd963c9809b688427d33c82caf0631fe219d')
+md5sums=('91328bc21cceb60086ade1683f93f55f')
+sha1sums=('1c5e54fd03835b2497325742d91d10ec25cb538b')
 
 
 build() {
