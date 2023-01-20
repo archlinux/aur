@@ -1,37 +1,35 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nvtop-git
-pkgver=2.0.3.r3.g5997553
+pkgver=3.0.1.r3.g85200b4
 pkgrel=1
-pkgdesc="A (h)top like task monitor for NVIDIA GPUs"
+pkgdesc="GPUs process monitoring for AMD, Intel and NVIDIA"
 arch=('x86_64')
 url="https://github.com/Syllo/nvtop"
 license=('GPL3')
-depends=('nvidia-utils' 'ncurses')
-makedepends=('cmake' 'cuda')
+depends=('ncurses' 'systemd-libs')
+makedepends=('cmake' 'libdrm' 'systemd' 'git')
 provides=('nvtop')
 conflicts=('nvtop')
 source=("${pkgname}::git+https://github.com/Syllo/nvtop.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+  cd "${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
 
-	mkdir -p build
-    cmake . -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release -B build
-	make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DNVIDIA_SUPPORT=ON -DAMDGPU_SUPPORT=ON .
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "${pkgname}"
 
-    make -C build DESTDIR="$pkgdir/" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
