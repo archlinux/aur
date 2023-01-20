@@ -1,0 +1,19 @@
+pkgbase = python-moddb
+	pkgdesc = A Python scraper to access ModDB mods, games and more as objects
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/ClementJ18/moddb
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-beautifulsoup4
+	depends = python-pyrate-limiter
+	depends = python-requests
+	depends = python-toolz
+	source = https://files.pythonhosted.org/packages/source/m/moddb/moddb-0.8.1.tar.gz
+	sha256sums = cf103b4cb1d43e4fcf2cd9e64ca030767e946fdce2ddb091ab8808ea04781ab8
+
+pkgname = python-moddb
