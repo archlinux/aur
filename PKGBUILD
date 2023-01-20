@@ -4,7 +4,7 @@
 pkgname=ytdlp-gui
 _pkgname=ytdlp-gui
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")
@@ -15,7 +15,7 @@ provides=("ytdlp-gui")
 conflicts=("ytdlp-gui")
 
 source=("${url}/ytdlp-gui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("e97d2c771f115d8b1b4307183cdb0c77d051a8f8e3f0abf2207ca6a67ee00358")
+sha256sums=("8cfd0cf4c5261242f010fff2dd60fbb87b3031dff2d4bd1338eb06156eb78e31")
 
 build() {
     cd "$_pkgname-${pkgver}"
