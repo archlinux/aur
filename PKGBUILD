@@ -26,14 +26,14 @@ build() {
 package-bin() {
     BIN_DIR="$pkgdir"/usr/bin
     mkdir -p $BIN_DIR
-    install build/release/bin/bytesize $BIN_DIR/bytesize
+    install build/make/release/bin/bytesize $BIN_DIR/bytesize
 }
 
 package-lib() {
     LIB_DIR="$pkgdir"/usr/lib
     INC_DIR="$pkgdir"/usr/include
     mkdir -p $LIB_DIR $INC_DIR
-    install build/release/lib/libbytesize.so $LIB_DIR/libbytesize.so
+    install build/make/release/lib/libbytesize.so $LIB_DIR/libbytesize.so
     install include/bytesize.h $INC_DIR/bytesize.h
 }
 
