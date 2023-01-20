@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=scantools
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="scantools is a library and a matching set of command line applications for graphics manipulation, written with a view towards the handling of scanned documents and generation of high-quality PDF files."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qpdf' 'qt5-imageformats' 'gcc' 'graphviz' 'jbig2dec' 'libjpeg-turbo' '
 makedepends=('cmake' 'doxygen' 'git')
 optdepends=('jbig2enc-git: Encode PDF files with JBIG2 (recommended)')
 source=("https://gitlab.com/kebekus/scantools/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('556d76ab71b34ebfa44f216b12b409715c7f94e9e14f04205836d662ea36ad0a')
+sha256sums=('a221ddac4a4b375b530a8480e98206933f668c8d5d1d876886f75fb736c92fe2')
 
 build() {
   cd ${pkgname}-${pkgver}
