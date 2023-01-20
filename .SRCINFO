@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-weather-oclock-git
+	pkgdesc = Display the current weather inside the pill next to the clock.
+	pkgver = 3.r3.gf247e6f
+	pkgrel = 1
+	url = https://github.com/CleoMenezesJr/weather-oclock
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	depends = gnome-weather
+	provides = gnome-shell-extension-weather-oclock
+	conflicts = gnome-shell-extension-weather-oclock
+	source = git+https://github.com/CleoMenezesJr/weather-oclock.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-weather-oclock-git
