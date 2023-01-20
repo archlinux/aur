@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.10.4.r0.g9b56c88
+pkgver=0.10.10.r9.ga81586d
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -71,6 +71,7 @@ makedepends=(autoconf-archive
              yarn)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
+options=(debug)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
