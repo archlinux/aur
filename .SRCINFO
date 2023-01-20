@@ -1,0 +1,12 @@
+pkgbase = ipw2x00-firmware
+	pkgdesc = Firmware for ipw2100 and ipw2200 drivers
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://ipw2200.sourceforge.net/firmware.php
+	arch = any
+	license = custom
+	makedepends = git
+	source = ipw2x00-firmware::git+https://github.com/VorpalBlade/ipw2x00-firmware.git#commit=5dcd813fa495b15a1643715300313f4d16037f6b
+	md5sums = SKIP
+
+pkgname = ipw2x00-firmware
