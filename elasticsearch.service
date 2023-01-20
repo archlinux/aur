@@ -1,6 +1,6 @@
 [Unit]
 Description=Elasticsearch
-Documentation=http://www.elastic.co
+Documentation=https://www.elastic.co
 Wants=elasticsearch-keystore.service
 Wants=network-online.target
 After=elasticsearch-keystore.service
