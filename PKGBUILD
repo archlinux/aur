@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.8.beta6.r0.g2114066f877
+pkgver=9.8.beta7.r0.g047281e0287
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -26,6 +26,7 @@ optdepends=('cython: to compile cython code'
   'bliss: bliss backend for graph theory'
   'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
   'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
+  'python-pyscipopt: SCIP mixed integer linear programming backend'
   'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs'
   'plantri: for generating some classes of graphs'
@@ -74,8 +75,7 @@ sha256sums=('SKIP'
             '89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
             'f5a0258335dd4005c664a3c3d025c3d1df236abbffcfb6a66516f781c8c22526'
-            'c3140d70efb0dc462c4acc9210332ce70f386c04f2c215245425dcf834515ba2')
-options=(debug)
+            'c2685c8a1fb272eef58f830897fda9e6f6671fde1ced59cc55bd5cddb2da7b19')
 
 pkgver() {
   cd sage

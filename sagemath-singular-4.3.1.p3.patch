@@ -1,34 +1,23 @@
-diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-index 79a4b06ebd..93e90ba0b5 100644
---- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-+++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -2023,7 +2023,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
-             sage: f.green_function(P([2, 1]), K.ideal(7), N=7)
-             0.48647753726382832627633818586
-             sage: f.green_function(P([w, 1]), K.ideal(17), error_bound=0.001)
--            -0.70813041039490996737374178059
-+            -0.70761163353747779889947530309
- 
-         ::
- 
-@@ -2233,7 +2233,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
-             sage: f = DynamicalSystem_projective([1000*x^2-29*y^2, 1000*y^2])
-             sage: Q = P(-1/4, 1)
-             sage: f.canonical_height(Q, error_bound=0.01)
--            3.7996079979254623065837411853
-+            3.7979215342343045582800170705
- 
-         ::
- 
-@@ -2434,7 +2434,7 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
-             sage: P.<x,y> = ProjectiveSpace(QQ, 1)
-             sage: f = DynamicalSystem([5*x^2 + 3*x*y , y^2 + 3*x^2])
-             sage: f.height_difference_bound(prec=100)
--            5.3375380797013179737224159274
-+            3.5835189384561100016249547168
-         """
-         FF = FractionField(self.domain().base_ring()) #lift will only work over fields, so coercing into FF
-         if FF not in NumberFields():
+diff --git a/build/pkgs/singular/checksums.ini b/build/pkgs/singular/checksums.ini
+index 2e33a405d3..313463d2fe 100644
+--- a/build/pkgs/singular/checksums.ini
++++ b/build/pkgs/singular/checksums.ini
+@@ -1,5 +1,5 @@
+ tarball=singular-VERSION.tar.gz
+-sha1=6c2b622d3681e2de3d58d30c654d43d3e32b720c
+-md5=abb1e37c794472e7760655358ab66054
+-cksum=17455733
++sha1=28bb3ee97ef48d04dfa96de182fd93eebe08426c
++md5=fc0a4f5720dadba45a52ee94324ce00c
++cksum=1573851737
+ upstream_url=ftp://jim.mathematik.uni-kl.de/pub/Math/Singular/SOURCES/4-3-1/singular-VERSION.tar.gz
+diff --git a/build/pkgs/singular/package-version.txt b/build/pkgs/singular/package-version.txt
+index 11300c77e7..66e2bede53 100644
+--- a/build/pkgs/singular/package-version.txt
++++ b/build/pkgs/singular/package-version.txt
+@@ -1 +1 @@
+-4.3.1p1
++4.3.1p3
 diff --git a/src/sage/libs/singular/decl.pxd b/src/sage/libs/singular/decl.pxd
 index 8e3ac314b6..747a6b1e2f 100644
 --- a/src/sage/libs/singular/decl.pxd
@@ -73,7 +62,7 @@ index d8ea7b07f3..368ee09d50 100644
      if unlikely(e > _ring.bitmask):
          raise OverflowError("exponent overflow (%d)"%(e))
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 4d70e01c8a..7c88219c07 100644
+index 7dc058a22f..71494eddbc 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
 @@ -60,7 +60,7 @@ We compute in a quotient of a polynomial ring over `\ZZ/17\ZZ`::
@@ -86,7 +75,7 @@ index 4d70e01c8a..7c88219c07 100644
      True
  
 diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-index 4dad016b33..d9b520311e 100644
+index 4dad016b33..1003c45d97 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 @@ -193,7 +193,7 @@ from sage.libs.singular.decl cimport (
@@ -150,12 +139,21 @@ index 4dad016b33..d9b520311e 100644
          for i from 0 <= i < IDELEMS(res):
              for j from 1 <= j <= IDELEMS(_I):
 -                l.append( new_MP(parent, pTakeOutComp1(&res.m[i], j)) )
-+                l.append( new_MP(parent, pTakeOutComp(&res.m[i], j)) )
++                l.append( new_MP(parent, pTakeOutComp(&res.m[i], 1)) )
  
          id_Delete(&fI, r)
          id_Delete(&_I, r)
+@@ -4635,7 +4635,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+ 
+             sage: f = 3*x
+             sage: f.reduce([2*x,y])
+-            3*x
++            x
+ 
+         The reduction is not canonical when ``I`` is not a Groebner
+         basis::
 diff --git a/src/sage/rings/polynomial/plural.pyx b/src/sage/rings/polynomial/plural.pyx
-index 3209824ec8..3527874d96 100644
+index 1c9f35e56b..587511c388 100644
 --- a/src/sage/rings/polynomial/plural.pyx
 +++ b/src/sage/rings/polynomial/plural.pyx
 @@ -1619,10 +1619,10 @@ cdef class NCPolynomial_plural(RingElement):
