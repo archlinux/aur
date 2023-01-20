@@ -56,7 +56,7 @@ function foo {
         fi
 
         tmp_file="${basedir}/${tool}"
-        curl "https://api.github.com/repos/vmware-tanzu/carvel-${project}/releases/latest" -o "${tmp_file}" -C -
+        curl -fsSL "https://api.github.com/repos/vmware-tanzu/carvel-${project}/releases/latest" -o "${tmp_file}" -C -
 
         url=$(jq -r '.assets[] | select(.name == "'"${tool}"'-linux-'"${arch_bin}"'").browser_download_url' <"${tmp_file}")
         version=$(jq -r '.name' <"${tmp_file}")
