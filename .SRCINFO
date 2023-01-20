@@ -1,0 +1,15 @@
+pkgbase = discordutility
+	pkgdesc = A simple utility for the .tar.gz version of Discord
+	pkgver = r1.c87a194
+	pkgrel = 1
+	url = https://github.com/CJendantix/discordutility
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = gzip
+	provides = package
+	source = discordutility::git+https://github.com/CJendantix/discordutility.git
+	md5sums = SKIP
+
+pkgname = discordutility
