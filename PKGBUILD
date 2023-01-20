@@ -3,7 +3,7 @@
 pkgname='elk-zone-bin'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ conflicts=('elk-zone-git')
 
 source=("https://github.com/elk-zone/elk-native/releases/download/elk-native-v${pkgver}/Elk_${pkgver}_linux_x86_64.deb")
 
-sha256sums=('3578f59a7d3bb5d50d735f38c55a40a498bef65eb2a7fe68314b0f6fafd17e8a')
+sha256sums=('14b60198ca270bc59ac44e87365068159ac08d8707858dff22592b06499fe4e3')
 
 package() {
   tar -xvf ${srcdir}/data.tar.gz
