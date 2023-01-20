@@ -1,9 +1,9 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
-pkgver=7.1.0
+pkgver=8.0.1
 pkgrel=1
-pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
+pkgdesc="A client library and command line tools for interacting with Gazebo Fuel servers."
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/fuel_tools"
 license=('Apache')
@@ -12,11 +12,10 @@ depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common'
          'ignition-msgs' 'ignition-tools')
 makedepends=('ignition-cmake')
 optdepends=('ruby')
-conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/${pkgname//_/-}7_${pkgver}.tar.gz")
-sha256sums=('45bc8a6fa61da8ec8e75f488a91c433ec3db0276815bdbfc7db47ee659bd59e9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/gz-fuel-tools8_${pkgver}.tar.gz")
+sha256sums=('7e42654acd2b5cb1f4d5cea34cf14d98117afb9505f4d7eacdbbb20e8c97cb80')
 
-_dir="gz-fuel-tools-${pkgname//_/-}7_${pkgver}"
+_dir="gz-fuel-tools-gz-fuel-tools8_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
