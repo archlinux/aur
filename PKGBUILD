@@ -1,34 +1,32 @@
-# Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=findent
-pkgver=3.1.7
+pkgver=4.2.5
 pkgrel=1
-pkgdesc="Indent, beautify Fortran source, generate dependencies"
-arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/findent/"
-license=('BSD')
-depends=('bash')
-source=("https://master.dl.sourceforge.net/project/findent/findent-3.1.7.tar.gz")
-sha256sums=('42bbf3fd80c14bb44fd18fa73aa53596829f4fb2bacabe57733eb8a9e4f00bb2')
+pkgdesc="Indent, beautify and relabel Fortran source, generates dependencies"
+arch=(i686 x86_64)
+url="https://sourceforge.net/projects/${pkgname}"
+license=('custom:BSD-3-clause')
+depends=(bash)
+checkdepends=(gcc-fortran)
+source=(https://master.dl.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('bffb5caa07ca73913592a2ab585582c19eddc1386dc51af12f72ba3df0769c9f686a319a5206ef2139fa102761d6087fe2b05f3f86565ed9375500939f8991f6')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd ${pkgname}-${pkgver}
   make check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd ${pkgname}-${pkgver}
   make install DESTDIR="${pkgdir}"
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/LICENCE \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENCE
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
