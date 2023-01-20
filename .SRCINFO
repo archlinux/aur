@@ -1,0 +1,12 @@
+pkgbase = cdk-dia
+	pkgdesc = Cdk-dia diagrams your CDK provisioned infrastructure using the Graphviz dot language.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/cdk-dia
+	arch = any
+	makedepends = npm
+	depends = nodejs
+	noextract = cdk-dia-0.9.0.tgz
+	source = cdk-dia-0.9.0.tgz::https://registry.npmjs.org/cdk-dia/-/cdk-dia-0.9.0.tgz
+
+pkgname = cdk-dia
