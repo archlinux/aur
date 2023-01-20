@@ -2,7 +2,7 @@
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
 _name=pymdown_extensions
-pkgver=9.9.1
+pkgver=9.9.2
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pyaml' 'python-pygments' 'python-pytest-cov')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 #source=("$_name-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('abed29926960bbb3b40f5ed5fa6375e29724d4e3cb86ced7c2bbd37ead1afeea')
+sha256sums=('ebb33069bafcb64d5f5988043331d4ea4929325dc678a6bcf247ddfcf96499f8')
 
 build() {
   cd "$_name-$pkgver"
