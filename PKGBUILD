@@ -64,7 +64,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Skylake (and newer) compiled using clang (tagged git version), with Clear Linux patches, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance."
+  pkgdesc="Modified Linux kernel optimized for Skylake and newer, compiled using clang, sacrificing security for performance. The 'nitrous-fire' kernel is insecure, only use it if you need the performance."
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
