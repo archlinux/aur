@@ -1,7 +1,7 @@
 pkgbase = vcfanno
 	pkgdesc = Annotate a VCF with other VCFs/BEDs/tabixed files http://dx.doi.org/10.5281/zenodo.49500
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brentp/vcfanno
 	arch = x86_64
 	license = MIT

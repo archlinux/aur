@@ -1,8 +1,9 @@
 # Maintainer: Bipin Kumar  <bipin@ccmb.res.in>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=vcfanno
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Annotate a VCF with other VCFs/BEDs/tabixed files http://dx.doi.org/10.5281/zenodo.49500"
 arch=('x86_64')
 url='https://github.com/brentp/vcfanno'
