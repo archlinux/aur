@@ -1,6 +1,6 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 pkgname='imgurs'
-pkgver="0.10.0"
+pkgver="0.11.1"
 pkgrel=1
 pkgdesc='CLI for a Imgur API written in Rust'
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('libnotify: Notification support'
             'xsel: Clipboard support'
             'xclip: Clipboard support')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('276878ce2ad79c082a045ff11fb38fe4683df49ece6b77f017a01a558576e6cb')
+sha256sums=('bdb55f8091b4fda15787d04bc93e98c838749720ec4c3de684912359d98b7afd')
 
 build() {
   cd "${pkgname}-${pkgver}/imgurs-cli"
