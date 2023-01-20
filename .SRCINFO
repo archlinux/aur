@@ -1,24 +1,22 @@
 pkgbase = musicplayerplus
 	pkgdesc = Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more
-	pkgver = v3.0.1r1
+	pkgver = v3.0.1r3
 	pkgrel = 1
 	url = https://github.com/doctorfree/MusicPlayerPlus
 	install = musicplayerplus.install
-	arch = x86_64
-	arch = armv7h
+	arch = any
 	license = MIT
-	makedepends = boost
-	makedepends = cargo
 	makedepends = git
 	makedepends = pandoc
-	makedepends = qt5-tools
 	makedepends = zip
 	depends = util-linux
 	depends = bc
 	depends = boost-libs
 	depends = coreutils
 	depends = curl
+	depends = dialog
 	depends = flac
+	depends = imagemagick
 	depends = jq
 	depends = libcurl-compat
 	depends = libmpdclient
@@ -59,7 +57,7 @@ pkgbase = musicplayerplus
 	depends = xorg-xrandr
 	depends = yt-dlp
 	optdepends = cool-retro-term: cool retro terminal emulator
-	source = musicplayerplus::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=v3.0.1r1
+	source = musicplayerplus::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=v3.0.1r3
 	sha256sums = SKIP
 
 pkgname = musicplayerplus

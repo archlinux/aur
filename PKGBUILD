@@ -1,21 +1,18 @@
 # Maintainer: Ronald Record <github@ronrecord.com>
 
 pkgname=musicplayerplus
-pkgver=v3.0.1r1
+pkgver=v3.0.1r3
 pkgrel=1
 pkgdesc="Character based MPD client, spectrum visualizer, Beets library management, Mopidy and Navidrome servers, plus more"
-arch=('x86_64' 'armv7h')
+arch=('any')
 url="https://github.com/doctorfree/MusicPlayerPlus"
 license=('MIT')
-depends=(util-linux bc boost-libs coreutils curl flac jq libcurl-compat libmpdclient ncurses readline taglib mediainfo mpd ffmpeg4.4 inotify-tools figlet tmux fzf mpc python python-pip python-numpy python-six mplayer eigen fftw clang libsamplerate chromaprint iniparser libyaml swig alsa-lib alsa-utils libpulse sndio sqlite qt5-base wget wmctrl xorg-xdpyinfo xorg-xprop xorg-xrandr yt-dlp)
-makedepends=(autoconf-archive boost cargo git pandoc qt5-tools zip)
+depends=(util-linux bc boost-libs coreutils curl dialog flac jq libcurl-compat libmpdclient ncurses readline taglib mediainfo mpd ffmpeg4.4 inotify-tools figlet tmux fzf mpc python python-pip python-numpy python-six mplayer eigen fftw clang libsamplerate chromaprint iniparser libyaml swig alsa-lib alsa-utils libpulse sndio sqlite qt5-base wget wmctrl xorg-xdpyinfo xorg-xprop xorg-xrandr yt-dlp imagemagick)
+makedepends=(git pandoc zip)
 optdepends=('cool-retro-term: cool retro terminal emulator')
 install=musicplayerplus.install
 source=("${pkgname}::git+https://github.com/doctorfree/MusicPlayerPlus.git#tag=${pkgver}")
 sha256sums=('SKIP')
-
-export RUSTUP_TOOLCHAIN=stable
-export CARGO_TARGET_DIR=target
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -23,19 +20,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  # Build mppcava
-  if [ -x scripts/build-mppcava.sh ]
-  then
-    scripts/build-mppcava.sh
-  else
-    cd mppcava
-    make clean
-    make distclean
-    [ -x ./configure ] || ./autogen.sh > /dev/null
-    ./configure --prefix=/usr > configure$$.out
-    make > make$$.out
-    cd ..
-  fi
 }
 
 package() {
@@ -44,7 +28,7 @@ package() {
   for dir in "${destdir}" "${destdir}/share" "${destdir}/share/man" \
     "${destdir}/share/applications" "${destdir}/share/doc" \
     "${destdir}/share/doc/${pkgname}" "${destdir}/share/${pkgname}" \
-    "${destdir}/share/consolefonts" "${destdir}/share/${pkgname}/mpcplus" \
+    "${destdir}/share/${pkgname}/mpcplus" \
     "${destdir}/share/licenses" \
     "${destdir}/share/licenses/${pkgname}"
   do
@@ -57,14 +41,11 @@ package() {
   done
 
   cp -a bin ${pkgdir}/${destdir}/bin
-  cp mppcava/mppcava ${pkgdir}/${destdir}/bin/mppcava
-  cp mppcava/mppcava.psf ${pkgdir}/${destdir}/share/consolefonts
 
   cp *.desktop "${pkgdir}/${destdir}/share/applications"
   cp copyright ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp LICENSE ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp LICENSE ${pkgdir}/${destdir}/share/licenses/${pkgname}
-  cp NOTICE ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp AUTHORS ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp CHANGELOG.md ${pkgdir}/${destdir}/share/doc/${pkgname}
   cp README.md ${pkgdir}/${destdir}/share/doc/${pkgname}
@@ -92,8 +73,8 @@ package() {
   cp -a config/mopidy "${pkgdir}/${destdir}/share/${pkgname}/mopidy"
   cp -a config/mpd "${pkgdir}/${destdir}/share/${pkgname}/mpd"
   cp -a config/mppcava "${pkgdir}/${destdir}/share/${pkgname}/mppcava"
-  cp mppcava/example_files/config ${pkgdir}/${destdir}/share/${pkgname}/mppcava/template.conf
   cp -a config/navidrome "${pkgdir}/${destdir}/share/${pkgname}/navidrome"
+  cp -a config/ncmpcpp "${pkgdir}/${destdir}/share/${pkgname}/ncmpcpp"
   cp -a config/pipewire "${pkgdir}/${destdir}/share/${pkgname}/pipewire"
   cp -a config/tmuxp ${pkgdir}/${destdir}/share/${pkgname}/tmuxp
   cp -a config/ueberzug ${pkgdir}/${destdir}/share/${pkgname}/mpcplus/ueberzug
