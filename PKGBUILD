@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-avocado
-pkgver=100.0
+pkgver=100.1
 pkgrel=1
 pkgdesc="Set of tools and libraries to help with automated testing"
 arch=('any')
 url="http://avocado-framework.github.io/"
 license=('GPL2')
 source=("https://github.com/avocado-framework/avocado/archive/${pkgver}.tar.gz")
-sha256sums=('93f307f7215fa50a7d7299b18dc2d3a93abfa1c509f58772477a982b7d908c45')
+sha256sums=('31dee47e37aee65adaadfabd9449e80ba7cc4242a9cbc4c20b126b4f57716c85')
 depends=('python' 'libvirt-python')
 makedepends=('python-setuptools' 'python-docutils')
 
