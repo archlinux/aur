@@ -1,6 +1,6 @@
 # Maintainer: CJ Gilroy <cgilroy33@gmail.com>
 pkgname='discordutility'
-pkgver=r1.c87a194
+pkgver=r2.552c041
 pkgrel=1
 pkgdesc="A simple utility for the .tar.gz version of Discord"
 arch=('x86_64')
