@@ -1,49 +1,55 @@
-# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Daniel Moch <daniel AT danielmoch DOT com>
 # Contributor: gue5t <gue5t@aur.archlinux.org>
+
 _name=Mastodon.py
 pkgname=python-mastodon
-pkgver=1.5.1
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="python bindings for the Mastodon RPC API"
+pkgdesc="Python bindings for the Mastodon RPC API"
 arch=('any')
 url="https://github.com/halcy/Mastodon.py"
 license=('MIT')
-depends=(python
-         python-magic-ahupp
-         python-requests
-         python-dateutil
-         python-six
-         python-pytz
-         python-decorator
-         python-blurhash
-         python-cryptography
-         python-http-ece)
-makedepends=(python-setuptools)
-checkdepends=(python-pytest
-              python-pytest-runner
-              python-pytest-cov
-              python-vcrpy
-              python-pytest-mock
-              python-requests-mock
-              python-pytest-vcr)
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2afddbad8b5d7326fcc8a8f8c62bfe956e34627f516b06c6694fc8c8fedc33ee')
+depends=(
+  'python-dateutil'
+  'python-decorator'
+  'python-magic'
+  'python-requests'
+  'python-six')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-cryptography' 'python-halcy-blurhash' 'python-http-ece')
+checkdepends=(
+  'python-cryptography'
+  'python-halcy-blurhash'
+  'python-http-ece'
+  'python-pytest'
+  'python-pytest-cov'
+  'python-pytest-mock'
+  'python-pytest-runner'
+  'python-pytest-vcr'
+  'python-pytz'
+  'python-requests-mock'
+  'python-vcrpy')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('f5af3bb16df6409bed0bb8b97543d7979237a6a2a2a4bc484dec261c36918668')
 
 build() {
-  cd ${_name}-${pkgver}
-  python setup.py build
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd ${_name}-${pkgver}
-  python -m pytest
+  cd "$_name-$pkgver"
+  pytest -x
 }
 
 package() {
-  cd ${_name}-${pkgver}
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python ./setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "$_site/Mastodon.py-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: set sts=2 sw=2 ft=PKGBUILD et:
