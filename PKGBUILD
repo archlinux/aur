@@ -1,4 +1,5 @@
-# Maintainer: Brendan <ball dot brendan 50 at gmail dot com>
+# Maintainer: agamemnon <zarberus at gmail dot com>
+# Contributor: Brendan <ball dot brendan 50 at gmail dot com>
 # Contributor: Harms <thotro at lyse dot net>
 pkgname=forticlient
 pkgver=7.0.7.0246
