@@ -1,10 +1,11 @@
 pkgbase = rpfm-bin
 	pkgdesc = A modding tool for modern (since Empire) Total War games. Precompiled version.
 	pkgver = 3.99.112
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Frodo45127/rpfm
 	arch = x86_64
 	license = MIT
+	depends = libgit2
 	depends = xz
 	depends = p7zip
 	depends = qt5-base
