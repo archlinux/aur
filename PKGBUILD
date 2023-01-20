@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gitin
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD')
-depends=('libssh2')
-makedepends=('go' 'git' 'cmake')
+depends=('glibc')
+makedepends=('cmake' 'go' 'git' 'pcre')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('01c831230f9c5952ed43755d0503e6fcee7c1e91613f06cff28606d03115d727')
+sha256sums=('b146072559c45e30451232eabdcb626ba3b153a139a7520b7be19f1d0cc87197')
 
 prepare() {
   if [ -d git2go ]; then
