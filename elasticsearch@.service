@@ -1,13 +1,13 @@
 [Unit]
 Description=Elasticsearch %I
-Documentation=http://www.elastic.co
+Documentation=https://www.elastic.co
 Wants=elasticsearch-keystore@%i.service
 Wants=network-online.target
 After=elasticsearch-keystore@%i.service
 After=network-online.target
 
 [Service]
-Type=notify
+Type=simple
 RuntimeDirectory=elasticsearch
 PrivateTmp=true
 Environment=ES_HOME=/usr/share/elasticsearch
