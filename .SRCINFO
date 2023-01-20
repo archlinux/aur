@@ -1,7 +1,7 @@
 pkgbase = deemix-gui-appimage
 	pkgdesc = A gui electron app for the deemix lib
 	pkgver = 20221215
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deemix.app/gui
 	arch = x86_64
 	license = GPL3

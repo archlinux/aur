@@ -8,7 +8,7 @@ _appimage="${_pkgname}.AppImage"
 
 pkgname="${_pkgname}-appimage"
 pkgver=20221215
-pkgrel=2
+pkgrel=3
 pkgdesc="A gui electron app for the deemix lib"
 arch=("${_carchbase}_${_carchbit}")
 url="https://deemix.app/gui"
