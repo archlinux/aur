@@ -6,7 +6,7 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver='2.3.4-7'
 _prever="pre$_pkgver"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='S-Lang is a powerful interpreted language (development snapshot)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 provides=('slang')
@@ -27,6 +27,8 @@ md5sums=('21e4c33194a26d8fb2304afea107e88b')
 
 build() {
   cd "${_pkgname}-${_prever}" || exit 1
+
+  export CFLAGS="$CFLAGS -ffat-lto-objects"
 
   ./configure --prefix=/usr --sysconfdir=/etc
   make

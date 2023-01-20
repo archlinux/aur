@@ -1,7 +1,7 @@
 pkgbase = slang-snapshot
 	pkgdesc = S-Lang is a powerful interpreted language (development snapshot)
 	pkgver = 2.3.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jedsoft.org/snapshots/
 	arch = i686
 	arch = x86_64
