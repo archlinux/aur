@@ -2,7 +2,7 @@
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
 pkgname=kime
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -15,7 +15,7 @@ arch=('any')
 license=('GPL3')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('f383e4012fb5a5421e2d78dd6c6700a78a06d6b840abc83f69d1c469b8298931')
+sha256sums=('cf7379765d5d8e0c3f03847e29d33b461e118e8691d47cc12a041a3e49eed756')
 
 build() {
     cd "${pkgname}-${pkgver}"
