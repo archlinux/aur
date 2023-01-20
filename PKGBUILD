@@ -1,7 +1,8 @@
 # Maintainer: moonshadow565 <moonshadow565@hotmail.com>
 
 pkgname=wine-lol-staging
-pkgver=7.14
+pkgver=8.0
+_winever=8.0-rc4
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
 arch=('x86_64')
@@ -11,8 +12,8 @@ install=wine-lol-staging.install
 
 options=('staticlibs' '!lto' '!strip')
 
-source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${pkgver}"
-        "git+https://github.com/wine-mirror/wine.git#tag=wine-${pkgver}"
+source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${_winever}"
+        "git+https://github.com/wine-mirror/wine.git#tag=wine-${_winever}"
         "0002-LoL-6.17+-syscall-fix.patch"
         "0003-LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
         "0004-LoL-broken-client-update-fix.patch"
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
             'SKIP'
             'c127907db75cd8575da27198c8f46aa19dd2a219324e7491761f206f3ce91601'
             'c2cb9265567dfe8c9f148e237910792cad7666d9d3cbf68d8717076030cddc92'
-            '0c5b97c64fd4983119db8675f0686e26143898de1566c4da46d5df74cb98cfb2'
+            '7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
             'fe33c51d492de4685b515781ac157a5d02f8048a528404b4fd8319cfc7f5cf25'
             )

@@ -1,8 +1,8 @@
 diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
-index 94b300c..9f44ddc 100644
+index 0f66429fc9d..9d5975fbe86 100644
 --- a/dlls/ntdll/unix/virtual.c
 +++ b/dlls/ntdll/unix/virtual.c
-@@ -111,6 +111,8 @@ struct file_view
+@@ -112,6 +112,8 @@ struct file_view
      unsigned int  protect;       /* protection for all pages at allocation time and SEC_* flags */
  };
  
@@ -11,7 +11,7 @@ index 94b300c..9f44ddc 100644
  /* per-page protection flags */
  #define VPROT_READ       0x01
  #define VPROT_WRITE      0x02
-@@ -4310,34 +4312,96 @@ static NTSTATUS get_working_set_ex( HANDLE process, LPCVOID addr,
+@@ -4480,34 +4482,96 @@ static NTSTATUS get_working_set_ex( HANDLE process, LPCVOID addr,
      return STATUS_SUCCESS;
  }
  
@@ -66,12 +66,12 @@ index 94b300c..9f44ddc 100644
 +    return status;
 +}
 +
- static NTSTATUS get_memory_section_name( HANDLE process, LPCVOID addr,
-                                          MEMORY_SECTION_NAME *info, SIZE_T len, SIZE_T *ret_len )
+ static unsigned int get_memory_section_name( HANDLE process, LPCVOID addr,
+                                              MEMORY_SECTION_NAME *info, SIZE_T len, SIZE_T *ret_len )
  {
 +    SIZE_T current_path_len, max_path_len;
 +    WCHAR *name;
-     NTSTATUS status;
+     unsigned int status;
  
      if (!info) return STATUS_ACCESS_VIOLATION;
 +    max_path_len = len - sizeof(*info) - sizeof(WCHAR); // dont count null char
@@ -115,7 +115,7 @@ index 94b300c..9f44ddc 100644
  }
  
 diff --git a/dlls/psapi/tests/psapi_main.c b/dlls/psapi/tests/psapi_main.c
-index 185a406..b4eabf9 100644
+index 185a4062092..b4eabf986ed 100644
 --- a/dlls/psapi/tests/psapi_main.c
 +++ b/dlls/psapi/tests/psapi_main.c
 @@ -471,7 +471,6 @@ static void test_GetMappedFileName(void)
