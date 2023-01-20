@@ -6,8 +6,8 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.51.108.geff0ac0
-pkgrel=3
+pkgver=3.11.51.120.gd6c1df4
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
 url=https://github.com/Samsagax/gamescope
@@ -15,36 +15,21 @@ license=(BSD)
 conflicts=(gamescope)
 provides=(gamescope)
 depends=(
-  gcc-libs
-  glibc
-  libcap.so
   libdrm
   libinput
-  libliftoff.so
-  libpipewire-0.3.so
-  libseat.so
-  libvulkan.so
-  #libwlroots.so
-  libx11
-  libxcb
   libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxkbcommon.so
+  libxkbcommon
   libxmu
-  libxrender
   libxres
   libxtst
-  libxxf86vm
+  pipewire
+  pixman
   sdl2
-  vulkan-icd-loader
-  wayland
-  #wlroots
-  xorg-server-xwayland
+  seatd
   xcb-util-errors
   xcb-util-renderutil
   xcb-util-wm
+  xorg-xwayland
 )
 makedepends=(
   git
@@ -56,10 +41,22 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=eff0ac001e963e399ec6e4efd4ce955b0b351ea3
-source=("git+https://github.com/Samsagax/gamescope.git#tag=${_tag}")
+_tag=d6c1df4e52f523b02a6de5f3eb22ef36cc67f213
+source=("git+https://github.com/Samsagax/gamescope.git#commit=${_tag}"
+        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+        "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
+        "git+https://github.com/ValveSoftware/openvr.git"
+        "git+https://github.com/Joshua-Ashton/vkroots.git"
+        "git+https://github.com/nothings/stb.git")
 
-b2sums=('SKIP')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
@@ -71,6 +68,17 @@ prepare() {
       echo "Applying patch $src..."
       git apply "../$src"
   done
+
+  git submodule init
+  git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
+  git config submodule.subprojects/libliftoff.url "$srcdir/libliftoff"
+  git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
+  git config submodule.subprojects/openvr.url "$srcdir/openvr"
+  git config submodule.subprojects/vkroots.url "$srcdir/vkroots"
+  git -c protocol.file.allow=always submodule update
+
+  # make stb.wrap use our local clone
+  sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
 
   meson subprojects download
 }
@@ -87,7 +95,7 @@ build() {
     -Dpipewire=enabled \
     -Dwlroots:backends=drm,libinput,x11 \
     -Dwlroots:renderers=gles2,vulkan
-  meson compile -C build
+  ninja -C build
 }
 
 package() {
