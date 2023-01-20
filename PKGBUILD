@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.71
+pkgver=20.04.72
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
-_commit=ca218aa1cbbfbb7d2de007831381f7ada743340b  # tags/20.04.71^0
+_commit=074844c9e2ecb55cf0af772e24be40730e757c05  # tags/20.04.72^0
 source=(
 #  "git+https://github.com/pop-os/system76-driver.gitcommit=${_commit}?signed"
   "git+https://github.com/pop-os/system76-driver.git#commit=${_commit}"
