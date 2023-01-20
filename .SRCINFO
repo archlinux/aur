@@ -1,6 +1,6 @@
 pkgbase = kdecoration-kwinft
 	pkgdesc = Plugin based library to create window decorations compatible with KwinFT
-	pkgver = 5.25.6_r321.g0c34a05
+	pkgver = 5.26.5_r321.g0c34a05
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64

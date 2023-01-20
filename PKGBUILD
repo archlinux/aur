@@ -5,7 +5,7 @@
 # Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kdecoration-kwinft
-pkgver=5.25.6_r321.g0c34a05
+pkgver=5.26.5_r321.g0c34a05
 pkgrel=1
 pkgdesc='Plugin based library to create window decorations compatible with KwinFT'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd kdecoration
-  _ver=5.25.6
+  _ver=5.26.5
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
