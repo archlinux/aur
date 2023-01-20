@@ -1,7 +1,7 @@
 pkgbase = python-pypdf2
 	pkgdesc = Python library for manipulating pages of PDF files (legacy v2)
 	pkgver = 2.12.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/py-pdf/PyPDF2
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pypdf2
 	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
-	source = python-pypdf2-2.12.1.tar.gz::https://github.com/py-pdf/PyPDF2/archive/2.12.1.tar.gz
+	source = PyPDF2-2.12.1.tar.gz::https://github.com/py-pdf/PyPDF2/archive/2.12.1.tar.gz
 	sha256sums = 40743764b367c43357546fd10d39f288a3a9c520e043f75eea7a1b78ccc38d3f
 
 pkgname = python-pypdf2
