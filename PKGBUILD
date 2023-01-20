@@ -3,7 +3,7 @@
 # Maintainer: Shiroko <hhx.xxm at gmail.com>
 # Maintainer: Johnpoint <me at lvcshu.com>
 pkgname=clash-for-windows-bin
-pkgver=0.20.13
+pkgver=0.20.14
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -38,8 +38,8 @@ source_aarch64=(
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             'c6329627357960f41d8c0a94c6ab5e96c32cb8ffda4bf845d075ef4200ebedf7'
             '4c0a9de624905e3717b0dd4effa24fbf5c79ad28221b3b3b15a4a0aca4d47e03')
-sha256sums_x86_64=('bb0a14e9efb36c97bfe9bd39ebf2651dff9306eaceb6ba2897aa86ddcdb0ee76')
-sha256sums_aarch64=('e8e6a4ac8b76693fcd017cf912f2f1adb063db97a24b3a88ea523296d6e770a4')
+sha256sums_x86_64=('8c6de95d2982d7715dd069e4b66bbe850ee400fa752d13ea2fd1d6a556c38f30')
+sha256sums_aarch64=('dd6493f1b7437e15f529c68eb1226e970624c310277b125e0d6d6ea307c6f865')
 
 package() {
     local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
