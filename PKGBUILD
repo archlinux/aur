@@ -10,9 +10,9 @@ depends=(python logrotate)
 makedepends=(git cmake python)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git
-		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git
-		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=100eb4d683e3b22588b8ecf64b07a71e2566045f
+		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=e7b7799234c3d6bea95cbedbffbd9ae9c40921e4
+		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=9bc92e4b482e9de8ae429e0299fd2ec53276bb2c
 		cellframe-node.cfg
 		Backbone.cfg
 		kelvpn-minkowski.cfg
