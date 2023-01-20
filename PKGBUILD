@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-software-and-documentation
-pkgver=7.84b
+pkgver=7.84c
 pkgrel=0
 epoch=51
 pkgdesc="Segger JLink software & documentation pack for Linux"
@@ -31,16 +31,17 @@ desktops=(
         "JLinkRTTViewer.desktop"
         "JLinkSTM32.desktop"
         "JLinkSWOViewer.desktop"
+        "JLinkSWOViewerExe.desktop"
         "JMemExe.desktop"
         "JRunExe.desktop"
         "JTAGLoadExe.desktop"
         "JFlashSPIExe.desktop"
 )
 source+=(${desktops[@]})
-md5sums_x86_64=('7e8e5f63c192a5dfc09868f5adf494b7')
-md5sums_i686=('cf7f6e30dd10de0e071fdfb451c5d78d')
-md5sums_aarch64=('9f6be9dd0d055a6a6a3237512ce25757')
-md5sums_armv7h=('21585f93fab76b2ddbf4ac55dad3b7df')
+md5sums_x86_64=('61215f47fb9491164b0596ab7dd33c55')
+md5sums_i686=('bf1987a777a804d946eee7463da895e1')
+md5sums_aarch64=('61215f47fb9491164b0596ab7dd33c55')
+md5sums_armv7h=('642a93f7cbfb1c2be647512acc7fa63f')
 
 
 md5sums=("a57d93b791581c1f36e4c672303bb85d"
@@ -61,6 +62,7 @@ md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "5f4be0a5698e359e03b8ed30bf6ac4b6"
          "9119afd453425a256aa023bae8442570"
          "24e403277bb890d915b2c454833ff3d6"
+         "80830492a14eb1ae16f7cae235defc86"
          "74cb2486441a6e571dcc3327204cd8da"
          "8fa15c29a78bf1c98af5941607ff5a2a"
          "dd0923b84488e5f1cca5192324904201"
