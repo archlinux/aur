@@ -3,7 +3,7 @@ Description=Nextcloud; update all applications
 
 [Service]
 User=nextcloud
-ExecStart=/usr/bin/php -f /usr/share/webapps/nextcloud/occ app:update --all
+ExecStart=/usr/bin/php-legacy -f /usr/share/webapps/nextcloud/occ app:update --all
 
 [Install]
 WantedBy=basic.target
