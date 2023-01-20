@@ -1,12 +1,13 @@
 pkgbase = kopia-ui-bin
 	pkgdesc = A cross-platform backup-tool with encryption, deduplication, compression and cloud support.
 	pkgver = 0.12.1
-	pkgrel = 1
-	url = https://github.com/kopia/kopia/
+	pkgrel = 2
+	url = https://kopia.io/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = APACHE
+	optdepends = fuse3: mounting snapshots locally
 	provides = kopia-ui
 	conflicts = kopia-ui
 	source = app-update.yml

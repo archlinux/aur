@@ -5,10 +5,11 @@ pkgdesc='A cross-platform backup-tool with encryption, deduplication, compressio
 pkgver=0.12.1
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h')
-url='https://github.com/kopia/kopia/'
+url='https://kopia.io/'
 license=('APACHE')
+optdepends=('fuse3: mounting snapshots locally')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("app-update.yml")
