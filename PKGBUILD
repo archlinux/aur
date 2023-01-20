@@ -1,7 +1,7 @@
 # Maintainer: Darjan Krijan [disc-kuraudo.eu]
 
 pkgname=libudfread-dk
-pkgver=1.1.2.3
+pkgver=1.1.2.4
 pkgrel=1
 pkgdesc="libudfread extended with parsing timestamps for disc-kuraudo"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=(
 	'libudfread.so'
 )
 conflicts=('libudfread')
-source=('libudfread-dk::git+https://github.com/disc-kuraudo/libudfread.git#commit=e90aac368ee4eafd877facae33becbf1cf3a068b')
+source=('libudfread-dk::git+https://github.com/disc-kuraudo/libudfread.git#commit=580808e6614b4a9e5ce6b45d1adfdd1a70a4e563')
 sha256sums=('SKIP')
 
 prepare() {
@@ -35,4 +35,7 @@ build() {
 
 package() {
 	make -C build DESTDIR="${pkgdir}" install
+
+	mkdir -p "${pkgdir}/usr/share/licenses/libudfread"
+	cp "${srcdir}/${pkgname}/COPYING" ${pkgdir}/usr/share/licenses/libudfread/LICENSE
 }
