@@ -2,7 +2,7 @@
 
 pkgname=clad
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Enables automatic differentiation for C++'
 arch=(x86_64)
 license=(LGPL)
@@ -13,21 +13,15 @@ optdepends=()
 source=(https://github.com/vgvassilev/clad/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('8931b8dca4bf385423906ed29f4e2ae0cf7c620b5759174015ddec79e6a8577a')
 
-prepare () {
-  if [ ! -d "$srcdir"/build ]; then
-    mkdir "$srcdir"/build
-  fi
-}
-
 build() {
-  cd "$srcdir"/build
-  cmake "$srcdir"/clad-${pkgver} \
-    -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake -B build -S "$pkgname-$pkgver" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
     -DLLVM_DIR=/usr/lib/cmake/llvm \
     -DClang_DIR=/usr/lib/cmake/clang \
-    -DLLVM_EXTERNAL_LIT=/usr/bin/lit
-  make
+    -DLLVM_EXTERNAL_LIT=/usr/bin/lit \
+    -Wno-dev
+  cmake --build build
 }
 
 check() {
@@ -36,6 +30,5 @@ check() {
 }
 
 package() {
-  cd "$srcdir"/build
-  make install
+  DESTDIR="$pkgdir" cmake --install build
 }
