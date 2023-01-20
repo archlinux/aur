@@ -1,8 +1,8 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='openwebrx'
-pkgver='1.2.0'
-pkgrel='3'
+pkgver='1.2.1'
+pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('i686' 'x86_64')
 url='https://www.openwebrx.de/'
@@ -11,7 +11,7 @@ depends=('csdr>=0.17' 'python-csdr' 'rtl-sdr' 'js8py' 'owrx_connector' 'netcat')
 optdepends=('sox' 'mbelib' 'digiham' 'dsd' 'codec2' 'direwolf')
 backup=('etc/openwebrx/config_webrx.py')
 source=("https://github.com/jketterl/openwebrx/archive/$pkgver.tar.gz")
-sha256sums=('77a9573a22f6c65277ec0aeb4599aa6aee3a7873e3f651e7438f41baa12c38b3')
+sha256sums=('d406d912a97bce76ce63d04aec9ca40b813a0b7102b6100632577a6aa1996603')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
