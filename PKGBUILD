@@ -3,8 +3,8 @@
 
 _pkgname=sile
 pkgname=$_pkgname-git
-pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.14.6.r0.g9893755
+pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
+pkgver=0.14.7.r3.g13df3c1
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
