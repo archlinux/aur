@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gui
-pkgver=6.6.1
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
@@ -24,10 +24,10 @@ depends=(
     ignition-tools
 )
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-gui/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('ab484fb6d433e2e08516956b8b188751a4541ffa416717748fb43a3945337971')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-gui/archive/gz-gui7_${pkgver}.tar.gz")
+sha256sums=('ba70e06e9ba4cd0f79ecf77d2ac9cd2ae2bec24d6f6a131f8db939cafe4987f3')
 
-_dir="gz-gui-${pkgname}6_${pkgver}"
+_dir="gz-gui-gz-gui7_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
