@@ -1,0 +1,27 @@
+pkgbase = rs-visa
+	pkgdesc = Rohde & Schwarz VISA library for Linux.
+	pkgver = 5.12.3
+	pkgrel = 1
+	url = https://www.rohde-schwarz.com/us/driver-pages/remote-control/3-visa-and-tools_231388.html
+	install = INSTALL
+	arch = x86_64
+	license = ROHDE & SCHWARZ Royalty Free License
+	depends = glibc
+	depends = libusb
+	depends = avahi
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = dbus
+	depends = libcap
+	depends = libgcrypt
+	depends = xz
+	depends = zstd
+	depends = lz4
+	depends = libgpg-error
+	optdepends = python-pyvisa: python 3 frontend
+	optdepends = qt5-base: for R&S GUI frontend tools
+	provides = rs-visa
+	source = https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_application/application_notes/1dc02___rs_v/rsvisa_5.12.3_amd64.deb
+	md5sums = dfd0b3f7cfcd88287cd5fbc0a39ce948
+
+pkgname = rs-visa

@@ -1,0 +1,11 @@
+post_install() {
+    udevadm control --reload-rules;
+}
+
+post_upgrade() {
+    true;
+}
+
+post_remove() {
+    udevadm control --reload-rules;
+}
