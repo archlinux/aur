@@ -1,6 +1,6 @@
 # Maintainer: lrobbins at silktown dot software
 pkgname=rigelengine-git
-pkgver=0.8.5.r32.g84086854
+pkgver=0.9.1.r4.g011976b3
 pkgrel=1
 # Description taken from desktop file
 pkgdesc='A modern re-implementation of the classic DOS game Duke Nukem II'
@@ -16,7 +16,7 @@ _source_dir="RigelEngine"
 
 pkgver() {
   cd "$_source_dir"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
