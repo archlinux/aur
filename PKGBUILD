@@ -11,11 +11,11 @@ url="http://www.videolan.org/vlc/"
 depends=('vlc>3.0.0' 'fluidsynth')
 optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 
-deb_pkgver="3.0.17.4"
-deb_pkgver_minor="0"
+deb_pkgver="3.0.18"
+deb_pkgver_minor="2"
 deb_pkgrel="11u1"
 
-pkgver="${deb_pkgver}.${deb_pkgver_minor}_${deb_pkgrel}"
+pkgver="${deb_pkgver}.${deb_pkgver_minor}"
 pkgrel="1"
 epoch="1"
 
@@ -26,10 +26,10 @@ provides=("${_pkgname}")
 install="notes.install"
 license=('LGPL2.1')
 
-source_x86_64=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}+deb${deb_pkgrel}_amd64.deb")
-source_i386=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}+deb${deb_pkgrel}_i386.deb")
+source_x86_64=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}_amd64.deb")
+source_i386=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}_i386.deb")
 source_i686=("${source_i386[@]}")
-source_aarch64=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}+deb${deb_pkgrel}_arm64.deb")
+source_aarch64=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgver_minor}_arm64.deb")
 
 sha512sums_x86_64=('SKIP')
 sha512sums_i386=('SKIP')
