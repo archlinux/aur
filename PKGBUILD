@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.12.r141.ge883d116
+pkgver=0.5.12.r168.g157bbee6
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -30,10 +30,11 @@ optdepends=(
   "lib32-mangohud: Display the games' FPS + other information"
   'lib32-vkd3d: Vulkan 3D support'
   'lib32-vulkan-icd-loader: Vulkan support'
-  'libstrangle: FPS limiter'
+  'libstrangle: Set FPS limit'
   'linux-steam-integration: start Steam with LSI'
   "mangohud: Display the games' FPS + other information"
   'python-evdev: Controller support'
+  'python-moddb: Handle ModDB downloads in installers'
   'python-pefile: Extract icons from Windows executables'
   'python-pypresence: Discord Rich Presence integration'
   'vkd3d: Vulkan 3D support'
