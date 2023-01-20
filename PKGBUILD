@@ -1,9 +1,9 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86"
+_CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86;89"
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
@@ -18,6 +18,7 @@ depends=(
   python
 )
 makedepends=(
+  cfitsio
   clang
   cmake
   git
@@ -42,6 +43,7 @@ build() {
   cmake \
     -B "${srcdir}/build" \
     -DBUILD_BENCHMARK=OFF \
+    -DBUILD_CFITSIO=ON \
     -DBUILD_CUFILE=ON \
     -DBUILD_FFTS=ON \
     -DBUILD_LIBSND=ON \
@@ -70,7 +72,7 @@ build() {
   python setup.py build
   # built tf plugin
   cmake -B ${srcdir}/build-tf \
-    -DCUDA_VERSION=11.7 \
+    -DCUDA_VERSION=11.8 \
     -S ${srcdir}/${pkgname}/dali_tf_plugin
   make -C ${srcdir}/build-tf
 }
