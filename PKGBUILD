@@ -150,6 +150,7 @@ _package-headers() {
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
   mkdir -p "${pkgdir}/usr/lib/modules/build/"{include,arch/x86}
 
+  export CFLAGS="$CFLAGS -Wno-strict-prototypes"
 
   cd "${_srcname}"
 
@@ -159,7 +160,8 @@ _package-headers() {
     sed -i -re '/^.*[+]?= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-mretpoline.*|-ftrivial-auto-var-init=zero|-Wno-format-invalid-specifier|-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang|-flto(=[a-z]+)?)$/d' $f
     sed -i -re 's/-flto(=([a-z]+)?)//g' $f
   done
-  echo -e "\nKBUILD_CFLAGS += -Wno-error -Wno-unused-variable -Wno-incompatible-pointer-types" >> Makefile
+  echo -e "\nKBUILD_CFLAGS += -Wno-error -Wno-unused-variable -Wno-incompatible-pointer-types -Wno-strict-prototypes" >> Makefile
+  echo -e "\nKBUILD_CFLAGS += -Wno-strict-prototypes" >> kernel/Makefile
   echo -e "\nCONFIG_LTO := n" >> Makefile
   echo -e "\nLD = ld.lld" >> Makefile
   sed -i -re 's/^(.*(_|[A-Z]+)LTO(_.*)?)=y/\1=n/g' .config
