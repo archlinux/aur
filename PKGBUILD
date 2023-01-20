@@ -4,10 +4,10 @@
 pkgname=python-halcy-blurhash
 _pkg=blurhash
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure Python implementation of the blurhash algorithm'
 arch=('any')
-url="https://github.com/woltapp/blurhash-python"
+url="https://github.com/halcy/blurhash-python"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')

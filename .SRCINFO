@@ -1,8 +1,8 @@
 pkgbase = python-halcy-blurhash
 	pkgdesc = Pure Python implementation of the blurhash algorithm
 	pkgver = 1.1.4
-	pkgrel = 1
-	url = https://github.com/woltapp/blurhash-python
+	pkgrel = 2
+	url = https://github.com/halcy/blurhash-python
 	arch = any
 	license = MIT
 	makedepends = python-build
