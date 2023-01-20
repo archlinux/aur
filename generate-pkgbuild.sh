@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # Source code:
-# - https://github.com/vmware-tanzu/carvel-imgpkg
-# - https://github.com/vmware-tanzu/carvel-kapp
-# - https://github.com/vmware-tanzu/carvel-kbld
-# - https://github.com/vmware-tanzu/carvel-kapp-controller
-# - https://github.com/vmware-tanzu/carvel-kwt
-# - https://github.com/vmware-tanzu/carvel-vendir
-# - https://github.com/vmware-tanzu/carvel-ytt
+# - https://github.com/carvel-dev/imgpkg
+# - https://github.com/carvel-dev/kapp
+# - https://github.com/carvel-dev/kbld
+# - https://github.com/carvel-dev/kapp-controller
+# - https://github.com/carvel-dev/kwt
+# - https://github.com/carvel-dev/vendir
+# - https://github.com/carvel-dev/ytt
 
 set -eo pipefail
 
@@ -56,14 +56,23 @@ function foo {
         fi
 
         tmp_file="${basedir}/${tool}"
-        curl -fsSL "https://api.github.com/repos/vmware-tanzu/carvel-${project}/releases/latest" -o "${tmp_file}" -C -
+        gh release view \
+            --repo "carvel-dev/${project}" \
+            --json assets,body,name \
+            >"${tmp_file}"
 
-        url=$(jq -r '.assets[] | select(.name == "'"${tool}"'-linux-'"${arch_bin}"'").browser_download_url' <"${tmp_file}")
-        version=$(jq -r '.name' <"${tmp_file}")
-        echo "${tool}-${version}::${url}" >>"${basedir}/_source_${arch_pkg}"
+        jq --raw-output \
+            --exit-status \
+            --arg tool "$tool" \
+            --arg arch "$arch_bin" \
+            '$tool + "-" + .name + "::" + (.assets[] | select(.name == $tool + "-linux-" + $arch) | .url)' \
+            <"${tmp_file}" \
+            >>"${basedir}/_source_${arch_pkg}"
 
-        hashsum=$(jq -r '.body' <"${tmp_file}" | rg -F "linux-${arch_bin}" | awk '{print $1}')
-        echo "${hashsum}" >>"${basedir}/_hashsum_${arch_pkg}"
+        jq --raw-output '.body' <"${tmp_file}" \
+            | rg -F "linux-${arch_bin}" \
+            | awk '{print $1}' \
+            >>"${basedir}/_hashsum_${arch_pkg}"
     done
 
     cat <<EOF
