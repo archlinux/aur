@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=marswm-git
-pkgver=0.1.0.r0.g62df0c0
+pkgver=0.1.0.r31.g5483f8e
 pkgrel=1
 pkgdesc="A rusty successor to moonwm"
 arch=('x86_64')
@@ -34,4 +34,5 @@ package() {
     cd "${pkgname%-git}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%wm-git}-relay"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%wm-git}bar"
 }

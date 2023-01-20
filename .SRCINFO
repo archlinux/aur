@@ -1,6 +1,6 @@
 pkgbase = marswm-git
 	pkgdesc = A rusty successor to moonwm
-	pkgver = 0.1.0.r0.g62df0c0
+	pkgver = 0.1.0.r31.g5483f8e
 	pkgrel = 1
 	url = https://github.com/jzbor/marswm
 	arch = x86_64
