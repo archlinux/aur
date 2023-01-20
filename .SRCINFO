@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 20 Early-Access Build
-	pkgver = 20b31
+	pkgver = 20b32
 	pkgrel = 1
 	url = https://jdk.java.net/20
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=20
 	provides = java-runtime-headless=20
 	provides = java-runtime-headless-openjdk=20
-	source = https://download.java.net/java/early_access/jdk20/31/GPL/openjdk-20-ea+31_linux-x64_bin.tar.gz
-	sha256sums = 3269ddcaa2745f47e0610531a0c6f06671f7b85fd4c02ae4a29a6f14089748a6
+	source = https://download.java.net/java/early_access/jdk20/32/GPL/openjdk-20-ea+32_linux-x64_bin.tar.gz
+	sha256sums = d512d0c5bfbde4b2346f3621c14aaac435c37802278da117f3f2c886c6d6cfbd
 
 pkgname = java-openjdk-ea-bin
