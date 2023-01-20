@@ -1,0 +1,46 @@
+diff --git a/chat/conversations.ts b/chat/conversations.ts
+index 148ebc9..00220a2 100644
+--- a/chat/conversations.ts
++++ b/chat/conversations.ts
+@@ -13,6 +13,8 @@ import throat from 'throat';
+ import Bluebird from 'bluebird';
+ import log from 'electron-log';
+ import isChannel = Interfaces.isChannel;
++import path from 'path';
++import fs from 'fs';
+ 
+ function createMessage(this: any, type: MessageType, sender: Character, text: string, time?: Date): Message {
+     if(type === MessageType.Message && isAction(text)) {
+@@ -746,6 +748,32 @@ export default function(this: any): Interfaces.State {
+              state.selectedConversation.lastRead = state.selectedConversation.messages[state.selectedConversation.messages.length - 1];
+     });
+     const connection = core.connection;
++    connection.onEvent('closed', (_) => {
++        log.warn('Connection is closing. We are going to panic-save all channels containing unsent text.');
++        let logLocation = core.state.generalSettings!.logDirectory;
++        fs.mkdirSync(logLocation, {recursive: true});
++
++        let collectedLogs: string[][] = [];
++        for (let channelConversation of state.channelConversations) {
++            let conversationName = channelConversation.channel.name;
++            let enteredText = channelConversation.enteredText;
++            if (enteredText != '') {
++                collectedLogs.push([conversationName, enteredText]);
++            }
++        }
++        if (collectedLogs.length > 0) {
++            let deadLetterPath = path.join(logLocation, 'deadletter.log');
++            log.warn(`We found unsent messages. They will be written to \`${deadLetterPath}\``);
++            let deadLetterFile = fs.openSync(deadLetterPath, 'a');
++            let now = new Date();
++            fs.writeSync(deadLetterFile, `### ${now} ###\n`);
++            for (let [conversationName, enteredText] of collectedLogs) {
++                fs.writeSync(deadLetterFile, `=== ${conversationName} ===\n${enteredText}\n`);
++            }
++            fs.closeSync(deadLetterFile);
++        }
++        
++    });
+     connection.onEvent('connecting', async(isReconnect) => {
+         state.channelConversations = [];
+         state.channelMap = {};
