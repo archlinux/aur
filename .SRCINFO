@@ -1,12 +1,13 @@
 pkgbase = tiny_httpd
 	pkgdesc = Minimal HTTP server
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://c-cube.github.io/tiny_httpd
 	arch = x86_64
 	license = MIT
 	makedepends = dune
 	makedepends = ocaml-ounit
+	makedepends = ocaml-findlib
 	depends = ocaml>=4.04.0
 	options = !strip
 	options = staticlibs

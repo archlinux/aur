@@ -1,7 +1,7 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 pkgname=tiny_httpd
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal HTTP server'
 arch=('x86_64')
 url='https://c-cube.github.io/tiny_httpd'
@@ -12,6 +12,7 @@ depends=(
 makedepends=(
 'dune'
 'ocaml-ounit'
+'ocaml-findlib'
 )
 options=('!strip' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/c-cube/$pkgname/archive/v$pkgver.tar.gz")
