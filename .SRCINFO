@@ -8,7 +8,7 @@ pkgbase = python-yadisk
 	makedepends = python-pip
 	depends = python
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/y/yadisk/yadisk-1.2.18.tar.gz
+	source = https://files.pythonhosted.org/packages/source/y/yadisk/yadisk-1.2.19.tar.gz
 	sha256sums = dae171df919874a4e6265166fb68a4daa8f8fb8693a5543a39eecfdee35aad5f
 
 pkgname = python-yadisk
