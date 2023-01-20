@@ -1,4 +1,4 @@
-pkgbase = iwdrofimenu-git
+pkgbase = iwdrofimenu-test-git
 	pkgdesc = A rofi script providing a minimalistic wifi network chooser for iwd
 	pkgver = r34.d7ad43f
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = iwdrofimenu-git
 	source = iwdrofimenu::git+https://github.com/defname/rofi-iwd-wifi-menu
 	md5sums = SKIP
 
-pkgname = iwdrofimenu-git
+pkgname = iwdrofimenu-test-git

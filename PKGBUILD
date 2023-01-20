@@ -1,5 +1,5 @@
 # Maintainer: defname
-pkgname=iwdrofimenu-git
+pkgname=iwdrofimenu-test-git
 _pkgname=iwdrofimenu
 pkgver=r34.d7ad43f
 pkgrel=1
