@@ -3,12 +3,13 @@
 
 pkgname="shlink"
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
+_phpver=8.2
 pkgdesc="The definitive self-hosted URL shortener"
 url="https://shlink.io"
 license=("MIT")
 arch=("any")
-depends=("php>=8.1" "php-gd" "php-intl" "php-apcu")
+depends=("php>=${_phpver}" "php-gd" "php-apcu")
 optdepends=("mariadb: database"
             "mssql-server: database"
             "mysql: database"
@@ -16,8 +17,8 @@ optdepends=("mariadb: database"
             "sqlite: database"
             "apache: web server"
             "nginx: web server")
-source=("https://github.com/shlinkio/shlink/releases/download/v${pkgver}/${pkgname}${pkgver}_php8.1_dist.zip")
-sha256sums=('e37e91cd86a8d495952783d1eeb94f157ddfe42f50849a3c2f979b1f9d991963')
+source=("https://github.com/shlinkio/shlink/releases/download/v${pkgver}/${pkgname}${pkgver}_php${_phpver}_dist.zip")
+sha256sums=('2290cf44e4ae3696a664ba99b0309e7e66b8c2f893839f60ca6fa8189913f49d')
 install="$pkgname.install"
 options=("!strip")
 backup=("etc/webapps/shlink/generated_config.php")
@@ -26,7 +27,7 @@ backup=("etc/webapps/shlink/generated_config.php")
 _http_uid_gid=33
 
 package() {
-    cd "${pkgname}${pkgver}_php8.1_dist"
+    cd "${pkgname}${pkgver}_php${_phpver}_dist"
     install -d "${pkgdir}/usr/share/webapps/${pkgname}"
     cp -r ./* "${pkgdir}/usr/share/webapps/${pkgname}"
     install -d "data" "${pkgdir}/usr/share/webapps/${pkgname}/data"
