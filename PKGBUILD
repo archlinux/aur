@@ -3,16 +3,16 @@
 _pkgname=elasticsearch
 pkgname=elasticsearch7
 pkgver=7.17.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
-license=('custom:SSPL+Elastic-2.0')
+license=('custom:Elastic-2.0')
 depends=('jre19-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch')
 source=(
-  $pkgname-$pkgver.tar.gz::"https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-x86_64.tar.gz"
+  $pkgname-$pkgver.tar.gz::"https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-$CARCH.tar.gz"
   elasticsearch.service
   elasticsearch@.service
   elasticsearch-keystore.service
