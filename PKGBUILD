@@ -2,7 +2,7 @@
 
 pkgname=elasticsearch
 pkgver=8.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
@@ -46,7 +46,6 @@ package() {
   rm -r "$pkgdir"/usr/share/elasticsearch/{jdk,logs}
 
   install -dm755 "$pkgdir"/etc
-  echo 'xpack.security.enabled: false' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
   echo 'path.data: /var/lib/elasticsearch' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
   mv "$pkgdir"/usr/share/elasticsearch/config "$pkgdir"/etc/elasticsearch
   chmod 2750 "$pkgdir"/etc/elasticsearch
