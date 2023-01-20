@@ -2,7 +2,7 @@
 
 pkgname=httpie-desktop-bin
 _pkgname=httpie-desktop
-pkgver=2022.13.0
+pkgver=2023.1.1
 pkgrel=1
 pkgdesc="HTTPie for Desktop"
 arch=(x86_64 aarch64)
@@ -16,8 +16,8 @@ conflicts=('httpie-desktop-appimage')
 source_x86_64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver.AppImage")
 source_aarch64=("https://github.com/httpie/desktop/releases/download/v$pkgver/HTTPie-$pkgver-arm64.AppImage")
 
-sha256sums_x86_64=('9ae8d144e7ff2954d122eb19d76c3422b9eee58e20dd47d614f322ba79ec839e')
-sha256sums_aarch64=('88fe96134758cef87cb0136779cd07ce083e0211553804cb08794d9ffb44f8ca')
+sha256sums_x86_64=('67c2b3820ec7398675d6bf1b23f985fd3e965815e249487ecad2d176ec8d50a2')
+sha256sums_aarch64=('7d944453ea781412af87c6457beba482faad140cfa97aa50007108c5a552ac4d')
 
 [ $CARCH = "x86_64" ] && _filename=HTTPie-$pkgver.AppImage
 [ $CARCH = "aarch64" ] && _filename=HTTPie-$pkgver-arm64.AppImage
