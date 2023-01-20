@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=7.84c
-pkgrel=0
+pkgrel=1
 epoch=51
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -30,7 +30,6 @@ desktops=(
         "JLinkRTTLogger.desktop"
         "JLinkRTTViewer.desktop"
         "JLinkSTM32.desktop"
-        "JLinkSWOViewer.desktop"
         "JLinkSWOViewerExe.desktop"
         "JMemExe.desktop"
         "JRunExe.desktop"
@@ -61,8 +60,7 @@ md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "f933dfa3297baba000a0514a0c705264"
          "5f4be0a5698e359e03b8ed30bf6ac4b6"
          "9119afd453425a256aa023bae8442570"
-         "24e403277bb890d915b2c454833ff3d6"
-         "80830492a14eb1ae16f7cae235defc86"
+         "fe12c12793eb8ec166febe5d636e3839"
          "74cb2486441a6e571dcc3327204cd8da"
          "8fa15c29a78bf1c98af5941607ff5a2a"
          "dd0923b84488e5f1cca5192324904201"
