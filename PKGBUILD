@@ -1,7 +1,7 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-rrd'
-pkgver='2.0.1'
+pkgver='2.0.3'
 pkgrel='1'
 pkgdesc="PHP PECL extension for rrdtool system bindings"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://pecl.php.net/package/rrd"
 license=('BSD')
 depends=('php>=7.0.0' 'rrdtool')
 source=("http://pecl.php.net/get/rrd-$pkgver.tgz")
-sha256sums=('39f5ae515de003d8dad6bfd77db60f5bd5b4a9f6caa41479b1b24b0d6592715d')
+sha256sums=('a42161e58cdc8a853b72cff298989dcbde82b0f76456dd59ce02854c92b730f7')
 
 build() {
     cd "$srcdir/rrd-$pkgver"
