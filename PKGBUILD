@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=shadow-tls
-pkgver=0.2.5
+pkgver=0.2.7
 pkgrel=1
 
 pkgdesc='A proxy to expose real tls handshake to the firewall.'
@@ -12,10 +12,11 @@ license=('MIT' 'Apache')
 makedepends=('rustup')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('971f9908a729b5b3270953e15d4f337d7b78dabc243ac970f5d6b3e3a7730b8c')
+sha256sums=('c84fcb51b04397a7c21d3f318b762a48eeafa6c6e4cda3800de87269e0d14911')
 
 build() {
     cd "$pkgname-$pkgver"
+    rustup toolchain install nightly
     cargo +nightly build --release --bin "$pkgname"
 }
 
