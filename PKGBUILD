@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=d2
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A modern diagram scripting language that turns text to diagrams'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('gcc-libs')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='fad7b1ff8bb356ef1de820300f7a4071b077cee7'
+_commit='688f156b8e70391361d497ab5f98145bec76aba7'
 source=("$pkgname::git+https://github.com/terrastruct/d2#commit=$_commit")
 b2sums=('SKIP')
 
