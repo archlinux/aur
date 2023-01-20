@@ -1,7 +1,7 @@
 # Maintainer: Tim Yang <protonmail = timdyang>
 
 pkgname=jerry
-pkgver=4.1.1
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A chess analysis GUI"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=('komodo-engine: alternative engine (Mode -> Engines -> Add)'
             'critter-engine: alternative engine (Mode -> Engines -> Add)'
             'lazygull-engine-git: alternative engine (Mode -> Engines -> Add)')
 source=(https://github.com/asdfjkl/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=(5d179b3f555dbb9e4bee9fac282686dc3703bf03ed5de799e2ceba9d03fdd610)
+sha256sums=(888c920b858099a34d05cd8b6b6807731211d3562fe4324a5d9710d8346e254d)
 
 prepare() {
   cd $pkgname-$pkgver
