@@ -1,0 +1,19 @@
+pkgbase = kdecoration-kwinft
+	pkgdesc = Plugin based library to create window decorations compatible with KwinFT
+	pkgver = 5.25.6_r321.g0c34a05
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	arch = aarch64
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kcoreaddons
+	depends = ki18n
+	provides = kdecoration
+	conflicts = kdecoration-git
+	conflicts = kdecoration
+	source = git+https://github.com/KDE/kdecoration.git
+	sha256sums = SKIP
+
+pkgname = kdecoration-kwinft
