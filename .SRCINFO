@@ -1,6 +1,6 @@
 pkgbase = rigelengine-git
 	pkgdesc = A modern re-implementation of the classic DOS game Duke Nukem II
-	pkgver = 0.8.5
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/lethal-guitar/RigelEngine
 	arch = x86_64
