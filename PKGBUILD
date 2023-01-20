@@ -4,7 +4,7 @@ _name='napari-plugin-engine'
 _author='napari'
 pkgname="${_name}"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Napari plugin engine, fork of pluggy.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
@@ -14,7 +14,6 @@ makedepends=(
 )
 depends=(
   'python'
-  'python-importlib-metadata'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('fa926f869d70e0d652c005661948cd0c7fee5508ae17d437937f34f5287590b3')
