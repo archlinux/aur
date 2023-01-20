@@ -4,8 +4,8 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.23.0
-pkgrel=4
+pkgver=0.23.2
+pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
