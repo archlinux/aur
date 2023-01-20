@@ -25,7 +25,7 @@ pkgbase = linux-nitrous
 	sha256sums = 59cf1dfe08c144868ad87705dd62a0400921c042b1e12691e42cf214fe9a9402
 
 pkgname = linux-nitrous
-	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version), with Clear Linux patches
+	pkgdesc = Modified Linux kernel optimized for Skylake and newer, compiled using clang
 	install = linux-nitrous.install
 	depends = coreutils
 	depends = kmod
