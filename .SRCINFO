@@ -1,0 +1,23 @@
+pkgbase = xstudio
+	pkgdesc = Media playback and review application designed for professionals working in the film and TV post production industries.
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://materialx.org/
+	arch = x86_64
+	license = Apache
+	depends = cmake
+	depends = opencolorio
+	depends = actor-framework
+	depends = opencolorio
+	depends = ffmpeg
+	depends = openexr
+	depends = python-sphinx_rtd_theme
+	provides = xstudio
+	source = git+https://github.com/AcademySoftwareFoundation/xstudio.git
+	source = https://github.com/nlohmann/json/archive/refs/tags/v3.7.3.tar.gz
+	source = xstudio.desktop
+	md5sums = SKIP
+	md5sums = 846bbc611ce9ecd7d45d6554679245e1
+	md5sums = b315ee01abbbf9605b6449add7f03a8c
+
+pkgname = xstudio
