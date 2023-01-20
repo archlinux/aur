@@ -1,5 +1,5 @@
 pkgbase = setcustomres
-	pkgdesc = A utility that helps setting resolutions to monitors using (xrandr)
+	pkgdesc = A tool that summarizes the process of setting a custom resolution to a monitor using xrandr.
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/YoungFellow-le/setcustomres

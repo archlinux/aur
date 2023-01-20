@@ -2,7 +2,7 @@
 pkgname=setcustomres
 pkgver=2.0
 pkgrel=1
-pkgdesc="A utility that helps setting resolutions to monitors using (xrandr)"
+pkgdesc="A tool that summarizes the process of setting a custom resolution to a monitor using xrandr."
 arch=('any')
 url="https://github.com/YoungFellow-le/setcustomres"
 license=('GPL3')
