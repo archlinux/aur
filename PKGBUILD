@@ -8,7 +8,7 @@ pkgdesc='Use many torrent trackers with software that supports torznab/potato fe
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-depends=('mono' 'curl' 'openssl-1.0')
+depends=('mono' 'curl' 'openssl')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
