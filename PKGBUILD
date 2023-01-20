@@ -93,7 +93,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version), with Clear Linux patches"
+  pkgdesc="Modified Linux kernel optimized for Skylake and newer, compiled using clang"
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
