@@ -4,7 +4,7 @@
 
 pkgname=electron-fiddle
 _pkgname=fiddle
-pkgver=0.31.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
@@ -15,19 +15,13 @@ depends=('electron')
 makedepends=('npm')
 provides=("$pkgname" "$pkgname")
 source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('69df7f9577be0dc3151bf9fc8ac2ceff63347527773450d841b665f113f68ae2')
+sha256sums=('d07796b9dfe2084ec42b48580227893ae57a005321df4556c421045dc0200a07')
 
 prepare() {
 	local cache="$srcdir/npm-cache"
 	local dist="/usr/lib/electron"
 
 	cd "$srcdir/$_pkgname-$pkgver"
-
-	# Fix dependencies
- 	#sed -i 's#"monaco-editor": "^0.21.3"#"monaco-editor": "^0.21.0"#' "package.json"
-
-	# Workaround for Husky error
-	mkdir .git
 	
 	npm install --cache "$cache"
 }
