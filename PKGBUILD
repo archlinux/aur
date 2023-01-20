@@ -19,8 +19,7 @@ makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema 
 conflicts=(ansel)
 provides=(ansel)
 options=(!emptydirs !libtool)
-# Change to the original one after <https://github.com/aurelienpierreeng/ansel/pull/76> merged.
-source=("git+https://github.com/AlynxZhou/ansel.git#branch=rebrand-misc")
+source=("git+https://github.com/aurelienpierreeng/ansel.git")
 sha512sums=("SKIP")
 
 pkgver() {

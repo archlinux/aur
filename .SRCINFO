@@ -39,7 +39,7 @@ pkgbase = ansel-git
 	conflicts = ansel
 	options = !emptydirs
 	options = !libtool
-	source = git+https://github.com/AlynxZhou/ansel.git#branch=rebrand-misc
+	source = git+https://github.com/aurelienpierreeng/ansel.git
 	sha512sums = SKIP
 
 pkgname = ansel-git
