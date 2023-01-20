@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r5079.gb51415b0ea
+pkgver=orttraining_rc2.r5085.g432a9912a3
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
@@ -35,9 +35,7 @@ build() {
 	# export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 	# rm -rf $srcdir/$_pkgname-build
 
-	# Use clang to avoid build failure. Same as
-	# * https://github.com/pytorch/pytorch/issues/77939
-	# * https://github.com/opencv/opencv/pull/22512
+
 	export CC=clang
 	export CXX=clang++
 
@@ -54,6 +52,11 @@ build() {
 		-DPYTHON_EXECUTABLE:FILEPATH=$(which python) \
 
 	sed -i 's/-Werror //g' "$srcdir"/$_pkgname-build/_deps/flatbuffers-src/CMakeLists.txt
+
+	# Fix build with gcc. See also
+	# * https://github.com/pytorch/pytorch/issues/77939
+	# * https://github.com/opencv/opencv/pull/22512
+	sed -i 's/\"-mavx512f\"/\"-mavx512f -Wno-error\"/g' "$srcdir"/$_pkgname/cmake/onnxruntime_mlas.cmake
 
 	ninja -C "$srcdir"/$_pkgname-build
 }
