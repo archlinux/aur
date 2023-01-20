@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libwebp
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-configure git)
 depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-giflib)
 options=(staticlibs !strip !buildflags)
 source=(https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz{,.asc})
-sha256sums=('7bf5a8a28cc69bcfa8cb214f2c3095703c6b73ac5fba4d5480c205331d9494df'
+sha256sums=('64ac4614db292ae8c5aa26de0295bf1623dbb3985054cb656c55e67431def17c'
   'SKIP')
 
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
