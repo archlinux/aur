@@ -1,7 +1,7 @@
 # Maintainer: zilch40 <wlh233@live.com>
 pkgname=rime-ls
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for Rime input method engine'
 arch=(x86_64)
 url='https://github.com/wlh320/rime-ls'
@@ -24,6 +24,6 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/rime_ls" -t "$pkgdir"/usr/bin/rime_ls
+    install -Dm755 "target/release/rime_ls" -t "$pkgdir"/usr/bin
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
