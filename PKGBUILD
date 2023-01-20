@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=40.1b2992e
+pkgver=46.9c2fa23
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -13,10 +13,14 @@ depends=('vapoursynth'
   'vapoursynth-plugin-muvsfunc-git'
   'vapoursynth-plugin-mvsfunc-git'
   'vapoursynth-plugin-kagefunc-git'
+  'vapoursynth-plugin-havsfunc-git'
   'vapoursynth-plugin-vsdeband-git'
   'vapoursynth-plugin-neo_f3kdb-git'
   'vapoursynth-plugin-nnedi3_resample-git'
   'vapoursynth-plugin-znedi3-git'
+  'vapoursynth-plugin-dfttest2-git'
+  'vapoursynth-plugin-fft3dfilter-git'
+  'vapoursynth-plugin-mvtools-git'
 )
 optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
   'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'
@@ -39,6 +43,7 @@ pkgver() {
 
 build() {
   cd "${_plug}"
+  rm -rf dist/
   poetry build -f wheel
 }
 
