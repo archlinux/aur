@@ -1,0 +1,20 @@
+pkgbase = piscesys-dock-git
+	pkgdesc = piscesys application dock
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/dock
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	depends = qt5-svg
+	provides = piscesys-dock
+	conflicts = piscesys-dock
+	conflicts = cutefish-dock-git
+	source = git+https://gitlab.com/piscesys/dock.git
+	sha512sums = SKIP
+
+pkgname = piscesys-dock-git
