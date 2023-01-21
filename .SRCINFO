@@ -1,6 +1,6 @@
 pkgbase = r-proloc
 	pkgdesc = A unifying bioinformatics framework for spatial proteomics
-	pkgver = 1.38.1
+	pkgver = 1.38.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pRoloc
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = r-proloc
 	optdepends = r-testthat
 	optdepends = r-vegan
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pRoloc_1.38.1.tar.gz
-	sha256sums = 3d97cea762a58a24c5838bb1343e1bedced627f5de89013f51b65b6472b78269
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pRoloc_1.38.2.tar.gz
+	sha256sums = 51ff83200eb07d9effff745d8dd233ada759db54fb2fdd3c5589c044328695e0
 
 pkgname = r-proloc
