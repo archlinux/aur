@@ -4,7 +4,7 @@ _target=x86_64-pc-freebsd13
 pkgname=x86-64-pc-freebsd13-binutils
 pkgver=2.40
 pkgrel=2
-pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
+pkgdesc='A set of programs to assemble and manipulate binary and object files for the FreeBSD target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
@@ -25,7 +25,7 @@ build() {
   if [ "${CARCH}" != "i686" ];
   then
     # enabling gold linker at i686 makes the install fail
-    enable_gold='--enable-gold'
+    enable_gold=''
   fi
 
   ./configure --target=$_target \
@@ -59,9 +59,9 @@ package() {
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
   rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
-  rm "$pkgdir"/usr/etc/gprofng.rc
-  rm -r "$pkgdir"/usr/include
-  rm -r "$pkgdir"/usr/lib/gprofng/
+  #rm "$pkgdir"/usr/etc/gprofng.rc
+  #rm -r "$pkgdir"/usr/include
+  #rm -r "$pkgdir"/usr/lib/gprofng/
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir"/usr/share/info
