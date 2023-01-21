@@ -8,7 +8,7 @@
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 pkgver=6.3.0beta1
-pkgrel=4
+pkgrel=5
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -30,9 +30,6 @@ sha512sums=('40dc86257be73eaa156180d2c725c58a6c16dabd6588cbce492ce30296e5db9307f
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
-  # temporary fix for openssl3
-  export NODE_OPTIONS=--openssl-legacy-provider
-
   git lfs install
 
   # Allow higher Node versions
@@ -43,6 +40,9 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
+
+  # temporary fix for openssl3
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   yarn generate
   yarn prepare-beta-build
