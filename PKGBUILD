@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lfa
-_pkgver=1.28.1
+_pkgver=1.28.2
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='Logistic Factor Analysis for Categorical Data'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('358080e3953901e5e50fa08829b2a06644e3cb77d26d9eb95a7665b5afe68700')
+sha256sums=('5db9d3716863889863d808ea664aa00aa66b94d8876cfe0d15fbb83288500a7d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
