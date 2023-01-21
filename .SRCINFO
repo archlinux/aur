@@ -1,28 +1,50 @@
 pkgbase = mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.28.4960.102.20230107
+	pkgver = 2.28.4990.102.20230121
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache
 	license = BSD
+	license = CCPL
+	license = GPL2
 	license = LGPL
+	license = MIT
 	license = custom
 	makedepends = bazel
 	makedepends = git
 	makedepends = python
+	makedepends = rsync
+	makedepends = ruby
+	makedepends = wget
 	depends = qt5-base
 	optdepends = fcitx5-mozc-ut: Fcitx5 integration
 	optdepends = fcitx-mozc-ut: Fcitx integration
 	optdepends = ibus-mozc: IBus integration
 	optdepends = emacs-mozc: Emacs integration
-	provides = mozc=2.28.4960.102
+	provides = mozc=2.28.4990.102
 	conflicts = mozc
 	options = !distcc
 	options = !ccache
-	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=7ec82c9356dbd5e15736627cfef05ec0f2c9bb9b
-	source = https://osdn.net/downloads/users/40/40082/mozcdic-ut-20230107.tar.bz2
+	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623
+	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=c174159285922e6674b496a6596e14045ea51244
+	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=ea403663e9d98d8305123b5ee11c4662e4257b61
+	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=8cb88cdfe0db973bbd7710abbd7f1779d50c2ed6
+	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=57fa28e51e848a762a5d13a1a97d297e926710d2
+	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=38d938ac3aad4a7bef07fed1eb14aee6f5a7012e
+	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=d617e438add7bb3577c406be40296d84ece4234b
+	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=2dbf6cd3c8e86d2ad239afc5ad1184d68c5c83b1
+	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=74e460efea78681ec4f9cf60ab1e97ac53e61a2d
+	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=17b7efbe1ffe9ef57f9bfd4a70b9c0a14e67e888
 	sha256sums = SKIP
-	sha256sums = 2c3514cc4e21c227fd4b327847bf967c7c2394d8d2f4e22751c894b4fc744db3
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mozc-ut
