@@ -1,0 +1,66 @@
+From c27312be47dfb7370456a878fc6284883650b7f2 Mon Sep 17 00:00:00 2001
+From: Davide Cavalca <davide@cavalca.name>
+Date: Mon, 21 Feb 2022 13:58:11 -0800
+Subject: [PATCH 3/4] Fix build issue with recent ffmpeg
+
+---
+ src/media.cpp | 8 ++++----
+ src/media.hpp | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/media.cpp b/src/media.cpp
+index 1839113..bed873f 100644
+--- a/src/media.cpp
++++ b/src/media.cpp
+@@ -145,7 +145,7 @@ public:
+ 	bool at_end;					// set when at the end of our input
+ 	bool far_behind;
+ 	AVCodecContext *codec_ctx;
+-	AVCodec *codec;
++	const AVCodec *codec;
+ 	int stream_id;
+ 
+ 	FeBaseStream();
+@@ -1061,7 +1061,7 @@ bool FeMedia::open( const std::string &archive,
+ 	if ( m_imp->m_type & Audio )
+ 	{
+ 		int stream_id( -1 );
+-		AVCodec *dec;
++		const AVCodec *dec;
+ 		stream_id = av_find_best_stream( m_imp->m_format_ctx, AVMEDIA_TYPE_AUDIO,
+ 			-1, -1, &dec, 0 );
+ 
+@@ -1119,7 +1119,7 @@ bool FeMedia::open( const std::string &archive,
+ 		std::string prev_dec_name;
+ 		int av_result( -1 );
+ 		int stream_id( -1 );
+-		AVCodec *dec;
++		const AVCodec *dec;
+ 
+ 		stream_id = av_find_best_stream( m_imp->m_format_ctx, AVMEDIA_TYPE_VIDEO,
+ 					-1, -1, &dec, 0 );
+@@ -1481,7 +1481,7 @@ void FeMedia::set_current_decoder( const std::string &l )
+ //
+ // Try to use a hardware accelerated decoder where readily available...
+ //
+-void FeMedia::try_hw_accel( AVCodecContext *&codec_ctx, AVCodec *&dec )
++void FeMedia::try_hw_accel( AVCodecContext *&codec_ctx, const AVCodec *&dec )
+ {
+ 	if ( g_decoder.empty() || ( g_decoder.compare( "software" ) == 0 ))
+ 		return;
+diff --git a/src/media.hpp b/src/media.hpp
+index b031e12..eb7d4df 100644
+--- a/src/media.hpp
++++ b/src/media.hpp
+@@ -110,7 +110,7 @@ protected:
+ 	bool read_packet();
+ 	bool end_of_file();
+ 
+-	void try_hw_accel( AVCodecContext *& ctx, AVCodec *&dec );
++	void try_hw_accel( AVCodecContext *& ctx, const AVCodec *&dec );
+ 
+ private:
+ 	FeMediaImp *m_imp;
+-- 
+2.39.0
+

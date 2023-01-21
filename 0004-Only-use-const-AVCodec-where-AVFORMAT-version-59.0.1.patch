@@ -1,0 +1,112 @@
+From 02108245be47fc8adc92b42059ab8f30b340f16e Mon Sep 17 00:00:00 2001
+From: Andrew Mickelson <andrew.mickelson@gmail.com>
+Date: Mon, 21 Feb 2022 15:50:18 -0800
+Subject: [PATCH 4/4] Only use const AVCodec where AVFORMAT version >= 59.0.100
+
+Per the APIchanged document for FFmeg:
+
+2021-04-27 - 46dac8cf3d - lavf 59.0.100 - avformat.h
+  av_find_best_stream now uses a const AVCodec ** parameter
+  for the returned decoder.
+---
+ src/media.cpp | 21 +++++++++++++++------
+ src/media.hpp |  5 -----
+ 2 files changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/src/media.cpp b/src/media.cpp
+index bed873f..c1c3a3b 100644
+--- a/src/media.cpp
++++ b/src/media.cpp
+@@ -74,6 +74,16 @@ extern "C"
+ #include <queue>
+ #include <iostream>
+ 
++#if (LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT( 59, 0, 100 ))
++typedef const AVCodec FeAVCodec;
++#else
++typedef AVCodec FeAVCodec;
++#endif
++
++void try_hw_accel( AVCodecContext *&codec_ctx, FeAVCodec *&dec );
++
++std::string g_decoder;
++
+ //
+ // As of Nov, 2017 RetroPie's default version of avcodec is old enough
+ // that it doesn't define AV_INPUT_PADDING_SIZE
+@@ -145,7 +155,7 @@ public:
+ 	bool at_end;					// set when at the end of our input
+ 	bool far_behind;
+ 	AVCodecContext *codec_ctx;
+-	const AVCodec *codec;
++	FeAVCodec *codec;
+ 	int stream_id;
+ 
+ 	FeBaseStream();
+@@ -1061,7 +1071,8 @@ bool FeMedia::open( const std::string &archive,
+ 	if ( m_imp->m_type & Audio )
+ 	{
+ 		int stream_id( -1 );
+-		const AVCodec *dec;
++		FeAVCodec *dec;
++
+ 		stream_id = av_find_best_stream( m_imp->m_format_ctx, AVMEDIA_TYPE_AUDIO,
+ 			-1, -1, &dec, 0 );
+ 
+@@ -1119,7 +1130,7 @@ bool FeMedia::open( const std::string &archive,
+ 		std::string prev_dec_name;
+ 		int av_result( -1 );
+ 		int stream_id( -1 );
+-		const AVCodec *dec;
++		FeAVCodec *dec;
+ 
+ 		stream_id = av_find_best_stream( m_imp->m_format_ctx, AVMEDIA_TYPE_VIDEO,
+ 					-1, -1, &dec, 0 );
+@@ -1412,8 +1423,6 @@ const char *FeMedia::get_metadata( const char *tag )
+ 	return ( entry ? entry->value : "" );
+ }
+ 
+-std::string FeMedia::g_decoder;
+-
+ #if FE_HWACCEL
+ //
+ // A list of the 'HWDEVICE' ffmpeg hwaccels that we support
+@@ -1481,7 +1490,7 @@ void FeMedia::set_current_decoder( const std::string &l )
+ //
+ // Try to use a hardware accelerated decoder where readily available...
+ //
+-void FeMedia::try_hw_accel( AVCodecContext *&codec_ctx, const AVCodec *&dec )
++void try_hw_accel( AVCodecContext *&codec_ctx, FeAVCodec *&dec )
+ {
+ 	if ( g_decoder.empty() || ( g_decoder.compare( "software" ) == 0 ))
+ 		return;
+diff --git a/src/media.hpp b/src/media.hpp
+index eb7d4df..6030cde 100644
+--- a/src/media.hpp
++++ b/src/media.hpp
+@@ -30,8 +30,6 @@
+ class FeMediaImp;
+ class FeAudioImp;
+ class FeVideoImp;
+-struct AVCodec;
+-struct AVCodecContext;
+ 
+ namespace sf
+ {
+@@ -110,13 +108,10 @@ protected:
+ 	bool read_packet();
+ 	bool end_of_file();
+ 
+-	void try_hw_accel( AVCodecContext *& ctx, const AVCodec *&dec );
+-
+ private:
+ 	FeMediaImp *m_imp;
+ 	FeAudioImp *m_audio;
+ 	FeVideoImp *m_video;
+-	static std::string g_decoder;
+ 
+ 	FeMedia( const FeMedia & );
+ 	FeMedia &operator=( const FeMedia & );
+-- 
+2.39.0
+
