@@ -6,7 +6,6 @@ pkgbase = ssu
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = tree
 	depends = glibc
 	options = strip
 	options = !debug
