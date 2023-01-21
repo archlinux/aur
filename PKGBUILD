@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=14.0.6
+pkgver=15.0.7
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -12,18 +12,26 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-wclang-git' 'uasm')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
+_source_base="https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver"
 source=(
-	"https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/$_pkgname-$pkgver.src.tar.xz"{,.sig}
+	"$_source_base/$_pkgname-$pkgver.src.tar.xz"{,.sig}
+	"$_source_base/cmake-$pkgver.src.tar.xz"{,.sig}
 )
-sha256sums=('4f731ff202add030d9d68d4c6daabd91d3aeed9812e6a5b4968815cfdff0eb1f'
+sha256sums=('3f168d38e7a37b928dcb94b33ce947f75d81eef6fa6a4f9d16b6dc5511c07358'
+            'SKIP'
+            '8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea'
             'SKIP')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 _srcdir="${_pkgname}-${pkgver}.src"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DLIBOMP_INSTALL_ALIASES=OFF -DCMAKE_ASM_MASM_COMPILER='uasm' )
+
+prepare() {
+	mv cmake{-$pkgver.src,}
+}
 
 build() {
 	for _arch in ${_architectures}; do
@@ -39,8 +47,9 @@ build() {
 		sed -i 's/g++/clang++/' "toolchain-${_arch}.cmake"
 		sed -i "s|/usr/share/mingw/toolchain-${_arch}.cmake|$srcdir/toolchain-${_arch}.cmake|" "${_arch}-cmake"
 		
-		./${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF -DCMAKE_ASM_MASM_FLAGS="$_winflag"
-		#sed -i -r 's/x86_64-w64-mingw32-uasm (.+) (\S+)z_Windows_NT-586_asm\.asm$/x86_64-w64-mingw32-uasm \1 Z:\2z_Windows_NT-586_asm\.asm/' "build-${_arch}/runtime/src/CMakeFiles/omp.dir/build.make"
+		./${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTING=OFF \
+			-DCMAKE_ASM_MASM_FLAGS="$_winflag"
 		sed -i "s|/safeseh |-safeseh |;s|/coff |-coff |;s|/c |-c -10 |;s|/Fo |-Fo |" "build-${_arch}/runtime/src/CMakeFiles/omp.dir/build.make"
 		cmake --build "build-${_arch}"
 	done

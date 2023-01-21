@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openmp
 	pkgdesc = LLVM OpenMP Runtime Library (mingw-w64)
-	pkgver = 14.0.6
+	pkgver = 15.0.7
 	pkgrel = 1
 	url = https://openmp.llvm.org/
 	arch = any
@@ -12,11 +12,15 @@ pkgbase = mingw-w64-openmp
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/openmp-14.0.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/openmp-14.0.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/openmp-15.0.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/openmp-15.0.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz.sig
 	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = 4f731ff202add030d9d68d4c6daabd91d3aeed9812e6a5b4968815cfdff0eb1f
+	sha256sums = 3f168d38e7a37b928dcb94b33ce947f75d81eef6fa6a4f9d16b6dc5511c07358
+	sha256sums = SKIP
+	sha256sums = 8986f29b634fdaa9862eedda78513969fe9788301c9f2d938f4c10a3e7a3e7ea
 	sha256sums = SKIP
 
 pkgname = mingw-w64-openmp
