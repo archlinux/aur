@@ -1,12 +1,12 @@
 pkgbase = qrcodegen
 	pkgdesc = High-quality QR Code generator library
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://www.nayuki.io/page/qr-code-generator-library
 	arch = x86_64
 	license = MIT
-	source = https://github.com/nayuki/QR-Code-generator/archive/v1.6.0.tar.gz
-	sha256sums = 8acee5a77325e075b910747ad4b1fdb1491b7e22d0b8f1b5a6ea15ea08ba33a8
+	depends = glibc
+	source = qrcodegen-1.8.0.tar.gz::https://github.com/nayuki/QR-Code-generator/archive/v1.8.0.tar.gz
+	b2sums = 2e511baf35fbfdb71ad5e2dc91c1400a113eb9bce51afa022c34b7ad7d3c9be4a862e2caaef89f517fbbf29879223fb078c88fdec27d6a876126c798ac6772c6
 
 pkgname = qrcodegen
-
