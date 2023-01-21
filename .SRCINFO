@@ -1,0 +1,16 @@
+pkgbase = piscesys-gtk-themes-git
+	pkgdesc = piscesys gtk dark/light themes
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/gtk-themes
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	provides = piscesys-gtk-themes
+	conflicts = piscesys-gtk-themes
+	conflicts = cutefish-gtk-themes-git
+	source = git+https://gitlab.com/piscesys/gtk-themes.git
+	sha512sums = SKIP
+
+pkgname = piscesys-gtk-themes-git
