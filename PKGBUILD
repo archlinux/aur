@@ -2,19 +2,20 @@
 # Contributor: M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=thonny
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Python IDE for beginners"
 arch=('any')
 url="https://thonny.org"
 license=('MIT')
-depends=('hicolor-icon-theme' 'mypy' 'python-asttokens' 'python-docutils' 'python-jedi' 'python-pip' \
-         'python-pylint' 'python-pyserial' 'python-send2trash' 'python-setuptools' 'python-wheel' 'tk')
+depends=('esptool' 'hicolor-icon-theme' 'mypy' 'python-asttokens' 'python-docutils' \
+          'python-jedi' 'python-pip' 'python-pylint' 'python-pillow' 'python-ptyprocess' \
+          'python-send2trash' 'python-setuptools' 'python-wheel' 'tk')
 makedepends=('python-build' 'python-installer')
 optdepends=('python-birdseye: Debug support with Birdseye'
             'python-pgzero: Run programs made with Pygame Zero')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('0b2cc33c3a71b18223237b3633707b5a236a9c4e9ea6647c6d72bbda846574ddd6cb5b54273659978fa5fe04f62cd87336d7edd125da604c88f813bb48e50152')
+sha512sums=('ca7057b4b5ec052798566b5f954f02af9002fc4dee525e79201b8f89ada38ca1cdfd72a28bcda82f936ec97425b63d865466cbe4d3745571f00174779e177bb1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
