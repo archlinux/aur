@@ -1,0 +1,20 @@
+pkgbase = piscesys-screenshot-git
+	pkgdesc = Screenshot tool for piscesys
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/screenshot
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-base
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	depends = qt5-quickcontrols2
+	provides = piscesys-screenshot
+	conflicts = piscesys-screenshot
+	conflicts = cutefish-screenshot-git
+	source = git+https://gitlab.com/piscesys/screenshot.git
+	sha512sums = SKIP
+
+pkgname = piscesys-screenshot-git
