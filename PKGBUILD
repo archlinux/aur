@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SC3
-_pkgver=1.26.1
+_pkgver=1.26.2
 pkgname=r-${_pkgname,,}
-pkgver=1.26.1
+pkgver=1.26.2
 pkgrel=1
 pkgdesc='Single-Cell Consensus Clustering'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-scater
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ff14bad8480985d229b61650ed0ee2ea2c890d53156122dd420d8e02efd8a1c1')
+sha256sums=('6a3e53c3cc6368b1fd303570f8e7ebe3c8f877affcba78066a06575c4a2d4437')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
