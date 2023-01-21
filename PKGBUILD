@@ -2,7 +2,7 @@
 
 pkgname=python-kodistubs
 _name=Kodistubs
-pkgver=19.0.3
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="Stub modules that re-create Kodi Python API"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'python-sphinx')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d6f3379712fa944704dbb74e49b64fbc32ecc8dbfb5433221f4115e927f5b318')
+sha256sums=('dd8d578063cf8aca70eae182494c4167ce945c32d7640d2e004a5c374d6e8e16')
 
 build() {
 	cd "$_name-$pkgver"
