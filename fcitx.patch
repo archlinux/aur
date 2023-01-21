@@ -1,6 +1,6 @@
 diff -ruN google-mozc-git/src/BUILD.fcitx.bazel fcitx-mozc-git/src/BUILD.fcitx.bazel
 --- google-mozc-git/src/BUILD.fcitx.bazel	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/BUILD.fcitx.bazel	2022-12-30 15:40:50.400454328 +0200
++++ fcitx-mozc-git/src/BUILD.fcitx.bazel	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,27 @@
 +package(
 +    default_visibility = ["//visibility:public"],
@@ -31,7 +31,7 @@ diff -ruN google-mozc-git/src/BUILD.fcitx.bazel fcitx-mozc-git/src/BUILD.fcitx.b
 +)
 diff -ruN google-mozc-git/src/unix/fcitx/BUILD fcitx-mozc-git/src/unix/fcitx/BUILD
 --- google-mozc-git/src/unix/fcitx/BUILD	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/BUILD	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/BUILD	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,97 @@
 +load(
 +    "//:build_defs.bzl",
@@ -132,7 +132,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/BUILD fcitx-mozc-git/src/unix/fcitx/BUI
 +
 diff -ruN google-mozc-git/src/unix/fcitx/eim.cc fcitx-mozc-git/src/unix/fcitx/eim.cc
 --- google-mozc-git/src/unix/fcitx/eim.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/eim.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/eim.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,271 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -407,7 +407,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/eim.cc fcitx-mozc-git/src/unix/fcitx/ei
 +}
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx.gyp fcitx-mozc-git/src/unix/fcitx/fcitx.gyp
 --- google-mozc-git/src/unix/fcitx/fcitx.gyp	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx.gyp	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx.gyp	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,111 @@
 +#
 +# Copyright (c) 2010-2012 fcitx Project http://code.google.com/p/fcitx/
@@ -522,7 +522,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx.gyp fcitx-mozc-git/src/unix/fcitx
 +}
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,243 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -769,8 +769,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc fcitx-mozc-g
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h
 --- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,79 @@
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	2023-01-21 20:27:00.642021518 +0200
+@@ -0,0 +1,78 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -818,6 +818,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-gi
 +class KeyEventHandler {
 + public:
 +  KeyEventHandler();
++  KeyEventHandler(const KeyEventHandler &) = delete;
 +
 +  // Converts a key event came from fcitx to commands::KeyEvent. This is a
 +  // stateful method. It stores modifier keys states since ibus doesn't send
@@ -842,8 +843,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-gi
 +  std::set<uint32> currently_pressed_modifiers_;
 +  // Pending modifier keys.
 +  std::set<commands::KeyEvent::ModifierKey> modifiers_to_be_sent_;
-+
-+  DISALLOW_COPY_AND_ASSIGN(KeyEventHandler);
 +};
 +
 +}  // namespace fcitx
@@ -852,7 +851,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-gi
 +#endif  // MOZC_UNIX_FCITX_KEY_EVENT_HANDLER_H_
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,521 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1282,24 +1281,24 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/
 +}
 +
 +void KeyTranslator::Init() {
-+  for (int i = 0; i < arraysize(special_key_map); ++i) {
++  for (int i = 0; i < FCITX_ARRAY_SIZE(special_key_map); ++i) {
 +    CHECK(special_key_map_.insert(std::make_pair(special_key_map[i].from,
 +                                            special_key_map[i].to)).second);
 +  }
-+  for (int i = 0; i < arraysize(modifier_key_map); ++i) {
++  for (int i = 0; i < FCITX_ARRAY_SIZE(modifier_key_map); ++i) {
 +    CHECK(modifier_key_map_.insert(std::make_pair(modifier_key_map[i].from,
 +                                             modifier_key_map[i].to)).second);
 +  }
-+  for (int i = 0; i < arraysize(modifier_mask_map); ++i) {
++  for (int i = 0; i < FCITX_ARRAY_SIZE(modifier_mask_map); ++i) {
 +    CHECK(modifier_mask_map_.insert(std::make_pair(modifier_mask_map[i].from,
 +                                              modifier_mask_map[i].to)).second);
 +  }
-+  for (int i = 0; i < arraysize(kana_map_jp); ++i) {
++  for (int i = 0; i < FCITX_ARRAY_SIZE(kana_map_jp); ++i) {
 +    CHECK(kana_map_jp_.insert(
 +        std::make_pair(kana_map_jp[i].code, std::make_pair(
 +            kana_map_jp[i].no_shift, kana_map_jp[i].shift))).second);
 +  }
-+  for (int i = 0; i < arraysize(kana_map_us); ++i) {
++  for (int i = 0; i < FCITX_ARRAY_SIZE(kana_map_us); ++i) {
 +    CHECK(kana_map_us_.insert(
 +        std::make_pair(kana_map_us[i].code, std::make_pair(
 +            kana_map_us[i].no_shift, kana_map_us[i].shift))).second);
@@ -1377,8 +1376,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h
 --- google-mozc-git/src/unix/fcitx/fcitx_key_translator.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,121 @@
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h	2023-01-21 20:27:00.642021518 +0200
+@@ -0,0 +1,120 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -1431,6 +1430,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/s
 +class KeyTranslator {
 +public:
 +  KeyTranslator();
++  KeyTranslator(const KeyTranslator &) = delete;
 +  virtual ~KeyTranslator();
 +
 +  // Converts scim_key into Mozc key code and stores them on out_translated.
@@ -1491,8 +1491,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/s
 +  // 'Hiragana Letter Small U' (with Shift modifier).
 +  KanaMap kana_map_jp_;  // mapping for JP keyboard.
 +  KanaMap kana_map_us_;  // mapping for US keyboard.
-+
-+  DISALLOW_COPY_AND_ASSIGN(KeyTranslator);
 +};
 +
 +}  // namespace fcitx
@@ -1502,7 +1500,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/s
 +#endif  // MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_mozc.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,552 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -1600,12 +1598,12 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/f
 +        mozc::commands::HALF_KATAKANA,
 +    },
 +};
-+const size_t kNumCompositionModes = arraysize ( kPropCompositionModes );
++const size_t kNumCompositionModes = FCITX_ARRAY_SIZE ( kPropCompositionModes );
 +
 +// This array must correspond with the CompositionMode enum in the
 +// mozc/session/command.proto file.
 +static_assert (
-+    mozc::commands::NUM_OF_COMPOSITIONS == arraysize ( kPropCompositionModes ),
++    mozc::commands::NUM_OF_COMPOSITIONS == FCITX_ARRAY_SIZE ( kPropCompositionModes ),
 +    "number of modes must match" );
 +
 +}  // namespace
@@ -2058,7 +2056,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/f
 +}  // namespace mozc_unix_scim
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx-mozc.conf fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf
 --- google-mozc-git/src/unix/fcitx/fcitx-mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,11 @@
 +[Addon]
 +Name=fcitx-mozc
@@ -2073,8 +2071,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx-mozc.conf fcitx-mozc-git/src/unix
 +LoadLocal=True
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h
 --- google-mozc-git/src/unix/fcitx/fcitx_mozc.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,176 @@
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h	2023-01-21 20:27:00.642021518 +0200
+@@ -0,0 +1,175 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
 +//
@@ -2155,6 +2153,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fc
 +    FcitxMozc ( FcitxInstance* instance,
 +                MozcConnectionInterface *connection,
 +                MozcResponseParser *parser );
++    FcitxMozc(const FcitxMozc &) = delete;
 +    virtual ~FcitxMozc();
 +
 +    bool process_key_event (FcitxKeySym sym, uint32 keycode, uint32 state, bool layout_is_jp, bool is_key_up);
@@ -2241,8 +2240,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fc
 +    FcitxUIMenu toolMenu;
 +    std::string description;
 +    std::string title;
-+
-+    DISALLOW_COPY_AND_ASSIGN ( FcitxMozc );
 +};
 +
 +}  // namespace fcitx
@@ -2253,7 +2250,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fc
 +
 diff -ruN google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh
 --- google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,10 @@
 +#!/bin/sh
 +
@@ -2267,7 +2264,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh fcitx-mozc-git/s
 +done
 diff -ruN google-mozc-git/src/unix/fcitx/mozc.conf fcitx-mozc-git/src/unix/fcitx/mozc.conf
 --- google-mozc-git/src/unix/fcitx/mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc.conf	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc.conf	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,7 @@
 +[InputMethod]
 +UniqueName=mozc
@@ -2278,7 +2275,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc.conf fcitx-mozc-git/src/unix/fcitx
 +Parent=fcitx-mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.cc fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc
 --- google-mozc-git/src/unix/fcitx/mozc_connection.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,214 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2496,8 +2493,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.cc fcitx-mozc-git/src/u
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/unix/fcitx/mozc_connection.h
 --- google-mozc-git/src/unix/fcitx/mozc_connection.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,154 @@
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.h	2023-01-21 20:27:00.642021518 +0200
+@@ -0,0 +1,153 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -2591,6 +2588,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/un
 +
 +class MozcConnection : public MozcConnectionInterface {
 + public:
++  MozcConnection(const MozcConnection &) = delete;
 +  static const int kNoSession;
 +
 +  static MozcConnection *CreateMozcConnection();
@@ -2643,8 +2641,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/un
 +  // We should delete client_ before deleting client_factory_.
 +  std::unique_ptr<mozc::IPCClientFactoryInterface> client_factory_;
 +  std::unique_ptr<mozc::client::ClientInterface> client_;
-+
-+  DISALLOW_COPY_AND_ASSIGN(MozcConnection);
 +};
 +
 +}  // namespace fcitx
@@ -2654,7 +2650,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/un
 +#endif  // MOZC_UNIX_SCIM_MOZC_CONNECTION_H_
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.cc fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc
 --- google-mozc-git/src/unix/fcitx/mozc_response_parser.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,447 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -3105,8 +3101,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.cc fcitx-mozc-git/
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h
 --- google-mozc-git/src/unix/fcitx/mozc_response_parser.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,97 @@
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h	2023-01-21 20:27:00.642021518 +0200
+@@ -0,0 +1,96 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -3170,6 +3166,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/s
 +{
 +public:
 +    MozcResponseParser();
++    MozcResponseParser(const MozcResponseParser &) = delete;
 +    ~MozcResponseParser();
 +
 +    // Parses a response from Mozc server and sets persed information on fcitx_mozc
@@ -3195,8 +3192,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/s
 +                        FcitxMozc *fcitx_mozc ) const;
 +
 +    bool use_annotation_;
-+
-+    DISALLOW_COPY_AND_ASSIGN ( MozcResponseParser );
 +};
 +
 +}  // namespace fcitx
@@ -3206,7 +3201,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/s
 +#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
 diff -ruN google-mozc-git/src/unix/fcitx/po/ca.po fcitx-mozc-git/src/unix/fcitx/po/ca.po
 --- google-mozc-git/src/unix/fcitx/po/ca.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ca.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ca.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,80 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3290,7 +3285,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ca.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Premeu Ctrl+Alt+H per mostrar els usos."
 diff -ruN google-mozc-git/src/unix/fcitx/po/da.po fcitx-mozc-git/src/unix/fcitx/po/da.po
 --- google-mozc-git/src/unix/fcitx/po/da.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/da.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/da.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,80 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3374,7 +3369,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/da.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Tryk på Ctrl+Alt+H for at vise anvendelser."
 diff -ruN google-mozc-git/src/unix/fcitx/po/de.po fcitx-mozc-git/src/unix/fcitx/po/de.po
 --- google-mozc-git/src/unix/fcitx/po/de.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/de.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/de.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,86 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3464,7 +3459,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/de.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Ctrl+Alt+H um die Hilfe anzuzeigen"
 diff -ruN google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot
 --- google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,78 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3546,7 +3541,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot fcitx-mozc-git/src/un
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx/po/ja.po fcitx-mozc-git/src/unix/fcitx/po/ja.po
 --- google-mozc-git/src/unix/fcitx/po/ja.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ja.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ja.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,87 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3637,7 +3632,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ja.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Ctrl+Alt+H キーを押して用例を表示"
 diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/po/ko.po
 --- google-mozc-git/src/unix/fcitx/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ko.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ko.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,82 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3723,7 +3718,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "사용법을 보려면 Ctrl+Alt+H를 누릅니다."
 diff -ruN google-mozc-git/src/unix/fcitx/po/Messages.sh fcitx-mozc-git/src/unix/fcitx/po/Messages.sh
 --- google-mozc-git/src/unix/fcitx/po/Messages.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/Messages.sh	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/Messages.sh	2023-01-21 20:27:00.642021518 +0200
 @@ -0,0 +1,33 @@
 +#!/bin/sh
 +
@@ -3760,7 +3755,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/Messages.sh fcitx-mozc-git/src/unix/
 +echo "Done"
 diff -ruN google-mozc-git/src/unix/fcitx/po/ru.po fcitx-mozc-git/src/unix/fcitx/po/ru.po
 --- google-mozc-git/src/unix/fcitx/po/ru.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ru.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ru.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,83 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3847,7 +3842,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ru.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Нажмите Ctrl+Alt+H, чтобы показать использование."
 diff -ruN google-mozc-git/src/unix/fcitx/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po
 --- google-mozc-git/src/unix/fcitx/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,85 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3936,7 +3931,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/zh_CN.po fcitx-mozc-git/src/unix/fci
 +msgstr "按下 Ctrl+Alt+H 显示用法。"
 diff -ruN google-mozc-git/src/unix/fcitx/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po
 --- google-mozc-git/src/unix/fcitx/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,84 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4024,7 +4019,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/zh_TW.po fcitx-mozc-git/src/unix/fci
 +msgstr "按下 Ctrl+Alt+H 顯示用法。"
 diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.cc fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc
 --- google-mozc-git/src/unix/fcitx/surrounding_text_util.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc	2022-12-30 15:40:50.413787897 +0200
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc	2023-01-21 20:27:00.645354941 +0200
 @@ -0,0 +1,243 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4271,8 +4266,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.cc fcitx-mozc-git
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h
 --- google-mozc-git/src/unix/fcitx/surrounding_text_util.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h	2022-12-30 15:40:50.413787897 +0200
-@@ -0,0 +1,87 @@
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h	2023-01-21 20:27:00.645354941 +0200
+@@ -0,0 +1,88 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
 +//
@@ -4325,6 +4320,10 @@ diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/
 +
 +class SurroundingTextUtil {
 + public:
++  SurroundingTextUtil() = delete;
++  SurroundingTextUtil(const SurroundingTextUtil &) = delete;
++  SurroundingTextUtil &operator=(const SurroundingTextUtil &) = delete;
++
 +  // Calculates |from| - |to| and stores the result into |delta| with
 +  // checking integer overflow.
 +  // Returns true when neither |abs(delta)| nor |-delta| does not cause
@@ -4348,9 +4347,6 @@ diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/
 +      const std::string &selected_text,
 +      unsigned int cursor_pos,
 +      unsigned int *anchor_pos);
-+
-+ private:
-+  DISALLOW_IMPLICIT_CONSTRUCTORS(SurroundingTextUtil);
 +};
 +
 +bool GetSurroundingText(FcitxInstance* instance,

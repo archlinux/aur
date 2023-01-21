@@ -4,22 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx-mozc-ut'
-pkgver=2.28.4960.102
+pkgver=2.28.4990.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
-license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx' 'mozc>=2.28.4960.102')
+license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
+depends=('fcitx' 'mozc>=2.28.4990.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx-configtool')
-provides=('fcitx-mozc=2.28.4960.102')
+provides=('fcitx-mozc=2.28.4990.102')
 conflicts=('fcitx-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7ec82c9356dbd5e15736627cfef05ec0f2c9bb9b"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623"
         "fcitx.patch")
 sha256sums=('SKIP'
-            '64df891e11450a026d08ae32d36d6cb96a04a2b2a6140082868eee6e2f58a41c')
+            '4419ff7d0c18c631fa11b896dc203c7cf0a5dd95496cd9eae09c8249371a63be')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -36,9 +36,6 @@ prepare() {
 
     # Load the application icon dynamically
     sed -i -e 's|IconName=/usr/share/fcitx/mozc/icon/mozc.png|IconName=fcitx-mozc|' unix/fcitx/mozc.conf
-
-    # Temp fix for Bazel 6.0.0
-    sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
 }
 
 build() {
@@ -53,7 +50,7 @@ package() {
     cd ${pkgname}-git/src
 
     install -Dm644 ../LICENSE                                  ${pkgdir}/usr/share/licenses/fcitx-mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html              ${pkgdir}/usr/share/licenses/fcitx-mozc/credits_en.html
+    install -Dm644 data/installer/credits_en.html              ${pkgdir}/usr/share/licenses/fcitx-mozc/Submodules
 
     install -Dm755 bazel-bin/unix/fcitx/fcitx-mozc.so          ${pkgdir}/usr/lib/fcitx/fcitx-mozc.so
     install -Dm644 unix/fcitx/fcitx-mozc.conf                  ${pkgdir}/usr/share/fcitx/addon/mozc.conf
