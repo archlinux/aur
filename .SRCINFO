@@ -1,0 +1,16 @@
+pkgbase = brother-mfc-j4340dw
+	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J4340DW printer
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://www.brother.co.uk/support/mfc-j4340dw/downloads
+	install = brother-mfc-j4340dw.install
+	arch = x86_64
+	license = EULA
+	depends = perl
+	depends = cups
+	optdepends = brscan5
+	source = https://download.brother.com/welcome/dlf105295/mfcj4340dwpdrv-3.5.0-1.i386.rpm
+	sha256sums = 8a399d8716bd6117730b69463834ffe702af4a7da504dc8432c30a8b9ba89784
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j4340dw
