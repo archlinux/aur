@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeoDiff
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Count model based differential expression and normalization on GeoMx RNA data'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8c832f784af8ffd45e860e56b9e005e7427881371968ae367f53fc87f7618d75')
+sha256sums=('8193dc3aa63c3393391e3f67d82b2b67a1ab462cb0dbf516235ebced22f1ac19')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
