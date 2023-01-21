@@ -12,19 +12,19 @@ provides=('infisical')
 conflicts=('infisical')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.2.5/infisical_0.2.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('9360db43962945ed27e3666a524f0a24c8caedebd237395f1bb5ea7366063f2b')
+sha256sums_aarch64=('48263fc373ca5c1d48313c64713db7b814aa8da803dc635eaa97e37aeb50134a')
 
 source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.2.5/infisical_0.2.5_linux_armv6.tar.gz")
-sha256sums_armv6h=('969b4269fd52531f853bd907b02b53375fe74f8ee622461869b28c6cf5a4618b')
+sha256sums_armv6h=('641730e0fb49626bcc751f3e99904ec1cf32596638c0bb251f5078383ecf9765')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.2.5/infisical_0.2.5_linux_armv7.tar.gz")
-sha256sums_armv7h=('0dfd13d550cea70240b6e1c7bf7b2d38e6f3d5eb24f668a2afa3d4b202d4e451')
+sha256sums_armv7h=('307686b81d559c52c9832d2bf5263b0e5aa3e427fd0402b1f8d7f4ea06a94bd4')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.2.5/infisical_0.2.5_linux_386.tar.gz")
-sha256sums_i686=('11e58171abcb2fb7b1985b402ba1487d88d34036f3ec6d4a6b2ccb841e3efab4')
+sha256sums_i686=('4d2d6b96f1627023be95b57e02f301f5fea5ed36392fb4eb52af09e2aacb83ed')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.2.5/infisical_0.2.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('47c72d4524309e624377cbde4f1356f76dd88a748ba456cc67031aed32b6f4db')
+sha256sums_x86_64=('91652219a16589c852c774ed3d7d510e5de8e957657890bd470f9835127018c7')
 
 package() {
   # bin
