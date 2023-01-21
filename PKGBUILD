@@ -1,20 +1,22 @@
-# Maintainer: Ali Nabipour <alinabipour01@gmail.com>
-
 pkgname=piscesys-screenlocker-git
 _pkgname=piscesys-screenlocker
-pkgver=0
-pkgrel=2
-pkgdesc="CutefishOS system screen locker"
+pkgver=0.9
+pkgrel=1
+pkgdesc="piscesys system screen locker"
 arch=('x86_64')
-url="https://github.com/piscesys/screenlocker"
+url="https://gitlab.com/piscesys/screenlocker"
 license=('GPL')
-groups=('piscesys-git')
 depends=('piscesys-fishui-git' 'libpiscesys-git')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd screenlocker
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd screenlocker
