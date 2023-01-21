@@ -1,0 +1,19 @@
+pkgbase = gmenu-git
+	pkgdesc = desktop application launcher
+	pkgver = 0.3.0.r4.gab24782
+	pkgrel = 3
+	url = https://code.rocketnine.space/tslocum/gmenu
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = gtk4
+	depends = gobject-introspection-runtime
+	provides = gmenu
+	conflicts = gmenu
+	source = git+https://code.rocketnine.space/tslocum/gmenu.git
+	sha256sums = SKIP
+
+pkgname = gmenu-git
