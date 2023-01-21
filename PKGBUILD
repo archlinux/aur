@@ -2,11 +2,11 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=('alice-vision' 'alice-vision-cuda')
 pkgver=2.4.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
-options=('!lto')
+options=('!lto' '!debug') # debug package is kinda big -- needs investigation!
 license=('MPL2' 'MIT')
 depends=('boost-libs' 'openimageio' 'flann' 'geogram' 'coin-or-clp' 'ceres-solver' 'cctag'
          'alembic' 'opengv' 'opencv' 'popsift' 'uncertainty-framework')
@@ -35,6 +35,9 @@ prepare() {
   git config submodule."src/dependencies/MeshSDFilter".url "${srcdir}/MeshSDFilter"
   git config submodule."src/dependencies/nanoflann".url "${srcdir}/nanoflann"
   git -c protocol.file.allow=always submodule update
+
+  # fix missing include that breaks building with boost 1.81.0
+  git format-patch -1 --stdout 9c4481148d25 | patch -Np1
 
   patch -Np1 -i"${srcdir}"/cmake_cxx_std_14.patch
 
