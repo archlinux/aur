@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IRkernel
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Native R Kernel for the 'Jupyter Notebook'"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3186e3a177c7246d45218af55f8b10836540e68a2d106858a0385f7d741b640c')
+sha256sums=('e1c6d8bddc23e5039dd9c537feb371f937d60028fb753b90345698c58ae424a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
