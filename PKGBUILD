@@ -11,7 +11,7 @@
 
 pkgname=('boost' 'boost-libs')
 pkgver=1.81.0
-pkgrel=1
+pkgrel=2
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
@@ -19,12 +19,17 @@ url="https://www.boost.org/"
 license=('custom')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
+        boost-1.81.0-phoenix-multiple-definitions.patch
         $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
 sha256sums=('71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa'
+            '3ebf428ef6be090a7b56a233330375539ac429333b83708e28fe5db049cfecdb'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
 
 prepare() {
   cd $_srcname
+
+  # https://github.com/boostorg/phoenix/issues/111
+  patch -Np1 -i ../boost-1.81.0-phoenix-multiple-definitions.patch
 
   # https://github.com/boostorg/ublas/pull/97
   patch -Np2 -i ../$pkgname-ublas-c++20-iterator.patch
