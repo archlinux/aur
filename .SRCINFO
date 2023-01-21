@@ -18,3 +18,24 @@ pkgbase = piscesys-qt-plugins-git
 	sha512sums = SKIP
 
 pkgname = piscesys-qt-plugins-git
+pkgbase = piscesys-qt-plugins-git
+	pkgdesc = Unify Qt application style of piscesys
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/qt-plugins
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kwindowsystem
+	depends = libdbusmenu-qt5
+	depends = libqtxdg
+	depends = qt5-quickcontrols2
+	provides = piscesys-qt-plugins
+	conflicts = piscesys-qt-plugins
+	conflicts = cutefish-qt-plugins-git
+	source = git+https://gitlab.com/piscesys/qt-plugins.git
+	sha512sums = SKIP
+
+pkgname = piscesys-qt-plugins-git
