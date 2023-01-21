@@ -4,7 +4,7 @@
 _name=soundfile
 pkgname=python-soundfile
 pkgver=0.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Python library to read and write audio files using libsndfile, CFFI and NumPy'
 url='https://github.com/bastibe/python-soundfile'
 arch=(any)
