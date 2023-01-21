@@ -1,6 +1,6 @@
 pkgbase = libopenshot-git
 	pkgdesc = A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)
-	pkgver = 0.2.3.r643.g482aef4
+	pkgver = 0.3.0.r8.g510a7690
 	pkgrel = 1
 	url = https://www.openshot.org/
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = libopenshot-git
 	depends = libjsoncpp.so
 	depends = qt5-base
 	depends = qt5-multimedia
+	depends = qt5-svg
 	depends = x264
 	depends = zeromq
 	provides = libopenshot
@@ -32,4 +33,3 @@ pkgbase = libopenshot-git
 	sha256sums = SKIP
 
 pkgname = libopenshot-git
-

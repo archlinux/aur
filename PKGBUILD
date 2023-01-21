@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libopenshot-git
-pkgver=0.2.3.r643.g482aef4
+pkgver=0.3.0.r8.g510a7690
 pkgrel=1
 pkgdesc='A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby (git version)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://www.openshot.org/'
 license=('LGPL3')
 depends=('gcc-libs' 'glibc' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
          'libswscale.so' 'libswresample.so' 'imagemagick' 'libopenshot-audio-git' 'python'
-         'libjsoncpp.so' 'qt5-base' 'qt5-multimedia' 'x264' 'zeromq')
+         'libjsoncpp.so' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'x264' 'zeromq')
 makedepends=('git' 'cmake' 'doxygen' 'swig' 'unittestpp')
 provides=('libopenshot' 'libopenshot.so')
 conflicts=('libopenshot')
