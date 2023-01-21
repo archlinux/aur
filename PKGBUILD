@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=alvr
 pkgver=19.0.0.r0.g1215da95
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -49,7 +49,6 @@ build() {
 		--release \
 		-p alvr_server \
 		-p alvr_launcher \
-		-p alvr_dashboard \
 		-p alvr_vulkan_layer \
 		-p alvr_vrcompositor_wrapper
 
