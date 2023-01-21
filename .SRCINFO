@@ -1,19 +1,18 @@
 pkgbase = eiciel
 	pkgdesc = GNOME file ACL editor
-	pkgver = 0.9.13
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = http://rofi.roger-ferrer.org/eiciel/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
+	makedepends = meson
 	depends = acl
-	depends = gtkmm3
+	depends = gtkmm-4.0
 	depends = nautilus
 	depends = desktop-file-utils
 	options = !libtool
-	source = eiciel::git+https://github.com/rofirrim/eiciel.git#tag=0.9.13
-	sha512sums = SKIP
+	source = https://rofi.roger-ferrer.org/eiciel/files/eiciel-0.10.0.tar.xz
+	sha512sums = 964ca9656a734e730ff28a1b236820e7f6c4a08bc996be56dba0321448aadd5229b47c0495bf995a46535fdd024c84257e8e834baaeec07464ac903ed3473d97
 
 pkgname = eiciel
-
