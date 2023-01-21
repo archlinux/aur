@@ -1,10 +1,9 @@
-pkgbase = alarm-clock-applet
+pkgbase = alarm-clock-applet-git
 	pkgdesc = A fully-featured alarm clock for use with an AppIndicator implementation.
-	pkgver = 0.4.1
-	pkgrel = 2
-	epoch = 1
+	pkgver = 0.4.1.r3.g6a11003
+	pkgrel = 1
 	url = https://alarm-clock-applet.github.io/
-	install = alarm-clock-applet.install
+	install = alarm-clock-applet-git.install
 	arch = x86_64
 	arch = i686
 	license = GPL2
@@ -24,8 +23,9 @@ pkgbase = alarm-clock-applet
 	optdepends = gnome-control-center
 	optdepends = playerctl
 	optdepends = gconf>=2.0
-	source = alarm-clock-0.4.1.tar.gz::https://github.com/alarm-clock-applet/alarm-clock/archive/refs/tags/0.4.1.tar.gz
-	sha512sums = 9c7e6cb068e042f1dbb425d3d8dee61dcf3ef34b931099e7c301945234cf15196ed10da0f3de134f62ea92ef0edee6c54fbd5e95c89a8e38f99e6ff3a32bea94
+	conflicts = alarm-clock-applet
+	source = alarm-clock-applet-git::git+https://github.com/alarm-clock-applet/alarm-clock.git
+	sha512sums = SKIP
 
-pkgname = alarm-clock-applet
+pkgname = alarm-clock-applet-git
 
