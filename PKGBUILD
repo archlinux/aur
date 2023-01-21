@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
@@ -31,12 +31,12 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Module no longer packed in wheel package
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  cp -r "src/$pkgname" "${pkgdir}${site_packages}/"
-  python -m compileall -d / "${pkgdir}${site_packages}/$pkgname"
-  python -O -m compileall -d / "${pkgdir}${site_packages}/$pkgname"
+  for icon_size in 16 32 64 128 256 512; do
+    install -Dm644 package/imgs/$pkgname-${icon_size}.png \
+      "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/$pkgname.png"
+  done
 
-  install -Dm644 "assets/icons/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "package/imgs/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 package/metainfo "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
