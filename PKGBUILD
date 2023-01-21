@@ -11,7 +11,7 @@ license=('GPL')
 depends=('piscesys-fishui-git' 'libpiscesys-git' 'mpv' 'qt5-quickcontrols2')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'git')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "cutefish-videoplayer-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
