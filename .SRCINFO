@@ -1,0 +1,27 @@
+pkgbase = piscesys-core-git
+	pkgdesc = System components and backend of Piscesys
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/core
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = xf86-input-libinput
+	makedepends = xf86-input-synaptics
+	makedepends = xorg-server-devel
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	depends = qt5-quickcontrols2
+	depends = libpulse
+	depends = libxcursor
+	depends = libxtst
+	depends = polkit-qt5
+	provides = piscesys-core
+	conflicts = piscesys-core
+	conflicts = cutefish-core-git
+	source = git+https://gitlab.com/piscesys/core.git
+	sha512sums = SKIP
+
+pkgname = piscesys-core-git
