@@ -1,0 +1,24 @@
+pkgbase = libpiscesys-git
+	pkgdesc = System library for Piscesys applications
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/libpisces
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kscreen
+	depends = modemmanager-qt
+	depends = networkmanager-qt
+	depends = qt5-quickcontrols2
+	depends = accountsservice
+	depends = bluez
+	depends = bluez-qt
+	provides = libpisces
+	conflicts = libpisces
+	conflicts = libcutefish-git
+	source = git+https://gitlab.com/piscesys/libpisces.git
+	sha512sums = SKIP
+
+pkgname = libpiscesys-git
