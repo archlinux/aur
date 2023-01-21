@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav"
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
 url="https://github.com/mstilkerich/rcmcarddav"
@@ -10,19 +10,13 @@ arch=("any")
 conflicts=("roundcube-rcmcarddav" "roundcube-rcmcarddav-git" "roundcubemail-plugin-carddav-git")
 replaces=("roundcube-rcmcarddav")
 depends=("roundcubemail")
-makedepends=("composer" "systemd")
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c8a5c682c40a2be67fdd6b20278963c8c1639d0dfa911cd7cb8adb588efc42ee')
+source=("$url/releases/download/v$pkgver/carddav-v$pkgver.tar.gz")
+sha256sums=('629a1d8c56cb1ce8b5476809fc11bc01cfa909e0b749e487f9cee3176c67fbb1')
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 options=("!strip")
 
-build(){
- cd "rcmcarddav-$pkgver"
- composer install --no-interaction --no-dev
-}
-
 package(){
- cd "rcmcarddav-$pkgver"
+ cd "carddav"
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  install -D -m 640 -o root -g http "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
