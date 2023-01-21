@@ -1,6 +1,6 @@
 pkgname=rtl8723du-dkms-git
 _pkgbase=${pkgname%-*-*}
-pkgver=r202.e0129ae
+pkgver=r208.efcaffb
 package_version="0.1"
 pkgrel=1
 pkgdesc="RTL8723DU wireless + bluetooth modules (DKMS)"

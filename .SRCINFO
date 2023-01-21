@@ -1,6 +1,6 @@
 pkgbase = rtl8723du-dkms-git
 	pkgdesc = RTL8723DU wireless + bluetooth modules (DKMS)
-	pkgver = r202.e0129ae
+	pkgver = r208.efcaffb
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtl8723du
 	arch = i686
