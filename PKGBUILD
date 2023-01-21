@@ -7,7 +7,6 @@ pkgdesc="Piscesys Calculator"
 arch=('x86_64')
 url="https://gitlab.com/piscesys/calculator"
 license=('GPL')
-groups=('cutefish-git')
 depends=('fishui-git' 'libcutefish-git')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'git')
 provides=("$_pkgname")

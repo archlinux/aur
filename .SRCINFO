@@ -4,7 +4,6 @@ pkgbase = piscesys-calculator-git
 	pkgrel = 1
 	url = https://gitlab.com/piscesys/calculator
 	arch = x86_64
-	groups = cutefish-git
 	license = GPL
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
