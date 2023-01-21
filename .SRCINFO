@@ -1,0 +1,15 @@
+pkgbase = piscesys-cursor-themes-git
+	pkgdesc = piscesys cursor dark/light themes
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/cursor-themes
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = piscesys-cursor-themes
+	conflicts = piscesys-cursor-themes
+	conflicts = cutefish-cursor-themes-git
+	source = git+https://gitlab.com/piscesys/cursor-themes.git
+	sha512sums = SKIP
+
+pkgname = piscesys-cursor-themes-git
