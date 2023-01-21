@@ -1,12 +1,12 @@
 pkgbase = fapg
 	pkgdesc = Fast Audio Playlist Generator
-	pkgver = 0.43
+	pkgver = 0.44
 	pkgrel = 1
 	url = http://royale.zerezo.com/fapg/
 	arch = x86_64
 	license = GPL2
 	depends = uriparser
-	source = http://royale.zerezo.com/fapg//fapg-0.43.tar.gz
-	sha256sums = 0b0054a61691c350e151f9391e1898a37facdc8ff7440a1953f83b36b293cbdc
+	source = http://royale.zerezo.com/fapg//fapg-0.44.tar.gz
+	sha256sums = 41b9b08978889474791ea2418d39378d5cd44e101d4b7e6cc7cbbce9470c812f
 
 pkgname = fapg
