@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-fr-bin
 _pkgname=betterbird
-pkgver=102.6.1
-_build=bb27
+pkgver=102.7.0
+_build=bb28
 pkgrel=1
 pkgdesc="FRENCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -13,7 +13,8 @@ provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(
 #	"https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.fr.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}-replacement.fr.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.fr.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
@@ -33,6 +34,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('78e70f01789ad915cbc460f14a13a4205933f2d3e946d8b3a375f9b83d77d42a'
+sha256sums=('f3842fe392b012a0ae05113fdeca65dc26fd51012230080de780cff367a06fc3'
             '45149cc69f8f2088c67513f2da612bb47510057b0fefbe59c92357513ecbc560')
 
