@@ -4,30 +4,39 @@ Date: Fri, 15 May 2020 13:46:20 +0300
 Subject: [PATCH] Add sb2install support to osc
 
 ---
- osc/build.py | 3 +++
- 1 file changed, 3 insertions(+)
+ osc/build.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/osc/build.py b/osc/build.py
-index fab14b138e71b2d6506085ce8f97b43f3d77ce64..3409714a19653df323886de26fe46c88f7194931 100644
+index 7e864b883686bd56755d1f0250df12ec80cecc89..d51b81c9cc66959d74194c48f2a6710649fd117f 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -182,6 +182,7 @@ class Buildinfo:
-                 self.urls[node.get('project')+"/"+node.get('repository')] = baseurl + '/%(arch)s/%(filename)s'
+@@ -190,12 +190,13 @@ class Buildinfo:
+                 self.urls[node.get('project') + "/" + node.get('repository')] = baseurl + '/%(arch)s/%(filename)s'
  
-         self.vminstall_list = [ dep.name for dep in self.deps if dep.vminstall ]
+         self.vminstall_list = [dep.name for dep in self.deps if dep.vminstall]
 +        self.sb2install_list = [ dep.name for dep in self.deps if dep.sb2install ]
-         self.preinstall_list = [ dep.name for dep in self.deps if dep.preinstall ]
-         self.runscripts_list = [ dep.name for dep in self.deps if dep.runscripts ]
-         self.noinstall_list = [ dep.name for dep in self.deps if dep.noinstall ]
-@@ -219,6 +220,7 @@ class Pac:
+         self.preinstall_list = [dep.name for dep in self.deps if dep.preinstall]
+         self.runscripts_list = [dep.name for dep in self.deps if dep.runscripts]
+         self.noinstall_list = [dep.name for dep in self.deps if dep.noinstall]
+         self.installonly_list = [dep.name for dep in self.deps if dep.installonly]
+ 
+-        if root.find('preinstallimage') is not None:
++        if root.find('preinstallimage') != None:
+             self.preinstallimage = root.find('preinstallimage')
+         else:
+             self.preinstallimage = None
+@@ -227,7 +228,8 @@ class Pac:
                    'project', 'repository', 'sysroot',
                    'preinstall', 'vminstall', 'runscripts',
                    'noinstall', 'installonly', 'notmeta',
+-                  ]:
 +                  'sb2install',
-                  ]:
++                 ]:
              self.mp[i] = node.get(i)
  
-@@ -1364,6 +1366,7 @@ def main(apiurl, opts, argv):
+         self.mp['buildarch'] = buildarch
+@@ -1390,6 +1392,7 @@ def main(apiurl, opts, argv):
  
      rpmlist.append('preinstall: ' + ' '.join(bi.preinstall_list) + '\n')
      rpmlist.append('vminstall: ' + ' '.join(bi.vminstall_list) + '\n')

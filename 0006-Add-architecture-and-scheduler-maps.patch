@@ -13,10 +13,10 @@ command.
  1 file changed, 4 insertions(+)
 
 diff --git a/osc/util/packagequery.py b/osc/util/packagequery.py
-index a70a55686a8203e2eceb42da6a0dd7252d8d9c18..efbc869e0b840dc59a128535c94979f8564a5f3e 100644
+index 39356f5e6840d186f67dd52e10c86913ae8e60a5..df4f92bbe839ee3e954a29697152adfbe1c97ae7 100644
 --- a/osc/util/packagequery.py
 +++ b/osc/util/packagequery.py
-@@ -17,6 +17,10 @@ class PackageQueries(dict):
+@@ -21,6 +21,10 @@ class PackageQueries(dict):
      # map debian and rpm arches to common obs arches
      architectureMap = {'i386': ['i586', 'i686'], 'amd64': ['x86_64'], 'ppc64el': ['ppc64le'], 'armv6hl': ['armv6l'], 'armv7hl': ['armv7l']}
  

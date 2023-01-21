@@ -13,13 +13,13 @@ Subject: [PATCH] Support 'osc copyprj' in api by Islam Amer usage: osc copyprj
  2 files changed, 80 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..c18b3cb3ad9369356a9d8c014ce3f7f4c9b92d1c 100644
+index ee68b0e77f0304fea025b9b3c22b370fadccc42a..cae02268cacca43aa7db97ace9683b841afbfe2c 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -3134,6 +3134,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
-                 break
-             sys.stdout.write(decode_it(buf))
- 
+@@ -3408,6 +3408,58 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+             delayed=not opts.no_delay,
+             print_to="stdout",
+         )
 +    @cmdln.option('-b', '--with-binaries', action='store_true',
 +                        help='copy the built binaries over to avoid a rebuild')
 +    @cmdln.option('-x', '--with-history', action='store_true',
@@ -76,10 +76,10 @@ index e00d6e68ea4eb96e8eefa14e177934a247de9b6e..c18b3cb3ad9369356a9d8c014ce3f7f4
      @cmdln.option('-m', '--message', metavar='TEXT',
                    help='specify message TEXT')
 diff --git a/osc/core.py b/osc/core.py
-index 2ef744296c65e43adfb0ea60cd0a203ac7173e2c..a3c45884eadc729cc785dd7c9cc3e5723c516b92 100644
+index 6a86901b1fdf37e0178caffe9e39d1cceb9145f7..fc6410974f57815ac36abc7232972da7d925b82a 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -5549,6 +5549,34 @@ def copy_pac(src_apiurl, src_project, src_package,
+@@ -6002,6 +6002,34 @@ def copy_pac(
              raise oscerr.APIError('failed to copy: %s' % ', '.join(todo))
          return 'Done.'
  
@@ -112,5 +112,5 @@ index 2ef744296c65e43adfb0ea60cd0a203ac7173e2c..a3c45884eadc729cc785dd7c9cc3e572
 +    f = http_POST(u)
 +    return f.read()
  
- def unlock_package(apiurl, prj, pac, msg):
-     query = {'cmd': 'unlock', 'comment': msg}
+ def lock(apiurl: str, project: str, package: str, msg: str = None):
+     url_path = ["source", project]
