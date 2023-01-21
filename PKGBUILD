@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GRENITS
-_pkgver=1.50.1
+_pkgver=1.50.2
 pkgname=r-${_pkgname,,}
-pkgver=1.50.1
+pkgver=1.50.2
 pkgrel=1
 pkgdesc='Gene Regulatory Network Inference Using Time Series'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-network
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b0e91081335022d2175c70162fa156d9763aee1c6c2d50a663d4cc5580d9aea4')
+sha256sums=('579a8e3fae45e253ffd76c536a76a8bfb87ca6d8d3db5c3e4b2cf126ecc63e9b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
