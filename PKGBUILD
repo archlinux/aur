@@ -3,7 +3,7 @@
 
 pkgname=libkolabxml
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kolab XML Format Schema Definitions Library"
 url='https://www.kolab.org/'
 arch=('x86_64')
