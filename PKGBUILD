@@ -23,7 +23,7 @@ pkgdesc="Soothing pastel theme for KDE"
 url="https://github.com/catppuccin/kde"
 license=('MIT')
 arch=('any')
-makedepends=('kpackage')
+makedepends=('git' 'kpackage')
 source=("$pkgname::git+https://github.com/catppuccin/kde.git"
         color.sh)
 sha256sums=('SKIP'
