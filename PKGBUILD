@@ -4,10 +4,10 @@
 
 pkgname=betterlockscreen
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, minimal lockscreen"
 arch=('any')
-url="https://github.com/pavanjadhaw/${pkgname}"
+url="https://github.com/betterlockscreen/${pkgname}"
 license=('MIT')
 depends=('bc' 'feh' 'i3lock-color' 'imagemagick' 'xorg-xdpyinfo' 'xorg-xrandr')
 conflicts=('betterlockscreen-git')
