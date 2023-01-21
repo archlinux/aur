@@ -1,0 +1,14 @@
+pkgbase = blueprint-compiler-docs-git
+	pkgdesc = A markup language for GTK user interfaces (documentation)
+	pkgver = 0.6.0+23+g1df46b5
+	pkgrel = 1
+	url = https://gitlab.gnome.org/jwestman/blueprint-compiler.git
+	arch = any
+	makedepends = git
+	makedepends = python-sphinx
+	provides = blueprint-compiler-docs
+	conflicts = blueprint-compiler-docs
+	source = blueprint-compiler-docs-git::git+https://gitlab.gnome.org/jwestman/blueprint-compiler.git
+	sha256sums = SKIP
+
+pkgname = blueprint-compiler-docs-git
