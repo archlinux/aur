@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scuttle
-_pkgver=1.8.3
+_pkgver=1.8.4
 pkgname=r-${_pkgname,,}
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Single-Cell RNA-Seq Analysis Utilities'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d194a79d1c4c13785e92dc5a768d7d113564bcfb99f8a413faad54243312f0f1')
+sha256sums=('6e94e7c96ef9ac584da2a28cd11133d10b50fc1370d8d06a39259794e83b4510')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
