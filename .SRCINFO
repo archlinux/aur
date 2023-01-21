@@ -1,0 +1,15 @@
+pkgbase = open-iscsi-openrc
+	pkgdesc = The OpenRC init script and config file for open-iscsi
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://gitweb.gentoo.org/repo/gentoo.git/tree/sys-block/open-iscsi/files
+	arch = any
+	license = GPL
+	depends = openrc
+	depends = open-iscsi
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-block/open-iscsi/files/iscsid-conf.d?id=94ae36b9c42cc64f73ee27d9955569b8cefeab73
+	source = https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-block/open-iscsi/files/iscsid-init.d?id=94ae36b9c42cc64f73ee27d9955569b8cefeab73
+	md5sums = 4860cc9a2a8396bb965545da7e253417
+	md5sums = 6bb28543ea795b549e7b5ce7548deaab
+
+pkgname = open-iscsi-openrc
