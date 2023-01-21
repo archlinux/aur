@@ -1,0 +1,52 @@
+Description: Fix insecure format strings in the demo code
+Author: Simon Chopin <schopin@ubuntu.com>
+Origin: ubuntu
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/presage/+bug/1988196
+Last-Update: 2022-08-30
+--- a/src/tools/presageDemo.cpp
++++ b/src/tools/presageDemo.cpp
+@@ -173,7 +173,7 @@
+ 	    // key corresponding to desired token. selecting
+ 	    // suggestion.
+ 	    std::string message = "Last selected word: " + words[c - KEY_F0 - 1];
+-	    mvprintw(LINES - 3, 0, message.c_str());
++	    mvprintw(LINES - 3, 0, "%s", message.c_str());
+             clrtoeol();
+ 	    move(LINES, COLS);
+ 
+@@ -213,7 +213,7 @@
+ {
+     wclear( win );
+     box( win, 0, 0 );
+-    mvwprintw( win, 1, 1, str.c_str() );
++    mvwprintw( win, 1, 1, "%s", str.c_str() );
+     wrefresh( win );
+ }
+ 
+@@ -226,7 +226,7 @@
+     int i = 1;
+     std::vector<std::string>::const_iterator j = words.begin();
+     while( j != words.end() ) {
+-	mvwprintw( win, i, 1, j->c_str() );
++	mvwprintw( win, i, 1, "%s", j->c_str() );
+ 	i++;
+ 	j++;
+     }
+@@ -241,7 +241,7 @@
+     for (int i = 1; i <= atoi(suggestions.c_str()); i++) {
+         std::stringstream ss;
+         ss << 'F' << i;
+-        mvwprintw(win, i, 1, ss.str().c_str());
++        mvwprintw(win, i, 1, "%s", ss.str().c_str());
+     }
+     wrefresh(win);
+ }
+@@ -291,7 +291,7 @@
+ 	     strit != listit->end();
+ 	     strit++) {
+ 	    
+-	    mvwprintw(win, line, 1, strit->c_str());
++	    mvwprintw(win, line, 1, "%s", strit->c_str());
+ 	    line++;
+ 	}
+ 
