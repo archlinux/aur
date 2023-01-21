@@ -1,6 +1,8 @@
 # Maintainer: Steven Guikal <aur-void@fluix.one>
+# Co-Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+
 pkgname=scalc
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=(x86_64)
@@ -8,7 +10,7 @@ url='https://github.com/ariadnavigo/scalc/'
 license=('MIT')
 depends=(sline)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ariadnavigo/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('7904a022b26a74d7073b1bada8a8885bc34c32d1d7a719b43efd087ab388076940888d2e0978e1187fe1236cef66981a4ff02c2bc5a9818f1a1d0034da1cc89b')
+sha512sums=('2656c2027b3ea53785d11545e068a8d0124a04d25fdede800dbbd4b6deb58547125962abd0d2c8befda836185d95024d616799a63d384f604c9c0aa36ed4469e')
 
 build() {
   cd "$pkgname-$pkgver"
