@@ -1,0 +1,20 @@
+pkgbase = iwdrofimenu-git
+	pkgdesc = A rofi script providing a minimalistic wifi network chooser for iwd
+	pkgver = r35.bd271f2
+	pkgrel = 1
+	url = https://github.com/defname/rofi-iwd-wifi-menu
+	install = iwdrofimenu.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pexpect
+	depends = python>=3.10
+	depends = iwd>=2
+	depends = rofi>=1.7
+	depends = util-linux>=2.38
+	provides = iwdrofimenu
+	conflicts = iwdrofimenu
+	source = iwdrofimenu::git+https://github.com/defname/rofi-iwd-wifi-menu
+	md5sums = SKIP
+
+pkgname = iwdrofimenu-git
