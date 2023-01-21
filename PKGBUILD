@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nuCpos
-_pkgver=1.16.2
+_pkgver=1.16.3
 pkgname=r-${_pkgname,,}
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc='An R package for prediction of nucleosome positions'
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('09e865b6d3bb00183f329db5742b9a842ba18a9d16ef77634983e031e7be6daa')
+sha256sums=('3a302f1f111f9c0045fa0f4cad28b6639b34ca1d47e034a6e078aca3cca35691')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
