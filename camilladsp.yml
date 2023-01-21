@@ -24,6 +24,20 @@ devices:
   stop_on_rate_change: false
   target_level: 0
 filters:
+  Bass:
+    parameters:
+      freq: 85
+      gain: 0
+      q: 0.9
+      type: Lowshelf
+    type: Biquad
+  Treble:
+    parameters:
+      freq: 6500
+      gain: 0
+      q: 0.7
+      type: Highshelf
+    type: Biquad
   Volume:
     parameters:
       ramp_time: 200
@@ -32,9 +46,11 @@ mixers: {}
 pipeline:
 - channel: 0
   names:
-  - Volume
+  - Bass
+  - Treble
   type: Filter
 - channel: 1
   names:
-  - Volume
+  - Bass
+  - Treble
   type: Filter
