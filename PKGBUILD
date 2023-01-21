@@ -24,6 +24,7 @@ prepare() {
 package() {
     mkdir -p "${pkgdir}"/usr/{include/rsvisa,lib,bin};
     mkdir -p "${pkgdir}"/usr/share/{applications,cmake/RsVisa,doc/rsvisa/Samples/IdnSample,pixmaps};
+    mkdir -p "${pkgdir}"/usr/share/licenses/$pkgname/;
     
     cp -r ${srcdir}/etc/* ${pkgdir}/etc/;
     cp -r ${srcdir}/usr/* ${pkgdir}/usr/;
