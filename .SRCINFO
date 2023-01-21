@@ -1,0 +1,20 @@
+pkgbase = piscesys-videoplayer-git
+	pkgdesc = An open source video player built with Qt/QML and libmpv
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/videoplayer
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	depends = mpv
+	depends = qt5-quickcontrols2
+	provides = piscesys-videoplayer
+	conflicts = piscesys-videoplayer
+	source = git+https://gitlab.com/piscesys/videoplayer.git
+	sha512sums = SKIP
+
+pkgname = piscesys-videoplayer-git
