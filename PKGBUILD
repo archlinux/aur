@@ -87,7 +87,7 @@ package() {
 
   # strip host binaries
   find "$pkgdir"/usr/bin/ "$pkgdir"/usr/lib/gcc/$_target/ -type f -and \( -executable \) -exec strip '{}' \;
-
+  rm -r "$pkgdir"/usr/$_target/lib/libgcc_s.so.1
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir"/usr/share/man/man7
   rm -r "$pkgdir"/usr/share/info
