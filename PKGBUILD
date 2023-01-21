@@ -30,7 +30,7 @@ prepare() {
   echo $pkgver > gcc/BASE-VER
 
   # Do not run fixincludes
-  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+#  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   rm -rf "$srcdir"/gcc-build
   mkdir "$srcdir"/gcc-build
@@ -51,16 +51,20 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir"/$_basedir/configure \
+      --without-headers \
+      --with-gnu-as \
+      --with-gnu-ld \
+      --disable-libgomp \
       --prefix=/usr \
       --program-prefix=$_target- \
       --with-local-prefix=/usr/$_target \
       --with-sysroot=/usr/$_target \
       --with-build-sysroot=/usr/$_target \
-      --with-native-system-header-dir=/include \
-      --libdir=/lib --libexecdir=/lib \
+      --with-native-system-header-dir=/usr/include \
+      --libdir=/usr/lib --libexecdir=/usr/lib \
       --target=$_target --host=$CHOST --build=$CHOST \
       --disable-nls --enable-default-pie \
-      --enable-languages=c,c++,fortran \
+      --enable-languages=c,c++ \
       --enable-shared --enable-threads=posix \
       --with-system-zlib --with-isl --enable-__cxa_atexit \
       --disable-libunwind-exceptions --enable-clocale=gnu \
@@ -77,7 +81,7 @@ build() {
 package() {
   cd gcc-build
 
-  make DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libgfortran,libquadmath,libatomic}
+  make DESTDIR="$pkgdir" install-gcc install-target-{libgcc,libstdc++-v3,libgomp,libquadmath,libatomic}
 
   # strip target binaries
   find "$pkgdir"/usr/lib/gcc/$_target/ "$pkgdir"/usr/$_target/lib \
