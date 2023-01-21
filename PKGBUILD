@@ -12,7 +12,7 @@ source=("ssu-$pkgver::git+https://github.com/illiliti/ssu#tag=$pkgver"
 md5sums=(SKIP
          SKIP)
 depends=(glibc)
-makedepends=(git tree)
+makedepends=(git)
 options=(strip !debug)
 
 build() {
