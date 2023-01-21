@@ -28,6 +28,5 @@ package() {
     
     cp -r ${srcdir}/etc/* ${pkgdir}/etc/;
     cp -r ${srcdir}/usr/* ${pkgdir}/usr/;
-    cp -r ${srcdir}/../*.h ${pkgdir}/usr/include/;
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE";
+    install -Dm644 ${srcdir}/../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE";
 }
