@@ -1,6 +1,6 @@
 pkgbase = r-hdtd
 	pkgdesc = Statistical Inference about the Mean Matrix and the Covariance Matrices in High-Dimensional Transposable Data (HDTD)
-	pkgver = 1.32.1
+	pkgver = 1.32.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HDTD
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = r-hdtd
 	depends = r-rcpparmadillo
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HDTD_1.32.1.tar.gz
-	sha256sums = a9f786258ebaca011f958ad16f2a9d3eef20cef0bb199a4bb7118a5dffcf5277
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HDTD_1.32.2.tar.gz
+	sha256sums = 649f625e2ede8a690d1a955f36fe6a1d1eba249835f7e7fec343a52695b45bcd
 
 pkgname = r-hdtd
