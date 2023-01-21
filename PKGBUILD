@@ -12,7 +12,7 @@ url="https://keep.imfreedom.org/pidgin/purple-plugin-pack"
 license=('GPL')
 depends=('libpurple')
 makedepends=('meson' 'pidgin')
-source=(https://dl.bintray.com/pidgin/releases/$pkgname-$pkgver.tar.xz{,.asc})
+source=(https://downloads.sourceforge.net/pidgin/purple%20plugin%20pack/$pkgver/$pkgname-$pkgver.tar.xz{,.asc})
 sha256sums=('82ccde9a7251a75b7e03a3f9a929014d8e008c1b6f46e58638f5f476da3e242d'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
