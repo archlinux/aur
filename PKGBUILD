@@ -8,7 +8,7 @@ pkgdesc="A Simple, powerful and efficient cross-platform subtitle production sof
 arch=("i686" "x86_64")
 url="https://arctime.org"
 license=('custom')
-depends=('hicolor-icon-theme' 'jdk8-openjdk' 'vlc' 'sed')
+depends=('hicolor-icon-theme' 'jre8-openjdk' 'vlc' 'sed')
 conflicts=('arctime')
 sha256sums=('9990e860ced9cd5bc50bfe66f84f2828e7c2af2c2dbfda90c304a01686ed96cb'
             '9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677'
