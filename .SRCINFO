@@ -1,6 +1,6 @@
 pkgbase = google-fruit
 	pkgdesc = Fruit, a dependency injection framework for C++.
-	pkgver = 3.7.0
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://github.com/google/fruit
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = google-fruit
 	makedepends = boost
 	makedepends = cmake
 	depends = gcc-libs
-	source = google-fruit-3.7.0.tar.gz::https://github.com/google/fruit/archive/v3.7.0.tar.gz
-	sha256sums = 134d65c8e6dff204aeb771058c219dcd9a353853e30a3961a5d17a6cff434a09
+	options = !debug
+	source = google-fruit-3.7.1.tar.gz::https://github.com/google/fruit/archive/v3.7.1.tar.gz
+	sha256sums = ed4c6b7ebfbf75e14a74e21eb74ce2703b8485bfc9e660b1c36fb7fe363172d0
 
 pkgname = google-fruit
