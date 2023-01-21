@@ -1,6 +1,6 @@
 pkgbase = r-distinct
 	pkgdesc = distinct: a method for differential analyses via hierarchical permutation tests
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/distinct
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = r-distinct
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/distinct_1.10.1.tar.gz
-	sha256sums = 2f265ebb844ea5d17d2740b951a89d547305becc6d022a90b963b1448d18a37f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/distinct_1.10.2.tar.gz
+	sha256sums = 69af3d6027cfc79e944c7d2048d3950d28c00a208cd46c44da59a3252eb35aad
 
 pkgname = r-distinct
