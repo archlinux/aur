@@ -1,0 +1,14 @@
+pkgbase = python-flask-expects-json
+	pkgdesc = Decorator for REST endpoints in flask. Validate JSON request data.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/fischerfredl/flask-expects-json
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-flask
+	depends = python-jsonschema
+	source = https://files.pythonhosted.org/packages/source/f/flask-expects-json/flask-expects-json-1.7.0.tar.gz
+	sha256sums = 4ef186a86f10572a21af82e549546deda024326628b4a96cd14d3a0f71754d62
+
+pkgname = python-flask-expects-json
