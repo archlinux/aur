@@ -4,22 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.28.4960.102
+pkgver=2.28.4990.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
-license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc>=2.28.4960.102')
+license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
+depends=('fcitx5' 'mozc>=2.28.4990.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-provides=('fcitx5-mozc=2.28.4960.102')
+provides=('fcitx5-mozc=2.28.4990.102')
 conflicts=('fcitx5-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7ec82c9356dbd5e15736627cfef05ec0f2c9bb9b"
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '006b3d4ae9179f8c5a6bf0ab8bac966b8ee957b283a72b8671084f12a3917a3d')
+            'bfe2c5a10122cb20397744653191300c79f58bf6e82f1e99688d39cf0da37fba')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -33,9 +33,6 @@ prepare() {
 
     # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
     patch -Np2 -i ${srcdir}/fcitx5.patch
-
-    # Temp fix for Bazel 6.0.0
-    sed -i -e 's|@bazel_tools//platforms|@platforms//os|' tools/cc_target_os/BUILD.bazel
 }
 
 build() {
@@ -50,7 +47,7 @@ package() {
     cd ${pkgname}-git/src
 
     install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/fcitx5-mozc/LICENSE
-    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/fcitx5-mozc/credits_en.html
+    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/fcitx5-mozc/Submodules
 
     install -Dm755 bazel-bin/unix/fcitx5/fcitx5-mozc.so         ${pkgdir}/usr/lib/fcitx5/fcitx5-mozc.so
     install -Dm644 unix/fcitx5/mozc-addon.conf                  ${pkgdir}/usr/share/fcitx5/addon/mozc.conf
