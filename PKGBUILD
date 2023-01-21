@@ -1,6 +1,7 @@
-# Maintainer: Beej Jorgensen <beej@beej.us>
+# Maintainer: dodoradio <dodoradio@outlook.com>
+# Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=xtide
-pkgver=2.14
+pkgver=2.15.5
 pkgrel=1
 pkgdesc="Harmonic tide clock and tide predictor"
 arch=('i686' 'x86_64')
@@ -12,23 +13,18 @@ optdepends=(
   'xtide-wvs: for hi-res vector coastlines'
 )
 backup=("etc/$pkgname/$pkgname.conf")
-source=('ftp://ftp.flaterco.com/xtide/harmonics-dwf-20141224-free.tar.bz2'
-  "ftp://ftp.flaterco.com/xtide/$pkgname-$pkgver.tar.bz2"
-  "${pkgname}-$pkgver-aur.patch"
+source=("https://flaterco.com/files/xtide/harmonics-dwf-20220109-free.tar.xz"
+  "https://flaterco.com/files/xtide/$pkgname-$pkgver.tar.xz"
   "${pkgname}.conf"
   "${pkgname}.desktop"
 )
-md5sums=('27adcccb2824ac45b072636b1ee1cdd5'
-         '0f50833e6f686eca16dcb33c1719cf6c'
-         '6b95a3602898b45bb0079740e4859660'
-         '24c362cc119e413408318bd1eea04846'
+md5sums=('095eaf7f8a62fba55b91455182974154'
+         '48b6993d4a04a15d2d7be355b6e0e739'
+         '4de09c336aa0e41980c1925d06201e5c'
          'eb5ebe8432103880ff3331f3236b3e74')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # patch to look for conf in /etc/xtide
-  patch -Np1 < ../$pkgname-$pkgver-aur.patch
 
   ./configure --prefix=/usr --sbindir=/usr/bin
 }
@@ -39,7 +35,7 @@ build() {
 }
 
 package() {
-  local hver=20141224
+  local hver=20220109
   local hdir=harmonics-dwf-${hver}
   local hfile=${hdir}-free.tcd
 
@@ -47,7 +43,7 @@ package() {
   install -D -m0644 $srcdir/$hdir/$hfile "$pkgdir/usr/share/$pkgname/$hfile"
 
   # config file
-  install -D -m0644 $srcdir/${pkgname}.conf $pkgdir/etc/$pkgname/${pkgname}.conf
+  install -D -m0644 $srcdir/${pkgname}.conf $pkgdir/etc/${pkgname}.conf
 
   # desktop file
   install -D -m0644 $srcdir/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
