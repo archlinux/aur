@@ -2,7 +2,7 @@
 
 pkgname=git-trim-bin
 _realname="${pkgname%-bin}"
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Trims your git remote tracking branches"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=("MIT")
 provides=("git-trim")
 depends=("libgit2")
 source=("https://github.com/foriequal0/git-trim/releases/download/v${pkgver}/git-trim-linux-v${pkgver}.tgz")
-sha256sums=('5f8d64dca386fbdc5807caa8f4ce77fb149bc6f6bb1b2c90b200c834a24c9534')
+sha256sums=('691be95a0e77e7dbdd2b5aa00810bf3b3a0a9cfe43849d80f7508461fc5c24e8')
 
 package() {
   cd "${srcdir}/"
