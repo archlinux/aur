@@ -1,7 +1,7 @@
 pkgbase = fcitx5-gruvbox-dark-theme-git
 	pkgdesc = fcitx5 gruvbox dark theme
 	pkgver = 20211015.r6.a301ac5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pu-007/fcitx5-gruvbox-dark-theme
 	arch = any
 	source = fcitx5-gruvbox-dark-theme-git::git+https://github.com/pu-007/fcitx5-gruvbox-dark-theme.git

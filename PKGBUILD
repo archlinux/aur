@@ -1,6 +1,6 @@
 pkgname=fcitx5-gruvbox-dark-theme-git
 pkgver=20211015.r6.a301ac5
-pkgrel=1
+pkgrel=2
 pkgdesc="fcitx5 gruvbox dark theme"
 arch=('any')
 url="https://github.com/pu-007/fcitx5-gruvbox-dark-theme"
@@ -19,7 +19,7 @@ package() {
   cd ${pkgname}
   install -Dm644 arrow.png radio.png -t "$pkgdir"/usr/share/$pkgname/
   for _variant in aqua blue green purple red yellow; do
-    _variant_name=gruvbox-dark-${_variant^}
+    _variant_name=gruvbox-dark-${_variant}
     install -dm755 "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/
     ln -s ../../../$pkgname/arrow.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/
     ln -s ../../../$pkgname/radio.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/
