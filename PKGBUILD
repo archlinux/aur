@@ -1,18 +1,18 @@
 # Maintainer: Felix Singer <felixsinger@posteo.net>
 
 _targets="i386 x64 arm aarch64 riscv ppc64 nds32le clang"
-_commit='e29dcdcdd8bc04e9c54aca4e341d0b8168763000'
+_commit='4d661eebe95b06acae7d99777ed36ba56a560112'
 
 pkgbase='coreboot-toolchain'
 pkgname=()
-pkgver=4.18
+pkgver=4.19
 pkgrel=1
 pkgdesc='Used to build coreboot'
 url='https://www.coreboot.org'
 license=(BSD2 BSD3 GPL2 LGPL2Plus GPL3Plus)
 arch=(x86_64 aarch64 riscv)
 depends=() # TODO
-makedepends=() # TODO
+makedepends=('python3' 'gcc-ada') # TODO
 options=('buildflags')
 source=("git+https://review.coreboot.org/coreboot#commit=${_commit}")
 sha256sums=('SKIP')
