@@ -1,3 +1,30 @@
+## GE-Proton7-47
+
+Hotfix release:
+
+I received a ping from the dxvk author today for the following hotfix:
+
+> @GloriousEggroll sorry for ping but you might want to update dxvk in your proton builds asap,
+> since we've been writing invalid state cache files that can lead to all sorts of trouble.
+>
+> relevant commits to fix stuff:
+>
+> [doitsujin/dxvk@`0af5ece...master`](https://github.com/doitsujin/dxvk/compare/0af5ececa6ba250b529c9eb988791cf4c0a347e5...master)
+
+Per the commit it will invalidate old caches automatically, you do not need to do anything yourself.
+
+Phew, what a wild week of hotfixing :/
+
+## GE-Proton7-46
+
+This is a hotfix release for vkd3d that fixes several DX12 games not launching and/or crashing on launch, including:
+
+* Warhammer 40,000: Darktide
+* Death Stranding
+* The Division 2
+
+MH:Rise is still broken unfortunately (stuck on flickering compiling shaders screen)
+
 ## GE-Proton7-45
 
 Removed deprecated broken dxvk-async patch:
@@ -5,6 +32,7 @@ Removed deprecated broken dxvk-async patch:
 Upstream DXVK has implemented the GraphicsPipelineLibrary (GPL) back in August, which takes over dxvk-async's job:
 
 https://www.khronos.org/blog/reducing-draw-time-hitching-with-vk-ext-graphics-pipeline-library
+
 doitsujin/dxvk#2798
 
 Driver support for Nvidia was added in version 515.49.10:
