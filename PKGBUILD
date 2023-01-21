@@ -2,12 +2,12 @@
 
 pkgname=vr-video-player-git
 pkgver=r96.d094f73
-pkgrel=1
+pkgrel=2
 pkgdesc='A virtual reality video player for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/vr-video-player"
 license=('BSD')
-depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes' 'mpv')
+depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes' 'mpv' 'ffnvcodec-headers')
 provides=('vr-video-player')
 conflicts=('vr-video-player')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/vr-video-player.git.r96.d094f73.tar.gz")
