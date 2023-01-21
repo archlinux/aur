@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3923.r0.g536a4162c
+pkgver=v1.7.3932.r0.g88c1f00b6
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -33,6 +33,7 @@ depends=(
   libxrender # For Steam Deck
   linux-api-headers # For Steam Deck
   libpulse
+  ffmpeg
   portaudio
   libsamplerate
   sdl2

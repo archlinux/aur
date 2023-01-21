@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = v1.7.3923.r0.g536a4162c
+	pkgver = v1.7.3932.r0.g88c1f00b6
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = post.install
@@ -28,6 +28,7 @@ pkgbase = pcsx2-git
 	depends = libxrender
 	depends = linux-api-headers
 	depends = libpulse
+	depends = ffmpeg
 	depends = portaudio
 	depends = libsamplerate
 	depends = sdl2
