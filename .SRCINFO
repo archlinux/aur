@@ -5,7 +5,7 @@ pkgbase = freebsdlib
 	url = https://www.gnu.org/software/binutils/
 	arch = any
 	license = BSD
-	source = https://github.com/Easonqsp/freebsdlib/archive/refs/tags/FreeBSD.tar.gz
+	source = https://github.com/Easonqsp/freebsdlib/archive/refs/tags/13.1tar.gz
 	sha1sums = SKIP
 	sha256sums = SKIP
 
