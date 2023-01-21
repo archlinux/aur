@@ -54,6 +54,10 @@ build() {
       --without-headers \
       --with-gnu-as \
       --with-gnu-ld \
+      --disable-nls \
+      --enable-ld \
+      --enable-libssp --enable-gold \
+      --disable-libitm --disable-libquadmath \
       --disable-libgomp \
       --prefix=/usr \
       --program-prefix=$_target- \
@@ -63,16 +67,7 @@ build() {
       --with-native-system-header-dir=/usr/include \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --target=$_target --host=$CHOST --build=$CHOST \
-      --disable-nls --enable-default-pie \
       --enable-languages=c,c++ \
-      --enable-shared --enable-threads=posix \
-      --with-system-zlib --with-isl --enable-__cxa_atexit \
-      --disable-libunwind-exceptions --enable-clocale=gnu \
-      --disable-libstdcxx-pch --disable-libssp \
-      --enable-gnu-unique-object --enable-linker-build-id \
-      --enable-lto --enable-plugin --enable-install-libiberty \
-      --with-linker-hash-style=gnu --enable-gnu-indirect-function \
-      --disable-multilib --disable-werror \
       --enable-checking=release
 
   make -j$(nproc)
