@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=alvr
 pkgver=19.0.0.r0.g1215da95
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -26,6 +26,9 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
+	echo "[profile.release]
+lto=true" >> Cargo.toml
+
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -46,6 +49,7 @@ build() {
 		--release \
 		-p alvr_server \
 		-p alvr_launcher \
+		-p alvr_dashboard \
 		-p alvr_vulkan_layer \
 		-p alvr_vrcompositor_wrapper
 
