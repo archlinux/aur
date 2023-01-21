@@ -1,6 +1,58 @@
 post_install() {
-	chown -R http:http srv/http/settings/camillagui
-	chmod -R 755 srv/http/settings/camillagui
+	sed -i '/^filters:/,$ d' /srv/http/data/camilladsp/configs/camilladsp.yml
+	echo 'filters:
+  Bass:
+    parameters:
+      freq: 85
+      gain: 0
+      q: 0.9
+      type: Lowshelf
+    type: Biquad
+  Treble:
+    parameters:
+      freq: 6500
+      gain: 0
+      q: 0.7
+      type: Highshelf
+    type: Biquad
+  Volume:
+    parameters:
+      ramp_time: 200
+    type: Volume
+mixers: {}
+pipeline:
+- channel: 0
+  names:
+  - Bass
+  - Treble
+  type: Filter
+- channel: 1
+  names:
+  - Bass
+  - Treble
+  type: Filter' >> /srv/http/data/camilladsp/configs/camilladsp.yml
+  
 	cp -f /srv/http/data/camilladsp/configs/{camilladsp,default_config}.yml
-	ln -sf /srv/http/data/camilladsp/configs/camilladsp.yml srv/http/data/camilladsp/configs/active_config.yml
+	ln -sf /srv/http/data/camilladsp/configs/{camilladsp,active_config}.yml
+	
+    sed -i 's/"build")$/"build", follow_symlinks=True)/' /srv/http/settings/camillagui/backend/routes.py
+	
+	sed -i -e '/cdsp.get_volume/ a\
+    elif name == "mute":\
+        config = cdsp.get_config()\
+        mute = True if cdsp.get_mute() else False\
+        volume = cdsp.get_volume()\
+        result = {"config": config, "mute": mute, "volume": volume}\
+        return web.json_response(result)\
+        
+' -e '/cdsp.set_volume/ a\
+    elif name == "mute":\
+        cdsp.set_mute(value == "true")
+' /srv/http/settings/camillagui/backend/views.py
+	
+	sed -i 's/\(apply_config_automatically: \).*/\1true/' /srv/http/settings/camillagui/config/gui-config.yml
+	
+	mkdir /srv/http/data/camilladsp/coeffs
+	chown -R http:http /srv/http/data/camilladsp /srv/http/settings/camillagui
+	chmod -R 755 /srv/http/settings/camillagui
 }
