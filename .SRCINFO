@@ -1,33 +1,34 @@
 pkgbase = nzbhydra2
 	pkgdesc = Search aggregator for newznab and torznab indexers.
-	pkgver = 4.7.6
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
 	license = Apache
 	makedepends = maven
-	makedepends = java-environment=11
+	makedepends = java-environment=17
 	depends = python
-	depends = java-runtime-headless<=17
-	depends = java-runtime-headless>=8
+	depends = java-runtime-headless=17
 	optdepends = jackett: torrent indexer proxy
-	source = nzbhydra2-4.7.6.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v4.7.6.tar.gz
+	source = nzbhydra2-5.0.4.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v5.0.4.tar.gz
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
 	source = nzbhydra2.sh
 	source = wrapper-remove-base-path-checks.patch
 	source = wrapper-remove-update-support.patch
+	source = wrapper-remove-release-type-detection.patch
 	source = disable-update-checks.patch
 	source = skip-unneeded-builds.patch
-	sha256sums = 2c99b92ef1685731116300f2d643c0084fa0f9338fa6b494b0e8dcf7843e5882
+	sha256sums = bf4ce0d0c0e856bd81a31aa8afbbfffda787a6f74ddb85941d9c246dfa1f76b6
 	sha256sums = 2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68
 	sha256sums = a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
 	sha256sums = 57b65e56459324a7665d3642a04bb9c3ddff96659511c07f995b6158531a3b58
-	sha256sums = fd6ba3e8b22f3f90c19d9903445b2539837dca1c12df49863b2e8d1085d88b0e
-	sha256sums = f302b8dc8ed95ce18d67305a0460b1e62a4e4586fba0f77d3dd980a77cfba3d4
+	sha256sums = 5660f26303826a0b8bf3f7c198c39e345e87b799e2304a79db5a77992d09cda4
+	sha256sums = 35100f4e7ab5a480f5554d9abd32e8abac20d56f873f82ecbc906d0b3fdadc73
+	sha256sums = defb77e7b19c6abfc8380cd175bc04062a0c52d1042b8e02173133367152c8e2
 	sha256sums = 83b4071b2fe02e9a302fda5b9b0de97e7531b6032cdbcb8148e2f0b1fc566a22
-	sha256sums = 693c834e641b54fd940490e522dba49d3f7a9846554181e2d284acdd81d87c38
+	sha256sums = c9280f81749e34a829f93d7a548b9275a05789593d57a00f90efa959d1f025fd
 
 pkgname = nzbhydra2

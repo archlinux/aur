@@ -1,15 +1,14 @@
 diff --git a/other/pom.xml b/other/pom.xml
-index d36645c8..93ba61cc 100644
+index 93e16c3a..87ba7c2f 100644
 --- a/other/pom.xml
 +++ b/other/pom.xml
-@@ -10,10 +10,7 @@
+@@ -10,9 +10,7 @@
      <packaging>pom</packaging>
  
      <modules>
 -        <module>mockserver</module>
          <module>sockslib</module>
 -        <module>github-release-plugin</module>
--        <module>discordbot</module>
      </modules>
  
      <properties>

@@ -1,8 +1,8 @@
 diff --git a/other/wrapper/nzbhydra2wrapperPy3.py b/other/wrapper/nzbhydra2wrapperPy3.py
-index 1c691007..9d920faa 100644
+index e64c80d4..a9d8843c 100644
 --- a/other/wrapper/nzbhydra2wrapperPy3.py
 +++ b/other/wrapper/nzbhydra2wrapperPy3.py
-@@ -283,11 +283,6 @@ def startup():
+@@ -304,11 +304,6 @@ def startup():
      global jarFile, process, args, unknownArgs, consoleLines
      basePath = getBasePath()
  
@@ -11,18 +11,20 @@ index 1c691007..9d920faa 100644
 -        logger.critical("Unable to determine base path correctly. Please make sure to run NZBHydra in the folder where its binary is located. Current base path: " + basePath)
 -        sys.exit(-1)
 -
-     debugSwitchFile = os.path.join(args.datafolder, "DEBUG")
-     if os.path.exists(debugSwitchFile):
-         logger.setLevel("DEBUG")
-@@ -297,10 +292,7 @@ def startup():
+     releaseType = determineReleaseType()
+     isWindows = platform.system().lower() == "windows"
+     isWithTrayIcon = os.path.exists("isWindowsTrayMarkerFile")
+@@ -332,12 +327,8 @@ def startup():
+         console_logger.setLevel("DEBUG")
          logger.info("Setting wrapper log level to DEBUG")
  
-     isWindows = platform.system().lower() == "windows"
 -    libFolder = os.path.join(basePath, "lib")
--    if not os.path.exists(libFolder):
--        logger.critical("Error: Lib folder %s not found. An update might've failed or the installation folder is corrupt", libFolder)
--        sys.exit(-1)
 +    libFolder = basePath
- 
-     jarFiles = [os.path.join(libFolder, f) for f in os.listdir(libFolder) if os.path.isfile(os.path.join(libFolder, f)) and f.endswith(".jar")]
-     if len(jarFiles) == 0:
+     if releaseType == ReleaseType.GENERIC:
+-        if not os.path.exists(libFolder):
+-            logger.critical("Error: Lib folder %s not found. An update might've failed or the installation folder is corrupt", libFolder)
+-            sys.exit(-1)
+-
+         jarFiles = [os.path.join(libFolder, f) for f in os.listdir(libFolder) if os.path.isfile(os.path.join(libFolder, f)) and f.endswith(".jar")]
+         if len(jarFiles) == 0:
+             logger.critical("Error: No JAR files found in folder %s. An update might've failed or the installation folder is corrupt", libFolder)
