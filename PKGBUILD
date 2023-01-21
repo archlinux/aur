@@ -11,11 +11,11 @@ license=('MIT')
 provides=('ipsw')
 conflicts=('ipsw')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.256/ipsw_ 3.1.256_linux_arm64.tar.gz")
-sha256sums_aarch64=('797b58a0b89e0d590cf4ac1115fc78f3fc534b2c59a22f6ee9ea0f35c733a00d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.256/ipsw_3.1.256_linux_arm64.tar.gz")
+sha256sums_aarch64=('8223fb37cb35890fa25d7f0591fe0ae998651f11d331d208cd797ceadcd85ea3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.256/ipsw_ 3.1.256_linux_x86_64.tar.gz")
-sha256sums_x86_64=('319869b78a5c9bf6d36d105f66553f3ba58c69f7c168e8b4361d96fc71549e5a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.256/ipsw_3.1.256_linux_x86_64.tar.gz")
+sha256sums_x86_64=('20f5ec03dd617da5ac5b34124961f04ff439138138fbd02136db369132fdc8eb')
 
 package() {
   # bin
