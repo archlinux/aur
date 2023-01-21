@@ -2,8 +2,8 @@
 
 pkgname=muro
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Wallpaper for X11/Wayland'
+pkgrel=2
+pkgdesc='Wallpaper for bare X11/Wayland and tiling windows managers'
 arch=('x86_64')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')

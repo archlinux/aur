@@ -1,7 +1,7 @@
 pkgbase = muro
-	pkgdesc = Wallpaper for X11/Wayland
+	pkgdesc = Wallpaper for bare X11/Wayland and tiling windows managers
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dimus/muro
 	arch = x86_64
 	license = MIT
