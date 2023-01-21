@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUSseq
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Batch Effect Correction with Unknow Subtypes for scRNA-seq data'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('db54568957e99ddfeef707e367239304eac9e588cceac2741ba10b5b6b0ad6ad')
+sha256sums=('d66b11c6293a82e9349e37766e1b25a2ab49f671570b9344dadcd942ac9b1368')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
