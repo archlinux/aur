@@ -1,17 +1,17 @@
 pkgname=mcg
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A covergrid for the Music Player Daemon."
 url="https://www.suruatoel.xyz/codes/mcg"
 arch=(any)
 license=(GPL)
-depends=('python-gobject' 'gtk3>=3.22' 'gsettings-desktop-schemas' 'desktop-file-utils')
+depends=('python-gobject' 'python-dateutil' 'gtk3>=3.22' 'gsettings-desktop-schemas' 'desktop-file-utils')
 optdepends=('python-keyring' 'avahi' 'mpd>=0.21')
 makedepends=('meson' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://gitlab.com/coderkun/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('bfe776f8e4a5b0a00165aa55047f357ee1d083ef3f117462cac25936a315f56a')
+sha256sums=('9c32bb0276345aa69506e41adef0acd0a20ddc5b1f8d2540c128de27bfe556a4')
 
 
 build() {

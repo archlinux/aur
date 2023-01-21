@@ -1,6 +1,6 @@
 pkgbase = mcg
 	pkgdesc = A covergrid for the Music Player Daemon.
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://www.suruatoel.xyz/codes/mcg
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = mcg
 	makedepends = meson
 	makedepends = git
 	depends = python-gobject
+	depends = python-dateutil
 	depends = gtk3>=3.22
 	depends = gsettings-desktop-schemas
 	depends = desktop-file-utils
@@ -16,7 +17,7 @@ pkgbase = mcg
 	optdepends = mpd>=0.21
 	provides = mcg
 	conflicts = mcg
-	source = https://gitlab.com/coderkun/mcg/-/archive/v3.1/mcg-v3.1.tar.gz
-	sha256sums = bfe776f8e4a5b0a00165aa55047f357ee1d083ef3f117462cac25936a315f56a
+	source = https://gitlab.com/coderkun/mcg/-/archive/v3.2/mcg-v3.2.tar.gz
+	sha256sums = 9c32bb0276345aa69506e41adef0acd0a20ddc5b1f8d2540c128de27bfe556a4
 
 pkgname = mcg
