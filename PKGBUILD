@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=cctag
 pkgver=1.0.3
-pkgrel=8
+pkgrel=9
 pkgdesc="Detection of CCTag markers made up of concentric circles"
 arch=('x86_64')
 url="https://github.com/alicevision/CCTag"
