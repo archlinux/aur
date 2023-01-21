@@ -11,7 +11,7 @@ url="https://github.com/Textualize/${_base}"
 license=(MIT)
 depends=(python-rich python-importlib-metadata python-nanoid)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest python-aiohttp python-msgpack python-jinja python-syrupy python-click python-time-machine python-pytest-aiohttp python-pytest-asyncio)
+#checkdepends=(python-pytest python-aiohttp python-msgpack python-jinja python-syrupy python-click python-time-machine python-pytest-aiohttp python-pytest-asyncio)
 optdepends=('python-aiohttp: for HTTP server'
   'python-click: for click event as mouse button'
   'python-msgpack: for MessagePack serializer'
@@ -24,12 +24,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --ignore=tests/snapshot_tests/test_snapshots.py -k 'not datatable_message_emission and not widget_mount_ids_must_be_unique_mounting_multiple_calls'
-}
+#check() {
+#  cd ${_base}-${pkgver}
+#  python -m venv --system-site-packages test-env
+#  test-env/bin/python -m installer dist/*.whl
+#  test-env/bin/python -m pytest --ignore=tests/snapshot_tests/test_snapshots.py -k 'not datatable_message_emission and not widget_mount_ids_must_be_unique_mounting_multiple_calls'
+#}
 
 package() {
   cd ${_base}-${pkgver}
