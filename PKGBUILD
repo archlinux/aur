@@ -12,8 +12,6 @@ depends=()
 source=("https://github.com/Easonqsp/freebsdlib/archive/refs/tags/13.1.tar.gz")
 sha1sums=('SKIP')
 sha256sums=('SKIP')
-#validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
-
 prepare() {
 	echo pass
 }
