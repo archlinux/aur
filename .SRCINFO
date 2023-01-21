@@ -1,21 +1,20 @@
 pkgbase = ddclient
 	pkgdesc = Update dynamic DNS entries for accounts on many dynamic DNS services
-	pkgver = 3.9.1
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://github.com/ddclient/ddclient
 	arch = any
 	license = GPL2
+	makedepends = git
 	depends = perl-io-socket-inet6
 	depends = perl-io-socket-ssl
 	depends = perl-digest-sha1
 	depends = net-tools
-	depends = perl-data-validate-ip
 	optdepends = smtp-forwarder: email support requires sendmail binary
 	backup = etc/ddclient/ddclient.conf
-	source = https://github.com/ddclient/ddclient/archive/v3.9.1.tar.gz
-	source = ddclient.service
-	sha512sums = a8a4d6cb94e4239a7b7b4fc7d9ebef703cbd6c45fc3394b644694a053b5b8aa8d109410b5b8b3676a5f30b18474d24c7feb16c65c30b28bd7d941d8a214b1346
-	sha512sums = f2d1fe68fb6e358c15ca9bd2e2c4a8b26239607fa71ff2b9aa301a3f54d16c6858e81603e5c0638e89e3da85b7c77ebaca88d38882740a9a8a09e98b38e9b510
+	source = git+https://github.com/ddclient/ddclient.git?signed#tag=v3.10.0
+	validpgpkeys = 53B26AEDC08246715E15504B236B6291555E8401
+	sha512sums = SKIP
 
 pkgname = ddclient
 
