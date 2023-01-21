@@ -1,0 +1,12 @@
+pkgbase = fortuna
+	pkgdesc = An AI powered daily quote generator!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NotARoomba/Fortuna
+	arch = x86_64
+	license = GPL
+	makedepends = nodejs
+	depends = nodejs
+	depends = libnotify
+
+pkgname = fortuna
