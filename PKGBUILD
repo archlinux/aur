@@ -10,7 +10,7 @@ license=('GPL')
 depends=('kwindowsystem' 'qt5-declarative' 'qt5-graphicaleffects' 'qt5-quickcontrols2')
 makedepends=('git' 'extra-cmake-modules'  'qt5-tools')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "fishui-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
