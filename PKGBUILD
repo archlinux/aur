@@ -1,7 +1,7 @@
 # Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=bgfx-cmake-git
-pkgver=1.118.8374.52feec4
+pkgver=1.118.8415.401
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ sha256sums=('SKIP'
 
 pkgver() {
   # From bgfx.cpp source and we add the cmake commit sha:
-  # bgfx 1.104.7082.a7ac0aa
+  # bgfx 1.104.7082.400
   #      ^ ^^^ ^^^^ ^^^^^^^
-  #      | |   |    +------ bgfx.cmake sha (https://github.com/bkaradzic/bgfx.cmake / git rev-parse --short HEAD)
-  #      | |   +----------- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
-  #      | +--------------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
-  #      +----------------- Major revision (always 1)
+  #      | |   |    +------ bgfx.cmake commit number (https://github.com/bkaradzic/bgfx.cmake / git rev-parse --short HEAD)
+  #      | |   +----------- Commit number            (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
+  #      | +--------------- API version              (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
+  #      +----------------- Major revision           (always 1)
   cd "${srcdir}"
   api=`sed '4q;d' bgfx/scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
-  printf "1.%s.%s.%s" $api "$(git -C bgfx rev-list --count HEAD)" "$(git -C bgfx.cmake rev-parse --short HEAD)"
+  printf "1.%s.%s.%s" $api "$(git -C bgfx rev-list --count HEAD)" "$(git -C bgfx.cmake rev-list --count HEAD)"
 }
 
 prepare() {
@@ -47,13 +47,6 @@ prepare() {
   # [1] https://bugs.archlinux.org/task/76255
   # [2] https://bbs.archlinux.org/viewtopic.php?pid=2063104#p2063104
   git -c protocol.file.allow=always submodule update --init
-
-  # prepend bgfx to bin names to avoid naming conflicts
-  for BIN in geometryc geometryv shaderc texturec texturev
-  do
-    echo "" >> cmake/tools/$BIN.cmake
-    echo "set_target_properties( $BIN PROPERTIES OUTPUT_NAME bgfx-$BIN )" >> cmake/tools/$BIN.cmake
-  done
 }
 
 build() {
@@ -62,6 +55,7 @@ build() {
         -DBGFX_INSTALL_EXAMPLES=OFF \
         -DBGFX_CUSTOM_TARGETS=OFF \
         -DBGFX_LIBRARY_TYPE=SHARED \
+        -DBGFX_TOOLS_PREFIX=bgfx- \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build .
