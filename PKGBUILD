@@ -9,7 +9,7 @@ license=('GPL')
 depends=('piscesys-fishui-git' 'libpiscesys-git')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'git')
 provides=("$_pkgname")
-conflicts=("$_pkgname" "cutefish-screenlocker")
+conflicts=("$_pkgname" "cutefish-screenlocker-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
