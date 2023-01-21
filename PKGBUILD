@@ -9,7 +9,7 @@ license=('GPL')
 depends=()
 makedepends=('extra-cmake-modules'  'git')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "cutefish-icons-git")
 source=("git+$url.git")
 sha512sums=('SKIP')
 

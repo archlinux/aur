@@ -13,3 +13,19 @@ pkgbase = piscesys-icons-git
 	sha512sums = SKIP
 
 pkgname = piscesys-icons-git
+pkgbase = piscesys-icons-git
+	pkgdesc = System default icon theme of piscesys
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/icons
+	arch = any
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	provides = piscesys-icons
+	conflicts = piscesys-icons
+	conflicts = cutefish-icons-git
+	source = git+https://gitlab.com/piscesys/icons.git
+	sha512sums = SKIP
+
+pkgname = piscesys-icons-git
