@@ -32,6 +32,8 @@ prepare() {
 
 build() {
   local JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<$MAKEFLAGS)"
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pushd $_srcname/tools/build
   ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
@@ -57,7 +59,7 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
-    python=3.10 \
+    python=$python_version \
     cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
     cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
     linkflags="$LDFLAGS" \
@@ -110,11 +112,11 @@ package_boost-libs() {
   cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
 
   # https://github.com/boostorg/mpi/issues/112
-  install -d "$pkgdir"/usr/lib/python3.10/site-packages/boost
-  touch "$pkgdir"/usr/lib/python3.10/site-packages/boost/__init__.py
-  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"/usr/lib/python3.10/site-packages/boost
-  cp fakeinstall/lib/boost-python3.10/mpi.so \
-    "$pkgdir"/usr/lib/python3.10/site-packages/boost/mpi.so
+  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  install -d "$pkgdir"$site_packages/boost
+  touch "$pkgdir"$site_packages/boost/__init__.py
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
+  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost/mpi.so
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
