@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-ftgl
+	pkgdesc = OpenGL library to use arbitrary fonts (mingw-w64)
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/frankheckenbach/ftgl
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-cmake
+	makedepends = git
+	makedepends = ninja
+	depends = mingw-w64-crt
+	depends = mingw-w64-freetype2
+	options = !strip
+	options = !buildflags
+	options = !libtool
+	options = staticlibs
+	source = git+https://github.com/frankheckenbach/ftgl#commit=483639219095ad080538e07ceb5996de901d4e74
+	sha256sums = SKIP
+
+pkgname = mingw-w64-ftgl
+
