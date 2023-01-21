@@ -28,6 +28,7 @@ check() {
 
 package() {
 	cd freebsdlib-13.1
-	install -d $pkgdir/usr/$_target
-	cp -r * $pkgdir/usr/$_target
+	install -d $pkgdir/usr/$_target/
+	cp -r * $pkgdir/usr/$_target/
+	cp -r $pkgdir/usr/$_target/lib $pkgdir/usr/$_target/usr
 }
