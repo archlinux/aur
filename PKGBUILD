@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2221.ed958cac
+pkgver=r2302.3ebcd207
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -27,6 +27,9 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
+	echo "[profile.release]
+lto=true" >> Cargo.toml
+
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -48,6 +51,7 @@ build() {
 		--release \
 		-p alvr_server \
 		-p alvr_dashboard \
+		-p alvr_launcher \
 		-p alvr_vulkan_layer \
 		-p alvr_vrcompositor_wrapper
 
@@ -60,7 +64,7 @@ build() {
 package() {
 	cd "$srcdir/${_pkgname}"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm755 target/release/alvr_dashboard -t "$pkgdir/usr/bin/"
+	install -Dm755 target/release/{alvr_dashboard,alvr_launcher} -t "$pkgdir/usr/bin/"
 
 	# vrcompositor wrapper
 	install -Dm755 target/release/alvr_vrcompositor_wrapper "$pkgdir/usr/lib/alvr/vrcompositor-wrapper"
