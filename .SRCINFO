@@ -1,0 +1,26 @@
+pkgbase = piscesys-settings-git
+	pkgdesc = System Settings application for piscesys Desktop
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/settings
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = fontconfig
+	depends = freetype2
+	depends = icu
+	depends = kcoreaddons
+	depends = libpiscesys-git
+	depends = modemmanager-qt
+	depends = networkmanager-qt
+	provides = piscesys-settings
+	conflicts = piscesys-settings
+	conflicts = cutefish-settings-git
+	source = git+https://gitlab.com/piscesys/settings.git
+	sha512sums = SKIP
+
+pkgname = piscesys-settings-git
