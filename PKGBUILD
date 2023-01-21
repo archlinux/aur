@@ -2,7 +2,7 @@
 
 _plug=mvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=10.r64.b9218ff
+pkgver=11.r85.f3167b8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -11,23 +11,30 @@ license=('GPL')
 depends=('vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-bm3d-git'
          )
-makedepends=('git')
+makedepends=('git'
+             'python-pip'
+             'python-wheel'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/AmusementClub/mvsfunc.git")
+source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/mvsfunc.git")
 sha256sums=('SKIP')
-
-_site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
-  _ver="$(cat mvsfunc.py | grep -m1 MvsFuncVersion | grep -o "[[:digit:]]*")"
+  _ver="$(cat mvsfunc/_metadata.py | grep -m1 __version__ | grep -o "[[:digit:]]*")"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+#   echo "$(git describe --long --tags | tr - . | tr -d r)"
+}
+
+build() {
+  cd "${_plug}"
+  pip wheel --no-deps . -w dist
 }
 
 package() {
   cd "${_plug}"
-  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
