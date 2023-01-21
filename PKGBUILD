@@ -2,15 +2,15 @@
 
 pkgname=mindmaster-nativefier
 pkgver=1.0.0
-pkgrel=0
-pkgdesc="mindmaster desktop built with nativefier"
+pkgrel=2
+pkgdesc="mindmaster collaborative edition built with nativefier"
 arch=('x86_64')
-url="https://mm.edrawsoft.cn/app/create"
+url="https://mm.edrawsoft.cn/app"
 license=('custom')
 depends=('gtk3' 'libxss' 'nss')
 makedepends=('imagemagick' 'nodejs-nativefier' 'unzip')
 source=('mindmaster-nativefier.desktop')
-sha256sums=('9cbc51bb56ef55c6c0621bfd02b84269e7377254b01c8623b0aaae301bec49ba')
+sha256sums=('b6b56003d87aa0a8b4a40c7684c2494b3728dbda721f1d63367244a7be43912e')
 
 build() {
   nativefier \

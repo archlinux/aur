@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=mindmaster
-Name[zh_CN]=亿图脑图
+Name[zh_CN]=亿图脑图协同版
 Comment=mindmaster nativefier
 Exec=/opt/mindmaster-nativefier/mindmaster
 Icon=/opt/mindmaster-nativefier/resources/app/icon.png
