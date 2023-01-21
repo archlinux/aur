@@ -19,24 +19,3 @@ pkgbase = piscesys-fishui-git
 	sha512sums = SKIP
 
 pkgname = piscesys-fishui-git
-pkgbase = piscesys-fishui-git
-	pkgdesc = GUI library based on QQC2 for Piscesys applications
-	pkgver = 0.9
-	pkgrel = 1
-	url = https://gitlab.com/piscesys/fishui
-	arch = x86_64
-	license = GPL
-	makedepends = git
-	makedepends = extra-cmake-modules
-	makedepends = qt5-tools
-	depends = kwindowsystem
-	depends = qt5-declarative
-	depends = qt5-graphicaleffects
-	depends = qt5-quickcontrols2
-	provides = fishui
-	conflicts = fishui
-	conflicts = fishui-git
-	source = git+https://gitlab.com/piscesys/fishui.git
-	sha512sums = SKIP
-
-pkgname = piscesys-fishui-git
