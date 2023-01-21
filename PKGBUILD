@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
