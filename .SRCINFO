@@ -2,7 +2,7 @@ pkgbase = piscesys-filemanager-git
 	pkgdesc = piscesys File Manager, simple to use, beautiful, and retain the classic PC interactive design
 	pkgver = 0.9
 	pkgrel = 1
-	url = https://gitlab.com/piscesys/filemanager.git
+	url = https://gitlab.com/piscesys/filemanager
 	arch = x86_64
 	groups = piscesys-git
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = piscesys-filemanager-git
 	provides = piscesys-filemanager
 	conflicts = piscesys-filemanager
 	conflicts = cutefish-filemanager-git
-	source = git+https://gitlab.com/piscesys/filemanager.git.git
+	source = git+https://gitlab.com/piscesys/filemanager.git
 	sha512sums = SKIP
 
 pkgname = piscesys-filemanager-git
