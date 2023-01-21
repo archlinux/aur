@@ -1,7 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libgav1
-pkgver=0.16.3
+pkgver=0.18.0
+_abseil_ver=20220623.0
+_gtest_ver=1.12.1
 pkgrel=1
 pkgdesc='A main profile (0) and high profile (1) compliant AV1 decoder'
 arch=('x86_64')
@@ -9,8 +11,6 @@ url='https://chromium.googlesource.com/codecs/libgav1/'
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-_abseil_ver=20210324.0
-_gtest_ver=1.10.0
 source=("git+https://chromium.googlesource.com/codecs/libgav1#tag=v${pkgver}"
         "git+https://github.com/abseil/abseil-cpp.git#tag=${_abseil_ver}"
         "git+https://github.com/google/googletest.git#tag=release-${_gtest_ver}")
