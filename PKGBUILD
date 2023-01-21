@@ -1,4 +1,5 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgbase=vbam
@@ -6,6 +7,7 @@ pkgname=(
   vbam-sdl
   vbam-wx
 )
+_pkgname=visualboyadvance-m
 pkgver=2.1.5
 pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
@@ -34,39 +36,42 @@ makedepends=(
   wxwidgets-gtk3
   zip
 )
-_tag=a964f4a5c69ce30d124bd6dcf987bdedc82f3928
-source=(git+https://github.com/visualboyadvance-m/visualboyadvance-m.git?signed#tag=${_tag})
+_tag=a964f4a5c69ce30d124bd6dcf987bdedc82f3928 # git rev-parse v${pkgver}
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=${_tag}")
 b2sums=('SKIP')
 validpgpkeys=(A0C0E526E36FD2138C149D4D08AB596679D86240) # Rafael Kitover <rkitover@gmail.com>
 
 prepare() {
-  cd visualboyadvance-m
+  cd ${_pkgname}
   # Unbundle doctest (bundled one is not glibc 2.34 compatible)
   sed -e 's|${CMAKE_SOURCE_DIR}/third_party|/usr|' -i src/wx/tests/CMakeLists.txt
 }
 
-pkgver() {
-  cd visualboyadvance-m
-  git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
-}
+#pkgver() {
+#  cd ${_pkgname}
+#  git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
+#}
 
 build() {
-  cmake -S visualboyadvance-m -B build-sdl -G Ninja \
+  cmake -S ${_pkgname} -B build-sdl -G Ninja \
     -DCMAKE_BUILD_TYPE='' \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DENABLE_SDL=TRUE \
     -DENABLE_WX=FALSE \
-    -DENABLE_LINK=TRUE
+    -DENABLE_LINK=TRUE \
+    -Wno-dev
   cmake --build build-sdl
-  cmake -S visualboyadvance-m -B build-wx -G Ninja \
+
+  cmake -S ${_pkgname} -B build-wx -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=TRUE \
     -DENABLE_SDL=FALSE \
     -DENABLE_WX=TRUE \
     -DENABLE_FFMPEG=TRUE \
-    -DENABLE_LINK=TRUE
+    -DENABLE_LINK=TRUE \
+    -Wno-dev
   cmake --build build-wx
 }
 
