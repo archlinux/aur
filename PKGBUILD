@@ -1,7 +1,7 @@
 # Maintainer: lrobbins at silktown dot software
 pkgname=rigelengine-git
 pkgver=0.9.1.r4.g011976b3
-pkgrel=1
+pkgrel=2
 # Description taken from desktop file
 pkgdesc='A modern re-implementation of the classic DOS game Duke Nukem II'
 url='https://github.com/lethal-guitar/RigelEngine'
