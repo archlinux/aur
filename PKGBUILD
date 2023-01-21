@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Linnorm
-_pkgver=2.22.1
+_pkgver=2.22.2
 pkgname=r-${_pkgname,,}
-pkgver=2.22.1
+pkgver=2.22.2
 pkgrel=1
 pkgdesc='Linear model and normality based normalization and transformation method (Linnorm)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32522adda89c755c80de902ea28419ce87246ec29789bceaf07ae1167ddca799')
+sha256sums=('c5f2a60686d70d6f730a2d8d8ba301ccbf2b6bae88a0faa355b7a086bcdfda6a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
