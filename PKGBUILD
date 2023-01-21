@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=2023.1
+pkgver=2023.1+8.gcdc4e528f3
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
@@ -9,11 +9,11 @@ arch=('i686' 'x86_64')
 license=('custom')
 groups=('vulkan-devel')
 source=('git+https://github.com/KhronosGroup/SPIRV-Tools'
-        'git+https://github.com/KhronosGroup/SPIRV-Headers')
+)
 sha1sums=('SKIP'
-          'SKIP')
-depends=(gcc-libs spirv-headers)
-makedepends=('cmake' 'ninja' 'python' 'git')
+)
+depends=('gcc-libs' 'sh')
+makedepends=('cmake' 'ninja' 'python' 'git' 'spirv-headers-git')
 options=('staticlibs')
 conflicts=('spirv-tools')
 provides=('spirv-tools')
@@ -28,7 +28,7 @@ build() {
     -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DSPIRV-Headers_SOURCE_DIR="$srcdir/SPIRV-Headers" \
+    -D SPIRV-Headers_SOURCE_DIR=/usr/ \
     -DBUILD_SHARED_LIBS=ON \
     -DSPIRV_TOOLS_BUILD_STATIC=OFF \
     -DSPIRV_WERROR=OFF \
