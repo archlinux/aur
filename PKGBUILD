@@ -2,7 +2,7 @@
 _name=static-web-apps-cli
 _pkgname="azure-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Azure Static Web Apps CLI"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm')
 optdepends=('libsecret: for storing secrets')
 source=("${_pkgname}-${pkgver}.tgz::https://github.com/Azure/${_name}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz")
-b2sums=('cf1b998267c6939cbc17cb067ddf78cc73893aa876cc728065d220ef03b66f6ff5cc26f16184210e2d8db304ed2334466c34153bdcfbd7c24519b8cccb39dae9')
+b2sums=('9ca442aab67374495a79320c2f418c04225eae43c7a5aec18463e83760c45f6e03c79f1d5a8d4806d90802d1e299357689f45683125842015f3b1b78a0c797b9')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
