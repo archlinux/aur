@@ -1,0 +1,14 @@
+pkgbase = muro
+	pkgdesc = Wallpaper for X11/Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/dimus/muro
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = muro
+	conflicts = muro
+	source = https://codeberg.org/dimus/muro/archive/v0.1.0.tar.gz
+	sha256sums = f6f1cf98820df751f9f5fc0c41a1533dbca8f9cf1bbeae85e1725b92126d403a
+
+pkgname = muro
