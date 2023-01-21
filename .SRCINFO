@@ -1,0 +1,21 @@
+pkgbase = piscesys-statusbar-git
+	pkgdesc = Top status bar of piscesys
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/statusbar
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = libpiscesys-git
+	depends = libdbusmenu-qt5
+	depends = qt5-svg
+	provides = piscesys-statusbar
+	conflicts = piscesys-statusbar
+	conflicts = cutefish-statusbar-git
+	source = git+https://gitlab.com/piscesys/statusbar.git
+	sha512sums = SKIP
+
+pkgname = piscesys-statusbar-git
