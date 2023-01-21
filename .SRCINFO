@@ -1,0 +1,21 @@
+pkgbase = piscesys-launcher-git
+	pkgdesc = piscesys's full-screen application launcher
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://gitlab.com/piscesys/launcher
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = piscesys-fishui-git
+	depends = kwindowsystem
+	depends = libpiscesys-git
+	provides = piscesys-launcher
+	conflicts = piscesys-launcher
+	conflicts = deepin-kwin
+	conflicts = cutefish-launcher-git
+	source = git+https://gitlab.com/piscesys/launcher.git
+	sha512sums = SKIP
+
+pkgname = piscesys-launcher-git
