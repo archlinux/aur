@@ -10,8 +10,8 @@
 # Contributor: Luca Roccia <little_rock@users.sourceforge.net>
 
 pkgname=('boost' 'boost-libs')
-pkgver=1.80.0
-pkgrel=3
+pkgver=1.81.0
+pkgrel=1
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries"
 arch=('x86_64')
@@ -20,7 +20,7 @@ license=('custom')
 makedepends=('icu' 'python' 'python-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd')
 source=(https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2
         $pkgname-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch)
-sha256sums=('1e19565d82e43bc59209a168f5ac899d3ba471d55c7610c677d4ccf2c9c500c0'
+sha256sums=('71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
 
 prepare() {
@@ -106,7 +106,7 @@ package_boost-libs() {
     libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
     libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
     libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
-    libboost_wave.so libboost_wserialization.so)
+    libboost_url.so libboost_wave.so libboost_wserialization.so)
 
   install -dm755 "$pkgdir"/usr/lib
   cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
