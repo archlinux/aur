@@ -4,14 +4,14 @@ _repo=lennonwoo/zathura-solarized
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 
 pkgname=${_pkgname//_/-}-git
-pkgver=r3.d63c710
+pkgver=r4.14a3d95
 pkgrel=1
 pkgdesc="the solarized color theme for zathura"
 arch=(any)
 url=https://github.com/$_repo
-license=(unknown)
+license=(MIT)
 depends=(zathura)
-source=("git+$url#tag=d63c710065f666fc120d2be2a2bf589d545a538e")
+source=("git+$url#tag=14a3d95d568b3120bad3f691eae4667d16a37f5d")
 sha256sums=(SKIP)
 
 pkgver() {

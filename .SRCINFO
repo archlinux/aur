@@ -4,9 +4,9 @@ pkgbase = zathura-solarized-git
 	pkgrel = 1
 	url = https://github.com/lennonwoo/zathura-solarized
 	arch = any
-	license = unknown
+	license = MIT
 	depends = zathura
-	source = git+https://github.com/lennonwoo/zathura-solarized#tag=d63c710065f666fc120d2be2a2bf589d545a538e
+	source = git+https://github.com/lennonwoo/zathura-solarized#tag=14a3d95d568b3120bad3f691eae4667d16a37f5d
 	sha256sums = SKIP
 
 pkgname = zathura-solarized-git
