@@ -17,6 +17,7 @@ pkgver() {
 
 build() {
     arch-meson build "${_pkgname}"
+    meson compile -C build
 }
 
 package() {
