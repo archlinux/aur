@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstats
-_pkgver=4.6.2
+_pkgver=4.6.3
 pkgname=r-${_pkgname,,}
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 pkgdesc='Protein Significance Analysis in DDA, SRM and DIA for Label-free or Label-based Proteomics Experiments'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13e9d8125d21cda9cbe7e6b9e75a3ee7f160e1a022286e1320927dd098476667')
+sha256sums=('c383ad9f056631dd40cbe48aec8bb31e8fb220fc4f5cf138c841cce2e6aa3b7e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
