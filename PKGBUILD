@@ -3,7 +3,7 @@
 # Co-Maintainer: Joaquín Rufo Gutierrez <joaquinito2051@gmail.com>
 pkgname=jackett
 pkgver=0.20.2686
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
@@ -37,13 +37,13 @@ build() {
   esac
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  dotnet publish src/Jackett.Server -f net6.0 --self-contained -r linux-${_CARCH} -c Debug -o buid/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
+  dotnet publish src/Jackett.Server -f net6.0 --self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
 }
 
 package() {
   cd ${pkgname^}-${pkgver}
   install -d -m 755 "${pkgdir}/usr/lib/jackett/"
-  cp -dpr --no-preserve=ownership buid/* "${pkgdir}/usr/lib/jackett/"
+  cp -dpr --no-preserve=ownership build/* "${pkgdir}/usr/lib/jackett/"
 
   install -D -m 644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
   install -D -m 644 "${srcdir}/jackett.sysusers" "${pkgdir}/usr/lib/sysusers.d/jackett.conf"
