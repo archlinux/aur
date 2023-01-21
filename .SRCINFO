@@ -1,22 +1,24 @@
 pkgbase = openshot-git
 	pkgdesc = An open-source, non-linear video editor for Linux based on MLT framework (git version)
-	pkgver = 2.4.4.r601.g1a7ebc1f
+	pkgver = 3.0.0.r25.g369b68de
 	pkgrel = 1
 	url = https://www.openshot.org/
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = ffmpeg
-	depends = python-mlt
 	depends = python-pyqt5
-	depends = python-requests
-	depends = libopenshot-git
-	depends = libopenshot-audio-git
 	depends = python-pyzmq
+	depends = python-requests
 	depends = qt5-base
 	depends = qt5-svg
-	depends = qt5-webkit
+	depends = python-pyqt5-webengine
+	depends = libopenshot-git
+	depends = libopenshot-audio-git
 	optdepends = faac: for exporting audio using AAC
 	provides = openshot
 	conflicts = openshot
@@ -24,4 +26,3 @@ pkgbase = openshot-git
 	sha256sums = SKIP
 
 pkgname = openshot-git
-
