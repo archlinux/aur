@@ -2,7 +2,7 @@
 
 pkgname=php-legacy-symlinks
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Symlinks PHP legacy binaries and configuration without the "legacy" suffix'
 arch=('any')
 depends=('php-legacy')
@@ -12,6 +12,10 @@ conflicts=('php')
 package() {
   install -dm755 "$pkgdir/usr/bin/"
   cd "$pkgdir/usr/bin/"
+  ln -s php-legacy php
+
+  install -dm755 "$pkgdir/usr/lib/"
+  cd "$pkgdir/usr/lib/"
   ln -s php-legacy php
 
   install -dm755 "$pkgdir/etc/"
