@@ -2,12 +2,16 @@
 
 pkgname=muro
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpaper for bare X11/Wayland and tiling windows managers'
 arch=('x86_64')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')
 makedepends=('go')
+depends=(
+  'feh'
+  'xorg-xrandr'
+)
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/muro/archive/v0.1.0.tar.gz")
