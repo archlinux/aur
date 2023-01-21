@@ -14,6 +14,7 @@ pkgbase = piscesys-fishui-git
 	depends = qt5-quickcontrols2
 	provides = fishui
 	conflicts = fishui
+	conflicts = fishui-git
 	source = git+https://gitlab.com/piscesys/fishui.git
 	sha512sums = SKIP
 
