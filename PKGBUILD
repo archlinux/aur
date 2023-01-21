@@ -79,7 +79,7 @@ _brave_patchset="1"
 _brave_patchset_name="brave-$_brave_base_ver-patches-$_brave_patchset"
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
-        "chromium::git+https://github.com/chromium/chromium.git#tag=$_chromium_ver"
+        "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
