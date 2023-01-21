@@ -7,7 +7,6 @@ pkgdesc="A terminal emulator for piscesys"
 arch=('x86_64')
 url="https://gitlab.com/piscesys/terminal"
 license=('GPL')
-groups=('piscesys-git')
 depends=('piscesys-fishui-git' 'libpiscesys-git' 'qt5-svg')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'git')
 provides=("$_pkgname")
