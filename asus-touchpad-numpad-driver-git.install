@@ -1,17 +1,4 @@
 post_install() {
-    modprobe i2c-dev
-    echo "i2c-dev" | tee /etc/modules-load.d/i2c-dev.conf >/dev/null
-    systemctl enable --now asus_touchpad_numpad
-}
-
-pre_upgrade() {
-    systemctl disable --now asus_touchpad_numpad
-}
-
-post_upgrade() {
-    systemctl enable --now asus_touchpad_numpad
-}
-
-pre_remove() {
-    systemctl disable --now asus_touchpad_numpad
+	modprobe i2c-dev
+	echo "i2c-dev" | tee /etc/modules-load.d/i2c-dev.conf >/dev/null
 }
