@@ -1,0 +1,33 @@
+# Maintainer: Qian Yicheng <qsp2020@outlook.com>
+
+_target=x86_64-pc-freebsd13
+pkgname=freebsdlib
+pkgver=13.1
+pkgrel=1
+pkgdesc='FreeBSD headers and library'
+arch=(all)
+url='https://www.gnu.org/software/binutils/'
+license=(BSD)
+depends=()
+source=("https://github.com/Easonqsp/freebsdlib/archive/refs/tags/FreeBSD.tar.gz")
+sha1sums=('SKIP')
+sha256sums=('SKIP')
+#validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+
+prepare() {
+	echo pass
+}
+
+build() {
+	echo pass
+}
+
+check() {
+	echo pass
+}
+
+package() {
+	cd freebsdlib
+	install -d $pkgdir/usr/$_target
+	cp -r * $pkgdir/usr/$_target
+}
