@@ -2,7 +2,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-git-version-compare
-pkgver=1.004
+pkgver=1.005
 pkgrel=1
 pkgdesc="Functions to compare Git versions"
 _dist=Git-Version-Compare
@@ -13,8 +13,7 @@ depends=(perl)
 checkdepends=(perl-test-nowarnings)
 url="https://metacpan.org/release/$_dist"
 source=("https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz")
-md5sums=('45a69d9f9bd2c13c0679de857d45bb18')
-sha256sums=('63e8264ed351cb2371b47852a72366214164b5f3fad9dbd68309c7fc63d06491')
+sha256sums=('357fded9e55f95eb2f516a18f5dc1b4720a9deef9e2c0e76bcd5fe4aeb9b3cbb')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
