@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genefilter
-_pkgver=1.80.2
+_pkgver=1.80.3
 pkgname=r-${_pkgname,,}
-pkgver=1.80.2
+pkgver=1.80.3
 pkgrel=1
 pkgdesc='genefilter: methods for filtering genes from high-throughput experiments'
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('988d630d607713491ecda184597dfab9e0dbb57c770049c2ae71e68a21f84538')
+sha256sums=('09995bc8d29311f1083c3f27abbff2e055778666dd9d1941031563d73141f710')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
