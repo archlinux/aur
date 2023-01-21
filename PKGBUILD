@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=slalom
-_pkgver=1.20.1
+_pkgver=1.20.2
 pkgname=r-${_pkgname,,}
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc='Factorial Latent Variable Modeling of Single-Cell RNA-Seq Data'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8af9fe9de85db0d89af5989704e272f346911c1567bae02f1ddf2c24fd27b5c1')
+sha256sums=('dd0acb921ebfa96d168ee5abc8d38ce2071a5d4526c70c793def4f83e8439241')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
