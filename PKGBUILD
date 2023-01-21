@@ -1,7 +1,7 @@
 # Maintainer: Alexander Rowsell <amrowsell followed by frozenelectronics dot canadian tld>
 pkgname=ueforth-git
 _pkgname=ueforth
-pkgver=r598.75d14d6
+pkgver=r673.6ed9c21
 pkgrel=1
 pkgdesc="An EForth inspired version of Forth bootstrapped from a minimalist C kernel"
 arch=('x86_64')
@@ -22,6 +22,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   sed -i -e '1s/nodejs/node/' tools/source_to_string.js
+  sed -i -e '96s/nodejs/node/' Makefile
 }
 
 build() {
