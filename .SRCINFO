@@ -1,13 +1,11 @@
 pkgbase = lib32-graphene
 	pkgdesc = A thin layer of graphic data types (32-bit)
 	pkgver = 1.10.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ebassi/graphene
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = meson
 	depends = lib32-glib2
 	depends = graphene
