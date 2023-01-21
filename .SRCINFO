@@ -1,6 +1,6 @@
 pkgbase = r-stan
 	pkgdesc = The Genomic STate ANnotation Package
-	pkgver = 2.26.1
+	pkgver = 2.26.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/STAN
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-stan
 	optdepends = r-biocstyle
 	optdepends = r-gplots
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/STAN_2.26.1.tar.gz
-	sha256sums = 479eff4ac3422d62ecbfb0f785ee837db02a85e530c0ef2ef0910158e02f9ee1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/STAN_2.26.2.tar.gz
+	sha256sums = 7b72748cb5e42f99f96eb34314230c3f047324d592680fb6c9762f15c582a435
 
 pkgname = r-stan
