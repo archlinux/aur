@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pcre2
+
+[Action]
+Description = Run semodule -B when pcre2 upgrades
+Depends = policycoreutils
+When = PostTransaction
+Exec = /usr/bin/semodule -B
+

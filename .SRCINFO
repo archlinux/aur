@@ -1,0 +1,14 @@
+pkgbase = pcre-semodule-pacman-hook
+	pkgdesc = Run semodule -B when pcre2 updates.
+	pkgver = 1.0
+	pkgrel = 1
+	install = pcre-semodule-pacman-hook.install
+	arch = any
+	license = GPL
+	depends = policycoreutils
+	depends = pcre2
+	backup = etc/pacman.d/hooks/pcre-semodule.hook
+	source = pcre-semodule.hook
+	sha512sums = ddbc3e8c99b67ef300dfa193584efe5aa15e44beda3bba3224cdf3ecffa5b9074b8721b2a232c15f15b47996e683ff933445be1541eb69e279a495b2e724f15f
+
+pkgname = pcre-semodule-pacman-hook
