@@ -2,7 +2,7 @@
 
 _plug=removedirt
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v0.9.3.0.g46007dc
+pkgver=0.9.3.0.g46007dc
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
