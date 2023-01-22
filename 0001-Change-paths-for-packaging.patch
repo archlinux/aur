@@ -1,7 +1,7 @@
-From ed7d219ca7653c7f7a5a45396ddf7f74142857d7 Mon Sep 17 00:00:00 2001
+From 752a6bb63fc534f14fd94f83501859eefa43ce82 Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Thu, 14 Jan 2021 23:57:02 +0100
-Subject: [PATCH 1/2] Change paths for packaging
+Subject: [PATCH] Change paths for packaging
 
 ---
  youplay.desktop | 4 ++--
@@ -9,7 +9,7 @@ Subject: [PATCH 1/2] Change paths for packaging
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/youplay.desktop b/youplay.desktop
-index 4be045e..1e85b1e 100755
+index 8efc202..c65425b 100755
 --- a/youplay.desktop
 +++ b/youplay.desktop
 @@ -2,11 +2,11 @@
@@ -23,8 +23,8 @@ index 4be045e..1e85b1e 100755
  StartupNotify=false
 -Icon=org.codeberg.ralfhersel.youplay
 +Icon=/usr/share/youplay/youplay.svg
- Categories=GNOME;GTK;Utility;Internet;Music
- Keywords=Multimedia;Music;Internet;Youtube
+ Categories=GNOME;GTK;Utility;Music
+ Keywords=Multimedia;Music;Youtube
  Hidden=false
 diff --git a/youplay.sh b/youplay.sh
 index 6d2fb87..571f78b 100755
@@ -37,5 +37,5 @@ index 6d2fb87..571f78b 100755
 +cd '/usr/share/youplay/'
 +python3 youplay.py $*
 -- 
-2.39.0
+2.39.1
 

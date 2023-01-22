@@ -1,6 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=youplay
-pkgver=0.41
+pkgver=0.42
 pkgrel=1
 pkgdesc="Search, download and play music from YouTube."
 arch=(any)
@@ -8,17 +8,14 @@ url="https://codeberg.org/ralfhersel/youplay"
 license=('GPL3')
 depends=(mpv ffmpeg python-mpv yt-dlp python-gobject gtk4 libadwaita)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-	"0001-Change-paths-for-packaging.patch"
-	"0002-Rename-Internet-catergorie-because-it-does-not-exist.patch")
-md5sums=('6311fa2a1e718878f8a3ba28311a5738'
-         '258d7a1e944d2289d5a3ffc859f4740f'
-         '5b194ba6796bc971741a58535969ef98')
+	"0001-Change-paths-for-packaging.patch")
+md5sums=('2dcad97c6981ee298e5219aef1804958'
+         '1a63e326ced2e58d501fdf1ba877e1b8')
 
 prepare() {
 	cd "${pkgname}"	
 
 	patch -p1 -i ${srcdir}/0001-Change-paths-for-packaging.patch
-	patch -p1 -i ${srcdir}/0002-Rename-Internet-catergorie-because-it-does-not-exist.patch
 }
 
 package() {
