@@ -27,7 +27,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
-options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
+options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
@@ -61,7 +61,7 @@ source=(${source[@]}
 sha256sums=(${sha256sums[@]}
             '2e07a6833ca7531ee5f64c24e31069192256bad5abbe1091ca12802ba2ad3a75'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
-            'fb8b991b5c639e795bbcb0bd4b47c05d4e8907bf59969e359526671c604329fc'
+            '865c7fc9f8db3c29db58cbc470f13aca6a057a156d018f31eeb20d9a5853e628'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -202,7 +202,7 @@ build() {
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'

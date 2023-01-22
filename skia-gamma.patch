@@ -7,7 +7,7 @@ index b2c8b79..7e2ee53 100644
    if (is_linux || is_chromeos) {
      defines += [
 -      "SK_GAMMA_EXPONENT=1.2",
-+      "SK_GAMMA_EXPONENT=2.2",
++      "SK_GAMMA_EXPONENT=1.8",
        "SK_GAMMA_CONTRAST=0.2",
      ]
    } else if (is_android) {
