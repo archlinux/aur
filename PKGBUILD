@@ -4,7 +4,7 @@
 pkgname=fetch
 _gituser=jrmarino
 _gitname=fetch-freebsd
-pkgver=12.0.9
+pkgver=12.0.10
 pkgrel=1
 pkgdesc="FreeBSD fetch for Linux"
 arch=('x86_64')
@@ -13,17 +13,18 @@ license=('BSD-3-Clause')
 depends=('libressl')
 makedepends=('cmake')
 source=("v$pkgver.zip::https://github.com/$_gituser/$_gitname/archive/v$pkgver.zip")
-sha256sums=('f6628fcf8887a9e836f3365ed94cbbcf5008a75c0127b2ab096dcf5b07ce74c9')
+sha256sums=('3e63a357741079629a71485ea8e4e36c30000dd0ee65df853bfc582c1e7cbe39')
 
 build() {
 	cd "$_gitname-$pkgver"
-	cmake -B build -S . -DCMAKE_BUILD_TYPE='Release' -DCMAKE_INSTALL_PREFIX="/usr" -Wno-dev -DCMAKE_C_FLAGS="-O3" -DUSE_SYSTEM_SSL=ON -DFETCH_LIBRARY=ON
+	export CFLAGS="-O3 -DNDEBUG=1"
+	cmake -B build -S . -DCMAKE_BUILD_TYPE='Release' -DCMAKE_C_FLAGS="-O3 -DNDEBUG=1" -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_SYSTEM_SSL=ON -DFETCH_LIBRARY=ON
 	make -C build
 }
 
 package() {
 	cd "$_gitname-$pkgver"
-	make DESTDIR="$pkgdir" -C build install
+	make -C build DESTDIR="$pkgdir" install
 	# Required per https://wiki.archlinux.org/index.php/PKGBUILD#license
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
