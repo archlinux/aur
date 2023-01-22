@@ -1,4 +1,5 @@
-# Maintainer: Connor Nuutinen <cnuutinen@outlook.com>
+# Maintainer: Adam Hellberg <adam.hellberg@sharparam.com>
+# Contributor: Connor Nuutinen <cnuutinen@outlook.com>
 # Contributor: David Santiago <demanuel@ymail.com>
 # Contributor: jokersus <jokersus.cava@gmail.com>
 
