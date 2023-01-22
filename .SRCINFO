@@ -9,11 +9,11 @@ pkgbase = megapixels-ppp-git
 	makedepends = meson
 	depends = gtk4
 	depends = zbar
-	depends = feedbackd
+	depends = feedbackd-git
 	provides = megapixels
 	conflicts = megapixels
 	replaces = megapixels
-	source = megapixels-ppp::git+https://github.com/kgmt0/megapixels.git
+	source = megapixels-ppp-git::git+https://github.com/kgmt0/megapixels.git
 	md5sums = SKIP
 
 pkgname = megapixels-ppp-git

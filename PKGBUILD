@@ -13,7 +13,7 @@ optdepends=()
 provides=('megapixels')
 conflicts=('megapixels')
 replaces=('megapixels')
-source=(git+https://github.com/kgmt0/megapixels.git)
+source=(megapixels-ppp-git::git+https://github.com/kgmt0/megapixels.git)
 md5sums=('SKIP')
 
 pkgver() {
