@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-passman
 	pkgdesc = Passman is a full featured password manager
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/passman
 	arch = any
 	license = GPL3

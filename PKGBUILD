@@ -5,7 +5,7 @@
 _name=passman
 pkgname=nextcloud-app-passman
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Passman is a full featured password manager"
 arch=('any')
 url="https://github.com/nextcloud/passman"
@@ -19,7 +19,7 @@ sha512sums=('a740fa06a7684b2cef003ef07ad72a7b91a550c4088762af36da2c2b81b33e4c1ca
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
