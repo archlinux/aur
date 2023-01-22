@@ -29,7 +29,7 @@ sha256sums=('c5605e488bb113452b0bd6e6a7420ea5be8ffd7807cc06cbb6eb6277937c7da8'
             '00e0c42ce23f34dd3086f550471fd858e00b3e7e6f5c9011d7397d64102cda3c')
 
 package() {
-    cd "$srcdir"
+    cd "${srcdir}"
 
     install -d -m 755 "${pkgdir}/usr/lib/jackett/"
     cp -dpr --no-preserve=ownership "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
