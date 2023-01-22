@@ -2,7 +2,7 @@
 
 _pkgbase=luau
 pkgname=luau-git
-pkgver=0.555.4e6ae326
+pkgver=0.560.4a2e8013
 pkgrel=1
 
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
