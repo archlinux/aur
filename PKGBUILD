@@ -1,33 +1,41 @@
-# Maintainer: Schrottfresse <schrottfresse@gmx.de>
-pkgname=libspatialindex-git
-pkgver=r581.8956c14
-pkgrel=1
-pkgdesc="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API "
-arch=('i686' 'x86_64')
-url="http://libspatialindex.github.com/"
-license=('GPL')
-depends=('gcc-libs')
-makedepends=('git' 'gtest')
-provides=('libspatialindex')
-conflicts=('libspatialindex')
-source=('git+https://github.com/libspatialindex/libspatialindex.git')
-md5sums=('SKIP')
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Schrottfresse <schrottfresse@gmx.de>
 
-_gitname=libspatialindex
+pkgname=libspatialindex-git
+_pkg="${pkgname%-git}"
+pkgver=1.9.3.r30.g3be6758
+pkgrel=1
+pkgdesc="C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API"
+arch=('x86_64')
+url='https://github.com/libspatialindex/libspatialindex'
+license=('MIT')
+depends=('gcc-libs')
+makedepends=('cmake' 'git' 'python')
+provides=("$_pkg" "$_pkg.so" "${_pkg}_c.so")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	git -C "$_pkg" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-  cd $_gitname
-  sed -i -e 's+#!/usr/bin/env python$+#!/usr/bin/env python2+' ./test/gtest/gtest-*/scripts/*.py
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
-  make
+	cmake \
+		-B build \
+		-S "$_pkg" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_TESTING=ON \
+		-Wno-dev
+	cmake --build build
+}
+
+check() {
+	ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dvm644 "$_pkg/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
