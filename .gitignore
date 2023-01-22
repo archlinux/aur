@@ -1,0 +1,5 @@
+python-pyyaml-include-*.pkg.tar*
+pyyaml-include-*.tar.gz
+pkg/
+src/
+*.log
