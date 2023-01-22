@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-picocms
 	pkgdesc = Integrate Pico CMS and let your users manage their own websites
 	pkgver = 1.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.nextcloud.com/apps/cms_pico
 	arch = any
 	license = AGPL3

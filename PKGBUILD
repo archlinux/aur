@@ -4,7 +4,7 @@
 _name=cms_pico
 pkgname=nextcloud-app-picocms
 pkgver=1.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate Pico CMS and let your users manage their own websites "
 arch=('any')
 url="https://apps.nextcloud.com/apps/cms_pico"
@@ -18,7 +18,7 @@ sha512sums=('f163b7899e5f53222261bf41bbbdade54e3d45c6edfbdcfb3b4b264b18f3d3b2242
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
