@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('ungit')
 source=(
 	"https://github.com/FredrikNoren/ungit/releases/download/v${pkgver}/ungit-${pkgver}-linux-x64.zip"
-	'https://raw.githubusercontent.com/FredrikNoren/ungit/master/LICENSE.md'
+	"https://raw.githubusercontent.com/FredrikNoren/ungit/v${pkgver}/LICENSE.md"
 	'ungit.desktop'
 )
 md5sums=(
