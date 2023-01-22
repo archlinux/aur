@@ -38,6 +38,7 @@ EOF
 }
 
 pre_upgrade() {
+    systemctl is-active cellframe-node.service && systemctl stop cellframe-node.service
 	post_install
 }
 
