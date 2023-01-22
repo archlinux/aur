@@ -1,0 +1,14 @@
+pkgbase = zarchive
+	pkgdesc = Library for creating and reading zstd-compressed file archives (.zar)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Exzap/ZArchive
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = zstd
+	provides = zarchive
+	source = zarchive-0.1.2.tar.gz::https://github.com/Exzap/ZArchive/archive/refs/tags/v0.1.2.tar.gz
+	sha512sums = b9666e8e86e5162b4ee641905a288088311d5cd1af510b2fbf22eba722ad2d8ca43a081b14c0106743807eff256bac9a0cacbdeb06e8ccad0e8d5b9ed8fa886e
+
+pkgname = zarchive
