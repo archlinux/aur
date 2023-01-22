@@ -1,9 +1,9 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=muro
-pkgver=0.1.0
-pkgrel=3
-pkgdesc='Wallpaper for bare X11/Wayland and tiling windows managers'
+pkgver=0.1.1
+pkgrel=1
+pkgdesc='Wallpaper for bare X11 and tiling windows managers'
 arch=('x86_64')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')
@@ -14,8 +14,8 @@ depends=(
 )
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://codeberg.org/dimus/muro/archive/v0.1.0.tar.gz")
-sha256sums=('f6f1cf98820df751f9f5fc0c41a1533dbca8f9cf1bbeae85e1725b92126d403a')
+source=("https://codeberg.org/dimus/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('b0a319dfecaa34e564b17afa4e84fb6cc45571f580dffe0440b3a670d81a3e6f')
 
 prepare() {
   cd "$pkgname"
