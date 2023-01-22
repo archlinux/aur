@@ -24,10 +24,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p "${_plug}/build"
-}
-
 build() {
   cd "${_plug}"
 
