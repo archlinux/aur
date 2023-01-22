@@ -10,7 +10,7 @@ license=('BSD')
 depends=('libx11')
 makedepends=('git' 'go')
 options=('!strip' '!emptydirs')
-source=('git+https://git.torproject.org/pluggable-transports/snowflake.git')
+source=('git+https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git')
 sha256sums=('SKIP')
 
 pkgver() {
