@@ -1,18 +1,17 @@
 pkgbase = wasm-micro-runtime-git
 	pkgdesc = Standalone WebAssembly (WASM) runtime with small footprint
-	pkgver = 1.0.0
+	pkgver = 1.1.2.r32.gcadf9d0a
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasm-micro-runtime
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
-	depends = gcc-libs
-	depends = lld
+	makedepends = git
+	depends = glibc
+	provides = libiwasm.so
 	provides = wasm-micro-runtime
 	conflicts = wasm-micro-runtime
-	source = git+https://github.com/bytecodealliance/wasm-micro-runtime
+	source = wasm-micro-runtime::git+https://github.com/bytecodealliance/wasm-micro-runtime
 	sha256sums = SKIP
 
 pkgname = wasm-micro-runtime-git
