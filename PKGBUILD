@@ -2,20 +2,22 @@
 
 _plug=mvtools2
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=2.7.44.27.g76c676e
+pkgver=2.7.45.40.gd8bdff7
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://github.com/pinterf/mvtools'
+url='https://forum.doom9.org/showthread.php?t=173356'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/mvtools.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -23,21 +25,26 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  cd "${_plug}"
+  rm -fr {Sources,DePan,DePanEstimate}/include
+
+  sed 's|"include/avs/config.h"|<avs/config.h>|g' \
+    -i Sources/SADFunctions16.h
 }
 
 build() {
-  cd build
 
-  cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
 
-  make
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/Documentation/avisynth-new.css" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/avisynth-new.css"
   install -Dm644 "${_plug}/Documentation/avisynth.css" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/avisynth.css"

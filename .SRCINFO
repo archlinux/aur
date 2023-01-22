@@ -1,17 +1,18 @@
 pkgbase = avisynth-plugin-mvtools2-git
 	pkgdesc = Plugin for Avisynth: mvtools2 (GIT version)
-	pkgver = 2.7.44.27.g76c676e
+	pkgver = 2.7.45.40.gd8bdff7
 	pkgrel = 1
-	url = https://github.com/pinterf/mvtools
+	url = https://forum.doom9.org/showthread.php?t=173356
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-mvtools2
 	conflicts = avisynth-plugin-mvtools2
+	options = debug
 	source = mvtools2::git+https://github.com/pinterf/mvtools.git
 	sha256sums = SKIP
 
 pkgname = avisynth-plugin-mvtools2-git
-
