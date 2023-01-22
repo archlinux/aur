@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.1.r517.g48ad2278c7
+pkgver=0.35.0.r127.g25d02e88d3
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -133,6 +133,7 @@ makedepends=(
              'ladspa'
              'llvm'
              'mesa'
+             'meson'
              'nasm'
              'opencl-headers'
              'python-docutils'
@@ -143,33 +144,34 @@ optdepends=(
             'cuda: mpv ffmpeg nvcc and libnpp support'
             'davs2: Additional libdavs2 support for ffmpeg'
             'intel-media-sdk: Intel QuickSync support for ffmpeg'
-            'libklvanc-git: Additional libklvanc support for ffmpeg'
+            'libklvanc: Additional libklvanc support for ffmpeg'
             'libopenmpt: Additional libopenmpt support for ffmpeg'
             'libsixel: Allow mpv to implement sixel as a output device'
-            'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'openh264: Additional libopenh264 support for ffmpeg'
-            'rockchip-mpp: Additional rkmpp support for ffmpeg'
             'shine: Additional libshine support for ffmpeg'
             'spirv-cross: Additional spirv support for mpv'
             'tensorflow: mpv ffmpeg DNN module backend'
             'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
             'xavs: Additional libxavs support for ffmpeg'
             'xavs2: Additional libxavs2 support for ffmpeg'
+
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             )
 provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
-options=('!emptydirs')
+options=('!emptydirs' 'lto')
 source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
         'mpv::git+https://github.com/mpv-player/mpv.git'
         'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
         'libass::git+https://github.com/libass/libass.git'
+        'libplacebo::git+https://code.videolan.org/videolan/libplacebo.git'
         'LICENSE'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -181,10 +183,6 @@ backup=('etc/mpv/encoding-profiles.conf')
 # if you don't need opt dependency checked, defined this
 # for example
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -si
-
-if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
-  makedepends+=(clang lld)
-fi
 
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libdavs2.so ]; then
@@ -198,9 +196,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libopenh264.so ]; then
     depends+=('openh264')
-  fi
-  if [ -f /usr/lib/librockchip_mpp.so ]; then
-    depends+=('rockchip-mpp')
   fi
   if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
     depends+=('spirv-cross')
@@ -230,14 +225,17 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
 fi
 
+export CCACHE_DISABLE=1
+export CCACHE_DIR=/tmp/build/ccache
+
 pkgver() {
   cd mpv
-  
+
   local _version="$(git tag | sort --version-sort --reverse | head -n1 | sed 's/^v//')"
   local _revision="$(git rev-list v"${_version}"..HEAD --count)"
   local _shorthash="$(git rev-parse --short HEAD)"
   printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
-  
+
   # git describe --tags --long | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
@@ -246,15 +244,7 @@ prepare() {
   ln -sf -t . "../mpv"
   ln -sf -t . "../ffmpeg"
   ln -sf -t . "../libass"
-
-  if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
-    unset CC CXX
-    export CC=clang
-    export CXX=clang++
-    export LDFLAGS="$LDFLAGS -fuse-ld=lld"
-  fi
-  
-  sed -i -E 's|^scripts/libplacebo.*||g' "${srcdir}/mpv-build/build"
+  ln -sf -t . "../libplacebo"
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
@@ -298,7 +288,7 @@ prepare() {
     '--enable-libiec61883'
     '--enable-libilbc'
     '--enable-libjack'
-    # '--enable-libjxl'
+    '--enable-libjxl'
     '--enable-libkvazaar'
     '--disable-liblensfun'
     '--enable-libmfx'
@@ -363,92 +353,124 @@ prepare() {
     '--enable-xlib'
     '--enable-zlib'
   )
+
   _mpv_options=(
-    '--prefix=/usr'
-    '--confdir=/etc/mpv'
-    '--htmldir=/usr/share/doc/mpv/html'
-    '--disable-build-date'
-    '--disable-debug-build'
-    
-    '--enable-manpage-build'
-    '--disable-html-build'
-    '--disable-pdf-build'
-    
-    '--lua=lua52'
-    '--enable-libmpv-shared'
-    '--enable-cdda'
-    '--enable-cplugins'
-    '--enable-dvbin'
-    '--enable-dvdnav'
-    # '--enable-jpegxl'
-    '--enable-lcms2'
-    '--enable-libarchive'
-    '--enable-libavdevice'
-    '--enable-libplacebo'
-    '--enable-lua'
-    '--enable-manpage-build'
-    '--enable-plain-gl'
-    '--enable-pulse'
-    '--enable-rubberband'
-    '--enable-sdl2'
-    '--enable-shaderc'
-    '--enable-uchardet'
-    '--enable-zimg'
+    '-Dprefix=/usr'
+    '-Dlibexecdir=lib'
+    '-Dsbindir=bin'
+    '-Dbuildtype=plain'
+    '-Db_lto=true'
+    '-Db_pie=true'
+    '-Db_staticpic=true'
+    '-Ddefault_library=shared'
+    '-Dc_link_args="-Wl,-Bsymbolic"'
 
-    
-    '--enable-iconv'
-    '--enable-javascript'
-    '--enable-zlib'
-    '--enable-libbluray'
+    '-Dcplayer=true'
+    '-Dlibmpv=true'
+    '-Dbuild-date=false'
 
-    '--disable-oss-audio'
-    '--enable-pipewire'
-    '--enable-sndio'
-    '--enable-pulse'
-    '--enable-jack'
-    '--enable-openal'
-    '--disable-opensles'
-    '--enable-alsa'
+    # misc features
+    '-Dcdda=enabled'
+    '-Dcplugins=enabled'
+    '-Ddvbin=enabled'
+    '-Ddvdnav=enabled'
+    '-Diconv=enabled'
+    '-Djavascript=enabled'
+    '-Dlcms2=enabled'
+    '-Dlibarchive=enabled'
+    '-Dlibavdevice=enabled'
+    '-Dlibbluray=enabled'
+    '-Dlua=lua52'
+    '-Drubberband=enabled'
+    '-Dsdl2=enabled'
+    # '-Dsdl2-gamepad=enabled'
+    '-Duchardet=enabled'
+    '-Duwp=disabled'
+    '-Dvapoursynth=enabled'
+    '-Dvector=auto'
+    '-Dwin32-internal-pthreads=disabled'
+    '-Dzimg=enabled'
+    '-Dzlib=enabled'
 
-    '--enable-sdl2-video'
-    '--disable-cocoa'
-    '--enable-drm'
-    '--enable-gbm'
-    '--enable-wayland'
-    '--enable-x11'
-    '--enable-xv'
-    '--enable-gl'
-    '--enable-plain-gl'
-    '--disable-gl-cocoa'
-    '--enable-gl-wayland'
-    '--enable-egl'
-    '--enable-egl-drm'
-    '--enable-egl-x11'
-    '--enable-vaapi'
-    '--enable-vaapi-drm'
-    '--enable-vaapi-wayland'
-    '--enable-vaapi-x11'
-    '--enable-vaapi-x-egl'
-    '--enable-vdpau'
-    '--enable-vulkan'
+    # audio output features
+    '-Dalsa=enabled'
+    '-Daudiounit=disabled'
+    '-Dcoreaudio=disabled'
+    '-Djack=enabled'
+    '-Dopenal=enabled'
+    '-Dopensles=disabled'
+    '-Doss-audio=disabled'
+    '-Dpipewire=enabled'
+    '-Dpulse=enabled'
+    '-Dsdl2-audio=enabled'
+    '-Dsndio=enabled'
+    '-Dwasapi=disabled'
 
-    '--enable-caca'
-    '--enable-jpeg'
+    # video output features
+    '-Dcaca=enabled'
+    '-Dcocoa=disabled'
+    '-Dd3d11=disabled'
+    '-Ddirect3d=disabled'
+    '-Ddrm=enabled'
+    '-Degl=enabled'
+    '-Degl-android=disabled'
+    '-Degl-angle=disabled'
+    '-Degl-angle-lib=disabled'
+    '-Degl-angle-win32=disabled'
+    '-Degl-drm=enabled'
+    '-Degl-wayland=enabled'
+    '-Degl-x11=enabled'
+    '-Dgbm=enabled'
+    '-Dgl=enabled'
+    '-Dgl-cocoa=disabled'
+    '-Dgl-dxinterop=disabled'
+    '-Dgl-win32=disabled'
+    '-Djpeg=enabled'
+    '-Dlibplacebo=enabled'
+    '-Drpi=disabled'
+    '-Dsdl2-video=enabled'
+    '-Dshaderc=enabled'
+    '-Dplain-gl=enabled'
+    '-Dvdpau=enabled'
+    # '-Dvdpau-gl-x11=enabled'
+    '-Dvaapi=enabled'
+    '-Dvaapi-drm=enabled'
+    '-Dvaapi-wayland=enabled'
+    '-Dvaapi-x11=enabled'
+    '-Dvaapi-x-egl=enabled'
+    '-Dvulkan=enabled'
+    '-Dwayland=enabled'
+    '-Dx11=enabled'
+    '-Dxv=enabled'
+
+    # hwaccel features
+    '-Dandroid-media-ndk=disabled'
+    '-Dd3d-hwaccel=disabled'
+    '-Dd3d9-hwaccel=disabled'
+    '-Dgl-dxinterop-d3d9=disabled'
+    '-Dios-gl=disabled'
+    '-Drpi-mmal=auto'
+    '-Dvideotoolbox-gl=auto'
+
+    # manpages
+    '-Dmanpage-build=enabled'
+    '-Dhtml-build=disabled'
+    '-Dpdf-build=disabled'
   )
+
   _libass_options=(
     '--enable-harfbuzz'
     '--enable-fontconfig'
   )
 
-  local _legacy_mpv_options=(
-    '--enable-gl-x11'
-    '--enable-vdpau-gl-x11'
+  _libplacebo_options=(
+    '-Dvulkan=enabled'
+    '-Dglslang=enabled'
+    '-Dshaderc=enabled'
+    '-Dlcms=enabled'
+    '-Dd3d11=disabled'
   )
 
-  if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
-    _ffmpeg_options+=('--cc=clang')
-    _ffmpeg_options+=('--cxx=clang++')
-  fi
 
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
@@ -465,17 +487,14 @@ prepare() {
     if [ -f /usr/lib/libopenh264.so ]; then
       _ffmpeg_options+=('--enable-libopenh264')
     fi
-    if [ -f /usr/lib/librockchip_mpp.so ]; then
-      _ffmpeg_options+=('--enable-rkmpp')
-    fi
     if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
-      _mpv_options+=('--enable-spirv-cross')
+      _mpv_options+=('-Dspirv-cross=enabled')
     fi
     if [ -f /usr/lib/libshine.so ]; then
       _ffmpeg_options+=('--enable-libshine')
     fi
     if [ -f /usr/lib/libsixel.so ]; then
-      _mpv_options+=('--enable-sixel')
+      _mpv_options+=('-Dsixel=enabled')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
       _ffmpeg_options+=('--enable-libtensorflow')
@@ -498,19 +517,19 @@ prepare() {
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
       _ffmpeg_options+=('--nvccflags=-O2')
-      _mpv_options+=('--enable-cuda-hwaccel')
-      _mpv_options+=('--enable-cuda-interop')
+      _mpv_options+=('-Dcuda-hwaccel=enabled')
+      _mpv_options+=('-Dcuda-interop=enabled')
     fi
   fi
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options)
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options)
   (IFS=$'\n'; echo "${_libass_options[*]}" > libass_options)
+  (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options)
 
-  cd mpv
+  sed -i 's|-Dprefer_static=true||g' "${srcdir}/mpv-build/scripts/mpv-config"
+  sed -i 's|-Dbuildtype=release||g' "${srcdir}/mpv-build/scripts/mpv-config"
 
-  ./bootstrap.py
-  
 }
 
 build() {
@@ -518,7 +537,6 @@ build() {
   if [ -d /opt/cuda ]; then
     sed -i 's|scripts/mpv-config|sed \-i "s\|-lavfilter\|-L/opt/cuda/targets/x86_64-linux/lib/ -lavfilter\|" build_libs/lib/pkgconfig/libavfilter.pc\nscripts/mpv-config|' "${srcdir}/mpv-build/build"
   fi
-  export LDFLAGS="${LDFLAGS-} $(pkg-config --libs fontconfig harfbuzz fribidi)"
   ./build
 }
 
