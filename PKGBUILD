@@ -34,7 +34,7 @@ sha256sums_armv7h=('0c567abb9bdc4d3ec17daaaa14bd8aa4f7aa50c79df3cd1a38515d7560b8
 
 
 package() {
-    cd "$srcdir"
+    cd "${srcdir}"
 
     install -d -m 755 "${pkgdir}/usr/lib/jackett/"
     cp -dpr --no-preserve=ownership "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
