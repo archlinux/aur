@@ -25,24 +25,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   rm -fr average/Average/{avs*,avi*}
 }
 
 build() {
-  cd build
 
-  CXXFLAGS=" $(pkg-config --cflags avisynth)" \
-  cmake "../${_plug}" \
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
+
+  cmake -S "${_plug}" -B build \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
 
