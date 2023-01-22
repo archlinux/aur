@@ -11,12 +11,7 @@ pkgbase = camilladsp
 	makedepends = rust
 	depends = alsa-lib
 	depends = openssl
-	backup = srv/http/data/camilladsp/configs/camilladsp.yml
 	source = https://github.com/HEnquist/camilladsp/archive/refs/tags/v1.0.3.tar.gz
-	source = camilladsp.service
-	source = camilladsp.yml
 	sha256sums = 6b2c239390024f5f5dfebd2c8a8089acbebc81b6addfe3af68153064e5e36612
-	sha256sums = 993f05f04e1627b1739046e3c59d880deec1d4849525fa0e633dda5493923b48
-	sha256sums = ebc1207ffd8ae8339b2c22939f61d027485b286f4d402afca0a8a9930d5ea46f
 
 pkgname = camilladsp
