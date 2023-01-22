@@ -1,15 +1,10 @@
-#Settings here will take effect for all games run in this Proton version.
+#Settings here will take effect for all games run with this Proton version.
 
 user_settings = {
     ###### Proton GE flags ######
 
     #Disables DX12.
 #    "PROTON_NO_D3D12": "1",
-
-    #Allows Async to be used with DXVK.
-    #This can help with stutter in some games, however it is recommended not to be used with games that have sensitive anti-cheats.
-    #Use at your own risk.
-#    "DXVK_ASYNC": "1",
 
     #Disable AMD FidelityFX Super Resolution (FSR), as it is enabled by default. FSR only works in vulkan games (dxvk and vkd3d-proton included).
 #    "WINE_FULLSCREEN_FSR": "0",
