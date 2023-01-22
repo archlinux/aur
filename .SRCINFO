@@ -1,0 +1,12 @@
+pkgbase = importenv
+	pkgdesc = Launching an executable file with environment variables from a specific process id
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/importenv
+	arch = x86_64
+	provides = importenv
+	conflicts = importenv
+	source = importenv::https://github.com/VHSgunzo/importenv/releases/download/v0.0.4/importenv
+	sha256sums = e43c60bf1c620abf858304628ec01f005af1727515f20c1b8b74b80fbb31e89e
+
+pkgname = importenv
