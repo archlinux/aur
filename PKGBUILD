@@ -1,10 +1,10 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=solana-testnet
-pkgver=1.14.11
+pkgver=1.14.13
 _pkgname=solana
 _tokenver=2.2.0
-_perflibsver=0.19.3
+_perflibsver=0.19.4
 _rustver=1.60.0
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain. Testnet release."
@@ -23,14 +23,14 @@ source=("cargo-build-bpf"
 	"$pkgname.tmpfiles"
 	"$pkgname-$pkgver.tar.gz::https://github.com/solana-labs/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "spl-token-cli-$_tokenver.tar.gz::https://github.com/solana-labs/solana-program-library/archive/refs/tags/token-cli-v$_tokenver.tar.gz")
-source_x86_64=("perf-libs-$_perflibsver.tar.gz::https://github.com/solana-labs/solana-perf-libs/releases/download/v$_perflibsver/solana-perf.tgz")
+source_x86_64=("perf-libs-$_perflibsver.tar.gz::https://github.com/solana-labs/solana-perf-libs/archive/refs/tags/v$_perflibsver.tar.gz")
 sha256sums=('94bdd2014eea655a3576a0c67e2a56db33cb957636ca72186711be75615c1cf5'
             '7a44418a55cc182df964c4b82200369002f8147e3e77918e2166ae39783d5495'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             '70cd710d4037210af9ea27ebcfe1be4c36992bad2a2fe816b7c371e352aecaed'
-            '59e30e4f34658d355f154d6c1c2b0fb72b19cd35bf3ada52417554df73f3549e'
+            'b05033f1755c18f03bb21b412149f6e615702bf4713a99b6a90daab78ae9730f'
             '19d0023a2db28c448bd738d5b7bcb34bb8d591e26477b6efe3339a4b4a94fcc3')
-sha256sums_x86_64=('5850dc8ba63017cdb0c97357cc0e26e60f445abc1ef3c95a61b88e59afae71a4')
+sha256sums_x86_64=('d616f89316d401d3d93dd23a5304957cc62b16d93f1e010426e3715418e0f9a6')
 noextract=("$pkgname-$pkgver.tar.gz"
 	   "perf-libs-$_perflibsver.tar.gz")
 
