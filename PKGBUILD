@@ -25,21 +25,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  rm -fr "${_plug}/FluxSmooth/"{avs*,avi*}
 }
 
 build() {
-  cd build
 
-  cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
 
-  make
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/FluxSmooth/documentation/readme.html" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/readme.html"
 }
