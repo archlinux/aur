@@ -10,15 +10,16 @@ pkgdesc="Standalone Flash player and thumbnailer for the GNOME desktop"
 arch=('i686' 'x86_64')
 url="http://swfdec.freedesktop.org"
 license=('LGPL')
-depends=('gstreamer0.10-ffmpeg' 'libmad' 'swfdec')
-makedepends=('intltool' 'gconf')
+depends=('libmad' 'swfdec')
+makedepends=('intltool')
 # AUR doesn't like ${pkgver%.*} or other bashish things in the $source, just hardcode 2.30
-source=(https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2 accept_8_or_9.patch)
+source=(https://ftp.gnome.org/pub/GNOME/sources/${pkgname}/2.30/${pkgname}-${pkgver}.tar.bz2 accept_8_or_9.patch no_gconf.patch)
 options=('!libtool' '!emptydirs')
 
 build() {
     cd "$srcdir"/${pkgname}-${pkgver}
-    patch -p0 <../accept_8_or_9.patch
+    patch -Np1 -i ../accept_8_or_9.patch
+    patch -Np1 -i ../no_gconf.patch
     autoconf
 
     ./configure --prefix=/usr --sysconfdir=/etc --disable-schemas-install
@@ -29,4 +30,7 @@ package() {
     cd "$srcdir"/${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 }
-md5sums=('28a72e9c2ad79f33e4cf83bbd54fa124' '777a7ac9d98ea4c092dd181f22ca52bc')
+
+sha256sums=('e684a2ae44ff52b925796734813c32fa222d4aba0aa85fd77276e99a12317b88'
+            '176c83f41870107c3d16a60f5e09eae3b1bb811ed8c4fc1376654969df437420'
+            '2026b021edabfe1a6622fc5670ca43a91063a4d3887bcaaf2b09d5250ce9f102')

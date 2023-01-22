@@ -1,5 +1,5 @@
---- configure.ac.orig	2013-06-05 21:39:10.000000000 -0700
-+++ configure.ac	2013-06-05 21:51:44.000000000 -0700
+--- swfdec-gnome-2.30.1.orig/configure.ac.orig	2013-06-05 21:39:10.000000000 -0700
++++ swfdec-gnome-2.30.1/configure.ac	2013-06-05 21:51:44.000000000 -0700
 @@ -51,7 +51,16 @@
  
  dnl Check dependencies

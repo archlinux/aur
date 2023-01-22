@@ -7,16 +7,15 @@ pkgbase = swfdec-gnome
 	arch = x86_64
 	license = LGPL
 	makedepends = intltool
-	makedepends = gconf
-	depends = gstreamer0.10-ffmpeg
 	depends = libmad
 	depends = swfdec
 	options = !libtool
 	options = !emptydirs
 	source = https://ftp.gnome.org/pub/GNOME/sources/swfdec-gnome/2.30/swfdec-gnome-2.30.1.tar.bz2
 	source = accept_8_or_9.patch
-	md5sums = 28a72e9c2ad79f33e4cf83bbd54fa124
-	md5sums = 777a7ac9d98ea4c092dd181f22ca52bc
+	source = no_gconf.patch
+	sha256sums = e684a2ae44ff52b925796734813c32fa222d4aba0aa85fd77276e99a12317b88
+	sha256sums = 176c83f41870107c3d16a60f5e09eae3b1bb811ed8c4fc1376654969df437420
+	sha256sums = 2026b021edabfe1a6622fc5670ca43a91063a4d3887bcaaf2b09d5250ce9f102
 
 pkgname = swfdec-gnome
-
