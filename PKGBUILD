@@ -18,34 +18,45 @@ pkgver() {
 }
 
 pkgver=1.6.0.r27.gd36cc0b42
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 _commondeps=(
-  'libxml2'
+  'bzip2'
+  'fribidi'
+  'gcc-libs'
+  'jansson'
+  'lame'
   'libass'
+  'libjpeg-turbo'
+  'libogg'
+  'libtheora'
+  'libva'
   'libvorbis'
+  'libvpx'
+  'libxml2'
+  'numactl'
   'opus'
   'speex'
-  'libtheora'
-  'lame'
   'x264'
-  'jansson'
-  'libvpx'
-  'libva'
-  'numactl'
-  'bzip2'
-  'gcc-libs'
-  'zlib'
   'xz'
-  'libjpeg-turbo'
+  'zlib'
 )
 _guideps=(
+  'at-spi2-core'
+  'cairo'
+  'fontconfig'
+  'freetype2'
+  'gdk-pixbuf2'
+  'glib2'
   'gst-plugins-base'
+  'gst-plugins-base-libs'
+  'gstreamer'
   'gtk3'
-  'librsvg'
+  'harfbuzz'
   'libgudev'
+  'pango'
 )
 makedepends=(
   'intltool'
