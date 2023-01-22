@@ -8,14 +8,16 @@ pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/AviSynth-bifrost'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Asd-g/AviSynth-bifrost.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -29,9 +31,10 @@ prepare() {
 build() {
   cd "${_plug}/build"
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)" cmake .. \
-   -DCMAKE_BUILD_TYPE=Release \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)" \
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
 }

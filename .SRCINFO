@@ -7,9 +7,11 @@ pkgbase = avisynth-plugin-bifrost-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-bifrost
 	conflicts = avisynth-plugin-bifrost
+	options = debug
 	source = bifrost::git+https://github.com/Asd-g/AviSynth-bifrost.git
 	sha256sums = SKIP
 
