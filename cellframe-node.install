@@ -38,13 +38,13 @@ EOF
 }
 
 pre_upgrade() {
-    systemctl is-active cellframe-node.service && systemctl stop cellframe-node.service
+    systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
 	post_install
 }
 
 pre_remove() {
-    systemctl stop cellframe-node.service
-    systemctl disable cellframe-node.service
+    systemctl is-active --quiet cellframe-node.service && systemctl stop cellframe-node.service
+    systemctl is-enabled --quiet cellframe-node.service && systemctl disable cellframe-node.service
     systemctl daemon-reload
 }
 
