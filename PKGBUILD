@@ -1,7 +1,7 @@
 # Contributor: derfenix <derfenix@gmail.com>
 
 pkgname=neochat-git
-pkgver=r2734.31fed836
+pkgver=r2758.31fed836
 pkgrel=1
 pkgdesc="A client for matrix, the decentralized communication protocol"
 arch=('i686' 'x86_64')
