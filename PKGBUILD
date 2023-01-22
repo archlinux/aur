@@ -28,25 +28,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   rm -fr "${_plug}/src/include"
 }
 
 build() {
-  cd build
 
   CFLAGS+=" $(pkg-config --cflags avisynth)"
 
-  cmake "../${_plug}" \
+  cmake -S "${_plug}" -B build \
    -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/docs/README.md" "${pkgdir}/usr/share/doc/avistnth/plugins/${_plug}/README.md"
 }
