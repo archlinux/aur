@@ -10,7 +10,7 @@ url=https://github.com/any1/wayvnc
 license=(custom:ISC)
 depends=(
   glibc
-  libaml.so
+  aml
   libglvnd
   libdrm
   neatvnc-git
