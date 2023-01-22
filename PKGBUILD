@@ -2,8 +2,8 @@
 # Contributor: Talebian <talebian@sovietunion.xyz>
 
 pkgname=bottles-git
-pkgver=50.1.r7.g81354eef
-pkgrel=2
+pkgver=50.1.r23.g6954b8ad
+pkgrel=1
 epoch=2
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
@@ -29,6 +29,7 @@ depends=(
   python-gobject
   python-markdown
   python-orjson
+  python-pathvalidate
   python-pycurl
   python-requests
   python-steamgriddb
