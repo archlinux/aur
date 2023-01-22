@@ -1,59 +1,103 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
-# Maintainer: Hermann Mayer <hermann.mayer92@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
+# Contributor: Hermann Mayer <hermann.mayer92@gmail.com>
 
-_pkgname=psmoveapi
-pkgname=${_pkgname}-git
-pkgver=4.0.4.r7.ge64a766
+pkgbase=psmoveapi-git
+pkgname=('psmoveapi-git'
+         'python-psmoveapi-git'
+          )
+pkgver=4.0.12.162.g5067d19
 pkgrel=1
-pkgdesc="Playstation Move Motion Controller API"
-arch=(i686 x86_64)
-url="http://thp.io/2010/psmove/"
+pkgdesc='Playstation Move Motion Controller API (GIT version)'
+arch=('x86_64')
+url='http://thp.io/2010/psmove'
 license=('BSD')
-depends=('udev' 'bluez-libs' 'v4l-utils' 'opencv' 'jdk7-openjdk'
-         'python2' 'mono' 'swig' 'freeglut' 'libusb')
-makedepends=('cmake')
-source=("${_pkgname}::git+https://github.com/thp/psmoveapi.git"
-        'fix-opencv-headers.patch'
-        'add-libv4l2-module.patch')
-sha1sums=('SKIP'
-          '383b842942af8f5911d23b4950fe4ef4addbaf67'
-          'f81b484bced325b076ea550b47f2bb145f709a45')
+makedepends=('git'
+             'cmake'
+             'python-sphinx'
+             'udev'
+             'bluez-libs'
+             'libusb-compat'
+             )
+source=('git+https://github.com/thp/psmoveapi.git'
+        'git+https://github.com/thp/hidapi.git'
+        'git+https://github.com/inspirit/PS3EYEDriver.git'
+        'git+https://github.com/libusb/libusb.git'
+        'add-libv4l2-module.patch'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '271eaa3f1f5c50045873f1583ebc38eb6c9451440a7c98de5b75731058901480'
+            )
+options=('debug')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd psmoveapi
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
-  git submodule init
-  git submodule update
-
-  # Add the missing OpenCV includes
-  patch -p1 -i "${srcdir}/fix-opencv-headers.patch"
+  cd psmoveapi
+  git config submodule.external/hidapi.url "${srcdir}/hidapi"
+  git config submodule.external/PS3EYEDriver.url "${srcdir}/PS3EYEDriver"
+  git config submodule.external/libusb-1.0.url "${srcdir}/libusb"
+  git -c protocol.file.allow=always submodule update --init \
+    external/hidapi \
+    external/PS3EYEDriver \
+    external/libusb-1.0
 
   # Add the missing cmake libv4l2 linkage
   patch -p1 -i "${srcdir}/add-libv4l2-module.patch"
 
-  JAVA_HOME=/usr/lib/jvm/default cmake . \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DPSMOVEAPI_LIB_DEST=lib \
-    -DPSMOVE_BUILD_EXAMPLES=OFF \
-    -DPSMOVE_BUILD_OPENGL_EXAMPLES=OFF \
-    -DPSMOVE_BUILD_TESTS=OFF
+  mkdir -p docs/_static
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  make
+  cmake -B build -S psmoveapi \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DPSMOVEAPI_LIB_DEST=lib \
+    -DPSMOVE_BUILD_EXAMPLES=ON \
+    -DPSMOVE_BUILD_TESTS=OFF \
+    -DPSMOVE_BUILD_TRACKER=ON
+
+  cmake --build build
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir" install
-  install -m755 -d "${pkgdir}"/usr/lib/python3.6/site-packages/
-  install -D -m644 _psmove.so "${pkgdir}"/usr/lib/python3.6/site-packages/
-  install -D -m644 psmove.py "${pkgdir}"/usr/lib/python3.6/site-packages/
-  install -D -m644 psmove_config.h "${pkgdir}"/usr/include/psmoveapi/
-  install -D -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+package_psmoveapi-git() {
+  provides=('psmoveapi')
+  conflicts=('psmoveapi')
+  depends=('udev'
+           'bluez-libs'
+           'libusb-compat'
+         )
+
+  DESTDIR="${pkgdir}" cmake --install build
+
+  (cd psmoveapi/docs; make BUILDDIR="${pkgdir}/usr/share/doc/${pkgbase}" html)
+
+  mkdir -p "${pkgdir}/usr/share/"{doc,licenses}"/${pkgbase}"
+  mv "${pkgdir}/usr/share/psmoveapi/README.md" "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
+  mv "${pkgdir}/usr/share/psmoveapi/COPYING" "${pkgdir}/usr/share/licenses/${pkgbase}/COPYING"
+  rm -fr "${pkgdir}/usr/share/psmoveapi"
+}
+
+package_python-psmoveapi-git() {
+  pkgdesc='Python bindings for Playstation Move Motion Controller API (GIT version)'
+  provides=('python-psmoveapi')
+  conflicts=('python-psmoveapi')
+  depends=("psmoveapi-git=${pkgver}"
+           'python'
+           )
+
+  _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
+  install -Dm644 psmoveapi/bindings/python/psmoveapi.py "${pkgdir}${_site_packages}/psmoveapi.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/psmoveapi.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/psmoveapi.py"
+
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/usr/share/licenses/${pkgbase}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

@@ -1,24 +1,13 @@
-diff --git a/examples/c/distance_calibration.c b/examples/c/distance_calibration.c
-index 14f8189..3c209c5 100644
---- a/examples/c/distance_calibration.c
-+++ b/examples/c/distance_calibration.c
-@@ -34,6 +34,7 @@
- 
- #include "opencv2/core/core_c.h"
- #include "opencv2/highgui/highgui_c.h"
-+#include "opencv2/imgcodecs/imgcodecs_c.h"
- 
- #include "psmove.h"
- #include "psmove_tracker.h"
-diff --git a/src/tracker/camera_control_private.h b/src/tracker/camera_control_private.h
-index a4842b1..86aa8b7 100644
---- a/src/tracker/camera_control_private.h
-+++ b/src/tracker/camera_control_private.h
-@@ -33,6 +33,7 @@
- #include "opencv2/core/core_c.h"
- #include "opencv2/highgui/highgui_c.h"
- #include "opencv2/imgproc/imgproc_c.h"
-+#include "opencv2/videoio/videoio_c.h"
- 
- #if defined(WIN32)
- #    include <windows.h>
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6e45cae..081c00a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -91,5 +91,9 @@ list(APPEND PSMOVEAPI_REQUIRED_LIBS m)
+     include_directories(${UDEV_INCLUDE_DIRS})
+     list(APPEND PSMOVEAPI_REQUIRED_LIBS ${UDEV_LIBRARIES})
+
++    pkg_check_modules(V4L2 REQUIRED libv4l2)
++    include_directories(${V4L2_INCLUDE_DIRS})
++    list(APPEND PSMOVEAPI_REQUIRED_LIBS ${V4L2_LIBRARIES})
++
+     pkg_check_modules(BLUEZ REQUIRED bluez>=5)
