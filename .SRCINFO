@@ -7,9 +7,11 @@ pkgbase = avisynth-plugin-combolution3d-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-combolution3d
 	conflicts = avisynth-plugin-combolution3d
+	options = debug
 	source = combolution3d::git+https://github.com/pinterf/Convolution3D.git
 	sha256sums = SKIP
 
