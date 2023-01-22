@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.37.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -12,7 +12,7 @@ makedepends=(
   'go'
   'jq'
   'nodejs'
-  'yarn'
+  'pnpm'
 )
 conflicts=(
   'authelia-bin'
@@ -34,8 +34,8 @@ build() {
   DATE=$(date +"%a, %d %b %Y %R:%S %z")
   XOPTIONS="-X 'github.com/authelia/authelia/v4/internal/utils.BuildBranch=v${pkgver}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildTag=${TAG}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildCommit=${COMMIT}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildDate=${DATE}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildState=${STATE}' -X 'github.com/authelia/authelia/v4/internal/utils.BuildNumber=AUR'"
 
-  yarn install --frozen-lockfile --ignore-scripts
-  yarn build
+  pnpm install --frozen-lockfile --ignore-scripts
+  pnpm build
   cd ..
   cp -R api internal/server/public_html/
   go build -ldflags "-w ${XOPTIONS}" -trimpath -o authelia cmd/authelia/*.go
