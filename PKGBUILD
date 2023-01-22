@@ -1,9 +1,10 @@
+# Maintainer: darkelectron <darkelectron(dot)aur(at)tutanota.com>
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=privacybadger
 pkgname=firefox-extension-${_pkgname}
-pkgver=2021.11.23
+pkgver=2022.9.27
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 arch=('any')
@@ -14,9 +15,9 @@ makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('0da1790364cec51c930267198997a08351148cc2dd6ec68cc619e1cab25a7c8c'
+sha256sums=('22abba1db90f172da2d5724dc40f0ff808af02d7b2beec56bf776592f344f87e'
             'SKIP')
-b2sums=('884bda856342d36c181d77cd3b7a62bfd262c9b40c83d25acfb6784454664e88c2d8b609c1aabeacbbc3470a239d8cacc98f46e548fd9656f47f8867a4522245'
+b2sums=('1c4446fed5eeb2fe963e5e47c72ce8b9af766b9c0e3686bbcc1875fec2c5d6bd0e04ecde3fc1ad580e680db77b2000214624fc4e2b1aca6874497bb9a0501a82'
         'SKIP')
 validpgpkeys=('88F8662241B0C16C16E3B5A7950FC3999D80F309') # Alexei <alexei@eff.org>
 
