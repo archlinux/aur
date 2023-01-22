@@ -1,13 +1,13 @@
 # Maintainer: Sergey Mezentsev <thebits@yandex.ru>
 pkgname=ydb
-pkgver=1.9.2
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Yandex Database CLI"
 license=('unknown')
 arch=("x86_64")
 url="https://cloud.yandex.com/en/docs/ydb/quickstart/examples-ydb-cli"
 source=("$pkgname-$pkgver"::"https://storage.yandexcloud.net/yandexcloud-ydb/release/${pkgver}/linux/amd64/ydb")
-sha256sums=('d972a56471e6c691a08b8e94b410671e1d48b11e446ab8e8dc7c7ffeaeb654d6')
+sha256sums=('8e2540507beb17353b6318815eb0ca5bc8daf61e1b60790d72a4804c1d431dca')
 
 package() {
   cd "${srcdir}"
