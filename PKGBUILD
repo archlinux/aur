@@ -11,7 +11,7 @@ source=("git+https://github.com/alexkdeveloper/relaxator")
 url="https://github.com/alexkdeveloper/relaxator"
 
 pkgver=1.0.7.r4.g928d2dc
-pkgrel=1
+pkgrel=2
 
 depends=("gtk4" "libadwaita")
 makedepends=("meson" "ninja" "git")
@@ -32,6 +32,7 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"/build
-  install -Dm755 com.github.alexkdeveloper.relaxator "${pkgdir}/usr/bin/relaxator"
+  cd "$_pkgname"
+  install -Dm755 build/com.github.alexkdeveloper.relaxator "${pkgdir}/usr/bin/relaxator"
+  install -Dm755 LICENSE "${pkgdir}/usr/share/licenses/relaxator/LICENSE"
 }
