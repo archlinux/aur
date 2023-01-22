@@ -30,5 +30,6 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 
   # It's only present when tests are enabled, so adding -f
-  rm -rf "$pkgdir"/usr/lib/python3.10/site-packages/tests
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rf "$pkgdir"/$site_packages/tests
 }
