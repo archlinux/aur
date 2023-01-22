@@ -25,10 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  rm -fr AddGrainC/{avs,avisynth.h}
-
-  sed 's|"avisynth.h"|<avisynth.h>|g' -i AddGrainC/AddGrain.cpp
+  rm -fr "${_plug}/AddGrainC/"{avs*,avi*}
 }
 
 build() {
