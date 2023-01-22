@@ -1,6 +1,6 @@
 pkgbase = grandorgue-git
 	pkgdesc = Virtual Pipe Organ Software
-	pkgver = 3.7.0.1.r0.gf42eabea
+	pkgver = 3.9.5.0.r15.g35287b7b
 	pkgrel = 1
 	url = https://github.com/GrandOrgue/grandorgue
 	arch = i686
