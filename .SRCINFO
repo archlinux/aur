@@ -1,0 +1,18 @@
+pkgbase = textshot
+	pkgdesc = Python tool for grabbing text via screenshot
+	pkgver = 0.1.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-pyqt5
+	depends = python-pyqt5-sip
+	depends = python-py-notifier
+	depends = python-pyperclip
+	depends = python-pytesseract
+	source = https://files.pythonhosted.org/packages/source/t/textshot/textshot-0.1.1.tar.gz
+	sha256sums = 325badc530c504da744b686184cbdc12a8a5690676fd67a894f8d593c8e4fb34
+
+pkgname = textshot
