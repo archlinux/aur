@@ -1,20 +1,33 @@
 post_install(){
  cat << INFO
 
-Shinobi is free for personal use, read the following if you plan to use it
-for commercial purpose: https://hub.shinobi.video/articles/view/QDD2cqvbTekzhar
+Shinobi is free for personal use, read the following if you plan to use it for commercial purpose: 
 
-Before using Shinobi you need to create a mariadb user and database.
-Then you need to import the structure into the database, e.g. with
+    https://hub.shinobi.video/articles/view/QDD2cqvbTekzhar
 
-    sudo mysql DATABASE < /usr/share/shinobi/sql/framework.sql
+Before using Shinobi you need to create a database with either mariadb or postgresql, and a dedicate database user for shinobi.
+Then you can import the required database structure for mariadb with:
 
-Once you have granted your user full access to the new database, configure the files under "/etc/shinobi" accordingly.
-You can change your super admin password in /etc/shinobi/super.json with
+    sudo mariadb -u root -p <<QUERY
+CREATE DATABASE IF NOT EXISTS `ccio`;
+CREATE USER 'majesticflame'@'127.0.0.1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON ccio.* TO 'majesticflame'@'127.0.0.1';
+FLUSH PRIVILEGES;
+QUERY
 
-    echo -n PASSWORD | md5sum
+or for postgresql with:
 
-Once you have done all of the above, you can start the required services with
+    sudo su - postgres
+    psql -c "create database shinobi"
+    createuser -p shinobi
+    createdb --owner shinobi --encoding='utf-8' shinobi
+
+You need to configure the files under "/etc/shinobi" accordingly.
+You can change your super admin password in /etc/shinobi/super.json with a new one generated with:
+
+    printf "PASSWORD" | md5sum
+
+Once you have done all of the above, you can start the required services with:
 
     sudo systemctl start shinobi.target
 

@@ -1,15 +1,18 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="shinobi-git"
-pkgver=r2106.a2faa40
+pkgver=r3116.07584db3
 pkgrel=1
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
 license=("custom") # not free for commercial use
 arch=("any")
 provides=("shinobi")
-depends=("ffmpeg" "mariadb" "nodejs")
+depends=("ffmpeg" "nodejs")
 makedepends=("npm" "git")
+optdepents=("mariadb: database"
+            "postgresql: database"
+           )
 source=("git+https://gitlab.com/Shinobi-Systems/Shinobi.git"
         "shinobi-camera.service"
         "shinobi-cron.service"
@@ -24,7 +27,7 @@ sha256sums=('SKIP'
             '676111c7502ed43671ac5a4451ee0f89913de1c4b4f1e2120cd5c4b89e842757'
             'e7c849bfcf8619a093ec75467cf5e44b34cd3621fa0d639bfacf4c88e0bad258'
             'a0213eb276dfd468ed835cccceece75da92141716afa4c2426e20a06f64b5625'
-            '45c64bdaf8e7c99f14a8467fc3c996fefdaab8c100c9f28f03054c248f62a7d3'
+            'a328e61ddb909cc0216569ed08ee5f4e35ce770da53995ab7d6413479ae8e106'
             'b6f2093025736770ed18141eee36b2cd2507142310bb258bf6365c4740c9aae6')
 backup=("etc/shinobi/conf.json" "etc/shinobi/super.json")
 install="shinobi.install"
@@ -32,15 +35,9 @@ options=("!strip")
 
 pkgver(){
  cd "Shinobi"
- printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare(){
- cd "Shinobi"
- # avoid hardcode database name
- sed -i "sql/framework.sql" \
-     -e 's|CREATE DATABASE|-- CREATE DATABASE|' \
-     -e 's|USE `ccio`;|-- USE `ccio`|'
+ # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'                       # -> fatal: No annotated tags can describe '07584db326ba8077f448a8383cc677469a769cbf'.
+ # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'                # -> furrykitten.3.r534.g07584db3
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" # ->               r3116.07584db3
 }
 
 package(){
@@ -48,6 +45,7 @@ package(){
  cd "Shinobi"
  # program files
  npm install --user root
+ npm install --user root pg
  install -d "$pkgdir/usr/share/shinobi"
  cp -r * "$pkgdir/usr/share/shinobi"
  # configuration files
@@ -65,5 +63,6 @@ package(){
  # custom license
  install -D -m 644 "LICENSE.md" "$pkgdir/usr/share/licenses/shinobi/LICENSE"
  # version.json is used by the web server
+ # https://gitlab.com/Shinobi-Systems/Shinobi/-/issues/23
  echo '{"Product" : "Shinobi Professional (Pro)" , "Branch" : "master" , "Version" : "'"$(git rev-parse HEAD)"'" , "Date" : "'"$(date)"'" , "Repository" : "https://gitlab.com/Shinobi-Systems/Shinobi"}' > "$pkgdir/usr/share/shinobi/version.json"
 }
