@@ -5,7 +5,7 @@
 
 pkgname=swfdec-gnome
 pkgver=2.30.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone Flash player and thumbnailer for the GNOME desktop"
 arch=('i686' 'x86_64')
 url="http://swfdec.freedesktop.org"
