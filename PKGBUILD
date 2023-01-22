@@ -2,8 +2,8 @@
 
 _pkgname=mosdns
 pkgname=${_pkgname}-bin-arm
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="一个 DNS 转发器"
 arch=('aarch64' 'armv7h')
 url="https://github.com/IrineSistiana/mosdns/"
@@ -28,8 +28,8 @@ sha256sums=('8bb851c5413e0e25e18e9d912a35b1500b54531ea961d4fc6cc8416173311c17'
             'e6bc5034452123491e3901e2741183d528a29b00f1c01d6bbbb204549fee7306'
             '0be8eb1cdf1dd563f829c2ab86a00be4d889d22a29e34c9582caff5c2876a2e1')
 
-sha256sums_aarch64=('98490cd46f850fcfd608d21c4d196a14eed5b6223e9770fd45cf518e5fbc12b2')
-sha256sums_armv7h=('cc6879e0b396a97a4e0c0e186d221c360e11213fee2d7349ddaf6f8979db6382')
+sha256sums_aarch64=('c3f4c7ec16c83578a1f73757f57597e99799701aa9c470228f610b2b6f8c20bd')
+sha256sums_armv7h=('d84a5a77af4deef49d507234b451b8cfc0fa00c1e9f718a8d35d5e7c0191be38')
 
 package() {
   install -Dm755 mosdns "$pkgdir"/usr/bin/mosdns
