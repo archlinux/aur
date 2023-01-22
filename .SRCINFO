@@ -1,0 +1,18 @@
+pkgbase = libspatialindex
+	pkgdesc = C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://github.com/libspatialindex/libspatialindex
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = python
+	depends = gcc-libs
+	provides = libspatialindex.so
+	provides = libspatialindex_c.so
+	source = libspatialindex::git+https://github.com/libspatialindex/libspatialindex#commit=1896a18?signed
+	validpgpkeys = 776F7A23F16801DE78978EC7C015A12DBFE1B014
+	sha256sums = SKIP
+
+pkgname = libspatialindex
