@@ -8,8 +8,10 @@ arch=('x86_64')
 url="https://github.com/brummer10/guitarix.vst"
 license=('GPL3')
 groups=('vst-plugins' 'pro-audio')
-depends=('guitarix' 'jack' 'liblrdf' 'libsndfile' 'lilv' 'boost-libs')
-makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig' 'webkit2gtk' 'debugedit')
+#depends=('guitarix' 'jack' 'liblrdf' 'libsndfile' 'lilv' 'boost-libs')
+depends=('liblrdf' 'libsndfile' 'lilv' 'boost-libs' 'fftw' 'freetype2' 'glibmm' 'avahi')
+#makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig' 'webkit2gtk' 'debugedit')
+makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sassc' 'pkgconfig' 'webkit2gtk' 'debugedit' 'glib2')
 optdepends=(
   'vst3-host: for VST3 plugins'
   'gxplugins.lv2: for Guitarix LV2 plugins'
