@@ -10,6 +10,7 @@ pkgbase = avisynth-plugin-fluxsmooth-git
 	depends = avisynthplus
 	provides = avisynth-plugin-fluxsmooth
 	conflicts = avisynth-plugin-fluxsmooth
+	options = debug
 	source = fluxsmooth::git+https://github.com/pinterf/FluxSmooth.git
 	sha256sums = SKIP
 
