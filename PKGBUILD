@@ -1,35 +1,50 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=librespot
-pkgver=0.4.1
+pkgver=0.4.2
+_commit=22f8aed
 pkgrel=1
 pkgdesc='Open source client library for Spotify'
-arch=(x86_64 aarch64)
+arch=('x86_64' 'aarch64')
 url='https://github.com/librespot-org/librespot'
-license=(MIT)
+license=('MIT')
 depends=(
-	libpulse
-	alsa-lib
-	jack
-	gst-plugins-base-libs
-	portaudio
-	sdl2
-)
-makedepends=(
-	cargo
-)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('b84627f6a5b204255954500e13ba45a74444f85d65412b31b0887d1003437d38f823ccc981baad9e437c32195ba50055e0bf541569b155a3da9f3582a6d579cb')
+	'alsa-lib'
+	'gst-plugins-base-libs'
+	'jack'
+	'libpulse'
+	'portaudio'
+	'sdl2')
+makedepends=('cargo' 'git')
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('EC57B7376EAFF1A0BB56BB0187F5FDE8A56219F4') ## Roderick van Domberg
 
-build() {
-	return 0
+prepare() {
+	cd "$pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-package() {
-	cd "${pkgname}-${pkgver}"
-	cargo install --no-track --locked --root "${pkgdir}/usr/" --path . --features \
+build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$pkgname"
+	cargo build --release --frozen --features \
 		alsa-backend,portaudio-backend,pulseaudio-backend,jackaudio-backend,rodio-backend,rodiojack-backend,sdl-backend,gstreamer-backend
-	install -Dm644 contrib/librespot.service "${pkgdir}/usr/lib/systemd/system/librespot.service"
-	install -Dm644 contrib/librespot.user.service "${pkgdir}/usr/lib/systemd/user/librespot.service"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+## 0 tests
+# check() {
+# 	export RUSTUP_TOOLCHAIN=stable
+# 	cd "$pkgname"
+# 	cargo test --frozen --features \
+# 		alsa-backend,portaudio-backend,pulseaudio-backend,jackaudio-backend,rodio-backend,rodiojack-backend,sdl-backend,gstreamer-backend
+# }
+
+package() {
+	cd "$pkgname"
+	install -Dv "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+	install -Dvm644 "contrib/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dvm644 "contrib/$pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
