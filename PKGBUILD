@@ -2,7 +2,7 @@
 
 _plug=turnstile
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v1.0.0.0.g9174d07
+pkgver=1.0.0.0.g9174d07
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -25,30 +25,32 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
-  mkdir -p build
-
   cd "${_plug}"
   patch -p1 -i "${srcdir}/esee"
+  sed 's|8_H|9_H|g' \
+    -i CMakeLists.txt
 
   git config submodule.include/lodepng.url "${srcdir}/lodepng"
-  git submodule update --init include/lodepng
+  git -c protocol.file.allow=always submodule update --init \
+    include/lodepng
 }
 
 build() {
-  cd build
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
 
-  cmake "../${_plug}" \
+  cmake -S "${_plug}" -B build \
    -DCMAKE_BUILD_TYPE=None \
    -DCMAKE_INSTALL_PREFIX=/usr \
-   -DAVISYNTHPLUS_HDR=/usr/include/avisynth/avisynth.h
+   -DAVISYNTHPLUS_HDR=/usr/include/avisynth/avisynth.h \
+   -DTURNSTILE_TESTS=OFF
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
