@@ -1,6 +1,6 @@
-# Maintainer: Donald Webster <fryfrog@gmail.com>
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Co-Maintainer: txtsd <aur.archlinux@ihavea.quest>
 # Co-Maintainer: Joaquín Rufo Gutierrez <joaquinito2051@gmail.com>
+# Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-bin
 pkgver=0.20.2687
