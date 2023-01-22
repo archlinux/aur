@@ -1,8 +1,9 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 
+_pkgname=kime
 pkgname=kime-bin
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -20,16 +21,16 @@ makedepends=('cmake' 'extra-cmake-modules' 'pkg-config')
 arch=('x86_64')
 license=('GPL3')
 source=(
-    ${pkgname}-${pkgver}.tar.gz::"https://github.com/Riey/kime/archive/refs/tags/v${pkgver}.tar.gz"
-    ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-refs.tags.v${pkgver}.tar.zst"
+    ${_pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz"
+    ${_pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.tar.zst"
 )
 
-sha256sums=('f383e4012fb5a5421e2d78dd6c6700a78a06d6b840abc83f69d1c469b8298931'
-            '2a58ff20d3b9a2f6b5c9a916877789eca99d8bfc2f161cb6444379b15ece8717')
+sha256sums=('cf7379765d5d8e0c3f03847e29d33b461e118e8691d47cc12a041a3e49eed756'
+            'f39255f467d1d6de2e80de75b695f62e47c884f57c488472a255f067eea4f052')
 
  
 build() {
-    cd "kime-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     rm -rf build || true
     mkdir -pv build/out target/release
     cp ../kime_engine.h* ./src/engine/cffi
@@ -42,8 +43,7 @@ build() {
 }
  
 package() {
-    cd "kime-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     scripts/install.sh "${pkgdir}"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
- 
