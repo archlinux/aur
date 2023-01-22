@@ -2,24 +2,26 @@
 
 _plug=removegrainhd
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v0.7.7.g7444ef7
+pkgver=0.7.7.g7444ef7
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/pinterf/RemoveGrainHD'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/RemoveGrainHD.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
@@ -34,7 +36,7 @@ build() {
   CXXFLAGS+=" $(pkg-config --cflags avisynth)"
 
   cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=Release \
+   -DCMAKE_BUILD_TYPE=None \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
