@@ -1,0 +1,24 @@
+pkgbase = chirp-next
+	pkgdesc = GUI tool for programming ham radios, built from daily build
+	pkgver = 20230122
+	pkgrel = 1
+	url = https://chirp.danplanet.com
+	install = chirp-next.install
+	arch = any
+	license = GPL3
+	depends = python-six
+	depends = python-pyserial
+	depends = python-future
+	depends = python-requests
+	depends = python-suds
+	depends = python-yattag
+	depends = python-wxpython
+	optdepends = hamradio-menus: XDG menus for ham radio software
+	provides = chirp
+	conflicts = chirp
+	conflicts = chirp-daily
+	options = !emptydirs
+	source = https://trac.chirp.danplanet.com/chirp_next/next-20230122/chirp-next-20230122.tar.gz
+	sha1sums = a28a631cbd860889296479f07e9129c9cc0c5055
+
+pkgname = chirp-next
