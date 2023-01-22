@@ -15,6 +15,6 @@ pkgbase = mcbelauncher-bin
 	source = mcbelauncher.desktop
 	sha256sums = 297e30f73adb4f0271a7e7d507f7889a537eaaefacbe098def4b5e34090141e5
 	sha256sums = d676e742b549cf7b4698cb9dc5be5f1734bc59313958cf9a7b7acd92a5ff3d76
-	sha256sums = 664e135dd1e9a44cd8c8f16a7c615698ee2fc2b761f18eab648e9635a1a4c768
+	sha256sums = 3ae613839cf1020192527621f97b8958394a2ff9dac6567cb16c5e76f0386e2d
 
 pkgname = mcbelauncher-bin
