@@ -2,7 +2,7 @@
 
 _plug=retinex
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=1.0.3.0.g54081a4
+pkgver=1.0.1.0.gbca5463
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  LC_ALL=C cmake --build build -j1
+  cmake --build build
 }
 
 package(){
