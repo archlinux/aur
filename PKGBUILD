@@ -1,15 +1,15 @@
 # Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
 pkgname=opengothic
-pkgver=0.68
+pkgver=1.0.1878
 pkgrel=1
 pkgdesc="Open source remake of Gothic 2: Night of the raven"
 arch=('x86_64')
 url='https://github.com/Try/OpenGothic'
 license=('MIT')
-depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxcursor' 'vulkan-icd-loader' 'spirv-cross')
+depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxcursor' 'vulkan-icd-loader')
 makedepends=('cmake' 'git' 'glslang' 'libglvnd' 'vulkan-headers')
-source=("git+https://github.com/Try/OpenGothic#commit=81715b1d70856a6f20d38a3e81e4ba8ba913d3e3" #tag=v0.64
+source=("git+https://github.com/Try/OpenGothic#commit=81715b1d70856a6f20d38a3e81e4ba8ba913d3e3" #tag=opengothic-v1.0.1878
         "git+https://github.com/Try/Tempest.git"
         "git+https://github.com/schellingb/TinySoundFont.git"
         "git+https://github.com/bulletphysics/bullet3.git"
@@ -56,13 +56,9 @@ build() {
   
   cmake -B build \
     -DOpenGL_GL_PREFERENCE=GLVND \
-    -DBUILD_SHARED_LIBS=OFF \
     -DTEMPEST_BUILD_SHARED=OFF \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSPIRV_CROSS_STATIC=OFF \
-    -DSPIRV_CROSS_SHARED=OFF \
-    -DSPIRV_CROSS_CLI=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
 
