@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-headers-git
-pkgver=2022.05.18.1.g7f216e8
+pkgver=2022.09.30.4.ga86f4e7
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
@@ -23,10 +23,6 @@ pkgver() {
   echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
-prepare() {
-  # fix .cmake path
-  sed 's|cmake/OpenCLHeaders|OpenCLHeaders/cmake|g' -i OpenCL-Headers/CMakeLists.txt
-}
 
 build() {
   cmake -S OpenCL-Headers -B build \
