@@ -1,8 +1,8 @@
 [Desktop Entry]
-Version=1.0
+Version=
 Type=Application
-Exec=/usr/bin/comma %f
-Icon=${_pkgname}
+Exec=
+Icon=
 Terminal=false
 Type=Application
 Name=Comma Community Edition
