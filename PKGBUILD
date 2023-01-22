@@ -1,6 +1,6 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-thunar-plugins-git
-pkgver=0.4.0.r1.gdfdc983
+pkgver=1.0.0.r7.ga4765ed
 pkgrel=1
 epoch=
 pkgdesc="Thunar plugins"
@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://gitlab.com/nobodyinperson/thunar-plugins"
 license=('GPL')
 groups=()
-depends=(thunarx-python)
+depends=(thunarx-python python-rich)
 makedepends=(python-setuptools python-build python-setuptools-scm python-wheel)
 checkdepends=()
 optdepends=( 
