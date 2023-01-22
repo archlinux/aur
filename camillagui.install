@@ -1,9 +1,9 @@
 post_install() {
-	dspdir=/srv/http/data/camilladsp/configs
+	dspdir=/srv/http/data/camilladsp
 	guidir=/srv/http/settings/camillagui
 	
-	cp -f $dspdir/{camilladsp,default_config}.yml
-	ln -s $dspdir/{camilladsp,active_config}.yml
+	cp -f $dspdir/{configs/camilladsp,default_config}.yml
+	ln -s $dspdir/{configs/camilladsp,active_config}.yml
 	
     sed -i 's/"build")$/"build", follow_symlinks=True)/' $guidir/backend/routes.py
 	
