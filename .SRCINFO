@@ -1,7 +1,7 @@
 pkgbase = thunar-extended
-	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
-	pkgver = 4.16.10
-	pkgrel = 2
+	pkgdesc = Thunar with cursor audio preview and extra options for trash
+	pkgver = 4.18.3
+	pkgrel = 1
 	url = http://thunar.xfce.org
 	arch = i686
 	arch = x86_64
@@ -27,19 +27,15 @@ pkgbase = thunar-extended
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=4.16.10
+	provides = thunar=4.18.3
 	conflicts = thunar
 	replaces = thunar
 	options = !libtool
-	source = https://archive.xfce.org/src/xfce/thunar/4.16/thunar-4.16.10.tar.bz2
+	source = https://archive.xfce.org/src/xfce/thunar/4.18/thunar-4.18.3.tar.bz2
 	source = notrash.patch
-	source = uca_num_files.patch
 	source = preview.patch
-	source = split_pane.patch
-	sha256sums = f105c8f5abc50c411f6218f913561ae3a485826bd0cd09503a4772d015899c92
+	sha256sums = f402ea38519f3f803b8f06933c05ddbf8c0c61d2e8ef93fcbe1fc7f6525e3297
 	sha256sums = 84cb384722f32f37bd2e7f2c96c47ebbe7955cb8007260fe1a9efe26d235d478
-	sha256sums = dff7a12776b488613eec99e70acfb700550d72534ecc8a26157af4da1b35d84d
-	sha256sums = 8d11bfc3a51d6ab0f5e9853b31d10d7e1af2e1c8b075ee140c64471e1df9ca68
-	sha256sums = 1e287aa82392bcabd747ab3b5e0c66815b3cfc22e3227cf8439a18f8f200e5ed
+	sha256sums = b9297f2a22d294264ad2bc9d50341842a27746320b7294b686fd37f074593f3a
 
 pkgname = thunar-extended
