@@ -2,42 +2,42 @@
 
 _plug=dpid
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=1.0.0.2.g2a13540
+pkgver=1.1.0.0.g8f57f3c
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/AviSynth-DPID'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Asd-g/AviSynth-DPID.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p "${_plug}/build"
-}
-
 build() {
-  cd "${_plug}/build"
+  cd "${_plug}"
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)" cmake .. \
-   -DCMAKE_BUILD_TYPE=Release \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
 
-  make
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package(){
-  make -C "${_plug}/build" DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install "${_plug}/build"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }
