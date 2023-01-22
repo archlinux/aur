@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr average/Average/{avs*,avi*}
+  rm -fr "${_plug}/Average/"{avs*,avi*}
 }
 
 build() {
