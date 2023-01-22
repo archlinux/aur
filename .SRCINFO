@@ -17,7 +17,7 @@ pkgbase = lesma
 	source = https://gitlab.com/ogarcia/lesma/-/archive/0.6.0/lesma-0.6.0.tar.bz2
 	source = lesma.toml
 	source = lesma.service
-	b2sums = 011a07fd4b6652c936ba81e392f601d8bd162cb10e1ecf0a8b3cbc56917c77ba33a8fb307a82c901ea9466d0f82621ef7db86f3fbff49edc0b57b116bb9cc206
+	b2sums = 0627d86f203c05d0f0fb92fd175bb14db97a554afd7d252fdcde7ccb00e9be6e8c318a16ba5728b6d8db8b86ed243c9485ffcb8e021e95eac270cedb2202b2fa
 	b2sums = 669031b846b817a48e7aa621df34fbf85102e8da6ab58e77ab6ac4abbb77d3632933881116f256e49a22cff3ecd52712ce9e34f451cef778d8e61762ad3609d2
 	b2sums = 6512f2d4fc6852cbcb96469890d15ab922d46eeeb6f25b234b074966f3a17b5748936fd5898a0e3c914b59f5b526595cff17f8abc856e58fb5cb4acd83ef2515
 
