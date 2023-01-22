@@ -29,18 +29,19 @@ prepare() {
 }
 
 build() {
-  cd "${_plug}/build"
+  cd "${_plug}"
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)" \
-  cmake .. \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+
+  cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C "${_plug}/build" DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install "${_plug}/build"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }
