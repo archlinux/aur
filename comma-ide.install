@@ -1,5 +1,6 @@
-post_install(){
+post_install() {
   local comma_ver=${1%%-*}
+
   cat <<EOF
   *Notes*
   To adjust the value of the JVM heap size, create
@@ -23,6 +24,4 @@ post_install(){
 
   NOTE: Store the data cache ("system" directory) on a disk with at least 1 GB of free space.
 EOF
-
 }
-
