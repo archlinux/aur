@@ -33,6 +33,7 @@ pkgbase = mpv-full-build-git
 	depends = freetype2
 	depends = frei0r-plugins
 	depends = fribidi
+	depends = glad
 	depends = glibc
 	depends = gmp
 	depends = gnutls

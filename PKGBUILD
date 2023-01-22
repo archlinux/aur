@@ -19,6 +19,7 @@ depends=(
          'freetype2'
          'frei0r-plugins'
          'fribidi'
+         'glad'
          'glibc'
          'gmp'
          'gnutls'
