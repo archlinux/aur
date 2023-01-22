@@ -9,7 +9,6 @@ pkgbase = comma-ide-community
 	depends = java-runtime>=11
 	optdepends = rakudo-star
 	optdepends = rakudo
-	provides = comma-ide
 	source = https://commaide.com/download/community/linux
 	source = comma-ide-community.desktop
 	sha256sums = b8fca82237f3d3c0ee1c67e8a4829248c04da9ec9434a917b36c523fcc3b99d4

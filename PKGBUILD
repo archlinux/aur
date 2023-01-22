@@ -7,7 +7,6 @@ _binname=comma
 pkgrel=1
 pkgver=2022.10.0
 _tarname=comma-community-${pkgver}
-provides=(${_pkgname})
 pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
 url='https://commaide.com/'
