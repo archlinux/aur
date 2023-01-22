@@ -5,3 +5,5 @@
 !PKGBUILD
 !tidal-hifi.desktop
 !src/tidal-hifi.desktop
+!tidal-hifi.xml
+!src/tidal-hifi.xml
