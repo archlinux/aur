@@ -2,7 +2,7 @@
 # Contributor: Kamyroll <>
 
 pkgname=kamyroll-tauri-dev
-pkgver=1.0.5_beta+8a5c01f
+pkgver=1.0.5_beta+e891c9b
 pkgrel=1
 pkgdesc='Kamyroll-Tauri is a computer client allowing you to view your favorite anime from well known platforms.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('libayatana-appindicator')
 
 source=("$url/releases/download/v${pkgver//_/-}/kamyroll_${pkgver%_*}_amd64.deb")
-sha512sums=('c07d25de68c2b2e261199696c0ad77fc23dc44dc7036205e2f196feb030e232b0a0a1a72ec7f136ae757d3cb30278521da20d814cc8ea03b10a0bd7d015996b0')
+sha512sums=('e97ab50662f882495f9e7f1366b371590fedd374916cf11b04f60331b65c0d3fa82574fd45ccf5996431fc7fdfcc6db76d23f8bc2038785adb010f85e8643672')
 
 package() {
 	tar xf data.tar.gz -C "${pkgdir}"
