@@ -2,7 +2,7 @@
 
 _plug=fft3dfilter
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v2.9.0.gcac9173
+pkgver=2.10.0.g3f8d274
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
@@ -34,7 +34,7 @@ build() {
   CXXFLAGS+=" $(pkg-config --cflags avisynth)"
 
   cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=Release \
+   -DCMAKE_BUILD_TYPE=None \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
@@ -44,6 +44,6 @@ package(){
   make -C build DESTDIR="${pkgdir}" install
 
   install -Dm644 "${_plug}/fft3dfilter/documentation/fft3dfilter.html" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/fft3dfilter.html"
-  install -Dm644 "${_plug}/fft3dfilter/documentation/overlap.gif" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/overlap.gif"
+  install -Dm644 "${_plug}/fft3dfilter/documentation/overlap.png" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/overlap.png"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
 }

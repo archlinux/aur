@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-fft3dfilter-git
 	pkgdesc = Plugin for Avisynth: fft3dfilter (GIT version)
-	pkgver = v2.9.0.gcac9173
+	pkgver = 2.10.0.g3f8d274
 	pkgrel = 1
 	url = https://github.com/pinterf/fft3dfilter
 	arch = x86_64
