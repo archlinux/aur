@@ -4,7 +4,7 @@
 _name=end_to_end_encryption
 pkgname=nextcloud-app-end_to_end_encryption
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nextcloud End-to-End-Encryption App"
 arch=('any')
 url="https://github.com/nextcloud/end_to_end_encryption"
@@ -18,7 +18,7 @@ sha512sums=('054eed1dcf9062f6889c05036fe632e740091f83b3d4bcc4c5c8dc238971440fff8
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"

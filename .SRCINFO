@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-end_to_end_encryption
 	pkgdesc = Nextcloud End-to-End-Encryption App
 	pkgver = 1.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/end_to_end_encryption
 	arch = any
 	license = AGPLv3
