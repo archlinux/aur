@@ -1,5 +1,5 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
-# Co-Maintainer: Joaquín Rufo Gutierrez <joaquinito2051@gmail.com>
+# Contributor: Joaquín Rufo Gutierrez <joaquinito2051@gmail.com>
 # Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett
