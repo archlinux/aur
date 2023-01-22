@@ -4,12 +4,14 @@ pkgbase = avisynth-plugin-fft3dfilter-git
 	pkgrel = 1
 	url = https://github.com/pinterf/fft3dfilter
 	arch = x86_64
-	license = MIT
+	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-fft3dfilter
 	conflicts = avisynth-plugin-fft3dfilter
+	options = debug
 	source = fft3dfilter::git+https://github.com/pinterf/fft3dfilter.git
 	sha256sums = SKIP
 

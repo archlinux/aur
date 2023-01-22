@@ -7,15 +7,17 @@ pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/pinterf/fft3dfilter'
-license=('MIT')
-depends=('avisynthplus')
+license=('GPL')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/fft3dfilter.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -23,27 +25,25 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   rm -fr "${_plug}/fft3dfilter/"{avs*,avi*}
 }
 
 build() {
-  cd build
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
 
-  cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/fft3dfilter/documentation/fft3dfilter.html" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/fft3dfilter.html"
   install -Dm644 "${_plug}/fft3dfilter/documentation/overlap.png" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/overlap.png"
+
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
 }
