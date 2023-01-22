@@ -21,7 +21,7 @@ build() {
 
   sed -i "s/ STATIC / SHARED /" CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_SKIP_BUILD_RPATH=ON
-  make
+  cmake --build .
 }
 
 package() {
