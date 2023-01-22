@@ -1,7 +1,7 @@
 # Maintainer: Hikari Hayashi <rev.hikari@gmail.com>
 
 pkgname=figma-agent-linux
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Figma Agent for Linux (a.k.a. Font Helper)"
 url="https://github.com/neetly/figma-agent-linux"
@@ -28,4 +28,5 @@ package() {
   install -Dm755 "./target/$CARCH-unknown-linux-gnu/release/figma-agent" "$pkgdir/usr/bin/figma-agent"
   install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/figma-agent/LICENSE"
   install -Dm644 "./figma-agent.service" "$pkgdir/usr/lib/systemd/user/figma-agent.service"
+  install -Dm644 "./figma-agent.socket" "$pkgdir/usr/lib/systemd/user/figma-agent.socket"
 }
