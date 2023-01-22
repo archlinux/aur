@@ -1,0 +1,14 @@
+[Unit]
+Description=Simple paste app friendly with browser and command line
+Documentation=https://gitlab.com/ogarcia/lesma/-/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=lesma
+ExecStart=/usr/bin/lesma
+
+[Install]
+WantedBy=multi-user.target

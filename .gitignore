@@ -1,0 +1,6 @@
+*
+!.gitignore
+!lesma.service
+!lesma.toml
+!PKGBUILD
+!.SRCINFO

@@ -1,0 +1,24 @@
+pkgbase = lesma
+	pkgdesc = A small and ultrasecure Lesspass database server written in Rust
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://gitlab.com/ogarcia/lesma
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	backup = etc/lesma.toml
+	source = https://gitlab.com/ogarcia/lesma/-/archive/0.6.0/lesma-0.6.0.tar.bz2
+	source = lesma.toml
+	source = lesma.service
+	b2sums = 011a07fd4b6652c936ba81e392f601d8bd162cb10e1ecf0a8b3cbc56917c77ba33a8fb307a82c901ea9466d0f82621ef7db86f3fbff49edc0b57b116bb9cc206
+	b2sums = 669031b846b817a48e7aa621df34fbf85102e8da6ab58e77ab6ac4abbb77d3632933881116f256e49a22cff3ecd52712ce9e34f451cef778d8e61762ad3609d2
+	b2sums = 6512f2d4fc6852cbcb96469890d15ab922d46eeeb6f25b234b074966f3a17b5748936fd5898a0e3c914b59f5b526595cff17f8abc856e58fb5cb4acd83ef2515
+
+pkgname = lesma
