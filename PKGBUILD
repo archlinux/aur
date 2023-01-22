@@ -33,6 +33,7 @@ sha256sums=('SKIP')
 prepare() {
 	# cd "$pkgname-$pkgver"
 	# patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+    cd "charta"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
