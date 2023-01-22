@@ -18,7 +18,7 @@ optdepends=('cuda: NvFBC capture support'
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=4b642f6e0186c14df41dc14e806d6f12f37b05c6")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=3f202be09a605da64aa7a23f53a89558185e51a5")
 sha256sums=('SKIP')
 
 prepare() {
