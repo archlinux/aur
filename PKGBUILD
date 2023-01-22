@@ -22,18 +22,15 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgname}"
-	arch-meson ${pkgname}-${pkgver} build
+	arch-meson ${pkgname} build
 	meson compile -C build
 }
 
 check() {
-    cd "$srcdir/${pkgname}"
 	meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
 	DESTDIR="${pkgdir}" meson install -C build
 }
 
