@@ -1,6 +1,6 @@
 pkgbase = neochat-git
 	pkgdesc = A client for matrix, the decentralized communication protocol
-	pkgver = r2734.31fed836
+	pkgver = r2758.31fed836
 	pkgrel = 1
 	url = https://invent.kde.org/network/neochat
 	arch = i686
