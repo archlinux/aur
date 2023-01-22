@@ -1,13 +1,13 @@
 # Maintainer: Robin H. <robin@blckct.io>
 pkgname=alfaview
 pkgver=8.61.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High quality audio video conferencing for professional online meetings and live classes'
 arch=('x86_64')
 url='https://alfaview.com/'
 license=('unknown')
 # not sure about the deps, copy-pasted from debian package (feedback required)
-depends=('ttf-roboto' 'libsecret' 'xdg-utils' 'freetype2' 'fontconfig' 'gst-plugins-bad' 'libxfixes' 'alsa-lib' 'libxkbcommon' 'dbus' 'libpulse')
+depends=('ttf-roboto' 'libsecret' 'xdg-utils' 'freetype2' 'fontconfig' 'gst-plugins-bad' 'libxfixes' 'alsa-lib' 'libxkbcommon' 'dbus' 'libpulse' 'libtiff5')
 options=('!strip')
 conflicts=('alfaview-beta')
 provides=("alfaview=${pkgver}")
