@@ -148,6 +148,8 @@ This package provides both pieces in one package.
 
 ## Revisions
 
+- r10: Second iteration, updated for now only 2 new IPI fields rather than 5.
+  (Updated PKGBUILD for v2-install --prefix flags.)
 - r9: Second iteration, rebase onto upstream, to get it up-to-date.  Partly
   merged upstream: by now, `fix-project-local-flags` is merged upstream.  This
   package runs a build and still applies `fix-dynamic-deps-2-arts`.

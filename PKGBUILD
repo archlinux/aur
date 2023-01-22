@@ -28,9 +28,9 @@ pkgbase=ghc-cabal-arts
 pkgname=ghc-cabal-arts
 #pkgver=9.4.2.0.1
 pkgver=9.4.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Haskell setup to fix ‘There are files missing in the \`dynamic-1.0' package’ (9.4.2 / 3.9)."
-url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-2-r9"
+url="https://github.com/bairyn/cabal/commits/fix-dynamic-deps-2-r10"
 license=("BSD")
 arch=('x86_64')
 # We probably don't really need to use bubblewrap to do this, but it just makes
@@ -40,16 +40,16 @@ depends=('libffi')
 conflicts=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 provides=('ghc' 'cabal-install' 'ghc-libs' 'ghc-static')
 source=(
-	https://github.com/bairyn/cabal/archive/8003cffab96576e6d5cbee90283146ae16497d34.tar.gz
+	https://github.com/bairyn/cabal/archive/4eeb1deb8ca35a08ed51241ac768f200b6df9568.tar.gz
 	#https://github.com/ghc/ghc/archive/refs/tags/ghc-9.4.2-release.tar.gz  # Probably easier for us to just get the submodules bundled, so use the next URL instead.
 	https://downloads.haskell.org/~ghc/9.4.2/ghc-9.4.2-src.tar.xz
 )
 sha512sums=(
-	bd428fd8bb4dd496384ea5e67e926b667cc91ced6c451d6c3951f79fdf2fedbed10faae3b2986332f9efce6b012913be3bdd46a6bba602050eec7e184adebe01
+	c9b38d79f5242e24c2a0ea0d61c11d40f26d44ae9a1c86991985c1527996b10afb6355bc7c5e486d2d648a8fa7511b8a109623923c9420e0fcd89ef3afaec8f1
 	#381a8103b944008c0004a2492ff3bc10d865440b97e9dd451d3fec2ec1cb7c0fef3402baa43629c6ff18651e4a02933374f26d3a0eda0b57a07bb69265390564
 	c55ad01b71ac3285dc057fcd3d83415767859cf20667374323bbaeefe9268b47ee0fc19add6860a8e1481e943855886cc7ace4bcb2f79349f94a44752c6aeccb
 )
-noextract=('8003cffab96576e6d5cbee90283146ae16497d34.tar.gz' 'ghc-9.4.2-src.tar.xz')
+noextract=('4eeb1deb8ca35a08ed51241ac768f200b6df9568.tar.gz' 'ghc-9.4.2-src.tar.xz')
 
 # Be careful not to remove things we may want for this package.
 options=(
@@ -68,8 +68,8 @@ prepare() {
 	# > Need to extract this tarball with a UTF-8 locale instead of a chroot's "C"
 	# > locale; otherwise we get:
 	# >   bsdtar: Pathname can't be converted from UTF-8 to current locale.
-	LANG=en_US.UTF-8 bsdtar xf "8003cffab96576e6d5cbee90283146ae16497d34.tar.gz"
-	cabaldir="cabal-"8003cffab96576e6d5cbee90283146ae16497d34
+	LANG=en_US.UTF-8 bsdtar xf "4eeb1deb8ca35a08ed51241ac768f200b6df9568.tar.gz"
+	cabaldir="cabal-4eeb1deb8ca35a08ed51241ac768f200b6df9568"
 
 	echo "Extracting ghc…"
 
@@ -187,7 +187,7 @@ check() {
 
 package_ghc-cabal-arts() {
 	ghcdir="ghc-9.4.2"
-	cabaldir="cabal-"8003cffab96576e6d5cbee90283146ae16497d34
+	cabaldir="cabal-4eeb1deb8ca35a08ed51241ac768f200b6df9568"
 
 	echo "Installing ghc…"
 	cd -- "$ghcdir"
@@ -436,6 +436,7 @@ package_ghc-cabal-arts() {
 		--ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-build --project-file="$cabalAbsDir/cabal.project.release" cabal-install \
+		--prefix="$tmpStoreDir" $(: --installdir="$tmpBin") \
 		#
 
 	echo "	(Stage 1/2, installing…)"
@@ -443,7 +444,6 @@ package_ghc-cabal-arts() {
 		--ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-install --project-file="$cabalAbsDir/cabal.project.release" cabal-install --overwrite-policy=always \
-		--prefix="$tmpStoreDir" --installdir="$tmpBin" \
 		#
 
 	# Reset config.
@@ -483,6 +483,7 @@ package_ghc-cabal-arts() {
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-build --project-file="$cabalAbsDir/cabal.project.release" cabal-install \
+		--prefix="$pkgdir/usr" $(: --installdir="$pkgdir/usr/bin") \
 		#
 
 	echo "Installing cabal-install…"
@@ -490,13 +491,11 @@ package_ghc-cabal-arts() {
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-install --project-file="$cabalAbsDir/cabal.project.release" cabal-install --overwrite-policy=always \
-		--prefix="$pkgdir/usr" --installdir="$pkgdir/usr/bin" \
 		#
 	echo "	(Installing (lib)…)"
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-install --project-file="$cabalAbsDir/cabal.project.release" cabal-install --lib --overwrite-policy=always \
-		--prefix="$pkgdir/usr" \
 		#
 
 	# Optional: also install cabal-tests.
@@ -512,16 +511,15 @@ package_ghc-cabal-arts() {
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-build --project-file="$cabalAbsDir/cabal.project.validate" cabal-testsuite:cabal-tests \
+		--prefix="$pkgdir/usr" $(: --installdir="$pkgdir/usr/bin") \
 		&& \
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-install --project-file="$cabalAbsDir/cabal.project.validate" cabal-testsuite:cabal-tests --overwrite-policy=always \
-		--prefix="$pkgdir/usr" --installdir="$pkgdir/usr/bin" \
 		&& \
 	PATH="$tmpPath" HOME="$cabalAbsDir" $withShadowedDirs cabal -v --store-dir="$pkgdir/usr/lib" --ghc-pkg-option="--global-package-db=$pkgdir/usr/lib/ghc-9.4.2/package.conf.d" \
 		$ghcOptionsDbs \
 		v2-install --project-file="$cabalAbsDir/cabal.project.validate" cabal-testsuite:cabal-tests --lib --overwrite-policy=always \
-		--prefix="$pkgdir/usr" \
 		|| {
 		echo "Warning: failed to build and install cabal-tests ($?)." 1>&2
 	}
@@ -537,6 +535,12 @@ package_ghc-cabal-arts() {
 			echo "Warning: could not find bash-completion file." 1>&2
 		}
 	}
+
+	# r10: A new section added after new changes to the installdirs and
+	# --prefix flags.  I guess we'll just copy ‘cabal’ into /usr/bin .
+	echo "Installing manual top-level cabal-install executable…"
+	install -d -m 0775 -- "$pkgdir/usr/bin"
+	install -m 0775 -- "$(realpath -- "$cabalAbsDir/$tmpStoreDir/bin/cabal")" "$pkgdir/usr/bin/cabal"
 
 	cd -- ".."
 }
