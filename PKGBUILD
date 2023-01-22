@@ -39,7 +39,7 @@ build() {
   CFLAGS+=" $(pkg-config --cflags avisynth)"
 
   cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=Release \
+   -DCMAKE_BUILD_TYPE=None \
    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
