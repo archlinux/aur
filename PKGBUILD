@@ -1,0 +1,36 @@
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+
+pkgname=mosint-bin
+pkgver=2.3.1
+pkgrel=1
+pkgdesc="An automated e-mail OSINT tool"
+arch=('x86_64' 'i686' 'aarch64')
+url="https://github.com/alpkeskin/mosint"
+license=('MIT')
+provides=('mosint')
+conflicts=('mosint')
+
+source=("$pkgname-$pkgver.LICENSE::https://raw.githubusercontent.com/alpkeskin/mosint/master/LICENSE")
+sha256sums=('d11e911bf756cdff4ff8b338686a0ff3fb7a6d116dbe610bf1c4aad99ce5a4eb')
+source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/mosint_Linux_x86_64.tar.gz")
+source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/mosint_Linux_i386.tar.gz")
+source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/mosint_Linux_arm64.tar.gz")
+sha256sums_x86_64=('c9015e14000f7829739f51656c503b5d96f607039356d9a28f038a05ade1f6ac')
+sha256sums_i686=('7959a38045736b027be2882d18b7448c74810c3af0610d033d687241e2040838')
+sha256sums_aarch64=('0475cfe3f4f11437755e47654da7cbe40dd6b97c10ada7ab7d8a889f6d51be3e')
+noextract=(
+  "$pkgname-$pkgver.tar.gz"
+  "$pkgname-$pkgver.LICENSE"
+)
+
+_archive="$pkgname-$pkgver"
+
+prepare() {
+  mkdir -p "$_archive"
+  tar -xf "$pkgname-$pkgver.tar.gz" -C "$_archive"
+}
+
+package() {
+  install -Dm755 "$_archive/mosint" "${pkgdir}/usr/bin/mosint"
+  install -Dm644 "$pkgname-$pkgver.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
