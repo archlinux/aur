@@ -1,6 +1,6 @@
 pkgbase = handbrake-llvm-optimized
 	pkgver = 1.6.0.r27.gd36cc0b42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://handbrake.fr/
 	arch = x86_64
 	license = GPL
@@ -8,6 +8,8 @@ pkgbase = handbrake-llvm-optimized
 	makedepends = python
 	makedepends = nasm
 	makedepends = wget
+	makedepends = automake
+	makedepends = autoconf
 	makedepends = cmake
 	makedepends = meson
 	makedepends = git

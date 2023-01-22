@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.6.0.r27.gd36cc0b42
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -52,6 +52,8 @@ makedepends=(
   'python'
   'nasm'
   'wget'
+  'automake'
+  'autoconf'
   'cmake'
   'meson'
   'git'
