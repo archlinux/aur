@@ -5,7 +5,7 @@
 
 pkgname=radium7
 pkgver=7.1.68
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
