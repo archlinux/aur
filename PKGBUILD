@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.18
-pkgrel=3
+pkgrel=4
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
@@ -23,7 +23,7 @@ sha256sums=('b765e39426531c383cc88cda62c5331efe5f965d02ec079e55eddd077749a4aa'
 
 prepare() {
   cd $pkgname.desk
-  sed -i 's|quazip/|QuaZip-Qt5-1.3/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
+  sed -i 's|quazip/|QuaZip-Qt5-1.4/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
   sed -i '/require .os/d' qonf/configure.rb
