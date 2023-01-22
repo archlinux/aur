@@ -7,9 +7,11 @@ pkgbase = avisynth-plugin-medianblur2-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-medianblur2
 	conflicts = avisynth-plugin-medianblur2
+	options = debug
 	source = medianblur2::git+https://github.com/pinterf/MedianBlur2.git
 	sha256sums = SKIP
 
