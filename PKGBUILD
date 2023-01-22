@@ -1,6 +1,6 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=cncjs
-pkgver=1.9.28
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Web-based interface for CNC controllers running Grbl, Marlin, Smoothieware, or TinyG."
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=("https://github.com/cncjs/cncjs/archive/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha512sums=('bb12d72f97c9db76fdbf2bdd400b66e89c4afadc5f7cbe2866a6b46fe998885e5a4bef0697522c9d51cf1ff9290b7ff086ff50339def869d629bf91435491164'
+sha512sums=('d50168836ff3312e921a1310134d8bdd741738ebc354fc107051b6e485b01c994c1c65956fd54b779ddae52c17046273f3c6e5891d7a1ec96ba8fa30018b845a'
             '59544b292cc43f7d7dd89758c5b2b59dd5bfb4a258e3011ce896429d92e9ee72c498cee6492888653564a64764e346d2e9b6cc4a55de5e2f943ad7272982b2bd'
             'c5407c67d67f6c6e4ba7fc66e610866906745d59b23644951daa886ed0f15f2ed2f2402b72e6c1eaa5685865c3e6c390f6d574a8446bc6c8c705cdafe97e448f'
             '57e51ae453f613b452a8f56ae3a48e1f68e13ef0154f6ce26ffdefed959a20935155472aa417a2ea358068ed5eed922dbb1ecdad2fcee398c0723dc7de19a50d'
