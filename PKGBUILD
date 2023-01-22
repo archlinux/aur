@@ -1,4 +1,5 @@
 # Maintained by Kodehawa <david.alejandro.rubio at gmail.com>
+# Contributor: FivePB <admin@fivepb.me>
 
 # Original discord_arch_electron PKGBUILD:
 # Maintained by johnnyapol (arch@johnnyapol.me)
@@ -14,7 +15,7 @@
 
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
-pkgver=0.0.143
+pkgver=0.0.146
 pkgrel=2
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -34,7 +35,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('2becb283d19302f8207e7e094024e6ab4d7ab4ccb2ceafa70fb68bdfe6d6165a'
+sha256sums=('e46886f911aac0751d21e4955a96da230dec4ee65bbc841e7ad5d212f4aa4e5b'
             'SKIP'
             'SKIP')
 
