@@ -2,7 +2,7 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=gst-plugins-rs
-pkgver=0.9.4
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=(x86_64)
@@ -24,7 +24,7 @@ build() {
   arch-meson build \
     -D csound=disabled \
     -D dav1d=enabled \
-    -D sodium=system
+    -D sodium=enabled
 
   ninja -C build
 }
