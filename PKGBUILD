@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.1.2
+pkgver=6.1.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,12 +80,12 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=d6a980a0da6cacb523bb1e069b1780ae1c3086a7
+_kernel_base_commit=21e996306a6afaae88295858de0ffb8955173a15
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=94647cd1eefbdb81665c9bc9b6a0fbcee39fed1c
-_prjc_version=6.1-r1
+_arch_config_commit=b64c3db65e0de14500ee17fa08ba59cc703bc5b7
+_prjc_version=6.1-r3
 _prjc_patch="prjc_v${_prjc_version}.patch"
-_gcc_more_v=20220315
+_gcc_more_v=20230105
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
@@ -98,12 +98,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('0bca96ecd7ef972ee436f790c84e7d35c4a592dfbf1bd27fd9d66c8d3aacab311bb4ee06c42f22079b20c7fbe8ae9df12844f699a673d7e534f76b5f5b6ce788'
+b2sums=('13c970a5780fd4ed97a0ff5d7c13e2f5cfebf608199ae94973f3a8a109bb961f1effb45bd61a687f5faaf784a84b4c88b5a4bb75b7a1a943f44cab9b6ad37ce1'
         'SKIP'
-        '28dbe5ad21c9aedeada04b61aa4d5e86ad67651d2dc25496c7d0c1bcfcb69a4df9415a393b29d841207836308340074ac557a19ab09278eb678bf41712d585c1'
-        'af920f4e3e3bc506d6ab4c30b0cde3d14a89fe188198b2b4af452bd959e177c2c0cf3ed02e78f8db17b1f4e19fccf2f820bc6e4cd5092f10d13c07b47e7a9e42'
-        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '4524878eca71764014e3f27323d57fe96f8dbc0d39125a47e8b0facf4042aefb3268734b7a14cd65d91fce91c63167db1da430d5b1bf5c90019172cb6ac31017')
+        'f2eb9a3bf93e906b27cca3d62149932cef893a8e9be24289010e3413da7c50590c4f123ce8a285c69b70b13c5c0e3fbbdc600eeb56b15ab4aa2219b75ff5e9e1'
+        'c071770e0fddf89cda70cd534beb08a816a02236576c31364e2a5fdc3c5c8374026d4ca508c17509f375ce294265d21a4f74b479d75465b11bd4c6595105756f'
+        'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
+        '2d83aa96c2520a14213c085874cf1f5040aabe4de2c44b71b720a454087696cb2e1b54e77413ab3464062ad0d0044df0ef19e252e9dbeceb1ba8443495744fbf')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
