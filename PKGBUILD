@@ -2,9 +2,9 @@
 
 pkgname=gnome-shell-screenshot-dbus-emulator
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Gnome Shell Screenshot DBus Emulation.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/cyrinux/${pkgname}"
 license=('MIT')
 depends=('glibc')
