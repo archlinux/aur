@@ -11,7 +11,7 @@ source=("git+https://github.com/alexkdeveloper/relaxator")
 url="https://github.com/alexkdeveloper/relaxator"
 
 pkgver=1.0.7.r4.g928d2dc
-pkgrel=3
+pkgrel=4
 
 depends=("gtk4" "libadwaita" "vala")
 makedepends=("meson" "ninja" "git")
