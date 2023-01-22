@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-clhpp-git
-pkgver=2022.05.18.0.g0af4767
+pkgver=2022.09.30.0.g4a11574
 pkgrel=1
 pkgdesc='OpenCLTM API C++ bindings. (GIT Version)'
 arch=('any')
@@ -31,9 +31,6 @@ pkgver() {
 }
 
 prepare() {
-  # fix .cmake path
-  sed 's|cmake/OpenCLHeadersCpp|OpenCLHeadersCpp/cmake|g' -i OpenCL-CLHPP/CMakeLists.txt
-
   # fix output docs
   sed -e "s|OUTPUT_DIRECTORY       =|& \"${pkgdir}/usr/share/doc/OpenCL-CLHPP\"|g" \
       -e "s|/include|${srcdir}/OpenCL-CLHPP/include|g" \
