@@ -1,6 +1,6 @@
 pkgbase = perl-email-stuffer
 	pkgdesc = A more casual approach to creating and sending emails
-	pkgver = 0.018
+	pkgver = 0.020
 	pkgrel = 1
 	url = https://metacpan.org/pod/Email::Stuffer
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = perl-email-stuffer
 	depends = perl-params-util>=1.05
 	depends = perl-scalar-list-utils
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Stuffer-0.018.tar.gz
-	sha512sums = 8a68efaae39392ecffebbe580349aedc14043f5bb9b5f1e81a6cc3981ec8378fc5937a8c157d593ca110fe8b49873171cb269a4de0f3095d8e0ace6f862e4820
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Stuffer-0.020.tar.gz
+	sha512sums = 62de0ed98ae892dfa79a6c19b0ddc82f932e7edb048323633810aefef26eed41501a672457f22ecf22846836ca731bfb10e29e2b1295125bc9540bbf04b7e18f
 
 pkgname = perl-email-stuffer
-

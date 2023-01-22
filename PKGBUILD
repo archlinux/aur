@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="perl-email-stuffer"
-pkgver="0.018"
+pkgver="0.020"
 pkgrel="1"
 pkgdesc="A more casual approach to creating and sending emails"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('perl-email-mime>=1.943' 'perl-email-sender' 'perl-module-runtime' 'per
 makedepends=('perl-email-sender>=0.120000' 'perl-moo' 'perl-test-fatal')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Stuffer-${pkgver}.tar.gz")
-sha512sums=('8a68efaae39392ecffebbe580349aedc14043f5bb9b5f1e81a6cc3981ec8378fc5937a8c157d593ca110fe8b49873171cb269a4de0f3095d8e0ace6f862e4820')
+sha512sums=('62de0ed98ae892dfa79a6c19b0ddc82f932e7edb048323633810aefef26eed41501a672457f22ecf22846836ca731bfb10e29e2b1295125bc9540bbf04b7e18f')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
