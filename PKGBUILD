@@ -25,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  rm -fr "${_plug}/Combolution3D/"{avs*,avi*}
+  rm -fr "${_plug}/Convolution3D/"{avs*,avi*}
 }
 
 build() {
