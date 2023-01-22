@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika.hyttinen@gmail.com>
 pkgname=cellframe-node
 pkgver=5.1.355
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -30,7 +30,7 @@ md5sums=('SKIP'
          '0b5a872c2ea133a4df0443a415e9f311'
          'f5bc95f5f8915d074c66398b2acb0907'
          'be8dc9bddf5354074993df8377da03a4'
-         'a6d6582937ca79f272127ff229ddb4d3'
+         'f6fa69bc2e3896fda661c84d2a2c3192'
          'c0f7da5da7a0efeba5eb15198a6898a5'
          '797a5e1704727d387713105e1f101d99'
          'e6a600fd5e1d9cbde2d983680233ad02')
