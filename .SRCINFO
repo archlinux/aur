@@ -9,6 +9,6 @@ pkgbase = treq-bin
 	provides = treq
 	conflicts = treq
 	source = https://github.com/talis-fb/TReq/releases/download/v0.1.6/treq-0.1.6-x86_64.tar.gz
-	sha256sums = 3ea17c9e95860708a9b24441b71576fc78010703d56c738688160b6880975e76
+	sha256sums = b5cc5944a3f54e8c8ec66f0358b23a69f08fa92c1857101e67ec03c79fab603c
 
 pkgname = treq-bin
