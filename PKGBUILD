@@ -1,6 +1,7 @@
 # Maintainer: Connor Nuutinen <cnuutinen@outlook.com>
 # Contributor: David Santiago <demanuel@ymail.com>
 # Contributor: jokersus <jokersus.cava@gmail.com>
+
 pkgname=comma-ide-community
 _pkgname=comma-ide
 _binname=comma
