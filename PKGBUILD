@@ -2,42 +2,42 @@
 
 _plug=mpeg2decplus
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=1.2.0.3.gf8b68fe
+pkgver=1.3.0.0.g3bbe326
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/MPEG2DecPlus'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Asd-g/MPEG2DecPlus.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
+  cd "${_plug}"
 
-  cmake "../${_plug}/build" \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
 
-  make
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  cmake --build build
 }
 
 package(){
-  install -Dm755 build/libmpeg2decplus.so "${pkgdir}/usr/lib/avisynth/libmpeg2decplus.so"
+  DESTDIR="${pkgdir}" cmake --install "${_plug}/build"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 }
