@@ -25,25 +25,22 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   rm -fr "${_plug}/RemoveGrainHD/"{avs*,avi*}
 }
 
 build() {
-  cd build
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+  CXXFLAGS=" $(pkg-config --cflags avisynth)"
 
-  cmake "../${_plug}" \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/RemoveGrainHD/documentation/RemoveGrainHD.htm" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/RemoveGrainHD.htm"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/${_plug}/README.md"
