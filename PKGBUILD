@@ -16,6 +16,7 @@ provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/RemoveDirt.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"

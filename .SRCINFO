@@ -10,6 +10,7 @@ pkgbase = avisynth-plugin-removedirt-git
 	depends = avisynthplus
 	provides = avisynth-plugin-removedirt
 	conflicts = avisynth-plugin-removedirt
+	options = debug
 	source = removedirt::git+https://github.com/pinterf/RemoveDirt.git
 	sha256sums = SKIP
 
