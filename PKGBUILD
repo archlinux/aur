@@ -2,7 +2,7 @@
 
 pkgname=gct
 pkgver=6.2.1653033972
-pkgrel=1
+pkgrel=2
 pkgdesc="The Grid Community Toolkit (GCT) is an open-source fork by the Grid Community Forum (GridCF) of the venerable Globus Toolkit"
 url="https://gridcf.org/gct-docs/"
 arch=('x86_64')
@@ -22,7 +22,7 @@ _MYPROXY=1
 # Common libraries for building grid infrastructure
 _CCOMMONLIBS=1
 # GridFTP for Data Management
-_GRIDFTP=0
+_GRIDFTP=1
 # Grid Security
 _GSI=1
 # GRAM5 for Jobs Management

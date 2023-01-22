@@ -1,7 +1,7 @@
 pkgbase = gct
 	pkgdesc = The Grid Community Toolkit (GCT) is an open-source fork by the Grid Community Forum (GridCF) of the venerable Globus Toolkit
 	pkgver = 6.2.1653033972
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gridcf.org/gct-docs/
 	arch = x86_64
 	license = Apache
