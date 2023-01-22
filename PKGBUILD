@@ -3,7 +3,7 @@
 
 _pkgname=ncurses
 pkgname=mingw-w64-${_pkgname}
-pkgver=6.3
+pkgver=6.4
 pkgrel=1
 pkgdesc='System V Release 4.0 curses emulation library (mingw-w64)'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-gcc' 'mingw-w64-pkg-config')
 depends=('mingw-w64-crt' 'mingw-w64-regex' 'mingw-w64-libiconv')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ncurses-${pkgver}.tar.gz"::"https://ftp.gnu.org/pub/gnu/ncurses/ncurses-${pkgver}.tar.gz")
-sha256sums=('97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059')
+sha256sums=('6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
