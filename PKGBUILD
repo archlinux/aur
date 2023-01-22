@@ -31,9 +31,10 @@ prepare() {
 build() {
   cd "${_plug}/build"
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)" cmake .. \
-   -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)" \
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
 
   make
 }
