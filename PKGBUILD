@@ -1,10 +1,11 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: yustin <#archlimux-proaudio@libera.chat>
 
 pkgname=radium7
 pkgver=7.1.68
-pkgrel=3
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
