@@ -1,6 +1,6 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
-	pkgver = 2022.1
+	pkgver = 2022.2
 	pkgrel = 1
 	url = https://www.domoticz.com
 	install = domoticz.install
@@ -23,11 +23,9 @@ pkgbase = domoticz
 	depends = mosquitto
 	depends = jsoncpp
 	depends = python
-	source = domoticz-2022.1.tar.gz::https://github.com/domoticz/domoticz/archive/2022.1.tar.gz
+	source = domoticz-2022.2.tar.gz::https://github.com/domoticz/domoticz/archive/2022.2.tar.gz
 	source = domoticz.service
-	source = 01-luajit-gcc12.patch
-	md5sums = 03ebcd9af34fbd2737725303a50ad9fd
-	md5sums = c13a3f5d04142587d159820156a6223f
-	md5sums = 84070f8332c86524a088cee1d829b5b7
+	md5sums = f9ac0ba4828dc40a19c1f24f8b2d9614
+	md5sums = b1c9ad64a372714ffceeb3d3adf7412b
 
 pkgname = domoticz

@@ -5,7 +5,7 @@
 # Contributor : Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz
-pkgver=2022.1
+pkgver=2022.2
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -26,19 +26,17 @@ makedepends=('git'
              'boost')
 install='domoticz.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/domoticz/domoticz/archive/${pkgver}.tar.gz"
-        'domoticz.service'
-        '01-luajit-gcc12.patch')
-md5sums=('03ebcd9af34fbd2737725303a50ad9fd'
-         'c13a3f5d04142587d159820156a6223f'
-         '84070f8332c86524a088cee1d829b5b7')
+        'domoticz.service')
+md5sums=('f9ac0ba4828dc40a19c1f24f8b2d9614'
+         'b1c9ad64a372714ffceeb3d3adf7412b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  local p
-  for p in "${srcdir}"/*.patch; do
-    patch --forward --strip=1 --input="${p}"
-  done
+  #local p
+  #for p in "${srcdir}"/*.patch; do
+  #  patch --forward --strip=1 --input="${p}"
+  #done
 
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
 }
