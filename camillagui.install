@@ -1,41 +1,11 @@
 post_install() {
-	sed -i '/^filters:/,$ d' /srv/http/data/camilladsp/configs/camilladsp.yml
-	echo 'filters:
-  Bass:
-    parameters:
-      freq: 85
-      gain: 0
-      q: 0.9
-      type: Lowshelf
-    type: Biquad
-  Treble:
-    parameters:
-      freq: 6500
-      gain: 0
-      q: 0.7
-      type: Highshelf
-    type: Biquad
-  Volume:
-    parameters:
-      ramp_time: 200
-    type: Volume
-mixers: {}
-pipeline:
-- channel: 0
-  names:
-  - Bass
-  - Treble
-  type: Filter
-- channel: 1
-  names:
-  - Bass
-  - Treble
-  type: Filter' >> /srv/http/data/camilladsp/configs/camilladsp.yml
-  
-	cp -f /srv/http/data/camilladsp/configs/{camilladsp,default_config}.yml
-	ln -sf /srv/http/data/camilladsp/configs/{camilladsp,active_config}.yml
+	dspdir=/srv/http/data/camilladsp/configs
+	guidir=/srv/http/settings/camillagui
 	
-    sed -i 's/"build")$/"build", follow_symlinks=True)/' /srv/http/settings/camillagui/backend/routes.py
+	cp -f $dspdir/{camilladsp,default_config}.yml
+	ln -s $dspdir/{camilladsp,active_config}.yml
+	
+    sed -i 's/"build")$/"build", follow_symlinks=True)/' $guidir/backend/routes.py
 	
 	sed -i -e '/cdsp.get_volume/ a\
     elif name == "mute":\
@@ -48,11 +18,16 @@ pipeline:
 ' -e '/cdsp.set_volume/ a\
     elif name == "mute":\
         cdsp.set_mute(value == "true")
-' /srv/http/settings/camillagui/backend/views.py
+' $guidir/backend/views.py
 	
-	sed -i 's/\(apply_config_automatically: \).*/\1true/' /srv/http/settings/camillagui/config/gui-config.yml
+	sed -E -i -e 's|~/|/srv/http/data/|g
+' -e 's|(port: )5000|\15005|
+' -e 's|(symlink: )false|\1true|
+' -e 's|(on_set_active_config: ).*|\1"/srv/http/bash/settings/features.sh camilladspasound"|
+' $guidir/config/camillagui.yml
 	
-	mkdir /srv/http/data/camilladsp/coeffs
-	chown -R http:http /srv/http/data/camilladsp /srv/http/settings/camillagui
-	chmod -R 755 /srv/http/settings/camillagui
+	sed -i 's/\(apply_config_automatically: \).*/\1true/' $guidir/config/gui-config.yml
+	
+	chown -R http:http $dspdir $guidir
+	chmod -R 755 $guidir
 }
