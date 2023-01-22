@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.7.5.r218.gb85c1c4
+pkgver=1.8.2.r153.ge0b2db1
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -52,6 +52,7 @@ optdepends=(
   "mesa: OpenGL module"
   "ocl-icd: OpenCL module"
   "nix: self contained nix package count"
+  "libnm: Better wifi support"
   # "libmagick6: ImageMagick 6 support" 
   # "sqlite3: rpm package count"
   # "rpm-tools: slower rpm package count fallback"

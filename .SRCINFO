@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = 1.7.5.r218.gb85c1c4
+	pkgver = 1.8.2.r153.ge0b2db1
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -46,6 +46,7 @@ pkgbase = fastfetch-git
 	optdepends = mesa: OpenGL module
 	optdepends = ocl-icd: OpenCL module
 	optdepends = nix: self contained nix package count
+	optdepends = libnm: Better wifi support
 	provides = fastfetch
 	conflicts = fastfetch
 	backup = etc/fastfetch/config.conf
