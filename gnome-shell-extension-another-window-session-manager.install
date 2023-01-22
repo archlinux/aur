@@ -1,0 +1,9 @@
+
+post_install() {
+  echo ""
+  echo "To make Close by rules work:"
+  echo "install ydotool and enable + start the user service:"
+  echo "sudo pacman -Syu --asdeps ydotool"
+  echo "systemctl --user enable --now ydotool"
+  echo ""
+}

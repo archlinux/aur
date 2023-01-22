@@ -1,0 +1,6 @@
+# See:
+# https://github.com/ValveSoftware/steam-devices/blob/master/60-steam-input.rules
+# https://github.com/ReimuNotMoe/ydotool/issues/25
+
+# ydotool udev write access
+KERNEL=="uinput", SUBSYSTEM=="misc", TAG+="uaccess", OPTIONS+="static_node=uinput"

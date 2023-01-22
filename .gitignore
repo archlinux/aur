@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!60-awsm-ydotool-uinput.rules
+!gnome-shell-extension-another-window-session-manager.install
