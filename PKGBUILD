@@ -17,7 +17,7 @@ source=(megapixels-ppp-git::git+https://github.com/kgmt0/megapixels.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
