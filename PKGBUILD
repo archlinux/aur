@@ -1,6 +1,6 @@
 pkgname='python-inscriptis'
 _name=${pkgname#python-}
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="HTML to text conversion library"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('6f2e62094343dd84b2f9f65858ff982b52f74fb6f277e28658c9b61920c62ad3')
+sha256sums=('4a272b7e8edf45eab453839df2acdcaaa0d388be413638e16222367b4e75274a')
 
 package() {
   cd ${_name}-${pkgver}
