@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-combolution3d-git
 	pkgdesc = Plugin for Avisynth: combolution3d (GIT version)
-	pkgver = v1.2.0.g0547ba6
+	pkgver = 1.2.0.g0547ba6
 	pkgrel = 1
 	url = https://github.com/pinterf/Convolution3D
 	arch = x86_64

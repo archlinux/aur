@@ -2,7 +2,7 @@
 
 _plug=combolution3d
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v1.2.0.g0547ba6
+pkgver=1.2.0.g0547ba6
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
