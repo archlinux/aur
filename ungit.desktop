@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=ungit
-Icon=git
+Icon=/opt/ungit-electron/icon.svg
 Exec=/usr/bin/ungit --forcedLaunchPath=''

@@ -11,9 +11,11 @@ conflicts=('ungit')
 source=(
 	"https://github.com/FredrikNoren/ungit/releases/download/v${pkgver}/ungit-${pkgver}-linux-x64.zip"
 	"https://raw.githubusercontent.com/FredrikNoren/ungit/v${pkgver}/LICENSE.md"
+	"https://raw.githubusercontent.com/FredrikNoren/ungit/v${pkgver}/assets/images/icon.svg"
 	'ungit.desktop'
 )
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -31,6 +33,9 @@ package() {
 	# Install folder
 	mkdir -p "${pkgdir}/opt"
 	cp -r "${srcdir}/ungit-linux-x64" "${pkgdir}/opt/${pkgname}"
+
+	# Install icon
+	install "${srcdir}/icon.svg" "${pkgdir}/opt/${pkgname}/"
 
 	# Link command
 	mkdir -p "${pkgdir}/usr/bin"
