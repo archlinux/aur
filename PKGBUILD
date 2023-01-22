@@ -6,7 +6,7 @@
 
 pkgname='goldendict-webengine-pr-git'
 _basename='goldendict'
-pkgver=22.12.02.r9.gec753210
+pkgver=22.12.02.r10.gdf7ccad3
 pkgrel=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
@@ -61,6 +61,12 @@ pkgver() {
         -e 's|-|.|g'
 }
 
+_git_pull() {
+    # Ensure that merging does not require user interaction and succeeds even if git
+    # user.name, user.email and pull.rebase are not configured in the user's system.
+    git -c "user.name=GD WE PR merger" -c "user.email=gd-we-pr-merger@example.com" pull --no-rebase --no-edit "$@"
+}
+
 # Branches of some pull requests conflict with the we/webkit-or-webengine branch.
 # The conflicts are resolved in merge commits to branches with the "we/" prefix
 # in their names. This _pull_we function checks if the corresponding
@@ -73,7 +79,7 @@ _pull_we() {
     if [ $? -eq 0 ]; then
         branch_name="${we_branch_name}"
     fi
-    git pull --no-rebase --no-edit origin "${branch_name}"
+    _git_pull origin "${branch_name}"
 }
 
 prepare() {
@@ -82,7 +88,7 @@ prepare() {
     # If merging upstream master fails, please do the following:
     # 1) comment this line out to finish the build;
     # 2) flag the package out-of-date.
-    git pull --no-rebase --no-edit "${_upstream_url}" master
+    _git_pull "${_upstream_url}" master
 
     # If you wish to include a fix or a feature from one of vedgy's pull requests
     # (https://github.com/goldendict/goldendict/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+author%3Avedgy),
