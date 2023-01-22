@@ -7,9 +7,11 @@ pkgbase = avisynth-plugin-fillborders-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-fillborders
 	conflicts = avisynth-plugin-fillborders
+	options = debug
 	source = fillborders::git+https://github.com/Asd-g/AviSynth-FillBorders.git
 	sha256sums = SKIP
 
