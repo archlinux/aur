@@ -2,12 +2,13 @@
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: xaw <xawl.ch@gmail.com>
+
 pkgname=cwm
-pkgver=6.7
+pkgver=7.1
 pkgrel=1
-pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
-arch=('i686' 'x86_64')
-url="http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1"
+pkgdesc="Fork of calmwm, a clean and lightweight window manager"
+arch=('x86_64')
+url="https://github.com/leahneukirchen/cwm"
 license=('BSD')
 depends=('libxft' 'libxrandr')
 changelog=cwm.changelog
