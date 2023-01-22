@@ -1,5 +1,6 @@
 post_install() {
     systemctl daemon-reload
+    systemctl is-enabled --quiet cellframe-node.service && systemctl start cellframe-node.service
 
     cat << EOF
 
