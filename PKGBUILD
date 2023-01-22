@@ -8,7 +8,7 @@ arch=(any)
 url='https://github.com/fthx/dock-from-dash'
 license=(GPL3)
 depends=('gnome-shell')
-makedepends=('git')
+makedepends=('git' 'meson')
 source=('dock-from-dash::git+https://github.com/fthx/dock-from-dash')
 md5sums=('SKIP')
 

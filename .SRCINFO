@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-dock-from-dash-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = meson
 	depends = gnome-shell
 	source = dock-from-dash::git+https://github.com/fthx/dock-from-dash
 	md5sums = SKIP
