@@ -1,15 +1,17 @@
 pkgbase = avisynth-plugin-masktools2-git
 	pkgdesc = Plugin for Avisynth: masktools2 (GIT version)
-	pkgver = 2.2.28.2.g46ee710
+	pkgver = 2.2.30.0.g44e178b
 	pkgrel = 1
 	url = https://github.com/pinterf/masktools
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-masktools2
 	conflicts = avisynth-plugin-masktools2
+	options = debug
 	source = masktools2::git+https://github.com/pinterf/masktools.git
 	sha256sums = SKIP
 
