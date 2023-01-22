@@ -2,16 +2,16 @@
 pkgname=easierconnect-git
 _pkgname=${pkgname%-git}
 pkgver=TestBuild8.r1.262fd42
-pkgrel=1
+pkgrel=2
 pkgdesc="Sangfor EasyConnect protocol reimplementation in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lyc8503/EasierConnect"
 license=('AGPL3')
 depends=('glibc')
 makedepends=('git' 'go')
-provides=(_pkgname)
-conflicts=(_pkgname)
-source=(${_pkgname}::git+${url}.git)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
