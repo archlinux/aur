@@ -6,7 +6,7 @@ pkgbase = comma-ide-community
 	install = comma-ide.install
 	arch = any
 	license = APACHE
-	depends = java-runtime
+	depends = java-runtime>=11
 	optdepends = rakudo-star
 	optdepends = rakudo
 	provides = comma-ide

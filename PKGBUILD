@@ -12,7 +12,7 @@ pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
 url='https://commaide.com/'
 license=('APACHE')
-depends=('java-runtime')
+depends=('java-runtime>=11')
 optdepends=('rakudo-star' 'rakudo')
 source=('https://commaide.com/download/community/linux'
         'comma-ide-community.desktop')
