@@ -2,20 +2,25 @@
 
 _plug=assrender
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=0.35.0.g9c0e536
+pkgver=0.35.11.gae23131
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/pinterf/assrender'
 license=('GPL')
-depends=('avisynthplus')
+depends=('libavisynth.so'
+         'libass.so'
+         )
 makedepends=('git'
              'cmake'
+             'avisynthplus'
+             'libass'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/assrender.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -43,5 +48,5 @@ build() {
 package(){
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avistnth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/docs/README.md" "${pkgdir}/usr/share/doc/avistnth/plugins/${_plug}/README.md"
 }
