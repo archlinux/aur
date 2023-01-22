@@ -1,9 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=lsmashsource
-pkgbase="foosynth-plugin-${_plug}-git"
+pkgbase=foosynth-plugin-${_plug}-git
 pkgname=("vapoursynth-plugin-${_plug}-git")
-pkgver=vA.5a.0.gebe2ad2
+pkgver=A.5b.0.gfb891d0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -25,13 +25,13 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/AmusementClub/L-SMASH-Works.git#branch=ffmpeg-4.5")
+source=("${_plug}::git+https://github.com/AkarinVS/L-SMASH-Works.git#branch=ffmpeg-4.5")
 sha256sums=('SKIP')
 options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
@@ -42,13 +42,10 @@ prepare() {
 
 build() {
   cd build
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-
   arch-meson "../${_plug}/VapourSynth" \
     --buildtype=release
 
   ninja
-
 }
 
 package_vapoursynth-plugin-lsmashsource-git() {

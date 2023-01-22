@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-lsmashsource-git
 	pkgdesc = Plugin for Vapoursynth: lsmashsource (GIT version)
-	pkgver = vA.5a.0.gebe2ad2
+	pkgver = A.5b.0.gfb891d0
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=167435
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = foosynth-plugin-lsmashsource-git
 	provides = vapoursynth-plugin-lsmashsource
 	conflicts = vapoursynth-plugin-lsmashsource
 	options = debug
-	source = lsmashsource::git+https://github.com/AmusementClub/L-SMASH-Works.git#branch=ffmpeg-4.5
+	source = lsmashsource::git+https://github.com/AkarinVS/L-SMASH-Works.git#branch=ffmpeg-4.5
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-lsmashsource-git
