@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver='22.9.1.23270'
+pkgver='22.10.1.24120'
 pkgrel='1'
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
@@ -12,9 +12,9 @@ source=("${pkgbasename}.tar.xz::https://dl.internal.myteam.mail.ru/downloads/lin
         "${pkgbasename}.sh"
         "${pkgbasename}.png"
         "${pkgbasename}.desktop")
-sha256sums=('SKIP'
+sha256sums=('b3b7fb4e1e95802ebac1256985e640de3b8b7c807fd56bdc539f9e7f0028c50e'
             'a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b'
-            '455842f3b3045a590e03372ae1f9ca75fc935d2cc829c379eaf01acefba97d68'
+            'f4d3d9c11bcfd458a44f6e555bd753284b680c25977ddcfdf6039ea3ba65a75a'
             '72e1ea7734ff394278a2593b0f630e07dbbc4f51726118c9afb043078f10d93b')
 options=('!strip')
 
