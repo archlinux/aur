@@ -3,7 +3,7 @@
 _name=twofactor_webauthn
 pkgname=nextcloud-app-twofactor-webauthn
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebAuthn Two-Factor Provider for Nextcloud"
 arch=('any')
 url="https://apps.nextcloud.com/apps/twofactor_webauthn"
@@ -17,7 +17,7 @@ sha512sums=('4d571dc855976a8186b751bc105ea3f436cc3704e8421b778a997a6610236490118
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
