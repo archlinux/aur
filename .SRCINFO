@@ -1,7 +1,7 @@
 pkgbase = opengothic
 	pkgdesc = Open source remake of Gothic 2: Night of the raven
 	pkgver = 1.0.1878
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Try/OpenGothic
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = opengothic
 	depends = libxcursor
 	depends = vulkan-icd-loader
 	options = !emptydirs
-	source = git+https://github.com/Try/OpenGothic#commit=81715b1d70856a6f20d38a3e81e4ba8ba913d3e3
+	source = git+https://github.com/Try/OpenGothic#commit=fb34da9b0a4dec6f3582fea1d84acc9d64718261
 	source = git+https://github.com/Try/Tempest.git
 	source = git+https://github.com/schellingb/TinySoundFont.git
 	source = git+https://github.com/bulletphysics/bullet3.git
