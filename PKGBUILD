@@ -2,7 +2,8 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
-pkgname=radium
+pkgbase=radium7
+pkgname=radium7
 pkgver=7.1.68
 pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
