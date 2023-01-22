@@ -4,7 +4,7 @@
 
 pkgname=sic-image-cli-git
 _pkgname=sic
-pkgver=0.21.0.r0.gf0cbdc1
+pkgver=0.21.1.r2.g45857c5
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal (git)"
 arch=('x86_64')
