@@ -21,7 +21,7 @@ _id=374
 
 pkgname=cnijfilter-${_name}
 pkgver=3.40
-pkgrel=11
+pkgrel=12
 _pkgver=3.40-1
 pkgdesc="Canon IJ Printer Driver (${_name} series)"
 url="http://support-au.canon.com.au/contents/AU/EN/0100302002.html"
@@ -32,12 +32,14 @@ source=(http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-${_pkgver}
         fix_cups.patch
         fix_png.patch
         fix_ppd_mg5200.patch
-        fix_configures.patch)
+        fix_configures.patch
+        fix_include.patch)
 md5sums=('609975a05d6050fcca88f312d3f35c6a'
-         '1355804664f5901c68a446de36d933de'
+         '07582e895d0c7c8ba4138312f65e5d51'
          '5f665042df2175da3629667aaf258782'
-         '6d87bce9cd0ab8c1b35685e2341b089e'
-         '607b0e194f74bf7663ef13641f62a31a')
+         '5b109e23c63c76828e11cca7a009c11b'
+         '607b0e194f74bf7663ef13641f62a31a'
+         '7eebe1f71bbbc1ec6384cf248d758375')
 
 if [ "$CARCH" == "x86_64" ]; then  
 	_libdir=libs_bin64
@@ -49,10 +51,11 @@ build() {
 	## Apply patches
 	cd ${srcdir}/cnijfilter-source-${_pkgver}
 	patch -p1 -i ${srcdir}/fix_cups.patch || return 1
+	patch -p1 -i ${srcdir}/fix_include.patch || return 1
 	patch -p1 -i ${srcdir}/fix_png.patch || return 1
 	patch -p1 -i ${srcdir}/fix_ppd_mg5200.patch || return 1
 	patch -p1 -i ${srcdir}/fix_configures.patch || return 1
-	
+
 	## Compile model specific stuff
 	# ppd file
 	msg "Compile PPD file..."

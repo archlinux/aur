@@ -1,0 +1,11 @@
+--- a/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2023-01-19 22:33:43.854884761 +0100
++++ b/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2023-01-19 22:34:35.562149561 +0100
+@@ -33,7 +33,7 @@
+ #include <signal.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+-#include <sys/sysctl.h>
++#include <linux/sysctl.h>
+ #include <config.h>
+ 
+ #include <dlfcn.h>

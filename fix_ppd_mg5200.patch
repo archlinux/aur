@@ -55,7 +55,7 @@ diff -Naur a/ppd/canonmg5200.ppd b/ppd/canonmg5200.ppd
  *OpenUI *PageSize/Page Size: PickOne
  *DefaultPageSize: A4
  *PageSize Letter/Letter 8.5"x11" 215.9x279.4mm: "<</CNPageSizeName(Letter)/PageSize[612 792]/ImagingBBox null>>setpagedevice"
-@@ -246,9 +278,9 @@
+@@ -236,9 +268,9 @@
  
  *OpenUI *Duplex/Automatic Duplex Printing: PickOne
  *DefaultDuplex: None
