@@ -8,9 +8,11 @@ pkgbase = avisynth-plugin-dedot-git
 	license = Apache
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-dedot
 	conflicts = avisynth-plugin-dedot
+	options = debug
 	source = dedot::git+https://github.com/Asd-g/AviSynth-DeDot.git
 	sha256sums = SKIP
 
