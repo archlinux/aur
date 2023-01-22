@@ -1,0 +1,16 @@
+pkgbase = drophost-git
+	pkgdesc = A simple drop-in /etc/hosts generator
+	pkgver = r2.89ae21b
+	pkgrel = 0
+	url = https://github.com/KodiCraft/drophost.git
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = python
+	makedepends = git
+	conflicts = drophost
+	source = drophost-git::git+https://github.com/KodiCraft/drophost.git
+	sha256sums = SKIP
+
+pkgname = drophost-git
