@@ -7,9 +7,11 @@ pkgbase = avisynth-plugin-bilateral-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = avisynthplus
+	makedepends = avisynthplus
+	depends = libavisynth.so
 	provides = avisynth-plugin-bilateral
 	conflicts = avisynth-plugin-bilateral
+	options = debug
 	source = bilateral::git+https://github.com/Asd-g/AviSynth-Bilateral.git
 	sha256sums = SKIP
 
