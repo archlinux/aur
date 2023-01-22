@@ -3,7 +3,7 @@
 
 pkgname=wasm-micro-runtime
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=('x86_64')
 url="https://github.com/bytecodealliance/wasm-micro-runtime"
@@ -22,9 +22,17 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
+	cmake \
+		-B build-lib \
+		-S "$pkgname-WAMR-$pkgver" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
 	cmake --build build
+	cmake --build build-lib
 }
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="${pkgdir}" cmake --install build-lib
 }
