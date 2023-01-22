@@ -1,8 +1,8 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r2441.44d10c1d
+pkgver=r2623.8c2476e6
 pkgrel=1
-pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
+pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts (git development branch)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
 provides=('murex')
@@ -21,6 +21,7 @@ prepare(){
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  git checkout develop
   go mod vendor
 }
 
