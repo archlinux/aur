@@ -2,7 +2,7 @@
 pkgname=easierconnect-git
 _pkgname=${pkgname%-git}
 pkgver=TestBuild8.r1.262fd42
-pkgrel=2
+pkgrel=3
 pkgdesc="Sangfor EasyConnect protocol reimplementation in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lyc8503/EasierConnect"
@@ -26,12 +26,12 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o build .
 }
 
 check() {
@@ -41,6 +41,6 @@ check() {
 
 package() {
     cd "$_pkgname"
-	install -Dm755 build/EasierConnect "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+    install -Dm755 build/EasierConnect "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
 }
