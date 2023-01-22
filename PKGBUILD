@@ -3,45 +3,58 @@
 # Contributor: David Santiago <demanuel@ymail.com>
 # Contributor: jokersus <jokersus.cava@gmail.com>
 
-pkgname=comma-ide-community
+pkgbase=comma-ide-community
+pkgname=(comma-ide-community comma-ide-community-jre)
 pkgrel=1
 pkgver=2022.10.0
 pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
 url='https://commaide.com/'
 license=('APACHE')
-depends=('java-runtime>=11')
-optdepends=('rakudo-star' 'rakudo')
-source=('https://commaide.com/download/community/linux'
+source=("$pkgbase-$pkgver.tar.gz::https://commaide.com/download/community/linux"
         'comma-ide-community.desktop')
 sha256sums=('b8fca82237f3d3c0ee1c67e8a4829248c04da9ec9434a917b36c523fcc3b99d4'
             '79770c7c0b602cd07266da5727afd62eb12e01d7de82e588c216bac7419ff971')
-install=comma-ide.install
 
 _binname=comma
 _tarname=comma-community-${pkgver}
 _installdir='/opt'
 
-build() {
-  sed -i "s/Version=/Version=${pkgver}/" "${pkgname}.desktop"
-  sed -i "s#Exec=#Exec=\"${_installdir}/${pkgname}/bin/${_binname}.sh\" %f#" "${pkgname}.desktop"
-  sed -i "s/Icon=/Icon=${pkgname}/" "${pkgname}.desktop"
+prepare() {
+  rm -rf "$srcdir/jbr"
+  mv "${srcdir}/${_tarname}/jbr" "$srcdir/jbr"
 }
 
-package() {
-  # No direct link, look at source
-  tar -xzvf linux
+build() {
+  sed -i "s/Version=/Version=${pkgver}/" "${pkgbase}.desktop"
+  sed -i "s#Exec=#Exec=\"${_installdir}/${pkgbase}/bin/${_binname}.sh\" %f#" "${pkgbase}.desktop"
+  sed -i "s/Icon=/Icon=${pkgbase}/" "${pkgbase}.desktop"
+}
+
+package_comma-ide-community() {
+  optdepends=(
+    'rakudo-star' 'rakudo'
+    'comma-ide-community-jre: JetBrains custom JRE (Recommended)'
+    'java-runtime=11: Required if comma-ide-community-jre is not installed'
+  )
+  install=comma-ide.install
 
   install -dm755 "${pkgdir}${_installdir}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/applications"
   install -dm755 "${pkgdir}/usr/share/icons"
 
-  cp -a "${srcdir}/${_tarname}/" "${pkgdir}${_installdir}/${pkgname}"
-  rm -rf "${pkgdir}${_installdir}/${pkgname}/jbr"
+  cp -a "${srcdir}/${_tarname}/" "${pkgdir}${_installdir}/${pkgbase}"
 
-  ln -s "${_installdir}/${pkgname}/bin/comma.sh" "${pkgdir}/usr/bin/${_binname}"
-  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  ln -s "${_installdir}/${pkgbase}/bin/comma.sh" "${pkgdir}/usr/bin/${_binname}"
+  install -m644 "${srcdir}/${pkgbase}.desktop" "${pkgdir}/usr/share/applications"
 
-  ln -s "${_installdir}/${pkgname}/bin/comma.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  ln -s "${_installdir}/${pkgbase}/bin/comma.png" "${pkgdir}/usr/share/icons/${pkgbase}.png"
+}
+
+package_comma-ide-community-jre() {
+  pkgdesc='JBR (Jetbrains Runtime) for Comma IDE - a patched JRE'
+
+  install -dm755 "${pkgdir}${_installdir}/$pkgbase"
+  mv "$srcdir/jbr" "${pkgdir}${_installdir}/$pkgbase"
 }

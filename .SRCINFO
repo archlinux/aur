@@ -3,15 +3,19 @@ pkgbase = comma-ide-community
 	pkgver = 2022.10.0
 	pkgrel = 1
 	url = https://commaide.com/
-	install = comma-ide.install
 	arch = any
 	license = APACHE
-	depends = java-runtime>=11
-	optdepends = rakudo-star
-	optdepends = rakudo
-	source = https://commaide.com/download/community/linux
+	source = comma-ide-community-2022.10.0.tar.gz::https://commaide.com/download/community/linux
 	source = comma-ide-community.desktop
 	sha256sums = b8fca82237f3d3c0ee1c67e8a4829248c04da9ec9434a917b36c523fcc3b99d4
 	sha256sums = 79770c7c0b602cd07266da5727afd62eb12e01d7de82e588c216bac7419ff971
 
 pkgname = comma-ide-community
+	install = comma-ide.install
+	optdepends = rakudo-star
+	optdepends = rakudo
+	optdepends = comma-ide-community-jre: JetBrains custom JRE (Recommended)
+	optdepends = java-runtime=11: Required if comma-ide-community-jre is not installed
+
+pkgname = comma-ide-community-jre
+	pkgdesc = JBR (Jetbrains Runtime) for Comma IDE - a patched JRE
