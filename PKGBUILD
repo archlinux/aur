@@ -11,7 +11,7 @@ license=(custom:ISC)
 depends=(
   glibc
   gnutls
-  libaml.so
+  aml
   libpixman-1.so
   libturbojpeg.so
   zlib
