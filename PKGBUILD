@@ -13,7 +13,7 @@ makedepends=('cargo' 'git' 'clang')
 conflicts=("hyprland-autoname-workspaces" "hyprland-autoname-workspaces-bin")
 provide=("hyprland-autoname-workspaces")
 source=("git+https://github.com/cyrinux/${_pkgname}.git")
-validpgpkeys=('4F7BC1FD97170A79267686A6FC9B1319726657D3', 'C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
+validpgpkeys=('C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E')
 sha256sums=('SKIP')
 
 pkgver() {
