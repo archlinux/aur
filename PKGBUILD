@@ -3,7 +3,7 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.5.3
+pkgver=4.5.7
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
@@ -21,7 +21,7 @@ provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz"
         "block-sponsored_messages.patch")
-sha512sums=('24bccd1089c85aa9b265df9e30eedee783670b516c7d091c87d0ac118c88ef5727ad84cc11a8e1c0115c6ecc2c2865ab1303c2be0d36f031c888768a1ea50523'
+sha512sums=('cf5b9c19160b210e6fa040d4633c965c3b68e3a01c26eabd3153ac61e1b257abc93a4ba766e1ec85fef69150ca2ab392f57cbae87bd0b5d28b1f0670f15c1937'
             'a52be36a626a79442c1f34496a1444e8012515f67a8899a34c5a97109a847a6a5d8c87f866c5c6315b87bfe411e902315a64cf93d413d7bf070b819a5f93d828')
 
 prepare() {
