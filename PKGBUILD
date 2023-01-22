@@ -4,7 +4,7 @@
 _name=passwords
 pkgname=nextcloud-app-passwords
 pkgver=2022.12.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use yet feature-rich and secure password manager for Nextcloud'
 arch=('any')
 url="https://apps.nextcloud.com/apps/passwords"
@@ -18,7 +18,7 @@ sha512sums=('b11817700c9e9572071566c22ebe6ea03b6832e183a466868b5f3ff49881afcab87
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
