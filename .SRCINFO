@@ -1,9 +1,8 @@
 pkgbase = cwm-git
-	pkgdesc = OpenBSD fork of calmwm, a clean and lightweight window manager
+	pkgdesc = Fork of calmwm, a clean and lightweight window manager (git version)
 	pkgver = 20220430
 	pkgrel = 1
-	url = http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1
-	arch = i686
+	url = https://github.com/leahneukirchen/cwm
 	arch = x86_64
 	license = custom
 	makedepends = git
@@ -15,7 +14,7 @@ pkgbase = cwm-git
 	conflicts = cwm
 	source = cwm-git::git+https://github.com/leahneukirchen/cwm.git#branch=linux
 	source = cwm.desktop
-	md5sums = SKIP
-	md5sums = 42530ce5a23fc5f9088d891e325d99bd
+	sha256sums = SKIP
+	sha256sums = 083d54f4e80b4a96c1f749379a9277696de0c65e030c284eeb14e9671f9aa7f3
 
 pkgname = cwm-git
