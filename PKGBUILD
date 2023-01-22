@@ -2,7 +2,7 @@
 
 _plug=fluxsmooth
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=v1.4.8.g1fa2628
+pkgver=1.4.9.g3287f81
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {

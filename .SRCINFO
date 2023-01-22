@@ -1,6 +1,6 @@
 pkgbase = avisynth-plugin-fluxsmooth-git
 	pkgdesc = Plugin for Avisynth: fluxsmooth (GIT version)
-	pkgver = v1.4.8.g1fa2628
+	pkgver = 1.4.9.g3287f81
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=176246
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = avisynth-plugin-fluxsmooth-git
 	sha256sums = SKIP
 
 pkgname = avisynth-plugin-fluxsmooth-git
-
