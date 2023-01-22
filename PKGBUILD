@@ -1,4 +1,7 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Philip Goto <philip.goto@gmail.com>
+
+## GPG key: https://github.com/roderickvd.gpg
 
 pkgname=librespot
 pkgver=0.4.2
