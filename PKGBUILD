@@ -4,7 +4,7 @@
 _name=ldap_contacts_backend
 pkgname=nextcloud-app-ldap_contacts_backend
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LDAP backend for Contacts"
 arch=('any')
 url="https://apps.nextcloud.com/apps/ldap_contacts_backend"
@@ -18,7 +18,7 @@ sha512sums=('08a6aca278a69d2a65a7b52796a9722035d5071971e97798df428210fdbbec7e60b
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php7 php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"

@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-ldap_contacts_backend
 	pkgdesc = LDAP backend for Contacts
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.nextcloud.com/apps/ldap_contacts_backend
 	arch = any
 	license = AGPL3
