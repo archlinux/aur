@@ -4,8 +4,8 @@ pkgbase=avisynthplus-git
 pkgname=('avisynthplus-git'
          'avisynthplus-docs-git'
          )
-pkgver=v3.7.1a.28.g99ac18bc
-pkgrel=2
+pkgver=3.7.2.188.g25601720
+pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
 url='http://avs-plus.net'
@@ -21,7 +21,7 @@ options=('debug')
 
 pkgver() {
   cd avisynthplus
-  echo $(git describe --long --tags | tr - .)
+  echo $(git describe --long --tags | tr - . | tr -d v)
 }
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cmake -S avisynthplus -B build \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_CUDA=OFF
 
@@ -41,7 +41,9 @@ build() {
 
 package_avisynthplus-git() {
   depends=('devil')
-  provides=('avisynthplus')
+  provides=('avisynthplus'
+            'libavisynth.so'
+            )
   conflicts=('avisynthplus')
 
   DESTDIR="${pkgdir}" cmake --build build --target install
