@@ -1,5 +1,5 @@
 pkgname=mingw-w64-boost
-pkgver=1.80.0
+pkgver=1.81.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "context-cross.patch" "stacktrace-cross.patch")
-sha256sums=('1e19565d82e43bc59209a168f5ac899d3ba471d55c7610c677d4ccf2c9c500c0'
+sha256sums=('71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa'
             '844e163845ea6e7ae1f8d26cb52f72c6e4645cdade1be081bc1d2cff5db0a918'
             '333791abd17ea192e0aa90185bfb8938e8e3dc102b284db316b061b2067e2fc2')
 
@@ -26,6 +26,9 @@ prepare() {
 
   # bypass libbacktrace detection
   patch -p1 -d libs/stacktrace -i "${srcdir}"/stacktrace-cross.patch
+
+  # sys/mman.h
+  curl -L https://github.com/boostorg/context/pull/217.patch | patch -p2
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
