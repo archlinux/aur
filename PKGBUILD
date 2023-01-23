@@ -52,8 +52,11 @@ makedepends=(
              'python-setuptools-scm'
              'python-pytest-xvfb'
              'python-pytest-qt'
+             'python-pytest-runner'
              'python-sphinx'
              'python-wheel'
+             'python-installer'
+             'python-build'
             )
 source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
         'RNAlysis.svg')
