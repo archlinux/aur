@@ -47,17 +47,22 @@ depends=(
 makedepends=(
              'python-pip'
              'gendesk'
-             'python-pytest'
              'python-setuptools'
              'python-setuptools-scm'
-             'python-pytest-xvfb'
-             'python-pytest-qt'
-             'python-pytest-runner'
              'python-sphinx'
              'python-wheel'
              'python-installer'
              'python-build'
             )
+
+checkdepends=(
+            'python-pytest-runner'
+            'python-pytest'
+            'python-anyio'
+            'python-pytest-xvfb'
+            'python-pytest-qt'
+             )
+
 source=(${_name}-${pkgver}.tar.gz::https://github.com/GuyTeichman/RNAlysis/archive/refs/tags/V"${pkgver}".tar.gz
         'RNAlysis.svg')
 
