@@ -1,33 +1,31 @@
-# Maintainer: Thomas Roos <mail [at] thomasroos.nl>
-# Co-maintainer: Liam Timms <timms5000@gmail.com>
-# Contributor: wedjat <wedjat@protonmail.com>
-# Contributor: Masoud <mpoloton@gmail.com>
-
+# Maintainer: Liam Timms <timms5000@gmail.com>
+# Co-maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-openai
-_pkgname=openai
+_name=${pkgname#python-}
 pkgver=0.26.1
-pkgrel=1
-pkgdesc='convenient access to the OpenAI API from applications written in the Python language.'
+pkgrel=2
+pkgdesc="Python client library for the OpenAI API"
 arch=('any')
-url='https://openai.com/'
+url="https://openai.com"
 license=('MIT')
-depends=('python' 'python-requests' 'python-tqdm' 'python-pandas' 'python-openpyxl' 'python-pandas-stubs')
-makedepends=('python-setuptools')
-optdepends=()
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/openai/${_pkgname}-python/archive/v${pkgver}.tar.gz")
-sha512sums=('b0390cd7cd541ab670ac7958f71884582b49d94c57027189cc84899ed3d38993a0d5610df25af494e4877cfd6e32e28fb88e38deb36ac512f9650975c0ba94f5')
+depends=('python-aiohttp' 'python-requests' 'python-tqdm')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-numpy: optional because of size. See `openai/datalib.py`'
+            'python-pandas: Needed for CLI fine-tuning data preparation tool'
+            'python-pandas-stubs: Needed for type hints for mypy'
+            'python-openpyxl: Needed for CLI fine-tuning data preparation tool xlsx format')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('85cbe75e0646ab38a0e4b4184237c69b3870721e3c1232341289966bccd98522')
 
-build()
-{
-  	cd "$srcdir/${_pkgname}-python-$pkgver"
-  	python setup.py build
+build() {
+  cd "${_name}-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
+package() {
+  cd "${_name}-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-package()
-{
-  	cd "$srcdir/${_pkgname}-python-$pkgver"
-	python setup.py install --skip-build --root="$pkgdir" --optimize=1
-      install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
