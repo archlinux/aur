@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phyclust
-_pkgver=0.1-32
+_pkgver=0.1-33
 pkgname=r-${_pkgname,,}
-pkgver=0.1.32
+pkgver=0.1.33
 pkgrel=1
 pkgdesc='Phylogenetic Clustering (Phyloclustering)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   r-ape
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc78f878ef0424e5c7e20669efdf1a74916cdd8c8e204217d6f7a4abe7bf42bd')
+sha256sums=('38786608193bcad6aeb5517f2d5f836c9773bdd09fc484b4bd40b06a71f5a413')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
