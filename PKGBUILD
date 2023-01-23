@@ -7,7 +7,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=20.0.1
+pkgver=20.1.0
 pkgrel=1
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -15,7 +15,6 @@ url=https://www.asterisk.org
 license=(GPL)
 depends=(alsa-lib
          curl
-         imap
          jansson
          libedit
          libvorbis
@@ -150,7 +149,7 @@ source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archiv
         "$pkgname.sysusers"
         "$pkgname.logrotated"
         "$pkgname.tmpfiles")
-sha256sums=('52ae561893553f6cdaf3b295182f5d55dc8b950d210356a19708775cabe20085'
+sha256sums=('4364dc762652e2fd4d3e7dc8428c83550ebae090b8a0e9d4820583e081778883'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
@@ -158,16 +157,11 @@ sha256sums=('52ae561893553f6cdaf3b295182f5d55dc8b950d210356a19708775cabe20085'
 build() {
 	cd "$_archive"
 
-	# Work around Cyrus bug #2629
-	# https://github.com/cyrusimap/cyrus-imapd/issues/2629
-	export LDFLAGS="${LDFLAGS/,--as-needed}"
-
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
-		--sbindir=/usr/bin \
-		--with-imap=system
+		--sbindir=/usr/bin
 
 	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$pkgname" NOISY_BUILD=1
 }
