@@ -1,0 +1,16 @@
+pkgbase = mecab-ipadic-git
+	pkgdesc = Yet another Japanese morphological analyzer (IPADIC dictionary)
+	pkgver = r154.046fa78
+	pkgrel = 2
+	url = https://taku910.github.io/mecab
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = mecab
+	provides = mecab-ipadic
+	conflicts = mecab-ipadic
+	source = git+https://github.com/taku910/mecab.git
+	sha512sums = SKIP
+
+pkgname = mecab-ipadic-git
