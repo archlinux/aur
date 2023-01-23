@@ -1,7 +1,7 @@
 pkgname=home-assistant-service-pip
 _serviceName=hass
 pkgdesc='Self installing package of Home Assistant using pip'
-pkgver=5
+pkgver=6
 pkgrel=1
 arch=('any')
 url='https://home-assistant.io/'
@@ -32,16 +32,16 @@ depends=(
 	python-sqlalchemy
 	python-voluptuous
 	python-voluptuous-serialize
+	python-wheel
 	python-yaml
 	python-yarl
 	python-zeroconf
 	python
+	rust
 )
 optdepends=(
 	'net-tools: Nmap host discovery'
 	'openzwave: Z-Wave integration'
-	'python-dtlssocket: Ikea Tradfri integration'
-	'python-lxml: Meteo France integration'
 )
 source=("${_serviceName}.service" "${_serviceName}-update.service" "${_serviceName}.sysusers" "${_serviceName}.tmpfiles" "${_serviceName}.env")
 sha256sums=('548860a0b1eac13c062afb286f4a971f27a9a41d10d9923d5486dc99d76cc5d7'

@@ -9,15 +9,21 @@ Restart=on-failure
 User=hass
 Group=hass
 LogsDirectory=hass
-StateDirectory=hass
+StateDirectory=hass hass-installation
+CacheDirectory=hass
+Environment=CARGO_HOME=%C/hass/cargo
+Environment=PYTHON_EGG_CACHE=%C/hass/python-eggs
+Environment=VIRTUAL_ENV=%S/hass-installation
+Environment=XDG_CACHE_HOME=%C/hass
 WorkingDirectory=~
 
 EnvironmentFile=-/etc/hass.env
 
-ExecStart=python -m homeassistant \
-  --config "." \
-  --log-file "${LOGS_DIRECTORY}/home-assistant.log" \
-  --log-rotate-days 1
+ExecStart=%S/hass-installation/bin/python -m homeassistant \
+	--config "." \
+	--log-file "${LOGS_DIRECTORY}/home-assistant.log" \
+	--log-rotate-days 1
+
 RestartForceExitStatus=100
 
 LockPersonality=true
