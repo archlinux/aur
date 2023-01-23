@@ -2,7 +2,7 @@
 # Contributor: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
 
 pkgname="beancount-import-git"
-pkgver=r369.59615a5
+pkgver=1.3.5.r20.g59615a5
 pkgrel=1
 pkgdesc="Semi-automatic importer from external data sources into beancount"
 url="https://github.com/jbms/beancount-import"
@@ -25,7 +25,7 @@ sha256sums=("SKIP")
 
 pkgver(){
  cd "beancount-import"
- printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+ git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build(){
