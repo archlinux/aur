@@ -1,0 +1,15 @@
+pkgbase = wonderlab
+	pkgdesc = 下一代跨平台 Minecraft 启动器
+	pkgver = 1.0.1.4
+	pkgrel = 1
+	url = https://github.com/Blessing-Studio/WonderLab
+	arch = x86_64
+	groups = 
+	license = MIT
+	depends = dotnet-runtime-6.0
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/Blessing-Studio/WonderLab/releases/download/1.0.1.4/linux-x86_64.deb
+	sha512sums = SKIP
+
+pkgname = wonderlab
