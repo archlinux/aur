@@ -3,7 +3,7 @@
 
 pkgbase=imagemagick-fftw
 pkgname=(imagemagick-fftw)
-pkgver=7.1.0.51
+pkgver=7.1.0.58
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
@@ -17,7 +17,7 @@ _tarname=${pkgver%.*}-${pkgver##*.}
 _dirname=ImageMagick-$_tarname
 source=(https://github.com/ImageMagick/ImageMagick/archive/refs/tags/$_tarname.tar.gz
         arch-fonts.diff)
-sha256sums=('4333ef2fe63f2510988af82b726f5b1919ebd54037ea6674566c69fcceb67e11'
+sha256sums=('5767f49cf94bff82b558d79c8039f60c8ea4b51753c6e4b0f16a9442293cfa67'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
 
