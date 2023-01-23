@@ -22,7 +22,7 @@ pkgver() {
 package() {
   cd opendyslexic
   for otf in compiled/OpenDyslexic-*.otf; do
-    install -Dm644 $otf "$pkgdir"/usr/share/fonts/$pkgname/${otf##*/}
+    install -Dm644 $otf "$pkgdir"/usr/share/fonts/OTF/${otf##*/}
   done
   install -Dm644 OFL.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
