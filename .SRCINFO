@@ -1,0 +1,14 @@
+pkgbase = open-dyslexic-fonts-git
+	pkgdesc = Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia
+	pkgver = 0.91.12+30.ge7ac50af1a
+	pkgrel = 1
+	url = https://opendyslexic.org
+	arch = any
+	license = SIL-OFL
+	makedepends = git
+	provides = open-dyslexic-fonts
+	conflicts = open-dyslexic-fonts
+	source = git+https://github.com/antijingoist/opendyslexic.git
+	sha256sums = SKIP
+
+pkgname = open-dyslexic-fonts-git
