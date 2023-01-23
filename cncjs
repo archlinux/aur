@@ -1,4 +1,7 @@
-#!/usr/bin/sh
+#!/usr/bin/env node
 
-cd /usr/lib/cncjs
-env NODE_PATH=dist/cncjs/node_modules/ ./bin/cncjs "$@"
+const launchServer = require('/usr/lib/cncjs/server-cli').default;
+
+launchServer().catch(err => {
+  console.error('Error:', err);
+});
