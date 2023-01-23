@@ -1,0 +1,19 @@
+pkgbase = ofxstatement-intesasp-git
+	pkgdesc = This plugin parses the Intesa San paolo xlsx statement file
+	pkgver = r26.92111f1
+	pkgrel = 1
+	url = https://github.com/Jacotsu/ofxstatement-intesasp
+	arch = any
+	license = BSD-3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	depends = ofxstatement
+	depends = python-openpyxl
+	depends = python-dataclasses
+	options = !strip
+	source = git+https://github.com/Jacotsu/ofxstatement-intesasp
+	sha256sums = SKIP
+
+pkgname = ofxstatement-intesasp-git
