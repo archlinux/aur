@@ -8,14 +8,13 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL)
 source=("${pkgbase%-full}::git+https://github.com/HandBrake/HandBrake.git#tag=${pkgver}"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/d65d0ed4c75198d5ace79e424d4e81bb7a694426/trunk/fix-build-with-Werror-format-security.patch"
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.24.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-1.0.0.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.2.tar.gz'
@@ -41,7 +40,6 @@ optdepends=('libdvdcss: for decoding encrypted DVDs'
             'intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc')
 sha256sums=('SKIP'
-            '9e46ab5c9539bd0910780f38131097c4e3871acde70c89a92abfc8edc9ec2c21'
             '07d325da97a5a3cb58d83c54b2ce1148dc84dc9bb3971b0c30ff4cc16e159194'
             '4a4eb6cecbc8c26916ef58886d478243de8bcc46710b369c04d6891b0155ac0f'
             '7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90'
@@ -81,8 +79,6 @@ prepare() {
   for _tarball in ${noextract[@]}; do
     cp ../${_tarball} download/
   done
-
-  patch -Np1 -i ../fix-build-with-Werror-format-security.patch
 }
 
  build() {
