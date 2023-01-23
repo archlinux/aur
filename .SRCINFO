@@ -1,7 +1,7 @@
 pkgbase = gnome-commander
 	pkgdesc = Graphical two-pane filemanager for Gnome
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcmd.github.io/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = gnome-commander
 	makedepends = yelp-tools
 	makedepends = meson
 	makedepends = ninja
-	depends = python
 	depends = libgsf
 	depends = exiv2
 	depends = taglib
