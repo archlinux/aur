@@ -1,43 +1,40 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 _name='magicgui'
-_author='tlambert03'
+_author='pyapp-kit'
 pkgname="python-${_name}"
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.7.0rc0
+pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
 license=('BSD')
 makedepends=(
-  'python-setuptools-scm'
-  'python-dephell'
+  'python-build'
+  'python-hatch-vcs'
+  'python-installer'
 )
 depends=(
   'python'
-  'python-typing_extensions'
-  'python-qtpy'
-  'python-psygnal'
   'python-docstring-parser'
+  'python-psygnal'
+  'python-qtpy'
+  'python-superqt'
+  'python-typing_extensions'
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('fda7b20a6380623241dc9e2fd3317870e5e7e08521c6f98c38bbd68f81b450f7')
+sha256sums=('c42e1ef8eab15eb8ba7185eed37c41f2f5df701bb88754ebcca91655ff3757d8')
 provides=("python-${_name}")
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
