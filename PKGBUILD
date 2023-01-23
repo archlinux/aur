@@ -4,7 +4,7 @@
 
 pkgname=python-thinc
 _pkg="${pkgname#python-}"
-pkgver=8.1.6
+pkgver=8.1.7
 pkgrel=1
 pkgdesc='Practical Machine Learning for NLP'
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ license=('MIT')
 depends=(
 	'python-blis'
 	'python-catalogue'
+	'python-confection'
 	'python-cymem'
 	'python-mock'
 	'python-murmurhash'
@@ -28,7 +29,7 @@ depends=(
 makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-pytest' 'python-hypothesis' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('9241c37761f004fe684e637d2b4d8b79addebabc64e343aa1cba144fad2c9b47')
+sha256sums=('0f08f6d1fc50e28bf18814ca2b1c807cd4d59a930d713459a675e086c4779af9')
 
 prepare() {
 	cd "$_pkg-$pkgver"
@@ -42,10 +43,11 @@ build() {
 	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
+## FIXME tests dont import extensions properly
 # check() {
 # 	cd "$_pkg-$pkgver"
 # 	local _py="$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')"
-# 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" pytest -x thinc
+# 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$_py" pytest
 # }
 
 package() {
