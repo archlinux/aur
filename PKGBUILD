@@ -2,7 +2,7 @@
 
 pkgname=openenroth-git
 pkgver=r1740.67f04ebd2
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source engine reimplementation of Might & Magic 6, 7, and 8"
 arch=('x86_64')
 url="https://github.com/OpenEnroth/OpenEnroth"
@@ -34,9 +34,9 @@ package() {
 # We'll manually move the executable for now
 #	DESTDIR="$pkgdir" cmake --install build
 
-	install -d "${pkgdir}/usr/share/games/mm7/resources/shaders"
+	install -d "${pkgdir}/usr/share/games/mm7/shaders"
 
-	install -m 644 resources/shaders/* "${pkgdir}/usr/share/games/mm7/resources/shaders"
+	install -m 644 resources/shaders/* "${pkgdir}/usr/share/games/mm7/shaders"
 
 	install -D -m 755 "build/OpenEnroth" \
 		"$pkgdir/usr/bin/OpenEnroth"
