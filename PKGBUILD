@@ -1,52 +1,39 @@
-# Maintainer: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
-pkgname=beancount-import-git
-_name=${pkgname%-git}
-pkgver=1.3.3.r2.bd39126
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Carlos José Ruiz-Henestrosa Ruiz <ruizh.cj@gmail.com>
+
+pkgname="beancount-import-git"
+pkgver=r369.59615a5
 pkgrel=1
 pkgdesc="Semi-automatic importer from external data sources into beancount"
-arch=('any')
 url="https://github.com/jbms/beancount-import"
-license=('MIT')
-depends=('beancount>=2.1.3'
-         'python>=3.5'
-         'python-setuptools'
-         'python-tornado'
-         'python-numpy'
-         'python-scipy'
-         'python-scikit-learn'
-         'python-nltk'
-         'python-dateutil'
-         'python-atomicwrites>=1.3.0'
-         'python-jsonschema'
-         'python-watchdog')
+arch=("any")
+license=("MIT")
+depends=("beancount"
+         "python"
+         "python-atomicwrites"
+         "python-dateutil"
+         "python-jsonschema"
+         "python-nltk"
+         "python-numpy"
+         "python-scipy"
+         "python-scikit-learn"
+         "python-tornado"
+         "python-watchdog")
+makedepends=("git" "npm" "python-build" "python-installer" "python-wheel")
+source=("git+$url")
+sha256sums=("SKIP")
 
-makedepends=('git')
-
-provides=("beancount-import=${pkgver%%.r*}")
-conflicts=("beancount-import")
-source=('git://github.com/jbms/beancount-import.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/${_name}"
-
-  # The repo does not tag releases, so we have to get creative
-  _release_commit=$(git log -L '/version=/',+1:setup.py \
-                            --max-count=1 --pretty="format:%h" | \
-                    head --lines=1)
-  _ver=$(grep version setup.py | cut --delimiter="'" --fields=2)
-  printf "%s.r%s.%s" \
-    "${_ver}" \
-    "$(git rev-list --count ${_release_commit}..HEAD)" \
-    "$(git rev-parse --short HEAD)"
+pkgver(){
+ cd "beancount-import"
+ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/${_name}"
-  python setup.py build
+build(){
+ cd "beancount-import"
+ python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "$srcdir/${_name}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+package(){
+ cd "beancount-import"
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
