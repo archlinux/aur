@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rms
-_pkgver=6.4-0
+_pkgver=6.4-1
 pkgname=r-${_pkgname,,}
-pkgver=6.4.0
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7e24a370cdfedb79a99a21d85805503f48df53a478bacf93dc5ef70f229d2105')
+sha256sums=('d64f26f702f34e106e61344b45e2267372815cbf92bea39287fc671a3078b0ae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
