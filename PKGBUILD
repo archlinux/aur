@@ -1,14 +1,14 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
-_romname=gc_mq_d
-_romdesc="Ocarina of Time Master Quest Debug"
-pkgname=soh-otr-${_romname}
-pkgver=5.0.2.r69.g408143ec8
+vername=GC_MQ_D
+verdesc="Ocarina of Time Master Quest Debug"
+pkgname=soh-otr-${vername,,}
+pkgver=5.1.4.r35.g37f31116b
 pkgrel=1
 epoch=1   # For old versions of SoH, if available
-pkgdesc="OTR game data for SoH (${_romdesc})"
+pkgdesc="OTR game data for SoH (${verdesc})"
 arch=("any")
-url="https://github.com/HarbourMasters/Shipwright"
+url="https://shipofharkinian.com/"
 license=("unknown")
 provides=("soh-otr-mq")
 conflicts=("soh-otr-mq")
@@ -19,7 +19,7 @@ sha256sums=('bd82ccb54e94505549af7dc07b56dc83b3e63e1c65d525b6fb98ed1b56b8aecf')
 SHIP_PREFIX=/opt/soh
 
 pkgver() {
-  pacman -Qi soh-otr-exporter | grep Version | sed 's/.*: //;s/-.*$//'
+  pacman -Q soh-otr-exporter | sed -E 's/.* (.*)-.*$/\1/'
 }
 
 prepare() {
@@ -44,9 +44,9 @@ build() {
   [ -e Extract ] && rm -r Extract; mkdir Extract
   cp -r "${SHIP_PREFIX}"/assets/game Extract/assets
 
-  "assets/extractor/ZAPD.out" ed -eh -i "assets/extractor/xmls/${_romname^^}" \
+  "assets/extractor/ZAPD.out" ed -eh -i "assets/extractor/xmls/${vername}" \
     -b baserom.z64 -fl "assets/extractor/filelists" -o . -osf . -gsf 1 \
-    -rconf "assets/extractor/Config_${_romname^^}.xml" -se OTR --otrfile oot-mq.otr
+    -rconf "assets/extractor/Config_${vername}.xml" -se OTR --otrfile oot-mq.otr
 }
 
 package() {
