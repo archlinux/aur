@@ -1,16 +1,17 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: J. Nathanael Philipp (jnphilipp) <nathanael@philipp.land>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-en_core_web_sm
-pkgver=3.2.0
+pkgver=3.5.0
 pkgrel=1
-pkgdesc='English pretrained model for spaCy (small)'
+pkgdesc="English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer."
 arch=(any)
-url='https://spacy.io/models/en#section-en_core_web_sm'
+url="https://spacy.io/models/en#en_core_web_sm"
 license=(MIT)
 depends=(python-spacy)
 makedepends=(python-setuptools)
 source=("https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-${pkgver}/en_core_web_sm-${pkgver}.tar.gz")
-b2sums=('291b74cc33488594d5e969af82f191029c5db72780a6e3c4435d1890749dcdf3ac4f08b513878b507c211daeb0f0ed86cfc874e23bcc07035f97e0843ed423fc')
+sha256sums=("63d38fecdd4290635c7af4d4f6da50902bdc6c1732ce416b55c2b76c4b0c4626")
 
 build() {
 	cd en_core_web_sm-${pkgver}
