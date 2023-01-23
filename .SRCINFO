@@ -1,0 +1,14 @@
+pkgbase = python-pytchat
+	pkgdesc = Python library for fetching youtube live chat.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/taizan-hokuto/pytchat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = python-pytchat.tar.gz::https://github.com/taizan-hokuto/pytchat/archive/refs/tags/v0.5.5.tar.gz
+	sha512sums = f066b6322f1162b2395db397e6a0b8ec951bde6350a242abbffa00c9e456a9fb99f01b924dfcd89e77af9ba51ed728321ed90cb41c242b19c9b3fe374c4698ac
+
+pkgname = python-pytchat
