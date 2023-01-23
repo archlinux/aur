@@ -3,13 +3,13 @@
 
 pkgname=ect
 _pkgname=Efficient-Compression-Tool
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='file compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files.'
 url='https://github.com/fhanau/Efficient-Compression-Tool'
 arch=('i686' 'x86_64')
 license=('Apache')
-source=("git+$url.git#commit=230133d6a84149910f05b5d2c6e8ac3fff9de4a6")
+source=("git+$url.git#commit=503409a4de166ad1544adcb5d4e48fef308a2727")
 md5sums=('SKIP')
 depends=('gcc-libs')
 makedepends=('nasm' 'git' 'cmake')
