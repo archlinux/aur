@@ -4,12 +4,14 @@ _name='napari-svg'
 _author='napari'
 pkgname="${_name}"
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A plugin for writing svg files from napari.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
 license=('BSD')
 makedepends=(
+  'python-build'
+  'python-installer'
   'python-setuptools-scm'
 )
 depends=(
@@ -25,12 +27,12 @@ provides=("python-${_name}")
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
