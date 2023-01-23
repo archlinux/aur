@@ -2,18 +2,18 @@
 
 pkgname=duckypad-git
 _pkgname=duckyPad
-pkgver=r667.5fbb28d6
+pkgver=r778.5dc53ed1
 pkgrel=1
 pkgdesc="duckyPad configurator (git)"
 arch=('any')
-url="https://github.com/dekuNukem/duckyPad"
+url="https://github.com/jose1711/duckyPad"
 license=('MIT')
 provides=('duckypad')
 install=duckypad.install
 conflicts=('duckypad')
 depends=('python-hidapi' 'python-appdirs' 'python-pyautogui' 'tk')
 makedepends=('git' 'imagemagick' 'gendesk')
-source=("$pkgname"::"git+https://github.com/dekuNukem/${_pkgname}" "duckypad_config.sh" "duckypad.rules")
+source=("$pkgname"::"git+https://github.com/jose1711/${_pkgname}#branch=pythonhid" "duckypad_config.sh" "duckypad.rules")
 sha256sums=('SKIP'
             '922d72e28044cf0f524d8e56ecaf9b205a5f29df5ada41071f8a3b1425406bc3'
             '4ef8c49f2842f7a5ede9a6644be2a710bfcb43f074119c0c2abc29926169b06d')
