@@ -17,10 +17,9 @@ arch=('any')
 license=('Apache')
 depends=(
     'ros2-arch-deps'
-    'ros2-pyqt5-sip-compat'
+    'python-pyqt5-sip4'
     'assimp'
     'gmock'
-    'sip4'
 )
 source=(
     "ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210716"
