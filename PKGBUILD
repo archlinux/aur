@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1050.4268.ga12d7289
+pkgver=r1050.4812.g8424dcc5
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -78,7 +78,7 @@ celt_symbols=(
 build() {
   celt06_cflags="$CFLAGS -fPIC"
   for sym in ${celt_symbols[@]}; do
-    celt06_cflags+=" -D$sym=$(sed 's/[^_]\+/&_0061/' <<< $sym)"
+    celt06_cflags+=" -D$sym=${sym}_0061"
   done
   celt11_cflags="${celt06_cflags//_0061/_0110} -DCUSTOM_MODES=1"
 
