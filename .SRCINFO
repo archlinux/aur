@@ -1,7 +1,7 @@
 pkgbase = r-terra
 	pkgdesc = Spatial Data Analysis
 	pkgver = 1.6.53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=terra
 	arch = i686
 	arch = x86_64

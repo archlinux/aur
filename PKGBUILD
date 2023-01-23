@@ -4,10 +4,10 @@ _cranname=terra
 _cranver=1.6-53
 pkgname=r-${_cranname,,}
 pkgdesc="Spatial Data Analysis"
-url="https://cran.r-project.org/package=terra"
+url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
