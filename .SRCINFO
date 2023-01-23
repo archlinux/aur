@@ -1,13 +1,16 @@
 pkgbase = libstatsd-cpp
 	pkgdesc = Sends statsd metrics from C++
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/euskadi31/statsd-cpp
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = libstatsd-cpp-1.0.0::https://github.com/euskadi31/statsd-cpp/archive/refs/tags/v1.0.0.tar.gz
-	md5sums = 84bd4471367e734afe88d100fda6bb8c
+	makedepends = git
+	depends = gcc-libs
+	provides = libstatsd.so
+	source = libstatsd-cpp::git+https://github.com/euskadi31/statsd-cpp#commit=7e9da79?signed
+	validpgpkeys = 3DBFB14FE67E8A0B17FB0B88939129E47D364BCA
+	sha256sums = SKIP
 
 pkgname = libstatsd-cpp
-
