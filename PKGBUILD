@@ -41,20 +41,21 @@ prepare() {
   # use system vapoursynth headers
   rm -fr vsxx/VapourSynth
 
-  sed -e 's|"VapourSynth4.h"|<VapourSynth4.h>|g' \
-      -i vsxx/VapourSynth4++.hpp
-
-  sed 's| -I/usr/include/vapoursynth/||g' \
-     -i Makefile
+  sed -e "s| -Ivsxx/vapoursynth||g" \
+      -e '/VSConstants4/d' \
+      -e '/VapourSynth4.h/d' \
+      -e '/VapourSynth.h/d' \
+      -e '/VSHelper4.h/d'\
+      -i Makefile
 
 }
 
 build() {
-  cd "${_plug}"
   CXXFLAGS="${CXXFLAGS/-fno-plt/-fplt}"
   CPPFLAGS+=" $(pkg-config --cflags vapoursynth) -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\""
   LDFLAGS="${LDFLAGS/-z,now/-z,lazy}"
-  LC_ALL=C make V=1 X86=1 X86_AVX512=1
+
+  make -C "${_plug}" X86=1 X86_AVX512=1
 }
 
 package(){
