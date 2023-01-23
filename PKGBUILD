@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   sed -e 's|VapourSynth|$(pkg-config --cflags vapoursynth)|g' \
-      -e 's|-lvapoursynth-script|$(pkg-config --cflags vapoursynth-script)|g' \
+      -e 's|-lvapoursynth-script|$(pkg-config --libs vapoursynth-script)|g' \
       -i README.sh
 }
 
