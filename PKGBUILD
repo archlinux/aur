@@ -4,7 +4,7 @@
 pkgname=ttf-adobe-source-fonts
 pkgver=20220300900  # because there are three different versions installed by this package, pkgver does not adhere to the upstream version
 _pkgver_source_code_pro="2.038R-ro/1.058R-it/1.018R-VAR"
-_pkgver_source_serif="4.004R"
+_pkgver_source_serif="4.005R"
 _pkgver_source_sans="3.046R"
 pkgrel=1
 pkgdesc="TTF versions of Adobe's Source fonts (includes Source Sans, Source Serif, and Source Code Pro)."
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}-source-code-pro.tar.gz::https://github.com/adobe-f
         "${pkgname}-${pkgver}-source-sans.tar.gz::https://github.com/adobe-fonts/source-sans/archive/refs/tags/${_pkgver_source_sans}.tar.gz")
 noextract=("${source[@]%%::*}")
 sha256sums=('d8f879fefd66ecb7291ea2d73984b9c0a97fb499424e58290ba6b81787d0c725'
-            'dfb364735699cb830caad534cf7741234804d28e4b6fc5e4736b2401f6131aba'
+            '92415a067bfa449876cd3f4a4229d18a9140588574299696da81be0e213d69df'
             '7a0a3a0c9ff2740380eddc28a53b4b0dc99491da5f900f4add5af2d1a18e06bc')
 
 prepare() {
