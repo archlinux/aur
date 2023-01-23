@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TMB
-_pkgver=1.9.1
+_pkgver=1.9.2
 pkgname=r-${_pkgname,,}
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Template Model Builder: A General Random Effect Tool Inspired by 'ADMB'"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-parallel
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('897eb8c2abdcbf30b63b280b1992272ed88ea491853fd85ec9318c171f1afb0f')
+sha256sums=('041426e94bf33c6b5130f9da9e05de130aa6951cce19dc99171fb36efc50e54f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
