@@ -2,16 +2,17 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
 license=('BSD')
 makedepends=(
-  'python-setuptools-scm'
   'icoutils'
-  'python-dephell'
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
 )
 depends=(
   'napari-console'
@@ -19,31 +20,34 @@ depends=(
   'napari-plugin-engine'
   'napari-svg'
   'python'
-  'python-importlib-metadata'
+  'python-app-model'
   'python-appdirs'
   'python-cachey'
+  'python-certifi'
   'python-dask'
   'python-imageio'
   'python-jsonschema'
   'python-magicgui'
   'python-numpy'
   'python-numpydoc'
+  'python-opengl'
   'python-pandas'
   'python-pillow'
   'python-pint'
   'python-psutil'
   'python-psygnal'
   'python-pyaml'
-  'python-pydantic-latest'  # community package has been out of date for months
+  'python-pydantic'  # community package has been out of date for months
   'python-pygments'
   'python-qtpy'
   'python-scikit-image'
   'python-scipy'
+  'python-sphinx'
   'python-superqt'
   'python-tifffile'
-  'python-typing_extensions'
   'python-toolz'
   'python-tqdm'
+  'python-typing_extensions'
   'python-vispy'
   'python-wrapt'
   'qt5-python-bindings'
@@ -53,18 +57,13 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  'a14b96cf5f7314bf12e7300d30f42250848d9b87e3d414adf19ec876057e7b81'
+  '26def5271c7a0910182e9f6798a0ae13c7e4b1c3b746d1a4ff0a041db1aa3949'
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
 
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
@@ -72,7 +71,7 @@ package() {
   install -Dm644 ${_name}.desktop "${pkgdir}/usr/share/applications/${_name}.desktop"
 
   cd "${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
