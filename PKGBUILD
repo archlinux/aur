@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=8.1.0
+pkgver=8.1.1
 _pkgver=8.0
-pkgrel=2
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
-md5sums=('124cd2982c9f6535a4092da498a3e24c'
+md5sums=('e88956633cd67ea8276f8620e136c55e'
          'SKIP')
 
 
