@@ -1,5 +1,5 @@
 pkgname='ecode'
-pkgver='0.4.1'
+pkgver='0.4.2'
 pkgrel=1
 pkgdesc='lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.'
 arch=('x86_64')

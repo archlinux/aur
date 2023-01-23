@@ -1,6 +1,6 @@
 pkgbase = ecode
 	pkgdesc = lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/SpartanJ/eepp
 	arch = x86_64
