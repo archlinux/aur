@@ -1,6 +1,6 @@
 pkgbase = neatvnc-git
 	pkgdesc = VNC server library that's intended to be fast and neat
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/any1/neatvnc
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = neatvnc-git
 	depends = libglvnd
 	depends = libdrm
 	depends = ffmpeg
-	provides = neatvnc=0.5.1
+	provides = neatvnc=0.6.0
 	conflicts = neatvnc
 	source = git+https://github.com/any1/neatvnc
 	sha512sums = SKIP
