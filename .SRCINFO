@@ -1,0 +1,17 @@
+pkgbase = neovim-telescope-fzf-native-git
+	pkgdesc = FZF sorter for telescope written in c
+	pkgver = r58.gfab3e22
+	pkgrel = 1
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = neovim-telescope
+	provides = neovim-telescope-fzf-native
+	conflicts = neovim-telescope-fzf-native
+	source = neovim-telescope-fzf-native-git::git+https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-telescope-fzf-native-git
