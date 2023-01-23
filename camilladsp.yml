@@ -46,11 +46,13 @@ mixers: {}
 pipeline:
 - channel: 0
   names:
+  - Volume
   - Bass
   - Treble
   type: Filter
 - channel: 1
   names:
+  - Volume
   - Bass
   - Treble
   type: Filter
