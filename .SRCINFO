@@ -1,11 +1,12 @@
 pkgbase = muro
 	pkgdesc = Wallpaper with blurred or averaged background for X11
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dimus/muro
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = make
 	depends = feh
 	depends = xorg-xrandr
 	provides = muro

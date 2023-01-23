@@ -2,12 +2,15 @@
 
 pkgname=muro
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper with blurred or averaged background for X11'
 arch=('x86_64')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')
-makedepends=('go')
+makedepends=(
+  'go'
+  'make'
+)
 depends=(
   'feh'
   'xorg-xrandr'
