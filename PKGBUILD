@@ -1,7 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=feedbackd-git
-pkgver=0.0.2.r2.gaa5e5e4
+pkgver=0.0.2.r9.g3a09ea5
 pkgrel=1
 pkgdesc="A daemon to provide haptic, visual, and audio feedback on events"
 url="https://source.puri.sm/Librem5/feedbackd"
@@ -20,7 +21,8 @@ makedepends=(
 	gobject-introspection
 	meson
 	vala
-  gi-docgen
+	gi-docgen
+	python-docutils
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
