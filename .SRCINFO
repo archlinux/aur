@@ -1,7 +1,7 @@
 pkgbase = anki-qt5
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build
 	pkgver = 2.1.56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
@@ -31,6 +31,7 @@ pkgbase = anki-qt5
 	optdepends = lame: record sound
 	optdepends = mpv: play sound. prefered over mplayer
 	optdepends = mplayer: play sound
+	optdepends = texlive-most: render LaTex in cards
 	provides = anki
 	conflicts = anki
 	conflicts = anki-bin

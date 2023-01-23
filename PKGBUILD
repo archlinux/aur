@@ -9,7 +9,7 @@
 
 pkgname=anki-qt5
 pkgver=2.1.56
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -54,6 +54,7 @@ optdepends=(
     'lame: record sound'
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
+    'texlive-most: render LaTex in cards'
 )
 
 # using the tag tarballs does not work with the new (>= 2.1.55) build process.
