@@ -1,25 +1,20 @@
-# Maintainer: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
-pkgname=open-dyslexic-fonts
-pkgver=r148.27a457b
-pkgrel=1
-pkgdesc="A set of fonts developed with improved readability for dyslexics in mind."
-arch=('any')
-url="http://dyslexicfonts.com/"
-license=('CC-By 3.0')
-depends=('fontconfig')
-makedepends=('git')
-source=(git+https://github.com/antijingoist/open-dyslexic.git)
-install=open-dyslexic-fonts.install
-md5sums=(SKIP)
+# Maintainer: Eric Engestrom <aur@engestrom.ch>
+# Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 
-pkgver() {
-  cd "open-dyslexic"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=open-dyslexic-fonts
+pkgver=0.91.12
+pkgrel=1
+pkgdesc="Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia"
+arch=(any)
+url="https://opendyslexic.org"
+license=(SIL-OFL)
+source=($pkgname-v$pkgver.tar.gz::https://github.com/antijingoist/opendyslexic/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=('d20d182fb7069023b8dbdf131bbe232093b4147dd4900e27c95b86d3ddfca34b')
+
 package() {
-  cd "$srcdir/open-dyslexic/otf"
-  mkdir -p ${pkgdir}/usr/share/fonts/open-dyslexic
-  for i in ./*.otf; do
-      install -m644 $i ${pkgdir}/usr/share/fonts/open-dyslexic || return 1
+  cd opendyslexic-$pkgver
+  for otf in compiled/*.otf; do
+    install -Dm644 $otf "$pkgdir"/usr/share/fonts/$pkgname/${otf##*/}
   done
+  install -Dm644 OFL.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
