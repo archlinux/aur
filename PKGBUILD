@@ -8,7 +8,7 @@
 #
 
 pkgname=('platformio' 'platformio-udev-rules')
-pkgver=6.1.5
+pkgver=6.1.6
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=('python-click-completion: for shell completions'
            'python-shellingham: for shell completions')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
-sha256sums=('a0a69354fb5f773e31a23b029bee21923296b8292dda97ee85229bfaade4ce28')
+sha256sums=('dcafb718ab22efcf16e16772272624c2361a55684ab7812c450e73ede39e1137')
 
 package_platformio() {
     cd "$srcdir/platformio-core-$pkgver"
@@ -50,5 +50,5 @@ package_platformio-udev-rules() {
     url="https://docs.platformio.org/en/latest/faq.html#platformio-udev-rules"
 
     cd "$srcdir/platformio-core-$pkgver"
-    install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" "scripts/99-platformio-udev.rules"
+    install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" "platformio/assets/system/99-platformio-udev.rules"
 }
