@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=18
+pkgrel=19
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -19,7 +19,7 @@ source=("ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
         asm.patch
         dxegen.patch
 	djgpp-djcrx-gcccompat.patch)
-makedepends=('dosbox-gcc' 'bison')
+makedepends=('dosbox-gcc' 'bison' 'sed')
 sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             '80690b6e44ff8bc6c6081fca1f4faeba1591c4490b76ef0ec8b35847baa5deea'
             '83bc02407566c0613c2eeb86d78f2968c11256dfc8d3c2805a5488540e059124'
@@ -28,13 +28,10 @@ sha256sums=('22274ed8d5ee57cf7ccf161f5e1684fd1c0192068724a7d34e1bde168041ca60'
             '693810c3242f4e23cdc55d3101281721da9407851e5d29459ad59405e534b916'
             'SKIP'
             'SKIP')
-options=('!buildflags' '!strip')
+options=('!buildflags' '!makeflags' '!strip')
 _target='i586-pc-msdosdjgpp'
 
 prepare() {
-  sed -i 's/ln/ln -f/' src/dxe/makefile.dxe
-  sed -i 's/O2/O3/g;s/i[[:digit:]]86/i586/g;/Werror/d' src/makefile src/makefile.cfg src/makefile.def src/dxe/makefile.dxe
-
   # fix build with gcc >= 8 
   patch -Np1 < djgpp-djcrx-gcccompat.patch
 
@@ -50,6 +47,9 @@ prepare() {
 
   # allow using dxe3gen without DJDIR and without dxe3res in PATH
   patch -Np0 < dxegen.patch
+
+  sed -i 's/ln/ln -f/' src/dxe/makefile.dxe
+  sed -i 's/O2/O3/g;s/i[[:digit:]]86/i586/g;s/Werror/Wno-error/g' src/makefile src/makefile.cfg src/makefile.def src/dxe/makefile.dxe
 
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
