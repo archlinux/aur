@@ -1,0 +1,28 @@
+pkgbase = obuparse-git
+	pkgver = r18.055be27
+	pkgrel = 1
+	url = https://github.com/dwbuiten/obuparse
+	arch = x86_64
+	license = custom:ISC
+	makedepends = glibc
+	makedepends = lib32-glibc
+	makedepends = git
+	options = debug
+	source = git+https://github.com/dwbuiten/obuparse.git
+	sha256sums = SKIP
+
+pkgname = obuparse-git
+	pkgdesc = A simple and portable single file AV1 OBU parser. (GIT Version)
+	depends = glibc
+	provides = obuparse
+	provides = libobuparse.so
+	provides = obuparse=r18.055be27
+	conflicts = obuparse
+
+pkgname = lib32-obuparse-git
+	pkgdesc = A simple and portable single file AV1 OBU parser. (GIT Version) (32-bits)
+	depends = lib32-glibc
+	depends = obuparse=r18.055be27
+	provides = lib32-obuparse
+	provides = libobuparse.so
+	conflicts = lib32-obuparse
