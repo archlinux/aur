@@ -5,10 +5,10 @@ pkgver=20060817
 pkgrel=4
 pkgdesc="Portuguese (European) thesaurus"
 arch=('any')
-url="http://download.services.openoffice.org/contrib/dictionaries/"
+url="http://mirror.its.dal.ca/freebsd/distfiles/"
 license=('GPL')
 optdepends=('libmythes: offers thesaurus library functions')
-source=("http://download.services.openoffice.org/contrib/dictionaries/thes_pt_PT_v2.zip")
+source=("http://mirror.its.dal.ca/freebsd/distfiles/thes_pt_PT_v2.zip")
 sha256sums=('287e56dc278e49cbb60a08ee96330dc1a7e8945b1fab700408bcc700592e9903')
 
 package() {
