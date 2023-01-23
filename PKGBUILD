@@ -4,7 +4,7 @@
 pkgname=python-ffmpeg
 _pkgname='ffmpeg-python'
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for FFmpeg - with complex filtering support"
 arch=(any)
 url="https://github.com/kkroening/ffmpeg-python"
@@ -13,12 +13,17 @@ options=(!emptydirs)
 depends=('ffmpeg' 'python-future')
 makedepends=('python-setuptools' 'python-pytest-runner')
 checkdepends=('python-pytest' 'python-pytest-mock')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kkroening/ffmpeg-python/archive/${pkgver}.tar.gz")
-sha256sums=('01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1')
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/kkroening/ffmpeg-python/archive/${pkgver}.tar.gz"
+	"test_pipe.patch"
+)
+sha256sums=('01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1'
+            '26c34d317ed7fdcda43b3c504184d3a85c5f7546ca51d4d3f39968504ca686a0')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
   sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
+  patch --forward --strip=1 --input="${srcdir}/test_pipe.patch"
 }
 
 build() {
