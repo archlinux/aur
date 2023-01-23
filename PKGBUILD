@@ -30,6 +30,7 @@ prepare() {
 
   # Rename settings-symbolic.svg as not to conflict with other packages
   # that don't bother using unique filenames like blackbox-terminal, etc.
+  # https://github.com/mijorus/smile/issues/26
   mv data/icons/hicolor/scalable/actions/settings-symbolic.svg \
    "data/icons/hicolor/scalable/actions/$pkgname-settings-symbolic.svg"
   sed -i "s/settings-symbolic.svg/$pkgname-settings-symbolic.svg/g" \
