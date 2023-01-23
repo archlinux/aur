@@ -3,7 +3,7 @@
 pkgname=neovim-autopairs-git
 _pkgname="${pkgname%-git}"
 pkgver=r323.g31042a5
-pkgrel=1
+pkgrel=2
 pkgdesc="autopairs for neovim written by lua"
 arch=('any')
 url="https://github.com/windwp/nvim-autopairs"
@@ -28,7 +28,8 @@ package() {
 		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/pack/dist/start/$pkgname/{}" \;
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 doc/nvim-autopairs.txt -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 doc/nvim-autopairs-rules.txt -t "$pkgdir/usr/share/doc/$pkgname/"
+	find doc \
+		-type f \
+		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 }
 
