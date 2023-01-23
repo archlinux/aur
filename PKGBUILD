@@ -7,7 +7,6 @@ pkgdesc="下一代跨平台 Minecraft 启动器"
 arch=('x86_64')
 url="https://github.com/Blessing-Studio/WonderLab"
 license=('MIT')
-groups=('')
 depends=('dotnet-runtime-6.0')
 options=('!strip' '!emptydirs')
 source=("https://github.com/Blessing-Studio/WonderLab/releases/download/${pkgver}/linux-${arch}.deb")
