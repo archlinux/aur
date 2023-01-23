@@ -2,15 +2,16 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.2.12.r0.gba80311
+pkgver=1.4.3.r2.g1889a48
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
 license=('GPL3')
-depends=('gtk3' 'python-cryptography' 'python-gobject' 'python-grpcio'
-         'python-netifaces' 'python-packaging' 'python-protobuf' 'python-pynacl'
-         'python-setproctitle' 'python-zeroconf' 'python-xapp' 'xapps')
+depends=('gtk3' 'libnm' 'python-cairo' 'python-cryptography' 'python-gobject'
+         'python-grpcio' 'python-netifaces' 'python-packaging' 'python-protobuf'
+         'python-pynacl' 'python-setproctitle' 'python-setuptools' 'python-zeroconf'
+         'python-xapp' 'xapps')
 makedepends=('git' 'meson' 'polkit')
 checkdepends=('appstream-glib')
 optdepends=('ufw: Configure firewall rules')
@@ -21,18 +22,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude master* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
 
   # Fix hard-coded libexec dir
-  sed -i 's/libexec/lib/g' \
-    "bin/${pkgname%-git}.in" \
-    "data/org.x.${pkgname%-git}.policy.in.in" \
-    install-scripts/download_zeroconf.py
-  sed -i 's/@libexecdir@/@libdir@/g' src/config.py.in
+  find . -type f -exec sed -i 's/libexec/lib/g' {} \;
+  find . -type f -exec sed -i 's/@libexecdir@/@libdir@/g' {} \;
 }
 
 build() {
