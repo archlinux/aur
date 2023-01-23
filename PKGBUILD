@@ -31,16 +31,11 @@ prepare() {
 
 package() {
   cd "${_plug}"
-  mkdir -p "${pkgdir}/usr/include/vapoursynth"
   for i in VapourSynth*++.hpp vsxx*_*.{cpp,h}; do
     install -Dm644 "${i}" "${pkgdir}/usr/include/vapoursynth/${i}"
+    install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/${i}"
   done
-
   install -Dm755 README.sh "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/README.sh"
-  install -Dm644 vsxx_pluginmain.h "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/vsxx_pluginmain.h"
-  install -Dm644 vsxx_pluginmain.cpp "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/vsxx_pluginmain.cpp"
-  install -Dm644 vsxx4_pluginmain.h "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/vsxx4_pluginmain.h"
-  install -Dm644 vsxx4_pluginmain.cpp "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/vsxx4_pluginmain.cpp"
   for i in example/*; do
     install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/development/${_plug}/${i}"
   done
