@@ -12,6 +12,7 @@ license=('BSD')
 makedepends=(
   'python-build'
   'python-hatch-vcs'
+  'python-installer'
 )
 depends=(
   'python'

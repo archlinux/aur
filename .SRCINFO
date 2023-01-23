@@ -7,6 +7,7 @@ pkgbase = python-psygnal
 	license = BSD
 	makedepends = python-build
 	makedepends = python-hatch-vcs
+	makedepends = python-installer
 	depends = python
 	depends = python-mypy_extensions
 	depends = python-typing_extensions
