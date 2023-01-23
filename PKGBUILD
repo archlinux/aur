@@ -7,7 +7,7 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gittyup
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
