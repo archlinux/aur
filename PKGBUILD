@@ -15,7 +15,7 @@ source=("git+https://github.com/studyzy/imewlconverter")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd $pkgname
   git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
@@ -28,7 +28,7 @@ package() {
   mkdir -p $pkgdir/usr/share/imewlconverter
   mv $srcdir/imewlconverter/src/ImeWlConverterCmd/bin/Release/net6.0/* $pkgdir/usr/share/imewlconverter
   mkdir -p $pkgdir/usr/bin
-	ln -s /usr/share/imewlconverter/ImeWlConverterCmd $pkgdir/usr/bin/ImeWlConverterCmd
-	ln -s /usr/share/imewlconverter/ImeWlConverterCmd $pkgdir/usr/bin/imewlconverter
+  ln -s /usr/share/imewlconverter/ImeWlConverterCmd $pkgdir/usr/bin/ImeWlConverterCmd
+  ln -s /usr/share/imewlconverter/ImeWlConverterCmd $pkgdir/usr/bin/imewlconverter
 }
 
