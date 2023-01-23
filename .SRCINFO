@@ -1,18 +1,18 @@
 pkgbase = smile
 	pkgdesc = An emoji picker with custom tags support
-	pkgver = 1.7.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://smile.mijorus.it
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
-	checkdepends = desktop-file-utils
 	makedepends = meson
-	depends = libwnck3
+	depends = dbus-python
+	depends = libadwaita
 	depends = python-manimpango
 	conflicts = smile-emoji-picker
 	replaces = smile-emoji-picker
-	source = smile-1.7.3.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/1.7.3.tar.gz
-	sha256sums = 04166268bb4af33103b5f862e30923e7f21a3bc146d2aa69692f95754a80b53b
+	source = smile-2.0.0.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = c1f850482c5a11d623a52f1f1eb970788f568839facceb738caed0bc58465604
 
 pkgname = smile
