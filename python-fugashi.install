@@ -1,0 +1,21 @@
+post_install() {
+cat << EOD
+fugashi requires a dictionary. python-unidic and python-unidic-lite are set as
+optional dependencies so that you can choose to install one or both. Please
+read the optional dependencies and install the appropriate package. fugashi
+will try to import unidic first, then unidic-lite if it is not available.
+Programs using fugashi may also override this and use unidic-lite. For example,
+the model that manga-ocr downloads is configured to use unidic-lite in
+tokenizer_config.json (can be manually changed).
+
+Note that python-unidic includes the latest unidic on install. There is no need
+to run download.py, which will try to install to a system directory.
+
+A package that depends on this package may be depending on a unidic package, in
+which case this message can be dismissed if you don't want to change this.
+
+More info:
+https://github.com/polm/fugashi#installing-a-dictionary
+https://github.com/polm/unidic-py
+EOD
+}
