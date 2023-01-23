@@ -4,13 +4,13 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.9'
+_upstreamver='0.0.10'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
-pkgrel=2
+pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/$_repo
@@ -41,13 +41,13 @@ source=(
 	"$url/releases/download/$pkgver/_$_bin"
 	"$url/releases/download/$pkgver/$_bin.csh"
 )
-sha256sums=('4d946638e6393d820413b40ee5c996fa24189ad9dd711b188cb12fea932592d7'
+sha256sums=('7e02adba59eca7b185eaf8de295f616158bb16ee04403256df25b5562abbfbcb'
             '3738722bf4bf09ad4c14c15c07fdbb4ea52da8c38e6ff1c535d05a8e06646f67'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '9d13a18099b0203a23cea14526f37462bc52ecc3c07071e394695dbc954cd9b1'
+            '0a6ddecdc3f1171f142c31f7885104d6c8c87915eb6cd499d699071d5b4add6d'
             'be02c00e4105a86d9fbbc065c5b6aab250b45458d724bbcc51372f419816a30c'
             '9782ed032f0c5e4f3ee6cd10b340b04fb28d3c427918a04dc7e43f92b0f546fb'
-            'cc3dcce0eae837a19e9b7f5a562a11228af30389621da3b5961f2c2abb8f53c0')
+            'cea7bec9b27844d27b44ea604feed97403526e34ff8dc4745b3d6e37cc53e0f3')
 
 package() {
 	cd "$srcdir" || return 1
