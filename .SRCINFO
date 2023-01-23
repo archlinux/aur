@@ -1,7 +1,7 @@
 pkgbase = rephrase
 	pkgdesc = A specialized passphrase recovery tool for GnuPG.
 	pkgver = 0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://packages.debian.org/sid/rephrase
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rephrase
 	license = GPL2
 	depends = gnupg
 	optdepends = cryptsetup: can recover Cryptsetup/LUKS passphrases
-	source = http://deb.debian.org/debian/pool/main/r/rephrase/rephrase_0.2.orig.tar.gz
-	source = http://deb.debian.org/debian/pool/main/r/rephrase/rephrase_0.2-4.debian.tar.xz
+	source = https://deb.debian.org/debian/pool/main/r/rephrase/rephrase_0.2.orig.tar.gz
+	source = https://deb.debian.org/debian/pool/main/r/rephrase/rephrase_0.2-4.debian.tar.xz
 	md5sums = d73b9b30194f3ebbf92f19737a62ddfa
 	md5sums = 790197413e1c4bbacb3894d625c2b029
 
