@@ -1,0 +1,6 @@
+pkg/
+src/
+*.gz
+*.zst
+vale-*_LICENSE
+vale-*_README.md
