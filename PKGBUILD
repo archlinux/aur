@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-early-access
-pkgver=3323
+pkgver=3324
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger (early access version)"
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ conflicts=('yuzu')
 source=("https://github.com/pineappleEA/pineapple-src/archive/EA-${pkgver}.tar.gz"
 "https://raw.githubusercontent.com/pineappleEA/Pineapple-Linux/master/yuzu.xml"
 "https://github.com/pineappleEA/pineapple-src/releases/download/EA-${pkgver}/Windows-Yuzu-EA-${pkgver}.zip")
-sha256sums=('fb242756a96dc5e58e923e2a7d70aa6357722d2d39b9e87ac840701226b4de2d'
+sha256sums=('89de083880941b91c5f3da287f84a27b13e794ae33df2ff239f1c04d8fb5db61'
             'e76ab2b3566d8135930e570ede5bed3da8f131270b60db818e453d248880bdf2'
-            'df5aff5119f502e120662663bc6accd9f410777ac9adcd895806387ab174f2fe')
+            '1c7bab79c2209492024953d80162585f5bc5b1d9c7eae9b7b270f1ecea142086')
 
 prepare() {
   cd "$srcdir/yuzu-windows-msvc-early-access"
@@ -67,9 +67,7 @@ build() {
     -DYUZU_USE_QT_WEB_ENGINE=ON \
     -DUSE_DISCORD_PRESENCE=ON \
     -DENABLE_QT_TRANSLATION=ON \
-    -DYUZU_USE_BUNDLED_OPUS=OFF \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
-    -DYUZU_USE_BUNDLED_LIBUSB=OFF \
     -DYUZU_USE_BUNDLED_QT=OFF \
     -DYUZU_USE_EXTERNAL_SDL2=OFF \
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
@@ -77,7 +75,8 @@ build() {
     -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
     -DYUZU_USE_FASTER_LD=OFF \
     -DYUZU_USE_PRECOMPILED_HEADERS=OFF \
-	-DYUZU_USE_QT_MULTIMEDIA=ON
+	-DYUZU_USE_QT_MULTIMEDIA=ON \
+    -DYUZU_TESTS=OFF
   ninja
 }
 
