@@ -3,7 +3,7 @@
 
 pkgname=river
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic tiling wayland compositor'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
@@ -30,7 +30,7 @@ build() {
   DESTDIR="build" zig build \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15 \
+    -Dtarget=native-linux.5.15-gnu \
     -Dcpu=baseline \
     -Dpie \
     -Drelease-safe \
@@ -43,7 +43,7 @@ check() {
   zig build test \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15 \
+    -Dtarget=native-linux.5.15-gnu \
     -Dcpu=baseline \
     -Dpie \
     -Drelease-safe \
