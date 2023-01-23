@@ -3,16 +3,16 @@
 
 pkgname=ib-tws
 pkgver=10.20.1i
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
 license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
-depends=(bash)
+depends=(gtk2)
 optdepends=(ffmpeg-compat-55)
-makedepends=(gtk2 imagemagick unzip)
+makedepends=(imagemagick unzip)
 
 source=('LICENSE'
 	'ib-tws'
