@@ -2,14 +2,14 @@
 
 pkgname=tijolo
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo-git")
 url="https://github.com/hugopl/tijolo"
 license=("MIT")
-depends=("gc" "libevent" "pcre" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2" "editorconfig-core-c" "ttf-font-awesome>=5.15" "vte3")
-makedepends=("make" "git" "crystal>=1.0.0" "shards>=0.14.0" "libyaml")
+depends=("gc" "libevent" "pcre" "gtksourceview4" "ttf-jetbrains-mono-nerd" "libgit2" "editorconfig-core-c" "ttf-font-awesome>=6.2.1" "vte3")
+makedepends=("make" "git" "crystal>=1.6.0" "shards>=0.14.0" "libyaml")
 optdepends=('ccls: C/C++ LSP support'
             'bash-language-server: Bash LSP support'
             'yaml-language-server: YAML LSP support'
