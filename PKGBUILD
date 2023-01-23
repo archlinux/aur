@@ -1,9 +1,9 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=muro
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc='Wallpaper for bare X11 and tiling windows managers'
+pkgdesc='Wallpaper with blurred or averaged background for X11'
 arch=('x86_64')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')
@@ -15,7 +15,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b0a319dfecaa34e564b17afa4e84fb6cc45571f580dffe0440b3a670d81a3e6f')
+sha256sums=('75fad5e4357e8c893060e8f89e5c79aefb4c48b9c8f2efe6a02ec69a831e943e')
 
 prepare() {
   cd "$pkgname"
@@ -33,7 +33,6 @@ check() {
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 ./out/bin/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 "$srcdir/$pkgname/out/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

@@ -1,6 +1,6 @@
 pkgbase = muro
-	pkgdesc = Wallpaper for bare X11 and tiling windows managers
-	pkgver = 0.1.1
+	pkgdesc = Wallpaper with blurred or averaged background for X11
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://codeberg.org/dimus/muro
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = muro
 	depends = xorg-xrandr
 	provides = muro
 	conflicts = muro
-	source = https://codeberg.org/dimus/muro/archive/v0.1.1.tar.gz
-	sha256sums = b0a319dfecaa34e564b17afa4e84fb6cc45571f580dffe0440b3a670d81a3e6f
+	source = https://codeberg.org/dimus/muro/archive/v0.1.2.tar.gz
+	sha256sums = 75fad5e4357e8c893060e8f89e5c79aefb4c48b9c8f2efe6a02ec69a831e943e
 
 pkgname = muro
