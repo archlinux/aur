@@ -3,25 +3,22 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=zfs-utils
-pkgver=2.1.7
-pkgrel=4
+pkgver=2.1.8
+pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64" "aarch64")
 url="https://zfsonlinux.org/"
 license=('CDDL')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
-        "https://github.com/openzfs/zfs/commit/eee9362a72cfd615e40928e86d61747683dc9dc6.patch"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('6462e63e185de6ff10c64ffa6ed773201a082f9dd13e603d7e8136fcb4aca71b'
+sha256sums=('c81c6cdcc6c1deb24dda02e33389e9242f338ef8892e0c161945db1db8b48937'
             'SKIP'
-            '36fe8f9aef7ac3501cefc28f7e84cd5de20239a7ed3e8e2864e38af18533dfae'
             '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
             '15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f')
-b2sums=('9c85c3eb72f3bb39bc4fd44aaa80338ca197a4e8183436fee73cd56705abfdaecfaf1b6fbe8dd508ccce707c8259c7ab6e1733b60b17757f0a7ff92d4e52bbad'
+b2sums=('e725a43e5a62998209d638adcec061858f0caf05abd30bcfbaf8c6f6b9f47209808d9fcd726a830ea800793cd719c4471a498a10dab66119c4d24dbf09b1c481'
         'SKIP'
-        '7723ad081919bb9ec8f4261f53cf50b6753e60105bbaa1afe3eb8ce30e9a73cd6d05b97cbd4f0b1f9497a7588111f8e1018feb707982b305b5dd7ba4e4fd2d2a'
         'cb774227f157573f960bdb345e5b014c043a573c987d37a1db027b852d77a5eda1ee699612e1d8f4a2770897624889f1a3808116a171cc4c796a95e3caa43012'
         '779c864611249c3f21d1864508d60cfe5e0f5541d74fb3093c6bdfa56be2c76f386ac1690d363beaee491c5132f5f6dbc01553aa408cda579ebca74b0e0fd1d0')
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
@@ -32,10 +29,6 @@ backup=('etc/default/zfs'
 prepare() {
     cd "${srcdir}"/zfs-${pkgver}
 
-    # Backport fix for issue related to send/receive. (https://github.com/openzfs/zfs/issues/14252)
-    sed -i -e '77,212d' ../eee9362a72cfd615e40928e86d61747683dc9dc6.patch # Don't patch test files.
-    patch -p1 -i ../eee9362a72cfd615e40928e86d61747683dc9dc6.patch
-
     # pyzfs is not built, but build system tries to check for python anyway
     ln -sf /bin/true python3-fake
 
@@ -43,6 +36,12 @@ prepare() {
 }
 
 build() {
+    # Disable tree vectorization. Related issues:
+    # https://github.com/openzfs/zfs/issues/13605
+    # https://github.com/openzfs/zfs/issues/13620
+    export CFLAGS="$CFLAGS -fno-tree-vectorize"
+    export CXXFLAGS="$CXXFLAGS -fno-tree-vectorize"
+
     cd "${srcdir}"/zfs-${pkgver}
 
     ./configure --prefix=/usr \
