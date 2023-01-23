@@ -1,0 +1,27 @@
+pkgbase = manga-ocr-git
+	pkgdesc = Optical character recognition for Japanese text, trained to handle Japanese manga well
+	pkgver = 0.1.8.r0.g250b89f
+	pkgrel = 1
+	url = https://github.com/kha-white/manga-ocr
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fire
+	depends = python-fugashi
+	depends = python-jaconv
+	depends = python-loguru
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-pyperclip
+	depends = python-pytorch>=1.0
+	depends = python-transformers>=4.12.5
+	depends = python-unidic-lite
+	provides = manga-ocr
+	conflicts = manga-ocr
+	source = git+https://github.com/kha-white/manga-ocr.git
+	b2sums = SKIP
+
+pkgname = manga-ocr-git
