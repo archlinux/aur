@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Exec=/usr/share/dmde-linux/dmde-start.sh
+Type=Application
+Name=DMDE
+GenericName=DMDE
+Terminal=false
+Icon=dmde-linux
+StartupNotify=false
+Comment=DMDE is a powerful tool for data searching, editing, and recovery on disks.
+Categories=Utility;System;
