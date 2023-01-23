@@ -2,15 +2,16 @@
 
 _plug=vstcanny
 pkgname=avisynth-plugin-${_plug}-git
-pkgver=1.1.5.1.gb8ca769
+pkgver=1.1.8.0.gd47eebe
 pkgrel=1
 pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/AviSynth-vsTCanny'
 license=('GPL' 'Apache')
-depends=('avisynthplus')
+depends=('libavisynth.so')
 makedepends=('git'
              'cmake'
+             'avisynthplus'
              )
 provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
@@ -26,19 +27,19 @@ pkgver() {
 build() {
   cd "${_plug}"
 
-  CXXFLAGS+=" $(pkg-config --cflags avisynth)" \
-  cmake -B build -S . \
-   -DCMAKE_BUILD_TYPE=Release \
-   -DCMAKE_INSTALL_PREFIX=/usr \
+  CXXFLAGS+=" $(pkg-config --cflags avisynth)"
+
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
 }
 
-package() {
-  cd "${_plug}"
-  DESTDIR="${pkgdir}" cmake --install build
+package(){
+  DESTDIR="${pkgdir}" cmake --install "${_plug}/build"
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README.md"
 
-  install -Dm644 src/VCL2/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/VCL2_LICENSE"
+  install -Dm644 "${_plug}/src/VCL2/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/VCL2_LICENSE"
 }
