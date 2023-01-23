@@ -2,13 +2,13 @@
 pkgname=python-swyft
 _name=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="swyft is the official implementation of Truncated Marginal Neural Ratio Estimation (TMNRE), a hyper-efficient, simulation-based inference technique for complex data and expensive simulators."
 arch=(any)
 url="https://github.com/undark-lab/swyft"
 license=('Apache')
 groups=()
-depends=(python-toolz python-numpy python-torch python-pytorch_lightning python-zarr python-matplotlib python-scipy python-torchist python-fasteners)
+depends=(python-toolz python-numpy python-torch python-pytorch-lightning python-zarr python-matplotlib python-scipy python-torchist python-fasteners)
 makedepends=(python-build python-installer)
 provides=()
 conflicts=()
