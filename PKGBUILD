@@ -40,10 +40,7 @@ prepare() {
   # use system vapoursynth headers
   rm -fr vsxx/vapoursynth
 
-  sed -e 's|"VapourSynth4.h"|<VapourSynth4.h>|g' \
-      -i vsxx/VapourSynth4++.hpp
-
-  sed -e "s|-Ivsxx/vapoursynth|$(pkg-config --cflags vapoursynth)|g" \
+  sed -e "s| -Ivsxx/vapoursynth||g" \
       -e '/VSConstants4/d' \
       -e '/VapourSynth4.h/d' \
       -e '/VapourSynth.h/d' \
@@ -52,11 +49,14 @@ prepare() {
 }
 
 build() {
+  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)"
+
   make -C "${_plug}" X86=1
 }
 
 package(){
   install -Dm755 "${_plug}/vscube.so" "${pkgdir}/usr/lib/vapoursynth/libvscube.so"
+
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
 }
 
