@@ -1,0 +1,15 @@
+pkgbase = jefferson
+	pkgdesc = JFFS2 filesystem extraction tool
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/sviehb/jefferson
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-cstruct
+	depends = python-lzo
+	conflicts = jefferson-git
+	source = https://github.com/sviehb/jefferson/archive/refs/tags/v0.4.1.tar.gz
+	sha512sums = 23e7b5efcc868e2aad946cbe8b73dc84c0e22fff5d9aa7e1060d9debfd1b7f17b98248714e55beb35a1215cb3a7c360e5ef473ce2c7ee9866d4a88749112b07f
+
+pkgname = jefferson
