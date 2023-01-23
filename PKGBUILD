@@ -1,48 +1,57 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Chris Brendel <cdbrendel@gmail.com>
 
-_pkgname=spacy
-pkgname=python-${_pkgname}
-pkgver=3.4.0
+pkgname=python-spacy
+_pkg="${pkgname#python-}"
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
-arch=(x86_64 aarch64)
-url='https://spacy.io/'
-license=(MIT)
+arch=('x86_64' 'aarch64')
+url='https://github.com/explosion/spacy'
+license=('MIT')
 depends=(
-	python-catalogue
-	python-cymem
-	python-jinja
-	python-langcodes
-	python-murmurhash
-	python-numpy
-	python-plac
-	python-preshed
-	python-regex
-	python-requests
-	python-srsly
-	python-thinc
-	python-tqdm
-	python-typer
-	python-ujson
-	python-wasabi
-)
+	'python-catalogue'
+	'python-cymem'
+	'python-jinja'
+	'python-langcodes'
+	'python-murmurhash'
+	'python-numpy'
+	'python-plac'
+	'python-preshed'
+	'python-regex'
+	'python-requests'
+	'python-srsly'
+	'python-thinc'
+	'python-tqdm'
+	'python-typer'
+	'python-ujson'
+	'python-wasabi')
 makedepends=(
-	python-build
-	python-installer
-	python-wheel
-	cython
-)
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('9b4b9e42767a7054a3dbd22c3824752cd1fddec3f432890a7ab659a7999ce1db6833c001352c1d65184ffc496347844c5dd7cc5fc019c2ad15919a0c6c04859e')
+	'cython'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('fe20127012992778804d93f75ce9370d588573072639c3832cec38f54bf7e4a5')
+
+prepare() {
+	cd "$_pkg-$pkgver"
+	sed -i '/PACKAGES =/c\PACKAGES = find_packages(exclude=["spacy.tests*"])' setup.py
+	rm -rf "$_pkg.egg-info"
+}
 
 build() {
-	cd "spacy-${pkgver}"
+	cd "$_pkg-${pkgver}"
+	## skip dependency check because of pinned deps
 	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-	cd "spacy-${pkgver}"
-	python -m installer --destdir="${pkgdir}" dist/*.whl
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"	
+	cd "$_pkg-${pkgver}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
