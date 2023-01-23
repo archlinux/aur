@@ -1,6 +1,6 @@
 pkgbase = pg_activity
 	pkgdesc = Is a top like application for PostgreSQL server activity monitoring
-	pkgver = 3.0.1
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/dalibo/pg_activity/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pg_activity
 	depends = python-blessed
 	depends = python-humanize
 	options = !emptydirs
-	source = pg_activity-3.0.1.tar.gz::https://github.com/dalibo/pg_activity//archive/refs/tags/v3.0.1.tar.gz
-	md5sums = 2be11a717b14390b93f98c1752739cb3
+	source = pg_activity-3.0.3.tar.gz::https://github.com/dalibo/pg_activity//archive/refs/tags/v3.0.3.tar.gz
+	md5sums = f52077e499a57ba8be31645bc5e802e7
 
 pkgname = pg_activity
