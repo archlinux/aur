@@ -4,7 +4,7 @@ pkgbase=l-smash-git
 pkgname=('l-smash-git'
          'lib32-l-smash-git'
          )
-pkgver=v2.14.5.21.g18a9ed2
+pkgver=2.14.5.21.g18a9ed2
 pkgrel=1
 arch=('x86_64')
 url='http://l-smash.github.io/l-smash'
@@ -14,10 +14,11 @@ makedepends=('glibc'
              'git')
 source=('git+https://github.com/l-smash/l-smash.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd l-smash
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
