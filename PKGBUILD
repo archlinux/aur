@@ -2,7 +2,7 @@
 
 _pkgname=opencolorio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A color management framework for visual effects and animation (mingw-w64)'
 arch=(any)
@@ -23,7 +23,7 @@ _repo='OpenColorIO'
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_repo}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('81e3b6e0e432d20347b6396c376f9fbeceac31c2cbefe2882d83112a5b0a8123')
+sha256sums=('36f27c5887fc4e5c241805c29b8b8e68725aa05520bcaa7c7ec84c0422b8580e')
 
 _srcdir="${_repo}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -38,6 +38,9 @@ prepare() {
 	sed -i 's/if(WIN32)/if(WIN32 AND NOT MINGW)/' 'src/OpenColorIO/CMakeLists.txt'
 	sed -i 's/_str/str/g;s/_l(/(/g;s/_l (/ (/g;s/, loc.local//g;s|static const Locale loc;|//static const Locale loc;|' 'src/utils/NumberUtils.h'
 	sed -i -r 's|#include "minizip-ng/(.*)"|#include <\1>|' 'src/OpenColorIO/OCIOZArchive.cpp'
+	sed -i 's/std::tstring/std::string/g;s/std::tostringstream/std::ostringstream/g' 'src/OpenColorIO/SystemMonitor_windows.cpp'
+	sed -i 's/targetName.monitorFriendlyDeviceName : L""/Platform::Utf16ToUtf8(targetName.monitorFriendlyDeviceName) : ""/' 'src/OpenColorIO/SystemMonitor_windows.cpp'
+	sed -i 's/Platform::Utf16ToUtf8(deviceName)/deviceName/' 'src/OpenColorIO/SystemMonitor_windows.cpp'
 }
 
 build() {	
