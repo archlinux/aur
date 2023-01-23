@@ -9,7 +9,7 @@ pkgbase = lcms2-ff-git
 	depends = glibc
 	depends = libtiff
 	provides = lcms2
-	provides = liblcms2.so=2-64
+	provides = liblcms2.so
 	conflicts = lcms2
 	options = staticlibs
 	source = git+https://github.com/mm2/Little-CMS.git

@@ -10,7 +10,7 @@ url="https://www.littlecms.com/"
 license=('GPL3')
 depends=('glibc' 'libtiff')
 makedepends=('git')
-provides=('lcms2' 'liblcms2.so=2-64')
+provides=('lcms2' 'liblcms2.so')
 conflicts=('lcms2')
 options=('staticlibs')
 source=("git+https://github.com/mm2/Little-CMS.git")
