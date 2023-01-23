@@ -58,5 +58,5 @@ fi
 #exit so the arch package doesn't get built
 exit
 }
-sha256sums=('b3d4a2c6506904765591f67fe46211c6f9c90ee486cd1745e01a861daf0b7f3c'
+sha256sums=('0d05d030f8ced8776efd4a3073df26d97ce98db6f0627eaaf5142de061b76cfa'
             'SKIP')
