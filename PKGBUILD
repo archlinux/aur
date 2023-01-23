@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 # Contributor: Karmenzind
 pkgname=otf-nerd-fonts-monacob-mono
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='MonacoB fonts patched with nerd-fonts'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('4a9d48f5368ca3b5699f61c505412a8d734a57c5da00ac0ac5ea70881f615ef3'
             '45322eec525058c1bc55f2a999fad74eac9e9869caf7174bb292e92474d5aa73'
             'SKIP'
             'SKIP'
-            'a6f2c45d84b29fcb13575d9fe778545ba3b0200efc0e5fb66ce679108f43f397')
+            '3b733a8030c9c85fa369714eaeaddef766ed788717eb38334903c30f1523bd27')
 
 prepare() {
     find "$srcdir/monaco-bold/" -type f -name '*.otf' \
