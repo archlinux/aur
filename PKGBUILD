@@ -2,7 +2,7 @@
 # Contributor: Johann Gründl <mail at johanngruendl dot at>
 
 pkgname=ttf-adobe-source-fonts
-pkgver=20220300900  # because there are three different versions installed by this package, pkgver does not adhere to the upstream version
+pkgver=20230102300  # because there are three different versions installed by this package, pkgver does not adhere to the upstream version
 _pkgver_source_code_pro="2.038R-ro/1.058R-it/1.018R-VAR"
 _pkgver_source_serif="4.005R"
 _pkgver_source_sans="3.046R"
