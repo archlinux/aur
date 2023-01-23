@@ -1,6 +1,6 @@
 pkgbase = r-fansi
 	pkgdesc = ANSI Control Sequence Aware String Functions
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fansi
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = r-fansi
 	license = GPL2
 	license = GPL3
 	depends = r>=3.1.0
-	optdepends = r-unitizer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/fansi_1.0.3.tar.gz
-	sha256sums = 86a7b83d8c9d28baebbde310cd0b459d0950a9c7ff1a6276ce5858f6a89bc06a
+	optdepends = r-unitizer
+	source = https://cran.r-project.org/src/contrib/fansi_1.0.4.tar.gz
+	b2sums = 1a7986c7d6ac17aef79c137840cb299b16ff089b1ff1b87068af4ad79688624137b8e5da8a533dac2e29b749de81f6ef8f68f9c78a7448b1cfbd409b7205dbc0
 
 pkgname = r-fansi
