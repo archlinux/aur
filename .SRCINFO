@@ -1,6 +1,6 @@
 pkgbase = python-fasteners-git
 	pkgdesc = A python package that provides useful locks.
-	pkgver = 0.17.2.r0.g8c4c7d9
+	pkgver = 0.17.3.r8.g5d8de5f
 	pkgrel = 1
 	url = https://github.com/harlowja/fasteners
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-fasteners-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python
 	provides = python-fasteners
 	conflicts = python-fasteners
