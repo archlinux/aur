@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname='darling-git'
-pkgver=r3901.8011c83cc
+pkgver=r3921.0f56b1165
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -91,6 +91,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-libcxx.git'
         'git+https://github.com/darlinghq/darling-libdispatch.git'
         'git+https://github.com/darlinghq/darling-libffi.git'
+        'git+https://github.com/darlinghq/darling-Libinfo.git'
         'git+https://github.com/darlinghq/darling-libkqueue.git'
         'git+https://github.com/darlinghq/darling-liblzma.git'
         'git+https://github.com/darlinghq/darling-libmalloc.git'
@@ -98,6 +99,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-Libnotify.git'
         'git+https://github.com/darlinghq/darling-libplatform.git'
         'git+https://github.com/darlinghq/darling-libpthread.git'
+        'git+https://github.com/darlinghq/darling-librpcsvc.git'
         'git+https://github.com/darlinghq/darling-Libsystem.git'
         'git+https://github.com/darlinghq/darling-libtelnet.git'
         'git+https://github.com/darlinghq/darling-libtrace.git'
@@ -172,7 +174,7 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -253,6 +255,7 @@ prepare() {
     git config submodule.src/external/libcxx.url "$srcdir/darling-libcxx"
     git config submodule.src/external/libdispatch.url "$srcdir/darling-libdispatch"
     git config submodule.src/external/libffi.url "$srcdir/darling-libffi"
+    git config submodule.src/external/Libinfo.url "$srcdir/darling-Libinfo"
     git config submodule.src/external/libkqueue.url "$srcdir/darling-libkqueue"
     git config submodule.src/external/liblzma.url "$srcdir/darling-liblzma"
     git config submodule.src/external/libmalloc.url "$srcdir/darling-libmalloc"
@@ -264,6 +267,7 @@ prepare() {
     git config submodule.src/external/libressl-2.5.5.url "$srcdir/darling-libressl-2.5.5"
     git config submodule.src/external/libressl-2.6.5.url "$srcdir/darling-libressl-2.6.5"
     git config submodule.src/external/libressl-2.8.3.url "$srcdir/darling-libressl-2.8.3"
+    git config submodule.src/external/librpcsvc.url "$srcdir/darling-librpcsvc"
     git config submodule.src/external/libsystem.url "$srcdir/darling-Libsystem"
     git config submodule.src/external/libtelnet.url "$srcdir/darling-libtelnet"
     git config submodule.src/external/libtrace.url "$srcdir/darling-libtrace"
