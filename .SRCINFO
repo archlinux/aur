@@ -1,6 +1,6 @@
 pkgbase = midivisualizer
 	pkgdesc = A small MIDI visualizer tool, using OpenGL
-	pkgver = 6.5
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://github.com/kosua20/MIDIVisualizer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = midivisualizer
 	makedepends = gendesk
 	depends = gtk3
 	depends = ffmpeg
-	source = MIDIVisualizer-6.5.tar.gz::https://github.com/kosua20/MIDIVisualizer/archive/refs/tags/v6.5.tar.gz
-	sha256sums = 09e703e30603766122ee8594dc25f1398e49becce268f944a1b426621a9a1d7e
+	source = midivisualizer::git+https://github.com/kosua20/MIDIVisualizer
+	sha256sums = SKIP
 
 pkgname = midivisualizer

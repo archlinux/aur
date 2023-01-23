@@ -3,34 +3,34 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=midivisualizer
-_upstreampkgname=MIDIVisualizer
-pkgver=6.5
+_pkgname=MIDIVisualizer
+pkgver=7.0
 pkgrel=1
 pkgdesc='A small MIDI visualizer tool, using OpenGL'
 arch=('x86_64')
 url='https://github.com/kosua20/MIDIVisualizer'
 license=('MIT')
 depends=('gtk3' 'ffmpeg')
+# TODO unbundle glfw, libnfd
 makedepends=('cmake' 'gendesk')
-source=("$_upstreampkgname-$pkgver.tar.gz::https://github.com/kosua20/$_upstreampkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('09e703e30603766122ee8594dc25f1398e49becce268f944a1b426621a9a1d7e')
+source=("$pkgname::git+https://github.com/kosua20/MIDIVisualizer")
+sha256sums=('SKIP')
 
 prepare() {
-  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "$_upstreampkgname"
+  gendesk -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --name "$_pkgname" -f
 }
 
 build() {
-  cmake -B "$_upstreampkgname-$pkgver/build" -S "$_upstreampkgname-$pkgver" \
-    -Wno-dev
-  make -C "$_upstreampkgname-$pkgver/build" 
+  cmake -B build -S "$pkgname" -Wno-dev
+  make -C build
 }
 
 package() {
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  cd "$_upstreampkgname-$pkgver"
-  install -Dm755 "build/$_upstreampkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "resources/icon/$_upstreampkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "resources/icon/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
 # vim:set ts=2 sw=2 et:
