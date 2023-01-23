@@ -1,6 +1,6 @@
 pkgbase = wayvnc-git
 	pkgdesc = VNC server for wlroots-based Wayland compositors
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/any1/wayvnc
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = wayvnc-git
 	depends = libpixman-1.so
 	depends = libxkbcommon.so
 	depends = wayland
-	provides = wayvnc=0.5.0
+	provides = wayvnc=0.6.0
 	conflicts = wayvnc
 	source = git+https://github.com/any1/wayvnc
 	sha512sums = SKIP
