@@ -32,7 +32,7 @@ prepare() {
 package() {
   cd "${_plug}"
   mkdir -p "${pkgdir}/usr/include/vapoursynth"
-  for i in VapourSynth*++.hpp; do
+  for i in VapourSynth*++.hpp vsxx*_*.{cpp,h}; do
     install -Dm644 "${i}" "${pkgdir}/usr/include/vapoursynth/${i}"
   done
 
