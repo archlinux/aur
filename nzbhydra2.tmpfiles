@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/nzbhydra2 0750 nzbhydra2 nzbhydra2
+Z /var/lib/nzbhydra2 - nzbhydra2 nzbhydra2
+L /var/log/nzbhydra2 - - - - /var/lib/nzbhydra2/logs/
