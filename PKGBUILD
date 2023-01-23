@@ -1,25 +1,25 @@
-#Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
+# Maintainer: Nayla Hanegan <naylahanegan@gmail.com>
 
 pkgname=google-meet-nativefier
 _pkgname=google-meet
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="GoToMeeting desktop built with nativefier (electron)"
+pkgrel=2
+pkgdesc="Google Meet desktop built with nativefier (electron)"
 arch=("x86_64")
 license=("custom")
 makedepends=("nodejs-nativefier" "gendesk")
-source_x86_64=("icon.png::https://www.gstatic.com/images/branding/product/2x/meet_64dp.png")
-md5sums_x86_64=('SKIP')
+source=("icon.png::https://lh3.googleusercontent.com/n3Eac1gPc5OTEh7Go1jemICnooceXtfs4VZW-4CPukCUi_doFsN9Q8njidksZ4KIFyPJVYtR7ZhLL16VoUJSPE1j74iTXT2xwCqq")
+md5sums=('SKIP')
 conflicts=('google-meet-desktop')
 
 build() {
-  cd "${srcdir}"  
-  nativefier --platform "linux" --app-version "1.00" --build-version "1.00" --background-color "#2e2c29" --disable-context-menu --disable-dev-tools --title-bar-style "hiddenInset" --width "1080px" --height "720px" --icon "icon.png" --fast-quit --internal-urls "google.*" 'https://meet.google.com/'
+  cd "${srcdir}"
+  nativefier --name "Meet" --platform "linux" --app-version "1.00" --build-version "1.00" --background-color "#2e2c29" --disable-context-menu --disable-dev-tools --title-bar-style "hiddenInset" --width "1080px" --height "720px" --honest --icon "icon.png" --fast-quit --internal-urls "google.*" 'https://meet.google.com/'
 }
 
 prepare() {
     # Generate .desktop
-    gendesk --pkgname "Google Meet" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${_pkgname}" -n -f	
+    gendesk --pkgname "Google Meet" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${_pkgname}" -n -f
     mv "Google Meet.desktop" "${pkgname}.desktop"
 }
 
