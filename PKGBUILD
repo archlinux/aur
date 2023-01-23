@@ -14,7 +14,7 @@ sha256sums=('d20d182fb7069023b8dbdf131bbe232093b4147dd4900e27c95b86d3ddfca34b')
 package() {
   cd opendyslexic-$pkgver
   for otf in compiled/*.otf; do
-    install -Dm644 $otf "$pkgdir"/usr/share/fonts/$pkgname/${otf##*/}
+    install -Dm644 $otf "$pkgdir"/usr/share/fonts/OTF/${otf##*/}
   done
   install -Dm644 OFL.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
