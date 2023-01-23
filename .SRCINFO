@@ -1,6 +1,6 @@
 pkgbase = mrtrix3
 	pkgdesc = tools for diffusion MRI analyses, data conversion and a viewer (mrview)
-	pkgver = r6677.fce21191f
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/MRtrix3/mrtrix3
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = mrtrix3
 	depends = qt5-svg
 	depends = python
 	optdepends = libtiff
+	optdepends = libpng
 	optdepends = fftw
 	provides = mrtrix3
 	conflicts = mrtrix3
-	source = mrtrix3-git::git+https://github.com/MRtrix3/mrtrix3#commit=fce21191f
-	sha256sums = SKIP
+	source = mrtrix3-3.0.4::https://github.com/MRtrix3/mrtrix3/archive/3.0.4.tar.gz
+	sha256sums = f1d1aa289cfc3e46e3a8eca93594b23d061c6d50a0cd03727433a7e2cd14f71a
 
 pkgname = mrtrix3
-
