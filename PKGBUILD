@@ -3,7 +3,7 @@
 
 pkgname=rephrase
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 _debianrel=4
 pkgdesc='A specialized passphrase recovery tool for GnuPG.'
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url='https://packages.debian.org/sid/rephrase'
 depends=('gnupg')
 optdepends=('cryptsetup: can recover Cryptsetup/LUKS passphrases')
 license=('GPL3', 'GPL2')
-source=("http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}.orig.tar.gz"
-  "http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}-${_debianrel}.debian.tar.xz")
+source=("https://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}.orig.tar.gz"
+  "https://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}-${_debianrel}.debian.tar.xz")
 md5sums=('d73b9b30194f3ebbf92f19737a62ddfa'
   '790197413e1c4bbacb3894d625c2b029')
 
