@@ -1,7 +1,7 @@
 source PKGBUILD
 
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com - develop branch"
-pkgver=1.2.1
+pkgver=1.3.0
 #build a branch with BRANCH=branch
 #build a fork with FORK=<github-username>
 source=("git+${url}.git#branch=${BRANCH:-develop}"
