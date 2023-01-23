@@ -12,7 +12,7 @@ pkgbase = python-pasp
 	depends = clingo
 	depends = python-lark-parser
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/73/ef/58045f8b4092feee16a97c4712c048d2ae1511dab0e55185abaf17d25ede/pasp-plp-0.0.2.post4.tar.gz
-	sha256sums = 704877adb4db9b36b1ebe6e62702cadae599a9f88c05354661db5a423f66ad44
+	source = https://files.pythonhosted.org/packages/12/52/03c5386c77276790a1485476ab5da5d4c32e72fc0c0e55cb03d431fa38dd/pasp-plp-0.0.2.post4.tar.gz
+	sha256sums = 495221ba0e66f84ede1676db549b822b7b1c7ec0dbdf4cdaf7b9c88dceb8d7f0
 
 pkgname = python-pasp
