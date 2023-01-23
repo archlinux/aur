@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-braintree
-pkgver=4.17.1
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Braintree Python Library"
 arch=('any')
@@ -9,9 +9,8 @@ url="https://www.braintreepayments.com/docs/python"
 license=('MIT')
 depends=('python-requests')
 makedepends=('python-setuptools')
-checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/braintree/braintree_python/archive/$pkgver.tar.gz")
-sha512sums=('a6835f50451d6e914be5c691920f07fdf804c98580625bfc6984b83c5bf9acffe7b8005d6ffc201e8c0826b65ba4549a5159fde9988da57d08626bb226a35feb')
+sha512sums=('2abdec5e16386bed5e9c6d1d085ec604050907a57bf9dbe65c6c3d05b2bdf8f00929e11729b50a4774ab2bdd61a1a8d4a73f6c23368b663cc5757562b8ce1e4f')
 
 build() {
   cd braintree_python-$pkgver
@@ -20,7 +19,7 @@ build() {
 
 check() {
   cd braintree_python-$pkgver
-  nosetests3 tests/unit
+  python -m unittest discover tests/unit
 }
 
 package() {
