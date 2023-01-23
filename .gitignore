@@ -1,4 +1,3 @@
-src/
-pkg/
-*.pkg.tar.xz
-*.tar.gz
+*~
+*.log
+teslamate-*.tar.*
