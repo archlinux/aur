@@ -3,14 +3,15 @@
 
 pkgname=albert
 pkgver=0.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
-makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python')
-optdepends=('muparser: calculator plugin'
+makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python')
+optdepends=('libqalculate: calculator plugin'
+            'muparser: another calculator plugin'
             'python: python extension'
             'python-urllib3: python web plugins')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
