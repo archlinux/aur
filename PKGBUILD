@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.21.gead8469454
+pkgver=0.35.0.135.g9b59d39a3a
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -119,8 +119,15 @@ prepare() {
   git clone "${srcdir}/libass"
   git clone "${srcdir}/libplacebo"
 
-  # Set ffmpeg/libass/libplacebo/mpv flags
-  _ffmpeg_options=(
+  # Set libplacebo/ffmpeg/libass/mpv flags
+
+  _libplacebo_options=(
+    '-Dvulkan=enabled'
+    '-Dlcms=enabled'
+    '-Dd3d11=disabled'
+    )
+
+_ffmpeg_options=(
     '--disable-programs'
     '--enable-libbs2b'
     '--enable-libdav1d'
@@ -145,13 +152,12 @@ prepare() {
     '-Ddvbin=enabled'
     '-Ddvdnav=enabled'
     '-Diconv=enabled'
+    '-Djavascript=enabled'
     '-Dlcms2=enabled'
     '-Dlibarchive=enabled'
     '-Dlibavdevice=enabled'
     '-Dlibbluray=enabled'
-
     '-Dlua=luajit'
-
     '-Drubberband=enabled'
     '-Dsdl2=enabled'
     '-Dsdl2-gamepad=enabled'
@@ -198,12 +204,9 @@ prepare() {
     '-Dcuda-interop=enabled'
 
     '-Dhtml-build=enabled'
-    )
 
-  _libplacebo_options=(
-    '-Dvulkan=enabled'
-    '-Dlcms=enabled'
-    '-Dd3d11=disabled'
+    # Fix Build
+    '-Dc_link_args=-lstdc++ -Wl,-Bsymbolic'
     )
 
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
@@ -214,15 +217,14 @@ if [ -f /usr/lib/libvapoursynth.so ]; then
   _mpv_options+=('-Dvapoursynth=enabled')
 fi
 
+  (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options )
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options )
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options )
-  (IFS=$'\n'; echo "${_libplacebo_options[*]}" > libplacebo_options )
 
 }
 
 build() {
   cd mpv-build
-  LDFLAGS+=',-Bsymbolic' #NOTE if not, fail link libmpv.so.x.x
   BUILDSYSTEM=meson ./build
 }
 
