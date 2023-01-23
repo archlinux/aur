@@ -1,8 +1,8 @@
-# Maintainer: Tom Locke <xx+aur@nns.ee>
+# Maintainer: Rasmus Moorats <xx+aur@nns.ee>
 
 java_=17
 pkgname="jdk${java_}-graalvm-ee-bin"
-pkgver=22.3.0
+pkgver=22.3.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -17,11 +17,11 @@ provides=("java-runtime=${java_}"
 options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-ee-rebuild-libpolyglot.hook')
-sha256sums=('SKIP')
+sha256sums=('7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca')
+sha256sums_x86_64=('67b71877727d7771dd1da652a31099c8f12b9050b541e47f11a382997c042edf')
+sha256sums_aarch64=('148aeeda8aa2a39fb4b2f0c1bb9768b61d849f5a21e5aff11df84c49988bb0f0')
 source_x86_64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-amd64-${pkgver}.tar.gz")
 source_aarch64=("https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA${java_}_${pkgver//./_}/graalvm-ee-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('db307667720c5744ac4d2fe668b247da205d7d2d8c341f40e5e4864f7a6dec83')
-sha256sums_aarch64=('57207d6372aacfeedd0aa4bdd7eeb7f36fa0abc7e144c44c8746e8e5aef859af')
 
 package() {
     cd "graalvm-ee-java${java_}-${pkgver}"
