@@ -42,9 +42,8 @@ prepare() {
   rm -fr vsxx/VapourSynth
 
   sed -e "s| -Ivsxx/vapoursynth||g" \
-      -e '/VSConstants4/d' \
+      -e '/VSConstants4.h/d' \
       -e '/VapourSynth4.h/d' \
-      -e '/VapourSynth.h/d' \
       -e '/VSHelper4.h/d'\
       -i Makefile
 
