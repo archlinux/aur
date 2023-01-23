@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-listen1-git
 	pkgdesc = One for all free music in China
-	pkgver = 2.27.0
+	pkgver = r504.4eed624
 	pkgrel = 1
 	url = https://listen1.github.io/listen1
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = firefox-extension-listen1-git
 	makedepends = git
 	makedepends = zip
 	depends = firefox
+	provides = firefox-extension-listen1
+	conflicts = firefox-extension-listen1
 	source = git+https://github.com/listen1/listen1_chrome_extension.git
 	sha256sums = SKIP
 
