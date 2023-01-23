@@ -2,7 +2,7 @@
 # Contributor: Andrew Boktor andrew dot boktor at gmail dot com
 
 pkgname=p4d
-pkgver=2020.2
+pkgver=2022.2
 pkgrel=1
 pkgdesc="Minimal Perforce Server"
 arch=('x86_64')
