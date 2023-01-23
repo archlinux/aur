@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-sf-mono
-pkgver=2.1.0
-pkgrel=10
-_fontver=11
+pkgver=2.3.1
+pkgrel=1
+_fontver=10
 pkgdesc="Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher"
 arch=('any')
 url='https://developer.apple.com/fonts/'
@@ -10,16 +10,13 @@ license=('custom')
 makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion' 'parallel')
 conflicts=('nerd-fonts-sf-mono')
 provides=('nerd-fonts-sf-mono')
-source=("SF-Mono-$_fontver.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg" "font-patcher-$pkgver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/font-patcher" "allow-glyphdir.diff" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs")
+source=("SF-Mono-$_fontver.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg" "font-patcher-$pkgver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$pkgver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$pkgver/src/glyphs")
 sha256sums=('abaf6d62cd5b17ae1837ab40a35386733a3f603cf641a84cf59b1d7fb4caac39'
-            '3377615be4271f8bdeef66e6f2f82ac3f3cfb7b5677abe7b8e189409da048859'
-            '6fad8dead6215b1d8cedbbce3d1bc1fc7c1b0bb06ea70518334bd443a7ba543f'
+            'a6f2c45d84b29fcb13575d9fe778545ba3b0200efc0e5fb66ce679108f43f397'
             'SKIP')
 
 build() {
-  _patcher="font-patcher-$pkgver-glyphdir"
-  # apply patch to font-patcher to allow using custom glyph directory
-  patch -p1 --follow-symlinks -o "$_patcher" < allow-glyphdir.diff
+  _patcher="font-patcher-$pkgver"
   # remove previous files
   rm -rf SFMonoFonts
   # extract dmg
