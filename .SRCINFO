@@ -1,0 +1,17 @@
+pkgbase = neovim-neogit-git
+	pkgdesc = magit for neovim
+	pkgver = r922.gde227f7
+	pkgrel = 1
+	url = https://github.com/TimUntersberger/neogit
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = neovim-plenary
+	provides = neovim-neogit
+	conflicts = neovim-neogit
+	source = neovim-neogit-git::git+https://github.com/TimUntersberger/neogit.git
+	sha256sums = SKIP
+
+pkgname = neovim-neogit-git
