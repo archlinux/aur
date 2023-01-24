@@ -1,7 +1,7 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
-pkgver=13.1.0
+pkgver=13.2.0
 pkgrel=1
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX"
 )
 noextract=("WolframEngine_${pkgver}_LINUX.sh")
-sha256sums=("c090c09bdfc62276139a96262b5134c93eed52b7fe96c4a29d1d2934ae9fa998")
+sha256sums=("44f8199532034fd01044827bfe3b337f4e1e4b0da5f8346d97a2e0488c0d6ff7")
 # TODO: list based on namcap, all in opt but some are probably mandatory
 depends=( )
 optdepends=(
