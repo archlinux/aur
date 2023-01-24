@@ -1,0 +1,20 @@
+pkgbase = python-comicon-git
+	pkgdesc = Lightweight comic converter library between CBZ, PDF and EPUB
+	pkgver = r34.53ea21d
+	pkgrel = 1
+	url = https://github.com/potatoeggy/comicon
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-pytest
+	depends = python-ebooklib
+	depends = python-pillow
+	depends = python-lxml
+	depends = python-pypdf
+	source = git+https://github.com/potatoeggy/comicon.git
+	sha256sums = SKIP
+
+pkgname = python-comicon-git
