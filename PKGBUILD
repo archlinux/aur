@@ -1,7 +1,7 @@
 # Maintainer: Philipp Lenk <philipplenk at codemetas dot de>
 
 pkgname="fernanda"
-pkgver="0.5.1_beta7"
+pkgver="0.14.0_beta32"
 pkgrel="1"
 
 pkgdesc="Editor for drafting long-form fiction"
@@ -15,7 +15,7 @@ makedepends=(cmake git)
 license=("GPL3")
 
 _repo="https://github.com/fairybow/fernanda"
-_commit="a5acbf4254d4bbd43dcbfe043dc2352d46eb4122"
+_commit="67c3f18fa3bfbef982ee50c4b166108e29f8dcbf"
 source=("git+${_repo}.git#commit=${_commit}")
 
 sha256sums=('SKIP')
