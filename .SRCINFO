@@ -1,0 +1,20 @@
+pkgbase = freezetag-git
+	pkgdesc = A tool that saves, strips, and restores file paths and music metadata.
+	pkgver = r24.89ac8a8
+	pkgrel = 1
+	url = https://github.com/x1ppy/freezetag
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = fuse
+	depends = python-fuse
+	depends = python-construct
+	depends = python-watchdog
+	depends = python-setuptools
+	provides = freezetag
+	conflicts = freezetag
+	source = freezetag::git+https://github.com/x1ppy/freezetag
+	sha256sums = SKIP
+
+pkgname = freezetag-git
