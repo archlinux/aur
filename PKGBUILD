@@ -11,7 +11,6 @@ makedepends=('git' 'automake' 'autoconf' 'pkgconf')
 source=("$pkgname-alpha-$pkgver.tar.gz::https://github.com/libyal/libfdata/releases/download/$pkgver/libfdata-alpha-$pkgver.tar.gz")
 noextract=()
 md5sums=('39dcac3e780a83cdfc322696ac925c28')
-# validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
