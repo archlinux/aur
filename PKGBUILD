@@ -10,8 +10,8 @@ url='https://github.com/kamyroll/Kamyroll-Tauri'
 license=('custom')
 depends=('libayatana-appindicator')
 
-source=("$url/releases/download/v${pkgver//_/-}/kamyroll_${pkgver%_*}_amd64.deb")
-sha512sums=('09a6f4bb8c7178c6b1be676be6de642a3373a54526b4e76aa486ef807b07ad4dec5d8c90d0083d5511fc89b06e66cadfcfda24f82ebacd5ded43302a9bea496f')
+source=("$url/releases/download/v${pkgver//_/-}/kamyroll_${pkgver%_*}_amd64-debug.deb")
+sha512sums=('ded1b8cc09bfdf7aace5ca53a43b201e4f9b9726c24ccbab85b79f3cfbf286a8bbeb5aefedc6ccef344d2ab360b7152ec531e58f802298cd4568174ce060bc2c')
 
 package() {
 	tar xf data.tar.gz -C "${pkgdir}"
