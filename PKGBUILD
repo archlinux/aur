@@ -1,43 +1,34 @@
 # Maintainer: Sick Codes <info at sick dot codes>
+# Maintainer: Wachid Adi Nugroho <wachidadinugroho.maya@gmail.com>
 # Contributor: Danct12 <danct12@disroot.org>
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
 _pkgname=waydroid
-pkgname=${_pkgname}-git
-pkgrel=3
-pkgver=1.1.1.r5.g736e9c9
+pkgname=$_pkgname-git
+pkgver=1.3.4.r43.gf4506ff
+pkgrel=1
 pkgdesc="A container-based approach to boot a full Android system on a regular Linux system"
 arch=('any')
+url="https://github.com/waydroid/waydroid"
 license=('GPL3')
-depends=('lxc' 'python' 'cython' 'libgbinder' 'python-gbinder' 'python-gobject' 'nftables' 'dnsmasq')
-makedepends=('git' 'make')
+depends=('lxc' 'python-gbinder' 'python-gobject' 'nftables' 'dnsmasq' 'gtk3' 'dbus-python')
+makedepends=('git')
 optdepends=('waydroid-image: Android image for use with waydroid'
             'python-pyclip: share clipboard with container')
-_commit="96204ad92421fd3e1a17b3555e7057d05255046e" # tags/1.1.1
-source=(${_pkgname}::git+https://github.com/waydroid/waydroid.git)
+install="$_pkgname.install"
+source=("git+$url.git")
 sha256sums=('SKIP')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# prepare() {
-#   cd waydroid
-#   patch -p1 < ../122.patch
-# }
-
 package() {
-  cd waydroid
-  install -dm755 "${pkgdir}/usr/lib/waydroid"
-  install -dm755 "${pkgdir}/usr/share/applications"
-  install -dm755 "${pkgdir}/usr/bin"
-  cp -r tools data "${pkgdir}/usr/lib/waydroid/"
-  mv "${pkgdir}/usr/lib/waydroid/data/Waydroid.desktop" "${pkgdir}/usr/share/applications"
-  cp waydroid.py "${pkgdir}/usr/lib/waydroid/"
-  ln -s /usr/lib/waydroid/waydroid.py "${pkgdir}/usr/bin/waydroid"
-  install -Dm644 -t "${pkgdir}/usr/lib/systemd/system" systemd/waydroid-container.service
-}
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir/" install
 
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+}
