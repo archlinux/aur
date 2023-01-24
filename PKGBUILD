@@ -2,7 +2,7 @@
 
 pkgname=book-searcher-bin
 _pkgname=book-searcher
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Create and search books index, create your private library."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('webkit2gtk' 'gtk3')
 
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/book-searcher-org/book-searcher/releases/download/${pkgver}/Book-Searcher-desktop_${pkgver}_amd64.deb")
 
-sha512sums=('1707d891284e99ec1b663a4218bf2ee57518c17a4e049729018d82e85f70582dc9d067fa791f2b13c8d51e720de86ff684a16c466e35f21505667ca3036c10db')
+sha512sums=('8973635b09da484e7152181d2a09022ce6eeb3ef5f878b312cec32286a62ef71d5afb0fde168cb09e2640e62e0dee3f604763924e604b3a0b73b4f823ac982b1')
 
 package() {
 	tar xpf data.tar.gz -C ${pkgdir}
