@@ -11,7 +11,6 @@ license=('custom:ISC')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
-# source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('1d56828558b9b16f2822a4051824346347b66adf5320ea86070748b6f2454a88')
 
