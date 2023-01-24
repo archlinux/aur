@@ -13,6 +13,7 @@ pkgbase = millipixels-git
 	depends = rust
 	depends = ffmpeg
 	depends = libcamera-git
+	depends = libbsd
 	provides = millipixels
 	conflicts = millipixels
 	replaces = millipixels
