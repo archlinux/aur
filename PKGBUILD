@@ -1,42 +1,36 @@
-# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=libcerror-git
-pkgver=20180515.56224d9
+_pkg="${pkgname%-git}"
+pkgver=20220101.r9.ga8e7608
 pkgrel=1
 pkgdesc='Library for cross-platform C error functions'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/libyal/libcerror'
-license=('LGPL')
-provides=('libcerror-git')
-conflicts=('libcerror')
-groups=()
-depends=()
-makedepends=('git' 'autoconf' 'automake' 'libtool' 'gettext' 'pkg-config' 'bison' 'flex')
-optdepends=()
-options=()
-source=('git+https://github.com/libyal/libcerror.git')
-sha1sums=('SKIP')
-
-_gitname="libcerror"
+license=('LGPL3' 'GPL3')
+provides=("$_pkg")
+conflicts=("$_pkg")
+depends=('glibc')
+makedepends=('git')
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+	git -C "$_pkg" describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-  cd "$_gitname"
-
-  ./synclibs.sh
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc
-
-  make
+	cd "$_pkg"
+	./synclibs.sh
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc
+	make
 }
 
 package() {
-  cd "$_gitname"
-  make DESTDIR="$pkgdir/" install
+	cd "$_pkg"
+	make DESTDIR="$pkgdir/" install
 }

@@ -1,22 +1,16 @@
 pkgbase = libcerror-git
 	pkgdesc = Library for cross-platform C error functions
-	pkgver = 20180515.56224d9
+	pkgver = 20220101.r9.ga8e7608
 	pkgrel = 1
 	url = https://github.com/libyal/libcerror
-	arch = any
-	license = LGPL
+	arch = x86_64
+	license = LGPL3
+	license = GPL3
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = libtool
-	makedepends = gettext
-	makedepends = pkg-config
-	makedepends = bison
-	makedepends = flex
-	provides = libcerror-git
+	depends = glibc
+	provides = libcerror
 	conflicts = libcerror
-	source = git+https://github.com/libyal/libcerror.git
-	sha1sums = SKIP
+	source = libcerror::git+https://github.com/libyal/libcerror
+	sha256sums = SKIP
 
 pkgname = libcerror-git
-
