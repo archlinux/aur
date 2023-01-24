@@ -12,6 +12,7 @@ pkgbase = millipixels-git
 	depends = feedbackd-git
 	depends = rust
 	depends = ffmpeg
+	depends = libcamera-git
 	provides = millipixels
 	conflicts = millipixels
 	replaces = millipixels
