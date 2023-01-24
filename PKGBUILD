@@ -1,5 +1,5 @@
 pkgname=gospt
-pkgver=0.0.28
+pkgver=0.0.31
 pkgrel=1
 pkgdesc='Spotify TUI And CLI written in Go'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://gitea.asdf.cafe/abs3nt/$pkgname"
 license=('GPL')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('caa4f67ff0a742da43a862de9f95a578e44bd06ffae13490d10a94509ac66d08')
+sha256sums=('63c50164fbd16b48319ba4ae1ebe7236d12375202aad449630000d1fe5422e21')
 
 prepare(){
   cd "$pkgname"
