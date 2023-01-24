@@ -1,0 +1,23 @@
+pkgbase = sdiff-gtk
+	pkgdesc = GTK+ frontend for Stable Diffusion
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jzbor/sdiff-gtk
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-installer
+	depends = python
+	depends = python-gobject
+	depends = python-diffusers
+	depends = python-pillow
+	depends = python-pytorch
+	depends = python-transformers
+	source = sdiff-gtk-0.1.0.tar.gz::https://github.com/jzbor/sdiff-gtk/archive/refs/tags/0.1.0.tar.gz
+	source = sdiff-gtk
+	source = sdiff-gtk.desktop
+	sha512sums = ca329071b9d6486ab026f302049cb39f9952faf2047d398dece181a0a31be8fb1eab5455031c04a56dd66920e0cca44cf944e3aa1d966306cefa13267e1c4b85
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = sdiff-gtk
