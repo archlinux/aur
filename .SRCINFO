@@ -1,12 +1,12 @@
 pkgbase = go-crane-bin
 	pkgdesc = crane is a tool for interacting with remote images and registries.
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/google/go-containerregistry
 	arch = x86_64
 	license = Apache
 	provides = crane
-	source = crane-0.12.1-1.tar.gz::https://github.com/google/go-containerregistry/releases/download/v0.12.1/go-containerregistry_Linux_x86_64.tar.gz
-	sha256sums = 77a0d37334e5323e8ad08a02d6df0170cd3f0af491643cd15a98749a810de3d6
+	source = crane-0.13.0-1.tar.gz::https://github.com/google/go-containerregistry/releases/download/v0.13.0/go-containerregistry_Linux_x86_64.tar.gz
+	sha256sums = b06641f6cd08c509d5f1b234076269bfbb512f91e7ba4f796adb8c4b1626c9b7
 
 pkgname = go-crane-bin
