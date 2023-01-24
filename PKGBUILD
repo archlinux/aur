@@ -10,8 +10,6 @@ url='https://pagure.io/libuser/'
 depends=('glib2' 'pam' 'popt' 'python')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool')
 backup=('etc/libuser.conf')
-# see https://pagure.io/libuser/issue/57#comment-837056
-#source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.xz")
 source=("https://pagure.io/$pkgname/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.gz")
 sha512sums=('7ca7aaa202072694977300b53f528aad562a92188d464e83f79902ee72b707be5eb850ec2c71a51076775b39c5c6f472f86c3578a66d3a92659b0a67b303118b')
 
