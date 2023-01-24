@@ -1,7 +1,7 @@
 pkgbase = libuser
 	pkgdesc = A standardized interface for manipulating and administering user and group accounts.
-	pkgver = 0.63
-	pkgrel = 5
+	pkgver = 0.64
+	pkgrel = 1
 	url = https://pagure.io/libuser/
 	arch = x86_64
 	license = LGPL
@@ -14,7 +14,7 @@ pkgbase = libuser
 	depends = popt
 	depends = python
 	backup = etc/libuser.conf
-	source = https://releases.pagure.org/libuser/libuser-0.63.tar.xz
-	sha512sums = 5a8d261cea62d7d67da84acd263955eca10b876d3bb0cbbf8f15c2a4ad813f3d16361f90060a8ca77f7d97da4aaceaa0549985c06e9cabefeb10451bbb93a9d2
+	source = https://pagure.io/libuser/archive/libuser-0.64/libuser-libuser-0.64.tar.gz
+	sha512sums = 7ca7aaa202072694977300b53f528aad562a92188d464e83f79902ee72b707be5eb850ec2c71a51076775b39c5c6f472f86c3578a66d3a92659b0a67b303118b
 
 pkgname = libuser

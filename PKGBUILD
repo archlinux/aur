@@ -1,8 +1,8 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=libuser
-pkgver=0.63
-pkgrel=5
+pkgver=0.64
+pkgrel=1
 pkgdesc='A standardized interface for manipulating and administering user and group accounts.'
 arch=('x86_64')
 license=('LGPL')
@@ -10,11 +10,13 @@ url='https://pagure.io/libuser/'
 depends=('glib2' 'pam' 'popt' 'python')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool')
 backup=('etc/libuser.conf')
-source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
-sha512sums=('5a8d261cea62d7d67da84acd263955eca10b876d3bb0cbbf8f15c2a4ad813f3d16361f90060a8ca77f7d97da4aaceaa0549985c06e9cabefeb10451bbb93a9d2')
+# see https://pagure.io/libuser/issue/57#comment-837056
+#source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("https://pagure.io/${pkgname}/archive/${pkgname}-${pkgver}/${pkgname}-${pkgname}-${pkgver}.tar.gz")
+sha512sums=('7ca7aaa202072694977300b53f528aad562a92188d464e83f79902ee72b707be5eb850ec2c71a51076775b39c5c6f472f86c3578a66d3a92659b0a67b303118b')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgname}-${pkgver}
 
   sed -i '/^gtkdocize/ s/^/#/' autogen.sh # comment out `gtkdocize` call
   sed -i '/^SUBDIRS/d' docs/Makefile.am # remove `SUBDIRS` line
@@ -22,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgname}-${pkgver}
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -36,6 +38,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
 }
