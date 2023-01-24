@@ -34,9 +34,13 @@ magen() {
 post_install() {
     yello "1.7.0"
     blue  "New Features:"
-    plain "  VRR / adaptive sync"
+    plain "  VRR / adaptive sync for swaywm"
     blue  "Bug Fixes:"
     plain "  ${green}#60${all_off} order exact name / description matches first"
+    plain ""
+    yello "1.7.1"
+    blue  "New Features:"
+    plain "  VRR / adaptive sync for riverwm"
     plain ""
 }
 
