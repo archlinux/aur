@@ -20,7 +20,7 @@ srcname=pd-faustgen
 dstname=$pkgpref-faustgen2
 
 pkgname=$dstname-git
-pkgver=2.1.0.r4.ge6d1da2
+pkgver=2.1.1.r0.g1914294
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
