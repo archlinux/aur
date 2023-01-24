@@ -6,6 +6,8 @@ then `vagrant ssh`.
 
 There're a bunch of useful one-liners in Makefile.
 
+  * Edit PKGBUILD.
+
   * Build the package (this also updates .SRCINFO):
 
       make
@@ -17,3 +19,7 @@ There're a bunch of useful one-liners in Makefile.
   * Push to the AUR repository:
 
       make push
+
+  * Push to upstream:
+
+      git push
