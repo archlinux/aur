@@ -3,7 +3,7 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIN/
 
 pkgname=knossos-git
-pkgver=5.1+865.g3e015797
+pkgver=5.1+899.g17e8d9d6
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.'
