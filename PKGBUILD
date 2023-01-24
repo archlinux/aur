@@ -23,7 +23,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.17.0.r4883.d283e5e1
+pkgver=2.19.0.r4990.7c4fc133
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -37,24 +37,24 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
   'alsa-lib' 'gconf' 'gtk2' 'gtk3' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
-makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2' 'pandoc')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 conflicts=('purr-data')
 install=purr-data.install
 options=('!makeflags' '!strip')
-# jwilkes' upstream repo is available at:
-# "$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git"
-# But we use the "release" branch in our own fork instead, which is used
-# solely for packaging purposes.
-source=("$pkgname::git+https://bitbucket.org/agraef/purr-data.git#branch=release")
+# If you want jwilke's upstream source, then please use the purr-data-git
+# package. Here we use the "release" branch from purr-data's GH mirror, which
+# is usually more up-to-date than the upstream source and has all the latest
+# bugfixes and features.
+source=("$pkgname::git+https://github.com/agraef/purr-data.git#branch=release")
 md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.28.1
+nwjsver=0.28.3
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('6f2a2b0a58f50babbf3fb89163ca801f')
-md5sums_x86_64=('7557def0771c6fc9919aabde0a78730a')
+md5sums_i686=('858a5269dc7072c8d9e8ce9e880e4112')
+md5sums_x86_64=('c80b2b25b8b482568754f2bb586030a9')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -72,7 +72,7 @@ prefix=${prefix:-/opt/purr-data}
 # Run 'makepkg buildopt=incremental' for an incremental build (this skips
 # recompiling Gem which takes a *long* time to build) or 'makepkg
 # buildopt=light' for a light one (only essential externals).
-buildopt=${buildopt:-}
+buildopt=${buildopt:-V=0 dpkg=disabled}
 # Use this for parallel Gem builds (much faster) and less verbose make output
 # (this only works with externals using automake-generated Makefiles, i.e. Gem).
 # We also add dpkg=disabled to prevent the deb build in case you have the
