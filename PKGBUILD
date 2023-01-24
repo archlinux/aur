@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1301
+pkgver=mainline.0.1318
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 	'cpp-httplib-compiled>=0.10.8'
 	'cpp-jwt>=1.4'
 	'cubeb>=r1486'
-	'dynarmic>=6.4'
+	'dynarmic>=6.4.4'
 	'ffmpeg>=2:4.3.1'
 	'fmt>=9'
 	'git'
@@ -34,13 +34,10 @@ makedepends=(
 	'sdl2>=2.0.18'
 	'spirv-headers>=1:1.2.198'
 	'vulkan-headers>=1:1.3.238'
-	'xbyak>=6.64'
+	'xbyak>=6.68'
 	'zstd>=1.5'
 )
-checkdepends=(
-	'catch2>=2.13.9'
-	'catch2<3'
-)
+checkdepends=('catch2>=3.0.1')
 source=(
 	"yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
@@ -66,6 +63,7 @@ build() {
 	cmake -S yuzu-mainline -B build \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/.0./-} \
+		-DBUILD_TESTING="$CHECKFUNC" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
@@ -78,7 +76,6 @@ build() {
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_CHECK_SUBMODULES=OFF \
 		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
-		-DYUZU_TESTS="$CHECKFUNC" \
 		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
 		-DYUZU_USE_FASTER_LD=OFF \
