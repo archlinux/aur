@@ -1,0 +1,24 @@
+pkgbase = python-swyft-git
+	pkgdesc = swyft is the official implementation of Truncated Marginal Neural Ratio Estimation (TMNRE), a hyper-efficient, simulation-based inference technique for complex data and expensive simulators.
+	pkgver = r1216.06cc085
+	pkgrel = 1
+	url = https://github.com/undark-lab/swyft
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-toolz
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-pytorch-lightning
+	depends = python-zarr
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-torchist
+	depends = python-fasteners
+	provides = python-swyft
+	conflicts = python-swyft
+	source = python-swyft::git+https://github.com/undark-lab/swyft.git
+	md5sums = SKIP
+
+pkgname = python-swyft-git
