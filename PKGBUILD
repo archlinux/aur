@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=clash-for-windows-electron-zh
 _pkgname=${pkgname%-bin}
-pkgver=null
+pkgver=0.20.14
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
