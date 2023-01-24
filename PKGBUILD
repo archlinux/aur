@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=8.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/8.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -48,7 +48,6 @@ makedepends=(
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   libcups                lib32-libcups
   libgphoto2             lib32-libgphoto2
-  libldap                lib32-libldap
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
@@ -58,14 +57,12 @@ makedepends=(
   mingw-w64-gcc
   ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
-  openal                 lib32-openal
   opencl-headers
   perl
   samba
   sane
   sdl2                   lib32-sdl2
   v4l-utils              lib32-v4l-utils
-  vkd3d                  lib32-vkd3d
   vulkan-headers
   vulkan-icd-loader      lib32-vulkan-icd-loader
 )
@@ -81,18 +78,15 @@ optdepends=(
   gst-plugins-good       lib32-gst-plugins-good
   libcups                lib32-libcups
   libgphoto2             lib32-libgphoto2
-  libldap                lib32-libldap
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
   ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
-  openal                 lib32-openal
   samba
   sane
   sdl2                   lib32-sdl2
   v4l-utils              lib32-v4l-utils
-  vkd3d                  lib32-vkd3d
   vulkan-icd-loader      lib32-vulkan-icd-loader
   wine-stable-mono
 )
@@ -113,9 +107,6 @@ prepare() {
   done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
-
-  # Fix openldap 2.5+ detection
-  sed 's/-lldap_r/-lldap/' -i wine/configure
 
   # Get rid of old build dirs
   rm -rf wine-{32,64}-build
