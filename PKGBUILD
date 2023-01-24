@@ -6,16 +6,28 @@
 pkgname=python-nibabel
 _pkgname=nibabel
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
 arch=('any')
 url='http://nipy.org/nibabel'
 license=('MIT')
-depends=('python' 'python-numpy>=1.19' 'python-six>=1.3')
+depends=('python-numpy>=1.19' 
+         'python-six>=1.3'
+         'python-setuptools' 
+         'python-setuptools-scm')
 # building documentation may not work properly, since authors tell to use sphinx <=1.5.6, because "Sphinx >= 1.6 breaks the math_dollar extension"
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-packaging' 'python-hatch-vcs')
-checkdepends=('python-pytest')
-optdepends=('python-scipy: for full SPM-ANALYZE support' 'python-pydicom: for DICOM support' 'python-pillow: for PNG conversion in DICOMFS' 'python-h5py: for MINC2 support' 'python-indexed-gzip')
+makedepends=('python-packaging' 
+             'python-hatch-vcs' 
+             'python-build' 
+             'python-installer')
+# checkdepends=('python-pytest')
+optdepends=('python-scipy: for full SPM-ANALYZE support' 
+            'python-memory-profiler'
+            'python-fuse'
+            'python-pydicom: for DICOM support' 
+            'python-pillow: for PNG conversion in DICOMFS' 
+            'python-h5py: for MINC2 support' 
+            'python-indexed-gzip: for faster reading of NIFTI files')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nipy/${_pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('844d2ef7c04376068dcc8ac2daaa2842d2a06812c283bc97dd8fe6b0c6dfa03b03f4413e2061feefffcb257396e1481e4419cf82a0e108149cbdca1336e16e64')
 
