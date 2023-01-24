@@ -9,6 +9,7 @@ pkgbase = drophost-git
 	makedepends = cargo
 	makedepends = python
 	makedepends = git
+	provides = drophost
 	conflicts = drophost
 	source = drophost-git::git+https://github.com/KodiCraft/drophost.git
 	sha256sums = SKIP

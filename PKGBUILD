@@ -14,6 +14,7 @@ url="https://github.com/KodiCraft/drophost.git"
 license=('MIT')
 sha256sums=('SKIP')
 conflicts=('drophost')
+provides=('drophost')
 
 pkgver() {
     cd "$srcdir/$pkgname"
