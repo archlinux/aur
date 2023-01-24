@@ -46,11 +46,11 @@ build () {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw -tags=notmuch"
-    make PREFIX=/usr VERSION="${pkgver}" all
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc VERSION="${pkgver}" all
 }
 
 package () {
     cd "${srcdir}/${_pkgname}"
-    make PREFIX=/usr DESTDIR=$pkgdir install
+    make PREFIX=/usr LIBEXECDIR=/usr/lib/aerc DESTDIR=$pkgdir install
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/aerc/"
 }
