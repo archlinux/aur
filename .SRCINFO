@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-inter
 	pkgdesc = Inter Font, patched with the Nerd Fonts Patcher
-	pkgver = 3.19_2.3.2
+	pkgver = 3.19_2.3.3
 	pkgrel = 2
 	url = https://github.com/rsms/inter/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = nerd-fonts-inter
 	makedepends = subversion
 	makedepends = parallel
 	source = https://github.com/rsms/inter/releases/download/v3.19/Inter-3.19.zip
-	source = font-patcher-2.3.2::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.3.2/font-patcher
-	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.3.2/src/glyphs
+	source = font-patcher-2.3.3::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v2.3.3/font-patcher
+	source = svn+https://github.com/ryanoasis/nerd-fonts/tags/v2.3.3/src/glyphs
 	sha256sums = 150ab6230d1762a57bebf35dfc04d606ff91598a31d785f7f100356ecdcc0032
-	sha256sums = 3b733a8030c9c85fa369714eaeaddef766ed788717eb38334903c30f1523bd27
+	sha256sums = b8fba54cd34cd506a4f48b8780763c13f32b326a6cd37b74bcf33e5841b84cf8
 	sha256sums = SKIP
 
 pkgname = nerd-fonts-inter

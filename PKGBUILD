@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-inter
 _interver=3.19
-_nfver=2.3.2
+_nfver=2.3.3
 pkgver="${_interver}_${_nfver}"
 pkgrel=2
 pkgdesc="Inter Font, patched with the Nerd Fonts Patcher"
@@ -11,7 +11,7 @@ license=('custom:OFL')
 makedepends=('git' 'p7zip' 'python' 'fontforge' 'subversion' 'parallel')
 source=("https://github.com/rsms/inter/releases/download/v$_interver/Inter-$_interver.zip" "font-patcher-$_nfver::https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v$_nfver/font-patcher" "svn+https://github.com/ryanoasis/nerd-fonts/tags/v$_nfver/src/glyphs")
 sha256sums=('150ab6230d1762a57bebf35dfc04d606ff91598a31d785f7f100356ecdcc0032'
-            '3b733a8030c9c85fa369714eaeaddef766ed788717eb38334903c30f1523bd27'
+            'b8fba54cd34cd506a4f48b8780763c13f32b326a6cd37b74bcf33e5841b84cf8'
             'SKIP')
 
 build() {
