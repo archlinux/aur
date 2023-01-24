@@ -2,7 +2,7 @@
 
 pkgname=('tuf')
 _pkgname=('go-tuf')
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Implementation of The Update Framework"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/theupdateframework/go-tuf"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 depends=('glibc')
 makedepends=('go' 'git')
-sha256sums=('f8f35ceccfe417e28b64a34449c04e019f819e6b83551db5ca12447c9527ca89')
+sha256sums=('b5d3bce7e27ea3d6e6e972c66b466f0cd58532a0dd3656da2143bdfdd47a8fdf')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
