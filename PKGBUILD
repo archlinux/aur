@@ -5,7 +5,7 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=10.2.2.r435.552eb9dd6
+pkgver=10.2.2.r610.ba0b42dc8
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64')
@@ -34,13 +34,13 @@ source=(
   'ghidra.desktop'
   'ghidra-root.desktop'
   'ghidra.policy'
+  '0000_Fix-numeric-limits.patch'
 )
-sha512sums=(
-  'SKIP'
-  'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
-  'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
-  '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
-)
+sha512sums=('SKIP'
+            'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
+            'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
+            '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
+            '76562e69f900b77198168b433c43624bd412796b2b63ad32abb5dc079b143fe52562febfa3d881fc0f2d07335c4bf6f555f0097599d5c69bfd9054d47e1b84d6')
 _pkgname="${pkgname/-git/}"
 _stop='\e[m'
 _color="\e[33m"
@@ -67,6 +67,9 @@ prepare() {
   # DEPRECATED PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
 #  echo -e "${_prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
 #  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
+
+  echo -e "${_prefix}[PATCH] - Include limits.h in float decompiler source code"
+  patch --no-backup-if-mismatch --forward --strip=1 --input="${srcdir}/0000_Fix-numeric-limits.patch"
 
   echo -e "${_prefix}Setting up the build dependencies"
   gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
