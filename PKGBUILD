@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/snapcore/snapd-glib"
 license=('GPL3')
 makedepends=('git'  'libsoup' 'json-glib' 'qt5-declarative' 'qt5-base' 'glib2' 'gtk-doc' 'autoconf' 'pkg-config' 'automake' 'libtool')
+provides=('snapd-glib-2')
 conflicts=($_pkgbase)
 options=('!strip' 'emptydirs')
 source=("git+https://github.com/snapcore/$_pkgbase.git")
