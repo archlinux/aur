@@ -12,11 +12,11 @@ makedepends=('autoconf' 'automake' 'gettext' 'libtool')
 backup=('etc/libuser.conf')
 # see https://pagure.io/libuser/issue/57#comment-837056
 #source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.xz")
-source=("https://pagure.io/${pkgname}/archive/${pkgname}-${pkgver}/${pkgname}-${pkgname}-${pkgver}.tar.gz")
+source=("https://pagure.io/$pkgname/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.gz")
 sha512sums=('7ca7aaa202072694977300b53f528aad562a92188d464e83f79902ee72b707be5eb850ec2c71a51076775b39c5c6f472f86c3578a66d3a92659b0a67b303118b')
 
 prepare() {
-  cd ${pkgname}-${pkgname}-${pkgver}
+  cd $pkgname-$pkgname-$pkgver
 
   sed -i '/^gtkdocize/ s/^/#/' autogen.sh # comment out `gtkdocize` call
   sed -i '/^SUBDIRS/d' docs/Makefile.am # remove `SUBDIRS` line
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgname}-${pkgver}
+  cd $pkgname-$pkgname-$pkgver
   ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -38,6 +38,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgname}-${pkgver}
+  cd $pkgname-$pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
