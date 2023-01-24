@@ -1,9 +1,48 @@
 Version history
 ===============
 
+0.10.5
+------
+
+2023-01-22
+
+The replay tweaker shows little skill icons instead of the first three letters
+of the assigned skill. This also allowed the tweaker to become narrower.
+
+Whenever you assign one of the following skills with or without directional
+force, the replay will always record a directionally forced assignment:
+Walker, jumper, batter, builder, platformer, basher, miner. Holding
+directional force for these skills is now merely a filter while you hover over
+multiple lix. As before, unless you hold directional force, the replay will
+record unforced assignments of: Permanent abilities, imploder, exploder,
+blocker, digger.
+
+Right-clicking now takes you back to the level browser from the
+end-of-singleplayer screen or from the find-replay-for-level screen.
+
+Redraw matt/underworld/Lava.W.png: The lava's top is now a wobbling surface,
+not a straight line. Physics remain identical.
+
+Lemforum prettiness: Tower of Babel: Corrected lighting on top blocks.
+Added lower layer to central bridge to avoid bridge looking cut off.
+Can't Reach It, Under the Rainbow, The Ring of Fnargl: Add/move stacked lava
+because of the above change to matt/underworld/Lava.W.png.
+
+Removed the spare platformer in One-Way Road to make it easier for Lovely.
+
+Lemforum backroute fixes: Division of Labor: Add extra steel block in the
+central wall, add little triangle at the top of the diagonal shaft.
+Chasm: Add steel in the center. Theresa Falls Up the Stairs: Add second hatch.
+Wait Why is There a Tree: Add a third notch to the top half of the pillar.
+The Last Laugh: Surround the right-hand exit with steel to force solutions
+that use the left-hand exit.
+
+
 
 0.10.4
 ------
+
+2023-01-09
 
 Replay insert mode is a new user option. By default, this is off. When it's
 off, assignments during replay cut the replay, then add the assignment, as
