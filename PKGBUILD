@@ -2,17 +2,19 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.19.2.r4.g33b4acae
+pkgver=0.20.0.r0.g30b78147
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
 license=('GPL')
 depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
-makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python')
+makedepends=('cmake' 'git' 'muparser' 'pybind11' 'python' 'libqalculate')
 optdepends=('muparser: calculator plugin'
             'python: python extension'
             'python-urllib3: python web plugins')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
@@ -46,7 +48,6 @@ prepare() {
   git -c protocol.file.allow=always submodule update python/plugins
 }
 
-
 build() {
   cd build
 
@@ -74,7 +75,6 @@ build() {
 
   make
 }
-
 
 package() {
   cd build
