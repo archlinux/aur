@@ -1,6 +1,6 @@
 pkgbase = python-qiling-git
 	pkgdesc = An advanced binary emulation framework
-	pkgver = 1.4.4.r268.g3e18c093
+	pkgver = 1.4.5.r5.gfe91fe64
 	pkgrel = 1
 	url = https://qiling.io/
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = python-qiling-git
 	depends = python-fx
 	depends = python-questionary
 	depends = python-termcolor
-	provides = python-qiling=1.4.4.r268.g3e18c093
+	provides = python-qiling=1.4.5.r5.gfe91fe64
 	conflicts = python-qiling
 	source = python-qiling-git::git+https://github.com/qilingframework/qiling.git#branch=dev
-	source = 001-fix-qltui.patch
+	source = 0000-fix-qltui.patch
 	sha256sums = SKIP
 	sha256sums = c487e8b57c5b270e2d457a844a51e40591640ca6d9c26fb1900988f0b0c1ef9b
 
