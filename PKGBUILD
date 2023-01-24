@@ -3,7 +3,7 @@
 # Contributor: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: csllbr; Popsch <popsch@gmx.net>
 
-pkgname=mu
+pkgname=mu-emacsless
 pkgver=1.8.13
 pkgrel=1
 pkgdesc="Maildir indexer/searcher without the Emacs client (mu4e)"
