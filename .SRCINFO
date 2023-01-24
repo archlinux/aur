@@ -1,6 +1,6 @@
 pkgbase = ocaml-ppx_deriving_yojson-git
 	pkgdesc = A Yojson codec generator for OCaml >= 4.02.
-	pkgver = 20200812
+	pkgver = 20220816
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppx_deriving_yojson
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = ocaml-ppx_deriving_yojson-git
 	depends = ocaml-result
 	depends = ocaml-ppx_deriving
 	provides = ocaml-ppx_deriving_yojson
-	source = ocaml-ppx_deriving_yojson-git::git://github.com/ocaml-ppx/ppx_deriving_yojson.git
+	source = git+https://github.com/ocaml-ppx/ppx_deriving_yojson.git
 	md5sums = SKIP
 
 pkgname = ocaml-ppx_deriving_yojson-git
-
