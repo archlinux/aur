@@ -1,0 +1,22 @@
+pkgbase = libfm-qt6-git
+	pkgdesc = Qt port of libfm, a library providing components to build desktop file managers
+	pkgver = 1.2.1.2.gaa82aa8
+	pkgrel = 1
+	url = https://github.com/lxqt/libfm-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-qt6-git
+	depends = qt6-base
+	depends = menu-cache
+	depends = libexif
+	optdepends = gvfs: support for the trash bin and network devices
+	provides = libfm-qt6=1.2.1.2.gaa82aa8
+	conflicts = libfm-qt6
+	source = libfm-qt6::git+https://github.com/lxqt/libfm-qt.git#branch=wip_qt6
+	sha256sums = SKIP
+
+pkgname = libfm-qt6-git
