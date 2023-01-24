@@ -1,0 +1,21 @@
+pkgbase = lxqt-qt6plugin-git
+	pkgdesc = LXQt platform integration for Qt
+	pkgver = 1.2.0.2.g39513e5
+	pkgrel = 1
+	url = https://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-qt6-git
+	depends = libdbusmenu-qt6
+	depends = libqt6xdg-git
+	depends = libfm-qt6-git
+	provides = lxqt-qt6plugin=1.2.0.2.g39513e5
+	conflicts = lxqt-qt6plugin
+	source = lxqt-qt6plugin::git+https://github.com/lxqt/lxqt-qtplugin.git#branch=wip_qt6
+	sha256sums = SKIP
+
+pkgname = lxqt-qt6plugin-git
