@@ -5,7 +5,7 @@
 
 # BEGIN AUTOMATICALLY UPDATED SECTION
 _tlpui_ver=1.5.0-5
-_pkgrel=1
+_pkgrel=2
 _sha256=57e769db744908b394aa594ee0b53836ca3fd625cb95044fa49a68dfe0c911fe
 # END AUTOMATICALLY UPDATED SECTION
 
@@ -17,7 +17,7 @@ arch=('any')
 url="https://github.com/d4nj1/TLPUI"
 license=('GPL2')
 depends=('tlp' 'python-gobject')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 source=(
     "tlpui-${_tlpui_ver}.zip::https://github.com/d4nj1/TLPUI/archive/tlpui-${_tlpui_ver}.zip"
     "${pkgname}.desktop"

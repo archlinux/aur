@@ -1,11 +1,10 @@
 pkgbase = tlpui
 	pkgdesc = A GTK user interface for TLP written in Python
 	pkgver = 1.5.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d4nj1/TLPUI
 	arch = any
 	license = GPL2
-	makedepends = git
 	makedepends = python-setuptools
 	depends = tlp
 	depends = python-gobject
