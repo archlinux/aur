@@ -6,9 +6,9 @@ then `vagrant ssh`.
 
 There're a bunch of useful one-liners in Makefile.
 
-  * Make the package (this also updates .SRCINFO):
+  * Build the package (this also updates .SRCINFO):
 
-      make package
+      make
 
   * Commit the changes:
 

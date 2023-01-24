@@ -23,10 +23,10 @@ endef
 PKG_NAME := linux-status
 
 .PHONY: all
-all: package
+all: build
 
-.PHONY: package
-package:
+.PHONY: build
+build:
 	makepkg --clean --cleanbuild --force --syncdeps && makepkg --printsrcinfo > .SRCINFO
 
 .PHONY: commit
