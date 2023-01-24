@@ -1,0 +1,17 @@
+pkgbase = libfdata
+	pkgdesc = libfdata: Library to provide generic file data functions
+	pkgver = 20220111
+	pkgrel = 1
+	url = https://github.com/libyal/libfdata
+	arch = x86_64
+	license = LGPLv3+
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = pkgconf
+	depends = gettext
+	depends = libtool
+	source = libfdata-alpha-20220111.tar.gz::https://github.com/libyal/libfdata/releases/download/20220111/libfdata-alpha-20220111.tar.gz
+	md5sums = 39dcac3e780a83cdfc322696ac925c28
+
+pkgname = libfdata
