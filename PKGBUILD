@@ -2,7 +2,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-nojava-bin"
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ sha256sums=('dc66acae9ec02f3e8a16653b1b8e1d35be6bfded46b1649a4db53541fbdd739f'
             '5660f26303826a0b8bf3f7c198c39e345e87b799e2304a79db5a77992d09cda4'
             '35100f4e7ab5a480f5554d9abd32e8abac20d56f873f82ecbc906d0b3fdadc73'
             '73fe3e7d877f4f9f301deef9f699a357a9a1574148aedb565832f0375c99bdda')
-sha256sums_x86_64=('6649f3cf283342bdaa8afec0e0a3ca85a0172e581554c60cd5360d6415ceb615')
-sha256sums_aarch64=('43c93cbc91502c8fa4b9a7555ace03b04bc99d01b83240c9b0777440498cc76c')
+sha256sums_x86_64=('65d5fd2239b00ef37ab6c2ccf030ab095de24684f0bb80c4c920c195bb3c7356')
+sha256sums_aarch64=('6e14386d65770a8b6c4c6dc020e47b0c4a88a5009dfbd3c1b8f50c26ca96a593')
 
 prepare() {
     patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
