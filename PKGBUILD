@@ -1,8 +1,8 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=gepetto-viewer-corba
-pkgver=5.6.0
-pkgrel=2
+pkgver=5.7.3
+pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
 url="https://github.com/gepetto/$pkgname"
@@ -10,23 +10,22 @@ license=('BSD')
 depends=('gepetto-viewer' 'python-omniorbpy')
 makedepends=('cmake' 'boost')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('79793619c55554be36b89ce348a0dd5bb84d6354363ca8b0ccc1bb2ffbae1f44'
+            'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
-    mkdir -p "$pkgname-$pkgver/build"
-    cd "$pkgname-$pkgver/build"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
-    make
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
 }
 
 check() {
-    cd "$pkgname-$pkgver/build"
-    make test
+    cmake --build "build-$pkgver" -t test
 }
 
 package() {
-    cd "$pkgname-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
-    install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
+    install -Dm644 "$pkgbase-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
