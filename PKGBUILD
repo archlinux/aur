@@ -3,7 +3,7 @@
 
 _pkgname=drophost
 pkgname=${_pkgname}-git
-pkgbase=drophost
+pkgbase=drophost-git
 pkgver=r2.89ae21b
 pkgrel=0
 makedepends=('rust' 'cargo' 'python' 'git')
@@ -27,6 +27,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   
+  git submodule update --init --recursive
+
   # User may not be using rustup, so always succeed
   rustup override set nightly || true
   cargo install \
