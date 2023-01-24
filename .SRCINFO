@@ -1,6 +1,6 @@
 pkgbase = millipixels-git
 	pkgdesc = GTK3 camera application that knows how to deal with the media request api
-	pkgver = 0.21rd8a94a1e
+	pkgver = r0.21d8a94a1e
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/millipixels.git
 	arch = x86_64

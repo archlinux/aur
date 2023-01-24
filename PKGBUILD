@@ -1,6 +1,6 @@
 # Maintainer: Luigi311 <luigi311.lg@gmail.com>
 pkgname=millipixels-git
-pkgver=0.21rd8a94a1e
+pkgver=r0.21d8a94a1e
 pkgrel=1
 pkgdesc='GTK3 camera application that knows how to deal with the media request api'
 arch=('x86_64' 'aarch64')
