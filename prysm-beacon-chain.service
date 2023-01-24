@@ -3,7 +3,6 @@ Description=Prysm Beacon chain daemon
 After=network-online.target
 
 [Service]
-DynamicUser=true
 ExecStart=/usr/bin/prysm-beacon-chain --accept-terms-of-use
 Restart=on-failure
 
