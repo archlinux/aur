@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bugdom
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Save Bugdom from Thorax's evil Fire Ants"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/jorio/Bugdom'
 license=('custom:CC-BY-NC-SA-4.0')
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('cmake' 'git')
-_commit='fec530c33a08af968f97dad0c4eba09a8eb50701'
+_commit='85e88ea7cde3cd63f94fbd0cac6358f7d33b1c66'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'git+https://github.com/jorio/Pomme.git'
