@@ -1,0 +1,16 @@
+pkgbase = python-pytest-drop-dup-tests
+	pkgdesc = A utility to find python versions on your system.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nicoddemus/pytest-drop-dup-tests
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest-drop-dup-tests/pytest-drop-dup-tests-0.3.0.tar.gz
+	sha512sums = a8a0d91a0691af5f196ad923c89017ae5a3ad01d2e61245fc676ca6d4939b5dd521c5ba88bc55a153a4976921c17fa5b2877fe00cdbf83632603b1c3f61783dc
+	b2sums = 46b908623942bfbf0f04c1f839b26be350aff768c1bdb10a7a84c7687e27414ee95d966fd9989012cc57ae7ffd81412befd2df2ecb68a9bc78822da0e576d17b
+
+pkgname = python-pytest-drop-dup-tests
