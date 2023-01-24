@@ -3,7 +3,7 @@
 
 pkgname=prysm
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Prysm is an Ethereum proof-of-stake client written in Go."
 arch=('x86_64' 'arm64')
 url="https://prysmaticlabs.com/"
@@ -14,7 +14,7 @@ source=(
 	prysm-validator.service
 )
 
-sha256sums=('57706e475347f4b869d05831451d607fc18f1fa46e44757d2c566bc9354d3824'
+sha256sums=('fc52438b1319fb1e61c85c6d96abce83009c3898e517051f140093944b45f2e3'
             'cc19fe37cd80972e3a214f5de577b315996e428c8e93cb362c5beb8204d8a173'
             '143147f19424a17147d342d1ac4006d8a154dbbb9e4b5a2f8e594d43e90bd305')
 
