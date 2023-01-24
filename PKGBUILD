@@ -4,12 +4,13 @@
 _pkgname=kime
 pkgname=kime-bin
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
 # official binary have kime-window
 conflicts=('kime')
 provides=('kime')
+depends=('noto-fonts-cjk')
 optdepends=('dbus: indicator support'
             'gtk3: gtk3 support'
             'gtk4: gtk4 support'

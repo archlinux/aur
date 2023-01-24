@@ -1,13 +1,14 @@
 pkgbase = kime-bin
 	pkgdesc = Korean IME
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Riey/kime
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = pkg-config
+	depends = noto-fonts-cjk
 	optdepends = dbus: indicator support
 	optdepends = gtk3: gtk3 support
 	optdepends = gtk4: gtk4 support
