@@ -1,7 +1,7 @@
 pkgbase = vulkan-caps-viewer-wayland
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 3.27
-	pkgrel = 3
+	pkgver = 3.28
+	pkgrel = 1
 	epoch = 1
 	url = https://vulkan.gpuinfo.org
 	arch = x86_64
@@ -12,11 +12,9 @@ pkgbase = vulkan-caps-viewer-wayland
 	depends = qt5-wayland
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
-	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=0f9fd085cf82c46f8391a5ec5b4986e35c8ded3b
+	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=f28e0b8616627d089a9afb72041eea05ec6a6458
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = 155.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cd6a775c44cacc8549346cb31696822646806f51655a36cf834ef9029d201976
 
 pkgname = vulkan-caps-viewer-wayland
