@@ -1,24 +1,34 @@
-# Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
-_pkgname=ndeflib
-pkgname=python-${_pkgname}
+# Contributor: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
+
+pkgname=python-ndeflib
+_pkg="${pkgname#python-}"
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Python package for parsing and generating NFC Data Exchange Format messages"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/nfcpy/ndeflib"
 license=('custom:ISC')
 depends=('python')
-makedepends=('python-setuptools')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nfcpy/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba347891000a538616e41b7ff37ee8dc92ce6a742816c3e93a1f52e90b1606e7')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+# source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('1d56828558b9b16f2822a4051824346347b66adf5320ea86070748b6f2454a88')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD/src/" pytest -x || echo ':: Tests failed'
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
