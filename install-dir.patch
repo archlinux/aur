@@ -1,7 +1,7 @@
-diff -Naur qelectrotech-source-mirror-0.8.0-org/qelectrotech.pro qelectrotech-source-mirror-0.8.0/qelectrotech.pro
---- qelectrotech-source-mirror-0.8.0-org/qelectrotech.pro	2021-02-21 10:15:38.000000000 +0100
-+++ qelectrotech-source-mirror-0.8.0/qelectrotech.pro	2021-08-27 09:11:02.127741413 +0200
-@@ -5,20 +5,20 @@
+diff -Naur qet-0.9.0-org/qelectrotech.pro qet-0.9.0/qelectrotech.pro
+--- qet-0.9.0-org/qelectrotech.pro	2023-01-22 18:41:20.428296840 +0100
++++ qet-0.9.0/qelectrotech.pro	2023-01-22 18:47:03.725651902 +0100
+@@ -5,18 +5,18 @@
  # Chemins utilises pour la compilation et l'installation de QET
  unix {
          # Chemins UNIX
@@ -15,12 +15,8 @@ diff -Naur qelectrotech-source-mirror-0.8.0-org/qelectrotech.pro qelectrotech-so
          QET_LANG_PATH              = 'share/qelectrotech/lang/'
          QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
 -        QET_LICENSE_PATH           = 'doc/qelectrotech/'
--        QET_MIME_XML_PATH          = '../share/mime/application/'
--        QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
 -        QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
 +        QET_LICENSE_PATH           = 'share/doc/qelectrotech/'
-+        QET_MIME_XML_PATH          = 'share/mime/application/'
-+        QET_MIME_DESKTOP_PATH      = 'share/mimelnk/application/'
 +        QET_MIME_PACKAGE_PATH      = 'share/mime/packages/'
          QET_DESKTOP_PATH           = 'share/applications/'
          QET_ICONS_PATH             = 'share/icons/hicolor/'
