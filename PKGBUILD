@@ -1,11 +1,11 @@
-# Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
+# Contributor: MadPhysicist <jfoxrabinovitz at gmail dot com>
 # Contributor: tuftedocelot@fastmail.fm
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: oliparcol <oliparcol AT gmail DOT com>
 
 _gemname=posix-spawn
 pkgname=ruby-$_gemname
-pkgver=0.3.13
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='posix-spawn uses posix_spawnp(2) for faster process spawning'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('5c32e71fc1773f615234ad929b2b530ab6f84e5d43af30f2caf8146de3adbdde')
+sha256sums=('a2e0109bf9b9e041e74359aba9d6e9e92c1122cbdb15f6e9779d61aab606ab32')
 
 package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
