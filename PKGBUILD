@@ -1,13 +1,13 @@
 # Maintainer: Daniel Chen <danielchen04 at hotmail dot ca>
 
 pkgname=mandown-git
-pkgver=r151.c3d3724
+pkgver=r211.e85a310
 pkgrel=1
-pkgdesc="Comic/manga/webtoon downloader and converter to CBZ/EPUB/PDF"
+pkgdesc="Comic/manga/webtoon downloader and CBZ/EPUB/PDF converter"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
-license=("GPL2")
+license=("AGPL3")
 depends=(
 	"python-requests"
 	"python-typer"
@@ -17,10 +17,11 @@ depends=(
 	"python-lxml"
 	"python-natsort"
 	"python-filetype"
+	"python-comicon"
+	"python-pillow"
 )
 makedepends=("git" "python-build" "python-installer" "python-poetry-core")
 optdepends=(
-	"python-pillow: Image processing"
 	"pyside6: Graphical interface"
 )
 provides=()
