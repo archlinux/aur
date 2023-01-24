@@ -200,7 +200,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=7
+_minor=8
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -240,7 +240,7 @@ source=(
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/cachyos/zfs.git#commit=0b8e7ba7fb84953690e43b2aea238210d7368aa4")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=04b02785b67f9b976c43643dd52ce6cdbc22e11e")
 fi
 ## Latency NICE Support
 if [ -n "$_latency_nice" ]; then
@@ -337,8 +337,8 @@ prepare() {
     if [ -n "$_processor_opt" ]; then
         MARCH=$(echo $_processor_opt|tr '[:lower:]' '[:upper:]'&&echo)
         MARCH2=M${MARCH}
-        scripts/config -k --disable CONFIG_GENERIC_CPU
-        scripts/config -k --enable CONFIG_${MARCH2}
+        scripts/config -k -d CONFIG_GENERIC_CPU
+        scripts/config -k -e CONFIG_${MARCH2}
     fi
 
     ### Use autooptimization
@@ -349,10 +349,10 @@ prepare() {
     ### Selecting CachyOS config
     if [ "$_cachy_config" = "yes" ]; then
         echo "Enabling CachyOS config..."
-        scripts/config --enable CACHY
+        scripts/config -e CACHY
     elif [ "$_cachy_config" = "no" ]; then
        echo "Disabling CachyOS config..."
-       scripts/config --disable CACHY
+       scripts/config -d CACHY
     else
        if [ -n "$_cachy_config" ]; then
            error "The value $_cachy_config is invalid. Choose the correct one again."
@@ -366,30 +366,30 @@ prepare() {
     ### Selecting the CPU scheduler
     if [ "$_cpusched" = "bmq" ]; then
         echo "Selecting BMQ CPU scheduler..."
-        scripts/config --enable SCHED_ALT \
-            --enable SCHED_BMQ \
-            --disable SCHED_PDS
+        scripts/config -e SCHED_ALT \
+            -e SCHED_BMQ \
+            -d SCHED_PDS
     elif [ "$_cpusched" = "pds" ]; then
         echo "Selecting PDS CPU scheduler..."
-        scripts/config --enable SCHED_ALT \
-            --disable SCHED_BMQ \
-            --enable SCHED_PDS
+        scripts/config -e SCHED_ALT \
+            -d SCHED_BMQ \
+            -e SCHED_PDS
     elif [ "$_cpusched" = "cacule" ]; then
         echo "Selecting CacULE scheduler..."
-        scripts/config --enable CACULE_SCHED \
-            --disable CACULE_RDB
+        scripts/config -e CACULE_SCHED \
+            -d CACULE_RDB
     elif [ "$_cpusched" = "cacule-rdb" ]; then
         echo "Selecting CacULE-RDB scheduler..."
-        scripts/config --enable CACULE_SCHED \
-            --enable CACULE_RDB \
+        scripts/config -e CACULE_SCHED \
+            -e CACULE_RDB \
             --set-val RDB_INTERVAL 19
     elif [ "$_cpusched" = "bore" ]; then
         echo "Selecting BORE Scheduler..."
-        scripts/config --enable SCHED_BORE
+        scripts/config -e SCHED_BORE
     elif [ "$_cpusched" = "tt" ]; then
         echo "Selecting TT Scheduler..."
-        scripts/config --enable TT_SCHED \
-            --enable TT_ACCOUNTING_STATS
+        scripts/config -e TT_SCHED \
+            -e TT_ACCOUNTING_STATS
     elif [ "$_cpusched" = "cfs" ]; then
         echo "Selecting Completely Fair Scheduler..."
     elif [ "$_cpusched" = "hardened" ]; then
@@ -407,106 +407,79 @@ prepare() {
     ### Enable KCFI
     if [ -n "$_use_kcfi" ]; then
         echo "Enabling kCFI"
-        scripts/config --enable ARCH_SUPPORTS_CFI_CLANG \
-            --enable CFI_CLANG
+        scripts/config -e ARCH_SUPPORTS_CFI_CLANG \
+            -e CFI_CLANG
     fi
 
     ### Select LLVM level
     if [ "$_use_llvm_lto" = "thin" ]; then
         echo "Enabling LLVM THIN LTO..."
-        scripts/config --enable LTO \
-            --enable LTO_CLANG \
-            --enable ARCH_SUPPORTS_LTO_CLANG \
-            --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
-            --disable LTO_NONE \
-            --enable HAS_LTO_CLANG \
-            --disable LTO_CLANG_FULL \
-            --enable LTO_CLANG_THIN \
-            --enable HAVE_GCC_PLUGINS
+        scripts/config -e LTO \
+            -e LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+            -d LTO_NONE \
+            -e HAS_LTO_CLANG \
+            -d LTO_CLANG_FULL \
+            -e LTO_CLANG_THIN \
+            -e HAVE_GCC_PLUGINS
     elif [ "$_use_llvm_lto" = "full" ]; then
         echo "Enabling LLVM FULL LTO..."
-        scripts/config --enable LTO \
-            --enable LTO_CLANG \
-            --enable ARCH_SUPPORTS_LTO_CLANG \
-            --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
-            --disable LTO_NONE \
-            --enable HAS_LTO_CLANG \
-            --enable LTO_CLANG_FULL \
-            --disable LTO_CLANG_THIN \
-            --enable HAVE_GCC_PLUGINS
+        scripts/config -e LTO \
+            -e LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG \
+            -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+            -d LTO_NONE \
+            -e HAS_LTO_CLANG \
+            -e LTO_CLANG_FULL \
+            -d LTO_CLANG_THIN \
+            -e HAVE_GCC_PLUGINS
     else
-        scripts/config --enable LTO_NONE
+        scripts/config -e LTO_NONE
     fi
 
     ### Enable GCC FULL LTO
     ### Disable LTO_CP_CLONE, its experimental
     if [ -n "$_use_gcc_lto" ]; then
-         scripts/config --enable LTO_GCC \
-            --disable LTO_CP_CLONE
+         scripts/config -e LTO_GCC \
+            -d LTO_CP_CLONE
     ### Disable DEBUG, pahole is currently broken with GCC LTO
             _disable_debug=y
     fi
 
     ### Select tick rate
-    if [ "$_HZ_ticks" = "1000" ]; then
-        echo "Setting tick rate to 1k Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_1000 \
-            --set-val HZ 1000
-    elif [ "$_HZ_ticks" = "750" ]; then
-        echo "Setting tick rate to 750Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_750 \
-            --set-val HZ 750
-    elif [ "$_HZ_ticks" = "600" ]; then
-        echo "Setting tick rate to 600Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_600 \
-            --set-val HZ 600
-    elif [ "$_HZ_ticks" = "500" ]; then
-        echo "Setting tick rate to 500Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_500 \
-            --set-val HZ 500
-    elif [ "$_HZ_ticks" = "300" ]; then
-        echo "Setting tick rate to 300Hz..."
-        scripts/config --enable HZ_300 \
-            --set-val HZ 300
-    elif [ "$_HZ_ticks" = "250" ]; then
-        echo "Setting tick rate to 250Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_250 \
-            --set-val HZ 250
-    elif [ "$_HZ_ticks" = "100" ]; then
-        echo "Setting tick rate to 100Hz..."
-        scripts/config --disable HZ_300 \
-            --enable HZ_100 \
-            --set-val HZ 100
-    else
-       if [ -n "$_HZ_ticks" ]; then
-           error "The value $_HZ_ticks is invalid. Choose the correct one again."
-       else
-           error "The value is empty. Choose the correct one again."
-       fi
-       error "Selecting Setting tick rate failed!"
-       exit
+    if [[ -z $_HZ_ticks ]]; then
+        error "The value is empty. Choose the correct one again."
+        exit
     fi
+
+    case "$_HZ_ticks" in
+        100|250|500|600|750|1000)
+            scripts/config -d HZ_300 -e "HZ_${_HZ_ticks}" --set-val HZ $_HZ_ticks;;
+        300)
+            scripts/config -e HZ_300 --set-val HZ 300;;
+        *)
+           error "The value $_HZ_ticks is invalid. Choose the correct one again."
+           exit;;
+    esac
+
+    echo "Setting tick rate to ${_HZ_ticks}Hz..."
 
     ### Disable NUMA
     if [ -n "$_NUMAdisable" ]; then
         echo "Disabling NUMA from kernel config..."
-        scripts/config --disable NUMA \
-            --disable AMD_NUMA \
-            --disable X86_64_ACPI_NUMA \
-            --disable NODES_SPAN_OTHER_NODES \
-            --disable NUMA_EMU \
-            --disable NEED_MULTIPLE_NODES \
-            --disable USE_PERCPU_NUMA_NODE_ID \
-            --disable ACPI_NUMA \
-            --disable ARCH_SUPPORTS_NUMA_BALANCING \
-            --disable NODES_SHIFT \
-            --undefine NODES_SHIFT \
-            --disable NEED_MULTIPLE_NODES
+        scripts/config -d NUMA \
+            -d AMD_NUMA \
+            -d X86_64_ACPI_NUMA \
+            -d NODES_SPAN_OTHER_NODES \
+            -d NUMA_EMU \
+            -d NEED_MULTIPLE_NODES \
+            -d USE_PERCPU_NUMA_NODE_ID \
+            -d ACPI_NUMA \
+            -d ARCH_SUPPORTS_NUMA_BALANCING \
+            -d NODES_SHIFT \
+            -u NODES_SHIFT \
+            -d NEED_MULTIPLE_NODES
     fi
 
     ### Setting NR_CPUS
@@ -521,47 +494,47 @@ prepare() {
     ### Disable MQ Deadline I/O scheduler
     if [ -n "$_mq_deadline_disable" ]; then
         echo "Disabling MQ-Deadline I/O scheduler..."
-        scripts/config --disable MQ_IOSCHED_DEADLINE
+        scripts/config -d MQ_IOSCHED_DEADLINE
     fi
 
     ### Disable Kyber I/O scheduler
     if [ -n "$_kyber_disable" ]; then
         echo "Disabling Kyber I/O scheduler..."
-        scripts/config --disable MQ_IOSCHED_KYBER
+        scripts/config -d MQ_IOSCHED_KYBER
     fi
 
     ### Select performance governor
     if [ -n "$_per_gov" ]; then
         echo "Setting performance governor..."
-        scripts/config --disable CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
-            --enable CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+        scripts/config -d CPU_FREQ_DEFAULT_GOV_SCHEDUTIL \
+            -e CPU_FREQ_DEFAULT_GOV_PERFORMANCE
     fi
 
     ### Select tick type
     if [ "$_tickrate" = "periodic" ]; then
         echo "Enabling periodic ticks..."
-        scripts/config --disable NO_HZ_IDLE \
-            --disable NO_HZ_FULL \
-            --disable NO_HZ \
-            --disable NO_HZ_COMMON \
-            --enable HZ_PERIODIC
+        scripts/config -d NO_HZ_IDLE \
+            -d NO_HZ_FULL \
+            -d NO_HZ \
+            -d NO_HZ_COMMON \
+            -e HZ_PERIODIC
     elif [ "$_tickrate" = "idle" ]; then
         echo "Enabling idle ticks.."
-        scripts/config --disable HZ_PERIODIC \
-            --disable NO_HZ_FULL \
-            --enable NO_HZ_IDLE \
-            --enable NO_HZ \
-            --enable NO_HZ_COMMON
+        scripts/config -d HZ_PERIODIC \
+            -d NO_HZ_FULL \
+            -e NO_HZ_IDLE \
+            -e NO_HZ \
+            -e NO_HZ_COMMON
     elif [ "$_tickrate" = "full" ]; then
         echo "Enabling full ticks..."
-        scripts/config --disable HZ_PERIODIC \
-            --disable NO_HZ_IDLE \
-            --disable CONTEXT_TRACKING_FORCE \
-            --enable NO_HZ_FULL_NODEF \
-            --enable NO_HZ_FULL \
-            --enable NO_HZ \
-            --enable NO_HZ_COMMON \
-            --enable CONTEXT_TRACKING
+        scripts/config -d HZ_PERIODIC \
+            -d NO_HZ_IDLE \
+            -d CONTEXT_TRACKING_FORCE \
+            -e NO_HZ_FULL_NODEF \
+            -e NO_HZ_FULL \
+            -e NO_HZ \
+            -e NO_HZ_COMMON \
+            -e CONTEXT_TRACKING
     else
         if [ -n "$_tickrate" ]; then
             error "The value $_tickrate is invalid. Choose the correct one again."
@@ -575,31 +548,31 @@ prepare() {
     ### Select preempt type
     if [ "$_preempt" = "full" ]; then
         echo "Enabling low latency preempt..."
-        scripts/config --enable PREEMPT_BUILD \
-            --disable PREEMPT_NONE \
-            --disable PREEMPT_VOLUNTARY \
-            --enable PREEMPT \
-            --enable PREEMPT_COUNT \
-            --enable PREEMPTION \
-            --enable PREEMPT_DYNAMIC
+        scripts/config -e PREEMPT_BUILD \
+            -d PREEMPT_NONE \
+            -d PREEMPT_VOLUNTARY \
+            -e PREEMPT \
+            -e PREEMPT_COUNT \
+            -e PREEMPTION \
+            -e PREEMPT_DYNAMIC
     elif [ "$_preempt" = "voluntary" ]; then
         echo "Enabling voluntary preempt..."
-        scripts/config --enable PREEMPT_BUILD \
-            --disable PREEMPT_NONE \
-            --enable PREEMPT_VOLUNTARY \
-            --disable PREEMPT \
-            --enable PREEMPT_COUNT \
-            --enable PREEMPTION \
-            --disable PREEMPT_DYNAMIC
+        scripts/config -e PREEMPT_BUILD \
+            -d PREEMPT_NONE \
+            -e PREEMPT_VOLUNTARY \
+            -d PREEMPT \
+            -e PREEMPT_COUNT \
+            -e PREEMPTION \
+            -d PREEMPT_DYNAMIC
     elif [ "$_preempt" = "server" ]; then
         echo "Enabling server preempt..."
-        scripts/config --enable PREEMPT_NONE_BUILD \
-            --enable PREEMPT_NONE \
-            --disable PREEMPT_VOLUNTARY \
-            --disable PREEMPT \
-            --disable PREEMPT_COUNT \
-            --disable PREEMPTION \
-            --disable PREEMPT_DYNAMIC
+        scripts/config -e PREEMPT_NONE_BUILD \
+            -e PREEMPT_NONE \
+            -d PREEMPT_VOLUNTARY \
+            -d PREEMPT \
+            -d PREEMPT_COUNT \
+            -d PREEMPTION \
+            -d PREEMPT_DYNAMIC
     else
         if [ -n "$_preempt" ]; then
             error "The value $_preempt is invalid. Choose the correct one again."
@@ -613,34 +586,34 @@ prepare() {
     ### Enable O3
     if [ -n "$_cc_harder" ]; then
         echo "Enabling KBUILD_CFLAGS -O3..."
-        scripts/config --disable CC_OPTIMIZE_FOR_PERFORMANCE \
-            --enable CC_OPTIMIZE_FOR_PERFORMANCE_O3
+        scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
+            -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
     fi
 
     ### Enable bbr2
     if [ -n "$_tcp_bbr2" ]; then
         echo "Disabling TCP_CONG_CUBIC..."
-        scripts/config --module TCP_CONG_CUBIC \
-            --disable DEFAULT_CUBIC \
-            --enable TCP_CONG_BBR2 \
-            --enable DEFAULT_BBR2 \
+        scripts/config -m TCP_CONG_CUBIC \
+            -d DEFAULT_CUBIC \
+            -e TCP_CONG_BBR2 \
+            -e DEFAULT_BBR2 \
             --set-str DEFAULT_TCP_CONG bbr2
     fi
 
    ### Select LRU config
     if [ "$_lru_config" = "standard" ]; then
        echo "Enabling multigenerational LRU..."
-       scripts/config --enable LRU_GEN \
-           --enable LRU_GEN_ENABLED \
-           --disable LRU_GEN_STATS
+       scripts/config -e LRU_GEN \
+           -e LRU_GEN_ENABLED \
+           -d LRU_GEN_STATS
     elif [ "$_lru_config" = "stats" ]; then
        echo "Enabling multigenerational LRU with stats..."
-       scripts/config --enable LRU_GEN \
-           --enable LRU_GEN_ENABLED \
-           --enable LRU_GEN_STATS
+       scripts/config -e LRU_GEN \
+           -e LRU_GEN_ENABLED \
+           -e LRU_GEN_STATS
     elif [ "$_lru_config" = "none" ]; then
        echo "Disabling multigenerational LRU..."
-       scripts/config --disable LRU_GEN
+       scripts/config -d LRU_GEN
     else
         if [ -n "$_lru_config" ]; then
            error "The value $_lru_config is invalid. Choose the correct one again."
@@ -654,15 +627,15 @@ prepare() {
     ### Select VMA config
     if [ "$_vma_config" = "standard" ]; then
        echo "Enabling per-VMA locking..."
-       scripts/config --enable PER_VMA_LOCK \
-           --disable PER_VMA_LOCK_STATS
+       scripts/config -e PER_VMA_LOCK \
+           -d PER_VMA_LOCK_STATS
     elif [ "$_vma_config" = "stats" ]; then
        echo "Enabling per-VMA locking with stats..."
-       scripts/config --enable PER_VMA_LOCK \
-           --enable PER_VMA_LOCK_STATS
+       scripts/config -e PER_VMA_LOCK \
+           -e PER_VMA_LOCK_STATS
     elif [ "$_vma_config" = "none" ]; then
        echo "Disabling per-VMA locking..."
-       scripts/config --disable PER_VMA_LOCK
+       scripts/config -d PER_VMA_LOCK
     else
         if [ -n "$_vma_config" ]; then
            error "The value $_vma_config is invalid. Choose the correct one again."
@@ -676,12 +649,12 @@ prepare() {
    ### Select THP
     if [ "$_hugepage" = "always" ]; then
        echo "Enable THP always..."
-       scripts/config --disable TRANSPARENT_HUGEPAGE_MADVISE \
-           --enable TRANSPARENT_HUGEPAGE_ALWAYS
+       scripts/config -d TRANSPARENT_HUGEPAGE_MADVISE \
+           -e TRANSPARENT_HUGEPAGE_ALWAYS
     elif [ "$_hugepage" = "madvise" ]; then
        echo "Enable THP madvise..."
-       scripts/config --disable TRANSPARENT_HUGEPAGE_ALWAYS \
-           --enable TRANSPARENT_HUGEPAGE_MADVISE
+       scripts/config -d TRANSPARENT_HUGEPAGE_ALWAYS \
+           -e TRANSPARENT_HUGEPAGE_MADVISE
     else
         if [ -n "$_hugepage" ]; then
            error "The value $_hugepage is invalid. Choose the correct one again."
@@ -695,97 +668,97 @@ prepare() {
     ### Enable DAMON
     if [ -n "$_damon" ]; then
         echo "Enabling DAMON..."
-        scripts/config --enable DAMON \
-            --enable DAMON_VADDR \
-            --enable DAMON_DBGFS \
-            --enable DAMON_SYSFS \
-            --enable DAMON_PADDR \
-            --enable DAMON_RECLAIM \
-            --enable DAMON_LRU_SORT
+        scripts/config -e DAMON \
+            -e DAMON_VADDR \
+            -e DAMON_DBGFS \
+            -e DAMON_SYSFS \
+            -e DAMON_PADDR \
+            -e DAMON_RECLAIM \
+            -e DAMON_LRU_SORT
     fi
 
     ### Enable LRNG
     if [ -n "$_lrng_enable" ]; then
         echo "Enabling Linux Random Number Generator ..."
-        scripts/config --disable RANDOM_DEFAULT_IMPL \
-            --enable LRNG \
-            --enable LRNG_SHA256 \
-            --enable LRNG_COMMON_DEV_IF \
-            --enable LRNG_DRNG_ATOMIC \
-            --enable LRNG_SYSCTL \
-            --enable LRNG_RANDOM_IF \
-            --enable LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
-            --module LRNG_KCAPI_IF \
-            --module LRNG_HWRAND_IF \
-            --enable LRNG_DEV_IF \
-            --enable LRNG_RUNTIME_ES_CONFIG \
-            --enable LRNG_IRQ_DFLT_TIMER_ES \
-            --disable LRNG_SCHED_DFLT_TIMER_ES \
-            --enable LRNG_TIMER_COMMON \
-            --disable LRNG_COLLECTION_SIZE_256 \
-            --disable LRNG_COLLECTION_SIZE_512 \
-            --enable LRNG_COLLECTION_SIZE_1024 \
-            --disable LRNG_COLLECTION_SIZE_2048 \
-            --disable LRNG_COLLECTION_SIZE_4096 \
-            --disable LRNG_COLLECTION_SIZE_8192 \
+        scripts/config -d RANDOM_DEFAULT_IMPL \
+            -e LRNG \
+            -e LRNG_SHA256 \
+            -e LRNG_COMMON_DEV_IF \
+            -e LRNG_DRNG_ATOMIC \
+            -e LRNG_SYSCTL \
+            -e LRNG_RANDOM_IF \
+            -e LRNG_AIS2031_NTG1_SEEDING_STRATEGY \
+            -m LRNG_KCAPI_IF \
+            -m LRNG_HWRAND_IF \
+            -e LRNG_DEV_IF \
+            -e LRNG_RUNTIME_ES_CONFIG \
+            -e LRNG_IRQ_DFLT_TIMER_ES \
+            -d LRNG_SCHED_DFLT_TIMER_ES \
+            -e LRNG_TIMER_COMMON \
+            -d LRNG_COLLECTION_SIZE_256 \
+            -d LRNG_COLLECTION_SIZE_512 \
+            -e LRNG_COLLECTION_SIZE_1024 \
+            -d LRNG_COLLECTION_SIZE_2048 \
+            -d LRNG_COLLECTION_SIZE_4096 \
+            -d LRNG_COLLECTION_SIZE_8192 \
             --set-val LRNG_COLLECTION_SIZE 1024 \
-            --enable LRNG_HEALTH_TESTS \
+            -e LRNG_HEALTH_TESTS \
             --set-val LRNG_RCT_CUTOFF 31 \
             --set-val LRNG_APT_CUTOFF 325 \
-            --enable LRNG_IRQ \
-            --enable LRNG_CONTINUOUS_COMPRESSION_ENABLED \
-            --disable LRNG_CONTINUOUS_COMPRESSION_DISABLED \
-            --enable LRNG_ENABLE_CONTINUOUS_COMPRESSION \
-            --enable LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
+            -e LRNG_IRQ \
+            -e LRNG_CONTINUOUS_COMPRESSION_ENABLED \
+            -d LRNG_CONTINUOUS_COMPRESSION_DISABLED \
+            -e LRNG_ENABLE_CONTINUOUS_COMPRESSION \
+            -e LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION \
             --set-val LRNG_IRQ_ENTROPY_RATE 256 \
-            --enable LRNG_JENT \
+            -e LRNG_JENT \
             --set-val LRNG_JENT_ENTROPY_RATE 16 \
-            --enable LRNG_CPU \
+            -e LRNG_CPU \
             --set-val LRNG_CPU_FULL_ENT_MULTIPLIER 1 \
             --set-val LRNG_CPU_ENTROPY_RATE 8 \
-            --enable LRNG_SCHED \
+            -e LRNG_SCHED \
             --set-val LRNG_SCHED_ENTROPY_RATE 4294967295 \
-            --enable LRNG_DRNG_CHACHA20 \
-            --module LRNG_DRBG \
-            --module LRNG_DRNG_KCAPI \
-            --enable LRNG_SWITCH \
-            --enable LRNG_SWITCH_HASH \
-            --module LRNG_HASH_KCAPI \
-            --enable LRNG_SWITCH_DRNG \
-            --module LRNG_SWITCH_DRBG \
-            --module LRNG_SWITCH_DRNG_KCAPI \
-            --enable LRNG_DFLT_DRNG_CHACHA20 \
-            --disable LRNG_DFLT_DRNG_DRBG \
-            --disable LRNG_DFLT_DRNG_KCAPI \
-            --enable LRNG_TESTING_MENU \
-            --disable LRNG_RAW_HIRES_ENTROPY \
-            --disable LRNG_RAW_JIFFIES_ENTROPY \
-            --disable LRNG_RAW_IRQ_ENTROPY \
-            --disable LRNG_RAW_RETIP_ENTROPY \
-            --disable LRNG_RAW_REGS_ENTROPY \
-            --disable LRNG_RAW_ARRAY \
-            --disable LRNG_IRQ_PERF \
-            --disable LRNG_RAW_SCHED_HIRES_ENTROPY \
-            --disable LRNG_RAW_SCHED_PID_ENTROPY \
-            --disable LRNG_RAW_SCHED_START_TIME_ENTROPY \
-            --disable LRNG_RAW_SCHED_NVCSW_ENTROPY \
-            --disable LRNG_SCHED_PERF \
-            --disable LRNG_ACVT_HASH \
-            --disable LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
-            --disable LRNG_TEST_CPU_ES_COMPRESSION \
-            --enable LRNG_SELFTEST \
-            --disable LRNG_SELFTEST_PANIC \
-            --disable LRNG_RUNTIME_FORCE_SEEDING_DISABLE
+            -e LRNG_DRNG_CHACHA20 \
+            -m LRNG_DRBG \
+            -m LRNG_DRNG_KCAPI \
+            -e LRNG_SWITCH \
+            -e LRNG_SWITCH_HASH \
+            -m LRNG_HASH_KCAPI \
+            -e LRNG_SWITCH_DRNG \
+            -m LRNG_SWITCH_DRBG \
+            -m LRNG_SWITCH_DRNG_KCAPI \
+            -e LRNG_DFLT_DRNG_CHACHA20 \
+            -d LRNG_DFLT_DRNG_DRBG \
+            -d LRNG_DFLT_DRNG_KCAPI \
+            -e LRNG_TESTING_MENU \
+            -d LRNG_RAW_HIRES_ENTROPY \
+            -d LRNG_RAW_JIFFIES_ENTROPY \
+            -d LRNG_RAW_IRQ_ENTROPY \
+            -d LRNG_RAW_RETIP_ENTROPY \
+            -d LRNG_RAW_REGS_ENTROPY \
+            -d LRNG_RAW_ARRAY \
+            -d LRNG_IRQ_PERF \
+            -d LRNG_RAW_SCHED_HIRES_ENTROPY \
+            -d LRNG_RAW_SCHED_PID_ENTROPY \
+            -d LRNG_RAW_SCHED_START_TIME_ENTROPY \
+            -d LRNG_RAW_SCHED_NVCSW_ENTROPY \
+            -d LRNG_SCHED_PERF \
+            -d LRNG_ACVT_HASH \
+            -d LRNG_RUNTIME_MAX_WO_RESEED_CONFIG \
+            -d LRNG_TEST_CPU_ES_COMPRESSION \
+            -e LRNG_SELFTEST \
+            -d LRNG_SELFTEST_PANIC \
+            -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
     fi
 
     ### Enable zram/zswap ZSTD compression
     if [ -n "$_zstd_compression" ]; then
         echo "Enabling zram/swap ZSTD compression..."
-        scripts/config --disable ZRAM_DEF_COMP_LZORLE \
-            --enable ZRAM_DEF_COMP_ZSTD \
+        scripts/config -d ZRAM_DEF_COMP_LZORLE \
+            -e ZRAM_DEF_COMP_ZSTD \
             --set-str ZRAM_DEF_COMP zstd \
-            --disable ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
-            --enable ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
+            -d ZSWAP_COMPRESSOR_DEFAULT_LZ4 \
+            -e ZSWAP_COMPRESSOR_DEFAULT_ZSTD \
             --set-str ZSWAP_COMPRESSOR_DEFAULT zstd
     fi
 
@@ -793,13 +766,13 @@ prepare() {
     if [ "$_zstd_level_value" = "ultra" ]; then
         echo "Enabling highest ZSTD modules and kernel compression ratio..."
         scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 \
-            --enable MODULE_COMPRESS_ZSTD_ULTRA \
+            -e MODULE_COMPRESS_ZSTD_ULTRA \
             --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 \
             --set-val ZSTD_COMP_VAL 22
     elif [ "$_zstd_level_value" = "normal" ]; then
         echo "Enabling standard ZSTD modules and kernel compression ratio..."
         scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 \
-            --disable MODULE_COMPRESS_ZSTD_ULTRA \
+            -d MODULE_COMPRESS_ZSTD_ULTRA \
             --set-val ZSTD_COMP_VAL 19
     else
         if [ -n "$_zstd_level_value" ]; then
@@ -813,26 +786,26 @@ prepare() {
 
     ### Disable DEBUG
     if [ -n "$_disable_debug" ]; then
-        scripts/config --disable DEBUG_INFO \
-            --disable DEBUG_INFO_BTF \
-            --disable DEBUG_INFO_DWARF4 \
-            --disable DEBUG_INFO_DWARF5 \
-            --disable PAHOLE_HAS_SPLIT_BTF \
-            --disable DEBUG_INFO_BTF_MODULES \
-            --disable SLUB_DEBUG \
-            --disable PM_DEBUG \
-            --disable PM_ADVANCED_DEBUG \
-            --disable PM_SLEEP_DEBUG \
-            --disable ACPI_DEBUG \
-            --disable SCHED_DEBUG \
-            --disable LATENCYTOP \
-            --disable DEBUG_PREEMPT
+        scripts/config -d DEBUG_INFO \
+            -d DEBUG_INFO_BTF \
+            -d DEBUG_INFO_DWARF4 \
+            -d DEBUG_INFO_DWARF5 \
+            -d PAHOLE_HAS_SPLIT_BTF \
+            -d DEBUG_INFO_BTF_MODULES \
+            -d SLUB_DEBUG \
+            -d PM_DEBUG \
+            -d PM_ADVANCED_DEBUG \
+            -d PM_SLEEP_DEBUG \
+            -d ACPI_DEBUG \
+            -d SCHED_DEBUG \
+            -d LATENCYTOP \
+            -d DEBUG_PREEMPT
     fi
 
     echo "Enable USER_NS_UNPRIVILEGED"
-    scripts/config --enable USER_NS
+    scripts/config -e USER_NS
     echo "Enable WINE FASTSYNC"
-    scripts/config --enable WINESYNC
+    scripts/config -e WINESYNC
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -1052,8 +1025,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('4ab048bad2e7380d3b827f1fad5ad2d2fc4f2e80e1c604d85d1f8781debe600f'
+sha256sums=('b60bb53ab8ba370a270454b11e93d41af29126fc72bd6ede517673e2e57b816d'
             'fab53ac59d4da6fb0433f6fd15877871f4124a89021237f90835d1ff3755ba9c'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'fc40705a3d5bc3bb5c0b58517052bfb8fd4e07924fbeff77f2fe7fa8f386aef7'
+            '775fd31535e3f025bd7597105fbc34def0265671f2c6000f253d4eb2f3883988'
             'f8d97fd1a17d8730a317eac694009b346ace1d9bf2630599ce06d8f6c53baf5b')
