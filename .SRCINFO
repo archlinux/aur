@@ -1,0 +1,15 @@
+pkgbase = ruby-rubyxl
+	pkgdesc = gem which allows the parsing, creation, and manipulation of Microsoft Excel (.xlsx/.xlsm) Documents
+	pkgver = 3.4.25
+	pkgrel = 1
+	url = https://rubygems.org/gems/rubyXL
+	arch = any
+	license = MIT
+	depends = ruby-nokogiri
+	depends = ruby-rubyzip
+	noextract = rubyXL-3.4.25.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rubyXL-3.4.25.gem
+	sha256sums = 4f1a1b662dfe05271707e09d22f93d4d6645b82329959e7e333c05b46f6af490
+
+pkgname = ruby-rubyxl
