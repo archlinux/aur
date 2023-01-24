@@ -4,7 +4,7 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=0.9.0.r40.geb7e45d
+pkgver=0.14.0.r24.g276c30f
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
@@ -15,8 +15,14 @@ makedepends=('go' 'git' 'scdoc')
 optdepends=('w3m: html viewer support' 'dante: proxy support')
 provides=('aerc')
 conflicts=('aerc')
-source=("${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}")
-sha512sums=('SKIP')
+source=(
+	"${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}"
+	"makefile-fix.patch"
+)
+sha512sums=(
+	'SKIP'
+	'e8fe0511ecc5b80367a3580ce85d868a3008b8d2ca083b7f8293c28bb76c02f42828c17e59dad9c62f092243158b80e02301e569b5c51541fe97e99414daaea0'
+)
 options=('!buildflags')
 
 pkgver () {
@@ -28,6 +34,10 @@ pkgver () {
     )
 }
 
+prepare () {
+    cd "${srcdir}/${_pkgname}"
+    git apply "${srcdir}/makefile-fix.patch"
+}
 
 build () {
     cd "${srcdir}/${_pkgname}"
@@ -36,7 +46,7 @@ build () {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw -tags=notmuch"
-    make PREFIX=/usr VERSION="$(pkgver)"
+    make PREFIX=/usr VERSION="${pkgver}" all
 }
 
 package () {
