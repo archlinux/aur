@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9764.797270802
+pkgver=r9947.96a9dba67
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -89,6 +89,7 @@ build() {
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
+    export PROTOC_BINARY=$(which protoc)
     ./tools/build
 }
 
