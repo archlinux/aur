@@ -1,6 +1,6 @@
 # Maintainer: Luigi311 <luigi311.lg@gmail.com>
 pkgname=megapixels-ppp-git
-pkgver=1.0
+pkgver=r1.03dc718a
 pkgrel=1
 pkgdesc='GTK4 camera application that knows how to deal with the media request api'
 arch=('x86_64' 'aarch64')

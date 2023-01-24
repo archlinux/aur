@@ -1,6 +1,6 @@
 pkgbase = megapixels-ppp-git
 	pkgdesc = GTK4 camera application that knows how to deal with the media request api
-	pkgver = 1.0
+	pkgver = r1.03dc718a
 	pkgrel = 1
 	url = https://github.com/kgmt0/megapixels
 	arch = x86_64
