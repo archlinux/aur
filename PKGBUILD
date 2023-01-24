@@ -2,24 +2,25 @@
 # Co-Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=prey-node-client
-pkgver=1.10.11
-pkgrel=2
-pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
-url="https://preyproject.com/"
-arch=('x86_64' 'i686')
+pkgver=1.11.0
+pkgrel=1
+pkgdesc="Node.js client for the Prey anti-theft software"
+url="https://github.com/prey/prey-node-client"
+arch=('x86_64')
 license=('GPL3')
 depends=('nodejs' 'mpg123' 'xawtv' 'scrot' 'openssh' 'wireless_tools' 'lsb-release' 'python' 'networkmanager' 'npm' 'gtk3' 'python-gobject')
 provides=('prey-tracker')
 install="${pkgname}.install"
-source=('prey-tracker' 'disable-auto-updates.patch' 'rename-bin.patch' 'fix-lock.patch')
-source_x86_64=("https://downloads.preyproject.com/prey-client-releases/node-client/${pkgver}/prey-linux-${pkgver}-x64.zip")
-source_i686=("https://downloads.preyproject.com/prey-client-releases/node-client/${pkgver}/prey-linux-${pkgver}-x86.zip")
-sha256sums=('41f29d334e7671b07cfdc848b2752ccc51710471285e8ebe61c07faa0d36160d'
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/prey-linux-${pkgver}-x64.zip"
+        'prey-tracker'
+        'disable-auto-updates.patch'
+        'rename-bin.patch'
+        'fix-lock.patch')
+sha256sums=('6ef4a3966fe8928b05984bcf98e3b694e3b1e1f6ebf2533bcd86f814159a9d91'
+            '41f29d334e7671b07cfdc848b2752ccc51710471285e8ebe61c07faa0d36160d'
             '37094af138edfa0fce31b43025a8b5e56e4a15715b4094e7ae9eea81f44c9e37'
             'c84e1a1fb5250ac0855f929110854a829269e1ad0a4b33f2779aa9d5f39bcf80'
             'd4df726fb87b652b352ca44ddb78afe0e16e40dc130753d86c2cbfa92ac2781d')
-sha256sums_x86_64=('e0991e83d46290dede40ee2134fda344b8690cf3e5a69df19394d95ae1aa50b6')
-sha256sums_i686=('21416f91ccebcc1f44927231d2a00606e44113a861b79bd117c6172aa5ede803')
 
 prepare() {
   cd "prey-${pkgver}"
