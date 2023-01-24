@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 pkgname=kime-git
-pkgver=2.5.6.r29.gba9c2c2
+pkgver=3.0.2.r1.g10f35aa
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -13,7 +13,8 @@ optdepends=('gtk2: gtk2 support'
             'qt5-base: qt5 support'
             'qt6-base: qt6 support'
             'wayland: wayland support')
-depends=('dbus' 'fontconfig' 'freetype2' 'libxcb')
+# FIXME
+depends=('dbus' 'fontconfig' 'freetype2' 'libxcb' 'noto-fonts-cjk')
 makedepends=('git' 'cargo' 'clang' 'llvm' 'cmake' 'wayland')
 arch=('any')
 license=('GPL3')

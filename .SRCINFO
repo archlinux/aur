@@ -1,6 +1,6 @@
 pkgbase = kime-git
 	pkgdesc = Korean IME
-	pkgver = 2.5.6.r29.gba9c2c2
+	pkgver = 3.0.2.r1.g10f35aa
 	pkgrel = 1
 	url = https://github.com/Riey/kime
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = kime-git
 	depends = fontconfig
 	depends = freetype2
 	depends = libxcb
+	depends = noto-fonts-cjk
 	optdepends = gtk2: gtk2 support
 	optdepends = gtk3: gtk3 support
 	optdepends = gtk4: gtk4 support
