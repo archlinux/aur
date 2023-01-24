@@ -1,11 +1,11 @@
 pkgbase = pandoc-plot-bin
 	pkgdesc = Render and include figures in Pandoc documents using your plotting toolkit of choice
-	pkgver = 1.5.5
-	pkgrel = 1
+	pkgver = 1.6.1
+	pkgrel = 0
 	url = https://github.com/LaurentRDC/pandoc-plot
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/LaurentRDC/pandoc-plot/releases/download/1.5.5/pandoc-plot-Linux-x86_64.zip
-	sha256sums = 533499dcef096e51d887a06d01210882c28777a82278733122d17a282274a604
+	source = https://github.com/LaurentRDC/pandoc-plot/releases/download/1.6.1/pandoc-plot-Linux-x86_64.zip
+	sha256sums = 3ca260c3e84c035cdfa12ab035a1186c9580b2aa8c3c7628b4d9cf1a054c5a58
 
 pkgname = pandoc-plot-bin
