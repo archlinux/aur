@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-previewgenerator
 pkgdesc='Nextcloud app that allows admins to pre-generate previews'
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(AGPL)
 url="https://github.com/nextcloud/${pkgname##*-}"
@@ -18,7 +18,7 @@ sha256sums=('09880a74f340cc7d2f381fe3b3abc9d0f0ae68b45f7de6b6ada31b83f38505d6')
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php-legacy php)
 _get_supported_ranges() {
 	_app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
 	_app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"

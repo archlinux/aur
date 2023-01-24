@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-previewgenerator
 	pkgdesc = Nextcloud app that allows admins to pre-generate previews
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/previewgenerator
 	arch = any
 	license = AGPL
