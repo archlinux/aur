@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-user-oidc
 	pkgdesc = OIDC connect user backend for Nextcloud
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/user_oidc
 	arch = x86_64
 	license = AGPL3

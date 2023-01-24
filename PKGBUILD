@@ -3,7 +3,7 @@
 _appname=user_oidc
 pkgname=nextcloud-app-${_appname/_/-}
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='OIDC connect user backend for Nextcloud'
 arch=(x86_64)
 url="https://github.com/nextcloud/$_appname"
@@ -20,7 +20,7 @@ sha256sums=('f64fc3abb4880e1ab0f0697565dca6dc784111c17fcaa33acca2aceff6239e9e')
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php-legacy php)
 _get_supported_ranges() {
 	_app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
 	_app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
