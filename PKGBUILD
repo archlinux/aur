@@ -10,8 +10,6 @@ license=('LGPL')
 url='https://pagure.io/libuser/'
 depends=('libuser' 'libldap')
 makedepends=('autoconf' 'automake' 'gettext' 'libtool')
-# see https://pagure.io/libuser/issue/57#comment-837056
-#source=("https://releases.pagure.org/$_srcname/$_srcname-$pkgver.tar.xz")
 source=("https://pagure.io/$_srcname/archive/$_srcname-$pkgver/$_srcname-$_srcname-$pkgver.tar.gz")
 sha512sums=('7ca7aaa202072694977300b53f528aad562a92188d464e83f79902ee72b707be5eb850ec2c71a51076775b39c5c6f472f86c3578a66d3a92659b0a67b303118b')
 
