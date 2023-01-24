@@ -1,31 +1,37 @@
-_pkgname=libcprime
-pkgname=${_pkgname}-git
-pkgver=2.8.0.r2.e52fb37
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dan Johansen <strit@manjaro.org>
+# Contributor: Shaber
+
+pkgname=libcprime-git
+_pkg="${pkgname%-git}"
+pkgver=4.4.1.r0.g21750d2
 pkgrel=1
-pkgdesc="A library for bookmarking, saving recent activites, managing settings of CoreApps."
-arch=('any')
+pkgdesc="A library for bookmarking, saving recent activites, managing settings of C-Suite"
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/libcprime"
 license=('GPL3')
-depends=('qt5-base' 'qt5-connectivity' 'libnotify')
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-groups=('coreapps-git')
-source=("git+https://gitlab.com/cubocore/${_pkgname}.git")
-md5sums=('SKIP')
+depends=('qt5-base')
+makedepends=('cmake' 'git')
+provides=("$_pkg" "$_pkg-core.so" "$_pkg-gui.so" "$_pkg-widgets.so")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	qmake
-	make
+	cmake \
+		-B build \
+		-S "$_pkg" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
-	make INSTALL_ROOT=${pkgdir} install
+	DESTDIR="$pkgdir" cmake --install build
 }
