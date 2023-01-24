@@ -14,6 +14,8 @@ pkgbase = python-comicon-git
 	depends = python-pillow
 	depends = python-lxml
 	depends = python-pypdf
+	provides = python-comicon
+	provides = comicon
 	source = git+https://github.com/potatoeggy/comicon.git
 	sha256sums = SKIP
 

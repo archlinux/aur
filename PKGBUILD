@@ -15,7 +15,7 @@ depends=(
 	"python-pypdf"
 )
 makedepends=("git" "python-build" "python-installer" "python-poetry-core" "python-pytest")
-provides=()
+provides=("python-comicon" "comicon")
 conflicts=()
 source=("git+$url.git")
 sha256sums=("SKIP")
