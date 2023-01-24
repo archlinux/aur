@@ -5,7 +5,7 @@
 
 pkgname=knossos4
 pkgver=4.1.2
-pkgrel=16
+pkgrel=17
 arch=(x86_64)
 pkgdesc='A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.'
 url='https://knossos.app'
@@ -51,6 +51,8 @@ prepare() {
   patch -p1 -i ../f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
   sed 's/snprintf(remoteURL, CSTRING_SIZE, url.toStdString().c_str());/snprintf(remoteURL, CSTRING_SIZE, "%s", url.toStdString().c_str());/' -i network.cpp
   sed 's/NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang"/FALSE/' -i CMakeLists.txt # breaks using/linking some std functions (min, max, …)
+  sed '/#include <QThread>/a #include <deque>' -i remote.h
+  sed '/#include <QWaitCondition>/a #include <array>' -i stateInfo.h
 
   pythonqt="Qt5Python$(pacman -Q python | cut -d' ' -f2 | cut -d. -f1-2 --output-delimiter '')"
   echo using $pythonqt
