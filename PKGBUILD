@@ -1,13 +1,13 @@
 pkgname=libelectron
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=("x86_64" "aarch64")
 license=('GPL')
 depends=('npm' 'git')
 pkgdesc="A collection of npm dependencies for electron packages."
 _MachineType=`uname -m`
-_electron=21.3.4
-_electroncastlabs=v21.3.3+wvcus
+_electron=22.0.3
+_electroncastlabs=v22.0.3+wvcus
 _ecm=3.6.1
 
 package() {
