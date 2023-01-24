@@ -1,7 +1,7 @@
 pkgbase = python-mutf8
 	pkgdesc = MUTF-8 encoder/decoder
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tktech/mutf8
 	arch = x86_64
 	license = MIT
