@@ -1,24 +1,36 @@
-# Maintainer: Chris Gregory <czipperz@gmail.com>
+# Contributor: Chris Gregory <czipperz@gmail.com>
+
 pkgname=libclipboard-git
-pkgver=1.1.0
-pkgrel=2
+_pkg="${pkgname%-git}"
+pkgver=1.1.r0.g3d2cb08
+pkgrel=1
 pkgdesc="Lightweight cross-platform C clipboard library"
 url="https://github.com/jtanx/libclipboard"
-arch=("i686" "x86_64")
+arch=("x86_64")
 license=("MIT")
 depends=("libxcb")
 makedepends=("cmake" "git")
-provides=("libclipboard")
-source=("git://github.com/jtanx/libclipboard")
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
 sha256sums=("SKIP")
 
+pkgver() {
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
 build() {
-    cd libclipboard
-    cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+	cmake \
+		-B build \
+		-S "$_pkg" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLIBCLIPBOARD_ADD_SOVERSION=ON \
+		-DBUILD_SHARED_LIBS=ON \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-    cd libclipboard
-    make DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" cmake --install build
 }
