@@ -1,0 +1,11 @@
+pkgbase = rclone-mount-service
+	pkgdesc = Rclone systemd user service
+	pkgver = 07032022
+	pkgrel = 0
+	arch = x86_64
+	depends = systemd
+	depends = rclone
+	source = rclone@.service
+	md5sums = SKIP
+
+pkgname = rclone-mount-service
