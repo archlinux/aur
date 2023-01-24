@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Game;
+Comment=A minesweeper game follow windowsXP style based on tauri.
+Comment[zh_CN]=一款基于tauri制作仿照winxp系统风格的扫雷游戏。
+Exec=minesweeper-tauri
+Icon=minesweeper-tauri
+Name=Minesweeper
+Name[zh_CN]=扫雷
+Terminal=false
+Type=Application
