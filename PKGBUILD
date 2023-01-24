@@ -1,8 +1,9 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-vmware
-pkgver=13.3.0
-pkgrel=4
+pkgver=13.4.0
+pkgrel=1
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
@@ -12,20 +13,11 @@ makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2') # 'git')
 conflicts=('xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26')
 groups=('xorg-drivers')
 options=('!emptydirs')
-source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
-        gcc8.diff
-        gcc12.1.diff)
-sha512sums=('c318de893cae7b2b11e11c1b389ee47478b7c8d1f52c27099dbe453efec28f3e9da449217307a8c2251999eada66312f766996be1a6ead413b8b6dedc42c68ca'
-            'SKIP'
-            'd05522c84dfa1a88bb9e892087f0a67968142b87f1d7f902e8d77150eae7a26ef7f43cef256d2173be060042b86336123fa7c7f521b37ca98f8fb45871bf30ad'
-            '944fdfac8f7d7feca722ee43f7f3dff8ba3ef82c29012406ed36437ee917e9bfc9aeb33d28891daccc13c323d8862c45f69cb484306737feb8a41a47e8075e60')
-validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (VMware) <thellstrom@vmware.com>
-
-prepare() {
-  cd $pkgname-${pkgver}
-  patch -Np0 -i ../gcc8.diff
-  patch -Np1 -i ../gcc12.1.diff
-}
+source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.xz{,.sig})
+sha512sums=('7cacde21a490501dd9c2e9121040274c1f6ef64e6dc0ef49946b400f6297fab73a6e9548e45fe8930cee9028e65e45aaff9ba489dd69ac75a5133114726bf55d'
+            'SKIP')
+#validpgpkeys=('90D027AEAF33CBABC140735BC1F5D3CDF5176580') #  Thomas Hellstrom (VMware) <thellstrom@vmware.com>
+validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
 build() {
   cd ${pkgname}-${pkgver}
