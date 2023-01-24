@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r109078.g2d25f33a7e
+pkgver=5.2.r109655.g20b96494de
 pkgrel=1
 _svt_hevc_ver='7771d7c1ec60cf21d84894260a4b14e9034c7156'
 _svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
@@ -108,7 +108,6 @@ depends=(
     'zvbi'
     'chromaprint-fftw'
     'davs2'
-    'flite1'
     'libklvanc-git'
     'librist'
     'pocketsphinx'
@@ -202,7 +201,7 @@ build() {
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
-        --enable-libflite \
+        --disable-libflite \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
