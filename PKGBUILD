@@ -4,7 +4,7 @@
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable-next
+pkgname=wine-stable
 _pkgver=8.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
 pkgrel=1
@@ -94,11 +94,11 @@ optdepends=(
   v4l-utils              lib32-v4l-utils
   vkd3d                  lib32-vkd3d
   vulkan-icd-loader      lib32-vulkan-icd-loader
-  wine-mono
+  wine-stable-mono
 )
 
-provides=(wine=$pkgver wine-stable=$pkgver)
-conflicts=(wine wine-stable)
+provides=(wine=$pkgver)
+conflicts=(wine)
 
 prepare() {
   # Allow ccache to work
