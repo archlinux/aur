@@ -20,6 +20,7 @@ pkgbase = libpamac-full-git
 	makedepends = gobject-introspection
 	makedepends = xorgproto
 	makedepends = asciidoc
+	makedepends = git
 	depends = pacman>=6.0
 	depends = pacman<6.1
 	depends = flatpak

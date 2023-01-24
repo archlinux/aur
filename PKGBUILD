@@ -3,7 +3,7 @@
 
 pkgname=libpamac-full-git
 _pkgname=libpamac
-pkgver=11.4.1.r1.ge2385b6
+pkgver=11.4.1.r0.g29d7180
 _pkgver=11.4.1
 pkgrel=1
 epoch=1
@@ -12,20 +12,15 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
 license=('GPL3')
 depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'snapd' 'snapd-glib' 'archlinux-appstream-data-pamac')
-makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
+makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git')
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full')
-source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git '0001-update-meson.build.patch')
-sha256sums=('SKIP' '54ddfbdc4e2fd64f5343d34e7fee6c068efde9db3c4a74dda10cb0f8b0c38b24')
+source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c1-48
-}
-
-prepare() {
-  cd $_pkgname
-  git am < "$srcdir"/0001-update-meson.build.patch
 }
 
 build() {
