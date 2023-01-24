@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 url="https://sourceforge.net/projects/${pkgname}"
 license=('custom:BSD-3-clause')
 depends=(bash)
-checkdepends=(gcc-fortran)
+makedepends=(gcc-fortran)
 source=(https://master.dl.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('bffb5caa07ca73913592a2ab585582c19eddc1386dc51af12f72ba3df0769c9f686a319a5206ef2139fa102761d6087fe2b05f3f86565ed9375500939f8991f6')
 

@@ -5,9 +5,10 @@ pkgbase = findent
 	url = https://sourceforge.net/projects/findent
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:BSD-3-clause
+	makedepends = gcc-fortran
 	depends = bash
 	source = https://master.dl.sourceforge.net/project/findent/findent-4.2.5.tar.gz
-	sha256sums = bb8b8852a43444a4fe9bc2dc94dba59bff9912f0fb7df2a1af70f1012d211a59
+	sha512sums = bffb5caa07ca73913592a2ab585582c19eddc1386dc51af12f72ba3df0769c9f686a319a5206ef2139fa102761d6087fe2b05f3f86565ed9375500939f8991f6
 
 pkgname = findent
