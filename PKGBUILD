@@ -5,7 +5,7 @@
 
 pkgname=radium7
 pkgver=7.1.87
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -49,6 +49,7 @@ depends=(
 	binutils
 	xorg-util-macros
 	qt5-base
+	libmicrohttpd
 )
 makedepends=(
   boost
