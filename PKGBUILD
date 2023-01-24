@@ -3,9 +3,10 @@
 
 pkgname=kime
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
+depends=('noto-fonts-cjk')
 optdepends=('gtk3: gtk3 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'

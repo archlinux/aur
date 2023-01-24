@@ -1,7 +1,7 @@
 pkgbase = kime
 	pkgdesc = Korean IME
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Riey/kime
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = kime
 	makedepends = cairo
 	makedepends = libxcb
 	makedepends = dbus
+	depends = noto-fonts-cjk
 	optdepends = gtk3: gtk3 support
 	optdepends = gtk4: gtk4 support
 	optdepends = qt5-base: qt5 support
