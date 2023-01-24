@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = 1.8.2.r153.ge0b2db1
+	pkgver = 1.9.1.r4.gd718cc9
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = fastfetch-git
 	optdepends = libxrandr: Improved X11 support (resolution + multi monitor)
 	optdepends = glib2: Output for values that are only stored in GSettings
 	optdepends = dconf: Output for values that are only stored in DConf
-	optdepends = dbus: Media player and song output
+	optdepends = dbus: Bluetooth, Media & Player modules
 	optdepends = imagemagick: Image output using sixel or kitty graphics protocol
 	optdepends = chafa: Image output as ascii art
 	optdepends = zlib: Faster image output when using kitty graphics protocol

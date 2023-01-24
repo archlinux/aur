@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.8.2.r153.ge0b2db1
+pkgver=1.9.1.r4.gd718cc9
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -44,7 +44,7 @@ optdepends=(
   "libxrandr: Improved X11 support (resolution + multi monitor)"
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
-  "dbus: Media player and song output"
+  "dbus: Bluetooth, Media & Player modules"
   "imagemagick: Image output using sixel or kitty graphics protocol"
   "chafa: Image output as ascii art"
   "zlib: Faster image output when using kitty graphics protocol"
@@ -82,7 +82,9 @@ build() {
   cmake \
     -B "${_build_dir}" \
     -S "${_src_dir}" \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS='ON' \
     -DENABLE_SQLITE3=OFF \
     -DENABLE_RPM=OFF \
     -DENABLE_IMAGEMAGICK6=OFF \
@@ -91,6 +93,10 @@ build() {
 
   cmake \
     --build "${_build_dir}"
+}
+
+check() {
+  ctest --test-dir "${_build_dir}" --output-on-failure
 }
 
 package() {
