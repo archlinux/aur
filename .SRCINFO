@@ -1,0 +1,14 @@
+pkgbase = ffuf-git
+	pkgdesc = A fast web fuzzer written in Go.
+	pkgver = 1.5.0.r3.g2ce2217
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = ffuf
+	conflicts = ffuf
+	source = ffuf-git::git+https://github.com/ffuf/ffuf.git
+	sha256sums = SKIP
+
+pkgname = ffuf-git

@@ -1,0 +1,5 @@
+src
+pkg
+ffuf-git
+*pkg.tar.*
+tags
