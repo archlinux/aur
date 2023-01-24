@@ -2,8 +2,8 @@
 
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -42,14 +42,14 @@ prepare() {
     done
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
     git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
-    git -C libjxl submodule update
+    git -C libjxl -c protocol.file.allow='always' submodule update
 }
 
 build() {
-    export CFLAGS+=' -ffat-lto-objects'
-    export CXXFLAGS+=' -ffat-lto-objects'
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS'
     cmake -B build -S libjxl \
-        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
@@ -76,7 +76,7 @@ package_libjxl() {
                 'java-runtime: for JNI bindings')
     provides=('libjxl.so' 'libjxl_threads.so')
     
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
 }
