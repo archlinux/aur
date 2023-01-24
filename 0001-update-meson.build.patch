@@ -1,0 +1,25 @@
+From 8eee788d67deee056373db4f88797e6919417881 Mon Sep 17 00:00:00 2001
+From: ahmedmoselhi <ahmedmoselhi55@gmail.com>
+Date: Tue, 24 Jan 2023 05:17:36 +0200
+Subject: [PATCH] update meson.build
+
+---
+ src/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index b7e3b31..e7da5b8 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -30,7 +30,7 @@ libpamac_sources = ['package.vala', 'alpm_package.vala',
+ libpamac_dependencies = [alpm_deps, math, json, appstream, libsoup, gmodule]
+ 
+ if get_option('enable-snap')
+-	snapd = dependency('snapd-glib-2')
++	snapd = dependency('snapd-glib')
+ 
+ 	libpamac_snap = library('pamac-snap',
+ 		sources: ['snap_interface.vala', 'snap_plugin.vala', 'package.vala'],
+-- 
+2.39.0
+
