@@ -3,7 +3,7 @@
 
 pkgname=exercism
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tool for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
@@ -26,9 +26,11 @@ build() {
   cd "$GOPATH/src/github.com/exercism/cli"
 
   go build \
-    -buildmode pie \
-    -ldflags "-extldflags $LDFLAGS" \
     -trimpath \
+    -buildmode pie \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -mod=readonly \
+    -modcacherw \
     -o out/exercism \
     exercism/main.go
 }
