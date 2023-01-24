@@ -1,11 +1,11 @@
 pkgbase = snander
 	pkgdesc = SNANDer - Serial Nor/nAND/Eeprom programmeR (based on CH341A)
-	pkgver = v.1.7.7+1+6786ecf
+	pkgver = +1+
 	pkgrel = 1
 	url = https://github.com/McMCCRU/SNANDer
 	arch = any
 	license = GPL-2.0
-	source = git+https://github.com/McMCCRU/SNANDer.git#commit=6786ecf9183228a4cbdb91e49d277511b5afb42d
+	source = git+https://github.com/McMCCRU/SNANDer.git#commit=
 	sha256sums = SKIP
 
 pkgname = snander
