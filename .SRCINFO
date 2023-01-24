@@ -1,0 +1,17 @@
+pkgbase = lxqt-build-tools-qt6-git
+	pkgdesc = Tools to build LXQt and components maintained by the project.
+	pkgver = 0.12.0.1.ge2786d4
+	pkgrel = 1
+	url = https://github.com/lxde/lxqt-build-tools
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-base
+	depends = bash
+	provides = lxqt-build-tools-qt6=0.12.0.1.ge2786d4
+	conflicts = lxqt-build-tools-qt6
+	source = lxqt-build-tools-qt6::git+https://github.com/lxde/lxqt-build-tools.git#branch=lxqt2-qt6
+	sha256sums = SKIP
+
+pkgname = lxqt-build-tools-qt6-git
