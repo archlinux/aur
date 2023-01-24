@@ -1,22 +1,16 @@
 pkgbase = prysm
-	pkgdesc = go implementation of the Ethereum 2.0 blockchain
-	pkgver = 1.0.0_alpha.23
+	pkgdesc = Prysm is an Ethereum proof-of-stake client written in Go.
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://prysmaticlabs.com/
 	arch = x86_64
+	arch = arm64
 	license = GPLv3
-	makedepends = go
-	options = emptydirs
-	source = git+https://github.com/prysmaticlabs/prysm.git#tag=v1.0.0-alpha.23
-	source = prysm-validator@.service
 	source = prysm-beacon-chain.service
-	source = prysm-slasher.service
-	source = prysm.sysusers
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = prysm-client-stats.service
+	source = prysm-validator.service
+	sha256sums = 6b1f2d44a7bd3c5e6c9c72dc60d23159fe76d4d04d7b685f50499e92cba476cf
+	sha256sums = cc19fe37cd80972e3a214f5de577b315996e428c8e93cb362c5beb8204d8a173
+	sha256sums = 143147f19424a17147d342d1ac4006d8a154dbbb9e4b5a2f8e594d43e90bd305
 
 pkgname = prysm
-

@@ -1,32 +1,11 @@
 [Unit]
-Description=Prysm beacon-chain client
+Description=Prysm Beacon chain daemon
 After=network-online.target
 
 [Service]
 DynamicUser=true
-ExecStart=/usr/bin/prysm.beacon-chain --datadir=/var/lib/prysm/beacon-chain
-Restart=always
-StateDirectory=prysm/beacon-chain
-
-NoNewPrivileges=yes
-CapabilityBoundingSet=
-SystemCallArchitectures=native
-SystemCallFilter=@system-service
-
-PrivateDevices=yes
-PrivateUsers=yes
-PrivateTmp=yes
-
-ProtectSystem=strict
-ProtectClock=yes
-ProtectHome=true
-ProtectKernelLogs=yes
-ProtectKernelModules=yes
-ProtectKernelTunables=yes
-
-RestrictNamespaces=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
+ExecStart=/usr/bin/prysm-beacon-chain --accept-terms-of-use
+Restart=on-failure
 
 [Install]
 WantedBy=default.target

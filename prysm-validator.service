@@ -1,0 +1,10 @@
+[Unit]
+Description=Prysm validator client
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/prysm-validator --accept-terms-of-use --wallet-password-file %h/.eth2validators/prysm-wallet-password
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
