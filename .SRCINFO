@@ -1,0 +1,19 @@
+pkgbase = dmde-cli
+	pkgdesc = DMDE is a powerful tool for data searching, editing, and recovery on disks - cli version
+	pkgver = 4.0.0.800
+	pkgrel = 1
+	url = https://dmde.ru/
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = sudo
+	replaces = dmde-cli
+	source = dmde-cli.desktop
+	source = logo.png
+	sha512sums = 1b6c947f0cf2ae001fe465031971b3b61fe79b7403ca1307f3693c4cc09b4a5c6698042b87fc95810f978ad152fa3edd46c5e22365b873e9b3959224f96ec2e1
+	sha512sums = c32bbbb33b629b1953077fe9669a451c0adc308f94ce42c21e319ffe776695cb55c4d23831724186f966922a9fea073f8e65bb1f9a73afb5cb2e8075a0e5ebfe
+	source_x86_64 = https://dmde.ru/download/dmde-4-0-0-800-lin64-con.zip
+	sha512sums_x86_64 = 192777240f1869441e72eb2070cb0a11294e240fe946d2d47a91b9eac71d6075d8e12ed2560ed8d13fe8a14ac2ef39382d47326a3f98f19f8373faf668f36239
+
+pkgname = dmde-cli
+	depends = sudo

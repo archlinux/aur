@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Exec=sudo /usr/share/dmde-cli/dmde
+Type=Application
+Name=DMDE-Cli
+GenericName=DMDE-Cli
+Terminal=true
+Icon=dmde-cli
+StartupNotify=false
+Comment=DMDE is a powerful tool for data searching, editing, and recovery on disks Cli version.
+Categories=Utility;System;
