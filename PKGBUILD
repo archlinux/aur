@@ -2,8 +2,8 @@
 
 pkgname=python-qiling
 _name=${pkgname#python-}
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python'
 		 'python-yaml')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('82d3d8c2643debe8f3e97aea534b9f68dec7b7a82aaedc46ac3a1a4d671eeff5')
+sha256sums=('30469fc6bcbf7b0aa5cce32ef5324c4287572c28463188d2da35f7cafec56499')
 
 build() {
     cd "${_name}-${pkgver}"
