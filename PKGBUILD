@@ -1,19 +1,20 @@
-# Maintainer: delta48 <dark.magician.48+aur[at]gmail[dot]com>
+# Maintainer:  Birk Birkner <aur at bbirkner.de>
+# Contributor: delta48 <dark.magician.48+aur[at]gmail[dot]com>
 
 pkgname=libreoffice-extension-ooolilypond
 _pkgname=OOoLilyPond
-pkgver=0.5.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='With OOoLilyPond (OLy) you can use musical notation within OpenOffice.org. Use it for writing a book on music theory or for writing down exercises for music instruments or voice which need to be commented with text.'
 arch=('any')
-url='http://github.com/openlilylib/LO-ly'
+url='https://github.com/OOoLilyPond'
 license=('GPL2')
-#depends=('libreoffice-fresh')
+depends=('libreoffice' 'lilypond')
 groups=('libreoffice-extensions')
 #source=("http://downloads.sourceforge.net/ooolilypond/$_pkgname-$pkgver.oxt")
-source=("https://github.com/openlilylib/LO-ly/releases/download/$pkgver/$_pkgname-$pkgver.oxt")
+source=("https://github.com/OOoLilyPond/OOoLilyPond/releases/download/v${pkgver}/${_pkgname}-${pkgver}.oxt")
 
-md5sums=('026adb44b1bef895215afdf1bceb4257')
+md5sums=('65cd1926c33a7a0691ae62d4a1f32528')
 noextract=("$_pkgname-${pkgver}.oxt")
 options=("!emptydirs")
 
