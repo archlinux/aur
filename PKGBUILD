@@ -3,7 +3,7 @@
 _appname=user_saml
 pkgname=nextcloud-app-${_appname/_/-}
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="App for authenticating Nextcloud users using SAML"
 arch=(x86_64)
 url="https://github.com/nextcloud/$_appname"
@@ -19,7 +19,7 @@ sha256sums=('e6f43d22b6e49bd0359915b14aa8d07b0ab8eb255ab82e9d30a066b4ed1c2978')
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php-legacy php)
 _get_supported_ranges() {
 	_app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
 	_app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
