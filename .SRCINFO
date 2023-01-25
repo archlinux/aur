@@ -1,0 +1,18 @@
+pkgbase = python-itur
+	pkgdesc = A python implementation of the ITU-R P. Recommendations
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/inigodelportillo/ITU-Rpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-astropy
+	depends = python-pyproj
+	source = https://files.pythonhosted.org/packages/source/i/itur/itur-0.3.4.tar.gz
+	sha256sums = 2ce0967e6a02bed54dd9f02af096c40fa8bad8c01ca14c3bb01fd2a28603a251
+
+pkgname = python-itur
+	depends = python
+	depends = python-astropy
+	depends = python-pyproj
