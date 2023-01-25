@@ -1,5 +1,5 @@
 pkgbase = opendoas-sudo
-	pkgdesc = A symlink for using Doas as a drop-in replacement to sudo
+	pkgdesc = A symlink for using Doas as a drop-in replacement for sudo
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/Duncaen/OpenDoas
@@ -10,4 +10,3 @@ pkgbase = opendoas-sudo
 	conflicts = sudo
 
 pkgname = opendoas-sudo
-
