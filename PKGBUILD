@@ -13,11 +13,7 @@ _repourl="https://github.com/radxa/apt/raw/gh-pages/bullseye-stable/"
 license=('GPL2')
 options=('!strip')
 makedepends=('binutils' 'tar' 'grep' 'mkinitcpio' 'sed')
-pkgdesc="Precompiled Kernel Images based on 5.10.x BSP kernel published by RADXA
-Minimum supported boards:
-RK3399 based rock4[a/b/c/se/io/se] boards
-RK3588 based rock5[a/b/nx] modules boards
-It is possible to make other RK3588 and RK3399 board with few DTS adapdations"
+pkgdesc="Precompiled Kernel Images based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
 
 source=(
     "linux.preset"
