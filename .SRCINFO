@@ -1,12 +1,38 @@
 pkgbase = pyinstaller-hooks-contrib
 	pkgdesc = Community maintained hooks for PyInstaller
 	pkgver = 2022.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	arch = any
+	license = GPL2
+	license = Apache
 	license = custom:PyInstaller
+	checkdepends = pyinstaller
+	checkdepends = python-pytest
+	checkdepends = python-psutil
+	checkdepends = python-flaky
+	checkdepends = python-pytest-timeout>=2.0.0
+	checkdepends = python-pytest-drop-dup-tests
+	checkdepends = python-pytest-rerunfailures
+	checkdepends = python-pytest-xdist
+	checkdepends = python-execnet>=1.5.0
+	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/py2.py3/p/pyinstaller-hooks-contrib/pyinstaller_hooks_contrib-2022.15-py2.py3-none-any.whl
-	sha512sums = 3b1ab0a063d6ae606c4547aaf47abf453051caffb68815c7b05fa351113582c951eb24e17a4564343cafbaf40947b06997b4d472ab4db43d034630203172137e
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = mpdecimal
+	optdepends = python-boto3
+	optdepends = python-pygraphviz
+	optdepends = python-pycparser
+	optdepends = python-pytest
+	optdepends = python-pyusb
+	optdepends = python-pyqt5
+	optdepends = python-pyqt5-webengine
+	optdepends = python-uvloop
+	optdepends = python-importlib-metadata
+	optdepends = python-importlib_resources
+	source = https://github.com/pyinstaller/pyinstaller-hooks-contrib/archive/refs/tags/v2022.15.tar.gz
+	sha512sums = 0a04bec45edd8e13496c7ea717c730577b9b1fc8118a9bc5a1fdedd37de963afd7259c0c4c9e57211a8681b2f5d140122b1ee15b459f55643615cfb8f03b2954
+	b2sums = a43f38d2425abf96090471a281a4a20aa96f51c5f678fc97982e9cb56c971428436784e8372eb6fc8beec37595ff3538006426465343e6da678ed7d3274be989
 
 pkgname = pyinstaller-hooks-contrib
