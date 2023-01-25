@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cavif
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="AVIF image creator in pure Rust"
 arch=('i686' 'x86_64')
@@ -10,13 +10,15 @@ license=('BSD')
 depends=('gcc-libs')
 makedepends=('nasm' 'rust')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/kornelski/cavif-rs/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9edc82a504ceba0e10d84a426f9d58e134dfa67df7adc752692becb9e7ebcacc')
+sha256sums=('624e2a1f10257685aa7a5f2dcd422e902dd01ea85dc860fab9b011b5bd3504f7')
 
 
 prepare() {
   cd "cavif-rs-$pkgver"
 
-  cargo update
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
   cargo fetch
 }
 
@@ -24,9 +26,7 @@ check() {
   cd "cavif-rs-$pkgver"
 
   #cargo test \
-  #  --locked \
-  #  --no-track \
-  #  --release
+  #  --frozen
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
     --locked \
     --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/cavif-rs-$pkgver"
+    --path .
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/cavif"
 }
