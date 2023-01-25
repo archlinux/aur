@@ -1,27 +1,38 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=swayosd-git
-pkgver=gd0d70720
+pkgver=r9.b7b4e3d
 pkgrel=1
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
-url="https://github.com/ErikReider/SwayOSD"
-license=('GPL')
 arch=('i686' 'x86_64' 'aarch64')
+url="https://github.com/ErikReider/SwayOSD"
+license=('GPL3')
 depends=('gtk3' 'gtk-layer-shell' 'pulseaudio')
-makedepends=('rust' 'cargo')
-source=('git+https://github.com/ErikReider/SwayOSD')
+makedepends=('git' 'cargo')
+provides=('swayosd')
+conflicts=('swayosd')
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/SwayOSD"
-  echo g$(git rev-parse HEAD | cut -c 1-8)
+  cd "SwayOSD"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "SwayOSD"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/SwayOSD"
-  cargo build --release
+  cd "SwayOSD"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
-  install -Dm 755 "$srcdir/SwayOSD/target/release/swayosd" "$pkgdir/usr/bin/swayosd"
+  cd "SwayOSD"
+  install -Dm 755 "target/release/swayosd" "${pkgdir}/usr/bin/swayosd"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/swayosd/README.md"
 }
