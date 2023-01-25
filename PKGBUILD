@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=flict-git
-pkgver=v0.1.1.r110.g1644b92
+pkgver=1.0.12.r0.g939ae17
 pkgrel=1
 pkgdesc="Open source software license compatibility tool"
 arch=('any')
