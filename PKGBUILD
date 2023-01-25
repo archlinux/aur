@@ -10,6 +10,8 @@ license=(MIT)
 url="https://gitlab.freedesktop.org/drm/$_pkgname"
 depends=(libdrm libpciaccess cairo python xorg-xrandr procps-ng kmod libxv libunwind peg systemd)
 makedepends=('git' swig gtk-doc xorg-util-macros xorgproto meson)
+provides=('intel-gpu-tools')
+conflicts=('intel-gpu-tools')
 source=("git+$url.git")
 b2sums=('SKIP')
 
