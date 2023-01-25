@@ -1,6 +1,6 @@
 pkgbase = r-rcpptoml
 	pkgdesc = 'Rcpp' Bindings to Parser for Tom's Obvious Markup Language
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppTOML
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rcpptoml
 	depends = r
 	depends = r-rcpp
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/RcppTOML_0.2.0.tar.gz
-	sha256sums = 717f3db968fc37a5aadc679c77c396a34f8d72e4356ad7a3214dfa7739beca8b
+	source = https://cran.r-project.org/src/contrib/RcppTOML_0.2.1.tar.gz
+	sha256sums = e41be8ed7e12e7a731a494494c1043d689766728ae57597ce33cd4f74f630d6b
 
 pkgname = r-rcpptoml
