@@ -12,11 +12,11 @@
 pkgbase=java8-openjfx
 pkgname=(
   java8-openjfx
-  # java8-openjfx-doc
-  # java8-openjfx-src
+  java8-openjfx-doc
+  java8-openjfx-src
 )
 pkgver=8.u202
-pkgrel=5
+pkgrel=6
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -37,7 +37,7 @@ makedepends=(
   libx11
   libxtst
   pango
-  python
+  python2
   qt5-base
   ruby
   unzip

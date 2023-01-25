@@ -1,7 +1,7 @@
 pkgbase = java8-openjfx
 	pkgdesc = Java OpenJFX 8 client application platform (open-source implementation of JavaFX)
 	pkgver = 8.u202
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = java8-openjfx
 	makedepends = libx11
 	makedepends = libxtst
 	makedepends = pango
-	makedepends = python
+	makedepends = python2
 	makedepends = qt5-base
 	makedepends = ruby
 	makedepends = unzip
@@ -54,3 +54,7 @@ pkgname = java8-openjfx
 	optdepends = gtk3: GTK3 support,
 	optdepends = webkit2gtk: Web support
 	provides = java-openjfx=8
+
+pkgname = java8-openjfx-doc
+
+pkgname = java8-openjfx-src
