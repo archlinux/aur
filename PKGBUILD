@@ -1,6 +1,6 @@
 # Maintainer: fpaskali <paskali2005 at gmail>
 pkgname=burgerspace
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="A hamburger-smashing video game"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 groups=()
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'libflatzebra')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('e4ba9b2421aa3db18ed0b99ecc23c114fe9146a248028064c5d477b99674d7d7ea4bb1de01041de1ddcc186242e346d186a155a6cdb3db28cca518349dcaa1b2')
+sha512sums=('f7a1fbf516ba5a310def22381bfc4ac4297f92895296a146f4306e7b2cde21186b349d6c22abf622776a06f992a2af02b332483432002a9b04ab8e1a62655434')
 
 build() {
   cd "$pkgname-$pkgver"
