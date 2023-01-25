@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.AURINFO
+!.SRCINFO
+!PKGBUILD
+!modules.conf
+!ocsinventory-agent
+!ocsinventory-agent.cfg
+!ocsinventory-agent.install
