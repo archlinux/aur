@@ -13,6 +13,7 @@ provides=("dxvk" "d9vk" "dxvk=$pkgver")
 conflicts=("dxvk" "d9vk")
 options=(!strip)
 source=("https://github.com/doitsujin/dxvk/releases/download/v$pkgver/dxvk-$pkgver.tar.gz"
+"setup_dxvk.sh"
 )
 sha256sums=('329940b0c01226459f073d91ff1276d4d9c1c4c017303afe06193eb064502cde')
 
@@ -21,7 +22,7 @@ package_dxvk-bin () {
         optdepends=('lib32-vulkan-icd-loader: 32-bit Windows application support')
         install -D "dxvk-$pkgver"/x32/* -t "$pkgdir/usr/share/dxvk/x32"
         install -D "dxvk-$pkgver"/x64/* -t "$pkgdir/usr/share/dxvk/x64"
-        install "dxvk-$pkgver"/setup_dxvk.sh -t "$pkgdir/usr/share/dxvk/"
+        install ../setup_dxvk.sh -t "$pkgdir/usr/share/dxvk/"
         install -d "$pkgdir/usr/bin"
         ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
 }
