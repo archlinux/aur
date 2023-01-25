@@ -2,6 +2,7 @@
 
 pkgname='cinnamon-applet-desktop-capture-git'
 pkgver=r133.8df4e3b
+_pkgver=5.6
 pkgrel=1
 pkgdesc='A comprehensive screenshot and screencasting applet for Cinnamon.'
 arch=('any')
@@ -25,4 +26,5 @@ package() {
   cd "${pkgname}"
   install -dm0755 "${pkgdir}/${_appletdir}"
   find "${_appletname}" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
+  find "${_appletname}/${_pkgver}" -maxdepth 1 -type f -exec install -m0644 '{}' "${pkgdir}/${_appletdir}" \;
 }
