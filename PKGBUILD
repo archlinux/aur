@@ -41,7 +41,5 @@ package() {
     install -D $pkgname "${pkgdir}/usr/bin/${pkgname}"
     mkdir -p "${pkgdir}/usr/lib/systemd/system"
     install -m644 usr/lib/systemd/system/* "${pkgdir}/usr/lib/systemd/system"
-    mkdir -p "${pkgdir}/etc"
-    install -m600 etc/* "${pkgdir}/etc"
     mkdir -p "${pkgdir}/var/log/ttop"
 }
