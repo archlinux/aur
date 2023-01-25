@@ -1,0 +1,17 @@
+pkgbase = midisnoop-git
+	pkgdesc = MIDI monitor and prober
+	pkgver = 0.1.2.r6.gbc30f60
+	pkgrel = 1
+	url = https://github.com/surfacepatterns/midisnoop
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rtmidi
+	depends = qt5-base
+	source = git+https://github.com/surfacepatterns/midisnoop.git
+	source = http://deb.debian.org/debian/pool/main/m/midisnoop/midisnoop_0.1.2+git20141108.bc30f600187e-1.debian.tar.xz
+	sha256sums = SKIP
+	sha256sums = c4e90944da794dc3ec4d8463df7f79aa7331de27ac5c652de5f0f1783dfa890f
+
+pkgname = midisnoop-git
