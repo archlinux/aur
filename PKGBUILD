@@ -11,7 +11,7 @@ pkgname=pyinstaller
 _pkgbase="${pkgname%-git}"
 _pkgname="${_pkgbase#python-}"
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('any')
 url="http://www.pyinstaller.org"
@@ -27,6 +27,7 @@ depends=(
 )
 makedepends=(
   "zlib"
+  "cmocka"
   "python-installer"
   "python-build"
   "python-wheel"
@@ -35,7 +36,6 @@ makedepends=(
 checkdepends=(
   # Testing framework.
   "python-pytest"
-  "cmocka"
   # Work-around for a bug in execnet 1.4.1
   "python-execnet>=1.5.0"
   # Better subprocess alternative with implemented timeout.
@@ -61,15 +61,27 @@ optdepends=(
   "python-importlib-metadata: support for python 3.8 and lower"
   "python-importlib_resources: support for python 3.8 and lower"
 )
-source=("https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('3e4c6fc5cc6aa986fd3fe64cd15ae6834707a485845116b7129e79b365d2c953c958d108827628c764e82a913c0c9e2f5b391ad050b8db9202adefead879a11c')
-b2sums=('fa886386d57d644d65ec3a2bc3595171e8bff968dc740cf46cab97d5ae24bb6a9969b6e49fc53d9aaffba619fb297cd6d05f73ba2170031d20e7447ada5c013a')
+source=(
+  "https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
+  "$_pkgname-5.7.0-bootloader-cmocka-fix.patch"
+)
+sha512sums=('3e4c6fc5cc6aa986fd3fe64cd15ae6834707a485845116b7129e79b365d2c953c958d108827628c764e82a913c0c9e2f5b391ad050b8db9202adefead879a11c'
+            'ebee936836b68e6214cea72f65ec7e862fe8bac253913f57e7b36268a4c823219668b8f5d7295992b7cf0adb62954405ced2a588be7f1101995f7b0395c92f0c')
+b2sums=('fa886386d57d644d65ec3a2bc3595171e8bff968dc740cf46cab97d5ae24bb6a9969b6e49fc53d9aaffba619fb297cd6d05f73ba2170031d20e7447ada5c013a'
+        '863322c8ae832b6e609135c31496481d7c337a38316dbafd442c010a4dac94b2f21407c1367c5374b6170035ec1ffba97c522ee64679adfa93247b31bf87b998')
 
 prepare() {
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   if [[ $python_version -lt 39 ]]; then
     depends+=("python-importlib-metadata")
     checkdepends+=("python-importlib_resources")
+  fi
+
+  # Broken bootloader build due to cmocka
+  # TODO: Remove after merged in next release
+  # https://github.com/pyinstaller/pyinstaller/pull/7383
+  if [[ $pkgver == "5.7.0" ]]; then
+    patch -Np1 -d "$_pkgname-$pkgver" -i ../"$_pkgname-5.7.0-bootloader-cmocka-fix.patch"
   fi
 }
 
@@ -79,12 +91,7 @@ build() {
   # and removing the unnecessary pre-builts
   rm -rvf PyInstaller/bootloader/Darwin*
   rm -rvf PyInstaller/bootloader/Windows*
-  # TODO: Broken in 5.7.0 release, using precompiled ones for now
-  # either cherry-pick the changes or
-  # ref: https://github.com/pyinstaller/pyinstaller/commit/604559c098d1af22c6241953728e81b973380ba7
-  # Use the pyinstaller-git pkg for the moment if you need it
-  # rm -rvf PyInstaller/bootloader/Linux*
-
+  rm -rvf PyInstaller/bootloader/Linux*
   python -m build --wheel --no-isolation
 }
 
