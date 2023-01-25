@@ -17,12 +17,7 @@ _kernelrepo="kernel"
 _overlayrepo="overlays"
 _kernelbranch=linux-5.10-gen-rkr3.4
 _overlaybranch=main
-_desc="Radxa fork of Linux 5.10 which is based on the fork of Rockchip BSP.
-Minimum supported boards:
-RK3399 based rock4[a/b/c/se/io/se] boards
-RK3588 based rock5[a/b/nx] modules boards
-It is possible to make other RK3588 and RK3399 board with few DTS adapdations"
-
+pkgdesc="Radxa fork of Linux 5.10 which is based on the fork of Rockchip BSP targetting rk3399 based rock4 and rk3588 based rock5 boards" 
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 
@@ -153,7 +148,7 @@ build() {
 }
 
 _package-git() {
-  pkgdesc="The Linux Kernel and modules - ${_desc}"
+  pkgdesc="The Linux Kernel and modules from Radxa"
   depends=('coreutils' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "linux-rkbsp")
@@ -194,7 +189,7 @@ _package-git() {
 }
 
 _package-git-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
+  pkgdesc="Header files and scripts for building modules for linux kernel from Radxa"
   provides=("linux-headers=${pkgver}" "linux-rkbsp-headers")
   conflicts=('linux-headers')
 
