@@ -13,15 +13,13 @@ license=("custom")
 conflicts=("hamachi")
 replaces=("hamachi")
 options=("!strip")
-[ "${CARCH}" == "i686" ] && _filearch_=x86 && sha1sums=('2f95d8258dad9e2c8cc6006af1857c124d2b8e08' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "x86_64" ] && _filearch_=x64 && sha1sums=('72deff7d0a8ea22b6ff306967ab20ecdbce76e63' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "arm" ] && _filearch_=armel && sha1sums=('e71ad02ae2f39d84d05bb46dcb11db57f1748026' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-[ "${CARCH}" == "armv7h" ] && _filearch_=armhf && sha1sums=('8639443a9f223cce1b4a82708eb2b190718ee781' '2b8052f91bb47beac1fdab0c0c455a36f8876671')
-
-source=("https://www.vpn.net/installers/${pkgname}-${pkgver}-${_filearch_}.tgz" "${pkgname}.service")
+source=("https://vpn.net/installers/${pkgname}-${pkgver}-x64.tgz"
+        "${pkgname}.service")
+sha256sums=('67d4e845a28b118112ed3bc1d0ae8f84898c640e988a2ac8d38e31dcf697c07f'
+            'b32e32f2c98519b469a660f7459eeb12f454767bcec0f5edf8ae6bd89eef3dba')
 
 package() {
-	cd "${srcdir}"/${pkgname}-${pkgver}-${_filearch_}
+	cd ${pkgname}-${pkgver}-x64
 
 	# Directories
 	install -d "${pkgdir}"/opt/${pkgname}/bin

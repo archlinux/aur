@@ -11,10 +11,9 @@ pkgbase = logmein-hamachi
 	conflicts = hamachi
 	replaces = hamachi
 	options = !strip
-	source = https://www.vpn.net/installers/logmein-hamachi-2.1.0.203-x64.tgz
+	source = https://vpn.net/installers/logmein-hamachi-2.1.0.203-x64.tgz
 	source = logmein-hamachi.service
-	sha1sums = 72deff7d0a8ea22b6ff306967ab20ecdbce76e63
-	sha1sums = 2b8052f91bb47beac1fdab0c0c455a36f8876671
+	sha256sums = 67d4e845a28b118112ed3bc1d0ae8f84898c640e988a2ac8d38e31dcf697c07f
+	sha256sums = b32e32f2c98519b469a660f7459eeb12f454767bcec0f5edf8ae6bd89eef3dba
 
 pkgname = logmein-hamachi
-
