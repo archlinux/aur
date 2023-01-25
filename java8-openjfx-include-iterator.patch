@@ -1,0 +1,23 @@
+# This patch resolves missing <iterator> header for std::begin and std::end methods
+diff --color -Naur orig/modules/web/src/main/native/Source/WTF/wtf/text/IntegerToStringConversion.h modi/modules/web/src/main/native/Source/WTF/wtf/text/IntegerToStringConversion.h
+--- orig/modules/web/src/main/native/Source/WTF/wtf/text/IntegerToStringConversion.h    2018-12-10 11:30:22.000000000 -0500
++++ modi/modules/web/src/main/native/Source/WTF/wtf/text/IntegerToStringConversion.h    2022-11-25 00:47:42.329008410 -0500
+@@ -22,6 +22,7 @@
+ #ifndef IntegerToStringConversion_h
+ #define IntegerToStringConversion_h
+
++#include <iterator>
+ #include <wtf/text/LChar.h>
+
+ namespace WTF {
+diff --color -Naur orig/modules/web/src/main/native/Source/WTF/wtf/Vector.h modi/modules/web/src/main/native/Source/WTF/wtf/Vector.h
+--- orig/modules/web/src/main/native/Source/WTF/wtf/Vector.h    2018-12-10 11:30:22.000000000 -0500
++++ modi/modules/web/src/main/native/Source/WTF/wtf/Vector.h    2022-11-25 00:46:29.669026912 -0500
+@@ -22,6 +22,7 @@
+ #define WTF_Vector_h
+
+ #include <initializer_list>
++#include <iterator>
+ #include <limits>
+ #include <string.h>
+ #include <type_traits>
