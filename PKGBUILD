@@ -2,15 +2,17 @@
 # Contributor: usrmusicman
 pkgname=gvst-vst-bin
 pkgver=20210127
-pkgrel=1
+pkgrel=2
 pkgdesc="GVST Plugin Suite."
 arch=('x86_64' 'i686')
 url="https://www.gvst.co.uk"
 license=('custom')
 groups=('pro-audio' 'vst-plugins')
 depends=('glibc' 'libcurl-gnutls')
+replaces=('gvst-vst')
 
-_tmp=`curl -c cookies.txt https://www.gvst.co.uk/packages.htm`
+# Needed to get the cookie for the download
+_tmp=`curl -sc cookies.txt https://www.gvst.co.uk/packages.htm`
 _tmp=`echo ${_tmp} | sed -n 's/.*dlcode=\(.*\)" download.*/\1/p'`
 _dlcode=`echo "${_tmp}" | head -1`
 

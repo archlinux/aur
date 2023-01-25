@@ -1,7 +1,7 @@
 pkgbase = gvst-vst-bin
 	pkgdesc = GVST Plugin Suite.
 	pkgver = 20210127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gvst.co.uk
 	arch = x86_64
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = gvst-vst-bin
 	depends = glibc
 	depends = libcurl-gnutls
 	replaces = gvst-vst
-	source_x86_64 = https://www.gvst.co.uk/Get/PlugG4/AllGVSTLinux64.zip?dlcode=Y0HD8I
+	source_x86_64 = https://www.gvst.co.uk/Get/PlugG4/AllGVSTLinux64.zip?dlcode=SWBNZO
 	md5sums_x86_64 = 6e72bbdeea1f42380afadab29d7d6887
-	source_i686 = https://www.gvst.co.uk/Get/PlugG4/AllGVSTLinux32.zip?dlcode=Y0HD8I
+	source_i686 = https://www.gvst.co.uk/Get/PlugG4/AllGVSTLinux32.zip?dlcode=SWBNZO
 	md5sums_i686 = 292532d0201359ba5d5c163e5c509035
 
 pkgname = gvst-vst-bin
