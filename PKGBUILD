@@ -2,18 +2,28 @@
 # Maintainer: Liam Timms <timms5000@gmail.com>
 
 pkgname=python-nilearn
-pkgver=0.9.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python library for fast and easy statistical learning on NeuroImaging data"
 arch=('any')
 url="http://nilearn.github.io/"
 license=('BSD')
-depends=('python-coverage' 'python-nose' 'python-joblib' 'python-scipy' 'python-numpy' 'python-scikit-learn>=0.19' 'python-nibabel>=2.0.2')
+# see https://github.com/nilearn/nilearn/blob/main/setup.cfg	
+depends=('python-lxml'
+         'python-joblib>=1.0.0'
+         'python-scipy>=1.6.0' 
+         'python-numpy>=1.19.0' 
+         'python-pandas>=1.1.5' 
+         'python-scikit-learn>=1.0.0' 
+         'python-nibabel>=3.2.0'
+         'python-statsmodels')
 makedepends=('python-setuptools')
-optdepends=('python-matplotlib: Plotting library for fancy examples')
+optdepends=('python-matplotlib: for general plotting'
+            'python-plotly: for surface plotting'
+            'python-kaleido: required if using plotly')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nilearn/nilearn/archive/${pkgver}.tar.gz")
-sha256sums=('04b6ab91326c1e8ae260406cb8c1c4f8a56627c64d1aaeb5321a13be35dc2a18')
+sha256sums=('b20764bd86750c8cce500c3b9b56177b7db324dcbf37d446a1ba5feced0f0b57')
 
 build() {
   cd "$srcdir"/nilearn-$pkgver
