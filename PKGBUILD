@@ -1,17 +1,18 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-orgmode-git
-pkgver=0.2.1.r226.g95f9273
+_pkgname="${pkgname%-git}"
+pkgver=0.2.1.r278.gdadf563
 pkgrel=1
 pkgdesc="Orgmode clone for Neovim"
 arch=('any')
 url="https://github.com/kristijanhusak/orgmode.nvim"
 license=('MIT')
-groups=('neovim-plugin')
-depends=('neovim')
+groups=('neovim-plugins')
+depends=('neovim' 'neovim-nvim-treesitter')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 install=orgmode.install
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
@@ -22,7 +23,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find doc ftplugin indent lua syntax -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md DOCS.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find doc ftplugin indent lua syntax -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md DOCS.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
