@@ -1,6 +1,6 @@
 pkgbase = voikko-fi
 	pkgdesc = Finnish dictionary for libvoikko based spell checkers.
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://voikko.puimula.org/
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = voikko-fi
 	makedepends = libvoikko>=4.0
 	makedepends = python
 	makedepends = foma
-	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.4.tar.gz
-	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.4.tar.gz.asc
+	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.5.tar.gz
+	source = http://www.puimula.org/voikko-sources/voikko-fi/voikko-fi-2.5.tar.gz.asc
 	validpgpkeys = AC5D65F10C8596D7E2DAE2633D309B604AE3942E
-	md5sums = d63cffaebe24a125963959c7eed11725
+	md5sums = a56cfb540adb8ff0facca0e8bd76cec0
 	md5sums = SKIP
 
 pkgname = voikko-fi
-
