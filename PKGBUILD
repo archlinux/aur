@@ -2,7 +2,7 @@
 
 pkgname=(lua-promise-async-git lua51-promise-async-git lua52-promise-async-git lua53-promise-async-git neovim-promise-async-git)
 pkgver=1.0.0.r1.g842dca3
-pkgrel=1
+pkgrel=2
 pkgdesc="Promise & Async in Lua"
 arch=('any')
 url="https://github.com/kevinhwang91/promise-async"
@@ -65,6 +65,7 @@ package_lua53-promise-async-git() {
 }
 
 package_neovim-promise-async-git() {
+	depends=(neovim)
 	provides=(neovim-promise-async)
 	conflicts=(neovim-promise-async)
 	cd lua-promise-async-git/lua
