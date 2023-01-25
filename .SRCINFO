@@ -1,6 +1,6 @@
 pkgbase = r-mast
 	pkgdesc = Model-based Analysis of Single Cell Transcriptomics
-	pkgver = 1.24.0
+	pkgver = 1.24.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MAST
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = r-mast
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
 	optdepends = r-zinbwave
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAST_1.24.0.tar.gz
-	sha256sums = a10b6adeacead24f8adf7323691e3dae89bb3776f864d7d0a00f345df894718c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAST_1.24.1.tar.gz
+	sha256sums = c5c04d96388fb0abb0effce149dce6fdffc4e668c6cf80484f052dbb146114b0
 
 pkgname = r-mast

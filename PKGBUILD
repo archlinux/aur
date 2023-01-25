@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MAST
-_pkgver=1.24.0
+_pkgver=1.24.1
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 pkgdesc='Model-based Analysis of Single Cell Transcriptomics'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-zinbwave
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a10b6adeacead24f8adf7323691e3dae89bb3776f864d7d0a00f345df894718c')
+sha256sums=('c5c04d96388fb0abb0effce149dce6fdffc4e668c6cf80484f052dbb146114b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
