@@ -6,7 +6,7 @@
 
 pkgname=chirp-next
 pkgver=20230125
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
 url="https://chirp.danplanet.com"
@@ -31,4 +31,5 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
+  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
 }
