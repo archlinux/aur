@@ -1,6 +1,8 @@
 # Contributor: Elis Hughes <elishughes@googlemail.com>
 # Contributor: djerome <jerome _at_ j2ze dot org>
-# Maintainer: dncrash <dncrash@gmail.com>
+# Contributor: zeppelinlg <zeppelinlg@gmail.com>
+# Contributor: dncrash <dncrash@gmail.com>
+# Maintainer: mhaquila <mhaquila@pharosmaris.net>
 
 pkgname=ocsinventory-agent
 pkgver=2.9.0
