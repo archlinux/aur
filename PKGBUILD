@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=109.0.5414.74
+pkgver=109.0.5414.119
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
@@ -33,7 +33,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         disable-GlobalMediaControlsCastStartStop.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('eded233c26ab631be325ad49cb306c338513b6a6528197d42653e66187548e5d'
+sha256sums=('cbcdef5ee71acb53790ded3adef86871812b46e9f208dce8ec3f8ab04958be2d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '1ca780a2ad5351f60671a828064392096c8da7b589086ee999f25c9e6e799a7b'
             'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
