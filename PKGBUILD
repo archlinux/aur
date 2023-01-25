@@ -3,7 +3,7 @@
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=0.97.1
+pkgver=0.97.2
 pkgrel=1
 pkgdesc='EXtended http(s) CONnections'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
-_commit='b0be6addddb4ec84df69edf9efa7eb73d3952800'
+_commit='6c1506de168927c9819eee901dda48f5fd53201f'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
