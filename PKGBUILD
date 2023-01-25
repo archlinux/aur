@@ -15,10 +15,10 @@ PKGEXT='.pkg.tar'
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=108.0.5359.124
+pkgver=109.0.5414.119
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
+_gcc_patchset=1
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -35,23 +35,19 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
-options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
+options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-        chromium-icu72.patch
         v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         disable-GlobalMediaControlsCastStartStop.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('d48dfac2a61b14a5d7d2f460b09b70ef3ab88e27b82e3173938cb54eaa612a75'
+sha256sums=('cbcdef5ee71acb53790ded3adef86871812b46e9f208dce8ec3f8ab04958be2d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
-            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
-            'dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572'
+            '1ca780a2ad5351f60671a828064392096c8da7b589086ee999f25c9e6e799a7b'
             'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
@@ -69,7 +65,7 @@ declare -gA _system_libs=(
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
-  [icu]=icu
+  #[icu]=icu                 # https://crbug.com/1382032
   [jsoncpp]=jsoncpp
   [libaom]=aom
   [libavif]=libavif
@@ -119,8 +115,6 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-  patch -Np1 -i ../chromium-icu72.patch
   patch -Np1 -d v8 <../v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
@@ -178,7 +172,7 @@ build() {
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'

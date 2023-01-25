@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, or chromedriver
-	pkgver = 108.0.5359.124
+	pkgver = 109.0.5414.119
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -37,7 +37,6 @@ pkgbase = chromium-no-extras
 	depends = aom
 	depends = brotli
 	depends = libjpeg
-	depends = icu
 	depends = dav1d
 	depends = flac
 	depends = snappy
@@ -58,26 +57,21 @@ pkgbase = chromium-no-extras
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=108.0.5359.124
+	provides = chromium=109.0.5414.119
 	conflicts = chromium
-	options = debug
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-108.0.5359.124.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-109.0.5414.119.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-108-patchset-2/chromium-108-patchset-2.tar.xz
-	source = re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
-	source = chromium-icu72.patch
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-109-patchset-1/chromium-109-patchset-1.tar.xz
 	source = v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
 	source = REVERT-roll-src-third_party-ffmpeg-m102.patch
 	source = REVERT-roll-src-third_party-ffmpeg-m106.patch
 	source = disable-GlobalMediaControlsCastStartStop.patch
 	source = angle-wayland-include-protocol.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = d48dfac2a61b14a5d7d2f460b09b70ef3ab88e27b82e3173938cb54eaa612a75
+	sha256sums = cbcdef5ee71acb53790ded3adef86871812b46e9f208dce8ec3f8ab04958be2d
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652
-	sha256sums = 9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716
-	sha256sums = dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572
+	sha256sums = 1ca780a2ad5351f60671a828064392096c8da7b589086ee999f25c9e6e799a7b
 	sha256sums = b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454
 	sha256sums = 30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44
 	sha256sums = 4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152
