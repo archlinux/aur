@@ -1,8 +1,8 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=voicevox-appimage
-pkgver=0.13.3
-pkgrel=11
+pkgver=0.13.4
+pkgrel=12
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
@@ -16,13 +16,11 @@ _pkgname=VOICEVOX.AppImage
 source=(
     "https://github.com/VOICEVOX/voicevox/releases/download/${pkgver}/VOICEVOX.AppImage.7z.001"
     "https://github.com/VOICEVOX/voicevox/releases/download/${pkgver}/VOICEVOX.AppImage.7z.002"
-    "https://github.com/VOICEVOX/voicevox/releases/download/${pkgver}/VOICEVOX.AppImage.7z.003"
     'voicevox.sh'
 )
 sha512sums=(
-    66c2165cd563edca0adf480aea050ce3cd88271ae3bc154fe66ee08f7660bcb953252196e987f09c3a323f6f442ecda6723258a628c5ac5f00f74cde7295aac6
-    cf8b9c055ef0013d07121eb6d94cb8944c0555783e6330bb4a2acb8f6444bd0b3693716afc6c9d4efbdc52498f7d7c27109896f30ff36d3b9d57ae8fd05e9628
-    431a147bed68349f9003388e7462a531d0fe2c9f075333ec5abbdc229c634050c7e8603f709a86b6ca06fafa113c11c2a77895018ed90842fa0300bafb33d987
+    cf00a3c8212a9c182fe23379d014fc4b9b56d515ec1ba88e78befa8a5ada40a884195df83d7fb0eff54d7dc5b48766b7b53a53dcb3b589e4bec6bc0c0004e1dc
+    4e27223d21f33136e76f027c3ca5394550dd9698ee64086de973c04e1554d9f1f1938d8999b041c81fc459ff7491c150d51ceb445cbeeee635b32bfbe9575ca1
     SKIP
 )
 depends=( # according to the official install script
