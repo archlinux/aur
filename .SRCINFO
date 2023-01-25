@@ -1,7 +1,7 @@
 pkgbase = saga-gis
 	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis.
 	pkgver = 8.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.saga-gis.org
 	arch = i686
 	arch = x86_64
