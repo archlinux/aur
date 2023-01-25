@@ -1,0 +1,12 @@
+reload_udev(){
+	udevadm control --reload
+	udevadm trigger
+}
+post_install(){
+	echo  "WARNING: Make sure you add your user to 'video' group to use mpp"
+	reload_udev
+}
+
+post_remove(){
+	reload_udev
+}
