@@ -1,0 +1,4 @@
+jenkins-job-builder-*.tar.gz
+python-jenkins-job-builder-*.pkg.tar.zst
+pkg/
+src/

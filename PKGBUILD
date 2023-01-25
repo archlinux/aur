@@ -4,7 +4,7 @@
 
 _pkgname=jenkins-job-builder
 pkgname=python-$_pkgname
-pkgver=3.12.0
+pkgver=4.1.0
 pkgrel=4
 pkgdesc='Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins'
 url='https://jenkins-job-builder.readthedocs.io/en/latest/'
@@ -21,8 +21,8 @@ depends=(
   'python-python-jenkins>=0.4.15'
   'python-fasteners'
   'python-jinja>=2')
-source=('https://files.pythonhosted.org/packages/c5/6d/616c26d403cf7cddaabcfe241aa8770fb217b263243ad8350b0152848168/jenkins-job-builder-3.12.0.tar.gz')
-sha256sums=('829b28b782d6d4805f62df1e6fbd9626a33358400cb7882a58e0f52a14d08ddb')
+source=('https://files.pythonhosted.org/packages/45/9b/bf0f284d27fd41707d849126b5bac29a1a02919304372a334ed869613318/jenkins-job-builder-4.1.0.tar.gz')
+sha256sums=('e630a5b5da260f8bb92d9ad824550707fb0b3915d8b96a1e24e6a501c8b4f974')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
