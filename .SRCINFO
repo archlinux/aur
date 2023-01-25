@@ -1,6 +1,6 @@
 pkgbase = pd-faustgen2-git
 	pkgdesc = The FAUST compiler embedded in a Pd external - git version
-	pkgver = 2.1.1.r0.g1914294
+	pkgver = 2.2.0.r0.gabb1c7d
 	pkgrel = 1
 	url = https://github.com/agraef/pd-faustgen
 	arch = i686
