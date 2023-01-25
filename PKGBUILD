@@ -1,13 +1,13 @@
 # Maintainer:
 
 pkgname=powershell-lts-bin
-_pkgver=7.2.8
+_pkgver=7.2.9
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and configuration tool/framework'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust2.12' 'zlib' 'openssl-1.1' 'icu')
 provides=('powershell')
 conflicts=('powershell' 'powershell-bin')
 options=(staticlibs !strip)
@@ -21,7 +21,7 @@ source=(
 )
 
 sha512sums=(
-	"c85e2ca3bcc1fd8c4fef2381e9f3e8c7df38c2db5796705c6ead290bd1377b48ef1faf1d2a62061eb787d30415bd8fe618c7f547f653422b6098a4b1435b730a"
+	"291a6a04a4c0b035ce97935f68304291910938f4b3bef3756468f937468f8b0e08cfb2cded0a764070c4487777afe446a850b31ed396258717ab6c263b04d0a9"
 	"07f5fc69a6d9417049e4f53fbfc96c26c79d0ed33c6e161b3543bc5690476ecdac612aeede9ecff4352bea70ae32bd2fae8b0af0839b986aa1f728f8a9fcfce3"
 )
 
