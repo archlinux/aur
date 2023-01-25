@@ -1,0 +1,20 @@
+pkgbase = rofi-brbw-git
+	pkgdesc = Rofi frontend for Bitwarden (rbw)
+	pkgver = r5.06a735a
+	pkgrel = 1
+	url = https://github.com/yusufaktepe/rofi-brbw
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = rofi
+	depends = rbw
+	depends = gawk
+	depends = xclip
+	depends = xdg-utils
+	depends = xdotool
+	depends = qrencode
+	depends = ttf-font-nerd
+	source = git+https://github.com/yusufaktepe/rofi-brbw.git
+	md5sums = SKIP
+
+pkgname = rofi-brbw-git
