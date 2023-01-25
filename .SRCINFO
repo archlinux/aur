@@ -1,0 +1,11 @@
+pkgbase = libtai
+	pkgver = 0.60
+	pkgrel = 1
+	arch = x86_64
+	license = Unlicense
+	source = libtai-0.60.tar.gz::https://cr.yp.to/libtai/libtai-0.60.tar.gz
+	source = conf-cc.patch
+	sha256sums = 06dc42ccb77aee681fbd0e0754fc2180e1e9aeaa650838e9d74933d447a3d219
+	sha256sums = 4be83e30680b292d3ff0d2e29e4e88f9b7900508eb1ed73b2675f20e62035655
+
+pkgname = libtai
