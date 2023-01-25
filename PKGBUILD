@@ -6,7 +6,7 @@
 
 pkgname=cinnamon5-git
 _pkgname=cinnamon-git
-pkgver=5.6.7.r0.gda1cdb2af
+pkgver=5.6.7.r2.g4af7ab39c
 pkgrel=1
 pkgdesc="Linux desktop which provides advanced innovative features and a traditional user experience"
 arch=('x86_64')
@@ -28,13 +28,11 @@ conflicts=("${_pkgname%-git}")
 makedepends=('git' 'intltool' 'gtk-doc' 'gobject-introspection' 'samurai')
 options=('!emptydirs')
 source=("git+${url}.git"
-        "0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch"
         "set_wheel.diff"
         "default-theme.patch")
 sha256sums=('SKIP'
-            'edb5c1cf43913da086aa11f303b0919bbea232d140afa33ceac52fe367d15fcf'
             '7517d651d440361947f9539fe8f42548d5eb43a09c28c9a11f51cfdfdefd042f'
-            'SKIP')
+            '9ebbd38b400331c97754804b029342eb5aafd62c4e44a8e397e2f2f028194466')
 
 pkgver() {
     cd "${srcdir}"/${_pkgname%-git}
@@ -45,15 +43,11 @@ pkgver() {
 prepare() {
     cd "${srcdir}"/${_pkgname%-git}
 
-    # Check for the cc-panel module path, not for the irrelevant binary
-    # https://github.com/linuxmint/Cinnamon/pull/7382
-    #patch --no-backup-if-mismatch -p1 -i ../0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
-
     # Use wheel group instread of sudo (taken from Fedora)
     #patch -Np1 -i ../set_wheel.diff
 
     # Set default theme to 'cinnamon'
-    #patch -Np1 -i ../default-theme.patch
+    patch -Np1 -i ../default-theme.patch
 
     # Replace MintInstall with GNOME Software
     sed -i 's/mintinstall.desktop/org.gnome.Software.desktop/' data/org.cinnamon.gschema.xml

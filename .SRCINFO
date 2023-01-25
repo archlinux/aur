@@ -1,6 +1,6 @@
 pkgbase = cinnamon5-git
 	pkgdesc = Linux desktop which provides advanced innovative features and a traditional user experience
-	pkgver = 5.6.7.r0.gda1cdb2af
+	pkgver = 5.6.7.r2.g4af7ab39c
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
@@ -46,16 +46,14 @@ pkgbase = cinnamon5-git
 	optdepends = gnome-panel: fallback mode
 	optdepends = metacity: fallback mode
 	optdepends = system-config-printer: printer settings
-	provides = cinnamon=5.6.7.r0.gda1cdb2af
+	provides = cinnamon=5.6.7.r2.g4af7ab39c
 	conflicts = cinnamon
 	options = !emptydirs
 	source = git+https://github.com/linuxmint/cinnamon.git
-	source = 0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 	source = set_wheel.diff
 	source = default-theme.patch
 	sha256sums = SKIP
-	sha256sums = edb5c1cf43913da086aa11f303b0919bbea232d140afa33ceac52fe367d15fcf
 	sha256sums = 7517d651d440361947f9539fe8f42548d5eb43a09c28c9a11f51cfdfdefd042f
-	sha256sums = SKIP
+	sha256sums = 9ebbd38b400331c97754804b029342eb5aafd62c4e44a8e397e2f2f028194466
 
 pkgname = cinnamon5-git
