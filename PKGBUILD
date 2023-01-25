@@ -1,6 +1,6 @@
 # Maintainer: Mahmut Dikcizgi <boogiepop a~t gmx com>
 
-pkgname=rockchip-mpp-git
+pkgname=mpp-git
 pkgver="r3181.93b1cd14"
 pkgrel=1
 pkgdesc='Rockchip VPU Media Process Platform (MPP) for hardware video decode latest revision from git'
