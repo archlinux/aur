@@ -1,7 +1,7 @@
 # Maintainer: HaroldLoui<Riven970309@gmail.com>
 pkgname=minesweeper-tauri-git
 base=minesweeper-tauri
-pkgver=0.1.0
+pkgver=v0.2.0.r2.gead7bbd
 pkgrel=1
 pkgdesc="A minesweeper game follow windowsXP style based on tauri."
 arch=('x86_64' 'aarch64')
@@ -19,6 +19,11 @@ sha256sums=(
     'SKIP'
     '5608145f8050f7794bfd32c9016d2d2f6e0c39cf90e2f244feead154ceca3e60'
 )
+
+pkgver() {
+	cd $srcdir/${base}-${pkgver}-git
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare(){
 	cd $srcdir/${base}-${pkgver}-git
