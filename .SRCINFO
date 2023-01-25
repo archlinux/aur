@@ -19,6 +19,6 @@ pkgbase = xstudio
 	source = xstudio.desktop
 	md5sums = SKIP
 	md5sums = 846bbc611ce9ecd7d45d6554679245e1
-	md5sums = b315ee01abbbf9605b6449add7f03a8c
+	md5sums = 9071c306cfb8b02d8a50bdec53967880
 
 pkgname = xstudio

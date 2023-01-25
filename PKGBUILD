@@ -13,7 +13,7 @@ source=(git+"https://github.com/AcademySoftwareFoundation/xstudio.git"
         "xstudio.desktop")
 md5sums=('SKIP'
          '846bbc611ce9ecd7d45d6554679245e1'
-         'b315ee01abbbf9605b6449add7f03a8c')
+         '9071c306cfb8b02d8a50bdec53967880')
 
 prepare () {
   #Recent build of nlohmann-json is not compatible with xstudio
