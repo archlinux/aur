@@ -1,6 +1,6 @@
 pkgbase = netdata-git
 	pkgdesc = Real-time performance monitoring, in the greatest possible detail, over the web
-	pkgver = v1.36.0.r271.gbf1cb6048
+	pkgver = v1.37.0.r184.g2516d29ce
 	pkgrel = 1
 	url = https://github.com/netdata/netdata/wiki
 	install = netdata.install
@@ -39,8 +39,8 @@ pkgbase = netdata-git
 	backup = etc/netdata/netdata.conf
 	source = netdata::git+https://github.com/netdata/netdata
 	source = submodule-mqtt_websockets::git+https://github.com/underhood/mqtt_websockets.git
-	source = submodule-MQTT-C::git+https://github.com/underhood/MQTT-C.git
 	source = submodule-c-rbuf::git+https://github.com/underhood/c-rbuf.git
+	source = submodule-c_rhash::git+https://github.com/underhood/c_rhash.git
 	source = submodule-aclk-schemas::git+https://github.com/netdata/aclk-schemas.git
 	source = netdata.sysusers
 	sha512sums = SKIP

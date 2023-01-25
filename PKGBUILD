@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.36.0.r271.gbf1cb6048
+pkgver=v1.37.0.r184.g2516d29ce
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -28,8 +28,8 @@ optdepends=('nodejs: for monitoring named and SNMP devices'
             'iw: for monitoring Linux as access point')
 source=("$_gitname::git+https://github.com/netdata/netdata"
         "submodule-mqtt_websockets::git+https://github.com/underhood/mqtt_websockets.git"
-        "submodule-MQTT-C::git+https://github.com/underhood/MQTT-C.git"
         "submodule-c-rbuf::git+https://github.com/underhood/c-rbuf.git"
+        "submodule-c_rhash::git+https://github.com/underhood/c_rhash.git"
         "submodule-aclk-schemas::git+https://github.com/netdata/aclk-schemas.git"
         "${_gitname}.sysusers")
 sha512sums=('SKIP'
@@ -48,9 +48,9 @@ prepare() {
   git submodule set-url aclk/aclk-schemas "$srcdir"/submodule-aclk-schemas
   git -c protocol.file.allow=always submodule update --init --no-fetch mqtt_websockets aclk/aclk-schemas
 
-  git -C mqtt_websockets submodule set-url MQTT-C "$srcdir"/submodule-MQTT-C
   git -C mqtt_websockets submodule set-url c-rbuf "$srcdir"/submodule-c-rbuf
-  git -c protocol.file.allow=always -C mqtt_websockets submodule update --init --no-fetch MQTT-C c-rbuf
+  git -C mqtt_websockets submodule set-url c_rhash "$srcdir"/submodule-c_rhash
+  git -c protocol.file.allow=always -C mqtt_websockets submodule update --init --no-fetch c-rbuf c_rhash
 }
 
 pkgver() {
