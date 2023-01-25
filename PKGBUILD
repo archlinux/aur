@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Duncaen/OpenDoas"
 license=('MIT')
 depends=('opendoas')
-provides=('sudo')
+provides=('sudo') # makes sudo appear as a satisfied dependency for other packages
 conflicts=('sudo')
 
 package() {
