@@ -2,7 +2,7 @@
 
 _pkgname=edge-tts
 pkgname=python-${_pkgname}
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 pkgdesc="Use Microsoft Edge's online text-to-speech service from within your Python code or using the provided edge-tts or edge-playback command"
 arch=(any)
@@ -17,8 +17,8 @@ optdepends=(
 	'mpv: immediate tts playback with provided edge-playback tool'
 )
 
-source=(https://files.pythonhosted.org/packages/e7/85/dea779e3dc4ee1902f865cef8f3395d39ee9a6b015eac3be060a9d936f7f/edge-tts-${pkgver}.tar.gz)
-sha256sums=('833560bf8ad6a4d1985dbad57fe86ece9cb875c51231cec0e665507dde4fd16a')
+source=(https://files.pythonhosted.org/packages/84/2c/5a6f5d2a5f2cd393533eeab239177c1ce4f5c05b36de4048e2281e3d1c57/edge-tts-${pkgver}.tar.gz)
+sha256sums=('4eb0e782626d06211256c726e42e4e42c3315c0f4fee2fc2394763b1aa8a80e7')
 
 pkgver() {
   cd edge-tts-${pkgver}
