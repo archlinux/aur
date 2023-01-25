@@ -1,17 +1,17 @@
 # Maintainer: Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=fsverity-utils-git
-pkgver=1.3.r8.ga1243f2
+pkgver=1.5.r4.gc3098e1
 pkgrel=1
 pkgdesc='Userspace utilities for fs-verity'
 arch=('x86_64')
-url='https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git'
+url='https://git.kernel.org/pub/scm/fs/fsverity/fsverity-utils.git'
 license=('MIT')
 makedepends=('git' 'pandoc')
 depends=('openssl')
 conflicts=('fsverity-utils')
 provides=('fsverity-utils')
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git')
+source=('git+https://git.kernel.org/pub/scm/fs/fsverity/fsverity-utils.git')
 sha256sums=('SKIP')
 
 export USE_SHARED_LIB=1
