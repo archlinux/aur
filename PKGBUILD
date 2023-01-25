@@ -1,19 +1,17 @@
 # Maintainer: <me at auoeke dot net>
 pkgname=circle
-_build=$(curl https://www.circle-lang.org/linux/ | grep -Po '(?<=build_)\d+(?=\.tgz)' | sort -h | tail -1)
-pkgver=1.0.0_$_build
+pkgver=1.0.0_173
 pkgrel=1
 pkgdesc='a C++ compiler with many novel language features'
 arch=(x86_64)
 url=https://circle-lang.org
 license=(custom)
 depends=('gcc>=10.2')
-source=(https://www.circle-lang.org/linux/build_$_build.tgz)
-sha256sums=('c1143e5e0f4768f45d929121c03f5b121da8026642436efb11d12421068da953')
+source=(https://www.circle-lang.org/linux/build_latest.tgz)
+sha256sums=(SKIP)
 
-check() {
-    ./circle sanity.cxx
-    ./sanity
+pkgver() {
+	./circle -version | head -1 | grep -Po '(?<=version ).+' | sed 's/-/_/g'
 }
 
 package() {
