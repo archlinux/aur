@@ -1,0 +1,12 @@
+pkgbase = auto-git-puller-git
+	pkgdesc = A program to automatically pull every git repository in a folder
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Vinz2008/auto-git-puller
+	arch = any
+	license = GPL
+	makedepends = git
+	source = auto-git-puller::git+https://github.com/vinz2008/auto-git-puller.git
+	sha256sums = SKIP
+
+pkgname = auto-git-puller-git
