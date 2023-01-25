@@ -4,7 +4,7 @@
 # Contributor: Kevin Gillieron <kevin.gillieron@gw-computing.net>
 
 pkgname="shaarli-git"
-pkgver=r2316.6d4e3978
+pkgver=r2318.ab16f6a8
 pkgrel=1
 _commit="aeda845b3cafc560b976fec7eeebd039a7b779a2"
 pkgdesc="The personal, minimalist, super-fast, database free, bookmarking service - community repo"
@@ -29,6 +29,8 @@ build(){
  # backend
  composer install --no-interaction --no-dev
  # frontend
+ # https://stackoverflow.com/a/69746937/13448666
+ export NODE_OPTIONS=--openssl-legacy-provider 
  yarn install
  yarn run build
  # translations
