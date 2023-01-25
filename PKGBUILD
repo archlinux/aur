@@ -6,7 +6,7 @@ pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.8
 _clangver=15.0.7
 pkgver=${_qtver/-/}
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -110,5 +110,5 @@ package_pyside2-tools() {
   depends=(pyside2)
 
   DESTDIR="$pkgdir" cmake --install build/sources/pyside2-tools
-  rm "$pkgdir"/usr/bin/{rcc,uic,designer} # provided by qt5-base
+  rm "$pkgdir"/usr/bin/{rcc,uic,designer,pyside_tool.py} # provided by qt5-base
 }
