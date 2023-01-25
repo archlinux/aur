@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r18269.g1cd11b8f3a'
+pkgver='5.0.r18344.g6db2171fd0'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -29,8 +29,10 @@ source=(
 	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
+	"$pkgname-gtest::git+https://github.com/google/googletest.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -73,6 +75,12 @@ prepare() {
 	git submodule init "$_implotpath"
 	git config "submodule.$_implotpath.url" "$srcdir/$pkgname-implot/"
 	git -c protocol.file.allow=always submodule update "$_implotpath"
+
+	# Provide gtest submodule
+	_gtestpath='Externals/gtest'
+	git submodule init "$_gtestpath"
+	git config "submodule.$_gtestpath.url" "$srcdir/$pkgname-gtest/"
+	git -c protocol.file.allow=always submodule update "$_gtestpath"
 }
 
 pkgver() {
