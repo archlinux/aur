@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-shamus && ./shamus'
+Icon=/usr/share/pixmaps/rusted-shamus_icon.png
+Name=Rusted shamus
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Shamus - remake written in Rust
