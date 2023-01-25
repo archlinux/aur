@@ -1,6 +1,6 @@
 pkgbase = doxygen-clang
 	pkgdesc = Documentation system for C++, C, Java, IDL and PHP (built with clang parser)
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = http://www.doxygen.nl
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = doxygen-clang
 	provides = doxygen-docs
 	conflicts = doxygen
 	conflicts = doxygen-docs
-	source = doxygen-1.9.5.tar.gz::https://github.com/doxygen/doxygen/archive/Release_1_9_5.tar.gz
-	sha256sums = 1c5c9cd4445f694e43f089c17529caae6fe889b732fb0b145211025a1fcda1bb
-	sha512sums = c12a570be56885b2294b5e3b2334d95a71dad78ff17e9c12d59b66a38c5df52327b8f786e23e7868bb151c9f6b323c3673d8acb0ebb2a4c27c41d929bab8641f
-	b2sums = 73bf5782531dbfc2dd2d8ac3e14b5f552a4577da7be1a0c3d0003c70384fb4dadcb13ed050421b5b5373c6426981f812ac2a673e698ec3f85774f5cba3062e21
+	source = doxygen-1.9.6.tar.gz::https://github.com/doxygen/doxygen/archive/Release_1_9_6.tar.gz
+	sha256sums = 2a3ee47f7276b759f74bac7614c05a1296a5b028d3f6a79a88e4c213db78e7dc
+	sha512sums = 687ffedad87ee908987967ef6675141bc9b2a55bf88d871d275aee6c35af9615c70c12f25401b1b368b32e92a3d0534177ec8781d8fb614137b98f4862445e37
+	b2sums = 6a51cb5bcc5892dce9220f9f64b3834d6204ecfe2adeeaf86b8230adcde180e4cae7c0a691ecf0cf181559ea2a4ce734619beaabfdb6903b80fbe6cdad083198
 
 pkgname = doxygen-clang
