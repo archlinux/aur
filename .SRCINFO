@@ -1,6 +1,8 @@
 pkgbase = libtai
+	pkgdesc = a library for storing and manipulating dates and times
 	pkgver = 0.60
 	pkgrel = 1
+	url = https://cr.yp.to/libtai.html
 	arch = x86_64
 	license = Unlicense
 	source = libtai-0.60.tar.gz::https://cr.yp.to/libtai/libtai-0.60.tar.gz
