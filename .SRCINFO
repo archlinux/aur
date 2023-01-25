@@ -1,0 +1,30 @@
+pkgbase = lua-promise-async-git
+	pkgdesc = Promise & Async in Lua
+	pkgver = 1.0.0.r1.g842dca3
+	pkgrel = 1
+	url = https://github.com/kevinhwang91/promise-async
+	arch = any
+	license = BSD
+	makedepends = git
+	source = lua-promise-async-git::git+https://github.com/kevinhwang91/promise-async.git
+	sha256sums = SKIP
+
+pkgname = lua-promise-async-git
+	provides = lua-promise-async
+	conflicts = lua-promise-async
+
+pkgname = lua51-promise-async-git
+	provides = lua51-promise-async
+	conflicts = lua51-promise-async
+
+pkgname = lua52-promise-async-git
+	provides = lua52-promise-async
+	conflicts = lua52-promise-async
+
+pkgname = lua53-promise-async-git
+	provides = lua53-promise-async
+	conflicts = lua53-promise-async
+
+pkgname = neovim-promise-async-git
+	provides = neovim-promise-async
+	conflicts = neovim-promise-async
