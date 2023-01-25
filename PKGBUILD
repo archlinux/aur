@@ -2,7 +2,7 @@
 # Created: 01/05/2022
 
 pkgname=qt6-location-dev
-pkgver=6.4.1
+pkgver=6.4.2
 pkgrel=1
 pkgdesc="QtLocation, built from dev branch, until it is officialy released."
 arch=("x86_64")

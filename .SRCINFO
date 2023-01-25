@@ -1,6 +1,6 @@
 pkgbase = qt6-location-dev
 	pkgdesc = QtLocation, built from dev branch, until it is officialy released.
-	pkgver = 6.4.1
+	pkgver = 6.4.2
 	pkgrel = 1
 	url = https://github.com/qt/qtlocation
 	arch = x86_64
