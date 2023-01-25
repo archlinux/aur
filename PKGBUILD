@@ -1,7 +1,7 @@
 # Maintainer: inv2004 (https://github.com/inv2004)
 
 pkgname=ttop
-pkgver=0.6.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="System monitoring tool with TUI and historical data service"
 arch=('x86_64')
@@ -41,5 +41,7 @@ package() {
     install -D $pkgname "${pkgdir}/usr/bin/${pkgname}"
     mkdir -p "${pkgdir}/usr/lib/systemd/system"
     install -m644 usr/lib/systemd/system/* "${pkgdir}/usr/lib/systemd/system"
+    mkdir -p "${pkgdir}/etc"
+    install -m600 etc/* "${pkgdir}/etc"
     mkdir -p "${pkgdir}/var/log/ttop"
 }
