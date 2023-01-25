@@ -3,9 +3,8 @@ pkgbase = php7-symlinks
 	pkgver = 1
 	pkgrel = 1
 	arch = any
-	depends = php7
+	depends = php74
 	provides = php
 	conflicts = php
 
 pkgname = php7-symlinks
-
