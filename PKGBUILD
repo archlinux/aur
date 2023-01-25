@@ -3,7 +3,7 @@
 # Contributor: Roman Ajsin <aysin (dot) roman [at] gmail (dot) com>
 
 pkgname=geekbench
-pkgver=5.4.6
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="A cross-platform benchmark that measures processor and memory performance"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'gcc-libs')
 license=("custom")
 conflicts=("geekbench227")
 source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
-sha512sums=('6c1bc9db284ee4dea282f329b08bc75172c92951d1d43131226eaa42e05e1e39e11d34fe0c3d29f45e6b421bea16a102170a631a4b11a7a3d026024171ba5ccb')
+sha512sums=('bc1988a81bb8c3c38e471eb9076d2a321e2dbd5e71d08f2a47bcc4a36581bfb26df42dfb490dda0257bee471b7116835ad5929fd776e82fdfd766d4cc77edfdf')
 options=('!strip')
 
 package() {
