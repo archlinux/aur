@@ -1,7 +1,7 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=xstudio
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Media playback and review application designed for professionals working in the film and TV post production industries."
 arch=('x86_64')
 url="https://materialx.org/"
