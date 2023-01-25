@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SIMLR
-_pkgver=1.24.2
+_pkgver=1.24.3
 pkgname=r-${_pkgname,,}
-pkgver=1.24.2
+pkgver=1.24.3
 pkgrel=1
 pkgdesc='Single-cell Interpretation via Multi-kernel LeaRning (SIMLR)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('032b90c6d38940680a56758e4a96ba94fcd16649c01673b72710955ef32bff11')
+sha256sums=('3d8e3a7271853170e623a56703a8e99507c6f812d966d260af1480aed55089fc')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
