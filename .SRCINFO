@@ -1,6 +1,6 @@
 pkgbase = cavif-git
 	pkgdesc = AVIF image creator in pure Rust
-	pkgver = 1.5.0.r1.g5c931cb
+	pkgver = 1.5.1.r0.g7df78fd
 	pkgrel = 1
 	url = https://lib.rs/crates/cavif
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = cavif-git
 	makedepends = nasm
 	makedepends = rust
 	depends = gcc-libs
-	provides = cavif=1.5.0.r1.g5c931cb
+	provides = cavif=1.5.1.r0.g7df78fd
 	conflicts = cavif
 	source = git+https://github.com/kornelski/cavif-rs.git
 	sha256sums = SKIP
