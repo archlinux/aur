@@ -1,0 +1,12 @@
+pkgbase = linux-video-viewer
+	pkgdesc = Opens any video as an MPV
+	pkgver = r7.8799135
+	pkgrel = 1
+	url = https://github.com/ByCh4n-Group/Linux-Video-Viewer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	source = linux-video-viewer::git+https://github.com/ByCh4n-Group/Linux-Video-Viewer.git
+	sha256sums = SKIP
+
+pkgname = linux-video-viewer
