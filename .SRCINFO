@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-beta-bin
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - beta version - binary version
-	pkgver = 1.35.1.beta.0
+	pkgver = 1.35.1.beta.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mongodb-compass-readonly-beta-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-readonly-beta
 	conflicts = mongodb-compass-readonly-beta
-	source = mongodb-compass-readonly-beta-bin-1.35.1.beta.0-1.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.35.1-beta.0.x86_64.rpm
-	sha512sums = 344f785e694ea3f7fff4620b0a2528e2ae170cd0e99a46bc42a8a2aefffa4fc997c4050ea5cdb15be891226a9133c5e7f37f9bb6e5655d48af4dc61f122bd5c7
+	source = mongodb-compass-readonly-beta-bin-1.35.1.beta.1-1.rpm::https://downloads.mongodb.com/compass/beta/mongodb-compass-readonly-beta-1.35.1-beta.1.x86_64.rpm
+	sha512sums = 740bd00502d595647aa1e0d59368a3d62f3a7f62e03deeadf3f41a263dfe2d6fb932a3e083fbef341b27a547b333eb5544fe0c3167c32f4dc51f8a052743b767
 
 pkgname = mongodb-compass-readonly-beta-bin
