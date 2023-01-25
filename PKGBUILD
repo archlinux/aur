@@ -1,7 +1,7 @@
 # Maintainer: Evan Zhang <aur AT evanzhang.ca>
 
 pkgname=abeluna
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=3
 pkgdesc="A simple GUI to-do/task manager with CalDAV support."
 arch=('any')
@@ -10,7 +10,7 @@ license=('AGPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/Ninjaclasher/abeluna/archive/"$pkgver".tar.gz
 )
-md5sums=('cabdc8ea1a9dbb3ba954852bcc36e16c')
+md5sums=('827551c077177933ddfef0c4baeae5ed')
 depends=(
 	'python-gobject'
 	'python-humanize'
@@ -18,7 +18,7 @@ depends=(
 	'python-caldav'
 	'libnotify'
 	'python-setuptools'
-    'python-tzlocal'
+	'python-tzlocal'
 )
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
