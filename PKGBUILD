@@ -2,13 +2,13 @@
 
 pkgname="eureka-notes"
 pkgver="2.0.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool which allows you to quickly write down ideas using your preferred editor"
 arch=("x86_64")
 url="https://github.com/simeg/eureka"
 license=("MIT")
 depends=("git")
-makedepends=("cargo" "clang")
+makedepends=("cargo")
 optdepends=("vi: Default text editor used by Eureka")
 source=("eureka-$pkgver.tar.gz::https://github.com/simeg/eureka/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e874549e1447ee849543828f49c4c1657f7e6cfe787deea13d44241666d4aaa0')
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/eureka-$pkgver/LICENSE"
-    install -Dm755 "$srcdir/eureka-$pkgver/target/release/eureka" "$pkgdir/usr/bin/eureka"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "eureka-$pkgver/LICENSE"
+    install -Dm755 "eureka-$pkgver/target/release/eureka" "$pkgdir/usr/bin/eureka"
 }

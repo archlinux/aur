@@ -1,12 +1,11 @@
 pkgbase = eureka-notes
 	pkgdesc = CLI tool which allows you to quickly write down ideas using your preferred editor
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simeg/eureka
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = clang
 	depends = git
 	optdepends = vi: Default text editor used by Eureka
 	source = eureka-2.0.0.tar.gz::https://github.com/simeg/eureka/archive/refs/tags/v2.0.0.tar.gz
