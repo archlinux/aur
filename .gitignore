@@ -2,7 +2,7 @@ monaco-bold/
 nerd-fonts-glyphs/
 pkg/
 src/
-font-patcher
+font-patcher-*
 *.tar
 *.tar.xz
 *.tar.zst
