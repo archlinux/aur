@@ -3,7 +3,7 @@
 
 pkgname=mycroft-core
 pkgver=21.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -13,7 +13,7 @@ depends=('python'
   'libffi'
   'swig'
   'portaudio'
-  'mimic'
+  'mimic1'
   'mpg123'
   'screen'
   'flac'
@@ -88,10 +88,10 @@ package() {
     "${pkgdir}/etc/profile.d/mycroft.csh"
 }
 
-md5sums=('5d2c2752f21a172f0b8be7795f57815b'
-         '39bcf2f0f30854b7b6e516d49946566a'
-         'bfe08c1d8cba053ef83cfac5a36c7910'
-         '7cbcc7b8b71d00c19a11166fbbd5ed4f'
-         '2d14d871585ffafcf86a52da96ff4c4c'
-         '9e760b5fe356a12e126de036120c7319'
-         '6c78c4a328e1322b8155086a73a77486')
+sha256sums=('3748b2422691bbfdf3e31e8a61ebf0eb3dfd5dd0f6103f0c501005437d83c728'
+            'cbc90e2a3308619dbfe1ccf417b7a41d15fac13c7ae8124b90b82a4f09aa8485'
+            '658ab08f0db3a2000d762c6a0a0bfd3a79d8375cf5a70f373ed097aa40f51278'
+            '48f7bf2f24061bfbc58318f03098059bc8f292b5ae0f4a2cf5f90915587f74ad'
+            '87fb0adc4f3ab15e9d71c4d4bfb799d50f5d14b3962e8eb4fd1de1e7d86486cf'
+            'ec42c92425e016e747da0e61406754db0cabdccd5c6325ab9e8f6374a128263a'
+            'c2199a1f1fe50c0178fa722f0bf6f674d29e86f0edef90895e28aa9b329a8e34')
