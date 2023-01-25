@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cytolib
-_pkgver=2.10.0
+_pkgver=2.10.1
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
-pkgrel=3
+pkgver=2.10.1
+pkgrel=1
 pkgdesc='C++ infrastructure for representing and interacting with the gated cytometry data'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d6904f3d194dd3d3f3f59ff50669a6bf0708d352f89b2eb79b68a43bfee906f8')
+sha256sums=('25d6d625cd882bbba0997c818597ceda2f1fcef39630c40658e5d0a815a6f865')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
