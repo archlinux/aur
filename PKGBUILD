@@ -9,7 +9,7 @@
 
 pkgname=dart-system
 _pkgname=dart
-pkgver=2.18.6
+pkgver=2.19.0
 pkgrel=1
 pkgdesc='The dart programming language SDK (Bug https://bugs.archlinux.org/task/77107)'
 arch=('x86_64')
@@ -18,12 +18,10 @@ depends=()
 license=('BSD')
 makedepends=('setconf' 'clang' 'gn' 'ninja' 'dart' 'python')
 source=(".gclient"
-        "build-config-compiler-BUILD.gn.patch"
 		"DEPS"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git")
 sha512sums=('23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf'
-            'ad9753bc6a45ed2006f039c54fc0295f488532f8a205395921eaf2373c56d05c958efcdf33817d91d7e36e35733df57471762a126c09cf39292e6fe96069fc36'
-            '600a9816bb7dbc100d3183e01125726e712041e707d8d046e60ad7dea62831c6e09a5f667a82be183ad8e6d25d307cd4c6f754bab7f165240e57c440252fd8eb'
+            'd58d78ff99834ecd5d9cbcd0be86c237c10e2b91992cadb3d6d0fcc26512dae0138027754ec628945fc8224605d5da3c4056c8e41767a187ad4572a2e2af4b91'
             'SKIP')
 provides=("dart" "dart-sdk")
 conflicts=("dart" "dart-sdk")
@@ -33,13 +31,9 @@ prepare() {
   sed -i "s|'error'|'debug'|g" depot_tools/gclient_scm.py
   export PATH="${srcdir}/depot_tools:$PATH"
   export DEPOT_TOOLS_UPDATE=0
-  if [ ! -d sdk ]; then
-    git clone --depth=1 --branch=$pkgver https://dart.googlesource.com/sdk.git
-    cd sdk
-  else
-    cd sdk
-    git checkout $pkgver
-  fi
+  echo "Please clean your srcdir before build!"
+  git clone --depth=1 --branch=$pkgver https://dart.googlesource.com/sdk.git
+  cd sdk
   cp ../DEPS .
   python ../depot_tools/gclient.py sync --no-history -nDv
 }
@@ -50,9 +44,27 @@ build() {
   if [ -f toolchain.ninja ]; then
     rm out/toolchain.ninja
   fi
-  git checkout HEAD -- build/config/compiler/BUILD.gn
-  git apply $srcdir/build-config-compiler-BUILD.gn.patch # fix system clang
+
+  # ------
+  # Credits: Lauren N. Liberda <lauren@selfisekai.rocks> on Alpine Linux
+
+  # shut up on clang
+  mkdir -p buildtools/linux-x64/clang/.versions
+  echo '{"instance_id":"system"}' > buildtools/linux-x64/clang/.versions/clang.cipd_version
+
+  # bind bootstrapped interpreter
+  mkdir -p tools/sdks/dart-sdk/bin/
+  ln -sf /usr/bin/dart tools/sdks/dart-sdk/bin/dart
+  ln -sf /usr/bin/dart2js tools/sdks/dart-sdk/bin/dart2js
+  # ------
+
+  git checkout HEAD -- build/toolchain/linux/BUILD.gn
+  sed -i 's|prefix = rebased_clang_dir|prefix= ""|g' build/toolchain/linux/BUILD.gn # use system clang
+  sed -i 's|}/|}|g' build/toolchain/linux/BUILD.gn # use system clang
+  sed -i 's|rebase|#|g' build/toolchain/linux/BUILD.gn
+
   dart tools/generate_package_config.dart
+
   gn gen -qv out --args='target_os = "linux"
                         host_cpu = "x64"
                         target_cpu = "x64"
@@ -62,7 +74,7 @@ build() {
                         dart_snapshot_kind = "app-jit"
                         dart_use_fallback_root_certificates = true
                         bssl_use_clang_integrated_as = false
-                        dart_use_tcmalloc = true
+                        dart_use_tcmalloc = false
                         dart_use_mallinfo2 = false
                         is_debug = false
                         is_release = false
@@ -79,16 +91,11 @@ build() {
                         is_ubsan = false
                         is_qemu = false
                         dart_platform_sdk = false
-                        dart_stripped_binary = "exe.stripped/dart"
-                        dart_precompiled_runtime_stripped_binary = "exe.stripped/dart_precompiled_runtime_product"
-                        gen_snapshot_stripped_binary = "exe.stripped/gen_snapshot_product"
-                        analyze_snapshot_binary = "exe.stripped/analyze_snapshot_product"
                         dart_use_debian_sysroot = false
-                        use_goma = false
-                        goma_dir = "None"
-                        verify_sdk_hash = true'
-  sed -i 's|.\.\/buildtools\/linux\-x64\/clang\/bin\/|\/usr\/bin\/|g' out/toolchain.ninja # use system clang
-  sed -i 's|ldflags\}|ldflags\} \-fuse\-ld\=lld|g' out/toolchain.ninja # use system ldd
+                        verify_sdk_hash = false'
+
+  #sed -i 's|.\.\/buildtools\/linux\-x64\/clang\/bin\/|\/usr\/bin\/|g' out/toolchain.ninja # use system clang
+  sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' out/toolchain.ninja # use system ldd
   ninja create_sdk -v -C out
 }
 
