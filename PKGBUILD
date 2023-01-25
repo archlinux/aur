@@ -7,7 +7,7 @@ pkgname=pyinstaller-hooks-contrib
 _pkgbase="${pkgname%-git}"
 _pkgname="${_pkgbase#python-}"
 pkgver=2022.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
 license=('GPL2' 'Apache' 'custom:PyInstaller')
@@ -33,22 +33,21 @@ optdepends=(
   "python-importlib-metadata"
   "python-importlib_resources"
 )
-checkdepends=(
-  "pyinstaller"
-  "python-pytest"
-  "python-psutil"
-  # Ability to retry a failed test
-  "python-flaky"
-  # Plugin to abort hanging tests.
-  "python-pytest-timeout>=2.0.0"
-  # allows specifying order without duplicates
-  "python-pytest-drop-dup-tests"
-  # reruns failed flaky tests
-  "python-pytest-rerunfailures"
-  # parallel processing for tests
-  "python-pytest-xdist"
-  "python-execnet>=1.5.0"
-)
+# checkdepends=(
+#   "python-pytest"
+#   "python-psutil"
+#   # Ability to retry a failed test
+#   "python-flaky"
+#   # Plugin to abort hanging tests.
+#   "python-pytest-timeout>=2.0.0"
+#   # allows specifying order without duplicates
+#   "python-pytest-drop-dup-tests"
+#   # reruns failed flaky tests
+#   "python-pytest-rerunfailures"
+#   # parallel processing for tests
+#   "python-pytest-xdist"
+#   "python-execnet>=1.5.0"
+# )
 
 url="https://github.com/pyinstaller/$_pkgname"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -68,23 +67,25 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "$_pkgname-$pkgver" || exit 1
+#TODO: Move this into the pyinstaller pkg and be a universal build for 2 targets
+# The both depend on each other and is now causing a cyclical dependency.
+# check() {
+#   cd "$_pkgname-$pkgver" || exit 1
 
-  # Disabling several tests that are not relevant to the release of this pkg
-  # darwin, win32, slow - self explanatory
-  # test_cv2_highgui - needs interactive interface
-  # test_pynput - needs interactive interface
-  # test_boto - known to fail for python 3
-  # test_cv2 - needs full suite of libraries
-  QT_QPA_PLATFORM="offscreen" \
-    pytest -c pytest.ini -m "not darwin and not win32 and not slow" \
-    -k "not test_cv2_highgui and not test_pynput and not test_boto and not test_cv2" \
-    --maxfail=3 \
-    -n=auto --maxprocesses="${PYTEST_XDIST_AUTO_NUM_WORKERS:-2}" \
-    --dist=load \
-    --force-flaky --no-flaky-report --reruns=3 --reruns-delay=10
-}
+#   # Disabling several tests that are not relevant to the release of this pkg
+#   # darwin, win32, slow - self explanatory
+#   # test_cv2_highgui - needs interactive interface
+#   # test_pynput - needs interactive interface
+#   # test_boto - known to fail for python 3
+#   # test_cv2 - needs full suite of libraries
+#   QT_QPA_PLATFORM="offscreen" \
+#     pytest -c pytest.ini -m "not darwin and not win32 and not slow" \
+#     -k "not test_cv2_highgui and not test_pynput and not test_boto and not test_cv2" \
+#     --maxfail=3 \
+#     -n=auto --maxprocesses="${PYTEST_XDIST_AUTO_NUM_WORKERS:-2}" \
+#     --dist=load \
+#     --force-flaky --no-flaky-report --reruns=3 --reruns-delay=10
+# }
 
 package() {
   cd "$_pkgname-$pkgver" || exit 1
