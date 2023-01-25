@@ -1,0 +1,16 @@
+pkgbase = boo-sddm-git
+	pkgdesc = A dark SDDM theme based on Corners
+	pkgver = r33.3377e4c
+	pkgrel = 1
+	url = https://github.com/PROxZIMA/boo-sddm
+	arch = any
+	license = GPL3
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	provides = boo-sddm-git
+	source = git+https://github.com/PROxZIMA/boo-sddm.git
+	sha256sums = SKIP
+
+pkgname = boo-sddm-git
