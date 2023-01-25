@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${pkgver}.tar.xz"
 
 sha256sums=('b60bb53ab8ba370a270454b11e93d41af29126fc72bd6ede517673e2e57b816d'
             'SKIP'
-            '611f1739f4710f1d0974d695eb9b2d5a3eb1208c90b4e09bcdf9f1a9dca2e9bb'
+            '16d94dbe31b1b2ed2ec5b901f44c03a9fa69d8c2e9dfe3646408591e16d27d26'
             '05ea4e00d1e99bf8140a21c94e3c42acf17b9debad9c6f5decbe1dd1fe04332c')
 
 validpgpkeys=(
