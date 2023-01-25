@@ -4,7 +4,7 @@
 
 pkgname=(epoptes epoptes-client)
 pkgbase=epoptes-client
-pkgver=22.01
+pkgver=23.01
 pkgrel=1
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(git python-distutils-extra)
@@ -19,6 +19,8 @@ prepare()
 	cd "${srcdir}/epoptes"
 	python setup.py clean
 	python setup.py config
+	# modify service to launch on updated twisted
+	sed -i 's/twistd3/twistd/' debian/epoptes.service
 }
 
 package_epoptes()
