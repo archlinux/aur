@@ -1,0 +1,12 @@
+pkgbase = stadia-controller-udev
+	pkgdesc = Udev rules to connect the Stadia Controller to your linux box
+	pkgver = 1
+	pkgrel = 1
+	url = https://support.google.com/stadia/answer/13067284#linuxrule
+	arch = any
+	license = unknown
+	depends = udev
+	source = udev.rules
+	sha256sums = 2e03bb23d0be72a55ac18c591d85afe026cda10299eb9dabfb047803a79ad215
+
+pkgname = stadia-controller-udev
