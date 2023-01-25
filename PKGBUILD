@@ -1,33 +1,27 @@
-# Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
+
 pkgname=libframe
-_pkgname=${pkgname}
 pkgver=8.30
-pkgrel=8
-pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite. ${_pkgname}"
-arch=(any)
+pkgrel=9
+pkgdesc="The LIGO Scientific Consortium Algorithm Library Suite"
+arch=('x86_64')
 url="https://wiki.ligo.org/DASWG/LALSuiteInstall"
-license=('unknown')
+license=('custom')
 groups=('lalsuite')
-depends=()
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=("http://software.ligo.org/lscsoft/source/${_pkgname}-${pkgver}.tar.gz")
+depends=('glibc')
+provides=("libFrame.so")
+source=("$pkgname-$pkgver.tar.gz::https://software.ligo.org/lscsoft/source/$pkgname-$pkgver.tar.gz")
 sha256sums=('374743ccce835427a0900590a515c112661760e12ec596159d3f86073dd099da')
+
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    ./configure --prefix=${pkgdir}/usr CFLAGS='-O3 -Wno-error'
-    make -j
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
 }
-#check() {
-#    cd "${srcdir}/${_pkgname}-${pkgver}"
-#    make -j check
-#}
+
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    make install
+	cd "$pkgname-$pkgver"
+	DESTDIR="$pkgdir" make install
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
