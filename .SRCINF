@@ -1,0 +1,11 @@
+pkgbase = rasm
+	pkgdesc = Powerful Z80 assembler
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/EdouardBERGE/rasm
+	arch = x86_64
+	license = custom
+	source = rasm-1.8.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v1.8.tar.gz
+	sha256sums = c3de6a1df1ff113cdcaa78ad5621cd66d7be55e07872ab6dbcf72cf3c4606863
+
+pkgname = rasm
