@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 911eaae..0dc88f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ LN ?= ln
+ MAKE ?= make
+ rm ?= rm
+ 
+-CFLAGS = -O3 -std=c89 -fPIC ${INCLUDES} -D_FILE_OFFSET_BITS=64
++CFLAGS += -O2 -std=c89 -fPIC ${INCLUDES} -D_FILE_OFFSET_BITS=64
+ CFDEBUG = -O0 -g3 -pedantic -Wall -Wextra -Wconversion -Wstrict-prototypes \
+ 		  -Wcast-qual -Wcast-align -Wshadow -Wredundant-decls -Wundef \
+ 		  -Wfloat-equal -Wmissing-include-dirs -Wswitch-default -Wswitch-enum \
+@@ -37,7 +37,7 @@ OBJS = ${SRCS:${SRC}/%.c=${OBJ}/%.o}
+ .PATH: ${SRC}
+ 
+ ${NAME}: ${OBJS}
+-	${CC} ${CFLAGS} -shared -o ${LIB}/lib${NAME}.so.${VERSION} ${OBJS}
++	${CC} ${CFLAGS} ${LDFLAGS} -shared -o ${LIB}/lib${NAME}.so.${VERSION} ${OBJS}
+ 	${LN} -sf lib${NAME}.so.${VERSION} ${LIB}/lib${NAME}.so.${VERSION_MAJOR}
+ 	${LN} -sf lib${NAME}.so.${VERSION} ${LIB}/lib${NAME}.so.${VERSION_MAJOR}.${VERSION_MINOR}
+ 	${LN} -sf lib${NAME}.so.${VERSION} ${LIB}/lib${NAME}.so

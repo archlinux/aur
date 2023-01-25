@@ -1,32 +1,40 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=libgwavi-git
-pkgver=r46.ac72de4
+_pkg="${pkgname%-git}"
+pkgver=r52.c7ffd34
 pkgrel=1
-pkgdesc="libgwavi is a tiny C library aimed at creating AVI files"
-arch=('x86_64' 'i686')
+pkgdesc="A tiny C library for creating AVI files"
+arch=('x86_64')
 url="https://github.com/Rolinh/libgwavi"
 license=('BSD')
-depends=()
-makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('libgwavi::git+https://github.com/Rolinh/libgwavi')
-md5sums=('SKIP')
+depends=('glibc')
+makedepends=('doxygen' 'git')
+provides=("$_pkg" "$_pkg.so")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url"
+        'Makefile.patch')
+sha256sums=('SKIP'
+            'da52ae0f9ba8a3d751aa84226961bcc119e40de7a137cc5b0f3d1fd3cfe2606c')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$_pkg"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	patch -p1 -d "$_pkg" < Makefile.patch
+}
+
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make
+	make -C "$_pkg"
+	make -C "$_pkg" doc
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-        install -d $pkgdir/usr/include
-        install -Dm644 inc/gwavi.h $pkgdir/usr/include/
-
-        install -d $pkgdir/usr/lib/
-        cp -r lib/* $pkgdir/usr/lib/
+	cd "$_pkg"
+	install -Dvm644 inc/gwavi.h -t "$pkgdir/usr/include/"
+	install -Dv lib/* -t "$pkgdir/usr/lib/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 doc/man/man3/gwavi.{c,h}.3 -t "$pkgdir/usr/share/man/man3/"
 }
