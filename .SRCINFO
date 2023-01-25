@@ -1,7 +1,7 @@
 pkgbase = wownero-git
         pkgdesc = Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply
-        pkgver = 0.10.2.1.301e33520c
-        pkgrel = 1
+        pkgver = 0.11.0.0.278f2f9968
+        pkgrel = 3
         url = https://wownero.org/
         arch = x86_64
         license = BSD

@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.10.2.1.301e33520c
+pkgver=0.11.0.0.278f2f9968
 pkgrel=3
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
@@ -30,6 +30,7 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "${pkgname}"
+  git checkout dev
   git submodule init
   git config submodule.external/unbound.url "$srcdir/unbound"
   git config submodule.external/supercop.url "$srcdir/supercop"
