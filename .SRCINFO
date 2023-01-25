@@ -24,7 +24,7 @@ pkgbase = pacman-pb
 	depends = grep
 	optdepends = perl-locale-gettext: translation support in makepkg-template
 	provides = libalpm.so
-	provides = pacman
+	provides = pacman=${pkgver%.*.*}
 	conflicts = pacman
 	options = strip
 	options = debug
