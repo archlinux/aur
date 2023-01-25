@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=modeldata
-_cranver=1.0.1
+_cranver=1.1.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,10 +16,10 @@ depends=(
     r-tibble
 )
 checkdepends=(r-testthat)
-optdepends=(r-covr r-testthat)
+optdepends=(r-covr r-testthat r-ggplot2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('1e52ef901b3823bf52b03cfe6ae26dc7b33883a50b1141819b7925438bc86446'
+sha256sums=('9c5bc17a94026ffc49ed47899107381ddbf7392938d000dd72566dc836b25873'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
