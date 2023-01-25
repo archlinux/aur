@@ -1,0 +1,17 @@
+pkgbase = music-radar-git
+	pkgdesc = Music Recognition application for Linux Desktop
+	pkgver = 0.1+git45.4e4b5aac
+	pkgrel = 1
+	url = https://github.com/keshavbhatt/music-radar
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	provides = music-radar
+	conflicts = music-radar
+	source = git+https://github.com/keshavbhatt/music-radar.git
+	source = git+https://github.com/chrizbee/QtStyler
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = music-radar-git
