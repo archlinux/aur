@@ -1,35 +1,24 @@
 # Maintainer: robertfoster
-# Contributor: Cobalt Space <cobaltspace at protonmail dot com>
-# Contributor: Andrew Stubbs <andrew.stubbs at gmail dot com>
-
 pkgname=mimic
-_pkgname=mimic1
-pkgver=1.3.0.1
-pkgrel=2
+_pkgname=mimic3
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
 url="https://mimic.mycroft.ai/"
-license=('custom')
-depends=(alsa-lib)
-makedepends=('git' 'libtool' 'autoconf' 'automake' 'icu')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MycroftAI/mimic1/archive/${pkgver}.tar.gz")
+license=('AGPL3')
+depends=('python' 'python-xdgenvpy')
+makedepends=('python')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MycroftAI/${_pkgname}/archive/refs/tags/release/v${pkgver}.tar.gz")
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	./autogen.sh
-	./configure --prefix=/usr \
-	--disable-lang-indic
-}
-
-check() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	make -k check
+  cd "${srcdir}/${_pkgname}-release-v${pkgver}"
+  python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
-	install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgname}-release-v${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
-md5sums=('c6b60570fdbbd5fc2a92ddee385f4a20')
+sha256sums=('6c14e2453a4ee533864fb2b586110c912b3ceb383589265cce1b37fc82e48923')
