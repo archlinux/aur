@@ -2,7 +2,7 @@
 Categories=Graphics;3DGraphics;RasterGraphics;2DGraphics
 Comment=Media playback and review application designed for professionals working in the film and TV post production industries.
 Encoding=UTF-8
-Exec=xstudio %f
+Exec=LD_LIBRARY_PATH=/opt/xstudio/lib XSTUDIO_ROOT=/opt/xstudio xstudio %f
 Icon=xstudio.svg
 Keywords=Review;3D;Graphics;Produciton;xstudio;studio
 MimeType=application/x-xstudio
