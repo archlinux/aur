@@ -1,12 +1,12 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=xstudio
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Media playback and review application designed for professionals working in the film and TV post production industries."
 arch=('x86_64')
 url="https://materialx.org/"
-license=('Apache')
-depends+=('cmake' 'opencolorio' 'actor-framework' 'opencolorio' 'ffmpeg' 'openexr' 'python-sphinx_rtd_theme')
+license=('Apache 2.0')
+depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'ffmpeg' 'openexr' 'python-sphinx_rtd_theme')
 provides=('xstudio')
 source=(git+"https://github.com/AcademySoftwareFoundation/xstudio.git"
         "https://github.com/nlohmann/json/archive/refs/tags/v3.7.3.tar.gz"

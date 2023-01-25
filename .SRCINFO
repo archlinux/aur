@@ -1,12 +1,13 @@
 pkgbase = xstudio
 	pkgdesc = Media playback and review application designed for professionals working in the film and TV post production industries.
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://materialx.org/
 	arch = x86_64
-	license = Apache
+	license = Apache 2.0
 	depends = cmake
 	depends = opencolorio
+	depends = spdlog
 	depends = actor-framework
 	depends = opencolorio
 	depends = ffmpeg
