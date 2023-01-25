@@ -22,6 +22,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	mkdir -p build
+	dos2unix include/*.hpp
 }
 
 build() {
