@@ -1,7 +1,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Vincent Bidard de la Noë vincentbidarddelanoe@gmail.com
+# Maintainer: Vincent Bidard de la Noë <vincentbidarddelanoe@gmail.com>
 pkgname="aurh-git"
 pkgver="0.2"
 pkgrel=1
