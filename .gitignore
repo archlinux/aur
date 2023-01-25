@@ -3,6 +3,6 @@
 /netdata/
 /netdata-git-*.pkg.*
 /submodule-mqtt_websockets/
-/submodule-MQTT-C/
 /submodule-c-rbuf/
+/submodule-c_rhash/
 /submodule-aclk-schemas/
