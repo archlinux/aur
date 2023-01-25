@@ -25,7 +25,7 @@ package(){
 	cd "${pkgdir}"
 
 	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
-	mkdir /var/lib/forticlient
+	mkdir -p var/lib/forticlient
 
 	cd ..
 
