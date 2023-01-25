@@ -2,8 +2,8 @@
 # Maintainer: Benjamin Radel <aur@radel.tk>
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
-pkgver=2.16.40
-pkgrel=2
+pkgver=2.16.41
+pkgrel=1
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
@@ -14,8 +14,7 @@ makedepends=('python' 'which' 'boost>=1.78.0' 'git')
 source=("${pkgname}-${pkgver}::git+git://git.carlh.net/git/${pkgname}.git#tag=v${pkgver}"
         )
 
-sha256sums=('SKIP'
-           )
+sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
