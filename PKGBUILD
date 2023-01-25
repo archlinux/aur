@@ -7,17 +7,17 @@
 
 pkgbase=apt
 pkgname=('apt' 'apt-docs')
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.5.5
+pkgrel=1
 arch=('i686' 'x86_64')
 url='https://salsa.debian.org/apt-team/apt'
 license=('GPL2')
-makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'gtest' 'w3m' 'triehash'
+makedepends=('cmake' 'docbook-xsl' 'doxygen' 'git' 'gtest' 'w3m' 'triehash' 'po4a' 'xxhash' 'gnupg' 'db'
              'perl-text-wrapi18n' 'perl-locale-gettext' 'perl-yaml-tiny' 'perl-syntax-keyword-try'
-             'perl-term-readkey' 'perl-sgmls' 'perl-module-build' 'perl-unicode-linebreak' 'perl-pod-parser' 'po4a' 'xxhash' 'gnupg')
+             'perl-term-readkey' 'perl-sgmls' 'perl-module-build' 'perl-unicode-linebreak' 'perl-pod-parser')
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' 'apt-utils')
 source=("https://salsa.debian.org/apt-team/apt/-/archive/$pkgver/apt-$pkgver.tar.bz2")
-sha512sums=('f24789ac9502a0c9e5e2597e24142ca61f34a2a364771001349121d2bdc37b2a20395ec1afa0098a01d0c384f8d4fe9554ea8af2fe6064bd11c3db10e68131f6')
+sha512sums=('68392b88f72ad4663fcecfcdfcedfdf5081b9f07390e498ccb7adea3cf486e67b1ab56982c138773d43d234e828e0eaba2957a997f633d8b26ae1ac2b04c388f')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -38,7 +38,7 @@ build() {
 }
 
 package_apt() {
-  depends=('systemd-libs' 'libseccomp' 'perl' 'xxhash')
+  depends=('systemd-libs' 'libseccomp' 'perl' 'xxhash' 'dpkg')
   pkgdesc='Command-line package manager used on Debian-based systems'
   cd "$srcdir/$pkgbase-$pkgver"
   make -C build DESTDIR="${pkgdir}" install
