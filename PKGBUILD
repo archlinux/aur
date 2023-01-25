@@ -1,8 +1,9 @@
 # Maintainer: Moritz Sauter <moritz.sauter7+aur at gmail dot com>
 
 pkgname=i3status-rust-full-git
+shortname="${pkgname%-full-*}"
 pkgver=0.30.0.r2998.g05b44ce1
-pkgrel=1
+pkgrel=2
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
@@ -18,24 +19,24 @@ optdepends=('alsa-utils: for the volume block'
             'speedtest-cli: for the speedtest block'
             'ttf-font-awesome: for the awesome icons'
             'upower: for the battery block')
-provides=("${pkgname%-full-*}")
-conflicts=("${pkgname%-full-*}")
-install="${pkgname%-full-*}.install"
-source=("${pkgname%-*}::git+$url")
+provides=("${shortname}")
+conflicts=("${shortname}")
+install="${shortname}.install"
+source=("${shortname}::git+$url")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd "${shortname}"
   echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
 }
 
 build() {
-  cd "${pkgname%-*}"
+  cd "${shortname}"
   cargo build --release --all-features
 }
 
 package() {
-  cd "${pkgname%-*}"
+  cd "${shortname}"
   install -Dm755 target/release/i3status-rs "$pkgdir/usr/bin/i3status-rs"
   install -Dm644 man/i3status-rs.1 -t "$pkgdir/usr/share/man/man1"
 
