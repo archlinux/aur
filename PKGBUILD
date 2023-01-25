@@ -1,8 +1,8 @@
 # Maintainer: Pratik Pingale <pratikbpingale9075@gmail.com>
 pkgname=boo-grub-git
-pkgver=r2.e86aca3
+pkgver=r3.c0dc94c
 pkgrel=2
-pkgdesc="A dark grub2 bootloader theme theme based on Dracula grub"
+pkgdesc="A dark GRUB bootloader theme based on Dracula grub"
 arch=('any')
 url="https://github.com/PROxZIMA/boo-grub"
 license=('MIT')

@@ -1,6 +1,6 @@
 pkgbase = boo-grub-git
-	pkgdesc = A dark grub2 bootloader theme theme based on Dracula grub
-	pkgver = r2.e86aca3
+	pkgdesc = A dark GRUB bootloader theme based on Dracula grub
+	pkgver = r3.c0dc94c
 	pkgrel = 2
 	url = https://github.com/PROxZIMA/boo-grub
 	arch = any
