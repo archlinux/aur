@@ -19,7 +19,6 @@ install=post.install
 
 OPTIONS+=(
   epoch = 1
-  OPTIONS+=debug !strip
 )
 
 depends=('rapidyaml>=0.4')
@@ -90,7 +89,7 @@ build()
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_BUILD_TYPE=Devel \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_C_COMPILER=clang \
