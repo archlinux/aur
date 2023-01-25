@@ -3,20 +3,20 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}"
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('r' 'vtk' 'perl' 'insight-toolkit>=5')
+depends=('r' 'perl' 'libxcursor' 'libglvnd')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/ANTsX/ANTs/archive/v${pkgver}.tar.gz")
-md5sums=('31f99492769f2be69b48f8a4e941447a')
+md5sums=('cb8630a3a469fc0008a6029b392d3049')
 
 prepare() {
   cd "${srcdir}/ANTs-${pkgver}"
