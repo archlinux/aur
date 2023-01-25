@@ -28,8 +28,8 @@ r3_start_services() {
   r3_start_service schannel
   ids=
   if [ -r $CONFIG_FILE ]; then
-    for id in $(jq -r '.device,.services[] | .id' "$CONFIG_FILE"); do
-      ids="$ids$id\n"
+    for id in $(jq -r '.device,.services[] | .sha' "$CONFIG_FILE"); do
+      ids="$ids$id|"
     done
   fi
 
@@ -37,20 +37,22 @@ r3_start_services() {
     chmod 0644 $pidfile 2>/dev/null
     id=$(echo $pidfile | sed -e 's/\/var\/run\/remoteit-//g;s/.pid//g')
     if [ "$id" != "*" ]; then
-      ids="$ids$id\n"
+      ids="$ids$id|"
     fi
   done
 
-  unique_ids=$(echo $ids | sort | uniq)
+  unique_ids=$(echo "$ids" | sed 's/|/\n/g' | sort | uniq)
 
-  for id in $(echo -e $unique_ids) ; do
-    r3_start_service remoteit $(echo $id | tr -d '\\n')
-    config=$(jq -r --arg id "$id" '.device,.services[] | select(.id==$id) | .config' "$CONFIG_FILE")
-    if [ "$config" = "" ]; then
-      systemctl stop remoteit@$id
-      rm -r /etc/systemd/system/multi-user.target.wants/remoteit@$id.service
-    fi
-  done
+  if [ -n "$unique_ids" ]; then
+    for id in $unique_ids ; do
+      r3_start_service remoteit "$id"
+      config=$(jq -r --arg id "$id" '.device,.services[] | select(.sha==$id or .id==$id) | .config' "$CONFIG_FILE")
+      if [ "$config" = "" ]; then
+        systemctl stop remoteit@$id
+        rm -r /etc/systemd/system/multi-user.target.wants/remoteit@$id.service
+      fi
+    done
+  fi
 }
 
 r3_stop_services() {

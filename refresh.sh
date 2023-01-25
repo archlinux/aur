@@ -2,19 +2,14 @@
 
 . /usr/share/remoteit/functions.sh
 
-checkinternet=$(/usr/share/remoteit/connectd -nc install.remote.it:443 |grep SUCCESS)
-
-if [ "$checkinternet" = "" ]; then
-  i=1
-  while [ "$i" -le 10 ]; do
-    sleep 1
-    r3_logger "remote.it is checking the Internet connectivity....."
-    checkinternet=$(/usr/share/remoteit/connectd -nc install.remote.it:443 |grep SUCCESS)
-    [ "$checkinternet" != "" ] && break
-    i=$((i+1))
-    done
+if [ "$1" = "boot" ]; then
+  until r3_update_config; do
+    if [ -n "$(r3_get_device_id)" ]; then
+      break
+    fi
+    sleep 5
+  done
+  r3_start_services 2>/dev/null
+else
+  r3_reload_agent
 fi
-
-r3_logger "Internet connectivity is good."
-
-r3_reload_agent 2>&1 | r3_logger

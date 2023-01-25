@@ -7,7 +7,11 @@ r3_logger() {
 }
 
 r3_get_architecture() {
-  uname -m
+  if [ -n "$R3_ARCHITECTURE" ]; then
+    echo $R3_ARCHITECTURE
+  else
+    uname -m
+  fi
 }
 
 r3_is_ec2() {

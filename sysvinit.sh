@@ -26,7 +26,7 @@ r3_start_services() {
   r3_start_service schannel
   ids=
   if [ -r $CONFIG_FILE ]; then
-    for id in $(jq -r '.device,.services[] | .id' "$CONFIG_FILE"); do
+    for id in $(jq -r '.device,.services[] | .sha' "$CONFIG_FILE"); do
       ids="$ids $id"
     done
   fi

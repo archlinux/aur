@@ -4,8 +4,9 @@ Requires=network.target
 After=network.target
 
 [Service]
+Restart=on-failure
 RemainAfterExit=no
-ExecStart=/usr/share/remoteit/refresh.sh
+ExecStart=/usr/share/remoteit/refresh.sh boot
 
 [Install]
 WantedBy=multi-user.target

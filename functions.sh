@@ -53,13 +53,26 @@ r3_update_config() {
     --argjson manufacturer "$(r3_get_manufacturer)" \
     --argjson platform "$(r3_get_platform)" \
     --argjson metadata "$(r3_get_metadata)" \
-    '$config * {$name, $identity, $manufacturer, $platform, $metadata}' | curl -sfo $CONFIG_FILE -d @- $INSTALL_API/refresh
+    '$config * {$name, $identity, $manufacturer, $platform, $metadata}' | curl -sSfo $CONFIG_FILE -d @- $INSTALL_API/refresh
+
+  if [ $? -ne 0 ]; then
+    if [ ! -r $CONFIG_FILE ]; then
+      r3_logger "Fail to create remote.it configuration with curl command failure."
+    else
+      r3_logger "Fail to update remote.it configuration with curl command failure."
+    fi
+    return 1
+  fi
 }
 
 r3_get_config() {
   [ -r $CONFIG_FILE ] || exit 0
-  config=$(jq -r --arg id "$1" '.device,.services[] | select(.id==$id) | .config' "$CONFIG_FILE")
+  config=$(jq -r --arg id "$1" '.device,.services[] | select(.sha==$id or .id==$id) | .config' "$CONFIG_FILE")
   echo $config
+}
+
+r3_get_device_id() {
+  [ -r $CONFIG_FILE ] && jq -er '.device.id' "$CONFIG_FILE"
 }
 
 r3_get_claim() {
@@ -80,9 +93,9 @@ r3_install_agent() {
 
     [ -n "$arch" ] || r3_error "Unable to determine architecture."
 
-    local url=https://downloads.remote.it/openwrt/v4.13.0/$arch/binaries.tgz
+    local url=https://downloads.remote.it/openwrt/v4.17.0/$arch/binaries.tgz
 
-    curl -sfo- "$url" | tar xzf - -C $REMOTEIT_DIR 2>/dev/null || r3_error "Unknown architecture \"$arch\"."
+    curl -sSfo- "$url" | tar xzf - -C $REMOTEIT_DIR 2>/dev/null || r3_error "Unknown architecture \"$arch\"."
   fi
 
   [ -r $CONFIG_FILE ] || r3_update_config
@@ -98,7 +111,7 @@ r3_install_agent() {
   fi
 
   if [ "$is_systemd" != 1 ]; then
-    update-rc.d remoteit-main defaults 99
+    update-rc.d remoteit-main defaults 99 1
   fi
 
   if [ -n "$code" ]; then
@@ -106,6 +119,8 @@ r3_install_agent() {
     echo "--------------------- Claim this device ---------------------"
     echo
     echo "Use the code $code to register this device to your account"
+    echo
+    echo "or navigate to remoteit://claim/$code in your browser"
     echo
     echo "--------------------- Claim this device ---------------------"
     echo
@@ -123,7 +138,7 @@ r3_remove_agent() {
   fi
 
   if [ "$is_systemd" != 1 ]; then
-    rm -f /etc/init.d/remoteit-main
+    update-rc.d remoteit-main remove
   fi
 
   rm -f /usr/bin/connectd_task_notify
