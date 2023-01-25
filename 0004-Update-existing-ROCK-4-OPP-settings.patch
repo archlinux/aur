@@ -1,0 +1,63 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ZHANG Yuntian <yt@radxa.com>
+Date: Thu, 3 Nov 2022 10:46:07 +0800
+Subject: [PATCH] Update existing ROCK 4 OPP settings
+
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts   | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts   | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts   | 1 +
+ 4 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index d62219f7d3e0..179eb3f94a96 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -9,7 +9,6 @@
+ #include <dt-bindings/pwm/pwm.h>
+ #include "rk3399.dtsi"
+ #include "rk3399-linux.dtsi"
+-#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	aliases {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
+index 32f869c2e66b..790fe973f169 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
+@@ -6,6 +6,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4A";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+index 4f16d11eb22a..55a0a919e0fc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+@@ -6,6 +6,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4B";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
+index 5df898013916..d120c07a0db1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
+@@ -7,6 +7,7 @@
+ 
+ /dts-v1/;
+ #include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-opp.dtsi"
+ 
+ / {
+ 	model = "Radxa ROCK Pi 4C";
+-- 
+2.38.1
+

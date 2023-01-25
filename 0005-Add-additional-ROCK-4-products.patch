@@ -1,0 +1,203 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ZHANG Yuntian <yt@radxa.com>
+Date: Thu, 3 Nov 2022 11:01:57 +0800
+Subject: [PATCH] Add additional ROCK 4 products
+
+Currently they are just copies of the original dts
+with different OPP configuration.
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |  3 +
+ .../boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts | 29 +++++++++
+ .../boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts | 61 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3399-rock-4se.dts     | 61 +++++++++++++++++++
+ 4 files changed, 154 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index faa656ae960b..4889edb78d3e 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -56,6 +56,9 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4se.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a-plus.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4c-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
+new file mode 100644
+index 000000000000..d2ca5649b2dd
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
+@@ -0,0 +1,29 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-op1-opp.dtsi"
++
++/ {
++	model = "Radxa ROCK Pi 4A+";
++	compatible = "radxa,rockpi4a-plus", "radxa,rockpi4", "rockchip,rk3399";
++};
++
++&pinctrl {
++	usb2 {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&vcc5v0_host {
++	enable-active-high;
++	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&vcc5v0_host_en>;
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
+new file mode 100644
+index 000000000000..8c54d42c761a
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
+@@ -0,0 +1,61 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-op1-opp.dtsi"
++
++/ {
++	model = "Radxa ROCK Pi 4B+";
++	compatible = "radxa,rockpi4b-plus", "radxa,rockpi4", "rockchip,rk3399";
++};
++
++&pinctrl {
++	usb2 {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&sdio0 {
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
++};
++
++&uart0 {
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm4345c5";
++		clocks = <&rk808 1>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		max-speed = <1500000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++		vbat-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_1v8>;
++	};
++};
++
++&vcc5v0_host {
++	enable-active-high;
++	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&vcc5v0_host_en>;
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+new file mode 100644
+index 000000000000..962ca9139db2
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+@@ -0,0 +1,61 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++#include "rk3399-t-opp.dtsi"
++
++/ {
++	model = "Radxa ROCK 4SE";
++	compatible = "radxa,rock-4se", "rockchip,rk3399";
++};
++
++&pinctrl {
++	usb2 {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins = <4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&sdio0 {
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
++};
++
++&uart0 {
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm4345c5";
++		clocks = <&rk808 1>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		max-speed = <1500000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++		vbat-supply = <&vcc3v3_sys>;
++		vddio-supply = <&vcc_1v8>;
++	};
++};
++
++&vcc5v0_host {
++	enable-active-high;
++	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&vcc5v0_host_en>;
++};
+-- 
+2.38.1
+

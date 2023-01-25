@@ -1,0 +1,66 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ZHANG Yuntian <yt@radxa.com>
+Date: Sat, 14 Jan 2023 18:26:12 +0800
+Subject: [PATCH] Add pwm-fan for ROCK 4C+
+
+The default thermal governor is power allocator, which does not support
+pwm-fan. Please change to either step-wise or fair-share governor to enable
+automatic fan control.
+---
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
+index bc0649e5b1aa..777ed7407a5a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
+@@ -27,6 +27,13 @@ aliases {
+ 		mmc2 = &sdio0;
+ 	};
+ 
++	fan0: pwm-fan {
++		compatible = "pwm-fan";
++		#cooling-cells = <2>;
++		cooling-levels = <0 64 128 192 255>;
++		pwms = <&pwm3 0 40000 0>;
++	};
++
+ 	fiq_debugger: fiq-debugger {
+ 		status = "okay";
+ 		compatible = "rockchip,fiq-debugger";
+@@ -240,6 +247,6 @@ &gpu {
+ 
+ &threshold {
+-	temperature = <85000>;
++	temperature = <60000>;
+ };
+ 
+ &target {
+@@ -250,6 +258,24 @@ &soc_crit {
+ 	temperature = <105000>;
+ };
+ 
++&soc_thermal {
++	sustainable-power = <5000>; /* milliwatts */
++	cooling-maps {
++		map3 {
++			trip = <&target>;
++			cooling-device =
++				<&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++			contribution = <8192>;
++		};
++		map4 {
++			trip = <&threshold>;
++			cooling-device =
++				<&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++			contribution = <8192>;
++		};
++	};
++};
++
+ &tsadc {
+ 	/* tshut mode 0:CRU 1:GPIO */
+ 	rockchip,hw-tshut-mode = <1>;
+-- 
+2.39.0
+

@@ -1,0 +1,354 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: ZHANG Yuntian <yt@radxa.com>
+Date: Wed, 21 Dec 2022 12:21:04 +0800
+Subject: [PATCH] Enable DMC for ROCK 4
+
+---
+ .../boot/dts/rockchip/rk3399-op1-opp.dtsi     | 60 +++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi  | 60 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts | 29 +++++++++
+ .../boot/dts/rockchip/rk3399-rock-4se.dts     | 21 +++++++
+ .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 34 +++++++++++
+ .../arm64/boot/dts/rockchip/rk3399-t-opp.dtsi | 46 ++++++++++++++
+ 6 files changed, 250 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
+index 69cc9b05baa5..af78f332cc56 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi
+@@ -110,6 +110,62 @@ opp05 {
+ 			opp-microvolt = <1075000>;
+ 		};
+ 	};
++
++	dmc_opp_table: opp-table3 {
++		compatible = "operating-points-v2";
++
++		opp-200000000 {
++			opp-hz = /bits/ 64 <200000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-328000000 {
++			opp-hz = /bits/ 64 <328000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-416000000 {
++			opp-hz = /bits/ 64 <416000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-528000000 {
++			opp-hz = /bits/ 64 <528000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-666000000 {
++			opp-hz = /bits/ 64 <666000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-800000000 {
++			opp-hz = /bits/ 64 <800000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-856000000 {
++			opp-hz = /bits/ 64 <856000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-928000000 {
++			opp-hz = /bits/ 64 <928000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++	};
+ };
+ 
+ &cpu_l0 {
+@@ -136,6 +192,10 @@ &cpu_b1 {
+ 	operating-points-v2 = <&cluster1_opp>;
+ };
+ 
++&dmc {
++	operating-points-v2 = <&dmc_opp_table>;
++};
++
+ &gpu {
+ 	operating-points-v2 = <&gpu_opp_table>;
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
+index f9f2cc8abec7..8ddc600c1810 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-opp.dtsi
+@@ -316,6 +316,62 @@ opp-800000000 {
+ 			opp-microvolt = <900000>;
+ 		};
+ 	};
++
++	dmc_opp_table: opp-table3 {
++		compatible = "operating-points-v2";
++
++		opp-200000000 {
++			opp-hz = /bits/ 64 <200000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-328000000 {
++			opp-hz = /bits/ 64 <328000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-416000000 {
++			opp-hz = /bits/ 64 <416000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-528000000 {
++			opp-hz = /bits/ 64 <528000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-666000000 {
++			opp-hz = /bits/ 64 <666000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-800000000 {
++			opp-hz = /bits/ 64 <800000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-856000000 {
++			opp-hz = /bits/ 64 <856000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-928000000 {
++			opp-hz = /bits/ 64 <928000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++	};
+ };
+ 
+ &cpu_l0 {
+@@ -352,6 +408,10 @@ &dmc {
+ 	operating-points-v2 = <&dmc_opp_table>;
+ };
+ 
++&dmc {
++	operating-points-v2 = <&dmc_opp_table>;
++};
++
+ &gpu {
+ 	operating-points-v2 = <&gpu_opp_table>;
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
+index 76e38a771fb0..cabe1d230e44 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts
+@@ -914,6 +914,35 @@ &rkvdec {
+ 
+ &dmc {
+ 	status = "okay";
++	center-supply = <&vdd_log>;
++	upthreshold = <40>;
++	downdifferential = <20>;
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       666000
++		SYS_STATUS_REBOOT       666000
++		SYS_STATUS_SUSPEND      328000
++		SYS_STATUS_VIDEO_1080P  666000
++		SYS_STATUS_VIDEO_4K     666000
++		SYS_STATUS_VIDEO_4K_10B 666000
++		SYS_STATUS_PERFORMANCE  666000
++		SYS_STATUS_BOOST        666000
++		SYS_STATUS_DUALVIEW     666000
++		SYS_STATUS_ISP          666000
++	>;
++	vop-bw-dmc-freq = <
++	/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
++		0       762      416000
++		763     99999    666000
++	>;
++
++	vop-pn-msch-readlatency = <
++		0	0x20
++		4	0x20
++	>;
++
++	auto-min-freq = <328000>;
++	auto-freq-en = <0>;
+ };
+ 
+ &rga {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+index 962ca9139db2..8d50996dad09 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-4se.dts
+@@ -13,6 +13,27 @@ / {
+ 	compatible = "radxa,rock-4se", "rockchip,rk3399";
+ };
+ 
++&dmc {
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       666000
++		SYS_STATUS_REBOOT       666000
++		SYS_STATUS_SUSPEND      328000
++		SYS_STATUS_VIDEO_1080P  666000
++		SYS_STATUS_VIDEO_4K     666000
++		SYS_STATUS_VIDEO_4K_10B 666000
++		SYS_STATUS_PERFORMANCE  666000
++		SYS_STATUS_BOOST        666000
++		SYS_STATUS_DUALVIEW     666000
++		SYS_STATUS_ISP          666000
++	>;
++	vop-bw-dmc-freq = <
++	/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
++		0       762      416000
++		763     99999    666000
++	>;
++};
++
+ &pinctrl {
+ 	usb2 {
+ 		vcc5v0_host_en: vcc5v0-host-en {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index 56d1a77333d6..273c6cc44499 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -234,6 +234,40 @@ &cpu_b1 {
+ 	cpu-supply = <&vdd_cpu_b>;
+ };
+ 
++&dmc {
++	status = "okay";
++	center-supply = <&vdd_log>;
++	upthreshold = <40>;
++	downdifferential = <20>;
++	system-status-freq = <
++		/*system status         freq(KHz)*/
++		SYS_STATUS_NORMAL       856000
++		SYS_STATUS_REBOOT       856000
++		SYS_STATUS_SUSPEND      328000
++		SYS_STATUS_VIDEO_1080P  666000
++		SYS_STATUS_VIDEO_4K     856000
++		SYS_STATUS_VIDEO_4K_10B 856000
++		SYS_STATUS_PERFORMANCE  856000
++		SYS_STATUS_BOOST        856000
++		SYS_STATUS_DUALVIEW     856000
++		SYS_STATUS_ISP          856000
++	>;
++	vop-bw-dmc-freq = <
++	/* min_bw(MB/s) max_bw(MB/s) freq(KHz) */
++		0       762      416000
++		763     3012     666000
++		3013    99999    856000
++	>;
++
++	vop-pn-msch-readlatency = <
++		0	0x20
++		4	0x20
++	>;
++
++	auto-min-freq = <328000>;
++	auto-freq-en = <0>;
++};
++
+ &emmc_phy {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi
+index 1ababadda9df..8d8e4e357834 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-t-opp.dtsi
+@@ -83,6 +83,48 @@ opp03 {
+ 			opp-microvolt = <975000 975000 1150000>;
+ 		};
+ 	};
++
++	dmc_opp_table: opp-table3 {
++		compatible = "operating-points-v2";
++
++		opp-200000000 {
++			opp-hz = /bits/ 64 <200000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-328000000 {
++			opp-hz = /bits/ 64 <328000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-416000000 {
++			opp-hz = /bits/ 64 <416000000>;
++			opp-microvolt = <900000>;
++		};
++		opp-528000000 {
++			opp-hz = /bits/ 64 <528000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-600000000 {
++			opp-hz = /bits/ 64 <600000000>;
++			opp-microvolt = <900000>;
++			status = "disabled";
++		};
++		opp-666000000 {
++			opp-hz = /bits/ 64 <666000000>;
++			opp-microvolt = <900000>;
++		};
++	};
+ };
+ 
+ &cpu_l0 {
+@@ -109,6 +151,10 @@ &cpu_b1 {
+ 	operating-points-v2 = <&cluster1_opp>;
+ };
+ 
++&dmc {
++	operating-points-v2 = <&dmc_opp_table>;
++};
++
+ &gpu {
+ 	operating-points-v2 = <&gpu_opp_table>;
+ };
+-- 
+2.39.0
+
