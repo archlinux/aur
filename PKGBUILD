@@ -3,7 +3,7 @@
 _pkgbase=aquacomputer_d5next-hwmon
 pkgname=aquacomputer_d5next-hwmon-dkms
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hwmon Linux kernel driver for monitoring and configuring Aquacomputer PC watercooling devices"
 arch=('x86_64')
 url="https://github.com/aleksamagicka/aquacomputer_d5next-hwmon"
@@ -24,6 +24,9 @@ package() {
   sed -e "s/@_PKGBASE@/${_pkgbase}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+
+  # Patch version
+  echo 'MODULE_VERSION("git");' >> "repo/aquacomputer_d5next.c"
 
   # Copy sources (including Makefile)
   cp -r repo/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
