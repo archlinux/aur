@@ -2,7 +2,7 @@
 
 pkgname=lagrange
 pkgrel=1
-pkgver=1.15.0
+pkgver=1.15.1
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -27,6 +27,9 @@ makedepends=(
     "cmake"
     "zip"
 )
+optdepends=(
+    "libwebp: Webp decode support"
+)
 
 build() {
     cmake -B build -S "$pkgname-${pkgver}" \
@@ -44,4 +47,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('72dc249a2393dbfe531f0e472de979a5a26b24b9d4da1d845415d7a165fb231b')
+sha256sums=('4c697d579da1babcd21bfb0c76fd98be0283c3170d52d64a29ff3a13d733a910')
