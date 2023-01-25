@@ -1,6 +1,6 @@
 pkgbase = rofi-brbw-git
 	pkgdesc = Rofi frontend for Bitwarden (rbw)
-	pkgver = r5.06a735a
+	pkgver = r6.29a2953
 	pkgrel = 1
 	url = https://github.com/yusufaktepe/rofi-brbw
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = rofi-brbw-git
 	depends = xclip
 	depends = xdg-utils
 	depends = xdotool
-	depends = qrencode
-	depends = ttf-font-nerd
+	optdepends = qrencode: QR code support
+	optdepends = ttf-font-nerd: for icons
+	optdepends = ttf-font-awesome: for icons
 	source = git+https://github.com/yusufaktepe/rofi-brbw.git
 	md5sums = SKIP
 
