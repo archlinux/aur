@@ -2,7 +2,7 @@
 
 _pkgname=mangohud
 pkgname=mangohud-git
-pkgver=0.6.8.r54.g99c72d3
+pkgver=0.6.8.r66.g8450291
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 url='https://github.com/flightlessmango/MangoHud'
@@ -29,7 +29,6 @@ build() {
     local meson_options=(
         --wrap-mode=forcefallback
         -Duse_system_vulkan=enabled
-        -Dappend_libdir_mangohud=false
         -Dtests=disabled
         "${_pkgname%"-git"}"
     )
@@ -40,5 +39,10 @@ build() {
 
 package() {
     meson install --destdir="$pkgdir" -C build
+
+    if [ -f "$pkgdir/usr/lib/libMangoHud.so" ]; then
+        mv "$pkgdir/usr/lib/libMangoHud.so" "$pkgdir/usr/lib/mangohud/"
+    fi
+
     install -Dm664 "${_pkgname%"-git"}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
