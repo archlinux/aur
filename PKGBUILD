@@ -3,7 +3,7 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=zfs-utils
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64" "aarch64")
@@ -13,11 +13,11 @@ optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('c81c6cdcc6c1deb24dda02e33389e9242f338ef8892e0c161945db1db8b48937'
+sha256sums=('6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6'
             'SKIP'
             '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
             '15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f')
-b2sums=('e725a43e5a62998209d638adcec061858f0caf05abd30bcfbaf8c6f6b9f47209808d9fcd726a830ea800793cd719c4471a498a10dab66119c4d24dbf09b1c481'
+b2sums=('d7553cc162687531b254089e29e2e15e2eb6b362cecd8e70c24bbb5dbffbde82036ad2d416f4caeceaa324bee8a2e59d9e3cd8a3bf55a2e3c0718c7af9562812'
         'SKIP'
         'cb774227f157573f960bdb345e5b014c043a573c987d37a1db027b852d77a5eda1ee699612e1d8f4a2770897624889f1a3808116a171cc4c796a95e3caa43012'
         '779c864611249c3f21d1864508d60cfe5e0f5541d74fb3093c6bdfa56be2c76f386ac1690d363beaee491c5132f5f6dbc01553aa408cda579ebca74b0e0fd1d0')
