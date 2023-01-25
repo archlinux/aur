@@ -1,5 +1,5 @@
 pkgname=xlights
-pkgver=2022.22
+pkgver=2023.01
 pkgrel=1
 pkgdesc="xLights is a sequencer for Lights."
 url="https://xlights.org/"
@@ -11,7 +11,7 @@ source=(
 )
 arch=('x86_64')
 md5sums=(
-    '8eed73261c469f80ea839f86a03380ab'
+    '8aa79981fa45afad3a964defa00a13f5'
     'db5ba2bc1711d6517d819fad728b76b9'
 )
 provides=('xlights')
