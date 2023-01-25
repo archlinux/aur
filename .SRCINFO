@@ -75,6 +75,6 @@ pkgbase = linux-radxa-rkbsp5-git
 	b2sums = 4dccfcdd1f2e9c3ba556a0c15541b6e7522e12e0d3e0153937266026fe365f54ed45ab77f7e24397acc61c0a170803214ddc452d46f7659c57eba5b82107d7d2
 	b2sums = 7c61be00b97a8acb759c35f23969cdfb4e739a8c88fd147d2af4594fa14100a2da90b160e04b8632c3dca703ff2c1973138d7f765c5b9a7039c6aae7f0078d9a
 
-pkgname = linux-radxa-rkbsp5-headers
+pkgname = linux-radxa-rkbsp5-git-headers
 
-pkgname = linux-radxa-rkbsp5
+pkgname = linux-radxa-rkbsp5-git
