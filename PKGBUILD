@@ -1,6 +1,6 @@
-# Maintainer: Florian RICHER <florian.richer@protonmail.com>
+# Maintainer: Seifane IDOUCHACH <seifane53@gmail.com>
 pkgname=obs-websocket-bin
-pkgver=4.9.1
+pkgver=5.0.1
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Websockets API for obs-studio"
@@ -11,10 +11,10 @@ depends=("obs-studio>=$_obsver")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 makedepends=('libarchive')
-source=("https://github.com/obsproject/obs-websocket/releases/download/$pkgver/obs-websocket_$pkgver-1_amd64.deb")
+source=("https://github.com/obsproject/obs-websocket/releases/download/$pkgver/obs-websocket-$pkgver-Ubuntu64.deb")
 
 options=("!strip")
-sha256sums=("15c487180a5124c6005e685640dedc7e8f8e0b95e3653425fac2e21e01104fdc")
+sha256sums=("47884be3c7afe087451e19591397caedcda2e9bce776419b05b906ffbcd08379")
 
 build() {
   mkdir -p "${srcdir}/output"
