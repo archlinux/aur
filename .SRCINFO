@@ -1,0 +1,20 @@
+pkgbase = neovim-ufo-git
+	pkgdesc = Not UFO in the sky, but an ultra fold in Neovim.
+	pkgver = 1.3.0.r5.ge3cc802
+	pkgrel = 1
+	url = https://github.com/kevinhwang91/nvim-ufo
+	arch = any
+	groups = neovim-plugins
+	license = BSD
+	makedepends = git
+	depends = neovim
+	depends = neovim-promise-async
+	optdepends = neovim-coc: LSP-based folding support
+	optdepends = neovim-lspconfig: LSP-based folding support
+	optdepends = neovim-tree-sitter: treesitter-based folding support
+	provides = neovim-ufo
+	conflicts = neovim-ufo
+	source = neovim-ufo-git::git+https://github.com/kevinhwang91/nvim-ufo.git
+	sha256sums = SKIP
+
+pkgname = neovim-ufo-git
