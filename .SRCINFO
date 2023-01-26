@@ -1,0 +1,16 @@
+pkgbase = hidapitester-git
+	pkgdesc = Simple command-line program to test HIDAPI
+	pkgver = r76.90e4bae
+	pkgrel = 1
+	url = https://github.com/todbot/hidapitester
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = systemd-libs
+	depends = hidapi
+	conflicts = hidapitester
+	source = hidapitester-git::git+https://github.com/todbot/hidapitester.git
+	md5sums = SKIP
+
+pkgname = hidapitester-git
