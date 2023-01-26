@@ -2,7 +2,7 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.1r2.r496.13a42cc
+pkgver=0.2.1r2.r507.446708c
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -35,4 +35,9 @@ build () {
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
 	ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/cb"
+
+	cd "${_pkgname}"
+	install -Dm 644 documentation/manpages/man.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+	install -Dm 644 documentation/manpages/man.md "${pkgdir}/usr/share/doc/${_pkgname}/man.md"
+	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
