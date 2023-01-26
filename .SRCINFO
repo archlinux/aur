@@ -1,0 +1,17 @@
+pkgbase = dracula-kde-theme-git
+	pkgdesc = Dark theme for KDE (includes window decorations, color schemes, Plasma theme, cursor theme, Kvantum theme and SDDM theme)
+	pkgver = r297.a85f789
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	provides = dracula-kde-theme
+	conflicts = dracula-kde-theme
+	source = dracula-kde-theme::git+https://github.com/dracula/gtk.git#branch=master
+	sha256sums = SKIP
+
+pkgname = dracula-kde-theme-git
