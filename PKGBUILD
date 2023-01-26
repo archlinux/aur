@@ -28,8 +28,8 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.47.171
-pkgrel=2
+pkgver=1.47.186
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
@@ -70,7 +70,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend'
             'qt5-base: enable Qt5 with --enable-features=AllowQt')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=109.0.5414.87
+_chromium_ver=109.0.5414.119
 _gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8

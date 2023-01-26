@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.47.171
-	pkgrel = 2
+	pkgver = 1.47.186
+	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = BSD
@@ -64,9 +64,9 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	options = !lto
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.47.171
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.47.171
-	source = chromium::git+https://github.com/chromium/chromium.git#tag=109.0.5414.87
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.47.186
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.47.186
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=109.0.5414.119
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-109-patchset-2/chromium-109-patchset-2.tar.xz
