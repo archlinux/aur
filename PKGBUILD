@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net> 
 
 pkgname='cinnamon-applet-desktop-capture-git'
-pkgver=r133.8df4e3b
+pkgver=r134.5ef053f
 _pkgver=5.6
 pkgrel=1
 pkgdesc='A comprehensive screenshot and screencasting applet for Cinnamon.'
