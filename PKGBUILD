@@ -2,13 +2,14 @@
 
 pkgname=ater-yellow-cursor-theme
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="ater-yellow cursor theme"
 arch=('any')
 url="https://github.com/itapai/ater-yellow"
 license=("GPL")
 source=("https://github.com/itapai/ater-yellow/archive/refs/heads/master.zip")
 makedepends=('unzip')
+sha256sums=('d8304400d1bed9e9835e4d08ac751ed5b6db07479667e57e855b9e63e80a8f56')
 
 package()
 {

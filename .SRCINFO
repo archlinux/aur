@@ -1,11 +1,12 @@
 pkgbase = ater-yellow-cursor-theme
 	pkgdesc = ater-yellow cursor theme
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/itapai/ater-yellow
 	arch = any
 	license = GPL
 	makedepends = unzip
 	source = https://github.com/itapai/ater-yellow/archive/refs/heads/master.zip
+	sha256sums = d8304400d1bed9e9835e4d08ac751ed5b6db07479667e57e855b9e63e80a8f56
 
 pkgname = ater-yellow-cursor-theme
