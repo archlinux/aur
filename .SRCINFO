@@ -1,5 +1,5 @@
 pkgbase = gegl-light
-	pkgdesc = Graph based image processing framework. Stripped to bare minimum for GIMP to run.
+	pkgdesc = Graph based image processing framework (stripped to bare minimum for GIMP to run)
 	pkgver = 0.4.40
 	pkgrel = 1
 	url = https://www.gegl.org/
