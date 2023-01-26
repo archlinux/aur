@@ -1,5 +1,6 @@
-pkgname=gildas
+# Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 
+pkgname=gildas
 pkgver=jan23b
 pkgrel=1
 pkgdesc='GILDAS'
