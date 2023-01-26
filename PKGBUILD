@@ -17,7 +17,7 @@ _kernelrepo="kernel"
 _overlayrepo="overlays"
 _kernelbranch=linux-5.10-gen-rkr3.4
 _overlaybranch=main
-pkgdesc="Radxa fork of Linux 5.10 which is based on the fork of Rockchip BSP targetting rk3399 based rock4 and rk3588 based rock5 boards" 
+pkgdesc="Latest git Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards" 
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 
@@ -148,7 +148,7 @@ build() {
 }
 
 _package-git() {
-  pkgdesc="The Linux Kernel and modules from Radxa"
+  pkgdesc="Latest Git Linux kernel based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
   depends=('coreutils' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "linux-rkbsp")
@@ -189,7 +189,7 @@ _package-git() {
 }
 
 _package-git-headers() {
-  pkgdesc="Header files and scripts for building modules for linux kernel from Radxa"
+  pkgdesc="Latest Git Linux kernel headers based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
   provides=("linux-headers=${pkgver}" "linux-rkbsp-headers")
   conflicts=('linux-headers')
 
