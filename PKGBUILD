@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=rivercarro
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A slightly modified version of rivertile layout generator for river.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('wayland' 'wayland-protocols')
 makedepends=('zig' 'git')
 conflicts=('rivercarro-git')
 source=("https://git.sr.ht/~novakane/$pkgname/refs/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6203d10b32ff2735783408cc1bc2ac8ff7b3ca94ed652952428dcf3dd7f86e17')
+sha256sums=('63e0f06f297ec646b3ebb4754be4548239ad50dcc5d0fda0d29538f6c4465e79')
 
 package() {
 	cd "$srcdir/$pkgname-v$pkgver"
