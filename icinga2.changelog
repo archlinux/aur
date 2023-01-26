@@ -1,3 +1,6 @@
+2.13.6-2
+  - Add patch to support Boost 1.81
+
 2.13.6-1
   - New upstream version 2.13.6
 
