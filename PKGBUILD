@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=gnome-shell-extension-caffeine
 pkgver=42
-pkgrel=2
+pkgrel=3
 pkgdesc='Extension for GNOME shell to disable screensaver and auto suspend'
 arch=('any')
 url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
