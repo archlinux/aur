@@ -1,7 +1,7 @@
 # Maintainer: edombek <edombek@yandex.ru>
 pkgname=casa6
-pkgver=6.5.0
-pkgrel=15
+pkgver=6.5.2
+pkgrel=26
 pkgdesc="NRAO's Common Astronomy Software Applications package"
 url="https://casa.nrao.edu/"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflict=('')
 instdir="/opt/${pkgname}"
 provides=("casa")
 source=("https://casa.nrao.edu/download/distro/casa/release/rhel/casa-${pkgver}-${pkgrel}-py3.8.tar.xz")
-md5sums=('e7dd512ffcbcffe6e36c6fc295b2d7de')
+md5sums=('cdca868b1aeb8562709e2a9b1070328f')
 package() {
   # Copy out files
   install -m755 -d "${pkgdir}/${instdir}"

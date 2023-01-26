@@ -1,12 +1,12 @@
 pkgbase = casa6
 	pkgdesc = NRAO's Common Astronomy Software Applications package
-	pkgver = 6.5.0
-	pkgrel = 15
+	pkgver = 6.5.2
+	pkgrel = 26
 	url = https://casa.nrao.edu/
 	arch = x86_64
 	license = GPL
 	provides = casa
-	source = https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.5.0-15-py3.8.tar.xz
-	md5sums = e7dd512ffcbcffe6e36c6fc295b2d7de
+	source = https://casa.nrao.edu/download/distro/casa/release/rhel/casa-6.5.2-26-py3.8.tar.xz
+	md5sums = cdca868b1aeb8562709e2a9b1070328f
 
 pkgname = casa6
