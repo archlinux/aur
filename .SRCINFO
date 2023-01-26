@@ -9,8 +9,6 @@ pkgbase = dracula-kde-theme-git
 	optdepends = ttf-roboto: primary font face defined
 	optdepends = ttf-ubuntu-font-family: secondary font face defined
 	optdepends = cantarell-fonts: tertiary font face defined
-	provides = dracula-kde-theme
-	conflicts = dracula-kde-theme
 	source = dracula-kde-theme::git+https://github.com/dracula/gtk.git#branch=master
 	sha256sums = SKIP
 
