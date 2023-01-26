@@ -26,6 +26,7 @@ package() {
   cd "${dest}"
   # extract into opt
   bsdtar -xf "${srcdir}/OSM2World-${pkgver}-bin.zip" \
+    --no-same-permissions \
     --exclude "LICENSE.txt" --exclude "osm2world-windows.bat"
   # binary symlink
   install -dm755 "${pkgdir}/usr/bin"
