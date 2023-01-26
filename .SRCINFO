@@ -1,6 +1,6 @@
 pkgbase = luabridge-git
 	pkgdesc = A lightweight, dependency-free library for binding Lua to C++
-	pkgver = 2.8.r1.g9092ace
+	pkgver = 2.8.r6.g6580b18
 	pkgrel = 1
 	url = https://github.com/vinniefalco/LuaBridge
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = luabridge-git
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
-	provides = luabridge=2.8.r1.g9092ace
+	provides = luabridge=2.8.r6.g6580b18
 	conflicts = luabridge
 	source = luabridge::git+https://github.com/vinniefalco/LuaBridge.git
 	b2sums = SKIP

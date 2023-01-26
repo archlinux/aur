@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=luabridge
 pkgname=$_pkgname-git
-pkgver=2.8.r1.g9092ace
+pkgver=2.8.r6.g6580b18
 pkgrel=1
 pkgdesc="A lightweight, dependency-free library for binding Lua to C++"
 arch=('any')
@@ -17,13 +17,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd $_pkgname
-	sed -i '$a install(DIRECTORY LuaBridge TYPE INCLUDE)' Source/CMakeLists.txt
-	sed -i '/<array>/i #include <algorithm>' Tests/Source/ArrayTests.cpp
-	sed -i '/third_party\/gtest/d' CMakeLists.txt
 }
 
 build() {
