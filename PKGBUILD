@@ -12,7 +12,7 @@ license=('custom:BSD-3-clause')
 provides=('conda' 'mamba')
 source=("${pkgname}-${pkgver::-2}-${_pkgrel}.sh::${url}/releases/download/${pkgver::-2}-${_pkgrel}/Mambaforge-${pkgver::-2}-${_pkgrel}-Linux-x86_64.sh")
 options=(!strip libtool staticlibs)
-sha256sums=('91e157bb5124f081f01314c5478daea0f0246ebdbb8434216b722533b9fe5f39')
+sha256sums=('29f6374464307732c2c9d6711cdbca4d685c632f31e8bf1a5565276c65e0069b')
 install="${pkgname}.install"
 
 package() {
