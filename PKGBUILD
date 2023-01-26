@@ -1,7 +1,7 @@
 # Maintainer: xiliuya <xiliuya@163.com>
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
-pkgver=18.3.2
+pkgver=18.3.3
 pkgrel=1
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
@@ -13,7 +13,7 @@ source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/jindrapetrik/jpexs-de
         ${pkgname%-bin}
         ${pkgname%-bin}.desktop
         ${pkgname%-bin}.png)
-md5sums=('3094763ec2511461caebde7baf28a533'
+md5sums=('be4cc617cfff6f74e328352ab574a69f'
          '29a00ab7cb71ec337ed028493914009f'
          '1630ed36db9aadb2325b8ad9eb00f2de'
          'decfc4be2e1ce355c267049ae332419c')
