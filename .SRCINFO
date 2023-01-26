@@ -1,6 +1,6 @@
 pkgbase = python-imageio
 	pkgdesc = a Python library that provides an easy interface to read and write a wide range of image data
-	pkgver = 2.24.0
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://github.com/imageio/imageio
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-imageio
 	optdepends = freeimage
 	optdepends = python-astropy
 	optdepends = python-simpleitk
-	source = python-imageio-2.24.0.tar.gz::https://github.com/imageio/imageio/archive/v2.24.0.tar.gz
-	sha256sums = 56fa82ca4b0eee7ee305e945c0b83c1f6640a11b27236ed9ab40e4818825923e
+	source = python-imageio-2.25.0.tar.gz::https://github.com/imageio/imageio/archive/v2.25.0.tar.gz
+	sha256sums = 1fb02ae8982e6580fedfb4788bb777053032371b6dc2cb815f1750e40c4c36bf
 
 pkgname = python-imageio
