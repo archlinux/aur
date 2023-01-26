@@ -1,4 +1,4 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Julia <julia[at]insertdomain[dot]name>
 # Contributor: Colin Reeder <colin[at]reederhome[dot]net>
 # Contributor: Abraham Levine <arc[at]plusreed[dot]com>
@@ -6,7 +6,7 @@
 pkgname=pa-applet-git
 _pkgname="${pkgname%-git}"
 pkgver=r19.3b4f8b3
-pkgrel=6
+pkgrel=7
 pkgdesc="PulseAudio control applet"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fernandotcl/pa-applet"
