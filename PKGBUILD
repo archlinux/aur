@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.2.1r2.r435.27a3a1f
+pkgver=0.2.1r2.r496.13a42cc
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
