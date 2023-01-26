@@ -1,12 +1,12 @@
 pkgbase = buf
 	pkgdesc = A new way of working with Protocol Buffers
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://buf.build
 	arch = any
 	license = Apache
 	makedepends = go
-	source = https://github.com/bufbuild/buf/archive/v1.12.0.tar.gz
-	sha256sums = b7cc774fb13758500de5d0c5f74b09cf3f6e5597420b7c762e01ed195e102a2d
+	source = https://github.com/bufbuild/buf/archive/v1.13.0.tar.gz
+	sha256sums = 7568666bd4f145443af828745b38f290fb28068735184ec6614e93beb7c09c7d
 
 pkgname = buf
