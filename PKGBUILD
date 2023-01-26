@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=2.0.274
-pkgrel=2
+pkgrel=3
 pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
 url=https://cemu.info
@@ -11,6 +11,7 @@ options+=(!strip)
 depends=(
 	# unbundled vcpkg
 	'boost-libs>=1.79' 'fmt>=9.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'pugixml>=1.12.1' 'sdl2>=2.0.22' 'wxwidgets-gtk3>=3.2' 'wayland'
+	'llvm-libs>=12'
 )
 makedepends=(
 	# build setup
