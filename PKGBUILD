@@ -1,11 +1,11 @@
 pkgname=gimp-stripped
 pkgver=2.10.32
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Image Manipulation Program (stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('gtk2' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data')
+depends=('gtk2' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-glib' 'poppler-data' 'libgexiv2')
 makedepends=('intltool' 'iso-codes')
 options=('!emptydirs' '!docs')
 
