@@ -1,7 +1,7 @@
 pkgbase = dnote-server-bin
 	pkgdesc = A simple command line notebook for programmers (Server)
 	pkgver = 2.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.getdnote.com/
 	arch = x86_64
 	arch = aarch64

@@ -1,10 +1,10 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Dimitris Kiziridis <ragouel[at]outlook[dot]com>
 
 pkgname=dnote-server-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple command line notebook for programmers (Server)"
 arch=('x86_64' 'aarch64')
 url="https://www.getdnote.com/"
