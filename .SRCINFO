@@ -1,5 +1,5 @@
 pkgbase = linux-radxa-rkbsp5-bin
-	pkgdesc = Precompiled Kernel Images based on 5.10.x BSP kernel published by RADXA Minimum supported boards: RK3399 based rock4[a/b/c/se/io/se] boards RK3588 based rock5[a/b/nx] modules boards It is possible to make other RK3588 and RK3399 board with few DTS adapdations
+	pkgdesc = Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
 	pkgver = 5.10.110
 	pkgrel = 1
 	url = https://github.com/radxa/kernel
@@ -22,7 +22,7 @@ pkgbase = linux-radxa-rkbsp5-bin
 	sha512sums = b09481badcc35acc5455b97545e87c706c5cb326e1b80237b2435d821c3c45002b44538095f3c5f3cfc720acf55bc27d97b0290e5cffa5acbdbaf0c2314f2d1b
 
 pkgname = linux-radxa-rkbsp5-bin
-	pkgdesc = The Linux 5.x Kernel and Modules for Rockchip published by Radxa
+	pkgdesc = Precompiled Linux kernel image based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -36,7 +36,7 @@ pkgname = linux-radxa-rkbsp5-bin
 	backup = etc/mkinitcpio.d/linux-radxa-rkbsp5.preset
 
 pkgname = linux-radxa-rkbsp5-bin-headers
-	pkgdesc = The Linux 5.x Kernelmakepkg Headers for Rockchip published by Radxa
+	pkgdesc = Precompiled Linux kernel headers based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
 	provides = linux-headers=5.10.110
 	provides = linux-rkbsp-headers
 	conflicts = linux-headers

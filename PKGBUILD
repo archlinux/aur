@@ -13,7 +13,7 @@ _repourl="https://github.com/radxa/apt/raw/gh-pages/bullseye-stable/"
 license=('GPL2')
 options=('!strip')
 makedepends=('binutils' 'tar' 'grep' 'mkinitcpio' 'sed')
-pkgdesc="Precompiled Kernel Images based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
+pkgdesc="Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
 
 source=(
     "linux.preset"
@@ -51,7 +51,7 @@ pkgver(){
 }
 
 _package-bin() {
-  pkgdesc="The Linux 5.x Kernel and Modules for Rockchip published by Radxa"
+  pkgdesc="Precompiled Linux kernel image based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7' 'grep' 'gzip')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/$_kernel.preset")
@@ -101,7 +101,7 @@ _package-bin() {
 }
 
 _package-bin-headers() {
-  pkgdesc="The Linux 5.x Kernelmakepkg  Headers for Rockchip published by Radxa"
+  pkgdesc="Precompiled Linux kernel headers based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards"
   provides=("linux-headers=${pkgver}" "linux-rkbsp-headers")
   conflicts=('linux-headers')
 
