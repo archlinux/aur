@@ -1,11 +1,11 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Bastian Germann <bastian.germann[at]gmx[dot]de>
 # Contributor: hcartiaux
 # Contributor: Chris Mann <cshclm[at]gmail[dot]com>
 
 pkgname=unrar-free
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Free utility to extract files from RAR archives."
 arch=('x86_64' 'i686' 'aarch64')
