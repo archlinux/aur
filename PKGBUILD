@@ -51,17 +51,22 @@ build() {
   cd $srcdir/wezterm
   bash ci/check-rust-version.sh
   cargo build --frozen --release
+  tic -x -o "$srcdir/terminfo" "$srcdir/wezterm/termwiz/data/wezterm.terminfo"
 }
 
 package() {
   cd $srcdir/wezterm
+
   install -Dsm755 target/release/wezterm $pkgdir/usr/bin/wezterm
   install -Dsm755 target/release/wezterm-gui $pkgdir/usr/bin/wezterm-gui
   install -Dsm755 target/release/wezterm-mux-server $pkgdir/usr/bin/wezterm-mux-server
   install -Dsm755 target/release/strip-ansi-escapes $pkgdir/usr/bin/strip-ansi-escapes
+
   install -Dm644 assets/icon/terminal.png $pkgdir/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
   install -Dm644 assets/wezterm.desktop $pkgdir/usr/share/applications/org.wezfurlong.wezterm.desktop
   install -Dm644 assets/wezterm.appdata.xml $pkgdir/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml
+  install -Dm644 ../terminfo/w/wezterm "$pkgdir/usr/share/terminfo/w/wezterm"
+
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
