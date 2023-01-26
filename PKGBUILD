@@ -15,7 +15,7 @@ md5sums=('cdca868b1aeb8562709e2a9b1070328f')
 package() {
   # Copy out files
   install -m755 -d "${pkgdir}/${instdir}"
-  mv "${srcdir}/casa-${pkgver}-${pkgrel}-py3.8/" "${pkgdir}/${instdir}"
+  mv -T "${srcdir}/casa-${pkgver}-${pkgrel}-py3.8" "${pkgdir}/${instdir}/"
   # Symlink executables
   install -m755 -d "${pkgdir}/usr/bin/"
   for _executable in buildmytasks  casa  casaviewer  mpicasa; do
