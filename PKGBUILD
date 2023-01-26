@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=malias
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An alias manager that allows you to easily add, delete or list your bash aliases"
 arch=('any')
 url="https://github.com/Antiz96/malias"
