@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=par2cmdline-git
 _gitname='par2cmdline'
-pkgver=20220129.ea3ba79
+pkgver=20230126.0b266b5
 pkgrel=1
 pkgdesc="A file verification and repair tool"
 url="https://github.com/BlackIkeEagle/par2cmdline"
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 arch=('x86_64')
 provides=('par2cmdline')
 conflicts=('par2cmdline')
-source=("$_gitname::git://github.com/BlackIkeEagle/par2cmdline.git")
+source=("$_gitname::git+https://github.com/BlackIkeEagle/par2cmdline.git")
 sha256sums=('SKIP')
 
 pkgver() {
