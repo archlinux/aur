@@ -1,7 +1,7 @@
 pkgbase = r-earth
 	pkgdesc = Multivariate Adaptive Regression Splines
-	pkgver = 5.3.1
-	pkgrel = 4
+	pkgver = 5.3.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=earth
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-earth
 	optdepends = r-mass
 	optdepends = r-mda
 	optdepends = r-mgcv
-	source = https://cran.r-project.org/src/contrib/earth_5.3.1.tar.gz
-	sha256sums = 0bbe06ba974ceb8ec5de1d59cb53f9487d1828d7130fe2503c48b6cb449c4b03
+	source = https://cran.r-project.org/src/contrib/earth_5.3.2.tar.gz
+	sha256sums = c844d75edf9a2706a911bb05ed4287aad9acf6f3fed357e037763a300eac0bea
 
 pkgname = r-earth
