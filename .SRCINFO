@@ -1,13 +1,13 @@
 pkgbase = fastr-jdk17-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 17 version)
-	pkgver = 22.3.0
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://github.com/oracle/fastr
 	arch = x86_64
 	license = GPL3
 	depends = jdk17-graalvm-bin
 	depends = zlib
-	source = https://github.com/oracle/fastr/releases/download/vm-22.3.0/r-installable-java17-linux-amd64-22.3.0.jar
-	sha256sums = c5c68b92d0d11eefa94291de58582ec4bdbebfefbd44cce580c25ad88f3b6ea6
+	source = https://github.com/oracle/fastr/releases/download/vm-22.3.1/r-installable-java17-linux-amd64-22.3.1.jar
+	sha256sums = d96c98f73000bbc3628ae052da6ab71b080f8fe16eee0b0586b1c1f1d699b345
 
 pkgname = fastr-jdk17-bin
