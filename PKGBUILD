@@ -2,7 +2,7 @@
 # Co-maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-openai
 _name=${pkgname#python-}
-pkgver=0.26.3
+pkgver=0.26.4
 pkgrel=1
 pkgdesc="Python client library for the OpenAI API"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-numpy: optional because of size. See `openai/datalib.py`'
             'python-pandas-stubs: Needed for type hints for mypy'
             'python-openpyxl: Needed for CLI fine-tuning data preparation tool xlsx format')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('43f6d0ef38e616f9d53c4560d03e26c78ca15d96c577c10451febd39ac784c0c')
+sha256sums=('168813319a1422cb71a5005f9e404065483556cea52c9ccbfb838cda134087a7')
 
 build() {
   cd "${_name}-$pkgver"

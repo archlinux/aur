@@ -1,6 +1,6 @@
 pkgbase = python-openai
 	pkgdesc = Python client library for the OpenAI API
-	pkgver = 0.26.3
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://openai.com
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-openai
 	optdepends = python-pandas: Needed for CLI fine-tuning data preparation tool
 	optdepends = python-pandas-stubs: Needed for type hints for mypy
 	optdepends = python-openpyxl: Needed for CLI fine-tuning data preparation tool xlsx format
-	source = https://files.pythonhosted.org/packages/source/o/openai/openai-0.26.3.tar.gz
-	sha256sums = 43f6d0ef38e616f9d53c4560d03e26c78ca15d96c577c10451febd39ac784c0c
+	source = https://files.pythonhosted.org/packages/source/o/openai/openai-0.26.4.tar.gz
+	sha256sums = 168813319a1422cb71a5005f9e404065483556cea52c9ccbfb838cda134087a7
 
 pkgname = python-openai
