@@ -3,7 +3,7 @@
 
 pkgname=cbonsai-git
 _gitpkg=cbonsai
-pkgver=1.3.1.2.gb3ee97a
+pkgver=1.3.1.10.g50fe627
 pkgrel=1
 pkgdesc='A bonsai tree generator, written in C using ncurses (git version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
