@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.15.3
-pkgrel=1
+pkgrel=2
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.18.3
 _now=`date +%N`
