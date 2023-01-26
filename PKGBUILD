@@ -1,10 +1,10 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=ame-git
 _pkgname=amethyst
 _shortname="${pkgname%-git}"
 pkgver=4.0.3.r643.182daa2
-pkgrel=1
+pkgrel=2
 pkgdesc='Amethyst is a fast and efficient AUR helper (git version)'
 arch=('x86_64' 'aarch64')
 url="https://git.getcryst.al/crystal/software/${_pkgname}"
@@ -34,6 +34,7 @@ prepare() {
 
 build() {
     cd "${_pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
