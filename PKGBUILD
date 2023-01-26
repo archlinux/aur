@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby-bin
 _pkgname=tabby
-pkgver=1.0.187
+pkgver=1.0.188
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("tabby")
 conflicts=("tabby")
 replaces=('tabby')
 source=("tabby-${pkgver}-linux.pacman::$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.pacman")
-sha256sums=('c75c88756d25eafae1a2057f28def759133ff652bdd254c9dcef5b3bd8998510')
+sha256sums=('08b5deb4ede070b40521c0b656ca28d92babaaa6630f1ee7aa566de1f93eb635')
 
 package() {
   cd "$srcdir/"
