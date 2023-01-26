@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=zaman
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Print man pages in a PDF file (with vim keys support) for an easier reading"
 arch=('any')
 url="https://github.com/Antiz96/zaman"
