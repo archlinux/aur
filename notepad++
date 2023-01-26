@@ -1,0 +1,82 @@
+#!/usr/bin/env sh
+# vim: syntax=sh
+
+if [ "${SH_TRACE-0}" -eq 1 ]; then
+    # shellcheck disable=2016
+    PS4="$(printf '%b%s%b:\n' '\033[31m' 'L${LINENO}' '\033[0m')"
+    export PS4
+    set -x
+fi
+
+appName='notepad++'
+exeName="${appName}.exe"
+
+readonly appName exeName
+
+pkgDir="/usr/share/${appName}"
+localDir="${HOME}/.local/share/${appName}"
+configDir="${HOME}/.config/${appName}"
+cacheDir="${HOME}/.cache/${appName}"
+
+readonly pkgDir localDir configDir cacheDir
+
+(
+    oldAppName='notepadpp'
+    oldConfigDir="${HOME}/.config/${oldAppName}"
+    readonly oldAppName oldConfigDir
+    if [ -d "${oldConfigDir}" ]; then
+        printf 'Old configdir found. Renaming...'
+        mv -v "${oldConfigDir}" "${configDir}"
+    fi
+)
+
+if [ ! -d "${pkgDir}" ]; then
+    printf 'Cannot find application directory: %s\n' >&2 "${pkgDir}"
+    exit 1
+fi
+
+# shellcheck disable=2155
+readonly uid="$(id -u)"
+# shellcheck disable=2155
+readonly gid="$(id -g)"
+
+cleanup() {
+    while umount "${localDir}" 2>&1 | grep -q 'busy\.$' ; do
+        sleep 2
+    done
+}
+
+# Create necessary directories
+for appDir in "${localDir}" "${cacheDir}" "${configDir}"; do
+    if [ ! -d "${appDir}" ]; then
+        mkdir -p "${appDir}"
+    fi
+done
+
+# Unmount fuse-overlayfs just in case
+if mount | grep -q "${localDir}"; then
+    cleanup
+fi
+
+# Mount the necessary directories with id mapping
+if ! fuse-overlayfs -o squash_to_uid="${uid}" -o squash_to_gid="${gid}" \
+        -o lowerdir="${pkgDir}" -o upperdir="${configDir}" -o workdir="${cacheDir}" \
+        "${localDir}"; then
+    print 'Mount failed: cannot mount fuse-overlayfs\n' >&2
+    exit 2
+fi
+
+trap 'cleanup' INT TERM EXIT
+
+# Use default WINEPREFIX - usually ~/.wine
+unset WINEPREFIX
+# Don't prompt to wine-mono and wine-gecko install - neither is needed
+WINEDLLOVERRIDES="${WINEDLLOVERRIDES};mscoree=d;mshtml=d"
+# If WINEDEBUG is explicitly set as env var use it
+if [ -z "${WINEDEBUG}" ]; then
+    WINEDEBUG=-all
+fi
+
+export WINEPREFIX WINEDLLOVERRIDES WINEDEBUG
+
+wine "${localDir}/${exeName}" "${@}"
