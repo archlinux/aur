@@ -1,10 +1,10 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Pablo Arias <pabloariasal[at]gmail[dot]com>
 # Contributor: John Jenkins <twodopeshaggy[at]gmail[dot]com>
 
 pkgname=ddgr
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="DuckDuckGo from the terminal"
 arch=('any')
 url="https://github.com/jarun/ddgr"
