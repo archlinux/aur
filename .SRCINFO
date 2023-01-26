@@ -1,9 +1,9 @@
 pkgbase = r-jasptools
 	pkgdesc = Helps preview and debug JASP analyses
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspTools
-	arch = x86_64
+	arch = any
 	groups = r-jasp
 	groups = jaspbase
 	license = GPL
