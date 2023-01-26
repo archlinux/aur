@@ -1,0 +1,12 @@
+#!/bin/sh
+
+post_upgrade() {
+  # return if old package version greater 2.5.0-1...
+  (( $(vercmp $2 '2.5.0-1') > 0 )) && return
+
+  echo ':: OpenVPN now uses a netlink interface for network configuration. The systemd'
+  echo "   units start the process with a dedicated unprivileged user 'openvpn', with"
+  echo '   extra capabilities(7). The configuration should no longer drop privileges,'
+  echo "   so remove 'user' and 'group' directives."
+  echo '   Scripts that require elevated privileges may need a workaround.'
+}

@@ -1,0 +1,34 @@
+pkgbase = openvpn-dco
+	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
+	pkgver = 2.6.0
+	pkgrel = 2
+	url = https://openvpn.net/index.php/open-source.html
+	install = openvpn.install
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = systemd
+	makedepends = python-docutils
+	depends = openssl
+	depends = lzo
+	depends = lz4
+	depends = systemd-libs
+	depends = libsystemd.so
+	depends = pkcs11-helper
+	depends = libpkcs11-helper.so
+	optdepends = easy-rsa: easy CA and certificate handling
+	optdepends = pam: authenticate via PAM
+	provides = openvpn
+	conflicts = openvpn
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=942bc8b43367e97fbc5efb53a8780eac4e09863c?signed
+	source = 0001-unprivileged.patch
+	source = sysusers.conf
+	source = tmpfiles.conf
+	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
+	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
+	sha256sums = SKIP
+	sha256sums = 77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c
+	sha256sums = 3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621
+	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
+
+pkgname = openvpn-dco
