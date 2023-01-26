@@ -1,10 +1,10 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=certificate-ripper-bin
 _pkgname="${pkgname%-bin}"
 _shortname=crip
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool to extract server certificates"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hakky54/certificate-ripper"
