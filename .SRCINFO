@@ -1,6 +1,6 @@
 pkgbase = graalpy-jdk19-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 19 version
-	pkgver = 22.3.0
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = graalpy-jdk19-bin
 	depends = libxcrypt-compat
 	depends = zlib
 	replaces = graalpython-jdk19-bin
-	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.0/python-installable-svm-java19-linux-amd64-22.3.0.jar
-	sha256sums_x86_64 = 142d039ead297a3818138adb9589348f025201faf2d784e41eee239ce592eced
-	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.0/python-installable-svm-java19-linux-aarch64-22.3.0.jar
-	sha256sums_aarch64 = 9f76194b4900bf49c8d7810b77ee33fde7db51d23dcdbd8a94b5e4825c568753
+	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.1/python-installable-svm-java19-linux-amd64-22.3.1.jar
+	sha256sums_x86_64 = 9f0786ce07813dbc8fc82b6bb408d1f08f9bfae2285da698087740cab20d8a5b
+	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.1/python-installable-svm-java19-linux-aarch64-22.3.1.jar
+	sha256sums_aarch64 = 2733bdc98b54c2f2b1caab9a749c82933de16b8b91bc7f7021f6fdd7623b0ab4
 
 pkgname = graalpy-jdk19-bin
