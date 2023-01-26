@@ -6,7 +6,7 @@ pkgdesc="Converter that creates three-dimensional models of the world from OpenS
 arch=('any')
 url="http://osm2world.org/"
 license=('LGPL3')
-depends=('java-runtime')
+depends=('java-runtime>=17')
 makedepends=()
 checkdepends=()
 optdepends=()

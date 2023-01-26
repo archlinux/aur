@@ -5,7 +5,7 @@ pkgbase = osm2world
 	url = http://osm2world.org/
 	arch = any
 	license = LGPL3
-	depends = java-runtime
+	depends = java-runtime>=17
 	noextract = OSM2World-0.3.1-bin.zip
 	source = https://osm2world.org/download/files/0.3.1/OSM2World-0.3.1-bin.zip
 	source = osm2world.desktop
