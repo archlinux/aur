@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 
 pkgname=python-cma
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='The Covariance Matrix Adaptation Evolution Strategy'
 arch=(any)
@@ -10,7 +10,8 @@ url='https://github.com/CMA-ES/pycma'
 license=('MIT')
 depends=(python-numpy)
 makedepends=(git python-setuptools)
-source=("git+$url#tag=r$pkgver")
+_commit=41ce61793c37ac9c5667f104c818407e952663b0
+source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
