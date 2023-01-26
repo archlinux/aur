@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Wolff <hendrik.wolff@agdsn.me>
 # Contributor: Patrik Tesarik <depate@das-labor.com>
 pkgname='swayws'
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A sway workspace tool which allows easy moving of workspaces to and from outputs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://gitlab.com/w0lff/swayws"
 license=('MIT')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('5573abbce5b5d06a5ee1d97a7b64c6f61d7591ec0b1741d6dcb5eaf6da89fe8b32e338121c0d1077c02726baad428e9b296b3dde0289eb390538ade25f7c1b04')
+sha512sums=('255ede5f7f2b131d5dd09cbe5bb099bffa725cc2fb079714a90e4f047de7f44e835a20c17ab6ea06489cc07e21cb6b567db6eef64b8f62985170cee35074b884')
 
 prepare() {
     cd $pkgname-$pkgver
