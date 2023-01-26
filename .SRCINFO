@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk19-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 19 version)
-	pkgver = 22.3.0
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = truffleruby-jdk19-bin
 	license = LGPL2.1
 	depends = jdk19-graalvm-bin
 	depends = graal-llvm-jdk19-bin
-	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.0/ruby-installable-svm-java19-linux-amd64-22.3.0.jar
-	sha256sums_x86_64 = 7cdd1613f71a6e01a1d8f9e735f4c5181bf0c548cef95cbf4c00eb7fa26775f8
-	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.0/ruby-installable-svm-java19-linux-aarch64-22.3.0.jar
-	sha256sums_aarch64 = d45843161762436083d2629f651f58b37878b8d40135e8bbe41709dc53421971
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.1/ruby-installable-svm-java19-linux-amd64-22.3.1.jar
+	sha256sums_x86_64 = 45bd2f3500e62e9b40738dc7bc81d74f804376af1e73aeac7c9d20c79ff182c8
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.1/ruby-installable-svm-java19-linux-aarch64-22.3.1.jar
+	sha256sums_aarch64 = b4f4e79c02002a850f9cb000521e0a62786506a09be62f022f77bc8260e27db0
 
 pkgname = truffleruby-jdk19-bin
