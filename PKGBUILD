@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.3959.r0.g2cd5ce6ae
+pkgver=v1.7.3963.r0.g553a5cc45
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -104,6 +104,7 @@ build()
   ninja -j$(nproc)
 
   cd ..
+  cp -r pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop build/bin/PCSX2.desktop
 }
 
 package()
@@ -112,7 +113,6 @@ package()
 
     mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps
 
-    cp -r pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop build/bin/PCSX2.desktop
     cp ${srcdir}/pcsx2/pcsx2/Resources/AppIcon64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/PCSX2.png
 
 }
