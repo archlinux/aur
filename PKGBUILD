@@ -2,7 +2,7 @@
 
 java_=17
 pkgname="jdk${java_}-graalvm-bin"
-pkgver=22.3.0
+pkgver=22.3.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -23,8 +23,8 @@ source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-amd64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('3473d8b3b1bc682e95adfb3ac1d9a59b51b0f43e2b752f2a5b550e4ebfa2fd17')
-sha256sums_aarch64=('e27249d9eef4504deb005cf14c6a028aad1adfa37209e12e9d7407710c08ed90')
+sha256sums_x86_64=('3acf4a59ae38cb0cd331a81777f6d24f8fdc6179ac25e5b198b6e08c444c9129')
+sha256sums_aarch64=('a954fe8a4962be6ac8d0efff9ebf15108df59fad299213a31d2451bc78434818')
 
 package() {
     cd "graalvm-ce-java${java_}-${pkgver}"
