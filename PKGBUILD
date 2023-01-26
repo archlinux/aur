@@ -1,10 +1,10 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.9.1.r4.gd718cc9
+pkgver=1.9.1.r21.g7adb160
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
-arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
+arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64" "riscv64")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
 
@@ -53,6 +53,7 @@ optdepends=(
   "ocl-icd: OpenCL module"
   "nix: self contained nix package count"
   "libnm: Better wifi support"
+  "libpulse: Sound module"
   # "libmagick6: ImageMagick 6 support" 
   # "sqlite3: rpm package count"
   # "rpm-tools: slower rpm package count fallback"
