@@ -1,0 +1,11 @@
+--- MuseScore/mscore/cloud/logindialog.ui.orig	2023-01-25 17:44:15.049351628 -0500
++++ MuseScore/mscore/cloud/logindialog.ui	2023-01-25 23:21:08.815768090 -0500
+@@ -37,7 +37,7 @@
+         <string/>
+        </property>
+        <property name="pixmap">
+-        <pixmap resource="musescore.qrc">:/data/mscore.png</pixmap>
++        <pixmap resource="musescore.qrc">:/data/mscore3.png</pixmap>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>

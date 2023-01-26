@@ -1,0 +1,11 @@
+--- MuseScore/mscore/icons.cpp.orig	2023-01-25 17:44:15.416019781 -0500
++++ MuseScore/mscore/icons.cpp	2023-01-26 10:27:47.047146152 -0500
+@@ -90,7 +90,7 @@
+       "document-save.svg",
+       "document-save-as.svg",
+       "document-save-online.svg",
+-      "mscore.png",
++      "mscore3.png",
+       "acciaccatura.svg",
+       "appoggiatura.svg",
+       "grace4.svg",

@@ -1,0 +1,16 @@
+--- build/mscore.desktop.orig	2022-12-30 06:16:24.000000000 -0500
++++ build/mscore.desktop	2023-01-25 10:23:39.719812761 -0500
+@@ -7,10 +7,10 @@
+ Comment=Create, play and print sheet music
+ Comment[ru]=Визуальный редактор нотных партитур
+ Comment[fr]=Gravure de partitions musicales
+-Exec=mscore %F
+-Icon=mscore
++Exec=mscore3 %F
++Icon=mscore3
+ StartupNotify=true
+-StartupWMClass=mscore
++StartupWMClass=mscore3
+ Terminal=false
+ Type=Application
+ Categories=Qt;Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;

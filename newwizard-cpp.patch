@@ -1,0 +1,11 @@
+--- MuseScore/mscore/newwizard.cpp.orig	2023-01-25 17:44:15.506020146 -0500
++++ MuseScore/mscore/newwizard.cpp	2023-01-26 10:33:56.381172478 -0500
+@@ -435,7 +435,7 @@
+ #endif
+       setWizardStyle(wizardStyleValue);
+       
+-      setPixmap(QWizard::LogoPixmap, QPixmap(":/data/mscore.png"));
++      setPixmap(QWizard::LogoPixmap, QPixmap(":/data/mscore3.png"));
+       setPixmap(QWizard::WatermarkPixmap, QPixmap());
+       setWindowTitle(tr("New Score Wizard"));
+ 

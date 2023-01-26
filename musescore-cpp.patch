@@ -1,0 +1,11 @@
+--- MuseScore/mscore/musescore.cpp.orig	2023-01-25 17:44:15.502686799 -0500
++++ MuseScore/mscore/musescore.cpp	2023-01-26 10:30:50.690698710 -0500
+@@ -1996,7 +1996,7 @@
+       if (enableExperimental) {
+             cornerLabel = new QLabel(this);
+             cornerLabel->setScaledContents(true);
+-            cornerLabel->setPixmap(QPixmap(":/data/mscore.png"));
++            cornerLabel->setPixmap(QPixmap(":/data/mscore3.png"));
+             cornerLabel->setGeometry(width() - 48, 0, 48, 48);
+             }
+ #if defined(WIN_SPARKLE_ENABLED)

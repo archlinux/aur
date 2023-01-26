@@ -1,0 +1,22 @@
+--- build/org.musescore.MuseScore.appdata.xml.orig	2022-12-30 06:16:24.000000000 -0500
++++ build/org.musescore.MuseScore.appdata.xml	2023-01-25 14:58:28.761008082 -0500
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2018 Werner Schweer and others -->
+ <component type="desktop-application">
+-  <id>org.musescore.MuseScore</id>
++  <id>org.musescore.MuseScore3</id>
+   <translation type="qt">mscore</translation>
+   <name>MuseScore</name>
+   <summary>Create, playback, and print sheet music for free</summary>
+@@ -403,8 +403,8 @@
+     <release date="2017-05-02" version="2.1.0"/>
+   </releases>
+   <provides>
+-    <id>mscore.desktop</id>
++    <id>mscore3.desktop</id>
+   </provides>
+-  <launchable type="desktop-id">mscore.desktop</launchable>
++  <launchable type="desktop-id">mscore3.desktop</launchable>
+   <update_contact>jurf_AT_riseup.net</update_contact>
+ </component>
