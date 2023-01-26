@@ -1,7 +1,7 @@
 pkgbase = lxd-snapper-bin
 	pkgdesc = LXD snapshots, automated
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Patryk27/lxd-snapper
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = lxd-snapper-bin
 	provides = lxd-snapper
 	conflicts = lxd-snapper
 	source = lxd-snapper-1.3.0-linux64::https://github.com/Patryk27/lxd-snapper/releases/download/v1.3.0/lxd-snapper-linux64
-	source = LICENSE::https://raw.githubusercontent.com/Patryk27/lxd-snapper/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Patryk27/lxd-snapper/4fcbb1e1c5f5754cadc87a00ccce4245370e9b7e/LICENSE
 	sha256sums = d4f86a91928752202f2ac25f1b54935cb850107d47713007b89e0f80525e37cd
-	sha256sums = 161d3e4f2761b10a75f7fd88de8a66319d3017e67e77491e2da90a521fc1383a
+	sha256sums = 1dc80432b6cf5b95bb274053190166d47dc301ecb479d65fe3c139824ccd6cea
 
 pkgname = lxd-snapper-bin
