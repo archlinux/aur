@@ -2,7 +2,7 @@
 
 pkgname=asdf-vm
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
 url='https://asdf-vm.com'
@@ -39,6 +39,7 @@ package() {
   cp -r lib         "${dst}"
   cp    asdf.elv    "${dst}"
   cp    asdf.fish   "${dst}"
+  cp    asdf.nu     "${dst}"
   cp    asdf.sh     "${dst}"
   cp    defaults    "${dst}"
   cp    help.txt    "${dst}"
