@@ -1,7 +1,7 @@
 #Maintainer: thilob
 pkgname=worldeditor-bin-rc
 pkgver=2.5.0r1
-pkgrel=1
+pkgrel=2
 pkgdesc="WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, this is the Release Candidate usable for X-Plane 12."
 url="http://developer.x-plane.com/tools/worldeditor/"
 license=('GPL')
@@ -13,7 +13,7 @@ source=("http://dev.x-plane.com/download/tools/wed_lin_${pkgver//\./}.zip"
         "WorldEditor-rc.png")
 md5sums=('1bcc1042314883aa53104658c4851bde'
          'a1b5b9ed21ef0ba05f553491e2d42321'
-         '43f5232cb099f69027f0a1d7e9358cc0')
+         '553f485400030a5daf09d48a4690d31c')
 
 package() {
   cd "${srcdir}/"
