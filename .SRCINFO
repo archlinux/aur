@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fritzing.org
 	install = fritzing.install
 	arch = aarch64
@@ -20,6 +20,6 @@ pkgbase = fritzing
 	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt5-on-Arc.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 38de6f5092987b9d53ced366f1b0fb77981f3cf45159c2d204ac3c72b85c456b
+	sha256sums = 65e0818e959f07209928907ddeb76c3e73229fdc0a049c433c842621d59e6e32
 
 pkgname = fritzing
