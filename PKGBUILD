@@ -37,6 +37,7 @@ build() {
             -DLLVM_USE_LINKER=lld \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
+            -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_INSTALL_PREFIX:PATH=/opt/clang/${pkgver} \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
