@@ -1,0 +1,26 @@
+pkgbase = r-jaspacceptancesampling
+	pkgdesc = Lot sampling for acceptance/rejection of lots
+	pkgver = 0.17.0
+	pkgrel = 0
+	url = https://github.com/jasp-stats/jaspAcceptanceSampling
+	arch = any
+	groups = r-jasp
+	groups = r-jaspextra
+	license = GPL
+	makedepends = git
+	depends = r
+	depends = r-abtest
+	depends = r-bayesfactor
+	depends = r-conting
+	depends = r-ggplot2
+	depends = r-jaspbase
+	depends = r-jaspgraphs
+	depends = r-plyr
+	depends = r-stringr
+	depends = r-vcd
+	depends = r-vcdextra
+	depends = r-acceptancesampling
+	source = git+https://github.com/jasp-stats/jaspAcceptanceSampling.git#commit=d70e1793b
+	sha256sums = SKIP
+
+pkgname = r-jaspacceptancesampling
