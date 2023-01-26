@@ -18,7 +18,14 @@ noextract=("OSM2World-${pkgver}-bin.zip")
 
 
 package() {
-  cd "${pkgdir}"
+  # create opt destination
+  dest="${pkgdir}/opt/${pkgname}"
+  install -dm644 "${dest}"
+  cd "${dest}"
+  # extract into opt
   bsdtar -xf "${srcdir}/OSM2World-${pkgver}-bin.zip" \
     --exclude "LICENSE.txt" --exclude "osm2world-windows.bat"
+  # binary symlink
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${pkgname}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
