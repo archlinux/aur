@@ -9,7 +9,7 @@ license=('GPL3')
 source=("$pkgname-$pkgver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgver/photonvision-$pkgver-linuxx64.jar")
 noextract=("$pkgname-$pkgver.jar")
 sha256sums=('82f8249888e6fc693e4116899511e294a98b9e6dfbf259dabceefb1645ee25f1')
-depends=('jre11-openjdk-headless' 'avahi' 'opencv')
+depends=('jre11-openjdk-headless' 'avahi')
 
 prepare() {
 	# pulled from https://raw.githubusercontent.com/PhotonVision/photonvision/master/scripts/install.sh
