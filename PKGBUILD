@@ -65,7 +65,13 @@ package() {
   install -Dm644 assets/icon/terminal.png $pkgdir/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
   install -Dm644 assets/wezterm.desktop $pkgdir/usr/share/applications/org.wezfurlong.wezterm.desktop
   install -Dm644 assets/wezterm.appdata.xml $pkgdir/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml
+  install -Dm644 assets/wezterm-nautilus.py $pkgdir/usr/share/nautilus-python/extensions/wezterm-nautilus.py
   install -Dm644 ../terminfo/w/wezterm "$pkgdir/usr/share/terminfo/w/wezterm"
+
+  install -Dm644 assets/shell-integration/wezterm.sh "$pkgdir/etc/profile.d/wezterm.sh"
+  install -Dm644 assets/shell-completion/bash "$pkgdir/usr/share/bash-completion/completions/wezterm"
+  install -Dm644 assets/shell-completion/zsh "$pkgdir/usr/share/zsh/site-functions/_wezterm"
+  install -Dm644 assets/shell-completion/fish "$pkgdir/usr/share/fish/completions/wezterm.fish"
 
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
