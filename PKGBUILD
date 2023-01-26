@@ -2,8 +2,8 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-_commit=f4e7cbc86e67e7bc39cf8167823fcf0d8ace9ce1 # = master 2022-05-23
-pkgver=2.0+155+gf4e7cbc
+_commit=a2ffb2810ebb387182612e3503dfe29455d4536d # = master 2022-12-15
+pkgver=2.2+13+ga2ffb28
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
@@ -24,7 +24,7 @@ options=(!makeflags)
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed 's/^Release.//;s/\([^-]*-g\)/\1/;s/-/+/g;'
+  git describe --tags | sed 's/^Release.//;s/\([^-]*-g\)/\1/;s/-/+/g;'
 }
 
 prepare() {
