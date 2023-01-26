@@ -4,15 +4,15 @@
 # Contributor: sonic414 <kevinjf at live dot in>
 
 pkgname=delaycut-git
-pkgver=v1.4.3.9.3.g7b0ab62
+pkgver=1.4.3.9.14.g9304813
 pkgrel=1
 pkgdesc="Delaycut corrects delay and is also able to cut audio files coded ac3, dts, mpa and wav. It's also able to fix CRC errors in ac3 and mpa files. (GIT Version)"
 arch=('x86_64')
 url='https://github.com/darealshinji/delaycut'
 license=('GPL3')
-depends=('qt5-base')
+depends=('qt6-base')
 makedepends=('git'
-             'qt5-tools'
+             'qt6-tools'
              )
 conflicts=('delaycut')
 provides=('delaycut')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd delaycut
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 build() {
   cd build
 
-  qmake-qt5 ../delaycut CONFIG+=Linux
+  qmake6 ../delaycut CONFIG+=Linux
   make
 }
 
