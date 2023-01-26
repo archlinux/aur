@@ -1,6 +1,6 @@
 pkgbase = atlantis
 	pkgdesc = Terraform Pull Request Automation
-	pkgver = 0.19.8
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://github.com/runatlantis/atlantis
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = atlantis
 	license = APACHE20
 	makedepends = go
 	depends = glibc
-	source = atlantis-0.19.8.tar.gz::https://github.com/runatlantis/atlantis/archive/v0.19.8.tar.gz
-	sha256sums = 12f2e3d74264b4457d0a7766f8b4f580984a025fcdb3d443b8aad85f036994d4
+	source = atlantis-0.22.3.tar.gz::https://github.com/runatlantis/atlantis/archive/v0.22.3.tar.gz
+	sha256sums = 28bcf3cfefafa31927866e7d56e307851712d7876f6df68bc5c87c4ae22bc885
 
 pkgname = atlantis
