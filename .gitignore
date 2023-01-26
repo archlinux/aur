@@ -1,0 +1,5 @@
+pkg/
+src/
+60-openrgb.rules
+openrgb-udev-rules*
+!openrgb-udev-rules.install
