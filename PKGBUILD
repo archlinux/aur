@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net> 
 
 pkgname='cinnamon-applet-desktop-capture-git'
-pkgver=r134.5ef053f
+pkgver=2.0.0.r135.d404b6e
 _pkgver=5.6
 pkgrel=1
 pkgdesc='A comprehensive screenshot and screencasting applet for Cinnamon.'
@@ -19,7 +19,7 @@ _appletdir="usr/share/cinnamon/applets/${_appletname}"
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
