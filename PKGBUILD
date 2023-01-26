@@ -1,4 +1,4 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Matteo Salonia <saloniamatteo[at]protonmail[dot]com> 
 # Contributor: Pablo Arias <pabloariasal[at]gmail[dot]com>
 # Contributor: John Jenkins <twodopeshaggy[at]gmail[dot]com>
@@ -6,7 +6,7 @@
 pkgname=ddgr-git
 _pkgname="${pkgname%-git}"
 pkgver=2.1.r294.fedc902
-pkgrel=1
+pkgrel=2
 pkgdesc="DuckDuckGo from the terminal (git version)"
 arch=('any')
 url="https://github.com/jarun/ddgr"
