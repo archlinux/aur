@@ -1,11 +1,11 @@
 pkgname=gimp-devel-stripped
 pkgver=2.99.14
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Image Manipulation Program (development version, stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data' 'appstream-glib')
+depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-glib' 'poppler-data' 'appstream-glib' 'libgexiv2')
 makedepends=('meson' 'intltool' 'iso-codes' 'gobject-introspection' 'libxslt' 'libxmu')
 options=('!docs')
 
@@ -31,7 +31,6 @@ prepare() {
 
 build() {
     local options=(
-        --buildtype=release
         -Denable-console-bin=false
         -Dcheck-update=no
         -Dlibunwind=false
@@ -61,7 +60,9 @@ build() {
         -Dpython=false
     )
 
-    arch-meson "${options[@]}" "build" "${_snapshot}"
+    arch-meson --buildtype=release \
+        "${options[@]}" "build" "${_snapshot}"
+
     meson compile -C "build"
 }
 
