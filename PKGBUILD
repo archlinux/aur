@@ -12,7 +12,7 @@ depends=('networkmanager' 'nm-connection-editor' 'openfortivpn' 'libsecret')
 makedepends=('git' 'intltool' 'python' 'xorgproto' 'pkg-config' 'appstream-glib')
 provides=('networkmanager-fortisslvpn')
 conflicts=('networkmanager-fortisslvpn')
-source=('network-manager-fortisslvpn::git+https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn.git')
+source=('network-manager-fortisslvpn::git+https://gitlab.gnome.org/GNOME/NetworkManager-fortisslvpn.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
