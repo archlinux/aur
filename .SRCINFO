@@ -1,12 +1,12 @@
 pkgbase = librewolf-extension-localcdn
 	pkgdesc = LocalCDN addon for Firefox
-	pkgver = 2.6.36
+	pkgver = 2.6.45
 	pkgrel = 1
 	url = https://addons.mozilla.org/de/firefox/addon/localcdn-fork-of-decentraleyes/
 	arch = any
 	groups = librewolf-addons
 	license = GPLV3
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/4052425/localcdn_fork_of_decentraleyes-2.6.36.xpi
-	md5sums = c6d271b8b4315b2f1f560d58dc5fa8ae
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/4059496/localcdn_fork_of_decentraleyes-2.6.45.xpi
+	md5sums = 257cd26c668fa1f50233dcade06bade6
 
 pkgname = librewolf-extension-localcdn
