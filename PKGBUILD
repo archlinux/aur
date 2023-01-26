@@ -49,7 +49,7 @@ depends+=(libfreetype.so
           libicuuc.so)
 optdepends=('libertinus-font: default math font'
             'noto-fonts-cjk: default font for tate enabled classes'
-            'ttf-hack: defaualt mono font')
+            'ttf-hack: default mono font')
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")

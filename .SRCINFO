@@ -44,7 +44,7 @@ pkgbase = sile-luajit
 	depends = libicuuc.so
 	optdepends = libertinus-font: default math font
 	optdepends = noto-fonts-cjk: default font for tate enabled classes
-	optdepends = ttf-hack: defaualt mono font
+	optdepends = ttf-hack: default mono font
 	provides = libtexpdf.so
 	provides = sile=0.14.8
 	conflicts = sile
