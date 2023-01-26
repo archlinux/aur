@@ -1,7 +1,7 @@
 pkgbase = swayosd-git
 	pkgdesc = A GTK based on screen display for keyboard shortcuts like caps-lock and volume
 	pkgver = r9.b7b4e3d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ErikReider/SwayOSD
 	arch = i686
 	arch = x86_64

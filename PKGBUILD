@@ -1,8 +1,9 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=swayosd-git
 pkgver=r9.b7b4e3d
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based on screen display for keyboard shortcuts like caps-lock and volume"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ErikReider/SwayOSD"
