@@ -1,0 +1,25 @@
+From ba4170c2ad2d34855fe5a27a9ece3975d36331b1 Mon Sep 17 00:00:00 2001
+From: ahmedmoselhi <ahmedmoselhi55@gmail.com>
+Date: Wed, 25 Jan 2023 17:03:56 +0200
+Subject: [PATCH] change default theme
+
+---
+ data/org.cinnamon.gschema.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.cinnamon.gschema.xml b/data/org.cinnamon.gschema.xml
+index bfb8530a0..cf932ac9a 100644
+--- a/data/org.cinnamon.gschema.xml
++++ b/data/org.cinnamon.gschema.xml
+@@ -588,7 +588,7 @@
+   <schema id="org.cinnamon.theme" path="/org/cinnamon/theme/"
+         gettext-domain="@GETTEXT_PACKAGE@">
+     <key name="name" type="s">
+-      <default>""</default>
++      <default>"cinnamon"</default>
+       <summary>Theme name</summary>
+       <description>
+        The name of the theme
+-- 
+2.39.1
+
