@@ -1,47 +1,67 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Submitter: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
-# Maintainer: Andrés J. Díaz <ajdiaz@ajdiaz.me>
+# Contributor: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 
-_pkgname=olm
-pkgname=libolm-git
-pkgver=2.2.2.r6.g001dc1e
+pkgname=('libolm-git' 'python-olm-git')
+_pkg=olm
+pkgver=3.2.14.r2.g0eb4550
 pkgrel=1
 pkgdesc='An implementation of a well known cryptographic ratchet in C++'
-arch=('i686' 'x86_64' 'armv7h')
-url="https://matrix.org/git/olm/"
+arch=('x86_64')
+url="https://gitlab.matrix.org/matrix-org/olm"
 license=('Apache')
-depends=('gcc-libs')
-makedepends=('git')
-conflicts=('libolm')
-provides=('libolm')
-source=("$_pkgname::git+https://matrix.org/git/olm")
+makedepends=(
+  'cmake'
+  'git'
+  'python-build'
+  'python-cffi'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-aspectlib' 'python-future')
+source=("$_pkg::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$_pkg" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make
+  cd "$_pkg"
+  cmake \
+    -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev
+  cmake --build build
+
+  cd python
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  local flags='' major='' minor='' patch=''
-  major="${pkgver%%.*}"
-  minor="${pkgver#${major}.}"; minor="${minor%%.*}"
-  patch="${pkgver#${major}.}"; patch="${patch#${minor},}"; patch="${patch%%.*}"
-  flags+="-O2 -Iinclude -Itests/include -Ilib "
-  flags+="-DOLMLIB_VERSION_MAJOR=${major} "
-  flags+="-DOLMLIB_VERSION_MINOR=${minor} "
-  flags+="-DOLMLIB_VERSION_PATCH=${patch} "
-  cd "$srcdir/$_pkgname"
-  make test CPPFLAGS+="$flags" DEBUG_OPTIMIZE_FLAGS=''
+  cd "$_pkg"
+  ctest --test-dir build/tests --output-on-failure
+  cd python
+  PYTHONPATH="$(find build -name 'lib.*' -type d -print)" LD_LIBRARY_PATH="../build" pytest -x --disable-warnings
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+package_libolm-git() {
+  depends=('gcc-libs')
+  provides=('libolm' 'libolm.so')
+  conflicts=('libolm')
+
+  cd "$_pkg"
+  DESTDIR="$pkgdir" cmake --install build
+}
+
+package_python-olm-git() {
+  depends=('libolm.so' 'python-cffi' 'python-future')
+  provides=('python-olm')
+  conflicts=('python-olm')
+
+  cd "$_pkg/python"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sts=2 sw=2 et:
