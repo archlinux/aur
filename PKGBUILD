@@ -1,7 +1,7 @@
 pkgname=utena-launcher
 _pkgname=launchre
-pkgver=0.3.2
-pkgrel=3.0
+pkgver=0.3.3
+pkgrel=1.0
 pkgdesc='launcher make by slint, hope I will get my revolution'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Decodetalkers/launchre'
