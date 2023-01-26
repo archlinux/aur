@@ -5,10 +5,13 @@ pkgbase = craftos-pc-bin
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	license = MIT
+	makedepends = unzip
 	provides = craftos-pc
 	conflicts = craftos-pc
 	noextract = CraftOS-PC.x86_64.AppImage
+	source = craftos2-2.7.2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.7.2.tar.gz
 	source = CraftOS-PC_2.7.2.AppImage::https://github.com/MCJack123/craftos2/releases/download/v2.7.2/CraftOS-PC.x86_64.AppImage
+	sha256sums = 3ea7fc37c056b4daa6872651935fcfc14cc3764fd088720971019e5fb7984ab8
 	sha256sums = 1136e07e7e667337521544642d9c83ae50ab47694682461c109d6076248cc0f4
 
 pkgname = craftos-pc-bin
