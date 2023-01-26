@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='superglue'
-pkgver='0.0.3'
+pkgver='0.0.4'
 pkgrel='1'
 pkgdesc='Tool for write a small file to the beginning of a large file in place'
 arch=("x86_64")
