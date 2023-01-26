@@ -2,7 +2,7 @@
 
 pkgname=sophus
 pkgver=22.10
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of Lie Groups using Eigen"
 arch=('x86_64' 'i686')
 url="https://github.com/strasdat/Sophus"
@@ -20,7 +20,7 @@ prepare() {
   cd "Sophus-$pkgver"
 
   # Fix missing SOPHUS_FUNC in QuaternionProduct,so3.hpp
-  # https://hub.nuaa.cf/strasdat/Sophus/commit/1cba0d82cd224c7b3694d601f8c9cddc0876b42b
+  # https://github.com/strasdat/Sophus/commit/1cba0d82cd224c7b3694d601f8c9cddc0876b42b
   patch -p1 < ../sophus-fix-missing-sophus_func.patch
 }
 
@@ -44,5 +44,3 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-
-# vim:set ts=2 sw=2 et:
