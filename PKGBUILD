@@ -2,7 +2,7 @@
 
 java_=11
 pkgname="espresso-jdk${java_}-bin"
-pkgver=22.3.0
+pkgver=22.3.1
 pkgrel=1
 pkgdesc="GraalVM-based Java implementation as a Truffle language, Java ${java_} version"
 arch=('x86_64'
@@ -12,8 +12,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/espresso-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/espresso-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('5aeeba0446dc8d6d7d778874f1a715e1999290e7a56abe8116cbf8980ded83b5')
-sha256sums_aarch64=('1eef2bb724c2adadd3d12b1d92b4d9881c4b8d4943a83a9317629e2630b5ef6c')
+sha256sums_x86_64=('1de4643d5b401058b6dd8fe422c342efd4e78a37040a38c852c2e21e0ee721fc')
+sha256sums_aarch64=('231dfda862c0d1a987c146fccaa5805c593d18f027f46dc23fec5ac03fa75cd6')
 
 package() {
     local file eq permissions mode name target
