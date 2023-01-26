@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-axi-git
-pkgver=0.1.18.r0.g7606d7d
+pkgver=0.1.20.r0.gf3a7652
 pkgrel=1
 pkgdesc="AXI, AXI lite, and AXI stream modules for cocotb"
 arch=('any')
