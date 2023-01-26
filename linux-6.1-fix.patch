@@ -1,0 +1,125 @@
+From ed3866410d6bde7cf176df3c75122a13143d0c40 Mon Sep 17 00:00:00 2001
+From: Ivan Kulagin <ivan_home24@mail.ru>
+Date: Sat, 24 Dec 2022 21:11:15 +0000
+Subject: [PATCH] Fix build for Linux 6.1 and bump version
+
+---
+ Makefile.dkms                     |  4 ++--
+ ddcci-backlight/Makefile          |  2 +-
+ ddcci-backlight/ddcci-backlight.c |  2 +-
+ ddcci/Makefile                    |  2 +-
+ ddcci/ddcci.c                     | 13 ++++++++++++-
+ dkms.conf                         |  2 +-
+ 6 files changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.dkms b/Makefile.dkms
+index f2888d8..c7fad85 100644
+--- a/Makefile.dkms
++++ b/Makefile.dkms
+@@ -16,7 +16,7 @@
+ # along with ddcci-driver-linux.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ PACKAGE_NAME := ddcci
+-PACKAGE_VERSION := 0.4.2
++PACKAGE_VERSION := 0.4.3
+ 
+ install:
+ 	dkms add .
+@@ -28,7 +28,7 @@ uninstall:
+ 	rm -r /usr/src/$(PACKAGE_NAME)-$(PACKAGE_VERSION) || true
+ 
+ load:
+-	@test -n "$$(dkms status ddcci/0.4.2)" || { echo 'Please run `make -f Makefile.dkms install` first.'; false; }
++	@test -n "$$(dkms status ddcci/0.4.3)" || { echo 'Please run `make -f Makefile.dkms install` first.'; false; }
+ 	modprobe ddcci
+ 
+ unload:
+diff --git a/ddcci-backlight/Makefile b/ddcci-backlight/Makefile
+index de61580..fcdc4da 100755
+--- a/ddcci-backlight/Makefile
++++ b/ddcci-backlight/Makefile
+@@ -16,7 +16,7 @@
+ # along with ddcci-driver-linux.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ MODULE_NAME := ddcci-backlight
+-MODULE_VERSION := 0.4.2
++MODULE_VERSION := 0.4.3
+ 
+ KVER := $(shell uname -r)
+ LIB_MODULES_PATH := /lib/modules
+diff --git a/ddcci-backlight/ddcci-backlight.c b/ddcci-backlight/ddcci-backlight.c
+index 7a98522..7a4cad8 100644
+--- a/ddcci-backlight/ddcci-backlight.c
++++ b/ddcci-backlight/ddcci-backlight.c
+@@ -407,7 +407,7 @@ MODULE_PARM_DESC(convenience_symlink, "add convenience symlink \"ddcci_backlight
+ 
+ MODULE_AUTHOR("Christoph Grenz");
+ MODULE_DESCRIPTION("DDC/CI generic monitor backlight driver");
+-MODULE_VERSION("0.4.2");
++MODULE_VERSION("0.4.3");
+ MODULE_LICENSE("GPL");
+ 
+ MODULE_ALIAS("ddcci:monitor-*-*-*-*");
+diff --git a/ddcci/Makefile b/ddcci/Makefile
+index 7503496..987fb63 100755
+--- a/ddcci/Makefile
++++ b/ddcci/Makefile
+@@ -16,7 +16,7 @@
+ # along with ddcci-driver-linux.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ MODULE_NAME := ddcci
+-MODULE_VERSION := 0.4.2
++MODULE_VERSION := 0.4.3
+ 
+ KVER := $(shell uname -r)
+ LIB_MODULES_PATH := /lib/modules
+diff --git a/ddcci/ddcci.c b/ddcci/ddcci.c
+index 586b6e2..ea76352 100644
+--- a/ddcci/ddcci.c
++++ b/ddcci/ddcci.c
+@@ -1785,6 +1785,13 @@ static int ddcci_remove(struct i2c_client *client)
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++static void ddcci_remove_void(struct i2c_client *client)
++{
++	ddcci_remove(client);
++}
++#endif
++
+ /*
+  * I2C driver device identification table.
+  */
+@@ -1806,7 +1813,11 @@ static struct i2c_driver ddcci_driver = {
+ 
+ 	.id_table	= ddcci_idtable,
+ 	.probe		= ddcci_probe,
++	#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0)
++	.remove		= ddcci_remove_void,
++	#else
+ 	.remove		= ddcci_remove,
++	#endif
+ 	.class		= I2C_CLASS_DDC,
+ 	.detect		= ddcci_detect,
+ 	.address_list	= I2C_ADDRS(
+@@ -1891,5 +1902,5 @@ MODULE_PARM_DESC(autoprobe_addrs, "internal dependent device addresses to autopr
+ /* Module description */
+ MODULE_AUTHOR("Christoph Grenz");
+ MODULE_DESCRIPTION("DDC/CI bus driver");
+-MODULE_VERSION("0.4.2");
++MODULE_VERSION("0.4.3");
+ MODULE_LICENSE("GPL");
+diff --git a/dkms.conf b/dkms.conf
+index f40dfbf..61cfae8 100644
+--- a/dkms.conf
++++ b/dkms.conf
+@@ -1,4 +1,4 @@
+-PACKAGE_VERSION="0.4.2"
++PACKAGE_VERSION="0.4.3"
+ PACKAGE_NAME="ddcci"
+ CLEAN="make clean"
+ BUILT_MODULE_NAME[0]="ddcci"
+-- 
+GitLab
+
