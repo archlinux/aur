@@ -1,7 +1,7 @@
 # Maintainer: Evann DREUMONT <hello(at)evann(dot)tech>
 
 pkgname=newtex-git
-pkgver=r7.2248d72
+pkgver=r9.a35a4ee
 pkgrel=1
 pkgdesc='A modern LaTeX class'
 arch=('any')
