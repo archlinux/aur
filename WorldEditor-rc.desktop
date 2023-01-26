@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, this is the Release Candidate usable for X-Plane 12.
+Comment=WorldEditor (WED) is a CAD-like graphic editor that lets you create custom airport layouts. It is designed for X-Plane, this is the Release Candidate usable for X-Plane 12.
+Exec=WED-rc
+GenericName[en_US]=Airport Layout Creator - Release Candidate
+GenericName=Airport Layout Creator - Release Candidate
+Icon=WorldEditor-rc
+MimeType=
+Name[en_US]=WorldEditor-rc
+Name=WorldEditor-rc
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Categories=Game;Simulation;
