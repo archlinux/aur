@@ -1,11 +1,11 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Matrix <thysupremematrix a_t tuta d_o_t io>
 # Contributor: Yamada Hayao <hayao@fascode.net>
 
 pkgname=gnome-shell-extension-desktop-icons-ng
 _pkgname=desktop-icons-ng
 pkgver=47
-pkgrel=5
+pkgrel=6
 pkgdesc="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://gitlab.com/rastersoft/desktop-icons-ng"
