@@ -1,9 +1,9 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=gitmux-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.7.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/arl/gitmux"
