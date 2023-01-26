@@ -2,8 +2,8 @@
 
 pkgname=cemu
 pkgver=2.0.274
-pkgrel=1
-pkgdesc='Software to emulate Wii U games and applications on PC (with cutting edge Linux patches)'
+pkgrel=2
+pkgdesc='Software to emulate Wii U games and applications on PC'
 arch=(x86_64)
 url=https://cemu.info
 license=(MPL2)
@@ -13,12 +13,11 @@ depends=(
 	'boost-libs>=1.79' 'fmt>=9.1' 'libzip>=1.9.2' 'libpng>=1.6.37' 'pugixml>=1.12.1' 'sdl2>=2.0.22' 'wxwidgets-gtk3>=3.2' 'wayland'
 )
 makedepends=(
-	'cmake>=3.21.1' git
-	# clang
-	$([[ ${CC-}+${CXX-} == *clang* ]] && echo 'clang>=12 llvm>=12' || true)
+	# build setup
+	git 'cmake>=3.21.1' 'clang>=12' 'llvm>=12' ninja
 	# unbundled vcpkg
 	'boost>=1.79' 'glslang>=11.8' 'glm>=0.9.9.8' rapidjson
-	# cemu
+	# direct cemu dependencies
 	nasm 'vulkan-headers>=1.3.225'
 	# wxwidgets
 	glu
@@ -89,22 +88,23 @@ prepare() {
 }
 
 build() {
-	# prefer clang (faster)
-	if [[ $(clang --version 2> /dev/null | sed -E '1!d;s/^clang version ([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]] &&
-	   [[ $(llvm-config --version 2> /dev/null | sed -E 's/^([0-9]+)\.[0-9]+\.[0-9]+$/\1/') -ge 12 ]]; then
-		[[ -z $CC  ]] && export CC=$(which clang)
-		[[ -z $CXX ]] && export CXX=$(which clang++)
-	fi
+	# Upstream prefers a build with clang+llvm and Ninja.
 
 	cd Cemu
 	rm -f build/CMakeCache.txt
-	cmake -B build \
-	      $(which ninja &> /dev/null && echo '-G Ninja') \
-	      -DCMAKE_CXX_FLAGS="$CXXFLAGS -w" -Wno-dev \
-	      -DENABLE_VCPKG=OFF \
-	      -DPORTABLE=OFF \
-	      -DCMAKE_BUILD_TYPE=Release
-	$(which ninja 2> /dev/null || which make) -C build $([[ "${MAKEFLAGS-}" == *-j* ]] && echo "$MAKEFLAGS" || echo -j $(nproc))
+	local cmake_args=(
+		-B build
+		-G Ninja
+		-Wno-dev
+		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_C_COMPILER=clang
+		-DCMAKE_CXX_COMPILER=clang++
+		-DCMAKE_CXX_FLAGS="$CXXFLAGS -w"
+		-DENABLE_VCPKG=OFF
+		-DPORTABLE=OFF
+	)
+	cmake "${cmake_args[@]}"
+	cmake --build build
 }
 
 package() {
