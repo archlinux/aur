@@ -3,7 +3,7 @@
 _pkgname=AcceptanceSampling
 _pkgver=1.0-8
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='Creation and Evaluation of Acceptance Sampling Plans'
 arch=('any')
