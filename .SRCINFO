@@ -15,7 +15,7 @@ pkgbase = electronwmd-appimage
 	source = electronwmd.desktop.patch
 	source = electronwmd.sh
 	sha256sums = 4b1be7a8dd8b524969228d0092602b7e00994714bc7d40cdddb4a5016a3b27e7
-	sha256sums = 591c38d58d2f1f9a63252ff95917bdfff66f4c9684940f20e958194ee3cac0eb
+	sha256sums = 67f9612250ea09c0760bf31b83cfb6dd97de21c14aa047ad3092d66b222977fd
 	sha256sums = 17538d248d36555d08227cf28c0e3436d92c0ed00f317dd9a1833a3cc847a530
 
 pkgname = electronwmd-appimage
