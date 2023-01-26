@@ -1,6 +1,6 @@
 pkgbase = graalpy-jdk17-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 17 version
-	pkgver = 22.3.0
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = graalpy-jdk17-bin
 	depends = libxcrypt-compat
 	depends = zlib
 	replaces = graalpython-jdk17-bin
-	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.0/python-installable-svm-java17-linux-amd64-22.3.0.jar
-	sha256sums_x86_64 = a7f53fe6a2cd870b18bd52bb627cb5a78a61a43be86c1b62e7456799bc4f1eb7
-	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.0/python-installable-svm-java17-linux-aarch64-22.3.0.jar
-	sha256sums_aarch64 = 1039134a4bbea88a7bd7b6d374755e2c02a4101ee6f8d89e624335bf9e000efc
+	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.1/python-installable-svm-java17-linux-amd64-22.3.1.jar
+	sha256sums_x86_64 = e1502ebb6701b8456b242c1f92f64a79af9913bd4b6c215143a96e083921ea5d
+	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/vm-22.3.1/python-installable-svm-java17-linux-aarch64-22.3.1.jar
+	sha256sums_aarch64 = 0cd7968118f91c2a4e22845998e362d7942242f7281f40feebd6e2f1792efd3d
 
 pkgname = graalpy-jdk17-bin
