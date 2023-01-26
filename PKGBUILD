@@ -1,6 +1,6 @@
 # Maintainer: <me at auoeke dot net>
 _get() {
-    curl https://api.github.com/repos/lapce/lapce/releases/tags/nightly -s | awk -F '"' '/"'"$1"'":/{print $4}'
+    curl -s https://api.github.com/repos/lapce/lapce/releases/tags/nightly | awk -F '"' /\"$1'":/{print $4}'
 }
 
 pkgname=lapce-nightly-bin
@@ -25,17 +25,17 @@ source=(
     https://raw.githubusercontent.com/lapce/lapce/$(_get target_commitish)/extra/{images/logo.png,linux/dev.lapce.lapce.{desktop,metainfo.xml}}
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    SKIP
+    SKIP
+    SKIP
+    SKIP
 )
 
 prepare() {
     sed -i dev.lapce.lapce.desktop \
         -e "s/Name=Lapce/Name=Lapce nightly/" \
         -e "s/Exec=lapce/Exec=lapce-nightly/"
-    sed -i "s/dev\.lapce\.lapce/dev.lapce.lapce-nightly/" dev.lapce.lapce.desktop dev.lapce.lapce.metainfo.xml
+    sed -i 's/dev\.lapce\.lapce/dev.lapce.lapce-nightly/' dev.lapce.lapce.{desktop,metainfo.xml}
 }
 
 check() {
