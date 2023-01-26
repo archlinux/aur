@@ -1,0 +1,13 @@
+pkgbase = intel_backlight_brightness_step
+	pkgdesc = Fix tiny brightness step for fn keys on intel-core laptops
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/coffebar/intel_backlight_brightness_step
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/coffebar/intel_backlight_brightness_step#commit=21db97de589a24b233946105715498cffd327ce6
+	sha256sums = SKIP
+
+pkgname = intel_backlight_brightness_step
