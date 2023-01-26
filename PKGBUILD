@@ -1,9 +1,9 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=lowcharts-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to draw low-resolution graphs in terminal"
 arch=('x86_64' 'i686')
 url="https://github.com/juan-leon/lowcharts"
