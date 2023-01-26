@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk17-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 17 version)
-	pkgver = 22.3.0
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = truffleruby-jdk17-bin
 	license = LGPL2.1
 	depends = jdk17-graalvm-bin
 	depends = graal-llvm-jdk17-bin
-	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.0/ruby-installable-svm-java17-linux-amd64-22.3.0.jar
-	sha256sums_x86_64 = efc923ee7966d9a2aae0314cbe1186749ca273cfb1cdebd8eadba2759bfe750b
-	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.0/ruby-installable-svm-java17-linux-aarch64-22.3.0.jar
-	sha256sums_aarch64 = caa5565e537c2496a1f8622c3c6702f786c8dd6ef9b86eb71f6e062fb903ca06
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.1/ruby-installable-svm-java17-linux-amd64-22.3.1.jar
+	sha256sums_x86_64 = e1ca9d1280d0c3b6cb1bb34a58adc432668e0daad504799227827ed8f00560c5
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-22.3.1/ruby-installable-svm-java17-linux-aarch64-22.3.1.jar
+	sha256sums_aarch64 = 7f694e7e8fa57ed21576593f80f07f3c78154a5f2b058ee176778eeb13e1014e
 
 pkgname = truffleruby-jdk17-bin
