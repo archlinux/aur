@@ -1,0 +1,5 @@
+src/
+pkg/
+openvpn-dco-dkms-*.pkg.tar.zst
+ovpn-dco-*.tar.gz
+
