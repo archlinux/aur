@@ -1,9 +1,9 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.2.1r2
-pkgrel=3
+pkgrel=4
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
