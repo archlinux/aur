@@ -1,4 +1,4 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Jared Meeker <jared[at]meekers[dot]org>
 # Contributor: Dimitris Kiziridis <ragouel[at]outlook[dot]com>
 
@@ -6,7 +6,7 @@ pkgname=dnote-cli-bin
 _pkgname="${pkgname%-bin}"
 _shortname="${_pkgname%-cli}"
 pkgver=0.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple command line notebook for programmers"
 arch=('x86_64' 'aarch64')
 url="https://www.getdnote.com/"
