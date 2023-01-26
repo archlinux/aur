@@ -1,7 +1,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=cargo-shuttle
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Cargo command for the shuttle platform (https://www.shuttle.rs/)'
 url='https://www.shuttle.rs/'
@@ -12,9 +12,9 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate"
   'https://raw.githubusercontent.com/shuttle-hq/shuttle/main/LICENSE'
 )
-sha512sums=('38e9d00430e2f5089ee1d1a23632371d939ec5179810c4390ad474c22fc21731333c93d2000a1721d5b41c01aac7e4ad76fd50733c93caadc72c2834085f1348'
+sha512sums=('8a9dce4c59f159d19278e0bcb2b6312b08112c2f0a89da1dc271d1f840575bd128e6cf0cba42757eb410ee9400e3049a0e80f17eea00f2d4e76a403edb724383'
             '1eec1f13b3e0da9785682f4513321987163203e64e4bd934d12eb633ce52c0dfe9515c5f7b92af16b62a942bd4dcf3712edfba966c5b741496a027cbcbd57066')
-b2sums=('f71e15f2268b901a283f1adcc8de5fb59df9d2b31f937cd2d4bf6b88d014fb6a1a63ecba38ebc0ee81bb6669ba3f9c6836f0d74ad0257ddc7a0bcbe4935e98c6'
+b2sums=('0d2ad024d0a907f6ab4599cad8e71318d3b09cde677e4bda7511a4e5094b8c74265a3e9cdb7a941058c1dedb1e2992479844697e4fe95dba9934c99bd917db64'
         '165aa24273d58a1555142e8aa84076a8df9662b8fe0637a2c9b0c096b650d5ee9254075376a19cbf35fce3f21524b7d636f6b50b56c2b360a42a65854996df93')
 
 prepare() {
