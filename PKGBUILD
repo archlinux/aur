@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=arch-update
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An update notifier/applier that assists you with important pre/post update tasks."
 arch=('any')
 url="https://github.com/Antiz96/arch-update"
