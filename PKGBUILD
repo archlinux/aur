@@ -16,8 +16,6 @@ optdepends=('ttf-roboto: primary font face defined'
             'cantarell-fonts: tertiary font face defined')
 source=("$_pkgname::git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
-provides=($_pkgname)
-conflicts=($_pkgname)
 
 pkgver() {
     cd "$_pkgname"
