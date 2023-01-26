@@ -1,6 +1,6 @@
 pkgbase = o-bin
 	pkgdesc = Text editor, IDE and gdb frontend (CLI only)
-	pkgver = 2.58.0
+	pkgver = 2.59.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = aarch64
@@ -51,8 +51,8 @@ pkgbase = o-bin
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
 	conflicts = o
-	source = https://github.com/xyproto/o/releases/download/v2.58.0/o-2.58.0-linux_x86_64_static.tar.xz
-	sha256sums = 0e4d87d0f1b3ee281fd56d6424c3592429102fbfb3d16481c4b102c625a994b7
-	b2sums = 913ccaef53bf943889d7920b5f0b730675fc5f9fab71f07d3b732b86a6cfcce5aee70e879728ef347e99dcff26ae394188e9103cb18cc34abf27b123d6d78c85
+	source = https://github.com/xyproto/o/releases/download/v2.59.0/o-2.59.0-linux_x86_64_static.tar.xz
+	sha256sums = 31d65f283c4f817b4314990f0d6cf62053e827d1711596148c71dc0489dc652c
+	b2sums = 04a0059e3206d4fe12324d8b2cc87b58d16923f0fdd845966dfd4e3396899aab045bfd4d8961739cd1aa84d8cb35cc4c674001e2c9a06f05edc1ad175e5546ca
 
 pkgname = o-bin

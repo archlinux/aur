@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.58.0
+pkgver=2.59.0
 pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
@@ -50,17 +50,21 @@ optdepends=('asciidoctor: for writing man pages'
             'vlang: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('0e4d87d0f1b3ee281fd56d6424c3592429102fbfb3d16481c4b102c625a994b7')
-b2sums=('913ccaef53bf943889d7920b5f0b730675fc5f9fab71f07d3b732b86a6cfcce5aee70e879728ef347e99dcff26ae394188e9103cb18cc34abf27b123d6d78c85')
+sha256sums=('31d65f283c4f817b4314990f0d6cf62053e827d1711596148c71dc0489dc652c')
+b2sums=('04a0059e3206d4fe12324d8b2cc87b58d16923f0fdd845966dfd4e3396899aab045bfd4d8961739cd1aa84d8cb35cc4c674001e2c9a06f05edc1ad175e5546ca')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
+
   install -Dm755 o "$pkgdir/usr/bin/o"
   install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/edith"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/vs"
+
+  # Recommended symlinks for o
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/li"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/sw"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/edi"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/vs"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
 }
