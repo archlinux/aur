@@ -1,7 +1,7 @@
 pkgbase = boo-sddm-git
 	pkgdesc = A dark SDDM theme based on Corners
 	pkgver = r33.3377e4c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PROxZIMA/boo-sddm
 	arch = any
 	license = GPL3
