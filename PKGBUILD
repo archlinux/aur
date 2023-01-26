@@ -1,9 +1,9 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=malachite
 _pkgname=mlc
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Tool for packaging and maintaining pacman repositories'
 arch=('x86_64' 'aarch64')
 url="https://git.getcryst.al/crystal/software/${pkgname}"
@@ -20,6 +20,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-v${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
