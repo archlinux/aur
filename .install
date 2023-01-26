@@ -1,0 +1,3 @@
+post_install() {
+	echo "Edit systemwide configuration in /etc/speedrun.conf or user configuration in $XDG_CONFIG_HOME/speedrun/speedrun.conf"
+}

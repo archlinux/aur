@@ -1,0 +1,15 @@
+pkgbase = speedrun
+	pkgdesc = Run your games extra fast with speedrun
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zeroxoneafour/speedrun
+	install = .install
+	arch = any
+	license = MIT
+	optdepends = mangohud: mangohud support
+	optdepends = gamemode: gamemoderun support
+	optdepends = nvidia-prime: prime-run support
+	source = speedrun::git+https://github.com/zeroxoneafour/speedrun
+	sha256sums = SKIP
+
+pkgname = speedrun
