@@ -1,11 +1,10 @@
 # Maintainer Evgeniy Dombek <edombek@yandex.ru>
 
 pkgname=python-pyindi-git
-pkgver=v1.9.1.7.gc05c7a4
+pkgver=v1.9
 pkgrel=1
 pkgdesc="An INDI Client Python API, auto-generated from the official C++ API using SWIG."
-url="https://siril.org/tutorials/pysiril/"
-license=('custom')
+license=('GPL3')
 source=('git+https://github.com/indilib/pyindi-client')
 arch=('x86_64')
 md5sums=('SKIP')
