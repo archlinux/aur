@@ -1,36 +1,43 @@
-# Maintainer: Marc-Olivier Barre <mobarre-archlinux@snarchi.io>
-# Maintainer: Sebastian Baberowski <sebastian@baberowski.com>
+# Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 
-pkgname=libindi-eqmod
-pkgver=1.9.8
+partyname=eqmod
+_partyname=EQMOD
+pkgname=libindi-$partyname-git
+pkgver=v1.9.9.36.gf0e823d7
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: EQMod"
-url="http://www.indilib.org/index.php?title=Main_Page"
+url="http://www.indilib.org/index.php"
 license=(GPL3)
-arch=(i686 x86_64)
-depends=(libindi=${pkgver})
+arch=(x86_64)
+depends=(libindi)
 makedepends=(cmake)
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("a222a22ca4edae1816255e3851cfdb91efff557378021a44ca05d672410fc81e")
+provides=(libindi-$partyname)
+conflicts=(libindi-$partyname)
+
+source=('git+https://github.com/indilib/indi-3rdparty')
+sha512sums=('SKIP')
+options=("staticlibs")
+
+pkgver() {
+  cd "indi-3rdparty"
+  git describe --long --tags | sed 's/-/./;s/-/./'
+}
 
 prepare() {
-  mkdir -p build
-  cd  indi-3rdparty-${pkgver}
-
   #set all to off by default
-  sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' CMakeLists.txt
+  sed -i -e '/option(WITH_.*On)$/s/ On)$/ Off)/' indi-3rdparty/CMakeLists.txt
 }
 
 build() {
-  cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cmake -B build -S indi-3rdparty \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_EQMOD=On \
-    ../indi-3rdparty-${pkgver}
-  make
+    -DWITH_$_partyname=On \
+    -DUDEVRULES_INSTALL_DIR=/usr/lib/udev/rules.d \
+    -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects -Wp,-U_GLIBCXX_ASSERTIONS"
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
