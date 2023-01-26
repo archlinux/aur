@@ -1,7 +1,7 @@
 pkgbase = sapling-scm-bin
 	pkgdesc = Sapling SCM is a cross-platform, highly scalable, Git-compatible source control system.
-	pkgver = 0.2.20221222.152408.ha6a66d09
-	pkgrel = 2
+	pkgver = 0.2.20230124.180750.hf8cd450a
+	pkgrel = 1
 	epoch = 1
 	url = https://sapling-scm.com/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sapling-scm-bin
 	provides = sapling-scm
 	conflicts = sapling-scm
 	options = !strip
-	source = https://github.com/facebook/sapling/releases/download/0.2.20221222-152408-ha6a66d09/sapling_0.2.20221222-152408-ha6a66d09_amd64.Ubuntu22.04.deb
-	sha256sums = 50b802c5cca98505fd900171ced6cb8f5d24c8dc307d5206f1b61cdc30cc114c
+	source = https://github.com/facebook/sapling/releases/download/0.2.20230124-180750-hf8cd450a/sapling_0.2.20230124-180750-hf8cd450a_amd64.Ubuntu22.04.deb
+	sha256sums = 6d20686c4fa713ae861ab84728a162c6f750c8fe149d2c8a717601df0ed163ab
 
 pkgname = sapling-scm-bin
