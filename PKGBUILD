@@ -2,7 +2,7 @@
 pkgname=upgrade
 pkgver=0.2.0
 pkgrel=2
-pkgdesc='Simplify system upgrades'
+pkgdesc='Automate system upgrades'
 url='https://github.com/dnut/upgrade'
 source=("git+https://github.com/dnut/upgrade#tag=$pkgver")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')

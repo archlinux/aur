@@ -1,5 +1,5 @@
 pkgbase = upgrade
-	pkgdesc = Simplify system upgrades
+	pkgdesc = Automate system upgrades
 	pkgver = 0.2.0
 	pkgrel = 2
 	url = https://github.com/dnut/upgrade
