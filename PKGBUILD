@@ -1,8 +1,8 @@
-# Maintainer: Robin Candau <robincandau[at]protonmail[dot]com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=bd
 pkgver=1.03
-pkgrel=3
+pkgrel=4
 pkgdesc='Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly'
 url='https://github.com/vigneshwaranr/bd'
 arch=('any')
