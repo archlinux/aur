@@ -1,0 +1,39 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl is-enabled --quiet cellframe-dashboard.service && systemctl start cellframe-dashboard.service
+
+    cat << EOF
+
+    ########################################################################
+    ########################################################################
+    ##                                                                    ##
+    ##  Cellframe Dashboard - The super application for Cellframe node    ##
+    ##  ______________________________________________________________    ##
+    ##                                                                    ##
+    ##  To start:                                                         ##
+    ##                                                                    ##
+    ##   1. systemctl enable --now cellframe-node.service                 ##
+    ##                                                                    ##
+    ##   1. systemctl enable --now cellframe-dashboard.service            ##
+    ##                                                                    ##
+    ##   2. Launch Cellframe Dashboard from your applications             ##
+    ##                                                                    ##
+    ##                                                                    ##
+    ########################################################################
+    ########################################################################
+
+EOF
+
+}
+
+pre_upgrade() {
+    systemctl is-active --quiet cellframe-dashboard.service && systemctl stop cellframe-dashboard.service
+	post_install
+}
+
+pre_remove() {
+    systemctl is-active --quiet cellframe-dashboard.service && systemctl stop cellframe-dashboard.service
+    systemctl is-enabled --quiet cellframe-dashboard.service && systemctl disable cellframe-dashboard.service
+    systemctl daemon-reload
+}
+
