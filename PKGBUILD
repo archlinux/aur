@@ -1,4 +1,5 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Vladimir Buianov (larrabee) <kafatron@gmail.com>
 
 pkgname=openvpn-dco
 _tag='942bc8b43367e97fbc5efb53a8780eac4e09863c' # git rev-parse v${pkgver}
@@ -10,7 +11,7 @@ url='https://openvpn.net/index.php/open-source.html'
 license=('custom')
 provides=('openvpn')
 conflicts=('openvpn')
-depends=('openssl' 'lzo' 'lz4' 'systemd-libs' 'libsystemd.so' 'pkcs11-helper' 'libpkcs11-helper.so')
+depends=('openvpn-dco-dkms' 'openssl' 'lzo' 'lz4' 'systemd-libs' 'libsystemd.so' 'pkcs11-helper' 'libpkcs11-helper.so')
 optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('git' 'systemd' 'python-docutils')

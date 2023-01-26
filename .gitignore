@@ -1,0 +1,4 @@
+src/
+pkg/
+openvpn/
+openvpn-dco-*.pkg.tar.zst

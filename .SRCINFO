@@ -9,6 +9,7 @@ pkgbase = openvpn-dco
 	makedepends = git
 	makedepends = systemd
 	makedepends = python-docutils
+	depends = openvpn-dco-dkms
 	depends = openssl
 	depends = lzo
 	depends = lz4
@@ -20,12 +21,10 @@ pkgbase = openvpn-dco
 	optdepends = pam: authenticate via PAM
 	provides = openvpn
 	conflicts = openvpn
-	source = git+https://github.com/OpenVPN/openvpn.git#tag=942bc8b43367e97fbc5efb53a8780eac4e09863c?signed
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=942bc8b43367e97fbc5efb53a8780eac4e09863c
 	source = 0001-unprivileged.patch
 	source = sysusers.conf
 	source = tmpfiles.conf
-	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
-	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
 	sha256sums = SKIP
 	sha256sums = 77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c
 	sha256sums = 3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621
