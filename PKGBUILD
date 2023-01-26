@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.7.r3.g13df3c1
+pkgver=0.14.8.r0.gcc8486b
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -42,6 +42,7 @@ depends=(glibc
          zlib)
 depends+=(libfreetype.so
           libharfbuzz.so
+          libharfbuzz-subset.so
           libicudata.so
           libicui18n.so
           libicuio.so
@@ -49,7 +50,7 @@ depends+=(libfreetype.so
 optdepends=('libertinus-font: default math font'
             'luarocks: manage addon packages'
             'noto-fonts-cjk: default font for tate enabled classes'
-            'ttf-hack: defaualt mono font')
+            'ttf-hack: default mono font')
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
