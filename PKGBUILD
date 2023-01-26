@@ -1,11 +1,10 @@
-# Maintainer:  echo -n 'TWljaGFsIFMuIDxtaWNoYWxAZ2V0Y3J5c3QuYWw+' | base64 -d
-# Contributor: echo -n 'Um9iaW4gQy4gPHJjYW5kYXVAZ2V0Y3J5c3QuYWw+' | base64 -d
-# Contributor: echo -n 'TWF0dCBDLiA8bWF0dEBnZXRjcnlzdC5hbD4='     | base64 -d
+# Maintainer:  Robin Candau <antiz@archlinux.org>
+# Maintainer:  Crystal Linux Distribution Team <distribution@lists.getcryst.al>
 
 pkgname=ame
 _pkgname=amethyst
 pkgver=4.0.3
-pkgrel=5
+pkgrel=6
 _codename='Funky Fish'
 pkgdesc='Amethyst is a fast and efficient AUR helper'
 arch=('x86_64' 'aarch64')
@@ -29,6 +28,7 @@ prepare() {
 
 build() {
     cd "${_pkgname}-v${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export AMETHYST_CODENAME="${_codename}"
     cargo build --frozen --release
