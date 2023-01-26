@@ -1,4 +1,5 @@
-# Maintainer: Gökberk Yaltıraklı <aur at gkbrk dot com>
+# Maintainer: Moritz Poldrack <moritz@poldrack.dev>
+# Contributor: Gökberk Yaltıraklı <aur at gkbrk dot com>
 # Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
@@ -21,7 +22,7 @@ source=(
 )
 sha512sums=(
 	'SKIP'
-	'e8fe0511ecc5b80367a3580ce85d868a3008b8d2ca083b7f8293c28bb76c02f42828c17e59dad9c62f092243158b80e02301e569b5c51541fe97e99414daaea0'
+	'aa374d17c4e704ec9adf696db547e6c8bdd4b13cacc4d0dbeb4010a687e3ad14db3ae8dfee1fd588ed004fcb21b871b8f2f967c38e93765750e32f31f3b2553b'
 )
 options=('!buildflags')
 
