@@ -46,15 +46,15 @@ validpgpkeys=('14BCE4362749B2B51F8C71226C429F1D8D84F46E')
 options=('!strip')
 
 package() {
-    install -d -m755 "${pkgdir}/usr/share/${pkgname}"
+    install -d -m755 "${pkgdir}/usr/share/notepad++"
 
-    unzip "${srcdir}/npp.${pkgver}.portable${_archstr}.zip" -d "${pkgdir}/usr/share/${pkgname}"
+    unzip "${srcdir}/npp.${pkgver}.portable${_archstr}.zip" -d "${pkgdir}/usr/share/notepad++"
 
-    rm -rf "${pkgdir}/usr/share/${pkgname}/updater" \
-           "${pkgdir}/usr/share/${pkgname}/license.txt" \
+    rm -rf "${pkgdir}/usr/share/notepad++/updater" \
+           "${pkgdir}/usr/share/notepad++/license.txt" \
 
-    find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 755 "{}" \;
-    find "${pkgdir}/usr/share/${pkgname}" -type f -exec chmod 644 "{}" \;
+    find "${pkgdir}/usr/share/notepad++" -type d -exec chmod 755 "{}" \;
+    find "${pkgdir}/usr/share/notepad++" -type f -exec chmod 644 "{}" \;
 
     install -D -m755 "${srcdir}/notepad++" "${pkgdir}/usr/bin/notepad++"
     install -D -m644 "${srcdir}/notepad++.png" "${pkgdir}/usr/share/pixmaps/notepad++.png"
