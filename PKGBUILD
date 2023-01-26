@@ -2,7 +2,7 @@
 # Contributers: Stephen304
 
 pkgname=crowdsec
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
@@ -43,5 +43,5 @@ package() {
 	cp -R ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/local/installers/crowdsec/crowdsec
 }
 
-sha256sums=('60737575b1f1546d83d8ca598790fd80f36da321ba82d984ab88b38596ed2cc1'
+sha256sums=('09503ba2d887e1b21f603406335b5329dff0a63a566fe1f180e30c6d0c7a754a'
             '53c852472e10709426a7b1d246493493cdbd9b6ffe80737e725a82dee9e220ab')
