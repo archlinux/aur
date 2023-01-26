@@ -1,6 +1,6 @@
 pkgbase = wonderlab
 	pkgdesc = 下一代跨平台 Minecraft 启动器
-	pkgver = 1.0.1.4
+	pkgver = 1.0.1.6
 	pkgrel = 1
 	url = https://github.com/Blessing-Studio/WonderLab
 	arch = x86_64
