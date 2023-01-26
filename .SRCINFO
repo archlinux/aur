@@ -1,0 +1,17 @@
+pkgbase = ministore
+	pkgdesc = Mini keyring store based on GnuPG
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://codeberg.org/ivan.zaera/ministore
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = coreutils
+	depends = bash
+	depends = findutils
+	depends = gnupg
+	depends = grep
+	depends = sed
+	source = ministore-2.0.0.tar.gz::https://codeberg.org/ivan.zaera/ministore/archive/2.0.0.tar.gz
+	sha256sums = 9c720d92968ff9a46a67f585ab2f77ae423ec5096d7b55e8d1b8bdd18c2b0a3f
+
+pkgname = ministore
