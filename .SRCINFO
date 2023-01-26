@@ -9,6 +9,8 @@ pkgbase = python-pyindi-git
 	depends = libindi
 	depends = python
 	depends = python-setuptools
+	provides = python-pyindi
+	conflicts = python-pyindi
 	source = git+https://github.com/indilib/pyindi-client
 	md5sums = SKIP
 

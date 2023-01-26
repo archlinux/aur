@@ -12,6 +12,9 @@ md5sums=('SKIP')
 depends=(libindi python python-setuptools)
 makedepends=(swig)
 
+provides=(python-pyindi)
+conflicts=(python-pyindi)
+
 pkgver() {
   cd pyindi-client
   git describe --long --tags | sed 's/-/./;s/-/./'
