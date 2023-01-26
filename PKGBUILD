@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=curl-inject-opt
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="run a command with modified CURL options"
 license=(BSD)
@@ -10,7 +10,7 @@ arch=(x86_64 i686)
 makedepends=(cargo)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/de-vri-es/curl-inject-opt/archive/v$pkgver.tar.gz")
-sha512sums=('1edecd7f3a24e29f108067777900af731290541a2b2e084acb4665d15a4e3fb28362955a8cd6ebbe53ab5e760aa50768f881551ccd8d76d0ffbf10ceadc847ab')
+sha512sums=('f0db61c27fe59cffe53cfd48c7dbaff6ac17250be178b13b332544769e6ad5d8ba1db14d3cb82d33822c01f8afb7f587268db47bd0d9899e096410b53cc619ef')
 
 prepare() {
 	rm -rf "$srcdir/build"
