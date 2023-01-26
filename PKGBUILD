@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=crabz-bin
-pkgver=0.7.10
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Like pigz, but in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('crabz')
 conflicts=('crabz')
 source=("crabz-${pkgver}::${url}/releases/download/v${pkgver}/crabz-linux-amd64")
-sha256sums=('9a83e1ad4ecdaed0e78cecbe161f7d50acacd7ed7b17d856ca785e67072c0c49')
+sha256sums=('c6848c121ad4dd71c33f9b572e19cb24bc1ea122363ee4fcf7376ea7b32464d0')
 
 package() {
     install -D -m755 "crabz-$pkgver" "$pkgdir/usr/bin/crabz"
