@@ -1,6 +1,6 @@
 pkgname=coin-or-bonmin
 pkgver=1.8.8
-pkgrel=6
+pkgrel=7
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems"
 arch=('x86_64')
 url="https://projects.coin-or.org/Bonmin"
@@ -17,6 +17,7 @@ prepare() {
   curl -L https://github.com/coin-or/Bonmin/pull/26.patch | patch -p1 -d Bonmin
   curl -L https://github.com/coin-or/Bonmin/commit/fe6f493c1ac45373db1a6a29138d70c85a310a08.patch | patch -p1 -d Bonmin
   curl -L https://github.com/coin-or/Bonmin/commit/3c51a306137f6f6f37825770987585b407919ff8.patch | patch -p1 -d Bonmin
+  curl -L https://github.com/coin-or/Bonmin/commit/d2120d07740f18e94f410e0618009f7c82dfcecd.patch | patch -p1 -d Bonmin
 }
 
 build() {
