@@ -1,6 +1,6 @@
-# Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
+#lskdfj Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="2.0.1"
+pkgver="2.2.0"
 _pkgver="${pkgver}"
 pkgrel=1
 pkgdesc="Network simulation program"
@@ -76,5 +76,5 @@ EOF
 }
 
 
-md5sums=('0d5e37ce964a5f2e152976171928ea6c')
-sha256sums=('e51463284b199f13581ae99ef89e945d5badba922121df91906696c248537f8c')
+md5sums=('ba9757516c296148ee53945aff331e99')
+sha256sums=('2f50c9910842253cd62c2f01350fb7daeb1fe919c174c8970fa96de6eefe375f')
