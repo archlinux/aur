@@ -1,7 +1,7 @@
 pkgbase = hypnotix-git
 	pkgdesc = An IPTV streaming application
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
 	license = GPL3
