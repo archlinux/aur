@@ -7,7 +7,7 @@
 _pkgname=lagrange
 pkgname=$_pkgname-nosse41
 pkgrel=1
-pkgver=1.13.7
+pkgver=1.15.1
 pkgdesc='Beautiful Gemini Client (compiled without SSE)'
 url='https://git.skyjake.fi/skyjake/lagrange'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -31,7 +31,7 @@ makedepends=(
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-sha256sums=('7fe70d06cfa80fcf7122f1a537a2205d844dd6e9efcc4d6dd712861faa3f2e14')
+sha256sums=('4c697d579da1babcd21bfb0c76fd98be0283c3170d52d64a29ff3a13d733a910')
 
 build() {
     cmake -B build -S "${_pkgname}-${pkgver}" \
