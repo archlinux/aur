@@ -1,0 +1,7 @@
+Trivial Window Manager=/usr/bin/twm
+KDE=/usr/bin/startplasma-x11
+Gnome=/usr/bin/gnome-session
+Xfce=/usr/bin/xfce4-session
+IceWM=/usr/bin/icewm
+Ion3=/usr/bin/ion3
+FvWM=/usr/bin/fvwm
