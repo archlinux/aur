@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.20.12
+Version=VERSION_PLACEHOLDER
 Name=Clash For Windows
 Comment=Clash GUI
 Exec=/opt/clash-for-windows-bin/cfw

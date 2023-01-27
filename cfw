@@ -1,2 +1,2 @@
 #!/bin/sh
-/opt/clash-for-windows-bin/cfw
+/opt/clash-for-windows-bin/cfw "$@"

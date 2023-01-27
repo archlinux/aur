@@ -1,9 +1,9 @@
-
 # Maintainer: AzureZeng <weedycn@outlook.com>
 # Maintainer: Shiroko <hhx.xxm at gmail.com>
 # Maintainer: Johnpoint <me at lvcshu.com>
+
 pkgname=clash-for-windows-bin
-pkgver=0.20.14
+pkgver=0.20.15
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -36,10 +36,10 @@ source_aarch64=(
     )
 
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
-            'c6329627357960f41d8c0a94c6ab5e96c32cb8ffda4bf845d075ef4200ebedf7'
-            '4c0a9de624905e3717b0dd4effa24fbf5c79ad28221b3b3b15a4a0aca4d47e03')
-sha256sums_x86_64=('8c6de95d2982d7715dd069e4b66bbe850ee400fa752d13ea2fd1d6a556c38f30')
-sha256sums_aarch64=('dd6493f1b7437e15f529c68eb1226e970624c310277b125e0d6d6ea307c6f865')
+            '86e462ebb44a29d1df1c4f45e2eb26aa34468c56b4625d5eba2f14714737abf9'
+            'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318')
+sha256sums_x86_64=('165c0ecee04cc83e68f2f7c542d68997b67ef26d381e8c429c1a169e17a82030')
+sha256sums_aarch64=('6b42437df82675980864ea07445cfc032c94663910654ce97145fd25dfff79ed')
 
 package() {
     local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
@@ -50,4 +50,5 @@ package() {
     install -Dm 755 ../cfw ${pkgdir}/usr/bin/cfw 
     install -Dm 644 ../clash.png ${pkgdir}/usr/share/pixmaps/clash.png
     install -Dm 644 ../clash-for-windows.desktop ${pkgdir}/usr/share/applications/clash-for-windows.desktop
+    sed -e "s/VERSION_PLACEHOLDER/${pkgver}/g" -i ${pkgdir}/usr/share/applications/clash-for-windows.desktop
 }
