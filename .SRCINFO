@@ -12,9 +12,9 @@ pkgbase = gsettings-desktop-schemas-ubuntu
 	depends = dconf
 	provides = gsettings-desktop-schemas=42.0
 	conflicts = gsettings-desktop-schemas
-	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas#commit=a1f3cd8de0e3d67c826aebce35cc53f760836dca
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_42.0-1ubuntu1.debian.tar.xz
+	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas#commit=742f0023b484bcf62f89731a2916fe3f2d30377a
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_43.0-1ubuntu1.debian.tar.xz
 	sha512sums = SKIP
-	sha512sums = c5b7c095b252419313ec151d68f6e41a3ca59b68d5c43f27ecff5230b90517305166b432cc20b3ab9dd013cde6230423cd1353c588029a7b866c0bc3a38964cd
+	sha512sums = 305eaaa04982c9a1e43713437062cb15c50c6d214e110be221a0623f9122096b34dda2010b2db0e109b45b583fb5f008c46604d56477039b6c15e72aeae6cf9d
 
 pkgname = gsettings-desktop-schemas-ubuntu
