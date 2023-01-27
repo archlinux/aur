@@ -1,0 +1,40 @@
+From a34f3813ee22f0065f551636926cf43adcc95149 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Fri, 27 Jan 2023 00:28:53 -0500
+Subject: [PATCH 4/5] use g_memdup2
+
+---
+ src/event.c | 2 +-
+ src/main.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/event.c b/src/event.c
+index aaecf3c..703e9e1 100644
+--- a/src/event.c
++++ b/src/event.c
+@@ -729,7 +729,7 @@ GDate* get_date(const gchar* key)
+ 
+ static gboolean last_weekday_of_month(const GDate* date)
+ {
+-    GDate* local = g_memdup(date,sizeof(GDate));
++    GDate* local = g_memdup2(date,sizeof(GDate));
+ 
+     g_date_add_days(local,7);
+     if(g_date_get_month(local) != g_date_get_month(date))
+diff --git a/src/main.c b/src/main.c
+index dcbb312..62850ee 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -396,7 +396,7 @@ static void view_details(void)
+ 	    g_date_set_time_t(starting_date, time(NULL));
+ 	}
+ 	else /* otherwise, start from date specified */
+-	    starting_date = g_memdup(to_show, sizeof(GDate));
++	    starting_date = g_memdup2(to_show, sizeof(GDate));
+ 
+ 	g_date_subtract_days(starting_date, settings->range_neg_days);
+ 
+-- 
+2.39.0
+

@@ -1,0 +1,32 @@
+From 60035e19b8046d7104677fc663f5d24bd768a111 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Fri, 27 Jan 2023 00:26:17 -0500
+Subject: [PATCH 1/5] respect cflags
+
+---
+ src/Makefile.defs | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/Makefile.defs b/src/Makefile.defs
+index d75a0a9..b5ab160 100644
+--- a/src/Makefile.defs
++++ b/src/Makefile.defs
+@@ -12,7 +12,6 @@ PAL_VERSION = 0.4.3
+ DESTDIR =
+ 
+ # optimizations/warnings
+-OPT     = -O2 -Wall
+ ifeq ($(DEBUG),1)
+ OPT     = -g -Wall -pedantic -Wstrict-prototypes
+ endif
+@@ -23,6 +22,5 @@ ifeq ($(DEBUG),1)
+ DEFS    += -DG_DISABLE_DEPRECATED -DDEBUG
+ endif
+ 
+-CFLAGS   = ${OPT} 
+ CPPFLAGS = ${INCLDIR} ${DEFS}
+ LDFLAGS  = ${LIBDIR} ${LIBS}
+-- 
+2.39.0
+

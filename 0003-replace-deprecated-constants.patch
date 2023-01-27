@@ -1,0 +1,40 @@
+From f29f5e45f9907b213284efa5eeded3df974eedef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Fri, 27 Jan 2023 00:19:16 -0500
+Subject: [PATCH 3/5] replace deprecated constants
+
+---
+ src/main.c   | 2 +-
+ src/remind.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 9e8284a..dcbb312 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -702,7 +702,7 @@ void pal_main_reload(void)
+ 
+ int main(gint argc, gchar** argv)
+ {
+-    G_CONST_RETURN gchar *charset = NULL;
++    const gchar *charset = NULL;
+     gint on_arg = 1;
+     GDate* today = g_date_new();
+ 
+diff --git a/src/remind.c b/src/remind.c
+index 4dcbafd..cd96bdf 100644
+--- a/src/remind.c
++++ b/src/remind.c
+@@ -56,7 +56,7 @@ static void pal_remind_event(void)
+     FILE* tmp_stream;
+     int return_val;
+     gchar* email_add;
+-    G_CONST_RETURN gchar *charset;
++    const gchar *charset;
+     at_string = g_malloc(1024*sizeof(gchar));
+ 
+     pal_output_fg(BRIGHT, GREEN, "* * * ");
+-- 
+2.39.0
+

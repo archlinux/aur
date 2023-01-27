@@ -1,0 +1,26 @@
+From df34ba0eaf2e3c4cbcb1f69b72c4e44d0c97ba4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Fri, 27 Jan 2023 00:30:41 -0500
+Subject: [PATCH 5/5] fix pointer comparison
+
+---
+ src/input.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/input.c b/src/input.c
+index 79db485..c7bc2d2 100644
+--- a/src/input.c
++++ b/src/input.c
+@@ -100,7 +100,7 @@ static PalTime* pal_input_get_time(gchar* s, gint n)
+ 
+ 	    /* get the minutes digits */
+ 	    m2 = g_utf8_find_next_char(s, NULL);
+-	    if(m2 == '\0')
++	    if (*m2 == '\0')
+ 		return NULL;  /* hit end of line, done */
+ 	    m1 = g_utf8_find_next_char(m2, NULL);
+ 
+-- 
+2.39.0
+

@@ -1,0 +1,26 @@
+From 927b459d8eb4738ff87cc4d4d97f01873aaed685 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Fri, 27 Jan 2023 00:18:41 -0500
+Subject: [PATCH 2/5] remove hacky cast
+
+---
+ src/manage.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/manage.c b/src/manage.c
+index 96f05b3..ccee7a4 100644
+--- a/src/manage.c
++++ b/src/manage.c
+@@ -403,7 +403,7 @@ void pal_manage(void)
+     rl_initialize();     /* Initialise readline so we can fiddle stuff */
+     rl_already_prompted = 1;
+     rl_redisplay_function = pal_rl_ncurses_hack;
+-    rl_pre_input_hook = (Function*) pal_rl_ncurses_hack;
++    rl_pre_input_hook = pal_rl_ncurses_hack;
+ 
+ 
+     /* initialize curses */
+-- 
+2.39.0
+
