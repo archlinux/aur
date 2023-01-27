@@ -1,4 +1,4 @@
-pkgbase = slimjet35
+pkgbase = slimjet
 	pkgdesc = Fast, smart and powerful browser based on Blink
 	pkgver = 35.0.3.0
 	pkgrel = 1
