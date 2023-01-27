@@ -13,15 +13,15 @@
 pkgname=mesa-git-adreno
 pkgdesc="mesa-git patched for adreno"
 pkgver=23.1.0_devel.165442.9db7c1a509f.932463d268438ce945b21718552d92ab
-pkgrel=2
+pkgrel=1
 arch=('aarch64')
 makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
+              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
               'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
+provides=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -135,6 +135,7 @@ build () {
        -D gallium-omx=bellagio \
        -D gallium-opencl=icd \
        -D gallium-va=enabled \
+       -D gallium-vdpau=enabled \
        -D gallium-xa=enabled \
        -D gbm=disabled \
        -D gles1=disabled \
