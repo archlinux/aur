@@ -1,16 +1,16 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=hexerator
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Versatile GUI hex editor focused on binary file exploration and aiding pattern recognition"
 url="https://github.com/crumblingstatue/hexerator"
 arch=("x86_64")
 license=("MIT" "APACHE")
 depends=("gcc-libs" "sfml" "pango" "gdk-pixbuf2" "gtk3")
-makedepends=("rust" "rustup")
+makedepends=("rustup")
 options=("!lto")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/crumblingstatue/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('a9dd7ee1675332f1d439a2e97b9773cf34454aa6fe3e3eab1bcd9ed94bbe9d64f8a485b1f335ac6e02c8db01b91bf94afb03cee2ccf42b18fce2a68a02ff7857')
+sha512sums=('16cfaed6a438b605b684fc11cc125dacbd1b62b7f1940f1041d8311f2220bed11c16e00678112b4008df53a451fb62b659f9911267b59330568df8b73206d5fc')
 
 prepare() {
     rustup default nightly

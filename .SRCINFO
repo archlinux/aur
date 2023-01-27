@@ -1,12 +1,11 @@
 pkgbase = hexerator
 	pkgdesc = Versatile GUI hex editor focused on binary file exploration and aiding pattern recognition
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/crumblingstatue/hexerator
 	arch = x86_64
 	license = MIT
 	license = APACHE
-	makedepends = rust
 	makedepends = rustup
 	depends = gcc-libs
 	depends = sfml
@@ -14,7 +13,7 @@ pkgbase = hexerator
 	depends = gdk-pixbuf2
 	depends = gtk3
 	options = !lto
-	source = hexerator-0.1.1.tar.gz::https://github.com/crumblingstatue/hexerator/archive/v0.1.1.tar.gz
-	sha512sums = a9dd7ee1675332f1d439a2e97b9773cf34454aa6fe3e3eab1bcd9ed94bbe9d64f8a485b1f335ac6e02c8db01b91bf94afb03cee2ccf42b18fce2a68a02ff7857
+	source = hexerator-0.2.0.tar.gz::https://github.com/crumblingstatue/hexerator/archive/v0.2.0.tar.gz
+	sha512sums = 16cfaed6a438b605b684fc11cc125dacbd1b62b7f1940f1041d8311f2220bed11c16e00678112b4008df53a451fb62b659f9911267b59330568df8b73206d5fc
 
 pkgname = hexerator
