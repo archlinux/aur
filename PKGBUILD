@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby
-pkgver=1.0.181
-pkgrel=2
+pkgver=1.0.188
+pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://eugeny.github.io/terminus/"
@@ -20,7 +20,7 @@ build(){
   ./scripts/install-deps.js
   yarn run build
   ./scripts/build-native.js
-  ./node_modules/.bin/electron-builder --linux deb
+  ./scripts/build-linux.js
 }
 
 package() {
