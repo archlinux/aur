@@ -4,7 +4,7 @@
 _pkgname=pema
 _pkgver=0.1.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Penalized Meta-Analysis'
 arch=('x86_64')
