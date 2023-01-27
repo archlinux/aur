@@ -1,5 +1,36 @@
+diff --git a/internal/app/migration.go b/internal/app/migration.go
+index 86067b74..d8ab9ad1 100644
+--- a/internal/app/migration.go
++++ b/internal/app/migration.go
+@@ -43,8 +43,6 @@ import (
+ 
+ // nolint:gosec
+ func migrateKeychainHelper(locations *locations.Locations) error {
+-	logrus.Info("Migrating keychain helper")
+-
+ 	settings, err := locations.ProvideSettingsPath()
+ 	if err != nil {
+ 		return fmt.Errorf("failed to get settings path: %w", err)
+@@ -55,6 +53,8 @@ func migrateKeychainHelper(locations *locations.Locations) error {
+ 		return nil
+ 	}
+ 
++	logrus.Info("Migrating keychain helper")
++
+ 	configDir, err := os.UserConfigDir()
+ 	if err != nil {
+ 		return fmt.Errorf("failed to get user config dir: %w", err)
+@@ -62,7 +62,7 @@ func migrateKeychainHelper(locations *locations.Locations) error {
+ 
+ 	b, err := os.ReadFile(filepath.Join(configDir, "protonmail", "bridge", "prefs.json"))
+ 	if errors.Is(err, fs.ErrNotExist) {
+-		return nil
++		return vault.SetHelper(settings, "file-keychain")
+ 	} else if err != nil {
+ 		return fmt.Errorf("failed to read old prefs file: %w", err)
+ 	}
 diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
-index 86db75d..1805a79 100644
+index 3c31736d..b921322e 100644
 --- a/pkg/keychain/helper_linux.go
 +++ b/pkg/keychain/helper_linux.go
 @@ -18,57 +18,39 @@
@@ -21,7 +52,7 @@ index 86db75d..1805a79 100644
 -	Pass              = "pass-app"
 -	SecretService     = "secret-service"
 -	SecretServiceDBus = "secret-service-dbus"
-+	secrets = "~/.config/protonmail/bridge/secrets"
++	secrets = "~/.config/protonmail/bridge-v3/secrets"
  )
  
  func init() { //nolint:gochecknoinits
@@ -78,16 +109,17 @@ index 86db75d..1805a79 100644
  // isUsable returns whether the credentials helper is usable.
 diff --git a/pkg/keychain/keyfile.go b/pkg/keychain/keyfile.go
 new file mode 100644
-index 0000000..00c19ba
+index 00000000..cef725b5
 --- /dev/null
 +++ b/pkg/keychain/keyfile.go
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,131 @@
 +package keychain
 +
 +import (
 +	"bufio"
 +	"errors"
 +	"os"
++	"path/filepath"
 +	"strings"
 +
 +	"github.com/docker/docker-credential-helpers/credentials"
@@ -142,6 +174,9 @@ index 0000000..00c19ba
 +
 +// Write full keychain to file
 +func (self *keyFile) writeKeychain(keychain map[string]keyRecord) error {
++	if err := os.MkdirAll(filepath.Dir(self.path), 0700); err != nil {
++		return err
++	}
 +	mode := os.O_WRONLY | os.O_CREATE | os.O_TRUNC
 +	file, err := os.OpenFile(self.path, mode, 0600)
 +	if err != nil {
