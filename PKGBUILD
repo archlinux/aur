@@ -4,8 +4,8 @@
 # Contributor: raininja <dandenkijin@gmail.com>
 
 _pkgname=slimjet
-pkgbase="${_pkgname}"
 pkgname=slimjet35
+pkgbase="${pkgname}"
 pkgver=35.0.3.0
 pkgrel=1
 _pkgver_libffmpeg=0.71.1
