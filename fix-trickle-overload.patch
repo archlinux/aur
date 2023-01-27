@@ -1,0 +1,13 @@
+diff --git a/trickle.c b/trickle.c
+index 63cc11f..6c6b616 100644
+--- a/trickle.c
++++ b/trickle.c
+@@ -51,6 +51,8 @@ main(int argc, char **argv)
+ 	char *trypaths[]  = {
+ 		LIBNAME,
+ 		LIBDIR "/" LIBNAME,
++                "/usr/local/lib/trickle/" LIBNAME,
++                "/usr/lib/trickle/" LIBNAME,
+ 		NULL
+ 	};
+ 
