@@ -1,7 +1,7 @@
 pkgbase = r-jaspprocesscontrol
 	pkgdesc = Quality Control Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspProcessControl
 	arch = any
 	groups = r-jasp
@@ -9,6 +9,7 @@ pkgbase = r-jaspprocesscontrol
 	license = GPL
 	makedepends = git
 	depends = r
+	depends = r-car
 	depends = r-doe.base
 	depends = r-fitdistrplus
 	depends = r-frf2
