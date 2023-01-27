@@ -1,7 +1,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.270
+pkgver=${_basever}.271
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -17,6 +17,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  "0002-modinfo-898490c010b.patch::https://gitlab.manjaro.org/packages/core/linux419/-/raw/e3143217878250b8321e5927dc95543c166df8da/898490c010b.patch?inline=false"
 )
 #validpgpkeys=(
 #  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -24,13 +25,15 @@ source=(
 #)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         'f1ee97f6f955fde13f4566544f997d2b'
+         '9e4fd96aede6fafef87d3496ffb76bf1'
          '1472f2999cfe2d48eb27a889a5780a6d'
-         '8d3adddbed67c62b0910ec68c78ebbac')
+         '8d3adddbed67c62b0910ec68c78ebbac'
+         '2674295f31c55d4982a98a914028d684')
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'bae3d99c32cfacc7463ffd435d048ae0b6a4a4b5315966bd5bcba26fff04761a'
+            '89db7a16296246b01f2ee6947be7ec9cddef5c667f39d14caa4a6c6d340394f5'
             'c24a94ee3a6eb042a67b97c57e036e5abab519e8427fff4dcb9cea1e6cc5e3cd'
-            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
+            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
+            '1a4b6378407e2fc3b84fdffa22ce74de326992bb2e927411607b78cf6a31374e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
