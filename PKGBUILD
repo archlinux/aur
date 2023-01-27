@@ -18,7 +18,7 @@ place-names
 )
 
 pkgname='mozc-ut'
-pkgver=2.28.4990.102.20230121
+pkgver=2.28.4990.102.20230127
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -34,15 +34,15 @@ provides=('mozc=2.28.4990.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623"
-        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=c174159285922e6674b496a6596e14045ea51244'
-        'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=ea403663e9d98d8305123b5ee11c4662e4257b61'
-        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=8cb88cdfe0db973bbd7710abbd7f1779d50c2ed6'
-        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=57fa28e51e848a762a5d13a1a97d297e926710d2'
-        'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=38d938ac3aad4a7bef07fed1eb14aee6f5a7012e'
-        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=d617e438add7bb3577c406be40296d84ece4234b'
-        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=2dbf6cd3c8e86d2ad239afc5ad1184d68c5c83b1'
-        'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=74e460efea78681ec4f9cf60ab1e97ac53e61a2d'
-        'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=17b7efbe1ffe9ef57f9bfd4a70b9c0a14e67e888')
+        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=37499de5f66a2329c1293ac791f90029728e0eb9'
+        'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0'
+        'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=99b4f5a1bd132816a1088c553458ab640e368cdb'
+        'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=86480c134bac7991977110191a3f5a93cee3690d'
+        'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=f881c1c55c73a53341f9a970487e9a7546070333'
+        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=b942640853441f4295c9ec17193a7e7896afd9ad'
+        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=88f49c2fb711c71d41fcd8390939ae97470714c2'
+        'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=2cbf5b4652ab0f253880258af4aeaf3dd9d7ae09'
+        'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=18b1a7710f2e819129c9f5c86a471c881725e26a')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -72,7 +72,7 @@ prepare() {
         tar -xf mozcdic-ut-${dict}.txt.tar.bz2
     done
 
-    sh ./make.sh
+    bash ./make.sh
 
     # Append the UT dictionary
     cat ${srcdir}/merge-ut-dictionaries/src/mozcdic-ut.txt >> ${srcdir}/${pkgname}-git/src/data/dictionary_oss/dictionary00.txt
