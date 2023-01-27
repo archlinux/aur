@@ -3,7 +3,7 @@
 _pkgname=multipol
 _pkgver=1.0-7
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Multivariate Polynomials'
 arch=('any')
