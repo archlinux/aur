@@ -3,7 +3,7 @@ _pkgname=jaspMetaAnalysis
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Meta-Analysis Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -16,6 +16,7 @@ depends=(r
   r-mass
   r-metabma
   r-metafor
+  r-pema
   r-psych
   r-purrr
   r-rstan

@@ -1,7 +1,7 @@
 pkgbase = r-jaspmetaanalysis
 	pkgdesc = Meta-Analysis Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspMetaAnalysis
 	arch = any
 	groups = r-jasp
@@ -16,6 +16,7 @@ pkgbase = r-jaspmetaanalysis
 	depends = r-mass
 	depends = r-metabma
 	depends = r-metafor
+	depends = r-pema
 	depends = r-psych
 	depends = r-purrr
 	depends = r-rstan
