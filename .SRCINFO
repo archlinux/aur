@@ -1,0 +1,21 @@
+pkgbase = r-bdgraph
+	pkgdesc = Bayesian Structure Learning in Graphical Models using Birth-Death MCMC
+	pkgver = 2.72
+	pkgrel = 1
+	url = https://cran.r-project.org/package=BDgraph
+	arch = x86_64
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-igraph
+	depends = r-proc
+	optdepends = r-huge
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-skimr
+	optdepends = r-ssgraph
+	optdepends = r-tmvtnorm
+	source = https://cran.r-project.org/src/contrib/BDgraph_2.72.tar.gz
+	sha256sums = 7cf9cc1bccf2a56b518c88030e00e88217f571afcb250aa95c3bd2771a8b83cd
+
+pkgname = r-bdgraph
