@@ -36,6 +36,7 @@ pkgver() {
 
 package() {
   cd ${srcdir}
+  mv JabRef jabref
   install -Dm755 jabref/bin/JabRef ${pkgdir}/opt/jabref/bin/JabRef
   find jabref/lib -type f -exec install -Dm644 "{}" "${pkgdir}/opt/{}" \;
   chmod +x ${pkgdir}/opt/jabref/lib/runtime/bin/*
