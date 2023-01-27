@@ -1,7 +1,7 @@
 pkgbase = kuro
 	pkgdesc = An elegant Microsoft ToDo desktop client for Linux
 	pkgver = 8.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davidsmorais/kuro
 	arch = any
 	license = MIT
