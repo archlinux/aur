@@ -2,7 +2,7 @@
 
 _name=qcs-api-client
 pkgname=python-$_name
-pkgver=0.21.2
+pkgver=0.21.3
 pkgrel=1
 pkgdesc='Python client for the QCS API'
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-poetry python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('53eb2a3394fccc6f5914e0d76fa833ac8e2fc2baafaf06b6b9c3984172570d00d82a85205fdb6ed59cdf2452f174903baeb647ed52a1471823e33cf01562d5ef')
+b2sums=('bb047e52e51651c2dabac4574ea8fe2500a426274cf9233fc35ecf9e93a35b4d0e63236bc3dea77428725898f9ae8f48dd9b72c89d16205f6c3beca8922de398')
 
 build() {
     cd $_name-python-$pkgver
