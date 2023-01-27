@@ -4,7 +4,7 @@
 
 pkgname=grav
 pkgver=1.7.38
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
 url='https://getgrav.org'
@@ -29,14 +29,14 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
 sha256sums=('39d2988a515a7fb8427c920de35bd921872f239aa6e84a15a6304ff0a1e0e59a'
-            '05eb4e83c3bfa231a48dc107b5916c79f8903369874da532a27b8efc08466d65'
+            '79a2e011e809bbf071937015a2b9a27e046b840126bbe717c21d88d4ee239697'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
             'ca7197a1e73fec939ea25ee8f3cc05db2117463aa9db8b2911f889e647974228'
             '494e1fb15cc7ca15f8d543276396f87c9498564a167dc70b6cbe9f91ebbc2f42'
-            '40235242a47c5f4424212ccf657b0716d533ce3f8125af349e2c2ac4d9e0deef'
+            '2cce6d5ff03f6c5cf66f4cd188df59522df69bdfd76ebdff7489585ab530e03c'
             'bdde9deebedd5d53e43b1d5ac2fb2348953903f0c21cfad35a1ebfb78e065385'
-            'd93bf78a9a3d895e7ed4e504a17d0eea7fdb2c49b79bfea9a4ba0548e57d12a6')
+            '13230cd930dccfecd9b3cb5c8b516dc98b3f2167f188305a2e4682f445f9acb9')
 backup=('etc/webapps/grav/config/site.yaml'
         'etc/webapps/grav/config/system.yaml')
 

@@ -133,7 +133,7 @@
 +    # or alternatively if you use php-fpm
 +    # location ~ \.php$ {
 +    #     # Choose either a socket or TCP/IP address
-+    #     fastcgi_pass unix:/run/php/grav.sock;
++    #     fastcgi_pass unix:/run/php-fpm/grav.sock;
 +    #     # fastcgi_pass 127.0.0.1:9000;
 +    #     fastcgi_split_path_info ^(.+\.php)(/.+)$;
 +    #     fastcgi_index index.php;
