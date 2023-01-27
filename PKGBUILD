@@ -3,7 +3,7 @@
 _pkgname=randtoolbox
 _pkgver=2.0.3
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Toolbox for Pseudo and Quasi Random Number Generation and Random Generator Tests'
 arch=('x86_64')
