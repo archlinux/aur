@@ -1,0 +1,25 @@
+pkgbase = neovim-noice-git
+	pkgdesc = Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
+	pkgver = 1.8.0.r1.g20f47dc
+	pkgrel = 1
+	url = https://github.com/folke/noice.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = neovim-nui
+	optdepends = neovim-notify: notifications
+	optdepends = neovim-tree-sitter: syntax highlighting
+	optdepends = tree-sitter-viml: syntax highlighting
+	optdepends = tree-sitter-regex: syntax highlighting
+	optdepends = tree-sitter-lua: syntax highlighting
+	optdepends = tree-sitter-bash: syntax highlighting
+	optdepends = tree-sitter-markdown: syntax highlighting
+	optdepends = tree-sitter-markdown-inline: syntax highlighting
+	provides = neovim-noice
+	conflicts = neovim-noice
+	source = neovim-noice-git::git+https://github.com/folke/noice.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-noice-git
