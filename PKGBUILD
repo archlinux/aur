@@ -1,6 +1,6 @@
 # Maintainer: gabrielzschmitz <gabrielzschmitz@protonmail.com>
 pkgname='tomato.c-git'
-pkgver=r147.3c7cba1
+pkgver=r170.93c0931
 pkgrel=1
 pkgdesc="A pomodoro timer written in pure C"
 arch=('x86_64')
