@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://palcal.sourceforge.net"
 license=('GPL2')
 depends=('pkg-config' 'glib2' 'readline' 'gettext')
-optdepends=('texlive: PS/PDF/DVI calendars')
+optdepends=('texlive-core: PS/PDF/DVI calendars')
 source=(
 	"https://master.dl.sourceforge.net/project/palcal/$pkgname/$pkgver/$pkgname-$pkgver.tgz"
 	0001-respect-cflags.patch
