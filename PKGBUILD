@@ -3,7 +3,7 @@
 pkgname=eastl
 _pkgname=EASTL
 pkgver=3.18.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('any')
 url="https://github.com/electronicarts/EASTL"
