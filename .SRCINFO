@@ -1,0 +1,13 @@
+pkgbase = todoscript-git
+	pkgdesc = a good looking todoscript
+	pkgver = r9.72ea302
+	pkgrel = 1
+	url = https://github.com/BaerLKR/todoscript
+	arch = x86_64
+	license = EUPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/BaerLKR/todoscript.git
+	md5sums = SKIP
+
+pkgname = todoscript-git
