@@ -3,7 +3,7 @@
 _pkgname=BDgraph
 _pkgver=2.72
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.72
 pkgrel=1
 pkgdesc='Bayesian Structure Learning in Graphical Models using Birth-Death MCMC'
 arch=('x86_64')
