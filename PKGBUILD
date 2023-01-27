@@ -1,7 +1,7 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20230110
+pkgver=20230123
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest main (master) version from git"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('glibc'
          'alsa-lib'
          'python3')
 optdepends=('gsettings-desktop-schemas: For web search support')
-source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.9-portable_linux.tar.gz
+source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/main/JabRef-5.10-portable_linux.tar.gz
         https://raw.githubusercontent.com/JabRef/jabref/main/LICENSE.md
         jabref.sh
         JabRef.desktop
@@ -30,20 +30,18 @@ sha256sums=('SKIP'
 
 
 pkgver() {
-  curl --silent --head https://builds.jabref.org/main/JabRef-5.9-portable_linux.tar.gz \
+  curl --silent --head https://builds.jabref.org/main/JabRef-5.10-portable_linux.tar.gz \
     | grep -i "last-modified" | cut -d' ' -f2- | date -f - +%Y%m%d
 }
 
 package() {
   cd ${srcdir}
-  mv JabRef jabref
   install -Dm755 jabref/bin/JabRef ${pkgdir}/opt/jabref/bin/JabRef
   find jabref/lib -type f -exec install -Dm644 "{}" "${pkgdir}/opt/{}" \;
   chmod +x ${pkgdir}/opt/jabref/lib/runtime/bin/*
   chmod +x ${pkgdir}/opt/jabref/lib/runtime/lib/jexec
   chmod +x ${pkgdir}/opt/jabref/lib/runtime/lib/jspawnhelper
   chmod +x ${pkgdir}/opt/jabref/lib/jabrefHost.py
-  #mv ${pkgdir}/JabRef ${pkgdir}/jabref
   install -Dm755 jabref.sh ${pkgdir}/usr/bin/jabref
   install -Dm755 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
