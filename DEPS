@@ -156,10 +156,6 @@ vars = {
   "chrome_tag": "101.0.4951.41",
 }
 
-gclient_gn_args_file = Var("dart_root") + '/build/config/gclient_args.gni'
-gclient_gn_args = [
-]
-
 deps = {
   Var("dart_root") + "/third_party/d8": {
       "packages": [{

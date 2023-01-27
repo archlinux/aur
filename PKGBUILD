@@ -10,7 +10,7 @@
 pkgname=dart-system
 _pkgname=dart
 pkgver=2.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The dart programming language SDK (Bug https://bugs.archlinux.org/task/77107)'
 arch=('x86_64')
 url='https://www.dartlang.org/'
@@ -22,7 +22,7 @@ source=(".gclient"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "git+https://dart.googlesource.com/sdk.git#tag=$pkgver")
 sha512sums=('23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf'
-            'b5983441a19bcfceda7aa308e9729d74972c18fccbb106cb0f9ab9deb38201586d89738265ae11139a8ff979d31c8179361b6750b0de7ec5251486e518d9fb39'
+            'd6f5304be2d3ac6019369782850fe55839294761c85d244285c9cdbbff1f153824f9ca6accb7ee0214c2766b4b70a0977767c8b54475758c167226605fb86060'
             'SKIP'
             'SKIP')
 provides=("dart" "dart-sdk")
@@ -64,6 +64,7 @@ build() {
   sed -i 's|rebase|#|g' build/toolchain/linux/BUILD.gn
 
   dart tools/generate_package_config.dart
+  python tools/generate_sdk_version_file.py
 
   /usr/bin/gn gen -qv out --args='target_os = "linux"
                         host_cpu = "x64"
@@ -72,10 +73,11 @@ build() {
                         dart_use_compressed_pointers = true
                         dart_use_crashpad = false
                         dart_snapshot_kind = "app-jit"
+                        dart_debug_optimization_level= "2"
                         dart_use_fallback_root_certificates = true
-                        bssl_use_clang_integrated_as = false
-                        dart_use_tcmalloc = false
-                        dart_use_mallinfo2 = false
+                        dart_use_compressed_pointers = true
+                        dart_use_tcmalloc = true
+                        dart_use_mallinfo2 = true
                         is_debug = false
                         is_release = false
                         is_product = true

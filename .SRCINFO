@@ -1,7 +1,7 @@
 pkgbase = dart-system
 	pkgdesc = The dart programming language SDK (Bug https://bugs.archlinux.org/task/77107)
 	pkgver = 2.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dartlang.org/
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,7 @@ pkgbase = dart-system
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = git+https://dart.googlesource.com/sdk.git#tag=2.19.0
 	sha512sums = 23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf
-	sha512sums = b5983441a19bcfceda7aa308e9729d74972c18fccbb106cb0f9ab9deb38201586d89738265ae11139a8ff979d31c8179361b6750b0de7ec5251486e518d9fb39
+	sha512sums = d6f5304be2d3ac6019369782850fe55839294761c85d244285c9cdbbff1f153824f9ca6accb7ee0214c2766b4b70a0977767c8b54475758c167226605fb86060
 	sha512sums = SKIP
 	sha512sums = SKIP
 
