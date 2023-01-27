@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=gdlauncher-git
-pkgver=1.1.21.r0.g22d01934
+pkgver=1.1.30.beta.1.r0.g7fd15c7d
 pkgrel=2
 pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL3')
 provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-appimage' 'gdlauncher-bin' 'gdlauncher-classic')
 depends=('electron' 'libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'p7zip')
-makedepends=('git' 'npm' 'rust')
+makedepends=('git' 'nodejs>=17' 'npm' 'rust')
 source=('git+https://github.com/gorilla-devs/GDLauncher.git'
         'gdlauncher.png::https://avatars0.githubusercontent.com/u/49373890?s=256'
         'use-system-7za-and-disable-updater.patch')
 sha256sums=('SKIP'
             'f4cbb8a47e80c498972e548897a01190ac1975fbed0879565ff8fc57b8e9dbf0'
-            'f607390d7e6f79981bf14e0308ef8f55aed3daa425219872dc864c61e74e4192')
+            '300675d00b00681c12870cf3832e4e3bcbfaf71ccfd01c0ee474bc2887b8b666')
 
 pkgver() {
   cd "$srcdir"/GDLauncher
@@ -29,10 +29,7 @@ prepare() {
 
   sed -i package.json \
     -e '/electron-updater/d;/7zip-bin/d' \
-    -e 's$public/electron.js$build/electron.js$' \
-    -e '/"dependencies"/i "bundledDependencies": ["7zip-bin"],'
-  sed -i package-lock.json \
-    -e 's/^16 \|\|.*\|\| ^6/>= 6/'
+    -e 's$public/electron.js$build/electron.js$'
   sed -i craco.config.js \
     -e "/class-properties/a '@babel\/plugin-proposal-private-methods'," \
     -e "/class-properties/a '@babel\/plugin-proposal-private-property-in-object',"
@@ -48,7 +45,8 @@ build() {
   export CI=false \
          APP_TYPE=electron \
          NODE_ENV=production \
-         REACT_APP_RELEASE_TYPE=setup
+         REACT_APP_RELEASE_TYPE=setup \
+         NODE_OPTIONS="--openssl-legacy-provider"
   npx craco build
   npx webpack --config scripts/electronWebpackConfig.js
 }
