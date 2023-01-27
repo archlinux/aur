@@ -2,14 +2,14 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.11.0
-_pkgver_ext=1.11.0_13638_20221122_1308
-_pkg_file_name=en.st-stm32cubeide_1.11.0_13638_20221122_1308_amd64.sh.zip
-pkgrel=2
+pkgver=1.11.2
+_pkgver_ext=1.11.2_14494_20230119_0724.unsigned
+_pkg_file_name=en.st-stm32cubeide_1.11.2_14494_20230119_0724.unsigned_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('java-runtime' 'glibc' 'libusb' 'webkit2gtk' 'arm-none-eabi-gdb')
+depends=('java-runtime>=11' 'glibc' 'libusb' 'webkit2gtk' 'arm-none-eabi-gdb')
 optdepends=('jlink-software-and-documentation' 'stlink')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
@@ -27,7 +27,7 @@ fi
 source=("local://${_pkg_file_name}"
 #	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('9bfd5402344607f4f307f24a6a2165a20342695e43d62edd0dd8c266c651a79a'
+sha256sums=('86043ab98b5f0ee54ad50b23148a47a635881f4c616e6face9dba7b6133d51f4'
 #	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP')
 
@@ -81,7 +81,7 @@ END
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.11.0
+Comment=STM32CubeIDE ${pkgver}
 GenericName=STM32CubeIDE
 #Exec=env GDK_BACKEND=x11 stm32cubeide %F
 #Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide %F

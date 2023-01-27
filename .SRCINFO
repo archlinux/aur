@@ -1,12 +1,12 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.11.0
-	pkgrel = 2
+	pkgver = 1.11.2
+	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
 	makedepends = imagemagick
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = glibc
 	depends = libusb
 	depends = webkit2gtk
@@ -14,9 +14,9 @@ pkgbase = stm32cubeide
 	optdepends = jlink-software-and-documentation
 	optdepends = stlink
 	options = !strip
-	source = local://en.st-stm32cubeide_1.11.0_13638_20221122_1308_amd64.sh.zip
+	source = local://en.st-stm32cubeide_1.11.2_14494_20230119_0724.unsigned_amd64.sh.zip
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
-	sha256sums = 9bfd5402344607f4f307f24a6a2165a20342695e43d62edd0dd8c266c651a79a
+	sha256sums = 86043ab98b5f0ee54ad50b23148a47a635881f4c616e6face9dba7b6133d51f4
 	sha256sums = SKIP
 
 pkgname = stm32cubeide
