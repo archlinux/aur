@@ -1,6 +1,6 @@
 pkgbase = r-flames
 	pkgdesc = FLAMES: Full Length Analysis of Mutations and Splicing in long read RNA-seq data
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FLAMES
 	arch = x86_64
@@ -51,7 +51,7 @@ pkgbase = r-flames
 	optdepends = r-shortread
 	optdepends = r-testthat
 	optdepends = r-uwot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FLAMES_1.4.1.tar.gz
-	sha256sums = 3b5c20137f7dc492c0dd0fde954da31c1c994f830e0ee0d951e770d5c2466e39
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FLAMES_1.4.2.tar.gz
+	sha256sums = 481077968ed1d7d9285dc25e23530af4a5aa09d1b2e990881343922b17538da5
 
 pkgname = r-flames
