@@ -20,11 +20,11 @@ conflicts=('rambox' 'rambox-bin' 'rambox-pro-bin-beta')
 # 1. Go to https://rambox.app/eula in a Javascript-enabled browser.
 # 2. Save the rendered result to an HTML file.
 # 3. Run the shell command line:
-#    html2text --body-width=80 file.html | awk '/^# .*EULA/,/footer_logo/ { print }' | head -n -1
+#    html2text --body-width=80 file.html | awk '/^# .*EULA/,/^## If/ { print }' | head -n -1
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
-sha256sums=('220a1fe2afa6485bfc15dde23dd081804a29f94a86ce74164082aa8b2266e662'
+sha256sums=('0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
             '05bee5a9deb76f403d1d16e4582d21c1b06eda2d370b8c5ac7afc772630594c6')
 
 build() {
