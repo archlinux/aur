@@ -3,7 +3,7 @@ _pkgname=jaspJags
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=4
 pkgdesc="JAGS Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -11,6 +11,7 @@ license=('GPL')
 depends=(r
   r-coda
   r-ggplot2
+  r-ggtext
   r-hexbin
   r-jaspbase
   r-jaspgraphs
@@ -20,7 +21,7 @@ depends=(r
 groups=(r-jasp r-jaspextra)
 makedepends=('git')
 optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git#commit=2890de0b60")
+source=("git+https://github.com/jasp-stats/${_pkgname}.git#commit=b1dc1fa77d")
 sha256sums=('SKIP')
 
 
