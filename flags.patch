@@ -1,16 +1,17 @@
-diff -ruN SuiteSparse-6.0.2.orig/Mongoose/CMakeLists.txt SuiteSparse-6.0.2/Mongoose/CMakeLists.txt
---- SuiteSparse-6.0.2.orig/Mongoose/CMakeLists.txt	2022-12-12 06:02:33.000000000 +0330
-+++ SuiteSparse-6.0.2/Mongoose/CMakeLists.txt	2022-12-23 21:49:55.460818342 +0330
-@@ -308,14 +308,14 @@
+diff -ruN SuiteSparse-7.0.1.orig/Mongoose/CMakeLists.txt SuiteSparse-7.0.1/Mongoose/CMakeLists.txt
+--- SuiteSparse-7.0.1.orig/Mongoose/CMakeLists.txt	2023-01-21 23:01:16.000000000 +0330
++++ SuiteSparse-7.0.1/Mongoose/CMakeLists.txt	2023-01-27 10:09:20.180687673 +0330
+@@ -313,7 +313,7 @@
  message(STATUS "CMAKE_CXX_COMPILER: " ${BoldBlue} ${CMAKE_CXX_COMPILER_ID} ${ColourReset})
  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
      # using Clang
 -    SET(CMAKE_CXX_FLAGS "-O3 -fwrapv")
 +    SET(CMAKE_CXX_FLAGS "-m32 -O3 -fwrapv")
      # Debug flags for Clang
-     SET(CMAKE_CXX_FLAGS_DEBUG "--coverage -g -fwrapv")
-     SET(CMAKE_C_FLAGS_DEBUG "--coverage -g")
-     SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "--coverage -g")
+     SET(CMAKE_CXX_FLAGS_DEBUG "-g -fwrapv")
+     SET(CMAKE_C_FLAGS_DEBUG "-g")
+@@ -325,7 +325,7 @@
+     endif ( )
  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
      # using GCC
 -    SET(CMAKE_CXX_FLAGS "-O3 -fwrapv")
@@ -18,8 +19,8 @@ diff -ruN SuiteSparse-6.0.2.orig/Mongoose/CMakeLists.txt SuiteSparse-6.0.2/Mongo
      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-but-set-variable -Wno-unused-variable" )
      # Debug flags for GCC
      if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.6")
-@@ -327,7 +327,7 @@
-     SET(CMAKE_EXE_LINKER_FLAGS_DEBUG "-fprofile-arcs -ftest-coverage")
+@@ -342,7 +342,7 @@
+     endif ( )
  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
      # using Intel C++
 -    SET(CMAKE_CXX_FLAGS "-O3 -no-prec-div -xHOST -ipo -fwrapv")
