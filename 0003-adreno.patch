@@ -1,0 +1,44 @@
+From 4d68877fda7639d7273173375e8156709b8432ef Mon Sep 17 00:00:00 2001
+From: Heasterian <70614927+Heasterian@users.noreply.github.com>
+Date: Fri, 2 Jul 2021 12:11:25 +0300
+Subject: [PATCH 1/2] Update tu_kgsl.c
+
+---
+ src/freedreno/vulkan/tu_kgsl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/freedreno/vulkan/tu_kgsl.c b/src/freedreno/vulkan/tu_kgsl.c
+index ea65c66525f..24d05329457 100644
+--- a/src/freedreno/vulkan/tu_kgsl.c
++++ b/src/freedreno/vulkan/tu_kgsl.c
+@@ -29,6 +29,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/mman.h>
+ 
++#define __user
+ #include "msm_kgsl.h"
+ #include "vk_util.h"
+ 
+
+From 33e963fb3b8aff310ec456e3dcd81e98f3d3acb6 Mon Sep 17 00:00:00 2001
+From: Heasterian <70614927+Heasterian@users.noreply.github.com>
+Date: Fri, 2 Jul 2021 12:12:00 +0300
+Subject: [PATCH 2/2] Update tu_device.c
+
+---
+ src/freedreno/vulkan/tu_device.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/freedreno/vulkan/tu_device.c b/src/freedreno/vulkan/tu_device.c
+index cb411523d15..2296be841c5 100644
+--- a/src/freedreno/vulkan/tu_device.c
++++ b/src/freedreno/vulkan/tu_device.c
+@@ -150,7 +150,7 @@ get_device_extensions(const struct tu_physical_device *device,
+       .KHR_variable_pointers = true,
+       .KHR_vulkan_memory_model = true,
+ #ifndef TU_USE_KGSL
+-      .KHR_timeline_semaphore = true,
++      .KHR_timeline_semaphore = false,
+ #endif
+ #ifdef VK_USE_PLATFORM_DISPLAY_KHR
+       .EXT_display_control = true,
