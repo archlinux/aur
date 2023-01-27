@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=hdr10plus_tool-git
-pkgver=1.3.1.r1.g2a0c681
+pkgver=1.5.2.r0.g478be3d
 pkgrel=1
 pkgdesc='CLI utility to work with HDR10+ in HEVC files'
 arch=('x86_64')
