@@ -3,11 +3,12 @@ _pkgname=jaspQualityControl
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=0
+pkgrel=3
 pkgdesc="Quality Control Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
 license=('GPL')
+replaces=('r-jaspprocesscontrol')
 depends=(r
   r-doe.base
   r-fitdistrplus
