@@ -3,7 +3,7 @@
 _pkgname=TruncatedNormal
 _pkgver=2.2.2
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Truncated Multivariate Normal and Student Distributions'
 arch=('x86_64')
