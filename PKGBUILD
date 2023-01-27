@@ -7,7 +7,7 @@
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
 pkgver=2.12.0
-pkgrel=0
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -26,7 +26,7 @@ license=('custom:SLA0048')
 depends=('stlink'
          'libusb')
 makedepends=('xdotool'
-             'xorg-server-xvfb'
+#              'xorg-server-xvfb'
              'icoutils'
              'fontconfig'
              'gsfonts')
@@ -39,7 +39,7 @@ _pkg_main_url_index="2c/71/de/d9/d5/2f/4f/4c"
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
         "${pkgname}.xdotool")
 sha256sums=('239d222424ce8d6976e9800007e04db7ba96ff2148f96730b4dd1fdc6169b9a2'
-            'c66a87cd604128ed7732b760c5efd334538f0e832b17491ad1fd34c46084b3e5')
+            '7896311cf3f4a49cafcd541d188543760ea0289bc327f183d5d38321b93db93b')
 
 prepare() {
   cat > ${pkgname}.xvfb <<END
@@ -62,7 +62,8 @@ build() {
   mkdir -p build
 
   # use xvfb-run and xdotool to cheat the Installer
-  xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 5 ./${pkgname}.xvfb
+#   xvfb-run --auto-servernum --server-args="-screen 0, 1920x1080x24" -w 5 ./${pkgname}.xvfb
+  ./${pkgname}.xvfb
 
   # convert ico to icon
   mkdir -p icon
