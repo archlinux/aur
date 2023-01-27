@@ -3,7 +3,7 @@
 pkgname=surfshark-client
 pkgver=1.2.5
 pkgrel=1
-pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
+pkgdesc="Surfshark VPN GUI client for Linux. Encrypt your internet activity so no one can track or steal your data. Increase your privacy and avoid tracking by using a different IP address. Keep your digital freedom and security while using unprotected networks."
 arch=('x86_64')
 url="https://surfshark.com"
 license=('custom:surfshark')
