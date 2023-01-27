@@ -1,0 +1,18 @@
+pkgbase = r-symmoments
+	pkgdesc = Symbolic Central and Noncentral Moments of the Multivariate Normal Distribution
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=symmoments
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-combinat
+	depends = r-cubature
+	depends = r-multipol
+	depends = r-mvtnorm
+	optdepends = r-ape
+	optdepends = r-mpoly
+	source = https://cran.r-project.org/src/contrib/symmoments_1.2.1.tar.gz
+	sha256sums = 9a6be1f8fe44f6ab5a1790e870fd8b18de1686a48a14a9fca2d035bfb5458672
+
+pkgname = r-symmoments
