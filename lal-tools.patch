@@ -917,39 +917,24 @@ index dbb6eeca..74769937 100644
                     ]
                  }
 
-From 4c8c6b56756d3b39aa43a29384343c75843eba46 Mon Sep 17 00:00:00 2001
-From: Anthony Leonardo Gracio <leonardo@adacore.com>
-Date: Thu, 6 Oct 2022 14:23:43 +0200
-Subject: [PATCH] V624-007: clear gnatpp's template tables
-
-This fixes a memory leak.
----
- source/ada/lsp-ada_contexts.adb | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/source/ada/lsp-ada_contexts.adb b/source/ada/lsp-ada_contexts.adb
-index 1f09af86..c585252b 100644
---- a/source/ada/lsp-ada_contexts.adb
-+++ b/source/ada/lsp-ada_contexts.adb
-@@ -37,6 +37,8 @@ with Langkit_Support.Slocs;
+--- b/source/ada/lsp-ada_contexts.adb
++++ a/source/ada/lsp-ada_contexts.adb
+@@ -37,6 +37,7 @@
  
  with Utils.Command_Lines.Common;
  
 +with Pp.Actions;
-+
- package body LSP.Ada_Contexts is
+ with Langkit_Support.Text;
  
-    Indexing_Trace   : constant Trace_Handle := Create ("ALS.INDEXING", Off);
-@@ -890,8 +892,11 @@ package body LSP.Ada_Contexts is
+ package body LSP.Ada_Contexts is
+@@ -942,8 +943,8 @@
        Self.Source_Dirs.Clear;
        Self.Tree := null;
  
--      --  Destroy GnatPP command line
-+      --  Destroy gnatpp's command line
-       Utils.Command_Lines.Clear (Self.PP_Options);
-+
 +      --  Cleanup gnatpp's template tables
 +      Pp.Actions.Clear_Template_Tables;
+-      --  Destroy GnatPP command line
+-      Utils.Command_Lines.Clear (Self.PP_Options);
     end Free;
  
     -----------------
