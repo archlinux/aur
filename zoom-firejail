@@ -1,3 +1,2 @@
 #!/bin/sh
-# `--shell=none` is a workaround for https://github.com/netblue30/firejail/issues/3434
-/usr/bin/firejail --shell=none -- zoom "$@"
+/usr/bin/firejail -- zoom "$@"
