@@ -1,14 +1,28 @@
 pkgbase = eastl
 	pkgdesc = Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance.
-	pkgver = 3.12.01
+	pkgver = 3.18.00
 	pkgrel = 1
 	url = https://github.com/electronicarts/EASTL
 	arch = any
-	license = BSD,
-	license = other
+	license = BSD
+	license = custom
 	makedepends = cmake
-	source = https://github.com/electronicarts/EASTL/archive/3.12.01.tar.gz
-	sha384sums = 68defff99706f975158d2ae19c1889831eab2df39619c22193c08a98db2928d48c11a82ff9e3d8cde11de7e6529397e7
+	makedepends = git
+	source = EASTL-3.18.00.tar.gz::https://github.com/electronicarts/EASTL/archive/refs/tags/3.18.00.tar.gz
+	source = EABase::git+https://github.com/electronicarts/EABase.git
+	source = EAAssert::git+https://github.com/electronicarts/EAAssert.git
+	source = EAMain::git+https://github.com/electronicarts/EAMain.git
+	source = EAStdC::git+https://github.com/electronicarts/EAStdC.git
+	source = EATest::git+https://github.com/electronicarts/EATest.git
+	source = EAThread::git+https://github.com/electronicarts/EAThread.git
+	source = eastl-fix-cmake-install.patch
+	sha256sums = a3c5b970684be02e81fb16fbf92ed2584e055898704fde87c72d0331afdea12b
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 148b64dcb56cb7e2e7c2f37a2329b41f41c65b718fa794c13a0400965787e9f2
 
 pkgname = eastl
-
