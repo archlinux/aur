@@ -1,7 +1,7 @@
 pkgbase = r-jaspsem
 	pkgdesc = SEM Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspSem
 	arch = any
 	groups = r-jasp
@@ -9,6 +9,7 @@ pkgbase = r-jaspsem
 	license = GPL
 	makedepends = git
 	depends = r
+	depends = r-csem
 	depends = r-forcats
 	depends = r-ggplot2
 	depends = r-jaspbase
