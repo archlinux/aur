@@ -17,7 +17,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -34,12 +34,14 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rs
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "pandoc_version.patch")
+        "pandoc_version.patch"
+        "boost_1.81.patch")
 
 sha256sums=('e4f3503e2ad4229301360f56fd5288e5c8e769c490073dae7fe40366237ecce0'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
+            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e'
+            'f9ac8311181126f163898d9e02198765ac8b23ec70cb2ae0d910ac62017a9677')
 
 noextract=("gin-${_ginver}.zip")
 
@@ -47,6 +49,9 @@ prepare() {
     cd ${srcdir}/${_srcname}
     # Do not use outdated version name of pandoc
     patch -p1 < ${srcdir}/pandoc_version.patch
+
+    # Boost 1.81 - see here https://github.com/jgenco/jgenco-overlay/issues/4#issuecomment-1368061420
+    patch -p1 < ${srcdir}/boost_1.81.patch
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     install -d pandoc/${_pandocver}
