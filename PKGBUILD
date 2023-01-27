@@ -3,11 +3,11 @@
 pkgname=php-legacy-xdebug
 _extname=xdebug
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Xdebug is an extension for PHP, and provides a range of features to improve the PHP development experience. This package provides xdebug for use with php-legacy."
 arch=("x86_64")
 url="https://xdebug.org/"
-license=('Xdebug')
+license=('custom:Xdebug')
 depends=("php-legacy")
 makedepends=()
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
