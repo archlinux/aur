@@ -1,13 +1,13 @@
 # Maintainer: Viktor A. Rozenko Voitenko <sharp.vik@gmail.com>
 pkgname=sema
-pkgver=2.1.1
-pkgrel=18
+pkgver=3.0.0
+pkgrel=19
 pkgdesc="Semantic commit tool"
 arch=(x86_64)
 url="https://github.com/sharpvik/sema"
 license=('MIT')
 depends=()
-makedepends=(git go)
+makedepends=(git go mage)
 provides=(sema)
 conflicts=()
 replaces=()
@@ -19,5 +19,5 @@ md5sums=('SKIP')
 package() {
     mkdir -p $(go env GOPATH)/bin
     cd $pkgname
-    go install
+    mage install
 }
