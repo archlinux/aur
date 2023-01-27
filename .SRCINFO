@@ -1,7 +1,7 @@
 pkgbase = jasp-desktop
 	pkgdesc = A complete statistical package for both Bayesian and Frequentist statistical methods
 	pkgver = 0.17.0
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/jasp-stats/jasp-desktop
 	arch = x86_64
 	arch = aarch64
@@ -50,7 +50,6 @@ pkgbase = jasp-desktop
 	depends = r-jaspmachinelearning
 	depends = r-jaspmetaanalysis
 	depends = r-jaspnetwork
-	depends = r-jaspprocesscontrol
 	depends = r-jaspprophet
 	depends = r-jaspreliability
 	depends = r-jaspsem

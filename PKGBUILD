@@ -4,7 +4,7 @@ _pkgname=jasp
 _pkgver=0.17.0
 pkgname=jasp-desktop
 pkgver=0.17.0
-pkgrel=5
+pkgrel=7
 pkgdesc="A complete statistical package for both Bayesian and Frequentist statistical methods"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jasp-stats/jasp-desktop"
@@ -58,7 +58,6 @@ depends=('r'
 "r-jaspmachinelearning"
 "r-jaspmetaanalysis"
 "r-jaspnetwork"
-"r-jaspprocesscontrol"
 "r-jaspprophet"
 "r-jaspreliability"
 "r-jaspsem"
