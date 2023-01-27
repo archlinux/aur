@@ -2,15 +2,15 @@
 # Maintainer: tugyan <bilaltasdelen AT windowslive DOT com>
 # Maintainer: Aviana Cruz <gwencroft@proton.me>
 
-_electron_ver=18
+_electron_ver=22
 pkgname=kuro
-pkgver=8.1.6
-pkgrel=3
+pkgver=8.1.7
+pkgrel=1
 pkgdesc='An elegant Microsoft ToDo desktop client for Linux'
 arch=('any')
 url='https://github.com/davidsmorais/kuro'
 license=('MIT')
-depends=("electron$_electron_ver")
+depends=("electron")
 makedepends=('nodejs' 'yarn')
 provides=('ao' 'kuro')
 conflicts=('ao' 'ao-git' 'kuro-appimage')
@@ -19,7 +19,7 @@ source=("$pkgname"
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d206aef3ec01016487003ae53f59b675ffcaae41d6c27f87f5a92f18bd3b75ab'
             'a7602db570ab593499661d88feb6775c1a97458df2493ac1fe91f24b14911d2c'
-            '81d7656c7ef6927597b2e87fe28df2dcb60d9b0c80fd729f8171f62419b92d4f')
+            '51d557cf831801fc15badc8429d9a5907b2f86fb1ccfc22308e6a12d8ef530d2')
 
 build() {
     cd "$pkgname-$pkgver"
