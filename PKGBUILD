@@ -3,12 +3,13 @@
 pkgname=disk-burnin-and-testing-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.0.r2.g66c5bb6
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell script for burn-in and testing of new or re-purposed drives"
 arch=('any')
 url="https://github.com/Spearfoot/disk-burnin-and-testing"
 license=('MIT')
 depends=(e2fsprogs smartmontools)
+makedepends=('git')
 optdepends=('inetutils: for hostname logging')
 source=("git+https://github.com/Spearfoot/disk-burnin-and-testing.git")
 md5sums=('SKIP')
