@@ -2,13 +2,13 @@
 # Co-Maintainer: Solomon Choina <shlomochoina@gmail.com>
 _pkgbase=gplugin
 pkgname="$_pkgbase-hg"
-pkgver=1764.3075aaa51b17
+pkgver=1951.7e519d51af72
 pkgrel=1
 pkgdesc="GObject based library that implements a reusable plugin system"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://bitbucket.org/gplugin/gplugin"
+url="https://keep.imfreedom.org/gplugin/gplugin/"
 license=('GPL')
-depends=('glib2' 'gobject-introspection-runtime')
+depends=('glib2' 'gtk4' 'lua')
 makedepends=('mercurial' 'meson' 'gobject-introspection' 'gtk3' 'perl-glib-object-introspection'
              'python-gobject' 'lua53-lgi' 'libxslt' 'help2man' 'vala')
 optdepends=('gtk3: for GTK+ support'
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
-  arch-meson build -Dperl5=false
+  arch-meson build
 }
 
 build() {
