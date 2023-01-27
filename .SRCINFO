@@ -1,7 +1,7 @@
 pkgbase = jasp-desktop
 	pkgdesc = A complete statistical package for both Bayesian and Frequentist statistical methods
 	pkgver = 0.17.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/jasp-stats/jasp-desktop
 	arch = x86_64
 	arch = aarch64
@@ -57,6 +57,7 @@ pkgbase = jasp-desktop
 	depends = r-jaspsummarystatistics
 	depends = r-jaspvisualmodeling
 	depends = r-jaspacceptancesampling
+	depends = r-jaspqualitycontrol
 	provides = jasp
 	source = jasp-desktop-0.17.0.tar.gz::https://github.com/jasp-stats/jasp-desktop/archive/refs/tags/v0.17.0.tar.gz
 	source = jasp.sh
