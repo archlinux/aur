@@ -3,7 +3,7 @@
 
 set -u
 pkgbase="linux-lts414"
-pkgver="4.14.303"
+pkgver="4.14.304"
 _srcname="linux-${pkgver%.*}"
 pkgrel='1'
 arch=('x86_64')
@@ -16,15 +16,14 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
   'config'         # the main kernel config file
-  '60-linux.hook'  # pacman hook for depmod
-  '90-linux.hook'  # pacman hook for initramfs regeneration
-  'linux-lts.preset'   # standard config files for mkinitcpio ramdisk
   # disable USER_NS for non-root users by default
   '0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch'
   # https://bugs.archlinux.org/task/56711
   '0003-Revert-drm-i915-edp-Allow-alternate-fixed-mode-for-e.patch'
   # https://github.com/NixOS/nixpkgs/pull/61076
   '0004-export_kernel_fpu_functions.patch'
+  # add modules.builtin.modinfo
+  '0005-898490c010b.patch' # https://pkgbuild.com/~bgyorgy/files/898490c010b.patch
 )
 if ! :; then
   source+=("${source[0]/.xz/.sign}")
@@ -36,23 +35,19 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
-         '691816e371719992bfe5d78b94134b4d'
+         '4b70bc641c7e860b892d544874fd5198'
          '5f6f6b9912a99cd91901f17230aa33e5'
-         'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         'a85bfae59eb537b973c388ffadb281ff'
-         'a329f9581060d555dc7358483de9760a'
          '53523555d234de3b2fde749096ba9948'
          '95204750f94a5f6d2d19e021736265d5'
-         'f7d76cdef5cf4ac6a49115fc4f1f35d5')
+         'f7d76cdef5cf4ac6a49115fc4f1f35d5'
+         'b7e3c03892c1c45aa19e11aff82b388c')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-            'd4f54862ebdbbc57e57cc6a98cd53ef54a2fd47f0ba8ef613d9c344ec139d86f'
+            'cf52b30c24ca72b567e875f58a36a0af1bd3a340f45042ad2f39164805f8e42f'
             '9c66504e209bef802f6d256d66a3a90463c988501aeda2d5f45bdde5e17dacc2'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98'
             'b6c56ff2dffebe164941ac3428351e158c9c059e884057ecfc215eeea12e76eb'
-            'caba7945805b1ade42e42d2f981ccdd8791c76f39166212f7970a78057582474')
+            'caba7945805b1ade42e42d2f981ccdd8791c76f39166212f7970a78057582474'
+            '8efff55ae9dd776ff4ac109e736e8040858f441ae1900435bdeb9f366a53d68f')
 
 _kernelname=${pkgbase#linux}
 
@@ -169,11 +164,9 @@ _package() {
   set -u
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   #[ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
   optdepends=('crda: to set the correct wireless channels of your country')
   optdepends+=('linux-firmware-uncompressed: hardware support')
-  backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux-lts.install
   #provides=("linux=${pkgver}") # not permitted by order of Arch TU
 
   cd "${_srcname}"
@@ -185,11 +178,13 @@ _package() {
 
   mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
   make -j1 "${_makeopts[@]}" LOCALVERSION= INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  cp arch/x86/boot/bzImage "${pkgdir}/boot/vmlinuz-${pkgbase}"
 
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  ln -sr "${pkgdir}/boot/vmlinuz-${pkgbase}" "${pkgdir}/usr/lib/modules/${_kernver}/vmlinuz"
+  cp arch/x86/boot/bzImage "${pkgdir}/usr/lib/modules/${_kernver}/vmlinuz"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_kernver}/pkgbase"
 
   # make room for external modules
   local _extramodules="extramodules-${_basekernel}${_kernelname:--lts}"
@@ -214,20 +209,6 @@ _package() {
     s|%KERNVER%|${_kernver}|g
     s|%EXTRAMODULES%|${_extramodules}|g
   "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "${_subst}" "${startdir}/${install}" > "${startdir}/${install}.pkg"
-  true && install=${install}.pkg
-
-  # install mkinitcpio preset file
-  sed "${_subst}" ../linux-lts.preset |
-    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
-
-  # install pacman hooks
-  sed "${_subst}" ../60-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/60-${pkgbase}.hook"
-  sed "${_subst}" ../90-linux.hook |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/90-${pkgbase}.hook"
   set +u
 }
 
