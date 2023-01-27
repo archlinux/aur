@@ -1,0 +1,2 @@
+u ntopng - "ntopng Daemon" /var/lib/ntopng
+g ntopng -
