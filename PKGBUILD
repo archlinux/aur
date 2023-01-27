@@ -3,13 +3,14 @@ _pkgname=jaspNetwork
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Network Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
 license=('GPL')
 depends=(r
   r-bootnet
+  r-bdgraph
   r-corpcor
   r-dplyr
   r-foreach

@@ -1,7 +1,7 @@
 pkgbase = r-jaspnetwork
 	pkgdesc = Network Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspNetwork
 	arch = any
 	groups = r-jasp
@@ -10,6 +10,7 @@ pkgbase = r-jaspnetwork
 	makedepends = git
 	depends = r
 	depends = r-bootnet
+	depends = r-bdgraph
 	depends = r-corpcor
 	depends = r-dplyr
 	depends = r-foreach
