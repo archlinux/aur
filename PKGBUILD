@@ -1,11 +1,12 @@
-# Maintainer: Alad Wenter <alad@archlinux.org>
+# Maintainer: Daniel Menelkir <menelkir@gmail.com>
+# Contribitor: Alad Wenter <alad@archlinux.org>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
 pkgname=mksh
 _pkgver=R59c
 pkgver=59.c
-pkgrel=1
+pkgrel=2
 pkgdesc='MirBSD Korn Shell'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
@@ -13,7 +14,7 @@ arch=('x86_64')
 depends=('glibc')
 checkdepends=('ed')
 install=mksh.install
-source=("https://www.mirbsd.org/MirOS/dist/mir/mksh/$pkgname-$_pkgver.tgz")
+source=("http://www.mirbsd.org/MirOS/dist/mir/mksh/$pkgname-$_pkgver.tgz")
 sha256sums=('77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506')
 
 check() {
