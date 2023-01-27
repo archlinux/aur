@@ -1,7 +1,7 @@
 pkgbase = trickle-git
 	pkgdesc = Lightweight userspace bandwidth shaper
 	pkgver = r23.09a1d95
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mariusae/trickle
 	arch = i686
 	arch = x86_64

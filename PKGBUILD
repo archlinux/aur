@@ -4,7 +4,7 @@
 
 pkgname=trickle-git
 pkgver=r23.09a1d95
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight userspace bandwidth shaper"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mariusae/trickle"
