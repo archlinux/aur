@@ -1,4 +1,4 @@
-pkgbase = mesa-git
+pkgbase = mesa-git-adreno
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
 	pkgver = 23.1.0_devel.165442.9db7c1a509f.932463d268438ce945b21718552d92ab
 	pkgrel = 1
@@ -74,4 +74,4 @@ pkgbase = mesa-git
 	sha512sums = SKIP
 	sha512sums = 25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2
 
-pkgname = mesa-git
+pkgname = mesa-git-adreno
