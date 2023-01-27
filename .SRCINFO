@@ -18,8 +18,10 @@ pkgbase = dart-system
 	source = .gclient
 	source = DEPS
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	source = git+https://dart.googlesource.com/sdk.git#tag=2.19.0
 	sha512sums = 23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf
-	sha512sums = d58d78ff99834ecd5d9cbcd0be86c237c10e2b91992cadb3d6d0fcc26512dae0138027754ec628945fc8224605d5da3c4056c8e41767a187ad4572a2e2af4b91
+	sha512sums = b5983441a19bcfceda7aa308e9729d74972c18fccbb106cb0f9ab9deb38201586d89738265ae11139a8ff979d31c8179361b6750b0de7ec5251486e518d9fb39
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = dart-system

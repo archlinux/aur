@@ -18,10 +18,12 @@ depends=()
 license=('BSD')
 makedepends=('setconf' 'clang' 'gn' 'ninja' 'dart' 'python')
 source=(".gclient"
-		"DEPS"
-        "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git")
+        "DEPS"
+        "git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
+        "git+https://dart.googlesource.com/sdk.git#tag=$pkgver")
 sha512sums=('23d1fc8ab529a5a12894aed5ccfc2d511d02f3a484bd7ed634a69e0f52b22b4f8ac071bfe3c161f8b93e6cc8af932726dc76d05c96154ab5f5dde65ad55b78cf'
-            'd58d78ff99834ecd5d9cbcd0be86c237c10e2b91992cadb3d6d0fcc26512dae0138027754ec628945fc8224605d5da3c4056c8e41767a187ad4572a2e2af4b91'
+            'b5983441a19bcfceda7aa308e9729d74972c18fccbb106cb0f9ab9deb38201586d89738265ae11139a8ff979d31c8179361b6750b0de7ec5251486e518d9fb39'
+            'SKIP'
             'SKIP')
 provides=("dart" "dart-sdk")
 conflicts=("dart" "dart-sdk")
@@ -29,13 +31,9 @@ conflicts=("dart" "dart-sdk")
 prepare() {
   cd $srcdir
   sed -i "s|'error'|'debug'|g" depot_tools/gclient_scm.py
-  export PATH="${srcdir}/depot_tools:$PATH"
-  export DEPOT_TOOLS_UPDATE=0
-  echo "Please clean your srcdir before build!"
-  git clone --depth=1 --branch=$pkgver https://dart.googlesource.com/sdk.git
-  cd sdk
-  cp ../DEPS .
-  python ../depot_tools/gclient.py sync --no-history -nDv
+  export PATH="${srcdir}/depot_tools:$PATH" DEPOT_TOOLS_UPDATE=0
+  cp DEPS sdk/
+  python depot_tools/gclient.py sync --no-history -nDv
 }
 
 build() {
@@ -65,7 +63,7 @@ build() {
 
   dart tools/generate_package_config.dart
 
-  gn gen -qv out --args='target_os = "linux"
+  /usr/bin/gn gen -qv out --args='target_os = "linux"
                         host_cpu = "x64"
                         target_cpu = "x64"
                         dart_target_arch = "x64"
@@ -94,7 +92,6 @@ build() {
                         dart_use_debian_sysroot = false
                         verify_sdk_hash = false'
 
-  #sed -i 's|.\.\/buildtools\/linux\-x64\/clang\/bin\/|\/usr\/bin\/|g' out/toolchain.ninja # use system clang
   sed -i 's|ldflags}|ldflags} -fuse-ld=lld|g' out/toolchain.ninja # use system ldd
   ninja create_sdk -v -C out
 }
