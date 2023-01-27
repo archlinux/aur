@@ -3,7 +3,7 @@
 pkgname=eastl
 _pkgname=EASTL
 pkgver=3.18.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('any')
 url="https://github.com/electronicarts/EASTL"
@@ -47,6 +47,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DEASTL_BUILD_TESTS=OFF \
         -DEASTL_BUILD_BENCHMARK=OFF \
+        -DBUILD_SHARED_LIBS=ON \
         -B"${srcdir}/${_pkgname}-${pkgver}/build" \
         -H"${srcdir}/${_pkgname}-${pkgver}"
 
