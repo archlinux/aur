@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=compressonator-cli-bin
 pkgver=4.3.206
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for GPU texture compression, decompression, format transcoding, and more"
 arch=('x86_64')
 url="https://github.com/GPUOpen-Tools/compressonator"
@@ -16,7 +16,6 @@ sha256sums=('48d3d7bbfd40e2bd1f2a3272bb3395864356f81702b0ee02cf613aa80ec554e2'
 backup=()
 
 package() {
-  tree
   mkdir -p "$pkgdir"/usr/lib/compressonator-cli-bin
   mkdir "$pkgdir"/usr/bin
   cp compressonatorcli "$pkgdir"/usr/bin/
