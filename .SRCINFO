@@ -1,7 +1,7 @@
 pkgbase = craftos-pc-accelerated-bin
 	pkgdesc = Advanced ComputerCraft emulator written in C++ (AppImage binary)
 	pkgver = 2.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	license = MIT
