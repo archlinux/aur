@@ -10,7 +10,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.40.10
+pkgver=1.40.12
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -54,8 +54,7 @@ checkdepends=(
   libx11
   python-dbus
 )
-options=(debug)
-_commit=5a82c141562dc3a23c73514f7981d76c8b55ea19  # tags/1.40.10^0
+_commit=4a41ba460e45ca872af97fb2bb23c71a563399a9  # tags/1.40.12^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
