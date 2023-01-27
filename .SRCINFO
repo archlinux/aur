@@ -1,0 +1,14 @@
+pkgbase = r-polycor
+	pkgdesc = Polychoric and Polyserial Correlations
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=polycor
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-admisc
+	depends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/polycor_0.8-1.tar.gz
+	sha256sums = f05f53e0b5c992de0e5b4c6b2e998148cf83310358821e1bba180d81face0509
+
+pkgname = r-polycor
