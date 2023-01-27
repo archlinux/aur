@@ -9,9 +9,9 @@ pkgbase = cht.sh-git
 	depends = curl
 	depends = xsel
 	depends = rlwrap
+	provides = cht.sh
 	conflicts = cht.sh
 	source = cht.sh-git::git+https://github.com/chubin/cheat.sh
 	sha256sums = SKIP
 
 pkgname = cht.sh-git
-
