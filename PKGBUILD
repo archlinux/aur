@@ -3,7 +3,7 @@
 pkgname=rustdesk-server-bin
 _pkgname=rustdesk-server
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="RustDesk Server Program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk-server"
@@ -14,13 +14,15 @@ source=(
 "${_pkgname}-hbbs.service"
 "${_pkgname}-hbbr.service"
 "${_pkgname}.sysusers"
+"${_pkgname}.tmpfiles"
 )
 source_x86_64=("${_pkgname}-${pkgver}-amd64.zip::${url}/releases/download/${pkgver/_/-}/${_pkgname}-linux-amd64.zip")
 source_aarch64=("${_pkgname}-${pkgver}-arm64.zip::${url}/releases/download/${pkgver/_/-}/${_pkgname}-linux-arm64v8.zip")
 
 sha256sums=('ab4826703bfa96f5371f02fcb4575fff435554d575213cedca8cb1f39564601e'
             'bf6bdb07ae69d6cfde433781f23376036cb9ad2f1bc1fc7ee44bd56de38ad11d'
-            '09d880c1c7987e9e7262c9f2fb56120d14b708238f3c7f14c800e6234b798440')
+            '09d880c1c7987e9e7262c9f2fb56120d14b708238f3c7f14c800e6234b798440'
+            'bdea355562f43f6045e2b52f6dbb4d84ffffa1efec464446b2b2e10e336d6ddb')
 sha256sums_x86_64=('5af16886d70b53420348ee8aa03413d3b88206a26bf73e1f92710d2a9fe67e22')
 sha256sums_aarch64=('24f286dbe996d1765fddf4fe97956bac7343316c9405596405d1a57272474468')
 install=${_pkgname}.install
@@ -36,4 +38,6 @@ package() {
 
      install -Dm644 $srcdir/rustdesk-server.sysusers  \
           ${pkgdir}/usr/lib/sysusers.d/rustdesk-server.conf
+     install -Dm644 $srcdir/rustdesk-server.tmpfiles \
+          ${pkgdir}/usr/lib/tmpfiles.d/rustdesk-server.conf
 }
