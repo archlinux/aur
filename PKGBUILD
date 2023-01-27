@@ -9,7 +9,7 @@ url='https://github.com/HikaruDY/6relayd'
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git')
-depends=()
+depends=('glibc')
 source=('git+https://github.com/HikaruDY/6relayd.git#branch=master')
 sha256sums=('SKIP')
 
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    CFLAGS="${CFLAGS} -Wno-format-security -D_GNU_SOURCE" ./configure --prefix="${pkgdir}/usr" --static
+    ./configure --shared --prefix="${pkgdir}/usr"
     sed -i "s|XBIN_DIR=.*|XBIN_DIR=bin|g" Project.settings
-    make static-app
+    make CFLAGS="${CFLAGS} -D_GNU_SOURCE -fno-toplevel-reorder -Wno-format-security -Wno-format-security" shared-app
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install-static-app
+    make install-shared-app
 }
