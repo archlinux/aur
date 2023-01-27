@@ -3,7 +3,7 @@
 _pkgname=cSEM
 _pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Composite-Based Structural Equation Modeling'
 arch=('any')
