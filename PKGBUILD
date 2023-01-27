@@ -4,7 +4,7 @@ pkgver=8.6.1
 pkgrel=1
 pkgdesc="Logstash - transport and process your logs, events, or other data"
 arch=('x86_64')
-url="https://www.elastic.co/products/logstash/"
+url="https://www.elastic.co/logstash/"
 license=('Apache')
 # groups=()
 depends=('java-runtime-headless>=11' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
