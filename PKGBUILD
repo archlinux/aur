@@ -1,9 +1,9 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
-_clientver=15
 pkgname=ovpn-dco-dkms
-pkgver=15_beta
+pkgver=0.1.20221107
 pkgrel=1
+epoch=1
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 3'
 arch=('any')
 url='https://github.com/OpenVPN/ovpn-dco'
@@ -12,7 +12,7 @@ depends=('dkms')
 makedepends=('git')
 provides=('ovpn-dco' 'ovpn-dco-dkms')
 conflicts=('ovpn-dco' 'ovpn-dco-git' 'ovpn-dco-dkms-git')
-source=("git+https://github.com/OpenVPN/ovpn-dco.git#tag=linux-client-v${_clientver}"
+source=("git+https://github.com/OpenVPN/ovpn-dco.git#tag=v${pkgver}"
         dkms.conf.in)
 b2sums=('SKIP'
         'ef58d221d70302cc41831e7ef3337954510540f2d59d85cb1f2767ee718324ad5568544053f64b7de00377d9620bb9f6df1ed1befcefabfc5530bec317ffde47')
