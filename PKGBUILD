@@ -2,7 +2,7 @@
 pkgname=python-dbx
 _name=dbx
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
 url="https://docs.databricks.com/dev-tools/dbx.html"
@@ -15,10 +15,10 @@ depends=(
 	"python-typer>=0.7.0" "python-typer<1.0.0"
 	"python-retry>=0.9.2" "python-retry<1.0.0"
 	"python-requests>=2.24.0" "python-requests<3.0.0"
-	"python-mlflow>=1.28.0" "python-mlflow<2.0.0" # Upstream requires "python-mlflow-skinny==1.28.0" but it's not available in Arch/AUR
+	"python-mlflow>=1.28.0" "python-mlflow<3.0.0" # Upstream requires "python-mlflow-skinny" but it's not available in Arch/AUR
 	"python-yaml>=6.0"
 	"python-pydantic>=1.9.1" "python-pydantic<=2.0.0"
-	"python-cryptography>=3.3.1" "python-cryptography<39.0.0" # Upstream sets 38 as max, but it's backward compatible, so we set 39
+	"python-cryptography>=3.3.1" "python-cryptography<40.0.0"
 	"python-cookiecutter>=1.7.2" "python-cookiecutter<3.0.0"
 	"python-jinja>=2.11.2"
 	"python-aiohttp>=3.8.1"
