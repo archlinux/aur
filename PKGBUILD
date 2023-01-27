@@ -33,6 +33,8 @@ prepare() {
   sed -i "s|'error'|'debug'|g" depot_tools/gclient_scm.py
   export PATH="${srcdir}/depot_tools:$PATH" DEPOT_TOOLS_UPDATE=0
   cp DEPS sdk/
+  echo "If it fails on next command, try to uncomment the next line on the PKGBUILD, forcing re-fetch and re-build everything"
+  #rm -rf $srcdir/sdk/*
   python depot_tools/gclient.py sync --no-history -nDv
 }
 
