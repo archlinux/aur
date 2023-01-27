@@ -1,23 +1,17 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
-# This package is forked from community/gpac; original contributors:
+# Maintainer: Robert Mandic <sir.mandic@gmail.com>
+# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 _pkgname=gpac
 pkgname=$_pkgname-git
-pkgver=0.5.2.r3552.ge1fa8f051
-pkgrel=2
-epoch=1
+pkgver=2.2.0.r35.gbbca86917
+pkgrel=1
 pkgdesc="A multimedia framework based on the MPEG-4 Systems standard (git version)"
 arch=('i686' 'x86_64')
 url="https://gpac.wp.imt.fr/"
-license=('LGPL')
-depends=('ffmpeg' 'glu' 'libxv' 'openssl')
-makedepends=('git' 'jack' 'a52dec' 'freetype2' 'faad2' 'libmad' 'mesa' 'sdl2')
-optdepends=('jack: for jack support'
-            'a52dec: for A52 support'
-            'faad2: for AAC support'
-            'libmad: for mp3 support'
-            'sdl2: for sdl support')
+license=('LGPL2.1')
+depends=('faad2' 'ffmpeg' 'a52dec' 'libmad' 'python-setuptools')
+makedepends=('alsa-lib' 'freetype2' 'git' 'jack2' 'libjpeg-turbo' 'libpng' 'libogg' 'libpulse' 'libtheora' 'libvorbis' 'mesa' 'sdl2' 'xvidcore' 'zlib')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(git+https://github.com/gpac/gpac.git)
@@ -32,10 +26,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  ./configure \
-    --prefix=/usr \
-    --mandir=/usr/share/man \
-    --use-js=no
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 

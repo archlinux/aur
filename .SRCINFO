@@ -1,33 +1,33 @@
 pkgbase = gpac-git
 	pkgdesc = A multimedia framework based on the MPEG-4 Systems standard (git version)
-	pkgver = 0.5.2.r3552.ge1fa8f051
-	pkgrel = 2
-	epoch = 1
+	pkgver = 2.2.0.r35.gbbca86917
+	pkgrel = 1
 	url = https://gpac.wp.imt.fr/
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	makedepends = git
-	makedepends = jack
-	makedepends = a52dec
+	license = LGPL2.1
+	makedepends = alsa-lib
 	makedepends = freetype2
-	makedepends = faad2
-	makedepends = libmad
+	makedepends = git
+	makedepends = jack2
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = libogg
+	makedepends = libpulse
+	makedepends = libtheora
+	makedepends = libvorbis
 	makedepends = mesa
 	makedepends = sdl2
+	makedepends = xvidcore
+	makedepends = zlib
+	depends = faad2
 	depends = ffmpeg
-	depends = glu
-	depends = libxv
-	depends = openssl
-	optdepends = jack: for jack support
-	optdepends = a52dec: for A52 support
-	optdepends = faad2: for AAC support
-	optdepends = libmad: for mp3 support
-	optdepends = sdl2: for sdl support
-	provides = gpac=0.5.2.r3552.ge1fa8f051
+	depends = a52dec
+	depends = libmad
+	depends = python-setuptools
+	provides = gpac=2.2.0.r35.gbbca86917
 	conflicts = gpac
 	source = git+https://github.com/gpac/gpac.git
 	sha256sums = SKIP
 
 pkgname = gpac-git
-
