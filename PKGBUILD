@@ -42,8 +42,8 @@ check() {
 
 package() {
     install -D -m 0755 CraftOS-PC_$pkgver.AppImage "$pkgdir/opt/craftos-pc-accelerated/CraftOS-PC.AppImage"
-    install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
     cd "craftos2-$pkgver-luajit"
+    install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
     install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
 	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos-luajit.png"
 	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos-luajit.png"
