@@ -5,25 +5,23 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2022.5
-_channel=stable
+_pkgver=2023.1
+_channel=beta
 _rel=1
-# beta
-#pkgver=${_pkgver}.${_channel}${_rel}
-# stable
-pkgver=${_pkgver}.${_channel}
-pkgrel=4
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'nodejs>=16' 'npm>=8.3' 'libxcrypt-compat')
+makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
+_tag=5192b7e463aa198504819c3e1c2c894b26f1ddc4  # tags/2023.1-beta1^0
 _commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -34,8 +32,9 @@ sha256sums=('SKIP'
             'ea35edffea2cbbb05586abce19581fdd9f133801ed47e6af30fa64a29c5cf116'
             '2262346cb57deb187fe32a88ccd873dab669598889269088e749197c6e88954f')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
-              '4B986EF5222BA1B810230C602F391DE6B00D619C') # Oskar Nyberg (code signing) <oskar@mullvad.net>
+#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
+#              '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
+              )
 
 prepare() {
   cd "$srcdir/mullvadvpn-app"
@@ -68,7 +67,7 @@ prepare() {
 build() {
   cd "$srcdir/mullvadvpn-app"
   local RUSTC_VERSION=$(rustc --version)
-  local PRODUCT_VERSION=$(cd gui/; node -p "require('./package.json').version" | sed -Ee 's/\.0//g')
+  local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 
@@ -102,6 +101,7 @@ build() {
   echo "Updating relays.json..."
   cargo run --bin relay_list --frozen --release > dist-assets/relays.json
 
+  # Move binaries to correct locations in dist-assets
   binaries=(
     mullvad-daemon
     mullvad
