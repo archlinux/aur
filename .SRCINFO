@@ -1,6 +1,6 @@
 pkgbase = spicetify-extensions-charlies-git
 	pkgdesc = CharlieS1103's extensions for spicetify.
-	pkgver = r127.ccee5da
+	pkgver = r131.b27d531
 	pkgrel = 1
 	url = https://github.com/CharlieS1103/spicetify-extensions
 	arch = any

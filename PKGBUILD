@@ -1,7 +1,7 @@
 # Maintainer: Zhang Hua <zhanghua.00 at qq dot com>
 
 pkgname=spicetify-extensions-charlies-git
-pkgver=r127.ccee5da
+pkgver=r131.b27d531
 pkgrel=1
 pkgdesc="CharlieS1103's extensions for spicetify."
 arch=("any")
@@ -28,9 +28,9 @@ package(){
     install -Dm644 "${srcdir}/spicetify-extensions-charlies.hook" \
         "${pkgdir}/usr/share/libalpm/hooks/spicetify-extensions-charlies.hook"
     plugins=(adblock featureshuffle fixEnhance formatColors phraseToPlaylist songstats wikify)
-    for dir in ${plugins[@]}
+    for file in */*.js
     do
-        install -Dm644 ${dir}/${dir}.js "${pkgdir}/usr/share/spicetify-cli/Extensions/${dir}.js"
+        install -Dm644 ${file} "${pkgdir}/usr/share/spicetify-cli/Extensions/$(basename ${file})"
     done
 
 }
