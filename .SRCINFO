@@ -1,0 +1,13 @@
+pkgbase = r-randtoolbox
+	pkgdesc = Toolbox for Pseudo and Quasi Random Number Generation and Random Generator Tests
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=randtoolbox
+	arch = x86_64
+	license = BSD
+	depends = r
+	depends = r-rngwell
+	source = https://cran.r-project.org/src/contrib/randtoolbox_2.0.3.tar.gz
+	sha256sums = 158ece65ca25689ca7cf1d1bdd33835ed0b8f36fcad1ef451fdee96a93e44344
+
+pkgname = r-randtoolbox
