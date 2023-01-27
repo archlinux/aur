@@ -3,8 +3,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=libtiff-lerc
-pkgver=4.4.0
-pkgrel=4
+pkgver=4.5.0
+pkgrel=2
 pkgdesc='Library for manipulation of TIFF images'
 url='http://www.simplesystems.org/libtiff/'
 arch=('x86_64')
@@ -14,17 +14,8 @@ makedepends=('freeglut' 'glu' 'mesa' 'jbigkit')
 optdepends=('freeglut: for using tiffgt')
 provides=('libtiff=4.4.0' 'libtiff.so' 'libtiffxx.so')
 conflicts=('libtiff')
-options=(debug)
-source=(
-  https://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz
-  # fix CVE-2022-2056 / CVE-2022-2057 / CVE-2022-2058: https://bugs.archlinux.org/task/75360
-  $pkgname-4.4.0-fpe_tiffcrop.patch::https://gitlab.com/libtiff/libtiff/-/commit/dd1bcc7abb26094e93636e85520f0d8f81ab0fab.patch
-  # fix CVE-2022-34526: https://bugs.archlinux.org/task/75608
-  $pkgname-4.4.0-CVE-2022-34526.patch::https://gitlab.com/libtiff/libtiff/-/commit/275735d0354e39c0ac1dc3c0db2120d6f31d1990.patch
-)
-sha256sums=('917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed'
-            '049875c6eddef8d0d653ad069fea7483f7b9b1dc2aad8780784301fb3e34b561'
-            '10220d1eecc00f830a1814c0b74388e68c4f0a38ec173038d6e5e8a6ad3cc97f')
+source=(https://download.osgeo.org/libtiff/tiff-${pkgver}.tar.gz)
+sha256sums=('c7a1d9296649233979fa3eacffef3fa024d73d05d589cb622727b5b08c423464')
 
 prepare() {
   cd tiff-${pkgver}
@@ -41,7 +32,7 @@ prepare() {
 
 
 build() {
-  cd tiff-${pkgver}
+  cd tiff-${pkgver//rc*/}
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -53,14 +44,14 @@ build() {
 }
 
 check() {
-  cd tiff-${pkgver}
+  cd tiff-${pkgver//rc*/}
   make check
 }
 
 package() {
-  cd tiff-${pkgver}
+  cd tiff-${pkgver//rc*/}
   make DESTDIR="${pkgdir}" install
-  install -Dm 644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
