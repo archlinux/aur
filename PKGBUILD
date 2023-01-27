@@ -5,7 +5,7 @@
 _electron_ver=22
 pkgname=kuro
 pkgver=8.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc='An elegant Microsoft ToDo desktop client for Linux'
 arch=('any')
 url='https://github.com/davidsmorais/kuro'
