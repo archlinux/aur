@@ -1,10 +1,10 @@
 pkgbase = signal-desktop-beta-bin
 	pkgdesc = Private messaging from your desktop
 	pkgver = 6.4.0beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WhisperSystems/Signal-Desktop#readme
 	install = signal-desktop-beta-bin.install
-	arch = aarch64
+	arch = x86_64
 	license = GPL3
 	depends = gtk2
 	depends = libnotify
