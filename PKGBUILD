@@ -4,7 +4,7 @@
 
 pkgname=libtiff-lerc
 pkgver=4.4.0
-pkgrel=2
+pkgrel=4
 pkgdesc='Library for manipulation of TIFF images'
 url='http://www.simplesystems.org/libtiff/'
 arch=('x86_64')
@@ -22,11 +22,9 @@ source=(
   # fix CVE-2022-34526: https://bugs.archlinux.org/task/75608
   $pkgname-4.4.0-CVE-2022-34526.patch::https://gitlab.com/libtiff/libtiff/-/commit/275735d0354e39c0ac1dc3c0db2120d6f31d1990.patch
 )
-sha256sums=(
-            '917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed'
+sha256sums=('917223b37538959aca3b790d2d73aa6e626b688e02dcda272aec24c2f498abed'
             '049875c6eddef8d0d653ad069fea7483f7b9b1dc2aad8780784301fb3e34b561'
-            '10220d1eecc00f830a1814c0b74388e68c4f0a38ec173038d6e5e8a6ad3cc97f'
-)
+            '10220d1eecc00f830a1814c0b74388e68c4f0a38ec173038d6e5e8a6ad3cc97f')
 
 prepare() {
   cd tiff-${pkgver}
