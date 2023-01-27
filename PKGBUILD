@@ -3,7 +3,7 @@
 _pkgname=symmoments
 _pkgver=1.2.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Symbolic Central and Noncentral Moments of the Multivariate Normal Distribution'
 arch=('any')
