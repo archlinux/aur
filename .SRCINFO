@@ -1,7 +1,7 @@
 pkgbase = python-nutils
 	pkgdesc = Numerical Utilities for Finite Element Analysis
 	pkgver = 7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evalf/nutils
 	arch = any
 	license = MIT
@@ -21,6 +21,8 @@ pkgbase = python-nutils
 	optdepends = python-matplotlib: for interpolation support
 	optdepends = python-meshio: for parsing gmsh files
 	source = nutils-7.2.tar.gz::https://github.com/evalf/nutils/archive/v7.2.tar.gz
+	source = numpy-compatibility.patch::https://github.com/evalf/nutils/pull/770.patch
 	sha512sums = d300cba3b1232e78245e740019ccf3d5840dbc4c72a447eb8c8a9bb8f63029473af3400c023f2c1543c18e951c6f0e2498b4913d2e64d7089232eceaf64bde01
+	sha512sums = SKIP
 
 pkgname = python-nutils
