@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-bin
 pkgver=2.7.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++ (AppImage binary)"
 arch=('x86_64')
@@ -42,8 +42,8 @@ check() {
 
 package() {
     install -D -m 0755 CraftOS-PC_$pkgver.AppImage "$pkgdir/opt/craftos-pc/CraftOS-PC.AppImage"
-    install -D -m 0755 craftos "$pkgdir/usr/bin/craftos"
     cd "craftos2-$pkgver"
+    install -D -m 0755 craftos "$pkgdir/usr/bin/craftos"
     install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC.desktop"
 	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos.png"
 	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos.png"
