@@ -1,7 +1,7 @@
 pkgbase = tree-sitter-viml-git
 	pkgdesc = Tree-sitter parser for VimL
 	pkgver = 0.2.0.r25.g55ff1b0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vigoux/tree-sitter-viml
 	arch = any
 	groups = tree-sitter-grammars
@@ -9,7 +9,7 @@ pkgbase = tree-sitter-viml-git
 	makedepends = git
 	makedepends = tree-sitter
 	makedepends = npm
-	depends = glibc
+	depends = gcc-libs
 	provides = tree-sitter-viml
 	conflicts = tree-sitter-viml
 	source = tree-sitter-viml-git::git+https://github.com/vigoux/tree-sitter-viml.git
