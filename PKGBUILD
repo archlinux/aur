@@ -3,7 +3,7 @@
 _pkgname=rngWELL
 _pkgver=0.10-9
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.10.9
 pkgrel=1
 pkgdesc='Toolbox for WELL Random Number Generators'
 arch=('x86_64')
