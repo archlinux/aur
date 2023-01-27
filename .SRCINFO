@@ -1,7 +1,7 @@
 pkgbase = r-polycor
 	pkgdesc = Polychoric and Polyserial Correlations
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=polycor
 	arch = any
 	license = GPL
