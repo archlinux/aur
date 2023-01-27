@@ -3,7 +3,7 @@
 
 pkgname=progress-quest-bin
 pkgver=6.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Progress Quest is an antic and fantastical computer role-playing game'
 arch=('i686' 'x86_64')
 url='http://progressquest.com/'
@@ -17,7 +17,7 @@ package() {
   install -Dm755 "pq.exe" "${pkgdir}/usr/share/progress-quest/pq.exe"
   cat > "progress-quest" << EOF
 #!/bin/sh
-CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/.progress-quest"
+CONFIG_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/progress-quest"
 mkdir -p "${CONFIG_DIR}"
 cd "${CONFIG_DIR}"
 wine /usr/share/progress-quest/pq.exe
