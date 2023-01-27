@@ -1,0 +1,10 @@
+post_install() {
+  echo "------------------------------------------------------------------------------------"
+  echo "* Please issue the following command to setup the N64_INST environment variable:"
+  echo "    source /etc/profile.d/libdragon.sh"
+  echo "------------------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install $1
+}
