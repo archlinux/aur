@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.01.07
-platform=RB_20221220
+pkgver=2023.01.26
+platform=RB_20230123
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -16,14 +16,18 @@ options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('4bab798a1fa0a15a5368bcda61b203c122853fe6ac3bb33105fd2225287aebd3'
-            'ce4a6281c087c4c22be297c390e2d577f677515fca082fd4e774fe660a0a89af'
+sha256sums=('bb688d2cbc364a8fe6eee082f3857e814cd6e25c522b3dc994c12f4874b407b2'
+            '26b342c1209206abecd9c4f2203606eea0bcaa59a6029ec3b10a1eef36ce3385'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
-  mv -T "$srcdir"/uxp platform/
+  if [ -d platform ]; then
+    cp -rf "$srcdir"/uxp/* "$srcdir"/uxp/.[A-z0-9]* platform/
+  else
+    mv -T "$srcdir"/uxp/ platform/
+  fi
 
   cat > .mozconfig << EOF
 # Comment/uncomment build flags as needed
