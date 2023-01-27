@@ -17,7 +17,7 @@ pkgbase = libtiff-lerc
 	depends = zstd
 	depends = lerc
 	optdepends = freeglut: for using tiffgt
-	provides = libtiff=4.4.0
+	provides = libtiff=4.5.0
 	provides = libtiff.so
 	provides = libtiffxx.so
 	conflicts = libtiff
