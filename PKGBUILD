@@ -3,7 +3,7 @@
 # Contributors: edacval
 
 pkgname=pycharm-professional
-pkgver=2022.3.1
+pkgver=2022.3.2
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('8f845077cc0fa3582348ee3d76a69ff001391b3f3d63a9b279b8039fd6e07622'
+sha256sums=('56430090dd471e106fdc48463027d89de624759f8757248ced9776978854e4f6'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '2c520f63afffa5ef153077fc61e0c3b15a0a9bf8fd4973164af62ec64626a741')
