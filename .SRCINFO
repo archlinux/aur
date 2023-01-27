@@ -1,7 +1,7 @@
 pkgbase = librime-sbxlm-git
 	pkgdesc = Rime input method engine (声笔系列码 GIT version)
-	pkgver = 1.4.0.r366.g5a3caf71
-	pkgrel = 2
+	pkgver = 1.4.0.r419.g271f7d0d
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sbxlmdsl/librime
 	arch = x86_64
