@@ -16,13 +16,13 @@ pkgver=23.1.0_devel.165442.9db7c1a509f.932463d268438ce945b21718552d92ab
 pkgrel=1
 arch=('aarch64')
 makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
+              'libxml2' 'libx11'  'elfutils' 'libxrandr'
               'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'mesa-libgl')
+provides=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
@@ -133,7 +133,7 @@ build () {
        -D gallium-extra-hud=true \
        -D gallium-nine=true \
        -D gallium-opencl=icd \
-       -D gallium-va=enabled \
+       -D gallium-va=disabled \
        -D gallium-vdpau=disabled \
        -D gallium-xa=disabled \
        -D gbm=disabled \
