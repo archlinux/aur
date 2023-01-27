@@ -11,10 +11,10 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgname=mesa-git-adreno
-pkgdesc="an open-source implementation of the OpenGL specification, git version"
+pkgdesc="mesa-git patched for adreno"
 pkgver=23.1.0_devel.165442.9db7c1a509f.932463d268438ce945b21718552d92ab
 pkgrel=1
-arch=('x86_64')
+arch=('aarch64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
               'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
