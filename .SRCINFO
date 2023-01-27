@@ -1,0 +1,33 @@
+pkgbase = libdragon-unstable-git
+	pkgver = r1511.ea7ab1a5
+	pkgrel = 1
+	url = http://www.dragonminded.com/n64dev/libdragon
+	arch = x86_64
+	license = custom:UNLICENSE
+	makedepends = git
+	depends = libpng
+	depends = mips64-elf-gcc
+	depends = mips64-elf-newlib
+	source = git+https://github.com/DragonMinded/libdragon.git#branch=unstable
+	sha256sums = SKIP
+
+pkgname = libdragon-unstable-git
+	pkgdesc = Open source library for Nintendo 64 game development (unstable branch)
+	install = libdragon.install
+	arch = any
+	depends = mips64-elf-gcc
+	depends = mips64-elf-newlib
+	provides = libdragon
+	conflicts = libdragon
+	options = !buildflags
+	options = !strip
+	options = !emptydirs
+
+pkgname = libdragon-tools-unstable-git
+	pkgdesc = Open source tools for Nintendo 64 development (unstable branch)
+	arch = i686
+	arch = x86_64
+	depends = libpng
+	provides = libdragon-tools
+	conflicts = libdragon-tools
+	options = 
