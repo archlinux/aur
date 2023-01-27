@@ -1,0 +1,9 @@
+post_install() {
+    echo
+    echo "==> uinputchars is deprecated, see upstream"
+    echo
+}
+
+post_upgrade() {
+    post_install
+}
