@@ -1,6 +1,6 @@
 pkgbase = electerm
 	pkgdesc = An electron-based SSH/SFTP Connection manager and terminal
-	pkgver = 1.24.13
+	pkgver = 1.25.12
 	pkgrel = 1
 	url = https://electerm.html5beta.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = electerm
 	makedepends = npm
 	depends = nodejs-lts-gallium
 	depends = nss
-	source = electerm-1.24.13.tar.gz::https://github.com/electerm/electerm/archive/refs/tags/v1.24.13.tar.gz
+	source = electerm-1.25.12.tar.gz::https://github.com/electerm/electerm/archive/refs/tags/v1.25.12.tar.gz
 	source = electerm.desktop
 	source = https://raw.githubusercontent.com/electerm/electerm/master/LICENSE
 	sha256sums = SKIP

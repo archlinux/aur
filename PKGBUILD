@@ -2,7 +2,7 @@
 # Mostly based on hyper PKGBUILD
 
 pkgname=electerm
-pkgver=1.24.13
+pkgver=1.25.12
 pkgrel=1
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64' 'aarch64')
