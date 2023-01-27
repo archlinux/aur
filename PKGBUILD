@@ -20,7 +20,8 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${srcdir}/${_name}
-  git tag 0.1 f0d4368
+  _ver=0.1
+  [ -z "$(git tag -l ${_ver})" ] && git tag ${_ver} f0d4368 
   git describe --tags --always --abbrev=8 | sed 's/-g/./;s/-/+git/;s/^v//g'
 }
 
