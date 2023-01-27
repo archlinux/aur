@@ -1,0 +1,13 @@
+pkgbase = 6relayd-git
+	pkgdesc = Embedded DHCPv6/RA Server & Relay
+	pkgver = 20230127.70a27fb
+	pkgrel = 1
+	url = https://github.com/HikaruDY/6relayd
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	source = git+https://github.com/HikaruDY/6relayd.git#branch=master
+	sha256sums = SKIP
+
+pkgname = 6relayd-git
