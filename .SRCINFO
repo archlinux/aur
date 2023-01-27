@@ -1,7 +1,7 @@
 pkgbase = r-jaspbain
 	pkgdesc = Bain Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspBain
 	arch = any
 	groups = r-jasp
@@ -17,6 +17,7 @@ pkgbase = r-jaspbain
 	depends = r-stringr
 	depends = r-jaspbase
 	depends = r-jaspgraphs
+	depends = r-jaspsem
 	source = git+https://github.com/jasp-stats/jaspBain.git
 	sha256sums = SKIP
 
