@@ -22,8 +22,8 @@ pkgname=()
 for _p in "${_pkgname[@]}" ; do 
 	pkgname+=(${_p}-git)
 done
-_pkgver=4.0.0
-pkgver=4.0.0+10+gd8c20fa
+_pkgver=5.6.0
+pkgver=5.6.0+9+g818dba9
 pkgrel=1
 pkgdesc="Various extensions for Nemo"
 arch=('i686' 'x86_64')
@@ -35,11 +35,9 @@ _seahorse_deps=('libcryptui' 'libgnome-keyring')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'git' 'meson')
 makedepends+=("${_preview_deps[@]}" "${_python_deps[@]}" "${_seahorse_deps[@]}")
 options=('!emptydirs')
-source=("${pkgbase}::git+https://github.com/linuxmint/nemo-extensions"
-        'dropbox-remove-python-deps.patch')
-sha256sums=('SKIP'
-            'ac695b3d847368606f5a551db198942dcc0422c20dadf5f6524c2d41ad54a499')
-_release_commit='cdb9295e31d70924e5f7de2367b596f8e191a7cd'
+source=("${pkgbase}::git+https://github.com/linuxmint/nemo-extensions")
+sha256sums=('SKIP')
+_release_commit='374d0353c7bf88d0840eaa4183192f3bcdbb319d'
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
@@ -51,10 +49,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgbase}"
-
-    # Delete deprecated gnome-common macros, even their standard autoconf-archive replacements are
-    # annoying to people who actually set $C(XX)?FLAGS. This drops the unneeded dependency on gnome-common
-    sed -i '/^GNOME_/d' nemo-image-converter/configure.ac
 
 	# nemo-engrampa patches
 	[ -d nemo-engrampa ] && rm -fr nemo-engrampa
@@ -69,8 +63,6 @@ prepare() {
         -e 's:File[\ \-]?[rR]oller:Engrampa:g' '{}' \;
     
     # nemo-dropbox patches
-    cd "${srcdir}/${pkgbase}"/nemo-dropbox
-    patch -uNp2 -r- -i "${srcdir}"/dropbox-remove-python-deps.patch
     
     cd "${srcdir}/${pkgbase}"
     for _dir in "${_pkgname[@]}"; do
@@ -125,8 +117,8 @@ package_nemo-fileroller-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-engrampa-git() {
@@ -136,8 +128,8 @@ package_nemo-engrampa-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-image-converter-git() {
@@ -147,8 +139,8 @@ package_nemo-image-converter-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-preview-git() {
@@ -158,8 +150,8 @@ package_nemo-preview-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-python-git() {
@@ -169,8 +161,8 @@ package_nemo-python-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"/build
-    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-seahorse-git() {
@@ -180,8 +172,8 @@ package_nemo-seahorse-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-share-git() {
@@ -191,8 +183,8 @@ package_nemo-share-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
 
 package_nemo-terminal-git() {
@@ -255,9 +247,10 @@ package_nemo-dropbox-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
     
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
     # install the common license
+	cd ..
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
 
@@ -298,6 +291,6 @@ package_nemo-repairer-git() {
     provides=("${pkgname/-git/}=${_pkgver}")
     conflicts=("${pkgname/-git}")
 
-    cd "${srcdir}/${pkgbase}/${pkgname/-git/}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${pkgbase}/${pkgname/-git/}/build"
+    DESTDIR="${pkgdir}" meson install
 }
