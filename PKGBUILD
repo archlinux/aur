@@ -135,7 +135,7 @@ build () {
        -D gallium-opencl=icd \
        -D gallium-va=enabled \
        -D gallium-vdpau=disabled \
-       -D gallium-xa=enabled \
+       -D gallium-xa=disabled \
        -D gbm=disabled \
        -D gles1=disabled \
        -D gles2=enabled \
