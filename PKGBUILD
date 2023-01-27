@@ -2,7 +2,7 @@
 
 _pkgname=jq.sh
 pkgname=$_pkgname-git
-pkgver=0.3.0.r0.g2a534da
+pkgver=0.4.0.r0.g0d0cb30
 pkgrel=1
 pkgdesc='jq-in-shell integration library'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh'
 license=('MPL2')
 depends=('sh' 'jq' 'moreutils')
 makedepends=('git' 'shellcheck' 'shellspec')
+optdepends=('yq: Adds support for yq, xq and tomlq')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://git.stefanwimmer128.eu/stefanwimmer128/jq.sh.git")
