@@ -1,13 +1,15 @@
 pkgbase = terminus-font-td1
 	pkgdesc = Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)
 	pkgver = 4.49.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://terminus-font.sourceforge.net/
 	arch = any
 	license = GPL2
 	license = custom:OFL
 	makedepends = xorg-bdftopcf
 	makedepends = python
+	makedepends = grub
+	makedepends = freetype2
 	provides = terminus-font
 	conflicts = terminus-font
 	conflicts = terminus-font-otb

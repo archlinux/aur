@@ -9,14 +9,14 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1
 pkgver=4.49.1
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Monospace bitmap font (for X11 and console) with td1 patch (centered ascii tilde)'
 url='http://terminus-font.sourceforge.net/'
 arch=('any')
 license=('GPL2' 'custom:OFL')
 
-makedepends=('xorg-bdftopcf' 'python')
+makedepends=('xorg-bdftopcf' 'python' 'grub' 'freetype2')
 
 conflicts=('terminus-font' 'terminus-font-otb')
 provides=('terminus-font')
@@ -43,6 +43,10 @@ build() {
     --otbdir=/usr/share/fonts/misc \
     --psfdir=/usr/share/kbd/consolefonts
   make all otb
+  # build grub fonts
+  for i in *.bdf; do
+    grub-mkfont -o "$(basename "$i" .bdf).pf2" "$i"
+  done
 }
 
 package() {
@@ -56,6 +60,10 @@ package() {
   install -d "$pkgdir/usr/share/fontconfig/conf.default"
   ln -sr "$pkgdir/usr/share/fontconfig/conf.avail/75-yes-terminus.conf" \
     "$pkgdir/usr/share/fontconfig/conf.default/75-yes-terminus.conf"
+  cd terminus-font-$pkgver
+  for i in *.pf2; do
+    install -D -m644 $i "$pkgdir/usr/share/grub/$i"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
