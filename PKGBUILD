@@ -1,9 +1,10 @@
+# Maintainer: beltsmith <aur@alexgirdler.com>
 # Maintainer: codl <aur@codl.fr>
 pkgname='urn-git'
-pkgver=r96.246a7a6
-pkgrel=2
+pkgver=r124.79817db
+pkgrel=1
 pkgdesc='Split timer for speedrunning'
-url='https://github.com/3snowp7im/urn'
+url='https://github.com/leflores-fisi/urn'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
@@ -12,7 +13,7 @@ makedepends=('imagemagick' 'xxd' 'git')
 
 install='urn-git.install'
 
-source=('git+https://github.com/3snowp7im/urn.git'
+source=('git+https://github.com/leflores-fisi/urn.git'
         'git+https://github.com/3snowp7im/urn-themes.git'
         'urn.desktop')
 sha1sums=('SKIP'
@@ -51,7 +52,7 @@ package () {
     cp -a splits/* "$pkgdir/usr/share/urn/splits/"
 
     for size in 16 22 24 32 36 48 64 72 96 128 256 512; do
-        convert urn.svg -resize ${size}x${size} urn.png
-        install -D -m 644 urn.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/urn.png"
+        convert static/urn.png -resize ${size}x${size} urn-${size}x${size}.png
+        install -D -m 644 urn-${size}x${size}.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/urn.png"
     done
 }
