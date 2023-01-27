@@ -8,7 +8,7 @@ pkgdesc="Music Recognition application for Linux Desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/keshavbhatt/${_name}"
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-multimedia')
 
 conflicts=(${_name})
 provides=(${_name})
