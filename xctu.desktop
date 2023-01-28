@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Version=6.5.8
+Version=6.5.12.2
 Name=XCTU
-Comment=Configuration and Test Utiity
+Comment=Configuration and Test Utility
 Icon=xctu.xpm
 Exec=/usr/bin/xctu
 Terminal=false
