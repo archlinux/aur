@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-plugin-git
-pkgver=1.5.r61.g44d6234
+pkgver=r313.9f49b8d
 pkgrel=1
 pkgdesc='Screen locker for Wayland -- Fork with background plugin support '
 url='https://github.com/mstoeckl/swaylock-plugin'
@@ -24,16 +24,9 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  # Fix ticket FS#31544, sed line taken from gentoo
-  sed -i -e 's:login:system-auth:' "pam/swaylock"
-}
-
 build() {
   mkdir -p build
-  # makepkg is unable to strip the binary, so we tell meson to do it.
-  arch-meson build "${pkgname%-git}" -Dwerror=false --strip
+  arch-meson build "${pkgname%-git}" -Dwerror=false
   ninja -C build
 }
 

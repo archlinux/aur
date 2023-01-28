@@ -1,6 +1,6 @@
 pkgbase = swaylock-plugin-git
 	pkgdesc = Screen locker for Wayland -- Fork with background plugin support
-	pkgver = 1.5.r61.g44d6234
+	pkgver = r313.9f49b8d
 	pkgrel = 1
 	url = https://github.com/mstoeckl/swaylock-plugin
 	arch = i686
