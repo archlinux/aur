@@ -1,8 +1,9 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.153
+pkgver=5.10.165
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -24,9 +25,13 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('3cf2e4519fe451caef0ee0a8beac694612267325f7055fc38d6a990a762f1662'
+md5sums=('d76755cd8c7837b24f03f0ff08249341'
+         'SKIP'
+         '8b8fa773fe9c7938a76ba07ca2933ed8'
+         'd31360693fb06a0d69c1f126350baa6d')
+sha256sums=('971defc48f19ed0a2a7ffd4b48234619cac28895c985c6d747f5b707ba47af0d'
             'SKIP'
-            '2367f59976f6fc902d226229564a98f5d1df3a91e742a292c3deccc3e4a8ffc0'
+            'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e')
 
 export KBUILD_BUILD_HOST=archlinux
