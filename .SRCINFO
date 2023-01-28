@@ -1,7 +1,7 @@
 pkgbase = guapow-staging
 	pkgdesc = On-demand and auto performance optimizer for Linux applications (testing branch. It may not be working properly)
 	pkgver = 1.3.2.RC
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vinifmor/guapow
 	arch = any
 	license = zlib/libpng
@@ -17,7 +17,7 @@ pkgbase = guapow-staging
 	optdepends = unclutter: required for hiding the mouse cursor
 	provides = guapow
 	conflicts = guapow
-	source = https://github.com/vinifmor/guapow/archive/2efd921ce0d6e8aab43b840c0639356e2fe9fe1a.tar.gz
-	sha512sums = 06d838487a05ec79a06616a29e6b20825bab25191cfdc6b0bde9087fc17c8ac8c2a3e3e8230e71f3f5b0a016a75ab682d485a64a95c96fa3f83b92576241a7fa
+	source = https://github.com/vinifmor/guapow/archive/4ac1c02981a531fb654f83bde34255dfbce67d16.tar.gz
+	sha512sums = 07a6a375a2b2ead52f2c7b9511e806f65e48c866ed614f40d395d37e04761dbf8ef74bf6f1e09ba4aabc76343db99b77a95dd3a0b794bae5c431ca27472d133f
 
 pkgname = guapow-staging

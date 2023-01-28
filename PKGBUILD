@@ -3,8 +3,8 @@
 pkgname=guapow-staging
 _pkgname=guapow
 pkgver=1.3.2.RC
-pkgrel=3
-_commit="2efd921ce0d6e8aab43b840c0639356e2fe9fe1a"
+pkgrel=4
+_commit="4ac1c02981a531fb654f83bde34255dfbce67d16"
 pkgdesc="On-demand and auto performance optimizer for Linux applications (testing branch. It may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/guapow"
@@ -16,7 +16,7 @@ makedepends=('git' 'python' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('06d838487a05ec79a06616a29e6b20825bab25191cfdc6b0bde9087fc17c8ac8c2a3e3e8230e71f3f5b0a016a75ab682d485a64a95c96fa3f83b92576241a7fa')
+sha512sums=('07a6a375a2b2ead52f2c7b9511e806f65e48c866ed614f40d395d37e04761dbf8ef74bf6f1e09ba4aabc76343db99b77a95dd3a0b794bae5c431ca27472d133f')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_commit}"
