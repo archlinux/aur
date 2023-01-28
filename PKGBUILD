@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zip-password-finder-git
-pkgver=0.6.1.r0.g0323e21
+pkgver=0.6.2.r0.gb16fb88
 pkgrel=1
 pkgdesc="Find the password of protected ZIP files (git)"
 arch=('x86_64')
