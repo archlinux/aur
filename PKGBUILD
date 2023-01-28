@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika.hyttinen@gmail.com>
 pkgname=cellframe-node
 pkgver=5.1.359
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -58,7 +58,7 @@ package() {
 
 	_prefix="$pkgdir/opt/$pkgname"
 
-	mkdir -p $_prefix/var/{run,lib/wallet,lib/global_db,lib/plugins,log} || true
+	mkdir -p $_prefix/var/{run,lib/wallet,lib/global_db,lib/plugins,log} || return 1
 	
 	DESTDIR="$pkgdir" cmake --install build
 
