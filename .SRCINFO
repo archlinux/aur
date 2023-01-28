@@ -62,7 +62,7 @@ pkgbase = librewolf
 	source = git+https://gitlab.com/librewolf-community/settings.git#commit=71a20c6fff90e7fbcb216f1d644ca1b40b32b8e2
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-	source = 0001-libwebrtc-screen-cast-sync.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = 0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351
@@ -72,7 +72,9 @@ pkgbase = librewolf
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
-	sha256sums = 8c8bb5d4441c8f97c8a817ef6c4670a2d9ab18ceef4d6d4d10e38d341068ec7f
+	sha256sums = b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a
 	sha256sums = 34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51
+	source_aarch64 = 0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
+	sha256sums_aarch64 = 358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a
 
 pkgname = librewolf

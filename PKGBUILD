@@ -82,10 +82,12 @@ source=(
   "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}"
   "default192x192.png"
   "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
-  "0001-libwebrtc-screen-cast-sync.patch" # use modified patch including scoped_glib.cc for aarch64 as well
+  "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch"
   "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"
 )
-  # "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch"
+
+source_aarch64=("0001-libwebrtc-screen-cast-sync_additional_aarch64.patch") # include scoped_glib.cc for aarch64 as well; breaks x86_64 build though?
+
 sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
             'SKIP'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
@@ -93,8 +95,9 @@ sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
-            '8c8bb5d4441c8f97c8a817ef6c4670a2d9ab18ceef4d6d4d10e38d341068ec7f'
+            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a'
             '34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51')
+sha256sums_aarch64=('358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -206,6 +209,11 @@ fi
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
   patch -Np1 -i ../0001-libwebrtc-screen-cast-sync.patch
+
+  if [[ $CARCH == 'aarch64' ]]; then
+    # separate patch to also allow aarch64 to build without breaking x86_64 builds
+    patch -Np1 -i ../0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
+  fi
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
   patch -Np1 -i ../0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
