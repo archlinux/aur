@@ -3,7 +3,7 @@
 _pkgname=scorespy-launcher
 pkgname=${_pkgname}
 pkgdesc="Launcher for ScoreSpy CH, a modified Clone Hero client that submits scores to an online leaderboard."
-pkgver=0.12.388
+pkgver=0.12.420
 pkgrel=1
 provides=('scorespy-launcher')
 conflicts=('scorespy-launcher')
@@ -12,7 +12,7 @@ arch=("x86_64")
 license=("freeware-proprietary")
 _appimage="$_pkgname.AppImage"
 source=("$_appimage"::"https://launcher.scorespy.online/dist/ScoreSpy%20Launcher-${pkgver}.AppImage")
-sha1sums=("3ed3c90b02fa2a8849da6afe4d920766674f9ef0")
+sha1sums=("cf63120e1c5fc9097bba87b54b6ba898578f30d2")
 noextract=("$_appimage")
 options=(!strip)
 
