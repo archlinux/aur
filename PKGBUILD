@@ -3,7 +3,7 @@
 
 pkgname=i3ass-git
 pkgver=r493.20ef288
-pkgrel=1
+pkgrel=2
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
 url='https://github.com/budlabs/i3ass'
