@@ -58,7 +58,7 @@ package() {
 
 	_prefix="$pkgdir/opt/$pkgname"
 
-    mkdir -p $_prefix/var/{run,lib/wallet,lib/global_db,lib/plugins,log} || true
+	mkdir -p $_prefix/var/{run,lib/wallet,lib/global_db,lib/plugins,log} || true
 	
 	DESTDIR="$pkgdir" cmake --install build
 
