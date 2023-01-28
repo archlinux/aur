@@ -1,14 +1,13 @@
 pkgbase = scrawpp
 	pkgdesc = Steam Controller C++ library
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/dennis-hamester/scrawpp
 	arch = any
 	license = custom:ISC
 	makedepends = cmake
 	depends = scraw
-	source = scrawpp-v0.2.1.tar.gz::https://gitlab.com/dennis-hamester/scrawpp/repository/archive.tar.gz?ref=v0.2.1
-	sha256sums = 57a378e08a7efb5491488c9c2c8c1a3a44a1c9c8142880588f58cec8d18eb52d
+	source = scrawpp-v0.2.1.tar.gz::https://gitlab.com/dennis-hamester/scrawpp/-/archive/v0.2.1/scrawpp-v0.2.1.tar.gz
+	sha256sums = 5a692508b6ee6e321fa2ae5aa7f99bee38900caf2f634e9e212e342038ab155d
 
 pkgname = scrawpp
-
