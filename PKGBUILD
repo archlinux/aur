@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=emcee
 pkgname=python-${_pyname}-doc
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Documentation for Python emcee"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=("python-${_pyname}=${pkgver}"
 #            'python-matplotlib'
 #            'python-celerite')
 source=("https://github.com/dfm/emcee/archive/v${pkgver}.tar.gz")
-md5sums=('c0e7c64408c80180a02543b813667a99')
+md5sums=('581717cf24e4dbabc57882628aae5293')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
