@@ -1,7 +1,8 @@
 pkgbase = stylus-git
 	pkgdesc = User styles manager extension for Chrome and Chrome-like things
-	pkgver = 3218.ad5c90e2
+	pkgver = 1.5.29.2.g891d185f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/openstyles/stylus
 	arch = any
 	license = GPL3
