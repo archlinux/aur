@@ -1,9 +1,11 @@
 pkgbase = fastfetch
 	pkgdesc = Like Neofetch, but much faster because written in C
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = MIT
 	makedepends = chafa
 	makedepends = cmake
