@@ -1,19 +1,19 @@
 pkgbase = vscodium-bin-features
 	pkgdesc = Unblock some features in VSCodium
 	pkgver = 1.74.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/microsoft/vscode
 	install = vscodium-bin-features.install
 	arch = any
 	license = unknown
 	depends = vscodium-bin
-	depends = sed
+	depends = python
 	optdepends = org.freedesktop.secrets: for settings sync feature
 	provides = vscodium-bin-features
 	conflicts = vscodium-bin-features
 	source = vscodium-bin-features.hook
-	source = patch.sh
-	md5sums = db01557a15a28a0a0c6c967cdcbb36e3
-	md5sums = 826b75bf714c939ae1ced7aaddc952fc
+	source = patch.py
+	md5sums = a79c54f622b6c12c78bca12753711c7a
+	md5sums = 16393447c984ec562006937dec4c9e35
 
 pkgname = vscodium-bin-features

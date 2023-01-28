@@ -1,15 +1,15 @@
 post_install() {
-  /opt/vscodium-bin-features/patch.sh
+  /opt/vscodium-bin-features/patch.py
 }
 
 pre_upgrade() {
-  /opt/vscodium-bin-features/patch.sh -R
+  /opt/vscodium-bin-features/patch.py -R
 }
 
 post_upgrade() {
-  /opt/vscodium-bin-features/patch.sh
+  /opt/vscodium-bin-features/patch.py
 }
 
 pre_remove() {
-  /opt/vscodium-bin-features/patch.sh -R
+  /opt/vscodium-bin-features/patch.py -R
 }
