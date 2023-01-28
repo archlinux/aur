@@ -1,7 +1,7 @@
 pkgbase = overmind-bin
 	pkgdesc = Overmind is a process manager for Procfile-based applications and tmux
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/DarthSim/overmind
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = overmind-bin
 	provides = overmind
 	conflicts = overmind
 	conflicts = overmind-git
-	noextract = overmind-bin-2.3.0.gz
-	source = overmind-bin-2.3.0.gz::https://github.com/DarthSim/overmind/releases/download/v2.3.0/overmind-v2.3.0-linux-amd64.gz
-	sha256sums = d6a715c0810ceb39c94bf61843befebe04a83a0469b53d6af0a52e2fea4e2ab3
+	noextract = overmind-bin-2.4.0.gz
+	source = overmind-bin-2.4.0.gz::https://github.com/DarthSim/overmind/releases/download/v2.4.0/overmind-v2.4.0-linux-amd64.gz
+	sha256sums = 1f7cac289b550a71bebf4a29139e58831b39003d9831be59eed3e39a9097311c
 
 pkgname = overmind-bin
