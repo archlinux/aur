@@ -2,7 +2,7 @@
 
 pkgname='zellij-selector'
 pkgver='2.3.1'
-pkgrel='2'
+pkgrel='1'
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector'
