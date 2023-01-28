@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator
 	pkgdesc = Yubico Authenticator is a cross-platform application for managing your YubiKey's second factor credentials.
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.yubico.com/yubioath-desktop/
 	arch = x86_64
 	license = GPL
