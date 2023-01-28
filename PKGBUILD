@@ -51,7 +51,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.35.0_3_gd8fbe3c79f
+pkgver=0.35.0_135_g9b59d39a3a
 pkgrel=1
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -123,7 +123,7 @@ done
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  ./version.sh | sed s/-/_/g
+  ./version.py | sed s/-/_/g
 }
 
 build() {
