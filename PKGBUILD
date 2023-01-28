@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-material-you-theme-git
 _uuid='material-you-theme@asubbiah.com'
 pkgver=r98.c04b0b7
-pkgrel=2
+pkgrel=3
 pkgdesc="Applies generated libadwaita theme from wallpaper using Material You"
 arch=('any')
 url="https://github.com/avanishsubbiah/material-you-theme"
@@ -12,10 +12,8 @@ makedepends=('git' 'npm')
 optdepends=('gdm-tools: set the GDM theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/avanishsubbiah/material-you-theme.git'
-        'https://github.com/avanishsubbiah/material-you-theme/pull/56.patch')
-sha256sums=('SKIP'
-            'cf8088d220547417013de81a2b0623572599d65b5b3f474ff858a747b7d93fbd')
+source=('git+https://github.com/avanishsubbiah/material-you-theme.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/material-you-theme"
@@ -28,6 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/material-you-theme"
+  make update-po
 
   # Does not detect system Node.js, NPM, or SassC, 
   # so we'll install in the extension folder like it tries to do anyway
