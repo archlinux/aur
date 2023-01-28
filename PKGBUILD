@@ -3,12 +3,10 @@
 # Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-plugin-git
 pkgver=r313.9f49b8d
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen locker for Wayland -- Fork with background plugin support '
 url='https://github.com/mstoeckl/swaylock-plugin'
 license=('MIT')
-provides=('swaylock')
-conflicts=('swaylock')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2' 'swaybg')
 makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
