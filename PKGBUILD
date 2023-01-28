@@ -6,7 +6,7 @@ pkgdesc="Sugar Candy is the sweetest login theme available for the SDDM display 
 arch=('any')
 url='https://store.kde.org/p/1312658/'
 license=('GPL3')
-depends=('sddm>=0.18' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg')
+depends=('sddm' 'qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-svg')
 makedepends=('git')
 provides=("sddm-sugar-candy")
 conflicts=("sddm-sugar-candy")

@@ -6,7 +6,7 @@ pkgbase = sddm-sugar-candy-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = sddm>=0.18
+	depends = sddm
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
@@ -17,4 +17,3 @@ pkgbase = sddm-sugar-candy-git
 	sha256sums = SKIP
 
 pkgname = sddm-sugar-candy-git
-
