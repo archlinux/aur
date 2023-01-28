@@ -29,20 +29,20 @@ backup=("etc/immich.conf")
 
 build() {
 	#Build web frontend
-	cd "${srcdir}/${pkgname}-${pkgver}-dev/web"	
+	cd "${srcdir}/${pkgname}-${pkgver}/web"
 	npm ci
 	npm run build
 	#npm prune --production
 
 	#Build machine-learning
-	cd "${srcdir}/${pkgname}-${pkgver}-dev/machine-learning"	
+	cd "${srcdir}/${pkgname}-${pkgver}/machine-learning"	
 	npm ci
 	npm rebuild @tensorflow/tfjs-node --build-from-source
 	npm run build
 	npm prune --production
 
 	#Build Server
-	cd "${srcdir}/${pkgname}-${pkgver}-dev/server"
+	cd "${srcdir}/${pkgname}-${pkgver}/server"
 	npm ci
 	npm run build
 	npm prune --production
@@ -52,19 +52,19 @@ build() {
 
 package() {
 	#install server
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}-dev/server/package.json" "${pkgdir}/var/lib/immich/app/server/package.json"
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}-dev/server/package-lock.json" "${pkgdir}/var/lib/immich/app/server/package-lock.json"
-	cp -r "${srcdir}/${pkgname}-${pkgver}-dev/server/node_modules" "${pkgdir}/var/lib/immich/app/server/node_modules"
-	cp -r "${srcdir}/${pkgname}-${pkgver}-dev/server/dist" "${pkgdir}/var/lib/immich/app/server/dist"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/server/package.json" "${pkgdir}/var/lib/immich/app/server/package.json"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/server/package-lock.json" "${pkgdir}/var/lib/immich/app/server/package-lock.json"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/server/node_modules" "${pkgdir}/var/lib/immich/app/server/node_modules"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/server/dist" "${pkgdir}/var/lib/immich/app/server/dist"
 
 	#install web frontend
-	cp -r "${srcdir}/${pkgname}-${pkgver}-dev/web" "${pkgdir}/var/lib/immich/app/web"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/web" "${pkgdir}/var/lib/immich/app/web"
 
 	#install macheine-learning
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}-dev/machine-learning/package.json" "${pkgdir}/var/lib/immich/app/machine-learning/package.json"
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}-dev/machine-learning/package-lock.json" "${pkgdir}/var/lib/immich/app/machine-learning/package-lock.json"
-	cp -r "${srcdir}/${pkgname}-${pkgver}-dev/machine-learning/node_modules" "${pkgdir}/var/lib/immich/app/machine-learning/node_modules"
-	cp -r "${srcdir}/${pkgname}-${pkgver}-dev/machine-learning/dist" "${pkgdir}/var/lib/immich/app/machine-learning/dist"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/machine-learning/package.json" "${pkgdir}/var/lib/immich/app/machine-learning/package.json"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/machine-learning/package-lock.json" "${pkgdir}/var/lib/immich/app/machine-learning/package-lock.json"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/machine-learning/node_modules" "${pkgdir}/var/lib/immich/app/machine-learning/node_modules"
+	cp -r "${srcdir}/${pkgname}-${pkgver}/machine-learning/dist" "${pkgdir}/var/lib/immich/app/machine-learning/dist"
 
 	#link directories
 	ln -s /var/lib/immich/upload "${pkgdir}/var/lib/immich/app/server/upload"
