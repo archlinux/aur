@@ -9,8 +9,7 @@ pkgbase = scraw
 	makedepends = cmake
 	makedepends = doxygen
 	depends = libusb
-	source = scraw-v0.2.1.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v0.2.1
-	sha256sums = fec3f5e3503b1fba5c2905d52c9f56f9611deb2fdfdc592bcf598be2a9f2bc76
+	source = scraw-v0.2.1.tar.gz::https://gitlab.com/dennis-hamester/scraw/-/archive/v0.2.1/scraw-v0.2.1.tar.gz
+	sha256sums = 6b0afd0417577aad482a010b3f2754790b1e2cce59d14711dac3a0dd25afc39c
 
 pkgname = scraw
-
