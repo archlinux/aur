@@ -1,6 +1,6 @@
 # Maintainer: Taylor Allen
 pkgname=shortsync-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="This application makes it easy to keep track of alias, file, and folder shortcuts across multiple applications and shells."
@@ -9,7 +9,7 @@ url="https://github.com/taylo2allen/shortsync.git"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git' 'glibc' 'gcc-libs' 'yaml-cpp')
+makedepends=('git' 'glibc' 'gcc-libs')
 checkdepends=()
 optdepends=('entr')
 provides=('shortsync')
@@ -31,7 +31,8 @@ pkgver() {
 
 build() {
 	cd shortsync
-	make
+	make -C build/ -k all
+	cp -nru build/shortsync bin/
 }
 
 package() {
