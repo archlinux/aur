@@ -3,8 +3,8 @@
 _author=X/XM/XMATH
 _perlmod=Data-Alias
 pkgname=perl-data-alias
-pkgver=1.25
-pkgrel=2
+pkgver=1.28
+pkgrel=1
 pkgdesc='Data::Alias - Comprehensive set of aliasing operations'
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Data-Alias/"
@@ -16,7 +16,7 @@ perl-module-install
 depends=(perl)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha512sums=('aa6b98fa5fb46a9f0b9281a2451a52cda151be8090b84c6c696d4e7bb9c42685ceb4dac69711026975c27ffac7b64eb489b512d6704c01cfe4f15b6e4189e286')
+sha512sums=('7c42d0af8fdbbc67ee3a3c4f98b6a30f87778753fadfc3fac06f4f6c48123ca45c99fe148299db99cd3b9c342c6df1d4785193e5c08526ade8426543687f7f0f')
 unset PERL5LIB PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 \
   PERL_AUTOINSTALL=--skipdeps \
