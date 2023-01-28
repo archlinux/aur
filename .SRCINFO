@@ -1,12 +1,13 @@
 pkgbase = zellij-selector
 	pkgdesc = Select zellij session
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.stefanwimmer128.eu/stefanwimmer128/zellij-selector
 	arch = any
 	license = MPL2
 	makedepends = git
 	makedepends = shellcheck
+	makedepends = getoptions
 	depends = sh
 	depends = libnewt
 	depends = zellij
