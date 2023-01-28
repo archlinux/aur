@@ -1,13 +1,13 @@
 pkgbase = r-distances
 	pkgdesc = Tools for Distance Metrics
-	pkgver = 0.1.8
-	pkgrel = 4
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=distances
 	arch = x86_64
 	license = GPL
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/distances_0.1.8.tar.gz
-	sha256sums = be4bda79078774adc3cf2a69e3aaad2644a21daba81bb17f04c8f48f839ebc56
+	source = https://cran.r-project.org/src/contrib/distances_0.1.9.tar.gz
+	sha256sums = 58553a32388fd2bccea10ae1c3e695af86f017a86fe0a367a41c24223a8a7cbd
 
 pkgname = r-distances
