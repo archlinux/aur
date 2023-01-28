@@ -3,7 +3,7 @@
 cpaname=String-Approx
 cpanauthor=JHI
 pkgname=perl-string-approx
-pkgver=3.27
+pkgver=3.28
 pkgrel=1
 pkgdesc="Perl String::Approx CPAN module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('2b8c1acd24fa9681ebba0ccb3c49f16289de1d579af8a0c898ea8f8d1baf5d36')
+sha256sums=('43201e762d8699cb0ac2c0764a5454bdc2306c0771014d6c8fba821480631342')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
