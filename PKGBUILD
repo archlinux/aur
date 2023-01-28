@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-rst.linker
 _name=${pkgname#python-}
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Can add links and perform other custom replacements to rst"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python-w
 #              'python-pytest-cov' 'python-pytest-enabler' 'python-pytest-flake8'
 #              'python-pytest-mypy' 'python-types-python-dateutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b998df6a456327986b8059584e754d598d88ac8b2eddba9e1425f90d54e66133')
+sha256sums=('b41018765f1f65e3e6dfae6ea23cd699e0a26d8ce34cd3bcfd6f779af2944f01')
 
 build() {
   cd "$_name-$pkgver"

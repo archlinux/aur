@@ -1,6 +1,6 @@
 pkgbase = python-rst.linker
 	pkgdesc = Can add links and perform other custom replacements to rst
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/jaraco/rst.linker
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-rst.linker
 	depends = python
 	depends = python-dateutil
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/r/rst.linker/rst.linker-2.3.1.tar.gz
-	sha256sums = b998df6a456327986b8059584e754d598d88ac8b2eddba9e1425f90d54e66133
+	source = https://files.pythonhosted.org/packages/source/r/rst.linker/rst.linker-2.4.0.tar.gz
+	sha256sums = b41018765f1f65e3e6dfae6ea23cd699e0a26d8ce34cd3bcfd6f779af2944f01
 
 pkgname = python-rst.linker
