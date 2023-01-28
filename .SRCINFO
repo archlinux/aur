@@ -8,6 +8,7 @@ pkgbase = confy-git
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
+	makedepends = blueprint-compiler
 	makedepends = gobject-introspection
 	makedepends = git
 	depends = python
