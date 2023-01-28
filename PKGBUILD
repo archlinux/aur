@@ -2,7 +2,7 @@
 
 pkgname='gog-enter-the-gungeon'
 pkgver=2.1.9.33951
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast-paced bullet hell dungeon crawler with roguelike elements"
 url='http://dodgeroll.com/gungeon/'
 license=('custom')
@@ -28,6 +28,18 @@ package() {
   mv \
     "${srcdir}/data/noarch/game" \
     -t "${pkgdir}/opt/${pkgname}/"
+
+  if [[ "$CARCH" = "x86_64" ]]
+    then
+    rm -f "${pkgdir}/opt/${pkgname}/game/EtG.x86"
+    rm -rf "${pkgdir}/opt/${pkgname}/game/EtG_Data/Mono/x86"
+    rm -rf "${pkgdir}/opt/${pkgname}/game/EtG_Data/Plugins/x86"
+  elif [[ "$CARCH" = "i686" ]]
+    then
+    rm -f "${pkgdir}/opt/${pkgname}/game/EtG.x86_64"
+    rm -rf "${pkgdir}/opt/${pkgname}/game/EtG_Data/Mono/x86_64"
+    rm -rf "${pkgdir}/opt/${pkgname}/game/EtG_Data/Plugins/x86_64"
+  fi
 
   install -D -m 755 -T \
     "${srcdir}/${pkgname}" \
