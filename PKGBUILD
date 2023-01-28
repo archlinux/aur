@@ -21,7 +21,7 @@
 # - depending on libjxl brings 47.6MB of additional dependencies
 # - there's ffmpeg-full, aka ffmpeg-bloatfest in AUR
 #
-# First two are simply incorrect: the only dependency of libjxl that is not in core or extra is highway, which is 3.5MB.
+# First two are simply incorrect: the only dependency (singular, not plural) of libjxl that is not in core or extra is highway, which is 3.4MB.
 # The last one about the existence of ffmpeg-full is a red-herring; you can argue that for any feature of ffmpeg, included or non-included,
 # arbitrarily, yet no such argument was made to turn on AV1/AVIF support, inclusion of libwebp, or less popular encoders such as rav1e.
 #
@@ -38,7 +38,7 @@
 
 pkgname=ffmpeg-jxl
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (with JPEG XL support, supporting jxl screenshots in mpv)'
 arch=(x86_64)
 url=https://ffmpeg.org/
