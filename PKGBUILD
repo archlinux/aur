@@ -1,7 +1,7 @@
 # Maintainer: YSTYLE <lxy5266@live.com>
 
 pkgname=kaf-cli
-pkgver=v1.2.10
+pkgver=v1.2.11
 pkgrel=2
 epoch=
 pkgdesc="把txt文本转成epub与mobi电子书的命令行工具"
@@ -11,8 +11,8 @@ license=('MulanPSL')
 optdepends=('kindlegen: 在x86_64上用于生成标准的mobi格式')
 source_x86_64=("https://github.com/ystyle/TmdTextEpub/releases/download/$pkgver/kaf-cli_${pkgver}_linux_amd64.zip")
 source_aarch64=("https://github.com/ystyle/TmdTextEpub/releases/download/$pkgver/kaf-cli_${pkgver}_linux_arm64.zip")
-sha512sums_x86_64=('6a5efbcd78e1a9dea5b71228c7a05ba9e2a97414d7b80b464f745d19bf91263017e61f24b287e3f55f64be77e898ac09decb465c59d7ba3aea64e5a06155152c')
-sha512sums_aarch64=('0ad9262d6036bd0a291366886a263ea6b9a639ade77307d2a3f850f44c2752d6b1cf7bd5d5b3357f0a566a57b12db4cd333ffb6ef21bbbf4cdfd9157c11582f5')
+sha512sums_x86_64=('bfd8d9599227b5615db01e4c6769d8086bede938abca3bafa879e2914afeee6e19157fa290f5cfa0aec9413663dde601bd6c0fb02e38db60b723b82d5f06df4a')
+sha512sums_aarch64=('2c60d297ac18b698e9c6e9a03deb7b3c6d3f2e339989bcd51f9c91bf292f7b959015fdfa2f3fe2513fab91ba3dff039c35e0e2e25b648b7713bb1ea5c0871cb5')
 
 package() {
     install -Dm755 kaf-cli "$pkgdir/usr/bin/kaf-cli"
