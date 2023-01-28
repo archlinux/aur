@@ -1,11 +1,13 @@
 pkgbase = python-emcee
 	pkgdesc = Kick ass affine-invariant ensemble MCMC sampling
-	pkgver = 3.1.3
+	pkgver = 3.1.4
 	pkgrel = 1
 	url = http://emcee.readthedocs.io
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-h5py
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
@@ -15,7 +17,7 @@ pkgbase = python-emcee
 	optdepends = python-h5py: For HDF5 backend
 	optdepends = python-scipy
 	optdepends = python-emcee-doc: Documentations for emcee
-	source = https://files.pythonhosted.org/packages/source/e/emcee/emcee-3.1.3.tar.gz
-	md5sums = 12ab994a6c9d6b06e681c1352354efa0
+	source = https://files.pythonhosted.org/packages/source/e/emcee/emcee-3.1.4.tar.gz
+	md5sums = b8e2cd950501fc9779f3e0530b24cfea
 
 pkgname = python-emcee

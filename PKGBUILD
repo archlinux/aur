@@ -4,7 +4,7 @@
 pkgbase=python-emcee
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Kick ass affine-invariant ensemble MCMC sampling"
 arch=('any')
@@ -16,9 +16,9 @@ optdepends=('python-tqdm: For progress bars'
             'python-emcee-doc: Documentations for emcee')
 license=('MIT')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-scipy' 'python-h5py')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('12ab994a6c9d6b06e681c1352354efa0')
+md5sums=('b8e2cd950501fc9779f3e0530b24cfea')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,7 +29,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-emcee() {
