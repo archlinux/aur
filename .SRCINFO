@@ -1,0 +1,18 @@
+pkgbase = im-emoji-picker-ibus-git
+	pkgdesc = emoji picker compatible with Linux systems using either XServer or Wayland with either Fcitx5 or IBus
+	pkgver = 1.0.1.c8511b6
+	pkgrel = 1
+	url = https://github.com/GaZaTu/im-emoji-picker
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = icu
+	depends = ibus
+	provides = im-emoji-picker
+	conflicts = im-emoji-picker
+	source = im-emoji-picker::git+https://github.com/GaZaTu/im-emoji-picker
+	sha256sums = SKIP
+
+pkgname = im-emoji-picker-ibus-git
