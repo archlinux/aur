@@ -1,6 +1,6 @@
 pkgbase = netron-cli
 	pkgdesc = Visualizer for neural network, deep learning, and machine learning models (CLI only)
-	pkgver = 6.4.7
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://netron.app/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = netron-cli
 	depends = python
 	optdepends = python-onnx: serializing ONNX models
 	optdepends = python-pytorch: serializing PyTorch models
-	source = https://github.com/lutzroeder/netron/archive/v6.4.7/netron-6.4.7.tar.gz
-	sha256sums = e852678637821da62ca05f5ba5ce8425e6522d8ff810564c243b5302b1f6be04
+	source = https://github.com/lutzroeder/netron/archive/v6.5.0/netron-6.5.0.tar.gz
+	sha256sums = f151fbfe57fa6d7c508b0985d0f6e14c6d5c627c1aa41fb5cbf07c64ee9afc50
 
 pkgname = netron-cli
