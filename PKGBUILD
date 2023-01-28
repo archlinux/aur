@@ -2,7 +2,7 @@
 
 _gemname=selenium-webdriver
 pkgname=ruby-$_gemname
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="A browser automation framework and ecosystem"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(ruby-childprocess ruby-rubyzip)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-b2sums=('e2f3455916248edfe853dea221ce2139cdaf980b746c577742f1e142a0a52b1f67f154ec9a133d8aab04facb5d5330f7cc8740408b86f508a6539e1bfa20e567')
+b2sums=('78b00e8984d834e9ee051816a6bc1212a536535be867520de570fa331394f0f330354a17811844e92a95f62dfdf91b2d5a0b8ddace59404fe07a8c59eafaf3c4')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -20,4 +20,3 @@ package() {
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
