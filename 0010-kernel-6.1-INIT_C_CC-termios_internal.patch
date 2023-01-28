@@ -1,0 +1,17 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_tty.c b/driver/2.6.27/dgnc_tty.c
+--- a/driver/2.6.27/dgnc_tty.c	2023-01-28 15:38:17.005198782 -0500
++++ b/driver/2.6.27/dgnc_tty.c	2023-01-28 15:42:22.631445123 -0500
+@@ -54,10 +54,13 @@
+ #include <linux/serial_reg.h>
+ #include <linux/slab.h>
+ #include <linux/delay.h>        /* For udelay */
+ #include <asm/uaccess.h>	/* For copy_from_user/copy_to_user */
+ #include <linux/pci.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0)
++#include <linux/termios_internal.h>
++#endif
+ 
+ #include "dgnc_driver.h"
+ #include "dgnc_kcompat.h"
+ #include "dgnc_tty.h"
+ #include "dgnc_types.h"

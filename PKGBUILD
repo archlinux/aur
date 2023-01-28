@@ -5,8 +5,12 @@
 
 # Digi bug: change literal "dgnc" to DRVSTR or PROCSTR
 # Digi bug: viewing /proc/dgnc/0/[0-9]/sniff hangs terminal
+# Digi bug: multiple PCI cards not fully supported. Some cards may be non functional. Boot over and over to get them all to work.
+# Digi bug: Non functional in 5.15 even with just one card
 
 # Stopped working after kernel version 5.14.0: /dev/ttyn1a: No such device or address
+# also works not well in 5.10. rmmod modprobe doesn't fix it. Must reboot over and over until it's fixed.
+# Pretty much dead
 
 _opt_DKMS=1              # This can be toggled between installs
 _opt_defaultmode="0660"  # default: 0600
@@ -19,10 +23,11 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel='6'
+pkgrel='7'
 pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
+# https://hub.digi.com/support/products/infrastructure-management/
 license=('GPL')
 options=('!strip' '!buildflags')
 install="${pkgname}-install.sh"
@@ -37,6 +42,10 @@ source=(
   '0005-kernel-5.13-dropped-tty_check_change.patch'
   '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
   '0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0008-kernel-6.1-remove-TTY_MAGIC.patch'
+  '0009-kernel-5.17-change-PDE_DATA.patch'
+  '0010-kernel-6.1-INIT_C_CC-termios_internal.patch'
+  '0011-kernel-6.0-set_termios-const-ktermios.patch'
 )
 md5sums=('6171349852f6d02228d6e30c79b7a434'
          'a171e9ea1a4ff8340c3c58b303632edf'
@@ -46,7 +55,11 @@ md5sums=('6171349852f6d02228d6e30c79b7a434'
          '44b0a7b0ab4dbe661b822fcba9423121'
          '10ba960da22684d2da89872df1d822cc'
          '89de6a694ecf827a3358bcd8aea03a6a'
-         '58d75d8f86830d09ba8754d4e03a6a9d')
+         '58d75d8f86830d09ba8754d4e03a6a9d'
+         '7ceda3eaa776322b2042de8d159535ea'
+         '9371ea6968666c58413a463fcf341d1f'
+         '53bcd11e5e4acbd0466b3ffdda3b263b'
+         '6475487a9415d3dc7ece9dd888cec92c')
 sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             '625bb794d31690b45ad7469f811e7422dac938cf8e9b777aba4d97b60b3c6eae'
             '88d5a8589dca55ca98089dfa4570aa1fbde1095957d0788ad710a27b348c2f4f'
@@ -55,7 +68,11 @@ sha256sums=('e121a31569e3e1f156caeed70742971ec32fef598429ef647bde98f56aa048f5'
             'f215451df4a01f0875a53425b6d8452c344f19b61b59b821f8c949b1b276c022'
             '13257318895327e7438f7f357c5dc7d67310ec0468802df083815414d4743805'
             'dcedb22e0f3fb0c8197630b38217f86c5468d065ab2d67708c16c17351d6944e'
-            '0693e13442749c40a338320cca72dd8aad23678ea7cae035e6bab01a40640c44')
+            '0693e13442749c40a338320cca72dd8aad23678ea7cae035e6bab01a40640c44'
+            '718e5104ff4caf153757dd2f8c143402d2c175fd838cfc5db3f47618efd40230'
+            'b5000b9bb68ae8ddc173b666ead6d60fa329aa4d5d96636af4717a131827748c'
+            'c0786d12440da829f0a57ca9e7f2c3114edbd88213bb66687ac84730ee7c8ed1'
+            'ab4921079d2a4ee3316bbea3bcb3ff7844d8ced73b6b4327d3c580088bc511b1')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -109,25 +126,42 @@ prepare() {
 
   #cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.6--proc_dir_entry-proc_ops.patch'
-  patch -Nbup0 -i "${srcdir}/0003-kernel-5.6--proc_dir_entry-proc_ops.patch"
+  patch -Nup0 -i "${srcdir}/0003-kernel-5.6--proc_dir_entry-proc_ops.patch"
 
   #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
-  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
+  patch -Nup0 -i "${srcdir}/0004-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
 
   #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nbup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
+  patch -Nup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
 
   #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.14-task_struct.state-unsigned-tty.patch'
-  patch -Nbup0 -i "${srcdir}/0006-kernel-5.14-task_struct.state-unsigned-tty.patch"
+  patch -Nup0 -i "${srcdir}/0006-kernel-5.14-task_struct.state-unsigned-tty.patch"
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
   #rm -f driver/2.6.27/*.orig; cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nbup0 -i "${srcdir}/0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  patch -Nup0 -i "${srcdir}/0007-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  # https://lore.kernel.org/lkml/723478a270a3858f27843cbec621df4d5d44efcc.1663288066.git.nabijaczleweli@nabijaczleweli.xyz/T/
+  # cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0008-kernel-6.1-remove-TTY_MAGIC.patch'
+  patch -Nup1 -i "${srcdir}/0008-kernel-6.1-remove-TTY_MAGIC.patch"
+
+  # cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0009-kernel-5.17-change-PDE_DATA.patch'
+  patch -Nup1 -i "${srcdir}/0009-kernel-5.17-change-PDE_DATA.patch"
+
+  #cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0010-kernel-6.1-INIT_C_CC-termios_internal.patch'
+  patch -Nup1 -i "${srcdir}/0010-kernel-6.1-INIT_C_CC-termios_internal.patch"
+
+  # cd ..; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0011-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0011-kernel-6.0-set_termios-const-ktermios.patch"
 
   # Version check
   local _ver

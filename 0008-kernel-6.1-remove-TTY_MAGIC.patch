@@ -1,0 +1,359 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_cls.c b/driver/2.6.27/dgnc_cls.c
+--- a/driver/2.6.27/dgnc_cls.c	2017-10-21 10:39:21.000000000 -0400
++++ b/driver/2.6.27/dgnc_cls.c	2023-01-28 14:36:56.298578571 -0500
+@@ -482,11 +482,11 @@ static void cls_param(struct tty_struct
+ 	int quot = 0;
+         struct board_t *bd;
+ 	struct channel_t *ch;
+         struct un_t   *un;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return;
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+@@ -979,11 +979,11 @@ static int cls_drain(struct tty_struct *
+ 	ulong lock_flags;
+ 	struct channel_t *ch;
+         struct un_t *un;
+ 	int rc = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return (-ENXIO);
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+diff -pNaru5 a/driver/2.6.27/dgnc_neo.c b/driver/2.6.27/dgnc_neo.c
+--- a/driver/2.6.27/dgnc_neo.c	2017-10-21 10:39:21.000000000 -0400
++++ b/driver/2.6.27/dgnc_neo.c	2023-01-28 14:36:49.068942864 -0500
+@@ -656,11 +656,11 @@ static void neo_param(struct tty_struct
+ 	int quot = 0;
+         struct board_t *bd;
+ 	struct channel_t *ch;
+         struct un_t   *un;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return;
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+@@ -1432,11 +1432,11 @@ static int neo_drain(struct tty_struct *
+ 	ulong lock_flags;
+ 	struct channel_t *ch;
+         struct un_t *un;
+ 	int rc = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return (-ENXIO);
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+diff -pNaru5 a/driver/2.6.27/dgnc_neo_II.c b/driver/2.6.27/dgnc_neo_II.c
+--- a/driver/2.6.27/dgnc_neo_II.c	2017-10-21 10:39:21.000000000 -0400
++++ b/driver/2.6.27/dgnc_neo_II.c	2023-01-28 14:37:01.024996046 -0500
+@@ -531,11 +531,11 @@ static void neo_II_param(struct tty_stru
+ 	int quot = 0;
+         struct board_t *bd;
+ 	struct channel_t *ch;
+         struct un_t   *un;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return;
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+@@ -1166,11 +1166,11 @@ static int neo_II_drain(struct tty_struc
+ 	ulong lock_flags;
+ 	struct channel_t *ch;
+         struct un_t *un;
+ 	int rc = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC) {
++	if (!tty || !tty->ldisc) {
+ 		return (-ENXIO);
+ 	}
+ 
+ 	un = (struct un_t *) tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+diff -pNaru5 a/driver/2.6.27/dgnc_tty.c b/driver/2.6.27/dgnc_tty.c
+--- a/driver/2.6.27/dgnc_tty.c	2023-01-28 14:28:53.575256967 -0500
++++ b/driver/2.6.27/dgnc_tty.c	2023-01-28 14:36:29.533153640 -0500
+@@ -783,18 +783,18 @@ void dgnc_input(struct channel_t *ch)
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0)
+ 	if (!tp || (tp->magic != TTY_MAGIC) || !(ch->ch_tun.un_flags & UN_ISOPEN) || 
+ 	    !(tp->termios->c_cflag & CREAD) || (ch->ch_tun.un_flags & UN_CLOSING))
+ #else
+-        if (!tp  || (tp->magic != TTY_MAGIC) || !(ch->ch_tun.un_flags & UN_ISOPEN) ||
++        if (!tp  || !tp->ldisc || !(ch->ch_tun.un_flags & UN_ISOPEN) ||
+ 	    !(tp->termios.c_cflag & CREAD) || (ch->ch_tun.un_flags & UN_CLOSING))
+ #endif
+ 	{
+ 
+ 		DPR_READ(("input. dropping %d bytes on port %d...\n", data_len, ch->ch_portnum));
+-		DPR_READ(("input. tp: %p tp->magic: %x MAGIC:%x ch flags: %x\n",
+-			tp, tp ? tp->magic : 0, TTY_MAGIC, ch->ch_tun.un_flags));
++		DPR_READ(("input. tp: %p ch flags: %x\n",
++			tp, ch->ch_tun.un_flags));
+ 
+ 		ch->ch_r_head = tail;
+ 
+ 		/* Force queue flow control to be released, if needed */
+ 		dgnc_check_queue_flow_control(ch);
+@@ -1686,11 +1686,11 @@ static int dgnc_block_til_ready(struct t
+ 	struct un_t *un = NULL;
+ 	ulong   lock_flags;
+ 	uint	old_flags = 0;
+ 	int	sleep_on_un_flags = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC || !file || !ch || ch->magic != DGNC_CHANNEL_MAGIC) {
++	if (!tty || !tty->ldisc || !file || !ch || ch->magic != DGNC_CHANNEL_MAGIC) {
+ 		return (-ENXIO);
+ 	}
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC) {
+@@ -1848,11 +1848,11 @@ static int dgnc_block_til_ready(struct t
+  */     
+ static void dgnc_tty_hangup(struct tty_struct *tty)
+ {
+ 	struct un_t	*un;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -1879,11 +1879,11 @@ static void dgnc_tty_close(struct tty_st
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong lock_flags;
+ 	int rc = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -2466,11 +2466,11 @@ static int dgnc_tty_tiocmget(struct tty_
+ 	struct un_t *un;
+ 	int result = -EIO;
+ 	uchar mstat = 0;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return result;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return result;
+@@ -2525,11 +2525,11 @@ static int dgnc_tty_tiocmset(struct tty_
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	int ret = -EIO;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return ret;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return ret;
+@@ -2584,11 +2584,11 @@ static int dgnc_tty_send_break(struct tt
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	int ret = -EIO;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return ret;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return ret;
+@@ -2637,11 +2637,11 @@ static void dgnc_tty_wait_until_sent(str
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	int rc;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -2673,11 +2673,11 @@ static void dgnc_tty_send_xchar(struct t
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -2782,11 +2782,11 @@ static int dgnc_set_modem_info(struct tt
+ 	struct un_t *un;
+ 	int ret = -ENXIO;
+ 	unsigned int arg = 0;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return ret;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return ret;
+@@ -2880,11 +2880,11 @@ static int dgnc_tty_digigeta(struct tty_
+ 	ulong   lock_flags;
+ 
+ 	if (!retinfo)
+ 		return (-EFAULT);
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return (-EFAULT);
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return (-EFAULT);
+@@ -2922,11 +2922,11 @@ static int dgnc_tty_digiseta(struct tty_
+ 	struct digi_t new_digi;
+ 	ulong lock_flags;
+ 
+ 	DPR_IOCTL(("DIGI_SETA start\n"));
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return (-EFAULT);
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return (-EFAULT);
+@@ -3003,11 +3003,11 @@ static void dgnc_tty_set_termios(struct
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	unsigned long lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3049,11 +3049,11 @@ static void dgnc_tty_throttle(struct tty
+ {
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong   lock_flags = 0;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3078,11 +3078,11 @@ static void dgnc_tty_unthrottle(struct t
+ {
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong   lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3108,11 +3108,11 @@ static void dgnc_tty_start(struct tty_st
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3142,11 +3142,11 @@ static void dgnc_tty_stop(struct tty_str
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3189,11 +3189,11 @@ static void dgnc_tty_flush_chars(struct
+ 	struct board_t *bd;
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3228,11 +3228,11 @@ static void dgnc_tty_flush_buffer(struct
+ {
+ 	struct channel_t *ch;
+ 	struct un_t *un;
+ 	ulong lock_flags;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return;
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return;
+@@ -3298,11 +3298,11 @@ dgnc_tty_ioctl(struct tty_struct *tty, u
+ 	struct un_t *un;
+ 	int rc;
+ 	ulong lock_flags;
+ 	void __user *uarg = (void __user *) arg;
+ 
+-	if (!tty || tty->magic != TTY_MAGIC)
++	if (!tty || !tty->ldisc)
+ 		return (-ENODEV);
+ 
+ 	un = tty->driver_data;
+ 	if (!un || un->magic != DGNC_UNIT_MAGIC)
+ 		return (-ENODEV);

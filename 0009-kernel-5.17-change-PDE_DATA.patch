@@ -1,0 +1,67 @@
+diff -pNaru5 a/driver/2.6.27/dgnc_proc.c b/driver/2.6.27/dgnc_proc.c
+--- a/driver/2.6.27/dgnc_proc.c	2023-01-28 14:46:11.117123311 -0500
++++ b/driver/2.6.27/dgnc_proc.c	2023-01-28 14:52:09.647326130 -0500
+@@ -400,11 +400,15 @@ static int dgnc_gen_proc_open(struct ino
+ 		goto done;
+ 	}
+ 
+ 	entry = (struct dgnc_proc_entry *) de->data;
+ #else /* >=3,10,0 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgnc_proc_entry *) PDE_DATA(file_inode(file));
++#else
++	entry = pde_data(file_inode(file));
++#endif
+ #endif
+ 	if (!entry) {
+ 		ret = -ENXIO;
+ 		goto done;
+ 	}
+@@ -448,11 +452,15 @@ static int dgnc_gen_proc_close(struct in
+ 	if (!de || !de->data)
+ 		goto done;
+ 
+ 	entry = (struct dgnc_proc_entry *) de->data;
+ #else /* >=3,10,0 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgnc_proc_entry *) PDE_DATA(file_inode(file));
++#else
++	entry = pde_data(file_inode(file));
++#endif
+ #endif
+ 
+ 	if (!entry)
+ 		goto done;
+ 
+@@ -490,11 +498,15 @@ static ssize_t dgnc_gen_proc_read(struct
+ 	if (!de || !de->data)
+ 		return -ENXIO;
+ 
+ 	entry = (struct dgnc_proc_entry *) de->data;
+ #else /* >=3,10,0 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgnc_proc_entry *) PDE_DATA(file_inode(file));
++#else
++	entry = pde_data(file_inode(file));
++#endif
+ #endif
+ 
+ 	if (!entry)
+ 		return -ENXIO;
+ 
+@@ -534,11 +546,15 @@ static ssize_t	dgnc_gen_proc_write(struc
+ 	if (!de || !de->data)
+ 		return -ENXIO;
+ 
+ 	entry = (struct dgnc_proc_entry *) de->data;
+ #else /* >=3,10,0 */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,17,0)
+ 	entry = (struct dgnc_proc_entry *) PDE_DATA(file_inode(file));
++#else
++	entry = pde_data(file_inode(file));
++#endif
+ #endif
+ 
+ 	if (!entry)
+ 		return -ENXIO;
+ 
