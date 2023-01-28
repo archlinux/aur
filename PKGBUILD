@@ -2,7 +2,7 @@
 
 pkgname=pipewire-support
 pkgver=1
-pkgrel=13
+pkgrel=15
 
 arch=('any')
 url="https://wiki.archlinux.org/index.php/PipeWire"
@@ -18,13 +18,16 @@ depends=("gst-plugin-pipewire"
         "pipewire-zeroconf"
         "realtime-privileges"
         "sof-firmware"
-        "pipewire-session-manager")
+        "wireplumber")
 conflicts=("pulseaudio-equalizer"
         "pulseaudio-jack"
         "pulseaudio-lirc"
         "pulseaudio-rtp"
         "pulseaudio-support"
         "pulseaudio-zeroconf"
+        "jack2"
+        "jack2-dbus"
+        "lib32-jack2"
         "manjaro-pulse")
 replaces=("manjaro-pipewire")
 install=$pkgname.install
