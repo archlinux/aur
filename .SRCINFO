@@ -1,7 +1,7 @@
 pkgbase = scraw
 	pkgdesc = Steam Controller C library
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/dennis-hamester/scraw
 	arch = i686
 	arch = x86_64

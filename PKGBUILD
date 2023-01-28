@@ -3,7 +3,7 @@
 _commit='e5b26b939db75b57c9e592aebe1396180cdd0730'
 pkgname=scraw
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Controller C library"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/dennis-hamester/scraw"
