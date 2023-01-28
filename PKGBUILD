@@ -10,11 +10,11 @@ url="https://gitlab.com/dennis-hamester/scraw"
 license=('custom:ISC')
 makedepends=('cmake' 'doxygen')
 depends=('libusb')
-source=("scraw-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v$pkgver")
-sha256sums=('fec3f5e3503b1fba5c2905d52c9f56f9611deb2fdfdc592bcf598be2a9f2bc76')
+source=("scraw-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scraw/-/archive/v$pkgver/scraw-v$pkgver.tar.gz")
+sha256sums=('6b0afd0417577aad482a010b3f2754790b1e2cce59d14711dac3a0dd25afc39c')
 
 build() {
-  cd ${pkgname}-v${pkgver}-${_commit}
+  cd ${pkgname}-v${pkgver}
   mkdir build && cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-v${pkgver}-${_commit}/build
+  cd ${pkgname}-v${pkgver}/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
