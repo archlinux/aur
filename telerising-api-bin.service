@@ -3,10 +3,10 @@ Description = API web application providing Zattoo TV streams
 After=network.target
 
 [Service]
-ExecStart = /usr/lib/telerising-api-bin/startup.sh
-User = telerising-api
-WorkingDirectory = %S/telerising-api
-StateDirectory = telerising-api
+ExecStart = /usr/bin/telerising-api-bin
+User = telerising-api-bin
+WorkingDirectory = %S/telerising-api-bin
+StateDirectory = telerising-api-bin
 StateDirectoryMode = 0700
 
 DynamicUser = yes
