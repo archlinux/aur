@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl
-pkgver=2023.1.1
+pkgver=2023.1.2
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('onevpl-runtime: for runtime implementation'
             'python: for python bindings')
 makedepends=('cmake' 'libx11' 'pybind11' 'python' 'wayland-protocols')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f3973f98b08564fd529079911c4e64cd5b552f6933a4a71d085609db6e5de09a')
+sha256sums=('b2261cca174ce1815f3d47c647921ab17f68267c69c1e2444ff27aab7d199cbb')
 
 build() {
     local _pyver
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     
     local _file
     while read -r -d '' _file
