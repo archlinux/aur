@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=libreoffice-slim-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc="A slimmed down Git version of LibreOffice"
 arch=('x86_64')
 url="https://www.libreoffice.org/community/developers/"
@@ -45,7 +45,6 @@ prepare() {
     --disable-gio\
     --enable-release-build\
     --enable-python=fully-internal\
-    --disable-neon\
     --disable-mariadb-sdbc\
     --disable-postgresql-sdbc\
     --disable-firebird-sdbc\
@@ -64,7 +63,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  make build-nocheck
+  make
   cd workdir/installation/LibreOffice/archive/install/en-US
   msg "Extracting LibreOffice Installation Tarball..."
   tar xf *.tar.gz
