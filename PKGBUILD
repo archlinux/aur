@@ -15,7 +15,7 @@ source_x86_64=(
     "icon.png::https://raw.githubusercontent.com/KoalaDevs/KoalaLauncher/master/public/icon.png"
 )
 
-md5sums_x86_64=('SKIP' 'SKIP')
+md5sums_x86_64=("5938f89ac06a19efa283bd7226dfa015" "SKIP")
 
 prepare() {
     # Generate .desktop
