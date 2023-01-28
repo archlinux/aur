@@ -1,0 +1,14 @@
+pkgbase = amule-daemon-provides
+	pkgdesc = Metapackage: Depends on 'amule' makes it provide the 'amule-damon'-dependency (with $pkgver automatically bumped to the one if the installed 'amule' during build).
+	pkgver = 2.3.3
+	pkgrel = 1
+	epoch = 0
+	url = http://www.amule.org
+	arch = any
+	license = GPL
+	depends = amule
+	provides = amule-daemon=2.3.3
+	conflicts = amule-daemon
+	options = emptydirs
+
+pkgname = amule-daemon-provides
