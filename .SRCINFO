@@ -1,6 +1,6 @@
 pkgbase = pli-bin
 	pkgdesc = Iron Spring PL/I compiler - statically linked 386-binary
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.iron-spring.com/
@@ -9,7 +9,7 @@ pkgbase = pli-bin
 	license = custom
 	license = LGPL
 	options = staticlibs
-	source = http://www.iron-spring.com/pli-1.0.0.tgz
-	sha512sums = 1cf615e3a992659e48df0c3c8249d6445494bc24acc8a2f20698e29982aeb44a6b000169535bc7cd757e572d8c884efa01a199b4252dfaede907538b7da6e944
+	source = http://www.iron-spring.com/pli-1.0.1.tgz
+	sha512sums = 070b6220a67765bd3ec07feac8364977e1e0a77d7984bb00baf4ec487a46437f70be503f1d7fd725417ea63bcee23178a6a59e5dda4a38139bc07cb2fc0b605e
 
 pkgname = pli-bin
