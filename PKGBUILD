@@ -39,6 +39,10 @@ build() {
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
+            -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
+            -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
+            -DLLVM_LINK_LLVM_DYLIB=ON \
+            -DCLANG_LINK_CLANG_DYLIB=ON \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=MinSizeRel \
