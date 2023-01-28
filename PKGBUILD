@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgeotag
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Photo geotagging program'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(kxmlgui libkexiv2 marble-common)
 makedepends=(extra-cmake-modules kdoctools)
 source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('e7b07262cfafc6f0613fc16f0839b4da62b4b68a992f690d536c69fa7d89b875'
+sha256sums=('c6da7ffd134be2beca2a1de3fffc2960d0b70d87d4a103871c349dff8b941ee1'
             'SKIP')
 validpgpkeys=(A53563BC888E6CE5215535992523842AF9681DDF) # Tobias Leupold <tobias.leupold@gmx.de>
 
