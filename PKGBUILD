@@ -8,7 +8,7 @@
 # Contributor: Martin Poljak <martin 'at' poljak 'dot' cz>
 
 pkgname=xnviewmp
-pkgver=1.4.1
+pkgver=1.4.2
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
@@ -16,12 +16,15 @@ url="https://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
-depends=('qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qt5-sensors' 'qt5-x11extras' 'desktop-file-utils')
+# Require qt5-multimedia to pull all its dependencies. We do not actually need
+# to depend on qt5-*, but qt5-multimedia (and indirectly qt5-base) have
+# various dependencies that we need even when using the packaged libraries.
+depends=('qt5-multimedia')
 optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.com/XnViewMP-linux-x64.tgz"
         'xnviewmp.desktop')
-sha256sums=('D8F4EC75E01ED7DAD51DBFFABB01A67979421C8B7F9597C0FC307A3237F03F1E'
+sha256sums=('7A6E52A4D4B83116AEE98B6DD12E2254A1D14D6BD90442392BF36B350FF9B7E5'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
 
 package() {
