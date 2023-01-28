@@ -1,0 +1,18 @@
+pkgbase = wiliwili-git
+	pkgdesc = A 3rd party bilibili client
+	pkgver = v0.6.0.r10.g07548e2
+	pkgrel = 1
+	url = https://github.com/xfangfang/wiliwili
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = mpv
+	provides = wiliwili
+	conflicts = wiliwili
+	conflicts = wiliwili-bin
+	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git
+	sha256sums = SKIP
+
+pkgname = wiliwili-git
