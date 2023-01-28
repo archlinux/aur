@@ -15,12 +15,13 @@ source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver
 
 sha512sums=('4836d3603f32e8e54434cbfa8ef33d9d473ac5dc20ebf9c67132653c73f4524931abd1084655eaee5f20bcfcb91bcc4bbc5c4a0b603ad0c9029c556e14dc4c52')
 
+prefix_path="/opt/clang"
+install_path="${prefix_path}/${pkgver}"
+
 build() {
     unset CFLAGS
     unset CXXFLAGS
     unset LDFLAGS
-    #export CFLAGS+=" ${CPPFLAGS}"
-    #export CXXFLAGS+=" ${CPPFLAGS}"
 
     rm -rf _build
     mkdir _build
@@ -37,17 +38,18 @@ build() {
             -DLLVM_USE_LINKER=lld \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
-            -DCMAKE_INSTALL_PREFIX:PATH=/opt/clang/${pkgver} \
+            -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=MinSizeRel \
             ${srcdir}/llvm-project-${pkgver}.src/llvm
 
-    #cmake --build _build --parallel
     ninja -C _build
 }
 
 package() {
-    #DESTDIR="$pkgdir" cmake --build _build --target install
     DESTDIR="$pkgdir" ninja -C _build install
+
+    cd ${pkgdir}${prefix_path}
+    ln -s ${pkgver} latest
 }
