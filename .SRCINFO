@@ -1,0 +1,19 @@
+pkgbase = katana-git
+	pkgdesc = A next-generation crawling and spidering framework
+	pkgver = 0.0.3.r3.g16b03e9
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/katana
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = katana
+	conflicts = katana
+	source = katana::git+https://github.com/projectdiscovery/katana.git
+	sha256sums = SKIP
+
+pkgname = katana-git
