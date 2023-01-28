@@ -1,4 +1,4 @@
-# Contributor: fedefranc
+# Maintainer:  fedefranc <ffaur-at-duck-dot-com>
 # Contributor: Stas Elensky <stas-at-flexsys-dot-com-dot-ua>
 # Contributor: honzor 
 
@@ -7,7 +7,7 @@ pkgver=3.1.10
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="http://libmodbus.org"
+url="https://libmodbus.org"
 license=('LGPL')
 groups=()
 depends=()
