@@ -1,4 +1,5 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Vitor Rodrigues <vitor.rodrigues@gmail.com>
 
 pkgname=msodbcsql
 pkgver=18.1.2.1
