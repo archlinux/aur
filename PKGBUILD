@@ -1,45 +1,40 @@
-pkgname=('libvhdi')
-_realname=libvhdi
-pkgver=20160424
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
+## GPG keys: gpg --keyserver keyserver.ubuntu.com --recv-keys ${GPG_KEY_HERE}
+
+pkgname=('libvhdi' 'python-pyvhdi')
+pkgver=20221124
 pkgrel=1
-pkgdesc="Library and tools to access the Virtual Hard Disk (VHD) image format" 
-url="https://github.com/libyal/libvhdi/"
-arch=('any')
-license=('LGPLv3+')
-
-provides=('libvhdi' 'python2-libvhdi' 'python3-libvhdi')
-depends=('python2' 'python' 'fuse')
-makedepends=('python2' 'python' 'gcc' 'git' 'automake' 'autoconf' 'gettext' 'libtool' 'pkg-config' 'fuse')
-source=(https://github.com/libyal/${_realname}/archive/${pkgver}.zip)
-
-prepare() {
-  cd $srcdir/${_realname}-${pkgver}
-
-  ./synclibs.sh
-  ./autogen.sh
-}
+pkgdesc='Library and tools for the Virtual Hard Disk (VHD) image format'
+url='https://github.com/libyal/libvhdi'
+arch=('x86_64')
+license=('LGPL3')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz.asc")
+sha256sums=('0d46cc2fa4f9385e58f891fc5a1c3eec92f69e30a5c5a550a3f560693ed34295'
+            'SKIP')
+validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E') ## Joachim Metz
 
 build() {
-  cd $srcdir/${_realname}-${pkgver}
-  ./configure --prefix=/usr --enable-python2 --enable-python3
-  make
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr --enable-python3
+	make
+	python -m build --wheel --no-isolation
 }
-
-#Check will break ./configure options
-#check() {
-#  cd $srcdir/${_realname}-${pkgver}
-#  ./runtests.sh 
-#}
 
 package_libvhdi() {
-  cd $srcdir/${_realname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+	depends=('glibc')
+	provides=("$pkgname.so")
+	cd "$pkgname-$pkgver"
+	## Calling the setup.py for any reason resets out config script
+	./configure --prefix=/usr
+	DESTDIR="$pkgdir" make install
 }
 
-#setup.py will break ./configure options
-#package_python2-libvhdi() {
-#  cd $srcdir/${_realname}-${pkgver}
-#  python2 setup.py install --root="${pkgdir}"
-#}
-
-md5sums=('1e70dc38ab301c13f3dcef8913efd81f')
+package_python-pyvhdi() {
+	pkgdesc='Python module for libvhdi'
+	depends=('python')
+	cd "$pkgbase-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+}
