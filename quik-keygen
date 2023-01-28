@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p ~/.config/quik && cd ~/.config/quik
+
+wine /usr/lib/quik/keygen/KeyGen.exe pubring.key

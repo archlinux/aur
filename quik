@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir -p ~/.config/quik && cd ~/.config/quik
+
+rm -f info.log
+wine /usr/lib/quik/info.exe
