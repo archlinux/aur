@@ -1,8 +1,8 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='nfpm'
-pkgver=v2.15.1
-pkgrel=2
+pkgver=v2.24.0
+pkgrel=1
 pkgdesc='A simple deb and rpm packager written in Go '
 url='https://github.com/goreleaser/nfpm'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=()
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/goreleaser/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c4179e1223a9cdf190813ccb8e6d181f341d6876169568c6d81396df719fb516ab154089cd66b3b7ff1774a4b2e694ccb4bfe6051ec26949a8cd7789be9b1e83')
-b2sums=('da09791edf158fa74b85adf0e3c0cc733684268a4e25e10be2314e4893ec47c172112eda6a260b8c04a175f69a6112f76abbfd4a514190d9b524484d075119c6')
+sha512sums=('1ad6174d5ecb08bb726683e9f7e5acc60d19f6e3f6c7031f650d146c2bdeec41c302304a75963b04723ebb754865572398de959660a78153cd1826498bf15b81')
+b2sums=('ed0a8128bd24eef9e26e755812583afd4f4ca93007bcde4ce2617a3215aa5a9cb679d5e2f6630ad120f5f64a06c2810be8bea1b56e21ee7e5ce506eac15db33f')
 
 build() {
 	cd "${pkgname}-${pkgver#v}"
