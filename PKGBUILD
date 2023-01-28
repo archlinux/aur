@@ -3,7 +3,7 @@
 cpaname=Lexical-Accessor
 cpanauthor=TOBYINK
 pkgname=perl-lexical-accessor
-pkgver=0.013
+pkgver=0.014
 pkgrel=1
 pkgdesc="Perl Lexical::Accessor CPAN module"
 arch=('any')
@@ -25,7 +25,7 @@ depends=(
     'perl-type-tiny'
 )
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('1305b4db1721e064ae5d22e99afaf25a8f5c63c653511fd21f3806367bc3f961')
+sha256sums=('8037db3b2ccc3c176d8b0529278b7dd781cf937999093cfe6868992aa558e034')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"

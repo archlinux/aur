@@ -1,6 +1,6 @@
 pkgbase = perl-lexical-accessor
 	pkgdesc = Perl Lexical::Accessor CPAN module
-	pkgver = 0.013
+	pkgver = 0.014
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Lexical-Accessor/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = perl-lexical-accessor
 	depends = perl-test-requires
 	depends = perl-type-tiny
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/T/TO/TOBYINK/Lexical-Accessor-0.013.tar.gz
-	sha256sums = 1305b4db1721e064ae5d22e99afaf25a8f5c63c653511fd21f3806367bc3f961
+	source = http://www.cpan.org/authors/id/T/TO/TOBYINK/Lexical-Accessor-0.014.tar.gz
+	sha256sums = 8037db3b2ccc3c176d8b0529278b7dd781cf937999093cfe6868992aa558e034
 
 pkgname = perl-lexical-accessor
