@@ -1,18 +1,17 @@
 pkgbase = libsciter-gtk-bin
-	pkgdesc = Sciter SDK library for GTK3
-	pkgver = 4.4.6.6
+	pkgdesc = Embeddable HTML/CSS/JavaScript engine for modern UI development (Gtk library)
+	pkgver = 4.4.8.23
 	pkgrel = 1
 	url = https://sciter.com
 	arch = x86_64
 	license = custom
 	depends = gtk3
 	provides = libsciter-gtk
+	provides = libsciter-gtk.so
 	conflicts = libsciter-gtk
-	noextract = libsciter-gtk
-	noextract = license.htm
-	source = https://github.com/c-smile/sciter-sdk/raw/0b70a731ea91164cba1baa97874db1929ed8e5f0/bin.lnx/x64/libsciter-gtk.so
-	source = https://github.com/c-smile/sciter-sdk/raw/0b70a731ea91164cba1baa97874db1929ed8e5f0/license.htm
-	sha256sums = 921176f115ec2087fe0122fe6bc2a53687a0bde9e005171554a3159ce87f73ee
+	source = https://github.com/c-smile/sciter-sdk/raw/0298f1b34e9a0ff1dffb889d82c506a5da8bfb1e/bin.lnx/x64/libsciter-gtk.so
+	source = https://github.com/c-smile/sciter-sdk/raw/0298f1b34e9a0ff1dffb889d82c506a5da8bfb1e/license.htm
+	sha256sums = a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86
 	sha256sums = a52733cc90fb112a730b67bbbe6fc1102fad644753af9bd584cab8ba0da3db49
 
 pkgname = libsciter-gtk-bin
