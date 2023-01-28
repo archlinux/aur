@@ -1,0 +1,17 @@
+pkgbase = pdtm-bin
+	pkgdesc = pdtm is a simple and easy-to-use golang based tool for managing open source projects from ProjectDiscovery
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/pdtm
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pdtm
+	conflicts = pdtm
+	source = https://github.com/projectdiscovery/pdtm/releases/download/v0.0.3/pdtm_0.0.3_linux_amd64.zip
+	md5sums = afe73ee850288f19892a791287406f4d
+
+pkgname = pdtm-bin
