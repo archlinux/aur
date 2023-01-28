@@ -3,9 +3,9 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=reticulate
-_pkgver=1.27
+_pkgver=1.28
 pkgname=r-${_pkgname,,}
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc="Interface to 'Python'"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9d568457a14a96be9d6956b8dffde59ca579de4baecef4c4b93f513ac83369a6')
+sha256sums=('58a299ed18faaa3ff14936752fcc2b86e64ae18fc9f36befdfd492ccb251516f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
