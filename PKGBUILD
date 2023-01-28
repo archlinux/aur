@@ -2,7 +2,7 @@
 
 pkgname='gog-a-short-hike'
 pkgver=1.9.v3.51666
-pkgrel=1
+pkgrel=2
 pkgdesc="Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park."
 url='http://ashorthike.com/'
 license=('custom')
@@ -14,7 +14,7 @@ source=(
   "a_short_hike_${pkgver//./_}.sh::gogdownloader://a_short_hike/en3installer0"
 )
 sha256sums=('50a0a69e8dfc3120896e3291b56224f208db80d832e5e497bfb39d8de9b15099'
-            '2b81ba692e940f059bd52c460c5d7e92bf236a00e99cb81fa8afb29af3e77b6a'
+            'e4a58e5a8ee24326ce1eb9e8e1c285a65545dba38d87d62e501ce0cab1198334'
             '2f2c82a481636b587a211ace7f5c92f523cd88f2a05ba3dbfdac848d3f622266')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')

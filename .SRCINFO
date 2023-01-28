@@ -1,7 +1,7 @@
 pkgbase = gog-a-short-hike
 	pkgdesc = Hike, climb, and soar through the peaceful mountainside landscapes of Hawk Peak Provincial Park.
 	pkgver = 1.9.v3.51666
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ashorthike.com/
 	arch = x86_64
 	license = custom

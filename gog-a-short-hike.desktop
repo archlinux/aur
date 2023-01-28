@@ -8,3 +8,4 @@ Terminal=false
 StartupNotify=true
 Categories=Game;
 Encoding=UTF-8
+StartupWMClass=AShortHike.x86_64
