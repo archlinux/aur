@@ -1,21 +1,16 @@
 pkgbase = remotemouse
 	pkgdesc = Turn your mobile phone or tablet into a set of wireless mouse and keyboard.
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://remotemouse.net/
 	arch = any
 	license = Unknown
-	depends = mono
-	depends = libappindicator-sharp
-	depends = xdotool
-	source = https://www.remotemouse.net/downloads/RemoteMouse.tar.gz
+	source = https://www.remotemouse.net/downloads/linux/RemoteMouse_x86_64.zip
 	source = remotemouse.sh
-	source = RemoteMouse.service
 	source = RemoteMouse.desktop
-	md5sums = 2aec443671771d5905601395a904aeba
-	md5sums = 69724b9318bfb1c1c4a06c9d667e1e2b
-	md5sums = ca4387f61acab10f3c7d9d4984520bfc
-	md5sums = 957849e67d630b4d641d41eb9a4656c8
+	md5sums = 05d4ae6d0e5117a2d885c21d8f19f285
+	md5sums = 4713068dacd034226b9b0c6be1e39aef
+	md5sums = 45ff986a05bdeacda1da57b19d3b027c
 
 pkgname = remotemouse
 

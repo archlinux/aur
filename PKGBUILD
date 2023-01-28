@@ -1,31 +1,28 @@
-# Maintainer: Daniel Bertalan <dani@danielbertalan.dev>
+# Maintainer: warpigglets
+# Contributor: Daniel Bertalan <dani@danielbertalan.dev>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=remotemouse
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Turn your mobile phone or tablet into a set of wireless mouse and keyboard."
 arch=("any")
 url="https://remotemouse.net/"
 license=('Unknown')
-depends=("mono"
-         "libappindicator-sharp"
-         "xdotool")
-source=("https://www.remotemouse.net/downloads/RemoteMouse.tar.gz"
+options=('!strip')
+source=("https://www.remotemouse.net/downloads/linux/RemoteMouse_x86_64.zip"
         "remotemouse.sh"
-        "RemoteMouse.service"
         "RemoteMouse.desktop")
-md5sums=('2aec443671771d5905601395a904aeba'
-         '69724b9318bfb1c1c4a06c9d667e1e2b'
-         'ca4387f61acab10f3c7d9d4984520bfc'
-         '957849e67d630b4d641d41eb9a4656c8')
+md5sums=('05d4ae6d0e5117a2d885c21d8f19f285'
+         '4713068dacd034226b9b0c6be1e39aef'
+         '45ff986a05bdeacda1da57b19d3b027c')
 
 package() {
   cd "$srcdir"
 
-  install -Dm 644 RemoteMouse/RemoteMouse.exe "$pkgdir/opt/remotemouse/RemoteMouse.exe"
-  install -Dm 644 RemoteMouse/rm.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/RemoteMouse.svg"
-  install -Dm 755 remotemouse.sh "$pkgdir/usr/bin/remotemouse"
-  install -Dm 644 RemoteMouse.service "$pkgdir/usr/lib/systemd/user/RemoteMouse.service"
+  install -Dm 755 RemoteMouse "$pkgdir/opt/remotemouse/RemoteMouse"
+  cp -r lib "$pkgdir/opt/remotemouse"
+  cp -r images "$pkgdir/opt/remotemouse"
   install -Dm 644 RemoteMouse.desktop "$pkgdir/usr/share/applications/RemoteMouse.desktop"
+  install -Dm 755 remotemouse.sh "$pkgdir/usr/bin/remotemouse"
 }
