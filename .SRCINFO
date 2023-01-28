@@ -1,0 +1,21 @@
+pkgbase = python-thefuzz-git
+	pkgdesc = Fuzzy string matching in Python
+	pkgver = 0.19.0.r29.g04deff5
+	pkgrel = 1
+	url = https://github.com/seatgeek/thefuzz
+	arch = any
+	license = GPL2
+	checkdepends = python-hypothesis
+	checkdepends = python-levenshtein
+	checkdepends = python-pycodestyle
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-levenshtein: provides a 4-10x speedup in string matching
+	provides = python-thefuzz
+	conflicts = python-thefuzz
+	source = python-thefuzz::git+https://github.com/seatgeek/thefuzz
+	sha256sums = SKIP
+
+pkgname = python-thefuzz-git
