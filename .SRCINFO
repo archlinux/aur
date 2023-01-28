@@ -1,6 +1,6 @@
 pkgbase = input-devices-support
 	pkgdesc = Meta package for input devices support.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Category:Input_devices
 	install = input-devices-support.install
@@ -26,6 +26,8 @@ pkgbase = input-devices-support
 	optdepends = antimicrox: GUI for mapping keyboard keys to controller
 	optdepends = plasma-thunderbolt: Plasma integration for managing Thunderbolt devices
 	optdepends = touche: The desktop application to configure Touchegg
+	optdepends = solaar: Device manager for Logitech Unifying receiver peripherals, most Lightspeed supports too
+	optdepends = openrazer-meta: Support for Razer gaming peripherals
 	conflicts = libinput-gestures
 	replaces = manjaro-input
 

@@ -2,7 +2,7 @@
 
 pkgname=input-devices-support
 pkgdesc="Metapkg for commonly used input devices such as fingerprint sensors or Wacom tablets"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Category:Input_devices"
@@ -29,7 +29,9 @@ replaces=('manjaro-input')
 optdepends=('piper: GTK application to configure gaming mice'
             'antimicrox: GUI for mapping keyboard keys to controller'
             'plasma-thunderbolt: Plasma integration for managing Thunderbolt devices'
-            'touche: The desktop application to configure Touchegg')
+            'touche: The desktop application to configure Touchegg'
+            'solaar: Device manager for Logitech Unifying receiver peripherals, most Lightspeed supports too'
+            'openrazer-meta: Support for Razer gaming peripherals')
 
 install=$pkgname.install
 
