@@ -59,10 +59,10 @@ _htmldocs_enable=
 _major=6.1
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=17
+_lqxpatchrel=19
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=6.1.8.lqx1
+pkgver=6.1.8.lqx2
 pkgrel=1
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
@@ -85,7 +85,7 @@ validpgpkeys=(
 )
 sha512sums=('6ed2a73c2699d0810e54753715635736fc370288ad5ce95c594f2379959b0e418665cd71bc512a0273fe226fe90074d8b10d14c209080a6466498417a4fdda68'
             'SKIP'
-            '2f13c42cfd8e04d1c89df569b14efb9888c2112b9956e6328098879443eba599660b4c14704b67605b4c207633187c1d82d78724e8953ba28d924a4823e2d24f')
+            '4c7a5ffa9249a1a6dc05a9b81bf63acd478df4974c72c6e5c9de5284c476162ad9de27f799d3c9d3a8ebb73bf3defd79c9fe985dd75408444822b1b7ff05c8b2')
 
 
 
@@ -98,8 +98,8 @@ prepare() {
 
     ### Set package version variables
         _abiname="$(cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/defines | grep 'abiname:' | sed -r 's/abiname:\s*//')"
-        _minor="$(echo "$_abiname" | cut -f1 -d .)"
-        _patchrel="$(echo "$_abiname" | cut -f2 -d .)"
+        _minor="$(echo "$_abiname" | cut -f1 -d -)"
+        _patchrel="$(echo "$_abiname" | cut -f2 -d -)"
 
     ### Add Liquorix patches
         local _patchrx='^zen/v\d+\.\d+\.\d+-lqx\d+.patch$'
