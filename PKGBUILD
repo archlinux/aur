@@ -41,6 +41,7 @@ build() {
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
             -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
+            -DLLVM_ENABLE_LTO=Thin \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DCLANG_LINK_CLANG_DYLIB=ON \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
