@@ -9,8 +9,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=109.0.5414.74
-pkgrel=2
+pkgver=109.0.5414.119
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -38,7 +38,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         disable-GlobalMediaControlsCastStartStop.patch
         angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('eded233c26ab631be325ad49cb306c338513b6a6528197d42653e66187548e5d'
+sha256sums=('cbcdef5ee71acb53790ded3adef86871812b46e9f208dce8ec3f8ab04958be2d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '1ca780a2ad5351f60671a828064392096c8da7b589086ee999f25c9e6e799a7b'
             'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
@@ -56,12 +56,10 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
-        skia-gamma.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
-            '2e07a6833ca7531ee5f64c24e31069192256bad5abbe1091ca12802ba2ad3a75'
+            'e10fe46f3f4b7058c278ab86c6795cc2b68459bcb7ced5efad3355ab5c2f5de1'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
-            '865c7fc9f8db3c29db58cbc470f13aca6a057a156d018f31eeb20d9a5853e628'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -148,9 +146,6 @@ prepare() {
 
   # Remove HEVC profile limits
   patch -Np1 -i ../remove-main-main10-profile-limit.patch
-
-  # Fix gamma values
-  patch -Np1 -i ../skia-gamma.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
