@@ -1,4 +1,5 @@
-# Maintainer: adiprasetya <ignilium.inc@gmail.com>
+# Maintainer: pallxk <aur@pallxk.com>
+# Contributor: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=clash-meta-bin
 pkgver=1.13.2
@@ -6,7 +7,7 @@ pkgrel=1
 pkgdesc="Another Clash Kernel by MetaCubeX"
 arch=("x86_64")
 url="https://github.com/MetaCubeX/Clash.Meta"
-license=("unknown")
+license=("GPL3")
 groups=()
 depends=("glibc")
 makedepends=()
