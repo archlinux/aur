@@ -1,15 +1,21 @@
 pkgbase = python-fuzzywuzzy-git
 	pkgdesc = Fuzzy string matching in Python
-	pkgver = r180.5f0eb1b
+	pkgver = 0.18.0.r3.g9e3d2fe
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/fuzzywuzzy
+	url = https://github.com/seatgeek/fuzzywuzzy
 	arch = any
-	license = custom:unknown
+	license = GPL2
+	checkdepends = python-hypothesis
+	checkdepends = python-levenshtein
+	checkdepends = python-pycodestyle
+	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-levenshtein: provides a 4-10x speedup in string matching
-	source = git://github.com/seatgeek/fuzzywuzzy/
-	md5sums = SKIP
+	provides = python-fuzzywuzzy
+	conflicts = python-fuzzywuzzy
+	source = python-fuzzywuzzy::git+https://github.com/seatgeek/fuzzywuzzy#commit=9e3d2fe0d8c1b195696d5fbcda78c371dd4a6b8f
+	sha256sums = SKIP
 
 pkgname = python-fuzzywuzzy-git
-
