@@ -1,7 +1,7 @@
 pkgbase = pdd-git
 	pkgdesc = Tiny date, time diff calculator with piggybacked timers.
-	pkgver = r132.4de93e9
-	pkgrel = 1
+	pkgver = r143.9c6a3b7
+	pkgrel = 2
 	url = https://github.com/jarun/pdd
 	arch = any
 	license = GPL3

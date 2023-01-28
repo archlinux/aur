@@ -2,8 +2,8 @@
 
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
-pkgver=r132.4de93e9
-pkgrel=1
+pkgver=r143.9c6a3b7
+pkgrel=2
 pkgdesc='Tiny date, time diff calculator with piggybacked timers.'
 arch=('any')
 url='https://github.com/jarun/pdd'
@@ -27,7 +27,7 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    make PREFIX=/usr DESTDIR="${pkgdir}" install-bin
     gzip -c -9 "${_pkgname}".1 > "${_pkgname}".1.gz
     install -Dm644 "${_pkgname}".1 "${pkgdir}/usr/share/man/man1"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
