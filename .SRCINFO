@@ -1,7 +1,7 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Easy launch of your Windows applications and games with Wine/Proton
 	pkgver = 0.75.7.r0.g105a593
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = x86_64
 	license = MIT
@@ -109,7 +109,7 @@ pkgbase = lutris-wine-git
 	depends = winetricks
 	depends = innoextract
 	depends = p7zip
-	depends = openbsd-netcat
+	depends = gnu-netcat
 	depends = xdg-user-dirs
 	optdepends = lib32-vulkan-radeon
 	optdepends = vulkan-radeon
