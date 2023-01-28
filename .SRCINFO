@@ -1,7 +1,7 @@
 pkgbase = planeshift-legacy
 	pkgdesc = the legacy version of Planeshift, an Open source and cross-platform 3D Fantasy MMORPG
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.planeshift.it/
 	install = planeshift-legacy.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = planeshift-legacy
 	depends = libxpm
 	depends = openal
 	conflicts = planeshift-unreal
+	replaces = planeshift
 	options = emptydirs
 	source = planeshift_x86_64.meta4
 	source = planeshift_i686.meta4

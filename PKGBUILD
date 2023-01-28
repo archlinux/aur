@@ -10,7 +10,7 @@
 
 pkgname=planeshift-legacy
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='the legacy version of Planeshift, an Open source and cross-platform 3D Fantasy MMORPG'
 url='http://www.planeshift.it/'
 arch=('x86_64' 'i686')
@@ -18,6 +18,7 @@ license=('GPL' 'custom:PlaneShift Content License')
 depends=('libgl' 'libsm' 'libxmu' 'libxpm' 'openal')
 makedepends=('gendesk' 'aria2')
 conflicts=('planeshift-unreal')
+replaces=('planeshift')
 options=('emptydirs')
 install="$pkgname.install"
 source=('planeshift_x86_64.meta4'
