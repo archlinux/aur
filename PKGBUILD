@@ -2,7 +2,7 @@
 # Contributor Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=betaflight-configurator
-pkgver=10.8.0
+pkgver=10.9.0
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
