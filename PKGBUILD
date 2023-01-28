@@ -2,8 +2,8 @@
 
 pkgbase=stc-isp-wine
 pkgname=(stc-isp{,-tiny}-wine)
-pkgver=6.91F
-pkgrel=1
+pkgver=6.91J
+pkgrel=0
 arch=('x86_64')
 url="http://www.stcmcudata.com"
 license=('unknow')
@@ -19,11 +19,13 @@ install=${pkgname}.install
 source=("${pkgname%-wine}-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}.zip"
         "${pkgname%-wine}-tiny-v${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-v${pkgver}-tiny.zip"
         "stc-isp-wine.install"
-        "stc-isp-tiny-wine.install")
-sha256sums=('ea1f559b6bafb79f70fb81e8cb816e60184376074aab8ffefe08a121e6f3f093'
-            '8cc5b4b906bfa84d114d69f159ef2343021e04f8d5318e3f3bdd6affd69eafa1'
+        "stc-isp-tiny-wine.install"
+        "icon.svg")
+sha256sums=('80984a6e42a3783fc5224cbb5152d23c44c95549255edd4493f912f3f0cf9018'
+            '8cfd4a7b633b49ba1243fd0252c0da1f1d20a0b38e1b9ff23d5a847b19c8ba42'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
-            'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6')
+            'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6'
+            'c04d3cf704c9055e4b0bb010d946c5e90710677c459def826f762c8e9d717538')
 # noextract=("${pkgname%-wine}-v${pkgver}.zip"
 #             "${pkgname%-wine}-tiny-v${pkgver}.zip")
 
@@ -43,6 +45,7 @@ package_stc-isp-wine() {
     _ftname="wqy-microhei.ttc"
 
     install -dm0755 "${pkgdir}/${_stc}/${pkgname%-wine}"
+    install -Dm6644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-wine}.svg"
 
 #     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}.exe" "${pkgdir}/${_stc}/${pkgname%-wine}"
@@ -90,9 +93,9 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "FontSmoothing"="2"
+"FontSmoothingOrientation"=dword:00000001
 "FontSmoothingType"=dword:00000002
 "FontSmoothingGamma"=dword:00000578
-"FontSmoothingOrientation"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Wine\Ports]
 "COM1"="/dev/ttyUSB0"
@@ -120,6 +123,7 @@ EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
 export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEDLLOVERRIDES="mscoree,mshtml="
 
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
@@ -148,7 +152,7 @@ Exec=${pkgname%-wine} %f
 Type=Application
 Categories=Development;Tool;
 Terminal=false
-Icon=${pkgname%-wine}.png
+Icon=${pkgname%-wine}.svg
 Version=${pkgver}
 EOF
 }
@@ -162,6 +166,7 @@ package_stc-isp-tiny-wine() {
     _ftname="wqy-microhei.ttc"
 
     install -dm0755 "${pkgdir}/${_stc}/${pkgname%-wine}"
+    install -Dm6644 "${srcdir}/icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-wine}.svg"
 
 #     cp -ra "${srcdir}/${pkgname%-wine}-v${pkgver}/${pkgname%-tiny-wine}-v${pkgver}-tiny.exe" "${pkgdir}/${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe"
     cp -ra "${srcdir}/${pkgname%-tiny-wine}-v${pkgver}-tiny.exe" "${pkgdir}/${_stc}/${pkgname%-wine}/${pkgname%-wine}-${pkgver}.exe"
@@ -209,9 +214,9 @@ REGEDIT4
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "FontSmoothing"="2"
+"FontSmoothingOrientation"=dword:00000001
 "FontSmoothingType"=dword:00000002
 "FontSmoothingGamma"=dword:00000578
-"FontSmoothingOrientation"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Wine\Ports]
 "COM1"="/dev/ttyUSB0"
@@ -239,6 +244,7 @@ EOF
 #!/bin/bash
 export LC_CTYPE="zh_CN.UTF-8"
 export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEDLLOVERRIDES="mscoree,mshtml="
 
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
@@ -267,7 +273,7 @@ Exec=${pkgname%-wine} %f
 Type=Application
 Categories=Development;Tool;
 Terminal=false
-Icon=${pkgname%-wine}.png
+Icon=${pkgname%-wine}.svg
 Version=${pkgver}
 EOF
 }
