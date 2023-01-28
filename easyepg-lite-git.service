@@ -3,10 +3,10 @@ Description = XMLTV grabber tool using Gracenote's TMS API
 After=network.target
 
 [Service]
-ExecStart = /usr/lib/easyepg-lite/startup.sh
-User = easyepg-lite
-WorkingDirectory = %S/easyepg-lite
-StateDirectory = easyepg-lite
+ExecStart = /usr/bin/easyepg-lite-git
+User = easyepg-lite-git
+WorkingDirectory = %S/easyepg-lite-git
+StateDirectory = easyepg-lite-git
 StateDirectoryMode = 0700
 
 DynamicUser = yes

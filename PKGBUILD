@@ -2,12 +2,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=easyepg-lite-git
-pkgver=r18.0ae7fe6
+pkgver=r20.5d1c3ba
 pkgrel=1
 pkgdesc="XMLTV grabber tool using Gracenote's TMS API"
 url="https://github.com/sunsettrack4/script.service.easyepg-lite"
 depends=(
-	python
 	python-bottle
 	python-requests
 	python-xmltodict
@@ -15,26 +14,26 @@ depends=(
 )
 makedepends=(git)
 arch=('any')
-license=('GPLv3')
+license=('GPL3')
 source=(
-	"easyepg-lite::git+https://github.com/sunsettrack4/script.service.easyepg-lite.git"
+	"$pkgname::git+https://github.com/sunsettrack4/script.service.easyepg-lite.git"
+	"$pkgname.service"
 	startup.sh
-	easyepg-lite.service
 )
 sha512sums=(
 	SKIP
-	0a3e72f8d284e67fcd7e530ef83f8fa45a5e32408439d872960454ae4b7357845e0a78ba882b5f75fa7d975e04c4b281fa6d0c0a1ee0d58f9eb67a64485ed73d
-	64723439f8317d4e6e0dc57cbd9d3c1a18575b169125504301d67b44dc8ca5c80b3a8a097bf3e958127aee4821c59d4d14e62d0c8234601fad9c50782bdd6066
+	f6c94c77140100bff307e6197cb7b564be663e88d56ce956da5001f5c47dc35827c63ace9ce4a61e44a798cff41e378fe79a2a79ee98f9ee1f00cf96076dac0b # easyepg-lite-git.service
+	50d1cf2531e375766666f2f7950fdd9e0c18ed213ab4a8e3486f3922b0c33997e21f67b074dfd39603bcf6585df85754e84a199544427b840c4723d9fc7f8ba3 # startup.sh
 )
 
 pkgver() {
-	cd "$srcdir/easyepg-lite"
+	cd "$srcdir/$pkgname" || exit
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/easyepg-lite"
-	cp -r "$srcdir/easyepg-lite/"{main.py,resources} "$pkgdir/usr/lib/easyepg-lite"
-	install -Dm0755 "$srcdir/startup.sh" "$pkgdir/usr/lib/easyepg-lite/startup.sh"
-	install -Dm0644 "$srcdir/easyepg-lite.service" "$pkgdir/usr/lib/systemd/system/easyepg-lite.service"
+	mkdir -p "$pkgdir/usr/lib/$pkgname"
+	cp -r "$srcdir/$pkgname/"{main.py,resources} "$pkgdir/usr/lib/$pkgname"
+	install -Dm0755 "$srcdir/startup.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
