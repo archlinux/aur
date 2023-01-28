@@ -34,14 +34,16 @@ sha256sums_x86_64=('65d5fd2239b00ef37ab6c2ccf030ab095de24684f0bb80c4c920c195bb3c
 sha256sums_aarch64=('6e14386d65770a8b6c4c6dc020e47b0c4a88a5009dfbd3c1b8f50c26ca96a593')
 
 prepare() {
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-update-support.patch"
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-release-type-detection.patch"
+    cp "${srcdir}/nzbhydra2wrapperPy3.py" "${srcdir}/nzbhydra2wrapperPy3p.py"
+    patch "${srcdir}/nzbhydra2wrapperPy3p.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
+    patch "${srcdir}/nzbhydra2wrapperPy3p.py" < "${srcdir}/wrapper-remove-update-support.patch"
+    patch "${srcdir}/nzbhydra2wrapperPy3p.py" < "${srcdir}/wrapper-remove-release-type-detection.patch"
 }
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
-    install -D -m 755 "${srcdir}/nzbhydra2wrapperPy3.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3p.py"
+    install -D -m 755 "${srcdir}/nzbhydra2wrapperPy3.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3.py"
+    install -D -m 755 "${srcdir}/nzbhydra2wrapperPy3p.py" "${pkgdir}/usr/lib/nzbhydra2/nzbhydra2wrapperPy3p.py"
     install -D -m 755 "${srcdir}/core" "${pkgdir}/usr/lib/nzbhydra2/core"
     install -D -m 644 "${srcdir}/readme.md" "${pkgdir}/usr/share/doc/nzbhydra2/readme.md"
 
