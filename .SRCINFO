@@ -1,7 +1,7 @@
 pkgbase = gog-enter-the-gungeon
 	pkgdesc = Fast-paced bullet hell dungeon crawler with roguelike elements
 	pkgver = 2.1.9.33951
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dodgeroll.com/gungeon/
 	arch = x86_64
 	arch = i686

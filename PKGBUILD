@@ -2,7 +2,7 @@
 
 pkgname='gog-enter-the-gungeon'
 pkgver=2.1.9.33951
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast-paced bullet hell dungeon crawler with roguelike elements"
 url='http://dodgeroll.com/gungeon/'
 license=('custom')
@@ -60,8 +60,18 @@ package() {
   install -D -m 644 -T \
     "${srcdir}/data/noarch/support/icon.png" \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+
   install -D -m 644 -T \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  if [[ "$CARCH" = "x86_64" ]]
+    then
+    echo "StartupWMClass=EtG.x86_64" \
+      >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  elif [[ "$CARCH" = "i686" ]]
+    then
+    echo "StartupWMClass=EtG.x86" \
+      >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  fi
 }
 
