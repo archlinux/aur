@@ -2,7 +2,7 @@
 
 _pkgname=sip4-sip-provides
 pkgname="${_pkgname}"
-epoch=1
+epoch=2
 _pkgver=4
 pkgver=4.19.25
 pkgrel=1
@@ -41,7 +41,7 @@ pkgver() {
   LANG=C
   export LC_ALL
   export LANG
-  pacman -Qi sip4 | grep -E '^Version[[:space:]]*:' | awk -F ':' '{print $2}' | tr -d '[[:space:]]' | sed -E 's|\-[^-]*$||'
+  pacman -Qi sip4 | grep -E '^Version[[:space:]]*:' | sed -E 's|^.*:([^:]*)$|\1|g' | tr -d '[[:space:]]' | sed -E 's|\-[^-]*$||'
 }
 
 package() {
