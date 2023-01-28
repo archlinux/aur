@@ -3,14 +3,14 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomeInfoDb
-_bcver=1.34.2
-pkgname=r-${_bcname,,}
-pkgver=${_bcver//[:-]/.}
+_bcver=1.34.7
+pkgname="r-${_bcname,,}"
+pkgver="${_bcver//[:-]/.}"
 pkgrel=1
 pkgdesc="Utilities for manipulating chromosome names, including modifying them to follow a particular naming style"
-arch=(any)
+arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic-2.0)
+license=("Artistic2.0")
 depends=(
     "r>=4.0.0"
 	"r-biocgenerics>=0.37.0"
@@ -34,7 +34,7 @@ optdepends=(
     "r-knitr"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("4bfb7cc27dc420586208133480a2479748ede743f25d2d1a3295cc1d77d13ef8f1fb54794a0cd24d523cf1c33572135e77202923ddd4217d69414caf4e27030e")
+b2sums=("a4a931633854fe0c84b2c6422d3c013e9fd4a6b677fa253762968214966d8004e5324fded08d1076dd99d7be00001a9656ee6042971c56770a2a2bc405e74e60")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
