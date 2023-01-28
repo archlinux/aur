@@ -1,7 +1,7 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
 _pkgname="KoalaLauncher"
-pkgver="1.1.2"
+pkgver="1.2.1"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -11,22 +11,19 @@ makedepends=('gendesk' 'git' 'yarn' 'nodejs' 'rust' 'unzip')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflicts=('koalalauncher-bin')
 source=("${pkgver}.zip::https://github.com/KoalaDevs/KoalaLauncher/archive/v${pkgver}.zip")
-md5sums=('SKIP')
+md5sums=('015e9a47fc5830a579336581ebce6e8b')
 
 prepare() {
     # generate .desktop
     gendesk --pkgname "Koala Launcher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Koala Launcher.desktop" "${pkgname}.desktop"
-
-    # put yarn in testing mode
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    echo "RELEASE_TESTING=true" > .env
 }
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    yarn
-    yarn release
+    npm i --legacy-peer-deps
+    export NODE_OPTIONS=--openssl-legacy-provider
+    npm run release
 }
 
 package() {
