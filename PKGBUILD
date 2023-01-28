@@ -17,10 +17,8 @@ validpgpkeys=(
     '20EE325B86A81BCBD3E56798F04367096FBA95E8'
 )
 
-sha256sums=(
-    'be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417'
-    '06340f0f9aea9a6f4f9984124c566dc6f5f65fc4ce2b92e8891664bdd230a5f4'
-)
+sha256sums=('be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417'
+            'SKIP')
 
 prepare() {
     sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
