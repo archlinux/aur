@@ -3,8 +3,8 @@
 cpaname=JavaScript-Packer
 cpanauthor=LEEJO
 pkgname=perl-javascript-packer
-pkgver=2.04
-pkgrel=2
+pkgver=2.11
+pkgrel=1
 pkgdesc="Perl JavaScript::Packer CPAN module"
 arch=('any')
 url="http://search.cpan.org/dist/${cpaname}/"
@@ -12,7 +12,7 @@ license=('unknown')
 options=('!emptydirs')
 depends=('perl' 'perl-test-simple' 'perl-regexp-reggrp')
 source=("http://www.cpan.org/authors/id/${cpanauthor::1}/${cpanauthor::2}/${cpanauthor}/${cpaname}-${pkgver}.tar.gz")
-sha256sums=('826fff0d047a8991d3afc7723520643589c3ef7dcfd342931c23cf586f9f4ff0')
+sha256sums=('1b28cc514b9ae8a041020c087d3cc202031c16faa893afabb65fa6ba2e6e1101')
 
 build() {
 	 cd "${srcdir}/${cpaname}-${pkgver}"
