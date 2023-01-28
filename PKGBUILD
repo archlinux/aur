@@ -1,13 +1,13 @@
 pkgname=immich
 pkgrel=0
-pkgver=1.42.0_65
+pkgver=1.43.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
 arch=(x86_64)
 makedepends=('npm' 'nodejs-lts-hydrogen')
 depends=('redis' 'postgresql' 'nodejs')
-source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}-dev.tar.gz"
+source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}-server.service"
 	"${pkgname}-microservices.service"
 	"${pkgname}-machine-learning.service"
@@ -16,7 +16,7 @@ source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}-dev.t
 	"immich.conf"
 	"nginx.immich.conf"
 )
-sha256sums=('e62be27df782e46f859da310cae77bd4fed24ee1ebaa4507d2b36ad034320164'
+sha256sums=('1334cfc07c951940a0f2742ae079c12339bc5d97a966483cd63692ba2360d4e5'
             '4610abec7e1d14eb4b9c33dcbf1362537281e46c96eb79c9a0cef72ad03bd0e2'
             'dc16ca71d9e1644653570562e672f8e3b9a3c06a95893b20181c9bf2500c03ff'
             '9ca54531c5671e9a1eb3e26bb41fee24f1ba9a4bd5ba95cf45377a2ee803cd1f'
