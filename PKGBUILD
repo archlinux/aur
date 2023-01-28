@@ -1,19 +1,19 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=whatwg-html
-pkgver=2017_08
-pkgrel=2
+pkgver=2023.1
+pkgrel=1
 pkgdesc="Clone the WHATWG HTML specification with local resources"
 arch=('any')
 url="https://www.github.com/whatwg/html-build"
 license=('GPL')
 makedepends=(git perl perl-lwp-protocol-https)
 
-_gitroot=https://www.github.com/whatwg/html-build.git
+_gitroot=https://www.github.com/whatwg/html-build.git/
 _gitname='html-build'
-_htmlroot=https://github.com/whatwg/html.git
+_htmlroot=https://github.com/whatwg/html.git/
 _html='html'
 
-build() {
+prepare() {
   cd "$srcdir"
   msg "Connecting to GIT server..."
 
@@ -28,7 +28,7 @@ build() {
     msg "Clone completed."
   fi
 
-  msg "Cloning HTML..."
+  msg "Cloning ${_gitname}"
 
   if [[ -d "$_html" ]]; then
     msg "Updating..."
@@ -40,21 +40,25 @@ build() {
     cd "$_html"
     msg "Clone completed."
   fi
+}
 
+build() {
+  cd "${srcdir}/${_gitname}"
   msg "Starting build..."
 
+  cd html
   mv source source.orig
-  perl $startdir/download-resources.pl source.orig source
+
+  msg "Downloading Resources and Patching source"
+  perl ../../../download-resources.pl source.orig source
   cd ..
-  ./build.sh
-  mv html/resources output/multipage/
+  ./build.sh -f
+  mv html/resources output/
 }
 
 package() {
   cd "$srcdir/${_gitname}"
 
-  mkdir -p ${pkgdir}/usr/share/doc/whatwg
-  cp -rv output/multipage ${pkgdir}/usr/share/doc/whatwg/html
+  mkdir -p ${pkgdir}/usr/share/doc/whatwg/
+  cp -rv output/* ${pkgdir}/usr/share/doc/whatwg/
 }
-
-# vim:set ts=2 sw=2 et:
