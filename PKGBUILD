@@ -3,13 +3,13 @@
 
 pkgname=python-slider
 url="https://github.com/llllllllll/slider"
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Utilities for working with osu! files and data."
 arch=('any')
 license=('LGPL3')
-source=("https://github.com/llllllllll/slider/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d9745655ec938a0639fd4bd755a12dc0112b5f0eb94f0d47c970cf2d676cf22')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('51283dcc240925161d0f0119dfb4e71ba06201aeb2c2b70aad3f88ba8cd63dc39743ed1f02e548a10410c5a852d256c31769960ea462c2682de60a93e196e501')
 depends=(
     'python>=3.6'
     'python-click'
