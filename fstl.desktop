@@ -2,8 +2,8 @@
 Type=Application
 Version=1.0
 Name=fstl
-GenericName=STL viewer
-Comment=A viewer for STL files
+GenericName=stl viewer
+Comment=a viewer for stl files
 Exec=fstl %f
 Terminal=false
 Categories=Graphics;3DGraphics;Viewer;Qt;
