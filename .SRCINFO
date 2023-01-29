@@ -1,6 +1,6 @@
 pkgbase = lesbar
 	pkgdesc = A view layer for desktop widgets and statusbars
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://git.sr.ht/~salmiak/lesbar
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lesbar
 	depends = cairo
 	depends = pango
 	depends = libx11
-	source = lesbar-1.0.0.tar.gz::https://git.sr.ht/~salmiak/lesbar/archive/v1.0.0.tar.gz
-	sha256sums = 05648b291bde08ec53d8e7b951c60ef079196acd54720a4ce3fa163d7f3e5c5e
+	source = lesbar-1.1.0.tar.gz::https://git.sr.ht/~salmiak/lesbar/archive/v1.1.0.tar.gz
+	sha256sums = 1a3fbea96d9f2eba7f473542dfa6b65d21edc749e60564f072742c5a7a113c17
 
 pkgname = lesbar
