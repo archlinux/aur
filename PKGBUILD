@@ -20,12 +20,12 @@ makedepends=(git)
 options=(strip !debug)
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     make
 }
 
 package() {
-	install -o root -g root -m 755 -d $pkgdir/usr/bin
+    install -o root -g root -m 755 -d $pkgdir/usr/bin
     install -o root -g root -m 755 -t $pkgdir/usr/bin $srcdir/$pkgname-$pkgver/ssu
 
     install -o root -g root -m 755 -d $pkgdir/usr/share/man/man1
@@ -37,3 +37,5 @@ package() {
     install -o root -g root -m 755 -d $pkgdir/usr/share/bash-completion
     install -o root -g root -m 644 -t $pkgdir/usr/share/bash-completion $srcdir/completion.bash
 }
+
+# vim: set et ts=4 sw=4:
