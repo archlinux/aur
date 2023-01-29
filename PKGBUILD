@@ -6,7 +6,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20221102.14062
+pkgver=20230129.14108
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -14,7 +14,6 @@ url="http://www.texmacs.org/"
 license=('GPL3')
 depends=('perl' 'guile1.8' 'texlive-core' 'python' 'libxext' 'freetype2'
 	 'qt5-svg' 'hicolor-icon-theme' 'gawk')
-
 optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
             'imagemagick: convert images'
@@ -25,10 +24,11 @@ sha256sums=('SKIP')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
+LANG=C
 
 pkgver() {
   cd ${_pkgname}
-  LANG=C svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+  svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
 prepare() {
@@ -50,12 +50,12 @@ build() {
 
 package() {
   cd ${_pkgname}/build
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="$pkgdir" install
 
   # fix fig2ps script
-  sed -i 's|${prefix}|/usr|' "${pkgdir}/usr/bin/fig2ps"
+  sed -i 's|${prefix}|/usr|' "$pkgdir"/usr/bin/fig2ps
   # fix FS#37518
-  sed -i '/^Path=/d' "${pkgdir}/usr/share/applications/texmacs.desktop"
+  sed -i '/^Path=/d' "$pkgdir"/usr/share/applications/texmacs.desktop
 }
 
 # vim:set ts=2 sw=2 et:
