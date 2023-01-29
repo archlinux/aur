@@ -7,11 +7,10 @@ pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/g
 arch=('any')
 url=https://chatterino.com
 license=('MIT')
-depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
+depends=('qt5-base' 'qt5-tools' 'boost-libs' 'openssl' 'qt5-imageformats' 'qtkeychain-qt5')
 makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output'
-            'gst-plugins-good: For audio output')
+            'pulseaudio: For audio output')
 provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
@@ -26,6 +25,7 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
+        "git+https://github.com/mackron/miniaudio"
         "git+https://github.com/google/googletest.git")
 md5sums=('SKIP'
          'SKIP'
@@ -61,6 +61,7 @@ prepare () {
     git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
     git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
     git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
+    git config submodule.miniaudio $srcdir/$_pkgname/lib/miniaudio
     # We can't set the local directory of this submodule as we have no way of accessing the config name `submodule.magic_enum` because underscores are actually not allowed.
     # The only thing I can think of is moving the submodule to `lib/magicenum` but that feels like an off approach. I'll look into it only if builds fail because of the below call is missing.
     # git config submodule.magic_enum $srcdir/$_pkgname/lib/magic_enum
