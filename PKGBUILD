@@ -26,6 +26,8 @@ build() {
   cd build/
   cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_CUDA_COMPILER=/opt/cuda/bin/nvcc \
+        -DCMAKE_CUDA_COMPILER_TOOLKIT_ROOT=/opt/cuda/ \
         -Wno-dev \
         ..
   MAKEFLAGS="-j$(nproc) --no-print-directory"
