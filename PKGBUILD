@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=mightymike
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='High Powered Action Rescue in a Toy Store Gone Mad'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/jorio/mightymike'
 license=('custom:CC-BY-NC-SA-4.0')
 depends=('sdl2' 'glu' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
-_commit='704ed5232081912d11b18edf423ca7823a98dd82'
+_commit='5337fc269afafec0c1571437f33f556fc0a4b264'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'github.com-jorio-Pomme::git+https://github.com/jorio/Pomme'
@@ -32,7 +32,7 @@ prepare() {
 
   git submodule init
   git config submodule.extern/Pomme.url "$srcdir/github.com-jorio-Pomme"
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
