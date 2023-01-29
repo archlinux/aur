@@ -94,8 +94,9 @@ set -u
 pkgname='sunix-snx'
 #pkgver='2.0.4_2'; _dl='2016/20160706173626'
 #pkgver='2.0.4_3'; _dl='2017/20171122180114'
-pkgver='2.0.5_0'; _dl='2021/20210407180737'
-pkgrel='2'
+#pkgver='2.0.5_0'; _dl='2021/20210407180737'
+pkgver='2.0.7_0'; _dl='2022/20220531161341'
+pkgrel='1'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -108,7 +109,7 @@ install="${pkgname}-install.sh"
 _srcdir="snx_V${pkgver//_/.}"
 source=(
   # DO NOT switch link to https. It doesn't work.
-  "http://www.sunix.com/en/download.php?file=driver&file_link=download/driver/${_dl}_snx_V${pkgver//_/.}.tar.xz"
+  "http://www.sunix.com/en/download.php?file=driver&file_link=download/driver/${_dl}_snx_V${pkgver//_/.}.zip"
   #"http://www.sunix.com.tw/en/download.php?pid=1479&file=driver&file_link=download/driver/${_dl}_snx_V${pkgver//_/.}.tar.gz"
   # http://dpdk.org/dev/patchwork/patch/22003/ [dpdk-dev] kni: fix build with kernel 4.11 lib/librte_eal/linuxapp/kni/compat.h lib/librte_eal/linuxapp/kni/kni_dev.h
   # http://dpdk.org/dev/patchwork/patch/22037/
@@ -119,17 +120,23 @@ source=(
   '0002-kernel-5.12-tty-low_latency.patch'
   '0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
   '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0005-kernel-6.0-set_termios-const-ktermios.patch'
+  '0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
 )
-md5sums=('effaa874994bde6047afe2ea3e023cf6'
+md5sums=('b673f1b48581036f44f77bc3ce2246f6'
          '71564d580faaf72ab3518c298883742e'
          'e3604145fb2b1678da395a600e4cf1ed'
          'a16e94419d504663c50d3d7522b0c019'
-         '43db33db258f67122c58c3868d688d13')
-sha256sums=('bfc5e68c0ef21266a11db62e3cd0bc3a523207afcf2bb989f2437caf86086d35'
+         '43db33db258f67122c58c3868d688d13'
+         '88978ceeeef410d00a2d465d3c756f6a'
+         '920cdd39dc868c2d216c23d180d9eb3e')
+sha256sums=('e46c22397886384ac6bd28401287b0e5f89fe1a1ac6a58518ba99774e59211be'
             '4ea9275ca8122543c25f17112d4c374dc39de32e3d9d1d0aa5488bacd514750d'
             'ab0ef161b7c7053299b18ab9b697047d37142e9e88d53d40ac087f64522a55dd'
             '12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251'
-            'fce8e15188f58fcfbea2720672709ea1e8d9e4703155c1222cf31ababd61807f')
+            'fce8e15188f58fcfbea2720672709ea1e8d9e4703155c1222cf31ababd61807f'
+            'b7972237d3b91a3bb93e27931e8c9a60037512571131687382b6a410dc7a668c'
+            '71d3be91c017166ea523f0f1c7bc5d1e66d828d1de60923b24947be4cb960e01')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -165,7 +172,7 @@ prepare() {
   sed -e 's: /lib/modules/: /usr/lib/modules/:g' \
       -e '/^install:/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
       -e '# New cache folder for gcc 8' \
-      -e 's/^clean.*:$/&\n\trm -f .cache.mk/g' \
+      -e 's/^clean.*:$/&\n\trm -f .cache.mk\n\trm -f .Module*\n\trm -f .module*/g' \
       -e '# What sort of make clean deletes files out of system folders?' \
       -e '/^clean/,/^$/ s: /usr/lib/: "${DESTDIR}"/usr/lib/:g' \
       -e '# Prevent file deletion for DKMS' \
@@ -200,21 +207,30 @@ prepare() {
 
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0001-kernel-4.7-async-initialized.patch'
-  patch -Nup1 -i "${srcdir}/0001-kernel-4.7-async-initialized.patch"
+  #patch -Nup1 -i "${srcdir}/0001-kernel-4.7-async-initialized.patch"
 
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0002-kernel-5.12-tty-low_latency.patch'
-  patch -Nup1 -i "${srcdir}/0002-kernel-5.12-tty-low_latency.patch"
+  #patch -Nup1 -i "${srcdir}/0002-kernel-5.12-tty-low_latency.patch"
 
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
-  patch -Nup1 -i "${srcdir}/0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+  patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
   #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup1 -i "${srcdir}/0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0005-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0005-kernel-6.0-set_termios-const-ktermios.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
+  patch -Nup1 -i "${srcdir}/0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
 
   # Kernel 3,4,5 all use the same makefile. Trim out everything but Kernel 4
   mv driver/Makefile{,.Arch}

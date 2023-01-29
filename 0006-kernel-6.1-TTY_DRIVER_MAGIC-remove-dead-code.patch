@@ -1,0 +1,15 @@
+diff -pNaru5 a/driver/snx_serial.c b/driver/snx_serial.c
+--- a/driver/snx_serial.c	2023-01-29 14:22:33.938459939 -0500
++++ b/driver/snx_serial.c	2023-01-29 14:23:16.166448182 -0500
+@@ -4385,11 +4385,10 @@ extern int sunix_ser_register_driver(str
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 0))
+     drv->tty_driver = normal;
+ #endif
+ 
+-	normal->magic                   = TTY_DRIVER_MAGIC;
+ 	normal->name                    = drv->dev_name;
+ 	normal->major                   = drv->major;
+ 	normal->minor_start             = drv->minor;
+ 	normal->num                     = (SNX_SER_TOTAL_MAX + 1);
+ 	normal->type                    = TTY_DRIVER_TYPE_SERIAL;
