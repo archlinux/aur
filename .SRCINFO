@@ -1,6 +1,6 @@
 pkgbase = tempy-git
 	pkgdesc = Render visually pleasing weather reports as rich text to your terminal
-	pkgver = 1.0.r44.2dd2b4c
+	pkgver = 1.0.r53.95b2d76
 	pkgrel = 1
 	url = https://github.com/noprobelm/tempy.git
 	arch = any
