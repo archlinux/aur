@@ -3,21 +3,14 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=vdr-epg-daemon
 pkgname=('epgd' 'mariadb-epglv')
-pkgver=1.2.4
+pkgver=1.3.5
 pkgrel=1
 url='https://github.com/horchi/vdr-epg-daemon'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('curl' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/$pkgver.tar.gz"
-        "$pkgbase-move-pthread-include.patch::https://patch-diff.githubusercontent.com/raw/horchi/vdr-epg-daemon/pull/3.patch")
-sha256sums=('43f658c5e2fd08f51bac630b15ae8523d463a419ed8b6e2cd13d712473779318'
-            '98e605031a1e0584eb75dc1d20dfad6eba31e8b452e099192a9db470b002a672')
-
-prepare() {
-  cd "$srcdir/$pkgbase-$pkgver"
-  patch -p1 -i "${srcdir}/$pkgbase-move-pthread-include.patch"
-}
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('559c61323311ae8aa5ecb3ecbb4dfd2dfc1d1352dd230919a33b1ab421535985')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
