@@ -9,7 +9,7 @@ url="https://github.com/adurbin/iotools"
 license=('GPL')
 #depends=('')
 makedepends=('git')
-source=("git://github.com/adurbin/iotools.git")
+source=("git+https://github.com/adurbin/iotools.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,6 +20,7 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgname}"
   unset CPPFLAGS
+  #CFLAGS="$CFLAGS -static"
   make
 }
 
