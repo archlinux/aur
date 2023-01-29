@@ -6,7 +6,7 @@
 pkgname=mksh
 _pkgver=R59c
 pkgver=59.c
-pkgrel=2
+pkgrel=3
 pkgdesc='MirBSD Korn Shell'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
