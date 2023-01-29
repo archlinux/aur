@@ -1,13 +1,13 @@
 pkgbase = getoptions-bin
 	pkgdesc = An elegant option/argument parser for shell scripts
-	pkgver = 3.3.0
+	pkgver = 3.3.0.r2
 	pkgrel = 1
 	url = https://github.com/ko1nksm/getoptions
-	arch = x86_64
+	arch = any
 	license = CC0-1.0
 	provides = getoptions
 	conflicts = getoptions
-	source = getoptions-3.3.0.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/getoptions/-/package_files/66/download
+	source = getoptions-3.3.0.r2.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/getoptions/-/package_files/66/download
 	sha256sums = 7300dd5093855d48613849ea1e4d38b96537278152caf7191be46b902f871ac4
 
 pkgname = getoptions-bin
