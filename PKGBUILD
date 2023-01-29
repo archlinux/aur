@@ -23,7 +23,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data
-pkgver=2.19.0.r4990.7c4fc133
+pkgver=2.19.1.r5001.4771ff29
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://agraef.github.io/purr-data/"
@@ -124,23 +124,6 @@ package() {
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
   sed -e "s!/usr/lib/pd-l2ork!$prefix/lib/pd-l2ork!g" -i default.settings
-  # Replace the pd-l2ork desktop/mime files and icons with purr-data ones, so
-  # that pd-l2ork can be installed alongside purr-data. We also remove the K12
-  # desktop files which aren't needed since K12 mode is not supported by
-  # purr-data (yet).
-  cd "$pkgdir/usr/share/applications"
-  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork.desktop > purr-data.desktop
-  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork-debug.desktop > purr-data-debug.desktop
-  rm -f pd-l2ork*.desktop
-  cd "$pkgdir/usr/share/mime/packages"
-  sed -e 's/pd-l2ork/purr-data/g' < pd-l2ork.xml > purr-data.xml
-  rm -f pd-l2ork.xml
-  cd "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  rm -f pd-l2ork-k12*.png
-  mv pd-l2ork.png purr-data.png
-  mv pd-l2ork-red.png purr-data-red.png
-  cd "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-  mv text-x-pd-l2ork.png text-x-purr-data.png
   # Remove libtool archives and extra object files.
   cd "$pkgdir$prefix"
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
