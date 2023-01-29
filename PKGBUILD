@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2022.3
+pkgver=2022.4
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -18,16 +18,16 @@ makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('76e33b86ae2126afeb86c6ccd1e845bf862f5c1065a9933b15e0e2bdcb4e7d62')
+sha256sums=('4ace5e257d7a5f997ef9b9cc18b492d903ecd1e9d3587e66c2c9c2a2608ada54')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-#For cuda support gcc10 is required, if you do not need cuda support comment the next two lines and install cuda
-export CC=gcc-11
-export CXX=g++-11 
+#For cuda support gcc12 is required (CUDA 12>), if you do not need cuda support comment the next two lines and install cuda
+#export CC=gcc-12
+#export CXX=g++-12 
 
 build() {
   mkdir -p ${srcdir}/{single,double}
@@ -49,7 +49,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib\
         -DGMX_BUILD_OWN_FFTW=ON \
-        -DGMX_GPU=CUDA \
         -DREGRESSIONTEST_DOWNLOAD=ON
   #-GMX_GPU: Framework for GPU acceleration. Pick one: OFF, CUDA, OpenCL, SYCL
   make
