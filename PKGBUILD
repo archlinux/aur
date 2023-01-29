@@ -1,8 +1,10 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
+# The official web build doesn't exists since v1.5
+# I build it myself and share the package 
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
-pkgver=1.5.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -13,13 +15,13 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-  "fluffychat-web-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/${pkgver}/fluffychat-web.tar.gz"
+  "fluffychat-web-${pkgver}.tar.gz::https://static.celogeek.com/AUR/fluffychat-web/fluffychat-web-1.8.0.tar.gz"
   "config-${pkgver}.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
 )
 noextract=(
     "fluffychat-web-${pkgver}.tar.gz"
 )
-sha256sums=('6d58f45d34ceddf743de55fcbab8ae151f65e4d1a5edb794b7e1b013ed36ed2c'
+sha256sums=('a761ca47a2c0a6405fa38b361cdcaad209452444a31f0bee9a3ffe54a80abb49'
             'c17a181d58527d4cc23bcf5534d61add1abc0da542ee22080d5bd6242c4c12d7')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
