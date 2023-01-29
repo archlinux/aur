@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.56
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -38,6 +38,7 @@ depends=(
     'python-certifi'
     'qt6-multimedia'	# recording voice
     'python-pyqt6-webengine'
+    'qt6-svg'
 )
 makedepends=(
     'rsync'
