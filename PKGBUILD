@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=r3736.8031f33b5
+pkgver=v2.4.0.r74.g4958d0803
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -38,11 +38,15 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
     cd "$srcdir/chatterino2"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare () {
