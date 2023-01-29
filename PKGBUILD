@@ -9,8 +9,10 @@ url="https://github.com/illiliti/ssu"
 license=('GPL')
 source=("ssu-$pkgver::git+https://github.com/illiliti/ssu#tag=$pkgver"
         'ssu.conf'
+        'completion.bash'
        )
 md5sums=(SKIP
+         SKIP
          SKIP
         )
 depends=(glibc)
@@ -31,4 +33,7 @@ package() {
 
     install -o root -g root -m 755 -d $pkgdir/usr/lib/tmpfiles.d
     install -o root -g root -m 644 -t $pkgdir/usr/lib/tmpfiles.d $srcdir/ssu.conf
+
+    install -o root -g root -m 755 -d $pkgdir/usr/share/bash-completion
+    install -o root -g root -m 644 -t $pkgdir/usr/share/bash-completion $srcdir/completion.bash
 }

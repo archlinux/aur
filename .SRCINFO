@@ -11,6 +11,8 @@ pkgbase = ssu
 	options = !debug
 	source = ssu-0.3.2::git+https://github.com/illiliti/ssu#tag=0.3.2
 	source = ssu.conf
+	source = completion.bash
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
