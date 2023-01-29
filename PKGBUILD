@@ -1,58 +1,50 @@
-## Maintainer: David Husička <contact@bydave.net>
+# Maintainer: éclairevoyant
+# Contributor: David Husička <contact at bydave dot net>
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=1.9.2a
+pkgver=2.1
 pkgrel=1
-pkgdesc="DXVK Native is a port of DXVK to Linux which allows it to be used natively without Wine."
+pkgdesc="Native Linux port of DXVK to allow usage without WINE"
 arch=('x86_64')
-url="https://github.com/Joshua-Ashton/dxvk-native"
-license=('zlib/libpng')
+url="https://github.com/doitsujin/dxvk"
+license=('custom:zlib')
 depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
-makedepends=(gcc meson glslang)
+makedepends=(git gcc meson glslang)
 provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
-source=("https://github.com/Joshua-Ashton/dxvk-native/archive/refs/tags/native-$pkgver.tar.gz")
-sha256sums=("4e6614f5522da83fec02920f8d0fd65730169c096577066412908f0563cf1a06")
+source=("git+$url.git?signed#tag=v$pkgver"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP')
+validpgpkeys=('273D040B5113B886D1A090D4C8CC613427A31C99') # Philip Rebohle <philip.rebohle@tu-dortmund.de>
 
+prepare() {
+	cd dxvk
+	git submodule init
+	git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
+	git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
+	git -c protocol.file.allow=always submodule update
+}
 
 build() {
-	# 64-bit
-	cd $srcdir/dxvk-native-native-"${pkgver}"
-	meson --buildtype "release"                       \
-        --prefix "/usr/"                              \
-        --strip                                       \
-        -Denable_tests=true                           \
-        "${srcdir}"/build
-
-	ninja -C "${srcdir}"/build
-
-	# 32-bit
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-    cd ${srcdir}/dxvk-native-native-"${pkgver}"
-    meson --buildtype "release"                       \
-        --prefix "/usr/"                              \
-		--libdir lib32                                \
-        --strip                                       \
-        -Denable_tests=false                          \
-        "${srcdir}"/build-32
-
-    ninja -C "${srcdir}"/build-32
+	dxvk/package-native.sh $pkgver build --no-package
 }
 
 package_libdxvk() {
 	depends=(sdl2 vulkan-icd-loader)
 
-	install -Dm644 "${srcdir}"/dxvk-native-native-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENCE.md
-
-	DESTDIR="${pkgdir}" ninja -C "${srcdir}"/build install
+	find build/dxvk-native-$pkgver/usr/lib -name '*.so' \
+		-exec install -Dm644 '{}' -t "$pkgdir/usr/lib/" \;
+	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 package_lib32-libdxvk() {
-	pkgdesc="DXVK Native is a port of DXVK to Linux which allows it to be used natively without Wine. (32-bit)"
+	pkgdesc+=" (32-bit)"
 	depends=(lib32-sdl2 lib32-vulkan-icd-loader lib32-gcc-libs)
-	install -Dm644 "${srcdir}"/dxvk-native-native-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENCE.md
 
-	DESTDIR="${pkgdir}" ninja -C "${srcdir}"/build-32 install
+	find build/dxvk-native-$pkgver/usr/lib32 -name '*.so' \
+		-exec install -Dm644 '{}' -t "$pkgdir/usr/lib32/" \;
+	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

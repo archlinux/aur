@@ -1,10 +1,11 @@
 pkgbase = libdxvk
-	pkgdesc = DXVK Native is a port of DXVK to Linux which allows it to be used natively without Wine.
-	pkgver = 1.9.2a
+	pkgdesc = Native Linux port of DXVK to allow usage without WINE
+	pkgver = 2.1
 	pkgrel = 1
-	url = https://github.com/Joshua-Ashton/dxvk-native
+	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
-	license = zlib/libpng
+	license = custom:zlib
+	makedepends = git
 	makedepends = gcc
 	makedepends = meson
 	makedepends = glslang
@@ -16,15 +17,20 @@ pkgbase = libdxvk
 	provides = libdxvk_dxgi.so
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d11.so
-	source = https://github.com/Joshua-Ashton/dxvk-native/archive/refs/tags/native-1.9.2a.tar.gz
-	sha256sums = 4e6614f5522da83fec02920f8d0fd65730169c096577066412908f0563cf1a06
+	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.1
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	validpgpkeys = 273D040B5113B886D1A090D4C8CC613427A31C99
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = libdxvk
 	depends = sdl2
 	depends = vulkan-icd-loader
 
 pkgname = lib32-libdxvk
-	pkgdesc = DXVK Native is a port of DXVK to Linux which allows it to be used natively without Wine. (32-bit)
+	pkgdesc = Native Linux port of DXVK to allow usage without WINE (32-bit)
 	depends = lib32-sdl2
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-gcc-libs
