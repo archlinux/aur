@@ -1,0 +1,16 @@
+pkgbase = git-imerge
+	pkgdesc = Incremental merge for Git
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mhagger/git-imerge
+	arch = any
+	license = GPL2
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	makedepends = bash-completion
+	depends = python
+	depends = git
+	source = git-imerge-1.2.0.tar.gz::https://github.com/mhagger/git-imerge/archive/refs/tags/v1.2.0.tar.gz
+	b2sums = bae4266f288320b8fe3637f6e3c133ed423a2c85a56f03db4a3210eb99f66c8e11c61cecf7ea0335f4798c92a175acad5525494680c5c3531403fa433b221ee9
+
+pkgname = git-imerge
