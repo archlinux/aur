@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=20230128_nextpnr_0.5_18_gf80b871d
+pkgver=20230129_nextpnr_0.5_18_gf80b871d
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
