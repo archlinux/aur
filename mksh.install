@@ -1,0 +1,14 @@
+post_install() {
+  grep -qx /bin/mksh /etc/shells || echo /bin/mksh >>/etc/shells
+  grep -qx /usr/bin/mksh /etc/shells || echo /usr/bin/mksh >>/etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/mksh$/d' etc/shells
+}
+
+# vim:set ts=2 sw=2 et:
