@@ -1,0 +1,18 @@
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2023-01-29 04:08:09.639903778 -0500
++++ b/pserial/perle-serial.c	2023-01-29 04:12:12.648878696 -0500
+@@ -176,10 +176,14 @@
+ #include <linux/serial.h>
+ #include <linux/serial_reg.h>
+ #endif	
+ #endif	
+ #include <asm/serial.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++#include <linux/serial_core.h>
++#define SERIAL_XMIT_SIZE UART_XMIT_SIZE
++#endif
+ #include <linux/errno.h>
+ #include <linux/signal.h>
+ #include <linux/sched.h>
+ #include <linux/timer.h>
+ #include <linux/interrupt.h>

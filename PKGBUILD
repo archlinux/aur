@@ -78,8 +78,8 @@ set -u
 pkgname='perle-serial'
 #_pkgver='3.9.0-14'
 _pkgver='3.9.2-4'
-pkgver="${_pkgver//-/_}"
-pkgrel='4'
+pkgver="${_pkgver//-/.}"
+pkgrel='5'
 pkgdesc='kernel module driver for Perle UltraPort SI Express PCI-RAS modem SPEED LE multi I/O serial parallel RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='https://www.perle.com/downloads/mp_speedle.shtml'
@@ -98,6 +98,8 @@ source=(
   '0004-tty_unregister_driver-void.patch'
   '0005-kernel-5.14-unsigned-tty-flow-tty.patch'
   '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0007-kernel-6.0-serial_UART_XMIT_SIZE.patch'
+  '0008-kernel-6.0-set_termios-const-ktermios.patch'
 )
 md5sums=('85e9617af62fcab55c684fa8e4b26987'
          '52f87acfeb5f5820a74ad6aa74d18acf'
@@ -106,7 +108,9 @@ md5sums=('85e9617af62fcab55c684fa8e4b26987'
          'd85366f7566046dbd580850fbfa640e0'
          '7d7c57fc3a46599aebede7f940c5c5a8'
          '47a81ca7f524a3e86abb72ae872bac74'
-         '128ee03b62d13384a249f6f6244d0214')
+         '128ee03b62d13384a249f6f6244d0214'
+         '3058470a7727ad05608a292d4850e052'
+         '4e9c319ae14958bee4b96ee732e972c9')
 sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
             '691e0d8d348ab9f19f0398ff79e0d4780d5110e3dd11acf3261e3f73b2983ea1'
             '31e0d244d22b16d2c0b783e38bac2d96a53cbe0ce14f2fe11142a8691ce952aa'
@@ -114,7 +118,9 @@ sha256sums=('d9d61a941ecfd2ff41d5450557eb9071d934497dbd10229e97c8f88b48cb9a58'
             '3e2b44baf4d8e29ce5e084485f0882a8f06a1d1b045a93ffa5cdd2f8112d1bfa'
             '7c0c4af907e68a2641beffd20bf487b47cf58ca79dea45276b5046fe81f436bc'
             '0c942db9e9a5f41873cc2ba6edae3372da672e8f82ea5c1266a2c905d4373319'
-            '4c9e99b780353f270b96e57cd25e4ebf8e3058fa44105422ada42eb87cf798b2')
+            '4c9e99b780353f270b96e57cd25e4ebf8e3058fa44105422ada42eb87cf798b2'
+            '517e2aa68ee91bf2d8c0d6896dee2367cbc29f98ed5a3eb8392ca32028cd9b84'
+            '13b41be744f62b6c56b0b4bfcbae1707fefe6eb95d4f688e55eb99fb771d736a')
 
 _opt_SERIAL=1    # This is for bug testing dkms only. All cards have serial ports so this should always be enabled.
 
@@ -216,6 +222,16 @@ prepare() {
   #cp -pr "${srcdir}/${_srcdir}"{,.orig-0006}; false
   #diff -pNaru5 perle-serial-3.9.2{.orig-0006,} > '0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
   patch -Nup1 -i "${srcdir}/0006-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/6fb33489-946f-ad92-df35-7f608420bc7@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0007-kernel-6.0-serial_UART_XMIT_SIZE.patch'
+  patch -Nup1 -i "${srcdir}/0007-kernel-6.0-serial_UART_XMIT_SIZE.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0008-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0008-kernel-6.0-set_termios-const-ktermios.patch"
 
   set +u
 }

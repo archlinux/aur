@@ -1,0 +1,18 @@
+diff -pNaru5 a/pserial/perle-serial.c b/pserial/perle-serial.c
+--- a/pserial/perle-serial.c	2023-01-29 04:15:33.238149934 -0500
++++ b/pserial/perle-serial.c	2023-01-29 04:17:17.041142672 -0500
+@@ -3153,11 +3153,13 @@ static int ps_ioctl(struct tty_struct *t
+ 		return -ENOIOCTLCMD;
+ 	}
+ 	return 0;
+ }
+ 
+-#if (LINUX_VERSION_CODE >  0x20612)		// 2.6.18
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++static void ps_set_termios(struct tty_struct *tty, const struct ktermios *old_termios)
++#elif (LINUX_VERSION_CODE >  0x20612)		// 2.6.18
+ static void ps_set_termios(struct tty_struct *tty, struct ktermios *old_termios)
+ #else
+ static void ps_set_termios(struct tty_struct *tty, struct termios *old_termios)
+ #endif
+ {
