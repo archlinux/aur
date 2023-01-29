@@ -9,7 +9,7 @@
 
 pkgname=anki-qt5
 pkgver=2.1.56
-pkgrel=2
+pkgrel=3
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -39,6 +39,7 @@ depends=(
     'python-certifi'
     'python-waitress'
     'python-pyqt5'
+    'qt5-svg'
 )
 
 makedepends=(
