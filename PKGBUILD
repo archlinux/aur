@@ -1,7 +1,8 @@
-# Maintainer: sQVe <oskargrunning@gmail.com>
+# Maintainer: LordDemecrius83 <lorddemecrius83@proton.me>
+# Contributor: sQVe <oskargrunning@gmail.com>
 
 pkgname=vimix-gtk-themes-git
-pkgver=r464.f83a116
+pkgver=r520.016b12dc
 pkgrel=1
 pkgdesc='A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell'
 url='https://github.com/vinceliuice/vimix-gtk-themes'
@@ -14,6 +15,7 @@ makedepends=('git' 'sassc')
 source=('git+https://github.com/vinceliuice/vimix-gtk-themes.git')
 sha256sums=('SKIP')
 provides=("vimix-gtk-themes=${pkgver}")
+options=(!strip)
 conflicts=('vimix-gtk-themes')
 _gitname=vimix-gtk-themes
 
@@ -27,8 +29,8 @@ package() {
     install -dm755 "${pkgdir}/usr/share/themes"
 
     # Install standard sizes.
-    ./install.sh --all --size standard --dest "$pkgdir/usr/share/themes"
+    ./install.sh --theme all --size standard --dest "$pkgdir/usr/share/themes"
 
     # Install compact sizes.
-    ./install.sh --all --size compact --dest "$pkgdir/usr/share/themes"
+    ./install.sh --theme all --size compact --dest "$pkgdir/usr/share/themes"
 }
