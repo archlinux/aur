@@ -1,0 +1,64 @@
+Include a manpage for the command line usage of the program.
+
+Author: Nick Andrik <nick.andrik@gmail.com>
+
+--- /dev/null	2023-01-29 19:33:21.505227020 +0200
++++ acetoneiso/manual/acetoneiso.1	 2023-01-29 23:10:55.994370468 +0200
+@@ -0,0 +1,56 @@
++.\"                                      Hey, EMACS: -*- nroff -*-
++.\" First parameter, NAME, should be all caps
++.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
++.\" other parameters are allowed: see man(7), man(1)
++.TH ACETONEISO 1 "November 15, 2010" "AcetoneISO 2.3"
++.\" Please adjust this date whenever revising the manpage.
++.\"
++.\" Some roff macros, for reference:
++.\" .nh        disable hyphenation
++.\" .hy        enable hyphenation
++.\" .ad l      left justify
++.\" .ad b      justify to both left and right margins
++.\" .nf        disable filling
++.\" .fi        enable filling
++.\" .br        insert line break
++.\" .sp <n>    insert n+1 empty lines
++.\" for manpage-specific macros, see man(7)
++.SH NAME
++acetoneiso \- feature-rich graphical application to mount and manage CD/DVD images
++
++.SH SYNOPSIS
++.B acetoneiso
++.RI "[OPTION] [FILE]"
++.br
++
++.SH DESCRIPTION
++Opens a graphical filemanager which lets you mount typical proprietary images
++formats of the Windows world such as ISO BIN NRG MDF IMG and do plenty of other things.
++.PP
++If
++.RI FILE
++is specified, then the program mounts the image before opening the GUI.
++.PP
++.\" TeX users may be more comfortable with the \fB<whatever>\fP and
++.\" \fI<whatever>\fP escape sequences to invode bold face and italics,
++.\" respectively.
++
++.SH OPTIONS
++.TP
++.B \-\-help
++.br
++Print a help message and exit.
++
++.SH SEE ALSO
++A detailed manual for
++.B acetoneiso
++can be found from the menu of the graphical filemanger in Help -> Manual.
++
++\fIhttp://www.acetoneteam.org/\fR
++
++.SH AUTHOR
++.B acetoneiso
++was written by Fabrizio Di Marco and Marco Di Antonio <acetoneiso@gmail.com>.
++.PP
++This manual page was written by Nick Andrik <nick.andrik@gmail.com>,
++for the Debian project (and may be used by others).
+\ No newline at end of file

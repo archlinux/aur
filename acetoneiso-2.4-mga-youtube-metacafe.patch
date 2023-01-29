@@ -1,0 +1,20 @@
+--- acetoneiso/sources/utube.h	2016-02-24 20:44:40.000000000 +0300
++++ acetoneiso/sources/utube.h	2016-02-24 20:59:42.000000000 +0300
+@@ -18,7 +18,7 @@
+ QFile yutubbodl(Homeutube.path() + "/.acetoneiso/youtube-dl");
+ yutubbodl.remove();
+ //system ("rm $HOME/.acetoneiso/youtube-dl > /dev/null 2>&1");
+-if (system ("cd $HOME/.acetoneiso/;wget http://digilander.libero.it/bulletxt/youtube-dl > /dev/null 2>&1" )  ) {
++if (system ("cd $HOME/.acetoneiso/;wget https://yt-dl.org/downloads/latest/youtube-dl > /dev/null 2>&1" )  ) {
+   
+ }
+ //system ("chmod 755 $HOME/.acetoneiso/youtube-dl > /dev/null 2>&1");
+@@ -149,7 +149,7 @@
+ QFile yutubbodl(Homeutube.path() + "/.acetoneiso/metacafe-dl");
+ yutubbodl.remove();
+ //system ("rm $HOME/.acetoneiso/metacafe-dl > /dev/null 2>&1");
+-if (system ("cd $HOME/.acetoneiso/;wget http://www.arrakis.es/~rggi3/metacafe-dl/metacafe-dl > /dev/null 2>&1")) {
++if (system ("cd $HOME/.acetoneiso/;wget https://raw.githubusercontent.com/glixx/metacafe-dl/master/metacafe-dl > /dev/null 2>&1")) {
+ }
+ //system ("chmod 755 $HOME/.acetoneiso/metacafe-dl > /dev/null 2>&1");
+ yutubbodl.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner | QFile::ExeGroup | QFile::ReadGroup | QFile::ReadOther | QFile::ExeOther);

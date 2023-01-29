@@ -1,0 +1,91 @@
+Remove references to defunct acetoneteam.org homepage.
+The web site has expired and others have acquired the domain.
+
+Author: Nick Andrik <nick.andrik@gmail.com>
+
+--- acetoneiso/sources/connections.h
++++ acetoneiso/sources/connections.h
+@@ -23,7 +23,7 @@
+  
+     connect( pushButton_6, SIGNAL( clicked() ), this, SLOT( hide_process_display() ) ); 
+     
+-    connect(actionMake_a_small_donation, SIGNAL( triggered() ), this, SLOT( paypal() ) );
++    //connect(actionMake_a_small_donation, SIGNAL( triggered() ), this, SLOT( paypal() ) );
+     connect( pushButton_4, SIGNAL( triggered() ), this, SLOT( extract() ) ); 
+     
+     connect( actionSha1_check, SIGNAL( triggered() ), this, SLOT( sha1() ) ); 
+@@ -31,7 +31,7 @@
+     connect( actionSha512_check, SIGNAL( triggered() ), this, SLOT( sha384() ) ); 
+     
+     connect( actionMount_Image, SIGNAL( triggered() ), this, SLOT( mount() ) );
+-    connect( actionDonate, SIGNAL( triggered() ), this, SLOT( a_donate() ) );
++    //connect( actionDonate, SIGNAL( triggered() ), this, SLOT( a_donate() ) );
+     connect( actionExit, SIGNAL( triggered() ), qApp, SLOT( quit() ) );
+     connect( pushButton_Omni_3, SIGNAL( triggered() ), this, SLOT( converter() ) );
+     connect( pushButton_IsoFromFolder_2, SIGNAL( triggered() ), this, SLOT( foldertoiso() ) );
+
+--- acetoneiso/sources/main.cpp
++++ acetoneiso/sources/main.cpp
+@@ -24,7 +24,7 @@
+ //const char *h = "--help"; 
+ QString clImage = argv[1];
+ if ( clImage.contains("--help")  or clImage.contains("-h")) {
+-      printf ( "\nAcetoneISO Distribuited under GPL v.3.0 \nAuthors:\nMarco Di Antonio 2010\nFabrizio Di Marco and Marco Di Antonio 2006-2007-2008-2009 \nContact: acetoneiso@gmail.com\nWebsite:www.acetoneteam.org\nusage: \nacetoneiso [$path_to_imagefile_to_mount] --> mounts given image and opens it in default filemanager \nacetoneiso           --> opens AcetoneISO GUI\nacetoneiso --help    --> shows this help\n\n" );
++      printf ( "\nAcetoneISO Distribuited under GPL v.3.0 \nAuthors:\nMarco Di Antonio 2010\nFabrizio Di Marco and Marco Di Antonio 2006-2007-2008-2009 \nContact: acetoneiso@gmail.com\nusage: \nacetoneiso [$path_to_imagefile_to_mount] --> mounts given image and opens it in default filemanager \nacetoneiso           --> opens AcetoneISO GUI\nacetoneiso --help    --> shows this help\n\n" );
+     }
+ else {
+       //printf ( "Mounting %s\n", argv[1] );  
+
+--- acetoneiso/manual/acetoneiso.1
++++ acetoneiso/manual/acetoneiso.1
+@@ -46,8 +46,6 @@
+ .B acetoneiso
+ can be found from the menu of the graphical filemanger in Help -> Manual.
+ 
+-\fIhttp://www.acetoneteam.org/\fR
+-
+ .SH AUTHOR
+ .B acetoneiso
+ was written by Fabrizio Di Marco and Marco Di Antonio <acetoneiso@gmail.com>.
+
+--- acetoneiso/sources/messages.h
++++ acetoneiso/sources/messages.h
+@@ -171,7 +171,7 @@
+ 	int valore_uscita = FUse.exitCode();
+ 	if(!valore_uscita == 0){
+ 	  status_mounted_no_boot();
+-	  QMessageBox::critical (this, "AcetoneISO",tr("Error, could not mount image.\n\nSolution:\nTry converting the image to ISO or extract the content to a folder from the upper menu \"Image Conversion.\"\nNOTE: it is NOT possible to mount multi-sector images.\nFor more information, please visit official website: http://www.acetoneteam.org" ));
++	  QMessageBox::critical (this, "AcetoneISO",tr("Error, could not mount image.\n\nSolution:\nTry converting the image to ISO or extract the content to a folder from the upper menu \"Image Conversion.\"\nNOTE: it is NOT possible to mount multi-sector images." ));
+ 	}
+ 	else{
+ 	  status_mounted_no_boot();
+
+--- acetoneiso/ui/acetoneiso.ui
++++ acetoneiso/ui/acetoneiso.ui
+@@ -695,7 +695,7 @@
+         </item>
+        </layout>
+       </widget>
+-      <widget class="QWidget" name="tab_2">
++      <!--widget class="QWidget" name="tab_2">
+        <attribute name="icon">
+         <iconset resource="../acetoneiso.qrc">
+          <normaloff>:/images/splash.png</normaloff>:/images/splash.png</iconset>
+@@ -738,7 +738,7 @@
+          </widget>
+         </item>
+        </layout>
+-      </widget>
++      </widget-->
+      </widget>
+     </item>
+     <item row="1" column="0">
+@@ -921,7 +921,7 @@
+     </property>
+     <addaction name="separator"/>
+     <addaction name="actionManual"/>
+-    <addaction name="actionMake_a_small_donation"/>
++    <!--addaction name="actionMake_a_small_donation"/-->
+     <addaction name="actionAbout"/>
+    </widget>
+    <widget class="QMenu" name="menuConversion">
