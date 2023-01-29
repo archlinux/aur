@@ -1,0 +1,22 @@
+pkgbase = annotator-git
+	pkgdesc = Image annotation for Elementary OS
+	pkgver = 1.1.1.r83.gc0d935b
+	pkgrel = 1
+	url = https://github.com/phase1geo/Annotator
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = libhandy
+	provides = annotator
+	conflicts = annotator
+	source = annotator::git+https://github.com/phase1geo/Annotator
+	sha256sums = SKIP
+
+pkgname = annotator-git

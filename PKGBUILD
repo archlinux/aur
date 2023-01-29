@@ -1,0 +1,40 @@
+_pkgname="annotator"
+pkgname=$_pkgname-git
+pkgver=1.1.1.r83.gc0d935b
+pkgrel=1
+pkgdesc="Image annotation for Elementary OS"
+url="https://github.com/phase1geo/Annotator"
+license=("GPL3")
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
+depends=(
+  'granite'
+  'libhandy'
+)
+makedepends=('git' 'meson' 'vala')
+provides=($_pkgname)
+conflicts=(${provides[@]})
+source=("$_pkgname"::"git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  meson build --prefix=/usr	
+  ninja -C build
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+  DESTDIR="$pkgdir" ninja -C build install
+
+  # remove duplicate icon folders and files
+  rm -rf -- "$pkgdir/usr/share/icons/hicolor"/*@2
+
+  # symlink
+  ln -sf "/usr/bin/com.github.phase1geo.annotator" "$pkgdir/usr/bin/annotator"
+}
+
