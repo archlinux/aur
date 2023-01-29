@@ -1,15 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clipto-bin
 pkgver=7.2.17
-pkgrel=9
+pkgrel=10
 _electronversion=22
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
 url="https://clipto.pro"
 license=('custom')
 depends=("electron${_electronversion}")
-optdepends=('libnotify: for desktop notifications'
-            'libappindicator-gtk3: for tray icon')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}.pro")
 replaces=("${pkgname%-bin}.pro")

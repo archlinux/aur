@@ -1,13 +1,11 @@
 pkgbase = clipto-bin
 	pkgdesc = Effortless, super fast and flexible notes taking app and clipboard manager.
 	pkgver = 7.2.17
-	pkgrel = 9
+	pkgrel = 10
 	url = https://clipto.pro
 	arch = x86_64
 	license = custom
 	depends = electron22
-	optdepends = libnotify: for desktop notifications
-	optdepends = libappindicator-gtk3: for tray icon
 	provides = clipto
 	conflicts = clipto
 	conflicts = clipto.pro
