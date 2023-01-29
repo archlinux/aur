@@ -1,6 +1,6 @@
 pkgbase = sapling-scm
 	pkgdesc = A Scalable, User-Friendly Source Control System
-	pkgver = 0.1.20221201.095354.r360873f1
+	pkgver = 0.2.20230124.180750.hf8cd450a
 	pkgrel = 1
 	epoch = 1
 	url = https://sapling-scm.com
@@ -13,7 +13,7 @@ pkgbase = sapling-scm
 	depends = curl
 	depends = nodejs
 	depends = python
-	source = https://github.com/facebook/sapling/archive/refs/tags/0.1.20221201-095354-r360873f1.tar.gz
-	sha256sums = 667149b8f705d87a24a80e7704a60cd0aa7cbfd0c63ae5363bb3717159be40ac
+	source = https://github.com/facebook/sapling/archive/refs/tags/0.2.20230124-180750-hf8cd450a.tar.gz
+	sha256sums = 0bfa0145edb269e3b9efedd658dbd17fff20c57c2524d08d12be3b75a69a36ed
 
 pkgname = sapling-scm

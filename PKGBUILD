@@ -1,7 +1,7 @@
 # Maintainer: Vincent Lee < vincent at vincent dash lee dot net >
 _realname=sapling  # Already taken on AUR
 pkgname="$_realname-scm"
-_realver=0.1.20221201-095354-r360873f1
+_realver=0.2.20230124-180750-hf8cd450a
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
 epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
 pkgrel=1
@@ -15,7 +15,7 @@ depends=('curl' 'nodejs' 'python')
 #  program runs fine without those libraries installed systemwide.
 makedepends=("cargo" "cmake" "rust" "yarn")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
-sha256sums=('667149b8f705d87a24a80e7704a60cd0aa7cbfd0c63ae5363bb3717159be40ac')
+sha256sums=('0bfa0145edb269e3b9efedd658dbd17fff20c57c2524d08d12be3b75a69a36ed')
 
 prepare() {
 	cd "$_realname-$_realver"
@@ -36,3 +36,4 @@ package() {
 	cd "$_realname-$_realver/eden/scm"
 	make PREFIX=/usr DESTDIR="$pkgdir/" install-oss
 }
+
