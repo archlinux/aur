@@ -1,0 +1,23 @@
+pkgbase = appimage-builder-bin
+	pkgdesc = GNU/Linux packaging solution using the AppImage format
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/AppImageCrafters/appimage-builder
+	arch = x86_64
+	license = MIT
+	depends = binutils
+	depends = desktop-file-utils
+	depends = fakeroot
+	depends = gdk-pixbuf2
+	depends = patchelf
+	depends = python-pip
+	depends = python-setuptools
+	depends = squashfs-tools
+	depends = strace
+	depends = wget
+	depends = zsync
+	options = !strip
+	source = https://github.com/AppImageCrafters/appimage-builder/releases/download/Continuous/appimage-builder-1.1.1.dev32+g2709a3b-x86_64.AppImage
+	sha256sums = 7569b710262a42de0d577ece8bfd0b917e9fdbd4a8d0437c29c635b0eaddd7bf
+
+pkgname = appimage-builder-bin
