@@ -2,7 +2,7 @@
 # Maintainer: Jef Roosens
 
 pkgname='vieter-git'
-pkgver=0.5.0.r0.g8a0214b
+pkgver=0.5.0.r25.ge10b450
 pkgrel=1
 pkgdesc='Lightweight Pacman repository server & package build system (development version)'
 depends=('glibc' 'openssl' 'libarchive' 'sqlite')
@@ -10,8 +10,11 @@ makedepends=('git' 'vlang')
 arch=('x86_64' 'aarch64')
 url='https://git.rustybever.be/vieter-v/vieter'
 license=('AGPL3')
-source=("${pkgname}::git+https://git.rustybever.be/vieter-v/vieter#branch=dev")
-md5sums=('SKIP')
+source=(
+    "${pkgname}::git+https://git.rustybever.be/vieter-v/vieter#branch=dev"
+    "libvieter::git+https://git.rustybever.be/vieter-v/libvieter"
+)
+md5sums=('SKIP' 'SKIP')
 conflicts=('vieter')
 provides=('vieter')
 
@@ -20,9 +23,16 @@ pkgver() {
 }
 
 prepare() {
+    cd "${pkgname}"
+
+    # Add the libvieter submodule
+    git submodule init
+    git config submodules.src/libvieter.url "${srcdir}/libvieter"
+    git -c protocol.file.allow=always submodule update
+
     export VMODULES="${srcdir}/.vmodules"
 
-    cd "${pkgname}/src" && v install
+    cd src && v install
 }
 
 build() {
