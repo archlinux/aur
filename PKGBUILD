@@ -3,7 +3,7 @@
 pkgname=bud-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='The Full-Stack Web Framework for Go'
 arch=(x86_64)
 url="https://github.com/livebud/${_pkgname}"
