@@ -1,6 +1,6 @@
 pkgname=gnss-share
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An app for sharing GNSS location data, with support multiple clients and
 loading/saving AGPS data.'
 arch=(x86_64 aarch64)
@@ -38,7 +38,9 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm755 build/stmctl "$pkgdir"/usr/bin/stmctl
-  mkdir -p "$pkgdir"/etc/
+  install -m755 -d ${pkgdir}/etc/
   install -Dm644 gnss-share.conf "$pkgdir"/etc/
+  install -m755 -d ${pkgdir}/usr/lib/systemd/system
+  install -m644  systemd/gnss-share.service  ${pkgdir}/usr/lib/systemd/system
 }
 

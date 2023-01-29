@@ -1,7 +1,7 @@
 pkgbase = gnss-share
 	pkgdesc = An app for sharing GNSS location data, with support multiple clients and loading/saving AGPS data.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/postmarketOS/gnss-share/
 	arch = x86_64
 	arch = aarch64
