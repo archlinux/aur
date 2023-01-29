@@ -7,7 +7,7 @@ pkgdesc='A dynamic window manager for X11.'
 arch=('i686' 'x86_64')
 url='https://github.com/0intro/wmii'
 license=(MIT)
-depends=('libx11' 'libxinerama' 'libxrandr')
+depends=('libx11' 'libxinerama' 'libxrandr' 'libixp')
 makedepends=(git)
 optdepends=(
 	'dash: for use of the default wmiirc configs'
