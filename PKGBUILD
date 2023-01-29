@@ -29,16 +29,16 @@ prepare() {
   cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="/usr" \
-    "../$pkgname-v$pkgver"
+    ..
 }
 
 build() {
-  cd "$srcdir/build"
+  cd "$srcdir/$pkgname-v$pkgver/build"
   make
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/$pkgname-v$pkgver/build"
   make DESTDIR="${pkgdir}/" install
   install -Dm644 "$srcdir/$pkgname-v$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
