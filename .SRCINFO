@@ -1,0 +1,14 @@
+pkgbase = zigup
+	pkgdesc = Download and manage Zig compilers
+	pkgver = 2022.08.25.r3.g644f8aa
+	pkgrel = 1
+	url = https://github.com/marler8997/zigup
+	arch = x86_64
+	license = custom:MIT-0
+	makedepends = git
+	makedepends = zig
+	options = !debug
+	source = zigup::git+https://github.com/marler8997/zigup#commit=644f8aa15bc91159591f970e1f610de5147b4796
+	b2sums = SKIP
+
+pkgname = zigup
