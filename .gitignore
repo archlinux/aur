@@ -1,0 +1,4 @@
+etlegacy-*.tar.gz
+etlegacy-*.pkg.tar.zst
+pkg/
+src/

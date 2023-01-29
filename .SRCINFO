@@ -1,5 +1,5 @@
 pkgbase = etlegacy
-	pkgver = 2.80.2
+	pkgver = 2.81.0
 	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = etlegacy
 	makedepends = minizip
 	makedepends = openal>=1.14
 	makedepends = sdl2
-	source = etlegacy-2.80.2.tar.gz::https://github.com/etlegacy/etlegacy/archive/v2.80.2.tar.gz
-	source = etlegacy-2.80.2-x86_64-binary.tar.gz::http://www.etlegacy.com/download/file/407
-	sha256sums = 1b22c131d6c122b38a88306d8dc81ea0135a0f60f599d6f871a175b311b00409
-	sha256sums = 2ce6c8a6dce7a8c45ff017dcf2667e2dd94d162f95172be61930210065c86537
+	source = etlegacy-2.81.0.tar.gz::https://github.com/etlegacy/etlegacy/archive/v2.81.0.tar.gz
+	source = etlegacy-2.81.0-x86_64-binary.tar.gz::http://www.etlegacy.com/download/file/537
+	sha256sums = 9c714bfde60dca93e58a83088afd107e5467e44bf1dfecceec1412e84e711552
+	sha256sums = bfe4acc586bb5e61a9cecf810e17f4dce20e8427aa24a8a24fe5881639054a79
 
 pkgname = etlegacy
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)

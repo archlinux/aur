@@ -5,8 +5,8 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
-pkgver=2.80.2
-_binaryversion=407
+pkgver=2.81.0
+_binaryversion=537
 pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
@@ -15,8 +15,8 @@ makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libj
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
         "${_pkgbase}-${pkgver}-${arch}-binary.tar.gz::http://www.etlegacy.com/download/file/${_binaryversion}")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha256sums=('1b22c131d6c122b38a88306d8dc81ea0135a0f60f599d6f871a175b311b00409'
-            '2ce6c8a6dce7a8c45ff017dcf2667e2dd94d162f95172be61930210065c86537')
+sha256sums=('9c714bfde60dca93e58a83088afd107e5467e44bf1dfecceec1412e84e711552'
+            'bfe4acc586bb5e61a9cecf810e17f4dce20e8427aa24a8a24fe5881639054a79')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -78,7 +78,7 @@ package_etlegacy() {
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 misc/etlegacy.conf $pkgdir/etc/xdg/$_pkgbase/
-    install -m 644 misc/etlegacy.service $pkgdir/usr/lib/systemd/system/
+    install -m 644 misc/etlegacy-x86_64.service $pkgdir/usr/lib/systemd/system/etlegacy.service
 
     # config
     mv $pkgdir/usr/lib/$_pkgbase/etmain/*.cfg $pkgdir/etc/xdg/$_pkgbase/etmain/
