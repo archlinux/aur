@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.6.r90.g41a6187d
+pkgver=10.7.r0.g8855cc2e
 pkgrel=1
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,6 +12,7 @@ depends=('budgie-screensaver' 'budgie-control-center' 'gnome-bluetooth' 'gnome-m
          'libgee' 'libpeas' 'libwnck3' 'mutter' 'accountsservice' 'sassc' 'ibus')
 makedepends=('meson' 'git' 'gobject-introspection' 'intltool' 'vala' 'gtk-doc')
 optdepends=('budgie-desktop-view: Desktop icons'
+            'budgie-backgrounds: Default background set'
             'network-manager-applet: Network management')
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')

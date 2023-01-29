@@ -1,6 +1,6 @@
 pkgbase = budgie-desktop-git
 	pkgdesc = A familiar, modern desktop environment - latest git
-	pkgver = 10.6.r90.g41a6187d
+	pkgver = 10.7.r0.g8855cc2e
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-desktop
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = budgie-desktop-git
 	depends = sassc
 	depends = ibus
 	optdepends = budgie-desktop-view: Desktop icons
+	optdepends = budgie-backgrounds: Default background set
 	optdepends = network-manager-applet: Network management
 	provides = budgie-desktop
 	conflicts = budgie-desktop
