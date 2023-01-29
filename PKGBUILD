@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=3200  # see ${srcdir}/Version.txt
-_gamepkg=RimWorld1-3-${_pkg_subver}Linux.tar.gz
+_pkg_subver=3613  # see ${srcdir}/Version.txt
+_gamepkg=RimWorld1-4-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld
-pkgver=1.3.${_pkg_subver}
+pkgver=1.4.${_pkg_subver}
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ package() {
   install -Dm755 "rimworld.sh" "$pkgdir/usr/bin/rimworld"
   install -Dm644 "rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
 
-  cd "$srcdir/RimWorld1-3-${_pkg_subver}Linux"
+  cd "$srcdir/RimWorld1-4-${_pkg_subver}Linux"
   install -dm755 "$pkgdir/opt/rimworld"
   cp -r * "$pkgdir/opt/rimworld"
   chmod 755 "$pkgdir/opt/rimworld/RimWorldLinux"
