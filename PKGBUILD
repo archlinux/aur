@@ -1,21 +1,31 @@
 _pkgname=rsync
-pkgname=rsync-reflink-git
-pkgver=3.2.7.r8.g74028965
+pkgname="$_pkgname-reflink-git"
+pkgver=3.2.7.r16.g90df93e4
 pkgrel=1
 pkgdesc='A fast and versatile file copying tool for remote and local files - with reflink support (git)'
 arch=('i686' 'x86_64')
 url='https://github.com/WayneD/rsync/issues/153'
 license=('GPL3')
-depends=('acl' 'libacl.so' 'lz4' 'openssl' 'perl' 'popt' 'xxhash' 'libxxhash.so' 'zlib' 'zstd')
+depends=(
+  'acl'
+  'libacl.so'
+  'libxxhash.so'
+  'popt'
+  'xxhash'
+  'zstd'
+)
+optdepends=(
+  'python: for rrsync'
+)
 makedepends=('git' 'python-commonmark')
-provides=("${_pkgname}")
+provides=("$_pkgname")
 conflicts=(${provides[@]})
 backup=(
   'etc/rsyncd.conf'
   'etc/xinetd.d/rsync'
 )
 source=(
-  "${_pkgname}-git"::"git+https://github.com/WayneD/rsync"
+  "$_pkgname"::"git+https://github.com/WayneD/rsync"
   'https://github.com/WayneD/rsync-patches/raw/master/clone-dest.diff'
   'https://github.com/WayneD/rsync-patches/raw/master/detect-renamed.diff'
   'https://github.com/WayneD/rsync-patches/raw/master/detect-renamed-lax.diff'
@@ -30,19 +40,19 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$srcdir/${_pkgname}-git"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/${_pkgname}-git"
+  cd "$srcdir/$_pkgname"
   patch -Np1 -F100 -i "$srcdir/clone-dest.diff"
   patch -Np1 -F100 -i "$srcdir/detect-renamed.diff"
   patch -Np1 -F100 -i "$srcdir/detect-renamed-lax.diff"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-git"
+  cd "$srcdir/$_pkgname"
 
   ./configure \
     --prefix=/usr \
@@ -53,13 +63,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-git"
+  cd "$srcdir/$_pkgname"
   make test
 }
 
 
 package() {
-  cd "${srcdir}/${_pkgname}-git"
+  cd "$srcdir/$_pkgname"
 
   make DESTDIR="$pkgdir" install
   install -Dm0644 ../rsyncd.conf "$pkgdir/etc/rsyncd.conf"
