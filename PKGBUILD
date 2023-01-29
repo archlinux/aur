@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=coventry
-pkgver=0.5.7
-pkgrel=2
+pkgver=0.5.8
+pkgrel=1
 epoch=
 pkgdesc="Residential IP telephony gateway"
 url="https://codeberg.org/gnutelephony/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz coventry.service coventry.logrotated)
 makedepends=(cmake pkgconf gcc)
 depends=("libexosip2>=5.3.0" libosip2 openssl fmt)
-sha256sums=('0fdd3cc83f9226c89e9ad9e797143f5dcf0d4fb69b58eef40e530d24d62e3ab7' 'cc86328eefcfcfc20cd5f080af06e3a5a05c069acfa11b190d457b1bd8b32ec2' 'fea6bd1f1887d3a7d14491a058e35f90d87b401b84dcd45a5d387d3f2edff0e3') 
+sha256sums=('cc3f7a4fb92d9d176535b2a33593eaf537b5e2e991526c75fea2a958b4b7eb83' 'cc86328eefcfcfc20cd5f080af06e3a5a05c069acfa11b190d457b1bd8b32ec2' 'fea6bd1f1887d3a7d14491a058e35f90d87b401b84dcd45a5d387d3f2edff0e3') 
 
 build() {
 	cd "$srcdir/$pkgname"
