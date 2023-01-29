@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Extremely simple su utility"
 arch=(x86_64)
 url="https://github.com/illiliti/ssu"
-license=('GPL')
+license=('GPL3')
 source=("ssu-$pkgver::git+https://github.com/illiliti/ssu#tag=$pkgver"
         'ssu.conf'
         'completion.bash'
