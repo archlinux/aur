@@ -9,11 +9,12 @@ pkgbase = feedbackd
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
+	makedepends = git
 	depends = dconf
 	depends = gsound
 	depends = json-glib
 	depends = libgudev
-	source = https://source.puri.sm/Librem5/feedbackd/-/archive/v0.0.2/feedbackd-v0.0.2.tar.gz
-	b2sums = 088047712fc1cce219bd1fe6b7f82883eb9806ff6b14f932012f42dc13ff12958a807b0a64e88c56bd1f89b4e4da4c0b78400960fc71f3a7ac4c3e78c14f8341
+	source = git+https://source.puri.sm/Librem5/feedbackd.git#tag=fca952f813124110c9dabd766e85255992187c32
+	sha256sums = SKIP
 
 pkgname = feedbackd
