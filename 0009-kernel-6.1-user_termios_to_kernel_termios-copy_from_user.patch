@@ -1,0 +1,31 @@
+diff -pNaru5 a/driver/mxuport/mx-uport.c b/driver/mxuport/mx-uport.c
+--- a/driver/mxuport/mx-uport.c	2023-01-29 00:54:20.305127247 -0500
++++ b/driver/mxuport/mx-uport.c	2023-01-29 00:55:41.108365914 -0500
+@@ -1231,10 +1231,13 @@ static int mxuport_ioctl (struct usb_ser
+ 			    return -EFAULT;
+ #elif (LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0))
+ 
+                        if(user_termios_to_kernel_termios(port->tty->termios, (struct termios2 __user *)arg))
+ 			    return -EFAULT;
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0))
++					   if(copy_from_user(&port->tty->termios, (struct termios2 __user *)arg, sizeof(struct termios)))
++			    return -EFAULT;				
+ #else
+ 
+ 					   if(user_termios_to_kernel_termios(&port->tty->termios, (struct termios2 __user *)arg))
+ 			    return -EFAULT;				
+ #endif
+@@ -1277,10 +1280,13 @@ static int mxuport_ioctl (struct usb_ser
+ #elif (LINUX_VERSION_CODE < KERNEL_VERSION(3,7,0))
+ 
+ 
+                     if(user_termios_to_kernel_termios(port->tty->termios, (struct termios2 __user *)arg))
+ 			    return -EFAULT;
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6,1,0))
++                    if(copy_from_user(&port->tty->termios, (struct termios2 __user *)arg, sizeof(struct termios)))
++			    return -EFAULT;
+ #else 
+ 
+                     if(user_termios_to_kernel_termios(&port->tty->termios, (struct termios2 __user *)arg))
+ 			    return -EFAULT;
+ #endif

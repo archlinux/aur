@@ -44,7 +44,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -70,6 +70,8 @@ source=(
   '0006-kernel-5.14-unsigned-tty.patch'
   '0007-kernel-5.15-bus_type.remove-void.patch'
   '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
+  '0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch'
+  '0010-kernel-6.0-set_termios-const-ktermios.patch'
 )
 md5sums=('17a240340a322b3da2e07fc929950288'
          '9ec720fdaaccc41648ffb6d58c45c64e'
@@ -77,14 +79,18 @@ md5sums=('17a240340a322b3da2e07fc929950288'
          'c06ffb879ec71eb19a74eb90839f4d91'
          'b20646163937da295547dc8bf4bbaccf'
          '4d1d2a36a1707e93f83db3d75e221c6f'
-         '637fca359414559c4e5029775da82d85')
+         '637fca359414559c4e5029775da82d85'
+         'a9604e54d37a29590492c92311b18400'
+         'a9d2f5eb65ed26436692cfc37e607e66')
 sha256sums=('aed6f9a1bb6e88a22b520dc6cbbb6624accea080dcaca727c0fab031868228b6'
             'f753e48ea68282288bd53f045c88bd61e39a4c6cf691544953c6929888183370'
             '151a7c84d3815814d45cebd6d58427c27a2b3c6e06c1209d984738e94fea90d8'
             '4840cccfcd432b7b4f861b5b556c0445f4cd93d277c6cb0045eeebaf92190c4e'
             '045a3957b540ff8a9f9e401c343683a794837bda4e047759564df6ce2e8912a4'
             '1b0bea590d671fc52b2e5231062ebdc07984e594e07ecdee4883fddbe78b4fa3'
-            'f16425c12383498687fd3b38e782fe54c399e0962e437d49c417f86b0d99b563')
+            'f16425c12383498687fd3b38e782fe54c399e0962e437d49c417f86b0d99b563'
+            'c765e7dfdcd684d29dc5dc7595733addb95eb4264100d73ed1d541cd4329dde7'
+            'fc62764f2be15e2906f7f28a80b818643257ea523eacc5aa18a444a1af4e178c')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -165,29 +171,40 @@ prepare() {
 
   #cp -p driver/mxuport/mx-uport.c{,.orig}; false
   #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
-  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+  patch -Nup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
 
   #cp -p driver/mxuport/mx-uport.c{,.orig}; false
   #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
-  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
+  patch -Nup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
 
   #cp -p driver/mxuport/mx-uport.c{,.orig}; false
   #diff -pNaru5 driver/mxuport/mx-uport.c{.orig,} > '0005-kernel-5.13-dropped-tty_check_change.patch'
-  patch -Nbup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
+  patch -Nup0 -i "${srcdir}/0005-kernel-5.13-dropped-tty_check_change.patch"
 
   #cp -p driver/mxusbserial/mxusb-serial.c{,.orig}; false
   #diff -pNaru5 driver/mxusbserial/mxusb-serial.c{.orig,} > '0006-kernel-5.14-unsigned-tty.patch'
-  patch -Nbup0 -i "${srcdir}/0006-kernel-5.14-unsigned-tty.patch"
+  patch -Nup0 -i "${srcdir}/0006-kernel-5.14-unsigned-tty.patch"
 
   # https://www.spinics.net/lists/backports/msg05227.html [PATCH 39/47] patches: Adapt signature of bus_type->remove callback
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.0/03551.html [PATCH] bus: Make remove callback return void
   #cp -p driver/mxusbserial/mxbus.c{,.orig}; false
   #diff -pNaru5 driver/mxusbserial/mxbus.c{.orig,} > '0007-kernel-5.15-bus_type.remove-void.patch'
-  patch -Nbup0 -i "${srcdir}/0007-kernel-5.15-bus_type.remove-void.patch"
+  patch -Nup0 -i "${srcdir}/0007-kernel-5.15-bus_type.remove-void.patch"
 
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
+  # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
   #cp -p driver/mxusbserial/mxusb-serial.c{,.orig}; false
   #diff -pNaru5 driver/mxusbserial/mxusb-serial.c{.orig,} > '0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nbup0 -i "${srcdir}/0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  patch -Nup0 -i "${srcdir}/0008-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch'
+  patch -Nup1 -i "${srcdir}/0009-kernel-6.1-user_termios_to_kernel_termios-copy_from_user.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0010-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0010-kernel-6.0-set_termios-const-ktermios.patch"
 
   # Fix umbrella Makefile
   sed -e '# Disable silent' \

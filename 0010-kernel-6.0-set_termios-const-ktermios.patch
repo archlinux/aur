@@ -1,0 +1,18 @@
+diff -pNaru5 a/driver/mxusbserial/mxusb-serial.c b/driver/mxusbserial/mxusb-serial.c
+--- a/driver/mxusbserial/mxusb-serial.c	2023-01-29 01:02:53.547869058 -0500
++++ b/driver/mxusbserial/mxusb-serial.c	2023-01-29 01:04:58.754389575 -0500
+@@ -785,11 +785,13 @@ static int serial_ioctl (struct tty_stru
+ exit:
+ 	return retval;
+ }
+ 
+ 
+-#if (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,19))
++#if (LINUX_VERSION_CODE > KERNEL_VERSION(6,0,0))
++static void serial_set_termios (struct tty_struct *tty, const struct ktermios * old)
++#elif (LINUX_VERSION_CODE > KERNEL_VERSION(2,6,19))
+ static void serial_set_termios (struct tty_struct *tty, struct ktermios * old)
+ #else
+ static void serial_set_termios (struct tty_struct *tty, struct termios * old)
+ #endif
+ {
