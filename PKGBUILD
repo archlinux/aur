@@ -1,7 +1,7 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=whatsapp-for-linux-git
-pkgver=1.4.7.r13.g841d2d4
+pkgver=1.5.2.r4.g5a1ad95
 pkgrel=1
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd ${pkgname%-git}
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
