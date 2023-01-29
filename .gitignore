@@ -1,6 +1,4 @@
-pkg
-src
-*.log
-*.tar.*
-*.diff
-rsync*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
