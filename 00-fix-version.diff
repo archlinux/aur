@@ -1,0 +1,26 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 825703e..5779ea6 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -989,7 +989,7 @@ checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+ 
+ [[package]]
+ name = "swww"
+-version = "0.6.0"
++version = "0.7.0"
+ dependencies = [
+  "assert_cmd",
+  "clap",
+diff --git a/Cargo.toml b/Cargo.toml
+index ceb19c4..23b6b21 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -4,7 +4,7 @@ default-members = [".", "daemon"]
+ 
+ [package]
+ name = "swww"
+-version = "0.6.0"
++version = "0.7.0"
+ authors = ["Leonardo Gibrowski Faé <leonardo.fae44@gmail.com>"]
+ edition = "2021"
+ 
