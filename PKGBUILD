@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname=budgie-desktop-view-git
-pkgver=1.2.r9.g739d87d
+pkgver=1.2.1.r0.ga763515
 pkgrel=1
 pkgdesc="The official Budgie desktop icons implementation - latest git"
 arch=("x86_64" "armv7h" "aarch64")
