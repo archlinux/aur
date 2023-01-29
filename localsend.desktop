@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Icon=localsend
+Name=localsend
+Exec=/usr/bin/localsend
+Terminal=false
+Hidden=false
+Comment=An open source cross-platform alternative to AirDrop 
