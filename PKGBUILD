@@ -1,7 +1,7 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
 pkgname=ssu
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Extremely simple su utility"
 arch=(x86_64)
