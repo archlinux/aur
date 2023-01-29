@@ -11,7 +11,7 @@ url="https://github.com/axel358/Waydroid-Settings/tree/gtk4-port"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url%/tree/gtk4-port}.git#branch=gtk4-port")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 build(){
 	arch-meson ${srcdir}/${_repo_name%-gtk4-port} build
 }

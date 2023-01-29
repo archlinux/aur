@@ -16,6 +16,6 @@ pkgbase = waydroid-settings-git
 	provides = waydroid-settings
 	conflicts = waydroid-settings
 	source = git+https://github.com/axel358/Waydroid-Settings.git#branch=gtk4-port
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = waydroid-settings-git
