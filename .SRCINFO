@@ -1,6 +1,6 @@
 pkgbase = igrep
 	pkgdesc = Interactive Grep
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/konradsz/igrep
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = igrep
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = igrep-1.0.0.tar.gz::https://github.com/konradsz/igrep/archive/v1.0.0.tar.gz
-	sha512sums = 57e33aa025f2e1141c310e59559a2d568ba9cb277ae027f671424d56e285c6bcca442609b148e197d36a59510bc3bf235442138b658e55183b42a355799874fb
+	source = igrep-1.1.0.tar.gz::https://github.com/konradsz/igrep/archive/v1.1.0.tar.gz
+	sha512sums = 29d5bc48736449ec01b4616e8d21b6df85b1c011f5a576476f1bc0d97fd6e09be635549a40e8f7a2246af7f2bc442bf0bfd4a32c0a59aa39ee557bbcc791c62e
 
 pkgname = igrep

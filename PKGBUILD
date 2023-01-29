@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=igrep
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Interactive Grep"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('57e33aa025f2e1141c310e59559a2d568ba9cb277ae027f671424d56e285c6bcca442609b148e197d36a59510bc3bf235442138b658e55183b42a355799874fb')
+sha512sums=('29d5bc48736449ec01b4616e8d21b6df85b1c011f5a576476f1bc0d97fd6e09be635549a40e8f7a2246af7f2bc442bf0bfd4a32c0a59aa39ee557bbcc791c62e')
 options=('!lto')
 
 prepare() {
