@@ -2,7 +2,7 @@
 _pkgname=jmc-adoptium
 pkgname="${_pkgname}"
 pkgver=8.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Java Mission Control from Adoptium'
 arch=('x86_64')
 url='https://github.com/adoptium/jmc-build'
@@ -43,7 +43,7 @@ package() {
 
     install -dm755 "$pkgdir/opt/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-    install -dm700 "${pkgdir}/usr/share/applications"
+    install -dm755 "${pkgdir}/usr/share/applications"
     ln -s "/opt/${_pkgname}/jmc" "${pkgdir}/usr/bin/jmc"
 
 }
