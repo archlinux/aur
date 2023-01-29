@@ -5,7 +5,7 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -15,7 +15,7 @@ optdepends=()
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
-  "fluffychat-web-${pkgver}.tar.gz::https://static.celogeek.com/AUR/fluffychat-web/fluffychat-web-1.8.0.tar.gz"
+  "fluffychat-web-${pkgver}.tar.gz::https://static.celogeek.com/AUR/fluffychat-web/fluffychat-web-${pkgver}.tar.gz"
   "config-${pkgver}.sample.json::https://gitlab.com/famedly/fluffychat/-/raw/v${pkgver}/config.sample.json"
 )
 noextract=(
