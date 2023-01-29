@@ -2,7 +2,7 @@
 
 _pkgname=QPrompt
 pkgname=${_pkgname,,}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Teleprompter software for video creators"
@@ -12,7 +12,7 @@ license=('GPL3' 'LGPL3')
 depends=('hicolor-icon-theme' 'kcrash' 'ki18n')
 makedepends=('extra-cmake-modules' 'kiconthemes' 'kirigami2' 'ninja')
 source=("$_pkgname-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('64ff5c0cd7386dc4eeec61d9f49b5c198c694a309007b021cf076e4da0c30527f6a9608344ebc6dadb30dcdfcea7c6f3d821e139213ee1bfafa6c898861f2ee8')
+sha512sums=('fcbaf1aa64d6563c3e50d41ea122db65c71ec9be2261cbce9163c01c93dbec6a327934f24fddf32789a627f0a4d3f8c8b606ac63fa87e2c64c1fbd4d24c843e5')
 
 prepare() {
   # Change docs directory to "/usr/share/doc"
