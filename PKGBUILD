@@ -1,10 +1,11 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+
 pkgname=gameoftrees
 pkgver=0.82
 pkgrel=1
 pkgdesc='A version control system which prioritizes ease of use and simplicity over flexibility'
 arch=(x86_64)
-url=http://gameoftrees.org
+url="https://gameoftrees.org"
 license=(custom:ISC)
 conflicts=(gameoftrees-git got got-git got-bin)
 depends=(ncurses util-linux-libs libbsd libevent)
