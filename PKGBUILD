@@ -5,7 +5,7 @@ pkgdesc='An app for sharing GNSS location data, with support multiple clients an
 loading/saving AGPS data.'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/postmarketOS/gnss-share/"
-license=('GPLv3')
+license=('GPL3')
 makedepends=('go')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('142de3c92ab3e67d1d16140ccf13fc5d49fff97fa944914a4d5d0cecfeab545aec83aeecdd9607991eb245796f219849e88afd63072dfc0d9f929f83a0a63c9d')
