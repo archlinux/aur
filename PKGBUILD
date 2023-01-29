@@ -2,7 +2,7 @@
 
 _pkgname=getoptions
 pkgname=$_pkgname-bin
-pkgver=3.3.0
+pkgver=3.3.0.r2
 pkgrel=1
 pkgdesc='An elegant option/argument parser for shell scripts'
 arch=(any)
