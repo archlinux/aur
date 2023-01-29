@@ -1,4 +1,5 @@
-# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Maintainer: Thomas Booker (CoderThomasB) <tw.booker@outlook.com>
+# Contributor: <reg-archlinux AT klein DOT tuxli DOT ch>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Sam Whited <sam@samwhited.com>
 
@@ -19,12 +20,33 @@ makedepends=(
 	gobject-introspection
 	meson
 	vala
+	git
+	# requered for man docs
+	# python-docutils
 )
-source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-b2sums=('088047712fc1cce219bd1fe6b7f82883eb9806ff6b14f932012f42dc13ff12958a807b0a64e88c56bd1f89b4e4da4c0b78400960fc71f3a7ac4c3e78c14f8341')
+
+_tag=fca952f813124110c9dabd766e85255992187c32
+source=(
+	"git+${url}.git#tag=${_tag}"
+)
+sha256sums=(
+	'SKIP'
+)
+
+pkgver() {
+	cd "${pkgname}"
+	git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+	cd "${pkgname}"
+
+	git submodule init
+	git submodule update
+}
 
 build() {
-	arch-meson "${pkgname}-v${pkgver}" build -Dgtk_doc=true -Dman=true
+	arch-meson "${pkgname}" build -Dgtk_doc=false -Dman=false -Dtests=true -Ddaemon=true
 	meson compile -C build
 }
 
