@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lesma
-pkgver=0.11.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A small and ultrasecure Lesspass database server written in Rust'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!lto')
 backup=("etc/${pkgname}.toml")
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}.service")
-b2sums=('bb050c3a989a7f0777b5bf43a5bd89698a3632f45b8d9ef55701856168883ec53e0c1ecc5d478398c8fe8a8098c00ab48f9bf16374c390d4fd9c5ff191b67749'
+b2sums=('541fc57da4ee24b6b4a53c1ffe2d218c0da4c42a7354dab33cf9810168f31f58da96329cc5b633e4e7d6509a9a79df012758fc47f162435a439c3e0a1b8347df'
         '6512f2d4fc6852cbcb96469890d15ab922d46eeeb6f25b234b074966f3a17b5748936fd5898a0e3c914b59f5b526595cff17f8abc856e58fb5cb4acd83ef2515')
 
 build() {
