@@ -14,6 +14,7 @@ depends=('curl' 'nodejs' 'python')
 #  this binary actually vendors them in. The resulting sl(1)
 #  program runs fine without those libraries installed systemwide.
 makedepends=("cargo" "cmake" "rust" "yarn")
+optdepends=("github-cli: for integration with GitHub")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
 sha256sums=('0bfa0145edb269e3b9efedd658dbd17fff20c57c2524d08d12be3b75a69a36ed')
 

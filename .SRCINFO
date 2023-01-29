@@ -13,6 +13,7 @@ pkgbase = sapling-scm
 	depends = curl
 	depends = nodejs
 	depends = python
+	optdepends = github-cli: for integration with GitHub
 	source = https://github.com/facebook/sapling/archive/refs/tags/0.2.20230124-180750-hf8cd450a.tar.gz
 	sha256sums = 0bfa0145edb269e3b9efedd658dbd17fff20c57c2524d08d12be3b75a69a36ed
 
