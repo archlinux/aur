@@ -1,5 +1,5 @@
 pkgname=brlcad
-pkgver=7.32.6
+pkgver=7.34.0
 pkgrel=1
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
@@ -8,22 +8,23 @@ arch=('i686' 'x86_64')
 depends=('libgl' 'libxft' 'libxi')
 makedepends=('cmake' 'ninja')
 install="${pkgname}.install"
+_tag_name="rel-${pkgver//./-}"
 source=(
     'build.patch'
-    "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/rel-${pkgver//./-}.tar.gz")
+    "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz")
 sha256sums=(
     'SKIP'
-    'ca5b52c77a3af3126033211887f7fb338aa3dd7767e52b1fecb455e23dff80f8')
+    '004393cbf0eeb0955d0d4d7e91fbe7a22136df29774af71f24508d6863002fe7')
 
 
 _build_config='Release'
-_pkgprefix="/opt/${pkgname}"
+_prefix="/opt/${pkgname}"
 
 
 prepare() {
     patch \
         --strip=0 \
-        "--directory=${srcdir}/${pkgname}-rel-${pkgver//./-}" \
+        "--directory=${srcdir}/${pkgname}-${_tag_name}" \
         "--input=${srcdir}/build.patch"
 }
 
@@ -31,17 +32,16 @@ prepare() {
 build() {
     cmake \
         -G Ninja \
-        -S "${srcdir}/${pkgname}-rel-${pkgver//./-}" \
+        -S "${srcdir}/${pkgname}-${_tag_name}" \
         -B "${srcdir}/build" \
         -Wno-dev \
-        "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
+        "-DCMAKE_INSTALL_PREFIX=${_prefix}" \
         "-DCMAKE_BUILD_TYPE=${_build_config}" \
         -DBUILD_STATIC_LIBS=OFF \
         -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF \
         -DBRLCAD_ENABLE_STRICT=OFF \
         -DBRLCAD_FLAGS_DEBUG=OFF \
         -DBRLCAD_BUNDLED_LIBS=BUNDLED \
-        -DBRLCAD_FREETYPE=OFF \
         -DBRLCAD_PNG=OFF \
         -DBRLCAD_REGEX=OFF \
         -DBRLCAD_ZLIB=OFF \
@@ -51,7 +51,7 @@ build() {
     cmake --build "${srcdir}/build" --config "${_build_config}"
 
     echo \
-        "export PATH=\"\$PATH:${_pkgprefix}/bin\"" \
+        "export PATH=\"\$PATH:${_prefix}/bin\"" \
         >"${srcdir}/build/${pkgname}.sh"
 }
 
@@ -60,7 +60,7 @@ package() {
     cmake \
         --install "${srcdir}/build" \
         --config "${_build_config}" \
-        --prefix "${pkgdir}${_pkgprefix}"
+        --prefix "${pkgdir}${_prefix}"
 
     install \
         -D \
