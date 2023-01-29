@@ -1,7 +1,7 @@
 # Maintainer: MCSeekeri <mcseekeri@outlook.com>
 pkgname=wonderlab-git
 _pkgname=WonderLab
-pkgver=1.0.1.6
+pkgver=1.0.1.8
 pkgrel=1
 epoch=
 pkgdesc="下一代跨平台 Minecraft 启动器"
@@ -25,7 +25,7 @@ package(){
 	cd "$_pkgname-master"
 	mkdir -p "${pkgdir}/usr/share/WonderLab"
 	mkdir -p "${pkgdir}/usr/share/icons/"
-    cp -a WonderLab/bin/Release/net6.0/* "${pkgdir}/usr/share/WonderLab"
+	cp -a WonderLab/bin/Release/net6.0/* "${pkgdir}/usr/share/WonderLab"
 	rm -rf "${pkgdir}/usr/share/WonderLab/runtimes"
 	install -Dm644 "../wonderlab.png" "${pkgdir}/usr/share/icons/wonderlab.png"
 	install -Dm755 'WonderLab/bin/Release/net6.0/WonderLab' "$pkgdir/usr/local/bin/$_pkgname"
