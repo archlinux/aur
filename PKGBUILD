@@ -4,7 +4,7 @@
 
 pkgname=pyradio
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="https://github.com/coderholic/pyradio"
