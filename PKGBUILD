@@ -1,33 +1,23 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=gitmaster
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="GitMaster is GUI git client."
+pkgdesc="GUI git client written in Qt."
 arch=('x86_64' 'i686')
 url="https://github.com/bokic/gitmaster"
-license=('GPL')
-groups=()
+license=('LGPL3')
 depends=('qt5-base' 'libgit2')
-makedepends=('qt5-base' 'libgit2')
-conflicts=()
-replaces=()
-backup=()
-options=()
 
-
-source=("https://github.com/bokic/gitmaster/archive/${pkgver}.tar.gz")
-md5sums=("cfe0118c5a9b6c446e699ce04623a811")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/bokic/gitmaster/archive/${pkgver}.tar.gz")
+sha256sums=("fa190498cd06656fa2e171d2727562573e16d165052aa0ab4c178f9b70df56b7")
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake
-  make
+  cmake -G Ninja -S "${srcdir}/${pkgname}-${pkgver}" -B "build"
+  ninja -C "build"
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm755 bin/gitmaster "$pkgdir/usr/bin/gitmaster"
-  install -Dm644 gitmaster.desktop "$pkgdir/usr/share/applications/gitmaster.desktop"
-  install -Dm644 gitmaster.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gitmaster.svg"
+  DESTDIR="${pkgdir}" ninja -C "build" install
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/gitmaster.desktop" "$pkgdir/usr/share/applications/gitmaster.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/gitmaster.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/gitmaster.svg"
 }
