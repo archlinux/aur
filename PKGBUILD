@@ -1,9 +1,10 @@
-# Maintainer: metiis <aur at metiis dot com>
-# Maintainer: Julio Gutierrez <bubuntux at gmail dot com>
-# Maintainer: Martoko <mbastholm at gmail dot com>
+# Maintainer: Cabel <auravenbells at duck dot com>
+# Contributor: metiis <aur at metiis dot com>
+# Contributor: Julio Gutierrez <bubuntux at gmail dot com>
+# Contributor: Martoko <mbastholm at gmail dot com>
 
 pkgname=nordvpn-bin
-pkgver=3.15.3
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,12 +16,12 @@ conflicts=('openvpn-nordvpn')
 install=nordvpn-bin.install
 source_x86_64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_amd64.deb")
 source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_i386.deb")
-source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armhf.deb")
-source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_arm64.deb")
-sha256sums_x86_64=('f67d765141d3ae6f9cb506859ab819f2d60bdc3bac0f9535cbe7d0836782cf48')
-sha256sums_i686=('c9a114827d445e2c8d72b219f9be649aad39294701ddeaa66f90669fc25af466')
-sha256sums_armv7h=('cbea9e1c3bf3e679691a606e8504a4c33fb465d3289fd87fb1b962d35e5ae21e')
-sha256sums_aarch64=('eb9553ae920390e8ed037d994adf5c9820b3cb309f0fd44b9b25bc42222c2b46')
+source_armhf=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_armhf.deb")
+source_armel=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_arm64.deb")
+sha256sums_x86_64=('ca6dcafff50256e8ed350257c361b4dec1971f86a0bd9eaae00c88f3d1e0ea73')
+sha256sums_i686=('cf3c747a238a2fb340e0a4aa0ca820bd822b83d31fb2f8eac742e208e7bf5b2d')
+sha256sums_armhf=('a9d40844114b93b25b43230464eea59bf8833be2fbee94c9ec060972dbd5cb5c')
+sha256sums_armel=('8bc457eb4843cc3d7b714f5fc75bf6aa45a21871c3f5863739fb6a90a06ce428')
 
 package() {
     bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
