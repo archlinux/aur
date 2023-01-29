@@ -6,7 +6,7 @@ _arch=x64v3
 pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
 _major=6.1
-pkgver=${_major}.7
+pkgver=${_major}.8
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -17,29 +17,40 @@ options=('!strip')
 makedepends=('jq' 'curl')
 
 # Resolve URL of sources
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-source=("${_url_image}" "${_url_headers}")
+#_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+#_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+#source=("${_url_image}" "${_url_headers}")
+
+# Sourceforge download provider
+_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
+source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
+        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
+noextract=("${_image_files[0]}" "${_image_files[1]}")
 
 # Save files we will extract later manually
-_file_image="${_url_image##*/}"
-_file_headers="${_url_headers##*/}"
-noextract=("${_file_image}" "${_file_headers}")
+#_file_image="${_url_image##*/}"
+#_file_headers="${_url_headers##*/}"
+#noextract=("${_file_image}" "${_file_headers}")
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('7bd5bb907cabdfadafc59283b0b334fcf26fb9122d2c4b717301f6310f383762'
-            '1dab6978b4c0fc9168d2f30a4c72d7904c6cae1f72234303c7ef5d411e4b2994')
+sha256sums=('e0bd8660dc009257550b004697801b8c079b7fc9f23688a08a770578f1ec9f12'
+            '0c6c4431086bb164c182bef5cb73f3ef64b4e7f93d6a3c7b287ef7e92b53d8a0')
 
 prepare() {
-  bsdtar -xf ${_file_image} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
-  bsdtar -xf ${_file_headers} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
+  for _f in ${_image_files[@]} ; do
+    bsdtar -xf ${_f} data.tar.xz
+    bsdtar -xf data.tar.xz
+    rm -f data.tar.xz
+  done
+  #bsdtar -xf ${_file_image} data.tar.xz
+  #bsdtar -xf data.tar.xz
+  #rm -f data.tar.xz
+  #bsdtar -xf ${_file_headers} data.tar.xz
+  #bsdtar -xf data.tar.xz
+  #rm -f data.tar.xz
 }
 
 _package() {
