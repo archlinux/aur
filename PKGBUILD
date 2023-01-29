@@ -16,15 +16,11 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
-# Resolve URL of sources
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-source=("${_url_image}" "${_url_headers}")
-
-# Save files we will extract later manually
-_file_image="${_url_image##*/}"
-_file_headers="${_url_headers##*/}"
-noextract=("${_file_image}" "${_file_headers}")
+# Resolve URL of sources from Sourceforge provider
+_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
+source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
+        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
+noextract=("${_image_files[0]}" "${_image_files[1]}")
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -34,12 +30,11 @@ sha256sums=('bf1d556e6f62c5ddc88f11cdf41af737cff65f0b1e70490b8f410db6f2f18709'
             '91bd7f4c944f059072f8c2611836376dd1075bf79918e85cd7c4422f739e1d63')
 
 prepare() {
-  bsdtar -xf ${_file_image} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
-  bsdtar -xf ${_file_headers} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
+  for _f in ${_image_files[@]} ; do
+    bsdtar -xf ${_f} data.tar.xz
+    bsdtar -xf data.tar.xz
+    rm -f data.tar.xz
+  done
 }
 
 _package() {
