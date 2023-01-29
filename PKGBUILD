@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bash-completion-git
-pkgver=2.9.r2.g483968cd
+pkgver=2.11.r810.g5927d573
 pkgrel=1
 pkgdesc="Programmable completion functions for bash"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/scop/bash-completion"
 license=('GPL2')
 depends=('bash')
 makedepends=('git')
-provides=('bash-completion')
+provides=("bash-completion=$pkgver")
 conflicts=('bash-completion')
 options=(!emptydirs)
 source=("git+https://github.com/scop/bash-completion.git")
