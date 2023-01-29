@@ -4,7 +4,7 @@
 
 pkgname=librcd
 pkgver=0.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Charset Detection Library"
 arch=('x86_64')
 url='https://github.com/rusxmms/librcd'
