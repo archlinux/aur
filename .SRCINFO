@@ -1,0 +1,21 @@
+pkgbase = python-xgboost
+	pkgdesc = Gradient Boosting Library for Python
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://xgboost.ai
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = python-scikit-learn
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-pyarrow
+	depends = python-pytest
+	optdepends = apache-spark: Distributed XGBoost with PySpark
+	provides = python-xgboost
+	conflicts = python-xgboost-git
+	source = xgboost-1.7.3.tar.gz::https://github.com/dmlc/xgboost/releases/download/v1.7.3/xgboost.tar.gz
+	sha256sums = 0b6aa86b93aec2b3e7ec6f53a696f8bbb23e21a03b369dc5a332c55ca57bc0c4
+
+pkgname = python-xgboost
