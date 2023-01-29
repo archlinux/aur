@@ -1,7 +1,7 @@
 # Maintainer: Ragnar Groot Koerkamp <ragnar.grootkoerkamp@gmail.com>
 pkgname=bapctools-git
 _pkgname=bapctools
-pkgver=r1242.73bfd16
+pkgver=r1289.5469e2e
 pkgrel=1
 pkgdesc="Tools for developing ICPC-style programming contest problems."
 arch=('any')
