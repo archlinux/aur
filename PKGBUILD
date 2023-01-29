@@ -8,14 +8,8 @@ pkgrel=1
 pkgdesc="免费、专业、强大的国产PCB设计工具"
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://pro.lceda.cn/"
-license=('custom' 'Commercial')
-provides=(${pkgname})
-conflicts=(${pkgname})
-replaces=(lceda-pro-bin)
+license=('custom')
 depends=(gtk3 nss alsa-lib electron libappindicator-gtk3 libnotify)
-makedepends=()
-backup=()
-options=()
 install=${pkgname}.install
 source=("LICENSE"
         "${pkgname}.install")
@@ -27,19 +21,6 @@ sha256sums=('9b53bc19a98498c86019cc32a3ade6ad0ee4b12ba30686feb93132a5f0da52f5'
 sha256sums_x86_64=('444aaa0ad26b6f89c57a93d2c488728178b2c560a2a0b56c1baed412475bfbf9')
 sha256sums_aarch64=('cbca13b9a102f7a0f0bd8952a01379162a81cad61a7982f0d61661393916d457')
 sha256sums_loong64=('b5fbf6b967fcda2a2090601cb2dbf5806df38f444889baa835fdc0e5f405c6bc')
-
-# prepare() {
-#     # Change src path name
-#     if [ ${CARCH} = "x86_64" ]; then
-#         mv ${pkgname}-linux-x64 ${pkgname}-linux
-#     fi
-#     if [ ${CARCH} = "aarch64" ]; then
-#        mv  ${pkgname}-linux-arm64 ${pkgname}-linux
-#     fi
-#     if [ ${CARCH} = "loong64" ]; then
-#        mv  ${pkgname}-linux-loong64 ${pkgname}-linux
-#     fi
-# }
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
