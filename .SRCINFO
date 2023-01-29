@@ -1,0 +1,33 @@
+pkgbase = postgresql-11-upgrade
+	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
+	pkgver = 11.18
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = python
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = systemd
+	makedepends = llvm
+	makedepends = clang
+	depends = postgresql-libs>=11
+	depends = libxml2
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = zlib
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = krb5
+	depends = llvm-libs
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	options = debug
+	source = https://ftp.postgresql.org/pub/source/v11.18/postgresql-11.18.tar.bz2
+	md5sums = 4900ddcee945616e4b0841172cbccbd1
+	sha256sums = d24f20efc52e918acfbcca21e9cea28e0e263b846a0c408fcfac3b3c4a0f7504
+	b2sums = f0f01cb1f479032615b1b15e37d5c9955c560218de5e5cb480d920253a23615636fd8ed5e5310bdc1f80dc1f6da81cbb2ca41b90b0cc095139b6d9b59fc57d78
+
+pkgname = postgresql-11-upgrade
