@@ -8,9 +8,11 @@ arch=(x86_64)
 url="https://github.com/illiliti/ssu"
 license=('GPL')
 source=("ssu-$pkgver::git+https://github.com/illiliti/ssu#tag=$pkgver"
-        'ssu.conf')
+        'ssu.conf'
+       )
 md5sums=(SKIP
-         SKIP)
+         SKIP
+        )
 depends=(glibc)
 makedepends=(git)
 options=(strip !debug)
