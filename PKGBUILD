@@ -8,8 +8,8 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.56
-pkgrel=3
+pkgver=2.1.57
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
