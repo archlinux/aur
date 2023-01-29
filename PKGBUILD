@@ -3,9 +3,8 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgname=libmagick6
-pkgbase=imagemagick6
-_pkgver=6.9.12-73
+pkgname=imagemagick6
+_pkgver=6.9.12-74
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -15,10 +14,26 @@ license=('custom')
 depends=('libltdl' 'lcms2' 'fontconfig' 'libxext' 'liblqr' 'libraqm' 'libpng' 'libxml2')
 makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip' 'libjxl'
              'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
+optdepends=('ghostscript: PS/PDF support'
+            'libheif: HEIF support'
+            'libjxl: JPEG XL support'
+            'libraw: DNG support'
+            'librsvg: SVG support'
+            'libwebp: WEBP support'
+            'libwmf: WMF support'
+            'libxml2: Magick Scripting Language'
+            'ocl-icd: OpenCL support'
+            'openexr: OpenEXR support'
+            'openjpeg2: JPEG2000 support'
+            'djvulibre: DJVU support'
+            'pango: Text rendering')
 checkdepends=('gsfonts' 'ttf-dejavu')
+options=('!emptydirs' 'libtool')
+backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+provides=('libmagick6')
 source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-$_pkgver.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('0ba0baa2bf8531b40c61e6fb415b60ba33ba49ede49db86ac5156d0cee2d0c84'
+sha256sums=('c64cd09cbe413ce0685882378ad0c3a7b2102cbda0eecb59128e042d889dab88'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
@@ -26,7 +41,7 @@ validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (I
 shopt -s extglob
 
 prepare() {
-  mkdir -p binpkg/usr/lib/pkgconfig {binpkg,docpkg}/usr/share
+  mkdir -p docpkg/usr/share
 
   cd ImageMagick-$_pkgver
 
@@ -42,7 +57,6 @@ build() {
     --sysconfdir=/etc \
     --enable-shared \
     --disable-static \
-    --disable-docs \
     --with-dejavu-font-dir=/usr/share/fonts/TTF \
     --with-gs-font-dir=/usr/share/fonts/gsfonts \
     PSDelegate=/usr/bin/gs \
@@ -79,38 +93,13 @@ check() (
   make check || :
 )
 
-package_libmagick6() {
-  pkgdesc="${pkgdesc/)/; library)}"
-  optdepends=('ghostscript: PS/PDF support'
-              'libheif: HEIF support'
-              'libjxl: JPEG XL support'
-              'libraw: DNG support'
-              'librsvg: SVG support'
-              'libwebp: WEBP support'
-              'libwmf: WMF support'
-              'libxml2: Magick Scripting Language'
-              'ocl-icd: OpenCL support'
-              'openexr: OpenEXR support'
-              'openjpeg2: JPEG2000 support'
-              'djvulibre: DJVU support'
-              'pango: Text rendering')
-  options=('!emptydirs' 'libtool')
-  backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
-
+package() {
   cd ImageMagick-$_pkgver
   make DESTDIR="$pkgdir" install pkgconfigdir="/usr/lib/$pkgbase/pkgconfig"
 
+  find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
   rm "$pkgdir"/etc/ImageMagick-6/type-{apple,urw-base35,windows}.xml
   rm "$pkgdir"/usr/lib/*.la
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE NOTICE
-
-  # Drop tools
-  cd ../binpkg
-  mv "$pkgdir/usr/bin" usr/
-  mv "$pkgdir/usr/lib/perl5" usr/lib/
-  mv "$pkgdir/usr/share/man" usr/share/
-
-  # Harden security policy https://bugs.archlinux.org/task/62785
-  sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-6/policy.xml
 }
