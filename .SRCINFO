@@ -1,0 +1,21 @@
+pkgbase = satellite-gtk
+	pkgdesc = Displays Global Navigation Satellite System (GNSS: GPS, Galileo, Glonass etc.) information obtained from NMEA sources and saves your tracks
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://codeberg.org/tpikonen/satellite
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-gobject
+	depends = libhandy
+	depends = python-pydbus
+	depends = python-pynmea2
+	depends = python-gpxpy
+	optdepends = modemmanager
+	optdepends = gnss-share
+	source = https://codeberg.org/tpikonen/satellite/archive/0.3.1.tar.gz
+	sha512sums = db6454c49aeb2932799772fa50c26ca1db7f11e77e612636e19045cb41df7a00b9d9e3a08a1bbd35fa41408ddda9a03dd721e3132fcfe799479b9632895335f1
+
+pkgname = satellite-gtk
