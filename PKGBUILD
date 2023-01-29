@@ -12,6 +12,8 @@ depends=('qt5-base')
 makedepends=("icoutils" "cmake")
 source=("${_name}::git+https://github.com/fstl-app/fstl.git" "fstl.desktop")
 sha256sums=('SKIP' '53d2a7911cacc1ca8e9fe823e8ecf2777c1158f51d2b909ebb106d976c70bec5')
+provides=("fslt=${pkgver}" "fslt-git=${pkgver}")
+conflicts=('fslt')
 
 pkgver() {
 	git -C "${_name}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
