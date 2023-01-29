@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname=budgie-control-center-git
-pkgver=1.1.1.r2.gd86f80693
+pkgver=1.2.0.r0.g5087342d0
 pkgrel=1
 pkgdesc="Budgie's main interface to configure various aspects of the desktop, latest git"
 arch=("x86_64" "armv7h" "aarch64")
