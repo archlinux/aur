@@ -2,5 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!statping-daemon.service
+!statpingd.service
 !statping-ng.install

@@ -6,7 +6,9 @@ After=network-online.target
 
 [Service]
 Type=simple
+Group=http
 Restart=always
+RestartSec=5s
 ExecStart=/usr/bin/statping
 WorkingDirectory=/etc/statping
 
