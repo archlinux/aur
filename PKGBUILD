@@ -2,11 +2,11 @@
 # Contributor: Manuel Reimer <manuel.reimer@gmx.de>
 
 pkgname=w_scan_cpp
-pkgver=20220105
-pkgrel=2
+pkgver=20230121
+pkgrel=1
 
 # These are versions of dependencies used by w_scan_cpp
-_wirbelscan_version=wirbelscan-2022.01.05
+_wirbelscan_version=wirbelscan-2023.01.21
 _satip_gitver=a89ad423e9a3994572d3bbbbf2958b470afa8de1
 _vdr_gitver=d05765c670befc42e55b05a0fd75bb7771076c04
 
@@ -21,8 +21,8 @@ source=("https://www.gen2vdr.de/wirbel/$pkgname/$pkgname-$pkgver.tar.bz2"
         "git://git.tvdr.de/vdr.git#commit=$_vdr_gitver"
         "git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
        )
-sha256sums=('d6acf3568f5743423579b8ab6f9184e231ba654edb2cdb2c6291531e79e7527e'
-            '8559c74838e5105016b8c0cd506d3f8721933e2bbadd5b3617f465284f702e2e'
+sha256sums=('6177dc8a42f87c03292de74bfe43bf4c0f027727e017c0d98f211666d9bed4bf'
+            'd6db38e259699de21a4c261ed1799991539fe57dea987870854e037b9c0be7f9'
             'SKIP'
             'SKIP')
 
