@@ -1,0 +1,13 @@
+pkgbase = onedev-docs
+	pkgdesc = Static site documentation for Onedev for offline browsing
+	pkgver = 20230129
+	pkgrel = 1
+	url = https://code.onedev.io/onedev/docs
+	arch = any
+	license = unknown
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = git
+	makedepends = git-lfs
+
+pkgname = onedev-docs
