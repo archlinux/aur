@@ -2,8 +2,8 @@
 
 _pkgname=lbry-gtk
 pkgname=${_pkgname}-git
-pkgver=199.dc7585c
-pkgrel=4
+pkgver=379.5292a47
+pkgrel=1
 pkgdesc='Native desktop LBRY client'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${_pkgname}"
@@ -12,7 +12,7 @@ depends=('python' 'python-appdirs' 'python-gobject' 'python-cairo' 'python-reque
 provides=("${_pkgname}")
 makedepends=('git')
 sha512sums=('SKIP')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#branch=main")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
