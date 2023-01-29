@@ -1,6 +1,6 @@
 # Maintainer: Elaina Martineau <elainamartineau@gmail.com>
 pkgname=ttf-octicons
-pkgver=17.10.2
+pkgver=17.11.1
 pkgrel=1
 pkgdesc="A scalable set of icons handcrafted with <3 by GitHub"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://octicons.github.com/"
 makedepends=('git' 'npm' 'nvm')
 depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 source=("https://github.com/primer/octicons/archive/v${pkgver}.tar.gz")
-sha256sums=('2ff7d29618fc031304aa605eebd38dd004ce3841790d140f694bf9cc2c104bde')
+sha256sums=('c3bfe2b05ab0442ff7464b1b2d94100f97a2898f1394a41f836fb4a6f5a8b844')
 install=$pkgname.install
 
 _ensure_local_nvm() {
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "${srcdir}/octicons-${pkgver}"
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  
+
   npm install fantasticon
   mkdir 'font'
   npm exec -- fantasticon icons -o font -t ttf -n octicons
