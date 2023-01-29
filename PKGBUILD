@@ -2,8 +2,8 @@
 # Based on the PKGBUILD for gdlauncher-bin
 pkgname="gdlauncher-beta-bin"
 _pkgname="gdlauncher"
-pkgver="1.1.30beta.1"
-_pkgver="1.1.30-beta.1"  # Upstream version, used in the download url.
+pkgver="1.1.30"
+_pkgver="1.1.30"  # Upstream version, used in the download url.
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -14,11 +14,11 @@ depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk
 provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-beta' 'gdlauncher-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-classic')
 source_x86_64=("GDLauncher-${pkgver}.deb::https://github.com/gorilla-devs/GDLauncher/releases/download/v${_pkgver}/GDLauncher-linux-setup.deb")
-md5sums_x86_64=('1d2a698ee4537434a5b59a50614180a0')
+md5sums_x86_64=('1253e2cdb07104000094f16df1d55cdb')
 
 package() {
     # Extract data folder from .deb archive
-    tar xf "${srcdir}/data.tar.xz" --directory=$pkgdir
+    tar xf "${srcdir}/data.tar.xz" --directory="$pkgdir"
 
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
