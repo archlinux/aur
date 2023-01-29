@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Scott Shumate <scott@shumatech.com>
 pkgname=libsciter-gtk-bin
 pkgver=4.4.8.23
