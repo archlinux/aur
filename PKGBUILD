@@ -18,7 +18,7 @@
 # /usr/lib/purr-data, so that 3rd party externals know where to find these.
 
 pkgname=purr-data-git
-pkgver=2.17.0.r4863.fa783023c
+pkgver=2.19.0.r5002.58e47c1fb
 pkgrel=1
 pkgdesc="Jonathan Wilkes' nw.js variant of Pd-L2Ork (git version)"
 url="https://git.purrdata.net/jwilkes/purr-data"
@@ -32,7 +32,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libv4l' 'libvorbis' 'portaudio'
   'smpeg' 'speex' 'stk' 'zlib' 'lua'
   'alsa-lib' 'gconf' 'gtk2' 'nss' 'libxtst' 'libxss' 'ttf-dejavu')
-makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
 provides=('purr-data')
 conflicts=('purr-data')
 install=purr-data.install
@@ -41,12 +41,12 @@ source=("$pkgname::git+https://git.purrdata.net/jwilkes/purr-data.git")
 md5sums=('SKIP')
 # nw.js sdk binaries
 nwjsname=nwjs-sdk
-nwjsver=0.28.1
+nwjsver=0.28.3
 source_common="http://dl.nwjs.io/v$nwjsver/$nwjsname-v$nwjsver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('6f2a2b0a58f50babbf3fb89163ca801f')
-md5sums_x86_64=('7557def0771c6fc9919aabde0a78730a')
+md5sums_i686=('858a5269dc7072c8d9e8ce9e880e4112')
+md5sums_x86_64=('c80b2b25b8b482568754f2bb586030a9')
 
 if [ "$CARCH" = "i686" ]; then
   _arch="ia32"
@@ -111,23 +111,6 @@ package() {
   # matches our install prefix.
   cd "$pkgdir$prefix/lib/pd-l2ork"
   sed -e "s!/usr/lib/pd-l2ork!$prefix/lib/pd-l2ork!g" -i default.settings
-  # Replace the pd-l2ork desktop/mime files and icons with purr-data ones, so
-  # that pd-l2ork can be installed alongside purr-data. We also remove the K12
-  # desktop files which aren't needed since K12 mode is not supported by
-  # purr-data (yet).
-  cd "$pkgdir/usr/share/applications"
-  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork.desktop > purr-data.desktop
-  sed -e 's/pd-l2ork/purr-data/g' -e 's/Pd-L2Ork/Purr-Data/g' < pd-l2ork-debug.desktop > purr-data-debug.desktop
-  rm -f pd-l2ork*.desktop
-  cd "$pkgdir/usr/share/mime/packages"
-  sed -e 's/pd-l2ork/purr-data/g' < pd-l2ork.xml > purr-data.xml
-  rm -f pd-l2ork.xml
-  cd "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  rm -f pd-l2ork-k12*.png
-  mv pd-l2ork.png purr-data.png
-  mv pd-l2ork-red.png purr-data-red.png
-  cd "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-  mv text-x-pd-l2ork.png text-x-purr-data.png
   # Remove libtool archives and extra object files.
   cd "$pkgdir$prefix"
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
