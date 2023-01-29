@@ -2,7 +2,7 @@
 
 pkgname=nodejs-chalk
 _pkgname=chalk
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=3
 pkgdesc='Terminal string styling done right.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('adf72284973550f25f782e73034a26dd6026dd52c542555db82e2c25b249b269')
+sha256sums=('9687d5d17a063e1b2aceaae5b83f8765eaeaf1c4bae8d74a21c1e9aeba1e4862')
 
 package() {
     npm install -g --production --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
