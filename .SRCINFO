@@ -8,7 +8,7 @@ pkgbase = mksh
 	license = custom
 	checkdepends = ed
 	depends = glibc
-	source = http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R59c.tgz
-	sha256sums = 77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506
+	source = https://github.com/MirBSD/mksh/archive/refs/tags/mksh-R59c.tar.gz
+	sha256sums = e5942607eb930ba6ce3303c4a0db0733371f210c9ce6d5d4b9cc202c76360343
 
 pkgname = mksh

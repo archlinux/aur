@@ -1,5 +1,5 @@
 # Maintainer: Daniel Menelkir <menelkir@gmail.com>
-# Contribitor: Alad Wenter <alad@archlinux.org>
+# Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Daniel Hommel <dhommel@gmail.com>
 
@@ -14,25 +14,25 @@ arch=('x86_64')
 depends=('glibc')
 checkdepends=('ed')
 install=mksh.install
-source=("http://www.mirbsd.org/MirOS/dist/mir/mksh/$pkgname-$_pkgver.tgz")
-sha256sums=('77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506')
+source=("https://github.com/MirBSD/mksh/archive/refs/tags/$pkgname-$_pkgver.tar.gz")
+sha256sums=('e5942607eb930ba6ce3303c4a0db0733371f210c9ce6d5d4b9cc202c76360343')
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgname-$_pkgver"
   PERL=/usr/bin/perl ./test.sh
 }
 
 prepare() {
-  sed -i 's/fgrep/grep -F/g' $pkgname/check.t
+  sed -i 's/fgrep/grep -F/g' $pkgname-$pkgname-$_pkgver/check.t
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgname-$_pkgver"
   sh Build.sh -r
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgname-$_pkgver"
   install -D -m 755 mksh "$pkgdir/usr/bin/mksh"
   install -D -m 644 mksh.1 "$pkgdir/usr/share/man/man1/mksh.1"
   install -D -m 644 dot.mkshrc "$pkgdir/etc/skel/.mkshrc"
