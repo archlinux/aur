@@ -10,7 +10,7 @@ pkgbase = knusperli-git
 	depends = gcc-libs
 	provides = knusperli
 	conflicts = knusperli
-	source = knusperli-git::git+https://github.com/google/knusperli
+	source = knusperli::git+https://github.com/google/knusperli
 	sha256sums = SKIP
 
 pkgname = knusperli-git
