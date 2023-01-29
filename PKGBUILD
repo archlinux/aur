@@ -1,26 +1,26 @@
 # $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=librcd
 pkgver=0.1.14
 pkgrel=1
 pkgdesc="Charset Detection Library"
-arch=(x86_64)
-url="http://rusxmms.sourceforge.net/"
-depends=(glibc)
-license=('GPL')
-#source=(http://downloads.sourceforge.net/rusxmms/${pkgname}-${pkgver}.tar.bz2)
-source=(http://darksoft.org/files/rusxmms/librcd-$pkgver.tar.bz2)
-md5sums=('f6eb72dbdbc97f6563f527a24253fc4a')
+arch=('x86_64')
+url='https://github.com/rusxmms/librcd'
+license=('LGPL2.1')
+depends=('glibc')
+provides=("$pkgname.so=$pkgver")
+source=("$pkgname-$pkgver.tar.bz2::https://darksoft.org/files/rusxmms/$pkgname-$pkgver.tar.bz2")
+sha256sums=('261db28bc864fd4b2d3ba88403b2e421944281e323c1e39c0e61f5160c16b664')
 
 build() {
-  cd "$srcdir"/$pkgname-${pkgver}
-  ./configure --prefix=/usr
-  make
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-${pkgver}
-  make DESTDIR="$pkgdir" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
 }

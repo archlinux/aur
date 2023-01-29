@@ -2,12 +2,12 @@ pkgbase = librcd
 	pkgdesc = Charset Detection Library
 	pkgver = 0.1.14
 	pkgrel = 1
-	url = http://rusxmms.sourceforge.net/
+	url = https://github.com/rusxmms/librcd
 	arch = x86_64
-	license = GPL
+	license = LGPL2.1
 	depends = glibc
-	source = http://darksoft.org/files/rusxmms/librcd-0.1.14.tar.bz2
-	md5sums = f6eb72dbdbc97f6563f527a24253fc4a
+	provides = librcd.so=0.1.14
+	source = librcd-0.1.14.tar.bz2::https://darksoft.org/files/rusxmms/librcd-0.1.14.tar.bz2
+	sha256sums = 261db28bc864fd4b2d3ba88403b2e421944281e323c1e39c0e61f5160c16b664
 
 pkgname = librcd
-
