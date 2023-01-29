@@ -1,0 +1,12 @@
+pkgbase = zff-reload
+	pkgdesc = New Zff, the lightest adventure game.
+	pkgver = 6.0.15beta
+	pkgrel = 1
+	url = https://github.com/ohzff/Zff-Reload
+	arch = any
+	license = MIT
+	makedepends = gcc
+	source = zff-reload-6.0.15beta.tar.gz
+	sha256sums = SKIP
+
+pkgname = zff-reload
