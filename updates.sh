@@ -1,4 +1,5 @@
 #!/bin/bash
+updpkgsums
 echo "creating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 source PKGBUILD && echo "pkgver=${pkgver}" && echo "pkgrel=${pkgrel}"
