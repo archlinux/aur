@@ -1,6 +1,6 @@
 pkgbase = grapejuice
 	pkgdesc = A Wine+Roblox management tool
-	pkgver = 7.2.1
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://gitlab.com/brinkervii/grapejuice.git
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = grapejuice
 	optdepends = xorg-xrandr: Required for PRIME systems running XOrg, where XRandR based profiling is desired
 	provides = grapejuice
 	conflicts = grapejuice-git
-	source = grapejuice-7.2.1.zip::https://gitlab.com/brinkervii/grapejuice/-/archive/v7.2.1/grapejuice-v7.2.1.zip
-	sha512sums = e4b35288a990787b21c49b406bd6876676784507a46e80c736a72878e02f9fa676389e6b1c89a64f706229369f52a30508e608d39476a5fc6db84ec1f016166c
+	source = grapejuice-7.5.1.zip::https://gitlab.com/brinkervii/grapejuice/-/archive/v7.5.1/grapejuice-v7.5.1.zip
+	sha512sums = 03f2b7a34980375da89b21b78e6c5314f168298bb4d4bbec77e95b1e5dc9de023386ae8be92fedea20b2a7c385d10108634fda9a6f43b19ad9471235c46bf1fa
 
 pkgname = grapejuice
