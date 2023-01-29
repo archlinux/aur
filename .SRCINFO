@@ -1,7 +1,7 @@
 pkgbase = comtrol-rocketport-express-infinity
 	pkgdesc = kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port
 	pkgver = 2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://downloads.comtrol.com/html/rp_express_drivers.htm
 	install = comtrol-rocketport-express-infinity-install.sh
 	arch = i686
@@ -18,9 +18,12 @@ pkgbase = comtrol-rocketport-express-infinity
 	backup = etc/modprobe.d/rocketrp2.conf
 	source = http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-2.18.tar.gz
 	source = 0000-kernel-5.12-tty-low_latency.patch
+	source = 0001-kernel-6.0-set_termios-const-ktermios.patch
 	md5sums = 6d3269e9f5a0d893822a63b327081bc1
 	md5sums = aba286dfcadfd6135e2bc90b2909587d
+	md5sums = d2a8d4ea27c25651ad3fcd3d4aafa007
 	sha256sums = cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8
 	sha256sums = 807649a7dac40fc9dc184c7cef4dc7d01f84ec5936e89c0376e0508cbce1da75
+	sha256sums = 0ea99153c86c8f6a3faa9362859d5ff0c71838b710bc2e4c9d4b888fb81c0652
 
 pkgname = comtrol-rocketport-express-infinity

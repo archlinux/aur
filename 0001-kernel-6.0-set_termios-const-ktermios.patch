@@ -1,0 +1,17 @@
+diff -pNaru5 a/rocketrp2.c b/rocketrp2.c
+--- a/rocketrp2.c	2023-01-29 04:27:55.446530197 -0500
++++ b/rocketrp2.c	2023-01-29 04:30:00.396345092 -0500
+@@ -652,10 +652,13 @@ static void __rp2_uart_set_termios(struc
+ #endif
+ }
+ 
+ static void rp2_uart_set_termios(struct uart_port *port,
+                                  struct ktermios *new,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,0,0)
++                                 const
++#endif
+                                  struct ktermios *old)
+ {
+   struct rp2_uart_port *up = port_to_up(port);
+   unsigned long flags;
+   unsigned int baud, baud_div;

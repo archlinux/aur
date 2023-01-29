@@ -31,7 +31,7 @@ _origmodname='rp2'
 set -u
 pkgname='comtrol-rocketport-express-infinity'
 pkgver='2.18'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='http://downloads.comtrol.com/html/rp_express_drivers.htm'
@@ -41,12 +41,17 @@ backup=("etc/modprobe.d/${_modulename}.conf")
 install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
-source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-source+=('0000-kernel-5.12-tty-low_latency.patch')
+source=(
+  "http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz"
+  '0000-kernel-5.12-tty-low_latency.patch'
+  '0001-kernel-6.0-set_termios-const-ktermios.patch'
+)
 md5sums=('6d3269e9f5a0d893822a63b327081bc1'
-         'aba286dfcadfd6135e2bc90b2909587d')
+         'aba286dfcadfd6135e2bc90b2909587d'
+         'd2a8d4ea27c25651ad3fcd3d4aafa007')
 sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8'
-            '807649a7dac40fc9dc184c7cef4dc7d01f84ec5936e89c0376e0508cbce1da75')
+            '807649a7dac40fc9dc184c7cef4dc7d01f84ec5936e89c0376e0508cbce1da75'
+            '0ea99153c86c8f6a3faa9362859d5ff0c71838b710bc2e4c9d4b888fb81c0652')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -138,7 +143,12 @@ prepare() {
 
   #cp -p 'rocketrp2.c'{,.orig}; false
   #diff -pNau5 'rocketrp2.c'{.orig,} > '0000-kernel-5.12-tty-low_latency.patch'
-  patch -Nbup0 -i "${srcdir}/0000-kernel-5.12-tty-low_latency.patch"
+  patch -Nup0 -i "${srcdir}/0000-kernel-5.12-tty-low_latency.patch"
+
+  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0001-kernel-6.0-set_termios-const-ktermios.patch'
+  patch -Nup1 -i "${srcdir}/0001-kernel-6.0-set_termios-const-ktermios.patch"
 
   set +u
 }
