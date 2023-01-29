@@ -1,7 +1,7 @@
 pkgbase = kasts
 	pkgdesc = Kirigami-based podcast player
-	pkgver = 22.11
-	pkgrel = 2
+	pkgver = 23.01.0
+	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kasts
 	arch = x86_64
 	arch = i686
@@ -23,10 +23,12 @@ pkgbase = kasts
 	depends = syndication
 	depends = taglib
 	depends = threadweaver
+	depends = vlc
+	depends = kirigami-addons
 	optdepends = gst-plugins-good: common audio codecs for the gstreamer backend
 	optdepends = breeze-icons: provide missing icons
 	optdepends = qqc2-desktop-style: improve default style
-	source = https://download.kde.org/stable/plasma-mobile/22.11/kasts-22.11.tar.xz
-	sha256sums = 2912b4a8864e35a7dadc16b9368988b6163870a0358e020c3b80b31222002711
+	source = https://download.kde.org/stable/plasma-mobile/23.01.0/kasts-23.01.0.tar.xz
+	sha256sums = 6ec76b04fd6c06fa1f3201cb907e9b58ec9b414b35e6ae2cc5d1d6b64b7bbb27
 
 pkgname = kasts
