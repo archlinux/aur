@@ -20,6 +20,8 @@ optdepends=('gcc: for compiling c++ sources',
 	'texlive-pictures: for building problem statements',
 	'texlive-science: for building problem statements',
 	'ghostscript: for LaTeX figures',
+	'python-matplotlib: for generating solve stats',
+	'python-questionary: for better prompts in new_contest and new_problem',
 	'asymptote: for visualizations'
 )
 makedepends=('git' 'rsync')
