@@ -6,7 +6,7 @@ _arch=x64v2
 pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
 _major=6.1
-pkgver=${_major}.7
+pkgver=${_major}.8
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -16,30 +16,25 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
-# Resolve URL of sources
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-source=("${_url_image}" "${_url_headers}")
-
-# Save files we will extract later manually
-_file_image="${_url_image##*/}"
-_file_headers="${_url_headers##*/}"
-noextract=("${_file_image}" "${_file_headers}")
+# Resolve URL of sources from Sourceforge provider
+_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
+source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
+        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
+noextract=("${_image_files[0]}" "${_image_files[1]}")
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('67efd06abdd35bf36a1ee826367f3bd84463e2ad246988fe25a18c300f40da77'
-            '94b74ed6420ac115157f869494125c1d9361d2e72911550a60556b874e1b778f')
+sha256sums=('0b7d430b9f575f4c43d561deef6a54b839a829404fb32ad356f55a78cd1fbf40'
+            '9bce26749aaf730e1d5125d79317d421ee0f1228e75ed68fca3fc08f6099d635')
 
 prepare() {
-  bsdtar -xf ${_file_image} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
-  bsdtar -xf ${_file_headers} data.tar.xz
-  bsdtar -xf data.tar.xz
-  rm -f data.tar.xz
+  for _f in ${_image_files[@]} ; do
+    bsdtar -xf ${_f} data.tar.xz
+    bsdtar -xf data.tar.xz
+    rm -f data.tar.xz
+  done
 }
 
 _package() {
