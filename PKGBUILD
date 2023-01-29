@@ -13,8 +13,8 @@ license=('GPL')
 depends=('elfutils' 'nss' 'python' 'cpio')
 makedepends=('python-setuptools' 'python2-setuptools' 'xmlto')
 optdepends=('sqlite3: for storing results in a database')
-source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.sig"
+source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/ftp/systemtap/releases/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/ftp/systemtap/releases/${pkgname}-${pkgver}.tar.gz.sig"
         )
 sha512sums=('fdcbc48ba17b2155c1419d99147a4cfbee2e69db945bfd0e6881b71ab11165bd23ea7ce9456856ae36807fb18f9934880a6b7c44456b63833ea260038744d9f2'
             'SKIP')
