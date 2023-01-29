@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=cavalier
-pkgver=2022.12.18
+pkgver=2023.01.29
 pkgrel=1
 pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
@@ -10,13 +10,8 @@ license=(MIT)
 depends=(cava libadwaita python-gobject)
 makedepends=(git meson)
 checkdepends=(appstream-glib)
-source=("git+$url#tag=$pkgver")
-b2sums=('SKIP')
-
-prepare() {
-	cd $pkgname
-	sed -i "s/'validate'/'validate-relax'/" data/meson.build
-}
+source=(git+$url#tag=$pkgver)
+b2sums=(SKIP)
 
 build() {
 	arch-meson $pkgname build

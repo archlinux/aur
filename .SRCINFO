@@ -1,6 +1,6 @@
 pkgbase = cavalier
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = 2022.12.18
+	pkgver = 2023.01.29
 	pkgrel = 1
 	url = https://github.com/fsobolev/cavalier
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = cavalier
 	depends = cava
 	depends = libadwaita
 	depends = python-gobject
-	source = git+https://github.com/fsobolev/cavalier#tag=2022.12.18
+	source = git+https://github.com/fsobolev/cavalier#tag=2023.01.29
 	b2sums = SKIP
 
 pkgname = cavalier
