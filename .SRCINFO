@@ -1,6 +1,6 @@
 pkgbase = snappymail
 	pkgdesc = A simple, modern & fast web-based email client
-	pkgver = 2.24.6
+	pkgver = 2.25.0
 	pkgrel = 1
 	url = https://snappymail.eu
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = snappymail
 	optdepends = mariadb: storage backend for contacts
 	optdepends = php-pgsql: storage backend for contacts
 	optdepends = php-sqlite: storage backend for contacts
-	source = snappymail::git+https://github.com/the-djmaze/snappymail.git#commit=d25af53dfb48b40200bbf8843e46355bffe2ee45
+	source = snappymail::git+https://github.com/the-djmaze/snappymail.git#commit=188b4199102f8da0632060f5d1a62b07f5b45c0e
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha512sums = SKIP
