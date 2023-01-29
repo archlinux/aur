@@ -8,8 +8,8 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-qt5
-pkgver=2.1.56
-pkgrel=3
+pkgver=2.1.57
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
