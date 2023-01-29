@@ -1,0 +1,17 @@
+pkgbase = python-telegram-text
+	pkgdesc = Python markup module for Telegram messenger
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://telegram-text.alinsky.tech/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	source = python-telegram-text-0.1.1.tar.gz::https://github.com/SKY-ALIN/telegram-text/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 63bf13460405d95eb098d6c48e7485ea1d9377bad863a468eac06c719cd6d810
+
+pkgname = python-telegram-text
