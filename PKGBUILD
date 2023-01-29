@@ -7,37 +7,28 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
-pkgver=2.51.0
-pkgrel=4
+pkgver=2.52.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev')
-makedepends=('git' 'python>=3.5' 'node-gyp' 'fnm' 'pnpm')
-_gitrev=3f183d8e16bb8259e25a3462c2faf9a2eabd23c2
-_gitdir=${pkgname}-git
-source=("${_gitdir}::git+${url}.git#tag=@ledgerhq/live-desktop@${pkgver}")
-sha512sums=('SKIP')
-
-_check_git_rev() {
-  curr_gitrev=$(git rev-parse "@ledgerhq/live-desktop@${pkgver}")
-  if [[ "${curr_gitrev}" != "${_gitrev}" ]]; then
-    echo "Using the wrong git revision! Expected [${_gitrev}] but using [${curr_gitrev}]"
-    exit 1
-  fi
-}
+makedepends=('python>=3.5' 'node-gyp' 'fnm' 'pnpm')
+_extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
+source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz")
+sha512sums=('7a655ae6831eed56fecb4d46e2d7af7610a60beb194e8e451f7e5d1c16b16734449c0cdc15dfea40f66f112baa31100bf6fb1f5fed51d6c5c6e4afdc31cdb4a7')
 
 prepare() {
-  cd "${_gitdir}"
-  _check_git_rev
+  cd "${_extdir}"
 
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
 }
 
 build() {
-  cd "${_gitdir}"
+  cd "${_extdir}"
 
+  export GIT_REVISION=${pkgver}
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
   pnpm desktop build
@@ -48,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "${_gitdir}/apps/${_pkgbin}"
+  cd "${_extdir}/apps/${_pkgbin}"
 
   install -Dm644 "dist/__appImage-x64/${_pkgbin}.desktop" "${pkgdir}/usr/share/applications/${_pkgbin}.desktop"
 
