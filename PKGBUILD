@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-scraper2vdr
-pkgver=1.0.12
-_vdrapi=2.6.1
+pkgver=1.1.0
+_vdrapi=2.6.3
 pkgrel=1
 pkgdesc="Acts as client and provides scraped metadata for tvshows and movies from epgd"
 url='https://github.com/horchi/scraper2vdr'
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/horchi/$_plugname/archive/$
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/epg.dat")
-sha256sums=('5e40763e06d218ee0f1993794a1d4b90da7877003ae749d48ee144753d6d26b7'
+sha256sums=('e264b957b2d6041b5454b8c33809fce14391896dbc61ad17f9de8dc13b2ef96d'
             '21ef2037dd4b746e7eafe4314d4a27c89300916bb9fa95ff759396228004bf36')
 
 build() {
