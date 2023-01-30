@@ -2,7 +2,7 @@
 
 pkgname=inav-configurator
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('i686' 'x86_64')
 url="https://github.com/iNavFlight/inav-configurator"
@@ -41,7 +41,7 @@ package() {
 	install -Dm644 "$srcdir/$pkgname-$pkgver/images/inav_icon_128.png" "$pkgdir/opt/inav/inav-configurator/icon/inav_icon_128.png"
 
 	install -d "$pkgdir/usr/bin/"
-	ln -s "$pkgdir/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
+	ln -s "/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
 
 	echo "Dont forget to add your user into uucp group \"sudo usermod -aG uucp $USER\" for serial access"
 }
