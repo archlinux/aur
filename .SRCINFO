@@ -1,0 +1,17 @@
+pkgbase = goodfet-git
+	pkgdesc = An embedded bus adapter for various microcontrollers and radios.
+	pkgver = r84.1750cc1
+	pkgrel = 1
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = gcc-msp430
+	depends = msp430-libc
+	depends = msp430mcu
+	depends = python2-pyserial
+	provides = goodfet
+	conflicts = goodfet
+	source = goodfet-git::git+https://github.com/travisgoodspeed/goodfet.git
+	sha256sums = SKIP
+
+pkgname = goodfet-git
