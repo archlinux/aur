@@ -25,6 +25,10 @@ pkgver() {
     git describe --long --tags | sed 's/^RTOOL_Release_v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    sed -i "s|JLinkARM.dll|/opt/SEGGER/JLink/libjlinkarm.so|g" "$srcdir"/rtools/RTools/RJLink/rjlinkview.cpp
+}
+
 build() {
     cd "${srcdir}/${pkgname%-git}/${_pkgname}/"
     qmake
