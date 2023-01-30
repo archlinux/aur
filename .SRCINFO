@@ -1,7 +1,7 @@
 pkgbase = coventry
 	pkgdesc = Residential IP telephony gateway
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/gnutelephony/coventry
 	arch = x86_64
 	arch = i686

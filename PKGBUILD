@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=coventry
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Residential IP telephony gateway"
 url="https://codeberg.org/gnutelephony/$pkgname"
@@ -15,8 +15,8 @@ sha256sums=('cc3f7a4fb92d9d176535b2a33593eaf537b5e2e991526c75fea2a958b4b7eb83' '
 build() {
 	cd "$srcdir/$pkgname"
 	cmake \
-		-DCMAKE_INSTALL_FULL_SYSCONFDIR:PATH=/etc \
-		-DCMAKE_INSTALL_FULL_LOCALSTATEDIR:PATH=/var \
+		-DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
+		-DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_SBINDIR=/usr/bin \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
