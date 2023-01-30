@@ -3,8 +3,8 @@
 # Contributor: Martin F. Schumann
 
 pkgname=unvanquished
-pkgver=0.53.1
-pkgrel=2
+pkgver=0.54.0
+pkgrel=1
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -57,11 +57,11 @@ md5sums=('6d9430b5b06b93a43a1cb79e14637f0b'
          'fd69458c8aa7fa8e71cea6a5993fdcbc'
          '6d0c7f32cb46e2a3a3901f0ad745fa39'
          'acf733d3389af8806edc54c872212e53'
-         '2fd9691518840c0314d9eb2d02453501'
-         '1f8759356464950943e078d71b706485'
-         '7fd25b2fa114983dd582c7ded4e4c4b5'
-         'aaa0eff1d63b3bee5792317c704b3966'
-         'fef72bfaa6e82cbe74c9f5089d4282fe'
+         '4c0a519922a8bd32d1ccee8f3b6d1300'
+         'c59942e4f963ccf45f77b6a1db219569'
+         '268a10e6beea95c4385671cb24a2df78'
+         '595437d6aced8d2e57fcd0b1b21093bb'
+         '77291936370dc7c79627c99eb217cf7d'
          '8e3e08ca8797e45e8dc01cdadf938676')
 
 # The prepare function mimics the git submodule dance.
@@ -137,7 +137,7 @@ package() {
 	install -m 755 daemonded               "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 daemon-tty              "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 crash_server            "${pkgdir}/usr/lib/unvanquished/"
-	install -m 755 irt_core-x86*.nexe      "${pkgdir}/usr/lib/unvanquished/"
+	install -m 755 irt_core-*.nexe         "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_helper_bootstrap   "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
 
