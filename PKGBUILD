@@ -26,6 +26,7 @@ pkgdesc='Complete solution to record, convert and stream audio and video support
 arch=(aarch64 arm7f)
 url=https://ffmpeg.org/
 license=(GPL3)
+options=(!lto debug strip)
 depends=(
   alsa-lib
   bzip2

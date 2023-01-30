@@ -85,6 +85,9 @@ pkgbase = ffmpeg-mpp
 	provides = ffmpeg
 	conflicts = ffmpeg-mpp
 	conflicts = ffmpeg
+	options = !lto
+	options = debug
+	options = strip
 	source = git+https://git.ffmpeg.org/ffmpeg.git?#tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	source = rkmpp-5.patch
