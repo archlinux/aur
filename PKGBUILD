@@ -21,7 +21,7 @@ depends=('curl' 'lua' 'wireless_tools' 'libxml2')
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/v${pkgver}.tar.gz")
 source=("https://github.com/brndnmtthws/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('c3558bc028bcfc583d8e7775aed20a0f264ff47dbf0debdf70a95b3a180069dc')
+sha256sums=('fe8fd3e18773437bfe49c663a1ceb0c26bc02d7c396be84a03ae97d0ef4ae608')
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
