@@ -1,0 +1,21 @@
+pkgbase = python-booleanoperations-git
+	pkgdesc = Boolean operations on paths
+	pkgver = 0.9.0.r3.g25f7091
+	pkgrel = 1
+	url = https://github.com/typemytype/booleanOperations
+	arch = any
+	license = MIT
+	checkdepends = python-defcon
+	checkdepends = python-fontpens
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	makedepends = git
+	depends = python
+	depends = python-pyclipper
+	depends = python-fonttools
+	provides = python-booleanoperations
+	conflicts = python-booleanoperations
+	source = python-booleanoperations-git::git+https://github.com/typemytype/booleanOperations.git
+	sha256sums = SKIP
+
+pkgname = python-booleanoperations-git
