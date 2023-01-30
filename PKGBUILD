@@ -1,6 +1,6 @@
 # Maintainer: Thomas Frans <franske2000 at gmail dot com>
 pkgname=wiki-tui
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A simple and easy to use Wikipedia Text User Interface"
 arch=('x86_64')
@@ -13,9 +13,6 @@ conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 
-# The --locked option is temporarily removed from the build commands, because
-# there is a problem upstream. I will try to open an issue upstream to resolve
-# this.
 prepare() {
 	cd "$pkgname-$pkgver"
     cargo fetch --locked
