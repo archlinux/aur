@@ -2,13 +2,14 @@
 
 pkgname=mpp-git
 pkgver="r3181.93b1cd14"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rockchip VPU Media Process Platform (MPP) for hardware video decode latest revision from git'
-arch=('aarch64')
+arch=('aarch64' 'arm7h')
 url='https://github.com/rockchip-linux/mpp/'
 license=('Apache')
 depends=('gcc-libs' 'coreutils' 'systemd')
 makedepends=('cmake')
+options=(!lto debug strip)
 install=install
 source=(git+https://github.com/rockchip-linux/mpp.git#branch=develop
 		'mpp.rules'
