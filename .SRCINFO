@@ -1,0 +1,24 @@
+pkgbase = python-skia-pathops-git
+	pkgdesc = Python bindings for the Skia librarys Path Ops
+	pkgver = 0.7.4.r4.g2e7c322
+	pkgrel = 1
+	url = https://github.com/fonttools/skia-pathops
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-coverage
+	checkdepends = python-pytest-xdist
+	checkdepends = python-pytest-randomly
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = git
+	depends = cython
+	depends = python
+	provides = python-skia-pathops
+	conflicts = python-skia-pathops
+	source = python-skia-pathops-git::git+https://github.com/fonttools/skia-pathops.git
+	sha256sums = SKIP
+
+pkgname = python-skia-pathops-git
