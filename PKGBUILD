@@ -44,7 +44,7 @@ package(){
 	install -Dm 755 J6wPyTnx $pkgdir/usr/bin/mcclean
 	install -Dm 755 Ljy6zZmM $pkgdir/usr/bin/mcrun
 	install -Dm 755 U8aNBkuD $pkgdir/usr/share/applications/mcpelauncher-client.desktop
-	install -Dm 755 MinecraftApp.webp $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
+	install -Dm 755 MinecraftApp.png $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
 	install -Dm 755 0S23ggea $pkgdir/usr/bin/mcpullwd
 	cd $srcdir/mcpelauncher-manifest/build
 	make DESTDIR=$pkgdir install
