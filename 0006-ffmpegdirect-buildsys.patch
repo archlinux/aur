@@ -1,0 +1,12 @@
+--- inputstream.ffmpegdirect/FindFFMPEG.cmake 2023-01-29 22:25:24.115814241 +0100
++++ inputstream.ffmpegdirect/FindFFMPEG.new	2023-01-29 22:14:38.239471283 +0100
+@@ -31,7 +31,7 @@
+ # ffmpeg  - The FFmpeg libraries
+ # --------
+ #
+-
++set(FFMPEG_PATH $ENV{FFMPEG_PATH})
+ # required ffmpeg library versions
+ set(REQUIRED_FFMPEG_VERSION 4.0)
+ set(_avcodec_ver ">=58.18.100")
+ 

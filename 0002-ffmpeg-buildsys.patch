@@ -1,0 +1,30 @@
+unchanged:
+--- a/cmake/modules/FindFFMPEG.cmake
++++ b/cmake/modules/FindFFMPEG.cmake
+@@ -277,7 +277,11 @@ if(NOT FFMPEG_FOUND)
+                                     <SOURCE_DIR> &&
+                                     ${CMAKE_COMMAND} -E copy
+                                     ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
+-                                    <SOURCE_DIR>)
++                                    <SOURCE_DIR> &&
++                                    patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0003-rkmpp-4.patch && patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0004-build-fix-for-dav1d-1.0.0.patch && patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0005-av_image_fill_plane_sizes.patch &&
++                                    echo "########################################## patched ffmpeg ##############################"
++                     )
++
+ 
+   if (ENABLE_INTERNAL_DAV1D)
+     add_dependencies(ffmpeg dav1d)
+only in patch2:
+unchanged:
+--- xbmc/tools/depends/target/ffmpeg/CMakeLists.txt	2023-01-06 14:44:24.283128670 +0100
++++ xbmc/tools/depends/target/ffmpeg/CMakeLists.new	2023-01-06 14:43:22.473122459 +0100
+@@ -130,6 +130,9 @@
+                       --enable-protocol=http
+                       --enable-encoder=png
+                       --enable-encoder=mjpeg
++                      --enable-version3
++                      --enable-rkmpp
++                      --enable-libdrm
+                       ${ffmpeg_conf}
+                     BUILD_COMMAND ${MAKE_COMMAND})
+ 
