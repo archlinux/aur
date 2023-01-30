@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-parallel-n64
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 2.0.0.26
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.parallel_n64
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-parallel-n64
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-parallel-n64-2.0.0.26.tar.gz::https://github.com/kodi-game/game.libretro.parallel_n64/archive/2.0.0.26-Matrix.tar.gz
+	sha512sums = c88220a5c8fd113d222527c8b214fd963793c1b80fce53e9594f2f20318b070f9970e5549a311a19d5399bb9fd0e63a50967d8a6d72b86b2b1ab452ef4d22c5e
+
+pkgname = kodi-addon-game-libretro-parallel-n64
+	depends = kodi-addon-game-libretro
+	depends = libretro-parallel-n64
