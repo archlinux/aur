@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev<at>mail.ru>
 pkgname=regtools-git
-pkgver=0.6.0.r122.2e3a291
+pkgver=1.0.0.r0.3068563
 pkgrel=1
 pkgdesc="Tools that integrate DNA-seq and RNA-seq data to help interpret mutations in a regulatory and splicing context"
 arch=('any')
@@ -25,8 +25,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-    # Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
