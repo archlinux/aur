@@ -1,0 +1,17 @@
+pkgbase = battery-wallpaper
+	pkgdesc = A simple bash script to set an animated battery as desktop wallpaper.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/adi1090x/battery-wallpaper
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = acpi
+	depends = feh
+	depends = xorg-xrandr
+	source = git+https://github.com/adi1090x/battery-wallpaper.git
+	source = battery-wallpaper.patch
+	md5sums = SKIP
+	md5sums = 371532a292a8ea9e06ca01d75c6225ba
+
+pkgname = battery-wallpaper

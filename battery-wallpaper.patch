@@ -1,0 +1,63 @@
+diff --git a/bwall.sh b/bwall.sh
+index 122ebb4..e511c06 100755
+--- a/bwall.sh
++++ b/bwall.sh
+@@ -16,7 +16,7 @@ MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(prin
+ ## Stuff
+ DIR="/usr/share/battery-wallpaper/images"
+ DELAY=0.8
+-BATTERY="$(acpi | awk -F ' ' 'END {print $4}' | tr -d \%,)"
++BATTERY="$(acpi | awk -F ' ' 'END {print $NF}' | tr -d \%,)"
+ CHARGE="$(acpi | awk -F ' ' 'END {print $3}' | tr -d \,)"
+ 
+ ## Wordsplit in ZSH
+diff --git a/install.sh b/install.sh
+index 16711a2..a7c659e 100755
+--- a/install.sh
++++ b/install.sh
+@@ -10,34 +10,35 @@ MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(prin
+ 
+ # Path
+ DIR=`pwd`
+-DES="/usr/share"
++DES=$PREFIX"/usr/share"
+ 
+ ## Make dirs
+ mkdir_dw() {
+ 	echo -e ${ORANGE}"[*] Installing Battery Wallpaper..."${WHITE}
+ 	if [[ -d "$DES"/battery-wallpaper ]]; then
+ 		# delete old directory
+-		sudo rm -rf "$DES"/battery-wallpaper
++		rm -rf "$DES"/battery-wallpaper
+ 		# create new directory
+-		sudo mkdir -p "$DES"/battery-wallpaper
++		mkdir -p "$DES"/battery-wallpaper
+ 	else
+ 		# create new directory
+-		sudo mkdir -p "$DES"/battery-wallpaper
++		mkdir -p "$DES"/battery-wallpaper
+ 	fi
+ }
+ 
+ ## Copy files
+ copy_files() {
+ 	# copy images and scripts
+-	sudo cp -r "$DIR"/images "$DES"/battery-wallpaper && sudo cp -r "$DIR"/bwall.sh "$DES"/battery-wallpaper
++	cp -r "$DIR"/images "$DES"/battery-wallpaper && cp -r "$DIR"/bwall.sh "$DES"/battery-wallpaper
+ 	# make script executable
+-	sudo chmod +x "$DES"/battery-wallpaper/bwall.sh
++	chmod +x "$DES"/battery-wallpaper/bwall.sh
+ 	# create link in bin directory
+-	if [[ -L /usr/bin/bwall ]]; then
+-		sudo rm /usr/bin/bwall
+-		sudo ln -s "$DES"/battery-wallpaper/bwall.sh /usr/bin/bwall
++	mkdir -p $PREFIX/usr/bin
++	if [[ -L $PREFIX/usr/bin/bwall ]]; then
++		rm $PREFIX/usr/bin/bwall
++		ln -s /usr/share/battery-wallpaper/bwall.sh $PREFIX/usr/bin/bwall
+ 	else
+-		sudo ln -s "$DES"/battery-wallpaper/bwall.sh /usr/bin/bwall
++		ln -s /usr/share/battery-wallpaper/bwall.sh $PREFIX/usr/bin/bwall
+ 	fi
+ 	echo -e ${GREEN}"[*] Installed Successfully. Execute 'bwall' to Run."${WHITE}
+ }
