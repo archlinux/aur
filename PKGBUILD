@@ -5,18 +5,18 @@
 
 pkgname=lbry-desktop-git
 _pkgname_base=lbry-desktop
-pkgver=0.53.4.r10894.g2e565fd95
-pkgrel=4
+pkgver=0.53.8.r10956.g523ea284a
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative - dev version'
 url="https://github.com/lbryio/${_pkgname_base}.git"
 license=('MIT')
 
-makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
+makedepends=('git' 'yarn' 'nodejs>=16' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
 
 depends=('nss' 'alsa-lib' 'gtk3')
-provides=("lbry=$pkgver" "$_pkgname_base=$pkgver" "lbry-app=$pkgver" "lbrynet=$pkgver")
-conflicts=('lbry' "$_pkgname_base-bin" 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' "$_pkgname_base")
+provides=("lbry=$pkgver" "$_pkgname_base=$pkgver" "lbrynet=$pkgver")
+conflicts=('lbry' "$_pkgname_base-bin" 'lbrynet' 'lbrynet-bin' "$_pkgname_base")
 
 source=(
 	"git+$url"
@@ -44,6 +44,8 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/$_pkgname_base"
+
+	export NODE_OPTIONS=--openssl-legacy-provider
 
 	# Note : see available yarn targets in file package.json
 
