@@ -2,7 +2,7 @@
 # Package maintainer: Sam van der Kris <samvdkris@disroot.org>
 
 pkgname="programmer-calculator"
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="A command line calculator made for programmers working with multiple number representations and close to the bits"
 url="https://github.com/alt-romes/programmer-calculator"
@@ -12,7 +12,7 @@ makedepends=("make" "gcc" "ncurses")
 conflicts=("pcalc")
 
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=("d76c1d641cdb7d0b68dd30d4ef96d6ccf16cad886b01b4464bdbf3a2fa976172")
+sha256sums=("6ede71e1442710e73edb99eb1742452e67ad5095cad328526633722850aa1136")
 
 
 build() {
