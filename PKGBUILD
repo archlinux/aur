@@ -1,26 +1,54 @@
-# Maintainer: Adrian Lopez <adrianlzt@gmail.com>
+# Maintainer: Faruk Dikcizgi <boogiepop@gmx.de>
+# Contributor: Adrian Lopez <adrianlzt@gmail.com>
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-pkgname=droidmote
-pkgver=3.0.0
-pkgrel=2
+pkgname=droidmote-bin
+pkgver=3.0.6
+pkgrel=1
 pkgdesc='Server for DroidMote. Use your androd as remote mouse and keyboard.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'arm7h')
 url='http://www.videomap.it/'
 license=('custom:unknown')
+makedepends=('curl')
 depends=('libx11')
-backup=("etc/${pkgname}.conf")
-source=("${pkgname}.conf"
+backup=("etc/droidmote.conf")
+source=("droidmote.conf"
         "service")
-source_i686=("${pkgname}-x32-${pkgver}.tar::https://drive.google.com/uc?export=download&id=0B-EA_LjgyxcHRmFaZ0FKT3dpWFU")
-source_x86_64=("${pkgname}-x64-${pkgver}.tar::https://drive.google.com/uc?export=download&id=0B-EA_LjgyxcHOWhjejVfMzRsb0E")
 sha256sums=('b6386dec0977b27dff244e04f4fdbf5becc4c12731a261678524c21ffb3e53a4'
             '0e88c9e0b189e0d8890ddbee8f00da13485973e028811e4e70a8b1c2b7595bbe')
-sha256sums_i686=('9f92ca81b6e7cd2fb24588b1d1ecb68790c760ae5f576e91222aecf0e484d6df')
-sha256sums_x86_64=('57ec9ed9eebe1c60869194259fa98938c6a2efc2756776b7fa0461028627a734')
+
+pkgver(){
+  local _ver=$(curl -Ls https://www.videomap.it/download.htm | grep -o1Ei 'inux\s([0-9\.]+)')
+  printf "${_ver#inux }"
+}
+
+build(){
+  local _arch="`uname -m`"
+  local _target=""
+  case "$_arch" in
+    x86 | i?86)
+      _target="dms-ubuntu-x32"
+      ;;
+    x86_64 | amd64)
+      _target="dms-ubuntu-x64"
+      ;;
+    armel)
+      _target="dms-ubuntu-arm"
+      ;;
+    arm64 | aarch64)
+      _target="dms-ubuntu-arm64"
+      ;;
+    arm*)
+      _target="dms-ubuntu-arm"
+    ;;
+    *) error 2 "Invalid architecture '$_arch'.";;
+  esac
+  curl -L "https://videomap.it/script/$_target" -o droidmote
+  chmod +x droidmote
+}
 
 package() {
-  install -D "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
-  install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -D droidmote "${pkgdir}/usr/bin/droidmote"
+  install -Dm644 "droidmote.conf" "${pkgdir}/etc/droidmote.conf"
+  install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/droidmote.service"
 }
