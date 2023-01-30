@@ -1,7 +1,8 @@
 pkgbase = ada-web-server
 	pkgdesc = A complete embeddable web application framework for Ada.
-	pkgver = 2023
+	pkgver = 23.0.0
 	pkgrel = 1
+	epoch = 1
 	url = http://libre.adacore.com/tools/aws
 	arch = i686
 	arch = x86_64
