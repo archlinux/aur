@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.9.2
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "flutter::git+https://github.com/flutter/flutter.git"
 )
 sha256sums=(
-    '677c4bba727cc46e6ea26baf9e0b6a1ae5e64776954a8404b244ed451b85c72d'
+    '4c657f325219b638ff9f643ee913fcd3dc73550dc28d7d0d1c81624b228bdd45'
     'SKIP'
 )
 
@@ -55,6 +55,6 @@ package() {
     install -dm0755 "$pkgdir/usr/bin/"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-    install -Dm0644 "$srcdir/$pkgname-$pkgver/packaging/linux/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm0644 "$srcdir/$pkgname-$pkgver/assets/icons/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/packaging/linux/codes.merritt.Nyrna.desktop" "$pkgdir/usr/share/applications/codes.merritt.Nyrna.desktop"
+    install -Dm0644 "$srcdir/$pkgname-$pkgver/assets/icons/codes.merritt.Nyrna.png" "$pkgdir/usr/share/pixmaps/codes.merritt.Nyrna.png"
 }
