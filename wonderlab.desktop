@@ -2,8 +2,9 @@
 Name=WonderLab
 Type=Application
 Terminal=false
-Exec=/usr/share/wonderlab/wonderlab
+Exec=/usr/share/WonderLab/WonderLab
 Icon=/usr/share/icons/wonderlab.png
 Categories=Game;ActionGame;AdventureGame;Simulation;
 Keywords=game;minecraft;launcher;mc;
+Comment=Next generation cross-platform Minecraft launcher
 Comment[zh_CN]=下一代跨平台 Minecraft 启动器
