@@ -1,6 +1,6 @@
 pkgbase = fluent-kde-theme-git
 	pkgdesc = Fluent design theme for kde plasma
-	pkgver = r89.81cdff8
+	pkgver = r90.d14b688
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Fluent-kde
 	arch = any
