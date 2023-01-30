@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=0.18.8
+_pkgver=0.19.0
 pkgname=r-${_pkgname,,}
-pkgver=0.18.8
-pkgrel=3
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='Easy Access to Model Information for Various Model Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -109,7 +109,7 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f52adaea67d36a333e8c430b85af50a581dbd5543390cd1f282502e4103f7505')
+sha256sums=('e7b63d394eb86c12cfba56178f12bc3bed86d19421bdb5e691c884add9922025')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
