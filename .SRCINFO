@@ -8,6 +8,7 @@ pkgbase = harvest-timer-qt
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
+	depends = qt6-svg
 	provides = harvest-timer
 	conflicts = harvest-timer
 	source = https://github.com/jorge-barroso/harvesttimer-qt/archive/refs/tags/v1.0.2.tar.gz
