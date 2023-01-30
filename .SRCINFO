@@ -1,0 +1,13 @@
+pkgbase = crosswords-puzzle-sets-pzzl
+	pkgdesc = Dutch puzzles from De Telegraaf for the app Crosswords
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/philip.goto/puzzle-sets-pzzl
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = crosswords
+	source = https://gitlab.gnome.org/philip.goto/puzzle-sets-pzzl/-/archive/4.0/puzzle-sets-pzzl-4.0.tar.gz
+	b2sums = 8e9e024e9ad8b9735a10e113e2f8569707ced2674ede57d57be29a565959ece879bce8bd3322f24be1cb3450bccb004377c05357a0f5265492343ec5d761910c
+
+pkgname = crosswords-puzzle-sets-pzzl
