@@ -2,8 +2,8 @@
 
 pkgname=scid
 _pkgname=Scid
-pkgver=4.7.4
-_pkgver=4.7
+pkgver=5.0.0
+_pkgver=5.0
 pkgrel=1
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
@@ -14,8 +14,8 @@ optdepends=('snack: for sound support'
             'tkimg: for using some alternate sets of pieces')
 options=('!emptydirs')
 install="${pkgname}.install"
-source=("https://sourceforge.net/projects/${pkgname}/files/${_pkgname}/${_pkgname}%20${_pkgver}/${pkgname}-code-${pkgver}.zip")
-sha256sums=('a257d3910bf70b6de277b1cf32b6f3438569b995dc45152c00f205dcb6613f33')
+source=("https://github.com/benini/scid/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b15d12f4988977c878646aafcff34b017b81bcd14f6a3fd4ad33da3532b15191')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -25,7 +25,7 @@ build() {
 }
 
 package () {
-  cd $srcdir/$pkgname-${pkgver}
+  cd $srcdir/${pkgname}-${pkgver}
   make DESTDIR=$pkgdir install
   msg "Creating Desktop file"
   install -Dm644 $srcdir/$pkgname-${pkgver}/resources/svg/scid.ico $pkgdir/usr/share/scid/scid.ico
