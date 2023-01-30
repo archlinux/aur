@@ -1,32 +1,36 @@
-# Maintainer: Pochang Chen <johnchen902@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
+# Contributor: Pochang Chen <johnchen902@gmail.com>
 
 pkgname=python-nclib-git
-_name=nclib
-pkgver=r80.8c77802
+_pkgname="${pkgname%-git}"
+_pkg="${_pkgname#python-}"
+pkgver=1.0.2.r1.ge80f2cc
 pkgrel=1
 pkgdesc="Netcat as a library"
-license=("MIT")
+license=('MIT')
 arch=('any')
-url="https://github.com/rhelmot/nclib"
-makedepends=('git' 'python-setuptools')
-source=('git+https://github.com/rhelmot/nclib.git')
-md5sums=('SKIP')
+url='https://github.com/rhelmot/nclib'
+depends=('python')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/nclib"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-    cd "$srcdir"/nclib
-    python setup.py build
+	cd "$_pkgname"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    depends=('python')
-    conflicts=('python-nclib')
-    provides=('python-nclib')
-    cd "$srcdir"/nclib
-    python setup.py install -O1 --root="$pkgdir"
-    install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd "$_pkgname"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-${pkgver%.r*}.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }

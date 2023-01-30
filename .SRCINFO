@@ -1,17 +1,19 @@
 pkgbase = python-nclib-git
 	pkgdesc = Netcat as a library
-	pkgver = r80.8c77802
+	pkgver = 1.0.2.r1.ge80f2cc
 	pkgrel = 1
 	url = https://github.com/rhelmot/nclib
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = git+https://github.com/rhelmot/nclib.git
-	md5sums = SKIP
-
-pkgname = python-nclib-git
+	makedepends = python-wheel
 	depends = python
 	provides = python-nclib
 	conflicts = python-nclib
+	source = python-nclib::git+https://github.com/rhelmot/nclib
+	sha256sums = SKIP
 
+pkgname = python-nclib-git
