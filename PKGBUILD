@@ -1,6 +1,6 @@
 pkgname=mcpelinux
 pkgver=1.34
-pkgrel=7
+pkgrel=8
 pkgdesc='A custom packaging of mcpelauncher and msa. Put the extracted x86_64 or x86 APK in /var/lib/mcpelinux or pull APK/Split APKS from waydroid by running command mcpullwd.'
 url='https://github.com/minecraft-linux'
 arch=(x86_64)
@@ -50,6 +50,6 @@ package(){
 	rm  -r $pkgdir/usr/local/share/mcpelauncher/lib/armeabi-v7a
 	cd $srcdir/msa-manifest/build
 	make DESTDIR=$pkgdir install
-	mv -r $pkgdir/usr/local/share $pkgdir/usr
+	mv $pkgdir/usr/local/share $pkgdir/usr/
 	rm -r $pkgdir/usr/local
 }
