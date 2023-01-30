@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-melonds
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.9.3.33
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.melonds
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-melonds
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-melonds-0.9.3.33.tar.gz::https://github.com/kodi-game/game.libretro.melonds/archive/0.9.3.33-Matrix.tar.gz
+	sha512sums = 3d17764cd96537ac32017c60c6ffb8bca815a53819c544bfd7bf4fd56d6eee98f4e600d87dd0933fbf83c8937305804a7d028ad80cdbae02be964f38716b0235
+
+pkgname = kodi-addon-game-libretro-melonds
+	depends = kodi-addon-game-libretro
+	depends = libretro-melonds
