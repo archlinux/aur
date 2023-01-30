@@ -5,18 +5,18 @@
 
 pkgname=lbry-desktop
 pkgver=0.53.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative'
 changelog=changelog.md
 url="https://github.com/lbryio/${pkgname}"
 license=('MIT')
 
-makedepends=('git' 'yarn' 'nodejs' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
+makedepends=('git' 'yarn' 'nodejs>=16' 'npm' 'gnome-keyring' 'gconf' 'libnotify' 'libappindicator-gtk2' 'libsecret' 'libxcrypt-compat')
 
 depends=('nss' 'alsa-lib' 'gtk3')
 provides=("lbry=$pkgver" "$pkgname=$pkgver" "lbrynet=$pkgver")
-conflicts=('lbry' "$pkgname-bin" 'lbry-app-bin' 'lbrynet' 'lbrynet-bin' "$pkgname-git")
+conflicts=('lbry' "$pkgname-bin" 'lbrynet' 'lbrynet-bin' "$pkgname-git")
 
 source=("git+${url}#tag=v${pkgver}"
 	'lbry.desktop')
@@ -26,6 +26,8 @@ b2sums=('SKIP'
 
 build() {
 	cd "${srcdir}/$pkgname"
+
+	export NODE_OPTIONS=--openssl-legacy-provider
 
 	# Note : see available yarn targets in file package.json
 

@@ -1,14 +1,14 @@
 pkgbase = lbry-desktop
 	pkgdesc = Desktop app for the lbry-network (Odysee.com) - a decentralized, user-controlled content marketplace and YouTube alternative
 	pkgver = 0.53.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lbryio/lbry-desktop
 	changelog = changelog.md
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = nodejs
+	makedepends = nodejs>=16
 	makedepends = npm
 	makedepends = gnome-keyring
 	makedepends = gconf
@@ -24,7 +24,6 @@ pkgbase = lbry-desktop
 	provides = lbrynet=0.53.8
 	conflicts = lbry
 	conflicts = lbry-desktop-bin
-	conflicts = lbry-app-bin
 	conflicts = lbrynet
 	conflicts = lbrynet-bin
 	conflicts = lbry-desktop-git
