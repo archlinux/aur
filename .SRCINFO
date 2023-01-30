@@ -1,0 +1,22 @@
+pkgbase = kodi-addon-game-libretro-mupen64plus-nx
+	pkgdesc = Nintendo 64 mupen64plus-next for kodi
+	pkgver = 2.2.0.22
+	pkgrel = 8
+	epoch = 1
+	url = https://github.com/kodi-game/game.libretro.mupen64plus
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-mupen64plus-next
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-mupen64plus-nx-2.2.0.22.tar.gz::https://github.com/kodi-game/game.libretro.mupen64plus/archive/2.2.0.22-Matrix.tar.gz
+	sha512sums = ff71c6c4e4b13ba90578de2cc5e04b50f94b8ed994c7d76c45476dc1dda4de3e1a148f83798290d8e3fb22a2eeeb06c854cb2e7198f544c93e7a4c860bf34e70
+
+pkgname = kodi-addon-game-libretro-mupen64plus-nx
+	depends = kodi-addon-game-libretro
+	depends = libretro-mupen64plus-next
