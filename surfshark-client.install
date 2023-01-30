@@ -48,7 +48,7 @@ post_install() {
 	" > /usr/lib/systemd/system/surfsharkd2.service || true
 
 	chmod 644 /usr/lib/systemd/user/surfsharkd.service || true
-	chmod 644 /usr/lib/systemd/user/surfsharkd2.service || true
+	chmod 644 /usr/lib/systemd/system/surfsharkd2.service || true
 
 	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || true
 
