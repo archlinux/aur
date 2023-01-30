@@ -1,7 +1,8 @@
   # Maintainer:  solaraquarion <shlomochoina@gmial.com>
+  # Maintainer:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=extratermqt
-pkgver=0.67.0
+pkgver=0.69.0
 pkgrel=1
 conflicts=("extraterm")
 pkgdesc="The swiss army chainsaw of terminal emulators."
@@ -10,7 +11,7 @@ url="https://github.com/sedwards2009/extraterm"
 license=("MIT")
 depends=("nodejs" "qt5-svg")
 source=("$url/releases/download/v$pkgver/""${_pkgname}_""${pkgver}_amd64.deb")
-sha256sums=('b51a9ced8e55ada081e9fedf69d9e125955a356f463839f9c3fcce4777b48692')
+sha256sums=('10bbddda9e4374635cd5953c2925175c5673bbea92097758bce65f160172aebb')
 
 package() {
   cd "$srcdir"
