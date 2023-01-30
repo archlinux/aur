@@ -1,0 +1,13 @@
+pkgbase = proxzima-plymouth-git
+	pkgdesc = A techno Plymouth theme with crazy ass animation
+	pkgver = r1.b6e335a
+	pkgrel = 1
+	url = https://github.com/PROxZIMA/proxzima-plymouth
+	arch = any
+	license = GPL3
+	depends = plymouth
+	provides = proxzima-plymouth-git
+	source = git+https://github.com/PROxZIMA/proxzima-plymouth.git
+	sha256sums = SKIP
+
+pkgname = proxzima-plymouth-git
