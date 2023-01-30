@@ -1,12 +1,12 @@
 pkgname='pipexec'
-pkgver=2.5.5
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Connector of arbitrary file descriptors'
 arch=('i686' 'x86_64')
 url="https://github.com/flonatel/pipexec"
 license=('GPL2')
 source=("https://github.com/flonatel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('d64f3043777c20df026fe44078b81b415f2e5ea6b79ebdd21f82bc663c066177')
+sha256sums=('de8237eb45224c04c1bd41cc8dc5dfb9c78ceff3b02202a49981396e55602e29')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
