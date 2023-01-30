@@ -1,16 +1,18 @@
-# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Maintainer: Faruk Dikcizgi <boogiepop@gmx.de>
+# Contributor: Francois Menning <f.menning@protonmail.com>
 # Contributor: Michael Lass <bevan@bi-co.net>
 # Contributor: Julian Xhokaxhiu <https://julianxhokaxhiu.com>
 
 _gitname=pvr.iptvsimple
-pkgname=kodi-addon-pvr-iptvsimple-git
+pkgname=kodi-matrix-addon-pvr-iptvsimple-git
 pkgver=r712.6447c58
 pkgrel=1
-pkgdesc="Kodi's IPTV Simple client addon."
+pkgdesc="Kodi's IPTV Simple client addon for Kodi 19 Matrix"
 url='https://github.com/kodi-pvr/pvr.iptvsimple'
 license=('GPL3')
 source=("${_gitname}::git+https://github.com/kodi-pvr/pvr.iptvsimple#branch=Matrix")
 sha256sums=('SKIP')
+options=(!lto debug strip)
 arch=('any')
 depends=('kodi' 'p8-platform')
 makedepends=('git' 'cmake' 'kodi-platform' 'kodi-dev' 'pugixml')
@@ -24,6 +26,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
+
+  CFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+  CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \

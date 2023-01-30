@@ -1,5 +1,5 @@
-pkgbase = kodi-addon-pvr-iptvsimple-git
-	pkgdesc = Kodi's IPTV Simple client addon.
+pkgbase = kodi-matrix-addon-pvr-iptvsimple-git
+	pkgdesc = Kodi's IPTV Simple client addon for Kodi 19 Matrix
 	pkgver = r712.6447c58
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
@@ -15,7 +15,10 @@ pkgbase = kodi-addon-pvr-iptvsimple-git
 	provides = kodi-addon-pvr-iptvsimple
 	conflicts = kodi-addon-pvr-iptvsimple
 	conflicts = kodi-pvr-addons
+	options = !lto
+	options = debug
+	options = strip
 	source = pvr.iptvsimple::git+https://github.com/kodi-pvr/pvr.iptvsimple#branch=Matrix
 	sha256sums = SKIP
 
-pkgname = kodi-addon-pvr-iptvsimple-git
+pkgname = kodi-matrix-addon-pvr-iptvsimple-git
