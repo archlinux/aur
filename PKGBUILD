@@ -32,8 +32,8 @@ package() {
 	mkdir -p $pkgdir/usr/share/locale/de/LC_MESSAGES
 	install -D src/languages/de/cantara.mo $pkgdir/usr/share/locale/de/LC_MESSAGES/cantara.mo
 	install -D src/languages/zh/cantara.mo $pkgdir/usr/share/locale/zh/LC_MESSAGES/cantara.mo
-	install -D src/languages/it/cantara.mo $pkgdir/usr/share/locals/it/LC_MESSAGES/cantara.mo
-	install -D src/languages/es/cantara.mo $pkgdir/usr/share/locals/es/LC_MESSAGES/cantara.mo
+	install -D src/languages/it/cantara.mo $pkgdir/usr/share/locale/it/LC_MESSAGES/cantara.mo
+	install -D src/languages/es/cantara.mo $pkgdir/usr/share/locale/es/LC_MESSAGES/cantara.mo
 	install -D app.cantara.Cantara.desktop $pkgdir/usr/share/applications/cantara.desktop
     install -D app.cantara.Cantara.png $pkgdir/usr/share/icons/app.cantara.Cantara.png
 }
