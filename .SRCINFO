@@ -1,0 +1,13 @@
+pkgbase = crosswords-puzzle-sets-gnome
+	pkgdesc = Additional official English puzzles for the app Crosswords
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/jrb/puzzle-sets-gnome
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = crosswords
+	source = https://gitlab.gnome.org/jrb/puzzle-sets-gnome/-/archive/0.4.0/puzzle-sets-gnome-0.4.0.tar.gz
+	b2sums = c32f8cd5f391cec6d003983917c0db3341417d6be18694eafe29f18618b6b084f277cbaa5f73fb9fcc490196ecf627ff5002e20dc1ade4a2a4c7771be0881705
+
+pkgname = crosswords-puzzle-sets-gnome
