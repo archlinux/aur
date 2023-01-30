@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=5.1.2
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -94,6 +94,7 @@ makedepends=(
   nasm
   opencl-headers
   vulkan-headers
+  mpp-git
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
