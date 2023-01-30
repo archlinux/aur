@@ -3,5 +3,5 @@ build:
     docker run -v $PWD:/volume --rm -it makepkg
 
 push:
-    git remote add aur ssh://aur@aur.archlinux.org/argocd-autopilot-bin.git &> /dev/null
+    git remote add aur ssh://aur@aur.archlinux.org/argocd-autopilot-bin.git &> /dev/null || true
     git push aur main:master
