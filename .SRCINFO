@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-scummvm
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 2.6.1.30
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.scummvm
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-scummvm
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-scummvm-2.6.1.30.tar.gz::https://github.com/kodi-game/game.libretro.scummvm/archive/2.6.1.30-Matrix.tar.gz
+	sha512sums = 88cb09ad224b36fcc18e58555ecaa05c8be3bf2eff168ea49cfbcdf7755c5b5e7aaf94d59c66ccc14326f2f48b5770b32b14a482a65a3ba244e26a18000ae028
+
+pkgname = kodi-addon-game-libretro-scummvm
+	depends = kodi-addon-game-libretro
+	depends = libretro-scummvm
