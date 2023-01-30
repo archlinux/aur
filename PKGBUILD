@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg4.4-mpp
 pkgver=4.4.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
 url=https://ffmpeg.org/
@@ -86,6 +86,7 @@ makedepends=(
   git
   ladspa
   nasm
+  mpp-git
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'

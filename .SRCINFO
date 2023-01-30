@@ -1,7 +1,7 @@
 pkgbase = ffmpeg4.4-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 4.4.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://ffmpeg.org/
 	arch = aarch64
 	arch = arm7f
@@ -12,6 +12,7 @@ pkgbase = ffmpeg4.4-mpp
 	makedepends = git
 	makedepends = ladspa
 	makedepends = nasm
+	makedepends = mpp-git
 	depends = alsa-lib
 	depends = bzip2
 	depends = fontconfig
