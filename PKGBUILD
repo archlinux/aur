@@ -24,7 +24,7 @@ _clangbuild=
 pkgbase=kodi-matrix-mpp-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpegdirect")
 pkgver=r58204.f8fdeb6b1b1.481f5d6
-pkgrel=5
+pkgrel=6
 arch=('aarch64' 'arm7f')
 url="https://kodi.tv"
 license=('GPL2')
@@ -134,7 +134,9 @@ pkgver() {
 }
 
 prepare() {
+  [[ -d kodi-build ]] && rm -rf kodi-build
   mkdir -p "$srcdir/kodi-build"
+  [[ -d ffdirect-build ]] && rm -rf ffdirect-build
   mkdir -p "$srcdir/ffdirect-build"
   # when built with debug enabled LTO needs more than 2gb size which larger than /tmp ond efault arch
   # we are creating a temporary tmp folder to satisfy LTO, otherwise linking stage will fail

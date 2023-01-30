@@ -1,6 +1,6 @@
 pkgbase = kodi-matrix-mpp-git
 	pkgver = r58204.f8fdeb6b1b1.481f5d6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kodi.tv
 	arch = aarch64
 	arch = arm7f
