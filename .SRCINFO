@@ -1,0 +1,13 @@
+pkgbase = crosswords-puzzle-sets-keesing
+	pkgdesc = Dutch and Flemish puzzles from Keesing.com for the app Crosswords
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/philip.goto/puzzle-sets-keesing
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = crosswords
+	source = https://gitlab.gnome.org/philip.goto/puzzle-sets-keesing/-/archive/4.1/puzzle-sets-keesing-4.1.tar.gz
+	b2sums = b42083054219f9af2b1cbce1abd668c96f2f02386d1060a90a86f51197b18bd87123bae9ce62b23b7ec3d2364ed33ffa0872ff064d3db4ddb9b2835a6402be00
+
+pkgname = crosswords-puzzle-sets-keesing
