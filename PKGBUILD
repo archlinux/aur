@@ -1,4 +1,3 @@
-__main_repo='https://github.com/minecraft-linux/'
 pkgname=mcpelinux
 pkgver=1.34
 pkgrel=5
