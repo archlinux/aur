@@ -1,0 +1,27 @@
+pkgbase = swaylock-fprintd-git
+	pkgdesc =  with integrated fingerprint support via fprintd
+	pkgver = r314.ffd639a-1
+	pkgrel = 1
+	url = https://github.com/SL-RU/swaylock-fprintd
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = pam
+	depends = cairo
+	depends = gdk-pixbuf2
+        depends = dbus
+        depends = fprintd
+	provides = swaylock
+	conflicts = swaylock
+	source = swaylock::git+https://github.com/SL-RU/swaylock-fprintd
+	sha1sums = SKIP
+
+pkgname = swaylock-fprintd-git
