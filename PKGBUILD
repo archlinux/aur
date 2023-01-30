@@ -8,7 +8,7 @@
 
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
-pkgver=r2260.85b3f1da
+pkgver=r2286.733ce19e
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('dotnet-sdk-6.0' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip)
-source=(${pkgname%-git}::'git+https://github.com/ISSOtm/Mesen2.git#branch=make-gcc-happy')
+source=(${pkgname%-git}::'git+https://github.com/SourMesen/Mesen2.git')
 sha256sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for

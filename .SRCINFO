@@ -1,6 +1,6 @@
 pkgbase = mesen2-git
 	pkgdesc = Multi-system emulator (NES, SNES, Game Boy and PC Engine)
-	pkgver = r2260.85b3f1da
+	pkgver = r2286.733ce19e
 	pkgrel = 1
 	url = https://www.mesen.ca
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mesen2-git
 	provides = mesen2
 	conflicts = mesen2
 	options = !strip
-	source = mesen2::git+https://github.com/ISSOtm/Mesen2.git#branch=make-gcc-happy
+	source = mesen2::git+https://github.com/SourMesen/Mesen2.git
 	sha256sums = SKIP
 
 pkgname = mesen2-git
