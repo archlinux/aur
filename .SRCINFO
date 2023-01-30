@@ -1,0 +1,20 @@
+pkgbase = buongiorno-git
+	pkgdesc = Modal TUI greeter for greetd.
+	pkgver = 0.1.0.r0.ge616853
+	pkgrel = 1
+	url = https://sr.ht/~andreafeletto/buongiorno
+	arch = x86_64
+	license = GPL3
+	makedepends = zig
+	makedepends = git
+	depends = greetd
+	provides = buongiorno
+	conflicts = buongiorno-git
+	source = git+https://git.sr.ht/~andreafeletto/buongiorno
+	source = git+https://git.sr.ht/~leon_plickat/zig-spoon
+	source = git+https://github.com/Hejsil/zig-clap
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = buongiorno-git
