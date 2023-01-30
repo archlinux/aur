@@ -1,16 +1,14 @@
 pkgbase = binder_linux-dkms
 	pkgdesc = Android kernel driver fork by @choff in DKMS format, binder only.
 	pkgver = 6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/choff/anbox-modules
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = dkms
 	conflicts = anbox-modules-dkms
-	source = git+https://github.com/choff/anbox-modules.git#commit=cd66055f6d806d7f1534f38ff7142c75f6735e09
-	source = 6.1-fix.diff
+	source = git+https://github.com/choff/anbox-modules.git#commit=ab8278c603ed54152d3a8e23269198d1044b2fa3
 	sha256sums = SKIP
-	sha256sums = 46331ef50b05db9313c826e5f0d3cf7a65a8f1fc5908bb7cae191cd6ef308b70
 
 pkgname = binder_linux-dkms
