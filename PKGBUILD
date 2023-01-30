@@ -3,7 +3,7 @@
 _pkgname=xgboost
 pkgname=python-$_pkgname
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Gradient Boosting Library for Python'
 arch=('x86_64')
 url='https://xgboost.ai'
@@ -27,20 +27,21 @@ prepare() {
     export _ACC=ON
     export _CCPATH="/opt/cuda/bin"
     export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
-    echo "GPU is enabled"
+    echo "GPU support is enabled"
   else
     export _ACC=OFF
     export _CCPATH="/usr/bin"
-    echo "GPU is disabled"
+    echo "GPU support is disabled"
   fi
 }
 
 build() {
   cd "$srcdir/build"
+  echo $_CCPATH
   cmake ../$_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_COMPILER=$_CCPATH/g++ \
-    -DCMAKE_C_COMPILER=$_CCPATH/gcc \
+    -DCMAKE_CXX_COMPILER="$_CCPATH/g++" \
+    -DCMAKE_C_COMPILER="$_CCPATH/gcc" \
     -DPLUGIN_DENSE_PARSER=ON \
     -DPLUGIN_FEDERATED=ON \
     -DDMLC_HDFS_SHARED=ON \
