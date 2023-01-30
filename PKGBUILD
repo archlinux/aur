@@ -10,7 +10,7 @@ _package=diopser
 _tag_prefix=diopser-
 # The name of the built plugin bundle or library
 _bundle=Diopser
-pkgver=rbuffr.glitch.0.2.0.17.gefff43d
+pkgver=0.0.1.r1877.efff43d
 pkgrel=1
 pkgdesc='A totally original phase rotation plugin - part of NIH-plug'
 arch=('x86_64')
