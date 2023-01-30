@@ -26,9 +26,9 @@ pkgname=(
   gst-devtools-git
   gstreamer-docs-git
 )
-pkgver=1.21.3.r66.g3fa6651d91
+pkgver=1.22.0.r153.g9a300fc501
 pkgrel=1
-_pkgver=1.21.1
+_pkgver=1.22.0
 pkgdesc='GStreamer Multimedia Framework (Git version)'
 arch=('i686' 'x86_64')
 license=('LGPL')
@@ -90,7 +90,7 @@ _gitname='gstreamer'
 source=('git+https://gitlab.freedesktop.org/gstreamer/gstreamer'
         "https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-${_pkgver%%+*}.tar.xz")
 md5sums=('SKIP'
-         '6d123b1279d3f53bf677043b0d7a6686')
+         '75946c02fe05b952464b86c4a1d35f60')
 
 pkgver() {
   cd $_gitname
@@ -170,6 +170,7 @@ package_gstreamer-git() {
   depends=(libxml2 glib2 libunwind libcap libelf)
   optdepends=('python: gst-plugins-doc-cache-generator')
   conflicts=('gstreamer')
+  provides=('gstreamer=$pkgver')
   install=gstreamer.install
 
   DESTDIR="$srcdir/root" meson install -C build
@@ -209,7 +210,8 @@ package_gst-plugins-bad-libs-git() {
     "gst-plugins-base-libs-git=$pkgver"
     orc libdrm libx11 libgudev libusb libxkbcommon-x11 libnice
   )
-  conficts=('gst-plugin-bad-libs')
+  conficts=('gst-plugins-bad-libs')
+  provides=("gst-plugins-bad-libs=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/gst/audio/{audio-bad-prelude,gstnonstreamaudiodecoder,gstplanaraudioadapter}.h
@@ -313,7 +315,8 @@ package_gst-plugins-base-libs-git() {
     "gstreamer-git=$pkgver"
     orc libxv iso-codes libgudev libgl mesa libxi
   )
-  conficts=('gst-plguin-base-lib')
+  conficts=('gst-plugins-base-libs')
+  provides=("gst-plugins-base-libs=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/gst/{allocators,app,audio,fft,gl,pbutils,riff,rtp,rtsp,sdp,tag,video}
@@ -364,7 +367,8 @@ package_gst-plugins-base-git() {
     alsa-lib cdparanoia libvisual libvorbis libtheora pango opus graphene libpng
     libjpeg libtremor-git
   )
-  conflicts=('gst-plugin-base')
+  conflicts=('gst-plugins-base')
+  provides=("gst-plugins-base=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstalsa.so
@@ -389,7 +393,8 @@ package_gst-plugins-good-git() {
     libgudev speex flac libraw1394 lame mpg123 twolame qt6-wayland
     libjack.so
   )
-  conflicts=('gst-plugin-good')
+  conflicts=('gst-plugins-good')
+  provides=("gst-plugins-good=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgst1394.so
@@ -486,6 +491,7 @@ package_gst-plugins-bad-git() {
     openni2 gtk3 vo-amrwbenc openh264 flite1
   )
   conficts=('gst-plugins-bad')
+  provides=("gst-plugins-bad=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstaes.so
@@ -568,6 +574,7 @@ package_gst-plugin-gtk-git() {
   pkgdesc+=" - gtk plugin"
   depends=("gst-plugins-base-libs-git=$pkgver" gtk3)
   conflicts=('gst-plugin-gtk')
+  provides=("gst-plugin-gtk=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstgtk.so
@@ -578,6 +585,7 @@ package_gst-plugin-msdk-git() {
   pkgdesc+=" - msdk plugin"
   depends=("gst-plugins-bad-libs-git=$pkgver" libmfx libva)
   conflicts=('gst-plugin-msdk')
+  provides=("gst-plugin-msdk=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstmsdk.so
@@ -588,6 +596,7 @@ package_gst-plugin-opencv-git() {
   pkgdesc+=" - opencv plugin"
   depends=("gst-plugins-base-libs-git=$pkgver" opencv)
   conflicts=('gst-plugin-opencv')
+  provides=("gst-plugin-opencv=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/gst/opencv
@@ -603,7 +612,8 @@ package_gst-plugin-qmlgl-git() {
     "gst-plugins-base-libs-git=$pkgver"
     qt5-declarative qt5-x11extras qt5-wayland
   )
-  conflicts=("gst-plugin-qmlgl")
+  conflicts=('gst-plugin-qmlgl')
+  provides=("gst-plugin-qmlgl=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstqmlgl.so
@@ -613,7 +623,8 @@ package_gst-plugin-qmlgl-git() {
 package_gst-plugin-va-git() {
   pkgdesc+=" - va plugin"
   depends=("gst-plugins-bad-libs-git=$pkgver" libva)
-  conflicts=("gst-plugin-va")
+  conflicts=('gst-plugin-va')
+  provides=("gst-plugin-va=$pkgver")
 
   cd root; local files=(
     usr/lib/libgstva-1.0.so*
@@ -625,7 +636,8 @@ package_gst-plugin-va-git() {
 package_gst-plugin-cuda-git() {
   pkgdesc+=" - cuda plugin"
   depends=("gst-plugins-bad-libs=$pkgver" cuda)
-  conflicts=("gst-plugin-cuda")
+  conflicts=('gst-plugin-cuda')
+  provides=("gst-plugin-cuda=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/gst/cuda/cuda-prelude.h
@@ -649,6 +661,7 @@ package_gst-plugin-wpe-git() {
   pkgdesc+=" - wpe plugin"
   depends=("gst-plugins-base-libs-git=$pkgver" wpewebkit)
   conficts=('gst-plugin-wpe')
+  provides=("gst-plugin-wpe=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstwpe.so
@@ -663,6 +676,7 @@ package_gst-plugins-ugly-git() {
     libdvdread libmpeg2 a52dec libsidplay libcdio x264 opencore-amr
   )
   conflicts=('gst-plugins-ugly')
+  provides=("gst-plugins-ugly=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgsta52dec.so
@@ -690,6 +704,7 @@ package_gst-libav-git() {
   depends=("gst-plugins-base-libs=$pkgver" bzip2 ffmpeg)
   provides=("gst-ffmpeg=$pkgver")
   conflicts=('gst-libav')
+  provides=("gst-libav=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstlibav.so
@@ -700,6 +715,7 @@ package_gst-rtsp-server-git() {
   pkgdesc+=" - rtsp server"
   depends=("gst-plugins-base-libs=$pkgver")
   conflicts=('gst-rtsp-server')
+  provides=("gst-rtsp-server=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/gst/rtsp-server
@@ -716,6 +732,7 @@ package_gst-editing-services-git() {
   pkgdesc+=" - editing services"
   depends=("gst-plugins-base-libs=$pkgver" python-gobject)
   conflicts=('gst-editing-services')
+  provides=("gst-editing-services=$pkgver")
 
   cd root; local files=(
     usr/include/gstreamer-1.0/ges
@@ -742,7 +759,8 @@ package_gst-editing-services-git() {
 package_gstreamer-vaapi-git() {
   pkgdesc+=" - vaapi plugin"
   depends=("gst-plugins-base-libs-git=$pkgver" libva libxrandr)
-  conflicts=('gst-vaapi')
+  conflicts=('gst-vaapi' 'gstreamer-vaapi')
+  provides=("gstreamer-vaapi=$pkgver")
   cd root; local files=(
   usr/include/gstreamer-1.0/gst/va/va-enumtypes.h
   usr/include/gstreamer-1.0/gst/va/gstva.h
@@ -758,7 +776,6 @@ package_gstreamer-vaapi-git() {
   usr/lib/gstreamer-1.0/libgstvaapi.so
   usr/lib/girepository-1.0/GstVa-1.0.typelib
 
-  usr/lib/gstreamer-1.0/pkgconfig/gstvaapi.pc
   usr/lib/pkgconfig/gstreamer-va-1.0.pc
   usr/share/gir-1.0/GstVa-1.0.gir
 
@@ -769,6 +786,7 @@ package_gst-python-git() {
   pkgdesc+=" - python plugin"
   depends=("gst-plugins-base-libs-git=$pkgver" python-gobject)
   conflicts=('gst-python')
+  provides=("gst-python=$pkgver")
 
   cd root; local files=(
     usr/lib/gstreamer-1.0/libgstpython.so
@@ -782,7 +800,8 @@ package_gst-python-git() {
 package_gst-devtools-git() {
   pkgdesc+=" - subset of devtools"
   depends=(python)
-  conflicts=("gst-devtools")
+  conflicts=('gst-devtools')
+  provides=("gst-devtools=$pkgver")
   cd root; local files=(
   usr/lib/gst-validate-launcher/python/launcher/apps/geslaunch.py
   usr/share/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
@@ -791,7 +810,8 @@ package_gst-devtools-git() {
 }
 package_gstreamer-docs-git() {
   pkgdesc+=" - documentation"
-  conflicts=('gstream-docs')
+  conflicts=('gstreamer-docs')
+  provides=("gstreamer-docs=$pkgver")
   license=(GPL3 LGPL custom:BSD custom:CC-BY-SA-4.0 custom:MIT custom:OPL)
 
   # make sure there are no files left to install

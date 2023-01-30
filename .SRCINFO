@@ -1,6 +1,6 @@
 pkgbase = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version)
-	pkgver = 1.21.3.r66.g3fa6651d91
+	pkgver = 1.22.0.r153.g9a300fc501
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -212,9 +212,9 @@ pkgbase = gstreamer-git
 	makedepends = libxrandr
 	makedepends = python-gobject
 	source = git+https://gitlab.freedesktop.org/gstreamer/gstreamer
-	source = https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-1.21.1.tar.xz
+	source = https://gstreamer.freedesktop.org/src/gstreamer-docs/gstreamer-docs-1.22.0.tar.xz
 	md5sums = SKIP
-	md5sums = 6d123b1279d3f53bf677043b0d7a6686
+	md5sums = 75946c02fe05b952464b86c4a1d35f60
 
 pkgname = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - core
@@ -225,11 +225,12 @@ pkgname = gstreamer-git
 	depends = libcap
 	depends = libelf
 	optdepends = python: gst-plugins-doc-cache-generator
+	provides = gstreamer=$pkgver
 	conflicts = gstreamer
 
 pkgname = gst-plugins-bad-libs-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - bad
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = orc
 	depends = libdrm
 	depends = libx11
@@ -237,10 +238,11 @@ pkgname = gst-plugins-bad-libs-git
 	depends = libusb
 	depends = libxkbcommon-x11
 	depends = libnice
+	provides = gst-plugins-bad-libs=1.22.0.r153.g9a300fc501
 
 pkgname = gst-plugins-base-libs-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - base
-	depends = gstreamer-git=1.21.3.r66.g3fa6651d91
+	depends = gstreamer-git=1.22.0.r153.g9a300fc501
 	depends = orc
 	depends = libxv
 	depends = iso-codes
@@ -248,10 +250,11 @@ pkgname = gst-plugins-base-libs-git
 	depends = libgl
 	depends = mesa
 	depends = libxi
+	provides = gst-plugins-base-libs=1.22.0.r153.g9a300fc501
 
 pkgname = gst-plugins-base-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - base plugins
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = alsa-lib
 	depends = cdparanoia
 	depends = libvisual
@@ -263,11 +266,12 @@ pkgname = gst-plugins-base-git
 	depends = libpng
 	depends = libjpeg
 	depends = libtremor-git
-	conflicts = gst-plugin-base
+	provides = gst-plugins-base=1.22.0.r153.g9a300fc501
+	conflicts = gst-plugins-base
 
 pkgname = gst-plugins-good-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - good plugins
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = libpulse
 	depends = libsoup3
 	depends = gst-plugins-base-libs
@@ -293,11 +297,12 @@ pkgname = gst-plugins-good-git
 	depends = twolame
 	depends = qt6-wayland
 	depends = libjack.so
-	conflicts = gst-plugin-good
+	provides = gst-plugins-good=1.22.0.r153.g9a300fc501
+	conflicts = gst-plugins-good
 
 pkgname = gst-plugins-bad-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - bad plugins
-	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-bad-libs-git=1.22.0.r153.g9a300fc501
 	depends = aom
 	depends = libass
 	depends = libbs2b
@@ -365,54 +370,62 @@ pkgname = gst-plugins-bad-git
 	depends = vo-amrwbenc
 	depends = openh264
 	depends = flite1
+	provides = gst-plugins-bad=1.22.0.r153.g9a300fc501
 
 pkgname = gst-plugin-gtk-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - gtk plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = gtk3
+	provides = gst-plugin-gtk=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-gtk
 
 pkgname = gst-plugin-msdk-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - msdk plugin
-	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-bad-libs-git=1.22.0.r153.g9a300fc501
 	depends = libmfx
 	depends = libva
+	provides = gst-plugin-msdk=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-msdk
 
 pkgname = gst-plugin-opencv-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - opencv plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = opencv
+	provides = gst-plugin-opencv=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-opencv
 
 pkgname = gst-plugin-qmlgl-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - qmlgl plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = qt5-declarative
 	depends = qt5-x11extras
 	depends = qt5-wayland
+	provides = gst-plugin-qmlgl=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-qmlgl
 
 pkgname = gst-plugin-va-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - va plugin
-	depends = gst-plugins-bad-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-bad-libs-git=1.22.0.r153.g9a300fc501
 	depends = libva
+	provides = gst-plugin-va=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-va
 
 pkgname = gst-plugin-wpe-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - wpe plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = wpewebkit
+	provides = gst-plugin-wpe=1.22.0.r153.g9a300fc501
 
 pkgname = gst-plugin-cuda-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - cuda plugin
-	depends = gst-plugins-bad-libs=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-bad-libs=1.22.0.r153.g9a300fc501
 	depends = cuda
+	provides = gst-plugin-cuda=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugin-cuda
 
 pkgname = gst-plugins-ugly-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - ugly plugins
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = libdvdread
 	depends = libmpeg2
 	depends = a52dec
@@ -420,43 +433,50 @@ pkgname = gst-plugins-ugly-git
 	depends = libcdio
 	depends = x264
 	depends = opencore-amr
+	provides = gst-plugins-ugly=1.22.0.r153.g9a300fc501
 	conflicts = gst-plugins-ugly
 
 pkgname = gst-libav-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - libav plugin
-	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs=1.22.0.r153.g9a300fc501
 	depends = bzip2
 	depends = ffmpeg
-	provides = gst-ffmpeg=1.21.3.r66.g3fa6651d91
+	provides = gst-libav=1.22.0.r153.g9a300fc501
 	conflicts = gst-libav
 
 pkgname = gst-rtsp-server-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - rtsp server
-	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs=1.22.0.r153.g9a300fc501
+	provides = gst-rtsp-server=1.22.0.r153.g9a300fc501
 	conflicts = gst-rtsp-server
 
 pkgname = gstreamer-vaapi-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - vaapi plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = libva
 	depends = libxrandr
+	provides = gstreamer-vaapi=1.22.0.r153.g9a300fc501
 	conflicts = gst-vaapi
+	conflicts = gstreamer-vaapi
 
 pkgname = gst-editing-services-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - editing services
-	depends = gst-plugins-base-libs=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs=1.22.0.r153.g9a300fc501
 	depends = python-gobject
+	provides = gst-editing-services=1.22.0.r153.g9a300fc501
 	conflicts = gst-editing-services
 
 pkgname = gst-python-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - python plugin
-	depends = gst-plugins-base-libs-git=1.21.3.r66.g3fa6651d91
+	depends = gst-plugins-base-libs-git=1.22.0.r153.g9a300fc501
 	depends = python-gobject
+	provides = gst-python=1.22.0.r153.g9a300fc501
 	conflicts = gst-python
 
 pkgname = gst-devtools-git
 	pkgdesc = GStreamer Multimedia Framework (Git version) - subset of devtools
 	depends = python
+	provides = gst-devtools=1.22.0.r153.g9a300fc501
 	conflicts = gst-devtools
 
 pkgname = gstreamer-docs-git
@@ -467,4 +487,5 @@ pkgname = gstreamer-docs-git
 	license = custom:CC-BY-SA-4.0
 	license = custom:MIT
 	license = custom:OPL
-	conflicts = gstream-docs
+	provides = gstreamer-docs=1.22.0.r153.g9a300fc501
+	conflicts = gstreamer-docs
