@@ -1,12 +1,13 @@
-# Maintainer: Almir Dzinovic <almir@dzinovic.net>
+# Maintainer: Julian Pollinger <julian@pollinger.dev>
+# Contributor: Almir Dzinovic <almir@dzinovic.net>
 # Contributor: Alexander Pavel <alexpavel123@gmail.com>
 
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
-pkgver=5.2.1
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (binary)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 
 url="https://github.com/mattermost/desktop"
 license=('Apache')
@@ -18,22 +19,11 @@ optdepends=()
 conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
 
-source=(${_pkgname}.desktop)
-source_i686=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-ia32.tar.gz")
-source_x86_64=("https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
-sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093')
-sha256sums_i686=('47283456330d15b05e2ec8bebfe58c65be11e3f0da9b3075928467c69ffb6f29')
-sha256sums_x86_64=('d1ed8c4206f30da00fb36331bf0590864bd683221fee295109ad487155e01ca3')
+source=(${_pkgname}.desktop "https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
+sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093' 'b8a60053149e0c8963afffd2d305bd4f2c2190fe1c55281b04778d039f1255fb')
 
 package() {
-    case "$CARCH" in
-        i686)
-            cd "${srcdir}/${_pkgname}-${pkgver}-linux-ia32"
-            ;;
-        x86_64)
-            cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"
-            ;;
-    esac
+    cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"
 
     install -d -m 755 "${pkgdir}"/usr/lib/mattermost
 
