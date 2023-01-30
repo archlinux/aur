@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-bonmin
-pkgver=1.8.8
-pkgrel=4
+pkgver=1.8.9
+pkgrel=1
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Bonmin"
@@ -9,29 +9,22 @@ groups=('mingw-w64-coin-or')
 depends=('mingw-w64-coin-or-cbc' 'mingw-w64-coin-or-ipopt' 'mingw-w64-coin-or-bcp')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
-source=("https://www.coin-or.org/download/source/Bonmin/Bonmin-$pkgver.tgz")
-sha256sums=('1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2')
+source=("https://github.com/coin-or/Bonmin/archive/refs/tags/releases/${pkgver}.tar.gz")
+sha256sums=('739f1fe74a81003c74ade425733417f6bcf4003941d7fa1ee989b46430c8b63a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "$srcdir/Bonmin-$pkgver"
+  cd "$srcdir/Bonmin-releases-$pkgver"
   # see mingw-w64-coin-or-pkg-config
   sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Bonmin/configure
   sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Bonmin/configure
-
-  curl -L https://github.com/coin-or/Bonmin/pull/23.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/pull/26.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/fe6f493c1ac45373db1a6a29138d70c85a310a08.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/3c51a306137f6f6f37825770987585b407919ff8.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/d2120d07740f18e94f410e0618009f7c82dfcecd.patch | patch -p1 -d Bonmin
 }
 
 build() {
-  cd "$srcdir/Bonmin-$pkgver"
+  cd "$srcdir/Bonmin-releases-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    COIN_SKIP_PROJECTS="Sample" \
     LIBS="-lssp" ${_arch}-configure \
        --with-osi-lib="$(${_arch}-pkg-config --libs osi)" \
        --with-osi-incdir="/usr/${_arch}/include/coin/" \
@@ -57,7 +50,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/Bonmin-$pkgver/build-${_arch}
+    cd "$srcdir"/Bonmin-releases-$pkgver/build-${_arch}
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
