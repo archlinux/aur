@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-yabause
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.9.15.40
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.yabause
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-yabause
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-yabause-0.9.15.40.tar.gz::https://github.com/kodi-game/game.libretro.yabause/archive/0.9.15.40-Matrix.tar.gz
+	sha512sums = d7285730d412a245292a267ee2728950c608c4af885e7996065d8c6ff4100d0d8c1ecc805ce6b80dae7e97d92ab1b383d588718e51804230808f3c9bbc716670
+
+pkgname = kodi-addon-game-libretro-yabause
+	depends = kodi-addon-game-libretro
+	depends = libretro-yabause
