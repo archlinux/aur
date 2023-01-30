@@ -116,8 +116,8 @@ package_linux-aarch64-flippy-headers() {
   pkgdesc="Header files and scripts for building modules for linux kernel - ${_desc}"
   
   # Mostly copied from alarm's linux-aarch64 and modified
-  local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
   cd "${_srcname}"
+  local _builddir="${pkgdir}/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
   install -Dt "${_builddir}" -m644 .config Makefile Module.symvers System.map \
