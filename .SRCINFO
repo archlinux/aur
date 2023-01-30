@@ -1,6 +1,6 @@
 pkgbase = yesplaymusic
 	pkgdesc = A third party music application for Netease Music
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/qier222/YesPlayMusic
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = yesplaymusic
 	optdepends = libnotify
 	optdepends = libappindicator-gtk3
 	provides = yesplaymusic
-	source = YesPlayMusic-0.4.6.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.6/YesPlayMusic-0.4.6.pacman
-	sha256sums = d04ff759fd4737c429b6bcfb97f974832cf59a706fd6969f1e501c5d3a750865
+	source = YesPlayMusic-0.4.7.pacman::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.7/YesPlayMusic-0.4.7.pacman
+	sha256sums = 9b9fc793354e2bcd677b31a7d29e7e5006479fdf7b89c8adfac1e17d072cd2c9
 
 pkgname = yesplaymusic
