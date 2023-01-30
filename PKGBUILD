@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=109.0
+pkgver=109.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -80,16 +80,14 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
-        "libwebrtc-screen-cast-sync.patch"
-        "0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch")
-sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
+        "libwebrtc-screen-cast-sync.patch")
+sha256sums=('5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499'
-            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a'
-            '34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51')
+            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
@@ -247,18 +245,17 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
     msg2 "customized pref panel"
-    patch -Np1 -i ${_patches_dir}/librewolf/cachy-pref-pane.patch
-
+    patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
     msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
     patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
     msg2 "Patch Devtools to bypass devtool detection"
     patch -Np1 -i ${_patches_dir}/devtools-bypass.patch
 
-#    msg2 "KDE UNITY"
-#    patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
-#    msg2 "mozilla-kde_after_unity"
-#    patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+    msg2 "KDE menu and unity menubar"
+    patch -Np1 -i ${_patches_dir}/unity_kde/mozilla-kde.patch
+    patch -Np1 -i ${_patches_dir}/unity_kde/firefox-kde.patch
+    patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
@@ -269,8 +266,6 @@ END
     # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
     msg2 "Arch patch"
     patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
-    patch -Np1 -i ../0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 #    msg2 "Match to system libs"
 #    patch -Np1 -i ../match.patch
 
