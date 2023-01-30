@@ -3,8 +3,8 @@
 
 pkgname=electricsheep
 pkgver=3.0.2
-pkgrel=11
-_gitcommit=aa427f01bddbc29480b288d144030f9bb2a50f1d
+pkgrel=12
+_gitcommit=0a2c437052ba166ce2081894d9bf63b2b2e0134b
 pkgdesc='Screensaver that realize the collective dream of sleeping computers from all over the internet'
 url='http://community.electricsheep.org/'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('boost' 'mesa' 'glu')
 optdepends=('xscreensaver: to use electricsheep with xscreensaver')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/Rogach/electricsheep/archive/${_gitcommit}.tar.gz)
-sha256sums=('e6f8645255e87cf35fbba1860af34c53f2d42e21e42387678ba2f8499417e365')
+sha256sums=('38bb90b4d4cf7d6285c35d4b8fd134f841d70c5ab0f2add19048c21a068d959e')
 
 prepare() {
   cd ${pkgname}-${_gitcommit}/client_generic
