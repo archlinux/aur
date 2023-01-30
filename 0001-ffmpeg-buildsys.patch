@@ -1,0 +1,25 @@
+unchanged:
+--- xbmc/cmake/modules/FindFFMPEG.cmake	2023-01-29 16:26:22.106190627 +0100
++++ xbmc/cmake/modules/FindFFMPEG.new	2023-01-29 04:10:14.260604086 +0100
+@@ -96,7 +96,7 @@
+                  -DPKG_CONFIG_PATH=${CMAKE_BINARY_DIR}/${CORE_BUILD_DIR}/lib/pkgconfig)
+   set(PATCH_COMMAND ${CMAKE_COMMAND} -E copy
+                     ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/CMakeLists.txt
+-                    <SOURCE_DIR>)
++                    <SOURCE_DIR> && patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0002-rkmpp-4.patch)
+ 
+   if(CMAKE_GENERATOR STREQUAL Xcode)
+     set(FFMPEG_GENERATOR CMAKE_GENERATOR "Unix Makefiles")
+only in patch2:
+unchanged:
+--- xbmc/tools/depends/target/ffmpeg/CMakeLists.txt	2023-01-29 04:12:26.179949543 +0100
++++ xbmc/tools/depends/target/ffmpeg/CMakeLists.new	2023-01-29 04:10:14.270603769 +0100
+@@ -150,6 +150,9 @@
+                     CONFIGURE_COMMAND ${pkgconf} ${pkgconf_path} <SOURCE_DIR>/configure
+                       --prefix=${CMAKE_INSTALL_PREFIX}
+                       --extra-version="kodi-${FFMPEG_VER}"
++                      --enable-version3
++                      --enable-rkmpp
++                      --enable-libdrm
+                       ${ffmpeg_conf}
+                     BUILD_COMMAND ${MAKE_COMMAND})
