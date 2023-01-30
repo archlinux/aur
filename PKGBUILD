@@ -1,13 +1,14 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=dovi_tool-git
-pkgver=1.6.0.r5.gf2683ac
+pkgver=2.0.0.r3.g893d683
 pkgrel=1
 pkgdesc='CLI tool combining multiple utilities for working with Dolby Vision'
 arch=('x86_64')
 url='https://github.com/quietvoid/dovi_tool'
 license=('MIT')
 makedepends=('git' 'cargo')
+depends=('fontconfig')
 conflicts=('dovi_tool')
 provides=('dovi_tool')
 source=(git+https://github.com/quietvoid/dovi_tool.git)
