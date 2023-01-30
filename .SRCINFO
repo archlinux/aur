@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-gambatte
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.5.0.34
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.gambatte
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-gambatte
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-gambatte-0.5.0.34.tar.gz::https://github.com/kodi-game/game.libretro.gambatte/archive/0.5.0.34-Matrix.tar.gz
+	sha512sums = f5e310ea8f8c32f970a9f1dc8953eb10d411a591f9b2f957e1d025dd090b146aadc3dae2a8b5eddf2528658207cf307d7f104bc884f66cd18f9395db4eb79595
+
+pkgname = kodi-addon-game-libretro-gambatte
+	depends = kodi-addon-game-libretro
+	depends = libretro-gambatte
