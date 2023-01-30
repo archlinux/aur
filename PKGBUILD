@@ -2,7 +2,7 @@
 # Reference: https://wiki.archlinux.org/title/PKGBUILD
 
 pkgname=sunshine
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Sunshine is a self-hosted game stream host for Moonlight."
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ optdepends=('cuda: NvFBC capture support'
 provides=()
 conflicts=()
 
-source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=3f202be09a605da64aa7a23f53a89558185e51a5")
+source=("$pkgname::git+https://github.com/LizardByte/Sunshine.git#commit=b2c5da2cfca2ff503114c4ff51545c922098c4f3")
 sha256sums=('SKIP')
 
 prepare() {
