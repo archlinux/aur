@@ -1,6 +1,6 @@
 pkgbase = inja
 	pkgdesc = A template engine for modern C++.
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/pantor/inja
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = inja
 	makedepends = cmake
 	makedepends = doxygen
 	depends = nlohmann-json
-	source = inja-v3.3.0.tar.gz::https://github.com/pantor/inja/archive/refs/tags/v3.3.0.tar.gz
-	sha512sums = 82e22b13f2055b28cd0166bbbb50fd42ea1c549bd1873f5e73bdb00e6d12b47d124a75d0649188dd6889ca3a9bda17eccc06888b22745f73193b879382907f0a
+	source = inja-v3.4.0.tar.gz::https://github.com/pantor/inja/archive/refs/tags/v3.4.0.tar.gz
+	sha512sums = 3d9a1dc084c03c5801346672db65b6c833d229a0f7fa9a09418fb24cbba0ff464607873cf7c81ba4ecedf912e0e5e394d719a73d67860600756f88d8716a0211
 
 pkgname = inja

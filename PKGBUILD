@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="inja"
-pkgver="3.3.0"
+pkgver="3.4.0"
 pkgrel="1"
 pkgdesc="A template engine for modern C++."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MIT")
 depends=("nlohmann-json")
 makedepends=("cmake" "doxygen")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("82e22b13f2055b28cd0166bbbb50fd42ea1c549bd1873f5e73bdb00e6d12b47d124a75d0649188dd6889ca3a9bda17eccc06888b22745f73193b879382907f0a")
+sha512sums=("3d9a1dc084c03c5801346672db65b6c833d229a0f7fa9a09418fb24cbba0ff464607873cf7c81ba4ecedf912e0e5e394d719a73d67860600756f88d8716a0211")
 
 build()
 {
