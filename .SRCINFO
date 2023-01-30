@@ -1,6 +1,6 @@
 pkgbase = python-thumbnails-readme
 	pkgdesc = Create thumbnails from Git folders
-	pkgver = 0.1.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/thumbnails-readme
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-thumbnails-readme
 	depends = python-pdf2image
 	depends = python-pillow
 	depends = python-cairosvg
-	source = thumbnails-readme-0.1.4.tar.gz::https://github.com/firefly-cpp/thumbnails-readme/archive/0.1.4.tar.gz
-	sha512sums = 8276637c1a1142f3eac36fe247bb5cb565b39cfcf5d5e115e064b5f33968cd4a565ba2727fb4111689335e200061d4ba9782d3e691134041c9c8ff4f21ffccd4
+	source = thumbnails-readme-0.2.1.tar.gz::https://github.com/firefly-cpp/thumbnails-readme/archive/0.2.1.tar.gz
+	sha512sums = 424f08ffda9a6bbad7e9b197fcc7739ab2ea414599caa48489c1eebc87fb22dbe8fabc542d388e6a6cd5a81919c4234498a30513f6c16736ec2b15042310b92d
 
 pkgname = python-thumbnails-readme
