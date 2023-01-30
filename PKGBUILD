@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kmediaplayer
-pkgver=5.100.0
+pkgver=5.102.0
 pkgrel=1
 pkgdesc='Plugin interface for media player features'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('kparts')
 makedepends=('extra-cmake-modules')
 groups=('kf5-aids')
 source=("https://invent.kde.org/frameworks/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('4c39794f604a46cab93f12c1b3b489387eb4e79a25c2721b74b4db2b03613f36')
+sha256sums=('41d6a924a9f2d9d73038c9e523aadf5609b2f9c76a5cbc3967cc927f5714cdc8')
 
 _srcdir="$pkgname-v$pkgver"
 
