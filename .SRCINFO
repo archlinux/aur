@@ -1,0 +1,14 @@
+pkgbase = buongiorno
+	pkgdesc = Modal TUI greeter for greetd.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~andreafeletto/buongiorno
+	arch = x86_64
+	license = GPL3
+	makedepends = zig
+	depends = greetd
+	conflicts = buongiorno-git
+	source = https://git.sr.ht/~andreafeletto/buongiorno/refs/download/v0.1.0/buongiorno-0.1.0.tar.gz
+	sha256sums = 4af36c0acfd027a2cc98f06dd0dbda8bd8fed738c3d5e58c9c4ff50b43af7b0e
+
+pkgname = buongiorno
