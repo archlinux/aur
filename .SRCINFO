@@ -1,6 +1,6 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.12.r168.g157bbee6
+	pkgver = 0.5.12.r269.ga0f38069
 	pkgrel = 1
 	url = https://lutris.net/
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = lutris-git
 	depends = python-gobject
 	depends = python-lxml
 	depends = python-pillow
+	depends = python-protobuf
 	depends = python-requests
 	depends = python-yaml
 	depends = unzip
