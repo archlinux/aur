@@ -3,7 +3,7 @@
 pkgname=lesma
 pkgver=1.1.0
 pkgrel=1
-pkgdesc='A small and ultrasecure Lesspass database server written in Rust'
+pkgdesc='Simple paste app friendly with browser and command line written in Rust'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://gitlab.com/ogarcia/lesma'
 license=('GPL3')
