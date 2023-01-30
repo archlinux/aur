@@ -1,13 +1,13 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://lfortran.org"
 license=('BSD')
 groups=()
-depends=("clang" "zlib" "ncurses")
+depends=("clang" "zlib" "ncurses" "xeus2")
 makedepends=("llvm11" "cmake")
 checkdepends=()
 optdepends=()
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cmake -DWITH_LLVM=yes -DCMAKE_INSTALL_PREFIX=/usr .
+  cmake -DWITH_LLVM=yes -DWITH_XEUS=yes -DCMAKE_INSTALL_PREFIX=/usr .
   make
 }
 
