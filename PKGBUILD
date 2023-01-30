@@ -3,18 +3,25 @@
 _plug=xclean
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r66.c50de27
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=183245'
 license=('GPL')
 depends=('vapoursynth-plugin-rgsf-git'
-         'vapoursynth-plugin-knlmeanscl-git'
+         'vapoursynth-plugin-removegrain-git'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-mvtools_sf-git'
-         'vapoursynth-plugin-temporalmedian-git'
+         'vapoursynth-plugin-mvsfunc-git'
+         'vapoursynth-plugin-knlmeanscl-git'
+         'vapoursynth-plugin-bm3d-git'
+         'vapoursynth-plugin-bm3dcuda-git'
          'vapoursynth-plugin-neo_tmedian-git'
+         'vapoursynth-plugin-neo_f3kdb-git'
+         'vapoursynth-plugin-vsakarin-git'
+         'vapoursynth-plugin-nnedi3_resample'
+         'vapoursynth-plugin-nnedi3cl-git'
          )
 makedepends=('git')
 source=("${_plug}::git+https://github.com/mysteryx93/xClean.git")
