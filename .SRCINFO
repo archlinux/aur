@@ -1,0 +1,22 @@
+pkgbase = kodi-addon-game-libretro-flycast
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.1.0.39
+	pkgrel = 8
+	url = https://github.com/kodi-game/game.libretro.reicast
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-flycast
+	replaces = kodi-addon-game-libretro-reicast
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-flycast-0.1.0.39.tar.gz::https://github.com/kodi-game/game.libretro.reicast/archive/0.1.0.39-Matrix.tar.gz
+	sha512sums = 0d3b478084cee78c5019284c11b0acb42bfd4134cf18034d43855182e48c9e1359668d5f459dabab68cf7941a98810c6a38734e0664442cbc52674b918ef571f
+
+pkgname = kodi-addon-game-libretro-flycast
+	depends = kodi-addon-game-libretro
+	depends = libretro-flycast
