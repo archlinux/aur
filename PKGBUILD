@@ -262,6 +262,6 @@ package() {
   # Configuring the launch script to detect when it has been run for the first time
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
-  sed -i "s/ChecksumPlaceholder/${DesktopFileChecksum}/" "${pkgdir}/usr/bin/unreal-engine-5.sh"
+  sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
   sed -i "s|InstalledLocationPlaceholder|/${_install_dir}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
 }

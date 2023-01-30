@@ -34,4 +34,4 @@ if [ "${UE5desktopFileChecksum}" == "ChecksumPlaceholder" ]; then
     sed -i "14c\Path=${UE5editorPath}" "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
 fi
 
-xdg-open "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
+gio launch "${HOME}/.local/share/applications/com.unrealengine.UE5Editor.desktop"
