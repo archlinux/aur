@@ -4,7 +4,9 @@ pkgbase = argocd-autopilot-bin
 	pkgrel = 2
 	url = https://github.com/argoproj-labs/argocd-autopilot
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	provides = argocd-autopilot
 
 pkgname = argocd-autopilot-bin
+
