@@ -1,0 +1,35 @@
+pre_install() {
+	if systemctl status coventry &> /dev/null; then
+		echo 'Stopping & disabling coventry...'
+		systemctl disable --now coventry
+	fi
+	groupadd -r coventry 2>/dev/null || true
+}
+
+post_install() {
+	chgrp -R coventry /var/lib/coventry
+	systemctl daemon-reload
+	echo 'Installed coventry service'
+}
+
+pre_upgrade() {
+	echo 'Upgrading coventry service'
+}
+
+post_upgrade() {
+	echo 'Starting & enabling coventry daemon...'
+	if systemctl status coventry &>/dev/null; then
+		systemctl daemon-reload
+		systemctl restart coventry
+	fi
+}
+
+pre_remove() {
+	systemctl disable --now coventry || true
+}
+
+post_remove() {
+	systemctl daemon-reload
+	echo 'Removed coventry service'
+}
+

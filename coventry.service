@@ -20,14 +20,15 @@ Alias=coventry.service
 [Service]
 # Environment support
 EnvironmentFile=-/etc/default/coventry
+EnvironmentFile=-/etc/sysconfig/coventry
 
 # Basic permissions
 UMask=007
 User=root
-Group=root
+Group=coventry
 WorkingDirectory=/var/lib/coventry
 RuntimeDirectory=coventry
-RuntimeDirectoryMode=0750
+RuntimeDirectoryMode=0770
 PermissionsStartOnly=True
 
 # Execution model
