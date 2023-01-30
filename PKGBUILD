@@ -1,18 +1,19 @@
 # Maintainer: Marco Scopesi <marco dot scopesi at gmail dot com>
 pkgname=xeus2
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of the Jupyter kernel protocol"
 arch=("x86_64")
 url="https://github.com/QuantStack/xeus"
 license=('BSD')
 depends=('crypto++' 'nlohmann-json' 'xtl' 'zeromq')
-makedepends=('cmake' 'zeromq' 'cppzmq')
+makedepends=('cmake' 'cppzmq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/QuantStack/xeus/archive/$pkgver.tar.gz")
-conficts=('xeus')
+conflicts=('xeus')
 options=(staticlibs)
 
 build() {
+  ln -s xeus-"$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   mkdir -p build
   cd build
