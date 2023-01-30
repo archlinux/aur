@@ -1,8 +1,9 @@
 # Maintainer: Marat Akhin <Marat.Akhin@gmail.com>
 # Contributor: Kirill Gagarsky <???>
+# Contributor: Azat Abdullin <azat.aam@gmail.com>
 
 pkgname=mathsat-5
-pkgver=5.6.5
+pkgver=5.6.9
 pkgrel=1
 pkgdesc="MathSAT 5 is an efficient SMT solver supporting a wide range of theories and functionalities"
 arch=('x86_64')
@@ -13,7 +14,7 @@ download_arch=$CARCH
 
 source=("$pkgname-$pkgver.tar.gz::http://mathsat.fbk.eu/download.php?file=mathsat-$pkgver-linux-$download_arch.tar.gz")
 
-md5sums=('9f5bb2a3f664a92ec91a72b46a4e13c2')
+md5sums=('05287ac1cda85eac244e43899ea735c6')
 
 options=('staticlibs')
 
