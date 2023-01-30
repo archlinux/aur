@@ -36,7 +36,7 @@ _wiki_json() {
 [ $ARGS.named | to_entries[] | "\(.key)=\(.value|@uri)" ] | join("&")') &&
         cmd=(curl -fsSLA "$_agent"
             "https://commons.wikimedia.org/w/api.php?$query") &&
-        if [ -n "${_debug:+1}" ]; then
+        if [[ -n ${_debug:+1} ]]; then
             mkdir -p "$_dir/.tmp" &&
                 { printf '%q%s\n' "$cmd" "$(printf ' %q' \
                     "${cmd[@]:1}")"; } >>"$_dir/.tmp/$FUNCNAME.log" || return
@@ -60,7 +60,7 @@ END { if (l != "") { print l } }' | _indent
 }
 
 while IFS= read -r page; do
-    [ -n "$page" ] || continue
+    [[ -n $page ]] || continue
     if [[ ! $page =~ (^|[^0-9])(2[0-9]{3})($|[^0-9]) ]]; then
         echo "ERROR: no competition year in '$page'" >&2
         exit 1
@@ -72,7 +72,7 @@ while IFS= read -r page; do
     section=$(_wiki_json action=parse \
         page="$page" prop=sections | jq -r '
 [ .parse.sections[] | select(.line | test("winners?$"; "i")) ] | first | .index')
-    if [ -z "$section" ]; then
+    if [[ -z $section ]]; then
         echo "ERROR: no \"winners\" section on '$page'" >&2
         exit 1
     fi
@@ -81,7 +81,7 @@ while IFS= read -r page; do
     titles=$(_wiki_json action=parse \
         page="$page" section="$section" prop=images | jq -r '
 [ .parse.images[] | select(test("\\.jpe?g$";"i")) | "File:" + . ] | join("|")')
-    if [ -z "${titles:+1}" ]; then
+    if [[ -z ${titles:+1} ]]; then
         echo "ERROR: no images on '$page'" >&2
         exit 1
     fi
@@ -89,7 +89,7 @@ while IFS= read -r page; do
     echo "Retrieving image information..." >&2
     _wiki_json action=query titles="$titles" prop=imageinfo \
         iiprop="canonicaltitle|extmetadata|sha1|size|url" |
-        jq -r \
+        jq \
             --arg titles "$titles" \
             --argjson year "$year" \
             --argjson limit $((_limit)) '
@@ -99,7 +99,7 @@ while IFS= read -r page; do
   ((now | gmtime[0]) - $year) as $yearIndex |
   [ .query.pages[] | [.pageid, .title] as [$pageid, $title] | .imageinfo[0] |
     select(.width > .height and
-        .width >= 3440 and .height >= 1440 and
+        .width >= 2560 and .height >= 1440 and
         .canonicaltitle == $title) |
     .year = $year |
     .index = ($titles[$title] * 100) + $yearIndex |
@@ -108,7 +108,7 @@ while IFS= read -r page; do
     .pageid = $pageid ] |
   sort_by(.index) |
   if $limit > 0 then limit($limit; .[]) else .[] end' >"$_temp"
-    if [ ! -s "$_temp" ]; then
+    if [[ ! -s $_temp ]]; then
         echo "ERROR: no hi-res landscape images on '$page'" >&2
         exit 1
     fi
@@ -118,7 +118,7 @@ done < <(
     if ((!_lastyear)); then
         echo "Parsing 'Commons:Wiki Loves Earth'..." >&2
         _wiki_json action=parse page="Commons:Wiki Loves Earth" prop=links |
-            jq -r '.parse.links[]["*"] | select(test("\\bwinners$";"i"))'
+            jq -r '.parse.links[]["*"] | select(test("\\b2[0-9]{3}$";"i")) | . += "/Winners"'
     else
         for ((i = _firstyear; i <= _lastyear; i++)); do
             echo "Commons:Wiki Loves Earth $i/Winners"
@@ -129,6 +129,14 @@ done < <(
 _pkgver=$(jq -s '[ .[].year ] | max' <"$_json")
 _count=$(jq -s 'length' <"$_json")
 echo "$_count images found" >&2
+
+# Move the latest winners to the top. Previous winners are already sorted by:
+# 1. place ASC
+# 2. year DESC
+jq -s --argjson lastyear "$_pkgver" \
+    '.[] | if .year != $lastyear then .index += 1000000 else . end' \
+    "$_json" >"$_temp"
+cp "$_temp" "$_json"
 
 echo "Generating ${_xml##*/}..." >&2
 cat <<XML >"$_xml"
@@ -156,11 +164,11 @@ cat <<XML >>"$_xml"
 XML
 
 echo "Generating PKGBUILD..." >&2
-if [ -e "$_dir/PKGBUILD" ] && SH=$(
+if [[ -e "$_dir/PKGBUILD" ]] && SH=$(
     . "$_dir/PKGBUILD" || exit
-    if [ "$_pkgver" != "$pkgver" ]; then
+    if [[ $_pkgver != "$pkgver" ]]; then
         _pkgrel=1
-    elif [ "${1-}" = --bump ]; then
+    elif [[ ${1-} == --bump ]]; then
         _pkgrel=$((pkgrel + 1))
     else
         _pkgrel=$pkgrel
@@ -206,7 +214,7 @@ prepare() {
         image=\${source[j]%%::*}
         echo "-> (\$((i + 1))/\$count) \$image" >&2
         file=\$srcdir/\$pkgname/\$image
-        if [ -f "\$file" ]; then
+        if [[ -f \$file ]]; then
             continue
         fi
         convert "\$srcdir/\$image" \\
