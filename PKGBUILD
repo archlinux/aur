@@ -1,22 +1,22 @@
 pkgname=postgresql-debversion
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Debian version number type for PostgreSQL"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/source/sid/postgresql-debversion"
 license=('GPL3')
-depends=('postgresql>14' 'postgresql<15' 'apt')
-source=("https://deb.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
-b2sums=('3b19b95b119095918478b7e3e26232599902a5fd3c3e9026d5c35bedef02c95020367c2a5f0dc1336780c2c4250524fe14d341c1d5c348c3f1e88c38d06be8dd')
+depends=('postgresql>15' 'postgresql<16' 'apt')
+source=("https://deb.debian.org/debian/pool/main/p/${pkgname}/${pkgname}_${pkgver}.orig.tar.bz2")
+b2sums=('d76b065a3f852887b0e7631c4748a6d2edcd994f5b4b12501974c67a6587fa377ed2e86afd29f2dbbb195abcf94cdda7e43634b8c14507aa8b1f60a2351766f1')
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-v$pkgver"
 
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-v$pkgver"
 
   make DESTDIR="$pkgdir" install
 }
