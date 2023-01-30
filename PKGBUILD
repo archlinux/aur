@@ -1,17 +1,19 @@
-# Maintainer: kevku <kevku@gmx.com>
-pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=20.3.1.Nexus.r0.gfa470be
+# Maintainer: Faruk Dikcizgi <boogiepop@gmx.de>
+# Contributor: kevku <kevku@gmx.com>
+pkgname=kodi-matrix-addon-inputstream-adaptive-git
+pkgver=19.0.1.Matrix.r0.gfa470be
 pkgrel=1
-pkgdesc="InputStream client for adaptive streams for Kodi 20+"
+pkgdesc="InputStream client for adaptive streams for Kodi 19 Matrix"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/inputstream.adaptive"
 license=('GPL2')
 depends=('kodi' 'expat')
 makedepends=('kodi-dev' 'cmake' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-# kodi 20
-source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus"
+provides=('kodi-addon-inputstream-adaptive')
+conflicts=('kodi-addon-inputstream-adaptive')
+options=(!lto debug strip)
+# kodi 19
+source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Matrix"
         "xbmc-bento4::git+https://github.com/xbmc/Bento4.git#branch=release/v1.6.0-639-kodi")
 sha256sums=('SKIP'
             'SKIP')

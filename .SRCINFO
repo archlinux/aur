@@ -1,6 +1,6 @@
-pkgbase = kodi-addon-inputstream-adaptive-git
-	pkgdesc = InputStream client for adaptive streams for Kodi 20+
-	pkgver = 20.3.1.Nexus.r0.gfa470be
+pkgbase = kodi-matrix-addon-inputstream-adaptive-git
+	pkgdesc = InputStream client for adaptive streams for Kodi 19 Matrix
+	pkgver = 19.0.1.Matrix.r0.gfa470be
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.adaptive
 	arch = x86_64
@@ -16,9 +16,12 @@ pkgbase = kodi-addon-inputstream-adaptive-git
 	depends = expat
 	provides = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive
-	source = kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus
+	options = !lto
+	options = debug
+	options = strip
+	source = kodi-matrix-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Matrix
 	source = xbmc-bento4::git+https://github.com/xbmc/Bento4.git#branch=release/v1.6.0-639-kodi
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = kodi-addon-inputstream-adaptive-git
+pkgname = kodi-matrix-addon-inputstream-adaptive-git
