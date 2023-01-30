@@ -1,11 +1,12 @@
 pkgbase = r-dplyr
 	pkgdesc = A Grammar of Data Manipulation
-	pkgver = 1.0.10
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dplyr
 	arch = i686
 	arch = x86_64
 	license = MIT
+	depends = r-cli
 	depends = r-generics
 	depends = r-glue
 	depends = r-lifecycle
@@ -33,12 +34,13 @@ pkgbase = r-dplyr
 	optdepends = r-rmysql
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
+	optdepends = r-stringi
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dplyr_1.0.10.tar.gz
+	source = https://cran.r-project.org/src/contrib/dplyr_1.1.0.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 3ab639f627b4e439052df18f193f0ccab223225a4ae2ff8c18aba4f9807e0f2b
+	sha256sums = 8cb0535e49dd40b3054046735738f1e48507ac9a56b015d16ebcb54593b84ed7
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-dplyr
