@@ -10,7 +10,7 @@ url="https://github.com/rmcrackan/Libation"
 license=("GPL-3.0")
 makedepends=("dotnet-sdk")
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("b609bf71fb8db39c29978d9ec5b4756c2467a07ef8c1951b1820f1c88ceda662")
+sha256sums=("15b1e48dc49969fcad36133caa643a64d1de3274887fb1df9403b9bdeadb5a49")
 
 build() {
   cd $_pkgname-$pkgver
