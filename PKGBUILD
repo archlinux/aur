@@ -1,6 +1,6 @@
 # Maintainer: Qian Yicheng <qsp2020@outlook.com>
 
-_target=x86_64-pc-openbsd13
+_target=x86_64-pc-openbsd7
 pkgname=openbsdlib
 pkgver=7.2
 pkgrel=1
