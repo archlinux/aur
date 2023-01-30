@@ -1,6 +1,6 @@
 pkgbase = gowin-eda
 	pkgver = 1.9.8.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gowinsemi.com.cn/faq.aspx
 	arch = x86_64
 	license = unknown

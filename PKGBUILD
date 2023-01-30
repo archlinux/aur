@@ -2,7 +2,7 @@
 
 pkgbase=gowin-eda
 pkgver=1.9.8.10
-pkgrel=2
+pkgrel=3
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -101,7 +101,7 @@ _package-programmer() {
   #icon
   install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
-  # chmod 4755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
   
 
   # suit for IDE hardcode path of Programmer
