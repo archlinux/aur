@@ -2,11 +2,12 @@
 
 pkgname=autotiling-rs-git
 _pkgname=autotiling-rs
-pkgver=0.1.0.r1.gde07cc4
+pkgver=0.1.3.r24.ge38425a
 pkgrel=1
 pkgdesc='Automatically alternates container layouts between horizontal and vertical'
 arch=('x86_64')
 url='https://github.com/ammgws/autotiling-rs'
+license=('MIT')
 makedepends=('git' 'rust')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
