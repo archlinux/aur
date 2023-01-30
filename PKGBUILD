@@ -8,7 +8,7 @@
 pkgname=mathics
 _pkgname=Mathics3
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
@@ -26,6 +26,7 @@ sha256sums=('659293bf49c9654c6350bb2a26d1edc0bde79d0fed280e0ebc18a585cca6f2b5')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's/sympy>=1.8, < 1.11/sympy>=1.8, < 1.12/g' setup.py
   python setup.py build
 }
 
