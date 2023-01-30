@@ -1,12 +1,14 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev-docs
 pkgver=20230130
-pkgrel=1
+pkgrel=2
 pkgdesc="Static site documentation for Onedev for offline browsing"
 arch=('any')
 url="https://code.onedev.io/onedev/docs"
 license=('unknown')
 makedepends=('nodejs' 'yarn' 'git' 'git-lfs')
+optdepends=('python: For http server following ArchWiki guide'
+            'nginx: For http server, python http is recommended')
 
 prepare() {
   if [ -d $pkgname ]; then

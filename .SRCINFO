@@ -1,7 +1,7 @@
 pkgbase = onedev-docs
 	pkgdesc = Static site documentation for Onedev for offline browsing
 	pkgver = 20230130
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.onedev.io/onedev/docs
 	arch = any
 	license = unknown
@@ -9,5 +9,7 @@ pkgbase = onedev-docs
 	makedepends = yarn
 	makedepends = git
 	makedepends = git-lfs
+	optdepends = python: For http server following ArchWiki guide
+	optdepends = nginx: For http server, python http is recommended
 
 pkgname = onedev-docs
