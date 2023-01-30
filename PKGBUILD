@@ -29,7 +29,7 @@ noextract=("assets-headers-gc_nmq_pal_f.tar.xz")
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
-__debug=0             # Build with debug flag
+__debug=1             # Build with debug flag
 __generate_headers=0  # Generate OTR (unnecessary) and asset headers. **requires rom**
 
 if [ "$__debug" = 1 ]; then
