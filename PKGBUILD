@@ -46,7 +46,7 @@ build() {
             -DCLANG_LINK_CLANG_DYLIB=ON \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-            -DCMAKE_BUILD_TYPE=MinSizeRel \
+            -DCMAKE_BUILD_TYPE=Release \
             ${srcdir}/llvm-project-${pkgver}.src/llvm
 
     ninja -C _build
