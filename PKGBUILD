@@ -3,7 +3,7 @@
 
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop
-pkgver=0.25.0 # REMEMBER TO UPDATE CHANGELOG!
+pkgver=0.26.0 # REMEMBER TO UPDATE CHANGELOG!
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=("nodejs>=16" npm node-gyp libxcrypt-compat libnotify snappy libappi
 install=$pkgname.install
 changelog='changelog'
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('37713193bc4eb234a2a8585c054237e3464030abaa4430e36d8cb7bbd404f01c0637507f41f51508797197707ce8552066c86a0228c76874f3cd0f858469da5f')
+b2sums=('fd6667cf580fd01204df03e5700dbd272c6db320a6ac39855d5a230602cfe9dfc0cf1fa6f043b88a3701ff8b6076f64fa6c1f0d2d2647bb957eafdc578fbb443')
 
 prepare() {
 	cd "$pkgname-$pkgver"
