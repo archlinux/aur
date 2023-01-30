@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=gotz
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="CLI timezone info"
 arch=(x86_64)
@@ -15,7 +15,7 @@ provides=('gotz')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('69d3c0e92687e5e851ca6254ad2da038b80b3fb5a2a17d7b4791233500d68205')
+sha256sums=('7616524588a24a79cc1853afb7c65d7a9185a52bddf19bc7a14d211876bd0fde')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
