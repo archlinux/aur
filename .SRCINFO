@@ -20,6 +20,6 @@ pkgbase = polychromatic
 	depends = python-gobject
 	optdepends = python-openrazer
 	source = polychromatic-v0.8.0.tar.gz::https://github.com/polychromatic/polychromatic/archive/v0.8.0.tar.gz
-	sha512sums = bdd816fcbae8ce2e12367afd455941afb754f7ddb9f6337c6b675a3059c1dc6d64b1a7809efce9b909b8aee2025b496dc0b870d2e56a09da7fde7f8b5d733c5f
+	sha512sums = 35249bbe5a6bff0a0872f1c7342efd46bc4d7189f0e9e4e5a56be58836dff75259977d2f0567622d1083f5d1fe3aa74bd8e297ce7a71da29a97d7d5bc2f7ef94
 
 pkgname = polychromatic
