@@ -2,7 +2,7 @@
 
 _name=argparse_addons
 pkgname=python-argparse-addons
-pkgver=0.8.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Additional Python argparse types and actions"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('254a22c6f3af85caba1bb499df5a607e4e4a70b5c9b263dcd9ef58b6e0844b40a017ed68d687c44609fb01e4c25c9fabcb9b9af2595bbeb4c85cededda871966')
-b2sums=('0c80126f48e0eef129d8b29cddbbdb33951916b6af8f20c996e2d8b360b1dbcc614d5ad226cb8ff5bd1fa8f335b076466f77765fbc3c8e93ad59a61fc8e84294')
+sha512sums=('31cdbf8d6a227068559d9c7cfb0e135851db40d029020c7825787d985b2de2aeb460d7ff87d09eea4c6ddc29b16000c43944b6ad754e877b45a217186eb34967')
+b2sums=('5d77203ea93a3488f64ecba28714956a73ad8813d5635eb169e21b0198a5ac2645156208fc64730fbf5f1edd1ce08b5d15494079050851293b7364892e8c481a')
 
 build() {
   cd $_name-$pkgver
