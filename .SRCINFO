@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.geom
 	pkgdesc = Geometrical Functionality of the 'spatstat' Family
-	pkgver = 3.0.5
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.geom
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-spatstat.geom
 	optdepends = r-spatstat.linnet
 	optdepends = r-spatstat.model
 	optdepends = r-spatstat.random
-	source = https://cran.r-project.org/src/contrib/spatstat.geom_3.0-5.tar.gz
-	sha256sums = ca7beacdcfaffd03596e88915c4ccb9056be807d4ce622af4bde869ef96e04c3
+	source = https://cran.r-project.org/src/contrib/spatstat.geom_3.0-6.tar.gz
+	sha256sums = 6378750668363f09a80e8f6c60664e37b88f7ae6fbb296d3b978639d6e8ff20c
 
 pkgname = r-spatstat.geom
