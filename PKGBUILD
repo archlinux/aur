@@ -1,7 +1,7 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A simple music browser for MPD"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/SoongNoonien/mpdevil"
 depends=('python-mpd2' 'gtk3' 'python-gobject' 'python-cairo')
 makedepends=('meson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SoongNoonien/mpdevil/archive/v${pkgver}.tar.gz")
-sha256sums=('a75a307ab84116b8591b4cfe1b5388d154c3ec15b596f92493d9237df9a9c56b')
+sha256sums=('e2ba62b563c39e26075ddbf3e71fa5a994eaca040f5777c160b4eb07cd036707')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" build
