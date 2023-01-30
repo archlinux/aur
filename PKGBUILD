@@ -6,7 +6,7 @@ pkgrel=1
 license=('ISC')
 pkgdesc='Automatic brightness adjustment based on screen contents and ALS'
 url='https://github.com/maximbaz/wluma'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=('vulkan-icd-loader' 'systemd-libs' 'glibc' 'gcc-libs' 'v4l-utils')
 optdepends=('vulkan-driver: for using capturer=wlroots in config.toml'
             'wayland: for using capturer=wlroots in config.toml')
