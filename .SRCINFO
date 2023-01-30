@@ -1,5 +1,5 @@
 pkgbase = kodi-matrix-mpp-git
-	pkgver = r57760.f8fdeb6b1b1
+	pkgver = r58204.f8fdeb6b1b1.481f5d6
 	pkgrel = 5
 	url = https://kodi.tv
 	arch = aarch64
@@ -148,7 +148,7 @@ pkgname = kodi-matrix-mpp-git
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r57760.f8fdeb6b1b1
+	provides = kodi=r58204.f8fdeb6b1b1.481f5d6
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -161,7 +161,7 @@ pkgname = kodi-matrix-mpp-git-eventclients
 	pkgdesc = Kodi Event Clients (Matrix branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r57760.f8fdeb6b1b1
+	provides = kodi-eventclients=r58204.f8fdeb6b1b1.481f5d6
 	conflicts = kodi-eventclients
 
 pkgname = kodi-matrix-mpp-git-tools-texturepacker
@@ -170,19 +170,19 @@ pkgname = kodi-matrix-mpp-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r57760.f8fdeb6b1b1
+	provides = kodi-tools-texturepacker=r58204.f8fdeb6b1b1.481f5d6
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-matrix-mpp-git-dev
 	pkgdesc = Kodi dev files (Matrix branch) with Rockchip MPP hardware acceleration
 	depends = kodi-matrix-mpp-git
-	provides = kodi-matrix-dev=r57760.f8fdeb6b1b1
-	provides = kodi-dev=r57760.f8fdeb6b1b1
+	provides = kodi-matrix-dev=r58204.f8fdeb6b1b1.481f5d6
+	provides = kodi-dev=r58204.f8fdeb6b1b1.481f5d6
 	conflicts = kodi-matrix-dev
 	conflicts = kodi-dev
 
 pkgname = kodi-matrix-mpp-git-ffmpegdirect
-	pkgdesc = Inputstream ffmpegdirect kodi binary addon supporting Rockchip MPP hardware acceleration
+	pkgdesc = Inputstream ffmpegdirect kodi binary addon (Matrix branch) supporting Rockchip MPP hardware acceleration
 	depends = kodi
 	provides = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect

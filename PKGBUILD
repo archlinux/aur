@@ -23,7 +23,7 @@ _clangbuild=
 
 pkgbase=kodi-matrix-mpp-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev" "$pkgbase-ffmpegdirect")
-pkgver=r57760.f8fdeb6b1b1
+pkgver=r58204.f8fdeb6b1b1.481f5d6
 pkgrel=5
 arch=('aarch64' 'arm7f')
 url="https://kodi.tv"
@@ -297,7 +297,7 @@ package_kodi-matrix-mpp-git-tools-texturepacker() {
 }
 
 package_kodi-matrix-mpp-git-ffmpegdirect() {
-  pkgdesc="Inputstream ffmpegdirect kodi binary addon supporting Rockchip MPP hardware acceleration"
+  pkgdesc="Inputstream ffmpegdirect kodi binary addon (Matrix branch) supporting Rockchip MPP hardware acceleration"
   provides=('kodi-addon-inputstream-ffmpegdirect')
   conflicts=('kodi-addon-inputstream-ffmpegdirect')
   depends=('kodi')
