@@ -19,8 +19,8 @@ optdepends=(
     'ffmpeg: convert flash (flv) files'
     'perl-cgi: web PVR manager')
 install=get_iplayer.install
-source=(https://github.com/get-iplayer/get_iplayer/archive/v${pkgver}.tar.gz)
-md5sums=('bdcdf8c916bab325c5794606962ddcbd')
+source=(https://github.com/get-iplayer/get_iplayer/archive/refs/tags/v${pkgver}.tar.gz)
+md5sums=('5b296483c4f2805aa1b28060e9907450')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
