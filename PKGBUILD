@@ -1,6 +1,6 @@
 pkgname=coin-or-bonmin
-pkgver=1.8.8
-pkgrel=7
+pkgver=1.8.9
+pkgrel=1
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems"
 arch=('x86_64')
 url="https://projects.coin-or.org/Bonmin"
@@ -8,21 +8,15 @@ license=('EPL')
 groups=('coin-or')
 depends=('coin-or-cbc' 'coin-or-ipopt' 'coin-or-bcp')
 makedepends=('nauty')
-source=("https://www.coin-or.org/download/source/Bonmin/Bonmin-$pkgver.tgz")
-sha256sums=('1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2')
+source=("https://github.com/coin-or/Bonmin/archive/refs/tags/releases/${pkgver}.tar.gz")
+sha256sums=('8d130430a2776e250e941ee16f51dba301d5f0a00cc288e05f5b985cf1f426cd')
 
 prepare() {
-  cd "$srcdir/Bonmin-$pkgver"
-  curl -L https://github.com/coin-or/Bonmin/pull/23.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/pull/26.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/fe6f493c1ac45373db1a6a29138d70c85a310a08.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/3c51a306137f6f6f37825770987585b407919ff8.patch | patch -p1 -d Bonmin
-  curl -L https://github.com/coin-or/Bonmin/commit/d2120d07740f18e94f410e0618009f7c82dfcecd.patch | patch -p1 -d Bonmin
+  cd "$srcdir/Bonmin-releases-$pkgver"
 }
 
 build() {
-  cd "$srcdir/Bonmin-$pkgver"
-  COIN_SKIP_PROJECTS="Sample" \
+  cd "$srcdir/Bonmin-releases-$pkgver"
   CXXFLAGS="${CXXFLAGS} -I/usr/include/coin" \
   ./configure --prefix=/usr \
               --with-osi-lib="$(pkg-config --libs osi)" \
@@ -45,7 +39,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Bonmin-$pkgver"
+  cd "$srcdir/Bonmin-releases-$pkgver"
   PKG_CONFIG_LIBDIR="${pkgdir}/usr/lib/pkgconfig/" \
   make DESTDIR="$pkgdir/" install
 }

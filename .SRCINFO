@@ -1,7 +1,7 @@
 pkgbase = coin-or-bonmin
 	pkgdesc = Experimental open-source C++ code for solving general MINLP problems
-	pkgver = 1.8.8
-	pkgrel = 7
+	pkgver = 1.8.9
+	pkgrel = 1
 	url = https://projects.coin-or.org/Bonmin
 	arch = x86_64
 	groups = coin-or
@@ -10,7 +10,7 @@ pkgbase = coin-or-bonmin
 	depends = coin-or-cbc
 	depends = coin-or-ipopt
 	depends = coin-or-bcp
-	source = https://www.coin-or.org/download/source/Bonmin/Bonmin-1.8.8.tgz
-	sha256sums = 1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2
+	source = https://github.com/coin-or/Bonmin/archive/refs/tags/releases/1.8.9.tar.gz
+	sha256sums = 8d130430a2776e250e941ee16f51dba301d5f0a00cc288e05f5b985cf1f426cd
 
 pkgname = coin-or-bonmin
