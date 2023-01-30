@@ -3,7 +3,7 @@
 # Contributor: Kevin Del Castillo R. <lans9831@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 pkgname=pyenv-virtualenv
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=1
 pkgdesc="pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)"
@@ -11,9 +11,8 @@ arch=('any')
 url="https://github.com/pyenv/pyenv-virtualenv"
 license=('MIT')
 depends=('pyenv' 'bash')
-makedepends=('patch')
 source=("https://github.com/pyenv/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('0c09e896a343ce8cb7d6f57d7e71f9a6')
+md5sums=('663eef6cdc22768fcd654cf6a2ebd5e1')
 
 package() {
   _install_dir="usr/share/pyenv/plugins/pyenv-virtualenv"
