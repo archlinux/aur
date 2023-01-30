@@ -1,7 +1,7 @@
 pkgbase = sapling-scm-bin
 	pkgdesc = Sapling SCM is a cross-platform, highly scalable, Git-compatible source control system.
 	pkgver = 0.2.20230124.180750.hf8cd450a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://sapling-scm.com/
 	arch = x86_64
