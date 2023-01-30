@@ -1,16 +1,17 @@
-# Maintainer: Holger Schramm <dev@strace.it>
+# Maintainer: Polarian <polarian@polarian.dev>
+# Contributor: Holger Schramm <dev@strace.it>
 pkgname=mingo-bin
-pkgver=1.9.0
+pkgver=1.10.1
 pkgrel=1
-pkgdesc="A MongoDB GUI based on electron from developers for developers"
-arch=('i686' 'x86_64')
-url="https://github.com/mingo-app/mingo#readme"
+pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"
+arch=('x86_64')
+url="https://mingo.io/"
 license=('custom:mingo')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'util-linux-libs')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/mingo-app/mingo/releases/download/v${pkgver}/mingo_${pkgver}_amd64.deb")
-sha512sums_x86_64=('85ded32768502847e5473c525ff6eed486bec6dfe14c2c4339fceef7ac1dbe10c88c2bf7bb82b8fe0a7fe23a9d9a0dd1f82827367e050a98f221f0e712bc9f0d')
+source=("https://github.com/mingo-app/mingo/releases/download/v${pkgver}/mingo_${pkgver}_amd64.deb")
+sha256sums=('723e702a263598a62cc15ad176d195a37496c7157fd81e820a7781ebb4ea9140')
 
 package(){
 
