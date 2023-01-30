@@ -3,7 +3,7 @@
 
 pkgname=("podman-desktop")
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
@@ -26,7 +26,7 @@ build(){
     cd "${srcdir}/podman-desktop"
     yarn --frozen-lockfile
     yarn run build
-    yarn run electron-builder --dir --config .electron-builder.config.js
+    yarn run electron-builder --dir --config .electron-builder.config.cjs
 }
 package_podman-desktop(){
     case ${CARCH} in
