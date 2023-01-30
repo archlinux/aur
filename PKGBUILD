@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=5.1.3.r35.g207d38e47
+pkgver=5.1.4.r64.gf6c310ae8
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
