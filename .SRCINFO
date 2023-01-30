@@ -1,7 +1,7 @@
 pkgbase = qpdfview
-	pkgdesc = A tabbed PDF viewer using the poppler library.
-	pkgver = 0.4.18
-	pkgrel = 2
+	pkgdesc = A tabbed PDF viewer using the poppler library
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://launchpad.net/qpdfview
 	arch = x86_64
 	license = GPL2
@@ -14,12 +14,10 @@ pkgbase = qpdfview
 	depends = qt5-svg
 	optdepends = libspectre: for PostScript support
 	optdepends = djvulibre: for DjVu support
-	source = https://launchpad.net/qpdfview/trunk/0.4.18/+download/qpdfview-0.4.18.tar.gz
-	source = https://launchpad.net/qpdfview/trunk/0.4.18/+download/qpdfview-0.4.18.tar.gz.asc
-	source = fix-gcc10-build.patch
+	source = https://launchpad.net/qpdfview/trunk/0.5.0/+download/qpdfview-0.5.tar.gz
+	source = https://launchpad.net/qpdfview/trunk/0.5.0/+download/qpdfview-0.5.tar.gz.asc
 	validpgpkeys = 1F521FF0F87E9E1CDE46B8A9F4928C4DD24D4DF8
-	sha256sums = cc642e7fa74029373ca9b9fbc29adc4883f8b455130a78ad54746d6844a0396c
-	sha256sums = SKIP
-	sha256sums = 5314091e35031f5ebf38a827b64e524e2f5dab8a5c2d3c0e081fb7a634ebe301
+	sha512sums = 1b6b479bb42f4568c21b5f6cb0c552c4323739ba9fe46cea80cc199f48b0b49a278e0a2fb0d21f83bafb467e43dd37352b99ef41795d140220bb82d704e03926
+	sha512sums = SKIP
 
 pkgname = qpdfview
