@@ -9,7 +9,8 @@ license=('GPL')
 depends=('leptonica' 'pyside6' 'python-certifi' 'python-jeepney' 'python-pillow'
          'python-pytesseract' 'wl-clipboard')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-#checkdepends=('python-levenshtein' 'python-pytest' 'python-toml') ## TODO: python-pytest-qt
+#checkdepends=('python-levenshtein' 'python-pytest-qt' 'python-toml'
+#              'tesseract-data-eng' 'tesseract-data-jpn' 'tesseract-data-chi_sim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
@@ -23,6 +24,18 @@ build() {
 
 #check() {
 #  cd "$pkgname-$pkgver"
+
+## WIP
+## Tests run normcap and pop up test windows
+## Cannot be run successfully in chroot currently
+
+#  # use local XDG_RUNTIME_DIR
+#  mkdir -p "$srcdir/run/user/1000"
+#  export XDG_RUNTIME_DIR="$srcdir/run/user/1000"
+
+#  # simulate GNOME desktop
+#  export XDG_SESSION_TYPE='gnome'
+#
 #  pytest
 #}
 
