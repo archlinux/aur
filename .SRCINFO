@@ -4,6 +4,7 @@ pkgbase = wluma-git
 	pkgrel = 1
 	url = https://github.com/maximbaz/wluma
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	makedepends = git
 	makedepends = cargo
