@@ -10,7 +10,7 @@ url='https://github.com/topgrade-rs/topgrade'
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d768cec3833c239f9c51d1d66163d6ac92ca53a3823f38899e4c1a17e63bc7be')
+sha256sums=('fad56a21c731b7868145af088f0b670792d6cbb5538251d8a37f3a1f9a7ea87e')
 
 build() {
   cd "$pkgname-$pkgver"
