@@ -1,0 +1,12 @@
+pkgbase = openbsdlib
+	pkgdesc = FreeBSD headers and library
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = any
+	license = BSD
+	source = https://github.com/Easonqsp/openbsdlib/archive/refs/tags/7.2.tar.gz
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openbsdlib
