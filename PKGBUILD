@@ -1,7 +1,7 @@
 # Maintainer: Faruk Dikcizgi <boogiepop@gmx.de>
 # Contributor: kevku <kevku@gmx.com>
 pkgname=kodi-matrix-addon-inputstream-adaptive-git
-pkgver=19.0.1.Matrix.r0.gfa470be
+pkgver=r1057.1ab359a
 pkgrel=1
 pkgdesc="InputStream client for adaptive streams for Kodi 19 Matrix"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
