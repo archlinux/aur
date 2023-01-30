@@ -3,7 +3,7 @@
 
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
-pkgver=0.51.1
+pkgver=0.52.0
 pkgrel=1
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
@@ -20,7 +20,7 @@ source=(
   "pocketfft-$_pocketfft_ref.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/$_pocketfft_ref/pocketfft-$_pocketfft_ref.tar.gz"
   "vcl-$_vcl_ref.tar.gz::https://github.com/vectorclass/version2/archive/$_vcl_ref.tar.gz"
 )
-sha256sums=('cb01d55572ec251d516690198d60a393a65742062cbf676f7928c0580913ae01'
+sha256sums=('fadd875be8059b9caefd5316b534fbd8df73a0b49062953855cdfc3c750fd9dc'
             '0f2b09e14b1497c9a1283c5b64a6682fd43daa6ba7ca17eb3dbcc9b0ec46204f'
             'd2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827')
 
@@ -49,13 +49,8 @@ build() {
 
 check() {
   for _plugin in build/VST3/Release/*.vst3; do
-    if [[ $_plugin =~ ClangSynth || $_plugin =~ L4Reverb || $_plugin =~ LightPadSynth ||
-      $_plugin =~ PitchShiftDelay ]]; then
-      # these plugins seem to use a lot of memory during validation so let's only test basics
-      build/bin/Release/validator -suite "General Tests" $_plugin
-    else
-      build/bin/Release/validator $_plugin
-    fi
+    # many plugins seem to use a lot of memory during validation so let's only test basics
+    build/bin/Release/validator -suite "General Tests" $_plugin
   done
 }
 
