@@ -6,9 +6,11 @@ pkgname=('diopser-clap-git' 'diopser-vst3-git')
 _repo=nih-plug
 # The name of the package in the Cargo worksapce
 _package=diopser
+# The prefix used for for version tags
+_tag_prefix=diopser-
 # The name of the built plugin bundle or library
 _bundle=Diopser
-pkgver=0.0.1.r1427.f557707
+pkgver=rbuffr.glitch.0.2.0.17.gefff43d
 pkgrel=1
 pkgdesc='A totally original phase rotation plugin - part of NIH-plug'
 arch=('x86_64')
@@ -24,11 +26,13 @@ pkgver() {
     cd "$srcdir/$_repo"
 
     # Currently there's no tagged commit, so the only way to get this `git
-    # describe` to output something would be using `--always`, and then you
-    # would not get a very useful version number. So if that's the case, we'll
-    # just use `0.0.1.rXXX-deadbee`.
+    # describe` to output something would be using `--always`, and then you just
+    # get a plain commit hash. So if that's the case, we'll just use
+    # `0.0.1.rXXX-deadbee`. We'll also need to filter the considered tags by the
+    # plugin's name, since this repo contains multiple plugins with separate
+    # version tags.
     set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --match "$_tag_prefix*" 2>/dev/null | sed "s/^v//;s/$_tag_prefix//;s/\\([^-]*-g\\)/r\\1/;s/-/./g" ||
       printf "0.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
