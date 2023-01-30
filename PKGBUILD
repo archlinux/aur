@@ -102,7 +102,7 @@ _lru_config=${_lru_config-'standard'}
 # 'standard' - enable per-VMA locking
 # 'stats' - enable per-VMA locking with stats
 # 'none' - disable per-VMA locking
-_vma_config=${_vma_config-'standard'}
+_vma_config=${_vma_config-'none'}
 
 ### Transparent Hugepages
 # ATTENTION - one of two predefined values should be selected!
@@ -202,7 +202,7 @@ fi
 _major=6.2
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc5
+_rcver=rc6
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -240,7 +240,7 @@ source=(
     "${_patchsource}/all/0001-cachyos-base-all.patch")
 ## ZFS Support
 if [ -n "$_build_zfs" ]; then
-    source+=("git+https://github.com/cachyos/zfs.git#commit=04b02785b67f9b976c43643dd52ce6cdbc22e11e")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=92e0d9d183ce6752cd52f7277c8321d81df9ffee")
 fi
 ## Latency NICE Support
 if [ -n "$_latency_nice" ]; then
@@ -295,9 +295,13 @@ if [ -n "$_bcachefs" ]; then
 fi
 if [ -n "$_use_gcc_lto" ]; then
 ## GCC-LTO Patch
-## Fix for current gcc -e-default-pie option
+## Fix for current gcc --enable-default-pie option
     source+=("${_patchsource}/misc/gcc-lto/0001-gcc-LTO-support-for-the-kernel.patch"
              "${_patchsource}/misc/gcc-lto/0002-gcc-lto-no-pie.patch")
+fi
+## per VMA lock
+if [[ "$_vma_config" = "standard"  || "$_vma_config" = "stats" ]]; then
+    source+=("${_patchsource}/misc/0001-Per-VMA-locks.patch")
 fi
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
@@ -1000,6 +1004,7 @@ _package-headers() {
 _package-zfs(){
     pkgdesc="zfs module for the $pkgdesc kernel"
     depends=('pahole' linux-$pkgsuffix=$_kernver)
+    provides=('ZFS-MODULE')
 
     cd ${srcdir}/"zfs"
 	install -dm755 "$pkgdir/usr/lib/modules/${_major}.${_minor}-${_rcver}-${pkgrel}-${pkgsuffix}"
@@ -1019,9 +1024,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('b888021b357fb78eb05a4c7f4f6ca6fc20c24171b45e2e054d7c4fb6236ef6cd'
+sha256sums=('ac4a49630e4ee8e1d2c0d63c2f1942b30d29f7ebbd0548d343c16c07af9f2db7'
             'b6842e355d16902170ba619e474bf2b2594382e3bc03971ff5ff2dc594bf3354'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'ecaf950e914beb5893a751ccc158521682aadbec1594f78a70ca6de92bdeb2e2'
-            '34a19b3d6e9fa3b17d64ee3e4c0df7248902543a820ee8c63651e70145881033'
-            '64ff2f0c18f9d173f190da73f960b98be03713c41002820f7a933d5987fe17bb')
+            'b3efc82c702978e47f1a7c6c675a32305347a34806246dda7542c50a5bdcb77e'
+            '9b8da83a416041b7dfec2a83066022bba9a1b24b05c68713546ab199a3c4888b'
+            'b78828363b80104e8905966f35f32f6a90d5ab7fe544a04e44ef5d13a8404346')
