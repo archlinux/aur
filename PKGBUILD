@@ -1,16 +1,17 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=bordeaux
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="SIP telephony applidation server"
 url="https://codeberg.org/gnutelephony/$pkgname"
+install="$pkgname.install"
 arch=(x86_64 i686 aarch64 armv7h)
 license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz bordeaux.service bordeaux.logrotated)
 makedepends=(cmake pkgconf gcc)
 depends=("libexosip2>=5.3.0" libosip2 openssl fmt)
-sha256sums=('a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df' '25ce1741acbf507209e0f70d387dc8fd8a1bc8742abde8db5f3bc6da224d6083' '462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f') 
+sha256sums=('a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df' '32cd39807e9feb3abd12c8cbc24c6b1bcdf1c6a71c4550bb715f3f45f9277ff1' '462037b66755dc2991bbc1d4be962e34d2e9c11f3522246df76a69f056f4d83f') 
 
 build() {
 	cd "$srcdir/$pkgname"
@@ -34,7 +35,7 @@ package() {
 	strip "$pkgdir"/usr/bin/bordeaux
 	gzip "$pkgdir"/usr/share/man/man*/*
 	install -d -m 700 "$pkgdir"/var/log/$pkgname
-	install -d -m 700 "$pkgdir"/var/lib/$pkgname
+	install -d -m 770 "$pkgdir"/var/lib/$pkgname
 	install -dm755 ${pkgdir}/usr/lib/systemd/system
 	install -m744 ${srcdir}/$pkgname.service ${pkgdir}/usr/lib/systemd/system/
 	install -dm755 ${pkgdir}/etc/logritate.d

@@ -1,0 +1,35 @@
+pre_install() {
+	if systemctl status bordeaux &> /dev/null; then
+		echo 'Stopping & disabling bordeaux...'
+		systemctl disable --now bordeaux
+	fi
+	groupadd -r bordeaux 2>/dev/null || true
+}
+
+post_install() {
+	chgrp -R bordeaux /var/lib/bordeaux
+	systemctl daemon-reload
+	echo 'Installed bordeaux service'
+}
+
+pre_upgrade() {
+	echo 'Upgrading bordeaux service'
+}
+
+post_upgrade() {
+	echo 'Starting & enabling bordeaux daemon...'
+	if systemctl status bordeaux &>/dev/null; then
+		systemctl daemon-reload
+		systemctl restart bordeaux
+	fi
+}
+
+pre_remove() {
+	systemctl disable --now bordeaux || true
+}
+
+post_remove() {
+	systemctl daemon-reload
+	echo 'Removed bordeaux service'
+}
+
