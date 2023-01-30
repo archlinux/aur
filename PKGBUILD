@@ -2,7 +2,7 @@
 _pkgname=harvesttimer-qt
 _appname=harvest
 pkgname=harvest-timer-qt
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Desktop app for Harvest, a simple time tracker and reporting tool for companies'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 	"https://github.com/jorge-barroso/${_pkgname}/archive/refs/tags/${apptag}.tar.gz"
 )
 srcdir_name="${_pkgname}-${pkgver}"
-sha256sums=('5e87ff64ffb8e423b1d7a956d9e6b3a9be985210557099d3741213ce27d374e0')
+sha256sums=('3cdcf68476c8e97b291cc6d3c47ab985b1a0a913e24b2444f96a95ae24a63ef1')
 
 build() {
 	cd "${srcdir}"
@@ -25,7 +25,7 @@ build() {
 	mkdir -p "${srcdir}/build"
 	cd "${srcdir}/build"
 
-	cmake "../${srcdir_name}/" -DCMAKE_INSTALL_PREFIX=/usr/bin -DCMAKE_BUILD_TYPE=release -DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+	cmake "../${srcdir_name}/" -DCMAKE_INSTALL_PREFIX=/usr/bin
 
 	make || return 1
 }
