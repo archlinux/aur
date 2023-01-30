@@ -2,7 +2,7 @@
 
 pkgname=volta-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="JavaScript Launcher"
 arch=('x86_64')
 url="https://volta.sh/"

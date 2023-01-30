@@ -1,7 +1,7 @@
 pkgbase = volta-bin
 	pkgdesc = JavaScript Launcher
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://volta.sh/
 	arch = x86_64
 	license = BSD
