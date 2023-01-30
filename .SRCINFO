@@ -1,0 +1,19 @@
+pkgbase = python-setuptools-git-ls-files-git
+	pkgdesc = setuptools plugin to list all files tracked by git, recursing into submodules
+	pkgver = 0.1.1.r1.g2327ed6
+	pkgrel = 1
+	url = https://github.com/anthrotype/setuptools_git_ls_files
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	provides = python-setuptools-git-ls-files
+	conflicts = python-setuptools-git-ls-files
+	source = python-setuptools-git-ls-files-git::git+https://github.com/anthrotype/setuptools_git_ls_files.git
+	sha256sums = SKIP
+
+pkgname = python-setuptools-git-ls-files-git
