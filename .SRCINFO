@@ -1,0 +1,19 @@
+pkgbase = xeus2
+	pkgdesc = C++ implementation of the Jupyter kernel protocol
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/QuantStack/xeus
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = zeromq
+	makedepends = cppzmq
+	depends = crypto++
+	depends = nlohmann-json
+	depends = xtl
+	depends = zeromq
+	options = staticlibs
+	source = xeus2-2.4.1.tar.gz::https://github.com/QuantStack/xeus/archive/2.4.1.tar.gz
+	sha256sums = 601de51df29f9c1953a466909ec584244c171879436cea0a580c1bf99142c654
+
+pkgname = xeus2
