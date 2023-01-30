@@ -1,6 +1,6 @@
 pkgbase = kuro-electron
-	pkgdesc = An Electron wrapper for Microsoft To-Do, use system electron18
-	pkgver = 8.1.7
+	pkgdesc = An Electron wrapper for Microsoft To-Do, use system electron22
+	pkgver = 8.1.8
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = kuro-electron
 	depends = libnotify
 	depends = libxtst
 	depends = libxss
-	depends = electron19
+	depends = electron22
 	provides = ao
 	provides = kuro
 	conflicts = ao
 	conflicts = kuro
-	source = https://github.com/davidsmorais/kuro/releases/download/v8.1.7/kuro-8.1.7.pacman
-	sha256sums = de59c4f048d2eae09006db9f46985aca74b7368a127aa99f60de5db032146de0
+	source = https://github.com/davidsmorais/kuro/releases/download/v8.1.8/kuro-8.1.8.pacman
+	sha256sums = f2ddefeb56317af982aa5fe7f8c9734dc5d35ad78a6d50c9388c3bfb0dce55f9
 
 pkgname = kuro-electron
