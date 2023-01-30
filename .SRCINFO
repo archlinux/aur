@@ -1,0 +1,17 @@
+pkgbase = python-openant
+	pkgdesc = ANT, ANT-FS and ANT+ Python Library
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Tigge/openant
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyusb
+	source = openant-1.2.0.tar.gz::https://github.com/Tigge/openant/archive/v1.2.0.tar.gz
+	sha512sums = baaa6c83614e5cbdf4d34e0a6bd3f12470f201edfa80944d1b71be09c166baa1594c3333c97cac4b441a23500331b127d34a1303d7ed5d6f9e1f33cb9325dea2
+
+pkgname = python-openant
