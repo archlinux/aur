@@ -1,5 +1,5 @@
 pkgname=raccoon-bin
-pkgver=4.23.0
+pkgver=4.24.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer, binary version"
@@ -13,7 +13,7 @@ source=('raccoon.desktop'
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
-            '390e22247213076a3760ef2d53bf13a350745d6c2319415c60433aadeb2365bb1846c507bc9126dab05433cacdaf60a97b818c9be49e82f124fd2f419986fb48')
+            '559cca056f05dd6a4d64baf8cff4fe854f6540df5d6e13ea56e20e87e112768deb4cc591536ed912db86ca41f46a69a36d9c4b6de67fdcfea11d6a5fe9618655')
 
 package() {
   # install files to java shared dir
