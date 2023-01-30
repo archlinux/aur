@@ -1,12 +1,23 @@
 #!/usr/bin/env python
 from sys import argv
-from json import load, dump
+from json import load, dump, JSONDecodeError
+from requests import get
 
 PRODUCT_JSON_LOCATION = "/opt/vscodium-bin/resources/app/product.json"
 
+
 if __name__ == "__main__":
-    with open(PRODUCT_JSON_LOCATION) as file:
-        product = load(file)
+    try:
+        with open(PRODUCT_JSON_LOCATION) as file:
+            product = load(file)
+    except JSONDecodeError:
+        result = get('https://github.com/microsoft/vscode/raw/main/product.json')
+        if result.ok:
+            product = result.json()
+        else:
+            print(
+                "error: couldn't parse local product.json or fetch a new one from the web")
+            exit(1)
     if '-R' in argv:
         product["nameLong"] = "VSCodium"
         product.pop("auth", None)
@@ -134,4 +145,4 @@ if __name__ == "__main__":
             "redhat.java": ["documentPaste"]
         }
     with open(PRODUCT_JSON_LOCATION, mode='w') as file:
-        dump(product, file)
+        dump(product, file, indent=4)
