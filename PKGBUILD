@@ -1,13 +1,13 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=logfilegen
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="logfilegen is nginx/apache log generator for testing purposes"
+pkgdesc="logfilegen is nginx/apache randomized log generator for testing purposes"
 arch=('x86_64')
 url="https://github.com/psemiletov/logfilegen"
 license=('Public Domain')
-depends=('gcc-libs' 'gcc' 'gzip')
+depends=('gcc-libs' 'gcc' 'gzip' 'cmake')
 
 source=(https://github.com/psemiletov/logfilegen/archive/$pkgver.tar.gz)
 
@@ -31,4 +31,4 @@ package(){
 }
 
 
-md5sums=(3c94ef739eaf8f2e3f612a7aee9f7bad)
+md5sums=(cbe315c312ac5c98c21bc9f84584c6cf)
