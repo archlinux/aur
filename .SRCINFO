@@ -1,6 +1,6 @@
 pkgbase = guapow
 	pkgdesc = On-demand and auto performance optimizer for Linux applications
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/vinifmor/guapow
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = guapow
 	depends = systemd
 	optdepends = inxi: required for guessing the window compositor,
 	optdepends = unclutter: required for hiding the mouse cursor
-	source = https://github.com/vinifmor/guapow/archive/1.3.1.tar.gz
-	sha512sums = 978eb83d99922c820ecb9e16b1763b3fabc9fd6853e9e65875bbd9f5346ce9298e4c91bb12581c5ad5affc4a396d05c22ed80fa9c1efec52ff1a5830524844a6
+	source = https://github.com/vinifmor/guapow/archive/1.3.2.tar.gz
+	sha512sums = 5bb210d6d22e3f94f91c30ae4d9a6eaa7582d59abc7f25a9298d3dd95599331f6cdfc792a123e76c7bff13471a64121e68ffc6ab85b2f7527ccd8e7f965b71b0
 
 pkgname = guapow
