@@ -1,0 +1,22 @@
+pkgbase = python-mutatormath-git
+	pkgdesc = Python library for piecewise linear interpolation in multiple dimensions with multiple, arbitrarily placed, masters.
+	pkgver = 3.0.1.r3.gb0a87ec
+	pkgrel = 1
+	url = https://github.com/LettError/MutatorMath
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-defcon
+	depends = python-fontmath
+	depends = python-fonttools
+	provides = python-mutatormath
+	conflicts = python-mutatormath
+	source = python-mutatormath-git::git+https://github.com/LettError/MutatorMath.git
+	sha256sums = SKIP
+
+pkgname = python-mutatormath-git
