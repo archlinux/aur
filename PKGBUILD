@@ -9,7 +9,7 @@ url="https://volta.sh/"
 license=('BSD')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/volta-cli/volta/releases/download/v$pkgver/volta-$pkgver-linux.tar.gz"
         "https://raw.githubusercontent.com/volta-cli/volta/v$pkgver/LICENSE")
-md5sums=('6ea2213570eca7218668c5bf86890ba5'
+md5sums=('f290b349022127633cf1e4df93f28067'
          'a8a025d12adc6bd305a7402166baefef')
 
 package() {

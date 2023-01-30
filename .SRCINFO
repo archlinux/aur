@@ -7,7 +7,7 @@ pkgbase = volta-bin
 	license = BSD
 	source = volta-bin-1.1.1.tar.gz::https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-linux.tar.gz
 	source = https://raw.githubusercontent.com/volta-cli/volta/v1.1.1/LICENSE
-	md5sums = 6ea2213570eca7218668c5bf86890ba5
+	md5sums = f290b349022127633cf1e4df93f28067
 	md5sums = a8a025d12adc6bd305a7402166baefef
 
 pkgname = volta-bin
