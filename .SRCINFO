@@ -1,6 +1,6 @@
 pkgbase = kodi-nexus-mpp-git
 	pkgver = r62294.e75ba45eef3.457d9a5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kodi.tv
 	arch = aarch64
 	arch = arm7f
