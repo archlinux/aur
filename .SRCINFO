@@ -184,5 +184,6 @@ pkgname = kodi-matrix-mpp-git-dev
 pkgname = kodi-matrix-mpp-git-ffmpegdirect
 	pkgdesc = Inputstream ffmpegdirect kodi binary addon (Matrix branch) supporting Rockchip MPP hardware acceleration
 	depends = kodi
+	depends = kodi-matrix-mpp-git
 	provides = kodi-addon-inputstream-ffmpegdirect
 	conflicts = kodi-addon-inputstream-ffmpegdirect

@@ -300,7 +300,7 @@ package_kodi-matrix-mpp-git-ffmpegdirect() {
   pkgdesc="Inputstream ffmpegdirect kodi binary addon (Matrix branch) supporting Rockchip MPP hardware acceleration"
   provides=('kodi-addon-inputstream-ffmpegdirect')
   conflicts=('kodi-addon-inputstream-ffmpegdirect')
-  depends=('kodi')
+  depends=('kodi' 'kodi-matrix-mpp-git')
   
   cd "$srcdir/ffdirect-build"
   install -d "${pkgdir}/usr"
