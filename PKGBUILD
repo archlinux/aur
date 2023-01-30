@@ -1,6 +1,6 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgname=python-python-compreffor-git
+pkgname=python-compreffor-git
 pkgver=0.5.3.r0.g3678d3e
 pkgrel=1
 pkgdesc='A CFF table subroutinizer for FontTools'
