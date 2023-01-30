@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=bordeaux
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="SIP telephony applidation server"
 url="https://codeberg.org/gnutelephony/$pkgname"
@@ -15,8 +15,8 @@ sha256sums=('a3fa5b29608a786138ca35064843fdfe7f31d7dce90188cb8c1bcd9c80a068df' '
 build() {
 	cd "$srcdir/$pkgname"
 	cmake \
-		-DCMAKE_INSTALL_FULL_SYSCONFDIR:PATH=/etc \
-		-DCMAKE_INSTALL_FULL_LOCALSTATEDIR:PATH=/var \
+		-DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
+		-DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_SBINDIR=/usr/bin \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
