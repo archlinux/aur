@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=109.0.5414.119
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -56,10 +56,12 @@ _uc_ver=$pkgver-1
 source=(${source[@]}
         $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         ozone-add-va-api-support-to-wayland.patch
+        vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
             'e10fe46f3f4b7058c278ab86c6795cc2b68459bcb7ced5efad3355ab5c2f5de1'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
+            'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -141,11 +143,10 @@ prepare() {
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
 
-  # Enable vaapi on wayland
+  # Custom Patches
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-
-  # Remove HEVC profile limits
   patch -Np1 -i ../remove-main-main10-profile-limit.patch
+  patch -Np1 -i ../vaapi-add-av1-support.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/$pkgname-$_uc_ver"
