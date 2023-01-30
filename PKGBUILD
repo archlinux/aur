@@ -1,9 +1,9 @@
-# Maintainer Augusto Modanese <modanese@kit.edu>
+# Maintainer Augusto Modanese <augusto.modanese@aalto.fi>
 
 pkgname=latex-template-lipics
 pkgver=2021.1.2
 pkgmajver=$(cut -d'.' -f1 <<<"${pkgver}")
-pkgrel=2
+pkgrel=3
 pkgdesc="LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)"
 url="https://www.dagstuhl.de/en/publications/lipics"
 license=('CCPL:by')
