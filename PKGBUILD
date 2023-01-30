@@ -17,7 +17,7 @@ pkgname=('tela-circle-icon-theme-all'
          'tela-circle-icon-theme-ubuntu'
          'tela-circle-icon-theme-dracula'
          'tela-circle-icon-theme-nord')
-pkgver=2022.11.06
+pkgver=2023.01.29
 pkgrel=1
 pkgdesc='A flat colorful design icon theme'
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=('bash')
 provides=('tela-circle-icon-theme')
 options=('!strip')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/vinceliuice/${pkgbase}/archive/${pkgver//./-}.tar.gz")
-b2sums=('f104cabe8f0437f4973158e49690e91fe837e97b76003ec756df5767ed61439055cae7f97cb678c424b314c30c9f5647b114768e769859ba20b299378144e47d')
+b2sums=('20cb565805081f1631ced08df96095643b24ad3dbe985d314102f9d29af19d01e40c5f351f454eaac27980df2f041767d1e3f48d8a746f5c63c901f2c3cb5dc7')
 
 _package() {
   pkgdesc="${pkgdesc} (${1} variant)"
