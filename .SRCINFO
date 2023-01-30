@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-desmume
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.0.1.21
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.desmume
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-desmume
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-desmume-0.0.1.21.tar.gz::https://github.com/kodi-game/game.libretro.desmume/archive/0.0.1.21-Matrix.tar.gz
+	sha512sums = f6cec900358235aba9f9b31a693ae869c314e101764ab8efac1ac350ddcc13a7b1a3e78549e6181cb568d56b75c2068b1569cff005b6bec26b76f2977513ca97
+
+pkgname = kodi-addon-game-libretro-desmume
+	depends = kodi-addon-game-libretro
+	depends = libretro-desmume
