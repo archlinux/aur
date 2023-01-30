@@ -1,6 +1,5 @@
 src/
 pkg/
-*.src.tar.gz
 *.pkg.tar.zst
-ezquake-*full*.tar.gz
-3.2.*.tar.gz
+ezquake-ubuntu-*-full.tar.gz
+*.zip
