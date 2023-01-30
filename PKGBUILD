@@ -20,7 +20,7 @@ _opt_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r450.gc63da06f
+pkgver=1.2.0.r1354.g4e69b4f2
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -56,8 +56,9 @@ if [ "${_opt_FLUTTER}" -eq 0 ]; then
   source+=("https://raw.github.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so")
 else
   source+=(
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.5-stable.tar.xz"
-    "git+https://github.com/SoLongAndThanksForAllThePizza/flutter_rust_bridge.git"
+    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.7.0-stable.tar.xz"
+    "flutter_rust_bridge-1.61.0.tar.gz::https://github.com/fzyzcjy/flutter_rust_bridge/archive/refs/tags/v1.61.0.tar.gz"
+    #"git+https://github.com/SoLongAndThanksForAllThePizza/flutter_rust_bridge.git"
   )
 fi
 md5sums=('SKIP'
@@ -66,16 +67,16 @@ md5sums=('SKIP'
          '82e5e527336b41281a582204db1f3457'
          '357dc26a802c34387512a42697846d16'
          '10cf85debdd07be719a35ca3bfb8ea64'
-         '87c7e7c1e2bcef19f0e7ef0daa918bd4'
-         'SKIP')
+         '9a844a9d6ec89c7da1e3027a5529411c'
+         '7a961f7e02ff78870a96061a8308648d')
 sha256sums=('SKIP'
             '149e0cee002e59e0bb84543cf3cb099f108c08390392605e944daeb6594cbc29'
             '7ee7f467a1a747c5b5e02342904af9c24e84df4ca993541f1c4d0f113cab27aa'
             '965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83'
             'a78b05c0d8427a90eb5b4eb08af25309770c8379592bb0b8a863373128e6143f'
             'f1acc15d0fd0cb431f4bf6eac32d5e932e40ea1186fe78e074254d6d003957bb'
-            '691a125ce790faf8a34536b9bd298c31adbf2d2568fc9384e2d43a69c5c1d6cc'
-            'SKIP')
+            '51160abac1d0d82b45647be6b2a6ed2d3827d51c3920f2c8ebf3ea8cebe6f484'
+            '0f1c45f64e228b6b78c4987a2ee1eac387c2c2d617c8c4ce7d70fe0cd319cbae')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
 noextract=("${_vcs[@]}")
@@ -167,7 +168,7 @@ build() {
   if [ ! -x vcpkg/vcpkg ]; then
     vcpkg/bootstrap-vcpkg.sh
   fi
-  vcpkg/vcpkg install libvpx libyuv opus
+  nice vcpkg/vcpkg install libvpx libyuv opus
   export VCPKG_ROOT="${PWD}/vcpkg"
 
   cd "${_pkgname}"
@@ -189,21 +190,21 @@ build() {
     export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation: " | cut -d' ' -f4-)/include"
     export PATH="${srcdir}/flutter/bin:$PATH"
     dart pub global activate ffigen --version 5.0.1
-    pushd "${srcdir}/flutter_rust_bridge/frb_codegen" && nice cargo install --path . && popd
-    pushd flutter && flutter pub get && popd
+    pushd "${srcdir}"/flutter_rust_bridge*"/frb_codegen"; nice cargo install --path . ; popd
+    pushd flutter ; flutter pub get ; popd
     ~/.cargo/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
       nice ./build.py --hwcodec --flutter
     else
       git checkout src/ui/common.tis
-      cargo build --features hwcodec,flutter --lib --release
+      nice cargo build --features hwcodec,flutter --lib --release
       #ain't there no more
       #sed -i "s/ffi.NativeFunction<ffi.Bool Function(DartPort/ffi.NativeFunction<ffi.Uint8 Function(DartPort/g" flutter/lib/generated_bridge.dart
       pushd flutter
-      flutter build linux --release || :
+      nice flutter build linux --release # || :
       popd
     fi
-    pushd flutter && flutter build linux --release && popd
+    #pushd flutter && flutter build linux --release && popd
     set +x
   fi
   set +u
