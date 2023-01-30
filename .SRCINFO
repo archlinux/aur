@@ -1,0 +1,25 @@
+pkgbase = x86_64-pc-openbsd7-gcc
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
+	pkgver = 12.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = x86_64-pc-openbsd7-binutils
+	depends = openbsdlib
+	depends = libmpc
+	depends = zlib
+	depends = libisl
+	depends = zstd
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	options = !lto
+	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = x86_64-pc-openbsd7-gcc
