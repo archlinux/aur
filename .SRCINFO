@@ -1,0 +1,21 @@
+pkgbase = kodi-addon-game-libretro-beetle-psx
+	pkgdesc = Libretro wrapper for Kodi's Game API
+	pkgver = 0.9.44.43
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.beetle-psx
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-beetle-psx
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-beetle-psx-0.9.44.43.tar.gz::https://github.com/kodi-game/game.libretro.beetle-psx/archive/0.9.44.43-Matrix.tar.gz
+	sha512sums = 7a940906e5ef26f549ec22e747542866d2f981b9c7ebc868a76625ba1990a5e7d213ff10691c856df024c4947ae271622cf9541c658c23ec4b5ec3267b9cb8ec
+
+pkgname = kodi-addon-game-libretro-beetle-psx
+	depends = kodi-addon-game-libretro
+	depends = libretro-beetle-psx
