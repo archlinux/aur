@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-liri-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for Liri
-	pkgver = r78.3c6e804
+	pkgver = r84.dba7279
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = xdg-desktop-portal-liri-git
 	depends = qt5-gsettings-git
 	depends = libliri-git
 	depends = fluid-git
-	depends = liri-wayland-git
+	depends = aurora-client-git
 	depends = xdg-desktop-portal
 	provides = xdg-desktop-portal-liri
 	provides = xdg-desktop-portal-impl

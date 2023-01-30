@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=xdg-desktop-portal-liri-git
-pkgver=r78.3c6e804
+pkgver=r84.dba7279
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://liri.io'
 license=('GPL3')
-depends=('qt5-accountsservice-git' 'qt5-gsettings-git' 'libliri-git' 'fluid-git' 'liri-wayland-git' 'xdg-desktop-portal')
+depends=('qt5-accountsservice-git' 'qt5-gsettings-git' 'libliri-git' 'fluid-git' 'aurora-client-git' 'xdg-desktop-portal')
 makedepends=('git' 'liri-cmake-shared-git')
 conflicts=('xdg-desktop-portal-liri')
 replaces=('xdg-desktop-portal-liri')
