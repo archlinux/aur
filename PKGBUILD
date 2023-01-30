@@ -1,7 +1,7 @@
 __main_repo='https://github.com/minecraft-linux/'
 pkgname=mcpelinux
 pkgver=1.34
-pkgrel=4
+pkgrel=5
 pkgdesc='A custom packaging of mcpelauncher and msa. Put the extracted x86_64 or x86 APK in /var/lib/mcpelinux or pull APK/Split APKS from waydroid by running command mcpullwd.'
 url='https://github.com/minecraft-linux'
 arch=(x86_64)
