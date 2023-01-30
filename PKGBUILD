@@ -14,8 +14,8 @@ depends=('gtk2' 'libtheora' 'lua53' 'gtkglext' 'freeglut' 'libxmu' 'glu' 'libjpe
 options=('!makeflags')
 source=("https://github.com/CelestiaProject/Celestia/archive/$pkgver/$pkgname-$pkgver.tar.gz"
   celestia-fix-desktop.patch::"https://github.com/CelestiaProject/Celestia/commit/6a4a0573.patch")
-sha512sums=('a67cc296a3f176bbe74e9c0bf8d83f6a78cc045edb23fbb870ff42dfd0b53a87af83b57ec35d378338f5dc321ead0d719a350a36036cdc3a2817f9c4b0d89ad2'
-  '13574528ba33f9bb94ed4b505bd5a921ffff92637663dc737f614a0bdce6f6ad1f9d685cf43d20b304b37244d4868909bcad13c82588d071fffd4bc0ff6e5e00')
+sha512sums=('14f00130d18ad754b98e9f612012fd06524d16d08cad3ac38296c77e74d4afda4ae94e7fc89ef5b261729a394ec66ce50d77f6262f4d2506f29b859f31334e3a'
+            'ebecc20e12cce61952d0a8f20bdbfbe4394a12e456e2805d421027465758c281a3ef65a3ad797fca92b5ad8061d627dd6ea490dd1b68ac3390526b68715cdf38')
 
 prepare() {
   cd Celestia-${pkgver}
