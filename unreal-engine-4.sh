@@ -36,4 +36,4 @@ if [ "${UE4desktopFileChecksum}" == "ChecksumPlaceholder" ]; then
     sed -i "14c\Path=${UE4editorPath}" "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop"
 fi
 
-xdg-open "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop"
+gio launch "${HOME}/local/share/applications/com.unrealengine.UE4Editor.desktop"

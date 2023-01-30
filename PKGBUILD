@@ -158,12 +158,24 @@ prepare() {
 
 build() {
   cd ${pkgname} || return
-  ## See "https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DeployingTheEngine/UsinganInstalledBuild/#installedbuildscriptoptions" for reference
-  if [[ ${_WithDDC} == true ]]; then
-    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
-  else
-    Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
-  fi
+  
+  while true; do
+    ## See "https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DeployingTheEngine/UsinganInstalledBuild/#installedbuildscriptoptions" for reference
+    if [[ ${_WithDDC} == true ]]; then
+      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
+    else
+      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
+    fi
+    
+    exit_status=$?
+      
+    if [ ${exit_status} -eq 0 ]; then
+      break
+    else
+      echo "Error: Build failed; try searching the output for suspicious messages." >&2
+      exit ${exit_status}
+    fi
+  done
 }
 
 package() {
@@ -206,6 +218,6 @@ package() {
   # Configuring the launch script to detect when it has been run for the first time
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop" | cut -f 1 -d ' ')
-  sed -i "s/ChecksumPlaceholder/${DesktopFileChecksum}/" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
-  sed -i "s/InstalledLocationPlaceholder/${_install_dir}/" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
+  sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
+  sed -i "s|InstalledLocationPlaceholder|${_install_dir}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
 }
