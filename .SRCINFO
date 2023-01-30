@@ -1,0 +1,14 @@
+pkgbase = x86_64-pc-openbsd7-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the FreeBSD target
+	pkgver = 2.40
+	pkgrel = 2
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	depends = libelf
+	source = https://mirrors.ustc.edu.cn/gnu/binutils/binutils-2.40.tar.bz2
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = x86_64-pc-openbsd7-binutils
