@@ -1,5 +1,6 @@
 pkgbase = mgrewe-openface-git
-	pkgver = 2.2.0.r20.g912bfc03
+	pkgdesc = OpenFace – a state-of-the art tool intended for facial landmark detection, head pose estimation, facial action unit recognition, and eye-gaze estimation.
+	pkgver = 2.0.6.r20.g912bfc03
 	pkgrel = 1
 	url = https://github.com/mgrewe/OpenFace
 	arch = x86_64
