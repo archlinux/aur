@@ -1,0 +1,9 @@
+# Ignore Archlinux build directories.
+/pkg/
+/src/
+
+# Ignore Archlinux packages.
+*.pkg.tar.*
+
+# Ignore source tarballs.
+*.tar.gz
