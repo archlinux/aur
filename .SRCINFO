@@ -1,0 +1,21 @@
+pkgbase = xword-dl
+	pkgdesc = Command-line tool to download .puz files for online crossword puzzles
+	pkgver = 2023.1.25
+	pkgrel = 1
+	url = https://github.com/thisisparker/xword-dl
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-argparse
+	depends = python-beautifulsoup4
+	depends = python-dateparser
+	depends = python-html2text
+	depends = python-puzpy
+	depends = python-requests
+	depends = python-unidecode
+	depends = python-xmltodict
+	depends = python-yaml
+	source = xword-dl-2023.1.25.tar.gz::https://github.com/thisisparker/xword-dl/archive/refs/tags/v2023.1.25.tar.gz
+	md5sums = 259a310fcc214f7d535c52eeb7dc6e7f
+
+pkgname = xword-dl
