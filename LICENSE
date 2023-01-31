@@ -1,4 +1,4 @@
-LA_OPT_NXP_Software_License v39 August 2022 
+LA_OPT_NXP_Software_License v42 January 2023 
 
 IMPORTANT.  Read the following NXP Software License Agreement ("Agreement") completely. By selecting the "I Accept" button at the end of this page, or by downloading, installing, or using the Licensed Software, you indicate that you accept the terms of the Agreement, and you acknowledge that you have the authority, for yourself or on behalf of your company, to bind your company to these terms. You may then download or install the file. In the event of a conflict between the terms of this Agreement and any license terms and conditions for NXP's proprietary software embedded anywhere in the Licensed Software file, the terms of this Agreement shall control.  If a separate license agreement for the Licensed Software has been signed by you and NXP, then that agreement shall govern your use of the Licensed Software and shall supersede this Agreement.
 
@@ -126,19 +126,23 @@ Otherwise, you agree to grant an irrevocable, worldwide, and perpetual license t
 
 22.        NOTICES.             All notices and communications under this Agreement will be made in writing, and will be effective when received at the following addresses: 
 
-          NXP:          NXP B.V.
+NXP:    
 
-                            High Tech Campus 60
+NXP B.V.
 
-                            5656 AG Eindhoven
+High Tech Campus 60
 
-                            The Netherlands
+5656 AG Eindhoven
 
-                    ATTN: Legal Department
+The Netherlands
+
+ATTN: Legal Department
 
                     
 
-                         You:              The address provided at registration will be used.
+You:    
+
+The address provided at registration will be used.
 
  
 
@@ -229,6 +233,8 @@ Broadcom Corporation: Your use of Broadcom Corporation software is restricted to
 Cadence Design Systems: Use of Cadence audio codec software is limited to distribution only of one copy per single NXP Product. The license granted herein to the Cadence Design Systems HiFi aacPlus Audio Decoder software does not include a license to the AAC family of technologies which you or your customer may need to obtain. Configuration tool outputs may only be distributed by licensees of the relevant Cadence SDK and distribution is limited to distribution of one copy embedded in a single NXP Product. Your use of Cadence NatureDSP Libraries whether in source code or in binary is restricted to NXP SoC based systems or emulation enablement based on NXP SoC.
 
  
+
+CEVA D.S.P. Ltd. and CEVA Technologies Inc. (“CEVA”): The CEVA-SPF2 linear algebra, CEVA-SPF2 Neural Network Libraries, CEVA-SPF2 Core Libraries, CEVA-SPF2 OpenAMP and CEVA-SPF2 STL licensed modules are owned by CEVA and such materials may only be used in connection with an NXP product containing the S250 or S125 integrated circuits, whether or not the CEVA-SPF2 Core is physically implemented and/or enabled on such NXP product
 
  
 
@@ -334,6 +340,10 @@ Real Networks - GStreamer Optimized Real Format Client Code implementation or Op
 
  
 
+Real-Time Innovations, Inc.: Not withstanding anything in this Agreement, Real-Time Innovations, Inc. software must be used strictly in accordance with Real-Time Innovations, Inc.'s Automotive Software Evaluation License Agreement, available here: https://www.rti.com/hubfs/_Collateral/Services_and_Support/Automotive_Evaluation_SLA_90_dayNXP.pdf .  Any other use is expressly prohibited.
+
+ 
+
 RivieraWaves SAS (a member of the CEVA, Inc. family of companies): You may not use the RivieraWaves intellectual property licensed under this Agreement if you develop, market, and/or license products similar to such RivieraWaves intellectual property.  Such use constitutes a breach of this Agreement.  Any such use rights must be obtained directly from RivieraWaves.
 
  
@@ -397,8 +407,6 @@ Texas Instruments: Your use of Texas Instruments Inc. WiLink8 Licensed Software 
  
 
 TES Electronic Solutions Germany (TES):  TES 3D Surround View software and associated data and documentation may only be used for evaluation purposes and for demonstration to third parties in integrated form on a board package containing an NXP S32V234 device. Licensee may not distribute or sublicense the TES software. Your license to the TES software may be terminated at any time upon notice.
-
- 
 
  
 
