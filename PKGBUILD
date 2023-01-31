@@ -10,7 +10,7 @@
 _name=gajim
 pkgname="$_name-git"
 epoch=1
-pkgver=r19005.68eb14225
+pkgver=r20795.56ad85842
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -51,7 +51,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd $_name
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd $_name
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
