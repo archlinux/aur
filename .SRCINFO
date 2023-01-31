@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 22.12.3.5
+	pkgver = 23.1.2.9
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-22.12.3.5-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-22.12.3.5-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-22.12.3.5-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-23.1.2.9-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-23.1.2.9-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-23.1.2.9-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = aa727d4294bb907f2284e707de9c234de7d19a92c3fccfc897d0e7fa6860446b521926df6cd7dd8207eac48dc119c21fe24a618c035a028203c6adf48f87df8c
-	sha512sums = aac372328f8d27234c536588730a74a7567129a5c7eaa70118200d05252edbc8cb468d78473c6d8197b012890926486b24b3908cba0a83912c724c581480105f
-	sha512sums = 9cfe29c9f0ae7e02b7aee2b92495647c27a56e5254ea92a6941acf49e8f626651b0cd2a8fd8655dcabcc7f83341f11342371ac4010ff03e8cbeb2760356c4100
+	sha512sums = bb063f960d5bffc4d9523daac22bebf5634e8678eddab79a76fe32f416e0638367a7c377cf2fe349048f2fb5700ae287023769a6876cf5c496ef9deca77846c8
+	sha512sums = 9c3b0c8eb13d21ce5700ad28b46650c8739bc9dc4386d05ac65cc9357b8fc8d8eb0b8b6dfa71458445e6a3928f4b03c405d7b05aa0e4e156560881db56846ff5
+	sha512sums = 0c7542c57295813e188ad72913dd03a6897e2dd81675eba597b9769bc583b3b227eee07b3ec7389c8c30f33b32d6113570207f46c8769594a6f7b66aa5a896a8
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = 6b22c7e27961c1453f8ce71457085cb24271ed1962033f78ea2483560bb6ad265a117414c5a9627a1733429d4080adf1fea4490073a7e522a002753d4d87d01c
 
