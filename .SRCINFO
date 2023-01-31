@@ -1,0 +1,22 @@
+pkgbase = larksuite-bin
+	pkgdesc = Linux client of Lark Suite
+	pkgver = 5.10.7
+	pkgrel = 1
+	url = https://www.larksuite.com/download
+	install = larksuite-bin.install
+	arch = x86_64
+	license = unknown
+	depends = ca-certificates
+	depends = gtk3
+	depends = nss
+	depends = xdg-utils
+	provides = bytedance-lark
+	provides = lark
+	conflicts = lark
+	replaces = bytedance-lark-dev-bin
+	options = !strip
+	options = !emptydirs
+	source = https://sf16-va.larksuitecdn.com/obj/suite-public-file-va/489ca196f4bc/Lark-linux_x64-5.10.7.deb
+	sha256sums = 96d82a3aae0e60c755dd771638200556cae530c6245c440f77497ac8fc2bf9f0
+
+pkgname = larksuite-bin
