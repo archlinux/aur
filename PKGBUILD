@@ -2,7 +2,7 @@
 
 _gitname='LogDoctor'
 pkgname='logdoctor'
-pkgver='2.01'
+pkgver='2.03'
 pkgrel='1'
 pkgdesc="Apache2/Nginx/IIS access logs analyzer to view dynamically generated statistics"
 arch=('x86_64')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v2.01.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/elB4RTO/LogDoctor/archive/refs/tags/v2.03.tar.gz")
 noextract=()
-sha256sums=('60704fe5bf970e2afc22e4353a5e45b6f679898ec558fe94aa366c1fb00970e4')
+sha256sums=('5a245fbf313914697d760d760c78c7ea2b2d5e4100a694ee19ad618021fcfb15')
 validpgpkeys=('EF88B042FB649B22A9F19DBE1719E976DB2D4E71')
 
 
@@ -46,7 +46,7 @@ package() {
 
   cd installation_stuff
   install -DC -m 644 ./LogDoctor.svg -t "$pkgdir/usr/share/LogDoctor"
-  install -DC -m 644 ./logdocdata/help/en/* -t "$pkgdir/usr/share/LogDoctor/help/en"
+  install -DC -m 644 ./logdocdata/help/en_GB/* -t "$pkgdir/usr/share/LogDoctor/help/en_GB"
   install -DC -m 444 ./logdocdata/licenses/* -t "$pkgdir/usr/share/LogDoctor/licenses"
   install -DC -m 644 ./LogDoctor.desktop -t "$pkgdir/usr/share/applications"
 }
