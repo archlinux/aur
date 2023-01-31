@@ -1,0 +1,19 @@
+pkgbase = ksanecore-git
+	pkgdesc = Library providing logic to interface scanners (git version)
+	pkgver = r673.9bb5b42
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = sane
+	provides = ksanecore
+	conflicts = ksanecore
+	source = ksanecore::git+https://invent.kde.org/libraries/ksanecore.git
+	md5sums = SKIP
+
+pkgname = ksanecore-git
