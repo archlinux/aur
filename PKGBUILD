@@ -3,7 +3,7 @@
 pkgname=lceda-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.5.22
-pkgrel=1
+pkgrel=2
 pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
 url="https://lceda.cn/page/download"
@@ -20,7 +20,7 @@ sha256sums=('2e9d37fb74cb72cce99952a36f082caecc8ddd7461b2a75c6d183fbce7ac2cac'
 package() {
   
   install -dm755 ${pkgdir}/opt/${_pkgname}
-  unzip lceda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+  cp -pr ${srcdir}/lceda-linux-x64/* ${pkgdir}/opt/${_pkgname}
   
   # icon
   local _icon

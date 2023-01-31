@@ -1,7 +1,7 @@
 pkgbase = lceda-bin
 	pkgdesc = 免费、强大、易用的在线电路设计软件
 	pkgver = 6.5.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lceda.cn/page/download
 	arch = x86_64
 	license = custom
