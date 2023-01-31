@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=carveimg
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Two image viewing utilities for the terminal, where one uses seam carving'
 arch=(x86_64)
 url='https://github.com/xyproto/carveimg'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=248fe686214588e85bb0bcc54e9f96628699cb14") # tag: v1.2.1
+source=("git+$url#commit=47dc5c54545caa98110a6338abd560e62632200c") # tag: v1.2.3
 b2sums=('SKIP')
 
 build() {

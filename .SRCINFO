@@ -1,13 +1,13 @@
 pkgbase = carveimg
 	pkgdesc = Two image viewing utilities for the terminal, where one uses seam carving
-	pkgver = 1.2.1
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/xyproto/carveimg
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/carveimg#commit=248fe686214588e85bb0bcc54e9f96628699cb14
+	source = git+https://github.com/xyproto/carveimg#commit=47dc5c54545caa98110a6338abd560e62632200c
 	b2sums = SKIP
 
 pkgname = carveimg
