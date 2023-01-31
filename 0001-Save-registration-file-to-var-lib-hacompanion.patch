@@ -1,0 +1,25 @@
+From e69fedf323f54a46aa83f5e0349b1dc558c05999 Mon Sep 17 00:00:00 2001
+From: Zach Himsel <zach@himsel.net>
+Date: Tue, 31 Jan 2023 11:14:47 -0500
+Subject: [PATCH] Save registration file to /var/lib/hacompanion
+
+---
+ hacompanion.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hacompanion.toml b/hacompanion.toml
+index 7542a08..b020271 100644
+--- a/hacompanion.toml
++++ b/hacompanion.toml
+@@ -11,7 +11,7 @@ host = "http://<your-home-assistant-ip>:8123"
+ update_interval = "15s"
+ # The location, where all registration information for Home Assistant will be stored on your machine.
+ # You do not need to change this.
+-registration_file = "~/.config/hacompanion-registration.json"
++registration_file = "/var/lib/hacompanion/registration.json"
+ 
+ [notifications]
+ # Where Home Assistant should send notifications to. Make sure to insert your
+-- 
+2.39.1
+

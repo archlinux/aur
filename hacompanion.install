@@ -1,0 +1,5 @@
+post_remove() {
+  echo "Remember that the following directories aren't removed."
+  echo "  -> /etc/hacompanion"
+  echo "  -> /var/lib/hacompanion"
+}
