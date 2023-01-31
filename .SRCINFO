@@ -1,7 +1,7 @@
 pkgbase = monitask
 	pkgdesc = Monitask desktop linux time tracker
 	pkgver = 1.0
-	pkgrel = 16
+	pkgrel = 17
 	url = https://www.monitask.com/Home/Download
 	arch = x86_64
 	license = unknown
@@ -9,8 +9,8 @@ pkgbase = monitask
 	depends = xterm
 	depends = libxfixes
 	options = staticlibs
-	source = https://deskcap.blob.core.windows.net/deployment/Linux/arch/prod/monitask-1.0-16.tar.gz
-	md5sums = 9aeba326ac82327b7b73d24c1600181d
+	source = https://deskcap.blob.core.windows.net/deployment/Linux/arch/prod/monitask-1.0-17.tar.gz
+	md5sums = d3c5745a0c1a5037894953c00ece116a
 
 pkgname = monitask
 
