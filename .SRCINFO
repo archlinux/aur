@@ -1,0 +1,10 @@
+pkgbase = convertlit-nop
+	pkgdesc = Link /usr/bin/false to /usr/bin/clit
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = none
+	arch = any
+	license = MIT
+	provides = convertlit
+
+pkgname = convertlit-nop
