@@ -1,5 +1,5 @@
 pkgname=nginx-user-service
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Systemd user service for nginx."
 arch=('any')
@@ -14,8 +14,8 @@ source=(
 )
 
 sha256sums=(
-    '25993f9b740ee77044fbb1a3e9249d983a5611dbc656598d0dc71378339705ba'
-    '85633545052a228cdecce73580ac788d003b1c40aba93aef53d1604f20f66520'
+    '8c854b888f02a8beaeefa458b1f4727a3f3529f12e4a113981aa297e8c94794d'
+    'fd2b736765448c1728bd4363c7ddf39c66c758abb016217946b41cc2e14c7af4'
 )
 
 package() {

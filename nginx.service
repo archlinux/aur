@@ -8,7 +8,7 @@ PIDFile=nginx.pid
 SyslogLevel=err
 
 ExecStart=/usr/lib/systemd/scripts/nginx-user-service
-ExecReload=nginx -s reload
+ExecReload=/usr/lib/systemd/scripts/nginx-user-service -s reload
 KillMode=mixed
 
 [Install]

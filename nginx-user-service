@@ -4,4 +4,4 @@ PID="${XDG_RUNTIME_DIR:-"/run/user/$(id -ru)"}/nginx.pid"
 CONFIG="${XDG_CONFIG_HOME:-"${HOME}/.config"}/nginx/nginx.conf"
 DATA="${XDG_DATA_HOME:-"${HOME}/.local/share"}/nginx"
 
-exec nginx -g "pid '${PID}';" -c "${CONFIG}" -p "${DATA}" -e stderr
+exec nginx -g "pid '${PID}';" -c "${CONFIG}" -p "${DATA}" -e stderr "$@"
