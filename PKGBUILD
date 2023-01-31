@@ -2,7 +2,7 @@
 
 _pkgname=Scarab
 pkgname=scarab
-pkgver=1.19.0.0
+pkgver=1.20.0.0
 pkgrel=1
 pkgdesc="Hollow Knight mod manager"
 arch=(x86_64 i686)
@@ -16,7 +16,7 @@ options=(!strip)
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fifty-six/Scarab/archive/v$pkgver.tar.gz"
         "scarab.desktop")
-sha1sums=("88cc186a1e821edb162111cb3653e51454dddd6b"
+sha1sums=("cfddd73ae0b7ee53b9a3fa0f763eb4dacdb8075d"
           "8ff187bcb309790529ef723de39ba1b9fc0a449d")
 
 build() {
