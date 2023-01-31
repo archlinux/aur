@@ -3,7 +3,7 @@
 pkgname=('mangohud' 'mangoapp' 'mangohud-common')
 pkgbase=mangohud
 pkgver=0.6.8
-pkgrel=4
+pkgrel=5
 _imgui_ver=1.81
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 arch=('x86_64')
@@ -39,7 +39,6 @@ build() {
 local meson_options=(
   -Duse_system_spdlog=enabled
   -Duse_system_vulkan=enabled
-  -Dappend_libdir_mangohud=false
   -Dmangoapp=true
   -Dmangohudctl=true
   -Dmangoapp_layer=true
