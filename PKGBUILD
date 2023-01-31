@@ -2,12 +2,13 @@
 
 pkgname=azcomicv
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple comic viewer for Linux"
 arch=('i686' 'x86_64')
 url="http://azsky2.html.xdomain.jp/soft/azcomicv.html"
 license=('GPL3')
 depends=('libx11' 'libxext' 'libxcursor' 'hicolor-icon-theme' 'freetype2' 'fontconfig' 'zlib' 'libpng' 'libtiff' 'libjpeg-turbo')
+makedepends=('ninja')
 source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
 sha256sums=('eda30c77e9660f4d50be945c697ae869d1b0d25a7929a6e8a962fa55478b5410')
 

@@ -6,6 +6,7 @@ pkgbase = azcomicv
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = ninja
 	depends = libx11
 	depends = libxext
 	depends = libxcursor
