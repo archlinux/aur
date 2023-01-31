@@ -2,7 +2,7 @@
 
 pkgname=teams-nativefier
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Microsoft Teams desktop app built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://teams.microsoft.com"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   "cfdf1ca7f6cc9a15e6d815fa31463c3e2a40b0bf3e25de3377a8bf6b8ef4e926"
-  "91f6d45c82e9d95af8ce350510193b7ad7958c883129a351f7bc3683f377bad8"
+  "5807fe92daf03c5209040faa40856938c6531886fb8328cd7b262a73b8c4d22b"
 )
 
 build() {
