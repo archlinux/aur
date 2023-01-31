@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="keyfault"
-pkgver="20.4.5"
+pkgver="23.1.31"
 pkgrel="1"
 pkgdesc="Keyboard Auto-Default"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("libxss")
 makedepends=("libxss")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("3274224f755bff2a6e7397ac8f0311ce")
+md5sums=("9a469bd07f0666754d11b907e400d835")
 options=("!emptydirs")
 
 build()
