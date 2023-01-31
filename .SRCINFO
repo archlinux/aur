@@ -1,0 +1,21 @@
+pkgbase = aerc-no-notmuch-git
+	pkgdesc = Email Client for your Terminal (compiled without notmuch support)
+	pkgver = 0.14.0.r37.gc3db57a
+	pkgrel = 1
+	url = https://aerc-mail.org/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = scdoc
+	optdepends = w3m: html viewer support
+	optdepends = dante: proxy support
+	provides = aerc
+	conflicts = aerc
+	options = !buildflags
+	source = aerc::git+https://git.sr.ht/~rjarry/aerc
+	source = makefile-fix.patch
+	sha512sums = SKIP
+	sha512sums = aa374d17c4e704ec9adf696db547e6c8bdd4b13cacc4d0dbeb4010a687e3ad14db3ae8dfee1fd588ed004fcb21b871b8f2f967c38e93765750e32f31f3b2553b
+
+pkgname = aerc-no-notmuch-git

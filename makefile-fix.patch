@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 3ac53e0..c43178f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -118,7 +118,7 @@ RM?=rm -f
+ clean:
+ 	$(RM) $(DOCS) aerc wrap colorize
+ 
+-install: $(DOCS) aerc wrap colorize
++install:
+ 	mkdir -m755 -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1 $(DESTDIR)$(MANDIR)/man5 $(DESTDIR)$(MANDIR)/man7 \
+ 		$(DESTDIR)$(SHAREDIR) $(DESTDIR)$(SHAREDIR)/filters $(DESTDIR)$(SHAREDIR)/templates $(DESTDIR)$(SHAREDIR)/stylesets \
+ 		$(DESTDIR)$(PREFIX)/share/applications $(DESTDIR)$(LIBEXECDIR)/filters
