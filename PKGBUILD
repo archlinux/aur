@@ -1,6 +1,6 @@
 pkgname=mcpelinux
 pkgver=1.34
-pkgrel=11
+pkgrel=12
 pkgdesc='A custom packaging of mcpelauncher and msa. Put the extracted x86_64 or x86 APK in /var/lib/mcpelinux or pull APK/Split APKS from waydroid by running command mcpullwd.'
 url='https://github.com/minecraft-linux'
 arch=(x86_64)
@@ -52,6 +52,7 @@ package(){
 	install -Dm 755 $srcdir/../U8aNBkuD $pkgdir/usr/share/applications/mcpelauncher-client.desktop
 	install -Dm 755 $srcdir/../MinecraftApp.png $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
 	install -Dm 755 $srcdir/../0S23ggea $pkgdir/usr/bin/mcpullwd
+	sed -i -e 's/\r$//' /bin/{mcclean,mcrun}
 	mkdir -p $pkgdir/var/lib/mcpelinux
 	chmod 777 $pkgdir/var/lib/mcpelinux
 }

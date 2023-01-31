@@ -1,7 +1,7 @@
 pkgbase = mcpelinux
 	pkgdesc = A custom packaging of mcpelauncher and msa. Put the extracted x86_64 or x86 APK in /var/lib/mcpelinux or pull APK/Split APKS from waydroid by running command mcpullwd.
 	pkgver = 1.34
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/minecraft-linux
 	arch = x86_64
 	license = GPL3
@@ -58,7 +58,7 @@ pkgbase = mcpelinux
 	source = https://pastebin.com/raw/U8aNBkuD
 	source = https://vignette.wikia.nocookie.net/minecraft/images/3/3b/MinecraftApp.png
 	source = https://pastebin.com/raw/J6wPyTnx
-	source = https://pastebin.com/Ljy6zZmM
+	source = https://pastebin.com/raw/Ljy6zZmM
 	source = https://pastebin.com/raw/0S23ggea
 	b2sums = SKIP
 	b2sums = SKIP
