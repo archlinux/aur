@@ -24,7 +24,7 @@ install=
 changelog=
 source=("$pkgname-${pkgver}-beta${betaver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/refs/tags/${gitver}-beta${betaver}.tar.gz"
         "$pkgname-${pkgver}-beta${betaver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz")
-validpgpkeys=("4AEE18F83AFDEB23")
+validpgpkeys=()
 
 build() {
 	export NODE_OPTIONS=--openssl-legacy-provider
