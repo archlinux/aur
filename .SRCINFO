@@ -18,9 +18,13 @@ pkgbase = libdxvk
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d11.so
 	source = git+https://github.com/doitsujin/dxvk.git?signed#tag=v2.1
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
+	source = git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
 	validpgpkeys = 273D040B5113B886D1A090D4C8CC613427A31C99
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

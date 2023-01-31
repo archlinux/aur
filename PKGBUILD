@@ -12,10 +12,16 @@ license=('custom:zlib')
 depends=(sdl2 vulkan-icd-loader lib32-sdl2 lib32-vulkan-icd-loader)
 makedepends=(git gcc meson glslang)
 provides=(libdxvk libdxvk_dxgi.so libdxvk_d3d9.so libdxvk_d3d11.so)
-source=("git+$url.git?signed#tag=v$pkgver"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-        "git+https://github.com/KhronosGroup/Vulkan-Headers.git")
+source=(
+	"git+$url.git?signed#tag=v$pkgver"
+	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
+	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
+)
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP')
 validpgpkeys=('273D040B5113B886D1A090D4C8CC613427A31C99') # Philip Rebohle <philip.rebohle@tu-dortmund.de>
@@ -23,8 +29,10 @@ validpgpkeys=('273D040B5113B886D1A090D4C8CC613427A31C99') # Philip Rebohle <phil
 prepare() {
 	cd dxvk
 	git submodule init
-	git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
+	git config submodule.include/native/directx.url "$srcdir/mingw-directx-headers"
 	git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
+	git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
+	git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
 	git -c protocol.file.allow=always submodule update
 }
 
