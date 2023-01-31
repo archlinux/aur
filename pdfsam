@@ -1,8 +1,8 @@
 #!/bin/sh
-# run application with java env == 11
+# run application with java env == 19
 
 PDFSAM_EXECUTABLE="/usr/share/java/pdfsam/bin/pdfsam.sh"
-PDFSAM_JAVA_VERSION="11"
+PDFSAM_JAVA_VERSION="19"
 
 run_pdfsam() {
     exec "${PDFSAM_EXECUTABLE}"
