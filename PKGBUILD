@@ -3,7 +3,7 @@
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
 pkgver=0.6.8
-pkgrel=3
+pkgrel=4
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 arch=('x86_64')
@@ -45,7 +45,6 @@ prepare() {
 build() {
 local meson_options=(
     -Duse_system_vulkan=enabled
-    -Dappend_libdir_mangohud=false
     -Dmangoapp_layer=true
     -Dinclude_doc=false
   )
