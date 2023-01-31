@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=("python-build" "python-installer" "git")
 source=("https://github.com/jcrist/msgspec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('875aea77824173ce083755124ab9db1a58f43615af7fb882969c0c3c279234db')
+sha256sums=('f7b2c258301c8f00a7d49fef5f3f0e58a49b1a0a0eaca67e2804066718affa26')
 
 build() {
     cd "$_pkgname-$pkgver"
