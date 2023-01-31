@@ -2,7 +2,7 @@
 
 pkgname=agdsn-zsh-config
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="AG DSN Zsh Config"
 arch=('any')
 url='https://github.com/agdsn/agdsn-zsh-config'

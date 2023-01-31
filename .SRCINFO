@@ -1,7 +1,7 @@
 pkgbase = agdsn-zsh-config
 	pkgdesc = AG DSN Zsh Config
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/agdsn/agdsn-zsh-config
 	arch = any
 	license = GPL2
