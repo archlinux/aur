@@ -1,8 +1,8 @@
-# Maintainer:  twa022 <twa022 at gmail dot com>
+# Maintainer: L. Heizinger <misc at heleon dot de>
 
 _pkgname=xfce4-power-manager
-pkgname=${_pkgname}-git
-pkgver=1.7.0+70+gf05d5ee0
+pkgname=${_pkgname}-git-xsccomp
+pkgver=4.18.0+9+g818cabd5
 pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -14,12 +14,17 @@ optdepends=('xfce4-panel: for the Xfce panel plugin')
 makedepends=('intltool' 'xfce4-panel' 'git' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}" "xsccomp.patch")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
   git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  patch -Np1 -i $srcdir/xsccomp.patch
 }
 
 build() {

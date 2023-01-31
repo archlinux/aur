@@ -1,0 +1,21 @@
+diff --git a/src/xfce-screensaver.c b/src/xfce-screensaver.c
+index c9d5c25a..9b7cdc85 100644
+--- a/src/xfce-screensaver.c
++++ b/src/xfce-screensaver.c
+@@ -505,7 +505,6 @@ xfce_screensaver_lock (XfceScreenSaver *saver)
+ {
+   switch (saver->priv->screensaver_type)
+   {
+-    case SCREENSAVER_TYPE_FREEDESKTOP:
+     case SCREENSAVER_TYPE_MATE:
+     case SCREENSAVER_TYPE_GNOME:
+     case SCREENSAVER_TYPE_XFCE:
+@@ -550,6 +549,7 @@ xfce_screensaver_lock (XfceScreenSaver *saver)
+       }
+       break;
+     }
++    case SCREENSAVER_TYPE_FREEDESKTOP:
+     case SCREENSAVER_TYPE_OTHER:
+     {
+       gboolean ret = FALSE;
+
