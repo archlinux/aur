@@ -1,11 +1,11 @@
 pkgbase = ttf-i.ming
 	pkgdesc = I.Ming ( I.明體 / 一點明體 / 一点明朝 / 一点明体 )
-	pkgver = 8.00+1+f9dfbc2
+	pkgver = +1+
 	pkgrel = 1
 	url = https://github.com/ichitenfont/I.Ming
 	arch = any
 	license = custom
-	source = git+https://github.com/ichitenfont/I.Ming.git#commit=f9dfbc201912a27bbe373315c160d275a21ac432
+	source = git+https://github.com/ichitenfont/I.Ming.git#commit=
 	sha256sums = SKIP
 
 pkgname = ttf-i.ming
