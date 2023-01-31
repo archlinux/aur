@@ -1,1 +1,1 @@
-complete -F _root_command ssu
+complete -F _command ssu
