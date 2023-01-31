@@ -42,6 +42,6 @@ build() {
 package() {
 	install -Dm0644 "${srcdir}/${pkgname}/target/release/libpam_rssh.so" "${pkgdir}/usr/lib/${pkgname}.so"
 	install -Dm0644 "${srcdir}/${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	sed -i "s#/usr/local/lib/libpam_rssh.so#/usr/lib/${pkgname}.so#" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	sed -i "s#/usr/local/lib/libpam_rssh.so#/usr/lib/security/${pkgname}.so#" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
