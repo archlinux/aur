@@ -19,8 +19,8 @@ pkgname=(
   pipewire-full-ffmpeg-git
   pipewire-full-roc-git
 )
-pkgver=0.3.63.r22.ga65a58d1
-pkgrel=2
+pkgver=0.3.65.r26.ge4f4ef9e
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -37,7 +37,8 @@ makedepends=(
   jack2
   vulkan-headers vulkan-icd-loader
   ffmpeg
-  'roc-toolkit>=0.2'
+  roc-toolkit
+  libmysofa
 )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -103,6 +104,7 @@ package_pipewire-full-git() {
     liblilv-0.so
     libcamera-base.so libcamera.so
     liblc3.so
+    libmysofa
   )
   optdepends=(
     'pipewire-session-manager: Session manager'
@@ -120,7 +122,8 @@ package_pipewire-full-git() {
     'hsphfpd: hsphfpd Bluetooth HSP/HFP support'
   )
   provides=(
-    "pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so
+    "pipewire=$_short_pkgver"
+    pipewire-audio alsa-card-profiles libpipewire-$_ver.so
     pipewire-full-libcamera-git
   )
   conflicts=(
