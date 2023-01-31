@@ -4,11 +4,10 @@ stages:
 
 build:
   stage: build
-  image: stefanwimmer128/archlinux-chaotic-paru-user:latest
+  image: registry.stefanwimmer128.eu/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
-    - paru -Syu --noconfirm
+    - gpg --recv-key 14F26682D0916CDD81E37B6D61B7B526D98F0353
   script:
-    - gpg --recv-key EBE41E90F6F12F6D
     - makepkg -s --noconfirm
   artifacts:
     paths:
