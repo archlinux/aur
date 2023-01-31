@@ -1,0 +1,26 @@
+pkgbase = yambar-wayland
+	pkgdesc = Simplistic and highly configurable status panel for X and Wayland
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://codeberg.org/dnkl/yambar
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = scdoc
+	makedepends = tllist>=1.0.1
+	depends = wayland
+	depends = pixman
+	depends = libyaml
+	depends = libudev.so
+	depends = libpulse
+	depends = pipewire
+	depends = fcft>=3.0.0
+	depends = fcft<4.0.0
+	optdepends = alsa-lib: for the ALSA module
+	optdepends = json-c: for the XKB module
+	optdepends = libmpdclient: for the MPD module
+	source = yambar-wayland-1.9.0.tar.gz::https://codeberg.org/dnkl/yambar-wayland/archive/1.9.0.tar.gz
+	sha256sums = 46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811
+
+pkgname = yambar-wayland
