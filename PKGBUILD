@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -103,6 +103,7 @@ pkgver() {
 prepare() {
     cd ${pkgname%-headless}
     git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
+    git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c # hwcontext_vulkan: remove optional encode/decode extensions from the list
 }
 
 build() {
