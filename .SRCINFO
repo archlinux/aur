@@ -1,0 +1,15 @@
+pkgbase = madcow
+	pkgdesc = ZFS snapshot manager command line tool
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://codeberg.org/dimus/madcow
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = pv
+	provides = madcow
+	conflicts = madcow
+	source = https://codeberg.org/dimus/madcow/archive/v0.0.4.tar.gz
+	sha256sums = a9e2254d1d944206c4f2df5428b9f85efb6db27e9538d48a4e6d64dab13f161b
+
+pkgname = madcow
