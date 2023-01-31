@@ -95,6 +95,13 @@ prepare() {
     ### Setting config
         echo "Setting config..."
         cp ../config .config
+        make olddefconfig
+        diff -u ../config .config || :
+
+    ### Prepared version
+        make include/config/kernel.release
+        make -s kernelrelease > version
+        echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -137,16 +144,6 @@ prepare() {
             exit
             fi
         fi
-
-    ### Rewrite configuration
-        echo "Rewrite configuration..."
-        make prepare
-        yes "" | make config >/dev/null
-        diff -u ../config .config || :
-
-    ### Prepared version
-        make -s kernelrelease > version
-        echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
 	[[ -z "$_makenconfig" ]] ||  make nconfig
