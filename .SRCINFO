@@ -1,6 +1,6 @@
 pkgbase = kcc-beta
 	pkgdesc = Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI
-	pkgver = 5.5.3+beta+darodi.20
+	pkgver = 5.6.2+beta+1
 	pkgrel = 1
 	url = https://github.com/darodi/kcc
 	arch = any
@@ -18,10 +18,10 @@ pkgbase = kcc-beta
 	provides = kcc
 	conflicts = kcc
 	source = kindlecomicconverter.desktop
-	source = https://github.com/darodi/kcc/archive/refs/tags/v5.5.3-beta-darodi.20.tar.gz
+	source = https://github.com/darodi/kcc/archive/refs/tags/v5.6.2b1.tar.gz
 	md5sums = f25b30fbc1bc1db491173215fe411789
-	md5sums = fa7bd105b9b891fb782adec3a2a5b9b0
+	md5sums = a5e952a25c7e6d0c99b4d12c12eedef0
 	sha256sums = 3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f
-	sha256sums = b14528526c238c6915574ec6b3c41f9045ce835a02b4e1803d9a407866aee35c
+	sha256sums = 32e6198dadfe48ebaa3cbeaac998f5fe05137c196ab06ff7db9db211e2d7431b
 
 pkgname = kcc-beta
