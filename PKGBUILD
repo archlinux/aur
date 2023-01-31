@@ -4,12 +4,13 @@
 _pkgname=assinador-serpro
 pkgname=serpro-signer
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Assinador SERPRO'
 arch=('x86_64')
 url='https://www.assinadorserpro.estaleiro.serpro.gov.br/'
 # pkgveri686=2.7.0
-depends=('libappindicator-gtk3')
+depends=('libappindicator-gtk3' 'libcanberra' 'libnewt')
+install=${pkgname}.install
 # source=("https://assinadorserpro.estaleiro.serpro.gov.br/repository/AssinadorSERPROpublic.asc")
 # source_i686=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/assinador-serpro-i386_${pkgveri686}_i386.deb")
 source_x86_64=("https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/${_pkgname}_${pkgver}_amd64.deb")

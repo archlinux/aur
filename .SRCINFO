@@ -1,10 +1,13 @@
 pkgbase = serpro-signer
 	pkgdesc = Assinador SERPRO
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.assinadorserpro.estaleiro.serpro.gov.br/
+	install = serpro-signer.install
 	arch = x86_64
 	depends = libappindicator-gtk3
+	depends = libcanberra
+	depends = libnewt
 	source_x86_64 = https://www.assinadorserpro.estaleiro.serpro.gov.br/repository/stable/assinador-serpro_4.0.2_amd64.deb
 	sha256sums_x86_64 = dfee252bba588ac16443b2618ab64c32474d1dd23321ae0848f0c3f9ba729ae2
 

@@ -1,0 +1,16 @@
+post_install() {
+    if  grep 'assinador-desktop.serpro.gov.br' /etc/hosts > /dev/null
+        then
+            if [ "$(cat /etc/locale.conf | grep "LANG")" = "LANG=pt_BR.UTF-8" ] ;then
+                echo -e "\e[34;1m==>\e[39;1m Url do certificado já existe. \e[0m"
+            else
+                echo -e "\e[34;1m==>\e[39;1m Certificate url already exists. \e[0m"
+            fi
+        else
+            echo "127.0.0.1	assinador-desktop.serpro.gov.br" >> /etc/hosts
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
