@@ -1,26 +1,19 @@
-# Maintainer: Fredrick Brennan <copypaste@kittens.ph>
+# Maintainer: éclairevoyant
+# Contributor: Fredrick Brennan <copypaste at kittens dot ph>
 
 pkgname=bdf2psf-debian
-pkgver=1.207
-pkgrel=2
-pkgdesc='Bitmap font conversion utility with a very long history (Debian source)'
-makedepends=('grep' 'libxml2' 'curl')
+pkgver=1.215
+pkgrel=1
+pkgdesc='Bitmap font conversion utility'
+arch=('any')
+url="https://packages.debian.org/unstable/bdf2psf"
 depends=('perl')
 provides=('bdf2psf')
 conflicts=('bdf2psf')
-replaces=('bdf2psf')
-arch=('any')
 license=('GPL2')
-source=("http://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
-sha512sums=('SKIP')
-
-pkgver() {
-    curl 'http://deb.debian.org/debian/pool/main/c/console-setup/?C=M;O=D' | xmllint --html --xpath '//a/text()' /dev/stdin | grep bdf2psf | grep -oP '\d+\.\d+' | head -n 1
-}
+source=("https://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
+b2sums=('746743d77d6609f551ef298a5a6c7ee6eb96c4586c85d30fa705b72c28e16580430e9481303c76bc21823583bf2bb154f7c69668b5c5c5edf4815be4b8a72505')
 
 package() {
-    set -x
-    tar -xvf data.tar.xz
-    mv $srcdir/usr $pkgdir
-    set +x
+	tar -xvf data.tar.xz -C "$pkgdir"
 }
