@@ -1,23 +1,23 @@
 # Maintainer: termuellinator
 
 pkgname=lug-helper
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 epoch=1
 pkgdesc="Star Citizen's Linux Users Group Helper Script"
 arch=('any')
-depends=('bash' 'coreutils' 'curl')
+depends=('bash' 'coreutils' 'curl' 'findutils')
 optdepends=('zenity' 'polkit')
 provides=('lug-helper')
 conflicts=('lug-helper')
 url="https://github.com/starcitizen-lug/lug-helper"
 license=('GPL3')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/starcitizen-lug/lug-helper/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/starcitizen-lug/lug-helper/archive/refs/tags/${pkgver}.tar.gz"
     'lug-helper.desktop'
 )
 sha256sums=(
-    'c65c74074a6e0cacf6ca20d62d87067147ad8f6eaead4aa031065834100b1a1f'
+    'f5650ec13336bac651996d5d1435256d8aa9e916b3cf39f1f9be7624bf9350c8'
     'a69118baac0cd55dfb85a81de1873ab1fee85d3477e13c10628a824ebdc5e22f'
 )
 
