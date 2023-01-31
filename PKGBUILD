@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-qt-git
-pkgver=3.1.3
+pkgver=3.3.0.0.r16557
 pkgrel=1
 pkgdesc="Record and edit audio files-tracking the QT branch in git"
 arch=('x86_64')
@@ -20,6 +20,16 @@ source=(
 "git+https://github.com/audacity/audacity.git#branch=qt"
 )
 sha512sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/audacity
+   VERSION=$(grep AUDACITY_VERSION CMakeLists.txt | head -n 1 | cut -d " " -f3)
+   RELEASE=$(grep AUDACITY_RELEASE CMakeLists.txt | head -n 1 | cut -d " " -f3)
+   REVISION=$(grep AUDACITY_REVISION CMakeLists.txt | head -n 1 | cut -d " " -f3)
+   MODLEVEL=$(grep AUDACITY_MODLEVEL CMakeLists.txt | head -n 1 | cut -d " " -f3)
+   _ver=$VERSION.$RELEASE.$REVISION.$MODLEVEL
+  echo "$(echo ${_ver}).r$(git rev-list --count HEAD)"
+}
 
 prepare() {
 #  cd "audacity-Audacity-${pkgver}"
