@@ -23,7 +23,7 @@ depends=(
         'gst-plugins-base-libs' 'lcms2' 'libldap' 'mpg123'
         'openal' 'libpcap' 'libcanberra-pulse' 'libudev0-shim'
         'libusb' 'vkd3d' 'libx11' 'libxext' 'libxml2'
-        'ocl-icd' 'deepin-udis86' 'zlib' 'ncurses' 'fontconfig'
+        'ocl-icd' 'zlib' 'ncurses' 'fontconfig'
         'freetype2' 'gettext' 'libxcursor' 'mesa' 'libjpeg6'
         'libxrandr' 'libxi' 'glu'
         'lib32-alsa-plugins' 'lib32-glib2' 'lib32-glibc' 'libgphoto2'
