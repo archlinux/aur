@@ -3,7 +3,7 @@
 pkgname=python-xsge
 _pkgname=xsge
 pkgver=2021.10.11
-pkgrel=2
+pkgrel=3
 pkgdesc="xSGE is a collection of higher-level extensions for the SGE which
 enhance the core functionality in an implementation-independent way."
 arch=('x86_64')
@@ -14,8 +14,8 @@ makedepends=('python-setuptools')
 provides=('python-xsge')
 conflicts=('python-xsge')
 _name=${pkgname#python-}
-source=("https://github.com/python-sge/xsge/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('3e0f3e7e57d3cdb6d868c0e72db1e02a')
+source=("https://github.com/python-sge/xsge/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('58fb4b439d420f48706e7a3de01de81d')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
