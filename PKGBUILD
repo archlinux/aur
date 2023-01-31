@@ -2,7 +2,7 @@
 
 pkgname=chainner-rpm
 pkgver=0.17.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
 license=('GPL3')
@@ -11,7 +11,7 @@ provides=('chainner')
 options=('!emptydirs' '!strip')
 depends=('libxcrypt-compat')
 source=("https://github.com/chaiNNer-org/chaiNNer/releases/download/v${pkgver}/chaiNNer-${pkgver}-x64-linux-redhat.rpm")
-sha512sums=('7560aefe6643c22ffa8bb69ced74c95cb87abf946e10e12bce851eefc282740b01fd990b12438272b122f71e7d085f3adc30c3f47d387d06804bc61313adeaad')
+sha512sums=('59d7a8a8c5c1af7cc549c7d844a479055e6b79db80cda1a1f1412460f6ace9d4b4e29cc328e2f29868c87a4a4f1b89325ba2986f40a7da0bcdbc84c567f9b669')
 
 package() (
     mkdir -p "${pkgdir}/usr/bin/"
