@@ -1,8 +1,8 @@
 # Maintainer: Daniel Souza <aur at posix dot dev dot br>
 
 pkgname=chainner-rpm
-pkgver=0.16.1
-pkgrel=2
+pkgver=0.17.0
+pkgrel=0
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
 license=('GPL3')
