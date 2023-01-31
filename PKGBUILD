@@ -3,7 +3,7 @@ pkgname=neovim-coc
 # Coc.nvim creates tags on release branch but the source code is only available on master branch, so I have to use commit hash to specify the version to use.
 _hash='7a50d4d9513362aa21cf42646ceca0cb41cb0dbc'
 pkgver=0.0.82
-pkgrel=3
+pkgrel=4
 pkgdesc='Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode'
 arch=('any')
 url='https://github.com/neoclide/coc.nvim'
@@ -27,7 +27,7 @@ package() {
     cd "${srcdir}/coc.nvim-${_hash}"
     nvim -es --cmd ":helptags doc" --cmd ":q"
     find autoload build data doc package.json plugin -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/coc/start/coc.nvim/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/pack/coc/opt/coc.nvim/{}" \;
     install -Dm 644 "${srcdir}/coc.nvim-${_hash}/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
