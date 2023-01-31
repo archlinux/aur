@@ -1,7 +1,7 @@
 pkgbase = megacmd
 	pkgdesc = MEGA Command Line Interactive and Scriptable Application
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meganz/MEGAcmd
 	arch = any
 	license = custom

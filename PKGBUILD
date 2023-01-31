@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('any')
@@ -46,6 +46,12 @@ package() {
   # change completions location
   rm -rf ${pkgdir}/usr/etc/
   install -Dm644 src/client/megacmd_completion.sh ${pkgdir}/usr/share/bash-completion/completions/${pkgname}
+
+  for completion_cmd in ${pkgdir}/usr/bin/mega*;
+  do
+    completion_cmd=$(basename "$completion_cmd")
+    ln -s "${pkgname}" "${pkgdir}/usr/share/bash-completion/completions/$completion_cmd"
+  done
 
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
