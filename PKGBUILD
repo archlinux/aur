@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='snmp_exporter'
-pkgver='0.20.0'
+pkgver='0.21.0'
 pkgrel='1'
 pkgdesc='This is an exporter that exposes information gathered from SNMP for use by the Prometheus monitoring system'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
-sha256sums=('4326749fb36b829ca43e9d60fc09f43b62788f353c491aa3367705d52b96fae9'
+sha256sums=('a6ed31a8fd723a8c7d2880fd21d93fd2c9ae24fa4fdeb3834e72dccd8a3e1fb3'
             '0f1b59f5b416b37665ddb5ab3cf40a4fc4bf0c4622f68da018793194dc2f1206'
             '2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f')
 backup=("etc/prometheus/snmp.yml")
