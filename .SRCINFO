@@ -1,7 +1,7 @@
 pkgbase = fastfetch
 	pkgdesc = Like Neofetch, but much faster because written in C
 	pkgver = 1.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
 	arch = aarch64
@@ -40,6 +40,6 @@ pkgbase = fastfetch
 	optdepends = zlib: Faster image output when using kitty graphics protocol
 	backup = etc/fastfetch/config.conf
 	source = fastfetch-1.9.1.tar.gz::https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/1.9.1.tar.gz
-	sha256sums = be4e2e398be7b7e2dcb771813c9691b2ecdfe20c430eca90c0ee39707f322b2e
+	sha256sums = 0b6d31bc213282b26a7c2fc9706d41e1669a7ea8875154ba6aed1ba428c92b3d
 
 pkgname = fastfetch
