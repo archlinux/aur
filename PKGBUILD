@@ -3,7 +3,7 @@
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         "spdlog-${_spdlog_ver}-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/spdlog/${_spdlog_ver}/1/get_zip")
 sha256sums=('SKIP'
             'SKIP'
-            'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
+            '86ccbea1de225db54f38960d20eafbfc573e26f7090cd9fd98febdedaf143de5'
             '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f'
-            '944d0bd7c763ac721398dca2bb0f3b5ed16f67cef36810ede5061f35a543b4b8'
+            '7f500fb644d695a0258fc81a327b83c122307c97b22cd3a1aff5a3905be74b85'
             '3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be')
 
 pkgver() {
