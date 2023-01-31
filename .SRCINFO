@@ -1,5 +1,5 @@
 pkgbase = groonga
-	pkgver = 12.0.3
+	pkgver = 12.1.2
 	pkgrel = 1
 	url = http://groonga.org/
 	arch = i686
@@ -15,14 +15,14 @@ pkgbase = groonga
 	makedepends = msgpack-c
 	makedepends = ruby
 	makedepends = snowball-c-git
-	source = http://packages.groonga.org/source/groonga/groonga-12.0.3.tar.gz
-	source = http://packages.groonga.org/source/groonga/groonga-12.0.3.tar.gz.asc
+	source = http://packages.groonga.org/source/groonga/groonga-12.1.2.tar.gz
+	source = http://packages.groonga.org/source/groonga/groonga-12.1.2.tar.gz.asc
 	source = groonga-httpd.service
 	validpgpkeys = 2701F317CFCCCB975CADE9C2624CF77434839225
-	sha1sums = b98e58b3bdd245826034d13580d39f984da12081
+	sha1sums = f77db76d910a7672f7c6698b2f5a4738fde0080b
 	sha1sums = SKIP
 	sha1sums = 56b68b5ebfc6785f08ce101b263d6f56acd74d8a
-	sha256sums = 6b0baa9e1c424e1188777ab161afa62a230dce58b03b0e1840408df1e8bece18
+	sha256sums = 259b2d543ad2939e1c35a541f814bc2448cff0153d3b424eea9cc6e787d4d512
 	sha256sums = SKIP
 	sha256sums = 4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b
 
