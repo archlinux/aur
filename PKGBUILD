@@ -1,5 +1,5 @@
 # Arch64 kernel for BananaPi R64
-# Maintainer: Eric Woudstra <ericwouds@gmail.com>
+# Maintainer: Eric Woudstra <ericwouds AT gmail DOT com>
 
 # PKGBUILD: https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-aarch64
 
@@ -9,7 +9,7 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPIR64"
-pkgver=6.0.12.bpi.r64.1
+pkgver=6.1.8.bpi.r64.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
