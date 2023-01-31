@@ -1,0 +1,4 @@
+scummvm/
+src/
+pkg/
+*.pkg.tar.xz
