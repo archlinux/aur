@@ -13,8 +13,8 @@
 pkgbase=mesa-minimal-git
 pkgname=('mesa-minimal-git' 'rusticl-mesa-minimal-git')
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.0.0_devel.164103.d217883c5c3
-pkgrel=2
+pkgver=23.1.0_devel.165926.56158bd0c0a
+pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
               'wayland-protocols' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc-minimal-git' 'llvm-libs<16' 'rust' 'rust-bindgen' 'spirv-tools-git' 'spirv-llvm-translator-minimal-git' 'libvdpau')
@@ -64,7 +64,6 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D platforms=x11,wayland \
-       -D dri-drivers=[] \
        -D gallium-drivers=radeonsi,swrast,iris,zink,virgl \
        -D vulkan-drivers=amd,intel,swrast \
        -D dri3=enabled \
@@ -94,7 +93,7 @@ build () {
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
        -D gallium-rusticl=true \
        -D rust_std=2021
-   
+
     meson configure --no-pager _build
     ninja $NINJAFLAGS -C _build
 }
