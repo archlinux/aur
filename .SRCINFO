@@ -1,0 +1,18 @@
+pkgbase = mgrewe-openface-git
+	pkgver = 2.2.0.r20.g912bfc03
+	pkgrel = 1
+	url = https://github.com/mgrewe/OpenFace
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = dlib
+	makedepends = opencv
+	makedepends = pybind11
+	depends = python
+	provides = mgrewe-openface
+	conflicts = mgrewe-openface
+	conflicts = openface
+	source = git+https://github.com/mgrewe/OpenFace.git
+	sha256sums = SKIP
+
+pkgname = mgrewe-openface-git
