@@ -52,7 +52,7 @@ package(){
 	install -Dm 755 $srcdir/../U8aNBkuD $pkgdir/usr/share/applications/mcpelauncher-client.desktop
 	install -Dm 755 $srcdir/../MinecraftApp.png $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
 	install -Dm 755 $srcdir/../0S23ggea $pkgdir/usr/bin/mcpullwd
-	sed -i -e 's/\r$//' $pkgdir/bin/{mcclean,mcrun}
+	sed -i -e 's/\r$//' $pkgdir/bin/{mcclean,mcrun,mcpullwd}
 	mkdir -p $pkgdir/var/lib/mcpelinux
 	chmod 777 $pkgdir/var/lib/mcpelinux
 }
