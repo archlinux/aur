@@ -1,7 +1,7 @@
 # Maintainer: Joost Molenaar <jjm@j0057.nl>
 pkgname=ssu
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Extremely simple su utility"
 arch=(x86_64)
@@ -34,8 +34,8 @@ package() {
     install -o root -g root -m 755 -d $pkgdir/usr/lib/tmpfiles.d
     install -o root -g root -m 644 -t $pkgdir/usr/lib/tmpfiles.d $srcdir/ssu.conf
 
-    install -o root -g root -m 755 -d $pkgdir/usr/share/bash-completion
-    install -o root -g root -m 644 -t $pkgdir/usr/share/bash-completion $srcdir/completion.bash
+    install -o root -g root -m 755 -d $pkgdir/usr/share/bash-completion/completions
+    install -o root -g root -m 644 -T $srcdir/completion.bash $pkgdir/usr/share/bash-completion/completions/ssu
 }
 
 # vim: set et ts=4 sw=4:
