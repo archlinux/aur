@@ -10,6 +10,6 @@ pkgbase = mingw-w64-directx-headers
 	options = !strip
 	options = !buildflags
 	source = directx-headers-1.608.2.tar.gz::https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v1.608.2.tar.gz
-	sha256sums = 684a784dc61c90a84a592374deb4d788e5b18f4160ca5ff34a98cf3b9c92c773
+	sha256sums = 6d2b2ee19e744ce5e0e9716367ad38ebf94dd5ef18a014971594f29eb67bd87e
 
 pkgname = mingw-w64-directx-headers

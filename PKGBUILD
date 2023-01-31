@@ -8,7 +8,7 @@ url="https://github.com/microsoft/DirectX-Headers"
 license=('MIT')
 options=('staticlibs' '!strip' '!buildflags')
 source=(directx-headers-${pkgver}.tar.gz::https://github.com/microsoft/DirectX-Headers/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('684a784dc61c90a84a592374deb4d788e5b18f4160ca5ff34a98cf3b9c92c773')
+sha256sums=('6d2b2ee19e744ce5e0e9716367ad38ebf94dd5ef18a014971594f29eb67bd87e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
