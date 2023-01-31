@@ -36,8 +36,7 @@ _ensure_local_nvm() {
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-    chmod +x ./resources/version.sh
-    GITHUB_REF_NAME=${_pkgbranch} ./resources/version.sh | sed 's/\-/./g'
+    printf "%s.r%s.%s" "$(awk -F'"' '/"version": ".+"/{ print $4; exit; }' package.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
