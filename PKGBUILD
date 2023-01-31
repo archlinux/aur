@@ -1,6 +1,6 @@
 pkgname=mcpelinux
 pkgver=1.34
-pkgrel=8
+pkgrel=9
 pkgdesc='A custom packaging of mcpelauncher and msa. Put the extracted x86_64 or x86 APK in /var/lib/mcpelinux or pull APK/Split APKS from waydroid by running command mcpullwd.'
 url='https://github.com/minecraft-linux'
 arch=(x86_64)
@@ -40,11 +40,6 @@ build(){
 	make -j$(getconf _NPROCESSORS_ONLN)
 }
 package(){
-	install -Dm 755 J6wPyTnx $pkgdir/usr/bin/mcclean
-	install -Dm 755 Ljy6zZmM $pkgdir/usr/bin/mcrun
-	install -Dm 755 U8aNBkuD $pkgdir/usr/share/applications/mcpelauncher-client.desktop
-	install -Dm 755 MinecraftApp.png $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
-	install -Dm 755 0S23ggea $pkgdir/usr/bin/mcpullwd
 	cd $srcdir/mcpelauncher-manifest/build
 	make DESTDIR=$pkgdir install
 	rm  -r $pkgdir/usr/local/share/mcpelauncher/lib/armeabi-v7a
@@ -52,4 +47,9 @@ package(){
 	make DESTDIR=$pkgdir install
 	mv $pkgdir/usr/local/share $pkgdir/usr/
 	rm -r $pkgdir/usr/local
+	install -Dm 755 $srcdir/../J6wPyTnx $pkgdir/usr/bin/mcclean
+	install -Dm 755 $srcdir/../Ljy6zZmM $pkgdir/usr/bin/mcrun
+	install -Dm 755 $srcdir/../U8aNBkuD $pkgdir/usr/share/applications/mcpelauncher-client.desktop
+	install -Dm 755 $srcdir/../MinecraftApp.png $pkgdir/usr/share/icons/hicolor/scalable/apps/minecraftpe.png
+	install -Dm 755 $srcdir/../0S23ggea $pkgdir/usr/bin/mcpullwd
 }
