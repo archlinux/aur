@@ -10,7 +10,7 @@ license=('GPL3')
 groups=()
 conflicts=('cantara')
 depends=('qt5pas')
-provides=("cantara-bin")
+provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/releases/download/v$pkgver/cantara-$pkgver-linux-x86_64_bin.tar.gz")
 md5sums=('53c2f08e434a69089628a10cd8491788')
 
