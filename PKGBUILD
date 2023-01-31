@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230125.r0.g9fbee811e479
+pkgver=20230131.r0.g80bd9028feca
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -79,7 +79,6 @@ prepare() {
 
     ### Setting version
         echo "Setting version..."
-        scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
