@@ -2,15 +2,16 @@
 
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
-pkgver=16.0.0
+_pkgver=16.0.0
 _pkg_suffix=rc1
-_pkgver_suffix=${pkgver}
-_pkgver_dash_suffix=${pkgver}
+_pkgver_suffix=${_pkgver}
+_pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_suffix=${_pkgver_suffix}${_pkg_suffix}
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
-pkgrel=2
+pkgver=${_pkgver}${_pkg_suffix}
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
