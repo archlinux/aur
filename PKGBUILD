@@ -1,14 +1,14 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-aesara
-_pkgname=aesara
-pkgver=2.8.9
-pkgrel=2
+_name=${pkgname#python-}
+pkgver=2.8.10
+pkgrel=1
 pkgdesc="Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
 url="https://github.com/aesara-devs/aesara"
 license=(custom)
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel})
 depends=(
   python-cons
   python-etuples
@@ -24,21 +24,30 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('3ced708aa151b572143bffec08df2f1dd4dab913a9f90925d9e7ca909a72e21c')
+sha256sums=('1668ea3151e9931cd3ddf44ea9147f0fe5554be2a83eb44c82801304eeb14af1')
 
-_archive="$_pkgname-rel-$pkgver"
+_archive="$_name-rel-$pkgver"
+
+prepare() {
+  cd "$_archive"
+
+  {
+    echo "node: ????????????????????????????????????????"
+    echo "node-date: ?????????????????????????"
+    echo "describe-name: rel-$pkgver"
+    echo "ref-names: ???? -> ???, tag: rel-$pkgver"
+  } > .git_archival.txt
+}
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 doc/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
