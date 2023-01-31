@@ -1,7 +1,7 @@
 # Maintainer: Jim Madge <jim+aur@jmadge.com>
 pkgname=kodi-addon-visualization-matrix
-pkgver=19.0.1
-_kodiversion="Matrix"
+pkgver=20.2.0
+_kodiversion="Nexus"
 pkgrel=1
 pkgdesc="Matrix themed visualization addon for Kodi"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(
 	'kodi-dev'
 )
 source=("https://github.com/xbmc/visualization.matrix/archive/refs/tags/${pkgver}-${_kodiversion}.tar.gz")
-sha256sums=('aba081aca30b6ff2b349f90ecc3ad9519fa7b8b88d61e08aeba2b66fad2a17a2')
+sha256sums=('f0b76edf45df7161d8525fa2ba623dee64ca66d515342e942100dc46c8220553')
 
 prepare() {
 	mkdir -p "${srcdir}/visualization.matrix-${pkgver}-${_kodiversion}/build"
