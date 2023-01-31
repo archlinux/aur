@@ -12,8 +12,8 @@ url="https://ferdium.org/"
 license=('Apache')
 depends=("$_electron")
 makedepends=('git' 'python' 'pnpm' 'jq' 'asar'
-             # 'nodejs-lts-gallium')
-             'nodejs')
+             'nodejs-lts-gallium')
+             # 'nodejs')
 provides=('ferdium')
 conflicts=('ferdium')
 source=("$pkgname::git+https://github.com/ferdium/ferdium-app#tag=v$pkgver"
