@@ -23,7 +23,7 @@ pkgbase = plugdata-bin
 	depends = curl
 	conflicts = plugdata-git
 	replaces = plugdata-git
-	source = https://github.com/timothyschoen/PlugData/releases/download/v0.6.4/PlugData-Arch-x64.zip
+	source = https://github.com/timothyschoen/PlugData/releases/download/v0.6.4/PlugData-Arch-x64.tar.gz
 	sha512sums = SKIP
 
 pkgname = plugdata-bin

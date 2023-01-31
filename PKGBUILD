@@ -14,7 +14,7 @@ replaces=('plugdata-git')
 arch=('x86_64' 'aarch64')
 url='https://github.com/timothyschoen/PlugData'
 license=('GPL3')
-source=("https://github.com/timothyschoen/PlugData/releases/download/v${pkgver}/PlugData-Arch-x64.zip")
+source=("https://github.com/timothyschoen/PlugData/releases/download/v${pkgver}/PlugData-Arch-x64.tar.gz")
 sha512sums=('SKIP')
 
 
