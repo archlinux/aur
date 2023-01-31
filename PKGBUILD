@@ -3,8 +3,8 @@
 # Contributor: thatgeek
 # Contributor: TorGuard Support <support@torguard.com>
 pkgname=torguard
-pkgver=4.8.13
-build=build.198.2+g9824883
+pkgver=4.8.15
+build=build.218.1+gfd1129b
 pkgrel=1
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
@@ -22,7 +22,7 @@ optdepends=('wireguard-tools: wireguard support')
 license=(custom)
 source_x86_64=("https://updates.torguard.biz/Software/Linux/torguard-v${pkgver}-amd64-arch.tar.gz")
 source=('torguard.sysusers')
-sha256sums_x86_64=('786a3478a13b6c0866bdef0bf6c18982adef27f7424deb0bc17dc54cf67ef9db')
+sha256sums_x86_64=('30b7e5f669bb5c07cd50da60cd572efa86b0fa59421f2644c3e5bbc2fd67ba45')
 sha256sums=('b1f954c54725794f94009c72e12746f203ce6dd4318a19ad0c10d5d8684cd873')
 
 prepare() {
@@ -53,7 +53,8 @@ package() {
 	install -d "$pkgdir"/usr/bin/
 	ln -s /opt/torguard/bin/torguard-wrapper "$pkgdir"/usr/bin/torguard
 	ln -s /usr/bin/ss-local "$pkgdir"/opt/torguard/bin/ss-local
-	ln -s /usr/bin/stunnel "$pkgdir"/opt/torguard/bin/stunnel
+	ln -s /usr/bin/stunnel_5_42 "$pkgdir"/opt/torguard/bin/stunnel_5_42
+	ln -s /usr/bin/stunnel_5_57 "$pkgdir"/opt/torguard/bin/stunnel_5_57
 
 	install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
 }
