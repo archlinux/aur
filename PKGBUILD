@@ -1,19 +1,25 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 # Contributor: Ross Whitfield <whitfieldre@ornl.gov>
-pkgname=('python-pycifrw')
-_name='PyCifRW'
+
 pkgver=4.4.5
-pkgrel=1
-pkgdesc="CIF/STAR file support for Python"
-url="https://bitbucket.org/jamesrhester/pycifrw"
-arch=("any")
+pkgrel=2
+pkgname='python-pycifrw'
+_name='PyCifRW'
+pkgdesc='CIF/STAR file support for Python'
+arch=('any')
+url='https://bitbucket.org/jamesrhester/pycifrw'
 license=('Python-2.0')
-makedepends=('python-setuptools')
-depends=('python-numpy')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a8fd092cbefe6ddd4b7e667d05682e5c8c2e64ba63e7ef8b3ce4c07f2ff62827')
+sha512sums=('f1484789fc9f32b7fc9f2c0ab176992a571e4c5bf8d7794e0f1c1c0a7d1c8271133f0775d17b2bf47984d5c41d9c3f0ff70ef2df19525c0655bcabdb974c8b0e')
+
+build() {
+    cd "$_name-$pkgver"
+    python setup.py build
+}
 
 package() {
-    cd "$srcdir/${_name}-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$_name-$pkgver"
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
