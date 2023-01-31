@@ -1,35 +1,25 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgname=python-scooby
-pkgver=0.7.0
+_name=${pkgname#python-}
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A Great Dane turned Python environment detective'
 arch=('any')
 url='https://github.com/banesullivan/scooby'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-pip')
-source=("https://github.com/banesullivan/scooby/archive/v${pkgver}.tar.gz")
-sha256sums=('e7da53fa2f0cb29390f4b35db1d197092706392cf9a4548c3d263d81fc83f142')
-
-# uses git version, release does not work
-prepare() {
-    cd "$srcdir"/scooby-${pkgver}
-    head -n 35 setup.py >tmp
-    sed -i "/^import setuptools.*/a __version__='$pkgver'" tmp
-    echo "   version=__version__)" >> tmp
-    echo "version='$pkgver'" > scooby/version.py
-    mv tmp setup.py
-}
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('52014f4681bcc3295932e0f3d94b69e40e6195a6965b34e68941312ce6b636de')
 
 build() {
-  cd "$srcdir"/scooby-${pkgver}
-  python setup.py build_ext --inplace
-  python setup.py build
+    cd "$_name-$pkgver"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir"/scooby-${pkgver}
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd "$_name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
