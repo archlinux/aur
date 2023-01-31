@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=neoleo
-pkgver=12.2
+pkgver=13.0
 pkgrel=1
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/blippy/neoleo"
 license=('GPL')
 depends=('ncurses')
 source=($pkgname-$pkgver.tar.gz::https://github.com/blippy/neoleo/archive/v$pkgver.tar.gz)
-sha256sums=('8eb71b8dbbe875c86b12c5c6e129e88bb4022302e158c7aaf18dcaf257836225')
+sha256sums=('f47aaf6530d0a2c9e73a8d82427e7c8ca796dcf348fe52cfa133bcefced86049')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -23,4 +23,3 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
- 
