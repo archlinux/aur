@@ -1,0 +1,6 @@
+servbyte-desktop-*.pkg.tar.zst
+servbyte-desktop-*.pkg.tar.xz
+servbyte-desktop-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

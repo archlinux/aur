@@ -1,0 +1,22 @@
+pkgbase = servbyte-desktop
+	pkgdesc = ServByte desktop application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://teams.microsoft.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = servbyte-desktop.png
+	source = servbyte-desktop.desktop
+	sha256sums = f23358c9ea7b4bb151ade5e33702ddf14af8028134c36dd10d57f9f91d4dffff
+	sha256sums = 5807fe92daf03c5209040faa40856938c6531886fb8328cd7b262a73b8c4d22b
+
+pkgname = servbyte-desktop

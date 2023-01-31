@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ServByte
+Comment=ServByte desktop application
+Exec=servbyte-desktop
+Icon=teams
+Encoding=UTF-8
+StartupWMClass=microsoftservbyte-desktop-6234c0
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;
