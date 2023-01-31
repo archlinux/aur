@@ -1,30 +1,49 @@
-diff --git a/Makefile b/Makefile
-index 32b9c1d..736e964 100644
---- a/Makefile
-+++ b/Makefile
-@@ -18,8 +18,11 @@ ifneq ($(OS),Windows_NT)
+--- Makefile	2022-09-26 23:44:48.000000000 +1000
++++ Makefile-new	2023-01-31 19:57:03.771684951 +1100
+@@ -7,9 +7,9 @@
+ INSTALL_LIBRARY_DIR    ?= $(DESTDIR)$(LIBDIR)
+ INSTALL_ALI_DIR        ?= ${INSTALL_LIBRARY_DIR}/spawn
+ 
+-GPRINSTALL_FLAGS = --prefix=$(PREFIX) --sources-subdir=$(INSTALL_INCLUDE_DIR)\
+- --lib-subdir=$(INSTALL_ALI_DIR) --project-subdir=$(INSTALL_PROJECT_DIR)\
+- --link-lib-subdir=$(INSTALL_LIBRARY_DIR)
++GPRINSTALL_FLAGS = --prefix=$(PREFIX) --sources-subdir=$(INSTALL_INCLUDE_DIR)              \
++                   --lib-subdir=$(INSTALL_ALI_DIR) --project-subdir=$(INSTALL_PROJECT_DIR) \
++                   --link-lib-subdir=$(INSTALL_LIBRARY_DIR)
+ 
+ SPAWN_TESTS=.obj/spawn_test/spawn_test .obj/spawn_test/spawn_unexpected
+ 
+@@ -17,17 +17,30 @@
+    SPAWN_TESTS += .obj/spawn_test/spawn_kill
  endif
  
++
  all:
-+	export LIBRARY_TYPE=relocateable
++	LIBRARY_TYPE=relocatable \
  	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn.gpr
++	
  	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_tests.gpr
++	
++	LIBRARY_TYPE=relocatable \
 +	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_glib.gpr
++	
 +	gprbuild $(GPRBUILD_FLAGS) -P gnat/spawn_glib_tests.gpr
++
++
  check:
  	export LD_LIBRARY_PATH=.libs/spawn/relocatable; \
- 	for TEST in ${SPAWN_TESTS}; do \
-@@ -27,7 +30,13 @@ check:
+-	for TEST in ${SPAWN_TESTS}; do \
+-	  echo $$TEST; $$TEST; \
++	for TEST in ${SPAWN_TESTS}; do                  \
++	  echo $$TEST; $$TEST;                          \
  	done
  
++
  install:
-+	export LIBRARY_TYPE=relocateable
++	LIBRARY_TYPE=relocatable \
  	gprinstall $(GPRINSTALL_FLAGS) -p -P gnat/spawn.gpr
 +
-+install-glib:
-+	export LIBRARY_TYPE=relocateable
-+	gprinstall $(GPRINSTALL_FLAGS) -p -P gnat/spawn_glib.gpr
 +
  clean:
  	gprclean -q -P gnat/spawn.gpr
- 
+-

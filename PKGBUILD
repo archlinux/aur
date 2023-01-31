@@ -2,32 +2,30 @@
 
 pkgname=ada_spawn
 epoch=1
-pkgver=22.0.0
+pkgver=23.0.0
 pkgrel=1
 
 pkgdesc="A simple Ada API to start processes and communicate with them."
 url="https://github.com/AdaCore/spawn"
 
 arch=('i686' 'x86_64')
-license=('GPL3' 'custom')
+license=('Apache')
 
-depends=('gtkada')           # 'namcap' says gtkada dependency is not needed, yet it is needed to supply the ada glib binding.
+depends=('gtkada')
 makedepends=('gprbuild')
 
-_name=spawn
-_version=2021-20210701-19A43-src
-_hash=28342768afab1e644a660b96051c04e5e9d3bcb0
-
-source=("https://github.com/AdaCore/spawn/archive/refs/tags/v22.0.0.tar.gz"
+source=("https://github.com/AdaCore/spawn/archive/refs/tags/v$pkgver.tar.gz"
         "Makefile.patch")
-sha256sums=(c1a02dac68dd84f18d4cacd4710310ae7d29b83f66a02dd8976d534f369cd769
-            fd4af51cd1eaf12040475425276eb4c5df17b46b948154c3babfae5d0710b105)
+sha256sums=(1487fef86433d1d06c5c3af3c012aac9eae8d2f4b7f8c1d2fdbe2be0b1770fa8
+            23f7f6c71c5bcdef0f2258becdd39f4d86bb3f742ff73d08610118b467264343)
+
 
 prepare()
 {
    cd "$srcdir/spawn-$pkgver"
-   patch -Np1 -i ../Makefile.patch
+   patch -Np0 -i ../Makefile.patch
 }
+
 
 build()
 {
@@ -38,6 +36,7 @@ build()
    make all
 }
 
+
 package()
 {
    cd "$srcdir/spawn-$pkgver"
@@ -45,19 +44,11 @@ package()
    export OS=unix
    DESTDIR=$pkgdir make install
 
-   # Rid duplicated '.ali' files.
-   rm $pkgdir/usr/lib/spawn/spawn-environments.ali
-   rm $pkgdir/usr/lib/spawn/spawn-internal__posix.ali
-   
-   DESTDIR=$pkgdir make install-glib
- 
-   # Install the license.
-   install -D -m644     \
-      "COPYING3" \
-      "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+   LIBRARY_TYPE=relocatable \
+   gprinstall -p --prefix="$pkgdir/usr" gnat/spawn_glib.gpr
 
-   # Install the custom license.
-   install -D -m644     \
-      "COPYING.RUNTIME" \
-      "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+   # Install the license.
+   install -D -m644 \
+      "LICENSE"     \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
