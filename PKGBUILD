@@ -16,7 +16,10 @@ conflicts=(libretro-scummvm)
 source=(git+https://github.com/libretro/scummvm.git)
 sha256sums=(SKIP)
 
+# Where the datafiles will be installed
 _sysdir=/home/player/.config/retroarch/system
+
+# Who will own them (user:group)
 _sysown=player:player
 
 prepare() {
