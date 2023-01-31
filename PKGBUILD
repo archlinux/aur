@@ -1,7 +1,15 @@
 # Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 pkgname=('clang-prefixed-release')
-pkgver=15.0.7
+#pkgver=15.0.7
+pkgver=16.0.0
+_pkg_suffix=rc1
+_pkgver_suffix=${pkgver}
+_pkgver_dash_suffix=${pkgver}
+if [[ -n ${_pkg_suffix} ]]; then
+    _pkgver_suffix=${_pkgver_suffix}${_pkg_suffix}
+    _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
+fi
 pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
@@ -11,9 +19,11 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'pytho
              'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua53'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'clang')
 checkdepends=("python-psutil")
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
+# stable
+#source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
+source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
-sha512sums=('4836d3603f32e8e54434cbfa8ef33d9d473ac5dc20ebf9c67132653c73f4524931abd1084655eaee5f20bcfcb91bcc4bbc5c4a0b603ad0c9029c556e14dc4c52')
+sha512sums=('SKIP')
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
@@ -47,7 +57,7 @@ build() {
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
-            ${srcdir}/llvm-project-${pkgver}.src/llvm
+            ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm
 
     ninja -C _build
 }
