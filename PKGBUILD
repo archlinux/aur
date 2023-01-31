@@ -2,7 +2,7 @@
 
 pkgname=httm-bin
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots. (binary .deb)"
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
@@ -23,6 +23,20 @@ package(){
 
 	# install executable
 	install -Dm755 "${srcdir}/usr/bin/${_name}" "${pkgdir}/usr/bin/${_name}"
+
+	# install helper scripts
+	install -Dm755 "${srcdir}/usr/bin/bowie" "${pkgdir}/usr/bin/bowie"
+	install -Dm755 "${srcdir}/usr/bin/nicotine" "${pkgdir}/usr/bin/nicotine"
+
+	[[ -z "$(
+		command -v zfs
+		exit 0
+	)" ]] || install -Dm755 "${srcdir}/usr/bin/ounce" "${pkgdir}/usr/bin/ounce"
+
+	[[ -n "$(
+                command -v zfs
+                exit 0
+        )" ]] || echo "zfs not in path, helper script 'ounce' not installed"
 
 	# install man page
 	install -Dm644 "${srcdir}/usr/share/man/man1/${_name}.1" "${pkgdir}/usr/share/man/man1/${_name}.1"
