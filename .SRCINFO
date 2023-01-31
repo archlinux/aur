@@ -1,6 +1,6 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
-	pkgver = 12.03
+	pkgver = 12.12
 	pkgrel = 1
 	url = http://mroonga.org/
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = mroonga
 	optdepends = cutter-test_framework
 	optdepends = ruby
 	optdepends = snowball-c
-	provides = mysql-clients=10.6.7
-	provides = mysql=10.6.7
-	provides = libmysqlclient=10.6.7
+	provides = mysql-clients=10.6.11
+	provides = mysql=10.6.11
+	provides = libmysqlclient=10.6.11
 	conflicts = libmariadbclient
 	conflicts = mariadb-clients
 	conflicts = mytop
@@ -38,18 +38,18 @@ pkgbase = mroonga
 	conflicts = mysql
 	conflicts = libmysqlclient
 	conflicts = mysql-clients
-	source = http://packages.groonga.org/source/mroonga/mroonga-12.03.tar.gz
-	source = https://downloads.mariadb.org/f/mariadb-10.6.7/source/mariadb-10.6.7.tar.gz
+	source = http://packages.groonga.org/source/mroonga/mroonga-12.12.tar.gz
+	source = https://rsync.osuosl.org/pub/mariadb/mariadb-10.6.11/source/mariadb-10.6.11.tar.gz
 	source = mariadb.service
 	source = mariadb-post.sh
 	source = mariadb-tmpfile.conf
-	sha1sums = 5fd3502ba50af64b7d9138f36fa857c0bd9d5723
-	sha1sums = da4b3b12097f25016decdc2555cf2682dc4bc834
+	sha1sums = 25a9752626b32c61df404ae709d12ffaf80dd757
+	sha1sums = a1da96b73b65dfa947fe01d38f824f3b1f8378f5
 	sha1sums = 4bc34244fc4b578c155c8cd569d952a97a476f10
 	sha1sums = 206e9f7ba5357027becc2491e0987442f684d63e
 	sha1sums = c2a86c745002923234f9d6d79b3b462d5ab55e8d
-	sha256sums = 7f3ec8801e81995ed81877622035b07b35aa64bcf1fab5296b88d6390411e407
-	sha256sums = 738a9d5391c6666e78c21f5c9ae90ac7e4477defa0e171a47f0f559a12d73429
+	sha256sums = f0d9e1e750bf78bbc36d089c434f59980feeb3e1c5f136b785374d43515604a6
+	sha256sums = 5784ba4c5d8793badba58348576824d9849ec152e9cbee47a1765161d840c94a
 	sha256sums = 2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7
 	sha256sums = 368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd
 	sha256sums = 2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd

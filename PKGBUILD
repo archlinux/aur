@@ -1,17 +1,21 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=mroonga
-pkgver=12.03
+pkgver=12.12
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
-mariadbver=10.6.7
+mariadbver=10.6.11
 MYSQL_VERSION=mariadb-${mariadbver}
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
 license=('LGPL2.1')
 provides=("mysql-clients=$mariadbver" "mysql=$mariadbver" "libmysqlclient=$mariadbver")
+# The default links with mirror redirection fail for signatures, specific
+# mirrors may be out of date every now and then. Let's use the upstream
+# rsync source via https and hope it does not hurt them too much.
+# https://mariadb.com/kb/en/library/mirror-sites-for-mariadb/
 source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
-        https://downloads.mariadb.org/f/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
+        https://rsync.osuosl.org/pub/mariadb/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
         mariadb.service
         mariadb-post.sh
         mariadb-tmpfile.conf)
@@ -106,13 +110,13 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('5fd3502ba50af64b7d9138f36fa857c0bd9d5723'
-          'da4b3b12097f25016decdc2555cf2682dc4bc834'
+sha1sums=('25a9752626b32c61df404ae709d12ffaf80dd757'
+          'a1da96b73b65dfa947fe01d38f824f3b1f8378f5'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
           'c2a86c745002923234f9d6d79b3b462d5ab55e8d')
-sha256sums=('7f3ec8801e81995ed81877622035b07b35aa64bcf1fab5296b88d6390411e407'
-            '738a9d5391c6666e78c21f5c9ae90ac7e4477defa0e171a47f0f559a12d73429'
+sha256sums=('f0d9e1e750bf78bbc36d089c434f59980feeb3e1c5f136b785374d43515604a6'
+            '5784ba4c5d8793badba58348576824d9849ec152e9cbee47a1765161d840c94a'
             '2c60dfdc866078a8402d6e18d538e6a1deaa70e1b2410bee5eb209a314d7daa7'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd')
