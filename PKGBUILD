@@ -24,8 +24,8 @@ package () {
     install -Dm644 "${srcdir}/../${_name}.png" "${pkgdir}/usr/share/pixmaps/${_name}.png"
 
     mkdir -p "${pkgdir}/usr/lib/lv2/"
-    find ./LV2 -name '*.lv2' -type d -exec cp -ar {} "${pkgdir}/usr/lib/lv2/" \;
+    find ./plugdata/LV2 -name '*.lv2' -type d -exec cp -ar {} "${pkgdir}/usr/lib/lv2/" \;
     mkdir -p "${pkgdir}/usr/lib/vst3/"
-    find ./VST3 -name '*.vst3' -type d -exec cp -ar {} "${pkgdir}/usr/lib/vst3/" \;
-    install -Dm755 -T ./Standalone/* "${pkgdir}/usr/bin/${_name}"
+    find ./plugdata/VST3 -name '*.vst3' -type d -exec cp -ar {} "${pkgdir}/usr/lib/vst3/" \;
+    install -Dm755 -T ./plugdata/Standalone/* "${pkgdir}/usr/bin/${_name}"
 }
