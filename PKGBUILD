@@ -2,7 +2,7 @@
 
 pkgname=teams-nativefier
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Teams desktop app built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
 url="https://teams.microsoft.com"
