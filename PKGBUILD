@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-git
-pkgver=r1978.f535197
+pkgver=r2167.8bd326f
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
@@ -32,11 +32,23 @@ build(){
 }
 
 package(){
-        echo "Install exec"
 	# install executable
 	install -Dm755 "${srcdir}/bin/httm" "${pkgdir}/usr/bin/httm"
 
-        echo "Install man"
+	# install helper scripts
+        install -Dm755 "${srcdir}/httm/scripts/bowie.bash" "${pkgdir}/usr/bin/bowie"
+        install -Dm755 "${srcdir}/httm/scripts/nicotine.bash" "${pkgdir}/usr/bin/nicotine"
+
+        [[ -z "$(
+                command -v zfs
+                exit 0
+        )" ]] || install -Dm755 "${srcdir}/httm/scripts/ounce.bash" "${pkgdir}/usr/bin/ounce"
+
+        [[ -n "$(
+                command -v zfs
+                exit 0
+        )" ]] || echo "zfs not in path, helper script 'ounce' not installed"
+
 	# install man page
 	install -Dm644 "${srcdir}/httm/httm.1" "${pkgdir}/usr/share/man/man1/httm.1"
 
