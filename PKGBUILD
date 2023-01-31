@@ -1,38 +1,37 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
-_pkgname=hstspreload
 pkgname=python-hstspreload
-pkgver=2021.11.1
-pkgrel=2
+_pkg="${pkgname#python-}"
+pkgver=2023.1.1
+pkgrel=1
 pkgdesc="Chromium HSTS Preload list as a Python package"
 arch=('any')
-url="https://github.com/sethmlarson/${_pkgname}"
+url="https://github.com/sethmlarson/hstspreload"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 #checkdepends=('python-pytest' 'python-urllib3')
-#source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('a5d42098c07c4b472916c4a695bafd3db6bc3144aabb43f933d2d56fa97cbfa4899d326e27eb4786658a91761fcc82fe0d68a61f4ce344365e209bbcdfe456f4')
-b2sums=('1818718bace7cd107a378043496e11b5110d25e4fe723e0b242cd6dd484477d9160d16420d44edc41b93a61f9e29c5705f0946d2c3efef95525cb0518ef11ff3')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('b2330a88b3fe3344c9eb431257e1ff3ae06c3bc2ff87ca686a5f253e2881a6c1')
 
 build() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-
-    python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 # This runs around 230k tests, checking to see if the online list matches the current one.
 # It can take 5 minutes just to collect the tests. They're not distributed in the PyPI tarball.
 #check() {
-#    cd "${srcdir}"/${_pkgname}-${pkgver}
+#    cd "${srcdir}"/${_pkg}-${pkgver}
 #
 #    python -m pytest
 #}
 
 package() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
