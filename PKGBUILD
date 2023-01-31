@@ -28,7 +28,7 @@ package() {
 
   install -vDm 644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 ${_pkgname}{,.plugin}.zsh \
-    -t "${pkgdir}//usr/share/oh-my-zsh/custom/plugins/${_pkgname}/"
+    -t "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
