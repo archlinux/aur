@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.9.1
+_pkgver=2.9.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='World of Warcraft addon updater'
@@ -12,21 +12,19 @@ url='https://github.com/WowUp/WowUp'
 license=('GPL3')
 # no depends
 makedepends=(
-    'nodejs-lts-gallium' # may fail with latest nodejs, use lts
+    'nodejs-lts-hydrogen' # may fail with latest nodejs, use lts
     'npm'
     'imagemagick'
 )
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
     aur-disable-updater.patch
-    bna-client-name.patch
     wago-fix.js
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('6a4f5144f770352d7bf5029707795386ca49588850803e3a5bf232d0c3a1d19b'
+sha256sums=('8c6de20ccd514aa903d4381487ba8aeb462a2a3d084e8dcbba96ce67fd4ed483'
             '6492656d15dc74254189767f92a3d6d73ee21d2de952ae8586a40330dc0b6ef3'
-            'bb5923e846c8939b6778c1c257d65777a40f13d5fb249fd92ab32bb2020a7d67'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
             '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
@@ -39,9 +37,6 @@ prepare() {
 
     # disable built-in updater (package manager handles it)
     patch --forward --strip=1 --input="${srcdir}/aur-disable-updater.patch"
-
-    # client names follow Battle.Net app
-    patch --forward --strip=1 --input="${srcdir}/bna-client-name.patch"
 
     # intergient.com refuse to provide service to users in some country/region
     # add a workaround that extracts the key manually
