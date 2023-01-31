@@ -1,6 +1,6 @@
 # Maintainer: Hugo Denizart <hugo at denizart dot pro>
 pkgname=obs-streamfx-git
-pkgver=0.11.0.r0.g31d56703
+pkgver=0.12.0a170.r1.g7234ae97
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
@@ -14,7 +14,7 @@ makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
 provides=("obs-streamfx")
 conflicts=("obs-streamfx")
-source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#branch=master")
+source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#branch=root")
 md5sums=("SKIP")
 
 pkgver() {
