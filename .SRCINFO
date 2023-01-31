@@ -1,7 +1,7 @@
 pkgbase = vim-vsnip-integ-git
 	pkgdesc = vim-vsnip integration with other plugins(LSP clients, completion engines)
 	pkgver = master
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrsh7th/vim-vsnip-integ
 	arch = any
 	groups = vim-plugins
@@ -12,4 +12,3 @@ pkgbase = vim-vsnip-integ-git
 	md5sums = SKIP
 
 pkgname = vim-vsnip-integ-git
-
