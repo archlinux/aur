@@ -14,9 +14,10 @@ pkgname=(
   pipewire-common-x11-bell-git
   pipewire-common-zeroconf-git
   gst-plugin-pipewire-common-git
+  pipewire-common-roc-git
 )
-pkgver=0.3.61.r5.gc933c5ed
-pkgrel=2
+pkgver=0.3.65.r26.ge4f4ef9e
+pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
@@ -27,8 +28,10 @@ makedepends=(
   glib2 webrtc-audio-processing libusb bluez-libs
   sbc libldac libfreeaptx libfdk-aac opus
   lilv libx11 libxfixes libcanberra libcamera
+  liblc3
   avahi openssl
   gst-plugins-base-libs
+  roc-toolkit
 )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -56,10 +59,11 @@ build() {
     -D sdl2=disabled
     -D session-managers='[]'
     -D test=enabled
+    -D bluez5-codec-lc3=enabled
     -D jack=disabled
     -D vulkan=disabled
     -D ffmpeg=disabled
-    -D roc=disabled
+    -D libmysofa=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
@@ -94,6 +98,7 @@ package_pipewire-common-git() {
     libfreeaptx.so libfdk-aac.so libopus.so
     liblilv-0.so
     libcamera-base.so libcamera.so
+    liblc3.so
   )
   optdepends=(
     'pipewire-session-manager: Session manager'
@@ -104,12 +109,14 @@ package_pipewire-common-git() {
     'pipewire-common-v4l2-git: V4L2 interceptor'
     'pipewire-common-x11-bell-git: X11 bell'
     'pipewire-common-zeroconf-git: Zeroconf support'
+    'pipewire-common-roc-git: ROC support'
     'gst-plugin-pipewire-common-git: GStreamer support'
     'ofono: ofono Bluetooth HFP support'
     'hsphfpd: hsphfpd Bluetooth HSP/HFP support'
   )
   provides=(
-    "pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so
+    "pipewire=$_short_pkgver"
+    pipewire-audio alsa-card-profiles libpipewire-$_ver.so
   )
   conflicts=(
     pipewire alsa-card-profiles
@@ -149,6 +156,8 @@ package_pipewire-common-git() {
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-{raop,zeroconf}-discover.so
 
   _pick gst usr/lib/gstreamer-1.0
+
+  _pick roc usr/lib/pipewire-$_ver/libpipewire-module-roc-{sink,source}.so
 }
 
 package_pipewire-common-docs-git() {
@@ -256,6 +265,17 @@ package_gst-plugin-pipewire-common-git() {
   conflicts=(gst-plugin-pipewire)
 
   mv gst/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-common-roc-git() {
+  pkgdesc+=" - ROC support"
+  depends=(pipewire-common-git libroc.so)
+  provides=(pipewire-roc)
+  conflicts=(pipewire-roc)
+
+  mv roc/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
