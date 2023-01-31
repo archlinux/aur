@@ -95,6 +95,7 @@ prepare() {
     ### Setting config
         echo "Setting config..."
         cp ../config .config
+        make prepare
         make olddefconfig
         diff -u ../config .config || :
 
