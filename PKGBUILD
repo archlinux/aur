@@ -5,7 +5,7 @@ pkgname=memebox
 _pkgname=meme-box
 pkgver=2022.1.1
 _pkgver="${pkgver//_/-}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage and trigger media in OBS as a browser source"
 arch=('any')
 url="https://github.com/negue/meme-box"
@@ -32,6 +32,9 @@ prepare() {
 
 build() {
   cd "$_pkgname-$_pkgver"
+
+  # Enable legacy OpenSSL provider
+  export NODE_OPTIONS=--openssl-legacy-provider
 
   # Avoid any interactive prompts during build
   export npm_config_yes=true
