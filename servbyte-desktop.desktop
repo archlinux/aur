@@ -2,7 +2,7 @@
 Name=ServByte
 Comment=ServByte desktop application
 Exec=servbyte-desktop
-Icon=teams
+Icon=servbyte-desktop
 Encoding=UTF-8
 StartupWMClass=microsoftservbyte-desktop-6234c0
 Terminal=false

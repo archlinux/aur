@@ -2,7 +2,7 @@
 
 pkgname=servbyte-desktop
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ServByte desktop application"
 arch=("armv7l" "i686" "x86_64")
 url="https://developer.servbyte.eu/auth/login"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   "f23358c9ea7b4bb151ade5e33702ddf14af8028134c36dd10d57f9f91d4dffff"
-  "9f983454a2481799713dd97383a592afee8c9f128c15ea070a0d11a2db979e95"
+  "c02d53a804b6a38801a2d0fd92e4564381c92d4324070275b44e4f74102e2322"
 )
 
 build() {
