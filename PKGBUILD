@@ -5,7 +5,7 @@ _electronver=$(</usr/lib/$_electron/version)
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}-native
-_pkgver=2.9.2
+_pkgver=2.9.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='World of Warcraft addon updater (system Electron)'
@@ -17,7 +17,7 @@ depends=(
     $_electron
 )
 makedepends=(
-    'nodejs-lts-gallium' # may fail with latest nodejs, use lts
+    'nodejs-lts-hydrogen' # may fail with latest nodejs, use lts
     'npm'
     'asar'
     'imagemagick'
@@ -29,7 +29,7 @@ source=(
     wowup-native.desktop
     run_wowup-native.sh
 )
-sha256sums=('370cd6ed5357bcf6f10620e21aa683dd3c121481e0909e9a8c8a0fe8e060fac7'
+sha256sums=('8c6de20ccd514aa903d4381487ba8aeb462a2a3d084e8dcbba96ce67fd4ed483'
             '6492656d15dc74254189767f92a3d6d73ee21d2de952ae8586a40330dc0b6ef3'
             '371d0e19917b031911ac5503e01e19170988230fb793f68e42eb15e4d1cfb97c'
             '76ebf12e022e15075a6a3824731a8288acbc6a4e1f69f6bd0fa3591d6f658656'
