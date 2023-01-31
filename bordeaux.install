@@ -7,7 +7,8 @@ pre_install() {
 }
 
 post_install() {
-	chgrp -R bordeaux /var/lib/bordeaux
+	chgrp bordeaux /var/lib/bordeaux
+	chgrp bordeaux /var/log/bordeaux
 	systemctl daemon-reload
 	echo 'Installed bordeaux service'
 }

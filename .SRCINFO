@@ -1,7 +1,7 @@
 pkgbase = bordeaux
 	pkgdesc = SIP telephony applidation server
 	pkgver = 0.5.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://codeberg.org/gnutelephony/bordeaux
 	install = bordeaux.install
 	arch = x86_64
