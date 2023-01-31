@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=aegisub-arch1t3cht-git
-pkgver=3.2.2.r878.3aeca6d16
+pkgver=3.2.2.r929.c54fddaaa
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=('git' 'meson' 'cmake' 'boost')
 optdepends=('vapoursynth: VapourSynth source support'
             'avisynthplus: AviSynth source support')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
         "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
         "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
         "${pkgname}-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
