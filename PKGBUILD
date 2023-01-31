@@ -1,21 +1,20 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 
 pkgname=md2term-git
-_pkgname=md2term
+pkgver=md2term.0.0.7.r4.gff9578c
+pkgrel=2
 pkgdesc='Markdown parser for the terminal, based on bash and pandoc'
 arch=(any)
 url='https://codeberg.org/blau_araujo/md2term'
-pkgrel=1
-license=('GPL-3.0')
-depends=('bash' 'pandoc')
+license=('GPL3')
+depends=('bash' 'pandoc' 'git')
+provides=(md2term)
 source=('git+https://codeberg.org/blau_araujo/md2term/')
 md5sums=('SKIP')
-provides=($_pkgname)
-pkgver=md2term.alpha.0.0.7.r4.gff9578c
 
 pkgver() {
-	cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$provides"
+  	git describe --long --tags | sed 's/^v//;s/.alpha//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

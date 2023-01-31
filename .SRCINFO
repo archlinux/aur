@@ -1,12 +1,13 @@
 pkgbase = md2term-git
 	pkgdesc = Markdown parser for the terminal, based on bash and pandoc
-	pkgver = md2term.alpha.0.0.7.r4.gff9578c
-	pkgrel = 1
+	pkgver = md2term.0.0.7.r4.gff9578c
+	pkgrel = 2
 	url = https://codeberg.org/blau_araujo/md2term
 	arch = any
-	license = GPL-3.0
+	license = GPL3
 	depends = bash
 	depends = pandoc
+	depends = git
 	provides = md2term
 	source = git+https://codeberg.org/blau_araujo/md2term/
 	md5sums = SKIP
