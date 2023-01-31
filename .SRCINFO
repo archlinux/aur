@@ -1,6 +1,6 @@
 pkgbase = pterodactyl-wings
 	pkgdesc = The server control plane for Pterodactyl Panel
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://pterodactyl.io/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pterodactyl-wings
 	makedepends = go
 	depends = docker
 	conflicts = pterodactyl-daemon
-	source = pterodactyl-wings-1.11.1.tar.gz::https://github.com/pterodactyl/wings/archive/refs/tags/v1.11.1.tar.gz
+	source = pterodactyl-wings-1.11.2.tar.gz::https://github.com/pterodactyl/wings/archive/refs/tags/v1.11.2.tar.gz
 	source = pterodactyl-wings.service
-	sha256sums = 246e50c828ce2dc087f538a80c2a2bcf4643cd74ef14382f755eedb59b2733b3
+	sha256sums = 26f6c79c3e36bf08ac4d8bb607cda900510b41308e0e2a3380460f52003434b8
 	sha256sums = 62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e
 
 pkgname = pterodactyl-wings
