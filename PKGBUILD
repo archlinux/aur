@@ -1,7 +1,7 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=coventry
 pkgver=0.5.8
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Residential IP telephony gateway"
 url="https://codeberg.org/gnutelephony/$pkgname"
@@ -34,7 +34,7 @@ package() {
 	strip "$pkgdir"/usr/bin/pbx-*
 	strip "$pkgdir"/usr/bin/coventry
 	gzip "$pkgdir"/usr/share/man/man*/*
-	install -d -m 700 "$pkgdir"/var/log/$pkgname
+	install -d -m 750 "$pkgdir"/var/log/$pkgname
 	install -d -m 770 "$pkgdir"/var/lib/$pkgname
 	install -dm755 ${pkgdir}/usr/lib/systemd/system
 	install -m744 ${srcdir}/$pkgname.service ${pkgdir}/usr/lib/systemd/system/

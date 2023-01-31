@@ -7,7 +7,8 @@ pre_install() {
 }
 
 post_install() {
-	chgrp -R coventry /var/lib/coventry
+	chgrp coventry /var/lib/coventry
+	chgrp coventry /var/log/coventry
 	systemctl daemon-reload
 	echo 'Installed coventry service'
 }
