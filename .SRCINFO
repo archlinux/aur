@@ -1,7 +1,7 @@
 pkgbase = pam_rssh-git
 	pkgdesc = Remote sudo authenticated via ssh-agent
 	pkgver = r46.773823b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z4yx/pam_rssh
 	arch = x86_64
 	license = MIT
