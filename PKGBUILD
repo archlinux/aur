@@ -7,7 +7,7 @@ pkgname=("${pkgbase}"
          "obs-plugin-${pkgbase}")
 epoch=2
 pkgver=B6
-pkgrel=2
+pkgrel=3
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('cmake' 'fontconfig' 'spice-protocol' 'wayland-protocols'
              'libxss' 'libxi' 'libxpresent' 'obs-studio' 'pipewire' 'libpulse'
              'libsamplerate')
 source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.io/artifact/${pkgver}/source")
-sha512sums=('8b7a4b6d33380299512bef103331635c9e9855ae0712cbe4d9ccbec2c2499c77318502aa3e0259451ef32c414ef5c8fbc103513bcd924570097dd866934cbe10')
+sha512sums=('558981d6b32098076ef0775a748da349941551352cbef836e37310e43e5cd6072df3dec6fa2418a9abecc7729ef0c1c6869e3168d05a3d76bea46c6eb8c4e82c')
 
 _lgdir="${pkgbase}-${pkgver}"
 
