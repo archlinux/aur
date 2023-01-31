@@ -1,13 +1,13 @@
 pkgbase = pam_rssh-git
 	pkgdesc = Remote sudo authenticated via ssh-agent
 	pkgver = r46.773823b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/z4yx/pam_rssh
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = openssl
+	depends = openssl
 	depends = pam
 	source = pam_rssh-git::git+https://github.com/z4yx/pam_rssh.git
 	sha256sums = SKIP
