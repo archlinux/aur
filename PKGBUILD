@@ -3,7 +3,7 @@
 pkgname=('mangohud' 'mangoapp' 'mangohud-common')
 pkgbase=mangohud
 pkgver=0.6.8
-pkgrel=3
+pkgrel=4
 _imgui_ver=1.81
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 arch=('x86_64')
@@ -14,11 +14,11 @@ makedepends=('appstream' 'dbus' 'git' 'glew' 'glfw-x11' 'glslang' 'libglvnd' 'li
 _commit=efdcc6d2f54e37a3a32475453407f1eb33d1bef2
 source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
-        "https://github.com/ocornut/imgui/archive/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
+        "https://github.com/ocornut/imgui/archive/refs/tags/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
         "https://wrapdb.mesonbuild.com/v2/imgui_${_imgui_ver}-1/get_patch#/imgui-${_imgui_ver}-1-wrap.zip")
 sha256sums=('SKIP'
             'SKIP'
-            '86ccbea1de225db54f38960d20eafbfc573e26f7090cd9fd98febdedaf143de5'
+            'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
             '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f')
 
 pkgver() {
