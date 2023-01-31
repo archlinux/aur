@@ -1,6 +1,8 @@
 *~
 *.bak
 
+/*.tar.gz
+
 /pkg/
 /src/
 /*.pkg.*
