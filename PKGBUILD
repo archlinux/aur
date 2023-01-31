@@ -13,8 +13,6 @@ makedepends=('git')
 install="${_pkgname}.install"
 source=("${pkgname}::git+https://github.com/kevinywlui/zlong_alert.zsh")
 b2sums=('SKIP')
-_zsh="${ZSH:-/usr/share/oh-my-zsh}"
-_zsh_custom="${ZSH_CUSTOM:-${_zsh}/custom}"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -30,7 +28,7 @@ package() {
 
   install -vDm 644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
   install -vDm 644 ${_pkgname}{,.plugin}.zsh \
-    -t "${pkgdir}/${ZSH_CUSTOM}/plugins/${_pkgname}/"
+    -t "${pkgdir}//usr/share/oh-my-zsh/custom/plugins/${_pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
