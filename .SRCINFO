@@ -8,6 +8,6 @@ pkgbase = qovery-cli
 	makedepends = git
 	makedepends = go
 	source = https://github.com/Qovery/qovery-cli/archive/v0.48.6.tar.gz
-	md5sums = b3a81cda9ee11d10c309d8b8d873633c
+	md5sums = 9b3431ed364114c27b316898b28749ba
 
 pkgname = qovery-cli
