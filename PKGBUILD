@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rPref
-_pkgver=1.3
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
-pkgver=1.3
-pkgrel=4
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Database Preferences and Skyline Computation'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de285d93cd979fcbec5f372303de64d06c8e8611dc495d02e0cf74e160879f6e')
+sha256sums=('5c38750829772bf55f8b8e2231618a88e9438bd884274f398a754b5758258bfa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
