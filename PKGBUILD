@@ -9,7 +9,7 @@ pkgdesc="Convert ASCII files between the MS-DOS/Windows format and the UNIX form
 url="https://www.thefreecountry.com/tofrodos/index.shtml"
 license=('GPL2')
 depends=('glibc')
-source=(http://$pkgname.sourceforge.net/download/$pkgname-$pkgver.tar.gz)
+source=(https://fossies.org/linux/misc/$pkgname-$pkgver.tar.gz)
 md5sums=('c4c5e6668a13a01bfb5ce562753a808f')
 
 build() {
