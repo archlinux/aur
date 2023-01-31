@@ -2,7 +2,7 @@
 pkgname="mgrewe-openface-git"
 pkgdesc="OpenFace – a state-of-the art tool intended for facial landmark detection, head pose estimation, facial action unit recognition, and eye-gaze estimation."
 pkgver=2.2.0.r15.g912bfc03
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 license=("GPL")
 provides=("${pkgname%-git}")
