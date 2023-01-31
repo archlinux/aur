@@ -1,0 +1,15 @@
+pkgbase = codeberg-cli-git
+	pkgdesc = CLI Tool for Codeberg similar to gh and glab.
+	pkgver = r0.1.0.6.ge11d632
+	pkgrel = 1
+	url = git+https://codeberg.org/RobWalt/codeberg-cli
+	arch = x86_64
+	license = AGPL3
+	makedepends = rust
+	makedepends = cargo
+	provides = codeberg-cli
+	conflicts = codeberg-cli-git
+	source = git+https://codeberg.org/RobWalt/codeberg-cli
+	md5sums = SKIP
+
+pkgname = codeberg-cli-git
