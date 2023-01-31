@@ -1,5 +1,5 @@
 pkgbase = xfce4-power-manager-git-xsccomp
-	pkgdesc = Power manager for Xfce desktop
+	pkgdesc = Power manager for Xfce desktop – patched for use with xscreensaver.
 	pkgver = 4.18.0+9+g818cabd5
 	pkgrel = 1
 	url = https://www.xfce.org/
