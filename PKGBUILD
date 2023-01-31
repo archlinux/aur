@@ -5,7 +5,7 @@
 _gitname=pvr.iptvsimple
 pkgname=kodi-addon-pvr-iptvsimple-git
 pkgver=r755.e9bdfa0
-pkgrel=1
+pkgrel=2
 pkgdesc="Kodi's IPTV Simple client addon."
 url='https://github.com/kodi-pvr/pvr.iptvsimple'
 license=('GPL3')
@@ -23,6 +23,8 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+  export CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
   cd "${srcdir}/${_gitname}"
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
