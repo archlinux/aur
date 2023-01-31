@@ -1,0 +1,24 @@
+pkgbase = ktextaddons-git
+	pkgdesc = KDE text addons
+	pkgver = 1.1.40_r155.gdd6767d
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kdepim-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = qt5-tools
+	depends = ki18n-git
+	depends = kconfig-git
+	depends = kconfigwidgets-git
+	depends = karchive-git
+	depends = kxmlgui-git
+	depends = kcoreaddons-git
+	depends = qtkeychain-qt5-git
+	provides = ktextaddons
+	conflicts = ktextaddons
+	source = git+https://github.com/KDE/ktextaddons.git
+	sha256sums = SKIP
+
+pkgname = ktextaddons-git
