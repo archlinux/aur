@@ -1,6 +1,6 @@
 pkgbase = nwg-shell-git
 	pkgdesc = nwg-shell meta-package, installer and updater - development version
-	pkgver = r326.82a55a4
+	pkgver = r338.c32a2e3
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = nwg-shell-git
 	optdepends = thunar: suggested file manager
 	optdepends = nano: in case you hate vi
 	conflicts = nwg-shell
-	source = nwg-shell::git+https://github.com/nwg-piotr/nwg-shell#branch=main
+	source = nwg-shell::git+https://github.com/nwg-piotr/nwg-shell#branch=gui
 	md5sums = SKIP
 
 pkgname = nwg-shell-git
