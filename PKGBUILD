@@ -5,7 +5,7 @@
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
 pkgver=2.4.2
-pkgrel=3.1
+pkgrel=3.2
 epoch=1
 arch=('x86_64')
 license=('Apache' 'custom')
@@ -71,7 +71,7 @@ build() {
   export DSOFLAGS=${LDFLAGS}
 
   # use fixed cups user (id 209) since systemd adds "lp" group without a fixed id
-  ./configure --prefix=/usr --enable-gssapi \
+  ./configure --prefix=/usr --enable-gssapi --with-cups-build="cups-gssapi-${pkgver}" \
      --sysconfdir=/etc \
      --localstatedir=/var \
      --sbindir=/usr/bin \

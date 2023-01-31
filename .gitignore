@@ -1,4 +1,5 @@
 cups/
-src
+src/
+pkg/
 cups-*-source.tar.*
 *.pkg.tar.zst
