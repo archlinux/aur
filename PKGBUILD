@@ -62,6 +62,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        '0002-setlocalversion-do-not-append-git-commit-hash-if-loc.patch'
          # the main kernel config files
         'config')
 
@@ -287,4 +288,5 @@ done
 
 sha512sums=('SKIP'
             '3ccb02d9e7a09651351cf379aca5cb66a5402c8e9e890cfaebf8d869b82858eb7e1be5a49f8dcd918ebe4b70cfffd39f6591d30752d7e8c9d1d9bddfe70fb0fd'
+            'e1570711e53ded89f3dbda989a027cb6b3178ce47bb152e22840430973f11303f5a4068792eaf9ee969ae40337ff0b0549ef5908d785cbec900a850e70547175'
             'f1d1d414e0e3b04846bc17a6bf1d9c91d8a629a8ee5882c7aece723ce690ae899729937b9e15aefec63cf2f943eb8a00c5b0616c938cdc3994e755f0e2c57ac6')

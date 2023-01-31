@@ -1,0 +1,73 @@
+From 4de392193e1d932255beed40102f2992ec2779c4 Mon Sep 17 00:00:00 2001
+From: Masahiro Yamada <masahiroy@kernel.org>
+Date: Tue, 31 Jan 2023 22:32:53 +0900
+Subject: [PATCH] setlocalversion: do not append git commit hash if
+ localversion* exists
+
+Since commit dcfbcb1033bb ("setlocalversion: use only the correct
+release tag for git-describe"), KERNELRELEASE of linux-next is
+annoyingly long:
+
+  $ make kernelrelease
+  6.2.0-rc6-next-20230131-09515-g80bd9028feca
+
+The string '-09515-g80bd9028feca' is appended because git-describe now
+uses the v6.2-rc6 tag instead of the next-20230113 tag.
+
+In linux-next, the 'localversion-next' file well specifies the local
+version, so the extra info from git is unneeded.
+
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+---
+ scripts/setlocalversion | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/scripts/setlocalversion b/scripts/setlocalversion
+index e2b2d492ac13..4219a0ca1e62 100755
+--- a/scripts/setlocalversion
++++ b/scripts/setlocalversion
+@@ -113,22 +113,23 @@ if [ -z "${KERNELVERSION}" ]; then
+ 	exit 1
+ fi
+ 
+-res="${KERNELVERSION}"
+-
+ # localversion* files in the build and source directory
+-res="${res}$(collect_files localversion*)"
++file_localversion="$(collect_files localversion*)"
+ if test ! "$srctree" -ef .; then
+-	res="$res$(collect_files "$srctree"/localversion*)"
++	file_localversion="${file_localversion}$(collect_files "$srctree"/localversion*)"
+ fi
+ 
+-# CONFIG_LOCALVERSION and LOCALVERSION (if set)
++# CONFIG_LOCALVERSION
+ config_localversion=$(sed -n 's/^CONFIG_LOCALVERSION=\(.*\)$/\1/p' include/config/auto.conf)
+-res="${res}${config_localversion}${LOCALVERSION}"
+ 
+ # scm version string if not at the kernel version tag
+-if grep -q "^CONFIG_LOCALVERSION_AUTO=y$" include/config/auto.conf; then
++if [ -n "${file_localversion}" ]; then
++	# If localversion* files exist (like in linux-next), the version is
++	# well specified. Do not append scm_version.
++	scm_version=
++elif grep -q "^CONFIG_LOCALVERSION_AUTO=y$" include/config/auto.conf; then
+ 	# full scm version string
+-	res="$res$(scm_version)"
++	scm_version="$(scm_version)"
+ elif [ "${LOCALVERSION+set}" != "set" ]; then
+ 	# If the variable LOCALVERSION is not set, append a plus
+ 	# sign if the repository is not in a clean annotated or
+@@ -137,7 +138,7 @@ elif [ "${LOCALVERSION+set}" != "set" ]; then
+ 	#
+ 	# If the variable LOCALVERSION is set (including being set
+ 	# to an empty string), we don't want to append a plus sign.
+-	res="$res$(scm_version --short)"
++	scm_version="$(scm_version --short)"
+ fi
+ 
+-echo "$res"
++echo "${KERNELVERSION}${file_localversion}${config_localversion}${LOCALVERSION}${scm_version}"
+-- 
+2.39.0.rc2.1.gbd5df96b79
+
