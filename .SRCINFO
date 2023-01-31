@@ -1,0 +1,16 @@
+pkgbase = elan-bin
+	pkgdesc = A video and audio annotation tool
+	pkgver = 6.4
+	pkgrel = 1
+	url = https://tla.mpi.nl/tools/tla-tools/elan/
+	arch = any
+	license = GPL3
+	license = apache
+	provides = elan
+	conflicts = elan
+	source = https://www.mpi.nl/tools/elan/ELAN_6-4_linux.tar.gz
+	source = elan.desktop
+	sha256sums = 04ac89213ed010e1d57cb6406e9a78970839d55d60b0e2c8cb7ffc3d69158379
+	sha256sums = 6e3c93fce73b04de31a381394c8db7a574de0eb69f76d93e65a430109a2bba23
+
+pkgname = elan-bin
