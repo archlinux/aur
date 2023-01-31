@@ -10,7 +10,7 @@ depends=('mingw-w64-coin-or-cbc' 'mingw-w64-coin-or-ipopt' 'mingw-w64-coin-or-bc
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/coin-or/Bonmin/archive/refs/tags/releases/${pkgver}.tar.gz")
-sha256sums=('739f1fe74a81003c74ade425733417f6bcf4003941d7fa1ee989b46430c8b63a')
+sha256sums=('8d130430a2776e250e941ee16f51dba301d5f0a00cc288e05f5b985cf1f426cd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
