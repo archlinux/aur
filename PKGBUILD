@@ -11,7 +11,7 @@ _name=gajim
 pkgname="$_name-git"
 epoch=1
 pkgver=r20795.56ad85842
-pkgrel=1
+pkgrel=2
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
 url="https://gajim.org/"
@@ -54,9 +54,11 @@ pkgver() {
 build() {
   cd $_name
   python -m build --wheel --no-isolation
+  ./pep517build/build_metadata.py -o dist/metadata
 }
 
 package() {
   cd $_name
   python -m installer --destdir="$pkgdir" dist/*.whl
+  ./pep517build/install_metadata.py --prefix="$pkgdir/usr" dist/metadata
 }
