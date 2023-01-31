@@ -4,8 +4,8 @@
 # Contributor: Richard Jackson <rj@iinet.net.au>
 pkgname=abiword-gtk2
 _pkgname=abiword
-pkgver=3.0.4
-pkgrel=3
+pkgver=3.0.5
+pkgrel=1
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -15,20 +15,18 @@ optdepends=('hunspell: for spell checking')
 conflicts=('abiword' 'abiword-plugins')
 url='https://www.abisource.com'
 source=("$_pkgname-$pkgver.tar.gz::https://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz"
-        enchant-2.patch
-        glib2-segfault-fix.patch)
-sha256sums=('e93096cb192e5bc19d62e180fc5eda643206465315a710113ae5036bc2a1a5d7'
-            'f510f4df2cf597f5493f52ce855b4209628d7622b03532c2ef221f8b7032a349'
-            '8a4d873309b5cec444b0cf88141f190a35d8225ea143a57cca6366275788c175')
+        "$_pkgname-$pkgver.tar.gz.asc::https://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz.asc"
+        enchant-2.patch)
+sha256sums=('1257247e9970508d6d1456d3e330cd1909c4b42b25e0f0a1bc32526d6f3a21b4'
+            'SKIP'
+            'f510f4df2cf597f5493f52ce855b4209628d7622b03532c2ef221f8b7032a349')
+validpgpkeys=('6C44DB3E0BF3EAF5B433239A5FEE05E6A56E15A3') # Hubert Figuiere
 
 prepare() {
   cd $_pkgname-$pkgver
 
   # Replace deprecated enchant functions
   patch -Np1 -i ../enchant-2.patch
-
-  # Fix for segfault when selecting/copying text
-  patch -Np1 -i ../glib2-segfault-fix.patch
 }
 
 build() {
