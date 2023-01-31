@@ -1,8 +1,8 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 _pkgname=ia
 pkgname=${_pkgname}-bin
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A Python and Command-Line Interface to Archive.org"
 arch=('x86_64')
 url="https://archive.org/download/ia-pex/"
@@ -10,7 +10,7 @@ license=('GPL')
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("${_pkgname}-${pkgver}::https://archive.org/download/ia-pex/ia")
-sha512sums=('f061de62009de3022b14bc2999c335204d557319cd4bfc7d14a7603911c5f40e641f64f241e5313f329ce2832e4854d2c2f0adc797a1310fa05dbde2e9a03e9a')
+sha512sums=('14afb7b8c81a5b08ecd1fde05da8a030bc0c2dfc4070678983064d8a6c301e741af77a771294313addccb9fb4b2a6c83e7fc1a839505ac46e9eac41c7db19a0b')
 noextract=("${_pkgname}-${pkgver}")
 
 package() {
