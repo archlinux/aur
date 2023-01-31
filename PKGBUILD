@@ -1,5 +1,6 @@
 # Maintainer: Andre Soares <andregsilv at gmail dot com>
-pkgname=mgrewe-openface-git
+pkgname="mgrewe-openface-git"
+pkgdesc="OpenFace – a state-of-the art tool intended for facial landmark detection, head pose estimation, facial action unit recognition, and eye-gaze estimation."
 pkgver="2.2.0.r20.g912bfc03"
 pkgrel=1
 arch=(x86_64)
@@ -15,8 +16,8 @@ sha256sums=('SKIP')
 url="https://github.com/mgrewe/OpenFace"
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${srcdir}
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
