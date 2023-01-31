@@ -11,7 +11,7 @@ source=("https://github.com/Ecks1337/RyuSAK/releases/download/v$pkgver/ryusak_${
 sha256sums=('4ea3f32576e50829daa9abac13cf0ee94f8716743928d745539f4bb2151114ed')
 
 build(){
-	tar -xvf data.tar.xz
+	tar -xvf data.tar.zst
 }
 
 package() {
