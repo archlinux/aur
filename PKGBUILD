@@ -9,8 +9,8 @@ arch=(x86_64 i686)
 url="https://github.com/fifty-six/Scarab"
 license=('GPL')
 
-depends=(dotnet-runtime)
-makedepends=(dotnet-sdk)
+depends=(dotnet-runtime-6.0)
+makedepends=(dotnet-sdk-6.0)
 conflicts=(scarab-bin)
 options=(!strip)
 
