@@ -1,16 +1,19 @@
 pkgbase = mallet-tunnel-bin
 	pkgdesc = TCP tunnel that works like VPN
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	url = https://github.com/ryotarai/mallet
 	arch = i386
 	arch = x86_64
+	arch = aarch64
 	license = unknown
 	provides = mallet-tunnel
 	conflicts = mallet-tunnel
-	source_i386 = mallet-tunnel-bin-0.0.4.tar.gz::https://github.com/ryotarai/mallet/releases/download/v0.0.4/mallet_linux_i386.tar.gz
-	sha256sums_i386 = e929ed8ab0d13a414ddd43f229b916764324f5a3e46feea8a50de5a6533cc633
-	source_x86_64 = mallet-tunnel-bin-0.0.4.tar.gz::https://github.com/ryotarai/mallet/releases/download/v0.0.4/mallet_linux_x86_64.tar.gz
-	sha256sums_x86_64 = ebbec83ae9b0b2ac901f8e67390907de5f84d69fcb795d4828293220bc98b3e3
+	source_i386 = https://github.com/ryotarai/mallet/releases/download/v0.0.5/mallet_0.0.5_linux_386.tar.gz
+	sha256sums_i386 = f3997c7b894f2f3ebfa1023f8134813fc5e0dc1a96a52e74d8bd37c91508fd7b
+	source_x86_64 = https://github.com/ryotarai/mallet/releases/download/v0.0.5/mallet_0.0.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 32a429d6fb3a3d8837cc61851bc90544dab8c79eb6ef3df5616dbf57b9aa5314
+	source_aarch64 = https://github.com/ryotarai/mallet/releases/download/v0.0.5/mallet_0.0.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = c65bd49fcd04311cd5c95f520315930e278e8ef1691c1509fe7b111d8ef9212f
 
 pkgname = mallet-tunnel-bin
