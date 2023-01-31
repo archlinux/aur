@@ -1,13 +1,13 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-aeppl
-_pkgname=aeppl
-pkgver=0.1.0
+_name=${pkgname#python-}
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Tools for an Aesara-based PPL"
-arch=('any')
+arch=(any)
 url="https://github.com/aesara-devs/aeppl"
-license=('MIT')
+license=(MIT)
 
 makedepends=(python-setuptools)
 depends=(
@@ -17,20 +17,22 @@ depends=(
   python-typing_extensions
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c7b7a13aa2a054b098ce5c18a7c57646f37b14fbf04eabbca1ad766f9b447e71')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3b3542a4592e42a6cb043c93d26367704d3842adf9a084431b91481b2fb11ec1')
+
+_archive="$_name-$pkgver"
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   python setup.py build
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_archive"
 
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
