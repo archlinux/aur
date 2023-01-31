@@ -5,10 +5,10 @@
 _pkgname=obsidian
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://obsidian.md/"
 license=('custom:Commercial')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
@@ -16,9 +16,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'obsidian' 'obsidian-insider')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}-E21/Obsidian-${pkgver}.AppImage")
+source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
+source_aarch64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}-arm64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('45076851be7d486d7752b77a42606c0e725f99885fa1af8cef3ba5bdd025dc39')
+sha256sums_x86_64=('181a65471d92b2df1f6c44780f551fafff9996868f5cd182fbda0857580ec645')
+sha256sums_aarch64=('95f7261524b06ee2265b1ee6aaca8299bd054aaf671bab7af1d127a8856b67b3')
+
 
 prepare() {
     chmod +x "${_appimage}"
