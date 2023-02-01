@@ -1,6 +1,6 @@
 pkgbase = r-vcd
 	pkgdesc = Visualizing Categorical Data
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=vcd
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-vcd
 	optdepends = r-kernlab
 	optdepends = r-kernsmooth
 	optdepends = r-mvtnorm
-	source = https://cran.r-project.org/src/contrib/vcd_1.4-10.tar.gz
-	sha256sums = 7188192afa289350cc1b89790f4f8f5a5114c1c88bee7715a0c8f5347aa0b35b
+	source = https://cran.r-project.org/src/contrib/vcd_1.4-11.tar.gz
+	sha256sums = 7a54e855689e1429d46e0d4d7a956f96b0ad2fd0c7084fa023902c55849e0932
 
 pkgname = r-vcd
