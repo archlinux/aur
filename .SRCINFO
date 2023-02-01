@@ -7,6 +7,7 @@ pkgbase = python-unicornhat
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-rpi-ws281x
 	source = https://files.pythonhosted.org/packages/source/u/unicornhat/unicornhat-2.2.3.tar.gz
 	sha256sums = 2375b3efbcfc08c190e1c4a69988170d13ddca22b043870fc637110b295f0ce6
 
