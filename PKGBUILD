@@ -1,4 +1,5 @@
-# Maintainer: Jonathon Fernyhough <jonathon"m2x+dev>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
@@ -8,8 +9,8 @@
 _jdkname=liberica-jdk-full
 pkgname="${_jdkname}-bin"
 _java_ver=19
-pkgver=${_java_ver}.0.1.u11
-_pkgver=${_java_ver}.0.1+11
+_pkgver=${_java_ver}.0.2+9
+pkgver=${_pkgver/+/.u}
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -55,13 +56,17 @@ source=(freedesktop-java.desktop.in
         ${_jdkname}24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
         ${_jdkname}32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
         ${_jdkname}48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png)
-sha1sums=(19873c53aaf234d215b9892450bfd4e95c13ed7c
-          5347a8c12c16a29aada0babdfda5dbef236717c0
-          8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b
-          36096a57cebd346e08efc68326fe77960d43726f
-          b8233f9ff931ce97a265827fac18ed90f4e248c6
-          a0da2952bc87a425182c3ac88e88649fbaa7cb65
-          eb36aa73a9be98164447774217865b91e79d503c)
+sha1sums=('19873c53aaf234d215b9892450bfd4e95c13ed7c'
+          '5347a8c12c16a29aada0babdfda5dbef236717c0'
+          '8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b'
+          '36096a57cebd346e08efc68326fe77960d43726f'
+          'b8233f9ff931ce97a265827fac18ed90f4e248c6'
+          'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
+          'eb36aa73a9be98164447774217865b91e79d503c')
+sha1sums_aarch64=('c715c79d22972d930df3325751154525faabe85d')
+sha1sums_armv7h=('1a92fbbeefb0f43355f7567109e64c8ea98d7194')
+sha1sums_armv8h=('1a92fbbeefb0f43355f7567109e64c8ea98d7194')
+sha1sums_x86_64=('59ea7fb5561214b1713ef830529c32a96a8b5734')
 
 source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
 source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
@@ -69,10 +74,6 @@ source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-amd64-full.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('484d03517e154a278741657e1a67f97de5d8c284')
-sha1sums_armv7h=('105ab927c854c5b7be75112c78d00a8b96e81935')
-sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('2e3465a43db88c79c8fda94306c319d954ecc370')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
