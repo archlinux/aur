@@ -1,7 +1,7 @@
 pkgbase = weewx
 	pkgdesc = Software for logging data from weather stations
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.weewx.com/
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = weewx
 	optdepends = mariadb-clients: MariaDB support
 	optdepends = python-mysqlclient: MariaDB support
 	backup = etc/weewx/weewx.conf
-	source = https://github.com/weewx/weewx/archive/refs/tags/v4.10.1.tar.gz
+	source = weewx-4.10.1.tar.xz::https://github.com/weewx/weewx/archive/refs/tags/v4.10.1.tar.gz
 	source = wee_config
 	source = wee_database
 	source = wee_debug

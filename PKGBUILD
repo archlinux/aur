@@ -13,7 +13,7 @@ function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -30,7 +30,7 @@ optdepends=("python-pyephem: extended almanac information"
             "mariadb-clients: MariaDB support"
             "python-mysqlclient: MariaDB support")
 backup=("etc/weewx/weewx.conf")
-source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
+source=("$pkgname-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "wee_config"
         "wee_database"
         "wee_debug"
