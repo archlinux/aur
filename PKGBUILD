@@ -5,26 +5,20 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=mirrormagic
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Arcade style game like Deflektor (C64) or Mindbender (Amiga)."
 arch=('i686' 'x86_64')
 url="http://www.artsoft.org/mirrormagic/"
 license=('GPL2')
 depends=('sdl2_image' 'sdl2_mixer' 'sdl2_net' 'smpeg')
 
-source=("http://www.artsoft.org/RELEASES/unix/mirrormagic/${pkgname}-${pkgver}.tar.gz"
-        "mirrormagic.desktop" "mirrormagic.sh" "mirrormagic-3.0.0-variables-scope.patch")
+source=("https://www.artsoft.org/RELEASES/linux/mirrormagic/mirrormagic-${pkgver}-linux.tar.gz"
+        "mirrormagic.desktop" "mirrormagic.sh")
 
-md5sums=('2670a44a98c4095a8360995ada533c64'
+md5sums=('406ddba5be346563a2265f211caf64ea'
          '62a7183f61086072e05893e11d5ea898'
-         'e6c52ffc78c5e591cb643e9c575f550e'
-         '962f5a7b02cf32fc8f98c4ac1e4652a8')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/mirrormagic-3.0.0-variables-scope.patch"
-}
+         'e6c52ffc78c5e591cb643e9c575f550e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,12 +31,8 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   cp -r rocksndiamonds mirrormagic graphics levels music sounds docs conf "${pkgdir}/usr/share/${pkgname}"
 
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 ChangeLog CREDITS INSTALL COPYING "${pkgdir}/usr/share/doc/${pkgname}"
-
   install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
 }
 
 # vim:set ts=2 sw=2 et:
