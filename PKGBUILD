@@ -3,7 +3,7 @@ _pkgname=jaspRegression
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=4
+pkgrel=7
 pkgdesc="Regression Module for JASP"
 arch=('x86_64')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -31,14 +31,12 @@ depends=(r
   r-statmod
 )
 groups=(r-jasp r-jaspcommon)
-makedepends=('git')
-optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('bb8466d08e0d206f5b064b32b9b0089b5e995d54b55d678ef987c4477a17f770')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
