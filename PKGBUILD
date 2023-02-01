@@ -22,7 +22,6 @@ depends=('python-numpy'
          )
 makedepends=('git'
              'python-pip'
-             'python-wheel'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -41,7 +40,7 @@ build() {
 
 package() {
   cd "${_plug}"
-  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+  pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -7,7 +7,6 @@ pkgbase = vapoursynth-plugin-vardefunc-git
 	license = MIT
 	makedepends = git
 	makedepends = python-pip
-	makedepends = python-wheel
 	depends = python-numpy
 	depends = vapoursynth-plugin-nnedi3cl-git
 	depends = vapoursynth-plugin-placebo-git
