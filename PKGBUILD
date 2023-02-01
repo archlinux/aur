@@ -7,9 +7,9 @@ pkgdesc="Ansel is an open-source photo-editing software for digital artists, des
 arch=("i686" "x86_64")
 url="https://ansel.photos/"
 license=("GPL3")
-depends=(pugixml libjpeg-turbo openexr lensfun iso-codes zlib exiv2 flickcurl
-         openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp gmic
-         libavif)
+depends=(pugixml libjpeg-turbo colord-gtk openexr lensfun iso-codes zlib exiv2
+         flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
+         gmic libavif)
 optdepends=("dcraw: base curve script"
             "perl-image-exiftool: base curve script"
             "imagemagick: base curve and noise profile scripts"
@@ -47,6 +47,7 @@ build() {
         -DBUILD_USERMANUAL=False \
         -DUSE_LIBSECRET=ON \
         -DUSE_LUA=ON \
+        -DUSE_COLORD=ON \
         -DBUILD_CURVE_TOOLS=ON \
         -DBUILD_NOISE_TOOLS=ON \
         -DRAWSPEED_ENABLE_LTO=ON
