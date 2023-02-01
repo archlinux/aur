@@ -2,7 +2,7 @@
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
 pkgver=22.10.1.24120
-pkgrel=3
+pkgrel=4
 pkgdesc='Official desktop application for the VK Teams messaging service'
 arch=("x86_64")
 url='https://dl.internal.myteam.mail.ru'
@@ -28,7 +28,7 @@ shopt -s extglob
 package() {
     install -dm755 "$pkgdir/opt/${pkgbasename}"
     install -dm755 "$pkgdir/usr/bin"
-    cp -ar --no-preserve=ownership "$srcdir/"!(${pkgbasename}.desktop|${pkgbasename}.tar.xz|${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/${pkgbasename}"
+    cp -ar --no-preserve=ownership "$srcdir"/!(${pkgbasename}.desktop|${pkgbasename}.tar.xz|${pkgbasename}.sh|${pkgbasename}.png) "$pkgdir/opt/${pkgbasename}"
     rm -rf "$pkgdir/opt/${pkgbasename}/unittests"
     install -Dm755 "../${pkgbasename}.sh" "$pkgdir/usr/bin/${pkgbasename}"
     install -Dm644 "../${pkgbasename}.desktop" "$pkgdir/usr/share/applications/${pkgbasename}.desktop"
