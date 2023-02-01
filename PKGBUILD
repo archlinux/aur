@@ -3,7 +3,7 @@ _pkgname=jaspSem
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=4
+pkgrel=7
 pkgdesc="SEM Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -23,14 +23,12 @@ depends=(r
   r-tidyr
 )
 groups=(r-jasp r-jaspextra)
-makedepends=('git')
-optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('24ebd60882a906bf5cbfaecfdd84ad947edd9ed41853de41c3dbcbaf48a7878a')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
