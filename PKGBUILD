@@ -1,6 +1,6 @@
 # Maintainer: CyanWoods <i at cyanwoods dot com>
 pkgname=spdk
-pkgver=22.09
+pkgver=23.01
 pkgrel=1
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
