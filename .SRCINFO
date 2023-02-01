@@ -1,6 +1,6 @@
 pkgbase = firedragon-unsigned-extensions-bin
 	pkgdesc = FireDragon modified to allow installation of unsigned extensions
-	pkgver = 109.0.r1
+	pkgver = 109.0.1.r1
 	pkgrel = 1
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
@@ -35,7 +35,7 @@ pkgbase = firedragon-unsigned-extensions-bin
 	options = !strip
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
-	source = firedragon-unsigned-extensions-109.0.r1.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/firedragon-unsigned-extensions/-/package_files/61/download
-	sha256sums = 2a90fdfbd4583c238aff0f82a6473e999f3dafbfb89b2c5f020767f7d292b070
+	source = firedragon-unsigned-extensions-109.0.1.r1.tar.zst::https://git.stefanwimmer128.eu/stefanwimmer128/firedragon-unsigned-extensions/-/package_files/69/download
+	sha256sums = fd6b4124ebb63d29919fe353f60c9460caf0f155a1400aedc7107284b9224ed1
 
 pkgname = firedragon-unsigned-extensions-bin
