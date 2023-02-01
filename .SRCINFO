@@ -16,6 +16,7 @@ pkgbase = ansel-git
 	makedepends = libwebp
 	depends = pugixml
 	depends = libjpeg-turbo
+	depends = colord-gtk
 	depends = openexr
 	depends = lensfun
 	depends = iso-codes
