@@ -4,9 +4,9 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
-pkgver=2.39
-pkgrel=3
-_commit=88ac930a725b8aac8284a2738f03b843f4343dd0
+pkgver=2.40
+pkgrel=1
+_commit=f3a27f0c3f5786fa1c50313292ec28ecd500495b
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
