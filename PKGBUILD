@@ -53,7 +53,7 @@ build() {
 check () {
 	cd "$srcdir/$_pkgname"
 	make check
-#	.bin/hare test
+	.bin/hare test
 }
 
 
