@@ -1,6 +1,6 @@
 # Maintainer: ByteDream
-pkgname=puppeteer
-pkgdesc="VTuber application made with Godot 3.4 (former OpenSeeFace-GD)"
+pkgname=vpuppr-bin
+pkgdesc="VTuber application made with Godot 3.4"
 arch=('x86_64')
 url="https://github.com/virtual-puppet-project/vpuppr"
 license=('MIT')
@@ -10,6 +10,7 @@ pkgrel=1
 
 replaces=(
   'openseeface-gd'
+  'puppeteer'
 )
 
 depends=(
@@ -25,7 +26,6 @@ package() {
   cp -rf ./flatpak/* $pkgdir/usr/share/vpuppr
   chmod 755 -R $pkgdir/usr/share/vpuppr/*
   ln -sf ../share/vpuppr/vpuppr.x86_64 $pkgdir/usr/bin/vpuppr
-  ln -sf ../share/vpuppr/vpuppr.x86_64 $pkgdir/usr/bin/puppeteer # keep the symlink for compatability reasons
 
   curl -L https://github.com/virtual-puppet-project/vpuppr/raw/0.9.0/assets/osfgd_icon.png -o "$pkgdir/usr/share/vpuppr/vpuppr_icon.png"
   cat > "$pkgdir/usr/share/applications/vpuppr.desktop"<< EOF
