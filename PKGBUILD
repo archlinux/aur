@@ -14,12 +14,11 @@ depends=('vapoursynth-plugin-vsutil-git'
          'python-requests'
          )
 makedepends=('git'
-             'python-packaging'
+             'python-pip'
              )
 optdepends=('python-pytorch: pytorch CPU with AVX2 optimizations'
             'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
-            'python-onnxruntime: ONXXRuntime support'
-            'python-onnxruntime-cuda: ONXXRuntime CUDA support'
+            'python-onnxruntime: ONNXRuntime support'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
