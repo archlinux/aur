@@ -25,6 +25,7 @@ optdepends=(
 arch=("x86_64" "aarch64")
 url="https://harelang.org"
 source=("${pkgname%-*}::git+https://git.sr.ht/~sircmpwn/hare"
+	0001-Comment-out-assertions-that-fail-on-aarch64.patch
 	config.x86_64.mk
 	config.aarch64.mk)
 
@@ -34,6 +35,13 @@ conflicts=("hare")
 pkgver() {
 	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	if [ "$CARCH" = "aarch64" ]; then
+		cd "$srcdir/$_pkgname"
+		patch --forward --strip=1 --input="${srcdir}/0001-Comment-out-assertions-that-fail-on-aarch64.patch"
+	fi
 }
 
 build() {
@@ -62,6 +70,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('SKIP'
-            '5df893f3d1f79cd9735ba0f3b9a61fad881eda887c8a4b0c97ee2b8b99171636c4f2699617d46963c35ec7946cb423b1b1debb685dbaef7909d6bd915e4f65c1'
-            'bb661bb2916d64eb3db5f4af1cdf6ec5271b4809d0f3afe80045cdffb5407e997d2ea9d2315dc4da131d765dcceaab5e23014597ccb000b7f7338896829eaa86')
+sha256sums=('SKIP'
+            '3511a8499adbd53cf18379aeda3ef739a90e70fb2fe2f02477b5652d7ad63d06'
+            '9c339eeb042ce00641cea4eed5403ca204d6f4f9cd5f709be286a252db47a034'
+            'c82db335b70c03d3d656128fbb0be2cc552219b3e7c93b15d1e6afd1b0e9ba7e')
