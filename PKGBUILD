@@ -2,11 +2,11 @@
 # Maintainer: Christian Hoff <https://github.com/choff>
 # Contributor: Tobias Martin <tm-x at gmx dot net>
 
-_commit=ab8278c603ed54152d3a8e23269198d1044b2fa3
+_commit=a961389cd7246be89fa4ea36a9947eddfe29900e
 
 pkgname=binder_linux-dkms
 pkgver=6.1
-pkgrel=3
+pkgrel=4
 arch=("x86_64")
 url='https://github.com/choff/anbox-modules'
 pkgdesc='Android kernel driver fork by @choff in DKMS format, binder only.'
