@@ -244,9 +244,6 @@ END
   # Faster multilocate
   patch -Np1 -i "${_librewolf_patches_dir}"/faster-package-multi-locale.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
-  patch -Np1 -i "${_patches_dir}"/arch/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
-
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
   patch -Np1 -i "${_patches_dir}"/custom/add_firedragon_svg.patch
