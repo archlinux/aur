@@ -1,6 +1,6 @@
 pkgbase = java8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK 8 HotSpot - Adoptium Temurin
-	pkgver = 8u352b08
+	pkgver = 8u362b09
 	pkgrel = 1
 	url = https://adoptium.net/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = java8-adoptopenjdk
 	makedepends = java-runtime-common
 	makedepends = nss
 	makedepends = xdg-utils
-	source = https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u352-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u352b08.tar.gz
-	sha256sums = 1633bd7590cb1cd72f5a1378ae8294451028b274d798e2a4ac672059a2f00fee
+	source = https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u362-b09/OpenJDK8U-jdk_x64_linux_hotspot_8u362b09.tar.gz
+	sha256sums = 1486a792fb224611ce0cd0e83d4aacd3503b56698549f8e9a9f0a6ebb83bdba1
 
 pkgname = jre8-adoptopenjdk-headless
 	pkgdesc = AdoptOpenJDK Java 8 headless runtime environment
@@ -43,7 +43,7 @@ pkgname = jre8-adoptopenjdk-headless
 pkgname = jre8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
 	install = install_jre8-adoptopenjdk.sh
-	depends = jre8-adoptopenjdk-headless=8u352b08-1
+	depends = jre8-adoptopenjdk-headless=8u362b09-1
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -57,7 +57,7 @@ pkgname = jdk8-adoptopenjdk
 	pkgdesc = AdoptOpenJDK Java 8 development kit
 	install = install_jdk8-adoptopenjdk.sh
 	depends = java-environment-common
-	depends = jre8-adoptopenjdk=8u352b08-1
+	depends = jre8-adoptopenjdk=8u362b09-1
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 
