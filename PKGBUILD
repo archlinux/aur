@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-pandas python-matplotlib python-openpyxl)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/NiaOrg/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('44fbe121323f0db8638b67866842f8367fa43bbce13847da6622e1d837e788251fe804875e00375295d6d458dc4a26647a9834a333154b4121ad6157647bbd62')
+sha512sums=('d74a528f1d0c79c5593054c958c5c450054f87bd9be12891ff373783040dbf643024bc32f9b40330d1bd0e6d5c920414c415ec1e832cccd25e81010a738f4678')
 
 build() {
   cd ${_base}-${pkgver}
