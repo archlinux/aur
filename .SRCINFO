@@ -1,0 +1,12 @@
+pkgbase = boot-to-windows
+	pkgdesc = boot-to-windows command and .desktop shortcut. Do grub-reboot into Windows
+	pkgver = 1.0.2
+	pkgrel = 1
+	arch = x86_64
+	license = unknown
+	source = boot-to-windows.desktop
+	source = boot-to-windows.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = boot-to-windows

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=
+Exec=/usr/bin/boot-to-windows
+Icon=windows
+Name=Boot to Windows
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
