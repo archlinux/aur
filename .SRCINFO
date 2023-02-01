@@ -1,7 +1,7 @@
 pkgbase = psa-update
 	pkgdesc = CLI alternative to PSA (Peugeot / Citroën / DS / Opel) infotainment system update (NAC / RCC firmware and navigation maps), hopefully more robust.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zeld/psa-update
 	arch = x86_64
 	license = UNLICENSE
