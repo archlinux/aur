@@ -1,7 +1,7 @@
 pkgbase = paradox-launcher
 	pkgdesc = Paradox Interactive Game Launcher v2
-	pkgver = 2023.1.1
-	pkgrel = 2
+	pkgver = 2023.2
+	pkgrel = 1
 	epoch = 1
 	url = https://play.paradoxplaza.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = paradox-launcher
 	depends = freetype2
 	depends = libgl
 	depends = gconf
-	source = paradox-launcher-2023.1.1.deb::https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-linux
-	sha256sums = b7898ac729157f8cd227311538cf21829d1d210f191aaeccc16aa138a129d48b
+	source = paradox-launcher-2023.2.deb::https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-linux
+	sha256sums = 40014f43689aa683dff0e4fe6df7b6546ba44020310f42139e66470551d450c0
 
 pkgname = paradox-launcher
