@@ -11,7 +11,7 @@ depends=(python-pyqt5 python-emoji)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('06c91cc4e4f5e58dfbf437a6b718c3397d5c28b68a5772a687e61cbf5b4fcf512ecd1fa8c569798786a677583b824f62d64bcaf7717513f8c4f3e74d0fba3374')
+sha512sums=('abe48bf6e6367dfc78c8bf5995b6744caaac59fac0d7820a0c067e71080cfc4664824b2a31659e67169b919d242fafde7700f034768c50090c93df67a17a4ac0')
 
 build() {
   cd ${_base}-${pkgver}
