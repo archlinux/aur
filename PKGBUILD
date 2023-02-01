@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.1.8
+pkgver=6.1.9
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -91,29 +91,17 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Revert-drm-i915-improve-the-catch-all-evict-to-handl.patch
-  0003-drm-i915-improve-the-catch-all-evict-to-handle-lock-.patch
-  0004-drm-amdgpu-display-mst-Fix-mst_state-pbn_div-and-slo.patch
-  0005-drm-amdgpu-display-mst-limit-payload-to-be-updated-o.patch
-  0006-drm-amdgpu-display-mst-update-mst_mgr-relevant-varia.patch
-  0007-drm-display-dp_mst-Correct-the-kref-of-port.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b60bb53ab8ba370a270454b11e93d41af29126fc72bd6ede517673e2e57b816d'
+sha256sums=('d60cf185693c386e7acd9f3eb3a94ae30ffbfee0a9447a20e83711e0bdf5922b'
             'SKIP'
             '1efa33aea067fa920880ef7fef3ec82f8d4cde21213eda34ac6534ca6879fca0'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
             '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
-            'dd0a155f8be7face604741716e5ea1ccd47c7988d4db4476f9736def57a6ae86'
-            'b734f0f038647618617226794298b1cc7f6928dd43d46f056486a7d664fff3e0'
-            'b725cde6ef68dcb2fe59a1e8646938d95d25a7292910dceef1adaeae229749e6'
-            '1aaa3c58e4129804eb704fbb66e1fe9a18d37059516f4153bb375a406a3c373a'
-            '6448060153217445d35f0f2191424acac53defe7a67f08cb7f7347c141bd535e'
-            'a3c9ed15a33b7e7f1f589e6b0b00482b78aa7a0044940e4e3f87ad542db9308e'
-            '28d3e5daa705da23bdafc916695bc50cc8f65655c8965fb6d007d67dfa6cb52f')
+            'a730917aa1ab33e79c094b69c3eb3ce080e6f9f4cb7a5b64c3e6b9ef0c53e631')
 
 prepare() {
   cd linux-${pkgver}
