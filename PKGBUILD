@@ -2,10 +2,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=httpgd
-_pkgver=1.3.0
+_pkgver=1.3.1
 pkgname=r-${_pkgname,,}
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A 'HTTP' Server Graphics Device"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3d6cdac150a8209283121e1394c8e27dd4cb89ecae1c436fb5f5bf774f3f35f')
+sha256sums=('6dbfe3aaf70a004abb92268a80816bb604033b094d46420ba14f3ffaf13adaee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
