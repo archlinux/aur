@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=6.2rc4.r50.g522170f4ad57
+pkgver=6.2rc5.r66.g6ca12bc91ed4
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.2
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '91c312035beae406910270cf417912dc4dff363458d979329d638f9440b045d8')
+            'bf67d887e3b155bba529182ea0940d5213a83e87f15af8108c87c703a456e76d')
 
 pkgver() {
   cd $_srcname
