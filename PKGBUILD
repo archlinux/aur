@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel van Diepen <eeems@eeems.email>
 pkgname=vorta-root
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 url=https://github.com/eeems/vorta-root
 pkgdesc="Run vorta as root without having to enter a password"
 arch=(any)
