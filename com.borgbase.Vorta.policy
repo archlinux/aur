@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+    <vendor>Vorta for Borg Backup</vendor>
+    <vendor_url>https://vorta.borgbase.com/</vendor_url>
+    <icon_name>com.borgbase.Vorta</icon_name>
+    <action id="com.borgbase.Vorta">
+        <description>Run Vorta backup program</description>
+        <description xml:lang="ar">شغّل مُقسِّم‌ج بصلاحية الجذر</description>
+        <description xml:lang="be">Запусціць Vorta ад імя суперкарыстальніка</description>
+        <description xml:lang="cs">Spouštět Vorta pod uživatelem root</description>
+        <description xml:lang="da">Kør Vorta som root</description>
+        <description xml:lang="de">Vorta als Root-Benutzer ausführen</description>
+        <description xml:lang="el">Εκτέλεση Vorta ως root</description>
+        <description xml:lang="en_GB">Run Vorta as root</description>
+        <description xml:lang="eo">Ruli Vorta kiel root</description>
+        <description xml:lang="es">Ejecutar Vorta como root</description>
+        <description xml:lang="eu">Exekutatu Vorta 'root' gisa</description>
+        <description xml:lang="fi">Suorita Vorta root-käyttäjänä</description>
+        <description xml:lang="fr">Lancer Vorta en tant qu’utilisateur root</description>
+        <description xml:lang="fur">Eseguìs Vorta come root</description>
+        <description xml:lang="hr">Pokreni Vorta kao korijenskog korisnika</description>
+        <description xml:lang="hu">Vorta futtatása rendszergazdaként</description>
+        <description xml:lang="id">Jalankan Vorta sebagai root</description>
+        <description xml:lang="is">Keyra Vorta sem kerfisstjóri/root</description>
+        <description xml:lang="it">Esegui Vorta come root</description>
+        <description xml:lang="kk">Vorta қолданбасын әкімші ретінде жөнелту</description>
+        <description xml:lang="ko">루트 권한으로 Vorta 실행</description>
+        <description xml:lang="lt">Vykdyti Vorta root teisėmis</description>
+        <description xml:lang="lv">Palaist Vorta kā root</description>
+        <description xml:lang="nl">Vorta uitvoeren als systeembeheerder (root)</description>
+        <description xml:lang="pa">ਜੀਪਾਰਟਡ ਨੂੰ ਰੂਟ ਵਜੋਂ ਚਲਾਓ</description>
+        <description xml:lang="pl">Uruchomienie programu Vorta jako administrator</description>
+        <description xml:lang="pt_BR">Execute Vorta como root</description>
+        <description xml:lang="ro">Rulează Vorta ca root</description>
+        <description xml:lang="ru">Запустить Vorta с правами root</description>
+        <description xml:lang="sk">Spustiť Vorta ako správca</description>
+        <description xml:lang="sr">Покрените Гпартед као администратор</description>
+        <description xml:lang="sr@latin">Pokrenite Vorta kao administrator</description>
+        <description xml:lang="sv">Kör Vorta som root</description>
+        <description xml:lang="tr">Vortaʼi kök olarak çalıştır</description>
+        <description xml:lang="vi">Chạy Vorta với tư cách siêu quản trị</description>
+        <description xml:lang="zh_TW">以 root 執行 Vorta</description>
+        <message>Authentication is required to run Vorta as root user</message>
+        <message xml:lang="ar">الاستيثاق مطلوب لتشغيل محرر الأقسام مُقسِّم‌ج بصلاحية الجذر</message>
+        <message xml:lang="be">Для запуску Vorta ад імя суперкарыстальніка патрабуецца аўтэнтыфікацыя</message>
+        <message xml:lang="cs">Ke spuštění editoru oddílů Vorta pod uživatelem root je vyžadováno ověření</message>
+        <message xml:lang="da">Godkendelse er krævet for at køre partitioneringsprogrammet Vorta som root</message>
+        <message xml:lang="de">Legitimierung ist erforderlich, um Vorta als Root-Benutzer auszuführen</message>
+        <message xml:lang="en_GB">Authentication is required to run the Vorta Partition Editor as root</message>
+        <message xml:lang="eo">Necesas aŭtentigo por ruli Vorta Subdiskoredaktilo kiel root</message>
+        <message xml:lang="es">Se necesita autenticación para ejecutar el editor de particiones Vorta como root</message>
+        <message xml:lang="eu">Vorta partizioen editorea 'root' pribilegiorekin exekutatzeko beharrezkoa da autentifikatzea</message>
+        <message xml:lang="fi">Tunnistautuminen vaaditaa Vorta-osiomuokkaimen suorittamiseksi root-käyttäjänä</message>
+        <message xml:lang="fr">Il est nécessaire de s’authentifier pour lancer l’éditeur de partitions Vorta en tant qu’utilisateur root</message>
+        <message xml:lang="fur">La autenticazion e je necessarie par eseguî come root l'editôr di partizions Vorta</message>
+        <message xml:lang="hr">Potrebna je ovjera za pokretanje Vorta uređivača particija kao korijenskog korisnika</message>
+        <message xml:lang="hu">Hitelesítés szükséges a Vorta partíciószerkesztő rendszergazdaként való futtatásához</message>
+        <message xml:lang="id">Otentikasi diperlukan untuk menjalankan Penyunting Partisi Vorta sebagai root</message>
+        <message xml:lang="is">Auðkenningar er krafist til að keyra Vorta disksneiðingarstjórann sem kerfisstjóri (root)</message>
+        <message xml:lang="it">È richiesto autenticarsi per eseguire «Editor di partizioni Vorta» come root</message>
+        <message xml:lang="kk">Vorta бөлімдер түзеткішін әкімші ретінде жөнелту үшін аутентификация керек</message>
+        <message xml:lang="ko">Vorta 분할 영역 편집기를 루트 권한으로 실행하려면 인증이 필요합니다</message>
+        <message xml:lang="lt">Reikia patvirtinti tapatybę norint vykdyti Vorta skirsnių redaktorių root teisėmis</message>
+        <message xml:lang="lv">Nepieciešama autentificēšana, lai palaistu Vorta nodalījumu redaktoru ar root tiesībām</message>
+        <message xml:lang="nl">Authenticatie is vereist om Vorta partitiebewerker uit te voeren als systeembeheerder (root)</message>
+        <message xml:lang="pa">ਜੀਪਾਰਟਡ ਪਾਰਟੀਸ਼ਨ ਐਡੀਟਰ ਨੂੰ ਰੂਟ ਵਜੋਂ ਚਲਾਣਉ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ</message>
+        <message xml:lang="pl">Wymagane jest uwierzytelnienie, aby uruchomić edytora partycji Vorta jako administrator</message>
+        <message xml:lang="pt_BR">Autenticação é necessária para executar o Editor de Partições Vorta como root</message>
+        <message xml:lang="ro">Autentificarea este necesară pentru a rula Editorul de partiții Vorta ca root</message>
+        <message xml:lang="ru">Требуется авторизация для запуска редактора разделов Vorta с правами root</message>
+        <message xml:lang="sk">Na spustenie editora oddielov Vorta ako správca sa vyžaduje overenie totožnosti</message>
+        <message xml:lang="sr">Потребно је потврђивање идентитета за покретање Гпартеда као администратор</message>
+        <message xml:lang="sr@latin">Potrebno je potvrđivanje identiteta za pokretanje Vortaa kao administrator</message>
+        <message xml:lang="sv">Autentisering krävs för att köra Vorta partitionsredigerare som root</message>
+        <message xml:lang="tr">Vorta Disk Bölümü Düzenleyicisiʼni kök olarak çalıştırmak içinyetkilendirme gereklidir</message>
+        <message xml:lang="vi">Cần xác thực để chạy bộ Sửa phân vùng đĩa Vorta dưới tư cách siêu quản trị</message>
+        <message xml:lang="zh_TW">需要驗證才能以 root 執行 Vorta 分割區編輯器</message>
+        <defaults>
+        <allow_any>auth_admin</allow_any>
+            <allow_inactive>auth_admin</allow_inactive>
+            <allow_active>auth_admin</allow_active>
+        </defaults>
+        <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/vorta</annotate>
+        <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+    </action>
+</policyconfig>

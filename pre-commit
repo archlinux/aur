@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+chronic updpkgsums
+makepkg --printsrcinfo > .SRCINFO
+git add PKGBUILD .SRCINFO
+namcap PKGBUILD
+rm -f *.pkg.tar.zst
+chronic makepkg
+namcap *.pkg.tar.zst
