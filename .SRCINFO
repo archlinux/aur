@@ -1,19 +1,18 @@
 pkgbase = r-jaspcircular
 	pkgdesc = CircularStatistics Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/jasp-stats/jaspCircular
 	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
-	makedepends = git
 	depends = r
 	depends = r-jaspbase
 	depends = r-jaspgraphs
 	depends = r-circular
 	depends = r-ggplot2
-	source = git+https://github.com/jasp-stats/jaspCircular.git
-	sha256sums = SKIP
+	source = jaspCircular_0.17.0.tar.gz::https://github.com/jasp-stats/jaspCircular/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 653ba52e681ec0732a54985ee8e72656b225a1a55c5bfe1ee10636d1b21513a4
 
 pkgname = r-jaspcircular
