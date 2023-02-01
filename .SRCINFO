@@ -6,6 +6,7 @@ pkgbase = pomodoro
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = dmenu
 	provides = pomodoro
 	conflicts = pomodoro
 	source = pomodoro::git+https://github.com/samuellando/pomodoro.git#commit=41b74d5fc6f002bb87e2a69f36407a40662cd3cc
