@@ -72,5 +72,5 @@ build() {
 package() {
   install -Dm644 "$srcdir/$pkgname/dust-mail.desktop" "$pkgdir/usr/share/applications/dust-mail-client.desktop"
   install -Dm644 "$srcdir/$pkgname/icons/logo-512x512.png" "$pkgdir/usr/share/dust-mail.png"
-  install -Dm755 "$srcdir/$pkgname/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
+  install -Dm755 "$srcdir/$pkgname/apps/web/src-tauri/target/release/dust-mail" "$pkgdir/usr/bin/dust-mail"
 }
