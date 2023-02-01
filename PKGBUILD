@@ -3,7 +3,7 @@ _pkgname=jaspAcceptanceSampling
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=0
+pkgrel=4
 pkgdesc="Lot sampling for acceptance/rejection of lots"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -22,14 +22,12 @@ depends=(r
   r-acceptancesampling
 )
 groups=(r-jasp r-jaspextra)
-makedepends=('git')
-optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git#commit=d70e1793b")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('45f0d1d9a020cb2f703c302bf355047e65ea4208c59c4e4b3e177f301c16fac5')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
