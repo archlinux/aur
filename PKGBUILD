@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.1
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('64fdf23d734afad0dfe4077daca96ac51dcd697e68ae2d3d4ca6c45cb14e21ae'
             '8426f2ad548fb00452b340a631ab070899c0d44e7a88c8c3eec087c75ce32e6e'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '7beb8640c93d90a74ee226d394646aa8006693a23c8fa6840efb6d136e53613b'
-            'dd8dd78df738cf0bf40d973159cd9e7b17223746cd9b32560d8e85089a108665')
+            '1ea08f0f7819c9ef965ef7851a2262ae6f4837242d7fde2b6a8098b969d1133e')
 
 prepare() {
   cd postgresql-${pkgver}
