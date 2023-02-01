@@ -6,4 +6,4 @@ Comment=A game with a magic ray and many, many mirrors...
 Exec=mirrormagic
 Terminal=false
 Categories=Application;Game;
-Icon=/usr/share/mirrormagic/graphics/mirrormagic_icon.xbm
+Icon=/usr/share/mirrormagic/graphics/gfx_mirrormagic/icons/icon.png
