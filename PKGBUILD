@@ -2,7 +2,7 @@
 # Contributor: louis.seubert.ls@gmail.com <Louis Seubert>
 
 pkgname=plasma5-runners-jetbrains-runner
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="A Krunner Plugin which allows you to open your recent projects"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('krunner')
 makedepends=('extra-cmake-modules' 'kcmutils')
 install=$pkgname.install
 source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/JetBrainsRunnerWithSubmodule.tar.gz")
-sha256sums=('384d599744ff78198a2d179a47d32fe5744b87a8c37298c62e4b1d98805f0aea')
+sha256sums=('bd228a2a1dd8ca02712189a406f765094e266aad7b382117264425c5e559b212')
 
 build() {
     cd JetBrainsRunner
