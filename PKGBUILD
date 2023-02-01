@@ -2,12 +2,13 @@
 
 _pkgname=gcsvedit
 pkgname=${_pkgname}-git
-epoch=1
-pkgver=0.8.0+58+gc1c7746
+epoch=2
+_pkgver=0.8.0
+pkgver=0.8.0+58+c1c7746
 pkgrel=1
 pkgdesc='Simple text editor for CSV, TSV and other kinds of delimiter-separated values (DSV) files.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/sonnyp/gCSVedit"
+url="https://github.com/goetzc/gCSVedit"
 license=('GPL3')
 depends=('gtk3' 'libxml2' 'libtepl-6.so' 'gtksourceview4')
 makedepends=('git')
@@ -18,7 +19,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed -r "s/^v//;s/-/+/g"
+  _rel_commit='0ca2625594c094ed4b8dd98a11e3c7a0a9747318'
+  printf "%s+%s+%s" "${_pkgver}" "$(( `git rev-list --count HEAD` - `git rev-list --count ${_rel_commit}` ))" "$( git rev-parse --short HEAD )"
 }
 
 build() {
