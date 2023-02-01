@@ -8,21 +8,21 @@ pkgdesc='Linux User REpository'
 url='https://gitea.arsenm.dev/Arsen6331/lure'
 arch=('aarch64' 'armv6h' 'i686' 'x86_64')
 license=('GPLv3')
-provides=('lure')
-conflicts=('lure')
+provides=('linux-user-repository')
+conflicts=('linux-user-repository')
 depends=('sudo' 'pacman')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_aarch64.tar.gz")
-sha256sums_aarch64=('a7cea028b6bdd7ad2d02cb38c97bb126f7970832f6f5c6d5ff91e569c1b07394')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_aarch64.tar.gz")
+sha256sums_aarch64=('0808daf8d6f373642eabfa64375f8a69cb519c5d1c8208642a438eaca4c84b7a')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_armv6.tar.gz")
-sha256sums_armv6h=('3bb9d006732bd2da03cd802174fb78142a02671f7d7f1fe1dff6a7ee42bd59aa')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_armv6.tar.gz")
+sha256sums_armv6h=('b7b6a50e72658c671dbb7803445692939d6ef924d86687d461546d2836395418')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_i386.tar.gz")
-sha256sums_i686=('80d89604dafa7b08d1ee2b07ad0568eed8c282eb193cc373689d1de33149b045')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_i386.tar.gz")
+sha256sums_i686=('ea04d08dc4aa89bc97bfb6e65c6dad670853bf4d351f3f1619ef868cbad427c0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_x86_64.tar.gz")
-sha256sums_x86_64=('2ad08c113c37c5a1d18a0107be390f979d5738496689e94ee7987d40806ae9ad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://gitea.arsenm.dev/Arsen6331/lure/releases/download/v0.0.7/lure_0.0.7_linux_x86_64.tar.gz")
+sha256sums_x86_64=('b7723a18ae54c5fbf7c052e6b03fbe68bda5fbb9a0b0b668ef4ac74204788bfe')
 
 package() {
   # binaries
