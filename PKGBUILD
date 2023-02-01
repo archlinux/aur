@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RWeka
-_pkgver=0.4-44
+_pkgver=0.4-45
 pkgname=r-${_pkgname,,}
-pkgver=0.4.44
-pkgrel=3
+pkgver=0.4.45
+pkgrel=1
 pkgdesc='R/Weka Interface'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-partykit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f3239437aeeb01453b7ce235f9680bc281886b46de0b536d9c8413c6294c7bc8')
+sha256sums=('f910f17fabebbca9d25c58917c358f1f97edb854b4f9f9b397e10b107bd61028')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
