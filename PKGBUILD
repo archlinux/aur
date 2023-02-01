@@ -4,7 +4,7 @@
 
 pkgname=python-inotify-simple
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Python wrapper around inotify'
 arch=(any)
 url=https://github.com/chrisjbillington/inotify_simple
