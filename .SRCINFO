@@ -1,7 +1,7 @@
 pkgbase = mattermost-desktop-git
 	pkgdesc = Mattermost Desktop for Linux (binary)
-	pkgver = v5.2.2
-	pkgrel = 2
+	pkgver = 5.2.2
+	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
 	license = Apache

@@ -48,5 +48,5 @@ package() {
 
 pkgver() {
   cd 'desktop'
-  git describe | sed 's/v//'
+  git describe --long | sed 's/v//'
 }
