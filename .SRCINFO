@@ -1,6 +1,6 @@
 pkgbase = python-thunar-plugins-git
 	pkgdesc = Thunar plugins
-	pkgver = 1.0.0.r7.ga4765ed
+	pkgver = 1.1.0.r2.g9635f3b
 	pkgrel = 1
 	url = https://gitlab.com/nobodyinperson/thunar-plugins
 	install = python-thunar-plugins.install
@@ -9,6 +9,7 @@ pkgbase = python-thunar-plugins-git
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = thunarx-python
