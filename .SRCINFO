@@ -1,13 +1,13 @@
 pkgbase = yubico-authenticator
 	pkgdesc = Yubico Authenticator is a cross-platform application for managing your YubiKey's second factor credentials.
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.yubico.com/yubioath-desktop/
 	arch = x86_64
 	license = GPL
 	depends = ccid
-	source = https://developers.yubico.com/yubioath-desktop/Releases/yubico-authenticator-6.1.0-linux.tar.gz
-	source = https://developers.yubico.com/yubioath-desktop/Releases/yubico-authenticator-6.1.0-linux.tar.gz.sig
+	source = https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-6.1.0-linux.tar.gz
+	source = https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-6.1.0-linux.tar.gz.sig
 	validpgpkeys = 20EE325B86A81BCBD3E56798F04367096FBA95E8
 	sha256sums = be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417
 	sha256sums = SKIP
