@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=r34913.77b5177a1
+pkgver=r34946.d6dac29c8
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
@@ -38,10 +38,11 @@ prepare() {
 build() {
   cd "${_pkgname}"
 
+  # Don't use absolute path for install dirs, it breaks RPATH.
   cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
         -DBINARY_PACKAGE_BUILD=1 \
         -DBUILD_USERMANUAL=False \
@@ -59,6 +60,4 @@ package() {
   cd "${_pkgname}"
 
   make -C build DESTDIR="${pkgdir}" install
-  # The real lib is in `/usr/lib/ansel/` so this is needed.
-  ln -s ansel/libansel.so "${pkgdir}/usr/lib/libansel.so"
 }
