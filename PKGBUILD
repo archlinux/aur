@@ -2,15 +2,15 @@
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
 pkgname=aimp
-pkgver=5.10
-pkgrel=2418
+pkgver=5.11
+pkgrel=2421
 url="https://www.aimp.ru/"
 pkgdesc="AIMP (on Wine) is powerful free audio player."
 arch=('x86_64')
 license=('custom')
 depends=('wine') 
 source=("https://www.aimp.ru/files/linux/aimp_${pkgver}-${pkgrel}_amd64.deb")
-md5sums=('342ccb740bad87ee3a1217d0bb83fd12')
+md5sums=('7f285180690ada562c0ef4501b039a1b')
 
 build(){
    cd "${srcdir}"
