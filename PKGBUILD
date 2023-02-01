@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=sanjuuni
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="Converts images and videos into a format that can be displayed in ComputerCraft."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/MCJack123/sanjuuni/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('6d2d79ac370d4b4c0395484271c8488822c163d853cd107734b5c4510864b3e9')
+sha256sums=('cc86a1761de67a6fad1cd905fbbd0b31e57849d2c5c9e30fa84b779164138018')
 validpgpkeys=()
 
 prepare() {
