@@ -1,6 +1,6 @@
 pkgbase = mympd-git
 	pkgdesc = A standalone and lightweight web-based MPD client
-	pkgver = 10.1.0.r5.geb5aea5e
+	pkgver = 10.2.1.r4.g18a28cfe
 	pkgrel = 1
 	url = https://github.com/jcorporation/myMPD
 	arch = x86_64
@@ -10,22 +10,24 @@ pkgbase = mympd-git
 	makedepends = flac
 	makedepends = jq
 	makedepends = libid3tag
+	makedepends = openssl
 	makedepends = pcre2
 	makedepends = perl
+	depends = glibc
 	depends = lua
-	depends = openssl
 	provides = mympd
 	conflicts = mympd
-	options = debug
 	source = git+https://github.com/jcorporation/myMPD.git#branch=devel
 	sha512sums = SKIP
 
 pkgname = mympd-git
+	depends = glibc
 	depends = lua
-	depends = openssl
 	depends = flac
 	depends = libFLAC.so
 	depends = libid3tag
 	depends = libid3tag.so
+	depends = openssl
+	depends = libssl.so
 	depends = pcre2
 	depends = libpcre2-8.so
