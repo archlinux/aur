@@ -1,9 +1,9 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-pmd
-pkgver=4.17.0
-_buildtime=v20200926-0854
-pkgrel=2
+pkgver=4.43.0
+_buildtime=v20230128-1625-r
+pkgrel=1
 pkgdesc='PMD static source code analysis (Java, XML, ...) plugin for Eclipse IDE'
 arch=('any')
 url='http://pmd.sourceforge.net/'
@@ -11,13 +11,13 @@ license=('BSD' 'Apache')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 source=(
-	"feature.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/${pkgver}.${_buildtime}/features/net.sourceforge.pmd.eclipse_${pkgver}.${_buildtime}.jar"
-	"plugin.jar::https://dl.bintray.com/pmd/pmd-eclipse-plugin/releases/${pkgver}.${_buildtime}/plugins/net.sourceforge.pmd.eclipse.plugin_${pkgver}.${_buildtime}.jar"
+	"feature.jar::https://pmd.github.io/pmd-eclipse-plugin-p2-site/${pkgver}.${_buildtime}/features/net.sourceforge.pmd.eclipse_${pkgver}.${_buildtime}.jar"
+	"plugin.jar::https://pmd.github.io/pmd-eclipse-plugin-p2-site/${pkgver}.${_buildtime}/plugins/net.sourceforge.pmd.eclipse.plugin_${pkgver}.${_buildtime}.jar"
 	"license.txt::http://sourceforge.net/p/pmd/code/ci/master/tree/LICENSE?format=raw"
 )
 noextract=(feature.jar plugin.jar license.txt)
-sha256sums=('3a9e1e131149d53f49570d459b28b8a4f61110edad9ee0207278b5d296acc6d9'
-            'd99c6147725e221da889828a0ab1ed10dfa5a24d7aab02860429497a89df0db0'
+sha256sums=('feb8cec8ccb21efb3fe50131c48725db2bb8102c6ca99a860e95b752343d689e'
+            'e74a503e80d86206db020f492b5452c9b78668ef790c31d48b1b29b1fea30b85'
             '296dae48eae5658f449a89cf512b8e05386c9c5adfb23d74cfb24efa145625db')
 
 package() {
