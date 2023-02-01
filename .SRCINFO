@@ -1,13 +1,12 @@
 pkgbase = r-jaspbsts
 	pkgdesc = Bsts Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/jasp-stats/jaspBsts
 	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
-	makedepends = git
 	depends = r
 	depends = r-jaspbase
 	depends = r-jaspgraphs
@@ -17,7 +16,7 @@ pkgbase = r-jaspbsts
 	depends = r-matrixstats
 	depends = r-reshape2
 	optdepends = r-testthat
-	source = git+https://github.com/jasp-stats/jaspBsts.git
-	sha256sums = SKIP
+	source = jaspBsts_0.17.0.tar.gz::https://github.com/jasp-stats/jaspBsts/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 64bb990a7de8a0e1d58d1af6113b735d8b2128891ffdbce10cc71f592f9044c9
 
 pkgname = r-jaspbsts
