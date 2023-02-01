@@ -1,0 +1,13 @@
+pkgbase = python-unicornhat
+	pkgdesc = Python library for UnicornHAT/pHAT
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://github.com/pimoroni/unicorn-hat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/u/unicornhat/unicornhat-2.2.3.tar.gz
+	sha256sums = 2375b3efbcfc08c190e1c4a69988170d13ddca22b043870fc637110b295f0ce6
+
+pkgname = python-unicornhat
