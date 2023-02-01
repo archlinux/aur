@@ -7,10 +7,10 @@ arch=('x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
 license=('GPL')
 depends=('ccid')
-pkgrel=2
+pkgrel=3
 
 source=(
-    "https://developers.yubico.com/yubioath-desktop/Releases/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
+    "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
 
 validpgpkeys=(
@@ -21,10 +21,10 @@ sha256sums=('be686148475d642027d6126ea0984578aa2c22a179a565dc24b81b72ea457417'
             'SKIP')
 
 prepare() {
-     echo -e "\nINSTALLATION NOTE:\n"
+     echo -e "\n\033[0;32mINSTALLATION NOTE:\n"
      echo -e "If installation fails with 'One or more PGP signatures could not be verified', then install the key with:\n"
      echo -e "  gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8\n"
-     echo -e "Then retry the installation.\n"
+     echo -e "Then retry the installation.\033[0m\n"
     sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
     sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
 }
