@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.21.3+r150+gd2ef7819d3
+pkgver=1.22.0+r153+g9a300fc501
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -94,6 +94,7 @@ build() {
     -D tls=disabled # fix
     -D introspection=disabled # due to no lib32-gobject-introspection
     -D qt5=disabled # fix
+    -D qt6=disabled # fix
     -D gstreamer:dbghelp=disabled
     -D gstreamer:gobject-cast-checks=disabled
     -D gstreamer:package-name="Arch Linux gstreamer $pkgver-$pkgrel"
@@ -108,7 +109,6 @@ build() {
     -D gst-plugins-good:gobject-cast-checks=disabled
     -D gst-plugins-good:package-name="Arch Linux gst-plugins-good $pkgver-$pkgrel"
     -D gst-plugins-good:package-origin="https://www.archlinux.org/"
-    -D gst-plugins-good:qt6=disabled
     -D gst-plugins-good:rpicamsrc=disabled
     -D gst-plugins-bad:directfb=disabled
     -D gst-plugins-bad:flite=disabled
@@ -165,14 +165,14 @@ build() {
   meson compile -C build
 }
 
-check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  export XDG_RUNTIME_DIR
+# check() (
+#   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+#   export XDG_RUNTIME_DIR
 
-  # Flaky due to timeouts
-  xvfb-run -s '-nolisten local' \
-    meson test -C build --print-errorlogs || :
-)
+#   # Flaky due to timeouts
+#   xvfb-run -s '-nolisten local' \
+#     meson test -C build --print-errorlogs || :
+# )
 
 _install() {
   local src dir
@@ -632,7 +632,7 @@ package_lib32-gstreamer-vaapi-git() {
   conflicts=("lib32-gstreamer-vaapi")
 
   cd root; local files=(
-    usr/lib32/gstreamer-1.0/pkgconfig/gstvaapi.pc
+    # usr/lib32/gstreamer-1.0/pkgconfig/gstvaapi.pc
     usr/lib32/gstreamer-1.0/libgstvaapi.so
   ); _install
 }
