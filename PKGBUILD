@@ -5,7 +5,7 @@
 
 pkgname=weewx
 _MAJOR=4
-_MINOR=9
+_MINOR=10
 _PATCH=1
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
@@ -13,7 +13,7 @@ function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=2
+pkgrel=1
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -41,7 +41,7 @@ source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewxd"
         "wunderfixer"
         "weewx.service")
-sha512sums=('0b3640012ac1d316d7d6f48541959bdb68fbfdfb571203c627420d9f04bda0794531a91dd6c796f5bae8c63092ed117e0207e4b5133a9f2eb59ff70fc71faabc'
+sha512sums=('14faab47b453db05a753026731d226647e8c5dd72d85b72cd41e1e6230e47ad342b9cc71efc529375be33f151275afd06c3bf4587526682b4a677612145ca5f2'
             'SKIP'
             'SKIP'
             'SKIP'
