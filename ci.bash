@@ -9,6 +9,9 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 cd "${DIR}" || return
 
+git reset --hard HEAD
+git checkout main
+git clean -f .
 git pull --prune
 # Weird pgrep fail with the complete binary name
 if pgrep -a do-not-directly|grep alchemy ; then
