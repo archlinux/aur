@@ -1,0 +1,12 @@
+pkgbase = zeus-scanner
+	pkgdesc = Powerful and Fast automated local vulnerability scanner over a remote connection
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/5amu/zeus
+	arch = x86_64
+	license = GPL3
+	provides = zeus
+	source = zeus-scanner.zip::https://github.com/5amu/zeus/releases/download/v0.3/zeus_linux_amd64.zip
+	sha256sums = SKIP
+
+pkgname = zeus-scanner
