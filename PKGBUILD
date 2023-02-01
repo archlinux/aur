@@ -15,6 +15,12 @@ source=("$pkgname::git+$url#tag=v$pkgver"
 sha256sums=('SKIP'
             'SKIP')
 
+# On x86_64 we also build the lib for x86_32
+if [ "$CARCH" = x86_64 ]
+then
+  depends+=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' 'lib32-libxrandr' 'lib32-zlib' 'lib32-lz4' 'lib32-zstd')
+fi
+
 prepare() {
   cd $pkgname
   git submodule init

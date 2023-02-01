@@ -18,6 +18,13 @@ pkgbase = gfxreconstruct
 	depends = zlib
 	depends = lz4
 	depends = zstd
+	depends = lib32-libx11
+	depends = lib32-libxcb
+	depends = lib32-wayland
+	depends = lib32-libxrandr
+	depends = lib32-zlib
+	depends = lib32-lz4
+	depends = lib32-zstd
 	source = gfxreconstruct::git+https://github.com/LunarG/gfxreconstruct#tag=v0.9.17
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers
 	sha256sums = SKIP
