@@ -1,7 +1,7 @@
 pkgname=python-unicornhat
 _name=unicornhat
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for UnicornHAT/pHAT"
 arch=('any')
 url='https://github.com/pimoroni/unicorn-hat'

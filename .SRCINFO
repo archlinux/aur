@@ -1,7 +1,7 @@
 pkgbase = python-unicornhat
 	pkgdesc = Python library for UnicornHAT/pHAT
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pimoroni/unicorn-hat
 	arch = any
 	license = MIT
