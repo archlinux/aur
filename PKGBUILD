@@ -4,8 +4,8 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
-pkgver=2.39
-pkgrel=3
+pkgver=2.40
+pkgrel=1
 _commit=88ac930a725b8aac8284a2738f03b843f4343dd0
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
