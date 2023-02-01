@@ -1,5 +1,4 @@
 pkgbase = asf
-	pkgdesc = Steam cards farmer.
 	pkgver = 5.4.1.11
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
@@ -11,10 +10,7 @@ pkgbase = asf
 	license = Apache
 	makedepends = git
 	makedepends = dotnet-sdk>=7.0
-	depends = aspnet-runtime>=7.0
-	optdepends = asf-ui: standalone web interface for ASF
-	backup = var/lib/asf/config/ASF.json
-	backup = usr/lib/asf/NLog.config
+	makedepends = aspnet-runtime>=7.0
 	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=5.4.1.11
 	source = service.patch
 	source = asf.env
@@ -26,4 +22,19 @@ pkgbase = asf
 	sha256sums = c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332
 	sha256sums = 636f3a125071cabfcb0c3828c6f9b0ec613789ab846ff71448d1a6eb110aee3f
 
+pkgname = asf-plugin-steamtokendumper
+	pkgdesc = SteamTokenDumper plugin for ArchiSteamFarm.
+	depends = asf
+
+pkgname = asf-plugin-itemsmatcher
+	pkgdesc = ItemsMatcher plugin for ArchiSteamFarm.
+	depends = asf
+
 pkgname = asf
+	pkgdesc = Steam cards farmer.
+	depends = aspnet-runtime>=7.0
+	optdepends = asf-ui: standalone web interface for ASF
+	optdepends = asf-plugin-itemsmatcher
+	optdepends = asf-plugin-steamtokendumper
+	backup = var/lib/asf/config/ASF.json
+	backup = usr/lib/asf/NLog.config

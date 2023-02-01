@@ -1,18 +1,15 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 # Contributor: Lucki
 
-pkgname="asf"
+pkgbase=asf
+pkgname=('asf-plugin-steamtokendumper' 'asf-plugin-itemsmatcher'  'asf')
 pkgver="5.4.1.11"
 pkgrel=1
-pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
-depends=('aspnet-runtime>=7.0')
-optdepends=('asf-ui: standalone web interface for ASF')
-makedepends=('git' 'dotnet-sdk>=7.0')
+makedepends=('git' 'dotnet-sdk>=7.0' 'aspnet-runtime>=7.0')
 changelog=changelog
-backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}"
         "service.patch"
@@ -34,8 +31,36 @@ build() {
     cd asf
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     ./cc.sh --no-pull --no-asf-ui
+
+    export DOTNET_FLAGS="-c Release -f net7.0 -p:ContinuousIntegrationBuild=true -p:UseAppHost=false --nologo"
+    export PUBLISH_FLAGS="-r "$(uname -s)"-"$(uname -m)" --no-self-contained"
+    dotnet publish "ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" $DOTNET_FLAGS $PUBLISH_FLAGS
 }
-package() {
+
+package_asf-plugin-steamtokendumper() {
+    pkgdesc="SteamTokenDumper plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper
+    mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper "${pkgdir}/usr/lib/asf/plugins/"
+}
+
+package_asf-plugin-itemsmatcher() {
+    pkgdesc="ItemsMatcher plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher
+    mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher "${pkgdir}/usr/lib/asf/plugins/"
+}
+
+package_asf() {
+    pkgdesc="Steam cards farmer."
+    depends=('aspnet-runtime>=7.0')
+    optdepends=('asf-ui: standalone web interface for ASF'
+                'asf-plugin-itemsmatcher'
+                'asf-plugin-steamtokendumper')
+    backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
+
     cd asf/out/result
     install -d -m 755 "${pkgdir}/usr/lib/${pkgname}"
     cp -rdp --no-preserve=ownership . "${pkgdir}/usr/lib/asf"
