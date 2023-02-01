@@ -1,7 +1,7 @@
 pkgbase = r-delaporte
 	pkgdesc = Statistical Functions for the Delaporte Distribution
-	pkgver = 8.0.3
-	pkgrel = 3
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Delaporte
 	arch = x86_64
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = r-delaporte
 	depends = gcc-fortran
 	optdepends = r-covr
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/Delaporte_8.0.3.tar.gz
-	sha256sums = 7c9c55714560d1e041108bd696b7fcb85a71edc9f3ca7913b41f5b4efb9a32b4
+	source = https://cran.r-project.org/src/contrib/Delaporte_8.1.0.tar.gz
+	sha256sums = 1934c0316cfba450af37ee9386857494337a28e2d259b8dfaf55cb6fdc415123
 
 pkgname = r-delaporte
