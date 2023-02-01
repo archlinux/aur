@@ -24,7 +24,7 @@ source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
     "https://github.com/freqtrade/frequi/releases/download/0.6.5/freqUI.zip"
     "freqtrade@.service")
 sha512sums=("41ec4d3387e47e0dee3d1f5f359e3ac22a01720690c0c9820f3ba52f8ce34dc1c5f8b20025bd332f7d5c1fb5a5cfcb728b788e51b094e04a6050a058b4c0f4ba"
-    "73e27c61689869054126c2ad5da702dbb65537726157588f3d9f294688cf451a2a27e3ac4883aa06700801dd9d6a93977d71ed908c16b3886a62c004260a8011"
+    "72c8e7e5850f4039cf40fffeb3732c08bf0aac68ba3a3085e4917f8ffa74bec676a47ca17367100b1bc9366473a84f5d7a6896859ba384147090c37696a9eb0d"
     "5126cdd86136ae7f2b93fa22b3f01f811121a9cde875b4d699d92ae74f40bf017ee04cd8fc7df39d73660a2bad180063994cf6890d51e2dcfff312fb2e622df2")
 
 build()
