@@ -1,0 +1,16 @@
+pkgbase = cheat-asm-git
+	pkgdesc = Cheat Assembler/Disassembler for Atmosphere Cheat Codes
+	pkgver = v0.1.r0.g87236e8
+	pkgrel = 1
+	url = https://github.com/tslater2006/CheatASM
+	arch = any
+	license = GPL2
+	makedepends = dotnet-sdk
+	makedepends = git
+	depends = dotnet-runtime
+	source = git+https://github.com/tslater2006/CheatASM.git
+	source = dotnet7.patch
+	sha256sums = SKIP
+	sha256sums = 2d2c4c9d6b873239ef6bbb80c3f554d04f46da863a5aa08eea385d5f76aaaeb3
+
+pkgname = cheat-asm-git

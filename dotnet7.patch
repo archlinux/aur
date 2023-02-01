@@ -1,0 +1,31 @@
+diff --git a/CheatASM/Assembler.cs b/CheatASM/Assembler.cs
+index 06304bb..8fc3f72 100644
+--- a/CheatASM/Assembler.cs
++++ b/CheatASM/Assembler.cs
+@@ -362,11 +362,11 @@ namespace CheatASM
+             {
+                 case ".u8":
+                     var byteVal = Convert.ToByte(variable.Value, (isValueHex ? 16 : 10));
+-                    bytes = BitConverter.GetBytes(byteVal);
++                    bytes = new byte[] {byteVal};
+                     break;
+                 case ".s8":
+                     var sbyteVal = Convert.ToSByte(variable.Value, (isValueHex ? 16 : 10));
+-                    bytes = BitConverter.GetBytes(sbyteVal);
++                    bytes = new byte[] {(byte)sbyteVal};
+                     break;
+                 case ".u16":
+                     var shortVal = Convert.ToUInt16(variable.Value, (isValueHex ? 16 : 10));
+diff --git a/CheatASM/CheatASM.csproj b/CheatASM/CheatASM.csproj
+index 585811b..93853c7 100644
+--- a/CheatASM/CheatASM.csproj
++++ b/CheatASM/CheatASM.csproj
+@@ -2,7 +2,7 @@
+ 
+   <PropertyGroup>
+     <OutputType>Exe</OutputType>
+-    <TargetFramework>net5.0</TargetFramework>
++    <TargetFramework>net7.0</TargetFramework>
+   </PropertyGroup>
+ 
+   <PropertyGroup>
