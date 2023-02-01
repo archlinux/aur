@@ -47,7 +47,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # History configurations
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
@@ -223,7 +223,8 @@ precmd() {
     if [ $timer ]; then
         timer_show=$(($SECONDS - $timer))
         if [[ $timer_show -ge $min_show_time ]]; then
-            RPROMPT='$(([[ $? == 0 ]] && echo 😘%F{green}(${timer_show}s)%f) || ([[ $? != 0 ]] && echo 😥%F{red}(${timer_show}s)%f))%F{cyan}[%*]%f %{$reset_color%}%'
+            RPROMPT='$(([[ $? == 0 ]] && echo 😘%F{green}(${timer_show}s)%f) || ([[ $? != 0 ]] && echo 😥%F{red}(${timer_show}s)%f))%F{cyan}[%*]%f'
+            #%{$reset_color%}%
         else
             RPROMPT='$code_status[%*]%f'
         fi
