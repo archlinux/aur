@@ -13,6 +13,7 @@ arch=('any')
 license=('EUPL-1.2')
 url="https://github.com/pi-hole/pi-hole"
 depends=('pi-hole-ftl>=5.0' 'bc' 'perl' 'gnu-netcat' 'inetutils' 'iproute2' 'logrotate' 'bind-tools' 'sudo' 'lsof' 'procps-ng' 'jq')
+makedepends=('git')
 optdepends=(
 'lighttpd: a secure, fast, compliant and very flexible web-server'
 'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
