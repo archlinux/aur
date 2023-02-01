@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='usbimager'
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'udisks2')
 makedepends=('setconf')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'makefile.patch')
-sha256sums=('8d085095c19a123851ad41ba7d5045f7ba77280fc6c79143e00d7c9d0dade5d1'
+sha256sums=('934e435ea65f4545b972e7d488826346d0f7531471b5f77ba1f14736fcf5290b'
             'a8622b5584d5458b608096f24ab2e52e40f1970baaf4e4cd1ffd69b64d149828')
 
 prepare() {
