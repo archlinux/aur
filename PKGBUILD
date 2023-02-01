@@ -10,6 +10,7 @@ arch=('any')
 license=('EUPL-1.2')
 url="https://github.com/pi-hole/pi-hole"
 depends=('pi-hole-ftl' 'gnu-netcat' 'inetutils' 'iproute2' 'bind-tools' 'sudo' 'lsof' 'procps-ng')
+makedepends=('git')
 conflicts=('pi-hole-server')
 install=$pkgname.install
 backup=('etc/dnsmasq.d/01-pihole.conf')
