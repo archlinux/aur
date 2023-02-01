@@ -9,7 +9,7 @@ url='https://github.com/zeld/psa-update'
 license=('UNLICENSE')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 noextract=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-md5sums=("6a5dd28308dd7e4dd84fee73d289f969")
+sha256sums=("af5daa95fbebb12152d65a9810581e5f93fa29b37d49aa230219ed5736e30571")
 
 package() {
      cd "${pkgname}-${pkgver}-x86_64-unknown-linux-gnu"
