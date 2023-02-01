@@ -1,7 +1,7 @@
 # Maintainer: Mia Sireneva <owlnull@riseup.net>
 
 pkgname=rtsp-simple-server-bin
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='Ready-to-use RTSP / RTMP / LL-HLS server and proxy that allows to read, publish and proxy video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,13 +23,13 @@ source_aarch64=("https://github.com/aler9/${pkgname%-bin}/releases/download/v$pk
 
 sha256sums=(
 	'206de7ab940607b4fabb135959ba9a2dc89e97e4aaa6ff73762504ef409b5c89'
-	'b9ee559f1cf47509a6f0fb50def67671c4ace4ef52519b3198ac18a8129ec8d8'
-	'1498445638b106afdcf73309bcba8859b458abb7b30ce86af4d3e03f68bde251'
-	'f53f26b58da00e6f0d611e95f61a33fd7efec04f372e49db5dfb0dd16c5cc6e9'
+    'b9ee559f1cf47509a6f0fb50def67671c4ace4ef52519b3198ac18a8129ec8d8'
+    '1498445638b106afdcf73309bcba8859b458abb7b30ce86af4d3e03f68bde251'
+    'f53f26b58da00e6f0d611e95f61a33fd7efec04f372e49db5dfb0dd16c5cc6e9'
 )
-sha256sums_x86_64=('4f7bef8a4bb12175bdfb563789d28bea5d0510c34786354841956939b6031131')
-sha256sums_armv7h=('814abad55af26ccb13f219acfda4cbedcb11dc1303e95fd3649656875531eed7')
-sha256sums_aarch64=('a8d4b2c24a5635f1036fd93bd24b95325d535cae74910b7dce933e3498f251b6')
+sha256sums_x86_64=('e13ecd135fedf32dbb09bb6cfe71acbf33758cc70d6f3c79999a890cffc5eb2f')
+sha256sums_armv7h=('9160c9cb9e6ed92337eff26315b6c15abd537e116b8264d6dc05d2d5bf3868bd')
+sha256sums_aarch64=('ef737393f996927dd974298de9ddbf2502655db1d6e02a87bb116f3f0bd278b1')
 
 prepare() {
 	cd "$srcdir"
