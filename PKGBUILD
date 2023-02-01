@@ -3,7 +3,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='nfpm-bin'
-pkgver=2.24.0
+pkgver=2.25.0
 pkgrel=1
 pkgdesc='nFPM is a simple, 0-dependencies, deb, rpm and apk packager.'
 url='https://nfpm.goreleaser.com'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('nfpm')
 conflicts=('nfpm')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/nfpm/releases/download/v2.24.0/nfpm_2.24.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4969a96fc0d4a14a1d7857d06f57795605a77b54c83c85835ad652ec82186f85')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/nfpm/releases/download/v2.25.0/nfpm_2.25.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f88f917860bfa3d9eaa674eddeb97065af40ee9472a9132c7746c2cdf6c173c3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/nfpm/releases/download/v2.24.0/nfpm_2.24.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('73514e5e743aad6e74d4c6e45206efe5b6ef032b373f728636c21596c6eef708')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/nfpm/releases/download/v2.25.0/nfpm_2.25.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d8f7ee74eb315264c6f86c00198d338a6f21e0b3c3c13d5b5c4ce1057c8533b8')
 
 package() {
   # bin
