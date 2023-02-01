@@ -19,6 +19,6 @@ depends=(vorta)
 license=(MIT)
 package() {
     install -Dm644 "$srcdir/com.borgbase.Vorta_root.desktop" "$pkgdir/usr/share/applications/com.borgbase.Vorta_root.desktop"
-    install -Dm644 "$srcdir/com.borgbase.Vorta_root.rules" "$pkgdir/etc/polkit/com.borgbase.Vorta_root.rules"
+    install -Dm644 "$srcdir/com.borgbase.Vorta_root.rules" "$pkgdir/etc/polkit-1/rules.d/com.borgbase.Vorta_root.rules"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
