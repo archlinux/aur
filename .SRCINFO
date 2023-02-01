@@ -1,0 +1,16 @@
+pkgbase = oxker-git
+	pkgdesc = A simple TUI to view & control Docker containers
+	pkgver = 0.2.1.r0.gfe49b1b
+	pkgrel = 1
+	url = https://github.com/mrjackwills/oxker
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = oxker
+	conflicts = oxker
+	source = git+https://github.com/mrjackwills/oxker
+	sha512sums = SKIP
+
+pkgname = oxker-git
