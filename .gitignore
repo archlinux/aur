@@ -1,2 +1,4 @@
+/pkg/
+/src/
 download.zip
-
+*.pkg.tar.zst
