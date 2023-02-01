@@ -1,16 +1,14 @@
 pkgbase = puppeteer
 	pkgdesc = VTuber application made with Godot 3.4 (former OpenSeeFace-GD)
-	pkgver = 0.8.1
-	pkgrel = 4
-	url = https://github.com/virtual-puppet-project/puppeteer
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/virtual-puppet-project/vpuppr
 	arch = x86_64
 	license = MIT
-	depends = python3
+	depends = python
 	depends = python-pip
-	depends = python-virtualenv
-	optdepends = python39: Compatible python version for face tracking
 	replaces = openseeface-gd
-	source = puppeteer-0.8.1.zip::https://github.com/virtual-puppet-project/puppeteer/releases/download/0.8.1/openseeface-gd_0.8.1_linux.zip
-	sha256sums = 31932f233a496054a3305033406e6f3fa2b14dc54e0d2fda3895349980714735
+	source = puppeteer-0.9.0.zip::https://github.com/virtual-puppet-project/vpuppr/releases/download/0.9.0/vpuppr_0.9.0_linux.zip
+	sha256sums = 95c436e55a68e4abeb967acfa0ec9717dd6e0472ee72c346ded5aeb4a65ef587
 
 pkgname = puppeteer
