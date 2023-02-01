@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni(dot)id(at)gmail(dot)com>
 pkgname=python-ouster-sdk
-pkgver=0.5.1
-_pkgver=20220927
+pkgver=1.13.0
+_pkgver=1.13.0
 pkgrel=3
 pkgdesc="Ouster Python SDK"
 arch=(any)
