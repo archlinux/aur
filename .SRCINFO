@@ -1,6 +1,6 @@
 pkgbase = pipewire-common-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.65.r26.ge4f4ef9e
+	pkgver = 0.3.65.r27.g2681d7e3
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgbase = pipewire-common-git
 	makedepends = openssl
 	makedepends = gst-plugins-base-libs
 	makedepends = roc-toolkit
+	makedepends = libmysofa
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
@@ -65,6 +66,7 @@ pkgname = pipewire-common-git
 	depends = libcamera-base.so
 	depends = libcamera.so
 	depends = liblc3.so
+	depends = libmysofa
 	optdepends = pipewire-session-manager: Session manager
 	optdepends = pipewire-common-docs-git: Documentation
 	optdepends = pipewire-common-alsa-git: ALSA configuration

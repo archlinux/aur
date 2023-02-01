@@ -16,7 +16,7 @@ pkgname=(
   gst-plugin-pipewire-common-git
   pipewire-common-roc-git
 )
-pkgver=0.3.65.r26.ge4f4ef9e
+pkgver=0.3.65.r27.g2681d7e3
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -32,6 +32,7 @@ makedepends=(
   avahi openssl
   gst-plugins-base-libs
   roc-toolkit
+  libmysofa
 )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -63,7 +64,6 @@ build() {
     -D jack=disabled
     -D vulkan=disabled
     -D ffmpeg=disabled
-    -D libmysofa=disabled
     -D udevrulesdir=/usr/lib/udev/rules.d
   )
 
@@ -99,6 +99,7 @@ package_pipewire-common-git() {
     liblilv-0.so
     libcamera-base.so libcamera.so
     liblc3.so
+    libmysofa
   )
   optdepends=(
     'pipewire-session-manager: Session manager'
