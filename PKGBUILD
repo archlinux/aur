@@ -13,6 +13,7 @@ conflicts=("$pkgname")
 _commit="41b74d5fc6f002bb87e2a69f36407a40662cd3cc"
 source=("$pkgname::git+https://github.com/samuellando/pomodoro.git#commit=${_commit}")
 md5sums=('SKIP')
+depends=('dmenu')
 
 pkgver() {
   cd "$pkgname"
