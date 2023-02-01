@@ -5,7 +5,7 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=2.9.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz.asc::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz.asc"
 )
-sha512sums=('169876494884d4b6ec65e3e55ee143c0ed548593131f8ac7bffa866d3baf660b04bbb5ad6f245825e2e88a2c43555db3fe9cdb77c83b3fff0345d45a5187c247'
+sha512sums=('32053ce8a8e29b66018aac51730e97a1679639a7a6a12e8e42fd07fd21757341704a9c2056b4c35b1fdcd9c70c3ff3ae6872f44b2390d5f8287c854b652e6651'
             'SKIP')
 # Matthew "strager" Glazar <strager.nds@gmail.com>
 validpgpkeys=(A6851D57A65803E98C05DA01C08A7BC89CA2F557)
@@ -38,8 +38,8 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  ninja -C build test
+  cd "${pkgname}-${pkgver}/build"
+  ctest --output-on-failure
 }
 
 package() {
