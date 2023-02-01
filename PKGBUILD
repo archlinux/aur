@@ -2,9 +2,9 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=2.4.1.0
-_dashboardsver=2.4.1
-pkgrel=2
+pkgver=2.5.0.0
+_dashboardsver=2.5.0
+pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ prepare() {
   sed -i "s/    \"node\": \"[0-9\.]*\",/    \"node\": \"${nodeVersion:1}\",/" "OpenSearch-Dashboards/package.json"
 
   # https://github.com/opensearch-project/dashboards-visualizations/issues/146
-  sed -i "s/  \"opensearchDashboardsVersion\": \"2.4.0\",/  \"opensearchDashboardsVersion\": \"2.4.1\",/" "dashboards-visualizations/gantt-chart/opensearch_dashboards.json"
+  sed -i "s/  \"opensearchDashboardsVersion\": \"2.4.0\",/  \"opensearchDashboardsVersion\": \"2.5.0\",/" "dashboards-visualizations/gantt-chart/opensearch_dashboards.json"
 }
 
 build() {
