@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=mask
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc='A CLI task runner defined by a simple markdown file'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('abe5fddc7ea1a1ffab59c8f0823a95c7a6fdcfe86749f816b06d7690319d56aa')
+sha256sums=('539008c8c138bb38c142d0cc9f84c2b89b43e9eb8f5b349f5d0eb308de49860d')
 
 prepare() {
     cd $pkgname-$pkgver
