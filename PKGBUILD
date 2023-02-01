@@ -1,6 +1,6 @@
 pkgname=mupen64plus-qt
 pkgver=1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A customizable launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
@@ -10,7 +10,7 @@ install=mupen64plus-qt.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz"
         "quazip-fix.patch")
 sha256sums=('c41448adb7dd6acb6d4f56f7cdd2f25a8fd9a9e9ee23e334c0969b835802f20a'
-            'd5bb4fea752a82f190a8c243f54ab44979f4499af1386f832a1021beab92d7f6')
+            'b1a04d37fbd5f548c1d23824ab1553064cb5f9ffba218b08e951d61dfa756ef2')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
