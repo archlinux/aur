@@ -3,7 +3,7 @@ _pkgname=jaspMachineLearning
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=6
 pkgdesc=" Machine Learning Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -37,14 +37,12 @@ depends=(r
   r-kknn
 )
 groups=(r-jasp r-jaspextra)
-makedepends=('git')
-optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('1caa0c385060fd13c90f6fe267559a1162bf6af89606ad610b8bd298363f02be')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
