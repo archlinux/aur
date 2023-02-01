@@ -5,10 +5,10 @@
 _pkgbase=lzlib
 pkgname=lib32-$_pkgbase
 pkgver=1.13
-pkgrel=3
+pkgrel=4
 pkgdesc="A library providing in-memory LZMA compression and decompression functions"
 pkgdesc+=" (32-bit)"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="http://www.nongnu.org/lzip/lzlib.html"
 license=('BSD')
 depends=('lib32-gcc-libs')
