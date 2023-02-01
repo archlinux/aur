@@ -1,27 +1,27 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-_name=pycapnp
 pkgname=python-pycapnp
-pkgver=1.2.2
-pkgrel=3
+pkgver=1.3.0
+_commit=33c453eff788295804c094601b657ec4fdadc6f8
+pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD)
 arch=(x86_64)
 depends=(gcc-libs glibc python)
-makedepends=(capnproto cython python-build python-installer python-pkgconfig python-setuptools python-wheel)
+makedepends=(git capnproto cython python-build python-installer python-pkgconfig python-setuptools python-wheel)
 checkdepends=(python-pytest)
 optdepends=('python-jinja: for capnpc-cython')
-source=(https://github.com/capnproto/$_name/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('3c0bdd90ec2f7a2e631f05d1e7ddfa06524d003d0f3f7e68eda8affc423ecf5921ab5608e27fbee94603556e9a3a4bd3e52f5452d0501b29def8ac9f789630f0')
+source=(git+https://github.com/capnproto/pycapnp.git#commit=$_commit)
+sha512sums=('SKIP')
 
 build() {
-  cd $_name-$pkgver
+  cd pycapnp
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd pycapnp-$pkgver
+  cd pycapnp
   PYTHONPATH="build/lib.linux-$CARCH-cpython-310" pytest
 }
 
@@ -29,8 +29,7 @@ package() {
   depends+=(
     capnproto libkj.so libkj-async.so libcapnpc.so libcapnp.so libcapnp-rpc.so
   )
-  cd $_name-$pkgver
+  cd pycapnp
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  install -vDm 644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -Dm644 LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
