@@ -1,3 +1,16 @@
+2022-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.2.13-1:
+    [!] Improved neutral+ logic to reject possible abuse/exploitation on fair offers (@JustArchi #2807).
+    ItemsMatcher will now cancel trade offers that were created in the previous run, and deprioritize steamIDs that didn't answer (@JustArchi #2787).
+    Further bugfixes, enhancements and optimizations of ItemsMatcher plugin, especially in regards to data usage (@JustArchi)
+    Addressed recent Steam breaking change which caused depot tasks launched by STD plugin to fail (@JustArchi).
+    STD plugin will now skip asking for depots that SteamDB already has, as optimization measure (@JustArchi).
+    Removed requirement of 100 items for ASF STM listing, all SteamTradeMatcher bots are welcome now (@JustArchi).
+    Fixed unobserved QuicException errors that could happen on Windows machines (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
+    pkg: split package into main app and plugins
 2022-12-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.1.11-1:
     [!] PublicListing and MatchActively have been extracted from ASF core to standalone ItemsMatcher plugin. MatchActively feature was rewritten from scratch in regards to Steam breaking changes and is now a paid feature requiring a LicenseID to work. Please check out new ItemsMatcher wiki page for more info (@JustArchi).
