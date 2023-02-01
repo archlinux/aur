@@ -1,3 +1,7 @@
+### v1.5.2
+ 
+This release improves configuration and build.
+
 ### v1.5.0
 
 This new release fixes some problems with mkzonefs and improves the test suite.
