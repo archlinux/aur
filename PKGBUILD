@@ -5,7 +5,7 @@
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20230129
+pkgver=20230131
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
@@ -17,19 +17,19 @@ options=(!emptydirs)
 conflicts=('chirp' 'chirp-daily')
 provides=(chirp)
 install=$pkgname.install
-source=("https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-next-$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz")
 # Checksum: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('ae83d4e3d5cd8d00af6b9ac493cf3348366a6158')
+sha1sums=('76b23413c8a2b576c2cc59d082f4ec5f4d500088')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "chirp-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "chirp-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
-  install -D -m644 "${srcdir}/${pkgname}-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
+  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
+  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
+  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
 }
