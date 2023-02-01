@@ -1,0 +1,8 @@
+/* Allow members of the wheel group to execute vorta without a password
+ */
+polkit.addRule(function(action, subject) {
+    if (action.id == "com.borgbase.Vorta" && subject.isInGroup("wheel"))
+    {
+        return polkit.Result.YES;
+    }
+});

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vorta @root
+GenericName=Backup Software @root
+Exec=pkexec vorta
+Type=Application
+Icon=com.borgbase.Vorta
+Categories=System;Archiving;Qt;
+Keywords=borg;
+StartupWMClass=vorta
