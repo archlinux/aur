@@ -14,18 +14,10 @@ of the two available options (In alphabetical, not recommended, order):
 Either option should provide the same functionality/stability. Refer to the
 Sway wiki page for information.
 EOD
+
+    setcap cap_sys_nice+ep usr/bin/sway
 }
 
 post_upgrade() {
-cat << EOD
-Sway's necessary privileges can now be obtained through seatd as well as the
-incumbent polkit package. As such, polkit has been relegated to an optional
-dependency.
-
-Note that using seatd instead of polkit means that a user must be a part of the
-"seat" group: Otherwise, the user will not be able to achieve the appropriate
-privileged actions.
-
-For more information, refer to the Sway wiki page.
-EOD
+    setcap cap_sys_nice+ep usr/bin/sway
 }
