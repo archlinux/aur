@@ -18,4 +18,4 @@ package() {
   mv x86_64-linux-gnu/obs-plugins .
   rm -r x86_64-linux-gnu
   chown root:root -vR "${pkgdir}/"
-}git config pull.rebase false
+}
