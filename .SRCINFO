@@ -8,7 +8,7 @@ pkgbase = zigmod-bin
 	license = MIT
 	provides = zigmod
 	conflicts = zigmod
-	source = zigmod-bin-r78::https://github.com/nektro/zigmod/releases/download/r84/zigmod-x86_64-linux
+	source = zigmod-bin-r84::https://github.com/nektro/zigmod/releases/download/r84/zigmod-x86_64-linux
 	sha256sums = 437041bbe4d7849a0f83f2b1865cdd3067b8895fa7c9e95b1adefeab7b4fb011
 
 pkgname = zigmod-bin
