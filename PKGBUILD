@@ -9,7 +9,7 @@ pkgname=(
 )
 epoch=0
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A split package containing OpenRC init scripts for 'pipewire', 'pipewire-pulse' and 'wireplumber'."
 arch=(
   'any'
@@ -39,7 +39,7 @@ sha256sums=(
   '2fad4cc23b8f417e6400b4adee85389b3595ae500d3baf17d196394c8f78d8b7'
   '234b6e08915ecfa790f2f2f6fe3c76c347ab71c0194fb6df7f9c5f1de0db7e44'
   '55e9a5dcf756ea81b38e976f5d161222cd6449a4bbff67911ddfe740ff9a5727'
-  '62e9ca05f742eb7249864ba86075ef51c6e3e0dd074bfcbf34f1416e75af4f8b'
+  'a22ccb63176088af6924c0515d8853c46454040eb07575a3337c24a26d1aff11'
 )
 
 package_pipewire-openrc() {

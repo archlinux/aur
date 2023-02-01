@@ -1,4 +1,10 @@
 post_install() {
-  printf '%s\n' "Adding 'pipewire' system user and group ..."
+  printf '\n'
+  printf '%s\n' "  -> Adding 'pipewire' system user and group ..."
   id -u pipewire > /dev/null 2>&1 || useradd --system --home-dir /run/pipewire --no-create-home --user-group --groups audio,video,dbus pipewire
+
+  printf '\n'
+  printf '%s\n' "  -> NOTE! Things usually will run better when the services are not started system-wide, but as user processes."
+  printf '%s\n' "     You _might_ end up with no sound at all if you start things system wide."
+  printf '\n'
 }
