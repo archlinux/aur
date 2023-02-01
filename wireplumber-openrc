@@ -1,0 +1,24 @@
+#!/usr/bin/openrc-run
+
+# Work based on file by "Gentoo Authors", 2022
+# Modified for Artix Linux by dreieck, 2023
+# Distributed under the terms of the GNU General Public License v2
+
+PIPEWIRE_RUNTIME_DIR="/run/pipewire"
+DBUS_SESSION_BUS_ADDRESS="unix:path=/run/dbus/system_bus_socket"
+name="pipewire automatic session manager"
+description="On demand pipewire management"
+command=/usr/bin/wireplumber
+command_args="${wirplumber_args[@]}"
+command_background=yes
+command_user="pipewire:pipewire"
+pidfile="${PIPEWIRE_RUNTIME_DIR}/wireplumber.pid"
+
+depend() {
+  need dbus pipewire
+}
+
+start_pre() {
+  export PIPEWIRE_RUNTIME_DIR
+  export DBUS_SESSION_BUS_ADDRESS
+}

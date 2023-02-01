@@ -1,0 +1,4 @@
+post_install() {
+  printf '%s\n' "Adding 'pipewire' system user and group ..."
+  id -u pipewire > /dev/null 2>&1 || useradd --system --home-dir /run/pipewire --no-create-home --user-group --groups audio,video,dbus pipewire
+}
