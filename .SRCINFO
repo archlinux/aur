@@ -1,6 +1,6 @@
 pkgbase = dra-bin
 	pkgdesc = A command line tool to download assets from GitHub releases
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/devmatteini/dra
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dra-bin
 	depends = xz
 	provides = dra
 	conflicts = dra
-	source_x86_64 = dra-bin-0.4.2.tar.gz::https://github.com/devmatteini/dra/releases/download/0.4.2/dra-0.4.2-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = 02219c04c7db1b97626238b23b7599418f16099b3710ed4423e8ecdd14673a9deeb67a5b0e25d90fd7b8139cd5abebba01d2bbb387db17bd00b7c1f3aeae2d4b
+	source_x86_64 = dra-bin-0.4.3.tar.gz::https://github.com/devmatteini/dra/releases/download/0.4.3/dra-0.4.3-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = 827876bb888f2cac444094db9351779a63620fc78297480ecc870133601b8c2a8ebdf69374991da3c2441a4245ad23101327eb692d3c8a3104c033452582b0f6
 
 pkgname = dra-bin
