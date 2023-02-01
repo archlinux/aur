@@ -3,7 +3,7 @@ _pkgname=jaspAnova
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=5
+pkgrel=8
 pkgdesc="ANOVA Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -30,14 +30,13 @@ depends=(r
   r-restriktor
 )
 groups=(r-jasp r-jaspcommon)
-makedepends=('git')
 optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git#commit=7620c262c9")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('6b82d6006fe9de8d10c16cbc5e2ad802b0e7d59d17e2acb4392b70502e95bc6f')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 

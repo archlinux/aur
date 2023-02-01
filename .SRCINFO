@@ -1,13 +1,12 @@
 pkgbase = r-jaspanova
 	pkgdesc = ANOVA Module for JASP
 	pkgver = 0.17.0
-	pkgrel = 5
+	pkgrel = 8
 	url = https://github.com/jasp-stats/jaspAnova
 	arch = any
 	groups = r-jasp
 	groups = r-jaspcommon
 	license = GPL
-	makedepends = git
 	depends = r
 	depends = r-afex
 	depends = r-bayesfactor
@@ -28,7 +27,7 @@ pkgbase = r-jaspanova
 	depends = r-stringi
 	depends = r-stringr
 	depends = r-restriktor
-	source = git+https://github.com/jasp-stats/jaspAnova.git#commit=7620c262c9
-	sha256sums = SKIP
+	source = jaspAnova_0.17.0.tar.gz::https://github.com/jasp-stats/jaspAnova/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 6b82d6006fe9de8d10c16cbc5e2ad802b0e7d59d17e2acb4392b70502e95bc6f
 
 pkgname = r-jaspanova
