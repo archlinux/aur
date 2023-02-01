@@ -7,7 +7,7 @@ pkgbase = beakerlib
 	arch = x86_64
 	license = GPL2
 	makedepends = perl
-	source = https://github.com/beakerlib/beakerlib/archive/refs/tags/1.29.3.tar.gz
+	source = beakerlib-1.29.3.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/1.29.3.tar.gz
 	sha256sums = f792b86bac8be1a4593dd096c32c1a061102c802c6f5760259a5753b13f6caa1
 
 pkgname = beakerlib

@@ -9,7 +9,7 @@ url="https://github.com/beakerlib/beakerlib"
 license=('GPL2')
 depends=()
 makedepends=('perl')
-source=("https://github.com/beakerlib/beakerlib/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/beakerlib/beakerlib/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('f792b86bac8be1a4593dd096c32c1a061102c802c6f5760259a5753b13f6caa1')
 
 _srcdir="${pkgname}-${pkgver}"
