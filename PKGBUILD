@@ -3,7 +3,7 @@
 
 pkgname=esbuild
 pkgver=0.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://${pkgname}.github.io/"
@@ -29,10 +29,6 @@ build() {
 package() {
     local bin="/usr/bin/${pkgname}"
     install -Dm755 "build/${pkgname}" "${pkgdir}${bin}"
-
-    local profile="/etc/profile.d"
-    install -dm755 "${pkgdir}${profile}"
-    echo "export ESBUILD_BINARY_PATH='${bin}'" > "${pkgdir}${profile}/${pkgname}.sh"
 
     cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.md"
