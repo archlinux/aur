@@ -1,6 +1,6 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/jelmer/ognibuild
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ognibuild
 	depends = python-ruamel-yaml
 	depends = python-setuptools
 	depends = python-toml
-	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.17.tar.gz
-	sha256sums = b0300a43dd7d75364736a78c4aa1c9d6101648164dbb31bc47c65788993568f7
+	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.18.tar.gz
+	sha256sums = 8d16daa719503a1c1026ea3793c1b8c5f7ebd3dd9476d0223f828e736d521edf
 
 pkgname = ognibuild
