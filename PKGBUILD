@@ -1,7 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 
 pkgname=qspeakers
-pkgver=1.6.6
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
@@ -16,7 +16,7 @@ source=(
 )
  
 sha256sums=(
-  '51ca23a4456a1aafcfb2d9ec51c9e10f0510401f96df6c4eb26c00e198a71286'
+  'dd8cf1a13b2922dc91aa8ecf54d0cfb3c0347047e87e475b65fff36b584b5383'
 )
  
 build() {
