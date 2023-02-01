@@ -2,7 +2,7 @@
 # Maintainer: Yevhenii Kolesnikov <sigexp.acc at gmail dot com>
 
 pkgname=gfxreconstruct
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 pkgdesc='Graphics API Capture and Replay Tools for Reconstructing Graphics Application Behavior'
 arch=('x86_64' 'aarch64')
