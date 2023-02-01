@@ -15,7 +15,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=43.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -55,6 +55,8 @@ checkdepends=(
   xorg-server-xvfb
   zenity
 )
+provides=(mutter libmutter-11.so)
+conflicts=(mutter)
 _commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
