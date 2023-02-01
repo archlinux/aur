@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=uksmd
-_rev=8f0349ec9858b9165e607a263ae0dee004c28ff1
-pkgver=0.0.0.r16.${_rev:0:10}
+_rev=39dacdc9ed35effb713f8ecd426aeaa8e5a2a6f3
+pkgver=0.0.0.r17.${_rev:0:10}
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url=https://codeberg.org/pf-kernel/uksmd
@@ -11,7 +11,7 @@ arch=(x86_64)
 depends=(systemd procps-ng libcap-ng)
 makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${_rev}.tar.gz)
-sha256sums=('f620de9e2e5a7ba72c4108a7995e247d9352ca112398416c062265dca64d596d')
+sha256sums=('2a9d592172e3be58cd3375b09bd4e10708a38f7258172aa35c7e608652edf370')
 
 build() {
 	cd ${pkgname}
