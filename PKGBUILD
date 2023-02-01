@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel van Diepen <eeems@eeems.email>
 pkgname=vorta-root
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 url=https://github.com/eeems/vorta-root
 pkgdesc="Run vorta as root without having to enter a password"
 arch=(any)
@@ -18,7 +18,9 @@ md5sums=(
 depends=(vorta)
 license=(MIT)
 package() {
+    mkdir -pm755 "$pkgdir/usr/share/polkit-1"
+    mkdir -m750 "$pkgdir/usr/share/polkit-1/rules.d"
     install -Dm644 "$srcdir/com.borgbase.Vorta_root.desktop" "$pkgdir/usr/share/applications/com.borgbase.Vorta_root.desktop"
-    install -Dm644 "$srcdir/com.borgbase.Vorta_root.rules" "$pkgdir/etc/polkit-1/rules.d/com.borgbase.Vorta_root.rules"
+    install -Dm644 "$srcdir/com.borgbase.Vorta_root.rules" "$pkgdir/usr/share/polkit-1/rules.d/com.borgbase.Vorta_root.rules"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
