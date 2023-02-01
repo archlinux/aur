@@ -15,12 +15,12 @@ depends=('vapoursynth'
          'python-mmcv-full'
          )
 makedepends=('git'
-             'python-packaging'
+             'python-pip'
              )
 optdepends=('python-pytorch: pytorch CPU with AVX2 optimizations'
             'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
-            'python-torchvision: torchvision Datasets, transforms, and models specific to computer vision (with GPU support)'
-            'python-torchvision-cuda: torchvision Datasets, transforms, and models specific to computer vision'
+            'python-torchvision: torchvision Datasets, transforms, and models specific to computer vision'
+            'python-torchvision-cuda: torchvision Datasets, transforms, and models specific to computer vision git diff(with GPU support)'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
