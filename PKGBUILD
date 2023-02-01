@@ -3,7 +3,7 @@ _pkgname=jaspJags
 _pkgver=0.17.0
 pkgname=r-${_pkgname,,}
 pkgver=0.17.0
-pkgrel=4
+pkgrel=7
 pkgdesc="JAGS Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -19,14 +19,13 @@ depends=(r
   r-stringr
 )
 groups=(r-jasp r-jaspextra)
-makedepends=('git')
 optdepends=()
-source=("git+https://github.com/jasp-stats/${_pkgname}.git#commit=b1dc1fa77d")
-sha256sums=('SKIP')
+source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('d5fb2391358b652a4e93b8367855566f51ebc7fae8a3f7c5adb9f1feae07785d')
 
 
 build() {
-  tar -cvf ${srcdir}/${_pkgname}_${_pkgver}.tar.gz ${_pkgname}
+
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
 
