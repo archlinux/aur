@@ -1,6 +1,6 @@
 pkgbase = android-ndk
 	pkgdesc = Android C/C++ developer kit
-	pkgver = r25.b
+	pkgver = r25.c
 	pkgrel = 1
 	url = https://developer.android.com/ndk/
 	install = android-ndk.install
@@ -19,8 +19,8 @@ pkgbase = android-ndk
 	source = android-ndk.sh
 	sha1sums = 2479a8d74428eb651ad2b9772ad655d7a90af410
 	sha256sums = 2068618bc3e99149310f544be5d639ae183dc767d5a7157a07d8e024417b6017
-	source_x86_64 = https://dl.google.com/android/repository/android-ndk-r25b-linux.zip
-	sha1sums_x86_64 = e27dcb9c8bcaa77b78ff68c3f23abcf6867959eb
-	sha256sums_x86_64 = 403ac3e3020dd0db63a848dcaba6ceb2603bf64de90949d5c4361f848e44b005
+	source_x86_64 = https://dl.google.com/android/repository/android-ndk-r25c-linux.zip
+	sha1sums_x86_64 = 53af80a1cce9144025b81c78c8cd556bff42bd0e
+	sha256sums_x86_64 = 769ee342ea75f80619d985c2da990c48b3d8eaf45f48783a2d48870d04b46108
 
 pkgname = android-ndk
