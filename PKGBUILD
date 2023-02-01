@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Latex/Tex editor for Inkscape"
 arch=(any)
 url="https://github.com/wanglongqi/${_base}"
-license=(GPL2)
+license=(GPL3)
 depends=(inkscape python-lxml pdf2svg)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   inkscape-1.2-compatiblity.patch::${url}/commit/bab62e1e85ebd68981c0e79fe525cbcc68fbbbc7.patch)
