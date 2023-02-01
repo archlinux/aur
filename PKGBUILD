@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MassSpecWavelet
-_pkgver=1.64.0
+_pkgver=1.64.1
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
-pkgrel=3
+pkgver=1.64.1
+pkgrel=1
 pkgdesc='Mass spectrum processing by wavelet-based algorithms'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-waveslim
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9769b599c5e9ac08b7c552bc2c459177c9632052ba53d4eeacb8e03307f0651')
+sha256sums=('0f6f1bd21b6b7977c4db1b26515e0f8fc963e7a87407bdfc2b6a233632690c5d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

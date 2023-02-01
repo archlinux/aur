@@ -1,7 +1,7 @@
 pkgbase = r-massspecwavelet
 	pkgdesc = Mass spectrum processing by wavelet-based algorithms
-	pkgver = 1.64.0
-	pkgrel = 3
+	pkgver = 1.64.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/MassSpecWavelet
 	arch = x86_64
 	license = LGPL
@@ -13,7 +13,7 @@ pkgbase = r-massspecwavelet
 	optdepends = r-runit
 	optdepends = r-signal
 	optdepends = r-waveslim
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MassSpecWavelet_1.64.0.tar.gz
-	sha256sums = c9769b599c5e9ac08b7c552bc2c459177c9632052ba53d4eeacb8e03307f0651
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MassSpecWavelet_1.64.1.tar.gz
+	sha256sums = 0f6f1bd21b6b7977c4db1b26515e0f8fc963e7a87407bdfc2b6a233632690c5d
 
 pkgname = r-massspecwavelet
