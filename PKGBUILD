@@ -37,7 +37,7 @@ build() {
 }
 
 package_fcitx5-im-emoji-picker-git() {
-    desc+=' (Fcitx5)'
+    pkgdesc+=' (Fcitx5)'
     depends+=('fcitx5')
 
     cd im-emoji-picker
@@ -53,7 +53,7 @@ package_fcitx5-im-emoji-picker-git() {
 }
 
 package_ibus-im-emoji-picker-git() {
-    desc+=' (IBus)'
+    pkgdesc+=' (IBus)'
     depends+=('ibus')
 
     cd im-emoji-picker

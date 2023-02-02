@@ -18,12 +18,14 @@ pkgbase = im-emoji-picker-git
 	b2sums = SKIP
 
 pkgname = fcitx5-im-emoji-picker-git
+	pkgdesc = Qt 5-based emoji picker (Fcitx5)
 	depends = qt5-base
 	depends = icu
 	depends = hicolor-icon-theme
 	depends = fcitx5
 
 pkgname = ibus-im-emoji-picker-git
+	pkgdesc = Qt 5-based emoji picker (IBus)
 	depends = qt5-base
 	depends = icu
 	depends = hicolor-icon-theme
