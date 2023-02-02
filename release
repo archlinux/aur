@@ -48,5 +48,5 @@ read ans
 if [ "$ans" != "n" ] && [ "$ans" != "N" ]; then
   git add -A
   git commit -m "Release $VERSION"
-  git push origin
+  git push origin master
 fi

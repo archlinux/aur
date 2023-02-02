@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=updatecli-bin
-pkgver="0.42.0"
+pkgver="0.43.0"
 pkgrel=1
 pkgdesc="A Declarative Dependency Management tool"
 arch=(x86_64 aarch64)
