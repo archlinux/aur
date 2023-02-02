@@ -45,8 +45,7 @@ optdepends=(
 )
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
-        "50-systemd-user.conf"
-        "https://github.com/swaywm/sway/commit/1c368fbb5fcd8fb67040bcc12bd71c7fbf119e97.diff")
+        "50-systemd-user.conf")
 install=sway.install
 sha512sums=('0dce213939bb9b38becfac62a22cadf2dc4ed723a8fa06dcaaa3625491722e89dc92bf1734f010d0823513a45d91501c8ba6b4c71d2bf46a1e805938937bab7b'
             'SKIP'
