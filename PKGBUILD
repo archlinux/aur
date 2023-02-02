@@ -1,26 +1,24 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info
-_python=python2
-pkgver=0.23
+_python=python3
+pkgver=1.4
 pkgrel=1
 pkgdesc="provides information about the distributions' releases"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/distro-info"
 license=('MIT')
-depends=('distro-info-data>=0.21')
+depends=('distro-info-data>=0.56')
 makedepends=('shunit2' 'perl' 'python-setuptools' 'python2-setuptools' 'python-pylint')
-provides=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
-conflicts=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
+provides=('python-distro-info' 'python3-distro-info' 'perl-distro-info')
+conflicts=('python-distro-info' 'python3-distro-info' 'perl-distro-info')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('38572fab05cb6a309240a10f9b004e202f3362a53f0684257e5e84036491c473')
+sha256sums=('d5c77a199a5287fd18afb0f32377b3516d680f60e055d18a9fea423ceb2e4c27')
 
 build() {
   #cd "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname"
-  sed -i -e 's/python3 setup.py/python2 setup.py/g' \
-    -e 's/ --install-layout=deb//g' \
-    Makefile
+  sed -i -e 's/ --install-layout=deb//g' Makefile
   make
 }
 check() {
