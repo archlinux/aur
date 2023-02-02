@@ -2,8 +2,8 @@
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane-git
-_NEXT_VERSION=1.10.x
-pkgver=1.10.x.e8fc2b229
+_NEXT_VERSION=1.11.x
+pkgver=1.11.x.6dbb149f9
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('freeplane')
 provides=('freeplane')
 depends=('java-environment' 'desktop-file-utils')
 source=("git+https://github.com/freeplane/freeplane.git#branch=${_NEXT_VERSION}"
-        "freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/${_NEXT_VERSION}/freeplane/src/editor/resources/linux/freeplane.desktop"
+        "freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/${_NEXT_VERSION}/debian-meta-data/freeplane.desktop"
         "freeplane.run")
 sha256sums=('SKIP'
             'SKIP'
