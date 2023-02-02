@@ -1,13 +1,3 @@
-post_install() {
-  echo "Apply workaround for bug FS#76326..."
-  sed -i '/charset-normalizer/s/<3.0,//' /usr/lib/python3.10/site-packages/aiohttp-3.8.3.dist-info/METADATA
-}
-
-post_update() {
-  echo "Apply workaround for bug FS#76326..."
-  sed -i '/charset-normalizer/s/<3.0,//' /usr/lib/python3.10/site-packages/aiohttp-3.8.3.dist-info/METADATA
-}
-
 post_remove() {
   userdel -fr maubot
 }
