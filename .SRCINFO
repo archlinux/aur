@@ -1,6 +1,6 @@
 pkgbase = savvycan
 	pkgdesc = QT-based CAN bus analysis tool
-	pkgver = 1.0.245
+	pkgver = V208
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/collin80/SavvyCAN
@@ -9,7 +9,7 @@ pkgbase = savvycan
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	depends = qt5-serialbus
-	source = https://github.com/collin80/SavvyCAN/archive/1.0.245.tar.gz
-	sha256sums = 347c6bf143ba09e6002068f7484d13179f54bef4a077980eafd4a3c06f0e18bf
+	source = https://github.com/collin80/SavvyCAN/archive/refs/tags/V208.tar.gz
+	sha256sums = 3454dc4f3d03ca083b0c2c962f3ccc41bccaf0ffdb303e4c8becc5339c491140
 
 pkgname = savvycan

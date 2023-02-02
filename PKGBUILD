@@ -3,7 +3,7 @@
 
 pkgname="savvycan"
 pkgproper="SavvyCAN"
-pkgver="1.0.245"
+pkgver="V208"
 pkgrel=1
 epoch=1
 pkgdesc="QT-based CAN bus analysis tool"
@@ -12,10 +12,11 @@ license=('MIT')
 arch=('x86_64')
 depends=('qt5-serialbus')
 makedepends=('qt5-base' 'qt5-tools')
-source=("https://github.com/collin80/SavvyCAN/archive/${pkgver}.tar.gz")
+source=("https://github.com/collin80/SavvyCAN/archive/refs/tags/${pkgver}.tar.gz")
+dirvername="${pkgver#V}"
 
 build() {
-  cd "$srcdir/$pkgproper-$pkgver"
+  cd "$srcdir/$pkgproper-$dirvername"
   sed -i -e '/.*isEmpty(PREFIX)/,+3d' SavvyCAN.pro
   qmake-qt5 PREFIX=/usr \
     QMAKE_CFLAGS="${CFLAGS}" \
@@ -25,13 +26,14 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgproper-$pkgver"
+  cd "$srcdir/$pkgproper-$dirvername"
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgproper-$pkgver"
-	make INSTALL_ROOT="$pkgdir" install
+  cd "$srcdir/$pkgproper-$dirvername"
+  make INSTALL_ROOT="$pkgdir" install
+  qmake-qt5 -install qinstall -exe SavvyCAN "$pkgdir/usr/bin/SavvyCAN"
 }
 
-sha256sums=('347c6bf143ba09e6002068f7484d13179f54bef4a077980eafd4a3c06f0e18bf')
+sha256sums=('3454dc4f3d03ca083b0c2c962f3ccc41bccaf0ffdb303e4c8becc5339c491140')
