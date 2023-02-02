@@ -2,7 +2,7 @@
 
 pkgname=torrserver-bin
 pkgver=120
-pkgrel=3
+pkgrel=4
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
