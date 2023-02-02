@@ -1,0 +1,20 @@
+pkgbase = justbuild
+	pkgdesc = A generic build system supporting multi-repository builds
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/just-buildsystem/justbuild
+	arch = x86_64
+	license = Apache
+	makedepends = clang
+	makedepends = binutils
+	makedepends = wget
+	depends = python
+	conflicts = just
+	conflicts = just-git
+	conflicts = just-js
+	source = justbuild-1.0.0.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v1.0.0.tar.gz
+	source = boringssl-no-Werror.patch
+	sha256sums = d36ad7f2710c4e21368eb274c830ce8a71b6819ce80685d707a355fe3916e7a5
+	sha256sums = SKIP
+
+pkgname = justbuild

@@ -1,0 +1,11 @@
+diff --unified --recursive --text justbuild-1.0.0/etc/defaults/CC/TARGETS.boringssl justbuild-1.0.0-patched/etc/defaults/CC/TARGETS.boringssl
+--- justbuild-1.0.0/etc/defaults/CC/TARGETS.boringssl	2022-12-12 13:41:48.000000000 +0100
++++ justbuild-1.0.0-patched/etc/defaults/CC/TARGETS.boringssl	2023-01-30 21:22:05.562315959 +0100
+@@ -38,7 +38,6 @@
+             , [ "-Wa,--noexecstack"
+               , "-D_XOPEN_SOURCE=700"
+               , "-Wall"
+-              , "-Werror"
+               , "-Wformat=2"
+               , "-Wsign-compare"
+               , "-Wmissing-field-initializers"
