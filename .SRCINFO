@@ -1,15 +1,14 @@
 pkgbase = invert-steam-skin
 	pkgdesc = A light skin for steam
-	pkgver = 353
-	pkgrel = 2
+	pkgver = 356
+	pkgrel = 1
 	url = https://gamebanana.com/guis/28814
 	install = invert-steam-skin.install
 	arch = any
 	license = unknown
 	depends = steam
 	depends = sssm
-	source = https://files.gamebanana.com/mods/invert_v353.zip
-	md5sums = cedaeac2f304a455d7a7a0a9cce0d08c
+	source = https://files.gamebanana.com/mods/invert_v356.zip
+	md5sums = c93c7cd99c11a8b00bc9ae1cc98d6215
 
 pkgname = invert-steam-skin
-
