@@ -1,12 +1,13 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=haredump-git
 _pkgname=haredump
-pkgver=r7.6f5378e
+pkgver=r11.e5740bc
 pkgrel=1
 license=("custom:WTFPL")
 pkgdesc="Command line tool that dumps data as hare code."
 makedepends=(
 	"hare"
+	"haredo"
 	"git"
 )
 
@@ -26,17 +27,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-
-	# remove '-Wl,' prefix if present, since it is only required when the
-	# linker is invoked indirectly. Keeping it will cause the linker to
-	# fail.
-	make LDFLAGS=${LDFLAGS#"-Wl,"}
+	haredo
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	make PREFIX="$pkgdir/usr" install
+	PREFIX="$pkgdir/usr" haredo install
 }
 

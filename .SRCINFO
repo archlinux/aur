@@ -1,12 +1,13 @@
 pkgbase = haredump-git
 	pkgdesc = Command line tool that dumps data as hare code.
-	pkgver = r7.6f5378e
+	pkgver = r11.e5740bc
 	pkgrel = 1
 	url = https://git.sr.ht/~autumnull/haredump
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = custom:WTFPL
 	makedepends = hare
+	makedepends = haredo
 	makedepends = git
 	provides = haredump
 	conflicts = haredump
