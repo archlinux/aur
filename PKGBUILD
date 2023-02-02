@@ -1,18 +1,18 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=adwaita-for-steam-git
-pkgver=0.21.r1.g4ad8301
+pkgver=0.29.r2.g9492a7c
 pkgrel=1
 pkgdesc='A skin to make Steam look more like a native GNOME app'
-arch=('any')
-url="https://github.com/tkashkin/${pkgname%-git}"
-license=('MIT')
-depends=('steam')
-makedepends=('git')
+arch=(any)
+url=https://github.com/tkashkin/${pkgname%-git}
+license=(MIT)
+depends=(steam sssm)
+makedepends=(git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("git+$url")
-b2sums=('SKIP')
+source=(git+$url)
+b2sums=(SKIP)
 install=adwaita-for-steam.install
 
 pkgver()
@@ -25,5 +25,5 @@ package()
 {
   cd ${pkgname%-git}
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
-  find Adwaita -type f -exec install -Dm644 "{}" "$pkgdir/usr/lib/steam/skins/{}" \;
+  find Adwaita -type f -exec install -Dm644 "{}" "$pkgdir/usr/share/steam/skins/{}" \;
 }

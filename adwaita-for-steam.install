@@ -1,10 +1,27 @@
 post_install() {
+	/usr/bin/sssm sync Adwaita
 	echo ""
 	echo "****Adwaita for Steam was installed!****"
 	echo ""
-	echo "You still have to make steam able to read the skin location in your system directory /usr/lib:"
-	echo "ln -s /usr/lib/steam/skins ~/.steam/steam/skins"
+	echo "If there were some issues installing the skin, unlink the skins directory and reinstall the package"
+	echo "rm -rf ~/.steam/steam/skins"
 	echo ""
 	echo "Now, select the skin in Steam Settings -> Interface."
 	echo ""
+}
+
+post_upgrade() {
+	/usr/bin/sssm sync Adwaita
+	echo ""
+        echo "****Adwaita for Steam was installed!****"
+        echo ""
+        echo "If there were some issues installing the skin, unlink the skins directory and reinstall the package"
+        echo "rm -rf ~/.steam/steam/skins"
+        echo ""
+        echo "Now, select the skin in Steam Settings -> Interface."
+        echo ""
+}
+
+post_remove() {
+	/usr/bin/sssm remove Adwaita
 }
