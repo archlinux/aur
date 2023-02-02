@@ -6,7 +6,7 @@
 # If you need a GUI, grab that from renderdoc, as it provides qrenderdoc.
 
 pkgname=renderdoc-minimal
-pkgver=1.22
+pkgver=1.25
 pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool (minimal, capture + replay server only)"
 arch=(x86_64)
@@ -19,7 +19,7 @@ conflicts=("renderdoc")
 source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz"
         "https://github.com/baldurk/renderdoc/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
-sha384sums=('e94ff8a086420581106aefed4eac5f37ae3f4f207e819f6bf45f95bcfbf2488fabb7dee8e70913bf321bfc80ee2b3e03'
+sha384sums=('f70eae948685b26c45c55313d0bad6d0edd5b1e61a1f4dba35d546f320777977deb2eb9ba1b002c40a0c504ab4e0a769'
             'SKIP')
 
 build() {
