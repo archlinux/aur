@@ -1,0 +1,17 @@
+pkgbase = python-i3-chrome-tab-dragging-git
+	pkgdesc = Float chrome windows with i3wm while dragging tabs.
+	pkgver = r19.9a244fc
+	pkgrel = 1
+	url = https://github.com/Syphdias/i3-chrome-tab-dragging
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-i3ipc
+	depends = python-pynput
+	provides = python-i3-chrome-tab-dragging
+	conflicts = python-i3-chrome-tab-dragging
+	source = git+https://github.com/Syphdias/i3-chrome-tab-dragging.git
+	md5sums = SKIP
+
+pkgname = python-i3-chrome-tab-dragging-git
