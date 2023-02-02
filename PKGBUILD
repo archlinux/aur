@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-about-git
-pkgver=0.5.3.r0.g350b610
+pkgver=0.5.4.r0.g9bffa40
 pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate (git)"
 arch=('x86_64')
