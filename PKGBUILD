@@ -4,14 +4,14 @@
 # Maintainer: Xenhat Hex (aur@xenh.at)
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.6.9_r50326.g988886f2eb
+pkgver=6.9_r50471.g6252c244f0
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
-makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
+makedepends=('cmake' 'clang' 'lld' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 optdepends=(
     'alsa-lib: ALSA support'
     'freealut: OpenAL support'
@@ -63,4 +63,4 @@ package() {
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
 sha256sums=('SKIP'
-            '13c2f5015ec28e6ad344619376850f4db885ee460895ea28dbe11b99091fc5de')
+            '3e00fe0baac4ac938d79bcc591b04183c0d8e6fa266ecf69e864ede66d7a0846')

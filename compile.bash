@@ -65,25 +65,26 @@ build() {
 	AL_CMAKE_CONFIG=(
 		-DLL_TESTS:BOOL=OFF
 		-DDISABLE_FATAL_WARNINGS=ON
-		-DUSE_LTO:BOOL=OFF
+		-DUSE_LTO:BOOL=ON
 		-DVIEWER_CHANNEL="Alchemy Test"
 		-DCMAKE_C_FLAGS="$AL_ARCH_FLAGS"
 		-DCMAKE_CXX_FLAGS="$AL_ARCH_FLAGS"
+		-DCMAKE_C_COMPILER=clang
+		-DCMAKE_CXX_COMPILER=clang++
 		)
 	# I could not find the documentation on how to handle BUILDENV/OPTION in
 	# makepkg.conf. If you are reading this and know where it is,
 	# please send it my way.
-	if [[ -n "$AL_NO_CCACHE" ]] || ! command -v ccache 2 > /dev/null 2>&1; then
-		echo "ccache disabled"
-		AL_CMAKE_CONFIG+=(-UCMAKE_CXX_COMPILER_LAUNCHER)
-	else
-		echo "ccache available and enabled"
-		export CCACHE_SLOPPINESS="file_macro,locale,time_macros"
-		export CCACHE_NOHASHDIR="true"
-		AL_CMAKE_CONFIG+=(-DCMAKE_CXX_COMPILER_LAUNCHER=ccache)
-	fi
+	# if [[ -n "$AL_NO_CCACHE" ]] || ! command -v ccache 2 > /dev/null 2>&1; then
+		# echo "ccache disabled"
+		# AL_CMAKE_CONFIG+=(-UCMAKE_CXX_COMPILER_LAUNCHER)
+	# else
+		# echo "ccache available and enabled"
+		# export CCACHE_SLOPPINESS="file_macro,locale,time_macros"
+		# export CCACHE_NOHASHDIR="true"
+		# AL_CMAKE_CONFIG+=(-DCMAKE_CXX_COMPILER_LAUNCHER=ccache)
+	# fi
 	$prefix_cmd autobuild configure -A 64 -c ReleaseOS -- "${AL_CMAKE_CONFIG[@]}"
-
 	echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
 	$prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure
 }
