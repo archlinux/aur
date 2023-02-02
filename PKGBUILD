@@ -2,13 +2,13 @@
 
 pkgname=molecule-containers
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Molecule Container-agnostic Driver Plugin"
 arch=('any')
 url="https://github.com/ansible-community/molecule-containers"
 license=('MIT')
 depends=('molecule' 'python-ansible-compat' 'python-selinux')
-makedepends=('python-setuptools-scm' 'python-setuptools-scm-git-archive' 'python-build' 'python-installer')
+makedepends=('python-setuptools-scm' 'python-build' 'python-installer')
 checkdepends=('python-pytest' 'python-pytest-cov')
 optdepends=('podman: for using a local podman setup' 'docker: for using a local docker setup')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
