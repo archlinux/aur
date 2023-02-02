@@ -1,7 +1,7 @@
 # Maintainer: Filip Borkiewicz <boreq 0x46 net>
 
 pkgname=achannarasappa-ticker
-pkgver=4.1.1
+pkgver=4.5.5
 pkgrel=1
 pkgdesc='terminal stock watcher and stock position tracker'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
     'go'
 )
 source=("ticker-$pkgver.tar.gz::https://github.com/achannarasappa/ticker/archive/v$pkgver.tar.gz")
-sha512sums=('e50504f45c0516bb40f66313ec528bb1e17c817171ef44dc881a78376c7694f692d40aff5bfb5f67b2004561dce667fbefbbbbe0d768e83895acd3c0cac5cd76')
+sha512sums=('1851fd9c49f01ea73886ddddf014d3598595f52655142c729fe6156fc4c2333e7f6295c084605a8599de41426148c809a938ea2ce8ef698444cdfd8c52de4566')
 
 build() {
     cd "ticker-${pkgver}"
