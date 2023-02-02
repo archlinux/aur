@@ -2,8 +2,8 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname=reposilite
-pkgver=3.2.7
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://github.com/dzikoysk/$pkgname"
