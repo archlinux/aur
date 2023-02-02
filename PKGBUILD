@@ -12,8 +12,8 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.1.8
-pkgrel=2
+pkgver=6.1.9
+pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,10 +28,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0102-Revert-drmi915-improve_the_catch-all_evict_to_handle_lock_contention.patch'
         '0103-drmi915-improve_the_catch-all_evict_to_handle_lock_contention.patch'
-        '0104-drm-amdgpu-display-mst-Fix_mst_state-pbn_div_and_slot_count_assignments.patch'
-        '0105-drm-amdgpu-display-mst-limit_payload_to_be_updated_one_by_one.patch'
-        '0106-drm-amdgpu-display-mst-update_mst_mgr_relevant_variable_when_long_HPD.patch'
-        '0107-drm-display-dp_mst-Correct_the_kref_of_port.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -53,15 +49,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('b60bb53ab8ba370a270454b11e93d41af29126fc72bd6ede517673e2e57b816d'
-            '9bb4b5643e7712ea26e34a269e57db22b6a43f9631d0f2b9eeab1e03de697fe2'
+sha256sums=('d60cf185693c386e7acd9f3eb3a94ae30ffbfee0a9447a20e83711e0bdf5922b'
+            '6590016dcce6dc91a1a3b17a3c9d80194a6860c8dea999203c5b54002d7a74ba'
             'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
             '982806daa2c789a63cf685eef71a82754b0530852b7ba130cc9d4025dab79b2f'
             '0a32a567966d7c33035634c46d56073e8a6f66e4d9729b8b25d09579d00c3e7b'
-            'd5334ed9c27586bd1fa19925512058653daebecae545bbbd8544b79cc7f2dc72'
-            '18ed150f0779a9d7dbf60c44fcfda928f21fc82f7a04a241c19f71318b6ff83c'
-            '3110bc99e2ea702e9bf102f9bcf8c0d1bf66f1c7eabba7972a14f51ef2427988'
-            '5ec5b071537c4b2e065b2c9d0064f8c83529b5df5ac23295b3aa44e2bd90aa7c'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '50f4ccc4aeb0ffb8ec648b90a84ff188dbfed5364075cf0c6045c5696caf6ca9'
