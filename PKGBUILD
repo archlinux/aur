@@ -15,7 +15,7 @@ sha256sums=('367f5c28a8c86381c07fead7e295e73db426fb33c874e8eabf3bde326c11d55b'
 
 prepare() {
   cd "$srcdir/"
-  cat << EOF > "$pkgname.desktop"
+  cat << 'EOF' > "$pkgname.desktop"
 [Desktop Entry]
 Version=$pkgver
 Type=Application
