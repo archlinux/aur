@@ -2,7 +2,7 @@
 # Contributor: Patrik Sundberg <patrik.sundberg at gmail dot com>
 
 pkgname=motivewave
-pkgver=6.6.13
+pkgver=6.6.14
 pkgrel=1
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.motivewave.com"
 license=('custom')
 depends=('bc' 'ffmpeg' 'gtk2' 'gtk3' 'java-runtime' 'xorg-xrandr')
 source=("${pkgname}-${pkgver}.deb::https://www.motivewave.com/update/download.do?file_type=LINUX")
-sha512sums=('84FD9BE0D737406E3D23ED67EDC47CD4D5759C493F2C0054D069053714E2E085E4B222E7FCD305804DFF9B1E1A3A9DA1388BC74278D431AA0276716A79C20B53')
+sha512sums=('07ec3de90f406584617c2f7814df59239137286ae216470797a82c81839d2000a28d2d38a82ae5c5f25bee16ee8eaff71752d9fdcec486bc0648f70e8afd1b35')
 
 package() {
 	bsdtar -xf data.tar.zst -C "$pkgdir/"
