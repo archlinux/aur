@@ -1,7 +1,7 @@
 pkgbase = python-bflb-iot-tool
 	pkgdesc = BOUFFALOLAB IOT TOOL
-	pkgver = 1.8.1.post1
-	pkgrel = 1
+	pkgver = 1.8.2
+	pkgrel = 0
 	url = https://pypi.org/project/bflb-iot-tool
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-bflb-iot-tool
 	depends = python-pylink-square
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	options = !strip
-	source = bflb-iot-tool-1.8.1.post1.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-iot-tool/bflb-iot-tool-1.8.1.post1.tar.gz
-	sha256sums = 3cca0f3c72664d12ddb73746a1337fd4279ef23bfafebc5713be47f6237828be
+	source = bflb-iot-tool-1.8.2.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-iot-tool/bflb-iot-tool-1.8.2.tar.gz
+	sha256sums = e514ce0fb0a709a6547f28254757867dd8a007dd5ee9a572808e822830f952a5
 
 pkgname = python-bflb-iot-tool
