@@ -1,0 +1,12 @@
+pkgbase = otf-matter
+	pkgdesc = Font for designers, developers and everyone else!
+	pkgver = 1.021
+	pkgrel = 1
+	url = https://displaay.net/typeface/matter-collection/matter
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = matter.zip::https://font.gooova.com/d/14487/matter-font.zip
+	sha256sums = af915024e9a8796e4e4431985b791831462d94357aafce5d7be79b52d0031df7
+
+pkgname = otf-matter
