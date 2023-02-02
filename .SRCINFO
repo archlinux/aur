@@ -1,7 +1,7 @@
 pkgbase = n2-git
 	pkgdesc = n2 ("into"), a ninja compatible build system
-	pkgver = 0.1.0.r289.693d2ef
-	pkgrel = 2
+	pkgver = 0.1.0.r292.d64412a
+	pkgrel = 1
 	url = https://github.com/evmar/n2
 	arch = x86_64
 	arch = aarch64

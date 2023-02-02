@@ -1,8 +1,8 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=n2-git
-pkgver=0.1.0.r289.693d2ef
-pkgrel=2
+pkgver=0.1.0.r292.d64412a
+pkgrel=1
 pkgdesc='n2 ("into"), a ninja compatible build system'
 arch=('x86_64' 'aarch64')
 url="https://github.com/evmar/n2"
