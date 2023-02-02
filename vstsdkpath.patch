@@ -1,0 +1,11 @@
+--- Makefile.orig	2023-02-02 11:36:36.880472368 +0100
++++ Makefile	2023-02-02 11:39:18.057135099 +0100
+@@ -2,7 +2,7 @@
+ 
+ bin = rju-data rju-dl rju-level rju-lxvst rju-osc rju-play rju-plumbing rju-record rju-scope rju-transport rju-udp lxvst-query
+ 
+-VST_SDK = $(HOME)/opt/src/vst3_sdk
++VST_SDK = /usr/include/vst36 
+ 
+ CC = gcc # gcc clang
+ CXX = g++ # g++ clang++

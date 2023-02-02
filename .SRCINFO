@@ -1,0 +1,21 @@
+pkgbase = rju-git
+	pkgdesc = JackAudioToolkit
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://rohandrape.net/?t=rju
+	arch = x86_64
+	license = gpl
+	depends = jack
+	depends = asciidoc
+	depends = libsamplerate
+	depends = liblo
+	depends = libsndfile
+	conflicts = rju
+	source = git+https://gitlab.com/rd--/rju#commit=8d86d170
+	source = vstsdkpath.patch
+	source = xrealloc.patch
+	sha256sums = SKIP
+	sha256sums = 11dfd9a08f916f3f03904b59ae3c49df4686a1ba86baa7b27773e050ed62380b
+	sha256sums = fe261c0185256ff4a698f0a6e25a2789d197972863b3f17158af44a4452119f0
+
+pkgname = rju-git

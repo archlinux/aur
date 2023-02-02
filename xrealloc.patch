@@ -1,0 +1,10 @@
+--- r-common/c/file.h.orig	2023-02-02 12:24:32.340402083 +0100
++++ r-common/c/file.h	2023-02-02 12:24:41.567068523 +0100
+@@ -1,7 +1,6 @@
+ #ifndef _COMMON_FILE_H
+ #define _COMMON_FILE_H
+ 
+-void *xrealloc(void *p, size_t size);
+ bool file_exists_p(const char *filename);
+ time_t stat_mtime(const char *filename);
+ size_t stat_size(const char *filename);

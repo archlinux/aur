@@ -1,0 +1,27 @@
+(connect    "alsa-jack.jackP..*:out_000" "jack_mixer:ALSA L")
+(connect    "alsa-jack.jackP..*:out_001" "jack_mixer:ALSA R")
+(disconnect "alsa-jack.jackP..*:out_000" "system:playback_1")
+(disconnect "alsa-jack.jackP..*:out_001" "system:playback_2")
+
+(connect    "Clementine:out_jackaudiosink-.*_1" "jack_mixer:JACK L")
+(connect    "Clementine:out_jackaudiosink-.*_2" "jack_mixer:JACK R")
+(disconnect "Clementine:out_jackaudiosink-.*_1" "system:playback_1")
+(disconnect "Clementine:out_jackaudiosink-.*_2" "system:playback_2")
+
+(connect    "Qtractor:Master/out_1" "jack_mixer:JACK L")
+(connect    "Qtractor:Master/out_2" "jack_mixer:JACK R")
+(disconnect "Qtractor:Master/out_1" "system:playback_1")
+(disconnect "Qtractor:Master/out_2" "system:playback_2")
+
+(connect    "rosegarden:master out L" "jack_mixer:JACK L")
+(connect    "rosegarden:master out R" "jack_mixer:JACK R")
+(disconnect "rosegarden:master out L" "system:playback_1")
+(disconnect "rosegarden:master out R" "system:playback_2")
+
+(connect    "MPlayer.*:out_0" "jack_mixer:ALSA L")
+(connect    "MPlayer.*:out_1" "jack_mixer:ALSA R")
+(disconnect "MPlayer.*:out_0" "system:playback_1")
+(disconnect "MPlayer.*:out_1" "system:playback_2")
+
+(connect "jack_mixer:MAIN L" "system:playback_1")
+(connect "jack_mixer:MAIN R" "system:playback_2")
