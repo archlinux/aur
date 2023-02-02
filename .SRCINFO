@@ -1,7 +1,7 @@
 pkgbase = steam-skins-meta
 	pkgdesc = Meta package of all steam skins in AUR.
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/steam-skins-meta
 	arch = any
 	depends = air-for-steam-git
@@ -13,5 +13,6 @@ pkgbase = steam-skins-meta
 	depends = pressure2-unofficial-steam-skin
 	depends = threshold-miku-dark-steam-skin
 	depends = threshold-miku-light-steam-skin
+	depends = adwaita-for-steam
 
 pkgname = steam-skins-meta
