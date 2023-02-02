@@ -1,14 +1,14 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-processing
-pkgver=1.6.0
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="Generic algorithms for event cameras."
 url="https://gitlab.com/inivation/dv/$pkgname/"
 license=('Apache-2.0')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 groups=()
-depends=('boost' 'opencv' 'eigen' 'libcaer' 'fmt' 'lz4' 'zstd' 'python' 'python-numpy')
+depends=('boost' 'opencv' 'eigen' 'libcaer' 'fmt' 'lz4' 'zstd' 'openssl' 'libbacktrace-git' 'python' 'python-numpy')
 makedepends=('cmake' 'pkgconf')
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("https://release.inivation.com/processing/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('8d067e4ef575979dd7c21913a00ea8eddd06c9ae206e49d58ebc87b2ecbef5d6')
+sha256sums=('6025348346e6e04666d930c3942e371628dde423609ec6fd246106a62442b571')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
