@@ -1,4 +1,4 @@
-From d1c6e44886d1047b3aa6ff6aaac383eadd72f36a Mon Sep 17 00:00:00 2001
+From 29428057c2be4dbc9f6aad61556ed8a82faa5495 Mon Sep 17 00:00:00 2001
 From: Tadeo Kondrak <me@tadeo.ca>
 Date: Tue, 15 Dec 2020 21:24:57 -0700
 Subject: [PATCH] text_input: Implement input-method popups
@@ -80,18 +80,18 @@ index 28be6a1e95..80d5831bf0 100644
  	struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  	void *user_data);
 diff --git a/sway/desktop/output.c b/sway/desktop/output.c
-index 409478a7cd..63425fc7cb 100644
+index 141edb4914..b6174af7cf 100644
 --- a/sway/desktop/output.c
 +++ b/sway/desktop/output.c
-@@ -20,6 +20,7 @@
- #include "sway/desktop/transaction.h"
+@@ -21,6 +21,7 @@
  #include "sway/input/input-manager.h"
  #include "sway/input/seat.h"
+ #include "sway/ipc-server.h"
 +#include "sway/input/text_input.h"
  #include "sway/layers.h"
  #include "sway/output.h"
  #include "sway/server.h"
-@@ -249,6 +250,28 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
+@@ -250,6 +251,28 @@ void output_unmanaged_for_each_surface(struct sway_output *output,
  }
  #endif
  
@@ -120,7 +120,7 @@ index 409478a7cd..63425fc7cb 100644
  void output_drag_icons_for_each_surface(struct sway_output *output,
  		struct wl_list *drag_icons, sway_surface_iterator_func_t iterator,
  		void *user_data) {
-@@ -359,6 +382,9 @@ static void output_for_each_surface(struct sway_output *output,
+@@ -360,6 +383,9 @@ static void output_for_each_surface(struct sway_output *output,
  	output_layer_for_each_surface(output,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY],
  		iterator, user_data);
@@ -131,7 +131,7 @@ index 409478a7cd..63425fc7cb 100644
  		iterator, user_data);
  }
 diff --git a/sway/desktop/render.c b/sway/desktop/render.c
-index 4d242bd70f..d10c588301 100644
+index 2b7214c35e..9d57b0e6b8 100644
 --- a/sway/desktop/render.c
 +++ b/sway/desktop/render.c
 @@ -18,6 +18,7 @@
@@ -169,7 +169,7 @@ index 4d242bd70f..d10c588301 100644
  	struct sway_workspace *workspace = output->current.active_workspace;
  	if (workspace == NULL) {
  		return;
-@@ -1165,8 +1179,6 @@ void output_render(struct sway_output *output, struct timespec *when,
+@@ -1167,8 +1181,6 @@ void output_render(struct sway_output *output, struct timespec *when,
  
  	render_seatops(output, damage);
  
@@ -178,7 +178,7 @@ index 4d242bd70f..d10c588301 100644
  	if (focus && focus->view) {
  		render_view_popups(focus->view, output, damage, focus->alpha);
  	}
-@@ -1176,6 +1188,7 @@ void output_render(struct sway_output *output, struct timespec *when,
+@@ -1178,6 +1190,7 @@ void output_render(struct sway_output *output, struct timespec *when,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
  	render_layer_popups(output, damage,
  		&output->layers[ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY]);
@@ -187,7 +187,7 @@ index 4d242bd70f..d10c588301 100644
  
  renderer_end:
 diff --git a/sway/input/cursor.c b/sway/input/cursor.c
-index 449aa43008..e4b17d6a24 100644
+index efd67a76e9..011490c961 100644
 --- a/sway/input/cursor.c
 +++ b/sway/input/cursor.c
 @@ -37,6 +37,28 @@ static uint32_t get_current_time_msec(void) {
@@ -219,7 +219,7 @@ index 449aa43008..e4b17d6a24 100644
  static struct wlr_surface *layer_surface_at(struct sway_output *output,
  		struct wl_list *layer, double ox, double oy, double *sx, double *sy) {
  	struct sway_layer_surface *sway_layer;
-@@ -104,6 +126,10 @@ struct sway_node *node_at_coords(
+@@ -122,6 +144,10 @@ struct sway_node *node_at_coords(
  		return NULL;
  	}
  
@@ -667,10 +667,10 @@ index c60c8f8f09..20c4763f0b 100644
  		wlr_xdg_surface_from_wlr_surface(surface);
  	return xdg_surface->role == WLR_XDG_SURFACE_ROLE_POPUP;
 diff --git a/sway/tree/view.c b/sway/tree/view.c
-index 31387aaa24..3d2a509308 100644
+index db90256205..ff7958cf6d 100644
 --- a/sway/tree/view.c
 +++ b/sway/tree/view.c
-@@ -1214,6 +1214,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
+@@ -1212,6 +1212,9 @@ struct sway_view *view_from_wlr_surface(struct wlr_surface *wlr_surface) {
  	if (wlr_surface_is_layer_surface(wlr_surface)) {
  		return NULL;
  	}
