@@ -5,8 +5,8 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
 pkgver=2.40
-pkgrel=1
-_commit=88ac930a725b8aac8284a2738f03b843f4343dd0
+pkgrel=2
+_commit=ab87a96bab7b216ef1079461ab333e75768525b9
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
@@ -30,6 +30,7 @@ build() {
    --target=$_target \
    --with-sysroot=/usr/$_target/sys-root \
    --prefix=/usr \
+	--enable-colored-disassembly \
 	--enable-default-execstack=no \
    --enable-deterministic-archives \
    --enable-gold \
