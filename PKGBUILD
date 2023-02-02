@@ -1,6 +1,6 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=credeface
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="use git’s credential-cache to hold general passwords"
 arch=(any)
@@ -10,9 +10,10 @@ license=('MIT')
 # is minimal
 depends=(git pass python3)
 makedepends=(asciidoc gawk git)
+checkdepends=(cram python-coverage)
 # git rev-parse in upstream repo:
-# git rev-parse 1.4.1
-_tag=bffb0ab30bcfe2f458f462c856ec413fad3a8e84
+# git rev-parse 1.4.2
+_tag=42dbdce5b42cf429a1571f0b44e754ac9e5221c2
 source=(git+https://git.sr.ht/~minshall/credeface#tag=${_tag}?signed)
 validpgpkeys=(
     BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F # Greg Minshall <minshall@acm.org>
