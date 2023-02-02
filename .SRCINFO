@@ -1,0 +1,16 @@
+pkgbase = updatecli-bin
+	pkgdesc = A Declarative Dependency Management tool
+	pkgver = 0.42.0
+	pkgrel = 1
+	url = https://github.com/updatecli/updatecli
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	provides = updatecli
+	source_x86_64 = https://github.com/updatecli/updatecli/releases/download/v0.42.0/updatecli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bfbea0f416c72cb6c94ddb3c91b54fec2232a5f89ef47536fc25e7780e10c2ba
+	source_aarch64 = https://github.com/updatecli/updatecli/releases/download/v0.42.0/updatecli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = edce38a5fd4deb2842767c3de1354b0075e04dbecfe5c1248544e2f7efb0589d
+
+pkgname = updatecli-bin
