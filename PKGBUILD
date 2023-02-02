@@ -5,6 +5,7 @@
 pkgname=bdf2psf
 pkgver=1.215
 pkgrel=1
+epoch=1
 pkgdesc='Debian utility to convert BDF font files to PSF format'
 arch=('any')
 url="https://packages.debian.org/unstable/$pkgname"
