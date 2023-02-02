@@ -1,8 +1,9 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Based obs/linux-pf-edge by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-git
-pkgver=6.2rc5.r66.g6ca12bc91ed4
+pkgver=6.2rc8.r48.ge9ee90b7a34e
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.2
@@ -23,7 +24,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'bf67d887e3b155bba529182ea0940d5213a83e87f15af8108c87c703a456e76d')
+            '22eee3afb95d0de333a2730aae377f106fc1e30d0551566f80216bc56693ae3a')
 
 pkgver() {
   cd $_srcname
@@ -70,7 +71,6 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
-              'linux-firmware: firmware images needed for some devices'
               'uksmd: userspace KSM helper daemon'
               'v4l2loopback-utils: v4l2-loopback device utilities'
               'linux-firmware: firmware images needed for some devices')

@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 6.2rc5.r66.g6ca12bc91ed4
+	pkgver = 6.2rc8.r48.ge9ee90b7a34e
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.2
 	source = config
 	sha256sums = SKIP
-	sha256sums = bf67d887e3b155bba529182ea0940d5213a83e87f15af8108c87c703a456e76d
+	sha256sums = 22eee3afb95d0de333a2730aae377f106fc1e30d0551566f80216bc56693ae3a
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
@@ -33,7 +33,6 @@ pkgname = linux-pf-git
 	depends = initramfs
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = ksmbd-tools: userspace tools for the ksmbd kernel SMB server
-	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = uksmd: userspace KSM helper daemon
 	optdepends = v4l2loopback-utils: v4l2-loopback device utilities
 	optdepends = linux-firmware: firmware images needed for some devices
