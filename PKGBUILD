@@ -1,12 +1,12 @@
 # Maintainer: Benoît Rouits <brouits at free dor fr>
 pkgname=qloud
 pkgver=1.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool to measure loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/molke-productions/qloud"
 license=('GPL')
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'libsndfile')
 depends=('fftw' 'jack' 'qt5-charts')
 conflicts=('qloud-qtcharts')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/molke-productions/qloud/archive/v$pkgver.tar.gz")
