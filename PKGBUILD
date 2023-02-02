@@ -1,5 +1,4 @@
 # Maintainer: Ruben Bekaert <bekaertruben@gmail.com>
-# Contributor: Timmy Yao <timmy.yao@outlook.com.au>
 
 pkgname=gplates
 
