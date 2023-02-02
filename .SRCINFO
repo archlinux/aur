@@ -1,11 +1,13 @@
 pkgbase = distro-grub-themes-arch
 	pkgdesc = A GRUB2 theme for Arch Linux
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any
 	license = GPL3
 	depends = grub
+	provides = distro-grub-theme-arch
+	provides = grub-theme-arch
 	noextract = arch.tar
 	source = https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/arch.tar
 	sha256sums = b6c69e55ecf601e8da89d38c242ca7dc6c299ed244a5781f799892f0288da8aa
