@@ -1,6 +1,6 @@
 pkgbase = ankama-launcher
 	pkgdesc = A multi-game portal for all Ankama games.
-	pkgver = 3.8.7
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://www.ankama.com/en/launcher
 	install = ankama-launcher.install
@@ -16,9 +16,9 @@ pkgbase = ankama-launcher
 	options = !strip
 	source = ankama-launcher
 	md5sums = 3ba4d029456e37682f7cd7f1bab173c5
-	source_i686 = ankama-launcher-3.8.7-i686.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-i386.AppImage
+	source_i686 = ankama-launcher-3.9.0-i686.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-i386.AppImage
 	md5sums_i686 = 762b36c9d03216950b47b277259f0d02
-	source_x86_64 = ankama-launcher-3.8.7-x86_64.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage
-	md5sums_x86_64 = d181cf15fb10d891b22beeb3a08533ec
+	source_x86_64 = ankama-launcher-3.9.0-x86_64.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage
+	md5sums_x86_64 = a07b0f23e5fcb6ca0f24ef2eb4b89c0c
 
 pkgname = ankama-launcher
