@@ -1,7 +1,7 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=119
+pkgver=MatriX.120
 pkgrel=3
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
