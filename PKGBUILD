@@ -1,7 +1,7 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=mshv
-pkgver=262
+pkgver=269
 pkgrel=1
 pkgdesc="Amateur radio software by LZ2HV for digital modes MSK, JTMS, FSK, ISCAT, JT6M, FT8/4, JT65, PI4, Q65."
 arch=('any')
