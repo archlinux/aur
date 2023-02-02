@@ -1,0 +1,16 @@
+pkgbase = php-legacy-mailparse
+	pkgdesc = Extension for parsing and working with email messages (RFC822 and RFC2045)
+	pkgver = 3.1.4
+	pkgrel = 1
+	url = https://pecl.php.net/package/mailparse
+	arch = i686
+	arch = x86_64
+	license = PHP
+	depends = php-legacy>=8.1.0
+	backup = etc/php-legacy/conf.d/mailparse.ini
+	source = https://pecl.php.net/get/mailparse-3.1.4.tgz
+	source = mailparse.ini
+	sha256sums = 1474921b32c7eef825144e2be19b1e9d47505ad409729833fd50c25eacdf9577
+	sha256sums = 0d66498ce1dee28ff447e20cfcb9abff50469fed0ce412898cde41dec4a7828a
+
+pkgname = php-legacy-mailparse
