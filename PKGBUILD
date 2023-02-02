@@ -4,7 +4,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
 pkgver=r2401.32d56fec
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -36,7 +36,6 @@ depends=(
 	xcb-util-wm
 	seatd
 	vulkan-icd-loader
-	vulkan-validation-layers
 	xorg-xwayland-hidpi-xprop)
 makedepends=(
 	git
