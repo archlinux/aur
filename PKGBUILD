@@ -7,6 +7,7 @@ pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
+depends=(zenity)
 conflicts=('localsend-git')
 provides=('localsend')
 options=(!strip)
