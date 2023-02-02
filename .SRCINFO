@@ -1,6 +1,6 @@
 pkgbase = python-dateparser
 	pkgdesc = python parser for human readable dates
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/scrapinghub/dateparser
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-dateparser
 	depends = python-hijri-converter
 	optdepends = python-fasttext
 	optdepends = python-langdetect
-	source = dateparser-1.1.6.tar.gz::https://github.com/scrapinghub/dateparser/archive/v1.1.6.tar.gz
-	sha256sums = defda3336de096a59341d5ef0c6dda0e96de28a91eca4957ed683fa379194c35
+	source = dateparser-1.1.7.tar.gz::https://github.com/scrapinghub/dateparser/archive/v1.1.7.tar.gz
+	sha256sums = 282d91ff80c5b9d5b1270a4effce8862554b84197992269883d7c4a7ff969da4
 
 pkgname = python-dateparser
