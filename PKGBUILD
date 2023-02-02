@@ -6,7 +6,8 @@ pkgdesc='Interactive utility to keep 2 directory trees and the files within the 
 arch=('any')
 url='https://lploeger.home.xs4all.nl/TreeComp.htm'
 license=('custom: Free to use and share (see: https://lploeger.home.xs4all.nl/TreeComp3.htm#freeware)')
-depends=('wine')
+depends=('wine'
+         'hicolor-icon-theme')
 source=("https://lploeger.home.xs4all.nl/TreeComp${pkgver}_noinstall.zip"
         "https://lploeger.home.xs4all.nl/TreeCompIcon.gif")
 noextract=("TreeComp${pkgver}_noinstall.zip")
