@@ -1,16 +1,18 @@
 # Maintainer: Karim Vergnes <me@thesola.io>
 
 pkgname=intel-ipu6-dkms-git
-_pkgname=intel-ipu6-dkms
-pkgver=r74.c1fdd8a
+_pkgname=ipu6-drivers
+pkgver=r78.f83b0747b
 pkgrel=1
 pkgdesc="Intel IPU6 camera drivers (DKMS)"
 arch=('any')
-url="https://git.launchpad.net/~vicamo/+git/intel-ipu6-dkms"
+url="https://github.com/intel/${_pkgname}"
 license=('unknown')
-depends=('dkms' 'intel-ivsc-driver-dkms-git')
+depends=('dkms')
+provides=('intel-ivsc-driver-dkms-git')
+conflicts=('intel-ivsc-driver-dkms-git')
 makedepends=('git')
-source=("git+${url}#branch=ubuntu/devel")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,10 +23,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
     sed -i "s/^PACKAGE_VERSION=\".*\"$/PACKAGE_VERSION=\"$pkgver\"/g" ./dkms.conf
-    for patch in $(< debian/patches/series)
-    do
-        patch -p 1 -i debian/patches/$patch
-    done
+    git clone https://github.com/intel/ivsc-driver
+    cp -r ivsc-driver/{backport-include,drivers,include} .
+    rm -rf ivsc-driver
 }
 
 package() {
