@@ -1,18 +1,17 @@
 # Maintainer: Achmad Fathoni<fathoni(dot)id(at)gmail(dot)com>
 pkgname=python-ouster-sdk
-pkgver=1.13.0
-_pkgver=1.13.0
-pkgrel=3
+pkgver=20230114
+pkgrel=1
 pkgdesc="Ouster Python SDK"
 arch=(any)
 url="https://github.com/ouster-lidar/ouster_example"
 license=('BSD')
 makedepends=('python-setuptools' 'python-pytest' 'python-build' 'python-installer' 'pybind11' 'jsoncpp' 'cmake' 'eigen' 'python-wheel')
-depends=('python' 'python-typing_extensions' 'libtins' 'python-numpy' 'glew' 'glfw-x11')
+depends=('python' 'python-typing_extensions' 'libtins' 'python-numpy' 'glew' 'glfw-x11' 'spdlog')
 checkdepends=('python-tox')
-source=(${url}/archive/refs/tags/${_pkgver}.tar.gz)
-sha256sums=('2f5966f3780be01bda35d5be78f54a8fef7d529eb0e922b9fb29571f4a803264')
-_dir=ouster_example-${_pkgver}/python
+source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('cf8507370a7c627dcf83f637255efae320aadca9febb0a7bce00f7c31eaf07db')
+_dir=ouster_example-${pkgver}/python
 
 prepare() {
     cd ${srcdir}/${_dir}
