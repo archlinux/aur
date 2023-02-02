@@ -1,0 +1,7 @@
+# Ignore all files
+**
+
+# Exception list
+!PKGBUILD
+!.SRCINFO
+!.gitignore
