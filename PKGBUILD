@@ -1,6 +1,6 @@
 _name=gwenview
 pkgname=${_name}-light
-pkgver=22.12.1
+pkgver=22.12.2
 pkgrel=1
 pkgdesc='A fast and easy to use image viewer (stripped from unnecessary dependencies)'
 url="https://apps.kde.org/${_name}/"
@@ -9,6 +9,7 @@ license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications' 'kde-graphics')
 depends=('kactivities' 'kparts' 'kitemmodels' 'phonon-qt5' 'kimageannotator')
 makedepends=('extra-cmake-modules')
+
 optdepends=(
     'qt5-imageformats: support for tiff, webp, and more image formats'
     'kimageformats: support for dds, xcf, exr, psd, and more image formats'
@@ -20,8 +21,9 @@ provides=("${_name}")
 
 _snapshot="${_name}-${pkgver}"
 source=("https://download.kde.org/stable/release-service/${pkgver}/src/${_snapshot}.tar.xz"{,.sig})
+
 sha256sums=(
-    '4bbf8cdd69c4918b457251d6f906c5ec5ea60ad4d08635fd7212f67a62fe278a'
+    '7dc1066d03e4b8975109af637929cd391ff2e591b6d3ccc46ac8426b9b7f6fb6'
     'SKIP'
 )
 
