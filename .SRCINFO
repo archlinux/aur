@@ -1,0 +1,12 @@
+pkgbase = snoopy-logger
+	pkgdesc = A small library that logs all program executions
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/a2o/snoopy
+	arch = x86_64
+	license = GPL2
+	source = snoopy-logger-2.5.1.tar.gz::https://github.com/a2o/snoopy/archive/refs/tags/snoopy-2.5.1.tar.gz
+	sha512sums = 2c0cde306ff58fe7f19c4df9aecab2c6936d71b77471bbb363ca660254b780a6874163988ebc6882b75d18319891bd1d5b5ef524f158f7645466c93e4dbe987f
+
+pkgname = snoopy-logger
+
