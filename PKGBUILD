@@ -10,7 +10,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.2.40
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -73,7 +73,7 @@ build() {
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
 	# Can't use shared FMT not TINYXML because of ABI incompatibilities (GCC vs Clang)
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
--DENABLE_{UPDATER,SCRIPTING,WEBSOCKET}=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
+-DENABLE_{UPDATER,WEBSOCKET}=NO -DENABLE_SCRIPTING=ON -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$srcdir/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
 -DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++" -DCMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libc++ \
