@@ -1,6 +1,6 @@
 # Maintainer: mickaelca <contact@mickael-caudrelier.fr>
 pkgname=helmify-bin
-pkgver=0.3.22
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="Creates Helm chart from Kubernetes yaml"
 provides=('helmify')
@@ -11,7 +11,7 @@ source=(
 $pkgname-$pkgver.tar.gz::https://github.com/arttor/helmify/releases/download/v${pkgver}/helmify_${pkgver}_Linux_64-bit.tar.gz
 )
 sha256sums=(
-6ae7fa6726fd09a39d1b60c4ce7df7edc3fb4fbee2fc99211c217870cf8d226b
+cc60a97bf823ac779f4f5225344a737bfc693aafc7ed5d30753b3e23b2441bf9
 )
 
 build() {
