@@ -1,0 +1,13 @@
+pkgbase = grub2-theme-cybersynchro
+	pkgdesc = Grub theme - CyberSynchro 1.0.0
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HenriqueLopes42/ThemeGrub.CyberSynchro
+	arch = any
+	license = GPL
+	license = CCPL:by-sa
+	depends = grub
+	source = grub2-theme-cybersynchro-1.0.0.tar.gz::https://github.com/ahmedmoselhi/ThemeGrub.CyberSynchro/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = dbd128a50b7bf6939b56048b18c9a3ca01916ea4b3cf97b15d7b70776ceb4810
+
+pkgname = grub2-theme-cybersynchro
