@@ -3,7 +3,7 @@
 pkgname=notepad---git
 pkgver=1.21.r14.g2c8c1d9
 pkgrel=1
-pkgdesc="notepad--是一个国产跨平台、简单的文本编辑器，是替换notepad++的一种选择。其内置强大的代码对比功能，让你丢掉付费的beyond compare。"
+pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('any')
 url="https://gitee.com/cxasm/notepad--"
 license=('GPL')
