@@ -1,0 +1,21 @@
+pkgbase = chibitracker-git
+	pkgdesc = A Classic Impulse Tracker Clone
+	pkgver = 1.4.2.r28.735cf51
+	pkgrel = 1
+	url = https://github.com/reduz/chibitracker
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = scons
+	makedepends = gcc
+	makedepends = git
+	depends = sdl
+	depends = gcc-libs
+	provides = chibitracker
+	conflicts = chibitracker
+	source = git+https://github.com/reduz/chibitracker
+	source = chibitracker.desktop
+	sha256sums = SKIP
+	sha256sums = 583784a8458ee36f1ef330aa988f57cc07e69f56d8e698c2d2569470ee13dd52
+
+pkgname = chibitracker-git

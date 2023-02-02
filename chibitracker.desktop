@@ -1,0 +1,13 @@
+[Desktop Entry]
+Actions=Play;FontEditor
+Version=1.0
+Name=Chibitracker
+Comment=Impulse Tracker clone
+Terminal=false
+TryExec=chibitracker
+Exec=chibitracker %f
+Type=Application
+Icon=chibitracker
+Categories=AudioVideo;Audio;Midi;Sequencer;Player;Music;
+MimeType=audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mod;
+Keywords=impulse;module;midi;music;
