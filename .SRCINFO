@@ -1,6 +1,6 @@
 pkgbase = fq-git
 	pkgdesc = Tool, language and decoders for inspecting binary data (git)
-	pkgver = 0.0.5.r0.gba948219
+	pkgver = 0.3.0.r0.gbafc8e3d
 	pkgrel = 1
 	url = https://github.com/wader/fq
 	arch = x86_64

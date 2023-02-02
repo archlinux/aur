@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fq-git
-pkgver=0.0.5.r0.gba948219
+pkgver=0.3.0.r0.gbafc8e3d
 pkgrel=1
 pkgdesc="Tool, language and decoders for inspecting binary data (git)"
 arch=('x86_64')
