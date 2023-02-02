@@ -1,14 +1,14 @@
 pkgbase = tela-icon-theme
 	pkgdesc = A flat colorful design icon theme.
-	pkgver = 2022.08.28
-	pkgrel = 2
+	pkgver = 2023.02.03
+	pkgrel = 1
 	url = https://www.pling.com/p/1279924
 	arch = any
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	options = !strip
-	source = tela-icon-theme-2022-08-28.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/2022-08-28.tar.gz
-	sha256sums = 09be82313a0ccfab4e3390de6dd1bd0ace115ba5990aae42e327777642ee7ff4
+	source = tela-icon-theme-2023-02-03.tar.gz::https://github.com/vinceliuice/Tela-icon-theme/archive/2023-02-03.tar.gz
+	sha256sums = ab6bf283875a8d777d1a3c8b5969c78a0d329409a4561f4c0f22d36d69171e5d
 
 pkgname = tela-icon-theme
