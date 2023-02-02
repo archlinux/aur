@@ -4,9 +4,9 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
-pkgver=2.36
-pkgrel=4
-_commit=4f4d7a13edfd2fdc57c9d76e1fd6d017fb47550c
+pkgver=2.37
+pkgrel=1
+_commit=a704fd9a133bfb10510e18702f48a6a9c88dbbd5
 pkgdesc="GNU C Library ARM64 target"
 arch=(any)
 url='https://www.gnu.org/software/libc/'
