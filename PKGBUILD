@@ -1,18 +1,18 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=whatsapp-for-linux-git
-pkgver=1.5.2.r4.g5a1ad95
+pkgver=1.5.3.r2.gbdf8328
 pkgrel=1
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url=https://github.com/eneshecan/${pkgname%-git}
-license=('GPL3')
-depends=('gtkmm3' 'webkit2gtk' 'libayatana-appindicator' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
+license=(GPL3)
+depends=('gtkmm3' 'webkit2gtk' 'libayatana-appindicator' 'libcanberra' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 makedepends=('cmake' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=(git+$url)
+b2sums=(SKIP)
 
 pkgver() {
 	cd ${pkgname%-git}
