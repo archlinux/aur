@@ -7,7 +7,7 @@
 
 pkgname=erlang-nox
 pkgver=25.2
-pkgrel=1
+pkgrel=2
 _docver=25.0
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
 arch=(x86_64)
@@ -40,11 +40,11 @@ build() {
     --enable-smp-support \
     --prefix=/usr \
     --with-odbc
-  make
+  make DOC_TARGETS=chunks all docs
 }
 
 package() {
-  make -C otp DESTDIR="$pkgdir" install
+  make -C otp DESTDIR="$pkgdir" DOC_TARGETS=chunks install install-docs
 
   # services and configuration
   install -Dm644 epmd.service "$pkgdir/usr/lib/systemd/system/epmd.service"
