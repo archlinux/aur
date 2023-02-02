@@ -1,7 +1,7 @@
 pkgbase = zsh-kali-emoji-theme
 	pkgdesc = kali linux zshrc file with custom modify and add emoji
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/kalilinux/packages/kali-defaults/-/blob/kali/master/etc/skel/.zshrc
 	install = zsh-kali-emoji-theme.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: sunflowercx <1527981693@qq.com>
 pkgname=zsh-kali-emoji-theme
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 install=${pkgname}.install
 pkgdesc="kali linux zshrc file with custom modify and add emoji"
 arch=('x86_64')

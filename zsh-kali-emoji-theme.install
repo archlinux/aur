@@ -1,6 +1,6 @@
 post_remove() {
     cd "/etc/zsh"
-    if [-a "zshrc.bak"];then
+    if [ -a "zshrc.bak"];then
         mv "zshrc.bak" "zshrc"
         chmod 644 "zshrc"
         echo "zshrc has benn restored success!"
