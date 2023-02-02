@@ -5,7 +5,7 @@
 
 _name=sonic-pi
 pkgname=sonic-pi-git
-pkgver=v3.2.0.r44.gc3895b5f0
+pkgver=v4.3.0.r88.g4da8c22bb
 pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('i686' 'x86_64')
@@ -14,20 +14,21 @@ license=('MIT')
 groups=('pro-audio')
 conflicts=('sonic-pi')
 provides=('sonic-pi')
-depends=('aubio' 'gcc-libs' 'glibc' 'osmid' 'qt5-base' 'qscintilla-qt5' 'ruby'
-'ruby-activesupport' 'ruby-bundler' 'ruby-ffi' 'ruby-i18n' 'ruby-kramdown'
-'ruby-minitest' 'ruby-mocha' 'ruby-multi_json' 'ruby-rake' 'ruby-rouge'
-'ruby-rugged' 'ruby-sys-proctable' 'sc3-plugins' 'sox' 'supercollider')
-makedepends=('boost' 'cmake' 'git' 'erlang-nox' 'gendesk' 'lua' 'qt5-tools'
-'wkhtmltopdf')
+depends=('aubio' 'boost' 'cmake' 'elixir' 'erlang-nox' 'gcc-libs' 'gendesk'
+'glfw-x11' 'glibc' 'lua' 'osmid' 'qscintilla-qt6' 'qt6-base' 'qt6-svg' 'qt6-tools-desktop'
+'qt6-webengine' 'rtaudio' 'rtmidi' 'ruby' 'ruby-activesupport' 'ruby-bundler'
+'ruby-ffi' 'ruby-i18n' 'ruby-kramdown' 'ruby-minitest' 'ruby-mocha' 'ruby-multi_json'
+'ruby-rake' 'ruby-rouge' 'ruby-rugged' 'ruby-sys-proctable' 'ruby-rexml' 'stk' 'libxext' 'libxft' 'libx11'
+'sc3-plugins' 'sox' 'supercollider' 'wkhtmltopdf-static')
+makedepends=('boost' 'curl' 'ninja' 'cmake' 'git' 'erlang-nox' 'gendesk' 'lua' 'qt5-tools' 'wkhtmltopdf-static' 'zip' 'unzip' 'tar')
 source=('git+https://github.com/samaaron/sonic-pi.git'
-        "${_name}-3.2.0-gui_paths.patch"
-        "${_name}-3.2.0-devendor_qscintilla-qt5.patch"
-        "${_name}-3.2.0-ruby_paths.patch")
+        "${_name}-4.3.0-rugged_compile_flags.patch"
+        "${_name}-4.3.0-find_package_glew.patch"
+        "${_name}.sh")
 sha512sums=('SKIP'
-            'e530cc13cb6674dca2ace2a8da566ce28263a15197cf7fccd5d3e58b676c08ce860bc6264a95d26569ff1f923020a40ece1e05841c955c5db16e61c30938f1c0'
-            'fbe196bc332a7a04e8d5097204a13626e7aba3a70715d2a1676c0b1f37f56da427d0d5b417f92c27e64f91a03dd9d4335f65f26f9e9d14e4076d496c94c949af'
-            '987504a8b98eea4a3fac2557fcbf002b8d0e9c991922c74e7649546ff963c30d0fef891cecb546f840801c88ec9b82f1afb4cebef9838a53af20d0f3f63a9c39')
+            '09f3c2d799269dc060ebda8fdde61b89af1e9d441a9c2864cf29702c63ea538479392b9752b1c6cc7cf4f1f4daa322fb715f138630e0edffa8bf2cd574adc424'
+            '366264f371b7779bbbd1231dabc7bda2c7492b56513168c1a08439c63ce990c9540013f505a0e519cde4061e0ba788e0c7c40208e7947589d673e48be027f239'
+            'bb578996b305fbb07b95610caf1fc1a08c760a49cf3902f012ed49ee4404f7d8c10d66aded88e538b20c811b4bb21c4e17f47761863eebd2bff2792ec38a738d')
 
 pkgver() {
   cd "${_name}"
@@ -42,60 +43,16 @@ prepare() {
           --name "${pkgname}" \
           --exec "${_name}" \
           --categories "AudioVideo;Audio"
-  rm -rvf app/server/native
-  # patch app/gui/qt/{model/sonicpitheme,mainwindow}.cpp to set path to
-  # external components in /usr/{lib,share}/sonic-pi
-  patch -Np1 -i "../${_name}-3.2.0-gui_paths.patch"
-  # devendor qscintilla-qt5: https://github.com/samaaron/sonic-pi/issues/2278
-  patch -Np1 -i "../${_name}-3.2.0-devendor_qscintilla-qt5.patch"
-  # devendor gems requiring compilation:
-  # ffi, ruby-prof, rugged
-  sed -e '/rugged/d' \
-      -e '/ffi/d' \
-      -e '/ruby-prof/d' \
-      -i app/server/ruby/bin/compile-extensions.rb
-  # remove unrequired gems, so we don't create any doc for them
-  rm -rvf app/server/ruby/vendor/{activesupport,ffi,i18n,kramdown,minitest,mocha,multi_json,rouge,rugged,sys-proctable}*
-  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof}*
+
+  patch -Np1 -i "../${_name}-4.3.0-rugged_compile_flags.patch"
+
+  patch -Np1 -i "../${_name}-4.3.0-find_package_glew.patch"
+
 }
 
 build() {
-  cd "${_name}"
-  (
-    # OSC and pi_server
-    cd app/server/erlang
-    erlc {osc,pi_server}.erl
-  )
-
-  (
-    # ruby extensions
-    cd app/server/ruby/bin
-    ./compile-extensions.rb
-    ./i18n-tool.rb -t
-  )
-
-  (
-    # GUI
-    cd app/gui/qt/
-    # help template
-    cp -vf utils/ruby_help.{tmpl,h}
-    ../../server/ruby/bin/qt-doc.rb -o utils/ruby_help.h
-    # generating translations
-    lrelease lang/*.ts
-    # compiling GUI
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -B build \
-          -S .
-    make VERBOSE=1 -C build
-  )
-
-  (
-    # patch app/server/ruby/lib/sonicpi/util.rb to set proper paths to external components
-    # NOTE: this can only be done after running
-    # app/server/ruby/bin/compile-extensions.rb, as ruby-wavefile uses a
-    # hardcoded location of a file (move to prepare() after devendoring more ruby gems)
-    patch -Np1 -i "../${_name}-3.2.0-ruby_paths.patch"
-  )
+  cd "${_name}/app"
+  ./linux-build-all.sh -n
 }
 
 ## tests fail: https://github.com/samaaron/sonic-pi/issues/1865
@@ -106,97 +63,24 @@ build() {
 #}
 
 package() {
-  cd "${_name}"
-  # GUI executable
-  install -vDm 755 "app/gui/qt/build/${_name}" "${pkgdir}/usr/bin/${_name}"
-  # book
-  install -vDm 644 app/gui/qt/book/*.html \
-    -t "${pkgdir}/usr/share/${_name}/book"
-  # i18n
-  install -vDm 644 app/gui/qt/lang/*.qm \
-    -t "${pkgdir}/usr/share/${_name}/lang"
-  # help
-  install -vDm 644 app/gui/qt/help/*.html \
-    -t "${pkgdir}/usr/share/${_name}/help"
-  # html
-  install -vDm 644 app/gui/qt/html/*.html \
-    -t "${pkgdir}/usr/share/${_name}/html"
-  # images
-  install -vDm 644 app/gui/qt/images/*.png \
-    -t "${pkgdir}/usr/share/${_name}/images"
-  install -vDm 644 app/gui/qt/images/coreteam/*.png \
-    -t "${pkgdir}/usr/share/${_name}/images/coreteam"
-  install -vDm 644 app/gui/qt/images/toolbar/default/*.png \
-    -t "${pkgdir}/usr/share/${_name}/images/toolbar/default"
-  install -vDm 644 app/gui/qt/images/toolbar/pro/*.png \
-    -t "${pkgdir}/usr/share/${_name}/images/toolbar/pro"
-  install -vDm 644 etc/doc/images/tutorial/*.png \
-    -t "${pkgdir}/usr/share/${_name}/images/tutorial"
-  # theme
-  install -vDm 644 app/gui/qt/theme/app.qss \
-    -t "${pkgdir}/usr/share/${_name}/theme/"
-  install -vDm 644 app/gui/qt/theme/dark/doc-styles.css \
-    -t "${pkgdir}/usr/share/${_name}/theme/dark"
-  install -vDm 644 app/gui/qt/theme/light/doc-styles.css \
-    -t "${pkgdir}/usr/share/${_name}/theme/light"
-  # samples
-  install -vDm 644 etc/samples/*.{flac,md} \
-    -t "${pkgdir}/usr/share/${_name}/samples"
-  # snippets
-  install -vDm 644 etc/snippets/fx/*.sps \
-    -t "${pkgdir}/usr/share/${_name}/snippets/fx"
-  install -vDm 644 etc/snippets/live_loop/*.sps \
-    -t "${pkgdir}/usr/share/${_name}/snippets/live_loop"
-  install -vDm 644 etc/snippets/syntax/*.sps \
-    -t "${pkgdir}/usr/share/${_name}/snippets/syntax"
-  # synthdefs
-  install -vDm 644 etc/synthdefs/compiled/*.scsyndef \
-    -t "${pkgdir}/usr/share/${_name}/synthdefs/compiled"
-  install -vDm 644 etc/synthdefs/designs/overtone/${_name}/*.clj\
-    -t "${pkgdir}/usr/share/${_name}/synthdefs/designs/overtone/"
-  install -vDm 644 etc/synthdefs/designs/overtone/${_name}/src/sonic_pi/*.clj\
-    -t "${pkgdir}/usr/share/${_name}/synthdefs/designs/overtone/sonic_pi/src"
-  install -vDm 644 etc/synthdefs/designs/overtone/${_name}/test/sonic_pi/*.clj\
-    -t "${pkgdir}/usr/share/${_name}/synthdefs/designs/overtone/sonic_pi/test"
-  # buffers
-  install -vDm 644 etc/buffers/rand-stream.wav \
-    -t "${pkgdir}/usr/share/${_name}/buffers"
-  # docs
-  install -vDm 644 etc/doc/cheatsheets/*.md \
-    -t "${pkgdir}/usr/share/doc/${_name}/cheatsheets"
-  # pdfs
-  install -vDm 644 etc/synthdefs/graphviz/pdf/*.pdf \
-    -t "${pkgdir}/usr/share/doc/${_name}/synthdefs"
-  # tutorial
-  install -vDm 644 etc/doc/tutorial/*.md \
-    -t "${pkgdir}/usr/share/doc/${_name}/tutorial"
-  # examples
-  install -vDm 644 etc/examples/algomancer/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/algomancer"
-  install -vDm 644 etc/examples/apprentice/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/apprentice"
-  install -vDm 644 etc/examples/illusionist/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/illusionist"
-  install -vDm 644 etc/examples/incubation/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/incubation"
-  install -vDm 644 etc/examples/magician/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/magician"
-  install -vDm 644 etc/examples/sorcerer/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/sorcerer"
-  install -vDm 644 etc/examples/wizard/*.rb \
-    -t "${pkgdir}/usr/share/doc/${_name}/examples/wizard"
-  # erlang
-  install -vDm 755 app/server/erlang/*.beam \
-    -t "${pkgdir}/usr/lib/${_name}"
-  # ruby
-  install -vdm 755 "${pkgdir}/usr/share/${_name}"
-  cp -av app/server/ruby "${pkgdir}/usr/lib/${_name}/server"
-  rm -vf "${pkgdir}/usr/lib/${_name}/server/vendor/"*/ext/*.{o,c}
-  rm -vf "${pkgdir}/usr/lib/${_name}/server/vendor/"*/ext/*/*.{o,c}
-  rm -vf "${pkgdir}/usr/lib/${_name}/server/Rakefile"
-  rm -vf "${pkgdir}/usr/lib/${_name}/server/vendor/"*/Rakefile
+  cd "${_name}/app"
+
+  echo "Creating Linux release...."
+  ./linux-release.sh
+
+  mkdir -p "${pkgdir}/opt/${_name}"
+
+  cp -r build/linux_dist/* "${pkgdir}/opt/${_name}/"
+
+  cd ..
+
   # xdg
-  install -vDm 644 "${_name}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -vDm 644 ${_name}.desktop -t "${pkgdir}/usr/share/applications"
+  install -vDm 644 app/gui/qt/images/icon-smaller.png "${pkgdir}/usr/share/icons/${_name}.png"
+
   # license
-  install -vDm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+
+  install -vDm 755 ../${_name}.sh "${pkgdir}/usr/local/bin/${_name}"
+
 }

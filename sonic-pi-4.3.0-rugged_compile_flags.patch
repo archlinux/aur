@@ -1,0 +1,13 @@
+diff --git a/app/server/ruby/bin/compile-extensions.rb b/app/server/ruby/bin/compile-extensions.rb
+index 7e4f92925..47d15738f 100755
+--- a/app/server/ruby/bin/compile-extensions.rb
++++ b/app/server/ruby/bin/compile-extensions.rb
+@@ -58,7 +58,7 @@ native_ext_dirs.each do |ext_dir|
+   Dir.chdir(ext_dir) do
+     `"#{RbConfig.ruby}" extconf.rb`
+     `make clean`
+-    `make`
++    `export CFLAGS="-ffast-math -msse -msse2 -mfpmath=sse -fPIC" && make`
+   end
+ 
+   libs = []
