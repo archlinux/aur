@@ -1,6 +1,6 @@
 pkgbase = qsv
 	pkgdesc = A command line program for CSV files. Fork of xsv.
-	pkgver = 0.85.0
+	pkgver = 0.87.0
 	pkgrel = 1
 	url = https://github.com/jqnatividad/qsv
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = qsv
 	depends = python>=3.8
 	depends = docopt-wordlist
 	optdepends = bash-completion: tab completion for bash
-	source = qsv-0.85.0.tar.gz::https://github.com/jqnatividad/qsv/archive/refs/tags/0.85.0.tar.gz
+	source = qsv-0.87.0.tar.gz::https://github.com/jqnatividad/qsv/archive/refs/tags/0.87.0.tar.gz
 	source = completion.patch
-	md5sums = 0011fb04a38e2820a4d8cb28314f87d9
+	md5sums = a1e7094813bb30d59e07eaa443d186ab
 	md5sums = b6ac3fc857e4d2657be8c4e81c86a56c
-	sha512sums = 09cc4db9867d18ee9a3a668b3f5c4bd1cbacb3f99d00145617fb11f59960ccd81ad25cbe30b0b6e13e16ed73b23bfc17e73e745bd39a6fdfa4813464d2d32e23
+	sha512sums = 38998190472c0c04ddb0dc11fc7eab5a0e2f0303d2b2d2e4400550da1ca9a4bede285dceb8018d4da7e8f7dec27cbc4d05dd7e40886fccdd13fa22efb87f10dd
 	sha512sums = 809cd1ad542319a8f98c061b222e386afe90668acdc3b4f9183aa5cb3d3e70548fd72d2a160841072fc6ab29d6cd6d1f6c0596f19451dc21ff63449d00b7d2db
 
 pkgname = qsv
