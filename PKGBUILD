@@ -3,13 +3,13 @@
 
 pkgname=reposilite
 pkgver=3.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://github.com/dzikoysk/$pkgname"
 license=('Apache')
 depends=('java-runtime')
-makedepends=('java-environment' 'nodejs' 'npm')
+makedepends=('jdk11-openjdk' 'nodejs' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
@@ -23,7 +23,7 @@ build() {
   cd "$pkgname-$pkgver"
   sed -i -e "s/version\\s*=.*/version = \"$pkgver\"/" build.gradle.kts
   chmod a+x gradlew
-  ./gradlew :reposilite-backend:shadowJar --no-daemon --stacktrace
+  JAVA_HOME="/usr/lib/jvm/java-11-openjdk" ./gradlew :reposilite-backend:shadowJar --no-daemon --stacktrace
 }
 
 package() {

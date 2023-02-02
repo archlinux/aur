@@ -1,11 +1,11 @@
 pkgbase = reposilite
 	pkgdesc = Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory.
 	pkgver = 3.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dzikoysk/reposilite
 	arch = any
 	license = Apache
-	makedepends = java-environment
+	makedepends = jdk11-openjdk
 	makedepends = nodejs
 	makedepends = npm
 	depends = java-runtime
