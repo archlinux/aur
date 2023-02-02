@@ -2,7 +2,7 @@
 # Contributor: Nick Skelsey <nskelsey@gmail.com>
 
 pkgname=zeek
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=(zlib libpcap bash libmaxminddb python)
 makedepends=(cmake swig bison flex openssl geoip gperftools shadow)
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
         zeek.tmpfiles.conf)
-sha256sums=('da283180fdf178d3ca609d3e6dbe98820c4aeeb3e26feeb97221cfa616afc6c2'
+sha256sums=('d43bd751c4db2c19bd523257ba4f038c6123fa5103facf43f923674aa0376f05'
             'SKIP'
             'af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91')
-b2sums=('aa92ac9d9e0e8adc8f9b4b6cf9ba7558bef67fc6c7be9afb504278ecdc71a0c6a0e0ae5f2969e1c47bdfb8802ae82604b5c9256139a760f75cf37d1e7985bd9e'
+b2sums=('5c3d425f4e61648c76d78d65cb734060e24e951bd31dbde9a2ff5b5fb3e7c1aca46f84736e259da0b0a2df6f4ac0eb3ca4db695741f8f32176bc37ddffe541a2'
         'SKIP'
         'df5e4479c89cc2b0764e26e35bdcbcd7d00b131d7f4cd35c336e734ae334a40a2142285a2c8ea9db8961a34bb4d2799ba89505ab3e3881a16792c7e804ef1d73')
 validpgpkeys=(
