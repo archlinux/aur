@@ -1,0 +1,22 @@
+pkgbase = lua-getch
+	pkgdesc = Lua module provides a way to get raw Keyboard data
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/max1220/lua-getch
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = getch-0.0.tar.gz::https://github.com/max1220/lua-getch/archive/0.0-4.tar.gz
+	sha256sums = dc83993e3a8047f391c418a20d9dac47f7547f36e8cbb6c0ee986ee4363b2ac4
+
+pkgname = lua-getch
+
+pkgname = lua51-getch
+
+pkgname = lua52-getch
+
+pkgname = lua53-getch
