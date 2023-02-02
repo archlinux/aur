@@ -6,7 +6,7 @@
 pkgname=mksh
 _pkgver=R59c
 pkgver=59.c
-pkgrel=4
+pkgrel=5
 pkgdesc='MirBSD Korn Shell'
 url='https://www.mirbsd.org/mksh.htm'
 license=('custom')
@@ -15,7 +15,7 @@ depends=('glibc')
 checkdepends=('ed')
 install=mksh.install
 source=("https://github.com/MirBSD/mksh/archive/refs/tags/$pkgname-$_pkgver.tar.gz")
-sha256sums=('07407cacaf65b0d5bb1fab4caea719c869fea03051809e68704867075bb14c87')
+sha256sums=('e5942607eb930ba6ce3303c4a0db0733371f210c9ce6d5d4b9cc202c76360343')
 
 check() {
   cd "$pkgname-$pkgname-$_pkgver"
