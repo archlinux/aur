@@ -3,8 +3,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2198.5d66122
-pkgrel=2
+pkgver=r2401.32d56fec
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -78,6 +78,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
 	cd subprojects/wlroots
 	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
+	git cherry-pick -n 03412e9aaba3f2bedacbeeef53469f13d6b6b277
 	patch -Np1 < "${srcdir}"/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
 }
 
