@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=bouffalolab-devcude-bin
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=0
 pkgdesc="Dev Cube 是博流提供的芯片集成开发工具，包含 IOT 程序下载、MCU 程序下载和RF性能测试三大功能。工具提供程序固件启动时的时钟，电源，Flash 参数等配置，并可根据用户需求对程序进行加密和签名，生成应用程序启动信息文件。工具还可烧写用户资源文件，分区表文件以及 EFUSE 配置文件等。工具可对 Flash 进行擦、改、写"
 arch=('x86_64')
@@ -17,19 +17,23 @@ backup=()
 options=('!strip')
 install=${pkgname}.install
 source=("${pkgname%-bin}-${pkgver}.zip::https://dev.bouffalolab.com/media/upload/download/BouffaloLabDevCube-v${pkgver}.zip")
-sha256sums=('f278894b09884055179f19be6ed84ffd85d3b91cfeb1d75b7c4906734dd5c0c2')
+sha256sums=('3ba8a2b4cf383f523103ce348f28a15799607d6c103c3e3c3d0f2269b5dbbd5f')
 noextract=(${pkgname%-bin}-${pkgver}.zip)
 
 package() {
 #     export LC_CTYPE="zh_CN.UTF-8"
     install -dm0755 "${pkgdir}/opt/bouffalolab/${pkgname%-bin}/"
 
-    bsdtar xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" --strip-components=1 -C  "${pkgdir}/opt/bouffalolab/${pkgname%-bin}"
+#     bsdtar xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" --strip-components=1 -C  "${pkgdir}/opt/bouffalolab/${pkgname%-bin}"
+    bsdtar xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip"  -C  "${pkgdir}/opt/bouffalolab/${pkgname%-bin}"
     rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/*.exe
-    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/*-macos
-    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/*/*/*.exe
-    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/*/*/*.dll
+    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/*-macos*
+    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/*/*.exe
+    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/*/*.dll
+    rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/*/*/*/*.dll
     rm -rf "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/jlink
+
+    ln -sf /opt/SEGGER/JLink/ "${pkgdir}"/opt/bouffalolab/${pkgname%-bin}/utils/jlink
 
     # desktop entry
     install -Dm0644 /dev/stdin ${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop <<EOF
