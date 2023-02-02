@@ -1,4 +1,5 @@
-# Maintainer: lis
+# Maintainer: David Seus <cryptointerest@posteo.de>
+# Contributor: lis
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
@@ -9,15 +10,15 @@
 
 pkgname=lilypond-devel
 _pkgname=lilypond
-pkgver=2.23.80
-pkgrel=2
+pkgver=2.25.1
+pkgrel=1
 pkgdesc="Music engraving program (development version)"
 arch=('x86_64')
 url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
 groups=('pro-audio')
 # NOTE: use guile only with 2.24.x
-depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile>=3.0')
+depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile2.2')
 makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
 'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
 'texlive-langcyrillic' 'zip')
@@ -29,8 +30,8 @@ optdepends=(
 provides=('lilypond=${pkgver}')
 conflicts=('lilypond')
 source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
-sha512sums=('6af7f4b36c955656b7fd2aa329b9c77133b6bd68428bd9acfd095ae19ae07110da72ece4915112668820031a590ff69407e23fb0418ab5c210405b96479573c0')
-b2sums=('f478c699b099f79d7d03cdfbd5349d54dc379bbfe62436471f14ab8e3ab53256f9e56459249cb7fb4640b9e30f651f57769e9edec1546006e072bb94ebc4cf90')
+sha512sums=('1d00666f47eaff70b21b04dada67683c125d9d2f0b676c227fb7ee645a22ce8134d6b0cef80ed0f27149b6fb0e57ed0a6961146ec76ff3b6f57687324fd364c7')
+b2sums=('49b1b57d1feb7ca2b1bd5b4637711181ae47edc8031e0ad3f61e1d1c53e7c875f2e303a9b9ea9abc1377e1ecbabd435b258c10bcd50f99314aa6b156d8f2ddb1')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -40,9 +41,7 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
   ./configure --prefix=/usr \
-              --disable-texi2html \
-              --disable-documentation \
-              GUILE_FLAVOR=guile-3.0
+              GUILE_FLAVOR=guile-2.2
   make
   make bytecode
 }
