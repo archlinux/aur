@@ -3,10 +3,10 @@
 pkgname=gnucash-xbt
 _pkgname=gnucash
 pkgver=4.13
-pkgrel=1
+pkgrel=2
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="http://www.gnucash.org"
 license=(GPL)
 depends=(aqbanking boost-libs libdbi libdbi-drivers webkit2gtk libsecret libofx)
