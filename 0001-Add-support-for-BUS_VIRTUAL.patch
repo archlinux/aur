@@ -1,4 +1,4 @@
-From 9d10eb342207b97731d2577f6cd3a50283b64a5a Mon Sep 17 00:00:00 2001
+From a7475cd68d1e76d74bdb192652bdd5b7a879f1d7 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/12] Add support for BUS_VIRTUAL
@@ -102,5 +102,5 @@ index d732bd1..4b21b6a 100755
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
  
 -- 
-2.38.0
+2.39.1
 

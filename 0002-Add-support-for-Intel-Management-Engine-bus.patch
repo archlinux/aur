@@ -1,4 +1,4 @@
-From 4fd524a0397c1364d7963462b0134cb88f1de9bb Mon Sep 17 00:00:00 2001
+From df9f3dc3b76fac2dae92e53250cc5ed8ed8f4c8a Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/12] Add support for Intel Management Engine bus
@@ -97,5 +97,5 @@ index 4b21b6a..04a1310 100755
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
  
 -- 
-2.38.0
+2.39.1
 
