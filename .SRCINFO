@@ -1,0 +1,14 @@
+pkgbase = nexttrace
+	pkgdesc = An open source visual route tracking CLI tool
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/sjlleo/nexttrace
+	install = nexttrace.install
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/sjlleo/nexttrace.git#tag=v1.0.8
+	sha256sums = SKIP
+
+pkgname = nexttrace
