@@ -1,10 +1,10 @@
 pkgbase = blockbench-bin
 	pkgdesc = A low-poly 3D model editor
 	pkgver = 4.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blockbench.net/
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = gzip
 	depends = gtk3
 	depends = libnotify
