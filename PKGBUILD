@@ -21,7 +21,7 @@ depends=(
 	'gspell'
 	'gtkmm3'
 	'lcms2'
-	'lib2geom'
+	'lib2geom-git'
 	'libcdr'
 	'libjpeg-turbo'
 	'libmagick6'
