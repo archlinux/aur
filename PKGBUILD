@@ -3,8 +3,8 @@
 # Contributer: Vincent Demeester <vincent@sbr.io>
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
-pkgver=20221225
-pkgrel=2
+pkgver=20230202
+pkgrel=1
 _file="${pkgname}-v${pkgver}.tar.gz"
 pkgdesc="Compile and install Ruby"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
     'libyaml: install recent versions of mri'
 )
 source=($_file::$url/archive/v$pkgver.tar.gz)
-sha512sums=('52a4d645931bab333b5d44293f7ce00dfcca949482e63d74b3314aeb7f95c9837f83cff72ae7c955cf0f54d6186250bfff0b383659679e4d1945aca1efdcd66d')
+sha512sums=('c09c8d43d1cdab4e21dc7c771b5936858a43fd08ae9ece51ae384a8ea0b5948aa565158bc671f1a9e10994daad63ae69da63a60059300c8afd3402b01b4bfeba')
 
 build() {
   cd $srcdir
