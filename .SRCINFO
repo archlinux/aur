@@ -1,0 +1,12 @@
+pkgbase = functionalplus
+	pkgdesc = Functional Programming Library for C++
+	pkgver = 0.2.18_p0
+	pkgrel = 1
+	url = https://www.editgym.com/fplus-api-search
+	arch = any
+	license = Boost
+	makedepends = python
+	source = functionalplus-0.2.18_p0::https://github.com/Dobiasd/FunctionalPlus/archive/v0.2.18-p0.tar.gz
+	b2sums = ae2ab62921d6c57ff977e3d4c4eb55cfaa42d9f5ab2790ab381df406b287bd1d197d0d397749ea25fd84d67e6575484ba1fd7677215e66c18ebfb50484faef79
+
+pkgname = functionalplus
