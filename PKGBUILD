@@ -1,6 +1,6 @@
 # Maintainer: Dan Walsh <dan@danwalsh.ca>
 pkgname=redisinsight
-pkgver=2.14.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('gendesk')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://download.redisinsight.redis.com/latest/RedisInsight-v2-linux-x86_64.AppImage" 
         "LICENSE::https://raw.githubusercontent.com/RedisInsight/RedisInsight/main/LICENSE")
-sha256sums=('97f07270d908c41adba1b1e26ed640e2682ec3e920c61e3c98c78434d6d42aa3'
+sha256sums=('57d50a9794ffb388de3fb7bc58013579f27e2c784b0efb5dc4bf1229cb844c7c'
             '723a1b274ff1653c4414fa9133b11cae6cc0b258af7617967d50c04fa4354c9e')
 
 package() {
