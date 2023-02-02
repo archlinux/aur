@@ -4,7 +4,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.2.alpha.r736.g9a22fec0de
+pkgver=1.2.alpha.r869.gfe5602913d
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -58,6 +58,8 @@ prepare() {
   git config submodule.share/extensions.url "${srcdir}"/extensions.git
   git config submodule.src/3rdparty/2geom.url "${srcdir}"/lib2geom.git
   git -c protocol.file.allow=always submodule update --init --remote
+# fix track_obj deprecated in libsigc
+  sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 }
 
 pkgver() {
