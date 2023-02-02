@@ -1,6 +1,6 @@
 pkgbase = python-aws-lambda-builders
 	pkgdesc = Python library to compile, build & package AWS Lambda functions for several runtimes & framework
-	pkgver = 1.24.0
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://github.com/aws/aws-lambda-builders
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-aws-lambda-builders
 	conflicts = python-aws_lambda_builders
 	replaces = python-aws_lambda_builders
 	options = !emptydirs
-	source = https://github.com/aws/aws-lambda-builders/archive/v1.24.0/aws-lambda-builders-1.24.0.tar.gz
-	sha256sums = 5f5449546551d47ae8a93c8bbc1631fa5ad59425a25fe792bbaa2b8abca8a008
+	source = https://github.com/aws/aws-lambda-builders/archive/v1.25.0/aws-lambda-builders-1.25.0.tar.gz
+	sha256sums = 7ef5bdeb0e3736615a2357309b531f4fa3866bf24bf601bfcf591b191d3a356e
 
 pkgname = python-aws-lambda-builders
