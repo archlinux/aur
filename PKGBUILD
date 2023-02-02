@@ -1,7 +1,7 @@
 # Maintainer: mhaquila <mhaquila ad pharosmaris dot com>
 pkgname=treecomp
 pkgver=20191106
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive utility to keep 2 directory trees and the files within the directories in sync'
 arch=('any')
 url='https://lploeger.home.xs4all.nl/TreeComp.htm'

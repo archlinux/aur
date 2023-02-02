@@ -1,11 +1,12 @@
 pkgbase = treecomp
 	pkgdesc = Interactive utility to keep 2 directory trees and the files within the directories in sync
 	pkgver = 20191106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lploeger.home.xs4all.nl/TreeComp.htm
 	arch = any
-	license = custom: Freeware with free diffusion
+	license = custom: Free to use and share (see: https://lploeger.home.xs4all.nl/TreeComp3.htm#freeware)
 	depends = wine
+	depends = hicolor-icon-theme
 	noextract = TreeComp20191106_noinstall.zip
 	source = https://lploeger.home.xs4all.nl/TreeComp20191106_noinstall.zip
 	source = https://lploeger.home.xs4all.nl/TreeCompIcon.gif
