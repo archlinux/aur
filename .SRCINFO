@@ -1,6 +1,6 @@
 pkgbase = sway-im-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (git version with input method popups)
-	pkgver = r7063.ae2d14ce
+	pkgver = r7065.9959e6b8
 	pkgrel = 1
 	url = https://swaywm.org/
 	install = sway.install
@@ -37,9 +37,9 @@ pkgbase = sway-im-git
 	backup = etc/sway/config
 	source = sway::git+https://github.com/swaywm/sway.git
 	source = 50-systemd-user.conf
-	source = 0001-text_input-Implement-input-method-popups.patch
+	source = 7226.patch
 	sha512sums = SKIP
 	sha512sums = c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137
-	sha512sums = dc598c3e5990a0b7fac96b298eeffb24450165908e68be08ceb0a653d5c08abb217ac58348835752b2bbbddd81a6e1f671b3b6cef8c5714e2357ed0bd3b604f5
+	sha512sums = 6431d5efeba465590f97a9bde7e3a389cf4906befa7e7f340f0c637ae1e27306235b7ac87b150d626f6324f2bc5df043472af62839afcd8f0409dcaec0550a32
 
 pkgname = sway-im-git
