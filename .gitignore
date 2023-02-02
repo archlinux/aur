@@ -8,7 +8,9 @@
 /llvm-project/
 /sourcekit-lsp/
 /swift-argument-parser/
+/swift-atomics/
 /swift-cmark-gfm/
+/swift-collections/
 /swift-corelibs-foundation/
 /swift-corelibs-libdispatch/
 /swift-corelibs-xctest/
@@ -23,8 +25,10 @@
 /swift-markdown/
 /swift-nio-ssl/
 /swift-nio/
+/swift-numerics/
 /swift-stress-tester/
 /swift-syntax/
+/swift-system/
 /swift-tools-support-core/
 /swift-xcode-playground-support/
 /swift/

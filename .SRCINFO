@@ -1,6 +1,6 @@
 pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
-	pkgver = 5.7.2
+	pkgver = 5.7.3
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -21,36 +21,40 @@ pkgbase = swift-language
 	depends = ncurses
 	provides = swift-language
 	options = !strip
-	source = git+https://github.com/apple/swift#tag=swift-5.7.2-RELEASE
-	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.7.2-RELEASE
-	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.7.2-RELEASE
+	source = git+https://github.com/apple/swift#tag=swift-5.7.3-RELEASE
+	source = cmark::git+https://github.com/apple/swift-cmark#tag=swift-5.7.3-RELEASE
+	source = llbuild::git+https://github.com/apple/swift-llbuild#tag=swift-5.7.3-RELEASE
 	source = swift-argument-parser::git+https://github.com/apple/swift-argument-parser#tag=1.0.3
-	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.7.2-RELEASE
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.7.2-RELEASE
-	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.7.2-RELEASE
-	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.7.2-RELEASE
-	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.7.2-RELEASE
-	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.7.2-RELEASE
-	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.7.2-RELEASE
-	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.7.2-RELEASE
-	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.7.2-RELEASE
-	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.7.2-RELEASE
+	source = swift-driver::git+https://github.com/apple/swift-driver#tag=swift-5.7.3-RELEASE
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.7.3-RELEASE
+	source = swiftpm::git+https://github.com/apple/swift-package-manager#tag=swift-5.7.3-RELEASE
+	source = swift-syntax::git+https://github.com/apple/swift-syntax#tag=swift-5.7.3-RELEASE
+	source = swift-stress-tester::git+https://github.com/apple/swift-stress-tester#tag=swift-5.7.3-RELEASE
+	source = swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#tag=swift-5.7.3-RELEASE
+	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#tag=swift-5.7.3-RELEASE
+	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.7.3-RELEASE
+	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.7.3-RELEASE
+	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.7.3-RELEASE
 	source = 0001-arch-aur-patches.patch
-	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.7.2-RELEASE
+	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.7.3-RELEASE
 	source = yams::git+https://github.com/jpsim/Yams#tag=5.0.0
-	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.7.2-RELEASE
-	source = swift-cmark-gfm::git+https://github.com/apple/swift-cmark#tag=swift-5.7.2-RELEASE
+	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=swift-5.7.3-RELEASE
+	source = swift-atomics::git+https://github.com/apple/swift-nio-ssl#tag=1.0.2
+	source = swift-cmark-gfm::git+https://github.com/apple/swift-cmark#tag=swift-5.7.3-RELEASE
+	source = swift-collections::git+https://github.com/apple/swift-crypto#tag=1.0.1
 	source = swift-crypto::git+https://github.com/apple/swift-crypto#tag=1.1.5
 	source = swift-docc::git+https://github.com/apple/swift-docc#branch=main
 	source = swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main
 	source = swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main
-	source = swift-format::git+https://github.com/apple/swift-format#tag=swift-5.7.2-RELEASE
+	source = swift-format::git+https://github.com/apple/swift-format#tag=swift-5.7.3-RELEASE
 	source = swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main
-	source = swift-markdown::git+https://github.com/apple/swift-markdown#tag=swift-5.7.2-RELEASE
+	source = swift-markdown::git+https://github.com/apple/swift-markdown#tag=swift-5.7.3-RELEASE
 	source = swift-nio::git+https://github.com/apple/swift-nio#tag=2.31.2
 	source = swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#tag=2.15.0
-	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.7.2-RELEASE
-	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.7.2-RELEASE
+	source = swift-numerics::git+https://github.com/apple/swift-nio-ssl#tag=1.0.1
+	source = swift-system::git+https://github.com/apple/swift-nio-ssl#tag=1.1.1
+	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=swift-5.7.3-RELEASE
+	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=swift-5.7.3-RELEASE
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -66,6 +70,10 @@ pkgbase = swift-language
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 3941d6e2ff26ee0bf2d0ae37ed618d1cb36af85e256b0b84dd4e5d8549ec2982
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

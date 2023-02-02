@@ -6,13 +6,17 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.7.2-RELEASE
-pkgver=5.7.2
+_swiftver=swift-5.7.3-RELEASE
+pkgver=5.7.3
 pkgrel=1
 swiftargumentparserver=1.0.3
+swiftatomicsver=1.0.2
+swiftcollectionsver=1.0.1
 swiftcryptover=1.1.5
 swiftniover=2.31.2
 swiftniosslver=2.15.0
+swiftnumericsver=1.0.1
+swiftsystemver=1.1.1
 yamsver=5.0.0
 
 pkgdesc="The Swift programming language and debugger"
@@ -42,7 +46,9 @@ source=(
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
     "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
+    "swift-atomics::git+https://github.com/apple/swift-nio-ssl#tag=${swiftatomicsver}"
     "swift-cmark-gfm::git+https://github.com/apple/swift-cmark#tag=${_swiftver}"
+    "swift-collections::git+https://github.com/apple/swift-crypto#tag=${swiftcollectionsver}"
     "swift-crypto::git+https://github.com/apple/swift-crypto#tag=${swiftcryptover}"
     "swift-docc::git+https://github.com/apple/swift-docc#branch=main"
     "swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main"
@@ -52,6 +58,8 @@ source=(
     "swift-markdown::git+https://github.com/apple/swift-markdown#tag=${_swiftver}"
     "swift-nio::git+https://github.com/apple/swift-nio#tag=${swiftniover}"
     "swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#tag=${swiftniosslver}"
+    "swift-numerics::git+https://github.com/apple/swift-nio-ssl#tag=${swiftnumericsver}"
+    "swift-system::git+https://github.com/apple/swift-nio-ssl#tag=${swiftsystemver}"
     "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
     "swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
 )
@@ -72,6 +80,10 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '3941d6e2ff26ee0bf2d0ae37ed618d1cb36af85e256b0b84dd4e5d8549ec2982'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
