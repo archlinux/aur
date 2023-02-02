@@ -2,7 +2,7 @@
 _pkgname=chibitracker
 pkgname=chibitracker-git
 pkgver=1.4.2.r28.735cf51
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Classic Impulse Tracker Clone"
 arch=("x86_64" "i686")
@@ -15,7 +15,7 @@ makedepends=("scons" "gcc" "git")
 source=("git+$url" 
 	"chibitracker.desktop")
 sha256sums=('SKIP'
-            '583784a8458ee36f1ef330aa988f57cc07e69f56d8e698c2d2569470ee13dd52')
+            '1ac899721be363f141ccfa248935bed50cd549dd2f5d9ff2ac0c4690e2c1a5f2')
 validpgpkeys=()
 
 pkgver() {

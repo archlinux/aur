@@ -1,7 +1,7 @@
 [Desktop Entry]
 Actions=Play;FontEditor
 Version=1.0
-Name=Chibitracker
+Name=ChibiTracker
 Comment=Impulse Tracker clone
 Terminal=false
 TryExec=chibitracker
