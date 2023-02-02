@@ -1,0 +1,22 @@
+pkgbase = lua-shell
+	pkgdesc = Lua terminal screen manipulation library
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/mna/luashell
+	arch = any
+	license = GPL2
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = shell-0.4.tar.gz::https://github.com/mna/luashell/archive/v0.4.tar.gz
+	sha256sums = 12d5d1e980b3b1ca5d2f8dcc47cccb77ba91234f5459bf11d062ab27fc05e749
+
+pkgname = lua-shell
+
+pkgname = lua51-shell
+
+pkgname = lua52-shell
+
+pkgname = lua53-shell
