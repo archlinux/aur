@@ -4,8 +4,8 @@
 export GIT_LFS_SKIP_SMUDGE=1
 _name=f3d
 pkgname=$_name-git
-pkgver=v1.3.1.gcc42277
-pkgrel=2
+pkgver=v1.3.1.g35b7fc2
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://github.com/$_name-app/$_name"
@@ -28,25 +28,25 @@ build() {
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
-        -DF3D_GENERATE_MAN=ON \
-        -DF3D_INSTALL_MIME_TYPES_FILES=ON \
-        -DF3D_INSTALL_THUMBNAILER_FILES=ON \
-        -DF3D_BINDINGS_PYTHON=ON \
         -DF3D_BINDINGS_JAVA=ON \
+        -DF3D_BINDINGS_PYTHON=ON \
+        -DF3D_INSTALL_DEFAULT_CONFIGURATION_FILE=ON \
         -DF3D_INSTALL_SDK=ON \
+        -DF3D_LINUX_GENERATE_MAN=ON \
+        -DF3D_LINUX_INSTALL_THUMBNAILER_FILES=ON \
+        -DF3D_MODULE_EXTERNAL_RENDERING=ON \
+        -DF3D_MODULE_RAYTRACING=ON \
         -DF3D_PLUGINS_STATIC_BUILD=ON \
         -DF3D_PLUGIN_BUILD_ALEMBIC=ON \
         -DF3D_PLUGIN_BUILD_ASSIMP=ON \
         -DF3D_PLUGIN_BUILD_DRACO=ON \
         -DF3D_PLUGIN_BUILD_OCCT=ON \
-        -DF3D_MODULE_RAYTRACING=ON \
-        -DF3D_MODULE_EXTERNAL_RENDERING=ON \
         ..
-  make
+  cmake --build .
 }
 
 package() {
   cd "$srcdir/$_name/build"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install .
+  DESTDIR="$pkgdir" cmake --install . --component mimetypes
 }
