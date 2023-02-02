@@ -1,0 +1,18 @@
+pkgbase = gpg-utilities
+	pkgdesc = Utilities for GnuPG security tool.
+	pkgver = 2021
+	pkgrel = 1
+	url = https://github.com/tlikonen/gpg-utilities
+	arch = any
+	license = custom:Creative Common CC0
+	makedepends = git
+	makedepends = wget
+	depends = graphviz
+	depends = gnupg
+	depends = sbcl
+	source = git+https://github.com/tlikonen/gpg-utilities.git#tag=2021
+	source = https://creativecommons.org/publicdomain/zero/1.0/legalcode
+	sha256sums = SKIP
+	sha256sums = 7dd923ade699ed91013a9b85fff3c8e5386de24c0d2d716a890f1f49b24d1d6e
+
+pkgname = gpg-utilities
