@@ -3,7 +3,7 @@ pkgname=haredump-git
 _pkgname=haredump
 pkgver=r7.6f5378e
 pkgrel=1
-license=("custom")
+license=("custom:WTFPL")
 pkgdesc="Command line tool that dumps data as hare code."
 makedepends=(
 	"hare"
@@ -36,7 +36,7 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	make PREFIX="$pkgdir/usr" install
 }
 
