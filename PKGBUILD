@@ -16,7 +16,7 @@ pkgname=(
   java8-openjfx-src
 )
 pkgver=8.u202
-pkgrel=6
+pkgrel=7
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -53,6 +53,7 @@ source=(
   java8-openjfx-CVE-2021-3517-fix.patch::https://gitlab.gnome.org/GNOME/libxml2/-/commit/bf22713507fe1fc3a2c4b525cf0a88c2dc87a3a2.patch
   java8-openjfx-CVE-2021-3522-fix.patch::https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/commit/8a88e5c1db05ebadfd4569955f6f47c23cdca3c4.patch
   java8-openjfx-include-iterator.patch
+  java8-openjfx-no-check-jfxrt-jar.patch
 )
 sha256sums=('12b0538d04c4bd451e4692ee06357ac36233ff4ec2af9fa3b9bbdbab48c3f2fc'
             'd1c2255893e5ec6268d7c92bb6539cde629d325872f26cffb5f1f616c9d5f30d'
@@ -62,7 +63,8 @@ sha256sums=('12b0538d04c4bd451e4692ee06357ac36233ff4ec2af9fa3b9bbdbab48c3f2fc'
             'cd1a2bd60f636662e4f3334217b3e14f1d51cf30b77b9ca3eff8d030312fd26a'
             '4db6e995d46f5ab29c4169dab5dbbe367ebd01dee66ef1750abe5cf0c8364d42'
             '3487eb180fff9866c8b8b08be45f13fa9e8edd04e5719bc867e59b09b81954b4'
-            'bd69e8a3363f9b3ade50fb29d4c9e3d7e59b42472ae00d425d20ddcda720b919')
+            'bd69e8a3363f9b3ade50fb29d4c9e3d7e59b42472ae00d425d20ddcda720b919'
+            '47822da975832551bc3b20b3d75891135314f89cfcb75f7212eece148902aea3')
 
 prepare() {
   cd rt-${pkgver//./}-ga
@@ -75,6 +77,7 @@ prepare() {
   patch -Np1 -l -i "$srcdir"/java8-openjfx-CVE-2021-3517-fix.patch -d modules/web/src/main/native/Source/ThirdParty/libxml/src
   patch -Np1 -i "$srcdir"/java8-openjfx-CVE-2021-3522-fix.patch -d modules/media/src/main/native/gstreamer/gstreamer-lite/gst-plugins-base
   patch -Np1 -i ../java8-openjfx-include-iterator.patch
+  patch -Np1 -i ../java8-openjfx-no-check-jfxrt-jar.patch
 }
 
 build() {

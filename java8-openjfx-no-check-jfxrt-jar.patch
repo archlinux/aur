@@ -1,0 +1,11 @@
+--- rt-8u202-ga/build.gradle.orig	2023-02-02 15:56:10.500968065 +0400
++++ rt-8u202-ga/build.gradle	2023-02-02 15:56:13.177661487 +0400
+@@ -2813,8 +2813,6 @@
+ }
+ 
+ task sdk() {
+-    dependsOn(checkJfxrtJar)
+-
+     if (DO_BUILD_SDK_FOR_TEST) {
+         rootProject.getTasksByName("test", true).each { t ->
+             if (t.enabled) t.dependsOn(sdk)
