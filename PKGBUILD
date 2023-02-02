@@ -2,7 +2,7 @@
 # Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=wait4x-bin
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'aarch64' 'armv6' 'armv7' 'ppc64le' 's390x')
