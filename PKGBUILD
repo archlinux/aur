@@ -6,7 +6,7 @@
 
 pkgname=grafana-bin
 _pkgname=grafana
-pkgver=9.3.1
+pkgver=9.3.6
 pkgrel=1
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='http://grafana.com/'
@@ -28,10 +28,10 @@ source_aarch64=("https://dl.grafana.com/oss/release/grafana-${pkgver}.linux-arm6
 sha256sums=('fa1aefe885f2d94bb6a9f6e98eb793b8145f1a980357c809036dc00c9d25594f'
             '9cbd46f771dae5e2308b991a00d07a25cc1765f9bdd4082726108e3476403b56'
             '3cd6026ba009e05f49ec265d049d590d4f35330c1f14cd90a468c8d588501675')
-sha256sums_x86_64=('ecb21c48fc6fb9e418c5ea1fce6b6fbe59d26e87a8f93385eb1540fa0fa81ea1')
-sha256sums_armv6h=('45cbdce8a26fd5bbd016a39a6020014a45376173320bd4af5fb68cddf05e952d')
-sha256sums_armv7h=('b3975a3cf42d2ff5bd3ecd82e101b768f6130ea531db122c9e12df5f4f7779c5')
-sha256sums_aarch64=('493528101f53094ba20b045e6f6c2f3f5bb2bf99d73321ba4c148e9719188615')
+sha256sums_x86_64=('8d150fadbea872abb1e12acc9bf1f0ff60ee1bbb23da32a14a59f5eb29e31f03')
+sha256sums_armv6h=('afc345611f20561c8fba2650cc5dac4d77cd4ed3c96ec6e6c2e584b729b3e7d3')
+sha256sums_armv7h=('27f7dc07a0bb8afd38a63efd06de5889c85662ce0c6302c3a703df4660e13d55')
+sha256sums_aarch64=('0f1ac5cd68597c29ac53399bc7ce6c4b6fc21e0bfc40c2a92c47809052abd730')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
