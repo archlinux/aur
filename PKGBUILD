@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Charles Leclerc <charles@la-mouette.net>
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname=reposilite
