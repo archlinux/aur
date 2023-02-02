@@ -3,7 +3,7 @@
 pkgname=rju-git
 _pkgname=rju
 _commit=8d86d170
-pkgver=0.20
+pkgver=r220.8d86d170
 pkgrel=1
 pkgdesc='JackAudioToolkit'
 arch=( 'x86_64' )

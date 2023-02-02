@@ -1,6 +1,6 @@
 pkgbase = rju-git
 	pkgdesc = JackAudioToolkit
-	pkgver = 0.20
+	pkgver = r220.8d86d170
 	pkgrel = 1
 	url = https://rohandrape.net/?t=rju
 	arch = x86_64
