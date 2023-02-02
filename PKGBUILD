@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=6.1.8.zen1
-_kernver=6.1.8
+_pkgver=6.1.9.zen1
+_kernver=6.1.9
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.1.8-zen1-1-zen
+_KERNNAME=6.1.9-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux ZEN kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/zen-kernel/zen-kernel/commits/v6.1.8-zen1"
+url="https://github.com/zen-kernel/zen-kernel/commits/v6.1.9-zen1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('874d4e067d83b49a4a9abedd13c29a5172606365112a9cf4ef87882924081d36'
-            '466774015a2b46822dc2fc0ad5cfefeee3358b5896f00b9f1f3b0de06d3e8030'
-            'df459b3f75ed52786e8dd7ab73b84dc97118f5079fd90db7d6fd96c9716144c0')
+sha256sums=('d838b3bab4fe3190b8d2c3b08129774335ea1bfa0426b15295f7cde2a8450480'
+            'add65f7be4c68da7386f1f805761df0c73ee45f556b139ef8cffd968ad972ff0'
+            '509ef4b66f84fbfc17432ff0ec1100419c79b06e0e98f34bcc6bbc89f86f2f67')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.8.zen1-1-zen-bin() {
+package_linux6.1.9.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.1.8.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.1.8.zen1-1-zen-headers-bin() {
+package_linux6.1.9.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.1.8.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.8.zen1-1-zen-docs-bin() {
+package_linux6.1.9.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
