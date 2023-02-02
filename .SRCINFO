@@ -1,0 +1,30 @@
+pkgbase = im-emoji-picker-git
+	pkgdesc = Qt 5-based emoji picker
+	pkgver = 1.0.1.r1.gd0208ff
+	pkgrel = 1
+	url = https://github.com/GaZaTu/im-emoji-picker
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = fcitx5
+	makedepends = ibus
+	depends = qt5-base
+	depends = icu
+	depends = hicolor-icon-theme
+	provides = im-emoji-picker
+	conflicts = im-emoji-picker
+	source = git+https://github.com/GaZaTu/im-emoji-picker.git
+	b2sums = SKIP
+
+pkgname = fcitx5-im-emoji-picker-git
+	depends = qt5-base
+	depends = icu
+	depends = hicolor-icon-theme
+	depends = fcitx5
+
+pkgname = ibus-im-emoji-picker-git
+	depends = qt5-base
+	depends = icu
+	depends = hicolor-icon-theme
+	depends = ibus
