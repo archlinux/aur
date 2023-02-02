@@ -1,7 +1,7 @@
 # Maintainer: HaroldLoui<Riven970309@gmail.com>
 pkgname=minesweeper-tauri-git
 base=minesweeper-tauri
-pkgver=v0.2.0.r2.gead7bbd
+pkgver=v0.2.0.r3.g8f84694
 pkgrel=1
 pkgdesc="A minesweeper game follow windowsXP style based on tauri."
 arch=('x86_64' 'aarch64')

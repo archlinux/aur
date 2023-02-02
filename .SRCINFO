@@ -1,6 +1,6 @@
 pkgbase = minesweeper-tauri-git
 	pkgdesc = A minesweeper game follow windowsXP style based on tauri.
-	pkgver = v0.2.0.r2.gead7bbd
+	pkgver = v0.2.0.r3.g8f84694
 	pkgrel = 1
 	url = https://github.com/HaroldLoui/minesweeper-tauri
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = minesweeper-tauri-git
 	depends = webkit2gtk
 	depends = libappindicator-gtk3
 	optdepends = appmenu-gtk-module: Application Menu GTK+ Module
-	source = minesweeper-tauri-v0.2.0.r2.gead7bbd-git::git+https://github.com/HaroldLoui/minesweeper-tauri
+	source = minesweeper-tauri-v0.2.0.r3.g8f84694-git::git+https://github.com/HaroldLoui/minesweeper-tauri
 	source = minesweeper-tauri.desktop
 	sha256sums = SKIP
 	sha256sums = 5608145f8050f7794bfd32c9016d2d2f6e0c39cf90e2f244feead154ceca3e60
