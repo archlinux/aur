@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='Free form data organizer'
 arch=('x86_64')
 url="https://strlen.com/treesheets/"
-license=('custom:zlib')
+license=('ZLIB')
 # wxgtk requires ABI 1013
 depends=('glibc' 'wxgtk30')
 provides=("$_pkgname=$pkgver")
