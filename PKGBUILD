@@ -1,12 +1,13 @@
 #!/bin/bash
-# Author: Justin Jagieniak <justin@jagieniak.net>
-# Contributor: Rye Mutt
 # Maintainer: Xenhat Hex (aur@xenh.at)
+# Contributor: Justin Jagieniak <justin@jagieniak.net>
+# Contributor: Rye Mutt
+#
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.9_r50471.g6252c244f0
 pkgrel=1
-pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
+pkgdesc="A Second Life client with focus on performance and code correctness. - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
@@ -25,20 +26,17 @@ optdepends=(
     'nvidia-libgl: NVIDIA support'
     'nvidia-utils: NVIDIA support'
 		'wine: More up-to-date, less buggy SLVoice support')
-provides=('alchemy-viewer')
 replaces=('alchemy-viewer-git')
-options+=(!emptydirs !buildflags !strip !lto)
 install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
-sha256sum=('SKIP'
-        '8f367877df512b63b2f993fa7cd95b223f3e0fcd392a9b0700f73f1f85b5188dcace6abe8cf0b603ac115955ae297fbcfb6c6aaebcbc35fea8465c3ab7958d61')
+sha256sums=('SKIP'
+            '3e00fe0baac4ac938d79bcc591b04183c0d8e6fa266ecf69e864ede66d7a0846')
 
 pkgver() {
     cd "${pkgname}" || exit 1
     ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "%s_r%s.g%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short main)"
     )
 }
 
@@ -62,5 +60,3 @@ package() {
     sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
-sha256sums=('SKIP'
-            '3e00fe0baac4ac938d79bcc591b04183c0d8e6fa266ecf69e864ede66d7a0846')

@@ -1,5 +1,5 @@
 pkgbase = alchemy-next-viewer-git
-	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
+	pkgdesc = A Second Life client with focus on performance and code correctness. - Git Source build
 	pkgver = 6.9_r50471.g6252c244f0
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
@@ -43,12 +43,7 @@ pkgbase = alchemy-next-viewer-git
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
 	optdepends = wine: More up-to-date, less buggy SLVoice support
-	provides = alchemy-viewer
 	replaces = alchemy-viewer-git
-	options = !emptydirs
-	options = !buildflags
-	options = !strip
-	options = !lto
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = compile.bash
 	sha256sums = SKIP
