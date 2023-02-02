@@ -1,0 +1,22 @@
+pkgbase = lua-nocurses
+	pkgdesc = Lua terminal screen manipulation library
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-nocurses
+	arch = any
+	license = GPL2
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = nocurses-0.0.1.tar.gz::https://github.com/osch/lua-nocurses/archive/v0.0.1.tar.gz
+	sha256sums = 8ead21737cf2e5f06aa186c87460297ff2b853677b473031adbf34e6c2533356
+
+pkgname = lua-nocurses
+
+pkgname = lua51-nocurses
+
+pkgname = lua52-nocurses
+
+pkgname = lua53-nocurses
