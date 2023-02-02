@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=hurl-rs
-pkgver=1.8.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('curl' 'libxml2')
 makedepends=('cargo' 'gcc' 'python')
 source=("$url"/archive/"$pkgver"/hurl-"$pkgver".tar.gz)
-sha512sums=('e5f17da1e09741830a42f421032a9912b1034b85396acd645ca3caa13f2c8cc79dc60bbc745fa22346bbfb738cc79e461e012a60da4e3c7e1d65e6bb75e05a9b')
+sha512sums=('ff0a7d83f2743ac7f9baefcbd41e489e95e59bcb004aa114989f5a8ee4a994ab0f5f04d090e07dca87a9347c711f71ee86f3b748d30da5acc090505e0b73fd45')
 
 prepare() {
   cd hurl-"$pkgver"
@@ -20,8 +20,8 @@ build() {
   cd hurl-"$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  bin/release/man.sh
-  bin/release/release.sh
+  ./bin/release/man.sh
+  ./bin/release/release.sh
 }
 
 package() {
