@@ -1,0 +1,18 @@
+pkgbase = incron-openrc
+	pkgdesc = OpenRC incron init script
+	pkgver = 20230202
+	pkgrel = 1
+	arch = any
+	groups = openrc-system
+	license = GPL2
+	depends = openrc
+	depends = incron
+	provides = init-incron
+	conflicts = init-incron
+	backup = etc/conf.d/incrond
+	source = incrond.initd
+	source = incrond.confd
+	sha256sums = 7d7319ecd3c3996b3c6e06b684d5954c23602c21c6fcc6d14a17b15a49ac3280
+	sha256sums = 74163bbb348555b2f98ea2814696763078f8ee5fd243c06e0e1ee3a12642b83d
+
+pkgname = incron-openrc
