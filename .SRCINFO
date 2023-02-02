@@ -1,0 +1,11 @@
+pkgbase = test-pkg
+	pkgdesc = A test package
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	groups = test-group
+	license = GPL2
+
+pkgname = test-pkg
