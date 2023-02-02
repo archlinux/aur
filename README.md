@@ -2,20 +2,20 @@
 
 ## Installation
 
+### Arch Derivate
+
+```shell
+$aurHelper -S gopass-fuse
+```
+
+### Andere Linux Distributionen
+
 Zur Installation muss das Repository geklont werden, und dann folgendes ausgeführt werden.
 
 ```shell
 git clone git@gitlab.teuto.net:technik/gopass-fuse.git
 cd gopass-fuse
 ```
-
-### Arch Derivate
-
-```shell
-PACMAN="paru" PACMAN_AUTH="eval" makepkg -fis
-```
-
-### Andere Linux Distributionen
 
 ```shell
 su

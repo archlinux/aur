@@ -2,14 +2,13 @@
 
 pkgname=gopass-fuse
 pkgver=1.1.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Virtual mount for gopass password manager"
-url="https://gitlab.teuto.net/technik/$pkgname"
 license=('APACHE')
 arch=('x86_64')
 depends=('gopass' 'python-fusepy' 'python-dateutil')
 source=("$pkgname" "$pkgname.service" "$pkgname.conf")
-sha512sums=('62841857fa6825cdd8ef19693f25cd9cd2e502b00f13ff03d77464710d65086859c4e0474f2b83e00b0e65a2edb745c66ec99ed5eef1543f9b31cfcaa642020d'
+sha512sums=('7bb84e22696d3d4f5bf5fee8f3ee9bd507e2c501cd742cccbc510ecd8e4497c9698262fb0b1b077e49ab21e75978c0b427985d17512a87ff2ad55af3843c84f5'
             '7813e0272a2bda08b0ec477a3b7d1bf742c75ef0a83f0fe1a712ecc444c23121e6b3b42024d9076141af1c6ed9e57aa9a3bf11b66d3e5019e4116d7ff4ab0e98'
             '3dc50f27806bb67aa8c99a8d305c5ec7b83de2c6a5d506852492919518d86d06ffc996dfa9813019fe60da3e520a33f386486cd93215c7ae12d525d2bb9963d2')
 

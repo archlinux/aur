@@ -117,7 +117,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
         self.refresh(self.root)
 
     # noinspection PyUnusedLocal
-    def reload(self, signum: int, frame) -> None:
+    def reload(self, *_) -> None:
         self.refresh_item(self.root)
 
     def refresh_item(self, entry: Entry) -> None:
@@ -200,7 +200,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
             file.loaded = True
             file.expiration = time() + self.refresh_interval
 
-    def getattr(self, path: str, fh: int = None) -> dict[str, int]:
+    def getattr(self, path: str, _) -> dict[str, int]:
         now: int = time_ns()
         st: dict[str, int] = dict(st_atime=now, st_mode=0, st_uid=self.user_id, st_gid=self.group_id)
 
@@ -226,7 +226,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
 
         return st
 
-    def read(self, path: str, size: int, offset: int, fh: int) -> bytes:
+    def read(self, path: str, *_) -> bytes:
         entry: Union[Entry, None] = self.get_entry(path)
         if isinstance(entry, File):
             self.load_file(entry)
@@ -236,7 +236,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
         elif entry is None:
             raise FuseOSError(errno.ENOENT)
 
-    def readdir(self, path: str, fh: int) -> list[str]:
+    def readdir(self, path: str, _) -> list[str]:
         entry: Union[Entry, None] = self.get_entry(path)
         if isinstance(entry, Directory):
             return ['.', '..'] + list(entry.children.keys())
@@ -245,7 +245,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
         elif entry is None:
             raise FuseOSError(errno.ENOENT)
 
-    def access(self, path: str, amode: int) -> None:
+    def access(self, path: str, _) -> None:
         entry: Union[Entry, None] = self.get_entry(path)
         if entry is None:
             raise FuseOSError(errno.ENOENT)
