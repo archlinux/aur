@@ -7,6 +7,7 @@ pkgbase = intel-ipu6-dkms-git
 	license = unknown
 	makedepends = git
 	depends = dkms
+	depends = intel-ivsc-firmware
 	provides = intel-ivsc-driver-dkms-git
 	conflicts = intel-ivsc-driver-dkms-git
 	source = git+https://github.com/intel/ipu6-drivers
