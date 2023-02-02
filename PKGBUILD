@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=0.1.4.r66.g5a9fe21
+pkgver=0.2.4.r47.gb69e147
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'

@@ -1,6 +1,6 @@
 pkgbase = dust-mail-client-git
 	pkgdesc = A simple and fast mail client (Git version)
-	pkgver = 0.1.4.r66.g5a9fe21
+	pkgver = 0.2.4.r47.gb69e147
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Guusvanmeerveld/Dust-Mail
