@@ -11,6 +11,7 @@ ExecStart=/opt/splunk/bin/splunk start --answer-yes --no-prompt --accept-license
 ExecStop=/opt/splunk/bin/splunk stop
 ExecReload=/opt/splunk/bin/splunk restart
 StandardOutput=syslog
+TimeoutSec=500
 
 [Install]
 WantedBy=multi-user.target
