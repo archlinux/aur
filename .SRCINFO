@@ -1,6 +1,5 @@
 pkgbase = rmlint-git
-	pkgdesc = Tool to remove duplicates and other lint, being much faster than fdupes
-	pkgver = 2.2.0.r33
+	pkgver = 2.10.1.r34.g2711b84b
 	pkgrel = 1
 	url = https://github.com/sahib/rmlint
 	arch = i686
@@ -8,20 +7,24 @@ pkgbase = rmlint-git
 	license = GPL3
 	makedepends = git
 	makedepends = scons
-	makedepends = python-sphinx
-	makedepends = gettext
-	depends = glibc
-	depends = glib2>=2.31
-	depends = libutil-linux
-	depends = libelf
-	depends = binutils
-	depends = json-glib
-	optdepends = pygobject-devel: for the graphical user interface
-	optdepends = gtk3: for the graphical user interface
-	provides = rmlint
-	conflicts = rmlint
-	source = rmlint-git::git+https://github.com/sahib/rmlint.git
-	md5sums = SKIP
+	source = rmlint::git+https://github.com/sahib/rmlint
+	sha256sums = SKIP
 
 pkgname = rmlint-git
+	pkgdesc = Tool to remove duplicates and other lint, being much faster than fdupes
+	depends = glib2
+	depends = libelf
+	provides = rmlint
+	conflicts = 
 
+pkgname = rmlint-shredder-git
+	pkgdesc = Graphical user interface for rmlint
+	depends = gtksourceview3
+	depends = python-cairo
+	depends = python-colorlog
+	depends = python-gobject
+	depends = python-parsedatetime
+	depends = rmlint
+	depends = xdg-utils
+	provides = rmlint-shredder
+	conflicts = 

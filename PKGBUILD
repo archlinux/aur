@@ -2,33 +2,67 @@
 # rmlint PKBUILD for ArchLinux
  
 _pkgname=rmlint
-pkgname=${_pkgname}-git
-pkgver=2.2.0.r33
+pkgbase="${_pkgname}-git"
+pkgname=('rmlint-git' 'rmlint-shredder-git')
+pkgver=2.10.1.r34.g2711b84b
 pkgrel=1
-pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
-depends=('glibc' 'glib2>=2.31' 'libutil-linux' 'libelf' 'binutils' 'json-glib')
-makedepends=('git' 'scons' 'python-sphinx' 'gettext')
-conflicts=("${_pkgname}")
-provides=("$_pkgname")
-source=("$pkgname"::"git+https://github.com/sahib/${_pkgname}.git")
-optdepends=('pygobject-devel: for the graphical user interface'
-            'gtk3: for the graphical user interface')
-md5sums=('SKIP')
+makedepends=(
+  'git'
+  'scons'
+)
+
+source=("$_pkgname"::"git+$url")
+sha256sums=('SKIP')
  
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe master --long --abbrev=6 | sed 's/^v//;s/-g[0-9a-z]\+$//g;s/-/.r/g'
+  cd "$srcdir/$_pkgname"
+  git describe master --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    scons -j4 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr
+  cd "$srcdir/$_pkgname"
+  scons config
+  scons -j4 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr
 }
- 
-package() {
-    cd "${srcdir}/${pkgname}"
-    scons DEBUG=1 --prefix=${pkgdir}/usr install --actual-prefix=/usr
+
+package_rmlint-git() {
+  pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
+  depends=(
+    'glib2'
+    'libelf'
+  )
+
+  provides=("$_pkgname")
+  conflicts=(${provides[@]})
+
+  cd "$srcdir/$_pkgname"
+  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
+
+  rm -rf "$pkgdir"/usr/share/{glib-2.0,icons,applications}
+  rm -rf "$pkgdir"/usr/lib
+}
+
+package_rmlint-shredder-git() {
+  pkgdesc="Graphical user interface for rmlint"
+  depends=(
+    'gtksourceview3'
+    'python-cairo'
+    'python-colorlog'
+    'python-gobject'
+    'python-parsedatetime'
+    'rmlint'
+    'xdg-utils'
+  )
+
+  provides=("rmlint-shredder")
+  conflicts=(${provides[@]})
+
+  cd "$srcdir/$_pkgname"
+  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
+
+  rm -rf "$pkgdir"/usr/{bin,share/locale,share/man}
+  rm "$pkgdir"/usr/share/glib-2.0/schemas/gschemas.compiled
 }
