@@ -1,0 +1,30 @@
+--- rt-8u202-ga/build.gradle.orig	2023-02-03 09:18:01.865503996 +0400
++++ rt-8u202-ga/build.gradle	2023-02-03 09:19:07.562750178 +0400
+@@ -736,21 +736,20 @@
+ // Java(TM) SE Runtime Environment (build 1.7.0_45-b18)
+ // Java HotSpot(TM) 64-Bit Server VM (build 24.45-b08, mixed mode)
+ //
+-// We need to parse the second line
+ def inStream = new java.io.BufferedReader(new java.io.InputStreamReader(new java.lang.ProcessBuilder(JAVA, "-version").start().getErrorStream()));
+ try {
+-    if (inStream.readLine() != null) {
+-        String v = inStream.readLine();
+-        if (v != null) {
+-            int ib = v.indexOf(" (build ");
++    String line = inStream.readLine();
++    while (line != null) {
++        if (line.contains("Runtime Environment (build ")) {
++            int ib = line.indexOf(" (build ");
+             if (ib != -1) {
+-                String ver = v.substring(ib + 8, v.size() - 1);
+-
++                String ver = line.substring(ib + 8, line.size() - 1);
+                 defineProperty("jdkRuntimeVersion", ver)
+                 defineProperty("jdkVersion", jdkRuntimeVersion.split("-")[0])
+                 defineProperty("jdkBuildNumber", jdkRuntimeVersion.substring(jdkRuntimeVersion.lastIndexOf("-b") + 2))
+             }
+         }
++        line = inStream.readLine();
+     }
+ } finally {
+     inStream.close();

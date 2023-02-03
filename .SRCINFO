@@ -1,7 +1,7 @@
 pkgbase = java8-openjfx
 	pkgdesc = Java OpenJFX 8 client application platform (open-source implementation of JavaFX)
 	pkgver = 8.u202
-	pkgrel = 7
+	pkgrel = 8
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = java8-openjfx
 	makedepends = gperf
 	makedepends = gtk2
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=8
+	makedepends = jdk8-openjdk
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst
@@ -35,6 +35,7 @@ pkgbase = java8-openjfx
 	source = java8-openjfx-CVE-2021-3522-fix.patch::https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/commit/8a88e5c1db05ebadfd4569955f6f47c23cdca3c4.patch
 	source = java8-openjfx-include-iterator.patch
 	source = java8-openjfx-no-check-jfxrt-jar.patch
+	source = java8-openjfx-fix-java-version-check.patch
 	sha256sums = 12b0538d04c4bd451e4692ee06357ac36233ff4ec2af9fa3b9bbdbab48c3f2fc
 	sha256sums = d1c2255893e5ec6268d7c92bb6539cde629d325872f26cffb5f1f616c9d5f30d
 	sha256sums = f3e29692a8faa94eb0b02ebf36fa263a642b3ae8694ef806c45c345b8683f1ba
@@ -45,9 +46,10 @@ pkgbase = java8-openjfx
 	sha256sums = 3487eb180fff9866c8b8b08be45f13fa9e8edd04e5719bc867e59b09b81954b4
 	sha256sums = bd69e8a3363f9b3ade50fb29d4c9e3d7e59b42472ae00d425d20ddcda720b919
 	sha256sums = 47822da975832551bc3b20b3d75891135314f89cfcb75f7212eece148902aea3
+	sha256sums = 88ecba988b6e05580cecc09c37add8e375097619d9fa106d65c09edd993c3bc7
 
 pkgname = java8-openjfx
-	depends = java-runtime-openjdk=8
+	depends = jre8-openjdk
 	depends = libgl
 	depends = libx11
 	depends = libxtst
