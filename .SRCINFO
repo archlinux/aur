@@ -1,14 +1,13 @@
 pkgbase = waybox
 	pkgdesc = Openbox clone on Wayland
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wizbright/waybox
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = wayland-protocols
-	depends = wlroots>=0.15.0
-	depends = wlroots<0.16.0
+	depends = wlroots0.15
 	source = waybox-0.2.0.tar.gz::https://github.com/wizbright/waybox/archive/0.2.0.tar.gz
 	md5sums = 065e5d3488223e128536fca6a1198554
 

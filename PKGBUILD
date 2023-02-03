@@ -3,18 +3,21 @@
 
 pkgname=waybox
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Openbox clone on Wayland'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('wlroots>=0.15.0' 'wlroots<0.16.0')
+depends=('wlroots0.15')
 makedepends=('meson' 'wayland-protocols')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wizbright/${pkgname}/archive/${pkgver}.tar.gz)
 md5sums=('065e5d3488223e128536fca6a1198554')
 
 
 build() {
+  # To build against wlroots0.15
+  export PKG_CONFIG_PATH='/usr/lib/wlroots0.15/pkgconfig'
+
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
