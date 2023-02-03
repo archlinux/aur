@@ -3,7 +3,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-imgpaste
-pkgver=2.38.3
+pkgver=2.38.4
 pkgrel=1
 pkgdesc="Web content engine for GTK (with patches for pasting images from clipboard)"
 url="https://webkitgtk.org"
@@ -72,7 +72,7 @@ conflicts=(webkit2gtk)
 source=($url/releases/webkitgtk-$pkgver.tar.xz{,.asc}
         EnlargeObjectSize.patch
         PasteBoardGtk.patch)
-sha256sums=('41f001d1ed448c6936b394a9f20e4640eebf83a7f08262df28504f7410604a5a'
+sha256sums=('4f47ea29a2d4d5f15eef3dc9e2d6c6f067e8de863a3f64455e1ccf9693cc1d36'
             'SKIP'
             'a5d2149d55190a15bc806bfddd85f43b6c714722b04ce0c1e476f9cb58985bac'
             '909eb44783d093c89400494a8b57eee3a5b926e1a5b5f1e922e1dff1a6dc3c7b')
@@ -86,6 +86,11 @@ prepare() {
 }
 
 build() {
+  # Produce minimal debug info: 4.3 GB of debug data makes the
+  # build too slow and is too much to package for debuginfod
+  CFLAGS+=' -g1'
+  CXXFLAGS+=' -g1'
+
   cmake -S webkitgtk-$pkgver -B build -G Ninja \
     -DPORT=GTK \
     -DCMAKE_BUILD_TYPE=Release \
