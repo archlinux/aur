@@ -1,6 +1,6 @@
 pkgbase = python-nbxmpp-git
 	pkgdesc = Nonblocking Jabber/XMPP library, used by Gajim
-	pkgver = 4.0.1.r5.ga81d3d8
+	pkgver = 4.1.0.r4.g345fbe0
 	pkgrel = 1
 	url = https://dev.gajim.org/gajim/python-nbxmpp
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-nbxmpp-git
 	depends = python-precis_i18n
 	depends = python-gobject
 	depends = python-pyopenssl
-	provides = python-nbxmpp
+	provides = python-nbxmpp=4.1.0.r4.g345fbe0
 	conflicts = python-nbxmpp
 	source = git+https://dev.gajim.org/gajim/python-nbxmpp.git
 	sha384sums = SKIP
