@@ -1,14 +1,12 @@
 pkgbase = stork-agent
-	pkgdesc = The Kea companion comonent in ISC Stork.
-	pkgver = 1.8.0
+	pkgdesc = The agent that monitors Kea DHCP and BIND 9 as part of ISC Stork.
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://gitlab.isc.org/isc-projects/stork
 	arch = x86_64
 	license = MPL2
-	makedepends = rake
-	depends = glibc
 	backup = etc/stork
-	source = https://gitlab.isc.org/isc-projects/stork/-/archive/v1.8.0/stork-v1.8.0.tar.gz
+	source = https://gitlab.isc.org/isc-projects/stork/-/archive/v1.9.0/stork-v1.9.0.tar.gz
 	sha512sums = 8c86eac4fe54052bc7e9570617105bd31499e4c7f5a89fb2b0f859367591de1fb320f43cdeedb3c6ef004e1f785545a8ec12ac7bd37cac8c15706a3e182d8bfd
 
 pkgname = stork-agent
