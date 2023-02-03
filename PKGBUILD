@@ -1,6 +1,6 @@
-# Maintainer: aulonsal <aulonsal at gmail dot com>
+# Maintainer: aulonsal <seraur at aulonsal dot com>
 pkgname=f2-bin
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -14,9 +14,9 @@ source_i686=("$pkgname-$pkgver-i686.tar.gz::$url/releases/download/v$pkgver/${pk
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('4db0b9353c9ce7703b177da59cf70dc2b25fba7d7679a703441bd7eaa11932031759e13970184d7f5bc881ba2a64470820f8c470d1d8833e7880e2ede6870704')
-b2sums_i686=('089a0f80799a6e50a0120c65041a0e4b7888c2b9452e1f7f0a193f49f7d02aa04cdc53e6474959d3ff22ef345fa35747a46b6d8f4139f90232431adfb9c75030')
-b2sums_aarch64=('94e81af2f513f27a7dcfb303227324f9f99bea13db108353005af1cfa4fc0e95ed25b9ae84ebd83440b4b3b0f74dcca0ec9f8706cebf4af9ba5266e9b4dd0062')
+b2sums_x86_64=('6f9fe6e46b6592060bda3a97e1bc9739ad99506e22810318ebfbaec7d52afc7cbb669ca796677aa729356fb457bd723c9b53f05fe79fae9a24fd22f735849887')
+b2sums_i686=('02bf52df9b21aa3344f1dda3b5d9259f26235b5825ca361cd2dae5c1557bd02fa92fc5ac6504ba83bb48f43283a70bdacaf61f673a51d2e1eb5dff39ae6c715f')
+b2sums_aarch64=('97a447c21c7bc1962e40ec2cc826ef3116828adec8ca8bae0d3fbcf6ad14af8757d6e3546e176e30ce8da6949c018e9290e03e217d0985ed1c2576d05b096297')
 
 package() {
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
