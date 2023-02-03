@@ -1,29 +1,31 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail.com>
 pkgname=matrix-commander
-pkgver=3.5.24
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Simple CLI-based Matrix client"
 arch=('any')
 url="https://github.com/8go/matrix-commander"
 license=('GPL')
 depends=(
-  # adapted from requirements.txt
+  # adapted from requirements.txt:
   "python>3.7"
   "python-aiohttp"
   "python-aiofiles>=0.6.0"
   "python-argparse"
   # "python-asyncio" part of python since 3.3
-  "python-atomicwrites"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
-  "python-cachetools"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
   # "python-datetime" part of standard python
   "python-markdown"
   "python-matrix-nio>=0.14.1"
   "python-pillow"
   "python-magic"
-  "python-olm"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
-  "python-peewee"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
   "python-pyxdg"
   # "python-uuid" part of standard python
+
+  # other dependencies:
+  "python-atomicwrites"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-cachetools"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-olm"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
+  "python-peewee"  # optdepends of matrix-nio, but included because matrix-commander wants it for encryption
 )
 optdepends=(
   "python-notify2: needed for notifications on desktop systems"
@@ -31,7 +33,7 @@ optdepends=(
 provides=()
 conflicts=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('73d1277d93202e3ab859823c311b52cf3c4f30ac1ea8a04b10968664118557b0')
+sha256sums=('9f1ae47b9a4726783f33f1bed8e4e77d5dd8c670876477a52e0f2d7aba8b65a9')
 
 package() {
   # Note: sometimes its "matrix-commander" and sometimes "matrix_commander"...
@@ -42,3 +44,4 @@ package() {
   install -d "${pkgdir}/usr/bin/"
   ln -s "${_site_packages}/${pkgname}/bin/matrix_commander.py" "${pkgdir}/usr/bin/${pkgname}"
 }
+
