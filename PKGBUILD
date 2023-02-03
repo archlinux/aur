@@ -3,12 +3,13 @@
 pkgname=clipboard-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal (binary version)."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Slackadays/Clipboard"
 license=('GPL3')
 optdepends=('libx11: X11 support'
+	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

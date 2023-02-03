@@ -1,13 +1,14 @@
 pkgbase = clipboard-bin
 	pkgdesc = Cut, copy, and paste anything in your terminal (binary version).
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = GPL3
 	optdepends = libx11: X11 support
+	optdepends = wayland: Wayland support
 	optdepends = wayland-protocols: Wayland support
 	provides = clipboard
 	conflicts = clipboard
