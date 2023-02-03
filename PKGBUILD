@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.0.1.r41.g98ae4c4
+pkgver=v0.0.1.r43.g6facb89
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('godot4-bin' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     'unzip' 'wget' 'git'
 	     )
 provides=('ogui')
-_tag=98ae4c48a409bec8e0a79eae9762074b9fc6bc13
+_tag=6facb899d12ee70e06ca55c4944bb0f176568732
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
