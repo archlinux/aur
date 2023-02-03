@@ -1,24 +1,15 @@
 pkgbase = zet-bin
 	pkgdesc = CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/yarrow/zet
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = APACHE
 	license = MIT
 	depends = gcc-libs
 	provides = zet
 	conflicts = zet
-	source_x86_64 = zet-bin-0.2.5-x86_64.tar.gz::https://github.com/yarrow/zet/releases/download/0.2.5/zet-0.2.5-x86_64-unknown-linux-musl.tar.gz
-	b2sums_x86_64 = 350b72d3f73b5396778da02c3e15fe312fbe42135835f92aa961bab569b2c38e14eb9e84e392cb359d7c19b4c38c1a6b027179a7e5bad59c4fcdc8a77c03df43
-	source_armv6h = zet-bin-0.2.5-armhf.tar.gz::https://github.com/yarrow/zet/releases/download/0.2.5/zet-0.2.5-arm-unknown-linux-gnueabihf.tar.gz
-	b2sums_armv6h = f18c959a8bfe383efee412152e03821557ff094ac766d880f0f89aff19f737b7567c0292df66251eb058ded631029ab176bdf8267e002697ba8b92666da2cc8c
-	source_armv7h = zet-bin-0.2.5-armhf.tar.gz::https://github.com/yarrow/zet/releases/download/0.2.5/zet-0.2.5-arm-unknown-linux-gnueabihf.tar.gz
-	b2sums_armv7h = f18c959a8bfe383efee412152e03821557ff094ac766d880f0f89aff19f737b7567c0292df66251eb058ded631029ab176bdf8267e002697ba8b92666da2cc8c
-	source_aarch64 = zet-bin-0.2.5-armhf.tar.gz::https://github.com/yarrow/zet/releases/download/0.2.5/zet-0.2.5-arm-unknown-linux-gnueabihf.tar.gz
-	b2sums_aarch64 = f18c959a8bfe383efee412152e03821557ff094ac766d880f0f89aff19f737b7567c0292df66251eb058ded631029ab176bdf8267e002697ba8b92666da2cc8c
+	source_x86_64 = zet-bin-0.2.6-x86_64.tar.xz::https://github.com/yarrow/zet/releases/download/v0.2.6/zet-v0.2.6-x86_64-unknown-linux-gnu.tar.xz
+	b2sums_x86_64 = cc6c1d91e86e09a6721fd8e1843a620164d9576374269a5bcbcbe27c0b883559fd554735bffffa688ff38c65bbd55b7179cc3f59e412dd8849959b9241b89c13
 
 pkgname = zet-bin
