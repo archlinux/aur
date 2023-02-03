@@ -1,6 +1,6 @@
 #!/bin/bash
 
-_ENV=${REPOSILITE_ENV:-/etc/reposilite/wrapper.env}
+_ENV=${REPOSILITE_ENV:-/etc/reposilite/default.env}
 
 if [ -e $_ENV ] ; then
   . $_ENV
