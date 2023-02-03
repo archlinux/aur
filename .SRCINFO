@@ -1,0 +1,17 @@
+pkgbase = codeberg-cli
+	pkgdesc = CLI tool for Codeberg
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/RobWalt/codeberg-cli
+	arch = x86_64
+	license = AGPL3
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	source = codeberg-cli::git+https://codeberg.org/RobWalt/codeberg-cli#commit=da32e4d4a3e9510c6b1ad609ece522f71691b201
+	source = Cargo.lock
+	b2sums = SKIP
+	b2sums = 038bad4d6ca321d712c0c259babf46cbd2d58c9cd71e694b6fe332a065f7bddada876fcf780f03f7988584ddd1b346126f6f8639984050d535a65d59f1387f62
+
+pkgname = codeberg-cli
