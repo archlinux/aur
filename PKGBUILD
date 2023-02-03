@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=naniar
-_pkgver=0.6.1
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Data Structures, Summaries, and Visualisations for Missing Data'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-cli
   r-dplyr
   r-forcats
   r-ggplot2
@@ -22,12 +23,12 @@ depends=(
   r-tibble
   r-tidyr
   r-upsetr
+  r-vctrs
   r-viridis
   r-visdat
 )
 optdepends=(
   r-covr
-  r-gdtools
   r-gridextra
   r-here
   r-hmisc
@@ -43,7 +44,7 @@ optdepends=(
   r-wakefield
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d546ca15bf6c224f3103eb1441abef91d34feebb7320c2398d598f5d50177450')
+sha256sums=('c2eda97de603e2daf4c1c5d12f9c9a65635910833a3c669e08e344e90d9394f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,11 +1,12 @@
 pkgbase = r-naniar
 	pkgdesc = Data Structures, Summaries, and Visualisations for Missing Data
-	pkgver = 0.6.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=naniar
 	arch = any
 	license = MIT
 	depends = r
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-forcats
 	depends = r-ggplot2
@@ -17,10 +18,10 @@ pkgbase = r-naniar
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-upsetr
+	depends = r-vctrs
 	depends = r-viridis
 	depends = r-visdat
 	optdepends = r-covr
-	optdepends = r-gdtools
 	optdepends = r-gridextra
 	optdepends = r-here
 	optdepends = r-hmisc
@@ -34,7 +35,7 @@ pkgbase = r-naniar
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	optdepends = r-wakefield
-	source = https://cran.r-project.org/src/contrib/naniar_0.6.1.tar.gz
-	sha256sums = d546ca15bf6c224f3103eb1441abef91d34feebb7320c2398d598f5d50177450
+	source = https://cran.r-project.org/src/contrib/naniar_1.0.0.tar.gz
+	sha256sums = c2eda97de603e2daf4c1c5d12f9c9a65635910833a3c669e08e344e90d9394f4
 
 pkgname = r-naniar
