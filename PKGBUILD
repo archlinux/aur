@@ -2,11 +2,11 @@
 
 _pkgname=breath
 pkgname=breath-theme-git
-pkgver=r216.e6123a4b
+pkgver=r256.98822e7d
 pkgrel=1
 pkgdesc="Breath Plasma Look & Feel packages by Manjaro Team"
 provides=('breath-wallpaper' 'plasma5-themes-breath' 'sddm-breath-theme')
-conflicts=('breath-legacy-wallpaper' 'plasma5-themes-breath-legacy' 'sddm-breath-legacy-theme' 'breath2-icon-theme' 'breath2-wallpaper' 'plasma5-themes-breath2' 'sddm-breath2-theme')
+conflicts=('breath2-git' 'breath-legacy-theme-git' 'breath-wallpapers' 'plasma5-themes-breath' 'plasma5-themes-breath-extra' 'plasma5-themes-breath-migration' 'sddm-breath-theme')
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/$_pkgname"
 license=('LGPL')
@@ -33,7 +33,8 @@ build() {
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_PLASMA_THEMES=ON \
     -DBUILD_SDDM_THEME=ON \
-    -DBUILD_EXTRA_COLORS=ON
+    -DBUILD_EXTRA_COLORS=ON \
+    -DBUILD_MIGRATION=ON
   make
 }
 
