@@ -10,8 +10,8 @@ license=('MIT')
 makedepends=(npm nodejs-nativefier nodejs)
 source=('linearicon.png'
         'linear.desktop')
-sha256sums=('794a8e54589c5e97e87740ad7a8db8d2ad167c8bfaa032c8ee774ab3098683a2'
-            'a42995f14c1d028624f66e5274e8a428a73176fd36666ba5554a9445f6ba17a6')
+sha256sums=('295a23898f8c88fb2e2f4899e0d226ca913688b815b6430c850ae8c7de7a2a19'
+            'c499ee11c388d32c6810af7add342aaf85ed0fd4b207f0868bca7b94554d5cc5')
 
 appname=linear-desktop
         

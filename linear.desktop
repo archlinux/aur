@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Linear
-Comment=Linear - The issue tracking tool you'll enjoy using
+Comment=Linear - Issue tracking you'll enjoy
 Exec=linear-desktop
 Icon=/usr/share/pixmaps/linear-desktop.png
 Terminal=false
