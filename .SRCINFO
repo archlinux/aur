@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 2.1.7_6.1.6.hardened2.2
+	pkgver = 2.1.9_6.1.9.hardened1.1
 	pkgrel = 1
-	url = https://zfsonlinux.org/
+	url = https://openzfs.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=6.1.6.hardened2-2
+	makedepends = linux-hardened-headers=6.1.9.hardened1-1
 	depends = kmod
-	depends = zfs-utils=2.1.7
-	depends = linux-hardened=6.1.6.hardened2-2
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.7/zfs-2.1.7.tar.gz
-	sha256sums = 6462e63e185de6ff10c64ffa6ed773201a082f9dd13e603d7e8136fcb4aca71b
+	depends = zfs-utils=2.1.9
+	depends = linux-hardened=6.1.9.hardened1-1
+	source = https://github.com/openzfs/zfs/releases/download/zfs-2.1.9/zfs-2.1.9.tar.gz
+	sha256sums = 6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6
 
 pkgname = zfs-linux-hardened
 	pkgdesc = Kernel modules for the Zettabyte File System.
