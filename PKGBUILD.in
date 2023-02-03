@@ -10,7 +10,7 @@ url="https://github.com/YosysHQ/sby"
 license=("custom:ISC")
 groups=()
 options=("!strip")
-depends=("yosys-nightly" "python")
+depends=("yosys-nightly" "python" "python-click")
 optdepends=(
 	"boolector"
 	"yices"
@@ -20,7 +20,7 @@ makedepends=("git")
 conflicts=("symbiyosys-git")
 replaces=("symbiyosys-nightly")
 source=(
-	"symbiyosys::git+https://github.com/YosysHQ/sby.git"#commit=@SBY_HASH@
+	"sby::git+https://github.com/YosysHQ/sby.git#commit=@SBY_HASH@"
 )
 sha256sums=(
 	"SKIP"
@@ -28,8 +28,8 @@ sha256sums=(
 
 _PREFIX="/usr"
 package() {
-	cd "${srcdir}/symbiyosys"
+	cd "${srcdir}/sby"
 	make PREFIX="${_PREFIX}" DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/symbiyosys/LICENSE"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/sby/LICENSE"
 	cd ..
 }

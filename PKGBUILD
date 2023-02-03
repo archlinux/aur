@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=sby-nightly
-pkgver=20221130_9c75e49
+pkgver=20230203_7d3f0d5
 pkgrel=1
 epoch=1
 pkgdesc="Front-end for Yosys-based formal verification flows"
@@ -10,7 +10,7 @@ url="https://github.com/YosysHQ/sby"
 license=("custom:ISC")
 groups=()
 options=("!strip")
-depends=("yosys-nightly" "python")
+depends=("yosys-nightly" "python" "python-click")
 optdepends=(
 	"boolector"
 	"yices"
@@ -20,7 +20,7 @@ makedepends=("git")
 conflicts=("symbiyosys-git")
 replaces=("symbiyosys-nightly")
 source=(
-	"symbiyosys::git+https://github.com/YosysHQ/sby.git"#commit=9c75e49
+	"sby::git+https://github.com/YosysHQ/sby.git#commit=7d3f0d5"
 )
 sha256sums=(
 	"SKIP"
@@ -28,8 +28,8 @@ sha256sums=(
 
 _PREFIX="/usr"
 package() {
-	cd "${srcdir}/symbiyosys"
+	cd "${srcdir}/sby"
 	make PREFIX="${_PREFIX}" DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/symbiyosys/LICENSE"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/sby/LICENSE"
 	cd ..
 }
