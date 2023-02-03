@@ -2,7 +2,7 @@
 
 pkgname=distro-grub-themes-meta
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage for installing grub2 distro themes"
 url="https://github.com/AdisonCavani/distro-grub-themes"
 arch=('any')
@@ -40,7 +40,7 @@ depends=("grub"
         "grub-theme-lenovo"
         "grub-theme-lg"
         "grub-theme-lubuntu"
-        "grub-theme-manjaro"
+        "grub-theme-manjaro2"
         "grub-theme-mate"
         "grub-theme-mint"
         "grub-theme-msi"

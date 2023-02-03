@@ -1,7 +1,7 @@
 pkgbase = distro-grub-themes-meta
 	pkgdesc = Metapackage for installing grub2 distro themes
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any
 	license = GPL
@@ -39,7 +39,7 @@ pkgbase = distro-grub-themes-meta
 	depends = grub-theme-lenovo
 	depends = grub-theme-lg
 	depends = grub-theme-lubuntu
-	depends = grub-theme-manjaro
+	depends = grub-theme-manjaro2
 	depends = grub-theme-mate
 	depends = grub-theme-mint
 	depends = grub-theme-msi
