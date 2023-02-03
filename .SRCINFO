@@ -1,7 +1,7 @@
 pkgbase = lua-shell
-	pkgdesc = Lua terminal screen manipulation library
+	pkgdesc = Lua module to help write what would be shell scripts in Lua
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mna/luashell
 	arch = any
 	license = GPL2
