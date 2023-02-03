@@ -1,0 +1,14 @@
+pkgbase = ruby-timeout
+	pkgdesc = Auto-terminate potentially long-running operations in Ruby.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ruby/timeout
+	arch = any
+	license = Ruby
+	license = BSD-2-Clause
+	depends = ruby
+	options = !emptydirs
+	source = https://rubygems.org/downloads/timeout-0.3.1.gem
+	sha256sums = eaab5f7da498d573b7b177b42ca4d23f07aadd7b5b0af6250b751077f204d052
+
+pkgname = ruby-timeout
