@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-invites-api
-pkgver=2020.10.16
+pkgver=2023.01.11
 pkgrel=1
-_commit="35b678609b79"
+_commit="1cae382e88a1"
 pkgdesc="Authenticated HTTP API to create invites"
 arch=('any')
 url="https://modules.prosody.im/mod_invites_api.html"

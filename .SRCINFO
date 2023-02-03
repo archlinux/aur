@@ -1,14 +1,13 @@
 pkgbase = prosody-mod-invites-api
 	pkgdesc = Authenticated HTTP API to create invites
-	pkgver = 2020.10.16
+	pkgver = 2023.01.11
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_invites_api.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=35b678609b79
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=1cae382e88a1
 	sha1sums = SKIP
 
 pkgname = prosody-mod-invites-api
-
