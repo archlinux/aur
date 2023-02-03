@@ -3,24 +3,20 @@
 # Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Masoud <mpoloton@gmail.com>
 
-pkgname=python-nibabel
 _pkgname=nibabel
+pkgname=python-$_pkgname
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
 arch=('any')
 url='http://nipy.org/nibabel'
 license=('MIT')
 depends=('python-numpy>=1.19' 
-         'python-six>=1.3'
-         'python-setuptools' 
-         'python-setuptools-scm')
-# building documentation may not work properly, since authors tell to use sphinx <=1.5.6, because "Sphinx >= 1.6 breaks the math_dollar extension"
-makedepends=('python-packaging' 
-             'python-hatch-vcs' 
-             'python-build' 
+         'python-packaging')
+makedepends=('python-hatch-vcs'
+             'python-setuptools'
+             'python-build'
              'python-installer')
-# checkdepends=('python-pytest')
 optdepends=('python-scipy: for full SPM-ANALYZE support' 
             'python-memory-profiler'
             'python-fuse'
