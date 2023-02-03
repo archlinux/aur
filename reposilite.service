@@ -4,7 +4,7 @@ Description=Repository manager service
 [Service]
 Type=simple
 User=reposilite
-ExecStart=/usr/bin/java -jar /usr/share/java/reposilite/reposilite.jar -wd /var/lib/reposilite
+ExecStart=/usr/bin/reposilite
 SuccessExitStatus=143
 
 [Install]

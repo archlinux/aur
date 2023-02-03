@@ -1,0 +1,26 @@
+#!/bin/bash
+
+_ENV=${REPOSILITE_ENV:-/etc/reposilite/wrapper.env}
+
+if [ -e $_ENV ] ; then
+  . $_ENV
+fi
+
+_RUN_USER=${REPOSILITE_USER:-reposilite}
+_RUN_UID=`id -u $_RUN_USER`
+
+if [ "$EUID" -eq "$_RUN_UID" ] ; then
+   exec /usr/lib/jvm/java-11-openjdk/bin/java -Xmx${REPOSILITE_MEM:-64m} \
+     -jar /usr/share/java/reposilite/reposilite.jar \
+     -wd ${REPOSILITE_WORKING_DIR:-/var/lib/reposilite} \
+     -lc ${REPOSILITE_LOCAL_CONF:-/etc/reposilite/reposilite.cdn}
+elif [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+else
+    exec runuser -u $_RUN_USER -- \
+       /usr/lib/jvm/java-11-openjdk/bin/java -Xmx${REPOSILITE_MEM:-64m} \
+         -jar /usr/share/java/reposilite/reposilite.jar \
+         -wd ${REPOSILITE_WORKING_DIR:-/var/lib/reposilite} \
+         -lc ${REPOSILITE_LOCAL_CONF:-/etc/reposilite/reposilite.cdn}
+fi
