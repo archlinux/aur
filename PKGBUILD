@@ -4,22 +4,22 @@
 
 pkgname=vscodium-features
 pkgver=1.74.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
-depends=('vscodium' 'sed')
+depends=('vscodium' 'python' 'python-requests')
 optdepends=('org.freedesktop.secrets: for settings sync feature')
 provides=('vscodium-features')
 conflicts=('vscodium-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
-        'patch.sh')
-md5sums=('1f08c4648040bc4e90d483764851b421'
-         'c95895a704eaa138aa014d4783b19032')
+        'patch.py')
+md5sums=('c83958259eb32492073e5e1390f4f5cd'
+         'd3911dc497ccc9aa520d6e46149a9399')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
-  install -Dm 755 "${srcdir}/patch.sh" "${pkgdir}/usr/share/${pkgname}/patch.sh"
+  install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/usr/share/${pkgname}/patch.py"
 }
