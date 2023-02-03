@@ -1,10 +1,10 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
-# 15-Dec-2022
+# 03-Feb-2023
 #
 
 pkgname=c-evo-dh
 pkgbase=c-evo
-pkgver=1.6.0
+pkgver=1.7
 pkgrel=1
 pkgdesc="C-evo: Distant Horizon, Empire Building Game"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-eh')
 source=("https://sourceforge.net/projects/c-evo-eh/files/Source/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('d40ee883af3b2f4a53d21027f6971c2992e3a2e661c68285182decf384c60c85')
+sha256sums=('902e1db79b66fccad89b70a0a6a513bc10445531fca477e8c6614919a4ac0be9')
 #options=(debug !strip)
 
 
@@ -25,9 +25,6 @@ prepare() {
   sed -i "s|share/games|share|"   Linux/$pkgbase-launch-gtk2
   sed -i "s|/usr/games|/usr/bin|" Linux/$pkgbase-launch-gtk2
   sed -i "s|/usr/libexec|/usr/lib/$pkgname|" Linux/$pkgbase-launch-gtk2
-  sed -i "s|share/games|share|"   Linux/$pkgbase-launch-qt5
-  sed -i "s|/usr/games|/usr/bin|" Linux/$pkgbase-launch-qt5
-  sed -i "s|/usr/libexec|/usr/lib/$pkgname|" Linux/$pkgbase-launch-qt5
 }
 
 
@@ -55,9 +52,6 @@ build() {
   rm -f  AI/StdAI/*.s
   rm -f  *.res *.trc *.o *.ppu *.so
   rm -f  "$pkgname-gtk2  $pkgname-gtk2.dbg"
-  rm -f  "$pkgname-gtk3  $pkgname-gtk3.dbg"
-  rm -f  "$pkgname-qt5   $pkgname-qt5.dbg"
-  rm -f  "$pkgname-fpgui $pkgname-fpgui.dbg"
 
   # currently cannot build with -pie as the RTL is not built with pie
   sed -i '/-k-pie/d' Pascal/Release.cfg
@@ -75,7 +69,7 @@ build() {
 
   lazbuild -v
   lazbuild --ws=gtk2 -B --bm=Release --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" Integrated.lpi
-  mv "$pkgbase" "$pkgname-gtk2"
+  mv "$pkgbase" "$pkgbase-gtk2"
 }
 
 
@@ -86,11 +80,11 @@ package() {
   install -Dm 644 "Desktop/$pkgbase-manual-gtk2.desktop"  -t "$pkgdir/usr/share/applications"
   install -Dm 644 "Desktop/$pkgbase.svg"                  -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-  install -Dm 755 "$pkgbase-gtk2"                    -t "$pkgdir/usr/lib/$pkgname"
   install -Dm 755 "Linux/$pkgbase-launch-gtk2"       -t "$pkgdir/usr/bin"
   install -Dm 644 AI/StdAI/StdAI.png                 -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
   install -Dm 644 AI/StdAI/StdAI.ai.txt              -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
   install -Dm 755 AI/StdAI/libstdai.so               -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm 755 "$pkgbase-gtk2"                    -t "$pkgdir/usr/lib/$pkgname"
 
   ln -s "/usr/lib/$pkgname/libstdai.so"    "$pkgdir/usr/share/$pkgname/AI/StdAI/libstdai.so"
 
