@@ -1,7 +1,7 @@
 # Maintainer: suienzan <suienzan at gmail dot com>
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="一个 DNS 转发器"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "tmpfiles"
 )
 
-sha256sums=('e0738cb6ea7444ddbd2f122c0a79ee72a089f0235688b7a9a765f64e1a135b9a'
+sha256sums=('7fd9e86133484ae87f7212dc4c031aee3df6c1ff1a9cb8f9e5b9a6dfc4339951'
             '8bb851c5413e0e25e18e9d912a35b1500b54531ea961d4fc6cc8416173311c17'
             'e6bc5034452123491e3901e2741183d528a29b00f1c01d6bbbb204549fee7306'
             '73c47567934255c4030ab06798a602989c257c187cf0c00132fbc839c902b096')
