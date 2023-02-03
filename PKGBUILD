@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bioCancer
-_pkgver=1.26.0
+_pkgver=1.26.03
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.26.03
 pkgrel=1
 pkgdesc='Interactive Multi-Omics Cancers Data Visualization and Analysis'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fef18f172f242a389bc48a3555e74a9b080023ad9e2c74a05895da36c2687c9d')
+sha256sums=('70c60ee2380473ed71d17144ea35836a9c06c9e2b897800fed08547c80a6218a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

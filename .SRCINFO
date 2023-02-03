@@ -1,6 +1,6 @@
 pkgbase = r-biocancer
 	pkgdesc = Interactive Multi-Omics Cancers Data Visualization and Analysis
-	pkgver = 1.26.0
+	pkgver = 1.26.03
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bioCancer
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-biocancer
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bioCancer_1.26.0.tar.gz
-	sha256sums = fef18f172f242a389bc48a3555e74a9b080023ad9e2c74a05895da36c2687c9d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bioCancer_1.26.03.tar.gz
+	sha256sums = 70c60ee2380473ed71d17144ea35836a9c06c9e2b897800fed08547c80a6218a
 
 pkgname = r-biocancer
