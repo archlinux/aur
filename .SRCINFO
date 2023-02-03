@@ -1,6 +1,6 @@
 pkgbase = nextpnr-generic-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - generic
-	pkgver = 20230202_nextpnr_0.5_26_gf328130c
+	pkgver = 20230203_nextpnr_0.5_32_g48b00257
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -21,7 +21,7 @@ pkgbase = nextpnr-generic-nightly
 	conflicts = nextpnr-git
 	conflicts = nextpnr-all-nightly
 	options = !strip
-	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=f328130c
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=48b00257
 	sha256sums = SKIP
 
 pkgname = nextpnr-generic-nightly
