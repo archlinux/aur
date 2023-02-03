@@ -4,9 +4,9 @@
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid=20230108031101
-_date=2023.01.07
-pkgver=52.9.2023.01.08
+_buildid=20230126144905
+_date=2023.01.26
+pkgver=52.9.2023.01.26
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
@@ -18,8 +18,8 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'ffmpeg: record, convert, and stream audio and video')
 source=(https://archive.basilisk-browser.org/${_date}/linux/x86_64/gtk3/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
         'basilisk.desktop')
-sha256sums=('fb85b5dac0a3ee1d76760f671b8738909d778af145bfb6e83f68aa1903082aa5'
-            'f1a6e149920cc41bd9f41929fb27342e2ea51e33348ab68cac36c7891edeb1dc'
+sha256sums=('3c705d8c1a2b1f9ba7c13118674d63ca22f438e0a7f7ee116fd508d61cd14634'
+            '6fa2a23379790667b157e1af7e917dbcf9abd1e1e8e293957c507733facf5410'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
