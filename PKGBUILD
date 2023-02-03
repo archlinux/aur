@@ -2,7 +2,7 @@
 
 _name=homeassistant-cli
 pkgname=python-homeassistant-cli
-pkgver=0.9.4
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='Command-line tool for Home Assistant'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-requests' 'python-netdisco' 'python-click' 'python-cli
 makedepends=('python-build' 'python-installer' 'python-wheel')
 conflicts=('home-assistant-cli')
 source=("https://files.pythonhosted.org/packages/source/h/homeassistant-cli/$_name-$pkgver.tar.gz")
-sha256sums=("4e74591d6400c7b1ba93e8967d39ce00c2789523508406c6cbc8fd712ff6710e")
+sha256sums=("9b9b705eaf6ee40dc6a732f3458c78ba37b62b7330bc17b132e6fee385ec8606")
 
 build() {
   cd $_name-$pkgver
