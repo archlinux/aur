@@ -1,6 +1,6 @@
 pkgbase = toit
 	pkgdesc = Toit programming language SDK
-	pkgver = 2.0.0alpha.50
+	pkgver = 2.0.0alpha.51
 	pkgrel = 1
 	url = https://toitlang.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = toit
 	makedepends = ninja
 	makedepends = go
 	depends = gcc-libs
-	source = git+https://github.com/toitlang/toit.git#commit=d8c9f391337decb82e65000303f9ab5f5079583c
+	source = git+https://github.com/toitlang/toit.git#commit=02f79faf8474e83c7550e5a177806895702c86c7
 	md5sums = SKIP
 
 pkgname = toit
