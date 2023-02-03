@@ -1,7 +1,7 @@
-diff -ruN EASTL-3.18.00/CMakeLists.txt EASTL-3.18.00_/CMakeLists.txt
---- EASTL-3.18.00/CMakeLists.txt	2021-10-21 07:36:23.000000000 +0800
-+++ EASTL-3.18.00_/CMakeLists.txt	2023-01-27 20:24:46.168104709 +0800
-@@ -52,3 +52,10 @@
+diff -ruN EASTL/CMakeLists.txt EASTL_/CMakeLists.txt
+--- EASTL/CMakeLists.txt	2023-02-01 22:13:16.277102675 +0800
++++ EASTL_/CMakeLists.txt	2023-02-01 22:13:24.290381488 +0800
+@@ -56,3 +56,9 @@
  
  target_link_libraries(EASTL EABase)
  
@@ -10,5 +10,4 @@ diff -ruN EASTL-3.18.00/CMakeLists.txt EASTL-3.18.00_/CMakeLists.txt
 +#-------------------------------------------------------------------------------------------
 +install(TARGETS EASTL DESTINATION lib)
 +install(DIRECTORY include/EASTL DESTINATION include)
-+install(DIRECTORY test/packages/EABase/include/Common/EABase DESTINATION include)
 +

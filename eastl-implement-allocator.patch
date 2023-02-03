@@ -1,0 +1,92 @@
+diff -ruN EASTL-3.18.00/include/EASTL/allocator.h EASTL-3.18.00_/include/EASTL/allocator.h
+--- EASTL-3.18.00/include/EASTL/allocator.h	2023-01-30 14:49:47.133053092 +0800
++++ EASTL-3.18.00_/include/EASTL/allocator.h	2023-01-30 14:52:58.180341764 +0800
+@@ -164,18 +164,6 @@
+ 
+ #ifndef EASTL_USER_DEFINED_ALLOCATOR // If the user hasn't declared that he has defined a different allocator implementation elsewhere...
+ 
+-	EA_DISABLE_ALL_VC_WARNINGS()
+-	#include <new>
+-	EA_RESTORE_ALL_VC_WARNINGS()
+-
+-	#if !EASTL_DLL // If building a regular library and not building EASTL as a DLL...
+-		// It is expected that the application define the following
+-		// versions of operator new for the application. Either that or the
+-		// user needs to override the implementation of the allocator class.
+-		void* operator new[](size_t size, const char* pName, int flags, unsigned debugFlags, const char* file, int line);
+-		void* operator new[](size_t size, size_t alignment, size_t alignmentOffset, const char* pName, int flags, unsigned debugFlags, const char* file, int line);
+-	#endif
+-
+ 	namespace eastl
+ 	{
+ 		inline allocator::allocator(const char* EASTL_NAME(pName))
+@@ -237,46 +225,17 @@
+ 				#define pName EASTL_ALLOCATOR_DEFAULT_NAME
+ 			#endif
+ 
+-			#if EASTL_DLL
+-				return allocate(n, EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT, 0, flags);
+-			#elif (EASTL_DEBUGPARAMS_LEVEL <= 0)
+-				return ::new((char*)0, flags, 0, (char*)0,        0) char[n];
+-			#elif (EASTL_DEBUGPARAMS_LEVEL == 1)
+-				return ::new(   pName, flags, 0, (char*)0,        0) char[n];
+-			#else
+-				return ::new(   pName, flags, 0, __FILE__, __LINE__) char[n];
+-			#endif
++      return malloc(n);
+ 		}
+ 
+ 
+ 		inline void* allocator::allocate(size_t n, size_t alignment, size_t offset, int flags)
+ 		{
+-			#if EASTL_DLL
+-				// We currently have no support for implementing flags when 
+-				// using the C runtime library operator new function. The user 
+-				// can use SetDefaultAllocator to override the default allocator.
+-				EA_UNUSED(offset); EA_UNUSED(flags);
+-
+-				size_t adjustedAlignment = (alignment > EA_PLATFORM_PTR_SIZE) ? alignment : EA_PLATFORM_PTR_SIZE;
+-
+-				void* p = new char[n + adjustedAlignment + EA_PLATFORM_PTR_SIZE];
+-				void* pPlusPointerSize = (void*)((uintptr_t)p + EA_PLATFORM_PTR_SIZE);
+-				void* pAligned = (void*)(((uintptr_t)pPlusPointerSize + adjustedAlignment - 1) & ~(adjustedAlignment - 1));
+-
+-				void** pStoredPtr = (void**)pAligned - 1;
+-				EASTL_ASSERT(pStoredPtr >= p);
+-				*(pStoredPtr) = p;
+-
+-				EASTL_ASSERT(((size_t)pAligned & ~(alignment - 1)) == (size_t)pAligned);
+-
+-				return pAligned;
+-			#elif (EASTL_DEBUGPARAMS_LEVEL <= 0)
+-				return ::new(alignment, offset, (char*)0, flags, 0, (char*)0,        0) char[n];
+-			#elif (EASTL_DEBUGPARAMS_LEVEL == 1)
+-				return ::new(alignment, offset,    pName, flags, 0, (char*)0,        0) char[n];
+-			#else
+-				return ::new(alignment, offset,    pName, flags, 0, __FILE__, __LINE__) char[n];
+-			#endif
++      EASTL_ASSERT(offset % alignmnent == 0); /* We check for (offset % alignmnent == 0) instead of (offset == 0) because any block which is aligned on e.g. 64 also is aligned at an offset of 64 by definition. */
++		  if (alignment <= EASTL_SYSTEM_ALLOCATOR_MIN_ALIGNMENT) {
++			  return allocate(n, flags);
++		  }
++      return aligned_alloc(alignment, n);
+ 
+ 			#undef pName  // See above for the definition of this.
+ 		}
+@@ -284,15 +243,7 @@
+ 
+ 		inline void allocator::deallocate(void* p, size_t)
+ 		{
+-			#if EASTL_DLL
+-				if (p != nullptr)
+-				{
+-					void* pOriginalAllocation = *((void**)p - 1);
+-					delete[](char*)pOriginalAllocation;
+-				}
+-			#else
+-				delete[](char*)p;
+-			#endif
++      free(p);
+ 		}
+ 
+ 
