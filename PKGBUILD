@@ -1,18 +1,18 @@
 # Maintainer: Liam Timms <timms5000@gmail.com>
 
-pkgname=python-jenkspy
 _pkgname=jenkspy
-pkgver=0.2.0
+pkgname=python-$_pkgname
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Compute Natural Breaks in Python (Fisher-Jenks algorithm) '
 arch=('any')
 url='https://github.com/mthh/jenkspy'
 license=('MIT')
-depends=('python-numpy' 'python')
+depends=('python-numpy')
 makedepends=('python-setuptools')
 optdepends=()
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/mthh/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('9ce97ac3d8beaf06743e85c4fb04a5b1481f68e3efa601da2c4ff19c7bea3e2d734618eb34e3f775eea2c76807e2405361ded1e73d5cfcef91c112f34c437b7e')
+sha512sums=('7073cb892ce47396ad024528c584a72e6709f5bf77901e7b065da25b8a965ffe3bd7d3ae649008a7d32aa16395e64e860cd82db7c67078c4f31170bb81b20927')
 
 build()
 {
