@@ -1,6 +1,6 @@
 pkgbase = mosdns
 	pkgdesc = A DNS forwarder
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/IrineSistiana/mosdns
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mosdns
 	optdepends = bash-completion: bash completions
 	optdepends = zsh-completions: zsh completitons
 	backup = etc/mosdns/config.yaml
-	source = mosdns::git+https://github.com/IrineSistiana/mosdns.git#tag=e8fe4353f5c94ed1348f16b1fbadfc8787465699
+	source = mosdns::git+https://github.com/IrineSistiana/mosdns.git#tag=1d985e25a7c1016fc470a5f8b254fe325186acb3
 	source = mosdns-sysusers.conf
 	source = mosdns.service
 	sha512sums = SKIP
