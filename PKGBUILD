@@ -1,3 +1,5 @@
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+
 pkgname=mingw-w64-directxmath
 pkgdesc="All inline SIMD C++ linear algebra library for use in games and graphics apps (mingw-w64)"
 pkgver=dec2022
