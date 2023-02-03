@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=pyhanko-certvalidator
 pkgname='python-pyhanko-certvalidator'
-pkgver=0.19.8
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
@@ -10,9 +10,9 @@ arch=('any')
 depends=('python-requests' 'python-asn1crypto' 'python-oscrypto' 'python-cryptography'
          'python-uritools')
 makedepends=('python-setuptools')
-checkdepends=('python-oscrypto-tests' 'python-aiohttp')
+checkdepends=('python-oscrypto-tests' 'python-aiohttp' 'python-freezegun')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4680d7aba8a374cc11c3b9061d2b8129986b0c70968376c8ae61666956b0a4f1')
+sha256sums=('3975e6732d37d9982b81a3cf89643b659e6d9d0077820b6ee483f5d41c5b042c')
 
 build() {
   cd certvalidator-${pkgver}
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd certvalidator-${pkgver}
-  python run.py tests
+  python -m pytest
 }
 
 package() {
