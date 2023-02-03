@@ -3,11 +3,11 @@
 
 pkgname=gspiceui
 pkgver=1.2.87
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to various freely available Spice electronic ciruit simulators"
 url="http://users.tpg.com.au/micksw012/gspiceui.html"
 license=('GPL')
-depends=('wxgtk2')
+depends=('wxwidgets-gtk2')
 optdepends=('gnucap: simulation backend'
 	    'ngspice: simulation backend'
 	    'gaw: wave viewer')
@@ -22,7 +22,7 @@ arch=('i686' 'x86_64')
 
 build(){
   cd $srcdir/$pkgname-v$pkgver
-  make
+  make GSPICEUI_WXLIB=3.2 WXCFG=/usr/bin/wx-config-gtk2
 }
 
 package() {
