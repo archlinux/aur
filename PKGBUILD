@@ -2,7 +2,7 @@
 # Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 
 pkgname=opensnitch
-pkgver=1.5.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -39,7 +39,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-    '26cd48af5867dbf905d742819bab3632e5d7b2df25661088d3c38e4db3641ecd79fb70e03f99a5ca74149926feb40935fa3ded586a49695bb2bad948a2c823e9'
+    '77ad266dd3531f576e2b10aff5bcfa724c4e7b90d8b9deb01d7bdf24c728f32c9a7d16eaa91954177a3717fbebc8b1524cf975ae899c2d703ccaba4ac4b86c19'
 )
 
 prepare() {
@@ -84,7 +84,7 @@ build() {
     pushd ui
     make translations
     pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
-    sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
+	sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
     python setup.py build
     rm -rf build/lib/tests
     popd
@@ -102,6 +102,6 @@ package() {
     install -Dm644 debian/opensnitch.logrotate "$pkgdir/etc/logrotate.d/opensnitch"
 
     pushd ui
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir/" --optimize=2 --skip-build
     popd
 }
