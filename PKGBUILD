@@ -61,7 +61,7 @@ pkgname=("grub-theme-acer"
         "grub-theme-xero"
         "grub-theme-zorinos")
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Grub themes for distributions and brands"
 url="https://github.com/AdisonCavani/distro-grub-themes"
 arch=('any')
