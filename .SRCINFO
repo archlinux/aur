@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 5.1.2
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = aarch64

@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=5.1.2
-pkgrel=5
+pkgrel=6
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -193,8 +193,7 @@ build() {
     --enable-opengl \
     --enable-shared \
     --enable-version3 \
-    --enable-rkmpp \
-    --enable-vulkan $CONFIG
+    --enable-rkmpp $CONFIG
   make -j$(nproc)
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
