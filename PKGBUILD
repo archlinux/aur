@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK. '
 arch=('x86_64')
@@ -76,7 +76,7 @@ prepare() {
 
 build() {
 
-    meson dxvk-nvapi "build/x64" \
+    meson setup dxvk-nvapi "build/x64" \
         --cross-file dxvk-nvapi/build-win64.txt \
         --prefix "/usr/share/dxvk-nvapi/x64" \
         --bindir "" --libdir "" \
@@ -85,7 +85,7 @@ build() {
         -Denable_tests=false
     ninja -C "build/x64" -v
 
-    meson dxvk-nvapi "build/x32" \
+    meson setup dxvk-nvapi "build/x32" \
         --cross-file dxvk-nvapi/build-win32.txt \
         --prefix "/usr/share/dxvk-nvapi/x32" \
         --bindir "" --libdir "" \
