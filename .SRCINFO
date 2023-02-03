@@ -1,0 +1,17 @@
+pkgbase = proxmark3gui-git
+	pkgdesc = A cross-platform GUI for Proxmark3 client | 为 PM3 设计的图形界面
+	pkgver = 0.2.6.r13.g2723abd
+	pkgrel = 1
+	url = https://github.com/wh201906/Proxmark3GUI
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-serialport
+	optdepends = proxmark3: Software for the the Proxmark3, an RFID swiss-army tool
+	provides = proxmark3gui
+	conflicts = proxmark3gui
+	source = proxmark3gui-git::git+https://github.com/wh201906/Proxmark3GUI.git
+	sha256sums = SKIP
+
+pkgname = proxmark3gui-git
