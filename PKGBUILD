@@ -2,7 +2,7 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=(python-arabic-reshaper
          python-bidi
          python-reportlab
-         python-pypdf3
+         python-pypdf
          python-html5lib
          python-svglib
          python-pyhanko
@@ -21,10 +21,11 @@ makedepends=(python-setuptools
              python-sphinxcontrib-pdfembed
              texlive-latexextra
              texlive-fontsextra)
-source=("${_name}-${pkgver}.tar.gz::https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/v$pkgver.tar.gz"
+# Sometimes there is v prefix in version, sometimes not.
+source=("${_name}-${pkgver}.tar.gz::https://github.com/xhtml2pdf/xhtml2pdf/archive/refs/tags/$pkgver.tar.gz"
         'latex_engine.patch'
 )
-sha256sums=('0c18c5c844cbc472665a15935b3ac96807b37ff4f5e41307ba5e0d074386cd46'
+sha256sums=('da1771a0837f8daf2aac38883576eca86f79ff4660f15449d770801012fa3503'
             '19d631ba04ae7d42e6c95962df1bc99edf84c80920539bb8aa2fc7f2f6c53589'
 )
 prepare() {
