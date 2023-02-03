@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=visdat
-_pkgver=0.5.3
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Preliminary Visualisation of Data'
 arch=('any')
@@ -11,26 +11,30 @@ url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
   r
+  r-cli
   r-dplyr
+  r-forcats
   r-ggplot2
   r-glue
   r-magrittr
   r-purrr
   r-readr
+  r-scales
   r-tibble
   r-tidyr
 )
 optdepends=(
-  r-gdtools
+  r-covr
   r-knitr
   r-plotly
   r-rmarkdown
   r-spelling
+  r-stringr
   r-testthat
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('527c76b6643b8475a58516763ef40238cdc61ec62d2dcf690f7c316b93b878c6')
+sha256sums=('104acdbb9d41167b861ab24de0e1e1e14f61c1b476bac112fcbc6e47c157e598')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
