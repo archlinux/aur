@@ -2,12 +2,19 @@
 
 pkgname=lemmy
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A link aggregator for the fediverse'
 arch=('x86_64')
 url='https://join-lemmy.org'
 license=('AGPL3')
-depends=('gcc-libs' 'openssl' 'postgresql-libs')
+depends=(
+  'gcc-libs'
+  'openssl'
+  'postgresql-libs'
+  'imagemagick'
+  'ffmpeg'
+  'perl-image-exiftool'
+)
 makedepends=('git' 'rust' 'protobuf')
 optdepends=('lemmy-ui: for the web app')
 options=('!lto')
