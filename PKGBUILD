@@ -3,9 +3,9 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=29.0.0
+_pkgver=29.0.1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=5
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
