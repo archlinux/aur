@@ -1,20 +1,18 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=notepad---git
-pkgver=1.21.r14.g2c8c1d9
+pkgver=1.22.r9.gb9b2083
 pkgrel=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
-arch=('any')
+arch=('x86_64')
 url="https://gitee.com/cxasm/notepad--"
-license=('GPL')
+license=('GPL-3.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(qt5-base
         qt5-xmlpatterns)
 makedepends=(git
-            qt5-tools )
-backup=()
-options=()
+            qt5-tools)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
