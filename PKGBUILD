@@ -10,13 +10,13 @@ pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
 license=('GPL')
-depends=('fftw')
+depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python')
 makedepends=('cmake>=3.1')
 conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
-optdepends=('openmpi: support openmpi' 'ffmpeg: dump movie' 'libpng: dump movie' 'python: support python' )
+optdepends=()
 
 prepare() {
   cd ${_pkgname}

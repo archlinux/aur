@@ -7,11 +7,10 @@ pkgbase = lammps-git
 	license = GPL
 	makedepends = cmake>=3.1
 	depends = fftw
-	optdepends = fftw
-	optdepends = openmpi: support openmpi
-	optdepends = ffmpeg: dump movie
-	optdepends = libpng: dump movie
-	optdepends = python: support python
+	depends = openmpi
+	depends = ffmpeg
+	depends = libpng
+	depends = python
 	provides = lammps
 	conflicts = lammps
 	source = git+https://github.com/lammps/lammps.git
