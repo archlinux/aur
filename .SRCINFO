@@ -1,9 +1,9 @@
-pkgbase = darling-bin
+pkgbase = darling-bin-prerel
 	pkgdesc = Darwin/macOS emulation layer for Linux
-	pkgver = 0.1.20220704
-	pkgrel = 2
+	pkgver = 0.1.20220929
+	pkgrel = 1
 	url = https://github.com/darlinghq/darling
-	install = darling-bin.install
+	install = darling-bin-prerel.install
 	arch = x86_64
 	groups = darling-bin
 	license = GPL
@@ -28,7 +28,7 @@ pkgbase = darling-bin
 	conflicts = darling
 	conflicts = darling-git
 	options = !strip
-	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220704/darling_0.1.20220704.focal_amd64.deb
-	sha512sums = 6acf5271e25931c0871ed205d0ac0cea9b023b534669aa0491d82a0eb37b13f3970f2c323dffa0e0e4a3b49bb50377c01eb28f9d87f5b142cc5fcd8fd42e40d9
+	source = https://github.com/darlinghq/darling/releases/download/v0.1.20220929_update_sources_11_5/darling_0.1.20220929.focal_amd64.deb
+	sha512sums = 272e9bdd392b1f040c2f34704ece8bdc81acf83c7aa757b0851948a893e2ddcd61695f15e9a031d5b2ee8494795e08b60e990b632b6ef30c4f7ae351802739fb
 
-pkgname = darling-bin
+pkgname = darling-bin-prerel
