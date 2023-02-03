@@ -29,7 +29,7 @@ build() {
     cd "wrapper_${pkgver}_src"
 
     source /etc/ant.conf
-    source /etc/profile.d/jre.sh
+    source /etc/profile
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
 
     [[ "$CARCH" = @(x86_64|aarch64) ]] && _bits=64 || _bits=32
