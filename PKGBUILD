@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=batchtools
-_pkgver=0.9.15
+_pkgver=0.9.16
 pkgname=r-${_pkgname,,}
-pkgver=0.9.15
-pkgrel=4
+pkgver=0.9.16
+pkgrel=1
 pkgdesc='Tools for Computation on Batch Systems'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -42,7 +42,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a238fca4dca005ce49f73b132e6fcca63b80224a9bf58fbeb70cfe09cff15d34')
+sha256sums=('51bfea8e0453982efe223933d7591fbfee17883cce4c09cf9e215d0c965ef5ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
