@@ -1,0 +1,11 @@
+--- a/fnt
++++ b/fnt
+@@ -31,7 +31,7 @@ case "$s" in
+ 	Linux|GNU/kFreeBSD|GNU)
+ 		#echo Linux
+ 		check="curl chafa otfinfo"
+-		i="apt"
++		i="pacman"
+ 		md5="md5sum"
+ 		target="$HOME/.fonts/"
+ 		if [ 0 -eq `id -u` ]; then

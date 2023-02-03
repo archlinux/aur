@@ -1,0 +1,20 @@
+pkgbase = fnt
+	pkgdesc = The missing font manager for Linux
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/alexmyczko/fnt
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = chafa
+	depends = texlive-bin
+	source = fnt::git+https://github.com/alexmyczko/fnt#commit=500ba216b3cc2ebfcb762726eead5f4b8b12b961
+	source = fix-zsh-completion-dir.patch
+	source = use-arch-pkg-manager.patch
+	b2sums = SKIP
+	b2sums = 64be4a089283e4cd52627fe45a9c57817ed8ed11b870d7cd4a6efa92683632dc818c9ae9f58efb4c0a23ccd0505b7df67e8ab7383a82840543caf76171888500
+	b2sums = da252f3546501d12ca53590b88cc8566aa873f0403fcc6a16418498f4b5dafe6f53b5881e98af1a8fcb8ee9178acc88ffa484b79412ea90fa1c8cf74bed68b2f
+
+pkgname = fnt
