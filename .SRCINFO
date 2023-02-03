@@ -6,7 +6,6 @@ pkgbase = mingw-w64-directxmath
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
-	makedepends = ninja
 	options = staticlibs
 	options = !strip
 	options = !buildflags
