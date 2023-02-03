@@ -14,6 +14,7 @@ pkgbase = ethoscope-device
 	depends = wget
 	depends = fping
 	depends = ntp
+	depends = nss-mdns
 	depends = openssh
 	depends = mariadb
 	depends = dnsmasq
