@@ -1,11 +1,12 @@
 pkgname=cms-germany-git
-pkgver=r5003.07a9d40e
+pkgver=r5032.b78d8a4e
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
 url="https://github.com/ioi-germany/cms"
 license=('AGPL3')
 depends=(
+    'isolate'
     'python'
     'python-tornado'
     'python-psycopg2'
@@ -18,17 +19,15 @@ depends=(
     'python-requests'
     'python-gevent'
     'python-werkzeug'
-#    'patool-py3'
     'python-bcrypt'
     'python-chardet'
-#    'python-ipaddress'
     'python-yaml'
     'python-future'
     'python-jinja'
+    'python-markupsafe'
     'python-xdg'
     'postgresql'
     'postgresql-client'
-#    'libcgroup'
     'iso-codes'
     'shared-mime-info'
     'asymptote'
@@ -56,17 +55,21 @@ backup=(
     'etc/cms.ranking.conf'
 )
 
-provides=('cms-germany' 'isolate-germany')
-conflicts=('cms' 'isolate')
+provides=('cms-germany')
+conflicts=('cms')
 install=$pkgname.install
 
 source=(
     'git+https://github.com/ioi-germany/cms.git#branch=main'
-    'git+https://github.com/ioi-germany/isolate.git'
-    'pgf.patch'
+    'dont_install_isolate.patch'
+    'new_jinja2_1.patch'
+    'new_jinja2_2.patch'
 )
 sha256sums=(
-    'SKIP' 'SKIP' 'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 pkgver() {
@@ -75,29 +78,15 @@ pkgver() {
 }
 
 build() {
-    cd isolate
-    make PREFIX="/usr" VARPREFIX="/var" CONFIGDIR="/etc" isolate isolate.1
-
-    cd ../cms
-
-    git config submodule.isolate.url "$srcdir/isolate"
-    git submodule update
+    true
 }
 
 package() {
-    cd isolate
-    make PREFIX="$pkgdir/usr" VARPREFIX="$pkgdir/var" CONFIGDIR="$pkgdir/etc" install install-doc
+    cd cms
 
-    # Patch the configuration file so that it uses a standard directory
-    sed -i "s|/var/local/lib/isolate|/var/lib/isolate|" $pkgdir/etc/isolate
-
-    # The isolate binary has the setuid bit set (to run as root without sudo)
-    # however we should let only the owner and the group be able to run it:
-    chmod o-x $pkgdir/usr/bin/isolate
-
-    cd ../cms
-
-    patch cmscontrib/gerpythonformat/templates/lg/graphdrawing.tex ../pgf.patch
+    patch prerequisites.py ../dont_install_isolate.patch
+    patch cms/grading/ParameterTypes.py ../new_jinja2_1.patch
+    patch cms/server/jinja2_toolbox.py ../new_jinja2_2.patch
 
     # Logs and cache directories
     install -d -m770 $pkgdir/var/log/cms

@@ -1,6 +1,6 @@
 pkgbase = cms-germany-git
 	pkgdesc = CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process.
-	pkgver = r4741.f6b4bd18
+	pkgver = r5032.b78d8a4e
 	pkgrel = 1
 	url = https://github.com/ioi-germany/cms
 	install = cms-germany-git.install
@@ -10,6 +10,7 @@ pkgbase = cms-germany-git
 	makedepends = git
 	makedepends = asciidoc
 	makedepends = python-setuptools
+	depends = isolate
 	depends = python
 	depends = python-tornado
 	depends = python-psycopg2
@@ -27,6 +28,7 @@ pkgbase = cms-germany-git
 	depends = python-yaml
 	depends = python-future
 	depends = python-jinja
+	depends = python-markupsafe
 	depends = python-xdg
 	depends = postgresql
 	depends = postgresql-client
@@ -45,17 +47,16 @@ pkgbase = cms-germany-git
 	optdepends = fpc: support for Pascal submissions
 	optdepends = jdk8-openjdk: support for Java submissions
 	provides = cms-germany
-	provides = isolate-germany
 	conflicts = cms
-	conflicts = isolate
 	backup = etc/cms.conf
 	backup = etc/cms.ranking.conf
-	source = git://github.com/ioi-germany/cms.git#branch=main
-	source = git://github.com/ioi-germany/isolate.git
-	source = pgf.patch
+	source = git+https://github.com/ioi-germany/cms.git#branch=main
+	source = dont_install_isolate.patch
+	source = new_jinja2_1.patch
+	source = new_jinja2_2.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cms-germany-git
-
