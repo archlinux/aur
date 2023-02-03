@@ -10,7 +10,7 @@ pkgbase = jira-cli
 	conflicts = jira-cli-bin
 	conflicts = go-jira
 	conflicts = go-jira-bin
-	source = https://github.com/ankitpokhrel/jira-cli/archive/refs/tags/v1.3.0.tar.gz
+	source = jira-cli-1.3.0::https://github.com/ankitpokhrel/jira-cli/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = 2091c3b21893ce4cf4b8b744d6ee06c063ffb177619d5275a1146e5017d70282
 
 pkgname = jira-cli
