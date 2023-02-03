@@ -1,0 +1,22 @@
+pkgbase = python-pyclipper-git
+	pkgdesc = Cython wrapper for the C++ translation of the Angus Johnsons Clipper library
+	pkgver = 1.3.0.post4.r0.ge349e2b
+	pkgrel = 1
+	url = https://github.com/fonttools/pyclipper
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = git
+	depends = python
+	provides = python-pyclipper
+	conflicts = python-pyclipper
+	source = python-pyclipper-git::git+https://github.com/fonttools/pyclipper.git
+	sha256sums = SKIP
+
+pkgname = python-pyclipper-git
