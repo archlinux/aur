@@ -3,8 +3,8 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=11.2.2
-pkgrel=2
+pkgver=11.3.2
+pkgrel=3
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
@@ -90,7 +90,7 @@ package_teleport-client() {
     install -Dm755 build/tctl "${pkgdir}/usr/bin/tctl"
     install -Dm755 build/tsh "${pkgdir}/usr/bin/tsh"
 }
-sha512sums=('b9d2ffe5faf7f5d3605361b5c83087de6ce72f813ca641d29b53acdf695f13d7c8b626155bbd0c1f270c7b672057e7bf598257e488bacba71e96b29cb809f5a5'
+sha512sums=('dd86914d5f630c6956e92aa71da1c52535a5995956d79e99bf128874971fe0be65fa0bd8c8cc8a8bd399353818bab4d20bf463098bfd399f86e0cf3be24dd049'
             '3f1824dcface44de05bb26ba9b5313445e4a532c321bfb59a3a6f29e47e83c1dc9ba7c476b32d1e5bec7c0cd2db87affa1cf108f557f6397748bf48d7f6042b7'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
