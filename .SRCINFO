@@ -7,6 +7,9 @@ pkgbase = crosswords-puzzle-sets-nienteperniente
 	license = GPL3
 	makedepends = meson
 	depends = crosswords
+	depends = python-argparse
+	depends = python-puzpy
+	depends = python-requests
 	source = https://gitlab.gnome.org/davide125/puzzle-sets-nienteperniente/-/archive/0.1.0/puzzle-sets-nienteperniente-0.1.0.tar.gz
 	b2sums = 212bfc0a51a540ae3b3e4ce717f2d89ff84aa5b3a16fca114a0d5b88fca630ba78bc560e801a73a57bfe5a74c8f7fb2cccf94ef903e1ee64e6a6ce93f929d014
 

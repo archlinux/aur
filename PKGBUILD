@@ -7,7 +7,12 @@ pkgdesc='Italian puzzles from "BOOM!!! niente per niente" for the app Crosswords
 arch=(any)
 url='https://gitlab.gnome.org/davide125/puzzle-sets-nienteperniente'
 license=(GPL3)
-depends=(crosswords)
+depends=(
+	crosswords
+	python-argparse
+	python-puzpy
+	python-requests
+)
 makedepends=(meson)
 _commit=${pkgver}
 _srcdir="puzzle-sets-nienteperniente-${_commit}"
