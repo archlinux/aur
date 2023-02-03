@@ -1,0 +1,28 @@
+diff --git a/src/index_manager.rs b/src/index_manager.rs
+index 02fdedd..a8ec7b2 100644
+--- a/src/index_manager.rs
++++ b/src/index_manager.rs
+@@ -213,6 +213,7 @@ fn clone_or_open_repository(config: &IndexConfig) -> Result<git2::Repository, gi
+         tracing::info!("try to clone index repository into {:?}", path);
+ 
+         let mut callbacks = git2::RemoteCallbacks::new();
++        callbacks.certificate_check(|_, _| Ok(git2::CertificateCheckStatus::CertificateOk));
+         callbacks.credentials(credentials_callback(config));
+         let mut fetch_options = git2::FetchOptions::new();
+         fetch_options.remote_callbacks(callbacks);
+@@ -235,6 +236,7 @@ fn fetch<'a>(
+     let mut remote = repository.find_remote("origin")?;
+ 
+     let mut callbacks = git2::RemoteCallbacks::new();
++    callbacks.certificate_check(|_, _| Ok(git2::CertificateCheckStatus::CertificateOk));
+     callbacks.credentials(credentials_callback(config));
+     let mut fetch_options = git2::FetchOptions::new();
+     fetch_options.remote_callbacks(callbacks);
+@@ -399,6 +401,7 @@ fn push_to_origin(repository: &Repository, config: &IndexConfig) -> Result<(), g
+     let mut remote = repository.find_remote("origin")?;
+ 
+     let mut callbacks = git2::RemoteCallbacks::new();
++    callbacks.certificate_check(|_, _| Ok(git2::CertificateCheckStatus::CertificateOk));
+     callbacks.credentials(credentials_callback(config));
+     let mut push_options = PushOptions::default();
+     push_options.remote_callbacks(callbacks);
