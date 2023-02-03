@@ -1,3 +1,6 @@
+# Maintainer: kbtz <aur@kbtz.dev>
+# Contributor: eNV25 <env252525@gmail.com>
+
 pkgref=keyd
 pkgname=keyd-openrc
 pkgver='2.4.2.r108.bcfb8bb'
