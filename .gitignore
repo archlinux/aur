@@ -1,0 +1,4 @@
+src/
+pkg/
+inotify-info/
+*.pkg.tar.zst
