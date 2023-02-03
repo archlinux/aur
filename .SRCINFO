@@ -1,6 +1,6 @@
 pkgbase = hatari-enhanced-git
 	pkgdesc = An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.
-	pkgver = v2.4.1.237.g87f27924
+	pkgver = v2.4.1.242.ga36c54b0
 	pkgrel = 1
 	url = http://hatari.sourceforge.net/
 	arch = x86_64
