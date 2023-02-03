@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -41,6 +41,13 @@ package() {
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
   install -D --mode=0755 ethoscope_device.service ethoscope_listener.service ethoscope_GPIO_listener.service "${pkgdir}/usr/lib/systemd/system/"
+
+  tee -a /usr/bin/ethoclient <<EOF
+#!/bin/env bash
+python /opt/ethoscope-device/src/scripts/ethoclient.py $@
+EOF
+  chmod +x /usr/bin/ethoclient
+
   
   cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
   install -D --mode=0755 ethoscope_update.service "${pkgdir}/usr/lib/systemd/system/"
