@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-directxtex
+	pkgdesc = Texture processing library (mingw-w64)
+	pkgver = jan2023
+	pkgrel = 1
+	url = https://go.microsoft.com/fwlink/?LinkId=248926
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-directx-headers-cmake
+	makedepends = mingw-w64-directxmath
+	makedepends = ninja
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = directxtex-jan2023.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/jan2023.tar.gz
+	sha256sums = 878107c0645742ac74f3aa0e1de504d618c685f76797503f02a8f75198f8c869
+
+pkgname = mingw-w64-directxtex
