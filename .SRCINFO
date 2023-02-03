@@ -23,6 +23,6 @@ pkgbase = xmrig-donateless
 	source = xmrig-donateless-6.19.0.tar.gz::https://github.com/xmrig/xmrig/archive/v6.19.0.tar.gz
 	sha256sums = b4c7a9fb3084f15f091b6d85ca641470c5056da622c064b61e0708f2d886841e
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
-	sha256sums = f97fe20248e0eb452f77e9b69f2fb1510b852152b3af4f9a8b20680c854888d1
+	sha256sums = 772f947058e5b89ca9bf34128487def47796870b547439a9b0524ddd1899420c
 
 pkgname = xmrig-donateless

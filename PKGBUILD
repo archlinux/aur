@@ -23,7 +23,7 @@ source=("${_pkgname}.service"
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/xmrig/xmrig/archive/v${pkgver}.tar.gz")
 sha256sums=('b4c7a9fb3084f15f091b6d85ca641470c5056da622c064b61e0708f2d886841e'
   'd8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6'
-  'f97fe20248e0eb452f77e9b69f2fb1510b852152b3af4f9a8b20680c854888d1')
+  '772f947058e5b89ca9bf34128487def47796870b547439a9b0524ddd1899420c')
 
 prepare() {
 	mkdir -p "${_pkgname}-${pkgver}/build"
