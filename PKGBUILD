@@ -10,7 +10,7 @@ arch=('any')
 url='https://gitlab.archlinux.org/pacman/namcap'
 license=('GPL')
 depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
-checkdepends=('systemd' 'python-pytest' 'python-six')
+#checkdepends=('systemd' 'python-pytest' 'python-six')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 conflicts=("namcap=$pkgver")
 provides=("namcap")
