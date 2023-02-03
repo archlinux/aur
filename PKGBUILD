@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.74.3
+pkgver=1.75.0
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window and official marketplace support!"
 
@@ -59,7 +59,7 @@ source=(
 sha512sums=(
 	"SKIP"
 	"59f8d08395e384966fb1825bf0b043ec99334e0562d651b3a06f07647e91989bff6800dd857095a5279a5f457acde5be67ff70b878ae9418d5b821dc81b999af"
-	"51d20135335ee28c69b917a92a4c5893702cb50d306b6a527eb6dc5c01360810b1332e7e501bf95ef2d014f8caf358f329976ec91c7f38c32f413b38c4574f14"
+	"9934f8bff056a2d4a55799165b975db0c0e0c4d25da89a6e912605c3e54ee39f55a9e0edcad5fb8b1a7436aaaea580c27e51d9604c94945d16eaa172aa9d51dc"
 )
 
 case "${CARCH}" in

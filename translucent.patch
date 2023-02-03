@@ -127,9 +127,9 @@ diff -Naur a/src/vs/workbench/common/theme.ts b/src/vs/workbench/common/theme.ts
  	dark: null,
  	light: null,
 diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/workbench/contrib/splash/browser/partsSplash.ts
---- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-01 00:05:32.000000000 +0200
-+++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2022-09-29 06:05:09.976290267 +0200
-@@ -68,11 +68,16 @@
+--- a/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-01 05:32:54.000000000 +0100
++++ b/src/vs/workbench/contrib/splash/browser/partsSplash.ts	2023-02-03 08:41:45.193374826 +0100
+@@ -65,12 +65,17 @@
  	private _savePartsSplash() {
  		const theme = this._themeService.getColorTheme();
  
@@ -139,6 +139,7 @@ diff -Naur a/src/vs/workbench/contrib/splash/browser/partsSplash.ts b/src/vs/wor
 +				 : windowBackground;
 +
  		this._partSplashService.saveWindowSplash({
+ 			zoomLevel: this._configService.getValue<undefined>('window.zoomLevel'),
  			baseTheme: getThemeTypeSelector(theme.type),
  			colorInfo: {
  				foreground: theme.getColor(foreground)?.toString(),
