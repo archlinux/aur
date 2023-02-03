@@ -11,6 +11,7 @@ ExecStart=/opt/splunkforwarder/bin/splunk start --answer-yes --no-prompt --accep
 ExecStop=/opt/splunkforwarder/bin/splunk stop
 ExecReload=/opt/splunkforwarder/bin/splunk restart
 StandardOutput=syslog
+TimeoutSec=500
 
 [Install]
 WantedBy=multi-user.target
