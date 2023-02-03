@@ -61,7 +61,7 @@ pkgname=("grub-theme-acer"
         "grub-theme-xero"
         "grub-theme-zorinos")
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Grub themes for distributions and brands"
 url="https://github.com/AdisonCavani/distro-grub-themes"
 arch=('any')
@@ -195,7 +195,7 @@ done
 		
 package_grub-theme-acer () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -203,7 +203,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-alma () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -211,7 +211,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-aorus () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -219,7 +219,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-apple () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -227,7 +227,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-arch () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -235,7 +235,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-arco () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -243,7 +243,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-artix () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -251,7 +251,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-asrock () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -259,7 +259,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-asus () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -267,7 +267,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-bedrock () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -275,7 +275,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-centos () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -283,7 +283,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-chromeos () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -291,7 +291,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-debian () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -299,7 +299,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-deepin () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -307,7 +307,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-dell () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -315,7 +315,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-elementary () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -323,7 +323,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-endeavouros () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -331,7 +331,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-fedora () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -339,7 +339,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-framework () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -347,7 +347,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-freebsd () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -355,7 +355,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-garuda () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -363,7 +363,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-gentoo () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -371,7 +371,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-gigabyte () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -379,7 +379,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-hp () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -387,7 +387,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-huawei () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -395,7 +395,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-kdeneon () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -403,7 +403,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-kingston () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -411,7 +411,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-kubuntu () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -419,7 +419,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-legion () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -427,7 +427,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-lenovo () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -435,7 +435,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-lg () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -443,7 +443,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-lubuntu () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -451,7 +451,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-manjaro () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -459,7 +459,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-mate () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -467,7 +467,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-mint () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -475,7 +475,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-msi () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -483,7 +483,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-mx () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -491,7 +491,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-nixos () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -499,7 +499,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-opensuse () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -507,7 +507,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-parabola () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -515,7 +515,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-pop () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -523,7 +523,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-razer () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -531,7 +531,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-rocky () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -539,7 +539,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-samsung () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -547,7 +547,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-slackware () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -555,7 +555,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-solus () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -563,7 +563,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-system76 () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -571,7 +571,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-thinkpad () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -579,7 +579,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-toshiba () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -587,7 +587,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-ubuntu () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -595,7 +595,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-ultramarine () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -603,7 +603,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-vaio () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -611,7 +611,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-ventoy () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -619,7 +619,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-void () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -627,7 +627,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-windows10 () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -635,7 +635,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-windows11 () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -643,7 +643,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-xero () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
@@ -651,7 +651,7 @@ cp -a * "$pkgdir"/boot/grub/themes/$name
 
 package_grub-theme-zorinos () {
 cd "$pkgname"
-name=$(echo "${pkgname}" | sed -e "s/^"grub-theme-"//" | tr '[:lower:]' '[:upper:]')
+name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name
 pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name

@@ -1,7 +1,7 @@
 pkgbase = distro-grub-themes
 	pkgdesc = Grub themes for distributions and brands
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any
 	license = GPL
