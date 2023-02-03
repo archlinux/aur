@@ -1,14 +1,10 @@
-# Maintainer: physkets <physkets // at // tutanota dot com>
+# Maintainer: yuhldr@qq.com
 # Contributor: Wes Barnett <wes AT w barnett DOT us>
-
-### BUILD OPTIONS
-# Set these variables to '1' to enable them
-# Doing so will add the requisite build commands,
-# as well as add the needed dependencies
+# Contributor: physkets <physkets // at // tutanota dot com>
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=31499.48aa9cf
+pkgver=34715.7fbb609
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -20,12 +16,7 @@ conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
-optdepends=(
-  'fftw'
-  'openmpi: support openmpi' 
-  'ffmpeg: dump movie' 
-  'libpng: dump movie' 
-)
+optdepends=('openmpi: support openmpi' 'ffmpeg: dump movie' 'libpng: dump movie' 'python: support python' )
 
 prepare() {
   cd ${_pkgname}
@@ -70,10 +61,15 @@ build() {
   # -D BUILD_SHARED_LIBS=on \
   # -D LAMMPS_EXCEPTIONS=on \
   # -D PKG_PYTHON=on \
+  # -D PKG_PHONON=on \
 
   cmake \
     -C ../cmake/presets/basic.cmake \
-  ../cmake \
+      -D BUILD_SHARED_LIBS=on \
+      -D LAMMPS_EXCEPTIONS=on \
+      -D PKG_PYTHON=on \
+      -D PKG_PHONON=on \
+    ../cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
