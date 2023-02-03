@@ -1,15 +1,21 @@
 pkgbase = clipboard-bin
 	pkgdesc = Cut, copy, and paste anything in your terminal (binary version).
-	pkgver = 0.2.1r2
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/Slackadays/Clipboard
 	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = GPL3
 	optdepends = libx11: X11 support
-	optdepends = wayland: Wayland support
+	optdepends = wayland-protocols: Wayland support
 	provides = clipboard
 	conflicts = clipboard
-	source = clipboard-0.2.1r2-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/0.2.1r2/clipboard-linux-amd64.zip
-	sha256sums = 6933e3c0e07732464a9f5ac8ea0c429d615637c61cf7144feafdf42f13599b4b
+	source_x86_64 = clipboard-0.3.0-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/0.3.0/clipboard-linux-gcc12-amd64.zip
+	sha256sums_x86_64 = 5fc53fe65848c7bf78b6b8f0e07ce34c0aeefe91edbf90f4c7f151e26f794f55
+	source_aarch64 = clipboard-0.3.0-aarch64.zip::https://github.com/Slackadays/Clipboard/releases/download/0.3.0/clipboard-linux-gcc12-arm64.zip
+	sha256sums_aarch64 = d4d186913621a7c10bd05717a0086a0d02397c39136c5109d48d7aa1a0632d66
+	source_riscv64 = clipboard-0.3.0-riscv64.zip::https://github.com/Slackadays/Clipboard/releases/download/0.3.0/clipboard-linux-gcc12-riscv64.zip
+	sha256sums_riscv64 = f0c33d052ac21683cfe60da2ae06c4dabd0ae4a61921f22e70e83f15850ca9de
 
 pkgname = clipboard-bin
