@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+
+/usr/bin/java -jar /usr/share/piranha-cloud/piranha-dist-servlet.jar $@

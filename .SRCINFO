@@ -1,0 +1,10 @@
+pkgbase = piranha-servlet
+	pkgdesc = Piranha is a cloud native extensible runtime, which delivers various integration libraries facilitating running applications in a non application server centric way.
+	pkgver = 23.1.0
+	pkgrel = 1
+	url = https://github.com/piranhacloud/piranha
+	arch = any
+	depends = jre-openjdk
+	provides = piranha-servlet
+
+pkgname = piranha-servlet
