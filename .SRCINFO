@@ -1,6 +1,6 @@
 pkgbase = lemmy-ui
 	pkgdesc = The official web app for lemmy
-	pkgver = 0.16.7
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/LemmyNet/lemmy-ui
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = lemmy-ui
 	makedepends = yarn
 	makedepends = python
 	depends = nodejs
-	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=44f22ad3b7f7afb17cd0ac6ee293b11bbbdf6087
+	source = lemmy-ui::git+https://github.com/LemmyNet/lemmy-ui#commit=6cca9a9874962154f8498b31657a6901ce48858b
 	source = git+https://github.com/LemmyNet/lemmy-translations.git
 	b2sums = SKIP
 	b2sums = SKIP
