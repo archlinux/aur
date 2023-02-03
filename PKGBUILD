@@ -1,7 +1,7 @@
 _pkgname=tartube
 pkgname=tartube-git
-pkgver=2.4.165.r8.gc71a96f
-pkgrel=2
+pkgver=2.4.221.r1.g5487f43
+pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3 (git version)'
 arch=('any')
 url='https://github.com/axcore/tartube'
