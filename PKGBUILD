@@ -2,8 +2,8 @@
 # Maintainer: Allen Zhong <allen@moe.cat>
 pkgname=corplink-bin
 pkgver=2.0.11
-_pkgrel=r1169_1cc3c3
-pkgrel=2
+_pkgrel=r1410_cb5794
+pkgrel=3
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
@@ -15,7 +15,7 @@ optdepends=('dnsmasq: NetworkManager integration'
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://oss-s3.ifeilian.com/linux/FeiLian_Linux_v${pkgver}_${_pkgrel}.deb")
-sha512sums=('7940735621d054291bb8925faa6226e1f9e1cac1bcb6c9901744c9052f77ce4f491e5ba78dbe1db1dd53d1f09f65350d4dc3cea3c6a5e8634f01ffd59e8ed8df')
+sha512sums=('d5220b203b51e7060382e3bd77e5647c6df7b61c66d1af5e1417762479e74dd61b738957fd1d835830213a97c30aa6a7b02b3a5c142fff120391d0cbd8393ea1')
 
 package(){
   # Extract package data
