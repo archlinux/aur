@@ -1,6 +1,6 @@
-# Maintainer: aulonsal <aulonsal at gmail dot com>
+# Maintainer: aulonsal <seraur at aulonsal dot com>
 pkgname=f2
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,24 +11,25 @@ depends=(
 )
 makedepends=(
 	'go'
+	'just'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ebac671e17052bef3857692bf95b63859ac7bb97dcc395bd038b5c0248b89681bf974f4b67dfc08f01ca373b7eb379c5bfe1d93c730629f500d0cf2c38eb0e71')
+b2sums=('553339e3d222a96c06d58a00cb6946270e3251bd72d7e72c17ff928ceaa43bbfa4233a48572c48963daca0271f01a1ceed113720538c2dcb22838888e0ecd9a0')
 
 build() {
-	export local CGO_CPPFLAGS="${CPPFLAGS}"
-	export local CGO_CFLAGS="${CFLAGS}"
-	export local CGO_CXXFLAGS="${CXXFLAGS}"
-	export local CGO_LDFLAGS="${LDFLAGS}"
-	export local GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	declare -x CGO_CPPFLAGS="${CPPFLAGS}"
+	declare -x CGO_CFLAGS="${CFLAGS}"
+	declare -x CGO_CXXFLAGS="${CXXFLAGS}"
+	declare -x CGO_LDFLAGS="${LDFLAGS}"
+	declare -x GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	make build
+	just build
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	make test
+	just test
 }
 
 package() {
