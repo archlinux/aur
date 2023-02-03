@@ -1,15 +1,15 @@
 # Maintainer: Millian Poquet <millian.poquet@gmail.com>
 pkgname=simgrid
-pkgver=3.30
+pkgver=3.32
 pkgrel=1
 pkgdesc='A scientific instrument to study the behavior of large-scale distributed systems such as Grids, Clouds, HPC or P2P systems.'
 arch=('i686' 'x86_64')
 url='https://simgrid.org/'
 license=('LGPL')
-source=('https://framagit.org/simgrid/simgrid/-/archive/v3.30/simgrid-v3.30.tar.gz')
+source=('https://framagit.org/simgrid/simgrid/-/archive/v3.32/simgrid-v3.32.tar.gz')
 depends=('boost' 'python')
 makedepends=('cmake')
-md5sums=('b55fba3f16a81e9d043b4ef679a1eed9')
+md5sums=('0fcb36342dd5bc2ebeea46124ba18cb8')
 
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
