@@ -1,3 +1,17 @@
+## GE-Proton7-48
+
+* Updated proton-wine bleeding edge
+* Updated vkd3d-proton
+* Updated dxvk
+* Update dxvk-nvapi
+
+Latest upstream changes should include the most recent Dead Space fixes.
+
+Additionally, in the previous proton-ge build I noted a problem with Monster Hunter: Rise. This issue turned out to be specific to the 7900 XT/X cards. The fix is currently pending on mesa/radv:
+
+https://gitlab.freedesktop.org/mesa/mesa/-/issues/8153
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/20941
+
 ## GE-Proton7-47
 
 Hotfix release:
