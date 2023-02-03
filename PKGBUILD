@@ -16,6 +16,8 @@ md5sums=('b227d2e73609cb388657dc9df9ac8d31'
 validpgpkeys=('86395E99314F4E382517AF976558C915A20CDD93')
 
 prepare() {
+    echo -e "\nImporting Maintainer's gpg key:\n"
+    curl -sL https://draconyan.xyz/justsaumit.gpg | gpg --import
     cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
