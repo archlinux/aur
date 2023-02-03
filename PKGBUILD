@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-git
-pkgver=1.4.r15.gdee0021
+pkgver=v1.7.2.r2.gac3b49b
 pkgrel=1
 pkgdesc='Screen locker for Wayland '
 url='https://github.com/swaywm/swaylock'
