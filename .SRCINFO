@@ -1,7 +1,7 @@
 pkgbase = kickoff
 	pkgdesc = A simple and uncomplicated program launcher for wayland
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j0ru/kickoff
 	arch = x86_64
 	license = GPL3
