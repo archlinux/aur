@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-aws
 	pkgdesc = Module for the 'fog' gem to support Amazon Web Services.
-	pkgver = 3.15.0
+	pkgver = 3.16.0
 	pkgrel = 1
 	url = http://github.com/fog/fog-aws
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-fog-aws
 	depends = ruby-fog-core
 	depends = ruby-fog-json
 	depends = ruby-fog-xml
-	noextract = fog-aws-3.15.0.gem
+	noextract = fog-aws-3.16.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-aws-3.15.0.gem
-	sha512sums = cf18f6a73b50406ae0d7dbd3b7b5b9be42551dd7657ad69f4195fc718c8cdc294a1506ee78090b9157b6f2d5ccb56e55bcfa617f3300cf9ab66876e36915976e
+	source = https://rubygems.org/downloads/fog-aws-3.16.0.gem
+	sha512sums = 636e06fd8b7305f2697ffcbbd0d9849f1fa8879b7f66035be636e8081a0e78cb1d2fc77e268673d9a5b1d866ed7de2ce1579f582aafaff31a0440999d73f0dc4
 
 pkgname = ruby-fog-aws
