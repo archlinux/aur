@@ -55,7 +55,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -432,6 +432,9 @@ prepare() {
 
   ## avdevice/v4l2: fix leak of timefilter
   git cherry-pick -n 30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7
+
+  # Fix building with newer Vulkan versions
+  git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c
 
   ### Arch Linux changes
 
