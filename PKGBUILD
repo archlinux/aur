@@ -34,10 +34,9 @@ build() {
 
 package() {
   install -Dm 644 $pkgname.service -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 644 $pkgname.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm 644 $pkgname.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm 644 $pkgname-$pkgver/reposilite-backend/build/libs/$pkgname-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm 644 $pkgname.env "${pkgdir}/etc/reposilite/wrapper.env"
-  /usr/lib/jvm/java-11-openjdk/bin/java -jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar" -wd "${pkgdir}/etc/reposilite" -gc configuration.cdn
-  install -Dm 755 $pkgname.wrapper "${pkgdir}/usr/bin/reposilite"
+  install -Dm 644 $pkgname.sysusers -t "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm 644 $pkgname.tmpfiles -t "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dm 644 $pkgname-$pkgver/reposilite-backend/build/libs/$pkgname-$pkgver.jar -t "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm 644 $pkgname.env -t "${pkgdir}/etc/reposilite/wrapper.env"
+  install -Dm 755 $pkgname.wrapper -t "${pkgdir}/usr/bin/reposilite"
 }
