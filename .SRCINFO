@@ -1,0 +1,14 @@
+pkgbase = python-rmscene
+	pkgdesc = Parsing library for *.rm files in version 6.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ricklupton/rmscene
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	source = https://files.pythonhosted.org/packages/source/r/rmscene/rmscene-0.1.0.tar.gz
+	sha256sums = d6ae29d6b1e00e996e86d095786f1fd6bf857be7016bb81ae738833a175b24fb
+
+pkgname = python-rmscene
