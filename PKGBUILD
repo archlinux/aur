@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61877.50f1eec9a22
+pkgver=r61896.e9f58cbf138
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -48,6 +48,7 @@ options=(!lto)
 
 _gitname=xbmc
 _codename=Nexus
+
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -59,8 +60,6 @@ _sse_workaround=1
 # https://github.com/xbmc/libdvdnav/tags
 # https://github.com/xbmc/libdvdread/tags
 #
-# fmt and crossguid can be found https://mirrors.kodi.tv/build-deps/sources/
-#
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
@@ -69,6 +68,7 @@ _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
+
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -128,7 +128,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
-    -DUSE_LTO=OFF
+    -DUSE_LTO=$(nproc)
     -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_AIRTUNES=ON
@@ -179,7 +179,7 @@ build() {
 package_kodi-nexus-git() {
   pkgdesc="A software media player and entertainment hub for digital media (Nexus branch)"
   depends=(
-    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme'
+    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
     'mesa' 'pipewire' 'python-pillow' 'python-pycryptodomex'
