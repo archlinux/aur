@@ -1,4 +1,4 @@
-# Maintainer: Senderman <doletov.fyodor@yandex.ru>
+# Maintainer: ahmedmoselhi <ahmedmoselhi55@gmail.com>
 
 _pkgname=distro-grub-themes
 pkgbase="${_pkgname}"
@@ -34,7 +34,7 @@ pkgname=("grub-theme-acer"
         "grub-theme-lenovo"
         "grub-theme-lg"
         "grub-theme-lubuntu"
-        "grub-theme-manjaro"
+        "grub-theme-manjaro2"
         "grub-theme-mate"
         "grub-theme-mint"
         "grub-theme-msi"
@@ -61,7 +61,7 @@ pkgname=("grub-theme-acer"
         "grub-theme-xero"
         "grub-theme-zorinos")
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Grub themes for distributions and brands"
 url="https://github.com/AdisonCavani/distro-grub-themes"
 arch=('any')
@@ -99,7 +99,7 @@ source=("grub-theme-acer.tar::https://github.com/AdisonCavani/distro-grub-themes
         "grub-theme-lenovo.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/lenovo.tar"
         "grub-theme-lg.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/lg.tar"
         "grub-theme-lubuntu.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/lubuntu.tar"
-        "grub-theme-manjaro.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/manjaro.tar"
+        "grub-theme-manjaro2.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/manjaro.tar"
         "grub-theme-mate.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/mate.tar"
         "grub-theme-mint.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/acer.tar"
         "grub-theme-msi.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/mint.tar"
@@ -449,7 +449,7 @@ pkgdesc="${name} Theme for Grub2"
 cp -a * "$pkgdir"/boot/grub/themes/$name
 }
 
-package_grub-theme-manjaro () {
+package_grub-theme-manjaro2 () {
 cd "$pkgname"
 name=$(echo "${pkgname}" | sed -e "s/\b\(.\)/\u\1/g" | sed -e "s/^"Grub-Theme-"//")
 install -d "$pkgdir"/boot/grub/themes/$name

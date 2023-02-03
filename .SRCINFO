@@ -1,7 +1,7 @@
 pkgbase = distro-grub-themes
 	pkgdesc = Grub themes for distributions and brands
 	pkgver = 3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/AdisonCavani/distro-grub-themes
 	arch = any
 	license = GPL
@@ -39,7 +39,7 @@ pkgbase = distro-grub-themes
 	noextract = grub-theme-lenovo.tar
 	noextract = grub-theme-lg.tar
 	noextract = grub-theme-lubuntu.tar
-	noextract = grub-theme-manjaro.tar
+	noextract = grub-theme-manjaro2.tar
 	noextract = grub-theme-mate.tar
 	noextract = grub-theme-mint.tar
 	noextract = grub-theme-msi.tar
@@ -97,7 +97,7 @@ pkgbase = distro-grub-themes
 	source = grub-theme-lenovo.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/lenovo.tar
 	source = grub-theme-lg.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/lg.tar
 	source = grub-theme-lubuntu.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/lubuntu.tar
-	source = grub-theme-manjaro.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/manjaro.tar
+	source = grub-theme-manjaro2.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/manjaro.tar
 	source = grub-theme-mate.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/mate.tar
 	source = grub-theme-mint.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/acer.tar
 	source = grub-theme-msi.tar::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.1/mint.tar
@@ -278,7 +278,7 @@ pkgname = grub-theme-lg
 pkgname = grub-theme-lubuntu
 	pkgdesc = Theme for Grub2
 
-pkgname = grub-theme-manjaro
+pkgname = grub-theme-manjaro2
 	pkgdesc = Theme for Grub2
 
 pkgname = grub-theme-mate
