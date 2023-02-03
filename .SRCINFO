@@ -1,6 +1,6 @@
 pkgbase = openocd-git
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)
-	pkgver = 0.12.0.rc1.r59.g92169e9f5
+	pkgver = 0.12.0.r59.g0b6f53e94
 	pkgrel = 1
 	url = http://openocd.org
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = openocd-git
 	depends = hidapi
 	depends = libudev.so
 	depends = capstone
+	depends = libjaylink
 	provides = openocd
 	conflicts = openocd
 	options = !strip

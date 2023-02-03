@@ -9,13 +9,13 @@
 
 _pkgbase=openocd
 pkgname=openocd-git
-pkgver=0.12.0.rc1.r59.g92169e9f5
+pkgver=0.12.0.r59.g0b6f53e94
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
-depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone')
+depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
