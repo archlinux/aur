@@ -4,8 +4,8 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox
-pkgver=2.0e
-pkgrel=3
+pkgver=2.1
+pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
@@ -13,20 +13,21 @@ license=(custom)
 groups=()
 depends=('alsa-lib'
          'hicolor-icon-theme'
-         'libx11'
-         'libxcb'
-         'libxau'
-         'libxdmcp'
          'sdl2')
 makedepends=('unzip' 'icoutils')
 optdepends=('jack: jack audio server output')
 # sunvox_opengl is only provided for x86_64 architecture, and needs individual optdeps
 if [[ "$CARCH" == "x86_64" ]]; then
   optdepends+=('libgl: required for sunvox_opengl'
+               'libx11: required for sunvox_opengl'
+               'libxau: required for sunvox_opengl'
+               'libxcb: required for sunvox_opengl'
+               'libxdmcp: required for sunvox_opengl'
+               'libxext: required for sunvox_opengl'
                'libxi: required for sunvox_opengl')
 fi
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip sunvox.desktop sunvox.xml)
-sha256sums=('bf87509d1afba6eb0e0075fccad0c284a8b16311088e0df4bce4c3eae03f4b4a'
+sha256sums=('bfb44486968570ff033df411bc1b91b46985c6921b14f64cf38697a32eddf9d4'
             'b45ee10df93982ac0d36c6887fe637c28b3c3de7013aa3462291629eed2dcc8d'
             '7ac2192298abdda802832518c98721b08881e32e8b470f2989c614852dd44f67')
 
