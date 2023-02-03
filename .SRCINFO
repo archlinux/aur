@@ -1,0 +1,14 @@
+pkgbase = plymouth-i_use_arch_btw-git
+	pkgdesc = Plymouth theme "i_use_arch_btw"
+	pkgver = r5.5762e93
+	pkgrel = 1
+	url = https://github.com/SimoriccITA/plymouth-i_use_arch_btw
+	arch = any
+	license = GPL3
+	depends = plymouth
+	provides = plymouth-i_use_arch_btw-git
+	conflicts = plymouth-i_use_arch_btw-git
+	source = plymouth-i_use_arch_btw::git+https://github.com/SimoriccITA/plymouth-i_use_arch_btw.git
+	sha256sums = SKIP
+
+pkgname = plymouth-i_use_arch_btw-git
