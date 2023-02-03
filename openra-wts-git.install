@@ -1,0 +1,21 @@
+post_upgrade() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    gtk-update-icon-cache -q -t -f usr/share/pixmaps
+}
+
+post_install() {
+    echo "If the game doesn't run, try using the Cg renderer ~/.openra/settings.yaml like so:"
+    echo "Graphics:"
+    echo "        Renderer: Cg"
+    echo "Be careful to only use one indenting tab with 8 shift width."
+    echo "Note this includes the Tiberian Sun mod, which is very experimental."
+    echo "Report bugs at https://github.com/OpenRA/OpenRA/issues."
+    post_upgrade
+}
+
+post_remove() {
+    echo "openra downloaded data files to ~/.openra/Content and you might want"
+    echo "to delete those."
+    post_upgrade
+}

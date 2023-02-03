@@ -1,0 +1,10 @@
+pkg
+src
+OpenRA
+*.xz
+*.gz
+Changelog.md
+*.patch
+.*.swp
+octave-workspace
+*.zst
