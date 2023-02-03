@@ -1,0 +1,18 @@
+pkgbase = python-xmldiff-git
+	pkgdesc = A library and command line utility for diffing xml
+	pkgver = 2.5.r2.g27dc2be
+	pkgrel = 1
+	url = https://github.com/Shoobx/xmldiff
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lxml
+	depends = python-six
+	provides = python-xmldiff
+	conflicts = python-xmldiff
+	source = python-xmldiff-git::git+https://github.com/Shoobx/xmldiff.git
+	sha256sums = SKIP
+
+pkgname = python-xmldiff-git
