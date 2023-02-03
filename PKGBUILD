@@ -1,7 +1,7 @@
 # Maintainer: Faerbit <faerbit at gmail dot com>
 
 pkgname=usbguard-notifier
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A tool for detecting usbguard policy and device presence changes"
 arch=('x86_64')
