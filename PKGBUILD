@@ -1,10 +1,10 @@
-# Maintainer: orange <?>
+# Maintainer: vice <adambadran@me.com>
 # Contributor: sum01 <sum01@protonmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Ryan Thomas <ryant0000@gmail.com>
 pkgname=xmrig-donateless
 _pkgname='xmrig'
-pkgver=6.18.1
+pkgver=6.19.0
 pkgrel=1
 pkgdesc='High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner - No Donate Version'
 arch=('x86_64' 'armv7h' 'aarch64')
