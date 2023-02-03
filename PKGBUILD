@@ -1,7 +1,7 @@
 # Maintainer: archcrack <johndoe.arch@outlook.com>
 
 pkgname=clifm
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="The command line file manager"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ url="https://github.com/leo-arch/clifm"
 license=(GPL2)
 provides=('clifm')
 depends=('libcap' 'readline' 'acl' 'file')
-makedepends=('make')
+makedepends=('make' 'gzip')
 optdepends=(
 	'archivemount: Archives mount'
 	'atool: Archives/compression support'
@@ -21,7 +21,7 @@ optdepends=(
 	'udisks2: (un)mount storage devices'
 	)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leo-arch/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('75a39e1c7a16c993676f65d23f4e7758ac00a6b18c914ff689e776f27402014b')
+sha256sums=('b3c0bd5875009dccca8f69c6c25946f13584a34ee773af769fa53186a0e186e2')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
