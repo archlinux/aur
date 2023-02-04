@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 1.45.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/immich-app/immich
 	arch = x86_64
 	license = MIT
