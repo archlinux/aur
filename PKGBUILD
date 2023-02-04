@@ -31,8 +31,7 @@ pkgver() {
 
 build() {
 	cd shortsync
-	make -C build/ -k all
-	cp -nru build/shortsync bin/
+	make
 }
 
 package() {
