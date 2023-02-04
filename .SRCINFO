@@ -1,6 +1,6 @@
 pkgbase = electron23-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 23
-	pkgver = 23.0.0.beta.6
+	pkgver = 23.0.0.beta.8
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = electron23-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron23=23.0.0.beta.6
-	provides = electron=23.0.0.beta.6
+	provides = electron23=23.0.0.beta.8
+	provides = electron=23.0.0.beta.8
 	conflicts = electron23
-	source_x86_64 = electron23-bin-chromedriver-23.0.0.beta.6-1-x86_64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.6/chromedriver-v23.0.0-beta.6-linux-x64.zip
-	source_x86_64 = electron23-bin-23.0.0.beta.6-1-x86_64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.6/electron-v23.0.0-beta.6-linux-x64.zip
-	sha256sums_x86_64 = 44f8477d408237d06bdd0f694c6e3079130e2ab116570c05e49a3e2727e10cc3
-	sha256sums_x86_64 = 0cd0ea0a1ef0c5a2be6741e1de3932fdccc6c6ebcae500b49c47e343450d22ff
-	source_aarch64 = electron23-bin-chromedriver-23.0.0.beta.6-1-aarch64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.6/chromedriver-v23.0.0-beta.6-linux-arm64.zip
-	source_aarch64 = electron23-bin-23.0.0.beta.6-1-aarch64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.6/electron-v23.0.0-beta.6-linux-arm64.zip
-	sha256sums_aarch64 = c1e570695163da60e7c9fd08c90c76de44b7bb55539cad844e91b896ae2adbcb
-	sha256sums_aarch64 = b6521a938b7f8802047793f465f8e28965e94610e791d53874883fa04937617b
+	source_x86_64 = electron23-bin-chromedriver-23.0.0.beta.8-1-x86_64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.8/chromedriver-v23.0.0-beta.8-linux-x64.zip
+	source_x86_64 = electron23-bin-23.0.0.beta.8-1-x86_64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.8/electron-v23.0.0-beta.8-linux-x64.zip
+	sha256sums_x86_64 = afce2ed2a2c7eb42f9f2f30f8bfb6fb3959ac6f4d590ebf2ec11140b62682fee
+	sha256sums_x86_64 = d6b72a0b9f6bed1e1ebd87c223aeb8714af5dcfadbca8f67282498c66d57a950
+	source_aarch64 = electron23-bin-chromedriver-23.0.0.beta.8-1-aarch64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.8/chromedriver-v23.0.0-beta.8-linux-arm64.zip
+	source_aarch64 = electron23-bin-23.0.0.beta.8-1-aarch64.zip::https://github.com/electron/electron/releases/download/v23.0.0-beta.8/electron-v23.0.0-beta.8-linux-arm64.zip
+	sha256sums_aarch64 = ba4cf1ca0fe8559decd4a1ceec77c32a8b2e84df1165e702206d0b673b89bec0
+	sha256sums_aarch64 = ab238e741080a1a08486c0da7f58b8dfe0a91b93c59ab6f739888b839526794a
 
 pkgname = electron23-bin
