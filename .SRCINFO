@@ -1,11 +1,13 @@
 pkgbase = python-result
 	pkgdesc = A rust-like result type for Python
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/result
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	source = python-result-0.9.0.tar.gz::https://pypi.org/packages/source/r/result/result-0.9.0.tar.gz
 	sha256sums = cc4147c824221e8326d143a55065ec17b6337a9c0dda7700f7f947ca33ac63fd
