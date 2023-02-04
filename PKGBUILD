@@ -11,7 +11,7 @@ depends=(python-niapy python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('5aec85ce9a94d0d67912685c58eed4df8086e04d617b2a8ec1379dac11361609e2c417151f0f4c51850396bd4dd3cbc94cf51648e3f54ad410506f07875edbf6')
+sha512sums=('6513879a1843be932f271ad3a1d6bd92736a7d7c2e3dbd37c543f6c49563c10281ffeba2e2133dbb182cb68a68287a8bb61ba508a756ef094858ffb0c5e96aa9')
 
 build() {
   cd ${_base}-${pkgver}
