@@ -1,0 +1,73 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5b73173..963681d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -985,16 +985,14 @@ IF(ENABLE_PFVFLOW AND ENABLE_LINSOLV)
+   ENDIF(DEFINED SUITESPARSEPATH)
+   FIND_PACKAGE(Cholmod)
+   FIND_PACKAGE(OpenBlas)
+-  FIND_PACKAGE(Metis)
+
+-  IF(CHOLMOD_FOUND AND OPENBLAS_FOUND AND METIS_FOUND AND CGAL_FOUND)
++  IF(CHOLMOD_FOUND AND OPENBLAS_FOUND  AND CGAL_FOUND)
+     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CGAL_DEFINITIONS} -DLINSOLV")
+
+-    SET(LINKLIBS  "${LINKLIBS};${CHOLMOD_LIBRARIES};${AMD_LIBRARY};${CAMD_LIBRARY};${COLAMD_LIBRARY};${CCOLAMD_LIBRARY};${OPENBLAS_LIBRARY};${METIS_LIBRARY};${SUITESPARSE_LIBRARY};${SUITESPARSECONFIG_LIBRARY}")
+-    INCLUDE_DIRECTORIES(${METIS_INCLUDE_DIR} ${CHOLMOD_INCLUDE_DIR} ${BLAS_INCLUDE_DIR})
++    SET(LINKLIBS  "${LINKLIBS};${CHOLMOD_LIBRARIES};${AMD_LIBRARY};${CAMD_LIBRARY};${COLAMD_LIBRARY};${CCOLAMD_LIBRARY};${OPENBLAS_LIBRARY};${SUITESPARSE_LIBRARY};${SUITESPARSECONFIG_LIBRARY}")
++    INCLUDE_DIRECTORIES(${CHOLMOD_INCLUDE_DIR} ${BLAS_INCLUDE_DIR})
+     MESSAGE(STATUS "Found Cholmod in " ${CHOLMOD_LIBRARIES})
+     MESSAGE(STATUS "Found OpenBlas in " ${OPENBLAS_LIBRARY})
+-    MESSAGE(STATUS "Found Metis in " ${METIS_LIBRARY})
+     SET(CONFIGURED_FEATS "${CONFIGURED_FEATS} LINSOLV")
+
+     IF(CHOLMOD_GPU)
+@@ -1015,11 +1013,11 @@ IF(ENABLE_PFVFLOW AND ENABLE_LINSOLV)
+       SET(DISABLED_FEATS "${DISABLED_FEATS} CHOLMOD_GPU")
+     ENDIF(CHOLMOD_GPU)
+
+-  ELSE(CHOLMOD_FOUND AND OPENBLAS_FOUND AND METIS_FOUND AND CGAL_FOUND)
++  ELSE(CHOLMOD_FOUND AND OPENBLAS_FOUND AND CGAL_FOUND)
+     MESSAGE(STATUS "Missing dependency for LINSOLV, disabled")
+     SET(DISABLED_FEATS "${DISABLED_FEATS} LINSOLV")
+     SET(ENABLE_LINSOLV OFF)
+-  ENDIF(CHOLMOD_FOUND AND OPENBLAS_FOUND AND METIS_FOUND AND CGAL_FOUND)
++  ENDIF(CHOLMOD_FOUND AND OPENBLAS_FOUND AND CGAL_FOUND)
+ ELSE(ENABLE_PFVFLOW AND ENABLE_LINSOLV)
+   SET(DISABLED_FEATS "${DISABLED_FEATS} LINSOLV")
+       IF(ENABLE_TWOPHASEFLOW)
+diff --git a/py/_libVersions.cpp b/py/_libVersions.cpp
+index e4bb22f..9bff6ae 100644
+--- a/py/_libVersions.cpp
++++ b/py/_libVersions.cpp
+@@ -243,21 +243,21 @@ py::list openblasVer() { return {}; }
+
+ #if defined(LINSOLV) || defined(FLOW_ENGINE)
+ // 16. metis
+-#include <metis.h>
++#include <cholmod.h>
+ py::list metisVer()
+ {
+ 	py::list ret;
+ // https://gcc.gnu.org/onlinedocs/cpp/Elif.html
+-#if defined(METIS_VER_MAJOR) && defined(METIS_VER_MINOR) && defined(METIS_VER_SUBMINOR)
+-	ret.append(py::make_tuple(METIS_VER_MAJOR, METIS_VER_MINOR, METIS_VER_SUBMINOR));
++#if defined(CHOLMOD_MAIN_VERSION) && defined(CHOLMOD_SUB_VERSION) && defined(CHOLMOD_SUBSUB_VERSION)
++	ret.append(py::make_tuple(CHOLMOD_MAIN_VERSION, CHOLMOD_SUB_VERSION, CHOLMOD_SUBSUB_VERSION));
+ 	ret.append(
+-	        boost::lexical_cast<std::string>(METIS_VER_MAJOR) + "." + boost::lexical_cast<std::string>(METIS_VER_MINOR) + "."
+-	        + boost::lexical_cast<std::string>(METIS_VER_SUBMINOR));
+-#elif defined(MTMETIS_VER_MAJOR) && defined(MTMETIS_VER_MINOR) && defined(MTMETIS_VER_SUBMINOR)
+-	ret.append(py::make_tuple(MTMETIS_VER_MAJOR, MTMETIS_VER_MINOR, MTMETIS_VER_SUBMINOR));
++	        boost::lexical_cast<std::string>(CHOLMOD_MAIN_VERSION) + "." + boost::lexical_cast<std::string>(CHOLMOD_SUB_VERSION) + "."
++	        + boost::lexical_cast<std::string>(CHOLMOD_SUBSUB_VERSION));
++#elif defined(MTCHOLMOD_MAIN_VERSION) && defined(MTCHOLMOD_SUB_VERSION) && defined(MTCHOLMOD_SUBSUB_VERSION)
++	ret.append(py::make_tuple(MTCHOLMOD_MAIN_VERSION, MTCHOLMOD_SUB_VERSION, MTCHOLMOD_SUBSUB_VERSION));
+ 	ret.append(
+-	        "mt:" + boost::lexical_cast<std::string>(MTMETIS_VER_MAJOR) + "." + boost::lexical_cast<std::string>(MTMETIS_VER_MINOR) + "."
+-	        + boost::lexical_cast<std::string>(MTMETIS_VER_SUBMINOR));
++	        "mt:" + boost::lexical_cast<std::string>(MTCHOLMOD_MAIN_VERSION) + "." + boost::lexical_cast<std::string>(MTCHOLMOD_SUB_VERSION) + "."
++	        + boost::lexical_cast<std::string>(MTCHOLMOD_SUBSUB_VERSION));
+ #elif defined(PARMETIS_MAJOR_VERSION) && defined(PARMETIS_MINOR_VERSION) && defined(PARMETIS_SUBMINOR_VERSION)
+ 	ret.append(py::make_tuple(PARMETIS_MAJOR_VERSION, PARMETIS_MINOR_VERSION, PARMETIS_SUBMINOR_VERSION));
+ 	ret.append(
