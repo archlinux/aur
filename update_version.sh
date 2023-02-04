@@ -14,7 +14,8 @@ PKG="microsoft-edge-${CHANNEL}"
 VER=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
     grep -A6 "Package: ${PKG}" |
     awk '/Version/{print $2}' |
-	cut -d '-' -f1 |
+    cut -d '-' -f1 |
+    sort -rV |
     head -n1)
 
 # Insert latest version into PKGBUILD and update hashes
@@ -31,6 +32,7 @@ fi
 # updpkgsums
 SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
     grep -A15 "Package: ${PKG}" |
+    grep -A14 "Version: ${VER}" |
     awk '/SHA256/{print $2}' |
     head -n1)
 
@@ -53,7 +55,7 @@ if [[ ! -d "$CHROOT" ]]; then
 fi
 
 # Start generate package
-# makechrootpkg -c -r $CHROOT -- -Acsf .
+makechrootpkg -c -r $CHROOT -- -Acsf .
 
 # Update .SRCINFO
 makepkg --printsrcinfo >.SRCINFO
