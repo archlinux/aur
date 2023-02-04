@@ -7,7 +7,7 @@ provides=('python-cantools')
 conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
-pkgver=37.1.2
+pkgver=38.0.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL3')
@@ -21,7 +21,7 @@ depends=(
 optdepends=('python-matplotlib: plot decoded messages')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('95cf62c0532b90d5e700cbefec906729')
+md5sums=('44fc4db1217f54dbe4608314fe3d6b79')
 
 package() {
 	cd "$srcdir/$_gitname-$pkgver"

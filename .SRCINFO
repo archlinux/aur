@@ -1,6 +1,6 @@
 pkgbase = python-cantools
 	pkgdesc = Python CAN bus tools in Python 3
-	pkgver = 37.1.2
+	pkgver = 38.0.2
 	pkgrel = 1
 	url = https://github.com/eerimoq/cantools
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = python-cantools
 	optdepends = python-matplotlib: plot decoded messages
 	provides = python-cantools
 	conflicts = python-cantools
-	source = python-cantools-37.1.2.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/37.1.2.tar.gz
-	md5sums = 95cf62c0532b90d5e700cbefec906729
+	source = python-cantools-38.0.2.tar.gz::https://github.com/eerimoq/cantools/archive/refs/tags/38.0.2.tar.gz
+	md5sums = 44fc4db1217f54dbe4608314fe3d6b79
 
 pkgname = python-cantools
