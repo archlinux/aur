@@ -3,8 +3,9 @@
 pkgname=directxmath
 pkgdesc="All inline SIMD C++ linear algebra library for use in games and graphics apps"
 pkgver=dec2022
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
+depends=('sal')
 makedepends=('cmake')
 url="https://go.microsoft.com/fwlink/?LinkID=615560"
 license=('MIT')

@@ -1,11 +1,12 @@
 pkgbase = directxmath
 	pkgdesc = All inline SIMD C++ linear algebra library for use in games and graphics apps
 	pkgver = dec2022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go.microsoft.com/fwlink/?LinkID=615560
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	depends = sal
 	options = staticlibs
 	options = !strip
 	source = directxmath-dec2022.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/dec2022.tar.gz
