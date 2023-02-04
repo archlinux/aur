@@ -3,15 +3,15 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 _base=datashader
 pkgname=python-${_base}
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="Quickly and accurately render even the largest data"
 arch=(any)
 url="https://${_base}.org"
 license=('custom:BSD-3-clause')
-depends=(python-dask python-datashape python-numba python-pillow python-xarray python-colorcet python-scipy) #python-requests
+depends=(python-colorcet python-dask python-datashape python-numba python-pillow python-xarray python-scipy) #python-requests
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('d0673bea19e95ec1f43e50eb8868c2a76cbcf15774199e657e781e419e2e8aff5efbe42503af292cfc0b9f63ad38f5c0094a2ded570affa8110a2d1a302f270f')
+sha512sums=('71d4c0c6a5f3c42c2f22e07273435f5f98d9e117018b588bbcf791c9e73a7e91c3f4c01407065233ae5731f38632a7f6c3da0542abb7416bca3f77092e382b22')
 
 build() {
   cd ${_base}-${pkgver}
