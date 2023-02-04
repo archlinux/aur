@@ -1,6 +1,6 @@
 # Maintainer: Duale Siad <me@wale.id.au>
 pkgname=bandsnatch
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A CLI batch downloader for your Bandcamp collection."
 url="https://github.com/Ovyerus/bandsnatch"
