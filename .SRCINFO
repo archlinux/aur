@@ -1,0 +1,21 @@
+pkgbase = gen-tools
+	pkgdesc = Tool for generating project templates written in go.
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitea.dancheg97.ru/templates/gen-tools
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	depends = pacman>5
+	depends = git
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+
+pkgname = gen-tools
