@@ -1,11 +1,11 @@
 pkgbase = chatgpt-desktop-git
 	pkgdesc = ChatGPT Desktop Application (Mac, Windows and Linux)
-	pkgver = v0.10.3.r1.gc293f07
-	pkgrel = 1
+	pkgver = 0.10.3+r1+gc293f07
+	pkgrel = 2
 	url = https://github.com/lencx/ChatGPT
 	arch = any
 	license = Apache
-	makedepends = rustup
+	makedepends = rust
 	makedepends = git
 	makedepends = imagemagick
 	depends = openssl-1.1

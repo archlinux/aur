@@ -3,26 +3,26 @@
 
 pkgname=chatgpt-desktop-git
 _pkgname=ChatGPT
-pkgver=v0.10.3.r1.gc293f07
-pkgrel=1
+pkgver=0.10.3+r1+gc293f07
+pkgrel=2
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=('any')
 url="https://github.com/lencx/ChatGPT"
 license=("Apache")
 provides=("chatgpt-desktop")
 conflitct=("chatgpt-desktop")
-makedepends=("rustup" "git" "imagemagick")
+makedepends=("rust" "git" "imagemagick")
 depends=("openssl-1.1" "webkit2gtk")
 md5sums=("SKIP" "538f46d4c0285194f7c89c5c14969f7a")
 source=("git+https://github.com/lencx/ChatGPT.git" chatgpt.desktop)
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-	mkdir "${_pkgname}/dist"
+	mkdir -p "${_pkgname}/dist"
 }
 
 build() {
