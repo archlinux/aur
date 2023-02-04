@@ -1,12 +1,13 @@
 diff --git a/makefile b/makefile
-index 503c030..4146ba2 100644
+index 855c358..54a9d59 100644
 --- a/makefile
 +++ b/makefile
 @@ -3,7 +3,7 @@
  # To regenerate run ``niminst csource`` or ``koch csource``
  
  CC ?= gcc
--CFLAGS += -Ic_code -w -O3 -fno-strict-aliasing
-+CFLAGS += -Ic_code -w -fno-strict-aliasing
- LDFLAGS +=
+-CFLAGS += -Ic_code -w -fmax-errors=3 -O3 -fno-strict-aliasing -fno-ident -fno-math-errno 
++CFLAGS += -Ic_code -w -fmax-errors=3 -fno-strict-aliasing -fno-ident -fno-math-errno 
+ LDFLAGS += 
  binDir = bin
+ 

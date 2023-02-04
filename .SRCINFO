@@ -1,6 +1,6 @@
 pkgbase = nim-git
 	pkgdesc = Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).
-	pkgver = 1.4.6.r1321.a9ae5fe5b
+	pkgver = 1.6.8.r1070.9afb466d73
 	pkgrel = 1
 	epoch = 1
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = nim-git
 	backup = etc/nim/nimdoc.tex.cfg
 	backup = etc/nim/rename.rules.cfg
 	source = git+https://github.com/nim-lang/Nim
-	source = git+https://github.com/nim-lang/csources_v1
+	source = git+https://github.com/nim-lang/csources_v2
 	source = git+https://github.com/nim-lang/nimble
 	source = makepkg-conf.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 98417afe7b99aa978f57aa724a962d79d7633fcd702a5fbe2d14c67c94447dd1
+	sha256sums = a70ff09cea18ddf0b13fe732846426a7a0c10e9f4187a62228b3c2e3d091d996
 
 pkgname = nim-git
 	url = https://nim-lang.org/
@@ -59,4 +59,3 @@ pkgname = nim-gdb-git
 	provides = nim-gdb
 	conflicts = nimp-gdb
 	backup = 
-

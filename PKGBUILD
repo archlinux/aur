@@ -1,4 +1,5 @@
 # Maintainer: Dan Beste  <dan.ray.beste+aur@gmail.com>
+# Maintainer: Chengrui Chen <chengruichen3@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Dominik Picheta <morfeusz8@gmail.com>
@@ -10,7 +11,7 @@ pkgbase='nim-git'
 pkgname=('nim-git' 'nimble-git' 'nimsuggest-git' 'nimpretty-git' 'nim-gdb-git')
 pkgdesc='Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).'
 epoch=1
-pkgver=1.4.6.r1321.a9ae5fe5b
+pkgver=1.6.8.r1070.9afb466d73
 pkgrel=1
 arch=('x86_64')
 groups=('nim')
@@ -24,14 +25,14 @@ backup=(
 makedepends=('git')
 source=(
   'git+https://github.com/nim-lang/Nim'
-  'git+https://github.com/nim-lang/csources_v1'
+  'git+https://github.com/nim-lang/csources_v2'
   'git+https://github.com/nim-lang/nimble'
   'makepkg-conf.patch'
 )
-sha256sums=(
-  'SKIP' 'SKIP' 'SKIP'
-  '98417afe7b99aa978f57aa724a962d79d7633fcd702a5fbe2d14c67c94447dd1'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'a70ff09cea18ddf0b13fe732846426a7a0c10e9f4187a62228b3c2e3d091d996')
 
 _tag() {
   # Grab the most recent non-annotated tag:
@@ -64,11 +65,11 @@ prepare() {
   # Upstream "pins" supported commits:
   local -r hash="$(grep 'nim_csourcesHash' config/build_config.txt | grep -Eio '[0-9a-z]{40}')"
 
-  [[ -d ./csources_v1 ]] && rm -rf ./csources_v1
+  [[ -d ./csources_v2 ]] && rm -rf ./csources_v2
 
-  cp -r "${srcdir}/csources_v1" .
+  cp -r "${srcdir}/csources_v2" .
 
-  cd csources_v1
+  cd csources_v2
 
   # Checkout the "pinned" commit:
   git -c advice.detachedHead=false checkout "$hash"
