@@ -1,4 +1,4 @@
-# Maintainer: <Name of maintainer> <email>
+# Maintainer: Ruben Kharel <talkto@rubenk.com.np>
 
 pkgname=nepali-calendar-gtk-git
 _pkgname=nepali-calendar
