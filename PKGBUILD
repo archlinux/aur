@@ -1,8 +1,8 @@
 # Maintainer: Blessing-Studio  <Blessing-Studio @ Github>
 pkgname=wonderlab-git
 _pkgname=WonderLab
-pkgver=1.0.1.8
-pkgrel=3
+pkgver=1.0.1.9
+pkgrel=1
 epoch=
 pkgdesc="下一代跨平台 Minecraft 启动器"
 arch=('x86_64')
