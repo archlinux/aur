@@ -1,6 +1,6 @@
 pkgbase = fex-emu
 	pkgdesc = Fast usermode x86 and x86-64 emulator for Arm64
-	pkgver = 2301
+	pkgver = 2302
 	pkgrel = 1
 	url = https://fex-emu.com
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = fex-emu
 	makedepends = ninja
 	makedepends = clang
 	makedepends = llvm
+	makedepends = python-setuptools
 	depends = sdl2
 	depends = libepoxy
 	depends = squashfs-tools
