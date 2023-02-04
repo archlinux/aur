@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=22.12.1
+pkgver=22.12.2
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -22,13 +22,12 @@ optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video 
 groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
         dolphin-meld.patch)
-sha256sums=('7f694aa000090ec501f7318fca15c980e57addd4d1532862d2250a8840d88cea'
+sha256sums=('e0e1cfd10e76f95db62c2c0b02df9ba99020d0f18786ca90fb47c377f9de573e'
             'SKIP'
             '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
-options=(debug)
 
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < $pkgname.patch
