@@ -3,7 +3,7 @@
 
 pkgname=openbooks-bin
 binaryname=openbooks
-pkgver=4.3.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Openbooks allows you to download ebooks from irc.irchighway.net quickly and easily."
 provides=('openbooks')
@@ -13,9 +13,9 @@ source=("https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md"
 source_aarch64=("$binaryname::https://github.com/evan-buss/openbooks/releases/download/v$pkgver/openbooks_linux_arm")
 source_x86_64=("$binaryname::https://github.com/evan-buss/openbooks/releases/download/v$pkgver/openbooks_linux")
 
-sha256sums=('e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99')
-sha256sums_aarch64=('ac617ed45fc644a66398747531f7840c68b825ac60ca326f9306193f937231c8')
-sha256sums_x86_64=('accc03c211dba75be461dc45713a5eb98bf3218371224398d388770dc1398644')
+sha256sums=('325d0ea858b3506ade1c2303c86307136dc6c5b14f5a16b15b42cd27cf513fa9')
+sha256sums_aarch64=('dc7c168f9c24141f991c337fc332e14d91268e7f7fdf49e04687833ff0d3b16d')
+sha256sums_x86_64=('efa4e2dec2fd40374bb222a233b0ba612c64495d760500a6881ed8a040065d4d')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" \
