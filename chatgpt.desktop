@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Development;
+Comment=ChatGPT Desktop Application
+Exec=/usr/bin/chatgpt
+Icon=chatgpt
+Name=ChatGPT
+Terminal=false
+StartupNotify=true
+Type=Application
