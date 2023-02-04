@@ -2,7 +2,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=polymc-qt5-bin
-pkgver=1.4.3
+pkgver=5.0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/PolyMC/PolyMC/releases/download/${pkgver}/PolyMC-Linux-${pkgver}.tar.gz")
 noextract=("PolyMC-Linux-${pkgver}.tar.gz")
-sha256sums=('4cd3911e33ca94567253860f40f47c9fad8e885f3dd7c423ecd7055aa9347197')
+sha256sums=('e82d614fdccb8a61e03f9b0e079965bba676d77ef8187be9c8d9a4dd24d9a796')
 
 package() {
     install -d "$pkgdir/usr"
