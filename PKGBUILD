@@ -5,15 +5,16 @@ pkgname=('libcutensor'
          'libcutensor-common'
          'libcutensor-cuda10.2'
          'libcutensor-cuda11.0'
+         'libcutensor-cuda12'
          )
-pkgver=1.6.0.3
+pkgver=1.6.2.3
 pkgrel=1
 pkgdesc="GPU-accelerated tensor linear algebra library"
 arch=('x86_64')
 url='https://developer.nvidia.com/cutensor'
 license=('custom:NVIDIA')
 source=("libcutensor-linux-x86_64-${pkgver}.tar.xz::https://developer.download.nvidia.com/compute/cutensor/redist/libcutensor/linux-x86_64/libcutensor-linux-x86_64-${pkgver}-archive.tar.xz")
-sha256sums=('b07e32a37eee1df7d9330e6d7faf9baf7fffd58007e2544164ea30aec49a5281')
+sha256sums=('0f2745681b1d0556f9f46ff6af4937662793498d7367b5f8f6b8625ac051629e')
 
 _create_links() {
   # create soname links
@@ -24,6 +25,10 @@ _create_links() {
     [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
   done
 }
+
+# build() {
+# exit
+# }
 
 package_libcutensor() {
   depends=('gcc-libs'
@@ -43,7 +48,7 @@ package_libcutensor() {
 }
 
 package_libcutensor-cuda10.2() {
-  pkgdesc="GPU-accelerated tensor linear algebra library (CUDA 10.2)"
+  pkgdesc+=" (CUDA 10.2)"
   depends=('gcc-libs'
            'cuda-10.2'
            "libcutensor-common=${pkgver}"
@@ -62,7 +67,7 @@ package_libcutensor-cuda10.2() {
 }
 
 package_libcutensor-cuda11.0() {
-  pkgdesc="GPU-accelerated tensor linear algebra library (CUDA 11.0)"
+  pkgdesc+=" (CUDA 11.0)"
   depends=('gcc-libs'
            'cuda-11.0'
            "libcutensor-common=${pkgver}"
@@ -80,8 +85,27 @@ package_libcutensor-cuda11.0() {
   ln -s /usr/share/licenses/libcutensor-common/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
 
+package_libcutensor-cuda12() {
+  pkgdesc+=" (CUDA 12)"
+  depends=('gcc-libs'
+           'cuda-12.0'
+           "libcutensor-common=${pkgver}"
+           )
+
+  cd "libcutensor-linux-x86_64-${pkgver}-archive"
+  install -Dm644 lib/12/libcutensor_static.a         "${pkgdir}/opt/cuda-12/targets/x86_64-linux/lib/libcutensor_static.a"
+  install -Dm644 lib/12/libcutensorMg_static.a         "${pkgdir}/opt/cuda-12/targets/x86_64-linux/lib/libcutensorMg_static.a"
+  install -Dm755 "lib/12/libcutensor.so.${pkgver:0:5}" "${pkgdir}/opt/cuda-12/targets/x86_64-linux/lib/libcutensor.so.${pkgver:0:5}"
+  install -Dm755 "lib/12/libcutensorMg.so.${pkgver:0:5}" "${pkgdir}/opt/cuda-12/targets/x86_64-linux/lib/libcutensorMg.so.${pkgver:0:5}"
+
+  _create_links
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s /usr/share/licenses/libcutensor-common/license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
+}
+
 package_libcutensor-common() {
-  pkgdesc="GPU-accelerated tensor linear algebra library (Common bits)"
+  pkgdesc+=" (Common bits)"
   arch=('any')
 
   cd "libcutensor-linux-x86_64-${pkgver}-archive"
