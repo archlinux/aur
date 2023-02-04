@@ -1,13 +1,20 @@
 pkgbase = python-pyspark
 	pkgdesc = Apache Spark Python API
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://pypi.org/project/pysparkpyspark
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	depends = python-future
-	source = https://pypi.org/packages/source/p/pyspark/pyspark-3.3.0.tar.gz
-	sha256sums = 7ebe8e9505647b4d124d5a82fca60dfd3891021cf8ad6c5ec88777eeece92cf7
+	optdepends = python-pandas
+	optdepends = python-pyarrow
+	optdepends = python-psutil
+	optdepends = python-scikit-learn
+	optdepends = python-tornado
+	optdepends = python-typing_extensions
+	optdepends = python-matplotlib
+	optdepends = ipython
+	source = https://pypi.org/packages/source/p/pyspark/pyspark-3.3.1.tar.gz
+	sha256sums = e99fa7de92be406884bfd831c32b9306a3a99de44cfc39a2eefb6ed07445d5fa
 
 pkgname = python-pyspark

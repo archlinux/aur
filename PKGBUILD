@@ -2,16 +2,16 @@
 
 _pkgname=pyspark
 pkgname=python-${_pkgname}
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Apache Spark Python API"
 arch=('any')
 url="https://pypi.org/project/pyspark${_pkgname}"
 license=('GPL2')
-depends=('python-future')
+optdepends=('python-pandas' 'python-pyarrow' 'python-psutil' 'python-scikit-learn' 'python-tornado' 'python-typing_extensions' 'python-matplotlib' 'ipython')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('7ebe8e9505647b4d124d5a82fca60dfd3891021cf8ad6c5ec88777eeece92cf7')
+sha256sums=('e99fa7de92be406884bfd831c32b9306a3a99de44cfc39a2eefb6ed07445d5fa')
 
 build() {
     cd "${_pkgname}-$pkgver"
