@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -38,6 +38,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         '070-ffmpeg-fix-v4l2-memory-leak.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/30aa0c3f4873a92c5e3da8ba8cf030de56bf4cf7'
+        '080-ffmpeg-vulkan-headers-1.3.240-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/eb0455d64690eed0068e5cb202f72ecdf899837c'
         'LICENSE')
 sha256sums=('619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc'
             'SKIP'
@@ -46,6 +47,7 @@ sha256sums=('619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc'
             '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
             'b1d68f626168f2409a4b0987acf5b208e7ced2ddab49b11990a10f458d377e9a'
             '9e4e290378028cd4474c36d3e3a25f77d4f40424dbd3115632e20c5734b50979'
+            '99369be480f6ccd9ba2964961141869ff362505e605cd9fe6ba78228ca1f788d'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -57,6 +59,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-fix-v4l2-memory-leak.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-vulkan-headers-1.3.240-fix.patch"
 }
 
 build() {
