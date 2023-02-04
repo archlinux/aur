@@ -13,7 +13,7 @@ makedepends=("go>=1.18")
 provides=('nali')
 conflicts=('nali')
 source=("https://github.com/zu1k/nali/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('059ea9a522db9d5133455e2e1a4fa66ee2f0cba37554bfc1d7c963105aca4139')
+sha256sums=('443bb5d938c2abafd74a0e1d932eb5966b0f6d2aae7a784e4899c152efb818a1')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
