@@ -30,6 +30,7 @@ build() {
 }
 
 check() {
+  ninja -C build gen-test-data
   ninja -C build test
 }
 
