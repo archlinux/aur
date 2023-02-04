@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-display
 	pkgdesc = Ayatana Indicator Display
-	pkgver = 22.9.3
+	pkgver = 22.9.4
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-display
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ayatana-indicator-display
 	makedepends = hicolor-icon-theme
 	depends = xsct
 	depends = libayatana-common
-	source = ayatana-indicator-display-22.9.3.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/22.9.3.tar.gz
-	md5sums = 220600fe813c997a7a73dc3cb06ae718
+	source = ayatana-indicator-display-22.9.4.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/22.9.4.tar.gz
+	md5sums = 73c4c2164ae617aefabc8fc872cf2144
 
 pkgname = ayatana-indicator-display
