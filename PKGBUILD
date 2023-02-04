@@ -6,7 +6,7 @@ _pkgname_base="mediawiki-skin-${_skinname_lowercase}"
 
 pkgname="${_pkgname_base}-git"
 pkgver=1.1.15.r32.g4282f3c
-pkgrel=2
+pkgrel=3
 pkgdesc="Lakeus is a MediaWiki skin that aims to provide a simple but all-functional experience, named after a character in the novel of one of the authors, Lakejason0."
 arch=('any')
 url="https://www.mediawiki.org/wiki/Skin:${_skinname}"
@@ -17,11 +17,6 @@ provides=("$_pkgname_base")
 conflicts=("$_pkgname_base")
 source=("git+https://github.com/lakejason0/mediawiki-skins-Lakeus.git")
 sha512sums=('SKIP')
-
-prepare()
-{
-	cd "mediawiki-skins-$_skinname"
-}
 
 pkgver()
 {

@@ -1,7 +1,7 @@
 pkgbase = mediawiki-skin-lakeus-git
 	pkgdesc = Lakeus is a MediaWiki skin that aims to provide a simple but all-functional experience, named after a character in the novel of one of the authors, Lakejason0.
 	pkgver = 1.1.15.r32.g4282f3c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mediawiki.org/wiki/Skin:Lakeus
 	arch = any
 	license = GPL3
