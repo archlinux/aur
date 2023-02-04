@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compositions
-_pkgver=2.0-4
+_pkgver=2.0-5
 pkgname=r-${_pkgname,,}
-pkgver=2.0.4
-pkgrel=4
+pkgver=2.0.5
+pkgrel=1
 pkgdesc='Compositional Data Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b9c7a3bf654fb02d9eb1b4a7566469b2f5232f3b2c1b324c02239fd31060faf')
+sha256sums=('a1b84b23f3fa5d7793318a6b6ad44f50b9653efccfb753a5952ccb11d1662c5a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

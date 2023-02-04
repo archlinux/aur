@@ -1,7 +1,7 @@
 pkgbase = r-compositions
 	pkgdesc = Compositional Data Analysis
-	pkgver = 2.0.4
-	pkgrel = 4
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=compositions
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-compositions
 	optdepends = r-knitr
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/compositions_2.0-4.tar.gz
-	sha256sums = 7b9c7a3bf654fb02d9eb1b4a7566469b2f5232f3b2c1b324c02239fd31060faf
+	source = https://cran.r-project.org/src/contrib/compositions_2.0-5.tar.gz
+	sha256sums = a1b84b23f3fa5d7793318a6b6ad44f50b9653efccfb753a5952ccb11d1662c5a
 
 pkgname = r-compositions
