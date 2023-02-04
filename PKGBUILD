@@ -4,7 +4,7 @@ _arch=aarch64
 _target=$_arch-none-elf
 pkgname=$_target-toolchain
 pkgver=20230203
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
@@ -44,7 +44,7 @@ build()
 	cd "${srcdir}"/obj
 	"${srcdir}"/binutils-gdb/configure --prefix=/usr --libexecdir=/usr/lib --target=${_target} --enable-languages=c,c++ --disable-libstdcxx-pch \
 	--with-newlib --with-libgloss --with-system-zlib --disable-nls --enable-plugins --enable-deterministic-archives --enable-relro --enable-__cxa_atexit \
-	--enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions
+	--enable-linker-build-id --enable-plugin --enable-checking=release --enable-host-shared --disable-libssp --disable-libunwind-exceptions --disable-source-highlight
 
 	make
 }
