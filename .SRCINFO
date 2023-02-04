@@ -27,6 +27,7 @@ pkgbase = yade
 	depends = python-xlib
 	depends = python-future
 	depends = python-pyqt5
+	depends = python-pyqt5-webengine
 	depends = vtk
 	depends = metis
 	depends = python-matplotlib
@@ -37,7 +38,9 @@ pkgbase = yade
 	options = !lto
 	source = trunk-2023.02a.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/2023.02a/trunk-2023.02a.tar.gz
 	source = suitesparse-ver.patch
+	source = qtwebkit.patch
 	sha512sums = d93247bf86f9aa711b27b4258b711d5be448c8bffb78df8bc3a0691bb0d986ffe876a47a70eed43b1729b496ffd892f4d1137a397bc038539e95b695173da53c
 	sha512sums = 209893bfa477a0cc1086dde2c3fa216a4e4e28da612b4d55f9be2250cc2f15cbf8266749ffd44b89039efd0dc02e6a2076db0fff12f15e9a8b7c8a3d792b4104
+	sha512sums = 6725a5f8d3bde9add6597085c0e635aeb0480fdddb5335c07206185f5de4ea66ef4ed16e12e4b6533b996f3d2c62ddc6a618cc682c2a976516447a24b10a5288
 
 pkgname = yade
