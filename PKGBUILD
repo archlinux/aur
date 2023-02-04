@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=yudit
+pkgname=yudit-beta
 pkgver=3.1.0.beta6
 pkgrel=1
 pkgdesc="A free Unicode plain-text editor for Unix-like systems - beta version"
