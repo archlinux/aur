@@ -1,0 +1,13 @@
+pkgbase = isight-firmware
+	pkgdesc = Non-free firmware for Built-in iSight found on Apple machines
+	pkgver = 1
+	pkgrel = 1
+	url = https://archive.org/details/AppleUSBVideoSupport
+	arch = x86_64
+	license = unknown
+	makedepends = isight-firmware-tools
+	depends = isight-firmware-tools
+	source = https://archive.org/download/AppleUSBVideoSupport/AppleUSBVideoSupport
+	sha256sums = fe94c7b8c1d06e6632ef4ac35b4c8fafe5933635e8a330a7eac130c6d67b7d57
+
+pkgname = isight-firmware
