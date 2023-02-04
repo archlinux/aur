@@ -1,0 +1,12 @@
+pkgbase = clickhouse-kafka-connect
+	pkgdesc = official Kafka Connect sink connector for ClickHouse
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/ClickHouse/clickhouse-kafka-connect
+	arch = any
+	license = Apache
+	depends = java-runtime>=11
+	source = https://github.com/ClickHouse/clickhouse-kafka-connect/releases/download/v0.0.7-beta/clickhouse-kafka-connect-0.0.7.zip
+	sha256sums = 63e8c20925415fea344c081266a62035dc24bc6927686dbec30e81f450969398
+
+pkgname = clickhouse-kafka-connect-bin
