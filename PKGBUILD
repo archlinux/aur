@@ -5,7 +5,8 @@ pkgdesc="Texture processing library (mingw-w64)"
 pkgver=jan2023
 pkgrel=1
 arch=('any')
-makedepends=('mingw-w64-cmake' 'mingw-w64-directx-headers-cmake' 'mingw-w64-directxmath' 'ninja')
+depends=('mingw-w64-directx-headers-cmake')
+makedepends=('mingw-w64-cmake' 'mingw-w64-directxmath' 'ninja')
 url="https://go.microsoft.com/fwlink/?LinkId=248926"
 license=('MIT')
 options=('staticlibs' '!strip' '!buildflags')
