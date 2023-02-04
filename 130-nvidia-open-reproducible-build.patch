@@ -16,7 +16,7 @@
 -  HOSTNAME             = $(shell hostname)
 -endif
 +WHOAMI                ?= printf '%s\n' archlinux_builder
-+HOSTNAME              ?= printf '%s\n' archlinux
++HOSTNAME              ?= archlinux
  
  
  NV_AUTO_DEPEND        ?= 1
