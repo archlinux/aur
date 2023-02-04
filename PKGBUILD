@@ -2,10 +2,10 @@
 
 pkgname=heroic-gogdl
 _basever=0.6
-pkgver=0.6+r2
+pkgver=0.6+r13
 pkgrel=1
 _ver_commit=8ab69c63418cb477d5a5074876af2f7fcb221f57
-_cur_commit=51f7521c0cd42c69d4b845a2a9cb41abf4bf0447
+_cur_commit=110a5406dfaeed99ba41d31f9035a534058e40a1
 pkgdesc="GOG Downloading module for Heroic Games Launcher"
 arch=('any')
 url="https://github.com/Heroic-Games-Launcher/heroic-gogdl"
