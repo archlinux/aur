@@ -2,7 +2,7 @@
 
 pkgname=chromaprint-fftw
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for extracting fingerprints from any audio source (uses fftw for FFT calculations instead of ffmpeg)'
 arch=('x86_64')
 url='https://acoustid.org/chromaprint'
@@ -11,8 +11,14 @@ depends=('fftw')
 makedepends=('cmake' 'gtest')
 provides=('chromaprint' 'libchromaprint.so')
 conflicts=('chromaprint')
-source=("https://github.com/acoustid/chromaprint/archive/v${pkgver}/chromaprint-${pkgver}.tar.gz")
-sha256sums=('a1aad8fa3b8b18b78d3755b3767faff9abb67242e01b478ec9a64e190f335e1c')
+source=("https://github.com/acoustid/chromaprint/archive/v${pkgver}/chromaprint-${pkgver}.tar.gz" 
+        '010-chromaprint-gtest-1.13.0-fix.patch')
+sha256sums=('a1aad8fa3b8b18b78d3755b3767faff9abb67242e01b478ec9a64e190f335e1c'
+            '46e389235dd08c727d6cc1ae079a77d06fde337f4a06d0c0fe908d2025280f63')
+
+prepare() {
+    patch -Np1 -d "chromaprint-${pkgver}" -i "${srcdir}/010-chromaprint-gtest-1.13.0-fix.patch"
+}
 
 build() {
     cmake -B build -S "chromaprint-${pkgver}" \
