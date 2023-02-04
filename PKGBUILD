@@ -3,8 +3,8 @@
 # Contributor: aksr <aksr at t-com dot me>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=yudit-beta
-pkgver=3.0.8.beta38
+pkgname=yudit
+pkgver=3.1.0.beta6
 pkgrel=1
 pkgdesc="A free Unicode plain-text editor for Unix-like systems - beta version"
 arch=('i686' 'x86_64')
@@ -14,16 +14,16 @@ depends=('libx11' 'gcc-libs')
 conflicts=('yudit')
 provides=('yudit')
 optdepends=('hunspell: spell checking')
-source=("http://yudit.org/download/betas/${pkgname%-beta}-$pkgver.tar.gz")
-sha256sums=('67683368230bc591c1cca25197e9deb32931a51db6fb8e7faebd504be74e3f5f')
+source=("http://yudit.org/download/betas/${pkgname}-$pkgver.tar.gz")
+sha256sums=('566a3d5ccd541d95c4b0796def32d0c07f76a68a8dcd2c3dca4753d6beee6385')
 
 build() {
-  cd "${pkgname%-beta}-$pkgver"
+  cd "${pkgname}-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname%-beta}-$pkgver"
+  cd "${pkgname}-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
