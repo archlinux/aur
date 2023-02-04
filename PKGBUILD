@@ -32,20 +32,20 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/web"
 	npm ci
 	npm run build
-	#npm prune --production
+	npm prune --omit=dev
 
 	#Build machine-learning
 	cd "${srcdir}/${pkgname}-${pkgver}/machine-learning"	
 	npm ci
 	npm rebuild @tensorflow/tfjs-node --build-from-source
 	npm run build
-	npm prune --production
+	npm prune --omit=dev
 
 	#Build Server
 	cd "${srcdir}/${pkgname}-${pkgver}/server"
 	npm ci
 	npm run build
-	npm prune --production
+	npm prune --omit=dev --omit=optional
 
 
 }
@@ -60,7 +60,7 @@ package() {
 	#install web frontend
 	cp -r "${srcdir}/${pkgname}-${pkgver}/web" "${pkgdir}/var/lib/immich/app/web"
 
-	#install macheine-learning
+	#install machine-learning
 	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/machine-learning/package.json" "${pkgdir}/var/lib/immich/app/machine-learning/package.json"
 	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/machine-learning/package-lock.json" "${pkgdir}/var/lib/immich/app/machine-learning/package-lock.json"
 	cp -r "${srcdir}/${pkgname}-${pkgver}/machine-learning/node_modules" "${pkgdir}/var/lib/immich/app/machine-learning/node_modules"
