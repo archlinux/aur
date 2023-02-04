@@ -3,7 +3,7 @@
 
 _pkgbase=fuse
 pkgname=lib32-fuse3
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('lib32-glibc' 'fuse3')
 makedepends=('gcc-multilib' 'meson' 'pkg-config')
 source=(${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.xz{,.asc})
 options=(!libtool)
-sha256sums=('1e54d3ee1d7d04f41e77617c4f7514f611b94332215dd88394bd82803032752a'
+sha256sums=('6cd0759944c9aeb3d078b24a97b8a5cd5d49a0b8b7f15f85f32ac0c8a662fb6e'
             'SKIP')
 validpgpkeys=(ED31791B2C5C1613AF388B8AD113FCAC3C4E599F)
 
