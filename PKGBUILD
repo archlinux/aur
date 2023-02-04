@@ -3,11 +3,11 @@ pkgver=1.2.1
 pkgrel=1
 pkgdesc='Beneath a Steel Sky soundtrack for ScummVM'
 arch=(any)
-url=https://www.pixelrefresh.com/product/beneath-a-steel-sky-soundtrack/
+url=https://www.pixelrefresh.com/product/beneath-a-steel-sky-soundtrack
 license=(custom)
 depends=(bass)
 source=(https://www.pixelrefresh.com/soundtracks/bass/full175618461/bass_v${pkgver//./_}_flac.zip)
-b2sums=(f9831558530cf0a4521e2f497daf3017bc9965dfb47258d724fe9417d9657a9651b42065ff9bc92410058a2f11337af8cefe1860e3553ca1a89018a0cbcd8e45)
+b2sums=(1b7fa929c3acc4e3305eaccfb90702a85a23aa0c1af11edc3aac965803746d26d0a5980ab5fe49317012ef9ddfb6adc19fca2c2afa53be83a0592040acbb4e95)
 
 prepare() {
   sed -i 's/\r//; $s/$/\n/' readme.txt
