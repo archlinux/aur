@@ -1,6 +1,6 @@
 pkgbase = oxker-git
 	pkgdesc = A simple TUI to view & control Docker containers
-	pkgver = 0.2.1.r0.gfe49b1b
+	pkgver = 0.2.3.r0.g14f5444
 	pkgrel = 1
 	url = https://github.com/mrjackwills/oxker
 	arch = x86_64
