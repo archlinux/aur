@@ -1,0 +1,20 @@
+pkgbase = alphaplot-bin
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
+	pkgver = 1.02
+	pkgrel = 1
+	url = url = http://alphaplot.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = glu
+	depends = gsl
+	depends = mesa
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = qt5-script
+	depends = qt5-datavis3d
+	source = https://sourceforge.net/projects/alphaplot/files/1.02/alphaplot_v1.02_x64_gcc.pkg.tar.xz
+	sha256sums = 025e4e3a0975bfb67272f3a374d1a3fbd2a445bfb3307a9ce6f957dc992b0205
+
+pkgname = alphaplot-bin
