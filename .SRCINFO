@@ -3,7 +3,7 @@ pkgbase = directxtex
 	pkgver = jan2023
 	pkgrel = 1
 	url = https://go.microsoft.com/fwlink/?LinkId=248926
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = directx-headers-cmake
