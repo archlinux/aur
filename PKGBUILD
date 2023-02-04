@@ -1,7 +1,7 @@
 # Maintainer: Duale Siad <me@wale.id.au>
 pkgname=gfh
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Git FIDO Helper - Sign your Git commits with multiple resident SSH keys"
 url="https://github.com/Ovyerus/gfh"
 license=('MIT')
@@ -36,4 +36,5 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   #cargo install --root "${pkgdir}/usr" --path "${srcdir}/${pkgname}-${pkgver}"
   install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 "target/release/${pkgname}-keygen" "${pkgdir}/usr/bin/${pkgname}-keygen"
 }

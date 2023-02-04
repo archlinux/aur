@@ -1,7 +1,7 @@
 pkgbase = gfh
 	pkgdesc = Git FIDO Helper - Sign your Git commits with multiple resident SSH keys
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ovyerus/gfh
 	arch = x86_64
 	arch = armv7h
