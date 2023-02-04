@@ -1,6 +1,6 @@
 # Maintainer: Steffen Hansen <steffengrundsoe@gmail.com>
 pkgname=quickemu
-pkgver=4.5
+pkgver=4.6
 pkgrel=1
 pkgdesc="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines."
 arch=(any)
@@ -11,7 +11,7 @@ optdepends=('quickgui: graphical user interface' 'aria2: faster downloads')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/quickemu-project/quickemu/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('21eb60c0855a42b1ef34c338d2f252c6727b7aa999aeccf5e7c9d3f18e0ec494')
+sha256sums=('eef986300216603db7de02ed076ab4efe761608834b083352c0dd99bd64f7197')
 
 package() {
   cd "$pkgname-$pkgver"
