@@ -2,7 +2,7 @@
 _base=syrupy
 pkgname=python-${_base}
 pkgdesc="The sweeter pytest snapshot plugin"
-pkgver=3.0.6
+pkgver=4.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/tophat/${_base}"
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(python-pytest python-colored)
 makedepends=(python-build python-installer python-poetry-core)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('af979fa056ee1cf96eb7b331e797dc2e69e1f46b42b0b0bdaf930a2c8724cd5204e4949d2406ca8f62eb35bfe2cb17be9eef75b9ba08c42e89e5a0920522c228')
+sha512sums=('006a28283c1ba148845bc4f447b066112a791adf47d405ce0351a25d2f100c64240719531ec62ed83f6c2a899f8d4ddeec9209fa152a290b6bb4e7b0e6ed1797')
 
 build() {
   cd ${_base}-${pkgver}
@@ -21,7 +21,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not update_failure_shows_snapshot_diff'
+  test-env/bin/python -m pytest #-k 'not update_failure_shows_snapshot_diff'
 }
 
 package() {
