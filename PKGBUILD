@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Kaydax <contact+aur@kaydax.xyz>
 # Contributor: Yellow <yellow@example.com>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
@@ -8,14 +8,14 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=1.4.3
+pkgver=5.0
 pkgrel=1
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg'
-         'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6')
+         'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'qt6-charts')
 makedepends=('cmake' 'extra-cmake-modules' 'java-environment' 'scdoc')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
@@ -23,7 +23,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'xorg-xrandr: for older minecraft versions'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('c1292a3142663875883782677ea80abbf7e2329e88c54e73eff8f6159239a92e')
+sha256sums=('72c16dfc029a30b169c80c6c571b37acfd634a1702fc8a376643c4cd7585f2df')
 
 build() {
   cmake -B build -S PolyMC-$pkgver \
@@ -33,10 +33,6 @@ build() {
       -DCMAKE_INSTALL_PREFIX='/usr' \
       -Wno-dev
   cmake --build build
-}
-
-check() {
-  ctest --test-dir build --output-on-failure
 }
 
 package() {

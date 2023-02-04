@@ -1,6 +1,6 @@
 pkgbase = polymc
 	pkgdesc = Minecraft launcher with the ability to manage multiple instances
-	pkgver = 1.4.3
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/PolyMC/PolyMC
 	arch = x86_64
@@ -18,11 +18,12 @@ pkgbase = polymc
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = quazip-qt6
+	depends = qt6-charts
 	optdepends = glfw: to use system GLFW libraries
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
-	source = https://github.com/PolyMC/PolyMC/releases/download/1.4.3/PolyMC-1.4.3.tar.gz
-	sha256sums = c1292a3142663875883782677ea80abbf7e2329e88c54e73eff8f6159239a92e
+	source = https://github.com/PolyMC/PolyMC/releases/download/5.0/PolyMC-5.0.tar.gz
+	sha256sums = 72c16dfc029a30b169c80c6c571b37acfd634a1702fc8a376643c4cd7585f2df
 
 pkgname = polymc
