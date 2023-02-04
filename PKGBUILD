@@ -2,51 +2,57 @@
 
 _pkgname=dwarfs
 pkgname=${_pkgname}-git
-pkgver=0.5.6.r60.gf07e7e3
+pkgver=0.7.0.RC4.r0.g3dfad5a
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64')
 license=('GPL3')
 depends=(
-  'fuse3' 'openssl' 'boost-libs' 'jemalloc'
-  'lz4' 'xz' 'zstd'
+  'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash'
+  'lz4' 'xz' 'zstd' 'libarchive' 'brotli'
   'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
   # 'python'
 )
 makedepends=(
-  'git' 'cmake' 'sparsehash' 'ruby-ronn'
-  'boost' 'libevent' 'libaio'
-  # 'liburing' 'libsodium'
+  'git' 'cmake' 'ruby-ronn'
+  'boost' 'libevent' 'libdwarf'
 )
-source=("${pkgname}::git+https://github.com/mhx/dwarfs.git")
+source=("$pkgname::git+https://github.com/mhx/dwarfs.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$pkgname"
 
   git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${pkgname}"
+  cd "$pkgname"
 
   git submodule update --init --depth=1
 }
 
 build() {
-  cd "$pkgname"
+  cmake -B build -S "$pkgname" \
+    -W no-dev \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_LIBRARY_ARCHITECTURE="$CARCH" \
+    -D PREFER_SYSTEM_ZSTD=ON \
+    -D PREFER_SYSTEM_XXHASH=ON \
+    -D PREFER_SYSTEM_LIBFMT=ON
 
-  cmake -B "$srcdir/build" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=None
-
-  cmake --build "$srcdir/build"
+  cmake --build build
 }
 
 package() {
-  cmake --install build \
-    --prefix "${pkgdir}/usr"
+  DESTDIR="$pkgdir" cmake --install build \
 
-  install -Dm0644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin"
+  rm -rf "$pkgdir/usr/sbin"
+
+  cd "$pkgname"
+
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
