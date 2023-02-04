@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BSgenome.Hsapiens.UCSC.hg38
-_pkgver=1.4.4
+_pkgver=1.4.5
 pkgname=r-${_pkgname,,}
-pkgver=1.4.4
-pkgrel=4
+pkgver=1.4.5
+pkgrel=1
 pkgdesc='Full genome sequences for Homo sapiens (UCSC version hg38, based on GRCh38.p13)'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-bsgenome
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('024e3571b70f8e07bd50c4dd4d2dc05288497bf5409a9ac4ef12db94b081b50f')
+sha256sums=('b49277e4fd955be76571f187630993b02a459c7c5b69ef62a01a75dd5226e952')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
