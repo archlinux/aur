@@ -1,10 +1,11 @@
 pkgbase = apprise
 	pkgdesc = Push Notifications that work with just about every platform
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caronc/apprise
 	arch = any
 	license = MIT
+	makedepends = python-babel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
