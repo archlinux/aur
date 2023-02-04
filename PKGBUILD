@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
-pkgver=3.7.13
+pkgver=3.7.14
 pkgrel=1
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
@@ -10,11 +10,9 @@ depends=('mingw-w64-crt' 'mingw-w64-gettext')
 options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-wine' 'python' 'help2man')
 source=("https://github.com/rrthomas/recode/releases/download/v${pkgver}/recode-${pkgver}.tar.gz"
-        "autotools.patch"
-        "help2man.patch")
-sha256sums=('22bbdf79725a59f4d84c3dad63a911c5e8f443f109443c032cad564900b6b733'
-            '49d6019103484d4b81188d7eba39f35704a0a92049cdcb0b086e53c134595f1b'
-            'ca789328432b01ebe066ca594ac611ca43bd19083ed499e88c4410b15cc8492a')
+        "autotools.patch")
+sha256sums=('786aafd544851a2b13b0a377eac1500f820ce62615ccc2e630b501e7743b9f33'
+	    '10d2f285ba33589b05713c4c11debfa84a7b7ca2041ec7ecb0fa195b6cc1098e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -24,7 +22,6 @@ prepare() {
   libtoolize
 
   patch -Np1 -i ${srcdir}/autotools.patch
-  patch -Np1 -i ${srcdir}/help2man.patch
 }
 
 build() {

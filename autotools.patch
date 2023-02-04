@@ -30,7 +30,7 @@ diff -ruN recode-3.7.6/configure patched/configure
 diff -ruN recode-3.7.6/configure.ac patched/configure.ac
 --- recode-3.7.6/configure.ac	2019-09-13 14:23:45.000000000 +0200
 +++ patched/configure.ac	2019-10-03 12:41:04.101747962 +0200
-@@ -113,5 +113,13 @@
+@@ -111,6 +111,14 @@
  AM_GNU_GETTEXT(external)
  AM_XGETTEXT_OPTION([--from-code=UTF-8])
  
@@ -42,8 +42,10 @@ diff -ruN recode-3.7.6/configure.ac patched/configure.ac
 +AC_MSG_RESULT([$LIBRECODE_LDFLAGS])
 +AC_SUBST([LIBRECODE_LDFLAGS])
 +
- AC_OUTPUT(Makefile contrib/Makefile doc/Makefile lib/Makefile
-           po/Makefile.in src/Makefile tests/Makefile tests/setup.py)
+ AC_CONFIG_FILES([Makefile contrib/Makefile doc/Makefile lib/Makefile
+           po/Makefile.in src/Makefile tests/Makefile tests/setup.py])
+ AC_OUTPUT
+
 diff -ruN recode-3.7.6/m4/libtool.m4 patched/m4/libtool.m4
 --- recode-3.7.6/m4/libtool.m4	2016-02-08 00:39:37.000000000 +0100
 +++ patched/m4/libtool.m4	2019-10-03 12:41:04.105081310 +0200
