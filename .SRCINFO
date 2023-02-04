@@ -1,0 +1,15 @@
+pkgbase = nepali-calendar-gtk-git
+	pkgdesc = A nepali calendar built with gtk3
+	pkgver = r27.3ea885a
+	pkgrel = 1
+	url = https://github.com/nepali-bhasa/nepali-calendar
+	arch = any
+	license = GPL
+	depends = gtkmm3
+	depends = ttf-indic-otf
+	provides = nepali-calendar-gtk-git
+	provides = nepalical
+	source = git+https://github.com/nepali-bhasa/nepali-calendar
+	md5sums = SKIP
+
+pkgname = nepali-calendar-gtk-git
