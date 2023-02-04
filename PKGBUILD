@@ -3,7 +3,7 @@
 pkgname=freefilesync-bin
 _pkgname=freefilesync
 pkgver=12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
 url="https://freefilesync.org"
@@ -28,7 +28,7 @@ source=(
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "90630cc8c77d39af8e7746ce664738f9590ea7586454c90a66ad09248c41eb4f"
+    "27a648d7a57cf06274f73870e974ba79336060b576b24e7755f0fc770aa7ccdd"
 )
 options=(!strip)
 install=".install"
@@ -38,7 +38,9 @@ package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    tail -c +38028 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$srcdir/FreeFileSync_${pkgver}_Install.run" | cut -d : -f 1)
+    offset=$((offset + 16))
+    tail -c +$offset "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
     # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
     tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
