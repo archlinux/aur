@@ -3,16 +3,14 @@
 pkgname=nepali-calendar-gtk-git
 _pkgname=nepali-calendar
 pkgver=r27.3ea885a
-pkgrel=2
+pkgrel=0
 pkgdesc="A nepali calendar built with gtk3"
-
-arch=("any") #or x86_64 or any architectures that might support
+arch=("any")
 url="https://github.com/nepali-bhasa/nepali-calendar"
 license=("GPL")
-
 depends=("gtkmm3" "ttf-indic-otf")
-provides=("${pkgname}" "nepalical")
-conflict=("${pkgname}" "nepalical")
+provides=("nepalical")
+conflict=("nepalical")
 md5sums=("SKIP")
 source=("git+${url}")
 
@@ -28,8 +26,10 @@ build() {
 }
 
 package() {
-	cd "${_pkgname}"
-	install -Dm755 bin/nepalical "${pkgdir}/usr/bin/nepalical"
-	install -Dm755 nepalical.desktop "${pkgdir}/usr/share/applications/nepalical.desktop"
+	# Install binary
+	install -Dm755 "${srcdir}/${_pkgname}/bin/nepalical" "${pkgdir}/usr/bin/nepalical"
+	
+	# Install desktop file
+	install -Dm755 "${srcdir}/${_pkgname}/nepalical.desktop" "${pkgdir}/usr/share/applications/nepalical.desktop"
 }
 
