@@ -1,16 +1,15 @@
 # Maintainer: humanbeing27 <electronneutrino27@proton.me>
 pkgname=plymouth-theme-arch-bgrt
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Jimmac's spinner theme using the ACPI bgrt graphics as background and The Arch Logo."
 arch=(any)
-url='https://github.com/humanbeing27/plymouth-theme-arch-bgrt'
+url='https://aur.archlinux.org/packages/plymouth-theme-arch-bgrt'
 depends=('plymouth')
-source=(${url}/archive/refs/heads/main.zip)
-sha512sums=("a882e704979cdef41ecd3fb3da3a29b269c52b4857af7188f9463e8ad26252368294dec5983e55781ba123309722a78856e1c9202194bae06fbc3ec2da2e79ca")
+source=(https://www.dropbox.com/s/k3lhk6bvc4xs077/arch-bgrt.tar.gz)
+b2sums=('b7675105830b89c7a8c862b9d846702ec77a557d1f0d168ff54331f6e57fb21c2f1c680aa7d22db5a839552828244696577b34b7fbb6f1bdf6b05db04e6e04e3')
 package(){
-	mkdir -p $pkgdir/usr/share/plymouth/themes/arch-bgrt
-	mv ${srcdir}/plymouth-theme-arch-bgrt-main/plymouth-theme-arch-bgrt/* $pkgdir/usr/share/plymouth/themes/arch-bgrt
-	chown -R root $pkgdir/*
-	chgrp -R root $pkgdir/*
+	rm $srcdir/arch-bgrt.tar.gz
+	mkdir -p $pkgdir/usr/share/plymouth/themes/arch-bgrt/
+	install -Dm 755 $srcdir/* $pkgdir/usr/share/plymouth/themes/arch-bgrt/
 }
