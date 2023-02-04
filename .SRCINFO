@@ -1,6 +1,6 @@
 pkgbase = ampart-git
 	pkgdesc = A partition tool to modify Amlogic's proprietary eMMC partition format and FDT
-	pkgver = 1.1.r15.17eb5ce
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/7Ji/ampart
 	arch = x86_64
