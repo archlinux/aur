@@ -1,5 +1,5 @@
 pkgname=python-ursina
-pkgver=4.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="An easy to use game engine/framework for python."
 arch=("any")
@@ -12,8 +12,8 @@ depends=("python"
                  "python-screeninfo"
                  "python-pyperclip")
 makedepends=("python-setuptools")
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/ef/1b/19c7fe203c3483e1e21cf640bf0cb45fcad235868547103c3e783bbdcf29/ursina-4.0.0.tar.gz")
-sha256sums=("c49c7bf52b3deaa909fe7412219692ce0bc57841b8e681ad4cb95377f33cb26a")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/1c/ae/767f11bdee8a1ed6e755c4f7805caa73d76468963669e1891e02f2e138c4/ursina-5.2.0.tar.gz")
+sha256sums=("090fc35858c5fc64bf898fd0d9449d43552b405b696088a0247c10ac643f581e")
 
 package() {
     cd "ursina-${pkgver}"
