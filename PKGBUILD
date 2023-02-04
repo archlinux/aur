@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=geometry
-_cranver=0.4.6.1
+_cranver=0.4.7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -27,7 +27,7 @@ optdepends=(
     r-interp
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('52c87a43cdf414c08b8183441c44497039cba92a9cff719debf09ad8d5d7f472')
+sha256sums=('96204205f51b4d63c2e7a7b00365def27d131f3c9ec66db56b510046e5d2013b')
 
 prepare() {
   cd "${_cranname}/src"
