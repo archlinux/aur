@@ -8,7 +8,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-browser
-pkgver=29.0.1
+pkgver=29.0.2
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
