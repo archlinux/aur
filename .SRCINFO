@@ -1,0 +1,20 @@
+pkgbase = sni-ssl-proxy-git
+	pkgdesc = SNI-Proxy-Server HTTP/HTTPs/IMAPs/POP3s/SMTPs Supporting Upstream Socks (based on puxxustc/sniproxy)
+	pkgver = r16.cb5cb6d
+	pkgrel = 1
+	url = https://github.com/Intika-Linux-Proxy/SNI-SSL-Proxy/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = autoconf
+	makedepends = make
+	depends = glibc
+	conflicts = sniproxy
+	source = SNI-SSL-Proxy::git+https://github.com/Intika-Linux-Proxy/SNI-SSL-Proxy.git
+	source = libmill::git+https://github.com/sustrik/libmill.git
+	source = sniproxy.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = def472f0fe30bdf79e61ce77597b7005b32896c8435db839eda21c56e2d5c5e9
+
+pkgname = sni-ssl-proxy-git

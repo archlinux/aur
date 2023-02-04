@@ -1,0 +1,9 @@
+[Unit]
+Description=SNI/SSL proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/sniproxy -a 127.0.0.1 -w 8 --socks5 127.0.0.1:1080
+
+[Install]
+WantedBy=multi-user.target
