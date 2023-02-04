@@ -13,7 +13,7 @@ source=("https://github.com/Chowdhury-DSP/BYOD/releases/download/v$pkgver/BYOD-L
 sha256sums=('e45c7d949279816f7e83dc5b9388109e093ffc5832de01481e1ae24e4d0a3774')
 
 package() {
-	rm -rf usr data.tar.xz control.tar.xz debian-binary
+	rm -rf usr data.tar.zst control.tar.zst debian-binary
 	ar x "BYOD-Linux-x64-$pkgver.deb"
 	tar xf data.tar.zst
 	cp -r usr "$pkgdir/"
