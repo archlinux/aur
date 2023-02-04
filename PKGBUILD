@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.0.1.r43.g6facb89
+pkgver=v0.0.2.r1.g20244de
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('godot4-bin' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     'unzip' 'wget' 'git'
 	     )
 provides=('ogui')
-_tag=6facb899d12ee70e06ca55c4944bb0f176568732
+_tag=20244de17fc41bac0ee2d01b94920e63083fc250
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -41,11 +41,9 @@ package() {
 
 	mkdir -p ${pkgdir}/etc/handypt
 	install -Dm755 rootfs/etc/handypt/powertools ${pkgdir}/etc/handypt
-	
-	mkdir -p ${pkgdir}/usr/bin
-	echo -e '#!/bin/sh\nexec /usr/share/opengamepadui/opengamepad-ui.x86_64 "$@"' > ${pkgdir}/usr/bin/opengamepadui
 
-	chmod +x ${pkgdir}/usr/bin/opengamepadui
+	mkdir -p ${pkgdir}/usr/bin
+        install -Dm755 rootfs/usr/bin/opengamepadui ${pkgdir}/usr/bin
 
 	mkdir -p ${pkgdir}/usr/lib/systemd/user
 	install -Dm644 rootfs/usr/lib/systemd/user/ogui-qam.service ${pkgdir}/usr/lib/systemd/user
