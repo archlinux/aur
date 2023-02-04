@@ -7,11 +7,11 @@ pkgver=0.4.2
 pkgrel=1
 pkgdesc='Timetable extractor for the computer science degree of Paris 8'
 arch=('x86_64')
-url=https://git.kennel.ml/Anri/cal8tor
+url=https://git.mylloon.fr/Anri/cal8tor
 makedepends=('git' 'cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://git.kennel.ml/Anri/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://git.mylloon.fr/Anri/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('9864505e186f3105630b0a1e1e61f51f')
 
 prepare() {
