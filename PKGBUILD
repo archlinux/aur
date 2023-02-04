@@ -1,6 +1,6 @@
 # Maintainer: asas1asas200 <asas1asas200@gmail.com>
 pkgname="chatgpt-desktop-bin"
-pkgver="0.10.2"
+pkgver="0.10.3"
 pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=("chatgpt-desktop=${pkgver}")
 conflicts=('chatgpt-desktop')
 license=("Apache")
 source=("https://github.com/lencx/ChatGPT/releases/download/v${pkgver}/chat-gpt_${pkgver}_amd64.deb")
-sha256sums=('618d38aff0d77402f94a1509c190a025380b9a04de3a2c139a944b9f55cbb3d7')
+sha256sums=('409c284c2c9af73009c8b25d593fadfb0aeaee98aa4c350da6cb84e6c8b5b2d7')
 noextract=("chat-gpt_${pkgver}_amd64.deb")
 
 prepare() {
