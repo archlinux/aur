@@ -1,6 +1,6 @@
 pkgbase = hybrid-bar-git
 	pkgdesc = A status bar focused on wlroots Wayland compositors
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/vars1ty/HybridBar
 	arch = i686
