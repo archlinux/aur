@@ -1,7 +1,7 @@
 # Contributor: Matias De la Puente <mfpuente.ar@gmail.com>
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=automatic
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=5
 pkgdesc="RSS downloader for Linux based systems, capable of adding downloaded torrents directly to Transmission"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ backup=('etc/automatic.conf' 'etc/conf.d/automaticd')
 source=(https://github.com/1100101/Automatic/archive/v$pkgver.tar.gz
         automaticd.conf
         automatic.service)
-sha256sums=('1b5c5c65989d12dc7dcdd031dd7d0c1efad80062d615f63836ac86bd010908b8'
+sha256sums=('80c22f6c8e954c47e29bef536e6cd1cee572f2aa2baec6b51d71a11b09b60e1e'
             'ed4cdf8ef72840fdb57b7670d114372bb68153cdfae731d1102687b568a71940'
             'f9bcd54c4def0865898bf71abbef1107f442478a4d2bcef28b1c5061dae05af1')
 
