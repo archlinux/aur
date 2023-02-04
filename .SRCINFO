@@ -12,7 +12,7 @@ pkgbase = asusctl-git
 	depends = systemd
 	optdepends = acpi_call: fan control
 	provides = asusctl
-	conflicts = asus-nb-ctrl-git
+	conflicts = asusctl
 	source = git+https://gitlab.com/asus-linux/asusctl.git
 	md5sums = SKIP
 
