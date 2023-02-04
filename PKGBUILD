@@ -1,7 +1,7 @@
 # Maintainer: Cat2048
 pkgname=datcord-bin
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="An open-source discord client."
 arch=('x86_64')
 url="https://github.com/gamingdoom/datcord"
@@ -25,8 +25,9 @@ sha256sums=('SKIP'
 package() {
 	mkdir -p "$pkgdir"/usr/lib/datcord "$pkgdir"/usr/bin
 	cd "$srcdir/datcord"
+	chmod +x launch-datcord
         cp -R  * "$pkgdir"/usr/lib/datcord
-	ln -s /usr/lib/datcord/datcord "$pkgdir"/usr/bin/datcord
+	ln -s /usr/lib/datcord/launch-datcord "$pkgdir"/usr/bin/datcord
 	install -Dvm 775 "$srcdir"/datcord.desktop "$pkgdir"/usr/share/applications/datcord.desktop
 	install -Dvm 775 "$srcdir"/datcord.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/datcord.png
 }
