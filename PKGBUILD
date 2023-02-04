@@ -2,7 +2,7 @@
 
 _hkgname=formatting
 pkgname=haskell-$_hkgname
-pkgver=7.1.3
+pkgver=7.2.0
 pkgrel=1
 pkgdesc='Combinator-based type-safe formatting'
 url="https://hackage.haskell.org/package/$_hkgname"
@@ -11,9 +11,9 @@ license=('custom:BSD-3-Clause')
 depends=('ghc-libs' 'haskell-clock' 'haskell-double-conversion' 'haskell-old-locale')
 makedepends=('ghc' 'haskell-hspec' 'haskell-scientific')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-cksums=('1020702325')
-sha256sums=('8061bbe29278e6b7bb2268b00e1717385643dfa04e7b58b012bd53b342142cef')
-b2sums=('9f3b964096a30a7d9bd5ef01ad5ee994ab3c5435560a7a74398314537b525a58a0b6238bb1c3cbfa43dbfd5405ceaba65d6ced301166a860e26dfc7b440869fc')
+cksums=('460280359')
+sha256sums=('c07b18177af614e7e5f32e6fd924f7b35c1b1c219b3491608ee8e7276e706a6d')
+b2sums=('231621d12d6aaa1551a795ba193ac75d4eb04bc4c600ddbd9adcaa4a10a4db96379d1574ab782b5508b252a5d0c3c755797cf27d9fa0ec2f6abdf018ceb8202a')
 
 build() {
   cd "$_hkgname-$pkgver"
