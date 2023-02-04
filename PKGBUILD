@@ -1,9 +1,10 @@
-# Maintainer: LSUtigers3131 
-# Maintainer: Luke Short <ekultails at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: LSUtigers3131 
+# Contributor: Luke Short <ekultails at gmail dot com>
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.3.1
+pkgver=11.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak and snap support enabled"
@@ -13,14 +14,14 @@ license=('GPL3')
 depends=('pacman>=6.0' 'pacman<6.1' 'flatpak' 'snapd' 'snapd-glib' 'archlinux-appstream-data-pamac')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 options=(!emptydirs)
+provides=("$_pkgname")
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac' 'libpamac-full-dev')
-source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('92fb2dc550df33cd88969e004fed5a1e2300212f6643f21617e117019ba03109')
+source=("https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('f0aa76f16b3dadfd6a2c72008953e9f89488cd1da8b3d8349114bbf86ce20b5d')
 
 build() {
-  cd $_pkgname-$pkgver
-  mkdir -p builddir
-  cd builddir
+  cd "$_pkgname-$pkgver"
+  mkdir -p 'builddir' && cd 'builddir'
   meson setup --prefix=/usr --sysconfdir=/etc -Denable-snap=true -Denable-flatpak=true --buildtype=release
   # build
   ninja
@@ -28,8 +29,7 @@ build() {
 
 package() {
   backup=('etc/pamac.conf')
-  cd $_pkgname-$pkgver
-  cd builddir
+  cd "$_pkgname-$pkgver/builddir"
   DESTDIR="$pkgdir" ninja install
 }
 

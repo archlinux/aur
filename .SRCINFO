@@ -1,6 +1,6 @@
 pkgbase = libpamac-full
 	pkgdesc = Library for Pamac package manager based on libalpm - flatpak and snap support enabled
-	pkgver = 11.3.1
+	pkgver = 11.4.1
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
@@ -26,13 +26,14 @@ pkgbase = libpamac-full
 	depends = snapd
 	depends = snapd-glib
 	depends = archlinux-appstream-data-pamac
+	provides = libpamac
 	conflicts = libpamac-aur
 	conflicts = libpamac-flatpak
 	conflicts = libpamac
 	conflicts = libpamac-full-dev
 	options = !emptydirs
-	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.3.1/libpamac-11.3.1.tar.bz2
-	sha256sums = 92fb2dc550df33cd88969e004fed5a1e2300212f6643f21617e117019ba03109
+	source = https://gitlab.manjaro.org/applications/libpamac/-/archive/11.4.1/libpamac-11.4.1.tar.bz2
+	sha256sums = f0aa76f16b3dadfd6a2c72008953e9f89488cd1da8b3d8349114bbf86ce20b5d
 
 pkgname = libpamac-full
 	backup = etc/pamac.conf
