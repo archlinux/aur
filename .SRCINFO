@@ -1,16 +1,16 @@
-pkgbase = chatgpt-cli-git
+pkgbase = gpt-chatbot-cli
 	pkgdesc = A minimal, bloat free chatgpt cli
-	pkgver = r32.a737bff
+	pkgver = r41.1746661
 	pkgrel = 1
-	url = https://github.com/slithery0/chatgpt-cli
+	url = https://github.com/slithery0/gpt-chatbot-cli
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = python3
 	depends = python-pip
-	provides = chatgpt-cli
-	conflicts = chatgpt-cli
-	source = git+https://github.com/slithery0/chatgpt-cli
+	provides = gpt-chatbot-cli
+	conflicts = gpt-chatbot-cli
+	source = git+https://github.com/slithery0/gpt-chatbot-cli
 	md5sums = SKIP
 
-pkgname = chatgpt-cli-git
+pkgname = gpt-chatbot-cli
