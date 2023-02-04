@@ -1,7 +1,7 @@
 # Maintainer:  JakobDev<jakobdev at gmx dot de>
 
 pkgname=python-desktop-entry-lib
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="A library for working with .desktop files"
 url="https://gitlab.com/JakobDev/desktop-entry-lib"
@@ -9,11 +9,11 @@ arch=("any")
 license=("BSD")
 depends=("python" "xdg-user-dirs" "desktop-file-utils")
 makedepends=("python-build" "python-installer" "python-wheel" "python-sphinx" "python-sphinx-furo" "python-sphinx-copybutton" "make")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/desktop-entry-lib/-/archive/${pkgver}/desktop-entry-lib-${pkgver}.tar.gz")
-sha256sums=("441d26449b071ec53dce8b402729040efebd42a032c227e2334dc6b786929793")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/desktop-entry-lib/archive/${pkgver}.tar.gz")
+sha256sums=("8a4cdce9cdde700b49ea3dcd37bfd772261e15bfff5d50c9063b82f895417f53")
 
 build() {
-      cd desktop-entry-lib-${pkgver}
+      cd desktop-entry-lib
       python -m build --wheel --no-isolation
 
       cd docs
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-      cd desktop-entry-lib-${pkgver}
+      cd desktop-entry-lib
       python -m installer --destdir "$pkgdir" dist/*.whl
       install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
