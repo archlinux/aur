@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
 pkgver=2023.02a
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -71,8 +71,7 @@ build(){
         -DENABLE_POTENTIAL_BLOCKS=ON  -DVECTORIZE=ON \
         -DENABLE_USEFUL_ERRORS=OFF \
         -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_CXX_FLAGS="${YADE_EXTRA_CMAKE_ARGS} ${YADE_CMAKE_FLAGS}" \
-        -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=27
+        -DCMAKE_CXX_FLAGS="${YADE_EXTRA_CMAKE_ARGS} ${YADE_CMAKE_FLAGS}"
 
     cmake --build .
 }

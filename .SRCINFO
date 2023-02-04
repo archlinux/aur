@@ -1,7 +1,7 @@
 pkgbase = yade
 	pkgdesc = Yet Another Dynamic Engine, free software for discrete element modeling.
 	pkgver = 2023.02a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yade-dem.org/doc/index.html
 	arch = x86_64
 	license = GPL2
