@@ -31,7 +31,7 @@ build:
 
 .PHONY: commit
 commit:
-	source PKGBUILD && git commit -am "aur: $$pkgver-$$pkgrel"
+	source ./PKGBUILD && git commit -am "aur: $$pkgver-$$pkgrel"
 
 .PHONY: push
 push:
