@@ -1,6 +1,6 @@
 pkgbase = chowtapemodel-bin
 	pkgdesc = Physical modelling signal processing for analog tape recording
-	pkgver = 2.11.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://chowdsp.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = chowtapemodel-bin
 	conflicts = chowtapemodel-lv2-git
 	conflicts = chowtapemodel-jack-git
 	conflicts = chowtapemodel-lv2.git
-	source = https://github.com/jatinchowdhury18/AnalogTapeModel/releases/download/v2.11.0/ChowTapeModel-Linux-x64-2.11.0.deb
-	sha256sums = d1e60eb720b5fa679415d2995841db7b6099efd02b9d3fdd4b2b8f362b0896d5
+	source = https://github.com/jatinchowdhury18/AnalogTapeModel/releases/download/v2.11.1/ChowTapeModel-Linux-x64-2.11.1.deb
+	sha256sums = 3215a84da15f76cc5bd6451c93a865e58095c6a1365d573b64f82586a8e8b51d
 
 pkgname = chowtapemodel-bin
