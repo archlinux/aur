@@ -5,7 +5,8 @@ pkgdesc="Texture processing library"
 pkgver=jan2023
 pkgrel=1
 arch=('x86_64')
-makedepends=('cmake' 'directx-headers-cmake' 'directxmath' 'ninja')
+depends=('directx-headers-cmake')
+makedepends=('cmake' 'directxmath' 'ninja')
 url="https://go.microsoft.com/fwlink/?LinkId=248926"
 license=('MIT')
 options=('staticlibs' '!strip')
