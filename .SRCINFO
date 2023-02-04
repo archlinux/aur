@@ -1,0 +1,21 @@
+pkgbase = bear2-git
+	pkgdesc = Tool to generate compilation database for clang tooling. In version 2.
+	pkgver = 2.4.4.0
+	pkgrel = 1
+	url = https://github.com/rizsotto/Bear
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkg-config
+	depends = python
+	provides = bear
+	conflicts = bear
+	conflicts = bear-git
+	conflicts = interception-tools
+	source = bear2-git::git+https://github.com/rizsotto/Bear.git
+	sha1sums = SKIP
+
+pkgname = bear2-git
