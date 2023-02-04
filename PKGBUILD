@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.14.0
+pkgver=1.15.0
 _pkgver="${pkgver//./_}"
 pkgrel=1
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -18,11 +18,15 @@ makedepends=('cmake' 'help2man' 'swig' 'gtest' 'gmock')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 
-sha256sums=('147ee3d6d452d0ad86e4275bfc2eed70848f8f6afb6e0af593a47551ee175768'
+sha256sums=('9c96f79017483d9f9fb076a998f8df177520505567741100609d2e3651457fff'
             'cc0ed7ad1cce228cd8c634e031c966e1795a16623f0e139ebdcc7ecd06d0bf4d')
 
 prepare() {
     cd ${pkgbase}-${_pkgver}
+
+    # remove tests since gtest is min c++14 and sumo builds with c++11
+    sed -i '647d' CMakeLists.txt
+    sed -i '644d' CMakeLists.txt
 
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
