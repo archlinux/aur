@@ -1,5 +1,5 @@
 pkgname=distribution-gpg-keys
-pkgver=1.81
+pkgver=1.82
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/xsuchy/$pkgname"
 license=('custom:CC0-1.0')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('399781bca76f899b2f1aa80d152b8019d056763c512e5d88d633e4f29465060d')
+sha256sums=('004d0ebccec4506d907c8c4ce7311d3866725224bed54e06f74c20f59b41eaab')
 
 # Uncomment to include GPG keys used by Copr projects
 #_with_copr=1
