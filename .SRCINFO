@@ -1,7 +1,7 @@
 pkgbase = gimp-devel-stripped
 	pkgdesc = GNU Image Manipulation Program (development version, stripped from most unnecessary dependencies)
 	pkgver = 2.99.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gimp.org/
 	arch = x86_64
 	license = GPL
@@ -17,16 +17,14 @@ pkgbase = gimp-devel-stripped
 	depends = gegl
 	depends = glib-networking
 	depends = mypaint-brushes1
-	depends = poppler-glib
-	depends = poppler-data
 	depends = appstream-glib
 	depends = libgexiv2
 	provides = gimp
 	conflicts = gimp
 	options = !docs
 	source = gimp-2.99.14.tar.xz::https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.14.tar.xz
-	source = meson.patch
+	source = 01-meson.patch
 	sha256sums = 313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8
-	sha256sums = e27c081a786989a64dd57e5945a6bcbc9a34a0bb22105d39bbddfaace60ebf49
+	sha256sums = 9bcd77bfdaf17eccc227068ed39bc08ec0dbbc296026044d6816c12d36d2ebe7
 
 pkgname = gimp-devel-stripped

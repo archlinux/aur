@@ -1,11 +1,11 @@
 pkgname=gimp-devel-stripped
 pkgver=2.99.14
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU Image Manipulation Program (development version, stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-glib' 'poppler-data' 'appstream-glib' 'libgexiv2')
+depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'appstream-glib' 'libgexiv2')
 makedepends=('meson' 'intltool' 'iso-codes' 'gobject-introspection' 'libxslt' 'libxmu')
 options=('!docs')
 
@@ -17,11 +17,11 @@ provides=("${_name}")
 
 source=(
     "${_snapshot}.tar.xz::https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_snapshot}.tar.xz"
-    "meson.patch"
+    "01-meson.patch"
 )
 sha256sums=(
     '313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
-    'e27c081a786989a64dd57e5945a6bcbc9a34a0bb22105d39bbddfaace60ebf49'
+    '9bcd77bfdaf17eccc227068ed39bc08ec0dbbc296026044d6816c12d36d2ebe7'
 )
 
 prepare() {
