@@ -1,0 +1,22 @@
+diff --git a/gui/qt5/__init__.py b/gui/qt5/__init__.py
+index dc49af3..55ecef0 100644
+--- a/gui/qt5/__init__.py
++++ b/gui/qt5/__init__.py
+@@ -15,7 +15,7 @@ from PyQt5 import QtCore
+ from PyQt5 import QtGui
+ from PyQt5.QtCore import *
+ from PyQt5.QtWidgets import *
+-from PyQt5 import QtWebKit, QtWebKitWidgets
++from PyQt5 import QtWebEngineWidgets
+
+ from yade.qt.ui_controller import Ui_Controller
+
+@@ -63,7 +63,7 @@ def openUrl(url):
+ 		pass
+ 	if not reuseLast:
+ 		if len(webWindows) < maxWebWindows:
+-			webWindows.append(QtWebKitWidgets.QWebView())
++			webWindows.append(QtWebEngineWidgets.QWebEngineView())
+ 		else:
+ 			webWindows = webWindows[1:] + [webWindows[0]]
+ 	web = webWindows[-1]

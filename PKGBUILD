@@ -1,72 +1,92 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
-pkgver=2022.01a
-pkgrel=4
+pkgver=2023.02a
+pkgrel=1
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
 license=('GPL2')
 depends=(
-    'cgal' 'coin-or-clp' 'freeglut' 'gl2ps'
-    'gts' 'ipython' 'libqglviewer' 'openmpi' 
+    'openblas' 'cgal' 'coin-or-clp' 'freeglut' 'gl2ps'
+    'gts' 'ipython' 'libqglviewer'
+    # 'openmpi'
     'python-mpmath' 'python-xlib' 'python-future' 'python-pyqt5'
+    'python-pyqt5-webengine' # replace pyqt5-qtwebkit
     'vtk'
+    'metis' # in suitesparse cholmod
+    'python-matplotlib' # needed in runtime
+    'python-mpi4py'
 )
 makedepends=(
-    'mpfrc++' 'python-pygraphviz' 
-    'python-mpi4py'
+    'suitesparse'
+    'mpfrc++' 'python-pygraphviz'
     'utf8cpp'
+    'git'
+    'cmake'
+    'python-numpy'
+    'tk'
+    'cuda'
+    'openmp'
 )
 optdepends=(
 'cuda: GPU acceleration'
-'python-matplotlib: plotting graphs' 
-'python-mpi4py: passing all tests' 
-'tk: passing all tests' 
+'tk: passing all tests'
 )
-source=("trunk-${pkgver}::git+https://gitlab.com/yade-dev/trunk.git?commit=fd04d864622a1c628296ccd1697efc93cda98c27"
+source=("trunk-${pkgver}.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/${pkgver}/trunk-${pkgver}.tar.gz"
+"suitesparse-ver.patch"
+'qtwebkit.patch'
 )
-sha512sums=('SKIP')
+sha512sums=('d93247bf86f9aa711b27b4258b711d5be448c8bffb78df8bc3a0691bb0d986ffe876a47a70eed43b1729b496ffd892f4d1137a397bc038539e95b695173da53c'
+            '209893bfa477a0cc1086dde2c3fa216a4e4e28da612b4d55f9be2250cc2f15cbf8266749ffd44b89039efd0dc02e6a2076db0fff12f15e9a8b7c8a3d792b4104'
+            '6725a5f8d3bde9add6597085c0e635aeb0480fdddb5335c07206185f5de4ea66ef4ed16e12e4b6533b996f3d2c62ddc6a618cc682c2a976516447a24b10a5288')
 options=('!buildflags' '!lto')
-            
+
 prepare(){
     # Follow https://yade-dem.org/doc/installation.html#compilation
     test -d trunk && rm -rf trunk
-    mv trunk-${pkgver} trunk 
+    mv trunk-${pkgver} trunk
     test -d build || mkdir build
-    cd trunk 
-#     patch --strip=1 < ../${pkgname}.patch
+    cd trunk
+    patch --strip=1 < ../suitesparse-ver.patch
+    patch --strip=1 < ../qtwebkit.patch
 }
 
 
 build(){
     cd build
 
+    # YADE_EXTRA_CMAKE_ARGS and YADE_CMAKE_FLAGS are preserved for future use.
+    # To speed up compilation you can try (27 requires over 50GiB RAM)
+    # -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=27
     cmake ../trunk \
-        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNOSUFFIX=ON -DPYTHON_VERSION=-1 \
-        -DCHOLMOD_GPU=ON    -DENABLE_DEFORM=ON  -DENABLE_OAR=ON \
-        -DENABLE_MPFR=ON  \
-        -DruntimePREFIX=/usr    -DOpenGL_GL_PREFERENCE=GLVND \
-        -DENABLE_POTENTIAL_PARTICLES=ON -DENABLE_VTK=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DruntimePREFIX=/usr \
+        -DNOSUFFIX=ON -DPYTHON_VERSION=-1 \
         -DFORCE_FREEGLUT_PATH=/usr/include \
+        -DOpenGL_GL_PREFERENCE=GLVND \
+        -DCHOLMOD_GPU=ON -DENABLE_DEFORM=ON -DENABLE_OAR=ON -DENABLE_FEMLIKE=ON \
+        -DENABLE_MPFR=ON  \
+        -DENABLE_POTENTIAL_PARTICLES=ON -DENABLE_VTK=ON \
         -DENABLE_SPH=ON -DENABLE_PROFILING=ON -DENABLE_LIQMIGRATION=ON \
-        -DENABLE_MASK_ARBITRARY=ON -DENABLE_PARTIALSAT=ON \
-        -DENABLE_USEFUL_ERRORS=ON \
+        -DENABLE_MASK_ARBITRARY=ON -DENABLE_PARTIALSAT=ON  \
         -DENABLE_POTENTIAL_BLOCKS=ON  -DVECTORIZE=ON \
-        -DCMAKE_CXX_FLAGS='-Wformat -Wformat-security -Wformat-nonliteral -Wall -Wextra -Wno-error=unused-result -Wnarrowing -Wreturn-type -Wuninitialized -Wfloat-conversion -Wcast-align -Wdisabled-optimization -Wtrampolines -Wpointer-arith -Wswitch-bool -Wwrite-strings -Wnon-virtual-dtor -Wreturn-local-addr -Wsuggest-override -Wswitch-default  -Wno-error=shadow -Wno-error=use-after-free -Wno-error=maybe-uninitialized -Wno-error=dangling-pointer -Wno-error=cpp -fdce -fstack-protector-strong -DYADE_VTK -DYADE_OPENMP -fopenmp -DYADE_GTS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -DQGLVIEWER_FOUND -DYADE_OPENGL -DYADE_QT5  -DYADE_CGAL -DFLOW_ENGINE -DFLOW_ENGINE  -DLINSOLV -pthread -DYADE_MPI -DTWOPHASEFLOW -DYADE_GL2PS -DLBM_ENGINE -DPARTIALSAT' \
-        -DCMAKE_CXX_FLAGS_RELEASE='-O3 -DNDEBUG'
-    make
+        -DENABLE_USEFUL_ERRORS=OFF \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_CXX_FLAGS="${YADE_EXTRA_CMAKE_ARGS} ${YADE_CMAKE_FLAGS}" \
+        -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=27
+
+    cmake --build .
 }
 
 package(){
     cd "$srcdir"/build
     make install DESTDIR="${pkgdir}"
-    
+
     # need to add \x0 with length ${#srcdir}+1
     rplc='\x0'
     for ((i=1;i <=${#srcdir};i++))
     do
         rplc="$rplc\\x0"
-    done 
+    done
     msg2 'Stripping $srcdir'
     find ${pkgdir}/* -type f -print0 | xargs -0 sed -i "s|${srcdir}/|${rplc}|g"
     # .py file should not contains \x0
