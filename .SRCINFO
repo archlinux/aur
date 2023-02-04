@@ -1,0 +1,13 @@
+pkgbase = kicad-library-espressif-git
+	pkgdesc = KiCad libraries for Espressif chips and modules
+	pkgver = r68.a8a536c
+	pkgrel = 1
+	url = https://github.com/espressif/kicad-libraries
+	arch = any
+	license = CC-BY-SA 4.0
+	makedepends = git
+	depends = kicad
+	source = git+https://github.com/espressif/kicad-libraries.git
+	md5sums = SKIP
+
+pkgname = kicad-library-espressif-git
