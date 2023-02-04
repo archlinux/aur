@@ -31,7 +31,10 @@ prepare () {
 	cd "$srcdir/$_bpn"
 	git submodule init
 	git config submodule.ccan.url $srcdir/ccan
-	git submodule update
+
+	# Enable cloning from 'file://' URLs.
+	# Workaround for https://bugs.archlinux.org/task/76255
+	git -c protocol.file.allow=always submodule update
 }
 
 build () {
