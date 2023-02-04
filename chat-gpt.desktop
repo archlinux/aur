@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Development;
+Comment=ChatGPT
+Exec=chatgpt
+Icon=chat-gpt
+Name=ChatGPT
+Terminal=false
+Type=Application
