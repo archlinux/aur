@@ -12,6 +12,6 @@ pkgbase = python-geotiler
 	depends = python-cytoolz
 	depends = python-aiohttp
 	source = https://github.com/wrobell/geotiler/archive/geotiler-0.14.7.tar.gz
-	sha512sums = fcb13853ced62af9489d50038acaad8c7fce5f7a3db55c7e0bac70d2318d490217f781116e0a34428d3414d1a9af36ac494c12b2e6eddc8e6ba4db1e8bc03379
+	sha512sums = 9be15ed8b653dc859a2cecc3809049c2c7746aa1d2a87c382c625be5bf7a0cc6eb30780ead2eec01c7f8f1c5fe30cd00b53edea66e0074fb479130833db88f53
 
 pkgname = python-geotiler
