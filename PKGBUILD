@@ -1,4 +1,5 @@
-# Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
+# Maintainer: Kino <cybaol292261 at 163 dot com>
+# Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Fabio Loli <loli_fabio@protonmail.com>
 # Contributor: Yuxin Wu <ppwwyyxxc@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
@@ -8,21 +9,20 @@
 # Contributor: ZiXiS
 
 pkgname=pcl
-pkgver=1.12.1
-pkgrel=2
+pkgver=1.13.0
+pkgrel=1
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing"
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
-depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit'
-  'openmpi' 'python' 'libxt' 'libharu' 'proj' 'glew' 'netcdf' 'libusb' 'fmt' 
-  'pugixml' 'liblas' 'adios2' 'utf8cpp' 'freeglut' 'ospray' 'python-mpi4py' 'openvr' 'cgns'
-  'unixodbc' 'openni2' 'libxcursor')
-makedepends=('cmake' 'gl2ps' 'python')
-optdepends=('cuda' 'openni2' 'python-sphinx')
+depends=('boost' 'cgns' 'cli11' 'eigen' 'flann' 'glew' 'libharu' 'liblas' 'libxcursor'
+  'netcdf' 'openni2' 'openmp' 'openvr' 'ospray' 'postgresql-libs' 'python' 'python-mpi4py'
+  'qt6-base' 'utf8cpp' 'vtk')
+makedepends=('cmake' 'gl2ps')
+optdepends=('cuda')
 source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz")
 
-sha256sums=('dc0ac26f094eafa7b26c3653838494cc0a012bd1bdc1f1b0dc79b16c2de0125a' )
+sha256sums=('b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d')
 
 build() {
  # Create build directory
@@ -32,11 +32,10 @@ build() {
   cmake ${srcdir}/pcl-pcl-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_surface_on_nurbs=ON \
     -DCMAKE_CXX_STANDARD=14 \
     -DCUDA_HOST_COMPILER=/usr/bin/gcc
 
-  make 
+  make
 }
 
 package() {
