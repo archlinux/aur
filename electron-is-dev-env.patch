@@ -1,29 +1,11 @@
 --- a/src/backend/main.ts
 +++ b/src/backend/main.ts
-@@ -245,18 +245,17 @@ async function createWindow(): Promise<B
+@@ -200,7 +200,7 @@ async function createWindow(): Promise<B
      detectVCRedist(mainWindow)
    }
  
 -  if (!app.isPackaged) {
--    if (!process.env.HEROIC_NO_REACT_DEVTOOLS) {
--      import('electron-devtools-installer').then((devtools) => {
--        const { default: installExtension, REACT_DEVELOPER_TOOLS } = devtools
-+  const noDevTools = (process.env?.HEROIC_NO_REACT_DEVTOOLS ?? '1') === '1'
-+  if (!app.isPackaged && !noDevTools) {
-+    import('electron-devtools-installer').then((devtools) => {
-+      const { default: installExtension, REACT_DEVELOPER_TOOLS } = devtools
- 
--        installExtension(REACT_DEVELOPER_TOOLS).catch((err: string) => {
--          logWarning(['An error occurred: ', err], {
--            prefix: LogPrefix.Backend
--          })
-+      installExtension(REACT_DEVELOPER_TOOLS).catch((err: string) => {
-+        logWarning(['An error occurred: ', err], {
-+          prefix: LogPrefix.Backend
-         })
-       })
--    }
-+    })
-     mainWindow.loadURL('http://localhost:5173')
-     // Open the DevTools.
-     mainWindow.webContents.openDevTools()
++  if (!app.isPackaged && process.env.HEROIC_NO_REACT_DEVTOOLS !== undefined) {
+     if (!process.env.HEROIC_NO_REACT_DEVTOOLS) {
+       import('electron-devtools-installer').then((devtools) => {
+         const { default: installExtension, REACT_DEVELOPER_TOOLS } = devtools
